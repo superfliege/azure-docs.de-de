@@ -1,74 +1,68 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 11d07f33a4f5e268ff2f0ac2966bde40a63a7529
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776804"
 documentType: LandingData
 title: Azure Notebooks-Dokumentation
 metadata:
   title: 'Dokumentation zu Azure Notebooks: Schnellstarts, Tutorials, Anleitungen | Microsoft-Dokumentation'
-  description: Hier erfahren Sie, wie Sie über den gehosteten Azure Notebooks-Dienst Jupyter-Notebooks erstellen, ausführen und freigeben.
+  description: 'Hier erfahren Sie, wie Sie über den gehosteten Azure Notebooks-Dienst Jupyter-Notebooks erstellen, ausführen und freigeben.'
   services: notebooks
   author: kraigb
   manager: douge
-  ms.service: azure
+  ms.service: azure-notebooks
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 12/04/2018
   ms.author: kraigb
 abstract:
-  description: Azure Notebooks ist ein kostenloser gehosteter Dienst zum Entwickeln und Ausführen von Jupyter-Notebooks in der Cloud ohne Installation. Jupyter (vormals IPython) ist ein Open Source-Projekt, mit dem Sie Markdowntext, ausführbaren Code (Python, R und F#), persistente Daten, Grafiken und Visualisierungen einfach in einer einzelnen, gemeinsam nutzbaren Canvas – einem sogenannten Notebook – zusammenführen können.
+  description: 'Azure Notebooks ist ein kostenloser gehosteter Dienst zum Entwickeln und Ausführen von Jupyter-Notebooks in der Cloud ohne Installation. Jupyter (vormals IPython) ist ein Open Source-Projekt, mit dem Sie Markdowntext, ausführbaren Code (Python, R und F#), persistente Daten, Grafiken und Visualisierungen einfach in einer einzelnen, gemeinsam nutzbaren Canvas – einem sogenannten Notebook – zusammenführen können.'
 sections:
-- title: Fünfminütige Schnellstarts
-  items:
-  - type: paragraph
-    text: Erlernen Sie anhand dieser Schnellstartanleitungen den Umgang mit Azure Notebooks.
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 2
+  - title: Fünfminütige Schnellstarts
     items:
-    - href: /azure/notebooks/quickstart-create-share-jupyter-notebook
-      html: <p>Hier erfahren Sie, wie Sie ein Jupyter-Notebook in Azure Notebooks erstellen und es dann für andere Benutzer freigeben.</p>
-      image:
-        src: media/index/Azure_AddNotebook.svg
-      title: Erstellen und Freigeben eines Notebooks
-    - href: /azure/notebooks/quickstart-clone-jupyter-notebook
-      html: <p>Lernen Sie, wie Sie ein Jupyter-Notebook aus einem GitHub-Repository klonen und in Ihrem Azure Notebooks-Konto ausführen.</p>
-      image:
-        src: media/index/Azure_ClonePage.svg
-      title: Klonen eines Notebooks
-    - href: /azure/notebooks/quickstart-migrate-local-jupyter-notebook
-      html: <p>Hier erfahren Sie, wie Sie ein Jupyter-Notebook vom lokalen Computer oder von einer Web-URL in Azure Notebooks in Azure Notebooks übertragen und dann für die Zusammenarbeit freigeben.</p>
-      image:
-        src: media/index/Azure_MigrateNotebook.svg
-      title: Migrieren eines lokalen Jupyter Notebooks
-    - href: /azure/notebooks/quickstart-create-jupyter-notebook-project-environment
-      html: <p>Hier finden Sie Informationen zum Konfigurieren eines Azure Notebooks-Projekts mit bestimmten installierten Paketen und Startskripts.</p>
-      image:
-        src: media/index/Azure_CustomEnvironment.svg
-      title: Erstellen eines Projekts mit benutzerdefinierter Umgebung
-    - href: /azure/notebooks/quickstart-sign-in-azure-notebooks
-      html: <p>Hier erfahren Sie, wie Sie sich bei Azure Notebooks anmelden und eine Benutzer-ID festlegen. So haben Sie die Möglichkeit, auf gespeicherte Projekte zuzugreifen und Notebooks für andere Benutzer freizugeben.</p>
-      image:
-        src: media/index/Azure_UserAccount.svg
-      title: Anmelden und Festlegen einer Benutzer-ID
-- title: Schritt-für-Schritt-Tutorials
-  items:
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: Erlernen Sie anhand dieser Schnellstartanleitungen den Umgang mit Azure Notebooks.
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 2
+        items:
+          - href: /azure/notebooks/quickstart-create-share-jupyter-notebook
+            html: '<p>Hier erfahren Sie, wie Sie ein Jupyter-Notebook in Azure Notebooks erstellen und es dann für andere Benutzer freigeben.</p>'
+            image:
+              src: media/index/Azure_AddNotebook.svg
+            title: Erstellen und Freigeben eines Notebooks
+          - href: /azure/notebooks/quickstart-clone-jupyter-notebook
+            html: '<p>Lernen Sie, wie Sie ein Jupyter-Notebook aus einem GitHub-Repository klonen und in Ihrem Azure Notebooks-Konto ausführen.</p>'
+            image:
+              src: media/index/Azure_ClonePage.svg
+            title: Klonen eines Notebooks
+          - href: /azure/notebooks/quickstart-migrate-local-jupyter-notebook
+            html: '<p>Hier erfahren Sie, wie Sie ein Jupyter-Notebook vom lokalen Computer oder von einer Web-URL in Azure Notebooks in Azure Notebooks übertragen und dann für die Zusammenarbeit freigeben.</p>'
+            image:
+              src: media/index/Azure_MigrateNotebook.svg
+            title: Migrieren eines lokalen Jupyter Notebooks
+          - href: /azure/notebooks/quickstart-create-jupyter-notebook-project-environment
+            html: <p>Hier finden Sie Informationen zum Konfigurieren eines Azure Notebooks-Projekts mit bestimmten installierten Paketen und Startskripts.</p>
+            image:
+              src: media/index/Azure_CustomEnvironment.svg
+            title: Erstellen eines Projekts mit benutzerdefinierter Umgebung
+          - href: /azure/notebooks/quickstart-sign-in-azure-notebooks
+            html: '<p>Hier erfahren Sie, wie Sie sich bei Azure Notebooks anmelden und eine Benutzer-ID festlegen. So haben Sie die Möglichkeit, auf gespeicherte Projekte zuzugreifen und Notebooks für andere Benutzer freizugeben.</p>'
+            image:
+              src: media/index/Azure_UserAccount.svg
+            title: Anmelden und Festlegen einer Benutzer-ID
+  - title: Schritt-für-Schritt-Tutorials
     items:
-    - html: <a href="/azure/notebooks/tutorial-create-run-jupyter-notebook">Hier finden Sie sämtliche Schritte zum Erstellen eines Notebooks.</a>
-- title: Beispiele
-  items:
-  - type: paragraph
-    text: 'Verwenden Sie die folgenden Beispiele zum Arbeiten mit Notebooks:'
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/notebooks/tutorial-create-run-jupyter-notebook">Hier finden Sie sämtliche Schritte zum Erstellen eines Notebooks.</a>
+  - title: Beispiele
     items:
-    - html: <a href="/azure/notebooks/azure-notebooks-samples">Jupyter-Beispiel-Notebooks</a>
+      - type: paragraph
+        text: 'Verwenden Sie die folgenden Beispiele zum Arbeiten mit Notebooks:'
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/notebooks/azure-notebooks-samples">Jupyter-Beispiel-Notebooks</a>

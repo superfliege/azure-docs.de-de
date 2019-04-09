@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 7132c2073223008cd82d0ffd54aaf266d0a630ba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6cdccd54546296c85864f1588b71109ed8b8f79f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57839016"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620512"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio"></a>Tutorial 3: Bereitstellen eines Kreditrisikomodells – Azure Machine Learning Studio
 
@@ -172,7 +172,7 @@ Nach dem Zugriff auf den Webdienst durchlaufen die Daten des Benutzers das Modul
 Die Ergebnisse werden danach vom Webdienst über das Modul **Web service output** an den Benutzer zurückgegeben.
 
 > [!TIP]
-> Aufgrund der Konfiguration des Vorhersageexperiments gibt das Modul [Score Model][score-model] sämtliche Ergebnisse zurück. Dies schließt alle Eingabedaten sowie den Kreditrisikowert und die Bewertungswahrscheinlichkeit ein. Doch Sie können nach Wunsch etwas anderes zurückgeben, z.B. nur den Kreditrisikowert. Fügen Sie hierzu ein [Project Columns][project-columns]-Modul zwischen [Score Model][score-model] und **Web service output** ein, um Spalten auszuschließen, die der Webdienst nicht zurückgeben soll. 
+> Aufgrund der Konfiguration des Vorhersageexperiments gibt das Modul [Score Model][score-model] sämtliche Ergebnisse zurück. Dies schließt alle Eingabedaten sowie den Kreditrisikowert und die Bewertungswahrscheinlichkeit ein. Doch Sie können nach Wunsch etwas anderes zurückgeben, z.B. nur den Kreditrisikowert. Fügen Sie hierzu ein [Select Columns][select-columns]-Modul zwischen [Score Model][score-model] und **Web service output** ein, um Spalten auszuschließen, die der Webdienst nicht zurückgeben soll. 
 > 
 > 
 
@@ -267,4 +267,4 @@ Sie können auch eine benutzerdefinierte Anwendung entwickeln, die mithilfe von 
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
 [two-class-boosted-decision-tree]: https://msdn.microsoft.com/library/azure/e3c522f8-53d9-4829-8ea4-5c6a6b75330c/
 [two-class-support-vector-machine]: https://msdn.microsoft.com/library/azure/12d8479b-74b4-4e67-b8de-d32867380e20/
-[project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
+[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/

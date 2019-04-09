@@ -8,12 +8,12 @@ ms.date: 02/12/2019
 ms.topic: tutorial
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: ddda2a8bf1fab4e4c48c647237617d8f705f0561
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 79b99532f5fb38123b03d2a39b7c9c6364e9f636
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112086"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802268"
 ---
 # <a name="create-a-custom-policy-definition"></a>Erstellen einer benutzerdefinierten Richtliniendefinition
 
@@ -72,7 +72,7 @@ Es gibt mehrere Möglichkeiten, sich eine [Resource Manager-Vorlage](../../../az
 Am einfachsten finden Sie Eigenschaften, indem Sie sich eine vorhandene Ressource desselben Typs ansehen. Ressourcen, die bereits mit der zu erzwingenden Einstellung konfiguriert sind, enthalten auch den Wert für den Vergleich.
 Sehen Sie sich im Azure-Portal die Seite **Automatisierungsskript** (unter **Einstellungen**) für die jeweilige Ressource an.
 
-![Seite „Automatisierungsskript“](../media/create-custom-policy-definition/automation-script.png)
+![Seite zum Exportieren der Vorlage für eine vorhandene Ressource](../media/create-custom-policy-definition/automation-script.png)
 
 Wenn Sie so für ein Speicherkonto vorgehen, wird eine Vorlage bereitgestellt, die der Vorlage in diesem Beispiel ähnelt:
 

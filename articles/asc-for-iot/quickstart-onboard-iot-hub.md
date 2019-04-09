@@ -1,37 +1,37 @@
 ---
-title: Aktivieren des ASC für IoT-Diensts in IoT Hub (Vorschauversion) | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie den ASC für IoT-Dienst in Ihrer IoT Hub-Instanz aktivieren.
-services: ascforiot
+title: Aktivieren des Diensts „Azure Security Center für IoT“ in IoT Hub (Vorschauversion) | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie den Dienst „Azure Security Center für IoT“ in Ihrer IoT Hub-Instanz aktivieren.
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 670e6d2b-e168-4b14-a9bf-51a33c2a9aad
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 4fd7fb68fd2eb8be0c1c109d76cff341faba9391
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 59021d09f2af9d430b118acdeb8aa977094e683e
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541733"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862385"
 ---
 # <a name="quickstart-enable-service-in-iot-hub"></a>Schnellstart: Aktivieren des Diensts in IoT Hub
 
 > [!IMPORTANT]
-> ASC für IoT befindet sich derzeit in der Public Preview-Phase.
+> Azure Security Center für IoT befindet sich derzeit in der Public Preview-Phase.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-In diesem Artikel erfahren Sie, wie Sie die Vorschauversion des ASC für IoT-Diensts in Ihrer IoT Hub-Instanz aktivieren.  
+In diesem Artikel erfahren Sie, wie Sie die Vorschauversion des Diensts „ASC für IoT“ (Azure Security Center) in Ihrer IoT Hub-Instanz aktivieren.  
 
 > [!NOTE]
-> ASC für IoT unterstützt derzeit nur IoT Hub-Instanzen ab dem Standard-Tarif.
->ASC für IoT ist eine Lösung für einen einzelnen Hub. Sollten Sie mehrere Hubs benötigen, sind mehrere Lösungen erforderlich. 
+> Azure Security Center für IoT unterstützt derzeit nur IoT Hub-Instanzen ab dem Standard-Tarif.
+> Azure Security Center für IoT ist eine Lösung für einen einzelnen Hub. Sollten Sie mehrere Hubs benötigen, sind mehrere Lösungen erforderlich. 
 
 ## <a name="prerequisites-for-enabling-the-service"></a>Voraussetzungen für die Dienstaktivierung
 
@@ -60,4 +60,4 @@ Glückwunsch! Sie haben ASC für IoT in Ihrer IoT Hub-Instanz aktiviert.
 Im nächsten Artikel erfahren Sie, wie Sie Ihre Lösung konfigurieren:
 
 > [!div class="nextstepaction"]
-> [Quickstart: Configure your IoT solution](quickstart-configure-your-solution.md) (Schnellstart: Konfigurieren Ihrer IoT-Lösung)
+> [Konfigurieren Ihrer Lösung](quickstart-configure-your-solution.md)

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: pafarley
-ms.openlocfilehash: 7a6424921b869428d1dbeffadd68e173a32d8821
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 440471acb6e122bf25ba21b0ab3b5a2f7d9b021d
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455245"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758126"
 ---
 # <a name="what-is-azure-content-moderator"></a>Was ist Azure Content Moderator?
 
@@ -41,24 +41,23 @@ Der Content Moderator-Dienst umfasst mehrere Webdienst-APIs, die sowohl über RE
 
 Der Content Moderator-Dienst verfügt über APIs für folgende Szenarien:
 
-| Aktion | BESCHREIBUNG |
+| API-Gruppe | BESCHREIBUNG |
 | ------ | ----------- |
-|[**Textmoderation**](text-moderation-api.md)| Durchsucht Text nach anstößigen Inhalten, explizit sexuellen oder anzüglichen Inhalten, Obszönitäten und personenbezogenen Informationen (Personally Identifiable Information, PII).|
+|[**Textmoderation**](text-moderation-api.md)| Durchsucht Text nach anstößigen Inhalten, explizit sexuellen oder anzüglichen Inhalten, Obszönitäten und personenbezogenen Daten.|
 |[**Benutzerdefinierte Begriffslisten**](try-terms-list-api.md)| Überprüft Text auf Begriffe aus einer benutzerdefinierten Begriffsliste (zusätzlich zu den integrierten Begriffen). Mithilfe von benutzerdefinierten Listen können Sie Inhalte im Einklang mit Ihren eigenen Inhaltsrichtlinien blockieren oder zulassen.|  
 |[**Bildmoderation**](image-moderation-api.md)| Überprüft Bilder auf nicht jugendfreie oder freizügige Inhalte, erkennt Text in Bildern mithilfe der optischen Zeichenerkennung (Optical Character Recognition, OCR) und erkennt Gesichter.|
 |[**Benutzerdefinierte Bildlisten**](try-image-list-api.md)| Überprüft Bilder anhand einer benutzerdefinierten Liste von Bildern. Mithilfe benutzerdefinierter Bildlisten können Sie Instanzen häufig wiederkehrender Inhalte herausfiltern, die Sie nicht erneut klassifizieren möchten.|
 |[**Videomoderation**](video-moderation-api.md)| Überprüft Videos auf nicht jugendfreie oder freizügige Inhalte und gibt Zeitmarkierungen für entsprechende Inhalte zurück.|
-|[**Überprüfung**](try-review-api-job.md)| Verwenden Sie die Vorgänge [Jobs](try-review-api-job.md), [Reviews](try-review-api-review.md) und [Workflow](try-review-api-workflow.md), um mit dem Tool für die Überprüfung durch Personen Workflows für die Überprüfung durch Personen zu erstellen und zu automatisieren. Die Workflow-API ist noch nicht über das .NET SDK verfügbar.|
+|[**Überprüfungs-APIs**](try-review-api-job.md)| Verwenden Sie die Vorgänge [Jobs](try-review-api-job.md), [Reviews](try-review-api-review.md) und [Workflow](try-review-api-workflow.md), um mit dem Tool für die Überprüfung durch Personen Workflows für die Überprüfung durch Personen zu erstellen und zu automatisieren. Die Workflow-API steht im .NET SDK noch nicht zur Verfügung.|
 
-### <a name="human-review-tool"></a>Tool für die Überprüfung durch Personen
+### <a name="review-tool"></a>Überprüfungstool
 
-Der Content Moderator-Dienst enthält auch das webbasierte [Tool für die Überprüfung durch Personen](Review-Tool-User-Guide/human-in-the-loop.md). 
+Der Content Moderator-Dienst enthält auch das webbasierte [Überprüfungstool](Review-Tool-User-Guide/human-in-the-loop.md), das die Inhaltsüberprüfungen für menschliche Moderatoren hostet. Der Dienst wird durch die menschlichen Eingaben nicht trainiert. Die Zusammenarbeit zwischen Dienst und menschlichen Überprüfungsteams ermöglicht es Entwicklern jedoch, ein ausgewogenes Verhältnis zwischen Effizienz und Genauigkeit zu erzielen. Das Überprüfungstool bietet auch ein benutzerfreundliches Front-End für eine Vielzahl von Content Moderator-Ressourcen.
 
 ![Startseite des Content Moderator-Tools für die Überprüfung durch Personen](images/homepage.PNG)
 
-Mithilfe der Review-APIs können Sie Teamüberprüfungen für Text-, Bild- und Videoinhalte auf der Grundlage von selbst angegebenen Filtern einrichten. Die endgültigen Moderationsentscheidungen können dann von menschlichen Moderatoren getroffen werden. Der Dienst wird durch die menschlichen Eingaben nicht trainiert. Die Zusammenarbeit zwischen Dienst und menschlichen Überprüfungsteams ermöglicht es Entwicklern jedoch, ein ausgewogenes Verhältnis zwischen Effizienz und Genauigkeit zu erzielen.
-
 ## <a name="data-privacy-and-security"></a>Datenschutz und Sicherheit
+
 Wie bei allen Cognitive Services-Diensten müssen Entwickler, die den Content Moderator-Dienst nutzen, die Microsoft-Richtlinien zu Kundendaten beachten. Weitere Informationen finden Sie im Microsoft Trust Center auf der [Seite zu Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices).
 
 ## <a name="next-steps"></a>Nächste Schritte

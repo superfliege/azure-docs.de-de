@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/18/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 931bc26e22db4bbf02a18d4824b9c846f1e66b18
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 3fa261c6cb76cb95cffc602e5018e480afbb5dae
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58190660"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58890954"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Was ist der Unterschied zwischen einem Gateway für virtuelle Azure-Netzwerke (VPN Gateway) und einem Azure Virtual WAN-Gateway (vpngateway)?
 
@@ -81,7 +81,7 @@ Ja. Informieren Sie sich auf der [Preisseite](https://azure.microsoft.com/pricin
 
 ### <a name="how-do-i-calculate-price-of-a-hub"></a>Wie wird der Preis eines Hubs berechnet?
  
-Sie zahlen für den Dienst im Hub. 10 Branches oder lokale Geräte, die eine Verbindung mit Azure Virtual WAN erforderlich machen, setzen beispielsweise voraus, dass eine Verbindung mit VPN-Endpunkten im Hub hergestellt wird. Bei einem VPN, bei dem 1 Skalierungseinheit 500 MBit/s entspricht, wird dies mit 0,361 USD/Stunde berechnet. Jede Verbindung wird mit 0,08 USD/Stunde berechnet. Für 10 Verbindungen belaufen sich die Gesamtkosten des Diensts auf 0,361 USD + 0,8 USD/Stunde. Zudem fallen Datengebühren für ausgehenden Datenverkehr von Azure an. 
+Sie zahlen für den Dienst im Hub. Zehn Branches oder lokale Geräte, die eine Verbindung mit Azure Virtual WAN erforderlich machen, setzen beispielsweise voraus, dass eine Verbindung mit VPN-Endpunkten im Hub hergestellt wird. Bei einem VPN, bei dem 1 Skalierungseinheit 500 MBit/s entspricht, wird dies mit 0,361 USD/Stunde berechnet. Jede Verbindung wird mit 0,08 USD/Stunde berechnet. Für 10 Verbindungen belaufen sich die Gesamtkosten des Diensts auf 0,361 USD + 0,8 USD/Stunde. Zudem fallen Datengebühren für ausgehenden Datenverkehr von Azure an. 
 
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>Wie erfolgt das Onboarding für neue Partner, die nicht in der Liste mit den Einführungspartnern aufgeführt sind?
 

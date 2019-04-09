@@ -5,17 +5,17 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/11/2018
+ms.date: 04/01/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 37fad0769753f462859809ff8600f5b15c7eaa1f
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: a43ad92181415593b309b9fafb20f9934a997924
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437508"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805345"
 ---
 # <a name="start-monitoring-your-aspnet-web-application"></a>Starten der Überwachung Ihrer ASP.NET-Webanwendung
 
@@ -61,21 +61,21 @@ Application Insights sammelt Telemetriedaten für Anwendung, unabhängig davon, 
 
 Sie können jetzt Application Insights im Azure-Portal öffnen, um verschiedene Details zu Ihrer ausgeführten Anwendung anzuzeigen.
 
-1. Klicken Sie mit der rechten Maustaste auf den Ordner **Verbundene Dienste – Application Insights** im Projektmappen-Explorer, und klicken Sie auf **Application Insights-Portal öffnen**.  Sie sehen einige Informationen zu Ihrer Anwendung sowie verschiedene Optionen.
+1. Erweitern Sie im Projektmappen-Explorer den Ordner **Verbundene Dienste** (Wolkensymbol mit Stecker), klicken Sie mit der rechten Maustaste auf den Ordner **Application Insights**, und klicken Sie anschließend auf **Application Insights-Portal öffnen**.  Sie sehen einige Informationen zu Ihrer Anwendung sowie verschiedene Optionen.
 
-    ![Anwendungszuordnung](media/quick-monitor-portal/overview-001.png)
+    ![Anwendungszuordnung](media/quick-monitor-portal/4overview.png)
 
 2. Klicken Sie auf **Anwendungsübersicht**, um ein visuelles Layout der Abhängigkeitsbeziehungen zwischen den Komponenten Ihrer Anwendung zu erhalten.  Jede Komponente zeigt KPIs wie z.B. Last, Leistung, Fehler und Warnungen an.
 
-    ![Anwendungszuordnung](media/quick-monitor-portal/application-map-001.png)
+    ![Anwendungszuordnung](media/quick-monitor-portal/5appmap.png)
 
-3. Klicken Sie auf das **App-Analyse**-Symbol ![Anwendungszuordnung](media/quick-monitor-portal/app-analytics-icon.png) bei einer der Anwendungskomponenten.  Dadurch wird die **Application Insights-Analyse** geöffnet, die eine erweiterte Abfragesprache zum Analysieren aller Daten bereitstellt, die von Application Insights gesammelt werden.  In diesem Fall wird eine Abfrage für Sie generiert, die die Anzahl von Anforderungen als Diagramm darstellt.  Sie können selbst Abfragen zum Analysieren anderer Daten schreiben.
+3. Klicken Sie für eine der Anwendungskomponenten auf das Symbol für die **App-Analyse**: ![Anwendungszuordnung](media/quick-monitor-portal/app-analytics-icon.png) **In Analytics anzeigen**. Dadurch wird die **Application Insights-Analyse** geöffnet, die eine erweiterte Abfragesprache zum Analysieren aller Daten bereitstellt, die von Application Insights gesammelt werden.  In diesem Fall wird eine Abfrage für Sie generiert, die die Anzahl von Anforderungen als Diagramm darstellt. Sie können selbst Abfragen zum Analysieren anderer Daten schreiben.
 
-    ![Analytics](media/quick-monitor-portal/analytics.png)
+    ![Analytics](media/quick-monitor-portal/6viewanalytics.png)
 
-4. Kehren Sie zur Seite **Übersicht** zurück, und klicken Sie auf **Live Stream**.  Damit werden Livestatistiken über Ihre Anwendung während der Ausführung angezeigt.  Hierzu gehören Informationen wie die Anzahl von eingehenden Anforderungen, die Dauer dieser Anforderungen sowie jegliche auftretenden Fehler.  Sie können auch kritische Leistungsmetriken wie Prozessor und Arbeitsspeicher untersuchen.
+4. Klicken Sie auf der linken Seite unter „Untersuchen“ auf **Live Metrics Stream**. Damit werden Livestatistiken über Ihre Anwendung während der Ausführung angezeigt. Hierzu gehören Informationen wie die Anzahl von eingehenden Anforderungen, die Dauer dieser Anforderungen sowie jegliche auftretenden Fehler. Sie können auch kritische Leistungsmetriken wie Prozessor und Arbeitsspeicher untersuchen.
 
-    ![Live Stream](media/quick-monitor-portal/live-stream.png)
+    ![Live Stream](media/quick-monitor-portal/7livemetrics.png)
 
     Wenn Sie bereit sind, Ihre Anwendung in Azure zu hosten, können Sie sie jetzt veröffentlichen. Führen Sie die in der Schnellstartanleitung [Erstellen einer ASP.NET-Web-App](../../app-service/app-service-web-get-started-dotnet.md#update-the-app-and-redeploy) beschriebenen Schritte aus.
 
@@ -105,6 +105,11 @@ Weitere Informationen finden Sie im GitHub-Repository für unser [JavaScript SDK
 ## <a name="video"></a>Video
 
 * Ein externes Video mit ausführlichen Informationen zum [Konfigurieren von Application Insights mit einer .NET-Anwendung von Grund auf](https://www.youtube.com/watch?v=blnGAVgMAfA)
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+Wenn Sie die Tests abgeschlossen haben, können Sie die Ressourcengruppe und alle dazugehörigen Ressourcen löschen. Gehen Sie dazu wie folgt vor:
+1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressourcengruppen** und dann auf **myResourceGroup**.
+2. Klicken Sie auf der Seite mit Ihrer Ressourcengruppe auf **Löschen**, geben Sie im Textfeld **myResourceGroup** ein, und klicken Sie dann auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In dieser Schnellstartanleitung haben Sie Ihre Anwendung für die Überwachung durch Azure Application Insights aktiviert.  Fahren Sie mit den Tutorials fort, um zu lernen, wie Sie Statistiken überwachen und Fehler in Ihrer Anwendung erkennen.

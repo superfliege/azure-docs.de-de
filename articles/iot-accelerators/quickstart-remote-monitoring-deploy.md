@@ -7,20 +7,22 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/08/2019
+ms.date: 03/25/2019
 ms.author: dobett
-ms.openlocfilehash: befef76e19640683ba3219374702a049bdecb43b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 32e2d3f9e8bbd63944188355774558ca5ea7bd9d
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58184171"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58792500"
 ---
 # <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Schnellstart: Testen einer cloudbasierten Lösung für die Remoteüberwachung
 
 In dieser Schnellstartanleitung wird veranschaulicht, wie Sie den Azure IoT-Solution Accelerator für die Remoteüberwachung bereitstellen. Bei dieser cloudbasierten Lösung verwenden Sie die Seite mit dem **Dashboard**, um simulierte Geräte auf einer Karte zu visualisieren. Auf der Seite **Wartung** reagieren Sie auf eine Druckwarnung eines simulierten Kühlgeräts. Dieser Solution Accelerator kann als Ausgangspunkt für Ihre eigene Implementierung sowie als Lernhilfe verwendet werden.
 
 In der ursprünglichen Bereitstellung wird der Solution Accelerator für ein Unternehmen namens Contoso konfiguriert. Als Bediener bei Contoso verwalten Sie eine Auswahl von unterschiedlichen Gerätetypen, z.B. Kältemaschinen, die in verschiedenen physischen Umgebungen bereitgestellt wurden. Eine Kältemaschine sendet Telemetriedaten zu Temperatur, Luftfeuchtigkeit und Druck an den Solution Accelerator für die Remoteüberwachung.
+
+In dieser Schnellstartanleitung wird zu Test- und Demonstrationszwecken eine **Basisversion** des Solution Accelerators bereitgestellt, um die Kosten zu minimieren. Weitere Informationen zu den verschiedenen Versionen, die Sie bereitstellen können, finden Sie unter [Bereitstellungen vom Typ „Basic“ und „Standard“](iot-accelerators-remote-monitoring-deploy-cli.md#basic-and-standard-deployments).
 
 Für diese Schnellstartanleitung benötigen Sie ein aktives Azure-Abonnement.
 
@@ -36,9 +38,7 @@ Klicken Sie auf die Kachel **Remoteüberwachung**. Klicken Sie auf der Seite **R
 
 ![Klicken auf „Remoteüberwachung“](./media/quickstart-remote-monitoring-deploy/remotemonitoring.png)
 
-Wählen Sie auf der Seite **Create Remote Monitoring solution** (Remoteüberwachungslösung erstellen) eine Bereitstellung vom Typ **Basic** aus. Wenn Sie den Solution Accelerator bereitstellen, um sich damit vertraut zu machen oder ihn zu Demonstrationszwecken auszuführen, wählen Sie zur Kostenminimierung die Option **Basic**.
-
-Wählen Sie als Sprache die Option **.NET**. Die Java- und .NET-Implementierungen verfügen über die gleichen Features.
+Wählen Sie unter **Bereitstellungsoptionen** die Option **C#-Microservices** aus. Die Java- und C#-Implementierungen verfügen über die gleichen Features.
 
 Geben Sie einen eindeutigen **Lösungsnamen** für den Solution Accelerator für die Remoteüberwachung ein. In dieser Schnellstartanleitung wird der Name **contoso-rm** verwendet.
 
@@ -111,7 +111,7 @@ Scrollen Sie nach unten zu **Verwandte Informationen**, wählen Sie die Kältema
 
 Klicken Sie im Bereich **Aufträge** auf **Run method** (Methode ausführen) und anschließend auf die Methode **EmergencyValveRelease**. Fügen Sie den Auftragsnamen **ChillerPressureRelease** hinzu, und klicken Sie auf **Übernehmen**. Mit diesen Einstellungen wird ein Auftrag für Sie erstellt, der sofort ausgeführt wird.
 
-Kehren Sie zum Anzeigen des Auftragsstatus auf die Seite **Wartung** zurück, und zeigen Sie die Liste mit den Aufträgen in der Ansicht **Aufträge** an. Unter Umständen müssen Sie einige Sekunden warten, bevor Sie sehen, dass der Auftrag ausgeführt und der Ventildruck für die Kältemaschine verringert wurde:
+Kehren Sie zum Anzeigen des Auftragsstatus auf die Seite **Wartung** zurück, und zeigen Sie die Liste mit den Aufträgen in der Ansicht **Aufträge** an. Unter Umständen dauert es einige Sekunden, bis Sie sehen, dass der Auftrag ausgeführt wurde:
 
 [![Status der Aufträge in der Ansicht „Aufträge“](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-inline.png)](./media/quickstart-remote-monitoring-deploy/maintenancerunningjob-expanded.png#lightbox)
 

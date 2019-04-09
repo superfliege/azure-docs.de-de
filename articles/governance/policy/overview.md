@@ -8,14 +8,14 @@ ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 7b5d9d483d05ac8225ea4b7497922192be44f1bc
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 7440c9bbfce801ffcfc5c4e0f800f6f4f9d34f8c
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731691"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805124"
 ---
-# <a name="what-is-azure-policy"></a>Was ist Azure Policy?
+# <a name="overview-of-the-azure-policy-service"></a>Übersicht über den Azure Policy-Dienst
 
 Anhand von Governance wird überprüft, ob Ihre Organisation ihre Ziele basierend auf einer effektiven und effizienten IT-Nutzung erreichen kann. Hierzu werden die Geschäftsziele und die IT-Projekte eindeutig aufeinander abgestimmt.
 

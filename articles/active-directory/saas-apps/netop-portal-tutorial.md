@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: d33ef63f142763d5d29c9cb1931fdd87bae5976e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 17c5e568bbdbdd9aa07db0ee10438cb7d05bd56c
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57891017"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849242"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netop-portal"></a>Tutorial: Azure Active Directory-Integration mit Netop Portal
 
@@ -128,7 +128,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Netop Po
 
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
-    c. Lassen Sie den **Namespace** leer.
+    c. Geben Sie im Textfeld **Namespace** die Zeichenfolge „https:\//secure.netop.com“ ein.
 
     d. Wählen Sie „Source“ als **Attribut** aus.
 
@@ -154,7 +154,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Netop Po
 
 ### <a name="configure-netop-portal-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Netop Portal
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Netop Portal** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Netop Portal](mailto:casemanager@netop.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Netop Portal** benötigen Sie die heruntergeladene **Verbundmetadaten-XML** und die Anmelde-URL aus dem Azure-Portal. Gehen Sie wie in Schritt 3 der [Dokumentation](https://kb.netop.com/assets/netop_portal_adfs_and_azure_ad_integration.pdf) beschrieben vor, um NetOp Portal für die Azure AD-Authentifizierung zu konfigurieren.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -174,7 +174,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
+    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.endung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.

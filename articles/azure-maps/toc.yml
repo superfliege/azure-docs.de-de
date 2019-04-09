@@ -7,30 +7,32 @@ items:
     href: about-azure-maps.md
 - name: Schnellstarts
   items:
-  - name: Erstellen einer Karten-App
+  - name: Erstellen einer Web-App
     href: quick-demo-map-app.md
 - name: Lernprogramme
   items:
-  - name: '1: Suchen nach interessanten Punkten'
-    href: tutorial-search-location.md
-  - name: '2: Route zu einem Ziel auswählen'
-    href: tutorial-route-location.md
-  - name: '3: Mehrere Routen nach Fortbewegungsmittel'
-    href: tutorial-prioritized-routes.md
-  - name: '4: Erstellen einer Shopsuche'
-    href: tutorial-create-store-locator.md
-  - name: '5: Einrichten eines Geofence'
-    href: tutorial-geofence.md
+  - name: Tutorials für das Web-SDK
+    items:
+    - name: Suchen nach einem Point of Interest
+      href: tutorial-search-location.md
+    - name: Route zu einem Ziel
+      href: tutorial-route-location.md
+    - name: Mehrere Routen nach Fortbewegungsmittel
+      href: tutorial-prioritized-routes.md
+    - name: Erstellen einer Shopsuche
+      href: tutorial-create-store-locator.md
+  - name: REST-API-Tutorials
+    items:
+    - name: Einrichten eines Geofence
+      href: tutorial-geofence.md
 - name: Konzepte
   items:
-  - name: Zoomfaktoren und Linienraster
-    href: zoom-levels-and-tile-grid.md
+  - name: Authentifizierung mit Azure Maps
+    href: azure-maps-authentication.md
   - name: Azure Maps Event Grid-Integration
     href: azure-maps-event-grid-integration.md
   - name: Auswählen des richtigen Tarifs
     href: choose-pricing-tier.md
-  - name: Authentifizierung mit Azure Maps
-    href: azure-maps-authentication.md
   - name: Abdeckung
     items:
     - name: Abdeckung durch Geocodierung
@@ -47,6 +49,8 @@ items:
     href: supported-map-styles.md
   - name: 'Web SDK: unterstützte Browser'
     href: supported-browsers.md
+  - name: Zoomfaktoren und Linienraster
+    href: zoom-levels-and-tile-grid.md
 - name: Anleitungen
   items:
   - name: Verwalten von Azure Maps-Konten
@@ -63,6 +67,8 @@ items:
     items:
     - name: Suchen nach einer Adresse
       href: how-to-search-for-address.md
+    - name: Bewährte Suchmethoden
+      href: how-to-use-best-practices-for-search.md
     - name: Rendern von benutzerdefinierten Daten auf einer statischen Karte
       href: how-to-render-custom-data.md
   - name: Entwickeln mit dem Web SDK
@@ -89,6 +95,8 @@ items:
         href: map-add-heat-map-layer.md
       - name: Clusterpunktdaten
         href: clustering-point-data-web-sdk.md
+      - name: Verwenden von datengesteuerten Formatvorlagenausdrücken
+        href: data-driven-style-expressions-web-sdk.md
       - name: Überlagern eines Bilds
         href: map-add-image-layer.md
       - name: Hinzufügen von Kachelebenen
@@ -159,7 +167,7 @@ items:
   items:
   - name: Nutzungsbedingungen für Azure Maps
     href: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31
-  - name: Preise
+  - name: Azure Maps-Preise
     href: https://azure.microsoft.com/pricing/details/azure-maps
   - name: Preisrechner
     href: https://azure.microsoft.com/pricing/calculator/
@@ -167,7 +175,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-maps
   - name: MSDN-Forum
     href: https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs
-  - name: Glossar
+  - name: Azure Maps-Videos
+    href: https://aka.ms/AzureMapsVideos
+  - name: Azure Maps-Glossar
     href: glossary.md
   - name: Dienstupdates
     href: https://azure.microsoft.com/updates
@@ -177,7 +187,7 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=iot
   - name: Technische Fallstudien
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
-  - name: Videos
+  - name: Azure Maps in IoT School
     href: https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo
 - name: Verwandte Themen
   items:
@@ -205,9 +215,9 @@ items:
       href: /azure/iot-edge
     - name: IoT-Geräte-SDKs
       href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
-ms.openlocfilehash: db82c8eac3288867b524f19b688b6358b8e6bbc6
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 94e02b599bffd24e9c9aa65560e4a74bd05ecea6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58575822"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263592"

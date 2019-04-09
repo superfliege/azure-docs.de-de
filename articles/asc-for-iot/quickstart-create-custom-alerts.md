@@ -1,30 +1,30 @@
 ---
-title: Erstellen benutzerdefinierter Benachrichtigungen für ASC für IoT (Vorschauversion) | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie benutzerdefinierte Benachrichtigungen für ASC für IoT erstellen und zuweisen.
-services: ascforiot
+title: Erstellen benutzerdefinierter Benachrichtigungen für Azure Security Center für IoT (Vorschauversion) | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie benutzerdefinierte Benachrichtigungen für Azure Security Center für IoT erstellen und zuweisen.
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: d1757868-da3d-4453-803a-7e3a309c8ce8
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: mlottner
-ms.openlocfilehash: 591000f251d384b961569f9d7ca09ae93edea617
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: d793b105e6d73c98739cd05d6e19a218413d7813
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541739"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58861994"
 ---
 # <a name="quickstart-create-custom-alerts"></a>Schnellstart: Erstellen benutzerdefinierter Benachrichtigungen
 
 > [!IMPORTANT]
-> ASC für IoT befindet sich derzeit in der Public Preview-Phase.
+> Azure Security Center für IoT befindet sich derzeit in der Public Preview-Phase.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Mithilfe benutzerdefinierter Sicherheitsgruppen und Benachrichtigungen können Sie End-to-End-Sicherheitsinformationen und kategorische Geräteinformationen optimal nutzen, um die Sicherheit Ihrer gesamten IoT-Lösung zu verbessern. 
@@ -33,7 +33,7 @@ Mithilfe benutzerdefinierter Sicherheitsgruppen und Benachrichtigungen können S
 
 Sie kennen Ihre IoT-Geräte am besten.
 
-Kunden, die umfassend mit dem erwarteten Verhalten ihrer Geräte vertraut sind, können mit ASC für IoT auf der Grundlage dieses Wissens eine Verhaltensrichtlinie für Geräte erstellen, sodass bei jeder Abweichung vom erwarteten Normalverhalten eine Benachrichtigung ausgelöst wird.
+Kunden, die umfassend mit dem erwarteten Verhalten ihrer Geräte vertraut sind, können mit Azure Security Center (ASC) für IoT auf der Grundlage dieses Wissens eine Verhaltensrichtlinie für Geräte erstellen, sodass bei jeder Abweichung vom erwarteten Normalverhalten eine Benachrichtigung ausgelöst wird.
 
 ## <a name="security-groups"></a>Sicherheitsgruppen
 
@@ -90,4 +90,4 @@ Die folgende Tabelle enthält eine Zusammenfassung der anpassbaren Benachrichtig
 Im nächsten Artikel erfahren Sie, wie Sie einen Sicherheits-Agent bereitstellen:
 
 > [!div class="nextstepaction"]
-> [Select and deploy a security agent on your IoT device](select-deploy-agent.md) (Auswählen und Bereitstellen eines Sicherheits-Agents auf Ihrem IoT-Gerät)
+> [Bereitstellen eines Sicherheits-Agents](how-to-deploy-agent.md)

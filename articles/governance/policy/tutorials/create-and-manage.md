@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 32962e6d40103c23a0ec7fd1116aec8820f513bd
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 879636b9db2d7c2c48c7a4a194b43985785d2623
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780285"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878258"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung
 
@@ -34,15 +34,15 @@ Für die Konformitätserzwingung mit Azure Policy muss zunächst eine Richtlinie
 
 1. Starten Sie den Azure Policy-Dienst über das Azure-Portal, indem Sie auf **Alle Dienste** klicken und dann nach **Richtlinie** suchen und die entsprechende Option auswählen.
 
-   ![Suchen nach „Policy“](../media/create-and-manage/search-policy.png)
+   ![Suchen nach „Policy“ unter „Alle Dienste“](../media/create-and-manage/search-policy.png)
 
 1. Wählen Sie links auf der Seite „Azure Policy“ die Option **Zuweisungen**. Eine Zuweisung ist eine zugewiesene Richtlinie, die innerhalb eines bestimmten Bereichs angewendet werden soll.
 
-   ![Auswählen von Zuweisungen](../media/create-and-manage/select-assignments.png)
+   ![Auswählen von „Zuweisungen“ auf der Übersichtsseite von Policy](../media/create-and-manage/select-assignments.png)
 
 1. Wählen Sie im oberen Bereich der Seite **Richtlinien – Zuweisungen** die Option **Richtlinie zuweisen**.
 
-   ![Zuweisen einer Richtliniendefinition](../media/create-and-manage/select-assign-policy.png)
+   ![Zuweisen einer Richtliniendefinition auf der Seite „Zuweisungen“](../media/create-and-manage/select-assign-policy.png)
 
 1. Wählen Sie auf der Seite **Richtlinie zuweisen** den **Bereich** aus, indem Sie auf die Auslassungspunkte klicken und entweder eine Verwaltungsgruppe oder ein Abonnement auswählen. Wählen Sie optional eine Ressourcengruppe aus. Ein Bereich bestimmt, für welche Ressourcen oder Ressourcengruppe die Richtlinienzuweisung erzwungen wird.  Klicken Sie dann unten im Abschnitt der Seite **Bereich** auf **Auswählen**.
 
@@ -54,7 +54,7 @@ Für die Konformitätserzwingung mit Azure Policy muss zunächst eine Richtlinie
 
 1. Wählen Sie **SQL Server-Version 12.0 erfordern** aus. Falls Sie die Option nicht direkt finden, geben Sie **SQL Server erfordern** in das Suchfeld ein, und drücken Sie dann die EINGABETASTE, oder klicken Sie außerhalb des Suchfelds. Klicken Sie unten auf der Seite **Verfügbare Definitionen** auf **Auswählen**, nachdem Sie die Richtliniendefinition gefunden und ausgewählt haben.
 
-   ![Suchen nach einer Richtlinie](../media/create-and-manage/select-available-definition.png)
+   ![Suchen nach einer Richtlinie mithilfe eines Suchfilters](../media/create-and-manage/select-available-definition.png)
 
 1. Der **Zuweisungsname** wird automatisch mit dem ausgewählten Richtliniennamen gefüllt, kann aber geändert werden. In diesem Beispiel verwenden Sie *SQL Server-Version 12.0 erfordern*. Geben Sie ggf. auch eine **Beschreibung** ein. Die Beschreibung enthält Details zu dieser Richtlinienzuweisung.  Das Feld **Zugewiesen von** wird abhängig vom angemeldeten Benutzer automatisch ausgefüllt. Dieses Feld ist optional. Daher können auch benutzerdefinierte Werte eingegeben werden.
 
@@ -68,7 +68,7 @@ Sie haben eine integrierte Richtliniendefinition zugewiesen und können nun weit
 
 1. Wählen Sie links auf der Seite „Azure Policy“ unter **Erstellung** die Option **Definitionen**.
 
-   ![„Definition“ unter „Authoring“ (Erstellung)](../media/create-and-manage/definition-under-authoring.png)
+   ![Definitionsseite unter der Gruppe „Erstellung“](../media/create-and-manage/definition-under-authoring.png)
 
 1. Wählen Sie oben auf der Seite **+ Richtliniendefinition** aus. Über diese Schaltfläche gelangen Sie zur Seite **Richtliniendefinition**.
 
@@ -120,7 +120,7 @@ Sie haben eine integrierte Richtliniendefinition zugewiesen und können nun weit
 
 Sie können eine Richtlinie mit der REST-API für Richtliniendefinitionen erstellen. Die REST-API ermöglicht es Ihnen, Richtliniendefinitionen zu erstellen und zu löschen sowie Informationen zu vorhandenen Definitionen abzurufen. Um eine Richtliniendefinition zu erstellen, verwenden Sie das folgende Beispiel:
 
-```http-interactive
+```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.authorization/policydefinitions/{policyDefinitionName}?api-version={api-version}
 ```
 
@@ -158,7 +158,7 @@ Nehmen Sie einen Anforderungstext auf, der dem im folgenden Beispiel dargestellt
 
 ## <a name="create-a-policy-definition-with-powershell"></a>Erstellen einer Richtliniendefinition mit PowerShell
 
-Vergewissern Sie sich, dass Sie die neueste Version von Azure PowerShell installiert haben, bevor Sie mit dem PowerShell-Beispiel fortfahren. In Version 3.6.0 wurden Richtlinienparameter hinzugefügt. Bei Verwendung einer älteren Version wird bei den Beispielen ein Fehler mit dem Hinweis zurückgegeben, dass der Parameter nicht gefunden wurde.
+Vergewissern Sie sich, dass Sie die neueste Version des Az-Moduls von Azure PowerShell installiert haben, bevor Sie mit dem PowerShell-Beispiel fortfahren. 
 
 Sie können eine Richtliniendefinition über das Cmdlet `New-AzPolicyDefinition` erstellen.
 
@@ -328,11 +328,11 @@ Mit einer Initiativdefinition können Sie mehrere Richtliniendefinitionen zu ein
 
 1. Wählen Sie links auf der Seite „Azure Policy“ unter **Erstellung** die Option **Definitionen**.
 
-   ![Klicken auf „Definitionen“](../media/create-and-manage/definition-under-authoring.png)
+   ![Auswählen einer Definition auf der Seite „Definitionen“](../media/create-and-manage/definition-under-authoring.png)
 
 1. Klicken Sie im oberen Bereich der Seite auf **+ Initiativdefinition**, um zur Seite **Initiativdefinition** zu gelangen.
 
-   ![Initiativdefinition](../media/create-and-manage/initiative-definition.png)
+   ![Überprüfen der Seite „Initiativendefinition“](../media/create-and-manage/initiative-definition.png)
 
 1. Wählen Sie über die Auslassungspunkte unter **Speicherort der Definition** eine Verwaltungsgruppe oder ein Abonnement zum Speichern der Definition aus. Wenn die vorherige Seite auf eine einzelne Verwaltungsgruppe oder ein einzelnes Abonnement begrenzt war, wird **Speicherort der Definition** automatisch aufgefüllt.
 
@@ -352,11 +352,11 @@ Mit einer Initiativdefinition können Sie mehrere Richtliniendefinitionen zu ein
 
    Nachdem Sie die Richtliniendefinition in der Liste ausgewählt haben, wird sie unter **Richtlinien und Parameter** hinzugefügt.
 
-   ![Initiativdefinitionen](../media/create-and-manage/initiative-definition-2.png)
+   ![Überprüfen der Parameter für die Initiativendefinition](../media/create-and-manage/initiative-definition-2.png)
 
 1. Wenn eine zur Initiative hinzugefügte Richtliniendefinition Parameter enthält, werden sie unterhalb des Richtliniennamens im Bereich **Richtlinien und Parameter** angezeigt. Der _Wert_ kann entweder auf „Wert festlegen“ (hartcodiert für alle Zuweisungen dieser Initiative) oder auf „Initiativenparameter verwenden“ (Festlegung während der einzelnen Initiativenzuweisungen) festgelegt werden. Wird „Wert festlegen“ ausgewählt, können die Werte in der Dropdownliste rechts neben _Werte_ eingegeben oder ausgewählt werden. Wird „Initiativenparameter verwenden“ ausgewählt, wird ein neuer Abschnitt **Initiativenparameter** angezeigt, in dem Sie den Parameter definieren können, der während der Initiativenzuweisung festgelegt wird. Mit den zulässigen Werten für diesen Initiativenparameter können Sie weiter einschränken, welche Werte während der Initiativenzuweisung festgelegt werden können.
 
-   ![Parameter der Initiativendefinition](../media/create-and-manage/initiative-definition-3.png)
+   ![Ändern der Parameter für die Initiativdefinition auf der Grundlage zulässiger Werte](../media/create-and-manage/initiative-definition-3.png)
 
    > [!NOTE]
    > Werden einige `strongType`-Parameter verwendet, kann die Liste der Werte nicht automatisch ermittelt werden. In diesem Fall wird rechts neben der Parameterzeile eine Ellipse angezeigt. Wenn Sie darauf klicken, wird die Seite „Parameterbereich (&lt;Parametername&gt;)“ geöffnet. Wählen Sie auf dieser Seite das Abonnement aus, mit dem die Wertoptionen bereitgestellt werden sollen. Dieser Parameterbereich wird nur während der Erstellung der Initiativendefinition verwendet und wirkt sich bei der Zuweisung nicht auf die Richtlinienauswertung oder den Bereich der Initiative aus.
@@ -369,11 +369,11 @@ Mit einer Initiativdefinition können Sie mehrere Richtliniendefinitionen zu ein
 
 1. Suchen Sie die Initiativendefinition **Get Secure**, die Sie zuvor erstellt haben, und klicken Sie darauf. Wählen Sie oben auf der Seite **Zuweisen** aus, um die Seite **Get Secure: Initiative zuweisen** zu öffnen.
 
-   ![Zuweisen einer Definition](../media/create-and-manage/assign-definition.png)
+   ![Zuweisen einer Definition auf der Seite „Initiativdefinition“](../media/create-and-manage/assign-definition.png)
 
    Sie können auch mit der rechten Maustaste auf die ausgewählte Zeile oder mit der linken Maustaste auf die Auslassungspunkte am Ende der Zeile für ein Kontextmenü klicken.  Wählen Sie dann **Zuweisen** aus.
 
-   ![Rechtsklick auf eine Zeile](../media/create-and-manage/select-right-click.png)
+   ![Alternative Optionen für eine initiative](../media/create-and-manage/select-right-click.png)
 
 1. Füllen Sie die Seite **Get Secure: Initiative zuweisen** aus, indem Sie die folgenden Beispielinformationen eingeben. Sie können Ihre eigenen Daten verwenden.
 
@@ -393,11 +393,11 @@ Mit einer Initiativdefinition können Sie mehrere Richtliniendefinitionen zu ein
 
 1. Suchen Sie nach der Initiative **Get Secure**. Wahrscheinlich lautet der _Konformitätszustand_ immer noch **Nicht gestartet**. Klicken Sie auf die Initiative, um ausführliche Informationen zum Status der Zuweisung zu erhalten.
 
-   ![Konformität: Nicht gestartet](../media/create-and-manage/compliance-status-not-started.png)
+   ![Seite „Initiativenkonformität“: Auswertung noch nicht gestartet](../media/create-and-manage/compliance-status-not-started.png)
 
 1. Wenn die Initiativenzuweisung abgeschlossen wurde, wird die Konformitätsseite aktualisiert und für _Konformitätszustand_ der Zustand **Konform** angezeigt.
 
-   ![Konformität: Konform](../media/create-and-manage/compliance-status-compliant.png)
+   ![Seite „Initiativenkonformität“: Ressourcen konform](../media/create-and-manage/compliance-status-compliant.png)
 
 1. Wenn Sie auf der Seite mit der Initiativenkonformität auf eine Richtlinie klicken, wird die Seite mit den Konformitätsdetails für die Richtlinie angezeigt. Diese Seite enthält Konformitätsdetails auf Ressourcenebene.
 
@@ -426,7 +426,7 @@ In diesem Beispiel hat Trent Baker, einer der leitenden Virtualisierungsspeziali
 
 1. Legen Sie den **Ausschluss** fest, indem Sie auf die Auslassungspunkte klicken und die auszuschließende Ressourcengruppe auswählen (in diesem Beispiel *SQLServers_Excluded*).
 
-   ![Anfordern eines Ausschlusses](../media/create-and-manage/request-exclusion.png)
+   ![Hinzufügen einer ausgeschlossenen Ressourcengruppe zur Richtlinienzuweisung](../media/create-and-manage/request-exclusion.png)
 
    > [!NOTE]
    > Je nach Richtlinie und Auswirkung kann der Ausschluss auch für bestimmte Ressourcen innerhalb einer Ressourcengruppe im Bereich der Zuweisung gewährt werden. Da in diesem Tutorial die Auswirkung **Ablehnen** verwendet wurde, wäre es nicht sinnvoll, den Ausschluss auf eine bestimmte Ressource festzulegen, die bereits vorhanden ist.
