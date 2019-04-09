@@ -1,13 +1,18 @@
 ---
 title: 'Beispiel: Blaupause „ISO 27001: ASE-/SQL-Workload“ – Übersicht'
-description: "Übersicht und Architektur des Beispiels für die Blaupause „ISO\_27001: App Service-Umgebungs-/SQL-Datenbank-Workload“."
-services: blueprints
+description: 'Übersicht und Architektur des Beispiels für die Blaupause „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“.'
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
-ms.topic: conceptual
+ms.topic: sample
 ms.service: blueprints
 manager: carmonm
+ms.openlocfilehash: b17b07124cf4491a6c58e9be2b10f958e29217ee
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264929"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Übersicht über das Blaupausenbeispiel „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“
 
