@@ -27,7 +27,7 @@ Dieser Artikel beschreibt, wie Sie benutzerdefinierte Funktionen diagnostizieren
 
 Wenn Sie wissen, wie Probleme in Ihrer Azure Digital Twins-Instanz diagnostiziert werden, können Sie auf effiziente Weise das Problem und seine Ursache ermitteln und eine Lösung finden.
 
-### <a name="enable-log-analytics-for-your-instance"></a>Aktivieren von Log Analytics für Ihre Instanz
+### <a name="enable-log-analytics-for-your-instance"></a>Aktivieren der Protokollanalyse für Ihre Instanz
 
 Protokolle und Metriken für Ihre Azure Digital Twins-Instanz werden in Azure Monitor angezeigt. Bei dieser Dokumentation wird davon ausgegangen, dass Sie einen [Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md)-Arbeitsbereich über das [Azure-Portal](../azure-monitor/learn/quick-create-workspace.md), die [Azure-Befehlszeilenschnittstelle](../azure-monitor/learn/quick-create-workspace-cli.md) oder [PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md) erstellt haben.
 

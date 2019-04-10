@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: af14b242ae7578e1f9797895bd18c37231959ac9
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 99c9caa167b1615705adc29193bc395b0c9e2a66
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342710"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803985"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources"></a>Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen
 
@@ -31,15 +31,15 @@ In dieser Schnellstartanleitung erstellen Sie eine Richtlinienzuweisung und weis
 
 1. Starten Sie den Azure Policy-Dienst über das Azure-Portal, indem Sie auf **Alle Dienste** klicken und dann nach **Richtlinie** suchen und die entsprechende Option auswählen.
 
-   ![Suchen nach „Policy“](./media/assign-policy-portal/search-policy.png)
+   ![Suchen nach „Policy“ unter „Alle Dienste“](./media/assign-policy-portal/search-policy.png)
 
 1. Wählen Sie links auf der Seite „Azure Policy“ die Option **Zuweisungen**. Eine Zuweisung ist eine zugewiesene Richtlinie, die innerhalb eines bestimmten Bereichs angewendet werden soll.
 
-   ![Auswählen von Zuweisungen](./media/assign-policy-portal/select-assignments.png)
+   ![Auswählen von „Zuweisungen“ auf der Übersichtsseite von Policy](./media/assign-policy-portal/select-assignments.png)
 
 1. Wählen Sie im oberen Bereich der Seite **Richtlinien – Zuweisungen** die Option **Richtlinie zuweisen**.
 
-   ![Zuweisen einer Richtliniendefinition](./media/assign-policy-portal/select-assign-policy.png)
+   ![Zuweisen einer Richtliniendefinition auf der Seite „Zuweisungen“](./media/assign-policy-portal/select-assign-policy.png)
 
 1. Wählen Sie auf der Seite **Richtlinie zuweisen** den **Bereich** aus, indem Sie auf die Auslassungspunkte klicken und entweder eine Verwaltungsgruppe oder ein Abonnement auswählen. Wählen Sie optional eine Ressourcengruppe aus. Ein Bereich bestimmt, für welche Ressourcen oder Ressourcengruppe die Richtlinienzuweisung erzwungen wird.  Klicken Sie dann unten im Abschnitt der Seite **Bereich** auf **Auswählen**.
 
@@ -71,7 +71,7 @@ Sie können nun nicht konforme Ressourcen identifizieren, um den Konformitätszu
 
 Wählen Sie links auf der Seite die Option **Konformität** aus. Suchen Sie dann die von Ihnen erstellte Richtlinienzuweisung **Überwachen Sie die virtuellen Computer, die nicht verwaltete Datenträger verwenden**.
 
-![Richtlinienkonformität](./media/assign-policy-portal/policy-compliance.png)
+![Konformitätsdetails auf der Seite zur Richtlinienkonformität](./media/assign-policy-portal/policy-compliance.png)
 
 Falls Ressourcen vorhanden sind, die mit dieser neuen Zuweisung nicht konform sind, werden diese unter **Nicht konforme Ressourcen** angezeigt.
 
@@ -94,7 +94,7 @@ Um die erstellte Zuweisung zu entfernen, gehen Sie folgendermaßen vor:
 
 1. Klicken Sie mit der rechten Maustaste auf die Richtlinienzuweisung **Überwachen Sie die virtuellen Computer, die nicht verwaltete Datenträger verwenden**, und wählen Sie **Zuweisung löschen**.
 
-   ![Löschen einer Zuweisung](./media/assign-policy-portal/delete-assignment.png)
+   ![Löschen einer Zuweisung auf der Seite zur Konformität](./media/assign-policy-portal/delete-assignment.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

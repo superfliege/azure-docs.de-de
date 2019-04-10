@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 5d9e33e5cf4c8a7d5b8085e1e2ff8f4bde3274b7
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8e7eee40bed29117d2873393395a852e4b738533
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770900"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793480"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Tutorial: Hinzufügen eines echten Geräts zu Ihrer Azure IoT Central-Anwendung
 
@@ -50,13 +50,13 @@ Um Ihrer Anwendung ein echtes Gerät hinzuzufügen, verwenden Sie die Gerätevor
 
    ![Seite „Device Explorer“ mit verbundener Klimaanlage](media/tutorial-add-device/explorer.png)
 
-   Der **Device Explorer** zeigt die Gerätevorlage **Connected Air Conditioner** und das simulierte Gerät an, das automatisch erstellt wurde, als der Ersteller die Gerätevorlage erstellt hat.
+   Unter **Device Explorer** werden die Gerätevorlage für die **verbundene Klimaanlage** und ein simuliertes Gerät angezeigt. IoT Central erstellt automatisch ein simuliertes Gerät, wenn Sie eine Gerätevorlage erstellen.
 
 2. Wählen Sie **+** und anschließend **Real** (Echt) aus, um damit zu beginnen, eine Verbindung mit einer echten verbundenen Klimaanlage herzustellen:
 
    ![Beginnen mit dem Herstellen einer Verbindung mit einer echten verbundenen Klimaanlage](media/tutorial-add-device/newreal.png)
 
-3. Geben Sie die Geräte-ID (in Kleinbuchstaben ) ein, oder verwenden Sie die vorgeschlagene Geräte-ID. Sie können auch einen Namen für Ihr neues Gerät eingeben und auf **Erstellen** klicken.
+3. Geben Sie die Geräte-ID (in Kleinbuchstaben) ein, oder verwenden Sie die vorgeschlagene Geräte-ID. Sie können auch einen Namen für Ihr neues Gerät eingeben und auf **Erstellen** klicken.
 
    ![Umbenennen des Geräts](media/tutorial-add-device/rename.png)
 
@@ -68,7 +68,7 @@ Das echte Gerät wird auf der Grundlage der Gerätevorlage **Connected Air Condi
 
     ![Einstellungen mit Synchronisierungsangabe](media/tutorial-add-device/settingssyncing.png)
 
-2. Auf der Seite **Eigenschaften** Ihrer neuen, echten verbundenen Klimaanlage können Sie den Standort und das Datum der letzten Wartung des Geräts bearbeiten. Die Felder für Seriennummer und Firmwareversion sind leer, bis das Gerät mit der Anwendung verbunden wird. Die Werte sind schreibgeschützt. Sie werden vom Gerät gesendet und können nicht bearbeitet werden.
+2. Auf der Seite **Eigenschaften** Ihres neuen, echten Geräts können Sie den Standort und das Datum der letzten Wartung bearbeiten. Die Felder für Seriennummer und Firmwareversion sind leer, bis das Gerät mit der Anwendung verbunden wird. Die Werte sind schreibgeschützt. Sie werden vom Gerät gesendet und können nicht bearbeitet werden.
 
     ![Geräteeigenschaften für das echte Gerät](media/tutorial-add-device/setproperties1.png)
 
@@ -76,11 +76,11 @@ Das echte Gerät wird auf der Grundlage der Gerätevorlage **Connected Air Condi
 
 ## <a name="generate-connection-string"></a>Generieren der Verbindungszeichenfolge
 
-Ein Geräteentwickler muss die *Verbindungszeichenfolge* für Ihr echtes Gerät in den Code einbetten, der auf dem Gerät ausgeführt wird. Die Verbindungszeichenfolge ermöglicht es dem Gerät, eine sichere Verbindung mit Ihrer Azure IoT Central-Anwendung herzustellen. Die Verbindungszeichenfolge wird in den nächsten Schritten im Rahmen der Vorbereitung des in Node.js geschriebenen Clientcodes generiert. Die Node.js-Anwendung stellt die echte verbundene Klimaanlage dar. 
+Ein Geräteentwickler muss die *Verbindungszeichenfolge* für Ihr echtes Gerät in den Code einbetten, der auf dem Gerät ausgeführt wird. Die Verbindungszeichenfolge ermöglicht es dem Gerät, eine sichere Verbindung mit Ihrer Anwendung herzustellen. In den folgenden Schritten wird gezeigt, wie Sie die Verbindungszeichenfolge generieren und den Node.js-Clientcode vorbereiten.
 
 ## <a name="prepare-the-client-code"></a>Vorbereiten des Clientcodes
 
-Der Beispielcode in diesem Artikel ist in [Node.js](https://nodejs.org/) geschrieben und zeigt gerade genügend Code für Folgendes:
+Der Beispielcode in diesem Artikel ist in [Node.js](https://nodejs.org/) geschrieben und zeigt genügend Code für Folgendes:
 
 * Herstellen einer Verbindung als Gerät mit Ihrer Azure IoT Central-Anwendung
 * Senden von Telemetriedaten zur Temperatur als verbundene Klimaanlage
@@ -88,7 +88,7 @@ Der Beispielcode in diesem Artikel ist in [Node.js](https://nodejs.org/) geschri
 * Reagieren auf einen Bediener, der die Einstellung **Set Temperature** (Sollwerttemperatur) verwendet
 * Behandeln des Echo-Befehls aus Ihrer Azure IoT Central-Anwendung
 
-Die Anleitungsartikel unter [Nächste Schritte](#next-steps) enthalten weitere vollständige Beispiele und veranschaulichen die Verwendung anderer Programmiersprachen. Weitere Informationen zur Verbindungsherstellung zwischen Geräten und Azure IoT Central finden Sie im Artikel [Device connectivity in Azure IoT Central](concepts-connectivity.md) (Gerätekonnektivität in Azure IoT Central).
+Die Artikel im Abschnitt [Nächste Schritte](#next-steps) enthalten weitere vollständige Beispiele und veranschaulichen die Verwendung anderer Programmiersprachen. Weitere Informationen zur Verbindungsherstellung zwischen Geräten und Azure IoT Central finden Sie im Artikel [Device connectivity in Azure IoT Central](concepts-connectivity.md) (Gerätekonnektivität in Azure IoT Central).
 
 Die folgenden Schritte zeigen, wie Sie das Beispiel für [Node.js](https://nodejs.org/) vorbereiten:
 
@@ -163,7 +163,7 @@ Die folgenden Schritte zeigen, wie Sie das Beispiel für [Node.js](https://nodej
 
 ## <a name="review-client-code"></a>Überprüfen des Clientcodes
 
-Im vorherigen Abschnitt haben Sie ein provisorisches Node.js-Projekt für eine Anwendung erstellt, die eine Verbindung mit Ihrer Azure IoT Central-Anwendung herstellt. In diesem Abschnitt fügen Sie den Code für Folgendes hinzu:
+Im vorherigen Abschnitt haben Sie ein provisorisches Node.js-Projekt für eine Anwendung erstellt, die eine Verbindung mit Ihrer Azure IoT Central-Anwendung herstellt. Im nächsten Schritt wird Code hinzugefügt, um Folgendes zu ermöglichen:
 
 * Herstellen einer Verbindung mit Ihrer Azure IoT Central-Anwendung
 * Senden von Telemetriedaten an Ihre Azure IoT Central-Anwendung
@@ -300,7 +300,8 @@ Im vorherigen Abschnitt haben Sie ein provisorisches Node.js-Projekt für eine A
 
 ## <a name="configure-client-code"></a>Konfigurieren des Clientcodes
 
-<!-- Add the connection string to the sample code, build, and run --> Um den Clientcode für die Verbindungsherstellung mit Ihrer Azure IoT Central-Anwendung zu konfigurieren, müssen Sie die Verbindungszeichenfolge für Ihr echtes Gerät hinzufügen, die Sie sich zuvor in diesem Tutorial notiert haben.
+<!-- Add the connection string to the sample code, build, and run -->
+Um den Clientcode für die Verbindungsherstellung mit Ihrer Azure IoT Central-Anwendung konfigurieren zu können, müssen Sie die Verbindungszeichenfolge für Ihr echtes Gerät hinzufügen, die Sie sich zuvor in diesem Tutorial notiert haben.
 
 1. Suchen Sie in der Datei **ConnectedAirConditioner.js** nach folgender Codezeile:
 
@@ -355,7 +356,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Nachvollziehen der Zuordnung zwischen Clientcode und Anwendung
 > * Konfigurieren des Clientcodes für das echte Gerät
 
-Nachdem Sie nun eine Verbindung zwischen einem echten Gerät und Ihrer Azure IoT Central-Anwendung hergestellt haben, können Sie mit folgenden Schritten fortfahren:
+Nachdem Sie nun eine Verbindung zwischen einem echten Gerät und Ihrer Azure IoT Central-Anwendung hergestellt haben, können Sie mit folgenden Schritten fortfahren:
 
 Bediener:
 
@@ -365,10 +366,8 @@ Bediener:
 
 Geräteentwickler:
 
-* [Vorbereiten und Verbinden eines DevKit-Geräts](howto-connect-devkit.md)
-* [Vorbereiten und Verbinden eines Raspberry Pi](howto-connect-raspberry-pi-python.md)
+* [Vorbereiten und Verbinden eines DevKit-Geräts (C)](howto-connect-devkit.md)
+* [Vorbereiten und Verbinden eines Raspberry Pi (Python)](howto-connect-raspberry-pi-python.md)
+* [Vorbereiten und Verbinden eines Raspberry Pi (C#)](howto-connect-raspberry-pi-csharp.md)
+* [Vorbereiten und Verbinden eines Windows 10 IoT Core-Geräts (C#)](howto-connect-windowsiotcore.md)
 * [Verbinden eines generischen Node.js-Clients mit Ihrer Azure IoT Central-Anwendung](howto-connect-nodejs.md)
-* [Anpassen Ihres Codes][lnk-nodejs-device-ref]
-
-
-[lnk-nodejs-device-ref]: /javascript/api/azure-iot-device/?view=azure-iot-typescript-latest

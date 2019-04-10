@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 2daaa1275d9a97bec43f277e726518ead6eca9ff
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 83595bf045de412954c176028babc4f94fcb21e1
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876363"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847535"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Häufig auftretende Probleme und Lösungen für Azure IoT Edge
 
@@ -338,6 +338,58 @@ IoT Edge bietet zwar erweiterte Konfigurationsmöglichkeiten zum Schutz der Azur
 |AMQP|5671|BLOCKIERT (Standard)|OFFEN (Standard)|<ul> <li>Standardkommunikationsprotokoll für IoT Edge. <li> Muss als „Offen“ konfiguriert werden, wenn Azure IoT Edge nicht für andere unterstützte Protokolle konfiguriert oder AMQP das gewünschte Kommunikationsprotokoll ist.<li>5672 für AMQP wird von IoT Edge nicht unterstützt.<li>Blockieren Sie diesen Port, wenn Azure IoT Edge ein anderes von IoT Hub unterstütztes Protokoll verwendet.<li>Eingehende Verbindungen sollten blockiert werden.</ul></ul>|
 |HTTPS|443|BLOCKIERT (Standard)|OFFEN (Standard)|<ul> <li>Konfigurieren Sie ausgehende Verbindungen als „Offen“ (Port 443) für die IoT Edge-Bereitstellung. Diese Konfiguration ist bei Verwendung manueller Skripts oder des Azure IoT Device Provisioning-Diensts (Device Provisioning Service, DPS) erforderlich. <li>Die eingehende Verbindung sollte nur für bestimmte Szenarien geöffnet werden: <ul> <li>  Wenn Sie über ein transparentes Gateway mit Blattknotengeräten verfügen, die ggf. Methodenanforderungen senden. In diesem Fall muss der Port 443 nicht für externe Netzwerke geöffnet werden, um eine Verbindung mit IoT Hub herzustellen oder IoT Hub-Dienste über Azure IoT Edge bereitzustellen. Die eingehende Regel kann somit darauf beschränkt werden, nur eingehende Verbindungen aus dem internen Netzwerk zu öffnen. <li> In C2D-Szenarien.</ul><li>80 für HTTP wird von IoT Edge nicht unterstützt.<li>Falls im Unternehmen keine HTTP-fremden Protokolle (z. B. AMQP oder MQTT) konfiguriert werden können, haben Sie die Möglichkeit, die Nachrichten über WebSockets zu senden. In diesem Fall wird der Port 443 für die WebSocket-Kommunikation verwendet.</ul>|
 
+## <a name="edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device"></a>Das Edge-Agent-Modul meldet kontinuierlich „empty config file“, und auf dem Gerät werden keine Module gestartet
+
+Auf dem Gerät treten Probleme beim Starten von in der Bereitstellung definierten Modulen auf. Nur der Edge-Agent wird ausgeführt, dieser meldet jedoch kontinuierlich „empty config file ...“.
+
+### <a name="potential-root-cause"></a>Mögliche Ursache
+Standardmäßig werden Module in IoT Edge in ihrem eigenen isolierten Containernetzwerk gestartet. Möglicherweise liegt auf dem Gerät ein Problem mit der DNS-Namensauflösung in diesem privaten Netzwerk vor.
+
+### <a name="resolution"></a>Lösung
+
+**Option 1: Festlegen des DNS-Servers in den Einstellungen der Containerengine**
+
+Geben Sie den DNS-Server für Ihre Umgebung in den Einstellungen der Containerengine an, die für alle über die Engine gestarteten Containermodule gelten. Erstellen Sie eine Datei mit dem Namen `daemon.json`, in der der zu verwendende DNS-Server angegeben ist. Beispiel: 
+
+```
+{
+    "dns": ["1.1.1.1"]
+}
+```
+
+In diesem Beispiel wird der DNS-Server auf einen öffentlich zugänglichen DNS-Dienst festgelegt. Wenn das Edge-Gerät in seiner Umgebung nicht auf diese IP zugreifen kann, ersetzen Sie sie durch eine DNS-Serveradresse, die zugänglich ist.
+
+Fügen Sie `daemon.json` im richtigen Pfad für Ihre Plattform ein: 
+
+| Plattform | Standort |
+| --------- | -------- |
+| Linux | `/etc/docker` |
+| Windows-Host mit Windows-Containern | `C:\ProgramData\iotedge-moby-data\config` |
+
+Wenn die Datei `daemon.json` im Pfad bereits vorhanden ist, fügen Sie ihr den Schlüssel **dns** hinzu, und speichern Sie die Datei.
+
+*Starten Sie die Containerengine neu, damit die Änderungen wirksam werden.*
+
+| Plattform | Get-Help |
+| --------- | -------- |
+| Linux | `sudo systemctl restart docker` |
+| Windows (Administrator-PowerShell) | `Restart-Service iotedge-moby -Force` |
+
+**Option 2: Festlegen des DNS-Servers in der IoT Edge-Bereitstellung pro Modul**
+
+Sie können den DNS-Server für *createOptions* jedes Moduls in der IoT Edge-Bereitstellung festlegen. Beispiel: 
+
+```
+"createOptions": {
+  "HostConfig": {
+    "Dns": [
+      "x.x.x.x"
+    ]
+  }
+}
+```
+
+Achten Sie darauf, dies auch für die Module *edgeAgent* und *edgeHub* festzulegen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sind Sie der Meinung, dass Sie in der IoT Edge-Plattform einen Fehler gefunden haben? [Melden Sie ein Problem](https://github.com/Azure/iotedge/issues), damit wir die Plattform weiter verbessern können. 

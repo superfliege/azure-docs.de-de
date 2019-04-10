@@ -1,7 +1,7 @@
 ---
 title: Entitätstypen
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Hinzufügen von Entitäten (Schlüsseldaten in Ihrer Anwendungsdomäne) in LUIS-Apps (Language Understanding Intelligent Service)
+description: 'Entitäten extrahieren Daten aus der Äußerung. Entitätstypen ermöglichen eine vorhersagbare Extraktion von Daten. Es gibt zwei Arten von Entitäten: maschinell erlernte und nicht maschinell erlernte. Es ist wichtig zu wissen, mit welcher Art von Entität Sie in Äußerungen arbeiten.'
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: c8d2ccc197eb8818cfe3fc54449ee982bbe0c087
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6e37466145af58a52a86a08a2a873e406c99b9e5
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57844587"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895544"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Entitätstypen und ihr Zweck in LUIS
 
-Entitäten sind Wörter oder Ausdrücke in Äußerungen, die wichtige Daten in Ihrer Anwendungsdomäne darstellen.
+Entitäten extrahieren Daten aus der Äußerung. Entitätstypen ermöglichen eine vorhersagbare Extraktion von Daten. Es gibt zwei Arten von Entitäten: maschinell erlernte und nicht maschinell erlernte. Es ist wichtig zu wissen, mit welcher Art von Entität Sie in Äußerungen arbeiten. 
 
 ## <a name="entity-compared-to-intent"></a>Entität im Vergleich zu Absichten
 
@@ -88,15 +88,15 @@ Nachdem die Entität extrahiert wurde, können die Entitätsdaten als einzelne I
 
 |Durch maschinelles Lernen erworben|Kennzeichnung möglich|Tutorial|Beispiel<br>response|Entitätstyp|Zweck|
 |--|--|--|--|--|--|
-|✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**Zusammengesetzt**](#composite-entity)|Gruppierung von Entitäten, unabhängig vom Entitätstyp.|
-|✔|✔|[✔](luis-quickstart-intent-and-hier-entity.md)|[✔](luis-concept-data-extraction.md#hierarchical-entity-data)|[**Hierarchisch**](#hierarchical-entity)|Gruppierung von einfachen Entitäten.|
-|||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**Liste**](#list-entity)|Liste mit Elementen und den zugehörigen Synonymen, die per genauer Textübereinstimmung extrahiert werden.|
+|✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**Composite**](#composite-entity)|Gruppierung von Entitäten, unabhängig vom Entitätstyp.|
+|✔|✔|[✔](luis-quickstart-intent-and-hier-entity.md)|[✔](luis-concept-data-extraction.md#hierarchical-entity-data)|[**Hierarchical**](#hierarchical-entity)|Gruppierung von einfachen Entitäten.|
+|||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**Auflisten**](#list-entity)|Liste mit Elementen und den zugehörigen Synonymen, die per genauer Textübereinstimmung extrahiert werden.|
 |Gemischt||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Pattern.any**](#patternany-entity)|Entität, bei der das Entitätsende schwierig zu ermitteln ist.|
 |||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**Vordefiniert**](#prebuilt-entity)|Bereits trainiert, um verschiedene Arten von Daten zu extrahieren.|
 |||[✔](luis-quickstart-intents-regex-entity.md)|[✔](luis-concept-data-extraction.md#regular-expression-entity-data)|[**Regulärer Ausdruck**](#regular-expression-entity)|Verwendet einen regulären Ausdruck zum Abgleichen von Text.|
 |✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**Einfach**](#simple-entity)|Enthält ein einzelnes Konzept in einem Wort oder Ausdruck.|
 
-Nur Entitäten, die durch maschinelles Lernen erworben wurden, müssen in den Beispieläußerungen für jede Absicht gekennzeichnet werden. Durch maschinelles Lernen erworbene Entitäten funktionieren am besten, wenn sie mithilfe von [Endpunktabfragen](luis-concept-test.md#endpoint-testing) und durch das [Überprüfen der Endpunktäußerungen](luis-how-to-review-endoint-utt.md) getestet werden. 
+Nur Entitäten, die durch maschinelles Lernen erworben wurden, müssen in den Beispieläußerungen für jede Absicht gekennzeichnet werden. Durch maschinelles Lernen erworbene Entitäten funktionieren am besten, wenn sie mithilfe von [Endpunktabfragen](luis-concept-test.md#endpoint-testing) und durch das [Überprüfen der Endpunktäußerungen](luis-how-to-review-endpoint-utterances.md) getestet werden. 
 
 Pattern.any-Entitäten müssen in [Pattern](luis-how-to-model-intent-pattern.md)-Vorlagenbeispielen gekennzeichnet werden, nicht in den Absichtsbenutzerbeispielen. 
 
@@ -190,7 +190,7 @@ Diese Entität ist gut geeignet, wenn Folgendes gilt:
 
 * Die Daten stimmen mit einem häufigen Anwendungsfall überein, der von vordefinierten Entitäten für Ihre Sprachkultur unterstützt wird. 
 
-Vordefinierte Entitäten können jederzeit hinzugefügt und entfernt werden. Wenn in einer Beispieläußerung eine vordefinierte Entität erkannt wird, die das Kennzeichnen Ihrer benutzerdefinierten Entität verhindert, sollten Sie die vordefinierte Entität aus der App entfernen, die Entität kennzeichnen und die vordefinierte Entität dann wieder hinzufügen. 
+Vordefinierte Entitäten können jederzeit hinzugefügt und entfernt werden.
 
 ![Vordefinierte Entität „number“](./media/luis-concept-entities/number-entity.png)
 
@@ -198,6 +198,38 @@ Vordefinierte Entitäten können jederzeit hinzugefügt und entfernt werden. Wen
 [JSON-Beispielantwort für Entität](luis-concept-data-extraction.md#prebuilt-entity-data)
 
 Einige dieser vordefinierten Entitäten werden im Open-Source-Projekt [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) definiert. Wenn Ihre Kultur oder Entität derzeit nicht unterstützt wird, können Sie sich am Projekt beteiligen. 
+
+### <a name="troubleshooting-prebuilt-entities"></a>Problembehandlung bei vordefinierten Entitäten
+
+Wenn anstelle Ihrer benutzerdefinierten Entität eine vordefinierte Entität markiert ist, haben Sie im LUIS-Portal mehrere Optionen zum Beheben dieses Problems.
+
+Die der App hinzugefügten vordefinierten Entitäten werden _immer_ zurückgegeben, auch wenn aus der Äußerung benutzerdefinierte Entitäten für den gleichen Text extrahiert werden. 
+
+#### <a name="change-tagged-entity-in-example-utterance"></a>Ändern der markierten Entität in der Beispieläußerung
+
+Wenn die vordefinierte Entität dem Text oder den Token der benutzerdefinierten Entität entspricht, wählen Sie den Text in der Beispieläußerung aus, und ändern Sie die markierte Äußerung. 
+
+Wenn die vordefinierte Entität mit mehr Text oder Token markiert ist als die benutzerdefinierte Entität, haben Sie zwei Optionen, um dies zu korrigieren:
+
+* [Entfernen der Beispieläußerung](#remove-example-utterance-to-fix-tagging)
+* [Entfernen der vordefinierten Entität](#remove-prebuilt-entity-to-fix-tagging)
+
+#### <a name="remove-example-utterance-to-fix-tagging"></a>Entfernen der Beispieläußerung zur Korrektur der Markierung 
+
+Die erste Option ist das Entfernen der Beispieläußerung. 
+
+1. Löschen Sie die Beispieläußerung.
+1. Trainieren Sie die App erneut. 
+1. Fügen Sie nur das Wort oder den Ausdruck, das bzw. den die vordefinierte Entität markierte Entität darstellt, als vollständige Beispieläußerung ein. Für das Wort oder den Ausdruck ist weiterhin die vordefinierte Entität markiert. 
+1. Wählen Sie auf der Seite **Absicht** die Entität in der Beispieläußerung aus, ändern Sie sie in die benutzerdefinierte Entität, und trainieren Sie die App erneut. Dies sollte verhindern, dass in LUIS genau dieser Text als vordefinierte Entität in Beispieläußerungen markiert wird, in denen dieser Text verwendet wird. 
+1. Fügen Sie die vollständige ursprüngliche Beispieläußerung wieder auf der Seite „Absicht“ hinzu. Die benutzerdefinierte Entität sollte weiterhin anstelle der vordefinierten Entität markiert werden. Wenn die benutzerdefinierte Entität nicht markiert wird, müssen Sie weitere Beispiele für diesen Text in Äußerungen hinzufügen.
+
+#### <a name="remove-prebuilt-entity-to-fix-tagging"></a>Entfernen der vordefinierten Entität zur Korrektur der Markierung
+
+1. Entfernen Sie die vordefinierte Entität aus der App. 
+1. Markieren Sie auf der Seite **Absicht** die benutzerdefinierte Entität in der Beispieläußerung.
+1. Trainieren Sie die App.
+1. Fügen Sie die vordefinierte Entität wieder in die App ein, und trainieren Sie die App. Bei dieser Korrektur wird davon ausgegangen, dass die vordefinierte Entität kein Teil einer zusammengesetzten Entität ist.
 
 ## <a name="regular-expression-entity"></a>Entität vom Typ „RegEx“ 
 

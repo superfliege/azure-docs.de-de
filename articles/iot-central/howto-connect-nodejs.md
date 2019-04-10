@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 4d2701f078a26c22f52aebd0ef562dd60eaca923
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4c04d9dbaf0065f2e68182c9ad84181845dee3e9
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58097973"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905323"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Verbinden einer generischen Clientanwendung mit Ihrer Azure IoT Central-Anwendung (Node.js)
 
@@ -28,7 +28,7 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 
 ## <a name="create-a-device-template"></a>Erstellen einer Gerätevorlage
 
-In Ihrer Azure IoT Central-Anwendung benötigen Sie eine Gerätevorlage, bei denen die folgenden Messungen und Geräteeigenschaften definiert sind:
+In Ihrer Azure IoT Central-Anwendung benötigen Sie eine Gerätevorlage mit den folgenden Messungen, Geräteeigenschaften, Einstellungen und Befehlen:
 
 ### <a name="telemetry-measurements"></a>Telemetriemessungen
 
@@ -41,7 +41,7 @@ Fügen Sie auf der Seite **Messungen** folgende Telemetriedaten hinzu:
 | Pressure     | pressure    | kPa   | 80  | 110 | 0              |
 
 > [!NOTE]
->   Die Telemetriemessung gibt Daten als Gleitkommazahl aus.
+> Die Telemetriemessung gibt Daten als Gleitkommazahl aus.
 
 Geben Sie Feldnamen genau wie in der Tabelle angegeben in die Gerätevorlage ein. Wenn die Feldnamen nicht mit den Eigenschaftennamen im entsprechenden Gerätecode übereinstimmen, können die Telemetriedaten nicht in der Anwendung angezeigt werden.
 
@@ -54,7 +54,7 @@ Fügen Sie auf der Seite **Messungen** folgenden Status hinzu:
 | Fan Mode     | fanmode     | 1       | Wird ausgeführt      | 0       | Beendet      |
 
 > [!NOTE]
->   Die Statusmessung gibt Daten vom Typ „string“ aus.
+> Die Statusmessung gibt Daten vom Typ „string“ aus.
 
 Geben Sie Feldnamen genau wie in der Tabelle angegeben in die Gerätevorlage ein. Wenn die Feldnamen nicht mit den Eigenschaftennamen im entsprechenden Gerätecode übereinstimmen, kann der Status nicht in der Anwendung angezeigt werden.
 
@@ -67,7 +67,7 @@ Fügen Sie auf der Seite **Messungen** folgendes Ereignis hinzu:
 | Überhitzung  | overheat    | Error    |
 
 > [!NOTE]
->   Die Ereignismessung gibt Daten vom Typ „string“ aus.
+> Die Ereignismessung gibt Daten vom Typ „string“ aus.
 
 ### <a name="device-properties"></a>Geräteeigenschaften
 
@@ -78,7 +78,7 @@ Fügen Sie auf der Seite **Eigenschaften** folgende Geräteeigenschaften hinzu:
 | Seriennummer       | serialNumber      | text      |
 | Gerätehersteller | manufacturer      | text      |
 
-Geben Sie die Feldnamen genau wie in der Tabelle angegeben in die Gerätevorlage ein. Wenn die Feldnamen nicht mit den Eigenschaftennamen im entsprechenden Gerätecode übereinstimmen, kann der Geräteeigenschaftswert nicht in der Anwendung angezeigt werden.
+Geben Sie die Feldnamen genau wie in der Tabelle angegeben in die Gerätevorlage ein. Wenn die Feldnamen nicht mit den Eigenschaftennamen im entsprechenden Gerätecode übereinstimmen, können die Eigenschaften nicht in der Anwendung angezeigt werden.
 
 ### <a name="settings"></a>Einstellungen
 
@@ -91,9 +91,27 @@ Fügen Sie auf der Seite **Einstellungen** folgende **Nummerneinstellungen** hin
 
 Geben Sie den Feldnamen genau wie in der Tabelle angegeben in die Gerätevorlage ein. Wenn die Feldnamen nicht mit den Eigenschaftennamen im entsprechenden Gerätecode übereinstimmen, kann das Gerät den Einstellungswert nicht empfangen.
 
+### <a name="commands"></a>Befehle
+
+Fügen Sie auf der Seite **Befehle** folgenden Befehl hinzu:
+
+| Anzeigename    | Feldname     | Standardzeitlimit | Datentyp |
+| --------------- | -------------- | --------------- | --------- |
+| Countdown       | countdown      | 30              | number    |
+
+Fügen Sie dem Befehl „Countdown“ folgendes Eingabefeld hinzu:
+
+| Anzeigename    | Feldname     | Datentyp | Wert |
+| --------------- | -------------- | --------- | ----- |
+| Zählen ab      | countFrom      | number    | 10    |
+
+Geben Sie Feldnamen genau wie in der Tabelle angegeben in der Gerätevorlage ein. Wenn die Feldnamen nicht mit den Eigenschaftennamen im entsprechenden Gerätecode übereinstimmen, kann der Befehl auf dem Gerät nicht verarbeitet werden.
+
 ## <a name="add-a-real-device"></a>Hinzufügen eines echten Geräts
 
-Fügen Sie in Ihrer Azure IoT Central-Anwendung ein echtes Gerät über die Gerätevorlage hinzu, die Sie erstellen, und notieren Sie sich die Verbindungszeichenfolge des Geräts. Ausführliche Anweisungen zum Herstellen einer Verbindung mit einer Node.js-Anwendung und mit IoT Central finden Sie im Tutorial zum Hinzufügen eines Geräts unter [Generieren der Verbindungszeichenfolge für das echte Gerät über die Anwendung](tutorial-add-device.md#generate-connection-string) und [Vorbereiten des Clientcodes](tutorial-add-device.md#prepare-the-client-code).
+Fügen Sie in der Azure IoT Central-Anwendung in der Gerätevorlage, die Sie im vorherigen Abschnitt erstellt haben, ein echtes Gerät hinzu.
+
+Befolgen Sie dann die Anweisungen im Tutorial „Hinzufügen eines Geräts“ zum [Generieren einer Verbindungszeichenfolge für das echte Gerät](tutorial-add-device.md#generate-connection-string). Diese Verbindungszeichenfolge verwenden Sie im nächsten Abschnitt:
 
 ### <a name="create-a-nodejs-application"></a>Erstellen einer Node.js-Anwendung
 
@@ -129,12 +147,9 @@ In den folgenden Schritten wird gezeigt, wie eine Clientanwendung mit Implementi
     var client = clientFromConnectionString(connectionString);
     ```
 
-    > [!NOTE]
-    > Azure IoT Central verwendet nun Azure IoT Hub Device Provisioning Service für alle Geräteverbindungen. Führen Sie die Schritte zum [Abrufen der Verbindungszeichenfolge des Geräts](concepts-connectivity.md#get-a-connection-string) aus, und fahren Sie dann mit dem Tutorial fort. Ausführliche Anweisungen finden Sie darüber hinaus im Tutorial zum Hinzufügen eines Geräts unter [Vorbereiten des Clientcodes](tutorial-add-device.md#prepare-the-client-code).
+    Aktualisieren Sie den Platzhalter `{your device connection string}` mit der [Verbindungszeichenfolge des Geräts](tutorial-add-device.md#generate-connection-string). In diesem Beispiel wird `targetTemperature` mit null initialisiert, wobei Sie auch die aktuelle Ablesung vom Gerät oder den Wert vom Gerätezwilling übernehmen können.
 
-    Aktualisieren Sie den Platzhalter `{your device connection string}` mit der Verbindungszeichenfolge des Geräts. In diesem Beispiel wird `targetTemperature` auf NULL initialisiert, wobei Sie optional die aktuelle Ablesung vom Gerät oder den Wert vom Gerätezwilling übernehmen können. 
-
-1. Fügen Sie zum Senden von Telemetrie-, Status- und Ereignismessungen an Ihre Azure IoT Central-Anwendung folgende Funktion zur Datei hinzu:
+1. Fügen Sie zum Senden von Telemetrie-, Status- und Ereignismessungen an Ihre Azure IoT Central-Anwendung der Datei folgende Funktion hinzu:
 
     ```javascript
     // Send device measurements.
@@ -143,9 +158,9 @@ In den folgenden Schritten wird gezeigt, wie eine Clientanwendung mit Implementi
       var humidity = 70 + (Math.random() * 10);
       var pressure = 90 + (Math.random() * 5);
       var fanmode = 0;
-      var data = JSON.stringify({ 
-        temperature: temperature, 
-        humidity: humidity, 
+      var data = JSON.stringify({
+        temperature: temperature,
+        humidity: humidity,
         pressure: pressure,
         fanmode: (temperature > 25) ? "1" : "0",
         overheat: (temperature > 35) ? "ER123" : undefined });
@@ -159,13 +174,9 @@ In den folgenden Schritten wird gezeigt, wie eine Clientanwendung mit Implementi
 1. Fügen Sie zum Senden von Eigenschaften an Ihre Azure IoT Central-Anwendung folgende Funktion zu Ihrer Datei hinzu:
 
     ```javascript
-    // Send device properties.
-    function sendDeviceProperties(twin) {
-      var properties = {
-        serialNumber: '123-ABC',
-        manufacturer: 'Contoso'
-      };
-      twin.properties.reported.update(properties, (err) => console.log(`Sent device properties; ` +
+    // Send device reported properties.
+    function sendDeviceProperties(twin, properties) {
+      twin.properties.reported.update(properties, (err) => console.log(`Sent device properties: ${JSON.stringify(properties)}; ` +
         (err ? `error: ${err.toString()}` : `status: success`)));
     }
     ```
@@ -223,7 +234,41 @@ In den folgenden Schritten wird gezeigt, wie eine Clientanwendung mit Implementi
     }
     ```
 
-1. Um eine Verbindung mit Azure IoT Central herzustellen und die Funktionen im Clientcode einzubinden, fügen Sie Folgendes hinzu:
+1. Fügen Sie den folgenden Code für die Verarbeitung eines von der IoT Central-Anwendung gesendeten Countdown-Befehls hinzu:
+
+    ```javascript
+    // Handle countdown command
+    function onCountdown(request, response) {
+      console.log('Received call to countdown');
+
+      var countFrom = (typeof(request.payload.countFrom) === 'number' && request.payload.countFrom < 100) ? request.payload.countFrom : 10;
+
+      response.send(200, (err) => {
+        if (err) {
+          console.error('Unable to send method response: ' + err.toString());
+        } else {
+          client.getTwin((err, twin) => {
+            function doCountdown(){
+              if ( countFrom >= 0 ) {
+                var patch = {
+                  countdown:{
+                    value: countFrom
+                  }
+                };
+                sendDeviceProperties(twin, patch);
+                countFrom--;
+                setTimeout(doCountdown, 2000 );
+              }
+            }
+
+            doCountdown();
+          });
+        }
+      });
+    }
+    ```
+
+1. Fügen Sie den folgenden Code hinzu, um die Verbindungsherstellung mit Azure IoT Central abzuschließen und die Funktionen im Clientcode einzubinden:
 
     ```javascript
     // Handle device connection to Azure IoT Central.
@@ -232,6 +277,9 @@ In den folgenden Schritten wird gezeigt, wie eine Clientanwendung mit Implementi
         console.log(`Device could not connect to Azure IoT Central: ${err.toString()}`);
       } else {
         console.log('Device successfully connected to Azure IoT Central');
+
+        // Create handler for countdown command
+        client.onDeviceMethod('countdown', onCountdown);
 
         // Send telemetry measurements to Azure IoT Central every 1 second.
         setInterval(sendTelemetry, 1000);
@@ -242,7 +290,12 @@ In den folgenden Schritten wird gezeigt, wie eine Clientanwendung mit Implementi
             console.log(`Error getting device twin: ${err.toString()}`);
           } else {
             // Send device properties once on device start up.
-            sendDeviceProperties(twin);
+            var properties = {
+              serialNumber: '123-ABC',
+              manufacturer: 'Contoso'
+            };
+            sendDeviceProperties(twin, properties);
+
             // Apply device settings and handle changes to device settings.
             handleSettings(twin);
           }
@@ -268,16 +321,18 @@ Als Operator in der Azure IoT Central-Anwendung für Ihre echtes Gerät können 
 
     ![Anzeigen von Telemetriedaten](media/howto-connect-nodejs/viewtelemetry.png)
 
-* Anzeigen der von Ihrem Gerät gesendeten Geräteeigenschaftswerte auf der Seite **Eigenschaften**: Die Kacheln mit den Geräteeigenschaften werden aktualisiert, wenn die Verbindung hergestellt wurde.
+* Anzeigen der von Ihrem Gerät gesendeten Geräteeigenschaftswerte auf der Seite **Eigenschaften**: Die Kacheln für die Geräteeigenschaften werden nach der Verbindung mit dem Gerät aktualisiert:
 
     ![Anzeigen von Geräteeigenschaften](media/howto-connect-nodejs/viewproperties.png)
 
-* Festlegen der Lüfterdrehzahl und Zieltemperatur auf der Seite **Einstellungen**: Die Einstellungswerte werden synchronisiert, wenn die Verbindung hergestellt wurde.
+* Festlegen der Lüfterdrehzahl und Zieltemperatur auf der Seite **Einstellungen**:
 
     ![Festlegen der Lüfterdrehzahl](media/howto-connect-nodejs/setfanspeed.png)
 
+* Aufrufen des Countdown-Befehls auf der Seite **Befehle**:
+
+    ![Aufrufen des Countdown-Befehls](media/howto-connect-nodejs/callcountdown.png)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun erfahren haben, wie ein generischer Node.js-Client mit Ihrer Azure IoT Central-Anwendung verbunden wird, werden als Nächstes die folgenden Schritte empfohlen:
-* [Vorbereiten und Verbinden eines Raspberry Pi](howto-connect-raspberry-pi-python.md)
-<!-- Next how-tos in the sequence -->
+Nachdem Sie erfahren haben, wie ein generischer Node.js-Client mit Ihrer Azure IoT Central-Anwendung verbunden wird, empfiehlt sich als nächster Schritt das [Vorbereiten und Verbinden eines Raspberry Pi](howto-connect-raspberry-pi-python.md).

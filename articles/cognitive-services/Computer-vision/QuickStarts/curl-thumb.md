@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 03/27/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0b6430a31f31f85f01f67994f6b6fa0f30af9575
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 20a438f4eb932596647002bf9d3072c651ac969c
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57879921"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630652"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-curl-in-computer-vision"></a>Schnellstart: Generieren einer Miniaturansicht mit der REST-API und cURL in der Maschinelles Sehen-API
 
@@ -65,7 +65,7 @@ Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte au
 
 ## <a name="examine-the-response"></a>Untersuchen der Antwort
 
-Bei einer erfolgreichen Antwort wird das Miniaturbild in die unter `<thumbnailFile>` angegebene Datei geschrieben. Wenn die Anforderung nicht erfolgreich ist, enthält die Antwort einen Fehlercode und eine Meldung, damit Sie ermitteln können, wo der Fehler liegt.
+Bei einer erfolgreichen Antwort wird das Miniaturbild in die unter `<thumbnailFile>` angegebene Datei geschrieben. Wenn die Anforderung nicht erfolgreich ist, enthält die Antwort einen Fehlercode und eine Meldung, damit Sie ermitteln können, wo der Fehler liegt. Wenn die Anforderung scheinbar erfolgreich war, die erstellte Miniaturansicht jedoch keine gültige Bilddatei ist, ist Ihr Abonnementschlüssel unter Umständen ungültig.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

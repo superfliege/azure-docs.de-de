@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 02/14/2019
+ms.date: 04/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a908b00022351b9a91f9381229c773d063390744
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8eccc79969ce1a474fe0b22f2c250f8e31281550
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444156"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893128"
 ---
 # <a name="what-is-azure-analysis-services"></a>Was ist Azure Analysis Services?
 
@@ -144,6 +144,11 @@ Im DirectQuery-Modus* wird die relationale Back-End-Datenbank für die Speicheru
 
 Tabellarische Modelle in Azure Analysis Services unterstützen eine Vielzahl von Datenquellen – von einfachen Textdateien bis zu Big Data in Azure Data Lake Store. Weitere Informationen finden Sie unter [In Azure Analysis Services unterstützte Datenquellen](analysis-services-datasource.md).
 
+## <a name="compatibility-level"></a>Kompatibilitätsgrad
+
+Der Kompatibilitätsgrad bezieht sich auf releasespezifische Verhalten in der Analysis Services-Engine. Azure Analysis Services unterstützt tabellarische Modelle mit dem Kompatibilitätsgrad 1200 oder höher. Weitere Informationen finden Sie unter [Kompatibilitätsgrad für tabellarische Analysis Services-Modelle](analysis-services-compat-level.md).
+
+
 ## <a name="your-data-is-secure"></a>Datensicherheit
 
 Azure Analysis Services bietet Sicherheit für Ihre sensiblen Daten auf mehreren Ebenen. Als Azure-Dienst bietet Analysis Services **grundlegenden** Schutz vor DDoS-Angriffen (Distributed Denial of Service). Dieser Schutz ist im Rahmen der Azure-Plattform automatisch aktiviert. Weitere Informationen finden Sie in der [Übersicht über Azure DDoS Protection Standard](../virtual-network/ddos-protection-overview.md). 
@@ -193,7 +198,7 @@ Weitere Informationen zur Sicherheit in Azure finden Sie im [Microsoft Trust Cen
 
 ### <a name="visual-studio"></a>Visual Studio
 
-Modelle können mit dem kostenlosen [SQL Server Data Tools (SSDT) für Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx) entwickelt und bereitgestellt werden. SSDT beinhaltet Analysis Services-Projektvorlagen, die Sie bei der Einrichtung unterstützen. SSDT beinhaltet nun die modernen datenabrufbezogenen Datenquellenabfrage- und Mashup-Funktionen für tabellarische Modelle mit Kompatibilitätsgrad 1400. Wenn Sie mit dem Datenabruf in Power BI Desktop und Excel 2016 vertraut sind, wissen Sie bereits, wie einfach sich hochgradig angepasste Datenquellenabfragen erstellen lassen. 
+Modelle können mit dem kostenlosen [SQL Server Data Tools (SSDT) für Visual Studio](/sql/ssdt/download-sql-server-data-tools-ssdt) entwickelt und bereitgestellt werden. SSDT beinhaltet Analysis Services-Projektvorlagen, die Sie bei der Einrichtung unterstützen. SSDT beinhaltet nun die modernen datenabrufbezogenen Datenquellenabfrage- und Mashup-Funktionen für tabellarische Modelle mit Kompatibilitätsgrad 1400. Wenn Sie mit dem Datenabruf in Power BI Desktop und Excel 2016 vertraut sind, wissen Sie bereits, wie einfach sich hochgradig angepasste Datenquellenabfragen erstellen lassen. 
 
 Bei Verwendung von Visual Studio 2017 sind Microsoft Analysis Services-Projekte als kostenloses installierbares VSIX-Paket verfügbar. Sie können es [vom Marketplace herunterladen](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects).
 
@@ -207,7 +212,7 @@ Zur Verwaltung von Serverressourcen (beispielsweise Erstellen von Serverressourc
 
 ### <a name="object-model-and-scripting"></a>Objektmodell und Skripterstellung
 
-Tabellarische Modelle ermöglichen eine schnelle Entwicklung und sind hochgradig anpassbar. Tabellarische Modelle enthalten das [Tabellenobjektmodell](https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (TOM) zur Beschreibung von Modellobjekten. TOM wird in JSON über die [Skriptsprache für Tabellenmodelle (Tabular Model Scripting Language, TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference) und die AMO-Datendefinitionssprache über den Namespace [Microsoft.AnalysisServices.Tabular](https://msdn.microsoft.com/library/microsoft.analysisservices.tabular.aspx) verfügbar gemacht. 
+Tabellarische Modelle ermöglichen eine schnelle Entwicklung und sind hochgradig anpassbar. Tabellarische Modelle enthalten das [Tabellenobjektmodell](https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (TOM) zur Beschreibung von Modellobjekten. TOM wird in JSON über die [Skriptsprache für Tabellenmodelle (Tabular Model Scripting Language, TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference) und die AMO-Datendefinitionssprache über den Namespace [Microsoft.AnalysisServices.Tabular](/dotnet/api/microsoft.analysisservices.tabular) verfügbar gemacht. 
 
 ## <a name="supports-the-latest-client-tools"></a>Unterstützung der neuesten Clienttools
 

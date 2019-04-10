@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 06b2a5211c720d50a2f14e5fa56fa296cb80d41f
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: b536c55b0f7c29bc463781d9fda0348ef994c5ce
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519628"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662223"
 ---
 # <a name="what-are-the-speech-services"></a>Was sind Speech-Dienste?
 
@@ -39,7 +39,7 @@ Die Azure Speech-Dienste umfassen folgende Features. Verwenden Sie die Links in
 
 Hier finden Sie Neuigkeiten im Zusammenhang mit den Azure Speech-Diensten.
 
-* März 2019: Ein neuer Endpunkt für Text-to-Speech, der eine vollständige Liste mit den in bestimmten Regionen verfügbaren Stimmen zurückgibt, steht nun zur Verfügung. Weitere Informationen finden Sie unter [Text-to-speech REST API](rest-text-to-speech.md) (Text-to-Speech-REST-API).
+* März 2019: Ein neuer Endpunkt für Text-to-Speech (TTS), der eine vollständige Liste mit den in bestimmten Regionen verfügbaren Stimmen zurückgibt, steht nun zur Verfügung. Darüber hinaus werden jetzt neue Regionen für TTS unterstützt. Weitere Informationen finden Sie unter [Text-to-speech REST API](rest-text-to-speech.md) (Text-to-Speech-REST-API).
 * Februar 2019: Das Speech SDK 1.3.0 mit Unterstützung von [Unity (Beta)](quickstart-csharp-unity.md) wurde veröffentlicht. Unterstützung für die Klasse `AudioInput` wurde hinzugefügt, um die Wahl der Audiostreamingquelle zu ermöglichen. Eine vollständige Liste der Verbesserungen und bekannten Probleme finden Sie in den [Versionshinweisen](releasenotes.md).
 * Dezember 2018: Das Speech SDK 1.2.0 mit Unterstützung von [Python](quickstart-python.md), [Node.js](quickstart-js-node.md) und Ubuntu 18.04 LTS wurde veröffentlicht. Weitere Informationen finden Sie in den [Versionshinweisen](releasenotes.md).
 
@@ -83,7 +83,7 @@ Die Azure Speech-Dienste funktionieren bestens mit integrierten Modellen, könn
 * [Speech-Geräte-SDK](speech-devices-sdk.md)
 * [REST-API: Spracherkennung](rest-speech-to-text.md)
 * [REST-API: Sprachsynthese](rest-text-to-speech.md)
-* [REST-API: Batch-Transkription und Anpassung](https://westus.cris.ai/swagger/ui/index)
+* [REST-API: Batchtranskription und Anpassung](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

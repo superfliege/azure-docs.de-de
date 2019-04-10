@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/20/2019
-ms.openlocfilehash: 7511b85384c2c64c823d93df4369b0fea3e64b51
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 5d168264cbc392e1ba426707429f47dea70d1ea8
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226214"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882054"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>Tutorial: Sicherheit für verwaltete Instanzen in Azure SQL-Datenbank durch Azure AD-Serverprinzipale (Anmeldungen)
 
@@ -51,12 +51,12 @@ Für dieses Tutorial wird Folgendes vorausgesetzt:
   - Führen Sie die Schritte des folgenden Artikels aus: [Schnellstart: Erstellen einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-get-started.md)
 - Zugriff auf Ihre verwaltete Instanz und [Bereitstellung eines Azure AD-Administrators für die verwaltete Instanz](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance). Weitere Informationen finden Sie unter:
     - [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-connect-app.md) 
-    - [Verbindungsarchitektur der verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-connectivity-architecture.md)
+    - [Konnektivitätsarchitektur für eine verwaltete Instanz in Azure SQL-Datenbank](sql-database-managed-instance-connectivity-architecture.md)
     - [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL](sql-database-aad-authentication-configure.md)
 
 ## <a name="limiting-access-to-your-managed-instance"></a>Einschränken des Zugriffs auf Ihre verwaltete Instanz
 
-Auf verwaltete Instanzen kann nur über eine private IP-Adresse zugegriffen werden. Es sind keine Dienstendpunkte verfügbar, über die von außerhalb des Netzwerks der verwalteten Instanz eine Verbindung mit der verwalteten Instanz hergestellt werden kann. Anwendungen und Benutzer benötigen ähnlich wie bei einer isolierten lokalen SQL Server-Umgebung Zugriff auf das Netzwerk der verwalteten Instanz (VNET), um eine Verbindung herstellen zu können. Weitere Informationen finden Sie im Artikel [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-connect-app.md).
+Auf verwaltete Instanzen kann nur über eine private IP-Adresse zugegriffen werden. Es sind keine Dienstendpunkte verfügbar, über die von außerhalb des Netzwerks der verwalteten Instanz eine Verbindung mit der verwalteten Instanz hergestellt werden kann. Anwendungen und Benutzer benötigen ähnlich wie bei einer isolierten lokalen SQL Server-Umgebung Zugriff auf das Netzwerk der verwalteten Instanz (VNET), um eine Verbindung herstellen zu können. Weitere Informationen finden Sie im Artikel [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-connect-app.md).
 
 > [!NOTE] 
 > Da auf verwaltete Instanzen nur innerhalb des entsprechenden VNETs zugegriffen werden kann, sind [Firewallregeln für Azure SQL-Datenbank und SQL Data Warehouse](sql-database-firewall-configure.md) nicht relevant. Eine verwaltete Instanz verfügt über eine eigene [integrierte Firewall](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md).
@@ -66,10 +66,10 @@ Auf verwaltete Instanzen kann nur über eine private IP-Adresse zugegriffen werd
 Der erste Azure AD-Serverprinzipal (Anmeldung) muss unter Verwendung des SQL Server-Standardkontos (Azure-fremdes AD-Konto) vom Typ `sysadmin` erstellt werden. Beispiele für das Herstellen einer Verbindung mit Ihrer verwalteten Instanz finden Sie in den folgenden Artikeln:
 
 - [Schnellstart: Konfigurieren einer Azure-VM für das Herstellen einer Verbindung mit einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-configure-vm.md)
-- [Schnellstart: Konfigurieren einer Point-to-Site-Verbindung von einem lokalen Computer mit einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-configure-p2s.md)
+- [Schnellstart: Schnellstart: Konfigurieren einer Point-to-Site-Verbindung von einem lokalen Computer mit einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-configure-p2s.md)
 
 > [!IMPORTANT]
-> Der Azure AD-Administrator, der zum Einrichten der verwalteten Instanz verwendet wurde, kann nicht zum Erstellen eines Azure AD-Serverprinzipals (Anmeldung) innerhalb der verwalteten Instanz verwendet werden. Der erste Azure AD-Serverprinzipal (Anmeldung) muss mit einem SQL Server-Konto vom Typ `sysadmin` erstellt werden. Dabei handelt es sich um eine temporäre Einschränkung, die entfernt wird, sobald Azure AD-Serverprinzipale (Anmeldungen) allgemein verfügbar sind. Wenn Sie versuchen, die Anmeldung mit einem Azure AD-Administratorkonto zu erstellen, wird der folgende Fehler angezeigt: `Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
+> Der Azure AD-Administrator, der zum Einrichten der verwalteten Instanz verwendet wurde, kann nicht zum Erstellen eines Azure AD-Serverprinzipals (Anmeldung) innerhalb der verwalteten Instanz verwendet werden. Der erste Azure AD-Serverprinzipal (Anmeldung) muss mit einem SQL Server-Konto vom Typ `sysadmin` erstellt werden. Dabei handelt es sich um eine temporäre Einschränkung, die aufgehoben wird, sobald Azure AD-Serverprinzipale (Anmeldungen) allgemein verfügbar sind. Wenn Sie versuchen, die Anmeldung mit einem Azure AD-Administratorkonto zu erstellen, wird der folgende Fehler angezeigt: `Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
 
 1. Melden Sie sich über [SQL Server Management Studio](sql-database-managed-instance-configure-p2s.md#use-ssms-to-connect-to-the-managed-instance) unter Verwendung eines SQL Server-Standardkontos (Azure-fremdes AD-Konto) vom Typ `sysadmin` bei Ihrer verwalteten Instanz an.
 
@@ -453,4 +453,4 @@ Unter [Sicherheitsfeatures für Azure SQL-Datenbank](sql-database-managed-instan
 Eine vollständige Übersicht über die Funktionen einer verwalteten Instanz finden Sie hier:
 
 > [!div class="nextstepaction"]
-> [Funktionen verwalteter Instanzen](sql-database-managed-instance.md)
+> [Verwaltete Instanz: Funktionen](sql-database-managed-instance.md)

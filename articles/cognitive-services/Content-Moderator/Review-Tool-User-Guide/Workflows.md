@@ -1,90 +1,86 @@
 ---
-title: Definieren und Verwenden von Inhaltsmoderationsworkflows – Content Moderator
+title: Definieren und Verwenden von Inhaltsworkflows über das Prüfungstool – Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Sie können den Workflow-Designer und die APIs von Azure Content Moderator verwenden, um benutzerdefinierte Workflows und Schwellenwerte basierend auf Ihren Inhaltsrichtlinien zu definieren.
+description: Sie können den Workflow-Designer von Azure Content Moderator verwenden, um benutzerdefinierte Workflows und Schwellenwerte basierend auf Ihren Inhaltsrichtlinien zu definieren.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: 8fe380e3015e5b6929aebcb898eef44d6f6bceda
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 76990fb3b6ed1815ada724f28f8276bac1cf28d4
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213275"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757415"
 ---
-# <a name="define-test-and-use-workflows"></a>Definieren, Testen und Verwenden von Workflows
+# <a name="define-and-use-moderation-workflows"></a>Definieren und Verwenden von Moderationsworkflows
 
-Sie können den Workflow-Designer und die APIs von Azure Content Moderator verwenden, um benutzerdefinierte Workflows und Schwellenwerte basierend auf Ihren Inhaltsrichtlinien zu definieren.
+In diesem Artikel wird erläutert, wie Sie [Workflows](../review-api.md#workflows) auf der Website des [Prüfungstools](https://contentmoderator.cognitive.microsoft.com) einrichten und verwenden. Workflows sind cloudbasierte benutzerdefinierte Filter, mit denen Sie Inhalte effizienter verwalten können. Workflows lassen sich mit einer Vielzahl von Diensten verbinden, sodass Inhalte auf unterschiedliche Weise gefiltert und dann entsprechende Aktionen ausgeführt werden können. In diesem Artikel wird erläutert, wie Sie mithilfe des Content Moderator-Konnektors (standardmäßig enthalten) in einem typischen Moderationsszenario Inhalte filtern und Überprüfungen durch Personen einrichten können.
 
-Die Workflows „verbinden“ sich über Konnektoren mit der Content Moderator-API. Sie können andere APIs verwenden, wenn ein Konnektor für diese API verfügbar ist. In diesem Beispiel verwendet wir den Content Moderator-Konnektor, der standardmäßig enthalten ist.
+## <a name="create-a-new-workflow"></a>Erstellen eines neuen Workflows
 
-## <a name="browse-to-the-workflows-section"></a>Aufrufen des Abschnitts „Workflows“
+Navigieren Sie zur Website des [Content Moderator-Prüfungstools](https://contentmoderator.cognitive.microsoft.com/), und melden Sie sich an. Wählen Sie auf der Registerkarte **Einstellungen** die Option **Workflows**.
 
-Wählen Sie auf der Registerkarte **Einstellungen** die Option **Workflows**.
+![Workflow-Einstellung](images/2-workflows-0.png)
 
-  ![Workflow-Einstellung](images/2-workflows-0.png)
+Wählen Sie auf dem nächsten Bildschirm die Option **Workflow hinzufügen** aus.
 
-## <a name="start-a-new-workflow"></a>Starten eines neuen Workflows
+![Workflow hinzufügen](images/2-workflows-1.png)
 
-Wählen Sie **Workflow hinzufügen**.
+### <a name="assign-a-name-and-description"></a>Zuweisen von Name und Beschreibung
 
-  ![Workflow hinzufügen](images/2-workflows-1.png)
+Benennen Sie den Workflow, geben Sie eine Beschreibung ein, und wählen Sie aus, ob der Workflow Bilder oder Text verarbeitet.
 
-## <a name="assign-a-name-and-description"></a>Zuweisen von Name und Beschreibung
+![Workflowname und -beschreibung](images/image-workflow-create.PNG)
 
-Benennen Sie Ihren Workflow, geben Sie eine Beschreibung ein und wählen Sie, ob der Workflow Bilder oder Text behandelt.
+### <a name="define-evaluation-criteria"></a>Definieren von Auswertungskriterien
 
-  ![Workflowname und -beschreibung](images/ocr-workflow-step-1.PNG)
+Navigieren Sie auf dem nächsten Bildschirm zum Abschnitt **Wenn**. Wählen Sie im oberen Dropdownmenü den Eintrag **Bedingung** aus. Dadurch können Sie die Bedingung konfigurieren, für die der Workflow Aktionen ausführt. Wenn Sie mehrere Bedingungen verwenden möchten, wählen Sie stattdessen **Kombination** aus. 
 
-## <a name="define-the-evaluation-criteria-condition"></a>Definieren der Auswertungskriterien („Bedingung“)
+Wählen Sie als Nächstes einen Konnektor aus. Dieses Beispiel verwendet **Content Moderator**. Je nach ausgewähltem Konnektor werden unterschiedliche Optionen für die Datenausgabe angezeigt. Informationen zum Einrichten weiterer Konnektoren finden Sie im Abschnitt [Konnektoren](./configure.md#connectors) des Leitfadens zu den Einstellungen des Prüfungstools.
 
-Im folgenden Screenshot sehen Sie die Felder und die If-Then-Else-Auswahl, die Sie für Ihre Workflows definieren müssen. Wählen Sie einen Konnektor. Dieses Beispiel verwendet **Content Moderator**. Je nach gewähltem Konnektor ändern sich die verfügbaren Optionen für die Ausgabe.
+![Auswählen des Workflowkonnektors](images/image-workflow-connect-to.PNG)
 
-  ![Workflowbedingung definieren](images/ocr-workflow-step-2-condition.PNG)
+Wählen Sie die gewünschte zu verwendende Ausgabe aus, und legen Sie die entsprechenden Bedingungen für die Überprüfung fest.
 
-Nachdem Sie den gewünschten Konnektor und dessen Ausgabe ausgewählt haben, wählen Sie einen Operator und den Wert für die Bedingung aus.
+![Workflowbedingung definieren](images/image-workflow-condition.PNG)
 
-## <a name="define-the-action-to-take"></a>Definieren der auszuführenden Aktion
+### <a name="define-the-action"></a>Definieren der Aktion
 
-Wählen Sie die zu ergreifende Aktion und die zu erfüllende Bedingung aus. Das folgende Beispiel erstellt eine Bildüberprüfung, weist einen Tag `a` zu und hebt ihn für die angezeigte Bedingung hervor. Sie können auch mehrere Bedingungen kombinieren, um die gewünschten Ergebnisse zu erhalten. Fügen Sie optional einen alternativen (Else) Pfad hinzu.
+Wechseln Sie zum Abschnitt **Then** (Dann), und wählen Sie dort eine Aktion aus. Im folgenden Beispiel wird eine Bildüberprüfung erstellt und eine Markierung zugewiesen. Optional können Sie einen alternativen Pfad („Else“, Sonst) hinzufügen und auch dafür eine Aktion festlegen.
 
-  ![Workflowaktion definieren](images/ocr-workflow-step-3-action.PNG)
+![Workflowaktion definieren](images/image-workflow-action.PNG)
 
-## <a name="save-your-workflow"></a>Speichern Ihres Workflows
+### <a name="save-the-workflow"></a>Speichern des Workflows
 
-Speichern Sie den Workflow abschließend, und notieren Sie den Workflownamen. Sie benötigen den Namen, um einen Moderationsauftrag über die Überprüfungs-API zu starten.
+Notieren Sie sich den Workflownamen. Sie benötigen ihn zum Starten eines Moderationsauftrags mit der Workflow-API (siehe unten). Speichern Sie den Workflow schließlich über die Schaltfläche **Speichern** oben auf der Seite.
 
 ## <a name="test-the-workflow"></a>Testen des Workflows
 
-Nachdem Sie nun einen benutzerdefinierten Workflow definiert haben, testen Sie ihn mit Beispielinhalten.
+Nachdem Sie nun einen benutzerdefinierten Workflow definiert haben, testen Sie ihn mit Beispielinhalten. Navigieren Sie zu **Workflows**, und wählen Sie die entsprechende Schaltfläche **Workflow ausführen** aus.
 
-Wählen Sie die entsprechende Schaltfläche **Workflow ausführen**.
+![Workflowtest](images/image-workflow-execute.PNG)
 
-  ![Workflowtest](images/ocr-workflow-step-6-list.PNG)
+Speichern Sie dieses [Beispielbild](https://moderatorsampleimages.blob.core.windows.net/samples/sample3.png) auf Ihrem lokalen Laufwerk. Wählen Sie dann **Datei(en) auswählen** aus, und laden Sie das Bild in den Workflow hoch.
 
-### <a name="upload-a-file"></a>Hochladen einer Datei
+![Frau im Badeanzug](images/sample-racy.PNG)
 
-Speichern Sie das [Beispielbild](https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png) auf Ihrem lokalen Laufwerk. Um den Workflow zu testen, wählen Sie **Datei(en) auswählen** und laden Sie das Bild hoch.
+### <a name="track-progress"></a>Nachverfolgen des Status
 
-  ![Bilddatei hochladen](images/ocr-workflow-step-7-upload.PNG)
+Sie können den Status des Workflows im nächsten Popupfenster anzeigen.
 
-### <a name="track-the-workflow"></a>Workflow nachverfolgen
+![Workflowausführung nachverfolgen](images/image-workflow-job.PNG)
 
-Sie können den Workflow während der Ausführung nachverfolgen.
+### <a name="verify-workflow-action"></a>Überprüfen der Workflowaktion
 
-  ![Workflowausführung nachverfolgen](images/ocr-workflow-step-4-test.PNG)
+Wechseln Sie zur Registerkarte **Bild**  unter **Überprüfung**, und vergewissern Sie sich, dass eine neu erstellte Bildüberprüfung vorhanden ist.
 
-### <a name="review-any-images-flagged-for-human-moderation"></a>Überprüfen von für die Moderation durch Personen markierten Bildern
+![Überprüfen von Bildern](images/image-workflow-review.PNG)
 
-Um die Bildüberprüfung anzuzeigen, navigieren Sie zur Registerkarte **Bild** unter **Überprüfen**.
+## <a name="next-steps"></a>Nächste Schritte
 
-  ![Überprüfen von Bildern](images/ocr-sample-image-workflow1.PNG)
-
-## <a name="next-steps"></a>Nächste Schritte 
-
-Um den Workflow vom Code aufzurufen, verwenden Sie benutzerdefinierte Workflows mit dem [ `Job`-API-Konsole Schnellstart](../try-review-api-job.md) und [.NET SDK-Schnellstart](../moderation-jobs-quickstart-dotnet.md).
+In diesem Artikel wurde erläutert, wie Sie Moderationsworkflows über das [Prüfungstool](https://contentmoderator.cognitive.microsoft.com) von Content Moderator einrichten und verwenden. Sehen Sie sich als Nächstes die [Anleitung für die REST-API](../try-review-api-workflow.md) an, um zu erfahren, wie Workflows programmgesteuert erstellt werden.

@@ -4,20 +4,20 @@ description: Erfahren Sie, wie Sie Regeln für Lebenszyklusrichtlinien erstellen
 services: storage
 author: yzheng-msft
 ms.service: storage
-ms.topic: article
-ms.date: 11/04/2018
+ms.topic: conceptual
+ms.date: 3/20/2019
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: 93c19bc39f64df21dfa9db2490ab2103aba8191d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e6f4f1feb5c1c78e78ff5d71b08a0e8a40537d13
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086104"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803257"
 ---
-# <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Verwalten des Azure Blob Storage-Lebenszyklus (Vorschau)
+# <a name="manage-the-azure-blob-storage-lifecycle"></a>Verwalten des Azure Blob Storage-Lebenszyklus
 
-Datasets haben eindeutige Lebenszyklen. Früh im Lebenszyklus greifen Benutzer häufig auf einige Daten zu. Aber der Zugriffsbedarf sinkt mit zunehmendem Alter der Daten drastisch. Außerdem gibt es Daten, die in der Cloud lediglich vorgehalten werden und auf die nach der Speicherung nur selten zugegriffen wird. Einige Daten laufen Tage oder Monate nach der Erstellung ab, während andere Daten im Verlauf ihres gesamten Lebens aktiv gelesen und geändert werden. Die Azure Blob Storage-Lebenszyklusverwaltung (Vorschau) bietet eine umfassende, regelbasierte Richtlinie für GPv2- und Blob Storage-Konten. Verwenden Sie die Richtlinie, um Ihre Daten in die entsprechenden Zugriffsebenen zu übertragen oder am Ende des Lebenszyklus der Daten ablaufen zu lassen.
+Datasets haben eindeutige Lebenszyklen. Früh im Lebenszyklus greifen Benutzer häufig auf einige Daten zu. Aber der Zugriffsbedarf sinkt mit zunehmendem Alter der Daten drastisch. Außerdem gibt es Daten, die in der Cloud lediglich vorgehalten werden und auf die nach der Speicherung nur selten zugegriffen wird. Einige Daten laufen Tage oder Monate nach der Erstellung ab, während andere Daten im Verlauf ihres gesamten Lebens aktiv gelesen und geändert werden. Die Azure Blob Storage-Lebenszyklusverwaltung bietet eine umfassende, regelbasierte Richtlinie für GPv2- und Blob Storage-Konten. Verwenden Sie die Richtlinie, um Ihre Daten in die entsprechenden Zugriffsebenen zu übertragen oder am Ende des Lebenszyklus der Daten ablaufen zu lassen.
 
 Mit der Richtlinie für die Lebenszyklusverwaltung können Sie die folgenden Aufgaben ausführen:
 
@@ -34,44 +34,18 @@ Die Richtlinien zur Lebenszyklusverwaltung sind sowohl für GPv2-Konten (General
 
 ## <a name="pricing"></a>Preise 
 
-Die Funktion zur Lebenszyklusverwaltung ist in der Vorschau kostenlos. Kunden werden die gewöhnlichen Betriebskosten für die API-Aufrufe [Blobs auflisten](https://docs.microsoft.com/rest/api/storageservices/list-blobs) und [Blobtarif festlegen](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) in Rechnung gestellt. Weitere Informationen zu den Preisen finden Sie unter [Preise für Blockblobs](https://azure.microsoft.com/pricing/details/storage/blobs/).
+Die Funktion zur Lebenszyklusverwaltung ist kostenlos. Kunden werden die gewöhnlichen Betriebskosten für die API-Aufrufe [Blobs auflisten](https://docs.microsoft.com/rest/api/storageservices/list-blobs) und [Blobtarif festlegen](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) in Rechnung gestellt. Löschvorgänge sind kostenlos. Weitere Informationen zu den Preisen finden Sie unter [Preise für Blockblobs](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-## <a name="register-for-preview"></a>Registrieren für die Vorschau 
-Um sich für die öffentliche Vorschau zu registrieren, müssen Sie eine Anforderung einreichen, damit diese Funktion für Ihr Abonnement registriert werden kann. Anforderungen werden in der Regel innerhalb von 72 Stunden genehmigt. Nach der Genehmigung beinhalten alle vorhandenen und neuen GPv2- oder Blob Storage-Konten in den folgenden Regionen die Funktion: USA, Westen 2, USA, Westen-Mitte, USA, Osten 2 und Europa, Westen. Die Vorschau unterstützt nur Blockblobs. Wie bei den meisten Vorschauversionen sollte diese Funktion bis zum Erreichen der allgemeinen Verfügbarkeit nicht für Produktionsworkloads verwendet werden.
-
-Um eine Anforderung zu senden, führen Sie die folgenden PowerShell- oder CLI-Befehle aus.
-
-### <a name="powershell"></a>PowerShell
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-So senden Sie eine Anforderung:
-
-```powershell
-Register-AzProviderFeature -FeatureName DLM -ProviderNamespace Microsoft.Storage 
-```
-Sie können den Genehmigungsstatus der Anforderung mit dem folgenden Befehl überprüfen:
-```powershell
-Get-AzProviderFeature -FeatureName DLM -ProviderNamespace Microsoft.Storage
-```
-Mit der Genehmigung und der ordnungsgemäßen Registrierung erhalten Sie den Status *Registriert*, wenn Sie die vorherigen Anforderungen übermitteln.
-
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-
-So senden Sie eine Anforderung: 
-```cli
-az feature register --namespace Microsoft.Storage --name DLM
-```
-Sie können den Genehmigungsstatus der Anforderung mit dem folgenden Befehl überprüfen:
-```cli
-az feature show --namespace Microsoft.Storage --name DLM
-```
-Mit der Genehmigung und der ordnungsgemäßen Registrierung erhalten Sie den Status *Registriert*, wenn Sie die vorherigen Anforderungen übermitteln.
+## <a name="regional-availability"></a>Regionale Verfügbarkeit 
+Die Funktion zur Lebenszyklusverwaltung ist in allen öffentlichen Azure-Regionen verfügbar. 
 
 
 ## <a name="add-or-remove-a-policy"></a>Hinzufügen oder Entfernen einer Richtlinie 
 
-Sie können eine Richtlinie über das Azure-Portal bzw. mit [PowerShell](https://www.powershellgallery.com/packages/Az.Storage), der [Azure CLI](https://docs.microsoft.com/cli/azure/ext/storage-preview/storage/account/management-policy?view=azure-cli-latest#ext-storage-preview-az-storage-account-management-policy-create), [REST-APIs](https://docs.microsoft.com/rest/api/storagerp/managementpolicies/createorupdate) oder Clienttools in den folgenden Sprachen hinzufügen, bearbeiten oder entfernen: [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview), [Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/), [Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0) und [Ruby](https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2). 
+Sie können eine Richtlinie über das Azure-Portal, [Azure PowerShell](https://github.com/Azure/azure-powershell/releases), die Azure-Befehlszeilenschnittstelle, [REST-APIs](https://docs.microsoft.com/en-us/rest/api/storagerp/managementpolicies) oder ein Clienttool hinzufügen, bearbeiten oder entfernen. In diesem Artikel wird die Verwaltung einer Richtlinie über das Portal und über PowerShell erläutert.  
+
+> [!NOTE]
+> Wenn Sie Firewallregeln für Ihr Speicherkonto aktivieren, werden Anforderungen für die Lebenszyklusverwaltung möglicherweise blockiert. Sie können die Sperre dieser Anforderungen durch Bereitstellen von Ausnahmen aufheben. Weitere Informationen finden Sie im Abschnitt „Ausnahmen“ unter [Konfigurieren von Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 
 ### <a name="azure-portal"></a>Azure-Portal
 
@@ -79,28 +53,34 @@ Sie können eine Richtlinie über das Azure-Portal bzw. mit [PowerShell](https:/
 
 2. Wählen Sie die Option **Alle Ressourcen** und dann Ihr Speicherkonto aus.
 
-3. Wählen Sie **Lebenszyklusverwaltung** unter der Gruppe „Blobdienst“ aus, um Ihre Richtlinie anzuzeigen oder zu ändern.
+3. Wählen Sie unter **Blobdienst** die Option **Lebenszyklusverwaltung** aus, um Ihre Richtlinie anzuzeigen oder zu ändern.
 
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-$rules = '{ ... }'
+#Install the latest module
+Install-Module -Name Az -Repository PSGallery 
 
-Set-AzStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName] -StorageAccountName [storageAccountName] -Policy $rules 
+#Create a new action object
 
-Get-AzStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName] -StorageAccountName [storageAccountName]
+$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -daysAfterModificationGreaterThan 2555
+$action = Add-AzStorageAccountManagementPolicyAction -InputObject $action -BaseBlobAction TierToArchive -daysAfterModificationGreaterThan 90
+$action = Add-AzStorageAccountManagementPolicyAction -InputObject $action -BaseBlobAction TierToCool -daysAfterModificationGreaterThan 30
+$action = Add-AzStorageAccountManagementPolicyAction -InputObject $action -SnapshotAction Delete -daysAfterCreationGreaterThan 90
+
+# Create a new filter object
+# PowerShell automatically sets BlobType as “blockblob” because it is the only available option currently
+$filter = New-AzStorageAccountManagementPolicyFilter -PrefixMatch ab,cd 
+
+#Create a new rule object
+#PowerShell automatically sets Type as “Lifecycle” because it is the only available option currently
+$rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Filter $filter
+
+#Set the policy 
+$policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
+
 ```
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-
-```
-az account set --subscription "[subscriptionName]”
-az extension add --name storage-preview
-az storage account management-policy show --resource-group [resourceGroupName] --account-name [accountName]
-```
-
-> [!NOTE]
-> Wenn Sie Firewallregeln für Ihr Speicherkonto aktivieren, werden Anforderungen für die Lebenszyklusverwaltung möglicherweise blockiert. Sie können die Sperre dieser Anforderungen durch Bereitstellen von Ausnahmen aufheben. Weitere Informationen finden Sie im Abschnitt „Ausnahmen“ unter [Konfigurieren von Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 
 ## <a name="policy"></a>Richtlinie
 
@@ -108,10 +88,10 @@ Eine Richtlinie zur Lebenszyklusverwaltung ist eine Sammlung von Regeln in einem
 
 ```json
 {
-  "version": "0.5",
   "rules": [
     {
       "name": "rule1",
+      "enabled": true,
       "type": "Lifecycle",
       "definition": {...}
     },
@@ -125,27 +105,27 @@ Eine Richtlinie zur Lebenszyklusverwaltung ist eine Sammlung von Regeln in einem
 ```
 
 
-Eine Richtlinie erfordert zwei Parameter:
+Eine Richtlinie ist eine Sammlung von Regeln:
 
 | Parametername | Parametertyp | Notizen |
 |----------------|----------------|-------|
-| Version        | Eine Zeichenfolge, die als `x.x` ausgedrückt ist. | Die Versionsnummer der Vorschau ist 0.5. |
-| Regeln          | Ein Array von Regelobjekten | Jede Richtlinie muss mindestens eine Regel enthalten. In der Vorschauphase können Sie bis zu vier Regeln pro Richtlinie angeben. |
+| Regeln          | Ein Array von Regelobjekten | Eine Richtlinie muss mindestens eine Regel enthalten. Sie können in einer Richtlinie bis zu 100 Regeln definieren.|
 
-Jede Regel in der Richtlinie erfordert drei Parameter:
+Jede Regel in der Richtlinie umfasst mehrere Parameter:
 
-| Parametername | Parametertyp | Notizen |
-|----------------|----------------|-------|
-| NAME           | Zeichenfolge | Ein Regelname kann aus einer beliebigen Kombination von alphanumerischen Zeichen bestehen. Bei Regelnamen wird die Groß-/Kleinschreibung unterschieden. Er muss innerhalb einer Richtlinie eindeutig sein. |
-| type           | Ein Enumerationswert | Der gültige Wert für die Vorschau ist `Lifecycle`. |
-| Definition     | Ein Objekt, das die Lebenszyklusregel definiert | Jede Definition beinhaltet einen Filtersatz und einen Aktionssatz. |
+| Parametername | Parametertyp | Notizen | Erforderlich |
+|----------------|----------------|-------|----------|
+| name           | Zeichenfolge |Ein Regelname kann bis zu 256 alphanumerische Zeichen enthalten. Bei Regelnamen wird die Groß-/Kleinschreibung unterschieden.  Er muss innerhalb einer Richtlinie eindeutig sein. | True |
+| Aktiviert | Boolescher Wert | Ein optionaler boolescher Wert, über den eine Regel temporär deaktiviert werden kann. Der Standardwert ist TRUE, wenn dieser Wert nicht festgelegt ist. | False | 
+| type           | Ein Enumerationswert | Aktuell ist `Lifecycle` der gültige Typ. | True |
+| Definition     | Ein Objekt, das die Lebenszyklusregel definiert | Jede Definition beinhaltet einen Filtersatz und einen Aktionssatz. | True |
 
 ## <a name="rules"></a>Regeln
 
 Jede Regeldefinition enthält einen Filtersatz und einen Aktionssatz. Der [Filtersatz](#rule-filters) schränkt Regelaktionen auf eine bestimmte Menge von Objekten innerhalb eines Containers oder auf Objektnamen ein. Der [Aktionssatz](#rule-actions) wendet die Ebenen- oder Löschaktionen auf den gefilterten Satz von Objekten an.
 
 ### <a name="sample-rule"></a>Beispielregel
-Die folgende Beispielregel filtert das Konto so, dass Aktionen nur auf `container1/foo` ausgeführt werden. Führen Sie für alle Objekte, die sich innerhalb von `container1` befinden **UND** mit `foo` beginnen, diese Aktionen aus: 
+Über die folgende Beispielregel wird das Konto so gefiltert, dass Aktionen für Objekte ausgeführt werden, die sich in `container1` befinden **UND** mit `foo` beginnen.  
 
 - Blob 30 Tage nach der letzten Änderung in die kalte Ebene verschieben
 - Blob 90 Tage nach der letzten Änderung in die Archivebene verschieben
@@ -154,10 +134,10 @@ Die folgende Beispielregel filtert das Konto so, dass Aktionen nur auf `containe
 
 ```json
 {
-  "version": "0.5",
   "rules": [
     {
       "name": "ruleFoo",
+      "enabled": true,
       "type": "Lifecycle",
       "definition": {
         "filters": {
@@ -185,18 +165,18 @@ Die folgende Beispielregel filtert das Konto so, dass Aktionen nur auf `containe
 
 Filter schränken Regelaktionen auf eine Teilmenge der Blobs innerhalb des Speicherkontos ein. Wenn mehrere Filter definiert sind, wird ein logisches `AND` für alle Filter ausgeführt.
 
-Diese Filter sind in der Vorschauphase gültig:
+Gültige Filter:
 
 | Filtername | Filtertyp | Notizen | Ist erforderlich |
 |-------------|-------------|-------|-------------|
-| blobTypes   | Ein Array von vordefinierten Enumerationswerten. | In der Vorschauversion wird nur `blockBlob` unterstützt. | Ja |
-| prefixMatch | Ein Array von Zeichenfolgen für Präfixe, mit denen Übereinstimmung erzielt werden soll. Eine Präfixzeichenfolge muss mit einem Containernamen beginnen. Wenn Sie beispielsweise alle Blobs unter „<https://myaccount.blob.core.windows.net/container1/foo/>.“ für eine Regel zuordnen möchten, lautet der prefixMatch-Wert `container1/foo`. | Wenn Sie prefixMatch nicht definieren, gelten die Regeln für alle Blobs im Konto. | Nein  |
+| blobTypes   | Ein Array von vordefinierten Enumerationswerten. | In der aktuellen Version wird `blockBlob` unterstützt. | Ja |
+| prefixMatch | Ein Array von Zeichenfolgen für Präfixe, mit denen Übereinstimmung erzielt werden soll. In jeder Regel können bis zu 10 Präfixe definiert werden. Eine Präfixzeichenfolge muss mit einem Containernamen beginnen. Wenn Sie beispielsweise alle Blobs unter „https://myaccount.blob.core.windows.net/container1/foo/...“ für eine Regel zuordnen möchten, lautet der prefixMatch-Wert `container1/foo`. | Wenn Sie prefixMatch nicht definieren, gilt die Regel für alle Blobs im Speicherkonto.  | Nein  |
 
 ### <a name="rule-actions"></a>Regelaktionen
 
-Aktionen werden auf die gefilterten Blobs angewendet, wenn die Ausführungsbedingung erfüllt ist.
+Aktionen werden auf die gefilterten Blobs angewandt, wenn die Ausführungsbedingung erfüllt ist.
 
-In der Vorschauversion unterstützt die Lebenszyklusverwaltung Ebenenverschiebung und Löschen von Blobs sowie Löschen von Blobmomentaufnahmen. Definieren Sie mindestens eine Aktion für jede Regel für Blobs oder Blobmomentaufnahmen.
+Bei der Lebenszyklusverwaltung werden die Ebenenverschiebung und das Löschen von Blobs sowie von Blobmomentaufnahmen unterstützt. Definieren Sie mindestens eine Aktion für jede Regel für Blobs oder Blobmomentaufnahmen.
 
 | Aktion        | Basisblob                                   | Momentaufnahme      |
 |---------------|---------------------------------------------|---------------|
@@ -204,10 +184,10 @@ In der Vorschauversion unterstützt die Lebenszyklusverwaltung Ebenenverschiebun
 | tierToArchive | Unterstützt Blobs, die sich aktuell in der heißen oder der kalten Ebene befinden. | Nicht unterstützt |
 | delete        | Unterstützt                                   | Unterstützt     |
 
-> [!NOTE]
-> Wenn für das gleiche Blob mehrere Aktionen definiert sind, wendet die Lebenszyklusverwaltung die am wenigsten teure Aktion auf das Blob an. Beispielsweise ist die Aktion `delete` kostengünstiger als die Aktion `tierToArchive`. Die Aktion `tierToArchive` ist kostengünstiger als die Option `tierToCool`.
+>[!NOTE] 
+>Wenn für das gleiche Blob mehrere Aktionen definiert sind, wendet die Lebenszyklusverwaltung die am wenigsten teure Aktion auf das Blob an. Beispielsweise ist die Aktion `delete` kostengünstiger als die Aktion `tierToArchive`. Die Aktion `tierToArchive` ist kostengünstiger als die Option `tierToCool`.
 
-In der Vorschau basieren die Ausführungsbedingungen für Aktionen auf dem Alter. Basisblobs verwenden den Zeitpunkt der letzten Änderung, um das Alter nachzuverfolgen, während Blobmomentaufnahmen für den gleichen Zweck den Erstellungszeitpunkt der Momentaufnahme verwenden.
+Die Ausführungsbedingungen basieren auf dem Alter. Basisblobs verwenden den Zeitpunkt der letzten Änderung, um das Alter nachzuverfolgen, während Blobmomentaufnahmen für den gleichen Zweck den Erstellungszeitpunkt der Momentaufnahme verwenden.
 
 | Aktionsausführungsbedingung | Wert der Bedingung | BESCHREIBUNG |
 |----------------------------|-----------------|-------------|
@@ -223,10 +203,10 @@ Dieses Beispiel zeigt den Übergang von Blockblobs mit dem Präfix `container1/f
 
 ```json
 {
-  "version": "0.5",
   "rules": [
     {
       "name": "agingRule",
+      "enabled": true,
       "type": "Lifecycle",
       "definition": {
         "filters": {
@@ -247,14 +227,14 @@ Dieses Beispiel zeigt den Übergang von Blockblobs mit dem Präfix `container1/f
 
 ### <a name="archive-data-at-ingest"></a>Archivieren von Daten bei der Erfassung 
 
-Außerdem gibt es Daten, die in der Cloud lediglich vorgehalten werden und auf die nach der Speicherung nur sehr selten oder gar nicht zugegriffen wird. Archivieren Sie diese Daten sofort nach der Erfassung. Die folgende Lebenszyklusrichtlinie ist so konfiguriert, dass Daten nach der Erfassung archiviert werden. In diesem Beispiel werden Blockblobs im Speicherkonto in Container `archivecontainer` sofort an eine Archivebene überführt. Die unmittelbare Umstellung wird durch die Ausführung der Aktion für Blobs 0 Tage nach dem Zeitpunkt der letzten Änderung erreicht:
+Außerdem gibt es Daten, die in der Cloud lediglich vorgehalten werden und auf die nach der Speicherung nur sehr selten oder gar nicht zugegriffen wird. Die folgende Lebenszyklusrichtlinie ist so konfiguriert, dass Daten nach der Erfassung archiviert werden. In diesem Beispiel werden Blockblobs im Speicherkonto im Container `archivecontainer` an eine Archivebene überführt. Die Umstellung wird durch die Ausführung der Aktion für Blobs 0 Tage nach dem Zeitpunkt der letzten Änderung erreicht:
 
 ```json
 {
-  "version": "0.5",
   "rules": [
     {
       "name": "archiveRule",
+      "enabled": true,
       "type": "Lifecycle",
       "definition": {
         "filters": {
@@ -279,10 +259,10 @@ Es wird erwartet, dass einige Daten Tage oder Monate nach der Erstellung ablaufe
 
 ```json
 {
-  "version": "0.5",
   "rules": [
     {
       "name": "expirationRule",
+      "enabled": true,
       "type": "Lifecycle",
       "definition": {
         "filters": {
@@ -305,11 +285,11 @@ Bei Daten, die regelmäßig geändert und auf die während ihrer Lebensdauer reg
 
 ```json
 {
-  "version": "0.5",
   "rules": [
     {
       "name": "snapshotRule",
-      "type": "Lifecycle",
+      "enabled": true,
+      "type": "Lifecycle",      
     "definition": {
         "filters": {
           "blobTypes": [ "blockBlob" ],
@@ -327,7 +307,7 @@ Bei Daten, die regelmäßig geändert und auf die während ihrer Lebensdauer reg
 ```
 ## <a name="faq---i-created-a-new-policy-why-are-the-actions-not-run-immediately"></a>FAQ: Ich habe eine neue Richtlinie erstellt. Warum werden die Aktionen nicht sofort ausgeführt? 
 
-Die Plattform führt die Lebenszyklusrichtlinie ein Mal täglich aus. Sobald Sie eine neue Richtlinie festgelegt haben, kann es bis zu 24 Stunden dauern, bis einige Aktionen (z.B. Ebenenverschiebung und Löschen) gestartet und ausgeführt werden.  
+Die Plattform führt die Lebenszyklusrichtlinie ein Mal täglich aus. Nachdem Sie eine neue Richtlinie konfiguriert haben, kann es bis zu 24 Stunden dauern, bis einige Aktionen (z. B. Ebenenverschiebung und Löschung) das erste Mal ausgeführt werden.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

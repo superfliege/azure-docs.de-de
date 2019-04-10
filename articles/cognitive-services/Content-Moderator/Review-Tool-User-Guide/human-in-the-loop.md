@@ -1,36 +1,52 @@
 ---
-title: Einbinden von Überprüfungen durch Personen in eine Inhaltsmoderation – Content Moderator
+title: Kennenlernen der Konzepte des Prüfungstools – Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Wie Computer und Menschen zusammen optimale Ergebnisse für die Inhaltsmoderation erzielen
+description: Erfahren Sie etwas über das Content Moderator-Prüfungstool, eine Website, über die die Moderation von Überprüfungen mit künstlicher Intelligenz und durch Personen koordiniert wird.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
-ms.date: 01/10/2019
+ms.date: 03/15/2019
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.author: sajagtap
-ms.openlocfilehash: 4a8f27a94c5e14c34c2a6500dc555c4281d0ecd7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b7ec997fd3e9bfe294050893d80fd57a96a47aae
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224529"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755879"
 ---
-# <a name="learn-about-the-review-tool"></a>Erfahren Sie mehr über das Überprüfungstool
+# <a name="content-moderator-review-tool"></a>Content Moderator-Prüfungstool
 
-Die besten Ergebnisse werden erzielt, wenn Mensch und Computer bei der Inhaltsmoderation zusammenarbeiten. Computer ergänzen effektiv Überprüfungen durch Personen, bei denen die Vorhersagegenauigkeit in einem realen Kontext unterstützt oder verringert werden muss. Das Ergebnis ist ein hybrider Inhaltsmoderationsprozess, der besser funktioniert, als wenn Mensch oder Computer allein arbeiten würden.
+Azure Content Moderator umfasst Dienste für die Kombination der Inhaltsmoderation mit maschinellem Lernen und Überprüfungen durch Personen. Die Website des [Prüfungstools](https://contentmoderator.cognitive.microsoft.com) ist ein benutzerfreundliches Front-End, das einen detaillierten Zugriff auf diese Dienste ermöglicht.
+
+![Prüfungstool-Dashboard in einem Browser](./images/0-dashboard.png)
 
 ## <a name="what-it-does"></a>Funktionsbeschreibung
 
-In Kombination mit den computergestützten Moderations-APIs ermöglicht es das Tool für die Überprüfung durch Personen, diese wichtigen Aufgaben in Bezug auf den Lebenszyklus der Inhaltsmoderation zu erfüllen.
+Bei Verwendung in Kombination mit den computergestützten Moderations-APIs ermöglicht das [Prüfungstool](https://contentmoderator.cognitive.microsoft.com) die Durchführung folgender Aufgaben im Inhaltsmoderationsablauf:
 
-1. Automatisieren der Erstellung von Überprüfungen durch Personen aus den Ergebnissen der zugrundeliegenden Moderations-API
-2. Verwenden eines Tools (Prüfungstool und Überprüfungs-API) zum Moderieren mehrerer Formate (Text, Bild und Video)
-3. Zuweisen oder Eskalieren von Inhaltsüberprüfungen an mehrere, nach Inhaltskategorie oder Erfahrungsstufe organisierte Überprüfungsteams
-4. Verwenden von Standardworkflows oder Definieren von benutzerdefinierten Workflows mit flexiblen Regeln und ohne das Schreiben von Code
-5. Hinzufügen von Überprüfungen durch den Menschen zu beliebigen APIs oder Geschäftsprozessen durch einfaches Erstellen eines Konnektors
-6. Verwenden von Standardkonnektoren zum Überprüfen von Ergebnissen von Microsoft PhotoDNA, aus Textanalysen und der Gesichtserkennungs-API
-7. Abrufen von Leistungsmetriken zu Ihren Inhaltsmoderationsprozessen
+- Verwenden einer Gruppe von Tools für die Moderation von Inhalten in mehreren Formaten (Text, Bild und Video)
+- Automatisieren der Erstellung von [Überprüfungen](../review-api.md#reviews) durch Personen aus den Ergebnissen der Moderations-API
+- Zuweisen oder Eskalieren von Inhaltsüberprüfungen an mehrere, nach Inhaltskategorie oder Erfahrungsstufe organisierte Überprüfungsteams
+- Verwenden von standardmäßigen oder benutzerdefinierten Logikfiltern ([Workflows](../review-api.md#workflows)) zum Sortieren und Nachverfolgen von Inhalten ohne jeglichen Code
+- Verwenden von [Konnektoren](./configure.md#connectors) zum Verarbeiten von Inhalten mit Microsoft PhotoDNA, Textanalyse und Gesichtserkennungs-APIs zusätzlich zu den Content Moderator-APIs
+- Erstellen eines benutzerdefinierten Konnektors zum Erstellen von Workflows für APIs oder Geschäftsprozesse
+- Abrufen von Leistungsmetriken zu Ihren Inhaltsmoderationsprozessen
 
-![Content Moderator-Tool für die Überprüfung von Videos](../images/video-review-default-view.png)
+## <a name="review-tool-dashboard"></a>Prüfungstool-Dashboard
+
+Auf der Registerkarte **Dashboard** können Sie wichtige Metriken für im Tool erfolgte Inhaltsüberprüfungen anzeigen. Es wird die Anzahl der gesamten, abgeschlossenen und ausstehenden Überprüfungen für Bild-, Text- und Videoinhalte angezeigt. Zudem werden die Aufschlüsselung der Benutzer und Teams, die Überprüfungen durchgeführt haben, sowie die angewandten Moderationsmarkierungen angezeigt.
+
+![Dashboards anzeigen](images/0-dashboard.png)
+
+## <a name="review-tool-credentials"></a>Anmeldeinformationen für das Prüfungstool
+
+Bei der Registrierung für das [Prüfungstool](https://contentmoderator.cognitive.microsoft.com) werden Sie aufgefordert, eine Azure-Region für Ihr Konto auszuwählen. Dies ist darauf zurückzuführen, dass das [Prüfungstool](https://contentmoderator.cognitive.microsoft.com) einen kostenlosen Testschlüssel für Azure Content Moderator-Dienste generiert. Diesen Schlüssel benötigen Sie für den Zugriff auf die Dienste über einen REST-Aufruf oder ein Client-SDK. Sie können Ihren Schlüssel und die API-Endpunkt-URL durch Auswählen von **Einstellungen** > **Anmeldeinformationen** anzeigen.
+
+![Anmeldeinformationen in Content Moderator](images/settings-6-credentials.png)
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Informationen zum Zugreifen auf Ressourcen des Prüfungstools und zum Ändern von Einstellungen finden Sie unter [Konfigurieren des Prüfungstools](./configure.md).

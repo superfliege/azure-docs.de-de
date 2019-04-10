@@ -95,7 +95,7 @@ Zusätzlich zu den Telemetriedaten, die Ihre Anwendung möglicherweise in das Ga
 
 
 ### <a name="application-data"></a>Anwendungsdaten
-Wenn Sie Application Insights durch Installation eines Instrumentierungspakets für eine Anwendung aktivieren, werden auf Leistung und Betrieb der Anwendung bezogene Metriken und Protokolle gesammelt. Dies umfasst detaillierte Informationen zu Seitenansichten, Anwendungsanforderungen und Ausnahmen. Application Insights speichert die gesammelten Daten in Azure Monitor. Es enthält umfassende Tools zum Analysieren der Daten, aber Sie können sie auch mithilfe von Tools wie Metrikanalysen und Log Analytics mit Daten aus anderen Quellen analysieren.
+Wenn Sie Application Insights durch Installation eines Instrumentierungspakets für eine Anwendung aktivieren, werden auf Leistung und Betrieb der Anwendung bezogene Metriken und Protokolle gesammelt. Dies umfasst detaillierte Informationen zu Seitenansichten, Anwendungsanforderungen und Ausnahmen. Application Insights speichert die gesammelten Daten in Azure Monitor. Es enthält umfassende Tools zum Analysieren der Daten, aber Sie können sie auch mithilfe von Tools wie Metrikanalysen und Protokollanalysen mit Daten aus anderen Quellen analysieren.
 
 Sie können mit Application Insights auch [eine benutzerdefinierte Metrik erstellen](../../application-insights/app-insights-api-custom-events-metrics.md).  So können Sie Ihre eigene Logik zum Berechnen eines numerischen Werts und anschließendem Speichern dieses Werts mit anderen Metriken definieren, auf die über Metrikanalysen zugegriffen werden kann und die für [automatische Skalierung](autoscale-custom-metric.md) und Metrikwarnungen verwendet werden können.
 

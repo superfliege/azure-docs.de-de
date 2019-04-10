@@ -24,6 +24,14 @@ sections:
               src: media/index/data-catalog.svg
             text: Azure-Portal
             href: 'https://docs.microsoft.com/azure/data-catalog/data-catalog-get-started'
+  - title: Schritt-für-Schritt-Tutorials
+    items:
+      - type: paragraph
+        text: 'Hier erfahren Sie, wie Sie Ressourcen in Azure Data Catalog registrieren, suchen, kommentieren, verwalten und löschen:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="register-data-assets-tutorial">Registrieren von Datenressourcen in Azure Data Catalog</a>
   - title: Verweis
     items:
       - type: list

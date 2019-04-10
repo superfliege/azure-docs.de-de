@@ -1,6 +1,6 @@
 ---
 title: Migrieren Ihrer vorhandenen Daten zu einem Tabellen-API-Konto in Azure Cosmos DB
-description: Erfahren Sie, wie Sie lokale oder Clouddaten in ein Azure-Tabellen-API-Konto in Azure Cosmos DB migrieren oder importieren.
+description: Hier erfahren Sie, wie Sie lokale Daten oder Clouddaten zu einem Azure-Tabellen-API-Konto in Azure Cosmos DB migrieren bzw. in ein solches Konto importieren.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/07/2017
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: e709aa25a8fa0a8ff6c94bf2e813151e5ecbae65
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a0d2927024dff78021d433b965bb6c0149236ddd
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006243"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876816"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Migrieren Ihrer Daten zum Azure Cosmos DB-Konto für die Tabellen-API
 
@@ -43,7 +43,7 @@ Um eine Migration von Tabellendaten durchzuführen, führen Sie die folgenden Au
 
    ```bash
     dt.exe [/<option>:<value>] /s:<source-name> [/s.<source-option>:<value>] /t:<target-name> [/t.<target-option>:<value>] 
-```
+   ```
 
 Optionen für den Befehl:
 
@@ -147,4 +147,4 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 Im nächsten Tutorial erfahren Sie, wie Sie Daten mithilfe der Table-API von Azure Cosmos DB abfragen. 
 
 > [!div class="nextstepaction"]
->[Abfragen von Daten](../cosmos-db/tutorial-query-table.md)
+>[Tutorial: Abfragen von Azure Cosmos BD mithilfe der Tabellen-API](../cosmos-db/tutorial-query-table.md)

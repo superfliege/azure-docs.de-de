@@ -3,17 +3,17 @@ title: 'Schnellstart: Visualisieren von Daten mithilfe einer SQL-Abfrage in Powe
 description: 'In diesem Schnellstart erfahren Sie, wie Sie eine der drei Optionen zum Visualisieren von Daten in Power BI verwenden: eine SQL-Abfrage für einen Azure Data Explorer-Cluster.'
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.openlocfilehash: 4eb6fdd5b5a78f0afb00265ebd957231464a9083
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: f41bd1dcd354d75788569f5c1f24a50c604b5737
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977283"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756352"
 ---
 # <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Schnellstart: Visualisieren von Daten mithilfe des Azure Data Explorer-Connectors für Power BI
 
@@ -69,7 +69,7 @@ In der Regel verwenden Sie die native Abfragesprache mit Azure Data Explorer. Hi
 
     ![Anmelden](media/power-bi-sql-query/sign-in.png)
 
-1. Klicken Sie auf dem Bildschirm **help.kusto.windows.net: Beispiele**  auf **Laden**.
+1. Wählen Sie auf dem Bildschirm **help.kusto.windows.net: Beispiele** die Option **Laden** aus.
 
     ![Laden von Daten](media/power-bi-sql-query/load-data.png)
 
@@ -86,4 +86,4 @@ Wenn Sie den Bericht, den Sie für diesen Schnellstart erstellt haben, nicht meh
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Quickstart: Visualize data using an imported query in Power BI](power-bi-connector.md) (Schnellstart: Visualisieren von Daten mithilfe einer importierten Abfrage in Power BI)
+> [Schnellstart: Visualisieren von Daten mithilfe einer importierten Abfrage in Power BI](power-bi-connector.md)

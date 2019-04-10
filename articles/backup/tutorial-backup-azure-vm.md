@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 85e5fc7e1c8a4561b51afaf0d665fedb6d9cde1f
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 2a35435f56a4bb09a8a1958fbc175ef7c889c380
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258376"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863014"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>Sichern virtueller Azure-Computer mit PowerShell
 
@@ -88,7 +88,7 @@ Sicherungen werden gemäß dem in der Sicherungsrichtlinie angegebenen Zeitplan 
 In diesem Tutorial führen Sie zum Aktivieren und Sichern des virtuellen Azure-Computers die folgenden Schritte aus:
 
 1. Geben Sie mit [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer) einen Container im Tresor an, der Ihre Sicherungsdaten enthält.
-2. Bei jedem für die Sicherung vorgesehenen virtuellen Computer handelt es sich um ein Element. Rufen Sie zum Starten eines Sicherungsauftrags mit [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem) Informationen zum virtuellen Computer ab.
+2. Bei jedem für die Sicherung vorgesehenen virtuellen Computer handelt es sich um ein Element. Zum Starten eines Sicherungsauftrags rufen Sie mit [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem) Informationen zum virtuellen Computer ab.
 3. Führen Sie mit dem Cmdlet [Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem) eine Ad-hoc-Sicherung aus. 
     - Beim ersten Sicherungsauftrag wird ein vollständiger Wiederherstellungspunkt erstellt.
     - Bei jedem Sicherungsauftrag nach der ersten Sicherung werden inkrementelle Wiederherstellungspunkte erstellt.

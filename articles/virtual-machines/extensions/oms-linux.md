@@ -76,7 +76,7 @@ Die folgende Tabelle enthält eine Zuordnung der Version der Azure Monitor-VM-Er
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
-Azure Security Center stellt den Log Analytics-Agent automatisch bereit und verbindet ihn mit einem Standardarbeitsbereich von Log Analytics, der von ASC in Ihrem Azure-Abonnement erstellt wird. Wenn Sie Azure Security Center verwenden, führen Sie nicht die Schritte in diesem Dokument aus. Andernfalls überschreiben Sie den konfigurierten Arbeitsbereich und unterbrechen die Verbindung mit Azure Security Center.
+Azure Security Center stellt den Log Analytics-Agent automatisch bereit und verbindet ihn mit einem standardmäßigen Log Analytics-Arbeitsbereich, der von ASC in Ihrem Azure-Abonnement erstellt wird. Wenn Sie Azure Security Center verwenden, führen Sie nicht die Schritte in diesem Dokument aus. Andernfalls überschreiben Sie den konfigurierten Arbeitsbereich und unterbrechen die Verbindung mit Azure Security Center.
 
 ### <a name="internet-connectivity"></a>Internetkonnektivität
 

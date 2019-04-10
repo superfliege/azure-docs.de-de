@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 10/5/2018
+ms.date: 04/02/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 017c8c2f060f969f2e7f8d387dcbafa2dac426d3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7b7adcc85b9274af45ddab653e875377e959e40c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842944"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876325"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>Tutorial: Erstellen einer ExpressRoute-Zuordnung per Azure Virtual WAN (Vorschauversion)
 
@@ -47,8 +47,7 @@ Bevor Sie Virtual WAN konfigurieren können, müssen Sie Ihr Abonnement zunächs
 
 **Hinweise zur Vorschauversion:**
 
-* Regionale Verfügbarkeit: USA, Westen-Mitte
-* Die ExpressRoute-Leitung muss in einem Land aktiviert werden, das [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported) unterstützt.
+Die ExpressRoute-Leitung muss in einem Land aktiviert werden, das [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported) unterstützt.
 
 ## <a name="vnet"></a>1. Erstellen eines virtuellen Netzwerks
 
@@ -70,7 +69,7 @@ Navigieren Sie in einem Browser zum [Azure-Portal (Vorschauversion)](https://aka
 
 ## <a name="hub"></a>4. Suchen und Zuordnen einer Verbindung mit dem Hub
 
-1. Wählen Sie Ihr vWAN und unter **Virtual WAN Architecture** (Virtual WAN-Architektur) dann die Option **ExpressRoute-Leitungen**.
+1. Wählen Sie Ihr vWAN und unter **Virtual WAN Architecture** (Virtual WAN-Architektur) dann die Option **ExpressRoute-Leitungen** aus.
 1. Klicken Sie für Ihr Abonnement bzw. Ihre Abonnements auf **Select ExpressRoute circuit** (ExpressRoute-Leitung auswählen), wenn sich die ExpressRoute-Leitung unter demselben Abonnement wie Ihr vWAN befindet. 
 1. Wählen Sie über das Pulldownmenü die ExpressRoute-Leitung, die Sie dem Hub zuordnen möchten.
 1. Falls sich die ExpressRoute-Leitung nicht unter demselben Abonnement befindet oder Sie einen [Autorisierungsschlüssel und eine Peer-ID](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md) erhalten haben, wählen Sie die Option **Find a circuit redeeming an authorization key** (Leitung durch Einlösen eines Autorisierungsschlüssels finden).

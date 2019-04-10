@@ -133,7 +133,7 @@ cd oms-log-analytics-firehose-nozzle
 
 #### <a name="set-environment-variables"></a>Festlegen von Umgebungsvariablen
 
-Nun können Sie die Umgebungsvariablen in der Datei „manifest.yml“ in Ihrem aktuellen Verzeichnis festlegen. Unten ist das App-Manifest für die Nozzle-Komponente angegeben. Ersetzen Sie die Werte durch Ihre spezifischen Log Analytics-Informationen.
+Nun können Sie die Umgebungsvariablen in der Datei „manifest.yml“ in Ihrem aktuellen Verzeichnis festlegen. Unten ist das App-Manifest für die Nozzle-Komponente angegeben. Ersetzen Sie die Werte durch die spezifischen Informationen Ihres Log Analytics-Arbeitsbereichs.
 
 ```
 OMS_WORKSPACE             : Log Analytics workspace ID: Open your Log Analytics workspace in the Azure portal, select **Advanced settings**, select **Connected Sources**, and select **Windows Servers**.

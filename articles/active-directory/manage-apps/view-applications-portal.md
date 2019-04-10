@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: arvinh
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec039beecdcfa6dacd19e5910209c58f13543fce
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1ca57746d1b13d2020f78d3c527e7d0c7a444769
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199883"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918398"
 ---
 # <a name="view-your-azure-active-directory-tenant-applications"></a>Anzeigen Ihrer Azure Active Directory-Mandantenanwendungen
 
@@ -39,23 +39,19 @@ Ihre Azure AD-Mandantenanwendungen können im Azure-Portal im Abschnitt **Untern
 
 So suchen Sie nach Ihren Mandantenanwendungen:
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf **Azure Active Directory**. 
+1. Wählen Sie im **[Azure-Portal](https://portal.azure.com)** im linken Navigationsbereich **Azure Active Directory** aus. 
 
-2. Klicken Sie auf dem Blatt „Azure Active Directory“ auf **Unternehmensanwendungen**. 
+2. Wählen Sie im Bereich **Azure Active Directory** die Option **Unternehmensanwendungen** aus. 
 
-3. Wählen Sie im Dropdownmenü **Anwendungstyp** die Option **Alle Anwendungen** aus, und klicken Sie auf **Anwenden**. Eine nach dem Zufallsprinzip ausgewählte Gruppe Ihrer Mandantenanwendungen wird angezeigt.
-
-    ![Unternehmens-Apps](media/view-applications-portal/open-enterprise-apps.png)
+3. Wählen Sie im Dropdownmenü **Anwendungstyp** die Option **Alle Anwendungen** und dann **Anwenden** aus. Eine nach dem Zufallsprinzip ausgewählte Gruppe Ihrer Mandantenanwendungen wird angezeigt.
    
-4. Wenn Sie weitere Anwendungen anzeigen möchten, klicken Sie unten in der Liste auf **Mehr anzeigen**. Abhängig von der Anzahl von Anwendungen in Ihrem Mandanten ist es unter Umständen einfacher, [nach einer bestimmten Anwendung zu suchen](#search-for-a-tenant-application) als durch die Liste zu scrollen.
+4. Wenn Sie weitere Anwendungen anzeigen möchten, wählen Sie unten in der Liste **Mehr anzeigen** aus. Abhängig von der Anzahl von Anwendungen in Ihrem Mandanten ist es unter Umständen einfacher, [nach einer bestimmten Anwendung zu suchen](#search-for-a-tenant-application) als durch die Liste zu scrollen.
 
 ## <a name="select-viewing-options"></a>Auswählen der Anzeigeoptionen
 
-In diesem Abschnitt wählen Sie die Optionen basierend auf den gesuchten Elementen aus.
+Wählen Sie entsprechende Optionen für die gesuchten Elemente aus.
 
-1. Sie können die Anwendungen gemäß den Optionen für **Anwendungstyp**, **Anwendungsstatus** und **Anwendungssichtbarkeit** anzeigen. 
-
-    ![Optionen für die Suche](media/view-applications-portal/search-options.png)
+1. Sie können die Anwendungen nach **Anwendungstyp**, **Anwendungsstatus** und **Anwendungssichtbarkeit** anzeigen. 
 
 2. Wählen Sie unter **Anwendungstyp** eine der folgenden Optionen aus:
 
@@ -74,23 +70,23 @@ In diesem Abschnitt wählen Sie die Optionen basierend auf den gesuchten Element
 
 So suchen Sie nach einer bestimmten Anwendung:
 
-1. Wählen Sie im Menü **Anwendungstyp** die Option **Alle Anwendungen** aus, und klicken Sie auf **Anwenden**.
+1. Wählen Sie im Menü **Anwendungstyp** die Option **Alle Anwendungen** und dann **Anwenden** aus.
 
-2. Geben Sie den Namen der gewünschten Anwendung ein. Wenn die Anwendung zu Ihrem Azure AD-Mandanten hinzugefügt wurde, wird sie in den Suchergebnissen angezeigt. Dieses Beispiel zeigt, dass GitHub nicht zu den Mandantenanwendungen hinzugefügt wurde.
+2. Geben Sie den Namen der gewünschten Anwendung ein. Wenn die Anwendung zu Ihrem Azure AD-Mandanten hinzugefügt wurde, wird sie in den Suchergebnissen angezeigt. Dieses Beispiel zeigt, dass GitHub nicht zu den Mandantenanwendungen hinzugefügt wurde.
 
-    ![Suchen nach einer Anwendung](media/view-applications-portal/search-for-tenant-application.png)
+    ![Suchen einer Anwendung](media/view-applications-portal/search-for-tenant-application.png)
 
-3. Geben Sie die ersten Buchstaben eines Anwendungsnamens ein.  Dieses Beispiel zeigt alle Anwendungen, die mit **Sales** beginnen.
+3. Geben Sie die ersten Buchstaben eines Anwendungsnamens ein. Dieses Beispiel zeigt alle Anwendungen, die mit **Sales** beginnen.
 
     ![Suchen mit einem Präfix](media/view-applications-portal/search-by-prefix.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie erfahren, wie Sie die Anwendungen in Ihrem Azure AD-Mandanten anzeigen und wie Sie die Liste der Anwendungen anhand des Typs, des Status und der Sichtbarkeit der Anwendung filtern. Darüber hinaus haben Sie gelernt, wie Sie nach einer bestimmten Anwendung suchen.
+In dieser Schnellstartanleitung haben Sie erfahren, wie die Anwendungen in Ihrem Azure AD-Mandanten angezeigt werden. Sie haben gelernt, wie Sie die Liste der Anwendungen nach Anwendungstyp, -status und -sichtbarkeit filtern. Darüber hinaus haben Sie gelernt, wie Sie nach einer bestimmten Anwendung suchen.
 
-Sie haben die gewünschte Anwendung gefunden und können nun [weitere Anwendungen zu Ihrem Mandanten hinzufügen](add-application-portal.md) oder auf die Anwendung klicken, um Eigenschaften und Konfigurationsoptionen anzuzeigen oder zu bearbeiten. Beispielsweise können Sie einmaliges Anmelden konfigurieren. 
+Sie haben die gewünschte Anwendung gefunden und können nun [weitere Anwendungen zu Ihrem Mandanten hinzufügen](add-application-portal.md). Alternativ können Sie die Anwendung auswählen, um Eigenschaften und Konfigurationsoptionen anzuzeigen oder zu bearbeiten. Beispielsweise können Sie einmaliges Anmelden konfigurieren. 
 
 > [!div class="nextstepaction"]
-> [Konfigurieren von einmaligem Anmelden](configure-single-sign-on-portal.md)
+> [Einmaliges Anmelden konfigurieren](configure-single-sign-on-portal.md)
 
 

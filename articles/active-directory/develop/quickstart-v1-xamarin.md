@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e25848359de91d67925f49901c6c170978ea592
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b0a20c2e6524b0c466f5c45578e0ba8eaad351ea
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078702"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881884"
 ---
 # <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>Schnellstart: Erstellen einer Xamarin-App, die die Microsoft-Anmeldung integriert
 
@@ -72,25 +72,25 @@ Nachdem Sie nun eine App in Azure AD erstellt haben, können Sie die ADAL instal
 
 1. Fügen Sie die ADAL mithilfe der Paket-Manager-Konsole dem Projekt „DirectorySearcher“ hinzu.
 
-    `
+    ```
     PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -ProjectName DirectorySearcherLib
-    `
+    ```
 
-    `
+    ```
     PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -ProjectName DirSearchClient-Android
-    `
+    ```
 
-    `
+    ```
     PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -ProjectName DirSearchClient-Desktop
-    `
+    ```
 
-    `
+    ```
     PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -ProjectName DirSearchClient-iOS
-    `
+    ```
 
-    `
+    ```
     PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -ProjectName DirSearchClient-Universal
-    `
+    ```
 
     Beachten Sie, dass jedem Projekt zwei Bibliotheksverweise hinzugefügt werden: der PCL-Teil von ADAL und ein plattformspezifischer Teil.
 2. Öffnen Sie im Projekt „DirectorySearcherLib“ die Datei „DirectorySearcher.cs“.
@@ -104,7 +104,7 @@ Nachdem Sie nun eine App in Azure AD erstellt haben, können Sie die ADAL instal
 
 Nahezu die gesamte Authentifizierungslogik der App befindet sich in `DirectorySearcher.SearchByAlias(...)`. In den plattformspezifischen Projekten müssen Sie an die PCL von `DirectorySearcher` daher nur noch einen kontextbezogenen Parameter übergeben.
 
-1. Öffnen Sie „DirectorySearcher.cs“, und fügen Sie dann der `SearchByAlias(...)`-Methode einen neuen Parameter hinzu. `IPlatformParameters` ist der kontextbezogene Parameter, der die plattformspezifischen Objekte kapselt, die die ADAL benötigt, um die Authentifizierung auszuführen.
+1. Öffnen Sie „DirectorySearcher.cs“, und fügen Sie dann der `SearchByAlias(...)`-Methode einen neuen Parameter hinzu. `IPlatformParameters` ist der kontextbezogene Parameter, der die plattformspezifischen Objekte kapselt, die die ADAL zum Ausführen der Authentifizierung benötigt.
 
     ```csharp
     public static async Task<List<User>> SearchByAlias(string alias, IPlatformParameters parent)

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
-ms.openlocfilehash: 2befbf66733430e6077f5e5ff3044c30a77b7e5c
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 10837730bea17f98083f456ec4c9fb0d7567af57
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958973"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877260"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Tutorial: Überwachen von Azure Firewall-Protokollen und -Metriken
 
@@ -41,7 +41,7 @@ Lesen Sie vor Beginn dieses Tutorials die Informationen zu [Azure Firewall-Proto
 Nach dem Aktivieren der Diagnoseprotokollierung kann es noch einige Minuten dauern, bis die Daten in Ihren Protokollen erscheinen. Sollte zunächst nichts angezeigt werden, warten Sie noch ein paar Minuten, und versuchen Sie es dann erneut.
 
 1. Öffnen Sie im Azure-Portal die Ressourcengruppe Ihrer Firewall, und klicken Sie auf die Firewall.
-2. Klicken Sie unter **Überwachen** auf **Diagnoseprotokolle**.
+2. Klicken Sie unter **Überwachen** auf **Diagnoseeinstellungen**.
 
    Für Azure Firewall sind zwei dienstspezifische Protokolle verfügbar:
 
@@ -57,7 +57,7 @@ Nach dem Aktivieren der Diagnoseprotokollierung kann es noch einige Minuten daue
 9. Geben Sie auf der Seite **Log Analytics-Arbeitsbereich** den Namen **firewall-oms** für den neuen **Log Analytics-Arbeitsbereich** ein.
 10. Wählen Sie Ihr Abonnement aus, verwenden Sie die vorhandene Ressourcengruppe für die Firewall (**Test-FW-RG**), und wählen Sie den Standort **USA, Osten** sowie den Tarif **Free** aus.
 11. Klicken Sie auf **OK**.
-   ![Starten des Konfigurationsprozesses][1] OMS-Arbeitsbereiche werden jetzt als Log Analytics-Arbeitsbereiche bezeichnet.  
+   ![Starten des Konfigurationsprozesses][1] OMS-Arbeitsbereiche werden jetzt als Log Analytics-Arbeitsbereiche bezeichnet.  
 12. Klicken Sie unter **Protokoll** auf **AzureFirewallApplicationRule** und **AzureFirewallNetworkRule**, um Protokolle für Anwendungs- und Netzwerkregeln zu erfassen.
    ![Speichern der Diagnoseeinstellungen][2]
 13. Klicken Sie auf **Speichern**.

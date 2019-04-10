@@ -1,5 +1,5 @@
 ---
-title: Inhaltsmoderationsaufträge mit der API-Konsole ausführen – Content Moderator
+title: Verwenden von Moderationsaufträgen über die REST-API-Konsole – Content Moderator
 titlesuffix: Azure Cognitive Services
 description: Verwenden Sie die Auftragsvorgänge der Überprüfungs-API, um End-to-End-Inhaltsmoderationsaufträge für Bild- und Textinhalt in Azure Content Moderator zu initiieren.
 services: cognitive-services
@@ -7,101 +7,116 @@ author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: conceptual
-ms.date: 01/10/2019
+ms.topic: article
+ms.date: 03/18/2019
 ms.author: sajagtap
-ms.openlocfilehash: 9fac80ff152b0f7b9c36c182759d41245364fff9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7827cee2af2dfc0c1fddc407c1d146dc9a66c514
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862427"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756092"
 ---
-# <a name="start-a-moderation-job-from-the-api-console"></a>Starten eines Moderationsauftrags über die API-Konsole
+# <a name="define-and-use-moderation-jobs-rest"></a>Definieren und Verwenden von Moderationsaufträgen (REST)
 
-Verwenden Sie die [Auftragsvorgänge](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) der Überprüfungs-API, um End-to-End-Inhaltsmoderationsaufträge für Bild- und Textinhalt in Azure Content Moderator zu initiieren. 
-
-Der Moderationsauftrag durchsucht Ihre Inhalte mithilfe der Bildmoderations-API oder der Textmoderations-API in Content Moderator. Der Moderationsauftrag verwendet dann Workflows (im Prüfungstool definiert), um Überprüfungen im Prüfungstool zu generieren. 
-
-Nachdem ein menschlicher Moderator die automatisch zugewiesenen Tags und Vorhersagedaten überprüft und eine finale Moderationsentscheidung getroffen hat, sendet die Überprüfungs-API alle Informationen an Ihren API-Endpunkt.
+Ein Moderationsauftrag dient als eine Art Wrapper für die Funktionen der Inhaltsmoderation und von Workflows und Überprüfungen. In dieser Anleitung wird erläutert, wie Sie mithilfe der REST-APIs für Aufträge Inhaltsmoderationsaufträge initiieren und überprüfen können. Nachdem Sie sich mit der Struktur der APIs vertraut gemacht haben, können Sie diese Aufrufe bequem zu jeder REST-kompatiblen Plattform portieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Navigieren Sie zum [Prüfungstool](https://contentmoderator.cognitive.microsoft.com/). Registrieren Sie sich, wenn Sie es nicht bereits getan haben. [Definieren Sie einen benutzerdefinierten Workflow](Review-Tool-User-Guide/Workflows.md) innerhalb des Prüfungstools, um diesen in diesem `Job`-Vorgang zu verwenden.
+- Melden Sie sich auf der Website des [Content Moderator-Prüfungstools](https://contentmoderator.cognitive.microsoft.com/) an, oder erstellen Sie dort ein Konto.
+- (Optional:) [Definieren Sie einen benutzerdefinierten Workflow](./Review-Tool-User-Guide/Workflows.md) zur Verwendung mit dem Auftrag. Genauso können Sie auch den Standardworkflow verwenden.
 
-## <a name="use-the-api-console"></a>Verwenden der API-Konsole
-Um die API über die Online-Konsole zu testen, benötigen Sie einige Werte, die Sie in die Konsole eingeben müssen:
-    
-- `teamName`: Verwenden Sie das `Id`-Feld aus dem Bildschirm mit den Anmeldeinformationen des Prüfungstools. 
-- `ContentId`: Diese Zeichenfolge wird an die API übergeben und durch den Rückruf zurückgegeben. Die **ContentId** ist nützlich, um interne Bezeichner oder Metadaten mit den Ergebnissen eines Moderationsauftrags zu verknüpfen. – `Workflowname`: Der Name des [Workflows](Review-Tool-User-Guide/Workflows.md), den Sie im vorherigen Abschnitt erstellt haben.
-- `Ocp-Apim-Subscription-Key`: Befindet sich auf der Registerkarte **Einstellungen**. Weitere Informationen finden Sie in der [Übersicht](overview.md).
+## <a name="create-a-job"></a>Erstellen eines Auftrags
 
-Greifen Sie auf die API-Konsole über das Fenster **Anmeldeinformationen** zu.
+Navigieren Sie zum Erstellen eines Moderationsauftrags zur API-Referenzseite, und wählen Sie unter [Job – Create](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) (Auftrag – erstellen) die Schaltfläche für Ihre Schlüsselregion aus (diese finden Sie in der Endpunkt-URL auf der Seite **Anmeldeinformationen** des [Prüfungstools](https://contentmoderator.cognitive.microsoft.com/)). Dadurch wird die API-Konsole gestartet, über die Sie ganz einfach REST-API-Aufrufe erstellen und ausführen können.
 
-### <a name="navigate-to-the-api-reference"></a>Navigieren zur API-Referenz
-Wählen Sie im Fenster **Anmeldeinformationen** die Option [API-Referenz](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5).
+![Regionsauswahl auf der Seite „Job – Create“ (Auftrag – erstellen)](images/test-drive-job-1.png)
 
-  Die `Job.Create`-Seite wird geöffnet.
+### <a name="enter-rest-call-parameters"></a>Eingeben von REST-Aufrufparametern
 
-### <a name="select-your-region"></a>Auswählen Ihrer Region
-Wählen Sie für **API-Testkonsole öffnen** die Region aus, die Ihrem Standort am ehesten nahekommt.
-  ![Regionsauswahl auf der Seite „Auftrag – Erstellen“](images/test-drive-job-1.png)
+Geben Sie die folgenden Werte zum Erstellen des REST-Aufrufs ein:
 
-  Die `Job.Create`-API-Konsole wird geöffnet. 
+- **teamName**: Die Team-ID, die Sie beim Einrichten Ihres Kontos für das [Prüfungstool](https://contentmoderator.cognitive.microsoft.com/) erstellt haben (zu finden im Feld **ID** auf der Seite „Anmeldeinformationen“ des Prüfungstools).
+- **ContentType:** Dies kann „Image“, „Text“ oder „Video“ sein.
+- **ContentId**: Eine benutzerdefinierte Bezeichnerzeichenfolge. Diese Zeichenfolge wird an die API übergeben und durch den Rückruf zurückgegeben. Sie ist nützlich, um interne Bezeichner oder Metadaten mit den Ergebnissen eines Moderationsauftrags zu verknüpfen.
+- **Workflowname:** Der Name des Workflows, den Sie zuvor erstellt haben (oder „default“ für den Standardworkflow).
+- **CallbackEndpoint:** (Optional:) Die URL zum Empfangen von Rückrufinformationen, wenn die Überprüfung abgeschlossen ist.
+- **Ocp-Apim-Subscription-Key**: Ihr Content Moderator-Schlüssel. Diesen finden Sie auf der Registerkarte **Einstellungen** des [Prüfungstools](https://contentmoderator.cognitive.microsoft.com).
 
-### <a name="enter-parameters"></a>Parameter eingeben
+### <a name="fill-in-the-request-body"></a>Ausfüllen des Anforderungstexts
 
-Geben Sie Werte für die gewünschten Abfrageparameter und Ihren Abonnementschlüssel ein. Das Feld **Anforderungstext** gibt den Speicherort der Informationen an, die Sie durchsuchen möchten. Verwenden wir dieses [Beispielbild](https://moderatorsampleimages.blob.core.windows.net/samples/sample6.png).
+Der Text des REST-Aufrufs enthält ein Feld: **ContentValue**. Fügen Sie bei der Moderation von Text den reinen Textinhalt ein, oder geben Sie bei der Moderation von Bildern oder Videos eine Bild- oder Video-URL ein. Sie können die folgende Beispielbild-URL verwenden: [https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg)
 
-  ![Abfrageparameter, Header und Feld „Anforderungstext“ in der Konsole „Auftrag – Erstellen“](images/job-api-console-inputs.PNG)
+![Abfrageparameter, Header und Feld „Anforderungstext“ in der Konsole „Auftrag – Erstellen“](images/job-api-console-inputs.PNG)
 
 ### <a name="submit-your-request"></a>Senden der Anforderung
-Wählen Sie **Senden** aus. Es wird eine Auftrags-ID erstellt. Kopieren Sie diese Option, um in den nächsten Schritten zu verwenden.
 
-  `"JobId": "2018014caceddebfe9446fab29056fd8d31ffe"`
+Wählen Sie **Senden** aus. Wenn der Vorgang erfolgreich ist, lautet der **Antwortstatus** `200 OK`, und im Feld **Antwortinhalt** wird eine ID für den Auftrag angezeigt. Kopieren Sie diese ID für die folgenden Schritte.
 
-### <a name="open-the-get-job-details-page"></a>Kopieren Sie diese ID für die folgenden Schritte.
-Wählen Sie **Abrufen**, und öffnen Sie die API durch Auswählen der Schaltfläche, die Ihrer Region entspricht.
+![Feld „Antwortinhalt“ mit Überprüfungs-ID in der Konsole „Überprüfen – Erstellen“](images/test-drive-job-3.PNG)
 
-  ![Abrufergebnisse in der Konsole „Auftrag – Erstellen“](images/test-drive-job-4.png)
+## <a name="get-job-status"></a>Abrufen des Auftragsstatus
 
-### <a name="review-the-response"></a>Antwort überprüfen
+Um den Status und Details zu einem ausgeführten oder abgeschlossenen Auftrag abzurufen, navigieren Sie zur API-Referenzseite, und wählen Sie unter [Job – Get](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c3) (Auftrag – abrufen) die Schaltfläche für Ihre Region aus (die Region, in der Ihr Schlüssel verwaltet wird).
 
-Geben Sie Werte für **teamName** und **JobID** ein. Geben Sie Ihren Abonnementschlüssel ein, und wählen Sie dann **Senden** aus. Die folgende Antwort zeigt Auftragsstatus und Details für das Beispiel an.
+![Regionsauswahl auf der Seite „Job – Get“ (Auftrag – abrufen)](images/test-drive-region.png)
 
-```
-    {
-        "Id": "2018014caceddebfe9446fab29056fd8d31ffe",
-        "TeamName": "some team name",
-        "Status": "InProgress",
-        "WorkflowId": "OCR",
-        "Type": "Image",
-        "CallBackEndpoint": "",
-        "ReviewId": "",
-        "ResultMetaData": [],
-        "JobExecutionReport": 
-        [
-            {
-            "Ts": "2018-01-07T00:38:26.7714671",
-                "Msg": "Successfully got hasText response from Moderator"
-            },
-            {
-                "Ts": "2018-01-07T00:38:26.4181346",
-                "Msg": "Getting hasText from Moderator"
-            },
-            {
-                "Ts": "2018-01-07T00:38:25.5122828",
-                "Msg": "Starting Execution - Try 1"
-            }
-        ]
+Geben Sie die REST-Aufrufparameter wie im obigen Abschnitt ein. In diesem Schritt haben Sie beim Erstellen des Auftrags **JobId** als eindeutige ID-Zeichenfolge erhalten. Wählen Sie **Senden** aus. Wenn der Vorgang erfolgreich ist, lautet der **Antwortstatus** `200 OK`, und im Feld **Antwortinhalt** wird der Auftrag im JSON-Format wie folgt angezeigt:
+
+```json
+{  
+  "Id":"2018014caceddebfe9446fab29056fd8d31ffe",
+  "TeamName":"some team name",
+  "Status":"Complete",
+  "WorkflowId":"OCR",
+  "Type":"Image",
+  "CallBackEndpoint":"",
+  "ReviewId":"201801i28fc0f7cbf424447846e509af853ea54",
+  "ResultMetaData":[  
+    {  
+      "Key":"hasText",
+      "Value":"True"
+    },
+    {  
+      "Key":"ocrText",
+      "Value":"IF WE DID \r\nALL \r\nTHE THINGS \r\nWE ARE \r\nCAPABLE \r\nOF DOING, \r\nWE WOULD \r\nLITERALLY \r\nASTOUND \r\nOURSELVE \r\n"
     }
+  ],
+  "JobExecutionReport":[  
+    {  
+      "Ts":"2018-01-07T00:38:29.3238715",
+      "Msg":"Posted results to the Callbackendpoint: https://requestb.in/vxke1mvx"
+    },
+    {  
+      "Ts":"2018-01-07T00:38:29.2928416",
+      "Msg":"Job marked completed and job content has been removed"
+    },
+    {  
+      "Ts":"2018-01-07T00:38:29.0856472",
+      "Msg":"Execution Complete"
+    },
+    {  
+      "Ts":"2018-01-07T00:38:26.7714671",
+      "Msg":"Successfully got hasText response from Moderator"
+    },
+    {  
+      "Ts":"2018-01-07T00:38:26.4181346",
+      "Msg":"Getting hasText from Moderator"
+    },
+    {  
+      "Ts":"2018-01-07T00:38:25.5122828",
+      "Msg":"Starting Execution - Try 1"
+    }
+  ]
+}
 ```
 
-## <a name="navigate-to-the-review-tool"></a>Navigieren zum Prüfungstool
-Wählen Sie auf dem Content Moderator-Dashboard **Überprüfung** > **Bild**. Das durchsuchte Bild wird angezeigt und kann für die Überprüfung durch Personen verwendet werden.
+![Job – Get (Auftrag – abrufen), Antwort auf REST-Aufruf](images/test-drive-job-5.png)
 
-  ![Prüfungstool-Bild von drei Radfahrern](images/ocr-sample-image.PNG)
+### <a name="examine-the-new-reviews"></a>Untersuchen der neuen Überprüfungen
+
+Wenn Ihr Inhaltsauftrag zur Erstellung einer Überprüfung geführt hat, können Sie ihn im [Prüfungstool](https://contentmoderator.cognitive.microsoft.com) anzeigen. Wählen Sie **Überprüfung** > **Bild**/**Text**/**Video** aus (abhängig vom verwendeten Inhalt). Der Inhalt sollte angezeigt werden und kann durch Personen überprüft werden. Nachdem eine Person die automatisch zugewiesenen Tags und Vorhersagedaten überprüft und eine finale Moderationsentscheidung getroffen hat, sendet die Überprüfungs-API alle Informationen an den festgelegten Rückrufendpunkt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Verwenden Sie die REST-API in Ihrem Code, oder beginnen Sie mit dem [.NET-Schnellstart für Aufträge](moderation-jobs-quickstart-dotnet.md), die in Ihre Anwendung integriert werden sollen.
+In dieser Anleitung haben Sie erfahren, wie Inhaltsmoderationsaufträge mithilfe der REST-API erstellt und abgefragt werden. Als Nächstes integrieren Sie Aufträge in ein End-to-End-Moderationsszenario, z. B. das im Tutorial [E-Commerce-Moderation](./ecommerce-retail-catalog-moderation.md).

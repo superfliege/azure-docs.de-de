@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ca50c7cbbcccadf96641c28e43f7da48421c8f3b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 98acb6c5b83ce31046b50f744492c518cdf77498
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994416"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621650"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Übersicht über die Funktionen in Azure Backup
 Azure Backup ist der Azure-basierte Dienst, den Sie zum Sichern (bzw. Schützen) und Wiederherstellen Ihrer Daten in der Microsoft Cloud verwenden können. Azure Backup ersetzt Ihre vorhandene lokale bzw. standortexterne Lösung durch eine zuverlässige, sichere und wirtschaftliche Cloudlösung. Azure Backup verfügt über mehrere Komponenten, die Sie herunterladen und auf dem jeweiligen Computer, Server oder in der Cloud bereitstellen. Die Komponente (der Agent), die Sie bereitstellen, richtet sich danach, was geschützt werden soll. Alle Azure Backup-Komponenten (unabhängig davon, ob Daten lokal oder in der Cloud geschützt werden sollen) können genutzt werden, um Daten in einem Recovery Services-Tresor in Azure zu sichern. Informationen dazu, welche Komponente zum Schützen bestimmter Daten, Anwendungen oder Workloads geeignet ist, finden Sie in der [Tabelle mit den Azure Backup-Komponenten](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (weiter unten in diesem Artikel).
@@ -37,7 +37,11 @@ Herkömmliche Sicherungslösungen haben sich dahingehend entwickelt, dass die Cl
 
 **Unbegrenzte Datenübertragungen**: Bei Azure Backup ist die Menge der übertragenen eingehenden und ausgehenden Daten nicht beschränkt. Außerdem fallen bei Azure Backup keine Gebühren für die übertragenen Daten an. Aber wenn Sie den Azure Import/Export-Dienst nutzen, um große Datenmengen zu importieren, werden für eingehende Daten Kosten berechnet. Weitere Informationen zu diesen Kosten finden Sie unter [Workflow zur Offlinesicherung in Azure Backup](backup-azure-backup-import-export.md). Ausgehende Daten sind Daten, die während eines Wiederherstellungsvorgangs aus einem Recovery Services-Tresor übertragen werden.
 
-**Datenverschlüsselung**: Die Datenverschlüsselung ermöglicht eine sichere Übertragung und Speicherung Ihrer Daten in der öffentlichen Cloud. Sie speichern die Passphrase für die Verschlüsselung lokal, und sie wird niemals in Azure übertragen oder gespeichert. Wenn Daten wiederhergestellt werden sollen, sind nur Sie im Besitz der Passphrase für die Verschlüsselung bzw. des Schlüssels.
+**Datenverschlüsselung:**
+- Übertragene Daten werden auf dem lokalen Computer mit AES256 verschlüsselt. Die übertragenen Daten werden zwischen Speicher und Sicherung durch HTTPS geschützt. Die zwischen der Sicherung und dem Computer des Benutzers übertragenen Daten werden durch das iSCSI-Protokoll gesichert. Der iSCSI-Kanal wird durch sicheres Tunneling geschützt.
+- Beim Sichern von lokalen Daten in Azure werden ruhende Daten in Azure unter Verwendung der Passphrase verschlüsselt, die Sie beim Einrichten der Sicherung angegeben haben. Die Passphrase oder der Schlüssel wird nie übertragen oder in Azure gespeichert. Wenn Daten wiederhergestellt werden sollen, sind nur Sie im Besitz der Passphrase für die Verschlüsselung bzw. des Schlüssels.
+- Für virtuelle Azure-Computer werden die Daten mit der Speicherdienstverschlüsselung (Storage Service Encryption, SSE) im Ruhezustand verschlüsselt. Bei der Sicherung werden Daten vor dem Speichern automatisch verschlüsselt. Azure Storage entschlüsselt Daten vor dem Abrufen.
+- Die Sicherung unterstützt auch virtuelle Azure-Computer, die mithilfe von Azure Disk Encryption (ADE) verschlüsselt wurden. [Weitere Informationen](backup-azure-vms-introduction.md#encryption-of-azure-vm-backups)
 
 **Anwendungskonsistente Sicherung:** Anwendungskonsistente Sicherung bedeutet, dass ein Wiederherstellungspunkt alle erforderlichen Daten zum Wiederherstellen der Sicherungskopie enthält. Azure Backup umfasst anwendungskonsistente Sicherungen, sodass sichergestellt ist, dass zum Wiederherstellen der Daten keine zusätzlichen Fixes benötigt werden. Durch die Wiederherstellung von anwendungskonsistenten Daten wird die Wiederherstellungsdauer reduziert, sodass Sie schnell zum Zustand der normalen Ausführung zurückkehren können.
 
@@ -84,9 +88,9 @@ In der folgenden Tabelle sind die Azure Backup-Komponenten aufgeführt, die für
 **Komponente** | **Linux (von Azure unterstützt)**
 --- | ---
 Azure Backup-Agent (MARS) | Keine (nur Windows-basierter Agent)
-System Center DPM | Dateikonsistente Sicherung von Linux-Gast-VMs unter Hyper-V und VMWare<br/><br/> VM-Wiederherstellung von Hyper-V- und VMWare-Linux-Gast-VMs</br></br> Dateikonsistente Sicherungen sind für virtuelle Azure-Computer nicht verfügbar
+System Center DPM | Dateikonsistente Sicherung von Linux-Gast-VMs unter Hyper-V und VMWare<br/><br/> VM-Wiederherstellungen von Hyper-V- und VMWare-Linux-Gast-VMs</br></br> Dateikonsistente Sicherungen sind für virtuelle Azure-Computer nicht verfügbar
 Azure Backup Server | Dateikonsistente Sicherung von Linux-Gast-VMs unter Hyper-V und VMWare<br/><br/> VM-Wiederherstellung von Hyper-V- und VMWare-Linux-Gast-VMs</br></br> Dateikonsistente Sicherungen sind für virtuelle Azure-Computer nicht verfügbar
-Azure IaaS-VM-Sicherung | App-konsistente Sicherung per [Pre-Skript- und Post-Skript-Framework](backup-azure-linux-app-consistent.md)<br/><br/> [Wiederherstellung auf Dateiebene](backup-azure-restore-files-from-vm.md)<br/><br/> [Erstellen eines virtuellen Computers aus einem wiederhergestellten Datenträger](backup-azure-arm-restore-vms.md#create-new-restore-disks)<br/><br/> [Erstellen eines virtuellen Computers über einen Wiederherstellungspunkt](backup-azure-arm-restore-vms.md#create-new-create-a-vm)
+Azure IaaS-VM-Sicherung | App-konsistente Sicherung per [Pre-Skript- und Post-Skript-Framework](backup-azure-linux-app-consistent.md)<br/><br/> [Wiederherstellung auf Dateiebene](backup-azure-restore-files-from-vm.md)<br/><br/> [Erstellen eines virtuellen Computers aus einem wiederhergestellten Datenträger](backup-azure-arm-restore-vms.md#restore-disks)<br/><br/> [Erstellen eines virtuellen Computers über einen Wiederherstellungspunkt](backup-azure-arm-restore-vms.md#create-a-vm)
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>Verwenden virtueller Storage Premium-Computer mit Azure Backup
 Azure Backup schützt virtuelle Storage Premium-Computer. Azure Storage Premium ist ein SSD-basierter Speicher (Solid State Drive), der auf die Unterstützung E/A-intensiver Workloads ausgelegt ist. Storage Premium ist gut für Workloads von virtuellen Computern (VMs) geeignet. Weitere Informationen zu Storage Premium und anderen Datenträgertypen finden Sie im Artikel [Auswählen eines Datenträgertyps](../virtual-machines/windows/disks-types.md).

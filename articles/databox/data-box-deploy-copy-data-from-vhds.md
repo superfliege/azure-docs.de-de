@@ -46,7 +46,7 @@ Die Data Box erstellt auf der Grundlage der angegebenen Ressourcengruppen jeweil
 - `mydbmdrg1_MDisk`
 - `mydbmdrg2_MDisk`
 
-Innerhalb der einzelnen Freigaben werden jeweils die folgenden vier Ordner erstellt, die Containern in Ihrem Speicherkonto entsprechen:
+Innerhalb der einzelnen Freigaben werden jeweils die folgenden drei Ordner erstellt, die Containern in Ihrem Speicherkonto entsprechen:
 
 - SSD Premium
 - HDD Standard

@@ -1,186 +1,76 @@
 ---
-title: Moderationsaufträge und Human-in-the-Loop-Überprüfungen – Content Moderator
+title: 'Konzepte: Überprüfungen, Workflows und Aufträge – Content Moderator'
 titlesuffix: Azure Cognitive Services
-description: Kombinieren Sie mithilfe der Überprüfungs-API von Azure Content Moderator die computergestützte Moderation mit Human-in-the-Loop-Funktionen, um die besten Ergebnisse für Ihr Unternehmen zu erhalten.
+description: Informationen zu Überprüfungen, Workflows und Aufträgen
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: 21d71110853c5f18b0b5f0b51d30110eb45ff54a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c1d4ef640e2ae072dacba7a665b6689e3224c55c
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862699"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756293"
 ---
-# <a name="content-moderation-jobs-and-reviews"></a>Inhaltsmoderationsaufträge und -überprüfungen
+# <a name="content-moderation-reviews-workflows-and-jobs"></a>Inhaltsmoderationsüberprüfungen, -workflows und -aufträge
 
-Kombinieren Sie mithilfe der [Überprüfungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) von Azure Content Moderator die computergestützte Moderation mit Human-in-the-Loop-Funktionen, um die besten Ergebnisse für Ihr Unternehmen zu erhalten.
+Durch die Kombination von computergestützter Moderation und Human-in-the-Loop-Funktionen kann mit Content Moderator ein optimaler Moderationsprozess für reale Szenarien erstellt werden. Dies erfolgt durch das cloudbasierte [Prüfungstool](https://contentmoderator.cognitive.microsoft.com). In diesem Artikel erhalten Sie Informationen zu den wichtigsten Konzepten des Prüfungstools: Überprüfungen, Workflows und Aufträge.
 
-Die Überprüfungs-API bietet die folgenden Möglichkeiten, menschliche Aufsicht in Ihren Inhaltsmoderationsprozess einzubeziehen:
+## <a name="reviews"></a>Überprüfungen
 
-* Mit `Job`-Vorgängen wird in einem Schritt die computergestützte Moderation gestartet und die manuelle Überprüfung erstellt.
-* `Review`-Vorgänge werden zur Erstellung der manuellen Überprüfung außerhalb des Moderationsschritts verwendet.
-* `Workflow`-Vorgänge dienen zum Verwalten von Workflows, die die Überprüfung mit Schwellenwerten für das Erstellen der Überprüfung automatisieren.
+Bei einer Überprüfung werden Inhalte in das Prüfungstool hochgeladen und auf der Registerkarte **Überprüfen** angezeigt. Hier können Benutzer die angewandten Markierungen ändern und nach Bedarf eigene benutzerdefinierte Markierungen anwenden. Wenn ein Benutzer eine Überprüfung übermittelt, werden die Ergebnisse an einen angegebenen Rückrufendpunkt gesendet und die Inhalte auf der Website entfernt.
 
-Die Vorgänge `Job` und `Review` akzeptieren Ihre Rückrufendpunkte für den Empfang des Status und der Ergebnisse.
+![Website des Prüfungstools in einem Browser mit geöffneter Registerkarte „Überprüfen“](./Review-Tool-user-Guide/images/image-workflow-review.png)
 
-In diesem Artikel werden die Vorgänge `Job` und `Review` behandelt. Im Artikel [Übersicht über Workflows](workflow-api.md) finden Sie Informationen zum Erstellen, Bearbeiten und Abrufen von Workflowdefinitionen.
+Informationen zum Erstellen von Überprüfungen finden Sie im [Leitfaden für das Prüfungstool](./review-tool-user-guide/review-moderated-images.md), Informationen zur programmgesteuerten Erstellung finden Sie in der [Anleitung für die REST-API](./try-review-api-review.md).
 
-## <a name="job-operations"></a>Auftragsvorgänge
+## <a name="workflows"></a>Workflows
 
-### <a name="start-a-job"></a>Starten eines Auftrags
-Mit dem Vorgang `Job.Create` können Sie eine Moderation und den Auftrag zur Erstellung einer manuellen Überprüfung starten. Content Moderator überprüft den Inhalt und wertet den angegebenen Workflow aus. Basierend auf den Workflowergebnissen werden entweder Überprüfungen erstellt oder der Schritt wird übersprungen. Außerdem werden die Tags nach der Moderation und nach der Überprüfung an Ihren Rückrufendpunkt gesendet.
+Ein Workflow ist ein cloudbasierter benutzerdefinierter Filter für Inhalte. Workflows lassen sich mit einer Vielzahl von Diensten verbinden, sodass Inhalte auf unterschiedliche Weise gefiltert und dann entsprechende Aktionen ausgeführt werden können. Über den Content Moderator-Konnektor kann ein Workflow automatisch Moderationsmarkierungen anwenden und Überprüfungen mit übermittelten Inhalten erstellen.
 
-Die Eingaben enthalten folgende Informationen:
+### <a name="view-workflows"></a>Anzeigen von Workflows
 
-- Die ID des Überprüfungsteams
-- Den zu moderierenden Inhalt
-- Den Workflownamen (Standardmäßig lautet der Workflowname „default“.)
-- Ihren API-Rückrufendpunkt für Benachrichtigungen
- 
-Die folgende Antwort zeigt die ID des gestarteten Auftrags. Mithilfe der Auftrags-ID können Sie den Auftragsstatus abrufen und detaillierte Informationen erhalten.
+Navigieren Sie zum Anzeigen Ihrer vorhandenen Workflows zum [Prüfungstool](https://contentmoderator.cognitive.microsoft.com/), und wählen Sie **Einstellungen** > **Workflows** aus.
 
-    {
-        "JobId": "2018014caceddebfe9446fab29056fd8d31ffe"
-    }
+![Standardworkflow](images/default-workflow-listed.PNG)
 
-### <a name="get-job-status"></a>Abrufen des Auftragsstatus
+Workflows können vollständig als JSON-Zeichenfolgen beschrieben werden, sodass programmgesteuert auf sie zugegriffen werden kann. Wenn Sie die Option **Bearbeiten** für Ihren Workflow und dann die Registerkarte **JSON** auswählen, wird ein JSON-Ausdruck ähnlich dem folgenden angezeigt:
 
-Verwenden Sie den Vorgang `Job.Get` und die Auftrags-ID, um die Details zu einem laufenden oder abgeschlossenen Auftrag abzurufen. Der Vorgang wird sofort zurückgegeben, während der Moderationsauftrag asynchron ausgeführt wird. Die Ergebnisse werden durch den Rückrufendpunkt zurückgegeben.
-
-Ihre Eingaben enthalten folgende Informationen:
-
-- Die ID des Überprüfungsteams: Die Auftrags-ID, die vom vorherigen Vorgang zurückgegeben wurde
-
-Die Antwort enthält folgende Informationen:
-
-- Den Bezeichner (ID) der erstellten Überprüfung (Verwenden Sie diese ID, um die Ergebnisse der endgültigen Überprüfung abzurufen.)
-- Der Status des Auftrags („Abgeschlossen“ oder „In Bearbeitung“): Die zugewiesenen Moderations-Tags (Schlüssel-Wert-Paare).
-- Den Bericht zur Auftragsausführung
- 
- 
-        {
-            "Id": "2018014caceddebfe9446fab29056fd8d31ffe",
-            "TeamName": "some team name",
-            "Status": "Complete",
-            "WorkflowId": "OCR",
-            "Type": "Image",
-            "CallBackEndpoint": "",
-            "ReviewId": "201801i28fc0f7cbf424447846e509af853ea54",
-            "ResultMetaData":[
-            {
-            "Key": "hasText",
-            "Value": "True"
-            },
-            {
-            "Key": "ocrText",
-            "Value": "IF WE DID \r\nALL \r\nTHE THINGS \r\nWE ARE \r\nCAPABLE \r\nOF DOING, \r\nWE WOULD \r\nLITERALLY \r\nASTOUND \r\nOURSELVE \r\n"
-            }
-            ],
-            "JobExecutionReport": [
-            {
-                "Ts": "2018-01-07T00:38:29.3238715",
-                "Msg": "Posted results to the Callbackendpoint: https://requestb.in/vxke1mvx"
-                },
-                {
-                "Ts": "2018-01-07T00:38:29.2928416",
-                "Msg": "Job marked completed and job content has been removed"
-                },
-                {
-                "Ts": "2018-01-07T00:38:29.0856472",
-                "Msg": "Execution Complete"
-                },
-            {
-                "Ts": "2018-01-07T00:38:26.7714671",
-                "Msg": "Successfully got hasText response from Moderator"
-                },
-                {
-                "Ts": "2018-01-07T00:38:26.4181346",
-                "Msg": "Getting hasText from Moderator"
-                },
-                {
-                "Ts": "2018-01-07T00:38:25.5122828",
-                "Msg": "Starting Execution - Try 1"
-                }
-            ]
-        }
- 
-![Bildüberprüfung für menschliche Moderatoren](images/ocr-sample-image.PNG)
-
-## <a name="review-operations"></a>Überprüfen von Vorgängen
-
-### <a name="create-reviews"></a>Erstellen von Überprüfungen
-
-Verwenden Sie den Vorgang `Review.Create`, um die manuellen Überprüfungen zu erstellen. Sie moderieren diese entweder außerhalb oder verwenden eine benutzerdefinierte Logik, um die Moderationstags zuzuweisen.
-
-Ihre Eingaben für diesen Vorgang enthalten Folgendes:
-
-- Den zu überprüfenden Inhalt
-- Die zugewiesenen Tags (Schlüssel-Wert-Paare) für die von menschlichen Moderatoren durchgeführte Überprüfung
-
-Die folgende Antwort zeigt die Überprüfungs-ID:
-
-    [
-        "201712i46950138c61a4740b118a43cac33f434",
-    ]
-
-
-### <a name="get-review-status"></a>Abrufen des Überprüfungsstatus
-Verwenden Sie den Vorgang `Review.Get`, um die Ergebnisse nach einer manuellen Überprüfung des moderierte Bilds zu erhalten. Sie werden über Ihren bereitgestellten Rückrufendpunkt benachrichtigt. 
-
-Der Vorgang gibt zwei Gruppen von Tags zurück: 
-
-* Die vom Moderationsdienst zugewiesenen Tags
-* Die Tags nach Abschluss der manuellen Überprüfung
-
-Ihre Eingaben enthalten mindestens Folgendes:
-
-- Den Namen des Überprüfungsteams
-- Die Überprüfungs-ID, die vom vorherigen Vorgang zurückgegeben wurde
-
-Die Antwort enthält folgende Informationen:
-
-- Den Überprüfungsstatus
-- Die Tags (Schlüssel-Wert-Paare), die vom Prüfer bestätigt wurden
-- Die Tags (Schlüssel-Wert-Paare), die vom Moderationsdienst zugewiesen wurden
-
-In der folgenden Beispielantwort sehen Sie sowohl die vom Prüfer zugewiesenen Tags (**reviewerResultTags**) als auch die Anfangstags (**metadata**):
-
-    {
-        "reviewId": "201712i46950138c61a4740b118a43cac33f434",
-        "subTeam": "public",
-        "status": "Complete",
-        "reviewerResultTags": [
-        {
-            "key": "a",
-            "value": "False"
+```json
+{
+    "Type": "Logic",
+    "If": {
+        "ConnectorName": "moderator",
+        "OutputName": "isAdult",
+        "Operator": "eq",
+        "Value": "true",
+        "Type": "Condition"
         },
-        {
-            "key": "r",
-            "value": "True"
-        },
-        {
-            "key": "sc",
-            "value": "True"
-        }
-        ],
-        "createdBy": "{teamname}",
-        "metadata": [
-        {
-            "key": "sc",
-            "value": "true"
-        }
-        ],
-        "type": "Image",
-        "content": "https://reviewcontentprod.blob.core.windows.net/{teamname}/IMG_201712i46950138c61a4740b118a43cac33f434",
-        "contentId": "0",
-        "callbackEndpoint": "{callbackUrl}"
+    "Then": {
+    "Perform": [
+    {
+        "Name": "createreview",
+        "CallbackEndpoint": null,
+        "Tags": []
     }
+    ],
+    "Type": "Actions"
+    }
+}
+```
+
+Informationen zum Erstellen und Verwenden von Workflows finden Sie im [Leitfaden für das Prüfungstool](./review-tool-user-guide/workflows.md), Informationen zur programmgesteuerten Erstellung und Verwendung finden Sie in der [Anleitung für die REST-API](./try-review-api-workflow.md).
+
+## <a name="jobs"></a>Aufträge
+
+Ein Moderationsauftrag dient als eine Art Wrapper für die Funktionen der Inhaltsmoderation und von Workflows und Überprüfungen. Der Auftrag durchsucht Ihre Inhalte mithilfe der Bildmoderations-API oder der Textmoderations-API in Content Moderator und vergleicht sie dann mit dem festgelegten Workflow. Basierend auf den Workflowergebnissen wird für die Inhalte im [Prüfungstool](./review-tool-user-guide/human-in-the-loop.md) eine Überprüfung erstellt oder nicht. Während Überprüfungen und Workflows über die jeweils zugehörige API erstellt und konfiguriert werden können, können Sie über die Auftrags-API einen detaillierten Bericht des gesamten Prozesses abrufen (der an einen angegebenen Rückrufendpunkt gesendet werden kann).
+
+Informationen zur Verwendung von Aufträgen finden Sie in der [Anleitung für die REST-API](./try-review-api-job.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

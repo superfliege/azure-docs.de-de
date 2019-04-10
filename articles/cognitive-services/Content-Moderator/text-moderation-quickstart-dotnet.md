@@ -10,14 +10,14 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 02/07/2019
 ms.author: sajagtap
-ms.openlocfilehash: cc8cbc19f416e6e80d2d0fdfb4862536da7f0ce2
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 09fd58fa33873c06ac5dab4970af199bc3030479
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312241"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756534"
 ---
-# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Schnellstart: Analysieren von Text auf anstößige Inhalte in C# 
+# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>Schnellstart: Analysieren von Text auf anstößige Inhalte in C#
 
 Dieser Artikel enthält Informationen und Codebeispiele, die Ihnen den Einstieg in die Verwendung des [Content Moderator SDK für .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) erleichtern. Sie erfahren, wie Sie eine begriffsbasierte Filterung und Klassifizierung von Textinhalten ausführen, um potenziell anstößige Inhalte zu moderieren.
 
@@ -74,7 +74,7 @@ These are all UK phone numbers, the last two being Microsoft UK support numbers:
 Fügen Sie der Methode **Main** den folgenden Code hinzu. Der entscheidende Vorgang ist die Methode **ScreenText**. Die dazugehörigen Parameter geben die auszuführenden Inhaltsmoderationsvorgänge an. In diesem Beispiel wird die Methode für Folgendes konfiguriert:
 - Erkennen potenziell anstößiger Ausdrücke im Text
 - Normalisieren des Texts und automatisches Korrigieren von Tippfehlern
-- Erkennen personenbezogener Informationen (Personally Identifiable Information, PII) wie etwa US- und UK-Telefonnummern, E-Mail-Adressen und US-Postadressen.
+- Erkennen personenbezogener Informationen wie etwa US- und UK-Telefonnummern, E-Mail-Adressen und US-Postadressen.
 - Klassifizieren von Text in drei Kategorien mithilfe Machine Learning-basierter Modelle
 
 Weitere Informationen zur Funktionsweise dieser Vorgänge finden Sie unter dem Link im Abschnitt [Nächste Schritte](#next-steps).

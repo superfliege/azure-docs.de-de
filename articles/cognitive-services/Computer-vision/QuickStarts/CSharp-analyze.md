@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/11/2019
+ms.date: 03/27/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 40145ee0e284f90dc1cf231db01d02219a58eeda
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 340638377dadfd662beb3ca6ed977aeb9050b645
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313142"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630000"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-c-in-computer-vision"></a>Schnellstart: Analysieren eines lokalen Bilds mit der REST-API und C# in der Maschinelles Sehen-API
 
@@ -33,7 +33,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Führen Sie die folgenden Schritte durch, um das Beispiel in Visual Studio zu erstellen:
 
-1. Erstellen Sie mithilfe der Visual C#-Konsolen-App-Vorlage eine neue Visual Studio-Projektmappe in Visual Studio.
+1. Erstellen Sie mithilfe der Visual C#-Konsolen-App-Vorlage (.NET Framework) eine neue Visual Studio-Projektmappe in Visual Studio.
 1. Installieren Sie das NuGet-Paket „Newtonsoft.Json“.
     1. Klicken Sie im Menü auf **Werkzeuge**, wählen Sie **NuGet-Paket-Manager** und dann **NuGet-Pakete für Projektmappe verwalten** aus.
     1. Klicken Sie auf die Registerkarte **Durchsuchen**, und geben Sie „Newtonsoft.Json“ in das Feld **Suchen** ein.

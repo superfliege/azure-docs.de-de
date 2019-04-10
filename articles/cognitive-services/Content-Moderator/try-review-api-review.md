@@ -1,68 +1,195 @@
 ---
-title: Moderieren von Inhalten mit Überprüfungen durch Personen mit der API-Konsole – Content Moderator
+title: Erstellen von Moderationsüberprüfungen über die REST-API-Konsole – Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Verwenden Sie die Überprüfungsvorgänge der Überprüfungs-API, um Bild- oder Textüberprüfungen für die Moderation durch Personen zu erstellen.
+description: Verwenden Sie die Überprüfungs-API von Azure Content Moderator, um Bild- oder Textüberprüfungen für die Moderation durch Personen zu erstellen.
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: conceptual
-ms.date: 01/10/2019
+ms.topic: article
+ms.date: 03/18/2019
 ms.author: sajagtap
-ms.openlocfilehash: 2e40165bde7f3ce2eabd91b55c5bbc8139282b60
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 254269ccedc92b9dfc164cc4665a8a8513682773
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101464"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882011"
 ---
-# <a name="create-reviews-from-the-api-console"></a>Erstellen von Überprüfungen über die API-Konsole
+# <a name="create-human-reviews-rest"></a>Erstellen von Überprüfungen durch Personen (REST)
 
-Verwenden Sie die [Überprüfungsvorgänge](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4) der Überprüfungs-API, um Bild- und Textüberprüfungen für die Moderation durch Personen zu erstellen. Menschliche Moderatoren verwenden zur Überprüfung von Inhalten das Prüfungstool. Verwenden Sie diesen Vorgang basierend auf der Geschäftslogik Ihrer Beitragsmoderation. Verwenden Sie es, nachdem Sie Ihre Inhalte mit einer der Bild- oder Text-APIs von Content Moderator oder einer anderen Cognitive Services-API durchsucht haben. 
+In [Überprüfungen](./review-api.md#reviews) werden Inhalte gespeichert und angezeigt, damit Moderatoren auf sie zugreifen können. Wenn ein Benutzer eine Überprüfung abgeschlossen hat, werden die Ergebnisse an einen angegebenen Rückrufendpunkt gesendet. In diesem Artikel erfahren Sie, wie Sie Überprüfungen mithilfe der Überprüfungs-REST-APIs über die API-Konsole einrichten. Nachdem Sie sich mit der Struktur der APIs vertraut gemacht haben, können Sie diese Aufrufe bequem zu jeder REST-kompatiblen Plattform portieren.
 
-Nachdem ein menschlicher Moderator die automatisch zugewiesenen Tags und Vorhersagedaten überprüft und eine finale Moderationsentscheidung getroffen hat, sendet die Überprüfungs-API alle Informationen an Ihren API-Endpunkt.
+## <a name="prerequisites"></a>Voraussetzungen
 
-## <a name="use-the-api-console"></a>Verwenden der API-Konsole
-Um die API über die Online-Konsole zu testen, benötigen Sie einige Werte, die Sie in die Konsole eingeben müssen:
+- Melden Sie sich auf der Website des [Content Moderator-Prüfungstools](https://contentmoderator.cognitive.microsoft.com/) an, oder erstellen Sie dort ein Konto.
 
-- **teamName**: Der Teamname, den Sie beim Einrichten Ihres Prüfungstoolkontos erstellt haben. 
-- **ContentId**: Diese Zeichenfolge wird an die API übergeben und durch den Rückruf zurückgegeben. Die „ContentId“ ist nützlich, um interne Bezeichner oder Metadaten mit den Ergebnissen eines Moderationsauftrags zu verknüpfen.
-- **Metadaten**: Benutzerdefinierte Schlüssel-Wert-Paare, die während des Rückrufs an Ihren API-Endpunkt zurückgegeben werden. Wenn dieser Schlüssel ein im Prüfungstool definierter kurzer Code ist, wird er als Tag angezeigt.
-- **Ocp-Apim-Subscription-Key**: Befindet sich auf der Registerkarte **Einstellungen**. Weitere Informationen finden Sie in der [Übersicht](overview.md).
+## <a name="create-a-review"></a>Erstellen einer Überprüfung
 
-Die einfachste Möglichkeit, auf eine Testkonsole zuzugreifen, ist über das Fenster **Anmeldeinformationen**.
+Navigieren Sie zum Erstellen einer Überprüfung zur API-Referenzseite, und wählen Sie unter **[Review – Create](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)** (Überprüfung – Erstellen) die Schaltfläche für Ihre Schlüsselregion aus (diese finden Sie in der Endpunkt-URL auf der Seite **Anmeldeinformationen** des [Prüfungstools](https://contentmoderator.cognitive.microsoft.com/)). Dadurch wird die API-Konsole gestartet, über die Sie ganz einfach REST-API-Aufrufe erstellen und ausführen können.
 
-1. Wählen Sie im Fenster **Anmeldeinformationen** die Option [Überprüfungs-API-Referenz](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
+![Regionsauswahl auf der Seite „Review – Get“ (Überprüfung – abrufen)](images/test-drive-region.png)
 
-   Die Seite **Überprüfung – Erstellen** wird geöffnet.
+### <a name="enter-rest-call-parameters"></a>Eingeben von REST-Aufrufparametern
 
-2. Wählen Sie für **API-Testkonsole öffnen** die Region aus, die Ihrem Standort am ehesten nahekommt.
+Geben Sie Werte für **teamName** und **Ocp-Apim-Subscription-Key** ein:
 
-   ![Regionsauswahl auf der Seite „Überprüfung – Erstellen“](images/test-drive-region.png)
+- **teamName**: Die Team-ID, die Sie beim Einrichten Ihres Kontos für das [Prüfungstool](https://contentmoderator.cognitive.microsoft.com/) erstellt haben (zu finden im Feld **ID** auf der Seite „Anmeldeinformationen“ des Prüfungstools).
+- **Ocp-Apim-Subscription-Key**: Ihr Content Moderator-Schlüssel. Diesen finden Sie auf der Registerkarte **Einstellungen** des [Prüfungstools](https://contentmoderator.cognitive.microsoft.com).
 
-   Die API-Konsole **Überprüfung – Erstellen** wird geöffnet.
+### <a name="enter-a-review-definition"></a>Eingeben einer Überprüfungsdefinition
+
+Geben Sie im Feld **Anforderungstext** die JSON-Anforderung mit den folgenden Feldern ein:
+
+- **Metadaten**: Die an Ihren Rückrufendpunkt zurückzugebenden benutzerdefinierten Schlüssel-Wert-Paare. Wenn dieser Schlüssel ein im [Prüfungstool](https://contentmoderator.cognitive.microsoft.com) definierter kurzer Code ist, wird er als Tag angezeigt.
+- **Content:** Bei Bild- und Videoinhalten ist dies eine URL-Zeichenfolge, die auf die Inhalte verweist. Bei Textinhalten ist dies die eigentliche Textzeichenfolge.
+- **ContentId**: Eine benutzerdefinierte Bezeichnerzeichenfolge. Diese Zeichenfolge wird an die API übergeben und durch den Rückruf zurückgegeben. Sie ist nützlich, um interne Bezeichner oder Metadaten mit den Ergebnissen eines Moderationsauftrags zu verknüpfen.
+- **CallbackEndpoint:** (Optional:) Die URL zum Empfangen von Rückrufinformationen, wenn die Überprüfung abgeschlossen ist.
+
+Im Standardanforderungstext werden Beispiele für die verschiedenen Überprüfungen angezeigt, die Sie erstellen können:
+
+```json
+[Image]
+[
+  {
+    "Metadata": [
+      {
+        "Key": "string",
+        "Value": "string"
+      }
+    ],
+    "Type": "Image",
+    "Content": "<Content Url>",
+    "ContentId": "<Your identifier for this content>",
+    "CallbackEndpoint": "<Url where you would receive callbacks>"
+  }
+]
+[Text]
+[
+  {
+    "Metadata": [
+      {
+        "Key": "string",
+        "Value": "string"
+      }
+    ],
+    "Type": "Text",
+    "Content": "<Your Text Content>",
+    "ContentId": "<Your identifier for this content>",
+    "CallbackEndpoint": "<Url where you would receive callbacks>"
+  }
+]
+[Video]
+[
+  {
+    "VideoFrames":[
+      {
+          "Id": "<Frame Id>",
+          "Timestamp": "<Frame Timestamp",
+          "FrameImage":"<Frame Image URL",
+          "Metadata": [
+            {
+              "Key": "<Key>",
+              "Value": "<Value"
+            }
+          ],
+          "ReviewerResultTags": [
+          ]
+    ], 
+    "Metadata": [
+      {
+        "Key": "string",
+        "Value": "string"
+      },
+      //For encrypted Videos
+        {
+          "Key": "protectedType",
+          "Value": "AES or FairPlay or Widevine or Playready"
+        },
+        {
+          "Key": "authenticationToken",
+          "Value": "your viewtoken(In case of Video Indexer AES encryption type, this value is viewtoken from breakdown json)"
+        },
+      //For FairPlay encrypted type video include certificateUrl as well
+        {
+          "Key": "certificateUrl",
+          "Value": "your certificate url"
+        }
+    ],
+    "Type": "Video",
+    "Content": "<Stream Url>",
+    "ContentId": "<Your identifier for this content>",
+    "CallbackEndpoint": "<Url where you would receive callbacks>",
+    [Optional]
+    "Timescale": "<Timescale of the video>
+  }
+]
+```
+
+### <a name="submit-your-request"></a>Senden der Anforderung
   
-3. Geben Sie Werte für die gewünschten Abfrageparameter, den Inhaltstyp und Ihren Abonnementschlüssel ein. Geben Sie im Feld **Anforderungstext** den Inhalt (z.B. den Speicherort des Bildes), Metadaten und andere mit dem Inhalt verbundene Informationen an.
+Wählen Sie **Senden** aus. Wenn der Vorgang erfolgreich ist, lautet der **Antwortstatus** `200 OK`, und im Feld **Antwortinhalt** wird eine ID für die Überprüfung angezeigt. Kopieren Sie diese ID für die folgenden Schritte.
 
-   ![Abfrageparameter, Header und Feld „Anforderungstext“ in der Konsole „Überprüfen – Erstellen“](images/test-drive-review-1.PNG)
+![Feld „Antwortinhalt“ mit Überprüfungs-ID in der Konsole „Überprüfen – Erstellen“](images/test-drive-review-2.PNG)
+
+### <a name="examine-the-new-review"></a>Untersuchen der neuen Überprüfung
+
+Wählen Sie im [Prüfungstool](https://contentmoderator.cognitive.microsoft.com) die Optionen **Überprüfung** > **Bild**/**Text**/**Video** aus (abhängig vom verwendeten Inhalt). Der hochgeladene Inhalt sollte angezeigt werden und kann durch Personen überprüft werden.
+
+![Prüfungstool-Bild eines Fußballs](images/test-drive-review-5.PNG)
+
+## <a name="get-review-details"></a>Abrufen von Bewertungsdetails
+
+Um Details zu einer vorhandenen Überprüfung abzurufen, navigieren Sie zur API-Referenzseite, und wählen Sie unter [Review – Get](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c2) (Überprüfung – Abrufen) die Schaltfläche für Ihre Region aus (die Region, in der Ihr Schlüssel verwaltet wird).
+
+![Regionsauswahl auf der Seite „Workflow – Abrufen“](images/test-drive-region.png)
+
+Geben Sie die REST-Aufrufparameter wie im obigen Abschnitt ein. In diesem Schritt haben Sie beim Erstellen der Überprüfung **reviewId** als eindeutige ID-Zeichenfolge erhalten.
+
+![Abrufergebnisse in der Konsole „Überprüfen – Erstellen“](images/test-drive-review-3.PNG)
   
-4. Wählen Sie **Senden** aus. Es wird eine Überprüfungs-ID erstellt. Kopieren Sie diese ID für die folgenden Schritte.
+Wählen Sie **Senden** aus. Wenn der Vorgang erfolgreich ist, lautet der **Antwortstatus** `200 OK`, und im Feld **Antwortinhalt** werden die Überprüfungsdetails im JSON-Format wie folgt angezeigt:
 
-   ![Feld „Antwortinhalt“ mit Überprüfungs-ID in der Konsole „Überprüfen – Erstellen“](images/test-drive-review-2.PNG)
-  
-5. Wählen Sie **Abrufen**, und öffnen Sie die API durch Auswählen der Schaltfläche, die Ihrer Region entspricht. Geben Sie auf der Ergebnisseite die Werte für **teamName**, **ReviewID** und **subscription key** ein. Wählen Sie die Schaltfläche **Senden** auf der Seite. 
+```json
+{  
+  "reviewId":"201712i46950138c61a4740b118a43cac33f434",
+  "subTeam":"public",
+  "status":"Complete",
+  "reviewerResultTags":[  
+    {  
+      "key":"a",
+      "value":"False"
+    },
+    {  
+      "key":"r",
+      "value":"True"
+    },
+    {  
+      "key":"sc",
+      "value":"True"
+    }
+  ],
+  "createdBy":"<teamname>",
+  "metadata":[  
+    {  
+      "key":"sc",
+      "value":"true"
+    }
+  ],
+  "type":"Image",
+  "content":"https://reviewcontentprod.blob.core.windows.net/<teamname>/IMG_201712i46950138c61a4740b118a43cac33f434",
+  "contentId":"0",
+  "callbackEndpoint":"<callbackUrl>"
+}
+```
 
-   ![Abrufergebnisse in der Konsole „Überprüfen – Erstellen“](images/test-drive-review-3.PNG)
-  
-6. Es werden die Ergebnisse des Suchvorgangs angezeigt.
+Beachten Sie folgende Felder in der Antwort:
 
-   ![Feld „Antwortinhalt“ in der Konsole „Überprüfen – Erstellen“](images/test-drive-review-4.PNG)
-  
-7. Wählen Sie auf dem Content Moderator-Dashboard **Überprüfung** > **Bild**. Das durchsuchte Bild wird angezeigt und kann für die Überprüfung durch Personen verwendet werden.
-
-   ![Prüfungstool-Bild eines Fußballs](images/test-drive-review-5.PNG)
+- **status**
+- **reviewerResultTags:** Wird angezeigt, wenn vom Überprüfungsteam (angegeben im Feld **createdBy**) manuell Markierungen hinzugefügt wurden.
+- **metadata:** Hier werden die ursprünglich in der Überprüfung hinzugefügten Markierungen angezeigt, bevor das Überprüfungsteam Änderungen vorgenommen hat.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Verwenden Sie die REST-API in Ihrem Code, oder beginnen Sie mit dem [.NET-Schnellstart für Überprüfungen](moderation-reviews-quickstart-dotnet.md), die in Ihre Anwendung integriert werden sollen.
+In dieser Anleitung haben Sie erfahren, wie Inhaltsmoderationsüberprüfungen mithilfe der REST-API erstellt werden. Als Nächstes integrieren Sie Überprüfungen in ein End-to-End-Moderationsszenario, z. B. das im Tutorial [E-Commerce-Moderation](./ecommerce-retail-catalog-moderation.md).

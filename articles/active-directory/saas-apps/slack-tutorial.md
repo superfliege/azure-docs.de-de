@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 791b224f141dc0baa5babc401c35d6860a213df5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5a2472e78a9da223b0c651551d7cc8e05ab6eea9
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57875033"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905493"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>Tutorial: Azure Active Directory-Integration mit Slack
 
@@ -107,9 +107,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Slack die
 
     ![SSO-Informationen zur Domäne und zu den URLs für Slack](common/sp-identifier.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.slack.com`.
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.slack.com`
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL ein: `https://slack.com`.
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL ein: `https://slack.com`
 
     > [!NOTE]
     > Der Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie den Wert mit der tatsächlichen Anmelde-URL. Wenden Sie sich an das [Clientsupportteam von Slack](https://slack.com/help/contact), um den Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -119,7 +119,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Slack die
     ![image](common/edit-attribute.png)
 
     > [!NOTE] 
-    > Wenn Sie Benutzer haben, deren **E-Mail-Adresse** nicht in einer Office365-Lizenz enthalten ist, wird der **User.Email**-Anspruch nicht im SAML-Token angezeigt. In diesen Fällen empfehlen wir, **user.userprincipalname** als **User.Email**-Attributwert zu verwenden, um ihn stattdessen als **eindeutigen Bezeichner** zuzuordnen.
+    > Bei Benutzern, deren **E-Mail-Adresse** nicht in einer Office365-Lizenz enthalten ist, wird der **User.Email**-Anspruch nicht im SAML-Token angezeigt. In diesen Fällen empfehlen wir, **user.userprincipalname** als **User.Email**-Attributwert zu verwenden, um ihn stattdessen als **eindeutigen Bezeichner** zuzuordnen.
 
 6. Konfigurieren Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** das SAML-Tokenattribut wie in der obigen Abbildung gezeigt, und führen Sie die folgenden Schritte aus:
 
@@ -206,7 +206,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
+    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.endung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
@@ -247,7 +247,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon
 > Setzen Sie sich mit dem [Supportteam von Slack](https://slack.com/help/contact) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
 > [!NOTE]
-> Azure AD Connect ist das Synchronisierungstool, das lokale Active Directory-Identitäten mit Azure AD synchronisieren kann, woraufhin diese synchronisierten Benutzer ebenfalls die Anwendungen wie alle anderen Cloudbenutzer verwenden können.
+> Azure AD Connect ist das Synchronisierungstool, das lokale Active Directory-Identitäten mit Azure AD synchronisieren kann, woraufhin diese synchronisierten Benutzer ebenfalls die Anwendungen wie alle anderen Cloudbenutzer verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
@@ -263,4 +263,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Slack“ klicken, sollten Sie auto
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Konfigurieren der Benutzerbereitstellung](slack-provisioning-tutorial.md)
+- [Benutzerbereitstellung konfigurieren](slack-provisioning-tutorial.md)

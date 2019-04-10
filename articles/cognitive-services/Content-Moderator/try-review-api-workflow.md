@@ -1,207 +1,142 @@
 ---
-title: Inhaltsmoderationsworkflows über die API-Konsole – Content Moderator
+title: Definieren von Moderationsworkflows über die REST-API-Konsole – Content Moderator
 titlesuffix: Azure Cognitive Services
-description: Verwenden Sie die Workflowvorgänge in Azure Content Moderator, um mithilfe der API für die Überprüfung einen Workflow zu erstellen oder aktualisieren oder Workflowdetails abzurufen.
+description: Sie können die Überprüfungs-APIs von Azure Content Moderator verwenden, um benutzerdefinierte Workflows und Schwellenwerte basierend auf Ihren Inhaltsrichtlinien zu definieren.
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: conceptual
-ms.date: 01/10/2019
+ms.topic: article
+ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: 1c18544a0fd135eb546660c442b865bf1249dfe5
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e150b1321f2fbd348e737222c752203281503643
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883082"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756582"
 ---
-# <a name="workflows-from-the-api-console"></a>Workflows über die API-Konsole
+# <a name="define-and-use-moderation-workflows-rest"></a>Definieren und Verwenden von Moderationsworkflows (REST)
 
-Verwenden Sie die [Workflowvorgänge](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59) in Azure Content Moderator, um mithilfe der API für die Überprüfung einen Workflow zu erstellen oder aktualisieren oder Workflowdetails abzurufen. Mit dieser API können Sie einfache, komplexe und sogar geschachtelte Ausdrücke für Ihre Workflows definieren. Die Workflows werden im Prüfungstool angezeigt, die Ihr Team verwenden kann. Die Workflows werden auch bei den Auftragsvorgängen der Überprüfung-API verwendet.
+Workflows sind cloudbasierte benutzerdefinierte Filter, mit denen Sie Inhalte effizienter verwalten können. Workflows lassen sich mit einer Vielzahl von Diensten verbinden, sodass Inhalte auf unterschiedliche Weise gefiltert und dann entsprechende Aktionen ausgeführt werden können. In dieser Anleitung wird erläutert, wie Sie mithilfe der REST-APIs für Workflows über die API-Konsole Workflows erstellen und verwenden können. Nachdem Sie sich mit der Struktur der APIs vertraut gemacht haben, können Sie diese Aufrufe bequem zu jeder REST-kompatiblen Plattform portieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1. Navigieren Sie zum [Prüfungstool](https://contentmoderator.cognitive.microsoft.com/). Registrieren Sie sich, sofern noch nicht geschehen. 
-2. Klicken Sie im Prüfungstool unter **Einstellungen** auf die Registerkarte **Workflows**, wie im [Workflowtutorial](Review-Tool-User-Guide/Workflows.md) des Prüfungstools gezeigt wird.
-
-### <a name="browse-to-the-workflows-screen"></a>Aufrufen der Ansicht „Workflows“
-
-Wählen Sie auf dem Content Moderator-Dashboard **Überprüfung** > **Einstellungen** > **Workflows**. Ein Standardworkflow wird angezeigt.
-
-  ![Standardworkflow](images/default-workflow-listed.PNG)
-
-### <a name="get-the-json-definition-of-the-default-workflow"></a>Abrufen der JSON-Definition des Standardworkflows
-
-Wählen Sie für Ihren Workflow die Option **Bearbeiten** aus, und klicken Sie dann auf die Registerkarte **JSON**. Der folgende JSON-Ausdruck wird angezeigt:
-
-    {
-        "Type": "Logic",
-        "If": {
-            "ConnectorName": "moderator",
-            "OutputName": "isAdult",
-            "Operator": "eq",
-            "Value": "true",
-            "Type": "Condition"
-            },
-        "Then": {
-        "Perform": [
-        {
-            "Name": "createreview",
-            "CallbackEndpoint": null,
-            "Tags": []
-        }
-        ],
-        "Type": "Actions"
-        }
-    }
-
-## <a name="get-workflow-details"></a>Abrufen von Workflowdetails
-
-Verwenden Sie den Vorgang **Workflow – Abrufen**, um Details zu Ihrem bestehenden Standardworkflow abzurufen.
-
-Navigieren Sie im Prüfungstool zum Abschnitt [Anmeldeinformationen](Review-Tool-User-Guide/credentials.md#the-review-tool).
-
-### <a name="browse-to-the-api-reference"></a>Navigieren zur API-Referenz
-
-1. Wählen Sie in der Ansicht **Anmeldeinformationen** die Option [API-Referenz](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59) aus. 
-2. Wenn die Seite **Workflow – Erstellen oder aktualisieren** geöffnet wird, navigieren Sie zum Verweis [Workflow – Abrufen](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b44b3f9b0711b43c4c58).
-
-### <a name="select-your-region"></a>Auswählen Ihrer Region
-
-Wählen Sie für die **OpenAPI-Testkonsole** die Region aus, die Ihrem Standort am ehesten nahekommt.
-
-  ![Regionsauswahl auf der Seite „Workflow – Abrufen“](images/test-drive-region.png)
-
-  Die API-Konsole **Workflow – Abrufen** wird geöffnet.
-
-### <a name="enter-parameters"></a>Parameter eingeben
-
-Geben Sie Werte für **team**, **workflowname** und **Ocp-Apim-Subscription-Key** (Ihr Abonnementschlüssel) ein:
-
-- **team**: Die Team-ID, die Sie beim Einrichten Ihres [Prüfungstoolkontos](https://contentmoderator.cognitive.microsoft.com/) erstellt haben. 
-- **workflowname**: Der Name Ihres Workflows. Verwenden Sie `default`.
-- **Ocp-Apim-Subscription-Key**: Befindet sich auf der Registerkarte **Einstellungen**. Weitere Informationen finden Sie in der [Übersicht](overview.md).
-
-  ![Abrufen allgemeiner Parameter und Header](images/workflow-get-default.PNG)
-
-### <a name="submit-your-request"></a>Senden der Anforderung
-  
-Wählen Sie **Senden** aus. Wenn der Vorgang erfolgreich ist, lautet der **Antwortstatus** `200 OK`, und im Feld **Antwortinhalt** wird der folgende JSON-Workflow angezeigt:
-
-    {
-        "Name": "default",
-        "Description": "Default",
-        "Type": "Image",
-        "Expression": {
-        "If": {
-            "ConnectorName": "moderator",
-            "OutputName": "isadult",
-            "Operator": "eq",
-            "Value": "true",
-            "AlternateInput": null,
-            "Type": "Condition"
-            },
-        "Then": {
-            "Perform": [{
-                "Name": "createreview",
-                "Subteam": null,
-                "CallbackEndpoint": null,
-                "Tags": []
-            }],
-            "Type": "Actions"
-            },
-            "Else": null,
-            "Type": "Logic"
-            }
-    }
-
+- Melden Sie sich auf der Website des [Content Moderator-Prüfungstools](https://contentmoderator.cognitive.microsoft.com/) an, oder erstellen Sie dort ein Konto.
 
 ## <a name="create-a-workflow"></a>Erstellen eines Workflows
 
-Navigieren Sie im Prüfungstool zum Abschnitt [Anmeldeinformationen](Review-Tool-User-Guide/credentials.md#the-review-tool).
+Navigieren Sie zum Erstellen oder Aktualisieren eines Workflows zur API-Referenzseite, und wählen Sie unter **[Workflow – Create Or Update](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59)** (Workflow – erstellen oder aktualisieren) die Schaltfläche für Ihre Schlüsselregion aus (diese finden Sie in der Endpunkt-URL auf der Seite **Anmeldeinformationen**  des [Prüfungstools](https://contentmoderator.cognitive.microsoft.com/)). Dadurch wird die API-Konsole gestartet, über die Sie ganz einfach REST-API-Aufrufe erstellen und ausführen können.
 
-### <a name="browse-to-the-api-reference"></a>Navigieren zur API-Referenz
+![Regionsauswahl auf der Seite „Workflow – Erstellen oder aktualisieren“](images/test-drive-region.png)
 
-Wählen Sie in der Ansicht **Anmeldeinformationen** die Option [API-Referenz](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59) aus. Die Seite **Workflow – Erstellen oder aktualisieren** wird geöffnet.
+### <a name="enter-rest-call-parameters"></a>Eingeben von REST-Aufrufparametern
 
-### <a name="select-your-region"></a>Auswählen Ihrer Region
+Geben Sie Werte für **team**, **workflowname** und **Ocp-Apim-Subscription-Key** ein:
 
-Wählen Sie für die **OpenAPI-Testkonsole** die Region aus, die Ihrem Standort am ehesten nahekommt.
+- **team**: Die Team-ID, die Sie beim Einrichten Ihres Kontos für das [Prüfungstool](https://contentmoderator.cognitive.microsoft.com/) erstellt haben (zu finden im Feld **ID** auf der Seite „Anmeldeinformationen“ des Prüfungstools).
+- **workflowname**: Der Name eines neuen hinzuzufügenden Workflows (oder ein vorhandener Name, wenn Sie einen vorhandenen Workflow aktualisieren möchten).
+- **Ocp-Apim-Subscription-Key**: Ihr Content Moderator-Schlüssel. Diesen finden Sie auf der Registerkarte **Einstellungen** des [Prüfungstools](https://contentmoderator.cognitive.microsoft.com).
 
-  ![Regionsauswahl auf der Seite „Workflow – Erstellen oder aktualisieren“](images/test-drive-region.png)
+![Abfrageparameter und Header in der Konsole „Workflow – Erstellen oder aktualisieren“](images/workflow-console-parameters.PNG)
 
-  Die API-Konsole **Workflow – Erstellen oder aktualisieren** wird geöffnet.
+### <a name="enter-a-workflow-definition"></a>Eingeben einer Workflowdefinition
 
-### <a name="enter-parameters"></a>Parameter eingeben
+1. Geben Sie im Feld **Anforderungstext** die JSON-Anforderung mit Angaben zu **Description** und **Type** (entweder `Image` oder `Text`) ein.
+2. Kopieren Sie für **Expression** den JSON-Ausdruck für den Standardworkflow. Die endgültige JSON-Zeichenfolge sollte wie folgt aussehen:
 
-Geben Sie Werte für **team**, **workflowname** und **Ocp-Apim-Subscription-Key** (Ihr Abonnementschlüssel) ein:
-
-- **team**: Die Team-ID, die Sie beim Einrichten Ihres [Prüfungstoolkontos](https://contentmoderator.cognitive.microsoft.com/) erstellt haben. 
-- **workflowname**: Der Name Ihres neuen Workflows.
-- **Ocp-Apim-Subscription-Key**: Befindet sich auf der Registerkarte **Einstellungen**. Weitere Informationen finden Sie in der [Übersicht](overview.md).
-
-  ![Abfrageparameter und Header in der Konsole „Workflow – Erstellen oder aktualisieren“](images/workflow-console-parameters.PNG)
-
-### <a name="enter-the-workflow-definition"></a>Eingeben der Workflowdefinition
-
-1. Bearbeiten Sie das Feld **Anforderungstext**, indem Sie die JSON-Anforderung mit Angaben zur **Description** und zum **Type** („Image“ oder „Text“) eingeben. 
-2. Kopieren Sie für **Expression** den Standardworkflowausdruck aus dem vorherigen Abschnitt, wie im Folgenden gezeigt wird:
-
+```json
+{
+  "Description":"<A description for the Workflow>",
+  "Type":"Text",
+  "Expression":{
+    "Type":"Logic",
+    "If":{
+      "ConnectorName":"moderator",
+      "OutputName":"isAdult",
+      "Operator":"eq",
+      "Value":"true",
+      "Type":"Condition"
+    },
+    "Then":{
+      "Perform":[
         {
-            "Description": "Default workflow from API console",
-            "Type": "Image",
-            "Expression": 
-                // Copy the default workflow expression from the preceding section
-        }
+          "Name":"createreview",
+          "CallbackEndpoint":null,
+          "Tags":[
 
-    Der Anforderungstext sieht wie in der folgenden JSON-Anforderung aus:
-
-        {
-            "Description": "Default workflow from API console",
-            "Type": "Image",
-            "Expression": {
-                "Type": "Logic",
-                "If": {
-                    "ConnectorName": "moderator",
-                    "OutputName": "isAdult",
-                    "Operator": "eq",
-                    "Value": "true",
-                    "Type": "Condition"
-                    },
-                "Then": {
-                "Perform": [
-                {
-                    "Name": "createreview",
-                    "CallbackEndpoint": null,
-                    "Tags": [ ]
-                }
-                ],
-                "Type": "Actions"
-                }
-            }
+          ]
         }
- 
+      ],
+      "Type":"Actions"
+    }
+  }
+}
+```
+
+> [!NOTE]
+> Mit dieser API können Sie einfache, komplexe und sogar geschachtelte Ausdrücke für Ihre Workflows definieren. In der Dokumentation zu [Workflow – Create Or Update](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59) (Workflow – erstellen oder aktualisieren) finden Sie Beispiele mit komplexerer Logik.
+
 ### <a name="submit-your-request"></a>Senden der Anforderung
   
 Wählen Sie **Senden** aus. Wenn der Vorgang erfolgreich ist, lautet der **Antwortstatus** `200 OK`, und im Feld **Antwortinhalt** wird `true` angezeigt.
 
-### <a name="check-out-the-new-workflow"></a>Verwenden des neuen Workflows
+### <a name="examine-the-new-workflow"></a>Prüfen des neuen Workflows
 
-Wählen Sie im Prüfungstool **Überprüfung** > **Einstellungen** > **Workflows** aus. Der neue Workflow wird angezeigt und kann verwendet werden.
+Wählen Sie im [Prüfungstool](https://contentmoderator.cognitive.microsoft.com/) die Optionen **Einstellungen** > **Workflows** aus. Der neue Workflow sollte in der Liste angezeigt werden.
 
-  ![Liste von Workflows im Prüfungstool](images/workflow-console-new-workflow.PNG)
-  
-### <a name="review-your-new-workflow-details"></a>Überprüfen der Details des neuen Workflows
+![Liste von Workflows im Prüfungstool](images/workflow-console-new-workflow.PNG)
 
-1. Wählen Sie für Ihren Workflow die Option **Bearbeiten** aus, und klicken Sie dann auf die Registerkarten **Designer** und **JSON**.
+Wählen Sie für Ihren Workflow die Option **Bearbeiten** aus, und navigieren Sie zu **Designer**. Hier sehen Sie eine intuitive Darstellung der JSON-Logik.
 
-   ![Registerkarte „Designer“ für einen ausgewählten Workflow](images/workflow-console-new-workflow-designer.PNG)
+![Registerkarte „Designer“ für einen ausgewählten Workflow](images/workflow-console-new-workflow-designer.PNG)
 
-2. Um die JSON-Ansicht des Workflows anzuzeigen, wählen Sie die Registerkarte **JSON** aus.
+## <a name="get-workflow-details"></a>Abrufen von Workflowdetails
+
+Um Details zu einem vorhandenen Workflow abzurufen, navigieren Sie zur API-Referenzseite, und wählen Sie unter **[Workflow – Get](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b44b3f9b0711b43c4c58)** (Workflow – abrufen) die Schaltfläche für Ihre Region aus (die Region, in der Ihr Schlüssel verwaltet wird).
+
+![Regionsauswahl auf der Seite „Workflow – Abrufen“](images/test-drive-region.png)
+
+Geben Sie die REST-Aufrufparameter wie im obigen Abschnitt ein. Stellen Sie sicher, dass **Workflowname** diesmal der Name eines vorhandenen Workflows ist.
+
+![Abrufen allgemeiner Parameter und Header](images/workflow-get-default.PNG)
+
+Wählen Sie **Senden** aus. Wenn der Vorgang erfolgreich ist, lautet der **Antwortstatus** `200 OK`, und im Feld **Antwortinhalt** wird der Workflow im JSON-Format wie folgt angezeigt:
+
+```json
+{
+  "Name":"default",
+  "Description":"Default",
+  "Type":"Image",
+  "Expression":{
+    "If":{
+      "ConnectorName":"moderator",
+      "OutputName":"isadult",
+      "Operator":"eq",
+      "Value":"true",
+      "AlternateInput":null,
+      "Type":"Condition"
+    },
+    "Then":{
+      "Perform":[
+        {
+          "Name":"createreview",
+          "Subteam":null,
+          "CallbackEndpoint":null,
+          "Tags":[
+
+          ]
+        }
+      ],
+      "Type":"Actions"
+    },
+    "Else":null,
+    "Type":"Logic"
+  }
+}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Beispiele für komplexere Workflows finden Sie in der [Übersicht über die Workflows](workflow-api.md).
-* Erfahren Sie, wie Workflows mit [Inhaltsmoderationsaufträgen](try-review-api-job.md) verwendet werden.
+- Erfahren Sie, wie Workflows mit [Inhaltsmoderationsaufträgen](try-review-api-job.md) verwendet werden.

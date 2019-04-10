@@ -49,7 +49,7 @@ In diesem Artikel wird vorausgesetzt, dass Sie DC/OS eingerichtet und einfache W
 
    ![](media/container-service-monitoring-oms/image4.png)
 
-3. Hier werden Sie dazu aufgefordert, die Werte für `wsid` (Arbeitsbereichs-ID für Log Analytics) und `wskey` (der primäre Schlüssel für die Arbeitsbereichs-ID) einzugeben. Um sowohl `wsid` als auch `wskey` abzurufen, müssen Sie ein Konto unter <https://mms.microsoft.com> erstellen.
+3. Hier werden Sie dazu aufgefordert, die Werte für `wsid` (ID des Log Analytics-Arbeitsbereichs) und `wskey` (der primäre Schlüssel für die Arbeitsbereichs-ID) einzugeben. Um sowohl `wsid` als auch `wskey` abzurufen, müssen Sie ein Konto unter <https://mms.microsoft.com> erstellen.
    Führen Sie die entsprechenden Schritte aus, um ein Konto zu erstellen. Nachdem Sie das Konto erstellt haben, müssen Sie Ihre `wsid` und `wskey` abrufen, indem Sie auf **Einstellungen**, **Verbundene Quellen** und **Linux-Server** klicken, wie unten dargestellt.
 
    ![](media/container-service-monitoring-oms/image5.png)

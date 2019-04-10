@@ -109,7 +109,7 @@ Nun können Sie nach Ereignissen und anderen Daten für Triggerereignisse, Ausf�
 
 Führen Sie die hier angegebenen Schritte aus, um nach Ereignissen in Ihrer Logik-App zu suchen, z.B. Triggerereignisse, Ausführungsereignisse und Aktionsereignisse, und diese anzuzeigen.
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Alle Dienste** aus. Suchen Sie nach „log analytics“, und wählen Sie dann wie hier gezeigt die Option **Log Analytics**:
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Alle Dienste** aus. Suchen Sie nach „log analytics“, und wählen Sie dann wie hier gezeigt die Option **Log Analytics** aus:
 
    ![Auswählen von „Log Analytics“](media/logic-apps-monitor-your-logic-apps/browseloganalytics.png)
 

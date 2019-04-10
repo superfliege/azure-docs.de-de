@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie Fehler beim Integrieren von Lösungen für Up
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/25/2019
+ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: ac11b1a2b625d1fc7b62130580d1f188ead21051
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: eaafee304f606ae4d511a6cea1824c26db838635
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342727"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802030"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>Beheben von Fehlern beim Integrieren von Lösungen
 
@@ -25,19 +25,23 @@ Beim Integrieren von Lösungen wie Updateverwaltung oder Änderungsnachverfolgun
 
 #### <a name="issue"></a>Problem
 
-Die folgende Meldung wird angezeigt, wenn Sie versuchen, einen virtuellen Computer in eine Lösung zu integrieren (Onboarding):
+Eine der folgenden Meldungen wird angezeigt, wenn Sie versuchen, einen virtuellen Computer in eine Lösung zu integrieren (Onboarding):
 
-```
+```error
 The solution cannot be enabled due to missing permissions for the virtual machine or deployments
+```
+
+```error
+The solution cannot be enabled on this VM because the permission to read the workspace is missing
 ```
 
 #### <a name="cause"></a>Ursache
 
-Dieser Fehler wird durch falsche oder fehlende Berechtigungen auf dem virtuellen Computer oder für den Benutzer verursacht.
+Dieser Fehler wird durch falsche oder fehlende Berechtigungen auf dem virtuellen Computer, im Arbeitsbereich oder für den Benutzer verursacht.
 
 #### <a name="resolution"></a>Lösung
 
-Stellen Sie sicher, dass Sie die erforderlichen Berechtigungen zum Integrieren des virtuellen Computers haben. Überprüfen Sie noch einmal [die Berechtigungen, die für das Onboarding von Computern erforderlich sind](../automation-role-based-access-control.md#onboarding), und wiederholen Sie das Onboarding für die Lösung.
+Stellen Sie sicher, dass Sie die erforderlichen Berechtigungen zum Integrieren des virtuellen Computers haben. Überprüfen Sie noch einmal [die Berechtigungen, die für das Onboarding von Computern erforderlich sind](../automation-role-based-access-control.md#onboarding), und wiederholen Sie das Onboarding für die Lösung. Wenn Sie den Fehler `The solution cannot be enabled on this VM because the permission to read the workspace is missing` erhalten, stellen Sie sicher, dass Sie über die Berechtigung `Microsoft.OperationalInsights/workspaces/read` verfügen, um herausfinden zu können, ob die VM in einen Arbeitsbereich integriert ist.
 
 ### <a name="computer-group-query-format-error"></a>Szenario: ComputerGroupQueryFormatError
 
@@ -115,7 +119,7 @@ Stellen Sie sicher, dass die ordnungsgemäßen Ports und Adressen für die Kommu
 
 ### <a name="transient-environment-issue"></a>Szenario: Fehler bei der Installation aufgrund vorübergehender Umgebungsprobleme
 
-Die Installation der Microsoft Monitoring Agent-Erweiterung ist während der Installation aufgrund einer anderen Installation oder Aktion fehlgeschlagen, die die Installation blockiert.
+Die Installation der Microsoft Monitoring Agent-Erweiterung ist während der Bereitstellung aufgrund einer anderen Installation oder Aktion fehlgeschlagen, die die Installation blockiert.
 
 #### <a name="issue"></a>Problem
 
@@ -138,7 +142,7 @@ The Microsoft Monitoring Agent failed to install on this machine. Please try to 
 Mögliche Ursachen für diesen Fehler:
 
 * Eine weitere Installation erfolgt gerade.
-* Auf dem System wurde während der Vorlagenbereitstellung ein Neustart ausgelöst.
+* Auf dem System wird während der Vorlagenbereitstellung ein Neustart ausgelöst.
 
 #### <a name="resolution"></a>Lösung
 
@@ -150,7 +154,7 @@ Die Installation der MMA-Erweiterung wurde aufgrund eines Zeitlimits nicht abges
 
 #### <a name="issue"></a>Problem
 
-Im folgenden finden ein Beispiel einer Fehlermeldung, die zurückgegeben werden kann:
+Im folgenden finden Sie ein Beispiel einer Fehlermeldung, die zurückgegeben werden kann:
 
 ```error
 Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent, version 1.0.11081.4) with exception Command C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\1.0.11081.4\MMAExtensionInstall.exe of Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent has exited with Exit code: 15614
@@ -158,7 +162,7 @@ Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftM
 
 #### <a name="cause"></a>Ursache
 
-Dieser Fehler ist darauf zurückzuführen, dass der virtuelle Computer während der Installation unter großer Last stand.
+Dieser Fehler tritt auf, weil der virtuelle Computer während der Installation unter großer Last stand.
 
 ### <a name="resolution"></a>Lösung
 

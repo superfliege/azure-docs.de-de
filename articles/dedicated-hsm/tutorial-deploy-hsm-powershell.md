@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 6470a358fd3127c93e2e2248b42f79690f4e8b55
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 9b905a81751ce5f4de4a4efbb9ff4c328269fe34
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449357"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904847"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Tutorial: Bereitstellen von HSMs in einem vorhandenen virtuellen Netzwerk mithilfe von PowerShell
 
@@ -34,6 +34,9 @@ Eine typische Bereitstellungsarchitektur mit Hochverfügbarkeit und mehreren Reg
 ![Bereitstellung mit mehreren Regionen](media/tutorial-deploy-hsm-powershell/high-availability.png)
 
 Dieses Tutorial konzentriert sich auf die Integration eines HSM-Paars und des erforderlichen ExpressRoute-Gateways („Subnet 1“ in der obigen Abbildung) in ein vorhandenes virtuelles Netzwerk („VNET 1“ in der obigen Abbildung).  Alle anderen Ressourcen sind Azure-Standardressourcen. Der gleiche Integrationsprozess kann auch für HSMs in „Subnet 4“ für „VNET 3“ (ebenfalls in der obigen Abbildung) verwendet werden.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -56,13 +59,13 @@ Die Bereitstellung der HSMs und die Integration in ein vorhandenes virtuelles Ne
 Der Dienst für dedizierte HSMs muss wie bereits erwähnt für Ihr Abonnement registriert sein, um Bereitstellungsaktivitäten ausführen zu können. Vergewissern Sie sich, dass diese Anforderung erfüllt ist, indem Sie im Azure-Portal den folgenden PowerShell-Befehl in Cloud Shell ausführen: 
 
 ```powershell
-Get-AzureRmProviderFeature -ProviderNamespace Microsoft.HardwareSecurityModules -FeatureName AzureDedicatedHsm
+Get-AzProviderFeature -ProviderNamespace Microsoft.HardwareSecurityModules -FeatureName AzureDedicatedHsm
 ```
 
 Der folgende Befehl überprüft die Netzwerkfeatures, die für den Dienst für dedizierte HSMs erforderlich sind:
 
 ```powershell
-Get-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowBaremetalServers
+Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowBaremetalServers
 ```
 
 Fahren Sie erst mit den weiteren Schritten fort, wenn bei beiden Befehlen der Status „Registered“ zurückgegeben wird, wie in der folgenden Abbildung zu sehen.  Falls Sie sich noch für den Dienst registrieren müssen, wenden Sie sich an Ihren Microsoft-Kontobeauftragten.
@@ -75,12 +78,12 @@ Ein HSM-Gerät wird im virtuellen Netzwerk eines Kunden bereitgestellt. Dies imp
 
 Wenn Sie über die Dateien verfügen, müssen Sie die Parameterdatei bearbeiten, um Ihre bevorzugten Ressourcennamen einzufügen. Dazu müssen Zeilen bearbeitet werden, die Folgendes enthalten: "value":""
 
-- `namingInfix`: Präfix für Namen von HSM-Ressourcen
-- `ExistingVirtualNetworkName`: Name des für die HSMs verwendeten virtuellen Netzwerks
-- `DedicatedHsmResourceName1`: Name der HSM-Ressource im Rechenzentrum 1
-- `DedicatedHsmResourceName2`: Name der HSM-Ressource im Rechenzentrum 2
-- `hsmSubnetRange`: Subnetz-IP-Adressbereich für HSMs
-- `ERSubnetRange`: Subnetz-IP-Adressbereich für das VNET-Gateway
+- `namingInfix` Präfix für Namen von HSM-Ressourcen
+- `ExistingVirtualNetworkName` Name des für die HSMs verwendeten virtuellen Netzwerks
+- `DedicatedHsmResourceName1` Name der HSM-Ressource im Datencenter 1
+- `DedicatedHsmResourceName2` Name der HSM-Ressource im Datencenter 2
+- `hsmSubnetRange` Subnetz-IP-Adressbereich für HSMs
+- `ERSubnetRange` Subnetz-IP-Adressbereich für das VNET-Gateway
 
 Beispiel für diese Änderungen:
 
@@ -130,20 +133,20 @@ Nach dem Hochladen der Dateien können Sie mit der Ressourcenerstellung beginnen
 Vergewissern Sie sich vor der Erstellung neuer HSM-Ressourcen, dass bestimmte erforderliche Ressourcen vorhanden sind. Sie benötigen ein virtuelles Netzwerk mit Subnetzbereichen für Compute, HSMs und Gateway. Die folgenden Beispielbefehle zeigen, wie Sie ein solches virtuelles Netzwerk erstellen:
 
 ```powershell
-$compute = New-AzureRmVirtualNetworkSubnetConfig `
+$compute = New-AzVirtualNetworkSubnetConfig `
   -Name compute `
   -AddressPrefix 10.2.0.0/24
 ```
 
 ```powershell
-$delegation = New-AzureRmDelegation `
+$delegation = New-AzDelegation `
   -Name "myDelegation" `
   -ServiceName "Microsoft.HardwareSecurityModules/dedicatedHSMs"
 
 ```
 
 ```powershell
-$hsmsubnet = New-AzureRmVirtualNetworkSubnetConfig ` 
+$hsmsubnet = New-AzVirtualNetworkSubnetConfig ` 
   -Name hsmsubnet ` 
   -AddressPrefix 10.2.1.0/24 ` 
   -Delegation $delegation 
@@ -152,7 +155,7 @@ $hsmsubnet = New-AzureRmVirtualNetworkSubnetConfig `
 
 ```powershell
 
-$gwsubnet= New-AzureRmVirtualNetworkSubnetConfig `
+$gwsubnet= New-AzVirtualNetworkSubnetConfig `
   -Name GatewaySubnet `
   -AddressPrefix 10.2.255.0/26
 
@@ -160,7 +163,7 @@ $gwsubnet= New-AzureRmVirtualNetworkSubnetConfig `
 
 ```powershell
 
-New-AzureRmVirtualNetwork `
+New-AzVirtualNetwork `
   -Name myHSM-vnet `
   -ResourceGroupName myRG `
   -Location westus `
@@ -176,7 +179,7 @@ Sind alle Voraussetzungen erfüllt, führen Sie den folgenden Befehl aus, um die
 
 ```powershell
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName myRG `
+New-AzResourceGroupDeployment -ResourceGroupName myRG `
      -TemplateFile .\Deploy-2HSM-toVNET-Template.json `
      -TemplateParameterFile .\Deploy-2HSM-toVNET-Params.json `
      -Name HSMdeploy -Verbose
@@ -195,10 +198,10 @@ Führen Sie die folgenden Befehle aus, um sich zu vergewissern, dass die Geräte
 
 ```powershell
 
-$subid = (Get-AzureRmContext).Subscription.Id
+$subid = (Get-AzContext).Subscription.Id
 $resourceGroupName = "myRG"
 $resourceName = "HSM1"  
-Get-AzureRmResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/$resourceName
+Get-AzResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/$resourceName
 
 ```
 
@@ -218,7 +221,7 @@ Nach der Anmeldung bei dem virtuellen Linux-Computer können Sie sich unter Verw
 
 ```powershell
 
-(Get-AzureRmResource -ResourceGroupName myRG -Name HSMdeploy -ExpandProperties).Properties.networkProfile.networkInterfaces.privateIpAddress
+(Get-AzResource -ResourceGroupName myRG -Name HSMdeploy -ExpandProperties).Properties.networkProfile.networkInterfaces.privateIpAddress
 
 ```
 Wenn Sie die IP-Adresse ermittelt haben, führen Sie den folgenden Befehl aus:
@@ -262,10 +265,10 @@ Wenn Sie die Ressourcen in dieser Ressourcengruppe nicht mehr benötigen, könne
 
 ```powershell
 
-$subid = (Get-AzureRmContext).Subscription.Id
+$subid = (Get-AzContext).Subscription.Id
 $resourceGroupName = "myRG" 
 $resourceName = "HSMdeploy"  
-Remove-AzureRmResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/$resourceName 
+Remove-AzResource -Resourceid /subscriptions/$subId/resourceGroups/$resourceGroupName/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/$resourceName 
 
 ```
 

@@ -1,83 +1,77 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 34de58f7a3f9307714ccc4594d9ac92523c55f69
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482216"
 documentType: LandingData
 title: Azure-Daten-Explorer – Dokumentation
 metadata:
   title: 'Azure Data Explorer-Dokumentation: Schnellstarts, Tutorials und Sprach-/API-Referenzen'
-  description: Azure-Daten-Explorer ist eine Log Analytics-Cloudplattform, die für Ad-hoc-Datenabfragen im Big Data-Bereich optimiert ist.
+  description: 'Azure Data Explorer ist eine Log Analytics-Cloudplattform, die für Ad-hoc-Datenabfragen im Big Data-Bereich optimiert ist.'
   author: orspod
   ms.author: orspodek
   ms.service: data-explorer
   ms.topic: landing-page
   ms.date: 03/24/2019
 abstract:
-  description: <p>Azure Data Explorer ist ein schneller, vollständig verwalteter Datenanalysedienst für Echtzeitanalysen großer Datenmengen, die von Anwendungen, Websites, IoT-Geräten usw. gestreamt werden. Mithilfe von Azure Data Explorer können Sie verschiedene Daten sammeln, speichern und analysieren, um Produkte zu verbessern, die Benutzerfreundlichkeit zu optimieren, Geräte zu überwachen und Vorgänge zu beschleunigen.</p><p>In unseren Schnellstarts, Tutorials und Referenzinhalten wird beschrieben, wie Sie Azure-Daten-Explorer nutzen.</p>
+  description: '<p>Azure Data Explorer ist ein schneller, vollständig verwalteter Datenanalysedienst für Echtzeitanalysen großer Datenmengen, die von Anwendungen, Websites, IoT-Geräten usw. gestreamt werden. Mithilfe von Azure Data Explorer können Sie verschiedene Daten sammeln, speichern und analysieren, um Produkte zu verbessern, die Benutzerfreundlichkeit zu optimieren, Geräte zu überwachen und Vorgänge zu beschleunigen.</p><p>In unseren Schnellstarts, Tutorials und Referenzinhalten wird beschrieben, wie Sie Azure-Daten-Explorer nutzen.</p>'
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: media/index/video.png
       width: 250
-    title: Was ist der Azure-Daten-Explorer? (19:47)
-    href: https://youtu.be/D_AJk2lAepw
+    title: 'Was ist der Azure-Daten-Explorer? (19:47)'
+    href: 'https://youtu.be/D_AJk2lAepw'
     width: 250
 sections:
-- title: Fünfminütige Schnellstarts
-  items:
-  - type: paragraph
-    text: 'Es wird beschrieben, wie Sie Azure-Daten-Explorer bereitstellen und verwenden:'
-  - type: list
-    style: icon48
+  - title: Fünfminütige Schnellstarts
     items:
-    - image:
-        src: /azure/data-explorer/media/index/portal.svg
-      text: Erstellen eines Clusters und einer Datenbank
-      href: /azure/data-explorer/create-cluster-database-portal
-    - image:
-        src: /azure/data-explorer/media/index/portal.svg
-      text: Erfassen von Streamingdaten von Event Hubs
-      href: /azure/data-explorer/ingest-data-event-hub
-    - image:
-        src: /azure/data-explorer/media/index/portal.svg
-      text: Abfragen von Daten mit der Webbenutzeroberfläche
-      href: /azure/data-explorer/web-query-data
-    - image:
-        src: /azure/data-explorer/media/index/logo-python.svg
-      text: Erfassen von Daten in der Warteschlange mit Python
-      href: /azure/data-explorer/python-ingest-data
-    - image:
-        src: /azure/data-explorer/media/index/logo-python.svg
-      text: Abfragen von Daten mit Python
-      href: /azure/data-explorer/python-query-data
-- title: Schritt-für-Schritt-Tutorials
-  items:
-  - type: paragraph
-    text: 'Es wird beschrieben, wie Sie End-to-End-Lösungen erstellen:'
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Es wird beschrieben, wie Sie Azure-Daten-Explorer bereitstellen und verwenden:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/data-explorer/media/index/portal.svg
+            text: Erstellen eines Clusters und einer Datenbank
+            href: /azure/data-explorer/create-cluster-database-portal
+          - image:
+              src: /azure/data-explorer/media/index/portal.svg
+            text: Erfassen von Streamingdaten von Event Hubs
+            href: /azure/data-explorer/ingest-data-event-hub
+          - image:
+              src: /azure/data-explorer/media/index/portal.svg
+            text: Abfragen von Daten mit der Webbenutzeroberfläche
+            href: /azure/data-explorer/web-query-data
+          - image:
+              src: /azure/data-explorer/media/index/logo-python.svg
+            text: Erfassen von Daten in der Warteschlange mit Python
+            href: /azure/data-explorer/python-ingest-data
+          - image:
+              src: /azure/data-explorer/media/index/logo-python.svg
+            text: Abfragen von Daten mit Python
+            href: /azure/data-explorer/python-query-data
+  - title: Schritt-für-Schritt-Tutorials
     items:
-    - html: <a href="/azure/data-explorer/visualize-power-bi">Visualisieren von Daten über Azure-Daten-Explorer in Power BI</a>
-- title: Kostenloses PluralSight-Videotraining
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: 'Es wird beschrieben, wie Sie End-to-End-Lösungen erstellen:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/data-explorer/visualize-power-bi">Visualisieren von Daten über Azure-Daten-Explorer in Power BI</a>
+  - title: Kostenloses PluralSight-Videotraining
     items:
-    - title: Abfragesprache für Azure-Daten-Explorer
-      href: https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch
-      image:
-        src: /azure/data-explorer/media/index/logo-pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch
-- title: Verweis
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Abfragesprache für Azure-Daten-Explorer
+            href: 'https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch'
+            image:
+              src: /azure/data-explorer/media/index/logo-pluralsight.svg
+              href: 'https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch'
+  - title: Verweis
     items:
-    - title: Sprachen und API
-      html: <p><a href="https://aka.ms/kustolangref">Abfragesprache, Verwaltungsbefehle und APIs</a>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Sprachen und API
+            html: '<p><a href="https://aka.ms/kustolangref">Abfragesprache, Verwaltungsbefehle und APIs</a>'

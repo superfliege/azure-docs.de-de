@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9dada3c6f0718db41a24368aca594bbd3215fec5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 06ee97cff08804093d3ee77ee11eca1b4e84bb0f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994858"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885960"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>Definieren und Zuweisen einer Azure-Blaupause mit der REST-API
 
@@ -40,10 +40,10 @@ Die Spezifikationen zur Blaupause finden Sie unter [Azure Blueprints REST API](/
 
 Wenn Sie noch über kein Tool für REST-API-Aufrufe verfügen, können Sie PowerShell für diese Anweisungen verwenden. Im Folgenden finden Sie ein Beispielheader für die Authentifizierung bei Azure. Generieren Sie einen Authentifizierungsheader, der manchmal als **Bearertoken** bezeichnet wird, und geben Sie den REST-API-URI für die Verbindung mit Parametern oder einen **Anforderungstext** an:
 
-```powershell-interactive
-# Login first with Connect-AzureRmAccount if not using Cloud Shell
+```azurepowershell-interactive
+# Log in first with Connect-AzAccount if not using Cloud Shell
 
-$azContext = Get-AzureRmContext
+$azContext = Get-AzContext
 $azProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
 $profileClient = New-Object -TypeName Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient -ArgumentList ($azProfile)
 $token = $profileClient.AcquireAccessToken($azContext.Subscription.TenantId)
@@ -68,8 +68,8 @@ Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wi
 
 In jedem REST-API-URI gibt es Variablen, die Sie durch Ihre eigenen Werte ersetzen müssen:
 
-- Ersetzen Sie `{YourMG}` durch die ID Ihrer Verwaltungsgruppe.
-- Ersetzen Sie `{subscriptionId}` durch Ihre Abonnement-ID.
+- `{YourMG}` - Ersetzen Sie diese Variable durch die ID Ihrer Verwaltungsgruppe.
+- `{subscriptionId}` - Ersetzen Sie diese Variable durch Ihre Abonnement-ID.
 
 > [!NOTE]
 > Blaupausen können auch auf Abonnementebene erstellt werden. Ein Beispiel finden Sie unter [Erstellen einer Blaupause für ein Abonnement](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint).
@@ -334,9 +334,9 @@ Nach dem Veröffentlichen einer Blaupause mit der REST-API kann sie einem Abonne
 
 In jedem REST-API-URI gibt es Variablen, die Sie durch Ihre eigenen Werte ersetzen müssen:
 
-- Ersetzen Sie `{tenantId}` durch Ihre Mandanten-ID.
-- Ersetzen Sie `{YourMG}` durch die ID Ihrer Verwaltungsgruppe.
-- Ersetzen Sie `{subscriptionId}` durch Ihre Abonnement-ID.
+- `{tenantId}` - Ersetzen Sie diese Variable durch Ihre Mandanten-ID.
+- `{YourMG}` - Ersetzen Sie diese Variable durch die ID Ihrer Verwaltungsgruppe.
+- `{subscriptionId}` - Ersetzen Sie diese Variable durch Ihre Abonnement-ID.
 
 1. Geben Sie für den Azure Blueprint-Dienstprinzipal die Rolle **Besitzer** für das Zielabonnement an. Die AppId ist statisch (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), aber die Dienstprinzipal-IDs variieren je nach Mandant. Details für Ihren Mandanten können mit der folgenden REST-API angefordert werden. Sie verwendet die [Azure Active Directory Graph-API](../../active-directory/develop/active-directory-graph-api.md), die eine andere Autorisierung aufweist.
 

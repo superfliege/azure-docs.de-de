@@ -3,17 +3,17 @@ title: 'Schnellstart: Visualisieren von Daten mithilfe einer in Power BI importi
 description: 'In diesem Schnellstart erfahren Sie, wie Sie eine der drei Optionen zum Visualisieren von Daten in Power BI verwenden: das Importieren einer Abfrage aus Azure Data Explorer.'
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.openlocfilehash: 139b20a2390c7301bd83113c3e98be40846fab22
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 3251ae9f39ea38eac6887df3072257e1e8e88306
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51858150"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756109"
 ---
 # <a name="quickstart-visualize-data-using-a-query-imported-into-power-bi"></a>Schnellstart: Visualisieren von Daten mithilfe einer in Power BI importierten Abfrage
 
@@ -84,4 +84,4 @@ Wenn Sie den Bericht, den Sie für diesen Schnellstart erstellt haben, nicht meh
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Quickstart: Visualize data using an imported query in Power BI](power-bi-sql-query.md) (Schnellstart: Visualisieren von Daten mithilfe einer importierten Abfrage in Power BI)
+> [Schnellstart: Visualisieren von Daten mithilfe einer importierten Abfrage in Power BI](power-bi-sql-query.md)

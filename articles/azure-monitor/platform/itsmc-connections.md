@@ -67,7 +67,7 @@ Verwenden Sie das folgende Verfahren zum Verbinden Ihrer System Center Service M
 
 | **Feld** | **Beschreibung** |
 | --- | --- |
-| **Verbindungsname**   | Geben Sie einen Namen für die System Center Service Manager-Instanz ein, die Sie mit ITSMC verbinden möchten.  Diesen Namen verwenden Sie später beim Konfigurieren von Arbeitselementen in dieser Instanz/Anzeigen ausführlicher Protokollanalysen. |
+| **Verbindungsname**   | Geben Sie einen Namen für die System Center Service Manager-Instanz ein, die Sie mit ITSMC verbinden möchten.  Diesen Namen verwenden Sie später beim Konfigurieren von Arbeitselementen in dieser Instanz/beim Anzeigen ausführlicher Protokollanalysen. |
 | **Partner type** (Partnertyp)   | Wählen Sie **System Center Service Manager** aus. |
 | **Server-URL**   | Geben Sie die URL der Service Manager-Web-App ein. Weitere Informationen zur Service Manager-Web-App finden Sie [hier](#create-and-deploy-service-manager-web-app-service).
 | **Client-ID**   | Geben Sie die Client-ID ein, die Sie (mithilfe des automatischen Skripts) zum Authentifizieren der Web-App generiert haben. Weitere Informationen zum automatisierten Skript finden Sie [hier](../../azure-monitor/platform/itsmc-service-manager-script.md).|

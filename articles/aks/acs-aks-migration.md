@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: nobun
 ms.custom: mvc
-ms.openlocfilehash: e42b0e7bd1bce40b7c58d75cb07f5a3f8afa5836
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 910c96988ec0a8b8aa7b6ac8ce287c4fdc59e177
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385040"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649967"
 ---
 # <a name="migrating-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>Migration von Azure Container Service (ACS) zu Azure Kubernetes Service (AKS)
 
@@ -35,7 +35,7 @@ ACS und AKS unterscheiden sich in einigen wichtigen Bereichen, die sich auf die 
 
 ### <a name="differences-between-kubernetes-versions"></a>Unterschiede zwischen Kubernetes-Versionen
 
-Wenn Sie zu einer neueren Version von Kubernetes migrieren (z.B. von 1.7.x zu 1.9.x), gelten einige Änderungen für die k8s-API, die Ihre Aufmerksamkeit erfordern.
+Wenn Sie zu einer neueren Version von Kubernetes migrieren (z.B.  von 1.7.x zu 1.9.x), gelten einige Änderungen für die k8s-API, die Ihre Aufmerksamkeit erfordern.
 
 * [Migration einer ThirdPartyResource zu CustomResourceDefinition](https://kubernetes.io/docs/tasks/access-kubernetes-api/migrate-third-party-resource/)
 * [Änderungen an der Workloads-API in den Versionen 1.8 und 1.9](https://kubernetes.io/docs/reference/workloads-18-19/).
@@ -144,7 +144,7 @@ Nehmen Sie eventuell erforderliche Änderungen an Ihren YAML-Definitionen vor. B
 
 ### <a name="3-optional-migrate-volumes"></a>3. (Optional) Migrieren von Volumes
 
-Migrieren Sie Volumes von Ihrem ACS-Cluster zu Ihrem AKS-Cluster. Weitere Informationen finden Sie im Abschnitt [Migrieren persistenter Volumes](#Migrating-Persistent-Volumes).
+Migrieren Sie Volumes von Ihrem ACS-Cluster zu Ihrem AKS-Cluster. Weitere Informationen finden Sie im Abschnitt [Migrieren persistenter Volumes](#migrating-persistent-volumes).
 
 ### <a name="4-deploy-applications"></a>4. Bereitstellen von Anwendungen
 

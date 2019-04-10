@@ -4,17 +4,17 @@ description: Erfahren Sie, wie Sie einen virtuellen Azure-Computer mit Lösungen
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/06/2018
+ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 70d9957ae5f0ec43269d371c96e3722e52edb26d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bf81b862f978d4baab0907dc9002564062ec5228
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57837761"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619721"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand von einem virtuellen Azure-Computer
 
@@ -26,7 +26,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="enable-the-solutions"></a>Aktivieren der Lösungen
 
-Navigieren Sie zu einem vorhandenen virtuellen Computer. Wählen Sie unter **VORGÄNGE** **Updateverwaltung**, **Bestand** oder **Änderungsnachverfolgung** aus. Der virtuelle Computer kann in jeder Region vorhanden sein, unabhängig vom Standort Ihres Automation-Kontos.
+Navigieren Sie zu einem vorhandenen virtuellen Computer. Wählen Sie unter **VORGÄNGE** **Updateverwaltung**, **Bestand** oder **Änderungsnachverfolgung** aus. Der virtuelle Computer kann in jeder Region vorhanden sein, unabhängig vom Standort Ihres Automation-Kontos. Beim Onboarding einer Lösung von einer VM aus benötigen Sie die Berechtigung `Microsoft.OperationalInsights/workspaces/read`, um zu ermitteln, ob die VM in einen Arbeitsbereich integriert ist. Weitere Informationen zu allgemein benötigten zusätzlichen Berechtigungen finden Sie unter [Erforderliche Berechtigungen für das Onboarding von Computern](automation-role-based-access-control.md#onboarding).
 
 Um die Lösung nur für die VM zu aktivieren, stellen sicher, dass **Für diesen virtuellen Computer aktivieren** ausgewählt ist. Um mehrere Computer in die Lösung zu integrieren, wählen Sie **Für virtuelle Computer in diesem Abonnement aktivieren** und dann **Klicken, um zu aktivierende Computer auszuwählen** aus. Wie Sie mehrere Computer gleichzeitig integrieren, erfahren Sie unter [Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand](automation-onboard-solutions-from-automation-account.md).
 
@@ -85,13 +85,13 @@ Nach dem Entfernen dieser Lösungen können Sie die folgenden Schritte ausführe
 
 1. Öffnen Sie im Azure-Portal Ihr Automation-Konto, und wählen Sie links auf der Seite „Automation-Konto“ im Abschnitt **Zugehörige Ressourcen** die Option **Verknüpfter Arbeitsbereich** aus.
 
-1. Klicken Sie auf der Seite „Verknüpfung des Arbeitsbereichs aufheben“ auf **Verknüpfung des Arbeitsbereichs aufheben**.
+2. Klicken Sie auf der Seite „Verknüpfung des Arbeitsbereichs aufheben“ auf **Verknüpfung des Arbeitsbereichs aufheben**.
 
    ![Seite „Verknüpfung des Arbeitsbereichs aufheben“](media/automation-onboard-solutions-from-vm/automation-unlink-workspace-blade.png).
 
    Sie werden gefragt, ob Sie fortfahren möchten.
 
-1. Während Azure Automation versucht, die Verknüpfung des Kontos mit Ihrem Log Analytics-Arbeitsbereich aufzuheben, können Sie den Fortschritt unter **Benachrichtigungen** im Menü nachverfolgen.
+3. Während Azure Automation versucht, die Verknüpfung des Kontos mit Ihrem Log Analytics-Arbeitsbereich aufzuheben, können Sie den Fortschritt unter **Benachrichtigungen** im Menü nachverfolgen.
 
 Wenn Sie die Lösung „Updateverwaltung“ verwendet haben, können Sie optional die folgenden Elemente entfernen, die nach dem Entfernen der Lösung nicht mehr benötigt werden.
 
