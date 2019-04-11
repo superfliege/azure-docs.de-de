@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/6/2019
 ms.author: rkarlin
-ms.openlocfilehash: d6048ee90eb6e39e70550aa52a96b4466faa3efa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1fb4f9165be03a7fc3cd055ef616dcfadb58ac9d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119886"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876495"
 ---
 # <a name="connect-your-check-point-appliance"></a>Verbinden der Check Point-Appliance
 
@@ -45,7 +45,7 @@ Netzwerkdiagramme zu beiden Optionen finden Sie unter [Herstellen einer Verbindu
 1. Klicken Sie im Azure Sentinel-Portal auf **Datensammlung**, und wählen Sie den Typ Ihrer Appliance aus. 
 
 1. Gehen Sie unter **Linux Syslog agent configuration** (Linux-Syslog-Agent-Konfiguration) folgendermaßen vor:
-   - Wählen Sie die **automatische Bereitstellung** aus, wenn Sie einen neuen Computer erstellen möchten, auf dem der Azure Sentinel-Agent mit allen erforderlichen Konfigurationen vorinstalliert ist. Wählen Sie die **automatische Bereitstellung** aus, und klicken Sie dann auf **Automatic agent deployment** (Automatische Bereitstellung des Agents). Daraufhin wird die Kaufseite für eine dedizierte VM geöffnet, die automatisch mit Ihrem Arbeitsbereich verbunden ist. Die VM gehört zur Serie **Standard D2s v3 (2 vCPUs, 8 GB Arbeitsspeicher)** und verfügt über eine öffentliche IP-Adresse.
+   - Wählen Sie **Automatische Bereitstellung** (Automatic deployment) aus, wenn Sie einen neuen Computer erstellen möchten, auf dem der Azure Sentinel-Agent vorinstalliert ist und der die gesamte erforderliche Konfiguration (siehe Beschreibung oben) enthält. Wählen Sie die **automatische Bereitstellung** aus, und klicken Sie dann auf **Automatic agent deployment** (Automatische Bereitstellung des Agents). Daraufhin wird die Kaufseite für eine dedizierte VM geöffnet, die automatisch mit Ihrem Arbeitsbereich verbunden ist. Die VM gehört zur Serie **Standard D2s v3 (2 vCPUs, 8 GB Arbeitsspeicher)** und verfügt über eine öffentliche IP-Adresse.
      1. Geben Sie auf der Seite **Benutzerdefinierte Bereitstellung** Ihre Details an, legen Sie einen Benutzernamen und ein Kennwort fest, und erwerben Sie die VM, wenn Sie die Nutzungsbedingungen akzeptieren.
       
         1. Führen Sie die folgenden Befehle auf dem Syslog-Agent-Computer aus, um sicherzustellen, dass alle Check Point-Protokolle dem Azure Sentinel-Agent zugeordnet werden:
@@ -59,9 +59,9 @@ Netzwerkdiagramme zu beiden Optionen finden Sie unter [Herstellen einer Verbindu
                  sudo bash -c "printf 'local4.debug  @127.0.0.1:25226\n\n:msg, contains, \"Check Point\"  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"
              Starten Sie den Syslog-Daemon neu: `sudo service rsyslog restart`
 
-   - Wählen Sie die **manuelle Bereitstellung** aus, wenn Sie eine vorhandene VM als dedizierten Linux-Computer verwenden möchten, auf dem der Azure Sentinel-Agent installiert werden soll. 
+   - Wählen Sie **Manuelle Bereitstellung** (Manual deployment) aus, wenn Sie einen vorhandenen virtuellen Computer als dedizierten Linux-Computer verwenden möchten, auf dem der Azure Sentinel-Agent installiert werden soll. 
       1. Wählen Sie unter **Download and install the Syslog agent** (Syslog-Agent herunterladen und installieren) die Option **Azure Linux virtual machine** (Virtueller Azure-Linux-Computer) aus. 
-      1. Wählen Sie auf der geöffneten Anzeige **Virtuelle Computer** den Computer aus, den Sie verwenden möchten, und klicken Sie dann auf **Connect** (Verbindung herstellen).
+      1. Wählen Sie in der **Virtuelle Computer**-Anzeige, die geöffnet wird, den Computer aus, den Sie verwenden möchten, und klicken Sie dann auf **Verbinden**.
       1. Legen Sie in der Connector-Anzeige unter **Configure and forward Syslog** (Syslog konfigurieren und weiterleiten) fest, ob Sie den Syslog-Daemon **rsyslog.d** oder **syslog-ng** verwenden. 
       1. Kopieren Sie die folgenden Befehle, und führen Sie sie auf der Appliance aus:
           - Wenn Sie „rsyslog.d“ ausgewählt haben:
@@ -70,16 +70,16 @@ Netzwerkdiagramme zu beiden Optionen finden Sie unter [Herstellen einer Verbindu
             
             2. Laden Sie die [Konfigurationsdatei „security_events“](https://aka.ms/asi-syslog-config-file-linux) herunter, mit der der Syslog-Agent zum Lauschen auf Port 25226 konfiguriert wird, und installieren Sie sie. `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` Ersetzen Sie hier {0} durch die GUID Ihres Arbeitsbereichs.
            
-            1. Starten Sie den Syslog-Daemon neu: `sudo service rsyslog restart`
+            1. Starten Sie den Syslog-Daemon neu. `sudo service rsyslog restart`
              
           - Wenn Sie „syslog-ng“ ausgewählt haben:
 
               1. Weisen Sie den Syslog-Daemon an, die Einrichtung „local_4“ zu belauschen, „Check Point anzuwenden“ und die Syslog-Nachrichten an den Azure Sentinel-Agent über Port 25226 zu übermitteln. `sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };\n\nfilter f_msg_oms { match(\"Check Point\" value(\"MESSAGE\")); };\n  destination security_msg_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_msg_oms); destination(security_msg_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
               2. Laden Sie die [Konfigurationsdatei „security_events“](https://aka.ms/asi-syslog-config-file-linux) herunter, mit der der Syslog-Agent zum Lauschen auf Port 25226 konfiguriert wird, und installieren Sie sie. `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` Ersetzen Sie hier {0} durch die GUID Ihres Arbeitsbereichs.
 
-              3. Starten Sie den Syslog-Daemon neu: `sudo service syslog-ng restart`
-      2. Starten Sie den Syslog-Agent mit dem folgenden Befehl neu: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
-      1. Bestätigen Sie, dass im Agent-Protokoll keine Fehler enthalten sind, indem Sie den folgenden Befehl ausführen: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
+              3. Starten Sie den Syslog-Daemon neu. `sudo service syslog-ng restart`
+      2. Starten Sie den Syslog-Agent mit dem folgenden Befehl neu:  `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
+      1. Vergewissern Sie sich, dass im Agent-Protokoll keine Fehler enthalten sind, indem Sie den folgenden Befehl ausführen: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
 
 ### <a name="deploy-the-agent-on-an-on-premises-linux-server"></a>Bereitstellen des Agents auf einem lokalen Linux-Server
 
@@ -87,20 +87,20 @@ Wenn Sie nicht Azure verwenden, stellen Sie den Azure Sentinel-Agent für die Au
 
 1. Wählen Sie unter **Linux Syslog agent configuration** (Linux-Syslog-Agent-Konfiguration) die **manuelle Bereitstellung** aus, um eine dedizierte Linux-VM zu erstellen.
    1. Wählen Sie unter **Download and install the Syslog agent** (Syslog-Agent herunterladen und installieren) die Option **Non-Azure Linux machine** (Nicht von Azure stammender virtueller Computer) aus. 
-   1. Wählen Sie in der geöffneten Anzeige **Direkt-Agent** die Option **Agent für Linux** aus, um den Agent herunterzuladen, oder führen Sie den folgenden Befehl aus, um den Agent auf Ihren Linux-Computer herunterzuladen: `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w {workspace GUID} -s gehIk/GvZHJmqlgewMsIcth8H6VqXLM9YXEpu0BymnZEJb6mEjZzCHhZgCx5jrMB1pVjRCMhn+XTQgDTU3DVtQ== -d opinsights.azure.com`
+   1. Wählen Sie in der **Direkt-Agent**-Anzeige, die geöffnet wird, die Option **Agent für Linux** aus, um den Agent herunterzuladen, oder führen Sie den folgenden Befehl aus, um den Agent auf Ihren Linux-Computer herunterzuladen: `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w {workspace GUID} -s gehIk/GvZHJmqlgewMsIcth8H6VqXLM9YXEpu0BymnZEJb6mEjZzCHhZgCx5jrMB1pVjRCMhn+XTQgDTU3DVtQ== -d opinsights.azure.com`
       1. Legen Sie in der Connector-Anzeige unter **Configure and forward Syslog** (Syslog konfigurieren und weiterleiten) fest, ob Sie den Syslog-Daemon **rsyslog.d** oder **syslog-ng** verwenden. 
       1. Kopieren Sie die folgenden Befehle, und führen Sie sie auf der Appliance aus:
          - Wenn Sie **rsyslog** ausgewählt haben:
            1. Weisen Sie den Syslog-Daemon an, die Einrichtung „local_4“ zu belauschen, „Check Point anzuwenden“ und die Syslog-Nachrichten an den Azure Sentinel-Agent über Port 25226 zu übermitteln. `sudo bash -c "printf 'local4.debug  @127.0.0.1:25226\n\n:msg, contains, \"Check Point\"  @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"`
             
            2. Laden Sie die [Konfigurationsdatei „security_events“](https://aka.ms/asi-syslog-config-file-linux) herunter, mit der der Syslog-Agent zum Lauschen auf Port 25226 konfiguriert wird, und installieren Sie sie. `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` Ersetzen Sie hier {0} durch die GUID Ihres Arbeitsbereichs.
-           3. Starten Sie den Syslog-Daemon neu: `sudo service rsyslog restart`
+           3. Starten Sie den Syslog-Daemon neu. `sudo service rsyslog restart`
          - Wenn Sie **syslog-ng** ausgewählt haben:
             1. Weisen Sie den Syslog-Daemon an, die Einrichtung „local_4“ zu belauschen, „Check Point anzuwenden“ und die Syslog-Nachrichten an den Azure Sentinel-Agent über Port 25226 zu übermitteln. `sudo bash -c "printf 'filter f_local4_oms { facility(local4); };\n  destination security_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_local4_oms); destination(security_oms); };\n\nfilter f_msg_oms { match(\"Check Point\" value(\"MESSAGE\")); };\n  destination security_msg_oms { tcp(\"127.0.0.1\" port(25226)); };\n  log { source(src); filter(f_msg_oms); destination(security_msg_oms); };' > /etc/syslog-ng/security-config-omsagent.conf"`
             2. Laden Sie die [Konfigurationsdatei „security_events“](https://aka.ms/asi-syslog-config-file-linux) herunter, mit der der Syslog-Agent zum Lauschen auf Port 25226 konfiguriert wird, und installieren Sie sie. `sudo wget -O /etc/opt/microsoft/omsagent/{0}/conf/omsagent.d/security_events.conf "https://aka.ms/syslog-config-file-linux"` Ersetzen Sie hier {0} durch die GUID Ihres Arbeitsbereichs.
-            3. Starten Sie den Syslog-Daemon neu: `sudo service syslog-ng restart`
-      1. Starten Sie den Syslog-Agent mit dem folgenden Befehl neu: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
-      1. Bestätigen Sie, dass im Agent-Protokoll keine Fehler enthalten sind, indem Sie den folgenden Befehl ausführen: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
+            3. Starten Sie den Syslog-Daemon neu. `sudo service syslog-ng restart`
+      1. Starten Sie den Syslog-Agent mit dem folgenden Befehl neu:  `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
+      1. Vergewissern Sie sich, dass im Agent-Protokoll keine Fehler enthalten sind, indem Sie den folgenden Befehl ausführen: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
  
 ## <a name="step-2-forward-check-point-logs-to-the-syslog-agent"></a>Schritt 2: Weiterleiten der Check Point-Protokolle an den Syslog-Agent
 
@@ -117,9 +117,9 @@ Konfigurieren Sie Ihre Check Point-Appliance, um Syslog-Nachrichten im CEF-Forma
 
 Es kann bis zu 20 Minuten dauern, bis Ihre Protokolle in Log Analytics angezeigt werden. 
 
-1. Stellen Sie sicher, dass Ihre Protokolle den richtigen Port im Syslog-Agent verwenden. Führen Sie den folgenden Befehl auf dem Syslog-Agent-Computer aus: `tcpdump -A -ni any  port 514 -vv` Durch diesen Befehl werden Ihnen die Protokolle angezeigt, die vom Gerät an den Syslog-Computer übermittelt werden. Stellen Sie sicher, dass die Protokolle über den richtigen Port und die richtige Einrichtung bei der Quellappliance eingehen.
+1. Stellen Sie sicher, dass für Ihre Protokolle der richtige Port im Syslog-Agent verwendet wird. Führen Sie den folgenden Befehl auf dem Syslog-Agent-Computer aus: `tcpdump -A -ni any  port 514 -vv` Durch diesen Befehl werden Ihnen die Protokolle angezeigt, die vom Gerät an den Syslog-Computer übermittelt werden. Stellen Sie sicher, dass die Protokolle über den richtigen Port und die richtige Einrichtung bei der Quellappliance eingehen.
 2. Stellen Sie sicher, dass der Syslog-Daemon und der Agent kommunizieren. Führen Sie den folgenden Befehl auf dem Syslog-Agent-Computer aus: `tcpdump -A -ni any  port 25226 -vv` Durch diesen Befehl werden Ihnen die Protokolle angezeigt, die vom Gerät an den Syslog-Computer übermittelt werden. Stellen Sie sicher, dass die Protokolle auch vom Agent empfangen werden.
-3. Wenn beide diese Befehle erfolgreiche Ergebnisse zurückgegeben haben, überprüfen Sie in Log Analytics, ob Ihre Protokolle eingehen. Alle Ereignisse, die von diesen Appliances übermittelt werden, werden in Log Analytics unformatiert unter dem Typ `CommonSecurityLog ` angezeigt.
+3. Wenn beide diese Befehle erfolgreiche Ergebnisse zurückgegeben haben, überprüfen Sie in Log Analytics, ob Ihre Protokolle eingehen. Alle Ereignisse, die von diesen Appliances übermittelt werden, werden in Log Analytics unformatiert unter dem Typ `CommonSecurityLog` angezeigt.
 
 4. Stellen Sie sicher, dass Sie anschließend die folgenden Befehle ausführen:
   
@@ -133,7 +133,7 @@ Es kann bis zu 20 Minuten dauern, bis Ihre Protokolle in Log Analytics angezeig
          sudo bash -c "printf 'local4.debug @127.0.0.1:25226\n\n:msg, contains, "Check Point" @127.0.0.1:25226' > /etc/rsyslog.d/security-config-omsagent.conf"
      Starten Sie den Syslog-Daemon neu: `sudo service rsyslog restart`
 
-1. Unter `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log` können Sie überprüfen, ob Fehler aufgetreten sind oder die Protokolle nicht eingehen.
+1. Hier können Sie überprüfen, ob Fehler aufgetreten sind oder die Protokolle nicht eingehen: `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
 4. Stellen Sie sicher, dass die Standardgröße der Syslog-Nachrichten auf 2048 Bytes (2 KB) beschränkt ist. Wenn die Protokolle zu lang sind, aktualisieren Sie die Konfigurationsdatei „security_events.conf“ mithilfe des folgenden Befehls: `message_length_limit 4096`
 
 

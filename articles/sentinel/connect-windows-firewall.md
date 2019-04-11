@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 3/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2356a7e5426037ffe9fc8b304ac113f4a3fe2a17
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3839d81f70b8bc6dcb1da3c4dd77f52443294707
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58103348"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58574839"
 ---
 # <a name="connect-windows-firewall"></a>Herstellen einer Verbindung mit der Windows-Firewall
 
@@ -39,6 +39,7 @@ Der Windows-Firewall-Connector ermöglicht es Ihnen, einfach eine Verbindung mit
 1. Wählen Sie im Azure Sentinel-Portal die Option **Datensammlung** aus, und klicken Sie dann auf die **Windows-Firewall**-Kachel. 
 1. Wählen Sie die Datentypen aus, die Sie streamen möchten.
 1. Klicken Sie auf **Installieren**.
+6. Um das relevante Schema für die Windows-Firewall in Log Analytics zu verwenden, suchen Sie nach **SecurityEvent**.
 
 ## <a name="validate-connectivity"></a>Überprüfen der Konnektivität
 

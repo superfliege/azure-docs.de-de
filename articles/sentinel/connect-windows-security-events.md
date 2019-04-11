@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3c79747bf33e1769af5f8d3589904ba15105f216
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 90bff4cd98046a42fa31d98ff00e76d7fc9ac307
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087600"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576087"
 ---
 # <a name="connect-windows-security-events"></a>Herstellen einer Verbindung mit Windows-Sicherheitsereignissen 
 
@@ -45,7 +45,7 @@ So integrieren Sie Ihre Windows-Sicherheitsereignisse vollständig in Azure Sent
 1. Wählen Sie im Azure Sentinel-Portal die Option **Datensammlung** aus, und klicken Sie dann auf die Kachel **Windows-Sicherheitsereignisse**. 
 1. Wählen Sie die Datentypen aus, die Sie streamen möchten.
 1. Klicken Sie auf **Aktualisieren**.
-
+6. Um das relevante Schema für die Windows-Sicherheitsereignisse in Log Analytics zu verwenden, suchen Sie nach **SecurityEvent**.
 
 ## <a name="validate-connectivity"></a>Überprüfen der Konnektivität
 
