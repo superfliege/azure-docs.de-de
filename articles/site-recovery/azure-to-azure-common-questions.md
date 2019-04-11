@@ -4,30 +4,19 @@ description: In diesem Artikel sind häufig gestellte Fragen zum Einrichten der 
 author: asgang
 manager: rochakm
 ms.service: site-recovery
-ms.date: 12/12/2018
+ms.date: 03/29/2019
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: bf7a8ea00fe94e6896c097b8e27c22c0831f71da
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 66d57677b216130316c6a3ddd9a6cff993540808
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58008651"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649882"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Häufig gestellte Fragen sind: Azure-zu-Azure-Replikation
 
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen zum Bereitstellen der Notfallwiederherstellung von virtuellen Azure-Computern in eine andere Azure-Region mithilfe von Azure Site Recovery. Sollten Sie nach der Lektüre dieses Artikels noch Fragen haben, stellen Sie diese bitte im [Azure Recovery Services-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
-
-
-## <a name="in-this-article"></a>Themen in diesem Artikel 
-1.  **[Allgemeine Fragen zu „Azure-zu-Azure“](#general)** 
-1.  **[Replikation](#replication)** 
-1.  **[Replikationsrichtlinie](#replication-policy)** 
-1.  **[Multi-VM-Konsistenz](#multi-vm-consistency)** 
-1.  **[Wiederherstellungsplan](#recovery-plan)** 
-1.  **[Erneuter Schutz und Failback](#reprotection-and-failback)** 
-2.  **[Kapazität](#capacity)**
-1.  **[Sicherheit](#security)** 
 
 
 ## <a name="general"></a>Allgemein
@@ -45,6 +34,9 @@ Ja. Auch wenn Azure Site Recovery während der ersten 31 Tage einer geschützte
 3. [Set up disaster recovery for Azure VMs (Einrichten der Notfallwiederherstellung für Azure-VMs)](azure-to-azure-how-to-enable-replication.md)
 4. [Ausführen eines Testfailovers](azure-to-azure-tutorial-dr-drill.md)
 5. [Failover und Failback auf die primäre Region](azure-to-azure-tutorial-failover-failback.md)
+
+### <a name="how-is-capacity-guaranteed-in-target-region-for-azure-vms"></a>Wie wird die Kapazität in der Zielregion für Azure VMs garantiert?
+Das Azure Site Recovery-Team (ASR) arbeitet mit dem Kapazitätsverwaltungsteam von Azure zusammen, um eine ausreichende Infrastrukturkapazität zu planen und sicherzustellen, dass die durch ASR zur Notfallwiederherstellung geschützten VMs erfolgreich in der Notfallwiederherstellungsregion (DR) bereitgestellt werden, wann immer ASR-Failovervorgänge initiiert werden.
 
 ## <a name="replication"></a>Replikation
 
@@ -90,7 +82,7 @@ Eine Replikationsrichtlinie definiert die Einstellungen für den Aufbewahrungsve
 [Weitere Informationen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#configure-replication-settings)
 
 ### <a name="what-is-a-crash-consistent-recovery-point"></a>Was ist ein absturzkonsistenter Wiederherstellungspunkt?
-Ein absturzkonsistenter Wiederherstellungspunkt stellt die Daten auf einem Datenträger so dar, als ob zum Zeitpunkt der Momentaufnahme der virtuelle Computer abgestürzt oder der Server vom Strom getrennt worden wäre. Er enthält nichts, was sich zum Zeitpunkt der Momentaufnahme im Arbeitsspeicher befand. 
+Ein absturzkonsistenter Wiederherstellungspunkt stellt die Daten auf einem Datenträger so dar, als ob zum Zeitpunkt der Momentaufnahme der virtuelle Computer abgestürzt oder der Server vom Strom getrennt worden wäre. Er enthält nichts, was sich zum Zeitpunkt der Momentaufnahme im Arbeitsspeicher befand.
 
 Heutzutage können die meisten Anwendungen aus absturzkonsistenten Momentaufnahmen gut wiederhergestellt werden. Ein absturzkonsistenter Wiederherstellungspunkt ist normalerweise ausreichend für Betriebssysteme ohne Datenbank und Anwendungen wie Dateiserver, DHCP-Server und Druckerserver.
 
@@ -98,9 +90,7 @@ Heutzutage können die meisten Anwendungen aus absturzkonsistenten Momentaufnahm
 Site Recovery erstellt alle 5 Minuten einen absturzkonsistenten Wiederherstellungspunkt.
 
 ### <a name="what-is-an-application-consistent-recovery-point"></a>Was ist ein anwendungskonsistenter Wiederherstellungspunkt? 
-Anwendungskonsistente Wiederherstellungspunkte werden aus anwendungskonsistenten Momentaufnahmen erstellt. Anwendungskonsistente Wiederherstellungspunkte erfassen dieselben Daten wie absturzkonsistente Momentaufnahmen. Zudem werden alle Daten im Arbeitsspeicher und alle laufenden Transaktionen erfasst. 
-
-Durch diesen zusätzlichen Inhalt sind anwendungskonsistente Momentaufnahmen am stärksten involviert, und ihre Ausführung dauert am längsten. Anwendungskonsistente Wiederherstellungspunkte werden für Betriebssysteme mit Datenbank und Anwendungen wie SQL Server empfohlen.
+Anwendungskonsistente Wiederherstellungspunkte werden aus anwendungskonsistenten Momentaufnahmen erstellt. Anwendungskonsistente Wiederherstellungspunkte erfassen dieselben Daten wie absturzkonsistente Momentaufnahmen. Zudem werden alle Daten im Arbeitsspeicher und alle laufenden Transaktionen erfasst. Durch diesen zusätzlichen Inhalt sind anwendungskonsistente Momentaufnahmen am stärksten involviert, und ihre Ausführung dauert am längsten. Anwendungskonsistente Wiederherstellungspunkte werden für Betriebssysteme mit Datenbank und Anwendungen wie SQL Server empfohlen.
 
 ### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>Welche Auswirkungen haben anwendungskonsistente Wiederherstellungspunkte auf die Anwendungsleistung?
 In Anbetracht der Tatsache, dass anwendungskonsistente Wiederherstellungspunkte alle Daten im Arbeitsspeicher und bei der Verarbeitung erfassen, muss das Framework (z.B. VSS auf Windows) die Anwendung stilllegen. Dies kann bei sehr häufiger Ausführung zu Leistungseinbußen führen, wenn die Auslastung bereits sehr hoch ist. Es wird in der Regel empfohlen, keine niedrige Frequenz für anwendungskonsistente Wiederherstellungspunkte für Nicht-Datenbank-Workloads zu verwenden, und selbst für Datenbankworkloads genügt eine Stunde. 
@@ -127,8 +117,8 @@ Der älteste Wiederherstellungspunkt, den Sie verwenden können, ist 72 Stunden 
 ### <a name="what-will-happen-if-i-have-a-replication-policy-of-24-hours-and-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-lost"></a>Was passiert, wenn ich über eine Replikationsrichtlinie von 24 Stunden verfüge und Site Recovery aufgrund eines Problems für mehr als 24 Stunden keinen Wiederherstellungspunkt generiert hat? Gehen meine vorherigen Wiederherstellungspunkte verloren?
 Nein. Site Recovery bewahrt alle Ihre vorherigen Wiederherstellungspunkte auf. Abhängig vom Aufbewahrungszeitfenster für Wiederherstellungspunkte (in diesem Fall: 24 Stunden) ersetzt Site Recovery den ältesten Punkt nur, wenn neue Punkte generiert werden. Da in diesem Fall aufgrund eines Problems kein neuer Wiederherstellungspunkt generiert wird, bleiben bei Erreichen des Aufbewahrungszeitfensters alle alten Punkte intakt.
 
-### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>Wie ändere ich die Replikationsrichtlinie, nachdem die Replikation auf einer VM aktiviert wurde? 
-Navigieren Sie zu **Site Recovery-Tresor** > **Site Recovery-Infrastruktur** > **Replikationsrichtlinien**. Wählen Sie die Richtlinie aus, die Sie bearbeiten möchten, und speichern Sie die Änderungen. Alle Änderungen werden auch auf alle vorhandenen Replikationen angewendet. 
+### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>Wie ändere ich die Replikationsrichtlinie, nachdem die Replikation auf einer VM aktiviert wurde?
+Navigieren Sie zu **Site Recovery-Tresor** > **Site Recovery-Infrastruktur** > **Replikationsrichtlinien**. Wählen Sie die Richtlinie aus, die Sie bearbeiten möchten, und speichern Sie die Änderungen. Alle Änderungen werden auch auf alle vorhandenen Replikationen angewendet.
 
 ### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>Sind alle Wiederherstellungspunkte vollständige Kopien des virtuellen Computers oder gibt es Unterschiede?
 Der erste Wiederherstellungspunkt, der generiert wird, ist eine vollständige Kopie. Alle nachfolgenden Wiederherstellungspunkte enthalten nur die geänderten Daten (Deltaänderungen).
@@ -136,7 +126,7 @@ Der erste Wiederherstellungspunkt, der generiert wird, ist eine vollständige Ko
 ### <a name="does-increasing-the-retention-period-of-recovery-points-increase-the-storage-cost"></a>Erhöhen sich durch eine längere Aufbewahrungsdauer der Wiederherstellungspunkte die Speicherkosten?
 Ja. Wenn Sie die Aufbewahrungsdauer von 24 auf 72 Stunden erhöhen, speichert Site Recovery die Wiederherstellungspunkte für zusätzliche 48 Stunden. Durch die zusätzliche Zeit fallen Speicherkosten an. Wenn zum Beispiel ein einzelner Wiederherstellungspunkt Deltaänderungen von 10 GB enthält und jedes GB pro Monat 0,16 US-Dollar kostet, beliefen sich die zusätzlichen Gebühren auf 1,6 US-Dollar × 48 pro Monat.
 
-## <a name="multi-vm-consistency"></a>Multi-VM-Konsistenz 
+## <a name="multi-vm-consistency"></a>Multi-VM-Konsistenz
 
 ### <a name="what-is-multi-vm-consistency"></a>Was versteht man unter der Konsistenz mehrerer virtueller Computer?
 Sie stellt sicher, dass der Wiederherstellungspunkt über alle replizierten virtuellen Computer konsistent ist.
@@ -145,7 +135,7 @@ Diese virtuellen Computer verfügen alle beim Failover über gemeinsame absturz-
 Schauen Sie sich hierzu das Tutorial [Aktivieren von Multi-VM-Konsistenz](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication#enable-replication) an.
 
 ### <a name="can-i-failover-single-virtual-machine-within-a-multi-vm-consistency-replication-group"></a>Kann für einen einzelnen virtuellen Computer in einer Replikationsgruppe für Multi-VM-Konsistenz ein Failover ausgeführt werden?
-Durch Auswahl der Option „Multi-VM-Konsistenz“ geben Sie an, dass die Anwendung von allen virtuellen Computern innerhalb einer Gruppe abhängig ist. Daher ist ein Failover für einen einzelnen virtuellen Computer nicht zulässig. 
+Durch Auswahl der Option „Multi-VM-Konsistenz“ geben Sie an, dass die Anwendung von allen virtuellen Computern innerhalb einer Gruppe abhängig ist. Daher ist ein Failover für einen einzelnen virtuellen Computer nicht zulässig.
 
 ### <a name="how-many-virtual-machines-can-i-replicate-as-a-part-of-a-multi-vm-consistency-replication-group"></a>Wie viele virtuelle Computer können als Teil einer Replikationsgruppe für Multi-VM-Konsistenz repliziert werden?
 In einer Replikationsgruppe können 16 virtuelle Computer zusammen repliziert werden.
@@ -156,9 +146,12 @@ Das Aktivieren von Multi-VM-Konsistenz kann die Workloadleistung beeinträchtige
 
 ## <a name="failover"></a>Failover
 
+### <a name="how-is-capacity-guaranteed-in-target-region-for-azure-vms"></a>Wie wird die Kapazität in der Zielregion für Azure VMs garantiert?
+Das Azure Site Recovery-Team (ASR) arbeitet mit dem Kapazitätsverwaltungsteam von Azure zusammen, um eine ausreichende Infrastrukturkapazität zu planen und sicherzustellen, dass die durch ASR zur Notfallwiederherstellung geschützten VMs erfolgreich in der Notfallwiederherstellungsregion (DR) bereitgestellt werden, wann immer ASR-Failovervorgänge initiiert werden.
+
 ### <a name="is-failover-automatic"></a>Erfolgt ein Failover automatisch?
 
-Ein Failover erfolgt nicht automatisch. Sie starten Failover mit einem Mausklick im Portal, oder Sie können [PowerShell](azure-to-azure-powershell.md) verwenden, um ein Failover auszulösen. 
+Ein Failover erfolgt nicht automatisch. Sie starten Failover mit einem Mausklick im Portal, oder Sie können [PowerShell](azure-to-azure-powershell.md) verwenden, um ein Failover auszulösen.
 
 ### <a name="can-i-retain-a-public-ip-address-after-failover"></a>Kann ich nach dem Failover eine öffentliche IP-Adresse beibehalten?
 
@@ -169,7 +162,8 @@ Ja, Sie können eine private IP-Adresse beibehalten. Wenn Sie die Notfallwiederh
 
 ### <a name="after-failover-the-server-doesnt-have-the-same-ip-address-as-the-source-vm-why-is-it-assigned-a-new-ip-address"></a>Nach dem Failover weist der Server nicht dieselbe IP-Adresse auf wie der virtuelle Quellcomputer. Warum wurde eine neue IP-Adresse zugewiesen?
 
-Site Recovery versucht, die IP-Adresse zum Zeitpunkt des Failovers bereitzustellen. Wenn jedoch ein anderer virtueller Computer diese Adresse übernimmt, legt Site Recovery die nächste verfügbare IP-Adresse als Ziel fest. Unter [Einrichten von Netzwerkzuordnung und IP-Adressen für virtuelle Netzwerke](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-network-mapping#set-up-ip-addressing-for-target-vms) wird ausführlich erläutert, wie die Adressierung von Site Recovery gehandhabt wird.
+Site Recovery versucht, die IP-Adresse zum Zeitpunkt des Failovers bereitzustellen. Wenn jedoch ein anderer virtueller Computer diese Adresse übernimmt, legt Site Recovery die nächste verfügbare IP-Adresse als Ziel fest.
+Unter [Einrichten von Netzwerkzuordnung und IP-Adressen für virtuelle Netzwerke](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-network-mapping#set-up-ip-addressing-for-target-vms) wird ausführlich erläutert, wie die Adressierung von Site Recovery gehandhabt wird.
 
 ### <a name="what-are-latest-lowest-rpo-recovery-points"></a>Was bedeutet **Letzte (niedrigste RPO)** bei Wiederherstellungspunkten?
 Mit der Option **Letzte (niedrigste RPO)** werden zuerst alle Daten verarbeitet, die an den Site Recovery-Dienst gesendet wurden, um vor dem Failover einen Wiederherstellungspunkt für jeden virtuellen Computer zu erstellen. Diese Option stellt die niedrigste Recovery Point Objective (RPO) bereit, da der nach dem Failover erstellte virtuelle Computer über alle Daten verfügt, die bei Auslösung des Failovers zu Site Recovery repliziert wurden.
@@ -184,9 +178,9 @@ Mit der Option **Letzte Verarbeitung** wird ein Failover aller virtuellen Comput
 Sie können nach dem Ausfall ein Failover auslösen. Site Recovery benötigt keine Verbindung mit der primären Region, um das Failover auszuführen.
 
 ### <a name="what-is-a-rto-of-a-virtual-machine-failover-"></a>Was ist ein RTO des Failovers eines virtuellen Computers?
-Site Recovery besitzt eine [RTO SLA von 2 Stunden](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). In den meisten Fällen erfolgt ein Failover virtueller Computer durch Site Recovery jedoch innerhalb weniger Minuten. Sie können den RTO-Wert berechnen, indem Sie zu den Failoveraufträgen wechseln, wo die Zeit angezeigt wird, die es gedauert hat, den virtuellen Computer wieder verfügbar zu machen. Informationen zum Wiederherstellungsplan-RTO finden Sie weiter unten. 
+Site Recovery besitzt eine [RTO SLA von 2 Stunden](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). In den meisten Fällen erfolgt ein Failover virtueller Computer durch Site Recovery jedoch innerhalb weniger Minuten. Sie können den RTO-Wert berechnen, indem Sie zu den Failoveraufträgen wechseln, wo die Zeit angezeigt wird, die es gedauert hat, den virtuellen Computer wieder verfügbar zu machen. Informationen zum Wiederherstellungsplan-RTO finden Sie weiter unten.
 
-## <a name="recovery-plan"></a>Wiederherstellungsplan
+## <a name="recovery-plans"></a>Wiederherstellungspläne
 
 ### <a name="what-is-a-recovery-plan"></a>Was ist ein Wiederherstellungsplan?
 Ein Wiederherstellungsplan in Site Recovery orchestriert die Wiederherstellung von virtuellen Computern nach einem Failover. Sie tragen zu einer durchgängig exakten, wiederholbaren und automatisierten Wiederherstellung bei. Ein Wiederherstellungsplan kümmert sich für den Benutzer um Folgendes:
@@ -199,7 +193,7 @@ Ein Wiederherstellungsplan in Site Recovery orchestriert die Wiederherstellung v
 
 ### <a name="how-is-sequencing-achieved-in-a-recovery-plan"></a>Wie wird die Sequenzierung in einem Wiederherstellungsplan erreicht?
 
-In einem Wiederherstellungsplan können Sie mehrere Gruppen für die Sequenzierung erstellen. Für jede Gruppe wird jeweils ein Failover ausgeführt. Für die virtuellen Computer, die zur selben Gruppe gehören, wird gemeinsam ein Failover ausgeführt, darauf folgt dann eine weitere Gruppe. Unter [Informationen zu Wiederherstellungsplänen](recovery-plan-overview.md#model-apps) erfahren Sie, wie Sie eine Anwendung mithilfe eines Wiederherstellungsplans modellieren. 
+In einem Wiederherstellungsplan können Sie mehrere Gruppen für die Sequenzierung erstellen. Für jede Gruppe wird jeweils ein Failover ausgeführt. Für die virtuellen Computer, die zur selben Gruppe gehören, wird gemeinsam ein Failover ausgeführt, darauf folgt dann eine weitere Gruppe. Unter [Informationen zu Wiederherstellungsplänen](recovery-plan-overview.md#model-apps) erfahren Sie, wie Sie eine Anwendung mithilfe eines Wiederherstellungsplans modellieren.
 
 ### <a name="how-can-i-find-the-rto-of-a-recovery-plan"></a>Wie kann ich die RTO eines Wiederherstellungsplans finden?
 Um die RTO eines Wiederherstellungsplans zu prüfen, führen Sie ein Testfailover für den Wiederherstellungsplan aus, und navigieren Sie zu **Site Recovery-Aufträge**.
@@ -210,7 +204,7 @@ Im folgenden Beispiel hat der Auftrag namens „SAPTestRecoveryPlan“ 8 Minuten
 ### <a name="can-i-add-automation-runbooks-to-the-recovery-plan"></a>Kann ich Automation-Runbooks zum Wiederherstellungsplan hinzufügen?
 Ja, Sie können Azure Automation-Runbooks in Ihren Wiederherstellungsplan integrieren. [Weitere Informationen](site-recovery-runbook-automation.md)
 
-## <a name="reprotection-and-failback"></a>Erneuter Schutz und Failback 
+## <a name="reprotection-and-failback"></a>Erneuter Schutz und Failback
 
 ### <a name="after-a-failover-from-the-primary-region-to-a-disaster-recovery-region-are-vms-in-a-dr-region-protected-automatically"></a>Sind virtuelle Computer in einer Notfallwiederherstellungsregion nach einem Failover aus der primären Region in die Notfallwiederherstellungsregion automatisch geschützt?
 Nein. Wenn Sie ein [Failover](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback) für virtuelle Azure-Computer von einer Region in eine andere durchführen, werden die virtuellen Computer in der Notfallwiederherstellungsregion in einem ungeschützten Zustand gestartet. Für ein Failback der VMs in die primäre Region müssen Sie die VMs in der sekundären Region [erneut schützen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect).
@@ -219,9 +213,9 @@ Nein. Wenn Sie ein [Failover](https://docs.microsoft.com/azure/site-recovery/azu
 Dies hängt von der Situation ab. Wenn zum Beispiel der virtuelle Computer der Quellregion vorhanden ist, werden nur Änderungen zwischen dem Quelldatenträger und dem Zieldatenträger synchronisiert. Site Recovery berechnet die Unterschiede durch Vergleichen der Datenträger und überträgt dann die Daten. Dieser Vorgang dauert normalerweise einige Stunden. Unter [Erneutes Schützen von virtuellen Azure-Computern, für die ein Failover zur primären Region durchgeführt wurde]( https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection) erfahren Sie, was bei einem erneuten Schutz passiert.
 
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>Wie lange dauert ein Failback?
-Nach dem erneuten Schützen ist die Zeitspanne für das Failback in der Regel mit der Zeit für das Failover von der primären Region in eine sekundäre Region vergleichbar. 
+Nach dem erneuten Schützen ist die Zeitspanne für das Failback in der Regel mit der Zeit für das Failover von der primären Region in eine sekundäre Region vergleichbar.
 
-## <a name="capacity"></a>Kapazität
+## <a name="capacity"></a>Capacity
 ### <a name="does-site-recovery-work-with-reserved-instance"></a>Kann Site Recovery mit reservierten Instanzen verwendet werden?
 Ja, Sie können [reservierte Instanzen](https://azure.microsoft.com/pricing/reserved-vm-instances/) in der DR-Region erwerben, diese werden von ASR-Failovervorgängen verwendet. </br> Es ist keine zusätzliche Konfiguration seitens der Kunden erforderlich.
 

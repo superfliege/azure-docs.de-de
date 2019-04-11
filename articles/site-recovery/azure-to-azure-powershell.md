@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: 9c4576633f98d38da7086711c24def88591ab71f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 64b14f66e05c42581fcce6eb9879fa72d7f0d6f8
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869410"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652075"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Einrichten der Notfallwiederherstellung für virtuelle Azure-Computer über Azure PowerShell
 
@@ -163,7 +163,7 @@ Remove-Item -Path $Vaultsettingsfile.FilePath
 
 Das Fabricobjekt im Tresor stellt eine Azure-Region dar. Das primäre Fabricobjekt wird zur Darstellung der Azure-Region erstellt, der die im Tresor zu schützenden virtuellen Computer angehören. In dem Beispiel in diesem Artikel befindet sich der zu schützende virtuelle Computer in der Region „USA, Osten“.
 
-- Pro Region kann nur ein Fabricobjekt erstellt werden. 
+- Pro Region kann nur ein Fabricobjekt erstellt werden.
 - Wenn Sie zuvor im Azure-Portal die Site Recovery-Replikation für einen virtuellen Computer aktiviert haben, erstellt Site Recovery automatisch ein Fabricobjekt. Ist für eine Region bereits ein Fabricobjekt vorhanden, können Sie kein neues erstellen.
 
 
@@ -588,7 +588,22 @@ Tasks            : {Prerequisite check, Commit}
 Errors           : {}
 ```
 
+## <a name="reprotect-and-failback-to-source-region"></a>Erneuter Schutz und Failback auf die Quellregion
+
 Wenn Sie nach einem Failover zur ursprünglichen Region zurückkehren möchten, starten Sie eine umgekehrte Replikation für das replikationsgeschützte Element mit dem Cmdlet Update-AzureRmRecoveryServicesAsrProtectionDirection.
+
+```azurepowershell
+#Create Cache storage account for replication logs in the primary region
+$WestUSCacheStorageAccount = New-AzureRmStorageAccount -Name "a2acachestoragewestus" -ResourceGroupName "A2AdemoRG" -Location 'West US' -SkuName Standard_LRS -Kind Storage
+```
+
+```azurepowershell
+#Use the recovery protection container, new cache storage accountin West US and the source region VM resource group
+Update-AzureRmRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $ReplicationProtectedItem -AzureToAzure
+-ProtectionContainerMapping $RecoveryProtContainer -LogStorageAccountId $WestUSCacheStorageAccount.Id -RecoveryResourceGroupID $sourceVMResourcegroup.Id
+```
+
+Nachdem der erneute Schutz abgeschlossen ist, können Sie ein Failover in umgekehrter Richtung (USA, Westen nach USA, Osten) und ein Failback auf die Quellregion initiieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In der [Azure Site Recovery-PowerShell-Referenz ](https://docs.microsoft.com/powershell/module/AzureRM.RecoveryServices.SiteRecovery) erfahren Sie, wie Sie andere Aufgaben wie das Erstellen von Wiederherstellungsplänen und das Testen des Failovers von Wiederherstellungsplänen mithilfe von PowerShell ausführen können.
