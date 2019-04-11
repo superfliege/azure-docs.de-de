@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 04/11/2018
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: af22473e0c9b56210b720ee5d122d96566689158
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 43016b3c31a0371f953f758bc7afb53bd1508495
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889714"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278512"
 ---
 # <a name="create-an-aspnet-core-app-in-app-service-on-linux"></a>Erstellen einer ASP.NET Core-App in App Service unter Linux
 
@@ -42,14 +42,14 @@ Die Schritte in diesem Artikel können unter Mac, Windows oder Linux ausgeführt
 So führen Sie diesen Schnellstart durch:
 
 * <a href="https://git-scm.com/" target="_blank">Installation von Git</a>
-* <a href="https://www.microsoft.com/net/core/" target="_blank">Installieren von .NET Core</a>
+* <a href="https://www.microsoft.com/net/core/" target="_blank">.NET Core installieren</a>
 
 ## <a name="create-the-app-locally"></a>Lokales Erstellen der App
 
 Erstellen Sie in einem Terminalfenster auf Ihrem Computer ein Verzeichnis mit dem Namen `hellodotnetcore`, und wechseln Sie dorthin.
 
 ```bash
-md hellodotnetcore
+mkdir hellodotnetcore
 cd hellodotnetcore
 ```
 

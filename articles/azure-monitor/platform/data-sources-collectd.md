@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: b6785dc06107424344f0a6af775abe9b1c956f70
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2118f137f2c0d32f891a170c3509bceee7ba13ed
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999316"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426136"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Sammeln von Daten aus CollectD mithilfe von Linux-Agents in Azure Monitor
 [CollectD](https://collectd.org/) ist ein Open-Source-Linux-Deamon, der regelmäßig Leistungsmetriken aus Anwendungen und Informationen aus der Betriebssystemebene sammelt. Beispiele für diese Anwendungen sind Java Virtual Machine (JVM), MySQL Server und Nginx. In diesem Artikel erfahren Sie, wie Sie in Azure Monitor Leistungsdaten aus CollectD sammeln.
@@ -112,14 +112,14 @@ Um ein vertrautes Modell zwischen den bereits vom Log Analytics-Agent für Linux
 
 | CollectD-Metrikfeld | Azure Monitor-Feld |
 |:--|:--|
-| host | Computer |
-| Plug-In | Keine |
-| plugin_instance | Instanzname<br>Wenn **Plugin_instance**=*null,* gilt InstanceName = "*_Total*" |
-| type | ObjectName |
-| type_instance | CounterName<br>Wenn **type_instance**=*null,* gilt CounterName=**blank** |
-| dsnames[] | CounterName |
-| dstypes | Keine |
-| values[] | CounterValue |
+| `host` | Computer |
+| `plugin` | Keine |
+| `plugin_instance` | Instanzname<br>Wenn **Plugin_instance**=*null,* gilt InstanceName = "*_Total*" |
+| `type` | ObjectName |
+| `type_instance` | CounterName<br>Wenn **type_instance**=*null,* gilt CounterName=**blank** |
+| `dsnames[]` | CounterName |
+| `dstypes` | Keine |
+| `values[]` | CounterValue |
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über [Protokollabfragen](../log-query/log-query-overview.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten. 

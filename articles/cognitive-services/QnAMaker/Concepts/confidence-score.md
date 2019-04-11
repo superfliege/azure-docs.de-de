@@ -1,6 +1,6 @@
 ---
-title: Zuverlässigkeitsbewertung – Microsoft Cognitive Services | Microsoft Docs
-titleSuffix: Azure
+title: 'Zuverlässigkeitsbewertung: QnA Maker'
+titleSuffix: Azure Cognitive Services
 description: Die Zuverlässigkeitsbewertung zeigt die Zuverlässigkeit dafür an, dass die Antwort die richtige Übereinstimmung für die jeweilige Benutzerabfrage ist.
 services: cognitive-services
 author: tulasim88
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 04/05/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: bf254d661f7819114d34631359aaecb97e9d0e0d
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 97c44c9285ec7a29827361111599db37bc6a86f3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403735"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282575"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Zuverlässigkeitsbewertung für eine QnA Maker-Wissensdatenbank
 Wenn eine Benutzerabfrage mit einer Wissensdatenbank abgeglichen wird, gibt QnA Maker relevante Antworten zusammen mit einer Zuverlässigkeitsbewertung zurück. Diese Bewertung zeigt die Zuverlässigkeit dafür an, dass die Antwort die richtige Übereinstimmung für die jeweilige Benutzerabfrage ist. 
@@ -66,7 +66,7 @@ Wenn mehrere Antworten eine ähnliche Zuverlässigkeitsbewertung aufweisen, ist 
 
 
 ## <a name="confidence-score-differences"></a>Abweichungen zwischen Zuverlässigkeitsbewertungen
-Die Zuverlässigkeitsbewertung einer Antwort kann zwischen der Testversion und der veröffentlichten Version der Wissensdatenbank geringfügig variieren, auch wenn der Inhalt identisch ist. Das liegt daran, dass sich die Inhalte der Test- und der veröffentlichten Wissensdatenbank in verschiedenen Azure Search-Indizes befinden. Wenn Sie eine Wissensdatenbank veröffentlichen, werden die Frage-Antwort-Inhalte Ihrer Wissensdatenbank aus dem Testindex in einen Produktionsindex in Azure Search verschoben. Sehen Sie sich an, wie der Vorgang [Veröffentlichen](../How-To/publish-knowledge-base.md) funktioniert.
+Die Zuverlässigkeitsbewertung einer Antwort kann zwischen der Testversion und der veröffentlichten Version der Wissensdatenbank geringfügig variieren, auch wenn der Inhalt identisch ist. Das liegt daran, dass sich die Inhalte der Test- und der veröffentlichten Wissensdatenbank in verschiedenen Azure Search-Indizes befinden. Wenn Sie eine Wissensdatenbank veröffentlichen, werden die Frage-Antwort-Inhalte Ihrer Wissensdatenbank aus dem Testindex in einen Produktionsindex in Azure Search verschoben. Sehen Sie sich an, wie der Vorgang [Veröffentlichen](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) funktioniert.
 
 Wenn Sie über eine Wissensdatenbank in verschiedenen Regionen verfügen, verwendet jede Region einen eigenen Azure Search-Index. Da verschiedene Indizes verwendet werden, werden die Ergebnisse nicht genau gleich sein. 
 

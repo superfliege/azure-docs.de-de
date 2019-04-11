@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/03/2019
+ms.date: 04/03/2019
 ms.author: b-juche
-ms.openlocfilehash: 1cce1883295277f6c6c36d686d90370238265dbf
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 3df092377a29492facd972745933cd5f4a1ae3bf
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775848"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275520"
 ---
 # <a name="understand-the-storage-hierarchy-of-azure-netapp-files"></a>Grundlegendes zur Speicherhierarchie von Azure NetApp Files
 
@@ -36,18 +36,15 @@ Vor der Erstellung eines Volumes in Azure NetApp Files müssen Sie zunächst ein
 
 - Ein Kapazitätspool wird anhand der bereitgestellten Kapazität gemessen.  
 - Die Kapazität wird durch die festen SKUs bereitgestellt, die Sie erworben haben (beispielsweise eine Kapazität von 4 TiB).
-- Die Mindestgröße für einen einzelnen Kapazitätspool beträgt 4 TiB, die Maximalgröße 500 TiB. 
 - Ein Kapazitätspool kann lediglich einen einzelnen Servicelevel aufweisen.  
-  Aktuell steht nur das Servicelevel „Premium“ zur Verfügung.
 - Jeder einzelne Kapazitätspool kann nur zu einem einzelnen NetApp-Konto gehören. Innerhalb eines NetApp-Kontos können jedoch mehrere Kapazitätspools vorhanden sein.  
 - Ein Kapazitätspool kann nicht zwischen NetApp-Konten verschoben werden.   
   Im [Konzeptdiagramm der Speicherhierarchie](#conceptual_diagram_of_storage_hierarchy) weiter unten kann beispielsweise der Kapazitätspool 1 nicht aus dem NetApp-Konto für „USA, Osten“ in das NetApp-Konto für „USA, Westen 2“ verschoben werden.  
 
 ## <a name="volumes"></a>Volumes
 
-- Ein Volume wird anhand des logischen Kapazitätsverbrauchs gemessen und ist skalierbar. Die Mindestgröße für ein einzelnes Volume beträgt 100 GiB, die Maximalgröße 92 TiB.
+- Ein Volume wird anhand des logischen Kapazitätsverbrauchs gemessen und ist skalierbar. 
 - Der Kapazitätsverbrauch eines Volumes wird mit der bereitgestellten Kapazität des dazugehörigen Pools verrechnet.
--   Sie können maximal 100 Volumes pro Azure-Abonnement und Region einrichten. 
 - Jedes Volume gehört zu einem einzelnen Pool, ein Pool kann jedoch mehrere Volumes enthalten. 
 - Ein Volume kann innerhalb des gleichen NetApp-Kontos zwischen Pools verschoben werden.    
   Im [Konzeptdiagramm der Speicherhierarchie](#conceptual_diagram_of_storage_hierarchy) weiter unten können beispielsweise die Volumes aus dem Kapazitätspool 1 in den Kapazitätspool 2 verschoben werden.

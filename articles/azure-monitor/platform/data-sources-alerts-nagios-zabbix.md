@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: f0f156568eed5a1e8f3296ff7c37df7f050dbc33
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0ed6747573edf4c059eb29d28107a22706c52856
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540044"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426188"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-azure-monitor-from-log-analytics-agent-for-linux"></a>Erfassen von Warnungen von Nagios und Zabbix in Azure Monitor durch den Log Analytics-Agent für Linux 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -92,15 +92,15 @@ Von Nagios erfasste Datensätze haben den **Typ** **Warnung** und das **SourceSy
 
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
-| Type |*Warnung* |
-| SourceSystem |*Nagios* |
-| AlertName |Name der Warnung. |
-| AlertDescription | Beschreibung der Warnung. |
-| AlertState | Status des Diensts oder Hosts<br><br>OK<br>WARNING<br>UP<br>DOWN |
-| HostName | Der Name des Hosts, der die Warnung erstellt hat |
-| PriorityNumber | Prioritätsstufe der Warnung. |
-| StateType | Der Statustyp der Warnung<br><br>SOFT: Problem, das nicht erneut geprüft wurde<br>HARD: Problem, das so oft wie angegeben erneut geprüft wurde  |
-| TimeGenerated |Datum und Uhrzeit der Warnungserstellung. |
+| `Type` |*Warnung* |
+| `SourceSystem` |*Nagios* |
+| `AlertName` |Name der Warnung. |
+| `AlertDescription` | Beschreibung der Warnung. |
+| `AlertState` | Status des Diensts oder Hosts<br><br>OK<br>WARNING<br>UP<br>DOWN |
+| `HostName` | Der Name des Hosts, der die Warnung erstellt hat |
+| `PriorityNumber` | Prioritätsstufe der Warnung. |
+| `StateType` | Der Statustyp der Warnung<br><br>SOFT: Problem, das nicht erneut geprüft wurde<br>HARD: Problem, das so oft wie angegeben erneut geprüft wurde  |
+| `TimeGenerated` |Datum und Uhrzeit der Warnungserstellung. |
 
 
 ### <a name="zabbix-alert-records"></a>Zabbix-Warnungsdatensätze
@@ -108,17 +108,17 @@ Von Zabbix erfasste Datensätze haben den **Typ** **Warnung** und das **SourceSy
 
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
-| Type |*Warnung* |
-| SourceSystem |*Zabbix* |
-| AlertName | Name der Warnung. |
-| AlertPriority | Schweregrad der Warnung<br><br>not classified<br>Information<br>Warnung<br>average<br>high<br>disaster  |
-| AlertState | Status der Warnung<br><br>0: Status ist auf dem neuesten Stand.<br>1: Status ist unbekannt.  |
-| AlertTypeNumber | Gibt an, ob Warnungen mehrere Problemereignisse generieren können<br><br>0: Status ist auf dem neuesten Stand.<br>1: Status ist unbekannt.    |
-| Kommentare | Zusätzliche Kommentare zur Warnung |
-| HostName | Der Name des Hosts, der die Warnung erstellt hat |
-| PriorityNumber | Der Wert, der den Schweregrad der Warnung angibt<br><br>0: Nicht klassifiziert<br>1: Information<br>2: Warnung<br>3: Durchschnitt<br>4: Hoch<br>5: Notfall |
-| TimeGenerated |Datum und Uhrzeit der Warnungserstellung. |
-| TimeLastModified |Datum und Uhrzeit der letzten Änderung des Status der Warnung |
+| `Type` |*Warnung* |
+| `SourceSystem` |*Zabbix* |
+| `AlertName` | Name der Warnung. |
+| `AlertPriority` | Schweregrad der Warnung<br><br>not classified<br>Information<br>Warnung<br>average<br>high<br>disaster  |
+| `AlertState` | Status der Warnung<br><br>0: Status ist auf dem neuesten Stand.<br>1: Status ist unbekannt.  |
+| `AlertTypeNumber` | Gibt an, ob Warnungen mehrere Problemereignisse generieren können<br><br>0: Status ist auf dem neuesten Stand.<br>1: Status ist unbekannt.    |
+| `Comments` | Zusätzliche Kommentare zur Warnung |
+| `HostName` | Der Name des Hosts, der die Warnung erstellt hat |
+| `PriorityNumber` | Der Wert, der den Schweregrad der Warnung angibt<br><br>0: Nicht klassifiziert<br>1: Information<br>2: Warnung<br>3: Durchschnitt<br>4: Hoch<br>5: Notfall |
+| `TimeGenerated` |Datum und Uhrzeit der Warnungserstellung. |
+| `TimeLastModified` |Datum und Uhrzeit der letzten Änderung des Status der Warnung |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

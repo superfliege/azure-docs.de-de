@@ -3,18 +3,18 @@ title: Erstellen einer Azure IoT Hub-Instanz mithilfe einer Vorlage (.NET) | Mic
 description: Erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage und einem C#-Programm eine IoT Hub-Instanz erstellen.
 author: robinsh
 manager: philmea
-ms.author: robin.shahan
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 4acf7a8bbc02a10468004092152b1d7c5c4d621f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 84446090da2feaee3005b4ef90ace77b468a3f1a
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075917"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357375"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Erstellen einer IoT Hub-Instanz mithilfe einer Azure Resource Manager-Vorlage (.NET)
 
@@ -220,7 +220,7 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [lnk-azure-portal]: https://portal.azure.com/
 [lnk-status]: https://azure.microsoft.com/status/
-[lnk-powershell-install]: https://docs.microsoft.com/powershell/azure/install-Az-ps
+[lnk-powershell-install]: /powershell/azure/install-Az-ps
 [lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
 [lnk-azure-rm-overview]: ../azure-resource-manager/resource-group-overview.md
 [lnk-storage-account]:../storage/common/storage-create-storage-account.md

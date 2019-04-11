@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 4eee19a13a7a518087a77ed49fbb533ce47f03c8
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238078"
 documentType: LandingData
 title: Azure SQL-Datenbank – PaaS (Platform-as-a-Service)
 metadata:
@@ -14,49 +8,50 @@ metadata:
   services: sql-database
   ms.subservice: service
   author: jovanpop-msft
+  ms.reviewer: carlrab
   manager: craigg
   requires-business-manager-approval: false
   ms.service: sql-database
   ms.tgt_pltfrm: na
-  ms.devlang: 
+  ms.devlang: null
   ms.topic: overview
   ms.date: 11/11/2018
   ms.author: jovanpop-msft
 sections:
-- items:
-  - type: paragraph
-    text: Azure SQL-Datenbank ist eine vollständig verwaltete PaaS-Datenbank-Engine (Platform-as-a-Service), bei der die meisten Funktionen für die Datenbankverwaltung, z.B. Upgrades, Patches, Sicherungen und Überwachung, ohne Benutzereingriff erfolgen. Azure SQL-Datenbank wird immer in der aktuellen stabilen Version von SQL Server-Datenbank-Engine und gepatchtem Betriebssystem mit 99,99% Verfügbarkeit ausgeführt. Dank der PaaS-Funktionen, die in Azure SQL-Datenbank integriert sind, können Sie sich auf die domänenspezifischen Datenbankverwaltungs- und -optimierungsaktivitäten konzentrieren, die für Ihr Unternehmen entscheidend sind.
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: paragraph
+        text: 'Azure SQL-Datenbank ist eine vollständig verwaltete PaaS-Datenbank-Engine (Platform-as-a-Service), bei der die meisten Funktionen für die Datenbankverwaltung, z.B. Upgrades, Patches, Sicherungen und Überwachung, ohne Benutzereingriff erfolgen. Azure SQL-Datenbank wird immer in der aktuellen stabilen Version von SQL Server-Datenbank-Engine und gepatchtem Betriebssystem mit 99,99% Verfügbarkeit ausgeführt. Dank der PaaS-Funktionen, die in Azure SQL-Datenbank integriert sind, können Sie sich auf die domänenspezifischen Datenbankverwaltungs- und -optimierungsaktivitäten konzentrieren, die für Ihr Unternehmen entscheidend sind.'
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - title: Geschäftskontinuität
+            href: /azure/sql-database/sql-database-business-continuity
+            html: <p>Mit Azure SQL-Datenbank kann der Betrieb Ihres Unternehmens auch bei Störungen – vor allem der Computinginfrastruktur – weitergehen.</p>
+          - title: Hochverfügbarkeit
+            href: /azure/sql-database/sql-database-high-availability
+            html: '<p>Für Azure SQL-Datenbank wird garantiert, dass Ihre Datenbanken 99,99% der Zeit betriebsbereit sind, ohne dass Sie sich um die Wartung und Ausfallzeiten kümmern müssen.</p>'
+          - title: Automatisierte Sicherungen
+            href: /azure/sql-database/sql-database-automated-backups
+            html: '<p>Azure SQL-Datenbank erstellt automatisch Datenbanksicherungen und verwendet georedundanten Azure-Speicher mit Lesezugriff (Read-Access Geographically Redundant Storage, RA-GRS), um für Georedundanz zu sorgen.</p>'
+          - title: Langfristige Sicherungsaufbewahrung
+            href: /azure/sql-database/sql-database-long-term-retention
+            html: <p>Mit Azure SQL-Datenbank können Sie die festgelegten Sicherungen von SQL-Datenbanken bis zu zehn Jahre lang speichern.</p>
+          - title: Georeplikation
+            href: /azure/sql-database/sql-database-geo-replication-overview
+            html: <p>Mit Azure SQL-Datenbank können Sie lesbare Replikate Ihrer Datenbank in demselben oder einem anderen Datencenter (Region) erstellen.</p>
+          - title: Skalieren von Ressourcen
+            href: /azure/sql-database/sql-database-scale-resources
+            html: '<p>Mit Azure SQL-Datenbank können Sie leicht weitere Ressourcen (CPU, Arbeitsspeicher, Speicher) ohne langwierigen Bereitstellungsaufwand hinzufügen.</p>'
+  - title: Weitere Ressourcen
     items:
-    - title: Geschäftskontinuität
-      href: /azure/sql-database/sql-database-business-continuity
-      html: <p>Mit Azure SQL-Datenbank kann der Betrieb Ihres Unternehmens auch bei Störungen – vor allem der Computinginfrastruktur – weitergehen.</p>
-    - title: Hochverfügbarkeit
-      href: /azure/sql-database/sql-database-high-availability
-      html: <p>Für Azure SQL-Datenbank wird garantiert, dass Ihre Datenbanken 99,99% der Zeit betriebsbereit sind, ohne dass Sie sich um die Wartung und Ausfallzeiten kümmern müssen.</p>
-    - title: Automatisierte Sicherungen
-      href: /azure/sql-database/sql-database-automated-backups
-      html: <p>Azure SQL-Datenbank erstellt automatisch Datenbanksicherungen und verwendet georedundanten Azure-Speicher mit Lesezugriff (Read-Access Geographically Redundant Storage, RA-GRS), um für Georedundanz zu sorgen.</p>
-    - title: Langfristige Sicherungsaufbewahrung
-      href: /azure/sql-database/sql-database-long-term-retention
-      html: <p>Mit Azure SQL-Datenbank können Sie die festgelegten Sicherungen von SQL-Datenbanken bis zu zehn Jahre lang speichern.</p>
-    - title: Georeplikation
-      href: /azure/sql-database/sql-database-geo-replication-overview
-      html: <p>Mit Azure SQL-Datenbank können Sie lesbare Replikate Ihrer Datenbank in demselben oder einem anderen Datencenter (Region) erstellen.</p>
-    - title: Skalieren von Ressourcen
-      href: /azure/sql-database/sql-database-scale-resources
-      html: <p>Mit Azure SQL-Datenbank können Sie leicht weitere Ressourcen (CPU, Arbeitsspeicher, Speicher) ohne langwierigen Bereitstellungsaufwand hinzufügen.</p>
-- title: Weitere Ressourcen
-  items:
-  - type: paragraph
-    text: Azure SQL-Datenbank verfügt über zusätzliche integrierte PaaS-Features, die Sie nutzen können, um Ihre Datenbanken leichter zu verwalten.
-  - type: list
-    style: ordered
-    items:
-    - html: Bei der <a href="/azure/sql-database/sql-database-security-index">erweiterten Sicherheit</a> werden Bedrohungen und Sicherheitsrisiken in Ihren Datenbanken erkannt, und Sie können Ihre Daten schützen.
-    - html: Bei der <a href="/azure/sql-database/sql-database-automatic-tuning">automatischen Optimierung</a> wird Ihre Workload analysiert. Sie erhalten die Empfehlungen, mit denen die Leistung Ihrer Anwendungen optimiert werden kann, indem Indizes hinzugefügt, nicht genutzte Indizes entfernt und die Probleme für den Abfrageplan automatisch behoben werden.
-    - html: Mit den <a href="/azure/log-analytics/log-analytics-azure-sql">integrierten Überwachungsfunktionen</a> können Sie Erkenntnisse zur Leistung Ihrer Datenbanken und Workload gewinnen und die Problembehandlung für die Leistungsprobleme durchführen.
-    - html: Bei der <a href="/azure/sql-database/sql-database-intelligent-insights">integrierten Intelligence</a> werden die potenziellen Probleme in Ihrer Workload automatisch identifiziert, und Sie erhalten Empfehlungen zur Behebung der Probleme.
+      - type: paragraph
+        text: 'Azure SQL-Datenbank verfügt über zusätzliche integrierte PaaS-Features, die Sie nutzen können, um Ihre Datenbanken leichter zu verwalten.'
+      - type: list
+        style: ordered
+        items:
+          - html: 'Bei der <a href="/azure/sql-database/sql-database-security-index">erweiterten Sicherheit</a> werden Bedrohungen und Sicherheitsrisiken in Ihren Datenbanken erkannt, und Sie können Ihre Daten schützen.'
+          - html: 'Bei der <a href="/azure/sql-database/sql-database-automatic-tuning">automatischen Optimierung</a> wird Ihre Workload analysiert. Sie erhalten die Empfehlungen, mit denen die Leistung Ihrer Anwendungen optimiert werden kann, indem Indizes hinzugefügt, nicht genutzte Indizes entfernt und die Probleme für den Abfrageplan automatisch behoben werden.'
+          - html: Mit den <a href="/azure/log-analytics/log-analytics-azure-sql">integrierten Überwachungsfunktionen</a> können Sie Erkenntnisse zur Leistung Ihrer Datenbanken und Workload gewinnen und die Problembehandlung für die Leistungsprobleme durchführen.
+          - html: 'Bei der <a href="/azure/sql-database/sql-database-intelligent-insights">integrierten Intelligence</a> werden die potenziellen Probleme in Ihrer Workload automatisch identifiziert, und Sie erhalten Empfehlungen zur Behebung der Probleme.'

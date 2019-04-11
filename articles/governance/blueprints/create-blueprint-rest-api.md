@@ -1,7 +1,6 @@
 ---
 title: Erstellen einer Blaupause mit REST-API
 description: Verwenden Sie Azure Blueprints, um Artefakte mithilfe der REST-API zu erstellen, zu definieren und bereitzustellen.
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 02/04/2019
@@ -9,12 +8,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 06ee97cff08804093d3ee77ee11eca1b4e84bb0f
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 043b67d4b4c708f2d243f9be04fb2a706591947b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58885960"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273157"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>Definieren und Zuweisen einer Azure-Blaupause mit der REST-API
 
@@ -29,6 +28,9 @@ Wenn Sie mit der Erstellung und Zuweisung von Blaupausen vertraut sind, können 
 > - Entfernen einer Blaupause, die einem Abonnement zugewiesen wurde
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen, bevor Sie beginnen.
+
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="getting-started-with-rest-api"></a>Erste Schritte mit der REST-API
 

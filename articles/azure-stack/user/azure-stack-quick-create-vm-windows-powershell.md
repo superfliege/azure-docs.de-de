@@ -15,16 +15,16 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.custom: mvc
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: f6c8966582c0c5ae31818ce9d88b511cef811328
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: feab6bcaf23852ae00a1cd09f9ad30cd6397bb99
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58099558"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276200"
 ---
 # <a name="quickstart-create-a-windows-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Schnellstart: Erstellen eines virtuellen Windows Server-Computers mithilfe von PowerShell in Azure Stack
 
-*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Sie können einen virtuellen Windows Server 2016-Computer mit Azure Stack PowerShell erstellen. Befolgen Sie die Schritte in diesem Artikel zum Erstellen und Verwenden eines virtuellen Computers. In diesem Artikel führen Sie auch die folgenden Schritte aus:
 
@@ -77,11 +77,6 @@ Set-AzureRmCurrentStorageAccount `
   -StorageAccountName $storageAccountName `
   -ResourceGroupName $resourceGroupName
 
-# Create a storage container to store the virtual machine image
-$containerName = 'osdisks'
-$container = New-AzureStorageContainer `
-  -Name $containerName `
-  -Permission Blob
 ```
 
 ## <a name="create-networking-resources"></a>Erstellen von Netzwerkressourcen
@@ -193,19 +188,14 @@ $VirtualMachine = Set-AzureRmVMSourceImage `
   -Skus "2016-Datacenter" `
   -Version "latest"
 
-$osDiskName = "OsDisk"
-$osDiskUri = '{0}vhds/{1}-{2}.vhd' -f `
-  $StorageAccount.PrimaryEndpoints.Blob.ToString(),`
-  $vmName.ToLower(), `
-  $osDiskName
-
 # Sets the operating system disk properties on a virtual machine.
 $VirtualMachine = Set-AzureRmVMOSDisk `
   -VM $VirtualMachine `
-  -Name $osDiskName `
-  -VhdUri $OsDiskUri `
   -CreateOption FromImage | `
+  Set-AzureRmVMBootDiagnostics -ResourceGroupName $ResourceGroupName `
+  -StorageAccountName $StorageAccountName -Enable |`
   Add-AzureRmVMNetworkInterface -Id $nic.Id
+
 
 # Create the virtual machine.
 New-AzureRmVM `

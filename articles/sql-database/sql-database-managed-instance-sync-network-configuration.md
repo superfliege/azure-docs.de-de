@@ -9,34 +9,34 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: bonova, carlrab
+ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 12/13/2018
-ms.openlocfilehash: 02c64fcd51862d8ff9f107adb0ca5cfda5812a88
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 0d7920080fd61389741fbe785f5141003bef5251
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567110"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358791"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan"></a>Synchronisieren der Netzwerkkonfiguration für den Azure App Service-Hostingplan
 
-Möglicherweise können Sie trotz [Integrieren Ihrer App in ein Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md) keine Verbindung mit der verwalteten Instanz herstellen. Sie können dann versuchen, die Netzwerkkonfiguration für Ihren Dienstplan zu aktualisieren. 
+Möglicherweise können Sie trotz [Integrieren Ihrer App in ein Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md) keine Verbindung mit der verwalteten Instanz herstellen. Sie können dann versuchen, die Netzwerkkonfiguration für Ihren Dienstplan zu aktualisieren.
 
 ## <a name="sync-network-configuration-for-app-service-hosting-plan"></a>Synchronisieren der Netzwerkkonfiguration für den App Service-Hostingplan
 
 Gehen Sie dazu folgendermaßen vor:  
 
 1. Navigieren Sie zum App Service-Plan für Ihre Web-Apps.
- 
+
    ![App Service-Plan](./media/sql-database-managed-instance-sync-networking/app-service-plan.png)
 
 2. Klicken Sie auf **Netzwerk** und dann auf **Klicken Sie zur Verwaltung hier**.
- 
+
    ![Verwalten des Dienstplans](./media/sql-database-managed-instance-sync-networking/manage-plan.png)
 
-3. Wählen Sie Ihr **VNET** aus, und klicken Sie auf **Netzwerk synchronisieren**. 
- 
+3. Wählen Sie Ihr **VNET** aus, und klicken Sie auf **Netzwerk synchronisieren**.
+
    ![Netzwerk synchronisieren](./media/sql-database-managed-instance-sync-networking/sync.png)
 
 4. Warten Sie, bis die Synchronisierung abgeschlossen ist.

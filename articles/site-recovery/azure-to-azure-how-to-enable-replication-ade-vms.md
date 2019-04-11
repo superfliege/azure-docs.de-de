@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 27c1481314ba1dd77cdcf229842aeec7de3e4444
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b3e997a37bb5d030d559b6771b2c0e2f74cc62ab
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117454"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277686"
 ---
 # <a name="replicate-azure-disk-encryption-ade-enabled-virtual-machines-to-another-azure-region"></a>Replizieren von ADE-fähigen (Azure Disk Encryption) virtuellen Computern in einer anderen Azure-Region
 
@@ -148,7 +148,7 @@ Sie können mit dem [Skript](#copy-ade-keys-to-dr-region-using-powershell-script
 Sie haben einen bereits erstellten Schlüsseltresor in der Zielregion ausgewählt, anstatt ihn von Azure Site Recovery erstellen zu lassen. Stellen Sie sicher, dass der Schlüsseltresor über die benötigten Berechtigungen verfügt, wie oben erwähnt.</br>
 *Beispiel*: Ein Benutzer versucht, eine VM zu replizieren, die über einen Schlüsseltresor in der Quellregion verfügt, z.B. „ContosososourceKeyvault“.
 Der Benutzer verfügt über alle Berechtigungen für den Schlüsseltresor der Quellregion, aber während des Schutzes wählt er den bereits erstellten Schlüsseltresor „ContosotargetKeyvault“ aus, dem die Berechtigung fehlt. Der Schutz gibt daraufhin einen Fehler aus.</br>
-**Wie behebe ich das Problem?** Navigieren Sie zu „Start“ > „Schlüsseltresore“ > „ContosososourceKeyvault“ > „Zugriffsrichtlinien“, und fügen Sie Berechtigungen wie oben gezeigt hinzu. 
+**Wie behebe ich das Problem?** Navigieren Sie zu „Start“ > „Schlüsseltresore“ > „ContosososourceKeyvault“ > „Zugriffsrichtlinien“, und fügen Sie Berechtigungen wie oben gezeigt hinzu.
 
 **Ursache 2:** Sie haben möglicherweise einen bereits erstellten Schlüsseltresor aus der Zielregion ausgewählt, der nicht über die Berechtigungen zum Entschlüsseln und Verschlüsseln verfügt.
 Sie haben einen bereits erstellten Schlüsseltresor in der Zielregion ausgewählt, anstatt ihn von Azure Site Recovery erstellen zu lassen. Stellen Sie sicher, dass der Benutzer über Berechtigungen zum Entschlüsseln und Verschlüsseln verfügt, falls Sie den Schlüssel auch in der Quellregion verschlüsseln.</br>

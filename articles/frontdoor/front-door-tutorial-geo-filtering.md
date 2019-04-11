@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: bdbf0d78b45291e7482c1af3999c8ce3980ef36f
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 8a1fb0c3270d4899f05190fb1745075584f613ab
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578491"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357155"
 ---
 # <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>Einrichten einer WAF-Richtlinie mit Geofilterung für Ihre Front Door-Instanz
 In diesem Tutorial wird veranschaulicht, wie Sie mit Azure PowerShell eine Beispielrichtlinie für die Geofilterung erstellen und sie Ihrem vorhandenen Front Door-Front-End-Host zuordnen. Diese Beispielrichtlinie für die Geofilterung blockiert Anforderungen aus allen Ländern, mit Ausnahme der USA.
@@ -45,7 +45,7 @@ Install-Module PowerShellGet -Force -AllowClobber
 #### <a name="install-azfrontdoor-module"></a>Installieren des Moduls „Az.FrontDoor“ 
 
 ```
-Install-Module -Name Az.FrontDoor -AllowPrerelease
+Install-Module -Name Az.FrontDoor
 ```
 
 ### <a name="create-a-front-door-profile"></a>Erstellen eines Front Door-Profils

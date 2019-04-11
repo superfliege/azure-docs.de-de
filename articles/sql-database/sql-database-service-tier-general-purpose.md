@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop-msft
-ms.reviewer: carlrab
+ms.reviewer: sstein
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 83be636317299adf820a60716866aa35d318d6dc
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: dc379f1ee67174cd806840e4244054701d18f0d4
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997361"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357932"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database"></a>Diensttarif „Universell“ – Azure SQL-Datenbank
 
@@ -26,7 +26,7 @@ ms.locfileid: "55997361"
 
 Azure SQL-Datenbank basiert auf der an die Cloudumgebung angepasste Architektur der SQL Server-Datenbank-Engine, um selbst bei Infrastrukturausfällen eine Verfügbarkeit von 99,99 % sicherzustellen. In Azure SQL-Datenbank werden drei Diensttarife verwendet, die jeweils unterschiedliche Architekturmodelle aufweisen. Diese Diensttarife lauten:
 
-- Allgemeiner Zweck 
+- Allgemeiner Zweck
 - Unternehmenskritisch
 - Hyperscale
 

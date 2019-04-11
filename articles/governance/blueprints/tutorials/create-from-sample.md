@@ -1,20 +1,18 @@
 ---
 title: Erstellen einer Umgebung anhand eines Blaupausenbeispiels
 description: Verwenden Sie ein Blaupausenbeispiel, um eine Blaupausendefinition zu erstellen, die zwei Ressourcengruppen einrichtet und eine Rollenzuweisung für jede dieser Ressourcengruppen konfiguriert.
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/05/2019
 ms.topic: tutorial
 ms.service: blueprints
-ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 68bd6e3942d2b2e2c8bcf39bfcff10540e564315
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 4f400e45d8defc304cf58c4bd05fa19f16d0501b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57411171"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277771"
 ---
 # <a name="create-an-environment-from-a-blueprint-sample"></a>Erstellen einer Umgebung anhand eines Blaupausenbeispiels
 
@@ -88,7 +86,7 @@ Nachdem die Kopie des Blaupausenbeispiels erfolgreich **veröffentlicht** wurde,
 
      - **Abonnements**: Wählen Sie mindestens eines der Abonnements in der Verwaltungsgruppe aus, in der Sie die Kopie des Blaupausenbeispiels gespeichert haben. Wenn Sie mehrere Abonnements auswählen, wird für jedes Abonnement eine Zuweisung mit den eingegebenen Parametern erstellt.
      - **Zuweisungsname**: Der Name wird basierend auf dem Namen der Blaupausendefinition vorab aufgefüllt.
-     - **Standort**: Wählen Sie eine Region aus, in der die verwaltete Identität erstellt werden soll. Azure Blueprint uses this managed identity to deploy all artifacts in the assigned blueprint. Weitere Informationen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Standort**: Wählen Sie eine Region aus, in der die verwaltete Identität erstellt werden soll. Azure Blueprint verwendet diese verwaltete Identität zum Bereitstellen aller Artefakte in der zugewiesenen Blaupause. Weitere Informationen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../../../active-directory/managed-identities-azure-resources/overview.md).
        Wählen Sie für dieses Tutorial die Region _USA, Osten 2_ aus.
      - **Version der Blaupausendefinition**: Wählen Sie die Version _1.0_ mit dem Status **Veröffentlicht** Ihrer Kopie der Beispielblaupausendefinition aus.
 

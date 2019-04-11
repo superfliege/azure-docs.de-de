@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 04/05/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: bacfb5fed4d72a7be2239ba97a68f15766b3ff59
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 4acecb9d15f820ba092f36d8fa3ea204658d2dba
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650444"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276778"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>Lebenszyklus einer Wissensdatenbank in QnA Maker
 QnA Maker lernt am besten in einem iterativen Zyklus aus Modelländerungen, Ausdrucksbeispielen, Veröffentlichungen und dem Sammeln von Daten aus Endpunktabfragen. 
@@ -44,7 +44,7 @@ Auf diese Weise haben Änderungen an der Testversion der Knowledge Base keine Au
 
 Jede dieser Knowledge Bases kann zu Testzwecken separat angesprochen werden. Mithilfe der APIs können Sie mit dem `isTest=true`-Flag im GenerateAnswer-Aufruf die Testversion der Knowledge Base als Ziel verwenden.
 
-Erfahren Sie mehr über das [Veröffentlichen Ihrer Knowledge Base](../How-To/publish-knowledge-base.md).
+Erfahren Sie mehr über das [Veröffentlichen Ihrer Knowledge Base](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base).
 
 ## <a name="monitor-usage"></a>Überwachen der Nutzung
 Um die Chatprotokolle Ihres Diensts erfassen zu können, müssen Sie beim [Erstellen Ihres QnA Maker-Diensts](../How-To/set-up-qnamaker-service-azure.md) Application Insights aktivieren.

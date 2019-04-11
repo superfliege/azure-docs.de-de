@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: bonova, carlrab
+ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 01/15/2019
-ms.openlocfilehash: 13038bb7159556b36e82b598732d1f2d497bf314
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: c4ff12f0c9adcb9943a6e2426eaf2740ba171e39
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762771"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358850"
 ---
 # <a name="configure-an-existing-virtual-network-for-azure-sql-database-managed-instance"></a>Konfigurieren eines vorhandenen virtuellen Netzwerks für eine verwaltete Azure SQL-Datenbank-Instanz
 
@@ -25,10 +25,9 @@ Eine verwaltete Azure SQL-Datenbank-Instanz darf nur in einem [virtuellen Azure-
 
 Wenn einer der folgenden Fälle auf Sie zutrifft, können Sie Ihr Netzwerk mithilfe des in diesem Artikel erläuterten Skripts überprüfen und ändern:
 
-* Sie haben ein neues Subnetz, das noch nicht konfiguriert ist.
-* Sie sind nicht sicher, ob das Subnetz den [Anforderungen](sql-database-managed-instance-connectivity-architecture.md#network-requirements) entspricht.
-* Sie möchten überprüfen, ob das Subnetz weiterhin die [Netzwerkanforderungen](sql-database-managed-instance-connectivity-architecture.md#network-requirements) erfüllt, nachdem Sie Änderungen vorgenommen haben.
-
+- Sie haben ein neues Subnetz, das noch nicht konfiguriert ist.
+- Sie sind nicht sicher, ob das Subnetz den [Anforderungen](sql-database-managed-instance-connectivity-architecture.md#network-requirements) entspricht.
+- Sie möchten überprüfen, ob das Subnetz weiterhin die [Netzwerkanforderungen](sql-database-managed-instance-connectivity-architecture.md#network-requirements) erfüllt, nachdem Sie Änderungen vorgenommen haben.
 
 > [!Note]
 > Sie können eine verwaltete Instanz nur in virtuellen Netzwerken erstellen, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Virtuelle Azure-Netzwerke, die mit dem klassischen Bereitstellungsmodell erstellt wurden, werden nicht unterstützt. Berechnen Sie die Subnetzgröße anhand der Richtlinien im Artikel [Ermitteln der Größe des Subnetzes für verwaltete Instanzen](sql-database-managed-instance-determine-size-vnet-subnet.md). Die Größe des Subnetzes kann nach der Bereitstellung der darin enthaltenen Ressourcen nicht mehr geändert werden.
