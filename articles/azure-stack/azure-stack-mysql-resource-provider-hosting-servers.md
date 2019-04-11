@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 03/26/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 68e8bfa16c56b8c864ac99cdf6c19243bc7e881c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8cffcc938a247a2b08ff53b128560e1ab5e1653a
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101872"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499776"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>Hinzufügen von Hostservern für den MySQL-Ressourcenanbieter
 
@@ -45,7 +45,7 @@ Stellen Sie sicher, dass Sie über die Anmeldeinformationen für ein Konto mit S
 
    * Geben Sie für **MySQL-Hostservername** den vollqualifizierten Domänennamen (FQDN) oder eine gültige IPv4-Adresse an. Verwenden Sie nicht den Kurznamen des virtuellen Computers.
    * Der **Benutzername** des Standardadministrators für die verfügbaren Bitnami-MySQL-Images im Azure Stack-Marketplace lautet *root*. 
-   * Sollte Ihnen das root-Kennwort**** nicht bekannt sein, erfahren Sie in der [Bitnami-Dokumentation](https://docs.bitnami.com/azure/faq/#how-to-find-application-credentials), wie Sie es erhalten. 
+   * Sollte Ihnen das root-**Kennwort** nicht bekannt sein, erfahren Sie in der [Bitnami-Dokumentation](https://docs.bitnami.com/azure/faq/#how-to-find-application-credentials), wie Sie es erhalten. 
    * Es ist keine MySQL-Standardinstanz angegeben, daher müssen Sie die **Größe des Hostservers in GB** eingeben. Geben Sie eine Größe ein, die in etwa der physischen Kapazität des Datenbankservers entspricht.
    * Behalten Sie die Standardeinstellung für **Abonnement** bei.
    * Für **Ressourcengruppe** können Sie eine neue Gruppe erstellen oder eine vorhandene Gruppe verwenden.
@@ -90,16 +90,19 @@ Als Best Practice sollten alle Hostserver in einer SKU die gleichen Ressourcen- 
 
 SKUs können nicht bestimmten Benutzern oder Gruppen zugeordnet werden.
 
-Es kann bis zu einer Stunde dauern, bis SKUs im Portal angezeigt werden. Benutzer können erst eine Datenbank erstellen, wenn die SKU vollständig erstellt wurde.
+Um eine SKU zu bearbeiten, navigieren Sie zu **Alle Dienste** > **MySQL-Adapter** > **SKUs**. Wählen Sie die zu ändernde SKU aus, nehmen Sie alle notwendigen Änderungen vor, und klicken Sie dann auf **Speichern**, um die Änderungen zu speichern. 
 
-Um eine SKU zu bearbeiten, navigieren Sie zu **Alle Dienste** > **MySQL-Adapter** > **SKUs**. Wählen Sie die zu ändernde SKU aus, nehmen Sie alle notwendigen Änderungen vor, und klicken Sie dann auf **Speichern**, um die Änderungen zu speichern. Um eine nicht mehr benötigte SKU zu löschen, navigieren Sie zu **Alle Dienste** > **MySQL-Adapter** > **SKUs**. Klicken Sie mit der rechten Maustaste auf den Namen der SKU, und wählen Sie dann **Löschen** aus, um sie zu löschen.
+Um eine nicht mehr benötigte SKU zu löschen, navigieren Sie zu **Alle Dienste** > **MySQL-Adapter** > **SKUs**. Klicken Sie mit der rechten Maustaste auf den Namen der SKU, und wählen Sie dann **Löschen** aus, um sie zu löschen.
 
-> [!TIP]
-> Sie können Kontingente von MySQL-Ressourcenanbietern am selben Ort bearbeiten oder löschen.
+> [!IMPORTANT]
+> Es kann bis zu einer Stunde dauern, bis neue SKUs im Benutzerportal verfügbar sind.
 
 ## <a name="make-mysql-database-servers-available-to-your-users"></a>Freigeben der MySQL-Datenbankserver für Ihre Benutzer
 
 Erstellen Sie Pläne und Angebote, um MySQL-Datenbankserver für Benutzer verfügbar zu machen. Fügen Sie dem Plan den Dienst Microsoft.MySqlAdapter hinzu. Außerdem müssen Sie ein neues Kontingent erstellen. MySQL ermöglicht nicht, die Größe von Datenbanken einzuschränken.
+
+> [!IMPORTANT]
+> Es kann bis zu zwei Stunden dauern, bis neue Kontingente im Benutzerportal verfügbar sind oder ein geändertes Kontingent erzwungen wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

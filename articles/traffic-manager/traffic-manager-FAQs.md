@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: kumud
-ms.openlocfilehash: c26117bf298d5fe7fd8a14e0aa2b14834e412328
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6086c182763885b62f28ab093be2a7f3f8282b8a
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58009929"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046307"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Traffic Manager
 
@@ -309,7 +309,7 @@ Für Azure Resource Manager ist es erforderlich, dass für alle Ressourcengruppe
 
 ### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>Wie kann ich den aktuellen Integritätsstatus jedes Endpunkts bestimmen?
 
-Der aktuelle Überwachungsstatus jedes Endpunkts sowie das Gesamtprofil werden im Azure-Portal angezeigt. Diese Informationen sind auch über die [REST-API](https://msdn.microsoft.com/library/azure/mt163667.aspx) von Traffic Manager, [PowerShell-Cmdlets](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager) und die [plattformübergreifende Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) verfügbar.
+Der aktuelle Überwachungsstatus jedes Endpunkts sowie das Gesamtprofil werden im Azure-Portal angezeigt. Diese Informationen sind auch über die [REST-API](https://msdn.microsoft.com/library/azure/mt163667.aspx) von Traffic Manager, [PowerShell-Cmdlets](https://docs.microsoft.com/powershell/module/az.trafficmanager) und die [plattformübergreifende Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) verfügbar.
 
 Sie können auch mit Azure Monitor die Integrität Ihrer Endpunkte nachverfolgen und eine visuelle Darstellung anzeigen. Weitere Informationen zum Verwenden von Azure Monitor finden Sie in der [Dokumentation zur Azure-Überwachung](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
 
@@ -439,7 +439,7 @@ Ausführliche Informationen finden Sie auf der Seite [Traffic Manager Preise](ht
 
 ### <a name="is-there-a-performance-impact-for-nested-profiles"></a>Wirken sich geschachtelte Profile auf die Leistung aus?
 
- Nein. Durch geschachtelte Profile entstehen keine Leistungseinbußen.
+Nein. Durch geschachtelte Profile entstehen keine Leistungseinbußen.
 
 Die Traffic Manager-Namenserver durchlaufen bei der Verarbeitung der einzelnen DNS-Abfragen intern die Profilhierarchie. Eine DNS-Abfrage an ein übergeordnetes Profil kann eine DNS-Antwort mit einem Endpunkt aus einem untergeordneten Profil erhalten. Unabhängig davon, ob Sie ein einzelnes Profil oder geschachtelte Profile verwenden, wird nur ein einziger CNAME-Eintrag verwendet. Es gibt keine Notwendigkeit, für jedes Profil in der Hierarchie einen CNAME-Eintrag zu erstellen.
 

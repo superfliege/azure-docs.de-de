@@ -16,16 +16,16 @@ ms.date: 01/09/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 4b9b91c17a9199c7890d17a2b721ce0803e6bd6c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: ae5a824fbd96a9a76eb18811a46bfc17afa15073
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243333"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879351"
 ---
 # <a name="sql-resource-provider-11330-release-notes"></a>Versionshinweise zum SQL-Ressourcenanbieter 1.1.33.0
 
-*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 In diesen Versionshinweisen werden die Verbesserungen und bekannten Probleme in Version 1.1.33.0 des SQL-Ressourcenanbieters beschrieben.
 
@@ -50,7 +50,8 @@ Diese Version des Azure Stack-SQL-Ressourcenanbieters enthält die folgenden Ver
 
 - **Bei der Bereitstellung des vorherigen SQL-Ressourcenanbieters (1.1.30.0) tritt eventuell ein Fehler auf, wenn TLS 1.2 nicht aktiviert ist.** SQL-Ressourcenanbieter 1.1.33.0 wurde aktualisiert, um TLS 1.2 zu ermöglichen, wenn der Ressourcenanbieter bereitgestellt oder aktualisiert wird oder Geheimnisse rotiert werden. 
 
-- **Fehler bei Rotation von Geheimnissen für SQL-Ressourcenanbieter.** Problem behoben, das beim Rotieren von Geheimnissen zu folgendem Fehler geführt hat: ` New-AzureRmResourceGroupDeployment - Error: Code=InvalidDeploymentParameterValue; Message=The value of deployment parameter 'StorageAccountBlobUri' is null.`
+- **Fehler bei Rotation von Geheimnissen für SQL-Ressourcenanbieter.** Problem behoben, das beim Rotieren von Geheimnissen zu folgendem Fehler geführt hat:
+`New-AzureRmResourceGroupDeployment - Error: Code=InvalidDeploymentParameterValue; Message=The value of deployment parameter 'StorageAccountBlobUri' is null.`
 
 ## <a name="known-issues"></a>Bekannte Probleme 
 

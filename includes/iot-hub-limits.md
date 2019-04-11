@@ -1,15 +1,15 @@
 ---
 author: robinsh
-ms.author: robin.shahan
+ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 20553db8c79c960aabda5aba708d315517462126
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 1bdf73dc6a4edf0c170b51e70fca2128d22e0eb8
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57805171"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59055651"
 ---
 In der folgenden Tabelle sind die Grenzwerte aufgeführt, die den verschiedenen Dienstebenen S1, S2, S3 und F1 zugeordnet sind. Informationen zu den Kosten jeder *Einheit* finden Sie unter [Azure IoT Hub – Preise](https://azure.microsoft.com/pricing/details/iot-hub/).
 
@@ -30,7 +30,7 @@ Die folgende Tabelle enthält die für IoT Hub-Ressourcen geltenden Grenzwerte.
 | Maximale Anzahl kostenpflichtiger IoT Hubs pro Azure-Abonnement |50 |
 | Maximale Anzahl kostenloser IoT Hubs pro Azure-Abonnement |1 |
 | Maximale Anzahl von Zeichen in einer Geräte-ID | 128 |
-| Maximale Anzahl von Geräte-Identitäten,<br/>  die bei einem einzelnen Aufruf zurückgegeben wird |1.000 |
+| Maximale Anzahl von Geräte-Identitäten,<br/> die bei einem einzelnen Aufruf zurückgegeben wird |1.000 |
 | Maximale Beibehaltungsdauer von IoT Hub-Nachrichten für D2C-Nachrichten |7 Tage |
 | Maximale Größe einer Nachricht von einem Gerät an die Cloud |256 KB |
 | Maximale Größe eines Batches, das vom Gerät an die Cloud gesendet wird |AMQP und HTTP: 256 KB für den gesamten Batch <br/>MQTT: 256 KB für jede Nachricht |
@@ -38,8 +38,8 @@ Die folgende Tabelle enthält die für IoT Hub-Ressourcen geltenden Grenzwerte.
 | Maximale Größe einer Nachricht von der Cloud an das Gerät |64 KB |
 | Maximale Gültigkeitsdauer von Nachrichten von der Cloud an das Gerät |2 Tage |
 | Maximale Übermittlungsanzahl von Nachrichten von der <br/> Cloud an das Gerät |100 |
-| Maximale Übermittlungsanzahl von Feedbacknachrichten <br/>  als Reaktion auf eine Nachricht von der Cloud an das Gerät |100 |
-| Maximale Gültigkeitsdauer von Feedbacknachrichten <br/>  als Reaktion auf eine Nachricht von der Cloud an das Gerät |2 Tage |
+| Maximale Übermittlungsanzahl von Feedbacknachrichten <br/> als Reaktion auf eine Nachricht von der Cloud an das Gerät |100 |
+| Maximale Gültigkeitsdauer von Feedbacknachrichten <br/> als Reaktion auf eine Nachricht von der Cloud an das Gerät |2 Tage |
 | Maximale Größe des Gerätezwillings <br/> (Tags, gemeldete Eigenschaften und gewünschte Eigenschaften) | 8 KB |
 | Maximale Größe des Gerätezwilling-Zeichenfolgenwerts | 4 KB |
 | Maximale Tiefe des Objekts im Gerätezwilling | 5 |
@@ -63,12 +63,12 @@ IoT Hub drosselt Anforderungen, wenn die folgenden Kontingente überschritten we
 
 | Drosselung | Wert pro Hub |
 | --- | --- |
-| Identitätsregistrierungsvorgänge <br/> (Erstellen, Abrufen, Auflisten, Aktualisieren und Löschen), <br/>  einzelne Import-/Exportvorgänge oder Massenimport/-export |83,33/Sekunde/Einheit (5.000/Minute/Einheit) (für S3). <br/> 1,67/Sekunde/Einheit (100/Minute/Einheit) (für S1 und S2) |
+| Identitätsregistrierungsvorgänge <br/> (Erstellen, Abrufen, Auflisten, Aktualisieren und Löschen), <br/> einzelne Import-/Exportvorgänge oder Massenimport/-export |83,33/Sekunde/Einheit (5.000/Minute/Einheit) (für S3). <br/> 1,67/Sekunde/Einheit (100/Minute/Einheit) (für S1 und S2) |
 | Geräteverbindungen |6.000/Sekunde/Einheit (für S3), 120/Sekunde/Einheit (für S2), 12/Sekunde/Einheit (für S1). <br/>Mindestens 100/Sekunde |
 | Senden von Nachrichten von Geräten an die Cloud |6.000/Sekunde/Einheit (für S3), 120/Sekunde/Einheit (für S2), 12/Sekunde/Einheit (für S1). <br/>Mindestens 100/Sekunde |
 | C2D-Sendevorgänge | 83,33/Sekunde/Einheit (5.000/Minute/Einheit) (für S3), 1,67/Sekunde/Einheit (100/Minute/Einheit) (für S1 und S2). |
 | C2D-Empfangsvorgänge |833,33/Sekunde/Einheit (50.000/Minute/Einheit) (für S3), 16,67/Sekunde/Einheit (1.000/Minute/Einheit) (für S1 und S2). |
-| Dateiuploadvorgänge |83,33 Dateiuploadbenachrichtigungen/Sekunde/Einheit (5.000/Minute/Einheit) (für S3), 1,67 Dateiuploadbenachrichtigungen/Sekunde/Einheit (100/Minute/Einheit) (für S1 und S2). <br/> 10.000 SAS-URIs können gleichzeitig für ein Azure-Speicherkonto geöffnet sein.<br/>  10 SAS-URIs/Gerät können gleichzeitig geöffnet sein. |
+| Dateiuploadvorgänge |83,33 Dateiuploadbenachrichtigungen/Sekunde/Einheit (5.000/Minute/Einheit) (für S3), 1,67 Dateiuploadbenachrichtigungen/Sekunde/Einheit (100/Minute/Einheit) (für S1 und S2). <br/> 10.000 SAS-URIs können gleichzeitig für ein Azure-Speicherkonto geöffnet sein.<br/> 10 SAS-URIs/Gerät können gleichzeitig geöffnet sein. |
 | Direkte Methoden | 24 MB/s/Texteinheit (S3), 480 KB/s/Einheit (S2), 160 KB/s/Einheit (S1).<br/> Basierend auf einer Größe von 8 KB pro Verbrauchseinheit für die Drosselung. |
 | Gerätezwilling-Lesevorgänge | 500/Sekunde/Einheit (für S3), maximal 100/Sekunde oder 10/Sekunde/Einheit (für S2), 100/Sekunde/Einheit (für S1) |
 | Gerätezwillingsaktualisierungen | 250/Sekunde/Einheit (für S3), maximal 50/Sekunde oder 5/Sekunde/Einheit (für S2), 50/Sekunde/Einheit (für S1) |

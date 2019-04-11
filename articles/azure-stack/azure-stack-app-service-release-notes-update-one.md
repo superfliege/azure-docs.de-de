@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: sethm
 ms.lastreviewed: 03/20/2018
-ms.openlocfilehash: 99b4134f8f2d6ed2f521a7f488c33e06c0f436bb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3d75467da01f0672bb735e01cbd6d7634cdf843e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58165827"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445239"
 ---
 # <a name="app-service-on-azure-stack-update-1-release-notes"></a>App Service in Azure Stack – Versionshinweise zu Update 1
 
@@ -56,6 +56,8 @@ Update 1 für Azure App Service in Azure Stack enthält die folgenden Verbesseru
 - **In vorhandenem virtuellem Netzwerk bereitstellen**: Kunden können jetzt App Service in Azure Stack in einem vorhandenen virtuellen Netzwerk bereitstellen. Die Bereitstellung in einem vorhandenen virtuellen Netzwerk ermöglicht Kunden, eine Verbindung mit der SQL Server- und Dateiserverinstanz – für Azure App Service erforderlich – über private Ports herzustellen. Während der Bereitstellung können die Kunden wählen, ob sie die Bereitstellung in einem vorhandenen virtuellen Netzwerk wünschen, doch vor der Bereitstellung [müssen sie Subnetze für die Verwendung durch App Service](azure-stack-app-service-before-you-get-started.md#virtual-network) erstellen.
 
 - Updates für **App Service-Mandanten, Admin, Functions-Portale und Kudu-Tools**. Mit Azure Stack-Portal-SDK-Version konsistent.
+
+- Aktualisiert **Azure Functions Runtime** auf **v1.0.11388**.
 
 - **Updates für folgende Anwendungsframeworks und Tools**:
     - Unterstützung für **.NET Core 2.0** hinzugefügt

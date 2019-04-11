@@ -6,12 +6,12 @@ description: Erfahren Sie, wie Sie mit Microsoft Azure Cloud Services leistungss
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 97fd2ffd22f4a4c883d284a2d2db060cd1c2121c
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 3b35608c30262f633af073daacc8795f8eca1e7e
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878671"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471595"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -224,7 +224,7 @@ Go</a>
                                     <div class="cardPadding">
                                         <div class="card">
                                             <div class="cardText">
-                                                <h3>Befehlszeilentools</h3>
+                                                <h3>Verwaltungstools</h3>
                                                 <ul class="noBullet">
                                                     <li>
                                                         <a class="barLink" href="/cli/azure">
@@ -235,6 +235,16 @@ Azure-Befehlszeilenschnittstelle </a>
                                                         <a class="barLink" href="/powershell/azure/overview">
                                                             <img src="media/index/azure_dev-8.svg" alt="">
 Azure PowerShell </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="barLink" href="/azure/azure-portal/">
+                                                            <img src="https://docs.microsoft.com/media/logos/logo_azure.svg" alt="">
+Azure-Portal </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="barLink" href="https://azure.microsoft.com/features/azure-portal/mobile-app/">
+                                                            <img src="https://docs.microsoft.com/media/common/i_mobile-app-developement.svg" alt="">
+Mobile Azure-App </a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -1746,9 +1756,9 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://docs.microsoft.com/azure/azure-portal/">
+                                            <a href="/azure/azure-portal/">
                                                 <img src="https://docs.microsoft.com/media/logos/logo_azure.svg" alt="" />
-                                                <p>Microsoft Azure-Portal</p>
+                                                <p>Azure-Portal</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1764,7 +1774,7 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/app-service-mobile">
+                                            <a href="https://azure.microsoft.com/features/azure-portal/mobile-app/">
                                                 <img src="https://docs.microsoft.com/media/common/i_mobile-app-developement.svg" alt="" />
                                                 <p>Mobile Azure-App</p>
                                             </a>
@@ -5403,7 +5413,7 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                                 </a>
                             </li>
                             <li>
-                                <a href="https://portal.azure.com">
+                                <a href="/azure/azure-portal/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -5413,7 +5423,7 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Microsoft Azure-Portal</h3>
+                                                    <h3>Azure-Portal</h3>
                                                     <p>Erstellen, Verwalten und Überwachen sämtlicher Azure-Produkte in einer einzigen einheitlichen Konsole</p>
                                                 </div>
                                             </div>
@@ -6085,7 +6095,7 @@ Azure-REST-APIs </h3>
                             </li>
                             <li>
                                 <div class="container">
-                                    <h2>Befehlszeilenschnittstelle (CLI)</h2>
+                                    <h2>Verwaltungstools</h2>
                                 </div>
                             </li>
                             <li>
@@ -6127,6 +6137,44 @@ Azure-Befehlszeilenschnittstelle </h3>
                                                 </p>
                                                 <p>
                                                     <a href="/powershell/azure/overview">Verweis</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cardSize">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardImageOuter">
+                                                <div class="cardImage">
+                                                    <img src="https://docs.microsoft.com/media/logos/logo_azure.svg" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="cardText">
+                                                <h3>Azure-Portal</h3>
+                                                <p>
+                                                    <a href="/azure/azure-portal/">Erste Schritte</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cardSize">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardImageOuter">
+                                                <div class="cardImage">
+                                                    <img src="https://docs.microsoft.com/media/common/i_mobile-app-developement.svg" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="cardText">
+                                                <h3>Mobile Azure-App</h3>
+                                                <p>
+                                                    <a href="https://azure.microsoft.com/features/azure-portal/mobile-app/">Erste Schritte</a>
                                                 </p>
                                             </div>
                                         </div>
