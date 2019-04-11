@@ -1,19 +1,19 @@
 ---
 title: Verwenden von Azure Cosmos DB-Konten
 description: In diesem Artikel erfahren Sie, wie Sie Azure Cosmos DB-Konten erstellen und verwenden.
-author: dharmas-cosmos
+author: rimman
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 11/08/2018
-ms.author: dharmas
+ms.date: 03/31/2019
+ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: e40b763aa2a36e3afd85a82b66e393ac78d3afaa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: da55807d4ca803adf63a1dd2dfe3ce3794cdd509
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57839575"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762598"
 ---
 # <a name="work-with-azure-cosmos-account"></a>Arbeiten mit einem Azure Cosmos-Konto
 
@@ -21,7 +21,7 @@ Azure Cosmos DB ist ein vollständig verwalteter PaaS-Dienst (Platform-as-a-Serv
 
 Das Azure Cosmos-Konto ist die grundlegende Einheit für globale Verteilung und Hochverfügbarkeit. Sie können Ihrem Azure Cosmos-Konto jederzeit Azure-Regionen hinzufügen oder Azure-Regionen daraus entfernen, um Ihre Daten und Ihren Durchsatz global auf mehrere Azure-Regionen zu verteilen. Ihr Azure Cosmos-Konto kann mit einer einzelnen Schreibregion oder mit mehreren Schreibregionen konfiguriert werden. Weitere Informationen finden Sie unter [Hinzufügen/Entfernen von Regionen für Ihr Datenbankkonto](how-to-manage-database-account.md). Sie können die [Standardkonsistenzebene](consistency-levels.md) für Ihr Azure Cosmos DB-Konto konfigurieren. Azure Cosmos DB bietet umfassende SLAs mit Durchsatz, Latenz im 99. Perzentil, Konsistenz und Hochverfügbarkeit. Weitere Informationen finden Sie unter [SLA für Azure Cosmos DB](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/).
 
-Zur sicheren Verwaltung des Zugriffs auf sämtliche Daten in Ihrem Azure Cosmos-Konto können Sie die Hauptschlüssel verwenden, die Ihrem Konto zugeordnet sind. Darüber hinaus können Sie zum Schutz des Zugriffs auf Ihre Daten einen VNET-Dienstendpunkt und eine IP-Firewall für Ihr Azure Cosmos-Konto konfigurieren. 
+Zur sicheren Verwaltung des Zugriffs auf sämtliche Daten in Ihrem Azure Cosmos-Konto können Sie die [Hauptschlüssel](secure-access-to-data.md) verwenden, die Ihrem Konto zugeordnet sind. Darüber hinaus können Sie zum Schutz des Zugriffs auf Ihre Daten einen [VNET-Dienstendpunkt](vnet-service-endpoint.md) und eine [IP-Firewall](firewall-support.md) für Ihr Azure Cosmos-Konto konfigurieren. 
 
 ## <a name="elements-in-an-azure-cosmos-account"></a>Elemente in einem Azure Cosmos-Konto
 
@@ -33,7 +33,7 @@ Aktuell können unter einem Azure-Abonnement bis zu 100 Azure Cosmos-Konten erst
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich als Nächstes über die Verwaltung Ihres Azure Cosmos-Kontos, oder machen Sie sich mit weiteren Azure Cosmos DB-Konzepten vertraut:
+Weitere Informationen zum Verwalten Ihres Azure Cosmos-Kontos und zu anderen Konzepten:
 
 * [Verwalten von Datenbankkonten in Azure Cosmos DB](how-to-manage-database-account.md)
 * [Globale Verteilung](distribute-data-globally.md)

@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 6dd404ec0ab9e88c9e5bc4af4b939b3aa1f2e675
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d09adbfa7cb2782d710ef3116cbd7bc68ee247b7
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55560871"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903318"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>Empfehlungen zur Leistung für SQL-Datenbank
 
@@ -85,6 +85,10 @@ Die Empfehlung zum Beheben von Schemaproblemen wird angezeigt, wenn der Azure SQ
 | 213 |Der Spaltenname oder die Anzahl der bereitgestellten Werte entspricht nicht der Tabellendefinition. |
 | 2812 |Die gespeicherte Prozedur '*' wurde nicht gefunden. |
 | 8144 |Für die '*'-Prozedur oder -Funktion wurden zu viele Argumente angegeben. |
+
+## <a name="custom-applications"></a>Benutzerdefinierte Anwendungen
+
+Entwickler sollten in Betracht ziehen, benutzerdefinierte Anwendungen unter Verwendung von Leistungsempfehlungen für Azure SQL-Datenbank zu entwickeln. Auf alle im Portal aufgeführten Empfehlungen für eine Datenbank kann über die [Get-AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction)-API zugegriffen werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Überwachen Sie Ihre Empfehlungen, und wenden Sie sie weiterhin an, um die Leistung zu optimieren. Datenbankworkloads sind dynamisch und ändern sich ständig. Der SQL Database Advisor setzt die Überwachung fort und stellt Empfehlungen bereit, mit denen sich die Leistung Ihrer Datenbank verbessern lässt. 

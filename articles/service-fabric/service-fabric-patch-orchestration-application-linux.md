@@ -4,7 +4,7 @@ description: Anwendung zum Automatisieren von Betriebssystempatches in einem Lin
 services: service-fabric
 documentationcenter: .net
 author: novino
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 27650605601a24e11d63e56343535c35c8b72f5d
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 5efcc92bc2054dfb66b5fe03ae083c49f924d2ce
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285151"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668193"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>Patchen des Linux-Betriebssystems in Ihrem Service Fabric-Cluster
 
@@ -41,13 +41,13 @@ Die App für die Patchorchestrierung umfasst die folgenden Features:
 
 Die App für die Patchorchestrierung besteht aus den folgenden Teilkomponenten:
 
-- **Koordinatordienst**: Dieser zustandsbehaftete Dienst ist für Folgendes zuständig:
+- **Koordinatordienst:** Dieser zustandsbehaftete Dienst ist für Folgendes zuständig:
     - Koordinieren der Betriebssystemupdate-Aufträge im gesamten Cluster.
     - Speichern der Ergebnisse der abgeschlossenen Betriebssystemupdate-Vorgänge.
-- **Knoten-Agent-Dienst**: Dieser zustandslose Dienst wird auf allen Service Fabric-Clusterknoten ausgeführt. Der Dienst ist für Folgendes zuständig:
+- **Knoten-Agent-Dienst:** Dieser zustandslose Dienst wird auf allen Service Fabric-Clusterknoten ausgeführt. Der Dienst ist für Folgendes zuständig:
     - Bootstrapping des Knoten-Agent-Daemon unter Linux.
     - Überwachen des Daemondiensts.
-- **Knoten-Agent-Daemon:** Dieser Linux-Daemondienst wird mit Berechtigungen einer höheren Ebene ausgeführt (root). Im Gegensatz dazu werden der Knoten-Agent-Dienst und der Koordinatordienst mit niedrigeren Berechtigungen ausgeführt. Der Dienst ist für die Ausführung der folgenden Updateaufträge auf allen Clusterknoten zuständig:
+- **Knoten-Agent-Daemon**: Dieser Linux-Daemondienst wird mit Berechtigungen einer höheren Ebene ausgeführt (root). Im Gegensatz dazu werden der Knoten-Agent-Dienst und der Koordinatordienst mit niedrigeren Berechtigungen ausgeführt. Der Dienst ist für die Ausführung der folgenden Updateaufträge auf allen Clusterknoten zuständig:
     - Deaktivieren automatischer Betriebssystemupdates auf dem Knoten
     - Herunterladen und Installieren des Betriebssystemupdates entsprechend der vom Benutzer bereitgestellten Richtlinie
     - Gegebenenfalls Neustarten des Computers nach der Installation des Betriebssystemupdates
@@ -131,9 +131,9 @@ Das Verhalten der App für die Patchorchestrierung kann Ihren Anforderungen ents
 |:-|-|-|
 |MaxResultsToCache    |Long                              | Maximale Anzahl von Updateergebnissen, die zwischengespeichert werden sollen. <br>Der Standardwert ist 3000, wobei Folgendes angenommen wird: <br> – Es sind 20 Knoten vorhanden. <br> – Jeden Monat können fünf Updates auf einem Knoten erfolgen. <br> – Pro Vorgang können zehn Ergebnisse vorliegen. <br> – Es sollen die Ergebnisse für die letzten drei Monaten gespeichert werden. |
 |TaskApprovalPolicy   |Enum <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy gibt die Richtlinie an, die vom Koordinatordienst zum Installieren von Updates auf den Service Fabric-Clusterknoten verwendet werden soll.<br>                         Zulässige Werte sind: <br>                                                           <b>NodeWise</b>. Updates werden immer nur auf jeweils einem Knoten installiert. <br>                                                           <b>UpgradeDomainWise</b>. Updates werden immer nur in jeweils einer Upgradedomäne installiert. (Höchstens alle Knoten in einer Upgradedomäne können ein Update verwenden.)
-| UpdateOperationTimeOutInMinutes | int <br>(Standardwert: 180)                   | Gibt den Timeoutwert für jeden Updatevorgang an (Herunterladen oder Installieren). Wenn der Vorgang nicht innerhalb des angegebenen Timeoutzeitraums abgeschlossen ist, wird er abgebrochen.       |
-| RescheduleCount      | int <br> (Standardwert: 5)                  | Gibt an, wie oft der Dienst das Betriebssystemupdate maximal erneut plant, falls bei einem Vorgang wiederholt ein Fehler auftritt.          |
-| RescheduleTimeInMinutes  | int <br>(Standardwert: 30) | Das Intervall, nach dem der Dienst das Betriebssystemupdate erneut plant, falls der Fehler weiterhin besteht. |
+| UpdateOperationTimeOutInMinutes | Int <br>(Standard: 180)                   | Gibt den Timeoutwert für jeden Updatevorgang an (Herunterladen oder Installieren). Wenn der Vorgang nicht innerhalb des angegebenen Timeoutzeitraums abgeschlossen ist, wird er abgebrochen.       |
+| RescheduleCount      | Int <br> (Standard: 5)                  | Gibt an, wie oft der Dienst das Betriebssystemupdate maximal erneut plant, falls bei einem Vorgang wiederholt ein Fehler auftritt.          |
+| RescheduleTimeInMinutes  | Int <br>(Standard: 30) | Das Intervall, nach dem der Dienst das Betriebssystemupdate erneut plant, falls der Fehler weiterhin besteht. |
 | UpdateFrequency           | Durch Trennzeichen getrennte Zeichenfolge (Standard: „Wöchentlich, Mittwoch, 7:00:00“)     | Die Häufigkeit, mit der Betriebssystemupdates im Cluster installiert werden sollen. Folgende Formate und Werte sind möglich: <br>– Monatlich, TT, HH:MM:SS, z.B. Monatlich, 5, 12:22:32 <br> – Wöchentlich, TAG, HH:MM:SS, z.B. Wöchentlich, Dienstag, 12:22:32  <br> – Täglich, HH:MM:SS, z.B. Täglich, 12:22:32.  <br> – Keine: Gibt an, dass kein Update durchgeführt werden soll.  <br><br> Alle Uhrzeiten werden in UTC angegeben.|
 | UpdateClassification | Durch Trennzeichen getrennte Zeichenfolge (Standard: „securityupdates“) | Typ der Updates, die auf den Clusterknoten installiert werden sollen. Zulässige Werte sind „securityupdates“ und „all“. <br> – securityupdates: Es werden nur Sicherheitsupdates installiert. <br> – all: Es werden alle Updates von apt installiert.|
 | ApprovedPatches | Durch Trennzeichen getrennte Zeichenfolge (Standard: "") | Dies ist die Liste der genehmigten Updates, die auf den Clusterknoten installiert werden sollen. Die durch Trennzeichen getrennte Liste enthält genehmigte Pakete und optional die gewünschte Zielversion.<br> Beispiel: "apt-utils = 1.2.10ubuntu1, python3-jwt, apt-transport-https < 1.2.194, libsystemd0 >= 229-4ubuntu16" <br> Damit wird Folgendes installiert: <br> – apt-utils mit Version 1.2.10ubuntu1, sofern die Version in apt-cache verfügbar ist. Wenn die betreffende Version nicht verfügbar ist, wird kein Vorgang durchgeführt. <br> – python3-jwt führt Upgrades auf die neueste verfügbare Version durch. Wenn das Paket nicht vorhanden ist, wird kein Vorgang durchgeführt. <br> – apt-transport-https führt Upgrades auf die höchste Version unter 1.2.194 durch. Wenn diese Version nicht vorhanden ist, wird kein Vorgang durchgeführt. <br> – libsystemd0 führt Upgrades auf die höchste Version durch, die größer oder gleich 229-4ubuntu16 ist. Wenn eine solche Version nicht vorhanden ist, wird kein Vorgang durchgeführt.|
@@ -305,7 +305,7 @@ A. Die Ausführungsdauer der App für die Patchorchestrierung ist größtenteils
 
 F: **Wie ermittelt die App für die Patchorchestrierung, bei welchen Updates es sich um Sicherheitsupdates handelt?**
 
-A. Die App für die Patchorchestrierung verwendet distributionsspezifische Logik zum Ermitteln, bei welchen der verfügbaren Updates es sich um Sicherheitsupdates handelt. Beispiel: In Ubuntu sucht die App nach Updates aus den Archiven „$RELEASE-security“ und „$RELEASE-updates“ („$RELEASE = xenial“ oder die Linux Standard-Basis-Releaseversion). 
+A. Die App für die Patchorchestrierung verwendet distributionsspezifische Logik zum Ermitteln, bei welchen der verfügbaren Updates es sich um Sicherheitsupdates handelt. Beispiel:  In Ubuntu sucht die App nach Updates aus den Archiven „$RELEASE-security“ und „$RELEASE-updates“ („$RELEASE = xenial“ oder die Linux Standard-Basis-Releaseversion). 
 
  
 F: **Wie kann ich eine Sperre für eine bestimmte Paketversion festlegen?**

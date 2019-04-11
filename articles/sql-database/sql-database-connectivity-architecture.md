@@ -11,20 +11,20 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: cfa9f6bcb81182f4e76e995d626b207f8e130a80
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/03/2019
+ms.openlocfilehash: 619893ad42664f8d37fff5e61b8560f6c6d83e23
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57840918"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918602"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Verbindungsarchitektur von Azure SQL
 
 In diesem Artikel wird die Verbindungsarchitektur von Azure SQL-Datenbank und SQL Data Warehouse erläutert. Zudem wird dargelegt, wie die verschiedenen Komponenten Datenverkehr an Ihre Instanz von Azure SQL leiten. Diese Verbindungskomponenten leiten Netzwerkdatenverkehr mithilfe von Clients, die von innerhalb und von außerhalb von Azure verbunden sind, an Azure SQL-Datenbank und SQL Data Warehouse. Dieser Artikel bietet auch Skriptbeispiele zum Ändern der Verbindungsart und Überlegungen, die beim Ändern der Standardverbindungseinstellungen berücksichtigt werden können.
 
 > [!IMPORTANT]
-> **[Bevorstehende Änderung] Bei Dienstendpunktverbindungen mit Azure SQL-Servern ändert sich das Verbindungsverhalten `Default` in `Redirect`.**
+> **[Bevorstehende Änderung] Bei Dienstendpunktverbindungen mit Azure SQL-Servern ändert sich das `Default`-Verbindungsverhalten in `Redirect`.**
 > Kunden wird empfohlen, neue Server zu erstellen und vorhandene Server einzurichten, wobei der Verbindungstyp je nach Konnektivitätsarchitektur explizit auf „Redirect“ (vorzugsweise) oder „Proxy“ festgelegt ist.
 >
 > Um zu verhindern, dass infolge dieser Änderung Verbindungen über einen Dienstendpunkt in bestehenden Umgebungen unterbrochen werden, setzen wir Telemetrie für folgende Zwecke ein:
@@ -35,11 +35,11 @@ In diesem Artikel wird die Verbindungsarchitektur von Azure SQL-Datenbank und SQ
 > In folgenden Szenarien können Dienstendpunktbenutzer dennoch betroffen sein:
 >
 > - Eine Anwendung stellt nur selten eine Verbindung mit einem vorhandenen Server her, sodass die Informationen zu diesen Anwendungen nicht mithilfe der Telemetrie erfasst wurden.
-> - Die automatisierte Bereitstellungslogik erstellt einen SQL-Datenbankserver unter der Annahme, dass das Standardverhalten für Dienstendpunktverbindungen `Proxy` ist.
+> - Die automatisierte Bereitstellungslogik erstellt einen SQL-Datenbankserver unter der Annahme, dass das folgende Standardverhalten für Dienstendpunktverbindungen verwendet wird: `Proxy`
 >
-> Wenn Dienstendpunktverbindungen mit Azure SQL-Server nicht hergestellt werden konnten und Sie vermuten, dass Sie von dieser Änderung betroffen sind, stellen Sie sicher, dass der Verbindungstyp explizit auf `Redirect` festgelegt ist. In diesem Fall müssen Sie VM-Firewallregeln und Netzwerksicherheitsgruppen (NSG) für alle Azure-IP-Adressen in der Region öffnen, die zum SQL-[Diensttag](../virtual-network/security-overview.md#service-tags) für Ports 11000 bis 12000 gehören. Wenn dies für Sie keine eine Option ist, schalten Sie den Server explizit auf `Proxy` um.
+> Wenn Dienstendpunktverbindungen mit Azure SQL-Server nicht hergestellt werden konnten und Sie vermuten, dass Sie von dieser Änderung betroffen sind, stellen Sie sicher, dass der Verbindungstyp explizit auf `Redirect` festgelegt ist. In diesem Fall müssen Sie VM-Firewallregeln und Netzwerksicherheitsgruppen (NSG) für alle Azure-IP-Adressen in der Region öffnen, die zum SQL-[Diensttag](../virtual-network/security-overview.md#service-tags) für Ports 11000 bis 11999 gehören. Wenn dies für Sie keine eine Option ist, schalten Sie den Server explizit auf `Proxy` um.
 > [!NOTE]
-> Dieses Thema bezieht sich auf Azure SQL-Datenbank-Server, die Einzeldatenbanken und Pools für elastische Datenbanken hosten sowie SQL Data Warehouse-Datenbanken. Der Einfachheit halber wird nur SQL-Datenbank verwendet, wenn sowohl SQL-Datenbank als auch SQL Data Warehouse gemeint sind.
+> Dieses Thema bezieht sich auf Azure SQL Datenbank-Server, die einzelne Datenbanken und Pool für elastische Datenbanken hosten, SQL Data Warehouse Datenbanken, Azure Database for MySQL, Azure Database for MariaDB und Azure Database for PostgreSQL. Der Einfachheit halber wird die Bezeichnung „SQL-Datenbank“ verwendet, wenn auf die SQL-Datenbank, SQL Data Warehouse, Azure Database for MySQL, Azure Database for MariaDB und Azure Database for PostgreSQL verwiesen wird.
 
 ## <a name="connectivity-architecture"></a>Verbindungsarchitektur
 
@@ -57,7 +57,7 @@ In den folgenden Schritten wird das Herstellen einer Verbindung mit einer Azure 
 
 Die Azure SQL-Datenbank unterstützt diese drei Optionen zum Festlegen der Verbindungsrichtlinie für einen SQL-Datenbankserver:
 
-- **Umleiten (empfohlen):** Clients stellen Verbindungen direkt mit dem Knoten her, der die Datenbank hostet. Zum Aktivieren der Konnektivität müssen die Clients ausgehende Firewallregeln für alle Azure-IP-Adressen in der Region mithilfe von Netzwerksicherheitsgruppen (NSG) mit [Diensttags](../virtual-network/security-overview.md#service-tags) für Ports 11000 bis 12000 zulassen – nicht nur für IP-Adressen des Azure SQL-Datenbankgateways an Port 1433. Da Pakete direkt an die Datenbank gesendet werden, haben Latenz und Durchsatz die Leistung verbessert.
+- **Umleiten (empfohlen):** Clients stellen Verbindungen direkt mit dem Knoten her, der die Datenbank hostet. Zum Aktivieren der Konnektivität müssen die Clients ausgehende Firewallregeln für alle Azure-IP-Adressen in der Region mithilfe von Netzwerksicherheitsgruppen (NSG) mit [Diensttags](../virtual-network/security-overview.md#service-tags) für Ports 11000 bis 11999 zulassen – nicht nur für IP-Adressen des Azure SQL-Datenbankgateways an Port 1433. Da Pakete direkt an die Datenbank gesendet werden, haben Latenz und Durchsatz die Leistung verbessert.
 - **Proxy:** In diesem Modus werden alle Verbindungen über die Azure SQL-Datenbankgateways hergestellt. Zum Aktivieren der Konnektivität müssen Clients über ausgehende Firewallregeln verfügen, die nur die IP-Adressen des Azure SQL-Datenbankgateways zulassen (i.d.R. zwei IP-Adressen pro Region). Dieser Modus kann je nach Workload höhere Latenzen und geringeren Durchsatz verursachen. Es wird empfohlen, die Verbindungsrichtlinie `Redirect` statt der Verbindungsrichtlinie `Proxy` zu verwenden, um die niedrigste Latenz und den höchsten Durchsatz zu erzielen.
 - **Standard:** Diese Verbindungsrichtlinie ist nach dem Erstellen auf allen Servern aktiv, es sei denn, Sie ändern sie explizit in `Proxy` oder `Redirect`. Die effektive Richtlinie hängt davon ab, ob Verbindungen innerhalb von Azure (`Redirect`) oder außerhalb von Azure (`Proxy`) hergestellt werden.
 
@@ -109,6 +109,7 @@ Die folgende Tabelle enthält die primäre und sekundäre IP-Adressen des Gatewa
 | USA Süd Mitte | 23.98.162.75 | 13.66.62.124 |
 | Südostasien | 23.100.117.95 | 104.43.15.0 |
 | UK, Süden | 51.140.184.11 | |
+| UK, Westen | 51.141.8.11| |
 | USA, Westen-Mitte | 13.78.145.25 | |
 | Europa, Westen | 191.237.232.75 | 40.68.37.158 |
 | USA, Westen 1 | 23.99.34.75 | 104.42.238.205 |

@@ -4,7 +4,7 @@ description: Dieser Artikel beschreibt die Fabric-Einstellungen und Fabric-Upgra
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 7ced36bf-bd3f-474f-a03a-6ebdbc9677e2
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: dc0e326cf3b188a51708115e5496cfbb52a95611
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 379477cd063192fc8c23c73b4a8814ad13507043
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57836962"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667531"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassen von Service Fabric-Clustereinstellungen
 Dieser Artikel beschreibt die verschiedenen Fabric-Einstellungen, die Sie für Ihren Service Fabric-Cluster anpassen können. Für in Azure gehostete Cluster können Sie Einstellungen über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage anpassen. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines Azure-Clusters](service-fabric-cluster-config-upgrade-azure.md). Für eigenständige Cluster passen Sie die Einstellungen durch Aktualisieren der Datei *ClusterConfig.json* und ein Konfigurationsupgrade in Ihrem Cluster an. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines eigenständigen Clusters](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -614,13 +614,13 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 ## <a name="security"></a>Sicherheit
 | **Parameter** | **Zulässige Werte** |**Upgraderichtlinie**| **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-|AADCertEndpointFormat|string, Standardwert ""|statischen|Format des AAD-Zertifizierungsendpunkts (Standardwert: Azure Commercial), angegeben für eine nicht standardmäßige Umgebung wie etwa Azure Government (https://login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml) |
+|AADCertEndpointFormat|string, Standardwert ""|statischen|Format des AAD-Zertifizierungsendpunkts (Standardwert: Azure Commercial), angegeben für eine nicht standardmäßige Umgebung wie etwa Azure Government (https:\//login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml) |
 |AADClientApplication|string, Standardwert ""|statischen|Der Name der nativen Clientanwendung oder -ID, die Fabric-Clients darstellt. |
 |AADClusterApplication|string, Standardwert ""|statischen|Web-API-Anwendungsname oder -ID, der bzw. die den Cluster darstellt. |
-|AADLoginEndpoint|string, Standardwert ""|statischen|AAD-Anmeldeendpunkt (Standardwert: Azure Commercial), angegeben für eine nicht standardmäßige Umgebung wie etwa Azure Government (https://login.microsoftonline.us) |
+|AADLoginEndpoint|string, Standardwert ""|statischen|AAD-Anmeldeendpunkt (Standardwert: Azure Commercial), angegeben für eine nicht standardmäßige Umgebung wie etwa Azure Government (https:\//login.microsoftonline.us) |
 |AADTenantId|string, Standardwert ""|statischen|Mandanten-ID (GUID) |
 |AdminClientCertThumbprints|string, Standardwert ""|Dynamisch|Fingerabdrücke von Zertifikaten, die von Clients in der Rolle „Administrator“ verwendet werden. Es handelt sich um eine durch Kommas getrennte Liste. |
-|AADTokenEndpointFormat|string, Standardwert ""|statischen|AAD-Tokenendpunkt (Standardwert: Azure Commercial), angegeben für eine nicht standardmäßige Umgebung wie etwa Azure Government (https://login.microsoftonline.us/{0}) |
+|AADTokenEndpointFormat|string, Standardwert ""|statischen|AAD-Tokenendpunkt (Standardwert: Azure Commercial), angegeben für eine nicht standardmäßige Umgebung wie etwa Azure Government (https:\//login.microsoftonline.us/{0}) |
 |AdminClientClaims|string, Standardwert ""|Dynamisch|Alle möglichen Ansprüche, die von Administratorclients erwartet werden. Gleiches Format wie ClientClaims. Diese Liste wird intern ClientClaims hinzugefügt. Es besteht daher keine Notwendigkeit, die gleichen Einträge auch ClientClaims hinzuzufügen. |
 |AdminClientIdentities|string, Standardwert ""|Dynamisch|Windows-Identitäten der Fabric-Clients in der Rolle „Administrator“. Wird verwendet, um privilegierte Fabric-Vorgänge zu autorisieren. Es handelt sich um eine durch Kommas getrennte Liste. Jeder Eintrag ist ein Domänenkonto- oder Gruppenname. Der Einfachheit halber wird dem Konto, das „fabric.exe“ ausführt, automatisch die Rolle „Administrator“ zugewiesen. Dies gilt auch für die Gruppe ServiceFabricAdministrators. |
 |AppRunAsAccountGroupX509Folder|Zeichenfolge, Standard ist „/home/sfuser/sfusercerts“ |statischen|Der Ordner, in dem AppRunAsAccountGroup-X509 Zertifikate und private Schlüssel gespeichert sind |

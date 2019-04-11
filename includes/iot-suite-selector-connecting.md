@@ -41,11 +41,11 @@ Um dieses Tutorial abzuschließen, benötigen Sie ein aktives Azure-Konto. Wenn 
 
 ## <a name="before-you-start"></a>Vorbereitung
 
-Bevor Sie Code für Ihr Gerät schreiben, stellen Sie Ihren Solution Accelerator für Remoteüberwachung bereit und fügen der Lösung ein neues reales Gerät hinzu.
+Bevor Sie Code für Ihr Gerät schreiben, stellen Sie Ihren Solution Accelerator für die Remoteüberwachung bereit und fügen der Lösung ein neues reales Gerät hinzu.
 
-### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>Bereitstellen des Solution Accelerators für Remoteüberwachung
+### <a name="deploy-your-remote-monitoring-solution-accelerator"></a>Bereitstellen des Solution Accelerators für die Remoteüberwachung
 
-Das in diesem Tutorial erstellte **Kühlgerät** sendet Daten an eine Instanz des Solution Accelerators für [Remoteüberwachung](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md). Wenn Sie den Solution Accelerator für Remoteüberwachung noch nicht in Ihrem Azure-Konto bereitgestellt haben, lesen Sie [Bereitstellen des Solution Accelerators für Remoteüberwachung](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md).
+Das in diesem Tutorial erstellte **Kühlgerät** sendet Daten an eine Instanz des Solution Accelerators für [Remoteüberwachung](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md). Wenn Sie den Solution Accelerator für die Remoteüberwachung noch nicht in Ihrem Azure-Konto bereitgestellt haben, lesen Sie [Bereitstellen des Solution Accelerators für die Remoteüberwachung](../articles/iot-accelerators/quickstart-remote-monitoring-deploy.md).
 
 Wenn der Bereitstellungsvorgang für die Remoteüberwachungslösung abgeschlossen ist, klicken Sie auf **Starten**, um das Lösungsdashboard im Browser zu öffnen.
 
@@ -72,7 +72,7 @@ Um Ihrer Lösung für Remoteüberwachung ein Gerät hinzuzufügen, führen Sie i
 
     ![Abrufen der Anmeldeinformationen](media/iot-suite-selector-connecting/credentials.png)
 
-Sie haben nun dem Solution Accelerator für Remoteüberwachung ein reales Gerät hinzugefügt und dessen Verbindungszeichenfolge notiert. In den folgenden Abschnitten implementieren Sie die Clientanwendung, die mithilfe der Verbindungszeichenfolge des Geräts eine Verbindung mit Ihrer Lösung herstellt.
+Sie haben nun dem Solution Accelerator für die Remoteüberwachung ein reales Gerät hinzugefügt und dessen Verbindungszeichenfolge notiert. In den folgenden Abschnitten implementieren Sie die Clientanwendung, die mithilfe der Verbindungszeichenfolge des Geräts eine Verbindung mit Ihrer Lösung herstellt.
 
 Die Clientanwendung implementiert das integrierte Gerätemodell des **Kühlers**. Das Gerätemodell eines Solution Accelerators gibt folgende Informationen im Zusammenhang mit einem Gerät an:
 

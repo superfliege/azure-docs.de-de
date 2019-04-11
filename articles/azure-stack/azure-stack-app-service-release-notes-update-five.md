@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: ''
-ms.openlocfilehash: 0a0eb9586e78442947138831dd774298906aaf9c
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 851673de4a711f5eb64228233ea7703ef86bfa7b
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56993448"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500201"
 ---
 # <a name="app-service-on-azure-stack-update-5-release-notes"></a>App Service in Azure Stack: Versionshinweise zu Update 5
 
@@ -59,11 +59,14 @@ Das Update 5 für Azure App Service in Azure Stack enthält folgende Verbesseru
 
 - Updates für **App Service-Mandanten, Admin, Functions-Portale und Kudu-Tools**. Mit Azure Stack-Portal-SDK-Version konsistent.
 
+- Aktualisiert **Azure Functions Runtime** auf **v1.0.12205**.
+
 - Updates für **Kudu-Tools**, um Gestaltungs- und Funktionsprobleme für Kunden zu beheben, die Azure Stack **ohne Verbindung** verwenden. 
 
 - Updates für den Kerndienst zur Verbesserung der Zuverlässigkeit und der Fehlermeldungen, die eine einfachere Diagnose von häufigen Problemen ermöglichen.
 
 - **Updates für folgende Anwendungsframeworks und Tools**:
+  - ASP.NET Core 2.1.6 und 2.2.0 hinzugefügt
   - NodeJS 10.14.1 hinzugefügt
   - NPM 6.4.1 hinzugefügt
   - Kudu auf 79.20129.3767 aktualisiert

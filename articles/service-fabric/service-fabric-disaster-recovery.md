@@ -4,7 +4,7 @@ description: Azure Service Fabric bietet Funktionalität für den Umgang mit all
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: a95187cf00b92596e3674ad4cf4f0f578e47bd9c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7153a6ed4a91e59eea936f1e17d827a40bb99371
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58098150"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883240"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Notfallwiederherstellung in Azure Service Fabric
 Zur Gewährleistung von hoher Verfügbarkeit muss unter anderem sichergestellt werden, dass Dienste verschiedenste Arten von Ausfällen überstehen können. Dies ist besonders wichtig bei Ausfällen, die überraschend auftreten oder sich Ihrer Kontrolle entziehen. In diesem Artikel werden einige allgemeine Ausfälle beschrieben, die sich als äußerst problematisch erweisen können, wenn sie nicht angemessen im Modell berücksichtigt und behandelt werden. Darüber hinaus enthält der Artikel Informationen zu Abhilfen und Maßnahmen, die Sie ergreifen können, wenn dennoch ein Notfall eintritt. Dadurch soll das Risiko von Ausfallzeiten oder Datenverlusten im Falle von geplanten oder anderweitigen Ausfällen möglichst gering gehalten oder ganz beseitigt werden.
@@ -98,7 +98,7 @@ Bei zustandsbehafteten Diensten hängt die Situation davon ab, ob der Dienst üb
 2. Bestimmen, ob es sich um einen dauerhaften Quorumverlust handelt
    - Die meisten Ausfälle sind vorübergehend. Prozesse, Knoten und virtuelle Computer werden neu gestartet, und Netzwerkpartitionen werden korrigiert. Manche Ausfälle sind jedoch dauerhaft. 
      - Bei Diensten ohne persistenten Zustand führt der Ausfall eines Quorums oder weiterer Replikate zu einem _sofortigen_ und dauerhaften Quorumverlust. Wenn Service Fabric einen Quorumverlust für einen nicht persistenten zustandsbehafteten Dienst feststellt, folgt sofort Schritt 3 – es wird also ein (potenzieller) Datenverlust deklariert. Service Fabric erkennt, dass das Warten auf die Wiederherstellung der Replikate keinen Sinn hätte, da die wiederhergestellten Replikate ohnehin leer wären.
-     - Bei persistenten zustandsbehafteten Diensten führt der Ausfall eines Quorums oder weiterer Replikate dazu, dass Service Fabric auf die Wiederherstellung der Replikate wartet, um das Quorum wiederherzustellen. Dies führt zu einem Dienstausfall für alle _Schreibvorgänge_ in der betroffenen Partition (Replikatsatz) des Diensts. Lesevorgänge sind dagegen unter Umständen weiterhin möglich, allerdings mit geringerer Konsistenzgarantie. Service Fabric wartet standardmäßig unendlich lange auf die Quorumwiederherstellung, da auf den Quorumverlust ein (potenzieller) Datenverlust mit anderen Risiken folgt. Der Standardwert für `QuorumLossWaitDuration` kann zwar überschrieben werden, dies wird jedoch nicht empfohlen. Stattdessen empfiehlt es sich, alles für die Wiederherstellung der ausgefallenen Replikate zu tun. Dazu müssen die ausgefallenen Knoten wieder online geschaltet werden, damit sie die Laufwerke mit dem lokalen persistenten Zustand wieder einbinden können. Ist der Quorumverlust auf einen Prozessfehler zurückzuführen, versucht Service Fabric automatisch, die Prozesse neu zu erstellen und die Replikate darin neu zu starten. Ist dies nicht erfolgreich, meldet Service Fabric Integritätsfehler. Wenn sich diese beheben lassen, können die Replikate in der Regel wiederhergestellt werden. Manchmal ist das jedoch nicht möglich. Dies ist beispielsweise der Fall, wenn alle Laufwerke ausgefallen sind oder die Computer aus irgendeinem Grund physisch zerstört wurden. In einem solchen Fall haben wir es mit einem dauerhaften Quorumverlust zu tun. Wenn Service Fabric nicht länger auf die Wiederherstellung der ausgefallenen Replikate warten soll, muss ein Clusteradministrator ermitteln, welche Partitionen welcher Dienste betroffen sind, und die API `Repair-ServiceFabricPartition -PartitionId` oder ` System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` aufrufen.  Diese API ermöglicht die Angabe der ID für die Partition, die aus „QuorumLoss“ in den potenziellen Datenverlust überführt werden soll.
+     - Bei persistenten zustandsbehafteten Diensten führt der Ausfall eines Quorums oder weiterer Replikate dazu, dass Service Fabric auf die Wiederherstellung der Replikate wartet, um das Quorum wiederherzustellen. Dies führt zu einem Dienstausfall für alle _Schreibvorgänge_ in der betroffenen Partition (Replikatsatz) des Diensts. Lesevorgänge sind dagegen unter Umständen weiterhin möglich, allerdings mit geringerer Konsistenzgarantie. Service Fabric wartet standardmäßig unendlich lange auf die Quorumwiederherstellung, da auf den Quorumverlust ein (potenzieller) Datenverlust mit anderen Risiken folgt. Der Standardwert für `QuorumLossWaitDuration` kann zwar überschrieben werden, dies wird jedoch nicht empfohlen. Stattdessen empfiehlt es sich, alles für die Wiederherstellung der ausgefallenen Replikate zu tun. Dazu müssen die ausgefallenen Knoten wieder online geschaltet werden, damit sie die Laufwerke mit dem lokalen persistenten Zustand wieder einbinden können. Ist der Quorumverlust auf einen Prozessfehler zurückzuführen, versucht Service Fabric automatisch, die Prozesse neu zu erstellen und die Replikate darin neu zu starten. Ist dies nicht erfolgreich, meldet Service Fabric Integritätsfehler. Wenn sich diese beheben lassen, können die Replikate in der Regel wiederhergestellt werden. Manchmal ist das jedoch nicht möglich. Dies ist beispielsweise der Fall, wenn alle Laufwerke ausgefallen sind oder die Computer aus irgendeinem Grund physisch zerstört wurden. In einem solchen Fall haben wir es mit einem dauerhaften Quorumverlust zu tun. Wenn Service Fabric nicht länger auf die Wiederherstellung der ausgefallenen Replikate warten soll, muss ein Clusteradministrator ermitteln, welche Partitionen welcher Dienste betroffen sind, und die API `Repair-ServiceFabricPartition -PartitionId` oder `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)` aufrufen.  Diese API ermöglicht die Angabe der ID für die Partition, die aus „QuorumLoss“ in den potenziellen Datenverlust überführt werden soll.
 
    > [!NOTE]
    > Aus Sicherheitsgründen darf diese API _ausschließlich_ gezielt für bestimmte Partitionen verwendet werden. 

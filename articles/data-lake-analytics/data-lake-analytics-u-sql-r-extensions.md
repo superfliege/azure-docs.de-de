@@ -9,20 +9,20 @@ ms.reviewer: jasonwhowell
 ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.topic: conceptual
 ms.date: 06/20/2017
-ms.openlocfilehash: 5d10d4d603312b3c75760a5d7c17a9028ddecea8
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 59a52b2aeb83732a608f1fcf5bc4de907d25dfd1
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401214"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885025"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>Erweitern von U-SQL-Skripts mit R-Code in Azure Data Lake Analytics
 
 Im folgenden Beispiel werden die grundlegenden Schritte für eine Bereitstellung von R-Code veranschaulicht:
 * Verwenden Sie die `REFERENCE ASSEMBLY`-Anweisung zum Aktivieren von R-Erweiterungen für das U-SQL-Skript.
-* Verwenden Sie den ` REDUCE`-Vorgang zum Partitionieren der Eingabedaten für einen Schlüssel.
+* Verwenden Sie den `REDUCE`-Vorgang zum Partitionieren der Eingabedaten für einen Schlüssel.
 * Die R-Erweiterungen für U-SQL enthalten einen integrierten Reducer (`Extension.R.Reducer`), mit dem R-Code auf jedem Scheitelpunkt ausgeführt wird, der dem Reducer zugewiesen ist. 
-* Verwenden von dedizierten benannten Datenrahmen („`inputFromUSQL`“ und „`outputToUSQL `“), um Daten zwischen U-SQL und R zu übergeben. Die Namen von Eingabe- und Ausgabedatenrahmen-IDs sind festgelegt (d.h., Benutzer können diese vordefinierten Namen von Eingabe- und Ausgabedatenrahmen-IDs nicht ändern).
+* Verwenden von dedizierten benannten Datenrahmen („`inputFromUSQL`“ und „`outputToUSQL`“), um Daten zwischen U-SQL und R zu übergeben. Die Namen von Eingabe- und Ausgabedatenrahmen-IDs sind festgelegt (d.h., Benutzer können diese vordefinierten Namen von Eingabe- und Ausgabedatenrahmen-IDs nicht ändern).
 
 ## <a name="embedding-r-code-in-the-u-sql-script"></a>Einbetten von R-Code in das U-SQL-Skript
 
@@ -93,7 +93,7 @@ Verwenden Sie ein U-SQL-Skript, um das R-Skript mit der Anweisung „DEPLOY RESO
 ### <a name="datatypes"></a>Datentypen
 * Zeichenfolgen- und numerische Spalten von U-SQL werden unmittelbar zwischen R-Datenrahmen (DataFrame) und U-SQL konvertiert [unterstützte Typen: `double`, `string`, `bool`, `integer`, `byte`].
 * Der Datentyp „`Factor`“ wird in U-SQL nicht unterstützt.
-* „`byte[]`“ muss als Base64-codierte `string` serialisiert werden.
+* `byte[]` muss als Base64-codierte `string` serialisiert werden.
 * U-SQL-Zeichenfolgen können in Faktoren (factors) in R-Code konvertiert werden, nachdem U-SQL R-Eingabedatenrahmen erstellt oder indem Sie den Reducer-Parameter auf „`stringsAsFactors: true`“ festlegen.
 
 ### <a name="schemas"></a>Schemas

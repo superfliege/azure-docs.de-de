@@ -15,12 +15,12 @@ ms.date: 02/15/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 11/16/2018
-ms.openlocfilehash: 277af6f139e815f46894f5b8df82a1d92ef573d1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: c957812271d2ddd6639672d862026b30cfd19661
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537132"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804512"
 ---
 # <a name="add-linux-images-to-azure-stack"></a>Hinzufügen von Linux-Images zu Azure Stack
 
@@ -38,7 +38,7 @@ Beachten Sie, dass diese Images regelmäßig aktualisiert werden. Überprüfen S
 
 Laden Sie nach Möglichkeit die Images herunter, die über die Marketplace-Verwaltung verfügbar sind, da diese für Azure Stack konzipiert und getestet wurden.
 
-Der Azure Linux-Agent (in der Regel `WALinuxAgent` oder `walinuxagent`) ist erforderlich, aber nicht alle Versionen des Agents können mit Azure Stack verwendet werden. Verwenden Sie möglichst die neueste Version von WALA oder die Version 2.2.20, wenn Sie Ihr eigenes Image erstellen. Beachten Sie, dass die Versionen zwischen 2.2.20 und 2.2.35.1 (ausschließlich) nicht für Azure Stack geeignet sind. Beachten Sie, dass [cloud-init](https://cloud-init.io/) derzeit nicht für Azure Stack unterstützt wird.
+Der Azure Linux-Agent (in der Regel `WALinuxAgent` oder `walinuxagent`) ist erforderlich, aber nicht alle Versionen des Agents können mit Azure Stack verwendet werden. Verwenden Sie möglichst die neueste Version von WALA oder die Version 2.2.20, wenn Sie Ihr eigenes Image erstellen. Beachten Sie, dass die Versionen zwischen 2.2.20 und 2.2.35.1 (ausschließlich) nicht für Azure Stack geeignet sind. Um Agent-Versionen zwischen 2.2.20 und 2.2.35.1 zu verwenden, wenden Sie den Hotfix 1901/Hotfix 1902 an, oder aktualisieren Sie Ihre Azure Stack-Instanz auf das Release 1903 (oder höher). Beachten Sie, dass [cloud-init](https://cloud-init.io/) derzeit nicht für Azure Stack unterstützt wird.
 
 Sie können Ihr eigenes Linux-Image gemäß den folgenden Anweisungen vorbereiten:
 

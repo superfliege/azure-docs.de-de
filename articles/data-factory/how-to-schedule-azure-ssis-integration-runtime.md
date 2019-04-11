@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 0b84f02d11e278950e4e44874e7b1af9da58f83f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 54d7979f9fbe23e9372aa2702b46e42ca64496d2
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58092445"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621633"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Starten und Beenden von Azure-SSIS Integration Runtimes nach einem Zeitplan
 Dieser Artikel beschreibt die Planung des Startens und Beendens einer Azure-SSIS Integration Runtime (IR) mithilfe von Azure Data Factory (ADF). Azure-SSIS IR ist eine dedizierte ADF-Computeressource für das Ausführen von SSIS-Paketen (SQL Server Integration Services). Das Ausführen von Azure-SSIS IR ist mit Kosten verbunden. Sie sollten Ihre IR daher in der Regel nur ausführen, wenn Sie SSIS-Pakete in Azure ausführen müssen, und die IR beenden, wenn Sie sie nicht mehr benötigen. Sie können die ADF-Benutzeroberfläche (UI) oder -App oder Azure PowerShell verwenden, um [die IR manuell zu starten oder zu beenden](manage-azure-ssis-integration-runtime.md).
@@ -348,7 +348,7 @@ Im folgenden Abschnitt finden Sie Schritte zum Erstellen eines PowerShell-Runboo
 
 ## <a name="create-schedules-for-your-runbook-to-startstop-azure-ssis-ir"></a>Erstellen von Zeitplänen für das Runbook zum Starten/Beenden der Azure-SSIS IR
 
-Im vorherigen Abschnitt haben Sie ein Azure Automation-Runbook erstellt, das eine Azure-SSIS IR starten oder beenden kann. In diesem Abschnitt erstellen Sie zwei Zeitpläne für das Runbook. Beim Konfigurieren des ersten Zeitplans geben Sie **START** für **VORGANG** ein. Gleichermaßen geben Sie beim Konfigurieren des zweiten Zeitplans **STOPP** für **VORGANG** an. Ausführliche Schritte zum Erstellen von Zeitplänen finden Sie im Artikel [Erstellen eines Zeitplans](../automation/automation-schedules.md#creating-a-schedule).
+Im vorherigen Abschnitt haben Sie ein Azure Automation-Runbook erstellt, das eine Azure-SSIS IR starten oder beenden kann. In diesem Abschnitt erstellen Sie zwei Zeitpläne für das Runbook. Beim Konfigurieren des ersten Zeitplans geben Sie **START** für **VORGANG** ein. Gleichermaßen geben Sie beim Konfigurieren des zweiten Zeitplans **STOPP** für **VORGANG** an. Ausführliche Schritte zum Erstellen von Zeitplänen finden Sie im Artikel [Erstellen eines Zeitplans](../automation/shared-resources/schedules.md#creating-a-schedule).
 
 1. Wählen Sie im Fenster **Runbook** die Option **Zeitpläne** aus, und wählen Sie auf der Symbolleiste **+ Zeitplan hinzufügen** aus. 
 

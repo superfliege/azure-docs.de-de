@@ -4,7 +4,7 @@ description: Verbessern Sie die Zuverlässigkeit und Leistung Ihrer Dienste, ind
 services: service-fabric
 documentationcenter: .net
 author: suhuruli
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: cb888532-bcdb-4e47-95e4-bfbb1f644da4
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 78483a5a5d78b539415aeeb0e28c1dbaf3680173
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2f00636da2b29e7815569a683fdf51c6a4e3b0e0
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38619339"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880298"
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>Debuggen der Service Fabric-Anwendung in Java mithilfe von Eclipse
 > [!div class="op_single_selector"]
@@ -29,12 +29,12 @@ ms.locfileid: "38619339"
 
 1. Um einen lokalen Cluster für die Entwicklung zu erstellen, folgen Sie den Schritten unter [Einrichten der Service Fabric-Entwicklungsumgebung](service-fabric-get-started-linux.md).
 
-2. Aktualisieren Sie „entryPoint.sh“ für den Dienst, den Sie debuggen möchten, sodass sie den Java-Prozess mit Remotedebugparametern startet. Sie finden diese Datei am folgenden Speicherort: ``ApplicationName\ServiceNamePkg\Code\entrypoint.sh``. In diesem Beispiel wurde für das Debuggen Port 8001 festgelegt.
+2. Aktualisieren Sie „entryPoint.sh“ für den Dienst, den Sie debuggen möchten, sodass sie den Java-Prozess mit Remotedebugparametern startet. Sie finden diese Datei am folgenden Speicherort: `ApplicationName\ServiceNamePkg\Code\entrypoint.sh`. In diesem Beispiel wurde für das Debuggen Port 8001 festgelegt.
 
     ```sh
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar myapp.jar
     ```
-3. Aktualisieren Sie das Anwendungsmanifest, indem die Instanz- oder Replikatanzahl für den zu debuggenden Dienst auf 1 festlegen. Diese Einstellung vermiedet Konflikte an dem Port, der für das Debuggen verwendet wird. Legen Sie für zustandslose Dienste z.B. ``InstanceCount="1"`` und für zustandsbehaftete Dienste die Ziel- und Mindestgröße für Replikatgruppen wie folgt auf 1 fest: `` TargetReplicaSetSize="1" MinReplicaSetSize="1"``.
+3. Aktualisieren Sie das Anwendungsmanifest, indem die Instanz- oder Replikatanzahl für den zu debuggenden Dienst auf 1 festlegen. Diese Einstellung vermiedet Konflikte an dem Port, der für das Debuggen verwendet wird. Legen Sie für zustandslose Dienste z.B. `InstanceCount="1"` und für zustandsbehaftete Dienste die Ziel- und Mindestgröße für Replikatgruppen wie folgt auf 1 fest: `TargetReplicaSetSize="1" MinReplicaSetSize="1"`.
 
 4. Stellen Sie die Anwendung bereit.
 
@@ -46,7 +46,7 @@ ms.locfileid: "38619339"
    ```
 6.  Legen Sie an den gewünschten Stellen Haltepunkte fest, und debuggen Sie die Anwendung.
 
-Wenn die Anwendung abstürzt, können Sie auch Coredumps aktivieren. Führen Sie ``ulimit -c`` in einer Shell aus. Wenn dabei 0 zurückgegeben wird, sind Coredumps nicht aktiviert. Um unbegrenzte Coredumps zu aktivieren, führen Sie den folgenden Befehl aus: ``ulimit -c unlimited``. Sie können den Status auch mit dem Befehl ``ulimit -a`` überprüfen.  Wenn Sie den Pfad für die Coredump-Generierung ändern möchten, führen Sie ``echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern`` aus. 
+Wenn die Anwendung abstürzt, können Sie auch Coredumps aktivieren. Führen Sie `ulimit -c` in einer Shell aus. Wenn dabei 0 zurückgegeben wird, sind Coredumps nicht aktiviert. Um unbegrenzte Coredumps zu aktivieren, führen Sie den folgenden Befehl aus: `ulimit -c unlimited`. Sie können den Status auch mit dem Befehl `ulimit -a` überprüfen.  Wenn Sie den Pfad für die Coredump-Generierung ändern möchten, führen Sie `echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern` aus. 
 
 ### <a name="next-steps"></a>Nächste Schritte
 

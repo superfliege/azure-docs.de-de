@@ -1,6 +1,6 @@
 ---
 title: IoT-Bereitstellung von benutzerdefinierten simulierten Geräten – Azure | Microsoft-Dokumentation
-description: In dieser Anleitung wird gezeigt, wie Sie benutzerdefinierte simulierte Geräte für den Solution Accelerator für Gerätesimulation bereitstellen.
+description: In dieser Anleitung wird gezeigt, wie Sie benutzerdefinierte simulierte Geräte für den Solution Accelerator für die Remoteüberwachung bereitstellen.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -17,17 +17,17 @@ ms.locfileid: "54450567"
 ---
 # <a name="deploy-a-new-simulated-device"></a>Bereitstellen eines neuen simulierten Geräts
 
-Sowohl mit dem Solution Accelerator für Remoteüberwachung als auch dem für Gerätesimulation können Sie Ihre eigenen simulierten Geräte definieren. In diesem Artikel wird gezeigt, wie Sie einen angepassten "Chiller"-Gerätetyp und einen neuen "Lightbulb"-Gerätetyp (Leuchtmittel) für den Solution Accelerator für Remoteüberwachung bereitstellen.
+Sowohl mit dem Solution Accelerator für Remoteüberwachung als auch dem für Gerätesimulation können Sie Ihre eigenen simulierten Geräte definieren. In diesem Artikel wird gezeigt, wie Sie einen angepassten "Chiller"-Gerätetyp und einen neuen "Lightbulb"-Gerätetyp (Leuchtmittel) für den Solution Accelerator für die Remoteüberwachung bereitstellen.
 
 Bei den Schritten in diesem Artikel wird angenommen, dass Sie die Anleitung [Erstellen und Testen eines neuen simulierten Geräts](iot-accelerators-remote-monitoring-create-simulated-device.md) ausgeführt haben und über die Dateien zum Definieren des angepassten "Chiller"- und neuen "Lightbulb"-Gerätetyps verfügen.
 
 Die Schritte in dieser Anleitung zeigen Ihnen, wie Sie die folgenden Aktionen ausführen:
 
-1. Verwenden von SSH für den Zugriff auf das Dateisystem des virtuellen Computers, der den Solution Accelerator für Remoteüberwachung hostet.
+1. Verwenden von SSH für den Zugriff auf das Dateisystem des virtuellen Computers, der den Solution Accelerator für die Remoteüberwachung hostet.
 
 1. Konfigurieren von Docker zum Laden der Gerätemodelle von einem Speicherort außerhalb des Docker-Containers.
 
-1. Ausführen des Solution Accelerators für Remoteüberwachung mithilfe von benutzerdefinierten Gerätemodelldateien.
+1. Ausführen des Solution Accelerators für die Remoteüberwachung mithilfe von benutzerdefinierten Gerätemodelldateien.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -39,7 +39,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Zum Ausführen dieser Anleitung benötigen Sie Folgendes:
 
-- Eine bereitgestellte Instanz des [Solution Accelerators für Remoteüberwachung](https://www.azureiotsolutions.com/Accelerators#solutions/types/RM2).
+- Eine bereitgestellte Instanz des [Solution Accelerators für die Remoteüberwachung](https://www.azureiotsolutions.com/Accelerators#solutions/types/RM2).
 - Eine lokale **Bash**-Shell zum Ausführen der Befehle `ssh` und `scp`. Unter Windows können Sie **Bash** auf einfache Weise installieren, indem Sie [Git](https://git-scm.com/download/win) installieren.
 - Ihre benutzerdefinierten Gerätemodelldateien, z.B. die in [Erstellen und Testen eines neuen simulierten Geräts](iot-accelerators-remote-monitoring-create-simulated-device.md) beschriebenen.
 
@@ -131,7 +131,7 @@ In diesem Abschnitt konfigurieren Sie Docker zum Laden der Gerätemodelldateien 
 
 ## <a name="run-simulation"></a>Ausführen der Simulation
 
-Jetzt können Sie Ihre benutzerdefinierten Gerätemodelle in der Lösung für die Remoteüberwachung verwenden:
+Jetzt können Sie Ihre benutzerdefinierten Gerätemodelle in der Remoteüberwachungslösung verwenden:
 
 1. Starten Sie Ihr Dashboard für die Remoteüberwachung aus [Microsoft Azure IoT Solution Accelerators](https://www.azureiotsolutions.com/Accelerators#dashboard).
 
@@ -141,10 +141,10 @@ Jetzt können Sie Ihre benutzerdefinierten Gerätemodelle in der Lösung für di
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie mehr wissen möchten, lassen Sie den Solution Accelerator für Remoteüberwachung weiterhin bereitgestellt.
+Wenn Sie mehr wissen möchten, lassen Sie den Solution Accelerator für die Remoteüberwachung weiterhin bereitgestellt.
 
 Falls Sie den Solution Accelerator nicht mehr benötigen, können Sie ihn auf der Seite [Bereitgestellte Lösungen](https://www.azureiotsolutions.com/Accelerators#dashboard) löschen, indem Sie ihn auswählen und dann auf **Lösung löschen** klicken.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Anleitung wurde gezeigt, wie Sie benutzerdefinierte Gerätemodelle für den Solution Accelerator für Gerätesimulation bereitstellen. Im nächsten empfohlenen Schritt erfahren Sie, wie Sie [ein echtes Gerät mit Ihrer Lösung für die Remoteüberwachung verbinden](iot-accelerators-connecting-devices-node.md).
+In dieser Anleitung wurde gezeigt, wie Sie benutzerdefinierte Gerätemodelle für den Solution Accelerator für Gerätesimulation bereitstellen. Im nächsten empfohlenen Schritt erfahren Sie, wie Sie [ein echtes Gerät mit Ihrer Remoteüberwachungslösung verbinden](iot-accelerators-connecting-devices-node.md).

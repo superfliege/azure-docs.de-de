@@ -3,17 +3,17 @@ title: Azure Data Explorer – Zeitreihenanalysen
 description: 'Informationen zu Zeitreihenanalysen in Azure Data Explorer '
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: b7d498b34fa3e247d5d4688f8d87213e7707fd86
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.openlocfilehash: 6a77e399e4de6ec41e74d1e5b9f9f518126958c2
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408781"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756766"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Zeitreihenanalysen in Azure Data Explorer
 
@@ -64,7 +64,7 @@ demo_make_series1
     - `byOsVer`: Partitioniert nach Betriebssystem.
 - Die tatsächliche Datenstruktur der Zeitreihen ist ein numerisches Array des aggregierten Werts pro Zeitabschnitt. Wir verwenden `render timechart` für die Visualisierung.
 
-In der oben stehenden Tabelle haben wir drei Partitionen. Wir können separate Zeitreihen für jede Betriebssystemversion erstellen: Windows 10 (rot), Windows 7 (blau) und Windows 8.1 (grün), wie im Diagramm dargestellt:
+In der oben stehenden Tabelle haben wir drei Partitionen. Wir können eine separate Zeitreihe erstellen: Windows 10 (rot), Windows 7 (blau) und Windows 8.1 (grün), wie im Diagramm dargestellt:
 
 ![Zeitreihenpartitionen](media/time-series-analysis/time-series-partition.png)
 

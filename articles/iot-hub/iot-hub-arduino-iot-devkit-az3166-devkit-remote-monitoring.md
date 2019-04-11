@@ -114,7 +114,7 @@ Beim Ausführen der Beispiel-App sendet DevKit Sensordaten über WLAN an den Sol
 
 1. Wechseln Sie zu Ihrem Solution Accelerator für die Azure IoT-Remoteüberwachung, und klicken Sie auf **DASHBOARD**.
 
-2. In der Remoteüberwachung-Lösungskonsole wird der Status des DevKit-Sensors angezeigt.
+2. In der Konsole für die Remoteüberwachungslösung wird der Status des DevKit-Sensors angezeigt.
 
    ![Sensordaten im Solution Accelerator für die Azure IoT-Remoteüberwachung](media/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring/sensor-status.png)
 

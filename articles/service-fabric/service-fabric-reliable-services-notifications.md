@@ -4,7 +4,7 @@ description: Dokumentation zu Reliable Services-Benachrichtigungen mit Service F
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
-manager: timlt
+manager: chackdan
 editor: masnider,vturecek
 ms.assetid: cdc918dd-5e81-49c8-a03d-7ddcd12a9a76
 ms.service: service-fabric
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/29/2017
 ms.author: mcoskun
-ms.openlocfilehash: a13e5d74390b82888f51cfd225c54e29550354e9
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: a3df5f28475b03f1799dc1e245c3a7e904b49cb3
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433513"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662668"
 ---
 # <a name="reliable-services-notifications"></a>Reliable Services – Benachrichtigungen
-Mit Benachrichtigungen können Clients Änderungen an einem Objekt verfolgen, an dem sie interessiert sind. Zwei Arten von Objekten unterstützen Benachrichtigungen: *Reliable State Manager* und *Reliable Dictionary*.
+Mit Benachrichtigungen können Clients Änderungen an einem Objekt verfolgen, an dem sie interessiert sind. Zwei Typen von Objekten unterstützen Benachrichtigungen: *Reliable State Manager* und *Reliable Dictionary*.
 
 Häufige Gründe für die Verwendung von Benachrichtigungen:
 
@@ -46,7 +46,7 @@ Der Reliable State Manager verfolgt die aktuellen In-Flight-Transaktionen. Die e
 Der Reliable State Manager verwaltet eine Sammlung von Reliable States, z.B. Reliable Dictionary und Reliable Queue. Der Reliable State Manager löst Benachrichtigungen aus, wenn sich diese Auflistung wie folgt verändert: Ein Reliable State wird hinzugefügt oder entfernt, oder die gesamte Sammlung wird neu erstellt.
 Die Sammlung des Reliable State Manager wird in drei Fällen neu erstellt:
 
-* Zustandswiederherstellung: Wenn ein Replikat gestartet wird, stellt es den vorherigen Zustand vom Datenträger wieder her. Nach Abschluss der Wiederherstellung wird **NotifyStateManagerChangedEventArgs** zum Auslösen eines Ereignisses verwendet, das den Satz mit den wiederhergestellten Reliable States enthält.
+* Wiederherstellung: Wenn ein Replikat gestartet wird, stellt es den vorherigen Zustand vom Datenträger wieder her. Nach Abschluss der Wiederherstellung wird **NotifyStateManagerChangedEventArgs** zum Auslösen eines Ereignisses verwendet, das den Satz mit den wiederhergestellten Reliable States enthält.
 * Vollständige Kopie: Bevor ein Replikat dem Konfigurationssatz hinzugefügt werden kann, muss es erstellt werden. In einigen Fällen muss eine vollständige Kopie des Reliable State Manager-Zustands vom primären Replikat auf das inaktive sekundäre Replikat angewendet werden. Reliable State Manager auf dem sekundären Replikat nutzt **NotifyStateManagerChangedEventArgs** zum Auslösen eines Ereignisses, das den Satz mit den Reliable States enthält, die über das primäre Replikat beschafft wurden.
 * Wiederherstellung: Bei einer Notfallwiederherstellung kann der Replikatzustand mit **RestoreAsync**aus einer Sicherung wiederhergestellt werden. In solchen Fällen nutzt Reliable State Manager auf dem primären Replikat **NotifyStateManagerChangedEventArgs** zum Auslösen eines Ereignisses, das den Satz mit den Reliable States enthält, die aus der Sicherung wiederhergestellt wurden.
 
@@ -109,11 +109,11 @@ public void OnStateManagerChangedHandler(object sender, NotifyStateManagerChange
 ## <a name="reliable-dictionary-notifications"></a>Reliable Dictionary-Benachrichtigungen
 Reliable Dictionary liefert Benachrichtigungen für folgende Ereignisse:
 
-* Rebuild (Neu erstellen): Wird aufgerufen, wenn **ReliableDictionary** seinen Zustand aus einem wiederhergestellten oder kopierten lokalen Status oder einer Sicherung wiederhergestellt hat.
-* Clear (Löschen): Wird aufgerufen, wenn der Status von **ReliableDictionary** über die **ClearAsync**-Methode gelöscht wurde.
-* Add (Hinzufügen): Wird aufgerufen, wenn **ReliableDictionary**ein Element hinzugefügt wurde.
-* Update (Aktualisieren): Wird aufgerufen, wenn ein Element in **IReliableDictionary** aktualisiert wurde.
-* Remove (Entfernen): Wird aufgerufen, wenn ein Element aus **IReliableDictionary** gelöscht wurde.
+* Neuerstellung: Wird aufgerufen, wenn **ReliableDictionary** seinen Zustand aus einem wiederhergestellten oder kopierten lokalen Status oder einer Sicherung wiederhergestellt hat.
+* Löschen: Wird aufgerufen, wenn der Status von **ReliableDictionary** über die **ClearAsync**-Methode gelöscht wurde.
+* Hinzufügen: Wird aufgerufen, wenn **ReliableDictionary** ein Element hinzugefügt wurde.
+* Aktualisieren: Wird aufgerufen, wenn ein Element in **IReliableDictionary** aktualisiert wurde.
+* Entfernen: Wird aufgerufen, wenn ein Element aus **IReliableDictionary** gelöscht wurde.
 
 Um Reliable Dictionary-Benachrichtigungen zu erhalten, müssen Sie sich mit dem **DictionaryChanged**-Ereignishandler bei **IReliableDictionary** registrieren. Üblicherweise wird die Registrierung bei diesen Ereignishandlern in der **ReliableStateManager.StateManagerChanged** -Hinzufügungsbenachrichtigung durchgeführt.
 Durch die Registrierung beim Hinzufügen von **IReliableDictionary** zu **IReliableStateManager** wird sichergestellt, dass Ihnen keine Benachrichtigungen entgehen.

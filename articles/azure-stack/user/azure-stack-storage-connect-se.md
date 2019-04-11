@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/06/2019
+ms.date: 03/14/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 1c59f092957704c44b5cda012aa7c471fdaa3275
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.lastreviewed: 03/14/2019
+ms.openlocfilehash: 314304e75ce0f2586f41b71a889fa0185501b845
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763366"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622007"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Herstellen einer Verbindung von Storage-Explorer mit einem Azure Stack-Abonnement oder -Speicherkonto
 
@@ -49,25 +49,27 @@ Exportieren Sie das Azure Stack-Zertifikat für das ASDK, und importieren Sie es
 
 1. Öffnen Sie `mmc.exe` auf einem Azure Stack-Hostcomputer oder einem lokalen Computer, der über eine VPN-Verbindung mit Azure Stack verfügt. 
 
-2. Wählen Sie unter **Datei** die Option **Snap-In hinzufügen/entfernen** aus, und fügen Sie anschließend **Zertifikate** zum Verwalten **des Benutzerkontos** hinzu.
+2. Wählen Sie unter **Datei** die Option **Snap-In hinzufügen/entfernen** aus. Wählen Sie **Zertifikate** unter „Verfügbare Snap-Ins“ aus. 
 
-3.  Unter **Console Root\Certificated (Local Computer)\Trusted Root Certification Authorities\Certificates**. Suchen Sie **AzureStackSelfSignedRootCert**.
+3. Wählen Sie **Computerkonto** und dann **Weiter** aus. Wählen Sie **Lokaler Computer** aus, und wählen Sie dann **Fertig stellen** aus.
+
+4.  Unter **Console Root\Certificated (Local Computer)\Trusted Root Certification Authorities\Certificates**. Suchen Sie **AzureStackSelfSignedRootCert**.
 
     ![Laden des Azure Stack-Stammzertifikats per „mmc.exe“](./media/azure-stack-storage-connect-se/add-certificate-azure-stack.png)
 
-4. Klicken Sie mit der rechten Maustaste auf das Zertifikat, wählen Sie **Alle Aufgaben** > **Exportieren** aus, und führen Sie dann die Anweisungen aus, um das Zertifikat mit **Base-64-codiert X.509 (.CER)** zu exportieren.
+5. Klicken Sie mit der rechten Maustaste auf das Zertifikat, wählen Sie **Alle Aufgaben** > **Exportieren** aus, und führen Sie dann die Anweisungen aus, um das Zertifikat mit **Base-64-codiert X.509 (.CER)** zu exportieren.
 
     Das exportierte Zertifikat wird im nächsten Schritt verwendet.
 
-5. Starten Sie den Storage-Explorer. Wenn das Dialogfeld **Verbindung mit Azure-Speicher herstellen** angezeigt wird, brechen Sie den Vorgang ab.
+6. Starten Sie den Storage-Explorer. Wenn das Dialogfeld **Verbindung mit Azure-Speicher herstellen** angezeigt wird, brechen Sie den Vorgang ab.
 
-6. Zeigen Sie im Menü **Bearbeiten** auf **SSL-Zertifikate**, und wählen Sie anschließend **Zertifikate importieren**. Suchen Sie im Dialogfeld für die Dateiauswahl nach dem Zertifikat, das Sie im vorherigen Schritt exportiert haben, und öffnen Sie es.
+7. Zeigen Sie im Menü **Bearbeiten** auf **SSL-Zertifikate**, und wählen Sie anschließend **Zertifikate importieren**. Suchen Sie im Dialogfeld für die Dateiauswahl nach dem Zertifikat, das Sie im vorherigen Schritt exportiert haben, und öffnen Sie es.
 
     Nach dem Importieren des Zertifikats werden Sie zum Neustarten des Storage-Explorers aufgefordert.
 
     ![Importieren des Zertifikats in den Storage-Explorer](./media/azure-stack-storage-connect-se/import-azure-stack-cert-storage-explorer.png)
 
-7. Klicken Sie nach dem Neustart des Storage-Explorers auf das Menü **Bearbeiten**, und vergewissern Sie sich, dass die Option **Target Azure Stack** (Azure Stack als Ziel) aktiviert ist. Sollte die Option nicht aktiviert sein, aktivieren Sie **Target Azure Stack** (Azure Stack als Ziel), und starten Sie den Storage-Explorer anschließend neu, damit die Änderung wirksam wird. Diese Konfiguration ist erforderlich, um die Kompatibilität mit Ihrer Azure Stack-Umgebung zu gewährleisten.
+8. Klicken Sie nach dem Neustart des Storage-Explorers auf das Menü **Bearbeiten**, und vergewissern Sie sich, dass die Option **Target Azure Stack APIs** (Azure Stack-APIs als Ziel) aktiviert ist. Sollte die Option nicht aktiviert sein, aktivieren Sie **Target Azure Stack** (Azure Stack als Ziel), und starten Sie den Storage-Explorer anschließend neu, damit die Änderung wirksam wird. Diese Konfiguration ist erforderlich, um die Kompatibilität mit Ihrer Azure Stack-Umgebung zu gewährleisten.
 
     ![Sicherstellen der Aktivierung von „Target Azure Stack“ (Azure Stack als Ziel)](./media/azure-stack-storage-connect-se/target-azure-stack.png)
 
@@ -82,7 +84,7 @@ Verwenden Sie die folgenden Schritte, um den Storage-Explorer mit einem Azure St
 
     ![Hinzufügen eines Azure Stack-Kontos](./media/azure-stack-storage-connect-se/add-azure-stack-account.png)
 
-3. Wählen Sie im Dialogfeld „Verbindung mit Azure-Speicher herstellen“ unter **Azure-Umgebung** die Option **Azure** oder **Azure China** (abhängig vom verwendeten Azure Stack-Konto), und klicken Sie dann auf **Anmelden**, um sich mit dem Azure Stack-Konto anzumelden, das mit mindestens einem aktiven Azure Stack-Abonnement verknüpft ist.
+3. Wählen Sie im Dialogfeld „Verbindung mit Azure Storage herstellen“ unter **Azure-Umgebung** die Option **Azure**, **Azure China**, **Azure Deutschland**, **Azure US-Regierung** oder **Neue Umgebung hinzufügen** (abhängig vom verwendeten Azure Stack-Konto) aus. Klicken Sie auf **Anmelden**, um sich mit dem Azure Stack-Konto anzumelden, das mindestens einem aktiven Azure Stack-Abonnement zugeordnet ist.
 
     ![Herstellen einer Verbindung mit Azure-Speicher](./media/azure-stack-storage-connect-se/azure-stack-connect-to-storage.png)
 

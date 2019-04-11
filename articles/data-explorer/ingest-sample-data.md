@@ -3,24 +3,24 @@ title: Erfassen von Beispieldaten im Azure-Daten-Explorer
 description: Hier finden Sie Informationen zum Erfassen (Laden) von wetterbezogenen Beispieldaten im Azure-Daten-Explorer.
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: ebe362b89eb6ffcde006ff824fbee40b1a9175d3
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 2ebbe3434f032b38c33ec7b82e445532836f78c9
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733398"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758476"
 ---
 # <a name="ingest-sample-data-into-azure-data-explorer"></a>Erfassen von Beispieldaten im Azure-Daten-Explorer
 
 In diesem Artikel wird das Erfassen (Laden) von Beispieldaten in einer Azure-Daten-Explorer-Datenbank veranschaulicht. Es gibt [mehrere Möglichkeiten zum Erfassen von Daten](ingest-data-overview.md). Der Schwerpunkt dieses Artikel liegt auf einem allgemeinen Ansatz, der sich für Testzwecke eignet.
 
 > [!NOTE]
-> Sie verfügen bereits über diese Daten, wenn Sie die Schritte unter [Schnellstart: Erfassen von Daten mit der Azure Data Explorer-Bibliothek für Python](python-ingest-data.md) ausgeführt haben.
+> Sie verfügen bereits über diese Daten, wenn Sie Folgendes abgeschlossen haben [Schnellstart: Erfassen von Daten mit der Azure Data Explorer-Bibliothek für Python](python-ingest-data.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

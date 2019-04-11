@@ -54,4 +54,4 @@ Um Methoden auf Ihren Geräten aufzurufen, verwenden Sie in der Remoteüberwachu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im Artikel [Anpassen des Solution Accelerators für Remoteüberwachung](../articles/iot-accelerators/iot-accelerators-remote-monitoring-customize.md) werden einige Möglichkeiten zum Anpassen des Solution Accelerators beschrieben.
+Im Artikel [Anpassen des Solution Accelerators für die Remoteüberwachung](../articles/iot-accelerators/iot-accelerators-remote-monitoring-customize.md) werden einige Möglichkeiten zum Anpassen des Solution Accelerators beschrieben.

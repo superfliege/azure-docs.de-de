@@ -3,18 +3,18 @@ title: Erstellen einer Azure IoT Hub-Instanz mithilfe der Ressourcenanbieter-RES
 description: Verwenden der Ressourcenanbieter-REST-API zum Erstellen einer IoT Hub-Instanz
 author: robinsh
 manager: philmea
-ms.author: robin.shahan
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 04850d16a9affc51bae5fbfb23fd4dff51a79340
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b24c8fa76e5bb3f8cdf7d246f7f7aa0f1a62258a
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089929"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051511"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>Erstellen einer IoT Hub-Instanz mithilfe der Ressourcenanbieter-REST-API (.NET)
 

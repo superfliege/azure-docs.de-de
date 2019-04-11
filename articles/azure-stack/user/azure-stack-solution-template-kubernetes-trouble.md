@@ -1,6 +1,6 @@
 ---
 title: Problembehandlung bei der Bereitstellung von Kubernetes in Azure Stack | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Probleme bei Ihrer Bereitstellung von Kubernetes in Azure Stack behandeln können.
+description: Erfahren Sie, wie Sie Probleme bei der Bereitstellung von Kubernetes in Azure Stack behandeln können.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -10,31 +10,31 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.author: mabvrigg
-ms.date: 03/20/2019
+ms.author: mabrigg
+ms.date: 04/02/2019
 ms.reviewer: waltero
 ms.lastreviewed: 03/20/2019
-ms.openlocfilehash: 01a9405c98160149782ab2cf248f64818d631dde
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 2a9eccfa109292b7d142092f69f4a664b0ff8f20
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293786"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878127"
 ---
-# <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>Problembehandlung bei der Bereitstellung von Kubernetes in Azure Stack
+# <a name="troubleshoot-kubernetes-deployment-to-azure-stack"></a>Problembehandlung bei der Bereitstellung von Kubernetes in Azure Stack
 
-*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 > [!Note]  
 > Kubernetes in Azure Stack befindet sich in der Vorschauphase. Das Szenario mit nicht verbundenem Azure Stack wird von der Preview zurzeit nicht unterstützt.
 
 Der folgende Artikel beschäftigt sich mit der Problembehandlung Ihres Kubernetes-Clusters. Sie können die Bereitstellungswarnung untersuchen und den Status Ihrer Bereitstellung anhand der für die Bereitstellung erforderlichen Elemente überprüfen. Sie müssen möglicherweise die Bereitstellungsprotokolle von Azure Stack oder den Linux-VMs erfassen, die Kubernetes hosten. Darüber hinaus müssen Sie möglicherweise mit Ihrem Azure Stack-Administrator zusammenarbeiten, um Protokolle von einem Verwaltungsendpunkt abzurufen.
 
-## <a name="overview-of-deployment"></a>Übersicht über die Bereitstellung
+## <a name="overview-of-kubernetes-deployment"></a>Übersicht über die Kubernetes-Bereitstellung
 
 Bevor Sie sich mit der Problembehandlung Ihres Clusters beginnen, möchten Sie vielleicht den Bereitstellungsprozess des Azure Stack Kubernetes-Clusters überprüfen. Die Bereitstellung verwendet eine Azure Resource Manager-Lösungsvorlage, um die virtuellen Computer zu erstellen, und installiert die ACS-Engine für Ihren Cluster.
 
-### <a name="deployment-workflow"></a>Bereitstellungsworkflow
+### <a name="kubernetes-deployment-workflow"></a>Workflow der Kubernetes-Bereitstellung
 
 Die folgende Abbildung zeigt den allgemeinen Ablauf der Bereitstellung des Clusters.
 
@@ -85,7 +85,7 @@ Die folgende Abbildung zeigt den allgemeinen Ablauf der Bereitstellung des Clust
 
 Sie können Protokolle auf den virtuellen Computern erfassen, die Ihren Kubernetes-Cluster unterstützen. Sie können auch das Bereitstellungsprotokoll überprüfen. Möglicherweise müssen Sie sich auch an Ihren Azure Stack-Administrator wenden, um die von Ihnen verwendete Version von Azure Stack zu überprüfen und Protokolle von Azure Stack im Zusammenhang mit Ihrer Bereitstellung abzurufen.
 
-1. Überprüfen Sie den [Bereitstellungsstatus](#review-deployment-status) und das [Abrufen der Protokolle](#get-logs-from-a-vm) vom Masterknoten in Ihrem Kubernetes-Cluster.
+1. Überprüfen Sie den [Bereitstellungsstatus](#review-deployment-status), und rufen Sie die Protokolle vom Masterknoten in Ihrem Kubernetes-Cluster ab.
 2. Stellen Sie sicher, dass Sie die neueste Version von Azure Stack verwenden. Wenn Sie sich nicht sicher sind, welche Version Sie verwenden sind, wenden Sie sich an den Azure Stack-Administrator.
 3.  Überprüfen Sie Ihre VM-Erstellungsdateien. Es können die folgenden Probleme auftreten:  
     - Der öffentliche Schlüssel ist möglicherweise ungültig. Überprüfen Sie den Schlüssel, den Sie erstellt haben.  
@@ -170,6 +170,6 @@ Gehen Sie wie folgt vor, um die Clusterprotokolldateien zu sammeln und herunterz
 
 [Bereitstellen von Kubernetes in Azure Stack](azure-stack-solution-template-kubernetes-deploy.md)
 
-[Hinzufügen eines Kubernetes-Clusters zum Marketplace (für Azure Stack-Bediener)](../azure-stack-solution-template-kubernetes-cluster-add.md)
+[Hinzufügen eines Kubernetes-Clusters zu Marketplace (für Azure Stack-Bediener)](../azure-stack-solution-template-kubernetes-cluster-add.md)
 
 [Kubernetes in Azure](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

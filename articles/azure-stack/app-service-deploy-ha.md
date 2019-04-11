@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: ''
-ms.date: 03/13/2019
+ms.date: 03/23/2019
 ms.author: jeffgilb
 ms.reviewer: anwestg
-ms.lastreviewed: 03/13/2019
-ms.openlocfilehash: db95be94028fcf16871a9dcfee5f0d87eb5d2cdc
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.lastreviewed: 03/23/2019
+ms.openlocfilehash: 1c105548f19994c4ca0ce161eedcfe11736864c7
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285665"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370022"
 ---
 # <a name="deploy-app-service-in-a-highly-available-configuration"></a>Bereitstellen von App Service in einer Hochverfügbarkeitskonfiguration
 
@@ -54,8 +54,7 @@ Vergewissern Sie sich vor Verwendung dieser Vorlage, dass die folgenden [Azure 
 ### <a name="deploy-the-app-service-infrastructure"></a>Bereitstellen der App Service-Infrastruktur
 Gehen Sie wie in diesem Abschnitt beschrieben vor, um mithilfe der Azure Stack-Schnellstartvorlage **appservice-fileshare-sqlserver-ha** eine benutzerdefinierte Bereitstellung zu erstellen.
 
-1. 
-   [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
+1. [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. Klicken Sie auf **\+** **Ressource erstellen** > **Benutzerdefiniert** und dann auf **Vorlagenbereitstellung**.
 
@@ -94,8 +93,7 @@ Erfassen Sie jeweils folgende Ausgabewerte:
 
 Die Ausgabewerte der Vorlage finden Sie wie folgt:
 
-1. 
-   [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
+1. [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. Klicken Sie im Verwaltungsportal auf **Ressourcengruppen** und dann auf den Namen der Ressourcengruppe, die Sie für die benutzerdefinierte Bereitstellung erstellt haben (in diesem Beispiel: **app-service-ha**). 
 
@@ -168,9 +166,20 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
 
     ![Ausgabeinformationen für die Dateifreigabe](media/app-service-deploy-ha/07.png)
 
-9. Da sich der für die App Service-Installation verwendete Computer nicht im gleichen VNET befindet wie der Dateiserver, der zum Hosten der App Service-Dateifreigabe verwendet wird, kann der Name nicht aufgelöst werden. Dieses Verhalten wird erwartet.<br><br>Vergewissern Sie sich, dass der Dateiserver-UNC-Pfad und die Kontoinformationen korrekt angegeben sind, und wählen Sie im Warnungsdialogfeld die Option **Ja** aus, um die App Service-Installation fortzusetzen.
+9. Da sich der für die App Service-Installation verwendete Computer nicht im gleichen VNET befindet wie der Dateiserver, der zum Hosten der App Service-Dateifreigabe verwendet wird, kann der Name nicht aufgelöst werden. **Dieses Verhalten wird erwartet**.<br><br>Vergewissern Sie sich, dass der Dateiserver-UNC-Pfad und die Kontoinformationen korrekt angegeben sind, und wählen Sie im Warnungsdialogfeld die Option **Ja** aus, um die App Service-Installation fortzusetzen.
 
     ![Erwarteter Fehler](media/app-service-deploy-ha/08.png)
+
+    Wenn Sie sich für die Bereitstellung in einem bestehenden virtuellen Netzwerk und eine interne IP-Adresse für die Verbindung mit Ihrem Dateiserver entschieden haben, müssen Sie eine Sicherheitsregel für ausgehenden Datenverkehr hinzufügen, die den SMB-Verkehr zwischen dem Workersubnetz und dem Dateiserver ermöglicht. Wechseln Sie im Verwaltungsportal zu WorkersNsg, und fügen Sie eine Sicherheitsregel für ausgehenden Datenverkehr mit den folgenden Eigenschaften hinzu:
+    - Quelle: Beliebig
+    - Quellportbereich: *
+    - Ziel: IP-Adressen
+    - IP-Zieladressbereich: Bereich der IPs für Ihren Dateiserver
+    - Zielportbereich: 445
+    - Protokoll: TCP
+    - Aktion: ZULASSEN
+    - Priorität: 700
+    - Name: Outbound_Allow_SMB445
 
 10. Geben Sie die ID der Identitätsanwendung sowie den Pfad und die Kennwörter für die Identitätszertifikate an, und klicken Sie auf **Weiter**:
     - Identitätsanwendungszertifikat (im Format **sso.appservice.local.azurestack.external.pfx**)
@@ -189,7 +198,7 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
 
     ![SQL Server-Verbindungsinformationen](media/app-service-deploy-ha/10.png)
 
-12. Da sich der für die App Service-Installation verwendete Computer nicht im gleichen VNET befindet wie der SQL-Server, der zum Hosten der App Service-Datenbanken verwendet wird, kann der Name nicht aufgelöst werden.  Dieses Verhalten wird erwartet.<br><br>Vergewissern Sie sich, dass der SQL Server-Name und die Kontoinformationen korrekt angegeben sind, und wählen Sie **Ja** aus, um die App Service-Installation fortzusetzen. Klicken Sie auf **Weiter**.
+12. Da sich der für die App Service-Installation verwendete Computer nicht im gleichen VNET befindet wie der SQL-Server, der zum Hosten der App Service-Datenbanken verwendet wird, kann der Name nicht aufgelöst werden.  **Dieses Verhalten wird erwartet**.<br><br>Vergewissern Sie sich, dass der SQL Server-Name und die Kontoinformationen korrekt angegeben sind, und wählen Sie **Ja** aus, um die App Service-Installation fortzusetzen. Klicken Sie auf **Weiter**.
 
     ![SQL Server-Verbindungsinformationen](media/app-service-deploy-ha/11.png)
 
@@ -231,3 +240,5 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
 [Erweitern Sie App Service.](azure-stack-app-service-add-worker-roles.md) Gegebenenfalls müssen noch weitere App Service-Infrastrukturrollen-Worker hinzugefügt werden, um den zu erwartenden Anwendungsbedarf in Ihrer Umgebung zu decken. Standardmäßig unterstützt App Service in Azure Stack kostenlose und gemeinsam genutzte Workerebenen. Um andere Workerebenen hinzufügen zu können, müssen Sie weitere Workerrollen hinzufügen.
 
 [Konfigurieren Sie Bereitstellungsquellen.](azure-stack-app-service-configure-deployment-sources.md) Zur Unterstützung der bedarfsgesteuerten Bereitstellung von verschiedenen Quellcodeverwaltungsanbietern wie GitHub, BitBucket, OneDrive und Dropbox sind weitere Konfigurationsschritte erforderlich.
+
+[Sichern von App Service](app-service-back-up.md). Nach der erfolgreichen Bereitstellung und Konfiguration von App Service sollten Sie sicherstellen, dass alle für die Notfallwiederherstellung erforderlichen Komponenten gesichert werden, um Datenverlust zu vermeiden und unnötige Ausfallzeiten während der Wiederherstellungsprozesse zu vermeiden.

@@ -34,7 +34,7 @@ Derzeit sind vier Solution Accelerators verfügbar, die Sie bereitstellen könne
 
 ### <a name="remote-monitoring"></a>Remoteüberwachung
 
-Verwenden Sie den [Solution Accelerator „Remoteüberwachung“](iot-accelerators-remote-monitoring-sample-walkthrough.md), um Telemetriedaten von Remotegeräten zu erfassen und zu steuern. Beispiele für Geräte sind Kühlsysteme, die beim Kunden installiert sind, oder Ventile in abgelegenen Pumpstationen.
+Verwenden Sie den [Solution Accelerator für die Remoteüberwachung](iot-accelerators-remote-monitoring-sample-walkthrough.md), um Telemetriedaten von Remotegeräten zu erfassen und zu steuern. Beispiele für Geräte sind Kühlsysteme, die beim Kunden installiert sind, oder Ventile in abgelegenen Pumpstationen.
 
 Sie können das Remoteüberwachungs-Dashboard verwenden, um die Telemetriedaten Ihrer verbundenen Geräte anzuzeigen, neue Geräte bereitzustellen oder die Firmware auf Ihren verbundenen Geräten zu aktualisieren:
 
@@ -91,7 +91,7 @@ Weitere Informationen zur Microservicearchitektur finden Sie unter [Introduction
 
 Sie können die Solution Accelerators über die Website [Microsoft Azure IoT Solution Accelerators](https://www.azureiotsolutions.com/Accelerators#) oder mithilfe der Befehlszeile bereitstellen.
 
-Für die Bereitstellung der Solution Accelerators für Remoteüberwachung stehen die folgenden Konfigurationen zur Verfügung:
+Für die Bereitstellung der Solution Accelerators für die Remoteüberwachung stehen die folgenden Konfigurationen zur Verfügung:
 
 * **Standard:** Erweiterte Infrastrukturbereitstellung zum Entwickeln einer Produktionsbereitstellung. Der Azure Container Service stellt die Microservices auf mehreren virtuellen Azure-Computern bereit. Kubernetes orchestriert die Docker-Container, die die einzelnen Microservices hosten.
 * **Basic:** Kostengünstigere Version für Demonstrationszwecke oder zum Testen einer Bereitstellung. Alle Microservices werden auf einem einzelnen virtuellen Azure-Computer bereitgestellt.

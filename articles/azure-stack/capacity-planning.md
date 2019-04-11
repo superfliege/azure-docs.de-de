@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 03/29/2019
 ms.author: jeffgilb
 ms.reviewer: prchint
-ms.lastreviewed: 09/18/2018
-ms.openlocfilehash: 3d825a0f8a23380b4d9cf453076ab4b18ee67831
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.lastreviewed: 03/29/2019
+ms.openlocfilehash: e4678b445dce5b337fb7d51e1b938adb944b4440
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095516"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648723"
 ---
 # <a name="azure-stack-capacity-planning"></a>Azure Stack-Kapazitätsplanung
 Beim Auswerten einer Azure Stack-Lösung müssen Entscheidungen in Bezug auf die Hardwarekonfiguration getroffen werden, die eine direkte Auswirkung auf die Gesamtkapazität der Azure Stack-Cloud haben. Hierzu gehört die übliche Auswahl von CPU, Arbeitsspeicherdichte, Speicherkonfiguration und Gesamtumfang der Lösung (z.B. Anzahl von Servern). Im Gegensatz zu einer herkömmlichen Virtualisierungslösung gilt die einfache Arithmetik dieser Komponenten zur Ermittlung der nutzbaren Kapazität nicht. Der erste Grund dafür ist, dass Azure Stack so aufgebaut ist, dass die Infrastruktur- bzw. Verwaltungskomponenten in der Lösung selbst gehostet werden. Der zweite Grund ist, dass ein Teil der Lösungskapazität zur Unterstützung der Resilienz reserviert ist. Es geht um die Aktualisierung der Lösungssoftware auf eine Weise, bei der die Beeinträchtigung von Mandantenworkloads verringert wird.
@@ -34,25 +34,11 @@ Eine Azure Stack-Lösung ist als hyperkonvergierter Cluster aus Compute, Netzwer
 
 Die einzige physische Ressource, die in einer Azure Stack-Lösung nicht überdimensioniert wird, ist Serverspeicher. Die anderen Ressourcen, CPU-Kerne, Netzwerkbandbreite und Speicherkapazität werden überdimensioniert, um die verfügbaren Ressourcen optimal zu nutzen. Bei der Berechnung der verfügbaren Kapazität für eine Lösung ist der physische Serverspeicher der Hauptfaktor. Die Nutzung anderer Ressourcen bedeutet dann, das Verhältnis zwischen der möglichen Überdimensionierung und dem zu verstehen, was für die beabsichtigte Workload akzeptabel ist.
 
-Rund 28 virtuelle Computer werden für das Hosting der Infrastruktur von Azure Stack verwendet und nutzen insgesamt etwa 208 GB Speicher und 124 virtuelle Kerne.  Der Grund für diese Anzahl von virtuellen Computern besteht darin, die erforderliche Diensttrennung zu erfüllen, um die Anforderungen an Sicherheit, Skalierbarkeit, Wartung und Patches zu gewährleisten. Diese interne Dienststruktur ermöglicht die zukünftige Einführung neuer Infrastrukturdienste im Rahmen ihrer Entwicklung.
+Rund 30 virtuelle Computer werden für das Hosting der Infrastruktur von Azure Stack verwendet und nutzen insgesamt etwa 230 GB Speicher und 140 virtuelle Kerne. Der Grund für diese Anzahl von virtuellen Computern besteht darin, die erforderliche Diensttrennung zu erfüllen, um die Anforderungen an Sicherheit, Skalierbarkeit, Wartung und Patches zu gewährleisten. Diese interne Dienststruktur ermöglicht die zukünftige Einführung neuer Infrastrukturdienste im Rahmen ihrer Entwicklung.
 
 Um das automatisierte Update aller physischen Server- und Infrastruktursoftwarekomponenten oder Patchen und Update zu unterstützen, nutzen Infrastruktur- und Benutzer-VM-Platzierungen nicht alle Speicherressourcen der Skalierungseinheit. Ein Teil des Gesamtspeichers über alle Server einer Skalierungseinheit hinweg wird nicht zugeordnet, um die Anforderungen der Lösung an Resilienz zu erfüllen. Wenn beispielsweise das Windows Server-Image des physischen Servers aktualisiert wird, werden die auf dem Server gehosteten virtuellen Computer an einen anderen Speicherort innerhalb der Skalierungseinheit verschoben, während die Windows Server-Images des Servers aktualisiert werden. Wenn das Update abgeschlossen ist, wird der Server neu gestartet und verarbeitet erneut Workloads. Das Ziel von Patch und Update einer Azure Stack-Lösung ist es, die Notwendigkeit zu vermeiden, gehostete virtuelle Computer beenden zu müssen. Um dieses Ziel zu erreichen, ist ein absolutes Minimum an Speicherkapazität eines Servers nicht zugeordnet, um das Verschieben von virtuellen Computern innerhalb der Skalierungseinheit zu ermöglichen. Diese Platzierung und Verschiebung gilt sowohl für Infrastruktur-VMs als auch für virtuelle Computer, die im Auftrag des Benutzers oder Mandanten der Azure Stack-Lösung erstellt wurden. Die endgültigen Implementierungsergebnisse sind so, dass die für die Unterstützung der erforderlichen VM-Verschiebung reservierte Speichermenge viel mehr als die Kapazität eines einzelnen Servers betragen kann, da Platzierungsprobleme bei virtuellen Computern mit unterschiedlichem Speicherbedarf auftreten können. Ein zusätzlicher Mehraufwand in der Kategorie der Speichernutzung ist der Mehraufwand der Windows Server-Instanz selbst. Die Basis-Betriebssysteminstanz für jeden Server nutzt Speicher für das Betriebssystem und seine virtuellen Auslagerungstabellen sowie den Speicher, der von Hyper-V für die Verwaltung der einzelnen gehosteten virtuellen Computer verwendet wird.
 
-Eine detaillierte Beschreibung der Komplexität von Kapazitätsberechnungen finden Sie weiter unten in diesem Abschnitt. In dieser Einführung werden die folgenden Beispiele vorgestellt, um das Verständnis der verfügbaren Kapazität unterschiedlicher Lösungsgrößen zu erleichtern. Dabei handelt es sich um Schätzungen, die Annahmen über die Nutzung des VM-Speichers des Mandanten enthalten, die für Produktionsinstallationen möglicherweise nicht zutreffen. Für diese Tabelle wird die Azure-VM-Standardgröße D2 verwendet. Azure-Standard-VMs der Größe D2werden mit 2 virtuellen CPUs und 7 GB Arbeitsspeicher definiert.
-
-|     |Kapazität pro Server|| Kapazität der Skalierungseinheit|  |  |||
-|-----|-----|-----|-----|-----|-----|-----|-----|
-|     | Arbeitsspeicher | CPU-Kerne | Anzahl von Servern | Arbeitsspeicher | CPU-Kerne | Mandanten-VMs<sup>1</sup>     | Kernverhältnis<sup>2</sup>    |
-|Beispiel 1|256 GB|28|4|1024 GB| 112 | 54 |4:3|
-|Beispiel 2|512 GB|28|4|2.024 GB|112|144|4:1|
-|Beispiel 3|384 GB|28|12|4608 GB|336|432|3:1|
-|     |     |     |     |     |     |     |     |
-
-> <sup>1</sup> Standard-VMs D2.
-> 
-> <sup>2</sup> Verhältnis von virtuellen Kernen zu physischen Kernen.
-
-Wie bereits weiter oben erwähnt, wird die VM-Kapazität durch den verfügbaren Speicher bestimmt. Das Verhältnis von virtuellen Kernen zu physischen Kernen veranschaulicht, wie sich die VM-Dichte auf die verfügbare CPU-Kapazität auswirkt, wenn die Lösung nicht mit einer größeren Anzahl von physischen Kernen ausgestattet (eine andere CPU ausgewählt) wird. Dasselbe gilt für die Speicherkapazität und Speichercachekapazität.
+Die VM-Kapazität wird durch den verfügbaren Speicher bestimmt. Das Verhältnis von virtuellen Kernen zu physischen Kernen veranschaulicht, wie sich die VM-Dichte auf die verfügbare CPU-Kapazität auswirkt, wenn die Lösung nicht mit einer größeren Anzahl von physischen Kernen ausgestattet (eine andere CPU ausgewählt) wird. Dasselbe gilt für die Speicherkapazität und Speichercachekapazität.
 
 Die oben genannten Beispiele für die VM-Dichte dienen nur der Erläuterung. Auf die Berechnungen zur Unterstützung trifft weitere Komplexität zu. Der Kontakt mit Microsoft oder einem Lösungspartner ist erforderlich, um die Entscheidungen zur Kapazitätsplanung und die sich daraus ergebenden verfügbaren Kapazitäten besser zu verstehen.
 

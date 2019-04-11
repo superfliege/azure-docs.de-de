@@ -63,9 +63,9 @@ Orientieren Sie sich an folgendem Diagramm:
 
 Wenn Sie sicher sind, dass Sie über ein Azure-Abonnement verfügen, überprüfen Sie die Mandantenzuordnung für Ihr Abonnement, und prüfen Sie, ob der richtige Mandant in der Dropdownliste ausgewählt wurde. Überprüfen Sie anschließend anhand des obigen Diagramms die Zuordnung Ihres Abonnements und dieses Azure AD-Mandanten.
 
-### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Wo finde ich Informationen über die Vorgängerversion der Lösung für die Remoteüberwachung?
+### <a name="where-can-i-find-information-about-the-previous-version-of-the-remote-monitoring-solution"></a>Wo finde ich Informationen über die Vorgängerversion der Remoteüberwachungslösung?
 
-Die Vorversion des Solution Accelerators für Remoteüberwachung war unter dem Namen vorkonfigurierte IoT Suite-Lösung für die Remoteüberwachung bekannt. Sie finden die archivierte Dokumentation unter [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/).
+Die Vorversion des Solution Accelerators für die Remoteüberwachung war als vorkonfigurierte IoT Suite-Lösung für die Remoteüberwachung bekannt. Sie finden die archivierte Dokumentation unter [https://docs.microsoft.com/previous-versions/azure/iot-suite/](https://docs.microsoft.com/previous-versions/azure/iot-suite/).
 
 ### <a name="is-the-new-solution-accelerator-available-in-the-same-geographic-region-as-the-existing-solution"></a>Ist der neue Solution Accelerator in derselben geografischen Region wie die vorhandene Lösung verfügbar?
 

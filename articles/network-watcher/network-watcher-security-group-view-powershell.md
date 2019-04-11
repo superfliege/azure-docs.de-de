@@ -14,25 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 9cc06e97730ac846e8aa42c2cee77dfe17be99bb
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: b22dd2dcf575362b96d150ef98148076f4ec631f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089645"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047584"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>Analysieren der Sicherheit Ihres virtuellen Computers über die Sicherheitsgruppenansicht mit PowerShell
 
 > [!div class="op_single_selector"]
 > - [PowerShell](network-watcher-security-group-view-powershell.md)
-> - [Azure-CLI](network-watcher-security-group-view-cli.md)
+> - [Azure-Befehlszeilenschnittstelle](network-watcher-security-group-view-cli.md)
 > - [REST-API](network-watcher-security-group-view-rest.md)
 
 Die Sicherheitsgruppenansicht gibt konfigurierte und effektive Netzwerksicherheitsregeln zurück, die auf einen virtuellen Computer angewendet werden. Diese Funktion eignet sich zur Überwachung und Diagnose von Netzwerksicherheitsgruppen und Regeln, die auf einem virtuellen Computer konfiguriert sind, um sicherzustellen, dass Datenverkehr ordnungsgemäß zugelassen oder verweigert wird. In diesem Artikel erfahren Sie, wie Sie die konfigurierten und effektiven Sicherheitsregeln mit PowerShell auf einem virtuellen Computer abrufen.
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-In diesem Szenario verwenden Sie das Cmdlet `Get-AzureRmNetworkWatcherSecurityGroupView` zum Abrufen der Sicherheitsregelinformationen.
+In diesem Szenario verwenden Sie das Cmdlet `Get-AzNetworkWatcherSecurityGroupView` zum Abrufen der Sicherheitsregelinformationen.
 
 Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits ausgeführt haben.
 
@@ -42,19 +45,19 @@ In dem in diesem Artikel beschriebenen Szenario werden die konfigurierten und ef
 
 ## <a name="retrieve-network-watcher"></a>Abrufen von Network Watcher
 
-Der erste Schritt besteht im Abrufen der Network Watcher-Instanz. Diese Variable wird an das Cmdlet `Get-AzureRmNetworkWatcherSecurityGroupView` übergeben.
+Der erste Schritt besteht im Abrufen der Network Watcher-Instanz. Diese Variable wird an das Cmdlet `Get-AzNetworkWatcherSecurityGroupView` übergeben.
 
 ```powershell
-$nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
-$networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
+$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
+$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
 ```
 
 ## <a name="get-a-vm"></a>Abrufen eines virtuellen Computers
 
-Zum Ausführen des Cmdlets `Get-AzureRmNetworkWatcherSecurityGroupView` ist ein virtueller Computer erforderlich. Im folgenden Beispiel wird ein VM-Objekt abgerufen.
+Zum Ausführen des Cmdlets `Get-AzNetworkWatcherSecurityGroupView` ist ein virtueller Computer erforderlich. Im folgenden Beispiel wird ein VM-Objekt abgerufen.
 
 ```powershell
-$VM = Get-AzurermVM -ResourceGroupName testrg -Name testvm1
+$VM = Get-AzVM -ResourceGroupName testrg -Name testvm1
 ```
 
 ## <a name="retrieve-security-group-view"></a>Abrufen der Sicherheitsgruppenansicht
@@ -62,7 +65,7 @@ $VM = Get-AzurermVM -ResourceGroupName testrg -Name testvm1
 Im nächsten Schritt wird das Ergebnis der Sicherheitsgruppenansicht abgerufen.
 
 ```powershell
-$secgroup = Get-AzureRmNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id
+$secgroup = Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id
 ```
 
 ## <a name="viewing-the-results"></a>Anzeigen der Ergebnisse

@@ -1,6 +1,6 @@
 ---
 title: Hinzufügen eines Panels zur Benutzeroberfläche der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
-description: Dieser Artikel zeigt Ihnen, wie Sie auf der Webbenutzeroberfläche des Accelerators für die Remoteüberwachungslösung ein neues Panel zum Dashboard hinzufügen.
+description: Dieser Artikel zeigt Ihnen, wie Sie auf der Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung ein neues Panel zum Dashboard hinzufügen.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -15,9 +15,9 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 10/12/2018
 ms.locfileid: "49165877"
 ---
-# <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>Hinzufügen eines benutzerdefinierten Panels zum Dashboard zur Webbenutzeroberfläche des Accelerators für Remoteüberwachung
+# <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>Hinzufügen eines benutzerdefinierten Panels zum Dashboard zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung
 
-Dieser Artikel zeigt Ihnen, wie Sie auf der Webbenutzeroberfläche des Accelerators für die Remoteüberwachungslösung ein neues Panel zu einer Dashboardseite hinzufügen. Der Artikel beschreibt Folgendes:
+Dieser Artikel zeigt Ihnen, wie Sie auf der Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung ein neues Panel zu einer Dashboardseite hinzufügen. Der Artikel beschreibt Folgendes:
 
 - Vorbereiten einer lokalen Entwicklungsumgebung.
 - Hinzufügen eines neuen Panels zu einer Dashboardseite auf der Webbenutzeroberfläche.
@@ -96,4 +96,4 @@ Der vorherige Befehl führt die Benutzeroberfläche lokal unter [http://localhos
 
 In diesem Artikel haben Sie Informationen zu den verfügbaren Ressourcen erhalten, mit denen Sie der Webbenutzeroberfläche im Solution Accelerator für die Remoteüberwachung Dashboards hinzufügen oder diese anpassen können.
 
-Weitere konzeptuelle Informationen zum Solution Accelerator für Remoteüberwachung finden Sie unter [Remoteüberwachungsarchitektur](iot-accelerators-remote-monitoring-sample-walkthrough.md).
+Weitere konzeptuelle Informationen zum Solution Accelerator für die Remoteüberwachung finden Sie unter [Remoteüberwachungsarchitektur](iot-accelerators-remote-monitoring-sample-walkthrough.md).

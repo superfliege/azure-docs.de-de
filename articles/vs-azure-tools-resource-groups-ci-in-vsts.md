@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: cc9e2e09da572dc4260dcc0e20a8a1846ae17320
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: a2a730e2c3ca466a2705f053d7db0db12d7941da
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894148"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047319"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Continuous Integration in Azure DevOps Services mit Bereitstellungsprojekten für Azure-Ressourcengruppen
 Zum Bereitstellen einer Azure-Vorlage führen Sie Aufgaben in verschiedenen Phasen aus: Erstellen, Testen, in Azure kopieren (auch als „Staging“ bezeichnet) und Bereitstellen der Vorlage. Es gibt zwei Möglichkeiten zum Bereitstellen von Vorlagen für Azure DevOps Services. Da beide Verfahren zum gleichen Ergebnis führen, können Sie das Verfahren wählen, das am besten in Ihren Workflow passt.
@@ -28,6 +28,8 @@ Zum Bereitstellen einer Azure-Vorlage führen Sie Aufgaben in verschiedenen Phas
 2. Fügen Sie mehrere Azure DevOps Services-Buildschritte hinzu, mit denen jeweils eine Stagingaufgabe ausgeführt wird.
 
 In diesem Artikel werden beide Optionen veranschaulicht. Der Vorteil der ersten Option liegt in der Verwendung des Skripts, das von Entwicklern in Visual Studio verwendet wird. Auf diese Weise wird die Konsistenz im gesamten Lebenszyklus sichergestellt. Die zweite Option bietet eine praktische Alternative zum integrierten Skript. Bei beiden Verfahren wird vorausgesetzt, dass Sie bereits ein Visual Studio-Bereitstellungsprojekt in Azure DevOps Services eingecheckt haben.
+
+[!INCLUDE [updated-for-az](../includes/updated-for-az.md)]
 
 ## <a name="copy-artifacts-to-azure"></a>Kopieren von Artefakten nach Azure
 Unabhängig vom Szenario gilt Folgendes: Falls Sie über Artefakte verfügen, die für die Vorlagenbereitstellung benötigt werden, müssen Sie Azure Resource Manager Zugriff darauf gewähren. Diese Artefakte können folgende Dateien umfassen:
@@ -87,7 +89,7 @@ Hier werden Sie durch die erforderlichen Schritte der Continuous Deployment-Konf
       
       Verwenden Sie für PowerShell-Skripts den folgenden Befehl:
       
-      `Get-AzureRmSubscription`
+      `Get-AzSubscription`
       
       Verwenden Sie für die Azure-Befehlszeilenschnittstelle den folgenden Befehl:
       

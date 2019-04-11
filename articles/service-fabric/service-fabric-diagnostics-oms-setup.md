@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie Azure Monitor-Protokolle für die Visualisier
 services: service-fabric
 documentationcenter: .net
 author: srrengar
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: 33984b084023a3a2c31b6f6a0a7fc8a95c2d7689
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 3523a2df413740f644151c548e403c39c9be1f03
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242852"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670505"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Einrichten von Azure Monitor-Protokollen für einen Cluster
 
 Azure Monitor-Protokolle sind unsere Empfehlung für die Überwachung von Ereignissen auf Clusterebene. Sie können einen Log Analytics-Arbeitsbereich über den Azure Resource Manager, über PowerShell oder über den Azure Marketplace einrichten. Wenn Sie eine aktualisierte Resource Manager-Vorlage von Ihrer Bereitstellung verwalten, verwenden Sie zukünftig die gleiche Vorlage für die Einrichtung Ihrer Umgebung für Azure Monitor-Protokolle. Die Bereitstellung über den Marketplace ist einfacher, wenn Sie bereits einen Cluster mit aktivierter Diagnose bereitgestellt haben. Wenn Sie in dem Konto, für das Sie die Bereitstellung durchführen, keinen Zugriff auf Abonnementebene haben, führen Sie die Bereitstellung über PowerShell oder über die Resource Manager-Vorlage durch.
 
 > [!NOTE]
-> Zum Einrichten von Azure Monitor-Protokollen zur Überwachung Ihres Clusters muss die Diagnose aktiviert sein, um Ereignisse auf Cluster- oder Plattformebene anzeigen zu können. Weitere Informationen finden Sie unter [Ereignisaggregation und -sammlung mit der Windows Azure-Diagnose](service-fabric-diagnostics-event-aggregation-wad.md) und [Ereignisaggregation und -sammlung mit Linux-Azure-Diagnose](service-fabric-diagnostics-event-aggregation-lad.md).
+> Zum Einrichten von Azure Monitor-Protokollen zur Überwachung Ihres Clusters muss die Diagnose aktiviert sein, um Ereignisse auf Cluster- oder Plattformebene anzeigen zu können. Weitere Informationen finden Sie unter [Ereignisaggregation und -sammlung mit der Windows Azure-Diagnose](service-fabric-diagnostics-event-aggregation-wad.md) und [Ereignisaggregation und -sammlung mit Linux-Azure-Diagnose](service-fabric-diagnostics-oms-syslog.md).
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -49,7 +49,7 @@ Wenn Sie einen Log Analytics-Arbeitsbereich nach dem Bereitstellen eines Cluster
 Wenn Sie Windows verwenden, fahren Sie mit den folgenden Schritten zum Verknüpfen von Azure Monitor-Protokollen mit dem Speicherkonto fort, in dem die Clusterereignisse gespeichert werden. 
 
 >[!NOTE]
->Für Linux-Cluster ist dies noch nicht verfügbar. 
+>Die Service Fabric Analytics-Lösung wird nur für Windows-Cluster unterstützt. Für Linux-Cluster lesen Sie unseren Artikel zum [Einrichten von Azure Monitor-Protokollen für Linux-Cluster](service-fabric-diagnostics-oms-syslog.md).  
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>Verbinden des Log Analytics-Arbeitsbereichs mit Ihrem Cluster 
 
@@ -97,9 +97,9 @@ Azure Resource Manager erkennt, dass es sich bei diesem Befehl um ein Update fü
 
 ## <a name="deploy-azure-monitor-logs-with-azure-powershell"></a>Bereitstellen von Azure Monitor-Protokollen mit Azure PowerShell
 
-Sie können Ihre Protokollanalyseressource auch über PowerShell mit dem Befehl `New-AzureRmOperationalInsightsWorkspace` bereitstellen. Stellen Sie hierfür sicher, dass [Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-5.1.1) installiert ist. Erstellen Sie mithilfe dieses Skripts einen neuen Log Analytics-Arbeitsbereich, und fügen Sie diesem die Service Fabric-Lösung hinzu: 
+Sie können Ihre Protokollanalyseressource auch über PowerShell mit dem Befehl `New-AzureRmOperationalInsightsWorkspace` bereitstellen. Stellen Sie hierfür sicher, dass [Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) installiert ist. Erstellen Sie mithilfe dieses Skripts einen neuen Log Analytics-Arbeitsbereich, und fügen Sie diesem die Service Fabric-Lösung hinzu: 
 
-```PowerShell
+```powershell
 
 $SubID = "<subscription ID>"
 $ResourceGroup = "<Resource group name>"

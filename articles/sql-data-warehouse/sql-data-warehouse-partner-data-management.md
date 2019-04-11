@@ -10,25 +10,24 @@ ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: f8692bac271c2b0a51fef358d2fc73d6cfc8fe97
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 08d168a688935328fb4716b849c70e828545765b
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58004399"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620069"
 ---
 # <a name="sql-data-warehouse-data-management-partners"></a>Partner für die Datenverwaltung bei SQL Data Warehouse
 Für die Erstellung Ihrer eigenen Data Warehouse-Lösung können Sie auf eine Vielzahl branchenführender Tools zurückgreifen. In diesem Artikel sind Partnerunternehmen von Microsoft aufgeführt, die Tools und Lösungen für die Datenverwaltung anbieten, die Azure SQL Data Warehouse unterstützen.
 
 ## <a name="data-management-partners"></a>Partner für die Datenverwaltung
-| Partner | BESCHREIBUNG | Links | Videos |
-| --- | --- | --- | --- |
-| ![Coffing Data Warehousing][1] |**Coffing Data Warehousing**<br>Coffing Data Warehousing bietet das Tool Nexus Chameleon, das 10 Jahre Entwicklung in Abfragesystemen aufweisen kann. Nexus ist als Abfragetool für SQL Data Warehouse verfügbar. Mithilfe von Nexus können Sie Abfragen auf internen und Cloudcomputern durchführen und Daten aus verschiedenen Plattformen zusammenführen. Point-Click-Report! |[Website][coffing_website]<br>[Pressemitteilung][coffing_press]<br>[Twitter][coffing_twitter]<br>[YouTube][coffing_youtube] |[![Video zu Coffing](./media/sql-data-warehouse-partner-data-management/coffing_video.jpg)](https://www.youtube.com/watch?v=N5GSxBEySFc) |
-| ![Inbrein][2] |**MicroERD**<br>Mit den Tools von Inbrein MicroERD können Sie ein präzises Datenmodell erstellen, die Datenredundanz verringern, die Produktivität steigern und Standards einhalten. Über die Benutzeroberfläche, die basierend auf umfassenden Nutzungserlebnissen entwickelt wurde, können Modellierer einfach und komfortabel mit DB-Modellen arbeiten. Über schnelle funktionale Verbesserungen und Updates können Sie fortlaufend von neuen und verbesserten MicroERD-Funktionen profitieren. |[Website][inbrein_website]<br>[Datenblatt][inbrein_datasheet]<br>[Twitter][inbrein_twitter]<br>[YouTube][inbrein_youtube] |[![Video zu Inbrein](./media/sql-data-warehouse-partner-data-management/inbrein_video.jpg)](https://www.youtube.com/watch?v=IGHSAk4bxdE) |
-| ![Infolibrarian][3] |**Infolibrarian**<br>InfoLibrarian katalogisiert, speichert und verwaltet Metadaten, sodass Sie die häufigsten Problemfälle der Datenverwaltung beheben können. Darüber hinaus bietet Infolibrarian Softwarelösungen für Metadatenverwaltung, Data Governance und Asset Management zur Verwaltung und Veröffentlichung von Metadaten aus verschiedenen Tools und Technologien. |[Marketplace][infolibrarian_marketplace]<br>[Website][infolibrarian_website]<br>[Twitter][infolibrarian_twitter] |[![Video zu Infolibrarian](./media/sql-data-warehouse-partner-data-management/infolibrarian_video.png)](http://www.infolibcorp.com/metadata-management-videos/vdbplayer.swf?volume=100&url=video/infolibrarian-azure-provisioning.mp4) |
-| ![Redpoint Global][4] |**RedPoint Interaction**<br>RedPoint Interaction ist eine leistungsfähige Lösung zur Kundenbindung. Sie ermöglicht Ihnen einen fortlaufenden Dialog mit Kunden über alle Kommunikationskanäle und Kontaktpunkte hinweg. Dabei verwalten Sie alle Phasen des Omnichannelmarketings über eine einheitliche Anlaufstelle. |[Marketplace][redpoint_it_marketplace]<br>[Website][redpoint_it_website]<br>[Pressemitteilung][redpoint_press]<br>[Datenblatt][redpoint_it_datasheet]<br>[Twitter][redpoint_twitter]<br>[YouTube][redpoint_youtube] |[![Video zu Redpoint Data Management](./media/sql-data-warehouse-partner-data-management/redpoint_it_video.jpg)](https://vimeo.com/103715582) |
-| ![Redpoint Global][4] |**RedPoint Data Management**<br>Mit RedPoint Data Management können Marketingfachleute sämtliche Daten für die kanalübergreifende Kundenbindung heranziehen und strukturierte sowie unstrukturierte Daten verwalten. Durch die Nutzung von Azure SQL Data Warehouse und RedPoint können Sie den Wert Ihrer strukturierten oder unstrukturierten Daten maximieren, um die individualisierten und kontextbezogenen Interaktionen bereitstellen zu können, die für die Bindung der heute auf allen Kanälen aktiven Kunden erforderlich sind. Die Drag & Drop-Benutzeroberfläche macht das Entwerfen und Ausführen der Datenverwaltungsprozesse sehr leicht. |[Marketplace][redpoint_dm_marketplace]<br>[Website][redpoint_dm_website]<br>[Pressemitteilung][redpoint_press]<br>[Datenblatt][redpoint_dm_datasheet]<br>[Twitter][redpoint_twitter]<br>[YouTube][redpoint_youtube] |[![Video zu Redpoint Data Management](./media/sql-data-warehouse-partner-data-management/redpoint_dm_video.jpg)](https://www.youtube.com/watch?v=o3DtXRpiEg0) |
-| ![Sentry One][5] |**DW Sentry**<br>Mit dem intelligenten Dashboard für Datenverschiebungen und dem Ereigniskalender wissen Sie immer genau, was die Workload beeinträchtigt. So erhalten Sie einen Einblick in Ihre Abfragen und Aufträge, die zum Laden, Sichern oder Wiederherstellen Ihrer Daten ausgeführt werden. So können Sie sicher sein, dass Sie Ihre Azure-Ressourcen optimal nutzen. |[Marketplace][sql_sentry_marketplace]<br>[Website][sql_sentry_website]<br>[Pressemitteilung][sql_sentry_press]<br>[Twitter][sql_sentry_twitter]<br>[YouTube][sql_sentry_youtube] | |
+| Partner | BESCHREIBUNG | Website/Produktlink |
+| ------- | ----------- | -------------------- |
+| ![Coffing Data Warehousing][1] |**Coffing Data Warehousing**<br>Coffing Data Warehousing bietet das Tool Nexus Chameleon, das 10 Jahre Entwicklung in Abfragesystemen aufweisen kann. Nexus ist als Abfragetool für SQL Data Warehouse verfügbar. Mithilfe von Nexus können Sie Abfragen auf internen und Cloudcomputern durchführen und Daten aus verschiedenen Plattformen zusammenführen. Point-Click-Report! |[Produktseite][coffing_website]<br> |
+| ![Inbrein][2] |**Inbrein MicroERD**<br>Mit den Tools von Inbrein MicroERD können Sie ein präzises Datenmodell erstellen, die Datenredundanz verringern, die Produktivität steigern und Standards einhalten. Über die Benutzeroberfläche, die basierend auf umfassenden Nutzungserlebnissen entwickelt wurde, können Modellierer einfach und komfortabel mit DB-Modellen arbeiten. Über schnelle funktionale Verbesserungen und Updates können Sie fortlaufend von neuen und verbesserten MicroERD-Funktionen profitieren. |[Produktseite][inbrein_website]<br> |
+| ![Infolibrarian][3] |**Infolibrarian (Metadatenverwaltungsserver)**<br>InfoLibrarian katalogisiert, speichert und verwaltet Metadaten, sodass Sie die häufigsten Problemfälle der Datenverwaltung beheben können. Darüber hinaus bietet Infolibrarian Softwarelösungen für Metadatenverwaltung, Data Governance und Asset Management zur Verwaltung und Veröffentlichung von Metadaten aus verschiedenen Tools und Technologien. |[Produktseite][infolibrarian_website]<br> [Azure Marketplace][infolibrarian_marketplace]<br> |
+| ![Redpoint Global][4] |**RedPoint Data Management**<br>Mit RedPoint Data Management können Marketingfachleute sämtliche Daten für die kanalübergreifende Kundenbindung heranziehen und strukturierte sowie unstrukturierte Daten verwalten. Durch die Nutzung von Azure SQL Data Warehouse und RedPoint können Sie den Wert Ihrer strukturierten oder unstrukturierten Daten maximieren, um die individualisierten und kontextbezogenen Interaktionen bereitstellen zu können, die für die Bindung der heute auf allen Kanälen aktiven Kunden erforderlich sind. Die Drag & Drop-Benutzeroberfläche macht das Entwerfen und Ausführen der Datenverwaltungsprozesse sehr leicht. |[Produktseite][redpoint_dm_website]<br> [Azure Marketplace][redpoint_dm_marketplace]<br> |
+| ![Sentry One][5] |**SentryOne (DW Sentry)**<br>Mit dem intelligenten Dashboard für Datenverschiebungen und dem Ereigniskalender wissen Sie immer genau, was die Workload beeinträchtigt. So erhalten Sie einen Einblick in Ihre Abfragen und Aufträge, die zum Laden, Sichern oder Wiederherstellen Ihrer Daten ausgeführt werden. So können Sie sicher sein, dass Sie Ihre Azure-Ressourcen optimal nutzen. |[Produktseite][sql_sentry_website]<br>[Azure Marketplace][sql_sentry_marketplace]<br> |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu anderen Partnern finden Sie unter [Business Intelligence-Partner][bi_partners] und [Partner für die Datenintegration][di_partners].
@@ -52,64 +51,12 @@ Weitere Informationen zu anderen Partnern finden Sie unter [Business Intelligenc
 [coffing_website]:https://www.coffingdw.com/software/nexus/
 [inbrein_website]:http://microerd.com/
 [infolibrarian_website]:http://www.infolibcorp.com/metadata-management/software-tools
-[redpoint_it_website]:http://www.redpoint.net/products/customer-interaction-management/
 [redpoint_dm_website]:http://www.redpoint.net/products/data-management-solutions/
 [sql_sentry_website]:https://sentryone.com/platform/azure-sql-dw-performance-monitoring/
 
-<!--ebook Links-->
-
-<!--Datasheet Links-->
-
-<!--[coffing_datasheet]:-->
-
-[inbrein_datasheet]:http://microerd.com/images/MicroERD_Manual/MicroERD_Manual.pdf
-
-<!--[infolibrarian_datasheet]:-->
-
-[redpoint_it_datasheet]:http://www.redpoint.net/wp-content/uploads/2016/06/RedPoint-Interaction-FS-wordle-8.5x11-RPIUS0815-07-PRINT.pdf
-[redpoint_dm_datasheet]:http://www.redpoint.net/wp-content/uploads/2014/09/RedPoint-Data-Management-FS-V2-wordle-8.5x11-0216-WEB.pdf
-
-<!--[sql_sentry_datasheet]:-->
 
 <!--Marketplace Links -->
 
-<!--[coffing_marketplace]:https://azure.microsoft.com/marketplace/partners/nexus/nexus-chameleon-9/ -->
-
-<!--[inbrein_marketplace]:-->
-
 [infolibrarian_marketplace]:https://azure.microsoft.com/marketplace/partners/infolibrarian/infolibrarian-metadata-management-server/
-[redpoint_it_marketplace]:https://azure.microsoft.com/marketplace/partners/redpoint-global/redpoint-interaction/
 [redpoint_dm_marketplace]:https://azure.microsoft.com/marketplace/partners/redpoint-global/redpoint-rpdm/ 
-[sql_sentry_marketplace]:https://www.sentryone.com/products/sentryone-platform/dw-sentry/azure-sql-data-warehouse-monitoring
-
-<!--Press links-->
-
-[coffing_press]:https://www.coffingdw.com/press-release-nexus-tuned-for-azure-sql-data-warehouse/
-
-<!--[inbrein_press]:-->
-
-<!--[infolibrarian_press]:-->
-
-[redpoint_press]:http://www.redpoint.net/press/redpoint-global-announces-support-for-microsoft-azure-sql-data-warehouse-microsoft-azure-data-lake-service/
-[sql_sentry_press]:https://www.sentryone.com/sentryone-v-11.2-offers-new-insights-and-powerful-automation
-
-
-<!--YouTube links-->
-
-[coffing_youtube]:https://www.youtube.com/channel/UC8o1zhc9tNp9ve6vDn34tkw
-[inbrein_youtube]:https://www.youtube.com/channel/UCHTYjFFaTpo6bPAtuxgdZig
-
-<!--[infolibrarian_youtube]:-->
-
-[redpoint_youtube]:https://www.youtube.com/user/RedPointGlobal
-[sql_sentry_youtube]:https://www.youtube.com/user/SQLSentry
-
-<!--Twitter links-->
-
-[coffing_twitter]:https://twitter.com/CoffingDW
-[inbrein_twitter]:https://twitter.com/microerd
-[infolibrarian_twitter]:https://twitter.com/InfoLibCorp
-[redpoint_twitter]:https://twitter.com/RedPointGlobal
-[sql_sentry_twitter]:https://twitter.com/SQLSentry
-
-<!--Video links-->
+[sql_sentry_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/sentryone.sentryoneeval

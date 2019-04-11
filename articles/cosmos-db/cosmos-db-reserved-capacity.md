@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 80c35d8417fefa2873cbef9886f56ccfa3920624
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 0e0d1cd98f27ef40681e37a55f7021bf102fda21
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409464"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664267"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Optimieren der Kosten mit reservierter Kapazität in Azure Cosmos DB
 
@@ -20,7 +20,7 @@ Die reservierte Kapazität von Azure Cosmos DB hilft Ihnen, Geld zu sparen, inde
 
 Reservierte Azure Cosmos DB-Kapazität kann Ihre Cosmos DB-Ausgaben erheblich reduzieren: Sie können mit einer Vorauszahlung für ein bzw. drei Jahre gegenüber den regulären Preisen bis zu 65 % sparen. Reservierte Kapazität stellt lediglich einen Abrechnungsrabatt dar, der keine Auswirkungen auf den Zustand Ihrer Azure Cosmos DB-Ressourcen zur Laufzeit hat.
 
-Die reservierte Kapazität von Azure Cosmos DB deckt den für Ihre Ressourcen bereitgestellten Durchsatz ab. Die Speicher- und Netzwerkkosten werden nicht abgedeckt. Sobald Sie eine Reservierung gekauft haben, werden die Durchsatzgebühren, die den Reservierungsattributen entsprechen, nicht mehr zu den Preisen der nutzungsbasierten Bezahlung abgerechnet. Weitere Informationen zu Reservierungen finden Sie im Artikel [Azure-Reservierungen](../billing/billing-save-compute-costs-reservations.md). 
+Die reservierte Kapazität von Azure Cosmos DB deckt den für Ihre Ressourcen bereitgestellten Durchsatz ab. Die Speicher- und Netzwerkkosten werden nicht abgedeckt. Sobald Sie eine Reservierung gekauft haben, werden die Durchsatzgebühren, die den Reservierungsattributen entsprechen, nicht mehr zu den Preisen der nutzungsbasierten Bezahlung abgerechnet. Weitere Informationen zu Reservierungen finden Sie im Artikel [Azure-Reservierungen](../billing/billing-save-compute-costs-reservations.md).
 
 Sie können die reservierte Azure Cosmos DB-Kapazität über das [Azure-Portal](https://portal.azure.com) erwerben. So erwerben Sie reservierte Kapazität:
 
@@ -48,7 +48,7 @@ Der Umfang der Reservierung sollte sich nach dem Gesamtdurchsatz richten, den di
 
 4. Füllen Sie die Pflichtfelder aus, wie in der folgenden Tabelle beschrieben:
 
-   ![Formular für die reservierte Kapazität ausfüllen](./media/cosmos-db-reserved-capacity/fill_reserved_capacity_form.png) 
+   ![Formular für die reservierte Kapazität ausfüllen](./media/cosmos-db-reserved-capacity/fill_reserved_capacity_form.png)
 
    |Feld  |BESCHREIBUNG  |
    |---------|---------|
@@ -61,17 +61,17 @@ Der Umfang der Reservierung sollte sich nach dem Gesamtdurchsatz richten, den di
 
 5. Überprüfen Sie den Preis der Reservierung im Abschnitt **Kosten**. Dieser Reservierungspreis gilt für Azure Cosmos DB-Ressourcen mit Durchsatz, die in allen Regionen bereitgestellt werden.  
 
-6. Wählen Sie die Option **Kaufen**. Nach einem erfolgreichen Kauf wird die folgende Seite angezeigt: 
+6. Wählen Sie die Option **Kaufen**. Nach einem erfolgreichen Kauf wird die folgende Seite angezeigt:
 
-   ![Formular für die reservierte Kapazität ausfüllen](./media/cosmos-db-reserved-capacity/reserved_capacity_successful.png) 
+   ![Formular für die reservierte Kapazität ausfüllen](./media/cosmos-db-reserved-capacity/reserved_capacity_successful.png)
 
-Nachdem Sie eine Reservierung gekauft haben, wird sie sofort auf alle vorhandenen Ressourcen von Azure Cosmos DB angewendet, die den Bedingungen der Reservierung entsprechen. Wenn Sie keine vorhandenen Azure Cosmos DB-Ressourcen haben, wird die Reservierung angewendet, wenn Sie eine neue Cosmos DB-Instanz bereitstellen, die den Bedingungen der Reservierung entspricht. In beiden Fällen beginnt der Zeitraum der Reservierung unmittelbar nach dem erfolgreichen Kauf. 
+Nachdem Sie eine Reservierung gekauft haben, wird sie sofort auf alle vorhandenen Ressourcen von Azure Cosmos DB angewendet, die den Bedingungen der Reservierung entsprechen. Wenn Sie keine vorhandenen Azure Cosmos DB-Ressourcen haben, wird die Reservierung angewendet, wenn Sie eine neue Cosmos DB-Instanz bereitstellen, die den Bedingungen der Reservierung entspricht. In beiden Fällen beginnt der Zeitraum der Reservierung unmittelbar nach dem erfolgreichen Kauf.
 
 Wenn Ihre Reservierung abläuft, werden Ihre Azure Cosmos DB-Instanzen weiter ausgeführt und zu den regulären nutzungsbasierten Gebühren abgerechnet.
 
 ## <a name="cancellation-and-exchanges"></a>Stornierung und Wechsel
 
-Hilfe zum Identifizieren der richtigen reservierten Kapazität finden Sie unter [Grundlegendes zur Anwendung des Rabatts für Reservierungen auf Azure Cosmos DB](../billing/billing-understand-cosmosdb-reservation-charges.md). Falls Sie eine Azure Cosmos DB-Reservierung stornieren oder wechseln müssen, wenden Sie sich unter `AskCosmosDB@microsoft.com` an das Azure Cosmos DB-Team.
+Hilfe zum Identifizieren der richtigen reservierten Kapazität finden Sie unter [Grundlegendes zur Anwendung des Rabatts für Reservierungen auf Azure Cosmos DB](../billing/billing-understand-cosmosdb-reservation-charges.md). Wenn Sie eine Azure Cosmos DB-Reservierung stornieren oder umtauschen müssen, lesen Sie [Reservierungsumtausch und -rückerstattung](../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -90,4 +90,3 @@ Der Reservierungsrabatt wird automatisch auf die Azure Cosmos DB-Ressourcen ange
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
 Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
-

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 4e609bf6d96fa9cc3f2dc179157ecd27178608f9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 672c62c440708f8e949d67d545bee2179c6066b2
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57860355"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894934"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Zugreifen auf Azure Cosmos DB über virtuelle Netzwerke (VNET)
 
@@ -55,9 +55,12 @@ NSG-Regeln werden verwendet, um die Konnektivität mit einem Subnetz mit virtuel
 ### <a name="are-service-endpoints-available-for-all-vnets"></a>Sind Dienstendpunkte für alle VNETs verfügbar?
 Nein, nur virtuelle Netzwerke mit Azure Resource Manager können einen Dienstendpunkt aktivieren. Klassische virtuelle Netzwerke unterstützen keine Dienstendpunkte.
 
+### <a name="can-i-accept-connections-from-within-public-azure-datacenters-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>Kann ich „Verbindungen aus öffentlichen Azure-Rechenzentren akzeptieren“, wenn der Zugriff auf den Dienstendpunkt für Azure Cosmos DB aktiviert ist?  
+Dies ist nur erforderlich, wenn Sie den Zugriff auf Ihr Azure Cosmos DB-Konto über andere Azure-Erstanbieterdienste wie Azure Data Factory, Azure Search oder einen beliebigen anderen Dienst ermöglichen möchten, der in einer bestimmten Azure-Region bereitgestellt wurde.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Einschränken des Azure Cosmos DB-Kontozugriffs aus Subnetzen in virtuellen Netzwerken](how-to-configure-vnet-service-endpoint.md)
-* [Konfigurieren der IP-Firewall für Ihr Azure Cosmos DB-Konto](how-to-configure-firewall.md)
+* [Konfigurieren der IP-Firewall für Ihr Azure Cosmos-Konto](how-to-configure-firewall.md)
 

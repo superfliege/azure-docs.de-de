@@ -1,6 +1,6 @@
 ---
-title: Bereitstellen von Kubernetes in Azure Stack | Microsoft Docs
-description: Erfahren Sie, wie Kubernetes in Azure Stack bereitgestellt wird.
+title: Bereitstellen von Kubernetes für die Verwendung von Azure Stack-Containern | Microsoft-Dokumentation
+description: Erfahren Sie, wie Kubernetes für die Verwendung von Containern in Azure Stack bereitgestellt wird.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,19 +15,19 @@ ms.date: 02/27/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 6b00f63fac0110a8964270b9cbcad5330ac44645
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 77275ec274a9c76918874007cfe564eea09e6de5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986242"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877192"
 ---
-# <a name="deploy-kubernetes-to-azure-stack"></a>Bereitstellen von Kubernetes in Azure Stack
+# <a name="deploy-kubernetes-to-use-containers-with-azure-stack"></a>Bereitstellen von Kubernetes für die Verwendung von Containern in Azure Stack
 
-*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 > [!Note]  
-> Kubernetes in Azure Stack befindet sich in der Vorschauphase. Das Szenario mit nicht verbundenem Azure Stack wird von der Preview zurzeit nicht unterstützt.
+> Kubernetes in Azure Stack befindet sich in der Vorschauphase. Ein Szenario mit nicht verbundenem Azure Stack wird von der Vorschau zurzeit nicht unterstützt.
 
 Sie können die Schritte in diesem Artikel befolgen, um die Ressourcen für Kubernetes in einem einzigen, koordinierten Vorgang bereitzustellen und einzurichten. Die Schritte verwenden eine Azure Resource Manager-Lösungsvorlage. Sie müssen die erforderlichen Informationen zu Ihrer Azure Stack-Installation sammeln, die Vorlage generieren und dann die Bereitstellung in der Cloud ausführen. Die Azure Stack-Vorlage verwendet nicht denselben verwalteten AKS-Dienst, der in der globalen Azure-Umgebung angeboten wird.
 
@@ -43,7 +43,7 @@ Sie können Kubernetes für Folgendes verwenden:
 
 Ihnen werden lediglich die Kosten für die Computenutzung in Rechnung gestellt, die von den Knoten benötigt wird, die Ihren Cluster unterstützen. Weitere Informationen finden Sie unter [Verbrauch und Abrechnung in Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-billing-and-chargeback).
 
-## <a name="deploy-kubernetes"></a>Bereitstellen von Kubernetes
+## <a name="deploy-kubernetes-to-use-containers"></a>Bereitstellen von Kubernetes für die Verwendung von Containern
 
 Die Schritte zum Bereitstellen eines Kubernetes-Clusters in Azure Stack richten sich nach Ihrem Identitätsverwaltungsdienst. Verifizieren Sie die von Ihrer Installation von Azure Stack verwendete Identitätsverwaltungslösung. Wenden Sie sich an ihren Azure Stack-Administrator, um Ihren Identitätsverwaltungsdienst zu verifizieren.
 

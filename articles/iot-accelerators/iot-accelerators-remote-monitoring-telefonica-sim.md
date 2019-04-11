@@ -1,6 +1,6 @@
 ---
 title: Integrieren von SIM-Daten in die Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie SIM-Daten von Telefónica in die Lösung für die Remoteüberwachung integriert werden.
+description: In diesem Artikel wird beschrieben, wie SIM-Daten von Telefónica in die Remoteüberwachungslösung integriert werden.
 author: hegate
 manager: ''
 ms.author: hegate

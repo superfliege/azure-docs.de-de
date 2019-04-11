@@ -134,7 +134,7 @@ In diesem Abschnitt schreiben Sie eine .NET-Konsolen-App, die C2D-Nachrichten an
 
    Diese Methode sendet eine neue C2D-Nachricht an das Gerät mit der ID `myFirstDevice`. Ändern Sie diesen Parameter nur, falls Sie den in [Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz ...](quickstart-send-telemetry-dotnet.md) verwendeten Parameter geändert haben.
 
-7. Fügen Sie abschließend der **Main**-Methode die folgenden Zeilen hinzu:
+7. Fügen Sie abschließend der **Main** -Methode die folgenden Zeilen hinzu:
 
    ``` csharp
    Console.WriteLine("Send Cloud-to-Device message\n");
@@ -146,7 +146,7 @@ In diesem Abschnitt schreiben Sie eine .NET-Konsolen-App, die C2D-Nachrichten an
    Console.ReadLine();
    ```
 
-8. Klicken Sie in Visual Studio mit der rechten Maustaste auf Ihre Projektmappe, und wählen Sie **Startprojekte festlegen**aus. Wählen Sie Mehrere Startprojekte aus, und wählen Sie dann die Aktion **Starten** für **ReadDeviceToCloudMessages**, **SimulatedDevice** und **SendCloudToDevice**.
+8. Klicken Sie in Visual Studio mit der rechten Maustaste auf Ihre Projektmappe, und wählen Sie **Startprojekte festlegen**aus. Wählen Sie Mehrere Startprojekte** aus, und wählen Sie dann die Aktion **Starten** für **ReadDeviceToCloudMessages**, **SimulatedDevice** und **SendCloudToDevice**.
 
 9. Drücken Sie **F5**. Alle drei Anwendungen sollten beginnen. Wählen Sie das Fenster **SendCloudToDevice** aus, und drücken Sie die **EINGABETASTE**. Die von der Geräte-App empfangene Meldung sollte angezeigt werden.
    
@@ -207,6 +207,6 @@ In diesem Abschnitt ändern Sie die **SendCloudToDevice**-App so, dass sie Feedb
 
 In dieser Anleitung haben Sie gelernt, wie C2D-Nachrichten gesendet und empfangen werden. 
 
-Beispiele vollständiger Lösungen, die IoT Hub nutzen, finden Sie unter [Azure IoT-Solution Accelerator für Remoteüberwachung](https://docs.microsoft.com/azure/iot-suite/).
+Beispiele vollständiger Lösungen, die IoT Hub nutzen, finden Sie unter [Azure IoT-Solution Accelerator für die Remoteüberwachung](https://docs.microsoft.com/azure/iot-suite/).
 
 Weitere Informationen zum Entwickeln von Lösungen mit IoT Hub finden Sie im [Entwicklungsleitfaden für IoT Hub](iot-hub-devguide.md).

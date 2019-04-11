@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: orspod
-ms.openlocfilehash: 4e2448b3043c194bda884963975d85536c329baf
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6138fadd060051c1b4264cd844ca2a4b8c28116a
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531639"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880031"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Kopieren von Daten in oder aus Azure Data Explorer mithilfe von Azure Data Factory
 
@@ -66,13 +66,13 @@ Folgende Eigenschaften werden für den mit Azure Data Explorer verknüpften Dien
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **AzureDataExplorer** festgelegt werden. | Ja |
-| endpoint | Endpunkt-URL des Azure Data Explorer-Clusters im Format `https://<clusterName>.<regionName>.kusto.windows.net ` | Ja |
+| endpoint | Endpunkt-URL des Azure Data Explorer-Clusters im Format `https://<clusterName>.<regionName>.kusto.windows.net` | Ja |
 | database | Name der Datenbank | Ja |
 | Mandant | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Dies ist, was Sie normalerweise als **Autoritäts-ID** in der [Kusto-Verbindungszeichenfolge](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties) kennen. Diese können Sie abrufen, indem Sie auf den rechten oberen Bereich im Azure-Portal zeigen. | Ja |
 | servicePrincipalId | Geben Sie die Client-ID der Anwendung an. Dies ist, was Sie normalerweise als **AAD-Anwendungsclient-ID** in der [Kusto-Verbindungszeichenfolge](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties) kennen. | Ja |
 | servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. Dies ist, was Sie normalerweise als **AAD-Anwendungsschlüssel** in der [Kusto-Verbindungszeichenfolge](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties) kennen. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 
-**Beispiel für Eigenschaften des verknüpften Diensts**
+**Beispiel für Eigenschaften des verknüpften Diensts:**
 
 ```json
 {

@@ -14,16 +14,16 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 4e92f2aeec21ccef5a6a553b17e099d54de7266a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4385e982b2a1da52ae55acf50c601108863c452a
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774336"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905952"
 ---
 # <a name="use-data-transfer-tools-for-azure-stack-storage"></a>Verwenden von Datenübertragungstools für Azure Stack-Speicher
 
-*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Microsoft Azure Stack bietet eine Reihe von Speicherdiensten für Datenträger, Blobs, Tabellen und Warteschlangen sowie Funktionen zur Kontoverwaltung. Sie können eine Reihe von Azure-Speichertools verwenden, um Daten zu verwalten oder in bzw. aus Azure Stack-Speicher zu verschieben. Dieser Artikel enthält eine Übersicht über die verfügbaren Tools.
 
@@ -71,7 +71,7 @@ Es gibt zwei Versionen des AzCopy-Hilfsprogramms: AzCopy unter Windows und AzCop
 
 ### <a name="azcopy-command-examples-for-data-transfer"></a>AzCopy-Beispielbefehle für die Datenübertragung
 
-Die folgenden Beispiele behandeln typische Szenarien für das Kopieren von Daten in und aus Azure Stack-Blobs. Weitere Informationen finden Sie unter [Übertragen von Daten mit AzCopy unter Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) bzw. unter [Übertragen von Daten mit AzCopy unter Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux).
+Die folgenden Beispiele behandeln typische Szenarien für das Kopieren von Daten in und aus Azure Stack-Blobs. Weitere Informationen finden Sie unter [Übertragen von Daten mit AzCopy unter Windows](../../storage/common/storage-use-azcopy.md) bzw. unter [Übertragen von Daten mit AzCopy unter Linux](../../storage/common/storage-use-azcopy-linux.md).
 
 ### <a name="download-all-blobs-to-a-local-disk"></a>Herunterladen aller Blobs auf einen lokalen Datenträger
 
@@ -156,7 +156,7 @@ In diesem Beispiel wird davon ausgegangen, dass Sie die [Installation von PowerS
    > [!NOTE]
    > Dieses Skript muss im Stammverzeichnis für **AzureStack_Tools** ausgeführt werden.
 
-```PowerShell  
+```powershell  
 # begin
 
 $ARMEvnName = "AzureStackUser" # set AzureStackUser as your Azure Stack environment name
@@ -263,8 +263,8 @@ Stellen Sie vor der Ausführung dieses Skript sicher, dass Sie eine Verbindung m
 1. Öffnen Sie Ihren bevorzugten Texteditor, in den Sie das kopierte vorhergehende Skript einfügen.
 2. Aktualisieren Sie die Skriptvariablen entsprechend Ihren Konfigurationseinstellungen.
 3. Nachdem Sie die erforderlichen Variablen aktualisiert haben, speichern Sie das Skript, und beenden Sie den Editor. In den nächsten Schritten wird vorausgesetzt, dass Sie Ihr **my_storage_sample.sh** genannt haben.
-4. Markieren Sie das Skript bei Bedarf als ausführbar:`chmod +x my_storage_sample.sh`
-5. Führen Sie das Skript aus. Beispielsweise in Bash:`./my_storage_sample.sh`
+4. Markieren Sie das Skript bei Bedarf als ausführbar: `chmod +x my_storage_sample.sh`
+5. Führen Sie das Skript aus. Beispiel in Bash: `./my_storage_sample.sh`
 
 ```azurecli
 #!/bin/bash
@@ -337,6 +337,6 @@ blobEndpoint myaccount.blob.local.azurestack.external
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Herstellen einer Verbindung von Storage-Explorer mit einem Azure Stack-Abonnement](azure-stack-storage-connect-se.md)
-* [Erste Schritte mit dem Storage-Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
+* [Erste Schritte mit Storage-Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Azure Stack-Speicher: Unterschiede und Überlegungen](azure-stack-acs-differences.md)
-* [Einführung in Azure Storage](../../storage/common/storage-introduction.md)
+* [Einführung in Microsoft Azure Storage](../../storage/common/storage-introduction.md)

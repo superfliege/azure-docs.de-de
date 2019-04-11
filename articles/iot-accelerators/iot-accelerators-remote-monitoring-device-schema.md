@@ -22,7 +22,7 @@ Sie können simulierte Geräte in der Remoteüberwachungslösung verwenden, um i
 Dieser Artikel beschreibt das Gerätemodellschema, das die Funktionen und das Verhalten eines simulierten Geräts bestimmt. Das Gerätemodell ist in einer JSON-Datei gespeichert.
 
 > [!NOTE]
-> Dieses Gerätemodellschema gilt nur für simulierte Geräte, die im Gerätesimulationsdienst gehostet werden. Wenn Sie ein echtes Gerät erstellen möchten, finden Sie weitere Informationen unter [Herstellen einer Verbindung zwischen Ihrem Gerät und dem Solution Accelerator für Remoteüberwachung](iot-accelerators-connecting-devices.md).
+> Dieses Gerätemodellschema gilt nur für simulierte Geräte, die im Gerätesimulationsdienst gehostet werden. Wenn Sie ein echtes Gerät erstellen möchten, finden Sie weitere Informationen unter [Herstellen einer Verbindung zwischen Ihrem Gerät und dem Solution Accelerator für die Remoteüberwachung](iot-accelerators-connecting-devices.md).
 
 Die folgenden Artikel beziehen sich auf den aktuellen Artikel:
 

@@ -1,6 +1,6 @@
 ---
 title: In Azure Stack unterstützte VM-Größen | Microsoft-Dokumentation
-description: Referenz zu unterstützten VM-Größen in Azure Stack
+description: Referenz zu unterstützten VM-Größen in Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -10,16 +10,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 04/02/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 0188de6d3a29034ec00999b2e07cab6ddb911631
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 79d18f938dc51bb7eec62120e8bc6743cb2840c4
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58176258"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886470"
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>In Azure Stack unterstützte VM-Größen
 
@@ -29,7 +29,7 @@ In diesem Artikel sind die in Azure Stack verfügbaren VM-Größen aufgeführt.
 
 Die Datenträger-IOPS (Input/Output Operations Per Second, Ein-/Ausgabevorgänge pro Sekunde) in Azure Stack sind eine Funktion der VM-Größe, nicht des Datenträgertyps. Dies bedeutet, dass der IOPS-Grenzwert für einen einzelnen zusätzlichen Datenträger für einen virtuellen Computer der Standard_Fs-Reihe 2.300 IOPS beträgt – unabhängig davon, ob Sie einen Datenträger des Typs SSD oder HDD auswählen. Die IOPS-Grenzwerte bilden eine Obergrenze (zulässiges Maximum), um den „Noisy Neighbour“-Effekt zu verhindern. Sie sind keine IOPS-Garantie für eine VM bestimmter Größe.
 
-## <a name="general-purpose"></a>Allgemeiner Zweck
+## <a name="virtual-machine-general-purpose"></a>Universelle VM-Größen
 
 Universelle VM-Größen zeichnen sich durch ein ausgewogenes Verhältnis zwischen CPU und Arbeitsspeicher aus. Sie werden für Test- und Entwicklungsaufgaben, für kleine bis mittlere Datenbanken sowie für Webserver mit geringer bis mittlerer Auslastung verwendet. Jeder Datenträger stellt für die Premium-VM-Größen 2.300 IOPS bereit. Ausgenommen hiervon ist die Basic A-Serie. Für Basic A beträgt die Datenträgergröße 500 IOPS.
 
@@ -185,4 +185,4 @@ Arbeitsspeicheroptimierte VM-Größen bieten ein hohes Arbeitsspeicher-zu-CPU-Ve
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Überlegungen zu virtuellen Computern in Azure Stack](azure-stack-vm-considerations.md)
+[Aspekte von virtuellen Computern in Azure Stack](azure-stack-vm-considerations.md)

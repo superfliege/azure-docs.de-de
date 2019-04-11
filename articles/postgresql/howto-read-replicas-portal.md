@@ -5,46 +5,46 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/19/2019
-ms.openlocfilehash: 24a37775298d6c6b40ec49f34158fcb77f26a379
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/01/2019
+ms.openlocfilehash: bf1fb1c1343173949ecb6348284cb537282b277b
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113213"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58846961"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-portal"></a>Erstellen und Verwalten von Lesereplikaten über das Azure-Portal
 
 In diesem Artikel erfahren Sie, wie Sie Lesereplikate in Azure Database for PostgreSQL über das Azure-Portal erstellen und verwalten. Weitere Informationen zu Lesereplikaten finden Sie in der [Übersicht](concepts-read-replicas.md).
 
-> [!IMPORTANT]
-> Das Feature für Lesereplikate befindet sich in der öffentlichen Vorschau.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Ein [Azure Database for PostgreSQL-Server](quickstart-create-server-database-portal.md), der als Masterserver verwendet wird
 
 ## <a name="prepare-the-master-server"></a>Vorbereiten des Masterservers
-Diese Schritte müssen durchgeführt werden, um einen Masterserver in den Tarifen „Universell“ und „Arbeitsspeicheroptimiert“ vorzubereiten.
-
-Auf dem Masterserver muss der Parameter `azure.replication_support` auf **REPLICA** festgelegt werden. Bei Änderung dieses Parameters ist ein Neustart des Servers erforderlich, damit die Änderung wirksam wird.
+Diese Schritte müssen durchgeführt werden, um einen Masterserver in den Tarifen „Universell“ und „Arbeitsspeicheroptimiert“ vorzubereiten. Der Masterserver wird für die Replikation vorbereitet, indem der Parameter azure.replication_support festgelegt wird. Bei einer Änderung des Replikationsparameters ist ein Neustart des Servers erforderlich, damit die Änderung wirksam wird. Im Azure-Portal werden diese beiden Schritte durch eine einzige Schaltfläche gekapselt: **Replikationsunterstützung aktivieren**.
 
 1. Wählen Sie den vorhandenen Azure Database for PostgreSQL-Server, den Sie als Masterserver verwenden möchten, im Azure-Portal aus.
 
-2. Wählen Sie im Menü auf der linken Seite **Serverparameter** aus.
+2. Wählen Sie auf der Randleiste des Servers unter **EINSTELLUNGEN** die Option **Replikation** aus.
 
-3. Suchen Sie nach dem Parameter `azure.replication_support`.
+3. Wählen Sie **Replikationsunterstützung aktivieren** aus. 
 
-   ![Suche nach dem Parameter „azure.replication_support“](./media/howto-read-replicas-portal/azure-replication-parameter.png)
+   ![Aktivieren der Replikationsunterstützung](./media/howto-read-replicas-portal/enable-replication-support.png)
 
-4. Legen Sie die Parameterwert von `azure.replication_support` auf **REPLICA** fest. Wählen Sie **Speichern**, um Ihre Änderungen zu speichern.
+4. Bestätigen Sie, dass Sie die Replikationsunterstützung aktivieren möchten. Durch diesen Vorgang wird die Masterserver neu gestartet. 
 
-   ![Festlegen des Parameters auf REPLICA und Speichern der Änderungen](./media/howto-read-replicas-portal/save-parameter-replica.png)
+   ![Bestätigen der Aktivierung der Replikationsunterstützung](./media/howto-read-replicas-portal/confirm-enable-replication.png)
+   
+5. Sie erhalten zwei Azure-Portalbenachrichtigungen, sobald der Vorgang abgeschlossen ist. Es gibt eine Benachrichtigung zur Aktualisierung des Serverparameters. Eine weitere Benachrichtigung bezieht sich auf den Neustart des Servers, der unmittelbar erfolgt.
 
-5. Nachdem Sie die Änderungen gespeichert haben, erhalten Sie eine Benachrichtigung:
+   ![Erfolgsbenachrichtigung: aktivieren](./media/howto-read-replicas-portal/success-notifications-enable.png)
 
-   ![Benachrichtigung zu Speichervorgang](./media/howto-read-replicas-portal/parameter-save-notification.png)
+6. Aktualisieren Sie die Azure-Portalseite zum Aktualisieren der Replikationssymbolleiste. Sie können jetzt schreibgeschützte Replikate für diesen Server erstellen.
 
-6. Starten Sie den Server neu, um die Änderungen zu übernehmen. Die Vorgehensweise zum Neustart eines Servers finden Sie unter [Neustart eines Azure Database for PostgreSQL-Servers über das Azure-Portal](howto-restart-server-portal.md).
+   ![Aktualisierte Symbolleiste](./media/howto-read-replicas-portal/updated-toolbar.png)
+   
+Das Aktivieren der Replikationsunterstützung pro Masterserver ein einmaliger Vorgang. Eine Schaltfläche **Replikationsunterstützung deaktivieren** steht Ihnen ebenfalls zur Verfügung. Es wird nicht empfohlen, die Replikationsunterstützung zu deaktivieren, es sei denn, Sie sind sicher, dass Sie niemals ein Replikat auf diesem Masterserver erstellen werden. Sie können die Replikationsunterstützung nicht deaktivieren, solange Ihr Masterserver über vorhandene Replikate verfügt.
 
 
 ## <a name="create-a-read-replica"></a>Erstellen eines Lesereplikats
@@ -52,9 +52,7 @@ Führen Sie die folgenden Schritte aus, um ein Lesereplikat zu erstellen:
 
 1. Wählen Sie den vorhandenen Azure Database for PostgreSQL-Server aus, den Sie als Masterserver verwenden möchten. 
 
-2. Wählen Sie im Servermenü unter **EINSTELLUNGEN** die Option **Replikation** aus.
-
-   Wenn Sie den Parameter `azure.replication_support` auf einem universellen oder arbeitsspeicheroptimierten Masterserver nicht auf **REPLICA** festgelegt und den Server nicht neu gestartet haben, erhalten Sie eine Benachrichtigung. Führen Sie diese Schritte aus, bevor Sie das Replikat erstellen.
+2. Wählen Sie auf der Randleiste des Servers unter **EINSTELLUNGEN** die Option **Replikation** aus.
 
 3. Wählen Sie **Replikat hinzufügen**.
 

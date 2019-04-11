@@ -14,18 +14,20 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 2a4c3adb39ebf6e58770348eccc8c78e8ff92167
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 9224ecebed35a631514c5254703ad2694675d40e
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804466"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049619"
 ---
 # <a name="infrastructure-as-code"></a>Infrastructure-as-Code
 
 Erstellen Sie in einem Produktionsszenario Azure Service Fabric-Cluster mithilfe von Resource Manager-Vorlagen. Resource Manager-Vorlagen bieten bessere Steuerungsmöglichkeiten für die Ressourceneigenschaften und stellen sicher, dass das Ressourcenmodell konsistent ist.
 
 Resource Manager-Beispielvorlagen für Windows und Linux stehen in den [Azure-Beispielen auf GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates) zur Verfügung. Diese Vorlagen können als Ausgangspunkt für Ihre Clustervorlage verwendet werden. Laden Sie `azuredeploy.json` und `azuredeploy.parameters.json` herunter, und bearbeiten Sie die Dateien entsprechend Ihren Anforderungen.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Verwenden Sie die folgenden Azure CLI-Befehle, um die im vorhergehenden Schritt heruntergeladenen Vorlagen `azuredeploy.json` und `azuredeploy.parameters.json` bereitzustellen:
 
@@ -45,8 +47,8 @@ $Location="westus"
 $Template="azuredeploy.json"
 $Parameters="azuredeploy.parameters.json"
 
-New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
-New-AzureRmResourceGroupDeployment -Name $ResourceGroupName -TemplateFile $Template -TemplateParameterFile $Parameters
+New-AzResourceGroup -Name $ResourceGroupName -Location $Location
+New-AzResourceGroupDeployment -Name $ResourceGroupName -TemplateFile $Template -TemplateParameterFile $Parameters
 ```
 
 ## <a name="azure-service-fabric-resources"></a>Azure Service Fabric-Ressourcen

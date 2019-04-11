@@ -4,7 +4,7 @@ description: Informationen über die Kommunikations- und Konnektivitätsarchitek
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
-ms.custom: ''
+ms.custom: fasttrack-edit
 ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 02/26/2019
-ms.openlocfilehash: 6ef020ff1054416e2b9af5af824b9aa27f0b1e64
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: f08b22f24dfde41646f56dc1ecd9777f267620ee
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247238"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651311"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Konnektivitätsarchitektur für eine verwaltete Instanz in Azure SQL-Datenbank 
 
@@ -107,8 +107,11 @@ Stellen Sie eine verwaltete Instanz in einem dedizierten Subnetz im virtuellen N
 
 | NAME       |Port          |Protokoll|Quelle           |Ziel|Aktion|
 |------------|--------------|--------|-----------------|-----------|------|
-|management  |80, 443, 12000|TCP     |Beliebig              |Internet   |ZULASSEN |
+|management  |80, 443, 12000|TCP     |Beliebig              |AzureCloud  |ZULASSEN |
 |mi_subnet   |Beliebig           |Beliebig     |Beliebig              |MI-SUBNETZ*  |ZULASSEN |
+
+> [!IMPORTANT]
+> Stellen Sie sicher, dass es nur eine Regel für eingehenden Datenverkehr für die Ports 9000, 9003, 1438, 1440, 1452 und eine Regel für ausgehenden Datenverkehr für die Ports 80, 443, 12000 gibt. Die Bereitstellung von verwalteten Instanzen über ARM-Bereitstellungen schlägt fehl, wenn Regeln für eingehenden und ausgehenden Datenverkehr für jeden Port separat konfiguriert werden. Wenn für diese Ports separate Regeln gelten, schlägt die Bereitstellung mit dem Fehlercode `VnetSubnetConflictWithIntendedPolicy` fehl.
 
 \* MI-SUBNETZ bezieht sich auf den IP-Adressbereich für das Subnetz in der Form 10.x.x.x/y. Diese Informationen finden Sie im Azure-Portal in den Subnetzeigenschaften.
 
@@ -167,6 +170,6 @@ Wenn das virtuelle Netzwerk ein benutzerdefiniertes DNS enthält, fügen Sie ein
 - [Berechnen Sie die Größe des Subnetzes](sql-database-managed-instance-determine-size-vnet-subnet.md), in dem Sie verwaltete Instanzen bereitstellen möchten.
 - Erfahren Sie, wie Sie eine verwaltete Instanz erstellen:
   - Im [Azure-Portal](sql-database-managed-instance-get-started.md).
-  - Mit [PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/).
+  - Mit [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md).
   - Mit [einer Azure Resource Manager-Vorlage](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/).
   - Mit [einer Azure Resource Manager-Vorlage (mit JumpBox, in die SSMS integriert ist)](https://portal.azure.com/).

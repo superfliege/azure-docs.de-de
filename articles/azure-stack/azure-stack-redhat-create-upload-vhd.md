@@ -3,7 +3,7 @@ title: Erstellen und Hochladen einer VHD-Datei mit Red Hat Enterprise Linux zur 
 description: Erfahren Sie, wie Sie eine virtuelle Azure-Festplatte (Virtual Hard Disk, VHD) erstellen und hochladen, die ein Red Hat-Linux-Betriebssystem enthält.
 services: azure-stack
 documentationcenter: ''
-author: JeffGoldner
+author: mattbriggs
 manager: BradleyB
 editor: ''
 tags: ''
@@ -13,15 +13,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
-ms.author: jeffgo
+ms.date: 03/28/2019
+ms.author: mabrigg
+ms.reviewer: jeffgo
 ms.lastreviewed: 08/15/2018
-ms.openlocfilehash: ad0419cee3fc5c838d6d81adf9040432b9feaf07
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e287a6f436b51f55d9a5aa59dbbe2a195015c292
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242228"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883118"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure-stack"></a>Vorbereiten eines auf Red Hat basierenden virtuellen Computers für Azure Stack
 
@@ -100,6 +101,13 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie bereits eine ISO-Datei von 
 
     ```bash
     sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```
+
+1. Beenden und deinstallieren Sie die Cloudinitialisierung:
+
+    ```bash
+    systemctl stop cloud-init
+    yum remove cloud-init
     ```
 
 1. Stellen Sie sicher, dass der SSH-Server installiert und so konfiguriert ist, dass er beim Booten hochfährt. Ergänzen Sie `/etc/ssh/sshd_config` um die folgende Zeile:
@@ -246,15 +254,17 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie bereits eine ISO-Datei von 
     dracut -f -v
     ```
 
-1. Deinstallieren Sie die Cloud-Initialisierung:
+1. Beenden und deinstallieren Sie die Cloudinitialisierung:
 
     ```bash
+    systemctl stop cloud-init
     yum remove cloud-init
     ```
 
 1. Stellen Sie sicher, dass der SSH-Server installiert und konfiguriert ist, damit er beim Starten hochfährt:
 
     ```bash
+    systemctl stop cloud-init
     systemctl enable sshd
     ```
 
@@ -265,22 +275,55 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie bereits eine ISO-Datei von 
     ClientAliveInterval 180
     ```
 
-1. Das WALinuxAgent-Paket `WALinuxAgent-<version>` wurde in das Red Hat Extras-Repository übertragen. Aktivieren Sie das Extras-Repository, indem Sie den folgenden Befehl ausführen:
+1. Wenn Sie eine benutzerdefinierte VHD für Azure Stack erstellen, denken Sie daran, dass die WALinuxAgent-Versionen zwischen 2.2.20 und 2.2.35.1 (beide exklusiv) nicht in Azure Stack-Umgebungen funktioniert, die einen Build vor 1903 ausführen. Um dieses Problem zu beheben, wenden Sie den Hotfix 1901/1902 an, oder folgen Sie der zweiten Hälfte dieses Anleitungsteils. 
+
+Wenn Sie einen Azure Stack-Build 1903 (oder höher) ausführen oder den Hotfix 1901/1902 installiert haben, laden Sie das WALinuxAgent-Paket aus dem Redhat-Repository „extras“ herunter:
+    
+   Das WALinuxAgent-Paket `WALinuxAgent-<version>` wurde in das Red Hat Extras-Repository übertragen. Aktivieren Sie das Repository „extras“, indem Sie den folgenden Befehl ausführen:
 
     ```bash
     subscription-manager repos --enable=rhel-7-server-extras-rpms
     ```
 
-1. Installieren Sie den Azure Linux-Agent, indem Sie den folgenden Befehl ausführen:
+   Installieren Sie den Azure Linux-Agent, indem Sie den folgenden Befehl ausführen:
 
     ```bash
     yum install WALinuxAgent
     ```
 
-    Aktivieren Sie den Waagent-Dienst:
+   Aktivieren Sie den Waagent-Dienst:
 
     ```bash
     systemctl enable waagent.service
+    ```
+    
+    
+Wenn Sie einen Azure Stack-Build vor 1903 verwenden und den Hotfix 1901/1902 nicht installiert haben, befolgen Sie diese Anweisungen, um den WALinuxAgent herunterzuladen:
+    
+   a.   Herunterladen der Setuptools
+    ```bash
+    wget https://pypi.python.org/packages/source/s/setuptools/setuptools-7.0.tar.gz --no-check-certificate
+    tar xzf setuptools-7.0.tar.gz
+    cd setuptools-7.0
+    ```
+   b. Laden Sie die neueste Version des Agents von unserem GitHub herunter, und entpacken Sie sie. Dies ist ein Beispiel, in dem wir die Version „2.2.36“ aus dem GitHub-Repository herunterladen.
+    ```bash
+    wget https://github.com/Azure/WALinuxAgent/archive/v2.2.36.zip
+    unzip v2.2.36.zip
+    cd WALinuxAgent-2.2.36
+    ```
+    c. Install setup.py
+    ```bash
+    sudo python setup.py install
+    ```
+    d. Restart waagent
+    ```bash
+    sudo systemctl restart waagent
+    ```
+    e. Test if the agent version matches the one your downloaded. For this example, it should be 2.2.36.
+    
+    ```bash
+    waagent -version
     ```
 
 1. Erstellen Sie auf dem Betriebssystem-Datenträger keinen Auslagerungsbereich.
@@ -420,6 +463,13 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie bereits einen virtuellen Co
 
     ```bash
     dracut -f -v
+    ```
+
+1. Beenden und deinstallieren Sie die Cloudinitialisierung:
+
+    ```bash
+    systemctl stop cloud-init
+    yum remove cloud-init
     ```
 
 1. Stellen Sie sicher, dass der SSH-Server installiert und konfiguriert ist, damit er beim Booten hochfährt. Dies ist normalerweise die Standardeinstellung. Ergänzen Sie `/etc/ssh/sshd_config` um die folgende Zeile:
@@ -581,6 +631,10 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie bereits einen virtuellen Co
     Install latest repo update
     yum update -y
 
+    Stop and Uninstall cloud-init
+    systemctl stop cloud-init
+    yum remove cloud-init
+    
     Enable extras repo
     subscription-manager repos --enable=rhel-7-server-extras-rpms
 
@@ -657,15 +711,15 @@ Um dieses Problem zu beheben, müssen Sie „initramfs“ Hyper-V-Module hinzuf�
 
 Bearbeiten Sie `/etc/dracut.conf`, und fügen Sie den folgenden Inhalt hinzu:
 
-    ```sh
-    add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
-    ```
+```sh
+add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
+```
 
 Erstellen Sie „initramfs“ neu:
 
-    ```bash
-    dracut -f -v
-    ```
+```bash
+dracut -f -v
+```
 
 Weitere Informationen finden Sie unter [Erneutes Erstellen von „initramfs“](https://access.redhat.com/solutions/1958) (in englischer Sprache).
 

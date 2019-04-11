@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 37e3dbb5f69d7319e0b56a5d209e0487e0562e00
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6ab5ee923cc439901149a26d7af4b57f9933ee19
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838798"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905884"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime
 Bei der Integration Runtime (IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Weitere Informationen zur Integration Runtime finden Sie unter [Integrationslaufzeit in Azure Data Factory](concepts-integration-runtime.md).
@@ -53,7 +53,7 @@ Hier ist ein allgemeiner Datenfluss als Zusammenfassung der Schritte zum Kopiere
 ![Allgemeine Übersicht](media/create-self-hosted-integration-runtime/high-level-overview.png)
 
 1. Der Datenentwickler erstellt eine selbstgehostete Integration Runtime in einer Azure Data Factory per PowerShell-Cmdlet. Derzeit wird dieses Feature vom Azure-Portal nicht unterstützt.
-2. Der Datenentwickler erstellt einen verknüpften Dienst für einen lokalen Datenspeicher, indem er die Instanz der selbstgehosteten Integration Runtime angibt, die zum Verbinden der Datenspeicher verwendet werden soll. Beim Einrichten des verknüpften Diensts verwendet der Datenentwickler die Anwendung „Anmeldeinformationsverwaltung“ (derzeit nicht unterstützt), um die Authentifizierungstypen und Anmeldeinformationen festzulegen. Das Dialogfeld der Anwendung „Anmeldeinformationsverwaltung“ kommuniziert mit dem Datenspeicher, um die Verbindung zu testen, und mit der selbstgehosteten Integration Runtime, um Anmeldeinformationen zu speichern.
+2. Der Datenentwickler erstellt einen verknüpften Dienst für einen lokalen Datenspeicher, indem er die Instanz der selbstgehosteten Integration Runtime angibt, die zum Verbinden der Datenspeicher verwendet werden soll.
 3. Über den Knoten der selbstgehosteten Integration Runtime werden die Anmeldeinformationen per DPAPI (Windows Data Protection Application Programming Interface) verschlüsselt und lokal gespeichert. Falls mehrere Knoten festgelegt sind, um Hochverfügbarkeit zu erzielen, werden die Anmeldeinformationen für andere Knoten weiter synchronisiert. Jeder Knoten verschlüsselt die Anmeldeinformationen mithilfe von DPAPI und speichert sie lokal. Die Synchronisierung der Anmeldeinformationen ist für den Datenentwickler transparent und wird von der selbstgehosteten IR verarbeitet.    
 4. Der Data Factory-Dienst kommuniziert für die Planung und Verwaltung von Aufträgen mit der selbstgehosteten Integration Runtime. Hierfür wird ein *Steuerungskanal* genutzt, der eine freigegebene Azure Service Bus-Warteschlange verwendet. Wenn ein Aktivitätsauftrag ausgeführt werden muss, reiht Data Factory die Anforderung zusammen mit den Anmeldeinformationen in die Warteschlange ein (falls Anmeldeinformationen nicht bereits unter der selbstgehosteten Integrationslaufzeit gespeichert sind). Die selbstgehostete Integration Runtime startet den Auftrag, nachdem die Warteschlange abgefragt wurde.
 5. Die selbstgehostete Integration Runtime kopiert Daten aus einem lokalen Speicher in einen Cloudspeicher oder in umgekehrter Richtung. Dies hängt davon ab, wie die Kopieraktivität in der Datenpipeline konfiguriert ist. Für diesen Schritt kommuniziert die selbstgehostete Integration Runtime über einen sicheren Kanal (HTTPS) direkt mit einem cloudbasierten Speicherdienst, z.B. Azure Blob Storage.
@@ -329,7 +329,7 @@ Wenn Sie ähnliche Fehler wie die unten aufgeführten feststellen, liegt dies me
     ```
 
 ### <a name="enabling-remote-access-from-an-intranet"></a>Aktivieren des Remotezugriffs über das Intranet  
-Falls Sie PowerShell oder die Anwendung für die Anmeldeinformationsverwaltung verwenden, um Anmeldeinformationen eines anderen Computers im Netzwerk zu verschlüsseln, auf dem die selbstgehostete Integration Runtime nicht installiert ist, können Sie die Option **Remotezugriff über das Intranet** aktivieren. Falls Sie PowerShell oder die Anwendung für die Anmeldeinformationsverwaltung verwenden, um Anmeldeinformationen auf dem gleichen Computer zu verschlüsseln, auf dem die selbstgehostete Integration Runtime installiert ist, können Sie **Remotezugriff über das Intranet** nicht aktivieren.
+Wenn Sie PowerShell verwenden, um Anmeldeinformationen eines anderen Computers im Netzwerk zu verschlüsseln, auf dem die selbstgehostete Integration Runtime nicht installiert ist, können Sie die Option **Remotezugriff über das Intranet** aktivieren. Wenn Sie PowerShell verwenden, um Anmeldeinformationen auf dem gleichen Computer zu verschlüsseln, auf dem die selbstgehostete Integration Runtime installiert ist, können Sie **Remotezugriff über das Intranet** nicht aktivieren.
 
 Sie sollten den **Remotezugriff über das Intranet** aktivieren, bevor Sie einen weiteren Knoten für Hochverfügbarkeit und Skalierbarkeit hinzufügen.  
 
@@ -339,9 +339,7 @@ Bei Verwendung einer Drittanbieterfirewall können Sie den Port 8060 (oder den v
 
 ```
 msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
-```
-> [!NOTE]
-> Die Anwendung für die Anmeldeinformationsverwaltung steht noch nicht für die Verschlüsselung von Anmeldeinformationen in Azure Data Factory V2 zur Verfügung.  
+``` 
 
 Falls Sie den Port 8060 auf dem Computer für die selbstgehostete Integration Runtime nicht öffnen, sollten Sie andere Verfahren als die Anwendung „Anmeldeinformationen festlegen“ nutzen, um Anmeldeinformationen für den Datenspeicher zu konfigurieren. Beispielsweise können Sie das **New-AzDataFactoryV2LinkedServiceEncryptCredential**-PowerShell-Cmdlet verwenden.
 

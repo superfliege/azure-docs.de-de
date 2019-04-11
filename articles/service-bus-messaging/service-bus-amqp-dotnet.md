@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 96d84b2328ffb83d5c1ea7218b17314a537fa45b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 82301a17bb461b6d8733d5f046fe791ffbcf3ecb
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57904557"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885705"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Verwenden von Service Bus aus .NET mit AMQP 1.0
 
@@ -93,7 +93,7 @@ Um die Interoperabilität mit Nicht-.NET-Clients zu erleichtern, verwenden Sie n
 | --- | --- | --- |
 | Uri |`<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>` |Uri.AbsoluteUri |
 | DateTimeOffset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |DateTimeOffset.UtcTicks |
-| TimeSpan |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> ` |TimeSpan.Ticks |
+| TimeSpan |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type>` |TimeSpan.Ticks |
 
 ## <a name="behavioral-differences"></a>Verhaltensunterschiede
 
@@ -117,7 +117,7 @@ Die [.NET-APIs](/dotnet/api/) stellen mehrere Einstellungen zum Steuern des Verh
 Möchten Sie mehr erfahren? Nutzen Sie die folgenden Links:
 
 * [Übersicht über Service Bus AMQP]
-* [AMQP 1.0 – Protokollleitfaden]
+* [Leitfaden zum AMQP 1.0-Protokoll]
 
 [Create a Service Bus namespace using the Azure portal]: service-bus-create-namespace-portal.md
 [DataContractSerializer]: https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer.aspx
@@ -127,5 +127,5 @@ Möchten Sie mehr erfahren? Nutzen Sie die folgenden Links:
 [NuGet]: https://nuget.org/packages/WindowsAzure.ServiceBus/
 [Azure portal]: https://portal.azure.com
 [Übersicht über Service Bus AMQP]: service-bus-amqp-overview.md
-[AMQP 1.0 – Protokollleitfaden]: service-bus-amqp-protocol-guide.md
+[Leitfaden zum AMQP 1.0-Protokoll]: service-bus-amqp-protocol-guide.md
 

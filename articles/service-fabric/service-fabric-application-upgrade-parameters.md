@@ -4,7 +4,7 @@ description: Beschreibt Parameter im Zusammenhang mit dem Upgrade einer Service 
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: a4170ac6-192e-44a8-b93d-7e39c92a347e
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2018
 ms.author: subramar
-ms.openlocfilehash: 73b48525566f9bf0107ba3b029c516ca294ca141
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 9a93c0993ee45e72b11b023982dfbbe8c6528272
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099191"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670616"
 ---
 # <a name="application-upgrade-parameters"></a>Parameter für Anwendungsupgrades
 In diesem Artikel werden die verschiedenen Parameter beschrieben, die während des Upgrades einer Azure Service Fabric-Anwendung gelten. Parameter für Anwendungsupgrades steuern bei Upgrades angewendete Timeouts und Integritätsprüfungen, und geben die Richtlinien an, die bei einem Upgradefehler angewendet werden. Anwendungsparameter gelten für Upgrades mit:
@@ -94,11 +94,12 @@ Verwenden Sie für Service Fabric-Anwendungsupgrades mit der Service Fabric-CLI 
 
 | Parameter | BESCHREIBUNG |
 | --- | --- |
-| application-id  |Die ID der Anwendung, die aktualisiert wird. <br> Dies ist üblicherweise der vollständige Name der Anwendung ohne das URI-Schema „fabric:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „~“ als Trennzeichen verwendet. Hat eine Anwendung beispielsweise den Namen „fabric://meineapp/app1“, hat die Anwendungsidentität in 6.0 und höher den Wert „meineapp~app1“ und in früheren Versionen den Wert „meineapp/app1“.|
+| application-id  |Die ID der Anwendung, die aktualisiert wird. <br> Dies ist üblicherweise der vollständige Name der Anwendung ohne das URI-Schema „fabric:“. Ab Version 6.0 wird für hierarchische Namen das Zeichen „\~“ als Trennzeichen verwendet. Hat der Dienst beispielsweise den Namen „fabric/meineapp/app1“, weist die Dienstidentität in 6.0 und höher den Wert „meineapp\~app1“ und in früheren Versionen den Wert „meineapp/app1“ auf.|
 application-version |Die Version des Anwendungstyps, für den das Upgrade durchgeführt wird.|
 Parameter  |Eine JSON-codierte Liste mit Außerkraftsetzungen von Anwendungsparametern, die beim Upgrade der Anwendung angewendet werden sollen.|
 
 ### <a name="optional-parameters"></a>Optionale Parameter
+
 | Parameter | BESCHREIBUNG |
 | --- | --- |
 default-service-health-policy | Eine [JSON](https://docs.microsoft.com/rest/api/servicefabric/sfclient-model-servicetypehealthpolicy)-codierte Spezifikation der Integritätsrichtlinie, die standardmäßig zur Auswertung der Integrität eines Diensttyps verwendet wird. Der Überblick ist standardmäßig leer. |

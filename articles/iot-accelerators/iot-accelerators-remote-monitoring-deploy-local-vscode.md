@@ -1,6 +1,6 @@
 ---
-title: Lokales Bereitstellen der Lösung für die Remoteüberwachung (Visual Studio Code) – Azure | Microsoft-Dokumentation
-description: In dieser Schrittanleitung wird gezeigt, wie der Solution Accelerator für Remoteüberwachung zu Test- und Entwicklungszwecken mithilfe von Visual Studio Code auf Ihrem lokalen Computer bereitgestellt wird.
+title: Lokales Bereitstellen der Remoteüberwachungslösung (Visual Studio Code) – Azure | Microsoft-Dokumentation
+description: In dieser Schrittanleitung wird gezeigt, wie der Solution Accelerator für die Remoteüberwachung zu Test- und Entwicklungszwecken mithilfe von Visual Studio Code auf Ihrem lokalen Computer bereitgestellt wird.
 author: avneet723
 manager: hegate
 ms.author: avneet723
@@ -102,4 +102,4 @@ Sie können auch die lokale Kopie des Remoteüberwachungsrepositorys löschen, d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach Bereitstellung der Lösung für die Remoteüberwachung können Sie sich als Nächstes [mit den Funktionen des Lösungsdashboards vertraut machen](quickstart-remote-monitoring-deploy.md).
+Nach Bereitstellung der Remoteüberwachungslösung können Sie sich als Nächstes [mit den Funktionen des Lösungsdashboards vertraut machen](quickstart-remote-monitoring-deploy.md).

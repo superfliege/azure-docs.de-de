@@ -8,13 +8,13 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 09/15/2017
-ms.author: robin.shahan
-ms.openlocfilehash: 7e7d6fad4268200e5410eb3d3ba3c1e2df06e967
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.author: robinsh
+ms.openlocfilehash: 556c10cc5ec5e528857a120dadb16c2a10202ed3
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57008609"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045882"
 ---
 # <a name="get-started-with-device-management-netnet"></a>Erste Schritte mit der Geräteverwaltung (.NET/.NET)
 
@@ -108,7 +108,7 @@ In diesem Abschnitt erstellen Sie (mit C#) eine .NET Konsolen-App, die einen Rem
    }
    ```
 
-7. Fügen Sie abschließend der **Main**-Methode die folgenden Zeilen hinzu:
+7. Fügen Sie abschließend der **Main** -Methode die folgenden Zeilen hinzu:
    
    ```csharp
    registryManager = RegistryManager.CreateFromConnectionString(connString);

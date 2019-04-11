@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: thoroet
 ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: 4c9c4bce0b63bd6d45522e2e069d1ae884916e09
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 17da540bd6077b8e045f125fd3cf13dc0e043000
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172398"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882037"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>Hinzufügen zusätzlicher Knoten zu Skalierungseinheiten in Azure Stack
 
@@ -31,7 +31,7 @@ Um einen Knoten zu einer Skalierungseinheit hinzuzufügen, agieren Sie in Azure 
 
 Das folgende Flussdiagramm zeigt den allgemeinen Prozess des Hinzufügens eines Knoten zu einer Skalierungseinheit.
 
-![Fluss zu Skalierungseinheit hinzufügen *&#42; ](media/azure-stack-add-scale-node/add-node-flow.png)Ob Ihr Originalgerätehersteller die Platzierung des physischen Serverracks vornimmt und die Firmware aktualisiert, hängt von Ihrem Supportvertrag ab.*
+![Fluss zu Skalierungseinheit hinzufügen](media/azure-stack-add-scale-node/add-node-flow.png): *Ob Ihr Originalgerätehersteller die Platzierung des physischen Serverracks vornimmt und die Firmware aktualisiert, hängt von Ihrem Supportvertrag ab.*
 
 Das Hinzufügen eines neuen Knotens kann mehrere Stunden oder Tage dauern.
 
@@ -63,7 +63,7 @@ Zum Hinzufügen neuer Knoten können Sie das Verwaltungsportal oder PowerShell v
 
 1. Melden Sie sich beim Azure Stack-Administratorportal als Azure Stack-Operator an.
 2. Navigieren Sie zu **+Ressource erstellen** > **Kapazität** > **Skalierungseinheitknoten**.
-   ![Scale Unit Node](media/azure-stack-add-scale-node/select-node1.png) (Skalierungseinheitknoten)
+   ![Skalierungseinheitknoten](media/azure-stack-add-scale-node/select-node1.png)
 3. Wählen Sie im Bereich **Knoten hinzufügen** die *Region* und dann die *Skalierungseinheit* aus, der der Knoten hinzugefügt werden soll. Geben Sie auch die *BMC-IP-ADRESSE* für den hinzugefügten Skalierungseinheitknoten an. Sie können immer nur jeweils einen Knoten hinzufügen.
    ![Hinzufügen von Knotendetails](media/azure-stack-add-scale-node/select-node2.png)
  
@@ -75,7 +75,7 @@ Fügen Sie mithilfe des Cmdlets **New-AzsScaleUnitNodeObject** einen Knoten hinz
 Ersetzen Sie die Werte *Knotennamen* und *IP-Adressen* durch Werte aus Ihrer Azure Stack-Umgebung, bevor Sie eines der folgenden PowerShell-Beispielskripts verwenden.
 
   > [!Note]  
-  > Bei der Benennung eines Knotens müssen Sie den Namen auf weniger als 15 Zeichen beschränken. Außerdem können Sie keinen Namen verwenden, der ein Leerzeichen oder eines der folgenden Zeichen enthält: `\`, `/`, `:`, `*`, `?`, `"`, `<`, `>`, `|`, `\`, `~`, `!`, `@`, `#`, `$`, `%`, `^`, `&`, `(`, `)`, `{`,` }`, `_`.
+  > Bei der Benennung eines Knotens müssen Sie den Namen auf weniger als 15 Zeichen beschränken. Außerdem können Sie keinen Namen verwenden, der ein Leerzeichen oder eines der folgenden Zeichen enthält: `\`, `/`, `:`, `*`, `?`, `"`, `<`, `>`, `|`, `\`, `~`, `!`, `@`, `#`, `$`, `%`, `^`, `&`, `(`, `)`, `{`,`}`, `_`.
 
 **Hinzufügen eines Knotens:**
   ```powershell

@@ -16,7 +16,7 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 04/01/2019
 ms.locfileid: "58792500"
 ---
-# <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Schnellstart: Testen einer cloudbasierten Lösung für die Remoteüberwachung
+# <a name="quickstart-try-a-cloud-based-remote-monitoring-solution"></a>Schnellstart: Testen einer cloudbasierten Remoteüberwachungslösung
 
 In dieser Schnellstartanleitung wird veranschaulicht, wie Sie den Azure IoT-Solution Accelerator für die Remoteüberwachung bereitstellen. Bei dieser cloudbasierten Lösung verwenden Sie die Seite mit dem **Dashboard**, um simulierte Geräte auf einer Karte zu visualisieren. Auf der Seite **Wartung** reagieren Sie auf eine Druckwarnung eines simulierten Kühlgeräts. Dieser Solution Accelerator kann als Ausgangspunkt für Ihre eigene Implementierung sowie als Lernhilfe verwendet werden.
 
@@ -57,7 +57,7 @@ Klicken Sie auf der Seite **Bereitgestellte Lösungen** auf Ihren neuen Solution
 
 ![Auswählen der neuen Lösung](./media/quickstart-remote-monitoring-deploy/choosenew.png)
 
-Im daraufhin angezeigten Bereich können Sie Informationen zum Solution Accelerator für die Remoteüberwachung einsehen. Wählen Sie **Go to your Solution Accelerator** (Zum Solution Accelerator wechseln) aus, um Ihren Solution Accelerator die Remoteüberwachung anzuzeigen:
+Im daraufhin angezeigten Bereich können Sie Informationen zum Solution Accelerator für die Remoteüberwachung einsehen. Wählen Sie **Go to your Solution Accelerator** (Zum Solution Accelerator wechseln) aus, um Ihren Solution Accelerator für die Remoteüberwachung anzuzeigen:
 
 ![Lösungsbereich](./media/quickstart-remote-monitoring-deploy/solutionpanel.png)
 

@@ -1,5 +1,5 @@
 ---
-title: Lokales Bereitstellen der Lösung für die Remoteüberwachung – Docker – Azure | Microsoft-Dokumentation
+title: Lokales Bereitstellen der Remoteüberwachungslösung – Docker – Azure | Microsoft-Dokumentation
 description: In dieser Schrittanleitung wird gezeigt, wie der Solution Accelerator für die Remoteüberwachung zu Test- und Entwicklungszwecken mithilfe von Docker auf Ihrem lokalen Computer bereitgestellt wird.
 author: avneet723
 manager: hegate
@@ -106,4 +106,4 @@ Entfernen Sie mit dem `docker-compose down --rmi all`-Befehl die Docker-Images, 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach Bereitstellung der Lösung für die Remoteüberwachung können Sie sich als Nächstes [mit den Funktionen des Lösungsdashboards vertraut machen](quickstart-remote-monitoring-deploy.md).
+Nach Bereitstellung der Remoteüberwachungslösung können Sie sich als Nächstes [mit den Funktionen des Lösungsdashboards vertraut machen](quickstart-remote-monitoring-deploy.md).

@@ -1,6 +1,6 @@
 ---
 title: Hinzufügen einer Seite zur Benutzeroberfläche der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
-description: Dieser Artikel zeigt Ihnen, wie Sie eine neue Seite in die Webbenutzeroberfläche des Accelerators für Remoteüberwachungslösung hinzufügen können.
+description: Dieser Artikel zeigt Ihnen, wie Sie eine neue Seite in die Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung hinzufügen können.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -15,9 +15,9 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2018
 ms.locfileid: "49094491"
 ---
-# <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Hinzufügen einer benutzerdefinierten Seite zur Webbenutzeroberfläche des Accelerators für Remoteüberwachung
+# <a name="add-a-custom-page-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Hinzufügen einer benutzerdefinierten Seite zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung
 
-Dieser Artikel zeigt Ihnen, wie Sie eine neue Seite in die Webbenutzeroberfläche des Accelerators für Remoteüberwachungslösung hinzufügen können. Der Artikel beschreibt Folgendes:
+Dieser Artikel zeigt Ihnen, wie Sie eine neue Seite in die Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung hinzufügen können. Der Artikel beschreibt Folgendes:
 
 - Vorbereiten einer lokalen Entwicklungsumgebung.
 - Hinzufügen einer neuen Seite zur Webbenutzeroberfläche.
@@ -33,7 +33,7 @@ Um die Schritte in diesem Leitfaden abzuschließen, muss die folgende Software a
 
 ## <a name="prepare-a-local-development-environment-for-the-ui"></a>Vorbereiten einer lokalen Entwicklungsumgebung für die Benutzeroberfläche
 
-Der Code der Benutzeroberfläche des Solution Accelerators für Remoteüberwachung wird mithilfe des JavaScript-Frameworks [React](https://reactjs.org/) implementiert. Sie finden den Quellcode im GitHub-Repository für die [Webbenutzeroberfläche für die Remoteüberwachung](https://github.com/Azure/pcs-remote-monitoring-webui).
+Der Code der Benutzeroberfläche des Solution Accelerators für die Remoteüberwachung wird mithilfe des JavaScript-Frameworks [React](https://reactjs.org/) implementiert. Sie finden den Quellcode im GitHub-Repository für die [Webbenutzeroberfläche für die Remoteüberwachung](https://github.com/Azure/pcs-remote-monitoring-webui).
 
 Um Änderungen an der Benutzeroberfläche vorzunehmen und zu testen, können Sie sie auf Ihrem lokalen Entwicklungscomputer ausführen. Optional kann sich die lokale Kopie mit einer bereitgestellten Instanz des Solution Accelerators verbinden, damit sie mit Ihren realen oder simulierten Geräten interagieren kann.
 
@@ -150,7 +150,7 @@ Sie können nun den Code bearbeiten, während die Website lokal ausgeführt wird
 
 ## <a name="optional-connect-to-deployed-instance"></a>[Optional] Verbinden mit der bereitgestellten Instanz
 
-Optional können Sie Ihre lokal ausgeführte Kopie der Webbenutzeroberfläche mit dem Solution Accelerator für Remoteüberwachung in der Cloud verbinden:
+Optional können Sie Ihre lokal ausgeführte Kopie der Webbenutzeroberfläche mit dem Solution Accelerator für die Remoteüberwachung in der Cloud verbinden:
 
 1. Bereitstellen einer **grundlegenden** Instanz des Solution Accelerators mit der **pcs**-CLI. Notieren Sie den Namen der Bereitstellung und die Anmeldeinformationen, die Sie für die VM angegeben haben. Weitere Informationen finden Sie unter [Bereitstellen der vorkonfigurierten Remoteüberwachungslösung über die Befehlszeilenschnittstelle](iot-accelerators-remote-monitoring-deploy-cli.md).
 
@@ -189,8 +189,8 @@ Optional können Sie Ihre lokal ausgeführte Kopie der Webbenutzeroberfläche mi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie Informationen zu den verfügbaren Ressourcen erhalten, mit denen Sie die Webbenutzeroberfläche im Solution Accelerator für Remoteüberwachung anpassen können.
+In diesem Artikel haben Sie Informationen zu den verfügbaren Ressourcen erhalten, mit denen Sie die Webbenutzeroberfläche im Solution Accelerator für die Remoteüberwachung anpassen können.
 
-Nachdem Sie eine Seite definiert haben, ist der nächste Schritt das [Hinzufügen eines benutzerdefinierten Dienstes zur Webbenutzeroberfläche des Accelerators für Remoteüberwachungslösung](iot-accelerators-remote-monitoring-customize-service.md), der Daten abruft, die in der Benutzeroberfläche angezeigt werden sollen.
+Nachdem Sie eine Seite definiert haben, ist der nächste Schritt das [Hinzufügen eines benutzerdefinierten Dienstes zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung](iot-accelerators-remote-monitoring-customize-service.md), der Daten abruft, die auf der Benutzeroberfläche angezeigt werden sollen.
 
-Weitere konzeptuelle Informationen zum Solution Accelerator für Remoteüberwachung finden Sie unter [Remoteüberwachungsarchitektur](iot-accelerators-remote-monitoring-sample-walkthrough.md).
+Weitere konzeptuelle Informationen zum Solution Accelerator für die Remoteüberwachung finden Sie unter [Remoteüberwachungsarchitektur](iot-accelerators-remote-monitoring-sample-walkthrough.md).

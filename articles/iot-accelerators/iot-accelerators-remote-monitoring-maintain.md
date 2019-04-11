@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Verwenden von Warnungen und Beheben von Geräteproblemen in der Lösung für die Remoteüberwachung – Azure | Microsoft-Dokumentation'
+title: 'Tutorial: Verwenden von Warnungen und Beheben von Geräteproblemen in der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation'
 description: In diesem Tutorial wird veranschaulicht, wie Sie Warnungen zum Identifizieren und Beheben von Problemen mit Geräten verwenden können, die mit dem Solution Accelerator für die Remoteüberwachung verbunden sind.
 author: dominicbetts
 manager: timlt

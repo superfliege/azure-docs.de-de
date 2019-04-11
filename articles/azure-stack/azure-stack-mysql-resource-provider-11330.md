@@ -16,16 +16,16 @@ ms.date: 01/09/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 7f44e8c2c4587ecfdb3bd5eb4304789674da96f3
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e0101aebadcaef71f35c72b54f9126e69cff0f61
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252004"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882834"
 ---
 # <a name="mysql-resource-provider-11330--release-notes"></a>Versionshinweise zum MySQL-Ressourcenanbieter 1.1.33.0
 
-*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 In diesen Versionshinweisen werden die Verbesserungen und bekannten Probleme in Version 1.1.33.0 des MySQL-Ressourcenanbieters beschrieben.
 
@@ -46,11 +46,12 @@ Diese Version des Azure Stack-MySQL-Ressourcenanbieters enthält die folgenden V
 ### <a name="fixes"></a>Fehlerbehebungen
 - **MySQL-Ressourcenanbieter-Portalerweiterung wählt ggf. das falsche Abonnement:** Der MySQL-Ressourcenanbieter ermittelt anhand von Azure Resource Manager-Aufrufen, welches Dienstadministratorabonnement verwendet werden soll. Es kann sein, dass dies nicht das *Standardanbieterabonnement* ist. In diesem Fall funktioniert der MySQL-Ressourcenanbieter nicht normal. 
 
-- **MySQL-Hostserver listet keine gehosteten Datenbanken auf:** Vom Benutzer erstellte Datenbanken werden unter Umständen nicht aufgeführt, wenn für MySQL-Hostserver Mandantenressourcen angezeigt werden.
+- **MySQL-Hostserver listet keine gehosteten Datenbanken auf.** Vom Benutzer erstellte Datenbanken werden unter Umständen nicht aufgeführt, wenn für MySQL-Hostserver Mandantenressourcen angezeigt werden.
 
 - **Bei der Bereitstellung des vorherigen MySQL-Ressourcenanbieters (1.1.30.0) tritt ggf. ein Fehler auf, wenn TLS 1.2 nicht aktiviert ist:** MySQL-Ressourcenanbieter 1.1.33.0 wurde aktualisiert, um TLS 1.2 zu ermöglichen, wenn der Ressourcenanbieter bereitgestellt oder aktualisiert wird oder Geheimnisse rotiert werden. 
 
-- **Fehler bei Rotation von Geheimnissen für MySQL-Ressourcenanbieter:** Problem behoben, das beim Rotieren von Geheimnissen zu folgendem Fehler geführt hat: ` New-AzureRmResourceGroupDeployment - Error: Code=InvalidDeploymentParameterValue; Message=The value of deployment parameter 'StorageAccountBlobUri' is null.`
+- **Fehler bei Rotation von Geheimnissen für MySQL-Ressourcenanbieter:** Problem behoben, das beim Rotieren von Geheimnissen zu folgendem Fehler geführt hat:
+`New-AzureRmResourceGroupDeployment - Error: Code=InvalidDeploymentParameterValue; Message=The value of deployment parameter 'StorageAccountBlobUri' is null.`
 
 ## <a name="known-issues"></a>Bekannte Probleme 
 

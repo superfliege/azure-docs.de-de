@@ -36,7 +36,7 @@ Dieser Artikel behandelt die Schritte, die erforderlich sind, um die für die Co
 
 1. Sobald Azure Monitor-Protokolle und der Log Analytics-Agent für Ihren Cluster eingerichtet sind, stellen Sie Ihre Container bereit. Warten Sie, bis die Container bereitgestellt wurden, bevor Sie mit dem nächsten Schritt fortfahren.
 
-2. Suchen Sie in Azure Marketplace nach *Container Monitoring Solution* (Containerüberwachungslösung), und klicken Sie auf die Ressource **Container Monitoring Solution**, die unter der Kategorie „Überwachung + Verwaltung“ angezeigt wird.
+2. Suchen Sie in Azure Marketplace nach *Containerüberwachungslösung*, und klicken Sie auf die Ressource **Containerüberwachungslösung**, die unter der Kategorie „Überwachung + Verwaltung“ angezeigt wird.
 
     ![Hinzufügen der Containerlösung](./media/service-fabric-diagnostics-event-analysis-oms/containers-solution.png)
 

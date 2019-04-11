@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: bwren
-ms.openlocfilehash: 7e14b5f2c5f84c4f1f21454f733987df6933f0c7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c4950d03449f2b293a87ab88f1ea3f49eee29557
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886625"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006646"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Wechsel des OMS-Portals zu Azure
 
@@ -70,7 +70,7 @@ In beiden Fällen muss Ihr Administrator Ihnen die geeignete Rolle aus der folge
  
 
 ## <a name="new-workspaces"></a>Neue Arbeitsbereiche
-Sie können im OMS-Portal keine neuen Arbeitsbereiche mehr erstellen. Folgen Sie den Anweisungen unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../../azure-monitor/learn/quick-create-workspace.md), um einen neuen Arbeitsbereich im Azure-Portal zu erstellen.
+Sie können im OMS-Portal keine neuen Arbeitsbereiche mehr erstellen. Folgen Sie den Anweisungen unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../learn/quick-create-workspace.md), um einen neuen Arbeitsbereich im Azure-Portal zu erstellen.
 
 ## <a name="changes-to-alerts"></a>Änderungen bei Warnungen
 
@@ -79,25 +79,25 @@ Sie können im OMS-Portal keine neuen Arbeitsbereiche mehr erstellen. Folgen Sie
 > [!NOTE]
 > Warnungen wurden jetzt vollständig auf das Azure-Portal für die öffentliche Cloud erweitert. Vorhandene Warnungsregeln können im OMS-Portal angezeigt werden, aber sie können nur im Azure-Portal verwaltet werden. Die Erweiterung von Warnungen auf das Azure-Portal beginnt für die Azure Government-Cloud im Februar 2019.
 
-Warnungen wurden [in das Azure-Portal erweitert](../../azure-monitor/platform/alerts-extend.md). Sobald dieser Prozess abgeschlossen ist, sind Verwaltungsaktionen für Warnungen nur noch im Azure-Portal verfügbar. Vorhandene Warnungen werden weiterhin im OMS-Portal aufgeführt. Wenn Sie programmgesteuert mithilfe der Log Analytics-REST-API für Warnungen oder der Log Analytics-Warnungsressourcenvorlage auf Warnungen zugreifen, müssen Sie in Ihren API-Aufrufen, Azure Resource Manager-Vorlagen und PowerShell-Befehlen anstelle von Aktionen nun Aktionsgruppen verwenden.
+Warnungen wurden [in das Azure-Portal erweitert](alerts-extend.md). Sobald dieser Prozess abgeschlossen ist, sind Verwaltungsaktionen für Warnungen nur noch im Azure-Portal verfügbar. Vorhandene Warnungen werden weiterhin im OMS-Portal aufgeführt. Wenn Sie programmgesteuert mithilfe der Log Analytics-REST-API für Warnungen oder der Log Analytics-Warnungsressourcenvorlage auf Warnungen zugreifen, müssen Sie in Ihren API-Aufrufen, Azure Resource Manager-Vorlagen und PowerShell-Befehlen anstelle von Aktionen nun Aktionsgruppen verwenden.
 
 ### <a name="alert-management-solution"></a>Lösung „Alert Management“
-Die [Warnungsverwaltungslösung](../../azure-monitor/platform/alert-management-solution.md) ist entgegen einer früheren Ankündigung weiterhin im Azure-Portal verfügbar und wird weiterhin vollständig unterstützt. Die Lösung kann weiterhin über den Azure Marketplace installiert werden.
+Die [Warnungsverwaltungslösung](alert-management-solution.md) ist entgegen einer früheren Ankündigung weiterhin im Azure-Portal verfügbar und wird weiterhin vollständig unterstützt. Die Lösung kann weiterhin über den Azure Marketplace installiert werden.
 
-Auch wenn die Warnungsverwaltungslösung weiterhin verfügbar ist, empfehlen wir die Verwendung der [einheitlichen Warnungsoberfläche von Azure Monitor](../../azure-monitor/platform/alerts-overview.md), um alle Warnungen in Azure zu visualisieren und zu verwalten. Diese neue Oberfläche aggregiert Warnungen aus mehreren Quellen nativ in Azure (einschließlich Protokollwarnungen aus Log Analytics). Wenn Sie die einheitliche Warnungsoberfläche von Azure Monitor verwenden, wird die Warnungsverwaltungslösung nur noch für die Integration von Warnungen aus System Center Operation Manager in Azure benötigt. Auf der einheitlichen Warnungsoberfläche von Azure Monitor können Sie sich Verteilungen Ihrer Warnungen ansehen, die automatisierte Gruppierung zusammengehöriger Warnungen mithilfe intelligenter Gruppen nutzen und Warnungen für mehrere Abonnements unter Verwendung umfangreicher Filter anzeigen. Zukünftige Verbesserungen bei der Warnungsverwaltung werden in erster Linie in dieser neuen Umgebung bereitgestellt. 
+Auch wenn die Warnungsverwaltungslösung weiterhin verfügbar ist, empfehlen wir die Verwendung der [einheitlichen Warnungsoberfläche von Azure Monitor](alerts-overview.md), um alle Warnungen in Azure zu visualisieren und zu verwalten. Diese neue Oberfläche aggregiert Warnungen aus mehreren Quellen nativ in Azure (einschließlich Protokollwarnungen aus Log Analytics). Wenn Sie die einheitliche Warnungsoberfläche von Azure Monitor verwenden, wird die Warnungsverwaltungslösung nur noch für die Integration von Warnungen aus System Center Operation Manager in Azure benötigt. Auf der einheitlichen Warnungsoberfläche von Azure Monitor können Sie sich Verteilungen Ihrer Warnungen ansehen, die automatisierte Gruppierung zusammengehöriger Warnungen mithilfe intelligenter Gruppen nutzen und Warnungen für mehrere Abonnements unter Verwendung umfangreicher Filter anzeigen. Zukünftige Verbesserungen bei der Warnungsverwaltung werden in erster Linie in dieser neuen Umgebung bereitgestellt. 
 
 Die von der Warnungsverwaltungslösung gesammelten Daten (Datensätze vom Typ „Warnung“) sind weiterhin in Log Analytics verfügbar, solange die Lösung für den Arbeitsbereich installiert ist. 
 
 ## <a name="oms-mobile-app"></a>Mobile OMS-App
-Der Lebenszyklus der mobilen OMS-App endet zusammen mit dem OMS-Portal. Statt die mobile OMS-App zu verwenden, können Sie für den Zugriff auf Informationen über Ihre IT-Infrastruktur, Dashboards und gespeicherte Abfragen direkt über den Browser auf Ihrem mobilen Gerät auf das Azure-Portal zugreifen. Um Warnungen zu erhalten, sollten Sie [Azure-Aktionsgruppen](../../azure-monitor/platform/action-groups.md) konfigurieren, damit Sie Benachrichtigungen in Form einer SMS oder eines Sprachanrufs empfangen.
+Der Lebenszyklus der mobilen OMS-App endet zusammen mit dem OMS-Portal. Statt die mobile OMS-App zu verwenden, können Sie für den Zugriff auf Informationen über Ihre IT-Infrastruktur, Dashboards und gespeicherte Abfragen direkt über den Browser auf Ihrem mobilen Gerät auf das Azure-Portal zugreifen. Um Warnungen zu erhalten, sollten Sie [Azure-Aktionsgruppen](action-groups.md) konfigurieren, damit Sie Benachrichtigungen in Form einer SMS oder eines Sprachanrufs empfangen.
 
 ## <a name="application-insights-connector-and-solution"></a>Application Insights-Connector und -Lösung
-[Application Insights-Connector](../../azure-monitor/platform/app-insights-connector.md) bietet eine Möglichkeit, Application Insights-Daten in einen Log Analytics-Arbeitsbereich einzuschließen. Diese Datenduplizierung war für die Sichtbarkeit in der gesamten Infrastruktur und für alle Anwendungsdaten erforderlich. Dank der Unterstützung der erweiterten Datenaufbewahrung von Application Insights (März 2019) und der Möglichkeit zum Ausführen [ressourcenübergreifender Abfragen](../../azure-monitor/log-query/cross-workspace-query.md) sowie dem [Anzeigen mehrerer Azure Monitor Application Insights-Ressourcen](../log-query/unify-app-resource-data.md) müssen keine Daten aus Ihren Application Insights-Ressourcen dupliziert und an Log Analytics gesendet werden. Darüber hinaus sendet der Connector einen Teil der Anwendungseigenschaften an Log Analytics, und die ressourcenübergreifenden Abfragen sorgen für mehr Flexibilität.  
+[Application Insights-Connector](app-insights-connector.md) bietet eine Möglichkeit, Application Insights-Daten in einen Log Analytics-Arbeitsbereich einzuschließen. Diese Datenduplizierung war für die Sichtbarkeit in der gesamten Infrastruktur und für alle Anwendungsdaten erforderlich. Dank der Unterstützung der erweiterten Datenaufbewahrung von Application Insights (März 2019) und der Möglichkeit zum Ausführen [ressourcenübergreifender Abfragen](../log-query/cross-workspace-query.md) sowie dem [Anzeigen mehrerer Azure Monitor Application Insights-Ressourcen](../log-query/unify-app-resource-data.md) müssen keine Daten aus Ihren Application Insights-Ressourcen dupliziert und an Log Analytics gesendet werden. Darüber hinaus sendet der Connector einen Teil der Anwendungseigenschaften an Log Analytics, und die ressourcenübergreifenden Abfragen sorgen für mehr Flexibilität.  
 
 Der Application Insights-Connector wird daher als veraltet markiert und aus dem Azure Marketplace entfernt. Gleichzeitig ist das OMS-Portal ab 30. März 2019 veraltet. Bereits vorhandene Verbindungen können allerdings noch bis zum 30. Juni 2019 verwendet werden. Aufgrund der Veraltung des OMS-Portals können vorhandene Verbindungen nicht mehr über das Portal konfiguriert oder entfernt werden. Dies wird über die REST-API unterstützt, die im Januar 2019 bereitgestellt wird, und eine entsprechende Benachrichtigung wird unter [Azure-Updates](https://azure.microsoft.com/updates/) veröffentlicht. 
 
 ## <a name="azure-network-security-group-analytics"></a>Azure-Netzwerksicherheitsgruppen-Analyse
-Die [Analyselösung der Azure-Netzwerksicherheitsgruppe](../../azure-monitor/insights/azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) wird durch die kürzlich gestartete [Traffic Analytics](https://azure.microsoft.com/blog/traffic-analytics-in-preview/)-Lösung ersetzt, die Einblicke in die Benutzer- und Anwendungsaktivität in Cloudnetzwerken bietet. Traffic Analytics erleichtert es Ihnen, die Netzwerkaktivität Ihres Unternehmens zu überwachen, Anwendungen und Daten zu schützen, die Arbeitsauslastungsleistung zu optimieren und die Kompatibilität aufrechtzuerhalten. 
+Die [Analyselösung der Azure-Netzwerksicherheitsgruppe](../insights/azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-azure-monitor) wird durch die kürzlich gestartete [Traffic Analytics](https://azure.microsoft.com/blog/traffic-analytics-in-preview/)-Lösung ersetzt, die Einblicke in die Benutzer- und Anwendungsaktivität in Cloudnetzwerken bietet. Traffic Analytics erleichtert es Ihnen, die Netzwerkaktivität Ihres Unternehmens zu überwachen, Anwendungen und Daten zu schützen, die Arbeitsauslastungsleistung zu optimieren und die Kompatibilität aufrechtzuerhalten. 
 
 Diese Lösung analysiert NSG-Datenflussprotokolle und bietet folgende Einblicke.
 
@@ -111,7 +111,7 @@ Diese Lösung analysiert NSG-Datenflussprotokolle und bietet folgende Einblicke.
 Sie können weiterhin Diagnoseeinstellungen verwenden, um NSG-Protokolle an Log Analytics zu senden, damit Ihre vorhandenen gespeicherten Suchen, Warnungen und Dashboards weiterhin funktionieren. Kunden, bei denen die Lösung bereits installiert ist, können diese bis auf Weiteres verwenden. Ab dem 5. September wird die Netzwerksicherheitsgruppen-Analyselösung aus dem Marketplace entfernt und über die Community als [Azure-Schnellstartvorlage](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights) zur Verfügung gestellt.
 
 ## <a name="system-center-operations-manager"></a>System Center Operations Manager
-Wenn Sie [Ihre Operations Manager-Verwaltungsgruppe mit Log Analytics verbunden haben](../../azure-monitor/platform/om-agents.md), funktioniert sie weiterhin ohne Änderungen. Für neue Verbindungen müssen Sie jedoch die Anweisungen in [Microsoft System Center Operations Manager Management Pack to configure Operations Management Suite](https://blogs.technet.microsoft.com/momteam/2018/07/25/microsoft-system-center-operations-manager-management-pack-to-configure-operations-management-suite/) (Microsoft System Center Operations Manager Management Pack zum Konfigurieren der Operations Management Suite) befolgen.
+Wenn Sie [Ihre Operations Manager-Verwaltungsgruppe mit Log Analytics verbunden haben](om-agents.md), funktioniert sie weiterhin ohne Änderungen. Für neue Verbindungen müssen Sie jedoch die Anweisungen in [Microsoft System Center Operations Manager Management Pack to configure Operations Management Suite](https://blogs.technet.microsoft.com/momteam/2018/07/25/microsoft-system-center-operations-manager-management-pack-to-configure-operations-management-suite/) (Microsoft System Center Operations Manager Management Pack zum Konfigurieren der Operations Management Suite) befolgen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Einen Leitfaden für den Wechsel vom OMS-Portal zum Azure-Portal finden Sie unter [Häufig gestellte Fragen zum Übergang vom OMS-Portal zum Azure-Portal für Log Analytics-Benutzer](oms-portal-faq.md).

@@ -1,10 +1,10 @@
 ---
-title: 'Prüfbarkeit: Dienstkommunikation | Microsoft Docs'
+title: 'Prüfbarkeit: Dienstkommunikation | Microsoft-Dokumentation'
 description: Die Kommunikation von Dienst zu Dienst ist ein wichtiger Integrationspunkt einer Service Fabric-Anwendung. In diesem Artikel werden Entwurfsaspekte und Testverfahren beschrieben.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 017557df-fb59-4e4a-a65d-2732f29255b8
 ms.service: service-fabric
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: e3ea537d310d49c934cf6789184f090791cf16a4
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 529c8d74b6e0a63a7969f31d5b5e8073ecb79411
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211224"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665745"
 ---
-# <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric-Testability-Szenarien: Dienstkommunikation
+# <a name="service-fabric-testability-scenarios-service-communication"></a>Szenarien für die Service Fabric-Prüfbarkeit: Dienstkommunikation
 Microservices und dienstorientierte Architekturstile können in Azure Service Fabric auf natürliche Weise genutzt werden. Bei diesen Arten von verteilten Architekturen setzen sich komponentenbasierte Microserviceanwendungen in der Regel aus mehreren Diensten zusammen, die miteinander kommunizieren müssen. Sogar im einfachsten Fall verfügen Sie im Allgemeinen mindestens über einen zustandslosen Webdienst und einen zustandsbehafteten Datenspeicherdienst, die miteinander kommunizieren müssen.
 
 Die Kommunikation von Dienst zu Dienst ist ein entscheidender Integrationspunkt einer Anwendung, da von jedem Dienst eine Remote-API für andere Dienste verfügbar gemacht wird. Die Verwendung einer Gruppe von API-Grenzen mit E/A erfordert häufig besondere Sorgfalt und einen relativ hohen Test- und Überprüfungsaufwand.

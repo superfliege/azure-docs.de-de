@@ -4,7 +4,7 @@ description: In diesem Artikel wird der Fault Analysis Service in Service Fabric
 services: service-fabric
 documentationcenter: .net
 author: anmolah
-manager: timlt
+manager: chackdan
 editor: vturecek
 ms.assetid: 1f064276-293a-4989-a513-e0d0b9fdf703
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: a4ddfc17a81a6816bc797bab4c3b5a8b2fc4334e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3581550779b2387515b4f300d211b4e0a894edc7
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425237"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662352"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>Einführung in den Fault Analysis Service
 Der Fault Analysis Service ist für das Testen von Diensten ausgelegt, die in Microsoft Azure Service Fabric erstellt werden. Mit dem Fault Analysis Service können Sie aussagekräftige Fehler auslösen und vollständige Testszenarien für Ihre Anwendungen ausführen. Mit diesen Fehlern und Szenarien werden die verschiedenen Zustände und Übergänge durchgespielt und überprüft, die während der Lebensdauer eines Diensts auftreten – und zwar auf kontrollierte, sichere und einheitliche Weise.
@@ -46,9 +46,9 @@ Wenn eine Fehleraktion oder ein Testszenario initiiert werden, wird ein Befehl a
 ## <a name="testing-distributed-systems"></a>Testen von verteilten Systemen
 Service Fabric vereinfacht das Schreiben und Verwalten von verteilten skalierbaren Anwendungen erheblich. Ebenso gestaltet der Fault Analysis Service das Testen einer verteilten Anwendung einfacher. Es gibt drei vorrangige Probleme, die beim Testen gelöst werden müssen:
 
-1. Simulieren/Generieren von Fehlern, die in der Praxis auftreten können: Einer der wichtigsten Aspekte von Service Fabric ist, dass für verteilte Anwendungen damit die Wiederherstellung nach verschiedenen Fehlern möglich ist. Um zu testen, ob die Anwendung nach diesen Fehlern wiederhergestellt werden kann, benötigen wir ein aber Verfahren zum Simulieren bzw. Generieren dieser Fehler aus der Praxis in einer kontrollierten Testumgebung.
-1. Möglichkeit zum Generieren korrelierter Fehler: Grundlegende Fehler im System, z.B. ein Netzwerk- oder Computerausfall, können leicht individuell ausgelöst werden. Das Generieren einer signifikanten Anzahl von Szenarien, die in der Praxis aufgrund von Interaktionen zwischen diesen Einzelfehlern auftreten können, ist dagegen nicht so einfach.
-1. Einheitliche Umgebungen für unterschiedliche Entwicklungs- und Bereitstellungsstufen: Es gibt viele Fault Injection-Systeme, mit denen verschiedene Arten von Fehlern ausgelöst werden können. Dies ist aber nicht sehr benutzerfreundlich, wenn zwischen One-Box-Entwicklerszenarien, dem Ausführen der gleichen Tests in großen Testumgebungen und dem Testen in der Produktion gewechselt wird.
+1. Simulieren/Generieren von Fehlern, die in realen Szenarien auftreten können: Einer der wichtigsten Aspekte von Service Fabric ist, dass für verteilte Anwendungen damit die Wiederherstellung nach verschiedenen Fehlern möglich ist. Um zu testen, ob die Anwendung nach diesen Fehlern wiederhergestellt werden kann, benötigen wir ein aber Verfahren zum Simulieren bzw. Generieren dieser Fehler aus der Praxis in einer kontrollierten Testumgebung.
+1. Die Möglichkeit zum Generieren korrelierter Fehler: Grundlegende Fehler im System, z.B. ein Netzwerk- oder Computerausfall, können leicht individuell ausgelöst werden. Das Generieren einer signifikanten Anzahl von Szenarien, die in der Praxis aufgrund von Interaktionen zwischen diesen Einzelfehlern auftreten können, ist dagegen nicht so einfach.
+1. Einheitliche Benutzeroberfläche auf verschiedenen Entwicklungs- und Bereitstellungsebenen: Es gibt viele Systeme zur Fehlerinjektion, die verschiedene Arten von Fehlern verursachen können. Dies ist aber nicht sehr benutzerfreundlich, wenn zwischen One-Box-Entwicklerszenarien, dem Ausführen der gleichen Tests in großen Testumgebungen und dem Testen in der Produktion gewechselt wird.
 
 Es gibt zwar viele Verfahren zum Lösen dieser Probleme, aber es fehlt ein System, das diese Aufgaben mit der erforderlichen Garantie ausführen kann – von der One-Box-Entwicklerumgebung bis zum Testen in Produktionsclustern. Dank des Fault Analysis Service können sich Anwendungsentwickler mehr auf das Testen der Geschäftslogik konzentrieren. Der Fault Analysis Service bietet alle Funktionen, die zum Testen der Interaktion des Diensts mit dem zugrunde liegenden verteilten System erforderlich sind.
 

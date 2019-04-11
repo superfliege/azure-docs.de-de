@@ -1,6 +1,6 @@
 ---
 title: Hinzufügen eines Flyouts zur Benutzeroberfläche der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
-description: Dieser Artikel zeigt Ihnen, wie Sie ein neues Flyout auf einer Seite zur Webbenutzeroberfläche des Accelerators für Remoteüberwachungslösung hinzufügen können.
+description: Dieser Artikel zeigt Ihnen, wie Sie ein neues Flyout auf einer Seite zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung hinzufügen können.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -15,14 +15,14 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 10/12/2018
 ms.locfileid: "49167425"
 ---
-# <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Hinzufügen eines benutzerdefinierten Flyouts zur Webbenutzeroberfläche des Accelerators für Remoteüberwachung
+# <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Hinzufügen eines benutzerdefinierten Flyouts zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung
 
-Dieser Artikel zeigt Ihnen, wie Sie ein neues Flyout auf einer Seite zur Webbenutzeroberfläche des Accelerators für Remoteüberwachungslösung hinzufügen können. Der Artikel beschreibt Folgendes:
+Dieser Artikel zeigt Ihnen, wie Sie ein neues Flyout auf einer Seite zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung hinzufügen können. Der Artikel beschreibt Folgendes:
 
 - Vorbereiten einer lokalen Entwicklungsumgebung.
 - Hinzufügen eines neuen Flyouts zu einer Seite in der Webbenutzeroberfläche.
 
-Das Beispielflyout in diesem Artikel wird auf der Seite mit dem Raster angezeigt, über dessen Hinzufügen Sie mehr im Gewusst-wie-Artikel [Hinzufügen eines benutzerdefinierten Rasters zur Webbenutzeroberfläche des Accelerators für die Remoteüberwachungslösung](iot-accelerators-remote-monitoring-customize-grid.md) erfahren.
+Das Beispielflyout in diesem Artikel wird auf der Seite mit dem Raster angezeigt, über dessen Hinzufügen Sie mehr im Gewusst-wie-Artikel [Hinzufügen eines benutzerdefinierten Rasters zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung](iot-accelerators-remote-monitoring-customize-grid.md) erfahren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -137,8 +137,8 @@ Der vorherige Befehl führt die Benutzeroberfläche lokal unter [http://localhos
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie Informationen zu den verfügbaren Ressourcen erhalten, mit denen Sie die Seiten Webbenutzeroberfläche im Solution Accelerator für Remoteüberwachung hinzufügen oder anpassen können.
+In diesem Artikel haben Sie Informationen zu den verfügbaren Ressourcen erhalten, mit denen Sie die Seiten Webbenutzeroberfläche im Solution Accelerator für die Remoteüberwachung hinzufügen oder anpassen können.
 
 Nachdem Sie nun ein Flyout auf einer Seite definiert haben, besteht der nächste Schritt im [Hinzufügen eines Panels zum Dashboard auf der Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung](iot-accelerators-remote-monitoring-customize-panel.md).
 
-Weitere konzeptuelle Informationen zum Solution Accelerator für Remoteüberwachung finden Sie unter [Remoteüberwachungsarchitektur](iot-accelerators-remote-monitoring-sample-walkthrough.md).
+Weitere konzeptuelle Informationen zum Solution Accelerator für die Remoteüberwachung finden Sie unter [Remoteüberwachungsarchitektur](iot-accelerators-remote-monitoring-sample-walkthrough.md).

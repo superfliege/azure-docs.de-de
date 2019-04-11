@@ -8,13 +8,13 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: robin.shahan
-ms.openlocfilehash: 63ec161f2f0d8be4572acf456c81e19ca75bd856
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.author: robinsh
+ms.openlocfilehash: eec63cbdbdb852aff2cf9c6fa768bdc2580d4665
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010734"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045559"
 ---
 # <a name="get-started-with-device-twins-netnet"></a>Erste Schritte mit Gerätezwillingen (.NET/.NET)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
@@ -207,7 +207,7 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App, die als **myDeviceId**
 
    Der Code oben aktualisiert die für **myDeviceId** gemeldete Eigenschaft mit den Konnektivitätsinformationen.
 
-8. Fügen Sie abschließend der **Main**-Methode die folgenden Zeilen hinzu:
+8. Fügen Sie abschließend der **Main** -Methode die folgenden Zeilen hinzu:
 
     ```csharp
     try

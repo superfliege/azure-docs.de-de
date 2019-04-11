@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2018
+ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: sethm
 ms.lastreviewed: 08/20/2018
-ms.openlocfilehash: 765701188de6375a5dfe0c9a6c04afe1ee9f6740
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5ea711d3d4ffff72279e745290c1c8d9d854298e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886438"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447487"
 ---
 # <a name="app-service-on-azure-stack-update-3-release-notes"></a>App Service in Azure Stack – Versionshinweise zu Update 3
 
@@ -55,6 +55,8 @@ Update 3 für Azure App Service in Azure Stack enthält die folgenden Verbesseru
 - Dem Create-AADIdentityApp-Hilfsskript wurde ein neuer „Environment“-Parameter hinzugefügt, um die Ausrichtung auf unterschiedliche AAD-Regionen zu vereinfachen.
 
 - Updates für **App Service-Mandanten, Admin, Functions-Portale und Kudu-Tools**. Mit Azure Stack-Portal-SDK-Version konsistent.
+
+- Aktualisiert **Azure Functions Runtime** auf **v1.0.11820**.
 
 - Updates für den Kerndienst zur Verbesserung der Zuverlässigkeit und der Fehlermeldungen, die eine einfachere Diagnose von häufigen Problemen ermöglichen.
 

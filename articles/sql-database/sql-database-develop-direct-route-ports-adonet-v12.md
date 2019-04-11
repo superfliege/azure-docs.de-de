@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
-ms.date: 11/07/2018
-ms.openlocfilehash: 96b6b4866b17e15f544a10124d07e651d747b58b
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 04/03/2019
+ms.openlocfilehash: ddb115370c62371e769ef98e0031f7e0379bafbf
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57306441"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916171"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Andere Ports als 1433 für ADO.NET 4.5
 
@@ -43,11 +43,11 @@ Der Ablauf ist wie folgt:
 
 1. ADO.NET 4.5 (oder höher) initiiert eine kurze Interaktion mit der Azure-Cloud und empfängt eine dynamisch ermittelte Portnummer.
 
-   * Die dynamisch ermittelte Portnummer liegt im Bereich von 11000 bis 11999 oder 14000 bis 14999.
+   * Die dynamisch ermittelte Portnummer liegt im Bereich von 11000 bis 11999.
 2. ADO.NET stellt dann eine direkte Verbindung mit dem SQL-Datenbankserver ohne Einbindung von Middleware her.
 3. Abfragen werden direkt an die Datenbank gesendet, und Ergebnisse werden direkt an den Client zurückgegeben.
 
-Stellen Sie sicher, dass der Portbereich von 11000 bis 11999 und von 14000 bis 14999 auf Ihrem Azure-Clientcomputer für ADO.NET 4.5-Clientinteraktionen mit SQL-Datenbank verfügbar ist.
+Stellen Sie sicher, dass der Portbereich von 11000 bis 11999 auf Ihrem Azure-Clientcomputer für ADO.NET 4.5-Clientinteraktionen mit SQL-Datenbank verfügbar ist.
 
 * Insbesondere dürfen Ports in diesem Bereich keine anderen ausgehenden Blockierungen aufweisen.
 * Auf Ihrer Azure-VM steuert die **Windows-Firewall mit erweiterter Sicherheit** die Porteinstellungen.
@@ -83,7 +83,7 @@ In diesem Abschnitt werden die Moniker erläutert, die auf Produktversionen verw
 
 * [Liste der TDS-Protokollversionen](http://www.freetds.org/userguide/tdshistory.htm)
 * [Übersicht über die Entwicklung von SQL-Datenbanken](sql-database-develop-overview.md)
-* [Firewall für die Azure SQL-Datenbank](sql-database-firewall-configure.md)
-* [Gewusst wie: Konfigurieren von Firewalleinstellungen für SQL-Datenbank](sql-database-configure-firewall-settings.md)
+* [Firewall von Azure SQL-Datenbank](sql-database-firewall-configure.md)
+* [Gewusst wie: Konfigurieren von Firewalleinstellungen für Azure SQL-Datenbank](sql-database-configure-firewall-settings.md)
 
 

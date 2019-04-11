@@ -1,9 +1,9 @@
 ---
-ms.openlocfilehash: 47a950566ab69a6e820364130b3a371c3b0a5e3c
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: a78649033b84a726b6e7daee95efc4192ce85c3a
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56751763"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58631662"
 ---
-Es ist eine gute Idee, sich vor dem Versuch, einen neuen Cloudanker zu erstellen, zu vergewissern, dass genügend Umgebungsdaten erfasst wurden.
+Sie benötigen ausreichende Umgebungsdaten, bevor Sie versuchen können, einen neuen Cloudanker zu erstellen.

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 02/26/2019
+ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 97794675f3d489e1154d9c327c18d40708dd5b53
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b104f2578938997ff12778d65f08cca226d9a445
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877852"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892329"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Was ist ein Azure Data Box-Datenträger?
 
@@ -42,7 +42,7 @@ Datenträger werden mithilfe der Microsoft-BitLocker-Laufwerkverschlüsselung ve
 A. Sie profitieren von der Verwendung von Data Box-Datenträgern, wenn Sie über 40 TB an Daten (oder weniger) verfügen, die Sie an Azure übertragen möchten.
 
 ### <a name="q-what-is-the-price-of-data-box-disks"></a>F: Was kosten Data Box-Datenträger?
-A. Informationen zum Preis von Data Box-Datenträgern finden Sie auf der [Seite mit den Preisen](https://azure.microsoft.com/pricing/details/storage/databox/disk/).
+A. Informationen zum Preis von Data Box-Datenträgern finden Sie auf der [Seite mit den Preisen](https://azure.microsoft.com/pricing/details/databox/disk/).
 
 ### <a name="q-how-do-i-get-data-box-disks"></a>F: Wie erhalte ich Data Box-Datenträger? 
 A.  Melden Sie sich als Nächstes am Azure-Portal an, und erstellen Sie einen Data Box-Auftrag für Datenträger, um Azure Data Box-Datenträger zu erhalten. Geben Sie Ihre Kontaktinformationen und Benachrichtigungsdetails an. Nachdem Sie den Auftrag erstellt haben, werden die Datenträger je nach Verfügbarkeit innerhalb von zehn Tagen an Sie gesendet.
@@ -170,6 +170,6 @@ A. Ja. Ihre Daten wurden in Azure hochgeladen. Wenn Sie jedoch keine verwalteten
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sehen Sie sich die [Data Box-Systemanforderungen](data-box-disk-system-requirements.md) an.
-- Machen Sie sich mit den [Data Box-Einschränkungen](data-box-disk-limits.md) vertraut.
+- Sehen Sie sich die [Data Box Disk-Systemanforderungen](data-box-disk-system-requirements.md) an.
+- Machen Sie sich mit den [Einschränkungen für Data Box-Datenträger](data-box-disk-limits.md) vertraut.
 - Informieren Sie sich über die schnelle Bereitstellung von [Azure Data Box-Datenträgern](data-box-disk-quickstart-portal.md) im Azure-Portal.

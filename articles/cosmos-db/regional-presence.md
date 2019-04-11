@@ -4,19 +4,19 @@ description: In diesem Artikel werden die regionale Verfügbarkeit von Azure Cos
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/31/2019
 ms.author: rimman
 ms.custom: seodec18
-ms.openlocfilehash: 32e69be95226d06f55d79ff5e245c76c3087efd9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 851da72a308b164b9a01b7ccfa3d541fc06810ba
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461287"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762190"
 ---
 # <a name="regional-presence-with-azure-cosmos-db"></a>Regionale Präsenz von Azure Cosmos DB
 
-Azure ist derzeit in [54 Regionen](https://azure.microsoft.com/global-infrastructure/regions/) weltweit verfügbar. Azure Cosmos DB ist ein grundlegender Dienst von Azure und in allen Regionen verfügbar, in denen auch Azure verfügbar ist.
+Azure Cosmos DB ist ein grundlegender Dienst in Azure und ist standardmäßig in allen Regionen verfügbar, in denen auch Azure verfügbar ist. Azure ist derzeit in [54 Regionen](https://azure.microsoft.com/global-infrastructure/regions/) weltweit verfügbar. 
 
 [![Regionen, in denen Azure Cosmos DB verfügbar ist](./media/regional-presence/regional-presence.png)](./media/regional-presence/regional-presence.png#lightbox)
 
@@ -24,7 +24,7 @@ Cosmos DB ist in allen fünf Azure-Cloudumgebungen verfügbar, die für Kunden b
 
 * **Öffentliche Azure-Cloud**, die global verfügbar ist.
 
-* **Azure China** ist dank einer exklusiven Partnerschaft zwischen Microsoft und 21Vianet, einem der größten Internetanbieter des Landes, verfügbar.
+* **Azure China 21Vianet** ist dank einer exklusiven Partnerschaft zwischen Microsoft und 21Vianet, einem der größten Internetanbieter in China, verfügbar.
 
 * Für **Azure Deutschland** werden Dienste basierend auf einem Datentreuhänder-Modell bereitgestellt. Hiermit wird sichergestellt, dass Kundendaten in Deutschland und unter der Kontrolle von T-Systems International GmbH, einem Subunternehmen von Deutsche Telekom, verbleiben. Dieses Unternehmen fungiert als Datentreuhänder in Deutschland.
 
@@ -34,15 +34,15 @@ Cosmos DB ist in allen fünf Azure-Cloudumgebungen verfügbar, die für Kunden b
 
 ## <a name="regional-presence-with-global-distribution"></a>Regionale Präsenz mit globaler Verteilung
 
-Verschiedene APIs, die von Azure Cosmos DB verfügbar gemacht werden (z.B. SQL, MongoDB, Cassandra, Gremlin und Azure Table Storage), stehen in allen Azure-Regionen zur Verfügung. Beispielsweise können Sie MongoDB- und Cassandra-APIs von Azure Cosmos DB nicht nur in allen globalen Azure-Regionen verwenden, sondern auch in Azure-Regionen mit Datenhoheit, z.B. China, Deutschland, Government und Verteidigungsministerium (USA).
+Alle APIs, die von Azure Cosmos DB bereitgestellt werden (z.B. SQL, MongoDB, Cassandra, Gremlin und Table), stehen in allen Azure-Regionen zur Verfügung. Beispielsweise können Sie MongoDB- und Cassandra-APIs von Azure Cosmos DB nicht nur in allen globalen Azure-Regionen verwenden, sondern auch in Clouds mit Datenhoheit, z.B. China, Deutschland, Government und Verteidigungsministerium (USA).
 
-Azure Cosmos DB ist eine [global verteilte](distribute-data-globally.md) Datenbank. Sie können Ihrem Azure Cosmos-Konto eine beliebige Anzahl von Azure-Regionen zuordnen, und Ihre Daten werden automatisch und auf transparente Weise repliziert. Sie können für Ihr Azure Cosmos-Konto jederzeit eine Region hinzufügen oder entfernen. Mit der Funktion für die „schlüsselfertige“ globale Verteilung und dem Multimaster-Replikationsprotokoll ermöglicht Azure Cosmos DB Lese- und Schreiblatenzen von weniger als 10 ms (99. Perzentil), eine Lese- und Schreibverfügbarkeit von 99,999% und die Möglichkeit zum elastischen Skalieren des bereitgestellten Durchsatzes für Lese- und Schreibvorgänge über alle Regionen hinweg, die Ihrem Azure Cosmos-Konto zugeordnet sind. Azure Cosmos DB umfasst außerdem fünf gut definierte Konsistenzmodelle, und Sie können auswählen, dass ein spezifisches Konsistenzmodell auf Ihre Daten angewendet werden soll. Azure Cosmos DB ist zudem der einzige Datenbankdienst der Branche mit einer umfassenden Vereinbarung zum Servicelevel (SLA), die den bereitgestellten Durchsatz, die Latenz im 99. Perzentil, Hochverfügbarkeit und Konsistenz abdeckt.
+Azure Cosmos DB ist ein [global verteilter](distribute-data-globally.md) Datenbankdienst. Sie können Ihrem Azure Cosmos-Konto eine beliebige Anzahl von Azure-Regionen zuordnen, und Ihre Daten werden automatisch und auf transparente Weise repliziert. Sie können für Ihr Azure Cosmos-Konto jederzeit eine Region hinzufügen oder entfernen. Mit der Funktion für die „schlüsselfertige“ globale Verteilung und dem Multimaster-Replikationsprotokoll ermöglicht Azure Cosmos DB Lese- und Schreiblatenzen von weniger als 10 ms (99. Perzentil), eine Lese- und Schreibverfügbarkeit von 99,999% und die Möglichkeit zum elastischen Skalieren des bereitgestellten Durchsatzes für Lese- und Schreibvorgänge über alle Regionen hinweg, die Ihrem Azure Cosmos-Konto zugeordnet sind. Azure Cosmos DB umfasst außerdem fünf gut definierte Konsistenzmodelle, und Sie können auswählen, dass ein spezifisches Konsistenzmodell auf Ihre Daten angewendet werden soll. Azure Cosmos DB ist zudem der einzige Datenbankdienst der Branche mit einer umfassenden [Vereinbarung zum Servicelevel (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/), die den bereitgestellten Durchsatz, die Latenz im 99. Perzentil, Hochverfügbarkeit und Konsistenz abdeckt. Die oben genannten Funktionen sind in allen Azure-Clouds verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie können sich in den folgenden Artikeln nun über unterschiedliche Konzepte von Azure Cosmos DB informieren:
+Sie können sich in den folgenden Artikeln nun über die Kernkonzepte von Azure Cosmos DB informieren:
 
 * [Globale Datenverteilung](distribute-data-globally.md)
 * [Verwalten eines Azure Cosmos DB-Kontos](manage-account.md)
 * [Bereitstellen von Durchsatz für Cosmos DB-Container und -Datenbanken](set-throughput.md)
-* [Cosmos DB-SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)
+* [Azure Cosmos DB-SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

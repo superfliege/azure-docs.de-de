@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2019
+ms.date: 03/23/2019
 ms.author: sethm
 ms.reviewer: harik
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: b358609526c61b5acab83c02bdedd8cc06721425
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8abbf3a9db02fda0c92485ef75a12d82f4e8c8e9
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536479"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903946"
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure Stack-Wartungsrichtlinie
 
@@ -35,7 +35,7 @@ Monatliche Updatepakete werden in einem sicheren Azure-Endpunkt gehostet. Sie k�
 
 Hotfixupdatepakete werden in demselben sicheren Azure-Endpunkt gehostet. Sie können sie mithilfe der eingebetteten Links in jedem der jeweiligen Hotfix-KB-Artikel manuell herunterladen, z. B. [Azure Stack-Hotfix 1.1809.12.114](https://support.microsoft.com/help/4481548/azure-stack-hotfix-1-1809-12-114). Ähnlich wie bei den vollständigen, monatlichen Updatepaketen können Azure Stack-Betreiber die XML-, BIN- und EXE-Dateien herunterladen und mithilfe des Verfahrens in [Anwenden von Updates in Azure Stack](azure-stack-apply-updates.md) importieren. Azure Stack-Betreiber mit verbundenen Skalierungseinheiten wird das automatische Eintreffen von Hotfixes im Administratorportal mit der Meldung **Update verfügbar** angezeigt.
 
-Wenn Ihre Skalierungseinheit nicht verbunden ist, und Sie bei jedem Hotfixrelease benachrichtigt werden möchten, abonnieren Sie den [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss … )- oder [ATOM](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom …)-Feed, der in jedem Release vermerkt ist.  
+Wenn Ihre Skalierungseinheit nicht verbunden ist, und Sie bei jedem Hotfixrelease benachrichtigt werden möchten, abonnieren Sie den [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)- oder [ATOM](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom)-Feed, der in jedem Release vermerkt ist.  
 
 ## <a name="update-package-types"></a>Updatepakettypen
 
@@ -53,10 +53,10 @@ Die Dokumentation zur Planung und Verwaltung von Updates sowie zur Ermittlung Ih
 
 Informationen zu einem bestimmten Update und darüber, wie sie es herunterladen, finden Sie in den Versionshinweisen zu diesem Update:
 
+- [Azure Stack-Update 1903](azure-stack-update-1903.md)
 - [Azure Stack-Update 1902](azure-stack-update-1902.md)
-- [Azure Stack-Update 1901](azure-stack-update-1901.md)
+- [Azure Stack-Update 1901](azure-stack-update-1901.md)
 - [Azure Stack-Update 1811](azure-stack-update-1811.md)
-- [Azure Stack-Update 1809](azure-stack-update-1809.md)
 
 ## <a name="hotfixes"></a>Hotfixes
 

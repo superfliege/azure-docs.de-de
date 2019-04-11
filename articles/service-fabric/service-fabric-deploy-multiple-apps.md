@@ -4,7 +4,7 @@ description: Exemplarische Vorgehensweise zum Packen mehrerer ausführbarer Gast
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: b76bb756-c1ba-49f9-9666-e9807cf8f92f
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: ed8159f38e2763cb897212ae4f51fecb7343a683
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 69df9eff85d96c9cc6ca7fa1d3aabd2c54fae416
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315590"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884719"
 ---
 # <a name="deploy-multiple-guest-executables"></a>Bereitstellen mehrerer ausführbarer Gastanwendungsdateien
 In diesem Artikel erfahren Sie, wie Sie mehrere ausführbare Gastanwendungsdateien packen und für Azure Service Fabric bereitstellen. Informationen zum Erstellen und Bereitstellen eines einzelnen Service Fabric-Pakets finden Sie im Abschnitt [Bereitstellen einer ausführbaren Gastanwendungsdatei in Service Fabric](service-fabric-deploy-existing-app.md).
@@ -33,7 +33,7 @@ Das Anwendungspaket mit mehreren ausführbaren Gastanwendungsdateien kann mithil
 * [Beispiel für zwei ausführbare Gastdateien (C# und Node.js), die über den Naming Service mithilfe von REST kommunizieren](https://github.com/Azure-Samples/service-fabric-containers)
 
 ## <a name="manually-package-the-multiple-guest-executable-application"></a>Manuelles Packen der Anwendung mit mehreren ausführbaren Gastanwendungsdateien
-Alternativ können Sie die ausführbare Gastanwendungsdatei manuell packen. Hierzu wird in diesem Artikel das Service Fabric-Verpackungstool ([http://aka.ms/servicefabricpacktool](https://aka.ms/servicefabricpacktool)) verwendet.
+Alternativ können Sie die ausführbare Gastanwendungsdatei manuell packen. Hierzu wird in diesem Artikel das Service Fabric-Verpackungstool ([https://aka.ms/servicefabricpacktool](https://aka.ms/servicefabricpacktool)) verwendet.
 
 ### <a name="packaging-the-nodejs-application"></a>Packen der Node.js-Anwendung
 In diesem Artikel wird vorausgesetzt, dass Node.js nicht auf den Knoten im Service Fabric-Cluster installiert ist. Daher müssen Sie vor dem Packen „Node.exe“ dem Stammverzeichnis Ihrer Node.js-Anwendung hinzufügen. Die Verzeichnisstruktur der Node.js-Anwendung (mit dem Webframework Express und der Vorlagen-Engine Jade) sollte wie folgt aussehen:

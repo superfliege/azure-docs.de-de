@@ -10,18 +10,18 @@ ms.subservice: design
 ms.date: 03/13/2019
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2f76b0a6565e5ba7c34d88a271e9770f809669dd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b97e27b86ecad1f7f87a6de4d43b09d69c167c6f
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007792"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58846907"
 ---
 # <a name="use-maintenance-schedules-to-manage-service-updates-and-maintenance"></a>Verwenden von Wartungszeitplänen zum Verwalten der Updates und Wartung von Diensten
 
 Wartungszeitpläne sind jetzt für alle Azure SQL Data Warehouse-Regionen verfügbar. Dieses Feature kann in Benachrichtigungen über eine geplante Wartung von Service Health, in Resource Health Check Monitor und in den Zeitplanungsdienst für Azure SQL Data Warehouse-Wartungen integriert werden.
 
-Sie verwenden Wartungszeitpläne, um ein passendes Zeitfenster für den Erhalt neuer Features, Upgrades und Patches zu wählen. Sie wählen ein primäres und ein sekundäres Wartungsfenster für einen Zeitraum von sieben Tagen. Ein Beispiel ist Samstag 22:00 bis Sonntag 01:00 Uhr als primäres Fenster und Mittwoch 19:00 bis 22:00 Uhr als sekundäres Fenster. Wenn SQL Data Warehouse die Wartung nicht während Ihres primären Wartungsfensters durchführen kann, wird versucht, die Wartung während des sekundären Wartungsfensters durchzuführen. Dienstwartungen können sowohl im primären als auch im sekundären Fenster auftreten.
+Sie verwenden Wartungszeitpläne, um ein passendes Zeitfenster für den Erhalt neuer Features, Upgrades und Patches zu wählen. Sie wählen ein primäres und ein sekundäres Wartungsfenster für einen Zeitraum von sieben Tagen. Ein Beispiel ist Samstag 22:00 bis Sonntag 01:00 Uhr als primäres Fenster und Mittwoch 19:00 bis 22:00 Uhr als sekundäres Fenster. Wenn SQL Data Warehouse die Wartung nicht während Ihres primären Wartungsfensters durchführen kann, wird versucht, die Wartung während des sekundären Wartungsfensters durchzuführen. Dienstwartungen können sowohl im primären als auch im sekundären Fenster auftreten. Um einen schnellen Abschluss aller Wartungsarbeiten zu gewährleisten, könnten DW400(c) und niedrigere Data Warehouse-Ebenen die Wartung außerhalb eines bestimmten Wartungsfensters abschließen.
 
 Auf alle neu erstellten Azure SQL Data Warehouse-Instanzen muss während der Bereitstellung ein systemdefinierter Wartungszeitplan angewendet werden. Der Zeitplan kann direkt nach Abschluss der Bereitstellung bearbeitet werden.
 
@@ -33,7 +33,7 @@ Zum Verwenden dieses Features müssen Sie ein primäres und sekundäres Fenster 
 
 Dank der Integration in Service Health-Benachrichtigungen und in Resource Health Check Monitor sind Kunden immer über bevorstehende Wartungsaktivitäten informiert. Für die neue Automatisierung wird Azure Monitor genutzt. Sie können entscheiden, wie Sie über anstehende Wartungsereignisse benachrichtigt werden möchten. Darüber hinaus können Sie auch entscheiden, welche automatisierten Abläufe für Sie beim Verwalten der Ausfallzeit und Verringern der Auswirkung auf Ihre Vorgänge hilfreich sein können.
 
-Vor allen Wartungsereignissen wird 24 Stunden vorher eine Benachrichtigung gesendet. Stellen Sie zum Verringern der Ausfallzeiten von Instanzen sicher, dass Ihr Data Warehouse vor dem gewählten Wartungszeitraum keine Transaktionen mit langer Ausführungsdauer aufweist. Wenn die Wartung beginnt, werden alle aktiven Sitzungen abgebrochen. Für Transaktionen, für die kein Commit durchgeführt wurde, wird ein Rollback ausgeführt, und für Ihr Data Warehouse kommt es zu einem kurzzeitigen Verlust der Konnektivität. Sie erhalten sofort eine Benachrichtigung, nachdem die Wartung für Ihr Data Warehouse abgeschlossen ist.
+Eine Benachrichtigung 24 Stunden im Voraus erfolgt für alle Wartungsereignisse, mit Ausnahme von DW400c und niedrigeren Ebenen. Stellen Sie zum Verringern der Ausfallzeiten von Instanzen sicher, dass Ihr Data Warehouse vor dem gewählten Wartungszeitraum keine Transaktionen mit langer Ausführungsdauer aufweist. Wenn die Wartung beginnt, werden alle aktiven Sitzungen abgebrochen. Für Transaktionen, für die kein Commit durchgeführt wurde, wird ein Rollback ausgeführt, und für Ihr Data Warehouse kommt es zu einem kurzzeitigen Verlust der Konnektivität. Sie erhalten sofort eine Benachrichtigung, nachdem die Wartung für Ihr Data Warehouse abgeschlossen ist.
 
 Wenn Sie eine Vorankündigung zur Durchführung von Wartungsarbeiten erhalten haben, die Wartung von SQL Data Warehouse im vorgesehenen Zeitraum aber nicht durchgeführt werden kann, erhalten Sie eine Widerrufsbenachrichtigung. Die Wartung wird dann während des nächsten geplanten Wartungszeitraums durchgeführt.
 

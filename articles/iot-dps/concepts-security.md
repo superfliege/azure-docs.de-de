@@ -3,17 +3,17 @@ title: Sicherheitskonzepte beim Azure IoT Hub Device Provisioning-Dienst | Micro
 description: Beschreibt Konzepte der Sicherheitsbereitstellung, die speziell für Geräte mit dem Device Provisioning-Dienst und IoT Hub gelten
 author: nberdy
 ms.author: nberdy
-ms.date: 03/30/2018
+ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 92a30f0754decc3052bf53a64da13325ddc4f954
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7835553dafd66830b7a483c58bc2c7b7cf8c93f8
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946560"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046895"
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>Sicherheitskonzepte beim IoT Hub Device Provisioning-Dienst 
 

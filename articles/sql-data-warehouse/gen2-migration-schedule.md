@@ -10,19 +10,19 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 02/09/2019
-ms.openlocfilehash: 8f24bab531143cad1974663eb71b173a20b6f51a
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: ed3029f2e336c03de616bc00733f1b9c104ddb86
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287178"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917888"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Aktualisieren des Data Warehouse zu Gen2
 
 Microsoft hilft beim Senken der Einstiegskosten für die Ausführung eines Data Warehouses.  Niedrigere Computeebenen, die anspruchsvolle Abfragen verarbeiten können, sind jetzt für Azure SQL Data Warehouse verfügbar. Lesen Sie die vollständige Ankündigung unter [Azure SQL Data Warehouse Gen2 now supports lower compute tiers](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/) (Azure SQL Data Warehouse Gen2 unterstützt jetzt niedrigere Computeebenen). Das neue Angebot steht in den Regionen in der folgenden Tabelle zur Verfügung. In den unterstützten Regionen kann das vorhandene Gen1-Data Warehouse mit einer der folgenden Methoden auf Gen2 aktualisiert werden:
 
 - **Der automatische Upgradevorgang:** Automatische Upgrades beginnen, sobald der Dienst in einer Region verfügbar ist.  Wenn automatische Upgrades in einer bestimmten Region beginnen, finden Upgrades einzelner DWs während des von Ihnen ausgewählten Wartungszeitplans statt.
-- [**Selbstständiges Upgrade auf Gen2:**](#Self-upgrade-to-Gen2) Sie können steuern, wann das Upgrade erfolgt, indem Sie ein selbstständiges Upgrade auf Gen2 ausführen. Wenn Ihre Region noch nicht unterstützt wird, können Sie die Wiederherstellung von einem Wiederherstellungspunkt direkt in einer Gen2-Instanz in einer unterstützten Region ausführen.
+- [**Selbstständiges Upgrade auf Gen2:**](#self-upgrade-to-gen2) Sie können steuern, wann das Upgrade erfolgt, indem Sie ein selbstständiges Upgrade auf Gen2 ausführen. Wenn Ihre Region noch nicht unterstützt wird, können Sie die Wiederherstellung von einem Wiederherstellungspunkt direkt in einer Gen2-Instanz in einer unterstützten Region ausführen.
 
 ## <a name="automated-schedule-and-region-availability-table"></a>Automatisierter Zeitplan und die Tabelle der verfügbaren Regionen
 
@@ -32,38 +32,38 @@ In der folgenden Tabelle sehen Sie, wann der niedrigere Gen2-Computetarif in wel
 
 | **Region** | **Niedrigerer Gen2-Computetarif verfügbar** | **Beginn automatischer Upgrades** |
 |:--- |:--- |:--- |
-| Australien (Osten) |Verfügbar |1. Mai 2019 |
-| Australien, Südosten |2. April 2019 |1. Juni 2019 |
+| Australien (Osten) |Verfügbar |1. Juni 2019 |
+| Australien, Südosten |2. April 2019 |1. Mai 2019 |
 | Brasilien Süd |15. Mai 2019 |\* |
-| Kanada, Mitte |Verfügbar |1. Mai 2019 |
+| Kanada, Mitte |Verfügbar |1. Juni 2019 |
 | Kanada, Osten |\* |\* |
-| USA (Mitte) |Verfügbar |1. Mai 2019 |
+| USA (Mitte) |Verfügbar |1. Juni 2019 |
 | China, Osten |\* |\* |
 | China, Osten 2 |\* |\* |
 | China, Norden |\* |\* |
 | China, Norden 2 |\* |\* |
-| Asien, Osten |Verfügbar |1. Mai 2019 |
-| USA (Ost) |Verfügbar |1. Mai 2019 |
-| USA (Ost) 2 |Verfügbar |1. Mai 2019 |
+| Asien, Osten |Verfügbar |1. Juni 2019 |
+| USA (Ost) |Verfügbar |1. Juni 2019 |
+| USA (Ost) 2 |Verfügbar |1. Juni 2019 |
 | Frankreich, Mitte |\* |\* |
 | Deutschland, Mitte |\* |\* |
 | Deutschland, Westen-Mitte |1. September 2019|2. Januar 2020 |
-| Indien, Mitte |Verfügbar |1. Mai 2019 |
+| Indien, Mitte |Verfügbar |1. Juni 2019 |
 | Indien, Süden |2. April 2019 |1. Juni 2019 |
-| Japan, Osten |Verfügbar |1. Mai 2019 |
-| Japan, Westen |Verfügbar |1. Juni 2019 |
-| Korea, Mitte |2. April 2019 |1. Mai 2019 |
-| Korea, Süden |2. April 2019 |1. Juni 2019 |
-| USA Nord Mitte |2. April 2019 |1. Juni 2019 |
-| Nordeuropa |Verfügbar |1. Mai 2019 |
-| USA Süd Mitte |Verfügbar |1. Mai 2019 |
-| Südostasien |Verfügbar |1. Mai 2019 |
-| UK, Süden |2. April 2019 |1. Mai 2019 |
+| Japan, Osten |Verfügbar |1. Juni 2019 |
+| Japan, Westen |Verfügbar |1. Mai 2019 |
+| Korea, Mitte |2. April 2019 |1. Juni 2019 |
+| Korea, Süden |2. April 2019 |1. Mai 2019 |
+| USA Nord Mitte |2. April 2019 |1. Mai 2019 |
+| Nordeuropa |Verfügbar |1. Juni 2019 |
+| USA Süd Mitte |Verfügbar |1. Juni 2019 |
+| Südostasien |Verfügbar |1. Juni 2019 |
+| UK, Süden |2. April 2019 |1. Juni 2019 |
 | UK, Westen |\*|\* |
 | USA, Westen-Mitte |2. September 2019 |2. Januar 2020|
-| Europa, Westen |Verfügbar |1. Mai 2019 |
+| Europa, Westen |Verfügbar |1. Juni 2019 |
 | USA (Westen) |2. April 2019 |1. Juni 2019 |
-| USA, Westen 2 |Verfügbar |1. Mai 2019 |
+| USA, Westen 2 |Verfügbar |1. Juni 2019 |
 
 ## <a name="automatic-upgrade-process"></a>Automatischer Upgradevorgang
 
@@ -150,8 +150,8 @@ Weitere Informationen finden Sie unter [Optimieren der Leistung durch ein Upgrad
 - [Upgradeschritte](upgrade-to-latest-generation.md)
 - [Wartungsfenster](maintenance-scheduling.md)
 - [Überwachung der Ressourcenintegrität](https://docs.microsoft.com/azure/service-health/resource-health-overview)
-- [Voraussetzungen](upgrade-to-latest-generation.md#before-you-begin)
+- [Überprüfung vor Beginn einer Migration](upgrade-to-latest-generation.md#before-you-begin)
 - [Direktes Upgrade und Upgrade von einem Wiederherstellungspunkt aus](upgrade-to-latest-generation.md)
 - [Erstellen eines benutzerdefinierten Wiederherstellungspunkts](sql-data-warehouse-restore.md#restore-through-the-azure-portal)
-- [Wiederherstellen einer aktiven oder angehaltenen Datenbank im Azure-Portal](sql-data-warehouse-restore.md#restore-an-active-or-paused-database-using-the-azure-portal)
-- [Gewusst wie: Erstellen eines Supporttickets für SQL Data Warehouse](https://go.microsoft.com/fwlink/?linkid=857950)
+- [Informationen zum Wiederherstellen von Gen2](sql-data-warehouse-restore.md#restore-an-active-or-paused-database-using-the-azure-portal)
+- [Erstellen eines Supporttickets für SQL Data Warehouse](https://go.microsoft.com/fwlink/?linkid=857950)

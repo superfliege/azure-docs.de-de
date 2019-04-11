@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/26/2019
-ms.openlocfilehash: 69963f34cb49482cc7eae25320a6a3a5f176f8dd
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.date: 03/28/2019
+ms.openlocfilehash: 56abdd819e78312e64209078c3966826385df7bc
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486578"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620732"
 ---
 # <a name="query-performance-insight"></a>Query Performance Insight 
 
@@ -28,7 +28,7 @@ Damit Query Performance Insight funktioniert, müssen Daten im [Abfragespeicher]
 ## <a name="viewing-performance-insights"></a>Anzeigen von Einblicken in die Leistung
 Die [Query Performance Insight](concepts-query-performance-insight.md)-Ansicht im Azure-Portal zeigt wichtige Informationen aus dem Abfragespeicher an. 
 
-Wählen Sie in der Portalseite Ihres Azure Database for PostgreSQL-Servers im Abschnitt **Support und Problembehandlung** in der Menüleiste die Option **Query Performance Insight**.
+Wählen Sie in der Portalseite Ihres Azure Database for PostgreSQL-Servers im Abschnitt **Intelligente Leistung** in der Menüleiste die Option **Query Performance Insight**.
 
 ![Abfragen mit langer Ausführungszeit in Query Performance Insight](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png)
 

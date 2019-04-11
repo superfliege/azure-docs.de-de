@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 03/26/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: 1cef0010464671982109b8dc4bc94e6925eaf825
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1b9c7f00c8ec8408547620111634470d455334c8
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210525"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499232"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Hinzufügen von Hostservern für den SQL-Ressourcenanbieter
 
@@ -186,14 +186,19 @@ SKUs können nicht bestimmten Benutzern oder Gruppen zugeordnet werden.
 
 Es kann bis zu einer Stunde dauern, bis SKUs im Portal angezeigt werden. Benutzer können erst eine Datenbank erstellen, wenn die SKU vollständig erstellt wurde.
 
-Um eine SKU zu bearbeiten, navigieren Sie zu **Alle Dienste** > **SQL-Adapter** > **SKUs**. Wählen Sie die zu ändernde SKU aus, nehmen Sie alle notwendigen Änderungen vor, und klicken Sie dann auf **Speichern**, um die Änderungen zu speichern. Um eine nicht mehr benötigte SKU zu löschen, navigieren Sie zu **Alle Dienste** > **SQL-Adapter** > **SKUs**. Klicken Sie mit der rechten Maustaste auf den Namen der SKU, und wählen Sie dann **Löschen** aus, um sie zu löschen.
+Um eine SKU zu bearbeiten, navigieren Sie zu **Alle Dienste** > **SQL-Adapter** > **SKUs**. Wählen Sie die zu ändernde SKU aus, nehmen Sie alle notwendigen Änderungen vor, und klicken Sie dann auf **Speichern**, um die Änderungen zu speichern. 
 
-> [!TIP]
-> Sie können Kontingente von SQL-Ressourcenanbietern am selben Ort bearbeiten oder löschen.
+Um eine nicht mehr benötigte SKU zu löschen, navigieren Sie zu **Alle Dienste** > **SQL-Adapter** > **SKUs**. Klicken Sie mit der rechten Maustaste auf den Namen der SKU, und wählen Sie dann **Löschen** aus, um sie zu löschen.
+
+> [!IMPORTANT]
+> Es kann bis zu einer Stunde dauern, bis neue SKUs im Benutzerportal verfügbar sind.
 
 ## <a name="make-sql-databases-available-to-users"></a>Verfügbarmachen von SQL-Datenbanken für Benutzer
 
 Erstellen Sie Pläne und Angebote, um SQL-Datenbanken für Benutzer zur Verfügung zu stellen. Fügen Sie dem Plan den Dienst **Microsoft.SqlAdapter** hinzu. Außerdem müssen Sie ein neues Kontingent erstellen.
+
+> [!IMPORTANT]
+> Es kann bis zu zwei Stunden dauern, bis neue Kontingente im Benutzerportal verfügbar sind oder ein geändertes Kontingent erzwungen wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

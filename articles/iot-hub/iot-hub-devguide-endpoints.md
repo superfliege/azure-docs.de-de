@@ -3,17 +3,17 @@ title: Informationen zu Azure IoT Hub-Endpunkten | Microsoft-Dokumentation
 description: 'Entwicklerhandbuch: Referenzinformationen zu IoT Hub-Endpunkten mit Geräte- und Dienstanbindung'
 author: robinsh
 manager: philmea
-ms.author: robin.shahan
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: 085a4ffbe0b615408bfd8aa70c027013e16f0136
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 5015068f9b165190bef3b0cb97ddb194e173303e
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201431"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045916"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Referenz: IoT Hub-Endpunkte
 
@@ -86,9 +86,9 @@ Sie können die REST-API [Get Endpoint Health](https://docs.microsoft.com/de-de/
 
 |Integritätsstatus|BESCHREIBUNG|
 |---|---|
-|Fehlerfrei|Der Endpunkt akzeptiert Nachrichten erwartungsgemäß.|
+|healthy|Der Endpunkt akzeptiert Nachrichten erwartungsgemäß.|
 |Fehlerhaft|Der Endpunkt akzeptiert Nachrichten nicht erwartungsgemäß, und IoT Hub versucht, Daten erneut an diesen Endpunkt zu senden. Der Status eines fehlerhaften Endpunkts wird zu fehlerfrei aktualisiert, wenn IoT Hub einen möglicherweise konsistenten Integritätsstatus erreicht hat.|
-|Unbekannt|IoT Hub hat keine Verbindung mit dem Endpunkt hergestellt. Von diesem Endpunkt wurden keine Nachrichten übermittelt oder zurückgewiesen.|
+|unknown|IoT Hub hat keine Verbindung mit dem Endpunkt hergestellt. Von diesem Endpunkt wurden keine Nachrichten übermittelt oder zurückgewiesen.|
 |Inaktiv|Der Endpunkt nimmt auch nach dem wiederholten Senden von Nachrichten für den Wiederholungszeitraum durch den IoT Hub keine Nachrichten an.|
 
 ## <a name="field-gateways"></a>Bereichsgateways
@@ -103,4 +103,4 @@ Weitere Referenzthemen in diesem IoT Hub-Entwicklungsleitfaden:
 
 * [IoT Hub-Abfragesprache für Gerätezwillinge, Aufträge und Nachrichtenrouting](iot-hub-devguide-query-language.md)
 * [Kontingente und Drosselung](iot-hub-devguide-quotas-throttling.md)
-* [IoT Hub-MQTT-Unterstützung](iot-hub-mqtt-support.md)
+* [IoT Hub MQTT-Unterstützung](iot-hub-mqtt-support.md)

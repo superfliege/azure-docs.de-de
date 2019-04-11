@@ -17,13 +17,13 @@ ms.locfileid: "54464220"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>Optionen für die Remoteüberwachungsarchitektur
 
-Der Azure IoT-Solution Accelerator für Remoteüberwachung ist ein Open Source-Solution Accelerator mit MIT-Lizenz. Zur Beschleunigung der IoT-Entwicklung veranschaulicht er etwa folgende allgemeine IoT-Szenarien:
+Der Azure IoT-Solution Accelerator für die Remoteüberwachung ist ein Open Source-Solution Accelerator mit MIT-Lizenz. Zur Beschleunigung der IoT-Entwicklung veranschaulicht er etwa folgende allgemeine IoT-Szenarien:
 
 - Gerätekonnektivität
 - Geräteverwaltung
 - Datenstromverarbeitung
 
-Die Lösung für die Remoteüberwachung folgt der empfohlenen [Azure IoT-Referenzarchitektur](https://aka.ms/iotrefarchitecture).
+Die Remoteüberwachungslösung folgt der empfohlenen [Azure IoT-Referenzarchitektur](https://aka.ms/iotrefarchitecture).
 
 Dieser Artikel beschreibt die wichtigen technischen Auswahlmöglichkeiten für jedes Subsystem der Remoteüberwachungslösung. Die technischen Optionen, die Microsoft für die Remoteüberwachungslösung auswählt, sind nicht die einzige Möglichkeit, eine IoT-Remoteüberwachungslösung zu implementieren. Betrachten Sie die technische Implementierung als Grundlage für die Erstellung einer erfolgreichen Anwendung, und passen Sie sie an Folgendes an:
 
@@ -57,7 +57,7 @@ Für IoT-Gerätekonnektivität können Sie Folgendes verwenden:
 
 ### <a name="stream-processing"></a>Datenstromverarbeitung
 
-Für die Datenstromverarbeitung verwendet die Lösung für die Remoteüberwachung Azure Stream Analytics, um die Verarbeitung komplexer Regeln durchzuführen. Wenn Sie einfachere Regeln verwenden möchten, steht ein benutzerdefinierter Microservice mit Unterstützung für die Verarbeitung einfacherer Regeln zur Verfügung. Dieses Setup gehört allerdings nicht zur schlüsselfertigen Bereitstellung. Die Referenzarchitektur empfiehlt Azure Functions für die Verarbeitung einfacher Regeln und Azure Stream Analytics für die Verarbeitung komplexer Regeln.
+Für die Datenstromverarbeitung verwendet die Remoteüberwachungslösung Azure Stream Analytics, um die Verarbeitung komplexer Regeln durchzuführen. Wenn Sie einfachere Regeln verwenden möchten, steht ein benutzerdefinierter Microservice mit Unterstützung für die Verarbeitung einfacherer Regeln zur Verfügung. Dieses Setup gehört allerdings nicht zur schlüsselfertigen Bereitstellung. Die Referenzarchitektur empfiehlt Azure Functions für die Verarbeitung einfacher Regeln und Azure Stream Analytics für die Verarbeitung komplexer Regeln.
 
 ### <a name="storage"></a>Storage
 
@@ -84,6 +84,6 @@ Alternativ zu Docker können Microservices in PaaS-Diensten wie Azure App Servic
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Stellen Sie Ihren Solution Accelerator für die Lösung für die Remoteüberwachung [hier](https://www.azureiotsolutions.com/) bereit.
+* Stellen Sie Ihre Remoteüberwachungslösung [hier](https://www.azureiotsolutions.com/) bereit.
 * Erkunden Sie [C#](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/)- und [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/)-Code in GitHub.  
 * Erfahren Sie [hier](https://aka.ms/iotrefarchitecture) mehr über die IoT-Referenzarchitektur.

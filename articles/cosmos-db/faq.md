@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: c344e8c2d0ad62b394792201ab52bb37413012f8
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 40e2baaeaae933e8ff6a88eff2e2d86f645ad37b
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259906"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881040"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Häufig gestellte Fragen zu unterschiedlichen APIs in Azure Cosmos DB
 
@@ -201,7 +201,7 @@ Ja. Der [Azure Cosmos DB-Emulator](local-emulator.md) stellt eine High-Fidelity-
 
 ### <a name="why-are-long-floating-point-values-in-a-document-rounded-when-viewed-from-data-explorer-in-the-portal"></a>Warum werden lange Gleitkommawerte in einem Dokument gerundet, wenn sie im Daten-Explorer im Portal angezeigt werden?
 
-Dies ist eine Einschränkung von JavaScript. JavaScript verwendet das Gleitkommazahlenformat mit doppelter Genauigkeit (gemäß Definition in IEEE 754) und kann nur Zahlen zwischen -(253-1) und 253-1 (d.h. 9007199254740991) enthalten.
+Dies ist eine Einschränkung von JavaScript. JavaScript verwendet das Gleitkommazahlenformat mit doppelter Genauigkeit (gemäß Definition in IEEE 754) und kann nur Zahlen zwischen -(2<sup>53</sup> - 1) und 2<sup>53</sup>-1 (d.h. 9007199254740991) enthalten.
 
 ### <a name="where-are-permissions-allowed-in-the-object-hierarchy"></a>Wo sind in der Objekthierarchie Berechtigungen zulässig?
 
@@ -265,8 +265,8 @@ Bei der REST-API werden einige Endpunkte/Abfrageoptionen von der Tabellen-API vo
 | REST-Methode | REST-Endpunkt/-Abfrageoption | Dokumentations-URLs | Erklärung |
 | ------------| ------------- | ---------- | ----------- |
 | GET, PUT | /?restype=service@comp=properties| [Set Table Service Properties](https://docs.microsoft.com/rest/api/storageservices/set-table-service-properties) (Festlegen von Tabellendiensteigenschaften) und [Get Table Service Properties](https://docs.microsoft.com/rest/api/storageservices/get-table-service-properties) (Abrufen von Tabellendiensteigenschaften) | Dieser Endpunkt dient zum Festlegen von CORS-Regeln, Storage Analytics-Konfiguration und Protokollierungseinstellungen. CORS wird derzeit nicht unterstützt. Analyse und Protokollierung werden in Azure Cosmos DB anders behandelt als in Azure Storage-Tabellen. |
-| OPTIONS | /<Tabellenressourcenname> | [Pre-flight CORS table request](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request) (Preflight-CORS-Tabellenanforderung) | Dies ist Teil von CORS und wird daher derzeit von Azure Cosmos DB nicht unterstützt. |
-| GET | /?restype=service@comp=stats | [Get Table Service Stats](https://docs.microsoft.com/rest/api/storageservices/get-table-service-stats) (Abrufen der Tabellendienststatistik) | Gibt Aufschluss über die Replikationsgeschwindigkeit von Daten zwischen primärer Datenbank und sekundären Datenbanken. Wird in Cosmos DB nicht benötigt, da hier die Replikation Teil der Schreibvorgänge ist. |
+| OPTIONS | /<Tabellenressourcenname> | [Pre-flight CORS table request (Preflight-CORS-Tabellenanforderung)](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request) | Dies ist Teil von CORS und wird daher derzeit von Azure Cosmos DB nicht unterstützt. |
+| GET | /?restype=service@comp=stats | [Get Table Service Stats (Abrufen der Tabellendienststatistik)](https://docs.microsoft.com/rest/api/storageservices/get-table-service-stats) | Gibt Aufschluss über die Replikationsgeschwindigkeit von Daten zwischen primärer Datenbank und sekundären Datenbanken. Wird in Cosmos DB nicht benötigt, da hier die Replikation Teil der Schreibvorgänge ist. |
 | GET, PUT | /mytable?comp=acl | [Get Table ACL](https://docs.microsoft.com/rest/api/storageservices/get-table-acl) (Tabellen-ACL abrufen) und [Set Table ACL](https://docs.microsoft.com/rest/api/storageservices/set-table-acl) (Tabellen-ACL festlegen) | Dient zum Abrufen und Festlegen der gespeicherten Zugriffsrichtlinien, die für die Verwaltung von Shared Access Signatures (SAS) verwendet werden. SAS werden zwar unterstützt, aber unterschiedlich festgelegt und verwaltet. |
 
 Darüber hinaus unterstützt die Table-API von Azure Cosmos DB nur das JSON-Format und nicht das ATOM-Format.

@@ -75,7 +75,7 @@ So erstellen Sie den Gerätecode und laden ihn hoch:
 
 Um sicherzustellen, dass die auf das DevKit-Gerät hochgeladene Beispielanwendung funktioniert, führen Sie die folgenden Schritte aus:
 
-### <a name="view-the-telemetry-sent-to-remote-monitoring-solution"></a>Anzeigen der Telemetriedaten, die an die Lösung für die Remoteüberwachung gesendet wurden
+### <a name="view-the-telemetry-sent-to-remote-monitoring-solution"></a>Anzeigen der Telemetriedaten, die an die Remoteüberwachungslösung gesendet wurden
 
 Wenn die Beispiel-App ausgeführt wird, sendet das DevKit-Gerät Telemetriedaten von den Sensoren über das WLAN an Ihren Solution Accelerator. So zeigen Sie die Telemetriedaten an:
 

@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 63f26c8a4a0a9195083386b18c0fff9439428bf0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b2c665de94750c4c6f41bda47960fdb9ba17e819
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546193"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905629"
 ---
-# <a name="move-data-from-a-odata-source-using-azure-data-factory"></a>Verschieben von Daten aus einer OData-Quelle mithilfe von Azure Data Factory
+# <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>Verschieben von Daten aus einer OData-Quelle mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1](data-factory-odata-connector.md)
+> * [Version 1](data-factory-odata-connector.md)
 > * [Version 2 (aktuelle Version)](../connector-odata.md)
 
 > [!NOTE]

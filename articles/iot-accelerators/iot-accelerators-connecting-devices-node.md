@@ -1,6 +1,6 @@
 ---
 title: Bereitstellen von Geräten für die Remoteüberwachung in Node.js – Azure | Microsoft-Dokumentation
-description: Hier wird beschrieben, wie Sie mittels einer in Node.js geschriebenen Anwendung die Verbindung eines Gerät mit dem Solution Accelerator für Remoteüberwachung herstellen.
+description: Hier wird beschrieben, wie Sie mittels einer in Node.js geschriebenen Anwendung die Verbindung eines Gerät mit dem Solution Accelerator für die Remoteüberwachung herstellen.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -15,11 +15,11 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "58093438"
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Herstellen einer Verbindung zwischen Ihrem Gerät und dem Solution Accelerator für Remoteüberwachung (Node.js)
+# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Herstellen einer Verbindung zwischen Ihrem Gerät und dem Solution Accelerator für die Remoteüberwachung (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-In diesem Tutorial wird gezeigt, wie Sie eine Verbindung zwischen einem realen Gerät und dem Solution Accelerator für Remoteüberwachung herstellen. In diesem Tutorial verwenden Sie Node.js. Dies ist eine gute Wahl für Umgebungen mit minimalen Ressourceneinschränkungen.
+In diesem Tutorial wird gezeigt, wie Sie eine Verbindung zwischen einem realen Gerät und dem Solution Accelerator für die Remoteüberwachung herstellen. In diesem Tutorial verwenden Sie Node.js. Dies ist eine gute Wahl für Umgebungen mit minimalen Ressourceneinschränkungen.
 
 Wenn Sie lieber ein Gerät simulieren möchten, finden Sie weitere Informationen unter [Erstellen und Testen eines neuen simulierten Geräts](iot-accelerators-remote-monitoring-create-simulated-device.md).
 

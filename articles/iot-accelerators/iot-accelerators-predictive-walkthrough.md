@@ -31,7 +31,7 @@ Die blauen Elemente sind Azure-Dienste, die in der Region bereitgestellt werden,
 
 Das grüne Element ist ein simuliertes Flugzeugtriebwerk. Der Abschnitt [Simulierte Geräte](#simulated-devices) enthält weitere Informationen zu diesen simulierten Geräten.
 
-Die grauen Elemente sind Komponenten, mit denen Funktionen für die *Geräteverwaltung* implementiert werden. Im aktuellen Release des Solution Accelerators für Predictive Maintenance werden diese Ressourcen nicht bereitgestellt. Weitere Informationen zur Geräteverwaltung finden Sie unter [Erkunden der Funktionen des Solution Accelerators für Remoteüberwachung][lnk-remote-monitoring].
+Die grauen Elemente sind Komponenten, mit denen Funktionen für die *Geräteverwaltung* implementiert werden. Im aktuellen Release des Solution Accelerators für Predictive Maintenance werden diese Ressourcen nicht bereitgestellt. Weitere Informationen zur Geräteverwaltung finden Sie unter [Erkunden der Funktionen des Solution Accelerators für die Remoteüberwachung][lnk-remote-monitoring].
 
 ## <a name="azure-resources"></a>Azure-Ressourcen
 

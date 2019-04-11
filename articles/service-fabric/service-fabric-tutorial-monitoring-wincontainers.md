@@ -192,7 +192,7 @@ Stellen Sie die Vorlage mit den neuen Änderungen zum Aktualisieren Ihres aktuel
 
 ## <a name="add-the-container-monitoring-solution-to-your-log-analytics-workspace"></a>Hinzufügen der Containerüberwachungslösung zu Ihrem Log Analytics-Arbeitsbereich
 
-Um Informationen zum Einrichten der Containerlösung in Ihrem Arbeitsbereich zu erhalten, suchen Sie nach *Container Monitoring Solution*, und erstellen Sie eine Ressource „Container“ (unter der Kategorie „Überwachung + Verwaltung“).
+Um Informationen zum Einrichten der Containerlösung in Ihrem Arbeitsbereich zu erhalten, suchen Sie nach *Containerüberwachungslösung*, und erstellen Sie eine Ressource „Container“ (unter der Kategorie „Überwachung + Verwaltung“).
 
 ![Hinzufügen der Containerlösung](./media/service-fabric-tutorial-monitoring-wincontainers/containers-solution.png)
 

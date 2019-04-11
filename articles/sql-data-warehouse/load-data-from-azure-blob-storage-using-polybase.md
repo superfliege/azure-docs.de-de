@@ -2,20 +2,20 @@
 title: 'Tutorial: Laden von Daten zu New Yorker Taxis in Azure SQL Data Warehouse | Microsoft-Dokumentation'
 description: Ein Tutorial, in dem das Azure-Portal und SQL Server Management Studio zum Laden von Daten zu New Yorker Taxis aus einem öffentlichen Azure-Blob in Azure SQL Data Warehouse verwendet wird.
 services: sql-data-warehouse
-author: ckarst
+author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 09/12/2018
-ms.author: cakarst
+ms.date: 03/27/2019
+ms.author: mlee3gsd
 ms.reviewer: igorstan
-ms.openlocfilehash: 979488009f7afa2ccae3993d756e92e1ae15d5a0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 57ca749aec2a72379e92c46764eb9b6558653e29
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466525"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620188"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>Tutorial: Laden von Daten zu New Yorker Taxis in Azure SQL Data Warehouse
 
@@ -80,7 +80,7 @@ Führen Sie die folgenden Schritte aus, um eine leere SQL Data Warehouse-Instanz
 
 6. Klicken Sie auf **Leistungsebene**, um anzugeben, ob „Gen1“ oder „Gen2“ als Data Warehouse verwendet werden soll, und um die Anzahl von Data Warehouse-Einheiten festzulegen. 
 
-7. Wählen Sie in diesem Tutorial **Gen1** von SQL Data Warehouse aus. Der Schieberegler ist standardmäßig auf **DW1000c** festgelegt.  Schieben Sie ihn nach oben und unten, um sich mit der Funktionsweise vertraut zu machen. 
+7. Wählen Sie in diesem Tutorial **Gen2** von SQL Data Warehouse aus. Der Schieberegler ist standardmäßig auf **DW1000c** festgelegt.  Schieben Sie ihn nach oben und unten, um sich mit der Funktionsweise vertraut zu machen. 
 
     ![Konfigurieren der Leistung](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
@@ -150,7 +150,7 @@ In diesem Abschnitt wird [SQL Server Management Studio](/sql/ssms/download-sql-s
     | ------------ | --------------- | ----------- | 
     | Servertyp | Datenbank-Engine | Dieser Wert ist erforderlich. |
     | Servername | Der vollqualifizierte Servername | Der Name sollte etwa wie folgt lauten: **mynewserver-20180430.database.windows.net**. |
-    | Authentifizierung | SQL Server-Authentifizierung | In diesem Tutorial haben wir als einzigen Authentifizierungstyp die SQL-Authentifizierung konfiguriert. |
+    | Authentication | SQL Server-Authentifizierung | In diesem Tutorial haben wir als einzigen Authentifizierungstyp die SQL-Authentifizierung konfiguriert. |
     | Anmeldung | Das Serveradministratorkonto | Hierbei handelt es sich um das Konto, das Sie beim Erstellen des Servers angegeben haben. |
     | Password | Das Kennwort für das Serveradministratorkonto | Hierbei handelt es sich um das Kennwort, das Sie beim Erstellen des Servers angegeben haben. |
 

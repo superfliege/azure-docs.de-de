@@ -7,18 +7,21 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: d75eb87bff812589e4d3a3a14079ddaaf368a588
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 8839d7ea93bcb205b1900e63d3ab98394e72cd75
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259770"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904864"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Diagnoseprotokollierung in Azure Cosmos DB 
 
 Sobald Sie damit begonnen haben, mindestens eine Azure Cosmos DB-Datenbank zu verwenden, möchten Sie wahrscheinlich überwachen, wie und wann auf Ihre Datenbanken zugegriffen wird. Dieser Artikel enthält eine Übersicht über die Protokolle, die auf der Azure-Plattform verfügbar sind. Sie erfahren, wie die Diagnoseprotokollierung für Überwachungszwecke zum Senden von Protokollen an [Azure Storage](https://azure.microsoft.com/services/storage/) aktiviert wird, wie Protokolle an [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) gestreamt werden und wie Protokolle in [Azure Monitor-Protokolle](https://azure.microsoft.com/services/log-analytics/) exportiert werden.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="logs-available-in-azure"></a>In Azure verfügbare Protokolle
 
@@ -132,7 +135,7 @@ Wenn Sie Azure PowerShell bereits installiert haben und Ihnen die Version nicht 
 Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich mit dem folgenden Befehl bei Ihrem Azure-Konto an:  
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 Geben Sie im Popup-Browserfenster den Benutzernamen und das Kennwort Ihres Azure-Kontos ein. Azure PowerShell ruft alle Abonnements ab, die diesem Konto zugeordnet sind, und verwendet standardmäßig das erste Abonnement.
@@ -140,13 +143,13 @@ Geben Sie im Popup-Browserfenster den Benutzernamen und das Kennwort Ihres Azure
 Wenn Sie über mehrere Abonnements verfügen, müssen Sie unter Umständen ein bestimmtes Abonnement angeben, das zum Erstellen Ihres Azure-Schlüsseltresors verwendet wurde. Geben Sie den folgenden Befehl ein, um die Abonnements für Ihr Konto anzuzeigen:
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 Geben Sie anschließend den folgenden Befehl ein, um das Abonnement anzugeben, das dem protokollierten Azure Cosmos DB-Konto zugeordnet ist:
 
 ```powershell
-Set-AzureRmContext -SubscriptionId <subscription ID>
+Set-AzContext -SubscriptionId <subscription ID>
 ```
 
 > [!NOTE]
@@ -162,7 +165,7 @@ Sie können zwar ein vorhandenes Speicherkonto für Ihre Protokolle verwenden, i
 Um die Verwaltung noch weiter zu vereinfachen, verwenden wir in diesem Tutorial dieselbe Ressourcengruppe, die auch die Azure Cosmos DB-Datenbank enthält. Ersetzen Sie die Werte für die Parameter **ContosoResourceGroup**, **contosocosmosdblogs** und **North Central US** durch Ihre eigenen Werte:
 
 ```powershell
-$sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup `
+$sa = New-AzStorageAccount -ResourceGroupName ContosoResourceGroup `
 -Name contosocosmosdblogs -Type Standard_LRS -Location 'North Central US'
 ```
 
@@ -175,15 +178,15 @@ $sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup `
 Legen Sie den Azure Cosmos DB-Kontonamen auf eine Variable namens **account** fest, wobei **ResourceName** der Name des Azure Cosmos DB-Kontos ist.
 
 ```powershell
-$account = Get-AzureRmResource -ResourceGroupName ContosoResourceGroup `
+$account = Get-AzResource -ResourceGroupName ContosoResourceGroup `
 -ResourceName contosocosmosdb -ResourceType "Microsoft.DocumentDb/databaseAccounts"
 ```
 
 ### <a id="enable"></a>Aktivieren der Protokollierung
-Verwenden Sie zum Aktivieren der Protokollierung für Azure Cosmos DB das Cmdlet `Set-AzureRmDiagnosticSetting` zusammen mit den Variablen für das neue Speicherkonto, das Azure Cosmos DB-Konto und die Kategorie, für welche Protokollierung aktiviert werden soll. Führen Sie den folgenden Befehl aus, und legen Sie das Flag **-Enabled** auf **$true** fest:
+Verwenden Sie zum Aktivieren der Protokollierung für Azure Cosmos DB das Cmdlet `Set-AzDiagnosticSetting` zusammen mit den Variablen für das neue Speicherkonto, das Azure Cosmos DB-Konto und die Kategorie, für welche Protokollierung aktiviert werden soll. Führen Sie den folgenden Befehl aus, und legen Sie das Flag **-Enabled** auf **$true** fest:
 
 ```powershell
-Set-AzureRmDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories DataPlaneRequests
+Set-AzDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories DataPlaneRequests
 ```
 
 Die Ausgabe des Befehls sollte dem folgenden Beispiel ähneln:
@@ -221,7 +224,7 @@ Die Ausgabe aus dem Befehl bestätigt, dass die Protokollierung jetzt für die D
 Optional können Sie eine Aufbewahrungsrichtlinie für Ihre Protokolle festlegen, mit der ältere Protokolle automatisch gelöscht werden. Legen Sie die Aufbewahrungsrichtlinie z.B. fest, indem Sie das Flag **-RetentionEnabled** auf **$true** festlegen. Legen Sie die den Parameter **-RetentionInDays** auf **90** fest, sodass Protokolle, die älter als 90 Tagen sind, automatisch gelöscht werden.
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId $account.ResourceId`
+Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
  -StorageAccountId $sa.Id -Enabled $true -Categories DataPlaneRequests`
   -RetentionEnabled $true -RetentionInDays 90
 ```
@@ -238,7 +241,7 @@ Erstellen Sie zunächst eine Variable für den Containernamen. Die Variable wird
 Geben Sie Folgendes ein, um alle Blobs in diesem Container aufzulisten:
 
 ```powershell
-Get-AzureStorageBlob -Container $container -Context $sa.Context
+Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
 Die Ausgabe des Befehls sollte dem folgenden Beispiel ähneln:
@@ -273,13 +276,13 @@ New-Item -Path 'C:\Users\username\ContosoCosmosDBLogs'`
 Rufen Sie anschließend eine Liste mit allen Blobs ab:  
 
 ```powershell
-$blobs = Get-AzureStorageBlob -Container $container -Context $sa.Context
+$blobs = Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
-Reichen Sie diese Liste über den Befehl `Get-AzureStorageBlobContent` so weiter, dass die Blobs in den Zielordner heruntergeladen werden:
+Reichen Sie diese Liste über den Befehl `Get-AzStorageBlobContent` so weiter, dass die Blobs in den Zielordner heruntergeladen werden:
 
 ```powershell
-$blobs | Get-AzureStorageBlobContent `
+$blobs | Get-AzStorageBlobContent `
  -Destination 'C:\Users\username\ContosoCosmosDBLogs'
 ```
 
@@ -290,27 +293,27 @@ Verwenden Sie Platzhalter, um Blobs selektiv herunterzuladen. Beispiel:
 * Wenn Sie über mehrere Datenbanken verfügen und Protokolle für nur eine Datenbank mit dem Namen **CONTOSOCOSMOSDB3** herunterladen möchten, verwenden Sie den folgenden Befehl:
 
     ```powershell
-    Get-AzureStorageBlob -Container $container `
+    Get-AzStorageBlob -Container $container `
      -Context $sa.Context -Blob '*/DATABASEACCOUNTS/CONTOSOCOSMOSDB3
     ```
 
 * Wenn Sie über mehrere Ressourcengruppen verfügen und nur Protokolle für eine Ressourcengruppe herunterladen möchten, verwenden Sie den Befehl `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`:
 
     ```powershell
-    Get-AzureStorageBlob -Container $container `
+    Get-AzStorageBlob -Container $container `
     -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
     ```
 * Wenn Sie alle Protokolle für den Monat Juli 2017 herunterladen möchten, verwenden Sie den Befehl `-Blob '*/year=2017/m=07/*'`:
 
     ```powershell
-    Get-AzureStorageBlob -Container $container `
+    Get-AzStorageBlob -Container $container `
      -Context $sa.Context -Blob '*/year=2017/m=07/*'
     ```
 
 Sie können auch die folgenden Befehle ausführen:
 
-* Zum Abfragen des Status von Diagnoseeinstellungen für Ihre Datenbankressource verwenden Sie den Befehl `Get-AzureRmDiagnosticSetting -ResourceId $account.ResourceId`.
-* Zum Deaktivieren der Protokollierung der Kategorie **DataPlaneRequests** für Ihre Datenbankkontoressource verwenden Sie den Befehl `Set-AzureRmDiagnosticSetting -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories DataPlaneRequests`.
+* Zum Abfragen des Status von Diagnoseeinstellungen für Ihre Datenbankressource verwenden Sie den Befehl `Get-AzDiagnosticSetting -ResourceId $account.ResourceId`.
+* Zum Deaktivieren der Protokollierung der Kategorie **DataPlaneRequests** für Ihre Datenbankkontoressource verwenden Sie den Befehl `Set-AzDiagnosticSetting -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories DataPlaneRequests`.
 
 
 Die in jeder dieser Abfragen zurückgegebenen Blobs werden (wie im folgenden Code gezeigt) als Text gespeichert und als JSON-Blob formatiert:
@@ -439,9 +442,9 @@ Die folgende Tabelle beschreibt die Inhalte der einzelnen Protokolleinträge.
 | --- | --- | --- |
 | **time** | **TimeGenerated** | Datum und Uhrzeit (UTC), zu denen der Vorgang aufgetreten ist. |
 | **Ressourcen-ID** | **Ressource** | Das Azure Cosmos DB-Konto, für das Protokolle aktiviert sind.|
-| **category** | **Kategorie** | Für Azure Cosmos DB-Protokolle ist **DataPlaneRequests** der einzige verfügbare Wert. |
-| **operationName** | **OperationName** | Name des Vorgangs. Bei diesem Wert kann es sich um einen der folgenden Vorgänge handeln: Create, Update, Read, ReadFeed, Delete, Replace, Execute, SqlQuery, Query, JSQuery, Head, HeadFeed, Upsert.   |
-| **properties** | – | Die Inhalte dieser Felder werden in den folgenden Zeilen beschrieben. |
+| **category** | **Category (Kategorie)** | Für Azure Cosmos DB-Protokolle ist **DataPlaneRequests** der einzige verfügbare Wert. |
+| **operationName** | **NameVorgang** | Name des Vorgangs. Bei diesem Wert kann es sich um einen der folgenden Vorgänge handeln: Create, Update, Read, ReadFeed, Delete, Replace, Execute, SqlQuery, Query, JSQuery, Head, HeadFeed, Upsert.   |
+| **Eigenschaften** | – | Die Inhalte dieser Felder werden in den folgenden Zeilen beschrieben. |
 | **activityId** | **activityId_g** | Die eindeutige GUID für den protokollierten Vorgang. |
 | **userAgent** | **userAgent_s** | Eine Zeichenfolge, die den Benutzer-Agent des Clients angibt, der die Anforderung ausführt. Das Format lautet {Name des Benutzer-Agents}/{version}.|
 | **requestResourceType** | **requestResourceType_s** | Der Typ der Ressource, auf die zugegriffen wird. Bei diesem Wert kann es sich um einen der folgenden Ressourcentypen handeln: Database, Container, Document, Attachment, User, Permission, StoredProcedure, Trigger, UserDefinedFunction, Offer. |

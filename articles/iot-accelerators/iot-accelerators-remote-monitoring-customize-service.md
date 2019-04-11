@@ -1,6 +1,6 @@
 ---
 title: Hinzufügen eines Diensts zur Benutzeroberfläche der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
-description: Dieser Artikel zeigt Ihnen, wie Sie einen neuen Dienst zur Webbenutzeroberfläche des Accelerators für die Remoteüberwachungslösung hinzufügen können.
+description: Dieser Artikel zeigt Ihnen, wie Sie einen neuen Dienst zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung hinzufügen können.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -15,14 +15,14 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2018
 ms.locfileid: "49094506"
 ---
-# <a name="add-a-custom-service-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Hinzufügen eines benutzerdefinierten Diensts zur Webbenutzeroberfläche des Solution Accelerators für Remoteüberwachung
+# <a name="add-a-custom-service-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Hinzufügen eines benutzerdefinierten Diensts zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung
 
-Dieser Artikel zeigt Ihnen, wie Sie einen neuen Dienst zur Webbenutzeroberfläche des Accelerators für die Remoteüberwachungslösung hinzufügen können. Der Artikel beschreibt Folgendes:
+Dieser Artikel zeigt Ihnen, wie Sie einen neuen Dienst zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung hinzufügen können. Der Artikel beschreibt Folgendes:
 
 - Vorbereiten einer lokalen Entwicklungsumgebung.
 - Hinzufügen eines neuen Diensts zur Webbenutzeroberfläche.
 
-Der Beispieldienst in diesem Artikel stellt die Daten für ein Raster zur Verfügung, das Sie anhand des Artikels [Hinzufügen eines benutzerdefinierten Dienstes zur Webbenutzeroberfläche des Accelerators für Remoteüberwachungslösung](iot-accelerators-remote-monitoring-customize-grid.md) hinzugefügt haben.
+Der Beispieldienst in diesem Artikel stellt die Daten für ein Raster zur Verfügung, das Sie anhand des Artikels [Hinzufügen eines benutzerdefinierten Dienstes zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung](iot-accelerators-remote-monitoring-customize-grid.md) hinzugefügt haben.
 
 In einer React-Anwendung interagiert ein Dienst normalerweise mit einem Back-End-Dienst. Zu den Beispielen im Solution Accelerator für die Remoteüberwachung gehören Dienste, die mit den IoT-Hub-Manager- und Konfiguration-Microservices interagieren.
 
@@ -114,8 +114,8 @@ const epics = [
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie Informationen zu den verfügbaren Ressourcen erhalten, mit denen Sie Dienste zur Webbenutzeroberfläche im Solution Accelerator für Remoteüberwachung hinzufügen oder diese anpassen können.
+In diesem Artikel haben Sie Informationen zu den verfügbaren Ressourcen erhalten, mit denen Sie Dienste zur Webbenutzeroberfläche im Solution Accelerator für die Remoteüberwachung hinzufügen oder diese anpassen können.
 
-Nachdem Sie einen Dienst definiert haben, ist der nächste Schritt das [Hinzufügen eines benutzerdefinierten Rasters zur Webbenutzeroberfläche des Accelerators für Remoteüberwachungslösung](iot-accelerators-remote-monitoring-customize-grid.md), das die vom Dienst zurückgegebenen Daten anzeigt.
+Nachdem Sie einen Dienst definiert haben, ist der nächste Schritt das [Hinzufügen eines benutzerdefinierten Rasters zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung](iot-accelerators-remote-monitoring-customize-grid.md), das die vom Dienst zurückgegebenen Daten anzeigt.
 
-Weitere konzeptuelle Informationen zum Solution Accelerator für Remoteüberwachung finden Sie unter [Remoteüberwachungsarchitektur](iot-accelerators-remote-monitoring-sample-walkthrough.md).
+Weitere konzeptuelle Informationen zum Solution Accelerator für die Remoteüberwachung finden Sie unter [Remoteüberwachungsarchitektur](iot-accelerators-remote-monitoring-sample-walkthrough.md).

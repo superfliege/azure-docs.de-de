@@ -3,8 +3,8 @@ title: Azure Service Fabric mit VS Code – Erste Schritte | Microsoft-Dokumenta
 description: Dieser Artikel enthält einen Überblick über die Erstellung von Service Fabric-Anwendungen mit Visual Studio Code.
 services: service-fabric
 documentationcenter: .net
-author: JimacoMS2
-manager: timlt
+author: peterpogorski
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
-ms.author: v-jamebr
-ms.openlocfilehash: 197010271518347025157968012be31c71b3b667
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: pepogors
+ms.openlocfilehash: a0405e6c699192839f72b290d0466ab5062ac584
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121025"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670127"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric für Visual Studio Code
 
@@ -107,7 +107,7 @@ Der Befehl **Service Fabric: Anwendung veröffentlichen** stellt die Service Fab
 Der Befehl **Service Fabric: Anwendung bereitstellen** stellt die Service Fabric-Anwendung im lokalen Cluster bereit. Stellen Sie sicher, dass der lokale Cluster ausgeführt wird, bevor Sie den Befehl verwenden. 
 
 1. Wählen Sie den Befehl **Service Fabric: Anwendung bereitstellen** aus.
-2. Zeigen Sie den lokalen Cluster mit Service Fabric Explorer (http://localhost:19080/Explorer) an, um zu bestätigen, dass die Anwendung installiert wurde. Dies kann einige Zeit dauern. Haben Sie daher etwas Geduld.
+2. Zeigen Sie den lokalen Cluster mit Service Fabric Explorer (http:\//localhost:19080/Explorer) an, um zu bestätigen, dass die Anwendung installiert wurde. Dies kann einige Zeit dauern. Haben Sie daher etwas Geduld.
 3. Sie können auch den Befehl **Service Fabric: Anwendung veröffentlichen** ohne in der Datei „Cloud.json“ festgelegte Parameter verwenden, um einen lokalen Cluster bereitzustellen.
 
 > [!NOTE]

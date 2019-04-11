@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 95811459ff51b71153fb5ceef804a64c8b6a9be6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a4cf3a9c19497057d7799be3bec78ad0de97e71a
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816627"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58851059"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Herstellen einer Azure Cosmos DB-Verbindung mithilfe von BI-Analysetools per ODBC-Treiber
 
@@ -97,7 +97,7 @@ Es gibt zwei Arten von Samplingmethoden, die Sie verwenden können: **Sammlungsz
 
 1. Klicken Sie nach dem Definieren des Schemas auf **Datei** | **Speichern**, navigieren Sie zum Verzeichnis, in dem das Schema gespeichert werden soll, und klicken Sie dann auf **Speichern**.
 
-    Falls Sie dieses Schema zu einem späteren Zeitpunkt mit einem DSN verwenden möchten, können Sie das Fenster „Azure Cosmos DB ODBC Driver DSN Setup“ (Azure Cosmos DB ODBC-Treiber – DSN-Setup) (über den ODBC-Datenquellenadministrator) öffnen, auf „Erweiterte Optionen“ klicken und dann im Feld „Schemadatei“ zum gespeicherten Schema navigieren. Mit dem Speichern einer Schemadatei unter einem vorhandenen DSN wird die DSN-Verbindung an die vom Schema definierten Daten und die dazugehörige Struktur angepasst.
+1. Um dieses Schema mit einem DSN zu verwenden, öffnen Sie das Fenster **Azure Cosmos DB ODBC Driver DSN Setup** (Azure Cosmos DB ODBC-Treiber – DSN-Setup) (über den ODBC-Datenquellenadministrator), klicken Sie auf **Erweiterte Optionen**, und navigieren Sie dann im Feld **Schemadatei** zum gespeicherten Schema. Mit dem Speichern einer Schemadatei unter einem vorhandenen DSN wird die DSN-Verbindung an die vom Schema definierten Daten und die dazugehörige Struktur angepasst.
 
 ## <a id="table-mapping"></a>Schritt 4: Erstellen einer Schemadefinition mit der Tabellentrennzeichen-Zuordnungsmethode
 

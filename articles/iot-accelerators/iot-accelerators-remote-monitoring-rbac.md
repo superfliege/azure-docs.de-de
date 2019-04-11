@@ -49,7 +49,7 @@ Standardmäßig erhält der Benutzer, der die Lösung bereitgestellt hat, automa
 
 ## <a name="add-or-remove-users"></a>Hinzufügen oder Entfernen von Benutzern
 
-Als Azure Active Directory-Anwendungsbesitzer können Sie über das Azure-Portal einer Rolle in der Lösung für die Remoteüberwachung einen Benutzer hinzufügen oder aus ihr entfernen. In den folgenden Schritten wird die [Azure Active Directory-Unternehmensanwendung](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application) verwendet, die beim Bereitstellen der Lösung für die Remoteüberwachung erstellt wurde.
+Als Azure Active Directory-Anwendungsbesitzer können Sie über das Azure-Portal einer Rolle in der Remoteüberwachungslösung einen Benutzer hinzufügen oder aus ihr entfernen. In den folgenden Schritten wird die [Azure Active Directory-Unternehmensanwendung](../active-directory/manage-apps/add-application-portal.md#find-your-azure-ad-tenant-application) verwendet, die beim Bereitstellen der Remoteüberwachungslösung erstellt wurde.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
@@ -245,9 +245,9 @@ public async Task DeleteAsync(string id)
 
 In diesem Artikel haben Sie erfahren, wie Sie die rollenbasierte Zugriffssteuerung im Solution Accelerator der Remoteüberwachung implementieren.
 
-Informationen zum Verwalten des Zugriffs auf den Time Series Insights-Explorer im Solution Accelerator für Remoteüberwachung finden Sie unter [Konfigurieren der Zugriffssteuerung für den Time Series Insights-Explorer](iot-accelerators-remote-monitoring-rbac-tsi.md).
+Informationen zum Verwalten des Zugriffs auf den Time Series Insights-Explorer im Solution Accelerator für die Remoteüberwachung finden Sie unter [Konfigurieren der Zugriffssteuerung für den Time Series Insights-Explorer](iot-accelerators-remote-monitoring-rbac-tsi.md).
 
-Weitere konzeptuelle Informationen zum Solution Accelerator für Remoteüberwachung finden Sie unter [Remoteüberwachungsarchitektur](iot-accelerators-remote-monitoring-sample-walkthrough.md).
+Weitere konzeptuelle Informationen zum Solution Accelerator für die Remoteüberwachung finden Sie unter [Remoteüberwachungsarchitektur](iot-accelerators-remote-monitoring-sample-walkthrough.md).
 
 Weitere Informationen zum Anpassen der Remoteüberwachungslösung finden Sie unter [Anpassen und erneutes Bereitstellen eines Microservices](iot-accelerators-microservices-example.md).
 <!-- Next tutorials in the sequence -->

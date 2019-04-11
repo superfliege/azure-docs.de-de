@@ -1,5 +1,5 @@
 ---
-title: Lokales Bereitstellen der Lösung für die Remoteüberwachung (über IntelliJ-IDE) – Azure | Microsoft-Dokumentation
+title: Lokales Bereitstellen der Remoteüberwachungslösung (über IntelliJ-IDE) – Azure | Microsoft-Dokumentation
 description: In dieser Schrittanleitung wird gezeigt, wie der Solution Accelerator für die Remoteüberwachung zu Test- und Entwicklungszwecken mithilfe von IntelliJ auf Ihrem lokalen Computer bereitgestellt wird.
 author: v-krghan
 manager: dominicbetts
@@ -56,7 +56,7 @@ In diesem Abschnitt führen Sie die Microservices für die Remoteüberwachung au
 
 Öffnen Sie eine neues Eingabeaufforderungsfenster, um sicherzustellen, dass Sie Zugriff auf die Umgebungsvariablen haben, die in der vorherigen Sitzung mit dem Skript **start.cmd** festgelegt wurden.
 
-Führen Sie den folgenden Befehl aus, um den Docker-Container für den Gerätesimulationsdienst zu starten. Der Dienst simuliert Geräte für die Lösung für die Remoteüberwachung.
+Führen Sie den folgenden Befehl aus, um den Docker-Container für den Gerätesimulationsdienst zu starten. Der Dienst simuliert Geräte für die Remoteüberwachungslösung.
 
 ```cmd
 <path_to_cloned_repository>\services\device-simulation\scripts\docker\run.cmd
@@ -171,4 +171,4 @@ Sie können auch die lokale Kopie des Remoteüberwachungsrepositorys löschen, d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach Bereitstellung der Lösung für die Remoteüberwachung können Sie sich als Nächstes [mit den Funktionen des Lösungsdashboards vertraut machen](quickstart-remote-monitoring-deploy.md).
+Nach Bereitstellung der Remoteüberwachungslösung können Sie sich als Nächstes [mit den Funktionen des Lösungsdashboards vertraut machen](quickstart-remote-monitoring-deploy.md).

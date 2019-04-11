@@ -43,7 +43,7 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 Für dieses Tutorial benötigen Sie eine bereitgestellte Instanz des Solution Accelerators für die Remoteüberwachung in Ihrem Azure-Abonnement.
 
-Falls Sie den Solution Accelerator für die Remoteüberwachung noch nicht bereitgestellt haben, sollten Sie den Schnellstart [Bereitstellen einer cloudbasierten Lösung für die Remoteüberwachung](quickstart-remote-monitoring-deploy.md) durcharbeiten.
+Falls Sie den Solution Accelerator für die Remoteüberwachung noch nicht bereitgestellt haben, sollten Sie die Schnellstartanleitung [Bereitstellen einer cloudbasierten Lösung für die Remoteüberwachung](quickstart-remote-monitoring-deploy.md) durcharbeiten.
 
 Sie benötigen ein Azure-Speicherkonto, um Ihre Firmwaredateien zu hosten. Sie können ein vorhandenes Speicherkonto verwenden oder unter Ihrem Abonnement ein [neues Speicherkonto erstellen](../storage/common/storage-quickstart-create-account.md).
 
@@ -65,7 +65,7 @@ Außerdem müssen Sie für mindestens ein IoT DevKit-Gerät eine Verbindung mit 
 
 Wenn Sie das Dashboard der Remoteüberwachungslösung im Browser anzeigen möchten, navigieren Sie zunächst zu [Microsoft Azure IoT Solution Accelerators](https://www.azureiotsolutions.com/Accelerators#dashboard). Sie werden unter Umständen aufgefordert, sich mit den Anmeldeinformationen Ihres Azure-Abonnements anzumelden.
 
-Klicken Sie dann auf der Kachel für den im [Schnellstart](quickstart-remote-monitoring-deploy.md) bereitgestellten Solution Accelerator für Remoteüberwachung auf **Starten**.
+Klicken Sie dann auf der Kachel für den im [Schnellstart](quickstart-remote-monitoring-deploy.md) bereitgestellten Solution Accelerator für die Remoteüberwachung auf **Starten**.
 
 ## <a name="create-a-device-group"></a>Erstellen einer Gerätegruppe
 

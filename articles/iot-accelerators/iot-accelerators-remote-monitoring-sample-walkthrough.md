@@ -19,7 +19,7 @@ ms.locfileid: "58176135"
 
 Der [Solution Accelerator](../iot-accelerators/about-iot-accelerators.md) für Remoteüberwachung implementiert eine End-to-End-Überwachungslösung für mehrere Computer an Remotestandorten. In der Lösung sind wichtige Azure-Dienste kombiniert, um eine generische Implementierung des Geschäftsszenarios zu erzielen. Sie können sie als Ausgangspunkt für Ihre Implementierung verwenden und [anpassen](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md), um Ihre eigenen speziellen Geschäftsanforderungen zu erfüllen.
 
-In diesem Artikel werden einige wichtige Elemente der Lösung für die Remoteüberwachung beschrieben, um die Funktionsweise zu verdeutlichen. Dieses Wissen ist für folgende Zwecke hilfreich:
+In diesem Artikel werden einige wichtige Elemente der Remoteüberwachungslösung beschrieben, um die Funktionsweise zu verdeutlichen. Dieses Wissen ist für folgende Zwecke hilfreich:
 
 * Behandeln von Problemen in der Lösung
 * Planen der Lösungsanpassung zur Erfüllung besonderer Anforderungen
@@ -32,7 +32,7 @@ Der Code für den Solution Accelerator für die Remoteüberwachung ist auf GitHu
 
 ## <a name="logical-architecture"></a>Logische Architektur
 
-Im folgenden Diagramm sind die logischen Komponenten des Solution Accelerators für Remoteüberwachung zusammen mit der [IoT-Architektur](../iot-fundamentals/iot-introduction.md) dargestellt:
+Im folgenden Diagramm sind die logischen Komponenten des Solution Accelerators für die Remoteüberwachung zusammen mit der [IoT-Architektur](../iot-fundamentals/iot-introduction.md) dargestellt:
 
 ![Logische Architektur](./media/iot-accelerators-remote-monitoring-sample-walkthrough/remote-monitoring-architecture.png)
 
@@ -127,7 +127,7 @@ Die ASA-Aufträge übermitteln die Telemetriedaten von den verbundenen Geräten 
 [Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/) speichert die Telemetriedaten aus den mit dem Solution Accelerator verbundenen Geräten. Es ermöglicht auch das Visualisieren und Abfragen von Gerätetelemetrie in der Projektmappe-Webbenutzeroberfläche.
 
 > [!NOTE]
-> Time Series Insights ist für die Azure-Cloud in China derzeit nicht verfügbar. Bei neuen Bereitstellungen des Solution Accelerators für die Remoteüberwachung in der Azure-Cloud in China kann Cosmos DB für alle Speicherzwecke genutzt werden.
+> Time Series Insights ist für die Azure-Cloud in China derzeit nicht verfügbar. Für neue Solution Accelerator-Bereitstellungen für die Remoteüberwachung in der Azure-Cloud in China kann Cosmos DB für alle Speicherzwecke genutzt werden.
 
 ### <a name="configuration-microservice"></a>Microservice „Konfiguration“
 
@@ -170,4 +170,4 @@ Wenn Sie den Quellcode und die Entwicklerdokumentation erkunden möchten, könne
 Ausführliche Diagramme für die Lösungsarchitektur:
 * [Architektur des Solution Accelerators für Remoteüberwachung](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture)
 
-Weitere konzeptionelle Informationen zum Solution Accelerator für Remoteüberwachung finden Sie unter [Anpassen des Solution Accelerators für Remoteüberwachung](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md).
+Weitere konzeptionelle Informationen zum Solution Accelerator für die Remoteüberwachung finden Sie unter [Anpassen des Solution Accelerators für die Remoteüberwachung](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md).

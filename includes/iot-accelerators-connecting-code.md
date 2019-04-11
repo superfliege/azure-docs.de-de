@@ -17,7 +17,7 @@ ms.locfileid: "48831686"
 ---
 ### <a name="code-walkthrough"></a>Exemplarische Vorgehensweise mit Code
 
-In diesem Abschnitt werden Hauptbestandteile des Beispielcodes beschrieben, und es wird erläutert, wie sie mit dem Solution Accelerator für Remoteüberwachung im Zusammenhang stehen.
+In diesem Abschnitt werden Hauptbestandteile des Beispielcodes beschrieben, und es wird erläutert, wie sie mit dem Solution Accelerator für die Remoteüberwachung im Zusammenhang stehen.
 
 Der folgende Codeausschnitt zeigt, wie die gemeldeten Eigenschaften definiert werden, die die Funktionen des Geräts beschreiben. Zu diesen Eigenschaften zählen folgende:
 

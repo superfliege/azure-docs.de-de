@@ -4,7 +4,7 @@ description: Hier erfahren Sie, wie Sie die dienstremotingbasierte Kommunikation
 services: service-fabric
 documentationcenter: .net
 author: suchiagicha
-manager: timlt
+manager: chackdan
 editor: vturecek
 ms.assetid: fc129c1a-fbe4-4339-83ae-0e69a41654e0
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: be5dab7b9714f13a4bd30e6ab33a5a0e2016212d
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: f247142f26490e1899256917b64fbec7308fb281
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37020018"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886266"
 ---
 # <a name="secure-service-remoting-communications-in-a-c-service"></a>Schützen der Dienstremotingkommunikation in einem C#-Dienst
 > [!div class="op_single_selector"]
@@ -129,7 +129,7 @@ Gehen Sie wie folgt vor, um zum Schutz eines Diensts beizutragen, wenn Sie Diens
        }
        ```
 
-        Wenn Sie in der Datei „settings.xml“ den Abschnitt `TransportSettings` hinzufügen, lädt `FabricTransportRemotingListenerSettings ` standardmäßig alle Einstellungen aus diesem Abschnitt.
+        Wenn Sie in der Datei „settings.xml“ den Abschnitt `TransportSettings` hinzufügen, lädt `FabricTransportRemotingListenerSettings` standardmäßig alle Einstellungen aus diesem Abschnitt.
 
         ```xml
         <!--"TransportSettings" section .-->

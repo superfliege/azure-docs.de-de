@@ -17,7 +17,7 @@ items:
       href: iot-accelerators-remote-monitoring-architectural-choices.md
   - name: Schnellstarts
     items:
-    - name: Testen einer Lösung für die Remoteüberwachung
+    - name: Testen einer Remoteüberwachungslösung
       href: quickstart-remote-monitoring-deploy.md
   - name: Lernprogramme
     items:

@@ -4,7 +4,7 @@ description: Ein konzeptioneller Überblick für die Migration von Anwendungen v
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 0b87b1d3-88ad-4658-a465-9f05a3376dee
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 35ab4a9bdd66bf3571e7f189191550f88e17cee2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4682e47e664384a6869e1a74e3de6d9083db082b
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206481"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669451"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Lernen Sie die Unterschiede zwischen Cloud Services und Service Fabric kennen, bevor Sie Anwendungen migrieren
 Microsoft Azure Service Fabric ist die neueste Generation der Cloudanwendungsplattformen für stark skalierbare, sehr zuverlässige verteilte Anwendungen. Es führt viele neue Funktionen zum Verpacken, Bereitstellen, Aktualisieren und Verwalten von verteilten Cloudanwendungen ein. 
@@ -29,11 +29,11 @@ Dieser Text ist eine Einführung zur Migration von Anwendungen von Cloud Service
 ## <a name="applications-and-infrastructure"></a>Anwendungen und Infrastruktur
 Ein grundlegender Unterschied zwischen Cloud Services und Service Fabric ist die Beziehung zwischen virtuellen Computern, Workloads und Anwendungen. Eine Workload wird hier als der Code definiert, den Sie schreiben, um eine spezifische Aufgabe durchzuführen oder einen Dienst bereitzustellen.
 
-* **Cloud Services dient dazu, Anwendungen als VMs bereitzustellen.** Der Code, den Sie schreiben, ist eng an eine VM-Instanz, beispielsweise eine Web- oder eine Workerrolle, gebunden. Eine Workload in Cloud Services bereitzustellen, heißt, mindestens eine VM-Instanz, welche die Workload ausführt, bereitzustellen. Es gibt keine Trennung zwischen Anwendungen und VMs daher gibt es keine formelle Definition einer Anwendung. Eine Anwendung kann als ein Satz von Web- oder Workerrolleninstanzen innerhalb einer Cloud Services-Bereitstellung oder als eine komplette Cloud Services-Bereitstellung gesehen werden. In diesem Beispiel wird eine Anwendung als ein Satz Rolleninstanzen dargestellt.
+* **Cloud Services dient dazu, Anwendungen als VMs bereitzustellen.**  Der Code, den Sie schreiben, ist eng an eine VM-Instanz, beispielsweise eine Web- oder eine Workerrolle, gebunden. Eine Workload in Cloud Services bereitzustellen, heißt, mindestens eine VM-Instanz, welche die Workload ausführt, bereitzustellen. Es gibt keine Trennung zwischen Anwendungen und VMs daher gibt es keine formelle Definition einer Anwendung. Eine Anwendung kann als ein Satz von Web- oder Workerrolleninstanzen innerhalb einer Cloud Services-Bereitstellung oder als eine komplette Cloud Services-Bereitstellung gesehen werden. In diesem Beispiel wird eine Anwendung als ein Satz Rolleninstanzen dargestellt.
 
 ![Cloud Services-Anwendungen und -Topologie][1]
 
-* **Service Fabric dient zur Bereitstellung von Anwendungen in vorhandenen VMs und Computern, die Service Fabric unter Windows oder Linux ausführen.** Die Dienste, die Sie schreiben, sind komplett von der zugrunde liegenden Infrastruktur entkoppelt, welche durch die Service Fabric-Anwendungsplattform wegabstrahiert wird, damit eine Anwendung in mehreren Umgebungen bereitgestellt werden kann. Eine Workload wird in Service Fabric als „Dienst“ bezeichnet, und ein oder mehrere Dienste werden in eine formell definierte Anwendung, die auf der Service Fabric-Anwendungsplattform läuft, gruppiert. Mehrere Anwendungen können auf einem einzelnen Service Fabric-Cluster bereitgestellt werden.
+* **Service Fabric dient zur Bereitstellung von Anwendungen in vorhandenen VMs und Computern, die Service Fabric unter Windows oder Linux ausführen.**  Die Dienste, die Sie schreiben, sind komplett von der zugrunde liegenden Infrastruktur entkoppelt, welche durch die Service Fabric-Anwendungsplattform wegabstrahiert wird, damit eine Anwendung in mehreren Umgebungen bereitgestellt werden kann. Eine Workload wird in Service Fabric als „Dienst“ bezeichnet, und ein oder mehrere Dienste werden in eine formell definierte Anwendung, die auf der Service Fabric-Anwendungsplattform läuft, gruppiert. Mehrere Anwendungen können auf einem einzelnen Service Fabric-Cluster bereitgestellt werden.
 
 ![Service Fabric-Anwendungen und -Topologie][2]
 

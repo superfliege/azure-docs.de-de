@@ -1,6 +1,6 @@
 ---
 title: Anpassen der Benutzeroberfläche der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
-description: Dieser Artikel enthält Informationen dazu, wie Sie auf den Quellcode für die Benutzeroberfläche des Solution Accelerators für Remoteüberwachung zugreifen können.
+description: Dieser Artikel enthält Informationen dazu, wie Sie auf den Quellcode für die Benutzeroberfläche des Solution Accelerators für die Remoteüberwachung zugreifen können.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -15,15 +15,15 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/21/2019
 ms.locfileid: "58317594"
 ---
-# <a name="customize-the-remote-monitoring-solution-accelerator"></a>Anpassen des Solution Accelerators für Remoteüberwachung
+# <a name="customize-the-remote-monitoring-solution-accelerator"></a>Anpassen des Solution Accelerators für die Remoteüberwachung
 
-Dieser Artikel enthält Informationen dazu, wie Sie auf den Quellcode zugreifen und die Benutzeroberfläche des Solution Accelerators für Remoteüberwachung anpassen können.
+Dieser Artikel enthält Informationen dazu, wie Sie auf den Quellcode zugreifen und die Benutzeroberfläche des Solution Accelerators für die Remoteüberwachung anpassen können.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prepare-a-local-development-environment-for-the-ui"></a>Vorbereiten einer lokalen Entwicklungsumgebung für die Benutzeroberfläche
 
-Der Code der Benutzeroberfläche des Solution Accelerators für Remoteüberwachung wird mithilfe des Frameworks React.js implementiert. Sie finden den Quellcode im [azure-iot-pcs-remote-monitoring-webui](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui)-GitHub-Repository.
+Der Code der Benutzeroberfläche des Solution Accelerators für die Remoteüberwachung wird mithilfe des Frameworks React.js implementiert. Sie finden den Quellcode im [azure-iot-pcs-remote-monitoring-webui](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui)-GitHub-Repository.
 
 Um Änderungen an der Benutzeroberfläche vorzunehmen, können Sie eine Kopie davon lokal ausführen. Um Aktionen, wie das Abrufen der Telemetriedaten, abzuschließen, stellt die lokale Kopie eine Verbindung mit einer bereitgestellten Instanz der Lösung her.
 
@@ -494,7 +494,7 @@ Um die Darstellungs- und Visualisierungsschicht in der Remoteüberwachungslösun
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie Informationen zu den verfügbaren Ressourcen erhalten, mit denen Sie die Webbenutzeroberfläche im Solution Accelerator für Remoteüberwachung anpassen können. Weitere Informationen zum Anpassen der Benutzeroberfläche finden Sie in den folgenden Artikeln:
+In diesem Artikel haben Sie Informationen zu den verfügbaren Ressourcen erhalten, mit denen Sie die Webbenutzeroberfläche im Solution Accelerator für die Remoteüberwachung anpassen können. Weitere Informationen zum Anpassen der Benutzeroberfläche finden Sie in den folgenden Artikeln:
 
 * [Hinzufügen einer benutzerdefinierten Seite zur Webbenutzeroberfläche des Accelerators für Remoteüberwachung](iot-accelerators-remote-monitoring-customize-page.md)
 * [Hinzufügen eines benutzerdefinierten Dienstes zur Webbenutzeroberfläche des Accelerators für Remoteüberwachung](iot-accelerators-remote-monitoring-customize-service.md).
@@ -502,7 +502,7 @@ In diesem Artikel haben Sie Informationen zu den verfügbaren Ressourcen erhalte
 * [Hinzufügen eines benutzerdefinierten Flyouts zur Webbenutzeroberfläche des Accelerators für Remoteüberwachung](iot-accelerators-remote-monitoring-customize-flyout.md)
 * [Hinzufügen eines benutzerdefinierten Panels zum Dashboard zur Webbenutzeroberfläche des Accelerators für Remoteüberwachung](iot-accelerators-remote-monitoring-customize-panel.md)
 
-Weitere konzeptuelle Informationen zum Solution Accelerator für Remoteüberwachung finden Sie unter [Remoteüberwachungsarchitektur](iot-accelerators-remote-monitoring-sample-walkthrough.md).
+Weitere konzeptuelle Informationen zum Solution Accelerator für die Remoteüberwachung finden Sie unter [Remoteüberwachungsarchitektur](iot-accelerators-remote-monitoring-sample-walkthrough.md).
 
 Weitere Informationen zum Anpassen der Microservices der Remoteüberwachungslösung finden Sie unter [Anpassen und erneutes Bereitstellen eines Microservice](iot-accelerators-microservices-example.md).
 <!-- Next tutorials in the sequence -->

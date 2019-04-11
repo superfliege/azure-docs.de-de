@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: df0dd3f54fb645590ff6e5b30a7ccc42f5ddd2eb
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: c3a3305197802906077dab330a6b51c1195c6c36
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036272"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879470"
 ---
 # <a name="total-cost-of-ownershiptco-with-azure-cosmos-db"></a>Gesamtkosten mit Azure Cosmos DB
 
@@ -48,11 +48,11 @@ Durch das serverlose Bereitstellungsmodell von Azure Cosmos DB entfällt die Ber
 
 * **Maximale Nutzung des bereitgestellten Durchsatzes:** Dank der Subcore-Multiplexing-Technologie in Azure Cosmos DB können Sie den bereitgestellten Durchsatz in höherem Umfang auslasten als über IaaS gehostete Optionen oder Angebote von Drittanbietern. Diese Methode sorgt für erheblich höhere Einsparungen als die alternativen Lösungen.
 
-* **Weitreichende Integration von Azure Cosmos DB in andere Azure-Dienste:** Azure Cosmos DB verfügt über eine native Integration mit Netzwerk, Compute, Azure Functions (serverlos), Azure IoT und anderen Azure-Diensten. Dank dieser Integration erhalten Sie die beste Leistung und Geschwindigkeit der Datenreplikation über die ganze Welt mit zuverlässigen Garantien. Drittanbieter können mit ihren Lösungen dem nicht entsprechen oder würden für das Angebot derartiger Funktionen in der Regel einen Aufpreis berechnen.
+* **Weitreichende Integration von Azure Cosmos DB in andere Azure-Dienste.** Azure Cosmos DB verfügt über eine native Integration mit Netzwerk, Compute, Azure Functions (serverlos), Azure IoT und anderen Azure-Diensten. Dank dieser Integration erhalten Sie die beste Leistung und Geschwindigkeit der Datenreplikation über die ganze Welt mit zuverlässigen Garantien. Drittanbieter können mit ihren Lösungen dem nicht entsprechen oder würden für das Angebot derartiger Funktionen in der Regel einen Aufpreis berechnen.
 
 * **Automatische Hochverfügbarkeit mit standardmäßig mindestens 10 bis 20 Fehlerdomänen:** Azure Cosmos DB unterstützt die Verteilung von Workloads über Fehlerdomänen hinweg, ein Feature, das für die Hochverfügbarkeit von entscheidender Bedeutung ist. Azure Cosmos DB bietet 99,999 % Hochverfügbarkeit für Lese- und Schreibvorgänge im 99. Perzentil überall auf der Welt. Wenn Sie derartige Features eigenständig oder über eine Drittanbieterlösung implementieren würden, entstünden sehr hohe Kosten.
 
-* **Sie erhalten automatisch alle Enterprise-Funktionen, ohne zusätzliche Kosten :** Azure Cosmos DB stellt im Vergleich zu unseren Mitbewerbern eine äußerst umfangreiche Lösung mit Compliance-Zertifizierungen, Sicherheit und Verschlüsselung für Daten im Ruhezustand und während der Übertragung ohne zusätzliche Kosten bereit. Sie erhalten automatisch die regionale Verfügbarkeit an jedem beliebigen Ort auf der Welt. Ihre Datenbank kann sich über eine beliebige Anzahl von Azure-Regionen erstrecken, und Sie können an jedem Punkt Regionen hinzufügen oder entfernen.
+* **Sie erhalten automatisch alle Enterprise-Funktionen, ohne zusätzliche Kosten.** Azure Cosmos DB stellt im Vergleich zu unseren Mitbewerbern eine äußerst umfangreiche Lösung mit Compliance-Zertifizierungen, Sicherheit und Verschlüsselung für Daten im Ruhezustand und während der Übertragung ohne zusätzliche Kosten bereit. Sie erhalten automatisch die regionale Verfügbarkeit an jedem beliebigen Ort auf der Welt. Ihre Datenbank kann sich über eine beliebige Anzahl von Azure-Regionen erstrecken, und Sie können an jedem Punkt Regionen hinzufügen oder entfernen.
 
 * **Mit reservierter Kapazität können Sie bis zu 65 % der Kosten sparen:** Die [reservierte Kapazität](cosmos-db-reserved-capacity.md) von Azure Cosmos DB hilft Ihnen, Geld zu sparen, indem Sie die Ressourcen von Azure Cosmos DB entweder für ein Jahr oder drei Jahre im Voraus bezahlen. Mit der Vorabfestlegung und Bezahlung für ein Jahr oder drei Jahre können Sie Ihre Kosten deutlich senken und gegenüber der regulären Preisgestaltung zwischen 20 % und 65 % sparen. Für Ihre unternehmenskritischen Workloads können Sie bessere SLAs in Bezug auf die Kapazitätsbereitstellung erhalten.
 

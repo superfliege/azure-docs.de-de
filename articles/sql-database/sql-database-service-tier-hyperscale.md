@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 4db013b51657bb327c36d616a3743c46731cd19a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/04/2019
+ms.openlocfilehash: 5e323b28913e0ba259654d39f97e0436e6bff2db
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57903792"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010480"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>Diensttarif „Hyperscale“ (Vorschau) für bis zu 100 TB
 
@@ -33,8 +33,6 @@ Der Diensttarif „Hyperscale“ in Azure SQL-Datenbank ist der neueste Dienstta
 > Der Diensttarif Hyperscale befindet sich derzeit in der öffentlichen Vorschau und ist nur in einigen Azure-Regionen verfügbar. Eine umfassende Liste der Regionen finden Sie unter [Diensttarif „Hyperscale“ – Verfügbare Regionen](#available-regions). In Hyperscale-Datenbanken sollten noch keine Produktionsworkloads ausgeführt werden. Sie können Hyperscale-Datenbanken nicht auf andere Diensttarife aktualisieren. Für Testzwecke wird empfohlen, eine Kopie der aktuellen Datenbank zu erstellen und die Kopie auf den Diensttarif Hyperscale zu aktualisieren.
 > [!NOTE]
 > Ausführliche Informationen zu den Diensttarifen „Universell“ und „Unternehmenskritisch“ im V-Kern-basierten Kaufmodell finden Sie unter Diensttarife [Universell](sql-database-service-tier-general-purpose.md) und [Unternehmenskritisch](sql-database-service-tier-business-critical.md). Einen Vergleich zwischen V-Kern-basiertem Kaufmodell und DTU-basiertem Kaufmodell finden Sie unter [Kaufmodelle für Azure SQL-Datenbank und Ressourcen](sql-database-purchase-models.md).
-> [!IMPORTANT]
-> Der Diensttarif „Hyperscale“ befindet sich derzeit in der öffentlichen Vorschau. In Hyperscale-Datenbanken sollten noch keine Produktionsworkloads ausgeführt werden. Sie können Hyperscale-Datenbanken nicht auf andere Diensttarife aktualisieren. Für Testzwecke wird empfohlen, eine Kopie der aktuellen Datenbank zu erstellen und die Kopie auf den Diensttarif Hyperscale zu aktualisieren.
 
 ## <a name="what-are-the-hyperscale-capabilities"></a>Welche Funktionen bietet Hyperscale?
 

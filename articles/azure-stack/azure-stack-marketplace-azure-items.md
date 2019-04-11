@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 03/28/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/29/2019
-ms.openlocfilehash: ca9f25700622a8d8435a1b05bfc46d210038aeaa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f0c92ff11ba992170b7da89dbbfa9bf14f92a9d6
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895830"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541297"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Für Azure Stack verfügbare Azure Marketplace-Elemente
 
@@ -59,7 +59,7 @@ Microsoft Azure Stack unterstützt die folgenden virtuellen Computer und Lösung
 | ![Testversion von SharePoint Server 2016](media/azure-stack-marketplace-azure-items/sharepoint.png) | [Testversion von SharePoint Server 2016](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SharePointServer2016Trial) | Testversion von Microsoft SharePoint Server 2016 unter Windows Server 2016 Datacenter | Microsoft |
 | ![SQL Server 2014 SP2 unter Windows Server 2012 R2](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2014 SP2 unter Windows Server 2012 R2](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2014sp2-ws2012r2)
 ) | SQL Server 2014 Service Pack 2. **Erforderlicher Download:** SQL-IaaS-Erweiterung. | Microsoft |
-| ![SQL Server 2016 SP2 Standard unter Windows Server 2016](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2016 SP2 Standard unter Windows Server 2016](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SQLServer2016SP2StandardWindowsServer2016) | Datenbankplattform für intelligente, unternehmenswichtige Anwendungen **Erforderlicher Download:** SQL-IaaS-Erweiterung. | Microsoft |
+| ![SQL Server 2016 SP2 Standard unter Windows Server 2016](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2016 SP2 Standard unter Windows Server 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2016sp2-ws2016) | Datenbankplattform für intelligente, unternehmenswichtige Anwendungen **Erforderlicher Download:** SQL-IaaS-Erweiterung. | Microsoft |
 | ![Kostenlose Lizenz: SQL Server 2016 SP2 Developer unter Windows Server 2016](media/azure-stack-marketplace-azure-items/sql.png) | [Kostenlose Lizenz: SQL Server 2016 SP2 Developer unter Windows Server 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2017-ws2016) | Kostenlose Developer-Version von SQL Server 2016 SP2 für Workloads vom Typ Transaktion, Data Warehousing, Business Intelligence und Analytics. **Erforderlicher Download:** SQL-IaaS-Erweiterung. | Microsoft |
 | ![Kostenlose Lizenz: SQL Server 2016 SP2 Express unter Windows Server 2016](media/azure-stack-marketplace-azure-items/sql.png) | [Kostenlose Lizenz: SQL Server 2016 SP2 Express unter Windows Server 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2017-ws2016) | Kostenlose Express-Version von SQL Server 2016 SP2. **Erforderlicher Download:** SQL-IaaS-Erweiterung. | Microsoft |
 | ![SQL Server 2016 SP2 Enterprise unter Windows Server 2016](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2016 SP2 Enterprise unter Windows Server 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2016sp2-ws2016) | Datenbankplattform für intelligente, unternehmenswichtige Anwendungen **Erforderlicher Download:** SQL-IaaS-Erweiterung. | Microsoft |
@@ -69,11 +69,7 @@ Microsoft Azure Stack unterstützt die folgenden virtuellen Computer und Lösung
 | ![Kostenlose Lizenz: SQL Server 2017 Express unter Windows Server 2016](media/azure-stack-marketplace-azure-items/sql.png) | [Kostenlose Lizenz: SQL Server 2017 Express unter Windows Server 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2017-ws2016) | Kostenlose Express-Version von SQL Server 2017 SP1. **Erforderlicher Download:** SQL-IaaS-Erweiterung. | Microsoft |
 | ![SQL Server 2017 Enterprise unter Windows Server 2016](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2017 Enterprise unter Windows Server 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2017-ws2016) | Datenbankplattform für intelligente, unternehmenswichtige Anwendungen **Erforderlicher Download:** SQL-IaaS-Erweiterung. | Microsoft |
 | ![SQL Server 2017 Web unter Windows Server 2016](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2017 Web unter Windows Server 2016](https://azuremarketplace.microsoft.com/marketplace/apps/cognosys.sql-server-2007-web-win2016-debug-utilities) | Datenbankplattform für intelligente, unternehmenswichtige Anwendungen **Erforderlicher Download:** SQL-IaaS-Erweiterung. | Microsoft |
-| ![SQL Server 2017 Standard unter Ubuntu Server 16.04 LTS](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2017 Standard unter Ubuntu Server 16.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SQLServer2017StandardonUbuntuServer1604LTS) | Datenbankplattform für intelligente, unternehmenswichtige Anwendungen | Microsoft + Canonical |
-| ![Kostenlose Lizenz: SQL Server 2017 Developer unter Ubuntu Server 16.04 LTS](media/azure-stack-marketplace-azure-items/sql.png) | [Kostenlose Lizenz: SQL Server 2017 Developer unter Ubuntu Server 16.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonUbuntuServer1604LTS) | Kostenlose Developer-Version von SQL Server 2017 für Workloads vom Typ Transaktion, Data Warehousing, Business Intelligence und Analytics. | Microsoft + Canonical |
-| ![Kostenlose Lizenz: SQL Server 2017 Express unter Ubuntu Server 16.04 LTS](media/azure-stack-marketplace-azure-items/sql.png) | [Kostenlose Lizenz: SQL Server 2017 Express unter Ubuntu Server 16.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonUbuntuServer1604LTS) | Kostenlose Express-Version von SQL Server 2017 SP1. | Microsoft + Canonical |
-| ![SQL Server 2017 Enterprise unter Ubuntu Server 16.04 LTS](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2017 Enterprise unter Ubuntu Server 16.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SQLServer2017EnterpriseonUbuntuServer1604LTS) | Datenbankplattform für intelligente, unternehmenswichtige Anwendungen | Microsoft + Canonical |
-| ![SQL Server 2017 Web unter Ubuntu Server 16.04 LTS](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2017 Web unter Ubuntu Server 16.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SQLServer2017WebonUbuntuServer1604LTS) | Datenbankplattform für intelligente, unternehmenswichtige Anwendungen | Microsoft + Canonical |
+| ![SQL Server 2017 unter Ubuntu Server 16.04 LTS](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2017 Enterprise unter Ubuntu Server 16.04 LTS](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2017-ubuntu1604) | Datenbankplattform für intelligente, unternehmenswichtige Anwendungen | Microsoft + Canonical |
 | ![SQL Server 2017 Standard unter SUSE Linux Enterprise Server (SLES) 12 SP2](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2017 Standard unter SUSE Linux Enterprise Server (SLES) 12 SP2](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SQLServer2017StandardonSLES12SP2?tab=Overview) | Datenbankplattform für intelligente, unternehmenswichtige Anwendungen | Microsoft + SUSE |
 | ![Kostenlose Lizenz: SQL Server 2017 Developer unter SUSE Linux Enterprise Server (SLES) 12 SP2](media/azure-stack-marketplace-azure-items/sql.png) | [Kostenlose Lizenz: SQL Server 2017 Developer unter SUSE Linux Enterprise Server (SLES) 12 SP2](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonSLES12SP2?tab=Overview) | Kostenlose Developer-Version von SQL Server 2017 für Workloads vom Typ Transaktion, Data Warehousing, Business Intelligence und Analytics. | Microsoft + SUSE |
 | ![Kostenlose Lizenz: SQL Server 2017 Express unter SUSE Linux Enterprise Server (SLES) 12 SP2](media/azure-stack-marketplace-azure-items/sql.png) | [Kostenlose Lizenz: SQL Server 2017 Express unter SUSE Linux Enterprise Server (SLES) 12 SP2](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonSLES12SP2) | Kostenlose Express-Version von SQL Server 2017 SP1. | Microsoft + SUSE |

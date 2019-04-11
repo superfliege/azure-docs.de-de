@@ -140,7 +140,7 @@ Mit den folgenden Schritten können Sie sich anmelden und E-Mail-Aktionen einric
 
 ## Anpassen der E-Mail-HTML <a name="htmledit"></a>
 
-Der vorkonfigurierte Solution Accelerator für Remoteüberwachung stellt eine einfache HTML-Vorlage für Aktions-E-Mails bereit. In der E-Mail-Vorlage werden Werte aus den Einstellungen der E-Mail-Aktionen verwendet. Hier sehen Sie eine Beispiel-E-Mail:
+Der vorkonfigurierte Solution Accelerator für die Remoteüberwachung stellt eine einfache HTML-Vorlage für Aktions-E-Mails bereit. In der E-Mail-Vorlage werden Werte aus den Einstellungen der E-Mail-Aktionen verwendet. Hier sehen Sie eine Beispiel-E-Mail:
 
 ![E-Mail-Beispiel](./media/iot-accelerators-remote-monitoring-email-actions/emailtemplate.png)
 
@@ -166,7 +166,7 @@ In den folgenden Schritte wird gezeigt, wie Sie die HTML-E-Mail-Vorlage bearbeit
 
 ## <a name="throttling"></a>Drosselung
 
-Der Solution Accelerator für Remoteüberwachung nutzt Outlook zum Senden von E-Mail-Benachrichtigungen. Outlook beschränkt die Anzahl gesendeter E-Mails auf [30 E-Mails pro Minute](https://docs.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits). E-Mail-Clients, die die E-Mails empfangen, drosseln unter Umständen auch die Anzahl der pro Minute empfangenen E-Mails. Informieren Sie sich über die Einschränkungen Ihres spezifischen E-Mail-Clients. Wenn Sie eine E-Mail-Benachrichtigung für eine Regel einrichten, sollte die Regel keine Sofortwerte verwenden, sondern Durchschnittswerte für einen Zeitraum von mindestens einer Minute berechnen:
+Der Solution Accelerator für die Remoteüberwachung nutzt Outlook zum Senden von E-Mail-Benachrichtigungen. Outlook beschränkt die Anzahl gesendeter E-Mails auf [30 E-Mails pro Minute](https://docs.microsoft.com/office365/servicedescriptions/exchange-online-service-description/exchange-online-limits#receiving-and-sending-limits). E-Mail-Clients, die die E-Mails empfangen, drosseln unter Umständen auch die Anzahl der pro Minute empfangenen E-Mails. Informieren Sie sich über die Einschränkungen Ihres spezifischen E-Mail-Clients. Wenn Sie eine E-Mail-Benachrichtigung für eine Regel einrichten, sollte die Regel keine Sofortwerte verwenden, sondern Durchschnittswerte für einen Zeitraum von mindestens einer Minute berechnen:
 
 ![Durchschnittsberechnung](./media/iot-accelerators-remote-monitoring-email-actions/calculation-email.png)
 

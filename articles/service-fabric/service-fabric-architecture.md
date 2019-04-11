@@ -4,7 +4,7 @@ description: Service Fabric ist eine Plattform für verteilte Systeme zum Erstel
 services: service-fabric
 documentationcenter: .net
 author: rishirsinha
-manager: timlt
+manager: chackdan
 editor: rishirsinha
 ms.assetid: 6b554243-70cb-4c22-9b28-1a8b4703f45e
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/12/2017
 ms.author: rsinha
-ms.openlocfilehash: 5e69d4b09261c90fd3c33e60645fe484b816e369
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a1e68e2e39ea6f1c8cf8669e2e02d8dacaf0f284
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209969"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664589"
 ---
 # <a name="service-fabric-architecture"></a>Service Fabric-Architektur
 Service Fabric besteht aus Subsystemen, die auf verschiedenen Ebenen liegen. Diese Subsysteme ermöglichen Ihnen, Anwendungen mit folgenden Eigenschaften zu schreiben:

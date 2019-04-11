@@ -11,16 +11,17 @@ ms.date: 11/26/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 849f944235cf1ab4408aeab336310028d6e754f4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ea409d6705d0146e9cb32ba11e6b785cf527739c
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855868"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904575"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline
+
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1](v1/data-factory-use-custom-activities.md)
+> * [Version 1](v1/data-factory-use-custom-activities.md)
 > * [Aktuelle Version](transform-data-using-dotnet-custom-activity.md)
 
 Es existieren zwei Aktivitätstypen, die Sie in einer Azure Data Factory-Pipeline verwenden können.
@@ -39,6 +40,7 @@ Lesen Sie die folgenden Artikel, wenn Sie noch nicht mit dem Azure Batch-Dienst 
 * [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool), um einen Azure Batch-Pool zu erstellen.
 
 ## <a name="azure-batch-linked-service"></a>Verknüpfter Azure Batch-Dienst
+
 Der folgende JSON-Code definiert einen verknüpften Azure Batch-Beispieldienst. Einzelheiten finden Sie unter [Von Azure Data Factory unterstützte Compute-Umgebungen](compute-linked-services.md).
 
 ```json
@@ -114,7 +116,7 @@ Die folgende Tabelle beschreibt die Namen und Eigenschaften, die für diese Akti
 &#42; Die Eigenschaften `resourceLinkedService` und `folderPath` müssen entweder beide angegeben oder beide weggelassen werden.
 
 > [!NOTE]
-> Wenn Sie in der benutzerdefinierten Aktivität verknüpfte Dienste als referenceObjects übergeben, wird aus Sicherheitsgründen empfohlen, einen Azure Key Vault-fähigen verknüpften Dienst zu übergeben (da keine sicheren Zeichenfolgen enthalten sind) und die Anmeldeinformationen anhand des Geheimnisnamens direkt aus dem Code von Key Vault abzurufen. Sie finden [hier](https://github.com/nabhishek/customactivity_sample/tree/linkedservice) ein Beispiel, das auf einen mit Azure Key Vault (AKV) verknüpften Dienst verweist, die Anmeldeinformationen von Key Vault abruft und dann auf den Speicher im Code zugreift.  
+> Wenn Sie in der benutzerdefinierten Aktivität verknüpfte Dienste als referenceObjects übergeben, wird aus Sicherheitsgründen empfohlen, einen Azure Key Vault-fähigen verknüpften Dienst zu übergeben (da keine sicheren Zeichenfolgen enthalten sind) und die Anmeldeinformationen anhand des Geheimnisnamens direkt aus dem Code von Key Vault abzurufen. Sie finden [hier](https://github.com/nabhishek/customactivity_sample/tree/linkedservice) ein Beispiel, das auf einen mit Azure Key Vault (AKV) verknüpften Dienst verweist, die Anmeldeinformationen von Key Vault abruft und dann auf den Speicher im Code zugreift.
 
 ## <a name="custom-activity-permissions"></a>Berechtigungen für benutzerdefinierte Aktivitäten
 
@@ -147,7 +149,6 @@ Mithilfe einer benutzerdefinierten Aktivität können Sie direkt einen Befehl au
 ## <a name="passing-objects-and-properties"></a>Übergeben von Objekten und Eigenschaften
 
 Dieses Beispiel zeigt, wie Sie „referenceObjects“ und „extendedProperties“ verwenden können, um Data Factory-Objekte und benutzerdefinierte Eigenschaften an Ihre benutzerdefinierte Anwendung zu übergeben.
-
 
 ```json
 {
@@ -191,15 +192,15 @@ Dieses Beispiel zeigt, wie Sie „referenceObjects“ und „extendedProperties�
 
 Wenn die Aktivität ausgeführt wird, werden „referenceObjects“ und „extendedProperties“ in folgenden Dateien gespeichert, die im selben Ausführungsordner von „SampleApp.exe“ bereitgestellt werden:
 
-- activity.json
+- `activity.json`
 
   Speichert „extendedProperties“ und Eigenschaften der benutzerdefinierten Aktivität.
 
-- linkedServices.json
+- `linkedServices.json`
 
   Speichert ein Array verknüpfter Dienste, die in der „referenceObjects“-Eigenschaft definiert sind.
 
-- datasets.json
+- `datasets.json`
 
   Speichert ein Array von Datasets, die in der „referenceObjects“-Eigenschaft definiert sind.
 
@@ -232,12 +233,13 @@ namespace SampleApp
 
 Sie können mit dem folgenden PowerShell-Befehl eine Pipelineausführung starten:
 
-```.powershell
+```powershell
 $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName
 ```
+
 Wenn die Pipeline ausgeführt wird, können Sie mit den folgenden Befehlen die Ausgabe der Ausführung überprüfen:
 
-```.powershell
+```powershell
 while ($True) {
     $result = Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
 
@@ -265,7 +267,7 @@ $result.Error -join "`r`n"
 
 Die Angaben für **stdout** und **stderr** Ihrer benutzerdefinierten Anwendung werden im Container **adfjobs** im verknüpften Azure Storage-Dienst gespeichert, den Sie beim Erstellen des verknüpften Azure Batch-Diensts mit einer GUID der Aufgabe definiert haben. Den detaillierten Pfad finden Sie in der Ausgabe der Aktivitätsausführung, wie im folgenden Ausschnitt gezeigt:
 
-```shell
+```
 Pipeline ' MyCustomActivity' run finished. Result:
 
 ResourceGroupName : resourcegroupname
@@ -295,11 +297,12 @@ Activity Error section:
 "failureType": ""
 "target": "MyCustomActivity"
 ```
+
 Wenn Sie den Inhalt von „stdout.txt“ in nachgelagerten Aktivitäten nutzen möchten, können Sie den Pfad zur Datei „stdout.txt“ im Ausdruck „\@activity('MyCustomActivity').output.outputs[0]“ abrufen.
 
-  > [!IMPORTANT]
-  > - Die Dateien „activity.json“, „linkedServices.json“ und „datasets.json“ werden im Ordner „runtime“ der Batch-Aufgabe gespeichert. In diesem Beispiel werden die Dateien „activity.json“, „linkedServices.json“ und „datasets.json“ im Pfad „https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/“ gespeichert. Bei Bedarf müssen diese separat bereinigt werden.
-  > - Für verknüpfte Dienste, die die selbstgehostete Integration Runtime verwenden, werden vertrauliche Informationen wie Schlüssel oder Kennwörter von der selbstgehosteten Integration Runtime verschlüsselt, um sicherzustellen, dass die Anmeldeinformationen in der vom Kunden definierten privaten Netzwerkumgebung verbleiben. Einige sensible Felder können fehlen, wenn auf sie von Ihrem eigenen Anwendungscode auf diese Weise verwiesen wird. Verwenden Sie bei Bedarf „SecureString“ in „extendedProperties“ anstelle des Verweises auf den verknüpften Dienst.
+> [!IMPORTANT]
+> - Die Dateien „activity.json“, „linkedServices.json“ und „datasets.json“ werden im Ordner „runtime“ der Batch-Aufgabe gespeichert. In diesem Beispiel werden die Dateien „activity.json“, „linkedServices.json“ und „datasets.json“ im Pfad „https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/“ gespeichert. Bei Bedarf müssen diese separat bereinigt werden.
+> - Für verknüpfte Dienste, die die selbstgehostete Integration Runtime verwenden, werden vertrauliche Informationen wie Schlüssel oder Kennwörter von der selbstgehosteten Integration Runtime verschlüsselt, um sicherzustellen, dass die Anmeldeinformationen in der vom Kunden definierten privaten Netzwerkumgebung verbleiben. Einige sensible Felder können fehlen, wenn auf sie von Ihrem eigenen Anwendungscode auf diese Weise verwiesen wird. Verwenden Sie bei Bedarf „SecureString“ in „extendedProperties“ anstelle des Verweises auf den verknüpften Dienst.
 
 ## <a name="pass-outputs-to-another-activity"></a>Übergeben von Ausgaben an eine andere Aktivität
 
@@ -311,10 +314,10 @@ Vertrauliche Eigenschaftswerte, die als Typ *SecureString* definiert sind (wie i
 
 ```json
 "extendedProperties": {
-    "connectionString": {
-        "type": "SecureString",
-        "value": "aSampleSecureString"
-    }
+  "connectionString": {
+    "type": "SecureString",
+    "value": "aSampleSecureString"
+  }
 }
 ```
 
@@ -334,7 +337,6 @@ Mit den Änderungen, die in der benutzerdefinierten Aktivität von Data Factory 
 
 In der folgenden Tabelle ist der Unterschied zwischen der benutzerdefinierten Aktivität in Azure Data Factory V2 und der (benutzerdefinierten) DotNet-Aktivität in Azure Data Factory Version 1 beschrieben:
 
-
 |Unterschiede      | Benutzerdefinierte Aktivität      | (Benutzerdefinierte) DotNet-Aktivität in Version 1      |
 | ---- | ---- | ---- |
 |Definition benutzerdefinierter Logik      |Durch Bereitstellen einer ausführbaren Datei      |Durch Implementieren einer .NET-DLL      |
@@ -345,7 +347,6 @@ In der folgenden Tabelle ist der Unterschied zwischen der benutzerdefinierten Ak
 |Abrufen von Informationen in benutzerdefinierte Logik      |Analysieren der Dateien „activity.json“, „linkedServices.json“ und „datasets.json“, die in demselben Ordner wie die ausführbare Datei gespeichert sind      |Über .NET SDK (.NET Framework 4.5.2)      |
 |Protokollierung      |Schreibt direkt in STDOUT      |Implementieren der Protokollierung in eine .NET-DLL      |
 
-
 Wenn Sie über .NET-Code verfügen, der für eine (benutzerdefinierte) DotNet-Aktivität in Version 1 geschrieben wurde, müssen Sie Ihren Code ändern, damit er für die aktuelle Version der benutzerdefinierten Aktivität funktioniert. Aktualisieren Sie den Code, indem Sie sich an die folgenden allgemeinen Richtlinien halten:
 
   - Ändern Sie das Projekt von einer .NET-Klassenbibliothek in eine Konsolen-App.
@@ -355,9 +356,10 @@ Wenn Sie über .NET-Code verfügen, der für eine (benutzerdefinierte) DotNet-Ak
   - Das NuGet-Paket „Microsoft.Azure.Management.DataFactories“ ist nicht mehr erforderlich.
   - Kompilieren Sie Ihren Code, laden Sie ausführbare Dateien und die dazugehörigen Abhängigkeiten in Azure Storage hoch, und definieren Sie den Pfad in der `folderPath`-Eigenschaft.
 
-Ein vollständiges Beispiel dafür, wie das Beispiel mit der End-to-End-DLL und der Pipeline aus dem Artikel [Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) zu Data Factory Version 1 in eine benutzerdefinierte Data Factory-Aktivität umgeschrieben werden kann, finden Sie im [Beispiel zur benutzerdefinierten Data Factory-Aktivität](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample).
+Ein vollständiges Beispiel dafür, wie das Beispiel mit der End-to-End-DLL und der Pipeline aus dem Artikel [Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) zu Data Factory Version 1 in eine benutzerdefinierte Data Factory-Aktivität umgeschrieben werden kann, finden Sie im [Beispiel zur benutzerdefinierten Data Factory-Aktivität](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFv2CustomActivitySample).
 
 ## <a name="auto-scaling-of-azure-batch"></a>Automatische Skalierung von Azure Batch
+
 Sie können einen Azure Batch-Pool auch mit dem Feature **Automatisch skalieren** erstellen. Sie können z.B. einen Azure Batch-Pool ohne dedizierte VM erstellen und dabei eine Formel für die automatische Skalierung angeben, die von der Anzahl der ausstehenden Aufgaben abhängig ist.
 
 Mit dieser Beispielformel wird folgendes Verhalten erreicht: Nachdem der Pool erstellt wurde, wird er mit einer VM gestartet. Die Metrik „$PendingTasks“ legt die Anzahl der Aufgaben im ausgeführten und im aktiven (in der Warteschlange) Zustand fest. Die Formel sucht nach der durchschnittlichen Anzahl ausstehender Aufgaben in den letzten 180 Sekunden und legt TargetDedicated auf den entsprechenden Wert fest. Dadurch wird sichergestellt, dass TargetDedicated nie die Anzahl von 25 virtuellen Computern überschreitet. Wenn also neue Aufgaben gesendet werden, wächst der Pool automatisch an. Beim Abschluss von Aufgaben werden virtuelle Computer nacheinander frei, und durch die automatische Skalierung werden diese virtuellen Computer reduziert. startingNumberOfVMs und maxNumberofVMs können entsprechend den jeweiligen Anforderungen angepasst werden.

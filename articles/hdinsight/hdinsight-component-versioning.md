@@ -2,20 +2,19 @@
 title: Apache Hadoop-Komponenten und -Versionen – Azure HDInsight
 description: Erfahren Sie mehr zu den Apache Hadoop-Komponenten und -Versionen in HDInsight und die in dieser Cloud-Distribution von Hortonworks Data Platform verfügbaren Servicelevels.
 keywords: Hadoop-Versionen, Komponenten des Hadoop-Ökosystems, Hadoop-Komponenten, Hadoop-Version überprüfen
-services: hdinsight
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
-author: kkampf
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.topic: conceptual
-ms.date: 09/19/2018
-ms.author: kakampf
-ms.openlocfilehash: 0e15f3dc448ba218ebdfe309c4308bbc789ef5be
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.topic: overview
+ms.date: 03/26/2019
+ms.openlocfilehash: 1c8977090fe0ea0dfd5822c7bb448d313de7cf14
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226264"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917922"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Welche Apache Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?
 
@@ -81,12 +80,12 @@ Die folgende Tabelle enthält die im Azure-Portal verfügbaren Versionen von HDI
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 <br>  (Vorschau) |HDP 3.0 |Ubuntu 16.0.4 LTS |24. September 2018 | | |Ja |Ja |
 | HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |4. April 2017 | | |Ja |Ja |
-| HDInsight 3.5 <br> (Spark)* |HDP 2.6 |Ubuntu 16.0.4 LTS |30. September 2016 |13. März 2019 |13. März 2019 |Ja |Ja |
+| HDInsight 3.5 <br> (Spark)\* |HDP 2.6 |Ubuntu 16.0.4 LTS |30. September 2016 |13. März 2019 |13. März 2019 |Ja |Ja |
 
 *&ast; Die HDInsight 3.5-Unterstützung wurde nur für Spark-Clustertypen verlängert.*
 
 > [!NOTE]  
-> Nachdem die Unterstützung für eine Version abgelaufen ist, ist sie möglicherweise nicht mehr über das Microsoft Azure-Portal verfügbar. Clusterversionen stehen jedoch bis zum Zeitpunkt ihrer Deaktivierung weiterhin über den Parameter `Version` im Windows PowerShell-Befehl [New-AzureRmHDInsightCluster](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/new-azurermhdinsightcluster) und das .NET SDK zur Verfügung.
+> Nachdem die Unterstützung für eine Version abgelaufen ist, ist sie möglicherweise nicht mehr über das Microsoft Azure-Portal verfügbar. Clusterversionen stehen jedoch bis zum Zeitpunkt ihrer Deaktivierung weiterhin über den Parameter `Version` im Windows PowerShell-Befehl [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) und das .NET SDK zur Verfügung.
 >
 
 ### <a name="retired-versions"></a>Eingestellte Versionen
@@ -280,8 +279,8 @@ Die folgenden Tabellen enthalten die Standard-VM-Größen für HDInsight-Cluster
 > - Worker wird für den HBase-Clustertyp als *Region* bezeichnet.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Einrichten von Clustern in HDInsight mit Apache Hadoop, Spark, Kafka usw.](hdinsight-hadoop-provision-linux-clusters.md)
-- [Verwenden eines Windows-Computers mit Apache Hadoop in HDInsight](hdinsight-hadoop-windows-tools.md)
+- [Einrichten von Clustern in HDInsight mit Apache Hadoop, Apache Spark, Apache Kafka usw.](hdinsight-hadoop-provision-linux-clusters.md)
+- [Arbeiten im Apache Hadoop-Ökosystem in HDInsight auf einem Windows-Computer](hdinsight-hadoop-windows-tools.md)
 
 [Supported HDInsight versions]:(#supported-hdinsight-versions)
 

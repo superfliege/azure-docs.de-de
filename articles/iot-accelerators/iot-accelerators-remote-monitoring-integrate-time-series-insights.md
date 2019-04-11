@@ -1,6 +1,6 @@
 ---
 title: Integrieren von Time Series Insights mit Remoteüberwachung – Azure | Microsoft-Dokumentation
-description: In diesem Gewusst wie-Artikel wird beschrieben, wie Sie Time Series Insights für eine vorhandene Lösung für die Remoteüberwachung konfigurieren, die nicht bereits über Time Series Insights verfügt.
+description: In diesem Gewusst wie-Artikel wird beschrieben, wie Sie Time Series Insights für eine vorhandene Remoteüberwachungslösung konfigurieren, die nicht bereits über Time Series Insights verfügt.
 author: aditidugar
 manager: timlt
 ms.author: adugar
@@ -19,14 +19,14 @@ ms.locfileid: "58085149"
 
 Azure Time Series Insights ist ein vollständig verwalteter Analyse-, Speicher- und Visualisierungsdienst für die Verwaltung von IoT-Zeitreihendaten in der Cloud. Sie können Time Series Insights verwenden, um Zeitreihendaten zu speichern und zu verwalten, Ereignisse gleichzeitig zu analysieren und zu visualisieren, Fehlerursachenanalysen durchzuführen und mehrere Sites und Ressourcen zu vergleichen.
 
-Der Solution Accelerator für die Remoteüberwachung ermöglicht jetzt die automatische Bereitstellung und Integration mit Time Series Insights. In diesem Gewusst wie-Artikel wird beschrieben, wie Sie Time Series Insights für eine vorhandene Lösung für die Remoteüberwachung konfigurieren, die nicht bereits über Time Series Insights verfügt.
+Der Solution Accelerator für die Remoteüberwachung ermöglicht jetzt die automatische Bereitstellung und Integration mit Time Series Insights. In diesem Gewusst wie-Artikel wird beschrieben, wie Sie Time Series Insights für eine vorhandene Remoteüberwachungslösung konfigurieren, die nicht bereits über Time Series Insights verfügt.
 
 > [!NOTE]
 > Time Series Insights ist für die Azure-Cloud in China derzeit nicht verfügbar. Für neue Solution Accelerator-Bereitstellungen für die Remoteüberwachung in der Azure-Cloud in China kann Cosmos DB für alle Speicherzwecke genutzt werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Durcharbeiten dieses Gewusst wie-Artikels müssen Sie bereits eine Lösung für die Remoteüberwachung bereitgestellt haben:
+Zum Durcharbeiten dieses Gewusst wie-Artikels müssen Sie bereits eine Remoteüberwachungslösung bereitgestellt haben:
 
 * [Bereitstellen des Solution Accelerators für die Remoteüberwachung](quickstart-remote-monitoring-deploy.md)
 
@@ -47,7 +47,7 @@ az iot hub consumer-group create --hub-name contosorm30526 --name timeseriesinsi
 
 ## <a name="deploy-time-series-insights"></a>Bereitstellen von Time Series Insights
 
-Stellen Sie als Nächstes Time Series Insights als zusätzliche Ressource in Ihrer Lösung für die Remoteüberwachung bereit, und stellen Sie dafür eine Verbindung mit dem IoT-Hub her.
+Stellen Sie als Nächstes Time Series Insights als zusätzliche Ressource in Ihrer Remoteüberwachungslösung bereit, und stellen Sie dafür eine Verbindung mit dem IoT-Hub her.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
@@ -62,7 +62,7 @@ Stellen Sie als Nächstes Time Series Insights als zusätzliche Ressource in Ihr
     | Umgebungsname | Im folgenden Screenshot wird der Name **contorosrmtsi** verwendet. Wählen Sie Ihren eigenen eindeutigen Namen, wenn Sie diesen Schritt durchführen. |
     | Abonnement | Wählen Sie Ihr Azure-Abonnement in der Dropdownliste aus. |
     | Ressourcengruppe | **Vorhandene verwenden**: Wählen Sie den Namen Ihrer vorhandenen Ressourcengruppe für die Remoteüberwachung aus. |
-    | Standort | Hier verwenden wir **USA, Osten**. Erstellen Sie Ihre Umgebung nach Möglichkeit in derselben Region wie Ihre Lösung für die Remoteüberwachung. |
+    | Standort | Hier verwenden wir **USA, Osten**. Erstellen Sie Ihre Umgebung nach Möglichkeit in derselben Region wie Ihre Remoteüberwachungslösung. |
     | Sku |**S1** |
     | Capacity | **1** |
 
@@ -105,7 +105,7 @@ Erstellen Sie eine neue Ereignisquelle für die Verbindung mit Ihrem IoT Hub. St
 
 ## <a name="configure-the-data-access-policy"></a>Konfigurieren der Datenzugriffsrichtlinie
 
-Fügen Sie Ihre Anwendung und die Benutzer unter den Datenzugriffsrichtlinien im Azure-Portal hinzu, um sicherzustellen, dass alle Benutzer, die über Zugriff auf Ihre Lösung für die Remoteüberwachung verfügen, Daten im Time Series Insights-Explorer durchsuchen können. 
+Fügen Sie Ihre Anwendung und die Benutzer unter den Datenzugriffsrichtlinien im Azure-Portal hinzu, um sicherzustellen, dass alle Benutzer, die über Zugriff auf Ihre Remoteüberwachungslösung verfügen, Daten im Time Series Insights-Explorer durchsuchen können. 
 
 1. Wählen Sie in der Navigationsliste die Option **Ressourcengruppen** aus.
 

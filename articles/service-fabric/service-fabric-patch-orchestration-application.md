@@ -4,7 +4,7 @@ description: Anwendung zum Automatisieren von Betriebssystempatches in einem Ser
 services: service-fabric
 documentationcenter: .net
 author: khandelwalbrijeshiitr
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: d5d7f45b4833bb535e98542ee513e9ea8bf0f9e5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6c0aa42cc22d22431d7d0270aca52e089046cb01
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432990"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847747"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
 
@@ -28,6 +28,12 @@ ms.locfileid: "57432990"
 > * [Linux](service-fabric-patch-orchestration-application-linux.md)
 >
 >
+
+
+> 
+> [!IMPORTANT]
+> Die Anwendungsversion 1.2.* wird ab dem 30. April 2019 nicht mehr unterstützt. Führen Sie ein Upgrade auf die aktuelle Version aus.
+
 
 [Automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) ist die bewährte Methode, um Ihre Betriebssysteme in Azure gepatcht zu halten. Die Patch Orchestration Application (POA) ist ein Wrapper für den RepairManager-Systemdienst von Service Fabric, der Konfigurationen basierend auf Patchplänen für Betriebssysteme für nicht in Azure gehostete Cluster ermöglicht. POA ist für nicht in Azure gehostete Cluster nicht erforderlich, aber die Planung von Patchinstallationen durch Upgradedomänen ist erforderlich, um die Service Fabric-Clusterhosts ohne Ausfallzeiten zu patchen.
 
@@ -319,7 +325,7 @@ Wenn Ihr Cluster die Ausführung auf N-1 der Upgradedomänen während des Patchz
 
 F: **Wie lange dauert das Patchen eines Knotens?**
 
-A. Das Patchen eines Knotens kann Minuten (z.B. [Windows Defender-Definitionsupdates](https://www.microsoft.com/wdsi/definitions)) bis Stunden (z.B. [kumulative Windows-Updates](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)) dauern. Der Zeitaufwand für das Patchen eines Knotens hängt größtenteils von Folgendem ab: 
+A. Das Patchen eines Knotens kann Minuten (z.B. [Windows Defender-Definitionsupdates](https://www.microsoft.com/en-us/wdsi/definitions)) bis Stunden (z.B. [kumulative Windows-Updates](https://www.catalog.update.microsoft.com/Search.aspx?q=windows%20server%20cumulative%20update)) dauern. Der Zeitaufwand für das Patchen eines Knotens hängt größtenteils von Folgendem ab: 
  - Der Größe der Updates.
  - Der Anzahl der Updates, die in einem Patchfenster angewendet werden müssen.
  - Der zum Installieren der Updates, Neustarten des Knotens (falls erforderlich) und Beenden der nach dem Neustart auszuführenden Installationsschritte benötigten Zeit.

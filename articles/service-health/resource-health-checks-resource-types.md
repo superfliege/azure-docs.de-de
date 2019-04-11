@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 01/29/2019
-ms.openlocfilehash: a8bc82a2717bfa6838b2331ef54ed8098422c223
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0f79a1eed044814d6c2e27f4eadb5ba68a47303f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770338"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620749"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Ressourcentypen und Integritätsprüfungen in Azure Resource Health
 Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource Health ausgeführten Überprüfungen.
@@ -51,6 +51,11 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |---|
 |<ul><li>Hostet der Server diese VM funktionstüchtig?</li><li>Ist das Starten des Hostbetriebssystems abgeschlossen?</li><li>Ist der VM-Container bereitgestellt und hochgefahren?</li><li>Besteht Netzwerkkonnektivität zwischen Host und Speicherkonto?</li><li>Ist das Starten des Gastbetriebssystems abgeschlossen?</li><li>Gibt es eine laufende geplante Wartung?</li></ul>|
 
+## <a name="microsoftdatafactoryfactories"></a>Microsoft.datafactory/factories
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Sind Fehler bei der Ausführung der Pipeline aufgetreten?</li><li>Hostet der Cluster die Data Factory fehlerfrei?</li></ul>|
+
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.datalakeanalytics/accounts
 |Ausgeführte Überprüfungen|
 |---|
@@ -62,8 +67,27 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |---|
 |<ul><li>Sind bei Benutzern Probleme beim Hochladen von Daten in Data Lake Store aufgetreten?</li><li>Sind bei Benutzern Probleme beim Herunterladen von Daten aus Data Lake Store aufgetreten?</li></ul>|
 
-## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
+## <a name="microsoftdatamigrationservices"></a>Microsoft.datamigration/services
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Ist ein Fehler bei der Bereitstellung des Datenbankmigrationsdiensts aufgetreten?</li><li>Wurde die Datenbankmigrationsdienst-Instanz aufgrund von Inaktivität oder einer Benutzeranforderung beendet?</li></ul>|
 
+## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Ist der Server aufgrund von Wartungsarbeiten nicht verfügbar?</li><li>Ist der Server aufgrund einer Neukonfiguration nicht verfügbar?</li></ul>|
+
+## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Ist der Server aufgrund von Wartungsarbeiten nicht verfügbar?</li><li>Ist der Server aufgrund einer Neukonfiguration nicht verfügbar?</li></ul>|
+
+## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Ist der Server aufgrund von Wartungsarbeiten nicht verfügbar?</li><li>Ist der Server aufgrund einer Neukonfiguration nicht verfügbar?</li></ul>|
+
+## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
 |Ausgeführte Überprüfungen|
 |---|
 |<ul><li>Wird IoT Hub ausgeführt?</li></ul>|
@@ -73,15 +97,40 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 |---|
 |<ul><li>Wurden Datenbank- oder Sammlungsanforderungen nicht ausgeführt, weil der Azure Cosmos DB-Dienst nicht verfügbar war?</li><li>Wurden Dokumentanforderungen nicht ausgeführt, weil der Azure Cosmos DB-Dienst nicht verfügbar war?</li></ul>|
 
+## <a name="microsofteventhubnamespaces"></a>Microsoft.eventhub/namespaces
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Treten im Events Hub-Namespace benutzergenerierte Fehler auf?</li><li>Wird für den Event Hubs-Namespace zurzeit ein Upgrade durchgeführt?</li></ul>|
+
+## <a name="microsofthdinsightclusters"></a>Microsoft.hdinsight/clusters
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Sind Kerndienste für den HDInsight-Cluster verfügbar?</li><li>Kann der HDInsight-Cluster auf den Schlüssel für die BYOK-Verschlüsselung ruhender Daten zugreifen?</li></ul>|
+
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 |Ausgeführte Überprüfungen|
 |---|
 |<ul><li>Sind an den Schlüsseltresor gerichtete Anforderungen aufgrund von Problemen mit der Azure Key Vault-Plattform nicht erfolgreich?</li><li>Werden an den Schlüsseltresor gerichtete Anforderungen aufgrund von übermäßig vielen Anforderungen des Kunden gedrosselt?</li></ul>|
 
+## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.network/applicationgateways
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Ist die Leistung der Application Gateway-Instanz beeinträchtigt?</li><li>Ist das Application Gateway verfügbar?</li></ul>|
+
 ## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
 |Ausgeführte Überprüfungen|
 |---|
 |<ul><li>Ist der VPN-Tunnel verbunden?</li><li>Treten Konfigurationskonflikte in der Verbindung auf?</li><li>Sind die vorinstallierten Schlüssel ordnungsgemäß konfiguriert?</li><li>Ist das lokale VPN-Gerät erreichbar?</li><li>Treten Konflikte in der IPSec-/IKE-Sicherheitsrichtlinie auf?</li><li>Ist die S2S-VPN-Verbindung ordnungsgemäß bereitgestellt oder in einem fehlerhaften Zustand?</li><li>Ist die VNET-zu-VNET-Verbindung ordnungsgemäß bereitgestellt oder in einem fehlerhaften Zustand?</li></ul>|
+
+## <a name="microsoftnetworkexpressreoutecircuits"></a>Microsoft.network/expressreoutecircuits
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Ist die ExpressRoute-Verbindung integer?</li></ul>|
+
+## <a name="microsoftnetworkfrontdoors"></a>Microsoft.network/frontdoors
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Antworten Front Door-Back-Ends mit Fehlern auf Integritätstests?</li><li>Wurden Konfigurationsänderungen verzögert?</li></ul>|
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.network/virtualNetworkGateways
 |Ausgeführte Überprüfungen|
@@ -91,7 +140,12 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 ## <a name="microsoftnotificationhubsnamespace"></a>Microsoft.NotificationHubs/namespace
 |Ausgeführte Überprüfungen|
 |---|
-|<ul><li> Können Laufzeitvorgänge wie Registrierung, Installation oder Senden im Namespace ausgeführt werden?</li></ul>|
+|<ul><li>Können Laufzeitvorgänge wie Registrierung, Installation oder Senden im Namespace ausgeführt werden?</li></ul>|
+
+## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.operationalinsights/workspaces
+|Ausgeführte Überprüfungen|
+|---|
+|<ul><li>Gibt es Indizierungsverzögerungen für den Arbeitsbereich?</li></ul>|
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/Capacities
 |Ausgeführte Überprüfungen|

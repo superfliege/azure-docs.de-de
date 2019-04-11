@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Konfigurieren von Geräten in einer Lösung für die Remoteüberwachung – Azure | Microsoft-Dokumentation'
+title: 'Tutorial: Konfigurieren von Geräten in einer Remoteüberwachungslösung – Azure | Microsoft-Dokumentation'
 description: In diesem Tutorial wird veranschaulicht, wie Sie die Geräte konfigurieren, die mit dem Solution Accelerator für die Remoteüberwachung verbunden sind.
 author: dominicbetts
 manager: timlt

@@ -1,6 +1,6 @@
 ---
-title: Bewährte Methoden für die Leistung von SQL Server auf virtuellen Azure Stack-Computern
-description: Enthält bewährte Methoden zur Optimierung der Leistung von SQL Server auf virtuellen Microsoft Azure Stack-Computern.
+title: Verwenden von bewährten SQL Server-Methoden zur Leistungssteigerung in virtuellen Azure Stack-Computern | Microsoft-Dokumentation
+description: Dieser Artikel enthält bewährte Methoden für SQL Server, um die Leistung zu steigern und SQL-Server in Azure Stack-VMs zu optimieren.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,20 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 04/02/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 7981df6aa1e08688bdbe3b18629450b996f7609e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 03a354a7d670033fa86ebbb094710a836b6219c4
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123401"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879063"
 ---
-# <a name="optimize-sql-server-performance"></a>Optimierung der Leistung von SQL Server
+# <a name="sql-server-best-practices-to-optimize-performance-in-azure-stack"></a>Bewährte SQL Server-Methoden zum Optimieren der Leistung in Azure Stack
 
-Dieser Artikel enthält eine Anleitung zur Optimierung der Leistung von SQL Server auf virtuellen Microsoft Azure Stack-Computern. Verwenden Sie beim Ausführen von SQL Server auf virtuellen Azure Stack-Computern die gleichen Optionen zur Optimierung der Datenbankleistung, die für SQL Server in einer lokalen Serverumgebung gelten. Die Leistung einer relationalen Datenbank in einer Azure Stack-Cloud hängt von vielen Faktoren ab. Dazu gehören die Größe der Familie eines virtuellen Computers und die Konfiguration der Datenträger.
+Dieser Artikel enthält bewährte SQL Server-Methoden zur Optimierung von SQL Server und zur Leistungsverbesserung in virtuellen Microsoft Azure Stack-Computern. Verwenden Sie beim Ausführen von SQL Server auf virtuellen Azure Stack-Computern die gleichen Optionen zur Optimierung der Datenbankleistung, die für SQL Server in einer lokalen Serverumgebung gelten. Die Leistung einer relationalen Datenbank in einer Azure Stack-Cloud hängt von vielen Faktoren ab. Dazu gehören die Größe der Familie eines virtuellen Computers und die Konfiguration der Datenträger.
 
 Wenn Sie SQL Server-Images erstellen, [empfiehlt sich die Bereitstellung der virtuellen Computer im Azure Stack-Portal](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision). Laden Sie im Azure Stack-Administratorportal die SQL-IaaS-Erweiterung unter „Marketplace Management“ (Marketplace-Verwaltung) und Ihre Auswahl an virtuellen Festplatten (VHDs) für virtuelle SQL-Computer herunter. Dazu gehören SQL2014SP2, SQL2016SP1 und SQL2017.
 
@@ -37,7 +37,8 @@ Schwerpunkt dieses Artikels ist die *bestmögliche* Leistung für SQL Server auf
 > [!NOTE]  
 > Einen Leitfaden zur Leistung für SQL Server auf virtuellen Azure-Computern finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance).
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="checklist-for-sql-server-best-practices"></a>Checkliste für bewährte SQL Server-Methoden
+
 Hier eine Prüfliste für die optimale Leistung von SQL Server auf virtuellen Azure Stack-Computern:
 
 
@@ -97,7 +98,7 @@ Es empfiehlt sich, TempDB auf einem Datenträger für Daten zu speichern, da jed
 
 ### <a name="data-disks"></a>Datenträger
 
-- **Verwenden von Datenträgern für Daten- und Protokolldateien:** Wenn Sie kein Datenträgerstriping verwenden, sollten Sie zwei Datenträger eines virtuellen Computers verwenden, der Storage Premium unterstützt, wobei sich auf einem Datenträger die Protokolldateien und auf dem anderen die Daten- und TempDB-Dateien befinden. Jeder Datenträger bietet abhängig von der Familie der virtuellen Computer bestimmte IOPS- und Bandbreitenwerte (MBit/s), wie unter [In Azure Stack unterstützte VM-Größen](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes) beschrieben. Wenn Sie eine Datenträgerstriping-Technik (beispielsweise Speicherplätze) verwenden, platzieren Sie alle Daten- und Protokolldateien auf demselben Laufwerk (einschließlich TempDB). Diese Konfiguration ermöglicht die für SQL Server maximal verfügbare Anzahl von IOPS, unabhängig davon, welche Datei diese zu einem bestimmten Zeitpunkt nutzt.
+- **Verwenden von Datenträgern für Daten- und Protokolldateien.** Wenn Sie kein Datenträgerstriping verwenden, sollten Sie zwei Datenträger eines virtuellen Computers verwenden, der Storage Premium unterstützt, wobei sich auf einem Datenträger die Protokolldateien und auf dem anderen die Daten- und TempDB-Dateien befinden. Jeder Datenträger bietet abhängig von der Familie der virtuellen Computer bestimmte IOPS- und Bandbreitenwerte (MBit/s), wie unter [In Azure Stack unterstützte VM-Größen](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes) beschrieben. Wenn Sie eine Datenträgerstriping-Technik (beispielsweise Speicherplätze) verwenden, platzieren Sie alle Daten- und Protokolldateien auf demselben Laufwerk (einschließlich TempDB). Diese Konfiguration ermöglicht die für SQL Server maximal verfügbare Anzahl von IOPS, unabhängig davon, welche Datei diese zu einem bestimmten Zeitpunkt nutzt.
 
 > [!NOTE]  
 > Beim Bereitstellen eines virtuellen SQL Server-Computers im Portal haben Sie die Möglichkeit, Ihre Speicherkonfiguration zu bearbeiten. Je nach Konfiguration werden in Azure Stack ein oder mehrere Datenträger konfiguriert. Mehrere Datenträger werden in einem einzelnen Speicherpool zusammengefasst. Daten- und Protokolldateien befinden sich in dieser Konfiguration zusammen.
@@ -112,7 +113,7 @@ Es empfiehlt sich, TempDB auf einem Datenträger für Daten zu speichern, da jed
 
        PowerShell erstellt z.B. wie folgt einen neuen Speicherpool mit der auf 64 KB festgelegten Überlappungsgröße und der auf 2 festgelegten Anzahl der Spalten:
 
-       ```PowerShell  
+       ```powershell  
        $PoolCount = Get-PhysicalDisk -CanPool $True
        $PhysicalDisks = Get-PhysicalDisk | Where-Object {$_.FriendlyName -like "*2" -or $_.FriendlyName -like "*3"}
 
@@ -148,7 +149,7 @@ Für manche Bereitstellungen können durch Verwendung erweiterter Konfigurations
 
     Befolgen Sie bei Sicherungen oder Wiederherstellungen mithilfe von Azure Storage die Empfehlungen unter [SQL Server-URL-Sicherung – bewährte Methoden und Problembehandlung](https://msdn.microsoft.com/library/jj919149.aspx) und [Wiederherstellen von in Microsoft Azure gespeicherten Sicherungen](https://docs.microsoft.com/sql/relational-databases/backup-restore/restoring-from-backups-stored-in-microsoft-azure?view=sql-server-2017). Darüber hinaus können Sie diese Sicherungen mit [automatisierten Sicherungen für SQL Server auf virtuellen Azure-Computern](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup)automatisieren.
 
--   **Sicherung im Azure Stack-Speicher:** Sie können Sicherungen im Azure Stack-Speicher auf ähnliche Weise durchführen wie Sicherungen in Azure Storage. Wenn Sie eine Sicherung in SQL Server Management Studio (SSMS) erstellen, müssen Sie die Konfigurationsinformationen manuell eingeben. SSMS können Sie nicht verwenden, um den Speichercontainer oder die Shared Access Signature zu erstellen. Mit SSMS kann nur eine Verbindung mit Azure-Abonnements, jedoch nicht mit Azure Stack-Abonnements hergestellt werden. Stattdessen müssen Sie das Speicherkonto, den Container und die Shared Access Signature im Azure Stack-Portal oder über PowerShell erstellen.
+-   **Sicherung im Azure Stack-Speicher.** Sie können Sicherungen im Azure Stack-Speicher auf ähnliche Weise durchführen wie Sicherungen in Azure Storage. Wenn Sie eine Sicherung in SQL Server Management Studio (SSMS) erstellen, müssen Sie die Konfigurationsinformationen manuell eingeben. SSMS können Sie nicht verwenden, um den Speichercontainer oder die Shared Access Signature zu erstellen. Mit SSMS kann nur eine Verbindung mit Azure-Abonnements, jedoch nicht mit Azure Stack-Abonnements hergestellt werden. Stattdessen müssen Sie das Speicherkonto, den Container und die Shared Access Signature im Azure Stack-Portal oder über PowerShell erstellen.
 
     Angeben der Informationen im Dialogfeld für die SQL Server-Sicherung:
 

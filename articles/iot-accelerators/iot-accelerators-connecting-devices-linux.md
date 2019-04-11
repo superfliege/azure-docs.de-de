@@ -1,6 +1,6 @@
 ---
 title: Bereitstellen von Linux-Geräten für die Remoteüberwachung in C – Azure | Microsoft-Dokumentation
-description: Hier wird beschrieben, wie Sie ein Gerät mit dem Solution Accelerator für Remoteüberwachung verbinden, indem Sie eine in C geschriebene Anwendung unter Linux ausführen.
+description: Hier wird beschrieben, wie Sie ein Gerät mit dem Solution Accelerator für die Remoteüberwachung verbinden, indem Sie eine in C geschriebene Anwendung unter Linux ausführen.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -15,11 +15,11 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 12/19/2018
 ms.locfileid: "53628322"
 ---
-# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-linux"></a>Herstellen einer Verbindung zwischen Ihrem Gerät und dem Solution Accelerator für Remoteüberwachung (Linux)
+# <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-linux"></a>Herstellen einer Verbindung zwischen Ihrem Gerät und dem Solution Accelerator für die Remoteüberwachung (Linux)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-In diesem Tutorial wird gezeigt, wie Sie eine Verbindung zwischen einem realen Gerät und dem Solution Accelerator für Remoteüberwachung herstellen.
+In diesem Tutorial wird gezeigt, wie Sie eine Verbindung zwischen einem realen Gerät und dem Solution Accelerator für die Remoteüberwachung herstellen.
 
 Wie bei den meisten eingebetteten Anwendungen, die auf eingeschränkten Geräten ausgeführt werden, wird der Clientcode für die Geräteanwendung in C geschrieben. In diesem Tutorial erstellen Sie die Anwendung auf einem Computer, auf dem Ubuntu (Linux) ausgeführt wird.
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 03/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 807a6b38b9f2cbe2a3c8787fe09c2ea14106a942
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ee47f464c59bd9deed98671f19cfcc6d2c3c1b39
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864897"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762479"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Kopieren von Daten von einem REST-Endpunkt mithilfe von Azure Data Factory
 
@@ -55,7 +55,7 @@ Folgende Eigenschaften werden für den mit REST verknüpften Dienst unterstützt
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die **type**-Eigenschaft muss auf **HttpServer** festgelegt werden. | Ja |
+| type | Die **type**-Eigenschaft muss auf **RestService** festgelegt werden. | Ja |
 | URL | Die Basis-URL des REST-Diensts. | Ja |
 | enableServerCertificateValidation | Hiermit wird festgelegt, ob das serverseitige SSL-Zertifikat beim Herstellen einer Verbindung mit dem Endpunkt überprüft werden soll. | Nein <br /> (der Standardwert ist **TRUE**) |
 | authenticationType | Typ der Authentifizierung für die Verbindung mit dem REST-Dienst. Zulässige Werte: **Anonymous**, **Basic**, **AadServicePrincipal** und **ManagedServiceIdentity**. Weitere Informationen zu anderen Eigenschaften und Beispiele finden Sie weiter unten in den jeweiligen Abschnitten. | Ja |
@@ -76,7 +76,7 @@ Legen Sie die **authenticationType**-Eigenschaft auf **Basic** fest. Geben Sie z
 {
     "name": "RESTLinkedService",
     "properties": {
-        "type": "HttpServer",
+        "type": "RestService",
         "typeProperties": {
             "authenticationType": "Basic",
             "url" : "<REST endpoint>",

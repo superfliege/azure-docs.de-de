@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 023395126a587992c1b5648bd9b8a993d9fa9ced
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d80581aae56fc9d65d6f24d21f2c582cb74b3f2d
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564237"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863201"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Suchen und Anwenden von Empfehlungen zur Leistung
 
@@ -78,6 +78,7 @@ Sie können Empfehlungen nacheinander anzeigen und akzeptieren.
 Die ausgewählte Empfehlung wird auf die Datenbank angewendet.
 
 ### <a name="removing-recommendations-from-the-list"></a>Entfernen von Empfehlungen aus der Liste
+
 Wenn die Liste der Empfehlungen Einträge enthält, die Sie aus der Liste entfernen möchten, können Sie die Empfehlung verwerfen:
 
 1. Wählen Sie in der Liste **Empfehlungen** eine Empfehlung aus, um die Details zu öffnen.
@@ -110,18 +111,21 @@ Sie können den Azure SQL-Datenbank so konfigurieren, dass Empfehlungen automati
 
 Klicken Sie nach der Auswahl der gewünschten Konfiguration auf „Übernehmen“.
 
-### <a name="manually-run-the-recommended-t-sql-script"></a>Manuelles Ausführen des empfohlenen T-SQL-Skripts
+### <a name="manually-apply-recommendations-through-t-sql"></a>Manuelles Anwenden von Empfehlungen über T-SQL
+
 Wählen Sie eine beliebige Empfehlung aus, und klicken Sie auf **Skript anzeigen**. Führen Sie dieses Skript für Ihre Datenbank aus, um die Empfehlung manuell anzuwenden.
 
-*Indizes, die manuell erstellt wurden, werden nicht durch den Dienst überwacht und auf ihre tatsächlichen Auswirkungen auf die Leistung überprüft*. Es empfiehlt sich daher, diese Indizes nach der Erstellung zu überwachen. So können Sie sicherstellen, dass sie Leistungssteigerungen bieten, und sie gegebenenfalls anpassen oder löschen. Ausführliche Informationen zum Erstellen von Indizes finden Sie unter [CREATE INDEX (Transact-SQL)](https://msdn.microsoft.com/library/ms188783.aspx).
+*Indizes, die manuell erstellt wurden, werden nicht durch den Dienst überwacht und auf ihre tatsächlichen Auswirkungen auf die Leistung überprüft*. Es empfiehlt sich daher, diese Indizes nach der Erstellung zu überwachen. So können Sie sicherstellen, dass sie Leistungssteigerungen bieten, und sie gegebenenfalls anpassen oder löschen. Ausführliche Informationen zum Erstellen von Indizes finden Sie unter [CREATE INDEX (Transact-SQL)](https://msdn.microsoft.com/library/ms188783.aspx). Darüber hinaus bleiben manuell angewandte Empfehlungen aktiv und werden 24 bis 48 Stunden lang in der Liste der Empfehlungen angezeigt. Danach zieht sie das System automatisch zurück. Wenn Sie eine Empfehlung früher entfernen möchten, können Sie sie manuell verwerfen.
 
 ### <a name="canceling-recommendations"></a>Abbrechen von Empfehlungen
+
 Empfehlungen, die den Status **Ausstehend**, **Wird geprüft** oder **Erfolg** aufweisen, können verworfen werden. Empfehlungen mit dem Status **Wird ausgeführt** können nicht abgebrochen werden.
 
 1. Wählen Sie im Bereich **Optimierungsverlauf** eine Empfehlung aus, um die Seite **Empfehlungsdetails** zu öffnen.
 2. Klicken Sie auf **Abbrechen** , um den Vorgang zum Anwenden der Empfehlung abzubrechen.
 
 ## <a name="monitoring-operations"></a>Überwachen von Vorgängen
+
 Eine Empfehlung wird möglicherweise nicht umgehend angewendet. Im Portal finden Sie ausführliche Informationen zum Status der Empfehlungen. Indizes können die folgenden Zustände aufweisen:
 
 | Status | BESCHREIBUNG |

@@ -27,7 +27,7 @@ Datenzugriffsrichtlinien gewähren Berechtigungen für die Erstellung von Datena
 
 In diesem Artikel haben Sie erfahren, wie Sie die Zugriffssteuerung für den Time Series Insights-Explorer im Solution Accelerator der Remoteüberwachung gewähren.
 
-Weitere konzeptuelle Informationen zum Solution Accelerator für Remoteüberwachung finden Sie unter [Remoteüberwachungsarchitektur](iot-accelerators-remote-monitoring-sample-walkthrough.md).
+Weitere konzeptuelle Informationen zum Solution Accelerator für die Remoteüberwachung finden Sie unter [Remoteüberwachungsarchitektur](iot-accelerators-remote-monitoring-sample-walkthrough.md).
 
 Weitere Informationen zum Anpassen der Remoteüberwachungslösung finden Sie unter [Anpassen und erneutes Bereitstellen eines Microservice](iot-accelerators-microservices-example.md)
 <!-- Next tutorials in the sequence -->.

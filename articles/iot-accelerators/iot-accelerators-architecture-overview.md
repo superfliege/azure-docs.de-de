@@ -28,9 +28,9 @@ In der Referenzarchitektur werden die Bestandteile einer IoT-Lösung beschrieben
 
 Grob besteht eine IoT-Lösung aus folgenden Elementen:
 
-* Elemente, die Telemetrie generieren und übermitteln, z. B. Messungen und Ereignisse. Beim Solution Accelerator „Remote Monitoring“ senden z. B. LKW und Aufzüge Telemetriedaten.
-* Erkenntnisse, die aus den Telemetriedaten der Geräte generiert werden. Im Solution Accelerator „Remote Monitoring“ generiert eine Regel eine Erkenntnis. Eine Regel kann z. B. erkennen, wenn die Temperatur in einem Motor einen Grenzwert überschreitet.
-* Aktionen basierend auf Erkenntnissen, die ein Unternehmen oder einen Prozess optimieren können. Beim Solution Accelerator „Remote Monitoring“ kann ein Bediener durch eine E-Mail über mögliche Motorprobleme informiert werden.
+* Elemente, die Telemetrie generieren und übermitteln, z. B. Messungen und Ereignisse. Beim Solution Accelerator für die Remoteüberwachung senden z. B. LKW und Aufzüge Telemetriedaten.
+* Erkenntnisse, die aus den Telemetriedaten der Geräte generiert werden. Im Solution Accelerator für die Remoteüberwachung generiert eine Regel eine Erkenntnis. Eine Regel kann z. B. erkennen, wenn die Temperatur in einem Motor einen Grenzwert überschreitet.
+* Aktionen basierend auf Erkenntnissen, die ein Unternehmen oder einen Prozess optimieren können. Beim Solution Accelerator für die Remoteüberwachung kann ein Bediener durch eine E-Mail über mögliche Motorprobleme informiert werden.
 
 Die [Azure IoT-Referenzarchitektur](https://aka.ms/iotrefarchitecture) wird laufend mit sich verändernder Technologie aktualisiert.
 
@@ -40,7 +40,7 @@ In der Referenzarchitektur werden die folgenden wichtigsten Subsysteme angegeben
 
 ![Wichtigste Subsysteme](media/iot-accelerators-architecture-overview/CoreSubsystems.png)
 
-In den folgenden Abschnitten wird beschrieben, in welchem Verhältnis die Komponenten des Solution Accelerators „Remote Monitoring“ zu diesen Subsystemen stehen.
+In den folgenden Abschnitten wird beschrieben, in welchem Verhältnis die Komponenten des Solution Accelerators für die Remoteüberwachung zu diesen Subsystemen stehen.
 
 ### <a name="iot-devices"></a>IoT-Geräte
 
@@ -51,9 +51,9 @@ Ein Bereichsgateway bzw. Edgegerät ist ein spezialisiertes Gerät oder eine All
 * Kommunikation zur Protokollkonvertierung.
 * Lokale Gerätesteuerung und Verarbeitung von Gerätetelemetriedaten. Ein Edgegerät kann Telemetriedaten lokal verarbeiten, um Geräte zu steuern, ohne mit der Cloud kommunizieren zu müssen. Zudem kann es Gerätetelemetriedaten filtern und aggregieren, um die an die Cloud übertragene Menge an Telemetriedaten zu senken.
 
-Im Solution Accelerator „Remote Monitoring“ stellen Geräte eine Verbindung mit einem IoT-Hub her und übermitteln Telemetriedaten zur Verarbeitung. Mit dem Solution Accelerator „Remote Monitoring“ können Bediener zudem Geräte anhand von Aufträgen oder anhand der automatischen Geräteverwaltung verwalten. Sie können die Azure IoT-Geräte-SDKs verwenden, um Ihre IoT-Geräte zu implementieren.
+Im Solution Accelerator für die Remoteüberwachung stellen Geräte eine Verbindung mit einem IoT-Hub her und übermitteln Telemetriedaten zur Verarbeitung. Mit dem Solution Accelerator für die Remoteüberwachung können Bediener zudem Geräte anhand von Aufträgen oder anhand der automatischen Geräteverwaltung verwalten. Sie können die Azure IoT-Geräte-SDKs verwenden, um Ihre IoT-Geräte zu implementieren.
 
-Der Remote Monitoring-Solution Accelerator kann IoT Edge-Geräte bereitstellen und verwalten. Die Verarbeitung am Edge trägt dazu bei, die Menge der Telemetriedaten zu senken, die an die Cloud gesendet werden, und Reaktionen auf Geräteereignisse zu beschleunigen.
+Der Solution Accelerator für die Remoteüberwachung kann IoT Edge-Geräte bereitstellen und verwalten. Die Verarbeitung am Edge trägt dazu bei, die Menge der Telemetriedaten zu senken, die an die Cloud gesendet werden, und Reaktionen auf Geräteereignisse zu beschleunigen.
 
 ### <a name="cloud-gateway"></a>Cloudgateway
 
@@ -61,7 +61,7 @@ Durch ein Cloudgateway wird die Kommunikation mit Geräten und Edgegeräten erm�
 
 Das Gateway verwaltet die Gerätekommunikation, einschließlich Verbindungsverwaltung, den Schutz des Kommunikationspfads, die Authentifizierung und die Autorisierung. Zudem erzwingt es Verbindungs- und Durchsatzquoten und erfasst Telemetriedaten, anhand derer Rechnungen gestellt, Diagnosen getätigt und andere Überwachungsaufgaben durchgeführt werden.
 
-Der Remote Monitoring-Solution Accelerator stellt einen IoT-Hub bereit, damit Geräte Telemetriedaten an einen sicheren Endpunkt senden können. Für den IoT-Hub gilt Folgendes:
+Der Solution Accelerator für die Remoteüberwachung stellt einen IoT-Hub bereit, damit Geräte Telemetriedaten an einen sicheren Endpunkt senden können. Für den IoT-Hub gilt Folgendes:
 
 * Er umfasst einen Speicher für Geräteidentitäten, um die Geräte zu verwalten, die eine Verbindung mit der Lösung herstellen können.
 * Er ermöglicht, dass die Lösung Befehle an Geräte senden kann, z. B. um ein Ventil zu öffnen, um Druck abzulassen.
@@ -79,13 +79,13 @@ Da die Lösung Telemetriedaten erfasst, ist es wichtig zu verstehen, wie sich de
 
 Durch Routing können Telemetriedaten an Speicherendpunkte, Analyseprozesse und Aktionen verteilt werden. Eine Lösung enthält diese Stufen vielleicht in einer anderen Reihenfolge oder verarbeitet sie in gleichzeitigen, parallelen Tasks.
 
-Der Solution Accelerator „Remote Monitoring“ verwendet [Azure Stream Analytics](/azure/stream-analytics/) für die Datenstromverarbeitung. Die Regel-Engine der Lösung verwendet Stream Analytics-Abfragen zum Generieren von Warnungen und Aktionen. Die Lösung kann z. B anhand einer Abfrage bestimmen, wenn die Durchschnittstemperatur im Laderaum eines LKW länger als fünf Minuten durchschnittlich weniger als 2° C beträgt.
+Der Solution Accelerator für die Remoteüberwachung verwendet [Azure Stream Analytics](/azure/stream-analytics/) für die Datenstromverarbeitung. Die Regel-Engine der Lösung verwendet Stream Analytics-Abfragen zum Generieren von Warnungen und Aktionen. Die Lösung kann z. B anhand einer Abfrage bestimmen, wenn die Durchschnittstemperatur im Laderaum eines LKW länger als fünf Minuten durchschnittlich weniger als 2° C beträgt.
 
 ### <a name="storage"></a>Storage
 
 IoT-Lösungen können sehr hohe Datenmengen generieren. Dabei handelt es sich oft um Zeitreihendaten. Diese Daten müssen dort gespeichert werden, wo sie für die Visualisierung und Berichterstellung verwendet werden können. Es kann außerdem sein, dass eine Lösung zu einem späteren Zeitpunkt zu Analysezwecken oder zur weiteren Verarbeitung auf Daten zugreifen muss. Es ist üblich, Daten in Speichern für kalte und für warme Daten zu speichern. Der Speicher für warme Daten enthält aktuelle Daten für einen Zugriff mit geringer Wartezeit. Der Speicher für kalte Daten enthält normalerweise Verlaufsdaten.
 
-Der Solution Accelerator „Remote Monitoring“ verwendet [Azure Time Series Insights](/azure/time-series-insights/) als Speicher für warme Daten und Cosmos DB als Speicher für kalte Daten.
+Der Solution Accelerator für die Remoteüberwachung verwendet [Azure Time Series Insights](/azure/time-series-insights/) als Speicher für warme Daten und Cosmos DB als Speicher für kalte Daten.
 
 ### <a name="ui-and-reporting-tools"></a>Benutzeroberfläche und Berichterstellungstools
 
@@ -99,7 +99,7 @@ Der Solution Accelerator „Remote Monitoring“ verwendet [Azure Time Series In
 * Integration mit interaktiven oder Livedashboards zum Anzeigen von Daten von vielen Geräten  
 * Geolocation und Geräte die den geografischen Standort beachten
 
-Der Solution Accelerator „Remote Monitoring“ verfügt über eine Webbenutzeroberfläche für diese Funktionen. Die Webbenutzeroberfläche umfasst Folgendes:
+Der Solution Accelerator für die Remoteüberwachung verfügt über eine Webbenutzeroberfläche für diese Funktionen. Die Webbenutzeroberfläche umfasst Folgendes:
 
 * Eine interaktive Karte mit den Positionen der Geräte
 * Zugriff auf den Time Series Insights-Explorer zur Abfrage und Analyse der Telemetriedaten
@@ -108,8 +108,8 @@ Der Solution Accelerator „Remote Monitoring“ verfügt über eine Webbenutzer
 
 Die geschäftliche Integration befasst sich mit der Integration der IoT-Lösung in Unternehmenssysteme wie CRM, ERP und Branchenanwendungen. Dies können z. B. die Dienstrechnungsstellung, der Kundensupport und die Versorgung mit Ersatzteilen sein.
 
-Der Solution Accelerator „Remote Monitoring“ verwendet Regeln, um E-Mails zu versenden, wenn eine Bedingung erfüllt wird. Die Lösung kann z. B. einen Bediener informieren, wenn die Temperatur in einem LKW unter 2° C fällt.
+Der Solution Accelerator für die Remoteüberwachung verwendet Regeln, um E-Mails zu versenden, wenn eine Bedingung erfüllt wird. Die Lösung kann z. B. einen Bediener informieren, wenn die Temperatur in einem LKW unter 2° C fällt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie die Azure IoT-Referenzarchitektur kennengelernt. Außerdem wurde veranschaulicht, wie der Solution Accelerator „Remote Monitoring“ deren Empfehlungen folgt. Lesen Sie als Nächstes den Artikel zur [Microsoft Azure IoT-Referenzarchitektur](https://aka.ms/iotrefarchitecture).
+In diesem Artikel haben Sie die Azure IoT-Referenzarchitektur kennengelernt. Außerdem wurde veranschaulicht, wie der Solution Accelerator für die Remoteüberwachung deren Empfehlungen folgt. Lesen Sie als Nächstes den Artikel zur [Microsoft Azure IoT-Referenzarchitektur](https://aka.ms/iotrefarchitecture).
