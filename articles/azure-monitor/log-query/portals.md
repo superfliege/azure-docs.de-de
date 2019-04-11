@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/22/2018
+ms.date: 04/05/2019
 ms.author: bwren
-ms.openlocfilehash: 6e84344e1c0229d15891bd15a512880da6e20cfe
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 0e5b9b43e528b37fd994f9131f145abadb33c53b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110761"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259030"
 ---
 # <a name="viewing-and-analyzing-log-data-in-azure-monitor"></a>Anzeigen und Analysieren von Protokolldaten in Azure Monitor
 Log Analytics ist die primäre Oberfläche zum Arbeiten mit Protokolldaten und Erstellen von Abfragen in Azure Monitor. Öffnen Sie Log Analytics über **Protokolle** im **Azure Monitor**-Menü. Unter [Erste Schritte mit Log Analytics im Azure-Portal](get-started-portal.md) finden Sie eine Einführung in dieses Portal und können die entsprechenden Funktionen überprüfen.
@@ -39,7 +39,7 @@ Log Analytics bietet die folgenden Funktionen zum Arbeiten mit Protokollabfragen
 
 ![Log Analytics](media/portals/log-analytics.png)
 
-### <a name="resource-logs"></a>Ressourcenprotokolle
+## <a name="resource-logs"></a>Ressourcenprotokolle
 Log Analytics ist in verschiedene Azure-Ressourcen, wie etwa VMs, integriert. Das bedeutet, dass Sie Log Analytics direkt über das Überwachungsmenü der Ressource öffnen können, ohne zu Azure Monitor zu wechseln und den Ressourcenkontext zu verlieren. **Protokolle** wurde noch nicht für alle Azure-Ressourcen aktiviert, es taucht jedoch nach und nach in den Portalmenüs verschiedener Ressourcentypen auf.
 
 Beim Öffnen von Log Analytics aus einer bestimmten Ressource ist der Umfang automatisch so festgelegt, dass nur Datensätze der betreffenden Ressource protokolliert werden.   Wenn Sie eine Abfrage schreiben möchten, die andere Datensätze enthält, müssen Sie es über das Azure Monitor-Menü öffnen.
@@ -52,7 +52,7 @@ Die folgenden Optionen stehen noch nicht über die Ressourcenansicht von Log Ana
 - Wechseln zu einem anderen Arbeitsbereich/einer anderen Ressource (derzeit nicht geplant)
 
 
-### <a name="firewall-requirements"></a>Firewallanforderungen
+## <a name="firewall-requirements"></a>Firewallanforderungen
 Ihr Browser erfordert Zugriff auf die folgenden Adressen, um auf Log Analytics zuzugreifen.  Wenn der Browser über eine Firewall auf das Azure-Portal zugreift, müssen Sie den Zugriff auf diese Adressen aktivieren.
 
 | Uri | IP | Ports |
@@ -60,14 +60,6 @@ Ihr Browser erfordert Zugriff auf die folgenden Adressen, um auf Log Analytics z
 | portal.loganalytics.io | Dynamisch | 80, 443 |
 | api.loganalytics.io    | Dynamisch | 80, 443 |
 | docs.loganalytics.io   | Dynamisch | 80, 443 |
-
-
-## <a name="log-search-classic"></a>Protokollsuche (klassisch)
-Die Protokollsuche ist die Legacyoberfläche im Azure-Portal für das Abfragen und Analysieren von Protokolldaten in Azure Monitor. Diese wird bald eingestellt, ist aber aktuell noch verfügbar. Öffnen Sie die Protokollsuche über **Protokolle (klassisch)** im Log Analytics-Menü.
-
-
-
-![Protokollsuche](media/portals/log-search-portal.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

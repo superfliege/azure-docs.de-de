@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f3fcbda160d84e41fd2244a4d58766ae3991e52
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c7b3eee08c036862e6ce9f0c590a596f7b1d3fb0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56197656"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258690"
 ---
 # <a name="about-microsoft-identity-platform"></a>Informationen zu Microsoft Identity Platform
 
@@ -38,7 +38,7 @@ Für Anwendungen, die die neuesten ADAL- und MSAL-Versionen verwenden, wird SSO 
 
 Die folgende Abbildung zeigt eine Übersicht der Microsoft-Identitätsbenutzeroberfläche. Dabei werden die App-Registrierungsbenutzeroberfläche, SDKs, Endpunkte und unterstützte Identitäten berücksichtigt.
 
-![Aktuelle Microsoft Identity Platform](./media/about-microsoft-identity-platform/microsoft-identity-platform-preview.png)
+![Aktuelle Microsoft Identity Platform](./media/about-microsoft-identity-platform/about-microsoft-identity-platform.svg)
 
 Microsoft Identity Platform verfügt über zwei Endpunkte (v1.0 und v2.0) und zwei Gruppen von Clientbibliotheken für die Verarbeitung dieser Endpunkte. Berücksichtigen Sie bei der Entwicklung einer neuen Anwendung die Vorteile und den aktuellen Zustand der Endpunkte und der Authentifizierungsbibliotheken. Berücksichtigen Sie auch Folgendes:
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 07/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 5c53c64c337cb2992b002ee02ceb9aab36e16de4
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: a4ca5cba924a3269f279469f26e68acdb0ad0659
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958744"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257619"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Einführung in Azure Lab Services
 Mit Azure Lab Services können Sie schnell eine Umgebung für Ihr Team (z.B. Entwicklungsumgebung, Testumgebung, Classroom-Lab-Umgebung) in der Cloud einrichten. Der Besitzer des Labs erstellt ein Lab, stellt virtuelle Windows- oder Linux-Computer bereit, installiert die erforderlichen Programme und Tools und stellt sie Lab-Benutzern zur Verfügung. Lab-Benutzer verbinden sich mit virtuellen Computern (VMs) im Lab und nutzen sie für ihre tägliche Arbeit, kurzzeitige Projekte oder für Übungen im Classroom. Sobald Benutzer die Ressourcen im Lab nutzen, kann ein Lab-Administrator die Kosten und Nutzung mehrerer Labs analysieren und übergreifende Richtlinien festlegen, um die Kosten Ihrer Organisation oder Ihres Teams zu optimieren.
@@ -78,7 +78,7 @@ Sie können zwei Arten von Labs erstellen: **verwaltete Lab-Typen** mit Azure La
 
 Ausführlichere Informationen zu diesen Labs finden Sie in den folgenden Abschnitten. 
 
-## <a name="managed-lab-types"></a>Verwaltete Lab-Typen
+## <a name="managed-lab-types"></a>Verwaltete Labtypen
 Mit Azure Lab Services können Sie Labs erstellen, deren Infrastruktur von Azure verwaltet wird. In diesem Artikel werden sie als verwaltete Lab-Typen bezeichnet. Verwaltete Lab-Typen umfassen verschiedene Arten von Labs für Ihre individuellen Anforderungen. Derzeit wird das **Classroom-Lab** als einziger verwalteter Lab-Typ unterstützt. 
 
 Verwaltete Lab-Typen zeichnen sich durch ihren geringen Einrichtungsaufwand aus und sind schnell einsatzbereit. Der Dienst übernimmt die gesamte Infrastrukturverwaltung für das Lab – vom Hochfahren der virtuellen Computer über die Fehlerbehandlung bis hin zur Skalierung der Infrastruktur. Wenn Sie einen verwalteten Lab-Typ, z. B. ein Classroom-Lab, erstellen möchten, müssen Sie zunächst ein Lab-Konto für Ihre Organisation erstellen. Das Lab-Konto fungiert als zentrales Konto, unter dem alle Labs der Organisation verwaltet werden. 
@@ -106,10 +106,10 @@ Im Anschluss finden Sie einige **Anwendungsfälle für DevTest Labs**:
 - Verwenden Sie ein Lab, das mit der neuesten Version Ihres Produkts konfiguriert ist, um Schulungen für Kunden anzubieten. Geben Sie jedem Kunden ein begrenztes Zeitkontingent für die Lab-Verwendung. 
 
 
-## <a name="managed-lab-types-vs-devtest-labs"></a>Verwaltete Lab-Typen im Vergleich zu DevTest Labs
+## <a name="managed-lab-types-vs-devtest-labs"></a>Verwaltete Labtypen im Vergleich zu DevTest Labs
 In der folgenden Tabelle werden die beiden Arten von Labs verglichen, die von Azure Lab Services unterstützt werden: 
 
-| Features | Verwaltete Lab-Typen | DevTest Labs |
+| Features | Verwaltete Labtypen | DevTest Labs |
 | -------- | ----------------- | ---------- |
 | Verwaltung der Azure-Infrastruktur im Lab |  Automatisch durch den Dienst | Manuelle Verwaltung  |
 | Integrierte Resilienz gegen Infrastrukturprobleme | Automatisch durch den Dienst | Manuelle Verwaltung  |

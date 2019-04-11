@@ -1,7 +1,6 @@
 ---
 title: Grundlegendes zum Lebenszyklus einer Blaupause
 description: Erfahren Sie mehr über den Lebenszyklus einer Blaupause und Details zu jeder einzelnen Phase.
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 02/01/2019
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 71a5233c6d5af21d7bc5430cda14e156e16d5cd4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a57085fa37efd56a46b740d8cbc4278dc53cf39f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001573"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266612"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Grundlegendes zum Lebenszyklus von Azure Blueprints
 

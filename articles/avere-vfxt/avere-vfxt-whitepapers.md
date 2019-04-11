@@ -6,12 +6,12 @@ author: ekpgh
 ms.author: v-erkell
 ms.topic: conceptual
 ms.date: 02/13/2019
-ms.openlocfilehash: cc1d706ac1749c4655f15948f06b2ff1f360dde3
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: cf111f2ebe4233ea5d02cf5c7fbc0967655475d9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188123"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264164"
 ---
 # <a name="azure-vftx-for-azure-whitepapers-and-other-resources"></a>Azure vFTX für Azure-Whitepaper und andere Ressourcen 
 
@@ -25,7 +25,7 @@ Dieses Handbuch bietet eine Schrittanleitung zum Installieren der Agisoft PhotoS
 
 ## <a name="datasheet-avere-vfxt-for-azure"></a>Datenblatt: Avere vFXT für Azure
 
-**Link:** [Avere vFXT für Azure-Datenblatt](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE2NIlv)
+**Link:** [Avere vFXT für Azure-Datenblatt](https://azure.microsoft.com/resources/avere-vfxt-for-azure-data-sheet/)
 
 Diese zwei Seiten lange Übersicht enthält grundlegende Informationen und Diagramme, die erläutern, wie Avere vFXT für Azure in verschiedenen Anwendungsszenarien eingesetzt wird.
 

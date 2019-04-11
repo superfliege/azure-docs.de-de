@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/18/2018
+ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c19e554571927efa907350df1f1fbbd8ff491c42
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 96e3c0b761a9ed4c5f84d8ece1ba504bd5aacf6f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314755"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257756"
 ---
 # <a name="fail-over-and-reprotect-azure-vms-between-regions"></a>Ausführen eines Failovers und erneutes Schützen von Azure-VMs zwischen Regionen
 
@@ -44,7 +44,7 @@ In diesem Tutorial wird beschrieben, wie Sie für einen einzelnen virtuellen Azu
 
    * **Neuester** (Standardeinstellung): Mit dieser Option werden alle Daten in Site Recovery verarbeitet, und sie verfügt über den niedrigsten RPO-Wert (Recovery Point Objective).
    * **Letzte Verarbeitung**: Mit dieser Option wird für den virtuellen Computer der Zustand des letzten Wiederherstellungspunkts wiederhergestellt, der von Site Recovery verarbeitet wurde.
-   * **Benutzerdefiniert**: Verwenden Sie diese Option für ein Failover auf einen bestimmten Wiederherstellungspunkt. Diese Option eignet sich für ein Testfailover.
+   * **Benutzerdefiniert**: Bei dieser Option wird ein Failover auf einen bestimmten Wiederherstellungspunkt ausgeführt. Diese Option eignet sich für ein Testfailover.
 
 3. Klicken Sie auf **Der Computer wird vor Beginn des Failovers heruntergefahren**, wenn Site Recovery versuchen soll, Quell-VMs herunterzufahren, bevor das Failover ausgelöst wird. Das Failover wird auch dann fortgesetzt, wenn das Herunterfahren nicht erfolgreich ist. Site Recovery bereinigt die Quelle nach dem Failover nicht.
 

@@ -16,16 +16,16 @@ ms.date: 03/11/2019
 ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 3565bf4c4a19bcf1b136b4cbb781006658865a1c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 58c16b8a102ea27499fc464c209d4ca1c0d4db33
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767208"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264708"
 ---
 # <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>Verwalten des Zugriffs auf Ressourcen mit der rollenbasierten Zugriffssteuerung in Azure Stack
 
-*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Azure Stack unterstützt die rollenbasierte Zugriffssteuerung (RBAC), das gleiche von Microsoft Azure verwendete [Sicherheitsmodell für die Zugriffsverwaltung](https://docs.microsoft.com/azure/role-based-access-control/overview). Anhand der RBAC können Sie den Benutzer-, Gruppen- oder Anwendungszugriff auf Abonnements, Ressourcen und Dienste verwalten.
 
@@ -40,28 +40,6 @@ Azure Stack verfügt über drei grundlegende Rollen, die für alle Ressourcentyp
 * **Besitzer** können alles verwalten, einschließlich des Zugriffs auf Ressourcen.
 * **Mitwirkender** können alles mit Ausnahme des Zugriffs auf Ressourcen verwalten.
 * **Leser** können alles anzeigen, jedoch keine Änderungen vornehmen.
-
-### <a name="resource-hierarchy-and-inheritance"></a>Ressourcenhierarchie und Vererbung
-
-Azure Stack verfügt über die folgende Ressourcenhierarchie:
-
-* Jedes Abonnement gehört einem Verzeichnis.
-* Jede Ressourcengruppe gehört einem Abonnement.
-* Jede Ressource gehört einer Ressourcengruppe.
-
-Der Zugriff, den Sie auf übergeordneter Ebene gewähren, wird auf untergeordneter Ebene geerbt. Beispiel: 
-
-* Sie weisen die Rolle „Leser“ einer Azure AD-Gruppe im Abonnementbereich zu. Die Mitglieder dieser Gruppe können alle Ressourcengruppen und Ressourcen im Abonnement anzeigen.
-* Sie weisen die Rolle „Mitwirkender“ einer Anwendung im Ressourcengruppenbereich zu. Damit kann die Anwendung Ressourcen aller Typen in dieser Ressourcengruppe verwalten, aber keine anderen Ressourcengruppen des Abonnements.
-
-### <a name="assigning-roles"></a>Zuweisen von Rollen
-
-Sie können einem Benutzer mehrere Rollen zuweisen, und jede Rolle kann einem anderen Bereich zugeordnet werden. Beispiel: 
-
-* Sie weisen TestUser-A die Leserolle für Subscription-1 zu.
-* Sie weisen TestUser-A die Besitzerrolle für TestVM-1 zu.
-
-Der Artikel zu [Rollenzuweisungen](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) in Azure enthält ausführliche Informationen zum Anzeigen, Zuweisen und Löschen von Rollen.
 
 ### <a name="resource-hierarchy-and-inheritance"></a>Ressourcenhierarchie und Vererbung
 
