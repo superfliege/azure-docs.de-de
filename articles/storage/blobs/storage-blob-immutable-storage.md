@@ -5,15 +5,15 @@ services: storage
 author: xyh1
 ms.service: storage
 ms.topic: article
-ms.date: 03/02/2019
+ms.date: 03/26/2019
 ms.author: hux
 ms.subservice: blobs
-ms.openlocfilehash: 86e28c3561968b1411a3baa9ec0daecfab6ac73f
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 32328b89e8a220269f0d07c3700566db5b899d5b
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202876"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445688"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Speichern unternehmenskritischer Daten in Azure-Blobspeicher
 
@@ -46,6 +46,8 @@ Für unveränderlichen Speicher wird Folgendes unterstützt:
 ## <a name="how-it-works"></a>So funktioniert's
 
 Unveränderlicher Speicher für Azure-Blobspeicher unterstützt zwei Arten von WORM-Richtlinien bzw. Richtlinien für die unveränderliche Speicherung: zeitbasierte Aufbewahrung und gesetzliche Aufbewahrungspflicht. Wenn eine zeitbasierte Aufbewahrungsrichtlinie oder ein Zeitraum für die gesetzliche Aufbewahrungspflicht auf einen Container angewendet wird, werden alle vorhandenen Blobs innerhalb von weniger als 30 Sekunden in einen unveränderlichen WORM-Zustand versetzt. Alle neuen Blobs, die in diesen Container hochgeladen werden, werden ebenfalls in den unveränderlichen Zustand versetzt. Nachdem alle Blobs in den unveränderlichen Zustand versetzt wurden, wird die Unveränderlichkeitsrichtlinie bestätigt, und alle Überschreibungs- oder Löschvorgänge für vorhandene und neue Objekte im unveränderlichen Container sind unzulässig.
+
+Das Löschen von Containern und Konten ist ebenfalls nicht zulässig, wenn Blobs vorhanden sind, die durch eine unveränderliche Richtlinie geschützt sind. Beim Vorgang „Delete Container“ tritt ein Fehler auf, wenn mindestens ein Blob mit einer gesperrten zeitbasierten Aufbewahrungsrichtlinie oder einer gesetzlichen Aufbewahrungspflicht vorhanden ist. Für das Löschen des Speicherkontos tritt ein Fehler auf, wenn mindestens ein WORM-Container mit einer gesetzlichen Aufbewahrungspflicht oder ein Blob mit einem aktiven Aufbewahrungszeitraum vorhanden ist. 
 
 ### <a name="time-based-retention"></a>Zeitbasierte Aufbewahrung
 
@@ -85,12 +87,10 @@ In der folgenden Tabelle sind die Arten von Blobvorgängen angegeben, die für d
 Für die Nutzung dieses Features fallen keine zusätzlichen Gebühren an. Unveränderliche Daten werden auf die gleiche Weise wie reguläre, änderbare Daten abgerechnet. Ausführliche Informationen zu Preisen von Azure Blob Storage finden Sie auf der [Seite mit den Preisen für Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="getting-started"></a>Erste Schritte
+Unveränderlicher Speicher steht nur für Universell v2-Konten und Blobspeicherkonten zur Verfügung. Dieses Konto muss über den [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) verwaltet werden. Informationen zum Aktualisieren eines vorhandenen Kontos vom Typ „Universell v1“ finden Sie unter [Aktualisieren eines Speicherkontos](../common/storage-account-upgrade.md).
 
 Die aktuellen Releases von [Azure-Portal](https://portal.azure.com), [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) und [Azure PowerShell](https://github.com/Azure/azure-powershell/releases) unterstützen unveränderlichen Speicher für Azure-Blobspeicher. [Unterstützung für Clientbibliotheken](#client-libraries) ist ebenfalls vorhanden.
 
-> [!NOTE]
->
-> Unveränderlicher Speicher steht nur für Universell v2-Konten und Blobspeicherkonten zur Verfügung. Dieses Konto muss über den [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) verwaltet werden. Informationen zum Aktualisieren eines vorhandenen Kontos vom Typ „Universell v1“ finden Sie unter [Aktualisieren eines Speicherkontos](../common/storage-account-upgrade.md).
 
 ### <a name="azure-portal"></a>Azure-Portal
 
@@ -114,17 +114,19 @@ Die aktuellen Releases von [Azure-Portal](https://portal.azure.com), [Azure CLI]
 
     ![„Richtlinie sperren“ im Menü](media/storage-blob-immutable-storage/portal-image-4-lock-policy.png)
 
-    Wählen Sie **Richtlinie sperren**. Die Richtlinie ist jetzt gesperrt und kann nicht gelöscht werden. Es sind lediglich Verlängerungen des Aufbewahrungszeitraums zulässig.
+6. Wählen Sie **Richtlinie sperren** aus, und bestätigen Sie die Sperre. Die Richtlinie ist jetzt gesperrt und kann nicht gelöscht werden. Es sind lediglich Verlängerungen des Aufbewahrungszeitraums zulässig. Das Löschen und außer Kraft setzen von Blobs ist nicht erlaubt. 
 
-6. Zum Aktivieren der gesetzlichen Aufbewahrungspflicht wählen Sie **+ Richtlinie hinzufügen**. Wählen Sie im Dropdownmenü die Option **Gesetzliche Aufbewahrungspflicht**.
+    ![Bestätigen von „Richtlinie sperren“ im Menü](media/storage-blob-immutable-storage/portal-image-5-lock-policy.png)
+
+7. Zum Aktivieren der gesetzlichen Aufbewahrungspflicht wählen Sie **+ Richtlinie hinzufügen**. Wählen Sie im Dropdownmenü die Option **Gesetzliche Aufbewahrungspflicht**.
 
     ![„Gesetzliche Aufbewahrungspflicht“ im Menü unter „Richtlinientyp“](media/storage-blob-immutable-storage/portal-image-legal-hold-selection-7.png)
 
-7. Erstellen Sie einen Zeitraum für die gesetzliche Aufbewahrungspflicht mit mindestens einem Tag.
+8. Erstellen Sie einen Zeitraum für die gesetzliche Aufbewahrungspflicht mit mindestens einem Tag.
 
     ![Feld „Tagname“ unter dem Richtlinientyp](media/storage-blob-immutable-storage/portal-image-set-legal-hold-tags.png)
 
-8. Entfernen Sie einfach das entsprechende angewendete ID-Tag, um eine gesetzliche Aufbewahrungspflicht zu löschen.
+9. Entfernen Sie einfach das entsprechende angewendete ID-Tag, um eine gesetzliche Aufbewahrungspflicht zu löschen.
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
@@ -170,9 +172,9 @@ Ja. Für die Dokumentation der Konformität hat Microsoft ein führendes Unterne
 
 Unveränderlicher Speicher kann mit jedem Blobtyp verwendet werden, doch Sie sollten ihn vor allem für Blockblobs verwenden. Im Gegensatz zu Blockblobs müssen Seiten- und Anfügeblobs außerhalb eines WORM-Containers erstellt und dann hineinkopiert werden. Nach dem Kopieren dieser Blobs in einen WORM-Container sind keine weiteren *Anfügevorgänge* an ein Anfügeblob oder Änderungen eines Seitenblobs zulässig.
 
-**Muss ich immer ein neues Speicherkonto erstellen, um diese Funktion zu nutzen?**
+**Muss ich ein neues Speicherkonto erstellen, um dieses Feature zu nutzen?**
 
-Sie können unveränderlichen Speicher mit allen vorhandenen oder neu erstellten Universell v2- oder Blobspeicherkonten verwenden. Dieses Feature ist für die Verwendung mit Blockblobs in Universell v2- und Blobspeicherkonten vorgesehen.
+Nein. Sie können unveränderlichen Speicher mit allen vorhandenen oder neu erstellten Universell v2- oder Blobspeicherkonten verwenden. Dieses Feature ist für die Verwendung mit Blockblobs in Universell v2- und Blobspeicherkonten vorgesehen. Universell v1-Speicherkonten werden nicht unterstützt, aber es kann problemlos ein Upgrade auf Universell v2 durchgeführt werden. Informationen zum Aktualisieren eines vorhandenen Kontos vom Typ „Universell v1“ finden Sie unter [Aktualisieren eines Speicherkontos](../common/storage-account-upgrade.md).
 
 **Kann ich sowohl eine Richtlinie für eine gesetzliche Aufbewahrungspflicht als auch eine Richtlinie für die zeitbasierte Aufbewahrung anwenden?**
 
@@ -188,7 +190,7 @@ Beim Vorgang „Delete Container“ tritt ein Fehler auf, wenn mindestens ein Bl
 
 **Was passiert, wenn ich versuche, ein Speicherkonto mit einem WORM-Container zu löschen, das über eine *gesperrte* zeitbasierte Aufbewahrungsrichtlinie oder eine gesetzliche Aufbewahrungspflicht verfügt?**
 
-Für das Löschen des Speicherkontos tritt ein Fehler auf, wenn mindestens ein WORM-Container mit einer gesetzlichen Aufbewahrungspflicht oder ein Blob mit einem aktiven Aufbewahrungszeitraum vorhanden ist.  Sie müssen alle WORM-Container löschen, bevor Sie das Speicherkonto löschen können. Informationen zum Löschen des Containers finden Sie unter der vorherigen Frage.
+Für das Löschen des Speicherkontos tritt ein Fehler auf, wenn mindestens ein WORM-Container mit einer gesetzlichen Aufbewahrungspflicht oder ein Blob mit einem aktiven Aufbewahrungszeitraum vorhanden ist. Sie müssen alle WORM-Container löschen, bevor Sie das Speicherkonto löschen können. Informationen zum Löschen des Containers finden Sie unter der vorherigen Frage.
 
 **Kann ich die Daten zwischen unterschiedlichen Blobebenen („Hot“, „Cool“, „Cold“) verschieben, wenn sich das Blob im unveränderlichen Zustand befindet?**
 

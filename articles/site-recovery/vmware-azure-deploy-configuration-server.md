@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/06/2019
 ms.author: ramamill
-ms.openlocfilehash: ef0e29217e03b3c5d1b2880a6ce755c6cc02ceba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fb558644f29cd7b84156f976f525a88080f101dc
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58004454"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449209"
 ---
 # <a name="deploy-a-configuration-server"></a>Bereitstellen eines Konfigurationsservers
 
@@ -184,7 +184,7 @@ Um Unterbrechungen bei der laufenden Replikation zu vermeiden, stellen Sie siche
     Im **Recovery Services-Tresor**, **Verwalten** > **Site Recovery-Infrastruktur** > **Konfigurationsserver**. Klicken Sie unter „Server“ auf **Registrierungsschlüssel herunterladen**, um die Datei mit den Tresoranmeldeinformationen herunterzuladen.
 10. Kann ich einen bestehenden Konfigurationsserver klonen und für die Replikationsorchestrierung verwenden?
 
-    **Nein**, die Verwendung einer geklonten Konfigurationsserverkomponente wird nicht unterstützt.
+    **Nein**, die Verwendung einer geklonten Konfigurationsserverkomponente wird nicht unterstützt. Das Klonen des horizontal skalierten Prozessservers ist ebenfalls ein nicht unterstütztes Szenario. Das Klonen von Site Recovery-Komponenten wirkt sich auf die laufenden Replikationen aus.
 
 11. Kann ich die IP eines Konfigurationsservers ändern?
 

@@ -6,20 +6,20 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/08/2019
+ms.date: 03/22/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 69fce34c55007daff48b2463da590ffb9cd59926
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 6879dd975f97ba2746165e87a135e5d90e8b229f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775321"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620635"
 ---
 # <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Skalieren von Partitionen und Replikaten für Abfrage und Indizierung von Arbeitslasten in Azure Search
 Nach dem [Auswählen eines Tarifs](search-sku-tier.md) und dem [Bereitstellen eines Suchdiensts](search-create-service-portal.md) kann im nächsten Schritt optional die Anzahl der von dem Dienst verwendeten Replikate oder Partitionen erhöht werden. Jeder Tarif bietet eine feste Anzahl von Abrechnungseinheiten. In diesem Artikel wird erläutert, wie Sie diese Einheiten für eine optimale Konfiguration zuordnen, bei der Ihre Anforderungen für die Abfrageausführung, Indizierung und Speicherung ausgeglichen sind.
 
-Die Ressourcenkonfiguration ist verfügbar, wenn Sie einen Dienst zum [Basic-Tarif](https://aka.ms/azuresearchbasic) oder zu einem der [Standard-Tarife](search-limits-quotas-capacity.md) bereitstellen. Bei Diensten in diesen Tarifen wird die Kapazität in Abstufungen von *Sucheinheiten* (Search Units, SUs) erworben, wobei jede Partition und jedes Replikat jeweils als einzelne SU zählt. 
+Die Ressourcenkonfiguration ist verfügbar, wenn Sie einen Dienst zum [Basic-Tarif](https://aka.ms/azuresearchbasic) oder zu einem der [Tarife vom Typ „Standard“ oder „Storage Optimized“](search-limits-quotas-capacity.md) bereitstellen. Bei Diensten in diesen Tarifen wird die Kapazität in Abstufungen von *Sucheinheiten* (Search Units, SUs) erworben, wobei jede Partition und jedes Replikat jeweils als einzelne SU zählt. 
 
 Bei Verwendung von weniger Sucheinheiten fällt die Rechnung entsprechend niedriger aus. Die Abrechnung ist aktiviert, solange der Dienst bereitgestellt wird. Wenn Sie einen Dienst vorübergehend nicht verwenden und eine Abrechnung vermeiden möchten, müssen Sie den Dienst löschen und später bei Bedarf neu erstellen.
 
@@ -81,7 +81,7 @@ Allgemein gilt: Suchanwendungen benötigen mehr Replikate als Partitionen, insbe
 
 Ein Basic-Dienst kann genau eine Partition und bis zu drei Replikate besitzen. Die Obergrenze liegt bei drei SUs. Nur die Replikate können angepasst werden. Für Hochverfügbarkeit bei Abfragen sind mindestens zwei Replikate erforderlich.
 
-Alle Standarddienste können die folgenden Kombinationen von Replikaten und Partitionen annehmen, vorbehaltlich dem Limit 36 SU. 
+Alle Suchdienste vom Typ „Standard“ oder „Storage Optimized“ können die folgenden Kombinationen von Replikaten und Partitionen annehmen, vorbehaltlich dem Limit 36 SU. 
 
 |   | **1 Partition** | **2 Partitionen** | **3 Partitionen** | **4 Partitionen** | **6 Partitionen** | **12 Partitionen** |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -112,7 +112,7 @@ Allgemeine Empfehlungen für Hochverfügbarkeit sind:
 
 Vereinbarungen zum Servicelevel (Service Level Agreements, SLAs) für Azure Search sind auf Abfragevorgänge und auf Indexupdates (Hinzufügen, Aktualisieren oder Löschen von Dokumenten) ausgerichtet.
 
-Der Tarif „Basic“ erreicht den Höchstwert bei einer Partition und drei Replikaten. Wenn Sie die Flexibilität benötigen, auf Schwankungen beim Bedarf an Indizierungen und Abfragedurchsatz sofort zu reagieren, ziehen Sie einen der Standard-Tarife in Betracht.
+Der Tarif „Basic“ erreicht den Höchstwert bei einer Partition und drei Replikaten. Wenn Sie die Flexibilität benötigen, auf Schwankungen beim Bedarf an Indizierungen und Abfragedurchsatz sofort zu reagieren, ziehen Sie einen der Standard-Tarife in Betracht.  Wenn Sie feststellen, dass Ihre Speicheranforderungen viel schneller wachsen als Ihr Abfragedurchsatz, sollten Sie einen der Tarife vom Typ „Storage Optimized“ in Betracht ziehen.
 
 ### <a name="index-availability-during-a-rebuild"></a>Indexverfügbarkeit während einer Neuerstellung
 

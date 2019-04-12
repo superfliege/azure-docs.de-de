@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 204ee1b812949311258be968de387dc5b66c4fc0
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 18f713198ef9aa45cb72a6718c0f7b086c019258
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726871"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540039"
 ---
 # <a name="mapping-data-flow-join-transformation"></a>Join-Transformation für Datenflusszuordnung
 
@@ -67,6 +67,10 @@ Selbstverknüpfungsbedingungen können Sie in ADF-Datenflow erzielen, wenn Sie m
 ![Selbstverknüpfung](media/data-flow/selfjoin.png "Selbstverknüpfung")
 
 Im obigen Diagramm befindet sich die SELECT-Transformation ganz oben. Sie weist nur dem ursprünglichen Datenstrom den Alias „OrigSourceBatting“ zu. In der hervorgehobenen Verknüpfungstransformation darunter können Sie sehen, dass wir diesen SELECT-Aliasdatenstrom der Auswahltransformation als rechte Verknüpfung verwenden, sodass wir sowohl auf der linken als auch auf der rechten Seite der inneren Verknüpfung (des inneren Join) auf den gleichen Schlüssel verweisen können.
+
+## <a name="composite-and-custom-keys"></a>Zusammengesetzte und benutzerdefinierte Schlüssel
+
+Sie können benutzerdefinierte und zusammengesetzte Schlüssel direkt innerhalb der Verknüpfungstransformation erstellen. Fügen Sie Zeilen für zusätzliche Verknüpfungsspalten mit dem Pluszeichen (+) neben den einzelnen Beziehungszeilen hinzu. Sie können auch einen neuen Schlüsselwert im Ausdrucks-Generator für einen direkten Verknüpfungswert berechnen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

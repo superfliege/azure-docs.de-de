@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9820fcae0dfb366c1722c50c95400c7de0fbeb12
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: fb29fb5ef2e755ff456ad177b66349792b2fa21c
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285784"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418855"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Hinzufügen Ihres benutzerdefinierten Domänennamens über das Azure Active Directory-Portal
 Jeder neue Azure AD-Mandant verfügt über einen anfänglichen Domänennamen im Format „*domänenname*.onmicrosoft.com“. Der anfängliche Domänenname kann nicht geändert oder gelöscht werden, Sie können der Liste jedoch die Namen Ihrer Organisation hinzufügen. Durch Hinzufügen benutzerdefinierter Domänennamen können Sie Benutzernamen erstellen, mit denen Ihre Benutzer vertraut sind (beispielsweise *alain\@contoso.com*).
@@ -84,6 +84,8 @@ Nachdem Sie Ihren benutzerdefinierten Domänennamen registriert haben, müssen S
 4. Klicken Sie auf der Seite für **Contoso** auf **Überprüfen**, um sicherzustellen, dass Ihre benutzerdefinierte Domäne korrekt registriert und für Azure AD gültig ist.
 
     ![Seite für Contoso mit DNS-Eintragsinformationen und der Schaltfläche „Überprüfen“](media/add-custom-domain/contoso-blade-with-dns-info-verify.png)
+
+Nachdem Sie Ihren benutzerdefinierten Domänennamen überprüft haben, können Sie Ihre für die Überprüfung verwendete TXT- oder MX-Datei löschen.
 
 ## <a name="common-verification-issues"></a>Häufige Probleme bei der Überprüfung
 - Versuchen Sie Folgendes, wenn Azure AD einen benutzerdefinierten Domänennamen nicht überprüfen kann:

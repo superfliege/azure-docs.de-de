@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4311d71775ef877e0090abca9c6caabab503ef08
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: aa9b89b9afec069e97236b7652e0f1d37644f5cf
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58097609"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336070"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Verwenden des vorläufigen Löschens in Key Vault mit der CLI
 
@@ -94,7 +94,7 @@ Sie können Schlüsseltresore im gelöschten Zustand für Ihr Abonnement mit dem
 ```azurecli
 az keyvault list-deleted
 ```
-- Anhand des Felds *Id* kann beim Wiederherstellen oder Bereinigen die Ressource ermittelt werden. 
+- Anhand des Felds *ID* kann beim Wiederherstellen oder Bereinigen die Ressource ermittelt werden. 
 - *Ressourcen-ID* ist die ursprüngliche Ressourcen-ID dieses Tresors. Da sich dieser Schlüsseltresor nun in einem gelöschten Zustand befindet, ist keine Ressource mit dieser Ressourcen-ID vorhanden. 
 - Im Feld *Geplantes Datum für die Bereinigung* ist angegeben, wann der Tresor endgültig gelöscht wird, wenn keine Aktion ausgeführt wird. Die Standardaufbewahrungsdauer, die zum Berechnen von *Scheduled Purge Date* (Geplantes Datum für die Bereinigung) verwendet wird, ist 90 Tage.
 
@@ -222,6 +222,24 @@ Beim Auflisten Ihrer gelöschten Schlüsseltresorobjekte wird angezeigt, wann ih
 
 >[!IMPORTANT]
 >Ein Tresorobjekt, dessen Bereinigung auf der Grundlage des Felds *Scheduled Purge Date* (Geplantes Datum für Bereinigung) veranlasst wurde, wird endgültig gelöscht. Es kann nicht wiederhergestellt werden.
+
+## <a name="enabling-purge-protection"></a>Aktivieren des Bereinigungsschutzes
+
+Wenn der Bereinigungsschutz aktiviert ist, kann ein Tresor oder ein Objekt im gelöschten Zustand nicht endgültig gelöscht werden, bis die Aufbewahrungsdauer von 90 Tagen abgelaufen ist. Solch ein Tresor oder Objekt kann noch wiederhergestellt werden. Dieses Feature versichert zusätzlich, dass ein Tresor oder ein Objekt nie dauerhaft gelöscht werden kann, bevor die Aufbewahrungsdauer abgelaufen ist.
+
+Sie können den Bereinigungsschutz nur aktivieren, wenn auch das vorläufige Löschen aktiviert ist. 
+
+Verwenden Sie den Befehl [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create), um beim Erstellen eines Tresors sowohl das vorläufige Löschen als auch den Bereinigungsschutz zu aktivieren:
+
+```
+az keyvault create --name ContosoVault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
+```
+
+Verwenden Sie den Befehl [az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update), um einem vorhandenen Tresor einen Bereinigungsschutz hinzuzufügen (für den bereits das vorläufige Löschen aktiviert ist):
+
+```
+az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true
+```
 
 ## <a name="other-resources"></a>Weitere Ressourcen
 

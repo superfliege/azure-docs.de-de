@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: d70ad65f5bbc4424b4224cf601d903ad7ec10691
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: f44161586f9f4e121001b9f5e285b0e1e1dcd9d1
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405112"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518744"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>Indizieren von JSON-Blobs mit dem Azure Search-Blobindexer
 In diesem Artikel wird beschrieben, wie Sie einen Azure Search-[Blobindexer](search-indexer-overview.md) konfigurieren, um strukturierten Inhalt aus JSON-Dokumenten in Azure Blob Storage zu extrahieren und so vorzubereiten, dass er ihn Azure Search durchsucht werden kann. Dieser Workflow erstellt einen Azure Search-Index und lädt ihn mit vorhandenem, aus JSON-Blobs extrahiertem Text. 
@@ -211,7 +211,7 @@ Die Indexerkonfiguration befindet sich im Text der Anforderung. Sie erfordert ei
 
 Zeitplan und Parameter sind optional. Wenn Sie diese Angaben weglassen, wird der Indexer sofort ausgeführt, indem `json` als Analysemodus verwendet wird.
 
-Dieser bestimmte Indexer enthält keine [Feldzuordnungen](#field-mappings). Innerhalb der Indexerdefinition können Sie **Feldzuordnungen** weglassen, wenn die Eigenschaften des JSON-Quelldokuments mit den Feldern Ihres Zielsuchindexes übereinstimmen. 
+Dieser bestimmte Indexer enthält keine Feldzuordnungen. Innerhalb der Indexerdefinition können Sie **Feldzuordnungen** weglassen, wenn die Eigenschaften des JSON-Quelldokuments mit den Feldern Ihres Zielsuchindexes übereinstimmen. 
 
 
 ### <a name="rest-example"></a>Beispiel für REST
@@ -253,7 +253,7 @@ Alle Indexer erfordern einen Zielindex, der die Daten empfängt. Der Text der An
 
 ### <a name="indexer-request"></a>Indexeranforderung
 
-Diese Anforderung zeigt einen vollständig angegebenen Indexer. Er enthält [Feldzuordnungen](#field-mappings), die in den vorherigen Beispielen ausgelassen wurden. Denken Sie daran, dass „schedule“, „parameter“ und „fieldMappings“ optional sind, solange ein Standard verfügbar ist. Das Weglassen von „schedule“ bewirkt, dass der Indexer sofort ausgeführt wird. Das Weglassen von „parsingMode“ bewirkt, dass der Index die Standardeinstellung „json“ verwendet.
+Diese Anforderung zeigt einen vollständig angegebenen Indexer. Er enthält Feldzuordnungen, die in den vorherigen Beispielen ausgelassen wurden. Denken Sie daran, dass „schedule“, „parameter“ und „fieldMappings“ optional sind, solange ein Standard verfügbar ist. Das Weglassen von „schedule“ bewirkt, dass der Indexer sofort ausgeführt wird. Das Weglassen von „parsingMode“ bewirkt, dass der Index die Standardeinstellung „json“ verwendet.
 
 Das Erstellen des Indexers in Azure Search löst einen Datenimport aus. Er wird sofort ausgeführt, und anschließend nach einem Zeitplan, wenn Sie einen angegeben haben.
 

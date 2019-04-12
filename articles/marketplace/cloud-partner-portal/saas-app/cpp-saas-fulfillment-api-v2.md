@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 81213d1f7cfeb7ea10cdadfb124047ecb76aa7d4
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 6d18adfaec965d858bdcb1f74ebcea89f57eea39
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58352084"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878025"
 ---
 # <a name="saas-fulfillment-api"></a>SaaS-Fulfillment-API
 
@@ -86,7 +86,7 @@ Die Abonnement-API unterstützt die folgenden HTTPS-Vorgänge: **GET**, **POST**
 
 Listet alle SaaS-Abonnements für einen Herausgeber auf.
 
-**GET:<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`**
+**Get:<br>`https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=<ApiVersion>`**
 
 *Abfrageparameter:*
 
@@ -153,7 +153,7 @@ Code: 500 Interner Serverfehler
 
 Ruft das angegebene SaaS-Abonnement ab. Verwenden Sie diesen Aufruf zum Abrufen von Lizenzinformationen und Plan-/Tarifinformationen.
 
-**GET:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId?api-version=<ApiVersion>`**
+**Get:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId?api-version=<ApiVersion>`**
 
 *Abfrageparameter:*
 
@@ -218,7 +218,7 @@ Interner Serverfehler<br>
 
 Verwenden Sie den Aufruf „listAvailablePlans“, um herauszufinden, ob es private/öffentliche Angebote für den aktuellen Benutzer gibt.
 
-**GET:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/listAvailablePlans?api-version=<ApiVersion>`**
+**Get:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/listAvailablePlans?api-version=<ApiVersion>`**
 
 *Abfrageparameter:*
 
@@ -275,7 +275,7 @@ Interner Serverfehler<br>
 
 Der Auflösungsendpunkt ermöglicht Benutzern das Auflösen eines Marketplace-Tokens in eine permanente Ressourcen-ID. Die Ressourcen-ID ist der eindeutige Bezeichner des SAAS-Abonnements.  Wenn ein Benutzer zur Website eines ISV weitergeleitet wird, enthält die URL in den Abfrageparametern ein Token. Es wird erwartet, dass der ISV dieses Token verwendet und eine Anforderung zu dessen Auflösung stellt. Die Antwort enthält die eindeutige ID des SAAS-Abonnements, den Namen, die Angebots-ID und den Plan für die Ressource. Dieses Token ist nur eine Stunde gültig. 
 
-**POST:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`**
+**Post:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=<ApiVersion>`**
 
 *Abfrageparameter:*
 
@@ -333,7 +333,7 @@ Interner Serverfehler
 
 #### <a name="activate-a-subscription"></a>Aktivieren eines Abonnements
 
-**POST:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`**
+**Post:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/activate?api-version=<ApiVersion>`**
 
 *Abfrageparameter:*
 
@@ -390,7 +390,7 @@ Interner Serverfehler
 
 Aktualisieren oder ändern Sie einen Abonnementplan mit den bereitgestellten Werten.
 
-**PATCH:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`**
+**Patch:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>?api-version=<ApiVersion>`**
 
 *Abfrageparameter:*
 
@@ -457,7 +457,7 @@ Interner Serverfehler
 
 Kündigen und löschen Sie das angegebene Abonnement.
 
-**DELETE:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId> ?api-version=<ApiVersion>`**
+**Delete (Löschen):<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId> ?api-version=<ApiVersion>`**
 
 *Abfrageparameter:*
 
@@ -511,7 +511,7 @@ Die Vorgangs-API unterstützt die folgenden PATCH- und GET-Vorgänge.
 
 Aktualisieren eines Abonnements mit den bereitgestellten Werten.
 
-**PATCH:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operation/<operationId>?api-version=<ApiVersion>`**
+**Patch:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operation/<operationId>?api-version=<ApiVersion>`**
 
 *Abfrageparameter:*
 
@@ -572,7 +572,7 @@ Code: 500<br> Interner Serverfehler
 
 Listet die ausstehenden Vorgänge für den aktuellen Benutzer auf. 
 
-**GET:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`**
+**Get:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations?api-version=<ApiVersion>`**
 
 *Abfrageparameter:*
 
@@ -636,7 +636,7 @@ Interner Serverfehler
 
 Ermöglicht dem Benutzer das Nachverfolgen des Status eines ausgelösten asynchronen Vorgangs (Abonnieren/Kündigen/Plan ändern).
 
-**GET:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`**
+**Get:<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`**
 
 *Abfrageparameter:*
 
@@ -648,7 +648,7 @@ Ermöglicht dem Benutzer das Nachverfolgen des Status eines ausgelösten asynchr
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  Content-Typ      |  ` application/json`   |
+|  Content-Typ      |  `application/json`   |
 |  x-ms-requestid    |   Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
 |  x-ms-correlationid |  Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Parameter korreliert alle Ereignisse des Clientvorgangs mit serverseitigen Ereignissen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
 |  authorization     | JWT-Bearertoken (JSON Web Token)  |

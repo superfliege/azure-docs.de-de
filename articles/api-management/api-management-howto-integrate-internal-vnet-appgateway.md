@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: sasolank
-ms.openlocfilehash: 00cdc8de45d2f0177cd1f097fb874cbe67f7e442
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4ee970f14a6da3d65849a79ff4afae68601f106f
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58120124"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521923"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Integrieren von API Management in ein internes VNET mit Application Gateway
 
@@ -51,7 +51,7 @@ Zum Ausführen der in diesem Artikel beschriebenen Schritte benötigen Sie Folge
 
 In diesem Artikel wird beschrieben, wie Sie einen einzelnen API Management-Dienst sowohl für interne als auch für externe Consumer verwenden und als einzelnes Front-End für lokale und cloudbasierte APIs einrichten. Außerdem wird veranschaulicht, wie Sie nur eine Teilmenge Ihrer APIs (im Beispiel grün markiert) für die externe Nutzung verfügbar machen, indem Sie die Routingfunktionalität von Application Gateway verwenden.
 
-Im ersten Setupbeispiel werden alle APIs ausschließlich aus Ihrem virtuellen Netzwerk verwaltet. Interne Consumer (orange gekennzeichnet) können auf alle internen und externen APIs zugreifen. Der Datenverkehr gelangt niemals ins Internet, und die ExpressRoute-Verbindungen ermöglichen eine hohe Leistung.
+Im ersten Setupbeispiel werden alle APIs ausschließlich aus Ihrem virtuellen Netzwerk verwaltet. Interne Consumer (orange gekennzeichnet) können auf alle internen und externen APIs zugreifen. Der Datenverkehr gelangt nie ins Internet. Hochleistungskonnektivität wird über ExpressRoute-Verbindungen bereitgestellt.
 
 ![URL-Route](./media/api-management-howto-integrate-internal-vnet-appgateway/api-management-howto-integrate-internal-vnet-appgateway.png)
 
@@ -93,7 +93,7 @@ In diesem Leitfaden wird das **Entwicklerportal** über Application Gateway für
 Anmelden an Azure
 
 ```powershell
-Login-AzAccount
+Connect-AzAccount
 ```
 
 Authentifizieren Sie sich mit Ihren Anmeldeinformationen.
@@ -165,7 +165,7 @@ Im folgenden Beispiel wird veranschaulicht, wie Sie einen API Management-Dienst 
 Erstellen Sie ein Objekt vom Typ „Virtuelles API Management-Netzwerk“, indem Sie das oben erstellte Subnetz „$apimsubnetdata“ verwenden.
 
 ```powershell
-$apimVirtualNetwork = New-AzApiManagementVirtualNetwork -Location $location -SubnetResourceId $apimsubnetdata.Id
+$apimVirtualNetwork = New-AzApiManagementVirtualNetwork -SubnetResourceId $apimsubnetdata.Id
 ```
 
 ### <a name="step-2"></a>Schritt 2
@@ -185,7 +185,7 @@ Nachdem der obige Befehl erfolgreich ausgeführt wurde, können Sie die Informat
 
 ### <a name="step-1"></a>Schritt 1
 
-Laden Sie das Zertifikat mit den privaten Schlüsseln für die Domänen hoch. In diesem Beispiel werden `api.contoso.net` und `portal.contoso.net` verwendet.  
+Initialisieren Sie die folgenden Variablen mit den Details der Zertifikate mit privaten Schlüsseln für die Domänen. In diesem Beispiel werden `api.contoso.net` und `portal.contoso.net` verwendet.  
 
 ```powershell
 $gatewayHostname = "api.contoso.net"                 # API gateway host
@@ -196,18 +196,21 @@ $portalCertPfxPath = "C:\Users\Contoso\portal.pfx"   # full path to portal.conto
 $gatewayCertPfxPassword = "certificatePassword123"   # password for api.contoso.net pfx certificate
 $portalCertPfxPassword = "certificatePassword123"    # password for portal.contoso.net pfx certificate
 
-$certUploadResult = Import-AzApiManagementHostnameCertificate -ResourceGroupName $resGroupName -Name $apimServiceName -HostnameType "Proxy" -PfxPath $gatewayCertPfxPath -PfxPassword $gatewayCertPfxPassword -PassThru
-$certPortalUploadResult = Import-AzApiManagementHostnameCertificate -ResourceGroupName $resGroupName -Name $apimServiceName -HostnameType "Proxy" -PfxPath $portalCertPfxPath -PfxPassword $portalCertPfxPassword -PassThru
+$certPwd = ConvertTo-SecureString -String $gatewayCertPfxPassword -AsPlainText -Force
+$certPortalPwd = ConvertTo-SecureString -String $portalCertPfxPassword -AsPlainText -Force
 ```
 
 ### <a name="step-2"></a>Schritt 2
 
-Nachdem die Zertifikate hochgeladen wurden, erstellen Sie Hostnamenkonfigurationsobjekte für den Proxy und das Portal.  
+Erstellen Sie die Hostnamenkonfigurationsobjekte für den Proxy und das Portal und legen Sie diese fest.  
 
 ```powershell
-$proxyHostnameConfig = New-AzApiManagementHostnameConfiguration -CertificateThumbprint $certUploadResult.Thumbprint -Hostname $gatewayHostname
-$portalHostnameConfig = New-AzApiManagementHostnameConfiguration -CertificateThumbprint $certPortalUploadResult.Thumbprint -Hostname $portalHostname
-$result = Set-AzApiManagementHostnames -Name $apimServiceName -ResourceGroupName $resGroupName –PortalHostnameConfiguration $portalHostnameConfig -ProxyHostnameConfiguration $proxyHostnameConfig
+$proxyHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $gatewayHostname -HostnameType Proxy -PfxPath $gatewayCertPfxPath -PfxPassword $certPwd
+$portalHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $portalHostname -HostnameType Portal -PfxPath $portalCertPfxPath -PfxPassword $certPortalPwd
+
+$apimService.ProxyCustomHostnameConfiguration = $proxyHostnameConfig
+$apimService.PortalCustomHostnameConfiguration = $portalHostnameConfig
+Set-AzApiManagement -InputObject $apimService
 ```
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Erstellen der öffentlichen IP-Adresse für die Front-End-Konfiguration
@@ -253,9 +256,7 @@ $fipconfig01 = New-AzApplicationGatewayFrontendIPConfig -Name "frontend1" -Publi
 Konfigurieren Sie das Zertifikat für den Application Gateway-Dienst, der zum Entschlüsseln und Verschlüsseln des durchlaufenden Datenverkehrs verwendet wird.
 
 ```powershell
-$certPwd = ConvertTo-SecureString $gatewayCertPfxPassword -AsPlainText -Force
 $cert = New-AzApplicationGatewaySslCertificate -Name "cert01" -CertificateFile $gatewayCertPfxPath -Password $certPwd
-$certPortalPwd = ConvertTo-SecureString $portalCertPfxPassword -AsPlainText -Force
 $certPortal = New-AzApplicationGatewaySslCertificate -Name "cert02" -CertificateFile $portalCertPfxPath -Password $certPortalPwd
 ```
 

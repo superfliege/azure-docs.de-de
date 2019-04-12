@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/20/2019
+ms.date: 03/21/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5b8ec726c81dfab710d30c37d6fb1aac97c12265
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 3b2df5b24a12f3d2ea5d8a03721c08f8d2a742ad
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293974"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539988"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integration der Quellcodeverwaltung in Azure Automation
 
@@ -30,6 +30,7 @@ Azure Automation unterstützt drei Arten von Quellcodeverwaltung:
 
 * Ein Quellcodeverwaltungsrepository (GitHub oder Azure Repos)
 * Ein [ausführendes Konto](manage-runas-account.md)
+* Stellen Sie sicher, dass Sie im Automation-Konto über die neuesten [Azure-Module](automation-update-azure-modules.md) verfügen.
 
 > [!NOTE]
 > Synchronisierungsaufträge für die Quellcodeverwaltung werden unter dem Automation-Konto eines Benutzers ausgeführt und mit der gleichen Rate wie andere Automation-Aufträge berechnet.
@@ -62,24 +63,24 @@ Geben Sie auf der Seite **Quellcodeverwaltung – Übersicht** die Informationen
 
 ## <a name="configure-source-control---powershell"></a>Konfigurieren der Quellcodeverwaltung – PowerShell
 
-Sie können auch PowerShell verwenden, um die Quellcodeverwaltung in Azure Automation zu konfigurieren. Zum Konfigurieren der Quellcodeverwaltung mit den PowerShell-Cmdlets benötigen Sie ein [persönliches Zugriffstoken (Personal Access Token, PAT)](#personal-access-token). Sie verwenden [New-AzureRmAutomationSourceControl](/powershell/module/AzureRM.Automation/New-AzureRmAutomationSourceControl), um die Verbindung für die Quellcodeverwaltung zu erstellen. Für das Cmdlet ist eine sichere Zeichenfolge des persönlichen Zugriffstokens erforderlich. Eine Beschreibung der Erstellung einer sicheren Zeichenfolge finden Sie unter [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6).
+Sie können auch PowerShell verwenden, um die Quellcodeverwaltung in Azure Automation zu konfigurieren. Zum Konfigurieren der Quellcodeverwaltung mit den PowerShell-Cmdlets benötigen Sie ein persönliches Zugriffstoken (Personal Access Token, PAT). Sie verwenden [New-AzureRmAutomationSourceControl](/powershell/module/AzureRM.Automation/New-AzureRmAutomationSourceControl), um die Verbindung für die Quellcodeverwaltung zu erstellen. Für das Cmdlet ist eine sichere Zeichenfolge des persönlichen Zugriffstokens erforderlich. Eine Beschreibung der Erstellung einer sicheren Zeichenfolge finden Sie unter [ConvertTo-SecureString](/powershell/module/microsoft.powershell.security/convertto-securestring?view=powershell-6).
 
 ### <a name="azure-repos-git"></a>Azure Repos (Git)
 
 ```powershell-interactive
-New-AzureRmAutomationSourceControl -Name SCReposGit -RepoUrl https://<account>.visualstudio.com/DefaultCollection/<project>/_git/<repository> -SourceType VsoGit -AccessToken <secureStringofPAT> -Branch master -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
+New-AzureRmAutomationSourceControl -Name SCReposGit -RepoUrl https://<accountname>.visualstudio.com/<projectname>/_git/<repositoryname> -SourceType VsoGit -AccessToken <secureStringofPAT> -Branch master -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
 ```
 
 ### <a name="azure-repos-tfvc"></a>Azure Repos (TFVC)
 
 ```powershell-interactive
-New-AzureRmAutomationSourceControl -Name SCReposTFVC -RepoUrl https://<account>.visualstudio.com/<projectName>/_versionControl -SourceType VsoTfvc -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
+New-AzureRmAutomationSourceControl -Name SCReposTFVC -RepoUrl https://<accountname>.visualstudio.com/<projectname>/_versionControl -SourceType VsoTfvc -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName> -FolderPath "/Runbooks"
 ```
 
 ### <a name="github"></a>GitHub
 
 ```powershell-interactive
-New-AzureRmAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<account>/<repoName>.git -SourceType GitHub -FolderPath "/MyRunbooks" -Branch master -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName>
+New-AzureRmAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<accountname>/<reponame>.git -SourceType GitHub -FolderPath "/MyRunbooks" -Branch master -AccessToken <secureStringofPAT> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName>
 ```
 
 ### <a name="personal-access-token-permissions"></a>Berechtigungen für persönliche Zugriffstoken
@@ -113,7 +114,7 @@ Weitere Informationen zur Erstellung eines persönlichen Zugriffstokens in Azure
 |Arbeitselemente (Lesen)    |
 |Dienstverbindungen (Lesen, Abfragen und Verwalten)<sup>1</sup>    |
 
-<sup>1</sup>Die Berechtigung für Dienstverbindungen ist nur erforderlich, wenn die automatische Synchronisierung aktiviert ist.
+<sup>1</sup> Die Berechtigung für Dienstverbindungen ist nur erforderlich, wenn die automatische Synchronisierung aktiviert ist.
 
 ## <a name="syncing"></a>Synchronisierung wird durchgeführt
 
@@ -168,7 +169,7 @@ Wählen Sie die Quellcodeverwaltung aus, die Sie entfernen möchten. Klicken Sie
 
 ## <a name="encoding"></a>Codieren
 
-Wenn in Ihrem Repository der Quellcodeverwaltung mehrere Personen Runbooks mit unterschiedlichen Editoren bearbeiten, kann es sein, dass Codierungsprobleme auftreten. Auf diese Weise können fehlerhafte Zeichen in Ihr Runbook eingefügt werden. Weitere Informationen hierzu finden Sie unter [Häufige Gründe für Codierungsprobleme](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues).
+Wenn in Ihrem Repository der Quellcodeverwaltung mehrere Personen Runbooks mit unterschiedlichen Editoren bearbeiten, kann es sein, dass Codierungsprobleme auftreten. Dies kann zu falschen Zeichen in Ihrem Runbook führen. Weitere Informationen hierzu finden Sie unter [Häufige Gründe für Codierungsprobleme](/powershell/scripting/components/vscode/understanding-file-encoding#common-causes-of-encoding-issues).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

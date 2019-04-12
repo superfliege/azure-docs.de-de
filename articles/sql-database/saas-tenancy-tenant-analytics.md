@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 9f88314bbf507dc3b4e282532acfa079c2a63cce
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0be39aaf5526ea288764fc72d6c498cca2d659b7
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890541"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481687"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Mandantenübergreifende Analysen mit extrahierten Daten – App mit einem Mandanten
  
@@ -91,7 +91,7 @@ In den folgenden Schritten stellen Sie einen Analysespeicher namens **tenantanal
 2. Legen Sie die $DemoScenario-Variable im Skript entsprechend Ihrem Analysespeicher fest:
     - Wenn Sie SQL-Datenbank ohne Columnstore verwenden, legen Sie **$DemoScenario** = **2** fest.
     - Wenn Sie SQL-Datenbank mit Columnstore verwenden, legen Sie **$DemoScenario** = **3** fest.  
-3. Drücken Sie **F5** zum Ausführen des Demoskripts (das das Skript *Deploy-TenantAnalytics<XX>.ps1* aufruft), um den Mandantenanalysespeicher zu erstellen. 
+3. Drücken Sie **F5** zum Ausführen des Demoskripts (das das Skript*Deploy-TenantAnalytics\<XX>.ps1* aufruft), um den Mandantenanalysespeicher zu erstellen. 
 
 Nachdem Sie die Anwendung bereitgestellt und mit interessanten Mandantendaten gefüllt haben, stellen Sie mit [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) und mithilfe des Anmeldenamens *developer* und dem Kennwort *P\@ssword1* eine Verbindung mit den Servern **tenants1-dpt-&lt;Benutzer&gt;** und **catalog-dpt-&lt;Benutzer&gt;** her. Weitere Informationen finden Sie im [Einführungstutorial](saas-dbpertenant-wingtip-app-overview.md).
 
@@ -120,7 +120,7 @@ Bevor Sie fortfahren, stellen Sie sicher, dass Sie das Auftragskonto und die Dat
 
 1. Stellen Sie in SSMS eine Verbindung mit der Datenbank **jobaccount** auf dem Server catalog-dpt-&lt;Benutzer&gt; her.
 2. Öffnen Sie in SSMS „*…\Learning Modules\Operational Analytics\Tenant Analytics\TargetGroups.sql*“. 
-3. Ändern Sie die @User-Variable oben im Skript, und ersetzen Sie dabei <User> durch den Benutzerwert, der beim Bereitstellen der Wingtip SaaS-App verwendet wurde.
+3. Ändern Sie die @User-Variable oben im Skript, und ersetzen Sie dabei `<User>` durch den Benutzerwert, der beim Bereitstellen der Wingtip SaaS-App verwendet wurde.
 4. Drücken Sie **F5** zum Ausführen des Skripts, das die zwei Zielgruppen erstellt.
 
 ### <a name="extract-raw-data-from-all-tenants"></a>Extrahieren von Rohdaten für alle Mandanten
@@ -134,7 +134,7 @@ Jeder Auftrag extrahiert die entsprechenden Daten und sendet sie an den Analyses
 
 1. Stellen Sie in SSMS eine Verbindung mit der Datenbank **jobaccount** auf dem Server catalog-dpt-&lt;Benutzer&gt; her.
 2. Öffnen Sie in SSMS „*...\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.sql*“.
-3. Ändern Sie @User oben im Skript, und ersetzen Sie dabei <User> durch den Benutzernamen, der beim Bereitstellen der Wingtip SaaS-App verwendet wurde. 
+3. Ändern Sie @User oben im Skript, und ersetzen Sie dabei `<User>` durch den Benutzernamen, der beim Bereitstellen der Wingtip SaaS-App verwendet wurde. 
 4. Drücken Sie F5 zum Ausführen des Skripts, das den Auftrag zum Extrahieren der Ticket- und Kundendaten aus den einzelnen Mandantendatenbanken erstellt und ausführt. Der Auftrag speichert die Daten im Analysespeicher.
 5. Fragen Sie die Tabelle „TicketsRawData“ in der Datenbank „tenantanalytics“ ab, um sicherzustellen, dass die Tabelle mit Ticketinformationen von allen Mandanten aufgefüllt wurde.
 

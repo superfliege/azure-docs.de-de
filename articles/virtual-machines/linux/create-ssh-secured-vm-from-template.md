@@ -13,19 +13,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5ff8beb1995359bad93449744718091c338e4994
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 334f69390e4506c6db76c1814f8ec8f1e4417ee9
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226554"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372334"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Erstellen eines virtuellen Linux-Computers mithilfe von Azure Resource Manager-Vorlagen
 
-In diesem Artikel erfahren Sie, wie Sie schnell einen virtuellen Linux-Computer (VM) mithilfe von Azure Resource Manager-Vorlagen und der Azure CLI bereitstellen. 
+Es wird beschrieben, wie Sie einen virtuellen Linux-Computer (VM) mit einer Azure Resource Manager-Vorlage und mit der Azure CLI über die Azure Cloud Shell erstellen. Informationen zum Erstellen eines virtuellen Windows-Computers finden Sie unter [Erstellen eines virtuellen Windows-Computer mit einer Resource Manager-Vorlage](../windows/ps-template.md).
 
 ## <a name="templates-overview"></a>Übersicht über Vorlagen
 
@@ -84,8 +84,8 @@ In diesem Beispiel haben Sie eine einfache Linux-VM erstellt. Weitere Resource M
 
 Wenn Sie weitere Informationen zum Erstellen von Vorlagen benötigen, sehen Sie sich die JSON-Syntax und die Eigenschaften für die von Ihnen bereitgestellten Ressourcentypen an:
 
-* [Microsoft.Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)
-* [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
-* [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
-* [Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
-* [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)
+- [Microsoft.Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)
+- [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
+- [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+- [Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
+- [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: a12d3708cdb547cc036b249bebf901d2ec5121c3
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 223486ec2dc184e6bbe02e1f6862b9d79d773a2c
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729318"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339545"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux
 
@@ -35,9 +35,17 @@ Wenn Sie eine Frage haben, schreiben Sie einen Kommentar zu diesem Artikel.
 
 Sie finden alle Docker-Dateien auf [GitHub](https://github.com/azure-app-service). Sie finden alle Docker-Container auf [Docker Hub](https://hub.docker.com/u/appsvc/).
 
+<a id="#startup-file"></a>
+
 **Welche Werte sind beim Konfigurieren des Laufzeitstapels im Abschnitt „Startdatei“ anzugeben?**
 
-Für Node.js geben Sie die PM2-Konfigurationsdatei oder Ihre Skriptdatei an. Für .NET Core geben Sie den Namen der kompilierten DLL-Datei als `dotnet <myapp>.dll` an. Für Ruby können Sie das Ruby-Skript angeben, mit dem Ihre App initialisiert werden soll.
+| Stapel     | Erwarteter Wert                                                                |
+|-----------|-------------------------------------------------------------------------------|
+| Java SE   | ein Befehl zum Starten Ihrer `.jar`-Anwendung                                    |
+| Tomcat    | der Speicherort eines Skripts, um beliebige Konfigurationen für Ihre App auszuführen          |
+| Node.js   | die PM2-Konfigurationsdatei oder Ihre Skriptdatei                                |
+| .NET Core | der Name der kompilierten DLL-Datei als `dotnet <myapp>.dll`                                 |
+| Ruby      | das Ruby-Skript, mit dem Sie Ihre App initialisieren möchten                     |
 
 ## <a name="management"></a>Verwaltung
 
@@ -92,7 +100,7 @@ Wenn bei der Git-Bereitstellung in Ihrer Linux-Web-App ein Fehler auftritt, stel
 Ja, deaktivieren Sie in Ihrem serverseitigen Node.js-Code `perMessageDeflate`. Verwenden Sie beispielsweise den folgenden Code, wenn Sie socket.io nutzen:
 
 ```nodejs
-var io = require('socket.io')(server,{
+const io = require('socket.io')(server,{
   perMessageDeflate :false
 });
 ```

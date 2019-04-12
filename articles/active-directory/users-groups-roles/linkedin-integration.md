@@ -1,6 +1,6 @@
 ---
-title: Einwilligung zu LinkedIn-Diensten für Ihre Organisation – Azure Active Directory | Microsoft-Dokumentation
-description: Dieser Artikel erläutert, wie Sie die LinkedIn-Integration für Microsoft-Apps in Azure Active Directory aktivieren oder deaktivieren.
+title: Administratoreinwilligung für LinkedIn-Kontoverbindungen – Azure Active Directory | Microsoft-Dokumentation
+description: Dieser Artikel erläutert, wie Sie die LinkedIn-Integrationskontoverbindungen in Microsoft-Apps in Azure Active Directory aktivieren oder deaktivieren.
 services: active-directory
 author: curtand
 manager: mtillman
@@ -8,48 +8,50 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 03/21/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abcb1696efe44293d01153aa37a9835ba5f43370
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 2e07c53192ea2c8b792256af944c81c9c909dc55
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199697"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368121"
 ---
-# <a name="consent-to-linkedin-integration-for-your-azure-active-directory-organization"></a>Einwilligung zur LinkedIn-Integration für Ihre Azure Active Directory-Organisation
+# <a name="consent-to-linkedin-account-connections-for-an-azure-active-directory-organization"></a>Einwilligung zu LinkedIn-Kontoverbindungen für eine Azure Active Directory-Organisation
 
-In diesem Artikel erfahren Sie, wie Sie die LinkedIn-Integration für Ihre Organisation im Azure Active Directory Admin Center (Azure AD) aktivieren und deaktivieren.
+Sie können Benutzern in Ihrer Organisation den Zugriff auf ihre LinkedIn-Verbindungen in einigen Microsoft-Anwendungen gestatten. Es werden keine Daten freigegeben, bis der Benutzer der Verbindung seiner Konten zustimmt. Sie können Ihre Organisation in das Azure Active Directory (Azure AD) [Admin Center](https://aad.portal.azure.com) integrieren.
 
 > [!IMPORTANT]
-> Die Einstellung für die LinkedIn-Integration wird derzeit auf Azure AD-Organisationen ausgeweitet. Nachdem die Funktionen für Ihre Organisation zur Verfügung stehen, sind sie standardmäßig aktiviert.
+> Die Einstellung für LinkedIn-Kontoverbindungen wird derzeit auf Azure AD-Organisationen ausgeweitet. Nachdem die Funktionen für Ihre Organisation zur Verfügung stehen, sind sie standardmäßig aktiviert.
 > 
 > Ausnahmen:
 > * Die Einstellung ist nicht für Kunden mit Microsoft Cloud für die US-Regierung, Microsoft Cloud Deutschland oder Azure und Office 365, betrieben von 21Vianet in China, verfügbar.
 > * Die Einstellung ist standardmäßig für Mandanten, die in Deutschland bereitgestellt werden, deaktiviert. Beachten Sie, dass die Einstellung nicht für Kunden mit Microsoft Cloud Deutschland verfügbar ist.
 > * Die Einstellung ist standardmäßig für Mandanten, die in Frankreich bereitgestellt werden, deaktiviert.
 >
-> Die Integration funktioniert nur, wenn Sie sie aktiviert haben *und* nachdem die Benutzereinwilligung für den Zugriff von Apps auf Unternehmensdaten in ihrem Namen erfolgt ist. Informationen zur Einstellung für die Benutzereinwilligung finden Sie unter [Aufheben des Zugriffs eines Benutzers auf eine Anwendung](https://docs.microsoft.com/azure/active-directory/application-access-assignment-how-to-remove-assignment).
+> Nachdem LinkedIn-Kontoverbindungen für Ihre Organisation aktiviert wurden, funktionieren die Kontoverbindungen, nachdem die Benutzer zugestimmt haben, dass Apps in ihrem Auftrag auf Unternehmensdaten zugreifen. Informationen zur Einstellung für die Benutzereinwilligung finden Sie unter [Aufheben des Zugriffs eines Benutzers auf eine Anwendung](https://docs.microsoft.com/azure/active-directory/application-access-assignment-how-to-remove-assignment).
 
-## <a name="enable-or-disable-linkedin-integration-for-your-users-in-the-azure-portal"></a>Aktivieren oder Deaktivieren der LinkedIn-Integration für Ihre Benutzer im Azure-Portal
+## <a name="use-the-azure-portal-to-enable-linkedin-account-connections"></a>Verwenden des Azure-Portals zum Aktivieren von LinkedIn-Kontoverbindungen
 
-Sie können die LinkedIn-Integration für Ihren gesamten Mandanten oder für ausgewählte Benutzer in Ihrem Mandanten aktivieren oder deaktivieren.
+Sie können LinkedIn-Kontoverbindungen nur für die Benutzer aktivieren, auf die Sie Zugriff erhalten möchten – von der gesamten Organisation bis hin zu ausgewählten Benutzern in Ihrer Organisation.
 
-1. Melden Sie sich beim [Azure Active Directory Admin Center](https://aad.portal.azure.com/) mit einem Konto an, das als globaler Administrator für den Azure AD-Mandanten konfiguriert ist.
+1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com/) mit dem Konto eines globalen Administrators für die Azure AD-Organisation an.
 2. Wählen Sie **Benutzer** aus.
 3. Wählen Sie auf dem Blatt **Benutzer** die Option **Benutzereinstellungen** aus.
-4. Unter **LinkedIn-Kontoverbindungen**:
+4. Gestatten Sie Benutzern unter **LinkedIn-Kontoverbindungen** das Verbinden ihrer Konten, damit sie in einigen Microsoft-Anwendungen auf ihre LinkedIn-Verbindungen zugreifen können. Es werden keine Daten freigegeben, bis der Benutzer der Verbindung seiner Konten zustimmt.
 
-   * Wählen Sie **Ja** aus, um für alle Benutzer in der Organisation einzuwilligen, dass sie eine Verbindung über ihre Konten herstellen können, um Zugriff auf ihre LinkedIn-Kontakte in einigen Microsoft-Apps zu erhalten.
-   * Wählen Sie **Ausgewählt** aus, um nur für ausgewählte Benutzer in der Organisation einzuwilligen, dass sie eine Verbindung über ihre Konten herstellen können, um Zugriff auf ihre LinkedIn-Kontakte in einigen Microsoft-Apps zu erhalten.
-   * Wählen Sie **Nein** aus, um die Einwilligung für Benutzer in Ihrer Organisation zu widerrufen, dass sie eine Verbindung über ihre Konten herstellen können, um Zugriff auf ihre LinkedIn-Kontakte in einigen Microsoft-Apps zu erhalten.
-    ![Aktivieren der LinkedIn-Integration in Ihrer Organisation](./media/linkedin-integration/linkedin-integration.png)
-5. Speichern Sie die Einstellungen durch Auswahl von **Speichern**.
+  * Wählen Sie **Ja** aus, um die Einwilligung zu diesem Dienst für alle Benutzer in der Organisation zu geben.
+  * Wählen Sie **Ausgewählt** aus, um die Einwilligung nur für ausgewählte Benutzer in der Organisation zu geben.
+  * Wählen Sie **Nein** aus, um die Einwilligung für Benutzer in Ihrer Organisation zu widerrufen.
 
-## <a name="enable-or-disable-linkedin-integration-for-your-users-in-group-policy"></a>Aktivieren oder Deaktivieren der LinkedIn-Integration für Ihre Benutzer in der Gruppenrichtlinie
+    ![Integrieren von LinkedIn-Kontoverbindungen in der Organisation](./media/linkedin-integration/linkedin-integration.png)
+
+5. Wenn Sie fertig sind, wählen Sie **Speichern** aus, um Ihre Einstellungen zu speichern.
+     
+## <a name="use-group-policy-to-enable-linkedin-account-connections"></a>Verwenden der Gruppenrichtlinie zum Aktivieren von LinkedIn-Kontoverbindungen
 
 1. Laden Sie die [Dateien mit den administrativen Vorlagen für Office 2016 (ADMX/ADML)](https://www.microsoft.com/download/details.aspx?id=49030) herunter.
 2. Extrahieren Sie die **ADMX**-Dateien, und kopieren Sie sie in Ihren zentralen Speicher.
@@ -59,21 +61,17 @@ Sie können die LinkedIn-Integration für Ihren gesamten Mandanten oder für aus
   
    Zustand | Wirkung
    ------ | ------
-   **Aktiviert** | Die Einstellung **LinkedIn Funktionen in Office-Anwendungen anzeigen** ist in den Optionen für Office 2016 aktiviert. Benutzer in Ihrer Organisation können LinkedIn-Features in ihren Office-Anwendungen verwenden.
-   **Deaktiviert** | Die Einstellung **LinkedIn Funktionen in Office-Anwendungen anzeigen** ist in den Optionen für Office 2016 deaktiviert, und Endbenutzer können diese Einstellung nicht ändern. Benutzer in Ihrer Organisation können LinkedIn-Features nicht in ihren Office 2016-Anwendungen verwenden.
+   **Aktiviert** | Die Einstellung **LinkedIn Funktionen in Office-Anwendungen anzeigen** ist in den Optionen für Office 2016 aktiviert. Benutzer in Ihrer Organisation können LinkedIn-Features in ihren Office 2016-Anwendungen verwenden.
+   **Disabled** | Die Einstellung **LinkedIn Funktionen in Office-Anwendungen anzeigen** ist in den Optionen für Office 2016 deaktiviert, und Endbenutzer können diese Einstellung nicht ändern. Benutzer in Ihrer Organisation können LinkedIn-Features nicht in ihren Office 2016-Anwendungen verwenden.
 
-Diese Gruppenrichtlinie betrifft nur Office 2016-Apps für einen lokalen Computer. Benutzer können LinkedIn-Features in allen Office 365-Anwendungen in Profilkarten sehen, auch wenn sie LinkedIn in ihren Office 2016-Apps deaktivieren.
+Diese Gruppenrichtlinie betrifft nur Office 2016-Apps für einen lokalen Computer. Wenn Benutzer LinkedIn in ihren Office 2016-Anwendungen deaktivieren, werden die LinkedIn-Features in Office 365 weiterhin angezeigt.
 
-## <a name="learn-more"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 
-* [Integrieren von LinkedIn in Ihrer Organisation](linkedin-user-consent.md)
+* [Benutzereinwilligung und Datenfreigabe für LinkedIn](linkedin-user-consent.md)
 
 * [LinkedIn information and features in your Microsoft apps (LinkedIn-Informationen und -funktionen in Ihren Microsoft-Apps)](https://go.microsoft.com/fwlink/?linkid=850740)
 
 * [LinkedIn-Hilfe](https://www.linkedin.com/help/linkedin)
 
-## <a name="next-steps"></a>Nächste Schritte
-
-Verwenden Sie den folgenden Link, um Ihre aktuelle Einstellung für die LinkedIn-Integration im Azure-Portal anzuzeigen:
-
-[Anzeigen Ihrer aktuellen Einstellung für die LinkedIn-Integration im Azure-Portal](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/UserSettings)
+* [Anzeigen Ihrer aktuellen Einstellung für die LinkedIn-Integration im Azure-Portal](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/UserSettings)

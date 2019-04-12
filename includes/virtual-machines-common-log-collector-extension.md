@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 081acf572c5b23d52ec0b8b7de1918edc9536c60
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 072864d565e2edbddd4b7df851ad0e30daf7e5fa
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58305122"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58505833"
 ---
 Für die Diagnose von Problemen mit einem Microsoft Azure-Clouddienst müssen die Protokolldateien des Diensts auf virtuellen Computern gesammelt werden, wenn die Probleme auftreten. Sie können die AzureLogCollector-Erweiterung bedarfsgesteuert verwenden, um eine einmalige Sammlung von Protokollen von einer oder mehreren Clouddienst-VMs (von Web- und Workerrollen aus) durchzuführen und die gesammelten Dateien an ein Azure-Speicherkonto zu übertragen – alles ohne Remoteanmeldung bei den virtuellen Computern.
 
@@ -37,8 +37,11 @@ In beiden Sammlungsmodi können zusätzliche Ordner für die Datensammlung angeg
 * **Rekursiv**: Falls sich die zu sammelnden Dateien rekursiv unter dem angegebenen Speicherort befinden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
+[!INCLUDE [updated-for-az](./updated-for-az.md)]
+
 * Ein Speicherkonto für die Erweiterung, um generierte ZIP-Dateien zu speichern.
-* Verwenden Sie mindestens Azure PowerShell-Cmdlets der Version 0.8.0. Weitere Informationen finden Sie unter [Azure-Downloads](https://azure.microsoft.com/downloads/).
+* Azure PowerShell. Anweisungen zur Installation finden Sie unter [Installieren von Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="add-the-extension"></a>Hinzufügen der Erweiterung
 Sie können [Microsoft Azure PowerShell](https://msdn.microsoft.com/library/dn495240.aspx)-Cmdlets oder [REST-APIs für die Dienstverwaltung](https://msdn.microsoft.com/library/ee460799.aspx) verwenden, um die AzureLogCollector-Erweiterung hinzuzufügen.
@@ -332,18 +335,18 @@ else
 #
 #we need to get the Sasuri from StorageAccount and containers
 #
-$context = New-AzureStorageContext -Protocol https -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
+$context = New-AzStorageContext -Protocol https -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
 
 $ContainerName = "azurelogcollectordata"
-$existingContainer = Get-AzureStorageContainer -Context $context |  Where-Object { $_.Name -like $ContainerName}
+$existingContainer = Get-AzStorageContainer -Context $context |  Where-Object { $_.Name -like $ContainerName}
 if ($existingContainer -eq $null)
 {
   "Container ($ContainerName) doesn't exist. Creating it now.."
-  New-AzureStorageContainer -Context $context -Name $ContainerName -Permission off
+  New-AzStorageContainer -Context $context -Name $ContainerName -Permission off
 }
 
 $ExpiryTime =  [DateTime]::Now.AddMinutes(120).ToString("o")
-$SasUri = New-AzureStorageContainerSASToken -ExpiryTime $ExpiryTime -FullUri -Name $ContainerName -Permission rwl -Context $context
+$SasUri = New-AzStorageContainerSASToken -ExpiryTime $ExpiryTime -FullUri -Name $ContainerName -Permission rwl -Context $context
 $publicConfig | Add-Member -MemberType NoteProperty -Name "SasUri" -Value $SasUri
 
 #
@@ -377,7 +380,7 @@ else
 #This is an optional step: generate a sasUri to the container so it can be shared with other people if needed.
 #
 $SasExpireTime = [DateTime]::Now.AddMinutes(120).ToString("o")
-$SasUri = New-AzureStorageContainerSASToken -ExpiryTime $ExpiryTime -FullUri -Name $ContainerName -Permission rl -Context $context
+$SasUri = New-AzStorageContainerSASToken -ExpiryTime $ExpiryTime -FullUri -Name $ContainerName -Permission rl -Context $context
 $SasUri = $SasUri + "&restype=container&comp=list"
 Write-Output "The container for uploaded file can be accessed using this link:`r`n$sasuri"
 ```
@@ -422,18 +425,18 @@ else
 #
 #we need to get the Sasuri from StorageAccount and containers
 #
-$context = New-AzureStorageContext -Protocol https -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
+$context = New-AzStorageContext -Protocol https -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
 
 $ContainerName = "azurelogcollectordata"
-$existingContainer = Get-AzureStorageContainer -Context $context |  Where-Object { $_.Name -like $ContainerName}
+$existingContainer = Get-AzStorageContainer -Context $context |  Where-Object { $_.Name -like $ContainerName}
 if ($existingContainer -eq $null)
 {
     "Container ($ContainerName) doesn't exist. Creating it now.."
-    New-AzureStorageContainer -Context $context -Name $ContainerName -Permission off
+    New-AzStorageContainer -Context $context -Name $ContainerName -Permission off
 }
 
 $ExpiryTime =  [DateTime]::Now.AddMinutes(90).ToString("o")
-$SasUri = New-AzureStorageContainerSASToken -ExpiryTime $ExpiryTime -FullUri -Name $ContainerName -Permission rwl -Context $context
+$SasUri = New-AzStorageContainerSASToken -ExpiryTime $ExpiryTime -FullUri -Name $ContainerName -Permission rwl -Context $context
 $publicConfig | Add-Member -MemberType NoteProperty -Name "SasUri" -Value $SasUri
 
 #
@@ -498,7 +501,7 @@ if ($VMName -ne $null )
                         # This is an optional step:  For easier access to the file, we can generate a read-only SasUri directly to the file
                           #
                           $ExpiryTimeRead =  [DateTime]::Now.AddMinutes(120).ToString("o")
-                          $ReadSasUri = New-AzureStorageBlobSASToken -ExpiryTime $ExpiryTimeRead  -FullUri  -Blob  $blob.name -Container $blob.Container.Name -Permission r -Context $context
+                          $ReadSasUri = New-AzStorageBlobSASToken -ExpiryTime $ExpiryTimeRead  -FullUri  -Blob  $blob.name -Container $blob.Container.Name -Permission r -Context $context
 
                         Write-Output "The uploaded file can be accessed using this link: $ReadSasUri"
 

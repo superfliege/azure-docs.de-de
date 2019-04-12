@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 03/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 08f84a3e037301837da984b0891d978027dc2e11
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a0a16fbda662ee1d3718dbafc4231de67aab277e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58083163"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400668"
 ---
 # <a name="tutorial-detect-threats-with-azure-sentinel-preview"></a>Tutorial: Erkennen von Bedrohungen mit Azure Sentinel Preview
 
@@ -27,18 +27,21 @@ ms.locfileid: "58083163"
 > Azure Sentinel befindet sich momentan in der Public Preview.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Dieses Tutorial unterstützt Sie bei der Gefahrenerkennung mit Azure Sentinel.
-
 Nachdem Sie [Ihre Datenquellen mit Azure Sentinel verbunden](quickstart-onboard.md) haben, möchten Sie gewarnt werden, wenn etwas Verdächtiges geschieht. Damit Sie dies tun können, ermöglicht Azure Sentinel es Ihnen, erweiterte Warnungsregeln zu erstellen, die Fälle generieren, die Sie zuweisen und verwenden können, um Anomalien und Bedrohungen für Ihre Umgebung gründlich untersuchen zu können. 
 
-
+Dieses Tutorial unterstützt Sie bei der Gefahrenerkennung mit Azure Sentinel.
 > [!div class="checklist"]
 > * Erstellen von Erkennungsregeln
 > * Reagieren auf Bedrohungen
 
 ## <a name="create-detection-rules"></a>Erstellen von Erkennungsregeln
 
-Wenn Sie Fälle untersuchen möchten, müssen Sie zunächst Erkennungsregeln erstellen. Erkennungsregeln basieren auf der Art der Bedrohungen und Anomalien, die in Ihrer Umgebung verdächtig sein könnten und über die Sie umgehend informiert werden möchten, sodass sichergestellt ist, dass sie erkannt, untersucht und beseitigt werden. 
+Wenn Sie Fälle untersuchen möchten, müssen Sie zunächst Erkennungsregeln erstellen. 
+
+> [!NOTE]
+> In Azure Sentinel generierte Warnungen stehen über [Microsoft Graph Security](https://aka.ms/securitygraphdocs) zur Verfügung. Weitere Informationen und eine Übersicht der Integrationspartner finden Sie in der Dokumentation zu [Microsoft Graph Security-Warnungen](https://aka.ms/graphsecurityreferencebetadocs).
+
+Erkennungsregeln basieren auf der Art der Bedrohungen und Anomalien, die in Ihrer Umgebung verdächtig sein könnten und über die Sie umgehend informiert werden möchten, sodass sichergestellt ist, dass sie erkannt, untersucht und beseitigt werden. 
 
 1. Wählen Sie im Azure-Portal unter „Azure Sentinel“ die Option **Analytics** aus.
 
@@ -87,7 +90,9 @@ In Azure Sentinel stehen Ihnen zwei Hauptoptionen zur Verfügung, um mithilfe vo
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie eine Einführung erhalten, wie Bedrohungen mithilfe von Azure Sentinel erkannt werden. Fahren Sie mit dem [Tutorial: Einrichten automatisierter Reaktionen auf Bedrohungen in der Vorschauversion von Azure Sentinel](tutorial-respond-threats-playbook.md) fort.
+In diesem Tutorial haben Sie eine Einführung erhalten, wie Bedrohungen mithilfe von Azure Sentinel erkannt werden. 
+
+Informationen zum Automatisieren Ihrer Reaktionen auf Bedrohungen finden Sie unter [Einrichten automatisierter Reaktionen auf Bedrohungen mithilfe automatisierter Playbooks](tutorial-respond-threats-playbook.md).
 > [!div class="nextstepaction"]
 > [Reagieren Sie auf Bedrohungen](tutorial-respond-threats-playbook.md), um Ihre Maßnahmen zur Reaktion auf Bedrohungen zu automatisieren.
 

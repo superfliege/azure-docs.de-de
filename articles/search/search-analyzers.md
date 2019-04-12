@@ -4,17 +4,17 @@ description: Weisen Sie durchsuchbaren Textfeldern in einem Index Analysen zu, u
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 03/27/2019
 ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 7306258b6a7eee66df0961b2b993d0bcc9de94b9
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: e3738980206277587ca367339d75da4f3faa643a
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343271"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651820"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Analysetools für Textverarbeitung in Azure Search
 
@@ -97,16 +97,18 @@ Wenn eine Suche nicht die erwarteten Ergebnisse zurückgibt, ist das wahrscheinl
 
 Die [Search Analyzer Demo](https://alice.unearth.ai/) ist eine Demo eines Drittanbieters, die eine Gegenüberstellung der Lucene-Standardanalyse, der Lucene-Englischanalyse und der Verarbeitung natürlicher Sprache (Englisch) von Microsoft zeigt. Der Index ist vorgegeben. Er enthält Text aus einer bekannten Geschichte. Für jede von Ihnen bereitgestellte Sucheingabe werden Ergebnisse der einzelnen Analyzer in angrenzenden Bereichen angezeigt. Dadurch erhalten Sie einen Eindruck davon, wie dieselbe Zeichenfolge von den einzelnen Analyzern verarbeitet wird. 
 
-## <a name="examples"></a>Beispiele
+<a name="examples"></a>
+
+## <a name="rest-examples"></a>REST-Beispiele
 
 Die folgenden Beispiele zeigen Analysedefinitionen für einige gängige Szenarien.
 
-+ [Beispiel eines benutzerdefinierten Analysetools](#Example1)
-+ [Beispiel für das Zuweisen eines Analysetools zu einem Feld](#Example2)
-+ [Mischen von Analysetools für Indizierung und Suchvorgänge](#Example3)
-+ [Beispiel für ein Sprachanalysetool](#Example4)
++ [Beispiel eines benutzerdefinierten Analysetools](#Custom-analyzer-example)
++ [Beispiel für das Zuweisen eines Analysetools zu einem Feld](#Per-field-analyzer-assignment-example)
++ [Mischen von Analysetools für Indizierung und Suchvorgänge](#Mixing-analyzers-for-indexing-and-search-operations)
++ [Beispiel für ein Sprachanalysetool](#Language-analyzer-example)
 
-<a name="Example1"></a>
+<a name="Custom-analyzer-example"></a>
 
 ### <a name="custom-analyzer-example"></a>Beispiel eines benutzerdefinierten Analysetools
 
@@ -180,7 +182,7 @@ Das Beispiel im Detail:
   }
 ~~~~
 
-<a name="Example2"></a>
+<a name="Per-field-analyzer-assignment-example"></a>
 
 ### <a name="per-field-analyzer-assignment-example"></a>Beispiel für die Zuweisung eines Analysetools je Feld
 
@@ -213,7 +215,7 @@ Das Element „analyzer“ überschreibt die Standardanalyse für das jeweilige 
   }
 ~~~~
 
-<a name="Example3"></a>
+<a name="Mixing-analyzers-for-indexing-and-search-operations"></a>
 
 ### <a name="mixing-analyzers-for-indexing-and-search-operations"></a>Mischen von Analysetools für Indizierung und Suchvorgänge
 
@@ -241,7 +243,7 @@ Die APIs enthalten zusätzliche Indexattribute, die es ermöglichen, unterschied
   }
 ~~~~
 
-<a name="Example4"></a>
+<a name="Language-analyzer-example"></a>
 
 ### <a name="language-analyzer-example"></a>Beispiel für ein Sprachanalysetool
 
@@ -273,6 +275,69 @@ Für Felder mit Zeichenfolgen in unterschiedlichen Sprachen kann eine Sprachanal
      ],
   }
 ~~~~
+
+## <a name="c-examples"></a>C#-Beispiele
+
+Wenn Sie die.NET SDK-Codebeispiele verwenden, können Sie diese Beispiele anhängen, um Analysetools zu verwenden oder zu konfigurieren.
+
++ [Zuweisen eines integrierten Analysetools](#Assign-a-language-analyzer)
++ [Konfigurieren eines Analysetools](#Define-a-custom-analyzer)
+
+<a name="Assign-a-language-analyzer"></a>
+
+### <a name="assign-a-language-analyzer"></a>Zuweisen eines Sprachanalysetools
+
+Jedes in unveränderter Form ohne Konfiguration verwendete Analysetool wird in einer Felddefinition angegeben. Es gibt keine Anforderung für die Erstellung eines Analysetoolkonstrukts. 
+
+In diesem Beispiel werden Beschreibungsfeldern Microsoft-Analysetools für Englisch und Französisch zugewiesen. Es ist ein Codeausschnitt aus einer größeren Definition des Hotelindex, der unter Verwendung der Hotelklasse in der Datei „hotels.cs“ des Beispiels [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) erstellt wird.
+
+Rufen Sie das [Analysetool](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet) unter Angabe des Typs [AnalyzerName](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet) auf, mit dem ein in Azure Search unterstützten Textanalysetool bereitgestellt wird.
+
+```csharp
+    public partial class Hotel
+    {
+       . . . 
+
+        [IsSearchable]
+        [Analyzer(AnalyzerName.AsString.EnMicrosoft)]
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [IsSearchable]
+        [Analyzer(AnalyzerName.AsString.FrLucene)]
+        [JsonProperty("description_fr")]
+        public string DescriptionFr { get; set; }
+
+      . . .
+    }
+```
+<a name="Define-a-custom-analyzer"></a>
+
+### <a name="define-a-custom-analyzer"></a>Definieren eines benutzerdefinierten Analysetools
+
+Wenn eine Anpassung oder Konfiguration erforderlich ist, müssen Sie ein Analysetoolkonstrukt zu einem Index hinzufügen. Nach der Definition können Sie es der Felddefinition hinzufügen, wie im vorherigen Beispiel gezeigt.
+
+Erstellen Sie ein [CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet)-Objekt. Weitere Beispiele finden Sie unter [CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/src/SDKs/Search/DataPlane/Search.Tests/Tests/CustomAnalyzerTests.cs).
+
+```csharp
+{
+   var definition = new Index()
+   {
+         Name = "hotels",
+         Fields = FieldBuilder.BuildForType<Hotel>(),
+         Analyzers = new[]
+            {
+               new CustomAnalyzer()
+               {
+                     Name = "url-analyze",
+                     Tokenizer = TokenizerName.UaxUrlEmail,
+                     TokenFilters = new[] { TokenFilterName.Lowercase }
+               }
+            },
+   };
+
+   serviceClient.Indexes.Create(definition);
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

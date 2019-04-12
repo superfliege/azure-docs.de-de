@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f1eba2da1404f5b47d137b3c4f7b4cb9ceab43ea
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 64a688df3b6ed8602bb440d72e7f061c5f5893d1
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438052"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885603"
 ---
 # <a name="lucene-query-syntax-in-azure-search"></a>Lucene-Abfragesyntax in Azure Search
 Sie können für Azure Search basierend auf der umfassenden Syntax des [Lucene-Abfrageparsers](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) spezielle Abfragen schreiben: Platzhaltersuche, Fuzzysuche, NEAR-Suche und Suche mit regulären Ausdrücken sind einige Beispiele hierfür. Der Großteil der Syntax des Lucene-Abfrageparsers wird [in Azure Search unverändert implementiert](search-lucene-query-architecture.md). Die einzige Ausnahme sind *Bereichssuchen*, die in Azure Search mit `$filter`-Ausdrücken erstellt werden. 
@@ -85,7 +85,7 @@ Im obigen Beispiel geht es um das Tildezeichen (~), das gleiche Prinzip gilt jed
 
  Stellen Sie sicher, dass alle unsicheren und reservierten Zeichen in einer URL codiert werden. „#“ ist beispielsweise ein Fragment-/Ankerbezeichner in einer URL und daher ein unsicheres Zeichen. Bei der Verwendung in einer URL muss das Zeichen in `%23` codiert werden. „&“ und „=“ sind Beispiele für reservierte Zeichen, da sie in Azure Search zum Trennen von Parametern und Angeben von Werten dienen. Weitere Informationen finden Sie unter [RFC1738: Uniform Resource Locator (URL)](https://www.ietf.org/rfc/rfc1738.txt).
 
- Unsichere Zeichen sind ``" ` < > # % { } | \ ^ ~ [ ] ``. Reservierte Zeichen sind `; / ? : @ = + &`.
+ Unsichere Zeichen sind ``" ` < > # % { } | \ ^ ~ [ ]``. Reservierte Zeichen sind `; / ? : @ = + &`.
 
 ### <a name="precedence-operators-grouping-and-field-grouping"></a>Rangfolgenoperatoren: Gruppierung und Feldgruppierung  
  Sie können mithilfe von Klammern Unterabfragen erstellen, die Operatoren innerhalb der Anweisung in Klammern enthalten. Beispielsweise sucht `motel+(wifi||luxury)` nach Dokumenten, die den Begriff „motel“ und entweder „wifi“ oder „luxury“ (oder beides) enthalten.
@@ -168,5 +168,5 @@ Im folgenden Beispiel werden die Unterschiede veranschaulicht. Angenommen, Sie h
 ## <a name="see-also"></a>Weitere Informationen  
 
 + [Dokumente durchsuchen](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
-+ [OData expression syntax for filters and sorting](query-odata-filter-orderby-syntax.md) (OData-Ausdrucksfilter für Filter und die Sortierung)   
-+ [Simple query syntax in Azure Search](query-simple-syntax.md) (Einfache Abfragesyntax in Azure Search)   
++ [OData-Ausdrucksfilter für Filter und die Sortierung](query-odata-filter-orderby-syntax.md)   
++ [Einfache Abfragesyntax in Azure Search](query-simple-syntax.md)   

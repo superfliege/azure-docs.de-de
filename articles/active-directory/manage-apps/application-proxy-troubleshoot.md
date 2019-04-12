@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32d218e057fa040eded07f0adc813485ddaa52fd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3f8c9c6be51a30fd4e30fedc85f8d17d16324391
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080098"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58359894"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Beheben von Problemen mit Anwendungsproxys und Fehlermeldungen
 Wenn beim Zugriff auf eine veröffentlichte Anwendung oder beim Veröffentlichen von Anwendungen Fehler auftreten, überprüfen Sie die folgenden Optionen, um zu ermitteln, ob der Microsoft Azure AD-Anwendungsproxy ordnungsgemäß funktioniert:
@@ -81,6 +81,7 @@ Diese Liste enthält Fehler, die bei Ihren Endbenutzern möglicherweise auftrete
 | Auf diese Unternehmens-App kann nicht zugegriffen werden. Sie haben keine Befugnis, auf diese Anwendung zuzugreifen. Fehler bei der Autorisierung. Stellen Sie sicher, dass Sie dem Benutzer Zugriff auf diese Anwendung zuweisen. | Unter Umständen erhalten Benutzer diesen Fehler, wenn sie versuchen, auf die von Ihnen veröffentlichte App zuzugreifen, wenn sie für die Anmeldung Microsoft-Konten anstelle ihrer Unternehmenskonten verwenden. Gastbenutzer erhalten diese Fehlermeldung möglicherweise auch. Microsoft-Kontobenutzer und Gäste können nicht auf IWA-Anwendungen zugreifen. Vergewissern Sie sich, dass Benutzer sich mithilfe ihres Unternehmenskontos anmelden, das der Domäne der veröffentlichten Anwendung entspricht.<br><br>Möglicherweise haben Sie den Benutzer nicht der Anwendung zugewiesen. Wechseln Sie zur Registerkarte **Anwendung**, und weisen Sie unter **Benutzer und Gruppen** diesen Benutzer oder die Benutzergruppe dieser Anwendung zu. |
 | Auf diese Unternehmens-App kann momentan nicht zugegriffen werden. Versuchen Sie es später erneut. Der Connector hat das Zeitlimit überschritten. | Die Benutzer erhalten beim Versuch, auf die von Ihnen veröffentlichte App zuzugreifen, unter Umständen diese Fehlermeldung, wenn sie für diese Anwendung auf der lokalen Seite nicht ordnungsgemäß definiert sind. Stellen Sie sicher, dass die Benutzer über die entsprechenden Berechtigungen verfügen, wie für diese Back-End-Anwendung auf dem lokalen Computer definiert. |
 | Auf diese Unternehmens-App kann nicht zugegriffen werden. Sie haben keine Befugnis, auf diese Anwendung zuzugreifen. Fehler bei der Autorisierung. Stellen Sie sicher, dass der Benutzer eine Lizenz für Azure Active Directory Premium oder Basic hat. | Möglicherweise erhalten Benutzer diese Fehlermeldung beim Zugriff auf die von Ihnen veröffentlichte App, wenn ihnen nicht explizit eine Premium-/Basic-Lizenz vom Administrator des Abonnenten zugewiesen wurde. Wechseln Sie zur Active Directory-Registerkarte **Lizenzen** des Abonnenten, und stellen Sie sicher, dass diesem Benutzer oder dieser Benutzergruppe eine Premium- oder Basic-Lizenz zugewiesen ist. |
+| Ein Server mit dem angegebenen Hostnamen konnte nicht gefunden werden. | Der Benutzer erhält unter Umständen beim Versuch, auf die von Ihnen veröffentlichte App zuzugreifen, diese Fehlermeldung, wenn die benutzerdefinierte Domäne der Anwendung nicht ordnungsgemäß konfiguriert wurde. Stellen Sie sicher, dass Sie ein Zertifikat für die Domäne hochgeladen und den DNS-Eintrag ordnungsgemäß konfiguriert haben, indem Sie die Schritte unter [Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy](application-proxy-configure-custom-domain.md) ausführen. |
 
 ## <a name="my-error-wasnt-listed-here"></a>Mein Fehler wurde hier nicht aufgelistet
 

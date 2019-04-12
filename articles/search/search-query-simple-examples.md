@@ -1,5 +1,5 @@
 ---
-title: 'Einfache Abfragebeispiele: Azure Search'
+title: Abfragebeispiele mit „einfacher“ Suchsyntax – Azure Search
 description: Enthält einfache Abfragebeispiele für die Volltextsuche, Filtersuche, geografische Suche, Facettensuche und andere Abfragezeichenfolgen, die zum Abfragen eines Azure Search-Index verwendet werden.
 author: HeidiSteen
 manager: cgronlun
@@ -7,17 +7,17 @@ tags: Simple query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 08/09/2018
+ms.date: 03/25/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: a975c95af75e9f3e09e5d0142716795ab4b90e28
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9b7147971bd320a11606a93ab4d988e924cf93b2
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58136477"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439114"
 ---
-# <a name="simple-syntax-query-examples-for-building-queries-in-azure-search"></a>Abfragebeispiele mit einfacher Syntax zum Erstellen von Abfragen in Azure Search
+# <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Abfragebeispiele mit „einfacher“ Suchsyntax in Azure Search
 
 Bei der [einfachen Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) wird der Standardabfrageparser aufgerufen, um Volltextsuchabfragen für einen Azure Search-Index auszuführen. Die einfache Abfrageanalyse ist schnell und verarbeitet gängige Szenarien in Azure Search, z.B. Volltextsuche, Filter- und Facettensuche und geografische Suche. In diesem Artikel werden anhand von Beispielen Abfragevorgänge, die bei Verwendung der einfachen Syntax verfügbar sind, Schritt für Schritt beschrieben.
 
@@ -55,7 +55,9 @@ Die URL-Komposition umfasst die folgenden Elemente:
 
 ## <a name="send-your-first-query"></a>Senden Ihrer ersten Abfrage
 
-Fügen Sie als Überprüfungsschritt die folgende Anforderung in GET ein, und klicken Sie auf **Senden**. Die Ergebnisse werden als ausführliche JSON-Dokumente zurückgegeben. Sie können diese URL kopieren und unten in das erste Beispiel einfügen.
+Fügen Sie als Überprüfungsschritt die folgende Anforderung in GET ein, und klicken Sie auf **Senden**. Die Ergebnisse werden als ausführliche JSON-Dokumente zurückgegeben. Es werden ganze Dokumente zurückgegeben, sodass Sie alle Felder und alle Werte sehen können.
+
+Fügen Sie diese URL in einen REST-Client als Überprüfungsschritt und zum Anzeigen der Dokumentstruktur ein.
 
   ```http
   https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=*
@@ -74,6 +76,20 @@ Für interaktive Abfragen müssen Sie nichts angeben: einfache Abfragen sind die
 Dieses erste Beispiel ist nicht parserspezifisch, wir beginnen jedoch mit diesem Beispiel, um das erste Grundkonzept für Abfragen vorzustellen: die Eingrenzung. In diesem Beispiel beschränken sich die Abfrageausführung und die Antwort auf nur wenige bestimmte Felder. Bei Verwendung des Tools Postman oder Suchexplorer ist es wichtig, zu wissen, wie eine lesbare JSON-Antwort strukturiert wird. 
 
 Um das Beispiel kurz zu halten, zielt die Abfrage nur auf das Feld *business_title* ab, und es werden nur Berufsbezeichnungen zurückgegeben. Die Syntax lautet **searchFields**, um die Abfrageausführung nur auf das Feld „business_title“ zu beschränken, und **select**, um anzugeben, welche Felder in der Antwort enthalten sind.
+
+### <a name="partial-query-string"></a>Partielle Abfragezeichenfolge
+
+```http
+searchFields=business_title&$select=business_title&search=*
+```
+
+Hier ist dieselbe Abfrage mit mehreren Feldern in einer Liste mit Kommas als Trennzeichen.
+
+```http
+search=*&searchFields=business_title, posting_type&$select=business_title, posting_type
+```
+
+### <a name="full-url"></a>Vollständige URL
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&search=*

@@ -1,5 +1,5 @@
 ---
-title: Problembehandlung für die kombinierte Registrierung für Azure AD-SSPR und MFA (Preview)
+title: Problembehandlung für die kombinierte Registrierung für Azure AD-SSPR und MFA (Preview) – Azure Active Directory
 description: Problembehandlung für die MFA (Multi-Factor Authentication, mehrstufige Authentifizierung) von Azure AD und die Self-Service-Kennwortzurücksetzung mit kombinierten Registrierungen (Preview)
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b247a733c6874b023d3dc8114b0538e422baccfd
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: d926f7312b62e788289939dfd81c236a33503b43
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56589371"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370464"
 ---
 # <a name="troubleshooting-combined-security-information-registration-preview"></a>Problembehandlung für die kombinierte Registrierung von Sicherheitsinformationen (Preview)
 
@@ -31,7 +31,7 @@ Mit den in diesem Artikel bereitgestellten Informationen können Administratoren
 
 Die für kombinierte Registrierungen protokollierten Ereignisse befinden sich in den Azure AD-Überwachungsprotokollen unter der Kategorie „Authentifizierungsmethoden“.
 
-![Benutzeroberfläche der Azure AD-Überwachungsprotokolle mit Registrierungsereignissen für Sicherheitsinformationen für einen neuen Benutzer im Verzeichnis](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
+![Schnittstelle für Azure AD-Überwachungsprotokolle, die Registrierungsereignisse anzeigt](media/howto-registration-mfa-sspr-combined-troubleshoot/combined-security-info-audit-log.png)
 
 Im Folgenden werden alle Überwachungsereignisse aufgeführt, die mit der kombinierten Registrierung generiert werden:
 
@@ -162,4 +162,4 @@ Benutzer werden nicht mehr aufgefordert, sich bei der Oberfläche der Vorschauve
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erfahren Sie mehr über die Public Preview der kombinierten Registrierung für die Self-Service-Kennwortzurücksetzung und Azure Multi-Factor Authentication.](concept-registration-mfa-sspr-combined.md)
+* [Erfahren Sie mehr über die Public Preview der kombinierten Registrierung für die Self-Service-Kennwortzurücksetzung und Azure Multi-Factor Authentication.](concept-registration-mfa-sspr-combined.md)

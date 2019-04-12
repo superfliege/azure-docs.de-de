@@ -7,14 +7,14 @@ ms.author: heidist
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 03/25/2019
 ms.custom: seodec2018
-ms.openlocfilehash: a197be06d9c6f4b70b8ffc06712ef315547b4140
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cfc9b44963f6880e97859bc7ab77bff12d258471
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58136511"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500167"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Erstellen einer Abfrage in Azure Search
 
@@ -76,7 +76,7 @@ Die Indexattribute für ein Feld bestimmen die zulässigen Vorgänge – ob ein 
 Der obige Screenshot zeigt eine unvollständige Liste der Indexattribute für das „realestate“-Beispiel. Das gesamte Indexschema können Sie im Portal anzeigen. Weitere Informationen zu Indexattributen finden Sie unter [Create Index REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) (REST-API zum Erstellen von Indizes).
 
 > [!Note]
-> Einige Abfragefunktionen werden für den gesamten Index und nicht nur für einzelne Felder aktiviert. Zu diesen Funktionen zählen [Synonymzuordnungen](search-synonyms.md), [benutzerdefinierte Analysetools](index-add-custom-analyzers.md), [Vorschlagskonstrukte (für AutoVervollständigen und Vorschlagssuche)](index-add-suggesters.md) sowie die [Bewertungslogik für Ergebnisse](index-add-scoring-profiles.md).
+> Einige Abfragefunktionen werden für den gesamten Index und nicht nur für einzelne Felder aktiviert. Zu diesen Funktionen zählen [Synonymzuordnungen](search-synonyms.md), [benutzerdefinierte Analysetools](index-add-custom-analyzers.md), [Vorschlagskonstrukte (für AutoVervollständigen und vorgeschlagene Abfragen)](index-add-suggesters.md) sowie die [Bewertungslogik für Ergebnisse](index-add-scoring-profiles.md).
 
 ## <a name="elements-of-a-query-request"></a>Elemente einer Abfrageanforderung
 

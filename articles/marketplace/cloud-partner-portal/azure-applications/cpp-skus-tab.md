@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7bf7e341a83727e21e9225c384829c05b7230579
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5d6ec0197699f603c79f414e015cdebcde6b9f60
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095992"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905612"
 ---
 # <a name="azure-application-skus-tab"></a>Registerkarte „SKUs“ für Azure-Anwendungen
 
@@ -57,7 +57,7 @@ Azure, öffentlich: Dieser virtuelle Computer kann für Kunden in allen öffentl
   >[!NOTE] 
   >Microsoft Azure Government ist eine Government-Community-Cloud mit kontrolliertem Zugriff für Kunden der US-Behörden auf Bundes-, Bundesstaats-, Gemeinde- und Stammesgebietsebene UND für Partner, die Dienste für diese Entitäten erbringen können.
 
-- **Ist dies eine private SKU?:** – Wählen Sie „Ja“ aus, wenn diese SKU nur für eine ausgewählte Gruppe von Kunden verfügbar ist.
+- **Ist dies eine private SKU?** Wählen Sie „Ja“ aus, wenn diese SKU nur für eine ausgewählte Gruppe von Kunden verfügbar ist.
 
     ![„SKU-Details“-Formular für eine Lösungsvorlage](./media/azureapp-sku-details-solutiontemplate.png)
 
@@ -80,7 +80,7 @@ Konfigurieren Sie die folgenden SKU-Einstellungen:
   >[!NOTE] 
   >Microsoft Azure Government ist eine Government-Community-Cloud mit kontrolliertem Zugriff für Kunden der US-Behörden auf Bundes-, Bundesstaats-, Gemeinde- und Stammesgebietsebene UND für Partner, die Dienste für diese Entitäten erbringen können.
 
-- **Ist dies eine private SKU?:** Wählen Sie „Ja“ aus, wenn diese SKU nur für eine ausgewählte Gruppe von Kunden verfügbar ist.
+- **Ist dies eine private SKU?** Wählen Sie „Ja“ aus, wenn diese SKU nur für eine ausgewählte Gruppe von Kunden verfügbar ist.
 - **Verfügbarkeit nach Land/Region:** Verwenden Sie **Regionen auswählen**, um die Liste der verfügbaren Länder/Regionen anzuzeigen. Aktivieren Sie jedes gewünschte Land/Region, und wählen Sie dann **OK** aus, um Ihre Auswahl zu speichern. 
 
    ![Liste der Verfügbarkeit nach Land/Region](./media/azure-app-select-country-region.png)
@@ -124,7 +124,7 @@ Beachten Sie die folgenden Schlüsseleigenschaften dieser Ressource:
   >Dieses Paket sollte alle geschachtelten Vorlagen oder Skripts enthalten, die erforderlich sind, um diese Anwendung erfolgreich bereitzustellen. Diese Dateien müssen sich im Stammordner befinden:  „mainTemplate.json“, „applianceMainTemplate.json“ und „applianceCreateUIDefinition.json“.
 
 - **Mandanten-ID:** Die Azure Active Directory-Mandanten-ID Ihrer Organisation.
-- **JIT-Zugriff aktivieren?:** Wählen Sie **Ja** aus, um Just-In-Time-Verwaltungszugriff für Kundenbereitstellungen zu aktivieren, für die dieses Angebot verwendet wird.
+- **JIT-Zugriff aktivieren?** Wählen Sie **Ja** aus, um Just-In-Time-Verwaltungszugriff für Kundenbereitstellungen zu aktivieren, für die dieses Angebot verwendet wird.
 
   >[!NOTE] 
   >Wenn Sie JIT aktivieren, müssen Sie die Datei „CreateUiDefinition.json“ aktualisieren, sodass JIT-Zugriff unterstützt wird.
@@ -135,7 +135,7 @@ Für eine verwaltete Anwendung müssen Sie „Autorisierung“ und „Richtlinie
 
 #### <a name="authorization"></a>Autorisierung
 
-Fügen Sie den Azure Active Directory-Bezeichner des Benutzers, der Gruppe oder der Anwendung hinzu, dem oder der Sie die Berechtigung für die verwaltete Ressourcengruppe erteilen möchten. Die erteilte Berechtigung ist durch die Rollendefinitions-ID gekennzeichnet. Dies kann „Besitzer“, „Mitwirkender“ oder eine benutzerdefinierte Rolle sein.
+Fügen Sie den Azure Active Directory-Bezeichner des Benutzers, der Gruppe oder der Anwendung hinzu, dem oder der Sie die Berechtigung für die verwaltete Ressourcengruppe erteilen möchten. Die erteilte Berechtigung ist durch die Rollendefinitions-ID gekennzeichnet. Dies kann ein „Besitzer“, ein „Mitwirkender“ oder eine benutzerdefinierte Rolle sein.
 
 #### <a name="policy-settings"></a>Richtlinieneinstellungen
 

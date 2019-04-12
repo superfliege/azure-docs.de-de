@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 7db50e8bd1de609256bad58b293af8b7b1ea5dbb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 03b504524b2f489f1ee042c6e825ccffe0a60bb3
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086716"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58315061"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Vorbereiten von Festplatten für einen Importauftrag
 Um eine oder mehrere Festplatten für einen Importauftrag vorzubereiten, gehen Sie in folgenden Schritten vor:
@@ -43,10 +43,10 @@ Um eine oder mehrere Festplatten für einen Importauftrag vorzubereiten, gehen S
 
 |Quelldatei- oder -verzeichnis|Zielblob oder virtuelles Verzeichnis|
 |------------------------------|-------------------------------------------|
-|H:\Video|https://mystorageaccount.blob.core.windows.net/video|
-|H:\Photo|https://mystorageaccount.blob.core.windows.net/photo|
-|K:\Temp\FavoriteVideo.ISO|https://mystorageaccount.blob.core.windows.net/favorite/FavoriteVideo.ISO|
-|\\\myshare\john\music|https://mystorageaccount.blob.core.windows.net/music|
+|H:\Video|https:\//mystorageaccount.blob.core.windows.net/video|
+|H:\Photo|https:\//mystorageaccount.blob.core.windows.net/photo|
+|K:\Temp\FavoriteVideo.ISO|https:\//mystorageaccount.blob.core.windows.net/favorite/FavoriteVideo.ISO|
+|\\\myshare\john\music|https:\//mystorageaccount.blob.core.windows.net/music|
 
 ## <a name="determine-how-many-drives-are-needed"></a>Bestimmen der Anzahl benötigter Laufwerke
  Als Nächstes müssen Sie Folgendes bestimmen:
@@ -141,8 +141,7 @@ Um eine oder mehrere Festplatten für einen Importauftrag vorzubereiten, gehen S
 |----------------------------|-----------------|
 |**/srcfile:**&lt;Quelldatei\>|`Required.` Der vollständige Pfad zu der Datei, die kopiert werden soll. Der Verzeichnispfad muss ein absoluter Pfad sein (kein relativer Pfad).|
 |**/dstblob:**&lt;Zielblobpfad&gt;\>|`Required.` Der Pfad zum Zielblob in Ihrem Microsoft Azure-Speicherkonto. Das Blob kann, muss aber noch nicht vorhanden sein.<br /><br /> Geben Sie den Blobnamen beginnend mit dem Containernamen an. Der Blobname darf nicht mit „/“ oder dem Namen des Speicherkontos beginnen. Informationen zu den Benennungsregeln für Blobs finden Sie unter [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) (Benennen von Containern, Blobs und Metadaten und Verweisen auf diese).<br /><br /> Wenn der Zielcontainer der Stammcontainer ist, müssen Sie explizit `$root` als Container angeben, wie `$root/sample.txt`. Beachten Sie, dass Namen von Blobs unter dem Stammcontainer nicht „/“ enthalten dürfen.|
-|
-  **/Disposition:**&amp;lt;rename&#124;no-overwrite&#124;overwrite&amp;gt; (umbenennen, nicht überschreiben, überschreiben)|`Optional.` Gibt das Verhalten an, wenn ein Blob mit der angegebenen Adresse bereits vorhanden ist. Gültige Werte für diesen Parameter sind: `rename`, `no-overwrite` und `overwrite`. Beachten Sie, dass bei diesen Werten die Groß-/Kleinschreibung beachtet wird. Wenn kein Wert festgelegt ist, wird der Standardwert `rename` verwendet.|
+|**/Disposition:**&amp;amp;lt;rename&amp;#124;no-overwrite&amp;#124;overwrite&amp;amp;gt; (umbenennen, nicht überschreiben, überschreiben)|`Optional.` Gibt das Verhalten an, wenn ein Blob mit der angegebenen Adresse bereits vorhanden ist. Gültige Werte für diesen Parameter sind: `rename`, `no-overwrite` und `overwrite`. Beachten Sie, dass bei diesen Werten die Groß-/Kleinschreibung beachtet wird. Wenn kein Wert festgelegt ist, wird der Standardwert `rename` verwendet.|
 |**/BlobType:**<BlockBlob&#124;PageBlob>|`Optional.` Gibt den Blobtyp für die Zielblobs an. Gültige Werte sind `BlockBlob` und `PageBlob`. Beachten Sie, dass bei diesen Werten die Groß-/Kleinschreibung beachtet wird. Wenn kein Wert festgelegt ist, wird der Standardwert `BlockBlob` verwendet.<br /><br /> In den meisten Fällen wird `BlockBlob` empfohlen. Bei Angabe von `PageBlob` muss die Länge der einzelnen Dateien im Verzeichnis ein Vielfaches von 512 betragen, der Größe einer Seite für Seitenblobs.|
 |**/PropertyFile:**&lt;Eigenschaftendatei\>|`Optional.` Pfad zur Eigenschaftendatei für die Zielblobs. Weitere Informationen finden Sie unter [Format der Metadaten- und Eigenschaftendatei des Import/Export-Diensts](../storage-import-export-file-format-metadata-and-properties.md).|
 |**/MetadataFile:**&lt;Metadatendatei\>|`Optional.` Pfad zur Metadatendatei für die Zielblobs. Weitere Informationen finden Sie unter [Format der Metadaten- und Eigenschaftendatei des Import/Export-Diensts](../storage-import-export-file-format-metadata-and-properties.md).|

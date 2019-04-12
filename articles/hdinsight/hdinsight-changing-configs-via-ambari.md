@@ -1,19 +1,19 @@
 ---
 title: Optimieren von Clusterkonfigurationen mit Apache Ambari – Azure HDInsight
 description: Verwenden Sie die Apache Ambari-Webbenutzeroberfläche, um HDInsight-Cluster zu konfigurieren und zu optimieren.
-author: ashishthaps
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/09/2018
-ms.author: ashish
-ms.openlocfilehash: 14b634e610fb0da71c5f0d742a250b18cea70dc7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 03/26/2019
+ms.author: hrasheed
+ms.openlocfilehash: f0db36fa380d0d1bb7f2b581c4bf8fa1abfaadaf
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722922"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805379"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Verwenden von Apache Ambari zum Optimieren von HDInsight-Clusterkonfigurationen
 
@@ -51,7 +51,7 @@ Gehen Sie wie folgt vor, um die NameNode-Java-Heapgröße zu ändern:
 
     ![Bearbeiten der NameNode-Java-Heapgröße](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edit.png)
 
-1. Die NameNode-Java-Heapgröße wird von 1 GB in 2 GB geändert.
+1. Die NameNode-Java-Heapgröße wird von 2 GB in 1 GB geändert.
 
     ![Bearbeitete NameNode-Java-Heapgröße](./media/hdinsight-changing-configs-via-ambari/java-heap-size-edited.png)
 
@@ -179,9 +179,9 @@ Die verfügbaren Komprimierungstypen sind:
 | Format | Tool | Algorithmus | Dateierweiterung | Teilbar? |
 | -- | -- | -- | -- | -- |
 | GZip | GZip | VERKLEINERN | .gz | Nein  |
-| Bzip2 | Bzip2 | Bzip2 |.bz2 | JA |
+| Bzip2 | Bzip2 | Bzip2 |.bz2 | Ja |
 | LZO | Lzop | LZO | .lzo | Ja, wenn indiziert |
-| Snappy | N/V | Snappy | Snappy | Nein  |
+| Snappy | – | Snappy | Snappy | Nein  |
 
 Hier gilt die folgende allgemeine Regel: Es ist wichtig, dass die Komprimierungsmethode teilbar ist, da andernfalls nur sehr wenige Mapper erstellt werden. Wenn es sich bei den Eingabedaten um Text handelt, ist `bzip2` die beste Option. Für das ORC-Format ist Snappy die schnellste Komprimierungsoption.
 

@@ -16,12 +16,12 @@ ms.date: 02/18/2019
 ms.author: celested
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 225676b144d042c51a97fe14a20a5a78f0a77244
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 623d684f701df8b1a7c4b84a2bd3840f039ad174
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013096"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312698"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Probleme beim Anmelden bei einer Kataloganwendung, die für einmaliges Anmelden im Verbund konfiguriert ist
 
@@ -33,7 +33,7 @@ Zur Behandlung der unten aufgeführten Anmeldeprobleme wird empfohlen, die folge
 
 ## <a name="application-not-found-in-directory"></a>Die Anwendung wurde im Verzeichnis nicht gefunden.
 
-*Fehler AADSTS70001: Die Anwendung mit dem Bezeichner „https://contoso.com“ wurde im Verzeichnis nicht gefunden*.
+*Fehler AADSTS70001: Die Anwendung mit dem Bezeichner „https:\//contoso.com“ wurde im Verzeichnis nicht gefunden*.
 
 **Mögliche Ursache**
 
@@ -63,7 +63,7 @@ Stellen Sie sicher, dass das `Issuer`-Attribut in der SAML-Anforderung mit dem i
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Die Antwortadresse stimmt nicht mit den für die Anwendung konfigurierten Antwortadressen überein
 
-*Fehler AADSTS50011: Die Antwortadresse „https://contoso.com“ stimmt nicht mit den für die Anwendung konfigurierten Antwortadressen überein*.
+*Fehler AADSTS50011: Die Antwortadresse „https:\//contoso.com“ stimmt nicht mit den für die Anwendung konfigurierten Antwortadressen überein*.
 
 **Mögliche Ursache**
 

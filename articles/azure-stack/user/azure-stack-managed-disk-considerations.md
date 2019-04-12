@@ -1,6 +1,6 @@
 ---
-title: Unterschiede und Aspekte für Managed Disks in Azure Stack | Microsoft-Dokumentation
-description: Dieser Artikel beschreibt die Unterschiede und zu berücksichtigende Aspekte bei der Verwendung von Managed Disks in Azure Stack.
+title: Unterschiede und Überlegungen für Managed Disks und verwaltete Images in Azure Stack | Microsoft-Dokumentation
+description: Dieser Artikel beschreibt die Unterschiede und zu berücksichtigende Überlegungen bei der Verwendung von Managed Disks und verwaltete Images in Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 03/23/2019
 ms.author: sethm
 ms.reviewer: jiahan
-ms.lastreviewed: 02/26/2019
-ms.openlocfilehash: c1a0e77f98d269185bc065c86a367c3ed6519fb5
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.lastreviewed: 03/23/2019
+ms.openlocfilehash: c1975c885efc0a2a22b2ab478f8bc9afbcc8bce3
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961974"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400360"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Stack Managed Disks: Unterschiede und Überlegungen
 
@@ -32,7 +32,7 @@ Managed Disks vereinfacht die Datenträgerverwaltung für IaaS-VMs durch die Ver
 > [!Note]  
 > Managed Disks steht in Azure Stack ab 1808 Update zur Verfügung. Es ist jetzt standardmäßig aktiviert, wenn virtuelle Computer über das Azure Stack-Portal ab 1811 Update erstellt werden.
   
-## <a name="cheat-sheet-managed-disk-differences"></a>Cheat Sheet: Unterschiede zwischen verwalteten Datenträgern
+## <a name="cheat-sheet-managed-disk-differences"></a>Spickzettel: Unterschiede zwischen Managed Disks
 
 | Feature | Azure (global) | Azure Stack |
 | --- | --- | --- |
@@ -134,13 +134,32 @@ Azure Stack unterstütz *verwaltete Images*, was es Ihnen ermöglicht, ein verwa
 - Sie haben generalisierte, nicht verwaltete virtuelle Computer und möchten im weiteren Verlauf verwaltete Datenträger verwenden.
 - Sie haben eine generalisierte, verwaltete VM und möchten mehrere, ähnliche verwaltete VMs erstellen.
 
-### <a name="migrate-unmanaged-vms-to-managed-disks"></a>Migrieren nicht verwalteter VMs zu verwalteten Datenträgern
+### <a name="step-1-generalize-the-vm"></a>Schritt 1: Generalisieren des virtuellen Computers
+
+Folgen Sie unter Windows dem Abschnitt [Generalisieren des virtuellen Windows-Computers mithilfe von Sysprep](/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep). Für Linux folgen Sie Schritt 1 [hier](/azure/virtual-machines/linux/capture-image#step-1-deprovision-the-vm).
+
+> [!NOTE]
+> Stellen Sie sicher, dass Sie Ihre VM generalisieren. Das Erstellen einer VM aus einem nicht ordnungsgemäß generalisierten Image führt zu einem **VMProvisioningTimeout**-Fehler.
+
+### <a name="step-2-create-the-managed-image"></a>Schritt 2: Erstellen des verwalteten Images
+
+Zum Erstellen des verwalteten Images können Sie das Portal, PowerShell oder die Befehlszeilenschnittstelle verwenden. Folgen Sie den Schritten in [diesem](/azure/virtual-machines/windows/capture-image-resource) Azure-Artikel.
+
+### <a name="step-3-choose-the-use-case"></a>Schritt 3: Auswählen des Anwendungsfalls
+
+#### <a name="case-1-migrate-unmanaged-vms-to-managed-disks"></a>Fall 1: Migrieren nicht verwalteter VMs zu verwalteten Datenträgern
+
+Stellen Sie sicher, dass Sie Ihre VM richtig generalisieren, bevor Sie diesen Schritt ausführen. Nach der Generalisierung können Sie diese VM nicht mehr verwenden. Das Erstellen einer VM aus einem nicht ordnungsgemäß generalisierten Image führt zu einem **VMProvisioningTimeout**-Fehler.
 
 Befolgen Sie die [hier](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-vhd-in-a-storage-account) dargelegten Anleitungen, um ein verwaltetes Image aus einer generalisierten VHD in einem Speicherkonto zu erstellen. Dieses Image kann verwendet werden, um im weiteren Verlauf Zukunft verwaltete VMs zu erstellen.
 
-### <a name="create-managed-image-from-vm"></a>Erstellen eines verwalteten Images aus einer VM
+#### <a name="case-2-create-managed-vm-from-managed-image-using-powershell"></a>Fall 2: Erstellen einer verwalteten VM aus einem verwalteten Image mit PowerShell
 
 Nachdem Sie ein Image aus einer vorhandenen VM mit verwaltetem Datenträger mithilfe des [hier zu findenden](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-managed-disk-using-powershell) Skripts erstellt haben, erstellt das folgende Beispielskript eine ähnlich Linux-VM aus einem vorhandenen Image-Objekt:
+
+Bei Azure Stack-PowerShell-Modul 1.7.0 oder höher befolgen Sie die Anweisungen [hier](../../virtual-machines/windows/create-vm-generalized-managed.md).
+
+Bei Azure Stack-PowerShell-Modul 1.6.0 oder früher:
 
 ```powershell
 # Variables for common values
@@ -181,6 +200,7 @@ $nic = New-AzureRmNetworkInterface -Name myNic -ResourceGroupName $resourceGroup
   -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
 
 $image = get-azurermimage -ResourceGroupName $imagerg -ImageName $imagename
+
 # Create a virtual machine configuration
 $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize Standard_D1 | `
 Set-AzureRmVMOperatingSystem -Linux -ComputerName $vmName -Credential $cred | `
@@ -191,7 +211,7 @@ Add-AzureRmVMNetworkInterface -Id $nic.Id
 New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
-Weitere Informationen finden Sie in den Azure-Artikeln zu verwalteten Images [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](../../virtual-machines/windows/capture-image-resource.md) und [Erstellen eines virtuellen Computers aus einem verwalteten Image](../../virtual-machines/windows/create-vm-generalized-managed.md).
+Sie können das Portal auch verwenden, um eine VM aus einem verwalteten Image zu erstellen. Weitere Informationen finden Sie in den Azure-Artikeln zu verwalteten Images [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](../../virtual-machines/windows/capture-image-resource.md) und [Erstellen eines virtuellen Computers aus einem verwalteten Image](../../virtual-machines/windows/create-vm-generalized-managed.md).
 
 ## <a name="configuration"></a>Konfiguration
 

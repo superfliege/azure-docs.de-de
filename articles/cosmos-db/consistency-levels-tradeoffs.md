@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/13/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: cf3dc71e96dac96a6406c97a433398b31a370869
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: ac5b6e0d44376332e005d30b4a8fcc97021c4eda
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571166"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407520"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisse in Bezug auf Konsistenz, Verfügbarkeit und Leistung 
 
@@ -20,13 +20,13 @@ Bei verteilten Datenbanken, die mithilfe der Replikation Hochverfügbarkeit, nie
 
 Azure Cosmos DB bietet in Bezug auf die Datenkonsistenz vielfältige Auswahlmöglichkeiten. Dieser Ansatz beinhaltet mehr Optionen als die beiden Extreme der starken und der letztlichen Konsistenz. Sie können im Hinblick auf die Konsistenz aus fünf gut definierten Modellen auswählen. Diese sind (vom stärksten bis zum schwächsten Modell):
 
-- STARK (Strong)
-- Bounded staleness
-- Sitzung
-- Konsistentes Präfix
-- Letztlich (Eventual)
+- *Starke Konsistenz*
+- *Begrenzte Veraltung*
+- *Sitzungskonsistenz*
+- *Präfixkonsistenz*
+- *Letztliche Konsistenz*
 
-Jedes der fünf Modelle bietet Verfügbarkeits- und Leistungskompromisse und wird durch eine umfassende SLA abgesichert.
+Jedes Modell ermöglicht Verfügbarkeits- und Leistungskompromisse und wird durch umfassende SLAs abgesichert.
 
 ## <a name="consistency-levels-and-latency"></a>Konsistenzebenen und Latenz
 
@@ -34,9 +34,9 @@ Für alle Konsistenzebenen wird eine Leselatenz garantiert, die jederzeit unter 
 
 Für alle Konsistenzebenen wird eine Schreiblatenz garantiert, die jederzeit unter 10 Millisekunden im 99. Perzentil liegt. Außerdem wird sie durch die SLA unterstützt. Die durchschnittliche Schreiblatenz (im 50. Perzentil) beträgt üblicherweise 5 Millisekunden oder weniger.
 
-Für Azure Cosmos-Konten, die mit starker Konsistenz mit mehreren Regionen konfiguriert sind, beträgt die Schreiblatenz garantiert weniger als die doppelte Roundtripzeit (Round-Trip Time, RTT) zwischen den beiden am weitesten entfernten Regionen plus 10 Millisekunden im 99. Perzentil. Diese Option befindet sich zurzeit in der Vorschau.
+Für Azure Cosmos-Konten, die mit starker Konsistenz mit mehreren Regionen konfiguriert sind, beträgt die Schreiblatenz garantiert weniger als die doppelte Roundtripzeit (Round-Trip Time, RTT) zwischen den beiden am weitesten entfernten Regionen plus 10 Millisekunden im 99. Perzentil.
 
-Die exakte RTT-Latenz richtet sich nach der physischen Entfernung und der Azure-Netzwerktopologie. Azure-Netzwerke bieten keine Latenz-SLAs für die RTT zwischen zwei Azure-Regionen. Die Replikationslatenzzeiten für Ihr Azure Cosmos-Konto werden im Azure-Portal angezeigt. Sie können das Azure-Portal nutzen, um die Replikationslatenz zwischen verschiedenen Regionen zu überwachen, die Ihrem Konto zugeordnet sind.
+Die exakte RTT-Latenz richtet sich nach der physischen Entfernung und der Azure-Netzwerktopologie. Azure-Netzwerke bieten keine Latenz-SLAs für die RTT zwischen zwei Azure-Regionen. Die Replikationslatenzzeiten für Ihr Azure Cosmos-Konto werden im Azure-Portal angezeigt. Sie können das Azure-Portal (wechseln Sie zum Blatt „Metriken“) nutzen, um die Replikationslatenz zwischen verschiedenen Regionen zu überwachen, die Ihrem Azure Cosmos-Konto zugeordnet sind.
 
 ## <a name="consistency-levels-and-throughput"></a>Konsistenzebenen und Durchsatz
 
@@ -46,21 +46,22 @@ Die exakte RTT-Latenz richtet sich nach der physischen Entfernung und der Azure-
 
 ## <a id="rto"></a>Konsistenzebenen und Datendauerhaftigkeit
 
-Bei einer global verteilten Datenbankumgebung besteht eine direkte Beziehung zwischen der Konsistenzebene und der Datendauerhaftigkeit bei einem Ausfall in der gesamten Region. Wenn Sie Ihren Plan für die Geschäftskontinuität entwickeln, müssen Sie wissen, wie viel Zeit maximal vergehen darf, bis die Anwendung nach einer Störung vollständig wiederhergestellt ist. Die Zeit, die für die vollständige Wiederherstellung einer Anwendung erforderlich ist, wird als RTO (Recovery Time Objective) bezeichnet. Sie müssen auch wissen, über welchen Zeitraum kürzlich durchgeführte Datenupdates maximal verloren gehen dürfen, wenn die Anwendung nach einer Störung wiederhergestellt wird. Der Zeitraum der Updates, der verloren gehen darf, wird als RPO (Recovery Point Objective) bezeichnet.
+Bei einer global verteilten Datenbankumgebung besteht eine direkte Beziehung zwischen der Konsistenzebene und der Datendauerhaftigkeit bei einem Ausfall in der gesamten Region. Wenn Sie Ihren Plan für die Geschäftskontinuität entwickeln, müssen Sie wissen, wie viel Zeit maximal vergehen darf, bis die Anwendung nach einer Störung vollständig wiederhergestellt ist. Die Zeit, die für die vollständige Wiederherstellung einer Anwendung erforderlich ist, wird als **RTO** (**Recovery Time Objective**) bezeichnet. Sie müssen auch wissen, über welchen Zeitraum kürzlich durchgeführte Datenupdates maximal verloren gehen dürfen, wenn die Anwendung nach einer Störung wiederhergestellt wird. Der Zeitraum der Updates, der verloren gehen darf, wird als **RPO** (**Recovery Point Objective**) bezeichnet.
 
-In der Tabelle wird die Beziehung zwischen dem Konsistenzmodell und der Datendauerhaftigkeit bei einem regionsweiten Ausfall definiert. Beachten Sie unbedingt, dass es in einem verteilten System auch bei starker Konsistenz unmöglich ist, eine verteilte Datenbank mit einem RPO- und RTO-Wert von 0 (null) zu erzielen. Grund ist das CAP-Theorem. Weitere Informationen finden Sie unter  [Konsistenzebenen in Azure Cosmos DB](consistency-levels.md).
+In der folgenden Tabelle wird die Beziehung zwischen dem Konsistenzmodell und der Datendauerhaftigkeit bei einem regionsweiten Ausfall definiert. Beachten Sie unbedingt, dass es in einem verteilten System auch bei starker Konsistenz unmöglich ist, eine verteilte Datenbank mit einem RPO- und RTO-Wert von 0 (null) zu erzielen. Grund ist das CAP-Theorem. Weitere Informationen finden Sie unter [Konsistenzebenen in Azure Cosmos DB](consistency-levels.md).
 
 |**Region(en)**|**Replikationsmodus**|**Konsistenzebene**|**RPO**|**RTO**|
 |---------|---------|---------|---------|---------|
 |1|Einzel- oder Multimaster|Jede Konsistenzebene|< 240 Minuten|< 1 Woche|
 |> 1|Einzelmaster|Sitzung, Präfixkonsistenz, Letztlich|< 15 Minuten|< 15 Minuten|
-|> 1|Einzelmaster|Begrenzte Veraltung (Bounded staleness)|K & T|< 15 Minuten|
+|> 1|Einzelmaster|Begrenzte Veraltung (Bounded staleness)|*K* & *T*|< 15 Minuten|
 |> 1|Multimaster|Sitzung, Präfixkonsistenz, Letztlich|< 15 Minuten|0|
-|> 1|Multimaster|Begrenzte Veraltung (Bounded staleness)|K & T|0|
+|> 1|Multimaster|Begrenzte Veraltung (Bounded staleness)|*K* & *T*|0|
 |> 1|Einzel- oder Multimaster|STARK (Strong)|0|< 15 Minuten|
 
-K = Anzahl von „K“-Versionen (Updates) eines Elements.
-T = Zeit „T“-Zeitintervall seit dem letzten Update.
+*K* = Anzahl von *„K“*-Versionen (d. h. Updates) eines Elements.
+
+*T* = Zeitintervall *„T“* seit dem letzten Update.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

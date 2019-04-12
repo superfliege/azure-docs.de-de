@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 1027398a1a7f790adedf6c7eebed44a8db501b8a
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 2646941e2384acf6d303615f564b65d616931180
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905034"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358876"
 ---
 # <a name="metrics-in-azure-monitor"></a>Metriken in Azure Monitor
 
@@ -39,7 +39,7 @@ In der folgenden Tabelle sind die unterschiedlichen Optionen zur Nutzung von Met
 | Warnung | Konfigurieren einer [Warnungsregel für eine Metrik](alerts-metric.md), die eine Benachrichtigung sendet oder eine [automatisierte Aktion](action-groups.md) ausführt, sobald der Metrikwert einen Schwellenwert überschreitet. |
 | Automatisieren |  Verwenden von [Autoskalierung](autoscale-overview.md), um Ressourcen basierend auf einem Schwellenwert, der von einem Metrikwert über- oder unterschritten wird, herauf- oder herabzusetzen. |
 | Export | [Weiterleiten von Metriken an Protokolle](diagnostic-logs-stream-log-store.md), um Daten in Azure Monitor-Metriken zusammen mit Daten in Azure Monitor-Protokollen zu analysieren und Metrikwerte länger als 93 Tage zu speichern.<br>Streamen von Metriken an einen [Event Hub](stream-monitoring-data-event-hubs.md), um sie an externe Systeme zu leiten. |
-| Gerätehandle | Zugreifen auf Metrikwerte über eine Befehlszeile mit [PowerShell-Cmdlets](https://docs.microsoft.com/powershell/module/az.applicationinsights).<br>Zugreifen auf Metrikwerte über eine benutzerdefinierte Anwendung per [REST-API](rest-api-walkthrough.md).<br>Zugreifen auf Metrikwerte über eine Befehlszeile per [CLI](/azure/monitor/metrics). |
+| Gerätehandle | Zugreifen auf Metrikwerte über eine Befehlszeile mit [PowerShell-Cmdlets](https://docs.microsoft.com/powershell/module/az.applicationinsights).<br>Zugreifen auf Metrikwerte über eine benutzerdefinierte Anwendung per [REST-API](rest-api-walkthrough.md).<br>Zugreifen auf Metrikwerte über eine Befehlszeile per [CLI](/cli/azure/monitor/metrics). |
 | Archivieren | [Archivieren](..//learn/tutorial-archive-data.md) des Leistungs- oder Integritätsverlaufs Ihrer Ressourcen zu Kompatibilitäts-/Überwachungszwecken oder zur Offline-Berichterstellung. |
 
 

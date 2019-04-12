@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit der kombinierten Registrierung für Azure AD SSPR und MFA (Vorschauversion)
+title: Erste Schritte für die kombinierte Registrierung für Azure AD-SSPR und MFA (Vorschauversion) – Azure Active Directory
 description: Aktivieren der kombinierten Registrierung für Azure AD Multi-Factor Authentication und die Self-Service-Kennwortzurücksetzung (Vorschauversion)
 services: active-directory
 ms.service: active-directory
@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a6896e2b9633b8de679e8d14a7957dc0e3229e7
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: c5d7f9623a7594aaa79c4cff187486360b1befc8
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226724"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369019"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>Aktivieren der kombinierten Registrierung von Sicherheitsinformationen (Vorschauversion)
 
 Lesen Sie vor dem Aktivieren der neuen Funktion den Artikel [Kombinierte Registrierung von Sicherheitsinformationen (Vorschauversion)](concept-registration-mfa-sspr-combined.md), um sich mit der Funktionalität und den Auswirkungen dieser Funktion vertraut zu machen.
 
-![In der erweiterten Benutzeroberfläche für die kombinierte Registrierung von Sicherheitsinformationen wird bei der Anmeldung die Aufforderung zur Eingabe weiterer Informationen angezeigt. Im Beispiel wird die Registrierung der Microsoft Authenticator-App als erste Methode gezeigt.](media/howto-registration-mfa-sspr-combined/combined-security-info-more-required.png)
+![Verbesserte Oberfläche für die kombinierte Registrierung von Sicherheitsinformationen](media/howto-registration-mfa-sspr-combined/combined-security-info-more-required.png)
 
 |     |
 | --- |
@@ -37,7 +37,7 @@ Führen Sie die folgenden Schritte aus, um die kombinierte Registrierung zu akti
 2. Navigieren Sie zu **Azure Active Directory** > **Benutzereinstellungen** > **Einstellungen für Zugriffspanel-Vorschaufeatures verwalten**.
 3. Wählen Sie unter **Benutzer können Vorschaufeatures zum Registrieren und Verwalten von Sicherheitsinformationen verwenden – Aktualisieren** aus, ob Sie die Funktion für eine **ausgewählte** Gruppe von Benutzern oder für **alle** Benutzer aktivieren möchten.
 
-![Aktivieren der kombinierten Registrierung von Sicherheitsinformationen für alle Benutzer im Azure AD-Portal](media/howto-registration-mfa-sspr-combined/combined-security-info-enable.png)
+![Aktivieren der kombinierten Registrierung von Sicherheitsinformationen für alle Benutzer](media/howto-registration-mfa-sspr-combined/combined-security-info-enable.png)
 
 > [!IMPORTANT]
 > Ab März 2019 sind die Telefonanrufoptionen für MFA- und SSPR-Benutzer in kostenlosen bzw. Testversionen von Azure AD-Mandanten nicht mehr verfügbar. SMS-Nachrichten sind von dieser Änderung nicht betroffen. Die Telefonanrufoption ist weiterhin für Benutzer in kostenpflichtigen Azure AD-Mandanten verfügbar. Diese Änderung wirkt sich nur auf kostenlose bzw. Testversionen von Azure AD-Mandanten aus.

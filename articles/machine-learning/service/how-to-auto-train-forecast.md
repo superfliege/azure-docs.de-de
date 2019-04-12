@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.openlocfilehash: cc5aae0e46e181e8063a4e01a832e68eab0eae0e
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 32f96a28e027bfd0e65d934bb47bb98400af459d
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226609"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360722"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisches Trainieren eines Modells für die Zeitreihenprognose
 
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie im Azure Machine Learning-Dienst ein Reg
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure Machine Learning-Dienstbereich. Informationen zum Erstellen des Arbeitsbereichs finden Sie unter [Erste Schritte mit Azure Machine Learning](quickstart-get-started.md).
+* Ein Azure Machine Learning-Dienstbereich. Informationen zum Erstellen des Arbeitsbereichs finden Sie unter [Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](setup-create-workspace.md).
 * In diesem Artikel werden Grundkenntnisse im Zusammenhang mit der Einrichtung eines Experiments mit automatisiertem maschinellem Lernen vorausgesetzt. Machen Sie sich anhand des [Tutorials](tutorial-auto-train-models.md) oder der [Anleitung](how-to-configure-auto-train.md) mit den grundlegenden Entwurfsmustern vertraut.
 
 ## <a name="preparing-data"></a>Vorbereiten der Daten

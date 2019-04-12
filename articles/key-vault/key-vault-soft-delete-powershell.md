@@ -5,14 +5,14 @@ author: msmbaldwin
 manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 02/01/2018
+ms.date: 03/19/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3da4662885b2b09c6474a1a6ceafd627e71cf236
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ecc87e03a80ce10bedbe26b3ebb452ec704eefcb
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58081031"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58368680"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Verwenden des vorläufigen Löschens in Key Vault mit PowerShell
 
@@ -49,9 +49,6 @@ Weitere Informationen zu Berechtigungen und Zugriffssteuerung finden Sie unter [
 ## <a name="enabling-soft-delete"></a>Aktivieren des vorläufigen Löschens
 
 Sie können das vorläufige Löschen aktivieren, im die Wiederherstellung eines gelöschten Schlüsseltresors oder eines in einem Schlüsseltresor gespeicherten Objekts zu ermöglichen.
-
-> [!IMPORTANT]
-> Das Aktivieren des vorläufigen Löschens für einen Schlüsseltresor kann nicht rückgängig. Sobald die Eigenschaft für vorläufiges Löschen auf „true“ gesetzt wurde, kann sie nicht mehr geändert oder entfernt werden.  
 
 ### <a name="existing-key-vault"></a>Vorhandener Schlüsseltresor
 
@@ -101,10 +98,10 @@ Vorläufiges Löschen ist aktiviert:
 Sie können Schlüsseltresore im gelöschten Zustand für Ihr Abonnement mit dem folgenden Befehl anzeigen:
 
 ```powershell
-PS C:\> Get-AzKeyVault -InRemovedState 
+Get-AzKeyVault -InRemovedState 
 ```
 
-- Anhand des Felds *Id* kann beim Wiederherstellen oder Bereinigen die Ressource ermittelt werden. 
+- Anhand des Felds *ID* kann beim Wiederherstellen oder Bereinigen die Ressource ermittelt werden. 
 - *Ressourcen-ID* ist die ursprüngliche Ressourcen-ID dieses Tresors. Da sich dieser Schlüsseltresor nun in einem gelöschten Zustand befindet, ist keine Ressource mit dieser Ressourcen-ID vorhanden. 
 - Im Feld *Geplantes Datum für die Bereinigung* ist angegeben, wann der Tresor endgültig gelöscht wird, wenn keine Aktion ausgeführt wird. Die Standardaufbewahrungsdauer, die zum Berechnen von *Scheduled Purge Date* (Geplantes Datum für die Bereinigung) verwendet wird, ist 90 Tage.
 
@@ -233,8 +230,27 @@ Beim Auflisten Ihrer gelöschten Schlüsseltresorobjekte wird angezeigt, wann ih
 >[!IMPORTANT]
 >Ein Tresorobjekt, dessen Bereinigung auf der Grundlage des Felds *Scheduled Purge Date* (Geplantes Datum für Bereinigung) veranlasst wurde, wird endgültig gelöscht. Es kann nicht wiederhergestellt werden.
 
+## <a name="enabling-purge-protection"></a>Aktivieren des Bereinigungsschutzes
+
+Wenn der Bereinigungsschutz aktiviert ist, kann ein Tresor oder ein Objekt im gelöschten Zustand nicht endgültig gelöscht werden, bis die Aufbewahrungsdauer von 90 Tagen abgelaufen ist. Solch ein Tresor oder Objekt kann noch wiederhergestellt werden. Dieses Feature versichert zusätzlich, dass ein Tresor oder ein Objekt nie dauerhaft gelöscht werden kann, bevor die Aufbewahrungsdauer abgelaufen ist.
+
+Sie können den Bereinigungsschutz nur aktivieren, wenn auch das vorläufige Löschen aktiviert ist. 
+
+Verwenden Sie das Cmdlet [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault?view=azps-1.5.0), um beim Erstellen eines Tresors sowohl das vorläufige Löschen als auch den Bereinigungsschutz zu aktivieren:
+
+```powershell
+New-AzKeyVault -Name ContosoVault -ResourceGroupName ContosoRG -Location westus -EnableSoftDelete -EnablePurgeProtection
+```
+
+Verwenden Sie die Cmdlets [Get-AzKeyVault](/powershell/module/az.keyvault/Get-AzKeyVault?view=azps-1.5.0), [Get-AzResource](/powershell/module/az.resources/get-azresource?view=azps-1.5.0) und [Set-AzResource](/powershell/module/az.resources/set-azresource?view=azps-1.5.0), um einem vorhandenen Tresor einen Bereinigungsschutz hinzuzufügen (für den bereits das vorläufige Löschen aktiviert ist):
+
+```
+($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "ContosoVault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true"
+
+Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
+```
+
 ## <a name="other-resources"></a>Weitere Ressourcen
 
 - Eine Übersicht über das Feature für vorläufiges Löschen finden Sie unter [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](key-vault-ovw-soft-delete.md).
 - Eine allgemeine Übersicht über die Nutzung von Azure Key Vault finden Sie unter [Was ist Azure Key Vault?](key-vault-overview.md).
-

@@ -1,5 +1,5 @@
 ---
-title: Überwachung und Protokollierung beim Azure AD-Kennwortschutz
+title: Überwachen und Protokollieren beim Azure AD-Kennwortschutz – Azure Active Directory
 description: Informationen zur Überwachung und Protokollierung beim Azure AD-Kennwortschutz
 services: active-directory
 ms.service: active-directory
@@ -11,16 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1e12addc15afe0c0745e0e8d5a9b6718483d477
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: a029135da79d1a0b24b2941873a0fe3187ac9f7c
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293718"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58479723"
 ---
 # <a name="azure-ad-password-protection-monitoring-and-logging"></a>Überwachung und Protokollierung beim Azure AD-Kennwortschutz
 
 Nach der Bereitstellung des Azure AD-Kennwortschutzes sind Überwachung und Berichterstellung zentrale Aufgaben. Dieser Artikel enthält detaillierte Informationen, damit Sie verschiedene Überwachungstechniken verstehen, einschließlich der Speicherorte, an denen die einzelnen Dienste Informationen protokollieren, und der Methoden zum Berichten über die Verwendung des Azure AD-Kennwortschutzes.
+
+Überwachung und Berichterstellung erfolgen entweder durch Ereignisprotokollmeldungen oder durch Ausführen von PowerShell-Cmdlets. Ereignisprotokollmeldungen werden sowohl vom DC-Agent als auch von Proxydiensten protokolliert. Alle nachfolgend beschriebenen PowerShell-Cmdlets sind nur auf dem Proxyserver verfügbar (siehe PowerShell-Modul „AzureADPasswordProtection“). Die DC-Agent-Software installiert kein PowerShell-Modul.
 
 ## <a name="dc-agent-event-logging"></a>DC-Agent-Ereignisprotokollierung
 
@@ -79,7 +81,7 @@ Wenn ein Paar von Ereignissen gemeinsam protokolliert wird, sind beide Ereigniss
 
 Mit dem Cmdlet `Get-AzureADPasswordProtectionSummaryReport` kann eine zusammenfassende Darstellung der Kennwortvalidierungsaktivität erstellt werden. Eine Beispielausgabe dieses Cmdlets lautet folgendermaßen:
 
-```PowerShell
+```powershell
 Get-AzureADPasswordProtectionSummaryReport -DomainController bplrootdc2
 DomainController                : bplrootdc2
 PasswordChangesValidated        : 6677
@@ -252,7 +254,7 @@ Mit dem `Get-AzureADPasswordProtectionDCAgent`-Cmdlet können grundlegende Infor
 
 Eine Beispielausgabe dieses Cmdlets lautet folgendermaßen:
 
-```PowerShell
+```powershell
 Get-AzureADPasswordProtectionDCAgent
 ServerFQDN            : bplChildDC2.bplchild.bplRootDomain.com
 Domain                : bplchild.bplRootDomain.com
@@ -324,7 +326,7 @@ Mit dem Cmdlet `Get-AzureADPasswordProtectionProxy` können grundlegende Informa
 
 Eine Beispielausgabe dieses Cmdlets lautet folgendermaßen:
 
-```PowerShell
+```powershell
 Get-AzureADPasswordProtectionProxy
 ServerFQDN            : bplProxy.bplchild2.bplRootDomain.com
 Domain                : bplchild2.bplRootDomain.com

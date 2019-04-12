@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: 92f9fcc8a10f90c0886667f33f3c7d4dec09bc8e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9d48f47f66bea0bb8c5e3c982f983f3673bcb157
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884675"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317003"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Bereitstellen der Data Science Virtual Machine für Linux (Ubuntu)
 
@@ -144,9 +144,9 @@ Nachdem Sie sich bei der VM angemeldet haben, indem Sie entweder den SSH-Client 
 
 ### <a name="jupyterhub-and-jupyterlab"></a>JupyterHub und JupyterLab
 
-Die Ubuntu-DSVM führt [JupyterHub](https://github.com/jupyterhub/jupyterhub), einen Jupyter-Server für mehrere Benutzer, aus. Um eine Verbindung herzustellen, browsen Sie zu https://your-vm-ip:8000 auf Ihrem Laptop oder Desktop, geben Sie den Benutzernamen und das Kennwort ein, mit dem Sie die VM erstellt haben, und melden Sie sich an. Zum Stöbern und Ausprobieren stehen Ihnen viele Beispielnotebooks zur Verfügung.
+Die Ubuntu-DSVM führt [JupyterHub](https://github.com/jupyterhub/jupyterhub), einen Jupyter-Server für mehrere Benutzer, aus. Um eine Verbindung herzustellen, browsen Sie zu „https:\//IP-Ihrer-VM:8000“ auf Ihrem Laptop oder Desktop, geben Sie den Benutzernamen und das Kennwort ein, mit dem Sie die VM erstellt haben, und melden Sie sich an. Zum Stöbern und Ausprobieren stehen Ihnen viele Beispielnotebooks zur Verfügung.
 
-JupyterLab, die nächste Generation von Jupyter-Notebooks, und JupyterHub, sind ebenfalls verfügbar. Um darauf zuzugreifen, melden Sie sich bei JupyterHub an und browsen zu der URL https://your-vm-ip:8000/user/your-username/lab. Sie können JupyterLab als Standardnotebookserver festlegen, indem Sie diese Zeile zu „/etc/jupyterhub/jupyterhub_config.py“ hinzufügen:
+JupyterLab, die nächste Generation von Jupyter-Notebooks, und JupyterHub, sind ebenfalls verfügbar. Melden Sie sich für den Zugriff bei JupyterHub an, und suchen Sie dann nach der URL „https:\//your-vm-ip:8000/user/your-username/lab“. Sie können JupyterLab als Standardnotebookserver festlegen, indem Sie diese Zeile zu „/etc/jupyterhub/jupyterhub_config.py“ hinzufügen:
 
     c.Spawner.default_url = '/lab'
 

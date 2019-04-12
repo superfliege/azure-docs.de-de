@@ -1,6 +1,6 @@
 ---
 title: Problembehandlung von Problemen bei der Bereitstellung von virtuellen Windows-Computern in Azure | Microsoft-Dokumentation
-description: Behandlung von Problemen bei der Bereitstellung virtueller Linux-Computer in Azure mit dem Resource Manager-Bereitstellungsmodell
+description: Behandlung von Problemen bei der Bereitstellung virtueller Windows-Computer im Azure Resource Manager-Bereitstellungsmodell.
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 9d98a060033674a53c8ac5390bc40d10b0fbe69b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5752731f08a7dc9ae8661e698aef9655837c6220
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882500"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540702"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Problembehandlung von Problemen bei der Bereitstellung von virtuellen Windows-Computern in Azure
 
@@ -32,11 +32,7 @@ Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötig
 [!INCLUDE [virtual-machines-windows-troubleshoot-deploy-vm-top](../../../includes/virtual-machines-windows-troubleshoot-deploy-vm-top.md)]
 
 ## <a name="the-cluster-cannot-support-the-requested-vm-size"></a>Der Cluster unterstützt nicht die angeforderte Größe des virtuellen Computers.
-<properties
-supportTopicIds="123456789"
-resourceTags="windows"
-productPesIds="1234, 5678"
-/>
+\<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
 - Wiederholen Sie die Anforderung mit einer geringeren Größe des virtuellen Computers.
 - Wenn die Größe des angeforderten virtuellen Computers nicht geändert werden kann:
     - Beenden Sie alle virtuellen Computer in der Verfügbarkeitsgruppe. Klicken Sie auf **Ressourcengruppen** > Ihre Ressourcengruppe > **Ressourcen** > Ihre Verfügbarkeitsgruppe > **virtuelle Computer** > Ihr virtueller Computer > **Beenden**.
@@ -45,11 +41,7 @@ productPesIds="1234, 5678"
 
 
 ## <a name="the-cluster-does-not-have-free-resources"></a>Der Cluster besitzt keine freien Ressourcen.
-<properties
-supportTopicIds="123456789"
-resourceTags="windows"
-productPesIds="1234, 5678"
-/>
+\<properties supportTopicIds="123456789" resourceTags="windows" productPesIds="1234, 5678" />
 - Versuchen Sie die Anforderung später erneut.
 - Wenn der neue virtuelle Computer Teil einer anderen Verfügbarkeitsgruppe sein kann
     - Erstellen Sie einen virtuellen Computer in einer anderen Verfügbarkeitsgruppe (in derselben Region).

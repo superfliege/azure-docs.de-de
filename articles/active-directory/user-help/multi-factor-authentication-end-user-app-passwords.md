@@ -14,12 +14,12 @@ ms.date: 07/30/2018
 ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47128bce8dbbee1b28f6b0a3a5783e5ccee501bb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c6790fa1cbb10999a751b31bcb27db2edcb67b4a
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58177397"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517750"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>Verwalten von App-Kennwörtern für die zweistufige Überprüfung
 
@@ -40,7 +40,7 @@ Wenn Sie App-Kennwörter verwenden, müssen Sie unbedingt Folgendes beachten:
 
 Während der anfänglichen Registrierung für die zweistufige Überprüfung wird Ihnen ein App-Kennwort zugewiesen. Wenn Sie mehr als ein Kennwort benötigen, können Sie weitere Kennwörter erstellen, je nachdem, wie Sie die zweistufige Überprüfung verwenden:
 
-- **Sie verwenden die zweistufige Überprüfung für Ihr Geschäfts-, Schul- oder Unikonto und das MyApps-Portal.** Erstellen und löschen Sie Ihre App-Kennwörter gemäß den Anweisungen im Abschnitt [Erstellen und Löschen von App-Kennwörtern im MyApps-Portal](#create-and-delete-app-passwords-using-the-myapps-portal) dieses Artikels. Unter [Was ist das MyApps-Portal in Azure Active Directory?](active-directory-saas-access-panel-introduction.md) finden Sie weitere Informationen zum MyApps-Portal und dessen Verwendung.
+- **Sie verwenden die zweistufige Überprüfung für Ihr Geschäfts-, Schul- oder Unikonto und das MyApps-Portal.** Erstellen und löschen Sie Ihre App-Kennwörter gemäß den Anweisungen im Abschnitt „Erstellen und Löschen von App-Kennwörtern im MyApps-Portal“ dieses Artikels. Unter [Was ist das MyApps-Portal in Azure Active Directory?](active-directory-saas-access-panel-introduction.md) finden Sie weitere Informationen zum MyApps-Portal und dessen Verwendung.
 
 - **Sie verwenden die zweistufige Überprüfung für Ihr Geschäfts-, Schul- oder Unikonto und das Office 365-Portal.** Erstellen und löschen Sie Ihre App-Kennwörter gemäß den Anweisungen im Abschnitt [Erstellen und Löschen von App-Kennwörtern über das Office 365-Portal](#create-and-delete-app-passwords-using-the-office-365-portal) dieses Artikels.
 

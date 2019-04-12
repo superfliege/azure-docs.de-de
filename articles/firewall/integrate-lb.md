@@ -5,18 +5,20 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 1/14/2019
+ms.date: 4/1/2019
 ms.author: victorh
-ms.openlocfilehash: 079790952263ae2ef68abc8e426b0330fef1c53f
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 7ee92a7508918635849caafab4632bbba81ee628
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321771"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805243"
 ---
 # <a name="integrate-azure-firewall-with-azure-standard-load-balancer"></a>Integrieren von Azure Firewall mit Azure Load Balancer Standard
 
-Sie können eine Azure Firewall mit einem Azure Load Balancer Standard (öffentlich oder intern) in ein virtuelles Netzwerk integrieren. Sie müssen jedoch wissen, dass es ein Problem mit asymmetrischem Routing geben kann, das die Funktionalität mit dem Szenario eines öffentlichen Load Balancers (Lastenausgleich) beeinträchtigen kann.
+Sie können eine Azure Firewall mit einem Azure Load Balancer Standard (öffentlich oder intern) in ein virtuelles Netzwerk integrieren. 
+
+Der bevorzugte Entwurf ist die Integration eines internen Load Balancers in Ihre Azure-Firewall, da dies ein viel einfacheres Design ist. Sie können einen öffentlichen Load Balancer verwenden, wenn Sie bereits einen bereitgestellt haben und diesen beibehalten möchten. Sie müssen jedoch wissen, dass es ein Problem mit asymmetrischem Routing geben kann, das die Funktionalität mit dem Szenario eines öffentlichen Load Balancers (Lastenausgleich) beeinträchtigen kann.
 
 Weitere Informationen zu Azure Load Balancer finden Sie unter [Was versteht man unter Azure Load Balancer?](../load-balancer/load-balancer-overview.md).
 
@@ -34,6 +36,8 @@ Wenn Sie eine Azure-Firewall in einem Subnetz bereitstellen, besteht ein Schritt
 
 Wenn Sie die Firewall in Ihr Load Balancer-Szenario einführen, sollte Ihr Internetdatenverkehr über die öffentliche IP-Adresse der Firewall eingehen. Hier wendet die Firewall ihre Firewallregeln an und sendet die Pakete per Netzwerkadressenübersetzung an die öffentliche IP-Adresse Ihres Load Balancers. Dies ist die Stelle, an der das Problem auftritt. Pakete treffen an der öffentlichen IP-Adresse der Firewall ein, kehren aber über die private IP-Adresse (die Standardroute wird verwendet) an die Firewall zurück.
 Um dieses Problem zu vermeiden, erstellen Sie eine zusätzliche Hostroute für die öffentliche IP-Adresse der Firewall. Pakete, die an die öffentliche IP-Adresse der Firewall gesendet werden, werden über das Internet weitergeleitet. Dadurch wird vermieden, dass die Standardroute zur privaten IP-Adresse der Firewall genommen wird.
+
+![Asymmetrisches Routing](media/integrate-lb/Firewall-LB-asymmetric.png)
 
 Beispielsweise sind die folgenden Routen für eine Firewall mit der öffentlichen IP-Adresse 13.86.122.41 und der privaten IP-Adresse 10.3.1.4 vorgesehen.
 

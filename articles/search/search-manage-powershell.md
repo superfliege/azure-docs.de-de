@@ -7,14 +7,14 @@ services: search
 ms.service: search
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 03/28/2019
 ms.author: heidist
-ms.openlocfilehash: 541feee2005428226b3f46927bc0e4bfb53cc98d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8f07468ccff4431e1afdf66aedc72599ddc0c25b
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781713"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620596"
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>Verwalten des Azure Search-Diensts mit PowerShell
 > [!div class="op_single_selector"]
@@ -24,17 +24,17 @@ ms.locfileid: "57781713"
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-Sie können PowerShell-Cmdlets und -Skripts unter Windows oder Linux oder in [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) ausführen, um [Azure Search](https://docs.microsoft.com/azure/search/) zu erstellen und zu konfigurieren. Das [**Az.Search**](https://docs.microsoft.com/powershell/module/az.search/?view=azps-1.4.0#search)-Modul erweitert [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.4.0) um vollständige Parität mit den [REST-APIs für die Azure Search-Verwaltung](https://docs.microsoft.com/rest/api/searchmanagement). Mit Azure PowerShell und **Az.Search** können Sie folgende Aufgaben ausführen:
+Sie können PowerShell-Cmdlets und -Skripts unter Windows oder Linux oder in [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) ausführen, um Azure Search zu erstellen und zu konfigurieren. Das **Az.Search**-Modul erweitert Azure PowerShell um vollständige Parität mit den [REST-APIs für die Azure Search-Verwaltung](https://docs.microsoft.com/rest/api/searchmanagement). Mit Azure PowerShell und **Az.Search** können Sie folgende Aufgaben ausführen:
 
 > [!div class="checklist"]
 > * [Auflisten aller Suchdienste in Ihrem Abonnement](#list-search-services)
 > * [Abrufen von Informationen zu einem bestimmten Suchdienst](#get-search-service-information)
 > * [Erstellen oder Löschen eines Diensts](#create-or-delete-a-service)
-> * [Erneutes Generieren von Administrator-API-Schlüsseln](#regenerate-admin-api-keys)
+> * [Erneutes Generieren von Administrator-API-Schlüsseln](#regenerate-admin-keys)
 > * [Erstellen oder Löschen von Abfrage-API-Schlüsseln](#create-or-delete-query-keys)
 > * [Skalieren eines Diensts durch Erhöhen oder Verringern der Anzahl von Replikaten und Partitionen](#scale-replicas-and-partitions)
 
-Mit PowerShell kann nicht der Name, die Region oder der Tarif Ihres Diensts geändert werden. Dedizierte Ressourcen werden beim Erstellen eines Diensts zugeordnet. Zum Ändern der zugrunde liegenden Hardware (Standort oder Knotentyp) ist ein neuer Dienst erforderlich. Es gibt keine Tools oder APIs für die Übertragung von Inhalten. Die gesamte Inhaltsverwaltung erfolgt über [REST](https://docs.microsoft.com/rest/api/searchservice/)- oder [.NET](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search)-APIs, und wenn Sie Indizes verschieben möchten, müssen Sie diese in einem neuen Dienst erneut erstellen und erneut laden. 
+Mit PowerShell kann nicht der Name, die Region oder der Tarif Ihres Diensts geändert werden. Dedizierte Ressourcen werden beim Erstellen eines Diensts zugeordnet. Zum Ändern der zugrunde liegenden Hardware (Standort oder Knotentyp) ist ein neuer Dienst erforderlich. Es gibt keine Tools oder APIs für die Übertragung von Inhalten aus einem Dienst in einen anderen. Die gesamte Inhaltsverwaltung erfolgt über [REST](https://docs.microsoft.com/rest/api/searchservice/)- oder [.NET](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search)-APIs, und wenn Sie Indizes verschieben möchten, müssen Sie diese in einem neuen Dienst erneut erstellen und erneut laden. 
 
 Zwar sind keine dedizierten PowerShell-Befehle für die Inhaltsverwaltung vorhanden, doch können Sie ein PowerShell-Skript schreiben, das REST oder .NET zum Erstellen und Laden von Indizes aufruft. Das **Az.Search**-Modul selbst stellt diese Vorgänge nicht bereit.
 

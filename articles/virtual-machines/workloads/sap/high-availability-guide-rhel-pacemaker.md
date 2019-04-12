@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: 791c63b7b7fed55f95905ba7131d6a1d4bb414ff
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1a8e5fd82b44577aa1915d59fc7c29900a1f14ea
+ms.sourcegitcommit: 5e4ca656baf3c7d370ab3c0fbad0278aa2c9f1e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010494"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319515"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>Einrichten von Pacemaker unter Red Hat Enterprise Linux in Azure
 
@@ -85,6 +85,8 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
+   Beachten Sie, dass Sie durch das Anfügen eines Pools an ein Azure Marketplace PAYG RHEL-Image effektiv eine doppelte Abrechnung für Ihre RHEL-Nutzung erhalten: einmal für das PAYG-Image und einmal für die RHEL-Berechtigung in dem Pool, den Sie anfügen. Azure bietet jetzt BYOS RHEL-Images an, um dies zu vermeiden. Weitere Informationen sind [hier](https://aka.ms/rhel-byos) verfügbar.
+
 1. **[A]** Aktivieren von RHEL für SAP-Repositorys
 
    Aktivieren Sie die folgenden Repositorys, um die erforderlichen Pakete zu installieren.
@@ -144,10 +146,10 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    <pre><code>sudo pcs cluster auth <b>prod-cl1-0</b> <b>prod-cl1-1</b> -u hacluster
    sudo pcs cluster setup --name <b>nw1-azr</b> <b>prod-cl1-0</b> <b>prod-cl1-1</b> --token 30000
    sudo pcs cluster start --all
-   
+
    # Run the following command until the status of both nodes is online
    sudo pcs status
-   
+
    # Cluster name: nw1-azr
    # WARNING: no stonith devices and stonith-enabled is not false
    # Stack: corosync
@@ -179,11 +181,10 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 Das STONITH-Gerät verwendet einen Dienstprinzipal zur Autorisierung bei Microsoft Azure. Führen Sie die folgenden Schritte aus, um einen Dienstprinzipal zu erstellen.
 
 1. Besuchen Sie <https://portal.azure.com>.
-1. Öffnen Sie das Blatt „Azure Active Directory“.  
-   Wechseln Sie zu „Eigenschaften“, und notieren Sie sich die Verzeichnis-ID. Dies ist die **Mandanten-ID**.
+1. Öffnen Sie das Blatt „Azure Active Directory“. Wechseln Sie zu „Eigenschaften“, und notieren Sie sich die Verzeichnis-ID. Dies ist die **Mandanten-ID**.
 1. Klicken Sie auf „App-Registrierungen“.
 1. Klicken Sie auf "Hinzufügen".
-1. Geben Sie einen Namen ein, wählen Sie den Anwendungstyp „Web-App/API“ aus, geben Sie eine Anmelde-URL ein (z.B. `http://localhost`), und klicken Sie auf „Erstellen“.
+1. Geben Sie einen Namen ein, wählen Sie den Anwendungstyp „Web-App/API“, geben Sie eine Anmelde-URL ein (z. B. „http:\//localhost“), und klicken Sie auf „Erstellen“.
 1. Die Anmelde-URL wird nicht verwendet und kann eine beliebige gültige URL sein.
 1. Wählen Sie die neue App aus, und klicken Sie auf der Registerkarte „Einstellungen“ auf „Schlüssel“.
 1. Geben Sie eine Beschreibung für einen neuen Schlüssel ein, wählen Sie „Läuft nie ab“, und klicken Sie auf „Speichern“.

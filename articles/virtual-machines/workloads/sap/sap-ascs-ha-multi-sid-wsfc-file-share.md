@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eac9f80e4b57c725de3bc05f55e09d49fb8e2ee5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a840deb2349d952b1ef4faeab4ee860e6b0b99df
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58004610"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540141"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -241,7 +241,7 @@ Das Ziel besteht darin, mehrere SAP Advanced Business Application Programming- (
 
 _**Abbildung 2:** SAP-Multi-SID-Konfiguration in zwei Clustern_
 
-Die Vorgehensweise für die Installation eines zusätzlichen **SAP-\<SID2>**-Systems entspricht der für ein einzelnes <SID>-System. Für ASCS/SCS-Cluster sowie im SOFS-Dateifreigabecluster sind zwei zusätzliche Vorbereitungsschritte erforderlich.
+Die Vorgehensweise für die Installation eines zusätzlichen **SAP-\<SID2>**-Systems entspricht der für ein einzelnes \<SID>-System. Für ASCS/SCS-Cluster sowie im SOFS-Dateifreigabecluster sind zwei zusätzliche Vorbereitungsschritte erforderlich.
 
 ## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a>Vorbereiten der Infrastruktur für ein SAP-Multi-SID-Szenario
 
@@ -261,7 +261,7 @@ Diese Schritte werden unter [Vorbereiten der Infrastruktur auf ein SAP-Multi-SID
 
 ### <a name="prepare-the-infrastructure-on-an-sofs-cluster-by-using-the-existing-sap-global-host"></a>Vorbereiten der Infrastruktur in einem SOFS-Cluster unter Verwendung des vorhandenen globalen SAP-Hosts
 
-Sie können den vorhandenen \<globalen SAP-Host> und Volume1 des ersten SAP-<SID1>-Systems wiederverwenden.
+Sie können den vorhandenen \<globalen SAP-Host> und Volume1 des ersten SAP-\<SID1>-Systems wiederverwenden.
 
 ![Abbildung 3: Multi-SID-SOFS ist identisch mit dem Namen des globalen SAP-Hosts][sap-ha-guide-figure-8014]
 
@@ -271,7 +271,7 @@ _**Abbildung 3:** Multi-SID-SOFS ist identisch mit dem Namen des globalen SAP-Ho
 >Für das zweite **SAP-\<SID2>**-System werden ebenfalls Volume1 und derselbe Netzwerkname des **\<globalen SAP-Hosts>** verwendet.
 >Da Sie **SAPMNT** bereits als der Freigabenamen für verschiedene SAP-Systeme festgelegt haben, müssen Sie zum Wiederverwenden des Netzwerknamens des **\<globalen SAP-Hosts>** dasselbe **Volume1** verwenden.
 >
->Der Dateipfad für den globalen <SID2>-Host lautet „C:\ClusterStorage\\**Volume1**\usr\sap\<SID2>\SYS\\.“.
+>Der Dateipfad für den globalen \<SID2>-Host lautet „C:\ClusterStorage\\**Volume1**\usr\sap\<SID2>\SYS\\.“.
 >
 
 Für das \<SID2>-System müssen Sie den Ordner „..\SYS\.“ des globalen SAP-Hosts im SOFS-Cluster vorbereiten.
@@ -279,7 +279,7 @@ Für das \<SID2>-System müssen Sie den Ordner „..\SYS\.“ des globalen SAP-H
 Um den globalen SAP-Host für die \<SID2>-Instanz vorzubereiten, führen Sie das folgende PowerShell-Skript aus:
 
 
-```PowerShell
+```powershell
 ##################
 # SAP multi-SID
 ##################
@@ -335,7 +335,7 @@ _**Abbildung 4:** Multi-SID-SOFS ist identisch mit dem Namen des globalen SAP-Ho
 
 Um die zweite SOFS-Rolle mit \<SAPGlobalHost2> zu erstellen, führen Sie dieses PowerShell-Skript aus:
 
-```PowerShell
+```powershell
 # Create SOFS with SAP Global Host Name 2
 $SAPGlobalHostName = "sapglobal2"
 Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
@@ -343,7 +343,7 @@ Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 
 Erstellen Sie als zweites Volume **Volume2**. Führen Sie das folgende PowerShell-Skript aus:
 
-```PowerShell
+```powershell
 New-Volume -StoragePoolFriendlyName S2D* -FriendlyName SAPPR2 -FileSystem CSVFS_ReFS -Size 5GB -ResiliencySettingName Mirror
 ```
 
@@ -355,7 +355,7 @@ Erstellen Sie einen Ordner für den globalen SAP-Host für die zweite \<SID2>, u
 
 Führen Sie das folgende PowerShell-Skript aus:
 
-```PowerShell
+```powershell
 # Create a folder for <SID2> on a second Volume2 and set file security
 $SAPSID = "PR2"
 $DomainName = "SAPCLUSTER"

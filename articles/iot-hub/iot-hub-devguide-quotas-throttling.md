@@ -3,17 +3,17 @@ title: Informationen zu Kontingenten und Drosselung bei Azure IoT Hub | Microsof
 description: 'Entwicklerhandbuch: Beschreibung der für IoT Hub geltenden Kontingente und des erwarteten Drosselungsverhaltens'
 author: robinsh
 manager: philmea
-ms.author: robin.shahan
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.openlocfilehash: 20e92317e748ebe19661a7c35d68829229b62378
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 14c563fda48bc7c54dcce1e1ccbfba716b6c73ad
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791374"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049602"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenz: IoT Hub-Kontingente und -Drosselung
 
@@ -42,6 +42,7 @@ Die folgende Tabelle zeigt die erzwungenen Drosselungen. Die Werte beziehen sich
 | C2D-Empfangsvorgänge<sup>1</sup> <br/> (nur bei Verwendung von HTTPS durch das Gerät)| 16,67/Sekunde/Einheit (1.000/Minute/Einheit) | 16,67/Sekunde/Einheit (1.000/Minute/Einheit) | 833,33/Sekunde/Einheit (50.000/Minute/Einheit) |
 | Dateiupload | 1,67 Dateiuploadbenachrichtigungen/Sekunde/Einheit (100/Minute/Einheit) | 1,67 Dateiuploadbenachrichtigungen/Sekunde/Einheit (100/Minute/Einheit) | 83,33 Dateiuploadbenachrichtigungen/Sekunde/Einheit (5.000/Minute/Einheit) |
 | Direkte Methoden<sup>1</sup> | 160KB/s/Einheit<sup>2</sup> | 480KB/s/Einheit<sup>2</sup> | 24MB/s/Einheit<sup>2</sup> | 
+| Abfragen | 20/Minuten/Einheit | 20/Minuten/Einheit | 1000/Minuten/Einheit |
 | Zwillingslesevorgänge (Gerät und Modul)<sup>1</sup> | 100/s | 100/s oder 10/s/Einheit – je nachdem, was höher ist | 500/s/Einheit |
 | Zwillingsupdates (Gerät und Modul)<sup>1</sup> | 50/s | 50/s oder 5/s/Einheit – je nachdem, was höher ist | 250/s/Einheit |
 | Auftragsvorgänge<sup>1,3</sup> <br/> (Erstellen, Aktualisieren, Auflisten, Löschen) | 1,67/Sekunde/Einheit (100/Minute/Einheit) | 1,67/Sekunde/Einheit (100/Minute/Einheit) | 83,33/Sekunde/Einheit (5.000/Minute/Einheit) |
@@ -71,7 +72,7 @@ IoT Hub erzwingt andere Funktionsbegrenzungen:
 
 | Vorgang | Begrenzung |
 | --------- | ----- |
-| Dateiupload-URIs | 10.000 SAS-URIs können gleichzeitig für ein Speicherkonto geöffnet sein. <br/>  10 SAS-URIs/Gerät können gleichzeitig geöffnet sein. |
+| Dateiupload-URIs | 10.000 SAS-URIs können gleichzeitig für ein Speicherkonto geöffnet sein. <br/> 10 SAS-URIs/Gerät können gleichzeitig geöffnet sein. |
 | Aufträge<sup>1</sup> | Der Auftragsverlauf wird bis zu 30 Tage lang gespeichert. <br/> Maximale Anzahl gleichzeitiger Aufträge: 1 (für Free und S1), 5 (für S2), 10 (für S3) |
 | Zusätzliche Endpunkte | Kostenpflichtige SKU-Hubs haben möglicherweise 10 zusätzliche Endpunkte. Kostenfreie SKU-Hubs haben möglicherweise einen zusätzlichen Endpunkt. |
 | Regeln für die Nachrichtenweiterleitung | Kostenpflichtige SKU-Hubs haben möglicherweise 100 Weiterleitungsregeln. Kostenfreie SKU-Hubs haben möglicherweise fünf Weiterleitungsregeln. |

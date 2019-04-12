@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: ed91425ca56278eccf21c10db6360b4f770b0660
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: d9de47ad83f37fa976c3816a0cb2e3e3beaa5472
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226537"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437576"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 
@@ -48,7 +48,6 @@ FunctionsProject
  | - host.json
  | - package.json
  | - extensions.csproj
- | - bin
 ```
 
 Im Stammverzeichnis des Projekts befindet sich eine freigegebene Datei [host.json](functions-host-json.md), die zum Konfigurieren der Funktions-App verwendet werden kann. Jede Funktion verfügt über einen Ordner mit einer eigenen Codedatei (JS-Datei) und Bindungskonfigurationsdatei („function.json“). Der Name des übergeordneten Verzeichnisses von `function.json` ist immer der Name Ihrer Funktion.
@@ -616,6 +615,10 @@ Wenn Sie eine Funktions-App erstellen, die den App Service-Plan verwendet, sollt
 ### <a name="cold-start"></a>Kaltstart
 
 Bei der Entwicklung von Azure Functions im serverlosen Hostingmodell sind Kaltstarts Realität. Der Begriff *Kaltstart* bezieht sich auf die Tatsache, dass es beim ersten Start Ihrer Funktions-App nach einer Zeit der Inaktivität länger dauert, bis sie gestartet wird. Insbesondere bei JavaScript-Funktionen mit großen Abhängigkeitsbäumen kann dies erheblich länger dauern. Nach Möglichkeit sollten Sie [die Funktionen als Paketdatei ausführen](run-functions-from-deployment-package.md), um den Prozess des Kaltstarts zu beschleunigen. Bei vielen Bereitstellungsmethoden erfolgt die Ausführung standardmäßig über das Paketmodell. Wenn aber umfangreiche Kaltstarts durchgeführt werden und die Ausführung nicht auf diese Weise erfolgt, kann diese Änderung eine wesentliche Verbesserung bewirken.
+
+### <a name="connection-limits"></a>Verbindungsbeschränkungen
+
+Wenn Sie einen dienstabhängigen Client in einer Azure Functions-Anwendung verwenden, erstellen Sie nicht bei jedem Funktionsaufruf einen neuen Client. Erstellen Sie stattdessen einen einzelnen, statischen Client im globalen Bereich. Weitere Informationen finden Sie unter [Verwalten von Verbindungen in Azure Functions](manage-connections.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

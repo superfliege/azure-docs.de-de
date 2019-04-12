@@ -1,5 +1,5 @@
 ---
-title: Richtlinien zur Self-Service-Kennwortzurücksetzung in Azure AD
+title: Richtlinien für die Self-Service-Kennwortzurücksetzung von Azure AD – Azure Active Directory
 description: Konfigurieren der Richtlinienoptionen zur Self-Service-Kennwortzurücksetzung in Azure AD
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6888a8787856ef23c459c7ffc18f8e2b4de17f6f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4d9055ef11bc5c117efc6d4de87d4ca8ec73a661
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901134"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360502"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Kennwortrichtlinien und -einschränkungen in Azure Active Directory
 
@@ -93,7 +93,7 @@ Die folgende Tabelle beschreibt die Kennwortrichtlinieneinstellungen, die auf di
 
 ## <a name="set-password-expiration-policies-in-azure-ad"></a>Festlegen von Kennwortablaufrichtlinien in Azure AD
 
-Ein globaler Administrator für einen Microsoft-Clouddienst kann mit dem Microsoft Azure Active Directory-Modul für Windows PowerShell festlegen, dass Benutzerkennwörter nicht ablaufen. Sie können auch Windows PowerShell-Cmdlets verwenden, um die Konfiguration zu entfernen, die angibt, dass Kennwörter nie ablaufen, oder um Benutzerkennwörter anzuzeigen, für die festgelegt ist, dass sie nie ablaufen. 
+Ein globaler Administrator oder Benutzeradministrator für einen Microsoft-Clouddienst kann mit dem Microsoft Azure Active Directory-Modul für Windows PowerShell festlegen, dass Benutzerkennwörter nicht ablaufen. Sie können auch Windows PowerShell-Cmdlets verwenden, um die Konfiguration zu entfernen, die angibt, dass Kennwörter nie ablaufen, oder um Benutzerkennwörter anzuzeigen, für die festgelegt ist, dass sie nie ablaufen. 
 
 Diese Anleitung gilt für andere Anbieter wie Intune und Office 365, die ebenfalls auf Azure AD als Identitäts- und Verzeichnisdienste zurückgreifen. Kennwortablauf ist der einzige Teil der Richtlinie, der geändert werden kann.
 
@@ -107,7 +107,7 @@ Zunächst müssen Sie [das Azure AD PowerShell-Modul herunterladen und installie
 
 ### <a name="check-the-expiration-policy-for-a-password"></a>Überprüfen der Ablaufrichtlinie für ein Kennwort
 
-1. Stellen Sie mit den Anmeldeinformationen des Unternehmensadministrators eine Verbindung mit Windows PowerShell her.
+1. Stellen Sie mit den Anmeldeinformationen des Benutzeradministrators oder Unternehmensadministrators eine Verbindung mit Windows PowerShell her.
 1. Führen Sie einen der folgenden Befehle aus:
 
    * Um festzustellen, ob für das Kennwort eines bestimmten Benutzers festgelegt ist, dass es nie abläuft, führen Sie das folgende Cmdlet mit dem Benutzerprinzipalnamen (UPN, z.B. *aprilr\@contoso.onmicrosoft.com*) oder der Benutzer-ID des zu überprüfenden Benutzers aus: `Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
@@ -115,7 +115,7 @@ Zunächst müssen Sie [das Azure AD PowerShell-Modul herunterladen und installie
 
 ### <a name="set-a-password-to-expire"></a>Festlegen, dass ein Kennwort abläuft
 
-1. Stellen Sie mit den Anmeldeinformationen des Unternehmensadministrators eine Verbindung mit Windows PowerShell her.
+1. Stellen Sie mit den Anmeldeinformationen des Benutzeradministrators oder Unternehmensadministrators eine Verbindung mit Windows PowerShell her.
 1. Führen Sie einen der folgenden Befehle aus:
 
    * Um für das Kennwort eines Benutzers festzulegen, dass es abläuft, führen Sie das folgende Cmdlet mit dem Benutzerprinzipalnamen (UPN) oder der Benutzer-ID des Benutzers aus: `Set-AzureADUser -ObjectId <user ID> -PasswordPolicies None`
@@ -123,7 +123,7 @@ Zunächst müssen Sie [das Azure AD PowerShell-Modul herunterladen und installie
 
 ### <a name="set-a-password-to-never-expire"></a>Festlegen, dass ein Kennwort nicht abläuft
 
-1. Stellen Sie mit den Anmeldeinformationen des Unternehmensadministrators eine Verbindung mit Windows PowerShell her.
+1. Stellen Sie mit den Anmeldeinformationen des Benutzeradministrators oder Unternehmensadministrators eine Verbindung mit Windows PowerShell her.
 1. Führen Sie einen der folgenden Befehle aus:
 
    * Um für das Kennwort eines Benutzers festzulegen, dass es nie abläuft, führen Sie das folgende Cmdlet mit dem Benutzerprinzipalnamen (UPN) oder der Benutzer-ID des Benutzers aus: `Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration`

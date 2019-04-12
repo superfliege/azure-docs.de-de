@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: ramamill
-ms.openlocfilehash: efbcc0143570b3d379cf392c170f599fcc0176d4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9694c682f171ab715812b05fed2064c9bbcd36b3
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855128"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518081"
 ---
 # <a name="manage-vmware-vcenter-server"></a>Verwalten von VMware vCenter-Servern
 
@@ -108,7 +108,7 @@ So werden mehrere VMs in ein neues vCenter verschoben:
 4. Schützen Sie nun die migrierten VMs, indem Sie [das neue vCenter auswählen, wenn Sie den Schutz aktivieren](vmware-azure-tutorial.md#enable-replication).
 
 > [!TIP]
-> Wenn die Anzahl der VMs, die migriert werden, **höher** ist als die Anzahl der VMs, die im alten vCenter gespeichert sind, aktualisieren Sie die IP-Adresse des neuen vCenters gemäß der [hier](#modify-vcenter-ip-address-port) gegebenen Anleitung. Führen Sie für die einigen VMs, die im alten vCenter gespeichert sind, die folgenden Aktionen durch: [Deaktivieren Sie die Replikation](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure), [fügen Sie dem Konfigurationsserver neue vCenter-Informationen hinzu](#add-vmware-server-to-the-vault) und beginnen Sie damit, **[den Schutz zu aktivieren](vmware-azure-tutorial.md#enable-replication)**.
+> Wenn die Anzahl der VMs, die migriert werden, **höher** ist als die Anzahl der VMs, die im alten vCenter gespeichert sind, aktualisieren Sie die IP-Adresse des neuen vCenters gemäß der hier gegebenen Anleitung. Führen Sie für die einigen VMs, die im alten vCenter gespeichert sind, die folgenden Aktionen durch: [Deaktivieren Sie die Replikation](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure), [fügen Sie dem Konfigurationsserver neue vCenter-Informationen hinzu](#add-vmware-server-to-the-vault) und beginnen Sie damit, **[den Schutz zu aktivieren](vmware-azure-tutorial.md#enable-replication)**.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 

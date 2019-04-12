@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/06/2019
-ms.openlocfilehash: 36b2f3817c7e96a35c1e8f3aba22db201224ceba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 03/26/2019
+ms.openlocfilehash: 5247183f50301554a986fde474b27a9bfc67d91d
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075934"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540668"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>FAQs zu Azure SQL-Datenbank Hyperscale
 
@@ -216,7 +216,7 @@ Nein. Eine Hyperscale-Datenbank kann in der öffentlichen Vorschau nicht zu eine
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>Müssen bei der Migration zum Diensttarif „Hyperscale“ Einbußen hinsichtlich des Funktionsumfangs in Kauf genommen werden?
 
-Ja. Einige der Features von Azure SQL-Datenbank werden in Hyperscale in der öffentlichen Vorschau nicht unterstützt, wie u.a. TDE und Sicherungen zur Langzeitaufbewahrung. Nach der Migration Ihrer Datenbanken zu Hyperscale funktionieren diese Features nicht mehr.
+Ja. Einige der Features von Azure SQL-Datenbank werden in Hyperscale in der öffentlichen Vorschau nicht unterstützt, wie u. a. Sicherungen zur Langzeitaufbewahrung. Nach der Migration Ihrer Datenbanken zu Hyperscale funktionieren diese Features nicht mehr.
 
 ### <a name="can-i-move-my--on-premises-sql-server-database-or-my-sql-server-virtual-machine-database-to-hyperscale"></a>Können lokale SQL Server-Datenbanken oder virtuelle Computer mit SQL Server-Datenbank zu Hyperscale migriert werden?
 

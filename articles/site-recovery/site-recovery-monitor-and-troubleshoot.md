@@ -1,20 +1,20 @@
 ---
 title: Überwachen von Azure Site Recovery | Microsoft-Dokumentation
 description: Überwachung und Problembehandlung bei Replikationsproblemen und Vorgängen in Azure Site Recovery mithilfe des Portals
-author: bsiva
-manager: abhemra
+author: raynew
+manager: carmonm
 ms.service: site-recovery
-ms.topic: troubleshooting
-ms.date: 11/27/2018
-ms.author: bsiva
-ms.openlocfilehash: 5bbde2f1059982424c2557d6a767692b3491f6aa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.topic: conceptual
+ms.date: 03/18/2019
+ms.author: rayne-wiselman
+ms.openlocfilehash: 605421196c2ec7f62826e2f6c823d50262af8144
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58098473"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316642"
 ---
-# <a name="monitor-and-troubleshoot-site-recovery"></a>Überwachung und Problembehandlung für Site Recovery
+# <a name="monitor-site-recovery"></a>Überwachen von Azure Site Recovery
 
 In diesem Artikel erfahren Sie, wie Sie die integrierten Überwachungsfunktionen von Azure Site Recovery für Überwachung und Problembehandlung nutzen. 
 

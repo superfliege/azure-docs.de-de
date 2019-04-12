@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: dceabc799e187f3af56588d5a9008e5cdca517c0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 019945c48342238a1caa7611bdff6d06fd1e2bd9
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864455"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883393"
 ---
 # <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Indizieren von Cosmos DB mithilfe eines Azure Search-Indexers
 
@@ -61,7 +61,7 @@ Auf der Seite **Datenquelle** muss die Quelle **Cosmos DB** lauten und folgende 
 
 + Der **Name** ist der Name des Datenquellenobjekts. Nachdem Sie es erstellt haben, können Sie es für andere Workloads verwenden.
 
-+ Das **Cosmos DB-Konto** muss die erste oder zweite Verbindungszeichenfolge aus Cosmos DB mit einem `AccountEdpointPoint` und einem `AccountKey` sein. Das Konto bestimmt, ob Daten in eine SQL-API oder Mongo DB-API umgewandelt werden.
++ Das **Cosmos DB-Konto** muss die erste oder zweite Verbindungszeichenfolge aus Cosmos DB mit einem `AccountEndpoint` und einem `AccountKey` sein. Das Konto bestimmt, ob Daten in eine SQL-API oder Mongo DB-API umgewandelt werden.
 
 + Die **Datenbank** ist eine im Konto vorhandene Datenbank. 
 
@@ -173,7 +173,7 @@ Der Anforderungstext umfasst die Datenquellendefinition, welche die folgenden Fe
 |---------|-------------|
 | **name** | Erforderlich. Wählen Sie für Ihr Datenquellenobjekt einen beliebigen Namen aus. |
 |**type**| Erforderlich. Muss `documentdb`lauten. |
-|**credentials** | Erforderlich. Muss eine Cosmos DB-Verbindungszeichenfolge sein.<br/>Bei SQL-Sammlungen weisen Verbindungszeichenfolgen folgendes Format auf: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/>Bei MongoDB-Sammlungen fügen Sie der Verbindungszeichenfolge **ApiKind=MongoDb** hinzu:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>Vermeiden Sie Portnummern in der Endpunkt-URL. Wenn Sie die Portnummer einfügen, kann Azure Search Ihre Azure Cosmos DB-Datenbank nicht indizieren.|
+|**Anmeldeinformationen** | Erforderlich. Muss eine Cosmos DB-Verbindungszeichenfolge sein.<br/>Bei SQL-Sammlungen weisen Verbindungszeichenfolgen folgendes Format auf: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/>Bei MongoDB-Sammlungen fügen Sie der Verbindungszeichenfolge **ApiKind=MongoDb** hinzu:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/>Vermeiden Sie Portnummern in der Endpunkt-URL. Wenn Sie die Portnummer einfügen, kann Azure Search Ihre Azure Cosmos DB-Datenbank nicht indizieren.|
 | **container** | Enthält die folgenden Elemente: <br/>**name:** Erforderlich. Geben Sie die ID der zu indizierenden Datenbanksammlung an.<br/>**Abfrage**: Optional. Sie können eine Abfrage spezifizieren, um ein beliebiges JSON-Dokument in ein Flatfile-Schema zu reduzieren, welches Azure Search indizieren kann.<br/>Abfragen werden für MongoDB-Sammlungen nicht unterstützt. |
 | **dataChangeDetectionPolicy** | Empfohlen. Weitere Informationen finden Sie im Abschnitt [Indizieren von geänderten Dokumenten](#DataChangeDetectionPolicy).|
 |**dataDeletionDetectionPolicy** | Optional. Weitere Informationen finden Sie im Abschnitt [Indizieren von gelöschten Dokumenten](#DataDeletionDetectionPolicy).|

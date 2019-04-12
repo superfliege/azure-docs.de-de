@@ -15,12 +15,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c68e937c1c4e77a5b24b48f8b73271bf8ec9da66
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 49b93cb7852692e4dad65fcbd72cd749db1b16fb
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170801"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540906"
 ---
 # <a name="risky-ip-report-public-preview"></a>Bericht über riskante IP-Adressen (öffentliche Vorschauversion)
 AD FS-Kunden können Endpunkte für die Kennwortauthentifizierung für den Zugriff über das Internet verfügbar machen, um Authentifizierungsdienste für Endbenutzer bereitzustellen, damit diese auf SaaS-Anwendungen wie Office 365 zugreifen können. In diesem Fall ist es möglich, dass ein böswilliger Benutzer versucht, sich an Ihrem AD FS-System anzumelden, um das Kennwort eines Endbenutzers zu erraten und Zugriff auf Anwendungsressourcen zu erhalten. AD FS verfügt seit der Einbindung in Windows Server 2012 R2 über die Funktion zum Sperren von Extranet-Konten, um diese Arten von Angriffen zu verhindern. Falls Sie eine frühere Version verwenden, empfehlen wir Ihnen dringend, Ihr AD FS-System auf Windows Server 2016 zu aktualisieren. <br />
@@ -38,7 +38,7 @@ Außerdem ist es möglich, dass von einer einzelnen IP-Adresse versucht wird, me
 > 
 
 ## <a name="what-is-in-the-report"></a>Inhalt des Berichts
-Jeder Eintrag im Bericht über riskante IP-Adressen enthält aggregierte Informationen zu fehlgeschlagenen AD FS-Anmeldeaktivitäten, für die der angegebene Schwellenwert überschritten wurde. Er enthält die folgenden Informationen: ![Azure AD Connect Health-Portal](./media/how-to-connect-health-adfs/report4a.png)
+Die IP-Adressen der Clients mit fehlgeschlagenen Anmeldeaktivitäten werden über Webanwendungsproxy-Server aggregiert. Jeder Eintrag im Bericht über riskante IP-Adressen enthält aggregierte Informationen zu fehlgeschlagenen AD FS-Anmeldeaktivitäten, für die der angegebene Schwellenwert überschritten wurde. Er enthält die folgenden Informationen: ![Azure AD Connect Health-Portal](./media/how-to-connect-health-adfs/report4a.png)
 
 | Berichtselement | BESCHREIBUNG |
 | ------- | ----------- |

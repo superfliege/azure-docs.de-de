@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 1f6887a403e03ac11bb080a1d9855daff66ca088
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f761af3a5a3f08e4da89d8869aea5d666ecd69d0
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096774"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517265"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Verfolgen von Kosten eines Labs in Azure DevTest Labs
 Dieser Artikel enthält Informationen dazu, wie Sie die Kosten Ihres Labs nachverfolgen. Sie erfahren darin, wie Sie den geschätzten Kostentrend des Labs für den aktuellen Kalendermonat anzeigen. Außerdem erfahren Sie, wie Sie pro Ressource im Lab die Kosten für den bisherigen Kalendermonat anzeigen.
@@ -71,7 +71,7 @@ Mit DevTest Labs können Sie die Kosten für Ihr Lab besser verwalten, indem Sie
    - Geben Sie **Zielkosten** an. Zum Beispiel den Betrag, den Sie für dieses Lab im definierten Zeitraum aufwenden möchten.
    - Aktivieren bzw. deaktivieren Sie die Schwellenwerte, die gemeldet werden sollen – in Inkrementen von 25% bis zum Höchstwert von 125% der angegebenen **Zielkosten**.
       - **Benachrichtigen:** Wenn dieser Schwellenwert erreicht ist, werden Sie über eine Webhook-URL benachrichtigt, die Sie angegeben haben.
-      - **Plot on chart** (Im Diagramm zeichnen): Wenn dieser Schwellenwert erreicht ist, werden die Ergebnisse im Kostentrendgraphen dargestellt, den Sie wie unter [Anzeigen des Diagramms „Monatlicher geschätzter Kostentrend“](#viewing-the-monthly-estimated-cost-trend-chart) beschrieben anzeigen können.
+      - **Plot on chart** (Im Diagramm zeichnen): Wenn dieser Schwellenwert erreicht ist, werden die Ergebnisse im Kostentrendgraphen dargestellt, den Sie wie unter Anzeigen des Diagramms „Monatlicher geschätzter Kostentrend“ beschrieben anzeigen können.
    - Wenn Sie für die Erreichung des Schwellenwerts die Option **Benachrichtigen** wählen, müssen Sie eine Webhook-URL angeben. Wählen Sie im Bereich „Kostenintegrationen“ die Option **Klicken Sie hier, um eine Integration hinzuzufügen**. Geben Sie im Bereich „Benachrichtigung konfigurieren“ eine **Webhook-URL** ein, und wählen Sie **OK** aus.
 
        ![Bereich „Benachrichtigung konfigurieren“](./media/devtest-lab-configure-cost-management/configure-notification.png)

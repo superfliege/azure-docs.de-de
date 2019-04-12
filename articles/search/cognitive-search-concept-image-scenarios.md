@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 9e4b9d8cf3300f977824f95aeb14a614d8897abd
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: f1491d6b87816dfc70e94e01653567bda101d045
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430266"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916970"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Verarbeiten und Extrahieren von Text aus Bildern in kognitiven Suchszenarien
 
@@ -34,7 +34,7 @@ Die Bildnormalisierung kann nicht deaktiviert werden. Qualifikationen, die Bilde
 
 | Konfigurationsparameter | BESCHREIBUNG |
 |--------------------|-------------|
-| imageAction   | Legen Sie diese Eigenschaft auf „none“ fest, falls bei der Erkennung von eingebetteten Bildern oder Bilddateien keine Aktion erfolgen soll. <br/>Wenn Sie die Eigenschaft auf „generateNormalizedImages“ festlegen, wird im Rahmen der Dokumentaufschlüsselung ein Array mit normalisierten Bildern generiert.<br/>Legen Sie diese Option auf „generateNormalizedImagePerPage“ fest, um ein Array von normalisierten Bildern zu erzeugen, bei dem für PDFs in Ihrer Datenquelle jede Seite in ein Ausgabebild gerendert wird.  Die Funktionalität ist die gleiche wie bei „generateNormalizedImages“ für Nicht-PDF-Dateitypen.<br/>Für alle anderen Optionen als „none“ werden diese Bilder im Feld *normalized_images* verfügbar gemacht. <br/>Der Standardwert ist „none“. Diese Konfiguration ist nur für Blobdatenquellen relevant, wenn „dataToExtract" auf „contentAndMetadata“ festgelegt ist. |
+| imageAction   | Legen Sie diese Eigenschaft auf „none“ fest, falls bei der Erkennung von eingebetteten Bildern oder Bilddateien keine Aktion erfolgen soll. <br/>Wenn Sie die Eigenschaft auf „generateNormalizedImages“ festlegen, wird im Rahmen der Dokumentaufschlüsselung ein Array mit normalisierten Bildern generiert.<br/>Legen Sie diese Option auf „generateNormalizedImagePerPage“ fest, um ein Array von normalisierten Bildern zu erzeugen, bei dem für PDFs in Ihrer Datenquelle jede Seite in ein Ausgabebild gerendert wird.  Die Funktionalität ist die gleiche wie bei „generateNormalizedImages“ für Nicht-PDF-Dateitypen.<br/>Für alle anderen Optionen als „none“ werden diese Bilder im Feld *normalized_images* verfügbar gemacht. <br/>Der Standardwert ist „none“. Diese Konfiguration ist nur für Blobdatenquellen relevant, wenn „dataToExtract" auf „contentAndMetadata“ festgelegt ist. <br/>Maximal 1000 Bilder werden aus einem angegebenen Dokument extrahiert. Wenn in einem Dokument mehr als 1000 Bilder vorhanden sind, werden die ersten 1000 extrahiert, und eine Warnung wird generiert. |
 |  normalizedImageMaxWidth | Die maximale Breite (in Pixel) für generierte normalisierte Bilder. Der Standardwert ist „2000“.|
 |  normalizedImageMaxHeight | Die maximale Höhe (in Pixel) für generierte normalisierte Bilder. Der Standardwert ist „2000“.|
 
@@ -109,7 +109,7 @@ Mit der OCR-Qualifikation können Sie den Algorithmus für die Texterkennung in 
 
 Ein gängiges Szenario ist die Erstellung einer einzelnen Zeichenfolge mit sämtlichen Dateiinhalten (sowohl Text als auch Bildursprungstext):  
 
-1. [Extrahieren Sie „normalized_images“.](#get-normalized-images)
+1. [Extrahieren von „normalized_images“](#get-normalized-images)
 1. Führen Sie die OCR-Qualifikation mit `"/document/normalized_images"` als Eingabe aus.
 1. Führen Sie die Textdarstellung dieser Bilder mit dem unformatierten Text aus der Datei zusammen. Die beiden Textblöcke können mithilfe der [Textzusammenführungsqualifikation](cognitive-search-skill-textmerger.md) in einer einzelnen umfangreichen Zeichenfolge konsolidiert werden.
 
@@ -218,9 +218,9 @@ Um die normalisierten Koordinaten auf den ursprünglichen Koordinatenraum zu üb
 ```
 
 ## <a name="see-also"></a>Weitere Informationen
-+ [Create Indexer (Azure Search Service REST api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) (Erstellen eines Indexers (REST-API für den Azure Search-Dienst: Version 2017-11-11-Preview))
-+ [Image Analysis cognitive skill](cognitive-search-skill-image-analysis.md) (Kognitive Qualifikation: Bildanalyse)
-+ [OCR cognitive skill](cognitive-search-skill-ocr.md) (Kognitive Qualifikation: OCR)
-+ [Text Merge cognitive skill](cognitive-search-skill-textmerger.md) (Kognitive Qualifikation: Textzusammenführung)
-+ [How to create a skillset in an enrichment pipeline](cognitive-search-defining-skillset.md) (Erstellen einer Qualifikationsgruppe in einer Anreicherungspipeline)
-+ [How to map enriched fields to a searchable index](cognitive-search-output-field-mapping.md) (Zuordnen angereicherter Felder zu einem durchsuchbaren Index)
++ [Erstellen eines Indexers (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Kognitive Qualifikation: Bildanalyse](cognitive-search-skill-image-analysis.md)
++ [OCR-Qualifikation](cognitive-search-skill-ocr.md)
++ [Kognitive Qualifikation: Textzusammenführung](cognitive-search-skill-textmerger.md)
++ [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
++ [Zuordnen angereicherter Felder](cognitive-search-output-field-mapping.md)

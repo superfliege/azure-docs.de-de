@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: a89043f814bc97aeb081789e92d9e4488712a465
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3d5c0ac068a6644f3499da6c3b642a4a04408370
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439025"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879658"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Lastenausgleich mit der Azure-Suite für die Anwendungsbereitstellung
 
@@ -59,7 +59,7 @@ Für den globalen Lastenausgleich und das globale Routing stehen Ihnen Traffic M
 | Traffic Manager | Azure Front Door Service |
 | --------------- | ------------------------ |
 |**Alle Protokolle**: Da Traffic Manager auf der DNS-Ebene arbeitet, können Sie jede Art von Netzwerkdatenverkehr weiterleiten (TTP, TCP, UDP, usw.). | **HTTP-Beschleunigung**: Mit Azure Front Door Service wird Datenverkehr am Rand des Microsoft-Netzwerks über einen Proxy übermittelt.  Da die Wartezeit für die SSL-Aushandlung reduziert wird und „heiße“ Verbindungen zwischen Azure Front Door Service und Ihrer Anwendung verwendet werden, führt dies zu einer Verbesserung der Wartezeit und des Durchsatzes für HTTP(S)-Anforderungen.|
-|**Lokales Routing**: Beim Routing auf einer DNS-Ebene wird Datenverkehr immer von Punkt zu Punkt übermittelt.  Für das Routing von Ihrer Filiale zu Ihrem lokalen Rechenzentrum kann ein direkter Pfad verwendet werden. Mit Traffic Manager ist dies selbst in Ihrem eigenen Netzwerk möglich. | **Unabhängige Skalierbarkeit**: Da Azure Front Door Service HTTP-Anforderungen verarbeitet, können Anforderungen an unterschiedliche URL-Pfade basierend auf Regeln und der Integrität der einzelnen Anwendungsmicroservices zu verschiedenen Back-End-/regionalen Dienstpools (Microservices) geleitet werden.|
+|**Lokales Routing:** Beim Routing auf einer DNS-Ebene wird Datenverkehr immer von Punkt zu Punkt übermittelt.  Für das Routing von Ihrer Filiale zu Ihrem lokalen Rechenzentrum kann ein direkter Pfad verwendet werden. Mit Traffic Manager ist dies selbst in Ihrem eigenen Netzwerk möglich. | **Unabhängige Skalierbarkeit**: Da Azure Front Door Service HTTP-Anforderungen verarbeitet, können Anforderungen an unterschiedliche URL-Pfade basierend auf Regeln und der Integrität der einzelnen Anwendungsmicroservices zu verschiedenen Back-End-/regionalen Dienstpools (Microservices) geleitet werden.|
 |**Abrechnungsformat:** Die DNS-basierte Abrechnung passt sich Ihren Benutzern an und bleibt bei Diensten mit mehr Benutzern preislich konstant, um die Kosten bei höherer Nutzung zu senken. |**Inlinesicherheit**: Azure Front Door Service ermöglicht die Verwendung von Regeln (z.B. Ratenbegrenzung und Hinzufügen von IP-Adressen zu Zugriffssteuerungslisten), mit denen Sie Ihre Back-Ends schützen können, bevor Datenverkehr Ihre Anwendung erreicht. 
 
 </br>Aufgrund der Vorteile, die Azure Front Door Service in Bezug auf die Leistung, Funktionsfähigkeit und Sicherheit für HTTP-Workloads bietet, empfehlen wir Kunden die Verwendung von Azure Front Door Service für ihre HTTP-Workloads.    Traffic Manager und Azure Front Door Service können parallel verwendet werden, um den gesamten Datenverkehr für Ihre Anwendung zu verarbeiten. 

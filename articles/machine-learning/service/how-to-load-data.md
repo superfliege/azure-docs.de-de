@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 2/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0e43f7e53242c0e9dbdc3390a3b1ff94050a34dc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 34dd20826928d1ab2ba1fc7980c7d47b796ea663
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000270"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311015"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>Laden und Lesen von Daten mit Azure Machine Learning
 
@@ -291,7 +291,7 @@ servicePrincipalAppId = "8dd38f34-1fcb-4ff9-accd-7cd60b757174"
 
 ### <a name="acquire-an-oauth-access-token"></a>Abrufen eines OAuth-Zugriffstokens
 
-Erstellen Sie mithilfe des Pakets `adal` (`pip install adal`) einen Authentifizierungskontext auf dem MSFT-Mandanten, und rufen Sie ein OAuth-Zugriffstoken ab. Bei ADLS muss die Ressource in der Tokenanforderung für https://datalake.azure.net sein, die sich von den meisten anderen Azure-Ressourcen unterscheidet.
+Erstellen Sie mithilfe des Pakets `adal` (`pip install adal`) einen Authentifizierungskontext auf dem MSFT-Mandanten, und rufen Sie ein OAuth-Zugriffstoken ab. Bei ADLS muss die Ressource in der Tokenanforderung für „https:\//datalake.azure.net“ sein, die sich von den meisten anderen Azure-Ressourcen unterscheidet.
 
 ```python
 import adal
@@ -314,4 +314,4 @@ dflow.to_pandas_dataframe().head()
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Entwurfsmuster und Beispiele zur Verwendung finden Sie in der [Übersicht](https://aka.ms/data-prep-sdk) zum SDK.
-* Ein Beispiel für ein spezifisches Szenario finden Sie im [Tutorial](tutorial-data-prep.md) zum Azure Machine Learning Data Prep SDK.
+* Ein Beispiel zum Lösen eines spezifischen Szenarios finden Sie im [Tutorial](tutorial-data-prep.md) zum Azure Machine Learning-Data Prep SDK.

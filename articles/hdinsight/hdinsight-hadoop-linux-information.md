@@ -8,13 +8,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 08/09/2018
-ms.openlocfilehash: 43b672569b398f636b2e02172428cf072febb156
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.date: 03/20/2019
+ms.openlocfilehash: c149c6466f7d86f5cb22c840d4353c3939768768
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202451"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58518982"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informationen zur Verwendung von HDInsight unter Linux
 
@@ -28,8 +28,9 @@ Azure HDInsight-Cluster stellen Apache Hadoop in einer vertrauten Linux-Umgebung
 In vielen Schritten in diesem Dokument werden die folgenden Hilfsprogramme verwendet. Sie müssen diese also möglicherweise auf Ihrem System installieren.
 
 * [cURL](https://curl.haxx.se/) – wird für die Kommunikation mit webbasierten Diensten verwendet.
-* [jq](https://stedolan.github.io/jq/) – wird verwendet, um JSON-Dokumente zu analysieren.
-* [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-az-cli2) – wird zur Remoteverwaltung von Azure-Diensten verwendet.
+* **jq**, ein JSON-Befehlszeilenprozessor.  Siehe [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
+* [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli) – wird zur Remoteverwaltung von Azure-Diensten verwendet.
+* **SSH-Client**. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="users"></a>Benutzer
 
@@ -39,23 +40,23 @@ In die Domäne eingebundenes HDInsight bietet Unterstützung mehrerer Benutzer s
 
 ## <a name="domain-names"></a>Domänennamen
 
-Der vollqualifizierte Domänenname (FQDN) für die Verbindung zum Cluster aus dem Internet lautet **&lt;Clustername>.azurehdinsight.net** oder (nur für SSH) **&lt;Clustername>-ssh.azurehdinsight.net**.
+Der vollqualifizierte Domänenname (FQDN), der beim Herstellen einer Verbindung mit dem Cluster über das Internet verwendet wird, lautet `CLUSTERNAME.azurehdinsight.net` oder `CLUSTERNAME-ssh.azurehdinsight.net` (nur für SSH).
 
 Intern verfügt jeder Knoten im Cluster über einen Namen, der während der Konfiguration des Clusters zugewiesen wird. Die Clusternamen finden Sie auf der Ambari-Webbenutzeroberfläche auf der Seite **Hosts**. Sie können auch Folgendes verwenden, um eine Liste mit Hosts aus der Ambari-REST-API abzurufen:
 
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
 
-Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres Clusters. Geben Sie bei entsprechender Aufforderung das Kennwort des Administratorkontos für den Cluster ein. Dieser Befehl gibt ein JSON-Dokument zurück, das eine Liste der Hosts im Cluster enthält. Jq wird zum Extrahieren des Werts des Elements `host_name` für jeden Host verwendet.
+Ersetzen Sie `CLUSTERNAME` durch den Namen Ihres Clusters. Geben Sie bei entsprechender Aufforderung das Kennwort des Administratorkontos für den Cluster ein. Dieser Befehl gibt ein JSON-Dokument zurück, das eine Liste der Hosts im Cluster enthält. [jq](https://stedolan.github.io/jq/) wird zum Extrahieren des Werts des Elements `host_name` für jeden Host verwendet.
 
 Wenn Sie den Namen des Knotens für einen bestimmten Dienst suchen müssen, können Sie Ambari nach dieser Komponente abfragen. Verwenden Sie beispielsweise den folgenden Befehl, um nach den Hosts für den HDFS-Namensknoten zu suchen:
 
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/NAMENODE" | jq '.host_components[].HostRoles.host_name'
 
-Mit diesem Befehl wird ein JSON-Dokument mit einer Beschreibung des Diensts zurückgegeben. Anschließend ruft jq nur den `host_name`-Wert für die Hosts ab.
+Mit diesem Befehl wird ein JSON-Dokument mit einer Beschreibung des Diensts zurückgegeben. Anschließend ruft [jq](https://stedolan.github.io/jq/) nur den `host_name`-Wert für die Hosts ab.
 
 ## <a name="remote-access-to-services"></a>Remotezugriff auf Dienste
 
-* **Ambari (Web)** – https://&lt;Clustername&gt;.azurehdinsight.net
+* **Ambari (Web)** - https://CLUSTERNAME.azurehdinsight.net
 
     Authentifizieren Sie sich mit dem Benutzernamen und Kennwort des Clusteradministrators, und melden Sie sich anschließend bei Ambari an.
 
@@ -66,21 +67,21 @@ Mit diesem Befehl wird ein JSON-Dokument mit einer Beschreibung des Diensts zur�
     >
     > Damit Sie die Funktionalität der Ambari-Webbenutzeroberfläche vollständig nutzen können, verwenden Sie einen SSH-Tunnel, um den Webdatenverkehr per Proxy an den Clusterhauptknoten weiterzuleiten. Weitere Informationen finden Sie unter [Verwenden von SSH-Tunneling zum Zugriff auf die Apache Ambari-Webbenutzeroberfläche, ResourceManager, JobHistory, NameNode, Oozie und andere Webbenutzeroberflächen](hdinsight-linux-ambari-ssh-tunnel.md).
 
-* **Ambari (REST)** – https://&lt;Clustername&gt;.azurehdinsight.net/ambari
+* **Ambari (REST)** - https://CLUSTERNAME.azurehdinsight.net/ambari
 
     > [!NOTE]  
     > Authentifizieren Sie sich mit dem Benutzernamen und Kennwort des Clusteradministrators.
     >
     > Die Authentifizierung erfolgt unverschlüsselt. Verwenden Sie immer HTTPS, um eine sichere Verbindung zu gewährleisten.
 
-* **WebHCat (Templeton)** – https://&lt;Clustername&gt;.azurehdinsight.net/templeton
+* **WebHCat (Templeton)** - https://CLUSTERNAME.azurehdinsight.net/templeton
 
     > [!NOTE]  
     > Authentifizieren Sie sich mit dem Benutzernamen und Kennwort des Clusteradministrators.
     >
     > Die Authentifizierung erfolgt unverschlüsselt. Verwenden Sie immer HTTPS, um eine sichere Verbindung zu gewährleisten.
 
-* **SSH** - &lt;Clustername&gt;-ssh.azurehdinsight.net an Port 22 oder 23. Port 22 dient zum Herstellen einer Verbindung mit dem primären Hauptknoten, während 23 zum Herstellen einer Verbindung mit dem sekundären Knoten verwendet wird. Weitere Informationen zu Hauptknoten finden Sie unter [Verfügbarkeit und Zuverlässigkeit von Apache Hadoop-Clustern in HDInsight](hdinsight-high-availability-linux.md).
+* **SSH** – CLUSTERNAME-ssh.azurehdinsight.net an Port 22 oder 23. Port 22 dient zum Herstellen einer Verbindung mit dem primären Hauptknoten, während 23 zum Herstellen einer Verbindung mit dem sekundären Knoten verwendet wird. Weitere Informationen zu Hauptknoten finden Sie unter [Verfügbarkeit und Zuverlässigkeit von Apache Hadoop-Clustern in HDInsight](hdinsight-high-availability-linux.md).
 
     > [!NOTE]  
     > Sie können auf einem Clientcomputer nur über SSH auf die Hauptknoten des Clusters zugreifen. Nachdem die Verbindung hergestellt wurde, können Sie von einem Hauptknoten aus über SSH auf die Workerknoten zugreifen.
@@ -91,8 +92,8 @@ Weitere Informationen finden Sie im Dokument [Ports für Apache Hadoop-Dienste i
 
 Zu Hadoop zugehörige Dateien befinden sich auf den Clusterknoten in `/usr/hdp`. Dieses Verzeichnis enthält die folgenden Unterverzeichnisse:
 
-* **2.2.4.9-1**: Der Name des Verzeichnisses ist die Version von Hortonworks Data Platform, die von HDInsight verwendet wird. Der Wert Ihres Clusters unterscheidet sich möglicherweise vom hier aufgeführten.
-* **current**: Dieses Verzeichnis enthält Links zu den Unterverzeichnissen im Verzeichnis **2.2.4.9-1**. Da dieses Verzeichnis vorhanden ist, müssen Sie sich nicht die Versionsnummer merken.
+* **2.6.5.3006-29**: Der Name des Verzeichnisses ist die Version von Hortonworks Data Platform, die von HDInsight verwendet wird. Der Wert Ihres Clusters unterscheidet sich möglicherweise vom hier aufgeführten.
+* **current**: Dieses Verzeichnis enthält Links zu den Unterverzeichnissen im Verzeichnis **2.6.5.3006-29**. Da dieses Verzeichnis vorhanden ist, müssen Sie sich nicht die Versionsnummer merken.
 
 Beispieldaten und JAR-Dateien finden Sie im Hadoop Distributed File System unter `/example` und `/HdiSamples`.
 
@@ -150,7 +151,9 @@ Nutzen Sie bei Verwendung von __Azure Data Lake Storage Gen1__ eines der folgend
 
 Mithilfe von Ambari können Sie die Standardspeicherkonfiguration des Clusters abrufen. Verwenden Sie den folgenden Befehl, um HDFS-Konfigurationsinformationen über „curl“ abzurufen, und filtern Sie sie mit [jq](https://stedolan.github.io/jq/):
 
-```curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'```
+```bash
+curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'
+```
 
 > [!NOTE]  
 > Durch diesen Befehl wird die erste auf den Server angewendete Konfiguration (`service_config_version=1`) zurückgegeben, die diese Informationen enthält. Möglicherweise müssen Sie alle Konfigurationsversionen auflisten, um die neueste zu finden.
@@ -163,19 +166,23 @@ Dieser Befehl gibt einen Wert zurück, der in etwa wie die folgenden URIs aussie
 
 * `adl://home`, bei Verwendung von Azure Data Lake Storage. Verwenden Sie zum Abrufen des Data Lake Storage-Namens den folgenden REST-Aufruf:
 
-    ```curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'```
+     ```bash
+    curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'
+    ```
 
     Mit diesem Befehl wird der folgende Hostname zurückgegeben: `<data-lake-store-account-name>.azuredatalakestore.net`.
 
     Verwenden Sie zum Abrufen des Verzeichnisses innerhalb des Speichers, der das Stammverzeichnis für HDInsight ist, den folgenden REST-Aufruf:
 
-    ```curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.mountpoint"] | select(. != null)'```
+    ```bash
+    curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.mountpoint"] | select(. != null)'
+    ```
 
     Mit diesem Befehl wird ein Pfad zurückgegeben, der in etwa wie folgt aussieht: `/clusters/<hdinsight-cluster-name>/`.
 
 Sie können die Speicherinformationen auch über das Azure-Portal finden, indem Sie die folgenden Schritte ausführen:
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihren HDInsight-Cluster aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/)Ihren HDInsight-Cluster aus.
 
 2. Wählen Sie im Abschnitt **Eigenschaften** den Eintrag **Speicherkonten** aus. Die Speicherinformationen für den Cluster werden angezeigt.
 
@@ -210,7 +217,7 @@ Wenn Sie __Azure Data Lake Storage__ nutzen, finden Sie unter den folgenden Link
 
 ## <a name="scaling"></a>Skalieren des Clusters
 
-Mithilfe der Clusterskalierung können Sie die Anzahl der von einem Cluster verwendeten Datenknoten ändern. Sie können Skalierungsvorgänge ausführen, während andere Aufträge oder Prozesse auf einem Cluster ausgeführt werden.
+Mithilfe der Clusterskalierung können Sie die Anzahl der von einem Cluster verwendeten Datenknoten ändern. Sie können Skalierungsvorgänge ausführen, während andere Aufträge oder Prozesse auf einem Cluster ausgeführt werden.  Weitere Informationen finden Sie auch unter [Skalieren von HDInsight-Clustern](./hdinsight-scaling-best-practices.md).
 
 Folgende Clustertypen sind von der Skalierung betroffen:
 
@@ -237,7 +244,7 @@ Folgende Clustertypen sind von der Skalierung betroffen:
 
     * **Storm-Benutzeroberfläche**: Führen Sie die folgenden Schritte aus, um eine Topologie mithilfe der Storm-Benutzeroberfläche erneut auszugleichen.
 
-        1. Öffnen Sie **https://CLUSTERNAME.azurehdinsight.net/stormui** im Webbrowser, wobei CLUSTERNAME der Name Ihres Storm-Clusters ist. Geben Sie bei entsprechender Aufforderung den Namen und das Kennwort des HDInsight-Clusteradministrators ein, die Sie beim Erstellen des Clusters festgelegt haben.
+        1. Öffnen Sie `https://CLUSTERNAME.azurehdinsight.net/stormui` im Webbrowser, wobei `CLUSTERNAME` der Name Ihres Storm-Clusters ist. Geben Sie bei entsprechender Aufforderung den Namen und das Kennwort des HDInsight-Clusteradministrators ein, die Sie beim Erstellen des Clusters festgelegt haben.
         2. Wählen Sie die Topologie aus, die Sie erneut ausgleichen möchten, und klicken Sie dann auf die Schaltfläche **Neu ausgleichen**. Geben Sie die Verzögerung ein, bevor der Neuausgleich ausgeführt wird.
 
 * **Kafka**: Nach Skalierungsvorgängen sollten Partitionsreplikate ausgeglichen werden. Weitere Informationen finden Sie unter [Hochverfügbarkeit Ihrer Daten mit Apache Kafka in HDInsight](./kafka/apache-kafka-high-availability.md).
@@ -275,7 +282,7 @@ Wenn Sie beispielsweise die neueste Version von [Apache DataFu](https://datafu.i
 
 Um eine andere Version einer Komponente zu verwenden, laden Sie die benötigte Version hoch, und verwenden Sie sie in Ihren Aufträgen.
 
-> [!WARNING]
+> [!IMPORTANT]
 > Komponenten, die mit dem HDInsight-Cluster bereitgestellt werden, werden vollständig unterstützt, und Microsoft Support hilft Ihnen, Probleme im Zusammenhang mit diesen Komponenten zu isolieren und zu beheben.
 >
 > Für benutzerdefinierte Komponenten steht kommerziell angemessener Support für eine weiterführende Behebung des Problems zur Verfügung. Auf diese Weise kann das Problem behoben werden, ODER Sie werden aufgefordert, verfügbare Kanäle für Open-Source-Technologien in Anspruch zu nehmen, die über umfassende Kenntnisse für diese Technologien verfügen. So können z. B. viele Communitywebsites verwendet werden, wie: [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Für Apache-Projekte gibt es auch Projektwebsites auf [https://apache.org](https://apache.org). Beispiel: [Hadoop](https://hadoop.apache.org/), [Spark](https://spark.apache.org/).
@@ -283,6 +290,7 @@ Um eine andere Version einer Komponente zu verwenden, laden Sie die benötigte V
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Migrieren von Windows-basiertem HDInsight zum Linux-basierten](hdinsight-migrate-from-windows-to-linux.md)
+* [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-REST-API](./hdinsight-hadoop-manage-ambari-rest-api.md)
 * [Verwenden von Apache Hive mit HDInsight](hadoop/hdinsight-use-hive.md)
 * [Verwenden von Apache Pig mit HDInsight](hadoop/hdinsight-use-pig.md)
 * [Verwenden von MapReduce-Aufträgen mit HDInsight](hadoop/hdinsight-use-mapreduce.md)

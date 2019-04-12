@@ -9,19 +9,17 @@ manager: daveba
 ms.assetid: 6d42fb79-d9cf-48da-8445-f482c4c536af
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbfc325d1a33db45afecf30bfa21244e3336961d
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 706a826d1b256e95e459d2a44cdb13ee56c70599
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295486"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499130"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Benutzerdefinierte Installation von Azure AD Connect
 Die **benutzerdefinierten Einstellungen** von Azure AD Connect werden verwendet, wenn Sie mehr Optionen für die Installation benötigen. Sie kommen zum Einsatz, wenn Sie über mehrere Gesamtstrukturen verfügen oder optionale Features konfigurieren möchten, die nicht Teil der Expressinstallation sind. Sie werden in allen Fällen verwendet, in denen die Option [**Expressinstallation**](how-to-connect-install-express.md) für Ihre Bereitstellung oder Topologie nicht ausreicht.
@@ -37,11 +35,11 @@ Klicken Sie auf dieser Seite auf **Anpassen** , um eine Installation mit benutze
 ### <a name="install-required-components"></a>Installieren der erforderlichen Komponenten
 Bei der Installation der Synchronisierungsdienste können Sie den optionalen Konfigurationsabschnitt deaktiviert lassen, sodass Azure AD Connect alles automatisch einrichtet. Azure AD Connect richtet eine SQL Server 2012 Express LocalDB-Instanz ein, erstellt die entsprechenden Gruppen und weist Berechtigungen zu. Wenn Sie die Standardeinstellungen ändern möchten, können Sie sich in der folgenden Tabelle über die verfügbaren optionalen Konfigurationsoptionen informieren.
 
-![Erforderliche Komponenten](./media/how-to-connect-install-custom/requiredcomponents.png)
+![Erforderliche Komponenten](./media/how-to-connect-install-custom/requiredcomponents2.png)
 
 | Optionale Konfiguration | BESCHREIBUNG |
 | --- | --- |
-| Verwenden eines vorhandenen SQL Servers |Ermöglicht Ihnen die Angabe des SQL-Servernamens und des Instanznamens. Wählen Sie diese Option aus, wenn Sie bereits über einen Datenbankserver verfügen, den Sie verwenden möchten. Geben Sie unter **Instanzname** den Instanznamen, ein Komma und die Portnummer ein, falls das Browsen für SQL Server nicht aktiviert ist. |
+| Verwenden eines vorhandenen SQL Servers |Ermöglicht Ihnen die Angabe des SQL-Servernamens und des Instanznamens. Wählen Sie diese Option aus, wenn Sie bereits über einen Datenbankserver verfügen, den Sie verwenden möchten. Geben Sie unter **Instanzname** den Instanznamen, ein Komma und die Portnummer ein, falls das Browsen für SQL Server nicht aktiviert ist.  Geben Sie dann den Namen der Azure AD Connect-Datenbank an.  Ihre SQL-Berechtigungen bestimmen, ob eine neue Datenbank erstellt wird oder Ihr SQL-Administrator die Datenbank im Voraus erstellen muss.  Ob Sie über SQL SA-Berechtigungen verfügen, erfahren Sie unter [Installieren mithilfe einer vorhandenen Datenbank](how-to-connect-install-existing-database.md).  Ob Sie delegierte Berechtigungen (DBO) erhalten haben, erfahren Sie unter [Installieren von Azure AD Connect mit delegierten SQL-Administratorrechten](how-to-connect-install-sql-delegation.md). |
 | Verwenden eines vorhandenen Dienstkontos |Für Azure AD Connect wird standardmäßig ein virtuelles Dienstkonto für die Synchronisierungsdienste genutzt. Wenn Sie einen Remote-SQL Server oder einen Proxy mit Authentifizierungsanforderung verwenden, benötigen Sie ein **verwaltetes Dienstkonto** oder ein Dienstkonto in der Domäne und das Kennwort. Geben Sie in diesen Fällen das zu verwendende Konto ein. Stellen Sie sicher, dass der die Installation ausführende Benutzer ein SA in SQL ist, damit das Dienstkonto erstellt werden kann.  Weitere Informationen finden Sie unter [Azure AD Connect: Konten und Berechtigungen](reference-connect-accounts-permissions.md#adsync-service-account). </br></br>Mit dem neuesten Build kann der SQL-Administrator nun eine Out-of-Band-Datenbankbereitstellung ausführen, sodass die Datenbank anschließend vom Azure AD Connect-Administrator mit Datenbankbesitzerrechten installiert werden kann.  Weitere Informationen finden Sie unter [Install Azure AD Connect using SQL delegated administrator permissions](how-to-connect-install-sql-delegation.md) (Installieren von Azure AD Connect mit Berechtigungen eines delegierten SQL-Administrators).|
 | Angeben benutzerdefinierter Synchronisierungsgruppen |Azure AD Connect erstellt beim Installieren der Synchronisierungsdienste standardmäßig vier lokale Gruppen auf dem Server. Diese Gruppen sind: Administratorengruppe, Operatorengruppe, Durchsuchen-Gruppe und die Gruppe „Kennwort zurücksetzen“. Hier können Sie Ihre eigenen Gruppen angeben. Die Gruppen müssen sich lokal auf dem Server befinden und dürfen nicht in der Domäne sein. |
 

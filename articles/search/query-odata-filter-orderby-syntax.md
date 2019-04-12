@@ -1,7 +1,7 @@
 ---
 title: 'OData-Ausdruckssyntax für Filter und Sortierklauseln: Azure Search'
 description: OData-Syntax für Filter- und Sortierausdrücke für Azure Search-Abfragen.
-ms.date: 01/31/2019
+ms.date: 03/27/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f0fd93af7cba3057ad4c2224aa1298a221505645
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: ab98c3be75fb59603be66ee84e0d288de56cdc91
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541051"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648502"
 ---
 # <a name="odata-expression-syntax-for-filters-and-order-by-clauses-in-azure-search"></a>OData-Ausdruckssyntax für Filter und Sortierklauseln in Azure Search
 
@@ -84,9 +84,11 @@ POST /indexes/hotels/docs/search?api-version=2017-11-11
 
 - Die Funktion `search.in` testet, ob ein bestimmtes Zeichenfolgenfeld einem der Werte in einer angegebenen Liste entspricht. Sie kann auch in Any- oder All-Ausdrücken verwendet werden, um einen einzelnen Wert eines Zeichenfolgensammlungsfelds mit einer Liste von Werten zu vergleichen. Die Gleichheit zwischen dem Feld und den einzelnen Werten in der Liste wird wie beim `eq`-Operator unter Berücksichtigung der Groß-/Kleinschreibung ermittelt. Ein Ausdruck wie `search.in(myfield, 'a, b, c')` entspricht daher `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`, allerdings bietet `search.in` eine deutlich bessere Leistung. 
 
-  Der erste Parameter für die Funktion `search.in` ist der Verweis auf ein Zeichenfolgenfeld (oder eine Bereichsvariable für ein Zeichenfolgensammlungsfeld, sofern `search.in` innerhalb eines `any`- oder `all`- Ausdrucks verwendet wird). Der zweite Parameter ist eine Zeichenfolge, die die Liste der Werte enthält (getrennt durch Leerzeichen oder Kommas). Wenn Sie andere Trennzeichen als Leerzeichen und Kommas verwenden müssen, weil Ihre Werte diese Zeichen enthalten, können Sie einen optionalen dritten Parameter für `search.in` angeben. 
-
-  Dieser dritte Parameter ist eine Zeichenfolge, bei der jedes Zeichen oder jede Teilmenge der Zeichenfolge als Trennzeichen behandelt wird, wenn die Liste der Werte im zweiten Parameter analysiert wird.
+   Der erste Parameter für die Funktion `search.in` ist der Verweis auf ein Zeichenfolgenfeld (oder eine Bereichsvariable für ein Zeichenfolgensammlungsfeld, sofern `search.in` innerhalb eines `any`- oder `all`- Ausdrucks verwendet wird). 
+  
+   Der zweite Parameter ist eine Zeichenfolge, die die Liste der Werte enthält (getrennt durch Leerzeichen oder Kommas). 
+  
+   Der dritte Parameter ist eine Zeichenfolge, bei der jedes Zeichen oder jede Teilmenge der Zeichenfolge als Trennzeichen behandelt wird, wenn die Liste der Werte im zweiten Parameter analysiert wird. Wenn Sie andere Trennzeichen als Leerzeichen und Kommas verwenden müssen, weil Ihre Werte diese Zeichen enthalten, können Sie einen optionalen dritten Parameter für `search.in` angeben. 
 
   > [!NOTE]   
   > In manchen Szenarien muss ein Feld mit einer großen Anzahl von Konstantenwerten verglichen werden. Beispielsweise kann es bei der Implementierung von Sicherheitseinschränkungen mit Filtern erforderlich sein, das Dokument-ID-Feld mit einer Liste von IDs zu vergleichen, auf die dem anfordernden Benutzer Lesezugriff gewährt wird. In solchen Szenarien empfehlen wir ausdrücklich, die Funktion `search.in` anstelle einer komplizierten Disjunktion von Gleichheitsausdrücken zu nutzen. Verwenden Sie beispielsweise `search.in(Id, '123, 456, ...')` anstelle von `Id eq 123 or Id eq 456 or ....`. 
@@ -207,7 +209,7 @@ $filter=geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.
 $filter=description eq null
 ```
 
-Suche nach allen Hotels, deren Namen „Roach motel“ oder „Budget hotel“ entspricht:  
+Suche nach allen Hotels, deren Namen „Roach motel“ oder „Budget hotel“ entspricht. Ausdrücke enthalten Leerzeichen, die Standardtrennzeichen sind. Sie können ein alternatives Trennzeichen in einfachen Anführungszeichen als dritten Zeichenfolgenparameter angeben:  
 
 ```
 $filter=search.in(name, 'Roach motel,Budget hotel', ',')
@@ -223,6 +225,12 @@ Suche nach allen Hotels mit dem Tag „wifi“ oder „pool“:
 
 ```
 $filter=tags/any(t: search.in(t, 'wifi, pool'))
+```
+
+Suchen Sie eine Übereinstimmung mit Ausdrücken innerhalb einer Sammlung, z.B. „beheizte Handtuchhalter“ oder „Haartrockner inklusive“ in Tags. 
+
+```
+$filter=tags/any(t: search.in(t, 'heated towel racks,hairdryer included', ','))
 ```
 
 Suche nach allen Hotels ohne das Tag „motel“ oder „cabin“:  

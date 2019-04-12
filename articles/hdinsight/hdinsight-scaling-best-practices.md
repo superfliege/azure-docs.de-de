@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: ashish
-ms.openlocfilehash: e8a85401c0c7282d64ebcbe2f9180f25f36f7289
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cae0c97cb3084b0578f277852d646c199d1e2313
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108153"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316251"
 ---
 # <a name="scale-hdinsight-clusters"></a>Skalieren von HDInsight-Clustern
 
@@ -120,7 +120,7 @@ Nach dem Verlassen des abgesicherten Modus können Sie die temporären Dateien m
 
 * H100 Anweisung zum Anzeigen der Datenbanken kann nicht übermittelt werden: org.apache.thrift.transport.TTransportException: org.apache.http.conn.HttpHostConnectException: Fehler beim Herstellen der Verbindung mit hn0-clustername.servername.internal.cloudapp.net:10001 [hn0-clustername.servername. internal.cloudapp.net/1.1.1.1]: **Verbindung verweigert**
 
-* H020 Verbindung mit hn0-hdisrv.servername.bx.internal.cloudapp.net:10001: org.apache.thrift.transport.TTransportException konnte nicht hergestellt werden: HTTP-Verbindung mit http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/ konnte nicht erstellt werden. org.apache.http.conn.HttpHostConnectException: Fehler beim Herstellen der Verbindung mit hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28]: Verbindung verweigert: org.apache.thrift.transport.TTransportException: HTTP-Verbindung mit http://hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/ konnte nicht erstellt werden. org.apache.http.conn.HttpHostConnectException: Fehler beim Herstellen der Verbindung mit hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28]: **Verbindung verweigert**
+* H020 Verbindung mit hn0-hdisrv.servername.bx.internal.cloudapp.net:10001: org.apache.thrift.transport.TTransportException konnte nicht hergestellt werden: HTTP-Verbindung mit http:\//hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/ konnte nicht hergestellt werden. org.apache.http.conn.HttpHostConnectException: Fehler beim Herstellen der Verbindung mit hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28]: Verbindung verweigert: org.apache.thrift.transport.TTransportException: HTTP-Verbindung mit http:\//hn0-hdisrv.servername.bx.internal.cloudapp.net:10001/ konnte nicht hergestellt werden. org.apache.http.conn.HttpHostConnectException: Fehler beim Herstellen der Verbindung mit hn0-hdisrv.servername.bx.internal.cloudapp.net:10001 [hn0-hdisrv.servername.bx.internal.cloudapp.net/10.0.0.28]: **Verbindung verweigert**
 
 * Aus den Hive-Protokollen: WARN [main]: server.HiveServer2 (HiveServer2.java:startHiveServer2(442)) – Fehler beim Starten von HiveServer2 bei Versuch 21, java.lang.RuntimeException wird in 60 Sekunden erneut versucht: Fehler beim Anwenden der Autorisierungsrichtlinie auf die Hive-Konfiguration: org.apache.hadoop.ipc.RemoteException(org.apache.hadoop.ipc.RetriableException): org.apache.hadoop.hdfs.server.namenode.SafeModeException: **Verzeichnis kann nicht erstellen werden:** /tmp/hive/hive/70a42b8a-9437-466e-acbe-da90b1614374. **Namensknoten befindet sich im abgesicherten Modus**.
     Die gemeldeten 0 Blöcke benötigen weitere 9 Blöcke, um den Schwellenwert 0,9900 von insgesamt 9 Blöcken zu erreichen.

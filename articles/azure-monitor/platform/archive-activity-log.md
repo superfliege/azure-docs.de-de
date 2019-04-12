@@ -8,20 +8,15 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: nikiest
 ms.subservice: logs
-ms.openlocfilehash: 5328173090bce3e3adf51a1503e18c8da5532b0e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: b6009471048232b52020e4bef6272ed8cb1bd35b
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310900"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497753"
 ---
 # <a name="archive-the-azure-activity-log"></a>Archivieren des Azure-Aktivitätsprotokolls
 In diesem Artikel erfahren Sie, wie Sie Ihr [**Azure-Aktivitätsprotokoll**](../../azure-monitor/platform/activity-logs-overview.md) über das Azure-Portal, mithilfe von PowerShell-Cmdlets oder mithilfe der plattformübergreifenden Befehlszeilenschnittstelle in einem Speicherkonto archivieren. Dies ist hilfreich, wenn Sie Ihr Aktivitätsprotokoll (bei vollständiger Kontrolle über die Aufbewahrungsrichtlinie) zur Überwachung, statischen Analyse oder als Sicherungskopie länger als 90 Tage aufbewahren möchten. Falls Sie Ihre Ereignisse nur maximal 90 Tage lang aufbewahren möchten, müssen Sie keine Archivierung in einem Speicherkonto einrichten, da Aktivitätsprotokollereignisse in der Azure-Plattform auch ohne aktivierte Archivierung 90 Tage lang aufbewahrt werden.
-
-> [!WARNING]
-> Das Format der Protokolldaten im Speicherkonto wird am 1. November 2018 in JSON Lines geändert. [Dieser Artikel enthält eine Beschreibung der Auswirkungen und der Aktualisierung Ihrer Tools zur Verarbeitung des neuen Formats.](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
->
-> 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie beginnen, müssen Sie [ein Speicherkonto erstellen](../../storage/common/storage-quickstart-create-account.md) , in dem Sie Ihr Aktivitätsprotokoll archivieren können. Um den Zugriff auf Überwachungsdaten besser steuern zu können, wird dringend davon abgeraten, ein bereits vorhandenes Speicherkonto mit anderen, nicht überwachungsbezogenen Daten zu verwenden. Wenn Sie jedoch auch Diagnoseprotokolle und Metriken in einem Speicherkonto archivieren, ist es unter Umständen sinnvoll, dieses Speicherkonto auch für Ihr Aktivitätsprotokoll zu verwenden, damit sich alle Überwachungsdaten an einem zentralen Ort befinden. Das Speicherkonto muss sich nicht unter demselben Abonnement befinden, das Protokolle ausgibt, sofern der Benutzer, der die Einstellung konfiguriert, den entsprechenden RBAC-Zugriff auf beide Abonnements hat.
@@ -65,7 +60,7 @@ Legen Sie das **Protokollprofil** für ein Abonnement fest, um das Aktivitätspr
 | --- | --- | --- |
 | StorageAccountId |Ja |Ressourcen-ID des Speicherkontos, in dem Aktivitätsprotokolle gespeichert werden sollen. |
 | Standorte |Ja |Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. Mit `(Get-AzLocation).Location` können Sie eine Liste aller Regionen für Ihr Abonnement anzeigen. |
-| RetentionInDays |Nein  |Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von 0 werden die Protokolle dauerhaft (d.h. für immer) gespeichert. |
+| RetentionInDays |Nein  |Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 365). Bei einem Wert von 0 werden die Protokolle dauerhaft (d.h. für immer) gespeichert. |
 | Categories |Nein  |Kommagetrennte Liste mit den Ereigniskategorien, die erfasst werden sollen. Mögliche Werte sind „Write“, „Delete“ und „Action“.  Wird kein Wert angegeben, werden alle möglichen Werte angenommen. |
 
 ## <a name="archive-the-activity-log-via-cli"></a>Archivieren des Aktivitätsprotokolls mithilfe der Befehlszeilenschnittstelle
@@ -79,7 +74,7 @@ Legen Sie das **Protokollprofil** für ein Abonnement fest, um das Aktivitätspr
 | name |Ja |Name des Protokollprofils. |
 | storage-account-id |Ja |Ressourcen-ID des Speicherkontos, in dem Aktivitätsprotokolle gespeichert werden sollen. |
 | Locations |Ja |Durch Leerzeichen getrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. Mit `az account list-locations --query [].name` können Sie eine Liste aller Regionen für Ihr Abonnement anzeigen. |
-| Tage |Ja |Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von 0 werden die Protokolle dauerhaft (d.h. für immer) gespeichert.  Wenn der Wert 0 ist, muss der aktivierte Parameter auf „true“ festgelegt werden. |
+| Tage |Ja |Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 365). Bei einem Wert von 0 werden die Protokolle dauerhaft (d.h. für immer) gespeichert.  Wenn der Wert 0 ist, muss der aktivierte Parameter auf „true“ festgelegt werden. |
 |Aktiviert | Ja |„True“ oder „False“.  Wird zum Aktivieren bzw. Deaktivieren der Aufbewahrungsrichtlinie verwendet.  Ist „True“ festgelegt, muss für den Parameter „days“ ein Wert größer 0 angegeben werden.
 | categories |Ja |Durch Leerzeichen getrennte Liste mit den Ereigniskategorien, die erfasst werden sollen. Mögliche Werte sind „Write“, „Delete“ und „Action“. |
 

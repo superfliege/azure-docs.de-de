@@ -4,15 +4,15 @@ description: Informationen zur Collectorappliance in Azure Migrate
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 03/26/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 228d7b6994c67f9e14424624d264061634d80f27
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 224511b9748c540f2cd48a3d8393a9c74f76ce32
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080064"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498416"
 ---
 # <a name="about-the-collector-appliance"></a>Informationen zur Collectorappliance
 
@@ -82,7 +82,7 @@ Der Collector muss einige Voraussetzungsprüfungen bestehen, um sicherzustellen,
 ### <a name="connect-to-the-internet-via-a-proxy"></a>Herstellen einer Verbindung mit dem Internet über einen Proxy
 
 - Wenn der Proxyserver eine Authentifizierung erfordert, können Sie den Benutzernamen und das Kennwort bei der Einrichtung des Collectors angeben.
-- Die IP-Adresse bzw. der FQDN des Proxyservers sollte das Format *http://IPaddress* oder *http://FQDN* aufweisen.
+- Die IP-Adresse bzw. der FQDN des Proxyservers sollte das Format *http:\//IP-Adresse* oder *http:\//FQDN* aufweisen.
 - Es werden nur HTTP-Proxys unterstützt. HTTPS-basierte Proxyserver werden vom Collector nicht unterstützt.
 - Wenn es sich bei dem Proxyserver um einen abfangenden Proxy handelt, müssen Sie das Proxyzertifikat auf der Collector-VM importieren.
   1. Rufen Sie auf der Collector-VM den Eintrag **Startmenü** > **Computerzertifikate verwalten** auf.
@@ -150,6 +150,9 @@ vCenter Server | TCP 443 | Der Collector muss mit vCenter Server kommunizieren k
 RDP | TCP 3389 |
 
 ## <a name="collected-metadata"></a>Gesammelte Metadaten
+
+> [!NOTE]
+> Die von der Azure Migrate-Collectorappliance entdeckten Metadaten werden verwendet, um Ihnen zu helfen, Ihre Anwendungen bei der Migration nach Azure richtig zu skalieren. Außerdem sollen sie bei der Durchführung von Azure-Eignungsanalysen, Analysen der Anwendungsabhängigkeit und bei der Kostenplanung helfen. Microsoft verwendet diese Daten nicht zur Überprüfung der Compliance von Lizenzen.
 
 Die Collectorappliance ermittelt folgende Konfigurationsmetadaten für jede VM. Die Konfigurationsdaten für die VMs sind eine Stunde nach Beginn der Ermittlung verfügbar.
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 3676a1e4bf69f7d31bb347f99787c4e2f08721a9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 287a4104104c12e33fa2c50c398f422f9e6ea8c5
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58107592"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418702"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Behandeln von Problemen mit dem Konfigurationsserver
 
@@ -48,11 +48,10 @@ Der Quellcomputer registriert sich während der Installation des Mobilitäts-Age
     3. Stellen Sie sicher, dass die unter [Site Recovery-Ordnerausschlüsse von Antivirenprogrammen](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) aufgeführten Ordner in der Antivirensoftware ausgeschlossen sind.  
     4. Nachdem Sie die Probleme behoben haben, versuchen Sie die Registrierung erneut, indem Sie die Anleitungen unter [Registrieren des Quellcomputers beim Konfigurationsserver](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server) befolgen.
 
-7. Wenn unter Linux der Wert für die Plattform in „<INSTALLATIONSVERZ\>/etc/drscout.conf“ beschädigt ist, schlägt die Registrierung fehl. Um dieses Problem zu identifizieren, öffnen Sie die Datei „/var/log/ua_install.log“. Suchen Sie nach der Zeichenfolge **Aborting configuration as VM_PLATFORM value is either null or it is not VmWare/Azure** (Die Konfiguration wird abgebrochen, da der Wert von VM_PLATFORM entweder NULL oder nicht VmWare/Azure ist). Die Plattform sollte entweder auf **VmWare** oder **Azure** festgelegt sein. Wenn die Datei „drscout.conf“ beschädigt ist, empfehlen wird, dass Sie [den Mobilitäts-Agent deinstallieren](vmware-physical-mobility-service-overview.md#uninstall-the-mobility-service) und diesen dann erneut installieren. Schlägt die Deinstallation fehl, führen Sie die folgenden Schritte aus:
-    1. Öffnen Sie die Datei „Installation_Directory/uninstall.sh“, und kommentieren Sie den Aufruf der Funktion **StopServices** aus.
-    2. Öffnen Sie die Datei „Installation_Directory/Vx/bin/uninstall.sh“, und kommentieren Sie den Aufruf der Funktion **stop_services** aus.
-    3. Öffnen Sie die Datei „Installation_Directory/Fx/uninstall.sh“, und kommentieren Sie den gesamten Abschnitt aus, der versucht, den Fx-Dienst zu beenden.
-    4. [Deinstallieren](vmware-physical-mobility-service-overview.md#uninstall-the-mobility-service) Sie den Mobilitäts-Agent. Starten Sie nach der erfolgreichen Deinstallation das System neu, und versuchen Sie, den Mobilitäts-Agent erneut zu installieren.
+7. Wenn unter Linux der Wert für die Plattform in „<INSTALLATIONSVERZ\>/etc/drscout.conf“ beschädigt ist, schlägt die Registrierung fehl. Um dieses Problem zu identifizieren, öffnen Sie die Datei „/var/log/ua_install.log“. Suchen Sie nach der Zeichenfolge **Aborting configuration as VM_PLATFORM value is either null or it is not VmWare/Azure** (Die Konfiguration wird abgebrochen, da der Wert von VM_PLATFORM entweder NULL oder nicht VmWare/Azure ist). Die Plattform sollte entweder auf **VmWare** oder **Azure** festgelegt sein. Wenn die Datei „drscout.conf“ beschädigt ist, empfehlen wird, dass Sie [den Mobilitäts-Agent deinstallieren](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) und diesen dann erneut installieren. Schlägt die Deinstallation fehl, führen Sie die folgenden Schritte aus: a. Öffnen Sie die Datei „Installation_Directory/uninstall.sh“, und kommentieren Sie den Aufruf der Funktion **StopServices** aus.
+    b. Öffnen Sie die Datei „Installation_Directory/Vx/bin/uninstall.sh“, und kommentieren Sie den Aufruf der Funktion **stop_services** aus.
+    c. Öffnen Sie die Datei „Installation_Directory/Fx/uninstall.sh“, und kommentieren Sie den gesamten Abschnitt aus, der versucht, den Fx-Dienst zu beenden.
+    d. [Deinstallieren](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) Sie den Mobilitäts-Agent. Starten Sie nach der erfolgreichen Deinstallation das System neu, und versuchen Sie, den Mobilitäts-Agent erneut zu installieren.
 
 ## <a name="installation-failure-failed-to-load-accounts"></a>Installationsfehler: Fehler beim Laden von Konten.
 
@@ -80,7 +79,7 @@ Um diesen Fehler zu vermeiden, vergewissern Sie sich, dass die Uhrzeit Ihrer Sys
 
 Ein für die Authentifizierung von Site Recovery erforderliches Zertifikat kann nicht erstellt werden. Führen Sie Setup erneut aus, nachdem Sie sichergestellt haben, dass Sie Setup als lokaler Administrator ausführen.
 
-## <a name="failure-to-activate-windows-licence-from-server-standard-evaluation-to-server-standard"></a>Fehler beim Aktivieren von Windows-Lizenz von Server Standard EVALUATION zu Server Standard
+## <a name="failure-to-activate-windows-license-from-server-standard-evaluation-to-server-standard"></a>Fehler beim Aktivieren von Windows-Lizenz von Server Standard EVALUATION zu Server Standard
 
 1. Im Rahmen der Konfigurationsserver-Bereitstellung durch OVF wird eine Evaluierungslizenz verwendet, die 180 Tage lang gültig ist. Sie müssen diese Lizenz aktivieren, bevor sie abgelaufen ist. Andernfalls kann dies zu einem häufigen Herunterfahren des Konfigurationsservers und damit zu einer Behinderung der Replikationsaktivitäten führen.
 2. Wenn Sie die Windows-Lizenz nicht aktivieren können, wenden Sie sich an das [Windows-Supportteam](https://aka.ms/Windows_Support), um das Problem zu lösen.

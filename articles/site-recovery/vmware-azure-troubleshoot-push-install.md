@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 02/27/2019
-ms.openlocfilehash: 65b8253a307693d00f5eaefe7660d500dce49be4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0278332105f2102fc82122c5a74db6326f011e81
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078651"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541184"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Beheben von Problemen bei Pushinstallationen von Mobility Service
 
@@ -183,7 +183,7 @@ Beachten Sie die fett formatierte Zeichenfolge oben: GRUB benutzt die tatsächli
 Die Gerätenamen sollten mit dem entsprechenden UUID ersetzt werden.<br>
 
 
-1. Suchen Sie die UUID des Geräts durch Ausführen des Befehls „blkid <device name>“. Beispiel: <br>
+1. Suchen Sie die UUID des Geräts durch Ausführen des Befehls „blkid \<device name>“. Beispiel: <br>
    ```
    blkid /dev/sda1
    /dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap"
@@ -191,7 +191,7 @@ Die Gerätenamen sollten mit dem entsprechenden UUID ersetzt werden.<br>
    /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
    ```
 
-2. Ersetzen Sie den Gerätenamen jetzt die UUID im Format „root=UUID=<UUID>“. Wenn Sie die Gerätenamen durch die UUID für die Parameter „root“ und „resume“ ersetzen, die oben in den Dateien „/boot/grub2/grub.cfg“, „/boot/grub2/grub.cfg“ oder „/etc/default/grub“ erwähnt werden, sehen die Zeilen in den Dateien folgendermaßen aus: <br>
+2. Ersetzen Sie den Gerätenamen jetzt die UUID im Format „root=UUID=\<UUID>“. Wenn Sie die Gerätenamen durch die UUID für die Parameter „root“ und „resume“ ersetzen, die oben in den Dateien „/boot/grub2/grub.cfg“, „/boot/grub2/grub.cfg“ oder „/etc/default/grub“ erwähnt werden, sehen die Zeilen in den Dateien folgendermaßen aus: <br>
    *kernel /boot/vmlinuz-3.0.101-63-default **root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4** **resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b** splash=silent crashkernel=256M-:128M showopts vga=0x314*
 3. Starten Sie den Schutz erneut.
 

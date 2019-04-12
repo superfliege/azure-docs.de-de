@@ -10,12 +10,12 @@ ms.reviewer: estfan, valthom
 ms.topic: article
 ms.date: 03/06/2019
 tags: connectors
-ms.openlocfilehash: ebf858ba86758b11ee896d745d70bdf2f0d0cde6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7388dc0c61dad9c31da0c178febcee4c8481bc50
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57878379"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313191"
 ---
 # <a name="integrate-3270-screen-driven-apps-on-ibm-mainframes-with-azure-by-using-azure-logic-apps-and-ibm-3270-connector"></a>Integrieren von bildschirmgesteuerten 3270-Apps auf IBM Mainframes mit Azure mithilfe von Azure Logic Apps und IBM 3270-Connector
 
@@ -410,7 +410,7 @@ Wenn Sie alle diese Schritte abgeschlossen haben, können Sie die Aktion, die Si
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Technische Details zu Triggern, Aktionen und Beschränkungen aus der OpenAPI-Beschreibung (ehemals Swagger) des Connectors finden Sie auf der Referenzseite des Connectors: [https://docs.microsoft.com/connectors/<replace-with-api-topic-file-name>](/connectors/).
+Technische Details zu Triggern, Aktionen und Beschränkungen aus der OpenAPI-Beschreibung (ehemals Swagger) des Connectors finden Sie auf der [Referenzseite des Connectors](/connectors/si3270/).
 
 ## <a name="get-support"></a>Support
 

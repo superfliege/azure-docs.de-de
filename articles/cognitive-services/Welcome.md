@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 03/19/2019
 ms.author: nitinme
-ms.openlocfilehash: 7f0bfa407705f4c9535e6dddc9a27a4f7130931d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2464424b537f6187542fb612626cff115711d6e5
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113829"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336285"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Was ist Azure Cognitive Services?
 
@@ -93,6 +93,14 @@ Suchen Sie nach einer Region, die noch nicht unterstützt wird? Teilen Sie uns d
 ## <a name="container-support"></a>Containerunterstützung
 
  Cognitive Services stellt Container für die Bereitstellung in der Azure-Cloud oder lokal bereit. Erfahren Sie mehr über [Containerunterstützung in Azure Cognitive Services](cognitive-services-container-support.md).
+
+## <a name="certifications-and-compliance"></a>Zertifizierungen und Compliance
+
+Cognitive Services hat Zertifizierungen wie die CSA STAR-Zertifizierung, FedRAMP Moderate und HIPAA BAA erhalten. 
+
+Sie können Zertifizierungen für eigene Überwachungen und Sicherheitsüberprüfungen [herunterladen](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942). 
+
+Informationen zum Datenschutz und zur Datenverwaltung finden Sie im [Trust Center](https://servicetrust.microsoft.com/). 
 
 ## <a name="support"></a>Support
 

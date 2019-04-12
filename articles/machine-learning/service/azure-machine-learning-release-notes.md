@@ -8,20 +8,44 @@ ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/11/2019
+ms.date: 03/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2a2817501628d55d7ccc84979700ea53e4114eed
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c1c6e0408145ea76ad93b6dc3803fd56a01dc6d4
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57860634"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58444655"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning-Dienst – Anmerkungen zu dieser Version
 
 Erfahren Sie in diesem Artikel mehr über die Versionen des Azure Machine Learning-Diensts.  Eine vollständige Beschreibung jedes SDKs finden Sie in der jeweiligen Referenzdokumentation für:
 + Das [**Haupt-SDK für Python**](https://aka.ms/aml-sdk) von Azure Machine Learning
 + Das [**Datenaufbereitungs-SDK**](https://aka.ms/data-prep-sdk) von Azure Machine Learning
+
+## <a name="2019-03-25"></a>2019-03-25
+
+### <a name="azure-machine-learning-sdk-for-python-v1021"></a>Azure Machine Learning SDK für Python v1.0.21
+
++ **Neue Features**
+  + Die Methode *azureml.core.Run.create_children* ermöglicht die Erstellung mit geringer Wartezeit von mehreren untergeordneten Ausführungen mit einem einzigen Aufruf.
+
+### <a name="azure-machine-learning-data-prep-sdk-v110"></a>Azure Machine Learning Data Prep SDK v1.1.0
+
++ **Wichtige Änderungen**
+  + Das Konzept des Data Prep Package ist veraltet und wird nicht mehr unterstützt. Anstelle von mehreren Dataflows in einem Paket können Sie Dataflows auch einzeln beibehalten.
+    + Schrittanleitung: [Öffnen und Speichern des Dataflows-Notebooks](https://aka.ms/aml-data-prep-open-save-dataflows-nb)
+
++ **Neue Features**
+  + Data Prep kann jetzt Spalten erkennen, die einem bestimmten semantischen Typ entsprechen, und diese entsprechend aufteilen. Zu den derzeit unterstützten Typen gehören: E-Mail-Adresse, geografische Koordinaten (Breitengrad und Längengrad), IPv4- und IPv6-Adressen, US-Telefonnummer und US-Postleitzahl.
+    + Schrittanleitung: [Notebook für semantische Typen](https://aka.ms/aml-data-prep-semantic-types-nb)
+  + Data Prep unterstützt jetzt die folgenden Operationen, um eine Ergebnisspalte aus zwei numerischen Spalten zu generieren: Subtrahieren, Multiplizieren, Dividieren und Modulo.
+  + Sie können `verify_has_data()` für einen Dataflow aufrufen, um zu prüfen, ob der Dataflow bei Ausführung Datensätze erzeugen würde.
+
++ **Fehlerbehebungen und Verbesserungen**
+  + Sie können jetzt die Datengruppenanzahl angeben, die in einem Histogramm für numerische Spaltenprofile verwendet werden sollen.
+  + Die `read_pandas_dataframe`-Transformation erfordert jetzt, dass der Datenrahmen Spaltennamen vom Typ Zeichenfolge oder Byte aufweist.
+  + Es wurde ein Fehler in der `fill_nulls`-Transformation behoben, bei dem Werte nicht ordnungsgemäß ausgefüllt wurden, wenn die Spalte fehlte.
 
 ## <a name="2019-03-11"></a>11.03.2019
 

@@ -6,74 +6,77 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 03/22/2019
 ms.author: raynew
-ms.openlocfilehash: c6d6e380cded18a089f624f90d998477a89293be
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 7fc724f1aff40c6dedff59ce3919496a30b30337
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259040"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520172"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Sichern virtueller Azure-Computer in einem Recovery Services-Tresor
 
-Dieser Artikel beschreibt die Sicherung von Azure-VMs mit [Azure Backup](backup-overview.md) durch Bereitstellung und Aktivierung der Sicherung in einem Recovery Services-Tresor.
+In diesem Artikel wird beschrieben, wie virtuelle Azure-Computer in einem Recovery Services-Tresor mit dem [Azure Backup](backup-overview.md)-Dienst gesichert werden. 
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
-> * Überprüfen der unterstützten Szenarien und Voraussetzungen
+> * Überprüfen Sie die Unterstützung und die Voraussetzungen für die Sicherung.
 > * Vorbereiten von Azure-VMs Installieren des Azure-VM-Agents (falls nötig) und Überprüfen des ausgehenden Zugriffs für virtuelle Computer
 > * Erstellen eines Tresors.
-> * Einrichten von Speicher für den Tresor
-> * Ermitteln von VMs und Konfigurieren von Sicherungseinstellungen und Richtlinien
-> * Aktivieren der Sicherung für Azure-VMs
+> * Ermitteln Sie VMs, und konfigurieren Sie eine Sicherungsrichtlinie.
+> * Aktivieren Sie die Sicherung für Azure-VMs.
 
 
 > [!NOTE]
-   > In diesem Artikel wird beschrieben, wie Sie Azure-VMs sichern, indem Sie einen Tresor einrichten und die zu sichernden VMs auswählen. Dies ist hilfreich, wenn Sie mehrere VMs sichern möchten. Sie können eine Azure-VM auch direkt über die zugehörigen [VM-Einstellungen sichern](backup-azure-vms-first-look-arm.md).
+   > In diesem Artikel wird beschrieben, wie Sie einen Tresor einrichten und zu sichernde VMs auswählen. Dies ist hilfreich, wenn Sie mehrere VMs sichern möchten. Alternativ können Sie [eine einzelne Azure-VM](backup-azure-vms-first-look-arm.md) direkt aus den VM-Einstellungen heraus sichern.
 
 ## <a name="before-you-start"></a>Vorbereitung
 
-Azure Backup sichert Azure-VMs durch die Installation einer Erweiterung für den Azure-VM-Agent auf dem Computer.
 
-1. [Überprüfen Sie](backup-architecture.md#architecture-direct-backup-of-azure-vms) die Architektur für die Azure-VM-Sicherung.
-[Erfahren Sie mehr](backup-azure-vms-introduction.md) über die Azure-VM-Sicherung und die Sicherungserweiterung.
-2. Sehen Sie sich die [Unterstützungsmatrix](backup-support-matrix-iaas.md) für die Sicherung virtueller Azure-Computer an.
-3. Vorbereiten von Azure-VMs Installieren Sie den VM-Agent, falls er noch nicht installiert ist, und überprüfen Sie den ausgehenden Zugriff für VMs, die Sie sichern möchten.
+- [Überprüfen Sie](backup-architecture.md#architecture-direct-backup-of-azure-vms) die Architektur für die Azure-VM-Sicherung.
+- [Erfahren Sie mehr](backup-azure-vms-introduction.md) über die Azure-VM-Sicherung und die Sicherungserweiterung.
+- Sehen Sie sich die [Unterstützungsmatrix](backup-support-matrix-iaas.md) für die Sicherung virtueller Azure-Computer an.
 
 
 ## <a name="prepare-azure-vms"></a>Vorbereiten von Azure-VMs
 
-Installieren Sie den VM-Agent (falls nötig) und überprüfen Sie den von VMs ausgehenden Zugriff.
+Unter bestimmten Umständen müssen Sie den Azure VM-Agent auf Azure-VMs einrichten oder explizit ausgehenden Zugriff auf die VM gestatten.
 
-### <a name="install-the-vm-agent"></a>Installieren des VM-Agents
-Installieren Sie den Agent bei Bedarf wie folgt:
+### <a name="install-the-vm-agent"></a>Installieren des VM-Agents 
+
+Azure Backup sichert Azure-VMs durch die Installation einer Erweiterung für den Azure-VM-Agent auf dem Computer. Wenn Ihre VM aus einem Azure Marktplatz-Image erstellt wurde, ist der Agent installiert und aktiv. Wenn Sie eine benutzerdefinierte VM erstellen oder einen lokalen Computer migrieren, müssen Sie den Agent möglicherweise manuell installieren, wie in der Tabelle veranschaulicht.
 
 **VM** | **Details**
 --- | ---
-**Virtuelle Windows-Computer** | [Laden Sie die Agent-MSI-Datei herunter, und installieren Sie sie](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Für die Installation benötigen Sie Administratorberechtigungen auf dem Computer.<br/><br/> Unter *C:\WindowsAzure\Packages* können Sie sich vergewissern, dass die Installation erfolgreich abgeschlossen wurde, indem Sie mit der rechten Maustaste auf „WaAppAgent.exe“ klicken und dann auf **Eigenschaften** > Registerkarte **Details** klicken. Für **Produktversion** sollte 2.6.1198.718 oder eine höhere Version angegeben sein.<br/><br/> Wenn Sie den Agent aktualisieren, stellen Sie sicher, dass keine Sicherungsvorgänge ausgeführt werden, und [installieren Sie den Agent neu](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
-**Virtuelle Linux-Computer** | Für die Installation und Upgrades des Azure Linux-Agents sollte nach Möglichkeit ein RPM- oder DEB-Paket aus dem Paketrepository Ihrer Verteilung installiert werden. Das Azure Linux-Agent-Paket wird von allen [unterstützten Distributionsanbietern](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) in ihre jeweiligen Images und Repositorys integriert. Der Agent steht auf [GitHub](https://github.com/Azure/WALinuxAgent) zur Verfügung, jedoch wird die Installation über GitHub nicht empfohlen.<br/><br/> Wenn Sie den Agent aktualisieren, stellen Sie sicher, dass keine Sicherungsvorgänge ausgeführt werden, und aktualisieren Sie die Binärdateien.
+**Virtuelle Windows-Computer** | 1. [Laden Sie die Agent-MSI-Datei herunter, und installieren Sie sie](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).<br/><br/> 2. Für die Installation benötigen Sie Administratorberechtigungen auf dem Computer.<br/><br/> 3. Überprüfen Sie die Installation. Klicken Sie auf der VM in *C:\WindowsAzure\Packages* mit der rechten Maustaste auf „WaAppAgent.exe“ > **Eigenschaften**, > Registerkarte **Details**. Für **Produktversion** sollte 2.6.1198.718 oder eine höhere Version angegeben sein.<br/><br/> Wenn Sie den Agent aktualisieren, stellen Sie sicher, dass keine Sicherungsvorgänge ausgeführt werden, und [installieren Sie den Agent neu](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
+**Virtuelle Linux-Computer** | Führen Sie die Installation mit einem RPM- oder DEB-Paket aus dem Paketrepository der Verteilung durch. Dies ist die bevorzugte Methode für die Installation und das Upgrade des Azure Linux-Agent. Das Azure Linux-Agent-Paket wird von allen [unterstützten Distributionsanbietern](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) in ihre jeweiligen Images und Repositorys integriert. Der Agent steht auf [GitHub](https://github.com/Azure/WALinuxAgent) zur Verfügung, jedoch wird die Installation über GitHub nicht empfohlen.<br/><br/> Wenn Sie den Agent aktualisieren, stellen Sie sicher, dass keine Sicherungsvorgänge ausgeführt werden, und aktualisieren Sie die Binärdateien.
 
 
 ### <a name="establish-network-connectivity"></a>Herstellen der Netzwerkverbindung
 
-Die Sicherungserweiterung, die auf der VM ausgeführt wird, muss über ausgehenden Zugriff auf öffentliche Azure-IP-Adressen verfügen.
+Die Sicherungserweiterung, die auf der VM ausgeführt wird, erfordert den ausgehenden Zugriff auf öffentliche Azure-IP-Adressen.
 
-- Für die Kommunikation des virtuellen Azure-Computers mit dem Azure Backup-Dienst ist kein expliziter ausgehender Netzwerkzugriff erforderlich.
-- Allerdings können beim Herstellen einer Verbindung auf bestimmten älteren virtuellen Computern aufgrund des Fehlers **ExtensionSnapshotFailedNoNetwork** Probleme auftreten. Verwenden Sie in diesem Fall eine der folgenden Optionen, damit die Sicherungserweiterung für den Sicherungsdatenverkehr mit öffentlichen Azure-IP-Adressen kommunizieren kann.
+- Im Allgemeinen müssen Sie den ausgehenden Netzwerkzugriff für eine Azure-VM nicht explizit zulassen, damit sie mit Azure Backup kommunizieren kann.
+- Wenn beim Verbinden von VMs Probleme auftreten und Sie beim Verbindungsaufbau den Fehler **ExtensionSnapshotFailedNoNetwork** erhalten, sollten Sie den Zugriff explizit gestatten, damit die Sicherungserweiterung für den Sicherungsdatenverkehr mit öffentlichen Azure-IP-Adressen kommunizieren kann.
 
-   **Option** | **Aktion** | **Vorteile** | **Nachteile**
-   --- | --- | --- | ---
-   **NSG-Regeln einrichten** | Lassen Sie die [IP-Bereiche des Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653) zu.<br/><br/>  Sie können eine Regel hinzufügen, die den Zugriff auf den Azure Backup-Dienst mithilfe eines [Diensttags](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure) zulässt, anstatt jeden Adressbereich individuell zuzulassen und zu verwalten. [Erfahren Sie mehr](../virtual-network/security-overview.md#service-tags) über Diensttags. | Keine zusätzlichen Kosten. Einfache Verwaltung mit Diensttags.
-   **Proxy bereitstellen** | Stellen Sie einen HTTP-Proxyserver zum Weiterleiten des Datenverkehrs bereit. | Ermöglicht den Zugriff auf Azure insgesamt, nicht nur auf den Speicher. Die Feinsteuerung über die Speicher-URLs ist möglich.<br/><br/> Zentraler Punkt für Internetzugriff auf virtuelle Computer.<br/><br/> Zusätzliche Kosten für den Proxy.<br/><br/>
-   **Azure Firewall einrichten** | Lassen Sie den Datenverkehr mit der VM durch Azure Firewall mithilfe eines FQDN-Tags (vollqualifizierter Domänenname) für den Azure Backup-Dienst zu.|  Einfache Verwendung, wenn Azure Firewall in einem VNet-Subnetz eingerichtet ist. | Es können keine eigenen FQDN-Tags erstellt werden, und die FQDNs in einem Tag können nicht geändert werden.<br/><br/> Wenn Sie verwaltete Azure-Datenträger verwenden, müssen Sie in den Firewalls möglicherweise einen weiteren Port öffnen (Port 8443).
 
-#### <a name="set-up-an-nsg-rule-to-allow-outbound-access-to-azure"></a>Einrichten einer NSG-Regel (Netzwerksicherheitsgruppe) zum Zulassen des ausgehenden Zugriffs auf Azure
+#### <a name="explicitly-allow-outbound-access"></a>Explizites Erlauben von ausgehenden Zugriffen
 
-Wenn der Zugriff Ihrer Azure-VM durch eine NSG verwaltet wird, lassen Sie den ausgehenden Zugriff auf die erforderlichen Bereiche und Ports für den Sicherungsspeicher zu.
+Wenn Ihre VM keine Verbindung zum Sicherungsdienst herstellen kann, erlauben Sie explizit den ausgehenden Zugriff mit einer der in der Tabelle zusammengefassten Methoden.
 
-1. Klicken Sie in der VM unter **Netzwerk** auf **Regel für ausgehenden Port hinzufügen**.
+**Option** | **Aktion** | **Details** 
+--- | --- | --- 
+**NSG-Regeln einrichten** | Lassen Sie die [IP-Bereiche des Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653) zu. | Sie können eine Regel hinzufügen, die den Zugriff auf den Azure Backup-Dienst mithilfe eines [Diensttags](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure) zulässt, anstatt jeden Adressbereich zuzulassen und zu verwalten. [Weitere Informationen](../virtual-network/security-overview.md#service-tags)<br/><br/> Keine zusätzlichen Kosten.<br/><br/> Einfache Verwaltung mit Diensttags.
+**Proxy bereitstellen** | Stellen Sie einen HTTP-Proxyserver zum Weiterleiten des Datenverkehrs bereit. | Ermöglicht den Zugriff auf Azure insgesamt, nicht nur auf den Speicher.<br/><br/> Die Feinsteuerung über die Speicher-URLs ist möglich.<br/><br/> Zentraler Punkt für Internetzugriff auf virtuelle Computer.<br/><br/> Zusätzliche Kosten für den Proxy.
+**Azure Firewall einrichten** | Lassen Sie den Datenverkehr mit der VM durch Azure Firewall mithilfe eines FQDN-Tags (vollqualifizierter Domänenname) für den Azure Backup-Dienst zu. |  Einfache Verwendung, wenn Azure Firewall in einem VNet-Subnetz eingerichtet ist.<br/><br/> Es können keine eigenen FQDN-Tags erstellt werden, und die FQDNs in einem Tag können nicht geändert werden.<br/><br/> Wenn Sie verwaltete Azure-Datenträger verwenden, müssen Sie in den Firewalls möglicherweise einen weiteren Port öffnen (Port 8443).
+
+##### <a name="set-up-an-nsg-rule-to-allow-outbound-access-to-azure"></a>Einrichten einer NSG-Regel (Netzwerksicherheitsgruppe) zum Zulassen des ausgehenden Zugriffs auf Azure
+
+Wenn der VM-Zugriff durch eine NSG verwaltet wird, lassen Sie den ausgehenden Zugriff auf die erforderlichen Bereiche und Ports für den Sicherungsspeicher zu.
+
+1. Klicken Sie in den VM-Eigenschaften unter **Netzwerk** auf **Regel für ausgehenden Port hinzufügen**.
 2. Klicken Sie unter **Ausgangssicherheitsregel hinzufügen** auf **Erweitert**.
 3. Wählen Sie im Feld **Quelle** den Eintrag **VirtualNetwork** aus.
 4. Geben Sie für **Quellportbereiche** ein Sternchen (*) ein, um ausgehenden Zugriff über alle Ports zuzulassen.
@@ -83,30 +86,29 @@ Wenn der Zugriff Ihrer Azure-VM durch eine NSG verwaltet wird, lassen Sie den au
     - Für nicht verwaltete VMs mit verschlüsseltem Speicherkonto: 443 (Standardeinstellung)
     - Für verwaltete VMs: 8443
 7. Wählen Sie für **Protokoll** die Option **TCP** aus.
-8. Geben Sie unter **Priorität** einen Prioritätswert an, der geringer als alle höheren Ablehnungsregeln ist. Wenn Sie über eine Regel verfügen, die den Zugriff verhindert, muss die neue Zulassungsregel höhergestellt werden. Wenn Sie beispielsweise über eine **Deny_All**-Regel mit der Priorität 1.000 verfügen, muss für Ihre neue Regel ein Wert unter 1.000 festgelegt werden.
+8. Geben Sie unter **Priorität** einen Prioritätswert an, der geringer als alle höheren Ablehnungsregeln ist.
+   - Wenn Sie über eine Regel verfügen, die den Zugriff verhindert, muss die neue Zulassungsregel höhergestellt werden.
+   - Wenn Sie beispielsweise über eine **Deny_All**-Regel mit der Priorität 1.000 verfügen, muss für Ihre neue Regel ein Wert unter 1.000 festgelegt werden.
 9. Geben Sie einen Namen und eine Beschreibung für die Regel ein, und klicken Sie dann auf **OK**.
 
-Sie können die NSG-Regel auf mehrere VMs anwenden, um ausgehenden Zugriff zu erlauben.
-
-Dieses Video führt Sie durch diesen Prozess.
+Sie können die NSG-Regel auf mehrere VMs anwenden, um ausgehenden Zugriff zu erlauben. Dieses Video führt Sie durch diesen Prozess.
 
 >[!VIDEO https://www.youtube.com/embed/1EjLQtbKm1M]
 
 
-#### <a name="route-backup-traffic-through-a-proxy"></a>Routen des Sicherungsdatenverkehrs über einen Proxy
+##### <a name="route-backup-traffic-through-a-proxy"></a>Routen des Sicherungsdatenverkehrs über einen Proxy
 
-Sie können den Sicherungsdatenverkehr über ein Proxy routen und dem Proxy dann den Zugriff auf die erforderlichen Azure-Bereiche gewähren.
-Sie sollten Ihre Proxy-VM wie folgt konfigurieren:
+Sie können den Sicherungsdatenverkehr über ein Proxy routen und dem Proxy dann den Zugriff auf die erforderlichen Azure-Bereiche gewähren. Konfigurieren Sie die Proxy-VM, um Folgendes zuzulassen:
 
 - Die Azure-VM sollte jeglichen HTTP-Datenverkehr an das öffentliche Internet über den Proxy routen.
 - Der Proxy sollte jeglichen eingehenden Datenverkehr von VMs im entsprechenden virtuellen Netzwerk (VNet) zulassen.
 - Die NSG **NSF-lockdown** benötigt eine Regel, die ausgehenden Internetdatenverkehr vom virtuellen Proxy-Computer zulässt.
 
-##### <a name="set-up-the-proxy"></a>Einrichten des Proxys
+###### <a name="set-up-the-proxy"></a>Einrichten des Proxys
+
 Wenn Sie über keinen Proxy für das Systemkonto verfügen, richten Sie wie folgt einen ein:
 
 1. Laden Sie [PsExec](https://technet.microsoft.com/sysinternals/bb897553) herunter.
-
 2. Führen Sie den Befehl **PsExec.exe -i -s cmd.exe** aus, um die Eingabeaufforderung mit einem Systemkonto auszuführen.
 3. Führen Sie den Browser im Systemkontext aus. Beispiel: **%PROGRAMFILES%\Internet Explorer\iexplore.exe** für Internet Explorer.  
 4. Definieren Sie die Proxyeinstellungen.
@@ -127,18 +129,22 @@ Wenn Sie über keinen Proxy für das Systemkonto verfügen, richten Sie wie folg
 
        ```
 
-##### <a name="allow-incoming-connections-on-the-proxy"></a>Zulassen von eingehenden Verbindungen über den Proxy
+###### <a name="allow-incoming-connections-on-the-proxy"></a>Zulassen von eingehenden Verbindungen über den Proxy
 
 Lassen Sie eingehende Verbindungen in den Proxyeinstellungen zu.
 
-- Öffnen Sie beispielsweise **Windows Firewall mit erweiterter Sicherheit**.
-    - Klicken Sie mit der rechten Maustaste auf **Eingangsregeln** > **Neue Regel**.
-    - Klicken Sie unter **Regeltyp** auf **Benutzerdefiniert** > **Weiter**.
-    - Klicken Sie unter **Programm** auf **Alle Programme** > **Weiter**.
-    - Legen Sie unter **Protokolle und Ports** den Typ **TCP**, für **Lokale Ports** die Option **Bestimmte Ports** und für **Remoteport** die Option **Alle Ports** fest.
-    - Beenden Sie den Assistenten, und legen Sie einen Namen für die Regel fest.
+1: Öffnen Sie in der Windows Firewall die Option **Windows Firewall mit erweiterter Sicherheit**.
+2. Klicken Sie mit der rechten Maustaste auf **Eingangsregeln** > **Neue Regel**.
+3. Klicken Sie unter **Regeltyp** auf **Benutzerdefiniert** > **Weiter**.
+4. Klicken Sie unter **Programm** auf **Alle Programme** > **Weiter**.
+5. In **Protokolle und Ports**:
+   - Legen Sie für den Typ **TCP** fest.
+   - Legen Sie für **Lokale Ports** die Option **Bestimmte Ports** fest.
+   - Legen Sie **Remoteport** auf **Alle Ports** fest.
+  
+6. Beenden Sie den Assistenten, und legen Sie einen Namen für die Regel fest.
 
-##### <a name="add-an-exception-rule-to-the-nsg-for-the-proxy"></a>Hinzufügen einer Ausnahmeregel zur NSG für den Proxy
+###### <a name="add-an-exception-rule-to-the-nsg-for-the-proxy"></a>Hinzufügen einer Ausnahmeregel zur NSG für den Proxy
 
 Lassen Sie für die NSG **NSF-lockdown** den Datenverkehr über alle Ports unter 10.0.0.5 an alle Internetadressen über Port 80 (HTTP) oder 443 (HTTPS) zu.
 
@@ -157,16 +163,17 @@ Sie können Azure Firewall so konfigurieren, dass der ausgehende Zugriff für Ne
 - [Weitere Informationen](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) zum Bereitstellen von Azure Firewall.
 - [Erfahren Sie mehr](https://docs.microsoft.com/azure/firewall/fqdn-tags) über FQDN-Tags.
 
-## <a name="set-up-storage-replication"></a>Einrichten der Speicherreplikation
+## <a name="modify-storage-replication-settings"></a>Ändern der Einstellungen für die Speicherreplikation
 
-Standardmäßig verfügt Ihr Tresor über einen [georedundanten Speicher (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs). GRS wird als primäre Sicherung empfohlen, dennoch können Sie [lokal redundanten Speicher](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) als günstigere Alternative nutzen.
+Standardmäßig verfügt Ihr Tresor über einen [georedundanten Speicher (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs).
 
-Azure Backup übernimmt automatisch die Speicherung für den Tresor. Sie müssen angeben, wie dieser Speicher repliziert wird.
-Passen Sie die Speicherreplikation wie folgt an:
+- Wir empfehlen GRS für Ihre primäre Sicherung.
+- Sie können [Lokal redundanter Speicher (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) als kostengünstigere Option verwenden.
 
-1. Klicken Sie auf dem Blatt **Recovery Services-Tresore** auf den neuen Tresor. Klicken Sie im Abschnitt **Einstellungen** auf **Eigenschaften**.
+Passen Sie die Speicherreplikationstyp wie folgt an:
+
+1. Klicken Sie im Portal auf den neuen Tresor. Klicken Sie im Abschnitt **Einstellungen** auf **Eigenschaften**.
 2. Klicken Sie in **Eigenschaften** unter **Sicherungskonfiguration** auf **Aktualisieren**.
-
 3. Wählen Sie den Speicherreplikationstyps aus, und klicken Sie auf **Speichern**.
 
       ![Speicherkonfiguration für neuen Tresor festlegen](./media/backup-try-azure-backup-in-10-mins/full-blade.png)
@@ -213,7 +220,7 @@ Nach dem Aktivieren der Sicherung:
 - Eine erste Sicherung wird gemäß Ihrem Sicherungszeitplan ausgeführt.
 - Die Sicherungserweiterung wird vom Sicherungsdienst unabhängig davon installiert, ob der virtuelle Computer ausgeführt wird oder nicht.
     - Bei einem ausgeführten virtuellen Computer besteht zudem die größte Chance auf einen anwendungskonsistenten Wiederherstellungspunkt.
-    -  Der virtuelle Computer wird jedoch auch gesichert, wenn er ausgeschaltet ist und die Erweiterung nicht installiert werden kann. Dies wird als *Offline-VM* bezeichnet. In diesem Fall ist der Wiederherstellungspunkt *absturzkonsistent*.
+    -  Der virtuelle Computer wird jedoch auch gesichert, wenn er ausgeschaltet ist und die Erweiterung nicht installiert werden kann. Dieser wird als Offline-VM bezeichnet. In diesem Fall ist der Wiederherstellungspunkt absturzkonsistent.
     Beachten Sie, dass Azure Backup für die Sicherungen von Azure-VMs keine automatische Uhrzeitanpassung an die Sommerzeit unterstützt. Sicherungsrichtlinien können bei Bedarf angepasst werden.
 
 ## <a name="run-the-initial-backup"></a>Ausführen der ersten Sicherung
@@ -231,5 +238,6 @@ Die erste Sicherung wird gemäß dem Zeitplan ausgeführt, sofern Sie sie nicht 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Beheben von Problemen, die bei [Azure-VM-Agents](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md) oder [Azure-VM-Sicherungen](backup-azure-vms-troubleshoot.md) auftreten können.
-- [Sichern virtueller Azure-Computer](backup-azure-vms-first-look-arm.md)
+- Beheben von Problemen mit [Azure-VM-Agents](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md) oder [Azure-VM-Sicherungen](backup-azure-vms-troubleshoot.md).
+- [Wiederherstellen](backup-azure-arm-restore-vms.md) virtueller Azure-Computer.
+

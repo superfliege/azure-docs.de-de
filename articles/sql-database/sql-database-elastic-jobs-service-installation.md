@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: a1e1be24f9cb6d762d5480385843e9a5356d4a29
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 32df3e7ac6dc22e247bd4aecea4f39bf6d3a8017
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57889783"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316863"
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Installieren von Aufträgen für die elastische Datenbank – Übersicht
 
@@ -87,12 +87,12 @@ Die für diesen Beispielaufruf angegebenen Parameter können nach Ihren Wünsche
 
 <tr>
     <td>ServiceVmSize</td>
-    <td>Gibt die Größe der VM für die Verwendung innerhalb des Clouddiensts an. Dieser Parameter ist standardmäßig auf A0 festgelegt. Die möglichen Parameterwerte sind „../../A3“ und legen die Größe „Extraklein/Klein/Mittel/Groß“ für die Workerrolle fest. Weitere Informationen zu Workerrollengrößen finden Sie unter [Aufträge für die elastische Datenbank – Komponenten und Preise](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
+    <td>Gibt die Größe der VM für die Verwendung innerhalb des Clouddiensts an. Dieser Parameter ist standardmäßig auf A0 festgelegt. Die möglichen Parameterwerte sind „../../A3“ und legen die Größe „Extraklein/Klein/Mittel/Groß“ für die Workerrolle fest. Weitere Informationen zu Workerrollengrößen finden Sie unter <a href="https://docs.microsoft.com/azure/sql-database/sql-database-elastic-jobs-overview#components-and-pricing">Aufträge für die elastische Datenbank – Komponenten und Preise</a>.</td>
 </tr>
 
 <tr>
     <td>SqlServerDatabaseSlo</td>
-    <td>Stellt die Computegröße für eine Standard-Edition bereit. Dieser Parameter ist standardmäßig „S0“. Die Parameterwerte „../../../../S9/S12“ sind zulässig und bewirken die Verwendung der entsprechenden Computegröße für Azure SQL-Datenbank. Weitere Informationen zu Computegrößen für SQL-Datenbank finden Sie unter [Aufträge für die elastische Datenbank – Komponenten und Preise](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
+    <td>Stellt die Computegröße für eine Standard-Edition bereit. Dieser Parameter ist standardmäßig „S0“. Die Parameterwerte „../../../../S9/S12“ sind zulässig und bewirken die Verwendung der entsprechenden Computegröße für Azure SQL-Datenbank. Weitere Informationen zu Computegrößen für SQL-Datenbank finden Sie unter <a href="https://docs.microsoft.com/azure/sql-database/sql-database-elastic-jobs-overview#components-and-pricing">Aufträge für die elastische Datenbank – Komponenten und Preise</a>.</td>
 </tr>
 
 <tr>
@@ -137,7 +137,7 @@ Zum Aktualisieren der Größe der VM einer Installation führen Sie das folgende
 
 <tr>
     <td>ServiceVmSize</td>
-    <td>Gibt die Größe der VM für die Verwendung innerhalb des Clouddiensts an. Dieser Parameter ist standardmäßig auf A0 festgelegt. Die möglichen Parameterwerte sind „../../A3“ und legen die Größe „Extraklein/Klein/Mittel/Groß“ für die Workerrolle fest. Weitere Informationen zu Workerrollengrößen finden Sie unter [Aufträge für die elastische Datenbank – Komponenten und Preise](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
+    <td>Gibt die Größe der VM für die Verwendung innerhalb des Clouddiensts an. Dieser Parameter ist standardmäßig auf A0 festgelegt. Die möglichen Parameterwerte sind „../../A3“ und legen die Größe „Extraklein/Klein/Mittel/Groß“ für die Workerrolle fest. Weitere Informationen zu Workerrollengrößen finden Sie unter <a href="https://docs.microsoft.com/azure/sql-database/sql-database-elastic-jobs-overview#components-and-pricing">Aufträge für die elastische Datenbank – Komponenten und Preise</a>.</td>
 </tr>
 
 </table>

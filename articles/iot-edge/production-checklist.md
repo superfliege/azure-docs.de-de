@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 618414331ab22cff41c7ac02c78f4bef333d0c84
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c64db6b35aa2f1daa4484f137c8505b1415c5a0b
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433449"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521753"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Vorbereiten der Bereitstellung einer IoT Edge-Lösung für die Produktion
 
@@ -172,7 +172,7 @@ Diese Prüfliste ist ein Ausgangspunkt für Firewallregeln:
    | \*.azurecr.io | 443 | Persönliche Containerregistrierungen und Containerregistrierungen von Drittanbietern |
    | \*.blob.core.windows.net | 443 | Download von Imagedeltas | 
    | \*.azure-devices.net | 5671, 8883, 443 | IoT Hub-Zugriff |
-   | \*.docker.io  | 443 | Docker-Zugriff (optional) |
+   | \*.docker.io  | 443 | Docker Hub-Zugriff (optional) |
 
 ### <a name="configure-communication-through-a-proxy"></a>Konfigurieren der Kommunikation über Proxy
 
@@ -186,16 +186,57 @@ Wenn Ihre Geräte in einem Netzwerk bereitgestellt werden, das einen Proxyserver
 
 ### <a name="set-up-logs-and-diagnostics"></a>Einrichten von Protokollen und Diagnosen
 
-Unter Linux verwendet der IoT Edge-Daemon Journale als Standardprotokolltreiber. Sie können das Befehlszeilentool `journalctl` verwenden, um die Daemonprotokolle abzufragen. Unter Windows verwendet der IoT Edge-Daemon die PowerShell-Diagnose. Verwenden Sie `Get-WinEvent`, um Protokolle vom Daemon abzufragen. IoT Edge-Module verwenden zum Protokollieren den JSON-Treiber, den Docker-Standard.  
+Unter Linux verwendet der IoT Edge-Daemon Journale als Standardprotokolltreiber. Sie können das Befehlszeilentool `journalctl` verwenden, um die Daemonprotokolle abzufragen. Unter Windows verwendet der IoT Edge-Daemon die PowerShell-Diagnose. Verwenden Sie `Get-WinEvent`, um Protokolle vom Daemon abzufragen. IoT Edge-Module verwenden zum Protokollieren den JSON-Treiber, der die Standardoption darstellt.  
 
 Wenn Sie eine IoT Edge-Bereitstellung testen, können Sie in der Regel auf Ihre Geräte zugreifen, um Protokolle abzurufen und Fehler zu beheben. In einem Bereitstellungsszenario haben Sie diese Option möglicherweise nicht. Überlegen Sie, wie Sie Informationen über Ihre Geräte in der Produktion sammeln können. Eine Möglichkeit besteht darin, ein Protokollierungsmodul zu verwenden, das Informationen von anderen Modulen erfasst und in die Cloud sendet. Ein Beispiel für ein Protokollierungsmodul ist [logspout-loganalytics](https://github.com/veyalla/logspout-loganalytics). Sie haben auch die Möglichkeit, Ihr eigenes Modul zu erstellen. 
 
-Wenn Sie befürchten, dass Protokolle auf einem ressourcenbeschränkten Gerät zu groß werden, können Sie die Speichernutzung reduzieren. 
+### <a name="place-limits-on-log-size"></a>Begrenzen der Protokollgröße
 
-* Insbesondere lässt sich die Größe aller Docker-Protokolldateien im Docker-Daemon selbst einschränken. Konfigurieren Sie den Daemon unter Linux unter `/etc/docker/daemon.json`. Unter Windows unter `C:\ProgramData\docker\confige\daemon.json`. 
-* Wenn Sie die Größe der Protokolldatei für jeden Container anpassen möchten, können Sie dies in den Erstellungsoptionen der einzelnen Module tun. 
-* Konfigurieren Sie Docker für die automatische Verwaltung von Protokollen, indem Sie Journale als Standardprotokolltreiber für Docker festlegen. 
-* Entfernen Sie regelmäßig alte Protokolle von Ihrem Gerät, indem Sie ein logrotate-Tool für Docker installieren. Verwenden Sie die folgende Dateispezifikation: 
+Standardmäßig legt die Moby-Containerengine keine Grenzwerte für die Größe des Containerprotokolls fest. Im Laufe der Zeit kann dies dazu führen, dass das Gerät mit Protokollen überfüllt wird und nicht genügend Speicherplatz auf dem Datenträger zur Verfügung steht. Erwägen Sie die folgenden Optionen, um dies zu verhindern:
+
+**Option: Legen Sie globale Grenzwerte fest, die für alle Containermodule gelten.**
+
+Sie können die Größe aller Containerprotokolldateien in den Protokolloptionen der Containerengine begrenzen. Das folgende Beispiel legt den Protokolltreiber auf `json-file` (empfohlen) mit Grenzwerten für Größe und Anzahl der Dateien fest:
+
+    {
+        "log-driver": "json-file",
+        "log-opts": {
+            "max-size": "10m",
+            "max-file": "3"
+        }
+    }
+
+Fügen Sie diese Informationen zu einer Datei namens `daemon.json` hinzu (oder fügen Sie sie an), und platzieren Sie die Datei am richtigen Speicherort für Ihre Geräteplattform.
+
+| Plattform | Standort |
+| -------- | -------- |
+| Linux | `/etc/docker/` |
+| Windows | `C:\ProgramData\iotedge-moby-data\config\` |
+
+Die Containerengine muss neu gestartet werden, damit die Änderungen wirksam werden.
+
+**Option: Anpassen der Protokolleinstellungen für die einzelnen Containermodule**
+
+Sie können dies in den **createOptions** der einzelnen Module vornehmen. Beispiel: 
+
+    "createOptions": {
+        "HostConfig": {
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {
+                    "max-size": "10m",
+                    "max-file": "3"
+                }
+            }
+        }
+    }
+
+
+**Zusätzliche Optionen unter Linux-Systemen**
+
+* Konfigurieren Sie die Containerengine so, dass sie Protokolle an `systemd` [journal](https://docs.docker.com/config/containers/logging/journald/) sendet, indem Sie `journald` als Standardprotokolltreiber festlegen. 
+
+* Entfernen Sie regelmäßig alte Protokolle von Ihrem Gerät, indem Sie ein logrotate-Tool installieren. Verwenden Sie die folgende Dateispezifikation: 
 
    ```
    /var/lib/docker/containers/*/*-json.log{

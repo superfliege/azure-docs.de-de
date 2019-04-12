@@ -16,12 +16,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, smalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f854c8b27065c2d2bf0c9964fe9dfce66aba423a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9fcc6cb40d83c06a1c9f0a97c72565464e74e655
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104504"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58336072"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure Active Directory.
 
@@ -29,7 +29,7 @@ Erfahren Sie, wie Sie Probleme beim [einmaligen Anmelden](../manage-apps/what-is
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Sie sollten die [Erweiterung zur sicheren Anmeldung bei „Meine Apps“](../user-help/active-directory-saas-access-panel-user-help.md#i-am-having-trouble-installing-the-my-apps-secure-sign-in-extension) installieren. Diese Browsererweiterung erleichtert das Erfassen der SAML-Anforderung sowie die SAML-Antwortinformationen, die Sie für die Behebung von Problemen mit einmaligem Anmelden benötigen. Für den Fall, dass Sie die Erweiterung nicht installieren können, zeigt dieser Artikel Ihnen die Behebung von Problemen mit und ohne Erweiterung.
+Sie sollten die [Erweiterung zur sicheren Anmeldung bei „Meine Apps“](../user-help/my-apps-portal-end-user-troubleshoot.md#im-having-trouble-installing-the-my-apps-secure-sign-in-extension) installieren. Diese Browsererweiterung erleichtert das Erfassen der SAML-Anforderung sowie die SAML-Antwortinformationen, die Sie für die Behebung von Problemen mit einmaligem Anmelden benötigen. Für den Fall, dass Sie die Erweiterung nicht installieren können, zeigt dieser Artikel Ihnen die Behebung von Problemen mit und ohne Erweiterung.
 
 Verwenden Sie zum Herunterladen und Installieren der Erweiterung zur sicheren Anmeldung bei „Meine Apps“ einen der folgenden Links.
 
@@ -64,7 +64,7 @@ Wenn Sie versuchen, sich anzumelden, wird auf der Anmeldeseite Ihres Unternehmen
 
 Um diesen Fehler zu debuggen, benötigen Sie die Fehlermeldung und die SAML-Anforderung. Die Erweiterung zur sicheren Anmeldung bei „Meine Apps“ erfasst automatisch diese Informationen und zeigt eine Auflösungsanleitung in Azure AD an. 
 
-### <a name="to-resolve-the-sign-in-error-with-the-myapps-secure-sign-in-extension-installed"></a>Beheben des Anmeldefehlers, wenn die Erweiterung zur sicheren Anmeldung bei „Meine Apps“ installiert ist
+### <a name="to-resolve-the-sign-in-error-with-the-my-apps-secure-sign-in-extension-installed"></a>Beheben des Anmeldefehlers, wenn die Erweiterung zur sicheren Anmeldung bei „Meine Apps“ installiert ist
 
 1. Wenn ein Fehler auftritt, leitet die Erweiterung Sie zurück zum Azure AD-Blatt **Einmaliges Anmelden testen**. 
 1. Wählen Sie auf dem Blatt **Einmaliges Anmelden testen** die Option **SAML-Anforderung herunterladen**. 
@@ -73,7 +73,7 @@ Um diesen Fehler zu debuggen, benötigen Sie die Fehlermeldung und die SAML-Anfo
 
 Wenn für den Anmeldefehler keine Lösung angegeben ist, schlagen wir vor, das Textfeld für Feedback zu verwenden, um uns zu informieren.
 
-### <a name="to-resolve-the-error-without-installing-the-myapps-secure-sign-in-extension"></a>Beheben des Fehlers, ohne die Erweiterung zur sicheren Anmeldung bei „Meine Apps“ zu installieren
+### <a name="to-resolve-the-error-without-installing-the-my-apps-secure-sign-in-extension"></a>Beheben des Fehlers, ohne die Erweiterung zur sicheren Anmeldung bei „Meine Apps“ zu installieren
 
 1. Kopieren Sie die Fehlermeldung rechts unten auf der Seite. Die Fehlermeldung enthält:
     - Eine Korrelations-ID und einen Zeitstempel. Diese Werte werden bei der Erstellung einer Supportanfrage an Microsoft benötigt, um Ihr Problem zu identifizieren und einen Lösungsvorschlag zu unterbreiten.

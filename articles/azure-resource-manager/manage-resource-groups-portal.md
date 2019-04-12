@@ -9,14 +9,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: cbbc710c9408c84c601d7b9eb9560641b5313a05
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cb1eb5ac27c53f4c0d48fe3644febc62f848486d
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090932"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484694"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Verwalten von Azure Resource Manager-Gruppen mithilfe des Azure-Portals
 
@@ -83,7 +83,7 @@ Weitere Informationen dazu, in welcher Reihenfolge Ressourcenlöschungen in Azur
 
 ## <a name="deploy-resources-to-a-resource-group"></a>Bereitstellen von Ressourcen in einer Ressourcengruppe
 
-Nachdem Sie eine Resource Manager-Vorlage erstellt haben, können Sie Ihre Azure-Ressourcen über das Azure-Portal bereitstellen. Eine Anleitung zum Erstellen einer Vorlage finden Sie unter [Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](./resource-manager-quickstart-create-templates-use-the-portal.md). Informationen zum Bereitstellen einer Vorlage über das Portal finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](resource-group-template-deploy-portal.md).
+Nachdem Sie eine Azure Resource Manager-Vorlage erstellt haben, können Sie Ihre Azure-Ressourcen über das Azure-Portal bereitstellen. Eine Anleitung zum Erstellen einer Vorlage finden Sie unter [Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](./resource-manager-quickstart-create-templates-use-the-portal.md). Informationen zum Bereitstellen einer Vorlage über das Portal finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](resource-group-template-deploy-portal.md).
 
 ## <a name="move-to-another-resource-group-or-subscription"></a>Verschieben in eine andere Ressourcengruppe oder ein anderes Abonnement
 
@@ -122,7 +122,7 @@ Eine Vorlage kann auf zwei Arten exportiert werden:
 
 Diese Methode exportiert die Vorlagen für bestimmte Bereitstellungen. Wenn Sie die Ressourcen über das Portal geändert haben, oder in mehreren Bereitstellungen Ressourcen hinzugefügt oder entfernt haben, finden Sie unter [Export templates from resource groups (Exportieren von Vorlagen aus Ressourcengruppen)](#export-templates-from-resource-groups) weitere Informationen.
 
-1. Öffnen Sie die Ressourcengruppe, die Sie löschen möchten.  Weitere Informationen finden Sie unter [Ressourcengruppen öffnen](#open-resource-groups).
+1. Öffnen Sie die Ressourcengruppe, die Sie exportieren möchten.  Weitere Informationen finden Sie unter [Ressourcengruppen öffnen](#open-resource-groups).
 2. Wählen Sie im linken Bereich **Bereitstellungen** aus, oder klicken Sie auf den Link unter **Bereitstellungen**.  Auf dem folgenden Screenshot wird **4 Succeeded** (4 erfolgreich) angezeigt, da es vier eigenständige Bereitstellungen mit vier unterschiedlichen Bereitstellungsnamen gab. Sie sehen möglicherweise **1 Succeeded** (1 erfolgreich).
 
     ![Screenshot: Exportierte Vorlagen aus Azure-Ressourcengruppen](./media/manage-resource-groups-portal/manage-resource-groups-export-templates-deployment-history.png)
@@ -148,8 +148,8 @@ Diese Methode exportiert die Vorlagen für bestimmte Bereitstellungen. Wenn Sie 
 
 Falls Sie Ihre Ressourcen über das Portal geändert oder Ressourcen in mehreren Bereitstellungen hinzugefügt oder entfernt haben, spiegelt eine aus dem Bereitstellungsverlauf abgerufene Vorlage nicht den aktuellen Zustand der Ressourcengruppe wider. In diesem Abschnitt erfahren Sie, wie Sie eine Vorlage exportieren, die den aktuellen Zustand der Ressourcengruppe widerspiegelt. Sie dient als eine Momentaufnahme der Ressourcengruppe, die Sie verwenden können, um die erneute Bereitstellung in der gleichen Ressourcengruppe auszuführen. Um die exportierte Vorlage für andere Lösungen verwenden zu können, müssen Sie sie erheblich ändern.
 
-1. Öffnen Sie die Ressourcengruppe, die Sie löschen möchten.  Weitere Informationen finden Sie unter [Ressourcengruppen öffnen](#open-resource-groups).
-2. Wählen Sie im linken Bereich **Automatisierungsskript** aus. Resource Manager ruft die folgenden sechs Dateien ab:
+1. Öffnen Sie die Ressourcengruppe, die Sie exportieren möchten.  Weitere Informationen finden Sie unter [Ressourcengruppen öffnen](#open-resource-groups).
+2. Wählen Sie im linken Bereich die Option **Vorlage exportieren** aus. Resource Manager ruft die folgenden sechs Dateien ab:
 
    - **Vorlage** : Die Vorlage, mit der die Infrastruktur für Ihre Lösung definiert wird. Wenn Sie das Speicherkonto über das Portal erstellt haben, hat Resource Manager eine Vorlage für die Bereitstellung verwendet und die Vorlage zur späteren Verwendung gespeichert.
    - **Parameter**: Eine Parameterdatei, die Sie zum Übergeben von Werten während der Bereitstellung verwenden können. Sie enthält die Werte, die Sie im Rahmen der ersten Bereitstellung angegeben haben. Diese Werte können Sie ändern, wenn Sie die Vorlage erneut bereitstellen.
@@ -181,7 +181,7 @@ Der Zugriff auf Ressourcen in Azure wird mithilfe der [rollenbasierten Zugriffss
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu Azure Resource Manager finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](./resource-group-overview.md).
+- Weitere Informationen zu Azure Resource Manager finden Sie unter [Übersicht über den Azure Resource Manager](./resource-group-overview.md).
 - Informationen zur Resource Manager-Vorlagensyntax finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](./resource-group-authoring-templates.md).
 - Informationen zum Entwickeln von Vorlagen finden Sie in den [Schritt-für-Schritt-Tutorials](/azure/azure-resource-manager/).
 - Informationen zum Anzeigen der Vorlagenschemas für Azure Resource Manager finden Sie in der [Referenz zu Vorlagen](/azure/templates/).

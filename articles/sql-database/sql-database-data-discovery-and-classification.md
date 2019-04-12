@@ -1,6 +1,6 @@
 ---
-title: 'Azure SQL-Datenbank: Datenermittlung und -klassifizierung | Microsoft-Dokumentation'
-description: 'Azure SQL-Datenbank: Datenermittlung und -klassifizierung'
+title: 'Azure SQL-Datenbank und SQL Data Warehouse: Datenermittlung und -klassifizierung | Microsoft-Dokumentation'
+description: Azure SQL-Datenbank und Datenermittlung sowie -klassifizierung
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,15 +11,15 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: ac52d8fa03c3c3ad1d618d014381fadfa752b7d7
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.date: 03/22/2019
+ms.openlocfilehash: 74bd3af3e1ffd126f8cb4f2347e4566cc4708e25
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202978"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58495985"
 ---
-# <a name="azure-sql-database-data-discovery--classification"></a>Azure SQL-Datenbank: Datenermittlung und -klassifizierung
+# <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL-Datenbank und SQL Data Warehouse: Datenermittlung und -klassifizierung
 
 Datenermittlung und -klassifizierung (zurzeit in der Vorschau) bietet erweiterte Funktionen für Azure SQL-Datenbank zum **Ermitteln**, **Klassifizieren**, **Bezeichnen** & **Schützen** sensibler Daten in Ihren Datenbanken.
 Das Ermitteln und Klassifizieren Ihrer besonders sensiblen Daten (Geschäfts-/Finanz-/Gesundheitsdaten, persönlich identifizierbare Daten (PII) usw.) kann eine entscheidende Rolle in der Strategie Ihrer Organisation zum Datenschutz spielen. Das Feature kann als Infrastruktur für Folgendes dienen:
@@ -31,7 +31,7 @@ Das Ermitteln und Klassifizieren Ihrer besonders sensiblen Daten (Geschäfts-/Fi
 Datenermittlung und -klassifizierung ist Teil des Angebots [Advanced Data Security (ADS)](sql-database-advanced-data-security.md). Dabei handelt es sich um ein vereinheitlichtes Paket für erweiterte SQL-Sicherheitsfunktionen. Der Zugriff auf und die Verwaltung von Datenermittlung und -klassifizierung ist über das zentrale SQL ADS-Portal möglich.
 
 > [!NOTE]
-> Dieses Dokument bezieht sich nur auf Azure SQL-Datenbank. Informationen zu SQL Server (lokal) finden Sie unter [SQL-Datenermittlung und -klassifizierung](https://go.microsoft.com/fwlink/?linkid=866999).
+> Dieses Dokument bezieht sich auf Azure SQL-Datenbank und Azure SQL Data Warehouse. Der Einfachheit halber wird nur SQL-Datenbank verwendet, wenn sowohl SQL-Datenbank als auch SQL Data Warehouse gemeint sind. Informationen zu SQL Server (lokal) finden Sie unter [SQL-Datenermittlung und -klassifizierung](https://go.microsoft.com/fwlink/?linkid=866999).
 
 ## <a id="subheading-1"></a>Was ist Datenermittlung und -klassifizierung?
 

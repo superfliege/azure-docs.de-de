@@ -1,5 +1,5 @@
 ---
-title: Anpassen der Self-Service-Kennwortzurücksetzung in Azure AD
+title: Anpassen der Self-Service-Kennwortzurücksetzung in Azure AD – Azure Active Directory
 description: Anpassungsoptionen für die Self-Service-Kennwortzurücksetzung in Azure AD
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78e15de18e57e949b2e7b7146269204469e61797
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d38d93a1c9716cc3a71d904b7b1a46fb8b1c2ee0
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106949"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58369223"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Anpassen der Azure AD-Funktionalität für die Self-Service-Kennwortzurücksetzung
 
@@ -26,12 +26,12 @@ IT-Experten, die die Self-Service-Kennwortzurücksetzung (Self-Service Password 
 
 Selbst wenn SSPR nicht aktiviert ist, gibt es für Benutzer im Portal für die Kennwortzurücksetzung den Link „Wenden Sie sich an Ihren Administrator“. Wählt ein Benutzer diesen Link aus, wird einer der folgenden Vorgänge ausgelöst:
 
-   * Es wird eine E-Mail an Ihre Administratoren gesendet, in der diese gebeten werden, den Benutzer beim Ändern des Kennworts zu unterstützen.
-   * Die Benutzer werden an eine URL weitergeleitet, die Sie für Unterstützung angegeben haben.
+* Es wird eine E-Mail an Ihre Administratoren gesendet, in der diese gebeten werden, den Benutzer beim Ändern des Kennworts zu unterstützen.
+* Die Benutzer werden an eine URL weitergeleitet, die Sie für Unterstützung angegeben haben.
 
 Es wird empfohlen, diesen Kontakt für Ihre Benutzer beispielsweise auf eine vertraute E-Mail-Adresse oder Website festzulegen, die von Ihren Benutzern bereits für Fragen an den Support verwendet wird.
 
-![Kontakt][Contact]
+![Beispielanforderung zum Zurücksetzen der an den Administrator gesendeten E-Mail][Contact]
 
 Die Kontakt-E-Mail wird in der folgenden Reihenfolge an die folgenden Empfänger gesendet:
 
@@ -68,8 +68,8 @@ Die von Ihnen ausgewählten Grafiken werden in den folgenden Situationen angezei
 
 * Nachdem ein Benutzer seinen Benutzernamen eingegeben hat
 * Wenn der Benutzer auf die angepasste URL zugreift:
-    * Durch Übergeben des `whr`-Parameters an die Seite zum Zurücksetzen des Kennworts, z. B. `https://login.microsoftonline.com/?whr=contoso.com`
-    * Durch Übergeben des `username`-Parameters an die Seite zum Zurücksetzen des Kennworts, z. B. `https://login.microsoftonline.com/?username=admin@contoso.com`
+   * Durch Übergeben des `whr`-Parameters an die Seite zum Zurücksetzen des Kennworts, z. B. `https://login.microsoftonline.com/?whr=contoso.com`
+   * Durch Übergeben des `username`-Parameters an die Seite zum Zurücksetzen des Kennworts, z. B. `https://login.microsoftonline.com/?username=admin@contoso.com`
 
 Im Artikel [Schnellstart: Hinzufügen eines Unternehmensbrandings zur Anmeldeseite in Azure AD](../fundamentals/customize-branding.md) finden Sie ausführliche Informationen zum Konfigurieren von Unternehmensbranding.
 

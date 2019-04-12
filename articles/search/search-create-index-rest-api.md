@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines Index im Code mit PowerShell und der REST-API – Azure Search
-description: Erstellen Sie einen durchsuchbaren Volltextindex im Code mithilfe von HTTP-Anforderungen und der Azure Search REST-API.
+title: Erstellen, Laden und Abfragen eines Index mit PowerShell und der REST-API – Azure Search
+description: Erstellen und laden Sie einen Index mit PowerShell, Invoke-RestMethod und der Azure Search-REST-API, und erstellen Sie eine Abfrage für den Index.
 ms.date: 03/15/2019
 author: heidisteen
 manager: cgronlun
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 87da5cdd31abb41a774a46d3891006eb58ac5e4d
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 9e1b6fc0dc4e6a6c2c191960fa061c810e3a2e79
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285127"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58372113"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-powershell-and-the-rest-api"></a>Schnellstart: Erstellen eines Azure Search-Index mit PowerShell und der REST-API
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ In diesem Artikel wird Schritt für Schritt das Erstellen, Laden und Abfragen ei
 
 [PowerShell 5.1 oder höher](https://github.com/PowerShell/PowerShell) mit [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) für sequenzielle und interaktive Schritte.
 
-Ein URL-Endpunkt und ein API-Administratorschlüssel für Ihren Suchdienst. Hierfür wird jeweils ein Suchdienst erstellt. Wenn Sie Azure Search also Ihrem Abonnement hinzugefügt haben, können Sie diese Schritte ausführen, um die erforderlichen Informationen zu erhalten:
+Rufen Sie den URL-Endpunkt und den API-Administratorschlüssel für Ihren Suchdienst ab. Hierfür wird jeweils ein Suchdienst erstellt. Wenn Sie Azure Search also Ihrem Abonnement hinzugefügt haben, können Sie diese Schritte ausführen, um die erforderlichen Informationen zu erhalten:
 
 1. Rufen Sie die URL im Azure-Portal auf der Seite **Übersicht** Ihres Suchdiensts ab. Ein Beispiel für einen Endpunkt lautet: „https:\//my-service-name.search.windows.net“.
 
@@ -371,11 +371,7 @@ Versuchen Sie, dem Index Beschreibungen auf Französisch hinzuzufügen. Das folg
         {
             "@search.action": "merge",
             "hotelId": "2",
-            "description_fr": "Hôtel le moins cher en ville",
-        },
-        {
-            "@search.action": "delete",
-            "hotelId": "6"
+            "description_fr": "Hôtel le moins cher en ville"
         }
     ]
 }

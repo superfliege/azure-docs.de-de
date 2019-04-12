@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 8973558e0841bfd0d6651a08d39da96b544156c9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 223eff79d809a78d531d86d315fff80282cd29bb
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842447"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620154"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Weg zum Cloud Marketplace-Herausgeber
 
@@ -44,6 +44,8 @@ Für die Teilnahme am Cloud-Marketplace von Microsoft ist eine Mitgliedschaft be
 Notieren Sie sich nach der Registrierung die Microsoft Partner Network-ID für Ihre Organisation. Sie werden diese bei Schritt 3 benötigen, wenn Sie Ihr Marketplace-Registrierungsformular übermitteln.
 *   Informationen über die Vorteile des Microsoft Partner Network finden Sie [hier](https://partner.microsoft.com/commercial).
 *   Wenn Ihre Organisation bereits Mitglied ist, können Sie dieser während der Registrierung beitreten. Wenn Sie [Partner Center](https://partnercenter.microsoft.com/partner/home) verwenden, können Sie die ID in Ihrem Partner Center-Konto einsehen. Wenn Sie [Partner Membership Center (PMC)](https://partners.microsoft.com/partnerprogram/PartnerMembershipCenter.aspx) verwenden, können Sie diese in Ihrem Partner Membership Center-Konto einsehen. 
+
+Öffnen Sie bei Problemen mit der MPN-Registrierung ein Ticket beim Microsoft-[Support für Partner](https://partner.microsoft.com/support).
 
 ---
 

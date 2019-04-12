@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 0790b7d5280b3fdf26c34c3903a6257d21bc877c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e45960363290879af2e72211f5ef31b825461947
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835831"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522093"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Gerätekonnektivität in Azure IoT Central
 
@@ -33,9 +33,9 @@ DPS ermöglicht Folgendes:
 In diesem Artikel wird die Vorgehensweise in den folgenden vier Anwendungsfälle beschrieben:
 
 1. [Schnelles Verbinden eines einzelnen Geräts mit SAS](#connect-a-single-device)
-1. Verbinden von Geräten nach Maß mit SAS
+1. [Verbinden von Geräten nach Maß mit SAS](#connect-devices-at-scale-using-sas)
 1. [Verbinden von Geräten nach Maß mit X.509-Zertifikaten](#connect-devices-using-x509-certificates) ist die empfohlene Vorgehensweise für Produktionsumgebungen.
-1. Verbinden ohne vorherige Registrierung der Geräte 
+1. [Verbinden ohne vorherige Registrierung der Geräte](#connect-without-registering-devices)
 
 ## <a name="connect-a-single-device"></a>Verbinden eines einzelnen Geräts
 
@@ -69,7 +69,7 @@ Um eine große Anzahl von Geräten bei Ihrer IoT Central-Anwendung zu registrier
 Um die Verbindungsinformationen für die importierten Geräte abzurufen, [exportieren Sie eine CSV-Datei aus Ihrer IoT Central-Anwendung](howto-manage-devices.md#export-devices).
 
 > [!NOTE]
-> Wie Sie Geräte verbinden können, ohne sie zuerst in IoT Central zu registrieren, erfahren Sie unter „Verbinden ohne vorherige Registrierung der Geräte“.
+> Wie Sie Geräte verbinden können, ohne sie zuerst in IoT Central zu registrieren, erfahren Sie unter [Verbinden ohne vorherige Registrierung der Geräte](#connect-without-registering-devices).
 
 ### <a name="set-up-your-devices"></a>Einrichten Ihrer Geräte
 

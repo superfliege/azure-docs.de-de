@@ -10,12 +10,12 @@ ms.subservice: workload management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: bcc09095955a28bde3ed999f23180e08485543fc
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: c27856da0a5131f2c0e8dfd4d929b577a0a68421
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "57994000"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520130"
 ---
 # <a name="sql-data-warehouse-workload-classification-preview"></a>SQL Data Warehouse-Workloadklassifizierung (Vorschauversion)
 
@@ -33,6 +33,8 @@ Durch die Klassifizierung der Workloadverwaltung können Richtlinien auf Anforde
 Data Warehousing-Workloads lassen sich auf viele Weisen klassifizieren. Die einfachste und gängigste Klassifizierung besteht allerdings im Laden und Abfragen von Daten. INSERT-, UPDATE- und DELETE-Anweisungen sind „Lasten“ für Daten.  Mit SELECT-Anweisungen werden sie abgefragt. Für eine Data Warehousing-Lösung wird häufig eine Workloadrichtlinie für Ladeaktivitäten eingesetzt, wodurch z. B. eine höhere Ressourcenklasse und mehr Ressourcen zugewiesen werden können. Eine unterschiedliche Workloadrichtlinie könnte auf Abfragen angewendet werden, wodurch beispielsweise im Gegensatz zu Ladeaktivitäten eine niedrigere Priorität festgelegt wird.
 
 Für Lade- und Abfrageworkloads können Sie auch Unterklassifizierungen erstellen. Durch diese erhalten Sie mehr Kontrolle über Ihre Workloads. Abfrageworkloads können beispielsweise aus Cubeaktualisierungen, Dashboardabfragen oder Ad-hoc-Abfragen bestehen. Sie können jede dieser Abfrageworkloads mit unterschiedlichen Ressourcenklassen oder Prioritätseinstellungen klassifizieren. Auch Ladevorgänge können von der Unterklassifizierung profitieren. Große Transformationen können größeren Ressourcenklassen zugewiesen werden. Eine höhere Priorität kann festgelegt werden, um sicherzustellen, dass wichtige Verkaufsdaten vor Wetterdaten oder vor den Daten eines Social Media-Datenfeeds geladen werden.
+
+Nicht alle Anweisungen sind klassifiziert, da sie keine Ressourcen oder Bedeutung erfordern, um die Ausführung zu beeinflussen.  DBCC-Befehle, BEGIN-, COMMIT- und ROLLBACK TRANSACTION-Anweisungen werden nicht klassifiziert.
 
 ## <a name="classification-process"></a>Klassifizierungsprozess
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4f9628be1d1f1d146ed0dbc5ebd9579f0512aeac
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 04490abb8b7f3f4c39e4134a314429e190db5174
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57997361"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540787"
 ---
 # <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Installieren von SAP NetWeaver-Hochverfügbarkeit in einem Windows-Failovercluster und auf einer Windows-Dateifreigabe für SAP ASCS-/SCS-Instanzen in Azure
 
@@ -253,7 +253,7 @@ Entfernen Sie die SAPMNT-Dateifreigabe auf *beiden* ASCS/SCS-Clusterknoten.
 
 Führen Sie das folgende PowerShell-Skript aus:
 
-```PowerShell
+```powershell
 Remove-SmbShare sapmnt -ScopeName * -Force
  ```
 
@@ -261,7 +261,7 @@ Wenn die SAPLOC-Dateifreigabe nicht vorhanden ist, erstellen Sie eine auf *beide
 
 Führen Sie das folgende PowerShell-Skript aus:
 
-```PowerShell
+```powershell
 #Create SAPLOC share and set security
 $SAPSID = "PR1"
 $DomainName = "SAPCLUSTER"
@@ -278,7 +278,7 @@ New-SmbShare -Name saploc -Path c:\usr\sap -FullAccess "BUILTIN\Administrators",
 
 Erstellen Sie das folgende Volume und die folgende Dateifreigabe im SOFS-Cluster:
 
-* SAP GLOBALHOST-Dateistruktur C:\ClusterStorage\Volume1\usr\sap\\<SID>\SYS\ auf dem freigegebenen SOFS-Clustervolume (CSV)
+* SAP GLOBALHOST-Dateistruktur `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\` auf freigegebenen SOFS-Clustervolume
 
 * SAPMNT-Dateifreigabe
 
@@ -289,12 +289,12 @@ Erstellen Sie das folgende Volume und die folgende Dateifreigabe im SOFS-Cluster
 Um ein CSV-Volume mit Spiegelresilienz zu erstellen, führen Sie das folgende PowerShell-Cmdlet auf einem der SOFS-Clusterknoten aus:
 
 
-```PowerShell
+```powershell
 New-Volume -StoragePoolFriendlyName S2D* -FriendlyName SAPPR1 -FileSystem CSVFS_ReFS -Size 5GB -ResiliencySettingName Mirror
 ```
 Um SAPMNT zu erstellen und die Ordner-und Dateifreigabesicherheit festzulegen, führen Sie das folgende PowerShell-Skript auf einem der SOFS-Clusterknoten aus:
 
-```PowerShell
+```powershell
 # Create SAPMNT on file share
 $SAPSID = "PR1"
 $DomainName = "SAPCLUSTER"
@@ -347,14 +347,14 @@ Führen Sie die folgenden Schritte aus:
 ## <a name="move-the-sys-folder-to-the-sofs-cluster"></a>Verschieben des Ordners „\SYS\...“ in den SOFS-Cluster
 
 Führen Sie die folgenden Schritte aus:
-1. Kopieren Sie den SYS-Ordner (z.B. C:\usr\sap\\<SID>\SYS) von einem der ASCS/SCS-Clusterknoten in den SOFS-Cluster (z.B. in C:\ClusterStorage\Volume1\usr\sap\\<SID>\SYS).
-2. Löschen Sie den Ordner „C:\usr\sap\\<SID>\SYS“ von beiden ASCS/SCS-Clusterknoten.
+1. Kopieren Sie den SYS-Ordner (z. B. `C:\usr\sap\<SID>\SYS`) von einem der ASCS/SCS-Clusterknoten in den SOFS-Cluster (z. B. in `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS`).
+2. Löschen Sie den Ordner `C:\usr\sap\<SID>\SYS` von beiden ASCS/SCS-Clusterknoten.
 
 ## <a name="update-the-cluster-security-setting-on-the-sap-ascsscs-cluster"></a>Aktualisieren der Clustersicherheitseinstellung im SAP ASCS/SCS-Cluster
 
 Führen Sie das folgende PowerShell-Skript auf einem der SAP ASCS/SCS-Clusterknoten aus:
 
-```PowerShell
+```powershell
 # Grant <DOMAIN>\SAP_<SID>_GlobalAdmin group access to the cluster
 
 $SAPSID = "PR1"
@@ -374,7 +374,7 @@ Erstellen Sie wie unter [Erstellen eines virtuellen Hostnamens für die SAP ASCS
 
 ## <a name="update-the-default-and-sap-ascsscs-instance-profile"></a>Aktualisieren des Standardprofils und des SAP ASCS/SCS-Instanzprofils
 
-Um den neuen virtuellen SAP ASCS/SCS-Hostnamen und den neuen globalen SAP-Hostnamen verwenden zu können, müssen Sie das Standardprofil und das SAP ASCS/SCS-Instanzprofil „\<SID>_ASCS/SCS\<Nr>_<Host>“ aktualisieren.
+Um den neuen virtuellen SAP ASCS/SCS-Hostnamen und den neuen globalen SAP-Hostnamen verwenden zu können, müssen Sie das Standardprofil und das SAP ASCS/SCS-Instanzprofil „\<SID>_ASCS/SCS\<Nr>_\<Host>“ aktualisieren.
 
 
 | Alte Werte |  |
@@ -419,7 +419,7 @@ Um den neuen virtuellen SAP ASCS/SCS-Hostnamen und den neuen globalen SAP-Hostna
 
 Kopieren Sie [**SAPScripts.psm1**][sap-powershell-scrips] auf Ihr lokales Laufwerk „C:\tmp“, und führen Sie das folgende PowerShell-Cmdlet aus:
 
-```PowerShell
+```powershell
 Import-Module C:\tmp\SAPScripts.psm1
 
 Update-SAPASCSSCSProfile -PathToAscsScsInstanceProfile \\sapglobal\sapmnt\PR1\SYS\profile\PR1_ASCS00_ascs-1 -NewASCSHostName pr1-ascs -NewSAPGlobalHostName sapglobal -Verbose  
@@ -459,11 +459,11 @@ Die neue Datei „saprc.dll“ wird auf beiden ASCS/SCS-Clusterknoten installier
 
 Weitere Informationen finden Sie unter [SAP Note 1596496 - How to update SAP Resource Type DLLs for Cluster Resource Monitor][1596496] (SAP-Hinweis 1596496: Aktualisieren der SAP-Ressourcentyp-DLLs für die Clusterressourcenüberwachung).
 
-## <a name="create-a-sap-sid-cluster-group-network-name-and-ip"></a>Erstellen eines SAP <SID>-Clusternetzwerknamens, eines Netzwerknamens und einer IP-Adresse
+## <a name="create-a-sap-sid-cluster-group-network-name-and-ip"></a>Erstellen eines SAP \<SID>-Clusternetzwerknamens, eines Netzwerknamens und einer IP-Adresse
 
 Führen Sie das folgende PowerShell-Cmdlet aus, um eine SAP \<SID>-Clustergruppe, einen ASCS/SCS-Netzwerknamen und eine entsprechende IP-Adresse zu erstellen:
 
-```PowerShell
+```powershell
 # Create SAP Cluster Group
 $SAPSID = "PR1"
 $SAPClusterGroupName = "SAP $SAPSID"
@@ -533,7 +533,7 @@ Erstellen Sie zum Abschließen der Erstellung von Ressourcen der SAP\<SID>-Clust
 
 Führen Sie das folgende PowerShell-Cmdlet aus:
 
-```PowerShell
+```powershell
 $SAPSID = "PR1"
 $SAPInstanceNumber = "00"
 $SAPNetworkNameClusterResourceName = "pr1-ascs"

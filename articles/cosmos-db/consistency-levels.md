@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: b43fe513b15d55ee595acaa6733d96cdb58f4e83
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 836d36cc6f220bb544e0c7723506c624c5f9fc39
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294504"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407299"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Konsistenzebenen in Azure Cosmos DB
 
@@ -31,7 +31,7 @@ Die Lesekonsistenz gilt für einen einzelnen Lesevorgang innerhalb eines Partiti
 
 ## <a name="configure-the-default-consistency-level"></a>Konfigurieren der Standardkonsistenzebene
 
-Sie können die Standardkonsistenzebene für Ihr Azure Cosmos-Konto jederzeit konfigurieren. Die für Ihr Konto konfigurierte Standardkonsistenzebene gilt für alle Azure Cosmos DB-Datenbanken und -Container in diesem Konto. Bei allen in einem Container oder einer Datenbank ausgeführten Lesevorgängen und Abfragen wird standardmäßig die angegebene Konsistenzebene verwendet. Weitere Informationen finden Sie unter [Konfigurieren der Standardkonsistenzebene](how-to-manage-consistency.md#configure-the-default-consistency-level).
+Sie können die Standardkonsistenzebene für Ihr Azure Cosmos-Konto jederzeit konfigurieren. Die für Ihr Konto konfigurierte Standardkonsistenzebene gilt für alle Azure Cosmos-Datenbanken und -Container in diesem Konto. Bei allen in einem Container oder einer Datenbank ausgeführten Lesevorgängen und Abfragen wird standardmäßig die angegebene Konsistenzebene verwendet. Weitere Informationen finden Sie unter [Konfigurieren der Standardkonsistenzebene](how-to-manage-consistency.md#configure-the-default-consistency-level).
 
 ## <a name="guarantees-associated-with-consistency-levels"></a>Garantien in Zusammenhang mit Konsistenzebenen
 
@@ -41,31 +41,31 @@ Im Folgenden wird die Semantik der fünf Konsistenzebenen beschrieben:
 
 - **Starke Konsistenz**: Die starke Konsistenz bietet garantierte [Linearisierbarkeit](https://aphyr.com/posts/313-strong-consistency-models). Die Lesevorgänge geben garantiert die neueste Version eines Elements zurück, für die ein Commit ausgeführt wurde. Einem Client wird nie ein partieller Schreibvorgang bzw. ein Schreibvorgang, für den kein Commit ausgeführt wurde, angezeigt. Benutzer haben immer die Garantie, dass sie den neuesten Schreibvorgang lesen, für den ein Commit ausgeführt wurde.
 
-- **Begrenzte Veraltung (Bounded staleness)**: Die Lesevorgänge berücksichtigen immer die Garantie der Präfixkonsistenz. Lesevorgänge bleiben höchstens „K“ Versionen (d. h. Updates) eines Elements oder um ein durch „t“ definiertes Zeitintervall hinter Schreibvorgängen zurück. Wenn Sie die begrenzte Veraltung auswählen, kann die Veraltung auf zwei Arten konfiguriert werden: 
+- **Begrenzte Veraltung (Bounded staleness)**: Die Lesevorgänge berücksichtigen immer die Garantie der Präfixkonsistenz. Lesevorgänge bleiben höchstens *„K“* Versionen (d. h. Updates) eines Elements oder um ein durch *„T“* definiertes Zeitintervall hinter Schreibvorgängen zurück. Wenn Sie also die begrenzte Veraltung auswählen, kann die Veraltung auf zwei Arten konfiguriert werden: 
 
-  * Anhand der Anzahl von Versionen (K) des Elements
-  * Anhand des Zeitintervalls (t) zwischen Lese- und Schreibvorgängen 
+  * Anhand der Anzahl von Versionen (*K*) des Elements
+  * Anhand des Zeitintervalls (*T*) zwischen Lese- und Schreibvorgängen 
 
   Begrenzte Veraltung bietet eine vollständige globale Reihenfolge außer innerhalb des „Veraltungsfensters“. Die monotonen Lesegarantien bestehen innerhalb einer Region sowohl innerhalb als auch außerhalb des Veraltungszeitfensters. Die starke Konsistenz weist die gleiche Semantik auf wie die begrenzte Veraltung. Das Veraltungszeitfenster ist gleich Null (0). Die begrenzte Veraltung wird auch als „Linearisierbarkeit mit Zeitverzögerung“ bezeichnet. Wenn ein Client Lesevorgänge in einer Region ausführt, die Schreibvorgänge akzeptiert, bietet die begrenzte Veraltung die gleichen Garantien wie die starke Konsistenz.
 
 - **Sitzung (Session)**: Die Lesevorgänge berücksichtigen immer die folgenden Garantien: Präfixkonsistenz (sofern es sich um eine einzelne Schreibsitzung handelt), monotone Lesevorgänge, monotone Schreibvorgänge, Lesen der eigenen Schreibvorgänge, Schreibvorgänge folgen Lesevorgängen. Die Sitzungskonsistenz gilt immer für eine Clientsitzung.
 
-- **Präfixkonsistenz**: Die zurückgegebenen Updates enthalten ein bestimmtes Präfix aller Updates ohne Lücken. Die Präfixkonsistenz garantiert, dass Lesevorgängen keine Schreibvorgänge außerhalb der Reihenfolge angezeigt werden.
+- **Präfixkonsistenz**: Die zurückgegebenen Updates enthalten ein bestimmtes Präfix aller Updates ohne Lücken. Die konsistente Präfixkonsistenzebene garantiert, dass für Lesevorgänge niemals Schreibvorgänge in falscher Reihenfolge angezeigt werden.
 
 - **Letztlich (Eventual)**: Es gibt keine Reihenfolgengarantie für Lesevorgänge. Wenn keine weiteren Schreibvorgänge vorhanden sind, konvergieren die Replikate schließlich.
 
 ## <a name="consistency-levels-explained-through-baseball"></a>Konsistenzebenen – erläutert am Beispiel Baseball
 
-Wir verwenden hier das Szenario eines Baseballspiels als Beispiel. Stellen Sie sich eine Sequenz von Schreibvorgängen vor, die den Punktestand eines Baseballspiels darstellen. Das Ergebnis eines Baseballspiels mit den Punkteständen für jedes Inning wird im Dokument [Erläuterung der Konsistenz replizierter Daten anhand von Baseball](https://www.microsoft.com/en-us/research/wp-content/uploads/2011/10/ConsistencyAndBaseballReport.pdf) beschrieben. Dieses hypothetische Baseballspiel befindet sich aktuell in der Mitte des siebten Innings. Der Seventh-inning stretch wird durchgeführt. Die Gastmannschaft liegt mit 2:5 im Rückstand.
+Wir verwenden hier das Szenario eines Baseballspiels als Beispiel. Stellen Sie sich eine Sequenz von Schreibvorgängen vor, die den Punktestand eines Baseballspiels darstellen. Das Ergebnis eines Baseballspiels mit den Punkteständen für jedes Inning wird im Dokument [Erläuterung der Konsistenz replizierter Daten anhand von Baseball](https://www.microsoft.com/en-us/research/wp-content/uploads/2011/10/ConsistencyAndBaseballReport.pdf) beschrieben. Dieses hypothetische Baseballspiel befindet sich aktuell in der Mitte des siebten Innings. Der Seventh-inning stretch wird durchgeführt. Die Gastmannschaft liegt mit 2:5 im Rückstand (wie unten dargestellt).
 
 | | **1** | **2** | **3** | **4** | **5** | **6** | **7** | **8** | **9** | **Runs** |
 | - | - | - | - | - | - | - | - | - | - | - |
 | **Gäste** | 0 | 0 | 1 | 0 | 1 | 0 | 0 |  |  | 2 |
 | **Heim** | 1 | 0 | 1 | 1 | 0 | 2 |  |  |  | 5 |
 
-Ein Azure Cosmos DB-Container enthält die Gesamtanzahl von Runs des Gast- und des Heimteams. Während das Spiel läuft, können verschiedene Lesegarantien dazu führen, dass Clients verschiedene Punktestände lesen. In der folgenden Tabelle sind sämtliche Punktestände aufgelistet, die durch Lesen der Punktestände des Gast- und des Heimteams mit jeder der fünf Konsistenzgarantien zurückgegeben werden können. Die Punkte der Gastmannschaft werden zuerst aufgeführt. Die verschiedenen möglichen Rückgabewerte werden durch Kommas getrennt.
+Ein Azure Cosmos-Container enthält die Gesamtanzahl von Runs des Gast- und des Heimteams. Während das Spiel läuft, können verschiedene Lesegarantien dazu führen, dass Clients verschiedene Punktestände lesen. In der folgenden Tabelle sind sämtliche Punktestände aufgelistet, die durch Lesen der Punktestände des Gast- und des Heimteams mit jeder der fünf Konsistenzgarantien zurückgegeben werden können. Die Punkte der Gastmannschaft werden zuerst aufgeführt. Die verschiedenen möglichen Rückgabewerte werden durch Kommas getrennt.
 
-| **Konsistenzebene** | **Punktestände** |
+| **Konsistenzebene** | **Punktestände (Gäste, Heim)** |
 | - | - |
 | **Starke Konsistenz** | 2-5 |
 | **Begrenzte Veraltung** | Punktestände, die mindestens ein Inning alt sind: 2-3, 2-4, 2-5 |

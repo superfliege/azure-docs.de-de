@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 0fc34c913453abd174009213233a54e30b9346d3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3a0df408e70ed61355ffba319f6261f90d8e4348
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881383"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499157"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Speichern von Daten am Edge mit Azure Blob Storage in IoT Edge (Vorschau)
 
@@ -345,7 +345,7 @@ Im Anschluss sehen Sie ein Beispiel für die gewünschten Eigenschaften für die
     }
 
    ```
-  ## <a name="logs"></a>Protokolle
+## <a name="logs"></a>Protokolle
 
 Gehen Sie wie [hier](production-checklist.md#set-up-logs-and-diagnostics) beschrieben vor, um Ihre Docker-Protokolle für IoT Edge-Module einzurichten.
 
@@ -383,9 +383,10 @@ Die folgenden Schnellstartanleitungen verwenden Sprachen, die auch von IoT Edge 
 * [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs.md) 
 
 ### <a name="azure-storage-explorer"></a>Azure Storage-Explorer
-Sie können auch den [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) verwenden, um eine Verbindung mit Ihrem lokalen Speicherkonto herzustellen. Wir haben zu Testzwecken die [frühere Version 1.5.0](https://github.com/Microsoft/AzureStorageExplorer/releases/tag/v1.5.0) des Azure-Explorers verwendet.
+Sie können auch den „Azure Storage-Explorer“ verwenden, um eine Verbindung mit Ihrem lokalen Speicherkonto herzustellen. Es funktioniert mit [Azure Storage-Explorer Version 1.5.0](https://github.com/Microsoft/AzureStorageExplorer/releases/tag/v1.5.0).
+
 > [!NOTE]
-> Bei den folgenden Schritten treten unter Umständen Fehler auf. Ignorieren Sie diese, und aktualisieren Sie die Ansicht. 
+> Bei den folgenden Schritten können Fehler auftreten, z. B. beim Hinzufügen einer Verbindung zu einem lokalen Speicherkonto oder beim Erstellen von Containern im lokalen Speicherkonto. Dies können Sie ignorieren und aktualisieren. 
 
 1. Laden Sie den Azure Storage-Explorer herunter, und installieren Sie ihn.
 2. Stellen Sie mithilfe einer Verbindungszeichenfolge eine Verbindung mit Azure Storage her.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: bb33427712533e669ecf41f48474c02313e2a411
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: d636d5f31e78828a518882091af29b25f7219304
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57568884"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58443988"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>Behandeln von Problemen mit geänderten Gerätenamen von Linux-VMs
 
@@ -36,15 +36,17 @@ Wenn Sie in Microsoft Azure Linux-VMs verwenden, können die folgenden Probleme 
 
 In Linux ist nicht garantiert, dass die Gerätepfade nach einem Neustart konsistent bleiben. Die Gerätenamen setzen sich aus Major- (Buchstaben) und Minor-Nummern zusammen. Wenn der Linux-Speichergerätetreiber ein neues Gerät erkennt, weist der Treiber dem Gerät aus dem verfügbaren Bereich Major- und Minor-Nummern zu. Wenn ein Gerät entfernt wird, werden die Gerätenummern zur späteren Verwendung freigegeben.
 
-Das Problem tritt auf, weil die vom SCSI-Subsystem geplante Geräteüberprüfung in Linux asynchron erfolgt. Daher kann der Pfadname eines Geräts nach jedem Neustart variieren. 
+Das Problem tritt auf, weil die vom SCSI-Subsystem geplante Geräteüberprüfung in Linux asynchron erfolgt. Daher kann der Pfadname eines Geräts nach jedem Neustart variieren.
 
 ## <a name="solution"></a>Lösung
 
-Um dieses Problem zu beheben, können Sie die persistente Benennung verwenden. Für die persistente Benennung stehen vier Methoden zur Verfügung: nach der Dateisystembezeichnung, nach der UUID, nach der ID oder nach dem Pfad. Für Azure-Linux-VMs wird die Verwendung der Dateisystembezeichnung oder UUID empfohlen. 
+Um dieses Problem zu beheben, können Sie die persistente Benennung verwenden. Für die persistente Benennung stehen vier Methoden zur Verfügung: nach der Dateisystembezeichnung, nach der UUID, nach der ID oder nach dem Pfad. Für Azure-Linux-VMs wird die Verwendung der Dateisystembezeichnung oder UUID empfohlen.
 
-Die meisten Verteilungen stellen die Parameter `fstab` **nofail** oder **nobootwait** bereit. Mit diesen Parametern kann ein System neu gestartet werden, wenn der Datenträger beim Start nicht bereitgestellt werden kann. Weitere Informationen zu diesen Parametern finden Sie in der Dokumentation zu Ihrer Distribution. Informationen zum Konfigurieren einer Linux-VM für die Verwendung einer UUID beim Hinzufügen eines Datenträgers finden Sie unter [Herstellen einer Verbindung mit dem virtuellen Linux-Computer zum Bereitstellen des neuen Datenträgers](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk). 
+Die meisten Verteilungen stellen die Parameter `fstab` **nofail** oder **nobootwait** bereit. Mit diesen Parametern kann ein System neu gestartet werden, wenn der Datenträger beim Start nicht bereitgestellt werden kann. Weitere Informationen zu diesen Parametern finden Sie in der Dokumentation zu Ihrer Distribution. Informationen zum Konfigurieren einer Linux-VM für die Verwendung einer UUID beim Hinzufügen eines Datenträgers finden Sie unter [Herstellen einer Verbindung mit dem virtuellen Linux-Computer zum Bereitstellen des neuen Datenträgers](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk).
 
 Beim Installieren des Azure Linux-Agents auf einer VM werden für die Erstellung einer Reihe symbolischer Verknüpfungen unter dem Pfad „/dev/disk/azure“ udev-Regeln verwendet. Anwendungen und Skripts ermitteln mithilfe von udev-Regeln Datenträger, die an die VM angefügt sind, sowie den Datenträgertyp und die Datenträger-LUNs.
+
+Wenn Sie Ihr fstab bereits so bearbeitet haben, dass Ihr virtueller Computer nicht startet und Sie nicht in der Lage sind, SSH für Ihre VM zu verwenden, können Sie die [serielle VM-Konsole](./serial-console-linux.md) verwenden, um in den [Einzelbenutzermodus](./serial-console-grub-single-user-mode.md) zu gelangen und fstab zu ändern.
 
 ### <a name="identify-disk-luns"></a>Identifizieren der logischen Datenträgernummern
 
@@ -83,29 +85,29 @@ Die Informationen zur Gast-LUN dienen in Kombination mit Azure-Abonnementmetadat
 
     $ az vm show --resource-group testVM --name testVM | jq -r .storageProfile.dataDisks
     [
-      {
-        "caching": "None",
-          "createOption": "empty",
-        "diskSizeGb": 1023,
-          "image": null,
-        "lun": 0,
-        "managedDisk": null,
-        "name": "testVM-20170619-114353",
-        "vhd": {
-          "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-114353.vhd"
-        }
-      },
-      {
-        "caching": "None",
-        "createOption": "empty",
-        "diskSizeGb": 512,
-        "image": null,
-        "lun": 1,
-        "managedDisk": null,
-        "name": "testVM-20170619-121516",
-        "vhd": {
-          "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-121516.vhd"
-        }
+    {
+    "caching": "None",
+      "createOption": "empty",
+    "diskSizeGb": 1023,
+      "image": null,
+    "lun": 0,
+    "managedDisk": null,
+    "name": "testVM-20170619-114353",
+    "vhd": {
+      "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-114353.vhd"
+    }
+    },
+    {
+    "caching": "None",
+    "createOption": "empty",
+    "diskSizeGb": 512,
+    "image": null,
+    "lun": 1,
+    "managedDisk": null,
+    "name": "testVM-20170619-121516",
+    "vhd": {
+      "uri": "https://testVM.blob.core.windows.net/vhd/testVM-20170619-121516.vhd"
+      }
       }
     ]
 
@@ -138,7 +140,7 @@ Zusätzliche Partitionen aus der `blkid`-Liste befinden sich auf einem Datenträ
 
     lrwxrwxrwx 1 root root 10 Jun 19 15:57 /dev/disk/by-uuid/b0048738-4ecc-4837-9793-49ce296d2692 -> ../../sdc1
 
-    
+
 ### <a name="get-the-latest-azure-storage-rules"></a>Abrufen der neuesten Azure Storage-Regeln
 
 Um die neuesten Azure Storage-Regeln abzurufen, führen Sie die folgenden Befehle aus:

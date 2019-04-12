@@ -14,17 +14,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 8dc0a003a12eb0aca28c6a3238e2119dc449d661
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: ae01b0fb088035240e670c16d4d457d8abda1bfa
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309417"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848932"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>Erstellen eines Selbsttestclients zur Vorabüberprüfung eines Azure-VM-Images
 
 Verwenden Sie diesen Artikel als Anleitung zum Erstellen eines Clientdiensts, der die Selbsttest-API verwendet. Sie können die Selbsttest-API zur Vorabüberprüfung eines virtuellen Computers (VM) verwenden, um sicherzustellen, dass er den aktuellen Veröffentlichungsvoraussetzungen von Azure Marketplace entspricht. Dieser Clientdienst ermöglicht Ihnen, einen virtuellen Computer zu testen, bevor Sie Ihr Angebot zur Zertifizierung an Microsoft senden.
-
 
 ## <a name="development-and-testing-overview"></a>Entwicklungs- und Testübersicht
 
@@ -41,20 +40,18 @@ Die grundlegenden Schritte zum Erstellen eines Selbsttestclients sind:
 
 Nachdem Sie den Client erstellt haben, können Sie ihn auf Ihrem virtuellen Computer testen.
 
-
 ### <a name="self-test-client-authorization"></a>Autorisierung des Selbsttestclients
 
 Das folgende Diagramm veranschaulicht die Funktionsweise der Autorisierung für die Dienst-zu-Dienst-Aufrufe mit Clientanmeldeinformationen (freigegebenes Geheimnis oder Zertifikat).
 
 ![Prozess der Clientautorisierung](./media/stclient-dev-process.png)
 
-
 ## <a name="the-self-test-client-api"></a>Die Selbsttestclient-API
 
 Die Selbsttest-API enthält einen einzelnen Endpunkt, der nur die POST-Methode unterstützt.  Sie hat die folgende Struktur.
 
 ```
-Uri:             https:\//isvapp.azurewebsites.net/selftest-vm
+Uri:             https://isvapp.azurewebsites.net/selftest-vm
 Method:          Post
 Request Header:  Content-Type: “application/json”
 Authorization:   “Bearer xxxx-xxxx-xxxx-xxxxx”
@@ -67,7 +64,6 @@ Request body:    The Request body parameters should use the following JSON forma
                    "PortNo":"22",
                    "CompanyName":"ABCD",
                  }
-
 ```
 
 In der folgenden Tabelle werden die API-Felder beschrieben.
@@ -83,11 +79,9 @@ In der folgenden Tabelle werden die API-Felder beschrieben.
 |  PortNo            |  Offene Portnummer für das Herstellen der Verbindung mit dem virtuellen Computer. Die Portnummer ist in der Regel `22` für Linux und `5986` für Windows.          |
 |  |  |
 
-
 ## <a name="consuming-the-api"></a>Nutzung der API
 
 Sie können die Selbsttest-API mithilfe von PowerShell oder cURL nutzen.
-
 
 ### <a name="use-powershell-to-consume-the-api-on-the-linux-os"></a>Verwenden von PowerShell zum Nutzen der API auf dem Linux-Betriebssystem
 
@@ -112,7 +106,7 @@ $Body = @{
     "CompanyName" = "ABCD"
 
 } | ConvertTo-Json
-$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers; 
+$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers;
 $Content = $res | ConvertFrom-Json
 ```
 Die folgende Bildschirmaufnahme zeigt ein Beispiel für das Aufrufen der API in PowerShell.
@@ -128,7 +122,7 @@ $testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $
   Write-Host "OSVersion: $($testresult.OSVersion)"
   Write-Host "Overall Test Result: $($testresult.TestResult)"
 
-For ($i=0; $i -lt $testresult.Tests.Length; $i++) 
+For ($i=0; $i -lt $testresult.Tests.Length; $i++)
 {
     Write-Host "TestID: $($testresult.Tests[$i].TestID)"
     Write-Host "TestCaseName: $($testresult.Tests[$i].TestCaseName)"
@@ -186,7 +180,7 @@ $testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $
   Write-Host "OSVersion: $($testresult.OSVersion)"
   Write-Host "Overall Test Result: $($testresult.TestResult)"
 
-For ($i=0; $i -lt $testresult.Tests.Length; $i++) 
+For ($i=0; $i -lt $testresult.Tests.Length; $i++)
 {
     Write-Host "TestID: $($testresult.Tests[$i].TestID)"
     Write-Host "TestCaseName: $($testresult.Tests[$i].TestCaseName)"
@@ -213,12 +207,12 @@ Führen Sie zum Aufrufen der API mit cURL die folgenden Schritte aus:
 2. Die Methode ist Post und der Inhaltstyp JSON, wie im folgenden Codeausschnitt dargestellt.
 
 ```
-CURL POST -H "Content-Type:application/json" 
+CURL POST -H "Content-Type:application/json"
 -H "Authorization: Bearer XXXXXX-Token-XXXXXXXX”
-https://isvapp.azurewebsites.net/selftest-vm 
+https://isvapp.azurewebsites.net/selftest-vm
 -d '{ "DNSName":"XXXX.westus.cloudapp.azure.com", "User":"XXX", "Password":"XXXX@123456", "OS":"Linux", "PortNo":"22", "CompanyName":"ABCD"}'
-
 ```
+
 Der folgende Bildschirm zeigt ein Beispiel der Verwendung von Curl zum Aufrufen der API.
 
 ![Aufrufen der API mithilfe des curl-Befehls](./media/stclient-consume-api-curl.png)
@@ -242,7 +236,7 @@ Wählen Sie in den folgenden Schritten den Azure AD-Mandanten aus, bei dem Sie I
    In den folgenden Schritten benötigen Sie möglicherweise den Mandantennamen (bzw. den Namen des Verzeichnisses) oder die Mandanten-ID (bzw. Verzeichnis-ID).
 
    **So erhalten Sie die Informationen über den Mandanten:**
-  
+
    Suchen Sie in **Azure Active Directory-Überblick** nach „Eigenschaften“, und wählen Sie dann **Eigenschaften** aus. Verwenden Sie die folgende Bildschirmaufnahme als Beispiel:
 
    - **Name**: Der Name des Mandanten oder Verzeichnisname
@@ -284,7 +278,7 @@ Führen Sie zum Registrieren der Client-App die folgenden Schritte aus.
 14. Klicken Sie auf **Auswählen**.
 15. Wählen Sie **Fertig**aus.
 16. Wählen Sie unter **Einstellungen** die Option **Eigenschaften** aus.
-17. Scrollen Sie unter **Eigenschaften** zu **Mehrinstanzenfähig**. Wählen Sie **Ja** aus.  
+17. Scrollen Sie unter **Eigenschaften** zu **Mehrinstanzenfähig**. Wählen Sie **Ja** aus.
 
     ![Konfigurieren der Mehrinstanzenfähigkeit für die App](./media/stclient-yes-multitenant.png)
 
@@ -319,6 +313,7 @@ Sie können eines der folgenden Programme verwenden, um ein Token zu erstellen u
 Method Type : POST
 Base Url: https://login.microsoftonline.com/common/oauth2/token
 ```
+
 Übergeben Sie die folgenden Parameter im Anforderungstext:
 
 ```
@@ -362,9 +357,9 @@ Die folgende Bildschirmaufnahme zeigt ein Beispiel der Verwendung des curl-Befeh
 
 ### <a name="to-create-and-get-a-token-using-c35"></a>Erstellen und Abrufen eines Tokens mit C&#35;
 
-Um Auth0 für beliebige Ihrer autorisierten Anwendungen nach Token abzufragen, führen Sie einen POST-Vorgang zum [https://soamtenant.auth0.com/oauth/token](https://soamtenant.auth0.com/oauth/token)-Endpunkt mit einer Nutzlast im folgenden Format durch:
+Um Auth0 für beliebige Ihrer autorisierten Anwendungen nach Token abzufragen, führen Sie einen POST-Vorgang zum „https:\//soamtenant.auth0.com/oauth/token“-Endpunkt mit einer Nutzlast im folgenden Format durch:
 
-```
+```csharp
 string clientId = "Your Application Id";
 string clientSecret = "Your Application Secret";
 string audience = "https://management.core.windows.net";
@@ -385,9 +380,9 @@ var token = JObject.Parse(content)["access_token"];
 
 ### <a name="to-create-and-get-a-token-using-powershell"></a>Erstellen und Abrufen eines Tokens mit PowerShell
 
-Um Auth0 für beliebige Ihrer autorisierten Anwendungen nach Token abzufragen, führen Sie einen POST-Vorgang zum [https://soamtenant.auth0.com/oauth/token](https://soamtenant.auth0.com/oauth/token)-Endpunkt mit einer Nutzlast im folgenden Format durch:
+Um Auth0 für beliebige Ihrer autorisierten Anwendungen nach Token abzufragen, führen Sie einen POST-Vorgang zum „https:\//soamtenant.auth0.com/oauth/token“-Endpunkt mit einer Nutzlast im folgenden Format durch:
 
-```
+```powershell
 $clientId = "Application Id of AD Client APP";
 $clientSecret = "Secret Key of AD Client APP “
 $audience = "https://management.core.windows.net";
@@ -402,14 +397,13 @@ resp = Invoke-WebRequest -Method Post -Uri $authority -Headers $headers -Content
 
 $token = $resp.Content | ConvertFrom-Json
 $token.AccessToken
-
 ```
 
 ## <a name="pass-the-client-app-token-to-the-api"></a>Übergeben des Client-App-Tokens an die API
 
 Übergeben Sie das Token mit dem folgenden Code im Autorisierungsheader an die Selbsttest-API:
 
-```
+```powershell
 $redirectUri = ‘https://isvapp.azurewebsites.net/selftest-vm’
 $accesstoken = ‘place your token here’
 
@@ -426,9 +420,8 @@ $Body =
 
 $result=Invoke-WebRequest -Method Post -Uri $redirectUri -Headers $headers -ContentType 'application/json' -Body $Body
 $result
-echo 'Test Results:'
+Write-Output 'Test Results:'
 $result.Content
-
 ```
 
 ## <a name="test-your-self-test-client"></a>Testen Ihres Selbsttestclients
@@ -445,7 +438,7 @@ Die folgenden Codeausschnitte zeigen die Testergebnisse im JSON-Format an.
 
 **Testergebnisse für eine Windows-VM:**
 
-```
+```json
 {
   "SchemaVersion": 1,
   "AppCertificationCategory": "Microsoft Single VM Certification",
@@ -484,7 +477,7 @@ Die folgenden Codeausschnitte zeigen die Testergebnisse im JSON-Format an.
 
 **Testergebnisse für eine Linux-VM:**
 
-```
+```json
 {
   "SchemaVersion": 1,
   "AppCertificationCategory": "Microsoft Single VM Certification",

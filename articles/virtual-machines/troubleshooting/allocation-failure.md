@@ -12,12 +12,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 04/13/2018
 ms.author: cjiang
-ms.openlocfilehash: 1298e7d7ed9c3760ff5022b5b97e8444eb1bcad1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 72fbdbcfcd94dd41a67bb81314802dd7314ae463
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007047"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316625"
 ---
 # <a name="troubleshoot-allocation-failures-when-you-create-restart-or-resize-vms-in-azure"></a>Problembehandlung für Zuordnungsfehler beim Erstellen, Neustarten oder Ändern der Größen von virtuellen Computern in Azure
 
@@ -25,7 +25,7 @@ Wenn Sie einen virtuellen Computer (Virtual Machine, VM) erstellen, beendete VMs
 
 **Fehlercode**: „AllocationFailed“ oder „ZonalAllocationFailed“
 
-**Fehlermeldung**: „Fehler bei der Zuordnung. Wir verfügen in dieser Region nicht über genügend Kapazität für die angeforderte VM-Größe. Weitere Informationen zur Verbesserung der Erfolgschancen bei der Zuordnung finden Sie unter `https://aka.ms/allocation-guidance`.“
+**Fehlermeldung**: „Fehler bei der Zuordnung. Wir verfügen in dieser Region nicht über genügend Kapazität für die angeforderte VM-Größe. Weitere Informationen zur Verbesserung der Erfolgschancen bei der Zuordnung finden Sie unter „https:\//aka.ms/allocation-guidance“.
 
 In diesem Artikel werden die Ursachen einiger häufig auftretender Zuordnungsfehler erläutert und mögliche Korrekturmaßnahmen vorgeschlagen.
 

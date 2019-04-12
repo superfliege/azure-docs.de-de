@@ -1,5 +1,5 @@
 ---
-title: Kombinierte Registrierung für Azure AD SSPR und MFA (Vorschauversion)
+title: Kombinierte Registrierung für Azure AD-SSPR und MFA (Vorschauversion) – Azure Active Directory
 description: Registrierung für Azure AD Multi-Factor Authentication und die Self-Service-Kennwortzurücksetzung (Vorschauversion)
 services: active-directory
 ms.service: active-directory
@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6399f5b208bc4d7182622f29bd522cfc9a088e9d
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 536d26abf563f18ed7cec6668fcd1d4223f5a135
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224548"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370158"
 ---
 # <a name="combined-security-information-registration-preview"></a>Kombinierte Registrierung von Sicherheitsinformationen (Vorschauversion)
 
 Vor der kombinierten Registrierung registrierten Benutzer Authentifizierungsmethoden für Azure Multi-Factor Authentication (MFA) und die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) über zwei verschiedene Benutzeroberflächen. Benutzer waren verwirrt, dass ähnliche Methoden für Azure MFA und für SSPR verwendet wurden, dass sie sich jedoch für jede Funktion getrennt registrieren mussten. Mit der kombinierten Registrierung können sich Benutzer jetzt einmalig registrieren und die Vorteile von Azure MFA sowie von SSPR nutzen.
 
-![Kombinierte Sicherheitsinformationen: „Mein Profil“ mit registrierten Sicherheitsinformationen für einen Benutzer, einschließlich Microsoft Authenticator und Telefon für einen Beispielbenutzer im Verzeichnis.](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
+![Eigenes Profil zeigt registrierte Sicherheitsinformationen für einen Benutzer an](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
 Lesen Sie vor dem Aktivieren der neuen Funktion diese an Administratoren gerichtete Dokumentation und die benutzerorientierte Dokumentation, um sich mit der Funktionalität und den Auswirkungen dieser Funktion vertraut zu machen. Ziehen Sie für Ihre Schulungen die Benutzerdokumentation heran, um Ihre Benutzer auf die neue Oberfläche vorzubereiten und so einen erfolgreichen Rollout sicherzustellen.
 
@@ -36,7 +36,7 @@ Lesen Sie vor dem Aktivieren der neuen Funktion diese an Administratoren gericht
 
 Die Seite „Mein Profil“ ist entsprechend den aktuellen Spracheinstellungen auf dem Computer lokalisiert, über den auf die Seite zugegriffen wird. Microsoft speichert die aktuell verwendete Sprache im Browsercache, sodass nachfolgende Zugriffsversuche weiterhin in der zuletzt verwendeten Sprache angezeigt werden. Durch Löschen des Caches werden die Seiten neu angezeigt. Wenn Sie eine bestimmte Sprache festlegen möchten, wird durch Hinzufügen von `?lng=de-DE` am Ende der URL (`de-DE` wird dabei auf den entsprechenden Sprachcode festgelegt) erzwungen, dass die Seiten in dieser Sprache angezeigt werden.
 
-![Oberfläche „Mein Profil“ mit Sicherheitsinformationen und der Möglichkeit für den Benutzer, SSPR oder andere zusätzliche Sicherheitsüberprüfungsmethoden einzurichten.](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
+![Einrichten von SSPR oder anderen zusätzlichen Sicherheitsüberprüfungsmethoden](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
 
 ## <a name="methods-available-in-converged-registration"></a>Verfügbare Methoden in der kombinierten Registrierung
 
@@ -99,7 +99,7 @@ Beispiel:
 
 Im folgenden Flussdiagramm sind die Methoden beschrieben, die für einen Benutzer angezeigt werden, wenn seine Anmeldung unterbrochen und er aufgefordert wird, die Registrierung durchzuführen:
 
-![Flussdiagramm für kombinierte Registrierung von Sicherheitsinformationen: Angabe der Anzahl der erforderlichen Methoden, wenn bei der Anmeldung weitere Informationen erforderlich sind. Dies kann sich ändern, wenn nur MFA oder nur SSPR erforderlich ist.](media/concept-registration-mfa-sspr-combined/combined-security-info-flow-chart.png)
+![Flussdiagramm für kombinierte Sicherheitsinformationen](media/concept-registration-mfa-sspr-combined/combined-security-info-flow-chart.png)
 
 Wenn Sie sowohl MFA als auch SSPR aktiviert haben, wird empfohlen, dass Sie die MFA-Registrierung erzwingen.
 

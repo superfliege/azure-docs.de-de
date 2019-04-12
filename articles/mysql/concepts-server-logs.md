@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: b1b5dffed0a82e3e3c91efd4024bafdc64f0d3d2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c5087a038e31c4819ef1ef173bb32faa41e04c97
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119036"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417767"
 ---
 # <a name="server-logs-in-azure-database-for-mysql"></a>Serverprotokolle in Azure Database for MySQL
 In Azure Database for MySQL ist das Protokoll für langsame Abfragen für Benutzer verfügbar. Der Zugriff auf das Transaktionsprotokoll wird jedoch nicht unterstützt. Das Protokoll für langsame Abfragen kann verwendet werden, um Leistungsengpässe für die Problembehandlung zu erkennen. 
@@ -53,31 +53,31 @@ In der folgenden Tabelle wird der Inhalt der einzelnen Protokolle beschrieben. J
 
 | **Eigenschaft** | **Beschreibung** |
 |---|---|
-| TenantId | Ihre Mandanten-ID |
-| SourceSystem | `Azure` |
-| TimeGenerated [UTC] | Zeitstempel für den Aufzeichnungsbeginn des Protokolls in UTC |
-| Type | Typ des Protokolls Immer `AzureDiagnostics` |
-| SubscriptionId | GUID für das Abonnement, zu dem der Server gehört |
-| ResourceGroup | Name der Ressourcengruppe, zu der der Server gehört |
-| ResourceProvider | Name des Ressourcenanbieters Immer `MICROSOFT.DBFORMYSQL` |
-| ResourceType | `Servers` |
-| ResourceId | Ressourcen-URI |
-| Ressource | Name des Servers |
-| Category (Kategorie) | `MySqlSlowLogs` |
-| NameVorgang | `LogEvent` |
-| Logical_server_name_s | Name des Servers |
-| start_time_t [UTC] | Uhrzeit, zu der die Abfrage begann |
-| query_time_s | Gesamtzeit, die die Abfrage zur Ausführung benötigte |
-| lock_time_s | Gesamtzeit, über die die Abfrage gesperrt war |
-| user_host_s | Username |
-| rows_sent_s | Anzahl gesendeter Zeilen |
-| rows_examined_s | Anzahl untersuchter Zeilen |
-| last_insert_id_s | [last_insert_id](https://dev.mysql.com/doc/refman/8.0/en/information-functions.html#function_last-insert-id) |
-| insert_id_s | Einfüge-ID |
-| sql_text_s | Vollständige Abfrage |
-| server_id_s | Die ID des Servers |
-| thread_id_s | Thread-ID |
-| \_ResourceId | Ressourcen-URI |
+| `TenantId` | Ihre Mandanten-ID |
+| `SourceSystem` | `Azure` |
+| `TimeGenerated` [UTC] | Zeitstempel für den Aufzeichnungsbeginn des Protokolls in UTC |
+| `Type` | Typ des Protokolls Immer `AzureDiagnostics` |
+| `SubscriptionId` | GUID für das Abonnement, zu dem der Server gehört |
+| `ResourceGroup` | Name der Ressourcengruppe, zu der der Server gehört |
+| `ResourceProvider` | Name des Ressourcenanbieters Immer `MICROSOFT.DBFORMYSQL` |
+| `ResourceType` | `Servers` |
+| `ResourceId` | Ressourcen-URI |
+| `Resource` | Name des Servers |
+| `Category` | `MySqlSlowLogs` |
+| `OperationName` | `LogEvent` |
+| `Logical_server_name_s` | Name des Servers |
+| `start_time_t` [UTC] | Uhrzeit, zu der die Abfrage begann |
+| `query_time_s` | Gesamtzeit, die die Abfrage zur Ausführung benötigte |
+| `lock_time_s` | Gesamtzeit, über die die Abfrage gesperrt war |
+| `user_host_s` | Username |
+| `rows_sent_s` | Anzahl gesendeter Zeilen |
+| `rows_examined_s` | Anzahl untersuchter Zeilen |
+| `last_insert_id_s` | [last_insert_id](https://dev.mysql.com/doc/refman/8.0/en/information-functions.html#function_last-insert-id) |
+| `insert_id_s` | Einfüge-ID |
+| `sql_text_s` | Vollständige Abfrage |
+| `server_id_s` | Die ID des Servers |
+| `thread_id_s` | Thread-ID |
+| `\_ResourceId` | Ressourcen-URI |
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Konfigurieren der und Zugreifen auf die Serverprotokolle mithilfe der Azure CLI](howto-configure-server-logs-in-cli.md).

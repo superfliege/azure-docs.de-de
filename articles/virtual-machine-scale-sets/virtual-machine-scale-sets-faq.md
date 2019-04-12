@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/13/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 994612f390cb6c6dcb3b4c2acaaec839ef461d2c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 07a488556bc899efa80d67ceb984b60f461b9742
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999563"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541026"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
 
@@ -243,7 +243,7 @@ Ein Beispiel finden Sie in der [GitHub-Schnellstartvorlage „101-vm-sshkey“](
 
 ### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>Wenn ich `Update-AzVmss` ausführe, nachdem ich mehrere Zertifikate aus dem gleichen Schlüsseltresor hinzugefügt habe, erhalte ich die folgende Meldung:
 
->Update-AzVmss: Die Liste „secret“ enthält wiederholte Instanzen von „/subscriptions/<Meine Abonnement-ID>/resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev“, was nicht zulässig ist.
+>Update-AzVmss: Die Liste „secret“ enthält wiederholte Instanzen von „/subscriptions/\<Meine Abonnement-ID>/resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev“, was nicht zulässig ist.
 
 Dieser Fall kann eintreten, wenn Sie versuchen, den gleichen Tresor erneut hinzuzufügen, anstatt ein neues Zertifikat für den vorhandenen Quelltresor zu verwenden. Die Befehl `Add-AzVmssSecret` funktioniert nicht ordnungsgemäß, wenn Sie zusätzliche Geheimnisse hinzufügen.
 
@@ -303,7 +303,7 @@ Kundengeheimnisse werden von der CRP-Komponente nicht speichert. Wenn Sie `stop 
 
 Beim horizontalen Hochskalieren tritt dieses Problem nicht auf, da eine zwischengespeicherte Kopie des Geheimnisses in Azure Service Fabric (Einzelfabric-Mandantenmodell) vorhanden ist.
 
-### <a name="why-do-i-have-to-specify-the-exact-location-for-the-certificate-url-httpsname-of-the-vaultvaultazurenet443secretsexact-location-as-indicated-in-service-fabric-cluster-security-scenarioshttpsazuremicrosoftcomdocumentationarticlesservice-fabric-cluster-security"></a>Warum muss ich den genauen Speicherort für die Zertifikat-URL (https://<name of the vault>.vault.azure.net:443/secrets/<exact location>) angeben, wie unter [Szenarien für die Clustersicherheit in Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/) beschrieben?
+### <a name="why-do-i-have-to-specify-the-exact-location-for-the-certificate-url-httpsname-of-the-vaultvaultazurenet443secretsexact-location-as-indicated-in-service-fabric-cluster-security-scenarioshttpsazuremicrosoftcomdocumentationarticlesservice-fabric-cluster-security"></a>Warum muss ich den genauen Speicherort für die Zertifikat-URL (https:\/\/\<Tresorname>.vault.azure.net:443/secrets/\<Speicherort>) angeben, wie unter [Szenarien für die Clustersicherheit in Service Fabric](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/) beschrieben?
 
 Laut Azure Key Vault-Dokumentation gibt die REST-API zum Abrufen des Geheimnisses die neueste Version des Geheimnisses zurück, wenn keine Version angegeben ist.
 

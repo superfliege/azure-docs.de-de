@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: resources
-ms.date: 08/17/2018
+ms.date: 03/20/2019
 ms.author: kylestorck
-ms.openlocfilehash: 4cbede768409596365bea0cdbbb451cc5195ac4b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 50de4d983ed24440d655cf5b9ba3fb5e33d8d7cd
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58136258"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309944"
 ---
 # <a name="project-acoustics-known-issues"></a>Bekannte Probleme mit Projekt Akustik
 Bei Verwendung der Designervorschau für Project Acoustics können die folgenden bekannten Probleme auftreten.
@@ -28,8 +28,9 @@ Wenn Sie eine Szene umbenennen, werden nicht alle zu dieser Szene gehörenden ak
 
 Die neuesten Versionen von Unity (2018.2 und höher) haben den bekannten Fehler, dass Unity abstürzt, wenn Sie Ihr Projekt schließen. Dieses Problem wird mit [diesem Unity-Problem](https://issuetracker.unity3d.com/issues/crash-on-assetdatabase-getassetimporterversions-when-closing-a-specific-unity-project) nachverfolgt.
 
-## <a name="trouble-deploying-to-android"></a>Probleme bei der Bereitstellung für Android
-Wenn Sie Project Acoustics unter Android verwenden möchten, ändern Sie Ihr Buildziel in Android. Einige Unity-Versionen weisen einen Fehler beim Bereitstellen von Audio-Plug-Ins auf. Stellen Sie sicher, dass Sie keine Version verwenden, die von [diesem Fehler](https://issuetracker.unity3d.com/issues/android-ios-audiosource-playing-through-google-resonance-audio-sdk-with-spatializer-enabled-does-not-play-on-built-player) betroffen sind.
+## <a name="deploying-to-android-from-some-unity-versions"></a>Bereitstellen auf Android von einigen Unity-Versionen aus
+
+Einige Unity-Versionen weisen einen Fehler beim Bereitstellen von Audio-Plug-Ins auf Android auf. Stellen Sie sicher, dass Sie keine Version verwenden, die von [diesem Fehler](https://issuetracker.unity3d.com/issues/android-ios-audiosource-playing-through-google-resonance-audio-sdk-with-spatializer-enabled-does-not-play-on-built-player) betroffen sind.
 
 ## <a name="i-get-an-error-that-could-not-find-metadata-file-systemsecuritydll"></a>Die Fehlermeldung „could not find metadata file System.Security.dll“ (Die Metadatendatei „System.Security.dll“ wurde nicht gefunden) wird angezeigt
 

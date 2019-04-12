@@ -1,33 +1,24 @@
 ---
-title: Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen – Azure
+title: Anpassen von Azure HDInsight-Clustern mithilfe von Skriptaktionen
 description: Hier erfahren Sie, wie Sie Linux-basierten HDInsight-Clustern mithilfe Skriptaktionen benutzerdefinierte Komponenten hinzufügen. Bei Skriptaktionen handelt es sich um Bash-Skripts. Sie können zum Anpassen der Clusterkonfiguration oder zum Hinzufügen zusätzlicher Dienste und Hilfsprogramme wie Hue, Solr oder R verwendet werden.
-services: hdinsight
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.author: hrasheed
-ms.openlocfilehash: 80c2d25fa24acff92a462f0289259792f217fbfd
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.date: 04/02/2019
+ms.openlocfilehash: fe0fec082ace997a3bd66ca7c7575ce8dce3be1a
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361692"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885569"
 ---
-# <a name="customize-linux-based-hdinsight-clusters-by-using-script-actions"></a>Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen
+# <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Anpassen von Azure HDInsight-Clustern mithilfe von Skriptaktionen
 
 HDInsight verfügt über eine Konfigurationsmethode namens **Skriptaktionen**, bei der benutzerdefinierte Skripts zum Anpassen des Clusters aufgerufen werden. Diese Skripts werden auch zum Installieren weitere Komponenten und zum Ändern von Konfigurationseinstellungen verwendet. Skriptaktionen können während oder nach der Clustererstellung verwendet werden.
 
-> [!IMPORTANT]  
-> Die Möglichkeit zum Verwenden von Skriptaktionen in einem bereits ausgeführten Cluster ist nur für Linux-basierte HDInsight-Cluster verfügbar.
->
-> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [HDInsight-Windows-Deaktivierung](hdinsight-component-versioning.md#hdinsight-windows-retirement).
-
 Skriptaktionen können auch als HDInsight-Anwendung im Azure Marketplace veröffentlicht werden. Weitere Informationen zu HDInsight-Anwendungen finden Sie unter [Veröffentlichen von HDInsight-Anwendungen im Azure Marketplace](hdinsight-apps-publish-applications.md).
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="permissions"></a>Berechtigungen
 
@@ -225,7 +216,9 @@ Weitere Informationen zum Bereitstellen einer Vorlage finden Sie hier:
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>Verwenden einer Skriptaktion während der Clustererstellung mit Azure PowerShell
 
-In diesem Abschnitt verwenden Sie das Cmdlet [Add-AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction), um Skripts zum Anpassen eines Clusters aufzurufen. Installieren und konfigurieren Sie zunächst Azure PowerShell. Informationen zum Konfigurieren einer Arbeitsstation für die Ausführung von HDInsight PowerShell-Cmdlets finden Sie in der [Übersicht über Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install).
+In diesem Abschnitt verwenden Sie das Cmdlet [Add-AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction), um Skripts zum Anpassen eines Clusters aufzurufen. Installieren und konfigurieren Sie zunächst Azure PowerShell. Um diese PowerShell-Befehle verwenden zu können, benötigen Sie das [AZ-Modul](https://docs.microsoft.com/powershell/azure/overview).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Das folgende Skript zeigt, wie Sie eine Skriptaktion anwenden, wenn Sie einen Cluster mithilfe von PowerShell erstellen:
 
@@ -277,7 +270,7 @@ Navigieren Sie zum [Azure-Portal](https://portal.azure.com):
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-azure-powershell"></a>Anwenden einer Skriptaktion auf einen ausgeführten Cluster mit Azure PowerShell
 
-Installieren und konfigurieren Sie zunächst Azure PowerShell. Informationen zum Konfigurieren einer Arbeitsstation für die Ausführung von HDInsight PowerShell-Cmdlets finden Sie in der [Übersicht über Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install).
+Um diese PowerShell-Befehle verwenden zu können, benötigen Sie das [AZ-Modul](https://docs.microsoft.com/powershell/azure/overview).
 
 Das folgende Beispiel zeigt, wie Sie eine Skriptaktion auf einen ausgeführten Cluster anwenden:
 
@@ -464,11 +457,11 @@ Für den Fall, dass die Clustererstellung aufgrund eines Fehlers in einem Skript
 
     In diesem Verzeichnis sind die Protokolle separat nach **Hauptknoten**, **Workerknoten** und **ZooKeeper-Knoten** strukturiert. Hierzu folgende Beispiele:
 
-    * **Hauptknoten:** `<uniqueidentifier>AmbariDb-hn0-<generated_value>.cloudapp.net`
+    * **Hauptknoten**: `<uniqueidentifier>AmbariDb-hn0-<generated_value>.cloudapp.net`
 
-    * **Workerknoten:** `<uniqueidentifier>AmbariDb-wn0-<generated_value>.cloudapp.net`
+    * **Workerknoten**: `<uniqueidentifier>AmbariDb-wn0-<generated_value>.cloudapp.net`
 
-    * **ZooKeeper-Knoten:** `<uniqueidentifier>AmbariDb-zk0-<generated_value>.cloudapp.net`
+    * **ZooKeeper-Knoten**: `<uniqueidentifier>AmbariDb-zk0-<generated_value>.cloudapp.net`
 
 * Alle Ausgaben vom Typ **stdout** und **stderr** des entsprechenden Hosts werden in das Speicherkonto hochgeladen. Für die einzelnen Skriptaktionen sind jeweils die Dateien **output-\*.txt** und **errors-\*.txt** vorhanden. Die Datei **output-*.txt** enthält Informationen zum URI des Skripts, das auf dem Host ausgeführt wurde. Der folgende Text ist ein Beispiel für diese Informationen:
 
@@ -524,7 +517,7 @@ Hierfür gelten zwei Ausnahmen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Entwickeln von Skriptaktionsskripts für HDInsight](hdinsight-hadoop-script-actions-linux.md)
+* [Entwickeln von Script Action-Skripts für HDInsight](hdinsight-hadoop-script-actions-linux.md)
 * [Installieren und Verwenden von Apache Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install-linux.md)
 * [Hinzufügen von zusätzlichem Speicher zu einem HDInsight-Cluster](hdinsight-hadoop-add-storage.md)
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 9/17/2018
 ms.author: sharadag
 ms.custom: include file
-ms.openlocfilehash: e3fa5616518675d8475937ec63afdd8e1742e8c6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a3a43c56a49c243390eac964d31988b7d30fbb56
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553520"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407975"
 ---
 | Ressource | Standardlimit |
 | --- | --- |
@@ -41,4 +41,4 @@ ms.locfileid: "57553520"
 |  | Mit Codierung für segmentierte Übertragung (Chunked Transfer Encoding, CTE) | Ohne HTTP-Segmentierung |
 | ---- | ------- | ------- |
 | **Download** | Es gibt keine Beschränkung für die Downloadgröße. | Es gibt keine Beschränkung für die Downloadgröße. |
-| **Upload** |  Es gibt keine Beschränkung, so lange jeder CTE-Upload kleiner als 28,6 MB ist. | Die Größe darf 28,6 MB nicht überschreiten. |
+| **Upload** |  Es gibt keine Beschränkung, so lange jeder CTE-Upload kleiner als 2 GB ist. | Die Größe darf 2 GB nicht überschreiten. |

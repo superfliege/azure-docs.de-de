@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.subservice: common
-ms.openlocfilehash: bfaa738b0f99594a3bd11541d519701ff5eb98f5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6edb1abae91a675a3fe47b417a112f0951886aaf
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57896159"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351914"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -25,7 +25,7 @@ Um solche Anwendungen erfolgreich zu verwalten, sollten Sie sie proaktiv überwa
 
 > [!NOTE]
 > Azure Files unterstützt derzeit keine Protokollierung.
-> 
+>
 
 Eine praktische Anleitung für die End-to-End-Problembehandlung in Azure-Speicheranwendungen finden Sie unter [End-to-End-Problembehandlung mit Azure-Speichermetriken und -Protokollierung, AzCopy und Message Analyzer](../storage-e2e-troubleshooting.md).
 
@@ -100,7 +100,7 @@ Die "[Anhänge]" enthalten Informationen zur Verwendung anderer Tools wie Wiresh
 ## <a name="monitoring-your-storage-service"></a>Überwachung Ihres Speicherdiensts
 Wenn Sie mit der Windows-Leistungsüberwachung vertraut sind, können Sie von Speichermetriken als einem Azure-Speicher-Pendant zu Windows-Leistungsüberwachungsindikatoren ausgehen. In Speichermetriken finden Sie einen umfassenden Metriksatz (Indikatoren in der Windows Performance Monitor-Terminologie) wie Dienstverfügbarkeit, Gesamtzahl der Dienstanfragen oder Prozentsatz der erfolgreichen Dienstanfragen. Eine vollständige Liste der verfügbaren Kennzahlen finden Sie im Thema zu den [Kennzahlen zur Speicheranalyse – Tabellenschema](https://msdn.microsoft.com/library/azure/hh343264.aspx). Sie können spezifizieren, ob der Speicherdienst die Metriken jede Stunde oder jede Minute sammeln und aggregieren soll. Weitere Informationen zur Metrik-Aktivierung und Überwachung Ihrer Speicherkonten finden Sie unter [Aktivieren der Speichermetriken und Anzeigen von Metrikdaten](https://go.microsoft.com/fwlink/?LinkId=510865).
 
-Sie können auswählen, welche Stundenmetriken Sie im [Azure-Portal](https://portal.azure.com) anzeigen möchten, und Regeln konfigurieren, die den Administrator per E-Mail benachrichtigen, wenn eine Stundenmetrik einen bestimmten Schwellenwert überschreitet. Weitere Informationen finden Sie unter [Empfangen von Warnungsbenachrichtigungen](/azure/monitoring-and-diagnostics/monitoring-overview-alerts). 
+Sie können auswählen, welche Stundenmetriken Sie im [Azure-Portal](https://portal.azure.com) anzeigen möchten, und Regeln konfigurieren, die den Administrator per E-Mail benachrichtigen, wenn eine Stundenmetrik einen bestimmten Schwellenwert überschreitet. Weitere Informationen finden Sie unter [Empfangen von Warnungsbenachrichtigungen](/azure/monitoring-and-diagnostics/monitoring-overview-alerts).
 
 Der Speicherdienst sammelt Metriken nach dem Best-Effort-Prinzip, kann aber nicht jeden Speichervorgang aufzeichnen.
 
@@ -132,8 +132,8 @@ Speichermetriken speichern nur Kapazitätsmetriken für den Blob-Dienst, weil Bl
 
 > [!NOTE]
 > Sie sollten diese Werte überwachen, um früh zu erkennen, dass Sie sich den Kapazitätsgrenzen Ihres Speicherkontos nähern. Im Azure-Portal können Sie Warnregeln hinzufügen, um benachrichtigt zu werden, wenn die Gesamtspeichernutzung die von Ihnen festgelegten Grenzwerte über- oder unterschreitet.
-> 
-> 
+>
+>
 
 Hilfe für die Schätzung der Größe der verschiedenen Speicherobjekte wie Blobs finden Sie im Blogbeitrag [Microsoft Azure-Speicherabrechnung verstehen – Bandbreite, Transaktionen und Kapazität](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx).
 
@@ -191,8 +191,8 @@ Benutzer Ihrer Anwendung können Sie über Fehler informieren, die von der Clien
 
 > [!NOTE]
 > Denken Sie daran, dass Sie mit einigen intermittierenden Fehlern rechnen müssen, beispielsweise Fehler aufgrund von vorübergehenden Netzwerkbedingungen oder Anwendungsfehler.
-> 
-> 
+>
+>
 
 Die folgenden Ressourcen sind nützlich für das Verständnis von speicherbezogenem Status und Fehlercodes:
 
@@ -214,8 +214,8 @@ Mit der Speicher-Clientbibliothek für .NET können Sie clientseitige Protokolli
 
 > [!NOTE]
 > In einigen Fällen (wie SAS-Authentifizierungsfehler) kann ein Benutzer einen Fehler melden, für den Sie keine Anfragedaten in den serverseitigen Speicherprotokollen finden. Sie können die Protokollierungsfunktionen der Speicher-Clientbibliothek verwenden, um zu untersuchen, ob die Ursache des Problems im Client liegt, oder Überwachungstools verwenden, um das Netzwerk zu untersuchen.
-> 
-> 
+>
+>
 
 ### <a name="using-network-logging-tools"></a>Verwendung von Netzwerk-Protokollierungstools
 Sie können den Verkehr zwischen Client und Server erfassen, um detaillierte Informationen über die Daten, die Client und Server austauschen, und die zugrunde liegenden Netzwerkbedingungen bereitzustellen. Nützliche Netzwerkprotokollierungstools sind:
@@ -242,8 +242,8 @@ Die Speicherclientbibliothek erzeugt automatisch eine eindeutige Clientanforderu
 
 > [!NOTE]
 > Mehrere Anforderungen können die gleiche Clientanforderungs-ID besitzen, da dieser Wert vom Client zugewiesen werden kann (obwohl die Speicherclientbibliothek automatisch einen neuen Wert zuweist). Bei Wiederholungsversuchen seitens des Clients nutzen alle Versuche die gleiche Clientanforderungs-ID. Bei einem vom Client gesendeten Batch verfügt der Batch über eine einzelne Clientanforderungs-ID.
-> 
-> 
+>
+>
 
 ### <a name="server-request-id"></a>Serveranfrage-ID
 Der Speicherdienst generiert automatisch Serveranfrage-IDs.
@@ -254,8 +254,8 @@ Der Speicherdienst generiert automatisch Serveranfrage-IDs.
 
 > [!NOTE]
 > Der Speicherdienst teilt jeder empfangenen Anforderung immer eine eindeutige Serveranforderungs-ID zu, sodass jeder Wiederholungsversuch vom Client und jeder in einem Batch enthaltene Vorgang eine eindeutige Serveranforderungs-ID hat.
-> 
-> 
+>
+>
 
 Wenn die Speicherclientbibliothek im Client eine Speicherausnahme (**StorageException**) ausgibt, enthält die Eigenschaft **RequestInformation** ein Objekt vom Typ **RequestResult** mit einer Eigenschaft vom Typ **ServiceRequestID**. Auf ein Objekt vom Typ **RequestResult** kann auch über eine **OperationContext**-Instanz zugegriffen werden.
 
@@ -351,8 +351,8 @@ Der Speicherdienst berechnet die Metrik **AverageE2ELatency** nur für erfolgrei
 
 > [!NOTE]
 > Sie können **E2ELatency** und **ServerLatency** auch für einzelne Speichervorgänge in den Protokolldaten der Speicherprotokollierung anzeigen.
-> 
-> 
+>
+>
 
 #### <a name="investigating-client-performance-issues"></a>Untersuchung von Clientleistungsproblemen
 Mögliche Gründe für eine langsame Clientreaktion sind z. B. eine begrenzte Anzahl verfügbarer Verbindungen oder Threads oder begrenzte Ressourcen wie CPU, Arbeitsspeicher oder Netzwerkbandbreite. Möglicherweise können Sie das Problem lösen, indem Sie den Clientcode zugunsten einer höheren Effizienz ändern (z. B. durch Verwendung von asynchronen Aufrufen an den Speicherdienst) oder indem Sie einen größeren virtuellen Computer (mit mehr Kernen und mehr Arbeitsspeicher) verwenden.
@@ -402,8 +402,8 @@ Hohe Werte bei der **AverageServerLatency** können auch ein Zeichen für schlec
 
 > [!NOTE]
 > Hier finden Sie eine umfassende Leistungscheckliste: [Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage](storage-performance-checklist.md)
-> 
-> 
+>
+>
 
 ### <a name="you-are-experiencing-unexpected-delays-in-message-delivery"></a>Sie stoßen auf unerwartete Verzögerungen bei der Nachrichtenübermittlung in einer Warteschlange
 Wenn Sie eine Verszögerung zwischen dem Zeitpunkt feststellen, in dem eine Anwendung eine Nachricht in eine Warteschlange einfügt, und dem Zeitpunkt, an dem sie zur Verfügung steht, um aus der Warteschlage gelesen zu werden, sollten Sie die folgenden Schritte ausführen, um das Problem zu diagnostizieren:
@@ -429,8 +429,8 @@ Im Fall der Übereinstimmung der Wertespitzen von **PercentThrottlingError** mit
 
 > [!NOTE]
 > Es können auch Spitzen in den Werten von **PercentThrottlingError** auftreten, die nicht mit Zeiträumen hoher Aktivität für die Anwendung übereinstimmen. Die wahrscheinlichste Ursache ist hier die Verschiebung von Partitionen durch den Speicherdienst zur Verbesserung des Lastausgleichs.
-> 
-> 
+>
+>
 
 #### <a name="permanent-increase-in-PercentThrottlingError"></a>Permanenter Anstieg bei PercentThrottlingError
 Wenn Sie einen gleichbleibend hohen Wert für **PercentThrottlingError** nach einer dauerhaften Steigerung Ihres Transaktionsvolumens feststellen oder wenn Sie Ihre Anwendung zu Beginn Lasttests unterziehen, müssen Sie bewerten, wie Ihre Anwendung Speicherpartitionen verwendet und ob sie sich an die Skalierbarkeitsziele für ein Speicherkonto annähert. Wenn Sie beispielsweise Drosselungsfehler in einer (als Einzelpartition zählende) Warteschlange sehen, sollten Sie die Verwendung zusätzlicher Warteschlangen zur Transaktionsverteilung über mehrere Partitionen in Erwägung ziehen. Wenn Sie Drosselungsfehler in einer Tabelle feststellen, müssen Sie die Verwendung eines anderen Partitionsschemas für die Verteilung Ihrer Transaktionen über mehrere Partitionen mithilfe einer breiteren Auswahl von Partitionsschlüsseln in Erwägung ziehen. Eine häufige Ursache für dieses Problem sind die vorangestellten/angehängten Gegenmuster, in denen Sie das Datum als Partitionsschlüssel auswählen und anschließend alle Daten an einem bestimmten Tag auf eine Partition geschrieben werden: Unter Last kann dies zu einem Schreibengpass führen. Verwenden Sie entweder ein anderes Partitionierungsmuster, oder prüfen Sie, ob Blobspeicher die bessere Lösung wäre. Prüfen Sie außerdem, ob die Drosselung als Folge der Lastspitzen auftreten, und untersuchen Sie Möglichkeiten des Ausgleich Ihrer Anfragemuster.
@@ -441,16 +441,16 @@ Ineffiziente Abfragemuster können ebenfalls dazu führen, dass Sie an die Skali
 
 > [!NOTE]
 > Ihr Leistungstest sollte ineffiziente Abfragemuster in Ihrer Anwendung aufdecken.
-> 
-> 
+>
+>
 
 ### <a name="metrics-show-an-increase-in-PercentTimeoutError"></a>Metriken zeigen Anstieg bei PercentTimeoutError an
 Ihre Metriken zeigen einen Anstieg bei **PercentTimeoutError** für einen Ihrer Speicherdienste an. Zugleich erhält der Client ein hohes Volumen an HTTP-Status-Meldungen "500 Operation Timeout" von Speicheroperationen.
 
 > [!NOTE]
 > Timeout-Fehler werden vorübergehend angezeigt, während der Speicherdienst Lasten durch Verschieben einer Partition zu einem neuen Server ausgleicht.
-> 
-> 
+>
+>
 
 Die Metrik **PercentTimeoutError** ist eine Aggregation der folgenden Metriken: **ClientTimeoutError**, **AnonymousClientTimeoutError**, **SASClientTimeoutError**, **ServerTimeoutError**, **AnonymousServerTimeoutError** und **SASServerTimeoutError**.
 
@@ -586,8 +586,8 @@ SCRIPT7002: XMLHttpRequest: Network Error 0x80070005, Access is denied.
 
 > [!NOTE]
 > Sie können die F12-Entwicklertools im Internet Explorer verwenden, um die zwischen Browser und Speicherdienst ausgetauschten Meldungen zu verfolgen, wenn Sie clientseitige JavaScript-Probleme behandeln.
-> 
-> 
+>
+>
 
 Diese Fehler treten auf, weil im Webbrowser die [Same Origin Policy](https://www.w3.org/Security/wiki/Same_Origin_Policy) als Sicherheitsbeschränkung implementiert ist, welche die Webseite daran hindert, eine API aus einer anderen Domäne aufzurufen.
 
@@ -712,8 +712,8 @@ Die Anhänge beschreiben verschiedene Tools, die bei der Diagnose und Fehlerbeha
 
 > [!NOTE]
 > Fiddler kann HTTPS-Datenverkehr entschlüsseln. Sie sollten die Fiddler-Dokumentation sorgfältig lesen, um zu verstehen, wie dies erfolgt und welche Auswirkungen es auf die Sicherheit hat.
-> 
-> 
+>
+>
 
 Dieser Anhang enthält eine kurze Anleitung, wie Sie Fiddler konfigurieren, damit der Datenverkehr zwischen dem lokalen Rechner, auf dem Sie Fiddler installiert haben, und den Azure-Speicherdiensten erfasst wird.
 
@@ -735,7 +735,7 @@ Das folgende Verfahren zeigt, wie Sie detaillierte Paketinformationen für Daten
 2. Wählen Sie im Abschnitt **Start** die lokale Netzwerkschnittstelle oder mit dem Internet verbundene Schnittstellen aus.
 3. Klicken Sie auf **Capture Options**.
 4. Fügen Sie einen Filter zum Textfeld **Capture Filter** hinzu. Beispielsweise wird Wireshark durch **host contosoemaildist.table.core.windows.net** so konfiguriert, dass nur Pakete erfasst werden, die an den Tabellenspeicherdienst-Endpunkt im **contosoemaildist**-Speicherkonto oder von diesem Tabellenspeicherdienst-Endpunkt gesendet werden. Sehen Sie sich die [vollständige Liste der Erfassungsfilter](https://wiki.wireshark.org/CaptureFilters)an.
-   
+
    ![][6]
 5. Klicken Sie auf **Start**. Wireshark wird nun alle an oder aus dem Tabellendienstendpunkt gesendeten Pakete erfassen, wenn Sie Ihre Clientanwendung auf dem lokalen Computer verwenden.
 6. Wenn Sie fertig sind, klicken Sie im Hauptmenü auf **Capture** (Erfassen) und anschließend auf **Stop** (Beenden).
@@ -751,8 +751,8 @@ Sie können die TCP-Daten auch so anzeigen, wie sie in der Anwendungsschicht vor
 
 > [!NOTE]
 > Weitere Informationen zu Wireshark finden Sie im [Wireshark-Benutzerhandbuch](https://www.wireshark.org/docs/wsug_html_chunked).
-> 
-> 
+>
+>
 
 ### <a name="appendix-3"></a>Anhang 3: Verwendung von Microsoft Message Analyzer zur Erfassung von Netzwerkverkehr.
 Sie können Microsoft Message Analyzer verwenden, um HTTP- und HTTPS-Datenverkehr ähnlich wie Fiddler und Netzwerkverkehr ähnlich wie Wireshark zu erfassen.
@@ -766,8 +766,8 @@ contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata
 
 > [!NOTE]
 > Die Hostnamen werden durch ein Leerzeichen getrennt.
-> 
-> 
+>
+>
 
 Wenn Sie bereit sind, mit dem Sammeln von Rückverfolgungsdaten zu beginnen, klicken Sie auf die Schaltfläche **Starten mit** .
 
@@ -806,6 +806,17 @@ Sie können die Application Insights-Funktion für Azure DevOps auch als Bestand
 * Leistungsprobleme oder Ausnahmen in Ihrem Webdienst schnell diagnostizieren. Finden Sie heraus, ob für CPU oder andere Ressourcen Stretching durchgeführt wird, gewinnen Sie Stapelnachverfolgungen aus Ausnahmen, und durchsuchen Sie ganz einfach Protokollablaufverfolgungen. Wenn die Leistung der Anwendung unter akzeptable Grenzwerte fällt, kann Microsoft Ihnen eine E-Mail senden. Sie können sowohl .NET- als auch Java-Webdienste überwachen.
 
 Weitere Informationen finden Sie unter [Was ist Application Insights](../../azure-monitor/app/app-insights-overview.md).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen zu Analysen in Azure Storage finden Sie unter den folgenden Ressourcen:
+
+* [Überwachen eines Speicherkontos im Azure-Portal](storage-monitor-storage-account.md)
+* [Speicheranalyse](storage-analytics.md)
+* [Metriken der Speicheranalyse](storage-analytics-metrics.md)
+* [Schema der Tabellen für Speicheranalysemetriken](/rest/api/storageservices/storage-analytics-metrics-table-schema)
+* [Speicheranalyseprotokolle](storage-analytics-logging.md)
+* [Protokollformat der Speicheranalyse](/rest/api/storageservices/storage-analytics-log-format)
 
 <!--Anchors-->
 [Einführung]: #introduction

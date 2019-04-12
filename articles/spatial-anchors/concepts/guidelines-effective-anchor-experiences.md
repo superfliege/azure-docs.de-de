@@ -8,12 +8,12 @@ ms.author: mattwoj
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 4714ea7aa4bf55f7cbd4500977b09505788233dd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9e77dcd96ffa0fbd57aa0ed1b4f857279ca768a7
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895803"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520801"
 ---
 # <a name="create-an-effective-anchor-experience-by-using-azure-spatial-anchors"></a>Erstellen von effektiven Ankerfunktionen mithilfe von Azure Spatial Anchors
 
@@ -86,7 +86,7 @@ In einem Zielszenario können auch Fotos hilfreich sein. Wenn Sie Benutzern auf 
 
 Im Szenario mit Räumen geben Benutzer einen Standort ein, einfach weil sie wissen, dass dort irgendwo ein Anker sein muss. Benutzer scannen den Standort mit ihrem Gerät und finden den Anker schnell.
 
-In diesem Szenario müssen Sie in der Regel gut betreute Anker erstellen, wie unter [Verschiedene Blickwinkel](#consider-various-viewing-perspectives) erläutert. Wenn Sie den Raum beim Erstellen des Ankers aus mehreren Blickwinkeln gescannt haben, können Benutzer von fast jedem Standort im Raum aus finden.
+In diesem Szenario müssen Sie in der Regel gut betreute Anker erstellen, wie unter „Verschiedene Blickwinkel“ erläutert. Wenn Sie den Raum beim Erstellen des Ankers aus mehreren Blickwinkeln gescannt haben, können Benutzer von fast jedem Standort im Raum aus finden.
 
 ![Abbildung: So kann ein Benutzer einen Raum scannen, um einen Anker zu finden.](./media/scan-room.png)
 

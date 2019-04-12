@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/14/2018
+ms.date: 3/25/2019
 ms.author: subsarma
-ms.openlocfilehash: 9130fef895d4f9cd31f643b20a735c0e821923b8
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: ea15468722fcf1b9e2649236ef4dd05549d8f460
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193992"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418736"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken
 
@@ -74,6 +74,7 @@ Wenn Sie die von Azure bereitgestellte Namensauflösung verwenden, beachten Sie 
 * Hostnamen müssen DNS-kompatibel sein. Für die Namen dürfen nur die Zeichen 0 bis 9, a bis z und „-“ verwendet werden, zudem dürfen sie nicht mit „-“ beginnen oder enden.
 * Der DNS-Abfragedatenverkehr wird für den jeweiligen virtuellen Computer gedrosselt. Die Drosselung sollte auf die meisten Anwendungen keine Auswirkungen haben. Wenn eine Drosselung der Anforderungen festgestellt wird, stellen Sie sicher, dass clientseitiges Zwischenspeichern aktiviert ist. Weitere Informationen finden Sie unter [DNS-Clientkonfiguration](#dns-client-configuration).
 * Nur virtuelle Computer in den ersten 180 Clouddiensten werden für jedes virtuelle Netzwerk in einem klassischen Bereitstellungsmodell registriert. Diese Begrenzung gilt nicht für virtuelle Netzwerke in Azure Resource Manager.
+* Die IP-Adresse für Azure DNS für DNS lautet 168.63.129.16. Dies ist eine statische IP-Adresse, die sich nicht ändert.
 
 ## <a name="dns-client-configuration"></a>DNS-Clientkonfiguration
 

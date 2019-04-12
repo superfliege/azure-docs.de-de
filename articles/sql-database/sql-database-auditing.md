@@ -12,12 +12,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: ce691ec0622749f1cb7252e237dae25b2657d115
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a98ec18f2ed38b290d04c3fdc36d9a6ff80a675a
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010530"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407350"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Erste Schritte bei der Überwachung von SQL-Datenbank
 
@@ -170,7 +170,6 @@ Wenn Sie die Überwachungsprotokolle in ein Azure-Speicherkonto schreiben möcht
   - Nach dem Herunterladen mehrerer Dateien oder eines Unterordners, der Protokolldateien enthält, können Sie die Dateien lokal zusammenführen, wie in den Anweisungen weiter oben für das Zusammenführen von Überwachungsdateien in SSMS beschrieben.
   - Programmgesteuertes Anzeigen von Blobüberwachungsprotokollen:
 
-    - Verwenden Sie die C#-Bibliothek [Leser für erweiterte Ereignisse ](https://blogs.msdn.microsoft.com/extended_events/20../../introducing-the-extended-events-reader/).
     - Führen Sie [Abfragen von Dateien mit erweiterten Ereignissen](https://sqlscope.wordpress.com/20../../reading-extended-event-files-using-client-side-tools-only/) mithilfe von PowerShell durch.
 
 ## <a id="subheading-5"></a>Produktionsverfahren
@@ -232,7 +231,7 @@ In einer Produktionsumgebung werden Sie Ihre Speicherschlüssel wahrscheinlich r
 
 - [Erstellen oder Aktualisieren der Datenbanküberwachungsrichtlinie (Set-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
 - [Erstellen oder Aktualisieren der Serverüberwachungsrichtlinie (Set-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)
-- [Abrufen der Datenbanküberwachungsrichtlinie (Get-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseauditing)
+- [Abrufen der Datenbank-Blobüberwachungsrichtlinie (Get-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseauditing)
 - [Abrufen der Serverüberwachungsrichtlinie (Get-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverauditing)
 
 Ein Skriptbeispiel finden Sie unter [Konfigurieren von Überwachung von SQL-Datenbank und Bedrohungserkennung mit PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md).
@@ -258,8 +257,11 @@ Erweiterte Richtlinie mit Unterstützung der WHERE-Klausel für zusätzliche Fil
 Sie können die Überwachung von Azure SQL-Datenbank mithilfe von [Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) verwalten, wie die folgenden Beispiele zeigen:
 
 - [Bereitstellen von Azure SQL Server mit aktivierter Überwachung zum Schreiben von Überwachungsprotokollen in ein Azure Blob Storage-Konto](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage)
-- [Bereitstellen von Azure SQL Server mit aktivierter Überwachung zum Schreiben von Überwachungsprotokollen in Azure Monitor-Protokolle](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
+- [Bereitstellen von Azure SQL Server mit aktivierter Überwachung zum Schreiben von Überwachungsprotokollen in Log Analytics](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
 - [Bereitstellen von Azure SQL Server mit aktivierter Überwachung zum Schreiben von Überwachungsprotokollen in Event Hubs](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub)
+
+> [!NOTE]
+> Die verknüpften Beispiele befinden sich in einem externen öffentlichen Repository und werden wie besehen ohne Gewähr zur Verfügung gestellt und werden von keinem Microsoft-Supportprogramm/-dienst unterstützt.
 
 <!--Anchors-->
 [Azure SQL Database Auditing overview]: #subheading-1

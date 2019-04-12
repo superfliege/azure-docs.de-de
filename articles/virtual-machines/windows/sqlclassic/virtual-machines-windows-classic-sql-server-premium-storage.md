@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: be96aaa69fc1d59bdfa8079eff99c13c1e92c736
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3b3bb206286629a68c14b6444f3f88ffa0af50dd
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57905119"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540872"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Verwenden von Azure Premium-Speicher mit SQL Server auf virtuellen Computern
 
@@ -682,7 +682,7 @@ $destcloudsvc = "danNewSvcAms"
 New-AzureService $destcloudsvc -Location $location
 ```
 
-#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>Schritt 2: Erhöhen der zulässigen Fehler für Ressourcen <Optional>
+#### <a name="step-2-increase-the-permitted-failures-on-resources-optional"></a>Schritt 2: Erhöhen der zulässigen Fehler für Ressourcen \<Optional>
 
 Für bestimmte Ressourcen, die der AlwaysOn-Verfügbarkeitsgruppe angehören, bestehen Einschränkungen in Bezug darauf, wie viele Fehler in einem bestimmten Zeitraum auftreten können, in dem der Clusterdienst versucht, die Ressourcengruppe neu zu starten. Es wird empfohlen, dass Sie diesen Wert erhöhen, während Sie dieses Verfahren durchführen, da Sie dieser Grenze nahe kommen können, wenn Sie keine manuellen Failover ausführen oder Failover auslösen, indem Sie Computer herunterfahren.
 
@@ -692,7 +692,7 @@ Es ist ratsam, diesen Grenzwert zu verdoppeln. Wechseln Sie dazu im Failoverclus
 
 Ändern Sie den Wert für die maximale Fehleranzahl in 6.
 
-#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>Schritt 3: Hinzufügen einer IP-Adressressource für die Clustergruppe <Optional>
+#### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>Schritt 3: Hinzufügen einer IP-Adressressource für die Clustergruppe \<Optional>
 
 Wenn Sie nur eine IP-Adresse für die Clustergruppe haben und diese am Cloudsubnetz ausgerichtet ist, denken Sie daran, dass die Cluster-IP-Adressressource und der Netzwerkname nicht online geschaltet werden können, wenn Sie versehentlich alle Clusterknoten in der Cloud in diesem Netzwerk offline schalten. In diesem Fall werden Updates auf andere Clusterressourcen verhindert.
 

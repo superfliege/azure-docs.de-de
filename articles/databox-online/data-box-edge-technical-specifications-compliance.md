@@ -6,21 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 8ef35709e90c0a58cc0ff8df1afb6e864adc0a23
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: 52fb32a8b34c62fe94ab35e2c051d996ab8bef10
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "57994714"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449202"
 ---
-# <a name="azure-data-box-edge-technical-specifications-preview"></a>Azure Data Box Edge: Technische Spezifikationen (Vorschauversion)
+# <a name="azure-data-box-edge-technical-specifications"></a>Technische Spezifikationen für Azure Data Box Edge
 
 Die Hardwarekomponenten des Microsoft Azure Data Box Edge-Geräts verfügen über die in diesem Artikel beschriebenen technischen Spezifikationen und entsprechen den aufgeführten gesetzlichen Richtlinien. In den technischen Spezifikationen werden die Netzteile, die Speicherkapazität, Gehäuse und Umgebungsstandards beschrieben. 
-
-> [!IMPORTANT]
-> Data Box Edge befindet sich in der Vorschauphase. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bestellen und bereitstellen. 
 
 ## <a name="power-supply-unit-specifications"></a>Spezifikationen für Netzteile
 
@@ -28,7 +25,7 @@ Das Data Box Edge-Gerät verfügt über zwei 100-240 Volt-Netzteile mit leistung
 
 | Spezifikation           | 750 Watt-Netzteil                  |
 |-------------------------|----------------------------|
-| Maximale Ausgangsleistung    |  750 Watt                     |
+| Maximale Ausgangsleistung    | 750 Watt                     |
 | Frequency               | 50/60 Hz                   |
 | Spannungsbereichsauswahl | Automatischer Spannungsbereich: 100-240 V AC |
 | Hot-Plug-fähig           | Ja                        |
@@ -60,9 +57,17 @@ Die folgenden Tabellen enthalten die Abmessungen des Gehäuses in Millimetern un
 
 |     Gehäuse     |     Millimeter     |     Zoll     |
 |-------------------|---------------------|----------------|
-|    Höhe         |    304,8            |    12          |
-|    Breite          |    660,4            |    26          |
-|    Tiefe          |    1041,4           |    41          |
+|    Höhe         |    44,45            |    1,75 Zoll          |
+|    Breite          |    434,1           |    17,09 Zoll          |
+|    Länge          |    740,4           |    29,15 Zoll          |
+
+Die folgenden Tabellen enthalten die Abmessungen der Versandverpackung in Millimetern und Zoll.
+
+|     Paket     |     Millimeter     |     Zoll     |
+|-------------------|---------------------|----------------|
+|    Höhe         |    311,2            |    12,25 Zoll          |
+|    Breite          |    642,8          |    25,31 Zoll          |
+|    Länge          |   1.051,1          |    41,38 Zoll          |
 
 ### <a name="enclosure-weight"></a>Gehäusegewicht
 
@@ -70,8 +75,8 @@ Das Gerätepaket wiegt ca. 30 kg und sollte von zwei Personen getragen werden. D
 
 |     Gehäuse                                 |     Weight          |
 |-----------------------------------------------|---------------------|
-|    Gesamtgewicht einschließlich Verpackung:       |    ca. 30 kg.          |
-|    Gerätegewicht:                       |    ca. 22 kg.        |
+|    Gesamtgewicht einschließlich Verpackung:       |    27,7 kg.          |
+|    Gerätegewicht:                       |    16 kg.          |
 
 ## <a name="enclosure-environment-specifications"></a>Spezifikationen der Gehäuseumgebung
 

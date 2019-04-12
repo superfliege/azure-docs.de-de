@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: hrasheed
-ms.openlocfilehash: 6dee4ac7cb863a08e9046b16189e7f4a7b04b810
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 38f86bd19c85440fbad0e7fd56a3dd9ba836c7b8
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201669"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903301"
 ---
 # <a name="use-apache-phoenix-with-linux-based-apache-hbase-clusters-in-hdinsight"></a>Verwenden von Apache Phoenix mit Linux-basierten Apache HBase-Clustern in HDInsight
 Erfahren Sie, wie Sie [Apache Phoenix](https://phoenix.apache.org/) in Azure HDInsight und wie Sie SQLLine verwenden können. Weitere Informationen zu Phoenix finden Sie unter [Phoenix in 15 minutes or less](https://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html) (Phoenix in 15 Minuten oder weniger). Eine Beschreibung der Phoenix-Grammatik finden Sie unter [Apache Phoenix-Grammatik](https://phoenix.apache.org/language/index.html).
@@ -34,7 +34,7 @@ Bevor Sie SQLLine verwenden können, benötigen Sie folgende Elemente:
 
 Beim Herstellen der Verbindung mit einem HBase-Cluster müssen Sie die Verbindung mit einer der [Apache ZooKeeper](https://zookeeper.apache.org/)-VMs herstellen. Jeder HDInsight-Cluster verfügt über drei Zookeeper-VMs.
 
-**So rufen Sie den Hostnamen des Zookeepers ab**
+**So rufen Sie den Apache Zookeeper-Hostnamen ab**
 
 1. Öffnen Sie [Apache Ambari](https://ambari.apache.org/), indem Sie zu **https://\<Clustername\>.azurehdinsight.net** navigieren.
 2. Geben Sie zum Anmelden den HTTP-Benutzernamen (Clusternamen) und das Kennwort ein.
@@ -47,7 +47,7 @@ Beim Herstellen der Verbindung mit einem HBase-Cluster müssen Sie die Verbindun
 
 2. Führen Sie in SSH die folgenden Befehle aus, um SQLLine auszuführen:
 
-        cd /usr/hdp/current/phoenix/bin
+        cd /usr/hdp/current/phoenix-client/bin
         ./sqlline.py <ZOOKEEPER SERVER FQDN>:2181:/hbase-unsecure
 3. Um eine HBase-Tabelle zu erstellen und Daten einzufügen, führen Sie die folgenden Befehle aus:
 

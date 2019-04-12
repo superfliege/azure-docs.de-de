@@ -7,24 +7,29 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 03/08/2019
+ms.date: 03/22/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: b97c84a7a5d7732c8c895fd3074734762e5e040c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8a6023c87dd1d68ab76c5c2342cb825e63d2b336
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780404"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620639"
 ---
 # <a name="service-limits-in-azure-search"></a>Grenzwerte für den Azure Search-Dienst
-Die Grenzwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und anderen Objekten hängen davon ab, ob die [Bereitstellung von Azure Search](search-create-service-portal.md) im Tarif **Free**, **Basic** oder **Standard** erfolgt.
+Die Grenzwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und anderen Objekten hängen davon ab, ob die [Bereitstellung von Azure Search](search-create-service-portal.md) im Tarif **Free**, **Basic**, **Standard** oder **Storage Optimized** erfolgt.
 
 + **Free** ist ein gemeinsamer mehrinstanzfähiger Dienst, der Teil Ihres Azure-Abonnements ist.
 
 + **Basic** bietet spezifische Computerressourcen für Produktionsworkloads mit geringerem Umfang.
 
 + **Standard** wird auf dedizierten Computern ausgeführt. Sie bieten höhere Speicher- und Verarbeitungskapazität auf jeder Ebene. Standard ist in vier Ebenen verfügbar: S1, S2, S3 und S3 HD.
+
++ **Storage Optimized** wird auf dedizierten Computern mit mehr Gesamtspeicher, Speicherbandbreite und Arbeitsspeicher als **Standard** ausgeführt. „Storage Optimized“ gibt es auf zwei Ebenen: L1 und L2
+
+> [!NOTE]
+> Die Tarife vom Typ „Storage Optimized“ sind derzeit als günstigere Vorschauversion zum Testen und Experimentieren erhältlich, um Feedback zu sammeln. Die endgültigen Preise werden später bekannt gegeben, wenn diese Tarife allgemein verfügbar sind. Wir raten davon ab, diese Tarife für Produktionsanwendungen zu verwenden.
 
   S3 High Density (S3 HD) ist für bestimmte Workloads konzipiert: [Mehrinstanzenfähigkeit](search-modeling-multitenant-saas-applications.md) und große Mengen von kleinen Indizes (eine Million Dokumente pro Index, 3000 Indizes pro Dienst). Bei diesem Tarif ist das [Indexerfeature](search-indexer-overview.md) nicht verfügbar. Bei S3 HD muss der Push-Ansatz für die Datenerfassung verwendet werden, wobei Daten mithilfe von API-Aufrufen per Push von der Quelle an den Index übertragen werden. 
 
@@ -42,13 +47,13 @@ Die Grenzwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und a
 
 ## <a name="index-limits"></a>Indexgrenzwerte
 
-| Ressource | Kostenlos | Basic&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD |
-| -------- | ---- | ------------------- | --- | --- | --- | --- |
-| Maximale Anzahl von Indizes |3 |5 oder 15 |50 |200 |200 |1000 pro Partition oder 3000 pro Dienst |
-| Maximale Anzahl von Feldern pro Index |1000 |100 |1000 |1000 |1000 |1000 |
-| Maximale Anzahl von [Vorschlägen](https://docs.microsoft.com/rest/api/searchservice/suggesters) pro Index |1 |1 |1 |1 |1 |1 |
-| Maximale Anzahl von [Bewertungsprofilen](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) pro Index |100 |100 |100 |100 |100 |100 |
-| Maximale Anzahl von Funktionen pro Profil |8 |8 |8 |8 |8 |8 |
+| Ressource | Kostenlos | Basic&nbsp;<sup>1</sup>  | S1 | S2 | S3 | S3&nbsp;HD | L1 | L2 |
+| -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
+| Maximale Anzahl von Indizes |3 |5 oder 15 |50 |200 |200 |1000 pro Partition oder 3000 pro Dienst |10 |10 |
+| Maximale Anzahl von Feldern pro Index |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
+| Maximale Anzahl von [Vorschlägen](https://docs.microsoft.com/rest/api/searchservice/suggesters) pro Index |1 |1 |1 |1 |1 |1 |1 |1 |
+| Maximale Anzahl von [Bewertungsprofilen](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) pro Index |100 |100 |100 |100 |100 |100 |100 |100 |
+| Maximale Anzahl von Funktionen pro Profil |8 |8 |8 |8 |8 |8 |8 |8 |
 
 <sup>1</sup> Bei Diensten mit dem Tarif „Basic“, die nach Ende 2017 erstellt wurden, wurde das Limit auf 15 Indizes, Datenquellen und Indexer erhöht. Für zuvor erstellte Dienste gilt eine Begrenzung auf 5. Der Basic-Tarif ist die einzige SKU mit einem unteren Grenzwert von 100 Feldern pro Index.
 
@@ -98,16 +103,16 @@ Bei Diensten mit dem Tarif „Basic“, die ab Ende 2017 erstellt wurden, wurde 
 
 Ressourcenintensive Vorgänge wie Bildanalysen in der Azure-BLOB-Indizierung oder die Verarbeitung natürlicher Sprache in der kognitiven Suche weisen eine kürzere maximale Ausführungsdauer auf, sodass weitere Indizierungsaufträge bewältigt werden können. Wenn ein Indizierungsauftrag nicht innerhalb der maximal zulässigen Zeit abgeschlossen werden kann, versuchen Sie, den Auftrag nach einem Zeitplan auszuführen. Der Planer verfolgt den Indizierungsstatus. Wenn ein geplanter Indizierungsauftrag aus irgendeinem Grund unterbrochen wird, kann der Indexer den Auftrag bei der nächsten geplanten Ausführung an der Stelle fortsetzen, an der er unterbrochen wurde.
 
-| Ressource | Free&nbsp;<sup>1</sup> | Basic&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|
-| -------- | ----------------- | ----------------- | --- | --- | --- | --- |
-| Maximale Anzahl von Indexern |3 |5 oder 15|50 |200 |200 |– |
-| Maximale Datenquellen |3 |5 oder 15 |50 |200 |200 |– |
-| Maximale Qualifikationsgruppen <sup>4</sup> |3 |5 oder 15 |50 |200 |200 |– |
-| Maximale Indizierungslast pro Aufruf |10.000 Dokumente |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |– |
-| Maximale Ausführungsdauer <sup>5</sup> | 1–3 Minuten |24 Stunden |24 Stunden |24 Stunden |24 Stunden |–  |
-| Maximale Ausführungsdauer für Qualifikationsgruppen der kognitiven Suche oder für die BLOB-Indizierung bei Bildanalysen <sup>5</sup> | 3 bis 10 Minuten |2 Stunden |2 Stunden |2 Stunden |2 Stunden |–  |
-| Blobindexer: maximale Blobgröße, MB |16 |16 |128 |256 |256 |–  |
-| Blobindexer: maximale Anzahl der Zeichen des aus einem Blob extrahierten Inhalts |32.000 |64.000 |4 Millionen |4 Millionen |4 Millionen |– |
+| Ressource | Free&nbsp;<sup>1</sup> | Basic&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |L2 |
+| -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
+| Maximale Anzahl von Indexern |3 |5 oder 15|50 |200 |200 |– |10 |10 |
+| Maximale Datenquellen |3 |5 oder 15 |50 |200 |200 |– |10 |10 |
+| Maximale Qualifikationsgruppen <sup>4</sup> |3 |5 oder 15 |50 |200 |200 |– |10 |10 |
+| Maximale Indizierungslast pro Aufruf |10.000 Dokumente |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |– |Keine Begrenzung |Keine Begrenzung |
+| Maximale Ausführungsdauer <sup>5</sup> | 1–3 Minuten |24 Stunden |24 Stunden |24 Stunden |24 Stunden |–  |24 Stunden |24 Stunden |
+| Maximale Ausführungsdauer für Qualifikationsgruppen der kognitiven Suche oder für die BLOB-Indizierung bei Bildanalysen <sup>5</sup> | 3 bis 10 Minuten |2 Stunden |2 Stunden |2 Stunden |2 Stunden |–  |2 Stunden |2 Stunden |
+| Blobindexer: maximale Blobgröße, MB |16 |16 |128 |256 |256 |–  |256 |256 |
+| Blobindexer: maximale Anzahl der Zeichen des aus einem Blob extrahierten Inhalts |32.000 |64.000 |4 Millionen |4 Millionen |4 Millionen |– |4 Millionen |4 Millionen |
 
 <sup>1</sup> Die maximale Indexerausführungszeit bei Diensten im Free-Tarif beträgt drei Minuten für Blobquellen und eine Minute für alle anderen Datenquellen.
 
@@ -124,6 +129,8 @@ Ressourcenintensive Vorgänge wie Bildanalysen in der Azure-BLOB-Indizierung ode
 QPS-Schätzungen müssen unabhängig von jedem Kunde erstellt werden. Indexgröße und Komplexität, Abfragegröße und Komplexität sowie der Umfang des Datenverkehrs sind Hauptentscheidungskriterium für den QPS-Wert. Es gibt keine Möglichkeit, sinnvolle Schätzungen abzugeben, wenn diese Faktoren unbekannt sind.
 
 Schätzungen sind besser vorhersagbar, wenn sie für Dienste berechnet werden, die auf dedizierten Ressourcen ausgeführt werden (Basic- und Standard-Tarife). Sie können den QPS-Wert genauer schätzen, da Sie die Kontrolle über mehr Parameter haben. Anleitungen zur Herangehensweise für Schätzungen finden Sie unter [Leistung und Optimierung von Azure Search](search-performance-optimization.md).
+
+Für die Tarife vom Typ „Storage Optimized“ sollten Sie einen geringeren Abfragedurchsatz und eine höhere Latenz erwarten als für die Tarife vom Typ „Standard“.  Die Methodik zum Schätzen der zu erwartenden Abfrageleistung entspricht der der Standard-Tarife.
 
 ## <a name="data-limits-cognitive-search"></a>Datengrenzwerte (kognitive Suche)
 

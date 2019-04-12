@@ -7,14 +7,14 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/21/2018
+ms.date: 3/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a3fd2cc66a066d2790d2e12822e3246dc3db382
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f2318d3026578aef1e0e5c08d4a816b8f95a366f
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57898872"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58448703"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Grundlegendes zu den Ausgaben von Azure Stream Analytics
 In diesem Artikel werden die unterschiedlichen Arten von Ausgaben beschrieben, die für einen Azure Stream Analytics-Auftrag verfügbar sind. Mit Ausgaben können Sie die Ergebnisse des Stream Analytics-Auftrags aufbewahren und speichern. Indem Sie die Ausgabedaten verwenden, können Sie weitere Geschäftsanalysen und Data Warehousing-Vorgänge für Ihre Daten durchführen.
@@ -127,6 +127,7 @@ Es gibt einige Parameter, die erforderlich sind, um Event Hub-Datenströme als A
 | Codieren | Bei CSV und JSON ist UTF-8 gegenwärtig das einzige unterstützte Codierungsformat. |
 | Trennzeichen | Gilt nur für die CSV-Serialisierung. Stream Analytics unterstützt eine Reihe von üblichen Trennzeichen zum Serialisieren der Daten im CSV-Format. Unterstützte Werte sind Komma, Semikolon, Leerzeichen, Tabstopp und senkrechter Strich. |
 | Format | Gilt nur für die JSON-Serialisierung. „Separate Zeile“ gibt an, dass die Ausgabe so formatiert wird, dass jedes JSON-Objekt in einer neuen Zeile enthalten ist. „Array“ gibt an, dass die Ausgabe als Array aus JSON-Objekten formatiert wird. Dieses Array wird nur geschlossen, wenn der Auftrag beendet wird oder Stream Analytics mit dem nächsten Zeitfenster fortfährt. Im Allgemeinen ist es besser, in separaten Zeilen geschriebenen JSON-Code zu verwenden, da er keine spezielle Behandlung erfordert, während noch in die Ausgabedatei geschrieben wird. |
+| Eigenschaftenspalten [optional] | Durch Komma getrennte Spalten, die anstelle der Nutzlast als Benutzereigenschaften der ausgehenden Nachricht angefügt werden müssen. Weitere Informationen zu diesem Feature finden Sie im Abschnitt „Benutzerdefinierte Metadateneigenschaften für die Ausgabe“. |
 
 ## <a name="power-bi"></a>Power BI
 [Power BI](https://powerbi.microsoft.com/) kann als Ausgabe für einen Stream Analytics-Auftrag verwendet werden, um eine umfassende Visualisierungsumgebung für die Analyseergebnisse bereitzustellen. Diese Funktionalität kann für Vorgangsdashboards, die Erstellung von Berichten und eine metrikgesteuerte Berichterstellung verwendet werden.
@@ -230,6 +231,7 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 | Codieren |Bei CSV und JSON ist UTF-8 gegenwärtig das einzige unterstützte Codierungsformat. |
 | Trennzeichen |Gilt nur für die CSV-Serialisierung. Stream Analytics unterstützt eine Reihe von üblichen Trennzeichen zum Serialisieren der Daten im CSV-Format. Unterstützte Werte sind Komma, Semikolon, Leerzeichen, Tabstopp und senkrechter Strich. |
 | Format |Gilt nur für den JSON-Typ. „Separate Zeile“ gibt an, dass die Ausgabe so formatiert wird, dass jedes JSON-Objekt in einer neuen Zeile enthalten ist. „Array“ gibt an, dass die Ausgabe als Array aus JSON-Objekten formatiert wird. |
+| Eigenschaftenspalten [optional] | Durch Komma getrennte Spalten, die anstelle der Nutzlast als Benutzereigenschaften der ausgehenden Nachricht angefügt werden müssen. Weitere Informationen zu diesem Feature finden Sie im Abschnitt „Benutzerdefinierte Metadateneigenschaften für die Ausgabe“. |
 
 Die Anzahl der Partitionen [basiert auf der Service Bus-SKU und -Größe](../service-bus-messaging/service-bus-partitioning.md). Ein Partitionsschlüssel gibt einen eindeutigen ganzzahligen Wert für jede Partition an.
 
@@ -248,6 +250,7 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 | Ereignisserialisierungsformat |Das Serialisierungsformat für Ausgabedaten. Es werden JSON, CSV und Avro unterstützt. |
 | Codieren |Bei Verwendung des CSV- oder JSON-Formats muss eine Codierung angegeben werden. Das einzige derzeit unterstützte Codierungsformat ist UTF-8. |
 | Trennzeichen |Gilt nur für die CSV-Serialisierung. Stream Analytics unterstützt eine Reihe von üblichen Trennzeichen zum Serialisieren der Daten im CSV-Format. Unterstützte Werte sind Komma, Semikolon, Leerzeichen, Tabstopp und senkrechter Strich. |
+| Eigenschaftenspalten [optional] | [Optional] Durch Komma getrennte Spalten, die anstelle der Nutzlast als Benutzereigenschaften der ausgehenden Nachricht angefügt werden müssen. Weitere Informationen zu diesem Feature finden Sie im Abschnitt „Benutzerdefinierte Metadateneigenschaften für die Ausgabe“. |
 
 Die Anzahl der Partitionen [basiert auf der Service Bus-SKU und -Größe](../service-bus-messaging/service-bus-partitioning.md). Ein Partitionsschlüssel gibt einen eindeutigen ganzzahligen Wert für jede Partition an.
 
@@ -293,6 +296,25 @@ Die Größe der an Azure Functions gesendeten Batches wird verringert, wenn in A
 
 Zudem wird in Fällen, in denen kein Ereignis in einem Zeitfenster auftritt, keine Ausgabe generiert. Als Ergebnis wird die computeResult-Funktion nicht aufgerufen. Dieses Verhalten entspricht den integrierten Aggregatfunktionen im Fenstermodus.
 
+## <a name="custom-metadata-properties-for-output"></a>Benutzerdefinierte Metadateneigenschaften für die Ausgabe 
+
+Dieses Feature ermöglicht das Anfügen von Abfragespalten als Benutzereigenschaften an Ihre ausgehenden Nachrichten. Diese Spalten gelangen nicht in die Nutzlast. Diese Eigenschaften liegen in Form eines Wörterbuchs für die Ausgabemeldung vor. Schlüssel ist der Spaltenname und der Wert ist der Spaltenwert im Eigenschaftenwörterbuch. Alle Stream Analytics-Datentypen werden mit Ausnahme von „Datensatz“ und „Array“ unterstützt.  
+
+Unterstützte Ausgaben: 
+* Service Bus-Warteschlangen 
+* Service Bus-Themen 
+* Event Hub 
+
+Beispiel: Im folgenden Beispiel werden die beiden Felder „DeviceId“ und „DeviceStatus“ zu den Metadaten hinzugefügt. 
+* Abfrage: `select *, DeviceId, DeviceStatus from iotHubInput`.
+* Ausgabekonfiguration: `DeviceId,DeviceStatus`.
+
+![Eigenschaftenspalten](./media/stream-analytics-define-outputs/10-stream-analytics-property-columns.png)
+
+Eigenschaften der Ausgabemeldung, die in EventHub mit dem [Service Bus-Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) überprüft wurden.
+
+   ![Benutzerdefinierte Ereigniseigenschaften](./media/stream-analytics-define-outputs/09-stream-analytics-custom-properties.png)
+
 ## <a name="partitioning"></a>Partitionierung
 
 In der folgenden Tabelle werden die Partitionsunterstützung und die Anzahl der Ausgabeschreiber für die einzelnen Ausgabetypen zusammengefasst:
@@ -302,7 +324,7 @@ In der folgenden Tabelle werden die Partitionsunterstützung und die Anzahl der 
 | Azure Data Lake Store | Ja | Verwenden Sie die {date}- und {time}-Tokens im Pfadpräfixmuster. Wählen Sie ein Datumsformat wie JJJJ/MM/TT, TT/MM/JJJJ oder MM-TT-JJJJ. „HH“ wird für das Uhrzeitformat verwendet. | Hierbei wird die Eingabepartitionierung für [vollständig parallelisierbare Abfragen](stream-analytics-scale-jobs.md) befolgt. |
 | Azure SQL-Datenbank | Ja | Basierend auf der PARTITION BY-Klausel in der Abfrage | Hierbei wird die Eingabepartitionierung für [vollständig parallelisierbare Abfragen](stream-analytics-scale-jobs.md) befolgt. Weitere Informationen zum Erzielen einer höheren Durchsatzleistung bei Schreibvorgängen finden Sie unter [Azure Stream Analytics-Ausgabe an Azure SQL-Datenbank](stream-analytics-sql-output-perf.md). |
 | Azure Blob Storage | Ja | Verwenden Sie die Token {date} und {time} aus Ihren Ereignisfeldern im Pfadmuster. Wählen Sie ein Datumsformat wie JJJJ/MM/TT, TT/MM/JJJJ oder MM-TT-JJJJ. „HH“ wird für das Uhrzeitformat verwendet. Die Blobausgabe kann durch ein einzelnes benutzerdefiniertes Ereignisattribut {fieldname} oder {datetime:\<Spezifizierer>} partitioniert werden. | Hierbei wird die Eingabepartitionierung für [vollständig parallelisierbare Abfragen](stream-analytics-scale-jobs.md) befolgt. |
-| Azure Event Hub | Ja | Ja | Variiert je nach Partitionsausrichtung.<br /> Wenn der Event Hub-Ausgabepartitionsschlüssel entsprechend am vorgeschalteten (vorherigen) Abfrageschritt ausgerichtet ist, ist die Anzahl von Schreibern mit der Anzahl von Event Hub-Ausgabepartitionen identisch. Jeder Schreiber verwendet die [EventHubSender-Klasse](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) des EventHub-Elements, um Ereignisse an die jeweilige Partition zu senden. <br /> Wenn der Event Hub-Ausgabepartitionsschlüssel nicht am vorgeschalteten (vorherigen) Abfrageschritt ausgerichtet ist, ist die Anzahl von Schreibern mit der Anzahl von Partitionen in diesem vorherigen Schritt identisch. Für jeden Schreiber wird die [SendBatchAsync-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) des EventHubClient-Elements verwendet, um Ereignisse an alle Ausgabepartitionen zu senden. |
+| Azure Event Hub | Ja | Ja | Variiert je nach Partitionsausrichtung.<br /> Wenn der Event Hub-Ausgabepartitionsschlüssel entsprechend am vorgeschalteten (vorherigen) Abfrageschritt ausgerichtet ist, ist die Anzahl von Schreibern mit der Anzahl von Event Hub-Ausgabepartitionen identisch. Jeder Schreiber verwendet die [EventHubSender-Klasse](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) des EventHub-Elements, um Ereignisse an die jeweilige Partition zu senden. <br /> Wenn der Event Hub-Ausgabepartitionsschlüssel nicht am vorgeschalteten (vorherigen) Abfrageschritt ausgerichtet ist, ist die Anzahl von Schreibern mit der Anzahl von Partitionen in diesem vorherigen Schritt identisch. Für jeden Schreiber wird die [SendBatchAsync-Klasse](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) des EventHubClient-Elements verwendet, um Ereignisse an alle Ausgabepartitionen zu senden. |
 | Power BI | Nein  | Keine | Nicht zutreffend |
 | Azure-Tabellenspeicher | Ja | Eine beliebige Ausgabespalte.  | Hierbei wird die Eingabepartitionierung für [vollständig parallelisierte Abfragen](stream-analytics-scale-jobs.md) befolgt. |
 | Azure Service Bus-Thema | Ja | Wird automatisch ausgewählt. Die Anzahl der Partitionen basiert auf der [Service Bus-SKU und -Größe](../service-bus-messaging/service-bus-partitioning.md). Ein Partitionsschlüssel gibt einen eindeutigen ganzzahligen Wert für jede Partition an.| Entspricht der Anzahl von Partitionen im Ausgabethema.  |

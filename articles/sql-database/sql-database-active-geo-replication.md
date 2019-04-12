@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: cb83f0c38f6860340444c15b6c5eef0b990d0ad0
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.date: 03/26/2019
+ms.openlocfilehash: ca53f4bfa80d6fdead24dc7d562c2240bb3fa86d
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295248"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58498484"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Erstellen und Verwenden der aktiven Georeplikation
 
@@ -75,8 +75,11 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
 
   Eine Anwendung kann für schreibgeschützte Vorgänge auf eine sekundäre Datenbank zugreifen, indem sie die Sicherheitsprinzipale für den Zugriff auf die primäre Datenbank oder andere Sicherheitsprinzipale verwendet. Die sekundären Datenbanken werden im Momentaufnahme-Isolationsmodus betrieben. Auf diese Weise wird sichergestellt, dass die Replikation von Aktualisierungen der primären Datenbank (Protokollwiedergabe) nicht durch Abfragen verzögert wird, die für die sekundäre Datenbank ausgeführt werden.
 
-  > [!NOTE]
-  > Die Protokollwiedergabe wird in der sekundären Datenbank verzögert, wenn Schemaupdates für die primäre Datenbank vorhanden sind. In diesem Fall ist eine Schemasperre für die sekundäre Datenbank erforderlich.
+> [!NOTE]
+> Die Protokollwiedergabe wird in der sekundären Datenbank verzögert, wenn Schemaupdates für die primäre Datenbank vorhanden sind. In diesem Fall ist eine Schemasperre für die sekundäre Datenbank erforderlich.
+> [!IMPORTANT]
+> Sie können die Georeplikation verwenden, um eine sekundäre Datenbank in derselben Region wie die primäre Datenbank zu erstellen. Sie können diese sekundäre Datenbank verwenden, um einen Lastenausgleich für schreibgeschützte Workloads in derselben Region durchzuführen. Eine sekundäre Datenbank in derselben Region bietet jedoch keine zusätzliche Fehlertoleranz und ist daher kein geeignetes Failoverziel für die Notfallwiederherstellung. Es wird auch keine Garantie für die Isolation der Verfügbarkeitszone geben. Verwenden Sie die unternehmenskritische oder Premium-Dienstebene mit [zonenredundanter Konfiguration](sql-database-high-availability.md#zone-redundant-configuration), um die Isolation der Verfügbarkeitszone zu erreichen.   
+>
 
 - **Geplantes Failover**
 
