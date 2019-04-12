@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/02/2019
+ms.date: 04/05/2019
 ms.author: monhaber
-ms.openlocfilehash: cca1962e5146300cc376fab4bcb1bf0876acec6c
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: 3d9658a6b7501714a6aad0e8eaa30ce587284bfe
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58863150"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046205"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Schützen Ihrer Netzwerkressourcen in Azure Security Center
 Azure Security Center analysiert ständig den Sicherheitsstatus Ihrer Azure-Ressourcen anhand bewährter Methoden für Netzwerksicherheit. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente zum Sichern und Schützen Ihrer Ressourcen unterstützen.
@@ -30,9 +30,10 @@ Dieser Artikel behandelt Empfehlungen, die aus Sicht der Netzwerksicherheit auf 
 > Die Seite **Netzwerk** ermöglicht Ihnen detaillierte Einblicke in die Integrität Ihrer Azure-Ressourcen aus Netzwerksicht. Die Netzwerkübersicht und adaptive Netzwerksteuerelemente stehen nur für Azure Security Center im Standard-Tarif zur Verfügung. [Wenn Sie den Free-Tarif verwenden, können Sie auf die Schaltfläche **Legacynetzwerk anzeigen** klicken und Empfehlungen für Netzwerkressourcen erhalten](#legacy-networking).
 >
 
-Das Blatt **Netzwerk** bietet eine Übersicht über die Abschnitte, die Sie genauer prüfen können, um weitere Informationen über die Integrität Ihrer Netzwerkressourcen zu erhalten:
+Die Seite **Netzwerk** bietet eine Übersicht über die Abschnitte, die Sie genauer prüfen können, um weitere Informationen über die Integrität Ihrer Netzwerkressourcen zu erhalten:
 
 - Netzwerkübersicht (nur im Standard-Tarif von Azure Security Center)
+- Adaptives Erhöhen des Netzwerkschutzes
 - Empfehlungen für die Netzwerksicherheit
 - Blatt **Legacynetzwerk** (das frühere Blatt „Netzwerk“) 
  
