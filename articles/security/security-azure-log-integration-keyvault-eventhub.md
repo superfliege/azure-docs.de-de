@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: c199adb9ee1d9e5fbc879441da7395efa16f0d40
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7e70920e806b3d9838d693ff1fc74a3e9371319d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094659"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883916"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Tutorial zu Azure Log Integration: Verarbeiten von Azure Key Vault-Ereignissen mithilfe von Event Hubs
 
@@ -45,7 +45,7 @@ Weitere Informationen zu den Diensten, die in diesem Tutorial verwendet werden, 
 
 - [Azure Key Vault](../key-vault/key-vault-whatis.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-what-is-event-hubs.md)
-- [Azure-Protokollintegration](security-azure-log-integration-overview.md)
+- [Azure Log Integration](security-azure-log-integration-overview.md)
 
 
 ## <a name="initial-setup"></a>Anfangssetup
@@ -92,10 +92,10 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
     - ```$subscriptionName = 'Visual Studio Ultimate with MSDN'``` (Ihr Abonnementname lautet möglicherweise anders. Er wird in der Ausgabe des vorherigen Befehls angezeigt.)
     - ```$location = 'West US'``` (Diese Variable dient zum Übergeben des gewünschten Erstellungsorts für Ihre Ressourcen. Sie können sie auf einen beliebigen anderen Standort festlegen.)
     - ```$random = Get-Random```
-    - ``` $name = 'azlogtest' + $random``` (Der Name ist frei wählbar, sollte jedoch ausschließlich aus Kleinbuchstaben und Zahlen bestehen.)
-    - ``` $storageName = $name``` (Diese Variable wird für den Speicherkontonamen verwendet.)
-    - ```$rgname = $name ``` (Diese Variable wird für den Ressourcengruppennamen verwendet.)
-    - ``` $eventHubNameSpaceName = $name``` (Dies ist der Name des Event Hub-Namespace.)
+    - ```$name = 'azlogtest' + $random``` (Der Name ist frei wählbar, sollte jedoch ausschließlich aus Kleinbuchstaben und Zahlen bestehen.)
+    - ```$storageName = $name``` (Diese Variable wird für den Speicherkontonamen verwendet.)
+    - ```$rgname = $name``` (Diese Variable wird für den Ressourcengruppennamen verwendet.)
+    - ```$eventHubNameSpaceName = $name``` (Dies ist der Name des Event Hub-Namespace.)
 1. Geben Sie das Abonnement an, das Sie verwenden möchten:
     
     ```Select-AzSubscription -SubscriptionName $subscriptionName```
@@ -114,7 +114,7 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
     ```$eventHubNameSpace = New-AzEventHubNamespace -ResourceGroupName $rgname -NamespaceName $eventHubnamespaceName -Location $location```
 1. Rufen Sie die Regel-ID ab, die für den Insights-Anbieter verwendet wird:
     
-    ```$sbruleid = $eventHubNameSpace.Id +'/authorizationrules/RootManageSharedAccessKey' ```
+    ```$sbruleid = $eventHubNameSpace.Id +'/authorizationrules/RootManageSharedAccessKey'```
 1. Rufen Sie alle möglichen Azure-Standorte ab und fügen Sie deren Namen zu einer Variable hinzu, die in einem späteren Schritt verwendet werden kann:
     
     a. ```$locationObjects = Get-AzLocation```    
@@ -128,7 +128,7 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
     Weitere Informationen zu Azure-Protokollprofilen finden Sie unter [Overview of the Azure Activity Log (Übersicht über das Azure-Aktivitätsprotokoll)](../azure-monitor/platform/activity-logs-overview.md).
 
 > [!NOTE]
-> Möglicherweise erhalten Sie eine Fehlermeldung, wenn Sie versuchen, ein Protokollprofil zu erstellen. Konsultieren Sie in diesem Fall die Dokumentation zu „Get-AzLogProfile“ und „Remove-AzLogProfile“. Wenn Sie „Get-AzLogProfile“ ausführen, sehen Sie die Informationen zum Protokollprofil. Sie können das vorhandene Protokollprofil löschen, indem Sie den Befehl ```Remove-AzLogProfile -name 'Log Profile Name' ``` eingeben.
+> Möglicherweise erhalten Sie eine Fehlermeldung, wenn Sie versuchen, ein Protokollprofil zu erstellen. Konsultieren Sie in diesem Fall die Dokumentation zu „Get-AzLogProfile“ und „Remove-AzLogProfile“. Wenn Sie „Get-AzLogProfile“ ausführen, sehen Sie die Informationen zum Protokollprofil. Sie können das vorhandene Protokollprofil löschen, indem Sie den Befehl ```Remove-AzLogProfile -name 'Log Profile Name'``` eingeben.
 >
 >![Fehler beim Profil des Ressourcen-Manager](./media/security-azure-log-integration-keyvault-eventhub/rm-profile-error.png)
 
@@ -136,11 +136,11 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 
 1. Erstellen des Schlüsseltresors:
 
-   ```$kv = New-AzKeyVault -VaultName $name -ResourceGroupName $rgname -Location $location ```
+   ```$kv = New-AzKeyVault -VaultName $name -ResourceGroupName $rgname -Location $location```
 
 1. Konfigurieren der Protokollierung für den Schlüsseltresor:
 
-   ```Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -ServiceBusRuleId $sbruleid -Enabled $true ```
+   ```Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -ServiceBusRuleId $sbruleid -Enabled $true```
 
 ## <a name="generate-log-activity"></a>Generieren der Protokollaktivität
 
@@ -157,7 +157,8 @@ Anforderungen müssen an Key Vault gesendet werden, um Protokollaktivität zu ge
    ```Get-AzStorageAccountKey -Name $storagename -ResourceGroupName $rgname  | ft -a```
 1. Legen Sie ein Geheimnis fest und lassen Sie es lesen, um weitere Protokolleinträge zu erzeugen:
     
-   a. ```Set-AzKeyVaultSecret -VaultName $name -Name TestSecret -SecretValue (ConvertTo-SecureString -String 'Hi There!' -AsPlainText -Force)``` b. ```(Get-AzKeyVaultSecret -VaultName $name -Name TestSecret).SecretValueText```
+   a. ```Set-AzKeyVaultSecret -VaultName $name -Name TestSecret -SecretValue (ConvertTo-SecureString -String 'Hi There!' -AsPlainText -Force)```
+   b. ```(Get-AzKeyVaultSecret -VaultName $name -Name TestSecret).SecretValueText```
 
    ![Zurückgegebenes Geheimnis](./media/security-azure-log-integration-keyvault-eventhub/keyvaultsecret.png)
 
@@ -169,7 +170,7 @@ Nachdem Sie nun alle erforderlichen Elemente konfiguriert haben, damit Key Vault
 1. ```$storage = Get-AzStorageAccount -ResourceGroupName $rgname -Name $storagename```
 1. ```$eventHubKey = Get-AzEventHubNamespaceKey -ResourceGroupName $rgname -NamespaceName $eventHubNamespace.name -AuthorizationRuleName RootManageSharedAccessKey```
 1. ```$storagekeys = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storagename```
-1. ``` $storagekey = $storagekeys[0].Value```
+1. ```$storagekey = $storagekeys[0].Value```
 
 Führen Sie den AzLog-Befehl für jeden Event Hub aus:
 
@@ -180,6 +181,6 @@ Etwa eine Minute, nachdem Sie die letzten beiden Befehle ausgeführt haben, soll
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Azure Log Integration FAQ (Azure-Protokollintegration (FAQ))](security-azure-log-integration-faq.md)
-- [Get started with Azure Log Integration (Erste Schritte mit der Azure-Protokollintegration)](security-azure-log-integration-get-started.md)
-- [Integrate logs from Azure resources into your SIEM systems (Integrieren von Protokollen aus Azure-Ressourcen in Ihre SIEM-Systeme)](security-azure-log-integration-overview.md)
+- [Azure-Protokollintegration – Häufig gestellte Fragen](security-azure-log-integration-faq.md)
+- [Erste Schritte mit Azure Log Integration](security-azure-log-integration-get-started.md)
+- [Integrieren von Protokollen aus Azure-Ressourcen in Ihre SIEM-Systeme](security-azure-log-integration-overview.md)

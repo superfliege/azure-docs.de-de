@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/18/2019
+ms.date: 3/28/2019
 ms.author: monhaber
-ms.openlocfilehash: c7cc5784caf8a83a50536a8edc69ea76ea8589d8
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 66a7171aff7b9bab5f320df1d71e9cab4ce0477d
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199833"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758296"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Verwalten des Zugriffs auf virtuelle Computer mithilfe des Just-In-Time-Features
 
@@ -162,9 +162,13 @@ Wenn Sie im Azure-Portal versuchen, eine Verbindung mit einem virtuellen Compute
 
   ![JIT-Eingabeaufforderung](./media/security-center-just-in-time/jit-prompt.png)
 
-- Wenn Sie eine JIT-Richtlinie auf dem virtuellen Computer konfiguriert haben, können Sie auf **Zugriff anfordern** klicken, damit Sie entsprechend der JIT-Richtlinie, die für den virtuellen Computer festgelegt ist, Zugriff auf diesen erhalten.
+- Wenn Sie eine JIT-Richtlinie auf dem virtuellen Computer konfiguriert haben, können Sie auf **Zugriff anfordern** klicken, damit Sie entsprechend der JIT-Richtlinie, die für den virtuellen Computer festgelegt ist, Zugriff auf diesen erhalten. Der Zugriff wird mit den folgenden Standardparametern angefordert:
+    - **Quell-IP**: „Beliebige“ (*) (kann nicht geändert werden)
+    - **Zeitbereich**: 3 Stunden (kann nicht geändert werden)
+    - **Portnummer** RDP-Port 3389 für Windows bzw. Port 22 für Linux (Sie können die Portnummer im Dialogfeld **Verbindung mit virtuellem Computer herstellen** ändern.)
 
-  ![JIT-Zugriff anfordern](./media/security-center-just-in-time/jit-request-access.png)
+
+  >![JIT-Zugriff anfordern](./media/security-center-just-in-time/jit-request-access.png)
 
 ## <a name="auditing-jit-access-activity"></a>Überwachen von JIT-Zugriffsaktivität
 

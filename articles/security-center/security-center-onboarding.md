@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 19/02/2019
 ms.author: monhaber
-ms.openlocfilehash: d9c9a079198a8ff263c729b8e90c1fc8d0e64cd0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ef6b476e2c85715e86ef4c1cfe1194bb25cade28
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100069"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665490"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Integrieren von Azure Security Center Standard für erhöhte Sicherheit
 Führen Sie ein Upgrade auf Security Center Standard durch, um von erhöhter Sicherheit und besserem Schutz vor Bedrohungen für Ihre Hybridcloud-Workloads zu profitieren.  Sie können die Standard-Edition kostenlos testen. Weitere Informationen finden Sie auf der Seite mit den [Preisen für Security Center](https://azure.microsoft.com/pricing/details/security-center/).
@@ -33,7 +33,7 @@ Security Center Standard umfasst Folgendes:
 ## <a name="detecting-unprotected-resources"></a>Erkennen ungeschützter Ressourcen     
 Security Center erkennt automatisch alle Azure-Abonnements oder -Arbeitsbereiche, für die Security Center Standard nicht aktiviert ist. Dazu zählen unter anderem Azure-Abonnements mit Security Center Free sowie Arbeitsbereiche, für die die Sicherheitslösung nicht aktiviert ist.
 
-Sie können ein gesamtes Azure-Abonnement auf den Standard-Tarif upgraden, da dies von allen Ressourcen innerhalb des Abonnements geerbt wird. Falls Sie hingegen nur ein Upgrade für eine bestimmte Ressourcengruppe durchführen möchten, können Sie auch eine eindeutige Richtlinie definieren. Sind die Richtlinieneinstellungen der Ressourcengruppe eindeutig, überschreibt Security Center die Preisrichtlinien nicht, wenn Sie das Abonnement auf den Standard-Tarif upgraden. Durch Anwenden des Standard-Tarifs auf ein Abonnement wird dieser Tarif auch auf alle unterstützten Ressourcen im Abonnement angewendet. Wenn Sie den Standard-Tarif auf einen Arbeitsbereich anwenden, gilt dieser Tarif auch für alle Ressourcen, die Berichte an den Arbeitsbereich senden.
+Sie können ein Upgrade für ein gesamtes Azure-Abonnement auf den Standard-Tarif durchführen, da diese Änderung von allen unterstützten Ressourcen des Abonnements geerbt wird. Wenn Sie den Standard-Tarif auf einen Arbeitsbereich anwenden, gilt dieser Tarif auch für alle Ressourcen, die Berichte an den Arbeitsbereich senden.
 
 > [!NOTE]
 > Möglicherweise möchten Sie Ihre Kosten verwalten und den Umfang der für eine Lösung gesammelten Daten begrenzen, indem Sie sie auf einen bestimmten Satz von Agents beschränken. Mit der [Zielgruppenadressierung für Lösungen](../operations-management-suite/operations-management-suite-solution-targeting.md) können Sie einen Bereich auf die Lösung anwenden und eine Teilmenge von Computern im Arbeitsbereich als Ziel angeben.  Bei Verwendung der Zielgruppenadressierung für Lösungen führt Security Center den Arbeitsbereich als Arbeitsbereich ohne Lösung auf.

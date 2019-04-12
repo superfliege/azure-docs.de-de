@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 86d50092ccffd5ab958df5d54ea49cd56d815e2e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 479e6d222c9fc7d007252bab12e807ec337ea9e6
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58082159"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880779"
 ---
 # <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>Schützen des Azure SQL-Diensts und Ihrer Daten in Azure Security Center
 Azure Security Center analysiert den Sicherheitsstatus Ihrer Azure-Ressourcen. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente unterstützen.  Die Empfehlungen gelten für folgende Azure-Ressourcentypen: virtuelle Computer (Virtual Machines, VMs), Netzwerk, SQL, Daten und Anwendungen.
@@ -64,10 +64,8 @@ Um die Überwachung zu aktivieren, wählen Sie für **Überwachung** die Option 
 |Data Lake Store|5|Diagnoseprotokolle in Azure Data Lake Store aktivieren|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. |
 |SQL|30|Sicherheitsrisiken in SQL-Datenbanken beseitigen|Die SQL-Sicherheitsrisikobewertung überprüft Ihre Datenbank auf Sicherheitsrisiken und zeigt Abweichungen von bewährten Methoden wie z. B. Fehlkonfigurationen, übermäßige Berechtigungen und ungeschützte vertrauliche Daten an. Durch das Beseitigen der Sicherheitsrisiken kann die Sicherheit Ihrer Datenbank deutlich verbessert werden.|
 |SQL|20|Azure AD-Administrator für SQL Server bereitstellen|Stellen Sie einen Azure AD-Administrator für Ihren SQL-Server bereit, um Azure AD-Authentifizierung zu aktivieren. Die Azure AD-Authentifizierung ermöglicht eine vereinfachte Verwaltung von Berechtigungen und eine zentralisierte Identitätsverwaltung von Datenbankbenutzern und anderen Microsoft-Diensten.|
-|Speicherkonto|15|Uneingeschränkten Netzwerkzugriff auf Speicherkonto deaktivieren|Überwachen Sie uneingeschränkten Netzwerkzugriff in den Firewalleinstellungen Ihres Speicherkontos. Konfigurieren Sie stattdessen Netzwerkregeln, sodass nur Anwendungen aus zulässigen Netzwerken auf ein Speicherkonto zugreifen können. Um Verbindungen von bestimmten Internetclients oder lokalen Clients zuzulassen, kann Zugriff für Datenverkehr aus bestimmten virtuellen Azure-Netzwerken oder an IP-Adressbereiche im öffentlichen Internet gewährt werden.|
-|Speicherkonto|1|Speicherkonten zu neuen AzureRM-Ressourcen migrieren|Verwenden Sie den neuen Azure Resource Manager v2 für Ihre Speicherkonten, um von den folgenden Sicherheitsverbesserungen zu profitieren: strengere Zugriffssteuerung (RBAC), bessere Überwachung, Resource Manager-basierte Bereitstellung und Governance, Zugriff auf verwaltete Identitäten, Zugriff auf Schlüsseltresore für Geheimnisse, Azure AD-basierte Authentifizierung und Unterstützung für Markierungen und Ressourcengruppen für eine einfachere Sicherheitsverwaltung.|
-
-
+|Speicherkonto|15|Uneingeschränkten Netzwerkzugriff auf Speicherkonto deaktivieren|Überwachen Sie uneingeschränkten Netzwerkzugriff in den Firewalleinstellungen Ihres Speicherkontos. Konfigurieren Sie stattdessen Netzwerkregeln, sodass nur Anwendungen aus zulässigen Netzwerken auf ein Speicherkonto zugreifen können. Um Verbindungen von bestimmten Internetclients oder lokalen Clients zuzulassen, können Sie Zugriff für Datenverkehr aus bestimmten virtuellen Azure-Netzwerken oder an IP-Adressbereiche im öffentlichen Internet gewähren.|
+|Speicherkonto|1|Migrieren von Speicherkonten zu Azure Resource Manager-Modellressourcen|Verwenden Sie den neuen Azure Resource Manager v2 für Ihre Speicherkonten, um von den folgenden Sicherheitsverbesserungen zu profitieren: strengere Zugriffssteuerung (RBAC), bessere Überwachung, Resource Manager-basierte Bereitstellung und Governance, Zugriff auf verwaltete Identitäten, Zugriff auf Schlüsseltresore für Geheimnisse, Azure AD-basierte Authentifizierung sowie Unterstützung für Markierungen und Ressourcengruppen für eine einfachere Sicherheitsverwaltung.|
 
 ## <a name="see-also"></a>Weitere Informationen
 Weitere Informationen zu Empfehlungen für andere Arten von Azure-Ressourcen finden Sie in den folgenden Themen:

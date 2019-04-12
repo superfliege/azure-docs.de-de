@@ -32,7 +32,7 @@ Einige der Codeausschnitte zeigen das **Table** -Attribut in Funktionen, die man
 ## <a name="how-to-add-entities-to-a-table"></a>Hinzufügen von Entitäten zu einer Tabelle
 Um einer Tabelle Entitäten hinzuzufügen, verwenden Sie das **Table**-Attribut mit einem **ICollector<T>**- oder **IAsyncCollector<T>**-Parameter, wobei **T** das Schema der Entitäten angibt, die Sie hinzufügen möchten. Der Attributkonstruktor verwendet einen Zeichenfolgenparameter, der den Namen der Tabelle angibt.
 
-Das folgende Codebeispiel fügt einer Tabelle namens **Ingress***Person*-Entitäten hinzu.
+Das folgende Codebeispiel fügt einer Tabelle namens **Ingress** *Person*-Entitäten hinzu.
 
         [NoAutomaticTrigger]
         public static void IngressDemo(

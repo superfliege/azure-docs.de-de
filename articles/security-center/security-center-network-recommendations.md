@@ -3,7 +3,7 @@ title: Schützen Ihrer Netzwerkressourcen in Azure Security Center | Microsoft-D
 description: Dieses Dokument behandelt Empfehlungen in Azure Security Center, die zum Schutz Ihrer Azure-Netzwerkressourcen sowie zur Einhaltung von Sicherheitsrichtlinien beitragen.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 96c55a02-afd6-478b-9c1f-039528f3dea0
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: 55318f40918833688e0c516924642c781141438c
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 04/02/2019
+ms.author: monhaber
+ms.openlocfilehash: cca1962e5146300cc376fab4bcb1bf0876acec6c
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118002"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863150"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Schützen Ihrer Netzwerkressourcen in Azure Security Center
 Azure Security Center analysiert ständig den Sicherheitsstatus Ihrer Azure-Ressourcen anhand bewährter Methoden für Netzwerksicherheit. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente zum Sichern und Schützen Ihrer Ressourcen unterstützen.
@@ -30,10 +30,9 @@ Dieser Artikel behandelt Empfehlungen, die aus Sicht der Netzwerksicherheit auf 
 > Die Seite **Netzwerk** ermöglicht Ihnen detaillierte Einblicke in die Integrität Ihrer Azure-Ressourcen aus Netzwerksicht. Die Netzwerkübersicht und adaptive Netzwerksteuerelemente stehen nur für Azure Security Center im Standard-Tarif zur Verfügung. [Wenn Sie den Free-Tarif verwenden, können Sie auf die Schaltfläche **Legacynetzwerk anzeigen** klicken und Empfehlungen für Netzwerkressourcen erhalten](#legacy-networking).
 >
 
-Die Seite **Netzwerk** bietet eine Übersicht über die Abschnitte, die Sie genauer prüfen können, um weitere Informationen über die Integrität Ihrer Netzwerkressourcen zu erhalten:
+Das Blatt **Netzwerk** bietet eine Übersicht über die Abschnitte, die Sie genauer prüfen können, um weitere Informationen über die Integrität Ihrer Netzwerkressourcen zu erhalten:
 
 - Netzwerkübersicht (nur im Standard-Tarif von Azure Security Center)
-- NSG-Härtung (in Kürze verfügbar; registrieren Sie sich für die Vorschauversion)
 - Empfehlungen für die Netzwerksicherheit
 - Blatt **Legacynetzwerk** (das frühere Blatt „Netzwerk“) 
  
@@ -49,7 +48,8 @@ So öffnen Sie die Netzwerkübersicht:
  
 Die Standardansicht der Topologie umfasst Folgendes:
 - Abonnements, die Sie in Azure ausgewählt haben. Die Übersicht unterstützt mehrere Abonnements.
-- Virtuelle Computer, Subnetze und VNETs vom Resource Manager-Ressourcentyp (klassische Azure-Ressourcen werden nicht unterstützt).
+- Virtuelle Computer, Subnetze und VNets vom Resource Manager-Ressourcentyp (klassische Azure-Ressourcen werden nicht unterstützt).
+- VNets mit Peering
 - Nur Ressourcen, die [Netzwerkempfehlungen](security-center-recommendations.md) mit einem hohen oder mittleren Schweregrad aufweisen.  
 - Ressourcen mit Internetzugriff.
 - Die Übersicht ist für die in Azure ausgewählten Abonnements optimiert. Wenn Sie die Auswahl ändern, wird die Übersicht neu berechnet und entsprechend den neuen Einstellungen optimiert.  
@@ -98,7 +98,7 @@ Sie können beispielsweise zwei Computer erkennen, von denen Sie gar nicht wusst
 
 So zeigen Sie Detailinformationen zu einer Ressource an:
 1. Wenn Sie eine bestimmte Ressource in der Übersicht auswählen, wird der rechte Bereich geöffnet und zeigt allgemeine Informationen zur Ressource, verbundene Sicherheitslösungen (sofern vorhanden) und die für die Ressource relevanten Empfehlungen an. Dieses Verhalten ist für jeden ausgewählten Ressourcentyp gleich. 
-2. Klicken Sie auf **Datenverkehr**, um die Liste des möglichen ausgehenden und eingehenden Datenverkehrs für die Ressource anzuzeigen. Dabei handelt es sich um eine umfassende Liste, wer mit der Ressource kommunizieren kann, mit wem die Ressource kommunizieren kann und über welche Protokolle und Ports die Kommunikation erfolgt.
+2. Klicken Sie auf **Datenverkehr**, um die Liste des möglichen ausgehenden und eingehenden Datenverkehrs für die Ressource anzuzeigen. Dabei handelt es sich um eine umfassende Liste, wer mit der Ressource kommunizieren kann, mit wem die Ressource kommunizieren kann und über welche Protokolle und Ports die Kommunikation erfolgt. Wenn Sie beispielsweise eine VM auswählen, werden alle VMs angezeigt, mit denen diese kommunizieren kann, und wenn Sie ein Subnetz auswählen, werden alle Subnetze angezeigt, mit denen dieses kommunizieren kann.
 
 **Diese Daten basieren auf einer Analyse der Netzwerksicherheitsgruppen sowie erweiterten Machine Learning-Algorithmen, die mehrere Regeln analysieren, um deren Überkreuzungen und Interaktionen zu verstehen.** 
 

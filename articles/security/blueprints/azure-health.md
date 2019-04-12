@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: 5f23435a43d139ecb9f20e5036124f175b1830c9
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 70721b8bfbecaf554a9502b9ec3417fc8e561b3f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225364"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885943"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Entwurf zu Azure-Sicherheit und -Kompatibilität: HIPAA/HITRUST-Gesundheitsdaten und -KI
 
@@ -179,7 +179,7 @@ Als die Person, die direkt für die Patientenaufnahme und die Entlassungen in de
 
 **Prüfer: Han**
 
-*E-Mail: Han\_Prüfer*
+*E-Mail: Han\_Auditor*
 
 Han ist ein zertifizierte Prüfer, der über Erfahrung mit ISO-, SOC- und HiTrust-Zertifizierungen verfügt. Han wurde eingestellt, um das Netzwerk der Contosoclinic zu überprüfen. Han kann die mit der Lösung bereitgestellte Kundenzuständigkeitsmatrix überprüfen, um sicherzustellen, dass der Entwurf und die LOS-Lösung zur Speicherung, Verarbeitung und Anzeige sensibler persönlicher Daten verwendet werden können.
 

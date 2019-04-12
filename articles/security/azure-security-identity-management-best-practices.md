@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/17/2018
 ms.author: barclayn
-ms.openlocfilehash: bf5143c3c0c75bc37f6981c6d995339e41baa4c4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: f872c61ad0597d2307cd244668fdfc258f7a45cb
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112103"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895685"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden
 
@@ -116,7 +116,7 @@ Im Folgenden werden Optionen und Vorteile der zweistufigen Überprüfung beschri
 **Option 1**: [Aktivieren Sie Azure Multi-Factor Authentication durch Ändern des Benutzerstatus](../active-directory/authentication/howto-mfa-userstates.md).   
 **Vorteil**: Dies ist die herkömmliche Methode, die zweistufige Überprüfung zu anzufordern. Sie funktioniert sowohl mit der [mehrstufigen Azure-Authentifizierung in der Cloud als auch mit Azure Multi-Factor Authentication Server](../active-directory/authentication/concept-mfa-whichversion.md). Diese Methode erfordert, dass Benutzer jedes Mal, wenn sie sich anmelden, die zweistufige Überprüfung durchführen, und überschreibt Richtlinien für bedingten Zugriff.
 
-**Option 2**: [Aktivieren Sie Multi-Factor Authentication mithilfe einer Richtlinie für bedingten Zugriff](../active-directory/authentication/howto-mfa-getstarted.md#enable-multi-factor-authentication-with-conditional-access).   
+**Option 2**: [Aktivieren Sie Multi-Factor Authentication mithilfe einer Richtlinie für bedingten Zugriff](../active-directory/authentication/howto-mfa-getstarted.md).
 **Vorteil**: Mit dieser Option können Sie die zweistufige Überprüfung unter bestimmten Bedingungen mithilfe des [bedingten Zugriffs](../active-directory/active-directory-conditional-access-azure-portal.md) anfordern. Bestimmte Bedingungen können sein: Benutzeranmeldung von verschiedenen Standorten, nicht vertrauenswürdige Geräte oder Anwendungen, die Sie als risikoreich betrachten. Durch Definieren von bestimmten Bedingungen, in denen Sie die zweistufige Überprüfung erfordern, können Sie die konstante Aufforderung Ihrer Benutzer vermeiden, die eine unangenehme Benutzererfahrung sein kann.
 
 Dies ist die flexibelste Möglichkeit, die zweistufige Überprüfung für Ihre Benutzer zu aktivieren. Die Aktivierung einer Richtlinie für bedingten Zugriff funktioniert jedoch nur bei Azure Multi-Factor Authentication in der Cloud und ist eine Premium-Funktion von Azure AD. Weitere Informationen zu dieser Methode finden Sie unter [Bereitstellen von cloudbasierter Azure Multi-Factor Authentication](../active-directory/authentication/howto-mfa-getstarted.md).
@@ -181,21 +181,21 @@ Bewerten Sie die Konten, die zugewiesen werden oder für die Rolle „globaler A
 **Bewährte Methode**: Führen Sie Maßnahmen zum Abwehren der am häufigsten verwendeten Angriffstechniken durch.  
 **Detail**: [Identifizieren Sie Microsoft-Konten in Administratorrollen, die auf Geschäfts-, Schul- oder Unikonten umgestellt werden müssen.](../active-directory/users-groups-roles/directory-admin-roles-secure.md#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
 
-[Stellen Sie separate Benutzerkonten und E-Mail-Weiterleitung für globale Administratorkonten sicher.](../active-directory/users-groups-roles/directory-admin-roles-secure.md)  
+[Sicherstellen von separaten Benutzerkonten und E-Mail-Weiterleitung für globale Administratorkonten](../active-directory/users-groups-roles/directory-admin-roles-secure.md)  
 
 [Stellen Sie sicher, dass die Kennwörter von Administratorkonten kürzlich geändert wurden.](../active-directory/users-groups-roles/directory-admin-roles-secure.md#ensure-the-passwords-of-administrative-accounts-have-recently-changed)  
 
-[Aktivieren Sie die Kennworthashsynchronisierung.](../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)  
+[Aktivieren der Kennworthashsynchronisierung](../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)  
 
 [Fordern Sie die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) sowohl für Benutzer in allen privilegierten Rollen als auch für Benutzer mit hoher Gefährdung.](../active-directory/users-groups-roles/directory-admin-roles-secure.md#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
 
-[Rufen Sie Ihren Office 365 Secure Score ab (bei Verwendung von Office 365).](../active-directory/users-groups-roles/directory-admin-roles-secure.md#obtain-your-office-365-secure-score-if-using-office-365)  
+[Abrufen Ihres Office 365 Secure Score (bei Verwendung von Office 365)](../active-directory/users-groups-roles/directory-admin-roles-secure.md#obtain-your-office-365-secure-score-if-using-office-365)  
 
-[Überprüfen Sie die Office 365-Sicherheit und -Konformität (bei Verwendung von Office 365).](../active-directory/users-groups-roles/directory-admin-roles-secure.md#review-the-office-365-security-and-compliance-guidance-if-using-office-365)  
+[Leitfaden: Überprüfen der Office 365-Sicherheit und -Konformität (bei Verwendung von Office 365)](../active-directory/users-groups-roles/directory-admin-roles-secure.md#review-the-office-365-security-and-compliance-guidance-if-using-office-365)  
 
-[Konfigurieren Sie die Office 365-Aktivitätsüberwachung (bei Verwendung von Office 365).](../active-directory/users-groups-roles/directory-admin-roles-secure.md#configure-office-365-activity-monitoring-if-using-office-365)  
+[Konfigurieren der Office 365-Aktivitätsüberwachung (bei Verwendung von Office 365)](../active-directory/users-groups-roles/directory-admin-roles-secure.md#configure-office-365-activity-monitoring-if-using-office-365)  
 
-[Richten Sie Notfallreaktionsplan-Besitzer ein.](../active-directory/users-groups-roles/directory-admin-roles-secure.md#establish-incidentemergency-response-plan-owners)  
+[Einrichten von Notfallreaktionsplan-Besitzern](../active-directory/users-groups-roles/directory-admin-roles-secure.md#establish-incidentemergency-response-plan-owners)  
 
 [Schützen Sie lokale privilegierte Administratorkonten.](../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)
 

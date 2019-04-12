@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: d4cf454a654124468fd31e6412530416da381acf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 52aa57b0a0de0a8ca82e57adda8b41862aa66980
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884896"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918653"
 ---
 # <a name="enable-azure-disk-encryption-for-windows-iaas-vms"></a>Aktivieren von Azure Disk Encryption für virtuelle Windows-IaaS-Computer
 
@@ -131,7 +131,7 @@ Die folgende Tabelle enthält die Resource Manager-Vorlagenparameter für vorhan
 | Parameter | BESCHREIBUNG |
 | --- | --- |
 | vmName | Der Name des virtuellen Computers, der den Verschlüsselungsvorgang ausführt. |
-| keyVaultName | Der Name des Schlüsseltresors, in den der BitLocker-Schlüssel hochgeladen werden soll. Sie können ihn abrufen, indem Sie das Cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` oder den Azure CLI-Befehl `az keyvault list --resource-group "MyKeyVaultResourceGroup"` verwenden.|
+| keyVaultName | Der Name des Schlüsseltresors, in den der BitLocker-Schlüssel hochgeladen werden soll. Sie können ihn mit dem Cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` oder dem Azure CLI-Befehl abrufen. `az keyvault list --resource-group "MyKeyVaultResourceGroup"`|
 | keyVaultResourceGroup | Der Name der Ressourcengruppe mit dem Schlüsseltresor|
 |  keyEncryptionKeyURL | Die URL des KEK, der zum Verschlüsseln des generierten BitLocker-Schlüssels verwendet wird. Dieser Parameter ist optional, wenn Sie in der Dropdownliste „UseExistingKek“ die Option **nokek** auswählen. Wenn Sie in der Dropdownliste „UseExistingKek“ die Option **kek** auswählen, müssen Sie den Wert _keyEncryptionKeyURL_ eingeben. |
 | volumeType | Der Typ des Volumes, auf dem der Verschlüsselungsvorgang durchgeführt wird. Gültige Werte sind _OS_, _Data_ und _All_. 
@@ -145,7 +145,7 @@ Mit [Azure-VM-Skalierungsgruppen](../virtual-machine-scale-sets/overview.md) kö
 
 ### <a name="encrypt-virtual-machine-scale-sets-with-azure-powershell"></a>Verschlüsseln von VM-Skalierungsgruppen unter Verwendung von Azure PowerShell
 
-Verwenden Sie das Cmdlet [Set-AzVmssDiskEncryptionExtension](/powershell/module/az.compute/set-azvmssdiskencryptionextension), um die Verschlüsselung für eine VM-Skalierungsgruppe unter Windows zu aktivieren. Die Ressourcengruppe, der virtuelle Computer und der Schlüsseltresor wurden bereits bei der Vorbereitung erstellt.
+Verwenden Sie das Cmdlet [Set-AzVmssDiskEncryptionExtension](/powershell/module/az.compute/set-azvmssdiskencryptionextension), um die Verschlüsselung für eine VM-Skalierungsgruppe unter Windows zu aktivieren. Die Ressourcengruppe, die VM-Skalierungsgruppe und der Schlüsseltresor wurden bereits bei der Vorbereitung erstellt.
 
 -  **Verschlüsseln einer ausgeführten VM-Skalierungsgruppe:**
     ```azurepowershell
@@ -191,7 +191,7 @@ Verwenden Sie das Cmdlet [Set-AzVmssDiskEncryptionExtension](/powershell/module/
 
 ### <a name="encrypt-virtual-machine-scale-sets-with-azure-cli"></a>Verschlüsseln von VM-Skalierungsgruppen unter Verwendung der Azure-Befehlszeilenschnittstelle
 
-Verwenden Sie [az vmss encryption enable](/cli/azure/vmss/encryption#az-vmss-encryption-enable), um die Verschlüsselung für eine VM-Skalierungsgruppe unter Windows zu aktivieren. Ist die Upgraderichtlinie für die Skalierungsgruppe auf „Manuell“ festgelegt, starten Sie die Verschlüsselung mit [az vmss update-instances](/cli/azure/vmss#az-vmss-update-instances). Die Ressourcengruppe, der virtuelle Computer und der Schlüsseltresor wurden bereits bei der Vorbereitung erstellt.
+Verwenden Sie [az vmss encryption enable](/cli/azure/vmss/encryption#az-vmss-encryption-enable), um die Verschlüsselung für eine VM-Skalierungsgruppe unter Windows zu aktivieren. Ist die Upgraderichtlinie für die Skalierungsgruppe auf „Manuell“ festgelegt, starten Sie die Verschlüsselung mit [az vmss update-instances](/cli/azure/vmss#az-vmss-update-instances). Die Ressourcengruppe, die VM-Skalierungsgruppe und der Schlüsseltresor wurden bereits bei der Vorbereitung erstellt.
 
 -  **Verschlüsseln einer ausgeführten VM-Skalierungsgruppe**
     ```azurecli-interactive
