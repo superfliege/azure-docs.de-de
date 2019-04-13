@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.author: glenga
-ms.openlocfilehash: 965fa1e82be3fb87bf58a0114f97091bad212738
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 30d578f130985548c431dea8b68ee291325b5c99
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450735"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893219"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Verwalten von Verbindungen in Azure Functions
 
@@ -23,7 +23,7 @@ Funktionen innerhalb einer Funktions-App nutzen Ressourcen gemeinsam. Unter dies
 
 Die Anzahl der verfügbaren Verbindungen ist teilweise begrenzt, da eine Funktions-App in einer [Sandboxumgebung](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) ausgeführt wird. Eine Einschränkung, die die Sandbox Ihrem Code auferlegt, ist eine [Obergrenze für die Anzahl der Verbindungen (derzeit bei 600 aktiven Verbindungen und 1.200 Verbindungen insgesamt)](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#numerical-sandbox-limits) pro Instanz. Wenn dieses Limit erreicht ist, erstellt Functions Runtime ein Protokoll mit folgender Meldung: `Host thresholds exceeded: Connections`.
 
-Dieser Grenzwert gilt pro Instanz.  Wenn der [Skalierungscontroller Funktions-App-Instanzen hinzufügt](functions-scale.md#how-the-consumption-plan-works), um mehr Anforderungen zu verarbeiten, weist jede Instanz einen unabhängigen Verbindungsgrenzwert auf. Das heißt, es gibt keinen globalen Verbindungsgrenzwert, um sie können über alle aktiven Instanzen weit mehr als 600 aktive Verbindungen verwenden.
+Dieser Grenzwert gilt pro Instanz.  Wenn der [Skalierungscontroller Funktions-App-Instanzen hinzufügt](functions-scale.md#how-the-consumption-and-premium-plans-work), um mehr Anforderungen zu verarbeiten, weist jede Instanz einen unabhängigen Verbindungsgrenzwert auf. Das heißt, es gibt keinen globalen Verbindungsgrenzwert, um sie können über alle aktiven Instanzen weit mehr als 600 aktive Verbindungen verwenden.
 
 ## <a name="static-clients"></a>Statische Clients
 
@@ -57,7 +57,7 @@ public static async Task Run(string input)
 
 Eine häufig gestellte Frage zum [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx) in .NET lautet: „Soll ich meinen Client löschen?“. Im Allgemeinen löschen Sie Objekte, die `IDisposable` implementieren, wenn Sie sie nicht mehr verwenden. Sie löschen jedoch keinen statischen Client, da dessen Verwendung mit dem Funktionsende nicht abgeschlossen ist. Der statische Client soll für die Dauer der Anwendung gültig sein.
 
-### <a name="http-agent-examples-nodejs"></a>HTTP-Agent-Beispiele (Node.js)
+### <a name="http-agent-examples-javascript"></a>HTTP-Agent-Beispiele (JavaScript)
 
 Da die native [`http.agent`](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_class_http_agent)-Klasse bessere Optionen für die Verbindungsverwaltung bietet, sollten Sie diese anstelle von nicht nativen Methoden wie etwa dem `node-fetch`-Modul verwenden. Verbindungsparameter werden mithilfe von Optionen in der `http.agent`-Klasse konfiguriert. Die genauen Optionen, die für den HTTP-Agent verfügbar sind, finden Sie unter [new Agent(\[options\])](https://nodejs.org/dist/latest-v6.x/docs/api/http.html#http_new_agent_options).
 
@@ -105,6 +105,25 @@ public static async Task Run(string input)
     await documentClient.UpsertDocumentAsync(collectionUri, document);
     
     // Rest of function
+}
+```
+
+### <a name="cosmosclient-code-example-javascript"></a>CosmosClient-Codebeispiel (JavaScript)
+[CosmosClient](/javascript/api/@azure/cosmos/cosmosclient) stellt eine Verbindung mit einer Azure Cosmos DB-Instanz her. In der Azure Cosmos DB-Dokumentation wird empfohlen, dass Sie [einen Singleton-Azure Cosmos DB-Client für die Lebensdauer der Anwendung verwenden](../cosmos-db/performance-tips.md#sdk-usage). Im folgenden Beispiel wird ein Muster dafür in einer Funktion gezeigt:
+
+```javascript
+const cosmos = require('@azure/cosmos');
+const endpoint = process.env.COSMOS_API_URL;
+const masterKey = process.env.COSMOS_API_KEY;
+const { CosmosClient } = cosmos;
+
+const client = new CosmosClient({ endpoint, auth: { masterKey } });
+// All function invocations also reference the same database and container.
+const container = client.database("MyDatabaseName").container("MyContainerName");
+
+module.exports = async function (context) {
+    const { result: itemArray } = await container.items.readAll().toArray();
+    context.log(itemArray);
 }
 ```
 

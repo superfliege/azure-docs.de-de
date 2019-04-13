@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: aedd81af8b5821b1f8032faad1896790804df2a0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e89fe10768331f5b4099ce9a9e2204dd72aa0bff
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119291"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793463"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>Erneutes Generieren von HTTP-Headern in Application Gateway (Public Preview)
 
@@ -96,10 +96,12 @@ Diese Möglichkeit unterstützt die erneute Generierung von Headern in Form der 
 | -------------------------- | :----------------------------------------------------------- |
 | ciphers_supported          | Gibt die Liste mit den Verschlüsselungen zurück, die vom Client unterstützt werden.          |
 | ciphers_used               | Gibt die Verschlüsselungszeichenfolge zurück, die für eine eingerichtete SLL-Verbindung verwendet wird. |
+| client_ip                  | IP-Adresse des Clients, von dem das Anwendungsgateway die Anforderung empfangen hat. Befindet sich ein Reverseproxy vor dem Anwendungsgateway und dem ursprünglichen Client, gibt *client_ip* die IP-Adresse des Reverseproxys zurück. Diese Variable ist besonders in Szenarios hilfreich, in denen Kunden den X-Forwarded-For-Header, der von Application Gateway festgelegt wurde, neu generieren möchten, sodass der Header nur die IP-Adresse und keine Portinformationen enthält. |
 | client_port                | Port des Clients                                                  |
 | client_tcp_rtt             | Informationen über die TCP-Verbindung des Clients. Verfügbar auf Systemen, die die Socketoption „TCP_INFO“ unterstützen. |
 | client_user                | Wenn HTTP-Authentifizierung verwendet wird: der Benutzername, der bei der Authentifizierung angegeben wurde. |
 | host                       | In dieser Reihenfolge: Hostname aus der Anforderungszeile oder Hostname aus dem Anforderungsheaderfeld „Host“ oder der Servername, der mit einer Anforderung übereinstimmt. |
+| cookie_*Name*              | Das *Name*-Cookie |
 | http_method                | Die Methode, die für die URL-Anforderung verwendet wird, z. B. GET, POST etc. |
 | http_status                | Sitzungsstatus, z. B. 200, 400, 403 etc.                       |
 | http_version               | Anforderungsprotokoll, normalerweise „HTTP/1.0“, „HTTP/1.1“ oder „HTTP/2.0“. |
@@ -120,10 +122,6 @@ Diese Möglichkeit unterstützt die erneute Generierung von Headern in Form der 
 - Die Unterstützung für das erneute Generieren von HTTP-Headern ist nur für die neue SKU [Standard_V2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) verfügbar. Auf der alten SKU wird diese Möglichkeit nicht unterstützt.
 
 - Das erneute Generieren von Verbindungs-, Upgrade- und Hostheadern wird noch nicht unterstützt.
-
-- Zwei wichtige Servervariablen, „client_ip“ (die IP-Adresse des Clients, der die Anforderung erstellt) und „cookie_*name*“ (das Cookie *name*), werden noch nicht unterstützt. Die Servervariable „client_ip“ ist besonders in Szenarios hilfreich, in denen Kunden den X-Forwarded-For-Header, der von Application Gateway festgelegt wurde, neu generieren möchten, sodass der Header nur die IP-Adresse des Clients beinhaltet und nicht die Portinformationen.
-
-  Beide Servervariablen werden aber bald unterstützt.
 
 - Die Möglichkeit, HTTP-Header bedingt erneut zu generieren, ist bald verfügbar.
 

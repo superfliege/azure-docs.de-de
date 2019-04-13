@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 03/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 814becd2092c3603f20cd65152e8183446954ce8
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: acc9f83923c8fdaae98cc55bc6baf62f56f2116b
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216355"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58663144"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management-Richtlinien für die Zugriffsbeschränkung
 
@@ -213,10 +213,12 @@ Die `ip-filter`-Richtlinie filtert (erlaubt/blockiert) Aufrufe von bestimmten IP
 
 ### <a name="example"></a>Beispiel
 
+Im folgenden Beispiel lässt die Richtlinie nur Anfragen zu, die entweder von der angegebenen einzelnen IP-Adresse oder von dem angegebenen IP-Adressbereich stammen.
+
 ```xml
-<ip-filter action="allow | forbid">
-    <address>address</address>
-    <address-range from="address" to="address" />
+<ip-filter action="allow">
+    <address>13.66.201.169</address>
+    <address-range from="13.66.140.128" to="13.66.140.143" />
 </ip-filter>
 ```
 
@@ -382,7 +384,8 @@ Die `validate-jwt`-Richtlinie erzwingt das Vorhandensein und die Gültigkeit ein
     require-expiration-time="true|false"
     require-scheme="scheme"
     require-signed-tokens="true|false"
-    clock-skew="allowed clock skew in seconds">
+    clock-skew="allowed clock skew in seconds"
+    output-token-variable-name="name of a variable to receive a JWT object representing successfully validated token">
   <issuer-signing-keys>
     <key>base64 encoded signing key</key>
     <!-- if there are multiple keys, then add additional key elements -->
@@ -464,43 +467,32 @@ Die `validate-jwt`-Richtlinie erzwingt das Vorhandensein und die Gültigkeit ein
 
 #### <a name="authorize-access-to-operations-based-on-token-claims"></a>Autorisieren des Zugriffs auf Vorgänge basierend auf Tokenansprüchen
 
-Dieses Beispiel zeigt die Verwendung der Richtlinie [JWT überprüfen](api-management-access-restriction-policies.md#ValidateJWT), um den Zugriff auf Vorgänge basierend auf Tokenansprüchen vorab zu autorisieren. Eine Demonstration der Konfiguration und Verwendung dieser Richtlinie finden Sie in [Cloud Cover-Episode 177: Weitere API Management-Funktionen mit Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (führen Sie einen schnellen Vorlauf bis 13:50 durch). Ab 18:50 finden Sie eine Demonstration des Aufrufs eines Vorgangs über das Entwicklerportal, sowohl mit dem als auch ohne das erforderliche Autorisierungstoken.
+Dieses Beispiel zeigt die Verwendung der Richtlinie [JWT überprüfen](api-management-access-restriction-policies.md#ValidateJWT), um den Zugriff auf Vorgänge basierend auf dem Wert für Tokenansprüche zu autorisieren.
 
 ```xml
-<!-- Copy the following snippet into the inbound section at the api (or higher) level to pre-authorize access to operations based on token claims -->
-<set-variable name="signingKey" value="insert signing key here" />
+<validate-jwt header-name="Authorization" require-scheme="Bearer" output-token-variable-name="jwt">
+    <issuer-signing-keys>
+        <key>{{jwt-signing-key}}</key> <!-- signing key is stored in a named value -->
+    </issuer-signing-keys>
+    <audiences>
+        <audience>@(context.Request.OriginalUrl.Host)</audience>
+    </audiences>
+    <issuers>
+        <issuer>contoso.com</issuer>
+    </issuers>
+    <required-claims>
+        <claim name="group" match="any">
+            <value>finance</value>
+            <value>logistics</value>
+        </claim>
+    </required-claims>
+</validate-jwt>
 <choose>
-  <when condition="@(context.Request.Method.Equals("patch",StringComparison.OrdinalIgnoreCase))">
-    <validate-jwt header-name="Authorization">
-      <issuer-signing-keys>
-        <key>@((string)context.Variables["signingKey"])</key>
-      </issuer-signing-keys>
-      <required-claims>
-        <claim name="edit">
-          <value>true</value>
-        </claim>
-      </required-claims>
-    </validate-jwt>
-  </when>
-  <when condition="@(new [] {"post", "put"}.Contains(context.Request.Method,StringComparer.OrdinalIgnoreCase))">
-    <validate-jwt header-name="Authorization">
-      <issuer-signing-keys>
-        <key>@((string)context.Variables["signingKey"])</key>
-      </issuer-signing-keys>
-      <required-claims>
-        <claim name="create">
-          <value>true</value>
-        </claim>
-      </required-claims>
-    </validate-jwt>
-  </when>
-  <otherwise>
-    <validate-jwt header-name="Authorization">
-      <issuer-signing-keys>
-        <key>@((string)context.Variables["signingKey"])</key>
-      </issuer-signing-keys>
-    </validate-jwt>
-  </otherwise>
+    <when condition="@(context.Request.Method == "POST" && !((Jwt)context.Variables["jwt"]).Claims["group"].Contains("finance"))">
+        <return-response>
+            <set-status code="403" reason="Forbidden" />
+        </return-response>
+    </when>
 </choose>
 ```
 
@@ -550,6 +542,7 @@ Dieses Beispiel zeigt die Verwendung der Richtlinie [JWT überprüfen](api-manag
 | require-signed-tokens           | Boolescher Wert. Gibt an, ob ein Token signiert sein muss.                                                                                                                                                                                                                                                                                                                                                                                           | Nein                                                                                | true                                                                              |
 | separator                       | Eine Zeichenfolge. Gibt ein Trennzeichen (z.B. „,“) zum Extrahieren eines Satzes von Werten aus einem mehrwertigen Anspruch an.                                                                                                                                                                                                                                                                                                                                          | Nein                                                                                | –                                                                               |
 | URL                             | URL des Open ID-Konfigurationsendpunkts, von dem die Open ID-Konfigurationsmetadaten abgerufen werden können. Die Antwort sollte den Spezifikationen entsprechen, wie sie unter URL:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata` definiert sind. Verwenden Sie für Azure Active Directory diese URL: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration`. Verwenden Sie dabei den Namen Ihres Verzeichnismandanten, z.B. `contoso.onmicrosoft.com`. | Ja                                                                              | –                                                                               |
+output-token-variable-name|Eine Zeichenfolge. Der Name der Kontextvariablen, die den Tokenwert bei erfolgreicher Überprüfung als ein Objekt des Typs [`Jwt` ](api-management-policy-expressions.md) empfängt|Nein |–
 
 ### <a name="usage"></a>Verwendung
 

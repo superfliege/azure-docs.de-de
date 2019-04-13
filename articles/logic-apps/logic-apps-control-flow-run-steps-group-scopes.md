@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.reviewer: klam, LADocs
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: d73a43aedde9a88e009ddca1f0363dbcd92e1379
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 48fb2d14cd4cf99510fff88b25b9ae45814a92a8
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080453"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882411"
 ---
 # <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>Ausführen von Aktionen basierend auf dem Gruppenstatus mit Bereichen in Azure Logic Apps
 
@@ -82,11 +82,11 @@ Sie können Ihre Logik-App jederzeit speichern, machen Sie also häufig Gebrauch
       | **Wegpunkt 1** | <*Start*> | Geben Sie den Ausgangspunkt Ihrer Route ein. | 
       | **Wegpunkt 2** | <*Ende*> | Geben Sie das Ziel Ihrer Route ein. | 
       | **Vermeiden** | Keine | Geben Sie Elemente ein, die auf der Route vermieden werden sollen, etwa Autobahnen, Mautgebühren usw. Mögliche Werte finden Sie im Artikel zum [Berechnen einer Route](https://msdn.microsoft.com/library/ff701717.aspx). | 
-      | **Optimieren** | timeWithTraffic | Wählen Sie einen Parameter zur Optimierung der Route aus, z.B. Entfernung, Reisezeit basierend auf der aktuellen Verkehrslage, usw. In diesem Beispiel wird der „timeWithTraffic“ verwendet. | 
-      | **Distance unit** (Einheit für Entfernung) | <*Ihre Präferenz*> | Geben Sie die Einheit der Entfernung ein, um die Route zu berechnen. In diesem Beispiel wird folgender Wert verwendet: "Mile" | 
-      | **Travel mode** (Reisemodus) | Driving (Auto) | Geben Sie das Fortbewegungsmittel für die Route ein. In diesem Beispiel wird „Driving“ (Auto) verwendet. | 
-      | **Transit Date-Time** (Datum und Uhrzeit für Transit) | Keine | Gilt für nur für den Transitmodus. | 
-      | **Transit Date-Time Type** (Typ für Datum und Uhrzeit für Transit) | Keine | Gilt für nur für den Transitmodus. | 
+      | **Optimierung** | timeWithTraffic | Wählen Sie einen Parameter zur Optimierung der Route aus, z.B. Entfernung, Reisezeit basierend auf der aktuellen Verkehrslage, usw. In diesem Beispiel wird der „timeWithTraffic“ verwendet. | 
+      | **Distance unit (Einheit für Entfernung)** | <*Ihre Präferenz*> | Geben Sie die Einheit der Entfernung ein, um die Route zu berechnen. In diesem Beispiel wird folgender Wert verwendet: "Mile" | 
+      | **Travel mode (Reisemodus)** | Driving (Auto) | Geben Sie das Fortbewegungsmittel für die Route ein. In diesem Beispiel wird „Driving“ (Auto) verwendet. | 
+      | **Transit Date-Time (Datum und Uhrzeit für Transit)** | Keine | Gilt für nur für den Transitmodus. | 
+      | **Transit Date-Time Type (Typ für Datum und Uhrzeit für Transit)** | Keine | Gilt für nur für den Transitmodus. | 
       ||||  
 
 1. [Fügen Sie eine Bedingung hinzu](../logic-apps/logic-apps-control-flow-conditional-statement.md), die überprüft, ob die aktuelle Reisezeit mit Verkehr eine angegebene Zeit überschreitet. 
@@ -119,7 +119,7 @@ Sie können Ihre Logik-App jederzeit speichern, machen Sie also häufig Gebrauch
 
    1. Geben Sie im Feld **Text** diesen Text mit einem nachgestellten Leerzeichen ein: 
 
-      ```Travel time: ```
+      ```Travel time:```
 
       Während der Cursor im Feld **Text** angezeigt wird, bleibt die Liste mit den dynamischen Inhalten geöffnet, damit Sie alle Parameter auswählen können, die an diesem Punkt verfügbar sind.
 
@@ -146,11 +146,13 @@ Sie können Ihre Logik-App jederzeit speichern, machen Sie also häufig Gebrauch
 
    1. Wählen Sie **OK** aus, wenn Sie fertig sind.
 
+   <!-- markdownlint-disable MD038 -->
    1. Nachdem der Ausdruck aufgelöst wurde, fügen Sie diesen Text mit einem vorangestellten Leerzeichen hinzu: ``` minutes```
   
        Nun sieht Ihr **Textfeld** wie in diesem Beispiel aus:
 
        ![Fertiggestelltes Feld „Text“](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
+   <!-- markdownlint-enable MD038 -->
 
 1. Speichern Sie Ihre Logik-App.
 
@@ -174,7 +176,7 @@ Fügen Sie als nächstes einen Bereich hinzu, damit Sie bestimmte Aktionen grupp
 
 1. Fügen Sie jetzt die Schritte hinzu, oder ziehen Sie vorhandene Schritte, die Sie ausführen möchten, in den Bereich. Ziehen Sie für dieses Beispiel diese Aktionen in den Bereich:
       
-   * **Get route** (Route ermitteln)
+   * **Route abrufen**
    * **If traffic time is more than specified time** (Wenn Verkehrszeit die angegebene Zeit überschreitet); enthält die beiden Branches **true** und **false**
 
    Nun sieht Ihre Logik-App wie dieses Beispiel aus:

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 9d3bc50e1578704de029d53c0b1eaa21e74182cf
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 43cbeea554f43e4db7d5440af83a9b414741d2f6
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401918"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756610"
 ---
 # <a name="api-management-advanced-policies"></a>API Management – Erweiterte Richtlinien
 
@@ -253,7 +253,7 @@ Bei dieser Richtlinie auf Vorgangsebene werden Anforderungen nicht an den Back-E
 
 | Attribut                               | BESCHREIBUNG                                                                                                      | Erforderlich | Standard     |
 | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| timeout="integer"                       | Das Zeitüberschreitungsintervall in Sekunden, nach dem für den Aufruf des Back-End-Diensts ein Fehler auftritt. Der Mindestwert beträgt 0 Sekunden. Der Maximalwert beträgt 240 Sekunden.| Nein        | 240 Sekunden |
+| timeout="integer"                       | Die Zeitspanne in Sekunden, die darauf gewartet wird, dass der Back-End-Dienst die HTTP-Antwortheader zurückgibt. Danach wird ein Timeoutfehler ausgelöst. Der Mindestwert beträgt 0 Sekunden. Werte, die größer als 240 Sekunden sind, werden möglicherweise nicht berücksichtigt, weil die zugrunde liegende Netzwerkinfrastruktur Verbindungen im Leerlauf nach dieser Zeitspanne trennen kann. | Nein        | Keine |
 | follow-redirects="true &#124; false"    | Gibt an, ob Umleitungen vom Back-End-Dienst vom Gateway verfolgt oder an den Aufrufer zurückgegeben werden.      | Nein        | false       |
 | buffer-request-body="true &#124; false" | Bei Festlegung auf „true“ wird die Anforderung gepuffert und bei [Wiederholung](api-management-advanced-policies.md#Retry) wiederverwendet. | Nein        | false       |
 

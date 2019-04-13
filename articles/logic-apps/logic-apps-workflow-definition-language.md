@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 04/30/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 3c17ec2133e278b17475e4988e1e9766b1349ba4
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d2de2a25d67da230d539156c851cca34335a01c2
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734639"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620835"
 ---
 # <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Schemareferenz zur Definitionssprache für Workflows in Azure Logic Apps
 
@@ -41,7 +41,7 @@ So sieht die allgemeine Struktur einer Workflowdefinition aus:
 | Element | Erforderlich | BESCHREIBUNG |
 |---------|----------|-------------|
 | Definition | Ja | Das Startelement für Ihre Workflowdefinition |
-| $schema | Nur bei externem Verweis auf eine Workflowdefinition | Der Speicherort der JSON-Schemadatei, welche die Version der Workflowdefinitionssprache beschreibt. Der Speicherort lautet wie folgt: <p>`https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json`</p> |
+| $schema | Nur bei externem Verweis auf eine Workflowdefinition | Der Speicherort der JSON-Schemadatei, welche die Version der Workflowdefinitionssprache beschreibt. Der Speicherort lautet wie folgt: <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
 | contentVersion | Nein  | Die Versionsnummer für Ihre Workflowdefinition, die standardmäßig „1.0.0.0“ lautet. Geben Sie einen zu verwendenden Wert an, um bei der Bereitstellung eines Workflows die richtige Definition besser ermitteln und bestätigen zu können. |
 | Parameter | Nein  | Die Definitionen für mindestens einen Parameter, der Daten an Ihren Workflow übergibt <p><p>Maximale Anzahl von Parametern: 50 |
 | Trigger | Nein  | Die Definitionen für mindestens einen Trigger, der Ihren Workflow instanziiert. Sie können mehrere Trigger definieren, jedoch nur mit der Definitionssprache für Workflows, nicht visuell mit dem Designer für Logik-Apps. <p><p>Maximale Anzahl von Triggern: 10 |
@@ -72,8 +72,8 @@ So sieht die allgemeine Struktur einer Parameterdefinition aus:
 
 | Element | Erforderlich | Typ | BESCHREIBUNG |
 |---------|----------|------|-------------|
-| type | Ja | int, float, string, securestring, bool, array, JSON-Objekt, secureobject <p><p>**Hinweis**: Verwenden Sie für sämtliche Kennwörter, Schlüssel und geheimen Schlüssel die Typen `securestring` und `secureobject`, da diese Typen beim `GET`-Vorgang nicht zurückgegeben werden. | Der Typ des Parameters |
-| defaultValue | Nein  | Identisch mit `type` | Der Standardparameterwert, wenn bei der Instanziierung des Workflows kein Wert angegeben wird |
+| type | Ja | int, float, string, securestring, bool, array, JSON-Objekt, secureobject <p><p>**Hinweis**: Verwenden Sie für sämtliche Kennwörter, Schlüssel und geheimen Schlüssel die Typen `securestring` und `secureobject`, da diese Typen beim `GET`-Vorgang nicht zurückgegeben werden. Weitere Informationen zum Sichern von Parametern finden Sie unter [Sichern Ihrer Logik-App](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | Der Typ des Parameters |
+| defaultValue | Ja | Identisch mit `type` | Der Standardparameterwert, wenn bei der Instanziierung des Workflows kein Wert angegeben wird |
 | allowedValues | Nein  | Identisch mit `type` | Ein Array mit Werten, die vom Parameter akzeptiert werden können |
 | metadata | Nein  | JSON-Objekt | Alle anderen von Visual Studio oder anderen Tools verwendeten Parameterdetails, wie z.B. der Name, eine lesbare Beschreibung Ihrer Logik-App oder Entwurfszeitdaten |
 ||||

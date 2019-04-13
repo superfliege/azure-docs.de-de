@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 023d12764e3dcfcf2f5471cb431528a14fbc1fed
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 37455c278d665d05636ec120ca91b76153e53d16
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339634"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894917"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Apps in Azure App Service
 ## <a name="overview"></a>Übersicht
@@ -36,10 +36,10 @@ Sie können die folgenden Protokollarten aktivieren oder deaktivieren:
 
 * **Detaillierte Fehlerprotokollierung** – Detaillierte Informationen für jede Anforderung, die zum HTTP-Statuscode 400 oder höher führt. Diese können Informationen enthalten, mit deren Hilfe sich bestimmen lässt, warum der Server den Fehlercode zurückgegeben hat. Für jeden Fehler im Dateisystem der App wird eine einzige HTML-Datei generiert, und bis zu 50 Fehler (Dateien) werden beibehalten. Wenn die Anzahl der HTML-Dateien 50 überschreitet, werden die 26 ältesten Dateien automatisch gelöscht.
 * **Ablaufverfolgung von Anforderungsfehlern** - Detaillierte Informationen zu fehlgeschlagenen Anforderungen, einschließlich der Verfolgung von IIS-Komponenten, die zur Verarbeitung der Anforderung verwendet wurden, sowie die in jeder Komponente benötigte Zeit. Dies ist hilfreich, wenn Sie die Leistung der Website verbessern oder einen bestimmten HTTP-Fehler isolieren möchten. Für jeden Fehler im Dateisystem der App wird ein einziger Ordner generiert. Die Beibehaltungsrichtlinien für Dateien sind mit denen der vorstehenden detaillierten Fehlerprotokollierung identisch.
-* **Webserverprotokollierung** - Informationen über HTTP-Transaktionen im erweiterten [W3C-Protokolldateiformat](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Dies ist hilfreich, wenn Sie allgemeine Websitemetriken ermitteln möchten, z.B. die Anzahl der verarbeiteten Anforderungen oder die Anzahl der Anforderungen von einer bestimmten IP-Adresse.
+* **Webserverprotokollierung** - Informationen über HTTP-Transaktionen im erweiterten [W3C-Protokolldateiformat](/windows/desktop/Http/w3c-logging). Dies ist hilfreich, wenn Sie allgemeine Websitemetriken ermitteln möchten, z.B. die Anzahl der verarbeiteten Anforderungen oder die Anzahl der Anforderungen von einer bestimmten IP-Adresse.
 
 ### <a name="application-diagnostics"></a>Anwendungsdiagnose
-Mit der Option "Application Diagnostics" können Sie die von einer Webanwendung erzeugten Informationen erfassen. ASP.NET-Anwendungen können die Klasse [System.Diagnostics.Trace](https://msdn.microsoft.com/library/36hhw2t6.aspx) verwenden, um Informationen im Anwendungs-Diagnoseprotokoll aufzuzeichnen. Beispiel: 
+Mit der Option "Application Diagnostics" können Sie die von einer Webanwendung erzeugten Informationen erfassen. ASP.NET-Anwendungen können die Klasse [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) verwenden, um Informationen im Anwendungs-Diagnoseprotokoll aufzuzeichnen. Beispiel: 
 
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
 
@@ -51,16 +51,16 @@ App Service protokolliert auch Bereitstellungsinformationen, wenn Sie Inhalte in
 Navigieren Sie zur Seite für Ihre App und klicken auf **Einstellungen > Diagnoseprotokolle**, um die Diagnose im [Azure-Portal](https://portal.azure.com) zu aktivieren.
 
 <!-- todo:cleanup dogfood addresses in screenshot -->
-![Bereich „Protokolle“](./media/web-sites-enable-diagnostic-log/logspart.png)
+![Protokolle Teil](./media/web-sites-enable-diagnostic-log/logspart.png)
 
 Wenn Sie die **Anwendungsdiagnose** aktivieren, können Sie auch die **Ebene** auswählen. Die folgende Tabelle zeigt die Kategorien von Protokollen auf den einzelnen Ebenen:
 
 | Ebene| Enthaltene Protokollkategorien |
 |-|-|
-|**Disabled** | Keine |
-|**Fehler** | Fehler, Kritisch |
-|**Warning** | Warnung, Fehler, Kritisch|
-|**Informationen** | Info, Warnung, Fehler, Kritisch|
+|**Deaktiviert** | Keine |
+|**Error** | Fehler, Kritisch |
+|**Warnung** | Warnung, Fehler, Kritisch|
+|**Information** | Info, Warnung, Fehler, Kritisch|
 |**Ausführlich** | Ablaufverfolgung, Debugging, Info, Warnung, Fehler, Kritisch (alle Kategorien) |
 |-|-|
 
@@ -101,7 +101,7 @@ Protokolle werden in der folgenden Verzeichnisstruktur gespeichert:
 * **Anwendungsprotokolle** - /LogFiles/Application/. Dieser Ordner enthält eine oder mehrere Textdateien mit Informationen, die bei der Anwendungsprotokollierung erzeugt wurden.
 * **Protokolle für fehlgeschlagene Anforderungen** - /LogFiles/W3SVC#########/. Dieser Ordner enthält eine XSL-Datei und eine oder mehrere XML-Dateien. Vergewissern Sie sich, dass Sie die XSL-Datei in dasselbe Verzeichnis wie die XML-Datei(en) herunterladen, da die XSL-Datei die Funktionalität zum Formatieren und Filtern des Inhalts der XML-Datei(en) zur Anzeige in Internet Explorer zur Verfügung stellt.
 * **Detaillierte Fehlerprotokolle** - /LogFiles/DetailedErrors/. Dieser Ordner enthält eine oder mehrere HTM-Dateien, die umfangreiche Informationen zu aufgetretenen HTTP-Fehlern bereitstellen.
-* **Webserverprotokolle** - /LogFiles/http/RawLogs. Dieser Ordner enthält eine oder mehrere Textdateien im [erweiterten W3C-Protokolldateiformat](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx).
+* **Webserverprotokolle** - /LogFiles/http/RawLogs. Dieser Ordner enthält eine oder mehrere Textdateien im [erweiterten W3C-Protokolldateiformat](/windows/desktop/Http/w3c-logging).
 * **Bereitstellungsprotokolle** - /LogFiles/Git. Dieser Ordner enthält Protokolle, die von den internen Bereitstellungsprozessen von Azure App Service erzeugt werden, sowie Protokolle für Git-Bereitstellungen. Bereitstellungsprotokolle können sich auch unter „D:\home\site\deployments“ befinden.
 
 ### <a name="ftp"></a>FTP
@@ -222,7 +222,7 @@ Die Verfolgungsprotokolle für fehlerhafte Anforderungen werden in XML-Dateien m
 Detaillierte Fehlerprotokolle sind HTML-Dokumente, die ausführlichere Informationen zu aufgetretenen HTTP-Fehlern bereitstellen. Da es sich um einfache HTML-Dokumente handelt, können sie in einem Webbrowser angezeigt werden.
 
 ### <a name="web-server-logs"></a>Webserverprotokolle
-Webserverprotokolle werden im [erweiterten W3C-Protokolldateiformat](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx)gespeichert. Die Informationen können in einem Texteditor gelesen oder mit einem Dienstprogramm wie [Log Parser](https://go.microsoft.com/fwlink/?LinkId=246619)analysiert werden.
+Webserverprotokolle werden im [erweiterten W3C-Protokolldateiformat](/windows/desktop/Http/w3c-logging)gespeichert. Die Informationen können in einem Texteditor gelesen oder mit einem Dienstprogramm wie [Log Parser](https://go.microsoft.com/fwlink/?LinkId=246619)analysiert werden.
 
 > [!NOTE]
 > Die von Azure App Service erzeugten Protokolle unterstützen nicht die Felder **s-computername**, **s-ip** oder **cs-version**.
@@ -230,6 +230,6 @@ Webserverprotokolle werden im [erweiterten W3C-Protokolldateiformat](https://msd
 >
 
 ## <a name="nextsteps"></a> Nächste Schritte
-* [How to Monitor Azure App Service (Vorgehensweise: Überwachen von Azure App Service)](web-sites-monitor.md)
-* [Troubleshooting Azure App Service in Visual Studio (Problembehandlung für Azure App Service in Visual Studio)](troubleshoot-dotnet-visual-studio.md)
+* [Überwachen von Apps in Azure App Service](web-sites-monitor.md)
+* [Problembehandlung von Apps in Azure App Service mit Visual Studio](troubleshoot-dotnet-visual-studio.md)
 * [Analyze app Logs in HDInsight (Analyse von App-Protokollen in HDInsight)](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

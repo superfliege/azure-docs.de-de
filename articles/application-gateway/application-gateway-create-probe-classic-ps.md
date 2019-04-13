@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
-ms.openlocfilehash: 17893a37bbaf67014c9b34dd446af204b907ff24
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 01c1768f60da98206f0dfd041745428256f545fc
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58004987"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58861878"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Erstellen eines benutzerdefinierten Tests für ein Azure Application Gateway (klassisch) mithilfe von PowerShell
 
@@ -150,9 +150,9 @@ Die Konfigurationsparameter sind:
 
 |Parameter|BESCHREIBUNG|
 |---|---|
-|**Name** |Referenzname für den benutzerdefinierten Test. |
+|**NAME** |Referenzname für den benutzerdefinierten Test. |
 | **Protokoll** | Verwendetes Protokoll (mögliche Werte: „HTTP“ und „HTTPS“).|
-| **Host** und **Pfad** | Vollständiger URL-Pfad, der vom Anwendungsgateway aufgerufen wird, um die Integrität der Instanz zu ermitteln. Beispiel: Für die Website „http://contoso.com/“ können Sie den benutzerdefinierten Test für „http://contoso.com/path/custompath.htm“ konfigurieren, damit die HTTP-Antwort bei den Überprüfungen des Tests erfolgreich ist.|
+| **Host** und **Pfad** | Vollständiger URL-Pfad, der vom Anwendungsgateway aufgerufen wird, um die Integrität der Instanz zu ermitteln. Beispiel: Für die Website „http:\//contoso.com/“ können Sie den benutzerdefinierten Test für „http:\//contoso.com/path/custompath.htm“ konfigurieren, damit die HTTP-Antwort bei den Überprüfungen des Tests erfolgreich ist.|
 | **Intervall** | Konfiguriert die Intervalle der Testausführungen (in Sekunden).|
 | **Timeout** | Definiert das Timeout des Tests für eine HTTP-Antwortprüfung.|
 | **UnhealthyThreshold** | Die Anzahl von HTTP-Antworten mit Fehlern, ab der die Back-End-Instanz als *fehlerhaft* gekennzeichnet wird.|

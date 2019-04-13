@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to-article
 ms.date: 3/17/2019
 ms.author: b-juche
-ms.openlocfilehash: b45879adca58f60e5c16829a7fd2fffab33eee46
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: c2dd8b636223e0484e36eed9fcc616dc6f19cf3a
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400864"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877974"
 ---
 # <a name="create-a-volume-for-azure-netapp-files"></a>Erstellen eines Volumes für Azure NetApp Files
 
@@ -29,7 +29,7 @@ Jeder Kapazitätspool kann maximal 500 Volumes enthalten. Der Kapazitätsverbrau
 Sie müssen bereits einen Kapazitätspool eingerichtet haben.   
 [Einrichten eines Kapazitätspools](azure-netapp-files-set-up-capacity-pool.md)   
 Ein Subnetz muss an Azure NetApp Files delegiert werden.  
-[Delegieren eines Subnetzes für Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
+[Delegieren eines Subnetzes an Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
 
 ## <a name="create-an-nfs-volume"></a>Erstellen eines NFS-Volumes
 

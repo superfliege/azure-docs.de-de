@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: yegu
-ms.openlocfilehash: ddeaec9adc28fa5037a0fc01363e3ad6b78ceeef
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 65e8553969aa92848b1c4496724a7b7754b5d659
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234355"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895595"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Häufig gestellte Fragen zu Azure Cache for Redis
 In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und Best Practices für Azure Cache for Redis.
@@ -69,7 +69,7 @@ Im Folgenden finden Sie häufig gestellte Fragen zu grundlegenden Konzepten. Fra
 * [Was muss bei der Verwendung gängiger Redis-Befehle beachtet werden?](#what-are-some-of-the-considerations-when-using-common-redis-commands)
 * [Wie kann ich die Leistung meines Caches messen und testen?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 * [Wichtige Details zum Threadpool-Wachstum](#important-details-about-threadpool-growth)
-* [Aktivieren der Garbage Collection auf dem Server, um bei Verwenden von „StackExchange.Redis“ mehr Durchsatz auf dem Client zu erzielen](#enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis)
+* [Aktivieren der Garbage Collection auf dem Server-, um bei Verwenden von „StackExchange.Redis“ mehr Durchsatz auf dem Client zu erzielen](#enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis)
 * [Überlegungen zur Leistung im Zusammenhang mit Verbindungen](#performance-considerations-around-connections)
 
 ## <a name="monitoring-and-troubleshooting-faqs"></a>Häufig gestellte Fragen zur Überwachung und Problembehandlung
@@ -135,7 +135,7 @@ Aus dieser Tabelle können folgende Schlussfolgerungen gezogen werden:
 
 | Tarif | Größe | CPU-Kerne | Verfügbare Bandbreite | 1 KB Wertgröße | 1 KB Wertgröße |
 | --- | --- | --- | --- | --- | --- |
-| **Standard-Cachegröße** | | |**Megabits pro Sekunde (MBit/s)/Megabyte pro Sekunde (MB/s)** |**Anforderungen pro Sekunde (RPS), kein SLL** |**Anforderungen pro Sekunde (RPS), SLL** |
+| **Standard-Cachegrößen** | | |**Megabits pro Sekunde (MBit/s)/Megabyte pro Sekunde (MB/s)** |**Anforderungen pro Sekunde (RPS), kein SLL** |**Anforderungen pro Sekunde (RPS), SLL** |
 | C0 |250 MB |Shared |100 / 12,5 |15.000 |7.500 |
 | C1 |1 GB |1 |500 / 62,5 |38.000 |20.720 |
 | C2 |2,5 GB |2 |500 / 62,5 |41.000 |37.000 |
@@ -143,7 +143,7 @@ Aus dieser Tabelle können folgende Schlussfolgerungen gezogen werden:
 | C4 |13 GB |2 |500 / 62,5 |60.000 |55.000 |
 | C5 |26 GB |4 |1.000/125 |102.000 |93.000 |
 | C6 |53 GB |8 |2.000/250 |126.000 |120.000 |
-| **Premium-Cachegröße** | |**CPU-Kerne pro Shard** | **Megabits pro Sekunde (MBit/s)/Megabyte pro Sekunde (MB/s)** |**Anforderungen pro Sekunde (RPS), kein SLL, pro Shard** |**Anforderungen pro Sekunde (RPS), SLL, pro Shard** |
+| **Premium-Cachegrößen** | |**CPU-Kerne pro Shard** | **Megabits pro Sekunde (MBit/s)/Megabyte pro Sekunde (MB/s)** |**Anforderungen pro Sekunde (RPS), kein SLL, pro Shard** |**Anforderungen pro Sekunde (RPS), SLL, pro Shard** |
 | P1 |6 GB |2 |1.500/187,5 |180.000 |172.000 |
 | P2 |13 GB |4 |3.000/375 |350.000 |341.000 |
 | P3 |26 GB |4 |3.000/375 |350.000 |341.000 |
@@ -392,7 +392,7 @@ So konfigurieren Sie diese Einstellung:
   > Der in diesem Konfigurationselement angegebene Wert ist eine Einstellung *pro Kern*. Wenn Ihr Computer z.B. über vier Kerne verfügt und Sie eine minIOThreads-Einstellung von 200 zur Laufzeit festlegen möchten, müssen Sie `<processModel minIoThreads="50"/>` verwenden.
   >
 
-* Verwenden Sie außerhalb von ASP.NET und der Datei „global.asax“ für Azure WebSites die API [ThreadPool.SetMinThreads (...)](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) .
+* Verwenden Sie außerhalb von ASP.NET und der Datei „global.asax“ für Azure WebSites die API [ThreadPool.SetMinThreads (...)](/dotnet/api/system.threading.threadpool.setminthreads#System_Threading_ThreadPool_SetMinThreads_System_Int32_System_Int32_) .
 
   > [!NOTE]
   > Der von dieser API festgelegte Wert ist eine globale Einstellung, die die gesamte AppDomain betrifft. Wenn Sie über einen Computer mit 4 Kernen verfügen und minWorkerThreads und minIOThreads auf 50 pro CPU während der Laufzeit festlegen möchten, verwenden Sie ThreadPool.SetMinThreads (200, 200).
@@ -402,9 +402,9 @@ So konfigurieren Sie diese Einstellung:
 ### <a name="enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis"></a>Aktivieren der Garbage Collection auf dem Server-, um bei Verwenden von „StackExchange.Redis“ mehr Durchsatz auf dem Client zu erzielen
 Das Aktivieren der Garbage Collection auf dem Server kann den Client optimieren und bei Verwenden von „StackExchange.Redis“ mehr Leistung und Durchsatz ermöglichen. Weitere Informationen zur Garbage Collection auf dem Server und ihrer Aktivierung finden Sie in den folgenden Artikeln:
 
-* [So aktivieren Sie die Garbage Collection auf dem Server](https://msdn.microsoft.com/library/ms229357.aspx)
-* [Grundlagen der Garbage Collection](https://msdn.microsoft.com/library/ee787088.aspx)
-* [Garbage Collection und Leistung](https://msdn.microsoft.com/library/ee851764.aspx)
+* [So aktivieren Sie die Garbage Collection auf dem Server](/dotnet/framework/configure-apps/file-schema/runtime/gcserver-element)
+* [Grundlagen der Garbage Collection](/dotnet/standard/garbage-collection/fundamentals)
+* [Garbage Collection und Leistung](/dotnet/standard/garbage-collection/performance)
 
 
 ### <a name="performance-considerations-around-connections"></a>Überlegungen zur Leistung im Zusammenhang mit Verbindungen
@@ -469,11 +469,11 @@ Weitere Informationen zu den ersten Schritten mit Azure Cache for Redis finden S
 ### <a name="managed-cache-service"></a>Managed Cache Service
 [Managed Cache Service wurde am 30. November 2016 außer Betrieb gesetzt.](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
-Archivierte Dokumentationen finden Sie unter [Archived Managed Cache Service Documentation](https://msdn.microsoft.com/library/azure/dn386094.aspx) (Archivierte Dokumentation zu Managed Cache Service).
+Archivierte Dokumentationen finden Sie unter [Archived Managed Cache Service Documentation](/previous-versions/azure/azure-services/dn386094(v=azure.100)) (Archivierte Dokumentation zu Managed Cache Service).
 
 ### <a name="in-role-cache"></a>In-Role Cache
 [In-Role Cache wurde am 30. November 2016 eingestellt.](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
-Archivierte Dokumentationen finden Sie unter [Archived In-Role Cache Documentation](https://msdn.microsoft.com/library/azure/dn386103.aspx) (archivierte Dokumentation zu Azure In-Role Cache).
+Archivierte Dokumentationen finden Sie unter [Archived In-Role Cache Documentation](/previous-versions/azure/azure-services/dn386103(v=azure.100)) (archivierte Dokumentation zu Azure In-Role Cache).
 
 ["minIoThreads" configuration setting]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx

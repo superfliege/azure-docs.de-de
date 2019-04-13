@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e8473ece2ed08798836dc66067e1ce042924f469
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: df12639aaafaf3df7ae2b755d635d4fba83d846e
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431254"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905091"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Ausführen von Durable Functions als WebJobs
 
@@ -33,7 +33,7 @@ Dieser Artikel setzt voraus, dass Sie mit den Grundlagen des WebJobs SDK, der En
 
 * [Erste Schritte mit dem WebJobs SDK](../../app-service/webjobs-sdk-get-started.md)
 * [Erstellen Ihrer ersten Funktion mit Visual Studio](../functions-create-your-first-function-visual-studio.md)
-* [Durable Functions](durable-functions-sequence.md)
+* [Langlebige Funktionen](durable-functions-sequence.md)
 
 Zur Durchführung der in diesem Artikel aufgeführten Schritte ist Folgendes erforderlich:
 
@@ -218,50 +218,60 @@ Dieser Abschnitt bietet eine Übersicht über die Ausführung des [Beispielproje
 
 ## <a name="webjobs-sdk-3x"></a>WebJobs SDK 3.x
 
-In diesem Artikel wird erläutert, wie man ein WebJobs SDK 2.x-Projekt entwickelt. Wenn Sie ein WebJobs SDK 3.x-Projekt entwickeln, hilft Ihnen dieser Abschnitt dabei, die Unterschiede zu verstehen.
+In diesem Artikel wird erläutert, wie man ein WebJobs SDK 2.x-Projekt entwickelt. Wenn Sie ein [WebJobs SDK 3.x](../../app-service/webjobs-sdk-get-started.md)-Projekt entwickeln, hilft Ihnen dieser Abschnitt dabei, die Unterschiede zu verstehen.
 
 Die wichtigste eingeführte Änderung ist die Verwendung von .NET Core anstelle von .NET Framework. Zum Erstellen eines WebJobs SDK 3.x-Projekts sind die Anweisungen identisch, mit diesen Ausnahmen:
 
-1. Erstellen Sie eine .NET Core-Konsolen-App. Wählen Sie im Visual Studio-Dialogfeld **Neues Projekt** die Option **.NET Core** > **Konsolen-App (.NET Core)** aus. Die Projektdatei gibt an, dass `TargetFramework` `netcoreapp2.0` ist.
+1. Erstellen Sie eine .NET Core-Konsolen-App. Wählen Sie im Visual Studio-Dialogfeld **Neues Projekt** die Option **.NET Core** > **Konsolen-App (.NET Core)** aus. Die Projektdatei gibt an, dass `TargetFramework` `netcoreapp2.x` ist.
 
-1. Wählen Sie die Vorabversion WebJobs SDK 3.x der folgenden Pakete:
+1. Wählen Sie die Releaseversion WebJobs SDK 3.x der folgenden Pakete:
 
     * `Microsoft.Azure.WebJobs.Extensions`
+    * `Microsoft.Azure.WebJobs.Extensions.Storage`
     * `Microsoft.Azure.WebJobs.Logging.ApplicationInsights`
 
-1. Rufen Sie die Speicherverbindungszeichenfolge und den Application Insights-Instrumentierungsschlüssel aus einer *appsettings.json*-Datei mithilfe des .NET Core-Konfigurationsframeworks ab. Ändern Sie den `Main`-Methodencode, um dies zu tun. Hier sehen Sie ein Beispiel:
+1. Legen Sie die Speicherverbindungszeichenfolge und den Application Insights-Instrumentierungsschlüssel in einer *appsettings.json*-Datei mithilfe des .NET Core-Konfigurationsframeworks fest. Hier sehen Sie ein Beispiel:
+
+    ```json
+        {
+            "AzureWebJobsStorage": "<replace with storage connection string>",
+            "APPINSIGHTS_INSTRUMENTATIONKEY": "<replace with Application Insights instrumentation key>"
+        }
+    ```
+
+1. Ändern Sie den `Main`-Methodencode, um dies zu tun. Hier sehen Sie ein Beispiel:
 
    ```cs
    static void Main(string[] args)
    {
-       var builder = new ConfigurationBuilder()
-           .SetBasePath(Directory.GetCurrentDirectory())
-           .AddJsonFile("appsettings.json");
+        var hostBuilder = new HostBuilder()
+            .ConfigureWebJobs(config =>
+            {
+                config.AddAzureStorageCoreServices();
+                config.AddAzureStorage();
+                config.AddTimers();
+                config.AddDurableTask(options =>
+                {
+                    options.HubName = "MyTaskHub";
+                    options.AzureStorageConnectionStringName = "AzureWebJobsStorage";
+                });
+            })
+            .ConfigureLogging((context, logging) =>
+            {
+                logging.AddConsole();
+                logging.AddApplicationInsights(config =>
+                {
+                    config.InstrumentationKey = context.Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"];
+                });
+            })
+            .UseConsoleLifetime();
 
-       var appSettingsConfig = builder.Build();
+        var host = hostBuilder.Build();
 
-       using (var loggerFactory = new LoggerFactory())
-       {
-           var config = new JobHostConfiguration();
-
-           config.DashboardConnectionString = "";
-           config.StorageConnectionString =
-               appSettingsConfig.GetConnectionString("AzureWebJobsStorage");
-           var instrumentationKey =
-               appSettingsConfig["APPINSIGHTS_INSTRUMENTATIONKEY"];
-
-           config.LoggerFactory = loggerFactory
-               .AddApplicationInsights(instrumentationKey, null)
-               .AddConsole();
-
-           config.UseTimers();
-           config.UseDurableTask(new DurableTaskExtension
-           {
-               HubName = "MyTaskHub",
-           });
-           var host = new JobHost(config);
-           host.RunAndBlock();
-       }
+        using (host)
+        {
+            host.Run();
+        }
    }
    ```
 

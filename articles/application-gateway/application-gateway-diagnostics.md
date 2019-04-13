@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 1/11/2019
+ms.date: 3/28/2019
 ms.author: amitsriva
-ms.openlocfilehash: 14b99f648bb1d7e1926aa9d5dd9926e267ba9709
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 367da8a1948b9feb42bc82d85762ae314fe165a0
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309127"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620875"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Back-End-Integrität, Diagnoseprotokolle und Metriken für Application Gateway
 
@@ -131,7 +131,7 @@ Die Aktivitätsprotokollierung ist automatisch für alle Resource Manager-Ressou
 
 ### <a name="enable-logging-through-the-azure-portal"></a>Ermöglichen der Protokollierung über das Azure-Portal
 
-1. Suchen Sie im Azure-Portal nach Ihrer Ressource, und klicken Sie auf **Diagnoseprotokolle**.
+1. Suchen Sie im Azure-Portal nach Ihrer Ressource, und wählen Sie **Diagnoseeinstellungen** aus.
 
    Für Application Gateway sind drei Protokolle verfügbar:
 
@@ -139,21 +139,15 @@ Die Aktivitätsprotokollierung ist automatisch für alle Resource Manager-Ressou
    * Leistungsprotokoll
    * Firewallprotokoll
 
-2. Klicken Sie auf **Diagnose aktivieren** , um die Erfassung von Daten zu starten.
+2. Wählen Sie **Diagnose aktivieren** aus, um die Erfassung von Daten zu starten.
 
    ![Aktivieren der Diagnose][1]
 
-3. Auf dem Blatt **Diagnoseeinstellungen** werden die Einstellungen für die Diagnoseprotokolle angegeben. In diesem Beispiel werden die Protokolle in Log Analytics gespeichert. Klicken Sie unter **Log Analytics** auf **Konfigurieren**, um den Arbeitsbereich zu konfigurieren. Sie können auch Event Hubs und ein Speicherkonto verwenden, um die Diagnoseprotokolle zu speichern.
+3. Auf der Seite **Diagnoseeinstellungen** befinden sich die Einstellungen für die Diagnoseprotokolle. In diesem Beispiel werden die Protokolle in Log Analytics gespeichert. Sie können auch Event Hubs und ein Speicherkonto verwenden, um die Diagnoseprotokolle zu speichern.
 
    ![Starten des Konfigurationsprozesses][2]
 
-4. Wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich aus, oder erstellen Sie einen neuen. In diesem Beispiel wird ein vorhandener Arbeitsbereich verwendet.
-
-   ![Optionen für Log Analytics-Arbeitsbereiche][3]
-
-5. Überprüfen Sie die Einstellungen, und klicken Sie auf **Speichern**.
-
-   ![Blatt „Diagnoseeinstellungen“ mit Auswahl][4]
+5. Geben Sie einen Namen für die Einstellungen ein, bestätigen Sie die Einstellungen, und wählen Sie **Speichern** aus.
 
 ### <a name="activity-log"></a>Aktivitätsprotokoll
 
@@ -334,7 +328,7 @@ Metriken sind ein Feature für bestimmte Azure-Ressourcen, damit Sie die Leistun
 
    Sie können auf Back-End-Pool-Basis filtern, um fehlerfreie/fehlerhafte Hosts in einem bestimmten Back-End-Pool anzuzeigen.
 
-Navigieren Sie zu einem Anwendungsgateway, und klicken Sie unter **Überwachung** auf **Metriken**. Um die verfügbaren Werte anzuzeigen, wählen Sie die Dropdownliste **METRIK** aus.
+Navigieren Sie zu einem Anwendungsgateway, und wählen Sie unter **Überwachung** die Option **Metriken** aus. Um die verfügbaren Werte anzuzeigen, wählen Sie die Dropdownliste **METRIK** aus.
 
 In der folgenden Abbildung sehen Sie ein Beispiel mit drei Metriken für die letzten 30 Minuten:
 
@@ -348,11 +342,11 @@ Sie können Warnungsregeln basierend auf Metriken für eine Ressource starten. E
 
 Im folgenden Beispiel wird schrittweise die Erstellung einer Warnungsregel beschrieben, die eine E-Mail an einen Administrator sendet, nachdem ein Durchsatzschwellenwert verletzt wurde:
 
-1. Klicken Sie auf **Metrikwarnung hinzufügen**, um das Blatt **Regel hinzufügen** zu öffnen. Sie können dieses Blatt auch über das Blatt mit den Metriken erreichen.
+1. Wählen Sie **Metrikwarnung hinzufügen** aus, um die Seite **Regel hinzufügen** zu öffnen. Sie können diese Seite auch über die Seite mit den Metriken erreichen.
 
    ![Schaltfläche „Metrikwarnung hinzufügen“][6]
 
-2. Füllen Sie auf dem Blatt **Regel hinzufügen** die Abschnitte für den Namen, die Bedingung und die Benachrichtigung aus, und klicken Sie auf **OK**.
+2. Füllen Sie auf der Seite **Regel hinzufügen** die Abschnitte für den Namen, die Bedingung und die Benachrichtigung aus, und wählen Sie **OK** aus.
 
    * Wählen Sie unter **Bedingung** einen der vier Werte aus: **Größer als**, **Größer oder gleich**, **Kleiner als** oder **Kleiner oder gleich**.
 
@@ -360,7 +354,7 @@ Im folgenden Beispiel wird schrittweise die Erstellung einer Warnungsregel besch
 
    * Wenn Sie **E-Mail-Besitzer, Mitwirkende und Leser** wählen, kann die E-Mail-Adresse dynamisch basierend auf den Benutzern festgelegt werden, die auf diese Ressource zugreifen können. Andernfalls können Sie im Feld **Weitere Administrator-E-Mail(s)** eine durch Kommas getrennte Liste mit Benutzern angeben.
 
-   ![Blatt „Regel hinzufügen“][7]
+   ![Seite „Regel hinzufügen“][7]
 
 Wenn der Schwellenwert überschritten wird, trifft eine E-Mail ein, die in etwa wie in der folgenden Abbildung aussieht:
 

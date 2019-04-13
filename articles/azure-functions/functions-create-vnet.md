@@ -8,51 +8,53 @@ ms.service: azure-functions
 ms.topic: article
 ms.date: 12/03/2018
 ms.author: alkarche
-ms.openlocfilehash: 1140c23a0aa5344119c35434316ec73cc3918f90
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 4f27bbeb43bbf373b621d151d68583f0041378b3
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198370"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894205"
 ---
-# <a name="integrate-a-function-app-with-an-azure-virtual-network"></a>Integrieren einer Funktions-App in ein Azure Virtual Network
-Dieses schrittweise Tutorial zeigt Ihnen, wie Sie Azure Functions verwenden, um eine Verbindung mit Ressourcen in einem Azure VNET herzustellen. 
+# <a name="integrate-a-function-app-with-an-azure-virtual-network"></a>Integrieren einer Funktions-App in ein virtuelles Azure-Netzwerk
 
-In diesem Tutorial stellen wir eine Wordpress-Website auf einem virtuellen Computer in einem privaten VNET ohne Internetzugriff bereit. Wir stellen dann eine Funktion bereit, die Zugriff auf beides hat, das Internet und das VNET. Wir verwenden diese Funktion, um auf Ressourcen der Wordpress-Website zuzugreifen, die innerhalb des VNET bereitgestellt ist.
+Dieses schrittweise Tutorial zeigt Ihnen, wie Sie Azure Functions verwenden, um eine Verbindung mit Ressourcen in einem Azure VNET herzustellen.
 
-Weitere Informationen dazu, wie das System funktioniert, zur Problembehandlung und erweiterten Konfiguration finden Sie im Dokument [Integrieren Ihrer App in ein Azure Virtual Network](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet). Azure Functions in dem dedizierten Plan besitzt dieselben Hostingfunktionen wie Web-Apps, sodass alle in diesem Dokument genannten Funktionalitäten und Einschränkungen ebenfalls für Azure Functions gelten.
+In diesem Tutorial stellen wir eine WordPress-Website auf einem virtuellen Computer in einem privaten VNET ohne Internetzugriff bereit. Wir stellen dann eine Funktion bereit, die Zugriff auf beides hat, das Internet und das VNET. Wir verwenden diese Funktion, um auf Ressourcen der WordPress-Website zuzugreifen, die innerhalb des VNET bereitgestellt ist.
+
+Weitere Informationen dazu, wie das System funktioniert, zur Problembehandlung und erweiterten Konfiguration finden Sie im Dokument [Integrieren Ihrer App in ein Azure Virtual Network](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet). Azure Functions im Premium-Tarif hat dieselben Hostingfunktionen wie Web-Apps, sodass alle in diesem Dokument genannten Funktionalitäten und Einschränkungen ebenfalls für Azure Functions gelten.
 
 ## <a name="topology"></a>Topologie
+
  ![Benutzeroberfläche der VNET-Integration][1]
 
 ## <a name="creating-a-vm-inside-of-a-vnet"></a>Erstellen eines virtuellen Computers in einem VNET
 
 Zu Beginn erstellen wir eine vorkonfigurierte VM, auf der Wordpress in einem VNET ausgeführt wird. 
 
-Wordpress auf einem virtuellen Computer wurde gewählt, weil es eine der kostengünstigsten Ressourcen ist, die in einem VNET bereitgestellt werden kann. Beachten Sie, dass dieses Szenario auch mit allen anderen Ressourcen in einem VNET arbeiten kann, einschließlich REST-APIs, anderer Azure-Dienste, App Service-Umgebungen usw.
+Wordpress auf einem virtuellen Computer wurde gewählt, weil es eine der kostengünstigsten Ressourcen ist, die in einem VNET bereitgestellt werden kann. Beachten Sie, dass dieses Szenario auch mit jeder Ressource in einem VNET funktionieren kann, z. B. REST-APIs, App Service-Umgebungen und andere Azure-Dienste.
 
-1.  Wechseln Sie zum Azure-Portal.
-2.  Fügen Sie eine neue Ressource hinzu, indem Sie das Blatt „Ressource erstellen“ öffnen.
-3.  Suchen Sie nach „[Wordpress LEMP7 Max Performance on CentOS](https://jetware.io/appliances/jetware/wordpress4_lemp7-170526/profile?us=azure)“, und öffnen Sie das Blatt für die Erstellung. 
-4.  Konfigurieren Sie auf dem Blatt für die Erstellung die VM mit den folgenden Informationen:
-    1.  Erstellen Sie eine neue Ressourcengruppe für diesen virtuellen Computer, um die Bereinigung der Ressourcen am Ende des Tutorials zu vereinfachen. Ich habe meine Ressourcengruppe „Function-VNET-Tutorial“ genannt.
-    1.  Geben Sie dem virtuellen Computer einen eindeutigen Namen. Ich habe meinen „VNET-Wordpress“ genannt.
-    1.  Wählen Sie die Ihnen am nächsten gelegene Region aus.
-    1.  Wählen Sie die Größe als B1s (1 vCPU und 1 GB Arbeitsspeicher).
-    1.  Wählen Sie für das Administratorkonto Kennwortauthentifizierung aus, und geben Sie einen eindeutigen Benutzernamen und ein Kennwort ein. Für dieses Tutorial müssen Sie sich nur bei dem virtuellen Computer anmelden, wenn Sie Probleme behandeln müssen.
+1. Wechseln Sie zum Azure-Portal.
+2. Fügen Sie eine neue Ressource hinzu, indem Sie das Blatt „Ressource erstellen“ öffnen.
+3. Suchen Sie nach „[WordPress LEMP7 Max Performance on CentOS](https://jetware.io/appliances/jetware/wordpress4_lemp7-170526/profile?us=azure)“, und öffnen Sie das Blatt für die Erstellung. 
+4. Konfigurieren Sie auf dem Blatt für die Erstellung die VM mit den folgenden Informationen:
+    1. Erstellen Sie eine neue Ressourcengruppe für diesen virtuellen Computer, um die Bereinigung der Ressourcen am Ende des Tutorials zu vereinfachen. Ich habe meine Ressourcengruppe „Function-VNET-Tutorial“ genannt.
+    1. Geben Sie dem virtuellen Computer einen eindeutigen Namen. Ich habe meinen „VNET-Wordpress“ genannt.
+    1. Wählen Sie die Ihnen am nächsten gelegene Region aus.
+    1. Wählen Sie die Größe als B1s (1 vCPU und 1 GB Arbeitsspeicher).
+    1. Wählen Sie für das Administratorkonto Kennwortauthentifizierung aus, und geben Sie einen eindeutigen Benutzernamen und ein Kennwort ein. Für dieses Tutorial müssen Sie sich nur bei dem virtuellen Computer anmelden, wenn Sie Probleme behandeln müssen.
     
-        <img src="./media/functions-create-vnet/create-VM-1.png" width="700">
+        ![Virtuellen Computer erstellen, Registerkarte „Grundeinstellungen“](./media/functions-create-vnet/create-vm-1.png)
 
 1. Wechseln Sie zur Registerkarte „Netzwerk“, und geben Sie Folgendes ein:
     1.  Erstellen eines neuen virtuellen Netzwerks
     1.  Geben Sie in Ihren gewünschten privaten Adressraum und das Subnetz innerhalb dieses Adressbereichs ein. Die Größe des Subnetzes bestimmt, wie viele virtuelle Computer im App Service-Plan verwendet werden können. Wenn Sie sich mit IP-Adressenvergabe und dem Erstellen von Subnetzen nicht auskennen, gibt es ein [Dokument, das die Grundlagen behandelt](https://support.microsoft.com/en-us/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics). IP-Adressenvergabe und Subnetze sind wichtig in diesem Szenario, weshalb ich empfehlen würde, einige Artikel dazu zu lesen und online ein paar Videos anzuschauen, bis Sie ein grundlegendes Verständnis entwickelt haben. 
         1. Für dieses Beispiel habe ich mich entschieden, das Netzwerk „10.10.0.0/16“ mit dem Subnetz „10.10.1.0/24“ zu verwenden. Ich habe mich entschlossen, großzügig bereitzustellen, und verwende ein „/16“-Subnetz, weil sich einfach berechnen lässt, welche Subnetze im Netzwerk „10.10.0.0/16“ verfügbar sind.
         
-        <img src="./media/functions-create-vnet/create-VM-2.png" width="700">
+        <img src="./media/functions-create-vnet/create-vm-2.png" width="700">
 
 1. Zurück auf der Registerkarte „Netzwerk“ legen Sie die öffentliche IP auf „Keine“ fest. Dadurch wird der virtuelle Computer so bereitgestellt, dass er nur Zugriff auf das VNET hat.
        
-    <img src="./media/functions-create-vnet/create-VM-2.1.png" width="700">
+    <img src="./media/functions-create-vnet/create-vm-2-1.png" width="700">
 
 7. Erstellen Sie den virtuellen Computer. Dies dauert ca. 5 Minuten.
 8. Sobald der virtuelle Computer erstellt ist, besuchen Sie seine Registerkarte „Netzwerk“, und notieren Sie sich die private IP-Adresse zur späteren Verwendung. Der virtuelle Computer sollte keine öffentliche IP besitzen.
@@ -61,39 +63,31 @@ Wordpress auf einem virtuellen Computer wurde gewählt, weil es eine der kosteng
 
 Sie verfügen jetzt über eine Wordpress-Website, die ausschließlich in Ihrem virtuellen Netzwerk bereitgestellt ist. Auf diese Site kann nicht aus dem öffentlichen Internet zugegriffen werden.
 
-## <a name="create-a-dedicated-function-app"></a>Erstellen einer dedizierten Funktions-App
+## <a name="create-a-premium-plan-function-app"></a>Erstellen einer Funktions-App in einem Premium-Tarif
 
-Der nächste Schritt besteht darin, eine Funktions-App in einem Standard- oder höheren App Service-Plan zu erstellen. Beachten Sie, dass Funktions-Apps eines Verbrauchstarifs keine VNET-Integration unterstützen.
+Der nächste Schritt ist die Erstellung einer Funktions-App in einem Premium-Tarif. Der Premium-Tarif ist ein neues Angebot, dass die serverlose Staffelung mit allen Vorteilen eines dedizierten App Service-Plan einführt. Funktions-Apps eines Verbrauchstarifs unterstützen keine VNET-Integration.
 
-1. Wechseln Sie zum Azure-Portal.
-2. Fügen Sie eine neue Ressource hinzu, indem Sie das Blatt „Ressource erstellen“ öffnen.
-3. Wählen Sie „Serverlose Funktions-App“ aus.
-4. Geben Sie alle Ihre normalen Informationen auf dem Blatt zur Erstellung ein, bis auf eine Ausnahme:
-    1. Wählen Sie einen Standard- oder höheren App Service-Plan aus.
-
-        <img src="./media/functions-create-vnet/Create-App-Service-Plan.PNG" width="300">
-    
-1. Mein fertiges Blatt zur Erstellung sieht wie folgt aus.
-
-    <img src="./media/functions-create-vnet/Create-Function-App.png" width="300">
-
+[!INCLUDE [functions-premium-create](../../includes/functions-premium-create.md)]  
 
 ## <a name="connect-your-function-app-to-your-vnet"></a>Verbinden Ihrer Funktions-App mit Ihrem VNET
 
-Nachdem wir nun eine Wordpress-Website haben, die viele Dateien aus einem VNET enthält, müssen wir die Funktions-App mit diesem VNET verbinden.
+Mit einer WordPress-Website, in der Dateien aus Ihrem VNET gehostet werden, können Sie nun die Funktions-App mit dem VNET verbinden.
 
 1.  Wählen Sie im Portal für die Funktions-App aus dem vorherigen Schritt **Plattformfeatures** und dann **Netzwerk** aus.
+
+    <img src="./media/functions-create-vnet/networking-0.png" width="850">
+
 1.  Wählen Sie unter „VNET-Integration“ die Option **Zum Konfigurieren klicken** aus.
 
-    <img src="./media/functions-create-vnet/Networking-1.png" width="450">
+    ![Netzwerkfeaturestatus konfigurieren](./media/functions-create-vnet/Networking-1.png)
 
 1. Wählen Sie im VNET-Integrationsbereich **VNet hinzufügen (Vorschau)** aus.
 
-    <img src="./media/functions-create-vnet/Networking-2.png" width="600"> 
+    <img src="./media/functions-create-vnet/networking-2.png" width="600"> 
     
 1.  Erstellen Sie ein neues Subnetz für Ihre Funktion und den zu verwendenden App Service-Plan. Beachten Sie, dass die Größe des Subnetzes die Gesamtzahl der VMs einschränkt, die Sie Ihrem App Service-Plan hinzufügen können. Ihr VNET leitet Datenverkehr automatisch zwischen den Subnetzen in Ihrem VNET weiter, weshalb es egal ist, dass sich Ihre Funktion in einem anderen Subnetz als Ihre VM befindet. 
     
-    <img src="./media/functions-create-vnet/Networking-3.png" width="600">
+    <img src="./media/functions-create-vnet/networking-3.png" width="600">
 
 ## <a name="create-a-function-that-accesses-a-resource-in-your-vnet"></a>Erstellen einer Funktion, die auf eine Ressource in Ihrem VNET zugreift
 
@@ -102,22 +96,22 @@ Die Funktions-App kann jetzt auf das VNET mit unserer Wordpress-Website zugreife
 1. Öffnen Sie im Portal die Funktions-App aus dem vorherigen Schritt.
 1. Erstellen Sie einen Proxy, indem Sie **Proxys** > **+** auswählen.
 
-    <img src="./media/functions-create-vnet/New-Proxy.png" width="250">
+    <img src="./media/functions-create-vnet/new-proxy.png" width="250">
 
 1. Konfigurieren Sie den Namen und die Route des Proxys. Ich habe „/plant“ als meine Route ausgewählt.
-1. Tragen Sie Ihre Wordpress-Website-IP von vorher ein, und legen Sie die Back-End-URL auf `http://{YOUR VM IP}/wp-content/themes/twentyseventeen/assets/images/header.jpg` fest.
+1. Tragen Sie Ihre WordPress-Website-IP von vorher ein, und legen Sie die Back-End-URL auf `http://{YOUR VM IP}/wp-content/themes/twentyseventeen/assets/images/header.jpg`
     
-    <img src="./media/functions-create-vnet/Create-Proxy.png" width="900">
+    <img src="./media/functions-create-vnet/create-proxy.png" width="900">
 
 Wenn Sie nun versuchen, Ihre Back-End-URL direkt zu besuchen, indem Sie sie in eine neue Browserregisterkarte einfügen, sollte es zu einem Timeout der Seite kommen. Dies ist zu erwarten, da Ihre Wordpress-Website nur mit Ihrem VNET, und nicht mit dem Internet verbunden ist. Wenn Sie Ihre Webproxy-URL in den Browser einfügen, sollte ein ansprechende Pflanzenbild angezeigt werden, das mithilfe von Pull aus Ihrer Wordpress-Website in Ihr VNET abgerufen wird. 
 
 Ihre Funktions-App ist sowohl mit dem Internet als auch mit Ihrem VNET verbunden. Der Proxy empfängt einer Anforderung über das öffentliche Internet, und leitet diese Anforderung dann, indem er als einfacher HTTP-Proxy fungiert, weiter in das virtuelle Netzwerk hinein. Der Proxy leitet dann die Antwort über das öffentliche Internet zurück an Sie weiter. 
 
-<img src="./media/functions-create-vnet/Plant.png" width="900">
+<img src="./media/functions-create-vnet/plant.png" width="900">
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Azure Functions, die in App Service-Plänen ausgeführt werden, werden im selben Dienst wie Web-Apps ausgeführt, sodass die gesamte Dokumentation für Web-Apps ebenfalls für dedizierte Funktionen gilt.
+Funktionen, die in einem Premium-Tarif ausgeführt werden, haben dieselbe zugrunde liegenden App Service-Infrastruktur wie Web-Apps. Dies bedeutet, dass die gesamte Dokumentation für Web-Apps für Ihre Premium-Plan-Funktionen gilt.
 
 1. [Weitere Informationen zur VNET-Integration mit App Service/Functions finden Sie hier](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
 1. [Weitere Informationen zu VNETs in Azure](https://azure.microsoft.com/documentation/articles/virtual-networks-overview/)
@@ -127,15 +121,15 @@ Azure Functions, die in App Service-Plänen ausgeführt werden, werden im selben
 
 <!--Image references-->
 [1]: ./media/functions-create-vnet/topology.png
-[2]: ./media/functions-create-vnet/Create-Function-App.png
-[3]: ./media/functions-create-vnet/Create-App-Service-Plan.PNG
-[4]: ./media/functions-create-vnet/configure-VNET.png
-[5]: ./media/functions-create-vnet/create-VM-1.png
-[6]: ./media/functions-create-vnet/create-VM-2.png
-[7]: ./media/functions-create-vnet/create-VM-2.1.png
-[8]: ./media/functions-create-vnet/Networking-1.png
-[9]: ./media/functions-create-vnet/Networking-2.png
-[10]: ./media/functions-create-vnet/Networking-3.png
-[11]: ./media/functions-create-vnet/New-Proxy.png
-[12]: ./media/functions-create-vnet/Create-Proxy.png
-[14]: ./media/functions-create-vnet/VM-Networking.png
+[2]: ./media/functions-create-vnet/create-function-app.png
+[3]: ./media/functions-create-vnet/create-app-service-plan.png
+[4]: ./media/functions-create-vnet/configure-vnet.png
+[5]: ./media/functions-create-vnet/create-vm-1.png
+[6]: ./media/functions-create-vnet/create-vm-2.png
+[7]: ./media/functions-create-vnet/create-vm-2-1.png
+[8]: ./media/functions-create-vnet/networking-1.png
+[9]: ./media/functions-create-vnet/networking-2.png
+[10]: ./media/functions-create-vnet/networking-3.png
+[11]: ./media/functions-create-vnet/new-proxy.png
+[12]: ./media/functions-create-vnet/create-proxy.png
+[14]: ./media/functions-create-vnet/vm-networking.png

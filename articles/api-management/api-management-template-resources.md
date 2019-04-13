@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: c52565403c7fbc80eacbf65428863db07d634030
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 673dcbeb630899eebc328cd4fae16f7fe8f47a55
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897281"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757602"
 ---
 # <a name="azure-api-management-template-resources"></a>Ressourcen von Azure API Management-Vorlagen
 Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung in Entwicklerportalvorlagen.  
@@ -45,6 +45,29 @@ Azure API Management enthält die folgenden Arten von Ressourcen zur Verwendung 
   
 ```  
   
+Die folgenden lokalen Lokalisierungsoptionen werden unterstützt:
+
+| Gebietsschema    | Sprache               |
+|-----------|------------------------|
+| „en“      | „English“              |
+| „cs“      | „Čeština“              |
+| „de“      | „Deutsch“              |
+| „es“      | „Español“              |
+| „fr“      | „Français“             |
+| „hu“      | „Hungarian“               |
+| „it“      | „Italiano“             |
+| „ja-JP“   | „日本語“                |
+| „ko“      | „한국어“                |
+| „nl“      | „Nederlands“           |
+| „pl“      | „Polski“               |
+| „pt-BR“   | „Português (Brasil)“   |
+| „pt-pt“   | „Português (Portugal)“ |
+| „ru“      | „Русский“              |
+| „sv“      | „Svenska“              |
+| „tr“      | „Türkçe“               |
+| „zh-hans“ | „中文(简体)“           |
+| „zh-hant“ | „中文(繁體)“           |
+
  In der folgenden Tabelle sind die Zeichenfolgenressourcen aufgeführt, die zur Verwendung in Ihren Entwicklerportalvorlagen verfügbar sind. Verwenden Sie den Tabellennamen als Präfix für die Zeichenfolgenressourcen in dieser Tabelle.  
   
 -   [ApisStrings](#ApisStrings)  

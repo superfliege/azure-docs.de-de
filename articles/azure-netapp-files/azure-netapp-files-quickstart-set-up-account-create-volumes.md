@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstarts
 ms.date: 2/20/2019
 ms.author: b-juche
-ms.openlocfilehash: 363589116cc7b936358ce0b16cbaba9a42c66234
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e2b9b3cdcb712fcf6c415f574dc687e80ae9ee3b
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078073"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660509"
 ---
 # <a name="set-up-azure-netapp-files-and-create-a-volume"></a>Einrichten von Azure NetApp Files und Erstellen eines Volumes 
 
@@ -105,9 +105,9 @@ Sie müssen am Public Preview-Programm teilnehmen und auf der Whitelist für den
    4. Übernehmen Sie für das Kontingent den Standardwert. 
    5. Klicken Sie unter „Virtuelles Netzwerk“ auf **Neu erstellen**, um ein neues virtuelles Azure-Netzwerk (VNET) zu erstellen.  Geben Sie anschließend folgende Informationen an:
        * Geben Sie **myvnet1** als VNET-Name ein.
-       * Geben Sie einen Adressraum an (beispielsweise 10.7.0.0/16).
+       * Geben Sie einen Adressraum für Ihre Einstellung an (beispielsweise 10.7.0.0/16).
        * Geben Sie **myANFsubnet** als Subnetzname ein.
-       * Geben Sie den Subnetzadressbereich an (beispielsweise 10.7.0.0/24).
+       * Geben Sie den Subnetzadressbereich an (beispielsweise 10.7.0.0/24). Beachten Sie, dass Sie das dedizierte Subnetz nicht für andere Ressourcen freigeben können.
        * Wählen Sie für die Subnetzdelegierung die Option **Microsoft.NetApp/volumes** aus.
        * Klicken Sie auf **OK**, um das VNET zu erstellen.
    6. Wählen Sie unter „Subnetz“ das neu erstellte VNET (**myvnet1**) als Delegatsubnetz aus.

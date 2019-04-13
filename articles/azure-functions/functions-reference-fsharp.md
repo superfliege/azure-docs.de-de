@@ -12,12 +12,12 @@ ms.devlang: fsharp
 ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: e7e4e898142d6f9d1a93e91c1f1476ff81fc7d3c
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 981ffce34c56f4becee2ed0c72da72baa220e395
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734658"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894354"
 ---
 # <a name="azure-functions-f-developer-reference"></a>F#-Entwicklerreferenz zu Azure Functions
 
@@ -115,7 +115,7 @@ let Run(req: HttpRequestMessage) =
 ```
 
 ## <a name="cancellation-token"></a>Abbruchtoken
-Wenn Ihre Funktion das ordnungsgemäße Herunterfahren durchführen soll, können Sie sie mit dem Argument [`CancellationToken`](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) versehen. Dies können Sie mit `async`kombinieren, z.B.:
+Wenn Ihre Funktion das ordnungsgemäße Herunterfahren durchführen soll, können Sie sie mit dem Argument [`CancellationToken`](/dotnet/api/system.threading.cancellationtoken) versehen. Dies können Sie mit `async`kombinieren, z.B.:
 
 ```fsharp
 let Run(req: HttpRequestMessage, token: CancellationToken)
@@ -183,7 +183,7 @@ Darüber hinaus stehen die folgenden besonderen Assemblys zur Verfügung, auf di
 * `Microsoft.WindowsAzure.Storage`
 * `Microsoft.ServiceBus`
 * `Microsoft.AspNet.WebHooks.Receivers`
-* `Microsoft.AspNEt.WebHooks.Common`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist.
+* `Microsoft.AspNEt.WebHooks.Common`.
 
 Wenn Sie auf eine private Assembly verweisen müssen, können Sie die Assemblydatei in einen `bin`-Ordner relativ zu Ihrer Funktion hochladen und anhand des Dateinamens darauf verweisen (Beispiel: `#r "MyAssembly.dll"`). Informationen zum Hochladen von Dateien in Ihren Funktionenordner finden Sie im folgenden Abschnitt zur Paketverwaltung.
 

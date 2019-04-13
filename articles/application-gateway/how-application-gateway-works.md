@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: ef07def377b74fb74d57372f471efcf48fcf7aa2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bbaf651233d4cebad3f45e5cf3823bcaf6ce38b6
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881094"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905782"
 ---
 # <a name="how-application-gateway-works"></a>Funktionsweise von Application Gateway
 
@@ -36,7 +36,7 @@ Nachdem ein Back-End-Server bestimmt worden ist, öffnet das Application Gateway
 
 Ein internes Application Gateway verfügt nur über private IP-Adressen. Der DNS-Name eines internen Application Gateways lässt sich intern zu seiner privaten IP-Adresse auflösen. Daher können interne Load Balancer nur Anforderungen von Clients mit Zugriff auf das VNET für das Application Gateway routen.
 
-Beachten Sie, dass sowohl interne Application Gateways als auch solche mit Internetzugriff Anforderungen mithilfe von privaten IP-Adressen an ihre Back-End-Server routen, falls Ihre Back-End-Poolressource eine private IP-Adresse, eine VM-NIC-Konfiguration oder einer intern auflösbare Adresse enthält. Falls ihr Back-End-Pool einen öffentlichen Endpunkt darstellt, verwendet Application Gateway dessen öffentliche Front-End-IP, um den Server zu erreichen. Wenn Sie keine öffentliche Front-End-IP-Adresse bereitgestellt haben, wird eine für die ausgehende externe Konnektivität zugewiesen.
+Wenn Ihr Back-End-Pool einen intern auflösbaren FQDN oder eine private IP-Adresse enthält, verwendet Application Gateway die privaten Instanz-IP-Adressen des Back-End-Servers, um die Anforderung an diesen weiterzuleiten. Wenn Ihr Back-End-Pool einen externen Endpunkt oder einen extern auflösbaren FQDN enthält, verwendet Application Gateway die öffentliche Front-End-IP-Adresse des Back-End-Servers, um die Anforderung an diesen weiterzuleiten. Die DNS-Auflösung basiert auf einer privaten DNS-Zone oder einem benutzerdefinierten DNS-Server, sofern konfiguriert, oder für sie wird das von Azure bereitgestellte Standard-DNS verwendet. Wenn Sie keine öffentliche Front-End-IP-Adresse bereitgestellt haben, wird eine für die ausgehende externe Konnektivität zugewiesen.
 
 ### <a name="modifications-to-the-request"></a>Änderungen an der Anforderung
 

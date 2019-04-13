@@ -15,18 +15,21 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: d007f688483366f2f714a78b5bf9b56a67c55490
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 8ae6c9d5238f2853a12c20edfd3dba6d3f529b2c
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730101"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905816"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Problembehandlung bei Domänen- und SSL-Zertifikaten in Azure App Service
 
 In diesem Artikel werden häufige Probleme aufgelistet, die beim Konfigurieren einer Domäne oder eines SSL-Zertifikats für Ihre Web-Apps in Azure App Service auftreten können. Darüber hinaus werden die möglichen Ursachen und Lösungen für diese Probleme beschrieben.
 
 Sollten Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie sich über das [MSDN-Forum oder über das Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) mit Azure-Experten in Verbindung setzen. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie die Option **Support erhalten**.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="certificate-problems"></a>Probleme mit Zertifikaten
 
@@ -278,13 +281,13 @@ Wenn Sie eine Domäne über das Azure-Portal erwerben, wird die App Service-Anwe
 
 **Kann ich eine Domäne, die ich über das Azure-Portal erworben habe, so nutzen, dass sie auf eine Azure-VM verweist?**
 
-Ja, Sie können die Domäne so einrichten, dass sie beispielsweise auf eine VM oder auf einen Speicher verweist. Weitere Informationen finden Sie unter [Create a custom FQDN in the Azure portal for a Windows VM (Erstellen eines benutzerdefinierten FQDN im Azure-Portal für eine Windows-VM)](../virtual-machines/windows/portal-create-fqdn.md).
+Ja, Sie können die Domäne so einrichten, dass sie auf eine VM verweist. Weitere Informationen finden Sie unter [Bereitstellen von benutzerdefinierten Domäneneinstellungen für einen Azure-Dienst mit Azure DNS](../dns/dns-custom-domain.md).
 
 **Wird meine Domäne von GoDaddy oder Azure DNS gehostet?**
 
 App Service-Domänen verwenden GoDaddy zur Domänenregistrierung und Azure DNS zum Hosten der Domänen. 
 
-**Die automatische Verlängerung ist aktiviert. Trotzdem habe ich per E-Mail eine Verlängerungsbenachrichtigung für meine Domäne erhalten. Wie soll ich vorgehen?**
+**Die automatische Verlängerung ist aktiviert. Trotzdem habe ich per E-Mail eine Verlängerungsbenachrichtigung für meine Domäne erhalten. Wie sollte ich vorgehen?**
 
 Wenn die automatische Verlängerung aktiviert ist, müssen Sie keine Maßnahmen ergreifen. In der Benachrichtigungs-E-Mail werden Sie darüber informiert, dass die Domäne in Kürze abläuft und manuell verlängert werden muss, falls die automatische Verlängerung nicht aktiviert ist.
 
@@ -314,7 +317,7 @@ Ja. Wenn Sie im Azure-Portal das Blatt „Benutzerdefinierte Domänen und SSL“
 
 **Kann ich eine Domäne aus einem Abonnement in ein anderes übertragen?**
 
-Sie können mit dem PowerShell-Cmdlet [Move-AzureRmResource](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Move-AzureRmResource?view=azurermps-6.13.0) eine Domäne in ein anderes Abonnement bzw. in eine andere Ressourcengruppe übertragen.
+Sie können mit dem PowerShell-Cmdlet [Move-AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Move-azResource) eine Domäne in ein anderes Abonnement bzw. in eine andere Ressourcengruppe übertragen.
 
 **Wie kann ich meine benutzerdefinierte Domäne verwalten, falls ich aktuell nicht über eine Azure App Service-App verfüge?**
 

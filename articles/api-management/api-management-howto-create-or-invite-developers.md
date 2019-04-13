@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 827f8eb7491c6f64b275dee83345c29d51c0933d
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 6a4ad827c39ec106acdc7b52a5b769ab6e7febf8
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442482"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893944"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Verwalten von Benutzerkonten in Azure API Management
 
-In API Management sind Entwickler die Benutzer der APIs, die Sie mit API Management verfügbar machen. Diese Anleitung beschreibt die Erstellung und Einladung von Entwicklern zur Nutzung Ihrer API und der Produkte, die Sie über die API Management-Instanz bereitgestellt haben. Informationen zum programmgesteuerten Verwalten von Benutzerkonten finden Sie in der Dokumentation zur [Benutzerentität](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity) in der [Referenz zu API Management REST](https://msdn.microsoft.com/library/azure/dn776326.aspx).
+In API Management sind Entwickler die Benutzer der APIs, die Sie mit API Management verfügbar machen. Diese Anleitung beschreibt die Erstellung und Einladung von Entwicklern zur Nutzung Ihrer API und der Produkte, die Sie über die API Management-Instanz bereitgestellt haben. Informationen zum programmgesteuerten Verwalten von Benutzerkonten finden Sie in der Dokumentation zur [Benutzerentität](https://docs.microsoft.com/en-us/rest/api/apimanagement/user) in der [Referenz zu API Management REST](/rest/api/apimanagement/).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Absolvieren Sie die Aufgaben im folgenden Artikel: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md).
+Führen Sie Aufgaben in diesem Artikel aus: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -69,7 +69,7 @@ Um einen Benutzer zu blockieren, führen Sie die folgenden Schritte aus.
 
 ## <a name="reset-a-user-password"></a>Zurücksetzen des Benutzerkennworts
 
-Informationen zur programmgesteuerten Verwendung von Benutzerkonten finden Sie in der Dokumentation zur [Benutzerentität](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity) in der [Referenz zu API Management REST](https://msdn.microsoft.com/library/azure/dn776326.aspx). Um das Kennwort eines Benutzerkontos auf einen bestimmten Wert zurückzusetzen, können Sie den Vorgang [Aktualisieren eines Benutzers](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) verwenden und das gewünschte Kennwort angeben.
+Informationen zur programmgesteuerten Verwendung von Benutzerkonten finden Sie in der Dokumentation zur [Benutzerentität](https://docs.microsoft.com/en-us/rest/api/apimanagement/user) in der [Referenz zu API Management REST](/rest/api/apimanagement/). Um das Kennwort eines Benutzerkontos auf einen bestimmten Wert zurückzusetzen, können Sie den Vorgang [Aktualisieren eines Benutzers](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) verwenden und das gewünschte Kennwort angeben.
 
 ## <a name="next-steps"> </a>Nächste Schritte
 Nachdem Sie das Entwicklerkonto erstellt haben, können Sie das Konto zu Rollen zuweisen und Produkte und APIs abonnieren. Weitere Informationen finden Sie unter [Erstellen und Verwenden von Gruppen][How to create and use groups].

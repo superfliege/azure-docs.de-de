@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: 67bf0499b6dcf4257380f601c802723b2993a092
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 29efa963a254913e3d4744ade1d161c5c8ce42e4
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771479"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893349"
 ---
 # <a name="create-a-xamarinandroid-app"></a>Erstellen einer Xamarin.Android-App
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -37,7 +37,7 @@ Das Abschließen dieses Lernprogramms ist eine Voraussetzung für alle anderen M
 Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 
 * Ein aktives Azure-Konto. Falls Sie kein Konto haben, können Sie sich für eine Azure-Testversion registrieren. So erhalten Sie bis zu 10 kostenlose mobile Apps. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* Visual Studio mit Xamarin. Anweisungen finden Sie unter [Setup und Installation für Visual Studio und Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) .
+* Visual Studio mit Xamarin. Anweisungen finden Sie unter [Setup und Installation für Visual Studio und Xamarin](/visualstudio/cross-platform/setup-and-install) .
 
 ## <a name="create-an-azure-mobile-app-backend"></a>Erstellen eines Azure Mobile App-Back-Ends
 Führen Sie die folgenden Schritte aus, um ein Mobile App-Back-End zu erstellen.
@@ -73,7 +73,7 @@ Beachten Sie, dass alle Unterstützungspakete, auf die in Ihrem Projekt verwiese
 ## <a name="next-steps"></a>Nächste Schritte
 * [Hinzufügen der Offlinesynchronisierung zu Ihrer App](app-service-mobile-xamarin-android-get-started-offline-data.md)
 * [Hinzufügen von Authentifizierung zur App](app-service-mobile-xamarin-android-get-started-users.md)
-* [Hinzufügen von Pushbenachrichtigungen zu Ihrer Xamarin.Android-App](app-service-mobile-xamarin-android-get-started-push.md)
+* [Hinzufügen von Pushbenachrichtigungen zur Xamarin.Android-App](app-service-mobile-xamarin-android-get-started-push.md)
 * [Verwenden des verwalteten Clients für Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md)
 
 <!-- Images. -->

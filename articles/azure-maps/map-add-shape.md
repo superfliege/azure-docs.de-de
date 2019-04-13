@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 7598bbc879351752580247e46bc986ee84fa0d56
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 2582b277238bbfbda29156c857e7bd91cf6fe059
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497243"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579290"
 ---
 # <a name="add-a-shape-to-a-map"></a>Hinzufügen einer Form zu einer Karte
 
@@ -32,6 +32,16 @@ Mit dem ersten Block des oben gezeigten Codes wird ein Kartenobjekt erstellt. Ei
 Im zweiten Codeblock wird mit der Klasse [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) ein Datenquellenobjekt erstellt. Ein [LineString](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.linestring?view=azure-iot-typescript-latest)-Objekt wird erstellt und zur Datenquelle hinzugefügt.
 
 Ein [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest)-Objekt rendert Linienobjekte, die von [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) umschlossen sind. Der letzte Codeblock erstellt eine Linienebene und fügt sie der Karte hinzu. Die Eigenschaften einer Linienebene finden Sie unter [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest). Die Datenquelle und die Linienebene werden erstellt und der Karte innerhalb der Funktion [Ereignislistener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) hinzugefügt, damit die Linie angezeigt wird, nachdem die Karte vollständig geladen wurde.
+
+## <a name="add-symbols-along-a-line"></a>Hinzufügen von Symbolen entlang einer Linie
+
+In diesem Beispiel wird gezeigt, wie Pfeilsymbole entlang einer Linie auf der Karte hinzugefügt werden. Wenn Sie eine Symbolebene verwenden, legen Sie die Option „placement“ auf „line“ fest. Dies bewirkt, dass die Symbole entlang der Linie gerendert und dass sie gedreht (0 Grad = rechts) werden.
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Pfeile entlang Linie anzeigen" src="//codepen.io/azuremaps/embed/drBJwX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/drBJwX/'>Show arrow along line</a> (Pfeile entlang Linie anzeigen) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+</iframe>
 
 ## <a name="customize-a-line-layer"></a>Anpassen einer Linienebene
 
@@ -84,6 +94,16 @@ Im zweiten Codeblock wird mit der Klasse [DataSource](https://docs.microsoft.com
 Ein [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest)-Objekt rendert Daten, die von [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) auf der Karte umschlossen sind. Die Eigenschaften einer Polygonebene finden Sie unter [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest). Bei einem [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest)-Objekt handelt es sich um ein Array von Linien. Die Eigenschaften einer Linienebene finden Sie unter [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest). Der dritte Codeblock erstellt Polygon- und Linienebenen.
 
 Der letzte Codeblock fügt der Karte die Polygon- und Linienebenen hinzu. Die Datenquelle und die Ebenen werden erstellt und der Karte innerhalb der Funktion [Ereignislistener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) hinzugefügt, damit das Polygon angezeigt wird, nachdem die Karte vollständig geladen wurde.
+
+## <a name="fill-a-polygon-with-a-pattern"></a>Füllen eines Polygons mit einem Muster
+
+Zusätzlich zum Füllen eines Polygons mit einer Farbe kann auch ein Bildmuster verwendet werden. Laden Sie ein Bildmuster in die Sprite-Ressourcen für Kartenbilder, und verweisen Sie dann mit der `fillPattern`-Eigenschaft der Polygonebene (PolygonLayer) auf dieses Bild.
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="Füllmuster für Polygon" src="//codepen.io/azuremaps/embed/JzQpYX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/JzQpYX/'>Polygon fill pattern</a> (Füllmuster für Polygon) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+</iframe>
 
 ## <a name="customize-a-polygon-layer"></a>Anpassen einer Polygonebene
 

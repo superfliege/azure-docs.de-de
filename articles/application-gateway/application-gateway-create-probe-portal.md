@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
-ms.openlocfilehash: 8e98b50e936ba97881e2937a50eb474d57a24a05
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 90d576fd00a39f7e871cbe0922ce131dfbe38ff0
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58107762"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862164"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Erstellen eines benutzerdefinierten Tests für ein Anwendungsgateway über das Portal
 
@@ -51,10 +51,10 @@ Tests werden in einem aus zwei Schritten bestehenden Prozess im Portal konfiguri
 
    |**Einstellung** | **Wert** | **Details**|
    |---|---|---|
-   |**Name**|customProbe|Dieser Wert ist der Anzeigename für den Test, auf den Sie über das Portal zugreifen können.|
+   |**NAME**|customProbe|Dieser Wert ist der Anzeigename für den Test, auf den Sie über das Portal zugreifen können.|
    |**Protokoll**|HTTP oder HTTPS | Das Protokoll, das vom Integritätstest verwendet wird.|
    |**Host**|z.B.: contoso.com|Dieser Wert ist der Hostname, der für den Test verwendet wird. Nur relevant, wenn in Application Gateway mehrere Standorte konfiguriert sind. Andernfalls verwenden Sie 127.0.0.1. Dieser Wert entspricht nicht dem Hostnamen des virtuellen Computers.|
-   |**Path**|/ oder ein anderer Pfad|Dies ist der Rest der vollständigen URL für den benutzerdefinierten Test. Ein gültiger Pfad beginnt mit „/“. Für den Standardpfad von http://contoso.com verwenden Sie einfach „/“. |
+   |**path**|/ oder ein anderer Pfad|Dies ist der Rest der vollständigen URL für den benutzerdefinierten Test. Ein gültiger Pfad beginnt mit „/“. Verwenden Sie für den Standardpfad von „http:\//contoso.com“ nur „/“. |
    |**Interval (Sek.)**|30|Legen Sie fest, wie oft der Test ausgeführt werden soll, um die Integrität zu prüfen. Es wird nicht empfohlen, einen Wert unter 30 Sekunden einzustellen.|
    |**Timeout (Sek.)**|30|Legen Sie fest, wie lange der Test warten soll, bis ein Timeout auftritt. Das Timeoutintervall muss lang genug sein, damit ein HTTP-Aufruf erfolgen und sichergestellt werden kann, dass die Integritätsseite für das Back-End verfügbar ist.|
    |**Fehlerhafter Schwellenwert**|3|Dies ist die Anzahl erfolgloser Versuche, nach denen der Test als „fehlerhaft“ eingestuft wird. Ein Schwellenwert von 0 bedeutet, dass das Back-End bei einer fehlerhaften Integritätsprüfung sofort als fehlerhaft eingestuft wird.|

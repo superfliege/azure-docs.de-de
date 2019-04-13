@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2018
 ms.author: victorh
-ms.openlocfilehash: 115fe33bd1839cd9ce0f969352bc396df4f50b9a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3b13e75694f17a8ea22fee1f025692b9c64d8fa4
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101736"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877487"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>Erstellen eines Anwendungsgateways mit interner Umleitung mithilfe von Azure PowerShell
 
@@ -38,7 +38,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 1.0.0 des Azure PowerShell-Moduls verwenden. Führen Sie ` Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 1.0.0 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -316,4 +316,4 @@ In diesem Artikel haben Sie Folgendes gelernt:
 > * Erstellen eines CNAME-Eintrags in Ihrer Domäne
 
 > [!div class="nextstepaction"]
-> [Erfahren Sie mehr darüber, was Sie mit dem Anwendungsgateway tun können.](./application-gateway-introduction.md)
+> [Erfahren Sie mehr darüber, welche Möglichkeiten das Anwendungsgateway bietet.](./application-gateway-introduction.md)

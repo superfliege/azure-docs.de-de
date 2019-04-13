@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
-ms.openlocfilehash: 323de505bc1bfa9747f372033392a9fd6e08462c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 321dbf891c77007952f01b32bb509a15c2ac3e6f
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57898855"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895782"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Bewährte Methoden und Problembehandlungsschritte für Node-Anwendungen in Azure App Service unter Windows
 
@@ -90,7 +90,7 @@ Für das Streaming von Anwendungen müssen Sie außerdem responseBufferLimit fü
 
 ### <a name="watchedfiles"></a>watchedFiles
 
-Eine durch Semikolons getrennte Liste mit Dateien, die auf Änderungen überprüft werden. Jede Änderung einer Datei bewirkt, dass die Anwendung „recycelt“ wird. Jeder Eintrag besteht aus einem optionalen Verzeichnisnamen und einem erforderlichen Dateinamen. Diese Namen gelten relativ zu dem Verzeichnis, in dem sich der Haupteinstiegspunkt der Anwendung befindet. Platzhalter sind nur im Dateinamenteil zulässig. Der Standardwert lautet `*.js;iisnode.yml`.
+Eine durch Semikolons getrennte Liste mit Dateien, die auf Änderungen überprüft werden. Jede Änderung einer Datei bewirkt, dass die Anwendung „recycelt“ wird. Jeder Eintrag besteht aus einem optionalen Verzeichnisnamen und einem erforderlichen Dateinamen. Diese Namen gelten relativ zu dem Verzeichnis, in dem sich der Haupteinstiegspunkt der Anwendung befindet. Platzhalter sind nur im Dateinamenteil zulässig. Der Standardwert lautet `*.js;iisnode.yml`
 
 ### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 
@@ -98,7 +98,7 @@ Der Standardwert ist „false“. Wenn diese Einstellung aktiviert ist, kann die
 
 ### <a name="idlepageouttimeperiod"></a>idlePageOutTimePeriod
 
-Der Standardwert ist 0. Dies bedeutet, dass das Feature aktiviert ist. Wenn ein höherer Wert als 0 angegeben ist, lagert iisnode alle untergeordneten Prozesse jeweils nach Ablauf der „idlePageOutTimePeriod“ (in Millisekunden) aus. Grundlegende Informationen zur Auslagerung finden Sie in der entsprechenden [Dokumentation](https://msdn.microsoft.com/library/windows/desktop/ms682606.aspx). Diese Einstellung ist für Anwendungen nützlich, die viel Arbeitsspeicher verbrauchen und für die Arbeitsspeicher von Zeit zu Zeit auf den Datenträger ausgelagert werden soll, um RAM freizugeben.
+Der Standardwert ist 0. Dies bedeutet, dass das Feature aktiviert ist. Wenn ein höherer Wert als 0 angegeben ist, lagert iisnode alle untergeordneten Prozesse jeweils nach Ablauf der „idlePageOutTimePeriod“ (in Millisekunden) aus. Grundlegende Informationen zur Auslagerung finden Sie in der entsprechenden [Dokumentation](/windows/desktop/api/psapi/nf-psapi-emptyworkingset). Diese Einstellung ist für Anwendungen nützlich, die viel Arbeitsspeicher verbrauchen und für die Arbeitsspeicher von Zeit zu Zeit auf den Datenträger ausgelagert werden soll, um RAM freizugeben.
 
 > [!WARNING]
 > Gehen Sie mit Bedacht vor, wenn Sie die folgenden Konfigurationseigenschaften für Produktionsanwendungen aktivieren. Es wird empfohlen, die Aktivierung nicht für aktive Produktionsanwendungen durchzuführen.
@@ -173,7 +173,7 @@ http.createServer(function (req, res) {
 }).listen(process.env.PORT);
 ```
 
-Wechseln Sie zur Website der Debugging-Konsole unter `https://yoursite.scm.azurewebsites.net/DebugConsole`.
+Wechseln Sie zur Website der Debugging-Konsole unter `https://yoursite.scm.azurewebsites.net/DebugConsole`
 
 Wechseln Sie in das Verzeichnis „site/wwwroot“. Es wird eine Eingabeaufforderung wie im folgenden Beispiel angezeigt:
 
@@ -274,7 +274,7 @@ Aktivieren Sie FREB für Ihre Anwendung, um den win32-Fehlercode anzuzeigen. (St
 | 503 |1002 |Überprüfen Sie den win32-Fehlercode auf den tatsächlichen Grund. Die Anforderung konnte nicht für „node.exe“ zugestellt werden. |
 | 503 |1003 |Die Named Pipe ist zu stark ausgelastet. Überprüfen Sie, ob „node.exe“ einen hohen CPU-Verbrauch aufweist. |
 
-NODE.exe verfügt über eine Einstellung namens `NODE_PENDING_PIPE_INSTANCES`. In Azure App Service ist dieser Wert auf 5000 festgelegt. Dies bedeutet, dass „node.exe“ für die benannte Pipe 5000 Anforderungen auf einmal akzeptieren kann. Dieser Wert sollte für die meisten Node-Anwendungen ausreichen, die in Azure App Service ausgeführt werden. 503.1003 sollte in Azure App Service nicht angezeigt werden, da für `NODE_PENDING_PIPE_INSTANCES` ein hoher Wert gilt.
+NODE.exe verfügt über eine Einstellung namens `NODE_PENDING_PIPE_INSTANCES`. In Azure App Service ist dieser Wert auf 5000 festgelegt. Dies bedeutet, dass „node.exe“ für die benannte Pipe 5000 Anforderungen auf einmal akzeptieren kann. Dieser Wert sollte für die meisten Node-Anwendungen ausreichen, die in Azure App Service ausgeführt werden. 503.1003 sollte in Azure App Service nicht angezeigt werden, und zwar wegen des hohen Werts für `NODE_PENDING_PIPE_INSTANCES`
 
 ## <a name="more-resources"></a>Weitere Ressourcen
 
@@ -285,4 +285,4 @@ Unter den unten angegebenen Links finden Sie weitere Informationen zu „node.js
 * [Verwenden von Node.js-Modulen mit Azure-Anwendungen](../nodejs-use-node-modules-azure-apps.md)
 * [Azure App Service-Web-Apps: Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
 * [Node.js Developer Center (in englischer Sprache)](../nodejs-use-node-modules-azure-apps.md)
-* [Exploring the Super Secret Kudu Debug Console (Erkunden der geheimen Kudu-Debugkonsole)](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)
+* [Exploring the Super Secret Kudu Debug Console (Erkunden der geheimen Kudu-Debugging-Konsole)](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)

@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: eda6f7b8ec61f2c3472b00c76467c1379bc2ff1b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 232a235cdbf9dc3934bdac14f9612d6865718823
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58082108"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892414"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>C#-Skriptentwicklerreferenz (C#-Skript, CSX) zu Azure Functions
 
@@ -216,9 +216,9 @@ public class Order
 
 Mit der `#load` -Direktive können Sie einen relativen Pfad verwenden:
 
-* `#load "mylogger.csx"` : Lädt eine Datei, die sich im Funktionsordner befindet.
-* `#load "loadedfiles\mylogger.csx"` : Lädt eine Datei, die sich in einem Ordner im Funktionsordner befindet.
-* `#load "..\shared\mylogger.csx"` : Lädt eine Datei, die sich in einem Ordner auf der gleichen Ebene befindet wie der Funktionsordner (also direkt unter *wwwroot*).
+* `#load "mylogger.csx"` lädt eine Datei, die sich im Funktionsordner befindet.
+* `#load "loadedfiles\mylogger.csx"` lädt eine Datei, die sich in einem Ordner im Funktionsordner befindet.
+* `#load "..\shared\mylogger.csx"` lädt eine Datei, die sich in einem Ordner auf der gleichen Ebene befindet wie der Funktionsordner (also direkt unter *wwwroot*).
 
 Die `#load`-Direktive kann nur mit *CSX*-Dateien verwendet werden, nicht mit *CS*-Dateien.
 
@@ -274,7 +274,7 @@ Sie können keine `out`-Parameter in asynchronen Funktionen verwenden. Für Ausg
 
 ## <a name="cancellation-tokens"></a>Abbruchtoken
 
-Eine Funktion kann einen [CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx)-Parameter annehmen, der es dem Betriebssystem ermöglicht, den Code vor dem Beenden der Funktion zu benachrichtigen. Sie können diese Benachrichtigung verwenden, um sicherzustellen, dass die Funktion nicht auf eine Weise unerwartet beendet wird, die die Daten in einem inkonsistenten Zustand hinterlässt.
+Eine Funktion kann einen [CancellationToken](/dotnet/api/system.threading.cancellationtoken)-Parameter annehmen, der es dem Betriebssystem ermöglicht, den Code vor dem Beenden der Funktion zu benachrichtigen. Sie können diese Benachrichtigung verwenden, um sicherzustellen, dass die Funktion nicht auf eine Weise unerwartet beendet wird, die die Daten in einem inkonsistenten Zustand hinterlässt.
 
 Das folgende Beispiel zeigt, wie Sie nach einer bevorstehenden Beendigung einer Funktion suchen.
 
@@ -484,7 +484,7 @@ public static async Task Run(string input, Binder binder)
 }
 ```
 
-[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) definiert die Eingabe- oder Ausgabebindung für den [Speicherblob](functions-bindings-storage-blob.md), und [TextWriter](https://msdn.microsoft.com/library/system.io.textwriter.aspx) ist ein unterstützter Ausgabenbindungstyp.
+[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) definiert die Eingabe- oder Ausgabebindung für den [Speicherblob](functions-bindings-storage-blob.md), und [TextWriter](/dotnet/api/system.io.textwriter) ist ein unterstützter Ausgabenbindungstyp.
 
 ### <a name="multiple-attribute-example"></a>Beispiel mit mehreren Attributen
 

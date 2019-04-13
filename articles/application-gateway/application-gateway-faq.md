@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/20/2019
 ms.author: victorh
-ms.openlocfilehash: ae55f2abf9815174e7258c2ace949078794c380d
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: c40f372d3574f940e475a6626f998adae37a6d61
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286192"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58851157"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Häufig gestellte Fragen zu Azure Application Gateway
 
@@ -59,7 +59,7 @@ Die Umleitung wird unterstützt. Weitere Informationen finden Sie in der [Übers
 
 ### <a name="in-what-order-are-listeners-processed"></a>In welcher Reihenfolge werden Listener verarbeitet?
 
-Listener werden gemäß der Anzeigereihenfolge verarbeitet. Wenn also ein grundlegender Listener zu einer eingehenden Anforderung passt, wird diese zuerst verarbeitet.  Listener für mehrere Standorte müssen vor einem grundlegenden Listener konfiguriert werden, um zu gewährleisten, dass der Datenverkehr an das richtige Back-End weitergeleitet wird.
+Informationen hierzu finden Sie unter [Verarbeitungsreihenfolge von Listenern](https://docs.microsoft.com/azure/application-gateway/configuration-overview#order-of-processing-listeners).
 
 ### <a name="where-do-i-find-application-gateways-ip-and-dns"></a>Wo finde ich IP und DNS von Application Gateway?
 
@@ -83,16 +83,13 @@ Nur eine öffentliche IP-Adresse wird von einem Application Gateway unterstützt
 
 ### <a name="how-large-should-i-make-my-subnet-for-application-gateway"></a>Wie groß soll ich mein Subnetz für Application Gateway auslegen?
 
-Application Gateway nutzt eine private IP-Adresse pro Instanz sowie eine weitere private IP-Adresse, wenn eine private Front-End-IP-Konfiguration konfiguriert ist. Darüber hinaus reserviert Azure die ersten vier IP-Adressen sowie die letzte IP-Adresse in jedem Subnetz für die interne Verwendung.
-Wenn ein Application Gateway beispielsweise auf drei Instanzen festgelegt und keine private Front-End-IP-Konfiguration vorhanden ist, ist eine Größe von mindestens /29 für das Subnetz erforderlich. In diesem Fall verwendet das Application Gateway drei IP-Adressen. Wenn Sie drei Instanzen und eine IP-Adresse für die private Front-End-IP-Konfiguration haben, ist eine Größe von mindestens /28 für das Subnetz erforderlich, da vier IP-Adressen erforderlich sind.
-
-Es empfiehlt sich, eine Subnetzgröße von mindestens /28 zu verwenden. Dadurch erhalten Sie 11 nutzbare Adressen. Wenn für Ihre Anwendungslast mehr als zehn Instanzen erforderlich sind, sollten Sie eine Subnetzgröße von /27 oder /26 in Betracht ziehen.
+Informationen zu der Subnetzgröße, die für Ihre Bereitstellung erforderlich ist, finden Sie unter [Überlegungen zur Subnetzgröße für Application Gateway](https://docs.microsoft.com/azure/application-gateway/configuration-overview#size-of-the-subnet).
 
 ### <a name="q-can-i-deploy-more-than-one-application-gateway-resource-to-a-single-subnet"></a>F: Kann ich mehrere Application Gateway-Ressourcen in einem einzelnen Subnetz bereitstellen?
 
 Ja. Sie können nicht nur mehrere Instanzen einer bestimmten Application Gateway-Bereitstellung besitzen, sondern auch eine weitere eindeutige Application Gateway-Ressource zu einem vorhandenen Subnetz hinzufügen, das eine andere Application Gateway-Ressource enthält.
 
-Das Mischen von Standard_v2 und Standardanwendungsgateway im selben Subnetz wird nicht unterstützt. Wenn die automatische Skalierung aktiviert ist, kann ein Subnetz außerdem nur über ein Anwendungsgateway verfügen.
+Das Mischen von Standard_v2 und Standardanwendungsgateway im selben Subnetz wird nicht unterstützt.
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>Werden X-Forwarded-For-Header von Application Gateway unterstützt?
 
@@ -152,13 +149,7 @@ Nein, aber Sie können weitere Application Gateway-Instanzen im Subnetz bereitst
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>Werden Netzwerksicherheitsgruppen im Application Gateway-Subnetz unterstützt?
 
-Netzwerksicherheitsgruppen (NSGs) werden im Application Gateway-Subnetz mit folgenden Einschränkungen unterstützt:
-
-* Ausnahmen müssen für eingehenden Datenverkehr an den Ports 65503 bis 65534 für die Application Gateway v1-SKU und an den Ports 65200 bis 65535 für die v2-SKU eingerichtet werden. Dieser Portbereich ist für die Kommunikation mit der Azure-Infrastruktur erforderlich. Sie werden von Azure-Zertifikaten geschützt (gesperrt). Ohne entsprechende Zertifikate können externe Entitäten, einschließlich der Kunden dieser Gateways, keine Änderungen an diesen Endpunkten vornehmen.
-
-* Die ausgehende Internetverbindung kann nicht blockiert sein. Standardausgangsregeln in der NSG ermöglichen bereits Internetkonnektivität. Es empfiehlt sich, die Standardausgangsregeln nicht zu entfernen und keine weiteren Ausgangsregeln zu erstellen, die keine ausgehende Internetkonnektivität zulassen.
-
-* Datenverkehr vom AzureLoadBalancer-Tag muss zulässig sein.
+Informationen über die Netzwerksicherheitsgruppen, die im Application Gateway-Subnetz unterstützt werden, finden Sie unter [Netzwerksicherheitsgruppen im Application Gateway-Subnetz](https://docs.microsoft.com/azure/application-gateway/configuration-overview#network-security-groups-on-the-application-gateway-subnet).
 
 ### <a name="are-user-defined-routes-supported-on-the-application-gateway-subnet"></a>Werden benutzerdefinierte Routen im Application Gateway-Subnetz unterstützt?
 
@@ -190,7 +181,7 @@ Benutzerdefinierte Überprüfungen unterstützen keine Platzhalter/regulären Au
 
 ### <a name="how-are-rules-processed"></a>Wie werden Regeln verarbeitet?
 
-Regeln werden gemäß der Konfigurationsreihenfolge verarbeitet. Es empfiehlt sich, Regeln für mehrere Standorte vor einfachen Regeln zu konfigurieren, um zu vermeiden, dass Datenverkehr an das falsche Back-End weitergeleitet wird, weil die einfache Regel auf der Grundlage des Ports zu dem Datenverkehr passen würde, bevor die Regel für mehrere Standorte ausgewertet wurde.
+Informationen dazu, wie Routingregeln in Application Gateway verarbeitet werden, finden Sie unter [Verarbeitungsreihenfolge von Regeln](https://docs.microsoft.com/azure/application-gateway/configuration-overview#order-of-processing-rules).
 
 ### <a name="what-does-the-host-field-for-custom-probes-signify"></a>Was ist im Feld „Host“ für benutzerdefinierte Überprüfungen angegeben?
 
@@ -356,7 +347,7 @@ Wir haben auch eine Resource Manager-Vorlage veröffentlicht, die die beliebte [
 
 ### <a name="backend-health-returns-unknown-status-what-could-be-causing-this-status"></a>Die Back-End-Integrität gibt den Status „Unbekannt“ zurück. Was kann die Ursache sein?
 
-Der häufigste Grund ist eine Blockierung des Zugriffs auf das Back-End durch eine NSG oder ein benutzerdefiniertes DNS. Weitere Informationen finden Sie unter [Back-End-Integrität, Diagnoseprotokollierung und Metriken für Application Gateway](application-gateway-diagnostics.md).
+Der häufigste Grund ist, dass der Zugriff auf das Back-End durch eine NSG oder ein benutzerdefiniertes DNS blockiert ist, oder dass Sie eine benutzerdefinierte Route (User Defined Route, UDR) für das Anwendungsgateway-Subnetz haben. Weitere Informationen finden Sie unter [Back-End-Integrität, Diagnoseprotokollierung und Metriken für Application Gateway](application-gateway-diagnostics.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

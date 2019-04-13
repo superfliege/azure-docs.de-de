@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/26/2019
 ms.author: absha
-ms.openlocfilehash: 4755eeda6a254389f0e0fbceec602fef718a9c45
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cfc63349e20aa6dbef4e0d31e81842d325bd3ec6
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100171"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905536"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Konfigurieren einer Application Gateway-Instanz mit einem Endpunkt für den internen Lastenausgleich (Internal Load Balancer, ILB)
 
@@ -25,9 +25,12 @@ In diesem Artikel wird Folgendes behandelt:
 - Erstellen einer privaten Front-End-IP-Konfiguration für eine Application Gateway-Instanz
 - Erstellen einer Application Gateway-Instanz mit privater Front-End-IP-Konfiguration
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Melden Sie sich unter <https://portal.azure.com> beim Azure-Portal an.
+Melden Sie sich beim Azure-Portal an unter <https://portal.azure.com>
 
 ## <a name="create-an-application-gateway"></a>Erstellen eines Anwendungsgateways
 
@@ -82,7 +85,7 @@ Der Back-End-Pool wird zum Weiterleiten von Anforderungen an die Back-End-Server
 2. Führen Sie den folgenden Befehl aus, um IIS auf dem virtuellen Computer zu installieren:
 
    ```azurepowershell
-   Set-AzureRmVMExtension `
+   Set-AzVMExtension `
    
      -ResourceGroupName myResourceGroupAG `
    
@@ -100,7 +103,7 @@ Der Back-End-Pool wird zum Weiterleiten von Anforderungen an die Back-End-Server
 
 
 
-3. Create a second virtual machine and install IIS using the steps that you just finished. Enter myVM2 for its name and for VMName in Set-AzureRmVMExtension.
+3. Create a second virtual machine and install IIS using the steps that you just finished. Enter myVM2 for its name and for VMName in Set-AzVMExtension.
 
 ### Add backend servers to backend pool
 

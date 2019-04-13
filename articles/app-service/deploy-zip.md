@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.author: cephalin;sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 1f94544a2e7a26ab00432a3564bb752c71254844
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: ef313ea631a963aa7893bf15e826e591c9d9cfc3
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484879"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619797"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Bereitstellen der App in Azure App Service mit einer ZIP- oder WAR-Datei
 
@@ -31,6 +31,7 @@ Bei dieser Bereitstellung per ZIP-Datei wird der gleiche Kudu-Dienst verwendet, 
 - Aktivieren des Standarderstellungsprozesses, der die Paketwiederherstellung umfasst
 - [Anpassen der Bereitstellung](https://github.com/projectkudu/kudu/wiki/Configurable-settings#repository-and-deployment-related-settings), einschließlich der Ausführung von Bereitstellungsskripts  
 - Bereitstellungsprotokolle 
+- Eine maximale Dateigröße von 512 MB.
 
 Weitere Informationen finden Sie in der [Kudu-Dokumentation](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file).
 

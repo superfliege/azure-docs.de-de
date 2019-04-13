@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: 310e0e77b898171aea3fdcf5996cbc53f9f582a6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 291a4474adb7a70ea89db41362763f045d70ea57
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864608"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905425"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-azure-powershell"></a>Erstellen eines Anwendungsgateways mit Routingregeln auf URL-Pfadbasis – Azure PowerShell
 
@@ -36,7 +36,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 3.6 des Azure PowerShell-Moduls verwenden. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial das Azure PowerShell-Modul verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -355,11 +355,11 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ![Testen der Basis-URL im Anwendungsgateway](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest.png)
 
-Ändern Sie die URL in http://<IP-Adresse>:8080/video/test.htm, und ersetzen Sie dabei <IP-Adresse> durch Ihre IP-Adresse. Die anschließende Anzeige sollte in etwa wie im folgenden Beispiel aussehen:
+Ändern Sie die URL in `http://<ip-address>:8080/video/test.htm`, wobei Sie `<ip-address>` durch Ihre IP-Adresse ersetzen. Die Ausgabe sollte in etwa wie folgt aussehen:
 
 ![Testen der Images-URL im Anwendungsgateway](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-images.png)
 
-Ändern Sie die URL in http://<ip-address>:8080/video/test.htm. Die Ausgabe sollte in etwa wie folgt aussehen:
+Ändern Sie die URL in `http://<ip-address>:8080/video/test.htm`. Die Ausgabe sollte in etwa wie folgt aussehen:
 
 ![Testen der Video-URL im Anwendungsgateway](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-video.png)
 

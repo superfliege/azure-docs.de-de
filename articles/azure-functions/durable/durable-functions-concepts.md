@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e5be81efcd655f1f0361d8c00d978a81c3e6caa5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e54fe17e80382348bcf463624043f7922a29d1c1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443418"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892754"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Muster und technische Konzepte von Durable Functions (Azure Functions)
 
@@ -415,7 +415,7 @@ Aufgrund des Wiedergabeverhaltens des Durable Task Framework-Verteilers können 
 
 Die Erweiterung Durable Functions verwendet Warteschlangen, Tabellen und Blobs in Azure Storage, um Ausführungsverlaufsstatus und Triggerfunktionsausführung persistent zu speichern. Sie können das Standardspeicherkonto für die Funktions-App nutzen oder ein separates Speicherkonto konfigurieren. Abhängig von den Grenzwerten für den Speicherdurchsatz sollten Sie ggf. ein separates Konto verwenden. Der Orchestratorcode, den Sie schreiben, interagiert nicht mit den Entitäten in diesen Speicherkonten. Das Durable Task Framework verwaltet die Entitäten direkt als Implementierungsdetail.
 
-Orchestratorfunktionen planen Aktivitätsfunktionen und empfangen ihre Antworten über interne Warteschlangennachrichten. Wenn eine Funktions-App im Azure Functions-Verbrauchstarif ausgeführt wird, werden diese Warteschlangen vom [Azure Functions-Skalierungscontroller](../functions-scale.md#how-the-consumption-plan-works) überwacht. Neue Compute-Instanzen werden nach Bedarf hinzugefügt. Beim horizontalen Hochskalieren über mehrere virtuelle Computer kann eine Orchestratorfunktion auf einem virtuellen Computer ausgeführt werden, während Aktivitätsfunktionen, die von der Orchestratorfunktion aufgerufen werden, auf mehreren anderen virtuellen Computern ausgeführt werden. Weitere Informationen über das Skalierungsverhalten von Durable Functions finden Sie unter [Performance and scale in Durable Functions (Azure Functions)](durable-functions-perf-and-scale.md) (Leistung und Skalierung in Durable Functions [Azure Functions]).
+Orchestratorfunktionen planen Aktivitätsfunktionen und empfangen ihre Antworten über interne Warteschlangennachrichten. Wenn eine Funktions-App im Azure Functions-Verbrauchstarif ausgeführt wird, werden diese Warteschlangen vom [Azure Functions-Skalierungscontroller](../functions-scale.md#how-the-consumption-and-premium-plans-work) überwacht. Neue Compute-Instanzen werden nach Bedarf hinzugefügt. Beim horizontalen Hochskalieren über mehrere virtuelle Computer kann eine Orchestratorfunktion auf einem virtuellen Computer ausgeführt werden, während Aktivitätsfunktionen, die von der Orchestratorfunktion aufgerufen werden, auf mehreren anderen virtuellen Computern ausgeführt werden. Weitere Informationen über das Skalierungsverhalten von Durable Functions finden Sie unter [Performance and scale in Durable Functions (Azure Functions)](durable-functions-perf-and-scale.md) (Leistung und Skalierung in Durable Functions [Azure Functions]).
 
 Der Ausführungsverlauf für Orchestratorkonten wird in Tabellenspeicher gespeichert. Immer dann, wenn eine Instanz auf einem bestimmten virtuellen Computer aktiviert wird, ruft der Orchestrator ihren Ausführungsverlauf vom Tabellenspeicher ab, damit er ihren lokalen Zustand wiederherstellen kann. Ein komfortabler Aspekt des Vorliegens des Verlaufs in Tabellenspeicher liegt darin, dass Sie Tools wie [Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) verwenden können, um den Verlauf Ihrer Orchestrierungen anzuzeigen.
 
@@ -437,6 +437,6 @@ Weitere Informationen zu Durable Functions finden Sie im Artikel zu [Funktionsty
 Erste Schritte:
 
 > [!div class="nextstepaction"]
-> [Erstellen Ihrer ersten Durable Function](durable-functions-create-first-csharp.md)
+> [Erstellen Ihrer ersten Durable-Function](durable-functions-create-first-csharp.md)
 
 [DurableOrchestrationContext]: https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html

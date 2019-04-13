@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: aaa7db14f3afe8eec000e14c7f5a9db032b87fe0
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 03fb286bd24bb12f3a1e508627a2de156e185568
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765933"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892431"
 ---
 # <a name="create-a-xamarinios-app"></a>Erstellen einer Xamarin.iOS-App
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -33,8 +33,8 @@ Das Absolvieren dieses Lernprogramms ist Voraussetzung für alle anderen Xamarin
 Zum Durchführen dieses Tutorials benötigen Sie Folgendes:
 
 * Ein aktives Azure-Konto. Falls Sie kein Konto haben, können Sie sich für eine Azure-Testversion registrieren. So erhalten Sie bis zu 10 kostenlose mobile Apps, die Sie auch nach Ablauf der Testversion weiter nutzen können. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* Visual Studio mit Xamarin. Anweisungen finden Sie unter [Setup und Installation für Visual Studio und Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) .
-* Ein Mac, auf dem Xcode Version 7.0 oder höher und Xamarin Studio Community installiert ist. Informationen finden Sie unter [Setup und Installation für Visual Studio und Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) und [Setup, Installation und Überprüfungen für Mac-Benutzer](https://msdn.microsoft.com/library/mt488770.aspx) (MSDN).
+* Visual Studio mit Xamarin. Anweisungen finden Sie unter [Setup und Installation für Visual Studio und Xamarin](/visualstudio/cross-platform/setup-and-install) .
+* Ein Mac, auf dem Xcode Version 7.0 oder höher und Xamarin Studio Community installiert ist. Informationen finden Sie unter [Setup und Installation für Visual Studio und Xamarin](/visualstudio/cross-platform/setup-and-install) und [Setup, Installation und Überprüfungen für Mac-Benutzer](/visualstudio/cross-platform/setup-install-and-verifications-for-mac-users) (MSDN).
 
 ## <a name="create-an-azure-mobile-app-backend"></a>Erstellen eines Azure Mobile App-Back-Ends
 Führen Sie die folgenden Schritte aus, um ein Mobile App-Back-End zu erstellen.
@@ -73,7 +73,7 @@ Befolgen Sie die folgenden Schritte zum Konfigurieren des Serverprojekts für di
 ## <a name="next-steps"></a>Nächste Schritte
 * [Hinzufügen der Offlinesynchronisierung zu Ihrer App](app-service-mobile-xamarin-ios-get-started-offline-data.md)
 * [Hinzufügen von Authentifizierung zur App](app-service-mobile-xamarin-ios-get-started-users.md)
-* [Hinzufügen von Pushbenachrichtigungen zu Ihrer Xamarin.Android-App](app-service-mobile-xamarin-ios-get-started-push.md)
+* [Hinzufügen von Pushbenachrichtigungen zur Xamarin.Android-App](app-service-mobile-xamarin-ios-get-started-push.md)
 * [Verwenden des verwalteten Clients für Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md)
 
 <!-- Anchors. -->

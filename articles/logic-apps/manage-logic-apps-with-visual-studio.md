@@ -1,26 +1,25 @@
 ---
-title: Verwalten von Logik-Apps mit Visual Studio – Azure Logic Apps | Microsoft-Dokumentation
+title: Verwalten von Logik-Apps mit Visual Studio – Azure Logic Apps
 description: Verwalten von Logik-Apps und anderen Azure-Ressourcen mit dem Cloud-Explorer von Visual Studio
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
-ms.date: 03/15/2018
-ms.openlocfilehash: f3a9a1cb7a5829c7c824f9aa61d5f4976a533f4a
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.date: 04/02/2019
+ms.openlocfilehash: 9654caca5fd4b1f79544ea7303a5d3fff72d22f8
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519730"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862742"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Verwalten von Logik-Apps mit Visual Studio
 
-Sie können Logik-Apps zwar auch im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> erstellen, bearbeiten, verwalten und bereitstellen, aber Visual Studio können Sie auch verwenden, wenn Sie Logik-Apps der Quellcodeverwaltung hinzufügen, unterschiedliche Versionen veröffentlichen und [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)-Vorlagen für verschiedene Bereitstellungsumgebungen erstellen möchten. Mit dem Cloud-Explorer von Visual Studio können Sie Ihre Logik-Apps zusammen mit anderen Azure-Ressourcen suchen und verwalten. Sie können z.B. bereits im Azure-Portal bereitgestellte Logik-Apps öffnen, herunterladen, bearbeiten, ausführen, ihren Ausführungsverlauf anzeigen, sie deaktivieren und aktivieren. Wenn die Arbeit mit Azure Logic Apps in Visual Studio für Sie neu ist, lernen Sie, [Logik-Apps mit Visual Studio zu erstellen](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
+Sie können Logik-Apps zwar im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> erstellen, bearbeiten, verwalten und bereitstellen, Sie können aber auch Visual Studio verwenden, wenn Sie Ihre Logik-Apps der Quellcodeverwaltung hinzufügen, unterschiedliche Versionen veröffentlichen und [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)-Vorlagen für verschiedene Bereitstellungsumgebungen erstellen möchten. Mit dem Cloud-Explorer von Visual Studio können Sie Ihre Logik-Apps zusammen mit anderen Azure-Ressourcen suchen und verwalten. Sie können z.B. bereits im Azure-Portal bereitgestellte Logik-Apps öffnen, herunterladen, bearbeiten, ausführen, ihren Ausführungsverlauf anzeigen, sie deaktivieren und aktivieren. Wenn die Arbeit mit Azure Logic Apps in Visual Studio für Sie neu ist, lernen Sie, [Logik-Apps mit Visual Studio zu erstellen](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
 > [!IMPORTANT]
 > Bereitstellen oder Veröffentlichen einer Logik-App von Visual Studio aus überschreibt die Version dieser App im Azure-Portal. Wenn Sie also Änderungen im Azure-Portal vornehmen, die Sie beibehalten möchten, achten Sie darauf, dass Sie [die Logik-App in Visual Studio](#refresh) vom Azure-Portal aus aktualisieren, bevor Sie sie das nächste Mal von Visual Studio aus bereitstellen oder veröffentlichen.
@@ -33,22 +32,32 @@ Sie können Logik-Apps zwar auch im <a href="https://portal.azure.com" target="_
 
 * Laden Sie diese Tools herunter, und installieren Sie sie, falls sie noch nicht vorhanden sind: 
 
-  * <a href="https://www.visualstudio.com/downloads" target="_blank">Visual Studio 2017 oder Visual Studio 2015 – Community Edition oder höher</a>. 
+  * <a href="https://aka.ms/download-visual-studio" target="_blank">Visual Studio 2019, 2017 oder 2015 – Community Edition oder höher</a>. 
   In dieser Schnellstartanleitung wird die kostenlose Version Visual Studio Community 2017 verwendet.
 
-  * <a href="https://azure.microsoft.com/downloads/" target="_blank">Azure SDK (2.9.1 oder höher)</a> und <a href="https://github.com/Azure/azure-powershell#installation" target="_blank">Azure PowerShell</a>
+    > [!IMPORTANT]
+    > Stellen Sie beim Installieren von Visual Studio 2019 oder 2017 sicher, dass Sie die Workload **Azure-Entwicklung** auswählen.
+    > Weitere Informationen finden Sie unter [Verwalten der Ihren Azure-Konten zugeordneten Ressourcen im Visual Studio Cloud-Explorer](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view).
+    >
+    > In Visual Studio 2019 kann Cloud-Explorer den Logik-App-Designer im Azure-Portal öffnen, aber noch nicht den eingebetteten Logik-App-Designer.
 
-  * <a href="https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio-18551" target="_blank">Azure Logic Apps-Tools für Visual Studio 2017</a> oder <a href="https://marketplace.visualstudio.com/items?itemName=VinaySinghMSFT.AzureLogicAppsToolsforVisualStudio" target="_blank">Visual Studio 2015</a> 
-  
+    Um Cloud-Explorer für Visual Studio 2015 zu installieren, [laden Sie Cloud-Explorer aus dem Visual Studio Marketplace herunter](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015). 
+    Weitere Informationen finden Sie unter [Verwalten der Ihren Azure-Konten zugeordneten Ressourcen im Visual Studio Cloud-Explorer (2015)](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015).
+
+  * <a href="https://azure.microsoft.com/downloads/" target="_blank">Azure SDK (2.9.1 oder höher)</a> 
+
+  * <a href="https://github.com/Azure/azure-powershell#installation" target="_blank">Azure PowerShell</a>
+
+  * Azure Logic Apps-Tools für die gewünschte Visual Studio-Version:
+
+    * <a href="https://aka.ms/download-azure-logic-apps-tools-visual-studio-2019" target="_blank">Visual Studio 2019</a>
+    
+    * <a href="https://aka.ms/download-azure-logic-apps-tools-visual-studio-2017" target="_blank">Visual Studio 2017</a>
+    
+    * <a href="https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015" target="_blank">Visual Studio 2015</a>
+
     Sie können die Azure Logic Apps-Tools entweder direkt vom Visual Studio Marketplace herunterladen und installieren oder sich über das <a href="https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions" target="_blank">Installieren dieser Erweiterung aus Visual Studio</a> informieren. 
     Achten Sie darauf, dass Sie Visual Studio nach Abschluss der Installation neu starten.
-
-* Cloud-Explorer für Visual Studio 2017 oder Visual Studio 2015
-
-  * Führen Sie für Visual Studio 2017 den Visual Studio-Installer aus, und installieren Sie die **Azure-Workload**. Weitere Informationen finden Sie unter [Verwalten der Ihren Azure-Konten zugeordneten Ressourcen im Visual Studio Cloud-Explorer](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2017).
-
-  * Für Visual Studio 2015 können Sie den [Cloud-Explorer aus dem Visual Studio Marketplace herunterladen](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015). 
-  Weitere Informationen finden Sie unter [Verwalten der Ihren Azure-Konten zugeordneten Ressourcen im Visual Studio Cloud-Explorer (2015)](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015).
 
 * Internetzugriff bei Verwendung des eingebetteten Logic Apps-Designers
 
@@ -184,8 +193,9 @@ Um Ihre Logik-App aus dem Azure-Portal zu löschen, öffnen Sie im Cloud-Explore
 
 Wenn Sie Ihr Logik-App-Projekt im Designer für Logik-Apps öffnen, erhalten Sie möglicherweise nicht die Option zur Auswahl Ihres Azure-Abonnements. Stattdessen wird Ihre Logik-App in einem Azure-Abonnement geöffnet, das Sie nicht verwenden möchten. Dieses Verhalten tritt auf, da Visual Studio nach dem Öffnen der JSON-Datei einer Logik-App das erste ausgewählte Abonnement für die zukünftige Verwendung zwischenspeichert. Gehen Sie folgendermaßen vor, um dieses Problem zu beheben:
 
-* Benennen Sie die JSON-Datei der Logik-App um. Die Abonnement-Cache basiert auf dem Dateinamen. 
-* Um zuvor ausgewählte Abonnements für *alle* Logik-Apps in Ihrer Lösung zu entfernen, löschen Sie den VS-Ordner *hidden* im Projektmappenverzeichnis. Hier werden Ihre Abonnementinformationen gespeichert. 
+* Benennen Sie die JSON-Datei der Logik-App um. Die Abonnement-Cache basiert auf dem Dateinamen.
+
+* Um zuvor ausgewählte Abonnements für *alle* Logik-Apps in Ihrer Lösung (Projektmappe) zu entfernen, löschen Sie den verborgenen Ordner für Visual Studio-Einstellungen (.vs) im Verzeichnis Ihrer Projektmappe. Hier werden Ihre Abonnementinformationen gespeichert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

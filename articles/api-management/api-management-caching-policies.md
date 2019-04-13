@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: ec9551b92702c3c9050e60c7550b89e99b99b6b6
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 08b6f803d6994015432bf68c7b3edae14af8f976
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661682"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579256"
 ---
 # <a name="api-management-caching-policies"></a>Cacherichtlinien für API Management
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -43,7 +43,7 @@ Verwenden Sie die `cache-lookup`-Richtlinie zum Durchführen einer Cachesuche un
 ### <a name="policy-statement"></a>Richtlinienanweisung
 
 ```xml
-<cache-lookup vary-by-developer="true | false" vary-by-developer-groups="true | false" cache-preference="prefer-external | external | internal" downstream-caching-type="none | private | public" must-revalidate="true | false" allow-private-response-caching="@(expression to evaluate)">
+<cache-lookup vary-by-developer="true | false" vary-by-developer-groups="true | false" caching-type="prefer-external | external | internal" downstream-caching-type="none | private | public" must-revalidate="true | false" allow-private-response-caching="@(expression to evaluate)">
   <vary-by-header>Accept</vary-by-header>
   <!-- should be present in most cases -->
   <vary-by-header>Accept-Charset</vary-by-header>
@@ -65,7 +65,7 @@ Verwenden Sie die `cache-lookup`-Richtlinie zum Durchführen einer Cachesuche un
 <policies>
     <inbound>
         <base />
-        <cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="none" must-revalidate="true" cache-preference="internal" >
+        <cache-lookup vary-by-developer="false" vary-by-developer-groups="false" downstream-caching-type="none" must-revalidate="true" caching-type="internal" >
             <vary-by-query-parameter>version</vary-by-query-parameter>
         </cache-lookup>
     </inbound>
@@ -112,7 +112,7 @@ Weitere Informationen finden Sie unter [Richtlinienausdrücke](api-management-po
 | NAME                           | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard           |
 |--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
 | allow-private-response-caching | Bei Festlegung auf `true` wird das Zwischenspeichern von Anforderungen erlaubt, die einen Autorisierungsheader enthalten.                                                                                                                                                                                                                                                                        | Nein        | false             |
-| cache-preference               | Wählen Sie aus den folgenden Attributwerten:<br />- `internal` zur Verwendung des integrierten API Management-Caches,<br />- `external` zur Verwendung des externen Caches (siehe [Verwenden eines externen Azure Caches für Redis in Azure API Management](api-management-howto-cache-external.md)),<br />- `prefer-external` zur Verwendung des externen Caches (sofern konfiguriert); andernfalls wird der interne Cache verwendet. | Nein        | `prefer-external` |
+| caching-type               | Wählen Sie aus den folgenden Attributwerten:<br />- `internal` zur Verwendung des integrierten API Management-Caches,<br />- `external` zur Verwendung des externen Caches (siehe [Verwenden eines externen Azure Caches für Redis in Azure API Management](api-management-howto-cache-external.md)),<br />- `prefer-external` zur Verwendung des externen Caches (sofern konfiguriert); andernfalls wird der interne Cache verwendet. | Nein        | `prefer-external` |
 | downstream-caching-type        | Dieses Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> –   none: Downstreamzwischenspeicherung ist unzulässig.<br />–   private: Private Downstreamzwischenspeicherung ist zulässig.<br />–   public: Private und gemeinsam genutzte Downstreamzwischenspeicherung ist zulässig.                                                                                                          | Nein        | none              |
 | must-revalidate                | Wenn die Downstreamzwischenspeicherung aktiviert ist, aktiviert oder deaktiviert dieses Attribut die `must-revalidate`-Cachesteuerungsanweisung in Gatewayantworten.                                                                                                                                                                                                                      | Nein        | true              |
 | vary-by-developer              | Legen Sie diese Option auf `true` fest, um Antworten [pro Abonnementschlüssel](https://docs.microsoft.com/azure/api-management/api-management-subscriptions) zwischenzuspeichern.                                                                                                                                                                                                                                                                                                         | Ja      |         False          |
@@ -208,7 +208,7 @@ Verwenden Sie die `cache-lookup-value`-Richtlinie zum Durchführen einer Cachesu
 <cache-lookup-value key="cache key value"
     default-value="value to use if cache lookup resulted in a miss"
     variable-name="name of a variable looked up value is assigned to"
-    cache-preference="prefer-external | external | internal" />
+    caching-type="prefer-external | external | internal" />
 ```
 
 ### <a name="example"></a>Beispiel
@@ -231,7 +231,7 @@ Weitere Informationen und Beispiele zu dieser Richtlinie finden Sie unter [Benut
 
 | NAME             | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| cache-preference | Wählen Sie aus den folgenden Attributwerten:<br />- `internal` zur Verwendung des integrierten API Management-Caches,<br />- `external` zur Verwendung des externen Caches (siehe [Verwenden eines externen Azure Caches für Redis in Azure API Management](api-management-howto-cache-external.md)),<br />- `prefer-external` zur Verwendung des externen Caches (sofern konfiguriert); andernfalls wird der interne Cache verwendet. | Nein        | `prefer-external` |
+| caching-type | Wählen Sie aus den folgenden Attributwerten:<br />- `internal` zur Verwendung des integrierten API Management-Caches,<br />- `external` zur Verwendung des externen Caches (siehe [Verwenden eines externen Azure Caches für Redis in Azure API Management](api-management-howto-cache-external.md)),<br />- `prefer-external` zur Verwendung des externen Caches (sofern konfiguriert); andernfalls wird der interne Cache verwendet. | Nein        | `prefer-external` |
 | default-value    | Ein Wert, der der Variablen zugewiesen wird, wenn die Cacheschlüsselsuche zu keinem Ergebnis führt. Wenn dieses Attribut nicht angegeben wird, wird `null` zugewiesen.                                                                                                                                                                                                           | Nein        | `null`            |
 | key              | In der Suche zu verwendender Cacheschlüsselwert.                                                                                                                                                                                                                                                                                                                       | Ja      | –               |
 | variable-name    | Der Name der [Kontextvariablen](api-management-policy-expressions.md#ContextVariables), der der gesuchte Wert zugewiesen wird, wenn die Suche erfolgreich ist. Wenn die Suche zu keinem Ergebnis führt, wird der Variablen der Wert des `default-value`-Attribut oder `null` zugewiesen, wenn das `default-value`-Attribut ausgelassen wird.                                       | Ja      | –               |
@@ -251,7 +251,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 ### <a name="policy-statement"></a>Richtlinienanweisung
 
 ```xml
-<cache-store-value key="cache key value" value="value to cache" duration="seconds" cache-preference="prefer-external | external | internal" />
+<cache-store-value key="cache key value" value="value to cache" duration="seconds" caching-type="prefer-external | external | internal" />
 ```
 
 ### <a name="example"></a>Beispiel
@@ -274,7 +274,7 @@ Weitere Informationen und Beispiele zu dieser Richtlinie finden Sie unter [Benut
 
 | NAME             | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| cache-preference | Wählen Sie aus den folgenden Attributwerten:<br />- `internal` zur Verwendung des integrierten API Management-Caches,<br />- `external` zur Verwendung des externen Caches (siehe [Verwenden eines externen Azure Caches für Redis in Azure API Management](api-management-howto-cache-external.md)),<br />- `prefer-external` zur Verwendung des externen Caches (sofern konfiguriert); andernfalls wird der interne Cache verwendet. | Nein        | `prefer-external` |
+| caching-type | Wählen Sie aus den folgenden Attributwerten:<br />- `internal` zur Verwendung des integrierten API Management-Caches,<br />- `external` zur Verwendung des externen Caches (siehe [Verwenden eines externen Azure Caches für Redis in Azure API Management](api-management-howto-cache-external.md)),<br />- `prefer-external` zur Verwendung des externen Caches (sofern konfiguriert); andernfalls wird der interne Cache verwendet. | Nein        | `prefer-external` |
 | duration         | Der Wert wird für die in Sekunden angegebene Dauer zwischengespeichert.                                                                                                                                                                                                                                                                                 | Ja      | –               |
 | key              | Der Cacheschlüssel, unter dem der Wert gespeichert wird.                                                                                                                                                                                                                                                                                                                   | Ja      | –               |
 | value            | Der Wert, der zwischengespeichert werden soll.                                                                                                                                                                                                                                                                                                                                     | Ja      | –               |
@@ -291,7 +291,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 
 ```xml
 
-<cache-remove-value key="cache key value" cache-preference="prefer-external | external | internal"  />
+<cache-remove-value key="cache key value" caching-type="prefer-external | external | internal"  />
 
 ```
 
@@ -313,7 +313,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com
 
 | NAME             | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                 | Erforderlich | Standard           |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|-------------------|
-| cache-preference | Wählen Sie aus den folgenden Attributwerten:<br />- `internal` zur Verwendung des integrierten API Management-Caches,<br />- `external` zur Verwendung des externen Caches (siehe [Verwenden eines externen Azure Caches für Redis in Azure API Management](api-management-howto-cache-external.md)),<br />- `prefer-external` zur Verwendung des externen Caches (sofern konfiguriert); andernfalls wird der interne Cache verwendet. | Nein        | `prefer-external` |
+| caching-type | Wählen Sie aus den folgenden Attributwerten:<br />- `internal` zur Verwendung des integrierten API Management-Caches,<br />- `external` zur Verwendung des externen Caches (siehe [Verwenden eines externen Azure Caches für Redis in Azure API Management](api-management-howto-cache-external.md)),<br />- `prefer-external` zur Verwendung des externen Caches (sofern konfiguriert); andernfalls wird der interne Cache verwendet. | Nein        | `prefer-external` |
 | key              | Der Schlüssel des zuvor zwischengespeicherten Werts, der aus dem Cache entfernt werden soll.                                                                                                                                                                                                                                                                                        | Ja      | –               |
 
 #### <a name="usage"></a>Verwendung
@@ -329,4 +329,4 @@ Weitere Informationen zur Verwendung von Richtlinien finden Sie unter:
 + [Richtlinien in Azure API Management](api-management-howto-policies.md)
 + [Transform and protect your API](transform-api.md) (Transformieren und Schützen von APIs)
 + Unter [Richtlinien für die API-Verwaltung](api-management-policy-reference.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
-+ [API Management policy samples](policy-samples.md) (API Management-Richtlinienbeispiele)   
++ [API Management policy samples](policy-samples.md) (API Management-Richtlinienbeispiele)

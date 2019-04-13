@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/22/2018
-ms.openlocfilehash: 066c8bc3edfc2bf36b4d96f787d6db6f16daec9b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c817f017c7394943864e7f20a130c90d3f8485d9
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57856823"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885977"
 ---
 # <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Referenz zu Trigger- und Aktionstypen für die Workflowdefinitionssprache in Azure Logic Apps
 
@@ -78,8 +78,8 @@ Jeder Triggertyp verfügt über eine andere Schnittstelle sowie über Eingaben, 
 |--------------|-------------| 
 | [**HTTP**](#http-trigger) | Überprüft alle Endpunkte bzw. *fragt diese ab*. Der Endpunkt muss einem bestimmten Triggervertrag entsprechen, und zwar durch Verwendung eines asynchronen Musters (202) oder durch Rückgabe eines Arrays. | 
 | [**HTTPWebhook**](#http-webhook-trigger) | Erstellt einen aufrufbaren Endpunkt für Ihre Logik-App, aber ruft die angegebene URL auf, um die Registrierung bzw. die Aufhebung der Registrierung durchzuführen. |
-| [**Recurrence**](#recurrence-trigger) | Wird auf der Grundlage eines definierten Zeitplans ausgelöst. Sie können ein Datum und eine Uhrzeit in der Zukunft festlegen, um diesen Trigger auszulösen. Je nach Häufigkeit können Sie auch Zeiten und Tage für die Ausführung Ihres Workflows angeben. | 
-| [**Request**](#request-trigger)  | Erstellt einen aufrufbaren Endpunkt für Ihre Logik-App und wird auch als „manueller“ Trigger bezeichnet. Weitere Informationen finden Sie unter [Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten](../logic-apps/logic-apps-http-endpoint.md). | 
+| [**Serie**](#recurrence-trigger) | Wird auf der Grundlage eines definierten Zeitplans ausgelöst. Sie können ein Datum und eine Uhrzeit in der Zukunft festlegen, um diesen Trigger auszulösen. Je nach Häufigkeit können Sie auch Zeiten und Tage für die Ausführung Ihres Workflows angeben. | 
+| [**Anforderung**](#request-trigger)  | Erstellt einen aufrufbaren Endpunkt für Ihre Logik-App und wird auch als „manueller“ Trigger bezeichnet. Weitere Informationen finden Sie unter [Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten](../logic-apps/logic-apps-http-endpoint.md). | 
 ||| 
 
 ### <a name="managed-api-triggers"></a>Verwaltete API-Trigger
@@ -513,7 +513,7 @@ Dieser Trigger wird basierend auf dem angegebenen Wiederholungszeitplan ausgefü
 | <*operation-option*> | Zeichenfolge | Sie können das Standardverhalten ändern, indem Sie die `operationOptions`-Eigenschaft festlegen. Weitere Informationen finden Sie unter [Optionen für Vorgänge](#operation-options). | 
 |||| 
 
-*Beispiel 1*
+*Beispiel 1*
 
 Dieser grundlegende Wiederholungstrigger wird täglich ausgeführt:
 
@@ -527,7 +527,7 @@ Dieser grundlegende Wiederholungstrigger wird täglich ausgeführt:
 }
 ```
 
-*Beispiel 2*
+*Beispiel 2*
 
 Sie können ein Startdatum und eine -uhrzeit für die Auslösung des Triggers festlegen. Dieser Wiederholungstrigger wird am angegebenen Datum gestartet und anschließend täglich ausgelöst:
 
@@ -542,7 +542,7 @@ Sie können ein Startdatum und eine -uhrzeit für die Auslösung des Triggers fe
 }
 ```
 
-*Beispiel 3*
+*Beispiel 3*
 
 Dieser Wiederholungstrigger startet am 9. September 2017 um 14:00 Uhr und wird wöchentlich jeden Montag um 10:30 Uhr, 12:30 Uhr und 14:30 Uhr Pacific Standard Time ausgelöst:
 
@@ -820,16 +820,16 @@ Hier sind einige häufig verwendete Aktionstypen angegeben:
 | Aktionstyp | BESCHREIBUNG | 
 |-------------|-------------| 
 | [**Compose**](#compose-action) | Erstellt aus Eingaben, die verschiedene Typen aufweisen können, eine einzelne Ausgabe. | 
-| [**Function**](#function-action) | Ruft eine Azure-Funktion auf. | 
+| [**Funktion**](#function-action) | Ruft eine Azure-Funktion auf. | 
 | [**HTTP**](#http-action) | Ruft einen HTTP-Endpunkt auf. | 
 | [**Join**](#join-action) | Erstellt eine Zeichenfolge aus allen Elementen in einem Array und trennt diese Elemente mit einem angegebenen Trennzeichen. | 
-| [**Parse JSON**](#parse-json-action) | Erstellt benutzerfreundliche Token aus Eigenschaften in JSON-Inhalten. Sie können dann auf diese Eigenschaften verweisen, indem Sie die Token in Ihre Logik-App einfügen. | 
-| [**Query**](#query-action) | Erstellt basierend auf einer Bedingung oder einem Filter ein Array aus den Elementen eines anderen Arrays. | 
-| [**Response**](#response-action) | Erstellt eine Antwort auf einen eingehenden Aufruf oder eine Anforderung. | 
+| [**JSON-Analyse**](#parse-json-action) | Erstellt benutzerfreundliche Token aus Eigenschaften in JSON-Inhalten. Sie können dann auf diese Eigenschaften verweisen, indem Sie die Token in Ihre Logik-App einfügen. | 
+| [**Abfragen**](#query-action) | Erstellt basierend auf einer Bedingung oder einem Filter ein Array aus den Elementen eines anderen Arrays. | 
+| [**response**](#response-action) | Erstellt eine Antwort auf einen eingehenden Aufruf oder eine Anforderung. | 
 | [**Select**](#select-action) | Erstellt ein Array mit JSON-Objekten, indem Elemente aus einem anderen Array basierend auf der angegebenen Zuordnung transformiert werden. | 
 | [**Table**](#table-action) | Erstellt aus einem Array eine CSV- oder HTML-Tabelle. | 
 | [**Terminate**](#terminate-action) | Beendet einen aktiv ausgeführten Workflow. | 
-| [**Wait**](#wait-action) | Hält Ihren Workflow für einen angegebenen Zeitraum bzw. bis zum angegebenen Zeitpunkt (Datum und Uhrzeit) an. | 
+| [**Warten**](#wait-action) | Hält Ihren Workflow für einen angegebenen Zeitraum bzw. bis zum angegebenen Zeitpunkt (Datum und Uhrzeit) an. | 
 | [**Workflow**](#workflow-action) | Schachtelt einen Workflow innerhalb eines anderen Workflows. | 
 ||| 
 
@@ -852,8 +852,8 @@ Mit diesen Aktionen können Sie die Workflowausführung steuern und andere Aktio
 | Aktionstyp | BESCHREIBUNG | 
 |-------------|-------------| 
 | [**ForEach**](#foreach-action) | Führt die gleichen Aktionen für jedes Element eines Arrays als Schleife aus. | 
-| [**If**](#if-action) | Führt Aktionen in Abhängigkeit davon aus, ob die angegebene Bedingung wahr oder falsch ist. | 
-| [**Scope**](#scope-action) | Führt Aktionen basierend auf dem Gruppenstatus eines Satzes mit Aktionen aus. | 
+| [**Wenn**](#if-action) | Führt Aktionen in Abhängigkeit davon aus, ob die angegebene Bedingung wahr oder falsch ist. | 
+| [**Bereich**](#scope-action) | Führt Aktionen basierend auf dem Gruppenstatus eines Satzes mit Aktionen aus. | 
 | [**Switch**](#switch-action) | Führt Aktionen aus, die zu Fällen zusammengefasst sind, wenn Werte aus Ausdrücken, Objekten oder Token mit den für jeden Fall angegebenen Werten übereinstimmen. | 
 | [**Until**](#until-action) | Führt Aktionen in einer Schleife aus, bis die angegebene Bedingung wahr ist. | 
 |||  
@@ -1013,9 +1013,11 @@ Sie können die Ausgabe der Aktion dann in anderen Aktionen verwenden.
 | <*inputs-to-compose*> | Beliebig | Eingaben für die Erstellung einer einzelnen Ausgabe | 
 |||| 
 
-*Beispiel 1*
+*Beispiel 1*
 
+<!-- markdownlint-disable MD038 -->
 Bei dieser Aktionsdefinition werden `abcdefg ` mit einer nachgestellten Leerstelle und der Wert `1234` zusammengeführt:
+<!-- markdownlint-enable MD038 -->
 
 ```json
 "Compose": {
@@ -1029,7 +1031,7 @@ Hier ist die Ausgabe angegeben, die mit dieser Aktion erstellt wird:
 
 `abcdefg 1234`
 
-*Beispiel 2*
+*Beispiel 2*
 
 Bei dieser Aktionsdefinition werden eine Zeichenfolgenvariable, die `abcdefg` enthält, und eine Integer-Variable zusammengeführt, die `1234` enthält:
 
@@ -1245,7 +1247,7 @@ Mit dieser Aktion werden benutzerfreundliche Felder oder *Token* aus den Eigensc
 
 Mit dieser Aktionsdefinition werden diese Token erstellt, die Sie in Ihrem Logik-App-Workflow verwenden können. Dies gilt aber nur für Aktionen, die nach der Aktion **Parse JSON** ausgeführt werden: 
 
-`FirstName`, `LastName` und `Email`
+`FirstName``LastName` und `Email`
 
 ```json
 "Parse_JSON": {
@@ -1567,7 +1569,7 @@ Verwenden Sie das Array `columns`, um Spaltenüberschriften und -werte anzugeben
 | <*column-value*> | Beliebig | Wert in dieser Spalte | 
 |||| 
 
-*Beispiel 1*
+*Beispiel 1*
 
 Angenommen, Sie verfügen über die zuvor erstellte Variable „myItemArray“, die derzeit dieses Array enthält: 
 
@@ -1594,7 +1596,7 @@ ID,Product_Name
 1,Oranges 
 ```
 
-*Beispiel 2*
+*Beispiel 2*
 
 Mit dieser Aktionsdefinition wird eine HTML-Tabelle aus der Variablen „myItemArray“ erstellt. Der von der `from`-Eigenschaft verwendete Ausdruck ruft das Array aus „myItemArray“ ab, indem die Funktion `variables()` verwendet wird: 
 
@@ -1613,7 +1615,7 @@ Hier ist die HTML-Tabelle angegeben, die mit dieser Aktion erstellt wird:
 
 <table><thead><tr><th>ID</th><th>Product_Name</th></tr></thead><tbody><tr><td>0</td><td>Äpfel</td></tr><tr><td>1</td><td>Oranges</td></tr></tbody></table>
 
-*Beispiel 3*
+*Beispiel 3*
 
 Mit dieser Aktionsdefinition wird eine HTML-Tabelle aus der Variablen „myItemArray“ erstellt. In diesem Beispiel werden die Standardnamen der Spaltenüberschriften aber durch „Stock_ID“ und „Description“ überschrieben, und in der Spalte „Description“ wird den Werten das Wort „Organic“ hinzugefügt.
 
@@ -1741,7 +1743,7 @@ Mit dieser Aktion wird die Workflowausführung für den angegebenen Zeitraum ode
 | <*date-time-stamp*> | Zeichenfolge | Für die Aktion **Delay Until** das Datum und die Uhrzeit zum Fortsetzen der Ausführung. Für diesen Wert muss das [UTC-Format für Datum und Uhrzeit](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) verwendet werden. | 
 |||| 
 
-*Beispiel 1*
+*Beispiel 1*
 
 Mit dieser Aktionsdefinition wird der Workflow 15 Minuten lang angehalten:
 
@@ -1758,7 +1760,7 @@ Mit dieser Aktionsdefinition wird der Workflow 15 Minuten lang angehalten:
 },
 ```
 
-*Beispiel 2*
+*Beispiel 2*
 
 Mit dieser Aktionsdefinition wird der Workflow bis zum angegebenen Zeitpunkt angehalten:
 
@@ -2308,7 +2310,7 @@ Sie können das Standardverhalten für Trigger und Aktionen mit der `operationOp
 
 | Vorgangsoption | Type | BESCHREIBUNG | Trigger oder Aktion | 
 |------------------|------|-------------|-------------------| 
-| `DisableAsyncPattern` | Zeichenfolge | Dient zum synchronen Ausführen von HTTP-basierten Aktionen (anstatt asynchron). <p><p>Informationen zum Festlegen dieser Option finden Sie unter [Synchrones Ausführen von Aktionen](#asynchronous-patterns). | Aktionen: <p>[ApiConnection](#apiconnection-action), <br>[HTTP](#http-action), <br>[Antwort](#response-action) | 
+| `DisableAsyncPattern` | Zeichenfolge | Dient zum synchronen Ausführen von HTTP-basierten Aktionen (anstatt asynchron). <p><p>Informationen zum Festlegen dieser Option finden Sie unter [Synchrones Ausführen von Aktionen](#asynchronous-patterns). | Aktionen: <p>[ApiConnection](#apiconnection-action), <br>[HTTP](#http-action), <br>[response](#response-action) | 
 | `OptimizedForHighThroughput` | Zeichenfolge | Dient zum Ändern des [Standardlimits](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) für die Anzahl von Aktionsausführungen in einem Zeitraum von fünf Minuten in das [maximale Limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). <p><p>Informationen zum Festlegen dieser Option finden Sie unter [Ausführen im Modus mit hohem Durchsatz](#run-high-throughput-mode). | Alle Aktionen | 
 | `Sequential` | Zeichenfolge | Dient zum einzelnen Ausführen der Iterationen von „for each“-Schleifen, anstatt alle auf einmal parallel. <p>Diese Option funktioniert genauso wie das Festlegen der `runtimeConfiguration.concurrency.repetitions`-Eigenschaft auf `1`. Sie können jeweils eine Eigenschaft festlegen, aber nicht beide. <p><p>Informationen zum Festlegen dieser Option finden Sie unter [Sequenzielles Ausführen von „for each“-Schleifen](#sequential-for-each).| Aktion: <p>[Foreach](#foreach-action) | 
 | `SingleInstance` | Zeichenfolge | Dient zum sequenziellen Ausführen des Triggers für jede Logik-App-Instanz. Es wird gewartet, bis die zuvor aktive Ausführung beendet ist, bevor die nächste Logik-App-Instanz ausgelöst wird. <p><p>Diese Option funktioniert genauso wie das Festlegen der `runtimeConfiguration.concurrency.runs`-Eigenschaft auf `1`. Sie können jeweils eine Eigenschaft festlegen, aber nicht beide. <p>Informationen zum Festlegen dieser Option finden Sie unter [Sequenzielles Auslösen von Instanzen](#sequential-trigger). | Alle Trigger | 
@@ -2446,7 +2448,7 @@ Legen Sie die `runtimeConfiguration.concurrency.runs`-Eigenschaft auf `1` fest:
 }
 ```
 
-*-oder-*
+*Oder*
 
 Legen Sie die `operationOptions`-Eigenschaft auf `SingleInstance` fest:
 
@@ -2498,7 +2500,7 @@ Legen Sie die `runtimeConfiguration.concurrency.repetitions`-Eigenschaft auf `1`
 }
 ```
 
-*-oder-*
+*Oder*
 
 Legen Sie die `operationOptions`-Eigenschaft auf `Sequential` fest:
 
@@ -2563,7 +2565,7 @@ HTTP-Endpunkte unterstützen verschiedene Arten der Authentifizierung. Sie könn
 
 * [HTTP](../connectors/connectors-native-http.md)
 * [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)
-* [HTTP Webhook](../connectors/connectors-native-webhook.md)
+* [HTTP-Webhook](../connectors/connectors-native-webhook.md)
 
 Folgende Arten der Authentifizierung können Sie einrichten:
 
@@ -2652,7 +2654,7 @@ Wenn Sie die [Azure AD-OAuth-Authentifizierung](../active-directory/develop/auth
 |----------|----------|-------|-------------|
 | **type** | Ja | `ActiveDirectoryOAuth` | Der zu verwendende Authentifizierungstyp, „ActiveDirectoryOAuth“ für Azure AD OAuth |
 | **authority** | Nein  | <*URL-for-authority-token-issuer*> | Die URL für die Zertifizierungsstelle, die das Authentifizierungstoken bereitstellt |
-| **tenant** | Ja | <*tenant-ID*> | Die Mandanten-ID für den Azure AD-Mandanten |
+| **Mandant** | Ja | <*tenant-ID*> | Die Mandanten-ID für den Azure AD-Mandanten |
 | **audience** | Ja | <*resource-to-authorize*> | Die Ressource, die Sie für die Autorisierung verwenden möchten, z. B. `https://management.core.windows.net/` |
 | **clientId** | Ja | <*client-ID*> | Die Client-ID für die App, die eine Autorisierung anfordert |
 | **credentialType** | Ja | „Certificate“ oder „Secret“ | Der Anmeldeinformationstyp, den der Client zum Anfordern der Autorisierung verwendet. Diese Eigenschaft und der Wert werden nicht in Ihrer zugrunde liegenden Definition angezeigt, bestimmen jedoch den erforderlichen Parameter für den Anmeldeinformationstyp. |

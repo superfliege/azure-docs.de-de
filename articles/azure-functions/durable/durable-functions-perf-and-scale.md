@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 3c9227a34c1b7208210b84b5b7d64ecdc8654a83
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: e6ae4cc527ae0828f530ab7f3904d2b3c64c910b
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286379"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895748"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Leistung und Skalierbarkeit in Durable Functions (Azure Functions)
 
@@ -56,7 +56,7 @@ Die Durable Task-Erweiterung implementiert einen zufälligen exponentiellen Back
 Die maximale Abrufverzögerung kann über die Eigenschaft `maxQueuePollingInterval` in der Datei [host.json](../functions-host-json.md#durabletask) konfiguriert werden. Die Festlegung dieser Eigenschaft auf einen höheren Wert kann zu höherer Latenz bei der Nachrichtenverarbeitung führen. Eine höhere Latenz wird nur nach Zeiträumen ohne Aktivität erwartet. Die Festlegung der Eigenschaft auf einen niedrigeren Wert kann aufgrund verstärkter Speichertransaktionen zu höheren Speicherkosten führen.
 
 > [!NOTE]
-> Bei der Ausführung in Verbrauchs- und Premium-Tarifen von Azure Functions ruft der [Azure Functions-Skalierungscontroller](../functions-scale.md#how-the-consumption-plan-works) alle Steuerelement- und Arbeitselement-Warteschlangen einmal alle 10 Sekunden ab. Dieser zusätzliche Abruf ist erforderlich, um zu ermitteln, wann die Instanzen der Funktions-Apps aktiviert und Skalierungsentscheidungen getroffen werden sollen. Zum Zeitpunkt der Erstellung dieses Artikels ist dieses Intervall von 10 Sekunden konstant und kann nicht konfiguriert werden.
+> Bei der Ausführung in Verbrauchs- und Premium-Tarifen von Azure Functions ruft der [Azure Functions-Skalierungscontroller](../functions-scale.md#how-the-consumption-and-premium-plans-work) alle Steuerelement- und Arbeitselement-Warteschlangen einmal alle 10 Sekunden ab. Dieser zusätzliche Abruf ist erforderlich, um zu ermitteln, wann die Instanzen der Funktions-Apps aktiviert und Skalierungsentscheidungen getroffen werden sollen. Zum Zeitpunkt der Erstellung dieses Artikels ist dieses Intervall von 10 Sekunden konstant und kann nicht konfiguriert werden.
 
 ## <a name="storage-account-selection"></a>Auswahl des Speicherkontos
 
@@ -244,4 +244,4 @@ Wenn Sie nicht die erwarteten Durchsatzzahlen erreichen und die CPU- und die Spe
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erstellen Ihrer ersten dauerhafte Funktion in C#](durable-functions-create-first-csharp.md)
+> [Erstellen Ihrer ersten dauerhaften Funktion in C#](durable-functions-create-first-csharp.md)
