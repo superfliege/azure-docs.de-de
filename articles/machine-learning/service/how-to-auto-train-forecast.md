@@ -10,19 +10,19 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.openlocfilehash: 32f96a28e027bfd0e65d934bb47bb98400af459d
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: e1b584d38c4583e37b7c47535c836d1fa7d428f1
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360722"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357246"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisches Trainieren eines Modells für die Zeitreihenprognose
 
 In diesem Artikel erfahren Sie, wie Sie im Azure Machine Learning-Dienst ein Regressionsmodell für die Zeitreihenprognose mit automatisiertem maschinellem Lernen trainieren. Das Konfigurieren eines Vorhersagemodells ähnelt zwar der Einrichtung eines Standard-Regressionsmodells mit automatisiertem maschinellem Lernen, die Verwendung von Zeitreihendaten erfordert jedoch bestimmte Konfigurationsoptionen und Vorverarbeitungsschritte. In den Beispielen dieses Artikels wird Folgendes gezeigt:
 
 * Vorbereiten von Daten für die Zeitreihenmodellierung
-* Konfigurieren spezifischer Zeitreihenparameter in einem Objekt vom Typ [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)
+* Konfigurieren spezifischer Zeitreihenparameter in einem Objekt vom Typ [`AutoMLConfig`](/python/api/azureml-train-automl/azureml.train.automl.automlconfig)
 * Ausführen von Vorhersagen mit Zeitreihendaten
 
 ## <a name="prerequisites"></a>Voraussetzungen
