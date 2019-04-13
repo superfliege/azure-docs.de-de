@@ -13,19 +13,19 @@ ms.topic: reference
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f09fded38e384126a8dfdbe567ce4a3ebd5b1af4
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 459758142c94ddfd244df1427dd5632186efc0de
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58893587"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266926"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Skalierung und Hosting von Azure Functions
 
 Azure Functions wird in zwei verschiedenen Plänen (Tarifen) ausgeführt: Verbrauchstarif und Premium-Plan (öffentliche Vorschau). Der Verbrauchstarif fügt automatisch Computeleistung hinzu, wenn Ihr Code ausgeführt wird. Ihre App wird horizontal hochskaliert, wenn dies zur Verarbeitung der Last erforderlich ist, und herunterskaliert, wenn die Codeausführung beendet wurde. Für virtuelle Computer im Leerlauf müssen Sie nichts bezahlen und auch keine Kapazitäten im Voraus reservieren.  Der Premium-Plan bedingt ebenfalls automatisches Skalieren und Hinzufügen von Computeleistung, wenn Ihr Code ausgeführt wird.  Zum Premium-Plan gehören zusätzliche Features wie Premium-Compute-Instanzen, die Möglichkeit, Instanzen unbegrenzt betriebsbereit zu halten, und VNET-Verbindungen.  Wenn Sie einen vorhandenen App Service-Plan haben, können Sie auch Ihre Funktions-Apps in ihnen ausführen.
 
 > [!NOTE]  
-> Sowohl der [Premium-Plan](https://azure.microsoft.com/blog/uncompromised-serverless-scale-for-enterprise-workloads-with-the-azure-functions-premium-plan/preview/) als auch der [Verbrauchstarif für Linux](https://azure.microsoft.com/updates/azure-functions-consumption-plan-for-linux-preview/) liegen derzeit in der Vorschauversion vor.
+> Sowohl der [Premium-Plan](https://aka.ms/functions-premiumplan) als auch der [Verbrauchstarif für Linux](https://azure.microsoft.com/updates/azure-functions-consumption-plan-for-linux-preview/) liegen derzeit in der Vorschauversion vor.
 
 Wenn Sie mit Azure Functions nicht vertraut sind, informieren Sie sich in der [Übersicht über Azure Functions](functions-overview.md).
 
