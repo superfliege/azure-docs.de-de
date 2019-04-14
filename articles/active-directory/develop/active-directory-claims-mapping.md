@@ -9,16 +9,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 03/28/2019
 ms.author: celested
-ms.reviewer: paulgarn, hirsin, jeedes
+ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af00c311b406a0bae285a00f0d537ce9bae3aa7e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e492586f0c70d4cd3013ef8f466afd6bb2bb65ac
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102107"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884076"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Gewusst wie: Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App in einem Mandanten (Vorschau)
 
@@ -52,142 +52,142 @@ Es gibt bestimmte Sätze von Ansprüchen, die definieren, wie und wann sie in To
 
 ### <a name="table-1-json-web-token-jwt-restricted-claim-set"></a>Tabelle 1: Eingeschränkter Anspruchssatz der JSON Web Token (JWT)
 
-|Anspruchstyp (Name)|
+| Anspruchstyp (Name) |
 | ----- |
-|_claim_names|
-|_claim_sources|
-|access_token|
-|account_type|
-|acr|
-|actor|
-|actortoken|
-|aio|
-|altsecid|
-|amr|
-|app_chain|
-|app_displayname|
-|app_res|
-|appctx|
-|appctxsender|
-|appid|
-|appidacr|
-|Assertion|
-|at_hash|
-|aud|
-|auth_data|
-|auth_time|
-|authorization_code|
-|azp|
-|azpacr|
-|c_hash|
-|ca_enf|
-|cc|
-|cert_token_use|
-|client_id|
-|cloud_graph_host_name|
-|cloud_instance_name|
-|cnf|
-|code|
-|controls|
-|credential_keys|
-|csr|
-|csr_type|
-|deviceid|
-|dns_names|
-|domain_dns_name|
-|domain_netbios_name|
-|e_exp|
-|E-Mail|
-|endpoint|
-|enfpolids|
-|exp|
-|expires_on|
-|grant_type|
-|graph|
-|group_sids|
-|groups|
-|hasgroups|
-|hash_alg|
-|home_oid|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/expired`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier`|
-|iat|
-|identityprovider|
-|idp|
-|in_corp|
-|instance|
-|ipaddr|
-|isbrowserhostedapp|
-|iss|
-|jwk|
-|key_id|
-|key_type|
-|mam_compliance_url|
-|mam_enrollment_url|
-|mam_terms_of_use_url|
-|mdm_compliance_url|
-|mdm_enrollment_url|
-|mdm_terms_of_use_url|
-|nameid|
-|nbf|
-|netbios_name|
-|nonce|
-|oid|
-|on_prem_id|
-|onprem_sam_account_name|
-|onprem_sid|
-|openid2_id|
-|password|
-|platf|
-|polids|
-|pop_jwk|
-|preferred_username|
-|previous_refresh_token|
-|primary_sid|
-|puid|
-|pwd_exp|
-|pwd_url|
-|redirect_uri|
-|refresh_token|
-|refreshtoken|
-|request_nonce|
-|resource|
-|role|
-|Rollen|
-|scope|
-|scp|
-|sid|
-|signature|
-|signin_state|
-|src1|
-|src2|
-|sub|
-|tbid|
-|tenant_display_name|
-|tenant_region_scope|
-|thumbnail_photo|
-|tid|
-|tokenAutologonEnabled|
-|trustedfordelegation|
-|unique_name|
-|upn|
-|user_setting_sync_url|
-|username|
-|uti|
-|ver|
-|verified_primary_email|
-|verified_secondary_email|
-|wids|
-|win_ver|
+| _claim_names |
+| _claim_sources |
+| access_token |
+| account_type |
+| acr |
+| actor |
+| actortoken |
+| aio |
+| altsecid |
+| amr |
+| app_chain |
+| app_displayname |
+| app_res |
+| appctx |
+| appctxsender |
+| appid |
+| appidacr |
+| Assertion |
+| at_hash |
+| aud |
+| auth_data |
+| auth_time |
+| authorization_code |
+| azp |
+| azpacr |
+| c_hash |
+| ca_enf |
+| cc |
+| cert_token_use |
+| client_id |
+| cloud_graph_host_name |
+| cloud_instance_name |
+| cnf |
+| code |
+| controls |
+| credential_keys |
+| csr |
+| csr_type |
+| deviceid |
+| dns_names |
+| domain_dns_name |
+| domain_netbios_name |
+| e_exp |
+| E-Mail |
+| endpoint |
+| enfpolids |
+| exp |
+| expires_on |
+| grant_type |
+| graph |
+| group_sids |
+| groups |
+| hasgroups |
+| hash_alg |
+| home_oid |
+| `http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant` |
+| `http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod` |
+| `http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration` |
+| `http://schemas.microsoft.com/ws/2008/06/identity/claims/expired` |
+| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |
+| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` |
+| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` |
+| iat |
+| identityprovider |
+| idp |
+| in_corp |
+| instance |
+| ipaddr |
+| isbrowserhostedapp |
+| iss |
+| jwk |
+| key_id |
+| key_type |
+| mam_compliance_url |
+| mam_enrollment_url |
+| mam_terms_of_use_url |
+| mdm_compliance_url |
+| mdm_enrollment_url |
+| mdm_terms_of_use_url |
+| nameid |
+| nbf |
+| netbios_name |
+| nonce |
+| oid |
+| on_prem_id |
+| onprem_sam_account_name |
+| onprem_sid |
+| openid2_id |
+| password |
+| platf |
+| polids |
+| pop_jwk |
+| preferred_username |
+| previous_refresh_token |
+| primary_sid |
+| puid |
+| pwd_exp |
+| pwd_url |
+| redirect_uri |
+| refresh_token |
+| refreshtoken |
+| request_nonce |
+| resource |
+| role |
+| Rollen |
+| scope |
+| scp |
+| sid |
+| signature |
+| signin_state |
+| src1 |
+| src2 |
+| sub |
+| tbid |
+| tenant_display_name |
+| tenant_region_scope |
+| thumbnail_photo |
+| tid |
+| tokenAutologonEnabled |
+| trustedfordelegation |
+| unique_name |
+| upn |
+| user_setting_sync_url |
+| username |
+| uti |
+| ver |
+| verified_primary_email |
+| verified_secondary_email |
+| wids |
+| win_ver |
 
 ### <a name="table-2-saml-restricted-claim-set"></a>Tabelle 2: Eingeschränkter SAML-Anspruchssatz
 
-|Anspruchstyp (URI)|
+| Anspruchstyp (URI) |
 | ----- |
 |`http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration`|
 |`http://schemas.microsoft.com/ws/2008/06/identity/claims/expired`|
@@ -196,7 +196,7 @@ Es gibt bestimmte Sätze von Ansprüchen, die definieren, wie und wann sie in To
 |`http://schemas.microsoft.com/identity/claims/identityprovider`|
 |`http://schemas.microsoft.com/identity/claims/objectidentifier`|
 |`http://schemas.microsoft.com/identity/claims/puid`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier [MR1] `|
+|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier [MR1]`|
 |`http://schemas.microsoft.com/identity/claims/tenantid`|
 |`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant`|
 |`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod`|
@@ -246,7 +246,7 @@ Um zu steuern, welche Ansprüche ausgegeben werden und woher die Daten stammen, 
 
 **Datentyp:** Boolesch („True“ oder „False“)
 
-**Zusammenfassung:** Diese Eigenschaft bestimmt, ob der grundlegende Anspruchssatz in von dieser Richtlinie betroffenen Token enthalten ist. 
+**Zusammenfassung:** Diese Eigenschaft bestimmt, ob der grundlegende Anspruchssatz in von dieser Richtlinie betroffenen Token enthalten ist.
 
 - Wenn der Wert auf TRUE festgelegt wird, werden alle Ansprüche im grundlegenden Anspruchssatz in Token ausgegeben, die von der Richtlinie betroffen sind. 
 - Wenn der Wert auf FALSE festgelegt wird, werden die Ansprüche im grundlegenden Anspruchssatz nicht in Token ausgegeben, es sei denn, sie werden einzeln in der Ansprücheschemaeigenschaft derselben Richtlinie hinzugefügt.
@@ -284,51 +284,51 @@ Das ID-Element identifiziert, welche Eigenschaft in der Quelle den Wert für den
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tabelle 3: Gültige ID-Werte pro Quelle
 
-|Quelle|ID|BESCHREIBUNG|
+| Quelle | ID | BESCHREIBUNG |
 |-----|-----|-----|
-|Benutzer|surname|Familienname|
-|Benutzer|givenname|Vorname|
-|Benutzer|displayname|Anzeigename|
-|Benutzer|objectid|ObjectID|
-|Benutzer|mail|E-Mail-Adresse|
-|Benutzer|userprincipalname|Benutzerprinzipalname|
-|Benutzer|department|Department|
-|Benutzer|onpremisessamaccountname|Lokaler SAM-Kontoname|
-|Benutzer|netbiosname|NetBIOS-Name|
-|Benutzer|dnsdomainname|DNS-Domänenname|
-|Benutzer|onpremisesecurityidentifier|Lokale Sicherheits-ID|
-|Benutzer|companyname|Name der Organisation|
-|Benutzer|streetaddress|Anschrift|
-|Benutzer|postalcode|Postleitzahl|
-|Benutzer|preferredlanguange|Bevorzugte Sprache|
-|Benutzer|onpremisesuserprincipalname|Lokaler UPN|
-|Benutzer|mailNickname|E-Mail-Kontoname|
-|Benutzer|extensionattribute1|Erweiterungsattribut 1|
-|Benutzer|extensionattribute2|Erweiterungsattribut 2|
-|Benutzer|extensionattribute3|Erweiterungsattribut 3|
-|Benutzer|extensionattribute4|Erweiterungsattribut 4|
-|Benutzer|extensionattribute5|Erweiterungsattribut 5|
-|Benutzer|extensionattribute6|Erweiterungsattribut 6|
-|Benutzer|extensionattribute7|Erweiterungsattribut 7|
-|Benutzer|extensionattribute8|Erweiterungsattribut 8|
-|Benutzer|extensionattribute9|Erweiterungsattribut 9|
-|Benutzer|extensionattribute10|Erweiterungsattribut 10|
-|Benutzer|extensionattribute11|Erweiterungsattribut 11|
-|Benutzer|extensionattribute12|Erweiterungsattribut 12|
-|Benutzer|extensionattribute13|Erweiterungsattribut 13|
-|Benutzer|extensionattribute14|Erweiterungsattribut 14|
-|Benutzer|extensionattribute15|Erweiterungsattribut 15|
-|Benutzer|othermail|Andere E-Mail-Nachrichten|
-|Benutzer|country|Country|
-|Benutzer|city|City|
-|Benutzer|state|Zustand|
-|Benutzer|jobtitle|Position|
-|Benutzer|employeeid|Mitarbeiter-ID|
-|Benutzer|facsimiletelephonenumber|Faxnummer|
-|Anwendung, Ressourcen, Zielgruppe|displayname|Anzeigename|
-|Anwendung, Ressourcen, Zielgruppe|objected|ObjectID|
-|Anwendung, Ressourcen, Zielgruppe|tags|Dienstprinzipal-Tag|
-|Unternehmen|tenantcountry|Land des Mandanten|
+| Benutzer | surname | Familienname |
+| Benutzer | givenname | Vorname |
+| Benutzer | displayname | Anzeigename |
+| Benutzer | objectid | ObjectID |
+| Benutzer | mail | E-Mail-Adresse |
+| Benutzer | userprincipalname | Benutzerprinzipalname |
+| Benutzer | department|Department|
+| Benutzer | onpremisessamaccountname | Name des lokalen SAM-Kontos |
+| Benutzer | netbiosname| NetBIOS-Name |
+| Benutzer | dnsdomainname | DNS-Domänenname |
+| Benutzer | onpremisesecurityidentifier | Lokale Sicherheits-ID |
+| Benutzer | companyname| Name der Organisation |
+| Benutzer | streetaddress | Anschrift |
+| Benutzer | postalcode | Postleitzahl |
+| Benutzer | preferredlanguange | Bevorzugte Sprache |
+| Benutzer | onpremisesuserprincipalname | Lokaler UPN |
+| Benutzer | mailNickname | E-Mail-Kontoname |
+| Benutzer | extensionattribute1 | Erweiterungsattribut 1 |
+| Benutzer | extensionattribute2 | Erweiterungsattribut 2 |
+| Benutzer | extensionattribute3 | Erweiterungsattribut 3 |
+| Benutzer | extensionattribute4 | Erweiterungsattribut 4 |
+| Benutzer | extensionattribute5 | Erweiterungsattribut 5 |
+| Benutzer | extensionattribute6 | Erweiterungsattribut 6 |
+| Benutzer | extensionattribute7 | Erweiterungsattribut 7 |
+| Benutzer | extensionattribute8 | Erweiterungsattribut 8 |
+| Benutzer | extensionattribute9 | Erweiterungsattribut 9 |
+| Benutzer | extensionattribute10 | Erweiterungsattribut 10 |
+| Benutzer | extensionattribute11 | Erweiterungsattribut 11 |
+| Benutzer | extensionattribute12 | Erweiterungsattribut 12 |
+| Benutzer | extensionattribute13 | Erweiterungsattribut 13 |
+| Benutzer | extensionattribute14 | Erweiterungsattribut 14 |
+| Benutzer | extensionattribute15 | Erweiterungsattribut 15 |
+| Benutzer | othermail | Andere E-Mail-Nachrichten |
+| Benutzer | country | Country |
+| Benutzer | city | City |
+| Benutzer | state | Zustand |
+| Benutzer | jobtitle | Position |
+| Benutzer | employeeid | Mitarbeiter-ID |
+| Benutzer | facsimiletelephonenumber | Faxnummer |
+| Anwendung, Ressourcen, Zielgruppe | displayname | Anzeigename |
+| Anwendung, Ressourcen, Zielgruppe | objected | ObjectID |
+| Anwendung, Ressourcen, Zielgruppe | tags | Dienstprinzipal-Tag |
+| Unternehmen | tenantcountry | Land des Mandanten |
 
 **TransformationID:** Das TransformationID-Element muss nur dann bereitgestellt werden, wenn das Quellelement auf „transformation“ festgelegt ist.
 
@@ -386,32 +386,32 @@ Auf der Grundlage der ausgewählten Methode wird eine Reihe von Eingaben und Aus
 
 |Quelle|ID|BESCHREIBUNG|
 |-----|-----|-----|
-|Benutzer|mail|E-Mail-Adresse|
-|Benutzer|userprincipalname|Benutzerprinzipalname|
-|Benutzer|onpremisessamaccountname|Lokaler SAM-Kontoname|
-|Benutzer|employeeid|Mitarbeiter-ID|
-|Benutzer|extensionattribute1|Erweiterungsattribut 1|
-|Benutzer|extensionattribute2|Erweiterungsattribut 2|
-|Benutzer|extensionattribute3|Erweiterungsattribut 3|
-|Benutzer|extensionattribute4|Erweiterungsattribut 4|
-|Benutzer|extensionattribute5|Erweiterungsattribut 5|
-|Benutzer|extensionattribute6|Erweiterungsattribut 6|
-|Benutzer|extensionattribute7|Erweiterungsattribut 7|
-|Benutzer|extensionattribute8|Erweiterungsattribut 8|
-|Benutzer|extensionattribute9|Erweiterungsattribut 9|
-|Benutzer|extensionattribute10|Erweiterungsattribut 10|
-|Benutzer|extensionattribute11|Erweiterungsattribut 11|
-|Benutzer|extensionattribute12|Erweiterungsattribut 12|
-|Benutzer|extensionattribute13|Erweiterungsattribut 13|
-|Benutzer|extensionattribute14|Erweiterungsattribut 14|
-|Benutzer|extensionattribute15|Erweiterungsattribut 15|
+| Benutzer | mail|E-Mail-Adresse|
+| Benutzer | userprincipalname|Benutzerprinzipalname|
+| Benutzer | onpremisessamaccountname|Lokaler SAM-Kontoname|
+| Benutzer | employeeid|Mitarbeiter-ID|
+| Benutzer | extensionattribute1 | Erweiterungsattribut 1 |
+| Benutzer | extensionattribute2 | Erweiterungsattribut 2 |
+| Benutzer | extensionattribute3 | Erweiterungsattribut 3 |
+| Benutzer | extensionattribute4 | Erweiterungsattribut 4 |
+| Benutzer | extensionattribute5 | Erweiterungsattribut 5 |
+| Benutzer | extensionattribute6 | Erweiterungsattribut 6 |
+| Benutzer | extensionattribute7 | Erweiterungsattribut 7 |
+| Benutzer | extensionattribute8 | Erweiterungsattribut 8 |
+| Benutzer | extensionattribute9 | Erweiterungsattribut 9 |
+| Benutzer | extensionattribute10 | Erweiterungsattribut 10 |
+| Benutzer | extensionattribute11 | Erweiterungsattribut 11 |
+| Benutzer | extensionattribute12 | Erweiterungsattribut 12 |
+| Benutzer | extensionattribute13 | Erweiterungsattribut 13 |
+| Benutzer | extensionattribute14 | Erweiterungsattribut 14 |
+| Benutzer | extensionattribute15 | Erweiterungsattribut 15 |
 
 #### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>Tabelle 6: Transformationsmethoden für SAML-NameID
 
-|Transformationsmethode|Einschränkungen|
+| Transformationsmethode | Einschränkungen |
 | ----- | ----- |
-|ExtractMailPrefix|Keine|
-|Join|Bei dem zu verknüpfenden Suffix muss es sich um eine überprüfte Domäne des Ressourcenmandanten handeln.|
+| ExtractMailPrefix | Keine |
+| Join | Bei dem zu verknüpfenden Suffix muss es sich um eine überprüfte Domäne des Ressourcenmandanten handeln. |
 
 ### <a name="custom-signing-key"></a>Benutzerdefinierte Signaturschlüssel
 
@@ -437,19 +437,19 @@ Führen Sie die folgenden Schritte aus, um zu beginnen:
 
 1. Laden Sie die aktuelle [Public Preview des Azure AD PowerShell-Moduls](https://www.powershellgallery.com/packages/AzureADPreview) herunter.
 1. Führen Sie den Befehl „Connect“ aus, um sich in Ihrem Azure AD-Administratorkonto anzumelden. Führen Sie diesen Befehl bei jedem Start einer neuen Sitzung aus.
-    
-     ``` powershell
-    Connect-AzureAD -Confirm
-    
-    ```
+
+   ``` powershell
+   Connect-AzureAD -Confirm
+   ```
 1. Führen Sie den folgenden Befehl aus, um alle Richtlinien anzuzeigen, die in Ihrer Organisation erstellt wurden. Es wird empfohlen, dass Sie diesen Befehl nach den meisten Vorgängen in den folgenden Szenarios ausführen, um zu überprüfen, dass Ihre Richtlinien wie erwartet erstellt wurden.
-   
-    ``` powershell
-        Get-AzureADPolicy
-    
-    ```
-   #### <a name="example-create-and-assign-a-policy-to-omit-the-basic-claims-from-tokens-issued-to-a-service-principal"></a>Beispiel: Erstellen und Zuweisen einer Richtlinie, um die grundlegenden Ansprüche von Token zu unterdrücken, die für einen Dienstprinzipal ausgestellt wurden.
-   In diesem Beispiel erstellen Sie eine Richtlinie, die den grundlegenden Anspruchssatz aus den Token entfernt, die an den verknüpften Dienstprinzipal ausgestellte wurden.
+
+   ``` powershell
+   Get-AzureADPolicy
+   ```
+
+#### <a name="example-create-and-assign-a-policy-to-omit-the-basic-claims-from-tokens-issued-to-a-service-principal"></a>Beispiel: Erstellen und Zuweisen einer Richtlinie, um die grundlegenden Ansprüche von Token zu unterdrücken, die für einen Dienstprinzipal ausgestellt wurden
+
+In diesem Beispiel erstellen Sie eine Richtlinie, die den grundlegenden Anspruchssatz aus den Token entfernt, die an den verknüpften Dienstprinzipal ausgestellte wurden.
 
 1. Erstellen Sie eine Anspruchszuordnungsrichtlinie. Diese Richtlinie, verknüpft mit bestimmten Dienstprinzipalen, entfernt den grundlegenden Anspruchsatz aus den Token.
    1. Führen Sie diesen Befehl aus, um die Richtlinie zu erstellen: 
@@ -462,7 +462,7 @@ Führen Sie die folgenden Schritte aus, um zu beginnen:
       ``` powershell
       Get-AzureADPolicy
       ```
-1. Weisen Sie die Richtlinie Ihrem Dienstprinzipal zu. Rufen Sie außerdem die „ObjectId“ Ihres Dienstprinzipals ab. 
+1. Weisen Sie die Richtlinie Ihrem Dienstprinzipal zu. Rufen Sie außerdem die „ObjectId“ Ihres Dienstprinzipals ab.
    1. Sie können Microsoft Graph abfragen, um alle Dienstprinzipale Ihrer Organisation anzuzeigen. Oder melden Sie sich im Graph-Explorer von Azure AD in Ihrem Azure AD-Konto an.
    2. Führen Sie den folgenden Befehl aus, wenn Sie über die ObjectId Ihres Dienstprinzipals verfügen:  
      
@@ -475,7 +475,7 @@ Führen Sie die folgenden Schritte aus, um zu beginnen:
 In diesem Beispiel erstellen Sie eine Richtlinie, die Token, die für verknüpfte Dienstprinzipale ausgestellt wurden, EmployeeID und TenantCountry hinzufügt. EmployeeID wird als Namensanspruchstyp in den SAML-Token und JWTs ausgegeben. TenantCountry wird als Landresanspruchstyp in den SAML-Token und JWTs ausgegeben. In diesem Beispiel fahren wir mit dem Einschließen des grundlegenden Anspruchssatzes in Token fort.
 
 1. Erstellen Sie eine Anspruchszuordnungsrichtlinie. Diese Richtlinie, die mit bestimmten Dienstprinzipalen verknüpft ist, fügt den Token die Ansprüche „EmployeeID“ und „TenantCountry“ hinzu.
-   1. Führen Sie diesen Befehl aus, um die Richtlinie zu erstellen:  
+   1. Führen Sie den folgenden Befehl aus, um die Richtlinie zu erstellen:  
      
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name","JwtClaimType":"name"},{"Source":"company","ID":"tenantcountry","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample" -Type "ClaimsMappingPolicy"
@@ -499,10 +499,10 @@ In diesem Beispiel erstellen Sie eine Richtlinie, die Token, die für verknüpft
 In diesem Beispiel erstellen Sie eine Richtlinie, die einen benutzerdefinierten Anspruch „JoinedData“ für JWTs ausgestellt, die für verknüpfte Dienstprinzipale ausgegeben wurden. Dieser Anspruch enthält einen Wert, der durch das Verknüpfen der Daten erstellt wird, die im Attribut „extensionattribute1“ im Benutzerobjekt mit „.sandbox“ gespeicherten wurden. In diesem Beispiel schließen wir den grundlegenden Anspruchssatz in Token aus.
 
 1. Erstellen Sie eine Anspruchszuordnungsrichtlinie. Diese Richtlinie, die mit bestimmten Dienstprinzipalen verknüpft ist, fügt den Token die Ansprüche „EmployeeID“ und „TenantCountry“ hinzu.
-   1. Führen Sie diesen Befehl aus, um die Richtlinie zu erstellen: 
+   1. Führen Sie den folgenden Befehl aus, um die Richtlinie zu erstellen:
      
       ``` powershell
-      New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformations":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"ID":"string2","Value":"sandbox"},{"ID":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample" -Type "ClaimsMappingPolicy" 
+      New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformations":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"ID":"string2","Value":"sandbox"},{"ID":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample" -Type "ClaimsMappingPolicy"
       ```
     
    2. Führen Sie den folgenden Befehl aus, um Ihre neue Richtlinie anzuzeigen und deren „ObjectId“ abzurufen: 
@@ -517,3 +517,7 @@ In diesem Beispiel erstellen Sie eine Richtlinie, die einen benutzerdefinierten 
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
+
+## <a name="see-also"></a>Weitere Informationen
+
+Weitere Informationen zum Anpassen von im SAML-Token ausgestellten Ansprüchen über das Azure-Portal finden Sie unter [Gewusst wie: Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen](active-directory-saml-claims-customization.md).

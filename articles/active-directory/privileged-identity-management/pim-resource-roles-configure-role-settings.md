@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von Einstellungen für Azure-Ressourcenrollen in PIM | Microsoft-Dokumentation
+title: Konfigurieren von Einstellungen für Azure-Ressourcenrollen in PIM – Azure Active Directory | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Einstellungen für Azure-Ressourcenrollen in Azure AD Privileged Identity Management (PIM) konfigurieren.
 services: active-directory
 documentationcenter: ''
@@ -15,16 +15,16 @@ ms.date: 08/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8f793ee22796497b96a1acbd998397dbe2ac40d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f9db39e67cf3ee67b7990f227dbad7e3210cd14b
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162134"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577151"
 ---
 # <a name="configure-azure-resource-role-settings-in-pim"></a>Konfigurieren von Einstellungen für Azure-Ressourcenrollen in PIM
 
-Wenn Sie Einstellungen von Azure-Ressourcenrollen konfigurieren, definieren Sie die Standardeinstellungen, die für Zuweisungen von Azure-Ressourcenrollen in Azure Active Directory Privileged Identity Management (PIM) gelten. Führen Sie die folgenden Schritte aus, um den Genehmigungsworkflow zu konfigurieren und anzugeben, wer Anforderungen genehmigen oder ablehnen kann.
+Wenn Sie Einstellungen von Azure-Ressourcenrollen konfigurieren, definieren Sie die Standardeinstellungen, die auf Zuweisungen von Azure-Ressourcenrollen in Azure Active Directory (Azure AD) Privileged Identity Management (PIM) angewendet werden. Führen Sie die folgenden Schritte aus, um den Genehmigungsworkflow zu konfigurieren und anzugeben, wer Anforderungen genehmigen oder ablehnen kann.
 
 ## <a name="open-role-settings"></a>Öffnen von Rolleneinstellungen
 

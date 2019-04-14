@@ -16,17 +16,18 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
+ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 687b25ea5d792edf2f582c9929a0ae5f0c2426db
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b00dd8de47422cf849d97e66698be3300b96ff83
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442072"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884549"
 ---
 # <a name="id-tokens"></a>ID-Token
 
-`id_tokens` werden als Teil eines [OpenID Connect](v1-protocols-openid-connect-code.md)-Flusses an die Clientanwendung gesendet. Sie können zusammen mit einem Zugriffstoken oder anstelle eines Zugriffstokens gesendet werden und werden vom Client zur Authentifizierung des Benutzers verwendet.
+`id_tokens` werden als Teil eines [OpenID Connect](v1-protocols-openid-connect-code.md)-Flows an die Clientanwendung gesendet. Sie können zusammen mit einem Zugriffstoken oder anstelle eines Zugriffstokens gesendet werden und werden vom Client zur Authentifizierung des Benutzers verwendet.
 
 ## <a name="using-the-idtoken"></a>Verwenden des ID-Tokens
 
@@ -34,7 +35,7 @@ ID-Token sollten verwendet werden, um zu überprüfen, ob ein Benutzer der ist, 
 
 ## <a name="claims-in-an-idtoken"></a>Ansprüche in einem ID-Token
 
-`id_tokens` für Microsoft Identity sind [JWTs](https://tools.ietf.org/html/rfc7519), d.h. sie bestehen aus einem Header, Nutzlast und einer Signatur. Sie können den Header und die Signatur verwenden, um die Authentizität des Tokens zu überprüfen, während die Nutzlast die Informationen zu dem von Ihrem Client angeforderten Benutzer enthält. Sofern nicht anders angegeben, sind alle hier aufgeführten Ansprüche sowohl in v1.0- als auch in v2.0-Token enthalten.
+`id_tokens` für Microsoft Identity sind [JWTs](https://tools.ietf.org/html/rfc7519), d. h. sie bestehen aus einem Header, Nutzlast und einer Signatur. Sie können den Header und die Signatur verwenden, um die Authentizität des Tokens zu überprüfen, während die Nutzlast die Informationen zu dem von Ihrem Client angeforderten Benutzer enthält. Sofern nicht anders angegeben, sind alle hier aufgeführten Ansprüche sowohl in v1.0- als auch in v2.0-Token enthalten.
 
 ### <a name="v10"></a>v1.0
 
@@ -79,6 +80,7 @@ Zeigen Sie dieses v2. 0-Beispieltoken in [jwt.ms](https://jwt.ms/#id_token=eyJ0e
 |`name` | Zeichenfolge | Der `name`-Anspruch gibt einen visuell lesbaren Wert an, der den Antragsteller des Tokens identifiziert. Der Wert ist nicht zwingend eindeutig, kann geändert werden und dient nur zu Anzeigezwecken. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |
 |`nonce`| Zeichenfolge | Die Nonce stimmt mit dem Parameter überein, der in der ursprünglichen /authorize-Anforderung an den IDP enthalten ist. Wenn diese Angaben nicht übereinstimmen, sollte Ihre Anwendung das Token ablehnen. |
 |`oid` | Zeichenfolge, eine GUID | Der unveränderliche Bezeichner für ein Objekt im Microsoft-Identitätssystem, in diesem Fall ein Benutzerkonto. Diese ID identifiziert den Benutzer anwendungsübergreifend eindeutig: Zwei verschiedene Anwendungen, die den gleichen Benutzer anmelden, erhalten den gleichen Wert im `oid`-Anspruch. Microsoft Graph gibt diese ID als `id`-Eigenschaft für ein bestimmtes Benutzerkonto zurück. Da mit `oid` mehrere Apps Benutzer korrelieren können, ist der `profile`-Bereich erforderlich, um diesen Anspruch zu erhalten. Beachten Sie Folgendes: Wenn ein einzelner Benutzer in mehreren Mandanten vorhanden ist, enthält der Benutzer in jedem Mandanten eine andere Objekt-ID. Sie werden als unterschiedliche Konten betrachtet, obwohl sich der Benutzer bei jedem Konto mit den gleichen Anmeldeinformationen anmeldet. |
+|`roles`| Array von Zeichenfolgen | Die Rollen, die dem sich anmeldenden Benutzer zugewiesen wurden. |
 |`rh` | Nicht transparente Zeichenfolge |Ein interner Anspruch, der von Azure verwendet wird, um Token erneut zu überprüfen. Sollte ignoriert werden. |
 |`sub` | Zeichenfolge, eine GUID | Der Prinzipal, für den das Token Informationen zusichert, z. B. der Benutzer einer App. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Der Antragsteller ist ein paarweiser Bezeichner: Er gilt nur für eine bestimmte Anwendungs-ID. Wenn sich ein Benutzer bei zwei verschiedenen Apps mit zwei verschiedenen Client-IDs anmeldet, erhalten diese Apps zwei unterschiedliche Werte für den Antragstelleranspruch. Dies kann abhängig von den Architektur- und Datenschutzanforderungen möglicherweise wünschenswert sein oder nicht. |
 |`tid` | Zeichenfolge, eine GUID | Eine GUID, die den Azure AD-Mandanten darstellt, aus dem der Benutzer stammt. Bei Geschäfts- und Schulkonten ist die GUID die unveränderliche Mandanten-ID der Organisation, zu der der Benutzer gehört. Für persönliche Konten lautet der Wert `9188040d-6c67-4c5b-b112-36a304b66dad`. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |

@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren von Einstellungen für Azure AD-Verzeichnisrollen in PIM | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Einstellungen für Azure AD-Verzeichnisrollen in Azure AD Privileged Identity Management (PIM) konfigurieren.
+title: Konfigurieren von Einstellungen für Azure AD-Rollen in PIM – Azure Active Directory | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Einstellungen für Azure AD-Rollen in Azure AD Privileged Identity Management (PIM) konfigurieren.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,34 +14,34 @@ ms.date: 11/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 761bb31ca51f29547f594af99f779665a255c0be
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b14cf76ec7b8b905c41792f4dc9a56e97dc0f7ba
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162542"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576861"
 ---
-# <a name="configure-azure-ad-directory-role-settings-in-pim"></a>Konfigurieren von Einstellungen für Azure AD-Verzeichnisrollen in PIM
+# <a name="configure-azure-ad-role-settings-in-pim"></a>Konfigurieren von Einstellungen für Azure AD-Rollen in PIM
 
-Ein Administrator für privilegierte Rollen kann Azure AD Privileged Identity Management (PIM) in der Organisation anpassen und hierbei auch die Art und Weise ändern, in der ein Benutzer eine berechtigte Rollenzuweisung aktiviert.
+Ein Administrator für privilegierte Rollen kann Azure Active Directory (Azure AD) Privileged Identity Management (PIM) in der Organisation anpassen und dabei auch die Art und Weise ändern, in der ein Benutzer eine berechtigte Rollenzuweisung aktiviert.
 
 ## <a name="open-role-settings"></a>Öffnen von Rolleneinstellungen
 
-Führen Sie diese Schritte aus, um die Einstellungen für eine Azure AD-Verzeichnisrolle zu öffnen.
+Führen Sie die folgenden Schritte aus, um die Einstellungen für eine Azure AD-Rolle zu öffnen.
 
 1. Öffnen Sie **Azure AD Privileged Identity Management**.
 
-1. Klicken Sie auf **Azure AD-Verzeichnisrollen**.
+1. Klicken Sie auf **Azure AD-Rollen**.
 
 1. Klicken Sie auf **Einstellungen**.
 
-    ![Azure AD-Verzeichnisrollen – Einstellungen](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
+    ![Azure AD-Rollen – Einstellungen](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
 
 1. Klicken Sie auf **Rollen**.
 
 1. Klicken Sie auf die Rolle, deren Einstellungen Sie konfigurieren möchten.
 
-    ![Azure AD-Verzeichnisrollen – Einstellungen: Rollen](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-role.png)
+    ![Azure AD-Rollen – Einstellungen für Rollen](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-role.png)
 
     Auf der Einstellungsseite für jede Rolle können Sie verschiedene Einstellungen konfigurieren. Diese Einstellungen wirken sich nur auf Benutzer aus, die über **berechtigte** Zuweisungen verfügen, nicht über **permanente** Zuweisungen.
 
@@ -98,13 +98,13 @@ Wenn Sie für die Aktivierung einer Rolle eine Genehmigung anfordern möchten, g
 
 1. Legen Sie den Schalter **Genehmigung anfordern** auf **Aktiviert** fest. Der Bereich wird erweitert und zeigt Optionen zum Auswählen von genehmigenden Personen an.
 
-    ![Azure AD-Verzeichnisrollen – Einstellungen: Genehmigung anfordern](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
+    ![Azure AD-Rollen – Einstellungen: Genehmigung anfordern](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
 
     Wenn Sie **KEINE** genehmigenden Personen angeben, werden Administratoren mit privilegierten Rollen als standardmäßige genehmigende Personen festgelegt. Administratoren mit privilegierten Rollen sind erforderlich, um **ALLE** Aktivierungsanforderungen für diese Rolle zu genehmigen.
 
 1. Um genehmigende Personen anzugeben, klicken Sie auf **Genehmigende Personen auswählen**.
 
-    ![Azure AD-Verzeichnisrollen – Einstellungen: Genehmigung anfordern](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
+    ![Azure AD-Rollen – Einstellungen: Genehmigung anfordern](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
 
 1. Wählen Sie eine oder mehrere genehmigende Personen aus, und klicken Sie anschließend auf **Auswählen**. Sie können Benutzer oder Gruppen auswählen. Es werden mindestens zwei genehmigende Personen empfohlen. Eine Genehmigung für die eigene Rolle ist nicht zulässig.
 
@@ -117,5 +117,5 @@ Wenn Sie für die Aktivierung einer Rolle eine Genehmigung anfordern möchten, g
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Zuweisen von Azure AD-Verzeichnisrollen in PIM](pim-how-to-add-role-to-user.md)
-- [Konfigurieren von Sicherheitswarnungen für Azure AD-Verzeichnisrollen in PIM](pim-how-to-configure-security-alerts.md)
+- [Zuweisen von Azure AD-Rollen in PIM](pim-how-to-add-role-to-user.md)
+- [Konfigurieren von Sicherheitswarnungen für Azure AD-Rollen in PIM](pim-how-to-configure-security-alerts.md)

@@ -1,5 +1,5 @@
 ---
-title: Was sind Azure AD-Zugriffsüberprüfungen? | Microsoft-Dokumentation
+title: Worum handelt es sich bei Zugriffsüberprüfungen? – Azure Active Directory | Microsoft-Dokumentation
 description: Mithilfe von Azure Active Directory-Zugriffsüberprüfungen können Sie Gruppenmitgliedschaften und den Anwendungszugriff steuern, um die Anforderungen von Governance-, Risikomanagement- und Konformitätsinitiativen in Ihrer Organisation zu erfüllen.
 services: active-directory
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.date: 01/18/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ab3570cb7e3e8b09425bf4c05f7f5725fd21d4f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1563a023f397999deb5c6abd40843d6a376b0492
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57845153"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576121"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Was sind Azure AD-Zugriffsüberprüfungen?
 
-Mithilfe von Azure Active Directory-Zugriffsüberprüfungen (Azure AD-Zugriffsüberprüfungen) können Unternehmen Gruppenmitgliedschaften, den Zugriff auf Unternehmensanwendungen und Rollenzuweisungen effizient verwalten. Der Benutzerzugriff kann regelmäßig überprüft werden, um sicherzustellen, dass nur die richtigen Personen weiterhin Zugriff haben.
+Mithilfe von Azure Active Directory-Zugriffsüberprüfungen (Azure AD-Zugriffsüberprüfungen) können Organisationen Gruppenmitgliedschaften, den Zugriff auf Unternehmensanwendungen und Rollenzuweisungen effizient verwalten. Der Benutzerzugriff kann regelmäßig überprüft werden, um sicherzustellen, dass nur die richtigen Personen weiterhin Zugriff haben.
 
 Das folgende Video bietet einen kurzen Überblick über Zugriffsüberprüfungen:
 
@@ -42,7 +42,7 @@ Azure AD ermöglicht Ihnen die interne Zusammenarbeit mit Mitarbeitern in Ihrer 
 
 ## <a name="when-to-use-access-reviews"></a>In welchen Fällen sollten Zugriffsüberprüfungen verwendet werden?
 
-- **Zu viele Benutzer in privilegierten Rollen:** Sie sollten überprüfen, wie viele Benutzer über Administratorzugriff verfügen, wie viele dieser Benutzer globale Administratoren sind und ob es eingeladene Gäste oder Partner gibt, die nicht entfernt wurden, nachdem ihnen eine administrative Aufgabe zugewiesen wurde. Sie können die Rollenzuweisung für Benutzer in [Azure AD-Verzeichnisrollen](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) wie globale Administratoren oder in [Azure-Ressourcenrollen](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) wie Benutzerzugriffsadministratoren in [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) erneut bestätigen.
+- **Zu viele Benutzer in privilegierten Rollen:** Sie sollten überprüfen, wie viele Benutzer über Administratorzugriff verfügen, wie viele dieser Benutzer globale Administratoren sind und ob es eingeladene Gäste oder Partner gibt, die nicht entfernt wurden, nachdem ihnen eine administrative Aufgabe zugewiesen wurde. Sie können die Rollenzuweisung für Benutzer in [Azure AD-Rollen](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) wie globale Administratoren oder in [Azure-Ressourcenrollen](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json) wie Benutzerzugriffsadministratoren in [Azure AD Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) erneut bestätigen.
 - **Wenn eine Automatisierung nicht möglich ist:** Sie können Regeln für dynamische Mitgliedschaften für Sicherheits- oder Office 365-Gruppen erstellen. Was geschieht aber, wenn die Personaldaten nicht in Azure AD gespeichert sind oder die Benutzer nach dem Verlassen der Gruppe weiterhin Zugriff benötigen, um ihre Nachfolger einzuarbeiten? Dann können Sie eine Überprüfung für diese Gruppe erstellen, um sicherzustellen, dass die Benutzer, die weiterhin Zugriff benötigen, auch weiterhin Zugriff haben.
 - **Wenn eine Gruppe zu einem neuen Zweck verwendet wird:** Wenn Sie über eine Gruppe verfügen, die mit Azure AD synchronisiert wird, oder wenn Sie die Salesforce-Anwendung für alle Benutzer in der Gruppe „Vertriebsteam“ aktivieren möchten, wäre es sinnvoll, den Besitzer der Gruppe zu bitten, die Gruppenmitgliedschaft zu überprüfen, bevor die Gruppe in einem anderen Risikokontext verwendet wird.
 - **Unternehmenskritischer Datenzugriff:** Bei bestimmten Ressourcen kann es zu Überwachungszwecken erforderlich sein, die Mitarbeiter außerhalb der IT-Abteilung zu bitten, sich regelmäßig abzumelden und zu begründen, warum sie Zugriff benötigen.
@@ -52,13 +52,13 @@ Azure AD ermöglicht Ihnen die interne Zusammenarbeit mit Mitarbeitern in Ihrer 
 
 ## <a name="where-do-you-create-reviews"></a>Wo erstellen Sie Überprüfungen?
 
-Je nachdem, was Sie überprüfen möchten, erstellen Sie Ihre Zugriffsüberprüfung in Azure AD Access Reviews (Azure AD-Zugriffsüberprüfungen), Azure AD-Unternehmens-Apps (in der Vorschauversion) oder Azure AD PIM.
+Je nachdem, was Sie überprüfen möchten, erstellen Sie Ihre Zugriffsüberprüfung in Azure AD-Zugriffsüberprüfungen, Azure AD-Unternehmens-Apps (in der Vorschauversion) oder Azure AD PIM.
 
 | Zugriffsrechte von Benutzern | Prüfer | Überprüfung erstellt in | Prüferoberfläche |
 | --- | --- | --- | --- |
 | Mitglieder von Sicherheitsgruppen</br>Mitglieder von Office-Gruppen | Angegebene Prüfer</br>Gruppenbesitzer</br>Selbstüberprüfung | Azure AD-Zugriffsüberprüfungen</br>Azure AD-Gruppen | Zugriffsbereich |
 | Einer verbundenen App zugewiesen | Angegebene Prüfer</br>Selbstüberprüfung | Azure AD-Zugriffsüberprüfungen</br>Azure AD-Unternehmens-Apps (in der Vorschauversion) | Zugriffsbereich |
-| Azure AD-Verzeichnisrolle | Angegebene Prüfer</br>Selbstüberprüfung | Azure AD PIM | Azure-Portal |
+| Azure AD-Rolle | Angegebene Prüfer</br>Selbstüberprüfung | Azure AD PIM | Azure-Portal |
 | Azure-Ressourcenrolle | Angegebene Prüfer</br>Selbstüberprüfung | Azure AD PIM | Azure-Portal |
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -94,7 +94,7 @@ Führen Sie die folgenden Schritte aus, um Zugriffsüberprüfungen zu aktivieren
 
 1. Klicken Sie in der Navigationsliste auf **Integrieren**, um die Seite **Zugriffsüberprüfungen integrieren** zu öffnen.
 
-    ![Zugriffsüberprüfungen – Integrieren](./media/access-reviews-overview/onboard-button.png)
+    ![Zugriffsüberprüfungen integrieren](./media/access-reviews-overview/onboard-button.png)
 
 1. Klicken Sie auf **Erstellen**, um Zugriffsüberprüfungen im aktuellen Verzeichnis zu aktivieren.
 

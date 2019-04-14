@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f622be53297a9d091a62a1239f022bbd4fb71347
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 3f1dbd4b6635d615cc7bed4cf5cc38234ec0c3f1
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311763"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885994"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen
 
@@ -34,7 +34,7 @@ Einige dieser Einstellungen gelten für MFA-Server, Azure-MFA oder beide Optione
 | ------- | ----------- |
 | Kontosperrung | Hiermit werden Konten im MFA-Dienst temporär gesperrt, wenn zu viele aufeinanderfolgende Authentifizierungsversuche abgelehnt werden. Dieses Feature wird nur auf Benutzer angewendet, die zur Authentifizierung eine PIN eingeben. (MFA-Server) |
 | [Benutzer sperren/zulassen](#block-and-unblock-users) | Wird verwendet, um bestimmte Benutzer auf dem MFA-Server (lokal) daran zu hindern, Multi-Factor Authentication-Anforderungen zu empfangen. Authentifizierungsversuche für gesperrte Benutzer werden automatisch abgelehnt. Benutzer bleiben ab dem Zeitpunkt der Sperrung 90 Tage lang gesperrt. |
-| [Betrugswarnung](#fraud-alert) | Konfigurieren Sie Einstellungen, damit Benutzer betrügerische Überprüfungsanforderungen vom MFA-Server melden können. |
+| [Betrugswarnung](#fraud-alert) | Konfigurieren Sie Einstellungen, damit Benutzer betrügerische Überprüfungsanforderungen melden können. |
 | Benachrichtigungen | Aktivieren Sie Benachrichtigungen für Ereignisse vom MFA-Server. |
 | [OATH-Token](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | Wird in Cloud-basierten Azure MFA-Umgebungen verwendet, um OATH-Token für Benutzer zu verwalten. |
 | [Einstellungen für Telefonanruf](#phone-call-settings) | Konfigurieren Sie Einstellungen für Telefonanrufe und Ansagen für Cloud- und lokale Umgebungen. |
@@ -57,7 +57,7 @@ Diese Berichterstellung ist nur für den MFA-Server (lokal) verfügbar. Lesen Si
 
 ## <a name="block-and-unblock-users"></a>Benutzer sperren/zulassen
 
-Verwenden Sie das Feature _Benutzer sperren/zulassen_, um zu verhindern, dass Benutzer Authentifizierungsanforderungen erhalten. Authentifizierungsversuche für gesperrte Benutzer werden automatisch abgelehnt. Benutzer bleiben ab dem Zeitpunkt der Sperrung 90 Tage lang gesperrt. Dieses Feature ist nur für den MFA-Server (lokal) verfügbar.
+Verwenden Sie das Feature _Benutzer sperren/zulassen_, um zu verhindern, dass Benutzer Authentifizierungsanforderungen erhalten. Authentifizierungsversuche für gesperrte Benutzer werden automatisch abgelehnt. Benutzer bleiben ab dem Zeitpunkt der Sperrung 90 Tage lang gesperrt.
 
 ### <a name="block-a-user"></a>Sperren eines Benutzers
 
@@ -77,7 +77,7 @@ Verwenden Sie das Feature _Benutzer sperren/zulassen_, um zu verhindern, dass Be
 
 ## <a name="fraud-alert"></a>Betrugswarnung
 
-Konfigurieren Sie das Feature _Betrugswarnung_, damit Ihre Benutzer betrügerische Versuche, auf ihre Ressourcen zuzugreifen, melden können. Benutzer können betrügerische Versuche mit der mobilen App oder per Telefon melden. Dieses Feature ist nur für den MFA-Server (lokal) verfügbar.
+Konfigurieren Sie das Feature _Betrugswarnung_, damit Ihre Benutzer betrügerische Versuche, auf ihre Ressourcen zuzugreifen, melden können. Benutzer können betrügerische Versuche mit der mobilen App oder per Telefon melden.
 
 ### <a name="turn-on-fraud-alerts"></a>Aktivieren von Betrugswarnungen
 

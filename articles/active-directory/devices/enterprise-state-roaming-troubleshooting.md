@@ -19,16 +19,18 @@ ms.author: joflore
 ms.reviewer: tanning
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 728a67513bd66b6c39d1f366789172ee2963f6cc
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: cce60769ffae399062a50e1b2c28c1cd6e49a47e
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517469"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904252"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Problembehandlung bei Enterprise State Roaming-Einstellungen in Azure Active Directory
 
 Dieses Thema enthält Informationen zur Behandlung und Diagnose von Problemen mit Enterprise State Roaming sowie eine Liste bekannter Probleme.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="preliminary-steps-for-troubleshooting"></a>Vorbereitende Schritte zur Problembehandlung 
 
@@ -162,7 +164,7 @@ Wenn der Benutzer einen Benutzerprinzipalnamen mit gemischter Groß-/Kleinschrei
 Der Benutzer muss das Gerät aus der Cloud entfernen und anschließend erneut verbinden. Melden Sie sich hierfür als Benutzer mit der Berechtigung „Lokaler Administrator“ an. Trennen Sie das Gerät, indem Sie zu **Einstellungen** > **System** > **Info** navigieren. Aktivieren Sie „Arbeit oder Schule verwalten bzw. davon trennen“. Bereinigen Sie die unten aufgeführten Dateien, und verbinden Sie dann das Gerät erneut mit Azure AD. Wählen Sie dazu unter **Einstellungen** > **System** > **Info** „Mit Arbeit, Schule oder Uni verbinden“ aus. Setzen Sie das Verbinden des Geräts mit Azure Active Directory fort, und schließen Sie den Vorgang ab.
 
 Bereinigen Sie im Bereinigungsschritt die folgenden Dateien:
-- „Settings.dat“ in`C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`
+- „Settings.dat“ in `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`
 - Alle Dateien im Ordner `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account`
 
 ---

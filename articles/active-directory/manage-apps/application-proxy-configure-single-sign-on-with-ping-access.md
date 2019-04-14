@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4df8f329a135683ea68896605a0a1c6f3ee45984
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8eef15098eed8959655ae2904bf41a8c3dffc9f4
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084080"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882789"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Headerbasierte Authentifizierung für einmaliges Anmelden mit Anwendungsproxy und PingAccess
 
@@ -43,7 +43,7 @@ Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](../fun
 
 ## <a name="publish-your-application-in-azure"></a>Veröffentlichen der Anwendung in Azure
 
-Dieser Artikel richtet sich an Personen, die in diesem Szenario erstmals eine App veröffentlichen. Zusätzlich zu den Schritten für die Veröffentlichung durchlaufen Sie die ersten Schritte mit dem Anwendungsproxy und PingAccess. Falls Sie bereits beide Dienste konfiguriert haben, aber eine Auffrischung zu den Veröffentlichungsschritten erhalten möchten, können Sie die Connectorinstallation überspringen und mit [Hinzufügen Ihrer App zu Azure AD mit Anwendungsproxy](#add-your-app-to-Azure-AD-with-Application-Proxy) fortfahren.
+Dieser Artikel richtet sich an Personen, die in diesem Szenario erstmals eine App veröffentlichen. Zusätzlich zu den Schritten für die Veröffentlichung durchlaufen Sie die ersten Schritte mit dem Anwendungsproxy und PingAccess. Falls Sie bereits beide Dienste konfiguriert haben, aber eine Auffrischung zu den Veröffentlichungsschritten erhalten möchten, können Sie die Connectorinstallation überspringen und mit [Hinzufügen Ihrer App zu Azure AD mit Anwendungsproxy](#add-your-app-to-azure-ad-with-application-proxy) fortfahren.
 
 >[!NOTE]
 >Da dieses Szenario auf einer Partnerschaft von Azure AD und PingAccess beruht, gelten einige der Anweisungen für die Ping Identity-Website.
@@ -54,7 +54,7 @@ Wenn Sie den Anwendungsproxy bereits aktiviert und einen Connector installiert h
 
 Der Anwendungsproxyconnector ist ein Windows Server-Dienst, der den Datenverkehr von den Remotemitarbeitern zu Ihren veröffentlichten Apps weiterleitet. Ausführlichere Installationsanweisungen finden Sie unter [Aktivieren des Anwendungsproxys über das Azure-Portal](application-proxy-add-on-premises-application.md).
 
-1. Melden Sie sich als globaler Administrator beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich als Anwendungsadministrator beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie **Azure Active Directory** > **Anwendungsproxy** aus.
 3. Wählen Sie **Connector herunterladen** aus, um den Anwendungsproxyconnector herunterzuladen. Folgen Sie den Installationsanweisungen.
 
@@ -69,7 +69,7 @@ Im Azure-Portal müssen Sie zwei Aktionen durchführen. Zuerst veröffentlichen 
 
 Führen Sie diese Schritte aus, um Ihre App zu veröffentlichen. Eine ausführlichere Beschreibung der Schritte 1 bis 8 finden Sie unter [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](application-proxy-add-on-premises-application.md).
 
-1. Falls nicht im letzten Abschnitt erfolgt, melden Sie sich beim [Azure-Portal](https://portal.azure.com) als globaler Administrator an.
+1. Melden Sie sich als Anwendungsadministrator beim [Azure-Portal](https://portal.azure.com) an, sofern Sie diesen Schritt nicht im letzten Abschnitt ausgeführt haben.
 2. Wählen Sie **Azure Active Directory** > **Unternehmensanwendungen** aus.
 3. Wählen Sie oben auf dem Blatt **Hinzufügen** aus.
 4. Wählen Sie **Lokale Anwendung** aus.
@@ -153,7 +153,7 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
 }
 ```
 In diesem Beispiel wird das [Azure-Portal](https://portal.azure.com) zum Aktualisieren des Felds *acceptedMappedClaims* verwendet:
-1. Melden Sie sich als globaler Administrator beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich als Anwendungsadministrator beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf **Azure Active Directory** > **App-Registrierungen**.
 3. Wählen Sie Ihre Anwendung und dann **Manifest** aus.
 4. Wählen Sie **Bearbeiten** aus, suchen Sie nach dem Feld *acceptedMappedClaims*, und ändern Sie den Wert in **true**.
@@ -163,7 +163,7 @@ In diesem Beispiel wird das [Azure-Portal](https://portal.azure.com) zum Aktuali
 >[!NOTE]
 >Um einen benutzerdefinierten Anspruch zu verwenden, benötigen Sie auch eine für diese Anwendung definierte und ihr zugewiesene benutzerdefinierte Richtlinie.  Diese Richtlinie sollte alle erforderlichen benutzerdefinierten Attribute enthalten.
 >
->Richtliniendefinition und Zuweisung können über PowerShell, Azure AD Graph Explorer oder MS Graph ausgeführt werden.  Wenn Sie dies in PowerShell tun, müssen Sie möglicherweise zuerst `New-AzureADPolicy ` verwenden und dann der Anwendung mit `Set-AzureADServicePrincipalPolicy` zuweisen.  Weitere Informationen finden Sie unter [Zuweisung von Anspruchszuordnungsrichtlinien](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
+>Richtliniendefinition und Zuweisung können über PowerShell, Azure AD Graph Explorer oder MS Graph ausgeführt werden.  Wenn Sie dies in PowerShell ausführen, müssen Sie möglicherweise zuerst `New-AzureADPolicy` verwenden und die Richtlinie dann der Anwendung mit `Set-AzureADServicePrincipalPolicy` zuweisen.  Weitere Informationen finden Sie unter [Zuweisung von Anspruchszuordnungsrichtlinien](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
 
 ### <a name="optional---use-a-custom-claim"></a>Optional – Verwenden eines benutzerdefinierten Anspruchs
 Damit Ihre Anwendung einen benutzerdefinierten Anspruch verwenden und zusätzliche Felder beinhalten kann, achten Sie darauf, dass Sie auch [eine Richtlinie für die Zuordnung benutzerdefinierter Ansprüche erstellt und der Anwendung zugeordnet haben ](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment).
@@ -182,6 +182,6 @@ Nachdem Sie alle Schritte abgeschlossen haben, sollte Ihre App betriebsbereit se
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Configure PingAccess for Azure AD](https://docs.pingidentity.com/bundle/paaad_m_ConfigurePAforMSAzureADSolution_paaad43/page/pa_c_PAAzureSolutionOverview.html) (Konfigurieren von PingAccess für Azure AD)
+- [Konfigurieren von PingAccess für Azure AD](https://docs.pingidentity.com/bundle/paaad_m_ConfigurePAforMSAzureADSolution_paaad43/page/pa_c_PAAzureSolutionOverview.html)
 - [Wie stellt der Azure AD-Anwendungsproxy das einmalige Anmelden bereit?](application-proxy-single-sign-on.md)
 - [Problembehandlung von Anwendungsproxys](application-proxy-troubleshoot.md)

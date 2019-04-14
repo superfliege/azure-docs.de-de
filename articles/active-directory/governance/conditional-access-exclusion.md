@@ -1,6 +1,6 @@
 ---
-title: Verwenden von Azure AD-Zugriffsüberprüfungen zum Verwalten von Benutzern, die aus Richtlinien für den bedingten Zugriff ausgeschlossen sind | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mit Azure AD-Zugriffsüberprüfungen (Azure Active Directory) Benutzer verwalten, die aus Richtlinien für den bedingten Zugriff ausgeschlossen wurden
+title: Verwenden von Zugriffsüberprüfungen zum Verwalten von Benutzern, die aus Richtlinien für den bedingten Zugriff ausgeschlossen sind – Azure Active Directory | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie mit Azure Active Directory-Zugriffsüberprüfungen (Azure AD-Zugriffsüberprüfungen) Benutzer verwalten, die aus Richtlinien für den bedingten Zugriff ausgeschlossen wurden.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,12 +16,12 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a197a6c27b337d7aa97667dc07b1059e82050549
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7675441316e42c7f0a220abe77bc8c62158ef918
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57892716"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577130"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Verwenden von Azure AD-Zugriffsüberprüfungen zum Verwalten von Benutzern, die aus Richtlinien für den bedingten Zugriff ausgeschlossen sind
 
@@ -44,7 +44,7 @@ In einem weiteren Beispiel wird ggf. eine Richtlinie für bedingten Zugriff verw
 
 ## <a name="why-are-exclusions-challenging"></a>Warum stellen Ausschlüsse eine Herausforderung dar?
 
-In Azure AD können Sie den Bereich für eine Richtlinie für bedingten Zugriff auf eine Gruppe von Benutzern festlegen. Sie können auch einige dieser Benutzer ausschließen, indem Sie Verzeichnisrollen, einzelne Benutzer und Gäste von Benutzern auswählen. Es ist wichtig, Folgendes zu beachten: Wenn diese Ausschlüsse konfiguriert sind, kann die Absicht der Richtlinie für die betreffenden Benutzer nicht erzwungen werden. Falls diese Ausschlüsse entweder als Liste mit einzelnen Benutzern oder über eine lokale Legacysicherheitsgruppe konfiguriert werden, werden die Sichtbarkeit dieser Ausschlussliste (Benutzer wissen davon ggf. nichts) und die Kontrolle des IT-Administrators darüber (Benutzer können der Sicherheitsgruppe beitreten, um die Richtlinie zu umgehen) eingeschränkt. Außerdem kann es sein, dass Benutzer, die ursprünglich für den Ausschluss qualifiziert waren, diesen nicht mehr benötigen oder dafür nicht mehr qualifiziert sind.
+In Azure AD können Sie den Bereich für eine Richtlinie für bedingten Zugriff auf eine Gruppe von Benutzern festlegen. Sie können auch einige dieser Benutzer ausschließen, indem Sie Azure AD-Rollen, einzelne Benutzer oder Gäste von Benutzern auswählen. Es ist wichtig, Folgendes zu beachten: Wenn diese Ausschlüsse konfiguriert sind, kann die Absicht der Richtlinie für die betreffenden Benutzer nicht erzwungen werden. Falls diese Ausschlüsse entweder als Liste mit einzelnen Benutzern oder über eine lokale Legacysicherheitsgruppe konfiguriert werden, werden die Sichtbarkeit dieser Ausschlussliste (Benutzer wissen davon ggf. nichts) und die Kontrolle des IT-Administrators darüber (Benutzer können der Sicherheitsgruppe beitreten, um die Richtlinie zu umgehen) eingeschränkt. Außerdem kann es sein, dass Benutzer, die ursprünglich für den Ausschluss qualifiziert waren, diesen nicht mehr benötigen oder dafür nicht mehr qualifiziert sind.
 
 Zu Beginn eines Ausschlusses ist die Liste mit den Benutzern, die die Richtlinie umgehen können, erst einmal sehr kurz. Im Laufe der Zeit werden immer mehr Benutzer ausgeschlossen, und die Liste wird umfangreicher. An einem bestimmten Punkt muss für die Liste eine Überprüfung durchgeführt und bestätigt werden, dass die einzelnen Benutzer weiterhin ausgeschlossen sein sollen. Die Verwaltung der Liste aus technischer Sicht kann relativ einfach sein, aber wer trifft die geschäftlichen Entscheidungen, und wie stellen Sie sicher, dass alles überwachbar ist?
 

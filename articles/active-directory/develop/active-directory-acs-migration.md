@@ -17,12 +17,12 @@ ms.date: 10/03/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed2164fc122621a4ba2aeb4bb0797db02b10a4bf
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5f9fd062d445fb738842667cab0c24332c0e4cc8
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449137"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879255"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Gewusst wie: Migrieren aus dem Azure Access Control Service
 
@@ -101,9 +101,9 @@ Führen Sie die Schritte in diesem Abschnitt aus, um zu ermitteln, welche Apps v
 
 ### <a name="check-which-applications-will-be-impacted"></a>Überprüfen, welche Anwendungen betroffen sind
 
-1. Verwenden Sie den Namespace aus dem vorherigen Schritt, und navigieren Sie zu `https://<namespace>.accesscontrol.windows.net`.
+1. Verwenden Sie den Namespace aus dem vorherigen Schritt, und navigieren Sie zu `https://<namespace>.accesscontrol.windows.net`
 
-    Navigieren Sie beispielsweise zu `https://contoso-test.accesscontrol.windows.net`, wenn einer der Namespaces „contoso-test“ ist.
+    Wenn einer der Namespaces beispielsweise „contoso-test“ ist, navigieren Sie zu `https://contoso-test.accesscontrol.windows.net`
 
 1. Wählen Sie unter **Vertrauensstellungen** die Option **Anwendungen der vertrauenden Seite**, um die Liste mit den Apps anzuzeigen, auf die sich die ACS-Deaktivierung auswirkt.
 1. Wiederholen Sie die Schritte 1 und 2 für alle anderen ACS-Namespaces, die ggf. vorhanden sind.
@@ -134,10 +134,10 @@ Alle Microsoft-Clouddienste, die von Access Control ausgestellte Token akzeptier
 | Azure-Servicebus | [Migrieren zu Shared Access Signatures](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
 | Azure Service Bus Relay | [Migrieren zu Shared Access Signatures](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
 | Azure Managed Cache | [Migrieren zu Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-faq#which-azure-cache-offering-is-right-for-me) |
-| Azure DataMarket | [DataMarket ist jetzt veraltet](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
+| Azure DataMarket | [Migrieren zu Cognitive Services-APIs](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
 | BizTalk Services | [Migrieren zum Feature Logic Apps von Azure App Service](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
-| Azure Media Services | [Azure Media Services announces support for AAD and deprecation of ACS authentication](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) (Azure Media Services verkündet Unterstützung für AAD sowie Einstellung der ACS-Authentifizierung) |
-| Azure Backup | [Upgrade des Azure Backup-Agents](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq) |
+| Azure Media Services | [Migrieren zu Azure AD-Authentifizierung](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |
+| Azure Backup | [Durchführen eines Upgrades für den Azure Backup-Agent](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq) |
 
 <!-- Dynamics CRM: Migrate to new SDK, Dynamics team handling privately -->
 <!-- Azure RemoteApp deprecated in favor of Citrix: https://www.zdnet.com/article/microsoft-to-drop-azure-remoteapp-in-favor-of-citrix-remoting-technologies/ -->
@@ -152,8 +152,8 @@ Kunden von SharePoint 2013, 2016 und SharePoint Online haben ACS lange zu Authen
 
 | Feature | Anleitungen |
 | ------- | -------- |
-| Authentifizieren von Benutzern aus Azure AD | Bisher wurden SAML 1.1-Token, die SharePoint zur Authentifizierung benötigt, von Azure AD nicht unterstützt, und ACS wurde als Zwischenstufe verwendet, die SharePoint mit Azure AD-Tokenformaten kompatibel machte. Jetzt können Sie [SharePoint mithilfe des Azure AD-App-Katalogs direkt mit Azure AD verbinden](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial). |
-| [Lokale App-Authentifizierung und Server-zu-Server-Authentifizierung in SharePoint](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | Von ACS-Deaktivierung nicht betroffen. Es sind keine Änderungen erforderlich. | 
+| Authentifizieren von Benutzern aus Azure AD | Bisher wurden SAML 1.1-Token, die SharePoint zur Authentifizierung benötigt, von Azure AD nicht unterstützt, und ACS wurde als Zwischenstufe verwendet, die SharePoint mit Azure AD-Tokenformaten kompatibel machte. Jetzt können Sie [SharePoint mithilfe der lokalen SharePoint-App aus dem Azure AD-App-Katalog direkt mit Azure AD verbinden](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial). |
+| [App-Authentifizierung und Server-zu-Server-Authentifizierung in der lokalen SharePoint-Instanz](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | Von ACS-Deaktivierung nicht betroffen. Es sind keine Änderungen erforderlich. | 
 | [Autorisierung auf niedriger Vertrauensebene für SharePoint-Add-Ins (Anbieter gehostet und SharePoint gehostet)](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | Von ACS-Deaktivierung nicht betroffen. Es sind keine Änderungen erforderlich. |
 | [SharePoint-Cloudhybridsuche](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | Von ACS-Deaktivierung nicht betroffen. Es sind keine Änderungen erforderlich. |
 
@@ -211,7 +211,7 @@ Im Allgemeinen ist *Azure Active Directory wahrscheinlich die richtige Wahl für
 | Anpassbare Benutzeroberfläche für Startbereichsermittlung/Kontoauswahl | Code zum Herunterladen, der in Apps integriert werden kann | Nicht unterstützt |
 | Hochladen von benutzerdefinierten Tokensignaturzertifikaten | Unterstützt | Unterstützt |
 | Anpassen von Ansprüchen in Token |- Übergeben von Eingabeansprüchen von Identitätsanbietern<br />- Abrufen des Zugriffstokens von Identitätsanbietern als Anspruch<br />- Ausstellen von Ausgabeansprüchen basierend auf den Werten der Eingabeansprüche<br />- Ausstellen von Ausgabeansprüchen mit konstanten Werten |- Übergeben von Ansprüchen von Verbundidentitätsanbietern nicht möglich<br />- Abrufen des Zugriffstokens von Identitätsanbietern als Anspruch nicht möglich<br />- Ausstellen von Ausgabeansprüchen basierend auf den Werten der Eingabeansprüche nicht möglich<br />- Ausstellen von Ausgabeansprüchen mit konstanten Werten<br />- Ausstellen von Ausgabeansprüchen basierend auf den Eigenschaften von mit Azure AD synchronisierten Benutzern |
-| **Automatisierung** | | |
+| **Automation** | | |
 | Automatisieren von Konfigurations- und Verwaltungsaufgaben | Unterstützt über den Access Control-Verwaltungsdienst | Unterstützt über Microsoft Graph- und Azure AD Graph-API |
 
 Wenn Sie zu dem Urteil kommen, dass Azure AD den besten Migrationspfad für Ihre Anwendungen und Dienste darstellt, sollten Sie die zwei Möglichkeiten für die Integration Ihrer App in Azure AD beachten.
@@ -262,13 +262,13 @@ Die folgende Tabelle vergleicht die für Webanwendungen relevanten Funktionen vo
 | Anpassbare Benutzeroberfläche für Startbereichsermittlung/Kontoauswahl | Code zum Herunterladen, der in Apps integriert werden kann | Vollständig anpassbare Benutzeroberfläche über benutzerdefiniertes CSS |
 | Hochladen von benutzerdefinierten Tokensignaturzertifikaten | Unterstützt | Benutzerdefinierte Signaturschlüssel, keine Zertifikate, unterstützt über benutzerdefinierte Richtlinien |
 | Anpassen von Ansprüchen in Token |- Übergeben von Eingabeansprüchen von Identitätsanbietern<br />- Abrufen des Zugriffstokens von Identitätsanbietern als Anspruch<br />- Ausstellen von Ausgabeansprüchen basierend auf den Werten der Eingabeansprüche<br />- Ausstellen von Ausgabeansprüchen mit konstanten Werten |- Übergabe von Ansprüchen von Identitätsanbietern möglich; für einige Ansprüche sind benutzerdefinierte Richtlinien erforderlich<br />- Abrufen des Zugriffstokens von Identitätsanbietern als Anspruch nicht möglich<br />- Ausstellen von Ausgabeansprüchen basierend auf den Werten der Eingabeansprüche über benutzerdefinierte Richtlinien<br />- Ausstellen von Ausgabeansprüchen mit konstanten Werten über benutzerdefinierte Richtlinien |
-| **Automatisierung** | | |
+| **Automation** | | |
 | Automatisieren von Konfigurations- und Verwaltungsaufgaben | Unterstützt über den Access Control-Verwaltungsdienst |- Erstellung von Benutzern zulässig über Azure AD Graph-API.<br />- B2C-Mandanten, -Anwendungen oder -Richtlinien können nicht programmgesteuert erstellt werden. |
 
 Wenn Sie zu dem Urteil gelangen, dass Azure AD B2C den besten Migrationspfad für Ihre Anwendungen und Dienste darstellt, lesen Sie zunächst die Informationen in den folgenden Ressourcen:
 
 - [Azure AD B2C-Dokumentation](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)
-- [Azure Active Directory B2C: Benutzerdefinierte Richtlinien](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom)
+- [Benutzerdefinierte Azure AD B2C-Richtlinien](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom)
 - [Azure Active Directory B2C – Preise](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 #### <a name="migrate-to-ping-identity-or-auth0"></a>Migrieren zu Ping Identity oder Auth0
@@ -332,8 +332,8 @@ Azure AD kann jedoch mithilfe der Azure AD-Implementierung der Erteilung der OAu
 Anleitungen zum Implementieren von Server-zu-Server-Szenarien finden Sie in den folgenden Ressourcen:
 
 - Dienst-zu-Dienst-Abschnitt in [Azure Active Directory für Entwickler](https://aka.ms/aaddev)
-- [Daemon code sample by using simple password client credentials](https://github.com/Azure-Samples/active-directory-dotnet-daemon) (Daemon-Codebeispiel mit Clientanmeldeinformationen mit einfachem Kennwort)
-- [Daemon code sample by using certificate client credentials](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) (Daemon-Codebeispiel mit Clientanmeldeinformationen mit Zertifikat)
+- [Daemon-Codebeispiel mit Clientanmeldeinformationen mit einfachem Kennwort](https://github.com/Azure-Samples/active-directory-dotnet-daemon)
+- [Daemon-Codebeispiel mit Clientanmeldeinformationen mit Zertifikat](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
 
 #### <a name="migrate-to-ping-identity-or-auth0"></a>Migrieren zu Ping Identity oder Auth0
 

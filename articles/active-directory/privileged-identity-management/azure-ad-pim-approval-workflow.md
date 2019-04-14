@@ -1,6 +1,6 @@
 ---
-title: Genehmigen oder Ablehnen von Anforderungen für Azure AD-Verzeichnisrollen in PIM | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Anforderungen für Azure AD-Verzeichnisrollen in Azure AD Privileged Identity Management (PIM) genehmigen oder ablehnen.
+title: Genehmigen oder Ablehnen von Anforderungen für Azure AD-Rollen in PIM – Azure Active Directory | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Anforderungen für Azure AD-Rollen in Azure AD Privileged Identity Management (PIM) genehmigen oder ablehnen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,32 +16,32 @@ ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68b0dba0280ce7875e797634a5dc2254cb889ad7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 125a9864eaf53ecdf035247ba23d7c95a8daf131
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244980"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576793"
 ---
-# <a name="approve-or-deny-requests-for-azure-ad-directory-roles-in-pim"></a>Genehmigen oder Ablehnen von Anforderungen für Azure AD-Verzeichnisrollen in PIM
+# <a name="approve-or-deny-requests-for-azure-ad-roles-in-pim"></a>Genehmigen oder Ablehnen von Anforderungen für Azure AD-Rollen in PIM
 
-Mit Azure AD Privileged Identity Management (PIM) können Sie Rollen konfigurieren, um die Genehmigung für die Aktivierung anzufordern, und einen oder mehrere Benutzer oder Gruppen als delegierte genehmigende Personen auswählen. Delegierte genehmigende Personen haben zum Genehmigen von Anforderungen 24 Stunden Zeit. Wenn eine Anforderung nicht innerhalb von 24 Stunden genehmigt wird, muss der berechtigte Benutzer eine neue Anforderung senden. Das 24-Stunden-Zeitfenster für die Genehmigung ist nicht konfigurierbar.
+Mit Azure Active Directory (Azure AD) Privileged Identity Management (PIM) können Sie Rollen konfigurieren, um die Genehmigung für die Aktivierung anzufordern, und einen oder mehrere Benutzer oder Gruppen als delegierte genehmigende Personen auswählen. Delegierte genehmigende Personen haben zum Genehmigen von Anforderungen 24 Stunden Zeit. Wenn eine Anforderung nicht innerhalb von 24 Stunden genehmigt wird, muss der berechtigte Benutzer eine neue Anforderung senden. Das 24-Stunden-Zeitfenster für die Genehmigung ist nicht konfigurierbar.
 
-Führen Sie die in diesem Artikel beschriebenen Schritte aus, um Anforderungen für Azure AD-Verzeichnisrollen zu genehmigen oder abzulehnen.
+Führen Sie die in diesem Artikel beschriebenen Schritte aus, um Anforderungen für Azure AD-Rollen zu genehmigen oder abzulehnen.
 
 ## <a name="view-pending-requests"></a>Anzeigen ausstehender Anforderungen
 
-Als delegierte genehmigende Person erhalten Sie eine E-Mail-Benachrichtigung, wenn Ihre Genehmigung einer Anforderung für eine Azure AD-Verzeichnisrolle aussteht. Sie können diese ausstehenden Anforderungen in PIM anzeigen.
+Als delegierte genehmigende Person erhalten Sie eine E-Mail-Benachrichtigung, wenn Ihre Genehmigung einer Anforderung für eine Azure AD-Rolle aussteht. Sie können diese ausstehenden Anforderungen in PIM anzeigen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 1. Öffnen Sie **Azure AD Privileged Identity Management**.
 
-1. Klicken Sie auf **Azure AD-Verzeichnisrollen**.
+1. Klicken Sie auf **Azure AD-Rollen**.
 
 1. Klicken Sie auf **Anforderungen genehmigen**.
 
-    ![Azure AD-Verzeichnisrollen in PIM – Rollen](./media/azure-ad-pim-approval-workflow/pim-directory-roles-approve-requests.png)
+    ![PIM: Azure AD-Rollen – Rollen](./media/azure-ad-pim-approval-workflow/pim-directory-roles-approve-requests.png)
 
     Es wird eine Liste der Anforderungen angezeigt, die Sie noch genehmigen müssen.
 

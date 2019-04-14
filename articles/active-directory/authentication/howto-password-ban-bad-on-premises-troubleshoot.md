@@ -1,5 +1,5 @@
 ---
-title: Problembehandlung für den Azure AD-Kennwortschutz
+title: Problembehandlung beim Azure AD-Kennwortschutz – Azure Active Directory
 description: Informationen zur allgemeinen Problembehandlung für den Azure AD-Kennwortschutz
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ac97d7bda56a871e0b8f6de6d5d7262f3f44667
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 108ead982529d2ac6549cceffd9d2177ab6456bf
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285699"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863174"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Problembehandlung beim Azure AD-Kennwortschutz
 
@@ -44,7 +44,13 @@ Das wichtigste Anzeichen für dieses Problem sind Ereignisse vom Typ „30018“
 
 ## <a name="the-proxy-service-can-receive-calls-from-dc-agents-in-the-domain-but-is-unable-to-communicate-with-azure"></a>Der Proxydienst kann Aufrufe von DC-Agents in der Domäne empfangen, aber nicht mit Azure kommunizieren.
 
-Stellen Sie sicher, dass der Proxycomputer über Konnektivität mit den Endpunkten verfügt, die in den [Bereitstellungsanforderungen](howto-password-ban-bad-on-premises-deploy.md) aufgeführt sind.
+1. Stellen Sie sicher, dass der Proxycomputer über Konnektivität mit den Endpunkten verfügt, die in den [Bereitstellungsanforderungen](howto-password-ban-bad-on-premises-deploy.md) aufgeführt sind.
+
+1. Stellen Sie sicher, dass die Gesamtstruktur und alle Proxyserver für denselben Azure-Mandanten registriert sind.
+
+   Sie können dies überprüfen, indem Sie die PowerShell-Cmdlets `Get-AzureADPasswordProtectionProxy` und `Get-AzureADPasswordProtectionDCAgent` ausführen und dann die `AzureTenant`-Eigenschaft für jedes zurückgegebene Element vergleichen. Zur ordnungsgemäßen Ausführung müssen diese innerhalb einer Gesamtstruktur auf allen DC-Agents und Proxyservern übereinstimmen.
+
+   Wenn ein Registrierungskonflikt bei einem Azure-Mandanten vorliegt, kann dieser durch Ausführen des PowerShell-Cmdlets `Register-AzureADPasswordProtectionProxy` und/oder `Register-AzureADPasswordProtectionForest` (je nach Bedarf) repariert werden, wobei sichergestellt wird, dass für alle Registrierungen die Anmeldeinformationen desselben Azure-Mandanten verwendet werden.
 
 ## <a name="the-dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files-and-other-state"></a>Der DC-Agent kann Kennwortrichtliniendateien und andere Zustandsdateien nicht verschlüsseln oder entschlüsseln.
 
@@ -105,7 +111,7 @@ Wenn die Software des Azure AD-Kennwortschutzes deinstalliert und alle zugehör
 2. Deinstallieren Sie die DC-Agent-Software von allen Domänencontrollern. Dieser Schritt **erfordert** einen Neustart.
 3. Entfernen Sie manuell alle Proxydienst-Verbindungspunkte in jedem Domänennamenkontext. Der Speicherort dieser Objekte kann möglicherweise mit dem folgenden Active Directory-PowerShell-Befehl erkannt werden:
 
-   ```PowerShell
+   ```powershell
    $scp = "serviceConnectionPoint"
    $keywords = "{ebefb703-6113-413d-9167-9f8dd4d24468}*"
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
@@ -117,7 +123,7 @@ Wenn die Software des Azure AD-Kennwortschutzes deinstalliert und alle zugehör
 
 4. Entfernen Sie manuell alle DC-Agent-Verbindungspunkte in jedem Domänennamenkontext. Je nachdem, wie umfassend die Software bereitgestellt wurde, kann pro Domänencontroller in der Gesamtstruktur eines dieser Objekte vorhanden sein. Der Speicherort dieser Objekte kann möglicherweise mit dem folgenden Active Directory-PowerShell-Befehl erkannt werden:
 
-   ```PowerShell
+   ```powershell
    $scp = "serviceConnectionPoint"
    $keywords = "{2bac71e6-a293-4d5b-ba3b-50b995237946}*"
    Get-ADObject -SearchScope Subtree -Filter { objectClass -eq $scp -and keywords -like $keywords }
@@ -129,7 +135,7 @@ Wenn die Software des Azure AD-Kennwortschutzes deinstalliert und alle zugehör
 
 5. Entfernen Sie manuell den Konfigurationsstatus auf Gesamtstrukturebene. Der Konfigurationsstatus der Gesamtstruktur wird in einem Container im Active Directory-Konfigurationsnamenskontext beibehalten. Er kann wie folgt ermittelt und gelöscht werden:
 
-   ```PowerShell
+   ```powershell
    $passwordProtectionConfigContainer = "CN=Azure AD Password Protection,CN=Services," + (Get-ADRootDSE).configurationNamingContext
    Remove-ADObject -Recursive $passwordProtectionConfigContainer
    ```

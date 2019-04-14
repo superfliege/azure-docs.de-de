@@ -1,5 +1,5 @@
 ---
-title: Rollen, die nicht in PIM verwaltet werden können – Azure | Microsoft-Dokumentation
+title: Nicht in PIM verwaltbare Rollen – Azure Active Directory | Microsoft-Dokumentation
 description: In diesem Artikel werden die Rollen beschrieben, die Sie nicht in Azure AD Privileged Identity Management (PIM) verwalten können.
 services: active-directory
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.date: 01/18/2019
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 666b534c3ab07be2b1e2335015fc4723782a1249
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: aa5fb632ee5fd9c18bde7443e81fe2ef6e5335e4
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181574"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579545"
 ---
 # <a name="roles-you-cannot-manage-in-pim"></a>Nicht in PIM verwaltbare Rollen
 
-Mit Azure AD Privileged Identity Management (PIM) können Sie alle [Azure AD-Verzeichnisrollen](../users-groups-roles/directory-assign-admin-roles.md) und alle [Azure-Ressourcenrollen](../../role-based-access-control/built-in-roles.md) verwalten. Zu diesen Rollen gehören auch benutzerdefinierten Rollen, die an Ihre Verwaltungsgruppen, Abonnements, Ressourcengruppen und Ressourcen angefügt sind. Es gibt jedoch einige Rollen, die Sie nicht verwalten können. In diesem Artikel werden die Rollen beschrieben, die Sie nicht in PIM verwalten können.
+Mit Azure Active Directory (Azure AD) Privileged Identity Management (PIM) können Sie alle [Azure AD-Rollen](../users-groups-roles/directory-assign-admin-roles.md) und alle [Azure-Ressourcenrollen](../../role-based-access-control/built-in-roles.md) verwalten. Zu diesen Rollen gehören auch benutzerdefinierten Rollen, die an Ihre Verwaltungsgruppen, Abonnements, Ressourcengruppen und Ressourcen angefügt sind. Es gibt jedoch einige Rollen, die Sie nicht verwalten können. In diesem Artikel werden die Rollen beschrieben, die Sie nicht in PIM verwalten können.
 
 ## <a name="classic-subscription-administrator-roles"></a>Administrator für klassisches Abonnement
 
@@ -44,5 +44,5 @@ Rollen in Exchange Online oder SharePoint Online (mit Ausnahme von Exchange-Admi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Zuweisen von Azure AD-Verzeichnisrollen in PIM](pim-how-to-add-role-to-user.md)
+- [Zuweisen von Azure AD-Rollen in PIM](pim-how-to-add-role-to-user.md)
 - [Zuweisen von Azure-Ressourcenrollen in PIM](pim-resource-roles-assign-roles.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 795abcadb1cee7599665f7bc3b8e0d3e08a3da05
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: cc2c125df2e3455b0e90919dbca92fe497a4b1b7
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369070"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884345"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Beseitigen falscher Kennwörter in Ihrer Organisation
 
@@ -100,14 +100,17 @@ Nach der Normalisierung würde dieses Kennwort „contosoblankf9!“ lauten. Der
 [Contoso] + [leere] + [f] + [9] + [!] = 5 Punkte. Da dieses Kennwort mindestens fünf Punkte erhalten hat, wird es akzeptiert.
 
    > [!IMPORTANT]
-   > Bitte beachten Sie, dass der Algorithmus für verbotene Kennwörter zusammen mit der globalen Liste basierend auf der laufenden Sicherheitsanalyse und -forschung jederzeit in Azure geändert werden kann und wird. Für den lokalen DC-Agenten-Dienst werden aktualisierte Algorithmen erst nach einer Neuinstallation der DC-Agent-Software wirksam.
+   > Bitte beachten Sie, dass der Algorithmus für verbotene Kennwörter zusammen mit der globalen Liste basierend auf der laufenden Sicherheitsanalyse und -forschung jederzeit in Azure geändert werden kann und wird. Für den lokalen DC-Agent-Dienst werden aktualisierte Algorithmen erst nach einer Neuinstallation der DC-Agent-Software wirksam.
 
 ## <a name="license-requirements"></a>Lizenzanforderungen
 
 |   | Kennwortschutz für Azure AD mit globaler Liste gesperrter Kennwörter | Kennwortschutz für Azure AD mit benutzerdefinierter Liste gesperrter Kennwörter|
 | --- | --- | --- |
-| Reine Cloudbenutzer | Azure AD Free | Azure AD Basic |
+| Reine Cloudbenutzer | Azure AD Free | Azure AD Premium P1 oder P2 |
 | Über die lokale Windows Server Active Directory-Instanz synchronisierte Benutzer | Azure AD Premium P1 oder P2 | Azure AD Premium P1 oder P2 |
+
+> [!NOTE]
+> Lokale Windows Server Active Directory-Benutzer, die nicht mit Azure Active Directory synchronisiert werden, können auch die Vorteile des Azure AD-Kennwortschutzes basierend auf vorhandenen Lizenzen für synchronisierte Benutzer nutzen.
 
 Weitere Informationen zur Lizenzierung einschließlich der Kosten finden Sie unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
 
@@ -120,4 +123,4 @@ Ihr Kennwort ist aufgrund eines enthaltenen Worts, Ausdrucks oder Musters leider
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Konfigurieren der Liste benutzerdefinierter gesperrter Kennwörter](howto-password-ban-bad.md)
-* [Vorschau: Bereitstellen von Azure AD-Kennwortschutz](howto-password-ban-bad-on-premises-deploy.md)
+* [Aktivieren des lokalen Azure AD-Kennwortschutz-Agents](howto-password-ban-bad-on-premises-deploy.md)

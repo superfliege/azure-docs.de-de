@@ -1,6 +1,6 @@
 ---
-title: Anzeigen des Überwachungsverlaufs für Azure AD-Verzeichnisrollen in PIM | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie den Überwachungsverlauf für Azure AD-Verzeichnisrollen in Azure AD Privileged Identity Management (PIM) anzeigen.
+title: Anzeigen des Überwachungsverlaufs für Azure AD-Rollen in PIM – Azure Active Directory | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie den Überwachungsverlauf für Azure AD-Rollen in Azure AD Privileged Identity Management (PIM) anzeigen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,15 +14,15 @@ ms.date: 02/14/2017
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b91e2c15e86cdda4daab27892fa7a2b6ed0c0e0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c080173af8ddd31b077bb820ea19d82eb2b29300
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58008901"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576139"
 ---
-# <a name="view-audit-history-for-azure-ad-directory-roles-in-pim"></a>Anzeigen des Überwachungsverlaufs für Azure AD-Verzeichnisrollen in PIM
-Im Privileged Identity Management-Überwachungsverlauf können Sie alle Benutzerzuweisungen und -aktivierungen für alle Rollen in einem bestimmten Zeitraum sehen. Wenn Sie den vollständigen Überwachungsverlauf zur Aktivität in Ihrem Mandanten anzeigen möchten – Administratoren, Endbenutzer und Synchronisierungsaktivität eingeschlossen –, können Sie hierzu die [Azure Active Directory-Zugriffs- und Nutzungsberichte](../reports-monitoring/overview-reports.md)
+# <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>Anzeigen des Überwachungsverlaufs für Azure AD-Rollen in PIM
+Im Überwachungsverlauf von Azure Active Directory (Azure AD) Privileged Identity Management (PIM) können Sie alle Benutzerzuweisungen und -aktivierungen für alle privilegierten Rollen in einem bestimmten Zeitraum anzeigen. Wenn Sie den vollständigen Überwachungsverlauf zur Aktivität in Ihrem Mandanten anzeigen möchten – Administratoren, Endbenutzer und Synchronisierungsaktivität eingeschlossen –, können Sie hierzu die [Azure Active Directory-Zugriffs- und Nutzungsberichte](../reports-monitoring/overview-reports.md)
 
 ## <a name="navigate-to-audit-history"></a>Navigieren zum Überwachungsverlauf
 Wählen Sie auf dem Dashboard im [Azure-Portal](https://portal.azure.com) die App **Azure AD Privileged Identity Management** aus. Dort können Sie auf den Überwachungsverlauf zugreifen, indem Sie im PIM-Dashboard auf **Privilegierte Rollen verwalten** > **Überwachungsverlauf** klicken.

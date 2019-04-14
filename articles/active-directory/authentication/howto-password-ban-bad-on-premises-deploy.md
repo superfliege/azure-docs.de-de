@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3be702d1f75b0a96e22ea03602c924be580b0968
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: f1c24ec49652cfe9105aa66fd1d5e26c81afcd14
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499249"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904626"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Bereitstellen des Kennwortschutzes für Azure AD
 
@@ -37,6 +37,7 @@ Nachdem das Feature für einen angemessenen Zeitraum im Überwachungsmodus ausge
 ## <a name="deployment-requirements"></a>Bereitstellungsanforderungen
 
 * Alle Domänencontroller, auf denen der DC-Agent-Dienst für Azure AD-Kennwortschutz installiert wird, müssen Windows Server 2012 oder höher ausführen. Diese Anforderung bedeutet nicht, dass sich die Active Directory-Domäne oder die Gesamtstruktur ebenfalls in einer Windows Server 2012-Domäne oder auf einer Funktionsebene der Gesamtstruktur befinden muss. Wie unter [Entwurfsprinzipien](concept-password-ban-bad-on-premises.md#design-principles) ausgeführt, gibt es für das Ausführen des DC-Agents oder der Proxy-Software keine Mindestanforderungen an die Domänenfunktionsebene (DFL) oder die Funktionsebene der Gesamtstruktur (FFL).
+* Auf allen Computern, auf denen der DC-Agent-Dienst installiert werden soll, muss .NET 4.5 installiert sein.
 * Alle Computer, auf denen der Proxydienst für Azure AD-Kennwortschutz installiert wird, müssen Windows Server 2012 R2 oder höher ausführen.
 * Auf allen Computern, auf denen der Azure AD-Kennwortschutz-Proxydienst installiert werden soll, muss .NET 4.7 installiert sein.
   .NET 4.7 sollte bereits auf einem vollständig aktualisierten Windows-Server installiert sein. Wenn dies nicht der Fall ist, laden Sie das Installationsprogramm unter [.NET Framework 4.7-Offlineinstallationsprogramm für Windows](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows) herunter, und führen Sie es aus.
@@ -109,6 +110,7 @@ Es gibt zwei erforderliche Installationsprogramme für den Azure AD-Kennwortschu
         ```powershell
         Register-AzureADPasswordProtectionProxy -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com'
         ```
+
         > [!NOTE]
         > Dieser Modus funktioniert nicht auf Server Core-Betriebssystemen. Verwenden Sie stattdessen einen der folgenden Authentifizierungsmechanismen. Dieser Modus kann fehlschlagen, wenn verstärkte Sicherheitskonfiguration für Internet Explorer aktiviert ist. Die Problemumgehung besteht darin, diese Konfiguration zu deaktivieren, den Proxy zu registrieren und die Konfiguration dann erneut zu aktivieren.
 
@@ -133,7 +135,6 @@ Es gibt zwei erforderliche Installationsprogramme für den Azure AD-Kennwortschu
 
        Sie müssen zurzeit den Parameter *-ForestCredential* nicht angeben, der für zukünftige Funktionalität reserviert ist.
 
-   
    Die Registrierung des Proxydiensts für den Kennwortschutz ist nur ein Mal während der Lebensdauer des Diensts erforderlich. Danach führt der Proxydienst automatisch alle weiteren notwendigen Wartungen durch.
 
    > [!TIP]
@@ -149,6 +150,7 @@ Es gibt zwei erforderliche Installationsprogramme für den Azure AD-Kennwortschu
         ```powershell
         Register-AzureADPasswordProtectionForest -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com'
         ```
+
         > [!NOTE]
         > Dieser Modus funktioniert nicht auf Server Core-Betriebssystemen. Verwenden Sie stattdessen einen der folgenden zwei Authentifizierungsmechanismen. Dieser Modus kann fehlschlagen, wenn verstärkte Sicherheitskonfiguration für Internet Explorer aktiviert ist. Die Problemumgehung besteht darin, diese Konfiguration zu deaktivieren, den Proxy zu registrieren und die Konfiguration dann erneut zu aktivieren.  
 
@@ -162,6 +164,7 @@ Es gibt zwei erforderliche Installationsprogramme für den Azure AD-Kennwortschu
         Anschließend schließen Sie die Authentifizierung mithilfe der auf einem anderen Gerät angezeigten Anweisungen ab.
 
      * Automatischer (kennwortbasierter) Authentifizierungsmodus:
+
         ```powershell
         $globalAdminCredentials = Get-Credential
         Register-AzureADPasswordProtectionForest -AzureCredential $globalAdminCredentials
@@ -174,7 +177,7 @@ Es gibt zwei erforderliche Installationsprogramme für den Azure AD-Kennwortschu
 
    > [!NOTE]
    > Wenn mehrere Proxyserver in Ihrer Umgebung installiert sind, spielt es keine Rolle, welcher Proxyserver zum Registrieren der Gesamtstruktur verwendet wird.
-
+   >
    > [!TIP]
    > Es kann zu einer spürbaren Verzögerung bis zum Abschluss kommen, wenn dieses Cmdlet zum ersten Mal für einen bestimmten Azure-Mandanten ausgeführt wird. Wenn kein Fehler gemeldet wird, müssen Sie sich keine Gedanken über diese Verzögerung machen.
 
@@ -221,6 +224,7 @@ Es gibt zwei erforderliche Installationsprogramme für den Azure AD-Kennwortschu
 1. Optional: Konfigurieren Sie den Proxydienst für Kennwortschutz so, dass er an einem bestimmten Port lauscht.
    * Die DC-Agent-Software für Kennwortschutz auf den Domänencontrollern verwendet RPC über TCP für die Kommunikation mit dem Proxydienst. Standardmäßig lauscht der Proxydienst an jedem verfügbaren dynamischen RPC-Endpunkt. Sie können den Dienst jedoch so konfigurieren, dass er an einem bestimmten TCP-Port lauscht, wenn dies aufgrund von Netzwerktopologie- oder Firewallanforderungen in Ihrer Umgebung erforderlich ist.
       * <a id="static" /></a>Verwenden Sie das Cmdlet `Set-AzureADPasswordProtectionProxyConfiguration`, um den Dienst für die Ausführung unter einem statischen Port zu konfigurieren.
+
          ```powershell
          Set-AzureADPasswordProtectionProxyConfiguration –StaticPort <portnumber>
          ```
@@ -229,6 +233,7 @@ Es gibt zwei erforderliche Installationsprogramme für den Azure AD-Kennwortschu
          > Sie müssen den Dienst beenden und neu starten, damit die Änderungen wirksam werden.
 
       * Um den Dienst so zu konfigurieren, dass er unter einem dynamischen Port ausgeführt wird, verwenden Sie die gleiche Prozedur, legen *StaticPort* dabei aber wieder auf Null fest:
+
          ```powershell
          Set-AzureADPasswordProtectionProxyConfiguration –StaticPort 0
          ```

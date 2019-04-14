@@ -17,24 +17,25 @@ ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2424dbf595743eacef16b7d11f208edc9cd09a41
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 929d6b55b9261ae29ba43f05b378866adfdcd2ed
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185450"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882796"
 ---
-# <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>Gewusst wie: Bereitstellen optionaler Ansprüche für Ihre Azure AD-App (Public Preview)
+# <a name="how-to-provide-optional-claims-to-your-azure-ad-app-preview"></a>Gewusst wie: Bereitstellen optionaler Ansprüche für Ihre Azure AD-App (Vorschauversion)
 
 Dieses Feature wird von Anwendungsentwicklern verwendet, um anzugeben, welche Ansprüche in Token enthalten sein sollen, die an ihre Anwendung gesendet werden. Sie können optionale Ansprüche zu folgenden Zwecken verwenden:
+
 - Auswählen zusätzlicher Ansprüche, die in Token für Ihre Anwendung aufgenommen werden sollen
 - Ändern des Verhaltens bestimmter Ansprüche, die von Azure AD in Token zurückgegeben werden
-- Hinzufügen und Zugreifen auf benutzerdefinierte Ansprüche für Ihre Anwendung 
+- Hinzufügen und Zugreifen auf benutzerdefinierte Ansprüche für Ihre Anwendung
 
 > [!NOTE]
 > Diese Funktion befindet sich derzeit in der Public Preview. Seien Sie darauf vorbereitet, Änderungen zurückzusetzen bzw. zu löschen. Die Funktion ist während der Public Preview-Phase in allen Azure AD-Abonnements verfügbar. Sobald die Funktion aber allgemein verfügbar wird, ist für einige Aspekte des Features unter Umständen ein Azure AD Premium-Abonnement erforderlich.
 
-Die Liste der Standardansprüche und Informationen zu deren Verwendung in Token finden Sie in den [Grundlagen zu den von Azure AD ausgestellten Token](v1-id-and-access-tokens.md). 
+Die Liste der Standardansprüche und Informationen zu deren Verwendung in Token finden Sie in den [Grundlagen zu den von Azure AD ausgestellten Token](v1-id-and-access-tokens.md).
 
 Eines der Ziele des [v2.0 Azure AD-Endpunkts](active-directory-appmodel-v2-overview.md) ist eine geringere Tokengröße, um optimale Leistung von Clients zu gewährleisten. Daher sind mehrere Ansprüche, die zuvor in den Zugriffs- und ID-Token enthalten waren, nicht mehr in v2.0-Token vorhanden und müssen für einzelne Anwendungen speziell angefordert werden.
 
@@ -46,16 +47,16 @@ Eines der Ziele des [v2.0 Azure AD-Endpunkts](active-directory-appmodel-v2-overv
 | Azure AD-Konto          | Unterstützt                          | Unterstützt mit Einschränkungen |
 
 > [!IMPORTANT]
-> Apps, die sowohl persönliche Konten als auch Azure AD unterstützen (registriert über das [App-Registrierungsportal](https://apps.dev.microsoft.com)) können keine optionalen Ansprüche verwenden. Apps, die nur für Azure AD unter Verwendung des Endpunkts v2.0 registriert sind, können jedoch die optionalen Ansprüche abrufen, die sie im Manifest angefordert haben. Im Azure-Portal können Sie den Anwendungsmanifest-Editor in den vorhandenen **App-Registrierungen** verwenden, um Ihre optionalen Ansprüche zu bearbeiten. Allerdings ist diese Funktionalität mit dem Anwendungsmanifest-Editor in der neuen Umgebung für **App-Registrierungen (Vorschau)** noch nicht verfügbar.
+> (Über das [App-Registrierungsportal](https://apps.dev.microsoft.com) registrierte) Apps, die sowohl persönliche Konten als auch Azure AD unterstützen, können keine optionalen Ansprüche verwenden. Apps, die nur für Azure AD unter Verwendung des Endpunkts v2.0 registriert sind, können jedoch die optionalen Ansprüche abrufen, die sie im Manifest angefordert haben. Im Azure-Portal können Sie den Anwendungsmanifest-Editor in den vorhandenen **App-Registrierungen** verwenden, um Ihre optionalen Ansprüche zu bearbeiten. Allerdings ist diese Funktionalität mit dem Anwendungsmanifest-Editor in der neuen Umgebung für **App-Registrierungen (Vorschau)** noch nicht verfügbar.
 
 ## <a name="standard-optional-claims-set"></a>Standardmäßige optionale Ansprüche
 
-Die Gruppe optionaler Ansprüche, die standardmäßig zur Verwendung in Anwendungen bereitstehen, sind nachfolgend aufgeführt. Informationen zum Hinzufügen benutzerdefinierter optionaler Ansprüche für Ihre Anwendung finden Sie unter [Verzeichniserweiterungen](active-directory-optional-claims.md#Configuring-custom-claims-via-directory-extensions) weiter unten. Beachten Sie, dass beim Hinzufügen von Ansprüchen zum **Zugriffstoken**, dies für Zugriffstoken gilt, die *für* die Anwendung (eine Web-API) angefordert werden, nicht *von* der Anwendung. Dadurch wird sichergestellt, dass unabhängig von dem Client, der auf Ihre API zugreift, die richtigen Daten im Zugriffstoken vorhanden sind, die zum Authentifizieren bei Ihrer API verwendet werden.
+Die Gruppe optionaler Ansprüche, die standardmäßig zur Verwendung in Anwendungen bereitstehen, sind nachfolgend aufgeführt. Informationen zum Hinzufügen benutzerdefinierter optionaler Ansprüche für Ihre Anwendung finden Sie unter [Verzeichniserweiterungen](#configuring-custom-claims-via-directory-extensions) weiter unten. Beim Hinzufügen von Ansprüchen zum **Zugriffstoken** gilt dies für Zugriffstoken, die *für* die Anwendung (eine Web-API) und nicht *von* der Anwendung angefordert werden. Dadurch wird sichergestellt, dass unabhängig von dem Client, der auf Ihre API zugreift, die richtigen Daten im Zugriffstoken vorhanden sind, die zum Authentifizieren bei Ihrer API verwendet werden.
 
 > [!NOTE]
 > Die Mehrzahl dieser Ansprüche kann in JWTs für v1.0- und v2.0-Token, jedoch nicht in SAML-Token eingeschlossen werden. Ausnahmen stellen die Ansprüche dar, die einen entsprechenden Hinweis in der Spalte „Tokentyp“ enthalten. Obwohl optionale Ansprüche derzeit nur für AAD-Benutzer unterstützt werden, wird MSA-Unterstützung hinzugefügt. Wenn MSA optionale Ansprüche am v2.0-Endpunkt unterstützt, ist in der Spalte „Benutzertyp“ angegeben, ob ein Anspruch für einen AAD- oder MSA-Benutzer verfügbar ist. 
 
-**Tabelle 2: Standardmäßige optionale Ansprüche**
+**Tabelle 2: Optionale Standardansprüche**
 
 | NAME                        | BESCHREIBUNG   | Tokentyp | Benutzertyp | Notizen  |
 |-----------------------------|----------------|------------|-----------|--------|
@@ -71,7 +72,7 @@ Die Gruppe optionaler Ansprüche, die standardmäßig zur Verwendung in Anwendun
 | `fwd`                      | IP-Adresse.| JWT    |   | Fügt die ursprüngliche IPv4-Adresse des anfordernden Clients hinzu (wenn innerhalb eines VNET). |
 | `ctry`                     | Land des Benutzers | JWT |           | Azure AD gibt den optionalen Anspruch `ctry` zurück, wenn er vorhanden ist und der Wert des Anspruchs aus einem standardmäßigen Ländercode mit zwei Buchstaben besteht, z.B. FR, JP oder SZ. |
 | `tenant_ctry`              | Land des Ressourcenmandanten | JWT | | |
-| `xms_pdl`          | Bevorzugter Datenspeicherort   | JWT | | Für Multi-Geo-Mandanten ist dies ein aus drei Buchstaben bestehender Code, der anzeigt, in welcher geografischen Region sich der Benutzer befindet. Weitere Informationen finden Sie unter [Azure Active Directory Connect-Synchronisierung: Konfigurieren des bevorzugten Datenspeicherorts für Office 365-Ressourcen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-preferreddatalocation). <br> Zum Beispiel: `APC` für Asien-Pazifik. |
+| `xms_pdl`          | Bevorzugter Datenspeicherort   | JWT | | Für Multi-Geo-Mandanten ist dies ein aus drei Buchstaben bestehender Code, der die geografische Region anzeigt, in der sich der Benutzer befindet. Weitere Informationen finden Sie unter [Azure Active Directory Connect-Synchronisierung: Konfigurieren des bevorzugten Datenspeicherorts für Office 365-Ressourcen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-preferreddatalocation).<br/>Zum Beispiel: `APC` für Asien-Pazifik. |
 | `xms_pl`                   | Bevorzugte Benutzersprache  | JWT ||Die bevorzugte Sprache des Benutzers, falls festgelegt. Wird in Szenarios mit Gastzugriff aus dem Basismandanten abgerufen. Format: Sprachraum-Land (z.B.: en-us) |
 | `xms_tpl`                  | Bevorzugte Mandantensprache| JWT | | Die bevorzugte Sprache des Ressourcenmandanten, falls festgelegt. Format: Sprachraum (z.B.: en) |
 | `ztdid`                    | ID der Bereitstellung ohne manuelles Eingreifen | JWT | | Die für [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) verwendete Geräteidentität |
@@ -106,8 +107,8 @@ Einige optionale Ansprüche können so konfiguriert werden, dass sie auf andere 
 | Eigenschaftenname  | Name der zusätzlichen Eigenschaft | BESCHREIBUNG |
 |----------------|--------------------------|-------------|
 | `upn`          |                          | Kann für SAML- und JWT-Antworten und für v1.0- und v2.0-Token verwendet werden. |
-|                | `include_externally_authenticated_upn`  | Bezieht den Gast-UPN ein, wie er im Ressourcenmandanten gespeichert ist. Zum Beispiel, `foo_hometenant.com#EXT#@resourcetenant.com` |             
-|                | `include_externally_authenticated_upn_without_hash` | Wie oben, außer dass die Hashzeichen (`#`) durch Unterstriche (`_`) ersetzt werden, z.B. `foo_hometenant.com_EXT_@resourcetenant.com` |
+|                | `include_externally_authenticated_upn`  | Bezieht den Gast-UPN ein, wie er im Ressourcenmandanten gespeichert ist. Beispiel: `foo_hometenant.com#EXT#@resourcetenant.com` |             
+|                | `include_externally_authenticated_upn_without_hash` | Wie oben, außer dass die Hashzeichen (`#`) durch Unterstriche (`_`) ersetzt werden, z. B. `foo_hometenant.com_EXT_@resourcetenant.com` |
 
 #### <a name="additional-properties-example"></a>Beispiel für zusätzliche Eigenschaften
 
@@ -128,7 +129,7 @@ Dieses OptionalClaims-Objekt bewirkt, dass das an den Client zurückgegebene ID-
 
 ## <a name="configuring-optional-claims"></a>Konfigurieren optionaler Ansprüche
 
-Sie können optionale Ansprüche für Ihre Anwendung konfigurieren, indem Sie das Anwendungsmanifest ändern (siehe Beispiel unten). Weitere Informationen finden Sie in dem Artikel [Grundlegendes zum Azure AD-Anwendungsmanifest](reference-app-manifest.md).
+Sie können optionale Ansprüche für Ihre Anwendung konfigurieren, indem Sie das Anwendungsmanifest ändern (siehe Beispiel unten). Weitere Informationen finden Sie im Artikel [Grundlegendes zum Azure AD-Anwendungsmanifest](reference-app-manifest.md).
 
 **Beispielschema:**
 
@@ -188,7 +189,7 @@ Wenn durch einen bestimmten Anspruch unterstützt, können Sie auch das Verhalte
 | `additionalProperties` | Sammlung (Edm.String) | Zusätzliche Eigenschaften des Anspruchs. Wenn eine Eigenschaft in dieser Sammlung vorhanden ist, ändert sie das Verhalten des optionalen Anspruchs, der in der „name“-Eigenschaft angegeben ist.                                                                                                                                               |
 ## <a name="configuring-custom-claims-via-directory-extensions"></a>Konfigurieren benutzerdefinierter Ansprüche über Verzeichniserweiterungen
 
-Zusätzlich zu den standardmäßigen optionalen Ansprüchen können Token auch so konfiguriert werden, dass sie Verzeichnisschemaerweiterungen enthalten (weitere Informationen finden Sie im Artikel [Verzeichnisschemaerweiterungen](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)). Diese Funktion ist nützlich, um zusätzliche Benutzerinformationen anzufügen, die von Ihrer App verwendet werden können, z. B. einen zusätzlichen Bezeichner oder eine wichtige Konfigurationsoption, die vom Benutzer festgelegt wurde. 
+Zusätzlich zu den optionalen Standardansprüchen können Sie auch Token so konfigurieren, dass sie Verzeichnisschemaerweiterungen enthalten. Weitere Informationen finden Sie unter [Verzeichnisschemaerweiterungen](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions). Diese Funktion ist nützlich, um zusätzliche Benutzerinformationen anzufügen, die von Ihrer App verwendet werden können, z. B. einen zusätzlichen Bezeichner oder eine wichtige Konfigurationsoption, die vom Benutzer festgelegt wurde. 
 
 > [!Note]
 > Verzeichnisschemaerweiterungen sind eine auf AAD beschränkte Funktion, d. h., wenn Ihr Anwendungsmanifest eine benutzerdefinierte Erweiterung erfordert und sich ein MSA-Benutzer bei Ihrer App anmeldet, werden diese Erweiterungen nicht zurückgegeben. 

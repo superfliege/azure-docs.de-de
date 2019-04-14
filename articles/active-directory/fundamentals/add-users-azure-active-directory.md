@@ -8,26 +8,26 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 09/04/2018
+ms.date: 04/01/2019
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8770648a3683c4f612536c9a04921682a01bcd0c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9cda9f976a7680a1338584e4308426683de82a79
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089810"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802117"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Hinzufügen oder Löschen von Benutzern in Azure Active Directory
-In Ihrem Azure Active Directory-Mandanten (Azure AD) können Sie neue Benutzer hinzufügen oder vorhandene Benutzer löschen.
+Sie können Ihrer Azure Active Directory-Organisation neue Benutzer hinzufügen oder vorhandene Benutzer aus der Azure AD-Organisation löschen.
 
 ## <a name="add-a-new-user"></a>Hinzufügen eines neuen Benutzers
 Sie können einen neuen Benutzer im Azure Active Directory-Portal erstellen.
 
 ### <a name="to-add-a-new-user"></a>So fügen Sie einen neuen Benutzer hinzu
-1. Melden Sie sich als globaler Administrator oder Benutzeradministrator für das Verzeichnis beim [Azure-Portal](https://portal.azure.com/) an.
+1. Melden Sie sich als Benutzeradministrator für die Organisation beim [Azure-Portal](https://portal.azure.com/) an.
 
 2. Wählen Sie **Azure Active Directory** aus, dann **Benutzer** und schließlich **Neuer Benutzer**.
 
@@ -39,7 +39,7 @@ Sie können einen neuen Benutzer im Azure Active Directory-Portal erstellen.
 
    - **Name (erforderlich).** Der Vor- und Nachname des neuen Benutzers. Beispielsweise Mary Parker.
 
-   - **Benutzername (erforderlich).** Der Benutzername des neuen Benutzers. Beispiel: mary@contoso.com. 
+   - **Benutzername (erforderlich).** Der Benutzername des neuen Benutzers. Beispiel: mary@contoso.com.
     
        Der Domänenteil des Benutzernamens muss entweder der anfängliche Standarddomänenname sein, „<_IhrDomänenname_>.onmicrosoft.com“, oder ein benutzerdefinierter Domänennamen, z. B. „contoso.com“. Weitere Informationen zum Erstellen eines benutzerdefinierten Domänennamens finden Sie unter [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory](add-custom-domain.md).
 
@@ -47,7 +47,7 @@ Sie können einen neuen Benutzer im Azure Active Directory-Portal erstellen.
 
    - **Gruppen.** Optional können Sie den Benutzer einer oder mehreren vorhandenen Gruppen hinzufügen. Sie können den Benutzer auch später zu Gruppen hinzufügen. Weitere Informationen zum Hinzufügen von Benutzern zu Gruppen finden Sie unter [Erstellen einer einfachen Gruppe und Hinzufügen von Mitgliedern](active-directory-groups-create-azure-portal.md).
 
-   - **Verzeichnisrolle.** Optional können Sie den Benutzer einer Verzeichnisrolle hinzufügen. Sie können den Benutzer als globalen Administrator zuweisen oder ihn mindestens einer der anderen Administratorrollen in Azure AD zuweisen. Weitere Informationen zum Zuweisen von Rollen finden Sie unter [Zuweisen von Rollen zu Benutzern](active-directory-users-assign-role-azure-portal.md).
+   - **Verzeichnisrolle.** Optional können Sie den Benutzer zu einer Azure AD-Administratorrolle hinzufügen. Sie können dem Benutzer die Rolle „Globaler Administrator“ oder mindestens eine der eingeschränkten Administratorrollen in Azure AD zuweisen. Weitere Informationen zum Zuweisen von Rollen finden Sie unter [Zuweisen von Rollen zu Benutzern](active-directory-users-assign-role-azure-portal.md).
 
 4. Kopieren Sie das automatisch generierte Kennwort aus dem Feld **Kennwort**. Sie müssen dieses Kennwort dem Benutzer für den ersten Anmeldeprozess bereitstellen.
 
@@ -62,7 +62,7 @@ Wenn Sie eine Umgebung mit sowohl Azure Active Directory (Cloud) als auch Window
 Sie können einen vorhandenen Benutzer im Azure Active Directory-Portal löschen.
 
 ### <a name="to-delete-a-user"></a>So löschen Sie einen Benutzer
-1. Melden Sie sich mit dem Konto eines globalen Administrators für das Verzeichnis beim [Azure-Portal](https://portal.azure.com/) an.
+1. Melden Sie sich mit dem Konto eines Benutzeradministrators für die Organisation beim [Azure-Portal](https://portal.azure.com/) an.
 
 2. Wählen Sie zuerst **Azure Active Directory** und dann **Benutzer** aus, und suchen Sie dann nach dem Benutzer, den Sie aus dem Azure AD-Mandanten löschen möchten, und wählen Sie ihn aus. Beispielsweise _Mary Parker_.
 
@@ -70,12 +70,13 @@ Sie können einen vorhandenen Benutzer im Azure Active Directory-Portal löschen
 
     ![Seite „Benutzer – Alle Benutzer“ mit Hervorhebung von „Benutzer löschen“](media/add-users-azure-active-directory/delete-user-all-users-blade.png)
 
-    Der Benutzer wird gelöscht und nicht mehr auf der Seite **Benutzer – Alle Benutzer** angezeigt. Sie können den Benutzer für die nächsten 30 Tage auf der Seite **Gelöschte Benutzer** anzeigen und während dieses Zeitraums wiederherstellen. Weitere Informationen zum Wiederherstellen eines Benutzers finden Sie unter [Wiederherstellen oder endgültiges Entfernen eines kürzlich gelöschten Benutzers](active-directory-users-restore.md).
+    Der Benutzer wird gelöscht und nicht mehr auf der Seite **Benutzer – Alle Benutzer** angezeigt. Sie können den Benutzer für die nächsten 30 Tage auf der Seite **Gelöschte Benutzer** anzeigen und während dieses Zeitraums wiederherstellen. Weitere Informationen zum Wiederherstellen eines Benutzers finden Sie unter [Wiederherstellen oder endgültiges Entfernen eines kürzlich gelöschten Benutzers](active-directory-users-restore.md). Wenn ein Benutzer gelöscht wird, werden alle vom Benutzer verwendeten Lizenzen den anderen Benutzer zur Verwendung zur Verfügung gestellt.
 
     >[!Note]
-    >Sie müssen Windows Server Active Directory verwenden, um die Identität, Kontaktinformationen oder Jobinformationen für Benutzer zu aktualisieren, deren Quelle der Autorität Windows Server Active Directory ist. Nachdem Sie das Update abgeschlossen haben, müssen Sie bis zum Abschluss des nächsten Synchronisierungszyklus warten, bevor die Änderungen angezeigt werden.
+    >Sie müssen Windows Server Active Directory verwenden, um die Identität, Kontaktinformationen oder Jobinformationen für Benutzer zu aktualisieren, deren Autoritätsquelle Windows Server Active Directory ist. Nachdem Sie das Update abgeschlossen haben, müssen Sie bis zum Abschluss des nächsten Synchronisierungszyklus warten, bevor die Änderungen angezeigt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Nachdem Sie Ihre Benutzer hinzugefügt haben, können Sie die folgenden grundlegenden Prozesse ausführen:
 
 - [Hinzufügen oder Ändern von Profilinformationen](active-directory-users-profile-azure-portal.md)

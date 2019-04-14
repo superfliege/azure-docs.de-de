@@ -1,5 +1,5 @@
 ---
-title: Verlauf der Versionsveröffentlichungen des lokalen Azure AD-Kennwortschutz-Agents
+title: Verlauf der Versionsveröffentlichungen des lokalen Azure AD-Kennwortschutz-Agents – Azure Active Directory
 description: Dokumentiert den Verlauf der Versionsveröffentlichungen und Verhaltensänderungen.
 services: active-directory
 ms.service: active-directory
@@ -11,14 +11,24 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e09127f8ed2e8e949711631a20fa5a9cd855311
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 60ce66b079942944176540826c7f3e7a91b070d2
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58284798"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58861861"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Versionsverlauf des Azure AD-Kennwortschutz-Agents
+
+## <a name="121250"></a>1.2.125.0
+
+Veröffentlichungsdatum: 22.3.2019
+
+* Beheben von kleineren Tippfehlern in Ereignisprotokollmeldungen
+* Aktualisieren des Endbenutzer-Lizenzvertrags auf die endgültige Version der allgemeinen Verfügbarkeit
+
+> [!NOTE]
+> Build 1.2.125.0 ist der Build für „Allgemeine Verfügbarkeit“ Vielen Dank für Ihr Feedback zum Produkt!
 
 ## <a name="121160"></a>1.2.116.0
 

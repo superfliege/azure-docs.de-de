@@ -1,5 +1,5 @@
 ---
-title: Verwenden eines Ressourcendashboards für die Zugriffsüberprüfung in PIM – Azure | Microsoft-Dokumentation
+title: Verwenden eines Ressourcendashboards für die Zugriffsüberprüfung in PIM – Azure Active Directory | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt, wie Sie ein Ressourcendashboard verwenden, um eine Zugriffsüberprüfung in Azure AD Privileged Identity Management (PIM) durchzuführen.
 services: active-directory
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89abf15731bd125737e7c18ab45782820a856b38
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 37057e531ea8387fbed84c9b03bbfb9c14d160ea
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012676"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58574959"
 ---
 # <a name="use-a-resource-dashboard-to-perform-an-access-review-in-pim"></a>Verwenden eines Ressourcendashboards für die Zugriffsüberprüfung in PIM
 
-Sie können ein Ressourcendashboard verwenden, um eine Zugriffsüberprüfung in Privileged Identity Management (PIM) für Azure-Ressourcen durchzuführen. Das Dashboard mit der Administratoransicht besteht aus drei Hauptkomponenten:
+Sie können ein Ressourcendashboard verwenden, um eine Zugriffsüberprüfung in Azure Active Directory (Azure AD) Privileged Identity Management (PIM) durchzuführen. Das Dashboard mit der Administratoransicht besteht aus drei Hauptkomponenten:
 
 - eine grafische Darstellung der Ressourcenrollenaktivierungen
 - zwei Diagramme, die die Verteilung von Rollenzuweisungen nach Zuweisungstyp darstellen

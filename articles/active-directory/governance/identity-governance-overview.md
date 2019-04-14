@@ -1,6 +1,6 @@
 ---
-title: Azure AD Identity Governance| Microsoft-Dokumentation
-description: Azure AD Identity Governance ermöglicht es Ihnen, den Sicherheitsbedarf Ihrer Organisation und die Produktivität von Mitarbeitern mit den richtigen Prozessen sowie Transparenz in Einklang zu bringen.
+title: Identity Governance – Azure Active Directory | Microsoft-Dokumentation
+description: Azure Active Directory Identity Governance ermöglicht es Ihnen, den Sicherheitsbedarf Ihrer Organisation und die Produktivität von Mitarbeitern mit den richtigen Prozessen sowie Transparenz in Einklang zu bringen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,12 +16,12 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 304399905e9dfd37557a342248c829c1f940452b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7872a43d5000ddb1ba581f76358c8001902ab56b
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167579"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579715"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Was ist Azure AD Identity Governance?
 
@@ -77,7 +77,7 @@ Es gibt keine perfekte Lösung oder Empfehlung, die für alle Kunden geeignet is
 - [Was ist eine Zugriffsüberprüfung?](access-reviews-overview.md)
 - [Verwalten des Benutzerzugriffs mit Zugriffsüberprüfungen](manage-user-access-with-access-reviews.md)
 - [Verwalten des Gastzugriffs mit Zugriffsüberprüfungen](manage-guest-access-with-access-reviews.md)
-- [Starten einer Zugriffsüberprüfung für Verzeichnisrollen](../privileged-identity-management/pim-how-to-start-security-review.md)
+- [Starten einer Zugriffsüberprüfung für Azure AD-Rollen](../privileged-identity-management/pim-how-to-start-security-review.md)
 
 ### <a name="terms-of-use"></a>Nutzungsbedingungen
 

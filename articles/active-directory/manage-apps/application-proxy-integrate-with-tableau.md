@@ -13,12 +13,12 @@ ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e154a53dc32aea0b3fbe093526546b080b02ceff
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c5d80381815524658d91067ee880eba47c394058
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188459"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793576"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory-Anwendungsproxy und Tableau 
 
@@ -50,7 +50,7 @@ Für:
 **So veröffentlichen Sie Ihre App** 
 
 
-1. Melden Sie sich als globaler Administrator beim [Azure-Portal](https://portal.azure.com) an. 
+1. Melden Sie sich als Anwendungsadministrator beim [Azure-Portal](https://portal.azure.com) an. 
 
 2. Wählen Sie **Azure Active Directory > Unternehmensanwendungen** aus. 
 

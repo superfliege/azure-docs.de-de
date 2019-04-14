@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen von Azure AD Privileged Identity Management (PIM) | Microsoft-Dokumentation
+title: Bereitstellen von Privileged Identity Management (PIM) – Azure Active Directory | Microsoft-Dokumentation
 description: Beschreibt die Planung der Bereitstellung von Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05bf125d629ffef01a645dc407c341a984805520
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 1755d627473b0ae47bbc4bc74a3f0d2210e5372b
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227030"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578194"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Bereitstellen von Azure AD Privileged Identity Management (PIM)
 
-Diese schrittweise Anleitung beschreibt die Planung der Bereitstellung von Azure AD Privileged Identity Management (PIM) in Ihrer Organisation.
+In dieser Schritt-für-Schritt-Anleitung wird beschrieben, wie Sie die Bereitstellung von Azure Active Directory (Azure AD) Privileged Identity Management (PIM) in Ihrer Organisation planen können.
 
 > [!TIP]
 > In diesem Dokument sind einige Elemente folgendermaßen gekennzeichnet:
@@ -79,7 +79,7 @@ Weitere Informationen finden Sie unter [Was ist Azure AD Privileged Identity Man
 
 ### <a name="roles-that-can-be-managed-by-pim"></a>Rollen, die von PIM verwaltet werden können
 
-**Azure AD-Rollen**: Diese Rollen sind alle Verzeichnisrollen in Azure Active Directory (z. B. globaler Administrator, Exchange-Administrator, und Sicherheitsadministrator). Unter [Berechtigungen der Administratorrolle in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md) erfahren Sie mehr über die Rollen und ihre Funktionen. [Administratorrollen nach Administratoraufgabe in Azure Active Directory](../users-groups-roles/roles-delegate-by-task.md) hilft Ihnen dabei, Ihren Administratoren geeignete Rollen zuzuweisen.
+**Azure AD-Rollen**: Dabei handelt es sich um Rollen in Azure Active Directory (z. B. „Globaler Administrator“, „Exchange-Administrator“ und „Sicherheitsadministrator“). Unter [Berechtigungen der Administratorrolle in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md) erfahren Sie mehr über die Rollen und ihre Funktionen. [Administratorrollen nach Administratoraufgabe in Azure Active Directory](../users-groups-roles/roles-delegate-by-task.md) hilft Ihnen dabei, Ihren Administratoren geeignete Rollen zuzuweisen.
 
 **Azure-Ressourcenrollen**: Diese Rollen sind mit einer Azure-Ressource, einer Ressourcengruppe, einem Abonnement oder einer Verwaltungsgruppe verknüpft. PIM bietet Just-in-Time-Zugriff auf sowohl integrierte Rollen wie „Besitzer“, „Benutzerzugriffsadministrator“ und „Mitwirkender“ als auch [benutzerdefinierte Rollen](../../role-based-access-control/custom-roles.md). Weitere Informationen zu Azure-Ressourcenrollen finden Sie unter [Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](../../role-based-access-control/overview.md).
 
@@ -294,7 +294,7 @@ Da Sie jetzt die Testbenutzer identifiziert haben, konfigurieren Sie in diesem S
 
 #### <a name="configure-pim-for-azure-ad-roles"></a>Konfigurieren von PIM für Azure AD-Rollen
 
-1. [Konfigurieren Sie die Einstellungen für die Azure AD-Verzeichnisrolle](pim-how-to-change-default-settings.md) basierend auf Ihrer Planung.
+1. [Konfigurieren Sie die Einstellungen für Azure AD-Rollen](pim-how-to-change-default-settings.md) basierend auf Ihrer Planung.
 
 1. Navigieren Sie zu **Azure AD-Rollen**, klicken Sie auf **Rollen**, und wählen Sie dann die soeben konfigurierte Rolle aus.
 

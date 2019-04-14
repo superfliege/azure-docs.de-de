@@ -1,5 +1,5 @@
 ---
-title: E-Mail-Benachrichtigungen in PIM – Azure | Microsoft-Dokumentation
+title: E-Mail-Benachrichtigungen in PIM – Azure Active Directory | Microsoft-Dokumentation
 description: Dieser Artikel enthält eine Beschreibung der E-Mail-Benachrichtigungen in Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f2e5674413cb4057187b7573fde0bcd8899caab
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9aa9da83a7a6e97f5b721dad550831fe2645ffd3
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57905170"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576946"
 ---
 # <a name="email-notifications-in-pim"></a>E-Mail-Benachrichtigungen in PIM
 
-Mit Azure AD Privileged Identity Management (PIM) wissen Sie, wann wichtige Ereignisse erfolgen, z.B. wenn eine Rolle zugewiesen oder aktiviert wird. Mit PIM werden E-Mail-Benachrichtigungen an Sie und andere Teilnehmer gesendet. Diese E-Mail-Benachrichtigungen können auch Links zu relevanten Aufgaben, z.B. Aktivieren oder Erneuern einer Rolle, enthalten. In diesem Artikel wird beschrieben, wie diese E-Mails aussehen, wann sie gesendet werden und wer sie erhält.
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) benachrichtigt Sie über wichtige Ereignisse, z. B. wenn eine Rolle zugewiesen oder aktiviert wird. Mit PIM werden E-Mail-Benachrichtigungen an Sie und andere Teilnehmer gesendet. Diese E-Mail-Benachrichtigungen können auch Links zu relevanten Aufgaben, z.B. Aktivieren oder Erneuern einer Rolle, enthalten. In diesem Artikel wird beschrieben, wie diese E-Mails aussehen, wann sie gesendet werden und wer sie erhält.
 
 ## <a name="sender-email-address-and-subject-line"></a>Absender-E-Mail-Adresse und Betreffzeile
 
@@ -101,5 +101,5 @@ Nachstehend finden Sie eine Beispiel-E-Mail, die gesendet wird, wenn einem Benut
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Konfigurieren von Einstellungen für Azure AD-Verzeichnisrollen in PIM](pim-how-to-change-default-settings.md)
-- [Genehmigen oder Ablehnen von Anforderungen für Azure AD-Verzeichnisrollen in PIM](azure-ad-pim-approval-workflow.md)
+- [Konfigurieren von Einstellungen für Azure AD-Rollen in PIM](pim-how-to-change-default-settings.md)
+- [Genehmigen oder Ablehnen von Anforderungen für Azure AD-Rollen in PIM](azure-ad-pim-approval-workflow.md)

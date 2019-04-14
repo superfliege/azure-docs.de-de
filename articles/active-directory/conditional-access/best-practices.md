@@ -18,12 +18,12 @@ ms.date: 01/25/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d0e20e9c8e248b446b7b938ae4180ffb546d823
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: d30fe326ef677ca4543534d57dd306ed2a660300
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517596"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895561"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Best Practices für den bedingten Zugriff in Azure Active Directory
 
@@ -46,11 +46,11 @@ Wenn Sie eine neue Richtlinie erstellen, werden keine Benutzer, Gruppen, Apps od
 Damit Ihre Richtlinie funktioniert, müssen Sie Folgendes konfigurieren:
 
 
-|Was           | Vorgehensweise                                  | Warum|
-|:--            | :--                                  | :-- |
-|**Cloud-Apps** |Wählen Sie mindestens eine App aus.  | Ziel einer Richtlinie für den bedingten Zugriff ist es, Ihnen die Steuerung des Zugriffs autorisierter Benutzer auf Cloud-Apps zu ermöglichen.|
+| Was           | Vorgehensweise                                  | Warum |
+| :--            | :--                                  | :-- |
+| **Cloud-Apps** |Wählen Sie mindestens eine App aus.  | Ziel einer Richtlinie für den bedingten Zugriff ist es, Ihnen die Steuerung des Zugriffs autorisierter Benutzer auf Cloud-Apps zu ermöglichen.|
 | **Benutzer und Gruppen** | Wählen Sie mindestens einen Benutzer oder eine Gruppe aus, der bzw. die dazu autorisiert ist, auf die von Ihnen ausgewählten Cloud-Apps zuzugreifen. | Eine Richtlinie für den bedingten Zugriff, der keine Benutzer und Gruppen zugewiesen sind, wird niemals angewendet. |
-| **Steuerelemente** | Wählen Sie mindestens eine Zugriffssteuerung aus. | Ihr Richtlinienprozessor muss wissen, was zu tun ist, wenn die Bedingungen erfüllt sind.|
+| **Zugriffssteuerung** | Wählen Sie mindestens eine Zugriffssteuerung aus. | Ihr Richtlinienprozessor muss wissen, was zu tun ist, wenn die Bedingungen erfüllt sind. |
 
 
 
@@ -111,6 +111,13 @@ Bei jeder Anmeldung werden von Azure Active Directory alle Richtlinien ausgewert
 
 Ja, Sie können Exchange ActiveSync in einer Richtlinie für den bedingten Zugriff verwenden.
 
+### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Wie sollten Sie den bedingten Zugriff für Office 365-Apps konfigurieren?
+
+Da Office 365-Apps miteinander verbunden sind, empfiehlt es sich, häufig verwendete Apps beim Erstellen von Richtlinien gemeinsam zuzuweisen.
+
+Zu den gängigen miteinander verbundenen Anwendungen gehören Microsoft Flow, Microsoft Planner, Microsoft Teams, Office 365 Exchange Online, Office 365 SharePoint Online und Office 365 Yammer.
+
+Bei Richtlinien, die Benutzerinteraktionen erfordern, wie z. B. die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA), ist dies wichtig, wenn der Zugriff am Anfang einer Sitzung oder Aufgabe gesteuert wird. Wenn Sie dies nicht tun, können Benutzer einige Aufgaben in einer App nicht ausführen. Wenn beispielsweise auf nicht verwalteten Geräten die mehrstufige Authentifizierung für den Zugriff auf SharePoint, aber nicht für den Zugriff auf die E-Mail-App erforderlich ist, können Benutzer, die in ihrer E-Mail-App arbeiten, keine SharePoint-Dateien an eine Nachricht anfügen. Weitere Informationen finden Sie im Artikel [Was sind Dienstabhängigkeiten beim bedingten Azure Active Directory-Zugriff?](service-dependencies.md)
 
 
 
@@ -123,7 +130,7 @@ Das Framework für bedingten Zugriff bietet Ihnen mehr Flexibilität bei der Kon
 Vermeiden Sie in Ihrer Umgebung die folgenden Konfigurationen:
 
 
-**Für alle Benutzer, alle Cloud-Apps:**
+**Für alle Benutzer und alle Cloud-Apps:**
 
 - **Zugriff blockieren:** Diese Konfiguration blockiert Ihre gesamte Organisation, was in keinem Fall wünschenswert ist.
 
@@ -132,7 +139,7 @@ Vermeiden Sie in Ihrer Umgebung die folgenden Konfigurationen:
 - **Erfordert Domänenbeitritt:** Diese Richtlinie blockiert potenziell den Zugriff für alle Benutzer in Ihrer Organisation, wenn Sie noch nicht über in die Domäne eingebundene Geräte verfügen.
 
 
-**Für alle Benutzer, alle Cloud-Apps, alle Geräteplattformen:**
+**Für alle Benutzer, alle Cloud-Apps und alle Geräteplattformen:**
 
 - **Zugriff blockieren:** Diese Konfiguration blockiert Ihre gesamte Organisation, was in keinem Fall wünschenswert ist.
 

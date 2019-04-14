@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e21f7a67b11caf0180959de68d698f0ff4a1af1
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: a7a2866952d5e66e24770b81e69039d733fdd2a1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371858"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894592"
 ---
 # <a name="what-are-authentication-methods"></a>Authentifizierungsmethoden
 
-Die Azure AD-Dienste Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) und Multi-Factor Authentication (MFA) fordern zusätzliche Informationen an – über Authentifizierungsmethoden oder Sicherheitsinformationen – um sicherzustellen, dass Sie bei der Verwendung bestimmter Funktionen der angegebene Benutzer sind.
+Wenn Sie als Administrator Authentifizierungsmethoden für Azure Multi-Factor Authentication und für die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) auswählen, empfiehlt es sich, Benutzer zur Registrierung mehrerer Authentifizierungsmethoden zu zwingen. Wenn eine Authentifizierungsmethode für einen Benutzer nicht verfügbar ist, kann er sich mit einer anderen Methode authentifizieren.
 
-Administratoren können in einer Richtlinie definieren, welche Authentifizierungsmethoden Benutzern von SSPR und MFA zur Verfügung stehen. Einige Authentifizierungsmethoden sind nicht in allen Funktionen verfügbar.
+Administratoren können in einer Richtlinie definieren, welche Authentifizierungsmethoden Benutzern von SSPR und MFA zur Verfügung stehen. Einige Authentifizierungsmethoden sind nicht in allen Funktionen verfügbar. Weitere Informationen zum Konfigurieren von Richtlinien finden Sie in den Artikeln [Erfolgreicher Rollout der Self-Service-Kennwortzurücksetzung](howto-sspr-deployment.md) und [Bereitstellen von cloudbasierter Azure Multi-Factor Authentication](howto-mfa-getstarted.md).
 
 Administratoren wird empfohlen, Benutzern mehr als die erforderliche Mindestanzahl von Authentifizierungsmethoden zur Verfügung zu stellen, für den Fall, dass sie auf eine Methode nicht zugreifen können.
 
@@ -199,7 +199,7 @@ Eine SMS mit einem Prüfcode wird an die Mobiltelefonnummer gesendet. Geben Sie 
 Sie erhalten einen automatisierten Anruf unter der von Ihnen angegebenen Telefonnummer. Nehmen Sie den Anruf an, und drücken Sie die #-TASTE auf der Telefontastatur, um sich zu authentifizieren.
 
 > [!IMPORTANT]
-> Ab März 2019 werden die Telefonanrufoptionen für MFA- und der SSPR-Benutzer in kostenlosen bzw. Testversion von Azure AD-Mandanten nicht mehr verfügbar sein. SMS-Nachrichten sind von dieser Änderung nicht betroffen. Die Telefonanrufoption ist weiterhin für Benutzer in kostenpflichtigen Azure AD-Mandanten verfügbar. Diese Änderung wirkt sich nur auf kostenlose bzw. Testversionen von Azure AD-Mandanten aus.
+> Ab März 2019 werden die Telefonanrufoptionen für MFA- und der SSPR-Benutzer in kostenlosen bzw. Testversion von Azure AD-Mandanten nicht mehr verfügbar sein. SMS-Nachrichten sind von dieser Änderung nicht betroffen. Für Benutzer in kostenpflichtigen Azure AD-Mandanten ist die Telefonanrufoption weiterhin verfügbar. Diese Änderung wirkt sich nur auf kostenlose bzw. Testversionen von Azure AD-Mandanten aus.
 
 ## <a name="office-phone"></a>Bürotelefon
 
@@ -210,7 +210,7 @@ Für ein ordnungsgemäßes Funktionieren müssen Telefonnummern im Format *+Land
 Das Attribut „Bürotelefon“ wird von Ihrem Administrator verwaltet.
 
 > [!IMPORTANT]
-> Ab März 2019 werden die Telefonanrufoptionen für MFA- und der SSPR-Benutzer in kostenlosen bzw. Testversionen von Azure AD-Mandanten nicht mehr verfügbar sein. SMS-Nachrichten sind von dieser Änderung nicht betroffen. Die Telefonanrufoption ist weiterhin für Benutzer in kostenpflichtigen Azure AD-Mandanten verfügbar. Diese Änderung wirkt sich nur auf kostenlose bzw. Testversionen von Azure AD-Mandanten aus.
+> Ab März 2019 werden die Telefonanrufoptionen für MFA- und der SSPR-Benutzer in kostenlosen bzw. Testversionen von Azure AD-Mandanten nicht mehr verfügbar sein. SMS-Nachrichten sind von dieser Änderung nicht betroffen. Für Benutzer in kostenpflichtigen Azure AD-Mandanten ist die Telefonanrufoption weiterhin verfügbar. Diese Änderung wirkt sich nur auf kostenlose bzw. Testversionen von Azure AD-Mandanten aus.
 
 > [!NOTE]
 > Zwischen Landesvorwahl und Telefonnummer muss sich ein Leerzeichen befinden.

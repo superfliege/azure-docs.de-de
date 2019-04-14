@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren von Sicherheitswarnungen für Azure AD-Verzeichnisrollen in PIM | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Sicherheitswarnungen für Azure AD-Verzeichnisrollen in Azure AD Privileged Identity Management (PIM) konfigurieren.
+title: Konfigurieren von Sicherheitswarnungen für Azure AD-Rollen in PIM – Azure Active Directory | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Sicherheitswarnungen für Azure AD-Rollen in Azure AD Privileged Identity Management (PIM) konfigurieren.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,22 +14,22 @@ ms.date: 01/04/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2cb78d048559a011756362b58848c5e91ca40dd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1cd391af4e4b4722e433e9bf25f0d584fba2321e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172381"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577228"
 ---
-# <a name="configure-security-alerts-for-azure-ad-directory-roles-in-pim"></a>Konfigurieren von Sicherheitswarnungen für Azure AD-Verzeichnisrollen in PIM
+# <a name="configure-security-alerts-for-azure-ad-roles-in-pim"></a>Konfigurieren von Sicherheitswarnungen für Azure AD-Rollen in PIM
 
-Azure AD Privileged Identity Management (PIM) generiert bei verdächtigen oder nicht sicheren Aktivitäten in Ihrer Umgebung Warnungen. Wenn eine Warnung ausgelöst wird, wird sie im PIM-Dashboard angezeigt. Wählen Sie die Warnung aus, um einen Bericht mit allen Benutzern oder Rollen anzuzeigen, die die Warnung ausgelöst haben.
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) generiert bei verdächtigen oder nicht sicheren Aktivitäten in Ihrer Umgebung Warnungen. Wenn eine Warnung ausgelöst wird, wird sie im PIM-Dashboard angezeigt. Wählen Sie die Warnung aus, um einen Bericht mit allen Benutzern oder Rollen anzuzeigen, die die Warnung ausgelöst haben.
 
 ![PIM-Sicherheitswarnungen – Screenshot](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 
 ## <a name="security-alerts"></a>Sicherheitswarnungen
 
-Dieser Abschnitt enthält alle Sicherheitswarnungen für Verzeichnisrollen, sowie Informationen zur Behebung und Vermeidung. Der Schweregrad hat folgende Bedeutung:
+Dieser Abschnitt enthält alle Sicherheitswarnungen für Azure AD-Rollen sowie Informationen zur Behebung und Vermeidung. Der Schweregrad hat folgende Bedeutung:
 
 * **Hoch**: Aufgrund einer Richtlinienverletzung ist eine sofortige Aktion erforderlich.
 * **Mittel:** Es ist keine sofortige Aktion erforderlich, aber es wird eine potenzielle Richtlinienverletzung angezeigt.
@@ -130,4 +130,4 @@ Sie können einige der Sicherheitswarnungen in PIM so anpassen, dass sie in der 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Konfigurieren von Einstellungen für Azure AD-Verzeichnisrollen in PIM](pim-how-to-change-default-settings.md)
+- [Konfigurieren von Einstellungen für Azure AD-Rollen in PIM](pim-how-to-change-default-settings.md)
