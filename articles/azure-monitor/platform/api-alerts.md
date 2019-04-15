@@ -94,9 +94,9 @@ Die Eigenschaften aller Aktionen sind in der folgenden Tabelle aufgeführt.  Unt
 
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
-| Type |Der Typ der Aktion.  Derzeit sind die möglichen Werte „Warnung“ und „Webhook“. |
-| NAME |Der Anzeigename für die Warnung. |
-| Version |Die verwendete API-Version.  Dieser Wert sollte derzeit immer 1 lauten. |
+| `Type` |Der Typ der Aktion.  Derzeit sind die möglichen Werte „Warnung“ und „Webhook“. |
+| `Name` |Der Anzeigename für die Warnung. |
+| `Version` |Die verwendete API-Version.  Dieser Wert sollte derzeit immer 1 lauten. |
 
 ### <a name="retrieving-actions"></a>Abrufen von Aktionen
 
@@ -187,9 +187,9 @@ Mit Log Analytics können Sie Ihre Warnungen zur einfacheren Verwaltung und Sele
 
 |Log Analytics-Schweregrad  |Azure-Warnungsschweregrad  |
 |---------|---------|
-|Kritisch |Schweregrad 0|
-|Warnung |Schweregrad 1|
-|Information | Schweregrad 2|
+|`critical` |Schweregrad 0|
+|`warning` |Schweregrad 1|
+|`informational` | Schweregrad 2|
 
 Unten ist eine Beispielantwort für eine Aktion angegeben, die nur einen Schwellenwert und einen Schweregrad aufweist. 
 
@@ -360,8 +360,8 @@ Per E-Mail-Benachrichtigung werden E-Mails an einen oder mehrere Empfänger gese
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Recipients |Liste mit den E-Mail-Adressen |
-| Antragsteller |E-Mail-Betreff |
-| Anhang |Anlagen werden derzeit nicht unterstützt. Der Wert lautet daher immer „Keine“. |
+| Subject |E-Mail-Betreff |
+| Attachment |Anlagen werden derzeit nicht unterstützt. Der Wert lautet daher immer „Keine“. |
 
 Unten ist eine Beispielantwort für eine E-Mail-Benachrichtigungsaktion mit einem Schwellenwert angegeben.  
 
