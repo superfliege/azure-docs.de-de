@@ -19,7 +19,7 @@ In Azure Database for MySQL ist das Protokoll für langsame Abfragen für Benutz
 Weitere Informationen zum MySQL-Protokoll für langsame Abfragen finden Sie im [Abschnitt zu langsamen Abfragen](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) im MySQL-Referenzhandbuch.
 
 ## <a name="access-server-logs"></a>Zugreifen auf Serverprotokolle
-Sie können die Serverprotokolle von Azure Database for MySQL mit dem Azure Portal und der Azure CLI auflisten und herunterladen.
+Sie können die Serverprotokolle von Azure Database for MySQL mit dem Azure-Portal und der Azure CLI auflisten und herunterladen.
 
 Wählen Sie im Azure-Portal Ihren Azure Database for MySQL-Server aus. Wählen Sie unter der Überschrift **Überwachung** die Seite **Serverprotokolle** aus.
 

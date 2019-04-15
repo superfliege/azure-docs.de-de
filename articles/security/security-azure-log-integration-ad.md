@@ -1,6 +1,6 @@
 ---
 title: Azure-Protokollintegration mit Azure Active Directory-Überwachungsprotokollen | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie den Dienst Azure-Protokollintegration installieren und Azure-Überwachungsprotokolle integrieren.
+description: Hier erfahren Sie, wie Sie den Azure Log Integration-Dienst installieren und Azure-Überwachungsprotokolle integrieren.
 services: security
 documentationcenter: na
 author: Barclayn

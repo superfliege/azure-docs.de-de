@@ -222,7 +222,7 @@ Weitere Informationen finden Sie unter [Aufbewahrungsrichtlinien für Azure Acti
 
 #### <a name="resolution"></a>Lösung
 
-Sie haben zwei Möglichkeiten, um die Daten länger als 30 Tage beibehalten. Mithilfe der [Azure AD-Berichterstellungs-APIs](concept-reporting-api.md) können Sie die Daten programmgesteuert abrufen und in einer Datenbank speichern. Alternativ können Sie Überwachungsprotokolle in das SIEM-System eines Drittanbieters wie z.B. Splunk oder SumoLogic integrieren.
+Sie haben zwei Möglichkeiten, um die Daten länger als 30 Tage beibehalten. Mithilfe der [Azure AD-Berichterstellungs-APIs](concept-reporting-api.md) können Sie die Daten programmgesteuert abrufen und in einer Datenbank speichern. Alternativ können Sie Überwachungsprotokolle in das SIEM-System eines Drittanbieters wie z. B. Splunk oder SumoLogic integrieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

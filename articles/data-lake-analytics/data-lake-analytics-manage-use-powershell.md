@@ -124,7 +124,7 @@ Azure Data Lake Analytics unterstützt derzeit die folgenden Datenquellen:
 * [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
 * [Azure Storage (in englischer Sprache)](../storage/common/storage-introduction.md)
 
-Für jedes Data Lake Analytics-Konto ist ein Data Lake Store-Standardkonto vorhanden. Das Data Lake-Standardspeicherkonto dient zum Speichern von Auftragsmetadaten und -überwachungsprotokollen. 
+Für jedes Data Lake Analytics-Konto ist ein Data Lake Store-Standardkonto vorhanden. Das Data Lake Store-Standardkonto dient zum Speichern von Auftragsmetadaten und -überwachungsprotokollen. 
 
 ### <a name="find-the-default-data-lake-store-account"></a>Ermitteln des Data Lake-Standardspeicherkontos
 

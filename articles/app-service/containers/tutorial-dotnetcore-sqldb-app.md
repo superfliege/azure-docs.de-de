@@ -360,7 +360,7 @@ Wechseln Sie nach Abschluss des Vorgangs `git push` zu Ihrer Azure-App, und test
 
 Ihre gesamten vorhandenen Aufgaben werden weiterhin angezeigt. Wenn Sie die .NET Core-App erneut veröffentlichen, gehen in der SQL-Datenbank vorhandene Daten nicht verloren. Außerdem wird durch Entity Framework Core-Migrationen nur das Datenschema geändert, die vorhandenen Daten bleiben unverändert.
 
-## <a name="stream-diagnostic-logs"></a>Streaming des Diagnoseprotokolls
+## <a name="stream-diagnostic-logs"></a>Streamen von Diagnoseprotokollen
 
 Im Beispielprojekt wird die Anleitung unter [Protokollierung in ASP.NET Core.](https://docs.microsoft.com/aspnet/core/fundamentals/logging#logging-in-azure) mit zwei Konfigurationsänderungen bereits befolgt:
 
@@ -383,7 +383,7 @@ Sobald die Containerprotokollierung aktiviert ist, überwachen Sie den Protokoll
 az webapp log tail --name <app_name> --resource-group myResourceGroup
 ```
 
-Nachdem das Protokollstreaming gestartet wurde, aktualisieren Sie die Azure-App im Browser, um Webdatenverkehr zu generieren. Sie können jetzt Konsolenprotokolle sehen, die auf das Terminal umgeleitet werden. Falls Sie nicht sofort Konsolenprotokolle sehen, können Sie es nach 30 Sekunden noch einmal versuchen.
+Nachdem das Protokollstreaming gestartet wurde, aktualisieren Sie die Azure-App im Browser, um Webdatenverkehr zu generieren. Sie können jetzt Konsolenprotokolle sehen, die auf das Terminal umgeleitet werden. Falls Sie nicht sofort Konsolenprotokolle sehen, können Sie es nach 30 Sekunden noch einmal versuchen.
 
 Zum Beenden des Protokollstreamings geben Sie `Ctrl`+`C` ein.
 

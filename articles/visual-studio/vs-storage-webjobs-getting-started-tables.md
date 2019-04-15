@@ -81,7 +81,7 @@ Wenn die Funktion abgeschlossen ist, meldet die Seite **Aufrufdetails** die Anza
 ## <a name="how-to-read-multiple-entities-from-a-table"></a>Lesen mehrerer Entitäten aus einer Tabelle
 Verwenden Sie zum Lesen einer Tabelle das **Table**-Attribut mit dem **IQueryable<T>**-Parameter, wobei der Typ **T** von **TableEntity** abgeleitet ist oder **ITableEntity** implementiert.
 
-Das folgende Codebeispiel liest und meldet alle Zeilen aus der **Ingress** -Tabelle:
+Das folgende Codebeispiel liest und protokolliert alle Zeilen aus der **Ingress**-Tabelle:
 
         public static void ReadTable(
             [Table("Ingress")] IQueryable<Person> tableBinding,

@@ -256,7 +256,7 @@ Nach dem Anwenden dieses Filters werden die Zeilen aus dem Clientprotokoll ausge
 Die Speicherressourcen enthalten vordefinierte Filter, die Sie verwenden können, um Protokolldaten zu filtern und so die gesuchten Fehler oder Trends zu finden. Als Nächstes wenden wir zwei vordefinierte Filter an: einer, der die Server- und Netzwerkablaufverfolgungs-Protokolle nach 404-Fehlern filtert, und einen anderen, der die Daten nach einem angegebenen Zeitraum filtert.
 
 1. Öffnen Sie das Toolfenster "View Window", wenn es nicht bereits angezeigt wird. Wählen Sie auf der Symbolleiste die Option **Tool Windows** (Werkzeug „Fenster“) und dann **View Filter** (Filter anzeigen).
-2. Wählen Sie im Fenster „View Filter“ die Option **Library** (Bibliothek), und suchen Sie in `Azure Storage`, um die Azure Storage-Filter zu finden. Wählen Sie den Filter **404 (Not Found) messages in all logs**aus.
+2. Wählen Sie im Fenster „View Filter“ die Option **Library** (Bibliothek), und suchen Sie in `Azure Storage`, um die Azure Storage-Filter zu finden. Wählen Sie den Filter für **Meldungen vom Typ „404 (Nicht gefunden)“ in allen Protokollen** aus.
 3. Öffnen Sie das Menü **Library** (Bibliothek) erneut, und wählen Sie **Global Time Filter** (Globaler Zeitfilter) aus.
 4. Ändern Sie die im Filter angezeigten Zeitstempel zu dem gewünschten Zeitraum. So können Sie den Zeitraum der zu analysierenden Daten eingrenzen.
 5. Der Filter wird ähnlich wie im folgenden Beispiel angezeigt. Klicken Sie auf **Apply** , um den Filter auf das Analyseraster anzuwenden.

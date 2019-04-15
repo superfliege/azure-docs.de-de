@@ -28,7 +28,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Erstellen eine Cosmos DB-Datenbank
 > * Herstellen einer Verbindung zwischen einer Beispiel-App und der Datenbank und das lokale Testen
 > * Bereitstellen der Beispiel-App in Azure
-> * Streamen von Diagnoseprotokollen aus Azure Service
+> * Streamen von Diagnoseprotokollen aus App Service
 > * Hinzufügen zusätzlicher Instanzen zum horizontalen Hochskalieren der Beispiel-App
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]

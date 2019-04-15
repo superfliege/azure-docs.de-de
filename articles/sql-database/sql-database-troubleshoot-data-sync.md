@@ -54,7 +54,7 @@ Die Synchronisierung lokaler Datenbanken, die dem Client-Agent zugeordnet sind, 
 
 ### <a name="sync-stuck"></a>Meine Synchronisierungsgruppe ist im Verarbeitungszustand hängengeblieben.
 
-Eine Synchronisierungsgruppe in der SQL-Datensynchronisierung bleibt lange Zeit im Verarbeitungszustand. Sie reagiert nicht auf den **stop**-Befehl, und das Protokoll zeigt keine neuen Einträge.
+Eine Synchronisierungsgruppe in der SQL-Datensynchronisierung bleibt lange Zeit im Verarbeitungszustand. Sie reagiert nicht auf den **stop**-Befehl, und die Protokolle zeigen keine neuen Einträge.
 
 Folgende Bedingungen können dazu führen, dass eine Synchronisierungsgruppe im Verarbeitungszustand hängenbleibt:
 

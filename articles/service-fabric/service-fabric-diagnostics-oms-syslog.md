@@ -109,7 +109,7 @@ Sie können diese Syslog-Ereignisse in einem Überwachungstool wie Azure Monitor
     ![Konfigurieren von Syslog](media/service-fabric-diagnostics-oms-syslog/syslog-configure.png)
 5. Wechseln Sie zum Abfrage-Explorer, indem Sie im Menü der Arbeitsbereichsressource auf `Logs` klicken, um die Abfrage zu starten.
 
-    ![Arbeitsbereichprotokolle](media/service-fabric-diagnostics-oms-syslog/workspace-logs.png)
+    ![Arbeitsbereichsprotokolle](media/service-fabric-diagnostics-oms-syslog/workspace-logs.png)
 6. Sie können die Tabelle `Syslog` abfragen, um nach `ServiceFabric` als Prozessname zu suchen. Die folgende Abfrage ist ein Beispiel dafür, wie Sie den JSON-Code im Ereignis analysieren und seinen Inhalt anzeigen können.
 
 ```kusto

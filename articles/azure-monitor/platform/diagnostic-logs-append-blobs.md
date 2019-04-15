@@ -36,7 +36,7 @@ Azure Monitor verfügt über eine Funktion, mit der Sie Ressourcendiagnosedaten 
   * [Von Protokollprofilen exportierte Azure-Aktivitätsprotokolldaten](./../../azure-monitor/platform/archive-activity-log.md)
 * Diese Änderung wirkt sich nicht auf Folgendes aus:
   * Netzwerkflussprotokolle
-  * Azure-Dienstprotokolle, die noch nicht über Azure Monitor verfügbar gemacht werden (z.B. Azure App Service-Diagnoseprotokolle, Speicheranalyseprotokolle)
+  * Azure-Dienstprotokolle, die noch nicht über Azure Monitor verfügbar gemacht werden (z. B. Azure App Service-Diagnoseprotokolle, Speicheranalyseprotokolle)
   * Routing von Azure-Diagnoseprotokollen und Aktivitätsprotokollen an andere Ziele (Event Hubs, Log Analytics)
 
 ### <a name="how-to-see-if-you-are-impacted"></a>Ermitteln der Auswirkungen für Sie

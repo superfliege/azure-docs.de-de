@@ -72,7 +72,7 @@ Es ist wichtig, dass Sie die in Ihren HDInsight-Clustern ausgeführten Workloadt
 
 ## <a name="step-2-manage-cluster-service-versions-and-view-script-action-logs"></a>Schritt 2: Verwalten von Clusterdienstversionen und Anzeigen von Skriptaktionsprotokollen
 
-Für einen typischen HDInsight-Cluster werden mehrere Dienste und Open-Source-Softwarepakete verwendet (z.B. Apache HBase, Apache Spark usw.). Bei einigen Workloads, z.B. der Bioinformatik, kann es ggf. erforderlich sein, zusätzlich zu den Protokollen zur Auftragsausführung den Protokollierungsverlauf der Dienstkonfiguration aufzubewahren.
+Für einen typischen HDInsight-Cluster werden mehrere Dienste und Open-Source-Softwarepakete verwendet (z.B. Apache HBase, Apache Spark usw.). Bei einigen Workloads, z. B. der Bioinformatik, kann es ggf. erforderlich sein, zusätzlich zu den Protokollen zur Auftragsausführung den Protokollierungsverlauf der Dienstkonfiguration aufzubewahren.
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>Anzeigen von Einstellungen zur Clusterkonfiguration mit der Ambari-Benutzeroberfläche
 
@@ -88,7 +88,7 @@ Mit der Ambari-Benutzeroberfläche können Sie die Konfiguration für beliebige 
 
 ### <a name="view-the-script-action-logs"></a>Anzeigen der Skriptaktionsprotokolle
 
-Mit HDInsight-[Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md) werden Skripts in einem Cluster manuell oder gemäß Festlegung ausgeführt. Skriptaktionen können beispielsweise verwendet werden, um zusätzliche Software im Cluster zu installieren oder für Konfigurationseinstellungen die Standardwerte zu ändern. Skriptaktionsprotokolle können Erkenntnisse zu Fehlern liefern, die während der Einrichtung des Clusters aufgetreten sind, sowie zu Änderungen von Konfigurationseinstellungen, die sich auf die Clusterleistung und -verfügbarkeit auswirken können.  Wählen Sie zum Anzeigen des Status einer Skriptaktion in der Ambari-Benutzeroberfläche die Schaltfläche **ops** (Vorgänge), oder greifen Sie auf die Statusprotokolle im Standardspeicherkonto zu. Die Speicherprotokolle stehen unter `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE`zur Verfügung.
+Mit HDInsight-[Skriptaktionen](hdinsight-hadoop-customize-cluster-linux.md) werden Skripts in einem Cluster manuell oder gemäß Festlegung ausgeführt. Skriptaktionen können beispielsweise verwendet werden, um zusätzliche Software im Cluster zu installieren oder für Konfigurationseinstellungen die Standardwerte zu ändern. Skriptaktionsprotokolle können Erkenntnisse zu Fehlern liefern, die während der Einrichtung des Clusters aufgetreten sind, sowie zu Änderungen von Konfigurationseinstellungen, die sich auf die Clusterleistung und -verfügbarkeit auswirken können.  Wählen Sie zum Anzeigen des Status einer Skriptaktion in der Ambari-Benutzeroberfläche die Schaltfläche **ops** (Vorgänge), oder greifen Sie auf die Statusprotokolle im Standardspeicherkonto zu. Die Speicherprotokolle stehen unter `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE` zur Verfügung.
 
 ## <a name="step-3-manage-the-cluster-job-execution-log-files"></a>Schritt 3: Verwalten von Protokolldateien zur Ausführung von Clusteraufträgen
 

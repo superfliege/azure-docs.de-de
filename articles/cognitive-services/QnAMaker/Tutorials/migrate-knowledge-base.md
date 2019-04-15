@@ -55,10 +55,10 @@ Die Migration einer Wissensdatenbank erfordert den Export aus einer Wissensdaten
 
     Nun wird der gesamte Inhalt der Knowledge Base – Fragen, Antworten und Metadaten sowie die Namen der Quelldateien und der URLs – in die neue Knowledge Base importiert. 
 
-## <a name="chat-logs-and-alterations"></a>Chatlogs und Varianten
+## <a name="chat-logs-and-alterations"></a>Chatprotokolle und Varianten
 Varianten (Synonyme) ohne Berücksichtigung von Groß-/Kleinbuchstaben werden nicht automatisch importiert. Verwenden Sie die [V2-APIs](https://aka.ms/qnamaker-v2-apis), um die Varianten aus der alten Wissensdatenbank zu exportieren, und die [V4-APIs](https://aka.ms/qnamaker-v4-apis), um die Varianten in die neue Wissensdatenbank zu verschieben.
 
-Die Migration von Chatlogs ist nicht möglich, da die neue Wissensdatenbank Application Insights zum Speichern von Chatlogs verwendet. 
+Die Migration von Chatprotokollen ist nicht möglich, da die neue Wissensdatenbank Application Insights zum Speichern von Chatprotokollen verwendet. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

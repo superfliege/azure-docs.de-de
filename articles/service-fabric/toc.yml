@@ -401,7 +401,7 @@ items:
         href: service-fabric-resource-governance.md
       - name: Volume- und Protokollierungstreiber
         href: service-fabric-containers-volume-logging-drivers.md
-      - name: Anzeigen von Containerprotokollen
+      - name: Containerprotokolle anzeigen
         href: service-fabric-containers-view-logs.md
       - name: Dienste innerhalb von Containern
         href: service-fabric-services-inside-containers.md

@@ -147,7 +147,7 @@ Sie können ein PowerShell-Skript verwenden, um zu prüfen, ob Benutzern eine Li
 
 ## <a name="use-audit-logs-to-monitor-group-based-licensing-activity"></a>Verwenden von Überwachungsprotokollen zum Überwachen von gruppenbasierten Lizenzierungsaktivitäten
 
-Sie können [Azure AD-Überwachungsprotokolle](../reports-monitoring/concept-audit-logs.md#audit-logs) verwenden, um alle Aktivitäten für die gruppenbasierte Lizenzierung anzuzeigen, z.B.:
+Sie können [Azure AD-Überwachungsprotokolle](../reports-monitoring/concept-audit-logs.md#audit-logs) verwenden, um alle Aktivitäten für die gruppenbasierte Lizenzierung anzuzeigen, z. B.:
 - Welche Benutzer Lizenzen für Gruppen geändert haben
 - Wann das System mit dem Verarbeiten einer Gruppenlizenzänderung begonnen hat und wann der Prozess abgeschlossen wurde
 - Welche Lizenzänderungen für einen Benutzer aufgrund der Gruppenlizenzzuweisung vorgenommen wurden

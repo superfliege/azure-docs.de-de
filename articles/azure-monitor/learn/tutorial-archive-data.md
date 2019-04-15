@@ -21,7 +21,7 @@ ms.locfileid: "54433350"
 Auf mehreren Ebenen Ihrer Azure-Umgebung werden Protokoll- und Metrikdaten generiert, die in einem Azure Storage-Konto archiviert werden können. Dies bietet sich an, um einen Verlauf von Überwachungsdaten über einen längeren Zeitraum in einem preiswerten, nicht durchsuchbaren Speicher beizubehalten, nachdem die Daten die Aufbewahrungsfrist überschritten haben. 
 
 - Metriken werden auf der Azure Monitor-Plattform 93 Tage lang aufbewahrt. 
-- Ressourcendiagnoseprotokolle werden nur angezeigt, wenn sie an Log Analytics weitergeleitet werden. Dort verfügen sie über einen konfigurierbaren Aufbewahrungszeitraum von mindestens 30 Tagen. 
+- Ressourcendiagnoseprotokolle werden nur angezeigt, wenn sie an Log Analytics weitergeleitet werden. Dort verfügen sie über einen konfigurierbaren Aufbewahrungszeitraum von mindestens 30 Tagen. 
 - Aktivitätsprotokolleinträge werden 90 Tage lang aufbewahrt.  
 
 In diesem Tutorial durchlaufen Sie die Schritte zum Konfigurieren Ihrer Azure-Umgebung für das Archivieren von Daten in einem Speicherkonto.

@@ -155,7 +155,7 @@ Weitere Informationen finden Sie unter [Verwalten Ihres StorSimple-Geräts mithi
 
 ### <a name="local-web-user-interface"></a>Lokale Webbenutzeroberfläche
 
-Das virtuelle Array enthält eine webbasierte Benutzeroberfläche, die für die einmalige Konfiguration und Registrierung des Geräts beim StorSimple-Geräte-Manager-Dienst verwendet wird. Sie können sie zum Herunterfahren und Neustarten des virtuellen Arrays, zum Ausführen von Diagnosetests, zum Aktualisieren von Software, zum Ändern des Geräteadministratorkennworts, zum Anzeigen von Systemprotokollen und zum Senden einer Serviceanfrage an den Microsoft Support verwenden.
+Das virtuelle Array enthält eine webbasierte Benutzeroberfläche, die für die einmalige Konfiguration und Registrierung des Geräts beim StorSimple-Geräte-Manager-Dienst verwendet wird. Sie können sie zum Herunterfahren und Neustarten des virtuellen Arrays, zum Ausführen von Diagnosetests, zum Aktualisieren von Software, zum Ändern des Geräteadministratorkennworts, zum Anzeigen von Systemprotokollen und zum Senden einer Serviceanfrage an den Microsoft-Support verwenden.
 
 Informationen zur Verwendung der webbasierten Benutzeroberfläche finden Sie unter [Verwenden der webbasierten Benutzeroberfläche zum Verwalten des StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
 

@@ -125,7 +125,7 @@ Die folgenden Technologien enthalten Funktionen zum Verwalten des Zugriffs auf D
 - Alle Schlüssel und Geheimnisse in Key Vault besitzen ein Ablaufdatum.
 - Alle Schlüssel in Key Vault werden durch spezielle Hardwaresicherheitsmodule geschützt. Der Schlüsseltyp ist ein Hardwaresicherheitsmodul, das mit einem 2048-Bit-RSA-Schlüssel geschützt wird.
 - Allen Benutzern und Identitäten werden mit RBAC die mindestens erforderlichen Berechtigungen erteilt.
-- Diagnoseprotokolle für Key Vault werden mit einer Aufbewahrungsdauer von mindestens 365 Tagen aktiviert.
+- Diagnoseprotokolle für Key Vault werden mit einer Aufbewahrungsdauer von mindestens 365 Tagen aktiviert.
 - Zulässige kryptographische Vorgänge für Schlüssel sind auf die erforderlichen Vorgänge beschränkt.
 - Die Lösung ist in Azure Key Vault integriert, um die Verwaltung der Verschlüsselungsschlüssel für IaaS-VM-Datenträger zu erleichtern.
 

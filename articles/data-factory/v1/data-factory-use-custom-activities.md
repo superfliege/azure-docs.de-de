@@ -640,7 +640,7 @@ In diesem Schritt erstellen Sie Datasets zur Darstellung von Eingabe- und Ausgab
     ```
     2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2016-11-16-00/file.txt.
     ```
-6. Verwenden Sie zum Überwachen Ihrer Data Factory, Pipelines und Datasets das [Azure-Portal][azure-preview-portal] oder Azure PowerShell-Cmdlets. Sie können die Meldungen vom **ActivityLogger** im Code für die benutzerdefinierte Aktivität in den Protokollen (insbesondere "user-0.log") sehen, die Sie aus dem Portal oder mithilfe von Cmdlets herunterladen können.
+6. Verwenden Sie zum Überwachen Ihrer Data Factory, Pipelines und Datasets das [Azure-Portal][azure-preview-portal] oder Azure PowerShell-Cmdlets. Sie können die Meldungen vom **ActivityLogger** im Code für die benutzerdefinierte Aktivität in den Protokollen (insbesondere „user-0.log“) sehen, die Sie aus dem Portal oder mithilfe von Cmdlets herunterladen können.
 
    ![Herunterladen von Protokollen aus einer benutzerdefinierten Aktivität][image-data-factory-download-logs-from-custom-activity]
 

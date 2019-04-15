@@ -88,7 +88,7 @@ Es gibt zwei Möglichkeiten, die Protokolldaten Ihres Data Lake Storage Gen1-Kon
 ## <a name="understand-the-structure-of-the-log-data"></a>Grundlegendes zur Struktur der Protokolldaten
 Die Überwachungs- und Anforderungsprotokolle liegen im JSON-Format vor. In diesem Abschnitt betrachten wir die Struktur von JSON für Anforderungs- und Überwachungsprotokolle.
 
-### <a name="request-logs"></a>Anforderungsprotokollen
+### <a name="request-logs"></a>Anforderungsprotokolle
 Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Anforderungsprotokoll. Jedes Blob hat ein Stammobjekt namens **records** , das ein Array mit Protokollobjekten enthält.
 
     {

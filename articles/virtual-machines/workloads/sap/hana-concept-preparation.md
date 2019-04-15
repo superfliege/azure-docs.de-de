@@ -78,12 +78,12 @@ Das Betriebsteam stellt die Replikationsbeziehung zwischen den PRD-Volumes in de
 
 Als Nächstes müssen Sie den Sicherungszeitplan für Speichermomentaufnahmen einrichten oder anpassen, um Ihren RTO- und RPO-Wert für den Notfall zu ermitteln. Legen Sie zur Minimierung der Recovery Point Objective folgende Replikationsintervalle im HANA-Dienst (große Instanz) fest:
 - Legen Sie für die durch die kombinierte Momentaufnahme abgedeckten Volumes (Momentaufnahmetyp **hana**) fest, dass sie alle 15 Minuten an die entsprechenden Speichervolumeziele am Standort für die Notfallwiederherstellung repliziert werden.
-- Legen Sie für das Volume für die Transaktionsprotokollsicherung (Momentaufnahmetyp **logs**) fest, dass es alle drei Minuten an die entsprechenden Speichervolumeziele am Standort für die Notfallwiederherstellung repliziert wird.
+- Legen Sie für das Volume für die Transaktionsprotokollsicherung (Momentaufnahmetyp **logs**) fest, dass es alle drei Minuten an den entsprechenden Speichervolumezielen am Standort für die Notfallwiederherstellung repliziert wird.
 
 Richten Sie zur Minimierung der Recovery Point Objective Folgendes ein:
 - Führen Sie alle 30 bis 60 Minuten eine Speichermomentaufnahme vom Typ **hana** (siehe „Schritt 7:  Durchführen von Momentaufnahmen“) durch.
 - Führen Sie alle fünf Minuten SAP HANA-Transaktionsprotokollsicherungen durch.
-- Führen Sie alle fünf bis 15 Minuten Speichermomentaufnahmen vom Typ **logs** durch. Mit diesem Intervall erzielen Sie einen RPO-Wert von etwa 15 bis 25 Minuten.
+- Führen Sie alle 5 bis 15 Minuten Speichermomentaufnahmen vom Typ **logs** durch. Mit diesem Intervall erzielen Sie einen RPO-Wert von etwa 15 bis 25 Minuten.
 
 Die folgende Grafik zeigt eine mögliche Sequenz der Transaktionsprotokollsicherungen und Speichermomentaufnahmen sowie der Replikation des Volumes mit der HANA-Transaktionsprotokollsicherung und von „/hana/data“ und „/hana/shared“ (einschließlich „/usr/sap“) bei Verwendung dieser Einstellungen:
 

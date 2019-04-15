@@ -35,7 +35,7 @@ Der Anwendungsproxy kann persönliche Daten in die folgenden Protokolltypen schr
 
 ## <a name="remove-personal-data-from-windows-event-logs"></a>Entfernen persönlicher Daten aus Windows-Ereignisprotokollen
 
-Informationen zum Konfigurieren der Datenaufbewahrung für die Windows-Ereignisprotokolle finden Sie unter [Einstellungen für Ereignisprotokolle](https://technet.microsoft.com/library/cc952132.aspx) (in englischer Sprache). Weitere Informationen zu Windows-Ereignisprotokollen finden Sie unter [Verwenden von Windows-Ereignisprotokollen](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx) (in englischer Sprache).
+Informationen zum Konfigurieren der Datenaufbewahrung für die Windows-Ereignisprotokolle finden Sie unter [Settings for event logs](https://technet.microsoft.com/library/cc952132.aspx) (Einstellungen für Ereignisprotokolle). Weitere Informationen zu Windows-Ereignisprotokollen finden Sie unter [Verwenden von Windows-Ereignisprotokollen](https://msdn.microsoft.com/library/windows/desktop/aa385772.aspx) (in englischer Sprache).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)]
 

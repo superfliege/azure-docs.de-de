@@ -54,10 +54,10 @@ Außerdem muss der Power BI Desktop-Client auf Ihrem Computer installiert sein, 
 
 ### <a name="steps"></a>Schritte
 
-1. Laden Sie die folgende Power BI-Vorlage in der Power BI-Desktopanwendung herunter, und öffnen Sie sie: [Network Watcher PowerBI flow logs template](https://aka.ms/networkwatcherpowerbiflowlogstemplate) (Network Watcher – Vorlage für Power BI-Datenflussprotokolle).
+1. Laden Sie die folgende Power BI-Vorlage in der Power BI Desktop-Anwendung herunter, und öffnen Sie sie: [Network Watcher PowerBI flow logs template](https://aka.ms/networkwatcherpowerbiflowlogstemplate) (Network Watcher – Vorlage für Power BI-Datenflussprotokolle).
 1. Geben Sie die erforderlichen Abfrageparameter ein.
    1. **StorageAccountName**: Gibt den Namen des Speicherkontos mit den NSG-Datenflussprotokollen an, die geladen und visualisiert werden sollen.
-   1. **NumberOfLogFiles**: Gibt die Anzahl von Protokolldateien an, die heruntergeladen und in Power BI visualisiert werden sollen. Wenn beispielsweise der Wert 50 angegeben ist, sind dies die letzten 50 Protokolldateien. Wenn zwei NSGs aktiviert und für das Senden von NSG-Datenflussprotokollen an dieses Konto konfiguriert sind, können die letzten 25 Stunden des Protokollverlaufs angezeigt werden.
+   1. **NumberOfLogFiles**: Gibt die Anzahl von Protokolldateien an, die heruntergeladen und in Power BI visualisiert werden sollen. Wenn beispielsweise der Wert 50 angegeben ist, sind dies die letzten 50 Protokolldateien. Wenn zwei NSGs aktiviert und für das Senden von NSG-Datenflussprotokollen an dieses Konto konfiguriert sind, können die letzten 25 Stunden des Protokollverlaufs angezeigt werden.
 
       ![Power BI-Hauptfenster][2]
 

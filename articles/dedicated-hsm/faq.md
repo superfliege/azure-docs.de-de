@@ -173,7 +173,7 @@ Die Gemalto HSM-Clientsoftware wird zum Verwalten der HSMs und Partitionen verwe
 
 ### <a name="q-how-do-i-monitor-my-hsm"></a>F: Wie überwache ich mein HSM?
 
-Ein Kunde besitzt über Syslog und SNMP vollständigen Zugriff auf die HSM-Aktivitätsprotokolle . Kunden müssen einen Syslog-Server oder SNMP-Server so einrichten, dass sie Protokolle oder Ereignisse von den HSMs erhalten.
+Ein Kunde besitzt über Syslog und SNMP vollständigen Zugriff auf die HSM-Aktivitätsprotokolle. Kunden müssen einen Syslog-Server oder SNMP-Server so einrichten, dass sie Protokolle oder Ereignisse von den HSMs erhalten.
 
 ### <a name="q-can-i-get-full-access-log-of-all-hsm-operations-from-dedicated-hsm"></a>F: Kann ich von Dedicated HSM ein vollständiges Zugriffsprotokoll aller HSM-Vorgänge erhalten?
 

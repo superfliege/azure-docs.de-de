@@ -74,7 +74,7 @@ Verwenden Sie die folgende Vorlage, um die Batchdatei zu starten:
 ]
 ```
 
-Die Batchdatei erkennt anhand der Eigenschaften **startPos** und **endPos** Anfang und Ende einer Entität. Die Werte sind nullbasiert und dürfen nicht mit einem Leerzeichen beginnen oder enden. Dies ist ein Unterschied zu den Abfrageprotokollen, die die Eigenschaften startIndex und endIndex verwenden. 
+Die Batchdatei erkennt anhand der Eigenschaften **startPos** und **endPos** Anfang und Ende einer Entität. Die Werte sind nullbasiert und dürfen nicht mit einem Leerzeichen beginnen oder enden. Dies ist ein Unterschied zu den Abfrageprotokollen, die die Eigenschaften „startIndex“ und „endIndex“ verwenden. 
 
 ## <a name="batch-syntax-template-for-intents-without-entities"></a>Batchsyntaxvorlage für Absichten ohne Entitäten
 

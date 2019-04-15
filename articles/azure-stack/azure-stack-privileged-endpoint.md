@@ -30,7 +30,7 @@ Als Azure Stack-Operator sollten Sie das Administratorportal, PowerShell oder AP
 
 Der PEP kann beispielsweise für Folgendes verwendet werden:
 
-- Aufgaben auf niedriger Ebene durchführen, z.B. [Diagnoseprotokolle erfassen](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostics#log-collection-tool).
+- Aufgaben auf niedriger Ebene durchführen, z. B. [Diagnoseprotokolle erfassen](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostics#log-collection-tool).
 - Durchführung zahlreicher Datacenter-Integrationsaufgaben für integrierte Systeme nach der Bereitstellung, z.B. Hinzufügen von DNS-Weiterleitungen nach der Bereitstellung, Einrichten der Microsoft Graph-Integration, der Integration von Active Directory-Verbunddiensten (AD FS), der Zertifikatrotation, usw.
 - Zusammenarbeit mit dem Support zum Erhalt von temporärem, allgemeinem Zugriff für die eingehende Problembehandlung eines integrierten Systems.
 

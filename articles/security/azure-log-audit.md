@@ -54,15 +54,15 @@ Die folgende Tabelle enthält die wichtigsten Protokolltypen, die in Azure verf�
 
 ### <a name="activity-logs"></a>Aktivitätsprotokolle
 
-[Azure-Aktivitätsprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) bieten Einblicke in Vorgänge, die für Ressourcen in Ihrem Abonnement ausgeführt wurden. Azure-Aktivitätsprotokolle wurden bisher als „Prüfberichte“ oder „Vorgangsprotokoll“ bezeichnet, da sie Ereignisse der [Steuerungsebene](https://driftboatdave.com/2016/10/13/azure-auditing-options-for-your-custom-reporting-needs/) für Ihre Abonnements enthalten. 
+[Azure-Aktivitätsprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) bieten Einblicke in Vorgänge, die für Ressourcen in Ihrem Abonnement ausgeführt wurden. Azure-Aktivitätsprotokolle wurden bisher als „Überwachungsprotokolle“ oder „Betriebsprotokolle“ bezeichnet, da sie Ereignisse der [Steuerungsebene](https://driftboatdave.com/2016/10/13/azure-auditing-options-for-your-custom-reporting-needs/) für Ihre Abonnements enthalten. 
 
-Mit Aktivitätsprotokollen können Sie bestimmen, wer, wann Schreibvorgänge ausgelöst hat und was diese bewirkt haben (d. h., PUT, POST oder DELETE). Mit Aktivitätsprotokollen können Sie auch den Status des Vorgangs und andere relevante Eigenschaften verstehen. Aktivitätsprotokolle umfassen keine Lesevorgänge (GET).
+Mit Aktivitätsprotokollen können Sie bestimmen, wer, wann Schreibvorgänge ausgelöst hat und was diese bewirkt haben (d. h., PUT, POST oder DELETE). Mit Aktivitätsprotokollen können Sie auch den Status des Vorgangs und andere relevante Eigenschaften verstehen. Aktivitätsprotokolle umfassen keine Lesevorgänge (GET).
 
 In diesem Artikel beziehen sich PUT, POST und DELETE auf alle Schreibvorgänge, die das Aktivitätsprotokoll für die Ressourcen enthält. Sie können z. B. bei der Problembehandlung mithilfe der Aktivitätsprotokolle einen Fehler ermitteln oder nachverfolgen, welche Änderungen an einer Ressource ein Benutzer in Ihrer Organisation vorgenommen hat.
 
 ![Aktivitätsprotokolldiagramm](./media/azure-log-audit/azure-log-audit-fig1.png)
 
-Sie können Ereignisse per Azure-Portal, [Azure CLI](https://docs.microsoft.com/azure/storage/storage-azure-cli), PowerShell-Cmdlets und [Azure Monitor-REST-API](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough) aus dem Aktivitätsprotokoll abrufen. Für Aktivitätsprotokolle gilt eine Datenaufbewahrungsdauer von 90 Tagen.
+Sie können Ereignisse per Azure-Portal, [Azure CLI](https://docs.microsoft.com/azure/storage/storage-azure-cli), PowerShell-Cmdlets und [Azure Monitor-REST-API](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough) aus dem Aktivitätsprotokoll abrufen. Für Aktivitätsprotokolle gilt eine Datenaufbewahrungsdauer von 90 Tagen.
 
 Integrationsszenarien für ein Aktivitätsprotokollereignis:
 
@@ -88,7 +88,7 @@ Azure-Diagnoseprotokolle werden von einer Ressource ausgegeben und stellen umfan
 
 ![Azure-Diagnoseprotokolldiagramme](./media/azure-log-audit/azure-log-audit-fig2.png)
 
-Azure-Diagnoseprotokolle bieten mehrere Konfigurationsoptionen, wie z.B. das Azure-Portal, PowerShell, Azure ALI und die REST-API.
+Azure-Diagnoseprotokolle bieten mehrere Konfigurationsoptionen, wie z. B. das Azure-Portal, PowerShell, Azure CLI und die REST-API.
 
 **Integrationsszenarien**
 
@@ -166,7 +166,7 @@ Sie können die Azure-Diagnose wie folgt auf einem virtuellen Computer aktiviere
 
 ### <a name="storage-analytics"></a>Speicheranalyse
 
-[Azure Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) protokolliert Metrikdaten für ein Speicherkonto und stellt diese bereit. Mit diesen Daten können Sie Anforderungen verfolgen, Verwendungstrends analysieren und Probleme mit dem Speicherkonto diagnostizieren. Die Storage Analytics Protokollierung ist für [ Azure Blob-, Azure Queue- und Azure Table Storage-Dienste](https://docs.microsoft.com/azure/storage/storage-introduction) nicht verfügbar. Die Speicheranalyse protokolliert ausführliche Informationen zu erfolgreichen und nicht erfolgreichen Anforderungen an einen Speicherdienst.
+[Azure Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) protokolliert Metrikdaten für ein Speicherkonto und stellt diese bereit. Mit diesen Daten können Sie Anforderungen verfolgen, Verwendungstrends analysieren und Probleme mit dem Speicherkonto diagnostizieren. Die Storage Analytics Protokollierung ist für [ Azure Blob-, Azure Queue- und Azure Table Storage-Dienste](https://docs.microsoft.com/azure/storage/storage-introduction) nicht verfügbar. Storage Analytics protokolliert ausführliche Informationen zu erfolgreichen und nicht erfolgreichen Anforderungen an einen Speicherdienst.
 
 Anhand dieser Informationen können Sie einzelne Anforderungen überwachen und Probleme mit einem Speicherdienst untersuchen. Anforderungen werden auf Grundlage der besten Leistung protokolliert. Protokolleinträge werden nur erstellt, wenn Anforderungen für den Dienstendpunkt gestellt wurden. Wenn beispielsweise ein Speicherkonto Aktivität im Blob-Endpunkt, jedoch nicht im Tabellen- oder Warteschlangenendpunkt aufweist, werden nur Protokolle für den Blob-Speicherdienst erstellt.
 
@@ -302,7 +302,7 @@ Für Security Center werden professionelle Sicherheitsanalysen genutzt, die weit
 
 * **Anomalieerkennung:** Es werden statistische Profile erstellt, um typische Verlaufsdaten zu erhalten. Sie werden benachrichtigt, wenn es zu Abweichungen von der Baseline kommt, die einem potenziellen Angriffsvektor entsprechen.
 
-Viele für den Sicherheitsbetrieb und die Bearbeitung von Incidents zuständige Teams nutzen eine SIEM-Lösung als Ausgangspunkt für die Selektierung und Untersuchung von Sicherheitswarnungen. Mit Azure Log Integration können Sie Security Center-Warnungen sowie von der Azure-Diagnose und Überwachungsprotokollen gesammelte Sicherheitsereignisse für den virtuellen Computer nahezu in Echtzeit mit ihrer Log Analytics- oder SIEM-Lösung synchronisieren.
+Viele für den Sicherheitsbetrieb und die Bearbeitung von Incidents zuständige Teams nutzen eine SIEM-Lösung als Ausgangspunkt für die Selektierung und Untersuchung von Sicherheitswarnungen. Mit Azure Log Integration können Sie Security Center-Warnungen sowie in Azure-Diagnoseprotokollen und -Überwachungsprotokollen gesammelte Sicherheitsereignisse für den virtuellen Computer nahezu in Echtzeit mit ihrer Log Analytics- oder SIEM-Lösung synchronisieren.
 
 ## <a name="log-analytics"></a>Log Analytics
 

@@ -367,7 +367,7 @@ Wechseln Sie nach Abschluss des `git push`-Vorgangs zu Ihrer App Service-App, un
 
 Ihre gesamten vorhandenen Aufgaben werden weiterhin angezeigt. Wenn Sie die .NET Core-App erneut veröffentlichen, gehen in der SQL-Datenbank vorhandene Daten nicht verloren. Außerdem wird durch Entity Framework Core-Migrationen nur das Datenschema geändert, die vorhandenen Daten bleiben unverändert.
 
-## <a name="stream-diagnostic-logs"></a>Streaming des Diagnoseprotokolls
+## <a name="stream-diagnostic-logs"></a>Streamen von Diagnoseprotokollen
 
 Wenn die ASP.NET Core-App in Azure App Service ausgeführt wird, können Sie die Konsolenprotokolle an Cloud Shell umleiten. Auf diese Weise erhalten Sie die gleichen Diagnosemeldungen, die Ihnen beim Debuggen von Anwendungsfehlern helfen.
 
@@ -392,7 +392,7 @@ Verwenden Sie zum Starten des Streamings von Protokolldateien den Befehl [`az we
 az webapp log tail --name <app_name> --resource-group myResourceGroup
 ```
 
-Nachdem das Protokollstreaming gestartet wurde, aktualisieren Sie die Azure-App im Browser, um Webdatenverkehr zu generieren. Sie können jetzt Konsolenprotokolle sehen, die auf das Terminal umgeleitet werden. Falls Sie nicht sofort Konsolenprotokolle sehen, können Sie es nach 30 Sekunden noch einmal versuchen.
+Nachdem das Protokollstreaming gestartet wurde, aktualisieren Sie die Azure-App im Browser, um Webdatenverkehr zu generieren. Sie können jetzt Konsolenprotokolle sehen, die auf das Terminal umgeleitet werden. Falls Sie nicht sofort Konsolenprotokolle sehen, können Sie es nach 30 Sekunden noch einmal versuchen.
 
 Zum Beenden des Protokollstreamings geben Sie `Ctrl`+`C` ein.
 

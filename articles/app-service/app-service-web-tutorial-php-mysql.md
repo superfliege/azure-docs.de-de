@@ -583,7 +583,7 @@ Wechseln Sie nach Abschluss des `git push`-Vorgangs zur Azure-App, und testen Si
 
 Wenn Sie Aufgaben hinzugefügt haben, werden sie in der Datenbank beibehalten. Bei Updates des Datenschemas bleiben vorhandene Daten erhalten.
 
-## <a name="stream-diagnostic-logs"></a>Streaming des Diagnoseprotokolls
+## <a name="stream-diagnostic-logs"></a>Streamen von Diagnoseprotokollen
 
 Wenn die PHP-Anwendung in Azure App Service ausgeführt wird, können Sie die Konsolenprotokolle auf Ihr Terminal umleiten. Auf diese Weise erhalten Sie die gleichen Diagnosemeldungen, die Ihnen beim Debuggen von Anwendungsfehlern helfen.
 
@@ -593,7 +593,7 @@ Verwenden Sie zum Starten des Streamings von Protokolldateien den Befehl [`az we
 az webapp log tail --name <app_name> --resource-group myResourceGroup
 ```
 
-Nachdem das Protokollstreaming gestartet wurde, aktualisieren Sie die Azure-App im Browser, um Webdatenverkehr zu generieren. Sie können jetzt Konsolenprotokolle sehen, die auf das Terminal umgeleitet werden. Falls Sie nicht sofort Konsolenprotokolle sehen, können Sie es nach 30 Sekunden noch einmal versuchen.
+Nachdem das Protokollstreaming gestartet wurde, aktualisieren Sie die Azure-App im Browser, um Webdatenverkehr zu generieren. Sie können jetzt Konsolenprotokolle sehen, die auf das Terminal umgeleitet werden. Falls Sie nicht sofort Konsolenprotokolle sehen, können Sie es nach 30 Sekunden noch einmal versuchen.
 
 Zum Beenden des Protokollstreamings geben Sie `Ctrl`+`C` ein.
 

@@ -36,7 +36,7 @@ Da Application Insights auf der leistungsstarken Azure Monitor-Protokollplattfor
 
 ## <a name="ingesting-data"></a>Erfassen von Daten
 
-In diesem Abschnitt wird beschrieben, wie Ihre Daten in Azure Monitor gelangen.
+In diesem Abschnitt wird beschrieben, wie Ihre Daten in Azure Monitor-Protokolle gelangen.
 
 Falls noch nicht geschehen, sollten Sie einen neuen Log Analytics-Arbeitsbereich bereitstellen, indem Sie [diese Anleitung](../learn/quick-collect-azurevm.md) befolgen und den Schritt zum „Erstellen eines Arbeitsbereichs“ ausführen.
 

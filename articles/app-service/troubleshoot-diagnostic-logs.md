@@ -166,7 +166,7 @@ Um bestimmte Protokolltypen wie HTTP zu filtern, verwenden Sie den Parameter **-
 >
 
 ## <a name="understandlogs">Vorgehensweise:</a> Verstehen von Diagnoseprotokollen
-### <a name="application-diagnostics-logs"></a>Anwendungs-Diagnoseprotokolle
+### <a name="application-diagnostics-logs"></a>Anwendungsdiagnoseprotokolle
 Die Anwendungsdiagnose speichert Informationen in einem spezifischen Format für .NET-Anwendungen, je nachdem, ob Sie Protokolle im Dateisystem oder in Blob Storage speichern. 
 
 Die grundlegenden Daten, die gespeichert werden, sind für beide Speichertypen gleich: Datum und Uhrzeit des Ereignisses, Prozess-ID, die das Ereignis erzeugt hat, sowie Ereignistyp (Info, Warnung, Fehler) und Ereignismeldung. Die Verwendung des Dateisystems zum Speichern von Protokollen ist nützlich, wenn Sie zum Beheben eines Problems sofortigen Zugriff auf die Protokolle benötigen, da die Protokolldateien nahezu sofort aktualisiert werden. Blob Storage wird zu Archivierungszwecken eingesetzt, da die Dateien zwischengespeichert und dann nach einem Zeitplan in den Speichercontainer geleert werden.

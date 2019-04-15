@@ -58,7 +58,7 @@ Die Verwaltung der Sicherung und Wiederherstellung von SQL-Datenbanken in und au
     ![Kurzfristige Ziele](./media/backup-azure-backup-sql/pg-shortterm.png)
 
    > [!NOTE]
-   > Im gezeigten Beispiel wird jeden Tag um 20:00 Uhr ein Sicherungspunkt erstellt, indem die geänderten Daten vom Sicherungspunkt des Vortags um 20:00 Uhr übertragen werden. Dieser Vorgang wird als **Schnelle vollständige Sicherung** bezeichnet. Transaktionsprotokolle werden alle 15 Minuten synchronisiert. Wenn Sie die Datenbank um 21:00 Uhr wiederherstellen müssen, wird der Punkt aus den Protokollen aus dem letzten Punkt der schnellen vollständigen Sicherung erstellt (in diesem Fall 20:00 Uhr).
+   > Im gezeigten Beispiel wird jeden Tag um 20:00 Uhr ein Sicherungspunkt erstellt, indem die geänderten Daten vom Sicherungspunkt des Vortags um 20:00 Uhr übertragen werden. Dieser Vorgang wird als **Schnelle vollständige Sicherung** bezeichnet. Transaktionsprotokolle werden alle 15 Minuten synchronisiert. Wenn Sie die Datenbank um 21:00 Uhr wiederherstellen müssen, wird der Punkt aus den Protokollen aus dem letzten Punkt der schnellen vollständigen Sicherung erstellt (in diesem Fall 20:00 Uhr).
    >
    >
 

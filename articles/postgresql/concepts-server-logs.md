@@ -1,5 +1,5 @@
 ---
-title: Serverprotokolle in Azure-Datenbank für PostgreSQL
+title: Serverprotokolle in Azure Database for PostgreSQL
 description: Dieser Artikel beschreibt, wie Azure Database for PostgreSQL Protokolle für Abfragen und Fehler generiert und wie die Protokollaufbewahrung konfiguriert wird.
 author: rachel-msft
 ms.author: raagyema
@@ -14,7 +14,7 @@ ms.lasthandoff: 03/01/2019
 ms.locfileid: "57195097"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>Serverprotokolle in Azure Database for PostgreSQL 
-Azure-Datenbank für PostgreSQL generiert Abfragen und Fehlerprotokolle. Diese Abfrage- und Fehlerprotokolle dienen zur Identifizierung, Behebung und Reparatur von Konfigurationsfehlern und suboptimaler Leistung. (Der Zugriff auf Transaktionsprotokolle ist nicht enthalten.) 
+Azure Database for PostgreSQL generiert Abfragen und Fehlerprotokolle. Diese Abfrage- und Fehlerprotokolle dienen zur Identifizierung, Behebung und Reparatur von Konfigurationsfehlern und suboptimaler Leistung. (Der Zugriff auf Transaktionsprotokolle ist nicht enthalten.) 
 
 ## <a name="configure-logging"></a>Konfigurieren der Protokollierung 
 Sie können die Protokollierung auf dem Server mithilfe von Serverparametern für die Protokollierung konfigurieren. Auf jedem neuen Server sind **log_checkpoints** und **log_connections** standardmäßig aktiviert. Es gibt zusätzliche Parameter, die Sie entsprechend Ihren Protokollierungsanforderungen anpassen können: 

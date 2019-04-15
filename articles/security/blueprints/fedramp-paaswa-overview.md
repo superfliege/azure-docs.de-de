@@ -128,7 +128,7 @@ Die folgenden Technologien bieten Identitätsverwaltungsfunktionen in der Azure-
 - Alle Schlüssel und Geheimnisse in Key Vault besitzen ein Ablaufdatum.
 - Alle Schlüssel in Key Vault werden durch spezielle Hardwaresicherheitsmodule (HSMs) geschützt. Der Schlüsseltyp ist ein HSM-geschützter 2.048-Bit-RSA-Schlüssel.
 - Allen Benutzern und Identitäten werden mithilfe von rollenbasierter Zugriffssteuerung die erforderlichen Mindestberechtigungen erteilt.
-- Diagnoseprotokolle für Key Vault werden mit einer Aufbewahrungsdauer von mindestens 365 Tagen aktiviert.
+- Diagnoseprotokolle für Key Vault werden mit einer Aufbewahrungsdauer von mindestens 365 Tagen aktiviert.
 - Zulässige kryptographische Vorgänge für Schlüssel sind auf die erforderlichen Vorgänge beschränkt.
 
 **Application Gateway**: Die Architektur verringert die Gefahr von Sicherheitsrisiken durch ein Application Gateway mit Web Application Firewall und aktiviertem OWASP-Regelsatz. Weitere Funktionen:

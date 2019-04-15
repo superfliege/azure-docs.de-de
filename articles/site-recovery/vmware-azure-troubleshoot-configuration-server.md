@@ -201,13 +201,13 @@ In der Regel liegt hier ein Fehler an Port 443 vor. Führen Sie die folgenden Sc
 
 **Stellen Sie sicher, dass der MARS-Agent vom Masterziel-Agent aufgerufen wird.**
 
-Um zu überprüfen, ob der Masterziel-Agent eine TCP-Sitzung für die IP des Konfigurationsservers erstellen kann, suchen Sie in den Masterziel-Agentenprotokollen nach einer Ablaufverfolgung ähnlich der folgenden:
+Um zu überprüfen, ob der Masterziel-Agent eine TCP-Sitzung für die IP des Konfigurationsservers erstellen kann, suchen Sie in den Masterziel-Agent-Protokollen nach einer Ablaufverfolgung ähnlich der folgenden:
 
 TCP <Replace IP with CS IP here>:52739 <Replace IP with CS IP here>:443 SYN_SENT 
 
 TCP    192.168.1.40:52739     192.168.1.40:443      SYN_SENT  // Ersetzen Sie IP hier mit CS IP
 
-Wenn Sie in den MT-Agentenprotokollen ähnliche Ablaufverfolgungen wie die folgenden finden, meldet der MT-Agent Fehler auf Port 443:
+Wenn Sie in den MT-Agent-Protokollen ähnliche Ablaufverfolgungen wie die folgenden finden, meldet der MT-Agent Fehler auf Port 443:
 
     #~> (11-20-2018 20:31:51):   ERROR  2508 8408 313 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server
     #~> (11-20-2018 20:31:54):   ERROR  2508 8408 314 FAILED : PostToSVServer with error [at curlwrapper.cpp:CurlWrapper::processCurlResponse:212]   failed to post request: (7) - Couldn't connect to server

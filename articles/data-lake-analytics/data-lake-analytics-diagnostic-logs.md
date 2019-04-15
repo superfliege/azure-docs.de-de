@@ -91,7 +91,7 @@ Die Diagnoseprotokollierung ermöglicht Ihnen das Erfassen von Zugriffsüberwach
 
 Die Überwachungs- und Anforderungsprotokolle liegen in einem strukturierten JSON-Format vor.
 
-### <a name="request-logs"></a>Anforderungsprotokollen
+### <a name="request-logs"></a>Anforderungsprotokolle
 
 Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Anforderungsprotokoll. Jedes Blob hat ein Stammobjekt namens **records** , das ein Array mit Protokollobjekten enthält.
 

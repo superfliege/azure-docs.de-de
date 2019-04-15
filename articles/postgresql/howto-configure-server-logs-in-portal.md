@@ -66,6 +66,6 @@ Sobald die Protokollierung beginnt, können Sie eine Liste der verfügbaren Prot
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Lesen Sie [Zugriff auf Serverprotokolle in der CLI](howto-configure-server-logs-using-cli.md), um weitere Informationen zum programmgesteuerten Herunterladen von Protokollen zu erhalten.
-- Weitere Informationen zu [Serverprotokollen](concepts-server-logs.md) von Azure-Datenbank für PostgreSQL. 
+- Weitere Informationen zu [Serverprotokollen](concepts-server-logs.md) von Azure DB for PostgreSQL. 
 - Weitere Informationen zu den Parameterdefinitionen und der PostgreSQL-Protokollierung finden Sie in der PostgreSQL-Dokumentation unter [Fehlerberichterstellung und Protokollierung](https://www.postgresql.org/docs/current/static/runtime-config-logging.html).
 

@@ -395,8 +395,8 @@ Weitere Informationen:
 Protokollierung auf Netzwerkebene ist eine entscheidende Funktion für jedes Netzwerksicherheitsszenario. In Azure können Sie Informationen für Netzwerksicherheitsgruppen protokollieren, um Protokollierungsinformationen auf Netzwerkebene zu erhalten. Mit der NSG-Protokollierung erhalten Sie Informationen aus:
 
 * [Aktivitätsprotokollen:](../azure-monitor/platform/activity-logs-overview.md) In diesen Protokollen können Sie alle Vorgänge anzeigen, die an Ihre Azure-Abonnements übermittelt werden. Diese Protokolle sind standardmäßig aktiviert und können im Azure-Portal verwendet werden. Sie wurden zuvor als „Überwachungsprotokolle“ oder „Betriebsprotokolle“ bezeichnet.
-* Ereignisprotokollen: Diese Protokolle enthalten Informationen zu den angewendeten NSG-Regeln.
-* Leistungsindikatorenprotokollen: In diesen Protokollen ist aufgezeichnet, wie oft jede NSG-Regel angewendet wurde, um Datenverkehr zuzulassen oder zu verweigern.
+* Ereignisprotokolle: Diese Protokolle enthalten Informationen zu den angewendeten NSG-Regeln.
+* Leistungsindikatorenprotokolle: In diesen Protokollen ist aufgezeichnet, wie oft jede NSG-Regel angewendet wurde, um Datenverkehr zuzulassen oder zu verweigern.
 
 Sie können auch das leistungsstarke Datenvisualisierungstool [Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/)verwenden, um diese Protokolle anzuzeigen und zu analysieren.
 Weitere Informationen:

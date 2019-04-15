@@ -24,7 +24,7 @@ ms.locfileid: "58905986"
 
 ![Symbol „Azure-Aktivitätsprotokolle“](./media/collect-activity-logs/activity-log-analytics.png)
 
-Mithilfe der Lösung der Aktivitätsprotokollanalyse können Sie das [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/activity-logs-overview.md) in all Ihren Azure-Abonnements analysieren und suchen. Das Azure-Aktivitätsprotokoll bietet Einblicke in Vorgänge, die für Ressourcen in Ihren Abonnements durchgeführt wurden. Das Aktivitätsprotokoll wurde bisher als *Überwachungsprotokolle* oder *Vorgangsprotokolle* bezeichnet, da es Ereignisse für Ihre Abonnements enthält.
+Mithilfe der Lösung der Aktivitätsprotokollanalyse können Sie das [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/activity-logs-overview.md) in all Ihren Azure-Abonnements analysieren und suchen. Das Azure-Aktivitätsprotokoll bietet Einblicke in Vorgänge, die für Ressourcen in Ihren Abonnements durchgeführt wurden. Das Aktivitätsprotokoll wurde bisher als *Überwachungsprotokoll* oder *Betriebsprotokoll* bezeichnet, da es Ereignisse für Ihre Abonnements enthält.
 
 Mit dem Aktivitätsprotokoll können Sie die Antworten auf die Fragen *Was*, *Wer* und *Wann* für alle Schreibvorgänge (PUT, POST, DELETE) ermitteln, die für die Ressourcen Ihres Abonnements durchgeführt wurden. Sie können auch den Status der Vorgänge und andere relevante Eigenschaften ermitteln. Das Aktivitätsprotokoll umfasst keine Lesevorgänge (GET) oder Vorgänge für Ressourcen, die das klassische Bereitstellungsmodell verwenden.
 
@@ -32,7 +32,7 @@ Wenn Sie Ihre Azure-Aktivitätsprotokolle mit einem Log Analytics-Arbeitsbereich
 
 - Analysieren der Aktivitätsprotokolle mit vordefinierten Ansichten
 - Analysieren und Suchen von Aktivitätsprotokollen in mehreren Azure-Abonnements
-- Speichern von Aktivitätsprotokollen länger als 90 Tage<sup>1</sup>
+- Speichern von Aktivitätsprotokollen länger als 90 Tage<sup>1</sup>
 - Korrelieren von Aktivitätsprotokollen mit anderen Plattform- und Anwendungsdaten in Azure
 - Anzeigen operativer Aktivitäten nach Status
 - Anzeigen von Aktivitätstrends für jeden einzelnen Ihrer Azure-Dienste
@@ -40,7 +40,7 @@ Wenn Sie Ihre Azure-Aktivitätsprotokolle mit einem Log Analytics-Arbeitsbereich
 - Identifizieren von Ausfällen oder Dienstintegritätsproblemen, die sich auf Ihre Ressourcen auswirken
 - Verwenden der Protokollsuche zum Korrelieren von Benutzeraktivitäten, Vorgängen zur automatischen Skalierung, Autorisierungsänderungen und Dienstintegrität mit anderen Protokollen oder Metriken aus Ihrer Umgebung
 
-<sup>1</sup>Standardmäßig speichert Azure Monitor Ihre Azure-Aktivitätsprotokolle in einem Log Analytics-Arbeitsbereich für 90 Tage, auch wenn Sie den Free-Tarif verwenden. Dies gilt auch, wenn die Aufbewahrungsdauer für Ihren Arbeitsbereich auf weniger als 90 Tage festgelegt ist. Wenn für Ihren Arbeitsbereich eine Aufbewahrungsdauer von mehr als 90 Tagen gilt, werden die Aktivitätsprotokolle über den für den Arbeitsbereich geltenden Zeitraum aufbewahrt.
+<sup>1</sup>Standardmäßig speichert Azure Monitor Ihre Azure-Aktivitätsprotokolle in einem Log Analytics-Arbeitsbereich für 90 Tage, auch wenn Sie den Free-Tarif verwenden. Dies gilt auch, wenn die Aufbewahrungsdauer für Ihren Arbeitsbereich auf weniger als 90 Tage festgelegt ist. Wenn für Ihren Arbeitsbereich eine Aufbewahrungsdauer von mehr als 90 Tagen gilt, werden die Aktivitätsprotokolle über den für den Arbeitsbereich geltenden Zeitraum aufbewahrt.
 
 Der Log Analytics-Arbeitsbereich erfasst Aktivitätsprotokolle kostenfrei und speichert sie kostenfrei für 90 Tage. Wenn Sie Protokolle länger als 90 Tage speichern, fallen für die länger als 90 Tage gespeicherten Daten Gebühren für die Datenaufbewahrung an.
 
@@ -77,7 +77,7 @@ Melden Sie sich beim Azure-Portal an, um ein Azure-Abonnement mit Ihrem Arbeitsb
 
 ## <a name="using-the-solution"></a>Verwenden der Lösung
 
-Wenn Sie die Log Analytics-Lösung für Aktivitätsprotokolle Ihrem Arbeitsbereich hinzufügen, wird Ihrem Übersichtsdashboard die Kachel **Azure-Aktivitätsprotokolle** hinzugefügt. Auf dieser Kachel wird die Anzahl der Azure-Aktivitätsdatensätze für die Azure-Abonnements angezeigt, auf die die Lösung Zugriff hat.
+Wenn Sie die Lösung für die Aktivitätsprotokollanalyse Ihrem Arbeitsbereich hinzufügen, wird Ihrem Übersichtsdashboard die Kachel **Azure-Aktivitätsprotokolle** hinzugefügt. Auf dieser Kachel wird die Anzahl der Azure-Aktivitätsdatensätze für die Azure-Abonnements angezeigt, auf die die Lösung Zugriff hat.
 
 ![Kachel „Azure-Aktivitätsprotokolle“](./media/collect-activity-logs/azure-activity-logs-tile.png)
 

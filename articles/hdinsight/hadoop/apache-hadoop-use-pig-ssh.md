@@ -51,7 +51,7 @@ Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Ha
     LOGS = LOAD '/example/data/sample.log';
     ```
 
-    Dieser Befehl lädt die Inhalte der Datei "sample.log" in LOGS. Sie können den Inhalt der Datei mit der folgenden Anweisung anzeigen:
+    Dieser Befehl lädt die Inhalte der Datei „sample.log“ in LOGS. Sie können den Inhalt der Datei mit der folgenden Anweisung anzeigen:
 
     ```piglatin
     DUMP LOGS;

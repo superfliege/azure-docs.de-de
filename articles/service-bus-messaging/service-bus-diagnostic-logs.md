@@ -1,5 +1,5 @@
 ---
-title: Azure Service Bus-Diagnoseprotokolle | Microsoft Docs
+title: Azure Service Bus-Diagnoseprotokolle | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Diagnoseprotokolle für Service Bus in Azure einrichten.
 keywords: ''
 documentationcenter: .net

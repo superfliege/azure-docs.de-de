@@ -156,7 +156,7 @@ Register-AppProxyConnector
 
 ## <a name="under-the-hood"></a>Im Hintergrund
 
-Connectors basieren auf dem Windows Server-Webanwendungsproxy und verwenden daher einen Großteil der gleichen Verwaltungstools wie z.B. Windows-Ereignisprotokolle.
+Connectors basieren auf dem Windows Server-Webanwendungsproxy und verwenden daher einen Großteil der gleichen Verwaltungstools wie z. B. Windows-Ereignisprotokolle.
 
  ![Verwalten von Ereignisprotokollen mit der Ereignisanzeige](./media/application-proxy-connectors/event-view-window.png)
 

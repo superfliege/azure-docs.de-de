@@ -83,7 +83,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 
 **F: Wie lange dauert es, bis nach Abschluss einer Aufgabe Aktivitätsdaten angezeigt werden?**
 
-**A:** Bei Überwachungsprotokollen kann die Verzögerung 15 Minuten bis zu einer Stunde betragen. Aktivitätsprotokolle für Anmeldevorgänge können von 15 Minuten bis zu 2 Stunden bei einigen Datensätzen in Anspruch nehmen.
+**A:** Bei Überwachungsprotokollen kann die Verzögerung 15 Minuten bis zu einer Stunde betragen. Aktivitätsprotokolle für Anmeldevorgänge können von 15 Minuten bis zu 2 Stunden bei einigen Datensätzen in Anspruch nehmen.
 
 ---
 

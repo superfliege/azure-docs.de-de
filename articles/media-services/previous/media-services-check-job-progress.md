@@ -32,7 +32,7 @@ ms.locfileid: "57990670"
 Beim Ausführen von Aufträgen ist es nützlich, deren Fortschritt verfolgen zu können. Sie können den Fortschritt überprüfen, indem Sie einen StateChanged-Ereignishandler definieren (wie im vorliegenden Thema beschrieben) oder Azure-Warteschlangenspeicher zur Überwachung von Media Services-Auftragsbenachrichtigungen verwenden (wie in [diesem](media-services-dotnet-check-job-progress-with-queues.md) Thema beschrieben).
 
 ## <a name="define-statechanged-event-handler-to-monitor-job-progress"></a>Definieren eines StateChanged-Ereignishandlers zum Überwachen des Auftragsfortschritts
-Das folgende Codebeispiel definiert den StateChanged-Ereignishandler. Dieser Ereignishandler verfolgt den Auftragsfortschritt und liefert Statusupdates je nach Auftragsstatus. Der Code definiert außerdem die LogJobStop-Methode. Diese Helfermethode protokolliert Fehlerdetails.
+Das folgende Codebeispiel definiert den StateChanged-Ereignishandler. Dieser Ereignishandler verfolgt den Auftragsfortschritt und liefert Statusupdates je nach Auftragsstatus. Der Code definiert außerdem die LogJobStop-Methode. Diese Hilfsmethode protokolliert Fehlerdetails.
 
 ```csharp
     private static void StateChanged(object sender, JobStateChangedEventArgs e)

@@ -241,7 +241,7 @@ Wenn Sie Fehler bei der Datenspeicherverbindung oder den Datenspeichertreibern b
 
 ## <a name="gateway-logs"></a>Gatewayprotokolle
 ### <a name="send-gateway-logs-to-microsoft"></a>Senden der Gatewayprotokolle an Microsoft
-Wenn Sie sich im Zusammenhang mit Gatewayproblemen an den Microsoft Support wenden, werden Sie möglicherweise aufgefordert, Ihre Gatewayprotokolle freizugeben. In dieser Version des Gateways können Sie die erforderlichen Gatewayprotokolle komfortabel über zwei Mausklicks im Datenverwaltungsgateway-Konfigurations-Manager freigeben.    
+Wenn Sie sich im Zusammenhang mit Gatewayproblemen an den Microsoft-Support wenden, werden Sie möglicherweise aufgefordert, Ihre Gatewayprotokolle freizugeben. In dieser Version des Gateways können Sie die erforderlichen Gatewayprotokolle komfortabel über zwei Mausklicks im Datenverwaltungsgateway-Konfigurations-Manager freigeben.    
 
 1. Wechseln Sie im Datenverwaltungsgateway-Konfigurations-Manager zur Registerkarte **Diagnose**.
 

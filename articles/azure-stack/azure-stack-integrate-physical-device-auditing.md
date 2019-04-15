@@ -20,7 +20,7 @@ ms.locfileid: "56197350"
 ---
 # <a name="azure-stack-datacenter-integration---physical-device-auditing"></a>Integration des Azure Stack-Datencenters – Überwachen von physischen Geräten
 
-Alle physischen Geräte in Azure Stack, z.B. die Baseboard-Verwaltungscontroller (Baseboard Management Controllers, BMCs) und Netzwerkswitches, geben Überwachungsprotokolle aus. Diese können Sie in Ihre Gesamtlösung für die Überwachung integrieren. Da sich die Geräte für die unterschiedlichen Azure Stack-OEM-Hardwareanbieter unterscheiden, sollten Sie sich wegen der Dokumentation zur Überwachungsintegration an Ihren Anbieter wenden.
+Alle physischen Geräte in Azure Stack, z. B. die Baseboard-Verwaltungscontroller (Baseboard Management Controllers, BMCs) und Netzwerkswitches, geben Überwachungsprotokolle aus. Diese können Sie in Ihre Gesamtlösung für die Überwachung integrieren. Da sich die Geräte für die unterschiedlichen Azure Stack-OEM-Hardwareanbieter unterscheiden, sollten Sie sich wegen der Dokumentation zur Überwachungsintegration an Ihren Anbieter wenden.
 Die Abschnitte unten enthalten einige allgemeine Informationen zur Überwachung von physischen Geräten in Azure Stack.  
 
 ## <a name="physical-device-access-auditing"></a>Überwachen des Zugriffs auf physische Geräte

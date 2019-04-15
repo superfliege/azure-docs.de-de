@@ -1,6 +1,6 @@
 ---
 title: Konfigurieren von Serverprotokollen für PostgreSQL und Zugreifen auf diese mithilfe der Azure-Befehlszeilenschnittstelle
-description: In diesem Artikel wird beschrieben, wie Sie mit der Azure CLI-Befehlszeile die Serverprotokolle in Azure Database für PostgreSQL konfigurieren und auf diese zugreifen.
+description: In diesem Artikel wird beschrieben, wie Sie mit der Azure CLI-Befehlszeile die Serverprotokolle in Azure Database for PostgreSQL konfigurieren und auf diese zugreifen.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql

@@ -69,7 +69,7 @@ Wenn der **Status** den Wert *Ausgeführt* erreicht hat, navigieren Sie in Ihrem
 
 Glückwunsch! Mit wenigen Konfigurationsschritten haben Sie eine öffentlich zugängliche Anwendung in Azure Container Instances bereitgestellt.
 
-## <a name="view-container-logs"></a>Anzeigen von Containerprotokollen
+## <a name="view-container-logs"></a>Containerprotokolle anzeigen
 
 Die Protokolle für eine Containerinstanz sind hilfreich, wenn Sie Probleme mit dem Container oder mit der ausgeführten Anwendung behandeln.
 

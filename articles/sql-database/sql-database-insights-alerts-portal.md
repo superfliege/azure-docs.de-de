@@ -119,5 +119,5 @@ Nachdem Sie eine Warnung erstellt haben, können Sie sie auswählen und:
 ## <a name="next-steps"></a>Nächste Schritte
 * [Übersicht über die Azure-Überwachung](../monitoring-and-diagnostics/monitoring-overview.md) , einschließlich der Typen von Informationen, die Sie sammeln und überwachen können.
 * Erfahren Sie mehr über das [Konfigurieren von Webhooks in Warnungen](../azure-monitor/platform/alerts-webhooks.md).
-* Verschaffen Sie sich einen [Überblick über Diagnoseprotokolle](../azure-monitor/platform/diagnostic-logs-overview.md) , um detaillierte Hochfrequenzmetriken für Ihren Dienst zu erfassen.
+* Verschaffen Sie sich einen [Überblick über Diagnoseprotokolle](../azure-monitor/platform/diagnostic-logs-overview.md), um detaillierte Hochfrequenzmetriken für Ihren Dienst zu erfassen.
 * Verschaffen Sie sich einen Überblick über das [Sammeln von Dienstmetriken](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) , um sicherzustellen, dass Ihr Dienst verfügbar und reaktionsfähig ist.

@@ -19,11 +19,11 @@ ms.locfileid: "55249077"
 ---
 # <a name="managing-user-data"></a>Verwalten von Benutzerdaten
 
-Auf dieser Seite wird beschrieben, was vom Unterhaltungslernmodul-Clouddienst protokolliert wird, wenn Dialoge mit Endbenutzern geführt werden.  Außerdem wird beschrieben, wie Sie Protokollen des Unterhaltungslernmoduls Benutzer-IDs zuordnen, sodass Sie alle einem bestimmten Benutzer zugeordneten Protokolle abrufen oder löschen können.
+Auf dieser Seite wird beschrieben, was vom Conversation Learner-Clouddienst protokolliert wird, wenn Dialoge mit Endbenutzern geführt werden.  Außerdem wird beschrieben, wie Sie Protokollen des Unterhaltungslernmoduls Benutzer-IDs zuordnen, sodass Sie alle einem bestimmten Benutzer zugeordneten Protokolle abrufen oder löschen können.
 
 ## <a name="overview-of-end-user-data-logging"></a>Übersicht über die Protokollierung von Endbenutzerdaten
 
-Standardmäßig protokolliert der Unterhaltungslernmodul-Clouddienst Interaktionen zwischen Endbenutzern und Ihrem Bot.  Diese Protokolle sind für die Verbesserung Ihres Bots wichtig. Dadurch können Sie Fälle identifizieren, in denen Ihr Bot die falsche Entität extrahiert oder die falsche Aktion ausgewählt hat.  Diese Fehler können dann korrigiert werden, indem Sie auf der Benutzeroberfläche zur Seite „Dialoge protokollieren“ wechseln, die Korrekturen vornehmen und diesen korrigierten Dialog als neuen Trainingsdialog speichern. Weitere Informationen finden Sie im Tutorial zum Protokollieren von Dialogen.
+Standardmäßig protokolliert der Conversation Learner-Clouddienst Interaktionen zwischen Endbenutzern und Ihrem Bot.  Diese Protokolle sind für die Verbesserung Ihres Bots wichtig. Dadurch können Sie Fälle identifizieren, in denen Ihr Bot die falsche Entität extrahiert oder die falsche Aktion ausgewählt hat.  Diese Fehler können dann korrigiert werden, indem Sie auf der Benutzeroberfläche zur Seite „Dialoge protokollieren“ wechseln, die Korrekturen vornehmen und diesen korrigierten Dialog als neuen Trainingsdialog speichern. Weitere Informationen finden Sie im Tutorial zum Protokollieren von Dialogen.
 
 ## <a name="how-to-disable-logging"></a>So deaktivieren Sie die Protokollierung
 

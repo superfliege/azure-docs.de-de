@@ -23,7 +23,7 @@ ms.locfileid: "57881128"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure-Diagnoseprotokolle
 
-Mit Azure-Diagnoseprotokollen können Sie Daten der Basisanalyse anzeigen und diese an mindestens einem Ziel speichern, z.B.:
+Mit Azure-Diagnoseprotokollen können Sie Daten der Basisanalyse anzeigen und diese an mindestens einem Ziel speichern, z. B.:
 
  - Azure-Speicherkonto
  - Azure Event Hubs

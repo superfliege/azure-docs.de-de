@@ -470,7 +470,7 @@ Wechseln Sie nach Abschluss des Vorgangs `git push` zu Ihrer Azure-App, und test
 
 Alle zuvor hinzugefügten Artikel werden weiterhin angezeigt. Vorhandene Daten in der Cosmos DB sind nicht verloren gegangen. Außerdem sind Ihre Änderungen am Datenschema und Ihre vorhandenen Daten erhalten geblieben.
 
-## <a name="stream-diagnostic-logs"></a>Streaming des Diagnoseprotokolls 
+## <a name="stream-diagnostic-logs"></a>Streamen von Diagnoseprotokollen 
 
 Wenn Ihre Node.js-Anwendung in Azure App Service ausgeführt wird, können Sie die Konsolenprotokolle auf Ihr Terminal umleiten. Auf diese Weise erhalten Sie die gleichen Diagnosemeldungen, die Ihnen beim Debuggen von Anwendungsfehlern helfen.
 

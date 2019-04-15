@@ -260,7 +260,7 @@ Detaillierte Informationen zu einer Änderung oder einem Ereignis können Sie du
 
 ![Abbildung mit Details der Änderungsnachverfolgung](./media/automation-change-tracking/change-tracking-details.png)
 
-## <a name="search-logs"></a>Protokollsuche
+## <a name="search-logs"></a>Suchprotokolle
 
 Zusätzlich zu den Details, die im Portal bereitgestellt werden, können Sie auch die Protokolle durchsuchen. Öffnen Sie die Seite **Änderungsnachverfolgung**, und klicken Sie auf **Log Analytics**; daraufhin wird die Seite **Protokolle** geöffnet.
 

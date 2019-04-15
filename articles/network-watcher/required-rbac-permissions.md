@@ -33,7 +33,7 @@ Durch Azure RBAC-Berechtigungen (Role-Based Access Control) können Sie Mitglied
 | Microsoft.Network/networkWatchers/write                             | Network Watcher erstellen oder aktualisieren                             |
 | Microsoft.Network/networkWatchers/delete                            | Network Watcher löschen                                       |
 
-## <a name="nsg-flow-logs"></a>NSG-Datenflussprotokolle
+## <a name="nsg-flow-logs"></a>NSG-Flussprotokolle
 
 | Aktion                                                              | NAME                                                           |
 | ---------                                                           | -------------                                                  |

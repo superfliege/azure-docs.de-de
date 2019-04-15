@@ -109,7 +109,7 @@ Weitere Informationen zum Kompilieren von Konfigurationen finden Sie unter [DSC-
 
 ## <a name="viewing-a-compilation-job"></a>Anzeigen eines Kompilierungsauftrags
 
-Nachdem Sie eine Kompilierung gestartet haben, können Sie sie auf der Seite **Konfiguration** auf der Kachel **Kompilierungsaufträge** anzeigen. Die Kachel **Kompilierungsaufträge** zeigt derzeit ausgeführte, abgeschlossene und fehlerhafte Aufträge. Wenn Sie die Seite eines Kompilierungsauftrags öffnen, werden Informationen zum Auftrag angezeigt, so z.B. aufgetretene Fehler und Warnungen, in der Konfiguration verwendete Eingabeparameter und Kompilierungsaufträge.
+Nachdem Sie eine Kompilierung gestartet haben, können Sie sie auf der Seite **Konfiguration** auf der Kachel **Kompilierungsaufträge** anzeigen. Die Kachel **Kompilierungsaufträge** zeigt derzeit ausgeführte, abgeschlossene und fehlerhafte Aufträge. Wenn Sie die Seite eines Kompilierungsauftrags öffnen, werden Informationen zum Auftrag angezeigt, etwa aufgetretene Fehler und Warnungen, in der Konfiguration verwendete Eingabeparameter und Kompilierungsprotokolle.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Klicken Sie links auf **Alle Ressourcen** und dann auf den Namen des Automation-Kontos.

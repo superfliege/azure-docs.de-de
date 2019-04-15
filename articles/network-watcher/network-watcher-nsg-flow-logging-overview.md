@@ -26,7 +26,7 @@ ms.locfileid: "56983794"
 Datenflussprotokolle für Netzwerksicherheitsgruppen (NSG) sind ein Network Watcher-Feature, mit dem Sie Informationen zu ein- und ausgehendem IP-Datenverkehr über eine NSG anzeigen können. Die Flowprotokolle sind im JSON-Format geschrieben und zeigen aus- und eingehende Datenflows pro Regel, die Netzwerkschnittstelle, auf die sich der Datenflow bezieht, 5-Tupel-Informationen über den Datenflow (Quell-/Ziel-IP-Adresse, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr an. In Version 2 sind darüber hinaus Durchsatzinformationen (Bytes und Pakete) angegeben.
 
 
-![Übersicht zu Flowprotokollen](./media/network-watcher-nsg-flow-logging-overview/figure1.png)
+![Übersicht über Datenflussprotokolle](./media/network-watcher-nsg-flow-logging-overview/figure1.png)
 
 Da sich Datenflussprotokolle auf NSGs beziehen, werden sie nicht wie andere Protokolle angezeigt. Datenflussprotokolle werden nur innerhalb eines Speicherkontos gespeichert. Der Protokollpfad entspricht dabei dem folgenden Beispiel:
 

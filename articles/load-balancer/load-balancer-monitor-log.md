@@ -64,7 +64,7 @@ Diagnosen werden im Tabellenspeicher im angegebenen Speicherkonto gespeichert. W
 
 ## <a name="audit-log"></a>Überwachungsprotokoll
 
-Das Überwachungsprotokoll wird standardmäßig generiert. Die Protokolle werden 90 Tage lang im Azure-Ereignisprotokollspeicher aufbewahrt. Weitere Informationen zu diesen Protokollen finden Sie im Artikel [Anzeigen von Ereignis- und Überwachungsprotokollen](../monitoring-and-diagnostics/insights-debugging-with-events.md) .
+Das Überwachungsprotokoll wird standardmäßig generiert. Die Protokolle werden 90 Tage lang im Azure-Ereignisprotokollspeicher aufbewahrt. Weitere Informationen zu diesen Protokollen finden Sie im Artikel [Anzeigen von Ereignis- und Überwachungsprotokollen](../monitoring-and-diagnostics/insights-debugging-with-events.md).
 
 ## <a name="alert-event-log"></a>Warnereignisprotokoll
 
