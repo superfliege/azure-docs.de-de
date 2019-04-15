@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: aa29b1e2d0e80b3134be69d17ed5be454f8a51c3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fadf1aa54f525fb3d4c414161583f8a89f2e4c05
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850359"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576291"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Erweiterte Codierung mit Media Encoder Standard-Voreinstellungen 
 
@@ -27,11 +27,10 @@ ms.locfileid: "57850359"
 
 In diesem Thema wird das Anpassen von Media Encoder Standard-Voreinstellungen gezeigt. Das Thema [Anpassen von Media Encoder Standard-Voreinstellungen](media-services-custom-mes-presets-with-dotnet.md) zeigt, wie Sie .NET verwenden können, um eine Codierungsaufgabe zu erstellen sowie einen Auftrag, der diese Aufgabe ausführt. Wenn Sie eine Voreinstellung anpassen, übergeben Sie die benutzerdefinierten Voreinstellungen der Codierungsaufgabe. 
 
->[!NOTE]
->Stellen Sie bei der Verwendung einer XML-Voreinstellung sicher, dass Sie die Reihenfolge der Elemente beibehalten, wie in den untenstehenden XML-Beispielen gezeigt wird (z.B. KeyFrameInterval sollte SceneChangeDetection voranstehen).
->
+Stellen Sie bei der Verwendung einer XML-Voreinstellung sicher, dass Sie die Reihenfolge der Elemente beibehalten, wie in den untenstehenden XML-Beispielen gezeigt wird (z.B. KeyFrameInterval sollte SceneChangeDetection voranstehen).
 
-In diesem Thema werden die benutzerdefinierten Voreinstellungen veranschaulicht, die die folgenden Codierungsaufgaben ausführen.
+> [!NOTE] 
+> Viele der erweiterten Features von Media Services v2 des Media Encoder Standard sind derzeit in v3 nicht verfügbar. Weitere Informationen finden Sie unter [Featurelücken](https://docs.microsoft.com/azure/media-services/latest/migrate-from-v2-to-v3#feature-gaps-with-respect-to-v2-apis).
 
 ## <a name="support-for-relative-sizes"></a>Unterstützung relativer Größen
 

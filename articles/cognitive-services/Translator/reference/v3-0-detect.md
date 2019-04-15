@@ -3,19 +3,19 @@ title: Erkennungsmethode f체r die Text체bersetzungs-API
 titlesuffix: Azure Cognitive Services
 description: Verwenden Sie die Erkennungsmethode (Detect) der Text체bersetzungs-API.
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 57b82bf65ccf002173df90fe19db444d1c087905
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a552fece120d7978825a685960bf4faf65aba783
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857888"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916658"
 ---
 # <a name="translator-text-api-30-detect"></a>Text체bersetzungs-API 3.0: Detect
 
@@ -176,7 +176,7 @@ Wenn ein Fehler auftritt, gibt die Anforderung auch eine JSON-Fehlerantwort zur�
 
 Im folgenden Beispiel wird dargestellt, wie Sprachen abgerufen werden, die f체r die Text체bersetzung unterst체tzt werden.
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/detect?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'What language is this text written in?'}]"

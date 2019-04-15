@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
-ms.openlocfilehash: a1e65466bb409007a2f112422f393eee786d7b3c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ea96b2b996ea79efacdcda50c6370f25e26e0aa2
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182131"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793769"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Bereitstellen des Solution Accelerators für die Remoteüberwachung mithilfe der CLI
 
@@ -62,6 +62,8 @@ In diesem Abschnitt werden die wichtigsten Unterschiede zwischen einer Basic- un
 
 ### <a name="basic"></a>Basic
 
+Sie können eine Basic-Bereitstellung über [azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators) oder die Befehlszeilenschnittstelle ausführen.
+
 Die Basic-Bereitstellung ist auf die Demonstration der Lösung ausgelegt. Zur Kostensenkung werden alle Microservices auf einem einzelnen virtuellen Computer bereitgestellt. Diese Bereitstellung nutzt keine produktionsbereite Architektur.
 
 Bei einer Bereitstellung vom Typ „Basic“ werden die folgenden Dienste in Ihrem Azure-Abonnement erstellt:
@@ -80,6 +82,8 @@ Bei einer Bereitstellung vom Typ „Basic“ werden die folgenden Dienste in Ihr
 | 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1-Einheit              | Speicher für Nachrichtendaten und ermöglicht eine detaillierte Telemetrieanalyse |
 
 ### <a name="standard"></a>Standard
+
+Sie können eine standardmäßige Bereitstellung nur über die Befehlszeilenschnittstelle ausführen.
 
 Eine Standard-Bereitstellung ist für eine Produktionsumgebung geeignet und kann von einem Entwickler angepasst und erweitert werden. Wenn Sie eine produktionsbereite, auf Skalierbarkeit und Erweiterbarkeit ausgelegte Architektur anpassen möchten, verwenden Sie die Bereitstellungsoption „Standard“. Anwendungsmicroservices werden als Docker-Container erstellt und mithilfe von Azure Kubernetes Service bereitgestellt. Die Microservices werden vom Kubernetes-Orchestrator bereitgestellt, skaliert und verwaltet.
 
@@ -149,6 +153,6 @@ In dieser Schrittanleitung wurde Folgendes vermittelt:
 > * Bereitstellen des Solution Accelerators
 > * Anmelden beim Solution Accelerator
 
-Nach Bereitstellung der Lösung für die Remoteüberwachung können Sie sich als Nächstes [mit den Funktionen des Lösungsdashboards vertraut machen](./quickstart-remote-monitoring-deploy.md).
+Nach Bereitstellung der Remoteüberwachungslösung können Sie sich als Nächstes [mit den Funktionen des Lösungsdashboards vertraut machen](./quickstart-remote-monitoring-deploy.md).
 
 <!-- Next how-to guides in the sequence -->

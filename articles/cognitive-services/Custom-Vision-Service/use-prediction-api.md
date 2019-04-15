@@ -1,5 +1,5 @@
 ---
-title: 'Beispiel: Verwenden des Endpunkts der Vorhersage für das programmgesteuerte Testen von Bildern mit einer Klassifizierung – Custom Vision'
+title: Verwenden des Endpunkts der Vorhersage für das programmgesteuerte Testen von Bildern mit einer Klassifizierung – Custom Vision
 titlesuffix: Azure Cognitive Services
 description: API-Nutzung für das programmgesteuerte Testen von Bildern mit Ihrer Custom Vision Service-Klassifizierung
 services: cognitive-services
@@ -8,62 +8,52 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: article
-ms.date: 03/26/2019
+ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: 715fa526c83608c9922315e3a0d89b67b31e0d16
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 78ca1d7ceb9086e0d589f904b24b967d36b079a0
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58472723"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895612"
 ---
-#  <a name="use-your-model-with-the-prediction-api"></a>Verwenden des Modells mit der Vorhersage-API
+# <a name="use-your-model-with-the-prediction-api"></a>Verwenden des Modells mit der Vorhersage-API
 
-Nachdem Sie Ihr Modell trainiert haben, können Sie Bilder programmgesteuert testen, indem Sie sie an die Vorhersage-API senden.
+Nachdem Sie Ihr Modell trainiert haben, können Sie Bilder programmgesteuert testen, indem Sie sie an den Endpunkt der Vorhersage-API senden.
 
 > [!NOTE]
-> Dieser Artikel veranschaulicht, wie Sie mit C# ein Bild an die Vorhersage-API senden. Weitere Informationen und Beispiele für die Verwendung der API finden Sie in der [Vorhersage-API-Referenz](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15).
+> Dieser Artikel veranschaulicht, wie Sie mit C# ein Bild an die Vorhersage-API senden. Weitere Informationen und Beispiele finden Sie in der [Vorhersage-API-Referenz](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15).
 
 ## <a name="publish-your-trained-iteration"></a>Veröffentlichen der trainierten Iteration
 
 Wählen Sie auf der [Custom Vision-Webseite](https://customvision.ai) Ihr Projekt und dann die Registerkarte __Leistung__ aus.
 
-Um Bilder an die Vorhersage-API zu senden, müssen Sie zuerst Ihre Iteration für die Vorhersage veröffentlichen. Dazu wählen Sie __Veröffentlichen__ aus und geben einen Namen für die veröffentlichte Iteration an. Auf diese Weise wird Ihr Modell für die Vorhersage-API Ihrer Azure-Ressource von Custom Vision zugänglich. 
+Um Bilder an die Vorhersage-API zu senden, müssen Sie zuerst Ihre Iteration für die Vorhersage veröffentlichen. Dazu wählen Sie __Veröffentlichen__ aus und geben einen Namen für die veröffentlichte Iteration an. Auf diese Weise wird Ihr Modell für die Vorhersage-API Ihrer Azure-Ressource von Custom Vision zugänglich.
 
 ![Die Registerkarte „Leistung“ wird mit einem roten Rechteck um die Schaltfläche „Veröffentlichen“ angezeigt.](./media/use-prediction-api/unpublished-iteration.png)
 
-Sobald das Modell erfolgreich veröffentlicht wurde, wird neben der Iteration in der linken Seitenleiste die Bezeichnung „Veröffentlicht“ angezeigt, ebenso wie der Name der veröffentlichten Iteration in der Beschreibung der Iteration.
+Sobald das Modell erfolgreich veröffentlicht wurde, wird neben der Iteration in der linken Seitenleiste die Bezeichnung „Veröffentlicht“ angezeigt. Ihr Name wird in der Beschreibung der Iteration angezeigt.
 
 ![Die Registerkarte „Leistung“ wird mit einem roten Rechteck um die Bezeichnung „Veröffentlicht“ und den Namen der veröffentlichten Iteration angezeigt.](./media/use-prediction-api/published-iteration.png)
 
 ## <a name="get-the-url-and-prediction-key"></a>Abrufen der Vorhersage-URL und des Vorhersage-Schlüssels
 
-Nachdem das Modell veröffentlicht wurde, können Sie Informationen zur Verwendung der Vorhersage-API abrufen, indem Sie __Vorhersage-URL__ auswählen. Dadurch wird ein Dialogfeld wie das unten angezeigte mit Informationen zur Verwendung der Vorhersage-API geöffnet, einschließlich __Vorhersage-URL__ und __Vorhersage-Schlüssel__.
+Nachdem das Modell veröffentlicht wurde, können Sie die erforderlichen Informationen abrufen, indem Sie __Vorhersage-URL__ auswählen. Dadurch wird ein Dialogfeld mit Informationen zur Verwendung der Vorhersage-API geöffnet, einschließlich __Vorhersage-URL__ und __Vorhersage-Schlüssel__.
 
 ![Die Registerkarte „Leistung“ wird mit einem roten Rechteck um die Schaltfläche „Vorhersage-URL“ angezeigt.](./media/use-prediction-api/published-iteration-prediction-url.png)
 
 ![Die Registerkarte „Leistung“ wird mit einem roten Rechteck um den Wert „Vorhersage-URL“ für die Verwendung einer Bilddatei und um den Wert „Vorhersage-Schlüssel“ angezeigt.](./media/use-prediction-api/prediction-api-info.png)
 
 > [!TIP]
-> Ihr __Vorhersage-Schlüssel__ befindet sich auch auf der Seite [Azure-Portal](https://portal.azure.com) für die Ihrem Projekt zugeordnete Azure-Ressource von Custom Vision unter __Schlüssel__. 
+> Ihr __Vorhersage-Schlüssel__ befindet sich auch auf der Seite [Azure-Portal](https://portal.azure.com) für die Ihrem Projekt zugeordnete Azure-Ressource von Custom Vision unter dem Blatt __Schlüssel__.
 
-Kopieren Sie aus dem Dialogfeld die folgenden Angaben, um sie in der Anwendung einzufügen:
-
-* Die __Vorhersage-URL__ für die Verwendung einer __Bilddatei__.
-* Der Wert für den __Vorhersage-Schlüssel__.
+In dieser Anleitung verwenden Sie ein lokales Bild, also kopieren Sie die URL unter **Wenn eine Bilddatei vorliegt** an einen temporären Speicherort. Kopieren Sie auch den entsprechenden __Vorhersage-Schlüssel__-Wert.
 
 ## <a name="create-the-application"></a>Erstellen der Anwendung
 
 1. Erstellen Sie in Visual Studio eine neue C#-Konsolenanwendung.
 
 1. Verwenden Sie den folgenden Code als Textkörper der Datei __Program.cs__.
-
-    > [!IMPORTANT]
-    > Ändern Sie die folgenden Angaben:
-    >
-    > * Legen Sie als __Namespace__ den Namen Ihres Projekts fest.
-    > * Legen Sie den Wert für den __Vorhersage-Schlüssel__ fest, den Sie zuvor in der Zeile erhalten haben, die mit `client.DefaultRequestHeaders.Add("Prediction-Key",` beginnt.
-    > * Legen Sie den Wert für die __Vorhersage-URL__ fest, den Sie zuvor in der Zeile erhalten haben, die mit `string url =` beginnt.
 
     ```csharp
     using System;
@@ -92,10 +82,10 @@ Kopieren Sie aus dem Dialogfeld die folgenden Angaben, um sie in der Anwendung e
                 var client = new HttpClient();
 
                 // Request headers - replace this example key with your valid Prediction-Key.
-                client.DefaultRequestHeaders.Add("Prediction-Key", "3b9dde6d1ae1453a86bfeb1d945300f2");
+                client.DefaultRequestHeaders.Add("Prediction-Key", "<Your prediction key>");
 
                 // Prediction URL - replace this example URL with your valid Prediction URL.
-                string url = "https://southcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/8622c779-471c-4b6e-842c-67a11deffd7b/classify/iterations/Cats%20vs.%20Dogs%20-%20Published%20Iteration%203/image";
+                string url = "<Your prediction URL>";
 
                 HttpResponseMessage response;
 
@@ -120,9 +110,14 @@ Kopieren Sie aus dem Dialogfeld die folgenden Angaben, um sie in der Anwendung e
     }
     ```
 
-## <a name="use-the-application"></a>Verwenden der Anwendung
+1. Ändern Sie die folgenden Angaben:
+   * Legen Sie für das Feld `namespace` den Namen Ihres Projekts fest.
+   * Ersetzen Sie den Platzhalter `<Your prediction key>` durch den Schlüsselwert, den Sie zuvor abgerufen haben.
+   * Ersetzen Sie den Platzhalter `<Your prediction URL>` durch die URL, die Sie zuvor abgerufen haben.
 
-Wenn die Anwendung ausgeführt wird, geben Sie den Pfad zu einer Bilddatei in die Konsole ein. Das Bild wird an die Vorhersage-API übergeben und die Ergebnisse der Vorhersage werden als JSON-Dokument zurückgegeben. Der folgende JSON-Code ist ein Beispiel für eine Antwort.
+## <a name="run-the-application"></a>Ausführen der Anwendung
+
+Wenn Sie die Anwendung ausführen, werden Sie aufgefordert, einen Pfad zu einer Bilddatei in der Konsole einzugeben. Das Bild wird dann an die Vorhersage-API übergeben und die Ergebnisse der Vorhersage werden als Zeichenfolge im JSON-Format zurückgegeben. Hier sehen Sie eine Beispielantwort.
 
 ```json
 {
@@ -139,14 +134,10 @@ Wenn die Anwendung ausgeführt wird, geben Sie den Pfad zu einer Bilddatei in di
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Exportieren Ihres Modells für die Verwendung mit Mobilgeräten](export-your-model.md)
+In dieser Anleitung haben Sie erfahren, wie Sie Bilder an Ihren benutzerdefinierten Bildklassifizierer bzw. an die Bilderkennung senden und eine programmgesteuerte Antwort mit dem C# SDK erhalten. Als Nächstes erfahren Sie, wie Sie End-to-End-Szenarien mit C# abschließen oder die ersten Schritte mit einem SDK für eine andere Sprache durchführen können.
 
-[Erste Schritte mit .NET SDKs](csharp-tutorial.md)
-
-[Erste Schritte mit Python SDKs](python-tutorial.md)
-
-[Erste Schritte mit Java SDKs](java-tutorial.md)
-
-[Erste Schritte mit Node SDKs](node-tutorial.md)
-
-[Erste Schritte mit Go SDKs](go-tutorial.md)
+* [Schnellstart: .NET SDK](csharp-tutorial.md)
+* [Schnellstart: Python SDK](python-tutorial.md)
+* [Schnellstart: Java-SDK](java-tutorial.md)
+* [Schnellstart: Node SDK](node-tutorial.md)
+* [Schnellstart: Go SDK](go-tutorial.md)

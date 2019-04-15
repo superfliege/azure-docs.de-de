@@ -7,19 +7,16 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: 6a7d79d8a9328eaf0808c79ed359299e1ec37d1a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d915058e13f3c5287bdb037a1600e7f0a09da436
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57862717"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895663"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Tutorial: Verwenden der Video Indexer-API
-
-> [!Note]
-> Die v1-API von Video Indexer gilt ab dem 1. August 2018 als veraltet. Es ist ratsam, jetzt die v2-API von Video Indexer zu verwenden. <br/>Eine Anleitung zur Entwicklung mit den v2-APIs für Video Indexer finden Sie [hier](https://api-portal.videoindexer.ai/). 
 
 In Video Indexer ist unterschiedliche KI-Technologie (Künstliche Intelligenz) für Audio- und Videodaten zusammengefasst, und der Dienst wird von Microsoft als integrierter Dienst angeboten, um die Entwicklung zu vereinfachen. Die APIs sind so konzipiert, dass sich Entwickler auf die Nutzung der KI-Technologie für Medien konzentrieren können, ohne sich um Dinge wie die Skalierung, globale Reichweite, Verfügbarkeit und Zuverlässigkeit der Cloudplattform kümmern zu müssen. Sie können die API verwenden, um Ihre Dateien hochzuladen, ausführliche Videoinformationen zu erhalten, URLs von Insights- und Player-Widgets abzurufen, um diese in Ihre Anwendung einzubetten, und andere Aufgaben durchzuführen.
 
@@ -73,19 +70,6 @@ Zur Vereinfachung können Sie „**Authorization**-API“ > „**GetAccounts**�
 Zugriffstoken laufen nach einer Stunde ab. Stellen Sie sicher, dass Ihr Zugriffstoken gültig ist, bevor Sie die Operations-API verwenden. Wenn es abgelaufen ist, müssen Sie die Authorization-API erneut aufrufen, um ein neues Zugriffstoken zu erhalten.
  
 Sie sind nun bereit, um mit dem Integrieren mit der API zu beginnen. Lesen Sie sich die [ausführliche Beschreibung zu den einzelnen Video Indexer-REST-APIs](https://api-portal.videoindexer.ai/) durch.
-
-## <a name="location"></a>Standort
-
-Für alle Operations-APIs ist ein Standortparameter (Location) erforderlich. Hiermit wird die Region angegeben, an die der Aufruf geleitet werden soll und in der das Konto erstellt wurde.
-
-Es gelten die in der folgenden Tabelle beschriebenen Werte. Der **Parameterwert** ist der Wert, den Sie beim Verwenden der API übergeben.
-
-|**Name**|**Parameterwert**|**Beschreibung**|
-|---|---|---|
-|Testversion|trail|Wird für Testkonten verwendet.|
-|USA (Westen)|westus2|Wird für die Azure-Region „West US 2“ (USA, Westen 2) verwendet.|
-|Nordeuropa |northeurope|Wird für die Azure-Region „North Europe“ (Europa, Norden) verwendet.|
-|Asien, Osten|eastasia|Wird für die Azure-Region „East Asia“ (Asien, Osten) verwendet.|
 
 ## <a name="account-id"></a>Konto-ID 
 
@@ -222,8 +206,12 @@ Debug.WriteLine(playerWidgetLink);
 
 ```
 
+## <a name="see-also"></a>Weitere Informationen
+
+- [Übersicht über Video Indexer](video-indexer-overview.md)
+- [Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Untersuchen der von der v2-API erstellten Azure Video Indexer-Ausgabe](video-indexer-output-json-v2.md)
 
-[What is Video Indexer? (preview)](video-indexer-overview.md) (Was ist Video Indexer? (Vorschauversion))

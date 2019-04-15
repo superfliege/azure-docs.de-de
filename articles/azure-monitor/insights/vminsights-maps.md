@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 0bf7c335f552fee103118e57239bcd872e880edb
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 34e6ce7f3b38dfd583aa557d2f1d7340ea444da9
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984848"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916732"
 ---
 # <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Verwenden der Zuordnung in Azure Monitor für VMs (Vorschauversion) zum Verstehen von Anwendungskomponenten
 Das Anzeigen der ermittelten Anwendungskomponenten auf virtuellen Windows- und Linux-Computern, die in Ihrer Azure-Umgebung ausgeführt werden, kann mit Azure Monitor für VMs auf zwei Arten erfolgen: direkt in einem virtuellen Computer oder übergreifend für eine Gruppe von VMs in Azure Monitor. 
@@ -43,7 +43,7 @@ Klicken Sie auf der rechten Seite des Bereichs auf das Symbol **Protokollereigni
 
 ![Protokollsuchliste im Bereich „Eigenschaften“](./media/vminsights-maps/properties-pane-logs-01.png)
 
-Schließen Sie *Protokolle**, kehren Sie zum Bereich **Eigenschaften** zurück, und wählen Sie **Warnungen** aus, um Warnungen anzuzeigen, die von den Integritätskriterien für die VM ausgelöst wurden. Die Zuordnung ist in Azure-Warnungen integriert, um Warnungen für den ausgewählten Server anzuzeigen, die im ausgewählten Zeitraum ausgelöst werden. Für den Server wird ein Symbol angezeigt, wenn aktuelle Warnungen vorliegen, und im Computerwarnungsbereich werden die Warnungen aufgelistet. 
+Schließen Sie **Protokolle**, kehren Sie zum Bereich **Eigenschaften** zurück, und wählen Sie **Warnungen** aus, um Warnungen anzuzeigen, die von den Integritätskriterien für die VM ausgelöst wurden. Die Zuordnung ist in Azure-Warnungen integriert, um Warnungen für den ausgewählten Server anzuzeigen, die im ausgewählten Zeitraum ausgelöst werden. Für den Server wird ein Symbol angezeigt, wenn aktuelle Warnungen vorliegen, und im Computerwarnungsbereich werden die Warnungen aufgelistet. 
 
 ![Computerwarnungen im Bereich „Eigenschaften“](./media/vminsights-maps/properties-pane-alerts-01.png)
 

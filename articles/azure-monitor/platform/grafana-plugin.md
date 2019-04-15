@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: ''
-ms.openlocfilehash: 64a7a52d39fcac87bdc49b9d36e80d453557bc5b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6ea8f4e591399e23b103871da115dbb937227ca9
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002272"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850678"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Überwachen Ihrer Azure-Dienste in Grafana
 Sie können Azure-Dienste und -Anwendungen jetzt mit [Grafana](https://grafana.com/) überwachen, indem Sie das [Azure Monitor-Datenquellen-Plug-In](https://grafana.com/plugins/grafana-azure-monitor-datasource) verwenden. Das Plug-In sammelt Daten zur Anwendungsleistung, die von Azure Monitor erfasst wurden, einschließlich verschiedener Protokolle und Metriken. Sie können diese Daten dann in Ihrem Grafana-Dashboard anzeigen.
@@ -47,7 +47,7 @@ Um einen lokalen Grafana-Server einzurichten, müssen Sie [Grafana herunterladen
 
 7. Rufen Sie die öffentliche IP-Adresse Ihres Grafana-Servers ab: Gehen Sie zurück zur Ressourcenliste, und wählen Sie **öffentliche IP-Adresse** aus.
 
-## <a name="log-in-to-grafana"></a>Anmelden an Grafana
+## <a name="sign-in-to-grafana"></a>Anmelden an Grafana
 
 1. Verwenden Sie die IP-Adresse Ihres Servers, und öffnen Sie die Anmeldeseite unter *http://\<IP-Adresse\>:3000* oder *\<DNS-Name>\:3000* in Ihrem Browser. 3000 ist zwar der Standardport, aber beachten Sie, dass Sie bei der Einrichtung möglicherweise einen anderen Port ausgewählt haben. Es sollte eine Anmeldeseite für den zuvor erstellten Grafana-Server angezeigt werden.
 
@@ -167,5 +167,5 @@ Wenn Sie eine Grafana-Umgebung in Azure eingerichtet haben, werden Ihnen für au
 2. Klicken Sie auf der Seite mit Ihrer Ressourcengruppe auf **Löschen**, geben Sie im Textfeld **Grafana** ein, und klicken Sie dann auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Überblick über Metriken in Microsoft Azure](../../azure-monitor/platform/data-collection.md)
+* [Überblick über Metriken in Microsoft Azure](data-platform.md)
 

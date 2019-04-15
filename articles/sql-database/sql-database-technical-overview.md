@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: 711e51a075ce25ef3aa3c9c7e8784c914c8d0581
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.date: 03/29/2019
+ms.openlocfilehash: e71039c84c79c27a372a378144b21f6f724d08d8
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982266"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670834"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Worum handelt es sich beim Azure SQL-Datenbank-Dienst?
 
@@ -95,13 +95,21 @@ Verwenden Sie die [integrierten Features für die Leistungsüberwachung](sql-dat
 
 - **Azure Storage**: Ermöglicht die kostengünstige Archivierung großer Mengen von Telemetriedaten.
 - **Azure Event Hub**: Ermöglicht die Integration von Telemetriedaten von SQL-Datenbank in Ihre benutzerdefinierte Überwachungslösung oder in Hotpipelines.
-- **Azure Log Analytics**: Ermöglicht die Verwendung einer integrierten Überwachungslösung mit Funktionen für Berichterstellung, Warnungen und Problemlösung.
+- **Azure Monitor-Protokolle:** Ermöglicht die Verwendung einer integrierten Überwachungslösung mit Funktionen für Berichterstellung, Warnungen und Problemlösung.
 
     ![Architektur](./media/sql-database-metrics-diag-logging/architecture.png)
 
 ## <a name="availability-capabilities"></a>Verfügbarkeitsfunktionen
 
-Durch die Unterstützung eines globalen Netzwerks von Microsoft-verwalteten Rechenzentren stellt die in der Branche führende Verfügbarkeit von Azure mit einer Vereinbarung zum Servicelevel [(SLA)](https://azure.microsoft.com/support/legal/sla/) von 99,99% sicher, dass Ihre Apps rund um die Uhr ausgeführt werden. Die Azure-Plattform führt eine vollständige Verwaltung jeder Datenbank durch und garantiert die Vermeidung von Datenverlusten und einen hohen Prozentsatz in Bezug auf die Datenverfügbarkeit. In Azure werden Bereiche wie Patchen, Sicherungen, Replikation, Fehlererkennung, zugrunde liegende potenzielle Hardware-, Software- oder Netzwerkfehler, Bereitstellung von Fehlerbehebungen, Failover, Datenbankupgrades und andere Wartungsaufgaben automatisch durchgeführt. Die Standardverfügbarkeit wird erreicht, indem eine Unterteilung in Compute- und Speicherebenen vorgenommen wird. Premium-Verfügbarkeit wird erreicht, indem Compute- und Speicherbereich aus Leistungsgründen auf einem einzelnen Knoten angeordnet und dann im Hintergrund Technologien implementiert werden, die mit Always On-Verfügbarkeitsgruppen vergleichbar sind. Eine vollständige Beschreibung der Funktionen für Hochverfügbarkeit von Azure SQL-Datenbank finden Sie unter [Verfügbarkeit von Azure SQL-Datenbank](sql-database-high-availability.md). SQL-Datenbank bietet außerdem integrierte Features für die [Geschäftskontinuität und globale Skalierbarkeit](sql-database-business-continuity.md). Dazu gehören u.a.:
+In einer herkömmlichen SQL Server-Umgebung verfügen Sie in der Regel über (mindestens) zwei Computer, die lokal mit exakten (synchron verwalteten) Kopien der Daten eingerichtet sind (mit Funktionen wie AlwaysOn-Verfügbarkeitsgruppen oder Failoverclusterinstanzen), um sich vor dem Ausfall einzelner Computer/Komponenten zu schützen.  Dies gewährleistet Hochverfügbarkeit, bietet aber keinen Schutz vor einer Naturkatastrophe, die Ihr Rechenzentrum zerstört.
+ 
+Die Notfallwiederherstellung geht davon aus, dass ein katastrophales Ereignis geografisch lokal so begrenzt ist, dass es an entfernter Stelle einen anderen Computer bzw. eine andere Gruppe von Computern mit einer Kopie Ihrer Daten gibt.  In SQL Server können Sie AlwaysOn-Verfügbarkeitsgruppen im asynchronen Modus verwenden, um diese Vorgabe zu erfüllen.  Die „Lichtgeschwindigkeitsprobleme“ bedeuten in der Regel, dass Benutzer nicht warten möchten, bis die Replikation in so weiter Entfernung entfernt erfolgt ist, bevor sie eine Transaktion committen, sodass es ein Potenzial für Datenverlust gibt, wenn Sie ungeplante Failover durchführen.
+
+Datenbanken auf Premium- und unternehmenskritischen Dienstebenen [leisten bereits etwas sehr Ähnliches](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) für die Synchronisierung einer Verfügbarkeitsgruppe. Datenbanken auf niedrigeren Dienstebenen bieten Redundanz mithilfe von Speicher, der einen [anderen, aber vergleichbaren Mechanismus](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) verwendet. Es gibt Logik, die Schutz vor dem Ausfall eines einzelnen Computers bietet.  Das Feature „Aktive Georeplikation“ bietet Ihnen die Möglichkeit, sich vor Katastrophen zu schützen, bei denen eine ganze Region zerstört wird.
+
+Azure-Verfügbarkeitszonen sind ein Beitrag zum Thema Hochverfügbarkeit.  Es wird versucht, Schutz gegen den Ausfall eines einzelnen Rechenzentrumsgebäudes innerhalb einer Region zu bieten.  Daher soll für ein Gebäude Schutz vor dem Verlust der Stromversorgung oder des Netzwerks geboten werden. In SQL Azure funktioniert dies, indem die verschiedenen Replikate in unterschiedlichen Verfügbarkeitszonen (also verschiedenen Gebäuden) platziert werden und ansonsten wie bisher weiterarbeiten. 
+
+Durch die Unterstützung eines globalen Netzwerks von durch Microsoft verwaltete Rechenzentren stellt die branchenführende Verfügbarkeit von Azure mit einer [Vereinbarung zum Servicelevel (SLA)](https://azure.microsoft.com/support/legal/sla/) von 99,99 % sicher, dass Ihre Apps rund um die Uhr ausgeführt werden. Die Azure-Plattform führt eine vollständige Verwaltung jeder Datenbank durch und garantiert die Vermeidung von Datenverlusten und einen hohen Prozentsatz in Bezug auf die Datenverfügbarkeit. In Azure werden Bereiche wie Patchen, Sicherungen, Replikation, Fehlererkennung, zugrunde liegende potenzielle Hardware-, Software- oder Netzwerkfehler, Bereitstellung von Fehlerbehebungen, Failover, Datenbankupgrades und andere Wartungsaufgaben automatisch durchgeführt. Die Standardverfügbarkeit wird erreicht, indem eine Unterteilung in Compute- und Speicherebenen vorgenommen wird. Premium-Verfügbarkeit wird erreicht, indem Compute- und Speicherbereich aus Leistungsgründen auf einem einzelnen Knoten angeordnet und dann im Hintergrund Technologien implementiert werden, die mit Always On-Verfügbarkeitsgruppen vergleichbar sind. Eine vollständige Beschreibung der Funktionen für Hochverfügbarkeit von Azure SQL-Datenbank finden Sie unter [Verfügbarkeit von Azure SQL-Datenbank](sql-database-high-availability.md). SQL-Datenbank bietet außerdem integrierte Features für die [Geschäftskontinuität und globale Skalierbarkeit](sql-database-business-continuity.md). Dazu gehören u.a.:
 
 - **[Automatische Sicherungen:](sql-database-automated-backups.md)**
 
@@ -141,11 +149,14 @@ Es gibt zwei Aspekte der automatischen Optimierung, die [in SQL-Datenbank verfü
 
 ### <a name="adaptive-query-processing"></a>Adaptive Abfrageverarbeitung
 
-Wir fügen darüber hinaus auch einen Featuresatz zur [adaptiven Abfrageverarbeitung](/sql/relational-databases/performance/adaptive-query-processing) in SQL-Datenbank hinzu. Dies schließt auch die überlappende Ausführung für Tabellenwertfunktionen mit mehreren Anweisungen, Feedback zur Speicherzuweisung im Batchmodus und adaptive Joins im Batchmodus ein. Jedes dieser Features zur adaptiven Abfrageverarbeitung wendet ähnliche Techniken zum Lernen und Anpassen an, um weitere Leistungsprobleme zu beheben, die durch traditionell schwierig zu lösende Probleme bei der Abfrageoptimierung verursacht werden.
+Wir fügen darüber hinaus auch einen Featuresatz zur [adaptiven Abfrageverarbeitung](/sql/relational-databases/performance/intelligent-query-processing) in SQL-Datenbank hinzu. Dies schließt auch die überlappende Ausführung für Tabellenwertfunktionen mit mehreren Anweisungen, Feedback zur Speicherzuweisung im Batchmodus und adaptive Joins im Batchmodus ein. Jedes dieser Features zur adaptiven Abfrageverarbeitung wendet ähnliche Techniken zum Lernen und Anpassen an, um weitere Leistungsprobleme zu beheben, die durch traditionell schwierig zu lösende Probleme bei der Abfrageoptimierung verursacht werden.
 
 ## <a name="advanced-security-and-compliance"></a>Erweiterte Sicherheit und Konformität
 
 SQL-Datenbank bietet eine Reihe von [integrierten Sicherheits- und Konformitätsfeatures](sql-database-security-overview.md), mit der Sie Ihre Anwendung an verschiedene Sicherheits- und Konformitätsanforderungen anpassen können.
+
+> [!IMPORTANT]
+> Azure SQL-Datenbank (alle Bereitstellungsoptionen) wurde anhand einer Reihe von Konformitätsstandards zertifiziert. Weitere Informationen finden Sie im [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/), wo die aktuellste Liste von [Compliance-Zertifizierungen für SQL-Datenbank](https://www.microsoft.com/trustcenter/compliance/complianceofferings) angezeigt wird.
 
 ### <a name="advance-threat-protection"></a>Advanced Threat Protection
 
@@ -234,7 +245,7 @@ SQL-Datenbank-Kunden sind beim Azure-Hybridvorteil für SQL Server die folgenden
 ## <a name="engage-with-the-sql-server-engineering-team"></a>Kontakt mit dem SQL Server-Entwicklungsteam aufnehmen
 
 - [DBA Stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server): Stellen Sie Fragen zur Datenbankverwaltung.
-- [Stack Overflow](http://stackoverflow.com/questions/tagged/sql-server): Stellen Sie Fragen zur Entwicklung.
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/sql-server): Stellen Sie Fragen zur Entwicklung.
 - [MSDN-Foren](https://social.msdn.microsoft.com/Forums/home?category=sqlserver): Stellen Sie technische Fragen.
 - [Feedback](https://aka.ms/sqlfeedback): Hier können Sie Fehler melden und Features anfordern.
 - [Reddit](https://www.reddit.com/r/SQLServer/): Tauschen Sie sich über SQL Server aus.

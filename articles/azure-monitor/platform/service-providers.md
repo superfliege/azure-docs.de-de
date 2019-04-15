@@ -1,6 +1,6 @@
 ---
-title: Log Analytics für Dienstanbieter | Microsoft-Dokumentation
-description: Log Analytics unterstützt Managed Service Provider (MSPs), Großunternehmen, unabhängige Softwarehersteller (Independent Software Vendors, ISVs) und Hosting-Anbieter beim Verwalten und Überwachen von Servern in der lokalen oder Cloudinfrastruktur des Kunden.
+title: Azure Monitor für Dienstanbieter | Microsoft-Dokumentation
+description: Azure Monitor unterstützt Managed Service Provider (MSPs), Großunternehmen, unabhängige Softwarehersteller (Independent Software Vendors, ISVs) und Hostingdienstanbieter beim Verwalten und Überwachen von Servern in der lokalen oder Cloudinfrastruktur des Kunden.
 services: log-analytics
 documentationcenter: ''
 author: MeirMen
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: meirm
-ms.openlocfilehash: 294dd56a7eb62510c30f4fbb0dbeeafc81b790f2
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 97d8d6fac93ebabac8fb319ce2f1ab8719f5f86b
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264771"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756565"
 ---
-# <a name="log-analytics-for-service-providers"></a>Log Analytics für Dienstanbieter
-Log Analytics unterstützt Managed Service Provider (MSPs), Großunternehmen, unabhängige Softwarehersteller (Independent Software Vendors, ISVs) und Hosting-Anbieter beim Verwalten und Überwachen von Servern in der lokalen oder Cloudinfrastruktur des Kunden. 
+# <a name="azure-monitor-for-service-providers"></a>Azure Monitor für Dienstanbieter
+Log Analytics-Arbeitsbereiche in Azure Monitor unterstützen Managed Service Provider (MSPs), Großunternehmen, unabhängige Softwarehersteller (Independent Software Vendors, ISVs) und Hostingdienstanbieter beim Verwalten und Überwachen von Servern in der lokalen oder Cloudinfrastruktur des Kunden. 
 
 Zwischen Großunternehmen und Dienstanbietern bestehen viele Gemeinsamkeiten, insbesondere wenn ein zentrales IT-Team für die Verwaltung der IT vieler unterschiedlicher Geschäftseinheiten verantwortlich ist. Der Einfachheit halber wird in diesem Dokument der Begriff *Dienstanbieter* verwendet, jedoch ist die gleiche Funktionalität für Unternehmen und andere Kunden verfügbar.
 
-Für Partner und Dienstanbieter, die am Programm [Cloud-Lösungsanbieter (Cloud Solution Provider, CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) teilnehmen, ist Log Analytics einer der in [Azure CSP-Abonnements](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) verfügbaren Azure-Dienste. 
+Für Partner und Dienstanbieter, die am Programm [Cloud-Lösungsanbieter (Cloud Solution Provider, CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) teilnehmen, ist Log Analytics in Azure Monitor einer der in [Azure CSP-Abonnements](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview) verfügbaren Azure-Dienste. 
 
 ## <a name="architectures-for-service-providers"></a>Architekturen für Dienstanbieter
 
@@ -70,11 +70,11 @@ Die Nachteile dieser Architektur sind:
 
 Die dritte Architektur stellt eine Mischung der zwei Optionen dar. Sie basiert auf der ersten, verteilten Architektur, in der die Protokolle lokal bei jedem Kunden sind, verwendet aber einen Mechanismus zur Erstellung eines zentralen Repositorys für Protokolle. Ein Teil der Protokolle wird zur Berichterstellung und Analyse per Pull an einen zentralen Speicherort übertragen. Bei diesem Teil kann es sich um eine kleine Anzahl Datentypen oder um eine Zusammenfassung der Aktivitäten handeln, wie etwa eine tägliche Statistik.
 
-Es bestehen zwei Optionen zum Implementieren des zentralen Speicherorts in Log Analytics:
+Es bestehen zwei Optionen zum Implementieren von Protokollen an einem zentralen Speicherort:
 
 1. Zentraler Arbeitsbereich: Der Dienstanbieter kann einen Arbeitsbereich in seinem Mandanten erstellen und ein Skript verwenden, das die [Abfrage-API](https://dev.loganalytics.io/) in Kombination mit der [Datensammlungs-API](../../azure-monitor/platform/data-collector-api.md) nutzt, um die Daten aus den verschiedenen Arbeitsbereichen an diesen zentralen Speicherort zu bringen. Eine weitere Option, die kein Skript einsetzt, ist die Verwendung von [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
 
-2. Power BI als zentraler Speicherort: Power BI kann als zentraler Speicherort dienen, wenn die verschiedenen Arbeitsbereiche mithilfe der Integration zwischen Log Analytics und [Power BI](../../azure-monitor/platform/powerbi.md) Daten nach Power BI exportieren. 
+2. Power BI als zentraler Speicherort: Power BI kann als zentraler Speicherort dienen, wenn die verschiedenen Arbeitsbereiche mithilfe der Integration zwischen dem Log Analytics-Arbeitsbereich und [Power BI](../../azure-monitor/platform/powerbi.md) Daten nach Power BI exportieren. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

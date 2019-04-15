@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 60623ab4b41c343cab0f9be1abd8ab45051b3f9e
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 61b877c322fcd58472990c328beea2e309502bce
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889357"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652347"
 ---
 # <a name="define-account-filters-and-asset-filters"></a>Definieren von Konto- und Medienobjektfiltern  
 
@@ -58,7 +58,7 @@ Sie verwenden die folgenden Eigenschaften zum Beschreiben der Filter.
 |NAME|BESCHREIBUNG|
 |---|---|
 |firstQuality|Die erste Qualitätsstufe der Bitrate für den Filter.|
-|presentationTimeRange|Der Bereich der Präsentationszeit. Diese Eigenschaft wird zum Filtern der Start-/Endpunkte des Manifests, der Länge des Präsentationsfensters und der Livestartposition verwendet. <br/>Weitere Informationen finden Sie unter [PresentationTimeRange](#PresentationTimeRange).|
+|presentationTimeRange|Der Bereich der Präsentationszeit. Diese Eigenschaft wird zum Filtern der Start-/Endpunkte des Manifests, der Länge des Präsentationsfensters und der Livestartposition verwendet. <br/>Weitere Informationen finden Sie unter [PresentationTimeRange](#presentationtimerange).|
 |tracks|Die Bedingungen zur Spurauswahl. Weitere Informationen finden Sie unter [tracks](#tracks).|
 
 ### <a name="presentationtimerange"></a>presentationTimeRange
@@ -88,7 +88,11 @@ Spureigenschaftsbedingungen für die Filterung beschreiben Spurtypen, Werte (sie
 |**Name**|Verwenden Sie den Namen der Spur zur Filterung.|
 |**Typ**|Verwenden Sie den Typ der Spur zur Filterung.<br/><br/>Die folgenden Werte sind zulässig: video, audio, text|
 
-## <a name="example"></a>Beispiel
+## <a name="associate-filters-with-streaming-locator"></a>Zuordnen von Filtern mit Streaminglocator
+
+Sie können eine Liste von Medienobjekt- oder Kontenfiltern angeben, die für Ihren Streaminglocator gelten würden. Der [dynamische Packager](dynamic-packaging-overview.md) wendet diese Liste der Filter zusammen mit den Filtern an, die Ihr Client in der URL angibt. Diese Kombination generiert ein [dynamisches Manifest](filters-dynamic-manifest-overview.md), das auf Filtern in der URL sowie auf Filtern basiert, die Sie im Streaminglocator angeben. Es wird empfohlen, dieses Feature zu verwenden, wenn Sie Filter anwenden, aber nicht die Filternamen in der URL verfügbar machen möchten.
+
+## <a name="definition-example"></a>Definitionsbeispiel
 
 ```json
 {

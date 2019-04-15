@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 02/08/2019
+ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: f96b4bb75a22e51586820a2e7be08c09cf7b26dd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 35f83832b0ceb7507b39095e9cc974d82a480c69
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104419"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883072"
 ---
 # <a name="how-to-improve-your-classifier"></a>Verbessern der Klassifizierung
 
@@ -29,7 +29,7 @@ Im Folgenden finden Sie ein allgemeines Muster, um eine genauere Klassifizierung
 1. Verwenden neuer Bilder, um Vorhersagen zu testen
 1. Ändern der vorhandenen Trainingsdaten gemäß der Vorhersageergebnisse
 
-## <a name="overfitting"></a>Überanpassung
+## <a name="prevent-overfitting"></a>Verhindern der Überanpassung
 
 In einigen Fällen lernt eine Klassifizierung, Vorhersagen basierend auf beliebigen Merkmalen zu machen, die Ihre Bilder gemeinsam haben. Wenn Sie z.B. eine Klassifizierung zur Unterscheidung von Äpfeln und Zitrusfrüchten erstellen und dafür Bilder von Äpfeln in Händen und Zitrusfrüchten auf weißen Tellern verwendet haben, wird die Klassifizierung möglicherweise dem Unterschied zwischen Händen und weißen Tellern gegenüber dem Unterschied zwischen Äpfeln und Zitrusfrüchten einen ungerechtfertigten Schwerpunkt einräumen.
 
@@ -72,6 +72,15 @@ Um dieses Problem zu korrigieren, beziehen Sie eine Vielzahl von Bildern ein, um
 * __Ausführung__: Stellen Sie Bilder verschiedener Ausführungen der gleichen Klasse bereit (z.B. unterschiedliche Varianten der gleichen Frucht). Wenn Sie jedoch über Objekte in erheblich unterschiedlichen Ausführungen verfügen (z.B. Micky Maus und eine echte Maus), sollten Sie diese als separate Klassen bezeichnen, um ihre unterschiedlichen Merkmale besser darzustellen.
 
     ![Abbildung: Beispiele für Ausführungen](./media/getting-started-improving-your-classifier/style.png)
+
+## <a name="negative-images"></a>Negative Bilder
+
+Möglicherweise müssen Sie in Ihrem Projekt irgendwann _Negativbeispiele_ hinzufügen, damit Ihre Klassifizierung genauer wird. Negativbeispiele sind jene, die mit keinen der anderen Tags übereinstimmen. Wenn Sie diese Bilder hochladen, wenden Sie die spezielle **Negativ**-Bezeichnung auf sie an.
+
+> [!NOTE]
+> Der Custom Vision Service unterstützt teilweise die automatische Verarbeitung von negativen Bildern. Wenn Sie beispielsweise eine Klassifizierung zur Unterscheidung von Trauben und Bananen erstellen und ein Bild eines Schuhs für die Vorhersage übermitteln, sollte die Klassifizierung dieses Bild in Bezug auf Trauben und Bananen mit nahezu 0 % bewerten.
+> 
+> Andererseits ist es in Fällen, in denen die negativen Bilder nur eine Variation der im Training verwendeten Bilder sind, wahrscheinlich, dass das Modell die negativen Bilder aufgrund der großen Ähnlichkeiten als eine bezeichnete Klasse klassifiziert. Falls Sie eine Klassifizierung zur Unterscheidung von Orangen und Grapefruits verwenden und ein Bild einer Clementine übermitteln, wird die Clementine ggf. als Orange eingestuft, da sich die Merkmale von Clementinen und Orangen stark ähneln. Wenn Ihre negativen Bilder dieser Art sind, raten wir Ihnen, mindestens ein zusätzliches Tag (z. B. **Sonstiges**) zu erstellen und die negativen Bilder während des Trainings mit diesem Tag zu bezeichnen, damit das Modell besser zwischen diesen Klassen unterscheiden kann.
 
 ## <a name="use-prediction-images-for-further-training"></a>Verwenden Sie Vorhersagebilder für das weitere Training
 

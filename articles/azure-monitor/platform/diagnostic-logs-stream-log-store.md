@@ -1,6 +1,6 @@
 ---
-title: Streamen von Azure-Diagnoseprotokollen an Log Analytics
-description: Hier erfahren Sie, wie Sie Azure-Diagnoseprotokolle an einen Log Analytics-Arbeitsbereich streamen.
+title: Streamen von Azure-Diagnoseprotokollen an einen Log Analytics-Arbeitsbereich in Azure Monitor
+description: Hier erfahren Sie, wie Sie Azure-Diagnoseprotokolle an einen Log Analytics-Arbeitsbereich in Azure Monitor streamen.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,27 +8,26 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: bd760fca20a602127e7d33913547dcb2c6bc95f6
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 33d8f2e7c65a786d1ecb389574fe186efb6fb705
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351548"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630786"
 ---
-# <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>Streamen von Azure-Diagnoseprotokollen an Log Analytics
+# <a name="stream-azure-diagnostic-logs-to-log-analytics-workspace-in-azure-monitor"></a>Streamen von Azure-Diagnoseprotokollen an einen Log Analytics-Arbeitsbereich in Azure Monitor
 
-**[Azure-Diagnoseprotokolle](diagnostic-logs-overview.md)** können über das Portal, über PowerShell-Cmdlets oder über die Azure CLI nahezu in Echtzeit an Azure Log Analytics gestreamt werden.
+**[Azure-Diagnoseprotokolle](diagnostic-logs-overview.md)** können über das Portal, über PowerShell-Cmdlets oder die Azure CLI nahezu in Echtzeit an einen Log Analytics-Arbeitsbereich in Azure Monitor gestreamt werden.
 
-## <a name="what-you-can-do-with-diagnostics-logs-in-log-analytics"></a>Verwendungsmöglichkeiten für Diagnoseprotokolle in Log Analytics
+## <a name="what-you-can-do-with-diagnostics-logs-in-a-log-analytics-workspace"></a>Verwendungsmöglichkeiten für Diagnoseprotokolle in einem Log Analytics-Arbeitsbereich
 
-Azure Log Analytics ist ein flexibles Tool zur Protokollsuche und -analyse, mit dem Sie einen Einblick in die unformatierten Protokolldaten erhalten, die aus den Azure-Ressourcen generiert werden. Zu den Funktionen gehören:
+Azure Monitor bietet ein flexibles Tool zur Protokollabfrage und -analyse, mit dem Sie einen Einblick in die unformatierten Protokolldaten erhalten, die aus den Azure-Ressourcen generiert werden. Zu den Funktionen gehören:
 
-* **Protokollsuche**: Schreiben Sie erweiterte Abfragen über Ihre Protokolldaten, stellen Sie Zusammenhänge zwischen Protokollen aus verschiedenen Quellen her, und generieren Sie sogar Diagramme, die an Ihr Azure-Dashboard angeheftet werden können.
-* **Warnungen**: Stellen Sie Übereinstimmungen von Ereignissen mit einer bestimmten Abfrage fest, und lassen Sie sich per E-Mail oder Webhookaufruf benachrichtigen.
-* **Lösungen**: Verwenden Sie vorgefertigte Ansichten und Dashboards, mit denen Sie sofortige Einblicke in Ihre Protokolldaten erhalten.
+* **Protokollabfrage**: Schreiben Sie erweiterte Abfragen für Ihre Protokolldaten, stellen Sie Zusammenhänge zwischen Protokollen aus verschiedenen Quellen her, und generieren Sie Diagramme, die an Ihr Azure-Dashboard angeheftet werden können.
+* **Warnungen**: Stellen Sie Übereinstimmungen von Ereignissen mit einer bestimmten Abfrage fest, und lassen Sie sich per E-Mail oder Webhookaufruf mithilfe von Azure Monitor-Warnungen benachrichtigen.
 * **Erweiterte Analysen**: Wenden Sie Machine Learning- und Musterabgleichsalgorithmen an, um mögliche Probleme zu ermitteln, die durch Ihre Protokolle aufgedeckt werden.
 
-## <a name="enable-streaming-of-diagnostic-logs-to-log-analytics"></a>Aktivieren des Streamens von Diagnoseprotokollen an Log Analytics
+## <a name="enable-streaming-of-diagnostic-logs-to-log-analytics-workspace"></a>Aktivieren des Streamens von Diagnoseprotokollen an einen Log Analytics-Arbeitsbereich
 
 Das Streamen von Diagnoseprotokollen kann programmgesteuert, über das Portal oder mithilfe der [Azure Monitor-REST-APIs](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)aktiviert werden. In jedem Fall erstellen Sie eine Diagnoseeinstellung, in der Sie einen Log Analytics-Arbeitsbereich sowie die Protokollkategorien und Metriken angeben, die an den Arbeitsbereich gesendet werden sollen. Eine **Diagnoseprotokollkategorie** ist ein Protokolltyp, der von einer Ressource bereitgestellt werden kann.
 
@@ -42,9 +41,8 @@ Der Log Analytics-Arbeitsbereich muss sich nicht unter demselben Abonnement befi
 >
 
 ## <a name="stream-diagnostic-logs-using-the-portal"></a>Streamen von Diagnoseprotokollen mithilfe des Portals
-1. Navigieren Sie im Portal zu Azure Monitor, und klicken Sie auf **Diagnoseeinstellungen**.
+1. Navigieren Sie im Portal zu Azure Monitor, und klicken Sie im Menü **Einstellungen** auf **Diagnoseeinstellungen**.
 
-    ![Abschnitt „Überwachung“ von Azure Monitor](media/diagnostic-logs-stream-log-store/diagnostic-settings-blade.png)
 
 2. Filtern Sie optional die Liste nach Ressourcengruppe oder Ressourcentyp, und klicken Sie auf die Ressource, für die Sie eine Diagnoseeinstellung festlegen möchten.
 
@@ -97,9 +95,9 @@ Sie können das Diagnoseprotokoll um weitere Kategorien ergänzen, indem Sie dem
 
 Das Argument `--resource-group` ist nur erforderlich, wenn `--workspace` keine Objekt-ID ist.
 
-## <a name="how-do-i-query-the-data-in-log-analytics"></a>Wie frage ich die Daten in Log Analytics ab?
+## <a name="how-do-i-query-the-data-from-a-log-analytics-workspace"></a>Wie frage ich die Daten aus einem Log Analytics-Arbeitsbereich ab?
 
-Auf dem Blatt „Protokollsuche“ im Portal oder auf der Advanced Analytics-Oberfläche als Teil von Log Analytics können Sie Diagnoseprotokolle im Rahmen der Protokollverwaltungslösung unter der AzureDiagnostics-Tabelle abfragen. Es gibt auch [verschiedene Lösungen für Azure-Ressourcen](../../azure-monitor/insights/solutions.md), die Sie installieren können, um sofort Informationen zu den an Log Analytics gesendeten Protokolldaten zu erhalten.
+Auf dem Blatt „Protokolle“ im Azure Monitor-Portal können Sie Diagnoseprotokolle im Rahmen der Protokollverwaltungslösung unter der AzureDiagnostics-Tabelle abfragen. Es gibt auch [verschiedene Überwachungslösungen für Azure-Ressourcen](../../azure-monitor/insights/solutions.md), die Sie installieren können, um sofort Informationen zu den an Azure Monitor gesendeten Protokolldaten zu erhalten.
 
 ### <a name="known-limitation-column-limit-in-azurediagnostics"></a>Bekannte Einschränkung: Spaltenlimit in Azure-Diagnose
 Da viele SEND-Datentypen von Ressourcen an dieselbe Tabelle (_Azure-Diagnose_) gesendet werden, stellt das Schema dieser Tabelle die Obermenge der Schemata aller erfassten einzelnen Datentypen dar. Wenn Sie beispielsweise Diagnoseeinstellungen für die Sammlung der folgenden Datentypen erstellt haben, werden sie alle an denselben Arbeitsbereich gesendet:

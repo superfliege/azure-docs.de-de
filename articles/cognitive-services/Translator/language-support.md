@@ -3,19 +3,19 @@ title: Sprachunterstützung – Textübersetzungs-API
 titleSuffix: Azure Cognitive Services
 description: Eine Liste der von der Textübersetzungs-API unterstützten natürlichen Sprachen.
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: aed3d08f96265736889deccf51d427a6631e1ea9
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 62a4493204fdc09dbd48b1463e5558fabf9c7c40
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241570"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918041"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Sprach- und Regionsunterstützung für die Textübersetzungs-API
 
@@ -108,26 +108,26 @@ Die „Transliterate“-Methode unterstützt die folgenden Sprachen. In der Spal
 
 | Sprache    | Sprachcode | Skript | Von/In | Skript|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
-| Arabisch | `ar` | Arabisch `Arab` | <--> | Latein `Latn` |
-|Bengalisch  | `bn` | Bangla `Beng` | <--> | Latein `Latn` |
-| Chinesisch (vereinfacht) | `zh-Hans` | Chinesisch (vereinfacht) `Hans`| <--> | Latein `Latn` |
+| Arabisch | `ar` | Arabisch `Arab` | <--> | Lateinisch `Latn` |
+|Bengalisch  | `bn` | Bangla `Beng` | <--> | Lateinisch `Latn` |
+| Chinesisch (vereinfacht) | `zh-Hans` | Chinesisch (vereinfacht) `Hans`| <--> | Lateinisch `Latn` |
 | Chinesisch (vereinfacht) | `zh-Hans` | Chinesisch (vereinfacht) `Hans`| <--> | Chinesisch (traditionell) `Hant`|
-| Chinesisch (traditionell) | `zh-Hant` | Chinesisch (traditionell) `Hant`| <--> | Latein `Latn` |
+| Chinesisch (traditionell) | `zh-Hant` | Chinesisch (traditionell) `Hant`| <--> | Lateinisch `Latn` |
 | Chinesisch (traditionell) | `zh-Hant` | Chinesisch (traditionell) `Hant`| <--> | Chinesisch (vereinfacht) `Hans` |
-| Gujarati | `gu`  | Gujarati `Gujr` | --> | Latein `Latn` |
-| Hebräisch | `he` | Hebräisch `Hebr` | <--> | Latein `Latn` |
-| Hindi | `hi` | Devanagari `Deva` | <--> | Latein `Latn` |
-| Japanisch | `ja` | Japanisch `Jpan` | <--> | Latein `Latn` |
-| Kannada | `kn` | Kannada `Knda` | --> | Latein `Latn` |
-| Malayalam | `ml` | Malayalam `Mlym` | --> | Latein `Latn` |
-| Marathi | `mr` | Devanagari `Deva` | --> | Latein `Latn` |
-| Oriya | `or` | Oriya `Orya` | <--> | Latein `Latn` |
-| Pandschabi | `pa` | Gurmukhi `Guru`  | <--> | Latein `Latn`  |
-| Serbisch (Kyrillisch) | `sr-Cyrl` | Kyrillisch `Cyrl`  | --> | Latein `Latn` |
-| Serbisch (Lateinisch) | `sr-Latn` | Latein `Latn` | --> | Kyrillisch `Cyrl`|
-| Tamilisch | `ta` | Tamilisch `Taml` | --> | Latein `Latn` |
-| Telugu | `te` | Telugu `Telu` | --> | Latein `Latn` |
-| Thailändisch | `th` | Thailändisch `Thai` | <--> | Latein `Latn` |
+| Gujarati | `gu`  | Gujarati `Gujr` | --> | Lateinisch `Latn` |
+| Hebräisch | `he` | Hebräisch `Hebr` | <--> | Lateinisch `Latn` |
+| Hindi | `hi` | Devanagari `Deva` | <--> | Lateinisch `Latn` |
+| Japanisch | `ja` | Japanisch `Jpan` | <--> | Lateinisch `Latn` |
+| Kannada | `kn` | Kannada `Knda` | --> | Lateinisch `Latn` |
+| Malayalam | `ml` | Malayalam `Mlym` | --> | Lateinisch `Latn` |
+| Marathi | `mr` | Devanagari `Deva` | --> | Lateinisch `Latn` |
+| Oriya | `or` | Oriya `Orya` | <--> | Lateinisch `Latn` |
+| Pandschabi | `pa` | Gurmukhi `Guru`  | <--> | Lateinisch `Latn`  |
+| Serbisch (Kyrillisch) | `sr-Cyrl` | Kyrillisch `Cyrl`  | --> | Lateinisch `Latn` |
+| Serbisch (Lateinisch) | `sr-Latn` | Lateinisch `Latn` | --> | Kyrillisch `Cyrl`|
+| Tamilisch | `ta` | Tamilisch `Taml` | --> | Lateinisch `Latn` |
+| Telugu | `te` | Telugu `Telu` | --> | Lateinisch `Latn` |
+| Thailändisch | `th` | Thailändisch `Thai` | <--> | Lateinisch `Latn` |
 
 ## <a name="dictionary"></a>Wörterbuch
 
@@ -268,7 +268,7 @@ Sie können eine Liste der unterstützten Sprachen für die Textübersetzungs-AP
 
 ## <a name="customization"></a>Anpassung
 
-Die folgenden Sprachen sind für die Anpassung an das Englische oder aus dem Englischen mit dem [benutzerdefinierten Translator](http://aka.ms/CustomTranslator) verfügbar.
+Die folgenden Sprachen sind für die Anpassung an das Englische oder aus dem Englischen mit dem [benutzerdefinierten Translator](https://aka.ms/CustomTranslator) verfügbar.
 
 | Sprache    | Sprachcode |
 |:----------- |:-------------:|
@@ -290,6 +290,7 @@ Die folgenden Sprachen sind für die Anpassung an das Englische oder aus dem Eng
 | Hebräisch      | `he`          |
 | Hindi      | `hi`          |
 | Ungarisch      | `hu`          |
+| Isländisch | `is` |
 | Italienisch      | `it`          |
 | Japanisch      | `ja`          |
 | Koreanisch      | `ko`          |
@@ -309,9 +310,10 @@ Die folgenden Sprachen sind für die Anpassung an das Englische oder aus dem Eng
 | Türkisch      | `tr`          |
 | Ukrainisch      | `uk`          |
 | Vietnamesisch      | `vi`          |
+| Walisisch | `cy` |
 
 ## <a name="access-the-list-on-the-microsoft-translator-website"></a>Zugreifen auf die Liste auf der Microsoft Translator-Website
 
 Für einen schnellen Überblick über die Sprachen werden auf der Microsoft Translator-Website alle Sprachen angezeigt, die von der Translator-Text-API und -Sprach-API unterstützt werden. Diese Liste enthält keine entwicklerspezifischen Informationen wie z.B. Sprachcodes.
 
-[Anzeige der Sprachenliste](https://www.microsoft.com/translator/languages.aspx)
+[Weitere Informationen finden Sie in der Liste der Sprachen](https://www.microsoft.com/translator/languages.aspx)

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 4a1ccd2c4a51fb4cab2337220d36b5c093a8aff5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a686465b0006c2e9aac6e06cb4ab12d30921e8c5
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58165776"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802676"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Verwalten von Medienobjekten und verwandten Entitäten mit dem Media Services .NET SDK
 > [!div class="op_single_selector"]
@@ -28,10 +28,12 @@ ms.locfileid: "58165776"
 > 
 > 
 
+> [!NOTE]
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+
 Dieses Thema veranschaulicht das Verwalten von Azure Media Services-Entitäten mit .NET.
 
->[!NOTE]
-> Ab dem 1. April 2017 werden alle Auftragsdatensätze in Ihrem Konto, die älter als 90 Tage sind, sowie alle zugehörigen Aufgabendatensätze automatisch gelöscht, selbst wenn die Gesamtanzahl von Datensätzen unterhalb des maximalen Kontingents liegt. Beispielsweise wird jeder Auftragsdatensatz in Ihrem Konto, der vor dem 31. Dezember 2016 erstellt wurde, am 1. April 2017 automatisch gelöscht. Wenn Sie die Auftrags-/Aufgabeninformationen archivieren müssen, können Sie dazu den in diesem Thema beschriebenen Code verwenden.
+Ab dem 1. April 2017 werden alle Auftragsdatensätze in Ihrem Konto, die älter als 90 Tage sind, sowie alle zugehörigen Aufgabendatensätze automatisch gelöscht, selbst wenn die Gesamtanzahl von Datensätzen unterhalb des maximalen Kontingents liegt. Beispielsweise wird jeder Auftragsdatensatz in Ihrem Konto, der vor dem 31. Dezember 2016 erstellt wurde, am 1. April 2017 automatisch gelöscht. Wenn Sie die Auftrags-/Aufgabeninformationen archivieren müssen, können Sie dazu den in diesem Thema beschriebenen Code verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

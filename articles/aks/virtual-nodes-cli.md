@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 12/03/2018
 ms.author: iainfou
-ms.openlocfilehash: a04dbd42e09ad8ec352af74950b6d71425a84a9d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 54c8e44685bb69e845c819b0c2846b188a771d71
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58177669"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878229"
 ---
 # <a name="preview---create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Vorschau: Erstellen und Konfigurieren eines zure Kubernetes Services-Clusters (AKS) zur Verwendung von virtuellen Knoten mithilfe der Azure CLI
 
@@ -47,9 +47,9 @@ Wenn der Anbieter als *Nicht registriert* angezeigt wird, registrieren Sie den A
 az provider register --namespace Microsoft.ContainerInstance
 ```
 
-## <a name="preview-limitations"></a>Einschränkungen der Vorschau
+## <a name="regional-availability"></a>Regionale Verfügbarkeit
 
-In der Vorschauphase dieses Features werden Bereitstellungen in den folgenden Regionen unterstützt:
+Für Bereitstellungen von virtuellen Knoten werden die folgenden Regionen unterstützt:
 
 * Australien, Osten (australiaeast)
 * USA, Osten (eastus)
@@ -162,13 +162,7 @@ az aks create \
 
 Nach einigen Minuten ist die Ausführung des Befehls abgeschlossen, und es werden Informationen zum Cluster im JSON-Format zurückgegeben.
 
-## <a name="enable-virtual-nodes"></a>Aktivieren von virtuellen Knoten
-
-Um weitere Funktionen bereitzustellen, verwendet der Connector für virtuelle Knoten eine Azure CLI-Erweiterung. Bevor Sie den Connector für virtuelle Knoten aktivieren können, installieren Sie zuerst die Erweiterung mithilfe des Befehls [az extension add][az-extension-add]:
-
-```azurecli-interactive
-az extension add --source https://aksvnodeextension.blob.core.windows.net/aks-virtual-node/aks_virtual_node-0.2.0-py2.py3-none-any.whl
-```
+## <a name="enable-virtual-nodes-addon"></a>Virtuelle Knoten aktivieren-Add-On
 
 Um die virtuellen Knoten zu aktivieren, verwenden Sie jetzt den Befehl [az aks enable-addons][az-aks-enable-addons]. Das folgende Beispiel verwendet das Subnetz *myVirtualNodeSubnet*, das in einem vorherigen Schritt erstellt wurde:
 
@@ -179,6 +173,11 @@ az aks enable-addons \
     --addons virtual-node \
     --subnet-name myVirtualNodeSubnet
 ```
+> [!NOTE]
+> Wenn Sie eine Fehlermeldung zu nicht gefundenen virtuellen Knoten erhalten, müssen Sie möglicherweise dessen CLI-Erweiterung installieren 
+> ```azurecli-interactive
+> az extension add --source https://aksvnodeextension.blob.core.windows.net/aks-virtual-node/aks_virtual_node-0.2.0-py2.py3-none-any.whl
+> ```
 
 ## <a name="connect-to-the-cluster"></a>Verbinden mit dem Cluster
 
@@ -331,6 +330,8 @@ Virtuelle Knoten sind oft eine Komponente einer Skalierungslösung in AKS. Weite
 
 - [Verwenden der horizontalen automatischen Kubernetes-Podskalierung][aks-hpa]
 - [Verwenden der automatischen Kubernetes-Clusterskalierung][aks-cluster-autoscaler]
+- [Sehen Sie sich das Beispiel für die automatische Skalierung für virtuelle Knoten an][virtual-node-autoscale]
+- [Erfahren Sie mehr über die Virtual Kubelet Open Source-Bibliothek][virtual-kubelet-repo]
 
 <!-- LINKS - external -->
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
@@ -338,6 +339,8 @@ Virtuelle Knoten sind oft eine Komponente einer Skalierungslösung in AKS. Weite
 [node-selector]:https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
 [toleration]: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
 [aks-github]: https://github.com/azure/aks/issues]
+[virtual-node-autoscale]: https://github.com/Azure-Samples/virtual-node-autoscale
+[virtual-kubelet-repo]: https://github.com/virtual-kubelet/virtual-kubelet
 
 <!-- LINKS - internal -->
 [azure-cli-install]: /cli/azure/install-azure-cli

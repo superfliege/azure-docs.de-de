@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-ms.openlocfilehash: 6cde5b8ba8d770a07199816286b666e952394de1
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 15e581454b60319ab734f2fa5faf0d90e0a7c8bf
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27963671"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893723"
 ---
 # <a name="get-started-with-the-delay-and-delay-until-actions"></a>Erste Schritte mit den Aktionen „Verzögern“ und „Verzögern bis“
 Die Aktionen „Verzögern“ und „Verzögern bis“ eignen sich zur Durchführung von Workflowszenarien.
@@ -33,7 +33,9 @@ Sie haben beispielsweise folgende Möglichkeiten:
 Wenn Sie die Verzögerungsaktion in einer Logik-App verwenden möchten, müssen Sie zunächst eine [Logik-App erstellen](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 ## <a name="use-the-delay-actions"></a>Verwenden der Verzögerungsaktionen
-Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. Weitere Informationen zu Aktionen finden Sie [hier](connectors-overview.md).
+
+Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. 
+Weitere Informationen zu Aktionen finden Sie [hier](../connectors/apis-list.md).
 
 Im Anschluss sehen Sie eine Beispielsequenz für die Verwendung eines Verzögerungsschritts in einer Logik-App:
 

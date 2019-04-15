@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: f0c05ddbc53d08334aded48ccb3a3ece547b4143
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: e86553e789fc9879ea4a6326b08d893fe24c8ac8
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816559"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802557"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Korrigieren nicht konformer Ressourcen mit Azure Policy
 
@@ -139,11 +139,11 @@ Führen Sie die folgenden Schritte aus, um einen **Wartungstask** zu erstellen:
 
 1. Starten Sie den Azure Policy-Dienst über das Azure-Portal, indem Sie auf **Alle Dienste** klicken und dann nach **Richtlinie** suchen und die entsprechende Option auswählen.
 
-   ![Suchen nach „Policy“](../media/remediate-resources/search-policy.png)
+   ![Suchen nach „Policy“ unter „Alle Dienste“](../media/remediate-resources/search-policy.png)
 
 1. Wählen Sie links auf der Seite „Azure Policy“ die Option **Wartung** aus.
 
-   ![Auswählen der Option „Wartung“](../media/remediate-resources/select-remediation.png)
+   ![Auswählen von „Wartung“ auf der Seite „Richtlinie“](../media/remediate-resources/select-remediation.png)
 
 1. Auf der Registerkarte **Policies to remediate** (Zu wartende Richtlinien) und in der Datentabelle sind sämtliche **deployIfNotExists**-Richtlinienzuweisungen mit nicht konformen Ressourcen enthalten. Klicken Sie auf eine Richtlinie mit Ressourcen, die nicht konform sind. Die Seite **Neuer Wiederherstellungstask** wird geöffnet.
 
@@ -152,11 +152,11 @@ Führen Sie die folgenden Schritte aus, um einen **Wartungstask** zu erstellen:
 
 1. Filtern Sie auf der Seite **Neuer Wartungstask** die zu korrigierenden Ressourcen, indem Sie die über die Auslassungspunkte bei **Bereich** untergeordnete Ressourcen auswählen, von denen aus die Richtlinie zugewiesen wurde (bis hin zu den einzelnen Ressourcenobjekten). Darüber hinaus können Sie die Ressourcen über das Dropdownfeld **Standorte** weiter filtern. Nur in der Tabelle aufgeführte Ressourcen werden gewartet.
 
-   ![Wartung: Auswählen von Ressourcen](../media/remediate-resources/select-resources.png)
+   ![Wartung – auswählen, welche Ressourcen gewartet werden](../media/remediate-resources/select-resources.png)
 
 1. Sobald die Ressourcen gefiltert wurden, können Sie den Wartungstask auslösen, indem Sie auf **Korrigieren** klicken. Auf der Registerkarte **Wartungstasks** wird die Seite „Richtlinienkonformität“ geöffnet, auf welcher der Fortschritt der Tasks angezeigt wird.
 
-   ![Wartung: Fortschritt des Task](../media/remediate-resources/task-progress.png)
+   ![Wartung – Status der Wartungsaufgaben](../media/remediate-resources/task-progress.png)
 
 1. Klicken Sie auf der Seite „Richtlinienkonformität“ auf **Wartungstask**, um Einzelheiten zum Fortschritt abzurufen. Die für den Task verwendete Filterung wird zusammen mit einer Liste der Ressourcen angezeigt, die gerade korrigiert werden.
 

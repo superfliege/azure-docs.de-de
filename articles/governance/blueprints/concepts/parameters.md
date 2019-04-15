@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 42a70f7ea21a58f40f7786d6c6f1a51093923f83
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 538015f3cd26d451285f1fd66853366f814f3b0a
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838016"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805571"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Erstellen dynamischer Blaupausen mithilfe von Parametern
 
@@ -67,11 +67,11 @@ Ein Parameterwert, der in der Definition einer Blaupause definiert ist, wird als
 
 1. Bei Artefakten, die der Blaupause mit Parameteroptionen hinzugefügt werden, wird **X von Y Parametern aufgefüllt** in der Spalte **Parameter** angezeigt. Klicken Sie auf die Artefaktzeile, um die Artefaktparameter zu bearbeiten.
 
-   ![Blaupausenparameter](../media/parameters/parameter-column.png)
+   ![Blaupausenparameter in einer Blaupausendefinition](../media/parameters/parameter-column.png)
 
 1. Die Seite **Artefakt bearbeiten** zeigt Wertoptionen an, die für das ausgewählte Artefakt geeignet sind. Jeder Parameter des Artefakts weist einen Titel, ein Wertfeld und ein Kontrollkästchen auf. Deaktivieren Sie das Kontrollkästchen, um einen **statischen Parameter** zu definieren. Im folgenden Beispiel ist nur _Standort_ ein **statischer Parameter**, weil das Kontrollkästchen deaktiviert ist. Das Kontrollkästchen für _Ressourcengruppenname_ ist aktiviert.
 
-   ![Statische Blaupausenparameter](../media/parameters/static-parameter.png)
+   ![Statische Blaupausenparameter in einem Blaupausenartefakt](../media/parameters/static-parameter.png)
 
 #### <a name="setting-static-parameters-from-rest-api"></a>Festlegen statischer Parameter über die REST-API
 
@@ -182,7 +182,7 @@ Das Gegenteil eines statischen Parameters ist ein **dynamischer Parameter**. Die
 
 1. Auf der Seite **Blaupause zuweisen** finden Sie den Abschnitt **Artefaktparameter**. Für jedes Artefakt mit mindestens einem **dynamischen Parameter** werden das Artefakt und die zugehörigen Konfigurationsoptionen angezeigt. Geben Sie erforderliche Werte für die Parameter an, bevor Sie die Blaupause zuweisen. Im folgenden Beispiel ist _Name_ ein **dynamischer Parameter**, der definiert werden muss, um die Blaupausenzuweisung abzuschließen.
 
-   ![Dynamischer Blaupausenparameter](../media/parameters/dynamic-parameter.png)
+   ![Dynamische Blaupausenparameter während der Blaupausenzuweisung](../media/parameters/dynamic-parameter.png)
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>Festlegen dynamischer Parameter über die REST-API
 

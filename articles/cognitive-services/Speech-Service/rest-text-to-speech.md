@@ -8,19 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 03/26/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: d67d8462c177d19dfa3cebbd0b4b000fbe3f41b8
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: 71710cd940aad3a56dae6c19d4d52a5b141b3d80
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57894955"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660965"
 ---
 # <a name="text-to-speech-rest-api"></a>Text-to-Speech-REST-API
 
-Mit den Sprachdiensten können Sie jetzt Sprachsynthese mit einer REST-API durchführen. Jeder zugängliche Endpunkt ist einer Region zugeordnet. Ihre Anwendung benötigt einen Abonnementschlüssel für den Endpunkt, den Sie verwenden möchten. Die Text-to-Speech-REST-API unterstützt neuronale und Standardstimmen für die Sprachsynthese. Jede dieser Stimmen steht für eine bestimmte Sprache und einen bestimmten Dialekt und wird durch das Gebietsschema identifiziert.
+Die Speech-Dienste ermöglichen es Ihnen, [Text in synthetisierte Sprache umzuwandeln](#convert-text-to-speech) und [eine Liste der unterstützten Stimmen](#get-a-list-of-voices) für eine Region unter Verwendung einer Reihe von REST-APIs zu erhalten. Jeder verfügbare Endpunkt ist einer Region zugeordnet. Es ist ein Abonnementschlüssel für den Endpunkt bzw. die Region erforderlich, den/die Sie verwenden möchten.
+
+Die Text-to-Speech-REST-API unterstützt neuronale und Standardstimmen für die Sprachsynthese. Jede dieser Stimmen steht für eine bestimmte Sprache und einen bestimmten Dialekt und wird durch das Gebietsschema identifiziert.
 
 * Eine vollständige Liste der Stimmen finden Sie unter [Sprachunterstützung](language-support.md#text-to-speech).
 * Informationen zur regionalen Verfügbarkeit finden Sie unter [Regionen](regions.md#text-to-speech).
@@ -34,9 +36,128 @@ Bevor Sie diese API verwenden, müssen Sie Folgendes wissen:
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
-## <a name="request-headers"></a>Anforderungsheader
+## <a name="get-a-list-of-voices"></a>Abrufen einer Liste von Stimmen
 
-Diese Tabelle führt die erforderlichen und optionalen Header für Spracherkennungsanforderungen auf.
+Der Endpunkt `voices/list` ermöglicht es Ihnen, eine vollständige Liste der Stimmen für eine bestimmte Region bzw. für einen Endpunkt zu erhalten.
+
+### <a name="regions-and-endpoints"></a>Regionen und Endpunkte
+
+| Region | Endpunkt |
+|--------|----------|
+| Australien (Osten) | https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Brasilien Süd | https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Kanada, Mitte | https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| USA (Mitte) | https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Asien, Osten | https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| USA (Ost) | https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| USA (Ost) 2 | https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Frankreich, Mitte | https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Indien, Mitte | https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Japan, Osten | https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Korea, Mitte | https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| USA Nord Mitte | https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Nordeuropa | https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| USA (Mitte/Süden) | https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Asien, Südosten | https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| UK, Süden | https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Europa, Westen | https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| USA (Westen) | https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| USA, Westen 2 | https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list |
+
+### <a name="request-headers"></a>Anforderungsheader
+
+Diese Tabelle führt die erforderlichen und optionalen Header für Text-to-Speech-Anforderungen auf.
+
+| Header | BESCHREIBUNG | Erforderlich/optional |
+|--------|-------------|---------------------|
+| `Authorization` | Ein Autorisierungstoken, dem das Wort `Bearer` vorangestellt ist. Weitere Informationen finden Sie unter [Authentifizierung](#authentication). | Erforderlich |
+
+### <a name="request-body"></a>Anforderungstext
+
+Ein Text ist nicht erforderlich für `GET`-Anforderungen an diesen Endpunkt.
+
+### <a name="sample-request"></a>Beispiel für eine Anforderung
+
+Diese Anforderung erfordert nur einen Autorisierungsheader.
+
+```http
+GET /cognitiveservices/voices/list HTTP/1.1
+
+Host: westus.tts.speech.microsoft.com
+Authorization: Bearer [Base64 access_token]
+```
+
+### <a name="sample-response"></a>Beispiel für eine Antwort
+
+Diese Antwort wurde abgeschnitten, um die Struktur einer Antwort zu veranschaulichen.
+
+> [!NOTE]
+> Die Verfügbarkeit von Stimmen variiert je nach Region/Endpunkt.
+
+```json
+[
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)",
+        "ShortName": "ar-EG-Hoda",
+        "Gender": "Female",
+        "Locale": "ar-EG"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (ar-SA, Naayf)",
+        "ShortName": "ar-SA-Naayf",
+        "Gender": "Male",
+        "Locale": "ar-SA"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (bg-BG, Ivan)",
+        "ShortName": "bg-BG-Ivan",
+        "Gender": "Male",
+        "Locale": "bg-BG"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (ca-ES, HerenaRUS)",
+        "ShortName": "ca-ES-HerenaRUS",
+        "Gender": "Female",
+        "Locale": "ca-ES"
+    },
+    {
+        "Name": "Microsoft Server Speech Text to Speech Voice (cs-CZ, Jakub)",
+        "ShortName": "cs-CZ-Jakub",
+        "Gender": "Male",
+        "Locale": "cs-CZ"
+    },
+
+    ...
+
+]
+```
+
+### <a name="http-status-codes"></a>HTTP-Statuscodes
+
+Der HTTP-Statuscode jeder Antwort zeigt den Erfolg oder allgemeine Fehler an.
+
+| HTTP-Statuscode | BESCHREIBUNG | Mögliche Ursache |
+|------------------|-------------|-----------------|
+| 200 | OK | Die Anforderung wurde erfolgreich gesendet. |
+| 400 | Ungültige Anforderung | Ein erforderlicher Parameter fehlt, ist leer oder Null. Oder der an einen erforderlichen oder optionalen Parameter übergebene Wert ist ungültig. Ein häufiges Problem sind zu lange Kopfzeilen. |
+| 401 | Nicht autorisiert | Die Anforderung ist nicht autorisiert. Stellen Sie sicher, dass Ihr Abonnementschlüssel oder -token gültig ist und sich in der richtigen Region befindet. |
+| 429 | Zu viele Anforderungen | Sie haben das Kontingent oder die Rate der Anforderungen überschritten, das bzw. die für Ihr Abonnement zulässig ist. |
+| 502 | Ungültiges Gateway | Netzwerk- oder serverseitiges Problem. Kann auch auf ungültige Header hinweisen. |
+
+
+## <a name="convert-text-to-speech"></a>Konvertieren von Text in Sprache
+
+Der Endpunkt `v1` ermöglicht es Ihnen, Text-to-Speech mit der [Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md) zu konvertieren.
+
+### <a name="regions-and-endpoints"></a>Regionen und Endpunkte
+
+Diese Regionen werden für die Konvertierung von Text in Sprache über die REST-API unterstützt. Achten Sie darauf, dass Sie den Endpunkt für Ihre Abonnementregion auswählen.
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
+
+### <a name="request-headers"></a>Anforderungsheader
+
+Diese Tabelle führt die erforderlichen und optionalen Header für Text-to-Speech-Anforderungen auf.
 
 | Header | BESCHREIBUNG | Erforderlich/optional |
 |--------|-------------|---------------------|
@@ -45,7 +166,7 @@ Diese Tabelle führt die erforderlichen und optionalen Header für Spracherkennu
 | `X-Microsoft-OutputFormat` | Gibt das Audioausgabeformat an. Eine vollständige Liste der zulässigen Werte finden Sie unter [Audioausgaben](#audio-outputs). | Erforderlich |
 | `User-Agent` | Der Name der Anwendung. Der angegebene Wert muss kürzer als 255 Zeichen sein. | Erforderlich |
 
-## <a name="audio-outputs"></a>Audioausgaben
+### <a name="audio-outputs"></a>Audioausgaben
 
 Dies ist eine Liste der unterstützten Audioformate, die in jeder Anforderung als `X-Microsoft-OutputFormat`-Header gesendet werden. Es wird jeweils eine Bitrate und ein Codierungstyp angegeben. Der Speech-Dienst unterstützt Audioausgaben mit 24kHz, 16kHz und 8kHz.
 
@@ -62,14 +183,14 @@ Dies ist eine Liste der unterstützten Audioformate, die in jeder Anforderung al
 > [!NOTE]
 > Wenn die ausgewählte Stimme und das ausgewählte Ausgabeformat unterschiedliche Bitraten aufweisen, wird das Audio nach Bedarf neu gesampelt. 24-KHz-Stimmen unterstützen keine `audio-16khz-16kbps-mono-siren`- und `riff-16khz-16kbps-mono-siren`-Ausgabeformate.
 
-## <a name="request-body"></a>Anforderungstext
+### <a name="request-body"></a>Anforderungstext
 
 Der Text jeder `POST`-Anforderung wird als [Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md) gesendet. SSML ermöglicht es Ihnen, die Stimme und Sprache der synthetisierten Sprachausgabe auszuwählen, die vom Text-zu-Sprache-Dienst zurückgegeben wird. Eine vollständige Liste der unterstützten Stimmen finden Sie unter [Sprachunterstützung](language-support.md#text-to-speech).
 
 > [!NOTE]
 > Wenn Sie eine benutzerdefinierte Stimme verwenden, kann der Text der Anforderung als Nur-Text (ASCII oder UTF-8) gesendet werden.
 
-## <a name="sample-request"></a>Beispiel für eine Anforderung
+### <a name="sample-request"></a>Beispiel für eine Anforderung
 
 Diese HTTP-Anforderung gibt mit SSML die Stimme und die Sprache an. Der Text darf 1.000 Zeichen nicht überschreiten.
 
@@ -94,7 +215,7 @@ In unseren Schnellstarts finden Sie sprachspezifische Beispiele:
 * [Python](quickstart-python-text-to-speech.md)
 * [Node.js](quickstart-nodejs-text-to-speech.md)
 
-## <a name="http-status-codes"></a>HTTP-Statuscodes
+### <a name="http-status-codes"></a>HTTP-Statuscodes
 
 Der HTTP-Statuscode jeder Antwort zeigt den Erfolg oder allgemeine Fehler an.
 

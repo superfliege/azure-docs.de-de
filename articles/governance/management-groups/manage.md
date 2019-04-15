@@ -1,17 +1,17 @@
 ---
-title: Ändern, Löschen oder Verwalten Ihrer Verwaltungsgruppen in Azure – Azure Governance
+title: Ändern, Löschen oder Verwalten Ihrer Verwaltungsgruppen – Azure Governance
 description: Hier erfahren Sie, wie Sie die Verwaltungsgruppenhierarchie anzeigen, verwalten, aktualisieren und löschen.
 author: rthorn17
 ms.service: azure-resource-manager
 ms.date: 02/20/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 51e9d44a95a3896767caf4b3f04d17c2933e8599
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: f75686d19a468983a6b0ce68eb4a456e00c90eeb
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990534"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881051"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Verwalten von Ressourcen mit Verwaltungsgruppen
 
@@ -37,11 +37,11 @@ Der Name einer Verwaltungsgruppe kann über das Portal, mithilfe von PowerShell 
 
 1. Klicken Sie oben auf der Seite auf die Option **Gruppe umbenennen**.
 
-   ![Option „Gruppe umbenennen“](./media/detail_action_small.png)
+   ![Option „Gruppe umbenennen“ auf einer Verwaltungsgruppenseite](./media/detail_action_small.png)
 
 1. Wenn das Menü geöffnet wird, geben Sie den neuen Namen ein, der angezeigt werden soll.
 
-   ![Bereich „Gruppe umbenennen“](./media/rename_context.png)
+   ![Bereich „Gruppe umbenennen“ zum Umbenennen einer Verwaltungsgruppe](./media/rename_context.png)
 
 1. Wählen Sie **Speichern** aus.
 
@@ -67,9 +67,9 @@ Um eine Verwaltungsgruppe zu löschen, müssen die folgenden Anforderungen erfü
 
 1. Unter der Verwaltungsgruppe gibt es keine untergeordneten Verwaltungsgruppen oder Abonnements.
 
-   - Informationen zum Verschieben eines Abonnements aus einer Verwaltungsgruppe finden Sie unter [Verschieben eines Abonnements in eine andere Verwaltungsgruppe](#Move-subscriptions-in-the-hierarchy).
+   - Informationen zum Verschieben eines Abonnements aus einer Verwaltungsgruppe finden Sie unter [Verschieben eines Abonnements in eine andere Verwaltungsgruppe](#move-subscriptions-in-the-hierarchy).
 
-   - Informationen zum Verschieben einer Verwaltungsgruppe in eine andere Verwaltungsgruppe finden Sie unter [Verschieben von Verwaltungsgruppen in der Hierarchie](#Move-management-groups-in-the-hierarchy).
+   - Informationen zum Verschieben einer Verwaltungsgruppe in eine andere Verwaltungsgruppe finden Sie unter [Verschieben von Verwaltungsgruppen in der Hierarchie](#move-management-groups-in-the-hierarchy).
 
 1. Sie haben Schreibzugriff auf die Verwaltungsgruppe (Rolle „Besitzer“, „Mitwirkender“ oder „Verwaltungsgruppenmitwirkender“). Wählen Sie zum Anzeigen der Ihnen zugewiesenen Berechtigungen die Verwaltungsgruppe aus, und klicken Sie dann auf **IAM**. Weitere Informationen zu RBAC-Rollen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../../role-based-access-control/overview.md).  
 
@@ -223,7 +223,7 @@ Wählen Sie zum Anzeigen Ihrer Berechtigungen im Azure-Portal die Verwaltungsgru
 
 1. Wählen Sie in der Liste das Abonnement mit der richtigen ID aus.
 
-   ![Untergeordnete Elemente](./media/add_context_sub.png)
+   ![Verfügbare Abonnements zum Hinzufügen zu einer Verwaltungsgruppe](./media/add_context_sub.png)
 
 1. Wählen Sie „Speichern“ aus.
 
@@ -237,13 +237,13 @@ Wählen Sie zum Anzeigen Ihrer Berechtigungen im Azure-Portal die Verwaltungsgru
 
 1. Klicken Sie in der Liste am Ende der Zeile des zu verschiebenden Abonnements auf die Ellipse.
 
-   ![Option „Verschieben“](./media/move_small.png)
+   ![Option „Verschieben“ für eine Verwaltungsgruppe](./media/move_small.png)
 
 1. Klicken Sie auf **Verschieben**.
 
 1. Klicken Sie im angezeigten Menü auf **Übergeordnete Verwaltungsgruppe**.
 
-   ![Bereich „Verschieben“](./media/move_small_context.png)
+   ![Bereich „Verschieben“ zum Ändern der übergeordneten Gruppe](./media/move_small_context.png)
 
 1. Wählen Sie **Speichern** aus.
 
@@ -294,7 +294,7 @@ Wenn Sie eine übergeordnete Verwaltungsgruppe verschieben, wird die untergeordn
    - Durch die Auswahl von „Neu“ wird eine neue Verwaltungsgruppe erstellt.
    - Wenn Sie eine vorhandene Verwaltungsgruppe auswählen, wird eine Dropdownliste mit allen Verwaltungsgruppen angezeigt, die Sie in diese Verwaltungsgruppe verschieben können.  
 
-   ![Verschieben](./media/add_context_MG.png)
+   ![Verschieben einer Verwaltungsgruppe in eine neue oder vorhandene Gruppe](./media/add_context_MG.png)
 
 1. Wählen Sie **Speichern** aus.
 
@@ -330,7 +330,7 @@ Wenn Sie von den Aktionen eines anderen Ressourcenanbieters auf Verwaltungsgrupp
 
 Das Zuweisen einer neuen Rollenzuweisung für eine Verwaltungsgruppe in PowerShell ist ein Beispiel für die Verwendung dieses Pfads.
 
-```powershell-interactive
+```azurepowershell-interactive
 New-AzRoleAssignment -Scope "/providers/Microsoft.Management/managementGroups/Contoso"
 ```
 

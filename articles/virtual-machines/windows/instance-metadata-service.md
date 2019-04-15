@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/15/2019
+ms.date: 03/28/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 8cdf8022f87c8fa3e81e2544a6678751726b2b3b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cc2a78dd547681a4b20fea14cd8cd7f4fd9c2df5
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57889827"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847980"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst
 
@@ -96,6 +96,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 > Bei Instanzmetadatenabfragen ist Groß-/Kleinschreibung zu berücksichtigen.
 
 ### <a name="data-output"></a>Datenausgabe
+
 Standardmäßig gibt der Instanzmetadatendienst Daten im JSON-Format (`Content-Type: application/json`) zurück. Falls angefordert, geben andere APIs jedoch Daten in verschiedenen Formaten zurück.
 In der folgenden Tabelle werden andere Datenformate aufgeführt, die die APIs eventuell unterstützen.
 
@@ -111,6 +112,9 @@ Um auf ein nicht standardmäßiges Antwortformat zuzugreifen, geben Sie das ange
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
 ```
 
+> [!NOTE]
+> Für Blattknoten funktioniert `format=json` nicht. Für diese Abfragen muss `format=text` explizit angegeben werden, wenn das Standardformat JSON ist.
+
 ### <a name="security"></a>Sicherheit
 
 Auf den Instanzmetadatendienst-Endpunkt kann nur innerhalb der ausgeführten Instanz des virtuellen Computers an einer nicht routingfähigen IP-Adresse zugegriffen werden. Darüber hinaus wird jede Anforderung mit einem `X-Forwarded-For`-Header vom Dienst abgelehnt.
@@ -123,8 +127,8 @@ Wenn ein Datenelement nicht gefunden wird oder eine Anforderung ungültig ist, g
 HTTP-Statuscode | Grund
 ----------------|-------
 200 – OK |
-400 – Ungültige Anforderung | Fehlender Header `Metadata: true`
-404 – Nicht gefunden | Das angeforderte Element ist nicht vorhanden. 
+400 – Ungültige Anforderung | Fehlender `Metadata: true`-Header oder fehlendes Format beim Abfragen eines Blattknotens
+404 – Nicht gefunden | Das angeforderte Element ist nicht vorhanden.
 405 – Methode unzulässig | Es werden ausschließlich `GET`- und `POST`-Anforderungen unterstützt.
 429 – Zu viele Anforderungen | Die API unterstützt derzeit maximal 5 Abfragen pro Sekunde.
 500 – Dienstfehler     | Wiederholen Sie den Vorgang später.
@@ -216,7 +220,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018
     "resourceGroupName": "myrg",
     "sku": "rs4-pro",
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
-    "tags": "",
+    "tags": "Department:IT;Environment:Prod;Role:WorkerRole",
     "version": "17134.345.59",
     "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
     "vmScaleSetName": "",
@@ -294,7 +298,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
     "resourceGroupName": "myrg",
     "sku": "Enterprise",
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
-    "tags": "",
+    "tags": "Department:IT;Environment:Test;Role:WebRole",
     "version": "13.0.400110",
     "vmId": "453945c8-3923-4366-b2d3-ea4c80e9b70e",
     "vmScaleSetName": "",
@@ -352,7 +356,7 @@ resourceGroupName | [Ressourcengruppe](../../azure-resource-manager/resource-gro
 placementGroupId | [Platzierungsgruppe](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) der VM-Skalierungsgruppe | 2017-08-01
 Tarif | Der [Tarif](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) für einen virtuellen Computer im entsprechenden Azure Marketplace-Image, enthält Namen, Produkt und Herausgeber | 2018-04-02
 Anbieter | Anbieter des virtuellen Computers | 01.10.2018
-publicKeys | Sammlung von öffentlichen Schlüsseln [<https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey>], dem virtuellen Computer und den entsprechenden Pfaden zugewiesen | 2018-04-02
+publicKeys | [Sammlung von öffentlichen Schlüsseln](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey), dem virtuellen Computer und den entsprechenden Pfaden zugewiesen | 2018-04-02
 vmScaleSetName | [Name Ihrer VM-Skalierungsgruppe](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
 Zone | [Verfügbarkeitszone](../../availability-zones/az-overview.md) Ihres virtuellen Computers | 2017-12-01
 ipv4/privateIpAddress | Lokale IPv4-Adresse der VM | 2017-04-02
@@ -503,13 +507,29 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 Azure verfügt über verschiedene Sovereign Clouds wie [Azure Government](https://azure.microsoft.com/overview/clouds/government/). In manchen Fällen muss die Azure-Umgebung gewisse Laufzeitentscheidungen treffen. Im folgenden Beispiel wird gezeigt, wie Sie dieses Verhalten erzielen können.
 
 **Anforderung**
-``` bash
+```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
 ```
 
 **Antwort**
-```
+```bash
 AZUREPUBLICCLOUD
+```
+
+### <a name="getting-the-tags-for-the-vm"></a>Abrufen der Tags für die VM
+
+Möglicherweise wurden Tags auf Ihre Azure-VM angewendet, um sie logisch in einer Taxonomie zu strukturieren. Die einer VM zugewiesenen Tags können mithilfe der Abfrage unten abgerufen werden.
+
+**Anforderung**
+
+```bash
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
+```
+
+**Antwort**
+
+```text
+Department:IT;Environment:Test;Role:WebRole
 ```
 
 ### <a name="validating-that-the-vm-is-running-in-azure"></a>Überprüfen der Ausführung des virtuellen Computers in Azure

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: 8638b788762a56813c622c0abffe2a8eae3c70c2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: fe3803b7dc75ab13831a5e42d4b1a96f5aa894e5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437104"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882428"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Verwenden von Version 1 der Azure-Erweiterung für benutzerdefinierte Skripts mit virtuellen Linux-Computern
 
@@ -133,11 +133,11 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
 
 ### <a name="property-value-details"></a>Details zu Eigenschaftswerten
 
-* `fileUris` (optional, Zeichenfolgenarray): Die URI-Liste der Skripts.
-* `enableInternalDNSCheck` (optional, boolescher Wert): Der Standardwert lautet „true“. Durch Festlegen auf „false“ wird die DNS-Prüfung deaktiviert.
-* `commandToExecute` (optional; Zeichenfolge): Das auszuführende Einstiegspunktskript.
-* `storageAccountName` (optional; Zeichenfolge): Der Name des Speicherkontos.
-* `storageAccountKey` (optional; Zeichenfolge): Der Zugriffsschlüssel des Speicherkontos.
+* `fileUris`(optional, Zeichenfolgenarray): Die URI-Liste der Skripts.
+* `enableInternalDNSCheck`(optional, boolescher Wert): Der Standardwert lautet „true“. Durch Festlegen auf „false“ wird die DNS-Prüfung deaktiviert.
+* `commandToExecute`(optional; Zeichenfolge): Das auszuführende Einstiegspunktskript.
+* `storageAccountName`(optional, Zeichenfolge): der Name des Speicherkontos.
+* `storageAccountKey`(optional, Zeichenfolge): der Zugriffsschlüssel des Speicherkontos.
 
 Die folgenden Werte können in öffentlichen oder geschützten Einstellungen festgelegt werden, aber nicht in beidem.
 
@@ -296,8 +296,7 @@ Hinweise:
 
 1. „Enable“ gibt den Beginn der Befehlsausführung an.
 1. „Download“ bezieht sich auf das Herunterladen des CustomScript-Erweiterungspakets von Azure (nicht auf die in „fileUris“ angegebenen Skriptdateien).
-1. Darüber hinaus sehen Sie, in welche Protokolldatei geschrieben wird: `/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log
-`
+1. Darüber hinaus sehen Sie, in welche Protokolldatei geschrieben wird `/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log`
 
 Überprüfen Sie als Nächstes die Protokolldatei. Das Format sieht wie folgt aus:
 

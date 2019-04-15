@@ -1,5 +1,5 @@
 ---
-title: Ressourcen, Rollen und Access Control in Application Insights | Microsoft-Dokumentation
+title: Ressourcen, Rollen und Access Control in Application Insights | Microsoft Docs
 description: "\"Besitzer\", \"Mitwirkende\" und \"Leser\" für die gewonnenen Unternehmensinformationen."
 services: application-insights
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 36b49002a5e947f2803e00974f242e49eb26d45b
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 213f4313e96638e4d94455be5f16aa3221d35b73
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309249"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905680"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Ressourcen, Rollen und Zugriffssteuerung in Application Insights
 
@@ -25,6 +25,9 @@ Anhand einer [rollenbasierten Zugriffssteuerung in Microsoft Azure](../../role-b
 
 > [!IMPORTANT]
 > Weisen Sie Benutzern den Zugriff in der **Ressourcengruppe oder dem Abonnement** zu, dem Ihre Anwendungsressource angehört – nicht in der Ressource selbst. Weisen Sie die Rolle **Mitwirkender der Application Insights-Komponente** zu. Dadurch wird eine einheitliche Steuerung des Zugriffs auf Webtests und Warnungen zusammen mit Ihrer Anwendungsressource sichergestellt. [Weitere Informationen](#access).
+
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="resources-groups-and-subscriptions"></a>Ressourcen, Gruppen und Abonnements
 
@@ -80,7 +83,7 @@ Wir haben Links zur zugehörigen offiziellen Referenzdokumentation angegeben (so
 
 | Rolle | In der Ressourcengruppe |
 | --- | --- |
-| [Besitzer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |Kann alle Elemente ändern, einschließlich des Benutzerzugriffs. |
+| [Owner (Besitzer)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |Kann alle Elemente ändern, einschließlich des Benutzerzugriffs. |
 | [Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) |Kann alle Elemente bearbeiten, einschließlich aller Ressourcen. |
 | [Mitwirkender der Application Insights-Komponente](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |Kann Application Insights-Ressourcen, Webtests und Warnungen bearbeiten. |
 | [Leser](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |Kann Inhalte anzeigen, aber nicht ändern. |
@@ -121,7 +124,7 @@ Da bestimmte Rollen mit Benachrichtigungen und E-Mail-Warnungen verknüpft sein 
 ### <a name="query-entire-subscription-for-admin-roles--contributor-roles"></a>Abfrage des gesamten Abonnements nach den Rollen „Administrator“ und „Mitwirkender“
 
 ```powershell
-(Get-AzureRmRoleAssignment -IncludeClassicAdministrators | Where-Object {$_.RoleDefinitionName -in @('ServiceAdministrator', 'CoAdministrator', 'Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+(Get-AzRoleAssignment -IncludeClassicAdministrators | Where-Object {$_.RoleDefinitionName -in @('ServiceAdministrator', 'CoAdministrator', 'Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
 ```
 
 ### <a name="query-within-the-context-of-a-specific-application-insights-resource-for-owners-and-contributors"></a>Abfrage innerhalb des Kontexts einer bestimmten Application Insights-Ressource für Besitzer und Mitwirkende
@@ -130,14 +133,14 @@ Da bestimmte Rollen mit Benachrichtigungen und E-Mail-Warnungen verknüpft sein 
 $resourceGroup = “RGNAME”
 $resourceName = “AppInsightsName”
 $resourceType = “microsoft.insights/components”
-(Get-AzureRmRoleAssignment -ResourceGroup $resourceGroup -ResourceType $resourceType -ResourceName $resourceName | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+(Get-AzRoleAssignment -ResourceGroup $resourceGroup -ResourceType $resourceType -ResourceName $resourceName | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
 ```
 
 ### <a name="query-within-the-context-of-a-specific-resource-group-for-owners-and-contributors"></a>Abfrage innerhalb des Kontexts einer bestimmten Ressourcengruppe für Besitzer und Mitwirkende
 
 ```powershell
 $resourceGroup = “RGNAME”
-(Get-AzureRmRoleAssignment -ResourceGroup $resourceGroup | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+(Get-AzRoleAssignment -ResourceGroup $resourceGroup | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
 ```
 
 <!--Link references-->

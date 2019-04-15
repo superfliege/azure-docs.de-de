@@ -11,20 +11,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 04/03/2019
 ms.author: juliako
-ms.openlocfilehash: b8725dfcb2a337750c6e2a78ba7571114b8e3cd3
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: ad8e84d84665b20bfff53cf09473bc8bce9760d8
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407182"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916035"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Livestreaming mit Azure Media Services v3
 
 Mit Azure Media Services können Sie Ihren Kunden Liveereignisse in der Azure Cloud anbieten. Um Liveereignisse mit Media Services zu streamen, benötigen Sie Folgendes:  
 
 - Eine Kamera, mit der das Liveereignis aufgenommen wird.<br/>Ausrüstungsanregungen finden Sie unter [Simple and Portable Event Video Gear Setup]( https://link.medium.com/KNTtiN6IeT) (Einfache und tragbare Videoausrüstung für Veranstaltungen).
+
+    Wenn Sie keinen Zugriff auf eine Kamera haben, können Sie mit Tools wie [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) einen Livefeed aus einer Videodatei generieren.
 - Ein Livevideoencoder, der Signale von einer Kamera (oder einem anderen Gerät, etwa einem Laptop) in Streams konvertiert, die an Media Services gesendet werden. Der Datenfeed kann Signale zu Werbezwecken enthalten, beispielsweise SCTE-35-Markierungen.<br/>Eine Liste mit empfohlenen Livestreaming-Encodern finden Sie [hier](recommended-on-premises-live-encoders.md). Sehen Sie sich auch den folgenden Blog an: [Live streaming production with OBS](https://link.medium.com/ttuwHpaJeT) (Livestreamproduktion mit OBS).
 - Komponenten in Media Services, mit denen das Liveereignis erfasst, in einer Vorschau angezeigt, paketiert, aufgezeichnet, verschlüsselt und an Ihre Kunden übertragen oder zur weiteren Verteilung an ein CDN gesendet wird.
 
@@ -87,9 +89,9 @@ Um die Livestreaming-Workflows in Media Services v3 nachvollziehen zu können, m
 
 - [Empfohlene Liveencoder](recommended-on-premises-live-encoders.md)
 - [Verwenden eines Cloud-DVR](live-event-cloud-dvr.md)
-- [Vergleich der LiveEvent-Typen](live-event-types-comparison.md)
+- [Vergleich der Features der LiveEvent-Typen](live-event-types-comparison.md)
 - [Zustandswerte und Abrechnung](live-event-states-billing.md)
-- [Latenz](live-event-latency.md)
+- [Latency](live-event-latency.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

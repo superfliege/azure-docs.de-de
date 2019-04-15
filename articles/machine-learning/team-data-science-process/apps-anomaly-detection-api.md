@@ -11,14 +11,18 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: e5f428062155ea732dce785955ac76011f3e4678
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b67028562a2c377e1dd99635bdf04cad14782341
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57899348"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793134"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning Anomaly Detection-API
+
+> [!NOTE]
+> Dieses Element wird zurzeit gewartet. Wir empfehlen Ihnen, den [API-Dienst zur Anomalieerkennung](https://azure.microsoft.com/en-us/services/cognitive-services/anomaly-detector/) zu verwenden, der von einem Katalog von Machine Learning-Algorithmen unter Azure Cognitive Services unterstützt wird, um Anomalien in Unternehmens-, operative und IoT-Metriken zu erkennen.
+
 ## <a name="overview"></a>Übersicht
 Die [Anomaly Detection-API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) ist ein mit Azure Machine Learning erstelltes Beispiel, das Anomalien in Zeitreihendaten erkennt, wenn die numerischen Daten zeitlich gleich verteilt sind.
 

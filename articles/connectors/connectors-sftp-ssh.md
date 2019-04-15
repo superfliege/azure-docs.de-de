@@ -10,12 +10,12 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 tags: connectors
 ms.date: 01/15/2019
-ms.openlocfilehash: e196a7a0b1ad29462aa7e2fb60fcb5d07c57eea7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 660d785baf12052bddf5206d8641116c9ac606aa
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886661"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575095"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Überwachen, Erstellen und Verwalten von SFTP-Dateien mithilfe von SSH und Azure Logic Apps
 
@@ -27,10 +27,16 @@ Um Aufgaben zu automatisieren, die Dateien auf einem [Secure File Transfer Proto
 * Sie können Dateiinhalte und Metadaten abrufen.
 * Sie können Archive in Ordner extrahieren.
 
-Im Vergleich zum [SFTP-Connector](../connectors/connectors-create-api-sftp.md) kann der SFTP-SSH-Connector Dateien mit einer Größe von bis zu *1 GB* lesen oder schreiben. Hierzu werden die Daten in Blöcken von jeweils 50 MB verwaltet. Bei Dateien, die größer als 1 GB sind, können Aktionen auf [Nachrichtenblöcke](../logic-apps/logic-apps-handle-large-messages.md) zurückgreifen. Weitere Unterschiede finden Sie im Artikel [Vergleichen von SFTP-SSH und SFTP](#comparison) im weiteren Verlauf.
-
 Sie können Trigger verwenden, die Ereignisse auf Ihrem SFTP-Server überwachen und die Ausgabe für andere Aktionen verfügbar machen. Sie können Aktionen verwenden, die verschiedene Aufgaben auf Ihrem SFTP-Server ausführen. Darüber hinaus können die Ausgaben von SFTP-Aktionen auch von anderen Aktionen in Ihrer Logik-App verwendet werden. Wenn Sie beispielsweise regelmäßig Dateien von Ihrem SFTP-Server abrufen, können Sie mithilfe des Office 365 Outlook-Connectors oder des Outlook.com-Connectors E-Mail-Benachrichtigungen zu diesen Dateien und ihren Inhalten senden.
 Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md).
+
+## <a name="limits"></a>Einschränkungen
+
+* SFTP-SSH-Aktionen können Dateien lesen bzw. in Dateien schreiben, die *1 GB oder kleiner* sind, indem sie die Daten *in Teilen zu 50 MB* und nicht als 1-GB-Teil verwalten.
+
+* Bei Dateien, die *größer als 1 GB* sind, können Aktionen auf [Nachrichtenblöcke](../logic-apps/logic-apps-handle-large-messages.md) zurückgreifen. SFTP-SSH-Trigger unterstützen derzeit keine Blockerstellung.
+
+Weitere Unterschiede finden Sie unter [Vergleichen von SFTP-SSH und SFTP](#comparison) im nächsten Abschnitt.
 
 <a name="comparison"></a>
 
@@ -38,23 +44,23 @@ Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informatio
 
 Hier sind weitere wesentliche Unterschiede zwischen dem SFTP-SSH-Connector und dem SFTP-Connector, bei denen der SFTP-SSH-Connector diese Funktionen bietet:
 
-* Er verwendet die <a href="https://github.com/sshnet/SSH.NET" target="_blank">**SSH.NET**</a>-Bibliothek, die eine Open Source-SSH-Bibliothek (Secure Shell) mit Unterstützung für .NET ist. 
+* Er verwendet die <a href="https://github.com/sshnet/SSH.NET" target="_blank">**SSH.NET**</a>-Bibliothek, die eine Open Source-SSH-Bibliothek (Secure Shell) mit Unterstützung für .NET ist.
 
   > [!NOTE]
   >
   > Der SFTP-SSH-Connector unterstützt *nur* diese privaten Schlüssel, Formate, Algorithmen und Fingerabdrücke:
-  > 
+  >
   > * **Formate für private Schlüssel**: Die Schlüssel „RSA“ (Rivest Shamir-Adleman) und „DSA“ (Digital Signature Algorithm) und OpenSSH- und ssh.com-Formate
   > * **Verschlüsselungsalgorithmen**: DES-EDE3-CBC, DES EDE3 CFB, DES-CBC, AES-128-CBC, AES-192-CBC und AES-256-CBC
   > * **Fingerabdruck**: MD5
 
-* Liest oder schreibt Dateien bis zu einer Größe von *1 GB* im Vergleich zum SFTP-Connector, verarbeitet Daten jedoch in Blöcken von 50 MB, nicht 1 GB. Bei Dateien, die größer als 1 GB sind, können Aktionen auch auf [Nachrichtenblöcke](../logic-apps/logic-apps-handle-large-messages.md) zurückgreifen. Trigger unterstützen derzeit keine Blockerstellung.
+* Im Vergleich zum SFTP-Connector können Aktionen Dateien lesen bzw. in Dateien schreiben, die *bis zu 1 GB* groß sind, verarbeiten die Daten jedoch in Teilen von 50 MB, nicht als 1-GB-Teil. Bei Dateien, die größer als 1 GB sind, können Aktionen auch auf [Nachrichtenblöcke](../logic-apps/logic-apps-handle-large-messages.md) zurückgreifen. SFTP-SSH-Trigger unterstützen derzeit keine Blockerstellung.
 
 * Er stellt die Aktion **Ordner erstellen** bereit, wodurch ein Ordner unter dem angegebenen Pfad auf dem SFTP-Server erstellt wird.
 
 * Er stellt die Aktion **Datei umbenennen** bereit, wodurch eine Datei auf dem SFTP-Server umbenannt wird.
 
-* Er speichert die Verbindung zum SFTP-Server *für bis zu 1 Stunde*, wodurch die Leistung verbessert und die Anzahl der Verbindungsversuche auf dem Server reduziert wird. Um die Dauer für dieses Verhalten beim Zwischenspeichern festzulegen, bearbeiten Sie die Eigenschaft <a href="https://man.openbsd.org/sshd_config#ClientAliveInterval" target="_blank">**ClientAliveInterval**</a> in der SSH-Konfiguration auf Ihrem SFTP-Server. 
+* Er speichert die Verbindung zum SFTP-Server *für bis zu 1 Stunde*, wodurch die Leistung verbessert und die Anzahl der Verbindungsversuche auf dem Server reduziert wird. Um die Dauer für dieses Verhalten beim Zwischenspeichern festzulegen, bearbeiten Sie die Eigenschaft <a href="https://man.openbsd.org/sshd_config#ClientAliveInterval" target="_blank">**ClientAliveInterval**</a> in der SSH-Konfiguration auf Ihrem SFTP-Server.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

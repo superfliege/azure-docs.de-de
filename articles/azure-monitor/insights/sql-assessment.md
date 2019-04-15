@@ -1,6 +1,6 @@
 ---
-title: Optimieren Ihrer SQL Server-Umgebung mit Azure Log Analytics | Microsoft-Dokumentation
-description: Mit Azure Log Analytics können Sie die SQL-Integritätsüberprüfung-Lösung verwenden, um die Risiken und die Integrität Ihrer Umgebungen in regelmäßigen Abständen zu bewerten.
+title: Optimieren Ihrer SQL Server-Umgebung mit Azure Monitor | Microsoft-Dokumentation
+description: Mit Azure Monitor können Sie die SQL-Integritätsüberprüfung-Lösung verwenden, um die Risiken und die Integrität Ihrer Umgebungen in regelmäßigen Abständen zu bewerten.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/19/2018
+ms.date: 03/28/2019
 ms.author: magoedte
-ms.openlocfilehash: 534307cfd71551de5427a196902b275a15ad44b5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 94b23bc29c3c986e6a0cd74e0805b5d47ce35849
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436373"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629117"
 ---
-# <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Optimieren der SQL-Umgebung mit der SQL Server-Integritätsüberprüfung-Lösung in Log Analytics
+# <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Optimieren der SQL-Umgebung mit der SQL Server-Integritätsüberprüfung-Lösung in Azure Monitor
 
 ![SQL Server-Integritätsüberprüfung-Symbol](./media/sql-assessment/sql-assessment-symbol.png)
 
@@ -40,24 +40,24 @@ Nachdem Sie die Lösung hinzugefügt haben und eine Bewertung durchgeführt wurd
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Für die SQL-Integritätsüberprüfung-Lösung muss eine unterstützte Version von .NET Framework 4 auf jedem Computer installiert sein, auf dem der Microsoft Monitoring Agent (MMA) installiert ist.  Der MMA-Agent wird von System Center 2016 – Operations Manager und Operations Manager 2012 R2 sowie dem Log Analytics-Dienst verwendet.  
+* Für die SQL-Integritätsüberprüfung-Lösung muss eine unterstützte Version von .NET Framework 4 auf jedem Computer installiert sein, auf dem der Microsoft Monitoring Agent (MMA) installiert ist.  Der MMA-Agent wird von System Center 2016 – Operations Manager und Operations Manager 2012 R2 sowie Azure Monitor verwendet.  
 * Die Lösung unterstützt SQL Server Version 2012, 2014 und 2016.
 * Ein Log Analytics-Arbeitsbereich zum Hinzufügen der SQL-Integritätsüberprüfung-Lösung aus dem Azure Marketplace in das Azure-Portal.  Zum Installieren der Lösung müssen Sie ein Administrator oder Mitwirkender des Azure-Abonnements sein.
 
   > [!NOTE]
-  > Nachdem Sie die Lösung hinzugefügt haben, wird die Datei AdvisorAssessment.exe den Servern mit Agents hinzugefügt. Konfigurationsdaten werden gelesen und dann zur Verarbeitung an den Log Analytics-Dienst in der Cloud gesendet. Auf die empfangenen Daten wird Logik angewendet, und der Clouddienst zeichnet die Daten auf.
+  > Nachdem Sie die Lösung hinzugefügt haben, wird die Datei AdvisorAssessment.exe den Servern mit Agents hinzugefügt. Konfigurationsdaten werden gelesen und dann zur Verarbeitung an Azure Monitor in der Cloud gesendet. Auf die empfangenen Daten wird Logik angewendet, und der Clouddienst zeichnet die Daten auf.
   >
   >
 
-Um die Integritätsüberprüfung für Ihre SQL Server-Server auszuführen, sind ein Agent und Konnektivität mit Log Analytics mithilfe einer der folgenden unterstützten Methoden erforderlich:
+Um die Integritätsüberprüfung für Ihre SQL Server auszuführen, sind ein Agent und Konnektivität mit Azure Monitor mithilfe einer der folgenden unterstützten Methoden erforderlich:
 
 1. Installieren Sie den [Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md), wenn der Server nicht bereits durch System Center 2016 – Operations Manager oder Operations Manager 2012 R2 überwacht wird.
-2. Wenn er mit System Center 2016 – Operations Manager oder Operations Manager 2012 R2 überwacht wird, und die Verwaltungsgruppe nicht in den Log Analytics-Dienst integriert ist, kann der Server mit Log Analytics mehrfach vernetzt werden, um Daten zu sammeln und an den Dienst weiterzuleiten, wobei er weiterhin von Operations Manager überwacht wird.  
-3. Wenn Ihre Operations Manager-Verwaltungsgruppe andernfalls in den Dienst integriert ist, müssen Sie die Domänencontroller für die Datensammlung durch den Dienst hinzufügen, indem Sie die Schritte unter [Herstellen einer Verbindung zwischen Operations Manager und OMS](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-log-analytics) nach der Aktivierung der Lösung in Ihrem Arbeitsbereich ausführen.  
+2. Wenn er mit System Center 2016 – Operations Manager oder Operations Manager 2012 R2 überwacht wird, und die Verwaltungsgruppe nicht in Azure Monitor integriert ist, kann der Server mit Log Analytics mehrfach vernetzt werden, um Daten zu sammeln und an den Dienst weiterzuleiten, wobei er weiterhin von Operations Manager überwacht wird.  
+3. Wenn Ihre Operations Manager-Verwaltungsgruppe andernfalls in den Dienst integriert ist, müssen Sie die Domänencontroller für die Datensammlung durch den Dienst hinzufügen, indem Sie die Schritte unter [Herstellen einer Verbindung zwischen Operations Manager und OMS](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) nach der Aktivierung der Lösung in Ihrem Arbeitsbereich ausführen.  
 
-Der Agent auf Ihrer SQL Server-Instanz, der Berichte an die Operations Manager-Verwaltungsgruppe sendet, sammelt Daten, leitet sie an seinen zugewiesenen Verwaltungsserver weiter, und dann werden sie direkt von einem Verwaltungsserver an den Log Analytics-Dienst gesendet.  Die Daten werden nicht in die Operations Manager-Datenbanken geschrieben.  
+Der Agent auf Ihrem SQL Server, der Berichte an die Operations Manager-Verwaltungsgruppe sendet, sammelt Daten, leitet sie an seinen zugewiesenen Verwaltungsserver weiter, und dann werden sie direkt von einem Verwaltungsserver an Azure Monitor gesendet.  Die Daten werden nicht in die Operations Manager-Datenbanken geschrieben.  
 
-Wenn die SQL Server-Instanz von Operations Manager überwacht wird, müssen Sie ein ausführendes Operations Manager-Konto konfigurieren. Weitere Informationen finden Sie unter [Ausführende Operations Manager-Konten für Log Analytics](#operations-manager-run-as-accounts-for-log-analytics).
+Wenn die SQL Server-Instanz von Operations Manager überwacht wird, müssen Sie ein ausführendes Operations Manager-Konto konfigurieren. Weitere Informationen finden Sie unter [Ausführende Operations Manager-Konten für Azure Monitor](#operations-manager-run-as-accounts-for-log-analytics).
 
 ## <a name="sql-health-check-data-collection-details"></a>SQL-Integritätsüberprüfung – Datensammlungsdetails
 Die SQL-Integritätsüberprüfung sammelt mithilfe des von Ihnen aktivierten Agent Daten aus den folgenden Quellen:
@@ -157,43 +157,37 @@ Nicht unbedingt. Die Empfehlungen basieren auf den Kenntnissen und Erfahrungen, 
 Jede Empfehlung enthält Informationen dazu, warum sie wichtig ist. Sie sollten anhand dieser Anleitung feststellen, ob die Umsetzung der Empfehlung bei Berücksichtigung der Art Ihrer IT-Dienste und der geschäftlichen Anforderungen Ihrer Organisation für Sie geeignet ist.
 
 ## <a name="use-health-check-focus-area-recommendations"></a>Befolgen von Schwerpunktbereichsempfehlungen der Integritätsüberprüfung
-Bevor Sie eine Assessment-Lösung in Log Analytics verwenden können, müssen Sie die Lösung installieren.  Nach der Installation können Sie die Zusammenfassung der Empfehlungen anzeigen, indem Sie im Azure-Portal auf der Lösungsseite die Kachel „SQL-Integritätsüberprüfung“ auswählen.
+Bevor Sie eine Assessment-Lösung in Azure Monitor verwenden können, müssen Sie die Lösung installieren.  Nach der Installation können Sie die Zusammenfassung der Empfehlungen anzeigen, indem Sie im Azure-Portal auf der Seite **Übersicht** für Azure Monitor die Kachel „SQL-Integritätsüberprüfung“ auswählen.
 
 Sehen Sie sich die zusammengefassten Compliancebewertungen für Ihre Infrastruktur sowie Details in den Empfehlungen an.
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>So werden Empfehlungen für einen Schwerpunktbereich angezeigt und korrigierende Maßnahmen ergriffen
 1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
-2. Klicken Sie im Azure-Portal unten links auf **Weitere Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
-3. Wählen Sie im Log Analytics-Abonnementbereich einen Arbeitsbereich aus, und klicken Sie dann auf die Kachel **Übersicht**.  
+2. Klicken Sie im Azure-Portal unten links auf **Weitere Dienste**. Geben Sie in der Liste mit den Ressourcen **Monitor** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Monitor** aus.
+3. Wählen Sie im Abschnitt **Erkenntnisse** des Menüs die Option **Mehr** aus.  
 4. Klicken Sie auf der Seite **Übersicht** auf die Kachel **SQL-Integritätsüberprüfung**.
 5. Überprüfen Sie auf der Seite **Integritätsüberprüfung** die Zusammenfassungsinformationen in einem der Schwerpunktbereiche, und klicken Sie dann auf einen Schwerpunktbereich, um Empfehlungen für diesen Bereich anzuzeigen.
 6. Auf jeder der Schwerpunktbereichsseiten können Sie mit Prioritäten versehene Empfehlungen für Ihre Umgebung anzeigen. Klicken Sie unter **Betroffene Objekte** auf eine Empfehlung, um Details zu den Gründen für diese Empfehlung anzuzeigen.<br><br> ![Abbildung der Empfehlungen der SQL-Integritätsüberprüfung](./media/sql-assessment/sql-healthcheck-dashboard-02.png)<br>
 7. Sie können die unter **Vorgeschlagene Aktionen**vorgeschlagenen Korrekturmaßnahmen durchführen. Nachdem das Element behandelt wurde, geben spätere Bewertungen an, dass empfohlene Aktionen ausgeführt wurden, und Ihre Bewertung der Einhaltung erhöht sich. Korrigierte Elemente werden als **Passed Objects**angezeigt.
 
 ## <a name="ignore-recommendations"></a>Ignorieren von Empfehlungen
-Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen, mit der Log Analytics verhindert, dass diese Empfehlungen in Ihren Bewertungsergebnissen angezeigt werden.
+Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen, mit der Azure Monitor verhindert, dass diese Empfehlungen in Ihren Bewertungsergebnissen angezeigt werden.
 
 ### <a name="to-identify-recommendations-that-you-will-ignore"></a>Ermitteln von Empfehlungen, die Sie ignorieren möchten
-1. Klicken Sie im Azure-Portal auf der Seite mit dem Log Analytics-Arbeitsbereich für Ihren ausgewählten Arbeitsbereich auf die Kachel **Protokollsuche**.
+1. Klicken Sie im Azure Monitor-Menü auf **Protokolle**.
 2. Verwenden Sie folgende Abfrage, um Empfehlungen aufzulisten, die für Computer in Ihrer Umgebung nicht funktionieren.
 
     ```
-    Type=SQLAssessmentRecommendation RecommendationResult=Failed | select Computer, RecommendationId, Recommendation | sort Computer
+    SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
-
-    >[!NOTE]
-    > Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](../../azure-monitor/log-query/log-query-overview.md) durchgeführt wurde, muss die obige Abfrage wie folgt geändert werden.
-    >
-    > `SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
-
-    Dieser Screenshot zeigt eine Protokollsuchabfrage:<br><br> ![Empfehlungen mit Fehlern](./media/sql-assessment/sql-assess-failed-recommendations.png)<br>
+    Dieser Screenshot zeigt die Protokollabfrage:<br><br> ![Empfehlungen mit Fehlern](./media/sql-assessment/sql-assess-failed-recommendations.png)<br>
 
 3. Wählen Sie die Empfehlungen aus, die Sie ignorieren möchten. Sie werden die Werte für RecommendationId in der nächsten Prozedur verwenden.
 
 ### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Erstellen und Verwenden einer IgnoreRecommendations.txt-Textdatei
 1. Erstellen Sie eine Datei namens IgnoreRecommendations.txt.
-2. Fügen oder geben Sie auf separaten Zeilen die RecommendationId für jede Empfehlung ein, die Log Analytics ignorieren soll, und speichern und schließen Sie die Datei.
-3. Legen Sie die Datei auf jedem Computer, auf dem Log Analytics die Empfehlungen ignorieren soll, in folgendem Ordner ab.
+2. Fügen oder geben Sie in separaten Zeilen die RecommendationId für jede Empfehlung ein, die Azure Monitor ignorieren soll, und speichern und schließen Sie dann die Datei.
+3. Legen Sie die Datei auf jedem Computer, auf dem Azure Monitor die Empfehlungen ignorieren soll, in folgendem Ordner ab.
    * Auf Computern mit Microsoft Monitoring Agent (direkt oder über Operations Manager verbunden) – *Systemlaufwerk*:\Programme\Microsoft Monitoring Agent\Agent
    * Auf dem Operations Manager-Verwaltungsserver – *Systemlaufwerk*:\Programme\Microsoft System Center 2012 R2\Operations Manager\Server
    * Auf dem Operations Manager 2016-Verwaltungsserver – *Systemlaufwerk*:\Programme\Microsoft System Center 2016\Operations Manager\Server
@@ -203,14 +197,8 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
 2. Sie können folgende Protokollsuchabfragen verwenden, um alle ignorierten Empfehlungen aufzulisten.
 
     ```
-    Type=SQLAssessmentRecommendation RecommendationResult=Ignored | select Computer, RecommendationId, Recommendation | sort Computer
+    SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
-
-    >[!NOTE]
-    > Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](../../azure-monitor/log-query/log-query-overview.md) durchgeführt wurde, muss die obige Abfrage wie folgt geändert werden.
-    >
-    > `SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
-
 3. Wenn Sie sich später dazu entscheiden, die ignorierten Empfehlungen anzuzeigen, entfernen Sie alle IgnoreRecommendations.txt-Dateien, oder entfernen Sie einzelne RecommendationIDs aus den Dateien.
 
 ## <a name="sql-health-check-solution-faq"></a>SQL-Integritätsüberprüfung-Lösung – häufig gestellte Fragen
@@ -263,4 +251,4 @@ Wenn Sie Empfehlungen ignorieren möchten, können Sie eine Textdatei erstellen,
 * Ja, siehe oben stehenden Abschnitt [Ignorieren von Empfehlungen](#ignore-recommendations) .
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Durchsuchen Sie Protokolle](../../azure-monitor/log-query/log-query-overview.md), um zu erfahren, wie Sie detaillierte Daten und Empfehlungen der SQL-Integritätsüberprüfung analysieren.
+* Lesen Sie den Artikel zu [Protokollabfragen](../log-query/log-query-overview.md), um zu erfahren, wie Sie detaillierte Daten und Empfehlungen der SQL-Integritätsüberprüfung analysieren.

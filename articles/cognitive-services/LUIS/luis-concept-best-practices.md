@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: diberry
-ms.openlocfilehash: d7547ecf387e070efe788ba5f8582076388f422a
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 9a6f9d54c52f36b8f709eacaf25d3fea31dbe516
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984202"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895814"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Bewährte Methoden zum Erstellen einer Sprachverständnis-App mit Cognitive Services
 Verwenden Sie den App-Erstellungsprozess zur Erstellung der LUIS-App. 
@@ -122,12 +122,12 @@ Weitere Informationen finden Sie unter:
 
 ## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>Verwenden Sie das Vorschlagfeature für das aktive Lernen
 
-Verwenden Sie beim [aktiven Lernen](luis-how-to-review-endoint-utt.md) regelmäßig das **Überprüfen von Endpunktäußerungen**, anstatt Absichten zusätzliche Beispieläußerungen hinzuzufügen. Da die App ständig Endpunktäußerungen empfängt, nimmt diese Liste fortlaufend zu und ändert sich.
+Verwenden Sie beim [aktiven Lernen](luis-how-to-review-endpoint-utterances.md) regelmäßig das **Überprüfen von Endpunktäußerungen**, anstatt Absichten zusätzliche Beispieläußerungen hinzuzufügen. Da die App ständig Endpunktäußerungen empfängt, nimmt diese Liste fortlaufend zu und ändert sich.
 
 Weitere Informationen finden Sie unter:
 * Konzept: [Konzepte für das Aktivieren des aktiven Lernens durch Überprüfen von Endpunktäußerungen](luis-concept-review-endpoint-utterances.md)
 * Tutorial: [Tutorial: Beheben unsicherer Vorhersagen durch Überprüfung von Endpunktäußerungen](luis-tutorial-review-endpoint-utterances.md)
-* Gewusst wie: [Überprüfen von Endpunktäußerungen im LUIS-Portal](luis-how-to-review-endoint-utt.md)
+* Gewusst wie: [Überprüfen von Endpunktäußerungen im LUIS-Portal](luis-how-to-review-endpoint-utterances.md)
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>Überwachen Sie die Leistung Ihrer App.
 

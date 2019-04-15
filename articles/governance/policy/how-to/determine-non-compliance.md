@@ -8,12 +8,12 @@ ms.date: 02/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: dba8d9413229a0fa236b082e2e11dbd1a9fe5a5f
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 1121bdb379265ef592a26a8a31a90d402e529cc8
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314125"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802744"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Ermitteln der Ursachen für Nichtkonformität
 
@@ -46,7 +46,7 @@ Führen Sie die folgenden Schritte durch, um die Konformitätsdetails anzuzeigen
 
 1. Im Bereich **Konformitätsdetails** werden Informationen der letzten Auswertung der Ressource mit der aktuellen Richtlinienzuweisung angezeigt. In diesem Beispiel enthält das Feld **Microsoft.Sql/servers/version** _12.0_, und die Richtliniendefinition hat _14.0_ erwartet. Wenn es mehrere Gründen für die Nichtkonformität der Ressource gibt, werde diese alle in diesem Bereich aufgeführt.
 
-   ![Bereich „Konformitätsdetails“](../media/determine-non-compliance/compliance-details-pane.png)
+   ![Bereich „Konformitätsdetails“ und Gründe für fehlende Konformität](../media/determine-non-compliance/compliance-details-pane.png)
 
    Für **auditIfNotExists**- oder **deployIfNotExists**-Richtliniendefinitionen enthalten die Details die Eigenschaft **details.type** und alle optionalen Eigenschaften. Eine Liste finden Sie unter [„Grundlegendes zu Azure Policy-Auswirkungen“ im Abschnitt „Eigenschaften von „auditIfNotExists“](../concepts/effects.md#auditifnotexists-properties) und unter [„Grundlegendes zu Azure Policy-Auswirkungen“ im Abschnitt „Eigenschaften von „DeployIfNotExists“](../concepts/effects.md#deployifnotexists-properties). **Zuletzt ausgewertete Ressource** ist eine verwandte Ressource aus dem **Detailabschnitt** der Definition.
 
@@ -118,11 +118,11 @@ Im Rahmen einer neuen **öffentlichen Vorschau** sind die letzten 14 Tage des Ä
 
 1. Wählen Sie auf der Seite **Ressourcenkonformität** die Registerkarte **Änderungsverlauf (Vorschau)** aus. Eine Liste der erkannten Änderungen, falls vorhanden, wird angezeigt.
 
-   ![Änderungsverlauf für Richtlinien – Registerkarte](../media/determine-non-compliance/change-history-tab.png)
+   ![Registerkarte „Richtlinien-Änderungsverlauf“ auf der Seite „Ressourcenkonformität“](../media/determine-non-compliance/change-history-tab.png)
 
 1. Wählen Sie eine der erkannten Änderungen aus. Die _Visual Diff_ für die Ressource wird auf der Seite **Änderungsverlauf** angezeigt.
 
-   ![Änderungsverlauf für Richtlinien – Visual Diff](../media/determine-non-compliance/change-history-visual-diff.png)
+   ![Visual Diff des Richtlinien-Änderungsverlaufs auf der Seite „Änderungsverlauf“](../media/determine-non-compliance/change-history-visual-diff.png)
 
 Die _Visual Diff_ hilft, Änderungen an einer Ressource zu identifizieren. Die erkannten Änderungen müssen nicht zwangsläufig mit dem geänderten Konformitätsstatus der Ressource zusammenhängen.
 

@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: danlep
-ms.openlocfilehash: 3e7e292f36296ce09af89f03e8b154b57e18b55c
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2ea85b2b04600708381423e16408ba34b1e27566
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369990"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904898"
 ---
 # <a name="set-environment-variables"></a>Festlegen von Umgebungsvariablen
 
@@ -25,6 +25,8 @@ Wenn Sie z. B. das Microsoft-Containerimage [aci-wordcount][aci-wordcount] ausf�
 *MinLength*: Die Mindestanzahl von Zeichen in einem Wort, damit es gezählt wird. Bei einem höheren Wert werden häufige Wörter wie „von“ und „das“ ignoriert.
 
 Wenn Sie Geheimnisse als Umgebungsvariablen weitergeben müssen, unterstützt Azure Container Instances [sichere Werte](#secure-values) sowohl für Windows- als auch Linux-Container.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="azure-cli-example"></a>Azure CLI-Beispiel
 
@@ -255,6 +257,6 @@ Aufgabenbasierte Szenarien, z. B. Stapelverarbeitung eines großen Datasets mit 
 [az-container-show]: /cli/azure/container#az-container-show
 [azure-cli-install]: /cli/azure/
 [azure-instance-log]: /powershell/module/az.containerinstance/get-azcontainerinstancelog
-[azure-powershell-install]: /powershell/azure/azurerm/install-Az-ps
+[azure-powershell-install]: /powershell/azure/install-Az-ps
 [new-Azcontainergroup]: /powershell/module/az.containerinstance/new-azcontainergroup
 [portal]: https://portal.azure.com

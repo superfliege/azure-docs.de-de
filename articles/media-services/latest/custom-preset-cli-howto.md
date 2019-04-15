@@ -12,14 +12,14 @@ ms.topic: article
 ms.custom: ''
 ms.date: 03/12/2019
 ms.author: juliako
-ms.openlocfilehash: 7160b7c9cdb82d378870edb1750c9d9016aa2d18
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: b0329c8c0bfa56e5ae36c5f4223edca91e6510a0
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58006854"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755599"
 ---
-# <a name="how-to-encode-with-a-custom-transform-by-using-cli"></a>Codieren einer benutzerdefinierten Transformation mithilfe der Befehlszeilenschnittstelle
+# <a name="how-to-encode-with-a-custom-transform---cli"></a>Codieren mit einer benutzerdefinierten Transformation: CLI
 
 Bei der Codierung mit Azure Media Services können Sie mit einer der empfohlenen integrierten Voreinstellungen, basierend auf in der Branche bewährten Vorgehensweisen, schnell einsteigen, wie im Schnellstart [Streamingdateien](stream-files-cli-quickstart.md#create-a-transform-for-adaptive-bitrate-encoding) gezeigt. Sie können auch eine benutzerdefinierte Voreinstellung für Ihr spezielles Szenario oder Ihre Geräteanforderungen entwickeln.
 

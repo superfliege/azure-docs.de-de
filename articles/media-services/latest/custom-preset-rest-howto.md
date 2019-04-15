@@ -12,20 +12,20 @@ ms.topic: article
 ms.custom: ''
 ms.date: 03/12/2019
 ms.author: juliako
-ms.openlocfilehash: 5fe66634d4f95ba84d13a3d355f28afbedf0f7f0
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: a9de15530981e14e664df605cb3274c9e754ef0d
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58012656"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755488"
 ---
-# <a name="how-to-encode-with-a-custom-transform-by-using-rest"></a>Codieren mit einer benutzerdefinierten Transformation mithilfe von REST
+# <a name="how-to-encode-with-a-custom-transform---rest"></a>Codieren mit einer benutzerdefinierten Transformation: REST
 
 Bei der Codierung mit Azure Media Services können Sie mit einer der empfohlenen integrierten Voreinstellungen, basierend auf in der Branche bewährten Vorgehensweisen, schnell einsteigen, wie im [Tutorial: Codieren einer Remotedatei anhand einer URL und Streamen des Videos über REST](stream-files-tutorial-with-rest.md#create-a-transform) gezeigt. Sie können auch eine benutzerdefinierte Voreinstellung für Ihr spezielles Szenario oder Ihre Geräteanforderungen entwickeln.
 
 ## <a name="considerations"></a>Überlegungen
 
-Wenn Sie benutzerdefinierte Voreinstellungen erstellen, sollten Sie folgende Überlegungen bedenken:
+Beim Erstellen von benutzerdefinierten Voreinstellungen gelten die folgenden Überlegungen:
 
 * Alle Werte für Höhe und Breite in AVC-Inhalt müssen ein Vielfaches von 4 sein.
 * In Azure Media Services v3 werden alle Codierungsbitraten in Bits pro Sekunde angegeben. Dies unterscheidet sich von den Voreinstellungen bei unseren v2-APIs. Dort wurden Kilobits pro Sekunde (KBit/s) als Einheit verwendet. Wenn beispielsweise die Bitrate in v2 als 128 (Kilobits/Sekunde) angegeben wurde, würde sie in v3 auf 128.000 (Bits/Sekunde) festgelegt.

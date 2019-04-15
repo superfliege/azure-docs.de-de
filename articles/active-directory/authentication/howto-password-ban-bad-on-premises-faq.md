@@ -1,5 +1,5 @@
 ---
-title: Häufig gestellte Fragen zum lokalen Azure AD-Kennwortschutz
+title: Häufig gestellte Fragen zum lokalen Azure AD-Kennwortschutz – Azure Active Directory
 description: Häufig gestellte Fragen zum lokalen Azure AD-Kennwortschutz
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63bdbeb08872988fb043413f8233281d22423731
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: c8c3395345093ae9a3d35deb27a08f12d331c9f3
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58284747"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58861903"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Lokaler Azure AD-Kennwortschutz – häufig gestellte Fragen
 
@@ -110,13 +110,19 @@ Zusammenfassend gesagt: Die Bereitstellung des Domänencontroller-Agent-Diensts 
 
  Nein.
 
+**F: Warum lehnt Azure schwache Kennwörter weiterhin ab, obwohl ich für die Richtlinie den Überwachungsmodus konfiguriert habe?**
+
+Der Überwachungsmodus wird nur in der lokalen Active Directory-Umgebung unterstützt. Beim Auswerten von Kennwörtern ist Azure implizit immer im Modus „Erzwingen“.
+
 ## <a name="additional-content"></a>Zusätzliche Inhalte
 
 Die folgenden Links gehören nicht zur grundlegenden Dokumentation zum Azure AD-Kennwortschutz, sind aber eine nützliche Quelle für zusätzliche Informationen zu diesem Feature.
 
-[Email Phishing Protection Guide – Part 15: Implement the Microsoft Azure AD Password Protection Service (for On-Premises too!)](https://blogs.technet.microsoft.com/cloudready/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/) (Leitfaden zum Schutz von E-Mail-Phishing, Teil 15: Implementieren des Microsoft Azure AD-Kennwortschutzdiensts [auch für lokale Umgebungen!])
+[Der Azure AD-Kennwortschutz ist jetzt allgemein verfügbar!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-is-now-generally-available/ba-p/377487)
 
-[Azure AD Password Protection and Smart Lockout are now in Public Preview!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-and-Smart-Lockout-are-now-in-Public/ba-p/245423#M529) (Azure AD-Kennwortschutz und intelligente Sperren jetzt in der öffentlichen Vorschau!)
+[Email Phishing Protection Guide – Part 15: Implement the Microsoft Azure AD Password Protection Service (for On-Premises too!) (Leitfaden zum Schutz vor E-Mail-Phishing, Teil 15: Implementieren des Microsoft Azure AD-Kennwortschutzdiensts (auch für lokale Umgebungen!))](https://blogs.technet.microsoft.com/cloudready/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/)
+
+[Azure AD-Kennwortschutz und intelligente Sperre jetzt in der öffentlichen Vorschau!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-and-Smart-Lockout-are-now-in-Public/ba-p/245423#M529)
 
 ## <a name="microsoft-premierunified-support-training-available"></a>Training zu Microsoft Premier und Unified Support verfügbar
 

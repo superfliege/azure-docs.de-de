@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 348321592fc32f7dd77447c7217c7142f7ad9bd4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: cc2a0177525013736445db5fd1befa478dc9b9b8
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51226939"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916851"
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>Behandeln von Problemen mit der Clouddienstbereitstellung
 Wenn Sie ein Anwendungspaket für einen Clouddienst in Azure bereitstellen, können Sie im Bereich **Eigenschaften** des Azure-Portals Informationen zu der Bereitstellung abrufen. Mit den Informationen in diesem Bereich können Sie Probleme mit dem Clouddienst behandeln, und Sie können dem Azure-Support diese Informationen bereitstellen, wenn Sie eine neue Supportanfrage eröffnen.
@@ -74,7 +74,7 @@ Weitere Informationen zum Behandeln dieses Problems finden Sie im Blogbeitrag [A
 1. Klicken Sie im Azure-Portal auf die Rolleninstanz.
 2. Sehen Sie sich im Bereich **Eigenschaften** des Azure-Portals die folgenden Bedingungen an, die Ihnen bei der Problembehebung helfen können:
    * Wenn die Rolleninstanz kürzlich beendet wurde (prüfen Sie die **Anzahl der Abbrüche**), wird die Bereitstellung möglicherweise gerade aktualisiert. Warten Sie, ob die Rolleninstanz ihre Funktionsweise selbstständig wieder aufnimmt.
-   * Wenn die Rolleninstanz **ausgelastet**ist, überprüfen Sie den Anwendungscode, um festzustellen, ob das [StatusCheck](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.statuscheck) -Ereignis verarbeitet wird. Möglicherweise müssen Sie Code hinzufügen oder korrigieren, der dieses Ereignis verarbeitet.
+   * Wenn die Rolleninstanz **ausgelastet**ist, überprüfen Sie den Anwendungscode, um festzustellen, ob das [StatusCheck](/previous-versions/azure/reference/ee758135(v=azure.100)) -Ereignis verarbeitet wird. Möglicherweise müssen Sie Code hinzufügen oder korrigieren, der dieses Ereignis verarbeitet.
    * Weitere Informationen erhalten Sie in den Diagnosedaten und Problembehandlungsszenarios im Blogbeitrag [Azure PaaS Compute Diagnostics Data](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)(in englischer Sprache).
 
 > [!WARNING]

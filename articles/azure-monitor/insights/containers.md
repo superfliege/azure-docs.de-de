@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: magoedte
-ms.openlocfilehash: e8afdfece258986f5dc4cc6f1c7e66aed24e0500
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fbc9e0f8e7dfda86b5c53e28aa3aa3b733bb9600
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58092547"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905750"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Containerüberwachungslösung in Azure Monitor
 
@@ -207,7 +207,7 @@ In diesem Abschnitt werden die Schritte beschrieben, die zum Installieren des Lo
     oadm policy add-scc-to-user privileged system:serviceaccount:omslogging:omsagent  
     ```
 
-4. Führen Sie Folgendes aus, um das DaemonSet bereitzustellen:
+4. Führen Sie Folgendes aus, um die Daemongruppe bereitzustellen:
 
     `oc create -f ocp-omsagent.yaml`
 
@@ -304,9 +304,9 @@ Für Kubernetes verwenden Sie ein Skript, um die YAML-Datei mit Geheimnissen fü
 - Die standardmäßige Daemongruppe des Log Analytics-Agents für Linux enthält keine Geheimnisinformationen („omsagent.yaml“).
 - Die YAML-Datei für die Daemongruppe des Log Analytics-Agents für Linux verwendet Geheimnisinformationen („omsagent-ds-secrets.yaml“) mit Skripts zum Generieren von Geheimnissen, um die YAML-Geheimnisdatei („omsagentsecret.yaml“) zu generieren.
 
-Sie können OMS-Agent-DaemonSets mit oder ohne Geheimnisse erstellen.
+Sie können OMS-Agent-Daemongruppen mit oder ohne Geheimnisse erstellen.
 
-**Standardmäßige OMSagent-DaemonSet-YAML-Datei ohne Geheimnisse**
+**Standardmäßige YAML-Datei der OMS-Agent-Daemongruppe ohne Geheimnisse**
 
 - Ersetzen Sie für die standardmäßige YAML-Datei der Log Analytics-Agent-Daemongruppe `<WSID>` und `<KEY>` durch Ihre Werte für WSID und KEY. Kopieren Sie die Datei in Ihren Masterknoten, und führen Sie Folgendes aus:
 
@@ -314,7 +314,7 @@ Sie können OMS-Agent-DaemonSets mit oder ohne Geheimnisse erstellen.
     sudo kubectl create -f omsagent.yaml
     ```
 
-**Standardmäßige OMSagent-DaemonSet-YAML-Datei mit Geheimnissen**
+**Standardmäßige YAML-Datei der OMS-Agent-Daemongruppe mit Geheimnissen**
 
 1. Um die Log Analytics-Agent-Daemongruppe mit Geheimnisinformationen zu verwenden, erstellen Sie zuerst die Geheimnisse.
     1. Kopieren Sie das Skript und die Vorlagendatei für Geheimnisse, und vergewissern Sie sich, dass sie sich im selben Verzeichnis befinden.
@@ -365,7 +365,7 @@ Sie können OMS-Agent-DaemonSets mit oder ohne Geheimnisse erstellen.
         KEY:    88 bytes
         ```
 
-    5. Erstellen Ihres OMS-Agent-DaemonSet durch Ausführen von ``` sudo kubectl create -f omsagent-ds-secrets.yaml ```
+    5. Erstellen Ihrer OMS-Agent-Daemongruppe durch Ausführen von ```sudo kubectl create -f omsagent-ds-secrets.yaml```
 
 2. Vergewissern Sie sich, dass die Log Analytics-Agent-Daemongruppe ausgeführt wird, ähnlich wie folgt:
 
@@ -409,7 +409,7 @@ Für Windows Kubernetes verwenden Sie ein Skript, um die YAML-Datei mit Geheimni
         ```
         #> sudo bash ./secret-gen.sh
         ```
-    3. Erstellen Ihres OMS-Agent-DaemonSet durch Ausführen von ``` kubectl create -f omsagentsecret.yaml ```
+    3. Erstellen Ihrer OMS-Agent-Daemongruppe durch Ausführen von ```kubectl create -f omsagentsecret.yaml```
     4. Führen Sie zur Überprüfung Folgendes aus:
 
         ```
@@ -436,7 +436,7 @@ Für Windows Kubernetes verwenden Sie ein Skript, um die YAML-Datei mit Geheimni
         KEY:    88 bytes
         ```
 
-    5. Erstellen Ihres OMS-Agent-DaemonSet durch Ausführen von ```kubectl create -f ws-omsagent-de-secrets.yaml```
+    5. Erstellen Ihrer OMS-Agent-Daemongruppe durch Ausführen von ```kubectl create -f ws-omsagent-de-secrets.yaml```
 
 2. Vergewissern Sie sich, dass die Log Analytics-Agent-Daemongruppe ausgeführt wird, ähnlich wie folgt:
 
@@ -451,7 +451,7 @@ Für Windows Kubernetes verwenden Sie ein Skript, um die YAML-Datei mit Geheimni
 #### <a name="use-helm-to-deploy-log-analytics-agent-on-linux-kubernetes"></a>Verwenden von Helm zum Bereitstellen des Log Analytics-Agents unter Linux Kubernetes
 Führen Sie die folgenden Schritte aus, um Helm zum Bereitstellen des Log Analytics-Agents für Ihre Linux Kubernetes-Umgebung zu verwenden.
 
-1. Erstellen Ihres OMS-Agent-DaemonSet durch Ausführen von ```helm install --name omsagent --set omsagent.secret.wsid=<WSID>,omsagent.secret.key=<KEY> stable/msoms```
+1. Erstellen Ihrer OMS-Agent-Daemongruppe durch Ausführen von ```helm install --name omsagent --set omsagent.secret.wsid=<WSID>,omsagent.secret.key=<KEY> stable/msoms```
 2. Die Ergebnisse sehen etwa wie folgt aus:
 
     ```
@@ -532,7 +532,7 @@ Alle drei Minuten werden von den folgenden Agent-Typen Daten gesammelt.
 
 - [Log Analytics-Agent für Linux](../../azure-monitor/learn/quick-collect-linux-computer.md)
 - [Windows-Agent](../../azure-monitor/platform/agent-windows.md)
-- [Log Analytics-VM-Erweiterung](../../azure-monitor/learn/quick-collect-azurevm.md)
+- [Log Analytics-Erweiterung für virtuelle Computer](../../azure-monitor/learn/quick-collect-azurevm.md)
 
 
 ### <a name="container-records"></a>Containerdatensätze
@@ -607,7 +607,7 @@ Log Analytics kennzeichnet einen Container als **Fehlerhaft**, wenn dieser mit e
    ![Container mit Fehlern](./media/containers/containers-state-failed-select.png)  
 1. Führen Sie die Abfrage aus, und erweitern Sie anschließend eine Zeile in den Ergebnissen, um die Image-ID anzuzeigen.  
    ![Container mit Fehlern](./media/containers/containers-state-failed.png)  
-1. Geben Sie Folgendes in die Protokollabfrage ein: `ContainerImageInventory | where ImageID == <ImageID>`, um Details zum Image wie Imagegröße sowie Anzahl der beendeten und fehlerhaften Images anzuzeigen.  
+1. Geben Sie Folgendes in die Protokollabfrage ein: `ContainerImageInventory | where ImageID == <ImageID>` , um Details zum Image wie Imagegröße sowie Anzahl der beendeten und fehlerhaften Images anzuzeigen.  
    ![Container mit Fehlern](./media/containers/containers-failed04.png)
 
 ## <a name="query-logs-for-container-data"></a>Abfragen von Containerdaten in Protokollen
@@ -625,7 +625,7 @@ Wenn Sie Probleme mit einen bestimmten Fehler beheben möchten, kann es hilfreic
 
 
 ### <a name="to-query-logs-for-container-data"></a>So fragen Sie Containerdaten in Protokollen ab
-* Wählen Sie ein Image aus, bei dem kürzlich ein Fehler aufgetreten ist, und suchen Sie die zugehörigen Fehlerprotokolle. Suchen Sie zunächst mit **ContainerInventory** nach dem Namen eines Containers, in dem das Image ausgeführt wird. Suchen Sie beispielsweise nach `ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`.  
+* Wählen Sie ein Image aus, bei dem kürzlich ein Fehler aufgetreten ist, und suchen Sie die zugehörigen Fehlerprotokolle. Suchen Sie zunächst mit **ContainerInventory** nach dem Namen eines Containers, in dem das Image ausgeführt wird. Suchen Sie beispielsweise nach `ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`  
     ![Durchsuchen von Ubuntu-Containern](./media/containers/search-ubuntu.png)
 
   Erweitern Sie in den Ergebnissen eine beliebige Zeile, um Details für den entsprechenden Container anzuzeigen.

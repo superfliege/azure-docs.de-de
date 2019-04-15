@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: 1b2009b54c7f436667c316b7ca002314bc966a1b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f7fc11af8cd2574271b26f7dec62072692685672
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531928"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916800"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Verwalten des Ablaufs von Azure Blob-Speicher in Azure CDN
 > [!div class="op_single_selector"]
@@ -114,7 +114,7 @@ $blob.ICloudBlob.SetProperties()
 >
 
 ## <a name="setting-cache-control-headers-by-using-net"></a>Festlegen von Cache-Control-Headern unter Verwendung von .NET
-Um den `Cache-Control`-Header für ein Blob unter Verwendung von .NET-Code anzugeben, verwenden Sie die [Azure Storage-Clientbibliothek für .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md) zum Festlegen der Eigenschaft [CloudBlob.Properties.CacheControl](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.blobproperties.cachecontrol.aspx).
+Um den `Cache-Control`-Header für ein Blob unter Verwendung von .NET-Code anzugeben, verwenden Sie die [Azure Storage-Clientbibliothek für .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md) zum Festlegen der Eigenschaft [CloudBlob.Properties.CacheControl](/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties.cachecontrol#Microsoft_WindowsAzure_Storage_Blob_BlobProperties_CacheControl).
 
 Beispiel: 
 
@@ -163,18 +163,18 @@ So aktualisieren Sie die *CacheControl*-Eigenschaft eines Blobs mit dem Azure St
 ![Eigenschaften des Azure Storage-Explorers](./media/cdn-manage-expiration-of-blob-content/cdn-storage-explorer-properties.png)
 
 ### <a name="azure-command-line-interface"></a>Azure-Befehlszeilenschnittstelle
-Mithilfe der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) (CLI) können Sie Azure-Blobressourcen über die Befehlszeile verwalten. Legen Sie zum Festlegen des Cache-Control-Headers beim Hochladen eines Blobs mit der Azure-Befehlszeilenschnittstelle die Eigenschaft *cacheControl* mit dem `-p`-Switch fest. Im folgenden Beispiel wird gezeigt, wie die Gültigkeitsdauer auf eine Stunde (3.600 Sekunden) festgelegt wird:
+Mithilfe der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure) (CLI) können Sie Azure-Blobressourcen über die Befehlszeile verwalten. Legen Sie zum Festlegen des Cache-Control-Headers beim Hochladen eines Blobs mit der Azure-Befehlszeilenschnittstelle die Eigenschaft *cacheControl* mit dem `-p`-Switch fest. Im folgenden Beispiel wird gezeigt, wie die Gültigkeitsdauer auf eine Stunde (3.600 Sekunden) festgelegt wird:
   
 ```azurecli
 azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .\<blob name> <container name> <blob name>
 ```
 
 ### <a name="azure-storage-services-rest-api"></a>REST-API für Azure-Speicherdienste
-Sie können die [REST-API für Azure-Speicherdienste](https://msdn.microsoft.com/library/azure/dd179355.aspx) verwenden, um die Eigenschaft *x-ms-blob-cache-control* mithilfe der folgenden Vorgänge für eine Anforderung explizit festzulegen:
+Sie können die [REST-API für Azure-Speicherdienste](/rest/api/storageservices/) verwenden, um die Eigenschaft *x-ms-blob-cache-control* mithilfe der folgenden Vorgänge für eine Anforderung explizit festzulegen:
   
-   - [Put Blob](https://msdn.microsoft.com/library/azure/dd179451.aspx)
-   - [Put Block List](https://msdn.microsoft.com/library/azure/dd179467.aspx)
-   - [Set Blob Properties](https://msdn.microsoft.com/library/azure/ee691966.aspx)
+   - [Put Blob](/rest/api/storageservices/Put-Blob)
+   - [Put Block List](/rest/api/storageservices/Put-Block-List)
+   - [Set Blob Properties](/rest/api/storageservices/Set-Blob-Properties)
 
 ## <a name="testing-the-cache-control-header"></a>Testen des Cache-Control-Headers
 Sie können die Einstellungen der Gültigkeitsdauer Ihrer Blobs einfach überprüfen. Mithilfe der [Entwicklertools](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) Ihres Browsers können Sie überprüfen, ob Ihr Blob den `Cache-Control`-Antwortheader enthält. Sie können die Antwortheader außerdem über ein Tool wie [wget](https://www.gnu.org/software/wget/), [Postman](https://www.getpostman.com/) oder [Fiddler](https://www.telerik.com/fiddler) untersuchen.

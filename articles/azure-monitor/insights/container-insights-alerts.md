@@ -11,26 +11,28 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/26/2019
+ms.date: 04/01/2019
 ms.author: magoedte
-ms.openlocfilehash: e6fdb0d57a44578647c1f16dc76c557296f20ddb
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 5bb0a727adcfb35b5d840a063b6fdb478d150953
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886767"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804823"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Einrichten von Warnungen für Leistungsprobleme in Azure Monitor für Container
 Azure Monitor für Container überwacht die Leistung von Containerworkloads, die entweder in Azure Container Instances oder in Managed Kubernetes-Clustern bereitgestellt sind, die im Azure Kubernetes Service (AKS) gehostet werden. 
 
 In diesem Artikel wird beschrieben, wie Sie Warnungen für die folgenden Situationen aktivieren können:
 
-* Bei CPU- und Arbeitsspeicherauslastung auf Knoten des Clusters oder bei Überschreitung des definierten Schwellenwerts.
+* Wenn die CPU- oder Arbeitsspeicherauslastung auf Knoten des Clusters Ihren definierten Schwellenwert überschreitet.
 * Wenn die CPU- oder Arbeitsspeicherauslastung auf einem der Container innerhalb eines Controllers Ihren definierten Schwellenwert im Vergleich zu dem für die entsprechende Ressource festgelegten Grenzwert überschreitet.
+* Knotenanzahl mit Status **NotReady**
+* Podphasenanzahl mit Status **Failed**, **Pending**, **Unknown**, **Running** oder **Succeeded**
 
-Zum Ausgeben einer Warnung bei hoher CPU- oder Speicherauslastung für einen Cluster oder Controller erstellen Sie eine Warnungsregel vom Typ „Metrische Maßeinheit“, die auf bereitgestellten Protokollabfragen basiert. Die Abfragen vergleichen mithilfe des now-Operators einen datetime-Wert mit dem vorhandenen Wert und gehen um eine Stunde zurück. Alle Daten, die von Azure Monitor für Container gespeichert werden, sind im UTC-Format.
+Zum Ausgeben einer Warnung bei hoher CPU- oder Arbeitsspeicherauslastung auf Knoten des Clusters können Sie entweder eine Metrikwarnung oder eine Warnungsregel vom Typ „Metrische Maßeinheit“ mithilfe der bereitgestellten Protokollabfragen erstellen. Zwar weisen Metrikwarnungen eine geringere Latenz als Protokollwarnungen auf, doch ermöglicht eine Protokollwarnung erweiterte Abfragen und größere Komplexität als eine Metrikwarnung. Bei Protokollwarnungen vergleichen die Abfragen mithilfe des now-Operators einen datetime-Wert mit dem vorhandenen Wert und gehen um eine Stunde zurück. Alle Daten, die von Azure Monitor für Container gespeichert werden, sind im UTC-Format.
 
-Wenn Sie mit Warnungen in Azure Monitor nicht vertraut sind, sollten Sie zunächst den [Überblick über Warnungen in Microsoft Azure](../platform/alerts-overview.md) lesen. Weitere Informationen zu Warnungen mithilfe von Protokollabfragen finden Sie unter [Protokollwarnungen in Azure Monitor](../platform/alerts-unified-log.md)
+Wenn Sie mit Warnungen in Azure Monitor nicht vertraut sind, sollten Sie zunächst den [Überblick über Warnungen in Microsoft Azure](../platform/alerts-overview.md) lesen. Weitere Informationen zu Warnungen mithilfe von Protokollabfragen finden Sie unter [Protokollwarnungen in Azure Monitor](../platform/alerts-unified-log.md). Weitere Informationen zu Metrikwarnungen finden Sie unter [Metrikwarnungen in Azure Monitor](../platform/alerts-metric-overview.md).
 
 ## <a name="resource-utilization-log-search-queries"></a>Suchabfragen für die Ressourcenverwendung
 Die Abfragen in diesem Abschnitt werden zur Unterstützung der einzelnen Warnungsszenarien bereitgestellt. Die Abfragen sind für Schritt 7 unter dem nachfolgenden Abschnitt [Erstellen einer Warnung](#create-alert-rule) erforderlich.  
@@ -187,6 +189,72 @@ KubePodInventory
 | project Computer, ContainerName, TimeGenerated, UsagePercent = UsageValue * 100.0 / LimitValue
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize) , ContainerName
 ```
+
+Die folgende Abfrage gibt alle Knoten und deren Anzahl mit dem Status **Ready** und **NotReady** zurück.
+
+```kusto
+let endDateTime = now();
+let startDateTime = ago(1h);
+let trendBinSize = 1m;
+let clusterName = '<your-cluster-name>';
+KubeNodeInventory
+| where TimeGenerated < endDateTime
+| where TimeGenerated >= startDateTime
+| distinct ClusterName, Computer, TimeGenerated
+| summarize ClusterSnapshotCount = count() by bin(TimeGenerated, trendBinSize), ClusterName, Computer
+| join hint.strategy=broadcast kind=inner (
+    KubeNodeInventory
+    | where TimeGenerated < endDateTime
+    | where TimeGenerated >= startDateTime
+    | summarize TotalCount = count(), ReadyCount = sumif(1, Status contains ('Ready'))
+                by ClusterName, Computer,  bin(TimeGenerated, trendBinSize)
+    | extend NotReadyCount = TotalCount - ReadyCount
+) on ClusterName, Computer, TimeGenerated
+| project   TimeGenerated,
+            ClusterName,
+            Computer,
+            ReadyCount = todouble(ReadyCount) / ClusterSnapshotCount,
+            NotReadyCount = todouble(NotReadyCount) / ClusterSnapshotCount
+| order by ClusterName asc, Computer asc, TimeGenerated desc
+```
+Die folgende Abfrage gibt Podphasenanzahlen basierend auf allen Phasen zurück: **Failed**, **Pending**, **Unknown**, **Running** oder **Succeeded**.  
+
+```kusto
+let endDateTime = now();
+    let startDateTime = ago(1h);
+    let trendBinSize = 1m;
+    let clusterName = '<your-cluster-name>';
+    KubePodInventory
+    | where TimeGenerated < endDateTime
+    | where TimeGenerated >= startDateTime
+    | where ClusterName == clusterName
+    | distinct ClusterName, TimeGenerated
+    | summarize ClusterSnapshotCount = count() by bin(TimeGenerated, trendBinSize), ClusterName
+    | join hint.strategy=broadcast (
+        KubePodInventory
+        | where TimeGenerated < endDateTime
+        | where TimeGenerated >= startDateTime
+        | distinct ClusterName, Computer, PodUid, TimeGenerated, PodStatus
+        | summarize TotalCount = count(),
+                    PendingCount = sumif(1, PodStatus =~ 'Pending'),
+                    RunningCount = sumif(1, PodStatus =~ 'Running'),
+                    SucceededCount = sumif(1, PodStatus =~ 'Succeeded'),
+                    FailedCount = sumif(1, PodStatus =~ 'Failed')
+                 by ClusterName, bin(TimeGenerated, trendBinSize)
+    ) on ClusterName, TimeGenerated
+    | extend UnknownCount = TotalCount - PendingCount - RunningCount - SucceededCount - FailedCount
+    | project TimeGenerated,
+              TotalCount = todouble(TotalCount) / ClusterSnapshotCount,
+              PendingCount = todouble(PendingCount) / ClusterSnapshotCount,
+              RunningCount = todouble(RunningCount) / ClusterSnapshotCount,
+              SucceededCount = todouble(SucceededCount) / ClusterSnapshotCount,
+              FailedCount = todouble(FailedCount) / ClusterSnapshotCount,
+              UnknownCount = todouble(UnknownCount) / ClusterSnapshotCount
+| summarize AggregatedValue = avg(PendingCount) by bin(TimeGenerated, trendBinSize)
+```
+
+>[!NOTE]
+>Zum Ausgeben von Warnungen für bestimmte Podphasen (z. B. **Pending**, **Failed** oder **Unknown**) müssen Sie die letzte Zeile der Abfrage ändern. Beispiel zum Ausgeben einer Warnung für *FailedCount* `| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`.  
 
 ## <a name="create-alert-rule"></a>Erstellen einer Warnungsregel
 Führen Sie die folgenden Schritte aus, um eine Protokollwarnung in Azure Monitor mit einer der zuvor angegebenen Regeln für die Protokollsuche zu erstellen.  

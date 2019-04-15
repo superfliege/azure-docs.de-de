@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fc326c1ba529bc394a5ce5a059e3fe91baa7a9a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c2a2c1c415d0862b2631fa749241a9ae07df3b98
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124067"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880150"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Bekannte Probleme und Lösungen bei der Einhaltung des SCIM 2.0-Protokolls des Azure AD-Benutzerbereitstellungsdiensts
 
@@ -82,13 +82,13 @@ Ja. Wenn Sie diese Anwendungsinstanz bereits für einmaliges Anmelden verwenden 
 
 10. Führen Sie den folgenden Befehl aus, um einen neuen Bereitstellungsauftrag zu erstellen, der über die neuesten Fehlerbehebungen für den Dienst verfügt.
 
-    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs `
-    `{   templateId: "scim"   } `
+ `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
+ `{   templateId: "scim"   }`
    
 11. Kopieren Sie in den Ergebnissen des letzten Schritts die vollständige „ID“-Zeichenfolge, die mit „scim“ beginnt. Sie können optional auch Ihre alten Attributzuordnungen erneut anwenden. Führen Sie dazu den Befehl unten aus, und ersetzen Sie „[new-job-id]“ durch die neue Auftrags-ID, die Sie gerade kopiert haben. Geben Sie außerdem die JSON-Ausgabe aus Schritt 7 als Anforderungstext ein.
 
-    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema `
-    `{   <your-schema-json-here>   }`
+ `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema`
+ `{   <your-schema-json-here>   }`
 
 12. Wechseln Sie wieder zurück zum ersten Webbrowserfenster, und wählen Sie die Registerkarte **Bereitstellung** für Ihre Anwendung aus.
 13. Überprüfen Sie Ihre Konfiguration, und starten Sie anschließend den Bereitstellungsauftrag. 

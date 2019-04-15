@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 360fd8e7ab0f7a85dbeed2bdbc7da379cbcfe91a
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 0dfe6553778092c33f9e1bd55ac7a7ae65137a6e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737024"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881000"
 ---
 # <a name="predicates-and-predicatevalidations"></a>„Predicates“ und „PredicateValidations“
 
@@ -194,7 +194,7 @@ Mit den Elementen **Predicates** und **PredicateValidationsInput** können Sie d
 - **Lowercase** überprüft mithilfe der `IncludesCharacters`-Methode, ob das Kennwort Kleinbuchstaben enthält.
 - **Uppercase** überprüft mithilfe der `IncludesCharacters`-Methode, ob das Kennwort Großbuchstaben enthält.
 - **Number** überprüft mithilfe der `IncludesCharacters`-Methode, ob das Kennwort Ziffern enthält.
-- **Symbol** überprüft mithilfe der `IncludesCharacters`-Methode, ob das Kennwort eines der folgenden Symbole enthält: `@#$%^&*\-_+=[]{}|\:',?/~"();!`
+- **Symbol** überprüft mithilfe der `IncludesCharacters`-Methode, ob das Kennwort eines der folgenden Symbole enthält `@#$%^&*\-_+=[]{}|\:',?/~"();!`
 - **PIN** überprüft mithilfe der `MatchesRegex`-Methode, ob das Kennwort nur Zahlen enthält.
 - **AllowedAADCharacters** überprüft mithilfe der `MatchesRegex`-Methode, ob das Kennwort keine ungültigen Zeichen enthält.
 - **DisallowedWhitespace** überprüft mithilfe der `MatchesRegex`-Methode, ob das Kennzeichen mit einem Leerzeichen beginnt oder endet.
@@ -356,7 +356,8 @@ Mit den Elementen **Predicates** und **PredicateValidations** können Sie die mi
 
 ```XML
 <Predicates>
-  <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 01-01-1980 and today.">
+  <Predicate Id="DateRange" Method="IsDateRange">
+    <UserHelpText>The date must be between 01-01-1980 and today.</UserHelpText>
     <Parameters>
       <Parameter Id="Minimum">1980-01-01</Parameter>
       <Parameter Id="Maximum">Today</Parameter>

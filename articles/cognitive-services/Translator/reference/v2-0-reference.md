@@ -3,19 +3,19 @@ title: Textübersetzungs-API Version 2.0
 titleSuffix: Azure Cognitive Services
 description: Referenzdokumentation für die Textübersetzungs-API Version 2.0
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: v-jansko
-ms.openlocfilehash: 4f08b728198d6ee508cbd8267c593abc59e4cb37
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b65182cac91f6ed3dc653d6d9e77f80e99346bb7
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075252"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918007"
 ---
 # <a name="translator-text-api-v20"></a>Microsoft Translator-Text-API Version 2.0
 
@@ -596,7 +596,7 @@ Der Anforderungstext enthält das optional TranslationOptions-Objekt, das folgen
 Das `TranslateOptions`-Objekt enthält die unten aufgeführten Werte. Diese sind alle optional und sind Standardwerte für die häufigsten Einstellungen. Angegebene Element müssen in alphabetischer Reihenfolge aufgelistet werden.
 
 * `Category`: Eine Zeichenfolge, die die Kategorie (Domäne) der Übersetzung enthält. Der Standardwert lautet „general“.
-* `ContentType`: „text/plain“ ist die einzige unterstützte bzw. die Standardversion.
+* `ContentType`: Es wird nur der Wert „text/plain“ unterstützt, dies ist auch der Standardwert.
 * `IncludeMultipleMTAlternatives`: boolesches Flag zur Bestimmung, ob mehr als eine Alternative von der MT-Engine zurückgegeben werden soll. Gültige Werte sind „true“ und „false“ (mit Berücksichtigung der Groß- und Kleinschreibung). Der Standardwert ist „false“ und enthält nur eine Alternative. Wenn Sie das Flag auf „true“ festlegen, ist die Erstellung künstlicher Alternativen in der Übersetzung möglich, die vollständig in das Framework für kollaborative Übersetzungen (Collaborative Translations Framework, CTF) integriert sind. Das Feature lässt zu, dass Alternativen für Sätze zurückgegeben werden dürfen, die keine Alternativen im CTF besitzen. Dies geschieht durch Hinzufügen künstlicher Alternativen aus der N-besten Liste des Decoders.
     - Bewertungen: Die Bewertungen werden wie folgt angewendet: 1) Die beste automatische Übersetzung hat eine Bewertung von 5. 2) Die Alternativen von CTF spiegeln die Autorität des Reviewers von –10 bis +10 wieder. 3) Die automatisch generierten (N-beste) Übersetzungsalternativen verfügen über eine Bewertung von 0 und einen Übereinstimmungsgrad von 100.
     - Anzahl der Alternativen: Die Anzahl zurückgegebener Alternativen geht bis zu „maxTranslations“, es kann aber auch weniger sein.
@@ -753,7 +753,7 @@ Jedes `GetTranslationsResponse`-Element enthält die folgenden Werte:
 * `From`: Wenn die Methode keine `From`-Sprache angegeben hat, ist dies das Ergebnis der automatischen Spracherkennung. Andernfalls wird die Ausgangssprache angegebenen.
 * `State`: Benutzerstatus, mit dem Anforderung und Antwort korreliert werden können. Enthält den gleichen Wert, der auch im `TranslateOptions`-Parameter angegeben ist.
 
-`TranslationMatch`-Objekte bestehen aus Folgendem:
+`TranslationMatch` -Objekte bestehen aus Folgendem:
 * `Error`: Wenn ein Fehler für eine bestimmte Eingabezeichenfolge aufgetreten ist, wird der Fehlercode gespeichert. Andernfalls bleibt das Feld leer.
 * `MatchDegree`: Das System gleicht eingegebene Sätze (einschließlich ungenauer Übereinstimmungen) mit dem Speicher ab.  `MatchDegree` gibt an, wie nah der eingegebene Text mit dem Originaltext übereinstimmt, der im Speicher gefunden wurde. Der Wert gibt eine Spanne von 0 bis 100 zurück, wobei 0 keine Ähnlichkeit aufweist und 100 eine Übereinstimmung mit der Schreibweise ist.
 * `MatchedOriginalText`: Originaltext, der für dieses Ergebnis übereinstimmte. Er wird nur zurückgegeben, wenn der übereinstimmende Originaltext sich vom Eingabetext unterschieden hat. Wird verwendet, um den Quelltext einer Fuzzyübereinstimmung zurückzugeben. Wir nicht für Microsoft Translator-Ergebnisse zurückgegeben.
@@ -787,7 +787,7 @@ Anforderungsinhaltstyp: application/xml
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Referenz für Version 3 der Textübersetzungs-API](../migrate-to-v3.md)
+> [Migrieren zu v3 – Textübersetzungs-API](../migrate-to-v3.md)
 
 
 

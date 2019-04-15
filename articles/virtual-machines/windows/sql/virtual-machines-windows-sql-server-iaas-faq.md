@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 6f064bb875786fc50073ab4216bc1c52ace294bf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0688235d928584df223a3a6a6ca2821282e4cb92
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113264"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762683"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern in Azure
 
@@ -139,12 +139,7 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 
 1. **Kann ich eine benannte Instanz von SQL Server mit der IaaS-Erweiterung verwenden?**
    
-   Ja, wenn die benannte Instanz die einzige SQL Server-Instanz ist und die ursprüngliche Standardinstanz ordnungsgemäß deinstalliert wurde. Um eine benannte Instanz zu verwenden, gehen Sie folgendermaßen vor:
-    1. Stellen Sie eine SQL Server-VM aus dem Marketplace bereit. 
-    1. Deinstallieren Sie die IaaS-Erweiterung.
-    1. Deinstallieren Sie SQL Server vollständig.
-    1. Installieren Sie SQL Server mit einer benannten Instanz. 
-    1. Installieren Sie die IaaS-Erweiterung. 
+   Ja, wenn die benannte Instanz die einzige SQL Server-Instanz ist und die ursprüngliche Standardinstanz [ordnungsgemäß deinstalliert](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md#installation) wurde. Wenn es keine Standardinstanz gibt und zugleich mehrere benannte Instanzen auf einer einzelnen SQL Server-VM vorhanden sind, kann die IaaS-Erweiterung nicht installiert werden. 
 
 1. **Kann ich SQL Server vollständig von einer SQL-VM entfernen?**
 
@@ -176,6 +171,10 @@ Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführun
 1. **Wie installiere ich SQL Data-Tools auf meiner Azure-VM?**
 
     Laden Sie die SQL Data-Tools von [Microsoft SQL Server Data Tools – Business Intelligence für Visual Studio 2013](https://www.microsoft.com/en-us/download/details.aspx?id=42313) herunter, und installieren Sie sie.
+
+1. **Werden verteilte Transaktionen mit MSDTC auf SQL Server-VMs unterstützt?**
+   
+    Ja. Lokaler DTC wird für SQL Server 2016 SP2 und höher unterstützt. Allerdings müssen Anwendungen getestet werden, wenn Always On-Verfügbarkeitsgruppen zum Einsatz kommen, da bei den während eines Failovers ausgeführten Transaktionen ein Fehler auftritt und die Transaktionen wiederholt werden müssen. Gruppierter DTC ist ab Windows Server 2019 verfügbar. 
 
 ## <a name="resources"></a>Ressourcen
 

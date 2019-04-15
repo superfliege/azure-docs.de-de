@@ -1,5 +1,5 @@
 ---
-title: Durchführen von Livestreaming mit lokalen Encodern im Azure-Portal | Microsoft-Dokumentation
+title: Durchführen von Livestreaming mit lokalen Encodern mit dem Azure-Portal | Microsoft-Dokumentation
 description: In diesem Tutorial werden Sie durch die Schritte zum Erstellen eines Kanals geführt, der für eine Pass-Through-Bereitstellung konfiguriert ist.
 services: media-services
 documentationcenter: ''
@@ -12,22 +12,25 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: d86151b436ec3cc5ea3d4b687f5c8692b2ca4efa
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 9a8ab024443744f50482dd2ca1cfb33db43359e9
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258700"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802812"
 ---
-# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-the-azure-portal"></a>Durchführen von Livestreaming mit lokalen Encodern im Azure-Portal
+# <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>Durchführen von Livestreaming mit lokalen Encodern mit dem Azure-Portal
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
 > * [REST](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
 > 
+
+> [!NOTE]
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 In diesem Tutorial werden Sie durch die Schritte des Azure-Portals zum Erstellen eines **Kanals** geführt, der für eine Pass-Through-Bereitstellung konfiguriert ist. 
 
@@ -45,29 +48,31 @@ Wir empfehlen Ihnen dringend, die folgenden Artikel zu lesen:
 * [Livestreaming mit lokalen Encodern, die Datenströme mit Mehrfachbitrate erstellen](media-services-live-streaming-with-onprem-encoders.md)
 
 ## <a id="scenario"></a>Allgemeines Livestreamingszenario
+
 In den folgenden Schritten werden Aufgaben beschrieben, die beim Erstellen von gängigen Livestreaming-Anwendungen mit Kanälen ausgeführt werden, die für die Pass-Through-Bereitstellung konfiguriert sind. In diesem Tutorial wird veranschaulicht, wie Sie einen Pass-Through-Kanal und Liveereignisse erstellen und verwalten.
 
->[!NOTE]
->Stellen Sie sicher, dass sich der Streamingendpunkt, von dem aus Sie die Inhalte streamen möchten, im Status **Wird ausgeführt** befindet. 
+> [!NOTE]
+> Stellen Sie sicher, dass sich der Streamingendpunkt, von dem aus Sie die Inhalte streamen möchten, im Status **Wird ausgeführt** befindet. 
     
-1. Schließen Sie eine Videokamera an einen Computer an. Starten und konfigurieren Sie einen lokalen Liveencoder, der einen RTMP- oder Fragmented MP4-Datenstrom mit mehreren Bitraten ausgibt. Weitere Informationen finden Sie unter [Microsoft Azure Media Services RTMP-Support und Liveencoder](https://go.microsoft.com/fwlink/?LinkId=532824).
+1. Schließen Sie eine Videokamera an einen Computer an. <br/>Ausrüstungsanregungen finden Sie unter [Simple and Portable Event Video Gear Setup]( https://link.medium.com/KNTtiN6IeT) (Einfache und tragbare Videoausrüstung für Veranstaltungen).
+1. Starten und konfigurieren Sie einen lokalen Liveencoder, der einen RTMP- oder Fragmented MP4-Datenstrom mit mehreren Bitraten ausgibt. Weitere Informationen finden Sie unter [Microsoft Azure Media Services RTMP-Support und Liveencoder](https://go.microsoft.com/fwlink/?LinkId=532824).<br/>Sehen Sie sich auch den folgenden Blog an: [Live streaming production with OBS](https://link.medium.com/ttuwHpaJeT) (Livestreamproduktion mit OBS).
    
     Dieser Schritt kann auch nach der Erstellung des Kanals ausgeführt werden.
-2. Erstellen und starten Sie einen Pass-Through-Kanal.
-3. Rufen Sie die Erfassungs-URL des Kanals ab. 
+1. Erstellen und starten Sie einen Pass-Through-Kanal.
+1. Rufen Sie die Erfassungs-URL des Kanals ab. 
    
     Die Erfassungs-URL wird vom Liveencoder verwendet, um den Datenstrom an den Kanal zu senden.
-4. Rufen Sie die Vorschau-URL des Kanals ab. 
+1. Rufen Sie die Vorschau-URL des Kanals ab. 
    
     Verwenden Sie diese URL, um sicherzustellen, dass der Livestream ordnungsgemäß vom Kanal empfangen wird.
-5. Erstellen Sie ein Liveereignis/-programm. 
+1. Erstellen Sie ein Liveereignis/-programm. 
    
     Bei Verwendung des Azure-Portals wird beim Erstellen eines Liveereignisses auch ein Objekt erstellt. 
 
-6. Wenn Sie zum Starten von Streaming und Archivierung bereit sind, starten Sie das Ereignis bzw. Programm.
-7. Optional kann vom Liveencoder eine Ankündigung gestartet werden. Die Ankündigung wird in den Ausgabedatenstrom eingefügt.
-8. Sie können das Ereignis/Programm und damit das Streaming und die Archivierung des Ereignisses jederzeit beenden.
-9. Löschen Sie das Ereignis/Programm (und optional das Medienobjekt).     
+1. Wenn Sie zum Starten von Streaming und Archivierung bereit sind, starten Sie das Ereignis bzw. Programm.
+1. Optional kann vom Liveencoder eine Ankündigung gestartet werden. Die Ankündigung wird in den Ausgabedatenstrom eingefügt.
+1. Sie können das Ereignis/Programm und damit das Streaming und die Archivierung des Ereignisses jederzeit beenden.
+1. Löschen Sie das Ereignis/Programm (und optional das Medienobjekt).     
 
 > [!IMPORTANT]
 > Lesen Sie sich den Artikel [Livestreaming mit lokalen Encodern, die Datenströme mit Mehrfachbitrate erstellen](media-services-live-streaming-with-onprem-encoders.md) durch, um mehr über die Konzepte und Aspekte zu erfahren, die für das Livestreaming mit lokalen Encodern und Pass-Through-Kanälen wichtig sind.

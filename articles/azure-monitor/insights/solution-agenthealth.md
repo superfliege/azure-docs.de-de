@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: cca234340526b732067adac3c6725f8aa5acc47c
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 294695cceaed39a66a57dcd3a165ca276b6801c6
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983377"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757967"
 ---
-#  <a name="agent-health-solution-in-azure"></a>Lösung für die Agent-Integritätsdiagnose in Azure
-Die Agent-Integritätsdiagnose-Lösung in Azure bietet Ihnen für alle direkt an den Log Analytics-Arbeitsbereich oder eine mit Azure Monitor verbundene System Center Operations Manager-Verwaltungsgruppe berichtende Agents, die nicht reagieren und Betriebsdaten übermitteln, Einblicke in die Ursachen.  Außerdem können Sie nachverfolgen, wie viele Agents bereitgestellt werden und wie sie geografisch verteilt sind, und andere Abfragen durchführen, um zu ermitteln, wie Agents, die in Azure, anderen Cloudumgebungen oder lokal bereitgestellt wurden, verteilt sind.    
+#  <a name="agent-health-solution-in-azure-monitor"></a>Lösung für die Agent-Integritätsdiagnose in Azure Monitor
+Die Agent-Integritätsdiagnose-Lösung in Azure bietet Ihnen für alle direkt an den Log Analytics-Arbeitsbereich in Azure Monitor oder eine mit Azure Monitor verbundene System Center Operations Manager-Verwaltungsgruppe berichtende Agents, die nicht reagieren und Betriebsdaten übermitteln, Einblicke in die Ursachen.  Außerdem können Sie nachverfolgen, wie viele Agents bereitgestellt werden und wie sie geografisch verteilt sind, und andere Abfragen durchführen, um zu ermitteln, wie Agents, die in Azure, anderen Cloudumgebungen oder lokal bereitgestellt wurden, verteilt sind.    
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Vergewissern Sie sich vor dem Bereitstellen dieser Lösung, dass Sie über derzeit unterstützte [Windows-Agents](../../log-analytics/log-analytics-windows-agent.md) verfügen, die Daten an den Log Analytics-Arbeitsbereich oder an eine [Operations Manager-Verwaltungsgruppe](../../azure-monitor/platform/om-agents.md), die in Ihren Arbeitsbereich integriert ist, melden.
@@ -62,7 +62,7 @@ Klicken Sie auf die Kachel **Agent-Integrität**, um das Dashboard **Agent-Integ
 | Verteilung der Agents nach Betriebssystemtyp | Eine Partition dazu, über wie viele Windows- und Linux-Agents Sie in Ihrer Umgebung verfügen.|
 | Verteilung der Agents nach Version | Eine Partition mit den unterschiedlichen Agent-Versionen, die in Ihrer Umgebung installiert sind, und der jeweiligen Anzahl.|
 | Verteilung der Agents nach Agent-Kategorie | Eine Partition mit den unterschiedlichen Agent-Kategorien, die Heartbeat-Ereignisse senden: direkte Agents, OpsMgr-Agents oder der OpsMgr Management Server.|
-| Verteilung nach Verwaltungsgruppe | Eine Partition mit den unterschiedlichen SCOM-Verwaltungsgruppen in Ihrer Umgebung.|
+| Verteilung nach Verwaltungsgruppe | Eine Partition mit den unterschiedlichen Operations Manager-Verwaltungsgruppen in Ihrer Umgebung.|
 | Geografischer Standort der Agents | Eine Partition mit den unterschiedlichen Ländern, in denen Sie über Agents verfügen, und die Gesamtzahl von Agents, die in einem Land jeweils installiert sind.|
 | Anzahl installierter Gateways | Die Anzahl von Servern, auf denen das Log Analytics-Gateway installiert ist, und eine Liste mit diesen Servern.|
 
@@ -117,4 +117,4 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen für Datensätze, d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Lesen Sie sich die Details zum Generieren von Warnungen aus Log Analytics unter [Warnungen in Azure Monitor](../platform/alerts-overview.md) durch. 
+* Lesen Sie sich die Details zum Generieren von Warnungen aus Protokollabfragen unter [Warnungen in Azure Monitor](../platform/alerts-overview.md) durch. 

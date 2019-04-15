@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 04/02/2019
 ms.author: juliako
-ms.openlocfilehash: c1b26b8a59ac0306fc06bf90f01642d4585a45be
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8c1e50064491032d78e467496f0c53300dd6acd1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991569"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892788"
 ---
 # <a name="view-and-edit-video-indexer-insights"></a>Anzeigen und Bearbeiten von Video Indexer-Auswertungen
 
@@ -34,17 +34,11 @@ In diesem Thema wird veranschaulicht, wie Sie die Video Indexer-Erkenntnisse ein
 
     Der Player und die Erkenntnisse werden synchronisiert. Wenn Sie beispielsweise auf ein Schlüsselwort oder die Transkriptzeile klicken, gelangen Sie im Player zum entsprechenden Moment des Videos. Sie können die Player-Ansicht bzw. die Ansicht für Erkenntnisse und die Synchronisierung in Ihrer Anwendung einrichten. Weitere Informationen finden Sie unter [Einbetten von Video Indexer-Widgets in Ihre Anwendungen](video-indexer-embed-widgets.md). 
 
-3. Bearbeiten Sie die Video Indexer-Erkenntnisse.
-
-    Wählen Sie unter dem Video die Schaltfläche „Bearbeiten“. Die Seite mit der vollständigen Aufstellung des Videos wird angezeigt. Die Aufstellung ist in einzelne Blöcke unterteilt. Die Blöcke sollen das Durchgehen der Daten vereinfachen. Die Unterteilung in Blöcke kann beispielsweise darauf basieren, dass sich der Sprecher ändert oder dass es zu einer längeren Pause kommt. Sie können Ihre eigene Wiedergabeliste erstellen, die nur die gewünschten Zeilen enthält. Wenn Sie nur bestimmte Teile des Quellvideos anzeigen möchten, können Sie nach Themen/Schlüsselwörtern, Stimmungen, Personen oder Sprechern filtern. Sie können auch angeben, dass nur das Transkript oder die OCR-Daten des Videos angezeigt werden sollen.  
-
-    ![Einblicke](./media/video-indexer-view-edit/video-indexer-create-new-playlist.png)
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 [Informieren Sie sich über die Erstellung Ihrer eigenen Video Indexer-Erkenntnisse basierend auf einem anderen Video](video-indexer-create-new.md).
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[What is Video Indexer? (preview)](video-indexer-overview.md) (Was ist Video Indexer? (Vorschauversion))
+[Übersicht über Video Indexer](video-indexer-overview.md)
 

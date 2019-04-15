@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 03/28/2019
 ms.author: danlep
-ms.openlocfilehash: f2fc187518070bf199a3959889afd1ede4ef5b77
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 89b48175d7707458cd92916f6b26e298163a7416
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660713"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915922"
 ---
 # <a name="automate-os-and-framework-patching-with-acr-tasks"></a>Automatisieren von Betriebssystem- und Frameworkpatches mit ACR Tasks
 
@@ -27,7 +27,7 @@ Es gibt vier Möglichkeiten zum Erstellen und Testen von Containerimages mit ACR
 * [Schnelltask](#quick-task): Bedarfsgesteuertes Erstellen und Pushen von Containerimages in Azure ohne lokale Docker Engine-Installation. Kurz: `docker build`, `docker push` in die Cloud. Buildvorgang aus lokalem Quellcode oder einem Git-Repository.
 * [Buildvorgang beim Commit von Quellcode](#automatic-build-on-source-code-commit): Lösen Sie automatisch einen Containerimage-Buildvorgang aus, sobald ein Commit von Code in ein Git-Repository erfolgt.
 * [Buildvorgang beim Aktualisieren des Basisimages](#automate-os-and-framework-patching): Lösen Sie einen Containerimage-Buildvorgang aus, wenn das Basisimage des jeweiligen Images aktualisiert wurde.
-* [Mehrstufige Aufgaben](#multi-step-tasks-preview) (Vorschau): Definieren Sie mehrstufige Aufgaben, die Images erstellen, Container als Befehle ausführen und Images in eine Registrierung pushen. Dieses Vorschaufeature von ACR Tasks unterstützt die bedarfsgesteuerte Aufgabenausführung und parallele Imagebuilds, Tests und Pushvorgänge.
+* [Mehrstufige Aufgaben](#multi-step-tasks): Definieren Sie mehrstufige Aufgaben, die Images erstellen, Container als Befehle ausführen und Images in eine Registrierung pushen. Dieses Feature von ACR Tasks unterstützt die bedarfsgesteuerte Aufgabenausführung und parallele Imagebuilds, Tests und Pushvorgänge.
 
 ## <a name="quick-task"></a>Schnelltask
 
@@ -36,6 +36,8 @@ Der „interne“ Entwicklungszyklus, der iterative Prozess, der das Schreiben v
 Bevor Sie Ihre erste Zeile Code committen, kann das Feature [Schnelltask](container-registry-tutorial-quick-task.md) von ACR Tasks eine integrierte Entwicklungsumgebung bereitstellen, indem Ihre Containerimage-Buildvorgänge in Azure ausgelagert werden. Mit Schnelltasks können Sie Ihre automatisierten Builddefinitionen überprüfen und potenzielle Probleme abfangen, bevor Sie Ihren Code committen.
 
 Der Befehl [az acr build][az-acr-build] der Azure CLI verwendet das vertraute `docker build`-Format. Er akzeptiert einen *Kontext* (Satz zu erstellender Dateien), sendet ihn an ACR Tasks und pusht das erstellte Image nach dessen Fertigstellung standardmäßig in die entsprechende Registrierung.
+
+Eine Einführung finden Sie im Schnellstart: [Erstellen und Ausführen eines Containerimages](container-registry-quickstart-task-cli.md) in Azure Container Registry.  
 
 Die folgende Tabelle zeigt einige Beispiele von unterstützten Kontextspeicherorten für ACR Tasks:
 
@@ -76,9 +78,9 @@ Informationen zu Betriebssystem- und Frameworkpatches finden Sie im dritten ACR 
 > [!NOTE]
 > Aktualisierungen von Basisimages lösen Builds nur dann aus, wenn sich das Basis- und das Anwendungsimage in der gleichen Azure-Containerregistrierung befinden oder das Basisimage in einem öffentlichen Docker Hub-Repository gespeichert ist.
 
-## <a name="multi-step-tasks-preview"></a>Mehrstufige Aufgaben (Vorschau)
+## <a name="multi-step-tasks"></a>Mehrstufige Aufgaben
 
-Mehrstufige Aufgaben, eine Vorschaufunktion von ACR Tasks, bieten eine schrittbasierte Aufgabendefinition und Ausführung für das Erstellen, Testen und Patchen von Containerimages in der Cloud. Aufgabenschritte definieren einzelne Containerimagebuild- und Pushvorgänge. Sie können auch die Ausführung eines oder mehrerer Container mit jedem Schritt definieren, wobei der Container als Ausführungsumgebung verwendet wird.
+Mehrstufige Aufgaben bieten schrittbasierte Aufgabendefinition und -ausführung für Erstellen, Testen und Patchen von Containerimages in der Cloud. Aufgabenschritte definieren einzelne Containerimagebuild- und Pushvorgänge. Sie können auch die Ausführung eines oder mehrerer Container mit jedem Schritt definieren, wobei der Container als Ausführungsumgebung verwendet wird.
 
 Beispielsweise können Sie eine mehrstufige Aufgaben erstellen, die die folgenden Vorgänge automatisiert:
 
@@ -92,9 +94,6 @@ Beispielsweise können Sie eine mehrstufige Aufgaben erstellen, die die folgende
 Mit mehrstufigen Aufgaben können Sie das Erstellen, Ausführen und Testen eines Images in mehrere individuelle Schritte aufteilen, wobei Abhängigkeiten zwischen den Schritten unterstützt werden. Mit mehrstufigen Aufgaben in ACR Tasks erhalten Sie eine bessere Kontrolle über die Workflows zur Erstellung von Images, Tests, Betriebssystem- und Frameworkpatches.
 
 Weitere Informationen zu mehrstufigen Aufgaben finden Sie unter [Ausführen von mehrstufigen Build-, Test- und Patchaufgaben in ACR Tasks](container-registry-tasks-multi-step.md).
-
-> [!IMPORTANT]
-> Die Funktion „mehrstufige Aufgaben“ von ACR Tasks befindet sich zurzeit in der Vorschau. Wenn Sie Vorschauversionen nutzen möchten, müssen Sie die [zusätzlichen Nutzungsbedingungen][terms-of-use] akzeptieren. Einige Aspekte dieser Funktion werden bis zur allgemeinen Verfügbarkeit (General Availability, GA) unter Umständen noch geändert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

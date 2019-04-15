@@ -4,17 +4,17 @@ description: Es wird beschrieben, wie Sie die Optionen für das Sperren verwende
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 03/28/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 799e496fd9dd8a405e5fc356e13cf6c05883e1ae
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5409de8aabb52a531551abbc28ae9e873b262eba
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855404"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762428"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Grundlegendes zur Ressourcensperre in Azure Blueprint
 
@@ -53,8 +53,55 @@ Wenn die Zuweisung entfernt wird, werden auch die von Blueprint erstellten Sperr
 
 Eine Ablehnungsaktion im Rahmen von RBAC-[Ablehnungszuweisungen](../../../role-based-access-control/deny-assignments.md) wird während der Zuweisung einer Blaupause auf Artefaktressourcen angewendet, wenn für die Zuweisung die Option **Schreibgeschützt** oder **Nicht löschen** ausgewählt wurde. Die Ablehnungsaktion wird von der verwalteten Identität der Blaupausenzuweisung hinzugefügt und kann nur von derselben verwalteten Identität aus den Artefaktressourcen entfernt werden. Diese Sicherheitsmaßnahme erzwingt den Sperrmechanismus und verhindert die Aufhebung der Blaupausensperre außerhalb von Blueprints.
 
+![Blaupausen-Ablehnungszuweisung für Ressourcengruppe](../media/resource-locking/blueprint-deny-assignment.png)
+
 > [!IMPORTANT]
 > Azure Resource Manager speichert Details zu Rollenzuweisungen bis zu 30 Minuten lang zwischen. Daher sind Ablehnungsaktionen von Ablehnungszuweisungen für Blaupausenressourcen möglicherweise nicht sofort in vollem Umfang wirksam. Während dieser Zeit ist es ggf. möglich, eine Ressource zu löschen, die eigentlich durch Blaupausensperren geschützt werden sollte.
+
+## <a name="exclude-a-principal-from-a-deny-assignment"></a>Ausschließen eines Prinzipals von einer Ablehnungszuweisung
+
+In einigen Entwurfs- oder Sicherheitsszenarien kann es erforderlich sein, einen Prinzipal von der [Ablehnungszuweisung](../../../role-based-access-control/deny-assignments.md) auszuschließen, die von der Blaupausenzuweisung erstellt wird. Dies erfolgt in REST-API durch Hinzufügen von bis zu fünf Werten zum Array **excludedPrincipals** in der Eigenschaft **locks**, wenn [die Zuweisung erstellt wird](/rest/api/blueprints/assignments/createorupdate).
+Dies ist ein Beispiel für einen Anforderungstext, der **excludedPrincipals** enthält:
+
+```json
+{
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "location": "eastus",
+  "properties": {
+    "description": "enforce pre-defined simpleBlueprint to this XXXXXXXX subscription.",
+    "blueprintId": "/providers/Microsoft.Management/managementGroups/{mgId}/providers/Microsoft.Blueprint/blueprints/simpleBlueprint",
+    "locks": {
+        "mode": "AllResourcesDoNotDelete",
+        "excludedPrincipals": [
+            "7be2f100-3af5-4c15-bcb7-27ee43784a1f",
+            "38833b56-194d-420b-90ce-cff578296714"
+        ]
+    },
+    "parameters": {
+      "storageAccountType": {
+        "value": "Standard_LRS"
+      },
+      "costCenter": {
+        "value": "Contoso/Online/Shopping/Production"
+      },
+      "owners": {
+        "value": [
+          "johnDoe@contoso.com",
+          "johnsteam@contoso.com"
+        ]
+      }
+    },
+    "resourceGroups": {
+      "storageRG": {
+        "name": "defaultRG",
+        "location": "eastus"
+      }
+    }
+  }
+}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

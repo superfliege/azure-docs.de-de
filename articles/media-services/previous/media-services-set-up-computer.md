@@ -12,16 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: e42386c380c94e36f1dbe0d418bf5a42f2486fd0
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 546e8e50bc34307c46d33e217d5bc0887b548774
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293667"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801809"
 ---
 # <a name="set-up-your-media-services-development-environment"></a>Einrichten der Media Services-Entwicklungsumgebung  
+
+> [!NOTE]
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 Die folgenden Schritte beschreiben die erforderlichen Voraussetzungen für die Entwicklung mit Azure Media Services.
 

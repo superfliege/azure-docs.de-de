@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 04/02/2019
 ms.author: tulasim
-ms.openlocfilehash: b948835b1a15eee391c6902d18229ec4926b66ca
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 218103f2c75ec1016a997c259767ccd011191fab
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095210"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879608"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v3"></a>Tutorial: Erstellen eines QnA-Bots mit Azure Bot Service v3
 
@@ -105,6 +105,12 @@ Wählen Sie im Azure-Portal **Test in Web Chat** (Im Webchat testen) aus, um den
 
 Der QnA-Bot antwortet auf über Ihre Wissensdatenbank.
 
+## <a name="related-to-qna-maker-bots"></a>In Bezug auf QnA Maker-Bots
+
+* QnA Maker-Hilfebot, der im QnA Maker-Portal verwendet wird, ist als [Bot-Beispel](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-support-bot) verfügbar.
+    ![Das Symbol des QnA Maker-Hilfebots ist ein roter Roboter](../media/qnamaker-tutorials-create-bot/answer-bot-icon.PNG)
+* [Bots für das Gesundheitswesen](https://docs.microsoft.com/HealthBot/qna_model_howto) verwenden QnA Maker als eines ihrer [Sprachmodelle](https://docs.microsoft.com/HealthBot/qna_model_howto).
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie den Bot dieses Tutorials nicht mehr benötigen, entfernen Sie ihn im Azure-Portal. Zu diesen Botdiensten gehören:
@@ -122,5 +128,5 @@ Wenn Sie den Bot dieses Tutorials nicht mehr benötigen, entfernen Sie ihn im Az
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Verwalten Ihrer Knowledge Base](https://qnamaker.ai)
+- [Verwalten Ihrer Wissensdatenbank](https://qnamaker.ai)
 - [Aktivieren Ihres Bots in verschiedenen Kanälen](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels)

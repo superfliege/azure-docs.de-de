@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: 7496142b1c762ce0a7afa96a1a94dd3026351cc9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9eb73db6f641d3a5f5bb82901bd12ea291eada58
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087923"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894080"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>Anleitung zur Migration von API-Version 1 zu API-Version 2 für LUIS-Apps
 Die [Endpunkt](https://aka.ms/v1-endpoint-api-docs)- und [Erstellungs](https://aka.ms/v1-authoring-api-docs)-APIs der Version 1 sind veraltet. In diesem Handbuch erfahren Sie, wie Sie zu den [Endpunkt](https://aka.ms/luis-endpoint-apis)- und [Erstellungs](https://aka.ms/luis-authoring-apis)-APIs der Version 2 migrieren. 
@@ -134,7 +134,7 @@ Mehrere APIs, die LUIS Metadaten zurückgeben, weisen neue Namen auf.
 
 
 ## <a name="sample-renamed-to-suggest"></a>„Beispiel“ in „Vorschlag“ umbenannt
-LUIS schlägt Äußerungen von vorhandenen [Endpunktäußerungen](luis-how-to-review-endoint-utt.md) vor, die das Modell verbessern können. In der vorherigen Version wurde dies als **Beispiel** bezeichnet. In der neuen Version wurde diese Bezeichnung von „Beispiel“ in **Vorschlag** geändert. Auf der LUIS-Website wird dies **[Review endpoint utterances](luis-how-to-review-endoint-utt.md)** (Endpunktäußerungen überprüfen) genannt.
+LUIS schlägt Äußerungen von vorhandenen [Endpunktäußerungen](luis-how-to-review-endpoint-utterances.md) vor, die das Modell verbessern können. In der vorherigen Version wurde dies als **Beispiel** bezeichnet. In der neuen Version wurde diese Bezeichnung von „Beispiel“ in **Vorschlag** geändert. Auf der LUIS-Website wird dies **[Review endpoint utterances](luis-how-to-review-endpoint-utterances.md)** (Endpunktäußerungen überprüfen) genannt.
 
 | Version | Route |
 |--|--|

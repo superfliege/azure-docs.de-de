@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 17e4d576d4c524321fd19c589868a323f97c48a1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9f1df23d1f0f24787bb9267064ffd647eda2cb74
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58079713"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756048"
 ---
 # <a name="learn-image-moderation-concepts"></a>Lernen von Bildmoderationskonzepten
 
@@ -66,7 +66,7 @@ Beispiel für die Extraktion:
 
 ## <a name="detecting-faces"></a>Erkennen von Gesichtern
 
-Das Erkennen von Gesichtern hilft beim Ermitteln von personenbezogenen Informationen (PII), z.B. Gesichter auf dem Bild. Sie können potenzielle Gesichter und die Anzahl potenzieller Gesichter in jedem Bild ermitteln.
+Das Erkennen von Gesichtern hilft dabei, persönliche Daten wie Gesichter in den Bildern zu erkennen. Sie können potenzielle Gesichter und die Anzahl potenzieller Gesichter in jedem Bild ermitteln.
 
 Eine Antwort enthält die folgenden Informationen:
 

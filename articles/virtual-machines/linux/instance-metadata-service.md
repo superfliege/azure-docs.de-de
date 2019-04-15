@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/15/2019
+ms.date: 03/28/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 0963dc63840e8420118e536b62a2ce58a1b384ac
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c3e2102b5794fb3770b1c77e241320fa7d2222c7
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57847058"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850791"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst
 
@@ -103,13 +103,16 @@ API | Standarddatenformat | Andere Formate
 --------|---------------------|--------------
 /instance | json | text
 /scheduledevents | json | none
-/attested | json | (Keine)
+/attested | json | none
 
-Um auf ein nicht standardmäßiges Antwortformat zuzugreifen, geben Sie das angeforderte Format als QueryString-Parameter in der Anforderung an. Beispiel:
+Um auf ein nicht standardmäßiges Antwortformat zuzugreifen, geben Sie das angeforderte Format als QueryString-Parameter in der Anforderung an. Beispiel: 
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
 ```
+
+> [!NOTE]
+> Für Blattknoten funktioniert `format=json` nicht. Für diese Abfragen muss `format=text` explizit angegeben werden, wenn das Standardformat JSON ist.
 
 ### <a name="security"></a>Sicherheit
 
@@ -123,8 +126,8 @@ Wenn ein Datenelement nicht gefunden wird oder eine Anforderung ungültig ist, g
 HTTP-Statuscode | Grund
 ----------------|-------
 200 – OK |
-400 – Ungültige Anforderung | Fehlender Header `Metadata: true`
-404 – Nicht gefunden | Das angeforderte Element ist nicht vorhanden. 
+400 – Ungültige Anforderung | Fehlender `Metadata: true`-Header oder fehlendes Format beim Abfragen eines Blattknotens
+404 – Nicht gefunden | Das angeforderte Element ist nicht vorhanden.
 405 – Methode unzulässig | Es werden ausschließlich `GET`- und `POST`-Anforderungen unterstützt.
 429 – Zu viele Anforderungen | Die API unterstützt derzeit maximal 5 Abfragen pro Sekunde.
 500 – Dienstfehler     | Wiederholen Sie den Vorgang später.
@@ -216,7 +219,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018
     "resourceGroupName": "myrg",
     "sku": "5-6",
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
-    "tags": "",
+    "tags": "Department:IT;Environment:Prod;Role:WorkerRole",
     "version": "7.1.1902271506",
     "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
     "vmScaleSetName": "",
@@ -293,7 +296,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
     "resourceGroupName": "myrg",
     "sku": "5-6",
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
-    "tags": "",
+    "tags": "Department:IT;Environment:Test;Role:WebRole",
     "version": "7.1.1902271506",
     "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
     "vmScaleSetName": "",
@@ -351,7 +354,7 @@ resourceGroupName | [Ressourcengruppe](../../azure-resource-manager/resource-gro
 placementGroupId | [Platzierungsgruppe](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) der VM-Skalierungsgruppe | 2017-08-01
 Tarif | Der [Tarif](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) für einen virtuellen Computer im entsprechenden Azure Marketplace-Image, enthält Namen, Produkt und Herausgeber | 2018-04-02
 Anbieter | Anbieter des virtuellen Computers | 01.10.2018
-publicKeys | Sammlung von öffentlichen Schlüsseln [https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey], dem virtuellen Computer und den entsprechenden Pfaden zugewiesen | 2018-04-02
+publicKeys | [Sammlung von öffentlichen Schlüsseln](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey), dem virtuellen Computer und den entsprechenden Pfaden zugewiesen | 2018-04-02
 vmScaleSetName | [Name Ihrer VM-Skalierungsgruppe](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
 Zone | [Verfügbarkeitszone](../../availability-zones/az-overview.md) Ihres virtuellen Computers | 2017-12-01
 ipv4/privateIpAddress | Lokale IPv4-Adresse der VM | 2017-04-02
@@ -502,20 +505,42 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 Azure verfügt über verschiedene Sovereign Clouds wie [Azure Government](https://azure.microsoft.com/overview/clouds/government/). In manchen Fällen muss die Azure-Umgebung gewisse Laufzeitentscheidungen treffen. Im folgenden Beispiel wird gezeigt, wie Sie dieses Verhalten erzielen können.
 
 **Anforderung**
-
-curl -H Metadata:true „http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text“
+``` bash
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnvironment?api-version=2018-10-01&format=text"
+```
 
 **Antwort**
 ```
 AZUREPUBLICCLOUD
 ```
 
+### <a name="getting-the-tags-for-the-vm"></a>Abrufen der Tags für die VM
+
+Möglicherweise haben Sie Ihren Azure-VMs Tags zugewiesen, um sie logisch in einer Taxonomie zu strukturieren. Die einer VM zugewiesenen Tags können mithilfe der Abfrage unten abgerufen werden.
+
+**Anforderung**
+
+```bash
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
+```
+
+**Antwort**
+
+```text
+Department:IT;Environment:Test;Role:WebRole
+```
+
+> [!NOTE]
+> Die Tags sind durch Semikolons getrennt. Wenn ein Parser zur programmgesteuerten Extraktion der Tags geschrieben wird, sollten die Tagnamen und -werte keine Semikolons enthalten, damit der Parser ordnungsgemäß funktionieren kann.
+
 ### <a name="validating-that-the-vm-is-running-in-azure"></a>Überprüfen der Ausführung des virtuellen Computers in Azure
 
  Marketplace-Anbieter möchten sicherstellen, dass ihre Software nur für die Ausführung in Azure lizenziert ist. Wenn die virtuelle Festplatte in eine lokale Umgebung kopiert wird, müssen sie über die Möglichkeit verfügen, dies zu erkennen. Durch Aufrufen von Instance Metadata Service können Marketplace-Anbieter signierte Daten abrufen, die garantieren, dass Antworten ausschließlich von Azure kommen.
- **Anforderung**
+
  > [!NOTE]
 > Die Installation von jq ist erforderlich.
+
+ **Anforderung**
 
  ```bash
   # Get the signature

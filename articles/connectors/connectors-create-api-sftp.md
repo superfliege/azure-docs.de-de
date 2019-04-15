@@ -11,12 +11,12 @@ ms.assetid: 697eb8b0-4a66-40c7-be7b-6aa6b131c7ad
 ms.topic: article
 tags: connectors
 ms.date: 10/26/2018
-ms.openlocfilehash: 5d328164ac8ad99db15a12d850327615a9ffd809
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 42e1ef3e311633f9631163bc9d3df212b608ef3a
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54910283"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578372"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Überwachen, Erstellen und Verwalten von SFTP-Dateien mithilfe von Azure Logic Apps
 
@@ -27,10 +27,18 @@ Zum Automatisieren von Aufgaben, die Dateien auf einem [SFTP](https://www.ssh.co
 * Sie können Dateiinhalte und Metadaten abrufen.
 * Sie können Archive in Ordner extrahieren.
 
-Im Vergleich zum [SFTP-SSH-Connector](../connectors/connectors-sftp-ssh.md) kann der SFTP-Connector Dateien mit einer Größe von bis zu 50 MB lesen oder schreiben, es sei denn, Sie verwenden [Nachrichtenblöcke in Aktionen](../logic-apps/logic-apps-handle-large-messages.md). Für Trigger kann derzeit keine Blockerstellung verwendet werden. Verwenden Sie für Dateien mit einer Größe von bis zu 1 GB den [SFTP-SSH-Connector](../connectors/connectors-sftp-ssh.md). Für Dateien, die größer als 1 GB sind, können Sie den SFTP-SSH-Connector in Kombination mit [Nachrichtenblöcken](../logic-apps/logic-apps-handle-large-messages.md) verwenden. 
-
 Sie können Trigger verwenden, die Ereignisse auf Ihrem SFTP-Server überwachen und die Ausgabe für andere Aktionen verfügbar machen. Sie können Aktionen verwenden, die verschiedene Aufgaben auf Ihrem SFTP-Server ausführen. Darüber hinaus können die Ausgaben von SFTP-Aktionen auch von anderen Aktionen in Ihrer Logik-App verwendet werden. Wenn Sie beispielsweise regelmäßig Dateien von Ihrem SFTP-Server abrufen, können Sie mithilfe des Office 365 Outlook-Connectors oder des Outlook.com-Connectors E-Mail-Benachrichtigungen zu diesen Dateien und ihren Inhalten senden.
 Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md).
+
+## <a name="limits"></a>Einschränkungen
+
+* SFTP-Aktionen können Dateien lesen bzw. in Dateien schreiben, die *50 MB oder kleiner* sind, sofern Sie nicht die Option [Nachrichtenblöcke in Aktionen](../logic-apps/logic-apps-handle-large-messages.md) verwenden, mit der Sie diesen Grenzwert überschreiten können. SFTP-Trigger unterstützen derzeit keine Blockerstellung.
+
+* Verwenden Sie für Dateien mit einer Größe von *bis zu 1 GB* den [SFTP-SSH-Connector](../connectors/connectors-sftp-ssh.md).
+
+* Verwenden Sie für Dateien, die *größer als 1 GB* sind, den SFTP-SSH-Connector in Kombination mit der Option [Nachrichtenblöcke](../logic-apps/logic-apps-handle-large-messages.md).
+
+Weitere Unterschiede zwischen dem SFTP-Connector und dem SFTP-SSH-Connector finden Sie unter [Vergleichen von SFTP-SSH und SFTP](../connectors/connectors-sftp-ssh.md#comparison) im SFTP-SSH-Artikel.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

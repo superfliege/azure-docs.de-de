@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: be0b930c99bb14c34e395efce494e8d7372719b0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7b81b53c03104023823bef75beb4ac6077feede7
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998142"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918687"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-website"></a>Anpassen eines Sprachmodells mit der Video Indexer-Website
 
@@ -117,6 +117,34 @@ Dies öffnet ein neues Fenster mit der Mitteilung, dass die Löschung nicht rüc
 
 Durch diese Aktion wird das Sprachmodell vollständig aus Ihrem Konto entfernt. Jedes Video, das das gelöschte Sprachmodell verwendet hat, behält den gleichen Index bei, bis Sie das Video erneut indizieren. Wenn Sie das Video erneut indizieren, können Sie dem Video ein neues Sprachmodell zuweisen. Andernfalls verwendet Video Indexer das Standardmodell, um das Video erneut zu indizieren. 
 
+## <a name="customize-language-models-by-correcting-transcripts"></a>Anpassen von Sprachmodellen durch Korrigieren von Transkripten
+
+Video Indexer unterstützt die automatische Anpassung von Sprachmodellen basierend auf den tatsächlichen Korrekturen, die Benutzer an den Transkriptionen ihrer Videos vornehmen.
+
+1. Um Korrekturen an einem Transkript vorzunehmen, öffnen Sie das Video, das Sie bearbeiten möchten, aus Ihren Kontovideos. Wählen Sie die Registerkarte **Zeitachse**.
+
+    ![Anpassen eines Sprachmodells](./media/customize-language-model/timeline.png)
+1. Klicken Sie auf das Stiftsymbol, um das Transkript Ihrer Transkription zu bearbeiten. 
+
+    ![Anpassen eines Sprachmodells](./media/customize-language-model/edits.png)
+
+    Video Indexer erfasst alle Zeilen, die von Ihnen in der Transkription Ihres Videos korrigiert werden, und fügt sie automatisch zu einer Textdatei namens „Aus Transkriptbearbeitungen“ hinzu. Diese Bearbeitungen werden verwendet, um das spezifische Sprachmodell, mit dem dieses Video indiziert wurde, neu zu trainieren. 
+    
+    Wenn Sie bei der Indizierung dieses Videos kein Sprachmodell angegeben haben, werden alle Bearbeitungen für dieses Video in einem Standardsprachenmodell namens Kontoanpassungen innerhalb der erkannten Sprache des Videos gespeichert. 
+    
+    Falls mehrere Änderungen an derselben Zeile vorgenommen wurden, wird nur die letzte Version der korrigierten Zeile für die Aktualisierung des Sprachmodells verwendet.  
+    
+    > [!NOTE]
+    > Für die Anpassung werden nur Textkorrekturen verwendet. Das bedeutet, dass Korrekturen, die keine eigentlichen Wörter beinhalten (z.B. Satzzeichen oder Leerzeichen), nicht berücksichtigt werden. 
+    
+1. Transkriptkorrekturen werden auf der Registerkarte „Sprache“ auf der Seite zur Anpassung des Inhaltsmodells angezeigt.
+
+    ![Anpassen eines Sprachmodells](./media/customize-language-model/customize.png)
+
+   Um die Datei „Aus Transkriptbearbeitungen“ für jedes Ihrer Sprachmodelle anzusehen, klicken Sie darauf, um sie zu öffnen. 
+
+    ![Aus Transkriptbearbeitungen](./media/customize-language-model/from-transcript-edits.png)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Customize language model using APIs (Anpassen eines Sprachmodells mithilfe von APIs)](customize-language-model-with-api.md)
+[Anpassen des Sprachmodells mit APIs](customize-language-model-with-api.md)

@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: jeconnoc
-ms.openlocfilehash: aa62db0948ffa036b37736477b872d694d14836b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a2eff2ca2e72ad263e3e23d0827e7603bca3fdcb
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762598"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917475"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Erste Schritte mit Azure-Clouddiensten und ASP.NET
 
 ## <a name="overview"></a>Übersicht
-Dieses Tutorial behandelt die Erstellung einer .NET-Anwendung mit mehreren Ebenen und einem ASP.NET MVC-Front-End sowie die Bereitstellung dieser Anwendung in einem [Azure-Clouddienst](cloud-services-choose-me.md). Die Anwendung verwendet eine [Azure SQL-Datenbank](https://msdn.microsoft.com/library/azure/ee336279), den [Azure-Blobdienst](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) und den [Azure-Warteschlangendienst](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern). Sie können das [Visual Studio-Projekt](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) aus dem MSDN-Codekatalog herunterladen.
+Dieses Tutorial behandelt die Erstellung einer .NET-Anwendung mit mehreren Ebenen und einem ASP.NET MVC-Front-End sowie die Bereitstellung dieser Anwendung in einem [Azure-Clouddienst](cloud-services-choose-me.md). Die Anwendung verwendet eine [Azure SQL-Datenbank](/previous-versions/azure/ee336279(v=azure.100)), den [Azure-Blobdienst](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage) und den [Azure-Warteschlangendienst](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern). Sie können das [Visual Studio-Projekt](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) aus dem MSDN-Codekatalog herunterladen.
 
 In diesem Tutorial erfahren Sie, wie Sie die Anwendung erstellen und lokal ausführen, in Azure bereitstellen und in der Cloud ausführen sowie von Grund auf erstellen können. Sie können auch mit der Erstellung von Grund auf beginnen und die Test- und Bereitstellungsschritte anschließend ausführen.
 
@@ -81,7 +81,7 @@ Wenn ein Benutzer ein Bild hochlädt, speichert das in einer Webrolle ausgeführ
 6. Wenn Sie Visual Studio 2015 oder höher verwenden, ändern Sie die SQL Server-Verbindungszeichenfolge in der Anwendungsdatei *Web.config* des ContosoAdsWeb-Projekts und in der Datei *ServiceConfiguration.Local.cscfg* des ContosoAdsCloudService-Projekts. Ändern Sie in beiden Fällen „(localdb)\v11.0“ in „(localdb)\MSSQLLocalDB“.
 7. Drücken Sie STRG+F5, um die Anwendung auszuführen.
 
-    Wenn Sie ein Clouddienstprojekt lokal ausführen, startet Visual Studio automatisch *Azure-Serveremulator* und *Azure-Speicheremulator*. Der Serveremulator verwendet die Ressourcen Ihres Computers, um die Umgebungen von Web- und Workerrolle zu simulieren. Der Speicheremulator verwendet eine [SQL Server Express LocalDB](https://msdn.microsoft.com/library/hh510202.aspx) -Datenbank, um den Azure-Cloudspeicher zu simulieren.
+    Wenn Sie ein Clouddienstprojekt lokal ausführen, startet Visual Studio automatisch *Azure-Serveremulator* und *Azure-Speicheremulator*. Der Serveremulator verwendet die Ressourcen Ihres Computers, um die Umgebungen von Web- und Workerrolle zu simulieren. Der Speicheremulator verwendet eine [SQL Server Express LocalDB](/sql/database-engine/configure-windows/sql-server-2016-express-localdb) -Datenbank, um den Azure-Cloudspeicher zu simulieren.
 
     Wenn Sie ein Clouddienstprojekt zum ersten Mal ausführen, kann der Start der Emulatoren ca. eine Minute in Anspruch nehmen. Wenn die Emulatoren gestartet sind, wird der Standardbrowser mit der Startseite der Anwendung geöffnet.
 
@@ -178,7 +178,7 @@ In einer tatsächlichen Anwendung würden Sie normalerweise separate Konten für
 
     Wenn sich Clouddienst und Speicherkonto in unterschiedlichen Datencentern (d. h. unterschiedlichen Regionen) befinden, steigt die Latenz an und Sie müssen für die Bandbreite außerhalb des Datencenters bezahlen. Die Bandbreite innerhalb eines Datencenters ist kostenlos.
 
-    Mit Azure-Affinitätsgruppen können Sie die Distanz zwischen Ressourcen in einem Datencenter und somit die Latenz minimieren. Dieses Tutorial verwendet keine Affinitätsgruppen. Anweisungen finden Sie unter [Erstellen einer Affinitätsgruppe in Azure](https://msdn.microsoft.com/library/azure/gg715317.aspx).
+    Mit Azure-Affinitätsgruppen können Sie die Distanz zwischen Ressourcen in einem Datencenter und somit die Latenz minimieren. Dieses Tutorial verwendet keine Affinitätsgruppen. Anweisungen finden Sie unter [Erstellen einer Affinitätsgruppe in Azure](/previous-versions/azure/reference/gg715317(v=azure.100)).
 7. Klicken Sie auf **Create**.
 
     ![Neues Speicherkonto](./media/cloud-services-dotnet-get-started/newstorage.png)
@@ -232,7 +232,7 @@ Die Verbindungszeichenfolgen für das Azure-Speicherkonto für das Web- und Work
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **ContosoAdsWeb** unter **Rollen** im Projekt **ContosoAdsCloudService**, und klicken Sie dann auf **Eigenschaften**.
 
     ![Rolleneigenschaften](./media/cloud-services-dotnet-get-started/roleproperties.png)
-2. Klicken Sie auf die Registerkarte **Settings** . Wählen Sie in der Dropdownliste Dienstkonfiguration den Wert **Cloud** aus.
+2. Klicken Sie auf die Registerkarte **Settings** . Wählen Sie in der Dropdownliste **Dienstkonfiguration** den Wert **Cloud** aus.
 
     ![Cloudkonfiguration](./media/cloud-services-dotnet-get-started/sccloud.png)
 3. Wenn Sie den Eintrag **StorageConnectionString** auswählen, sehen Sie am Ende der Zeile eine Schaltfläche mit Auslassungspunkten (**...**). Klicken Sie auf die elliptische Schaltfläche, um das Dialogfeld **Verbindungszeichenfolge für Speicherkonto erstellen** zu öffnen.
@@ -549,7 +549,7 @@ queueClient.DefaultRequestOptions.RetryPolicy = new LinearRetry(TimeSpan.FromSec
 imagesQueue = queueClient.GetQueueReference("images");
 ```
 
-Ein Großteil des Controller-Codes ist typisch für die Arbeit mit einem Entity Framework-Datenmodell und einer DbContext-Klasse. Eine Ausnahme ist die HttpPost `Create` -Methode, die eine Datei hochlädt und im Blobspeicher ablegt. Die Modellbindung stellt ein [HttpPostedFileBase](https://msdn.microsoft.com/library/system.web.httppostedfilebase.aspx) -Objekt für die Methode bereit.
+Ein Großteil des Controller-Codes ist typisch für die Arbeit mit einem Entity Framework-Datenmodell und einer DbContext-Klasse. Eine Ausnahme ist die HttpPost `Create` -Methode, die eine Datei hochlädt und im Blobspeicher ablegt. Die Modellbindung stellt ein [HttpPostedFileBase](/dotnet/api/system.web.httppostedfilebase) -Objekt für die Methode bereit.
 
 ```csharp
 [HttpPost]
@@ -775,7 +775,7 @@ Ein Einführungsvideo zu bewährten Methoden und Vorlagen für Azure Storage fin
 
 Weitere Informationen finden Sie in den folgenden Ressourcen:
 
-* [Azure Cloud Services Part 1: Einführung](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
-* [Verwalten von Cloud Services](cloud-services-how-to-manage-portal.md)
-* [Azure Storage (in englischer Sprache)](https://docs.microsoft.com/azure/storage/)
+* [Azure Cloud Services Teil 1: Einführung](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
+* [Verwalten von Clouddiensten](cloud-services-how-to-manage-portal.md)
+* [Azure Storage](https://docs.microsoft.com/azure/storage/)
 * [Wie wähle ich den richtigen Clouddienstanbieter?](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)

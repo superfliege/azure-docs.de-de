@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: damaerte
-ms.openlocfilehash: 1b6419feef96b57bafd0831531bd8cfa56142cc4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b8f96de7214a46c9e38182c141343a46c0e28139
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089147"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882088"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Schnellstart für Bash in Azure Cloud Shell
 
@@ -49,9 +49,9 @@ Stellen Sie sicher, dass auf der linken Seite des Shellfensters im Dropdownmenü
    ```
 
 2. Legen Sie Ihr bevorzugtes Abonnement fest: <br>
-   ```azurecli-interactive
-   az account set --subscription my-subscription-name`
-   ```
+```azurecli-interactive
+az account set --subscription 'my-subscription-name'
+```
 
 > [!TIP]
 > Ihr Abonnement wird mithilfe von `/home/<user>/.azure/azureProfile.json` für künftige Sitzungen gespeichert.
@@ -101,4 +101,4 @@ Nach dem Herstellen der SSH-Verbindung sollte der Willkommensbildschirm von Ubun
 ## <a name="next-steps"></a>Nächste Schritte
 [Erfahren Sie mehr über das Beibehalten von Dateien für Bash in Cloud Shell](persisting-shell-storage.md) <br>
 [Erfahren Sie mehr über die Azure CLI](https://docs.microsoft.com/cli/azure/) <br>
-[Erfahren Sie mehr über Azure Files-Speicher.](../storage/files/storage-files-introduction.md) <br>
+[Erfahren Sie mehr über Azure Files-Speicher](../storage/files/storage-files-introduction.md) <br>

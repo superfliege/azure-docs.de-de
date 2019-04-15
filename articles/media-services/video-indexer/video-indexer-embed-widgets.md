@@ -7,21 +7,18 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: fd680b00feb8a75dfec952d7211554100fca00d8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 73ceb0a92b97e90b1fdb0c5562d623505e86b870
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075065"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891583"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Einbetten von Video Indexer-Widgets in Ihre Anwendungen
 
 In diesem Artikel wird gezeigt, wie Sie Video Indexer-Widgets in Ihre Anwendungen einbetten können. Video Indexer unterstützt das Einbetten von zwei Widget-Typen in Ihre Anwendung: **Kognitive Erkenntnisse** und **Player**. 
-
-> [!NOTE]
-> Seit dem 1. Februar 2018 ist die Version 1 des Widgets **Kognitive Erkenntnisse** veraltet. Die Version der Einbettungs-URL wird standardmäßig zu `version=2`.
 
 Ab Version 2 enthält die Basis-URL des Widgets die Region des Kontos. Ein Konto in der Region „USA, Westen“ generiert z.B.: `https://wus2.videoindexer.ai/embed/insights/...`.
 
@@ -33,8 +30,7 @@ Ein Widget vom Typ **Kognitive Erkenntnisse** enthält alle visuellen Erkenntnis
 
 |NAME|Definition|BESCHREIBUNG|
 |---|---|---|
-|Widgets|Durch Komma getrennte Zeichenfolgen|Ermöglicht das Steuern der Erkenntnisse, die Sie rendern möchten. <br/>Beispiel: Mit `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` werden nur Benutzeroberflächenerkenntnisse für Personen und Marken gerendert.<br/>Verfügbare Optionen: People (Personen), Keywords (Stichwörter), Annotations (Anmerkungen), Brands (Marken), Sentiments (Stimmungen), Transcript (Transkript), Search (Suche)<br/>nicht unterstützt über URL bei „version=2“<br/><br/>**Hinweis:** Hinweis: Der URL-Parameter **widgets** wird bei Verwenden von **version=2** nicht unterstützt. |
-|Version|Versionen des Widgets **Kognitive Erkenntnisse**|Fügen Sie den Abfrageparameter `?version=2` an die Einbettungs-URL an, um die neuesten Updates für das Widget „Kognitive Erkenntnisse“ abzurufen. Zum Beispiel, `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?version=2` <br/> Um die ältere Version abzurufen, entfernen Sie einfach `version=2` aus der URL.
+|Widgets|Durch Komma getrennte Zeichenfolgen|Ermöglicht das Steuern der Erkenntnisse, die Sie rendern möchten. <br/>Beispiel: Mit `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` werden nur Benutzeroberflächenerkenntnisse für Personen und Marken gerendert.<br/>Verfügbare Optionen: People (Personen), Keywords (Stichwörter), Annotations (Anmerkungen), Brands (Marken), Sentiments (Stimmungen), Transcript (Transkript), Search (Suche)<br/>nicht unterstützt über URL bei „version=2“<br/><br/>**Hinweis:** Der URL-Parameter „widgets“ wird in Version 2 nicht unterstützt. |
 
 ### <a name="player-widget"></a>Player-Widget
 
@@ -96,7 +92,7 @@ Wenn Sie Ihren eigenen Playercode implementieren und die Integration mit Widgets
 
 In diesem Abschnitt wird veranschaulicht, wie Sie die Interaktion zwischen zwei Video Indexer-Widgets so konfigurieren, dass der Player zum relevanten Moment springt, wenn ein Benutzer in Ihrer Anwendung auf das Steuerelement für Erkenntnisse klickt.
 
-`<script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script> `
+`<script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script>`
 
 1. Kopieren Sie den Einbettungscode des **Player**-Widgets.
 2. Kopieren Sie den Einbettungscode von **Kognitive Erkenntnisse**.
@@ -258,4 +254,4 @@ Automatische Wiedergabe: Standardmäßig beginnt der Player mit der Wiedergabe d
 
 Weitere Informationen zum Anzeigen und Bearbeiten von Video Indexer-Erkenntnissen finden Sie in [diesem Artikel](video-indexer-view-edit.md).
 
-Sehen Sie sich außerdem auch [Video Indexer Codepen](https://codepen.io/videoindexer/pen/eGxebZ) an.
+Sehen Sie sich außerdem auch [Video Indexer CodePen](https://codepen.io/videoindexer/pen/eGxebZ) an.

@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/28/2018
+ms.date: 04/01/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 04da80cd5c30d0556dc681b7bff412391aa2bcda
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 69417551c1c8d410f75e74a8164c8b8a223ab835
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58107728"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805328"
 ---
 # <a name="backup-and-restore"></a>Sichern und Wiederherstellen
 
@@ -58,7 +58,7 @@ Die zugrunde liegende Speicherinfrastruktur von SAP HANA in Azure (große Instan
 - Beim Auslösen einer Momentaufnahme für die Volumes „/hana/data“ und „/hana/shared“ (einschließlich „/usr/sap“) initiiert die Technologie für Momentaufnahmen vor dem Ausführen der Speichermomentaufnahme eine SAP HANA-Momentaufnahme. Diese SAP HANA-Momentaufnahme ist der Einrichtungspunkt für nachfolgende Wiederherstellungen von Protokollen, nachdem die Speichermomentaufnahme wiederhergestellt wurde. Für erfolgreiche HANA-Momentaufnahmen benötigen Sie eine aktive HANA-Instanz.  Im HSR-Szenario werden Speichermomentaufnahmen auf aktuellen sekundären Knoten, auf denen HANA Momentaufnahmen nicht ausgeführt werden können, nicht unterstützt.
 - Nach der erfolgreichen Erstellung der Speichermomentaufnahme wird die SAP HANA-Momentaufnahme gelöscht.
 - Transaktionsprotokollsicherungen werden in regelmäßigen Abständen erstellt und auf dem Volume „/hana/logbackups“ oder in Azure gespeichert. Sie können für das Volume „/hana/logbackups“ mit den Transaktionsprotokollsicherungen eine separate Momentaufnahmenerstellung auslösen. In diesem Fall müssen Sie keine HANA-Momentaufnahme erstellen.
-- Wenn Sie eine Datenbank zu einem bestimmten Zeitpunkt wiederherstellen müssen, fordern Sie beim Microsoft Azure-Support (bei einem Produktionsausfall) oder beim Dienstverwaltungsteam für SAP HANA in Azure die Wiederherstellung einer bestimmten Speichermomentaufnahme an. Ein Beispiel ist eine geplante Wiederherstellung eines Sandkastensystems in seinen ursprünglichen Zustand.
+- Wenn Sie eine Datenbank zu einem bestimmten Zeitpunkt wiederherstellen müssen, fordern Sie beim Microsoft Azure-Support (bei einem Produktionsausfall) oder bei SAP HANA in Azure die Wiederherstellung einer bestimmten Speichermomentaufnahme an. Ein Beispiel ist eine geplante Wiederherstellung eines Sandkastensystems in seinen ursprünglichen Zustand.
 - Die in der Speichermomentaufnahme enthaltene SAP HANA-Momentaufnahme ist ein Ausgangspunkt für die Anwendung von Transaktionsprotokollsicherungen, die nach Erstellung der Speichermomentaufnahme erstellt und gespeichert wurden.
 - Diese Transaktionsprotokollsicherungen werden erstellt, um eine Point-in-Time-Wiederherstellung der Datenbank zu ermöglichen.
 
@@ -167,15 +167,16 @@ MACs hmac-sha1
 
 Um den Zugriff auf die Speichermomentaufnahme-Schnittstellen Ihres HANA-Mandanten (große Instanzen) zu ermöglichen, müssen Sie ein Anmeldeverfahren einrichten, das auf einem öffentlichen Schlüssel basiert. Erstellen Sie in Ihrem Mandanten auf dem ersten Server mit SAP HANA in Azure (große Instanzen) einen öffentlichen Schlüssel, der für den Zugriff auf die Speicherinfrastruktur verwendet wird. Der öffentliche Schlüssel sorgt dafür, dass für die Anmeldung bei den Speichermomentaufnahme-Schnittstellen kein Kennwort erforderlich ist. Die Erstellung eines öffentlichen Schlüssels bedeutet auch, dass Sie keine Kennwortanmeldeinformationen verwalten müssen. Führen Sie unter Linux auf dem Server mit SAP HANA (große Instanzen) den folgenden Befehl aus, um den öffentlichen Schlüssel zu generieren:
 ```
-  ssh-keygen –t dsa –b 1024
+  ssh-keygen -t rsa –b 5120 -C ""
 ```
-Der neue Speicherort ist **_/root/.ssh/id\_dsa.pub**. Geben Sie kein Kennwort ein, da dies sonst bei jeder Anmeldung erforderlich ist. Drücken Sie stattdessen zweimal die **EINGABETASTE**, um die Kennworteingabeaufforderung bei der Anmeldung zu entfernen.
+
+Der neue Speicherort ist **_/root/.ssh/id\_rsa.pub**. Geben Sie kein Kennwort ein, da dies sonst bei jeder Anmeldung erforderlich ist. Drücken Sie stattdessen zweimal die **EINGABETASTE**, um die Kennworteingabeaufforderung bei der Anmeldung zu entfernen.
 
 Vergewissern Sie sich, dass der öffentliche Schlüssel wie erwartet korrigiert wurde, indem Sie zu den Ordnern unter **/root/.ssh/** navigieren und dann den Befehl `ls` ausführen. Wenn der Schlüssel vorhanden ist, können Sie ihn mit dem folgenden Befehl kopieren:
 
 ![Der öffentliche Schlüssel wird durch Ausführen dieses Befehls kopiert.](./media/hana-overview-high-availability-disaster-recovery/image2-public-key.png)
 
-Wenden Sie sich als Nächstes an das Dienstverwaltungsteam für SAP HANA in Azure, und geben Sie den öffentlichen Schlüssel an. Der Servicemitarbeiter verwendet den öffentlichen Schlüssel für die Registrierung in der zugrunde liegenden Speicherinfrastruktur, die für Ihren HANA-Mandanten (große Instanzen) eingerichtet ist.
+Wenden Sie sich als Nächstes an SAP HANA in Azure, und geben Sie den öffentlichen Schlüssel an. Der Servicemitarbeiter verwendet den öffentlichen Schlüssel für die Registrierung in der zugrunde liegenden Speicherinfrastruktur, die für Ihren HANA-Mandanten (große Instanzen) eingerichtet ist.
 
 ### <a name="step-4-create-an-sap-hana-user-account"></a>Schritt 4: Erstellen eines SAP HANA-Benutzerkontos
 
@@ -262,7 +263,7 @@ Die einzelnen Skripts und Dateien haben folgende Zwecke:
 - **removeTestStorageSnapshot.pl**: Dieses Skript löscht die Testmomentaufnahme, die mit dem Skript **testStorageSnapshotConnection.pl** erstellt wurde.
 - **azure\_hana\_dr\_failover.pl**: Mit diesem Skript wird ein Notfallwiederherstellungs-Failover in eine andere Region initiiert. Das Skript muss auf der Einheit von HANA (große Instanzen) in der Region für die Notfallwiederherstellung oder auf der Einheit, die als Ziel für das Failover dienen soll, ausgeführt werden. Dieses Skript beendet die Speicherreplikation von der primären Seite auf die sekundäre Seite, stellt die letzte Momentaufnahme auf den Notfallwiederherstellungsvolumes wieder her und stellt die Bereitstellungspunkte für die Notfallwiederherstellungsvolumes bereit.
 - **azure\_hana\_test\_dr\_failover.pl**: Mit diesem Skript wird ein Testfailover an den Notfallwiederherstellungs-Standort durchgeführt. Im Gegensatz zum Skript „azure_hana_dr_failover.pl“ wird bei dieser Ausführung die Speicherreplikation vom primären zum sekundären Replikat nicht unterbrochen. Stattdessen werden Klone der replizierten Speichervolumes auf der Notfallwiederherstellungsseite erstellt, und die Bereitstellungspunkte der geklonten Volumes werden bereitgestellt. 
-- **HANABackupCustomerDetails.txt**: Bei dieser Datei handelt es sich um eine bearbeitbare Konfigurationsdatei, die Sie an Ihre SAP HANA-Konfiguration anpassen müssen. Die Datei *HANABackupCustomerDetails.txt* ist die Steuerungs- und Konfigurationsdatei für das Skript, das die Speichermomentaufnahmen erstellt. Passen Sie die Datei für Ihre Zwecke und Einrichtung an. Die Angaben für **Storage Backup Name** (Name der Speichersicherung) und **Storage IP Address** (IP-Adresse des Speichers) erhalten Sie vom Dienstverwaltungsteam für SAP HANA in Azure, wenn Ihre Instanzen bereitgestellt werden. Reihenfolge, Sortierung und Abstand der Variablen in dieser Datei dürfen nicht verändert werden. Andernfalls werden die Skripts nicht richtig ausgeführt. Darüber hinaus erhalten Sie vom Dienstverwaltungsteam für SAP HANA in Azure die IP-Adresse des Knotens für zentrales Hochskalieren oder die IP-Adresse des Masterknotens (bei horizontalem Hochskalieren). Zudem ist Ihnen auch die Anzahl von HANA-Instanzen bekannt, die Sie während der Installation von SAP HANA erhalten. Nun müssen Sie der Konfigurationsdatei einen Sicherungsnamen hinzufügen.
+- **HANABackupCustomerDetails.txt**: Bei dieser Datei handelt es sich um eine bearbeitbare Konfigurationsdatei, die Sie an Ihre SAP HANA-Konfiguration anpassen müssen. Die Datei *HANABackupCustomerDetails.txt* ist die Steuerungs- und Konfigurationsdatei für das Skript, das die Speichermomentaufnahmen erstellt. Passen Sie die Datei für Ihre Zwecke und Einrichtung an. Die Angaben für **Storage Backup Name** (Name der Speichersicherung) und **Storage IP Address** (IP-Adresse des Speichers) erhalten Sie von SAP HANA in Azure, wenn Ihre Instanzen bereitgestellt werden. Reihenfolge, Sortierung und Abstand der Variablen in dieser Datei dürfen nicht verändert werden. Andernfalls werden die Skripts nicht richtig ausgeführt. Darüber hinaus erhalten Sie von SAP HANA in Azure die IP-Adresse des Knotens für zentrales Hochskalieren oder die IP-Adresse des Masterknotens (bei horizontalem Hochskalieren). Zudem ist Ihnen auch die Anzahl von HANA-Instanzen bekannt, die Sie während der Installation von SAP HANA erhalten. Nun müssen Sie der Konfigurationsdatei einen Sicherungsnamen hinzufügen.
 
 Bei einer Bereitstellung für zentrales oder horizontales Hochskalieren sieht die Konfigurationsdatei nach dem Angeben des Servernamens der HANA-Einheit für große Instanzen und der IP-Adresse des Servers wie im folgenden Beispiel aus. Füllen Sie alle erforderlichen Felder für jede SAP HANA-SID aus, die Sie sichern oder wiederherstellen möchten.
 
@@ -416,10 +417,10 @@ For snapshot of the volume storing the boot LUN
 Die Details der Parameter lauten wie folgt: 
 
 - Der erste Parameter gibt die Art der Momentaufnahmesicherung an. Die zulässige Werte lauten **hana**, **logs** und **boot**. 
-- Der Parameter **<HANA Large Instance Type>** ist notwendig, damit nur Volumesicherungen gestartet werden. Es gibt zwei gültige Werte mit „TypeI“ bzw. „TypeII“, je nach der HANA-Einheit für große Instanzen. Informationen zum Typ Ihrer Einheit finden Sie unter [Übersicht und Architektur von SAP HANA in Azure (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).  
-- Der Parameter **<snapshot_prefix>** ist eine Momentaufnahme- oder Sicherungsbezeichnung für die Art der Momentaufnahme. Sie hat zwei Aufgaben: Erstens können Sie hiermit einen Namen vergeben, damit Sie wissen, worum es sich bei diesen Momentaufnahmen handelt. Zweitens dient sie dazu, dem Skript *azure\_hana\_backup.pl* die Ermittlung der Anzahl von Speichermomentaufnahmen zu ermöglichen, die unter dieser bestimmten Bezeichnung beibehalten werden. Wenn Sie zwei Speichermomentaufnahme-Sicherungen desselben Typs (z.B. **hana**) mit zwei unterschiedlichen Bezeichnungen planen und dann definieren, dass 30 Momentaufnahmen pro Sicherung beibehalten werden sollen, erhalten Sie letztlich 60 Speichermomentaufnahmen der betroffenen Volumes. Nur alphanumerische Zeichen („A–Z, a–z, 0–9“), Unterstriche („_“) und Bindestriche („-“) sind zulässig. 
-- Der Parameter **<snapshot_frequency>** ist für künftige Entwicklungen reserviert und hat keinen Einfluss. Legen Sie ihn auf „3min“ fest, wenn Sie Sicherungen des Typs **log** ausführen, und auf „15min“, wenn Sie die anderen Sicherungstypen ausführen.
-- Der Parameter **<number of snapshots retained>** definiert indirekt die Aufbewahrung von Momentaufnahmen, indem die Anzahl von Momentaufnahmen mit dem gleichen Momentaufnahmepräfix (Bezeichnung) festgelegt wird. Dieser Parameter ist für geplante Ausführungen per Cron wichtig. Wenn die Anzahl von Momentaufnahmen mit dem gleichen „snapshot_prefix“ die durch diesen Parameter angegebene Anzahl übersteigt, wird die älteste Momentaufnahme gelöscht, bevor eine neue Speichermomentaufnahme ausgeführt wird.
+- Der Parameter **\<HANA Large Instance Type>** ist notwendig, damit nur Volumesicherungen gestartet werden. Es gibt zwei gültige Werte mit „TypeI“ bzw. „TypeII“, je nach der HANA-Einheit für große Instanzen. Informationen zum Typ Ihrer Einheit finden Sie unter [Übersicht und Architektur von SAP HANA in Azure (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).  
+- Der Parameter **\<snapshot_prefix>** ist eine Momentaufnahme- oder Sicherungsbezeichnung für die Art der Momentaufnahme. Sie hat zwei Aufgaben: Erstens können Sie hiermit einen Namen vergeben, damit Sie wissen, worum es sich bei diesen Momentaufnahmen handelt. Zweitens dient sie dazu, dem Skript *azure\_hana\_backup.pl* die Ermittlung der Anzahl von Speichermomentaufnahmen zu ermöglichen, die unter dieser bestimmten Bezeichnung beibehalten werden. Wenn Sie zwei Speichermomentaufnahme-Sicherungen desselben Typs (z.B. **hana**) mit zwei unterschiedlichen Bezeichnungen planen und dann definieren, dass 30 Momentaufnahmen pro Sicherung beibehalten werden sollen, erhalten Sie letztlich 60 Speichermomentaufnahmen der betroffenen Volumes. Nur alphanumerische Zeichen („A–Z, a–z, 0–9“), Unterstriche („_“) und Bindestriche („-“) sind zulässig. 
+- Der Parameter **\<snapshot_frequency>** ist für künftige Entwicklungen reserviert und hat keinen Einfluss. Legen Sie ihn auf „3min“ fest, wenn Sie Sicherungen des Typs **log** ausführen, und auf „15min“, wenn Sie die anderen Sicherungstypen ausführen.
+- Der Parameter **\<number of snapshots retained>** definiert indirekt die Aufbewahrung von Momentaufnahmen, indem die Anzahl von Momentaufnahmen mit dem gleichen Momentaufnahmepräfix (Bezeichnung) festgelegt wird. Dieser Parameter ist für geplante Ausführungen per Cron wichtig. Wenn die Anzahl von Momentaufnahmen mit dem gleichen „snapshot_prefix“ die durch diesen Parameter angegebene Anzahl übersteigt, wird die älteste Momentaufnahme gelöscht, bevor eine neue Speichermomentaufnahme ausgeführt wird.
 
 Beim horizontalen Hochskalieren führt das Skript zusätzliche Überprüfungen durch, um sicherzustellen, dass Sie auf alle HANA-Server zugreifen können. Das Skript überprüft außerdem, ob alle HANA-Instanzen den richtigen Status der Instanzen zurückgeben, bevor es eine SAP HANA-Momentaufnahme erstellt. Nach der SAP HANA-Momentaufnahme folgt eine Speichermomentaufnahme.
 
@@ -628,9 +629,9 @@ Bei den Momentaufnahmetypen **hana** und **logs** können Sie direkt auf den Vol
 
 Bei einem Ausfall der Produktionsumgebung kann die Wiederherstellung auf der Grundlage einer Speichermomentaufnahme als Kundenvorfall über den Microsoft Azure-Support initiiert werden. Eine äußerst dringliche Angelegenheit ist ein Szenario, bei dem Daten in einem Produktionssystem gelöscht wurden und die einzige Möglichkeit zu ihrer Wiedererlangung in der Wiederherstellung der Produktionsdatenbank besteht.
 
-Eine Zeitpunktwiederherstellung kann dagegen eine niedrigere Dringlichkeit haben und Tage im Voraus geplant werden. Diese Wiederherstellung können Sie mit dem Dienstverwaltungsteam für SAP HANA in Azure planen, anstatt ein Flag mit hoher Priorität auszulösen. Beispielsweise planen Sie eventuell die Durchführung eines Upgrades für die SAP-Software, indem Sie ein neues Erweiterungspaket anwenden. Sie müssen dann eine Momentaufnahme wiederherstellen, die den Zustand vor dem Upgrade mit dem Erweiterungspaket darstellt.
+Eine Zeitpunktwiederherstellung kann dagegen eine niedrigere Dringlichkeit haben und Tage im Voraus geplant werden. Diese Wiederherstellung können Sie mit SAP HANA in Azure planen, anstatt ein Flag mit hoher Priorität auszulösen. Beispielsweise planen Sie eventuell die Durchführung eines Upgrades für die SAP-Software, indem Sie ein neues Erweiterungspaket anwenden. Sie müssen dann eine Momentaufnahme wiederherstellen, die den Zustand vor dem Upgrade mit dem Erweiterungspaket darstellt.
 
-Vor dem Senden der Anforderung müssen Sie diese vorbereiten. Das Dienstverwaltungsteam für SAP HANA in Azure kann die Anforderung dann bearbeiten und die wiederhergestellten Volumes bereitstellen. Anschließend stellen Sie die HANA-Datenbank basierend auf den Momentaufnahmen wieder her. 
+Vor dem Senden der Anforderung müssen Sie diese vorbereiten. Das SAP HANA in Azure-Team kann die Anforderung dann bearbeiten und die wiederhergestellten Volumes bereitstellen. Anschließend stellen Sie die HANA-Datenbank basierend auf den Momentaufnahmen wieder her. 
 
 Hier ist angegeben, wie Sie sich auf die Anforderung vorbereiten:
 
@@ -648,9 +649,9 @@ Hier ist angegeben, wie Sie sich auf die Anforderung vorbereiten:
 
 1. Erstellen Sie eine Azure-Supportanfrage, und fügen Sie Anweisungen zur Wiederherstellung einer bestimmten Momentaufnahme ein.
 
-   - Während der Wiederherstellung: Unter Umständen werden Sie vom Dienstverwaltungsteam für SAP HANA in Azure zu Koordinierungs-, Überprüfungs- und Bestätigungszwecken gebeten, an einer Telefonkonferenz teilzunehmen, um die Wiederherstellung der richtigen Speichermomentaufnahme sicherzustellen. 
+   - Während der Wiederherstellung: Unter Umständen werden Sie von SAP HANA in Azure zu Koordinierungs-, Überprüfungs- und Bestätigungszwecken gebeten, an einer Telefonkonferenz teilzunehmen, um die Wiederherstellung der richtigen Speichermomentaufnahme sicherzustellen. 
 
-   - Nach der Wiederherstellung: Sie werden vom Dienstverwaltungsteam für SAP HANA in Azure benachrichtigt, wenn die Speichermomentaufnahme wiederhergestellt wurde.
+   - Nach der Wiederherstellung: Sie werden von SAP HANA in Azure benachrichtigt, wenn die Speichermomentaufnahme wiederhergestellt wurde.
 
 1. Stellen Sie nach Abschluss des Wiederherstellungsvorgangs alle Datenvolumes wieder bereit.
 
@@ -752,5 +753,5 @@ HANA snapshot deletion successfully.
 Sie können anhand dieses Beispiels erkennen, wie das Skript die Erstellung der HANA-Momentaufnahme aufzeichnet. Bei horizontaler Skalierung wird dieser Prozess auf dem Masterknoten ausgelöst. Der Masterknoten initiiert die synchrone Erstellung der SAP HANA-Momentaufnahmen auf den einzelnen Workerknoten. Anschließend wird die Speichermomentaufnahme erstellt. Nach erfolgreicher Erstellung der Speichermomentaufnahmen wird die HANA-Momentaufnahme gelöscht. Das Löschen der HANA-Momentaufnahme wird basierend auf dem Masterknoten initiiert.
 
 
-**Nächste Schritte**
-- Siehe [Prinzipien und Vorbereitung für die Notfallwiederherstellung](hana-concept-preparation.md).
+## <a name="next-steps"></a>Nächste Schritte
+- Lesen Sie [Prinzipien und Vorbereitung für die Notfallwiederherstellung](hana-concept-preparation.md).

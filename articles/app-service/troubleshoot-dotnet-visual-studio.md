@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 03bafcdbf6890573d1d2855e2b47520d0111fe13
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 67fba7a921868d0e5720216208cff7c298c926f6
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57996780"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895012"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Problembehandlung von Apps in Azure App Service mit Visual Studio
 ## <a name="overview"></a>Übersicht
@@ -35,7 +35,7 @@ Sie lernen Folgendes:
 * Anzeige von Webserverprotokollen inklusive detaillierter Fehlermeldungen und Verfolgung fehlgeschlagener Anforderungen.
 * Senden von Diagnoseprotokollen an ein Azure-Speicherkonto und Anzeige der Protokolle.
 
-Wenn Sie über Visual Studio Ultimate verfügen, können Sie auch [IntelliTrace](https://msdn.microsoft.com/library/vstudio/dd264915.aspx) zum Debuggen verwenden. IntelliTrace wird in diesem Lernprogramm nicht behandelt.
+Wenn Sie über Visual Studio Ultimate verfügen, können Sie auch [IntelliTrace](/visualstudio/debugger/intellitrace) zum Debuggen verwenden. IntelliTrace wird in diesem Lernprogramm nicht behandelt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Dieses Tutorial verwendet die Entwicklungsumgebung, das Webprojekt und die App Service-App, die Sie unter [Erstellen von ASP.NET-Apps in Azure App Service](app-service-web-get-started-dotnet-framework.md) eingerichtet haben. Für die Abschnitte zu Webaufträgen benötigen Sie die Anwendung, die Sie in [Erste Schritte mit dem Azure WebJobs SDK][GetStartedWJ] erstellen.
@@ -252,13 +252,13 @@ Wenn die Funktion [Protokolle geschrieben hat](https://github.com/Azure/azure-we
 ```
 * Falls der Debugger nicht in den gewünschten Code wechselt, müssen Sie möglicherweise die Einstellung „Nur eigenen Code“ ändern.  Weitere Informationen finden Sie unter [Angeben, ob nur das Debuggen von Benutzercode mit „Nur eigenen Code“ in Visual Studio erfolgen soll](https://docs.microsoft.com/visualstudio/debugger/just-my-code).
 * Bei Aktivierung der Remotedebuggen-Funktion startet ein Timer auf dem Server, und die Funktion wird nach 48 Stunden automatisch abgeschaltet. Dieses Limit von 48 Stunden existiert aus Sicherheits- und Leistungsgründen. Sie können die Funktion jederzeit und beliebig oft aktivieren. Wenn Sie nicht aktiv debuggen, sollten Sie die Funktion jedoch deaktivieren.
-* Sie können den Debugger manuell an einen beliebigen Prozess anfügen, nicht nur an den App-Prozess („w3wp.exe“). Weitere Informationen zum Debugmodus in Visual Studio finden Sie unter [Debuggen in Visual Studio](https://msdn.microsoft.com/library/vstudio/sc65sadd.aspx).
+* Sie können den Debugger manuell an einen beliebigen Prozess anfügen, nicht nur an den App-Prozess („w3wp.exe“). Weitere Informationen zum Debugmodus in Visual Studio finden Sie unter [Debuggen in Visual Studio](/visualstudio/debugger/debugging-in-visual-studio).
 
 ## <a name="logsoverview"></a>Übersicht über Diagnoseprotokolle
 ASP.NET-Anwendungen in App Service-Apps können die folgenden Arten von Protokollen generieren:
 
 * **Anwendungsnachverfolgungsprotokolle**<br/>
-  Anwendungen erzeugen diese Protokolle, indem sie Methoden der Klasse [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace.aspx) aufrufen.
+  Anwendungen erzeugen diese Protokolle, indem sie Methoden der Klasse [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) aufrufen.
 * **Webserverprotokolle**<br/>
   Der Webserver erstellt einen Protokolleintrag für jede HTTP-Anforderung an die App.
 * **Ausführliche Fehlerprotokolle**<br/>
@@ -633,14 +633,14 @@ Falls Sie spezifische Fragen zur Problembehandlung haben, können Sie diese in e
 * [StackOverflow.com](https://www.stackoverflow.com).
 
 ### <a name="debugging-in-visual-studio"></a>Debuggen in Visual Studio
-Weitere Informationen zum Debugmodus in Visual Studio finden Sie unter [Debuggen in Visual Studio](https://msdn.microsoft.com/library/vstudio/sc65sadd.aspx) und unter [Debugging Tips with Visual Studio 2010](https://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx) (Tipps zum Debuggen in Visual Studio 2010).
+Weitere Informationen zum Debugmodus in Visual Studio finden Sie unter [Debuggen in Visual Studio](/visualstudio/debugger/debugging-in-visual-studio) und unter [Debugging Tips with Visual Studio 2010](https://weblogs.asp.net/scottgu/archive/2010/08/18/debugging-tips-with-visual-studio-2010.aspx) (Tipps zum Debuggen in Visual Studio 2010).
 
 ### <a name="remote-debugging-in-azure"></a>Remotedebuggen in Azure
 Weitere Informationen zum Remotedebuggen für App Service-Apps und WebJobs finden Sie in den folgenden Ressourcen:
 
 * [Introduction to Remote Debugging Azure App Service](https://azure.microsoft.com/blog/2014/05/06/introduction-to-remote-debugging-on-azure-web-sites/) (Einführung in das Remotedebuggen von Azure App Service).
-* [Introduction to Remote Debugging Azure App Service part 2 – Inside Remote debugging](https://azure.microsoft.com/blog/2014/05/07/introduction-to-remote-debugging-azure-web-sites-part-2-inside-remote-debugging/) (Einführung in das Remotedebuggen von Azure App Service Teil 2 – Einblick in das Remotedebuggen)
-* [Introduction to Remote Debugging on Azure App Service part 3 – Multi-Instance environment and GIT](https://azure.microsoft.com/blog/2014/05/08/introduction-to-remote-debugging-on-azure-web-sites-part-3-multi-instance-environment-and-git/) (Einführung in das Remotedebuggen von Azure App Service Teil 3 – Mehrinstanzenumgebung und GIT)
+* [Introduction to Remote Debugging Azure App Service part 2 – Inside Remote debugging (Einführung in das Remotedebuggen von Azure App Service Teil 2 – Einblick in das Remotedebuggen)](https://azure.microsoft.com/blog/2014/05/07/introduction-to-remote-debugging-azure-web-sites-part-2-inside-remote-debugging/)
+* [Introduction to Remote Debugging on Azure App Service part 3 – Multi-Instance environment and GIT (Einführung in das Remotedebuggen von Azure App Service Teil 3 – Mehrinstanzenumgebung und GIT)](https://azure.microsoft.com/blog/2014/05/08/introduction-to-remote-debugging-on-azure-web-sites-part-3-multi-instance-environment-and-git/)
 * [Debuggen von WebJobs (Video)](https://www.youtube.com/watch?v=ncQm9q5ZFZs&list=UU_SjTh-ZltPmTYzAybypB-g&index=1)
 
 Wenn Ihre App eine Azure-Web-API oder ein Mobile Services-Back-End verwendet und Sie diese Komponenten debuggen möchten, finden Sie weitere Informationen unter [Debugging .NET Backend in Visual Studio](https://blogs.msdn.com/b/azuremobile/archive/2014/03/14/debugging-net-backend-in-visual-studio.aspx) (Debuggen des .NET Back-Ends in Visual Studio).
@@ -650,14 +650,14 @@ Momentan sind keine vollständigen und aktuellen Einführungen zur Ablaufverfolg
 
 * [Überwachung und Telemetrie (Erstellen realer Cloud-Apps mit Azure).](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry)<br>
    Dieses E-Book-Kapitel enthält Empfehlungen zur Ablaufverfolgung in Azure-Cloudanwendungen.
-* [ASP.NET-Ablaufverfolgung](https://msdn.microsoft.com/library/ms972204.aspx)<br/>
+* [ASP.NET-Ablaufverfolgung](/previous-versions/dotnet/articles/ms972204(v=msdn.10))<br/>
   Ein älterer Artikel, der sich jedoch immer noch gut als Einstieg in das Thema eignet.
-* [Ablaufverfolgungslistener](https://msdn.microsoft.com/library/4y5y10s7.aspx)<br/>
-  Informationen zu Ablaufverfolgungslistenern, [WebPageTraceListener](https://msdn.microsoft.com/library/system.web.webpagetracelistener.aspx) wird jedoch nicht erwähnt.
-* [Exemplarische Vorgehensweise: Integrieren der ASP.NET-Ablaufverfolgung mit der System.Diagnostics-Ablaufverfolgung](https://msdn.microsoft.com/library/b0ectfxd.aspx)<br/>
+* [Ablaufverfolgungslistener](/dotnet/framework/debug-trace-profile/trace-listeners)<br/>
+  Informationen zu Ablaufverfolgungslistenern, [WebPageTraceListener](/dotnet/api/system.web.webpagetracelistener) wird jedoch nicht erwähnt.
+* [Exemplarische Vorgehensweise: Integrieren der ASP.NET-Ablaufverfolgung mit der System.Diagnostics-Ablaufverfolgung](/previous-versions/b0ectfxd(v=vs.140))<br/>
   Dieser Artikel ist ebenfalls älteren Datums, enthält jedoch zusätzliche Informationen, die in der Einführung nicht behandelt werden.
 * [Ablaufverfolgung in ASP.NET MVC-Razoransichten](https://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
-   (Ablaufverfolgung in den ASP.NET MVC-Razoransichten, in englischer Sprache) Dieser Blogeintrag behandelt neben der Ablaufverfolgung in Razoransichten auch die Erstellung von Fehlerfiltern zur Protokollierung aller Ausnahmefehler in MVC-Anwendungen. Informationen zur Protokollierung aller Ausnahmefehler in Web Forms-Anwendungen finden Sie im Global.asax-Beispiel unter [Vollständiges Beispiel für Fehlerhandler](https://msdn.microsoft.com/library/bb397417.aspx) auf MSDN. Falls Sie in MVC oder Web Forms bestimmte Ausnahmen protokollieren möchten, diese Ausnahmen jedoch vom Standard-Framework behandelt werden sollen, können Sie diese wie im folgenden Beispiel abfangen und erneut auslösen:
+   (Ablaufverfolgung in den ASP.NET MVC-Razoransichten, in englischer Sprache) Dieser Blogeintrag behandelt neben der Ablaufverfolgung in Razoransichten auch die Erstellung von Fehlerfiltern zur Protokollierung aller Ausnahmefehler in MVC-Anwendungen. Informationen zur Protokollierung aller Ausnahmefehler in Web Forms-Anwendungen finden Sie im Global.asax-Beispiel unter [Vollständiges Beispiel für Fehlerhandler](/previous-versions/bb397417(v=vs.140)) auf MSDN. Falls Sie in MVC oder Web Forms bestimmte Ausnahmen protokollieren möchten, diese Ausnahmen jedoch vom Standard-Framework behandelt werden sollen, können Sie diese wie im folgenden Beispiel abfangen und erneut auslösen:
 
 ``` c#
 try

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a674748e9e95828436df25222f6daad881e0487
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e2f06b884cb1213e9d2cabff4e6e2b97a60339a6
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109136"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862861"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian Jira und Confluence – Administratorhandbuch für Azure Active Directory
 
@@ -112,11 +112,11 @@ Die folgende Abbildung zeigt den Konfigurationsbildschirm in JIRA und Confluence
 
 * **Metadaten-URL**: Die URL zum Abrufen der Verbundmetadaten von Azure AD.
 
-* **Bezeichner**: Die URL, die Azure AD zum Überprüfen der Quelle der Anforderung verwendet. Sie wird dem Element **Bezeichner** in Azure AD zugeordnet. Das Plug-In leitet diese URL automatisch als „https://*<Domäne:Port>*/“ ab.
+* **Bezeichner**: Die URL, die Azure AD zum Überprüfen der Quelle der Anforderung verwendet. Sie wird dem Element **Bezeichner** in Azure AD zugeordnet. Das Plug-In leitet diese URL automatisch als „https://*\<<Domäne:Port>*/“ ab.
 
-* **Antwort-URL**: Die Antwort-URL in Ihrem Identitätsanbieter (IdP), die die SAML-Anmeldung initiiert. Sie wird dem **Antwort-URL**-Element in Azure AD zugeordnet. Das Plug-In leitet diese URL automatisch als „https://*<Domäne:Port>*/plugins/servlet/saml/auth“ ab.
+* **Antwort-URL**: Die Antwort-URL in Ihrem Identitätsanbieter (IdP), die die SAML-Anmeldung initiiert. Sie wird dem **Antwort-URL**-Element in Azure AD zugeordnet. Das Plug-In leitet diese URL automatisch als „https://*\<<Domäne:Port>*/plugins/servlet/saml/auth“ ab.
 
-* **Anmelde-URL**: Die Anmelde-URL in Ihrem IdP, die die SAML-Anmeldung initiiert. Sie wird dem **Anmelde**-Element in Azure AD zugeordnet. Das Plug-In leitet diese URL automatisch als „https://*<Domäne:Port>*/plugins/servlet/saml/auth“ ab.
+* **Anmelde-URL**: Die Anmelde-URL in Ihrem IdP, die die SAML-Anmeldung initiiert. Sie wird dem **Anmelde**-Element in Azure AD zugeordnet. Das Plug-In leitet diese URL automatisch als „https://*\<<Domäne:Port>*/plugins/servlet/saml/auth“ ab.
 
 * **IdP-Entitäts-ID**: Die Entitäts-ID, die Ihr IdP verwendet. Dieses Feld wird gefüllt, wenn die Metadaten-URL aufgelöst ist.
 

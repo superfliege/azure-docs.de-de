@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 1c9d5b214d0c79f84372ba679db1cbd4a7ad9858
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: b79f8a44f0fc38dd7e5f9ae7e3ac1fe6e9f6b7b8
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372589"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884175"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Behandeln von Problemen mit dem Log Analytics-Agent für Linux 
 
@@ -36,7 +36,7 @@ Falls sich Ihr Problem durch keinen dieser Schritte beheben lässt, stehen Ihnen
 
  Datei | path
  ---- | -----
- Protokolldatei des Log Analytics-Agents für Linux | `/var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log `
+ Protokolldatei des Log Analytics-Agents für Linux | `/var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
  Konfigurationsprotokolldatei des Log Analytics-Agents für Linux | `/var/opt/microsoft/omsconfig/omsconfig.log`
 
  Wir empfehlen, für die Problembehandlung oder vor dem Übermitteln eines GitHub-Problems wichtige Protokolle mit unserem Protokollsammler-Tool abzurufen. Weitere Informationen zum Tool und zu seiner Ausführung finden Sie [hier](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/tools/LogCollector/OMS_Linux_Agent_Log_Collector.md).
@@ -197,7 +197,7 @@ Dies ist ein bekanntes Problem, das beim ersten Hochladen von Linux-Daten in ein
 - Daten des Log Analytics-Agents für Linux werden gesichert.
 
 ### <a name="resolution"></a>Lösung
-1. Vergewissern Sie sich, dass das Onboarding in Azure Monitor erfolgreich war, indem Sie überprüfen, ob die folgende Datei vorhanden ist: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`.
+1. Vergewissern Sie sich, dass das Onboarding in Azure Monitor erfolgreich war, indem Sie überprüfen, ob die folgende Datei vorhanden ist: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
 2. Erneutes Onboarding mithilfe der Befehlszeilenanweisungen `omsadmin.sh`
 3. Wenn Sie einen Proxy verwenden, lesen Sie die Proxylösungsschritte weiter oben.
 4. In einigen Fällen, wenn der Log Analytics-Agent für Linux nicht mit dem Dienst kommunizieren kann, werden Daten auf dem Agent bis zur vollständigen Puffergröße von 50 MB in eine Warteschlange gestellt. Der Agent sollte mit dem folgenden Befehl neu gestartet werden: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]`. 
@@ -327,7 +327,7 @@ Dieser Fehler weist darauf hin, dass die Linux-Diagnoseerweiterung (LAD) paralle
     sudo systemctl start cron
     ```
 
-    **RHEL/CentOS**
+    **RHEL/CeonOS**
 
     ```
     # To Install the service binaries
@@ -386,7 +386,7 @@ Dieser Fehler weist darauf hin, dass die Linux-Diagnoseerweiterung (LAD) paralle
 Im Log Analytics-Agent für Linux vor Version 1.1.0-217 besteht ein bekanntes Problem mit einer Racebedingung. Führen Sie nach der Aktualisierung auf den aktuellen Agent den folgenden Befehl aus, um die aktuelle Version des Ausgabe-Plug-Ins `sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` abzurufen.
 
 ## <a name="issue-you-are-trying-to-reonboard-to-a-new-workspace"></a>Problem: Sie versuchen, ein erneutes Onboarding in einem neuen Arbeitsbereich durchzuführen.
-Wenn Sie versuchen, für einen Agent ein erneutes Onboarding in einem neuen Arbeitsbereich durchzuführen, muss die Konfiguration des Log Analytics-Agents vor dem erneuten Onboarding bereinigt werden. Führen Sie zum Bereinigen der alten Konfiguration des Agents das Shellbündel mit `--purge` aus.
+Wenn Sie versuchen, für einen Agent ein erneutes Onboarding in einem neuen Arbeitsbereich durchzuführen, muss die Konfiguration des Log Analytics-Agents vor dem erneuten Onboarding bereinigt werden. Führen Sie zum Bereinigen der alten Konfiguration des Agents das Shellbündel mit Folgendem aus: `--purge`
 
 ```
 sudo sh ./omsagent-*.universal.x64.sh --purge

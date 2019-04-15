@@ -7,12 +7,12 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: bwren
-ms.openlocfilehash: 6ed3a98282221d5ac148e88b6646bfaa4da768be
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: dcac701f3c1b6d64a7017c31679c019b91103ba2
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446444"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904728"
 ---
 # <a name="analyze-log-data-in-azure-monitor"></a>Analysieren von Protokolldaten in Azure Monitor
 
@@ -20,28 +20,23 @@ Die von Azure Monitor gesammelten Protokolldaten werden in einem Log Analytics-A
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="log-queries"></a>Protokollabfragen
 
 Sie benötigen eine Protokollabfrage, um Protokolldaten beliebiger Art aus Azure Monitor abzurufen.  Wenn Sie [Daten im Portal analysieren](portals.md), eine [Warnungsregel konfigurieren](../platform/alerts-metric.md), die Sie bei einer bestimmten Bedingung benachrichtigt, oder Daten mithilfe der [Azure Monitor-Protokolle-API](https://dev.loganalytics.io/) abrufen, verwenden Sie jeweils eine Abfrage, um die gewünschten Daten anzugeben.  In diesem Artikel wird beschrieben, wie Protokollabfragen in Azure Monitor verwendet werden. Er enthält Konzepte, die Ihnen vor dem Erstellen bekannt sein sollten.
 
-
-
 ## <a name="where-log-queries-are-used"></a>Orte, an denen Protokollabfragen verwendet werden
 
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
 Dies sind einige der verschiedenen Möglichkeiten, wie Sie Abfragen in Azure Monitor verwenden können:
-
 
 - **Portal.** Sie können im [Azure-Portal](portals.md) eine interaktive Analyse von Protokolldaten durchführen.  Dadurch können Sie Ihre Abfrage bearbeiten und die Ergebnisse in einer Vielzahl von Formaten und Visualisierungen analysieren.  
 - **Warnungsregeln.** [Warnungsregeln](../platform/alerts-overview.md) identifizieren proaktiv Probleme durch die Daten in Ihrem Arbeitsbereich.  Jede Warnungsregel basiert auf einer Protokollsuche, die in regelmäßigen Abständen automatisch ausgeführt wird.  Die Ergebnisse werden überprüft, um zu ermitteln, ob eine Warnung erstellt werden soll.
 - **Dashboards.** Sie können die Ergebnisse beliebiger Abfragen in einem [Azure-Dashboard](../learn/tutorial-logs-dashboards.md) anheften, was es Ihnen ermöglicht, Protokoll- und Metrikdaten gemeinsam zu visualisieren und optional mit anderen Azure-Benutzern zu teilen. 
 - **Ansichten.**  Sie können mit [Ansicht-Designer](../platform/view-designer.md) Visualisierungen von Daten erstellen, die in Benutzerdashboards einbezogen werden sollen.  Protokollabfragen stellen die von [Kacheln](../platform/view-designer-tiles.md) und [Visualisierungsparts](../platform/view-designer-parts.md) in jeder Ansicht verwendeten Daten bereit.  
 
-- **Export:**  Wenn Sie Protokolldaten aus Azure Monitor nach Excel oder [Power BI](../platform/powerbi.md) importieren, erstellen Sie eine Protokollabfrage, um die zu exportierenden Daten zu definieren.
-- **PowerShell.** Sie können ein PowerShell-Skript über eine Befehlszeile oder ein Azure Automation-Runbook ausführen, das Protokolldaten mithilfe von [Get-AzOperationalInsightsSearchResults](/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightssearchresults) aus Azure Monitor abruft.  Dieses Cmdlet erfordert eine Abfrage, um die abzurufenden Daten festzulegen.
+- **Export.**  Wenn Sie Protokolldaten aus Azure Monitor nach Excel oder [Power BI](../platform/powerbi.md) importieren, erstellen Sie eine Protokollabfrage, um die zu exportierenden Daten zu definieren.
+- **PowerShell.** Sie können ein PowerShell-Skript über eine Befehlszeile oder ein Azure Automation-Runbook ausführen, das Protokolldaten mithilfe von [Get-AzOperationalInsightsSearchResults](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresults) aus Azure Monitor abruft.  Dieses Cmdlet erfordert eine Abfrage, um die abzurufenden Daten festzulegen.
 - **Azure Monitor-Protokolle-API.**  Die [Azure Monitor-Protokolle-API](../platform/alerts-overview.md) ermöglicht einem beliebigen REST-API-Client, Protokolldaten aus dem Arbeitsbereich abzurufen.  Die API-Anforderung enthält eine Abfrage, die für Azure Monitor ausgeführt wird, um die abzurufenden Daten zu ermitteln.
 
 ![Protokollsuchvorgänge](media/log-query-overview/queries-overview.png)

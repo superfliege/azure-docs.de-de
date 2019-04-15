@@ -9,16 +9,19 @@ ms.topic: conceptual
 ms.date: 12/26/2018
 ms.author: lyrana
 ms.custom: seodec18
-ms.openlocfilehash: 725f95797de0a4d4e6240be4d42cf8a196d94889
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 72155799971760e9ddc93746dceafb1ea554d88b
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118590"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905306"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Erstellen und Verwalten von Rollenzuweisungen in Azure Digital Twins
 
 In Azure Digital Twins wird rollenbasierte Zugriffssteuerung ([Role-Based Access Control, RBAC](./security-role-based-access-control.md)) verwendet, um Zugriffe auf Ressourcen zu verwalten.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="role-assignments-overview"></a>Übersicht der Rollenzuweisungen
 
@@ -38,10 +41,10 @@ In der folgenden Tabelle werden die einzelnen Attribute beschrieben:
 
 | Attribut | NAME | Erforderlich | Typ | BESCHREIBUNG |
 | --- | --- | --- | --- | --- |
-| roleId | Bezeichner der Rollendefinition | JA | Zeichenfolge | Die eindeutige ID der gewünschten Rollenzuweisung. Sie können Rollendefinitionen und deren Bezeichner (IDs) durch das Abfragen der System-API ermitteln, oder die unten stehende Tabelle überprüfen. |
-| objectId | Objektbezeichner | JA | Zeichenfolge | Eine Azure Active Directory-ID, eine Dienstprinzipalobjekt-ID oder ein Domänenname. Wem die Rollenzuweisung zugewiesen ist (Objekt oder Person). Die Rollenzuweisung muss gemäß ihrem zugeordneten Typ formatiert sein. Für den `DomainName`-objectIdType muss objectId mit dem `“@”`-Zeichen beginnen. |
-| objectIdType | Objektbezeichnertyp | JA | Zeichenfolge | Die Art des verwendeten Objektbezeichners. Siehe unten unter **Unterstützte ObjektIdTypes**. |
-| path | Raumpfad | JA | Zeichenfolge | Der vollständige Zugriffspfad für das `Space`-Objekt. Ein Beispiel ist `/{Guid}/{Guid}`. Wenn für einen Bezeichner die Rollenzuweisung für den gesamten Graphen erforderlich ist, geben Sie `"/"` an. Mit diesem Zeichen wird der Stamm angegeben, aber von der Verwendung wird abgeraten. Befolgen Sie immer das Prinzip der geringsten Rechte. |
+| roleId | Bezeichner der Rollendefinition | Ja | Zeichenfolge | Die eindeutige ID der gewünschten Rollenzuweisung. Sie können Rollendefinitionen und deren Bezeichner (IDs) durch das Abfragen der System-API ermitteln, oder die unten stehende Tabelle überprüfen. |
+| objectId | Objektbezeichner | Ja | Zeichenfolge | Eine Azure Active Directory-ID, eine Dienstprinzipalobjekt-ID oder ein Domänenname. Wem die Rollenzuweisung zugewiesen ist (Objekt oder Person). Die Rollenzuweisung muss gemäß ihrem zugeordneten Typ formatiert sein. Für den `DomainName`-objectIdType muss objectId mit dem `“@”`-Zeichen beginnen. |
+| objectIdType | Objektbezeichnertyp | Ja | Zeichenfolge | Die Art des verwendeten Objektbezeichners. Siehe unten unter **Unterstützte ObjektIdTypes**. |
+| path | Raumpfad | Ja | Zeichenfolge | Der vollständige Zugriffspfad für das `Space`-Objekt. Ein Beispiel ist `/{Guid}/{Guid}`. Wenn für einen Bezeichner die Rollenzuweisung für den gesamten Graphen erforderlich ist, geben Sie `"/"` an. Mit diesem Zeichen wird der Stamm angegeben, aber von der Verwendung wird abgeraten. Befolgen Sie immer das Prinzip der geringsten Rechte. |
 | tenantId | Mandanten-ID | Variabel | Zeichenfolge | In den meisten Fällen eine Azure Active Directory-Mandanten-ID. Nicht zulässig für den `DeviceId`- und den `TenantId`-objectIdType. Erforderlich für den `UserId`- und den `ServicePrincipalId`-objectIdType. Optional für den DomainName-objectIdType. |
 
 ### <a name="supported-role-definition-identifiers"></a>Unterstützte Rollendefinitionsbezeichner
@@ -83,8 +86,8 @@ Ihre Anwendungs-ID wird Ihnen von Azure Active Directory bereitgestellt. Weitere
 Nachdem Sie über die Anwendungs-ID verfügen, führen Sie die folgenden PowerShell-Befehle aus:
 
 ```shell
-Login-AzureRmAccount
-Get-AzureRmADServicePrincipal -ApplicationId  <ApplicationId>
+Login-AzAccount
+Get-AzADServicePrincipal -ApplicationId  <ApplicationId>
 ```
 
 Ein Benutzer mit der Rolle **Administrator** kann einem Benutzer die Rolle „Raumadministrator“ zuweisen, indem er eine authentifizierte HTTP-POST-Anforderung an folgende URL stellt:
@@ -160,7 +163,7 @@ Um eine bestimmte Rollenzuweisung zu überprüfen, stellen Sie eine authentifizi
 YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH&accessType=YOUR_ACCESS_TYPE&resourceType=YOUR_RESOURCE_TYPE
 ```
 
-| **Parameterwert** | **Erforderlich** |  **Typ** |  **Beschreibung** |
+| **Parameterwert** | **Erforderlich** |  **Typ** |  **BESCHREIBUNG** |
 | --- | --- | --- | --- |
 | YOUR_USER_ID |  True | Zeichenfolge |   Die objectId für objectIdType „UserId“. |
 | YOUR_PATH | True | Zeichenfolge |   Der ausgewählte Pfad, für den der Zugriff überprüft werden solle. |

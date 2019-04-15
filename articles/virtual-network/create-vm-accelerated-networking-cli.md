@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: b06bc6b41081f05a7067f82f46affc37d21f50b1
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 8ea17e5615c0256c084b0745a392fb49f8873f99
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213295"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805362"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb
 
@@ -42,13 +42,16 @@ Die Vorteile des beschleunigten Netzwerkbetriebs gelten nur für die VM, auf der
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 Die folgenden Distributionen werden standardmäßig aus dem Azure-Katalog unterstützt: 
-* **Ubuntu 16.04+** 
-* **SLES 12 SP3** 
-* **RHEL 7.4**
-* **CentOS 7.4**
+* **Ubuntu 14.04 mit dem Azure-Linux-Kernel**
+* **Ubuntu 16.04 oder höher** 
+* **SLES12 SP3 oder höher** 
+* **RHEL 7.4 oder höher**
+* **CentOS 7.4 oder höher**
 * **CoreOS Linux**
 * **Debian „Stretch“ mit Backports-Kernel**
-* **Oracle Linux 7.4**
+* **Oracle Linux 7.4 und höher mit Red Hat Compatible Kernel (RHCK)**
+* **Oracle Linux 7.5 und höher mit UEK-Version 5**
+* **FreeBSD 10.4, 11.1 und 12.0**
 
 ## <a name="limitations-and-constraints"></a>Einschränkungen
 

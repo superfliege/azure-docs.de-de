@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: damaerte
-ms.openlocfilehash: 5b4f9715e47483fa64840c521620bec79f3041cd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1fc9883e0ea35c384c3bfc83e76b8eded48cbcba
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106405"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905068"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Schnellstart für PowerShell in Azure Cloud Shell
 
@@ -36,7 +36,7 @@ Dieses Dokument erläutert die Verwendung von PowerShell in Cloud Shell im [Azur
 
    ![](media/quickstart-powershell/shell-icon.png)
 
-2. Wählen Sie die PowerShell-Umgebung aus der Dropdownliste aus, und Sie befindet sich auf dem Azure-Laufwerk `(Azure:)`.
+2. Wählen Sie die PowerShell-Umgebung aus der Dropdownliste aus, und Sie befinden sich auf dem Azure-Laufwerk. `(Azure:)`
 
    ![](media/quickstart-powershell/environment-ps.png)
 
@@ -68,7 +68,7 @@ MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    S
     PS Azure:\> dir
     ```
 
- 2. Führen Sie `cd` aus, um zu Ihrem bevorzugten Abonnement zu gelangen.
+ 2. `cd` um zu Ihrem bevorzugten Abonnement zu gelangen
 
     ```azurepowershell-interactive
     PS Azure:\> cd MySubscriptionName
@@ -267,7 +267,7 @@ Generieren Sie zum Authentifizieren für Server oder VMs per SSH das Paar aus ei
 
 ### <a name="using-ssh"></a>Verwenden von SSH
 
-Befolgen Sie die Anleitung [hier](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell), um eine neue VM-Konfiguration mit AzureRM-Cmdlets zu erstellen.
+Befolgen Sie die Anleitung [hier](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell), um eine neue VM-Konfiguration mit Azure PowerShell-Cmdlets zu erstellen.
 Fügen Sie der VM-Konfiguration vor dem Aufrufen von `New-AzVM` zum Starten der Bereitstellung den öffentlichen SSH-Schlüssel hinzu.
 Die neu erstellte VM enthält den öffentlichen Schlüssel unter `~\.ssh\authorized_keys`, um für die VM eine SSH-Sitzung ohne Anmeldeinformationen zu ermöglichen.
 
@@ -292,7 +292,7 @@ ssh azureuser@MyVM.Domain.Com
 
 Geben Sie unter dem Laufwerk `Azure` die Zeichenfolge `Get-AzCommand` ein, um kontextabhängige Azure-Befehle zu erhalten.
 
-Alternativ können Sie immer `Get-Command *azurerm* -Module AzureRM.*` verwenden, um die verfügbaren Azure-Befehle zu ermitteln.
+Alternativ können Sie immer `Get-Command *az* -Module Az.*` verwenden, um die verfügbaren Azure-Befehle zu ermitteln.
 
 ## <a name="install-custom-modules"></a>Installieren von benutzerdefinierten Modulen
 

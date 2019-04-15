@@ -3,19 +3,19 @@ title: Textübersetzungs-API – Methode zur Wörterbuchsuche (Dictionary Lookup
 titlesuffix: Azure Cognitive Services
 description: Verwenden Sie die Methode zur Wörterbuchsuche der Textübersetzungs-API.
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: e97d308bca585cdb26ccc2f20e125436707c481e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 89b4058c384440b83f60fb6147cd373ecf893011
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876333"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917004"
 ---
 # <a name="translator-text-api-30-dictionary-lookup"></a>Textübersetzungs-API 3.0: Wörterbuchsuche
 
@@ -140,7 +140,7 @@ Eine erfolgreiche Antwort ist ein JSON-Array mit einem Ergebnis für jede Zeiche
 
 In diesem Beispiel wird veranschaulicht, wie nach alternativen Übersetzungen für den englischen Begriff `fly` im Spanischen gesucht werden kann.
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly'}]"
@@ -191,7 +191,7 @@ Dann wird folgende Antwort zurückgegeben (zur besseren Veranschaulichung gekür
 
 In diesem Beispiel wird dargestellt, was geschieht, wenn der gesuchte Begriff im gültigen Wörterbuchpaar nicht vorhanden ist.
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "X-ClientTraceId: 875030C7-5380-40B8-8A03-63DACCF69C11" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly123456'}]"

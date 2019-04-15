@@ -9,19 +9,22 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/13/2019
+ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d3cea9f3bc5645aeaefc5bb376557d365681df56
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8f21374ae5da76c9954acc5227f593ab4be19ce9
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994107"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630552"
 ---
 # <a name="media-services-concepts"></a>Media Services-Konzepte
 
 Dieses Thema bietet eine kurze Übersicht über die Konzepte von Azure Media Services und stellt Links zu Artikeln mit ausführlichen Erläuterungen zu Konzepten und Funktionen von Media Services v3 bereit. Es empfiehlt sich, sich vor Entwicklungsbeginn mit den grundlegenden Konzepten vertraut zu machen, die in diesen Themen behandelt werden.
+
+> [!NOTE]
+> Derzeit können Sie das Azure-Portal nicht für die Verwaltung von v3-Ressourcen verwenden. Verwenden Sie die [REST-API](https://aka.ms/ams-v3-rest-ref), die [Befehlszeilenschnittstelle](https://aka.ms/ams-v3-cli-ref) oder eines der unterstützten [SDKs](developers-guide.md).
 
 ## <a name="cloud-upload-and-storage"></a>Clouduploads und Cloudspeicherung
 
@@ -100,6 +103,13 @@ Zum Anzeigen des Auftragsfortschritts sollten Sie **Event Grid** verwenden. Medi
 - [Behandeln von Event Grid-Ereignissen](reacting-to-media-services-events.md)
 - [Schemas](media-services-event-schemas.md)
 
+### <a name="azure-monitor"></a>Azure Monitor
+
+Überwachen von Metriken und Diagnoseprotokollen, die Ihnen zu verstehen helfen, wie sich Ihre Anwendungen mit Azure Monitor verhalten.
+
+- [Metriken und Diagnoseprotokolle](media-services-metrics-diagnostic-logs.md)
+- [Schemas für Diagnoseprotokolle](media-services-diagnostic-logs-schema.md)
+
 ## <a name="player-clients"></a>Beteiligte Kunden
 
 Mit dem Azure Media Player können Sie von Media Services gestreamte Medieninhalte auf einer Vielzahl von Browsern und Geräten wiedergeben. Der Azure Media Player nutzt Industriestandards wie HTML5, MSE (Media Source Extensions) und EME (Encrypted Media Extensions) für ein funktionsreiches adaptives Streaming. 
@@ -108,4 +118,9 @@ Mit dem Azure Media Player können Sie von Media Services gestreamte Medieninhal
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Hochladen, Codieren und Streamen mit Media Services](stream-files-tutorial-with-api.md)
+* [Codieren von Remotedateien und Streamen von Videos: REST](stream-files-tutorial-with-rest.md)
+* [Codieren von hochgeladenen Dateien und Streamen von Videos: .NET](stream-files-tutorial-with-api.md)
+* [Livestreaming: .NET](stream-live-tutorial-with-api.md)
+* [Analysieren Ihres Videos: .NET](analyze-videos-tutorial-with-api.md)
+* [Dynamische AES-128-Verschlüsselung: .NET](protect-with-aes128.md)
+* [Dynamische Verschlüsselung mit Multi-DRM: .NET](protect-with-drm.md) 

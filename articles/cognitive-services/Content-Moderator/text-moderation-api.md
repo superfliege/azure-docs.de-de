@@ -9,12 +9,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 8ca6c73d6ccdab3acb4ebb18af9b4aa82683e026
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5a1007f2408b48c96f5eeaf585b94c8caa7ceb45
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864297"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757761"
 ---
 # <a name="learn-text-moderation-concepts"></a>Lernen von Textmoderationskonzepten
 
@@ -26,7 +26,7 @@ Die Antwort des Diensts enthält folgende Informationen:
 
 - Obszönitäten: begriffsbasierter Abgleich mit einer integrierten Liste anstößiger Begriffe in verschiedenen Sprachen
 - Klassifizierung: Computergestützte Klassifizierung in drei Kategorien
-- Personenbezogene Informationen (Personally Identifiable Information, PII)
+- Personenbezogene Daten
 - Automatisch korrigierter Text
 - Ursprünglicher Text
 - Sprache
@@ -75,7 +75,7 @@ Der folgende Auszug aus dem JSON-Auszug zeigt eine Beispielausgabe:
 - `Score` ist ein Wert zwischen 0 und 1. Je höher der Wert, desto höher die vom Modell ermittelte Wahrscheinlichkeit, dass die Kategorie zutreffend ist. Diese Funktion basiert nicht auf manuell programmierten Ergebnissen, sondern auf einem statistischen Modell. Es wird empfohlen, anhand Ihrer eigenen Inhalte zu testen, wie die jeweiligen Kategorien zu Ihren Anforderungen passen.
 - `ReviewRecommended` ist entweder „true“ oder „false“ (abhängig von den internen Ergebnisschwellenwerten). Kunden müssen entscheiden, ob sie diesen Wert verwenden oder auf der Grundlage ihrer Inhaltsrichtlinien eigene Schwellenwerte festlegen möchten.
 
-## <a name="personally-identifiable-information-pii"></a>Personenbezogene Informationen (Personally Identifiable Information, PII)
+## <a name="personal-data"></a>Personenbezogene Daten
 
 Das PII-Feature erkennt, ob möglicherweise personenbezogene Informationen (Personally Identifiable Information, PII) vorhanden sind:
 

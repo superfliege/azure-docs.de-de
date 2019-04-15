@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: a2e03a548b403262dca7e7a76b84cc99661242c6
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 51db372b288ce388f58ca0e7fdcb2e1b97e511de
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487363"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755715"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azure
 
@@ -84,7 +84,7 @@ Führen Sie auf allen **virtuellen Computern des iSCSI-Ziels** folgende Befehle 
 
 Führen Sie auf allen **virtuellen Computern des iSCSI-Ziels** folgende Befehle aus, um die iSCSI-Datenträger für die von Ihren SAP-Systemen verwendeten Cluster zu erstellen. Im folgenden Beispiel werden SBD-Geräte für mehrere Cluster erstellt. Es zeigt, wie Sie einen iSCSI-Zielserver für mehrere Cluster verwenden würden. Die SBD-Geräte werden auf dem Betriebssystemdatenträger platziert. Stellen Sie sicher, dass Sie über ausreichend Speicherplatz verfügen.
 
-**nfs** wird zum Identifizieren des NFS-Clusters verwendet, **ascsnw1** zum Identifizieren des ASCS-Clusters von **NW1** und **dbnw1** zum Identifizieren des Datenbankclusters von **NW1**. **nfs-0** und **nfs-1** sind die Hostnamen des NFS-Clusterknotens, **nw1-xscs-0** und **nw1-xscs-1** die Hostnamen des ASCS-Clusterknotens von **NW1** und **nw1-db-0** und **nw1-db-1** die Hostnamen des Clusterknotens der Datenbank. Ersetzen Sie diese durch die Hostnamen Ihrer Clusterknoten und die SID Ihres SAP-Systems.
+**` nfs`** wird zum Identifizieren des NFS-Clusters verwendet, **ascsnw1** zum Identifizieren des ASCS-Clusters von **NW1** und **dbnw1** zum Identifizieren des Datenbankclusters von **NW1**. **nfs-0** und **nfs-1** sind die Hostnamen der NFS-Clusterknoten, **nw1-xscs-0** und **nw1-xscs-1** die Hostnamen des ASCS-Clusterknotens von **NW1** und **nw1-db-0** und **nw1-db-1** die Hostnamen der Clusterknoten der Datenbank. Ersetzen Sie diese durch die Hostnamen Ihrer Clusterknoten und die SID Ihres SAP-Systems.
 
 <pre><code># Create the root folder for all SBD devices
 sudo mkdir /sbd
@@ -302,7 +302,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    <b>SBD_WATCHDOG="yes"</b>
    </code></pre>
 
-   Erstellen Sie die Softdog-Konfigurationsdatei.
+   Erstellen Sie die ` softdog`-Konfigurationsdatei.
 
    <pre><code>echo softdog | sudo tee /etc/modules-load.d/softdog.conf
    </code></pre>
@@ -346,6 +346,18 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    # Change/set the following settings
    vm.dirty_bytes = 629145600
    vm.dirty_background_bytes = 314572800
+   </code></pre>
+
+1. **[A]** Konfigurieren von „cloud-netconfig-azure“ den HA-Cluster
+
+   Ändern Sie die Konfigurationsdatei für die Netzwerkschnittstelle wie unten dargestellt, um das Cloud-Netzwerk-Plug-In daran zu hindern, die virtuelle IP-Adresse zu entfernen (Pacemaker muss die VIP-Zuweisung steuern). Weitere Informationen finden Sie unter [SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633). 
+
+   <pre><code># Edit the configuration file
+   sudo vi /etc/sysconfig/network/ifcfg-eth0 
+   
+   # Change CLOUD_NETCONFIG_MANAGE
+   # CLOUD_NETCONFIG_MANAGE="yes"
+   CLOUD_NETCONFIG_MANAGE="no"
    </code></pre>
 
 1. **[1]** Aktivieren Sie den SSH-Zugriff.

@@ -1,21 +1,18 @@
 ---
-title: Einrichten von Micro Focus CICS BankDemo für Micro Focus Enterprise Developer 4.0 in Azure | Microsoft-Dokumentation
-description: Führen Sie die Micro Focus BankDemo-Anwendung in Azure aus, um zu erfahren, wie Sie Micro Focus Enterprise Server und Enterprise Developer verwenden.
-services: virtual-machines-linux
-documentationcenter: ''
-author: njray
-manager: edprice
-editor: edprice
-tags: ''
-keywords: ''
-ms.openlocfilehash: 733649c2b7f27ec5e80cb77adba708a158fb2c22
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+title: Einrichten von Micro Focus CICS BankDemo für Micro Focus Enterprise Developer 4.0 auf virtuellen Azure-Computern
+description: Führen Sie die Micro Focus BankDemo-Anwendung auf virtuellen Azure-Computern aus, um zu erfahren, wie Sie Micro Focus Enterprise Server und Enterprise Developer verwenden.
+author: sread
+ms.date: 04/02/2019
+ms.topic: article
+ms.service: multiple
+ms.openlocfilehash: be94cf0367f93f14249239fce5e09c8635a01136
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58099466"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892482"
 ---
-# <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-in-azure"></a>Einrichten von Micro Focus CICS BankDemo für Micro Focus Enterprise Developer 4.0 in Azure
+# <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Einrichten von Micro Focus CICS BankDemo für Micro Focus Enterprise Developer 4.0 in Azure
 
 Wenn Sie Micro Focus Enterprise Server 4.0 und Enterprise Developer 4.0 in Azure einrichten, können Sie Bereitstellungen von IBM z/OS-Workloads testen. In diesem Artikel wird erläutert, wie Sie CICS BankDemo einrichten – eine Beispielanwendung, die im Lieferumfang von Enterprise Developer enthalten ist.
 
@@ -23,7 +20,7 @@ CICS steht für „Customer Information Control System“, die Transaktionsplatt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Eine VM mit [Enterprise Developer](set-up-micro-focus-on-azure.md). Beachten Sie, dass Enterprise Developer zu Entwicklungs- und Testzwecken mit einer vollständigen Instanz von Enterprise Server ausgeliefert wird. Dies ist die Enterprise Server-Instanz, die für diese Demo verwendet wird.
+- Eine VM mit [Enterprise Developer](set-up-micro-focus-azure.md). Beachten Sie, dass Enterprise Developer zu Entwicklungs- und Testzwecken mit einer vollständigen Instanz von Enterprise Server ausgeliefert wird. Dies ist die Enterprise Server-Instanz, die für diese Demo verwendet wird.
 
 - [SQL Server 2017 Express Edition](https://www.microsoft.com/sql-server/sql-server-editions-express). Laden Sie die Software auf die Enterprise Developer-VM herunter, und installieren Sie sie. Enterprise Server erfordert eine Datenbank für die Verwaltung von CICS-Regionen, und die BankDemo-Anwendung verwendet auch eine SQL Server-Datenbank namens BANKDEMO. Bei dieser Demo wird davon ausgegangen, dass Sie SQL Server Express für beide Datenbanken verwenden. Wählen Sie beim Installationsprozess die Standardinstallation aus.
 
@@ -269,9 +266,10 @@ Als Letztes müssen Sie mithilfe des 3270-Emulators Rumba eine 3270-Sitzung konf
 
 Glückwunsch! Sie führen jetzt eine CICS-Anwendung in Azure aus, die Micro Focus Enterprise Server verwendet.
 
-## <a name="learn-more"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 
+- [Ausführen von Enterprise Server in Docker-Containern in Azure](run-enterprise-server-container.md)
 - [Mainframemigration – Portal](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
-- [Virtuelle Computer](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
+- [Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
 - [Problembehandlung](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
-- [Demystifying mainframe to Azure migration](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/) (Beseitigen von Irrtümern in Bezug auf die Migration von Mainframesystemen zu Azure)
+- [Beseitigen von Irrtümern in Bezug auf die Migration von Mainframesystemen zu Azure](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

@@ -1,21 +1,21 @@
 ---
-title: Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C | Microsoft-Dokumentation
-description: Enthält eine Beschreibung der ersten Schritte für benutzerdefinierte Azure Active Directory B2C-Richtlinien.
+title: Erste Schritte mit benutzerdefinierten Richtlinien – Azure Active Directory B2C | Microsoft-Dokumentation
+description: Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 04/03/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d4105aab80add8556bcbe79c9c6e8dd7743b25b7
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: b414529d7756812f1e1e16d2d0184c8472c0c55f
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298737"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916749"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C
 
@@ -25,12 +25,13 @@ ms.locfileid: "55298737"
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie noch nicht über einen [Azure AD B2C-Mandanten](tutorial-create-tenant.md) verfügen, erstellen Sie einen, der mit Ihrem Azure-Abonnement verknüpft ist.
+- Wenn Sie noch nicht über einen [Azure AD B2C-Mandanten](tutorial-create-tenant.md) verfügen, erstellen Sie einen, der mit Ihrem Azure-Abonnement verknüpft ist.
+- [Registrieren Sie Ihre Anwendung](tutorial-register-applications.md) in dem Mandanten, den Sie erstellt haben, damit er mit Azure AD B2C kommunizieren kann.
 
 ## <a name="add-signing-and-encryption-keys"></a>Hinzufügen von Signatur- und Verschlüsselungsschlüsseln
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator Ihres Azure AD B2C-Mandanten an.
-2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen. 
+2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Klicken Sie im Hauptmenü auf den **Verzeichnis- und Abonnementfilter**, und wählen Sie das Verzeichnis aus, das Ihren Mandanten enthält. 
 3. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **Azure AD B2C**, und klicken Sie darauf.
 4. Wählen Sie auf der Seite „Übersicht“ die Option **Identity Experience Framework – PREVIEW** (Framework für die Identitätsfunktion – VORSCHAU) aus.
 
@@ -59,11 +60,11 @@ Wenn Sie bereits über ein [Facebook-Anwendungsgeheimnis](active-directory-b2c-s
 1. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
 2. Klicken Sie unter **Optionen** auf `Manual`.
 3. Geben Sie unter **Name** `FacebookSecret` ein. Das Präfix `B2C_1A_` wird möglicherweise automatisch hinzugefügt.
-4. Geben Sie unter **Geheimnis** Ihr Facebook-Geheimnis aus „developers.facebook.com“ oder `0` als Platzhalter ein. Es handelt sich dabei um das Geheimnis und nicht um die Anwendungs-ID.
+4. Geben Sie unter **Geheimnis** Ihr Facebook-Geheimnis aus „developers.facebook.com“ oder `0` als Platzhalter ein. Bei diesem Wert handelt sich um das Geheimnis und nicht um die Anwendungs-ID.
 5. Wählen Sie unter **Schlüsselverwendung** **Signatur** aus.
 6. Klicken Sie auf **Create**.
 
-## <a name="register-applications"></a>Registrieren von Anwendungen
+## <a name="register-identity-experience-framework-applications"></a>Registrieren von Identity Experience Framework-Anwendungen
 
 Azure AD B2C erfordert, dass Sie zwei Anwendungen registrieren, die zur Registrierung und Anmeldung von Benutzern verwendet werden. IdentityExperienceFramework (eine Web-App) und ProxyIdentityExperienceFramework (eine native App) mit delegierter Berechtigung von der IdentityExperienceFramework-App. Lokale Konten sind nur in Ihrem Mandanten vorhanden. Ihre Benutzer melden sich mit einer eindeutigen Kombination aus E-Mail-Adresse und Kennwort an, um auf Ihre bei Mandanten registrierten Anwendungen zuzugreifen.
 
@@ -85,8 +86,7 @@ Azure AD B2C erfordert, dass Sie zwei Anwendungen registrieren, die zur Registri
 4. Geben Sie `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` als **Umleitungs-URI** ein, wobei `yourtenant` für Ihren Azure AD B2C-Mandanten steht.
 5. Klicken Sie auf **Create**. Wenn der Bestellvorgang abgeschlossen ist, kopieren Sie die Anwendungs-ID und speichern Sie sie zur späteren Verwendung.
 6. Klicken Sie auf der Seite „Einstellungen“ zunächst auf **Erforderliche Berechtigungen** und dann auf **Hinzufügen**.
-7. Wählen Sie **API auswählen** aus.
-8. Suchen Sie **IdentityExperienceFramework**, und klicken Sie anschließend auf **Auswählen**.
+7. Wählen Sie **API auswählen** aus, suchen Sie nach **IdentityExperienceFramework**, wählen Sie diese API aus, und klicken Sie anschließend auf **Auswählen**.
 9. Aktivieren Sie das Kontrollkästchen neben **Access IdentityExperienceFramework** (Auf IdentityExperienceFramework zugreifen), und klicken Sie erst auf **Auswählen** und dann auf **Done** (Fertig).
 10. Wählen Sie **Berechtigungen erteilen** aus, und bestätigen Sie dies anschließend durch Auswahl von **Ja**.
 
@@ -131,12 +131,11 @@ Fügen Sie die Anwendung-ID zur Erweiterungsdatei *TrustFrameworkExtensions.xml*
 
 ## <a name="test-the-custom-policy"></a>Testen der benutzerdefinierten Richtlinie
 
-1. Klicken Sie auf der Seite „Benutzerdefinierte Richtlinien“ auf **B2C_1A_signup_signin**. 
-2. Wählen Sie **Jetzt ausführen** aus.
-
-3. Sie sollten sich mit einer E-Mail-Adresse registrieren können.
-
-4. Melden Sie sich zur Bestätigung der richtigen Konfiguration mit demselben Konto an.
+1. Klicken Sie auf der Seite „Benutzerdefinierte Richtlinien“ auf **B2C_1A_signup_signin**.
+2. Wählen Sie auf der Übersichtsseite der benutzerdefinierten Richtlinie unter **Anwendung auswählen** die Webanwendung namens *webapp1* aus, die Sie zuvor registriert haben. Stellen Sie sicher, dass die **Antwort-URL** `https://jwt.ms` lautet.
+3. Wählen Sie **Jetzt ausführen** aus.
+4. Sie sollten sich mit einer E-Mail-Adresse registrieren können.
+5. Melden Sie sich zur Bestätigung der richtigen Konfiguration mit demselben Konto an.
 
 ## <a name="add-facebook-as-an-identity-provider"></a>Hinzufügen von Facebook als Identitätsanbieter
 

@@ -1,6 +1,6 @@
 ---
 title: Verwenden von PowerShell zum Erstellen und Konfigurieren eines Log Analytics-Arbeitsbereichs | Microsoft-Dokumentation
-description: Log Analytics verwendet Daten von Servern in Ihrer lokalen oder Cloudinfrastruktur. Sie können Computerdaten aus dem Azure-Speicher sammeln, wenn sie von Azure-Diagnose generiert werden.
+description: In Log Analytics-Arbeitsbereichen in Azure Monitor werden Daten von Servern in Ihrer lokalen oder Cloudinfrastruktur gespeichert. Sie können Computerdaten aus dem Azure-Speicher sammeln, wenn sie von Azure-Diagnose generiert werden.
 services: log-analytics
 author: richrundmsft
 ms.service: log-analytics
@@ -8,18 +8,16 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: richrund
-ms.openlocfilehash: 1cfb4850c35806d702f76f4006ad46ad43d6bcf0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5c348adea0847929b37d1b61f024859b1d634fe7
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076410"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903402"
 ---
-# <a name="manage-log-analytics-using-powershell"></a>Verwalten von Log Analytics mit PowerShell
+# <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Verwalten von Log Analytics-Arbeitsbereichen in Azure Monitor mithilfe von PowerShell
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-Mit den [PowerShell-Cmdlets für Log Analytics](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) können Sie verschiedene Funktionen in Log Analytics von der Befehlszeile oder in einem Skript ausführen.  Beispiele für die Aufgaben, die Sie mit PowerShell ausführen können:
+Mit den [PowerShell-Cmdlets für Log Analytics](https://docs.microsoft.com/powershell/module/az.operationalinsights/) können Sie verschiedene Funktionen für einen Log Analytics-Arbeitsbereich in Azure Monitor über eine Befehlszeile oder in einem Skript ausführen.  Beispiele für die Aufgaben, die Sie mit PowerShell ausführen können:
 
 * Erstellen eines Arbeitsbereichs
 * Hinzufügen oder Entfernen einer Lösung
@@ -33,10 +31,12 @@ Mit den [PowerShell-Cmdlets für Log Analytics](https://docs.microsoft.com/power
 * Hinzufügen des Log Analytics-Agents auf virtuellen Azure-Computern
 * Konfiguration von Log Analytics zum Indizieren der Daten, die mit der Azure-Diagnose gesammelt werden
 
-Dieser Artikel enthält zwei Codebeispiele, die einige der Funktionen veranschaulicht, die Sie mit PowerShell ausführen können.  In der [Referenz zu den PowerShell-Cmdlets für Log Analytics](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) finden Sie noch weitere Funktionen.
+Dieser Artikel enthält zwei Codebeispiele, die einige der Funktionen veranschaulicht, die Sie mit PowerShell ausführen können.  In der [Referenz zu den PowerShell-Cmdlets für Log Analytics](https://docs.microsoft.com/powershell/module/az.operationalinsights/) finden Sie noch weitere Funktionen.
 
 > [!NOTE]
 > Log Analytics wurde früher als Operational Insights bezeichnet, daher wird dieser Name in den Cmdlets verwendet.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesen Beispielen wird Version 1.0.0 oder höher des Az.OperationalInsights-Moduls verwendet.
@@ -58,7 +58,7 @@ Das folgende Beispielskript veranschaulicht Folgendes:
 11. Erfassen des Leistungsindikators „Verfügbarer Arbeitsspeicher in MB“ von Windows-Computern
 12. Sammeln eines benutzerdefinierten Protokolls
 
-```PowerShell
+```powershell
 
 $ResourceGroup = "oms-example"
 $WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need to be unique - Get-Random helps with this for the example code
@@ -195,7 +195,7 @@ Im obigen Beispiel wurde regexDelimiter als „\\n“ für den Zeilenumbruch def
 | `yyyy-MM-ddTHH:mm:ss` <br> Das „T“ steht für den Buchstaben „T“ | `((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d)-(([0-3]\\\\d)\|(\\\\d))T((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9]` | | |
 
 ## <a name="configuring-log-analytics-to-send-azure-diagnostics"></a>Konfigurieren von Log Analytics zum Senden der Azure-Diagnose
-Für die Überwachung von Azure-Ressourcen ohne Agents müssen die Ressourcen Azure-Diagnose aktiviert haben und zum Schreiben in einen Log Analytics-Arbeitsbereich konfiguriert worden sein. Bei diesem Ansatz werden Daten direkt an Log Analytics gesendet, und Daten müssen nicht in ein Speicherkonto geschrieben werden. Unterstützte Ressourcen:
+Für die Überwachung von Azure-Ressourcen ohne Agents müssen die Ressourcen Azure-Diagnose aktiviert haben und zum Schreiben in einen Log Analytics-Arbeitsbereich konfiguriert worden sein. Bei diesem Ansatz werden Daten direkt an den Arbeitsbereich gesendet, und Daten müssen nicht in ein Speicherkonto geschrieben werden. Unterstützte Ressourcen:
 
 | Ressourcentyp | Protokolle | Metriken |
 | --- | --- | --- |
@@ -222,7 +222,7 @@ Ausführliche Informationen zu den verfügbaren Metriken finden Sie unter [Suppo
 
 Ausführliche Informationen zu den verfügbaren Protokollen finden Sie unter [Supported services and schema for Diagnostic Logs](../../azure-monitor/platform/diagnostic-logs-schema.md) (Unterstützte Dienste und Schema für Diagnoseprotokolle).
 
-```PowerShell
+```powershell
 $workspaceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
 $resourceId = "/SUBSCRIPTIONS/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/DEMO"
@@ -233,24 +233,24 @@ Set-AzDiagnosticSetting -ResourceId $resourceId -WorkspaceId $workspaceId -Ena
 Sie können mit dem vorherigen Cmdlet auch Protokolle von Ressourcen in verschiedenen Abonnements sammeln. Das Cmdlet kann abonnementübergreifend verwendet werden, da Sie die ID der Ressource, die Protokolle erstellt, und des Arbeitsbereichs angeben, an den die Protokolle gesendet werden.
 
 
-## <a name="configuring-log-analytics-to-collect-azure-diagnostics-from-storage"></a>Konfigurieren von Log Analytics zum Erfassen der Azure-Diagnose aus dem Speicher
-Damit Sie Protokolldaten in einer ausgeführten Instanz eines klassischen Clouddiensts oder eines Service Fabric-Clusters erfassen können, müssen Sie die Daten zunächst in den Azure-Speicher schreiben. Log Analytics wird dann konfiguriert, um die Protokolle aus dem Speicherkonto zu sammeln. Unterstützte Ressourcen:
+## <a name="configuring-log-analytics-workspace-to-collect-azure-diagnostics-from-storage"></a>Konfigurieren eines Log Analytics-Arbeitsbereichs zum Erfassen der Azure-Diagnose aus dem Speicher
+Damit Sie Protokolldaten in einer ausgeführten Instanz eines klassischen Clouddiensts oder eines Service Fabric-Clusters erfassen können, müssen Sie die Daten zunächst in den Azure-Speicher schreiben. Dann wird ein Log Analytics-Arbeitsbereich konfiguriert, um die Protokolle aus dem Speicherkonto zu sammeln. Unterstützte Ressourcen:
 
 * Azure Cloud Services (Web- und Workerrollen)
 * Service Fabric-Cluster
 
 Das folgende Beispiel veranschaulicht die Vorgehensweise:
 
-1. Auflisten der vorhandenen Speicherkonten und Speicherorte, aus denen Log Analytics Daten indiziert
+1. Auflisten der vorhandenen Speicherkonten und Speicherorte, aus denen der Arbeitsbereich Daten indiziert
 2. Erstellen einer Konfiguration zum Lesen aus einem Speicherkonto
 3. Aktualisieren der neu erstellten Konfiguration zum Indizieren von Daten von zusätzlichen Speicherorten
 4. Löschen der neu erstellten Konfiguration
 
-```PowerShell
+```powershell
 # validTables = "WADWindowsEventLogsTable", "LinuxsyslogVer2v0", "WADServiceFabric*EventTable", "WADETWEventTable"
 $workspace = (Get-AzOperationalInsightsWorkspace).Where({$_.Name -eq "your workspace name"})
 
-# Update these two lines with the storage account resource ID and the storage account key for the storage account you want to Log Analytics to index
+# Update these two lines with the storage account resource ID and the storage account key for the storage account you want the workspace to index
 $storageId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx/resourceGroups/demo/providers/Microsoft.Storage/storageAccounts/wadv2storage"
 $key = "abcd=="
 
@@ -272,5 +272,5 @@ Sie können mit dem vorherigen Skript auch Protokolle aus Speicherkonten in vers
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [PowerShell-Cmdlets für Log Analytics](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) .
+* [PowerShell-Cmdlets für Log Analytics](https://docs.microsoft.com/powershell/module/az.operationalinsights/) .
 

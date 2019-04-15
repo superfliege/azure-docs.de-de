@@ -1,6 +1,6 @@
 ---
-title: 'Beispiel: ISO 27001-Blaupause – Steuerungszuordnung'
-description: Steuerungszuordnung des ISO 27001-Blaupausenbeispiels.
+title: 'Beispiel: Blaupause „ISO 27001: ASE-/SQL-Workload“ – Steuerelementzuordnung'
+description: 'Steuerelementzuordnung des Beispiels für die Blaupause „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“ zu Azure Policy und RBAC.'
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,14 +8,14 @@ ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d487ce81babc2d1d6a35e3bdb1c13e1a24f8d1ca
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: fb251d71ca9aa20ed06d0a917394097b36322b3c
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58014197"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802710"
 ---
-# <a name="control-mapping-of-the-azure-blueprints-iso-27001-blueprint-sample"></a>Steuerungszuordnung des ISO 27001-Azure Blueprints-Blaupausenbeispiels
+# <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>Steuerelementzuordnung des Blaupausenbeispiels „ISO 27001: ASE-/SQL-Workload“
 
 In diesem Artikel wird erläutert, wie das Azure Blueprints-Blaupausenbeispiel „ISO 27001: ASE-/SQL-Workload“ den ISO 27001-Steuerungen zugeordnet wird. Weitere Informationen zu den Steuerungen finden Sie unter [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html).
 

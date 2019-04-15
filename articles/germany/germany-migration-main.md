@@ -9,18 +9,20 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: c0cf0a31aac4a4b647cd766c93e3ebbde1fb72e7
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 386f5af2ef186dcde2971601b44eb9cbd53883dd
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769328"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895997"
 ---
 # <a name="overview-of-migration-guidance-for-azure-germany"></a>Übersicht über die Migrationsanleitung für Azure Deutschland
 
 Die Artikel in diesem Abschnitt wurden erstellt, um Sie beim Migrieren Ihrer Workloads von Azure Deutschland zu Azure weltweit zu unterstützen. Im [Azure-Migrationscenter](https://azure.microsoft.com/migration/) werden zwar Tools bereitgestellt, mit denen Sie Ressourcen migrieren können, einige dieser Tools sind aber nur für Migrationen nützlich, die im selben Mandanten oder in derselben Region erfolgen.
 
 Die beiden Regionen in Deutschland sind vollständig getrennt von Azure weltweit. Die Clouds in Azure weltweit und in Azure Deutschland haben ihre eigenen getrennten Azure Active Directory-Instanzen. Aus diesem Grund sind Azure Deutschland-Mandanten von Azure weltweit-Mandanten getrennt. In diesem Artikel sind die Migrationstools beschrieben, die Sie verwenden können, wenn Sie zwischen *verschiedenen* Mandanten migrieren.
+
+Der Leitfaden für die Identitäts-/Mandantenmigration wurde für reine Azure-Kunden konzipiert. Wenn Sie allgemeine Azure Active Directory (Azure AD)-Mandanten für Azure und Office 365 (oder andere Microsoft-Produkte) verwenden, beinhaltet eine Identitätsmigration komplexe Vorgänge, und Sie sollten sich vor der Verwendung dieses Migrationsleitfadens zunächst an Ihren Kontomanager wenden.
 
 ## <a name="migration-process"></a>Migrationsprozess
 
@@ -104,13 +106,13 @@ Erfahren Sie mehr über Tools, Techniken und Empfehlungen zum Migrieren von Ress
 
 - [Compute](./germany-migration-compute.md)
 - [Netzwerk](./germany-migration-networking.md)
-- [Speicher](./germany-migration-storage.md)
+- [Storage](./germany-migration-storage.md)
 - [Web](./germany-migration-web.md)
 - [Datenbanken](./germany-migration-databases.md)
-- [Analyse](./germany-migration-analytics.md)
+- [Analytics](./germany-migration-analytics.md)
 - [IoT](./germany-migration-iot.md)
 - [Integration](./germany-migration-integration.md)
-- [Identität](./germany-migration-identity.md)
+- [Identity](./germany-migration-identity.md)
 - [Sicherheit](./germany-migration-security.md)
 - [Verwaltungstools](./germany-migration-management-tools.md)
 - [Medien](./germany-migration-media.md)

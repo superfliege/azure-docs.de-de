@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: ec3952f2bb0b4180f5c72d948d1835a903152f0d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0a2e2a3d817140a6ab15dab0093b4025a3bfd76c
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181825"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916653"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Allgemeine Starttasks für Clouddienste
 Dieser Artikel enthält einige Beispiele für häufiger ausgeführte Starttasks, die Sie vielleicht im Clouddienst ausführen möchten. Mit Starttasks können Sie Vorgänge ausführen, bevor eine Rolle gestartet wird. Zu den Vorgängen, die Sie vielleicht ausführen möchten, gehören das Installieren von Komponenten, das Registrieren von COM-Komponenten, das Festlegen von Registrierungsschlüsseln und das Starten eines lang andauernden Prozesses. 
@@ -31,7 +31,7 @@ In [diesem Artikel](cloud-services-startup-tasks.md) erfahren Sie etwas über di
 > 
 
 ## <a name="define-environment-variables-before-a-role-starts"></a>Definieren von Umgebungsvariablen vor dem Starten einer Rolle
-Wenn Sie Umgebungsvariablen für einen bestimmten Task benötigen, können Sie das [Umgebung]-Element innerhalb des [Aufgabe]-Elements verwenden.
+Wenn Sie Umgebungsvariablen für einen bestimmten Task benötigen, können Sie das [Environment]-Element innerhalb des [Task]-Elements verwenden.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -68,12 +68,12 @@ Es gibt jedoch einige Dinge, die bei der Verwendung von *AppCmd.exe* als Startta
 
 Es empfiehlt sich, nach dem Aufruf von *AppCmd.exe* den **errorlevel** zu prüfen, was einfach ist, wenn Sie den Aufruf von *AppCmd.exe* in eine *CMD*-Datei einbetten. Wenn Sie eine bekannte **errorlevel** -Antwort erkennen, können Sie diese ignorieren oder zurückgeben.
 
-Die von *AppCmd.exe* zurückgegebenen errorlevel-Werte sind in der Datei „Winerror.h“ aufgeführt und können auch auf [MSDN](https://msdn.microsoft.com/library/windows/desktop/ms681382.aspx)nachgelesen werden.
+Die von *AppCmd.exe* zurückgegebenen errorlevel-Werte sind in der Datei „Winerror.h“ aufgeführt und können auch auf [MSDN](/windows/desktop/Debug/system-error-codes--0-499-)nachgelesen werden.
 
 ### <a name="example-of-managing-the-error-level"></a>Beispiel für die Verwaltung von Fehlerstufen
 In diesem Beispiel wird ein Komprimierungsabschnitt und ein Komprimierungseintrag für JSON mit Fehlerbehandlung und-Protokollierung in der Datei *Web.config* hinzugefügt.
 
-Die relevanten Abschnitte der Datei [ServiceDefinition.csdef] werden hier gezeigt, insbesondere das Festlegen des [executionContext](https://msdn.microsoft.com/library/azure/gg557552.aspx#Task)-Attributs auf `elevated`, um *AppCmd.exe* ausreichende Berechtigungen zum Ändern der Einstellungen in der Datei *Web.config* zu gewähren:
+Die relevanten Abschnitte der Datei [ServiceDefinition.csdef] werden hier gezeigt, insbesondere das Festlegen des [executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#Task)-Attributs auf `elevated`, um *AppCmd.exe* ausreichende Berechtigungen zum Ändern der Einstellungen in der Datei *Web.config* zu gewähren:
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -131,7 +131,7 @@ Die zweite Firewall kontrolliert Verbindungen zwischen einem virtuellen Computer
 
 Azure erstellt Firewallregeln für die in den Rollen gestarteten Prozesse. Wenn Sie beispielsweise einen Dienst oder ein Programm starten, erstellt Azure automatisch die erforderlichen Firewallregeln, die diesem Dienst das Kommunizieren mit dem Internet ermöglichen. Wenn Sie einen Dienst erstellen, der durch einen Prozess außerhalb Ihrer Rolle gestartet wird (z.B. einen COM+-Dienst oder einen geplanten Windows-Task), müssen Sie manuell eine Firewallregel für den Zugriff auf diesen Dienst erstellen. Diese Firewallregeln können unter Verwendung einer Starttask erstellt werden.
 
-Ein Starttask, der eine Firewallregel erstellt, muss einen [executionContext][aufgabe] mit der Einstellung **elevated** zurückgeben. Fügen Sie folgenden Starttask der Datei [ServiceDefinition.csdef] hinzu.
+Ein Starttask, der eine Firewallregel erstellt, muss einen [executionContext][Task] mit der Einstellung **elevated** zurückgeben. Fügen Sie folgenden Starttask der Datei [ServiceDefinition.csdef] hinzu.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -293,7 +293,7 @@ REM   Exit the batch file with ERRORLEVEL 0.
 EXIT /b 0
 ```
 
-Sie können mithilfe der [GetLocalResource](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx)-Methode aus dem Azure SDK auf den lokalen Speicherordner zugreifen.
+Sie können mithilfe der [GetLocalResource](/previous-versions/azure/reference/ee772845(v=azure.100))-Methode aus dem Azure SDK auf den lokalen Speicherordner zugreifen.
 
 ```csharp
 string localStoragePath = Microsoft.WindowsAzure.ServiceRuntime.RoleEnvironment.GetLocalResource("StartupLocalStorage").RootPath;
@@ -472,12 +472,12 @@ Beispielausgabe in der Datei **StartupLog.txt**:
 ### <a name="set-executioncontext-appropriately-for-startup-tasks"></a>Legen Sie einen geeigneten ExecutionContext für die Starttasks fest
 Legen Sie geeignete Berechtigungen für den Starttask fest. Manchmal müssen Starttasks mit erhöhten Rechten ausgeführt werden, selbst wenn die Rolle mit normalen Berechtigungen ausgeführt wird.
 
-Das Befehlszeilentool [executionContext][aufgabe] -Attribut legt die Berechtigungsstufe des Starttasks fest. Der Wert `executionContext="limited"` bedeutet, dass der Starttask die gleiche Berechtigungsstufe wie die Rolle aufweist. Der Wert `executionContext="elevated"` bedeutet, dass der Starttask über Administratorrechte verfügt, wodurch der Starttask Administratoraufgaben ausführen kann, ohne dass Sie der Rolle Administratorrechte zuweisen müssen.
+Das Befehlszeilentool [executionContext][Task] -Attribut legt die Berechtigungsstufe des Starttasks fest. Der Wert `executionContext="limited"` bedeutet, dass der Starttask die gleiche Berechtigungsstufe wie die Rolle aufweist. Der Wert `executionContext="elevated"` bedeutet, dass der Starttask über Administratorrechte verfügt, wodurch der Starttask Administratoraufgaben ausführen kann, ohne dass Sie der Rolle Administratorrechte zuweisen müssen.
 
 Ein Beispiel für einen Starttask, der erhöhte Rechte erfordert, ist ein Starttask, der **AppCmd.exe** zum Konfigurieren von IIS verwendet. **AppCmd.exe** erfordert `executionContext="elevated"`.
 
 ### <a name="use-the-appropriate-tasktype"></a>Verwenden Sie einen geeigneten taskType
-Das [taskType][aufgabe]-Attribut bestimmt, wie der Starttask ausgeführt wird. Es gibt drei Werte: **simple**, **background** und **foreground**. Die background- und foreground-Tasks werden asynchron gestartet. Die simple-Tasks werden dann synchron jeweils nacheinander ausgeführt.
+Das [taskType][Task]-Attribut bestimmt, wie der Starttask ausgeführt wird. Es gibt drei Werte: **simple**, **background** und **foreground**. Die background- und foreground-Tasks werden asynchron gestartet. Die simple-Tasks werden dann synchron jeweils nacheinander ausgeführt.
 
 Bei **simple**-Starttasks lässt sich die Reihenfolge, in der die Tasks abgearbeitet werden, durch die Reihenfolge der Tasks in der Datei ServiceDefinition.csdef festlegen. Wenn ein **simple**-Task mit einem von Null abweichenden Exitcode beendet wird, dann wird die Startprozedur beendet, und die Rolle wird nicht gestartet.
 
@@ -510,11 +510,11 @@ Erfahren Sie mehr über die Funktionsweise von [Tasks](cloud-services-startup-ta
 [Aufgabe]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
-[Umgebung]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
+[Environment]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
 [Variable]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-[EndPoints]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
+[Endpunkte]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
 [LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
