@@ -4,17 +4,17 @@ description: Die Azure Policy-Definition hat verschiedene Auswirkungen, mit dene
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/01/2019
+ms.date: 03/29/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 6c6fbde8ff803a053f8c34765ce95d3981a57c52
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ae9c9c5ed8b951760ddac3034c617a13ebe35006
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551212"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802642"
 ---
 # <a name="understand-azure-policy-effects"></a>Grundlegendes zu Azure Policy-Auswirkungen
 
@@ -180,9 +180,10 @@ Die **details**-Eigenschaft der Auswirkung „AuditIfNotExists“ umfasst die fo
 
 - **Type** [erforderlich]
   - Gibt den Typ der entsprechenden abzugleichenden Ressource an.
-  - Zunächst wird versucht, eine Ressource unterhalb der **if**-Bedingungsressource abzurufen, anschließend wird eine Abfrage innerhalb derselben Ressourcengruppe wie der **if**-Bedingungsressource durchgeführt.
+  - Wenn es sich bei **details.type** um einen Ressourcentyp unterhalb der Bedingungsressource **if** handelt, fragt die Richtlinie Ressourcen dieses **Typs** innerhalb des Bereichs der ausgewerteten Ressource ab. Andernfalls erfolgen Abfragen der Richtlinie innerhalb der gleichen Ressourcengruppe wie die ausgewertete Ressource.
 - **Name** (optional)
   - Gibt den exakten Namen der Ressource für den Abgleich an und führt dazu, dass die Richtlinie nicht alle Ressourcen des angegebenen Typs, sondern eine bestimmte Ressource abruft.
+  - Wenn die Werte der Bedingung für **if.field.type** und **then.details.type** übereinstimmen, wird **Name** _erforderlich_ und muss `[field('name')]` sein. Allerdings sollte stattdessen ein [audit](#audit)-Effekt in Erwägung gezogen werden.
 - **ResourceGroupName** (optional)
   - Hierdurch ist es möglich, für den Abgleich eine Ressource aus einer anderen Ressourcengruppe festzulegen.
   - Diese Einstellung ist nicht anwendbar, wenn **type** eine Ressource unterhalb der **if**-Bedingungsressource angibt.
@@ -253,6 +254,7 @@ Die **details**-Eigenschaft der Auswirkung „AuditIfNotExists“ umfasst die fo
   - Zunächst wird versucht, eine Ressource unterhalb der **if**-Bedingungsressource abzurufen, anschließend wird eine Abfrage innerhalb derselben Ressourcengruppe wie der **if**-Bedingungsressource durchgeführt.
 - **Name** (optional)
   - Gibt den exakten Namen der Ressource für den Abgleich an und führt dazu, dass die Richtlinie nicht alle Ressourcen des angegebenen Typs, sondern eine bestimmte Ressource abruft.
+  - Wenn die Werte der Bedingung für **if.field.type** und **then.details.type** übereinstimmen, wird **Name** _erforderlich_ und muss `[field('name')]` sein.
 - **ResourceGroupName** (optional)
   - Hierdurch ist es möglich, für den Abgleich eine Ressource aus einer anderen Ressourcengruppe festzulegen.
   - Diese Einstellung ist nicht anwendbar, wenn **type** eine Ressource unterhalb der **if**-Bedingungsressource angibt.

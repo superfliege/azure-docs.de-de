@@ -3,19 +3,19 @@ title: Filtern von Obszönitäten – Textübersetzungs-API
 titlesuffix: Azure Cognitive Services
 description: Verwenden Sie die Filterung von Obszönitäten in der Textübersetzungs-API.
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: ab54f34dbdbda5af94c6ebc2bc8c1818ebf3d601
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: bd7a05f2f597d1882293387e5aac8e4d7367d051
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729881"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916630"
 ---
 # <a name="add-profanity-filtering-with-the-translator-text-api"></a>Hinzufügen der Filterung von Obszönitäten mit der Textübersetzungs-API
 
@@ -34,4 +34,4 @@ Für die Translate()-Methode wird der Parameter „options“ verwendet, der das
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]
-> [Anwenden der Filterung von Obszönitäten in Ihrem Aufruf der Translator-API](reference/v3-0-translate.md)
+> [Anwenden der Filterung von Obszönitäten in Ihrem Aufruf der Textübersetzungs-API](reference/v3-0-translate.md)

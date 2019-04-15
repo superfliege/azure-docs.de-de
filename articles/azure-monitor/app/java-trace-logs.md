@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: d8344177fc5895451cf876f5aa581baa1fed52e6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 614f9a44f7c699be38906ac00e12f523490ce112
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001851"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884294"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Untersuchen von Java-Ablaufverfolgungsprotokollen in Application Insights
 Wenn Sie für die Ablaufverfolgung Logback oder Log4J (Version 1.2 bzw. 2.0) verwenden, werden Ihre Ablaufverfolgungsprotokolle automatisch an Application Insights gesendet. Hier können Sie sie durchsuchen und untersuchen.
@@ -60,7 +60,7 @@ Aktualisieren Sie dann die Projektabhängigkeiten, damit die Binärdateien herun
     </dependencies>
 ```
 
-*Log4J v1. 2*
+*Log4J v1.2*
 
 ```XML
 
@@ -91,7 +91,7 @@ Aktualisieren Sie dann die Projektabhängigkeiten, damit die Binärdateien herun
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j2', version: '2.0.+'
 ```
 
-**Log4J v1. 2**
+**Log4J v1.2**
 
 ```
     compile group: 'com.microsoft.azure', name: 'applicationinsights-logging-log4j1_2', version: '2.0.+'
@@ -116,6 +116,7 @@ Zum Starten von Ablaufverfolgungen führen Sie den relevanten Codeausschnitt mit
 
     <appender name="aiAppender" 
       class="com.microsoft.applicationinsights.logback.ApplicationInsightsAppender">
+        <instrumentationKey>[APPLICATION_INSIGHTS_KEY]</instrumentationKey>
     </appender>
     <root level="trace">
       <appender-ref ref="aiAppender" />
@@ -128,7 +129,7 @@ Zum Starten von Ablaufverfolgungen führen Sie den relevanten Codeausschnitt mit
 
     <Configuration packages="com.microsoft.applicationinsights.log4j.v2">
       <Appenders>
-        <ApplicationInsightsAppender name="aiAppender" />
+        <ApplicationInsightsAppender name="aiAppender" instrumentationKey="[APPLICATION_INSIGHTS_KEY]" />
       </Appenders>
       <Loggers>
         <Root level="trace">
@@ -138,12 +139,13 @@ Zum Starten von Ablaufverfolgungen führen Sie den relevanten Codeausschnitt mit
     </Configuration>
 ```
 
-*Log4J v1. 2*
+*Log4J v1.2*
 
 ```XML
 
     <appender name="aiAppender" 
          class="com.microsoft.applicationinsights.log4j.v1_2.ApplicationInsightsAppender">
+        <param name="instrumentationKey" value="[APPLICATION_INSIGHTS_KEY]" />
     </appender>
     <root>
       <priority value ="trace" />

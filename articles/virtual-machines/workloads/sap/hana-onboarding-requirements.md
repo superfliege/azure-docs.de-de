@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 01/31/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8cfcf9c2f008abb571347e32f2be190dc51901e3
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 252c84bce2b70f6931593fe9410abe6cc146b5bb
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563829"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880694"
 ---
 # <a name="onboarding-requirements"></a>Onboardinganforderungen
 
@@ -31,7 +31,7 @@ Diese Liste führt die Anforderungen zum Ausführen von SAP HANA in Azure (groß
 - Microsoft Premier Support-Vertrag. Spezifische Informationen im Zusammenhang mit der Ausführung von SAP in Azure finden Sie im [SAP-Supporthinweis 2015553 – SAP in Microsoft Azure: Supportvoraussetzungen](https://launchpad.support.sap.com/#/notes/2015553). Wenn Sie Einheiten von HANA (große Instanz) mit 384 und mehr CPUs verwenden, muss der Premier Support-Vertrag Azure Rapid Response beinhalten.
 - Kenntnis der SKUs von HANA (große Instanz), die Sie nach dem Ausführen einer Größenanpassung mit SAP benötigen.
 
-**Netzwerkkonnektivität**
+**Netzwerkverbindung**
 
 - ExpressRoute zwischen lokalen Systemen und Azure: Um Ihr lokales Rechenzentrum mit Azure zu verbinden, benötigen Sie eine Verbindung mit mindestens 1 GBit/s von Ihrem Internetdienstanbieter (ISP). Für die Verbindungen zwischen HANA-Einheiten (große Instanzen) und Azure wird ebenfalls ExpressRoute-Technologie verwendet. Diese ExpressRoute-Verbindung zwischen den HANA-Einheiten (große Instanzen) und Azure ist im Preis für die HANA-Einheiten (große Instanzen) enthalten, einschließlich aller Gebühren für eingehende und ausgehende Daten für diese spezifische ExpressRoute-Verbindung. Aus diesem Grund entstehen für Sie als Kunde über Ihre ExpressRoute-Verbindung zwischen lokalen Systemen und Azure hinaus keine zusätzlichen Kosten.
 
@@ -66,7 +66,7 @@ Die Kompatibilitätsmatrix des Betriebssystems und der HLI-Firmware-/Treibervers
 
 - Lizenzen und Softwareinstallationskomponenten für SAP HANA (Plattform oder Enterprise Edition).
 
-**Anwendungen**
+**ANWENDUNGEN**
 
 - Lizenzen und Softwareinstallationskomponenten für alle SAP-Anwendungen, die eine Verbindung mit SAP HANA herstellen, sowie zugehörige SAP-Supportverträge.
 - Lizenzen und Softwareinstallationskomponenten für alle Nicht-SAP-Anwendungen, die mit Umgebungen für SAP HANA in Azure (große Instanzen) verwendet werden, sowie zugehörige Supportverträge.

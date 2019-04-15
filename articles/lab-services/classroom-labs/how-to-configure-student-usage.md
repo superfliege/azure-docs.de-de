@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 03/28/2019
 ms.author: spelluru
-ms.openlocfilehash: eadbaacd4bb860cd09997775b8d77cbcf0ff17f2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 494c285f1c096a84925d9d9a4fb98409960e5230
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181621"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650082"
 ---
 # <a name="configure-usage-settings-and-policies"></a>Konfigurieren von Nutzungseinstellungen und Richtlinien
 In diesem Artikel wird beschrieben, wie Sie dem Lab Benutzer hinzufügen, diese beim Lab registrieren, die Anzahl der Stunden steuern, für die sie den virtuellen Computer verwenden können, und vieles mehr. 
@@ -44,14 +44,20 @@ Um den Registrierungslink an Kursteilnehmer zu senden, verwenden Sie eine der fo
 Wenn die **Zugriffsbeschränkung** für das Lab aktiviert ist, können sich nur Benutzer in der Liste der Benutzer über den Registrierungslink beim Lab registrieren. Diese Option ist standardmäßig aktiviert. 
 
 ### <a name="send-email-to-users"></a>E-Mail an Benutzer senden
+Azure Lab Services ermöglicht es Kursleitern, Lab-Einladungen per E-Mail an alle oder ausgewählte Kursteilnehmer zu senden, ohne einen anderen E-Mail-Client verwenden zu müssen. Kursleiter können den Mauszeiger über einzelne Kursteilnehmer in der Liste bewegen, um das E-Mail-Symbol für die einzelnen Kursteilnehmer anzuzeigen, oder einen oder mehrere Kursteilnehmer auszuwählen, und **Sent invitation** (Einladung senden) in der Symbolleiste verwenden. Dieses Feature sendet eine E-Mail mit einem Registrierungslink und einer Nachricht (falls vorhanden), die vom Kursleiter hinzugefügt wurde. Nachdem die Einladung gesendet wurde, ändert sich der Einladungsstatus in **Invitation sent** (Einladung gesendet), sodass Kursleiter verfolgen können, welche Kursteilnehmer den Registrierungslink bereits erhalten haben und an welchem Datum der Link gesendet wurde.
+
 1. Wechseln Sie zur Ansicht **Benutzer**, falls Sie sich noch nicht auf der Seite befinden. 
-2. Wählen Sie bestimmte oder alle Benutzer in der Liste aus. Aktivieren Sie zum Auswählen bestimmter Benutzer die entsprechenden Kontrollkästchen in der ersten Spalte der Liste. Aktivieren Sie zum Auswählen aller Benutzer das Kontrollkästchen vor dem Titel der ersten Spalte (**Name**), oder aktivieren Sie alle Kontrollkästchen für alle Benutzer in der Liste.
-3. Wählen Sie auf der Symbolleiste die Option **Einladung senden** aus. Sie können mit dem Mauszeiger auch auf den Namen eines Kursteilnehmers in der Liste zeigen und auf das E-Mail-Symbol klicken. 
+2. Wählen Sie bestimmte oder alle Benutzer in der Liste aus. Aktivieren Sie zum Auswählen bestimmter Benutzer die entsprechenden Kontrollkästchen in der ersten Spalte der Liste. Aktivieren Sie zum Auswählen aller Benutzer das Kontrollkästchen vor dem Titel der ersten Spalte (**Name**), oder aktivieren Sie alle Kontrollkästchen für alle Benutzer in der Liste. In dieser Liste wird der **Einladungsstatus** angezeigt.  In der folgenden Abbildung ist der Einladungsstatus für alle Kursteilnehmer auf **Invitation not sent** (Einladung nicht gesendet) festgelegt. 
+
+    ![Auswählen von Kursteilnehmern](../media/tutorial-setup-classroom-lab/select-students.png)
+1. Wählen Sie in einer Zeile das **E-Mail-Symbol (Briefumschlag)** oder auf der Symbolleiste die Option **Einladung senden** aus. Sie können mit dem Mauszeiger auch auf den Namen eines Kursteilnehmers in der Liste zeigen, um das E-Mail-Symbol anzuzeigen. 
 
     ![Senden eines Registrierungslinks per E-Mail](../media/tutorial-setup-classroom-lab/send-email.png)
 4. Führen Sie auf der Seite **Send registration link by email** (Registrierungslink per E-Mail senden) die folgenden Schritte aus: 
     1. Geben Sie eine **optionale Nachricht** ein, die an die Kursteilnehmer gesendet werden soll. Die E-Mail enthält automatisch den Registrierungslink. 
-    2. Wählen Sie auf der Seite **Send registration link by email** (Registrierungslink per E-Mail senden) die Option **Senden** aus. 
+    2. Wählen Sie auf der Seite **Send registration link by email** (Registrierungslink per E-Mail senden) die Option **Senden** aus. Der Status der Einladung wird in **Einladung wird gesendet** und anschließend in **Die Einladung wurde gesendet** geändert. 
+        
+        ![Gesendete Einladungen](../media/tutorial-setup-classroom-lab/invitations-sent.png)
 
 ## <a name="get-registration-link"></a>Abrufen des Registrierungslinks
 1. Wählen Sie im linken Menü die Option **Benutzer** aus, um zur Ansicht **Benutzer** zu wechseln. 

@@ -4,12 +4,12 @@ ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 03/22/2019
-ms.openlocfilehash: f7fbbb421a01b268b784a6d6c875cd959a5d1d42
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 32d5d0d25c843be1cba1916e7679faa930e8e645
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407846"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58671829"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Vorauszahlen für virtuelle Computer mit Azure Reserved VM Instances
 
@@ -41,7 +41,7 @@ Sie sollten Ihre Nutzungsinformationen analysieren, um besser bestimmen zu könn
 
 Nutzungsdaten sind in der Nutzungsdatendatei und in APIs verfügbar. Verwenden Sie beides gemeinsam, um zu ermitteln, welche Reservierung Sie erwerben sollten. Sie sollten prüfen, ob VM-Instanzen vorhanden sind, die an allen Tagen eine hohe Nutzung aufweisen, um die Anzahl der zu erwerbenden Reservierungen zu bestimmen.
 
-Vermeiden Sie die Unterkategorie `Meter` und das Feld `Product` der Nutzungsdaten. Diese unterscheiden nicht zwischen VM-Größen, die Storage Premium verwenden. Wenn Sie diese Felder verwenden, um die VM-Größe für den Erwerb von Reservierungen zu ermitteln, erwerben Sie möglicherweise eine falsche Größe und erhalten nicht den erwarteten Rabatt für Reservierungen. Beachten Sie stattdessen das Feld `AdditionalInfo` in Ihrer Nutzungsdatei oder die Nutzungs-API, um die richtige VM-Größe zu bestimmen.
+Vermeiden Sie die Unterkategorie `Meter` und das Feld `Product` der Nutzungsdaten. Diese unterscheiden nicht zwischen VM-Größen, die Storage Premium verwenden. Wenn Sie diese Felder verwenden, um die VM-Größe für den Reservierungserwerb zu ermitteln, erwerben Sie möglicherweise eine falsche Größe. In diesem Fall erhalten Sie nicht den erwarteten Rabatt auf Ihre Reservierung. Beachten Sie stattdessen das Feld `AdditionalInfo` in Ihrer Nutzungsdatei oder die Nutzungs-API, um die richtige VM-Größe zu bestimmen.
 
 ### <a name="purchase-restriction-considerations"></a>Überlegungen zu Kaufeinschränkungen
 
@@ -107,6 +107,8 @@ Sie können jedoch eine Reservierung *umtauschen*, wenn Sie Änderungen vornehme
 Wenn Sie Ihre Reservierung stornieren möchten, wird unter Umständen eine Gebühr für die vorzeitige Kündigung in Höhe von 12% berechnet. Rückerstattungen basieren auf dem niedrigsten Preis (entweder Ihrem Kaufpreis oder dem aktuellen Preis für die Reservierung). Rückerstattungen sind auf 50.000 US-Dollar pro Jahr beschränkt. Die Rückerstattung, die Sie erhalten, umfasst den verbleibenden anteiligen Saldo abzüglich der Gebühr für die vorzeitige Kündigung in Höhe von 12%. Navigieren Sie zum Anfordern einer Stornierung im Azure-Portal zu der Reservierung, und wählen Sie **Erstattung** aus, um eine Supportanfrage zu erstellen.
 
 Wenn Sie Ihre Reservierung der reservierten VM-Instanzen in eine andere Region, eine andere VM-Größengruppe oder einen anderen Zeitraum ändern müssen, können Sie sie gegen eine andere Reservierung austauschen, die den gleichen oder einen höheren Wert hat. Das Startdatum der Laufzeit für die neue Reservierung wird nicht von der umgetauschten Reservierung übernommen. Die Laufzeit von einem oder drei Jahren beginnt ab der Erstellung der neuen Reservierung. Navigieren Sie zum Anfordern eines Umtauschs im Azure-Portal zu der Reservierung, und wählen Sie **Umtausch** aus, um eine Supportanfrage zu erstellen.
+
+Weitere Informationen zum Umtausch oder zur Rückerstattung von Reservierungen finden Sie unter [Reservierungsumtausch und -rückerstattung](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md).
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 

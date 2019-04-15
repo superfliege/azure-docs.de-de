@@ -1,6 +1,6 @@
 ---
-title: Erstellen von Logik-Apps mit Azure Resource Manager-Vorlagen – Azure Logic Apps | Microsoft-Dokumentation
-description: Erstellen und Bereitstellen von Logik-App-Workflows mit Azure Resource Manager-Vorlagen in Azure Logic Apps
+title: Bereitstellen von Logik-Apps mit Azure Resource Manager-Vorlagen – Azure Logic Apps
+description: Bereitstellen von Logik-Apps mit Azure Resource Manager-Vorlagen
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,120 +10,114 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 7574cc7c-e5a1-4b7c-97f6-0cffb1a5d536
 ms.date: 10/15/2017
-ms.openlocfilehash: 5a1cae376ab9db2b0c4b5e0e5514bf7745593433
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7543859a916de97d471db2894887e640db51dfc2
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894579"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893421"
 ---
-# <a name="create-and-deploy-logic-apps-with-azure-resource-manager-templates"></a>Erstellen und Bereitstellen von Logik-Apps mit Azure Resource Manager-Vorlagen
+# <a name="deploy-logic-apps-with-azure-resource-manager-templates"></a>Bereitstellen von Logik-Apps mit Azure Resource Manager-Vorlagen
 
-Azure Logic Apps bietet Azure Resource Manager-Vorlagen, mit denen Sie nicht nur Logik-Apps zur Automatisierung von Workflows erstellen, sondern auch die für die Bereitstellung verwendeten Ressourcen und Parameter definieren können. Die Vorlage kann für eigene Unternehmensszenarien verwendet oder an Ihre individuellen Anforderungen angepasst werden. Weitere Informationen finden Sie in der [Resource Manager-Vorlage für Logic-Apps](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json) sowie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md). Informationen zu JSON-Syntax und Eigenschaften siehe [Microsoft.Logic-Ressourcentypen](/azure/templates/microsoft.logic/allversions).
+Nachdem Sie eine Azure Resource Manager-Vorlage für die Bereitstellung Ihrer Logik-App erstellt haben, können Sie Ihre Vorlage folgendermaßen bereitstellen:
 
-## <a name="define-the-logic-app"></a>Definieren der Logik-App
+* [Azure-Portal](#portal)
+* [Azure PowerShell](#powershell)
+* [Azure-Befehlszeilenschnittstelle](#cli)
+* [Azure Resource Manager-REST-API](../azure-resource-manager/resource-group-template-deploy-rest.md)
+* [Azure DevOps Azure Pipelines](#azure-pipelines)
 
-Diese Beispieldefinition einer Logik-App wird stündlich ausgeführt und pingt den im Parameter `testUri` angegebenen Speicherort.
-Die Vorlage verwendet Parameterwerte für den Logik-App-Namen (```logicAppName```) und den Speicherort, der zu Testzwecken gepingt wird (```testUri```). Weitere Informationen zum Definieren dieser Parameter in Ihrer Vorlage finden Sie [hier](#define-parameters). Die Vorlage legt auch den Speicherort für die Logik-App auf den Speicherort der Azure-Ressourcengruppe fest. 
+<a name="portal"></a>
 
-``` json
-{
-   "type": "Microsoft.Logic/workflows",
-   "apiVersion": "2016-06-01",
-   "name": "[parameters('logicAppName')]",
-   "location": "[resourceGroup().location]",
-   "tags": {
-      "displayName": "LogicApp"
-   },
-   "properties": {
-      "definition": {
-         "$schema": "https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json",
-         "contentVersion": "1.0.0.0",
-         "parameters": {
-            "testURI": {
-               "type": "string",
-               "defaultValue": "[parameters('testUri')]"
-            }
-         },
-         "triggers": {
-            "Recurrence": {
-               "type": "Recurrence",
-               "recurrence": {
-                  "frequency": "Hour",
-                  "interval": 1
-               }
-            }
-         },
-         "actions": {
-            "Http": {
-              "type": "Http",
-              "inputs": {
-                  "method": "GET",
-                  "uri": "@parameters('testUri')"
-              },
-              "runAfter": {}
-           }
-         },
-         "outputs": {}
-      },
-      "parameters": {}
-   }
-}
-``` 
+## <a name="deploy-through-azure-portal"></a>Bereitstellen über das Azure-Portal
 
-<a name="define-parameters"></a>
+Um eine Logik-App-Vorlage automatisch in Azure bereitzustellen, können Sie die folgende Schaltfläche **In Azure bereitstellen** auswählen. Darüber werden Sie im Azure-Portal angemeldet und zur Eingabe von Informationen zu Ihrer Logik-App aufgefordert. Sie können dann alle notwendigen Änderungen an der Logik-App-Vorlage oder den Parametern vornehmen.
 
-### <a name="define-parameters"></a>Definieren von Parametern
+[![D[In Azure bereitstellen](./media/logic-apps-create-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
-[!INCLUDE [app-service-logic-deploy-parameters](../../includes/app-service-logic-deploy-parameters.md)]
-
-Im Anschluss werden die Parameter in der Vorlage beschrieben:
-
-| Parameter | BESCHREIBUNG | Beispiel für JSON-Definition | 
-| --------- | ----------- | ----------------------- | 
-| `logicAppName` | Definiert den Namen der Logik-App, die durch diese Vorlage erstellt wird. | "logicAppName": { "type": "string", "metadata": { "description": "myExampleLogicAppName" } } |
-| `testUri` | Definiert den Speicherort, der zu Testzwecken gepingt werden soll. | "testUri": { "type": "string", "defaultValue": "https://azure.microsoft.com/status/feed/"} | 
-||||
-
-Bei Bedarf können Sie sich ausführlicher über die [REST-API für Logic Apps-Workflowdefinition und -eigenschaften](https://docs.microsoft.com/rest/api/logic/workflows) sowie über das [Erstellen von Workflowdefinitionen für Logik-Apps per JSON-Code](logic-apps-author-definitions.md) informieren.
-
-## <a name="deploy-logic-apps-automatically"></a>Automatisches Bereitstellen von Logik-Apps
-
-Wenn Sie eine Logik-App erstellen und automatisch in Azure bereitstellen möchten, klicken Sie hier auf **In Azure bereitstellen**:
-
-[![In Azure bereitstellen](./media/logic-apps-create-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
-
-Dadurch werden Sie beim Azure-Portal angemeldet, wo Sie die Details zu Ihrer Logik-App angeben und die Vorlage oder die Parameter nach Bedarf ändern können. Im Azure-Portal werden beispielsweise folgende Details angefordert:
+Sie werden beispielsweise nach der Anmeldung beim Azure-Portal zur Eingabe dieser Informationen aufgefordert:
 
 * Name des Azure-Abonnements
 * Gewünschte Ressourcengruppe
 * Speicherort der Logik-App
-* Name für Ihre Logik-App
+* Der Name Ihrer Logik-App
 * Test-URI
 * Annahme der angegebenen Bedingungen
 
-## <a name="deploy-logic-apps-with-commands"></a>Bereitstellen von Logik-Apps mithilfe von Befehlen
+Weitere Informationen hierzu finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](../azure-resource-manager/resource-group-template-deploy-portal.md).
 
-[!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
+## <a name="authorize-oauth-connections"></a>Autorisieren von OAuth-Verbindungen
 
-### <a name="powershell"></a>PowerShell
+Nach der Bereitstellung funktioniert die Logik-App vollständig mit gültigen Parametern. Sie müssen OAuth-Verbindungen aber dennoch autorisieren, um ein gültiges Zugriffstoken zu generieren. Für automatisierte Bereitstellungen können Sie ein Skript verwenden, das jeder OAuth-Verbindung zustimmt, wie beispielsweise dieses [Beispielskript im GitHub-Projekt „LogicAppConnectionAuth“](https://github.com/logicappsio/LogicAppConnectionAuth). Sie können OAuth-Verbindungen auch über das Azure-Portal oder in Visual Studio autorisieren, indem Sie Ihre Logik-App im Designer für Logik-Apps öffnen.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+<a name="powershell"></a>
 
+## <a name="deploy-with-azure-powershell"></a>Bereitstellen mit Azure PowerShell
+
+Um für eine bestimmte *Azure-Ressourcengruppe* bereitzustellen, verwenden Sie diesen Befehl:
+
+```powershell
+New-AzResourceGroupDeployment -ResourceGroupName <Azure-resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json 
 ```
-New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json -ResourceGroupName ExampleDeployGroup
-``` 
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+Um für ein bestimmtes Azure-Abonnement bereitzustellen, verwenden Sie diesen Befehl:
 
+```powershell
+New-AzDeployment -Location <location> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json 
 ```
-azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json -g ExampleDeployGroup
+
+* [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
+* [`New-AzResourceGroupDeployment`](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment)
+* [`New-AzDeployment`](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azdeployment)
+
+<a name="cli"></a>
+
+## <a name="deploy-with-azure-cli"></a>Bereitstellen über die Azure-Befehlszeilenschnittstelle
+
+Um für eine bestimmte *Azure-Ressourcengruppe* bereitzustellen, verwenden Sie diesen Befehl:
+
+```azurecli
+az group deployment create -g <Azure-resource-group-name> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
 ```
+
+Um für ein bestimmtes Azure-Abonnement bereitzustellen, verwenden Sie diesen Befehl:
+
+```azurecli
+az deployment create --location <location> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
+```
+
+Weitere Informationen finden Sie in den folgenden Themen: 
+
+* [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) 
+* [`az group deployment create`](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)
+* [`az deployment create`](https://docs.microsoft.com/cli/azure/deployment?view=azure-cli-latest#az-deployment-create)
+
+<a name="azure-pipelines"></a>
+
+## <a name="deploy-with-azure-devops"></a>Bereitstellen mit Azure DevOps
+
+Um Logik-App-Vorlagen bereitzustellen und Umgebungen zu verwalten, verwenden Teams häufig ein Tool wie [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started/what-is-azure-pipelines) in [Azure DevOps](https://docs.microsoft.com/azure/devops/user-guide/what-is-azure-devops-services). Azure Pipelines enthält eine [Aufgabe für die Bereitstellung von Azure-Ressourcengruppen](https://github.com/Microsoft/azure-pipelines-tasks/tree/master/Tasks/AzureResourceGroupDeploymentV2), die jeder Build- oder Releasepipeline hinzugefügt werden kann.
+Für die Autorisierung zur Bereitstellung und Generierung der Releasepipeline benötigen Sie außerdem ein Azure Active Directory (AD)-[Dienstprinzipal](../active-directory/develop/app-objects-and-service-principals.md). Weitere Informationen zum [Verwenden von Dienstprinzipalen mit Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure). 
+
+Hier sind allgemeine Schritte für die Verwendung von Azure Pipelines:
+
+1. Erstellen Sie in Azure Pipelines eine leere Pipeline.
+
+1. Wählen Sie die Ressourcen, die Sie für die Pipeline benötigen, wie z.B. Ihre Logik-App-Vorlage und Ihre Parameterdateien für die Vorlagen, die Sie manuell oder im Rahmen des Build-Prozesses generieren.
+
+1. Suchen Sie die Aufgabe **Bereitstellung einer Azure-Ressourcengruppe** und fügen Sie sie zum Agent-Auftrag hinzu.
+
+   ![Hinzufügen der Aufgabe „Bereitstellung einer Azure-Ressourcengruppe“](./media/logic-apps-create-deploy-template/add-azure-resource-group-deployment-task.png)
+
+1. Führen Sie die Konfiguration mit einem [Dienstprinzipal](https://docs.microsoft.com/azure/devops/pipelines/library/connect-to-azure) durch. 
+
+1. Fügen Sie Verweise auf Ihre Logik-App-Vorlage und Parameterdateien für die Vorlage hinzu.
+
+1. Erstellen Sie nach Bedarf weitere Schritte im Freigabeprozess für andere Umgebungen, automatisierte Tests oder genehmigende Personen.
 
 ## <a name="get-support"></a>Support
 
-* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
+Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,19 +3,19 @@ title: Migrieren zu Version 3 – Textübersetzungs-API
 titlesuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie von V2 zu V3 der Text-API von Microsoft Translator migrieren.
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 1857cd7c4fe6102f94487dbb2cc5ad5c43c18f99
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d3ffdcb79a56bf2f9f4a6eb192293bbc6bab7dab
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101175"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916715"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Migration der Textübersetzungs-API von Version 2 zu Version 3
 
@@ -45,8 +45,8 @@ Die folgende Liste der V2- und V3-Methoden enthält die V3-Methoden und -APIs, d
 |:----------- |:-------------|
 | `Translate`     | [Translate](reference/v3-0-translate.md)          |
 | `TranslateArray`      | [Translate](reference/v3-0-translate.md)        |
-| `GetLanguageNames`      | [Sprachen](reference/v3-0-languages.md)         |
-| `GetLanguagesForTranslate`     | [Sprachen](reference/v3-0-languages.md)       |
+| `GetLanguageNames`      | [Languages](reference/v3-0-languages.md)         |
+| `GetLanguagesForTranslate`     | [Languages](reference/v3-0-languages.md)       |
 | `GetLanguagesForSpeak`      | [Microsoft Speech-Dienst](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
 | `Speak`     | [Microsoft Speech-Dienst](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
 | `Detect`     | [Detect](reference/v3-0-detect.md)         |
@@ -147,4 +147,4 @@ In keiner Version der Translator-API wird eine Aufzeichnung Ihrer Übersetzungen
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Dokumentation zu V3.0](reference/v3-0-reference.md)
+> [Anzeigen der Dokumentation zu V3.0](reference/v3-0-reference.md)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: ergreenl
-ms.openlocfilehash: 7210610f8a082c34f8e87ef715b8252c2821bc83
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8beba4f66cf24a937eec77e4bfdee2057b417269
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187095"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892805"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Azure Active Directory (AD) Domain Services für Azure Cloud Solution Provider (CSP)
 In diesem Artikel wird erläutert, wie Sie Azure AD Domain Services in einem Azure CSP-Abonnement verwenden können.
@@ -41,7 +41,7 @@ Weitere Informationen finden Sie in der [Übersicht zu Azure CSP](https://docs.m
 ## <a name="benefits-of-using-azure-ad-domain-services-in-an-azure-csp-subscription"></a>Vorteile der Verwendung von Azure AD Domain Services in einem Azure CSP-Abonnement
 Azure AD Domain Services stellt mit Windows Server AD kompatible Dienste in Azure bereit, z.B. LDAP, Kerberos-/NTLM-Authentifizierung, Domänenbeitritt, Gruppenrichtlinien und DNS. Im Laufe der Jahrzehnte wurden viele Anwendungen erstellt, die mit diesen Funktionen in AD zusammenarbeiten. Viele unabhängige Softwarehersteller (ISVs) haben Anwendungen vor Ort bei ihren Kunden erstellt und bereitgestellt. Diese Anwendungen sind schwer zu unterstützen, da dies oft den Zugriff auf die verschiedenen Umgebungen erfordert, in denen diese Anwendungen eingesetzt werden. Mit Azure CSP-Abonnements haben Sie eine einfachere Alternative mit der Skalierung und Flexibilität von Azure.
 
-Azure AD Domain Services unterstützt jetzt auch Azure CSP-Abonnements. Sie können Ihre Anwendung jetzt in einem Azure CSP-Abonnement bereitstellen, das an das Azure AD-Verzeichnis Ihres Kunden gebunden ist. Auf diese Weise können Ihre Mitarbeiter (Supportpersonal) die virtuellen Computer, auf denen Ihre Anwendung bereitgestellt wird, mit den Anmeldeinformationen Ihres Unternehmens verwalten, pflegen und warten. Darüber hinaus können Sie eine von Azure AD Domain Services verwaltete Domäne für das Azure AD-Verzeichnis Ihres Kunden bereitstellen. Ihre Anwendung ist mit der verwalteten Domäne Ihres Kunden verbunden. Daher arbeiten Funktionen innerhalb Ihrer Anwendung, die auf Kerberos/NTLM, LDAP oder die [System.DirectoryServices-API](https://msdn.microsoft.com/library/system.directoryservices) angewiesen sind, nahtlos mit dem Verzeichnis Ihres Kunden zusammen. Ihre Endkunden profitieren in hohem Maße davon, dass Sie Ihre Anwendung als Dienst nutzen, ohne sich um die Verwaltung der Infrastruktur kümmern zu müssen, in der die Anwendung bereitgestellt wird.
+Azure AD Domain Services unterstützt jetzt auch Azure CSP-Abonnements. Sie können Ihre Anwendung jetzt in einem Azure CSP-Abonnement bereitstellen, das an das Azure AD-Verzeichnis Ihres Kunden gebunden ist. Auf diese Weise können Ihre Mitarbeiter (Supportpersonal) die virtuellen Computer, auf denen Ihre Anwendung bereitgestellt wird, mit den Anmeldeinformationen Ihres Unternehmens verwalten, pflegen und warten. Darüber hinaus können Sie eine von Azure AD Domain Services verwaltete Domäne für das Azure AD-Verzeichnis Ihres Kunden bereitstellen. Ihre Anwendung ist mit der verwalteten Domäne Ihres Kunden verbunden. Daher arbeiten Funktionen innerhalb Ihrer Anwendung, die auf Kerberos/NTLM, LDAP oder die [System.DirectoryServices-API](/dotnet/api/system.directoryservices) angewiesen sind, nahtlos mit dem Verzeichnis Ihres Kunden zusammen. Ihre Endkunden profitieren in hohem Maße davon, dass Sie Ihre Anwendung als Dienst nutzen, ohne sich um die Verwaltung der Infrastruktur kümmern zu müssen, in der die Anwendung bereitgestellt wird.
 
 Alle Abrechnungen für Azure-Ressourcen, die Sie in diesem Abonnement verbrauchen (einschließlich Azure AD Domain Services) werden Ihnen in Rechnung gestellt. Sie behalten die vollständige Kontrolle über die Beziehung zum Kunden, wenn es um Verkauf, Abrechnung, technischen Support usw. geht. Mit der Flexibilität der Azure CSP-Plattform kann ein kleines Team von Supportmitarbeitern viele solcher Kunden betreuen, die Instanzen Ihrer Anwendung bereitstellen.
 
@@ -89,5 +89,5 @@ Die folgenden wichtigen Überlegungen gelten für die Verwaltung einer verwaltet
 ## <a name="next-steps"></a>Nächste Schritte
 * [Registrieren Sie sich für das Azure CSP-Programm](https://docs.microsoft.com/partner-center/enrolling-in-the-csp-program), und profitieren Sie von Azure CSP.
 * Prüfen Sie die Liste der [in Azure CSP verfügbaren Azure-Dienste](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services).
-* [Enable Azure AD Domain Services using PowerShell (Aktivieren von Azure AD Domain Services mit PowerShell)](active-directory-ds-enable-using-powershell.md)
+* [Aktivieren von Azure AD Domain Services mit PowerShell](active-directory-ds-enable-using-powershell.md)
 * [Erste Schritte mit Azure AD Domain Services](active-directory-ds-getting-started.md)

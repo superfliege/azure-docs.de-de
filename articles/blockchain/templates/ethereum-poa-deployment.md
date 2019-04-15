@@ -10,14 +10,16 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 50d24fd41a0a933d9cfec37477773463a918ca0a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5a693fef2f77471f799bec46f149ff19d6edca80
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549067"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905918"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Ethereum-PoA-Konsortium
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Übersicht
 [Diese Projektmappe](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium) ist dafür ausgelegt, das Bereitstellen, Konfigurieren und Steuern eines Multi-Member-Netzwerks für das Ethereum-Proof-of-Authority-Konsortium zu erleichtern, ohne dass ausführliche Azure- und Ethereum-Kenntnisse vorhanden sein müssen.
@@ -218,7 +220,7 @@ Abonnement|Das Abonnement, für das das Konsortiumsnetzwerk bereitgestellt wird.
 Ressourcengruppe|Die Ressourcengruppe, für die das Konsortiumsnetzwerk bereitgestellt wird.||Nicht verfügbar
 Standort|Die Azure-Region für die Ressourcengruppe.||Nicht verfügbar
 
-Unten ist ein Beispiel für eine Bereitstellung angegeben: ![Blatt mit Grundlagen](./media/ethereum-poa-deployment/basic-blade.png)
+Nachfolgend finden Sie ein Beispiel für eine Bereitstellung: ![Blatt mit Grundlagen](./media/ethereum-poa-deployment/basic-blade.png)
 
 #### <a name="deployment-regions"></a>Bereitstellungsregionen
 
@@ -235,7 +237,7 @@ Hier ist eine ausführliche Beschreibung der einzelnen Parameter angegeben:
   Vierte Region|Die vierte Region, in der das Konsortiumsnetzwerk bereitgestellt wird (wird nur angezeigt, wenn für die Anzahl der Regionen „4“ ausgewählt wurde).|Alle zulässigen Azure-Regionen|Nicht verfügbar
   Fünfte Region|Die fünfte Region, in der das Konsortiumsnetzwerk bereitgestellt wird (wird nur angezeigt, wenn für die Anzahl der Regionen „5“ ausgewählt wurde).|Alle zulässigen Azure-Regionen|Nicht verfügbar
 
-Hier ist ein Beispiel für eine Bereitstellung angegeben: ![Bereitstellungsregionen](./media/ethereum-poa-deployment/deployment-regions.png)
+Nachfolgend finden Sie ein Beispiel für eine Bereitstellung: ![Bereitstellungsregionen](./media/ethereum-poa-deployment/deployment-regions.png)
 
 #### <a name="network-size-and-performance"></a>Netzwerkgröße und -leistung
 
@@ -262,7 +264,7 @@ Virtuelle Computer und die Speicherebene haben Auswirkungen auf die Netzwerkleis
   D2_v3|SSD Standard|mittel|mittel|mittel
   F16s|SSD Premium|high|high|niedrig
 
-Hier ist ein Beispiel für eine Bereitstellung angegeben: ![Netzwerkgröße und-leistung](./media/ethereum-poa-deployment/network-size-and-performance.png)
+Nachfolgend finden Sie ein Beispiel für eine Bereitstellung: ![Netzwerkgröße und-leistung](./media/ethereum-poa-deployment/network-size-and-performance.png)
 
 #### <a name="ethereum-settings"></a>Ethereum-Einstellungen
 
@@ -281,7 +283,7 @@ Block Gas Limit (Erweiterte Optionen = Aktivieren)|Das anfängliche block gas-Li
 Zeitraum für erneute Blockversiegelung (Sek.)|Die Häufigkeit, mit der leere Blöcke erstellt werden, wenn im Netzwerk keine Transaktionen vorhanden sind. Eine höhere Häufigkeit führt zu einer schnelleren Finalität, jedoch auch zu erhöhten Speicherkosten.|Beliebiger numerischer Wert|15
 Vertrag zu Transaktionsberechtigungen (Erweiterte Optionen = Aktivieren)|Bytecode für den Vertrag zur Berechtigungsvergabe für Transaktionen. Beschränkt die Smart Contract-Bereitstellung und -Ausführung auf eine berechtigungsbasierte Liste mit Ethereum-Konten.|Bytecode für Vertrag|Nicht verfügbar
 
-Hier ist ein Beispiel für eine Bereitstellung angegeben: ![Ethereum-Einstellungen](./media/ethereum-poa-deployment/ethereum-settings.png)
+Nachfolgend finden Sie ein Beispiel für eine Bereitstellung: ![Ethereum-Einstellungen](./media/ethereum-poa-deployment/ethereum-settings.png)
 
 #### <a name="monitoring"></a>Überwachung
 
@@ -298,7 +300,7 @@ Existing log analytics workspace ID (Connect to existing Azure Monitor logs = Jo
 Existing log analytics primary key (Connect to existing Azure Monitor logs = Join Existing) (Vorhandener Log Analytics-Primärschlüssel (Mit vorhandener Azure Monitor-Protokollinstanz verbinden = Vorhandener beitreten))|Der Primärschlüssel, der zum Herstellen einer Verbindung mit der vorhandenen Azure Monitor-Protokollinstanz verwendet wird.||Nicht verfügbar
 
 
-Unten ist ein Beispiel für eine Bereitstellung angegeben: ![Azure Monitor](./media/ethereum-poa-deployment/azure-monitor.png)
+Nachfolgend finden Sie ein Beispiel für eine Bereitstellung: ![Azure Monitor](./media/ethereum-poa-deployment/azure-monitor.png)
 
 #### <a name="summary"></a>Zusammenfassung
 
@@ -395,7 +397,7 @@ $MyGatewayName = $splitValue[8]
 
 ## $otherGatewayResourceid tells me what the subscription and VNet GatewayName are
 $OtherGatewayName = $OtherGatewayResourceId.Split('/')[8]
-$Subscription=Select-AzureRmSubscription -SubscriptionId $MySubscriptionid
+$Subscription=Select-AzSubscription -SubscriptionId $MySubscriptionid
 
 ## create a PSVirtualNetworkGateway instance for the gateway I want to connect to
 $OtherGateway=New-Object Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
@@ -405,10 +407,10 @@ $OtherGateway.GatewayType = "Vpn"
 $OtherGateway.VpnType = "RouteBased"
 
 ## get a PSVirtualNetworkGateway instance for my gateway
-$MyGateway = Get-AzureRmVirtualNetworkGateway -Name $MyGatewayName -ResourceGroupName $MyResourceGroup
+$MyGateway = Get-AzVirtualNetworkGateway -Name $MyGatewayName -ResourceGroupName $MyResourceGroup
 
 ## create the connection
-New-AzureRmVirtualNetworkGatewayConnection -Name $ConnectionName -ResourceGroupName $MyResourceGroup -VirtualNetworkGateway1 $MyGateway -VirtualNetworkGateway2 $OtherGateway -Location $MyGateway.Location -ConnectionType Vnet2Vnet -SharedKey $SharedKey -EnableBgp $True
+New-AzVirtualNetworkGatewayConnection -Name $ConnectionName -ResourceGroupName $MyResourceGroup -VirtualNetworkGateway1 $MyGateway -VirtualNetworkGateway2 $OtherGateway -Location $MyGateway.Location -ConnectionType Vnet2Vnet -SharedKey $SharedKey -EnableBgp $True
 ```
 
 ### <a name="service-monitoring"></a>Dienstüberwachung

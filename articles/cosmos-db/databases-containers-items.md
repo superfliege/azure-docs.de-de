@@ -1,28 +1,28 @@
 ---
 title: Arbeiten mit Azure Cosmos DB-Datenbanken, -Containern und -Elementen
 description: In diesem Artikel wird die Erstellung und Verwendung von Azure Cosmos DB-Datenbanken, -Containern und -Elementen beschrieben.
-author: dharmas-cosmos
+author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/08/2018
-ms.author: dharmas
+ms.date: 03/31/2019
+ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: c7288b112ce2fd062a67cb673a1efa6028ec7d57
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f3bec1b279c07e62e246ebfa933b3942e38406de
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57888518"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762904"
 ---
 # <a name="work-with-databases-containers-and-items"></a>Arbeiten mit Datenbanken, Containern und Elementen
 
-Nach der Erstellung eines [Azure Cosmos DB-Kontos](account-overview.md) unter Ihrem Azure-Abonnement können Sie Daten in Ihrem Konto verwalten, indem Sie Datenbanken, Container und Elemente erstellen. In diesem Artikel werden diese Entitäten einzeln beschrieben. In der folgenden Abbildung ist die Hierarchie der verschiedenen Entitäten in einem Azure Cosmos-Konto dargestellt:
+Nach der Erstellung eines [Azure Cosmos-Kontos](account-overview.md) unter Ihrem Azure-Abonnement können Sie Daten in Ihrem Konto verwalten, indem Sie Datenbanken, Container und Elemente erstellen. In diesem Artikel werden diese Entitäten einzeln beschrieben. In der folgenden Abbildung ist die Hierarchie der verschiedenen Entitäten in einem Azure Cosmos-Konto dargestellt:
 
 ![Entitäten in einem Azure Cosmos-Konto](./media/databases-containers-items/cosmos-entities.png)
 
 ## <a name="azure-cosmos-databases"></a>Azure Cosmos-Datenbanken
 
-Unter Ihrem Konto können Sie mehrere Azure Cosmos-Datenbanken erstellen. Eine Datenbank entspricht einem Namespace, sie ist die Verwaltungseinheit für mehrere Azure Cosmos-Container. In der folgenden Tabelle ist dargestellt, wie eine Azure Cosmos-Datenbank verschiedenen API-spezifischen Entitäten zugeordnet wird:
+Unter Ihrem Konto können Sie mehrere Azure Cosmos-Datenbanken erstellen. Eine Datenbank ist analog zu einem Namespace. Sie ist eine Verwaltungseinheit für eine Gruppe von Azure Cosmos-Containern. In der folgenden Tabelle ist dargestellt, wie eine Azure Cosmos-Datenbank verschiedenen API-spezifischen Entitäten zugeordnet wird:
 
 | **Azure Cosmos-Entität** | **SQL-API** | **Cassandra-API** | **MongoDB-API von Azure Cosmos DB** | **Gremlin-API** | **Tabellen-API** |
 | --- | --- | --- | --- | --- | --- |
@@ -45,25 +45,25 @@ Mit einer Azure Cosmos-Datenbank können Sie über die folgenden Azure Cosmos-AP
 
 ## <a name="azure-cosmos-containers"></a>Azure Cosmos-Container
 
-Ein Azure Cosmos-Container ist die Skalierungseinheit für den bereitgestellten Durchsatz und den Speicher von Elementen. Ein Container wird horizontal partitioniert und dann in mehreren Regionen repliziert. Die Elemente, die Sie dem Container hinzuzufügen, und der Durchsatz, den Sie für den Container bereitstellen, werden basierend auf dem Partitionsschlüssel automatisch auf eine Gruppe von logischen Partitionen verteilt. Weitere Informationen zur Partitionierung und zum Partitionsschlüssel finden Sie unter [Logische Partitionen](partition-data.md). 
+Ein Azure Cosmos-Container ist die Skalierungseinheit für den bereitgestellten Durchsatz und den Speicher. Ein Container wird horizontal partitioniert und dann in mehreren Regionen repliziert. Die Elemente, die Sie dem Container hinzuzufügen, und der Durchsatz, den Sie für den Container bereitstellen, werden basierend auf dem Partitionsschlüssel automatisch auf eine Gruppe von logischen Partitionen verteilt. Weitere Informationen zur Partitionierung und zum Partitionsschlüssel finden Sie in [diesem](partition-data.md) Artikel. 
 
 Beim Erstellen eines Azure Cosmos-Containers konfigurieren Sie den Durchsatz in einem der folgenden Modi:
 
-* Modus **Dedizierter bereitgestellter Durchsatz**: Der für einen Container bereitgestellte Durchsatz ist ausschließlich für diesen reserviert und wird durch die SLAs zugesichert. Weitere Informationen finden Sie unter [Bereitstellen von Durchsatz für einen Azure Cosmos DB-Container](how-to-provision-container-throughput.md).
+* Modus **Dedizierter bereitgestellter Durchsatz**: Der für einen Container bereitgestellte Durchsatz ist ausschließlich für diesen Container reserviert und wird durch die SLAs zugesichert. Weitere Informationen finden Sie unter [Bereitstellen von Durchsatz für einen Azure Cosmos DB-Container](how-to-provision-container-throughput.md).
 
-* Modus **Bereitgestellter, gemeinsam genutzter Durchsatz**: Die Container teilen sich den bereitgestellten Durchsatz mit anderen Containern in der gleichen Datenbank (mit Ausnahme der Container, die mit dediziert bereitgestelltem Durchsatz konfiguriert wurden). Das heißt, der bereitgestellte Durchsatz für die Datenbank wird von allen freigegebenen Containern genutzt. Weitere Informationen finden Sie unter [Bereitstellen des Durchsatzes für eine Datenbank in Azure Cosmos DB](how-to-provision-database-throughput.md).
+* Modus **Bereitgestellter, gemeinsam genutzter Durchsatz**: Die Container teilen sich den bereitgestellten Durchsatz mit anderen Containern in der gleichen Datenbank (mit Ausnahme der Container, die mit dediziert bereitgestelltem Durchsatz konfiguriert wurden). Das heißt, der bereitgestellte Durchsatz für die Datenbank wird von allen Containern mit freigegebenem Durchsatz genutzt. Weitere Informationen finden Sie unter [Bereitstellen des Durchsatzes für eine Datenbank in Azure Cosmos DB](how-to-provision-database-throughput.md).
 
 Ein Azure Cosmos-Container kann elastisch skaliert werden, und zwar unabhängig davon, ob Sie Container mit gemeinsam genutztem oder dediziert bereitgestelltem Durchsatz erstellen.
 
-Ein Azure Cosmos-Container ist ein schemaunabhängiger Container für Elemente. Elemente innerhalb eines Containers können beliebige Schemas aufweisen. Beispielsweise können ein Element, das eine Person darstellt, und ein Element, das ein Fahrzeug darstellt, im selben Container platziert werden. Standardmäßig werden alle Elemente, die Sie einem Container hinzufügen, automatisch indiziert, ohne dass eine explizite Index- oder Schemaverwaltung erforderlich ist. Sie können das Indizierungsverhalten anpassen, indem Sie die Indizierungsrichtlinie für einen Container konfigurieren. 
+Ein Azure Cosmos-Container ist ein schemaunabhängiger Container für Elemente. Elemente innerhalb eines Containers können beliebige Schemas aufweisen. Beispielsweise können ein Element, das eine Person darstellt, und ein Element, das ein Fahrzeug darstellt, im *selben Container* platziert werden. Standardmäßig werden alle Elemente, die Sie einem Container hinzufügen, automatisch indiziert, ohne dass eine explizite Index- oder Schemaverwaltung erforderlich ist. Sie können das Indizierungsverhalten anpassen, indem Sie die [Indizierungsrichtlinie](index-overview.md) für einen Container konfigurieren. 
 
-Sie können die Gültigkeitsdauer (TTL) für ausgewählte Elemente innerhalb eines Azure Cosmos-Containers oder für den gesamten Container festlegen, um die Elemente ordnungsgemäß aus dem System zu löschen. Die Elemente werden nach Ablauf der Gültigkeitsdauer in Azure Cosmos DB automatisch gelöscht. Zudem wird sichergestellt, dass eine für den Container ausgeführte Abfrage die abgelaufenen Elemente innerhalb einer festen Grenze nicht zurückgibt. Weitere Informationen finden Sie unter [Konfigurieren der Gültigkeitsdauer in Ihrem Container](how-to-time-to-live.md).
+Sie können die [Gültigkeitsdauer (TTL)](time-to-live.md) für ausgewählte Elemente innerhalb eines Azure Cosmos-Containers oder für den gesamten Container festlegen, um die Elemente ordnungsgemäß aus dem System zu löschen. Die Elemente werden nach Ablauf der Gültigkeitsdauer in Azure Cosmos DB automatisch gelöscht. Zudem wird sichergestellt, dass eine für den Container ausgeführte Abfrage die abgelaufenen Elemente innerhalb einer festen Grenze nicht zurückgibt. Weitere Informationen finden Sie unter [Konfigurieren der Gültigkeitsdauer in Ihrem Container](how-to-time-to-live.md).
 
-Durch Verwenden des Änderungsfeeds können Sie das Vorgangsprotokoll abonnieren, das für jede logische Partition des Containers verwaltet wird. Der Änderungsfeed enthält das Protokoll aller Aktualisierungen, die für den Container durchgeführt wurden, sowie die Vorher- und Nachher-Images der Elemente. Siehe [Erstellen von reaktiven Anwendungen mit dem Änderungsfeed](change-feed.md). Sie können auch die Aufbewahrungsdauer für den Änderungsfeed konfigurieren, indem Sie die Änderungsfeedrichtlinie für den Container verwenden. 
+Durch Verwenden des [Änderungsfeeds](change-feed.md) können Sie das Vorgangsprotokoll abonnieren, das für jede logische Partition des Containers verwaltet wird. Der Änderungsfeed enthält das Protokoll aller Aktualisierungen, die für den Container durchgeführt wurden, sowie die Vorher- und Nachher-Images der Elemente. Siehe [Erstellen von reaktiven Anwendungen mit dem Änderungsfeed](serverless-computing-database.md). Sie können auch die Aufbewahrungsdauer für den Änderungsfeed konfigurieren, indem Sie die Änderungsfeedrichtlinie für den Container verwenden. 
 
-Sie können gespeicherte Prozeduren, Trigger, benutzerdefinierte Funktionen (UDFs) und Mergeprozeduren beim Azure Cosmos-Container registrieren. 
+Sie können [gespeicherte Prozeduren, Trigger, benutzerdefinierte Funktionen (UDFs)](stored-procedures-triggers-udfs.md) und [Mergeprozeduren](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy-with-a-stored-procedure) beim Azure Cosmos-Container registrieren. 
 
-Sie können einen eindeutigen Schlüssel für den Azure Cosmos-Container angeben. Durch Erstellen einer Richtlinie für eindeutige Schlüssel wird die Eindeutigkeit von einem oder mehreren Werten pro logischem Partitionsschlüssel sichergestellt. Nachdem ein Container mit einer Richtlinie für eindeutige Schlüssel erstellt wurde, ist keine Erstellung neuer oder aktualisierter Elemente mit Werten möglich, die die durch die Einschränkung für eindeutige Schlüssel festgelegten Werte duplizieren. Weitere Informationen finden Sie unter [Einschränkungen für eindeutige Schlüssel](unique-keys.md).
+Sie können eine [eindeutige Schlüsseleinschränkung](unique-keys.md) für den Azure Cosmos-Container angeben. Durch Erstellen einer Richtlinie für eindeutige Schlüssel wird die Eindeutigkeit von einem oder mehreren Werten pro logischem Partitionsschlüssel sichergestellt. Nachdem ein Container mit einer Richtlinie für eindeutige Schlüssel erstellt wurde, ist keine Erstellung neuer oder aktualisierter Elemente mit Werten möglich, die die durch die Einschränkung für eindeutige Schlüssel festgelegten Werte duplizieren. Weitere Informationen finden Sie unter [Einschränkungen für eindeutige Schlüssel](unique-keys.md).
 
 Ein Azure Cosmos-Container wird wie folgt in API-spezifische Entitäten kategorisiert:
 
@@ -73,19 +73,19 @@ Ein Azure Cosmos-Container wird wie folgt in API-spezifische Entitäten kategori
 
 ### <a name="properties-of-an-azure-cosmos-container"></a>Eigenschaften eines Azure Cosmos-Containers
 
-Ein Azure Cosmos-Container enthält einen Satz von systemdefinierten Eigenschaften. Abhängig von der API-Auswahl werden einige möglicherweise nicht direkt verfügbar gemacht. In der folgenden Tabelle werden die unterstützten systemdefinierten Eigenschaften beschrieben:
+Ein Azure Cosmos-Container enthält einen Satz von systemdefinierten Eigenschaften. Abhängig von der API-Auswahl werden einige möglicherweise nicht direkt verfügbar gemacht. In der folgenden Tabelle werden die systemdefinierten Eigenschaften beschrieben:
 
-| **Systemdefinierte Eigenschaft** | **Systemgeneriert oder benutzerdefinierbar** | **Zweck** | **SQL-API** | **Cassandra-API** | **MongoDB-API von Azure Cosmos DB** | **Gremlin-API** | **Tabellen-API** |
+| **Systemdefinierte Eigenschaft** | **Systemgeneriert oder vom Benutzer konfigurierbar** | **Zweck** | **SQL-API** | **Cassandra-API** | **MongoDB-API von Azure Cosmos DB** | **Gremlin-API** | **Tabellen-API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |_rid | Systemgeneriert | Eindeutiger Bezeichner des Containers | Ja | Nein  | Nein  | Nein  | Nein  |
 |_etag | Systemgeneriert | Entitätstag, das zur Steuerung der optimistischen Nebenläufigkeit genutzt wird | Ja | Nein  | Nein  | Nein  | Nein  |
 |_ts | Systemgeneriert | Zuletzt aktualisierter Zeitstempel des Containers | Ja | Nein  | Nein  | Nein  | Nein  |
 |_self | Systemgeneriert | Adressierbarer URI des Containers | Ja | Nein  | Nein  | Nein  | Nein  |
 |id | Vom Benutzer konfigurierbar | Benutzerdefinierter eindeutiger Name des Containers | Ja | Ja | Ja | Ja | Ja |
-|indexingPolicy | Vom Benutzer konfigurierbar | Bietet die Möglichkeit, den Indexpfad, die Genauigkeit und das Konsistenzmodell zu ändern. | Ja | Nein  | Nein  | Nein  | Ja |
+|indexingPolicy | Vom Benutzer konfigurierbar | Bietet die Möglichkeit, den Indexpfad, den Indextyp und den Indexmodus zu ändern. | Ja | Nein  | Nein  | Nein  | Ja |
 |TimeToLive | Vom Benutzer konfigurierbar | Bietet die Möglichkeit, Elemente nach einem bestimmten Zeitraum automatisch aus einem Container zu löschen. Weitere Details finden Sie im Artikel zur [Gültigkeitsdauer](time-to-live.md). | Ja | Nein  | Nein  | Nein  | Ja |
 |changeFeedPolicy | Vom Benutzer konfigurierbar | Wird zum Lesen von Änderungen verwendet, die an Elementen in einem Container vorgenommen wurden. Weitere Informationen finden Sie im Artikel zum [Änderungsfeed](change-feed.md). | Ja | Nein  | Nein  | Nein  | Ja |
-|uniqueKeyPolicy | Vom Benutzer konfigurierbar | Mit eindeutigen Schlüsseln stellen Sie die Eindeutigkeit von Werten innerhalb einer logischen Partition sicher. Weitere Informationen finden Sie im Artikel zu [eindeutigen Schlüsseln](unique-keys.md). | Ja | Nein  | Nein  | Nein  | Ja |
+|uniqueKeyPolicy | Vom Benutzer konfigurierbar | Damit stellen Sie die Eindeutigkeit von Werten innerhalb einer logischen Partition sicher. Weitere Informationen finden Sie im Artikel zu [Eindeutigen Schlüsseleinschränkungen](unique-keys.md). | Ja | Nein  | Nein  | Nein  | Ja |
 
 ### <a name="operations-on-an-azure-cosmos-container"></a>Vorgänge in einem Azure Cosmos-Container
 
@@ -93,7 +93,7 @@ In einem Azure Cosmos-Container werden die folgenden Vorgänge über die Azure C
 
 | **Vorgang** | **Azure-Befehlszeilenschnittstelle** | **SQL-API** | **Cassandra-API** | **MongoDB-API von Azure Cosmos DB** | **Gremlin-API** | **Tabellen-API** |
 | --- | --- | --- | --- | --- | --- | --- |
-| Auflisten von Containern in einer Datenbank | Ja* | Ja | Ja | Ja | Nicht verfügbar | Nicht verfügbar |
+| Auflisten von Containern in einer Datenbank | Ja | Ja | Ja | Ja | Nicht verfügbar | Nicht verfügbar |
 | Lesen eines Containers | Ja | Ja | Ja | Ja | Nicht verfügbar | Nicht verfügbar |
 | Erstellen eines neuen Containers | Ja | Ja | Ja | Ja | Nicht verfügbar | Nicht verfügbar |
 | Aktualisieren eines Containers | Ja | Ja | Ja | Ja | Nicht verfügbar | Nicht verfügbar |
@@ -111,11 +111,11 @@ Abhängig von der API-Auswahl kann ein Azure Cosmos-Element ein Dokument in eine
 
 Jedes Azure Cosmos-Element verfügt über die folgenden systemdefinierten Eigenschaften. Abhängig von der API-Auswahl werden einige möglicherweise nicht direkt verfügbar gemacht.
 
-|**Systemdefinierte Eigenschaft** | **Systemgeneriert oder benutzerdefinierbar**| **Zweck** | **SQL-API** | **Cassandra-API** | **MongoDB-API von Azure Cosmos DB** | **Gremlin-API** | **Tabellen-API** |
+|**Systemdefinierte Eigenschaft** | **Systemgeneriert oder vom Benutzer konfigurierbar**| **Zweck** | **SQL-API** | **Cassandra-API** | **MongoDB-API von Azure Cosmos DB** | **Gremlin-API** | **Tabellen-API** |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 |_id | Systemgeneriert | Eindeutiger Bezeichner eines Elements | Ja | Nein  | Nein  | Nein  | Nein  |
 |_etag | Systemgeneriert | Entitätstag, das zur Steuerung der optimistischen Nebenläufigkeit genutzt wird | Ja | Nein  | Nein  | Nein  | Nein  |
-|_ts | Systemgeneriert | Zuletzt aktualisierter Zeitstempel des Elements | Ja | Nein  | Nein  | Nein  | Nein  |
+|_ts | Systemgeneriert | Der Zeitstempel des letzten Elementeupdates | Ja | Nein  | Nein  | Nein  | Nein  |
 |_self | Systemgeneriert | Adressierbarer URI des Elements | Ja | Nein  | Nein  | Nein  | Nein  |
 |id | Sie können das | Benutzerdefinierter eindeutiger Name innerhalb einer logischen Partition. Wenn der Benutzer die ID nicht angibt, wird im System automatisch eine generiert. | Ja | Ja | Ja | Ja | Ja |
 |Beliebige benutzerdefinierte Eigenschaften | Benutzerdefiniert | Benutzerdefinierte Eigenschaften, die in einer API-nativen Darstellung (JSON, BSON, CQL usw.) dargestellt werden | Ja | Ja | Ja | Ja | Ja |
@@ -130,7 +130,7 @@ Azure Cosmos-Elemente unterstützen die folgenden Vorgänge, die über sämtlich
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie können nun mit der Bereitstellung des Durchsatzes in einem Azure Cosmos-Konto fortfahren oder sich mit weiteren Konzepten vertraut machen:
+Sie können sich jetzt mit den folgenden Konzepten vertraut machen:
 
 * [Konfigurieren des bereitgestellten des Durchsatzes für eine Azure Cosmos-Datenbank](how-to-provision-database-throughput.md)
 * [Konfigurieren des bereitgestellten Durchsatzes für einen Azure Cosmos-Container](how-to-provision-container-throughput.md)

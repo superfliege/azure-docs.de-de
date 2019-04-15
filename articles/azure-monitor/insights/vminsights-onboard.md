@@ -11,16 +11,19 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/01/2019
+ms.date: 03/13/2019
 ms.author: magoedte
-ms.openlocfilehash: 46df2d6828cd60aee3c64128197579eb6f51a11a
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 1a4bfae22477e345176971bd40b0afa91c8867fb
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340330"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885824"
 ---
 # <a name="deploy-azure-monitor-for-vms-preview"></a>Bereitstellen von Azure Monitor für VMs (Vorschauversion)
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 In diesem Artikel wird beschrieben, wie Sie Azure Monitor für VMs einrichten. Der Dienst überwacht die Integrität des Betriebssystems für Ihre virtuellen Azure-Computer (VMs) und VM-Skalierungsgruppen sowie der virtuellen Computer in Ihrer Umgebung. Diese Überwachung umfasst die Erkennung und Zuordnung von Anwendungsabhängigkeiten, die möglicherweise auf ihnen gehostet werden. 
 
 Sie aktivieren Azure Monitor für VMs mithilfe einer der folgenden Methoden:
@@ -36,10 +39,12 @@ Bevor Sie beginnen, stellen Sie sicher, dass Sie die Informationen in den folgen
 
 ### <a name="log-analytics"></a>Log Analytics
 
-Ein Log Analytics-Arbeitsbereich wird aktuell in den folgenden Regionen unterstützt:
+Azure Monitor für VMs unterstützt einen Log Analytics-Arbeitsbereich in den folgenden Regionen:
 
 - USA, Westen-Mitte
 - USA (Ost)
+- Kanada, Mitte<sup>1</sup>
+- Vereinigtes Königreich, Süden<sup>1</sup>
 - Europa, Westen
 - Asien, Südosten<sup>1</sup>
 
@@ -52,7 +57,7 @@ Ein Log Analytics-Arbeitsbereich wird aktuell in den folgenden Regionen unterst�
 Wenn Sie über keinen Arbeitsbereich verfügen, können Sie diesen mit einer der folgenden Methoden erstellen:
 * [Die Azure-CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
 * [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
-* [Azure-Portal](../../azure-monitor/learn/quick-create-workspace.md)
+* [Das Azure-Portal](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
 
 Wenn Sie im Azure-Portal die Überwachung für einen einzelnen virtuellen Azure-Computer aktivieren, können Sie während dieses Vorgangs einen Arbeitsbereich erstellen.
@@ -70,19 +75,17 @@ Die folgende Tabelle enthält die Windows- und Linux-Betriebssysteme, die für A
 
 |Betriebssystemversion |Leistung |Karten |Health |
 |-----------|------------|-----|-------|
-|Windows Server 2019 | X | X |  |
+|Windows Server 2019 | X | X | |
 |Windows Server 2016 1803 | X | X | X |
 |Windows Server 2016 | X | X | X |
 |Windows Server 2012 R2 | X | X | |
 |Windows Server 2012 | X | X | |
 |Windows Server 2008 R2 | X | X| |
-|Red Hat Enterprise Linux (RHEL) 7, 6| X | X| X |
-|Ubuntu 18.04, 16.04, 14.04 | X | X | X |
-|CentOS Linux 7, 6 | X | X | X |
-|SUSE Linux Enterprise Server (SLES) 12 | X | X | X |
-|Oracle Linux 7 | X<sup>1</sup> | | X |
-|Oracle Linux 6 | X | X | X |
-|Debian 9.4, 8 | X<sup>1</sup> | | X |
+|Red Hat Enterprise Linux (RHEL) 6, 7| X | X| X |
+|Ubuntu 14.04, 16.04, 18.04 | X | X | X |
+|CentOS Linux 6, 7 | X | X | X |
+|SUSE Linux Enterprise Server (SLES) 11, 12 | X | X | X |
+|Debian 8, 9.4 | X<sup>1</sup> | | X |
 
 <sup>1</sup> Das Leistungsfeature von Azure Monitor für VMs ist nur über Azure Monitor verfügbar. Es ist nicht verfügbar, wenn Sie direkt aus dem linken Bereich des virtuellen Azure-Computers darauf zugreifen.
 
@@ -91,16 +94,12 @@ Die folgende Tabelle enthält die Windows- und Linux-Betriebssysteme, die für A
 > - Es werden nur die Standardversion und SMP-Version des Linux-Kernels unterstützt.
 > - Nicht-Standardversionen des Kernels, z. B. PAE (Physical Address Extension) und Xen, werden für keine Linux-Distribution unterstützt. Beispielsweise wird ein System mit der Versionszeichenfolge *2.6.16.21-0.8-xen* nicht unterstützt.
 > - Benutzerdefinierte Kernels, einschließlich Neukompilierungen von Standardkernels, werden nicht unterstützt.
-> - Der CentOSPlus-Kernel wird nicht unterstützt.
+> - Der CentOSPlus-Kernel wird unterstützt.
 
 #### <a name="red-hat-linux-7"></a>Red Hat Linux 7
 
 | Betriebssystemversion | Kernelversion |
 |:--|:--|
-| 7.0 | 3.10.0-123 |
-| 7.1 | 3.10.0-229 |
-| 7.2 | 3.10.0-327 |
-| 7.3 | 3.10.0-514 |
 | 7.4 | 3.10.0-693 |
 | 7,5 | 3.10.0-862 |
 | 7.6 | 3.10.0-957 |
@@ -109,17 +108,14 @@ Die folgende Tabelle enthält die Windows- und Linux-Betriebssysteme, die für A
 
 | Betriebssystemversion | Kernelversion |
 |:--|:--|
-| 6,0 | 2.6.32-71 |
-| 6.1 | 2.6.32-131 |
-| 6.2 | 2.6.32-220 |
-| 6.3 | 2.6.32-279 |
-| 6.4. | 2.6.32-358 |
-| 6,5 | 2.6.32-431 |
-| 6.6 | 2.6.32-504 |
-| 6.7 | 2.6.32-573 |
-| 6,8 | 2.6.32-642 |
 | 6.9 | 2.6.32-696 |
 | 6.10 | 2.6.32-754 |
+
+### <a name="centosplus"></a>CentOSPlus
+| Betriebssystemversion | Kernelversion |
+|:--|:--|
+| 6.9 | 2.6.32-696.18.7<br>2.6.32-696.30.1 |
+| 6.10 | 2.6.32-696.30.1<br>2.6.32-754.3.5 |
 
 #### <a name="ubuntu-server"></a>Ubuntu Server
 
@@ -130,21 +126,11 @@ Die folgende Tabelle enthält die Windows- und Linux-Betriebssysteme, die für A
 | 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
 | 14.04 | 3.13.\*<br>4.4.\* |
 
-#### <a name="oracle-enterprise-linux-6-with-unbreakable-enterprise-kernel"></a>Oracle Enterprise Linux 6 mit Unbreakable Enterprise Kernel
-| Betriebssystemversion | Kernelversion
-|:--|:--|
-| 6.2 | Oracle 2.6.32-300 (UEK R1) |
-| 6.3 | Oracle 2.6.39-200 (UEK R2) |
-| 6.4. | Oracle 2.6.39-400 (UEK R2) |
-| 6,5 | Oracle 2.6.39-400 (UEK R2 i386) |
-| 6.6 | Oracle 2.6.39-400 (UEK R2 i386) |
-
-#### <a name="oracle-enterprise-linux-5-with-unbreakable-enterprise-kernel"></a>Oracle Enterprise Linux 5 mit Unbreakable Enterprise Kernel
+#### <a name="suse-linux-11-enterprise-server"></a>SUSE Linux 11 Enterprise Server
 
 | Betriebssystemversion | Kernelversion
 |:--|:--|
-| 5.10 | Oracle 2.6.39-400 (UEK R2) |
-| 5.11 | Oracle 2.6.39-400 (UEK R2) |
+|11 SP4 | 3.0.* |
 
 #### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
 
@@ -313,7 +299,7 @@ Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren u
     * Verwenden Sie die folgenden PowerShell-Befehle in dem Ordner mit der Vorlage:
 
         ```powershell
-        New-AzureRmResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName <ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
+        New-AzResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName <ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
         ```
 
         Die Änderung der Konfiguration kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird eine Meldung angezeigt, die der folgenden ähnelt und das Ergebnis anzeigt:
@@ -389,11 +375,11 @@ With this initial release, you can create the policy assignment only in the Azur
     
 1. In the **Log Analytics workspace** drop-down list for the supported region, select a workspace.
 
-    >[!NOTE]
-    >If the workspace is beyond the scope of the assignment, grant *Log Analytics Contributor* permissions to the policy assignment's Principal ID. If you don't do this, you might see a deployment failure such as: `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ... `
-    >To grant access, review [how to manually configure the managed identity](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity).
-    >  
-    The **Managed Identity** check box is selected, because the initiative being assigned includes a policy with the *deployIfNotExists* effect.
+   > [!NOTE]
+   > If the workspace is beyond the scope of the assignment, grant *Log Analytics Contributor* permissions to the policy assignment's Principal ID. If you don't do this, you might see a deployment failure such as: `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...`
+   > To grant access, review [how to manually configure the managed identity](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity).
+   > 
+   >  The **Managed Identity** check box is selected, because the initiative being assigned includes a policy with the *deployIfNotExists* effect.
     
 1. In the **Manage Identity location** drop-down list, select the appropriate region.
 
@@ -426,7 +412,7 @@ Based on the results of the policies included with the initiative, VMs are repor
 ### Enable with PowerShell
 To enable Azure Monitor for VMs for multiple VMs or virtual machine scale sets, you can use the PowerShell script [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0), available from the Azure PowerShell Gallery. This script iterates through every virtual machine and virtual machine scale set in your subscription, in the scoped resource group that's specified by *ResourceGroup*, or to a single VM or virtual machine scale set that's specified by *Name*. For each VM or virtual machine scale set, the script verifies whether the VM extension is already installed. If the VM extension is not installed, the script tries to reinstall it. If the VM extension is installed, the script installs the Log Analytics and Dependency agent VM extensions.
 
-This script requires Azure PowerShell module version 5.7.0 or later. Run `Get-Module -ListAvailable AzureRM` to find the version. If you need to upgrade, see [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps). If you're running PowerShell locally, you also need to run `Connect-AzureRmAccount` to create a connection with Azure.
+This script requires Azure PowerShell module Az version 1.0.0 or later. Run `Get-Module -ListAvailable Az` to find the version. If you need to upgrade, see [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps). If you're running PowerShell locally, you also need to run `Connect-AzAccount` to create a connection with Azure.
 
 To get a list of the script's argument details and example usage, run `Get-Help`.
 
@@ -731,7 +717,7 @@ Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren u
 1. Sie können diese Vorlage mithilfe des folgenden PowerShell-Befehls bereitstellen:
 
     ```powershell
-    New-AzureRmResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
+    New-AzResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
     ```
 
     Die Änderung der Konfiguration kann einige Minuten dauern. Wenn sie abgeschlossen ist, wird eine Meldung angezeigt, die der folgenden ähnelt und das Ergebnis anzeigt:
@@ -739,7 +725,7 @@ Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren u
     ```powershell
     provisioningState       : Succeeded
     ```
-Nach dem Aktivieren der Überwachung kann es ca. 10 Minuten dauern, bis Integritätszustand und Metriken für den Hybridcomputer angezeigt werden.
+   Nach dem Aktivieren der Überwachung kann es ca. 10 Minuten dauern, bis Integritätszustand und Metriken für den Hybridcomputer angezeigt werden.
 
 ## <a name="performance-counters-enabled"></a>Aktivierte Leistungsindikatoren
 Azure Monitor für VMs konfiguriert einen Log Analytics-Arbeitsbereich, um die von der Lösung verwendeten Leistungsindikatoren zu sammeln. In der folgenden Tabelle sind die von der Lösung konfigurierten Objekte und Indikatoren aufgelistet, die alle 60 Sekunden erfasst werden.

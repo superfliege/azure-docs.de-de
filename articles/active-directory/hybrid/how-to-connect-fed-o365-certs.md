@@ -16,12 +16,12 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 037c5210f73899483bebf131efce0d5f61a847c2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d98a1aabef2de505e66b2127226b9e89cd791e20
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200359"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883444"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Erneuern von Verbundzertifikaten für Office 365 und Azure Active Directory
 ## <a name="overview"></a>Übersicht
@@ -36,7 +36,7 @@ Dieser Artikel enthält weitere Informationen zum Verwalten der Tokensignaturzer
 ## <a name="default-configuration-of-ad-fs-for-token-signing-certificates"></a>Standardkonfiguration von AD FS für Tokensignaturzertifikate
 Bei Tokensignatur- und Tokenentschlüsselungszertifikaten handelt es sich in der Regel um selbstsignierte Zertifikate, die ein Jahr lang gültig sind. AD FS enthält standardmäßig einen automatischen Erneuerungsprozess mit der Bezeichnung **AutoCertificateRollover**. Wenn Sie AD FS 2.0 oder höher verwenden, aktualisieren Office 365 und Azure AD das Zertifikat automatisch, bevor es abläuft.
 
-### <a name="renewal-notification-from-the-office-365-portal-or-an-email"></a>Erneuerungsbenachrichtigung über das Office 365-Portal oder per E-Mail
+### <a name="renewal-notification-from-the-microsoft-365-admin-center-or-an-email"></a>Verlängerungsbenachrichtigung aus dem Microsoft 365 Admin-Center oder per E-Mail
 > [!NOTE]
 > Wenn Sie eine E-Mail oder Portalbenachrichtigung mit der Aufforderung erhalten haben, Ihr Zertifikat für Office zu erneuern, können Sie unter [Verwalten von Änderungen an Tokensignaturzertifikaten](#managecerts) überprüfen, ob Sie Maßnahmen ergreifen müssen. Microsoft ist sich des möglichen Problems bewusst, dass Benachrichtigungen zur Zertifikaterneuerung auch dann gesendet werden, wenn keine Maßnahmen erforderlich sind.
 >
@@ -44,8 +44,8 @@ Bei Tokensignatur- und Tokenentschlüsselungszertifikaten handelt es sich in der
 
 Azure AD versucht, die Verbundmetadaten zu überwachen und die Tokensignaturzertifikate wie von den Metadaten angegeben zu aktualisieren. 30 Tage vor Ablauf der Tokensignaturzertifikate überprüft Azure AD durch Abfragen der Verbundmetadaten, ob neue Zertifikate verfügbar sind.
 
-* Wenn die Verbundmetadaten und die neuen Zertifikate abgerufen werden können, erhält der Benutzer keine E-Mail-Benachrichtigung oder Warnung im Office 365-Portal.
-* Falls die neuen Tokensignaturzertifikate nicht abgerufen werden können, weil die Verbundmetadaten nicht erreichbar sind oder das automatische Zertifikatrollover nicht aktiviert ist, gibt Azure AD eine E-Mail-Benachrichtigung und eine Warnung im Office 365-Portal aus.
+* Wenn die Verbundmetadaten und die neuen Zertifikate abgerufen werden können, erhält der Benutzer keine E-Mail-Benachrichtigung oder Warnung im Microsoft 365 Admin Center.
+* Falls die neuen Tokensignaturzertifikate nicht abgerufen werden können, weil die Verbundmetadaten nicht erreichbar sind oder das automatische Zertifikatrollover nicht aktiviert ist, gibt Azure AD eine E-Mail-Benachrichtigung und eine Warnung im Microsoft 365 Admin Center aus.
 
 ![Office 365-Portalbenachrichtigung](./media/how-to-connect-fed-o365-certs/notification.png)
 
@@ -118,7 +118,7 @@ Sie müssen keine manuellen Schritte ausführen, wenn die beiden folgenden Bedin
 
 https://(Ihr_FS_Name)/federationmetadata/2007-06/federationmetadata.xml
 
-Dabei wird `(your_FS_name) ` durch den Verbunddiensthostnamen ersetzt, den Ihre Organisation verwendet, z. B. "fs.contoso.com".  Wenn Sie diese beiden Einstellungen erfolgreich überprüfen können, müssen Sie nichts weiter tun.  
+Dabei wird `(your_FS_name)` durch den Verbunddiensthostnamen ersetzt, den Ihre Organisation verwendet, z. B. „fs.contoso.com“.  Wenn Sie diese beiden Einstellungen erfolgreich überprüfen können, müssen Sie nichts weiter tun.  
 
 Beispiel: https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
 ## Manuelles Erneuern des Tokensignaturzertifikats <a name="manualrenew"></a>

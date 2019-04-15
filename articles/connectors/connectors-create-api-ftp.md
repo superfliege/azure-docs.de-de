@@ -1,21 +1,21 @@
 ---
-title: Herstellen einer Verbindung mit dem FTP-Server – Azure Logic Apps | Microsoft-Dokumentation
+title: Herstellen einer Verbindung mit dem FTP-Server – Azure Logic Apps
 description: Erstellen, Überwachen und Verwalten von Dateien auf einem FTP-Server mit Azure-Logik-Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 10/15/2018
 tags: connectors
-ms.openlocfilehash: 1e649f21758adedb069b38f64f083ccb85df874d
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: e5aeaa707c7a839483484c524e982204d6fe055c
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913358"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576325"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Erstellen, Überwachen und Verwalten von FTP-Dateien mithilfe von Azure Logic Apps
 
@@ -28,10 +28,11 @@ Mit Azure Logic Apps und dem FTP-Connector können Sie automatisierte Aufgaben u
 
 Sie können Trigger verwenden, die Antworten von Ihrem FTP-Server erhalten und die Ausgabe für andere Aktionen verfügbar machen. Sie können Ausführungsaktionen in Ihren Logik-Apps verwenden, um Dateien auf Ihrem FTP-Server zu verwalten. Sie können die Ausgaben von FTP-Aktionen auch in anderen Aktionen verwenden. Wenn Sie z.B. regelmäßig Dateien von Ihrem FTP-Server abrufen, können Sie mithilfe des Office 365 Outlook-Connectors oder mithilfe des Outlook.com-Connectors E-Mails zu diesen Dateien und ihren Inhalten senden. Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md).
 
-> [!NOTE]
-> Der FTP-Connector unterstützt nur Dateien bis zu einer Größe von 50 MB, es sei denn, Sie verwenden [Nachrichtenblöcke in Aktionen](../logic-apps/logic-apps-handle-large-messages.md). Für Trigger kann derzeit keine Blockerstellung verwendet werden.
->
-> Außerdem unterstützt der FTP-Connector nur explizites FTP über SSL (FTPS) und ist nicht kompatibel mit implizitem FTPS. 
+## <a name="limits"></a>Einschränkungen
+
+* FTP-Aktionen unterstützen nur Dateien, die *50 MB oder kleiner* sind, sofern Sie nicht die Option [Nachrichtenblöcke](../logic-apps/logic-apps-handle-large-messages.md) verwenden, mit der Sie diesen Grenzwert überschreiten können. FTP-Trigger unterstützen derzeit keine Blockerstellung.
+
+* Der FTP-Connector unterstützt nur explizites FTP über SSL (FTPS) und ist nicht kompatibel mit implizitem FTPS.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -51,7 +52,7 @@ Sie können Trigger verwenden, die Antworten von Ihrem FTP-Server erhalten und d
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie Ihre Logik-App im Logik-App-Designer, sofern sie nicht bereits geöffnet ist.
 
-1. Geben Sie im Fall einer leeren Logik-App im Suchfeld die Zeichenfolge „ftp“ als Filter ein. Wählen Sie in der Triggerliste den gewünschten Trigger aus. 
+1. Geben Sie im Fall einer leeren Logik-App im Suchfeld die Zeichenfolge „ftp“ als Filter ein. Wählen Sie in der Triggerliste den gewünschten Trigger aus.
 
    Oder
 
@@ -82,7 +83,7 @@ Dieser Trigger startet einen Logik-App-Workflow, wenn er erkennt, dass eine Date
 
 **Beispiel für Unternehmen**: Sie können mit diesem Trigger beispielsweise einen FTP-Ordner auf neue Dateien überwachen, in denen Kundenbestellungen beschrieben werden. Dann können Sie eine FTP-Aktion wie **Dateiinhalt abrufen** verwenden, um den Inhalt einer Bestellung zur weiteren Verarbeitung und Speicherung in einer Bestelldatenbank abzurufen.
 
-Beim Anfordern von Dateiinhalten rufen Trigger keine Dateien ab, die größer als 50 MB sind. Befolgen Sie das folgende Muster, um Dateien abzurufen, die größer als 50 MB sind: 
+Beim Anfordern von Dateiinhalten können Trigger keine Dateien abrufen, die größer als 50 MB sind. Befolgen Sie das folgende Muster, um Dateien abzurufen, die größer als 50 MB sind: 
 
 * Verwenden Sie einen Trigger, der Dateieigenschaften zurückgibt, z.B. **Beim Hinzufügen oder Ändern einer Datei (nur Eigenschaften)**.
 
@@ -121,7 +122,7 @@ Nachdem Ihre Logik-App jetzt über einen Trigger verfügt, fügen Sie die Aktion
 
 Diese Aktion ruft den Inhalt einer Datei auf einem FTP-Server ab, wenn diese Datei hinzugefügt oder aktualisiert wird. So können Sie z. B. den Trigger aus dem vorherigen Beispiel und eine Aktion hinzufügen, die den Inhalt der Datei abruft, nachdem diese Datei hinzugefügt oder bearbeitet wurde. 
 
-Beim Anfordern von Dateiinhalten rufen Trigger keine Dateien ab, die größer als 50 MB sind. Befolgen Sie das folgende Muster, um Dateien abzurufen, die größer als 50 MB sind: 
+Beim Anfordern von Dateiinhalten können Trigger keine Dateien abrufen, die größer als 50 MB sind. Befolgen Sie das folgende Muster, um Dateien abzurufen, die größer als 50 MB sind: 
 
 * Verwenden Sie einen Trigger, der Dateieigenschaften zurückgibt, z.B. **Beim Hinzufügen oder Ändern einer Datei (nur Eigenschaften)**.
 
@@ -151,7 +152,7 @@ Hier sehen Sie ein Beispiel für diese Aktion: **Abrufen von Inhalten**
 
 ## <a name="connector-reference"></a>Connector-Referenz
 
-Technische Details zu Triggern, Aktionen und Beschränkungen aus der OpenAPI-Beschreibung (ehemals Swagger) des Connectors finden Sie auf der [Referenzseite](/connectors/ftpconnector/) des Connectors.
+Technische Details zu Triggern, Aktionen und Beschränkungen aus der OpenAPI-Beschreibung (ehemals Swagger) des Connectors finden Sie auf der [Referenzseite des Connectors](/connectors/ftpconnector/).
 
 ## <a name="get-support"></a>Support
 

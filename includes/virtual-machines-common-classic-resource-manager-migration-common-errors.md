@@ -4,15 +4,17 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: f00da12519f21410f773afb96a5e9a83c56166d9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 845bd7a6ad690288585418a42e5706fdbebbf143
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58051626"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58890947"
 ---
 # <a name="common-errors-during-classic-to-azure-resource-manager-migration"></a>Häufige Fehler bei der Migration von einer klassischen Bereitstellung zu einer Azure Resource Manager-Bereitstellung
 In diesem Artikel werden die Fehler aufgeführt und beschrieben, die bei der Migration von IaaS-Ressourcen vom klassischen Azure-Bereitstellungsmodell zum Azure Resource Manager-Stapel am häufigsten auftreten.
+
+[!INCLUDE [updated-for-az](./updated-for-az.md)]
 
 ## <a name="list-of-errors"></a>Liste der Fehler
 
@@ -22,7 +24,7 @@ In diesem Artikel werden die Fehler aufgeführt und beschrieben, die bei der Mig
 | Die Migration von Bereitstellung "{deployment-name}" im HostedService "{hosted-service-name}" wird nicht unterstützt, da es sich um eine PaaS-Bereitstellung (Web/Worker) handelt. |Dies passiert, wenn eine Bereitstellung eine Web- oder Workerrolle enthält. Da die Migration nur für virtuelle Computer unterstützt wird, entfernen Sie die Web- oder Workerrolle aus der Bereitstellung, und wiederholen Sie die Migration. |
 | Bei der Bereitstellung von Vorlage "{template-name}" ist ein Fehler aufgetreten. CorrelationId={guid} |Im Back-End des Migrationsdienst verwenden wir Azure Resource Manager-Vorlagen, um Ressourcen im Azure Resource Manager-Stapel zu erstellen. Da Vorlagen idempotent sind, können Sie den Migrationsvorgang üblicherweise sicher wiederholen, um diesen Fehler zu beheben. Wenn der Fehler weiterhin auftritt, [wenden Sie sich an den Azure-Support](../articles/azure-supportability/how-to-create-azure-support-request.md), und geben Sie die CorrelationId an. <br><br> **HINWEIS:** Sobald der Incident vom Supportteam aufgenommen wurde, versuchen Sie nicht, das Problem selbst zu lösen, da dies unerwartete Folgen für Ihre Umgebung nach sich ziehen könnte. |
 | Das virtuelle Netzwerk "{virtual-network-name}" ist nicht vorhanden. |Dieser Fehler kann auftreten, wenn Sie das virtuelle Netzwerk im neuen Azure-Portal erstellt haben. Der tatsächliche Name des virtuellen Netzwerk folgt dem Muster „Gruppe * <VNET name>“. |
-| Der virtuelle Computer "{vm-name}" im HostedService "{hosted-service-name}" enthält die Erweiterung "{extension-name}", die in Azure Resource Manager nicht unterstützt wird. Es empfiehlt sich, sie vom virtuellen Computer zu deinstallieren, bevor Sie die Migration fortsetzen. |XML-Erweiterungen wie „BGInfo 1.*“ werden in Azure Resource Manager nicht unterstützt. Daher können diese Erweiterungen nicht migriert werden. Wenn die Installation dieser Erweiterungen auf dem virtuellen Computer beibehalten wird, werden sie vor dem Abschließen der Migration automatisch deinstalliert. |
+| Der virtuelle Computer "{vm-name}" im HostedService "{hosted-service-name}" enthält die Erweiterung "{extension-name}", die in Azure Resource Manager nicht unterstützt wird. Es empfiehlt sich, sie vom virtuellen Computer zu deinstallieren, bevor Sie die Migration fortsetzen. |XML-Erweiterungen wie „BGInfo 1.\*“ werden in Azure Resource Manager nicht unterstützt. Daher können diese Erweiterungen nicht migriert werden. Wenn die Installation dieser Erweiterungen auf dem virtuellen Computer beibehalten wird, werden sie vor dem Abschließen der Migration automatisch deinstalliert. |
 | Die VM „{vm-name}“ im HostedService „{hosted-service-name}“ enthält die Erweiterung „VMSnapshot/VMSnapshotLinux“, für die eine Migration derzeit nicht unterstützt wird. Deinstallieren Sie sie von der VM, und fügen Sie sie nach Abschluss der Migration über Azure Resource Manager wieder hinzu. |Dies ist das Szenario, in dem der virtuelle Computer für Azure Backup konfiguriert ist. Da dieses Szenario zurzeit nicht unterstützt wird, befolgen Sie die Problemumgehung unter https://aka.ms/vmbackupmigration. |
 | Die VM "{vm-name}" im HostedService "{hosted-service-name}" enthält die Erweiterung "{extension-name}", deren Status nicht von der VM gemeldet wird. Daher kann diese VM nicht migriert werden. Stellen Sie sicher, dass der Erweiterungsstatus gemeldet wird, oder deinstallieren Sie die Erweiterung von der VM, und wiederholen Sie die Migration. <br><br> Die VM "{vm-name}" im HostedService "{hosted-service-name}" enthält die Erweiterung "{extension-name}", die den Handlerstatus "{handler-status}" meldet. Daher kann die VM nicht migriert werden. Stellen Sie sicher, dass der Erweiterungshandlerstatus "{handler-status}" gemeldet wird, oder deinstallieren Sie die Erweiterung von der VM, und wiederholen Sie die Migration. <br><br> Der VM-Agent für die VM "{vm-name}" im HostedService "{hosted-service-name}" meldet für den Agent den Gesamtstatus "Nicht bereit". Daher wird die VM möglicherweise nicht migriert, wenn sie über eine migrierbare Erweiterung verfügt. Stellen Sie sicher, dass der VM-Agent den Gesamtstatus des Agents als "Bereit" meldet. Lesen Sie https://aka.ms/classiciaasmigrationfaqs. |Gast-Agent- und VM-Erweiterungen in Azure benötigen ausgehenden Internetzugriff auf das Speicherkonto des virtuellen Computers, um ihren Status aufzufüllen. Häufige Fehlerursachen für den Statusfehler sind folgende: <li> Eine Netzwerksicherheitsgruppe blockiert den ausgehenden Zugriff auf das Internet. <li> Im virtuellen Netzwerk sind lokale DNS-Server vorhanden, und die DNS-Verbindung wurde unterbrochen. <br><br> Wenn weiterhin nicht unterstützte Status angezeigt werden, können Sie die Erweiterungen deinstallieren, um diese Prüfung zu überspringen und mit der Migration fortzufahren. |
 | Die Migration von Bereitstellung "{deployment-name}" im HostedService "{hosted-service-name}" wird nicht unterstützt, da die Bereitstellung mehrere Verfügbarkeitsgruppen aufweist. |Zurzeit können nur gehostete Dienste mit höchstens einer Verfügbarkeitsgruppe migriert werden. Um dieses Problem zu umgehen, verschieben Sie die zusätzlichen Verfügbarkeitsgruppen und virtuellen Computer in diesen Verfügbarkeitsgruppen in einen anderen gehosteten Dienst. |
@@ -32,7 +34,7 @@ In diesem Artikel werden die Fehler aufgeführt und beschrieben, die bei der Mig
 | Die Bereitstellung „{deployment-name}“ im HostedService „{hosted-service-name}“ enthält den virtuellen Computer „{vm-name}“ mit dem Datenträger „{data-disk-name}“, dessen physische Blobgröße ({size-of-the-vhd-blob-backing-the-data-disk} Bytes) nicht der logischen VM-Datenträgergröße ({size-of-the-data-disk-specified-in-the-vm-api} Bytes) entspricht. Die Migration wird ohne Angabe einer Größe für den Datenträger für den virtuellen Azure Resource Manager-Computer fortgesetzt. | Dieser Fehler kann auftreten, wenn Sie die VHD-Blobgröße angepasst haben, ohne die Größe im VM-API-Modell zu aktualisieren. Ausführliche Schritte zur Behebung finden Sie [weiter unten](#vm-with-data-disk-whose-physical-blob-size-bytes-does-not-match-the-vm-data-disk-logical-size-bytes).|
 | Beim Überprüfen von Datenträger "<Name des Datenträgers>" mit dem Medienlink "<Datenträger-URI>" für den virtuellen Computer "<Name des virtuellen Computers>" im Clouddienst "<Name des Clouddiensts>" ist eine Speicherausnahme aufgetreten. Stellen Sie sicher, dass dieser virtuelle Computer Zugriff auf den Medienlink der virtuellen Festplatte hat. | Dieser Fehler kann auftreten, wenn die Datenträger des virtuellen Computers gelöscht wurden oder der Zugriff auf sie nicht mehr möglich ist. Vergewissern Sie sich, dass die Datenträger des virtuellen Computers vorhanden sind.|
 | Die VM "<VM-Name>" im HostedService "<Name des Clouddiensts>" enthält einen Datenträger mit dem MediaLink "<VHD-URI>". Dieser weist einen Blobnamen "<VHD-Blobname>" auf, der in Azure Resource Manager nicht unterstützt wird. | Dieser Fehler tritt auf, wenn der Name des Blobs einen Schrägstrich (/) enthält. Dies wird vom Compute-Ressourcenanbieter derzeit nicht unterstützt. |
-| Für die Bereitstellung „{Bereitstellungsname}“ im HostedService „{Clouddienstname}“ ist eine Migration nicht zulässig, da sie sich nicht im regionalen Bereich befindet. Informationen zum Verschieben dieser Bereitstellung in den regionalen Bereich finden Sie unter http://aka.ms/regionalscope. | 2014 wurde für Azure angekündigt, dass Netzwerkressourcen aus dem Clusterebenenbereich in den regionalen Bereich verschoben werden. Weitere Details (http://aka.ms/regionalscope)) finden Sie unter [http://aka.ms/regionalscope]. Dieser Fehler tritt auf, wenn für die zu migrierende Bereitstellung kein Updatevorgang durchgeführt wurde, bei dem sie automatisch in einen regionalen Bereich verschoben wird. Die beste Problemumgehung besteht darin, einer VM entweder einen Endpunkt oder einen Datenträger hinzuzufügen und dann zu versuchen, den Migrationsvorgang erneut durchzuführen. <br> Informationen hierzu finden Sie unter [Gewusst wie: Einrichten von Endpunkten auf einem klassischen virtuellen Windows-Computer in Azure](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#create-an-endpoint) bzw. [Anfügen eines Datenträgers an einen virtuellen Windows-Computer, der mit dem klassischen Bereitstellungsmodell erstellt wurde](../articles/virtual-machines/windows/classic/attach-disk.md).|
+| Für die Bereitstellung „{Bereitstellungsname}“ im HostedService „{Clouddienstname}“ ist eine Migration nicht zulässig, da sie sich nicht im regionalen Bereich befindet. Informationen zum Verschieben dieser Bereitstellung in den regionalen Bereich finden Sie unter „http:\//aka.ms/regionalscope“. | 2014 wurde für Azure angekündigt, dass Netzwerkressourcen aus dem Clusterebenenbereich in den regionalen Bereich verschoben werden. Weitere Informationen finden Sie unter [https://aka.ms/regionalscope](https://aka.ms/regionalscope). Dieser Fehler tritt auf, wenn für die zu migrierende Bereitstellung kein Updatevorgang durchgeführt wurde, bei dem sie automatisch in einen regionalen Bereich verschoben wird. Die beste Problemumgehung besteht darin, einer VM entweder einen Endpunkt oder einen Datenträger hinzuzufügen und dann zu versuchen, den Migrationsvorgang erneut durchzuführen. <br> Informationen hierzu finden Sie unter [Gewusst wie: Einrichten von Endpunkten auf einem klassischen virtuellen Windows-Computer in Azure](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#create-an-endpoint) bzw. [Anfügen eines Datenträgers an einen virtuellen Windows-Computer, der mit dem klassischen Bereitstellungsmodell erstellt wurde](../articles/virtual-machines/windows/classic/attach-disk.md).|
 | Eine Migration wird für das virtuelle Netzwerk „{VNET-Name}“ nicht unterstützt, weil es PaaS-Bereitstellungen ohne Gateway umfasst. | Dieser Fehler tritt auf, wenn Sie PaaS-Bereitstellungen ohne Gateway wie Application Gateway- oder API Management-Dienste haben, die mit dem virtuellen Netzwerk verbunden sind.|
 
 
@@ -44,7 +46,7 @@ Dieser Fall tritt ein, wenn die logische Größe des Datenträgers nicht auf die
 
 #### <a name="verifying-the-issue"></a>Überprüfen des Problems
 
-```PowerShell
+```powershell
 # Store the VM details in the VM object
 $vm = Get-AzureVM -ServiceName $servicename -Name $vmname
 
@@ -65,7 +67,7 @@ ExtensionData       :
 
 # Now get the properties of the blob backing the data disk above
 # NOTE the size of the blob is about 15 GB which is different from LogicalDiskSizeInGB above
-$blob = Get-AzureStorageblob -Blob "coreosvm-dd1.vhd" -Container vhds 
+$blob = Get-AzStorageblob -Blob "coreosvm-dd1.vhd" -Container vhds 
 
 $blob
 
@@ -82,7 +84,7 @@ Name              : coreosvm-dd1.vhd
 
 #### <a name="mitigating-the-issue"></a>Beheben des Problems
 
-```PowerShell
+```powershell
 # Convert the blob size in bytes to GB into a variable which we'll use later
 $newSize = [int]($blob.Length / 1GB)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
-ms.openlocfilehash: ee64b4cbfd024c91b226736bc8cac0b9b33f964e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7edf0a9f8d4eb4c01b6d80fd82a1061b6cbb1e35
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170393"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918551"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Verwenden von Azure CDN mit SAS
 
@@ -89,7 +89,8 @@ Diese Option ist nur für **Azure CDN Premium von Verizon**-Profile verfügbar. 
    ![CDN-URL-Rewriteregel – links](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
    ![CDN-URL-Rewriteregel – rechts](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
 
-2. Nach Aktivierung der neuen Regel können Benutzer auch ohne Verwendung des SAS-Tokens in der URL auf Dateien im angegebenen Container am CDN-Endpunkt zugreifen. Das Format sieht wie folgt aus: `https://<endpoint hostname>.azureedge.net/<container>/<file>`
+2. Nach Aktivierung der neuen Regel können Benutzer auch ohne Verwendung des SAS-Tokens in der URL auf Dateien im angegebenen Container am CDN-Endpunkt zugreifen. Das Format sieht wie folgt aus:
+   `https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
    Beispiel:    
    `https://sasstoragedemo.azureedge.net/container1/demo.jpg`
@@ -137,7 +138,7 @@ Da SAS-Parameter für das Azure CDN nicht sichtbar sind, kann das Azure CDN sein
 | --- | --- |
 | Start | Zeitpunkt, ab dem das Azure CDN auf die Blobdatei zugreifen kann. Wählen Sie aufgrund von Uhrabweichungen (Signaleingang für verschiedene Komponenten zu unterschiedlichen Zeiten) einen 15 Minuten früheren Zeitpunkt, wenn Sie möchten, dass das Asset sofort verfügbar ist. |
 | End | Der Zeitpunkt, ab dem das Azure CDN nicht mehr auf die Blobdatei zugreifen kann. Zuvor zwischengespeicherte Dateien im Azure CDN sind weiterhin zugänglich. Um die Dateiablaufzeit zu steuern, legen Sie entweder die geeignete Ablaufzeit im Azure CDN-Sicherheitstoken fest, oder bereinigen Sie das Asset. |
-| Zulässige IP-Adressen | Optional. Wenn Sie **Azure CDN von Verizon** verwenden, können Sie diesen Parameter auf die Bereiche festlegen, die in [Edgeserver-IP-Adressen für Azure CDN von Verizon](https://msdn.microsoft.com/library/mt757330.aspx) definiert sind. Wenn Sie **Azure CDN von Akamai** verwenden, können Sie den Parameter für IP-Bereiche nicht festlegen, weil die IP-Adressen nicht statisch sind.|
+| Zulässige IP-Adressen | Optional. Wenn Sie **Azure CDN von Verizon** verwenden, können Sie diesen Parameter auf die Bereiche festlegen, die in [Edgeserver-IP-Adressen für Azure CDN von Verizon](/azure/cdn/cdn-pop-list-api) definiert sind. Wenn Sie **Azure CDN von Akamai** verwenden, können Sie den Parameter für IP-Bereiche nicht festlegen, weil die IP-Adressen nicht statisch sind.|
 | Zulässige Protokolle | Die zugelassenen Protokolle für eine Anforderung mit dem Konto-SAS. Als Einstellung wird HTTPS empfohlen.|
 
 ## <a name="next-steps"></a>Nächste Schritte

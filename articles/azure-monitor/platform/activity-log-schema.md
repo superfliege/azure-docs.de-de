@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: 63c649f0850c4ffc60ce2087e91f3f69917e4837
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 93e74eb6aefbaeeddf7c4f15d62f4a9ee3d617d4
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868543"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622211"
 ---
 # <a name="azure-activity-log-event-schema"></a>Ereignisschema des Azure-Aktivitätsprotokolls
 Das **Azure-Aktivitätsprotokoll** ist ein Protokoll, das einen Einblick in alle Ereignisse auf Abonnementebene ermöglicht, die in Azure aufgetreten sind. Dieser Artikel beschreibt das Ereignisschema pro Datenkategorie. Das Schema der Daten unterscheidet sich, je nachdem, ob Sie die Daten im Portal, in PowerShell, auf der Befehlszeilenschnittstelle oder direkt über die REST-API lesen, im Gegensatz zum [Streamen der Daten in den Speicher oder zu Event Hubs mithilfe eines Protokollprofils](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). Im Beispiel unten ist zu sehen, in welcher Weise das Schema über das Portal, PowerShell, die Befehlszeilenschnittstelle und REST-API zur Verfügung gestellt wird. Eine Zuordnung dieser Eigenschaften zum [Azure-Diagnoseprotokollschema](./diagnostic-logs-schema.md) findet sich am Ende dieses Artikels.
@@ -358,6 +358,7 @@ Diese Kategorie enthält die Datensätze zu allen Aktivierungen von Azure-Warnun
 | correlationId | Eine GUID im Zeichenfolgenformat. |
 | Beschreibung |Statische Beschreibung des Warnungsereignisses. |
 | eventDataId |Eindeutiger Bezeichner des Warnungsereignisses. |
+| category | Immer „Alert“ |
 | level |Ebene des Ereignisses. Einer der folgenden Werte: „Critical“, „Error“, „Warning“ und „Informational“ |
 | resourceGroupName |Bei einer Metrikwarnung der Name der Ressourcengruppe für die betroffene Ressource. Bei anderen Warnungstypen der Name der Ressourcengruppe, die die Warnung selbst enthält. |
 | resourceProviderName |Bei einer Metrikwarnung der Name des Ressourcenanbieters für die betroffene Ressource. Bei anderen Warnungstypen der Name des Ressourcenanbieters für die Warnung selbst. |
@@ -556,6 +557,7 @@ Diese Kategorie enthält den Datensatz, der von Warnungen in Azure Security Cent
 | Beschreibung |Statische Beschreibung des Sicherheitsereignisses. |
 | eventDataId |Eindeutiger Bezeichner des Sicherheitsereignisses. |
 | eventName |Anzeigename des Sicherheitsereignisses. |
+| category | Immer „Security“ |
 | id |Eindeutiger Ressourcenbezeichner des Sicherheitsereignisses. |
 | level |Ebene des Ereignisses. Einer der folgenden Werte: „Critical“, „Error“, „Warning“ oder „Informational“ |
 | resourceGroupName |Name der Ressourcengruppe für die Ressource. |

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 2f5a82fac18ab34bfa9d6b46f553227ed44a994a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: ff4dd571911719e4f2ec27952785432960a56d42
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008092"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917225"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Aktualisieren eines Clouddiensts
 
@@ -28,7 +28,7 @@ Das Aktualisieren eines Clouddiensts einschließlich Rollen und Gastbetriebssyst
 ## <a name="update-an-azure-service"></a>Aktualisieren eines Azure-Diensts
 Azure organisiert Ihre Rolleninstanzen in logischen Gruppen, die als Upgradedomänen (UD) bezeichnet werden. Upgradedomänen (UD) sind logische Sätze von Rolleninstanzen, die als Gruppe aktualisiert werden.  Azure aktualisiert einen Clouddienst mit je einer UD. Dadurch können Instanzen in anderen UDs den Datenverkehr weiter bearbeiten.
 
-Die Standardanzahl von Upgradedomänen ist 5. Sie können eine andere Anzahl von Upgradedomänen festlegen, indem Sie das Attribut „upgradeDomainCount“ in die Dienstdefinitionsdatei (.CSDEF) einschließen. Weitere Informationen über das Attribut „upgradeDomainCount“ finden Sie unter [WebRole-Schema](https://msdn.microsoft.com/library/azure/gg557553.aspx) oder [WorkerRole-Schema](https://msdn.microsoft.com/library/azure/gg557552.aspx).
+Die Standardanzahl von Upgradedomänen ist 5. Sie können eine andere Anzahl von Upgradedomänen festlegen, indem Sie das Attribut „upgradeDomainCount“ in die Dienstdefinitionsdatei (.CSDEF) einschließen. Weitere Informationen über das Attribut „upgradeDomainCount“ finden Sie unter [WebRole-Schema](/previous-versions/azure/reference/gg557553(v=azure.100)) oder [WorkerRole-Schema](/previous-versions/azure/reference/gg557552(v=azure.100)).
 
 Wenn Sie eine direkte Aktualisierung einer oder mehrerer Rollen in Ihrem Dienst durchführen, aktualisiert Azur Sätze von Rolleninstanz je nach der Upgradedomäne, der sie angehören. Azure aktualisiert alle Instanzen in einer bestimmten Upgradedomäne (beendet sie, aktualisiert sie und schaltet sie wieder online) und fährt dann mit der nächsten Domäne fort. Dadurch, dass nur die Instanzen beendet werden, die in der aktuellen Upgradedomäne ausgeführt werden, stellt Azure sicher, dass sich die Aktualisierung so wenig wie möglich auf den ausgeführten Dienst auswirkt. Weitere Informationen finden Sie unter [Vorgehensweise bei der Aktualisierung](#howanupgradeproceeds) weiter unten in diesem Artikel.
 
@@ -54,18 +54,18 @@ Die folgende Tabelle zeigt die zulässigen Änderungen an einen Dienst während 
 
 | Zulässige Änderungen an Hosting, Diensten und Rollen | Direktes Update | Gestaffelt (VIP-Austausch) | Löschen und erneut Bereitstellen |
 | --- | --- | --- | --- |
-| Betriebssystemversion |JA |Ja |JA |
-| .NET-Vertrauensebene |JA |Ja |JA |
-| Größe des virtuellen Computers <sup>1</sup> |Ja<sup>2</sup> |JA |JA |
-| Einstellungen für den lokalen Speicher |Nur Erhöhen <sup>2</sup> |JA |JA |
-| Rollen in einem Dienst hinzufügen oder entfernen |JA |Ja |JA |
-| Anzahl der Instanzen einer bestimmten Rolle |JA |Ja |JA |
-| Anzahl oder Typ der Endpunkte für einen Dienst |Ja<sup>2</sup> |Nein  |JA |
-| Namen und Werte von Konfigurationseinstellungen |JA |Ja |JA |
-| Werte (aber keine Namen) von Konfigurationseinstellungen |JA |Ja |JA |
-| Neue Zertifikate hinzufügen |JA |Ja |JA |
-| Vorhandene Zertifikate ändern |JA |Ja |JA |
-| Neuen Code bereitstellen |JA |Ja |JA |
+| Betriebssystemversion |Ja |Ja |Ja |
+| .NET-Vertrauensebene |Ja |Ja |Ja |
+| Größe des virtuellen Computers <sup>1</sup> |Ja<sup>2</sup> |Ja |Ja |
+| Einstellungen für den lokalen Speicher |Nur Erhöhen <sup>2</sup> |Ja |Ja |
+| Rollen in einem Dienst hinzufügen oder entfernen |Ja |Ja |Ja |
+| Anzahl der Instanzen einer bestimmten Rolle |Ja |Ja |Ja |
+| Anzahl oder Typ der Endpunkte für einen Dienst |Ja<sup>2</sup> |Nein  |Ja |
+| Namen und Werte von Konfigurationseinstellungen |Ja |Ja |Ja |
+| Werte (aber keine Namen) von Konfigurationseinstellungen |Ja |Ja |Ja |
+| Neue Zertifikate hinzufügen |Ja |Ja |Ja |
+| Vorhandene Zertifikate ändern |Ja |Ja |Ja |
+| Neuen Code bereitstellen |Ja |Ja |Ja |
 
 <sup>1</sup>Größenänderung beschränkt auf die Teilmenge der Größen, die für den Clouddienst verfügbar sind.
 
@@ -82,7 +82,7 @@ Die folgenden Elemente werden während einer Aktualisierung nicht unterstützt:
 * Ändern der Anzahl der Upgradedomänen
 * Verringern der Größe der lokalen Ressourcen
 
-Wenn Sie andere Aktualisierungen an der Serverdefinition vornehmen (z. B. die Größe der lokalen Ressource verringern), müssen Sie eine VIP-Austausch-Aktualisierung vornehmen. Weitere Informationen finden Sie in unter [Swap Deployment](https://msdn.microsoft.com/library/azure/ee460814.aspx) (Tauschen der Bereitstellung).
+Wenn Sie andere Aktualisierungen an der Serverdefinition vornehmen (z. B. die Größe der lokalen Ressource verringern), müssen Sie eine VIP-Austausch-Aktualisierung vornehmen. Weitere Informationen finden Sie in unter [Swap Deployment](/previous-versions/azure/reference/ee460814(v=azure.100)) (Tauschen der Bereitstellung).
 
 <a name="howanupgradeproceeds"></a>
 
@@ -121,7 +121,7 @@ Stellen Sie einen neuen Dienst mit mehreren Instanzen auf dem Staging-Server ber
 <a name="RollbackofanUpdate"></a>
 
 ## <a name="rollback-of-an-update"></a>Zurücksetzen eines Updates
-Azure ist bei der Verwaltung von Diensten während einer Aktualisierung flexibel, da Sie weitere Vorgänge für einen Dienst initiieren können, nachdem die ursprüngliche Aktualisierungsanforderung vom Azure Fabric Controller akzeptiert wurde. Eine Zurücksetzung ist nur möglich, wenn eine Aktualisierung (Konfigurationsänderung) oder ein Upgrade in der Bereitstellung den Status **In Bearbeitung** hat. Eine Aktualisierung oder ein Upgrade gilt als in Bearbeitung, wenn mindestens eine Instanz des Diensts noch nicht auf die neue Version aktualisiert wurde. Um zu testen, ob eine Zurücksetzung zulässig ist, prüfen Sie, ob der Wert des Flags „RollbackAllowed“, der von den Vorgängen [Bereitstellung abrufen](https://msdn.microsoft.com/library/azure/ee460804.aspx) und [Clouddiensteigenschaften abrufen](https://msdn.microsoft.com/library/azure/ee460806.aspx) zurückgegeben wird, auf „true“ festgelegt ist.
+Azure ist bei der Verwaltung von Diensten während einer Aktualisierung flexibel, da Sie weitere Vorgänge für einen Dienst initiieren können, nachdem die ursprüngliche Aktualisierungsanforderung vom Azure Fabric Controller akzeptiert wurde. Eine Zurücksetzung ist nur möglich, wenn eine Aktualisierung (Konfigurationsänderung) oder ein Upgrade in der Bereitstellung den Status **In Bearbeitung** hat. Eine Aktualisierung oder ein Upgrade gilt als in Bearbeitung, wenn mindestens eine Instanz des Diensts noch nicht auf die neue Version aktualisiert wurde. Um zu testen, ob eine Zurücksetzung zulässig ist, prüfen Sie, ob der Wert des Flags „RollbackAllowed“, der von den Vorgängen [Bereitstellung abrufen](/previous-versions/azure/reference/ee460804(v=azure.100)) und [Clouddiensteigenschaften abrufen](/previous-versions/azure/reference/ee460806(v=azure.100)) zurückgegeben wird, auf „true“ festgelegt ist.
 
 > [!NOTE]
 > Eine Zurücksetzung ist nur für eine **direkte** Aktualisierung (bzw. ein direktes Upgrade) sinnvoll, da ein VIP-Austausch das Ersetzen einer gesamten ausgeführten Instanz Ihres Diensts durch eine andere beinhaltet.
@@ -135,13 +135,13 @@ Das Zurücksetzen einer Aktualisierung in Bearbeitung wirkt sich folgendermaßen
 
 Diese Funktion wird durch die folgenden Features bereitgestellt:
 
-* Der Vorgang zum [Zurücksetzen einer Aktualisierung oder eines Upgrades](https://msdn.microsoft.com/library/azure/hh403977.aspx) kann bei einer Konfigurationsaktualisierung (ausgelöst durch Aufrufen von [Bereitstellungskonfiguration ändern](https://msdn.microsoft.com/library/azure/ee460809.aspx)) oder bei einem Upgrade (ausgelöst durch Aufrufen von [Upgrade für Bereitstellung durchführen](https://msdn.microsoft.com/library/azure/ee460793.aspx)) aufgerufen werden, solange zumindest eine Instand im Dienst noch nicht auf die neue Version aktualisiert wurde.
-* Als Teil des Antworttexts der Vorgänge [Bereitstellung abrufen](https://msdn.microsoft.com/library/azure/ee460804.aspx) und [Clouddiensteigenschaften abrufen](https://msdn.microsoft.com/library/azure/ee460806.aspx) werden die Elemente „Locked“ und „RollbackAllowed“ zurückgegeben:
+* Der Vorgang zum [Zurücksetzen einer Aktualisierung oder eines Upgrades](/previous-versions/azure/reference/hh403977(v=azure.100)) kann bei einer Konfigurationsaktualisierung (ausgelöst durch Aufrufen von [Bereitstellungskonfiguration ändern](/previous-versions/azure/reference/ee460809(v=azure.100))) oder bei einem Upgrade (ausgelöst durch Aufrufen von [Upgrade für Bereitstellung durchführen](/previous-versions/azure/reference/ee460793(v=azure.100))) aufgerufen werden, solange zumindest eine Instand im Dienst noch nicht auf die neue Version aktualisiert wurde.
+* Als Teil des Antworttexts der Vorgänge [Bereitstellung abrufen](/previous-versions/azure/reference/ee460804(v=azure.100)) und [Clouddiensteigenschaften abrufen](/previous-versions/azure/reference/ee460806(v=azure.100)) werden die Elemente „Locked“ und „RollbackAllowed“ zurückgegeben:
 
   1. Das Element „Locked“ gibt an, wann für eine bestimmte Bereitstellung ein Änderungsvorgang aufgerufen werden kann.
-  2. Das Element „RollbackAllowed“ gib an, wann der Vorgang [Zurücksetzen der Aktualisierung oder des Upgrades](https://msdn.microsoft.com/library/azure/hh403977.aspx) für eine bestimmte Bereitstellung aufgerufen werden kann.
+  2. Das Element „RollbackAllowed“ gib an, wann der Vorgang [Zurücksetzen der Aktualisierung oder des Upgrades](/previous-versions/azure/reference/hh403977(v=azure.100)) für eine bestimmte Bereitstellung aufgerufen werden kann.
 
-  Zum Zurücksetzen müssen Sie nicht beide Elemente, „Locked“ und „RollbackAllowed“ prüfen. Es ist ausreichend, wenn Sie sicherstellen, dass „RollbackAllowed“ auf „true“ festgelegt ist. Diese Elemente werden nur ausgegeben, wenn diese Methoden mithilfe des Anforderungsheaders aufgerufen werden und dieser auf „x-ms-version: 2011-10-01“ oder höher festgelegt ist. Weitere Informationen zu Versionsverwaltungsheadern finden Sie unter [Dienstverwaltungs-Versionsverwaltung](https://msdn.microsoft.com/library/azure/gg592580.aspx).
+  Zum Zurücksetzen müssen Sie nicht beide Elemente, „Locked“ und „RollbackAllowed“ prüfen. Es ist ausreichend, wenn Sie sicherstellen, dass „RollbackAllowed“ auf „true“ festgelegt ist. Diese Elemente werden nur ausgegeben, wenn diese Methoden mithilfe des Anforderungsheaders aufgerufen werden und dieser auf „x-ms-version: 2011-10-01“ oder höher festgelegt ist. Weitere Informationen zu Versionsverwaltungsheadern finden Sie unter [Dienstverwaltungs-Versionsverwaltung](/previous-versions/azure/gg592580(v=azure.100)).
 
 In den folgenden Situationen wird ein Zurücksetzen einer Aktualisierung oder eines Upgrades nicht unterstützt:
 
@@ -149,9 +149,9 @@ In den folgenden Situationen wird ein Zurücksetzen einer Aktualisierung oder ei
 * Kontingentgrenzen – Wenn die Aktualisierung ein Vorgang zum zentralen Herunterskalieren war, ist Ihr Berechnungskontingent für das Zurücksetzen unter Umständen nicht mehr ausreichend. Jedem Azure-Abonnement ist ein Kontingent zugeordnet, das die maximale Anzahl von Kernen angibt, die von allen gehosteten Diensten, die zu diesem Abonnement gehören, genutzt werden können Wenn durch das Zurücksetzen einer Aktualisierung das Kontingent für Ihr Abonnement überschritten werden würde, ist das Zurücksetzen nicht möglich.
 * Racebedingung – Wenn die ursprüngliche Aktualisierung abgeschlossen ist, ist ein Zurücksetzen nicht möglich.
 
-Die Zurücksetzung einer Aktualisierung ist beispielsweise nützlich, wenn Sie den Vorgang [Upgrade für Bereitstellung durchführen](https://msdn.microsoft.com/library/azure/ee460793.aspx) im manuellen Modus ausführen, um die Rate zu kontrollieren, mit der ein umfangreiches direktes Upgrade für Ihren von Azure gehosteten Dienst zurückgesetzt wird.
+Die Zurücksetzung einer Aktualisierung ist beispielsweise nützlich, wenn Sie den Vorgang [Upgrade für Bereitstellung durchführen](/previous-versions/azure/reference/ee460793(v=azure.100)) im manuellen Modus ausführen, um die Rate zu kontrollieren, mit der ein umfangreiches direktes Upgrade für Ihren von Azure gehosteten Dienst zurückgesetzt wird.
 
-Rufen Sie während der Zurücksetzung des Upgrades im manuellen Modus [Upgrade für Bereitstellung durchführen](https://msdn.microsoft.com/library/azure/ee460793.aspx) auf, und gehen Sie die Upgradedomänen durch. Falls während der Überwachung des Upgrades einige Rolleninstanzen in den ersten Upgradedomänen, die Sie prüfen, nicht mehr reagieren, können Sie den Vorgang [Zurücksetzen der Aktualisierung oder des Upgrades](https://msdn.microsoft.com/library/azure/hh403977.aspx) für die Bereitstellung ausführen. Die Instanzen, für die noch kein Upgrade durchgeführt wurde, sind davon nicht betroffen, und nur die Instanzen, die bereits aktualisiert wurden, werden auf das vorherige Dienstpaket und die vorherige Konfiguration zurückgesetzt.
+Rufen Sie während der Zurücksetzung des Upgrades im manuellen Modus [Upgrade für Bereitstellung durchführen](/previous-versions/azure/reference/ee460793(v=azure.100)) auf, und gehen Sie die Upgradedomänen durch. Falls während der Überwachung des Upgrades einige Rolleninstanzen in den ersten Upgradedomänen, die Sie prüfen, nicht mehr reagieren, können Sie den Vorgang [Zurücksetzen der Aktualisierung oder des Upgrades](/previous-versions/azure/reference/hh403977(v=azure.100)) für die Bereitstellung ausführen. Die Instanzen, für die noch kein Upgrade durchgeführt wurde, sind davon nicht betroffen, und nur die Instanzen, die bereits aktualisiert wurden, werden auf das vorherige Dienstpaket und die vorherige Konfiguration zurückgesetzt.
 
 <a name="multiplemutatingoperations"></a>
 
@@ -162,11 +162,11 @@ Sobald Azure Fabric Controller die ursprüngliche Aktualisierungs- oder Upgradea
 
 Wenn Sie einen zweiten Aktualisierungsvorgangs initiieren, während die erste Aktualisierung noch ausgeführt wird, dann wird dies ähnlich wie bei der Zurücksetzung ausgeführt. Wenn Sie die zweite Aktualisierung im automatischen Modus ausführen, wird die erste Upgradedomäne sofort aktualisiert. Dadurch sind Instanzen mehrerer Upgradedomänen möglicherweise gleichzeitig offline.
 
-Verfügbare Änderungsvorgänge: [Bereitstellungskonfiguration ändern](https://msdn.microsoft.com/library/azure/ee460809.aspx), [Upgrade für Bereitstellung durchführen](https://msdn.microsoft.com/library/azure/ee460793.aspx), [Bereitstellungsstatus aktualisieren](https://msdn.microsoft.com/library/azure/ee460808.aspx), [Bereitstellung löschen](https://msdn.microsoft.com/library/azure/ee460815.aspx) und [Zurücksetzen der Aktualisierung oder des Upgrades](https://msdn.microsoft.com/library/azure/hh403977.aspx).
+Verfügbare Änderungsvorgänge: [Bereitstellungskonfiguration ändern](/previous-versions/azure/reference/ee460809(v=azure.100)), [Upgrade für Bereitstellung durchführen](/previous-versions/azure/reference/ee460793(v=azure.100)), [Bereitstellungsstatus aktualisieren](/previous-versions/azure/reference/ee460808(v=azure.100)), [Bereitstellung löschen](/previous-versions/azure/reference/ee460815(v=azure.100)) und [Zurücksetzen der Aktualisierung oder des Upgrades](/previous-versions/azure/reference/hh403977(v=azure.100)).
 
-Zwei Vorgänge ([Bereitstellung abrufen](https://msdn.microsoft.com/library/azure/ee460804.aspx) und [Clouddiensteigenschaften abrufen](https://msdn.microsoft.com/library/azure/ee460806.aspx)) geben das Locked-Flag zurück, das Aufschluss darüber gibt, ob für eine bestimmte Bereitstellung ein Änderungsvorgang aufgerufen werden kann.
+Zwei Vorgänge ([Bereitstellung abrufen](/previous-versions/azure/reference/ee460804(v=azure.100)) und [Clouddiensteigenschaften abrufen](/previous-versions/azure/reference/ee460806(v=azure.100))) geben das Locked-Flag zurück, das Aufschluss darüber gibt, ob für eine bestimmte Bereitstellung ein Änderungsvorgang aufgerufen werden kann.
 
-Wenn Sie die Version dieser Methoden aufrufen möchten, die die Kennzeichnung „Locked“ ausgibt, müssen Sie den Anforderungsheader auf „x-ms-version: 2011-10-01“ oder höher setzen. Weitere Informationen zu Versionsverwaltungsheadern finden Sie unter [Dienstverwaltungs-Versionsverwaltung](https://msdn.microsoft.com/library/azure/gg592580.aspx).
+Wenn Sie die Version dieser Methoden aufrufen möchten, die die Kennzeichnung „Locked“ ausgibt, müssen Sie den Anforderungsheader auf „x-ms-version: 2011-10-01“ oder höher setzen. Weitere Informationen zu Versionsverwaltungsheadern finden Sie unter [Dienstverwaltungs-Versionsverwaltung](/previous-versions/azure/gg592580(v=azure.100)).
 
 <a name="distributiondfroles"></a>
 
@@ -188,5 +188,5 @@ Das folgende Diagramm zeigt, wie ein Dienst mit zwei Rollen verteilt wird, wenn 
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Verwalten von Clouddiensten](cloud-services-how-to-manage-portal.md)  
-[Überwachen von Clouddiensten](cloud-services-how-to-monitor.md)  
+[Überwachung von Clouddiensten](cloud-services-how-to-monitor.md)  
 [Konfigurieren von Clouddiensten](cloud-services-how-to-configure-portal.md)  

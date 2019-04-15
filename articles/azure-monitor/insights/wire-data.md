@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
-ms.openlocfilehash: 35568f6c281a2aaf058fe08b214657c7737c64fb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d295a5a7eae2bdc7983e7271aa11bce1840b92dd
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842157"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882071"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Wire Data 2.0-Lösung (Vorschauversion) in Azure Monitor
 
@@ -58,7 +58,7 @@ Da Sie Metadaten anzeigen, ist der Vorgang nicht unbedingt gut für die eingehen
 
 Wire Data ruft ihre Daten vom Microsoft Dependency-Agent ab. Der Dependency-Agent ist abhängig vom Log Analytics-Agent, da er dessen Verbindungen mit Azure Monitor benötigt. Dies bedeutet, dass auf einem Server der Log Analytics-Agent mit dem Dependency-Agent installiert und konfiguriert sein muss. In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von Wire Data unterstützt werden.
 
-| **Verbundene Quelle** | **Unterstützt** | **Beschreibung** |
+| **Verbundene Quelle** | **Unterstützt** | **BESCHREIBUNG** |
 | --- | --- | --- |
 | Windows-Agents | Ja | Wire Data analysiert und erfasst Daten von Windows-Agent-Computern. <br><br> Zusätzlich zum [Log Analytics-Agent für Windows](../../azure-monitor/platform/agent-windows.md) benötigen Windows-Agents den Microsoft Dependency-Agent. Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](../../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems). |
 | Linux-Agents | Ja | Wire Data analysiert und erfasst Daten von Linux-Agent-Computern.<br><br> Zusätzlich zum [Log Analytics-Agent für Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) benötigen Linux-Agents den Microsoft Dependency-Agent. Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](../../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems). |
@@ -93,6 +93,8 @@ In den folgenden Abschnitten sind die unterstützten Betriebssysteme für den De
 
 #### <a name="windows-server"></a>Windows Server
 
+- Windows Server 2019
+- Windows Server 2016 1803
 - Windows Server 2016
 - Windows Server 2012 R2
 - Windows Server 2012
@@ -100,96 +102,68 @@ In den folgenden Abschnitten sind die unterstützten Betriebssysteme für den De
 
 #### <a name="windows-desktop"></a>Windows Desktop
 
+- Windows 10 1803
 - Windows 10
 - Windows 8.1
 - Windows 8
 - Windows 7
 
-#### <a name="red-hat-enterprise-linux-centos-linux-and-oracle-linux-with-rhel-kernel"></a>Red Hat Enterprise Linux, CentOS Linux und Oracle Linux (mit RHEL-Kernel)
+#### <a name="supported-linux-operating-systems"></a>Unterstützte Linux-Betriebssysteme
+In den folgenden Abschnitten sind die unterstützten Betriebssysteme für den Dependency-Agent unter Linux aufgeführt.  
 
 - Es werden nur die Standardversion und SMP-Version des Linux-Kernels unterstützt.
-- Nicht-Standardversionen des Kernels, z.B. PAE und Xen, werden für keine Linux-Distribution unterstützt. Beispielsweise wird ein System mit der Versionszeichenfolge _2.6.16.21-0.8-xen_ nicht unterstützt.
+- Nicht-Standardversionen des Kernels, z.B. PAE und Xen, werden für keine Linux-Distribution unterstützt. Beispielsweise wird ein System mit der Versionszeichenfolge „2.6.16.21-0.8-xen“ nicht unterstützt.
 - Benutzerdefinierte Kernels, einschließlich Neukompilierungen von Standardkernels, werden nicht unterstützt.
-- Der CentOSPlus-Kernel wird nicht unterstützt.
-- Der Unbreakable Enterprise Kernel (UEK) für Oracle wird in einem Abschnitt weiter unten erläutert.
 
-#### <a name="red-hat-linux-7"></a>Red Hat Linux 7
+##### <a name="red-hat-linux-7"></a>Red Hat Linux 7
 
-| **Betriebssystemversion** | **Kernelversion** |
-| --- | --- |
-| 7.0 | 3.10.0-123 |
-| 7.1 | 3.10.0-229 |
-| 7.2 | 3.10.0-327 |
-| 7.3 | 3.10.0-514 |
+| Betriebssystemversion | Kernelversion |
+|:--|:--|
+| 7.4 | 3.10.0-693 |
+| 7,5 | 3.10.0-862 |
+| 7.6 | 3.10.0-957 |
 
-#### <a name="red-hat-linux-6"></a>Red Hat Linux 6
+##### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 
-| **Betriebssystemversion** | **Kernelversion** |
-| --- | --- |
-| 6,0 | 2.6.32-71 |
-| 6.1 | 2.6.32-131 |
-| 6.2 | 2.6.32-220 |
-| 6.3 | 2.6.32-279 |
-| 6.4. | 2.6.32-358 |
-| 6,5 | 2.6.32-431 |
-| 6.6 | 2.6.32-504 |
-| 6.7 | 2.6.32-573 |
-| 6,8 | 2.6.32-642 |
+| Betriebssystemversion | Kernelversion |
+|:--|:--|
+| 6.9 | 2.6.32-696 |
+| 6.10 | 2.6.32-754 |
 
-#### <a name="red-hat-linux-5"></a>Red Hat Linux 5
+##### <a name="centosplus"></a>CentOSPlus
+| Betriebssystemversion | Kernelversion |
+|:--|:--|
+| 6.9 | 2.6.32-696.18.7<br>2.6.32-696.30.1 |
+| 6.10 | 2.6.32-696.30.1<br>2.6.32-754.3.5 |
 
-| **Betriebssystemversion** | **Kernelversion** |
-| --- | --- |
-| 5.8 | 2.6.18-308 |
-| 5.9 | 2.6.18-348 |
-| 5.10 | 2.6.18-371 |
-| 5.11 | 2.6.18-398 <br> 2.6.18-400 <br>2.6.18-402 <br>2.6.18-404 <br>2.6.18-406 <br> 2.6.18-407 <br> 2.6.18-408 <br> 2.6.18-409 <br> 2.6.18-410 <br> 2.6.18-411 <br> 2.6.18-412 <br> 2.6.18-416 <br> 2.6.18-417 <br> 2.6.18-419 |
+##### <a name="ubuntu-server"></a>Ubuntu Server
 
-#### <a name="oracle-enterprise-linux-with-unbreakable-enterprise-kernel"></a>Oracle Enterprise Linux mit Unbreakable Enterprise Kernel
+| Betriebssystemversion | Kernelversion |
+|:--|:--|
+| Ubuntu 18.04 | kernel 4.15.\*<br>4.18* |
+| Ubuntu 16.04.3 | Kernel 4.15.* |
+| 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
+| 14.04 | 3.13.\*<br>4.4.\* |
 
-#### <a name="oracle-linux-6"></a>Oracle Linux 6
+##### <a name="suse-linux-11-enterprise-server"></a>SUSE Linux 11 Enterprise Server
 
-| **Betriebssystemversion** | **Kernelversion** |
-| --- | --- |
-| 6.2 | Oracle 2.6.32-300 (UEK R1) |
-| 6.3 | Oracle 2.6.39-200 (UEK R2) |
-| 6.4. | Oracle 2.6.39-400 (UEK R2) |
-| 6,5 | Oracle 2.6.39-400 (UEK R2 i386) |
-| 6.6 | Oracle 2.6.39-400 (UEK R2 i386) |
+| Betriebssystemversion | Kernelversion
+|:--|:--|
+| 11 SP4 | 3.0.* |
 
-#### <a name="oracle-linux-5"></a>Oracle Linux 5
+##### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
 
-| **Betriebssystemversion** | **Kernelversion** |
-| --- | --- |
-| 5.8 | Oracle 2.6.32-300 (UEK R1) |
-| 5.9 | Oracle 2.6.39-300 (UEK R2) |
-| 5.10 | Oracle 2.6.39-400 (UEK R2) |
-| 5.11 | Oracle 2.6.39-400 (UEK R2) |
+| Betriebssystemversion | Kernelversion
+|:--|:--|
+| 12 SP2 | 4.4.* |
+| 12 SP3 | 4.4.* |
 
-#### <a name="suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server
+### <a name="dependency-agent-downloads"></a>Dependency-Agent – Downloads
 
-#### <a name="suse-linux-11"></a>SUSE Linux 11
-
-| **Betriebssystemversion** | **Kernelversion** |
-| --- | --- |
-| 11 | 2.6.27 |
-| 11 SP1 | 2.6.32 |
-| 11 SP2 | 3.0.13 |
-| 11 SP3 | 3.0.76 |
-| 11 SP4 | 3.0.101 |
-
-#### <a name="suse-linux-10"></a>SUSE Linux 10
-
-| **Betriebssystemversion** | **Kernelversion** |
-| --- | --- |
-| 10 SP4 | 2.6.16.60 |
-
-#### <a name="dependency-agent-downloads"></a>Dependency-Agent – Downloads
-
-| **Datei** | **Betriebssystem** | **Version** | **SHA-256** |
-| --- | --- | --- | --- |
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.0.5 | 73B3F6A2A76A08D58F72A550947FF839B588591C48E6EDDD6DDF73AA3FD82B43 |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.0.5 | A1BAD0B36EBF79F2B69113A07FCF48C68D90BD169C722689F9C83C69FC032371 |
+| Datei | Betriebssystem | Version | SHA-256 |
+|:--|:--|:--|:--|
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.7.4 | A111B92AB6CF28EB68B696C60FE51F980BFDFF78C36A900575E17083972989E0 |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.4 | AB58F3DB8B1C3DEE7512690E5A65F1DFC41B43831543B5C040FCCE8390F2282C |
 
 
 
@@ -203,7 +177,8 @@ Führen Sie die folgenden Schritte aus, um die Wire Data-Lösung für Ihre Arbei
 > [!NOTE]
 > Sie können die vorherige Version der Wire Data-Lösung nicht neuen Arbeitsbereichen hinzufügen. Wenn Sie die ursprüngliche Wire Data-Lösung aktiviert haben, können Sie diese Lösung weiterhin verwenden. Um jedoch Wire Data 2.0 zu verwenden, müssen Sie zuerst die ursprüngliche Version entfernen.
 > 
-> ### <a name="install-the-dependency-agent-on-windows"></a>Installieren des Dependency-Agents unter Windows
+ 
+### <a name="install-the-dependency-agent-on-windows"></a>Installieren des Dependency-Agents unter Windows
 
 Zum Installieren oder Deinstallieren des Agent sind Administratorrechte erforderlich.
 
@@ -212,7 +187,7 @@ Der Dependency-Agent wird auf Windows-Computern mithilfe von „InstallDependenc
 Führen Sie die folgenden Schritte aus, um den Dependency-Agent auf jedem Windows-Computer zu installieren:
 
 1. Installieren Sie den Log Analytics-Agent mithilfe der in [Sammeln von Daten von Windows-Computern, die in Ihrer Umgebung gehostet werden](../../azure-monitor/platform/agent-windows.md) aufgeführten Schritte.
-2. Laden Sie den Dependency-Agent von Windows über den Link aus dem vorherigen Abschnitt herunter, und führen Sie ihn dann mithilfe des folgenden Befehls aus: `InstallDependencyAgent-Windows.exe`.
+2. Laden Sie den Dependency-Agent von Windows über den Link im vorherigen Abschnitt herunter, und führen Sie ihn dann mithilfe des folgenden Befehls aus: `InstallDependencyAgent-Windows.exe`
 3. Folgen Sie den Anweisungen des Assistenten, um den Assistenten zu installieren.
 4. Wenn der Dependency-Agent nicht gestartet wird, suchen Sie in den Protokollen ausführliche Fehlerinformationen. Für Windows-Agents lautet das Protokollverzeichnis „%Programfiles%\Microsoft Dependency Agent\logs“.
 
@@ -222,7 +197,7 @@ Verwenden Sie Optionen aus der folgenden Tabelle, um über die Befehlszeile zu i
 
 InstallDependencyAgent-Windows.exe /?
 
-| **Flag** | **Beschreibung** |
+| **Flag** | **BESCHREIBUNG** |
 | --- | --- |
 | <code>/?</code> | Ruft eine Liste der Befehlszeilenoptionen ab. |
 | <code>/S</code> | Führt eine automatische Installation ohne Benutzereingaben aus. |
@@ -247,7 +222,7 @@ Um eine Liste der Installationsflags anzuzeigen, führen Sie das Installationspr
 InstallDependencyAgent-Linux64.bin -help
 ```
 
-| **Flag** | **Beschreibung** |
+| **Flag** | **BESCHREIBUNG** |
 | --- | --- |
 | <code>-help</code> | Ruft eine Liste der Befehlszeilenoptionen ab. |
 | <code>-s</code> | Führt eine automatische Installation ohne Benutzereingaben aus. |
@@ -255,7 +230,7 @@ InstallDependencyAgent-Linux64.bin -help
 
 Dateien für den Dependency-Agent befinden sich in den folgenden Verzeichnissen:
 
-| **Dateien** | **Location** |
+| **Dateien** | **Standort** |
 | --- | --- |
 | Hauptdateien | /opt/microsoft/dependency-agent |
 | Protokolldateien | /var/opt/microsoft/dependency-agent/log |
@@ -269,7 +244,7 @@ Der Dependency-Agent kann mithilfe eines Skripts auf mehreren Servern gleichzeit
 
 #### <a name="powershell-script-for-windows"></a>PowerShell-Skript für Windows
 
-```PowerShell
+```powershell
 
 Invoke-WebRequest "https://aka.ms/dependencyagentwindows" -OutFile InstallDependencyAgent-Windows.exe
 
@@ -291,7 +266,7 @@ sh InstallDependencyAgent-Linux64.bin -s
 
 Zum Bereitstellen des Dependency-Agents über Desired State Configuration können Sie das Modul „xPSDesiredStateConfiguration“ und ein paar Codezeilen wie die folgenden verwenden:
 
-```
+```powershell
 Import-DscResource -ModuleName xPSDesiredStateConfiguration
 
 $DAPackageLocalPath = "C:\InstallDependencyAgent-Windows.exe"
@@ -341,6 +316,7 @@ Node $NodeName
 }
 
 ```
+
 ### <a name="uninstall-the-dependency-agent"></a>Deinstallieren des Dependency-Agents
 
 In den folgenden Abschnitten erfahren Sie, wie Sie den Dependency-Agent entfernen können.
@@ -367,8 +343,6 @@ Der Name des Management Packs lautet „Microsoft.IntelligencePacks.ApplicationD
 
 ## <a name="using-the-solution"></a>Verwenden der Lösung
 
-**Installieren und Konfigurieren der Lösung**
-
 Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der Lösung.
 
 - Mit der Wire Data-Lösung werden Daten von Computern erfasst, auf denen Windows Server 2012 R2, Windows 8.1 und neuere Betriebssysteme ausgeführt werden.
@@ -384,7 +358,7 @@ Nachdem Sie Agents installiert haben, und Sie die Lösung installieren, wird die
 
 Klicken Sie im Azure-Portal auf der Seite **Übersicht** für Ihren Log Analytics-Arbeitsbereich auf die Kachel **Wire Data 2.0**, um das Wire Data-Dashboard zu öffnen. Das Dashboard enthält die Blätter, die in der folgenden Tabelle angegeben sind. Auf jedem Blatt sind bis zu 10 Einträge aufgeführt, die die Kriterien des Blatts für den angegebenen Bereich und Zeitraum erfüllen. Sie können eine Protokollsuche durchführen, mit der alle Einträge zurückgegeben werden, indem Sie unten auf dem Blatt auf **Alle anzeigen** oder auf die Blattüberschrift klicken.
 
-| **Blatt** | **Beschreibung** |
+| **Blatt** | **BESCHREIBUNG** |
 | --- | --- |
 | Agents, die Netzwerkdatenverkehr erfassen | Zeigt die Anzahl der Agents an, die Netzwerkdatenverkehr erfassen, und listet die 10 Computer auf, die am meisten Datenverkehr erfassen. Klicken Sie auf die Zahl, um eine Protokollsuche für <code>WireData \| summarize sum(TotalBytes) by Computer \| take 500000</code> durchzuführen. Klicken Sie auf einen Computer in der Liste, um eine Protokollsuche durchzuführen, die die Gesamtanzahl erfasster Bytes zurückgibt. |
 | Lokale Subnetze | Zeigt die Anzahl von lokalen Subnetzen an, die Agents ermittelt haben.  Klicken Sie auf die Anzahl, um eine Protokollsuche für <code>WireData \| summarize sum(TotalBytes) by LocalSubnet</code> durchzuführen, die alle Subnetze mit der Anzahl von Bytes auflistet, die über jedes einzelne gesendet werden. Klicken Sie auf ein Subnetz in der Liste, um eine Protokollsuche durchzuführen, die die Gesamtanzahl über das Subnetz gesendeter Bytes zurückgibt. |

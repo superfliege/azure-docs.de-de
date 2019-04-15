@@ -9,20 +9,22 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 35923f5b62e50f9978bf36d3d29fefc2dcdc587d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c67b3abd03be42e1b596885a53c3e6cdcc7106b6
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57874771"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894721"
 ---
 # <a name="migrate-identity-resources-to-global-azure"></a>Migrieren von Identitätsressourcen zu Azure weltweit
 
 Dieser Artikel enthält Informationen dazu, wie Sie Azure-Identitätsressourcen von Azure Deutschland zu Azure weltweit migrieren können.
 
+Der Leitfaden für die Identitäts-/Mandantenmigration wurde für reine Azure-Kunden konzipiert. Wenn Sie allgemeine Azure Active Directory (Azure AD)-Mandanten für Azure und Office 365 (oder andere Microsoft-Produkte) verwenden, beinhaltet eine Identitätsmigration komplexe Vorgänge, und Sie sollten sich vor der Verwendung dieses Migrationsleitfadens zunächst an Ihren Kontomanager wenden.
+
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
-Azure Active Directory (Azure AD) in Azure Deutschland ist von Azure AD in Azure weltweit getrennt. Derzeit können keine Sie Azure AD-Benutzer von Azure Deutschland nach Azure weltweit verschieben.
+Azure AD in Azure Deutschland ist von Azure AD in Azure weltweit getrennt. Derzeit können keine Sie Azure AD-Benutzer von Azure Deutschland nach Azure weltweit verschieben.
 
 Standardmandantennamen in Azure Deutschland und Azure weltweit sind immer unterschiedlich, weil Azure automatisch ein zur entsprechenden Umgebung gehörendes Suffix anfügt. Beispielsweise lautet ein Benutzernamen für ein Mitglied des Mandanten **contoso** in Azure weltweit **user1\@contoso.microsoftazure.com**. In Azure Deutschland lautet er **user1\@contoso.microsoftazure.de**.
 
@@ -167,10 +169,10 @@ Erfahren Sie mehr über Tools, Techniken und Empfehlungen zum Migrieren von Ress
 
 - [Compute](./germany-migration-compute.md)
 - [Netzwerk](./germany-migration-networking.md)
-- [Speicher](./germany-migration-storage.md)
+- [Storage](./germany-migration-storage.md)
 - [Web](./germany-migration-web.md)
 - [Datenbanken](./germany-migration-databases.md)
-- [Analyse](./germany-migration-analytics.md)
+- [Analytics](./germany-migration-analytics.md)
 - [IoT](./germany-migration-iot.md)
 - [Integration](./germany-migration-integration.md)
 - [Sicherheit](./germany-migration-security.md)

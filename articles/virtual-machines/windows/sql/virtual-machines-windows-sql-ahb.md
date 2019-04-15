@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 66e94ed4f68ed43891ad3e81bd66cdc57799d204
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bc3e2955049188b0794367d5391762f5eb50b1c0
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117896"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850192"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>Ändern des Lizenzierungsmodells für eine SQL Server-VM in Azure
 In diesem Artikel wird beschrieben, wie Sie das Lizenzierungsmodell für einen virtuellen SQL Server-Computer in Azure ändern, indem Sie den neuen SQL-VM-Ressourcenanbieter **Microsoft.SqlVirtualMachine** verwenden. Es gibt zwei Lizenzierungsmodelle für einen virtuellen Computer (VM), der SQL Server hostet: nutzungsbasierte Bezahlung und Bring Your Own License (BYOL). Mit PowerShell oder der Azure-Befehlszeilenschnittstelle können Sie jetzt ändern, welches Lizenzierungsmodell von Ihrer SQL Server-VM genutzt wird. 
@@ -31,11 +31,14 @@ Das Modell **Bring Your Own License** (BYOL) wird auch als [Azure-Hybridvorteil]
 
 Beim Umschalten zwischen den beiden Lizenzierungsmodellen fällt **keine Ausfallzeit** an, die VM wird nicht neu gestartet, es ergeben sich **keine weiteren Kosten** (sondern durch das Aktivieren des Azure-Hybridvorteils werden die Kosten *reduziert*), und das andere Modell ist **sofort wirksam**. 
 
-  >[!NOTE]
-  > - Die Möglichkeit, das Lizenzierungsmodell umzuwandeln, ist derzeit nur verfügbar, wenn Sie mit einem SQL Server-VM-Image mit nutzungsbasierter Bezahlung beginnen. Wenn Sie mit einem Bring-Your-Own-License-Image aus dem Portal beginnen, können Sie dieses Image nicht in den nutzungsbasierten Bezahlmodus umwandeln.
-  > - CSP-Kunden können den AHB-Vorteil nutzen, indem Sie zuerst eine VM mit nutzungsbasierter Bezahlung bereitstellen und diese dann in Bring-Your-Own-License umwandeln. 
-  > - Diese Funktion ist derzeit nur für Installationen in der öffentlichen Cloud aktiviert.
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
+## <a name="remarks"></a>Anmerkungen
+
+ - Die Möglichkeit, das Lizenzierungsmodell umzuwandeln, ist derzeit nur verfügbar, wenn Sie mit einem SQL Server-VM-Image mit nutzungsbasierter Bezahlung beginnen. Wenn Sie mit einem Bring-Your-Own-License-Image aus dem Portal beginnen, können Sie dieses Image nicht in den nutzungsbasierten Bezahlmodus umwandeln.
+ - CSP-Kunden können den AHB-Vorteil nutzen, indem Sie zuerst eine VM mit nutzungsbasierter Bezahlung bereitstellen und diese dann in Bring-Your-Own-License umwandeln. 
+ - Diese Funktion ist derzeit nur für Installationen in der öffentlichen Cloud aktiviert.
+ - Geben Sie beim Registrieren eines benutzerdefinierten SQL Server-VM-Images beim Ressourcenanbieter den Lizenztyp als ‚AHUB‘ an. Wenn Sie die Angabe zum Lizenztyp leer lassen oder den Wert ‚PAYG‘ eingeben, tritt bei der Registrierung ein Fehler auf. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Für die Verwendung des SQL-VM-Ressourcenanbieters ist die SQL-IaaS-Erweiterung erforderlich. Um den SQL-VM-Ressourcenanbieter verwenden zu können, benötigen Sie daher Folgendes:
@@ -44,14 +47,14 @@ Für die Verwendung des SQL-VM-Ressourcenanbieters ist die SQL-IaaS-Erweiterung 
 - Eine [SQL Server-VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) mit *nutzungsbasierter Bezahlung* und mit installierter [SQL-IaaS-Erweiterung](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension). 
 
 
-## <a name="register-sql-resource-provider-with-your-subscription"></a>Registrieren des SQL-Ressourcenanbieters bei Ihrem Abonnement 
+## <a name="register-sql-resource-provider-to-your-subscription"></a>Registrieren des SQL-Ressourcenanbieters bei Ihrem Abonnement 
 
 Die Möglichkeit zum Umschalten zwischen den Lizenzierungsmodellen ist ein Feature, das vom neuen SQL-VM-Ressourcenanbieter (Microsoft.SqlVirtualMachine) bereitgestellt wird. SQL Server-VMs, die nach Dezember 2018 bereitgestellt werden, werden automatisch beim neuen Ressourcenanbieter registriert. Vorhandene virtuelle Computer, die vor diesem Datum bereitgestellt wurden, müssen jedoch manuell beim Ressourcenanbieter registriert werden, bevor das Lizenzierungsmodell gewechselt werden kann. 
 
   > [!NOTE] 
   > Wenn Sie Ihre SQL Server-VM-Ressource verwerfen, kehren Sie wieder zur hartcodierten Lizenzeinstellung des Images zurück. 
 
-Um Ihre SQL Server-VM beim SQL-Ressourcenanbieter zu registrieren, müssen Sie den Ressourcenanbieter bei Ihrem Abonnement registrieren. Sie können dazu die Azure-Befehlszeilenschnittstelle, PowerShell oder das Azure-Portal verwenden. 
+Um Ihre SQL Server-VM beim SQL-Ressourcenanbieter zu registrieren, müssen Sie den Ressourcenanbieter bei Ihrem Abonnement registrieren. Sie können dazu das Azure-Portal, die Azure-Befehlszeilenschnittstelle oder PowerShell verwenden. 
 
 ### <a name="with-the-azure-portal"></a>Über das Azure-Portal
 Die folgenden Schritte registriert den SQL-Ressourcenanbieter bei Ihrem Azure-Abonnement mithilfe des Azure-Portals. 
@@ -67,8 +70,8 @@ Die folgenden Schritte registriert den SQL-Ressourcenanbieter bei Ihrem Azure-Ab
 ### <a name="with-azure-cli"></a>Mit der Azure-Befehlszeilenschnittstelle
 Der folgende Codeausschnitt registriert den SQL-Ressourcenanbieter bei Ihrem Azure-Abonnement. 
 
-```cli
-# Register the new SQL resource provider for your subscription 
+```azurecli
+# Register the new SQL resource provider to your subscription 
 az provider register --namespace Microsoft.SqlVirtualMachine 
 ```
 
@@ -76,19 +79,19 @@ az provider register --namespace Microsoft.SqlVirtualMachine
 Der folgende Codeausschnitt registriert den SQL-Ressourcenanbieter bei Ihrem Azure-Abonnement. 
 
 ```powershell
-# Register the new SQL resource provider for your subscription
+# Register the new SQL resource provider to your subscription
 Register-AzResourceProvider -ProviderNamespace Microsoft.SqlVirtualMachine
 ```
 
 
 ## <a name="register-sql-server-vm-with-sql-resource-provider"></a>Registrieren der SQL Server-VM beim SQL-Ressourcenanbieter
-Sobald der Ressourcenanbieter bei Ihrem Abonnement registriert ist, können Sie Ihre SQL Server-VM beim Ressourcenanbieter registrieren. Dazu können Sie die Azure-Befehlszeilenschnittstelle und PowerShell verwenden. 
+Sobald der Ressourcenanbieter bei Ihrem Abonnement registriert ist, können Sie Ihre SQL Server-VM beim Ressourcenanbieter registrieren. Dazu können Sie die Azure-Befehlszeilenschnittstelle und PowerShell verwenden. 
 
 ### <a name="with-azure-cli"></a>Mit der Azure-Befehlszeilenschnittstelle
 
 Registrieren Sie die SQL Server-VM über die Azure-Befehlszeilenschnittstelle mit dem folgenden Codeausschnitt: 
 
-```cli
+```azurecli
 # Register your existing SQL Server VM with the new resource provider
 az sql vm create -n <VMName> -g <ResourceGroupName> -l <VMLocation>
 ```
@@ -96,22 +99,20 @@ az sql vm create -n <VMName> -g <ResourceGroupName> -l <VMLocation>
 ### <a name="with-powershell"></a>Mit PowerShell
 
 Registrieren Sie die SQL Server-VM über PowerShell mit dem folgenden Codeausschnitt: 
+
 ```powershell
 # Register your existing SQL Server VM with the new resource provider
-# example: $vm=Get-AzureRmVm -ResourceGroupName AHBTest -Name AHBTest
-$vm=Get-AzureRmVm -ResourceGroupName <ResourceGroupName> -Name <VMName>
-New-AzureRmResource -ResourceName $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location -ResourceType Microsoft.SqlVirtualMachine/sqlVirtualMachines -Properties @{virtualMachineResourceId=$vm.Id}
+# example: $vm=Get-AzVm -ResourceGroupName AHBTest -Name AHBTest
+$vm=Get-AzVm -ResourceGroupName <ResourceGroupName> -Name <VMName>
+New-AzResource -ResourceName $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location -ResourceType Microsoft.SqlVirtualMachine/sqlVirtualMachines -Properties @{virtualMachineResourceId=$vm.Id}
 ```
 
-
 ## <a name="change-licensing-model"></a>Ändern des Lizenzierungsmodells
+
 Nachdem die SQL Server-VM beim Ressourcenanbieter registriert wurde, können Sie das Lizenzierungsmodell über das Azure-Portal, die Azure-Befehlszeilenschnittstelle oder PowerShell ändern. 
 
-
-  >[!NOTE]
-  >  Die Möglichkeit, das Lizenzierungsmodell umzuwandeln, ist derzeit nur verfügbar, wenn Sie mit einem SQL Server-VM-Image mit nutzungsbasierter Bezahlung beginnen. Wenn Sie mit einem Bring-Your-Own-License-Image aus dem Portal beginnen, können Sie dieses Image nicht in den nutzungsbasierten Bezahlmodus umwandeln. 
-
 ### <a name="with-the-azure-portal"></a>Über das Azure-Portal
+
 Sie können das Lizenzierungsmodell direkt über das Portal ändern. 
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer SQL Server-VM. 
@@ -124,30 +125,35 @@ Sie können das Lizenzierungsmodell direkt über das Portal ändern.
   > Diese Option ist nicht für Bring-Your-Own-License-Images verfügbar. 
 
 ### <a name="with-azure-cli"></a>Mit der Azure-Befehlszeilenschnittstelle
+
 Sie können die Azure CLI (Azure-Befehlszeilenschnittstelle) nutzen, um das Lizenzierungsmodell zu wechseln.  
 
 Mit dem folgenden Codeausschnitt wird Ihr Lizenzierungsmodell von der nutzungsbasierten Bezahlung in BYOL (bzw. die Verwendung des Azure-Hybridvorteils) geändert:
+
 ```azurecli
-# Switch  your SQL Server VM license from pay-as-you-go to bring-your-own
+# Switch your SQL Server VM license from pay-as-you-go to bring-your-own
 # example: az sql vm update -n AHBTest -g AHBTest --license-type AHUB
 
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type AHUB
 ```
 
 Mit dem folgenden Codeausschnitt wird Ihr BYOL-Modell in die nutzungsbasierte Bezahlung geändert: 
+
 ```azurecli
-# Switch  your SQL Server VM license from bring-your-own to pay-as-you-go
+# Switch your SQL Server VM license from bring-your-own to pay-as-you-go
 # example: az sql vm update -n AHBTest -g AHBTest --license-type PAYG
 
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type PAYG
 ```
 
 ### <a name="with-powershell"></a>Mit PowerShell 
+
 Sie können Ihr Lizenzierungsmodell auch mit PowerShell ändern. 
 
 Mit dem folgenden Codeausschnitt wird Ihr Lizenzierungsmodell von der nutzungsbasierten Bezahlung in BYOL (bzw. die Verwendung des Azure-Hybridvorteils) geändert: 
+
 ```PowerShell
-# Switch  your SQL Server VM license from pay-as-you-go to bring-your-own
+# Switch your SQL Server VM license from pay-as-you-go to bring-your-own
 #example: $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName AHBTest -ResourceName AHBTest
 
 $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
@@ -160,8 +166,9 @@ $SqlVm | Set-AzResource -Force
 ```
 
 Mit dem folgenden Codeausschnitt wird Ihr BYOL-Modell in die nutzungsbasierte Bezahlung geändert:
+
 ```PowerShell
-# Switch  your SQL Server VM license from bring-your-own to pay-as-you-go
+# Switch your SQL Server VM license from bring-your-own to pay-as-you-go
 #example: $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName AHBTest -ResourceName AHBTest
 
 $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
@@ -178,7 +185,7 @@ $SqlVm | Set-AzResource -Force
 
 Mit dem folgenden Codeausschnitt können Sie das aktuelle Lizenzierungsmodell für Ihre SQL Server-VM anzeigen. 
 
-```PowerShell
+```powershell
 # View current licensing model for your SQL Server VM
 #example: $SqlVm = Get-AzResource -ResourceType Microsoft.SqlVirtualMachine/SqlVirtualMachines -ResourceGroupName <resource_group_name> -ResourceName <VM_name>
 
@@ -204,7 +211,7 @@ Dieser Fehler kann auftreten, wenn Sie versuchen, das Lizenzierungsmodell für I
 `Set-AzResource : Cannot validate argument on parameter 'Sku'. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again.`
 
 Um diesen Fehler zu beheben, heben Sie die Auskommentierung dieser Zeilen im zuvor genannten PowerShell-Codeausschnitt auf, wenn Sie das Lizenzierungsmodell wechseln: 
-```PowerShell
+```powershell
 # the following code snippet is necessary if using Azure Powershell version > 4
 $SqlVm.Kind= "LicenseChange"
 $SqlVm.Plan= [Microsoft.Azure.Management.ResourceManager.Models.Plan]::new()
@@ -213,12 +220,12 @@ $SqlVm.Sku= [Microsoft.Azure.Management.ResourceManager.Models.Sku]::new()
 
 Verwenden Sie den folgenden Code, um Ihre Azure PowerShell-Version zu überprüfen:
 
-```PowerShell
+```powershell
 Get-Module -ListAvailable -Name Azure -Refresh
 ```
 
 ### <a name="the-resource-microsoftsqlvirtualmachinesqlvirtualmachinesresource-group-under-resource-group-resource-group-was-not-found-the-property-sqlserverlicensetype-cannot-be-found-on-this-object-verify-that-the-property-exists-and-can-be-set"></a>Die Ressource „Microsoft.SqlVirtualMachine/SqlVirtualMachines/<Ressourcengruppe>“ unter der Ressourcengruppe „<Ressourcengruppe>“ wurde nicht gefunden. Die sqlServerLicenseType-Eigenschaft kann in diesem Objekt nicht gefunden werden. Vergewissern Sie sich, dass die Eigenschaft vorhanden ist und festgelegt werden kann.
-Dieser Fehler tritt auf, wenn die SQL Server-VM nicht beim SQL-Ressourcenanbieter registriert wurde. Sie müssen den Ressourcenanbieter bei Ihrem [Abonnement](#register-sql-resource-provider-with-your-subscription) und dann Ihre SQL Server-VM beim SQL-[Ressourcenanbieter](#register-sql-server-vm-with-sql-resource-provider) registrieren. 
+Dieser Fehler tritt auf, wenn Sie versuchen, das Lizenzierungsmodell auf einer SQL Server-VM zu ändern, die nicht beim SQL-Ressourcenanbieter registriert wurde. Sie müssen den Ressourcenanbieter bei Ihrem [Abonnement](#register-sql-resource-provider-to-your-subscription) und dann Ihre SQL Server-VM beim SQL-[Ressourcenanbieter](#register-sql-server-vm-with-sql-resource-provider) registrieren. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

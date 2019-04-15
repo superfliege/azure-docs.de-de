@@ -7,14 +7,14 @@ ms.service: governance
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: dacoulte
-ms.openlocfilehash: c38d19b8528399ae09d92e48ed7dfc17c18938b7
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: f94cec7919edc6cf6ebb6618d38b8591feb1278b
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338069"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804138"
 ---
-# <a name="management-in-azure"></a>Verwaltung in Azure
+# <a name="overview-of-management-services-in-azure"></a>Übersicht der Verwaltungsdienste in Azure
 
 Governance in Azure ist ein Aspekt der Azure-Verwaltung. Dieser Artikel behandelt die verschiedenen Verwaltungsbereiche für die Bereitstellung und Verwaltung Ihrer Ressourcen in Azure.
 
@@ -22,7 +22,7 @@ Governance in Azure ist ein Aspekt der Azure-Verwaltung. Dieser Artikel behandel
 
 Das folgende Diagramm veranschaulicht die verschiedenen Bereiche der Verwaltung, die zum Warten einer Anwendung oder Ressource erforderlich sind. Diese unterschiedlichen Bereiche können als ein Lebenszyklus betrachtet werden. Jeder Bereich wird während der gesamten Lebensdauer einer Ressource in kontinuierlicher Folge benötigt. Dieser Ressourcenlebenszyklus beginnt mit der anfänglichen Bereitstellung, anschließend erfolgt der fortgesetzte Betrieb und zuletzt die Außerkraftsetzung.
 
-![Verwaltungstechniken](../monitoring/media/management-overview/management-capabilities.png)
+![Verwaltungsdisziplinen in Azure](../monitoring/media/management-overview/management-capabilities.png)
 
 Kein einzelner Azure-Dienst erfüllt die Anforderungen eines bestimmten Verwaltungsbereichs vollständig. Stattdessen wird jeder Bereich von mehreren Diensten umgesetzt, die zusammenarbeiten. Einige Dienste (z.B. Application Insights) bieten gezielte Überwachungsfunktionen für Webanwendungen. Andere (wie Azure Monitor-Protokolle) speichern die Verwaltungsdaten für andere Dienste. Diese Funktion ermöglicht es Ihnen, Daten verschiedener Typen zu analysieren, die von verschiedenen Diensten erfasst werden.
 

@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: a3fd85d1dbcba769f47e537e0231f63110752492
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: ba25bef75bc21eea2b0c3a57599a3b9ddd3164e0
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093679"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916817"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Erstellen eines Azure CDN-Endpunkts
-In diesem Artikel werden alle Einstellungen zum Erstellen eines [Azure Content Delivery Network (CDN)](cdn-overview.md)-Endpunkts in einem vorhandenen CDN-Profil beschrieben. Nach der Erstellung eines Profils und eines Endpunkts können Sie mit der Bereitstellung von Inhalten für Ihre Kunden beginnen. Eine Schnellstartanleitung zum Erstellen eines Profils und-Endpunkts finden Sie unter [Schnellstart: Erstellen eines Azure CDN-Profils und-Endpunkts](cdn-create-new-endpoint.md).
+In diesem Artikel werden alle Einstellungen zum Erstellen eines [Azure Content Delivery Network (CDN)](cdn-overview.md)-Endpunkts in einem vorhandenen CDN-Profil beschrieben. Nach der Erstellung eines Profils und eines Endpunkts können Sie mit der Bereitstellung von Inhalten für Ihre Kunden beginnen. Eine Schnellstartanleitung zum Erstellen eines Profils und-Endpunkts finden Sie unter [Schnellstart: Erstellen eines Azure CDN-Profils und -Endpunkts](cdn-create-new-endpoint.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie einen CDN-Endpunkt erstellen können, müssen Sie mindestens ein CDN-Profil erstellt haben, das einen oder mehrere CDN-Endpunkte enthalten kann. Sie können mehrere Profile verwenden, um Ihre CDN-Endpunkte nach Internetdomäne, Webanwendung oder anderen Kriterien zu organisieren. Da die Preise für Azure CDN auf der CDN-Profilebene gelten, müssen Sie mehrere CDN-Profile erstellen, wenn Sie eine Kombination verschiedener Tarife verwenden möchten. Informationen zum Erstellen eines CDN-Profils finden Sie unter [Erstellen eines neuen CDN-Profils](cdn-create-new-endpoint.md#create-a-new-cdn-profile).
@@ -67,7 +67,7 @@ Melden Sie sich mit Ihrem Azure-Konto beim [Azure-Portal](https://portal.azure.c
    > [!NOTE]
    > Mit dem Wert unter **Ursprungsport** wird nur der Port bestimmt, der vom Endpunkt zum Abrufen von Informationen vom Ursprungsserver verwendet wird. Der Endpunkt selbst ist nur für Endclients auf den HTTP- und HTTPS-Standardports (80 und 443) verfügbar, und zwar unabhängig vom Wert unter **Ursprungsport**.  
    > 
-   > Für Endpunkte in Profilen vom Typ **Azure CDN von Akamai** wird nicht der vollständige TCP-Portbereich für Ursprungsports zugelassen. Eine Liste der nicht zulässigen Ursprungsports finden Sie unter [Azure CDN from Akamai Allowed Origin Ports](https://msdn.microsoft.com/library/mt757337.aspx)(Azure CDN von Akamai – Zulässige Ursprungsports).  
+   > Für Endpunkte in Profilen vom Typ **Azure CDN von Akamai** wird nicht der vollständige TCP-Portbereich für Ursprungsports zugelassen. Eine Liste der nicht zulässigen Ursprungsports finden Sie unter [Azure CDN from Akamai Allowed Origin Ports](/previous-versions/azure/mt757337(v=azure.100))(Azure CDN von Akamai – Zulässige Ursprungsports).  
    > 
    > HTTPS-Support für benutzerdefinierte Azure CDN-Domänen wird bei **Azure CDN von Akamai**-Produkten nicht unterstützt. Weitere Informationen finden Sie unter [Aktivieren oder Deaktivieren von HTTPS in einer benutzerdefinierten Azure Content Delivery Network-Domäne](cdn-custom-ssl.md).
     

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: d8ada53082b0ccc95d472b43a0ae2ff63cd76a3e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5f1774e02a34b60a8a6e936b62905a0a27ccfb85
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58125289"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58890956"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Verwenden von Infrastrukturautomatisierungstools mit virtuellen Computern in Azure
 Für die umfangreiche konsistente Erstellung und Verwaltung virtueller Azure-Computer (Virtual Machines, VMs) empfiehlt sich in der Regel eine Form der Automatisierung. Es gibt zahlreiche Tools und Lösungen, mit denen Sie die gesamte Azure-Infrastrukturbereitstellung und den gesamten Verwaltungslebenszyklus automatisieren können. In diesem Artikel werden einige der Infrastrukturautomatisierungstools vorgestellt, die Sie in Azure verwenden können. Diese Tools lassen sich in der Regel einem der folgenden Konzepte zuordnen:
@@ -53,7 +53,7 @@ In diesem Artikel werden folgende Themen erläutert:
 
 
 ## <a name="cloud-init"></a>cloud-init
-[Cloud-init](https://cloudinit.readthedocs.io) ist ein weit verbreiteter Ansatz zum Anpassen einer Linux-VM beim ersten Start. Sie können mit cloud-init Pakete installieren und Dateien schreiben oder Benutzer und Sicherheit konfigurieren. Da cloud-init während des ersten Startvorgangs aufgerufen wird, müssen Sie keine zusätzlichen Schritte oder Agents auf Ihre Konfiguration anwenden.  Weitere Informationen zum ordnungsgemäßen Formatieren Ihrer `#cloud-config`-Dateien finden Sie auf der [cloud-init-Dokumentationswebsite](http://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config`-Dateien sind Base64-codierte Textdateien.
+[Cloud-init](https://cloudinit.readthedocs.io) ist ein weit verbreiteter Ansatz zum Anpassen einer Linux-VM beim ersten Start. Sie können mit cloud-init Pakete installieren und Dateien schreiben oder Benutzer und Sicherheit konfigurieren. Da cloud-init während des ersten Startvorgangs aufgerufen wird, müssen Sie keine zusätzlichen Schritte oder Agents auf Ihre Konfiguration anwenden.  Weitere Informationen zum ordnungsgemäßen Formatieren Ihrer `#cloud-config`-Dateien finden Sie auf der [cloud-init-Dokumentationswebsite](http://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` Dateien sind Base64-codierte Textdateien.
 
 Cloud-init funktioniert auch Distributionen übergreifend. Verwenden Sie z.B. nicht **apt-get install** oder **yum install**, um ein Paket zu installieren. Stattdessen können Sie eine Liste mit zu installierenden Paketen definieren. „cloud-init“ verwendet automatisch das native Paketverwaltungstool für die ausgewählte Distribution.
 
@@ -69,7 +69,7 @@ Cloud-init funktioniert auch Distributionen übergreifend. Verwenden Sie z.B. ni
 
 Erfahren Sie mehr über cloud-init in Azure:
 
-- [Anpassen einer Linux-VM in Azure mit cloud-init | Microsoft-Dokumentation](../articles/virtual-machines/linux/using-cloud-init.md)
+- [Cloud-init-Unterstützung für virtuelle Linux-Computer in Azure](../articles/virtual-machines/linux/using-cloud-init.md)
 - [Gewusst wie: Anpassen eines virtuellen Linux-Computers beim ersten Start](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md)
 
 
@@ -80,7 +80,7 @@ DSC-Konfigurationen definieren, was auf einem Computer installiert und wie der H
 
 In diesem Artikel werden folgende Themen erläutert:
 
-- [Erstellen einer einfachen DSC-Konfiguration](https://msdn.microsoft.com/powershell/dsc/quickstart)
+- [Erstellen einer einfachen DSC-Konfiguration](https://msdn.microsoft.com/powershell/dsc/quickstarts/website-quickstart)
 - [Konfigurieren eines DSC-Pull-Servers](https://msdn.microsoft.com/powershell/dsc/pullserver)
 - [Verwenden von DSC für Linux](https://msdn.microsoft.com/powershell/dsc/lnxgettingstarted)
 

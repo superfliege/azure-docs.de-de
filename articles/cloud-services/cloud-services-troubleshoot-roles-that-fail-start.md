@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: a73559e233f647d5bf0812a5acdf5e19f05b0858
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d2daae2a3317d3b48748262d87ab8d7f7e13f2b0
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255420"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918415"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Problembehandlung bei Clouddienstrollen, die nicht gestartet werden
 In diesem Artikel finden Sie Informationen zu allgemeinen Problemen in Zusammenhang mit nicht gestarteten Azure-Clouddienstrollen sowie zur Lösung dieser Probleme.
@@ -76,7 +76,7 @@ Wenn Sie zur Website navigieren, werden nun ausführlichere Fehlermeldungen zur�
 
 * Serverfehler in Anwendung '/'.
 * Beschreibung: Unbehandelte Ausnahme beim Ausführen der aktuellen Webanforderung. Überprüfen Sie die Stapelüberwachung, um weitere Informationen über diesen Fehler anzuzeigen und festzustellen, wo der Fehler im Code verursacht wurde.
-* Ausnahmedetails: System.IO.FIleNotFoundException: Die Datei oder Assembly  "Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf856ad364e35" oder eine Abhängigkeit davon wurde nicht gefunden. Die angegebene Datei wurde nicht gefunden.
+* Ausnahmendetails: System.IO.FileNotFoundException: Die Datei oder Assembly „Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf856ad364e35“ oder eine Abhängigkeit davon wurde nicht gefunden. Die angegebene Datei wurde nicht gefunden.
 
 Beispiel: 
 
@@ -96,7 +96,7 @@ Bei dieser Diagnosemethode erzielen Sie die besten Ergebnisse, wenn Sie einen ph
 7. Wenn die Rolle gestartet wird, werden detaillierte Fehlerinformationen in Internet Explorer angezeigt. Für eine eingehendere Problemdiagnose können Sie auch standardmäßige Windows-Tools zur Problembehandlung verwenden.
 
 ## <a name="diagnose-issues-by-using-intellitrace"></a>Diagnostizieren von Problemen mit IntelliTrace
-Für Worker- und Webrollen, die .NET Framework 4 verwenden, können Sie [IntelliTrace](https://msdn.microsoft.com/library/dd264915.aspx) nutzen. Diese Funktion steht in Microsoft Visual Studio Enterprise zur Verfügung.
+Für Worker- und Webrollen, die .NET Framework 4 verwenden, können Sie [IntelliTrace](/visualstudio/debugger/intellitrace) nutzen. Diese Funktion steht in Microsoft Visual Studio Enterprise zur Verfügung.
 
 Gehen Sie folgendermaßen vor, um den Dienst mit aktiviertem IntelliTrace bereitzustellen:
 

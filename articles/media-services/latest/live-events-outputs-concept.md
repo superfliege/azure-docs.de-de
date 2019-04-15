@@ -11,26 +11,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 03/30/2019
 ms.author: juliako
-ms.openlocfilehash: c446a71a363a9a81eeb7d0dddcdbd90ccee08b7d
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 1d28701dd35b9d80fd52a1f102c53f2d59d63b09
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189358"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762353"
 ---
 # <a name="live-events-and-live-outputs"></a>Liveereignisse und Liveausgaben
 
-Mit Azure Media Services können Sie Ihren Kunden Liveereignisse in der Azure Cloud anbieten. Um Ihre Livestreamingereignisse in Media Services v3 zu konfigurieren, müssen Sie die in diesem Artikel besprochenen Konzepte verstehen:
-
-* [Liveereignisse](#live-events)
-* Liveereignistypen
-* Vergleich von Liveereignistypen
-* [Erstellungsoptionen für Liveereignisse](#live-event-creation-options)
-* [Erfassungs-URLs für Liveereignisse](#live-event-ingest-urls)
-* [Vorschau-URL für Liveereignisse](#live-event-preview-url)
-* [Liveausgaben](#live-outputs)
+Mit Azure Media Services können Sie Ihren Kunden Liveereignisse in der Azure Cloud anbieten. Um Ihre Livestreamingereignisse in Media Services v3 zu konfigurieren, müssen Sie die in diesem Artikel besprochenen Konzepte verstehen. <br/>Die Liste der Abschnitte ist auf der rechten Seite aufgelistet.
 
 ## <a name="live-events"></a>Liveereignisse
 
@@ -132,6 +124,10 @@ Sobald das **Liveereignis** Daten aus dem Beitragsfeed empfängt, können Sie ü
 
 > [!IMPORTANT]
 > Vergewissern Sie sich, dass das Video an die Vorschau-URL übertragen wird, bevor Sie fortfahren.
+
+## <a name="live-event-long-running-operations"></a>Zeitintensive Vorgänge für Liveereignisse
+
+Weitere Informationen finden Sie unter [Zeitintensive Vorgänge](entities-overview.md#long-running-operations).
 
 ## <a name="live-outputs"></a>Liveausgaben
 

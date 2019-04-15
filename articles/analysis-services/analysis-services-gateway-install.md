@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: bd4c024e14e70b5937d85e9917340d25f552096d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 629a97048ceba4ac02e3aa1dd59310980e5a0c95
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110867"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894165"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Installieren und Konfigurieren eines lokalen Datengateways
 
@@ -21,18 +21,18 @@ Ein lokales Datengateway ist erforderlich, wenn sich mindestens ein Azure Analys
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-**Mindestanforderungen.**
+**Mindestanforderungen:**
 
 * .NET 4.5 Framework
 * 64-Bit-Version von Windows 7/Windows Server 2008 R2 (oder höher)
 
-**Empfohlen.**
+**Empfohlen:**
 
 * 8-Kern-CPU
 * 8 GB Arbeitsspeicher
 * 64-Bit-Version von Windows 2012 R2 (oder höher)
 
-**Wichtige Hinweise:**
+**Wichtige Überlegungen:**
 
 * Wenn sich Ihr Gateway während des Setups bei Azure registriert, wird die Standardregion für Ihr Abonnement ausgewählt. Sie können eine andere Region auswählen. Wenn Sie Server in mehreren Regionen haben, müssen Sie für jede Region ein Gateway installieren. 
 * Das Gateway darf nicht auf einem Domänencontroller installiert werden.
@@ -40,14 +40,14 @@ Ein lokales Datengateway ist erforderlich, wenn sich mindestens ein Azure Analys
 * Installieren Sie das Gateway auf einem Computer, der eingeschaltet bleibt und nicht in den Ruhezustand versetzt wird.
 * Installieren Sie das Gateway nicht auf einem Computer, der über eine Drahtlosverbindung mit dem Netzwerk verfügt. Die Leistung kann beeinträchtigt werden.
 * Wenn Sie das Gateway installieren, muss das Benutzerkonto, unter dem Sie auf Ihrem Computer angemeldet sind, über die Berechtigungen „Anmelden als Dienst“ verfügen. Wenn die Installation abgeschlossen ist, verwendet der lokale Datengatewaydienst das Konto „NT SERVICE\PBIEgwService“, um sich als Dienst anzumelden. Ein anderes Konto kann während des Setups oder nach dem Setup in „Dienste“ angegeben werden. Stellen Sie sicher, dass die Gruppenrichtlinieneinstellungen sowohl das Konto, mit dem Sie sich beim Installieren angemeldet haben, als auch das Dienstkonto, das Sie für die Berechtigungen „Anmelden als Dienst“ ausgewählt haben, zulassen.
-* Melden Sie sich bei Azure an. Verwenden Sie dazu ein Konto in Azure AD mit dem gleichen [Mandanten](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant), der auch für das Abonnement verwendet wird, unter dem Sie das Gateway registrieren. Für das Installieren und Registrieren eines Gateways werden keine Azure B2B (Gast)-Konten unterstützt.
+* Melden Sie sich bei Azure an. Verwenden Sie dazu ein Konto in Azure AD mit dem gleichen [Mandanten](/previous-versions/azure/azure-services/jj573650(v=azure.100)#BKMK_WhatIsAnAzureADTenant), der auch für das Abonnement verwendet wird, unter dem Sie das Gateway registrieren. Für das Installieren und Registrieren eines Gateways werden keine Azure B2B (Gast)-Konten unterstützt.
 * Wenn sich die Datenquellen in einem Azure Virtual Network (VNET) befinden, müssen Sie die [AlwaysUseGateway](analysis-services-vnet-gateway.md)-Servereigenschaft konfigurieren.
 * Das hier beschriebene (einheitliche) Gateway wird für Azure Deutschland-Regionen nicht unterstützt. Verwenden Sie das **dedizierte lokale Gateway für Azure Analysis Services**, das vom **Schnellstart** Ihres Servers installiert wurde, im Portal. 
 
 
 ## <a name="download"></a>Herunterladen
 
- [Gateway herunterladen](https://aka.ms/azureasgateway)
+ [Herunterladen des Gateways](https://aka.ms/azureasgateway)
 
 ## <a name="install"></a>Installieren
 

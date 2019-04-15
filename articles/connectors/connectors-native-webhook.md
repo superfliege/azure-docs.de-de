@@ -11,12 +11,12 @@ ms.assetid: 71775384-6c3a-482c-a484-6624cbe4fcc7
 ms.topic: article
 tags: connectors
 ms.date: 07/21/2016
-ms.openlocfilehash: c0985df445ae34795d5287144d4664755cc006da
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c3047000843e054e71ec1a80313118a25e7c4905
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182114"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895578"
 ---
 # <a name="create-event-based-workflows-or-actions-by-using-webhooks-and-azure-logic-apps"></a>Erstellen ereignisbasierter Workflows oder Aktionen mithilfe von Webhooks und Azure Logic Apps
 
@@ -29,7 +29,7 @@ Weitere Informationen zum [Erstellen von benutzerdefinierten APIs, die einen Web
 
 ## <a name="use-the-webhook-trigger"></a>Verwenden des Webhooktriggers
 
-Ein [*Trigger*](connectors-overview.md) ist ein Ereignis, das einen Logik-App-Workflow startet. Der Webhooktrigger ist ereignisbasiert und erfordert nicht das Abrufen neuer Elemente. Wenn Sie Ihre Logik-App mit einem Webhooktrigger speichern oder Ihre Logik-App von „deaktiviert“ in „aktiviert“ ändern, *abonniert* der Webhooktrigger den angegebenen Dienst oder Endpunkt, indem er eine *Rückruf-URL* mit diesem Dienst oder Endpunkt registriert. Der Trigger verwendet diese URL dann für die Ausführung der Logik-App nach Bedarf. Die Logik-App wird wie der [Anforderungstrigger](connectors-native-reqres.md) in dem Moment ausgelöst, in dem ein Ereignis eintritt. Der Trigger *hebt das Abonnement auf*, wenn Sie ihn entfernen und Ihre Logik-App speichern oder wenn Sie Ihre Logik-App von „aktiviert“ in „deaktiviert“ ändern.
+Ein [*Trigger*](../connectors/apis-list.md) ist ein Ereignis, das einen Logik-App-Workflow startet. Der Webhooktrigger ist ereignisbasiert und erfordert nicht das Abrufen neuer Elemente. Wenn Sie Ihre Logik-App mit einem Webhooktrigger speichern oder Ihre Logik-App von „deaktiviert“ in „aktiviert“ ändern, *abonniert* der Webhooktrigger den angegebenen Dienst oder Endpunkt, indem er eine *Rückruf-URL* mit diesem Dienst oder Endpunkt registriert. Der Trigger verwendet diese URL dann für die Ausführung der Logik-App nach Bedarf. Die Logik-App wird wie der [Anforderungstrigger](connectors-native-reqres.md) in dem Moment ausgelöst, in dem ein Ereignis eintritt. Der Trigger *hebt das Abonnement auf*, wenn Sie ihn entfernen und Ihre Logik-App speichern oder wenn Sie Ihre Logik-App von „aktiviert“ in „deaktiviert“ ändern.
 
 Im Anschluss finden Sie ein Beispiel für die Einrichtung eines HTTP-Triggers im Logik-App-Designer. In den Schritten wird davon ausgegangen, dass Sie bereits eine API bereitgestellt haben oder auf eine API zugreifen, die dem [Muster zum Abonnieren und Abbestellen von Webhooks in Logik-Apps folgt](../logic-apps/logic-apps-create-api-app.md#webhook-triggers). 
 
@@ -48,7 +48,7 @@ Im Anschluss finden Sie ein Beispiel für die Einrichtung eines HTTP-Triggers im
 
 ## <a name="use-the-webhook-action"></a>Verwenden der Webhookaktion
 
-Ein [*Aktion*](connectors-overview.md) ist ein definierter Vorgang, der vom Workflow Ihrer Logik-App ausgeführt wird. Wenn eine Logik-App eine Webhookaktion ausführt, *abonniert* die Aktion den angegebenen Dienst oder Endpunkt durch die Registrierung einer *Rückruf-URL* mit diesem Dienst oder Endpunkt. Die Webhookaktion wartet dann, bis der Dienst die URL aufruft, bevor die Ausführung der Logik-App fortgesetzt wird. Die Logik-App beendet das Abonnement für den Dienst oder Endpunkt in folgenden Fällen: 
+Ein [*Aktion*](../connectors/apis-list.md) ist ein definierter Vorgang, der vom Workflow Ihrer Logik-App ausgeführt wird. Wenn eine Logik-App eine Webhookaktion ausführt, *abonniert* die Aktion den angegebenen Dienst oder Endpunkt durch die Registrierung einer *Rückruf-URL* mit diesem Dienst oder Endpunkt. Die Webhookaktion wartet dann, bis der Dienst die URL aufruft, bevor die Ausführung der Logik-App fortgesetzt wird. Die Logik-App beendet das Abonnement für den Dienst oder Endpunkt in folgenden Fällen: 
 
 * Wenn die Webhookaktion erfolgreich abgeschlossen wurde
 * Wenn die Logik-App während des Wartens auf eine Antwort abgebrochen wird
@@ -104,7 +104,7 @@ Mit einem * gekennzeichnete Felder sind Pflichtfelder.
 | Abonnieren: Authentifizierung |authentication |HTTP-Authentifizierung für das Abonnement. Für weitere Details siehe [HTTP-Connector](connectors-native-http.md#authentication). |
 | Abbestellen: Text |body |HTTP-Anforderungstext für die Abbestellung |
 | Abbestellen: Header |headers |HTTP-Anforderungsheader für die Abbestellung |
-| Abbestellen: Authentifizierung |authentication |HTTP-Authentifizierung für die Abbestellung. Für weitere Details siehe [HTTP-Connector](connectors-native-http.md#authentication). |
+| Abbestellen: Authentifizierung |authentication |HTTP-Authentifizierung für die Abbestellung. [HTTP-Connector](connectors-native-http.md#authentication) . |
 
 **Ausgabedetails**
 
@@ -140,7 +140,7 @@ Mit einem * gekennzeichnete Felder sind Pflichtfelder.
 | Abonnieren: Authentifizierung |authentication |HTTP-Authentifizierung für das Abonnement. Für weitere Details siehe [HTTP-Connector](connectors-native-http.md#authentication). |
 | Abbestellen: Text |body |HTTP-Anforderungstext für die Abbestellung |
 | Abbestellen: Header |headers |HTTP-Anforderungsheader für die Abbestellung |
-| Abbestellen: Authentifizierung |authentication |HTTP-Authentifizierung für die Abbestellung. Für weitere Details siehe [HTTP-Connector](connectors-native-http.md#authentication). |
+| Abbestellen: Authentifizierung |authentication |HTTP-Authentifizierung für die Abbestellung. [HTTP-Connector](connectors-native-http.md#authentication) . |
 
 **Ausgabedetails**
 
@@ -155,4 +155,4 @@ Webhookanforderung
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md)
-* [Andere Connectors](apis-list.md)
+* [Suchen nach anderen Connectors](apis-list.md)

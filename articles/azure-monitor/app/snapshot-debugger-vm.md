@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 03/07/2019
 ms.author: brahmnes
-ms.openlocfilehash: 4041bee71a41cee06243d53de128bcceecda5618
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: ac937ddb1bcaed6813a0de4d631f820eff01e26f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58001826"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877737"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>Aktivieren des Momentaufnahmedebuggers für.NET-Anwendungen in Azure Service Fabric, Cloud Service und Virtual Machines
 
@@ -77,7 +77,7 @@ Wenn Ihre ASP.NET- oder ASP.NET Core-Anwendung in Azure App Service ausgeführt 
 
 3. Ändern Sie die `Startup`-Klasse Ihrer Anwendung, um den Telemetrieprozessor des Momentaufnahmesammlers hinzuzufügen und zu konfigurieren.
 
-    Fügen Sie `Startup.cs` die folgenden using-Anweisungen hinzu.
+    Fügen Sie die nachstehenden using-Anweisungen zu Folgendem hinzu: `Startup.cs`
 
    ```csharp
    using Microsoft.ApplicationInsights.SnapshotCollector;

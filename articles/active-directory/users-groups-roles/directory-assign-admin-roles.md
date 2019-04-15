@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 03/27/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b62b710a7217792276392e8815013848ef607733
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 48142961e4b6714090441b24e4bd6ca07afaf598
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522365"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622245"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Berechtigungen der Administratorrolle in Azure Active Directory
 
@@ -1127,13 +1127,14 @@ Graph displayName | Anzeigename des Azure-Portals | directoryRoleTemplateId
 ----------------- | ------------------------- | -------------------------
 Anwendungsadministrator | Anwendungsadministrator | 9B895D92-2CD3-44C7-9D02-A6AC2D5EA5C3
 Anwendungsentwickler | Anwendungsentwickler | CF1C38E5-3621-4004-A7CB-879624DCED7C
+Authentifizierungsadministrator | Authentifizierungsadministrator | c4e39bd9-1100-46d3-8c65-fb160da0071f
 Abrechnungsadministrator | Rechnungsadministrator | b0f54661-2d74-4c50-afa3-1ec803f12efe
 Desktop Analytics-Administrator | Desktop Analytics-Administrator | 38a96431-2bdf-4b4c-8b6e-5d3d8abac1a4
 Cloudanwendungsadministrator | Cloudanwendungsadministrator | 158c047a-c907-4556-b7ef-446551a6b5f7
 Cloudgeräteadministrator | Cloudgeräteadministrator | 7698a772-787b-4ac8-901f-60d6b08affd2
 Unternehmensadministrator | Globaler Administrator | 62e90394-69f5-4237-9190-012177145e10
 Complianceadministrator | Complianceadministrator | 17315797-102d-40b4-93e0-432062caca18
-Administrator für den bedingten Zugriff | Administrator für bedingten Zugriff | b1be1c3e-b65d-4f19-8427-f6fa0d97feb9
+Administrator für den bedingten Zugriff | Administrator für den bedingten Zugriff | b1be1c3e-b65d-4f19-8427-f6fa0d97feb9
 CRM-Dienstadministrator | Dynamics 365-Administrator | 44367163-eba1-44c3-98af-f5787879f96a
 Genehmigende Person für den LockBox-Kundenzugriff | Genehmigende Person für den Kunden-Lockbox-Zugriff | 5c4f9dcd-47dc-4cf7-8c9a-9e4207cbfc91
 Geräteadministratoren | Geräteadministratoren | 9f06204d-73c1-4d4c-880a-6edb90606fd8
@@ -1154,6 +1155,7 @@ Nachrichtencenter-Leser | Nachrichtencenter-Leser | 790c1fb9-7f7d-4f88-86a1-ef1f
 Partnersupport der Ebene 1 | Partnersupport der Ebene 1 | 4ba39ca4-527c-499a-b93d-d9b492c50246
 Partnersupport der Ebene 2 | Partnersupport der Ebene 2 | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 Power BI-Dienstadministrator | Power BI-Administrator | a9ea8996-122f-4c74-9520-8edcd192826c
+Privilegierter Authentifizierungsadministrator | Privilegierter Authentifizierungsadministrator | 7be44c8a-adaf-4e2a-84d6-ab2649e08a13
 Administrator für privilegierte Rollen | Administrator für privilegierte Rollen | e8611ab8-c189-46e8-94e1-60213ab1f814
 Meldet Reader | Berichtsleser | 4a5d8f65-41da-4de4-8968-e035b65339cf
 Sicherheitsadministrator | Sicherheitsadministrator | 194ae4cb-b126-40b2-bd5b-6091b380977d

@@ -8,21 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 02/08/2019
+ms.date: 04/01/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 5adb2a3c2a443e6c77c315935e0729cf8728e8cd
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: db33ce748928b954f5447a82550c6ecde2188abf
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56308790"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877124"
 ---
 # <a name="configure-recognize-text-docker-containers"></a>Konfigurieren von Docker-Containern für die Texterkennung
 
 Die Runtimeumgebung für Container für die **Texterkennung** wird über die Argumente des Befehls `docker run` konfiguriert. Dieser Container verfügt über mehrere erforderliche Einstellungen sowie einige optionale Einstellungen. Es sind noch viele [Beispiele](#example-docker-run-commands) für den Befehl verfügbar. Die containerspezifischen Einstellungen sind die für die Abrechnung. 
-
-Containereinstellungen sind [hierarchisch](#hierarchical-settings) und können mit [Umgebungsvariablen](#environment-variable-settings) oder [Befehlszeilenargumenten](#command-line-argument-settings) für Docker festgelegt werden.
 
 ## <a name="configuration-settings"></a>Konfigurationseinstellungen
 
@@ -84,10 +82,6 @@ Die genaue Syntax für den Bereitstellungspunkt auf dem Host variiert je nach Be
 |Nicht zulässig| `Input` | Zeichenfolge | Wird von Containern für Maschinelles Sehen nicht verwendet.|
 |Optional| `Output` | Zeichenfolge | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`. Dies ist der Speicherort der Protokolle. Beinhaltet Containerprotokolle. <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="hierarchical-settings"></a>Hierarchische Einstellungen
-
-[!INCLUDE [Container shared configuration hierarchical settings](../../../includes/cognitive-services-containers-configuration-shared-hierarchical-settings.md)]
-
 ## <a name="example-docker-run-commands"></a>Beispiele für den Befehl „docker run“ 
 
 Die folgenden Beispiele verwenden die Konfigurationseinstellungen, um zu veranschaulichen, wie `docker run`-Befehle geschrieben und verwendet werden.  Nach dem Ausführen wird der Container so lange ausgeführt, bis Sie ihn [beenden](computer-vision-how-to-install-containers.md#stop-the-container).
@@ -120,7 +114,7 @@ Im Folgenden finden Sie Docker-Beispiele für den Container für die Texterkennu
   ApiKey={BILLING_KEY} 
   ```
 
-### <a name="logging-example-with-command-line-arguments"></a>Beispiel für die Protokollierung mit Befehlszeilenargumenten
+### <a name="logging-example"></a>Beispiel für die Protokollierung 
 
   ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
@@ -128,18 +122,7 @@ Im Folgenden finden Sie Docker-Beispiele für den Container für die Texterkennu
   Eula=accept \
   Billing={BILLING_ENDPOINT_URI} \
   ApiKey={BILLING_KEY} \
-  Logging:Console:LogLevel=Information
-  ```
-
-### <a name="logging-example-with-environment-variable"></a>Beispiel für die Protokollierung mit Umgebungsvariablen
-
-  ```
-  SET Logging:Console:LogLevel=Information
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
-  Eula=accept \
-  Billing={BILLING_ENDPOINT_URI} \
-  ApiKey={BILLING_KEY}
+  Logging:Console:LogLevel:Default=Information
   ```
 
 ## <a name="next-steps"></a>Nächste Schritte

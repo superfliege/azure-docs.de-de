@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aac7ca7aa67143f89d9247da879a6fad2cfbb7b5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0c12c75bd5c357613d55e04aed67c0cc901135e6
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992494"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881085"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Azure Virtual Machines – SQL Server-DBMS-Bereitstellung für SAP NetWeaver
 
@@ -235,7 +235,6 @@ ms.locfileid: "57992494"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd 
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
@@ -363,7 +362,7 @@ Bei Azure-VMs der M-Serie kann die Latenz beim Schreiben in das Transaktionsprot
 ### <a name="formatting-the-disks"></a>Formatieren der Datenträger
 Für SQL Server sollte die NTFS-Blockgröße für Datenträger, die SQL Server-Daten und -Protokolldateien enthalten, 64 KB betragen. Es ist nicht erforderlich, Laufwerk „D:\“ zu formatieren. Dieses Laufwerk ist bereits vorformatiert.
 
-Um sicherzustellen, dass die Wiederherstellung oder Erstellung von Datenbanken die Datendateien nicht initialisiert, indem der Inhalt der Dateien gelöscht wird, sollten Sie überprüfen, ob der Benutzerkontext, in dem der SQL Server-Dienst ausgeführt wird, eine bestimmte Berechtigung hat. Normalerweise verfügen die Benutzer in der Windows-Administratorengruppe über diese Berechtigungen. Wenn der SQL Server-Dienst im Benutzerkontext eines Benutzers ausgeführt wird, der kein Windows-Administrator ist, müssen Sie diesem Benutzer das Benutzerrecht **Volumenwartungsaufgaben durchführen** zuweisen.  Ausführliche Informationen finden Sie im Microsoft Knowledge Base-Artikel: <https://support.microsoft.com/kb/2574695>
+Um sicherzustellen, dass die Wiederherstellung oder Erstellung von Datenbanken die Datendateien nicht initialisiert, indem der Inhalt der Dateien gelöscht wird, sollten Sie überprüfen, ob der Benutzerkontext, in dem der SQL Server-Dienst ausgeführt wird, eine bestimmte Berechtigung hat. Normalerweise verfügen die Benutzer in der Windows-Administratorengruppe über diese Berechtigungen. Wenn der SQL Server-Dienst im Benutzerkontext eines Benutzers ausgeführt wird, der kein Windows-Administrator ist, müssen Sie diesem Benutzer das Benutzerrecht **Volumenwartungsaufgaben durchführen** zuweisen.  Ausführliche Informationen finden Sie in diesem Microsoft Knowledge Base-Artikel: <https://support.microsoft.com/kb/2574695>
 
 ### <a name="impact-of-database-compression"></a>Auswirkungen der Datenbankkomprimierung
 Bei Konfigurationen, bei denen die E/A-Bandbreite zum begrenzenden Faktor werden könnte, sollte jede Möglichkeit ergriffen werden, die IOPS zu senken. Dadurch kann die ausführbare Workload in einem IaaS-Szenario wie Azure besser verteilt werden. Falls noch nicht erfolgt, wird sowohl von SAP als auch von Microsoft empfohlen, vor dem Hochladen vorhandener SAP-Datenbanken in Azure die SQL Server-Seitenkomprimierung anzuwenden.
@@ -409,7 +408,7 @@ Sie haben mehrere Möglichkeiten, „manuelle“ Sicherungen vorzunehmen:
 2.  SQL Server 2012 CU4 und höher kann Datenbanken unter einer Azure-Speicher-URL sichern.
 3.  Dateimomentaufnahme-Sicherungen für Datenbankdateien in Azure Blob Storage. Diese Methode ist nur anwendbar, wenn sich die SQL Server-Daten und -Protokolldateien im Azure Blob Storage befinden.
 
-Die erste Methode ist weitverbreitet und wird oft lokal angewendet. Dennoch müssen Sie den Sicherungsspeicherort längerfristig bestimmen. Da Sie Ihre Sicherungen nicht länger als 30 Tage im lokal installierten Azure Storage aufbewahren wollen, benötigen Sie Azure Backup-Dienste oder ein anderes Sicherungs-/Wiederherstellungstool von einem Drittanbieter, um den Zugriff und die Aufbewahrung für Ihre Sicherungen zu verwalten. Alternativ können Sie einen großen Dateiserver in Azure mithilfe von Windows-Speicherplätzen erstellen.
+Die erste Methode ist weitverbreitet und wird auch oft lokal angewendet. Dennoch müssen Sie den Sicherungsspeicherort längerfristig bestimmen. Da Sie Ihre Sicherungen nicht länger als 30 Tage im lokal installierten Azure Storage aufbewahren wollen, benötigen Sie Azure Backup-Dienste oder ein anderes Sicherungs-/Wiederherstellungstool von einem Drittanbieter, um den Zugriff und die Aufbewahrung für Ihre Sicherungen zu verwalten. Alternativ können Sie einen großen Dateiserver in Azure mithilfe von Windows-Speicherplätzen erstellen.
 
 Die zweite Methode wird im Artikel [SQL Server-Sicherung über URLs](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url?view=sql-server-2017) behandelt. Diese Funktionalität unterscheidet sich bei den verschiedenen SQL Server-Versionen. Sehen Sie sich deswegen die Dokumentation des jeweiligen SQL Server-Releases an. Beachten Sie, dass in diesem Artikel viele Einschränkungen aufgeführt werden. Sie haben folgende Sicherungsmöglichkeiten:
 
@@ -451,7 +450,7 @@ Da die SQL Server-Images im Azure Marketplace nicht die Sortierung verwenden, di
 * Öffnen Sie als Administrator ein Windows-Befehlsfenster.
 * Ändern Sie das Verzeichnis in „C:\Program Files\Microsoft SQL Server\110\Setup Bootstrap\SQLServer2012“.
 * Führen Sie den folgenden Befehl aus: Setup.exe /QUIET /ACTION=REBUILDDATABASE /INSTANCENAME=MSSQLSERVER /SQLSYSADMINACCOUNTS=`<local_admin_account_name`> /SQLCOLLATION=SQL_Latin1_General_Cp850_BIN2   
-  * `<local_admin_account_name`&gt; ist das Konto, das als Administratorkonto definiert wurde, als die VM zum ersten Mal über den Katalog bereitgestellt wurde.
+  * `<local_admin_account_name`> ist das Konto, das als Administratorkonto definiert wurde, als der virtuelle Computer zum ersten Mal über den Katalog bereitgestellt wurde.
 
 Dieser Vorgang sollte nur wenige Minuten dauern. Um sicherzustellen, dass dieser Schritt zum richtigen Ergebnis geführt hat, führen Sie die folgenden Schritte durch:
 
@@ -477,7 +476,7 @@ Eine der Methoden für Hochverfügbarkeit (High Availability, HA) ist der SQL Se
 Die Funktion „SQL Server-Protokollversand“ wurde in Azure kaum verwendet, um Hochverfügbarkeit in einer Azure-Region zu erzielen. Allerdings setzen SAP-Kunden den Protokollversand in den folgenden Fällen erfolgreich mit Azure ein:
 
 - Notfallwiederherstellung zwischen verschiedenen Azure-Regionen.
-- Konfiguration der Notfallwiederherstellung aus einem lokalen System in eine Azure-Region.
+- Konfiguration der Notfallwiederherstellung aus einem lokalen System in eine Azure-Region
 - Cut-Over-Szenarien aus lokalen Systemen in Azure. In diesen Fällen synchronisiert der Protokollversand die neue DBMS-Bereitstellung in Azure mit dem laufenden Produktionssystem vor Ort. Zum Zeitpunkt des Cut-Over wird die Produktion gestoppt und sichergestellt, dass die letzten und aktuellsten Transaktionsprotokollsicherungen in die Azure-DBMS-Bereitstellung übertragen wurden. Anschließend wird die Azure-DBMS-Bereitstellung für die Produktion eröffnet.  
 
 

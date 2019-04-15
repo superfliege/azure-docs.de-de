@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 591b30d0147e427e8a0dbc2d25276bdcd3b54be6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: bac57b18ec5474cfe3c27ad1079c5af7e1d2c451
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445482"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756809"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor
 
@@ -38,10 +38,10 @@ Personen, denen die Überwachungsleserrolle zugewiesen wird, können alle Überw
 * Zugreifen auf Application Insights-Daten und Anzeigen von Daten in der AI-Analyse.
 * Durchsuchen von Arbeitsbereichsdaten von Log Analytics, einschließlich Nutzungsdaten für den Arbeitsbereich
 * Anzeigen von Verwaltungsgruppen in Log Analytics
-* Abrufen des Suchschemas von Log Analytics
-* Auflisten von Intelligence Packs zu Log Analytics
-* Abrufen und Ausführen gespeicherter Suchvorgänge von Log Analytics
-* Abrufen der Speicherkonfiguration von Log Analytics
+* Abrufen des Suchschemas im Log Analytics-Arbeitsbereich
+* Auflisten von Überwachungspaketen im Log Analytics-Arbeitsbereich
+* Abrufen und Ausführen gespeicherter Suchvorgänge im Log Analytics-Arbeitsbereich
+* Abrufen der Speicherkonfiguration des Log Analytics-Arbeitsbereichs
 
 > [!NOTE]
 > Diese Rolle erteilt keinen Lesezugriff für Protokolldaten, die an einen Event Hub gestreamt oder in einem Speicherkonto gespeichert wurden. [Unten](#security-considerations-for-monitoring-data) finden Sie Informationen zum Konfigurieren des Zugriffs auf diese Ressourcen.
@@ -57,9 +57,9 @@ Personen, denen die Rolle für Überwachungsmitwirkende zugewiesen wird, können
 * Festlegen der Aktivität und der Einstellungen für Warnungsregeln über [Azure-Warnungen](../../azure-monitor/platform/alerts-overview.md).
 * Erstellen von Application Insights-Webtests und -Komponenten.
 * Auflisten gemeinsam verwendeter Arbeitsbereichsschlüssel aus Log Analytics
-* Aktivieren oder Deaktivieren von Intelligence Packs zu Log Analytics
-* Erstellen, Löschen und Ausführen gespeicherter Suchvorgänge von Log Analytics
-* Erstellen und Löschen der Speicherkonfiguration von Log Analytics
+* Aktivieren oder Deaktivieren von Überwachungspaketen im Log Analytics-Arbeitsbereich
+* Erstellen, Löschen und Ausführen gespeicherter Suchvorgänge im Log Analytics-Arbeitsbereich
+* Erstellen und Löschen der Speicherkonfiguration des Log Analytics-Arbeitsbereichs
 
 \*Dem Benutzer muss außerdem gesondert die ListKeys-Berechtigung für die Zielressource (Speicherkonto oder Event Hub-Namespace) erteilt werden, um ein Protokollprofil oder eine Diagnoseeinstellung festzulegen.
 

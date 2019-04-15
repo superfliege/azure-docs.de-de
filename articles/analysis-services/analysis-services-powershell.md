@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 177d74a54e4ab4de698cbb63091656cc8b584e2b
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 1f9c30f1c914f6c8d42967e014d967ba0d5b85cc
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010683"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893842"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>Verwalten von Azure Analysis Services mit PowerShell
 
@@ -81,4 +81,4 @@ Das SqlServer-Modul bietet aufgabenspezifische Cmdlets für die Datenbankverwalt
 * [Herunterladen des SQL Server PowerShell-Moduls](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
 * [Herunterladen von SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
 * [SqlServer-Modul im PowerShell-Katalog](https://www.powershellgallery.com/packages/SqlServer)    
-* [Programmierung von tabellarischen Modellen für den Kompatibilitätsgrad 1200 und höher](https://msdn.microsoft.com/library/mt712541.aspx)
+* [Programmierung von tabellarischen Modellen für den Kompatibilitätsgrad 1200 und höher](/sql/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200)

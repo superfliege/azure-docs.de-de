@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 572a962e98332fc70c276346f497ed2e67e3c329
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 78b2f98b61306c22eaba59b9be7259b3a24d7bbe
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999853"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805753"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Aktualisieren einer vorhandenen Blaupausenzuweisung
 
@@ -32,17 +32,17 @@ Wenn eine Blaupause zugewiesen ist, kann die Zuweisung aktualisiert werden. Es g
 
 1. Klicken Sie in der Liste der Blaupausen auf die Blaupausenzuweisung. Klicken Sie anschließend auf die Schaltfläche **Zuweisung aktualisieren**, ODER klicken Sie mit der rechten Maustaste auf die Blaupausenzuweisung, und wählen Sie **Zuweisung aktualisieren** aus.
 
-   ![Zuweisung aktualisieren](../media/update-existing-assignments/update-assignment.png)
+   ![Aktualisieren einer vorhandenen Blaupausenzuweisung](../media/update-existing-assignments/update-assignment.png)
 
 1. Die Seite **Blaupause zuweisen** wird geladen, und alle Werte der ursprünglichen Zuweisung sind bereits eingetragen. Sie können die **Version der Blaupausendefinition**, den Zustand von **Zuweisung sperren** sowie die dynamischen Parameter für die Blaupausendefinition ändern. Klicken Sie nach dem Vornehmen der Änderungen auf **Zuweisen**.
 
 1. Überprüfen Sie auf der Detailseite für die aktualisierte Zuweisung den neuen Status. In diesem Beispiel wurde der Zuweisung **Wird gesperrt** hinzugefügt.
 
-   ![Aktualisierte Zuweisung – Gesperrt](../media/update-existing-assignments/updated-assignment.png)
+   ![Vorhandene Blaupausenzuweisung nach der Aktualisierung – geänderter Sperrmodus](../media/update-existing-assignments/updated-assignment.png)
 
 1. Einzelheiten zu anderen **Zuweisungsvorgängen** finden Sie in der Dropdownliste. Die Tabelle **Verwaltete Ressourcen** wird durch den ausgewählten Zuweisungsvorgang aktualisiert.
 
-   ![Zuweisungsvorgänge](../media/update-existing-assignments/assignment-operations.png)
+   ![Zuweisungsvorgänge einer Blaupausenzuweisung](../media/update-existing-assignments/assignment-operations.png)
 
 ## <a name="rules-for-updating-assignments"></a>Regeln für das Aktualisieren von Zuweisungen
 

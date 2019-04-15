@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/20/2019
+ms.date: 03/27/2019
 ms.author: juliako
-ms.openlocfilehash: 61ebebaf61d1cbbc72f3e12b5ff516924cc9b8c7
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b951da73006731b38b265dc3a2f542e670f9fbf6
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317747"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621735"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Hinweise zur Migration von Media Services v2 zu v3
 
@@ -79,12 +79,14 @@ Wenn Sie derzeit über einen Videodienst verfügen, der auf Basis von der [älte
 Die v3-API weist in Bezug auf die v2-API die folgenden Featurelücken auf. Am Schließen der Lücken wird derzeit gearbeitet.
 
 * Der Zugriff auf den [Premium-Encoder](../previous/media-services-premium-workflow-encoder-formats.md) und die älteren [Media Analytics-Prozessoren](../previous/media-services-analytics-overview.md) (Azure Media Services Indexer 2 Preview, Face Redactor usw.) ist über v3 nicht möglich.<br/>Kunden, die eine Migration von der Media Indexer 1- oder 2-Vorschauversion durchführen möchten, können sofort die AudioAnalyzer-Voreinstellung in der v3-API verwenden.  Diese neue Voreinstellung enthält mehr Funktionen als die ältere Media Indexer 1- oder 2-Version. 
-* Viele der erweiterten Features von Media Encoder Standard in v2-APIs sind derzeit in v3 nicht verfügbar, z.B.:
+* Viele der [erweiterten Features von Media Encoder Standard in v2-APIs](../previous/media-services-advanced-encoding-with-mes.md) sind derzeit in v3 nicht verfügbar, z. B.:
     * Ausschneiden (für On-Demand- und Live-Szenarien)
     * Zusammenfügen von Medienobjekten
     * Überlagerungen
     * Zuschneiden
     * Miniaturbild-Sprites
+    * Einfügen einer stillen Audiospur bei einer Eingabe ohne Audio
+    * Einfügen einer Videospur, wenn die Eingabe kein Video enthält
 * Liveereignisse mit Transcodierung unterstützen derzeit keine Slate-Einfügungen beim Streamen und Werbemarkereinfügungen über API-Aufrufe. 
 
 > [!NOTE]

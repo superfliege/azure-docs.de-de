@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 04/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5217f21449efeb2086770f040fb781765ea819eb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 813ab2a349ba843e9f41675234e395470bef9740
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58083936"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58896124"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Technischer Einblick
 
@@ -39,15 +39,12 @@ Dieser Abschnitt enthält drei Teile:
 
 Das nahtlose einmalige Anmelden wird mithilfe von Azure AD Connect wie [hier](how-to-connect-sso-quick-start.md) gezeigt aktiviert. Während der Aktivierung des Features laufen die folgenden Schritte ab:
 
-- Ein Computerkonto namens `AZUREADSSOACC` (das Azure AD darstellt) wird in jeder AD-Gesamtstruktur in Ihrem lokalen Active Directory (AD) erstellt.
-- Der Kerberos-Entschlüsselungsschlüssel des Computerkontos wird sicher für Azure AD freigegeben. Wenn mehrere AD-Gesamtstrukturen vorhanden sind, müssen die Gesamtstrukturen jeweils einen eigenen Kerberos-Entschlüsselungsschlüssel aufweisen.
-- Darüber hinaus werden zwei Kerberos-Dienstprinzipalnamen (SPNs) erstellt, um die zwei URLs darzustellen, die während der Azure AD-Anmeldung verwendet werden.
-
->[!NOTE]
-> In jeder AD-Gesamtstruktur, die Sie mit Azure AD (über Azure AD Connect) synchronisieren und für deren Benutzer Sie das nahtlose einmalige Anmelden aktivieren möchten, werden das Computerkonto und die Kerberos-SPNs erstellt. Verschieben das `AZUREADSSOACC`-Computerkonto zu einer Organisationseinheit (Organization Unit, OU), in der andere Computerkonten gespeichert sind, um sicherzustellen, dass es auf die gleiche Weise verwaltet und nicht gelöscht wird.
+- In jeder AD-Gesamtstruktur, die Sie (mithilfe von Azure AD Connect) mit Azure AD synchronisieren, wird in Ihrem lokalen Active Directory (AD) ein Computerkonto (`AZUREADSSOACC`) erstellt.
+- Darüber hinaus werden eine Reihe von Kerberos-Dienstprinzipalnamen (SPNs) erstellt, die während des Azure AD-Anmeldevorgangs verwendet werden.
+- Der Kerberos-Entschlüsselungsschlüssel des Computerkontos wird sicher für Azure AD freigegeben. Wenn mehrere AD-Gesamtstrukturen vorhanden sind, muss jedes Computerkonto seinen eigenen Kerberos-Entschlüsselungsschlüssel haben.
 
 >[!IMPORTANT]
->Es wird dringend empfohlen, den [Rollover des Kerberos-Entschlüsselungsschlüssels](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account) für das Computerkonto `AZUREADSSOACC` mindestens alle 30 Tage durchzuführen.
+> Das Computerkonto `AZUREADSSOACC` muss aus Sicherheitsgründen stark geschützt werden. Nur Domänen-Admins sollten das Computerkonto verwalten können. Stellen Sie sicher, dass die Kerberos-Delegierung für das Computerkonto deaktiviert ist. Speichern Sie das Computerkonto in einer Organisationseinheit, wo es vor versehentlichem Löschen geschützt ist. Der Kerberos-Entschlüsselungsschlüssel für das Computerkonto sollte ebenfalls vertraulich behandelt werden. Es wird dringend empfohlen, den [Rollover des Kerberos-Entschlüsselungsschlüssels](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account) für das Computerkonto `AZUREADSSOACC` mindestens alle 30 Tage durchzuführen.
 
 Nach der Einrichtung funktioniert das nahtlose einmalige Anmelden genauso wie jede andere Anmeldung, die die integrierte Windows-Authentifizierung (IWA) verwendet.
 

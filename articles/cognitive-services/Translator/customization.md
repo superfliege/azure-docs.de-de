@@ -3,19 +3,19 @@ title: Anpassen der Übersetzung – Textübersetzungs-API
 titlesuffix: Azure Cognitive Services
 description: Verwenden Sie den Microsoft Translator-Hub zum Erstellen Ihres eigenen Systems für die maschinelle Übersetzung mit der Terminologie und dem Stil, den Sie bevorzugen.
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: e66387a904f0026eb862178b19fd1b005212d674
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b9a182da0ce03bf3964b6da30f1ed68de38c8141
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124013"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918228"
 ---
 # <a name="customize-your-text-translations"></a>Anpassen von Textübersetzungen
 
@@ -54,7 +54,7 @@ Weitere Informationen über die verschiedenen Anpassungsstufen basierend auf ver
 | SMT-Anpassung | Ja   | Nein  |
 | NMT-Anpassung | Nein     | Ja |
 | Neue einheitliche Anpassung der Sprachdienste | Nein     | Ja |
-| [No Trace (Keine Ablaufverfolgung)](https://www.aka.ms/notrace) | Ja  | Ja |
+| [Keine Ablaufverfolgung](https://www.aka.ms/notrace) | Ja  | Ja |
 
 ## <a name="collaborative-translations-framework"></a>Framework für kollaborative Übersetzungen
 
@@ -66,4 +66,4 @@ Weitere Informationen über die verschiedenen Anpassungsstufen basierend auf ver
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Set up a customized language system using Custom Translator (Einrichten eines angepassten Sprachsystems mit dem benutzerdefinierten Translator)](https://aka.ms/CustomTranslatorDocs)
+> [Einrichten eines angepassten Sprachsystems mit dem benutzerdefinierten Translator](https://aka.ms/CustomTranslatorDocs)

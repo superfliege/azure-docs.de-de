@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: ece6c7048100a8204bfc067d9d57854b1d83c9b6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eac6a27c3bcf64462a9f3d9a57da6df736f30c78
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58074912"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883274"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>VMware-Überwachungslösung (veraltet) in Azure Monitor
 
@@ -189,13 +189,13 @@ Dafür kann es mehrere Gründe geben:
   1. Melden Sie sich zur Bestätigung über SSH beim ESXi-Host an, und führen Sie den folgenden Befehl aus: `nc -z ipaddressofVM 1514`
 
       Wenn dies nicht erfolgreich ist, sind wahrscheinlich die vSphere-Einstellungen in der erweiterten Konfiguration nicht richtig. Informationen zum Einrichten des ESXi-Hosts für die Syslog-Weiterleitung finden Sie unter [Konfigurieren der Syslog-Sammlung](#configure-syslog-collection).
-  1. Wenn die Portverbindung für Syslog erfolgreich hergestellt werden kann, Sie aber weiterhin keine Daten sehen, laden Sie das Syslog auf dem ESXi-Host neu, in dem Sie SSH verwenden, um folgenden Befehl auszuführen: ` esxcli system syslog reload`
+  1. Wenn die Portverbindung für Syslog erfolgreich hergestellt werden kann, Sie aber weiterhin keine Daten sehen, laden Sie das Syslog auf dem ESXi-Host neu, indem Sie SSH verwenden, um folgenden Befehl auszuführen: `esxcli system syslog reload`
 * Der virtuelle Computer mit dem Log Analytics-Agent ist nicht ordnungsgemäß festgelegt. Führen Sie zum Testen die folgenden Schritte aus:
 
   1. Log Analytics lauscht am Port 1514. Überprüfen Sie mit dem folgenden Befehl, ob der Port offen ist: `netstat -a | grep 1514`
   1. Port `1514/tcp` sollte offen sein. Wenn dies nicht der Fall ist, stellen Sie sicher dass der OMS-Agent ordnungsgemäß installiert ist. Wenn keine Portinformationen angezeigt werden, ist der Syslog-Port auf dem virtuellen Computer nicht offen.
 
-     a. Überprüfen Sie mit dem Befehl `ps -ef | grep oms`, ob der Log Analytics-Agent ausgeführt wird. Wenn dies nicht der Fall ist, starten Sie den Prozess, indem Sie diesen Befehl ausführen: ` sudo /opt/microsoft/omsagent/bin/service_control start`
+    a. Überprüfen Sie mit dem Befehl `ps -ef | grep oms`, ob der Log Analytics-Agent ausgeführt wird. Wenn dies nicht der Fall ist, starten Sie den Prozess, indem Sie diesen Befehl ausführen: `sudo /opt/microsoft/omsagent/bin/service_control start`
 
      b. Öffnen Sie die Datei `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` .
 

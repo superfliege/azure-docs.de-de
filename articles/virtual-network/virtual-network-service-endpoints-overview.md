@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: 72cbf71077a8df2b81b366d9f29ae006100da471
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 45ac09b84aca44f6739a0e29994986200424fc5c
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310539"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669332"
 ---
 # <a name="virtual-network-service-endpoints"></a>Dienstendpunkte im virtuellen Netzwerk
 
@@ -84,7 +84,7 @@ Dienstendpunkte bieten folgende Vorteile:
 - Dienstendpunkte werden in einem Subnetz eines virtuellen Netzwerks konfiguriert. Für Endpunkte können alle Arten von Computeinstanzen verwendet werden, die in diesem Subnetz ausgeführt werden.
 - Sie können mehrere Dienstendpunkte für alle unterstützten Azure-Dienste (z.B. Azure Storage oder Azure SQL-Datenbank) eines Subnetzes konfigurieren.
 - Bei Azure SQL-Datenbank müssen sich virtuelle Netzwerke in derselben Region wie die Ressource des Azure-Diensts befinden. Für Azure Storage muss sich das primäre Konto bei Verwendung von GRS- und RA-GRS-Konten in derselben Region wie das virtuelle Netzwerk befinden. Für alle anderen Dienste können die Ressourcen des Azure-Diensts in virtuellen Netzwerken in jeder Region gesichert werden. 
-- Das virtuelle Netzwerk, in dem der Endpunkt konfiguriert ist, kann sich unter demselben oder einem anderen Abonnement wie die Ressource des Azure-Diensts befinden. Weitere Informationen zu den erforderlichen Berechtigungen zum Einrichten von Endpunkten und Schützen von Azure-Diensten finden Sie unter [Bereitstellung](#Provisioning).
+- Das virtuelle Netzwerk, in dem der Endpunkt konfiguriert ist, kann sich unter demselben oder einem anderen Abonnement wie die Ressource des Azure-Diensts befinden. Weitere Informationen zu den erforderlichen Berechtigungen zum Einrichten von Endpunkten und Schützen von Azure-Diensten finden Sie unter [Bereitstellung](#provisioning).
 - Für unterstützte Dienste können Sie neue oder vorhandene Ressourcen in virtuellen Netzwerken schützen, indem Sie Dienstendpunkte verwenden.
 
 ### <a name="considerations"></a>Überlegungen
@@ -132,7 +132,7 @@ Für die Nutzung von Dienstendpunkten fallen keine zusätzlichen Gebühren an. D
 
 Für die Gesamtzahl von Dienstendpunkten in einem virtuellen Netzwerk gilt keine Beschränkung.
 
-Für die Ressource eines Azure-Diensts (z.B. ein Azure Storage-Konto) können Dienste Beschränkungen in Bezug auf die Anzahl von Subnetzen erzwingen, die zum Schützen der Ressource verwendet werden. Ausführliche Informationen finden Sie in der Dokumentation zu den verschiedenen Diensten unter [Nächste Schritte](#next-steps).
+Bestimmte Azure-Dienste, wie etwa Azure-Speicherkonten, erzwingen möglicherweise Beschränkungen der Anzahl der zum Schützen der Ressource verwendeten Subnetze. Ausführliche Informationen finden Sie in der Dokumentation zu den verschiedenen Diensten unter [Nächste Schritte](#next-steps).
 
 ## <a name="virtual-network-service-endpoint-policies"></a>Richtlinien für Dienstendpunkte in virtuellen Netzwerken 
 

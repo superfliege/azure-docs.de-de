@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9f2eae4160dbef164ec70e8fa4d7b3a83706ae96
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 67a6c99253c549f0b8d3b55809b35b81756843eb
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880125"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803492"
 ---
 # <a name="compatibility-level-for-analysis-services-tabular-models"></a>Kompatibilitätsgrad für tabellarische Analysis Services-Modelle
 
@@ -27,7 +27,11 @@ Azure Analysis Services unterstützt tabellarische Modelle mit den Kompatibilit�
 *  Sicherheit auf Objektebene für Tabellen- und Spaltennamen sowie die darin enthaltenen Daten
 *  Verbesserte Unterstützung für unregelmäßige Hierarchien
 *  Verbesserungen an der Leistung und Überwachung
- 
+
+> [!NOTE]
+> Azure Analysis Services unterstützt importierte Power BI Desktop-Dateien mit dem Kompatibilitätsgrad 1465. Der Import von Power BI Desktop, der immer nur als Previewfunktion bereitgestellt wurde, wird jedoch nicht mehr unterstützt und wurde im März 2019 aus dem Dienst entfernt. Vorhandene Modelle mit dem Kompatibilitätsgrad 1465 werden weiterhin unterstützt.  
+
+
 ## <a name="set-compatibility-level"></a>Festlegen des Kompatibilitätsgrads
 
  Beim Erstellen eines neuen Projekts für tabellarische Modelle in SSDT können Sie im Dialogfeld **Designer für tabellarische Modelle** den Kompatibilitätsgrad angeben. 
@@ -47,6 +51,9 @@ Azure Analysis Services unterstützt tabellarische Modelle mit den Kompatibilit�
  Klicken Sie in SSMS mit der rechten Maustaste auf den Servernamen und dann auf **Eigenschaften** > **Unterstützter Kompatibilitätsgrad**.  
   
  Diese Eigenschaft gibt den höchsten Kompatibilitätsgrad einer Datenbank an, die auf dem Server (ausgenommen der Vorschau) ausgeführt wird. Der unterstützte Kompatibilitätsgrad kann nicht geändert werden.  
+
+> [!NOTE]
+> In SSMS wird bei einer bestehenden Verbindung zu einem Azure Analysis Services-Server für die Eigenschaft **Unterstützter Kompatibilitätsgrad** der Wert **1200** angezeigt. Dies ist ein bekanntes Problem und wird in einem zukünftigen SSMS-Update gelöst. Nach der Lösung wird diese Eigenschaft den höchsten unterstützten Kompatibilitätsgrad anzeigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

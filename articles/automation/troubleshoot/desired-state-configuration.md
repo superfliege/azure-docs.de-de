@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a34dea7e1eb53531db55dc62df8fbad8541f7a35
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: c8afa671a323e37a99be8b5a43d0a4823fe1877a
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56586799"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58800875"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Behandeln von Problemen mit Konfiguration des gewünschten Zustands (Desired State Configuration, DSC)
 
@@ -28,19 +28,19 @@ Dieser Artikel enthält Informationen zur Behandlung von Problemen mit der Konfi
 
 Beim Versuch, eine DSC-Konfiguration aus dem Portal zu löschen, wird der folgende Fehler angezeigt:
 
-```
+```error
 An error occured while deleteing the DSC configuration '<name>'.  Error-details: The arguement configurationName with the value <name> is not valid.  Valid configuration names can contain only letters,  numbers, and underscores.  The name must start with a letter.  The length of the name must be between 1 and 64 characters.
 ```
 
 #### <a name="cause"></a>Ursache
 
-Dies ist ein vorübergehendes Problem, das gelöst werden soll.
+Der Fehler ist ein vorübergehendes Problem, das gelöst werden soll.
 
 #### <a name="resolution"></a>Lösung
 
 * Verwenden Sie das Azure-Cmdlet „Remove-AzAutomationDscConfiguration“, um die Konfiguration zu löschen.
-* Die Dokumentation für dieses Cmdlet wurde noch nicht aktualisiert.  Nutzen Sie bitte die Dokumentation für das AzureRM-Modul, bis es so weit ist.
-  * [Remove-AzureRmAutomationDSCConfiguration](https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/Remove-AzureRmAutomationDscConfiguration?view=azurermps-6.13.0)
+* Die Dokumentation für dieses Cmdlet wurde noch nicht aktualisiert.  Nutzen Sie bis dahin bitte die Dokumentation für das AzureRM-Modul.
+  * [Remove-AzureRmAutomationDSCConfiguration](/powershell/module/azurerm.automation/Remove-AzureRmAutomationDscConfiguration)
 
 ### <a name="failed-not-found"></a>Szenario: Knoten hat den Fehlerstatus „Nicht gefunden“
 
@@ -48,7 +48,7 @@ Dies ist ein vorübergehendes Problem, das gelöst werden soll.
 
 Der Knoten hat den Status **Fehler** mit der folgenden Meldung zurückgegeben:
 
-```
+```error
 The attempt to get the action from server https://<url>//accounts/<account-id>/Nodes(AgentId=<agent-id>)/GetDscAction failed because a valid configuration <guid> cannot be found.
 ```
 
@@ -62,7 +62,7 @@ Dieser Fehler tritt normalerweise auf, wenn der Knoten einem Konfigurationsnamen
 * Einem Knoten können Sie über das Azure-Portal oder mit einem PowerShell-Cmdlet eine Knotenkonfiguration zuweisen.
 
   * Um über das Azure-Portal einem Knoten eine Knotenkonfiguration zuzuweisen, öffnen Sie die Seite **DSC-Knoten**, wählen Sie dann einen Knoten aus, und klicken Sie auf die Schaltfläche **Knotenkonfiguration zuweisen**.  
-  * Um einem Knoten mit einem PowerShell-Cmdlet eine Knotenkonfiguration zuzuweisen, verwenden Sie das Cmdlet **Set-AzureRmAutomationDscNode** .
+  * Um einem Knoten mit einem PowerShell-Cmdlet eine Knotenkonfiguration zuzuweisen, verwenden Sie das Cmdlet **Set-AzureRmAutomationDscNode**.
 
 ### <a name="no-mof-files"></a>Szenario: Bei der Kompilierung einer Konfiguration wurden keine Knotenkonfigurationen (MOF-Dateien) erstellt
 
@@ -70,7 +70,7 @@ Dieser Fehler tritt normalerweise auf, wenn der Knoten einem Konfigurationsnamen
 
 Ihr DSC-Kompilierungsauftrag wird mit folgendem Fehler abgebrochen:
 
-```
+```error
 Compilation completed successfully, but no node configuration.mofs were generated.
 ```
 
@@ -91,7 +91,7 @@ Sie können dieses Problem mit jeder der folgenden Lösungen beheben:
 
 Der DSC-Agent gibt Folgendes aus:
 
-```
+```error
 No instance found with given property values
 ```
 
@@ -101,7 +101,7 @@ Sie haben Ihre WMF-Version aktualisiert und WMI beschädigt.
 
 #### <a name="resolution"></a>Lösung
 
-Befolgen Sie zum Beheben des Problems die Anweisungen im Artikel [Bekannte Probleme und Einschränkungen bei DSC (Desired State Configuration)](https://msdn.microsoft.com/powershell/wmf/5.0/limitation_dsc).
+Befolgen Sie zum Beheben des Problems die Anweisungen im Artikel [Bekannte Probleme und Einschränkungen bei DSC](https://msdn.microsoft.com/powershell/wmf/5.0/limitation_dsc).
 
 ### <a name="issue-using-credential"></a>Szenario: In einer DSC-Konfiguration können keine Anmeldeinformationen verwendet werden
 
@@ -109,7 +109,7 @@ Befolgen Sie zum Beheben des Problems die Anweisungen im Artikel [Bekannte Probl
 
 Ihr DSC-Kompilierungsauftrag wurde mit folgendem Fehler abgebrochen:
 
-```
+```error
 System.InvalidOperationException error processing property 'Credential' of type <some resource name>: Converting and storing an encrypted password as plaintext is allowed only if PSDscAllowPlainTextPassword is set to true.
 ```
 

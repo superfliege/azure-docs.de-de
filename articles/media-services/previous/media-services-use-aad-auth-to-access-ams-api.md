@@ -11,25 +11,28 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: b6071bef4e4bbd9aaca3f587e5dfa584831d082e
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: d80a58f1886ecc1ca2a735881fc5822f2fc0c53b
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316873"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802489"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung  
- 
+
+> [!NOTE]
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+
 Die Azure Media Services-API ist eine RESTful-API. Sie können sie nutzen, um Vorgänge für Medienressourcen durchzuführen, indem Sie eine REST-API oder verfügbare Client-SDKs verwenden. Azure Media Services stellt ein Media Services-Client-SDK für Microsoft .NET bereit. Sie müssen zuerst authentifiziert werden, um berechtigt zu sein, auf Media Services-Ressourcen und die Media Services-API zuzugreifen. 
 
 Für Media Services wird die [Azure Active Directory-basierte Authentifizierung](../../active-directory/fundamentals/active-directory-whatis.md) unterstützt. Für den Azure Media-REST-Dienst ist Folgendes erforderlich: Der Benutzer oder die Anwendung, der bzw. die die REST-API-Anforderungen sendet, muss entweder über die Rolle **Mitwirkender** oder **Besitzer** verfügen, um auf die Ressourcen zuzugreifen. Weitere Informationen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../../role-based-access-control/overview.md).  
 
-> [!IMPORTANT]
-> Derzeit wird für Media Services das Azure Access Control-Dienstauthentifizierungsmodell unterstützt. Die Access Control-Authentifizierung gilt aber ab dem 1. Juni 2018 als veraltet. Es wird empfohlen, möglichst bald zum Azure AD-Authentifizierungsmodell zu migrieren.
-
 Dieses Dokument enthält eine Übersicht darüber, wie Sie per REST- oder .NET-API auf die Media Services-API zugreifen.
+
+> [!NOTE]
+> Die Access Control-Authentifizierung gilt ab dem 1. Juni 2018 als veraltet.
 
 ## <a name="access-control"></a>Zugriffssteuerung
 

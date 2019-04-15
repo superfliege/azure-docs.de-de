@@ -1,6 +1,6 @@
 ---
 title: Installieren der IBM ZD&T-Entwicklungs-/Testumgebung in Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie IBM Z Development and Test Environment (ZD&T) auf Azure-IaaS-VMs bereitstellen.
+description: Bereitstellen von IBM Z Development and Test Environment (ZD&T) auf Azure-IaaS-VMs.
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
@@ -8,12 +8,12 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: fa3bf2b513ce7c5a0ea0210c66a9123ceaf1de37
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2f5520213e7d8792c89f5445d470987323173dc3
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58015283"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894524"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Installieren der IBM ZD&T-Entwicklungs-/Testumgebung in Azure
 
@@ -134,4 +134,4 @@ Beachten Sie, dass der Webserver beim Start unter der ZD&T-Benutzer-ID ausgefüh
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Set up an Application Developers Controlled Distribution (ADCD) in IBM zD&T v1 (Einrichten einer Application Developers Controlled Distribution (ADCD) in IBM ZD&T v1)](./demo.md)
+[Festlegen einer Application Developers Controlled Distribution (ADCD) in IBM zD&T v1](./demo.md)

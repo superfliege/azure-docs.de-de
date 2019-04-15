@@ -15,12 +15,12 @@ ms.date: 02/09/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: b7f4ce9508928ccc6ab766e7164c674511bcaa37
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 7855c2bd45ba35ecb0ede5c60268e6446f37ed5a
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342778"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804529"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Grundlegendes zu Rollendefinitionen für Azure-Ressourcen
 
@@ -97,11 +97,11 @@ Zur Unterstützung von Datenvorgängen wurden neue Dateneigenschaften zur Strukt
 - Schreiben eines Speicherblobs in einem Container
 - Löschen einer Nachricht in einer Warteschlange
 
-Im Folgenden wird die Rollendefinition für [Storage-Blobdatenleser (Vorschauversion)](built-in-roles.md#storage-blob-data-reader-preview) angegeben, die Vorgänge in den Eigenschaften `Actions` und `DataActions` beinhaltet. In dieser Rolle können Sie den Blobcontainer sowie die zugrunde liegenden Blobdaten lesen.
+Hier folgt die Rollendefinition [Storage-Blobdatenleser](built-in-roles.md#storage-blob-data-reader), die sowohl in den `Actions`-Eigenschaften als auch in den `DataActions`-Eigenschaften Operationen einbezieht. In dieser Rolle können Sie den Blobcontainer sowie die zugrunde liegenden Blobdaten lesen.
 
 ```json
 {
-  "Name": "Storage Blob Data Reader (Preview)",
+  "Name": "Storage Blob Data Reader",
   "Id": "2a2b9908-6ea1-4ae2-8e65-a410df84e7d1",
   "IsCustom": false,
   "Description": "Allows for read access to Azure Storage blob containers and data",
@@ -125,18 +125,18 @@ Die Autorisierung für alle API-Aufrufe für Verwaltungsvorgänge wird vom Azure
 
 ### <a name="data-operations-example"></a>Beispiel für Datenvorgänge
 
-Werfen wir einen Blick auf ein bestimmtes Beispiel, um die Funktionsweise von Verwaltungs-und Datenvorgängen besser zu verstehen. Alice wurde die Rolle [Besitzer](built-in-roles.md#owner) im Abonnementbereich zugewiesen. Bob wurde die Rolle [Mitwirkender an Storage-Blobdaten (Vorschauversion)](built-in-roles.md#storage-blob-data-contributor-preview) in einem Speicherkontobereich zugewiesen. Die folgende Abbildung veranschaulicht dieses Beispiel.
+Werfen wir einen Blick auf ein bestimmtes Beispiel, um die Funktionsweise von Verwaltungs-und Datenvorgängen besser zu verstehen. Alice wurde die Rolle [Besitzer](built-in-roles.md#owner) im Abonnementbereich zugewiesen. Bob wurde die Rolle [Mitwirkender an Storage-Blobdaten](built-in-roles.md#storage-blob-data-contributor) in einem Speicherkontobereich zugewiesen. Die folgende Abbildung veranschaulicht dieses Beispiel.
 
 ![Erweiterte rollenbasierte Zugriffssteuerung zur Unterstützung von Verwaltungs- und Datenvorgängen](./media/role-definitions/rbac-management-data.png)
 
-Die Rolle [Besitzer](built-in-roles.md#owner) für Alice und die Rolle [Mitwirkender an Storage-Blobdaten (Vorschauversion)](built-in-roles.md#storage-blob-data-contributor-preview) für Bob verfügen über die folgenden Aktionen:
+Die Rolle [Besitzer](built-in-roles.md#owner) für Alice und die Rolle [Mitwirkender an Storage-Blobdaten](built-in-roles.md#storage-blob-data-contributor) für Bob verfügen über die folgenden Aktionen:
 
 Owner (Besitzer)
 
 &nbsp;&nbsp;&nbsp;&nbsp;Actions<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`*`
 
-Mitwirkender an Storage-Blobdaten (Vorschauversion)
+Mitwirkender an Storage-Blobdaten
 
 &nbsp;&nbsp;&nbsp;&nbsp;Actions<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/delete`<br>
@@ -149,7 +149,7 @@ Mitwirkender an Storage-Blobdaten (Vorschauversion)
 
 Da Alice über eine Platzhalteraktion (`*`) in einem Abonnementbereich verfügt, werden ihre Berechtigungen nach unten vererbt, um ihr die Durchführung aller Verwaltungsaktionen zu ermöglichen. Alice kann Container lesen, schreiben und löschen. Alice kann jedoch keine Vorgänge auf Daten anwenden, ohne zusätzliche Schritte zu unternehmen. Beispielsweise kann Alice standardmäßig die Blobs innerhalb eines Containers nicht lesen. Um die Blobs lesen zu können, müsste Alice die Speicherzugriffsschlüssel abrufen und damit auf die Blobs zugreifen.
 
-Die Berechtigungen von Bob sind ausschließlich auf `Actions` und `DataActions` beschränkt, die in der Rolle [Mitwirkenden an Storage-Blobdaten (Vorschauversion)](built-in-roles.md#storage-blob-data-contributor-preview) angegeben sind. Basierend auf der Rolle kann Bob Verwaltungs- und Datenvorgänge durchführen. Beispielsweise kann Bob Container im angegebenen Speicherkonto lesen, schreiben und löschen und zudem die Blobs lesen, schreiben und löschen.
+Die Berechtigungen von Bob sind ausschließlich auf `Actions` und `DataActions` beschränkt, die in der Rolle [Mitwirkenden an Storage-Blobdaten](built-in-roles.md#storage-blob-data-contributor) angegeben sind. Basierend auf der Rolle kann Bob Verwaltungs- und Datenvorgänge durchführen. Beispielsweise kann Bob Container im angegebenen Speicherkonto lesen, schreiben und löschen und zudem die Blobs lesen, schreiben und löschen.
 
 Weitere Informationen zur Verwaltung und zur Sicherheit auf Datenebene für den Speicher finden Sie im [Azure Storage-Sicherheitsleitfaden](../storage/common/storage-security-guide.md).
 

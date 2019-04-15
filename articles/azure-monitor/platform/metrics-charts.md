@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 576a7948d4df7957d934fb4c8888712fa94cb202
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 08ae74bcd9ee0a7cf5e0fb6d38758b1429c39145
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337073"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916341"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Azure Monitor-Metrik-Explorer
 
@@ -21,7 +21,7 @@ Der Azure Monitor-Metrik-Explorer ist eine Komponente des Microsoft Azure-Portal
 
 ## <a name="metrics-in-azure"></a>Metriken in Azure
 
-[Metriken in Azure Monitor](data-collection.md#metrics) sind eine Reihe von Messwerten und Zahlen, die im Lauf der Zeit gesammelt und gespeichert werden. Es gibt Standardmetriken (bzw. sogenannte „Plattformmetriken“) und benutzerdefinierte Metriken. Die Standardmetriken werden Ihnen von der Azure-Plattform selbst bereitgestellt. Standardmetriken stellen die Integritäts- und Nutzungsstatistik Ihrer Azure-Ressourcen dar. Benutzerdefinierte Metriken werden hingegen von Ihren Anwendungen mithilfe der [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics), der [Azure-Diagnoseerweiterung (Windows Azure Diagnostics, WAD)](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview) oder durch die [Azure Monitor-REST-API](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api) an Azure gesendet.
+[Metriken in Azure Monitor](data-platform-metrics.md) sind eine Reihe von Messwerten und Zahlen, die im Lauf der Zeit gesammelt und gespeichert werden. Es gibt Standardmetriken (bzw. sogenannte „Plattformmetriken“) und benutzerdefinierte Metriken. Die Standardmetriken werden Ihnen von der Azure-Plattform selbst bereitgestellt. Standardmetriken stellen die Integritäts- und Nutzungsstatistik Ihrer Azure-Ressourcen dar. Benutzerdefinierte Metriken werden hingegen von Ihren Anwendungen mithilfe der [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics), der [Azure-Diagnoseerweiterung (Windows Azure Diagnostics, WAD)](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview) oder durch die [Azure Monitor-REST-API](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api) an Azure gesendet.
 
 ## <a name="create-a-new-chart"></a>Erstellen eines neuen Diagramms
 
@@ -76,11 +76,33 @@ Sie können Filter auf Diagramme anwenden, die Metriken mit Dimensionen aufweise
 
 5. Sie können die Schritte 1 bis 4 wiederholen, um mehrere Filter auf dieselben Diagramme anzuwenden.
 
+## <a name="multiple-metrics-and-charts"></a>Mehrere Metriken und Diagramme
+
+Sie können auch Diagramme erstellen, in denen mehrere Metriken grafisch dargestellt oder mehrere Metrikdiagramme gleichzeitig angezeigt werden. Diese Funktionalität bietet Ihnen folgende Möglichkeiten:
+
+- Korrelieren verwandter Metriken im gleichen Diagramm, um zu sehen, in welcher Beziehung ein Wert zu einem anderen steht
+- Anzeigen von Metriken mit unterschiedlichen Maßeinheiten in unmittelbarer Nähe zueinander
+- Visuelles Aggregieren und Vergleichen von Metriken aus mehreren Ressourcen
+
+Wenn Sie beispielsweise über fünf Speicherkonten verfügen und wissen möchten, wie viel Gesamtspeicherplatz diese belegen, können Sie ein (gestapeltes) Flächendiagramm erstellen, das die einzelnen und die Summe aller Werte zu bestimmten Zeitpunkten anzeigt.
+
+### <a name="multiple-metrics-on-a-chart"></a>Mehrere Metriken im gleichen Diagramm
+
+Zuerst [erstellen Sie ein neues Diagramm](#create-a-new-chart). Klicken Sie auf **Metrik hinzufügen**, und wiederholen Sie die Schritte, um eine weitere Metrik im gleichen Diagramm hinzuzufügen.
+
+### <a name="multiple-charts"></a>Mehrere Diagramme
+
+Klicken Sie auf **Diagramm hinzufügen**, und erstellen Sie ein weiteres Diagramm mit einer anderen Metrik.
+
+### <a name="order-or-delete-multiple-charts"></a>Sortieren oder Löschen mehrerer Diagramme
+
+Klicken Sie zum Sortieren oder Löschen mehrerer Diagramme auf die Auslassungszeichen (**...**), um das Diagrammmenü zu öffnen, und wählen Sie das entsprechende Menüelement (**Nach oben**, **Nach unten** oder **Löschen**) aus.
+
 ## <a name="apply-splitting-to-a-chart"></a>Anwenden des Teilens auf ein Diagramm
 
-Sie können eine Metrik nach Dimension unterteilen, um die verschiedenen Segmente der Metrik gegenüberzustellen und die äußeren Segmente einer Dimension zu identifizieren. 
+Sie können eine Metrik nach Dimension unterteilen, um die verschiedenen Segmente der Metrik gegenüberzustellen und die äußeren Segmente einer Dimension zu identifizieren.
 
-### <a name="to-apply-splitting"></a>So wenden Sie das Teilen an
+### <a name="apply-splitting"></a>Anwenden des Teilens
 
 1. Klicken Sie oberhalb des Diagramms auf **Teilung anwenden**.
  

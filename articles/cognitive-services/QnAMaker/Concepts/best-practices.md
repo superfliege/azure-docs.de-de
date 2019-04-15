@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 03/28/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 72a3bead4ba8670187c35856f9cd4e4f4b975a30
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 0f94a1fdc01825b5bf78644f84c72e6b031109c0
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311694"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621973"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Best Practices für eine QnA Maker-Wissensdatenbank
 Die Anleitungen zum [Entwicklungszyklus einer Wissensdatenbank](../Concepts/development-lifecycle-knowledge-base.md) helfen Ihnen bei sämtlichen Schritten der Verwaltung Ihrer Wissensdatenbank. Nutzen Sie diese bewährten Methoden, um Ihre Knowledge Base zu verbessern und bessere Ergebnisse für die Endbenutzer Ihrer Anwendung bzw. Ihres Chatbots zu liefern.
@@ -108,7 +108,7 @@ QnA Maker ermöglicht Benutzern das [Zusammenarbeiten](../How-to/collaborate-kno
 
 ## <a name="active-learning"></a>Aktives Lernen
 
-[Aktives Lernen](../How-to/improve-knowledge-base.md) leistet die beste Arbeit beim Vorschlagen alternativer Fragen, wenn ein breites Spektrum an Qualität und Quantität von benutzerbezogenen Abfragen zur Verfügung steht. Es ist wichtig, dass die Benutzerabfragen von Clientanwendungen ohne Zensur an der Feedbackschleife des aktiven Lernens teilnehmen können. Sobald Fragen im QnA Maker-Portal vorgeschlagen werden, müssen Sie diese überprüfen und akzeptieren oder ablehnen. 
+[Aktives Lernen](../How-to/improve-knowledge-base.md) leistet die beste Arbeit beim Vorschlagen alternativer Fragen, wenn ein breites Spektrum an Qualität und Quantität von benutzerbezogenen Abfragen zur Verfügung steht. Es ist wichtig, dass die Benutzerabfragen von Clientanwendungen ohne Zensur an der Feedbackschleife des aktiven Lernens teilnehmen können. Sobald Fragen im QnA Maker-Portal vorgeschlagen werden, können Sie **[nach Vorschlägen filtern](../How-To/improve-knowledge-base.md#add-active-learning-suggestion-to-knowledge-base)** und diese Vorschläge dann überprüfen, um sie zu akzeptieren oder abzulehnen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

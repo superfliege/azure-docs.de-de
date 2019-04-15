@@ -1,5 +1,5 @@
 ---
-title: Connectors für Azure Logic Apps | Microsoft-Dokumentation
+title: Connectors für Azure Logic Apps
 description: Automatisieren von Workflows mit Connectors für Azure Logic Apps mit integrierten, verwalteten, lokalen, Integrationskonto- und Enterprise-Connectors
 services: logic-apps
 ms.service: logic-apps
@@ -9,25 +9,27 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/23/2018
-ms.openlocfilehash: b320696a56855baaa4af10177d25dfe9973ee73a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 59c8effb4c5feae99755b7937f4796e8f11fde46
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635440"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895882"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Connectors für Azure Logic Apps
 
-Connectors sind ein wesentlicher Bestandteil bei der Erstellung von automatisierten Workflows mit Azure Logic Apps. Durch Verwenden von Connectors in Ihren Logik-Apps erweitern Sie die Funktionen für Ihre lokalen und Cloud-Apps und können Aufgaben mit den Daten ausführen, die Sie erstellen und über die Sie bereits verfügen. 
+Connectors ermöglichen den schnellen anwendungs-, dienst-, protokoll- und plattformübergreifenden Zugriff von Azure Logic Apps auf Ereignisse, Daten und Aktionen. Durch Verwenden von Connectors in Ihren Logik-Apps erweitern Sie die Funktionen für Ihre Cloud- und lokalen Apps, um Aufgaben mit zu erstellenden oder bereits vorhandenen Daten auszuführen.
 
-Logic Apps bietet insgesamt [ca. 200 Connectors](https://docs.microsoft.com/connectors). In diesem Artikel werden beliebte und häufiger verwendete Connectors beschrieben, die in Tausenden von Apps und Millionen von Ausführungen zur Verarbeitung von Daten und Informationen erfolgreich verwendet werden. Connectors stehen als integrierte Aktionen oder als verwaltete Connectors zur Verfügung. 
+Logic Apps bietet insgesamt [ca. 200 Connectors](https://docs.microsoft.com/connectors). In diesem Artikel werden beliebte und häufiger verwendete Connectors beschrieben, die in Tausenden von Apps und Millionen von Ausführungen zur Verarbeitung von Daten und Informationen erfolgreich verwendet werden. Eine vollständige Liste der Connectors und die Referenzinformationen zu jedem Connector, wie Trigger, Aktionen und Limits, finden Sie auf den Referenzseiten zu Connectors unter [Übersicht über Connectors](https://docs.microsoft.com/connectors). Erfahren Sie außerdem mehr über [Trigger und Aktionen](#triggers-actions).
 
 > [!NOTE]
-> Die vollständige Liste der Connectors und die Referenzinformationen jedes Connectors, wie z.B. Aktionen, Trigger und Limits, finden Sie in der [Connectors-Übersicht](https://docs.microsoft.com/connectors).
+> Zur Integration mit einem Dienst oder einer API, die keine Connectors haben, können Sie den Dienst entweder direkt über ein Protokoll wie HTTP aufrufen oder einen [benutzerdefinierten Connector](#custom) erstellen.
 
-* [**Integrierte Aktionen:**](#built-ins) Mit diesen integrierten Aktionen und Triggern können Sie Logik-Apps erstellen, die in benutzerdefinierten Zeitplänen ausgeführt werden, mit anderen Endpunkten kommunizieren, Anforderungen empfangen und auf diese antworten sowie Azure-Funktionen, Azure API-Apps (Web-Apps), Ihre eigenen mit Azure API Management verwalteten und veröffentlichten APIs und geschachtelte Logik-Apps aufrufen, die Anforderungen empfangen können. Sie können zudem integrierte Aktionen verwenden, mit denen Sie den Workflow Ihrer Logik-App organisieren und steuern können und die auch mit Daten funktionieren.
+Connectors sind entweder als integrierte Trigger und Aktionen oder als verwaltete Connectors verfügbar:
 
-* **Verwaltete Connectors:** Diese Connectors umfassen Trigger und Aktionen für den Zugriff auf andere Dienste und Systeme. Bei einigen Connectors müssen Sie zunächst Verbindungen erstellen, die von Azure Logic Apps verwaltet werden. Verwaltete Connectors sind in folgende Gruppen unterteilt:
+* [**Integrierte Trigger und Aktionen**](#built-ins): Mit diesen integrierten Aktionen und Triggern, die nativer Bestandteil von Azure Logic Apps sind, können Sie Logik-Apps erstellen, die in benutzerdefinierten Zeitplänen ausgeführt werden, mit anderen Endpunkten kommunizieren, Anforderungen empfangen und auf diese antworten. Außerdem können Sie Azure-Funktionen, Azure API-Apps (Web-Apps), Ihre eigenen mit Azure API Management verwalteten und veröffentlichten APIs sowie geschachtelte Logik-Apps aufrufen, die Anforderungen empfangen können. Sie können zudem integrierte Aktionen verwenden, mit denen Sie den Workflow Ihrer Logik-App organisieren und steuern können und die auch mit Daten funktionieren.
+
+* **Verwaltete Connectors**: Diese Connectors, die von Microsoft bereitgestellt und verwaltet werden, stellen Trigger und Aktionen für den Zugriff auf andere Dienste und Systeme (z.B. Office 365, Azure Blob Storage, SQL Server, Salesforce und mehr) bereit. Bei einigen Connectors müssen Sie zunächst Verbindungen erstellen, die von Azure Logic Apps verwaltet werden. Verwaltete Connectors sind in folgende Gruppen unterteilt:
 
   |   |   |
   |---|---|
@@ -40,7 +42,7 @@ Logic Apps bietet insgesamt [ca. 200 Connectors](https://docs.microsoft.com/conn
   Wenn Sie beispielsweise Microsoft BizTalk Server nutzen, können Ihre Logik-Apps eine Verbindung mit Ihrer BizTalk Server-Instanz herstellen und damit kommunizieren, indem der [BizTalk Server-Connector](#on-premises-connectors) verwendet wird. 
   Sie können dann mithilfe der [Integrationskonto-Connectors](#integration-account-connectors) BizTalk-ähnliche Vorgänge in Ihren Logik-Apps erweitern oder durchführen. 
 
-> [!NOTE] 
+> [!NOTE]
 > Die vollständige Liste der Connectors und die Referenzinformationen jedes Connectors, wie z.B. Aktionen, Trigger, die von einer Swagger-Beschreibung definiert wurden, und jegliche Limits finden Sie in der [Connectors-Übersicht](/connectors/). Preisinformationen finden Sie unter [Logik-Apps – Preise ](https://azure.microsoft.com/pricing/details/logic-apps/) und [Preismodell für Logik-Apps](../logic-apps/logic-apps-pricing.md). 
 
 <a name="built-ins"></a>
@@ -74,9 +76,9 @@ Im Folgenden sind integrierte Aktionen zur Verwendung von Datenausgaben mit den 
 
 |   |   | 
 |---|---| 
-| [![Symbol für integrierte Aktion][data-operations-icon]<br/>**Datenvorgänge**][data-operations-doc] | Ausführen von Vorgängen mit Daten: <p>- **Erstellen:** Erstellen einer einzelnen Ausgabe aus mehreren Eingaben mit verschiedenen Typen. <br>- **CSV-Tabelle erstellen:** Erstellen einer durch Trennzeichen getrennten Tabelle (CSV-Tabelle) aus einem Array mit JSON-Objekten. <br>- **HTML-Tabelle erstellen:** Erstellen einer HTML-Tabelle aus einem Array mit JSON-Objekten. <br>- **Array filtern:** Erstellen eines Arrays aus Elementen in einem anderen Array, die Ihren Kriterien entsprechen. <br>- **Verknüpfen:** Erstellen einer Zeichenfolge aus allen Elementen in einem Array und Trennen dieser Elemente mit dem angegebenen Trennzeichen. <br>- **JSON analysieren:** Erstellen von benutzerfreundlichen Token aus Eigenschaften und den zugehörigen Werten in JSON-Inhalten, sodass Sie diese Eigenschaften in Ihrem Workflow verwenden können. <br>- **Auswählen:** Erstellen eines Arrays mit JSON-Objekten durch Transformieren von Elementen oder Werten in einem anderen Array und Zuordnen dieser Elemente zu angegebenen Eigenschaften. | 
-| ![Symbol für integrierte Aktion][date-time-icon]<br/>**Datum und Uhrzeit** | Ausführen von Vorgängen mit Zeitstempeln: <p>- **Zu Zeit hinzufügen:** Hinzufügen der angegebenen Anzahl von Einheiten zu einem Zeitstempel. <br>- **Zeitzone konvertieren:** Konvertieren eines Zeitstempels von der Quellzeitzone in die Zielzeitzone. <br>- **Aktuelle Uhrzeit:** Zurückgeben des aktuellen Zeitstempels als Zeichenfolge. <br>- **Zukünftige Zeit abrufen:** Zurückgeben des aktuellen Zeitstempels plus der angegebenen Zeiteinheiten. <br>- **Vergangene Zeit abrufen:** Zurückgeben des aktuellen Zeitstempels abzüglich der angegebenen Zeiteinheiten. <br>- **Von Uhrzeit abziehen:** Subtrahieren einer Anzahl von Zeiteinheiten von einem Zeitstempel. |
-| [![Symbol für integrierte Aktion][variables-icon]<br/>**Variablen**][variables-doc] | Ausführen von Vorgängen mit Variablen: <p>- **An Arrayvariable anfügen:** Einfügen eines Werts als letztes Element in einem Array, das in einer Variable gespeichert ist. <br>- **An Zeichenfolgenvariable anfügen:** Einfügen eines Werts als letztes Zeichen in einer Zeichenfolge, die in einer Variable gespeichert ist. <br>- **Variablenwert verringern:** Verringern einer Variable um einen konstanten Wert. <br>- **Variable schrittweise erhöhen:** Erhöhen einer Variable um einen konstanten Wert. <br>- **Variable initialisieren:** Erstellen einer Variable und Deklarieren ihres Datentyps und Anfangswert. <br>- **Variable festlegen:** Zuweisen eines anderen Werts zu einer vorhandenen Variable. |
+| [![Symbol für integrierte Aktion][data-operations-icon]<br/>**Datenvorgänge**][data-operations-doc] | Ausführen von Vorgängen mit Daten: <p>- **Erstellen**: Erstellen einer einzelnen Ausgabe aus mehreren Eingaben mit verschiedenen Typen. <br>- **CSV-Tabelle erstellen**: Erstellen einer Tabelle mit durch Komma getrennten Werten (CSV-Tabelle) aus einem Array mit JSON-Objekten. <br>- **HTML-Tabelle erstellen**: Erstellen einer HTML-Tabelle aus einem Array mit JSON-Objekten. <br>- **Array filtern**: Erstellen eines Arrays aus Elementen in einem anderen Array, die Ihren Kriterien entsprechen. <br>- **Verknüpfen**: Erstellen einer Zeichenfolge aus allen Elementen in einem Array und Trennen dieser Elemente mit dem angegebenen Trennzeichen. <br>- **JSON analysieren**: Erstellen von benutzerfreundlichen Token aus Eigenschaften und den zugehörigen Werten in JSON-Inhalten, sodass Sie diese Eigenschaften in Ihrem Workflow verwenden können. <br>- **Auswählen**: Erstellen eines Arrays mit JSON-Objekten durch Transformieren von Elementen oder Werten in einem anderen Array und Zuordnen dieser Elemente zu angegebenen Eigenschaften. | 
+| ![Symbol für integrierte Aktion][date-time-icon]<br/>**Datum und Uhrzeit** | Ausführen von Vorgängen mit Zeitstempeln: <p>- **Zu Zeit hinzufügen**: Hinzufügen der angegebenen Anzahl von Einheiten zu einem Zeitstempel. <br>- **Zeitzone konvertieren**: Konvertiert einen Zeitstempel von der Quellzeitzone in die Zielzeitzone. <br>- **Aktuelle Zeit**: Gibt den aktuellen Zeitstempel als Zeichenfolge zurück. <br>- **Zukünftige Zeit abrufen**: Gibt den aktuellen Zeitstempel plus der angegebenen Zeiteinheiten zurück. <br>- **Vergangene Zeit abrufen**: Gibt den aktuellen Zeitstempel abzüglich der angegebenen Zeiteinheiten zurück. <br>- **Von Uhrzeit abziehen**: Subtrahiert eine Anzahl von Zeiteinheiten von einem Zeitstempel. |
+| [![Symbol für integrierte Aktion][variables-icon]<br/>**Variablen**][variables-doc] | Ausführen von Vorgängen mit Variablen: <p>- **An Arrayvariable anfügen**: Einfügen eines Werts als letztes Element in einem Array, das in einer Variablen gespeichert ist. <br>- **An Zeichenfolgenvariable anfügen**: Einfügen eines Werts als letztes Element in einer Zeichenfolge, die in einer Variablen gespeichert ist. <br>- **Variablenwert verringern**: Verringern einer Variablen um einen konstanten Wert. <br>- **Variable schrittweise erhöhen**: Erhöhen einer Variablen um einen konstanten Wert. <br>- **Variable initialisieren**: Erstellen einer Variablen und Deklarieren ihres Datentyps und Anfangswert. <br>- **Variable festlegen**: Zuweisen eines anderen Werts zu einer vorhandenen Variable. |
 |  |  | 
 
 <a name="managed-api-connectors"></a>
@@ -131,25 +133,36 @@ Ihre Logik-Apps können auf Unternehmenssysteme wie SAP und IBM MQ zugreifen:
 | [![API-Symbol][ibm-mq-icon]<br/>**IBM MQ**][ibm-mq-doc] | [![API-Symbol][sap-icon]<br/>**SAP**][sap-connector-doc] |
 ||| 
 
-## <a name="more-about-triggers-and-actions"></a>Weitere Informationen zu Triggern und Aktionen
+<a name="triggers-actions"></a>
 
-Einige Connectors umfassen *Trigger*, die Ihre Logik-App benachrichtigen, wenn bestimmte Ereignisse eintreten. Wenn diese Ereignisse eintreten, erstellt der Trigger eine Instanz der Logik-App und führt sie aus. Der FTP-Connector verfügt beispielsweise über den Trigger „Wenn eine Datei hinzugefügt oder geändert wird“, der Ihre Logik-App startet, wenn eine Datei aktualisiert wird. 
+## <a name="triggers-and-actions---more-info"></a>Weitere Informationen zu Triggern und Aktionen
 
-In Logic Apps stehen folgende Arten von Triggern zur Verfügung:  
+Connectors können *Trigger*, *Aktionen* oder beides bereitstellen. Ein *Trigger* ist der erste Schritt in jeder Logik-App und gibt in der Regel das Ereignis an, das den Trigger auslöst und die Ausführung der Logik-App startet. Der FTP-Connector beispielsweise verfügt über einen Trigger, der Ihre Logik-App startet, „wenn eine Datei hinzugefügt oder geändert wird“. Einige Trigger suchen regelmäßig nach dem angegebenen Ereignis oder den Daten und lösen aus, wenn das angegebene Ereignis oder die Daten erkannt wurden. Andere Trigger befinden sich im Wartezustand, lösen aber sofort aus, wenn ein bestimmtes Ereignis eintritt oder neue Daten verfügbar sind. Trigger übergeben außerdem alle erforderlichen Daten an Ihre Logik-App. Ihre Logik-App kann diese Daten im gesamten Workflow lesen und verwenden.
+Der Twitter-Connector beispielsweise verfügt über den Trigger „Wenn ein neuer Tweet gepostet wird“, der den Inhalt des Tweets an den Workflow Ihrer Logik-App übergibt. 
 
-* *Abfragetrigger:* Diese Trigger fragen den Dienst in bestimmten Intervallen auf neue Daten ab. 
+Wenn ein Trigger ausgelöst wird, erstellt Azure Logic Apps eine Instanz der Logik-App und beginnt mit der Ausführung der *Aktionen* im Workflow Ihrer Logik-App. Aktionen sind die Schritte, die auf den Trigger folgen und Aufgaben im Workflow Ihrer Logik-App ausführen. Sie können beispielsweise eine Logik-App erstellen, die Kundendaten aus einer SQL-Datenbank abruft und diese Daten in späteren Aktionen verarbeitet. 
 
-  Wenn neue Daten verfügbar sind, wird eine neue Instanz Ihrer Logik-App erstellt und mit den als Eingabe übergebenen Daten ausgeführt. 
+Nachfolgend sind die allgemeinen Triggerarten von Azure Logic Apps aufgelistet:
 
-* *Pushtrigger:* Diese Trigger lauschen auf den Eingang neuer Daten an einem Endpunkt oder auf das Eintreten eines Ereignisses, durch die eine neue Instanz Ihrer Logik-App erstellt und ausgeführt wird.
+* *Recurrence-Trigger*: Dieser Trigger wird nach einem festgelegten Zeitplan ausgeführt und ist nicht mit einem bestimmten Dienst oder System verknüpft.
 
-* *Wiederholungstrigger:* Dieser Trigger erstellt eine Instanz Ihrer Logik-App und führt sie nach einem festgelegten Zeitplan aus.
+* *Abruftrigger*: Dieser Trigger fragt anhand des angegebenen Zeitplans regelmäßig einen bestimmten Dienst oder ein bestimmtes System ab und sucht nach neuen Daten oder prüft, ob ein bestimmtes Ereignis aufgetreten ist. Wenn neue Daten verfügbar sind oder das jeweilige Ereignis aufgetreten ist, erstellt der Trigger eine neue Instanz der Logik-App und führt diese aus. Diese kann nun die übergebenen Daten als Eingabe verwenden.
 
-Connectors umfassen auch *Aktionen*, die Aufgaben im Workflow Ihrer Logik-App ausführen. So kann Ihre Logik-App etwa Daten lesen und diese in späteren Schritten der Logik-App verwenden. Genauer gesagt kann die Logik-App Kundendaten aus einer SQL-­Datenbank suchen und später im Workflow der Logik-App verarbeiten. 
+* *Pushtrigger*: Dieser Trigger wartet und lauscht, ob neue Daten verfügbar sind oder ein Ereignis eintritt. Wenn neue Daten verfügbar sind oder das jeweilige Ereignis aufgetreten ist, erstellt der Trigger eine neue Instanz der Logik-App und führt diese aus. Diese kann nun die übergebenen Daten als Eingabe verwenden.
 
-Weitere Informationen zu Triggern und Aktionen finden Sie in der [Übersicht über Connectors](connectors-overview.md). 
+<a name="custom"></a>
 
-## <a name="custom-apis-and-connectors"></a>Benutzerdefinierte APIs und Connectors 
+## <a name="connector-configuration"></a>Connector-Konfiguration
+
+Die Trigger und Aktionen der einzelnen Connectors verfügen über eigene Eigenschaften, die Sie konfigurieren müssen. Bei vielen Connectors müssen Sie zuerst eine *Verbindung* zum Zieldienst oder -system herstellen und Anmeldeinformationen zur Authentifizierung oder andere Konfigurationsdetails bereitstellen, bevor Sie einen Trigger oder eine Aktion in Ihrer Logik-App verwenden können. Beispielsweise müssen Sie eine Verbindung mit einem Twitter-Konto autorisieren, damit Sie auf Daten zugreifen oder Beiträge in Ihrem Namen posten können. 
+
+Bei Connectors, die OAuth verwenden, bedeutet das Erstellen einer Verbindung die Anmeldung beim Dienst (z.B. Office 365, Salesforce oder GitHub), wo das Zugriffstoken verschlüsselt und sicher in einem geheimen Azure-Speicher gespeichert wird. Andere Connectors (z.B. FTP und SQL) erfordern eine Verbindung mit Konfigurationsdetails wie Serveradresse, Benutzername und Kennwort. Diese Verbindungskonfigurationsdetails werden ebenfalls verschlüsselt und sicher gespeichert. 
+
+Verbindungen können solange auf den Zieldienst oder das Zielsystem zugreifen, wie der Dienst oder das System dies zulässt. Bei Diensten, die Azure Active Directory (AD)-OAuth-Verbindungen verwenden (z.B. Office 365 und Dynamics), aktualisiert Azure Logic Apps die Zugriffstoken unbegrenzt. Bei anderen Diensten gibt es unter Umständen eine zeitliche Begrenzung für die Verwendung eines Tokens durch Azure Logic Apps, nach der eine Aktualisierung erforderlich ist. Bei einigen Aktionen (z.B. Ändern des Kennworts) werden in der Regel alle Zugriffstoken ungültig.
+
+<a name="custom"></a>
+
+## <a name="custom-apis-and-connectors"></a>Benutzerdefinierte APIs und Connectors
 
 Zum Aufrufen von APIs, die benutzerdefinierten Code ausführen oder nicht als Connector verfügbar sind, können Sie die Logic Apps-Plattform erweitern, indem Sie [benutzerdefinierte API-Apps erstellen](../logic-apps/logic-apps-create-api-app.md). Sie können außerdem für *alle* REST- oder SOAP-basierten APIs [benutzerdefinierte Connectors erstellen](../logic-apps/custom-connector-overview.md), mit denen diese APIs in allen Logik-Apps in Ihrem Azure-Abonnement verfügbar werden.
 Um benutzerdefinierte API-Apps oder Connectors für alle Benutzer in Azure öffentlich zu machen, können Sie [Connectors für die Microsoft-Zertifizierung einreichen](../logic-apps/custom-connector-submit-certification.md).
@@ -160,14 +173,12 @@ Um benutzerdefinierte API-Apps oder Connectors für alle Benutzer in Azure öffe
 
 * Auf der [Benutzerfeedbackwebsite für Logic Apps](https://aka.ms/logicapps-wish) können Sie über Ideen abstimmen oder selbst Ideen für Azure Logic Apps einreichen.
 
-* Fehlen in der Dokumentation noch Artikel oder Details, die Ihrer Meinung nach wichtig sind? Falls ja, dann helfen Sie uns, indem Sie die vorhandenen Artikel ergänzen oder eigene erstellen. Die Dokumentation basiert auf Open Source und ist auf GitHub gehostet. Beginnen Sie mit dem [GitHub-Repository](https://github.com/Microsoft/azure-docs) der Azure-Dokumentation. 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Suchen der [vollständige Liste der Connectors](https://docs.microsoft.com/connectors)
 * [Erstellen Ihrer ersten Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [Erstellen benutzerdefinierter Connectors für Logik-Apps](https://docs.microsoft.com/connectors/custom-connectors/)
-* [Erstellen einer benutzerdefinierten API zur Verwendung mit Logik-Apps](../logic-apps/logic-apps-create-api-app.md)
+* [Erstellen benutzerdefinierter APIs zur Verwendung mit Logik-Apps](../logic-apps/logic-apps-create-api-app.md)
 
 <!--Misc doc links-->
 [gateway-doc]: ../logic-apps/logic-apps-gateway-connection.md "Herstellen einer Verbindung mit lokalen Datenquellen über Logik-Apps mit dem lokalen Datengateway"

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/015/2019
 ms.author: radeltch
-ms.openlocfilehash: 862e99b1ab44c097429dcf015b6f8c8ae023e6bc
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 02a97852a8dc659071c3484126b921d6f7106562
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225500"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662369"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs unter SUSE Linux Enterprise Server mit Azure NetApp Files für SAP-Anwendungen
 
@@ -58,7 +58,7 @@ ms.locfileid: "58225500"
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
-In diesem Artikel werden das Bereitstellen und Konfigurieren der virtuellen Computer, das Installieren des Clusterframeworks und das Installieren eines hochverfügbaren SAP NetWeaver 7.50-Systems mithilfe von [Azure NetApp Files](https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-introduction/) beschrieben.
+In diesem Artikel werden das Bereitstellen und Konfigurieren der virtuellen Computer, das Installieren des Clusterframeworks und das Installieren eines hochverfügbaren SAP NetWeaver 7.50-Systems mithilfe von [Azure NetApp Files (öffentliche Vorschau)](https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-introduction/) beschrieben.
 In den Beispielkonfigurationen, Installationsbefehlen usw. trägt die ASCS-Instanz die Nummer 00, die ERS-Instanz die Nummer 01, die primäre Anwendungsinstanz (PAS) die Nummer 02 und die Anwendungsinstanz (AAS) die Nummer 03. Es wird SAP-System-ID-QAS verwendet. 
 
 In diesem Artikel wird erläutert, wie Sie Hochverfügbarkeit für SAP NetWeaver-Anwendung mit Azure NetApp Files erreichen. Die Datenbankschicht wird in diesem Artikel nicht ausführlich behandelt.
@@ -274,7 +274,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    Name           : sap-suse-cluster-connector
    Version        : 3.1.0-8.1
    Arch           : noarch
-   Vendor         : SUSE LLC <https://www.suse.com/>
+   Vendor         : SUSE LLC &lt;https://www.suse.com/&gt;
    Support Level  : Level 3
    Installed Size : 45.6 KiB
    Installed      : Yes
@@ -926,7 +926,7 @@ Die folgenden Tests sind eine Kopie der Testfälle in den [Best Practices von SU
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
 
-   Führen Sie die folgenden Befehle als „<sapsid>adm“ aus, um die ASCS-Instanz zu migrieren.
+   Führen Sie die folgenden Befehle als „\<SAPS-ID>adm“ aus, um die ASCS-Instanz zu migrieren.
 
    <pre><code>
    anftstsapcl1:qasadm 53> sapcontrol -nr 00 -host anftstsapvh -user <b>qas</b>adm &lt;password&gt; -function HAFailoverToNode ""

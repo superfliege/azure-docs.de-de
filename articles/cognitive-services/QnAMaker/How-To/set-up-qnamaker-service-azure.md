@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 04/02/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 94e4d945593c2387b61011b0e7d4056f4af33e01
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 90e7abf229e0ee1ca396150fee0c1f0970d257aa
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437355"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876400"
 ---
 # <a name="create-a-qna-maker-service"></a>Erstellen eines QnA Maker-Diensts
 
@@ -62,6 +62,10 @@ Bei diesem Verfahren werden einige Azure-Ressourcen bereitgestellt. In Kombinati
 1. Nachdem die Bereitstellung abgeschlossen ist, sehen Sie die folgenden neu erstellten Ressourcen in Ihrem Abonnement.
 
     ![Im neuen QnA Maker-Dienst erstellte Ressource](../media/qnamaker-how-to-setup-service/resources-created.png)
+
+## <a name="region-of-management-service"></a>Region des Verwaltungsdiensts
+
+Der Verwaltungsdienst von QnA Maker, der nur für das Portal und die anfängliche Datenverarbeitung verwendet wird, ist nur in den USA (Westen) verfügbar. In diesem Dienst (USA, Westen) werden keine Kundendaten gespeichert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 84f74392b93212558851f89dab924ae3db5620ed
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a13d3b24cd7845de144183d9f2ea825e0e24219f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57995111"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883716"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Erste Schritte mit Azure Stream Analytics: Betrugsermittlung in Echtzeit
 
@@ -184,7 +184,7 @@ Nachdem Sie einen Datenstrom von Anrufereignissen eingerichtet haben, können Si
  
 3. Klicken Sie im Bereich auf **Datenstromeingabe hinzufügen**, und wählen Sie **Event Hub** aus. Geben Sie dann auf der Seite „Neue Eingabe“ die folgenden Informationen ein:
 
-   |**Einstellung**  |**Empfohlener Wert**  |**Beschreibung**  |
+   |**Einstellung**  |**Empfohlener Wert**  |**BESCHREIBUNG**  |
    |---------|---------|---------|
    |Eingabealias  |  CallStream   |  Geben Sie einen Namen zur Identifizierung der Auftragseingabe ein.   |
    |Abonnement   |  \<Ihr Abonnement\> |  Wählen Sie das Azure-Abonnement aus, in dem sich der erstellte Event Hub befindet.   |
@@ -292,7 +292,7 @@ Für diese Transformation sollte eine Sequenz von temporalen Fenstern erzeugt we
 
     Die Projektion enthält `System.Timestamp`, die einen Zeitstempel für das Ende jedes Fensters zurückgibt. 
 
-    Um anzugeben, dass Sie ein rollierendes Fenster verwenden möchten, verwenden Sie die Funktion [TUMBLINGWINDOW](https://msdn.microsoft.com/library/dn835055.aspx) in der Klausel `GROUP BY `. In der Funktion geben Sie eine Zeiteinheit (von einer Mikrosekunde bis zu einem Tag) und eine Fenstergröße (Anzahl der Einheiten) an. In diesem Beispiel besteht das rollierende Fenster aus 5-Sekunden-Intervallen, sodass Sie alle 5 Sekunden der Anrufe eine Zählung pro Land erhalten.
+    Um anzugeben, dass Sie ein rollierendes Fenster verwenden möchten, verwenden Sie die Funktion [TUMBLINGWINDOW](https://msdn.microsoft.com/library/dn835055.aspx) in der Klausel `GROUP BY`. In der Funktion geben Sie eine Zeiteinheit (von einer Mikrosekunde bis zu einem Tag) und eine Fenstergröße (Anzahl der Einheiten) an. In diesem Beispiel besteht das rollierende Fenster aus 5-Sekunden-Intervallen, sodass Sie alle 5 Sekunden der Anrufe eine Zählung pro Land erhalten.
 
 2. Klicken Sie erneut auf **Test**. Beachten Sie, dass die Zeitstempel in den Ergebnissen unter **WindowEnd** in 5-Sekunden-Schritten angegeben werden.
 
@@ -354,7 +354,7 @@ Wenn ein Blob Storage-Konto vorhanden ist, können Sie dieses verwenden. In dies
 
 4. Klicken Sie im Bereich **Ausgaben** auf **Hinzufügen**, und wählen Sie **Blobspeicher** aus. Geben Sie dann auf der Seite „Neue Ausgabe“ die folgenden Informationen ein:
 
-   |**Einstellung**  |**Empfohlener Wert**  |**Beschreibung**  |
+   |**Einstellung**  |**Empfohlener Wert**  |**BESCHREIBUNG**  |
    |---------|---------|---------|
    |Ausgabealias  |  CallStream-FraudulentCalls   |  Geben Sie einen Namen zur Identifizierung der Auftragsausgabe ein.   |
    |Abonnement   |  \<Ihr Abonnement\> |  Wählen Sie das Azure-Abonnement mit dem von Ihnen erstellten Speicherkonto aus. Das Speicherkonto kann sich im gleichen oder in einem anderen Abonnement befinden. In diesem Beispiel wird davon ausgegangen, dass Sie ein Speicherkonto im gleichen Abonnement erstellt haben. |
@@ -417,5 +417,5 @@ Weitere Informationen zu Stream Analytics allgemein finden Sie auch in diesen Ar
 
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
 * [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (in englischer Sprache)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics-Abfragesprachereferenz](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)

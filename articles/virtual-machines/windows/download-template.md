@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 574227e010a37340ce7248d2e4657f6a3f231d0a
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 4ef0c09d2d2ea2ed06708342ab45abcaf149c23e
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984527"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903113"
 ---
 # <a name="download-the-template-for-a-vm"></a>Herunterladen einer Vorlage für einen virtuellen Computer
 Wenn Sie über das Portal oder mithilfe von PowerShell einen virtuellen Computer in Azure erstellen, wird automatisch eine Resource Manager-Vorlage für Sie erstellt. Sie können diese Vorlage verwenden, um eine Bereitstellung schnell zu duplizieren. Die Vorlage enthält Informationen über alle Ressourcen in einer Ressourcengruppe. Bei virtuellen Computern bedeutet dies, dass die Vorlage alle Elemente enthält, die zur Unterstützung des virtuellen Computers in dieser Ressourcengruppe erstellt wurden – einschließlich der Netzwerkressourcen.
@@ -29,7 +29,7 @@ Wenn Sie über das Portal oder mithilfe von PowerShell einen virtuellen Computer
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 2. Wählen Sie im Menü auf der linken Seite die Option **Virtuelle Computer** aus.
 3. Wählen Sie den gewünschten virtuellen Computer aus der Liste aus.
-4. Wählen Sie **Automatisierungsskript** aus.
+4. Wählen Sie **Vorlage exportieren** aus.
 5. Klicken Sie im Menü oben auf der Seite auf **Herunterladen**, und speichern Sie die ZIP-Datei auf Ihrem lokalen Computer.
 6. Öffnen Sie die ZIP-Datei, und extrahieren Sie die Dateien in einen Ordner. Die ZIP-Datei enthält Folgendes:
    

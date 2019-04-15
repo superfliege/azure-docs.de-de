@@ -1,22 +1,23 @@
 ---
-title: Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit | Microsoft-Dokumentation
+title: Häufig gestellte Fragen zu B2B Collaboration – Azure Active Directory | Microsoft-Dokumentation
 description: Erhalten Sie Antworten auf häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
-ms.date: 10/29/2018
+ms.date: 04/02/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
-ms.reviewer: sasubram
+manager: celested
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a09ce7f677bcf54355e30fc273ee64b23b1d55c8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6cb7296ea4acfbf90d94b8f94a644b8a382b033b
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208162"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877362"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit
 
@@ -47,7 +48,7 @@ Dieses Feature ist für ein zukünftiges Release geplant. Sie können dann besti
 Es kann vorkommen, dass eine Organisation Benutzer der B2B-Zusammenarbeit hinzufügen, diese bei Bedarf für Anwendungen bereitstellen und erst dann die Einladungen senden möchte. Sie können die Einladungs-API für die B2B-Zusammenarbeit verwenden, um den Onboardingworkflow benutzerdefiniert anzupassen.
 
 ### <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Kann ich Gastbenutzer in der globalen Adressliste von Exchange sichtbar machen?
-Ja. Gastobjekte sind in der globalen Adressliste Ihres Unternehmens standardmäßig nicht sichtbar. Sie können jedoch Azure Active Directory PowerShell verwenden, um diese sichtbar zu machen. Informationen finden Sie unter **Kann ich Gastobjekte in der globalen Adressliste sichtbar machen?** im Artikel [Gastzugriff in Office 365-Gruppen](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6#PickTab=FAQ).
+Ja. Gastobjekte sind in der globalen Adressliste (GAL) Ihrer Organisation standardmäßig nicht sichtbar. Sie können jedoch Azure Active Directory PowerShell verwenden, um diese sichtbar zu machen. Weitere Informationen finden Sie unter [Kann ich Gastobjekte in der globalen Adressliste sichtbar machen?](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#can-i-make-guest-objects-visible-in-the-global-address-list)
 
 ### <a name="can-i-make-a-guest-user-a-limited-administrator"></a>Kann ich einen Gastbenutzer in einen eingeschränkten Administrator konvertieren?
 Absolut. Weitere Informationen finden Sie unter [Zuweisen einer Rolle für Gastbenutzer](add-guest-to-role.md).
@@ -59,12 +60,12 @@ B2B-Zusammenarbeitsbenutzer benötigen keinen Zugriff auf das Azure-Portal, sofe
  Ja. Gehen Sie beim Konfigurieren dieser Richtlinie umsichtig vor, um zu vermeiden, dass versehentlich der Zugriff für Mitglieder und Administratoren gesperrt wird.
 Um den Zugriff eines Gastbenutzers auf das [Azure-Portal](https://portal.azure.com) zu blockieren, verwenden Sie eine Richtlinie für bedingten Zugriff in der API für das klassische Microsoft Azure-Bereitstellungsmodell:
 1. Ändern Sie die Gruppe **Alle Benutzer**, sodass sie nur Mitglieder enthält.
-  ![Screenshot zum Ändern der Gruppe](media/faq/modify-all-users-group.png)
+   ![Screenshot der Gruppe „Alle Benutzer“, deren „UserType“ nicht gleich „Gast“ ist ](media/faq/modify-all-users-group.png)
 2. Erstellen Sie eine dynamische Gruppe mit Gastbenutzern.
-  ![Screenshot zum Erstellen von Gruppen](media/faq/group-with-guest-users.png)
+   ![Screenshot einer neuen Gruppe „Alle Gastbenutzer“](media/faq/group-with-guest-users.png)
 3. Richten Sie eine Richtlinie für bedingten Zugriff ein, um den Zugriff auf das Portal durch Gastbenutzer zu blockieren, wie im folgenden Video gezeigt wird:
   
-  > [!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user/Player] 
+   > [!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user/Player] 
 
 ### <a name="does-azure-ad-b2b-collaboration-support-multi-factor-authentication-and-consumer-email-accounts"></a>Unterstützt die Azure AD B2B-Zusammenarbeit Multi-Factor Authentication und E-Mail-Konten für Consumer?
 Ja. Sowohl Multi-Factor Authentication als auch E-Mail-Konten für Consumer werden für die Azure AD B2B-Zusammenarbeit unterstützt.
@@ -94,7 +95,7 @@ Ein Gastbenutzer kann einem beliebigen Identitätsanbieter zur Authentifizierung
 
 ### <a name="where-can-i-find-a-b2b-collaboration-community-to-share-solutions-and-to-submit-ideas"></a>Wo finde ich eine Community für die B2B-Zusammenarbeit, um dort Lösungen und Ideen zu teilen?
 Ihr Feedback zur Verbesserung der B2B-Zusammenarbeit nehmen wir sehr ernst. Teilen Sie uns Ihre Benutzerszenarien und bewährten Methoden mit, und lassen Sie uns wissen, was Ihnen an der Azure AD B2B-Zusammenarbeit gefällt. Werden Sie Teil der [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b) und posten Sie Diskussionsbeiträge.
- 
+ 
 Senden Sie uns zudem über die Website [B2B Collaboration Ideas](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas) Ihre Anregungen und Ideen, und stimmen Sie über zukünftige Features ab.
 
 ### <a name="can-we-send-an-invitation-that-is-automatically-redeemed-so-that-the-user-is-just-ready-to-go-or-does-the-user-always-have-to-click-through-to-the-redemption-url"></a>Können eine automatisch eingelöste Einladung gesendet werden, damit der Benutzer sofort loslegen kann, oder muss sich der Benutzer stets bis zur Einlöse-URL durchklicken?
@@ -107,7 +108,7 @@ Wenn der Partner über einen Azure AD-Mandanten verfügt, der über einen Verbun
 Wir heben die Unterschiede zwischen der B2B- und B2C-Zusammenarbeit (Business-to-Consumer) im Hinblick auf die unterstützten Identitäten auf. Die verwendete Identität ist kein gutes Kriterium für die Entscheidung zwischen der Verwendung von B2B und B2C. Informationen zur Auswahl der Option für die Zusammenarbeit finden Sie unter [Vergleich der B2B- und B2C-Zusammenarbeit in Azure Active Directory](compare-with-b2c.md).
 
 ### <a name="what-applications-and-services-support-azure-b2b-guest-users"></a>Welche Anwendungen und Dienste unterstützen Azure B2B-Gastbenutzer?
-Alle in Azure AD integrierten Anwendungen unterstützen Azure B2B-Gastbenutzer, aber sie müssen einen Mandantenendpunkt verwenden, um Gastbenutzer zu authentifizieren. Sie müssen möglicherweise auch [die Ansprüche im SAML-Token anpassen](claims-mapping.md), das ausgegeben wird, wenn sich ein Gastbenutzer bei der App authentifiziert. 
+Alle in Azure AD integrierten Anwendungen unterstützen Azure B2B-Gastbenutzer, aber sie müssen einen als Mandant eingerichteten Endpunkt verwenden, um Gastbenutzer zu authentifizieren. Sie müssen möglicherweise auch [die Ansprüche im SAML-Token anpassen](claims-mapping.md), das ausgegeben wird, wenn sich ein Gastbenutzer bei der App authentifiziert. 
 
 ### <a name="can-we-force-multi-factor-authentication-for-b2b-guest-users-if-our-partners-dont-have-multi-factor-authentication"></a>Kann Multi-Factor Authentication für B2B-Gastbenutzer erzwungen werden, wenn unsere Partner nicht über Multi-Factor Authentication verfügen?
 Ja. Weitere Informationen finden Sie unter [Bedingter Zugriff für Benutzer der B2B-Zusammenarbeit](conditional-access.md).
@@ -120,5 +121,5 @@ Informationen darüber, welche Lizenzen Ihre Organisation für die Verwendung vo
 
 ### <a name="next-steps"></a>Nächste Schritte
 
-- [Was ist die Azure AD B2B-Zusammenarbeit?](what-is-b2b.md)
+- [Was ist die Azure AD B2B-Zusammenarbeit?](what-is-b2b.md)
 

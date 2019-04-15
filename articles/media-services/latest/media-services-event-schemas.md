@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: reference
 ms.date: 02/13/2019
 ms.author: juliako
-ms.openlocfilehash: 8ad0efffc89a3c11f412d94b922401c23e84a3e5
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: f9fe689e6911c5e9497ee82132e8b70bd9aada7e
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268786"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630602"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Azure Event Grid-Schemas für Media Services-Ereignisse
 
@@ -84,7 +84,12 @@ Weitere Informationen enthalten die folgenden [Schemabeispiele](#event-schema-ex
 
 ### <a name="track-level-events"></a>Ereignisse auf Spurebene
 
-Ereignisse auf Spurebene werden pro Spur ausgelöst. Die Spurereignistypen sind:
+Ereignisse auf Spurebene werden pro Spur ausgelöst. 
+
+> [!NOTE]
+> Alle Ereignisse auf Spurebene werden ausgelöst, nachdem ein Liveencoder angeschlossen wurde.
+
+Die Ereignistypen auf der Spurebene sind:
 
 | Ereignistypen | BESCHREIBUNG |
 | ---------- | ----------- |
@@ -92,7 +97,7 @@ Ereignisse auf Spurebene werden pro Spur ausgelöst. Die Spurereignistypen sind:
 | Microsoft.Media.LiveEventIncomingStreamReceived | Media-Server empfängt den ersten Datenblock für jede Spur im Stream oder über die Verbindung. |
 | Microsoft.Media.LiveEventIncomingStreamsOutOfSync | Media-Server hat erkannt, dass Audio- und Videostreams nicht synchron sind. Verwenden Sie dies als Warnung, da die Darstellung für den Benutzer möglicherweise nicht beeinträchtigt ist. |
 | Microsoft.Media.LiveEventIncomingVideoStreamsOutOfSync | Media-Server hat erkannt, dass die beiden Videostreams von einem externen Encoder nicht mehr synchron sind. Verwenden Sie dies als Warnung, da die Darstellung für den Benutzer möglicherweise nicht beeinträchtigt ist. |
-| Microsoft.Media.LiveEventIngestHeartbeat | Wird alle 20 Sekunden für jede Spur veröffentlicht, wenn ein Liveereignis ausgeführt wird. Bietet eine Zusammenfassung der Erfassungsintegrität. |
+| Microsoft.Media.LiveEventIngestHeartbeat | Wird alle 20 Sekunden für jede Spur veröffentlicht, wenn ein Liveereignis ausgeführt wird. Bietet eine Zusammenfassung der Erfassungsintegrität.<br/><br/>Nachdem der Encoder anfänglich angeschlossen war, sendet das Heartbeatereignis weiterhin alle 20 Sekunden, unabhängig davon, ob der Encoder noch angeschlossen ist. |
 | Microsoft.Media.LiveEventTrackDiscontinuityDetected | Media-Server hat eine Diskontinuität in der eingehenden Spur erkannt. |
 
 Weitere Informationen enthalten die folgenden [Schemabeispiele](#event-schema-examples).

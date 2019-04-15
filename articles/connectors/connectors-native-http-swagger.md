@@ -11,12 +11,12 @@ ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
 tags: connectors
 ms.topic: article
 ms.date: 07/18/2016
-ms.openlocfilehash: de61443da41f1015b2890e9052f38e25d3bed86a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9408b66f74391b080ef46c758b07850b2ae8de57
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551967"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893391"
 ---
 # <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>Aufrufen von REST-Endpunkten mit dem Connector „HTTP + Swagger“ in Azure Logic Apps
 
@@ -28,7 +28,7 @@ Informationen zum Erstellen von Logik-Apps mit Connectors finden Sie unter [Erst
 
 Der Trigger und die Aktion „HTTP + Swagger“ funktionieren wie die [HTTP-Aktion](connectors-native-http.md), lassen sich im Logik-App-Designer aber besser verwenden, da sie die API-Struktur und Ausgaben der [Swagger-Metadaten](https://swagger.io) verfügbar machen. Sie können auch den „HTTP + Swagger“-Connector als Trigger verwenden. Wenn Sie einen Abruftrigger implementieren möchten, verwenden Sie das unter [Erstellen benutzerdefinierter APIs zum Aufrufen anderer APIs, Dienste und Systeme aus Logik-Apps](../logic-apps/logic-apps-create-api-app.md#polling-triggers) verwenden.
 
-Weitere Informationen über Logik-App-Trigger und -Aktionen finden Sie [hier](connectors-overview.md).
+Weitere Informationen über Logik-App-Trigger und -Aktionen finden Sie [hier](../connectors/apis-list.md).
 
 Im Folgenden finden Sie ein Beispiel der Verwendung des Vorgangs „HTTP + Swagger“ als Aktion in einem Workflow in einer Logik-App.
 
@@ -72,14 +72,14 @@ Im Folgenden finden Sie die Schritte zum Erstellen, Konfigurieren und Speichern 
 Im Folgenden finden Sie Details zu den von diesem „HTTP + Swagger“-Connector unterstützten Triggern und Aktionen.
 
 ## <a name="http--swagger-triggers"></a>„HTTP + Swagger“-Trigger
-Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. [Weitere Informationen zu Triggern finden Sie hier.](connectors-overview.md)  Der Connector „HTTP + Swagger“ verfügt über einen Trigger.
+Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann.  Der Connector „HTTP + Swagger“ verfügt über einen Trigger. Weitere Informationen zu Triggern finden Sie [hier](../connectors/apis-list.md).
 
 | Trigger | BESCHREIBUNG |
 | --- | --- |
 | HTTP + Swagger |Führt einen HTTP-Aufruf durch und gibt den Antwortinhalt zurück. |
 
 ## <a name="http--swagger-actions"></a>„HTTP + Swagger“-Aktionen
-Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. [Weitere Informationen zu Aktionen finden Sie hier.](connectors-overview.md)  Der Connector „HTTP + Swagger“ verfügt über eine mögliche Aktion.
+Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird.  Der Connector „HTTP + Swagger“ verfügt über eine mögliche Aktion. Weitere Informationen zu Aktionen finden Sie [hier](../connectors/apis-list.md).
 
 | Aktion | BESCHREIBUNG |
 | --- | --- |
@@ -123,8 +123,7 @@ Das Aufrufen verschiedener Aktionen löst unter Umständen bestimmte Antworten a
 | 404 |Nicht gefunden |
 | 500 |Interner Serverfehler. Unbekannter Fehler. |
 
-- - -
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md)
-* [Andere Connectors](apis-list.md)
+* [Suchen nach anderen Connectors](apis-list.md)

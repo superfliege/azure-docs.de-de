@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: fb3ed970b7f92e1cc06a9d1023e01f5888915e94
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 94465e95dbf5f2eb381c124349bf8fda6622a6c2
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088671"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650290"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Überwachen der Abonnementaktivität per Azure-Aktivitätsprotokoll
 
@@ -35,7 +35,6 @@ Sie können Ereignisse per Azure-Portal, Befehlszeilenschnittstelle, PowerShell-
 > [!NOTE]
 > Die [neueren Warnungen](../../azure-monitor/platform/alerts-overview.md) bieten eine erweiterte Benutzeroberfläche für die Erstellung und Verwaltung von Warnungsregeln für Aktivitätsprotokolle.  [Weitere Informationen](../../azure-monitor/platform/alerts-activity-log.md)
 
-
 ## <a name="categories-in-the-activity-log"></a>Kategorien im Aktivitätsprotokoll
 Das Aktivitätsprotokoll enthält verschiedene Kategorien von Daten. Umfassende Informationen zu den Schemas dieser Kategorien finden Sie in [diesem Artikel](../../azure-monitor/platform/activity-log-schema.md). Das umfasst:
 * **Administration**: Diese Kategorie enthält die Datensätze aller Erstellungs-, Aktualisierungs-, Lösch- und Aktionsvorgänge, die über Resource Manager ausgeführt wurden. Zu den Ereignissen in dieser Kategorie gehören das Erstellen eines virtuellen Computers und das Löschen einer Netzwerksicherheitsgruppe. Jede Aktion, die von einem Benutzer oder einer Anwendung mithilfe von Resource Manager ausgeführt wird, wird als Vorgang für einen bestimmten Ressourcentyp modelliert. Wenn der Vorgangstyp „Schreiben“, „Löschen“ oder „Aktion“ ist, werden die Datensätze zum Start und zum Erfolg oder Fehler dieses Vorgangs in der Kategorie „Administration“ aufgezeichnet. Die Kategorie „Administration“ enthält außerdem alle Änderungen an der rollenbasierten Zugriffssteuerung in einem Abonnement.
@@ -48,9 +47,11 @@ Das Aktivitätsprotokoll enthält verschiedene Kategorien von Daten. Umfassende 
 * **Richtlinie**: Diese Kategorie enthält Datensätze aller Aktionsvorgänge für Auswirkungen, die von Azure Policy ausgeführt werden. Beispiele für Ereignistypen, die in dieser Kategorie angezeigt werden, sind „Audit“ und „Deny“. Jede Aktion, die von Policy ausgeführt wird, ist als ein Vorgang für eine Ressource modelliert.
 
 ## <a name="event-schema-per-category"></a>Ereignisschema nach Kategorie
+
 [Lesen Sie diesen Artikel, um sich über die Grundlagen des Aktivitätsprotokoll-Ereignisschemas nach Kategorie zu informieren.](../../azure-monitor/platform/activity-log-schema.md)
 
 ## <a name="what-you-can-do-with-the-activity-log"></a>Möglichkeiten mit dem Aktivitätsprotokoll
+
 Hier sind einige Verwendungsmöglichkeiten für das Aktivitätsprotokoll aufgeführt:
 
 ![Azure-Aktivitätsprotokoll](./media/activity-logs-overview/Activity_Log_Overview_v3.png)
@@ -58,12 +59,13 @@ Hier sind einige Verwendungsmöglichkeiten für das Aktivitätsprotokoll aufgef�
 
 * Abfragen und Anzeigen des Protokolls im **Azure-Portal**
 * [Erstellen einer Warnung zu einem Aktivitätsprotokollereignis](../../azure-monitor/platform/activity-log-alerts.md)
-* Streamen zur Erfassung durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie Power BI [an einen **Event Hub**](../../azure-monitor/platform/activity-logs-stream-event-hubs.md).
+* [Streamen an einen **Event Hub**](../../azure-monitor/platform/activity-logs-stream-event-hubs.md) zur Erfassung durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie Power BI
 * Analysieren in Power BI mit dem [**Power BI-Inhaltspaket**](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)
 * [Speichern unter einem **Speicherkonto** zur Archivierung oder manuellen Untersuchung](../../azure-monitor/platform/archive-activity-log.md) Sie können die Aufbewahrungsdauer (in Tagen) mithilfe des **Protokollprofils** angeben.
 * Fragen Sie es per PowerShell-Cmdlet, CLI oder REST-API ab.
 
 ## <a name="query-the-activity-log-in-the-azure-portal"></a>Abfragen des Aktivitätsprotokolls im Azure-Portal
+
 Im Azure-Portal können Sie Ihr Aktivitätsprotokoll an mehreren Stellen anzeigen:
 * Das **Aktivitätsprotokoll**, auf das Sie zugreifen können, indem Sie im Navigationsbereich auf der linken Seite unter **Alle Dienste** nach dem Aktivitätsprotokoll suchen.
 * **Monitor** wird standardmäßig im linken Navigationsbereich angezeigt. Das Aktivitätsprotokoll ist ein Abschnitt von Azure Monitor.
@@ -86,6 +88,7 @@ Nachdem Sie eine Gruppe von Filtern definiert haben, können Sie eine Abfrage in
 Sie haben noch mehr Optionen, wenn Sie auf das Symbol **Protokolle** klicken, über das Ihre Aktivitätsprotokolldaten in der [Lösung zum Erfassen und Analysieren von Aktivitätsprotokollen](../../azure-monitor/platform/collect-activity-logs.md) angezeigt werden. Das Blatt „Aktivitätsprotokoll“ enthält eine einfache Filter-/Suchoberfläche für Protokolle. Mit der Funktion für Azure Monitor-Protokolle stehen Ihnen jedoch effektivere Möglichkeiten, Ihre Daten zu pivotieren, abzufragen und zu visualisieren zur Verfügung.
 
 ## <a name="export-the-activity-log-with-a-log-profile"></a>Exportieren des Aktivitätsprotokolls mit einem Protokollprofil
+
 Mit einem **Protokollprofil** wird gesteuert, wie das Aktivitätsprotokoll exportiert wird. Mit einem Protokollprofil können Sie Folgendes konfigurieren:
 
 * Wohin das Aktivitätsprotokoll gesendet wird (Speicherkonto oder Event Hubs)
@@ -102,13 +105,14 @@ Sie können ein Speicherkonto oder Event Hub-Namespace verwenden, das sich nicht
 >  Sie können derzeit keine Daten in einem Speicherkonto archivieren, das sich hinter einem geschützten virtuellen Netzwerk befindet.
 
 > [!WARNING]
-> Das Format der Protokolldaten im Speicherkonto wurde am 1. November 2018 in JSON Lines geändert. [Dieser Artikel enthält eine Beschreibung der Auswirkungen und der Aktualisierung Ihrer Tools zur Verarbeitung des neuen Formats.](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
+> Das Format der Protokolldaten im Speicherkonto wurde am 1. November 2018 in JSON Lines geändert. [Dieser Artikel enthält eine Beschreibung der Auswirkungen und der Aktualisierung Ihrer Tools zur Verarbeitung des neuen Formats.](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md)
 >
-> 
+>
 
 Diese Einstellungen können über die Option „Exportieren“ auf dem Blatt „Aktivitätsprotokoll“ im Portal konfiguriert werden. Sie können auch [mithilfe der Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931927.aspx), über PowerShell-Cmdlets oder über die Befehlszeilenschnittstelle programmgesteuert konfiguriert werden. Ein Abonnement kann nur über ein Protokollprofil verfügen.
 
 ### <a name="configure-log-profiles-using-the-azure-portal"></a>Konfigurieren von Protokollprofilen mit dem Azure-Portal
+
 Sie können das Aktivitätsprotokoll an einen Event Hub streamen oder in einem Speicherkonto speichern, indem Sie im Azure-Portal die Option „In Event Hub exportieren“ verwenden.
 
 1. Navigieren Sie zu **Aktivitätsprotokoll**, indem Sie das Menü auf der linken Seite des Portals verwenden.
@@ -117,7 +121,7 @@ Sie können das Aktivitätsprotokoll an einen Event Hub streamen oder in einem S
 2. Klicken Sie oben auf dem Blatt auf die Schaltfläche **In Event Hub exportieren**.
 
     ![Schaltfläche „Exportieren“ im Portal](./media/activity-logs-overview/activity-logs-portal-export-v2.png)
-3. Auf dem daraufhin angezeigten Blatt können Sie Folgendes auswählen:  
+3. Auf dem daraufhin angezeigten Blatt können Sie Folgendes auswählen:
    * Regionen, die für die Ereignisse exportiert werden sollen
    * das Speicherkonto, in dem Sie Ereignisse speichern möchten
    * die Anzahl der Tage, die diese Ereignisse im Speicher aufbewahrt werden sollen. Bei einer Einstellung von 0 Tagen werden die Protokolle unbegrenzt aufbewahrt.
@@ -132,13 +136,13 @@ Sie können das Aktivitätsprotokoll an einen Event Hub streamen oder in einem S
 
 #### <a name="get-existing-log-profile"></a>Abrufen eines vorhandenen Protokollprofils
 
-```
+```powershell
 Get-AzLogProfile
 ```
 
 #### <a name="add-a-log-profile"></a>Hinzufügen eines Protokollprofils
 
-```
+```powershell
 Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
 ```
 
@@ -152,7 +156,8 @@ Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resour
 | Category (Kategorie) |Nein  |Kommagetrennte Liste mit den Ereigniskategorien, die erfasst werden sollen. Mögliche Werte sind „Write“, „Delete“ und „Action“. |
 
 #### <a name="remove-a-log-profile"></a>Entfernen eines Protokollprofils
-```
+
+```powershell
 Remove-AzLogProfile -name my_log_profile
 ```
 
@@ -185,6 +190,6 @@ az monitor log-profiles delete --name <profile name>
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Weitere Informationen zum Aktivitätsprotokoll (bisher „Überwachungsprotokolle“)](../../azure-resource-manager/resource-group-audit.md)
 * [Stream the Azure Activity Log to Event Hubs (Streamen des Azure-Aktivitätsprotokolls auf Event Hubs)](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
-

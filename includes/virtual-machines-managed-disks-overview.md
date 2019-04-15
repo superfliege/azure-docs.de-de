@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 287ae3b8122dd2a1e43c31055ac0ea5b04dddb07
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: dfd91caf67592b349bd16bab673a3e45397ad282
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58190685"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58807633"
 ---
 ## <a name="benefits-of-managed-disks"></a>Vorteile von verwalteten Datenträgern
 
@@ -43,7 +43,7 @@ Sie können die [Rollenbasierte Zugriffssteuerung in Azure (RBAC)](../articles/r
 
 ### <a name="data-disks"></a>Datenträger
 
-Ein Datenträger für Daten ist ein verwalteter Datenträger, der zum Speichern von Anwendungsdaten oder anderen Daten, die Sie aufbewahren müssen, an einen virtuellen Computer angebunden ist. Datenträger werden als SCSI-Laufwerke registriert und mit einem von Ihnen ausgewählten Buchstaben gekennzeichnet. Jeder Datenträger weist eine maximale Kapazität von 4.095Gibibytes (GiB) auf. Die Größe des virtuellen Computers bestimmt die Anzahl der Datenträger, die Sie anfügen können, und den Typ des Speichers, den Sie zum Hosten der Datenträger verwenden können.
+Ein Datenträger für Daten ist ein verwalteter Datenträger, der zum Speichern von Anwendungsdaten oder anderen Daten, die Sie aufbewahren müssen, an einen virtuellen Computer angebunden ist. Datenträger werden als SCSI-Laufwerke registriert und mit einem von Ihnen ausgewählten Buchstaben gekennzeichnet. Jeder Datenträger weist eine maximale Kapazität von 32.767 GiB (Gibibyte) auf. Die Größe des virtuellen Computers bestimmt die Anzahl der Datenträger, die Sie anfügen können, und den Typ des Speichers, den Sie zum Hosten der Datenträger verwenden können.
 
 ### <a name="os-disks"></a>Betriebssystem-Datenträger
 
@@ -53,7 +53,7 @@ Dieser Datenträger weist eine maximale Kapazität von 2.048 GiB auf.
 
 ### <a name="temporary-disk"></a>Temporärer Datenträger
 
-Jeder virtuelle Computer enthält einen temporären Datenträger, der kein verwalteter Datenträger ist. Der temporäre Datenträger bietet kurzfristigen Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z.B. Seiten-oder Auslagerungsdateien zu speichern. Daten auf dem temporären Datenträger können während eines [Wartungsereignisses](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) verloren gehen oder wenn Sie eine [VM erneut bereitstellen](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json). Während eines erfolgreichen standardmäßigen Neustarts der VM bleiben die Daten auf dem virtuellen Datenträger erhalten. 
+Jeder virtuelle Computer enthält einen temporären Datenträger, der kein verwalteter Datenträger ist. Der temporäre Datenträger bietet kurzfristigen Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z.B. Seiten-oder Auslagerungsdateien zu speichern. Daten auf dem temporären Datenträger können während eines [Wartungsereignisses](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) verloren gehen oder wenn Sie eine [VM erneut bereitstellen](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json). Während eines erfolgreichen standardmäßigen Neustarts der VM bleiben die Daten auf dem virtuellen Datenträger erhalten.
 
 ## <a name="managed-disk-snapshots"></a>Momentaufnahmen eines verwalteten Datenträgers
 

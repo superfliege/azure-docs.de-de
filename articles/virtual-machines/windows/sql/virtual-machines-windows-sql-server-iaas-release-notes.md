@@ -13,16 +13,30 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 2/13/2019
-ms.openlocfilehash: d5c003b2588813f8e8a1dfc2923b9d4c8d8c6cc8
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: c46e2d4e2aa79d1d62d0361763911660349cfbb0
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820432"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762315"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>SQL Server auf Azure-VMs – Versionshinweise
 
 Mit Azure können Sie einen virtuellen Computer (VM) mit einem integrierten SQL Server-Image bereitstellen. In diesem Artikel sind die neuen Funktionen und Verbesserungen in den neuesten Versionen von [SQL Server auf virtuellen Azure-Computern](https://azure.microsoft.com/services/virtual-machines/sql-server/) zusammengefasst. Der Artikel enthält zudem wichtige Inhaltsaktualisierungen, die nicht in direktem Zusammenhang mit einer Version stehen, aber im gleichen Zeitraum veröffentlicht werden. Informationen zu Verbesserungen bei anderen Azure-Diensten finden Sie unter [Dienstupdates](https://azure.microsoft.com/updates).
+
+## <a name="march-2019"></a>März 2019
+
+### <a name="service-improvements"></a>Verbesserungen beim Dienst
+
+| Verbesserungen beim Dienst | Details |
+| --- | --- |
+| **Unterstützung von benutzerdefinierten Images** | Sie können jetzt die [SQL-IaaS-Erweiterung](virtual-machines-windows-sql-server-agent-extension.md#installation) für benutzerdefinierte Betriebssystem- und SQL-Images installieren, die die eingeschränkte Funktionalität [flexibler Lizenzierung](virtual-machines-windows-sql-ahb.md) bietet. Geben Sie bei der Registrierung Ihres benutzerdefinierten Images beim SQL-Ressourcenanbieter Ihren Lizenztyp als ‚AHUB‘ an, da es andernfalls zu einem Fehler bei der Registrierung kommt. Die Verwaltung über das Blatt „SQL-Konfiguration“ im Azure-Portal wird für benutzerdefinierte Images nicht unterstützt.   | 
+| **Unterstützung für benannte Instanzen** | Sie können jetzt die [SQL-IaaS-Erweiterung](virtual-machines-windows-sql-server-agent-extension.md#installation) mit einer benannten Instanz verwenden, wenn die Standardinstanz ordnungsgemäß deinstalliert wurde. | 
+| &nbsp; | &nbsp; |
+
+### <a name="documentation-improvements"></a>Verbesserungen bei der Dokumentation
+
+Keine
 
 
 ## <a name="february-2019"></a>Februar 2019
@@ -32,15 +46,9 @@ Mit Azure können Sie einen virtuellen Computer (VM) mit einem integrierten SQL 
 | Verbesserungen beim Dienst | Details |
 | --- | --- |
 | **Verbesserung beim Portal** | Es ist jetzt möglich, mithilfe des [Azure-Portals](virtual-machines-windows-sql-ahb.md#with-the-azure-portal-1) das Lizenzierungsmodell für eine SQL Server-VM von nutzungsbasierter Bezahlung in Bring-Your-Own-License zu ändern.|
-|**Vereinfachte Bereitstellung von Verfügbarkeitsgruppen mithilfe von Azure SQL VM CLI** | Es ist jetzt einfacher denn je, eine Verfügbarkeitsgruppe auf einer SQL Server-VM in Azure bereitzustellen. Azure SQL VM CLI ermöglicht Ihnen die Erstellung des WSFCs, des ILBs und des Verfügbarkeitsgruppenlisteners in Rekordzeit auf der Befehlszeile! Weitere Informationen finden Sie unter [Verwenden der Azure SQL-VM-Befehlszeilenschnittstelle zum Konfigurieren von Always On-Verfügbarkeitsgruppe für SQL Server auf einem virtuellen Azure-Computer](virtual-machines-windows-sql-availability-group-cli.md). | 
+|**Vereinfachte Bereitstellung von Verfügbarkeitsgruppen mithilfe von Azure SQL VM CLI** | Es ist jetzt einfacher denn je, eine Verfügbarkeitsgruppe auf einer SQL Server-VM in Azure bereitzustellen. [Azure SQL VM CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid) ermöglicht Ihnen die Erstellung des WSFCs, des ILBs und des Verfügbarkeitsgruppenlisteners in Rekordzeit auf der Befehlszeile! Weitere Informationen finden Sie unter [Verwenden der Azure SQL-VM-Befehlszeilenschnittstelle zum Konfigurieren von Always On-Verfügbarkeitsgruppe für SQL Server auf einem virtuellen Azure-Computer](virtual-machines-windows-sql-availability-group-cli.md). | 
 | &nbsp; | &nbsp; |
 
-### <a name="documentation-improvements"></a>Verbesserungen bei der Dokumentation
-
-| Verbesserungen bei der Dokumentation | Details |
-| --- | --- |
-|none | |
-| | |
 
 ## <a name="december-2018"></a>Dezember 2018
 

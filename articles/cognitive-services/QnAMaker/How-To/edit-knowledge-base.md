@@ -8,19 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 03/26/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: ade6737d2df37d35eefd0be77895a54e1cea433d
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 22d408204b69e0a564103efd29468c6f0d68d93a
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314873"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577203"
 ---
 # <a name="edit-a-knowledge-base-in-qna-maker"></a>Bearbeiten einer Wissensdatenbank in QnA Maker
 
 Mit QnA Maker können Sie die Inhalte Ihrer Wissensdatenbank auf einer benutzerfreundlichen Bearbeitungsoberfläche verwalten.
+
+<a name="add-datasource"></a>
 
 ## <a name="edit-your-knowledge-base-content"></a>Bearbeiten der Inhalte Ihrer Wissensdatenbank
 
@@ -52,7 +54,7 @@ Mit QnA Maker können Sie die Inhalte Ihrer Wissensdatenbank auf einer benutzerf
 
 ## <a name="add-a-qna-pair"></a>Hinzufügen eines Fragen-und-Antworten-Paars
 
-Wählen Sie **Fragen-und-Antworten-Paar hinzufügen** aus, um der Wissensdatenbanktabelle eine neue Zeile hinzuzufügen.
+Wählen Sie auf der Seite **Einstellungen** die Option **Fragen-und-Antworten-Paar hinzufügen** aus, um der Wissensdatenbanktabelle eine neue Zeile hinzuzufügen.
 
 ![Hinzufügen eines Fragen-und-Antworten-Paars](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
 

@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 730d32fd5b9451c2b4edfe0fb1e50c06c2156815
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a13ca362bf08b86297641061992f0820f0b624c5
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55159470"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916766"
 ---
-# <a name="define-a-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen OpenId Connect-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
+# <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen OpenId Connect-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -75,9 +75,9 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| client_id | JA | Die Anwendungs-ID des Identitätsanbieters. |
+| client_id | Ja | Die Anwendungs-ID des Identitätsanbieters. |
 | IdTokenAudience | Nein  | Die Zielgruppe von id_token. Wenn eine Angabe erfolgt, überprüft Azure AD B2C, ob das Token in einem Anspruch, der vom Identitätsanbieter zurückgegeben wurde, enthalten und mit dem angegebenen Token identisch ist. |
-| METADATA | JA | Eine URL, die auf ein JSON-Konfigurationsdokument, das gemäß der OpenId Connect Discovery-Spezifikation formatiert ist, verweist und auch als OpenId-Konfigurationsendpunkt bezeichnet wird. |
+| METADATA | Ja | Eine URL, die auf ein JSON-Konfigurationsdokument, das gemäß der OpenId Connect Discovery-Spezifikation formatiert ist, verweist und auch als OpenId-Konfigurationsendpunkt bezeichnet wird. |
 | ProviderName | Nein  | Der Name des Identitätsanbieters. |
 | response_types | Nein  | Der Antworttyp gemäß der OpenId Connect Core 1.0-Spezifikation. Mögliche Werte: `id_token`, `code` oder `token`. |
 | response_mode | Nein  | Die Methode, die der Identitätsanbieter verwendet, um das Ergebnis zurück an Azure AD B2C zu senden. Mögliche Werte: `query`, `form_post` (Standard) oder `fragment`. |
@@ -94,7 +94,7 @@ Das **CryptographicKeys**-Element enthält das folgende Attribut:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| client_secret | JA | Der geheime Clientschlüssel der Anwendung des Identitätsanbieters. Der kryptografische Schlüssel ist nur erforderlich, wenn die **response_type**-Metadaten auf `code` festgelegt sind. Azure AD B2C führt in diesem Fall einen weiteren Aufruf zum Austauschen des Autorisierungscode gegen ein Zugriffstoken durch. Wenn die Metadaten auf `id_token` festgelegt wurden, können Sie den kryptografischen Schlüssel weglassen.  |  
+| client_secret | Ja | Der geheime Clientschlüssel der Anwendung des Identitätsanbieters. Der kryptografische Schlüssel ist nur erforderlich, wenn die **response_type**-Metadaten auf `code` festgelegt sind. Azure AD B2C führt in diesem Fall einen weiteren Aufruf zum Austauschen des Autorisierungscode gegen ein Zugriffstoken durch. Wenn die Metadaten auf `id_token` festgelegt wurden, können Sie den kryptografischen Schlüssel weglassen.  |  
 
 ## <a name="redirect-uri"></a>Umleitungs-URI
  
@@ -106,7 +106,7 @@ Beispiele:
 
 - [Hinzufügen des Microsoft-Kontos (Microsoft Account, MSA) als Identitätsanbieter mithilfe benutzerdefinierter Richtlinien](active-directory-b2c-custom-setup-msa-idp.md)
 - [Anmelden mithilfe von Azure AD-Konten](active-directory-b2c-setup-aad-custom.md)
-- [Zulassen, dass Benutzer sich mithilfe von benutzerdefinierten Richtlinien bei einem mehrinstanzenfähigen Azure AD-Identitätsanbieter anmelden](active-directory-b2c-setup-commonaad-custom.md)
+- [Benutzern mithilfe von benutzerdefinierten Richtlinien die Anmeldung bei einem mehrinstanzenfähigen Azure AD-Identitätsanbieter ermöglichen](active-directory-b2c-setup-commonaad-custom.md)
 
  
 

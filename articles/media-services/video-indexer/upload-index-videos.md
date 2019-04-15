@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: f9bf23094f47f5c200f7a02f81a8e185f469c580
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e6dead0f08f50b32dd963832824d9166ff2467c0
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58516960"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893451"
 ---
 # <a name="upload-and-index-your-videos"></a>Hochladen und Indizieren Ihrer Videos  
 
@@ -61,7 +61,7 @@ Eine URL, die zum Benachrichtigen des Kunden über die folgenden Ereignisse (mit
     
         |NAME|BESCHREIBUNG|
         |---|---|
-        |id|Die Video-ID|
+        |id|Video-ID|
         |state|Videozustand|  
     - Beispiel: https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
 - Im Video identifizierte Person:
@@ -69,7 +69,7 @@ Eine URL, die zum Benachrichtigen des Kunden über die folgenden Ereignisse (mit
     
       |NAME|BESCHREIBUNG|
       |---|---|
-      |id| Die Video-ID|
+      |id| Video-ID|
       |faceId|Die Gesichts-ID, die im Videoindex angezeigt wird|
       |knownPersonId|Die Personen-ID, die innerhalb eines Gesichtsmodells eindeutig ist|
       |personName|Der Name der Person|
@@ -85,9 +85,9 @@ Eine URL, die zum Benachrichtigen des Kunden über die folgenden Ereignisse (mit
 
 Verwenden Sie diesen Parameter, wenn unformatierte oder externe Aufzeichnungen Hintergrundgeräusche enthalten. Dieser Parameter wird verwendet, um den Indizierungsprozess zu konfigurieren. Sie können die folgenden Werte angeben:
 
-- `Default`: Indizieren und Extrahieren von Erkenntnissen für Audio- und Videodaten
-- `AudioOnly`: Indizieren und Extrahieren von Erkenntnissen ausschließlich für Audiodaten (Videodaten werden ignoriert)
-- `DefaultWithNoiseReduction`: Indizieren und Extrahieren von Erkenntnissen aus Audio- und Videodaten mit Anwendung von Algorithmen für die Rauschunterdrückung auf den Audiodatenstrom
+- `Default` – Indizieren und Extrahieren von Erkenntnissen für Audio- und Videodaten
+- `AudioOnly` – Indizieren und Extrahieren von Erkenntnissen ausschließlich für Audiodaten (Videodaten werden ignoriert)
+- `DefaultWithNoiseReduction` – Indizieren und Extrahieren von Erkenntnissen aus Audio- und Videodaten mit Anwendung von Algorithmen für die Rauschunterdrückung auf den Audiodatenstrom
 
 Der Preis richtet sich nach der gewählten Indizierungsoption.  
 
@@ -175,7 +175,7 @@ public async Task Sample()
     var uploadRequestResult = await client.PostAsync($"{apiUrl}/{accountInfo.Location}/Accounts/{accountInfo.Id}/Videos?{queryParams}", content);
     var uploadResult = await uploadRequestResult.Content.ReadAsStringAsync();
 
-    // get the video id from the upload result
+    // get the video ID from the upload result
     string videoId = JsonConvert.DeserializeObject<dynamic>(uploadResult)["id"];
     Debug.WriteLine("Uploaded");
     Debug.WriteLine("Video ID:");
@@ -290,4 +290,4 @@ Die in der folgenden Tabelle aufgeführten Statuscodes können über den Uploadv
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Untersuchen der von der v2-API erstellten Azure Video Indexer-Ausgabe](video-indexer-output-json-v2.md)
+[Untersuchen der von der API erstellten Azure Video Indexer-Ausgabe](video-indexer-output-json-v2.md)

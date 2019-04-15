@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: diberry
-ms.openlocfilehash: aed7d4fedd4781eac8c127744e5fe93fb054b99d
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 672c9d43007f954d870f8195bcad63d9cee69523
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369716"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894456"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding: häufig gestellte Fragen (FAQ)
 
@@ -88,7 +88,7 @@ Unter [Azure Active Directory-Ressourcen](luis-how-to-collaborate.md#azure-activ
 
 Unerwartete Abfragevorhersageergebnisse basieren auf dem Zustand des veröffentlichten Modells. Um das Modell zu korrigieren, müssen Sie ggf. das Modell ändern, trainieren und erneut veröffentlichen. 
 
-Korrigieren des Modells beginnt mit [aktivem Lernen](luis-how-to-review-endoint-utt.md).
+Korrigieren des Modells beginnt mit [aktivem Lernen](luis-how-to-review-endpoint-utterances.md).
 
 Um das nicht deterministische Training zu entfernen, können Sie die [Anwendungsversionseinstellungen-API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) aktualisieren, um alle Trainingsdaten zu verwenden.
 
@@ -240,7 +240,7 @@ Das erste Problem besteht in der Feststellung, ob das Problem mit LUIS zusammenh
 #### <a name="resolve-issue-in-luis"></a>Beheben des Problems in LUIS
 Übergeben Sie die gleiche Äußerung an LUIS aus dem [LUIS-Endpunkt](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance). Wenn Sie eine Fehlermeldung erhalten, beheben Sie das Problem in LUIS, bis der Fehler nicht mehr auftritt. Häufige Fehler sind z.B. folgende:
 
-* `Out of call volume quota. Quota will be replenished in <time>.`: Dieses Problem deutet darauf hin, dass Sie entweder von einem Erstellungsschlüssel zu einem [Endpunktschlüssel](luis-how-to-azure-subscription.md) wechseln oder [Dienstarife](luis-how-to-azure-subscription.md#change-pricing-tier) ändern müssen. 
+* `Out of call volume quota. Quota will be replenished in <time>.` - Dieses Problem deutet darauf hin, dass Sie entweder von einem Erstellungsschlüssel zu einem [Endpunktschlüssel](luis-how-to-azure-subscription.md) wechseln oder [Dienstarife](luis-how-to-azure-subscription.md#change-pricing-tier) ändern müssen. 
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Beheben des Problems in Azure Bot Service
 
@@ -297,9 +297,9 @@ Zusätzliche [API-Erstellungsrouten](https://github.com/Azure-Samples/cognitive-
 
 Videos:
 * [Azure Friday bei der Build 2018: Cognitive Services – Sprache (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)
-* [Build 2018 AI Show - What’s New with Language Understanding Service (Build 2018 AI Show: Neuerungen bei Language Understanding Service (LUIS))](https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player)
+* [Build 2018 AI Show – What’s New with Language Understanding Service (Build 2018 AI Show: Neuerungen bei Language Understanding Service (LUIS))](https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player)
 * [Build 2018 Session – Bot Intelligence, Speech Capabilities, and NLU Best Practices (Build 2018 Session – Bot-Intelligence, Sprachfunktionen und bewährte Methoden für NLU)](https://channel9.msdn.com/events/Build/2018/BRK3208)
-* [Build 2018 - LUIS Updates (Build 2018: Neue LUIS-Features)](https://channel9.msdn.com/events/Build/2018/THR3118/player)
+* [Build 2018 – LUIS Updates (Build 2018: Neue LUIS-Features)](https://channel9.msdn.com/events/Build/2018/THR3118/player)
 
 Projekte:
 * Demo zum [Contoso Cafe-Bot](https://github.com/botbuilderbuild2018/build2018demo) – Quellcode auf GitHub

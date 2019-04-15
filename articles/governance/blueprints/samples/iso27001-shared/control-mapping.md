@@ -1,6 +1,6 @@
 ---
-title: 'Beispiel: ISO 27001-Blaupause – Steuerungszuordnung'
-description: Steuerungszuordnung des ISO 27001-Blaupausenbeispiels.
+title: 'Beispiel: Blaupause für „ISO 27001: Gemeinsame Dienste“ – Steuerelementzuordnung'
+description: 'Steuerelementzuordnung des Beispiels „Blaupause für ISO 27001: gemeinsame Dienste“, Azure-Richtlinien und RBAC.'
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,14 +8,14 @@ ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: f655db8643a16e6818f5becf25c8761fb4c9093b
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: 3ce755b62ce2ba0328852b551225ffa828a6c1bf
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58008016"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804682"
 ---
-# <a name="control-mapping-of-the-azure-blueprints-iso-27001-blueprint-sample"></a>Steuerungszuordnung des ISO 27001-Azure Blueprints-Blaupausenbeispiels
+# <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>Steuerelementzuordnung für das Beispiel „Blaupause für ISO 27001: gemeinsame Dienste“
 
 In diesem Artikel wird erläutert, wie das Azure Blueprints-Blaupausenbeispiel „ISO 27001: Gemeinsame Dienste“ den ISO 27001-Steuerungen zugeordnet wird. Weitere Informationen zu den Steuerungen finden Sie unter [ISO 27001](https://www.iso.org/isoiec-27001-information-security.html).
 
@@ -122,7 +122,7 @@ Wenn Sie wissen, wo Ihre Azure-Ressourcen möglicherweise nicht optimale kryptog
 
 ## <a name="a1241-event-logging"></a>A.12.4.1 Ereignisprotokollierung
 
-Mit dieser Blaupause können Sie sicherstellen, dass Systemereignisse protokolliert werden, indem sieben [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, mit denen die Protokolleinstellungen für Azure-Ressourcen überwacht werden. Mit einer zugewiesenen Richtlinie wird zudem überwacht, dass virtuelle Computer keine Protokolle an einen angegebenen Log Analytics-Arbeitsbereich senden.
+Mit dieser Blaupause können Sie sicherstellen, dass Systemereignisse protokolliert werden, indem Sie sieben [Azure Policy](../../../policy/overview.md)-Definitionen zuweisen, mit denen die Protokolleinstellungen für Azure-Ressourcen überwacht werden. Mit einer zugewiesenen Richtlinie wird zudem überwacht, dass virtuelle Computer keine Protokolle an einen angegebenen Log Analytics-Arbeitsbereich senden.
 
 - [Vorschau]: Bereitstellung des Dependency-Agents überwachen – VM-Image (Betriebssystem) nicht aufgelistet
 - [Vorschau]: Bereitstellung des Dependency-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet

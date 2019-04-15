@@ -12,14 +12,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 03/11/2019
 ms.author: juliako
-ms.openlocfilehash: 848da2996b71b137c6112225c9bef7e93b457c7d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ed2ae50aa9d7a26ed6e0569264ee981f7be35525
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57837234"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754558"
 ---
-# <a name="how-to-encode-with-a-custom-transform-by-using-net"></a>Codieren einer benutzerdefinierten Transformation mithilfe von .NET
+# <a name="how-to-encode-with-a-custom-transform---net"></a>Codieren mit einer benutzerdefinierten Transformation – .NET
 
 Bei der Codierung mit Azure Media Services können Sie mit einer der empfohlenen integrierten Voreinstellungen, basierend auf in der Branche bewährten Vorgehensweisen, schnell einsteigen, wie im Tutorial [Hochladen, Codieren und Streamen von Videos mithilfe von .NET](stream-files-tutorial-with-api.md) gezeigt. Sie können auch eine benutzerdefinierte Voreinstellung für Ihr spezielles Szenario oder Ihre Geräteanforderungen entwickeln.
 

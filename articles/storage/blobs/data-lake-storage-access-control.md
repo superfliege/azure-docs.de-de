@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: a102216a6a2a7dec471678e14f7050cb4ef41d77
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 4ba8977180e33256bfdc6652811495a02a9ef19c
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370107"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802954"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Zugriffssteuerung in Azure Data Lake Storage Gen2
 
@@ -27,9 +27,9 @@ RBAC-Rollenzuweisungen sind zwar ein effektiver Mechanismus zur Steuerung von Be
 
 Azure Storage bietet für Blobspeicher drei integrierte RBAC-Rollen: 
 
-- [Besitzer von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner-preview)
-- [Mitwirkender an Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview)
-- [Leser von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader-preview)
+- [Besitzer von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
+- [Mitwirkender an Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
+- [Leser von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader)
 
 Wenn einem Benutzer oder Dienstprinzipal RBAC-Datenberechtigungen entweder über eine dieser integrierten Rollen oder eine benutzerdefinierte Rolle erteilt werden, erfolgt die Auswertung dieser Berechtigungen zuerst bei Autorisierung einer Anforderung. Wenn der angeforderte Vorgang durch die RBAC-Zuweisungen des Aufrufers autorisiert wird, erfolgt die Berechtigungsauflösung sofort, ohne dass zusätzliche ACL-Prüfungen durchgeführt werden. Wenn der Aufrufer keine RBAC-Zuweisung hat oder der Vorgang der Anforderung nicht mit der zugewiesenen Berechtigung übereinstimmt, erfolgen alternativ ACL-Prüfungen, um festzustellen, ob der Aufrufer berechtigt ist, den gewünschten Vorgang durchzuführen.
 

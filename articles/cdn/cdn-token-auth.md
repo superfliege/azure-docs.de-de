@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
-ms.openlocfilehash: 6ff7b018cea8bedd93d3c9aef3b3250ecf5251b4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 75d6fb063a6cb5336a4d9945bf6a79a65ed25d40
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123724"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918891"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Schützen von Azure CDN-Assets mit Tokenauthentifizierung
 
@@ -33,7 +33,7 @@ Die Tokenauthentifizierung ist ein Mechanismus, mit dem Sie verhindern können, 
 
 Bei der Tokenauthentifizierung wird überprüft, ob Anforderungen von einer vertrauenswürdigen Website generiert werden. Dazu müssen die Anforderungen einen Tokenwert mit codierten Informationen zur anfordernden Person enthalten. Inhalte werden der anfordernden Person nur bereitgestellt, wenn die codierten Informationen die erforderlichen Voraussetzungen erfüllen. Andernfalls werden die Anforderungen abgelehnt. Sie können die Anforderungen einrichten, indem Sie einen oder mehrere der folgenden Parameter verwenden:
 
-- Land: Lassen Sie Anforderungen zu, die aus den Ländern stammen, die durch den [Ländercode](https://msdn.microsoft.com/library/mt761717.aspx) angegeben sind, oder verweigern Sie solche Anforderungen.
+- Land: Lassen Sie Anforderungen zu, die aus den Ländern stammen, die durch den [Ländercode](/previous-versions/azure/mt761717(v=azure.100)) angegeben sind, oder verweigern Sie solche Anforderungen.
 - URL: Lassen Sie nur Anforderungen zu, die der angegebenen Ressource oder dem Pfad entsprechen.
 - Host: Lassen Sie Anforderungen zu, die die im Anforderungsheader angegebenen Hosts verwenden, oder verweigern Sie solche Anforderungen.
 - Verweiser: Lassen Sie Anforderungen vom angegebenen Verweiser zu, oder verweigern Sie solche Anforderungen.
@@ -120,7 +120,7 @@ Im folgenden Flussdiagramm wird veranschaulicht, wie Azure CDN eine Clientanford
       > </tr>
       > <tr>
       >    <td><b>ec_country_allow</b></td> 
-      >    <td>Es sind nur Anforderungen zulässig, die aus einem oder mehreren der angegebenen Länder stammen. Anforderungen aus allen anderen Ländern werden abgelehnt. Verwenden Sie für jedes Land einen aus zwei Buchstaben bestehenden [Ländercode nach ISO 3166](https://msdn.microsoft.com/library/mt761717.aspx). Trennen Sie alle Länder jeweils mit einem Komma voneinander, und fügen Sie keine Leerzeichen ein. Beispiel: Wenn Sie den Zugriff nur aus den USA und aus Frankreich zulassen möchten, geben Sie `US,FR` ein.</td>
+      >    <td>Es sind nur Anforderungen zulässig, die aus einem oder mehreren der angegebenen Länder stammen. Anforderungen aus allen anderen Ländern werden abgelehnt. Verwenden Sie für jedes Land einen aus zwei Buchstaben bestehenden [Ländercode nach ISO 3166](/previous-versions/azure/mt761717(v=azure.100)). Trennen Sie alle Länder jeweils mit einem Komma voneinander, und fügen Sie keine Leerzeichen ein. Beispiel: Wenn Sie den Zugriff nur aus den USA und aus Frankreich zulassen möchten, geben Sie `US,FR` ein.</td>
       > </tr>
       > <tr>
       >    <td><b>ec_country_deny</b></td> 

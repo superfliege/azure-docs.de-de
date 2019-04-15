@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
 ms.author: magattus
-ms.openlocfilehash: 471a7e3704f10674c8a1d9bdf26df5f0aaf8519b
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: f6efec64b4e6659b822b76e0fd7f9cc71a164094
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093305"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917752"
 ---
 # <a name="restrict-azure-cdn-content-by-country"></a>Einschränken von Azure-CDN-Inhalten nach Land
 
@@ -47,7 +47,7 @@ Sie können Geofilterung durch Eingabe eines Schrägstrichs (/) auf alle Dateien
 Alle folgenden Verzeichnispfadfilter sind z.B. gültig:   
 */*                                 
 */Photos/*     
-*/Photos/Straßburg /*     
+*/Photos/Strasbourg/*     
 */Photos/Strasbourg/city.png*
 
 ### <a name="define-the-type-of-action"></a>Definieren des Aktionstyps
@@ -56,7 +56,7 @@ Wählen Sie in der Liste **AKTION** die Option **Zulassen** oder **Blockieren** 
 
 - **Zulassen**: Nur für Benutzer aus den angegebenen Ländern wird der von diesem rekursiven Pfad angeforderte Zugriff auf Ressourcen zugelassen.
 
-- **Blockieren:** Benutzern aus den angegebenen Ländern wird der von diesem rekursiven Pfad angeforderte Zugriff auf Ressourcen verweigert. Wenn keine anderen Länderfilteroptionen für diesen Standort konfiguriert wurden, wird der Zugriff für alle anderen Benutzer zugelassen.
+- **Blockieren**: Benutzern aus den angegebenen Ländern wird der von diesem rekursiven Pfad angeforderte Zugriff auf Ressourcen verweigert. Wenn keine anderen Länderfilteroptionen für diesen Standort konfiguriert wurden, wird der Zugriff für alle anderen Benutzer zugelassen.
 
 Eine Geofilterungsregel zum Blockieren des Pfads */Photos/Strasbourg/* filtert z.B. die folgenden Dateien:     
 *http://<endpoint>.azureedge.net/Photos/Strasbourg/1000.jpg*
@@ -110,5 +110,5 @@ Wählen Sie in der Länderfilterungsregel-Tabelle das Löschsymbol neben einer R
 
 * Auf einen relativen Pfad kann immer nur jeweils eine Regel angewendet werden. Sie können also nicht mehrere Länderfilter erstellen, die auf den gleichen relativen Pfad verweisen. Weil Länderfilter rekursiv sind, kann ein Ordner jedoch über mehrere Länderfilter verfügen. Anders ausgedrückt: Ein Unterordner eines zuvor konfigurierten Ordners kann einem anderen Länderfilter zugewiesen werden.
 
-* Das Geofilterungsfeature verwendet Ländercodes, um die Länder zu definieren, von denen aus eine Anforderung für ein sicheres Verzeichnis zugelassen oder blockiert wird. Obwohl Akamai- und Verizon-Profile größtenteils die gleichen Ländercodes unterstützen, gibt es einige Unterschiede. Weitere Informationen finden Sie unter [Azure CDN-Ländercodes](https://msdn.microsoft.com/library/mt761717.aspx). 
+* Das Geofilterungsfeature verwendet Ländercodes, um die Länder zu definieren, von denen aus eine Anforderung für ein sicheres Verzeichnis zugelassen oder blockiert wird. Obwohl Akamai- und Verizon-Profile größtenteils die gleichen Ländercodes unterstützen, gibt es einige Unterschiede. Weitere Informationen finden Sie unter [Azure CDN-Ländercodes](/previous-versions/azure/mt761717(v=azure.100)). 
 

@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: f09d18759478c6c07aa0aea82f8bd1707595aa63
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: ea5a6a70372571daf82e7639fc31c125d69fa44f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499079"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621429"
 ---
 # <a name="azure-media-services-release-notes"></a>Versionsanmerkungen zu Azure Media Services
 
@@ -42,13 +42,12 @@ Wir wünschen uns Feedback von unseren Kunden, damit wir Probleme beheben könne
 | Bei einigen Clients kann im Smooth Streaming-Manifest ein Problem mit einem Wiederholungstag auftreten. |Weitere Informationen finden Sie in [diesem Abschnitt](media-services-deliver-content-overview.md#known-issues). |
 | Media Services .NET SDK-Objekte können nicht serialisiert werden und funktionieren daher nicht mit Azure Cache for Redis. |Wenn Sie versuchen, das SDK-Objekt „AssetCollection“ zu serialisieren, um es Azure Cache for Redis hinzuzufügen, wird eine Ausnahme ausgelöst. |
 
-
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>REST-API-Versionsverlauf
 Informationen zum Versionsverlauf der Media Services-REST-API finden Sie unter [Azure Media Services – REST-API-Referenz].
 
 ## <a name="december-2018"></a>Dezember 2018
 
-Das Azure Media Services-Feature [Media Hyperlapse-Vorschau](media-services-hyperlapse-content.md) wird in Kürze eingestellt. Ab dem 19. Dezember 2018 erfolgen in Media Services keine Änderungen oder Verbesserungen von Media Hyperlapse mehr. Am 29. März 2019 wird das Feature eingestellt und ist dann nicht mehr verfügbar.
+Das Azure Media Services-Feature „Media Hyperlapse-Vorschau“ wird in Kürze eingestellt. Ab dem 19. Dezember 2018 erfolgen in Media Services keine Änderungen oder Verbesserungen von Media Hyperlapse mehr. Am 29. März 2019 wird das Feature eingestellt und ist dann nicht mehr verfügbar.
 
 ## <a name="october-2018"></a>Oktober 2018
 
@@ -260,7 +259,6 @@ Folgende neue Funktionen wurden angekündigt:
 
 * [Eine Vorschau der Livecodierung mit Media Services](media-services-manage-live-encoder-enabled-channels.md)
 * [Dynamisches Manifest](media-services-dynamic-manifest-overview.md)
-* [Eine Vorschau des Azure Media Hyperlapse-Medienprozessors](https://azure.microsoft.com/blog/?p=286281&preview=1&_ppp=61e1a0b3db)
 
 ## <a id="april_changes_15"></a>Release von April 2015
 ### <a name="general-media-services-updates"></a>Allgemeine Media Services-Updates

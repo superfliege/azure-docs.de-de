@@ -9,20 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/08/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: ee08f5e15180a618d1a9c48b7d59b9e1f8bc90ae
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: e93a81f2c081daa58a37b1e2823d7bf0cc5a6361
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329114"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883112"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Konfigurieren von Docker-Containern für Language Understanding 
 
 Die Laufzeitumgebung für LUIS-Container (**Language Understanding**) wird über die Argumente des Befehls `docker run` konfiguriert. LUIS verfügt über mehrere erforderliche Einstellungen sowie einige optionale Einstellungen. Es sind noch viele [Beispiele](#example-docker-run-commands) für den Befehl verfügbar. Die containerspezifischen Einstellungen sind die für [Eingabebereitstellung](#mount-settings) und Abrechnung. 
-
-Containereinstellungen sind [hierarchisch](#hierarchical-settings) und können mit [Umgebungsvariablen](#environment-variable-settings) oder [Befehlszeilenargumenten](#command-line-argument-settings) für Docker festgelegt werden.
 
 ## <a name="configuration-settings"></a>Konfigurationseinstellungen
 
@@ -103,11 +101,6 @@ In der folgenden Tabelle werden die unterstützten Einstellungen beschrieben.
 |Ja| `Input` | Zeichenfolge | Das Ziel der Eingabeeinbindung. Standardwert: `/input`. Dies ist der Speicherort der LUIS-Paketdateien. <br><br>Beispiel:<br>`--mount type=bind,src=c:\input,target=/input`|
 |Nein | `Output` | Zeichenfolge | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`. Dies ist der Speicherort der Protokolle. Dazu gehören auch LUIS-Abfrageprotokolle und -Containerprotokolle. <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="hierarchical-settings"></a>Hierarchische Einstellungen
-
-[!INCLUDE [Container shared configuration hierarchical settings](../../../includes/cognitive-services-containers-configuration-shared-hierarchical-settings.md)]
-
-
 ## <a name="example-docker-run-commands"></a>Beispiele für den Befehl „docker run“
 
 Die folgenden Beispiele verwenden die Konfigurationseinstellungen, um zu veranschaulichen, wie `docker run`-Befehle geschrieben und verwendet werden.  Nach dem Ausführen wird der Container so lange ausgeführt, bis Sie ihn [beenden](luis-container-howto.md#stop-the-container).
@@ -160,7 +153,7 @@ ApiKey={ENDPOINT_KEY}
 InstrumentationKey={INSTRUMENTATION_KEY}
 ```
 
-### <a name="logging-example-with-command-line-arguments"></a>Beispiel für die Protokollierung mit Befehlszeilenargumenten
+### <a name="logging-example"></a>Beispiel für die Protokollierung 
 
 Der folgende Befehl legt in `Logging:Console:LogLevel` die Protokollierungsstufe auf [`Information`](https://msdn.microsoft.com) fest. 
 
@@ -172,22 +165,7 @@ mcr.microsoft.com/azure-cognitive-services/luis:latest \
 Eula=accept \
 Billing={BILLING_ENDPOINT} \
 ApiKey={ENDPOINT_KEY} \
-Logging:Console:LogLevel=Information
-```
-
-### <a name="logging-example-with-environment-variable"></a>Beispiel für die Protokollierung mit Umgebungsvariablen
-
-Der folgende Befehl legt mithilfe der Umgebungsvariable `Logging:Console:LogLevel` die Protokollierungsstufe auf [`Information`](https://msdn.microsoft.com) fest. 
-
-```bash
-SET Logging:Console:LogLevel=Information
-docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 \
---mount type=bind,src=c:\input,target=/input \
---mount type=bind,src=c:\output,target=/output \
-mcr.microsoft.com/azure-cognitive-services/luis:latest \
-Eula=accept \
-Billing={BILLING_ENDPOINT} \
-ApiKey={APPLICATION_ID} \
+Logging:Console:LogLevel:Default=Information
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

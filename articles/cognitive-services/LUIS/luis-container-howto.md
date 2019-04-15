@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: edd035bc95cd2e694a7cfac39e447c63fce0f7d3
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: ca9b08cdccd43a093ca8b5001d3e30be0e5258b5
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520155"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894677"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Installieren und Ausführen von Docker-Containern für LUIS
  
@@ -24,7 +24,7 @@ Der LUIS-Container (Language Understanding) lädt Ihr trainiertes oder veröffen
 
 Das folgende Video veranschaulicht die Verwendung dieses Containers.
 
-[![Containerdemo für Cognitive Services](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
+[![CContainerdemo für Cognitive Services(./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -81,7 +81,7 @@ Wenn sich der Container auf dem [Hostcomputer](#the-host-computer) befindet, kö
 1. [Führen Sie den Container aus](##run-the-container-with-docker-run), und verwenden Sie dabei die erforderlichen Einstellungen für _Eingabebereitstellung_ und Abrechnung. Es sind noch weitere [Beispiele](luis-container-configuration.md#example-docker-run-commands) für den Befehl `docker run` verfügbar. 
 1. [Fragen Sie den Vorhersageendpunkt des Containers ab](#query-the-containers-prediction-endpoint). 
 1. Wenn Sie mit dem Container fertig sind, [importieren Sie die Endpunktprotokolle](#import-the-endpoint-logs-for-active-learning) aus der Ausgabebereitstellung in das LUIS-Portal und [beenden](#stop-the-container) den Container.
-1. Nutzen Sie im LUIS-Portal das [aktive Lernen](luis-how-to-review-endoint-utt.md) auf der Seite mit den **Äußerungen des Überprüfungsendpunkts**, um die App zu verbessern.
+1. Nutzen Sie im LUIS-Portal das [aktive Lernen](luis-how-to-review-endpoint-utterances.md) auf der Seite mit den **Äußerungen des Überprüfungsendpunkts**, um die App zu verbessern.
 
 Die im Container ausgeführte App kann nicht geändert werden. Um die App im Container zu ändern, müssen Sie sie über das [LUIS-Portal](https://www.luis.ai) oder die [LUIS-Erstellungs-APIs](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) im LUIS-Dienst ändern. Trainieren und/oder veröffentlichen Sie sie anschließend, laden Sie ein neues Paket herunter, und führen Sie den Container erneut aus.
 
@@ -166,7 +166,7 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 |{APPLICATION_ID} | Die Anwendungs-ID der veröffentlichten LUIS-App. |
 |{APPLICATION_ENVIRONMENT} | Die Umgebung der veröffentlichten LUIS-App. Verwenden Sie einen der folgenden Werte:<br/>```PRODUCTION```<br/>```STAGING``` |
 |{AUTHORING_KEY} | Der Erstellungsschlüssel des LUIS-Kontos für die veröffentlichte LUIS-App.<br/>Sie finden Ihren Erstellungsschlüssel im LUIS-Portal auf der Seite **Benutzereinstellungen**. |
-|{AZURE_REGION} | Die entsprechende Azure-Region:<br/><br/>```westus```: USA, Westen<br/>```westeurope```: Europa, Westen<br/>```australiaeast```: Australien, Osten |
+|{AZURE_REGION} | Die entsprechende Azure-Region:<br/><br/>```westus``` - USA, Westen<br/>```westeurope``` - Europa, Westen<br/>```australiaeast``` - Australien, Osten |
 
 Verwenden Sie den folgenden cURL-Befehl, um das veröffentlichte Paket herunterzuladen. Verwenden Sie dabei Ihre eigenen Werte:
 
@@ -194,7 +194,7 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 |{APPLICATION_ID} | Die Anwendungs-ID der trainierten LUIS-Anwendung. |
 |{APPLICATION_VERSION} | Die Anwendungsversion der trainierten LUIS-Anwendung. |
 |{AUTHORING_KEY} | Der Erstellungsschlüssel des LUIS-Kontos für die veröffentlichte LUIS-App.<br/>Sie finden Ihren Erstellungsschlüssel im LUIS-Portal auf der Seite **Benutzereinstellungen**.  |
-|{AZURE_REGION} | Die entsprechende Azure-Region:<br/><br/>```westus```: USA, Westen<br/>```westeurope```: Europa, Westen<br/>```australiaeast```: Australien, Osten |
+|{AZURE_REGION} | Die entsprechende Azure-Region:<br/><br/>```westus``` - USA, Westen<br/>```westeurope``` - Europa, Westen<br/>```australiaeast``` - Australien, Osten |
 
 Verwenden Sie den folgenden cURL-Befehl, um das trainierte Paket herunterzuladen:
 
@@ -268,7 +268,7 @@ Die Abfrageparameter legen fest, was auf welche Weise in der Abfrageantwort zur�
 |`timezoneOffset`|number|Das „timeZoneOffset“ ermöglicht das [Ändern der Zeitzone](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity), die von der vordefinierten datetimeV2-Entität verwendet wird.|
 |`verbose`|boolean|Gibt bei Festlegung auf TRUE alle Absichten und deren Bewertungen zurück. Der Standardwert ist FALSE, bei dem nur die Hauptabsicht zurückgegeben wird.|
 |`staging`|boolean|Gibt bei Festlegung auf TRUE die Abfrage aus den Ergebnissen der Stagingumgebung zurück. |
-|`log`|boolean|Protokolliert Abfragen, die später für [aktives Lernen](luis-how-to-review-endoint-utt.md) verwendet werden können. Der Standardwert ist TRUE.|
+|`log`|boolean|Protokolliert Abfragen, die später für [aktives Lernen](luis-how-to-review-endpoint-utterances.md) verwendet werden können. Der Standardwert ist TRUE.|
 
 ### <a name="query-published-app"></a>Abfragen veröffentlichter Apps
 
@@ -299,9 +299,9 @@ Der Versionsname enthält maximal 10 Zeichen, die auch in einer URL zulässig w�
 Wenn eine Ausgabebereitstellung für den LUIS-Container angegeben wird, werden Protokolldateien von App-Abfragen im Ausgabeverzeichnis gespeichert, wobei {INSTANCE_ID} die Container-ID ist. Das Abfrageprotokoll für die App enthält die Abfrage, die Antwort und die Zeitstempel für jede Vorhersageabfrage, die an den LUIS-Container gesendet wurde. 
 
 Der folgende Pfad veranschaulicht die geschachtelte Verzeichnisstruktur für die Protokolldateien des Containers.
-`
+```
 /output/luis/{INSTANCE_ID}/
-`
+```
  
 Wählen Sie Ihre App im LUIS-Portal aus, und wählen Sie dann **Endpunktprotokolle importieren** aus, um diese Protokolle hochzuladen. 
 

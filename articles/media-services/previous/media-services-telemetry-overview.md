@@ -12,16 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 5f33249496c9a4fc8a094e64f15c8d95da69194b
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 8e8b493881662483e66dd835d1cc68a471b18454
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294874"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803306"
 ---
 # <a name="azure-media-services-telemetry"></a>Azure Media Services-Telemetrie  
+
+
+> [!NOTE]
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 Mit Azure Media Services (AMS) können Sie auf Telemetrie-/Metrikdaten zugreifen. Mit der aktuellen Version der AMS können Sie Telemetriedaten für **Kanal**-, **StreamingEndpoint**- und **Archive**-Live-Entitäten sammeln. 
 

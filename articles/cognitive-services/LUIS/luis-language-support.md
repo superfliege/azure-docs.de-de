@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 735835d16eb14c3847f36ecb6f46c08c0a8928ef
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 10fe5d90e7a7a59a1b543209a37b998376fdda1e
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339515"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757654"
 ---
 # <a name="language-and-region-support-for-luis"></a>Sprach- und Regionsunterstützung für LUIS
 
@@ -105,10 +105,10 @@ Die folgenden Kulturen weisen benutzerdefinierte Tokenizer-Versionen auf:
 |Deutsch<br>`de-de`|1.0.1|Wendet die Tokenisierung auf Wörter an, indem bei Leerzeichen eine Trennung erfolgt.<br> Wenn ein Benutzer `Ich fahre einen krankenwagen` als Äußerung eingibt, bleibt es ein einzelnes Token. Daher ist `krankenwagen` als eine einzelne Entität gekennzeichnet. |
 
 ### <a name="migrating-between-tokenizer-versions"></a>Migrieren zwischen Tokenizer-Versionen
+<!--
+Your first choice is to change the tokenizer version in the app file, then import the version. This action changes how the utterances are tokenized but allows you to keep the same app ID. 
 
-Ihre erste Option ist es, die Tokenizer-Version in der App-Datei zu ändern und dann die Version zu importieren. Diese Aktion ändert die Art und Weise, wie die Tokenisierung für die Äußerungen erfolgt, ermöglicht es Ihnen aber, dieselbe App-ID zu behalten. 
-
-Tokenizer JSON für 1.0.0. Beachten Sie den Wert der Eigenschaft für `tokenizerVersion`. 
+Tokenizer JSON for 1.0.0. Notice the property value for  `tokenizerVersion`. 
 
 ```JSON
 {
@@ -157,7 +157,7 @@ Tokenizer JSON für 1.0.0. Beachten Sie den Wert der Eigenschaft für `tokenizer
 }
 ```
 
-Tokenizer JSON für Version 1.0.1. Beachten Sie den Wert der Eigenschaft für `tokenizerVersion`. 
+Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersion`. 
 
 ```JSON
 {
@@ -205,5 +205,8 @@ Tokenizer JSON für Version 1.0.1. Beachten Sie den Wert der Eigenschaft für `t
     "settings": []
 }
 ```
+-->
 
-Die zweite Option ist der [Import der Datei als neue App](luis-how-to-start-new-app.md#import-an-app-from-file), anstelle einer Version. Diese Aktion bedeutet, dass die neue App eine andere App-ID besitzt, aber die in der Datei angegebene Tokenizer-Version verwendet. 
+Die Tokenisierung erfolgt auf App-Ebene. Die Tokenisierung auf Versionsebene wird nicht unterstützt. 
+
+[Importieren Sie die Datei als neue App](luis-how-to-start-new-app.md#import-an-app-from-file), anstelle einer Version. Diese Aktion bedeutet, dass die neue App eine andere App-ID besitzt, aber die in der Datei angegebene Tokenizer-Version verwendet. 

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: cfaf0bf20449262fcebb6cefc1b0a499c6190ae8
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d1c65b590fd68f68fdaeb110c0fd00e0c5a6649a
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861169"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756464"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Schnellstart: Testen von Content Moderator im Web
 
@@ -69,5 +69,5 @@ Sie können auch mit den nächsten Schritten fortfahren, um sich über die Verwe
 
 Erfahren Sie, wie Sie die Moderations-APIs selbst in Ihrer App verwenden.
 - Implementieren Sie die Bildmoderation. Nutzen Sie die [API-Konsole](try-image-api.md) oder den [C#-Schnellstart](image-moderation-quickstart-dotnet.md), um Bilder zu überprüfen und anzügliche sowie nur für Erwachsene geeignete Inhalte mithilfe von Tags, Zuverlässigkeitsbewertungen und anderen extrahierten Informationen zu erkennen.
-- Implementieren Sie die Textmoderation. Nutzen Sie die [API-Konsole](try-text-api.md) oder den [C#-Schnellstart](text-moderation-quickstart-dotnet.md), um Textinhalte auf obszöne, computergestützte unerwünschte Textklassifizierung (Vorschau) und personenbezogene Informationen zu überprüfen. 
+- Implementieren Sie die Textmoderation. Nutzen Sie die [API-Konsole](try-text-api.md) oder den [C#-Schnellstart](text-moderation-quickstart-dotnet.md), um Textinhalte auf obszöne, computergestützte unerwünschte Textklassifizierung (Vorschau) und personenbezogene Daten zu überprüfen.
 - Implementieren Sie die Videomoderation. Befolgen Sie die [Anleitung zur Videomoderation für C#](video-moderation-api.md), um Videos zu scannen und potenziell jugendgefährdende und freizügige Inhalte zu erkennen. 

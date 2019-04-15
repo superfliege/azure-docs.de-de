@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 8e887409c35619261544b92395301ce06a033e8b
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: a89df98224634c08c84cb059eb58e64e3c7febf7
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992735"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801265"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Erstellen von Verwaltungsgruppen zum Organisieren und Verwalten von Ressourcen
 
@@ -37,14 +37,14 @@ Die Verwaltungsgruppe kann über das Portal, mithilfe von PowerShell oder mithil
 
 1. Klicken Sie auf der Hauptseite auf **Neue Verwaltungsgruppe**.
 
-   ![Hauptgruppe](./media/main.png)
+   ![Seite für die Arbeit mit Verwaltungsgruppen](./media/main.png)
 
 1. Füllen Sie das Feld für die Verwaltungsgruppen-ID aus.
 
    - Die **ID der Verwaltungsgruppe** ist der eindeutige Bezeichner des Verzeichnisses, der zum Übermitteln von Befehlen für diese Verwaltungsgruppe verwendet wird. Dieser Bezeichner kann nach der Erstellung nicht bearbeitet werden, da er im gesamten Azure-System zum Identifizieren dieser Gruppe verwendet wird.
    - Im Feld für den Anzeigenamen wird der Name angegeben, der im Azure-Portal angezeigt wird. Beim Erstellen der Verwaltungsgruppe gibt es ein optionales Feld für einen separaten Anzeigenamen, der jederzeit geändert werden kann.  
 
-   ![Erstellen](./media/create_context_menu.png)  
+   ![Bereich „Optionen“ zum Erstellen einer neuen Verwaltungsgruppe](./media/create_context_menu.png)  
 
 1. Wählen Sie **Speichern** aus.
 

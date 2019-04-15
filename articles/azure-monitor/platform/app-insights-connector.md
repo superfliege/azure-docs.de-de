@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: magoedte
-ms.openlocfilehash: 4e91e193b3980901e7778a8826989e729517a29a
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: aa1bb62e762925dcb5a0ee37b71602094e768137
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481755"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905697"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights-Connector-Verwaltungslösung (Veraltet)
 
@@ -41,6 +41,9 @@ Bei Verwendung der Lösung haben Sie folgende Möglichkeiten:
 - Korrelieren von Infrastrukturdaten mit Anwendungsdaten
 - Visualisieren von Anwendungsdaten mit Perspektiven bei der Protokollsuche
 - Pivotieren von Log Analytics-Daten zu Ihrer Application Insights-App im Azure-Portal
+
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="connected-sources"></a>Verbundene Quellen
 
@@ -94,11 +97,11 @@ Klicken Sie auf die Kachel **Application Insights**, um das **Application Insigh
 Das Dashboard enthält die in der Tabelle aufgeführten Blätter. Auf jedem Blatt sind bis zu 10 Einträge aufgeführt, die die Kriterien des Blatts für den angegebenen Bereich und Zeitraum erfüllen. Sie können eine Protokollsuche durchführen, mit der alle Einträge zurückgegeben werden, wenn Sie unten auf dem Blatt auf **Alle anzeigen** oder auf die Blattüberschrift klicken.
 
 
-| **Spalte** | **Beschreibung** |
+| **Column** | **BESCHREIBUNG** |
 | --- | --- |
-| Anwendungen – Anzahl von Anwendungen | Zeigt die Anzahl von Anwendungen in Anwendungsressourcen an. Außerdem werden die Anwendungsnamen und jeweils die Anzahl von Anwendungsdatensätzen aufgeführt. Klicken Sie auf die Zahl, um eine Protokollsuche nach <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName</code> durchzuführen. <br><br>  Klicken Sie auf einen Anwendungsnamen, um eine Protokollsuche für die Anwendung auszuführen, bei der die Anwendungsdatensätze pro Host, Datensätze nach Telemetrietyp und alle Daten nach Typ (basierend auf dem letzten Tag) angezeigt werden. |
-| Datenvolume – Vom Host gesendete Daten | Zeigt die Anzahl von Computerhosts an, die Daten senden. Außerdem werden die Computerhosts und für jeden Host die Datensatzanzahl aufgeführt. Klicken Sie auf die Zahl, um eine Protokollsuche nach <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code> durchzuführen. <br><br> Klicken Sie auf einen Computernamen, um eine Protokollsuche für den Host durchzuführen, bei der die Anwendungsdatensätze pro Host, Datensätze nach Telemetrietyp und alle Daten nach Typ (basierend auf dem letzten Tag) angezeigt werden. |
-| Verfügbarkeit – Webtest-Ergebnisse | Zeigt ein Ringdiagramm für Webtest-Ergebnisse an, um „Bestanden“ oder „Nicht bestanden“ anzugeben. Klicken Sie auf das Diagramm, um eine Protokollsuche nach <code>ApplicationInsights &#124; where TelemetryType == "Availability" &#124; summarize AggregatedValue = sum(SampledCount) by AvailabilityResult</code> durchzuführen. <br><br> In den Ergebnissen ist für alle Tests die Anzahl von bestandenen und nicht bestandenen Prüfungen angegeben. Dabei werden alle Web-Apps mit Datenverkehr während der letzten Minute angezeigt. Klicken Sie auf einen Anwendungsnamen, um eine Protokollsuche mit Details zu nicht erfolgreichen Webtests anzuzeigen. |
+| Anwendungen – Anzahl von Anwendungen | Zeigt die Anzahl von Anwendungen in Anwendungsressourcen an. Außerdem werden die Anwendungsnamen und jeweils die Anzahl von Anwendungsdatensätzen aufgeführt. Klicken Sie auf die Zahl, um eine Protokollsuche durchzuführen für <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName</code> <br><br>  Klicken Sie auf einen Anwendungsnamen, um eine Protokollsuche für die Anwendung auszuführen, bei der die Anwendungsdatensätze pro Host, Datensätze nach Telemetrietyp und alle Daten nach Typ (basierend auf dem letzten Tag) angezeigt werden. |
+| Datenvolume – Vom Host gesendete Daten | Zeigt die Anzahl von Computerhosts an, die Daten senden. Außerdem werden die Computerhosts und für jeden Host die Datensatzanzahl aufgeführt. Klicken Sie auf die Zahl, um eine Protokollsuche durchzuführen für <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code> <br><br> Klicken Sie auf einen Computernamen, um eine Protokollsuche für den Host durchzuführen, bei der die Anwendungsdatensätze pro Host, Datensätze nach Telemetrietyp und alle Daten nach Typ (basierend auf dem letzten Tag) angezeigt werden. |
+| Verfügbarkeit – Webtest-Ergebnisse | Zeigt ein Ringdiagramm für Webtest-Ergebnisse an, um „Bestanden“ oder „Nicht bestanden“ anzugeben. Klicken Sie auf das Diagramm, um eine Protokollsuche durchzuführen für <code>ApplicationInsights &#124; where TelemetryType == "Availability" &#124; summarize AggregatedValue = sum(SampledCount) by AvailabilityResult</code> <br><br> In den Ergebnissen ist für alle Tests die Anzahl von bestandenen und nicht bestandenen Prüfungen angegeben. Dabei werden alle Web-Apps mit Datenverkehr während der letzten Minute angezeigt. Klicken Sie auf einen Anwendungsnamen, um eine Protokollsuche mit Details zu nicht erfolgreichen Webtests anzuzeigen. |
 | Serveranforderungen – Anforderungen pro Stunde | Zeigt ein Liniendiagramm mit den Serveranforderungen pro Stunde für verschiedene Anwendungen an. Zeigen Sie im Diagramm auf eine Linie, um die Top 3 der Anwendungen anzuzeigen, die für einen bestimmten Zeitpunkt Anforderungen erhalten. Außerdem wird eine Liste mit den Anwendungen angezeigt, die Anforderungen erhalten, sowie die Anzahl von Anforderungen für die ausgewählte Periode. <br><br>Klicken Sie auf den Graphen, um eine Protokollsuche nach <code>ApplicationInsights &#124; where TelemetryType == "Request" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> durchzuführen. Hiermit wird ein ausführlicheres Liniendiagramm zu den Serveranforderungen pro Stunde für verschiedene Anwendungen angezeigt. <br><br> Klicken Sie in der Liste auf eine Anwendung, um eine Protokollsuche nach <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> durchzuführen. Hiermit werden eine Liste mit Anforderungen, Diagramme für Anforderungen in Abhängigkeit der Zeit und Dauer und eine Liste mit Antwortcodes von Anforderungen angezeigt.   |
 | Fehler – Fehlerhafte Anforderungen pro Stunde | Zeigt ein Liniendiagramm mit Informationen zu den fehlerhaften Anforderungen pro Stunde an. Zeigen Sie auf das Diagramm, um die Top 3 der Anwendungen mit fehlerhaften Anforderungen für einen bestimmten Zeitpunkt anzuzeigen. Außerdem wird eine Liste mit den Anwendungen und der jeweiligen Anzahl von fehlerhaften Anforderungen angezeigt. Klicken Sie auf das Diagramm, um eine Protokollsuche nach <code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> durchzuführen. Hiermit wird ein ausführlicheres Liniendiagramm mit Informationen zu fehlerhaften Anwendungsanforderungen angezeigt. <br><br>Klicken Sie in der Liste auf einen Eintrag, um eine Protokollsuche nach <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> durchzuführen. Hiermit werden fehlerhafte Anforderungen, Diagramme für fehlerhafte Anforderungen in Abhängigkeit der Zeit und Dauer und eine Liste mit Antwortcodes von fehlerhaften Anforderungen angezeigt. |
 | Ausnahmen – Ausnahmen pro Stunde | Zeigt ein Liniendiagramm zu den Ausnahmen pro Stunde an. Zeigen Sie auf das Diagramm, um die Top 3 der Anwendungen mit Ausnahmen für einen bestimmten Zeitpunkt anzuzeigen. Außerdem wird eine Liste mit den Anwendungen und der jeweiligen Anzahl von Ausnahmen angezeigt. Klicken Sie auf das Diagramm, um eine Protokollsuche nach <code>ApplicationInsights &#124; where TelemetryType == "Exception" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> durchzuführen. Hiermit wird ein ausführlicheres Liniendiagramm mit Ausnahmen angezeigt. <br><br>Klicken Sie in der Liste auf einen Eintrag, um eine Protokollsuche nach <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Exception"</code> durchzuführen. Hiermit werden eine Liste mit Ausnahmen, Diagramme für Ausnahmen in Abhängigkeit der Zeit und für fehlerhafte Anforderungen und eine Liste mit Ausnahmetypen angezeigt.  |
@@ -280,25 +283,25 @@ $Subscription_workspace = "Workspace Subscription Name"
 $ResourceGroup_workspace = "Workspace ResourceGroup"
 $Workspace = "Workspace Name"
 
-Connect-AzureRmAccount
-Set-AzureRmContext -SubscriptionId $Subscription_app
-$AIApp = Get-AzureRmApplicationInsights -ResourceGroupName $ResourceGroup_app -Name $Application 
-Set-AzureRmContext -SubscriptionId $Subscription_workspace
-Remove-AzureRmOperationalInsightsDataSource -WorkspaceName $Workspace -ResourceGroupName $ResourceGroup_workspace -Name $AIApp.Id
+Connect-AzAccount
+Set-AzContext -SubscriptionId $Subscription_app
+$AIApp = Get-AzApplicationInsights -ResourceGroupName $ResourceGroup_app -Name $Application 
+Set-AzContext -SubscriptionId $Subscription_workspace
+Remove-AzOperationalInsightsDataSource -WorkspaceName $Workspace -ResourceGroupName $ResourceGroup_workspace -Name $AIApp.Id
 ```
 
 Mit dem folgenden PowerShell-Skript, das einen REST-API-Aufruf startet, können Sie eine Liste von Anwendungen abrufen. 
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 $Tenant = "TenantId"
 $Subscription_workspace = "Workspace Subscription Name"
 $ResourceGroup_workspace = "Workspace ResourceGroup"
 $Workspace = "Workspace Name"
 $AccessToken = "AAD Authentication Token" 
 
-Set-AzureRmContext -SubscriptionId $Subscription_workspace
-$LAWorkspace = Get-AzureRmOperationalInsightsWorkspace -ResourceGroupName $ResourceGroup_workspace -Name $Workspace
+Set-AzContext -SubscriptionId $Subscription_workspace
+$LAWorkspace = Get-AzOperationalInsightsWorkspace -ResourceGroupName $ResourceGroup_workspace -Name $Workspace
 
 $Headers = @{
     "Authorization" = "Bearer $($AccessToken)"

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/11/2019
+ms.date: 03/28/2019
 ms.author: kumud
-ms.openlocfilehash: d914242b6a29e05e5b97ad11a1bde6f894113e43
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: ee0dc1b9879c8a26c7f3e48cc8daf6ae3511b27a
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382561"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578525"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Übersicht: Azure Load Balancer Standard
 
@@ -73,6 +73,9 @@ Wenn [alle Tests des gesamten Back-End-Pools zu Fehlern führen](load-balancer-c
 Ausführliche Informationen finden Sie unter [Lastenausgleichs-Integritätstests](load-balancer-custom-probe-overview.md).
 
 ### <a name="az"></a>Verfügbarkeitszonen
+
+>[!IMPORTANT]
+>Informationen zu verwandten Themen finden Sie unter [Verfügbarkeitszonen](../availability-zones/az-overview.md), einschließlich aller regionsspezifischen Informationen.
 
 Standard Load Balancer unterstützt zusätzliche Funktionen in Regionen, in denen Verfügbarkeitszonen verfügbar sind.  Diese Funktionen ergänzen alle Funktionen, die Standard Load Balancer bereitstellt.  Verfügbarkeitszonenkonfigurationen sind für einen öffentlichen und internen Standard Load Balancer verfügbar.
 

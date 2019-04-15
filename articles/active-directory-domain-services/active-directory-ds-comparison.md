@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: ergreenl
-ms.openlocfilehash: 5cfcbba58b4e4416a2f1a56adcbe21eeacb15a85
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fbd876ad46342dec7e2e73b92d3aafbd37cc205b
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55152154"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892295"
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>So entscheiden Sie, ob die Azure AD Domain Services für Ihren Anwendungsfall geeignet sind
 Mit den Azure AD Domain Services können Sie Ihre Workloads in Azure-Infrastrukturdiensten bereitstellen, ohne sich über die Wartung der Identitätsinfrastruktur in Azure Gedanken machen zu müssen. Dieser verwaltete Dienst unterscheidet sich von einer typischen Windows Server Active Directory-Bereitstellung, die Sie selbst bereitstellen und verwalten. Der Dienst ist einfach bereitzustellen und bietet eine automatisierte Systemüberwachung und Wartung. Wir verbessern den Dienst fortlaufend, um Unterstützung für gängige Bereitstellungsszenarios hinzuzufügen.
@@ -39,17 +39,17 @@ Die folgende Tabelle dient als Entscheidungshilfe bei der Auswahl zwischen der V
 | [**Verwalteter Dienst**](active-directory-ds-comparison.md#managed-service) |**&#x2713;** |**&#x2715;** |
 | [**Sichere Bereitstellungen**](active-directory-ds-comparison.md#secure-deployments) |**&#x2713;** |Der Administrator muss die Bereitstellung absichern. |
 | [**DNS-Server**](active-directory-ds-comparison.md#dns-server) |**&#x2713;** (verwalteter Dienst) |**&#x2713;** |
-| [**Domain or Enterprise administrator privileges**](active-directory-ds-comparison.md#domain-or-enterprise-administrator-privileges) |**&#x2715;** |**&#x2713;** |
+| [**Domänen- oder Unternehmensadministratorrechte**](active-directory-ds-comparison.md#domain-or-enterprise-administrator-privileges) |**&#x2715;** |**&#x2713;** |
 | [**Domänenbeitritt**](active-directory-ds-comparison.md#domain-join) |**&#x2713;** |**&#x2713;** |
 | [**Domänenauthentifizierung mithilfe von NTLM und Kerberos**](active-directory-ds-comparison.md#domain-authentication-using-ntlm-and-kerberos) |**&#x2713;** |**&#x2713;** |
 | [**Eingeschränkte Kerberos-Delegierung**](active-directory-ds-comparison.md#kerberos-constrained-delegation)|Ressourcenbasiert|Ressourcen- und kontobasiert|
 | [**Benutzerdefinierte OE-Struktur**](active-directory-ds-comparison.md#custom-ou-structure) |**&#x2713;** |**&#x2713;** |
 | [**Schemaerweiterungen**](active-directory-ds-comparison.md#schema-extensions) |**&#x2715;** |**&#x2713;** |
 | [**AD-Domänen-/Gesamtstrukturvertrauensstellungen**](active-directory-ds-comparison.md#ad-domain-or-forest-trusts) |**&#x2715;** |**&#x2713;** |
-| [**LDAP read**](active-directory-ds-comparison.md#ldap-read) |**&#x2713;** |**&#x2713;** |
+| [**LDAP-Lesevorgänge**](active-directory-ds-comparison.md#ldap-read) |**&#x2713;** |**&#x2713;** |
 | [**Sicheres LDAP (LDAPS)**](active-directory-ds-comparison.md#secure-ldap) |**&#x2713;** |**&#x2713;** |
-| [**LDAP write**](active-directory-ds-comparison.md#ldap-write) |**&#x2715;** |**&#x2713;** |
-| [**Group Policy**](active-directory-ds-comparison.md#group-policy) |**&#x2713;** |**&#x2713;** |
+| [**LDAP-Schreibvorgänge**](active-directory-ds-comparison.md#ldap-write) |**&#x2715;** |**&#x2713;** |
+| [**Gruppenrichtlinie**](active-directory-ds-comparison.md#group-policy) |**&#x2713;** |**&#x2713;** |
 | [**Geografisch verteilte Bereitstellungen**](active-directory-ds-comparison.md#geo-dispersed-deployments) |**&#x2715;** |**&#x2713;** |
 
 #### <a name="managed-service"></a>Verwalteter Dienst
@@ -115,9 +115,9 @@ Es gibt Anwendungsfälle, bei denen möglicherweise einige der Funktionen einer 
 >
 >
 
-Wir haben [Richtlinien für die Bereitstellung von Windows Server Active Directory auf virtuellen Azure-Computern](https://msdn.microsoft.com/library/azure/jj156090.aspx) veröffentlicht, um DIY-Installationen zu vereinfachen.
+Wir haben [Richtlinien für die Bereitstellung von Windows Server Active Directory auf virtuellen Azure-Computern](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) veröffentlicht, um DIY-Installationen zu vereinfachen.
 
 ## <a name="related-content"></a>Verwandte Inhalte
 * [Features: Azure AD Domain Services](active-directory-ds-features.md)
-* [Bereitstellungsszenarios: Azure AD Domain Services](active-directory-ds-scenarios.md)
-* [Richtlinien für die Bereitstellung von Windows Server Active Directory auf virtuellen Azure-Computern](https://msdn.microsoft.com/library/azure/jj156090.aspx)
+* [Bereitstellungsszenarien: Azure AD Domain Services](active-directory-ds-scenarios.md)
+* [Richtlinien für die Bereitstellung von Windows Server Active Directory auf virtuellen Azure-Computern](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)

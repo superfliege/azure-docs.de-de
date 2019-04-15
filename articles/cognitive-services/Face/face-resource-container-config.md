@@ -9,20 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 4215b008af21a3473a1d2dcef5f73a1b19133215
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 73fc17ae5c65cd1a6ce47a18cbe17e6c338b7aaf
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821558"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882122"
 ---
 # <a name="configure-face-docker-containers"></a>Konfigurieren von Docker-Containern für die Gesichtserkennung
 
 Die Runtimeumgebung für Container für die **Gesichtserkennung** wird über die Argumente des Befehls `docker run` konfiguriert. Dieser Container verfügt über mehrere erforderliche Einstellungen sowie einige optionale Einstellungen. Es sind noch viele [Beispiele](#example-docker-run-commands) für den Befehl verfügbar. Die containerspezifischen Einstellungen sind die für die Abrechnung. 
-
-Containereinstellungen sind [hierarchisch](#hierarchical-settings) und können mit [Umgebungsvariablen](#environment-variable-settings) oder [Befehlszeilenargumenten](#command-line-argument-settings) für Docker festgelegt werden.
 
 ## <a name="configuration-settings"></a>Konfigurationseinstellungen
 
@@ -82,7 +80,7 @@ Die Speicherszenarien und die zugehörigen Konfigurationseinstellungen werden vo
 
 | NAME | Datentyp | BESCHREIBUNG |
 |------|-----------|-------------|
-| `StorageScenario` | Zeichenfolge | Das vom Container unterstützte Speicherszenario. Folgende Werte sind verfügbar:<br/>`Memory`: Standardwert. Der Container verwendet nicht persistenten und nicht verteilten Speicher im Arbeitsspeicher für die temporäre Nutzung durch einen einzelnen Knoten. Wenn der Container beendet oder entfernt wird, wird der Speicher für diesen Container zerstört.<br/>`Azure`: Der Container verwendet Azure-Ressourcen für die Speicherung. Wenn der Container beendet oder entfernt wird, wird der Speicher für diesen Container beibehalten.|
+| `StorageScenario` | Zeichenfolge | Das vom Container unterstützte Speicherszenario. Folgende Werte sind verfügbar:<br/>`Memory` - Standardwert. Der Container verwendet nicht persistenten und nicht verteilten Speicher im Arbeitsspeicher für die temporäre Nutzung durch einen einzelnen Knoten. Wenn der Container beendet oder entfernt wird, wird der Speicher für diesen Container zerstört.<br/>`Azure` - Der Container verwendet Azure-Ressourcen für die Speicherung. Wenn der Container beendet oder entfernt wird, wird der Speicher für diesen Container beibehalten.|
 | `ConnectionStringOfAzureStorage` | Zeichenfolge | Die Verbindungszeichenfolge für die Azure Storage-Ressource, die vom Container verwendet wird.<br/>Diese Einstellung gilt nur, wenn `Azure` für die Konfigurationseinstellung `StorageScenario` angegeben wurde. |
 | `ConnectionStringOfCosmosMongo` | Zeichenfolge | Die MongoDB-Verbindungszeichenfolge für die Azure Cosmos DB-Ressource, die vom Container verwendet wird.<br/>Diese Einstellung gilt nur, wenn `Azure` für die Konfigurationseinstellung `StorageScenario` angegeben wurde. |
 
@@ -127,10 +125,6 @@ Die genaue Syntax für den Bereitstellungspunkt auf dem Host variiert je nach Be
 |Nicht zulässig| `Input` | Zeichenfolge | Wird von Containern für die Gesichtserkennung nicht verwendet.|
 |Optional| `Output` | Zeichenfolge | Das Ziel der Ausgabeeinbindung. Standardwert: `/output`. Dies ist der Speicherort der Protokolle. Beinhaltet Containerprotokolle. <br><br>Beispiel:<br>`--mount type=bind,src=c:\output,target=/output`|
 
-## <a name="hierarchical-settings"></a>Hierarchische Einstellungen
-
-[!INCLUDE [Container shared configuration hierarchical settings](../../../includes/cognitive-services-containers-configuration-shared-hierarchical-settings.md)]
-
 ## <a name="example-docker-run-commands"></a>Beispiele für den Befehl „docker run“ 
 
 Die folgenden Beispiele verwenden die Konfigurationseinstellungen, um zu veranschaulichen, wie `docker run`-Befehle geschrieben und verwendet werden.  Nach dem Ausführen wird der Container so lange ausgeführt, bis Sie ihn [beenden](face-how-to-install-containers.md#stop-the-container).
@@ -163,23 +157,13 @@ Im Folgenden finden Sie Docker-Beispiele für den Container für die Gesichtserk
   ApiKey={BILLING_KEY} 
   ```
 
-### <a name="logging-example-with-command-line-arguments"></a>Beispiel für die Protokollierung mit Befehlszeilenargumenten
+### <a name="logging-example"></a>Beispiel für die Protokollierung 
 
   ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face \
   Eula=accept \
   Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} \
-  Logging:Console:LogLevel=Information
-  ```
-
-### <a name="logging-example-with-environment-variable"></a>Beispiel für die Protokollierung mit Umgebungsvariablen
-
-  ```
-  SET Logging:Console:LogLevel=Information
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face \
-  Eula=accept \
-  Billing={BILLING_ENDPOINT_URI} \
-  ApiKey={BILLING_KEY}
+  Logging:Console:LogLevel:Default=Information
   ```
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -9,18 +9,18 @@ ms.date: 08/11/2018
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 7911bd398b6760fb4f83382868f040382b86cd1f
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 2e59699b667215d4b09e4d87c1776431631348e8
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480540"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754250"
 ---
-# <a name="monitoring-usage-and-estimated-costs"></a>Überwachen der Nutzung und der geschätzten Kosten
+# <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Überwachen der Nutzung und geschätzten Kosten in Azure Monitor
 
 > [!NOTE]
 > In diesem Artikel wird beschrieben, wie die Nutzung und geschätzten Kosten über mehrere Azure-Überwachungsfeatures hinweg für unterschiedliche Preismodelle angezeigt werden.  Entsprechende Informationen finden Sie in den folgenden Artikeln.
-> - [Verwalten der Kosten durch die Steuerung der Datenmenge und -aufbewahrung in Log Analytics](../../azure-monitor/platform/manage-cost-storage.md) beschreibt, wie Sie Ihre Kosten durch Ändern der Datenaufbewahrungsdauer steuern.
+> - [Verwalten der Kosten durch die Steuerung der Datenmenge und -aufbewahrung in Log Analytics](manage-cost-storage.md) beschreibt, wie Sie Ihre Kosten durch Ändern der Datenaufbewahrungsdauer steuern.
 > - [Analysieren der Datennutzung in Log Analytics](../../azure-monitor/platform/data-usage.md) beschreibt, wie Sie Ihre Datennutzung analysieren und Warnungen dazu ausgeben.
 > - [Verwalten von Preisen und Datenvolumen in Application Insights](../../azure-monitor/app/pricing.md) beschreibt, wie Sie die Datennutzung in Application Insights analysieren.
 
@@ -184,7 +184,7 @@ Wenn Sie dann das vorherige Skript, das ``-Action listmigrationdate`` enthält, 
 Wenn Sie über mehrere Abonnements verfügen, die Sie migrieren möchten und die unter demselben Mandanten gehostet werden, können Sie Ihre eigene Variante mit Hilfe von Teilen der folgenden Skripts erstellen:
 
 ```powershell
-#Query tenant and create an array comprised of all of your tenants subscription ids
+#Query tenant and create an array comprised of all of your tenants subscription IDs
 $TenantId = <Your-tenant-id>
 $Tenant =Get-AzSubscription -TenantId $TenantId
 $Subscriptions = $Tenant.Id

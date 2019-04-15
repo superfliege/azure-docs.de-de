@@ -3,19 +3,19 @@ title: Transliterate-Methode der Textübersetzungs-API
 titlesuffix: Azure Cognitive Services
 description: Verwenden Sie die Transliterate-Methode der Textübersetzungs-API.
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: a0fcd7159be075f0e311e9a242d389dca62f4a37
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 97a2318b7aa3591193108a8a061a15ec5692fac5
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859611"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918619"
 ---
 # <a name="translator-text-api-30-transliterate"></a>Textübersetzungs-API 3.0: Transliterate
 
@@ -165,7 +165,7 @@ Wenn ein Fehler auftritt, gibt die Anforderung auch eine JSON-Fehlerantwort zur�
 
 Das folgende Beispiel zeigt, wie Sie zwei japanische Zeichenfolgen in lateinische Buchstaben konvertieren.
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 Die JSON-Nutzlast für die Anforderung in diesem Beispiel:
 

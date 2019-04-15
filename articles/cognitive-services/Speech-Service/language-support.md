@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 3188b5acc00f7f0463ae1154346447bee463e09c
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 0a82c2ba8bdf3d01041aa06f55eaaecab29817b2
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225432"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803102"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Sprach- und Regionsunterstützung für den Spracherkennungsdienst
 
@@ -55,7 +55,7 @@ Die Microsoft-Spracherkennungs-API unterstützt die folgenden Sprachen. Es sind 
  ru-RU | Russisch (Russland) | Ja | Ja | Nein 
  sv-SE | Schwedisch (Schweden) | Nein  | Nein  | Nein 
  zh-CN | Chinesisch (Mandarin, vereinfacht) | Ja | Ja | Nein 
- zh-HK | Chinesisch (Mandarin, Traditionell) | Nein  | Ja | Nein 
+ zh-HK | Chinesisch (Kantonesisch, traditionell) | Nein  | Ja | Nein 
  zh-TW | Chinesisch (Taiwanesisch, Mandarin) | Nein  | Ja | Nein 
  th-TH | Thailändisch (Thailand) | Nein  | Nein  | Nein 
 

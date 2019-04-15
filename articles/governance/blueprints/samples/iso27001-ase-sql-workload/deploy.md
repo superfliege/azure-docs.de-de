@@ -1,5 +1,5 @@
 ---
-title: 'Beispiel: Blaupause „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“ – Bereitstellungsschritte'
+title: 'Beispiel: Blaupause „ISO 27001: ASE-/SQL-Workload“ – Bereitstellungsschritte'
 description: 'Bereitstellungsschritte für das Blaupausenbeispiel „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“.'
 services: blueprints
 author: DCtheGeek
@@ -8,14 +8,14 @@ ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 80c98170fc136c20d8489cec5d145f96e207bc9f
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 4ed51ee5f8cbdc50fa65a189d8f468bd7713a74b
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201907"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804155"
 ---
-# <a name="deploy-the-azure-blueprints-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Bereitstellen des Azure Blueprints-Beispiels für die Blaupause „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“
+# <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Bereitstellung des Blaupausenbeispiels „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“
 
 Zum Bereitstellen des Azure Blueprints-Beispiels für die Blaupause „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“ müssen die folgenden Schritte ausgeführt werden:
 
@@ -78,10 +78,10 @@ Nachdem die Kopie des Blaupausenbeispiels erfolgreich **veröffentlicht** wurde,
    - Grundlagen
 
      - **Abonnements**: Wählen Sie mindestens eines der Abonnements in der Verwaltungsgruppe aus, in der Sie die Kopie des Blaupausenbeispiels gespeichert haben. Wenn Sie mehrere Abonnements auswählen, wird für jedes Abonnement eine Zuweisung mit den eingegebenen Parametern erstellt.
-     - **Zuweisungsname**: Der Name wird basierend auf dem Namen der Blaupause vorab ausgefüllt.
+     - **Zuweisungsname:** Der Name wird basierend auf dem Namen der Blaupause vorab ausgefüllt.
        Sie können ihn nach Bedarf ändern oder unverändert übernehmen.
      - **Standort**: Wählen Sie eine Region aus, in der die verwaltete Identität erstellt werden soll. Azure Blueprint verwendet diese verwaltete Identität zum Bereitstellen aller Artefakte in der zugewiesenen Blaupause. Weitere Informationen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Version der Blaupausendefinition**: Wählen Sie eine **veröffentlichte** Version Ihrer Kopie des Blaupausenbeispiels aus.
+     - **Version der Blaupausendefinition:** Wählen Sie eine **veröffentlichte** Version Ihrer Kopie des Blaupausenbeispiels aus.
 
    - Zuweisung sperren
 

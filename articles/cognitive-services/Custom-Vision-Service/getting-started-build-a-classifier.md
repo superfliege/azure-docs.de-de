@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: f2cd8f5074f815e84caaedb01335406657f29088
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 78ee24280600d336d394819d33762d8cf6278858
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088008"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891479"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>Erstellen einer Klassifizierung mit Custom Vision
 
@@ -43,8 +43,8 @@ Navigieren Sie im Webbrowser zur [Custom Vision-Webseite](https://customvision.a
 
 1. Geben Sie einen Namen und eine Beschreibung für das Projekt ein. Wählen Sie dann eine Ressourcengruppe aus. Wenn Ihr angemeldetes Konto einem Azure-Konto zugeordnet ist, zeigt die Dropdownliste „Ressourcengruppe“ alle Ihre Azure-Ressourcengruppen an, die eine Custom Vision Service-Ressource enthalten. 
 
-> [!NOTE]
-> Wenn keine Ressourcengruppe verfügbar ist, sollten Sie sich vergewissern, dass Sie sich an [customvision.ai](https://customvision.ai) mit demselben Konto angemeldet haben, das Sie auch für die Anmeldung am [Azure-Portal](https://portal.azure.com/) verwendet haben. Stellen Sie darüber hinaus sicher, dass Sie im Custom Vision-Portal dasselbe Verzeichnis wie im Azure-Portal gewählt haben, in dem sich Ihre Custom Vision-Ressourcen befinden. An beiden Orten können Sie Ihr Verzeichnis jeweils oben rechts im Dropdownmenü mit den Konten auswählen. 
+   > [!NOTE]
+   > Wenn keine Ressourcengruppe verfügbar ist, sollten Sie sich vergewissern, dass Sie sich an [customvision.ai](https://customvision.ai) mit demselben Konto angemeldet haben, das Sie auch für die Anmeldung am [Azure-Portal](https://portal.azure.com/) verwendet haben. Stellen Sie darüber hinaus sicher, dass Sie im Custom Vision-Portal dasselbe Verzeichnis wie im Azure-Portal gewählt haben, in dem sich Ihre Custom Vision-Ressourcen befinden. An beiden Orten können Sie Ihr Verzeichnis jeweils oben rechts im Dropdownmenü mit den Konten auswählen. 
 
 1. Wählen Sie unter __Projekttypen__ die Option __Klassifizierung__ aus. Wählen Sie unter __Klassifizierungstypen__ je nach Ihrem Anwendungsfall entweder **Multilabel** (Mehrere Bezeichnungen) oder **Multiclass** (Mehrere Klassen) aus. Die Klassifizierung mit mehreren Bezeichnungen wendet eine beliebige Anzahl Ihrer Tags (null oder mehr) auf ein Bild an, während die Klassifizierung mit mehreren Klassen Bilder in einzelne Kategorien sortiert (jedes übermittelte Bild wird dem wahrscheinlichsten Tag zugeteilt). Sie können den Klassifizierungstyp später bei Bedarf ändern.
 
@@ -53,10 +53,10 @@ Navigieren Sie im Webbrowser zur [Custom Vision-Webseite](https://customvision.a
     |Domäne|Zweck|
     |---|---|
     |__Allgemein__| Für eine breite Palette von Aufgaben in der Bildklassifizierung optimiert. Wenn keine der anderen Domänen geeignet erscheint oder Sie unsicher sind, welche Domäne Sie wählen sollen, verwenden Sie die Domäne „Generic“. |
-    |__Food (Lebensmittel)__|Für Fotos von Gerichten optimiert, wie sie beispielsweise auf der Speisekarte von Restaurants abgebildet werden. Wenn Sie Fotos von einzelnen Früchten oder Gemüsen klassifizieren möchten, verwenden Sie die Domäne „Food“.|
-    |__Landmarks (Wahrzeichen)__|Für erkennbare Wahrzeichen (Naturdenkmäler oder künstliche Wahrzeichen) optimiert. Diese Domäne funktioniert am besten, wenn das Wahrzeichen im Foto deutlich zu sehen ist. Die Domäne funktioniert auch, wenn das Wahrzeichen etwas von Personen im Vordergrund verdeckt wird.|
-    |__Retail (Einzelhandel)__|Für Bilder optimiert, wie man sie in einem Einkaufskatalog oder auf einer Einkaufswebsite findet. Wenn Sie eine präzise Klassifizierung zwischen Kleidern, Hosen und Hemden wünschen, verwenden Sie diese Domäne.|
-    |__Adult (Erwachsen)__|Optimiert für die bessere Unterscheidung zwischen nicht jugendfreien Inhalten und jugendfreien Inhalten. Wenn Sie also beispielsweise Bilder von Personen in Badebekleidung blockieren möchten, können Sie mithilfe dieser Domäne eine entsprechende benutzerdefinierte Klassifizierung erstellen.|
+    |__Food__|Für Fotos von Gerichten optimiert, wie sie beispielsweise auf der Speisekarte von Restaurants abgebildet werden. Wenn Sie Fotos von einzelnen Früchten oder Gemüsen klassifizieren möchten, verwenden Sie die Domäne „Food“.|
+    |__Besondere Merkmale__|Optimiert für erkennbare Wahrzeichen (Naturdenkmäler oder künstlich geschaffene Wahrzeichen). Diese Domäne funktioniert am besten, wenn das Wahrzeichen im Foto deutlich zu sehen ist. Die Domäne funktioniert auch, wenn das Wahrzeichen etwas von Personen im Vordergrund verdeckt wird.|
+    |__Einzelhandel__|Für Bilder optimiert, wie man sie in einem Einkaufskatalog oder auf einer Einkaufswebsite findet. Wenn Sie eine präzise Klassifizierung zwischen Kleidern, Hosen und Hemden wünschen, verwenden Sie diese Domäne.|
+    |__Erwachsene__|Optimiert für die bessere Unterscheidung zwischen nicht jugendfreien Inhalten und jugendfreien Inhalten. Wenn Sie also beispielsweise Bilder von Personen in Badebekleidung blockieren möchten, können Sie mithilfe dieser Domäne eine entsprechende benutzerdefinierte Klassifizierung erstellen.|
     |__Kompaktdomänen__| Für die Bedingungen der Echtzeitklassifizierung auf Mobilgeräten optimiert. Die von Kompaktdomänen generierten Modelle können für die lokale Ausführung exportiert werden.|
     
 1. Wählen Sie schließlich __Create Project__ (Projekt erstellen) aus.
@@ -96,12 +96,7 @@ In diesem Abschnitt laden Sie Bilder hoch und kennzeichnen diese manuell, um die
 
     ![Die Statusleiste zeigt alle Aufgaben als abgeschlossen an.](./media/getting-started-build-a-classifier/add-images04.png)
 
-Zum Hochladen eines weiteren Bildersatzes kehren Sie zum Anfang dieses Abschnitts zurück und wiederholen die Schritte. Möglicherweise müssen Sie in Ihrem Projekt irgendwann _Negativbeispiele_ hinzufügen, damit Ihre Klassifizierung genauer wird. Negativbeispiele sind jene, die mit keinen der anderen Tags übereinstimmen. Wenn Sie diese Bilder hochladen, wenden Sie die spezielle **Negativ**-Bezeichnung auf sie an.
-
-> [!NOTE]
-> Der Custom Vision Service unterstützt teilweise die automatische Verarbeitung von negativen Bildern. Wenn Sie beispielsweise eine Klassifizierung zur Unterscheidung von Trauben und Bananen erstellen und ein Bild eines Schuhs für die Vorhersage übermitteln, sollte die Klassifizierung dieses Bild in Bezug auf Trauben und Bananen mit nahezu 0 % bewerten.
-> 
-> Andererseits ist es in Fällen, in denen die negativen Bilder nur eine Variation der im Training verwendeten Bilder sind, wahrscheinlich, dass das Modell die negativen Bilder aufgrund der großen Ähnlichkeiten als eine bezeichnete Klasse klassifiziert. Falls Sie eine Klassifizierung zur Unterscheidung von Orangen und Grapefruits verwenden und ein Bild einer Clementine übermitteln, wird die Clementine ggf. als Orange eingestuft, da sich die Merkmale von Clementinen und Orangen stark ähneln. Wenn Ihre negativen Bilder dieser Art sind, raten wir Ihnen, mindestens ein zusätzliches Tag (z. B. **Sonstiges**) zu erstellen und die negativen Bilder während des Trainings mit diesem Tag zu bezeichnen, damit das Modell besser zwischen diesen Klassen unterscheiden kann.
+Zum Hochladen eines weiteren Bildersatzes kehren Sie zum Anfang dieses Abschnitts zurück und wiederholen die Schritte.
 
 ## <a name="train-the-classifier"></a>Trainieren des Klassifizierers
 
@@ -130,13 +125,11 @@ Das Interpretieren von Vorhersageaufrufen mit einem hohen Wahrscheinlichkeitssch
 
 ## <a name="manage-training-iterations"></a>Verwalten von Trainingsiterationen
 
-Bei jedem Trainingsvorgang für Ihre Klassifizierung erstellen Sie eine neue _Iteration_ mit eigenen aktualisierten Leistungsmetriken. Sie können alle Ihre Iterationen im linken Bereich der Registerkarte **Leistung** anzeigen. Wenn Sie eine auswählen, haben Sie die Möglichkeit, sie durch Klicken auf die Schaltfläche **Standard** oben als _Standarditeration_ festzulegen. Die _Standarditeration_ ist das Modell, das standardmäßig verwendet wird, wenn Sie es über die Vorhersage-API abfragen (z.B. in einer App). Wenn Sie die _Standarditeration_ nicht aktualisieren, können Sie Ihr Modell ohne Auswirkungen auf das aktuelle Verhalten Ihrer App weiter trainieren. Sobald Sie mit dem verbesserten Modell zufrieden sind, können Sie die Standarditeration aktualisieren.
-
-Im linken Bereich befindet sich auch die Schaltfläche **Löschen**, mit der Sie veraltete Iterationen löschen können. Beim Löschen einer Iteration werden auch alle Bilder gelöscht, die dieser eindeutig zugeordnet sind.
+Bei jedem Trainingsvorgang für Ihre Klassifizierung erstellen Sie eine neue _Iteration_ mit eigenen aktualisierten Leistungsmetriken. Sie können alle Ihre Iterationen im linken Bereich der Registerkarte **Leistung** anzeigen. Im linken Bereich befindet sich auch die Schaltfläche **Löschen**, mit der Sie veraltete Iterationen löschen können. Beim Löschen einer Iteration werden auch alle Bilder gelöscht, die dieser eindeutig zugeordnet sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Handbuch haben Sie erfahren, wie ein Bildklassifizierungsmodell mithilfe der Custom Vision-Website erstellt und trainiert wird. Informieren Sie sich als Nächstes über den iterativen Prozess zur Verbesserung Ihres Modells.
 
-[Testen und erneutes Trainieren eines Modells mit Custom Vision Service](test-your-model.md)
+[Testen und erneutes Trainieren eines Modells](test-your-model.md)
 

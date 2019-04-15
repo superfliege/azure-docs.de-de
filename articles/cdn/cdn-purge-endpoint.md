@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: magattus
-ms.openlocfilehash: a3777533fc967e1974b99375496dd3777fa9fb3a
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 76e7817be81a97c8d1a0b9ca2fea8378c3c733e1
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093849"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916478"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Löschen eines Azure CDN-Endpunkts
 ## <a name="overview"></a>Übersicht
@@ -52,12 +52,12 @@ Dieses Lernprogramm führt Sie durch das Löschen von Assets aus allen Edgeknote
    > 
    > 
 4. Wählen Sie, welche Assets Sie aus dem Edgeknoten löschen möchten.  Wenn Sie alle Assets löschen möchten, klicken Sie auf das Kontrollkästchen **Alles löschen**.  Geben Sie andernfalls den vollständigen Pfad jedes Assets, das Sie löschen möchten, im Textfeld **Pfad** ein. Folgende Formate werden im Pfad unterstützt.
-    1. **Einzelne URL löschen**: Löschen Sie einzelne Assets, indem Sie die vollständige URL mit oder ohne Dateierweiterung angeben. Beispiel: `/pictures/strasbourg.png`; `/pictures/strasbourg`.
+    1. **Einzelne URL löschen**: Löschen Sie einzelne Assets, indem Sie die vollständige URL mit oder ohne Dateierweiterung angeben. Beispiel: `/pictures/strasbourg.png`. `/pictures/strasbourg`
     2. **Mit Platzhalter löschen**: Das Sternchen (\*) kann als Platzhalterzeichen verwendet werden. Löschen Sie alle Ordner, Unterordner und Dateien unter einem Endpunkt, indem Sie `/*` im Pfad angeben, oder löschen Sie alle Unterordner und Dateien unter einem bestimmten Ordner, indem Sie den Ordner gefolgt von `/*` angeben. Beispiel: `/pictures/*`.  Beachten Sie, dass das Löschen mit Platzhalter derzeit nicht vom Azure-CDN von Akamai unterstützt wird. 
     3. **Stammdomäne löschen**: Löschen Sie den Stamm des Endpunkts, indem Sie „/“ im Pfad angeben.
    
    > [!TIP]
-   > Zum Löschen müssen Pfade als relative URL angegeben werden, die dem folgenden [regulären Ausdruck](https://msdn.microsoft.com/library/az24scfc.aspx) entspricht. **Alles löschen** und das **Löschen mit Platzhalter** wird derzeit nicht vom **Azure-CDN von Akamai** unterstützt.
+   > Zum Löschen müssen Pfade als relative URL angegeben werden, die dem folgenden [regulären Ausdruck](/dotnet/standard/base-types/regular-expression-language-quick-reference) entspricht. **Alles löschen** und das **Löschen mit Platzhalter** wird derzeit nicht vom **Azure-CDN von Akamai** unterstützt.
    > > Einzelne URL löschen `@"^\/(?>(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/?)*)$";`  
    > > Abfragezeichenfolge `@"^(?:\?[-\@_a-zA-Z0-9\/%:;=!,.\+'&\(\)\u0020]*)?$";`  
    > > Mit Platzhalter löschen `@"^\/(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/)*\*$";` 
@@ -75,5 +75,5 @@ Dieses Lernprogramm führt Sie durch das Löschen von Assets aus allen Edgeknote
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Vorabladen von Assets auf einen Azure CDN-Endpunkt](cdn-preload-endpoint.md)
-* [Azure CDN-REST-API-Referenz – Löschen oder Vorabladen eines Endpunkts](https://msdn.microsoft.com/library/mt634451.aspx)
+* [Azure CDN-REST-API-Referenz – Löschen oder Vorabladen eines Endpunkts](/rest/api/cdn/endpoints)
 

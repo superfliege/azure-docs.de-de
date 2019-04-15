@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: juliako
-ms.openlocfilehash: 8ebf9826f156245381ce3503dc64275bca571cc5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a182b9ec0fb945b4c2ffddd7a977df8ad9a8d250
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890782"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895967"
 ---
 # <a name="what-is-video-indexer"></a>Was ist Video Indexer?
 
@@ -29,9 +29,11 @@ Microsoft Video Indexer ist eine Cloudanwendung, die auf Azure Media Analytics, 
 - **Optische Zeichenerkennung** (OCR): extrahiert im Video angezeigten Text.
 - **Moderation visueller Inhalte:** erkennt nicht jugendfreie bzw. anzügliche visuelle Inhalte.
 - **Identifikation von Beschriftungen:** identifiziert angezeigte visuelle Objekte und Aktionen.
-- **Szenenwechselerkennung:** erkennt, wenn sich im Video eine Szene ändert.
+- **Szenensegmentierung**: Bestimmt basierend auf visuellen Hinweisen, wann sich eine Szene im Video ändert. Eine Szene stellt ein einzelnes Ereignis dar und besteht aus einer Reihe von aufeinanderfolgenden Aufnahmen, die semantisch zusammenhängen. 
+- **Szenenwechselerkennung**: Bestimmt basierend auf visuellen Hinweisen, wann ein Szenenwechsel im Video erfolgt. Eine Aufnahme (Szenenwechsel) umfasst ist eine Reihe von Bildern, die von derselben Filmkamera aufgenommen wurden. Weitere Informationen finden Sie unter [Szenen, Aufnahmen und Keyframes](scenes-shots-keyframes.md).
 - **Erkennung schwarzer Frames:** erkennt schwarze Frames im Video.
 - **Extraktion von Keyframes:** erkennt stabile Keyframes in einem Video.
+- **Durchlaufender Abspann**: Identifiziert den Anfang und das Ende des durchlaufenden Abspanns am Ende von Fernsehsendungen und Filmen.
 
 ## <a name="audio-insights"></a>Erkenntnisse aus Audioaufnahmen
 
@@ -69,15 +71,14 @@ Sie können sich mit einem vorhandenen AAD-, LinkedIn-, Facebook-, Google- oder 
 Im Folgenden finden Sie einige Szenarien, in denen Video Indexer nützlich sein kann.
 
 - Suche: Aus dem Video extrahierte Erkenntnisse können verwendet werden, um die Suchfunktion für eine Videobibliothek zu verbessern. Beispielsweise kann die Indizierung von gesprochenem Text und Gesichtern die Suche nach Stellen in einem Video ermöglichen, in denen eine Person bestimmte Wörter benutzt hat oder zwei Personen zusammen gezeigt werden. Die Suche auf Grundlage solcher Erkenntnisse ist für Nachrichtenagenturen, Bildungseinrichtungen, Rundfunkanstalten, Besitzer von Unterhaltungsinhalten, Branchenanwendungen und im Allgemeinen für alle Branchen von Nutzen, die über eine Videobibliothek verfügen, in der Benutzer eine Suche durchführen müssen.
-
+- Inhaltserstellung: Aus Videos extrahierte Erkenntnisse und Unterstützung beim effektiven Erstellen von Inhalten wie Trailer, Inhalte von sozialen Medien, Nachrichtenclips usw. aus vorhandenen Inhalten im Unternehmensarchiv. 
 - Monetarisierung: Video Indexer kann Sie dabei unterstützen, den kommerziellen Wert von Videos zu verbessern. Beispielsweise können Unternehmen aus Branchen, die auf Werbeeinnahmen angewiesen sind (beispielsweise Nachrichtenmedien, soziale Medien usw.) wirkungsvollere Anzeigen schalten, indem sie die extrahierten Erkenntnisse als zusätzliche Signale für den Anzeigenserver nutzen (die Präsentation einer Sportschuhanzeige ist z. B. während eines Fußballspiels sinnvoller als bei einem Schwimmwettkampf).
-
 - Kundenbindung: Die aus Videos gewonnenen Erkenntnisse können genutzt werden, um die Kundenbindung zu verbessern, indem für die Benutzer relevante Stellen in einem Video präsentiert werden. Angenommen, in einem Lehrvideo mit mathematischen Themen wird in den ersten 30 Minuten über Kugeln und in den nächsten 30 Minuten über Pyramiden gesprochen. Ein Schüler/Student, der Informationen zu Pyramiden sucht, würde mehr profitieren, wenn das Video an der 30-Minuten-Markierung positioniert wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Sind Sie bereit für die ersten Schritte mit Video Indexer? Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Tutorial: Registrieren und Hochladen Ihres ersten Videos](video-indexer-get-started.md)
+- [Erste Schritte mit der Video Indexer-Website](video-indexer-get-started.md)
 - [Verarbeiten von Inhalten mit der Video Indexer-REST-API](video-indexer-use-apis.md)
 - [Einbetten von visuellen Widgets in Ihre Anwendung](video-indexer-embed-widgets.md)

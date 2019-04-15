@@ -7,25 +7,25 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 12/03/2018
 ms.author: iainfou
-ms.openlocfilehash: 1a1764b9e2bea65f423a27c5437edc4b7672a86f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fd538ce6821b35dc6e3932256090afdf70b4b232
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58164441"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755257"
 ---
 # <a name="preview---create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Vorschau: Erstellen und Konfigurieren eines Azure Kubernetes Services-Clusters (AKS) zur Verwendung von virtuellen Knoten im Azure-Portal
 
 Um Anwendungsworkloads in einem AKS-Cluster (Azure Kubernetes Service) schnell bereitzustellen, können Sie virtuelle Knoten verwenden. Mit virtuellen Knoten lassen sich Pods schnell bereitstellen, und Sie zahlen für die Ausführungsdauer nur auf Sekundenbasis. In einem Skalierungsszenario müssen Sie nicht warten, bis die Autoskalierung des Kubernetes-Clusters VM-Computeknoten bereitstellt, um die zusätzlichen Pods auszuführen. Dieser Artikel zeigt, wie Sie die virtuellen Netzwerkressourcen und einen AKS-Cluster mit aktivierten virtuellen Knoten erstellen und konfigurieren.
 
 > [!IMPORTANT]
-> AKS-Previewfunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Vorschauversionen werden zum Sammeln von Feedback und Fehlern in unserer Community bereitgestellt,  jedoch nicht vom technischen Support von Azure unterstützt. Wenn Sie einen Cluster erstellen oder diese Features bereits vorhandenen Clustern hinzufügen, wird dieser Cluster erst dann unterstützt, wenn das Feature nicht mehr in der Vorschauphase ist und die allgemeine Verfügbarkeit erreicht ist.
+> AKS-Previewfunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Vorschauversionen werden zum Sammeln von Feedback und Fehlern mithilfe unserer Community bereitgestellt. Allerdings werden sie vom technischen Support von Azure nicht unterstützt. Wenn Sie einen Cluster erstellen oder diese Features bereits vorhandenen Clustern hinzufügen, wird dieser Cluster erst dann unterstützt, wenn das Feature nicht mehr in der Vorschauphase ist und die allgemeine Verfügbarkeit erreicht ist.
 >
 > Wenn Sie Probleme mit Preview-Funktionen haben, öffnen Sie [ein Problemticket im GitHub-Repository von AKS ][aks-github] mit dem Namen der Preview-Funktion im Fehlertitel.
 
-## <a name="preview-limitations"></a>Einschränkungen der Vorschau
+## <a name="regional-availability"></a>Regionale Verfügbarkeit
 
-In der Vorschauphase dieses Features werden Bereitstellungen in den folgenden Regionen unterstützt:
+Für Bereitstellungen von virtuellen Knoten werden die folgenden Regionen unterstützt:
 
 * Australien, Osten (australiaeast)
 * USA, Osten (eastus)
@@ -184,6 +184,8 @@ Virtuelle Knoten sind eine Komponente einer Skalierungslösung in AKS. Weitere I
 
 - [Verwenden der horizontalen automatischen Kubernetes-Podskalierung][aks-hpa]
 - [Verwenden der automatischen Kubernetes-Clusterskalierung][aks-cluster-autoscaler]
+- [Sehen Sie sich das Beispiel für die automatische Skalierung für virtuelle Knoten an][virtual-node-autoscale]
+- [Erfahren Sie mehr über die Virtual Kubelet Open Source-Bibliothek][virtual-kubelet-repo]
 
 <!-- LINKS - external -->
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
@@ -193,6 +195,8 @@ Virtuelle Knoten sind eine Komponente einer Skalierungslösung in AKS. Weitere I
 [toleration]: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
 [azure-cni]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [aks-github]: https://github.com/azure/aks/issues]
+[virtual-node-autoscale]: https://github.com/Azure-Samples/virtual-node-autoscale
+[virtual-kubelet-repo]: https://github.com/virtual-kubelet/virtual-kubelet
 
 <!-- LINKS - internal -->
 [aks-network]: ./networking-overview.md

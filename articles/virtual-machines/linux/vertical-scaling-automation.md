@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/29/2016
 ms.author: singhkay
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 683348c907484ccd9394eb4aae18e9006ecb5c48
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 8d58a9df519ea886372258dd0c7b012df8d8d3ae
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30913483"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579392"
 ---
 # <a name="vertically-scale-azure-linux-virtual-machine-with-azure-automation"></a>Vertikales Skalieren von virtuellen Azure Linux-Computern mit Azure Automation
 Als vertikale Skalierung wird der Vorgang bezeichnet, die Ressourcen eines Computers als Reaktion auf die Workload zu erhöhen oder zu verringern. In Azure kann dies erreicht werden, indem die Größe des virtuellen Computers geändert wird. Dies kann in folgenden Szenarien hilfreich sein:
@@ -37,7 +37,7 @@ Nachfolgend werden die Schritte aufgelistet, die hierzu erforderlich sind:
 4. Hinzufügen einer Warnung zu Ihrem virtuellen Computer
 
 > [!NOTE]
-> Die Größen, auf die der virtuelle Computer skaliert werden kann, hängen einerseits von der Größe des ersten virtuellen Computers sowie von der Verfügbarkeit anderer Größen im Cluster ab, in dem der virtuelle Computer bereitgestellt wurde. In den veröffentlichten Automation-Runbooks, die in diesem Artikel verwendet werden, wird dies berücksichtigt und lediglich eine Skalierung innerhalb der nachstehenden VM-Größenpaare durchgeführt. Dies bedeutet, dass ein virtueller Standard_D1v2-Computer nicht plötzlich auf Standard_G5 hochskaliert oder auf Basic_A0 herunterskaliert werden kann.
+> Die Größen, auf die der virtuelle Computer skaliert werden kann, hängen einerseits von der Größe des ersten virtuellen Computers sowie von der Verfügbarkeit anderer Größen im Cluster ab, in dem der virtuelle Computer bereitgestellt wurde. In den veröffentlichten Automation-Runbooks, die in diesem Artikel verwendet werden, wird dies berücksichtigt und lediglich eine Skalierung innerhalb der nachstehenden VM-Größenpaare durchgeführt. Dies bedeutet, dass ein virtueller Standard_D1v2-Computer nicht plötzlich auf Standard_G5 hochskaliert oder auf Basic_A0 herunterskaliert werden kann. Ferner wird das Hoch- bzw. Herunterskalieren der Größe von eingeschränkten VMs nicht unterstützt. Sie können zwischen den folgenden Größenpaaren skalieren:
 > 
 > | VM-Größenpaare für die Skalierung |  |
 > | --- | --- |
@@ -46,16 +46,43 @@ Nachfolgend werden die Schritte aufgelistet, die hierzu erforderlich sind:
 > | Standard_A5 |Standard_A7 |
 > | Standard_A8 |Standard_A9 |
 > | Standard_A10 |Standard_A11 |
+> | Standard_A1_v2 |Standard_A8_v2 |
+> | Standard_A2m_v2 |Standard_A8m_v2  |
+> | Standard_B1s |Standard_B2s |
+> | Standard_B1ms |Standard_B8ms |
 > | Standard_D1 |Standard_D4 |
 > | Standard_D11 |Standard_D14 |
 > | Standard_DS1 |Standard_DS4 |
 > | Standard_DS11 |Standard_DS14 |
-> | Standard_D1v2 |Standard_D5v2 |
-> | Standard_D11v2 |Standard_D14v2 |
+> | Standard_D1_v2 |Standard_D5_v2 |
+> | Standard_D11_v2 |Standard_D14_v2 |
+> | Standard_DS1_v2 |Standard_DS5_v2 |
+> | Standard_DS11_v2 |Standard_DS14_v2 |
+> | Standard_D2_v3 |Standard_D64_v3 |
+> | Standard_D2s_v3 |Standard_D64s_v3 |
+> | Standard_DC2s |Standard_DC4s |
+> | Standard_E2v3 |Standard_E64v3 |
+> | Standard_E2sv3 |Standard_E64sv3 |
+> | Standard_F1 |Standard_F16 |
+> | Standard_F1s |Standard_F16s |
+> | Standard_F2sv2 |Standard_F72sv2 |
 > | Standard_G1 |Standard_G5 |
 > | Standard_GS1 |Standard_GS5 |
-> 
-> 
+> | Standard_H8 |Standard_H16 |
+> | Standard_H8m |Standard_H16m |
+> | Standard_L4s |Standard_L32s |
+> | Standard_L8s_v2 |Standard_L80s_v2 |
+> | Standard_M8ms  |Standard_M128ms |
+> | Standard_M32ls  |Standard_M64ls |
+> | Standard_M64s  |Standard_M128s |
+> | Standard_M64  |Standard_M128 |
+> | Standard_M64m  |Standard_M128m |
+> | Standard_NC6 |Standard_NC24 |
+> | Standard_NC6s_v2 |Standard_NC24s_v2 |
+> | Standard_NC6s_v3 |Standard_NC24s_v3 |
+> | Standard_ND6s |Standard_ND24s |
+> | Standard_NV6 |Standard_NV24 |
+> | Standard_NV6s_v2 |Standard_NV24s_v2 |
 
 ## <a name="setup-azure-automation-to-access-your-virtual-machines"></a>Einrichten von Azure Automation für den Zugriff auf Ihre virtuellen Computer
 Als Erstes müssen Sie lediglich ein Azure Automation-Konto erstellen, in dem die Runbooks gehostet werden, mit denen die Instanzen der VM-Skalierungsgruppen skaliert werden. Vor Kurzem wurde für den Automation-Dienst die Funktion des ausführenden Kontos eingeführt, wodurch die Einrichtung des Dienstprinzipals für die automatische Ausführung der Runbooks im Auftrag des Benutzers stark vereinfacht wird. Weitere Informationen darüber finden Sie im unten stehenden Artikel:

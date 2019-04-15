@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/24/2019
+ms.date: 04/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 520d417abe27887fad03257c52521c25602009eb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fef2d42282291bb0ea6afeea03e60234d3d47a4d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096009"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878722"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Prüfliste für die Planung und Bereitstellung von SAP-Workloads in Azure 
 
@@ -39,7 +39,7 @@ In dieser Phase wird die Migration einer SAP-Workload zu einer öffentlichen Azu
     2. Das Erstellen und Durcharbeiten einer RACI-Matrix, welche die Zuständigkeiten und Zuweisungen der verschiedenen Beteiligten definiert. Beginnen Sie auf der allgemeinen Ebene, und fahren Sie bei der Planung und den ersten Bereitstellungen nach und nach mit spezifischeren Ebenen fort.
     2. Eine allgemeine Lösungsarchitektur
     3. Entscheidung zu den Azure-Regionen, in denen die Bereitstellung erfolgen soll. Eine Liste der Azure-Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/). Informationen zu den Diensten, die in den einzelnen Azure-Regionen verfügbar sind, finden Sie im Artikel [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/).
-    4. Netzwerkarchitektur für Verbindungen vom lokalen Standort zu Azure. Beginnen Sie damit, sich mit der [Blaupause virtueller Rechenzentren für Azure](https://docs.microsoft.com/azure/architecture/vdc/) vertraut zu machen.
+    4. Netzwerkarchitektur für Verbindungen von lokalen Standorten zu Azure. Beginnen Sie damit, sich mit der [Blaupause virtueller Rechenzentren für Azure](https://docs.microsoft.com/azure/architecture/vdc/) vertraut zu machen.
     5. Sicherheitsprinzipien für die Ausführung geschäftskritischer Daten in Azure. Lesen Sie von den verfügbaren Materialien zunächst die [Dokumentation zur Azure-Sicherheit](https://docs.microsoft.com/azure/security/).
 2.  Technisches Entwurfsdokument – enthält:
     1.  Blockdiagramm der Lösung 
@@ -87,20 +87,22 @@ In dieser Phase wird die Migration einer SAP-Workload zu einer öffentlichen Azu
  
 Ein Pilotprojekt kann vor oder während der Projektplanung und -vorbereitung ausgeführt werden. Während dieser Phase können auch verschiedene Ansätze und Entwürfe aus der Planungs- und Vorbereitungsphase getestet werden. Die Pilotphase kann auf ein echtes Proof of Concept erweitert werden. Es wird empfohlen, für die Pilotbereitstellung eine vollständige Lösung für Hochverfügbarkeit und Notfallwiederherstellung sowie den Sicherheitsentwurf einzurichten und zu überprüfen. In einigen Kundenfällen können in dieser Phase auch Skalierbarkeitstests durchgeführt werden. Andere Kunden nutzen die Bereitstellung von SAP-Sandboxsystemen als Pilotphase. Es wird also davon ausgegangen, dass Sie ein System ermittelt haben, das Sie zu Azure migrieren möchten, um ein Pilotsystem auszuführen.
 
-1. Optimieren der Datenübertragung in Azure. Stark abhängig vom jeweiligen Kundenfall ist eine Übertragung über [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) von einem lokalen Standort am schnellsten, sofern die Express-Verbindung über ausreichende Bandbreite verfügt. Bei anderen Kunden stellte sich die Nutzung des Internets als schneller heraus.
-2. Im Fall einer Migration einer heterogenen SAP-Plattform mit einem Export und Import von Datenbankdaten sollten Sie die Export- und Importphasen testen und ggf. optimieren. Empfehlungen zu großen Migrationsvorgängen mit SQL Server als Zielplattform finden Sie [hier](https://blogs.msdn.microsoft.com/saponsqlserver/2017/05/08/sap-osdb-migration-to-sql-server-faq-v6-2-april-2017/). Sie können Migration Monitor/SWPM nutzen, falls Sie kein kombiniertes Releaseupdate und keinen [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/)-Prozess benötigen, wenn Sie die Migration mit einem SAP-Releaseupgrade kombinieren und bestimmte Kombinationen aus Quell- und Ziel-DBMS-Plattform nutzen, die z.B. in [Database Migration Option (DMO) von SUM 2.0 SP03](https://launchpad.support.sap.com/#/notes/2631152) dokumentiert sind. 
+1. Optimieren der Datenübertragung in Azure. Stark abhängig vom jeweiligen Kundenfall ist eine Übertragung über [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) von lokalen Standorten dann am schnellsten, wenn die Express-Verbindung über ausreichende Bandbreite verfügt. Bei anderen Kunden stellte sich die Nutzung des Internets als schneller heraus.
+2. Im Fall einer Migration einer heterogenen SAP-Plattform mit einem Export und Import von Datenbankdaten sollten Sie die Export- und Importphasen testen und ggf. optimieren. Empfehlungen zu großen Migrationsvorgängen mit SQL Server als Zielplattform finden Sie [hier](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAP-OS-DB-Migration-to-SQL-Server-8211-FAQ-v6-2-April-2017/ba-p/368070). Sie können Migration Monitor/SWPM nutzen, falls Sie kein kombiniertes Releaseupdate und keinen [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/)-Prozess benötigen, wenn Sie die Migration mit einem SAP-Releaseupgrade kombinieren und bestimmte Kombinationen aus Quell- und Ziel-DBMS-Plattform nutzen, die z.B. in [Database Migration Option (DMO) von SUM 2.0 SP03](https://launchpad.support.sap.com/#/notes/2631152) dokumentiert sind. 
    1.  Leistung für das Exportieren in die Quelle, das Exportieren von Dateiuploads zu Azure und das Importieren.  Maximieren Sie die Überlappung zwischen Export und Import.
    2.  Bewerten des Volumens der Datenbank zwischen Quell- und Zielplattform, um dies bei der Größe der Infrastruktur zu berücksichtigen    
    3.  Überprüfen und Optimieren der zeitlichen Steuerung 
 3. Technische Überprüfung 
    1. Arten von virtuellen Computern
       1.  Überprüfen Sie die Informationen in den SAP-Supporthinweisen, die Ressourcen im SAP HANA-Hardwareverzeichnis und SAP-PAM erneut, um sicherzustellen, dass keine Änderungen an den unterstützten virtuellen Computern für Azure, den unterstützten Betriebssystemreleases für diese VM-Typen und den unterstützten SAP- und DBMS-Releases vorgenommen wurden.
-      2.  Überprüfen Sie erneut die Größe Ihrer Anwendung und die Infrastruktur, die Sie in Azure bereitstellen. Falls Sie vorhandene Anwendungen verschieben, leiten Sie die erforderlichen SAPS häufig über die verwendete Infrastruktur und die [Benchmark-Webseite von SAP](https://www.sap.com/dmc/exp/2018-benchmark-directory/#/sd) ab und vergleichen sie mit der Anzahl von SAPS, die im SAP-Supporthinweis [#1928533](https://launchpad.support.sap.com/#/notes/1928533) aufgeführt wird. Beachten Sie auch [diesen Artikel](https://blogs.msdn.microsoft.com/saponsqlserver/2018/11/04/saps-ratings-on-azure-vms-where-to-look-and-where-you-can-get-confused/).
+      2.  Überprüfen Sie erneut die Größe Ihrer Anwendung und die Infrastruktur, die Sie in Azure bereitstellen. Falls Sie vorhandene Anwendungen verschieben, leiten Sie die erforderlichen SAPS häufig über die verwendete Infrastruktur und die [Benchmark-Webseite von SAP](https://www.sap.com/dmc/exp/2018-benchmark-directory/#/sd) ab und vergleichen sie mit der Anzahl von SAPS, die im SAP-Supporthinweis [#1928533](https://launchpad.support.sap.com/#/notes/1928533) aufgeführt wird. Beachten Sie auch [diesen Artikel](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAPS-ratings-on-Azure-VMs-8211-where-to-look-and-where-you-can/ba-p/368208).
       3.  Bewerten und Testen der Größe Ihrer Azure-VMs in Bezug auf den maximalen Speicher- und Netzwerkdurchsatz der verschiedenen VM-Typen, die Sie in der Planungsphase ausgewählt haben. Sie finden diese Daten in:
           1.  [Größen für virtuelle Windows-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Es ist wichtig, für die Größenanpassung den **maximalen Durchsatz des Datenträgers ohne Cache** zu berücksichtigen.
           2.  [Größen für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json). Es ist wichtig, für die Größenanpassung den **maximalen Durchsatz des Datenträgers ohne Cache** zu berücksichtigen.
    2. Storage
-      1.  Verwenden Sie Azure Storage Premium für die Datenbank-VMs.
+      1.  Verwenden Sie mindestens [Azure SSD-Standardspeicher](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-ssd) für VMs, die SAP-Anwendungsschichten darstellen, und für nicht leistungskritische DBMS-Bereitstellungen
+      2.  Wir empfehlen allgemein nicht die Verwendung von [Azure HDD-Standarddatenträgern](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-hdd)
+      2.  Verwenden Sie [Azure Storage Premium](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) für alle DBMS-VMs, die remote und leistungskritisch sind
       2.  Verwenden Sie [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/).
       3.  Verwenden Sie Azure-Schreibbeschleunigung für die DBMS-Protokolllaufwerke mit M-Serie. Beachten Sie die Grenzwerte für die Schreibbeschleunigung und die Nutzung. Eine Beschreibung finden Sie unter [Schreibbeschleunigung](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator).
       4.  Überprüfen Sie für die verschiedenen DBMS-Typen die [allgemeine SAP-bezogene DBMS-Dokumentation](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) und die DBMS-spezifische Dokumentation, auf die das allgemeine Dokument verweist.
@@ -124,6 +126,7 @@ Ein Pilotprojekt kann vor oder während der Projektplanung und -vorbereitung aus
               4.  Oracle Linux 7.5. Bei Verwendung des RHCKL-Kernels muss Release 3.10.0-862.13.1.el7 verwendet werden. Bei Verwendung des Oracle UEK-Kernels ist Release 5 erforderlich.
           4.   Testen und evaluieren Sie die Netzwerklatenz zwischen VMs der SAP-Anwendungsschicht und DBMS-VMs gemäß SAP-Supporthinweis [#500235](https://launchpad.support.sap.com/#/notes/500235) und SAP Supporthinweis [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Werten Sie die Ergebnisse anhand der Hinweise zur Netzwerklatenz im SAP-Supporthinweis [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E) aus. Die Netzwerklatenz sollte in einem mittleren bis guten Bereich liegen. Ausnahmen gelten für den Datenverkehr zwischen virtuellen Computern und Einheiten großer HANA-Instanzen, wie [hier](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance) beschrieben.
           5.   Stellen Sie sicher, dass ILB-Bereitstellungen so eingerichtet wurden, dass sie Direct Server Return verwenden. Diese Einstellung verringert die Latenz, wenn Azure-ILBs für Konfigurationen mit Hochverfügbarkeit auf der DBMS-Schicht verwendet werden
+          6.   Wenn Sie Azure Load Balancer in Verbindung mit Linux-Gastbetriebssystemen verwenden, überprüfen Sie, ob der Linux-Netzwerkparameter **net.ipv4.tcp_timestamps** auf **0** festgelegt ist. Entgegen den Empfehlungen in älteren Versionen von SAP-Hinweis [#2382421](https://launchpad.support.sap.com/#/notes/2382421). Der SAP-Hinweis wurde mittlerweile aktualisiert und trägt jetzt dem Umstand Rechnung, dass der Parameter auf 0 festgelegt sein muss, um in Verbindung mit Azure Load Balancern zu funktionieren.
    4. Bereitstellungen mit Hochverfügbarkeit und Notfallwiederherstellung 
       1. Wenn Sie die SAP-Anwendungsschicht bereitstellen, ohne eine bestimmte Azure-Verfügbarkeitszone zu definieren, stellen Sie sicher, dass alle virtuellen Computer, auf denen SAP-Dialoginstanzen oder Middlewareinstanzen eines einzelnen SAP-System ausgeführt werden, in einer [Verfügbarkeitsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) bereitgestellt werden. 
          1.   Für den Fall, dass Sie für die SAP Central Services und das DBMS keine Hochverfügbarkeit benötigen, können diese virtuellen Computer in derselben Verfügbarkeitsgruppe wie die SAP-Anwendungsschicht bereitgestellt werden.

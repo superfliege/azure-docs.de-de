@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 14feb7ad09a24904034f9ae90cf4a54cf786a44c
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 0e0b78d1e492e4d0fbbf0a44b57bebc2d8d3b1e7
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44369155"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58763299"
 ---
 Bei virtuellen Computern der B-Serie können Sie wählen, welche VM-Größe Ihnen die nötige Grundleistung für Ihre Workload bietet. Zudem haben Sie die Möglichkeit, die CPU-Leistung um bis zu 100 Prozent einer vCPU vom Typ Intel® Broadwell E5-2673 v4 mit 2,3 GHz oder Intel® Haswell E5-2673 v3 mit 2,4 GHz zu steigern.
 
@@ -21,17 +21,17 @@ Virtuelle Computer der B-Serie sind ideal für Workloads, die nicht kontinuierli
 
 Die B-Serie ist in sechs VM-Größen erhältlich:
 
-| Größe          | vCPUs | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | CPU-Grundleistung des virtuellen Computers | Maximale CPU-Leistung des virtuellen Computers | Guthabenbildung/Stunde | Maximalguthaben |
-|---------------|--------|-------------|----------------|--------------------------------|---------------------------|-----------------------|--------------------|
-| Standard_B1s  | 1      | 1           | 4              | 10%                            | 100 %                      | 6                     | 144                |
-| Standard_B1ms | 1      | 2           | 4              | 20%                            | 100 %                      | 12                    | 288                |
-| Standard_B2s  | 2      | 4           | 8              | 40%                            | 200 %                      | 24                    | 576                |
-| Standard_B2ms | 2      | 8           | 16             | 60 %                            | 200 %                      | 36                    | 864                |
-| Standard_B4ms | 4      | 16          | 32             | 90%                            | 400 %                      | 54                    | 1296               |
-| Standard_B8ms | 8      | 32          | 64             | 135%                           | 800 %                      | 81                    | 1944               |
+| Größe             | vCPU  | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | CPU-Grundleistung des virtuellen Computers | Maximale CPU-Leistung des virtuellen Computers | Guthabenbildung/Stunde | Maximalguthaben | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs |          
+|---------------|-------------|----------------|----------------------------|-----------------------|--------------------|--------------------|----------------|----------------------------------------|-------------------------------------------|-------------------------------------------|----------|
+| Standard_B1ls<sup>1</sup>  | 1           | 0,5              | 4                          | 5 %                   | 100 %                   | 3                  | 72            | 2                                      | 200/10                                  | 160/10                                  | 2  |
+| Standard_B1s  | 1           | 1              | 4                          | 10%                   | 100 %                   | 6                  | 144            | 2                       | 400/10                                  | 320/10                                  | 2  |
+| Standard_B1ms | 1           | 2              | 4                          | 20%                   | 100 %                   | 12                 | 288           | 2                        | 800/10                                  | 640/10                                  | 2  |
+| Standard_B2s  | 2           | 4              | 8                          | 40%                   | 200 %                   | 24                 | 576            | 4                                      | 1600/15                                 | 1280/15                                 | 3  |
+| Standard_B2ms | 2           | 8              | 16                         | 60 %                   | 200 %                   | 36                 | 864            | 4                                      | 2400/22,5                               | 1920/22,5                               | 3  |
+| Standard_B4ms | 4           | 16             | 32                         | 90%                   | 400 %                   | 54                 | 1296           | 8                                      | 3600/35                                 | 2880/35                                 | 4  |
+| Standard_B8ms | 8           | 32             | 64                         | 135%                  | 800 %                   | 81                 | 1944           | 16                                     | 4320/50                                 | 4320/50                                 | 4  |
 
-
-
+<sup>1</sup> B1ls wird nur unter Linux unterstützt
 
 ## <a name="q--a"></a>Fragen und Antworten 
 
@@ -47,7 +47,7 @@ Weitere Informationen zum Zugreifen auf die Metrikdaten für Azure finden Sie in
 ### <a name="q-how-are-credits-accumulated"></a>F: Wie wird Guthaben gebildet?
 **A:** Bildungs- und Verbrauchsrate des virtuellen Computers sind so gestaltet, dass es bei einem virtuellen Computer, der exakt auf dem Grundleistungsniveau betrieben wird, weder zu einer Nettobildung noch zu einem Verbrauch von Burst-Guthaben kommt.  Eine Nettoerhöhung des Guthabens erfolgt, wenn der virtuelle Computer unter seiner Grundleistung betrieben wird. Bei einer CPU-Nutzung, die über das Grundleistungsniveau hinausgeht, kommt es hingegen zu einer Nettoverringerung des Guthabens.
 
-**Beispiel:** Angenommen, ich stelle für meine kleine Zeit- und Anwesenheitsdatenbank einen virtuellen Computer der Größe „B1ms“ bereit. Bei dieser Größe kann meine Anwendung bis zu 20 % einer vCPU als Grundleistung nutzen. Das entspricht 0,2 Guthaben pro Minute, die ich entweder nutzen oder sammeln kann. 
+**Beispiel**:  Angenommen, ich stelle für meine kleine Zeit- und Anwesenheitsdatenbank einen virtuellen Computer der Größe „B1ms“ bereit. Bei dieser Größe kann meine Anwendung bis zu 20 % einer vCPU als Grundleistung nutzen. Das entspricht 0,2 Guthaben pro Minute, die ich entweder nutzen oder sammeln kann. 
 
 Meine Anwendung ist jeweils am Anfang und Ende des Arbeitstags meiner Mitarbeiter aktiv (also zwischen 7:00 und 9:00 Uhr sowie zwischen 16:00 und 18:00 Uhr). Während der restlichen 20 Stunden des Tages befindet sich die Anwendung in der Regel im Leerlauf und nutzt lediglich zehn Prozent der vCPU. In der Nebenzeit erhalte ich pro Minute 0,2 Guthaben, verbrauche aber nur 0,1 Guthaben pro Minute. Der virtuelle Computer bildet also pro Stunde ein Guthaben von sechs Einheiten (0,1 x 60).  Für die 20 Stunden, die nicht als Spitzenzeit gelten, entsteht somit ein Guthaben von 120 Einheiten.  
 
@@ -60,7 +60,14 @@ Wenn ich nun die 120 Guthaben, die ich während der Nebenzeit gebildet habe, mit
 **A:** Ja. Storage Premium-Datenträger werden von allen Größen der B-Serie unterstützt.   
     
 ### <a name="q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart"></a>F: Warum wird mein Restguthaben nach dem erneuten Bereitstellen oder Beenden bzw. Starten auf 0 gesetzt?
-**A:** Wenn eine VM „ERNEUT BEREITGESTELLT“ ist und die VM auf einen anderen Knoten verschoben wird, geht das gesammelte Guthaben verloren. Wenn die VM beendet/gestartet wird, aber auf dem gleichen Knoten verbleibt, behält die VM das gesammelte Guthaben. Immer wenn die VM auf einem Knoten neu startet, erhält sie ein Anfangsguthaben. Bei Standard_B8ms sind dies 240 Minuten.
+**A**: Wenn eine VM „ERNEUT BEREITGESTELLT“ ist und die VM auf einen anderen Knoten verschoben wird, geht das gesammelte Guthaben verloren. Wenn die VM beendet/gestartet wird, aber auf dem gleichen Knoten verbleibt, behält die VM das gesammelte Guthaben. Immer wenn die VM auf einem Knoten neu startet, erhält sie ein Anfangsguthaben. Bei Standard_B8ms sind dies 240 Minuten.
+    
+### <a name="q-what-happens-if-i-deploy-an-unsupported-os-image-on-b1ls"></a>F: Was geschieht, wenn ein nicht unterstütztes Betriebssystemimage auf B1ls bereitgestellt wird?
+**A**: B1ls unterstützt nur Linux-Images, und wenn Sie ein Image eines anderen Betriebssystems bereitstellen, erhalten Sie möglicherweise keine optimale Benutzererfahrung.
+    
+### <a name="q-why-is-there-no-pricing-information-for-b1ls-windows"></a>F: Warum gibt es keine Preisinformationen für B1ls Windows?
+**A**: B1ls unterstützt nur Linux-Images, und wenn Sie ein Image eines anderen Betriebssystems bereitstellen, erhalten Sie möglicherweise keine optimale Benutzererfahrung, wohl aber eine Abrechnung.
+
 
     
 

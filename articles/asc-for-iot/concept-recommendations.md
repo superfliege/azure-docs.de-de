@@ -1,36 +1,37 @@
 ---
-title: Grundlegendes zu Sicherheitsempfehlungen für ASC für IoT (Vorschauversion) | Microsoft-Dokumentation
-description: Lernen Sie das Konzept der Sicherheitsempfehlungen kennen, und erfahren Sie, wie sie in ASC für IoT verwendet werden.
-services: ascforiot
+title: Grundlegendes zu IoT-Sicherheitsempfehlungen für Azure Security Center für (Vorschauversion) | Microsoft-Dokumentation
+description: Lernen Sie das Konzept der Sicherheitsempfehlungen kennen, und erfahren Sie, wie sie in Azure Security Center für IoT verwendet werden.
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 02ced504-d3aa-4770-9d10-b79f80af366c
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: 1e4582d93d1e3380ecdabdb241f27839d4da4565
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 3364ff6bcf824e5f7d925fdb6d0826d5c3c32369
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541497"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862249"
 ---
 # <a name="security-recommendations"></a>Sicherheitsempfehlungen
 
 > [!IMPORTANT]
-> ASC für IoT befindet sich derzeit in der Public Preview-Phase.
+> Azure Security Center für IoT befindet sich derzeit in der öffentlichen Vorschauphase.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Basierend auf einer fortlaufenden Lösungsanalyse liefert ASC für IoT bei Bedarf die folgenden Empfehlungen, um Ihre Geräte, den Betriebszustand und die gesamte IoT Hub-Umgebung zu verbessern und zu schützen. 
+Das Azure Security Center (ASC) für IoT scannt Ihre Azure-Ressourcen und IoT-Geräte und gibt Sicherheitsempfehlungen zur Reduzierung Ihrer Angriffsfläche. Sicherheitsempfehlungen sind umsetzbar und zielen darauf ab, Kunden bei der Einhaltung von bewährten Sicherheitsmethoden zu unterstützen.
 
+In diesem Artikel finden Sie eine Liste von Empfehlungen, die auf Ihrem IoT Hub und/oder IoT-Geräten ausgelöst werden können.
 
-## <a name="device-recommendations"></a>Geräteempfehlungen
+## <a name="recommendations-for-iot-devices"></a>Empfehlungen für IoT-Geräte
 
 Geräteempfehlungen liefern Einblicke und Vorschläge zur Verbesserung der Gerätesicherheit und des Geräteverhaltens. 
 
@@ -42,9 +43,9 @@ Geräteempfehlungen liefern Einblicke und Vorschläge zur Verbesserung der Gerä
 | Mittel   | In der OUTPUT-Kette wurde eine zu wenig einschränkende Firewallregel gefunden    | Agent       | In der Firewall wurde eine Regel gefunden, die ein zu wenig einschränkendes Muster für eine Vielzahl von IP-Adressen oder Ports enthält.                                                                                   |
 | Mittel   | Fehler bei der Überprüfung der Betriebssystembaseline           | Agent       | Gerät entspricht nicht den [CIS Linux-Benchmarks](https://www.cisecurity.org/cis-benchmarks/)                                                                                                         |
 
-### <a name="operational-recommendation"></a>Operative Empfehlung
+### <a name="operational-recommendations-for-iot-devices"></a>Operative Empfehlungen für IoT-Geräte
 
-Operative Empfehlungen liefern Einblicke und Vorschläge zur Verbesserung der Agent-Konfiguration.
+Operative Empfehlungen liefern Einblicke und Vorschläge zur Verbesserung der Konfiguration des Sicherheits-Agent.
 
 | Severity | NAME                                    | Data source | BESCHREIBUNG                                                                       |
 |----------|-----------------------------------------|-------------|-----------------------------------------------------------------------------------|
@@ -53,7 +54,7 @@ Operative Empfehlungen liefern Einblicke und Vorschläge zur Verbesserung der Ag
 | Niedrig      | Konflikt bei Sicherheitszwillingskonfiguration    | Agent       | In der Konfiguration des Sicherheitszwillings wurden Konflikte identifiziert.                           |
 
 
-## <a name="iot-hub-recommendations"></a>IoT Hub-Empfehlungen
+## <a name="recommendations-for-iot-hub"></a>Empfehlungen für IoT Hub
 
 Empfehlungsbenachrichtigungen bieten Einblicke und Vorschläge für Aktionen zum Verbessern des Sicherheitszustands Ihrer Umgebung.  
 

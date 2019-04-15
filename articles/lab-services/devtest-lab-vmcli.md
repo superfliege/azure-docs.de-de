@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 04/02/2019
 ms.author: spelluru
-ms.openlocfilehash: ccf9b08856fcc652e3ad4b2b31587d43d7ef9cca
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 48a30ef86cdb10b540ffe1231294542ccff87255
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995950"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895629"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Erstellen und Verwalten virtueller Computer in DevTest Labs mit der Azure-Befehlszeilenschnittstelle
 Dieser Schnellstart führt Sie durch das Erstellen, Starten, Verbinden, Aktualisieren und Bereinigen von Entwicklungscomputern im Lab. 
@@ -27,21 +27,42 @@ Vorbereitungen
 
 * Falls Sie noch kein Lab erstellt haben, finden Sie [hier](devtest-lab-create-lab.md) Anweisungen dazu.
 
-* [Installieren Sie die Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli). Führen Sie zum Starten „az login“ aus, um eine Verbindung mit Azure herzustellen. 
+* [Installieren Sie die Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli). Führen Sie zum Starten „az login“ aus, um eine Verbindung mit Azure herzustellen. 
 
 ## <a name="create-and-verify-the-virtual-machine"></a>Erstellen und Überprüfen von virtuellen Computern 
-Erstellen Sie einen virtuellen Computer aus einem Marketplace-Image mit SSH-Authentifizierung.
+Bevor Sie DevTest Labs-bezogene Befehle ausführen, legen Sie den entsprechenden Azure-Kontext mit dem Befehl `az account set` fest:
+
+```azurecli
+az account set --subscription 11111111-1111-1111-1111-111111111111
+```
+
+Der Befehl zum Erstellen eines virtuellen Computers lautet: `az lab vm create`. Die Ressourcengruppe für das Labs, den der Name des Labs und den Namen des virtuellen Computers sind alle erforderlich. Der Rest der Argumente ändert sich je nach Typ des virtuellen Computers.
+
+Der folgende Befehl erstellt ein Windows-basiertes Image von Azure Market Place. Der Name des Images ist derselbe, der beim Erstellen eines virtuellen Computers über das Azure-Portal angezeigt wird. 
+
+```azurecli
+az lab vm create --resource-group DtlResourceGroup --lab-name MyLab --name 'MyTestVm' --image "Visual Studio Community 2017 on Windows Server 2016 (x64)" --image-type gallery --size 'Standard_D2s_v3’ --admin-username 'AdminUser' --admin-password 'Password1!'
+```
+
+Der folgende Befehl erstellt einen virtuellen Computer basierend auf einem benutzerdefinierten Image, das im Lab verfügbar ist:
+
+```azurecli
+az lab vm create --resource-group DtlResourceGroup --lab-name MyLab --name 'MyTestVm' --image "My Custom Image" --image-type custom --size 'Standard_D2s_v3' --admin-username 'AdminUser' --admin-password 'Password1!'
+```
+
+Das Argument **image-type** wurde von **gallery** auf **custom** geändert. Der Name des Images entspricht dem, was angezeigt wird, wenn Sie den virtuellen Computer im Azure-Portal erstellen.
+
+Mit dem folgenden Befehl erstellen Sie einen virtuellen Computer aus einem Marketplace-Image mit SSH-Authentifizierung:
+
 ```azurecli
 az lab vm create --lab-name sampleLabName --resource-group sampleLabResourceGroup --name sampleVMName --image "Ubuntu Server 16.04 LTS" --image-type gallery --size Standard_DS1_v2 --authentication-type  ssh --generate-ssh-keys --ip-configuration public 
 ```
-> [!NOTE]
-> Fügen Sie den Namen der **Lab-Ressourcengruppe** in den Parameter --resource-group ein.
->
 
-Wenn Sie einen virtuellen Computer mit einer Formel erstellen möchten, verwenden Sie in [az lab vm create](https://docs.microsoft.com/cli/azure/lab/vm#az-lab-vm-create) den Parameter --formula.
+Sie können auch virtuelle Computer basierend auf Formeln erstellen, indem Sie den Parameter **image-type** auf **formula** festlegen. Wenn Sie ein bestimmtes virtuelles Netzwerk für Ihren virtuellen Computer auswählen müssen, verwenden Sie die Parameter **vnet-name** und **subnet**. Weitere Informationen finden Sie unter [az lab vm create](/cli/azure/lab/vm#az-lab-vm-create).
 
+## <a name="verify-that-the-vm-is-available"></a>Überprüfen Sie, ob der virtuelle Computer verfügbar ist.
+Verwenden Sie den Befehl `az lab vm show`, um sicherzustellen, dass die VM verfügbar ist, bevor Sie sie starten und sich mit ihr verbinden. 
 
-Überprüfen Sie, ob der virtuelle Computer verfügbar ist.
 ```azurecli
 az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup --expand 'properties($expand=ComputeVm,NetworkInterface)' --query '{status: computeVm.statuses[0].displayStatus, fqdn: fqdn, ipAddress: networkInterface.publicIpAddress}'
 ```
@@ -54,21 +75,20 @@ az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sam
 ```
 
 ## <a name="start-and-connect-to-the-virtual-machine"></a>Starten und Verbinden virtueller Computer
-Starten Sie einen virtuellen Computer.
+Der folgende Beispielbefehl startet eine VM:
+
 ```azurecli
 az lab vm start --lab-name sampleLabName --name sampleVMName --resource-group sampleLabResourceGroup
 ```
-> [!NOTE]
-> Fügen Sie den Namen der **Lab-Ressourcengruppe** in den Parameter --resource-group ein.
->
 
-Stellen Sie eine Verbindung mit einem virtuellen Computer her: [SSH](../virtual-machines/linux/mac-create-ssh-keys.md) oder [Remotedesktop](../virtual-machines/windows/connect-logon.md).
+Herstellen einer Verbindung mit einer VM: [SSH](../virtual-machines/linux/mac-create-ssh-keys.md) oder [Remotedesktop](../virtual-machines/windows/connect-logon.md).
 ```bash
 ssh userName@ipAddressOrfqdn 
 ```
 
 ## <a name="update-the-virtual-machine"></a>Aktualisieren virtueller Computer
-Wenden Sie Artefakte auf einen virtuellen Computer an.
+Der folgende Beispielbefehl wendet Artefakte auf eine VM an:
+
 ```azurecli
 az lab vm apply-artifacts --lab-name  sampleLabName --name sampleVMName  --resource-group sampleResourceGroup  --artifacts @/artifacts.json
 ```
@@ -115,7 +135,8 @@ az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sam
 ```
 
 ## <a name="stop-and-delete-the-virtual-machine"></a>Beenden und Löschen virtueller Computer    
-Beenden Sie einen virtuellen Computer.
+Der folgende Beispielbefehl stoppt eine VM.
+
 ```azurecli
 az lab vm stop --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup
 ```
@@ -125,4 +146,5 @@ Löschen Sie einen virtuellen Computer.
 az lab vm delete --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup
 ```
 
-[!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+## <a name="next-steps"></a>Nächste Schritte
+Lesen Sie den folgenden Inhalt: [Azure CLI-Dokumentation für Azure DevTest Labs](/cli/azure/lab?view=azure-cli-latest). 

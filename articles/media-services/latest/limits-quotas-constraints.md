@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: juliako
-ms.openlocfilehash: 694c56cf52cb7a15230b9a2cdd34642c7820b407
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d5fc14adab956fae23aad24fa7bc488c8c2041e3
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897558"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621684"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Kontingente und Einschränkungen für Azure Media Services (v3)
 
@@ -27,7 +27,8 @@ In diesem Artikel werden die Kontingente und Einschränkungen für Azure Media S
 | Medienobjekte pro Azure Media Services-Konto | 1.000.000|
 | Dynamische Manifestfilter|100|
 | „JobInputs“ pro Auftrag | 50  (feststehend)|
-| „JobOutputs“ pro Auftrag/„TransformOutputs“ in einer Transformation | 20 (feststehend) |
+| „JobOutputs“ pro Auftrag | 20 (feststehend) |
+| „TransformOutputs“ in einer Transformation | 20 (feststehend) |
 | Dateien pro „JobInput“|10 (feststehend)|
 | Dateigröße| In einigen Szenarien werden für die Verarbeitung in Media Services nur Dateien bis zu einer bestimmten Größe unterstützt. <sup>(1)</sup> |
 | Aufträge pro Media Services-Konto | 500.000 <sup>(2)</sup> (feststehend)|
@@ -36,6 +37,7 @@ In diesem Artikel werden die Kontingente und Einschränkungen für Azure Media S
 | Liveereignisse pro Media Services-Konto |5|
 | Media Services-Konten in einem einzelnen Abonnement | 25 (feststehend) |
 | Liveausgaben im ausgeführten Zustand pro Liveereignis |3|
+| Max. Dauer für Liveausgabe | 25 Stunden |
 | Speicherkonten | 100<sup>(4)</sup> (feststehend) |
 | Streamingendpunkte (angehalten oder ausgeführt) pro Media Services-Konto|2 (feststehend)|
 | Streamingrichtlinien | 100 <sup>(3)</sup> |

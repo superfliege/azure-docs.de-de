@@ -15,16 +15,16 @@ ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1e11a9c913b93f09058a0bde8982354870e547d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e077127681f8bd7b650ab22f2d036efd7f9733ee
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188204"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876921"
 ---
 # <a name="troubleshoot-azure-ad-connect-install-issues"></a>Problembehandlung: Azure AD Connect-Installationsprobleme
 
-## <a name="recommended-steps"></a>**Empfohlene Schritte**
+## **<a name="recommended-steps"></a>Empfohlene Schritte**
 Überprüfen Sie, welcher [Azure AD Connect-Installationstyp](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation) für Sie geeignet ist. Werden die Kriterien für die Express-Installation erfüllt, wird dringend empfohlen, die Express-Installation zu verwenden. Bei der Express-Installation müssen Sie nur geringfügige Optionen angeben, um die Installation abzuschließen. Dadurch reduziert sich die Fehlerwahrscheinlichkeit. 
 
 Wenn die Kriterien für eine Express-Installation jedoch nicht erfüllt werden und Sie die benutzerdefinierte Installation ausführen müssen, finden Sie hier einige bewährte Methoden, denen Sie folgen können, um häufig auftretende Probleme zu vermeiden. Der Einfachheit halber sind hier nur selektive Optionen aufgeführt:
@@ -39,7 +39,7 @@ Wenn die Kriterien für eine Express-Installation jedoch nicht erfüllt werden u
 
     ![AD-Gesamtstrukturkonto](media/tshoot-connect-install-issues/tshoot-connect-install-issues/createnewaccount.png)
 
-### <a name="common-issues"></a>**Allgemeine Probleme**
+### **<a name="common-issues"></a>Häufige Probleme**
 
 * [Konnektivitätsprobleme mit lokaler Active Directory-Instanz](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-adconnectivitytools)
 
@@ -47,12 +47,12 @@ Wenn die Kriterien für eine Express-Installation jedoch nicht erfüllt werden u
 
 * [Berechtigungsprobleme mit lokaler Active Directory-Instanz](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-configure-ad-ds-connector-account)
 
-## <a name="recommended-documents"></a>**Empfohlene Dokumente**
-* [Voraussetzungen für Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites)
+## **<a name="recommended-documents"></a>Empfohlene Dokumente**
+* [Voraussetzungen für Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-prerequisites)
 * [Auswählen des Installationstyps für Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-select-installation)
-* [Erste Schritte mit Azure AD Connect mit Expresseinstellungen](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-express)
+* [Erste Schritte mit Azure AD Connect mit Expresseinstellungen](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-express)
 * [Benutzerdefinierte Installation von Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom)
-* [Azure AD Connect: Aktualisieren von einer früheren Version auf die aktuelle Version](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version).
+* [Azure AD Connect: Aktualisieren von einer früheren Version auf die aktuelle Version](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version)
 * [Azure AD Connect: Was ist ein Stagingserver?](https://docs.microsoft.com/azure/active-directory/hybrid/plan-connect-topologies#staging-server)
 * [Was ist das PowerShell-Modul „ADConnectivityTool“?](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-adconnectivitytools)
 

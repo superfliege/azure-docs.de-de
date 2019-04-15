@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d7ba922d66bf97dbd8173b0d5466a7e55a41f6b4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 462625ce61f4538aa0769667648e07cc6307cbb3
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993187"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891683"
 ---
 # <a name="manage-database-roles-and-users"></a>Verwalten von Datenbankrollen und Benutzern
 
@@ -26,7 +26,7 @@ Folgende Rollenberechtigungen stehen zur Verfügung:
 *  **Verarbeiten:** Benutzer können eine Verbindung mit Verarbeitungsvorgängen in der Datenbank herstellen und diese durchführen sowie Daten der Modelldatenbank analysieren.
 *  **Lesen:** Benutzer können über eine Clientanwendung eine Verbindung mit Daten der Modelldatenbank herstellen und diese analysieren.
 
-Wenn Sie ein Projekt für ein tabellarisches Modell erstellen, erstellen Sie mit dem Rollen-Manager in SSDT Rollen und fügen diesen Rollen Benutzer oder Gruppen hinzu. Bei Bereitstellung auf einem Server verwenden Sie SSMS, [Analysis Services-PowerShell-Cmdlets](https://msdn.microsoft.com/library/hh758425.aspx) oder [Tabular Model Scripting Language](https://msdn.microsoft.com/library/mt614797.aspx) (TMSL), um Rollen und Benutzermitglieder hinzuzufügen oder zu entfernen.
+Wenn Sie ein Projekt für ein tabellarisches Modell erstellen, erstellen Sie mit dem Rollen-Manager in SSDT Rollen und fügen diesen Rollen Benutzer oder Gruppen hinzu. Bei Bereitstellung auf einem Server verwenden Sie SSMS, [Analysis Services-PowerShell-Cmdlets](/sql/analysis-services/powershell/analysis-services-powershell-reference) oder [Tabular Model Scripting Language](https://msdn.microsoft.com/library/mt614797.aspx) (TMSL), um Rollen und Benutzermitglieder hinzuzufügen oder zu entfernen.
 
 > [!NOTE]
 > Für Sicherheitsgruppen muss die `MailEnabled`-Eigenschaft auf `True` gesetzt sein.
@@ -120,13 +120,13 @@ In diesem Beispiel werden der Rolle „Analyst“ ein externer B2B-Benutzer und 
 
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>So fügen Sie Rollen und Benutzer mit PowerShell hinzu oder verwalten diese
 
-Das [SqlServer](https://msdn.microsoft.com/library/hh758425.aspx)-Modul bietet aufgabenspezifische Cmdlets für die Datenbankverwaltung und das allgemeine Cmdlet „Invoke-ASCmd“, das TMSL-Abfragen (Tabular Model Scripting Language) und -Skripts akzeptiert. Die folgenden Cmdlets werden zum Verwalten von Datenbankrollen und Benutzern verwendet.
+Das [SqlServer](/sql/analysis-services/powershell/analysis-services-powershell-reference)-Modul bietet aufgabenspezifische Cmdlets für die Datenbankverwaltung und das allgemeine Cmdlet „Invoke-ASCmd“, das TMSL-Abfragen (Tabular Model Scripting Language) und -Skripts akzeptiert. Die folgenden Cmdlets werden zum Verwalten von Datenbankrollen und Benutzern verwendet.
   
 |Cmdlet|BESCHREIBUNG|
 |------------|-----------------| 
-|[Add-RoleMember](https://msdn.microsoft.com/library/hh510167.aspx)|Hinzufügen eines Mitglieds zu einer Datenbankrolle.| 
-|[Remove-RoleMember](https://msdn.microsoft.com/library/hh510173.aspx)|Entfernen eines Mitglieds aus einer Datenbankrolle.|   
-|[Invoke-ASCmd](https://msdn.microsoft.com/library/hh479579.aspx)|Ausführen eines TMSL-Skripts.|
+|[Add-RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Hinzufügen eines Mitglieds zu einer Datenbankrolle.| 
+|[Remove-RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Entfernen eines Mitglieds aus einer Datenbankrolle.|   
+|[Invoke-ASCmd](/sql/analysis-services/powershell/analysis-services-powershell-reference)|Ausführen eines TMSL-Skripts.|
 
 ## <a name="row-filters"></a>Zeilenfilter  
 

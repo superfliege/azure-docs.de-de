@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: c9c2ca2cc27c5fa757b8ff6846e0a6a8f7087875
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: af4147de06f9fb7c856dfd93dc186f1a6e83ffff
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403713"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58628982"
 ---
 # <a name="set-up-a-user-profile-share-for-a-host-pool"></a>Einrichten einer Benutzerprofilfreigabe für einen Hostpool
 
 Der Windows Virtual Desktop-Dienst (Vorschauversion) stellt FSLogix-Profilcontainer als empfohlene Lösung für Benutzerprofile bereit. Wir raten davon ab, die Lösung „Benutzerprofil-Datenträger“ (User Profile Disk, UPD) zu nutzen. Sie wird in den zukünftigen Versionen von Windows Virtual Desktop als veraltet eingestuft.
 
-In diesem Abschnitt wird beschrieben, wie Sie eine FSLogix-Profilcontainerfreigabe für einen Hostpool einrichten.
+In diesem Abschnitt wird beschrieben, wie Sie eine FSLogix-Profilcontainerfreigabe für einen Hostpool einrichten. Allgemeine Dokumentation zu FSLogix finden Sie auf der [FSLogix-Website](https://docs.fslogix.com/).
 
 ## <a name="create-a-new-virtual-machine-that-will-act-as-a-file-share"></a>Erstellen eines neuen virtuellen Computers als Dateifreigabe
 
@@ -48,7 +48,7 @@ Hier ist eine allgemeine Anleitung zum Vorbereiten eines virtuellen Computers al
 6. Suchen Sie nach der Sicherheitsgruppe, der Sie die virtuellen Computer des Sitzungshosts hinzugefügt haben, und stellen Sie dann sicher, dass für die Gruppe **Vollzugriff** festgelegt ist.
 7. Klicken Sie nach dem Hinzufügen der Sicherheitsgruppe mit der rechten Maustaste auf den Ordner, wählen Sie **Eigenschaften** und **Freigabe**, und kopieren Sie anschließend den **Netzwerkpfad** zur späteren Verwendung.
 
-Bewährte Methoden zu Berechtigungen finden Sie in der folgenden [FSLogix-Dokumentation](https://support.fslogix.com/index.php/forum-main/faqs/84-best-practices#120).
+Weitere Informationen über Berechtigungen finden Sie in der [FSLogix-Dokumentation](https://docs.fslogix.com/display/20170529/Requirements%2B-%2BProfile%2BContainers).
 
 ## <a name="configure-the-fslogix-profile-container"></a>Konfigurieren des FSLogix-Profilcontainers
 

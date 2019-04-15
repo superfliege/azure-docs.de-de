@@ -7,21 +7,26 @@ author: anikaz
 manager: johndeu
 ms.service: media-services
 ms.topic: article
-ms.date: 12/05/2018
+ms.date: 03/19/2019
 ms.author: anzaman
-ms.openlocfilehash: 073cff22f17f496c2ff85cfbf716751dfea1e03e
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: b491120639421d85d2fbb1a0efb2b6dd09ec1d4c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53283236"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893893"
 ---
 # <a name="customize-a-person-model-in-video-indexer"></a>Anpassen eines Personenmodells in Video Indexer
 
+Video Indexer unterstützt die Erkennung von Prominenten in Ihren Videos. Die Funktion zur Erkennung von Prominenten umfasst ungefähr eine Million Gesichter, die auf häufig angeforderten Datenquellen wie IMDB, Wikipedia und den wichtigsten LinkedIn-Influencern basieren. Von Video Indexer nicht erkannte Gesichter werden weiterhin erkannt, bleiben aber unbenannt. Kunden können benutzerdefinierte Personenmodelle erstellen und Video Indexer in die Lage versetzen, Gesichter zu erkennen, die standardmäßig nicht erkannt werden. Kunden können diese Personenmodelle erstellen, indem sie den Namen einer Person mit Bilddateien des Gesichts der Person kombinieren.  
 
-Video Indexer unterstützt Gesichtserkennung und Erkennung bekannter Personen für Videoinhalte. Die Funktion zur Erkennung von Prominenten umfasst ungefähr 1.000.000 Gesichter, die auf häufig angeforderten Datenquellen wie IMDB, Wikipedia und den wichtigsten LinkedIn-Influencern basieren. Gesichter, die von der Funktion zur Erkennung von Prominenten nicht erkannt werden, werden erfasst, bleiben aber unbenannt. Nachdem Sie Ihr Video in Video Indexer hochgeladen und die Ergebnisse zurückerhalten haben, können Sie die Gesichter benennen, die zwar erfasst, aber nicht erkannt wurden. Sobald Sie ein Gesicht mit einem Namen versehen haben, werden Gesicht und Name dem Personenmodell Ihres Kontos hinzugefügt. Video Indexer erkennt dieses Gesicht dann in Ihren zukünftigen und früheren Videos.
+Wenn Ihr Konto unterschiedliche Anwendungsfälle abdeckt, können Sie davon profitieren, dass Sie mehrere Personenmodelle pro Konto erstellen können. Wenn der Inhalt in Ihrem Konto z. B. in verschiedene Kanäle sortiert werden soll, möchten Sie vielleicht für jeden Kanal ein eigenes Personenmodell erstellen. 
 
-Sie können die Video Indexer-Website oder -API verwenden, um Gesichter zu bearbeiten, die in einem Video in Ihrem Konto erkannt wurden. Dies wird in den folgenden Themen beschrieben:
+> [!NOTE]
+> Jedes Personenmodell unterstützt bis zu 1 Million Personen und jedes Konto hat ein Limit von 50 Personenmodellen. 
 
-- [Anpassen des Personenmodells mit APIs](customize-person-model-with-api.md)
-- [Anpassen des Personenmodells mithilfe der Website](customize-person-model-with-website.md)
+Sobald ein Modell erstellt wurde, können Sie es verwenden, indem Sie die Modell-ID eines bestimmten Personenmodells beim Hochladen/Indizieren oder erneuten Indizieren eines Videos angeben. Beim Trainieren eines neuen Gesichts für ein Video wird das bestimmte benutzerdefinierte Modell, dem das Video zugeordnet war, aktualisiert. 
+
+Wenn Sie keine Unterstützung für Mehrpersonenmodelle benötigen, weisen Sie Ihrem Video beim Hochladen/Indizieren oder erneuten Indizieren keine Personenmodell-ID zu. In diesem Fall verwendet Video Indexer das Standardpersonenmodell in Ihrem Konto. 
+
+Sie können die Video Indexer-Website verwenden, um Gesichter zu bearbeiten, die in einem Video erkannt wurden, und um mehrere benutzerdefinierte Personenmodelle in Ihrem Konto zu verwalten, wie im Thema [Anpassen eines Personenmodells mithilfe eines Website](customize-person-model-with-website.md) beschrieben. Sie können auch die API verwenden. Dies wird unter  [Anpassen von Personenmodellen mithilfe von APIs](customize-person-model-with-api.md) beschrieben.

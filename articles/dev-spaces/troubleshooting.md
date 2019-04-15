@@ -9,16 +9,18 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s '
-ms.openlocfilehash: 1ccb96bc8682ad505bc4b21e90951ea25c4c9954
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5dd77d85e06a821d8dd359174bb5de6bca8b4d61
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57898081"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669775"
 ---
 # <a name="troubleshooting-guide"></a>Handbuch zur Problembehandlung
 
 Dieses Handbuch enthält Informationen über allgemeine Probleme, die bei Verwendung von Azure Dev Spaces auftreten können.
+
+Wenn Sie bei der Verwendung von Azure Dev Spaces ein Problem haben, erstellen Sie [im GitHub-Repository für Azure Dev Spaces ein Problem (New Issue)](https://github.com/Azure/dev-spaces/issues).
 
 ## <a name="enabling-detailed-logging"></a>Aktivieren der ausführlichen Protokollierung
 
@@ -262,11 +264,13 @@ az provider register --namespace Microsoft.DevSpaces
 ## <a name="dev-spaces-times-out-at-waiting-for-container-image-build-step-with-aks-virtual-nodes"></a>Dev Spaces-Timeout beim Schritt *Warten auf Containerimagebuild* mit virtuellen AKS-Knoten
 
 ### <a name="reason"></a>Grund
-Dies tritt auf, wenn Sie versuchen, mit Dev Spaces einen Dienst auszuführen, der zur Ausführung auf einem [virtuellen AKS-Knoten](https://docs.microsoft.com/azure/aks/virtual-nodes-portal) konfiguriert ist. Dev Spaces unterstützt derzeit nicht das Erstellen oder Debuggen von Diensten auf virtuellen Knoten.
+Dieses Timeout tritt auf, wenn Sie versuchen, mit Dev Spaces einen Dienst auszuführen, der für die Ausführung auf einem [virtuellen AKS-Knoten](https://docs.microsoft.com/azure/aks/virtual-nodes-portal) konfiguriert ist. Dev Spaces unterstützt derzeit nicht das Erstellen oder Debuggen von Diensten auf virtuellen Knoten.
 
 Wenn Sie `azds up` mit dem `--verbose`-Schalter ausführen oder ausführliche Protokollierung in Visual Studio aktivieren, finden Sie weitere Informationen unter:
 
 ```cmd
+$ azds up --verbose
+
 Installed chart in 2s
 Waiting for container image build...
 pods/mywebapi-76cf5f69bb-lgprv: Scheduled: Successfully assigned default/mywebapi-76cf5f69bb-lgprv to virtual-node-aci-linux
@@ -274,7 +278,7 @@ Streaming build container logs for service 'mywebapi' failed with: Timed out aft
 Container image build failed
 ```
 
-Dies zeigt, dass der Pod des Diensts *virtual-node-aci-linux* zugewiesen wurde, d.h. einem virtuellen Knoten.
+Der obige Befehl zeigt, dass der Pod des Diensts zu *virtual-node-aci-linux*, einem virtuellen Knoten, zugewiesen wurde.
 
 ### <a name="try"></a>Versuchen Sie Folgendes:
 Aktualisieren Sie das Helm-Diagramm für den Dienst, um die Werte *nodeSelector* und/oder *tolerations* zu entfernen, die die Ausführung des Diensts auf einem virtuellen Knoten zulassen. Diese Werte werden in der Regel in der `values.yaml`-Datei des Diagramms definiert.
@@ -312,3 +316,12 @@ configurations:
     build:
       dockerfile: Dockerfile.develop
 ```
+
+## <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Fehler „Internal watch failed: watch ENOSPC“ beim Anfügen eines Debuggers an eine Node.js-Anwendung
+
+### <a name="reason"></a>Grund
+
+Der Knoten, auf dem der Pod mit der Node.js-Anwendung ausgeführt wird, der Sie einen Debugger anfügen möchten, hat den Wert *fs.inotify.max_user_watches* überschritten. In einigen Fällen ist möglicherweise der [Standardwert für *fs.inotify.max_user_watches* zu klein, um das direkte Anfügen eines Debuggers an einen Pod zu verarbeiten](https://github.com/Azure/AKS/issues/772).
+
+### <a name="try"></a>Testen
+Als vorübergehende Problemumgehung können Sie den Wert für *fs.inotify.max_user_watches* auf jedem Knoten im Cluster erhöhen und den Knoten neu starten, damit die Änderungen wirksam werden.

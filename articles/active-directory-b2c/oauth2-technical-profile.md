@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 86682525ae5246f9335e64e7dd3a812eaaf3c273
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fde556c60f823f4bd287ca5672503158c7292f51
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157719"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918925"
 ---
-# <a name="define-a-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen OAuth2-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
+# <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen OAuth2-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -78,11 +78,11 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| client_id | JA | Die Anwendungs-ID des Identitätsanbieters. |
+| client_id | Ja | Die Anwendungs-ID des Identitätsanbieters. |
 | IdTokenAudience | Nein  | Die Zielgruppe von id_token. Wenn eine Angabe erfolgt, überprüft Azure AD B2C, ob das Token in einem Anspruch, der vom Identitätsanbieter zurückgegeben wurde, enthalten und mit dem angegebenen Token identisch ist. |
-| authorization_endpoint | JA | Die URL des Autorisierungsendpunkts gemäß RFC 6749. |
-| AccessTokenEndpoint | JA | Die URL des Tokenendpunkts gemäß RFC 6749. |  
-| ClaimsEndpoint | JA | Die URL des Endpunkts für Benutzerinformationen gemäß RFC 6749. | 
+| authorization_endpoint | Ja | Die URL des Autorisierungsendpunkts gemäß RFC 6749. |
+| AccessTokenEndpoint | Ja | Die URL des Tokenendpunkts gemäß RFC 6749. |  
+| ClaimsEndpoint | Ja | Die URL des Endpunkts für Benutzerinformationen gemäß RFC 6749. | 
 | AccessTokenResponseFormat | Nein  | Das Format für Aufrufe an den Zugriffstoken-Endpunkt. Facebook erfordert z.B. eine HTTP GET-Methode, während die Antwort mit dem Zugriffstoken im JSON-Format ist. |
 | AdditionalRequestQueryParameters | Nein  | Zusätzliche Abfrageparameter für die Anforderung. Sie können diese zusätzlichen Parameter z.B. an Ihren Identitätsanbieter senden. Sie können mehrere Parameter mit einem Komma als Trennzeichen einfügen. | 
 | ClaimsEndpointAccessTokenName | Nein  | Der Name des Parameters mit der Abfragezeichenfolge für das Zugriffstoken. Die Anspruchsendpunkte einiger Identitätsanbieter unterstützen HTTP GET-Anforderungen. In diesem Fall wird das Bearertoken über einen Parameter für eine Abfragezeichenfolge anstelle eines Autorisierungsheaders gesendet. |
@@ -102,7 +102,7 @@ Das **CryptographicKeys**-Element enthält das folgende Attribut:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| client_secret | JA | Der geheime Clientschlüssel der Anwendung des Identitätsanbieters. Der kryptografische Schlüssel ist nur erforderlich, wenn die **response_type**-Metadaten auf `code` festgelegt sind. Azure AD B2C führt in diesem Fall einen weiteren Aufruf zum Austauschen des Autorisierungscode gegen ein Zugriffstoken durch. Wenn die Metadaten auf `id_token` festgelegt wurden, können Sie den kryptografischen Schlüssel weglassen.  |  
+| client_secret | Ja | Der geheime Clientschlüssel der Anwendung des Identitätsanbieters. Der kryptografische Schlüssel ist nur erforderlich, wenn die **response_type**-Metadaten auf `code` festgelegt sind. Azure AD B2C führt in diesem Fall einen weiteren Aufruf zum Austauschen des Autorisierungscode gegen ein Zugriffstoken durch. Wenn die Metadaten auf `id_token` festgelegt wurden, können Sie den kryptografischen Schlüssel weglassen.  |  
 
 ## <a name="redirect-uri"></a>Umleitungs-URI
 

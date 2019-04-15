@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cb597edc676fbb7b63c6a07849551cc21f69b354
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7c80b821d6bd0263473ba0178eea148f7a2d5773
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58015015"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879045"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Installieren von NVIDIA GPU-Treibern für virtuelle Computer der Serie N mit Linux
 
@@ -187,9 +187,9 @@ Stellen Sie zum Installieren von NVIDIA GRID-Treibern auf virtuellen Computern d
 
    sudo apt-get dist-upgrade -y
 
-   sudo apt-get install build-essential ubuntu-desktop -y
-   ```
-3. Deaktivieren Sie den Nouveau-Kerneltreiber, da er nicht mit dem NVIDIA-Treiber kompatibel ist. (Verwenden Sie den NVIDIA-Treiber nur auf virtuellen NV- oder NVv2-Computern.) Erstellen Sie zu diesem Zweck eine Datei in `/etc/modprobe.d `, und nennen Sie sie `nouveau.conf`. Die Datei muss den folgenden Inhalt enthalten:
+  sudo apt-get install build-essential ubuntu-desktop -y
+  ```
+3. Deaktivieren Sie den Nouveau-Kerneltreiber, da er nicht mit dem NVIDIA-Treiber kompatibel ist. (Verwenden Sie den NVIDIA-Treiber nur auf virtuellen NV- oder NVv2-Computern.) Erstellen Sie zu diesem Zweck eine Datei in `/etc/modprobe.d`, und nennen Sie sie `nouveau.conf`. Die Datei muss den folgenden Inhalt enthalten:
 
    ```
    blacklist nouveau
@@ -244,7 +244,7 @@ Stellen Sie zum Installieren von NVIDIA GRID-Treibern auf virtuellen Computern d
    sudo yum install dkms
    ```
 
-2. Deaktivieren Sie den Nouveau-Kerneltreiber, da er nicht mit dem NVIDIA-Treiber kompatibel ist. (Verwenden Sie den NVIDIA-Treiber nur auf virtuellen NV- oder NV2-Computern.) Erstellen Sie zu diesem Zweck eine Datei in `/etc/modprobe.d `, und nennen Sie sie `nouveau.conf`. Die Datei muss den folgenden Inhalt enthalten:
+2. Deaktivieren Sie den Nouveau-Kerneltreiber, da er nicht mit dem NVIDIA-Treiber kompatibel ist. (Verwenden Sie den NVIDIA-Treiber nur auf virtuellen NV- oder NV2-Computern.) Erstellen Sie zu diesem Zweck eine Datei in `/etc/modprobe.d`, und nennen Sie sie `nouveau.conf`. Die Datei muss den folgenden Inhalt enthalten:
 
    ```
    blacklist nouveau

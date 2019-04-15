@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 11/15/2018
+ms.date: 03/28/2019
 ms.author: danlep
-ms.openlocfilehash: b2b6da1739aa97f69f5744905564f638309a587f
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: ac0e4e9019a35d3fdb35c0b7af9cb1289f4bceeb
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854321"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895448"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Ausführen von Erstellungs-, Test- und Patchtasks mit mehreren Schritten in ACR Tasks
 
@@ -32,8 +32,6 @@ Sie können z.B. eine Aufgabe mit Schritten ausführen, die die folgende Logik a
 
 Alle Schritte werden in Azure ausgeführt – damit wird die Arbeit auf die Azure-Computeressourcen ausgelagert, und Sie müssen sich nicht um die Infrastrukturverwaltung kümmern. Sie zahlen neben Ihrer Azure-Containerregistrierung nur für die Ressourcen, die Sie tatsächlich verwenden. Informationen zu den Preisen finden Sie auf der Seite [Azure Container Registry – Preise][pricing] im Abschnitt **Container Build**.
 
-> [!IMPORTANT]
-> Diese Funktion steht derzeit als Vorschau zur Verfügung. Wenn Sie Vorschauversionen nutzen möchten, müssen Sie die [zusätzlichen Nutzungsbedingungen][terms-of-use] akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
 
 ## <a name="common-task-scenarios"></a>Gängige Tasks
 
@@ -55,8 +53,8 @@ Ein aus mehreren Schritten bestehender Task in ACR Tasks ist als eine Reihe von 
 
 Die folgenden Codeausschnitte zeigen, wie solche Taskschritttypen kombiniert werden. Tasks mit mehreren Schritten können einfach nur das Erstellen eines einzelnen Images aus einem Dockerfile und dessen Übertragung in Ihre Registrierung umfassen. Dabei wird eine ähnliche YAML-Datei wie diese verwendet:
 
-```yaml
-version: 1.0-preview-1
+```yml
+version: v1.0.0
 steps:
   - build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
   - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
@@ -64,8 +62,8 @@ steps:
 
 Sie können auch komplexer sein, z.B. wie bei dieser fiktiven Definition mit mehreren Schritten für Erstellen, Testen, Helm-Paket und Helm-Bereitstellung (Containerregistrierung und Helm-Repository nicht gezeigt):
 
-```yaml
-version: 1.0-preview-1
+```yml
+version: v1.0.0
 steps:
   - id: build-web
     build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
@@ -150,14 +148,6 @@ Run ID: yd14 was successful after 19s
 ```
 
 Weitere Informationen zu automatisierten Builds per Git-Commit oder Update des Basisimages finden Sie in den Tutorialartikeln [Automatisieren von Buildvorgängen für Containerimages](container-registry-tutorial-build-task.md) und [Automatisieren von Buildvorgängen für Images nach der Aktualisierung des Basisimages](container-registry-tutorial-base-image-update.md).
-
-## <a name="preview-feedback"></a>Feedback zur Vorschauversion
-
-Während sich das ACR Tasks-Feature „Tasks mit mehreren Schritten“ in der Vorschau befindet, freuen wir uns sehr über Feedback. Sie können Ihr Feedback über verschiedene Kanäle übermitteln:
-
-* [Issues](https://aka.ms/acr/issues): Anzeigen bestehender Fehler und Probleme Einreichen neuer Fehler
-* [UserVoice](https://aka.ms/acr/uservoice): Abstimmen für vorhandene Featureanforderungen oder Erstellen neuer Anforderungen
-* [Discuss](https://aka.ms/acr/feedback): Diskussion über Azure Container Registry in der Stack Overflow-Community
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,6 +1,6 @@
 ---
-title: 'Azure Front Door Service: Back-Ends und Back-End-Pools | Microsoft-Dokumentation'
-description: In diesem Artikel werden Back-Ends und Back-End-Pools für die Front Door-Konfiguration erläutert.
+title: Back-Ends und Back-End-Pools in Azure Front Door Service | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, welche Back-Ends und Back-End-Pools in der Front Door-Konfiguration enthalten sind.
 services: front-door
 documentationcenter: ''
 author: sharad4u
@@ -11,69 +11,85 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 228ed5c54a382db7b47d19adacf9e5db398c53ae
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2372f49c7280ee5c817f3d2f98cc80a196dae5f5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123690"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879198"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Back-Ends und Back-End-Pools in Azure Front Door Service
-In diesem Artikel werden die verschiedenen Konzepte hinsichtlich der Zuordnung Ihrer Anwendungsbereitstellung zu Front Door beschrieben. Darüber hinaus werden die verschiedenen in der Front Door-Konfiguration rund um das Anwendungs-Back-End verwendeten Begriffe erklärt.
+In diesem Artikel werden die Konzepte für die Zuordnung Ihrer App-Bereitstellung zu Azure Front Door Service beschrieben. Darüber hinaus werden die verschiedenen Begriffe erläutert, die bei der Front Door-Konfiguration rund um App-Back-Ends verwendet werden.
 
-## <a name="backend-pool"></a>Back-End-Pool
-Ein Back-End-Pool in Front Door bezeichnet eine Gruppe gleichwertiger Back-Ends, die die gleiche Art von Datenverkehr für ihre Anwendung empfangen können. Mit anderen Worten: Es handelt sich um eine logische Gruppierung Ihrer Anwendungsinstanzen weltweit, die den gleichen Datenverkehr empfangen und mit dem erwarteten Verhalten reagieren können. Diese Back-Ends werden in der Regel regionsübergreifend oder innerhalb derselben Region bereitgestellt. Zudem können alle diese Back-Ends im Aktiv/Aktiv-Bereitstellungsmodus vorliegen oder auch auf eine Aktiv/Passiv-Konfiguration festgelegt sein.
+## <a name="backends"></a>Back-Ends
+Ein Back-End entspricht einer App-Bereitstellungsinstanz in einer Region. Front Door Service unterstützt sowohl Azure- als auch Nicht-Azure-Back-Ends. Daher ist die Region nicht auf Azure-Regionen beschränkt. Die Instanz kann auch Ihr lokales Rechenzentrum oder eine App-Instanz in einer anderen Cloud sein.
 
-Durch den Back-End-Pool wird außerdem definiert, wie die Integrität der unterschiedlichen Back-Ends über Integritätstests zu prüfen ist und wie der Lastenausgleich zwischen den Back-Ends zu erfolgen hat.
+Front Door Service-Back-Ends verweisen auf den Hostnamen oder die öffentliche IP-Adresse Ihrer App, die Clientanforderungen verarbeiten kann. Back-Ends sollten nicht mit einer Datenbankebene, Speicherebene usw. verwechselt werden. Back-Ends sind als öffentlicher Endpunkt Ihres App-Back-Ends zu betrachten. Wenn Sie dem Front Door-Back-End-Pool ein Back-End hinzufügen, müssen Sie auch Folgendes hinzufügen:
 
-### <a name="health-probes"></a>Integritätstests
-Front Door sendet regelmäßige HTTP/HTTPS-Testanforderungen an jeden der konfigurierten Back-Ends, um Entfernung und Integrität der einzelnen Back-Ends zu bestimmen und einen Lastenausgleich hinsichtlich der Endbenutzer-Anforderungen auszuführen. Mit den Integritätstesteinstellungen für einen Back-End-Pool wird festgelegt, wie der Integritätsstatus Ihrer Anwendungs-Back-Ends abgefragt wird. Die folgenden Einstellungen sind für die Konfiguration des Lastenausgleichs verfügbar:
+- **Back-End-Hosttyp**: Der Typ der Ressource, die hinzugefügt werden soll. Front Door Service unterstützt die automatische Erkennung Ihrer App-Back-Ends, wenn diese aus dem App Service, Cloud-Dienst oder Speicher stammen. Wenn Sie eine andere Ressource in Azure oder sogar ein Nicht-Azure-Back-End hinzufügen möchten, wählen Sie **Benutzerdefinierter Host** aus.
 
-1. **Pfad**: URL-Pfad, an den die Testanforderungen für alle Back-Ends im Back-End-Pool gesendet werden. Ist beispielsweise einer Ihrer Back-Ends `contoso-westus.azurewebsites.net`, und der Pfad ist auf `/probe/test.aspx` festgelegt, senden Front Door-Umgebungen (falls das Protokoll auf HTTP festgelegt ist) die Integritätstestanforderungen an http://contoso-westus.azurewebsites.net/probe/test.aspx. 
-2. **Protokoll:** Legt fest, ob die Integritätstestanforderungen von der Front Door-Instanz an Ihre Back-Ends über das HTTP-Protokoll oder das HTTPS-Protokoll gesendet werden.
-3. **Intervall (Sekunden):** In diesem Feld wird die Häufigkeit der Integritätstests Ihrer Back-Ends festgelegt, d. h. die Intervalle, in denen die einzelnen Front Door-Umgebungen einen Test senden. Hinweis: Wenn Sie an schnellerem Failover interessiert sind, legen Sie dieses Feld auf einen niedrigeren Wert fest. Je niedriger der Wert, desto größer ist jedoch das Integritätstestvolumen, das Ihre Back-Ends empfangen. Das folgende Beispiel soll eine Vorstellung davon vermitteln, welches Testvolumen Front Door auf Ihren Back-Ends generiert. Angenommen, das Intervall ist auf 30 Sekunden festgelegt, und es gibt ca. 90 Front Door-Umgebungen oder POPs weltweit. Damit empfängt jedes Back-End etwa 3 bis 5 Testanforderungen pro Sekunde.
+    >[!IMPORTANT]
+    >Bei der Konfiguration überprüfen die APIs nicht, ob aus Front Door-Umgebungen auf das Back-End zugegriffen werden kann. Stellen Sie daher sicher, dass Front Door Ihr Back-End erreichen kann.
 
-Einzelheiten hierzu finden Sie unter [Integritätstests](front-door-health-probes.md).
+- **Abonnement und Back-End-Hostname**: Wenn Sie als Back-End-Hosttyp nicht **Benutzerdefinierter Host** ausgewählt haben, müssen Sie Ihr Back-End auswählen. Wählen Sie dazu das entsprechende Abonnement und den entsprechenden Back-End-Hostnamen auf der Benutzeroberfläche aus.
 
-### <a name="load-balancing-settings"></a>Lastenausgleichseinstellungen
-Die Lastenausgleichseinstellungen für den Back-End-Pool legen fest, wie die Integritätstests ausgewertet werden und ein Back-End als fehlerfrei oder fehlerhaft bewertet wird. Zudem wird damit bestimmt, wie der Lastenausgleich zwischen den verschiedenen Back-Ends im Back-End-Pool auszuführen ist. Die folgenden Einstellungen sind für die Konfiguration des Lastenausgleichs verfügbar:
+- **Back-End-Hostheader**: Der Hostheaderwert, der für jede Anforderung an das Back-End gesendet wird. Weitere Informationen finden Sie unter [Back-End-Hostheader](#hostheader).
 
-1. **Stichprobengröße:** Durch diese Eigenschaft wird angegeben, wie viele Stichproben von Integritätstests bei der Auswertung der Integrität der Back-Ends zu berücksichtigen sind.
-2. **Erfolgreiche Stichprobengröße:** Diese Eigenschaft legt fest, wie viele Stichproben bei dem oben erläuterten Stichprobenumfang benötigt werden, um auf Integrität zu prüfen und das Back-End als fehlerfrei zu bewerten. 
-</br>Angenommen, Sie haben für Ihre Front Door das *Intervall* des Integritätstests auf 30 Sekunden, die *Stichprobengröße* auf '5' und *Successful sample size* (Erfolgreiche Stichprobengröße) auf '3' festgelegt. Diese Konfiguration besagt, dass wir bei jeder Auswertung der Integritätstests für Ihr Back-End die letzten fünf Stichproben untersuchen, die sich über die letzten 150 Sekunden (=5*30 s) erstrecken. Sind nicht mindestens drei dieser Stichproben erfolgreich, wird das Back-End für fehlerhaft erklärt. Angenommen, es gab nur zwei erfolgreiche Tests, daher wird das Back-End als fehlerhaft markiert. Wenn bei der nächsten Auswertung in den letzten fünf Tests drei erfolgreiche Tests festgestellt werden, markieren wird das Back-End wieder als fehlerfrei.
-3. **Wartezeitenaktivität (zusätzliche Wartezeit):** Das Feld für die Wartezeitenaktivität legt fest, ob die Front Door-Instanz die Anforderung an Back-Ends senden soll, die sich hinsichtlich der Wartezeit im Wartezeitbereich befinden, oder ob die Anforderung an das nächstgelegene Back-End weitergeleitet werden soll. Weitere Informationen finden Sie unter [Routingmethode mit geringsten Wartezeiten](front-door-routing-methods.md#latency) für Front Door.
+- **Priorität**: Weisen Sie Ihren verschiedenen Back-Ends Prioritäten zu, wenn Sie ein primäres Dienst-Back-End für den gesamten Datenverkehr verwenden möchten. Stellen Sie außerdem Sicherungen bereit, wenn das primäre Back-End oder die Sicherungs-Back-Ends nicht verfügbar sind. Weitere Informationen finden Sie unter [Priorität](front-door-routing-methods.md#priority).
 
-## <a name="backend"></a>Back-End
-Ein Back-End entspricht der Bereitstellungsinstanz einer Anwendung in einer Region. Front Door unterstützt sowohl Azure-Back-Ends als auch Nicht-Azure-Back-Ends. Daher ist die Region nicht nur auf Azure-Regionen beschränkt, sondern es kann sich auch um Ihr lokales Rechenzentrum oder eine Anwendungsinstanz in einer anderen Cloud handeln.
-
-Back-End bezeichnet im Zusammenhang mit Front Doors den Hostnamen oder die öffentliche IP Ihrer Anwendung, die Clientanforderungen verarbeiten kann. Daher dürfen Back-Ends nicht mit Ihrer Datenbankebene oder Speicherebene verwechselt werden; betrachten Sie sie stattdessen als öffentlichen Endpunkt Ihres Anwendungs-Back-Ends.
-
-Wenn Sie ein Back-End in einem Back-End-Pool Ihrer Front Door hinzufügen, müssen Sie folgende Details angeben:
-
-1. **Back-End-Hosttyp:** Der Typ der Ressource, die hinzugefügt werden soll. Front Door unterstützt die automatische Erkennung Ihrer Anwendungs-Back-Ends, wenn diese aus dem App Service, Cloud-Dienst oder Speicher stammen. Wenn Sie eine andere Ressource in Azure oder sogar ein Nicht-Azure-Back-End hinzufügen möchten, wählen Sie „Benutzerdefinierter Host“ aus. Hinweis: Während der Konfiguration wird von den APIs nicht überprüft, ob aus Front Door-Umgebungen auf das Back-End zugegriffen werden kann. Stattdessen müssen Sie sicherstellen, dass Ihr Back-End für Front Door zugänglich ist. 
-2. **Abonnement und Back-End-Hostname:** Wenn Sie als Back-End-Hosttyp nicht „Benutzerdefinierter Host“ ausgewählt haben, müssen Sie eine Eingrenzung vornehmen und das Back-End auswählen. Wählen Sie dazu das entsprechende Abonnement und den entsprechenden Back-End-Hostnamen in der Benutzeroberfläche aus.
-3. **Back-End-Hostheader:** Der Hostheaderwert, der für jede Anforderung an das Back-End gesendet wird. Weitere Einzelheiten hierzu finden Sie unter [Back-Endhost-Hostheader](#hostheader).
-4. **Priorität:** Sie können Ihren verschiedenen Back-Ends Prioritäten zuweisen, wenn Sie ein primäres Dienst-Back-End für den gesamten Datenverkehr verwenden. Außerdem können Sie zusätzliche Back-Ends bereitstellen, falls das primäre Back-End oder die Ersatz-Back-Ends nicht verfügbar sind. Weitere Informationen hierzu finden Sie unter [Priorität](front-door-routing-methods.md#priority).
-5. **Gewichtung:** Sie können Ihren verschiedenen Back-Ends Gewichtungen zuweisen, wenn Sie Datenverkehr entweder gleichmäßig oder gemäß Gewichtungskoeffizienten auf eine Gruppe von Back-Ends verteilen möchten. Weitere Informationen finden Sie unter [Gewichtungen](front-door-routing-methods.md#weighted).
-
+- **Gewichtung**: Weisen Sie Ihren verschiedenen Back-Ends Gewichtungen zu, um den Datenverkehr entweder gleichmäßig oder anhand von Gewichtungskoeffizienten auf eine Gruppe von Back-Ends zu verteilen. Weitere Informationen finden Sie unter [Gewichtung](front-door-routing-methods.md#weighted).
 
 ### <a name = "hostheader"></a>Back-End-Hostheader
 
-Von Front Door an ein Back-End weitergeleitete Anforderungen weisen ein Hostheaderfeld auf, anhand dessen das Back-End die Zielressource abruft. Der Wert für dieses Feld stammt in der Regel aus dem Back-End-URI und gibt Host und Port an. Eine für `www.contoso.com` gesendete Anforderung weist beispielsweise den Hostheader `www.contoso.com` auf. Wenn Sie Ihr Back-End mit Azure-Portal konfigurieren, wird in diesem Feld standardmäßig der Hostname des Back-Ends eingetragen. Wenn Ihr Back-End beispielsweise `contoso-westus.azurewebsites.net` ist, wird im Azure-Portal automatisch der Wert `contoso-westus.azurewebsites.net` für den Back-End-Hostheader übernommen. 
-</br>Verwenden Sie hingegen Resource Manager-Vorlagen oder andere Mechanismen und legen Sie dieses Feld nicht explizit fest, sendet Front Door den eingehenden Hostnamen als Wert für den Hostheader. Wurde die Anforderung beispielsweise für `www.contoso.com` gesendet und Ihr Back-End ist `contoso-westus.azurewebsites.net`, wobei das Feld für den Back-End-Hostheader leer ist, legt Front Door den Hostheader auf `www.contoso.com` fest.
+Von Front Door an ein Back-End weitergeleitete Anforderungen enthalten ein Hostheaderfeld, mit dem das Back-End die Zielressource abruft. Der Wert für dieses Feld stammt in der Regel aus dem Back-End-URI und gibt Host und Port an.
 
-Bei den meisten Anwendungs-Back-Ends (wie Web-Apps, Blob Storage und Cloud Services) muss der Hostheader der Domäne des Back-Ends entsprechen. Der Front-End-Host, der an Ihr Back-End weiterleitet, hat jedoch einen anderen Hostnamen, z. B. „www\.contoso.azurefd.net“. Wenn das eingerichtete Back-End fordert, dass der Hostheader dem Hostnamen des Back-Ends entspricht, müssen Sie sicherstellen, dass das Feld „Back-End-Hostheader“ ebenfalls den Hostnamen des Back-Ends enthält.
+Eine Anforderung für „www\.contoso.com“ weist beispielsweise den Hostheader „www\.contoso.com“ auf. Wenn Sie Ihr Back-End im Azure-Portal konfigurieren, wird standardmäßig der Hostname des Back-Ends als Wert für dieses Feld verwendet. Wenn Ihr Back-End den Namen „contoso-westus.azurewebsites.net“ hat, wird im Azure-Portal automatisch der Wert „contoso-westus.azurewebsites.net“ als Hostheader des Back-Ends eingetragen. Wenn Sie jedoch Azure Resource Manager-Vorlagen oder eine andere Methode verwenden und dieses Feld nicht explizit festlegen, sendet Front Door Service den Hostnamen für die eingehende Anforderung als Wert für den Hostheader. Ist die Anforderung beispielsweise für „www\.contoso.com“ erfolgt, und das Back-End ist „contoso-westus.azurewebsites.net“, wobei das Feld für den Header leer ist, legt Front Door Service den Hostheader als „www\.contoso.com“ fest.
+
+Bei den meisten App-Back-Ends (Azure Web-Apps, Blob Storage und Cloud Services) muss der Hostheader der Domäne des Back-Ends entsprechen. Der Front-End-Host, der die Weiterleitung an Ihr Back-End vornimmt, hat jedoch einen anderen Hostnamen, z.B. „www\.contoso.azurefd.net“.
+
+Wenn der Hostheader für Ihr Back-End dem Back-End-Hostnamen entsprechen muss, müssen Sie sicherstellen, dass der Back-End-Hostheader den Back-End-Hostnamen enthält.
 
 #### <a name="configuring-the-backend-host-header-for-the-backend"></a>Konfigurieren des Back-End-Hostheaders für das Back-End
-Das Feld „Back-End-Hostheader“ kann für ein Back-End im Abschnitt für Back-End-Pools konfiguriert werden.
 
-1. Öffnen Sie die Front Door-Ressource, und klicken Sie auf den Back-End-Pool, der das zu konfigurierende Back-End enthält.
+So konfigurieren Sie im Abschnitt „Back-End-Pools“ das Feld **Back-End-Hostheader** für ein Back-End
 
-2. Fügen Sie ein Back-End hinzu, falls Sie noch keines hinzugefügt haben, oder bearbeiten Sie ein vorhandenes Back-End. Das Feld „Back-End-Hostheader“ kann auf einen benutzerdefinierten Wert festgelegt oder leer gelassen werden, was bedeutet, dass der Hostname für die eingehende Anforderung als Wert für den Hostheader verwendet wird.
+1. Öffnen Sie die Front Door-Ressource, und wählen Sie den Back-End-Pool mit dem zu konfigurierenden Back-End aus.
 
+2. Fügen Sie ein Back-End hinzu, sofern noch keines hinzugefügt wurde, oder bearbeiten Sie ein vorhandenes Back-End.
 
+3. Legen Sie das Feld „Back-End-Hostheader“ auf einen benutzerdefinierten Wert fest, oder lassen Sie es leer. Der Hostname für die eingehende Anforderung wird als Hostheaderwert verwendet werden.
+
+## <a name="backend-pools"></a>Back-End-Pools
+Ein Back-End-Pool in Front Door Service bezieht sich auf eine Gruppe von Back-Ends, die ähnlichen Datenverkehr für ihre App empfangen. Mit anderen Worten: Es handelt sich um eine logische Gruppierung Ihrer weltweiten App-Instanzen, die den gleichen Datenverkehr empfangen und mit dem erwarteten Verhalten reagieren. Diese Back-Ends werden regionsübergreifend oder innerhalb derselben Region bereitgestellt. Alle Back-Ends können im Aktiv/Aktiv-Bereitstellungsmodus oder in einer sogenannten Aktiv/Passiv-Konfiguration bereitgestellt werden.
+
+Ein Back-End-Pool definiert, wie die verschiedenen Back-Ends über Integritätstests ausgewertet werden sollen. Er definiert ebenso, wie der Lastenausgleich zwischen den Back-Ends erfolgen soll.
+
+### <a name="health-probes"></a>Integritätstests
+Front Door Service sendet regelmäßige HTTP/HTTPS-Testanforderungen an jedes konfigurierte Back-End. Anhand der Testanforderungen werden Näherung und Integrität jedes Back-Ends für den Lastenausgleich der Endbenutzeranforderungen bestimmt. Mit den Integritätstesteinstellungen für einen Back-End-Pool wird festgelegt, wie der Integritätsstatus Ihrer App-Back-Ends abgefragt wird. Die folgenden Einstellungen sind für die Konfiguration des Lastenausgleichs verfügbar:
+
+- **Pfad**: Die URL, die für Testanforderungen für alle Back-Ends im Back-End-Pool verwendet wird. Beispiel: Wenn ein Back-End auf „contoso-westus.azurewebsites.net“ und der Pfad auf „/probe/test.aspx“ festgelegt ist, gehen Front Door Service-Umgebungen davon aus, dass das Protokoll auf HTTP festgelegt ist und senden Integritätstestanforderungen an „http\://contoso-westus.azurewebsites.net/probe/test.aspx“.
+
+- **Protokoll**: Legt fest, ob die Integritätstestanforderungen von Front Door Service an Ihre Back-Ends über das HTTP-Protokoll oder das HTTPS-Protokoll gesendet werden.
+
+- **Intervall (Sekunden)**: Definiert die Häufigkeit der Integritätstests für Ihre Back-Ends bzw. die Intervalle, in denen die einzelnen Front Door-Umgebungen einen Test senden.
+
+    >[!NOTE]
+    >Für schnellere Failover sollten Sie das Intervall auf einen niedrigeren Wert festlegen. Je niedriger der Wert, desto größer ist jedoch das Integritätstestvolumen, das Ihre Back-Ends empfangen. Wenn beispielsweise bei 90 Front Door-Umgebungen bzw. globalen POPs das Intervall auf 30 Sekunden festgelegt ist, empfängt jedes Back-End etwa 3 bis 5 Testanforderungen pro Sekunde.
+
+Weitere Informationen finden Sie unter [Integritätstests](front-door-health-probes.md).
+
+### <a name="load-balancing-settings"></a>Einstellungen für den Lastenausgleich
+Anhand der Einstellungen für den Lastenausgleich für den Back-End-Pool wird definiert, wie Integritätstests ausgewertet werden. Diese Einstellungen bestimmen, ob das Back-End fehlerfrei oder fehlerhaft ist. Überprüft wird auch, wie der Lastenausgleich für den Datenverkehr zwischen den verschiedenen Back-Ends im Back-End-Pool erfolgen soll. Die folgenden Einstellungen sind für die Konfiguration des Lastenausgleichs verfügbar:
+
+- **Stichprobengröße**: Gibt an, wie viele Stichproben von Integritätstests bei der Auswertung der Integrität der Back-Ends zu berücksichtigen sind.
+
+- **Erfolgreiche Stichprobengröße**: Definiert die zuvor erwähnte Stichprobengröße, d.h. die Anzahl der erfolgreichen Stichproben, die erforderlich sind, um das Back-End als fehlerfrei zu bezeichnen. Angenommen, das Intervall für Front Door-Integritätstests ist auf 30 Sekunden, die Stichprobengröße auf 5 Sekunden und die erfolgreiche Stichprobengröße auf 3 Sekunden festgelegt. Jedes Mal, wenn Integritätstests für Ihr Back-End ausgewertet werden, werden die letzten fünf Stichproben innerhalb von 150 Sekunden (5 x 30) betrachtet. Mindestens drei erfolgreiche Stichproben sind erforderlich, um Ihr Back-End als fehlerfrei zu deklarieren.
+
+- **Wartezeitenaktivität (zusätzliche Wartezeit)**: Definiert, ob Front Door die Anforderung an Back-Ends innerhalb des Aktivitätsbereichs der Wartezeitmessung senden oder die Anforderung an das nächstgelegene Back-End weiterleiten soll.
+
+Weitere Informationen finden Sie unter [Datenverkehrsrouting auf Grundlage der niedrigsten Latenzen](front-door-routing-methods.md#latency).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das [Erstellen einer Azure Front Door Service-Konfiguration](quickstart-create-front-door.md).
-- Informieren Sie sich über die [Funktionsweise von Azure Front Door Service](front-door-routing-architecture.md).
+- [Erstellen eines Front Door-Profils](quickstart-create-front-door.md)
+- [Funktionsweise von Azure Front Door Service](front-door-routing-architecture.md)

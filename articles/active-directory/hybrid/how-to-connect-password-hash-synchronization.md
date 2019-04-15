@@ -9,16 +9,18 @@ ms.assetid: 05f16c3e-9d23-45dc-afca-3d0fa9dbf501
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 04/02/2019
 ms.subservice: hybrid
 ms.author: billmath
+search.appverid:
+- MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74a7316ea00f5c38d6a2b1a98d81affeeffcd5e9
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 146fdc3ca2af708a96e6b9a604493eb63c2e6530
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517996"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916375"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
 In diesem Artikel finden Sie alle Informationen, die Sie benötigen, um Benutzerkennwörter aus einer lokalen Active Directory-Instanz mit einer cloudbasierten Azure Active Directory-Instanz (Azure AD) zu synchronisieren.
@@ -46,7 +48,7 @@ Ein Benutzer muss seine Unternehmensanmeldeinformationen ein zweites Mal eingebe
 ### <a name="detailed-description-of-how-password-hash-synchronization-works"></a>Ausführliche Beschreibung der Funktionsweise der Kennworthashsynchronisierung
 Im folgenden Abschnitt wird ausführlich beschrieben, wie die Kennworthashsynchronisierung zwischen Active Directory und Azure AD funktioniert.
 
-![Detaillierter Kennwortfluss](./media/how-to-connect-password-hash-synchronization/arch3a.png)
+![Detaillierter Kennwortfluss](./media/how-to-connect-password-hash-synchronization/arch3b.png)
 
 
 1. Alle zwei Minuten fordert der Kennworthashsynchronisierungs-Agent auf dem AD Connect-Server gespeicherte Kennworthashes (unicodePwd-Attribut) von einem DC an.  Diese Anforderung erfolgt über das [MS-DRSR](https://msdn.microsoft.com/library/cc228086.aspx)-Standardreplikationsprotokoll, das zum Synchronisieren von Daten zwischen DCs verwendet wird. Das Dienstkonto muss die AD-Berechtigungen „Verzeichnisänderungen replizieren“ und „Verzeichnisänderungen replizieren: Alle“ haben (die bei der Installation standardmäßig erteilt werden), um die Kennworthashes abzurufen.
@@ -141,6 +143,6 @@ Informationen zu Sicherheitsfragen und FIPS finden Sie im Blogbeitrag [AAD Passw
 Wenn bei der Kennworthashsynchronisierung Probleme auftreten, finden Sie weitere Informationen unter [Problembehandlung bei der Kennworthashsynchronisierung](tshoot-connect-password-hash-synchronization.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung](how-to-connect-sync-whatis.md)
-* [Integrieren lokaler Identitäten in Azure Active Directory](whatis-hybrid-identity.md)
+* [Azure AD Connect-Synchronisierung: Anpassen von Synchronisierungsoptionen](how-to-connect-sync-whatis.md)
+* [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](whatis-hybrid-identity.md)
 * [Sehen Sie sich einen ausführlichen Bereitstellungsplan für die Migration von AD FS zur Kennworthashsynchronisierung an.](https://aka.ms/authenticationDeploymentPlan)

@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a516f99af05ba3f3bb7ab98d3def123a488e0d9d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0f380aa9f2efc1ae9636b7704f7eb75004bb71f9
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075900"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895053"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Verwenden der Azure AD-Graph-API
 
 >[!NOTE]
-> Sie müssen die [Azure AD-Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview?f=255&MSPPError=-2147217396) verwenden, um Benutzer in einem Azure AD B2C-Verzeichnis zu verwalten. Dies unterscheidet sich von der Microsoft Graph-API. [Hier](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/)erhalten Sie weitere Informationen.
+> Sie müssen die [Azure AD-Graph-API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-operations-overview) verwenden, um Benutzer in einem Azure AD B2C-Verzeichnis zu verwalten. Dies unterscheidet sich von der Microsoft Graph-API. [Hier](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/)erhalten Sie weitere Informationen.
 
 Azure Active Directory (Azure AD) B2C-Mandanten sind normalerweise sehr groß. Das bedeutet, dass viele allgemeine Aufgaben zur Mandantenverwaltung programmgesteuert durchgeführt werden müssen. Ein gutes Beispiel ist die Benutzerverwaltung. Unter Umständen müssen Sie einen vorhandenen Benutzerspeicher zu einem B2C-Mandanten migrieren. Sie möchten die Benutzerregistrierung vielleicht auf Ihrer eigenen Seite hosten und Benutzerkonten im Azure AD B2C-Verzeichnis im Hintergrund erstellen. Diese Arten von Aufgaben erfordern die Fähigkeit zum Erstellen, Lesen, Aktualisieren und Löschen von Benutzerkonten. Hierfür können Sie die Azure AD Graph-API verwenden.
 
@@ -239,7 +239,7 @@ Content-Length: 338
 }
 ```
 
-Die meisten Eigenschaften dieser Anforderung müssen Consumerbenutzer erstellen. Klicken Sie [hier](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#CreateLocalAccountUser), um weitere Informationen zu erhalten. Beachten Sie, dass `//` -Kommentare zur Veranschaulichung eingefügt wurden. Fügen Sie sie nicht in einer tatsächlichen Anforderung ein.
+Die meisten Eigenschaften dieser Anforderung müssen Consumerbenutzer erstellen. Klicken Sie [hier](/previous-versions/azure/ad/graph/api/users-operations#CreateLocalAccountUser), um weitere Informationen zu erhalten. Beachten Sie, dass `//` -Kommentare zur Veranschaulichung eingefügt wurden. Fügen Sie sie nicht in einer tatsächlichen Anforderung ein.
 
 Führen Sie zum Anzeigen der Anforderung einen der folgenden Befehle aus:
 
@@ -248,7 +248,7 @@ B2C Create-User ..\..\..\usertemplate-email.json
 B2C Create-User ..\..\..\usertemplate-username.json
 ```
 
-Der Befehl `Create-User` verwendet eine JSON-Datei als Eingabeparameter. Diese Datei enthält eine JSON-Darstellung eines Benutzerobjekts. Es gibt zwei JSON-Beispieldateien im Beispielcode: `usertemplate-email.json` und `usertemplate-username.json`. Sie können diese Dateien Ihren Anforderungen entsprechend ändern. Zusätzlich zu den obigen erforderlichen Feldern enthalten diese Dateien auch verschiedene optionale Felder, die Sie verwenden können. Details zu den optionalen Feldern finden Sie in der [Referenz zu Azure AD Graph-API-Entitäten](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity).
+Der Befehl `Create-User` verwendet eine JSON-Datei als Eingabeparameter. Diese Datei enthält eine JSON-Darstellung eines Benutzerobjekts. Es gibt zwei JSON-Beispieldateien im Beispielcode: `usertemplate-email.json` und `usertemplate-username.json`. Sie können diese Dateien Ihren Anforderungen entsprechend ändern. Zusätzlich zu den obigen erforderlichen Feldern enthalten diese Dateien auch verschiedene optionale Felder, die Sie verwenden können. Details zu den optionalen Feldern finden Sie in der [Referenz zu Azure AD Graph-API-Entitäten](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity).
 
 Sie sehen, wie die POST-Anforderung in `B2CGraphClient.SendGraphPostRequest(...)`aufgebaut ist:
 
@@ -257,7 +257,7 @@ Sie sehen, wie die POST-Anforderung in `B2CGraphClient.SendGraphPostRequest(...)
 * Das JSON-Benutzerobjekt wird in den Hauptteil der Anforderung eingefügt.
 
 > [!NOTE]
-> Wenn die Konten, die Sie aus einem vorhandenen Benutzerspeicher migrieren möchten, über eine geringere Kennwortsicherheit als die [hohe Kennwortsicherheit unter Azure AD B2C](https://msdn.microsoft.com/library/azure/jj943764.aspx) verfügen, können Sie die Erzwingung sicherer Kennwörter deaktivieren. Verwenden Sie hierfür den Wert `DisableStrongPassword` in der `passwordPolicies`-Eigenschaft. Beispielsweise können Sie die oben angegebene Anforderung zum Erstellen eines Benutzers wie folgt ändern: `"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"`.
+> Wenn die Konten, die Sie aus einem vorhandenen Benutzerspeicher migrieren möchten, über eine geringere Kennwortsicherheit als die [hohe Kennwortsicherheit unter Azure AD B2C](/previous-versions/azure/jj943764(v=azure.100)) verfügen, können Sie die Erzwingung sicherer Kennwörter deaktivieren. Verwenden Sie hierfür den Wert `DisableStrongPassword` in der `passwordPolicies`-Eigenschaft. Beispielsweise können Sie die oben angegebene Anforderung zum Erstellen eines Benutzers wie folgt ändern: `"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"`.
 > 
 > 
 
@@ -317,7 +317,7 @@ B2C Delete-User <object-id-of-user>
 
 Überprüfen Sie die `B2CGraphClient.SendGraphDeleteRequest(...)` -Methode auf Details zum Senden dieser Anforderung.
 
-Sie können neben der Benutzerverwaltung zahlreiche weitere Aktionen mit der Azure AD Graph-API ausführen. Die [Referenz zur Azure AD Graph-API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) enthält Details zu jeder Aktion und Beispielanforderungen.
+Sie können neben der Benutzerverwaltung zahlreiche weitere Aktionen mit der Azure AD Graph-API ausführen. Die [Referenz zur Azure AD Graph-API](/previous-versions/azure/ad/graph/api/api-catalog) enthält Details zu jeder Aktion und Beispielanforderungen.
 
 ## <a name="use-custom-attributes"></a>Verwenden von benutzerdefinierten Attributen
 In den meisten Consumeranwendungen müssen bestimmte benutzerdefinierte Informationen zu einem Benutzerprofil gespeichert werden. Eine Möglichkeit dazu besteht im Definieren eines benutzerdefinierten Attributs in Ihrem B2C-Mandanten. Sie können dann dieses Attribut wie jede andere Eigenschaft eines Benutzerobjekts behandeln. Sie können das Attribut aktualisieren und löschen, nach dem Attribut abfragen, es in Anmeldetoken als Anspruch senden usw.

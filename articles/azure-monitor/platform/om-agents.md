@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: magoedte
-ms.openlocfilehash: d2ecebf47c77baa81193939b64c27348541f7686
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 19ae3322d26447cf7c7dd94d06f073ccf013738e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403407"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878354"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor
 
@@ -41,6 +41,7 @@ Das nachstehende Diagramm zeigt die Verbindung zwischen den Verwaltungsservern u
 Wenn es laut Ihren IT-Sicherheitsrichtlinien unzulässig ist, dass Computer in Ihrem Netzwerk eine Internetverbindung herstellen, können die Verwaltungsserver so konfiguriert werden, dass sie eine Verbindung mit dem Log Analytics-Gateway herstellen, um Konfigurationsinformationen zu empfangen und gesammelte Daten abhängig von den aktivierten Lösungen zu senden. Weitere Informationen und Schritte zum Konfigurieren der Operations Manager-Verwaltungsgruppe für die Kommunikation mit Azure Monitor über ein Log Analytics-Gateway finden Sie unter [Verbinden von Computern mit Azure Monitor über das Log Analytics-Gateway](../../azure-monitor/platform/gateway.md).  
 
 ## <a name="prerequisites"></a>Voraussetzungen 
+
 Bevor Sie beginnen, überprüfen Sie die folgenden Anforderungen.
 
 * Azure Monitor unterstützt nur System Center Operations Manager 2016 und höher, Operations Manager 2012 SP1 UR6 und höher sowie Operations Manager 2012 R2 UR2 und höher. Proxyunterstützung wurde in Operations Manager 2012 SP1 UR7 und Operations Manager 2012 R2 UR3 hinzugefügt.
@@ -60,6 +61,7 @@ Bevor Sie beginnen, überprüfen Sie die folgenden Anforderungen.
 >Dieses Mananagement Pack-Update gilt nicht für System Center Operations Manager 1807, bei dem es sich um ein Updaterelease von Version 1801 und nicht um einen vollständigen Build des Produkts handelt.   
 
 ### <a name="network"></a>Netzwerk
+
 Die folgende Aufstellung enthält die Proxy- und Firewall-Konfigurationsinformationen, die der Operations Manager-Agent, der Verwaltungsserver und die Betriebskonsole benötigen, um mit Azure Monitor zu kommunizieren. Der Datenverkehr von jeder Komponente ist aus dem Netzwerk ausgehender Datenverkehr an Azure Monitor.   
 
 |Ressource | Portnummer| HTTP-Prüfung umgehen|  
@@ -87,9 +89,11 @@ Die folgende Aufstellung enthält die Proxy- und Firewall-Konfigurationsinformat
 |docs.loganalytics.io| 80 und 443||  
 
 ### <a name="tls-12-protocol"></a>TLS 1.2-Protokoll
+
 Um die Sicherheit von Daten bei der Übertragung an Azure Monitor sicherzustellen, wird dringend empfohlen, den Agent und die Verwaltungsgruppe so zu konfigurieren, dass mindestens Transport Layer Security (TLS) 1.2 verwendet wird. Bei älteren Versionen von TLS/Secure Sockets Layer (SSL) wurde ein Sicherheitsrisiko festgestellt. Sie funktionieren aus Gründen der Abwärtskompatibilität zwar noch, werden jedoch **nicht empfohlen**. Weitere Informationen finden Sie unter [Senden von Daten über TLS 1.2](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12). 
 
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor
+
 Führen Sie die folgenden Schritte aus, um Ihre Operations Manager-Verwaltungsgruppe mit einem Ihrer Log Analytics-Arbeitsbereiche zu verbinden.
 
 Bei der ersten Registrierung Ihrer Operations Manager-Verwaltungsgruppe bei einem Log Analytics-Arbeitsbereich ist die Option zum Angeben der Proxykonfiguration für die Verwaltungsgruppe in der Betriebskonsole nicht verfügbar.  Die Verwaltungsgruppe muss erfolgreich beim Dienst registriert werden. Erst dann wird diese Option verfügbar.  Um dies zu umgehen, müssen Sie die Systemproxykonfiguration mit Netsh auf dem System aktualisieren, von dem aus Sie die Betriebskonsole ausführen, um die Integration sowie alle Verwaltungsserver in der Verwaltungsgruppe zu konfigurieren.  
@@ -121,6 +125,7 @@ Nachdem Sie die folgenden Schritte zur Integration mit Azure Monitor abgeschloss
 1. Klicken Sie auf der Seite des **Assistenten zum Onboarding der Operations Management Suite: Fertig stellen** auf **Schließen**.
 
 ### <a name="add-agent-managed-computers"></a>Hinzufügen von mit Agent verwalteten Computern
+
 Nach dem Konfigurieren der Integration in Ihren Log Analytics-Arbeitsbereich wird lediglich eine Verbindung mit dem Dienst hergestellt, es werden keine Daten von den Agents gesammelt, die Daten an Ihre Verwaltungsgruppe melden. Dazu müssen Sie zuerst festlegen, welche mit Agents verwalteten Computer Protokolldaten für Azure Monitor erfassen. Sie können die Computerobjekte entweder einzeln oder eine Gruppe mit Windows-Computerobjekten auswählen. Sie können keine Gruppe auswählen, die Instanzen einer anderen Klasse enthält (etwa logische Datenträger oder SQL-Datenbanken).
 
 1. Öffnen Sie die Operations Manager-Konsole, und wählen Sie den Arbeitsbereich **Administration** aus.
@@ -131,6 +136,7 @@ Nach dem Konfigurieren der Integration in Ihren Log Analytics-Arbeitsbereich wir
 Computer und Gruppen, die unter Operations Management Suite zum Sammeln von Daten über den Knoten für verwaltete Computer konfiguriert sind, können in der Betriebskonsole im Arbeitsbereich **Administration** angezeigt werden. Hier können Sie Computer und Gruppen nach Bedarf hinzufügen und entfernen.
 
 ### <a name="configure-proxy-settings-in-the-operations-console"></a>Konfigurieren von Proxyeinstellungen in der Betriebskonsole
+
 Führen Sie die folgenden Schritte aus, wenn sich zwischen Verwaltungsgruppe und Azure Monitor ein interner Proxyserver befindet. Diese Einstellungen werden zentral über die Verwaltungsgruppe verwaltet und an mit Agent verwaltete Systeme verteilt, die im Bereich für die Protokolldatensammlung für Azure Monitor enthalten sind.  Dies ist von Vorteil, wenn bestimmte Lösungen den Verwaltungsserver umgehen und Daten direkt an den Dienst senden.
 
 1. Öffnen Sie die Operations Manager-Konsole, und wählen Sie den Arbeitsbereich **Administration** aus.
@@ -156,6 +162,7 @@ Nachdem die Verbindung hergestellt wurde und Sie die Agents konfiguriert haben, 
 * Agents und Gruppen, die Sie zum Sammeln von Daten in der Verwaltungsgruppe ausgewählt haben, werden der **Microsoft System Center Advisor-Überwachungsservergruppe** hinzugefügt.
 
 ## <a name="management-pack-updates"></a>Management Pack-Updates
+
 Nach Abschluss der Konfiguration stellt die Operations Manager-Verwaltungsgruppe eine Verbindung mit Azure Monitor her. Der Verwaltungsserver wird mit dem Webdienst synchronisiert und erhält aktualisierte Konfigurationsinformationen in Form von Management Packs für die aktivierten Lösungen, die in Operations Manager integriert werden. Operations Manager sucht nach Updates für diese Management Packs. Verfügbare Updates werden automatisch heruntergeladen und importiert. Dieses Verhalten wird insbesondere durch zwei Regeln gesteuert:
 
 * **Microsoft.SystemCenter.Advisor.MPUpdate**: Aktualisiert die grundlegenden Azure Monitor-Management Packs. Wird standardmäßig alle 12 Stunden ausgeführt.
@@ -166,6 +173,7 @@ Sie können diese beiden Regeln überschreiben und so entweder das automatische 
 Um Ihren vorhandenen Änderungssteuerungsprozess zur Steuerung von Management Pack-Releases in Ihrer Produktionsverwaltungsgruppe weiterhin zu verwenden, können Sie die Regeln deaktivieren und sie zu bestimmten Zeiten, in denen Updates zulässig sind, wieder aktivieren. Falls Ihre Umgebung eine Entwicklungs- oder QA-Verwaltungsgruppe mit Internetzugriff enthält, können Sie diese Verwaltungsgruppe zur Unterstützung dieses Szenarios mit einem Log Analytics-Arbeitsbereich konfigurieren. Dadurch können Sie die iterativen Versionen der Azure Monitor-Management Packs vor der Freigabe für die Produktionsverwaltungsgruppe überprüfen und evaluieren.
 
 ## <a name="switch-an-operations-manager-group-to-a-new-log-analytics-workspace"></a>Umstellen einer Operations Manager-Gruppe auf einen neuen Log Analytics-Arbeitsbereich
+
 1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 1. Klicken Sie im Azure-Portal unten links auf **Weitere Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics** aus, und erstellen Sie dann einen Arbeitsbereich.  
 1. Öffnen Sie die Operations Manager-Konsole mit einem Konto, das Mitglied der Administratorrolle von Operations Manager ist, und wählen Sie den Arbeitsbereich **Administration** aus.
@@ -179,9 +187,11 @@ Um Ihren vorhandenen Änderungssteuerungsprozess zur Steuerung von Management Pa
    > 
 
 ## <a name="validate-operations-manager-integration-with-azure-monitor"></a>Überprüfen der Integration von Operations Manager mit Azure Monitor
+
 Es gibt verschiedene Methoden, um zu überprüfen, ob die Integration von Azure Monitor mit Operations Manager erfolgreich war.
 
 ### <a name="to-confirm-integration-from-the-azure-portal"></a>So überprüfen Sie die Integration über das Azure-Portal
+
 1. Klicken Sie im Azure-Portal unten links auf **Weitere Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert.
 1. Wählen Sie in der Liste mit den Log Analytics-Arbeitsbereichen den entsprechenden Arbeitsbereich aus.  
 1. Wählen Sie **Erweiterte Einstellungen** > **Verbundene Quellen** und dann **System Center** aus. 
@@ -190,6 +200,7 @@ Es gibt verschiedene Methoden, um zu überprüfen, ob die Integration von Azure 
    ![oms-settings-connectedsources](./media/om-agents/oms-settings-connectedsources.png)
 
 ### <a name="to-confirm-integration-from-the-operations-console"></a>Überprüfen der Integration über die Betriebskonsole
+
 1. Öffnen Sie die Operations Manager-Konsole, und wählen Sie den Arbeitsbereich **Administration** aus.
 1. Wählen Sie **Management Packs** aus, und geben Sie im Textfeld für die **Suche** die Zeichenfolge **Advisor** oder **Intelligence** ein.
 1. Abhängig von den aktivierten Lösungen wird in den Suchergebnissen ein entsprechendes Management Pack aufgeführt.  Wenn Sie also etwa die Lösung „Alert Management“ aktiviert haben, enthält die Liste das Management Pack „Microsoft System Center Advisor Alert Management“.
@@ -198,6 +209,7 @@ Es gibt verschiedene Methoden, um zu überprüfen, ob die Integration von Azure 
    ![oms-opsmgr-mg-authsvcuri-property-ms](./media/om-agents/oms-opsmgr-mg-authsvcuri-property-ms.png)
 
 ## <a name="remove-integration-with-azure-monitor"></a>Entfernen der Integration mit Azure Monitor
+
 Wenn Sie die Integration zwischen der Operations Manager-Verwaltungsgruppe und dem Log Analytics-Arbeitsbereich nicht mehr benötigen, müssen Sie mehrere Schritte ausführen, um die Verbindung und Konfiguration in der Verwaltungsgruppe richtig zu entfernen. Mit dem folgenden Verfahren aktualisieren Sie den Log Analytics-Arbeitsbereich, indem Sie nacheinander den Verweis auf Ihre Verwaltungsgruppe, die Azure Monitor-Connectors und die Management Packs zur Unterstützung der Integration mit dem Dienst löschen.  
 
 Management Packs für die aktivierten Lösungen, die in Operations Manager integriert werden, sowie die für die Unterstützung der Integration mit Azure Monitor erforderlichen Management Packs können in der Verwaltungsgruppe nicht ohne Weiteres gelöscht werden. Dies ist darauf zurückzuführen, dass einige der Azure Monitor-Management Packs Abhängigkeiten von anderen zugehörigen Management Packs aufweisen. Um Management Packs mit einer Abhängigkeit von anderen Management Packs zu löschen, laden Sie das Skript zum [Entfernen eines Management Packs mit Abhängigkeiten](https://gallery.technet.microsoft.com/scriptcenter/Script-to-remove-a-84f6873e) vom TechNet Script Center herunter.  
@@ -208,8 +220,8 @@ Management Packs für die aktivierten Lösungen, die in Operations Manager integ
     > Vergewissern Sie sich, dass die Namen Ihrer benutzerdefinierten Management Packs nicht das Wort „Advisor“ oder „IntelligencePack“ enthalten, bevor Sie den Vorgang fortsetzen. Andernfalls werden diese mit den folgenden Schritten aus der Verwaltungsgruppe gelöscht.
     > 
 
-1. Geben Sie an der Eingabeaufforderung der Befehlsshell `Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
-1. Geben Sie anschließend `Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
+1. Geben Sie an der Eingabeaufforderung der Befehlsshell Folgendes ein: `Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
+1. Geben Sie anschließend Folgendes ein: `Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
 1. Zum Entfernen der restlichen Management Packs mit einer Abhängigkeit von anderen System Center Advisor-Management Packs verwenden Sie das Skript *RecursiveRemove.ps1*, das Sie zuvor vom TechNet Script Center heruntergeladen haben.  
  
     > [!NOTE]
@@ -244,7 +256,7 @@ Gehen Sie wie folgt vor, um den Connector „Microsoft.SystemCenter.Advisor.Data
 > 
 > 
 
-```
+```powershell
     param(
     [String] $connectorName,
     [String] $msName="localhost"
@@ -333,9 +345,8 @@ Gehen Sie wie folgt vor, um den Connector „Microsoft.SystemCenter.Advisor.Data
 Wenn Sie planen, die Verwaltungsgruppe später wieder mit einem Log Analytics-Arbeitsbereich zu verbinden, müssen Sie die Management Pack-Datei `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` erneut importieren. Abhängig von der Version von System Center Operations Manager, der in Ihrer Umgebung bereitgestellt ist, finden Sie diese Datei an folgendem Speicherort:
 
 * Auf dem Quellmedium im Ordner `\ManagementPacks` bei System Center 2016 Operations Manager und höher.
-* Unter letzten-Updaterollup, das auf Ihre Verwaltungsgruppe angewendet wurde. Bei Operations Manager 2012 ist ` %ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` der Quellordner und bei 2012 R2 befindet er sich unter `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`.
+* Unter letzten-Updaterollup, das auf Ihre Verwaltungsgruppe angewendet wurde. Bei Operations Manager 2012 ist `%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups` der Quellordner und bei 2012 R2 befindet er sich unter `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Informationen über das Hinzufügen von Funktionen und Erfassen von Daten finden Sie unter [Hinzufügen von Azure Monitor-Lösungen aus dem Lösungskatalog](../../azure-monitor/insights/solutions.md).
-
-

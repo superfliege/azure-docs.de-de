@@ -4,20 +4,20 @@ titlesuffix: Azure Virtual Network
 description: Hier finden Sie Informationen zu Netzwerk- und Anwendungssicherheitsgruppen. Mithilfe von Sicherheitsgruppen können Sie den Netzwerkdatenverkehr zwischen Azure-Ressourcen filtern.
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: malopMSFT
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
-ms.author: jdial
-ms.openlocfilehash: b90087221de71ca7f627b9ea1717b423cfcf457b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: malop;kumud
+ms.openlocfilehash: 9d45f3a7d20545ac7b66d27505078f21f06adddc
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535715"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881850"
 ---
 # <a name="security-groups"></a>Sicherheitsgruppen
 <a name="network-security-groups"></a>
@@ -210,7 +210,7 @@ Für ausgehenden Datenverkehr verarbeitet Azure zuerst die Regeln in einer Netzw
 Sie können die Aggregatregeln, die auf eine Netzwerkschnittstelle angewendet werden, leicht prüfen, indem Sie die [effektiven Sicherheitsregeln](virtual-network-network-interface.md#view-effective-security-rules) für eine Netzwerkschnittstelle anzeigen. Sie können auch in Azure Network Watcher die Funktion [Überprüfen des IP-Flusses](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json) verwenden, um zu ermitteln, ob die Kommunikation für eine Netzwerkschnittstelle in ein- oder ausgehender Richtung zulässig ist. Die IP-Datenflussüberprüfung gibt an, ob die Kommunikation zugelassen oder verweigert wird und für welche Netzwerksicherheitsregel Datenverkehr zugelassen ist oder verweigert wird.
 
 > [!NOTE]
-> Netzwerksicherheitsgruppen sind Subnetzen oder virtuellen Computern und Clouddiensten zugeordnet, die im Rahmen des klassischen Bereitstellungsmodells bereitgestellt wurden, und nicht Netzwerkschnittstellen gemäß dem Resource Manager-Bereitstellungsmodell. Weitere Informationen zu den Azure-Bereitstellungsmodellen finden Sie unter [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+> Netzwerksicherheitsgruppen sind bei der Bereitstellung im klassischen Bereitstellungsmodell Subnetzen oder virtuellen Computern und Clouddiensten zugeordnet sowie Subnetzen oder Netzwerkschnittstellen gemäß dem Resource Manager-Bereitstellungsmodell. Weitere Informationen zu den Azure-Bereitstellungsmodellen finden Sie unter [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 > [!TIP]
 > Wir empfehlen Ihnen, eine Netzwerksicherheitsgruppe einem Subnetz oder einer Netzwerkschnittstelle zuzuordnen, aber nicht beiden, sofern kein zwingender Grund dafür vorliegt. Da Regeln in einer Netzwerksicherheitsgruppe, die einem Subnetz zugeordnet ist, unter Umständen mit Regeln in einer Netzwerksicherheitsgruppe, die einer Netzwerkschnittstelle zugeordnet sind, in Konflikt stehen, können unerwartete Kommunikationsprobleme auftreten, die behoben werden müssen.

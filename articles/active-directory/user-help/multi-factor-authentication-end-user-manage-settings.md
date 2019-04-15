@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a29da9e87c09ad157babf1e1a391fb967859d73
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 433c2d712ca4867a5ec59f86c333511070b6d507
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210508"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665048"
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>Verwalten der Einstellungen für die zweistufige Überprüfung
 Dieser Artikel enthält Antworten auf Fragen zum Aktualisieren der Einstellungen für die zweistufige Überprüfung oder die Multi-Factor Authentication. Wenn bei der Anmeldung bei Ihrem Konto Probleme auftreten, finden Sie Hilfe unter [Probleme bei der zweistufigen Überprüfung](multi-factor-authentication-end-user-troubleshoot.md).
@@ -50,7 +50,7 @@ Wenn Sie nicht auf diesen Link klicken können, können Sie auch die Seite **Zus
     ![Proofup](./media/multi-factor-authentication-end-user-manage-settings/proofup.png)
 
 ## <a name="i-want-to-change-my-phone-number-or-add-a-secondary-number"></a>Ich möchte meine Telefonnummer ändern oder eine sekundäre Telefonnummer hinzufügen
-Konfigurieren Sie unbedingt eine sekundäre Authentifizierungstelefonnummer.  Da sich Ihre primäre Telefonnummer und ihre mobile App wahrscheinlich auf demselben Telefon befinden, ist die sekundäre Telefonnummer die einzige Möglichkeit, sich wieder bei Ihrem Konto anzumelden, sollte Ihr Telefon verloren gehen oder gestohlen werden.
+Konfigurieren Sie unbedingt eine sekundäre Authentifizierungstelefonnummer.  Da sich Ihre primäre Telefonnummer und ihre mobile App wahrscheinlich auf demselben Telefon befinden, ist die sekundäre Telefonnummer die schnellste Möglichkeit, sich wieder bei Ihrem Konto anzumelden, sollte Ihr Telefon verloren gehen oder gestohlen werden.
 
 > [!NOTE]
 > Wenn Sie keinen Zugriff auf Ihre primäre Telefonnummer haben und Hilfe beim Zugriff auf Ihr Konto benötigen, finden Sie im Artikel [Probleme bei der zweistufigen Überprüfung](multi-factor-authentication-end-user-troubleshoot.md) weitere Informationen.  

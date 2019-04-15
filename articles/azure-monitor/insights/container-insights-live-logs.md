@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: magoedte
-ms.openlocfilehash: 1a51e9b636e15f178de072af8372404af1dc47e2
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 6fe8cccf60e60ada34e3b7847964958cf6e03c4a
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187993"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904745"
 ---
 # <a name="how-to-view-container-logs-real-time-with-azure-monitor-for-containers-preview"></a>Anzeigen von Containerprotokollen in Echtzeit mit Azure Monitor für Container (Vorschauversion)
-Dieses Feature, das sich derzeit in der Vorschauversion befindet, bietet eine Echtzeitansicht Ihrer Azure Kubernetes Service-Containerprotokolle (stdout/stderr), ohne dass Sie kubectl-Befehle ausführen müssen. Wenn Sie diese Option auswählen, wird in der Ansicht **Container** ein neuer Bereich unter der Datentabelle für die Containerleistung angezeigt.  Dort werden von der Container-Engine generierte Liveprotokolle angezeigt, die weitere Unterstützung bei der Behandlung von Problemen in Echtzeit bieten.  
+Dieses Feature, das sich derzeit in der Vorschauversion befindet, bietet eine Echtzeitansicht Ihrer Azure Kubernetes Service-Containerprotokolle (stdout/stderr), ohne dass Sie kubectl-Befehle ausführen müssen. Wenn Sie diese Option auswählen, wird in der Ansicht **Container** ein neuer Bereich unter der Datentabelle für die Containerleistung angezeigt.  Dort werden von der Container-Engine generierte Liveprotokolle angezeigt, die weitere Unterstützung bei der Behandlung von Problemen in Echtzeit bieten. Damit diese Funktion verwendet werden kann, ist Zugriff vom Typ **Mitwirkender** auf die Clusterressource erforderlich.
 
 Liveprotokolle unterstützen drei verschiedene Methoden, um den Zugriff auf die Protokolle zu steuern:
 

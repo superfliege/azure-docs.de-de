@@ -11,24 +11,24 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/20/2018
+ms.date: 03/29/2018
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 5a8bd836322ae005b426707e0994bfdc19701fd8
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: a2f90c52823664df5fdc71c55220cc660c2f68e3
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295673"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878144"
 ---
-# <a name="manage-usage-and-costs-for-log-analytics"></a>Verwalten von Nutzung und Kosten für Log Analytics
+# <a name="manage-usage-and-costs-for-log-analytics-in-azure-monitor"></a>Verwalten von Nutzung und Kosten für Log Analytics in Azure Monitor
 
 > [!NOTE]
 > In diesem Artikel wird beschrieben, wie Sie Ihre Kosten in Log Analytics durch Festlegen des Datenaufbewahrungszeitraums steuern.  Entsprechende Informationen finden Sie in den folgenden Artikeln.
 > - [Analysieren der Datennutzung in Log Analytics](manage-cost-storage.md) beschreibt, wie Sie Ihre Datennutzung analysieren und Warnungen dazu ausgeben.
 > - [Überwachen der Nutzung und der geschätzten Kosten](usage-estimated-costs.md) beschreibt, wie die Nutzung und geschätzten Kosten über mehrere Azure-Überwachungsfeatures hinweg für unterschiedliche Preismodelle angezeigt werden. Außerdem wird beschrieben, wie Sie Ihr Preismodell ändern können.
 
-Log Analytics ist für die Skalierung und Unterstützung der täglichen Sammlung, Indizierung und Speicherung enormer Datenmengen aus beliebigen Quellen in Ihrem Unternehmen oder aus in Azure bereitgestellten Quellen konzipiert.  Dies ist zwar ggf. die primäre Motivation für die Verwendung in Ihrem Unternehmen, letztendlich geht es jedoch um Kosteneffizienz. In diesem Zusammenhang ist es wichtig zu wissen, dass die Kosten eines Log Analytics-Arbeitsbereichs nicht nur auf dem Umfang der gesammelten Daten basieren, sondern auch davon abhängen, welcher Tarif gewählt wurde und wie lange die von den verbundenen Quellen generierten Daten gespeichert werden sollen.  
+Log Analytics in Azure Monitor ist für die Skalierung und Unterstützung der täglichen Sammlung, Indizierung und Speicherung enormer Datenmengen aus beliebigen Quellen in Ihrem Unternehmen oder aus in Azure bereitgestellten Quellen konzipiert.  Dies ist zwar ggf. die primäre Motivation für die Verwendung in Ihrem Unternehmen, letztendlich geht es jedoch um Kosteneffizienz. In diesem Zusammenhang ist es wichtig zu wissen, dass die Kosten eines Log Analytics-Arbeitsbereichs nicht nur auf dem Umfang der gesammelten Daten basieren, sondern auch davon abhängen, welcher Tarif gewählt wurde und wie lange die von den verbundenen Quellen generierten Daten gespeichert werden sollen.  
 
 In diesem Artikel erfahren Sie, wie Sie Datenvolumen und Speicherwachstum proaktiv überwachen und Grenzwerte festlegen, um die damit verbundenen Kosten zu steuern. 
 
@@ -114,8 +114,6 @@ Wenn Ihr Log Analytics-Arbeitsbereich über Zugriff auf Legacytarife verfügt, k
 
 Wenn Sie Ihren Arbeitsbereich in den aktuellen Tarif verschieben möchten, müssen Sie das [Überwachungspreismodell Ihres Abonnements in Azure Monitor ändern](usage-estimated-costs.md#moving-to-the-new-pricing-model). Dadurch ändert sich der Tarif für alle Arbeitsbereiche in diesem Abonnement.
 
-> [!NOTE]
-> Falls Ihr Arbeitsbereich mit einem Automation-Konto verknüpft ist und Sie den Tarif *Standalone (Per GB)* (Eigenständig (pro GB)) auswählen möchten, müssen Sie zuvor alle Lösungen vom Typ **Automation & Control** löschen und die Verknüpfung mit dem Automation-Konto aufheben. Klicken Sie auf dem Blatt für den Arbeitsbereich unter **Allgemein** auf **Lösungen**, um die Lösungen anzuzeigen und zu löschen. Klicken Sie zum Aufheben der Verknüpfung mit dem Automation-Konto auf dem Blatt **Tarif** auf den Namen des Automatisierungskontos.
 
 > [!NOTE]
 > Unter [Festlegen des Tarifs über ARM](template-workspace-configuration.md#create-a-log-analytics-workspace) finden Sie weitere entsprechende Informationen und Informationen dazu, wie Sie sicherstellen, dass Ihre ARM-Bereitstellung erfolgreich ausgeführt werden kann, unabhängig davon, ob für das Abonnement das ältere oder das neue Preismodell festgelegt ist. 
@@ -124,7 +122,7 @@ Wenn Sie Ihren Arbeitsbereich in den aktuellen Tarif verschieben möchten, müss
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Beheben des Problems, dass Log Analytics keine Daten mehr erfasst
 Wenn Sie den kostenlosen Legacytarif nutzen und an einem Tag mehr als 500MB Daten gesendet haben, wird die Datensammlung für den Rest des Tages beendet. Das Erreichen des Tageslimits ist häufig die Ursache dafür, dass Log Analytics die Datensammlung beendet oder Daten scheinbar fehlen.  Log Analytics erstellt ein Ereignis vom Typ „Operation“, wenn die Datensammlung beginnt und endet. Führen Sie die folgende Abfrage in der Suche aus, um zu überprüfen, ob Sie das Tageslimit erreichen und Daten fehlen: 
 
-`Operation | where OperationCategory == 'Data Collection Status' `
+`Operation | where OperationCategory == 'Data Collection Status'`
 
 Wenn die Datensammlung beendet wird, hat „OperationStatus“ den Wert „Warning“ (Warnung). Wenn die Datensammlung beginnt, hat „OperationStatus“ den Wert „Succeeded“ (Erfolgreich). Die folgende Tabelle beschreibt die Gründe, warum die Datensammlung endet, und eine empfohlene Aktion zum Fortsetzen der Datensammlung:  
 
@@ -188,9 +186,11 @@ Sie können einen Drilldown durchführen, um Datentrends für spezifische Datent
 
 Um die **Größe** der pro Computer erfassten abrechenbaren Ereignisse anzuzeigen, verwenden Sie die Eigenschaft `_BilledSize` ([log-standard-properties#_billedsize.md](learn more)), die die Größe in Bytes angibt:
 
-`union withsource = tt * 
+```
+union withsource = tt * 
 | where _IsBillable == true 
-| summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last `
+| summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last
+```
 
 Die Eigenschaft `_IsBillable` gibt an, ob für die erfassten Daten Gebühren anfallen ([log-standard-properties.md#_isbillable](Learn more)).
 
@@ -207,26 +207,32 @@ Um die Anzahl von Ereignissen pro Computer anzuzeigen, für die Gebühren anfall
 
 Wenn Sie die Anzahl für gebührenpflichtigen Datentypen anzeigen möchten, die Daten an einen bestimmten Computer senden, verwenden Sie Folgendes:
 
-`union withsource = tt *
+```
+union withsource = tt *
 | where Computer == "computer name"
 | where _IsBillable == true 
-| summarize count() by tt | sort by count_ nulls last `
+| summarize count() by tt | sort by count_ nulls last
+```
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Datenmenge nach Azure-Ressource, Ressourcengruppe oder Abonnement
 
 Für Daten von in Azure gehosteten Knoten können Sie die **Größe** der abrechenbaren erfassten Ereignisse __pro Computer__ mit der Eigenschaft `_ResourceId` abrufen, die den vollständigen Pfad zu der Ressource enthält ([log-standard-properties.md#_resourceid](learn more)):
 
-`union withsource = tt * 
+```
+union withsource = tt * 
 | where _IsBillable == true 
-| summarize Bytes=sum(_BilledSize) by _ResourceId | sort by Bytes nulls last `
+| summarize Bytes=sum(_BilledSize) by _ResourceId | sort by Bytes nulls last
+```
 
 Für Daten von in Azure gehosteten Knoten können Sie die **Größe** der abrechenbaren erfassten Ereignisse __pro Azure-Abonnement__ durch Analysieren der Eigenschaft `_ResourceId` wie folgt abrufen:
 
-`union withsource = tt * 
+```
+union withsource = tt * 
 | where _IsBillable == true 
 | parse tolower(_ResourceId) with "/subscriptions/" subscriptionId "/resourcegroups/" 
     resourceGroup "/providers/" provider "/" resourceType "/" resourceName   
-| summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last `
+| summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last
+```
 
 Durch Ändern von `subscriptionId` in `resourceGroup` wird die abrechenbare erfasste Datenmenge pro Azure-Ressourcengruppe angezeigt. 
 
@@ -297,7 +303,8 @@ Um die Anzahl der verschiedenen Sicherheitsknoten anzuzeigen, können Sie diese 
 
 Die Anzahl der verschiedenen Automation-Knoten können Sie mit dieser Abfrage anzeigen:
 
-` ConfigurationData 
+```
+ ConfigurationData 
  | where (ConfigDataType == "WindowsServices" or ConfigDataType == "Software" or ConfigDataType =="Daemons") 
  | extend lowComputer = tolower(Computer) | summarize by lowComputer 
  | join (
@@ -305,7 +312,8 @@ Die Anzahl der verschiedenen Automation-Knoten können Sie mit dieser Abfrage an
        | where SCAgentChannel == "Direct"
        | extend lowComputer = tolower(Computer) | summarize by lowComputer, ComputerEnvironment
  ) on lowComputer
- | summarize count() by ComputerEnvironment | sort by ComputerEnvironment asc`
+ | summarize count() by ComputerEnvironment | sort by ComputerEnvironment asc
+```
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>Erstellen einer Warnung für den Fall, dass die Datensammlung höher als erwartet ist
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 52ec7c83b4070a4c38963b3ab12f58f923fa889d
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 53608654392d7efb73b6dadac14f01a94bb035a7
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562624"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893519"
 ---
 # <a name="social-accounts-claims-transformations"></a>Anspruchstransformationen für Social Media-Konten
 
@@ -38,7 +38,7 @@ Dieser Artikel enthält Beispiele für die Verwendung von Anspruchstransformatio
 
 ## <a name="createalternativesecurityid"></a>CreateAlternativeSecurityId
 
-Erstellt eine JSON-Darstellung der alternativeSecurityId-Eigenschaft des Benutzers, die in Aufrufen an Azure Active Directory verwendet werden kann. Weitere Informationen finden Sie unter [AlternativeSecurityId-Schemas](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#AlternativeSecurityIdType).
+Erstellt eine JSON-Darstellung der alternativeSecurityId-Eigenschaft des Benutzers, die in Aufrufen an Azure Active Directory verwendet werden kann. Weitere Informationen finden Sie unter [AlternativeSecurityId-Schemas](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#AlternativeSecurityIdType).
 
 | Item | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
@@ -81,7 +81,7 @@ Fügt eine `AlternativeSecurityId` an einen `alternativeSecurityIdCollection`-An
 Das folgende Beispiel verknüpft eine neue Social Media-Identität mit einem vorhandenen Konto. So verknüpfen Sie eine neue Social Media-Identität
 1. Geben Sie in den technischen Profilen **AAD-UserReadUsingAlternativeSecurityId** und **AAD-UserReadUsingObjectId** den **alternativeSecurityIds**-Anspruch des Benutzers aus.
 1. Bitten Sie den Benutzer, sich mit einem der Identitätsanbieter, die nicht mit diesem Benutzer verknüpft sind, anzumelden.
-1. Erstellen Sie mithilfe der Anspruchstransformation **CreateAlternativeSecurityId** einen neuen **alternativeSecurityId**-Anspruchstyp mit dem Namen `AlternativeSecurityId2`.
+1. Erstellen Sie mithilfe der Anspruchstransformation **CreateAlternativeSecurityId** einen neuen **alternativeSecurityId**-Anspruchstyp namens `AlternativeSecurityId2`
 1. Rufen Sie die Anspruchstransformation **AddItemToAlternativeSecurityIdCollection** auf, um den **AlternativeSecurityId2**-Anspruch dem vorhandenen **AlternativeSecurityIds**-Anspruch hinzuzufügen.
 1. Behalten Sie den **alternativeSecurityIds**-Anspruch im Benutzerkonto bei.
 

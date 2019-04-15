@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/08/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 8297e324f03d263acaa30dfa2147f7ee713bd265
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: ae07c29e9fcc7e498e1e39b3d4dc1d93de64e883
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48904444"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58763298"
 ---
 Universelle VM-Größen zeichnen sich durch ein ausgewogenes Verhältnis zwischen CPU und Arbeitsspeicher aus. Ideal für Tests und Entwicklung, kleine bis mittlere Datenbanken sowie Webserver mit geringer bis mittlerer Auslastung. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum Speicherdurchsatz für die Größen in dieser Gruppe. 
 
@@ -32,37 +32,39 @@ Universelle VM-Größen zeichnen sich durch ein ausgewogenes Verhältnis zwische
 
 ## <a name="b-series"></a>B-Serie
 
-Storage Premium: unterstützt
+Storage Premium  Unterstützt
 
-Storage Premium-Zwischenspeicherung: nicht unterstützt
+Storage Premium-Zwischenspeicherung:  Nicht unterstützt
 
 Virtuelle Burst-fähige Computer der B-Serie sind ideal für Workloads geeignet, die nicht kontinuierlich die volle Leistung der CPU benötigen. Hierzu zählen beispielsweise Webserver, kleine Datenbanken sowie Entwicklungs- und Testumgebungen. Diese Workloads haben in der Regel kurzfristige Leistungsanforderungen. Mit der B-Serie können diese Kunden eine VM-Größe mit einer preisgünstigen Grundleistung erwerben. Für die VM-Instanz können dann Gutschriften erlangt werden, wenn für die VM weniger als die Grundleistung genutzt wird. Wenn für den virtuellen Computer Guthaben gebildet wurde, kann Leistung genutzt werden, die über die Grundleistung der VM hinausgeht. Dabei kann die CPU zu 100 Prozent verwendet werden, wenn Ihre Anwendung eine solche Leistung benötigt. 
 
 Zu den möglichen Anwendungsfällen zählen Entwicklungs- und Testserver, Webserver mit geringem Datenverkehr, kleine Datenbanken, Microservices, Proof of Concept-Server und Buildserver.
 
 
-| Größe             | vCPU  | Arbeitsspeicher: GiB | Lokales SSD: GiB | Grundleistung eines Kerns | Guthabenbildung/Stunde | Maximalguthaben | Max. Anzahl Datenträger | Maximale Leistung lokaler Datenträger: IOPS/MBit/s | Maximale Leistung von Datenträgern ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs |          
-|---------------|-------------|----------------|----------------------------|-----------------------|--------------------|----------------|----------------------------------------|-------------------------------------------|-------------------------------------------|----------|
-| Standard_B1s  | 1           | 1              | 4                          | 10%                   | 6                  | 144            | 2                                      | 400/10                                  | 320/10                                  | 2  |
-| Standard_B1ms | 1           | 2              | 4                          | 20%                   | 12                 | 288            | 2                                      | 800/10                                  | 640/10                                  | 2  |
-| Standard_B2s  | 2           | 4              | 8                          | 40%                   | 24                 | 576            | 4                                      | 1600/15                                 | 1280/15                                 | 3  |
-| Standard_B2ms | 2           | 8              | 16                         | 60 %                   | 36                 | 864            | 4                                      | 2400/22,5                               | 1920/22,5                               | 3  |
-| Standard_B4ms | 4           | 16             | 32                         | 90%                   | 54                 | 1296           | 8                                      | 3600/35                                 | 2880/35                                 | 4  |
-| Standard_B8ms | 8           | 32             | 64                         | 135%                  | 81                 | 1944           | 16                                     | 4320/50                                 | 4320/50                                 | 4  |
+| Größe             | vCPU  | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | CPU-Grundleistung des virtuellen Computers | Maximale CPU-Leistung des virtuellen Computers | Guthabenbildung/Stunde | Maximalguthaben | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs |          
+|---------------|-------------|----------------|----------------------------|-----------------------|--------------------|--------------------|----------------|----------------------------------------|-------------------------------------------|-------------------------------------------|----------|
+| Standard_B1ls<sup>1</sup>  | 1           | 0,5              | 4                          | 5 %                   | 100 %                   | 3                  | 72            | 2                                      | 200/10                                  | 160/10                                  | 2  |
+| Standard_B1s  | 1           | 1              | 4                          | 10%                   | 100 %                   | 6                  | 144            | 2                                      | 400/10                                  | 320/10                                  | 2  |
+| Standard_B1ms | 1           | 2              | 4                          | 20%                   | 100 %                   | 12                 | 288            | 2                                      | 800/10                                  | 640/10                                  | 2  |
+| Standard_B2s  | 2           | 4              | 8                          | 40%                   | 200 %                   | 24                 | 576            | 4                                      | 1600/15                                 | 1280/15                                 | 3  |
+| Standard_B2ms | 2           | 8              | 16                         | 60 %                   | 200 %                   | 36                 | 864            | 4                                      | 2400/22,5                               | 1920/22,5                               | 3  |
+| Standard_B4ms | 4           | 16             | 32                         | 90%                   | 400 %                   | 54                 | 1296           | 8                                      | 3600/35                                 | 2880/35                                 | 4  |
+| Standard_B8ms | 8           | 32             | 64                         | 135%                  | 800 %                   | 81                 | 1944           | 16                                     | 4320/50                                 | 4320/50                                 | 4  |
 
+<sup>1</sup> B1ls wird nur unter Linux unterstützt
 
 ## <a name="dsv3-series-sup1sup"></a>Dsv3-Serie <sup>1</sup>
 
-ACU: 160 - 190
+ACU: 160–190
 
-Storage Premium: unterstützt
+Storage Premium  Unterstützt
 
-Storage Premium-Zwischenspeicherung: unterstützt
+Storage Premium-Zwischenspeicherung:  Unterstützt
 
 Die Größen der Dsv3-Serie basieren auf dem Prozessor vom Typ 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) oder vom Typ 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell) und können mit Intel Turbo Boost Technology 2.0 3,5 GHz erreichen und Premium-Speicher nutzen. Die Größen der Dsv3-Serie bieten eine Kombination aus vCPU, Arbeitsspeicher und temporärem Speicher für die meisten Produktionsworkloads.
 
 
-| Größe             | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
+| Größe             | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
 |------------------|--------|-------------|----------------|----------------|-----------------------------------------------------------------------|-------------------------------------------|------------------------------------------------|
 | Standard_D2s_v3  | 2      | 8           | 16             | 4              | 4.000/32 (50)                                                       | 3.200/48                                | 2 / 1.000                                   |
 | Standard_D4s_v3  | 4      | 16          | 32             | 8              | 8.000/64 (100)                                                      | 6.400/96                                | 2 / 2.000                                   |
@@ -75,18 +77,18 @@ Die Größen der Dsv3-Serie basieren auf dem Prozessor vom Typ 2,4 GHz Intel Xeo
 
 ## <a name="dv3-series-sup1sup"></a>Dv3-Serie <sup>1</sup>
 
-ACU: 160 - 190
+ACU: 160–190
 
-Storage Premium: nicht unterstützt
+Storage Premium  Nicht unterstützt
 
-Storage Premium-Zwischenspeicherung: nicht unterstützt
+Storage Premium-Zwischenspeicherung:  Nicht unterstützt
 
 Die Größen der Dv3-Serie basieren auf dem Prozessor vom Typ 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) oder vom Typ 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell) und können mit Intel Turbo Boost Technology 2.0 3,5 GHz erreichen. Die Größen der Dv3-Serie bieten eine Kombination aus vCPU, Arbeitsspeicher und temporärem Speicher für die meisten Produktionsworkloads.
 
 Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Verwenden Sie die Dsv3-Größen, um Datenträger mit Premium-Speicher zu nutzen. Die Preis- und Abrechnungskennzahlen für die Dsv3-Größen entsprechen denen der Dv3-Serie. 
 
 
-| Größe            | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (temporärer Speicher): IOPS/Lesen (MBit/s)/Schreiben (MBit/s) | Maximale Anzahl NICs/Netzwerkbandbreite |
+| Größe            | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (temporärer Speicher): IOPS/MBit/s Lesen/MBit/s Schreiben | Maximale Anzahl NICs/Netzwerkbandbreite |
 |-----------------|-----------|-------------|----------------|----------------|----------------------------------------------------------|------------------------------|
 | Standard_D2_v3  | 2         | 8           | 50             | 4              | 3000/46/23                                               | 2 / 1.000                    |
 | Standard_D4_v3  | 4         | 16          | 100            | 8              | 6000/93/46                                               | 2 / 2.000                    |
@@ -100,13 +102,13 @@ Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Verwenden
 
 ## <a name="dsv2-series"></a>DSv2-Serie
 
-ACU: 210 - 250
+ACU: 210–250
 
-Storage Premium: unterstützt
+Storage Premium  Unterstützt
 
-Storage Premium-Zwischenspeicherung: unterstützt
+Storage Premium-Zwischenspeicherung:  Unterstützt
 
-| Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
+| Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS1_v2 |1 |3,5 |7 |4 |4.000/32 (43) |3.200/48 |2/750 |
 | Standard_DS2_v2 |2 |7 |14 |8 |8.000/64 (86) |6.400/96 |2/1500 |
@@ -118,13 +120,13 @@ Storage Premium-Zwischenspeicherung: unterstützt
 
 ## <a name="dv2-series"></a>Dv2-Serie
 
-ACU: 210 - 250
+ACU: 210–250
 
-Storage Premium: nicht unterstützt
+Storage Premium  Nicht unterstützt
 
-Storage Premium-Zwischenspeicherung: nicht unterstützt
+Storage Premium-Zwischenspeicherung:  Nicht unterstützt
 
-| Größe           | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/Lesen (MBit/s)/Schreiben (MBit/s) | Max. Anzahl Datenträger | Durchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
+| Größe           | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/MBit/s Lesen/MBit/s Schreiben | Max. Anzahl Datenträger | Durchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
 |----------------|------|-------------|------------------------|------------------------------------------------------------|----------------|------------------|----------------------------------------------|
 | Standard_D1_v2 | 1    | 3,5         | 50                     | 3000/46/23                                             | 4              | 4 x 500            | 2/750                                      |
 | Standard_D2_v2 | 2    | 7           | 100                    | 6000/93/46                                             | 8              | 8 x 500            | 2/1500                                     |
@@ -137,14 +139,14 @@ Storage Premium-Zwischenspeicherung: nicht unterstützt
 
 ACU: 100
 
-Storage Premium: nicht unterstützt
+Storage Premium  Nicht unterstützt
 
-Storage Premium-Zwischenspeicherung: nicht unterstützt
+Storage Premium-Zwischenspeicherung:  Nicht unterstützt
 
 
-| Größe            | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/Lesen (MBit/s)/Schreiben (MBit/s) | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) | 
+| Größe            | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/MBit/s Lesen/MBit/s Schreiben | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) | 
 |-----------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_A1_v2  | 1         | 2           | 10             | 1000/20/10                                           | 2/2 x 500               | 2/250                 |
+| Standard_A1_v2  | 1         | 2           | 10             | 1000/20/10                                           | 2/2 x 500               | 2/250                 |
 | Standard_A2_v2  | 2         | 4           | 20             | 2000/40/20                                           | 4/4 x 500               | 2/500                 |
 | Standard_A4_v2  | 4         | 8           | 40             | 4000/80/40                                           | 8/8 x 500               | 4/1000                     |
 | Standard_A8_v2  | 8         | 16          | 80             | 8000/160/80                                          | 16/16 x 500             | 8/2000                     |
@@ -157,13 +159,13 @@ Storage Premium-Zwischenspeicherung: nicht unterstützt
 
 ## <a name="dc-series"></a>DC-Serie
 
-Storage Premium: unterstützt
+Storage Premium Unterstützt
 
-Storage Premium-Zwischenspeicherung: unterstützt
+Storage Premium-Zwischenspeicherung: Unterstützt
 
 
 
-| Größe          | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Datenträgerdurchsatz ohne Cache: IOPS / MB/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
+| Größe          | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
 |---------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|-------------------------------------------|----------------------------------------------|
 | Standard_DC2s | 2    | 8           | 100                    | 2              | 4000/32 (43)                                                          | 3200/48                                  | 2/1500                                     |
 | Standard_DC4s | 4    | 16          | 200                    | 4              | 8000/64 (86)                                                          | 6400/96                                  | 2/3000                                     |
