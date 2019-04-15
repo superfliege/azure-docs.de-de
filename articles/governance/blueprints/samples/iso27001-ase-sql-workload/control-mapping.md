@@ -1,19 +1,18 @@
 ---
 title: 'Beispiel: Blaupause „ISO 27001: ASE-/SQL-Workload“ – Steuerelementzuordnung'
 description: 'Steuerelementzuordnung des Beispiels für die Blaupause „ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload“ zu Azure Policy und RBAC.'
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
-ms.topic: conceptual
+ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: fb251d71ca9aa20ed06d0a917394097b36322b3c
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 7a760bfe70fa2a83c43a0b41b77ba9bf45e809ca
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802710"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258606"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>Steuerelementzuordnung des Blaupausenbeispiels „ISO 27001: ASE-/SQL-Workload“
 
@@ -122,7 +121,7 @@ Wenn Sie wissen, wo Ihre Azure-Ressourcen möglicherweise nicht optimale kryptog
 
 ## <a name="a1241-event-logging"></a>A.12.4.1 Ereignisprotokollierung
 
-Mit dieser Blaupause können Sie sicherstellen, dass Systemereignisse protokolliert werden, indem sieben [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, mit denen die Protokolleinstellungen für Azure-Ressourcen überwacht werden. Mit einer zugewiesenen Richtlinie wird zudem überwacht, dass virtuelle Computer keine Protokolle an einen angegebenen Log Analytics-Arbeitsbereich senden.
+Mit dieser Blaupause können Sie sicherstellen, dass Systemereignisse protokolliert werden, indem Sie sieben [Azure Policy](../../../policy/overview.md)-Definitionen zuweisen, mit denen die Protokolleinstellungen für Azure-Ressourcen überwacht werden. Mit einer zugewiesenen Richtlinie wird zudem überwacht, dass virtuelle Computer keine Protokolle an einen angegebenen Log Analytics-Arbeitsbereich senden.
 
 - [Vorschau]: Bereitstellung des Dependency-Agents überwachen – VM-Image (Betriebssystem) nicht aufgelistet
 - [Vorschau]: Bereitstellung des Dependency-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet

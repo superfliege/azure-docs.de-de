@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 4e79e0a7d05ef70ae9f7ab2cbb2238c42b2a654b
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: aa1858a27d4df413deb562391251a523c28673ad
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847571"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359161"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure
 
@@ -88,7 +88,7 @@ Führen Sie zum Generalisieren Ihres virtuellen Windows-Computers die folgenden 
 
 Durch Erstellen eines Images direkt von einem virtuellen Computer lässt sich sicherstellen, dass das Image alle Datenträger umfasst, die dem virtuellen Computer zugeordnet sind, einschließlich des Betriebssystemdatenträgers und aller Datenträger für Daten. In diesem Beispiel wird gezeigt, wie ein verwaltetes Image von einer VM mit verwalteten Datenträgern erstellt wird.
 
-Stellen Sie vor Beginn sicher, dass Sie die neueste Version des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable Az` in PowerShell aus, um die entsprechende Version zu ermitteln. Informationen zum Ausführen eines Upgrades finden Sie unter [Installieren von Azure PowerShell unter Windows mit PowerShellGet](/powershell/azure/azurerm/install-az-ps). Wenn Sie PowerShell lokal ausführen, führen Sie `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
+Stellen Sie vor Beginn sicher, dass Sie die neueste Version des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable Az` in PowerShell aus, um die entsprechende Version zu ermitteln. Informationen zum Ausführen eines Upgrades finden Sie unter [Installieren von Azure PowerShell unter Windows mit PowerShellGet](/powershell/azure/install-az-ps). Wenn Sie PowerShell lokal ausführen, führen Sie `Connect-AzAccount` aus, um eine Verbindung mit Azure herzustellen.
 
 
 > [!NOTE]

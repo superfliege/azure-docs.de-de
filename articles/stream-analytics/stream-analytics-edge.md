@@ -7,14 +7,14 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 4/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9d5a0cf9fa4f9ad8b5a673cd2420416f92edda91
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 4ecea8864a565997b8df119d870e7efee8448143
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994979"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892227"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics auf IoT Edge
  
@@ -44,12 +44,14 @@ ASA verwendet IoT Hub zur Bereitstellung von Edge-Aufträgen auf Geräten. Weite
 
 ### <a name="installation-instructions"></a>Installationsanweisungen
 Die grundsätzlichen Schritte sind in der folgenden Tabelle beschrieben. Ausführliche Informationen finden Sie in den nachfolgenden Abschnitten.
+
 |      |Schritt   | Notizen   |
 | ---   | ---   |  ---      |
 | 1   | **Erstellen eines Speichercontainers**   | Speichercontainer werden verwendet, um die Auftragsdefinition zu speichern. Dort können Ihre IoT-Geräte darauf zugreifen. <br>  Sie können auch bereits vorhandene Speichercontainer verwenden.     |
 | 2   | **Erstellen eines ASA-Edge-Auftrags**   |  Sie erstellen einen neuen Auftrag und wählen **Edge** als **Hostingumgebung** aus. <br> Diese Aufträge werden aus der Cloud heraus erstellt/verwaltet und auf Ihren IoT Edge-Geräten ausgeführt.     |
 | 3   | **Einrichten der IoT Edge-Umgebung auf Ihren Geräten**   | Anleitungen für [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) und [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)          |
 | 4   | **Bereitstellen von ASA auf Ihren IoT Edge-Geräten**   |  Die ASA-Auftragsdefinition wird in den zuvor erstellten Speichercontainer exportiert.       |
+
 Führen Sie [dieses Schritttutorial](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics) aus, um Ihren ersten ASA-Auftrag auf IoT Edge bereitzustellen. Anhand des folgenden Videos können Sie nachvollziehen, wie ein Stream Analytics-Auftrag auf einem IoT Edge-Gerät ausgeführt wird:  
 
 
@@ -123,12 +125,12 @@ Namen der Eingaben und Ausgaben, die im ASA-Auftrag erstellt wurden, können als
 
 ```json
 {
-"routes": {                                              
-    "sensorToAsa":   "FROM /messages/modules/tempSensor/* INTO BrokeredEndpoint(\"/modules/ASA/inputs/temperature\")",
-    "alertsToCloud": "FROM /messages/modules/ASA/* INTO $upstream", 
-    "alertsToReset": "FROM /messages/modules/ASA/* INTO BrokeredEndpoint(\"/modules/tempSensor/inputs/control\")" 
+    "routes": {
+        "sensorToAsa":   "FROM /messages/modules/tempSensor/* INTO BrokeredEndpoint(\"/modules/ASA/inputs/temperature\")",
+        "alertsToCloud": "FROM /messages/modules/ASA/* INTO $upstream",
+        "alertsToReset": "FROM /messages/modules/ASA/* INTO BrokeredEndpoint(\"/modules/tempSensor/inputs/control\")"
+    }
 }
-}   
 
 ```
 Dieses Beispiel zeigt die Routen für das Szenario, das in der folgenden Abbildung skizziert ist. Es enthält einen Edge-Auftrag namens **ASA**, eine Eingabe namens **temperature** und eine Ausgabe namens **alert**.
@@ -142,7 +144,7 @@ Im Beispiel sind folgende Routen definiert:
 
 ## <a name="technical-information"></a>Technische Informationen
 ### <a name="current-limitations-for-iot-edge-jobs-compared-to-cloud-jobs"></a>Aktuelle Einschränkungen bei IoT Edge-Aufträgen im Vergleich mit Cloudaufträgen
-Ziel ist die Herstellung von Parität zwischen IoT Edge- und Cloudaufträgen. Die meisten Funktionen unserer SQL-Abfragesprache werden bereits unterstützt.
+Ziel ist die Herstellung von Parität zwischen IoT Edge- und Cloudaufträgen. Die meisten Features der SQL-Abfragesprache werden unterstützt, sodass dieselbe Logik sowohl in der Cloud als auch auf IoT Edge ausgeführt werden kann.
 Allerdings werden die folgenden Funktionen für Edge-Aufträge noch nicht unterstützt:
 * Benutzerdefinierte Funktionen (User-defined Functions, UDF) in JavaScript. UDF sind in [C# für IoT Edge-Aufträge](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf) (Vorschau) verfügbar.
 * Benutzerdefinierte Aggregate (User-Defined Aggregates, UDA).
@@ -150,14 +152,6 @@ Allerdings werden die folgenden Funktionen für Edge-Aufträge noch nicht unters
 * Verwendung von mehr als 14 Aggregaten in einem einzigen Schritt
 * AVRO-Format für die Eingabe/Ausgabe. Gegenwärtig werden nur CSV und JSON unterstützt.
 * Folgende SQL-Operatoren:
-    * Räumliche Operatoren:
-        * CreatePoint
-        * CreatePolygon
-        * CreateLineString
-        * ST_DISTANCE
-        * ST_WITHIN
-        * ST_OVERLAPS
-        * ST_INTERSECTS
     * PARTITION BY
     * GetMetadataPropertyValue
 
@@ -217,7 +211,7 @@ Um Hilfe zu erhalten, nutzen Sie das [Azure Stream Analytics-Forum](https://soci
 
 * [Weitere Informationen zu Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
 * [Tutorial zu ASA unter IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
-* [Entwickeln von Stream Analytics-Edge-Aufträgen mit Visual Studio-Tools](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
+* [Entwickeln von Stream Analytics-Edgeaufträgen mit Visual Studio-Tools](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
 * [Implementieren von CI/CD für Stream Analytics mithilfe von APIs](stream-analytics-cicd-api.md)
 
 <!--Link references-->

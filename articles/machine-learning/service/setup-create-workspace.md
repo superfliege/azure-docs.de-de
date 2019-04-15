@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 ms.author: sgilley
 author: sdgilley
 ms.date: 03/21/2019
-ms.openlocfilehash: e55c898cdbb45dc7ff3466c61e968e3ae52be0cb
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: f417aef1fd1cc48a37399ff7a157a0e658bbbb02
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521005"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879283"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace"></a>Erstellen eines Azure Machine Learning Service-Arbeitsbereichs
 
@@ -32,7 +32,7 @@ Der Arbeitsbereich, den Sie mithilfe der Schritte in diesem Artikel befolgen, ka
 Wenn Sie einen Arbeitsbereich erstellen, werden folgende Azure-Ressourcen automatisch hinzugefügt, sofern sie regional verfügbar sind:
  
 - [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)
-- [Azure Storage (in englischer Sprache)](https://azure.microsoft.com/services/storage/)
+- [Azure Storage](https://azure.microsoft.com/services/storage/)
 - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
@@ -41,7 +41,7 @@ Wenn Sie einen Arbeitsbereich erstellen, werden folgende Azure-Ressourcen automa
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Zum Erstellen eines Arbeitsbereichs benötigen Sie ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie noch heute die [kostenlose oder kostenpflichtige Version von Azure Machine Learning Service](http://aka.ms/AMLFree) aus.
+Zum Erstellen eines Arbeitsbereichs benötigen Sie ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie noch heute die [kostenlose oder kostenpflichtige Version von Azure Machine Learning Service](https://aka.ms/AMLFree) aus.
 
 ## <a name="portal"></a> Azure-Portal
 
@@ -139,7 +139,7 @@ Erstellen Sie mit dem Python SDK Ihren Arbeitsbereich in einer Jupyter Notebook-
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=import)]
 
-1. Suchen Sie in der [Liste mit den Abonnements im Azure-Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) nach einem Wert für den Parameter `<azure-subscription-id>`. Verwenden Sie ein beliebiges Abonnement, für das Sie über die Rolle „Besitzer“ oder „Mitwirkender“ verfügen.
+1. Suchen Sie in der [Liste mit den Abonnements im Azure-Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) nach einem Wert für den Parameter `<azure-subscription-id>`. Verwenden Sie ein beliebiges Abonnement, für das Sie über die Rolle „Besitzer“ oder „Mitwirkender“ verfügen. Weitere Informationen zu Rollen finden Sie im Artikel [Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich](how-to-assign-roles.md).
 
    ```python
    from azureml.core import Workspace

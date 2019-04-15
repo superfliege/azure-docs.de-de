@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 883e1c11e3485c0bf3441a67a3a191563ea3aed4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 586f37ff972a6102da351794365f719a185857fc
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57990788"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877413"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Unterstützte Sprachen der Data Science-VM 
 
@@ -145,7 +145,7 @@ Die Python-Standardumgebungen auf der DSVM sind globale, für alle Benutzer lesb
 | ------------- | ------------- |
 | Unterstützte Sprachversionen | Microsoft R Open 3.x (vollständig mit CRAN-R kompatibel)<br /> Microsoft R Server 9.x Developer Edition (eine skalierbare R-Plattform für Unternehmen)|
 | Unterstützte DSVM-Editionen      | Linux, Windows     |
-| Konfiguration/Installation auf der DSVM  | Windows: `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux: ` /usr/lib64/microsoft-r/3.3/lib64/R`    |
+| Konfiguration/Installation auf der DSVM  | Windows: `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux: `/usr/lib64/microsoft-r/3.3/lib64/R`    |
 | Links zu Beispielen      | Jupyter-Beispielnotebooks für R sind enthalten.     |
 | Verwandte Tools auf der DSVM      | SparkR, Python, Julia      |
 ### <a name="how-to-use--run-it"></a>Verwendung/Ausführung    
@@ -209,7 +209,7 @@ Verwenden Sie `Juno` – die auf der DSVM installierte und als Desktopverknüpfu
 
 * Verwenden in Jupyter
 
-Öffnen Sie Jupyter, und klicken Sie auf die Schaltfläche `New`, um ein neues Notebook zu erstellen. Nun können Sie den Kerneltyp `Julia VERSION` auswählen. 
+Öffnen Sie Jupyter, und klicken Sie auf die Schaltfläche `New`, um ein neues Notebook zu erstellen. Jetzt können Sie folgenden Kerneltyp auswählen: `Julia VERSION` 
 
 * Installieren von Julia-Paketen
 
@@ -226,7 +226,7 @@ Verwenden Sie `Juno` – die auf der DSVM installierte und als Verknüpfung im A
 
 * Verwenden in Jupyter
 
-Öffnen Sie Jupyter, und klicken Sie auf die Schaltfläche `New`, um ein neues Notebook zu erstellen. Nun können Sie den Kerneltyp `Julia VERSION` auswählen. 
+Öffnen Sie Jupyter, und klicken Sie auf die Schaltfläche `New`, um ein neues Notebook zu erstellen. Jetzt können Sie folgenden Kerneltyp auswählen: `Julia VERSION` 
 
 * Installieren von Julia-Paketen
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 4f6d94c7090c2bbb0335d46b60be320b2fc19375
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: c6ae28e076d14faa7c2173f3a23d92daad4bd59e
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962824"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651122"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Verwalten von Classroom-Labs in Azure Lab Services 
 In diesem Artikel erfahren Sie, wie Sie ein Classroom-Lab erstellen und löschen. Außerdem erfahren Sie, wie Sie alle Classroom-Labs in einem Labkonto anzeigen. 
@@ -37,9 +37,9 @@ Zum Einrichten eines Classroom-Labs in einem Labkonto müssen Sie Mitglied der R
 
         ![Erstellen eines Classroom-Labs](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 4. Führen Sie auf der Seite **Select virtual machine specifications** (Spezifikationen für virtuellen Computer auswählen) die folgenden Schritte aus:
-    1. Wählen Sie eine **Größe** für die virtuellen Computer (VMs), die im Lab erstellt werden. 
+    1. Wählen Sie eine **Größe** für die virtuellen Computer (VMs), die im Lab erstellt werden. Derzeit sind die folgenden Größen zulässig: **Klein**, **Mittel**, **Groß** und **GPU**.
     2. Wählen Sie die **Region** aus, in der die VMs erstellt werden sollen. 
-    3. Wählen Sie das **VM-Image** aus, das zum Erstellen von VMs im Lab verwendet werden soll. 
+    3. Wählen Sie das **VM-Image** aus, das zum Erstellen von VMs im Lab verwendet werden soll. Bei Auswahl eines Linux-Images wird eine Option zum Aktivieren der Remotedesktopverbindung angezeigt. Ausführliche Informationen finden Sie unter [Aktivieren der Remotedesktopverbindung für Linux](how-to-enable-remote-desktop-linux.md).
     4. Klicken Sie auf **Weiter**.
 
         ![Angeben von VM-Spezifikationen](../media/tutorial-setup-classroom-lab/select-vm-specifications.png)    
@@ -60,7 +60,7 @@ Zum Einrichten eines Classroom-Labs in einem Labkonto müssen Sie Mitglied der R
     ![Seite „Vorlage konfigurieren“ nach Abschluss des Vorgangs](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. Die folgenden Schritte sind in diesem Tutorial optional: 
     1. Starten Sie die Vorlage für virtuelle Computer, indem Sie **Starten** wählen.
-    2. Stellen Sie eine Verbindung mit der Vorlage für virtuelle Computer her, indem Sie **Verbinden** wählen. 
+    2. Stellen Sie eine Verbindung mit der Vorlage für virtuelle Computer her, indem Sie **Verbinden** wählen. Handelt es sich um einen virtuellen Computer mit Linux-Vorlage, legen Sie fest, ob eine Verbindung per SSH oder RDP (sofern RDP aktiviert ist) hergestellt werden soll.
     3. Installieren und konfigurieren Sie die Software in der Vorlage für virtuelle Computer. 
     4. **Beenden** Sie den virtuellen Computer.  
     5. Geben Sie eine **Beschreibung** für die Vorlage ein.

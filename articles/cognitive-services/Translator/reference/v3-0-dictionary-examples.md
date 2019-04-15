@@ -3,19 +3,19 @@ title: Textübersetzungs-API – Methode für Wörterbuchbeispiele
 titlesuffix: Azure Cognitive Services
 description: Verwenden Sie die Methode für Wörterbuchbeispiele der Textübersetzungs-API.
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: a72aca47b33c911d4812274cfa624eaacbdec0d0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 26f147fde58a7f9c836bdacd6d66321f0fc5529a
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884782"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916420"
 ---
 # <a name="translator-text-api-30-dictionary-examples"></a>Textübersetzungs-API 3.0: Wörterbuchbeispiele
 
@@ -123,7 +123,7 @@ Eine erfolgreiche Antwort ist ein JSON-Array mit einem Ergebnis für jede Zeiche
 
 Das folgende Beispiel zeigt, wie Sie Beispiele für das Paar nachschlagen, das aus dem englischen Begriff `fly` und dessen spanischer Übersetzung `volar` besteht.
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/examples?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly', 'Translation':'volar'}]"

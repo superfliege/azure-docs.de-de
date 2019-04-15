@@ -11,20 +11,20 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 04/01/2019
 ms.author: kumud
-ms.openlocfilehash: bd40278015bf4580759c1b7b9522400b3dae31d6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 0b46cbdec6d0ffe2a614a976f70b833726fb0e8a
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475661"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849947"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-using-azure-cli"></a>Konfigurieren von Lastenausgleichs- und Ausgangsregeln in Load Balancer Standard mithilfe der Azure CLI
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie Ausgangsregeln in Load Balancer Standard mithilfe von Azure CLI konfigurieren.  
 
-Anschließend enthält die Load Balancer-Ressource zwei Front-Ends mit zugeordneten Regeln: eines für eingehenden und eines für ausgehenden Datenverkehr.  Jedes Front-End verfügt über einen Verweis auf eine öffentliche IP-Adresse. In diesem Szenario werden für Eingangs- und Ausgangsdatenverkehr unterschiedliche öffentliche IP-Adressen verwendet.   Die Lastenausgleichsregel bietet nur Lastenausgleich für eingehenden Datenverkehr, und die Ausgangsregel steuert die für den virtuellen Computer angegebene NAT für ausgehenden Datenverkehr.
+Anschließend enthält die Load Balancer-Ressource zwei Front-Ends mit zugeordneten Regeln: eines für eingehenden und eines für ausgehenden Datenverkehr.  Jedes Front-End verfügt über einen Verweis auf eine öffentliche IP-Adresse. In diesem Szenario werden für Eingangs- und Ausgangsdatenverkehr unterschiedliche öffentliche IP-Adressen verwendet.   Die Lastenausgleichsregel bietet nur Lastenausgleich für eingehenden Datenverkehr, und die Ausgangsregel steuert die für den virtuellen Computer angegebene NAT für ausgehenden Datenverkehr.  Dieser Schnellstart verwendet zwei separate Back-End-Pools: einen für den eingehenden und einen für den ausgehenden Datenverkehr, um die Leistungsfähigkeit zu veranschaulichen und Flexibilität für dieses Szenario zu ermöglichen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
@@ -69,30 +69,41 @@ Erstellen Sie mit [az network public-ip create](https://docs.microsoft.com/cli/a
   az network public-ip create --resource-group myresourcegroupoutbound --name mypublicipoutbound --sku standard
 ```
 
-
 ## <a name="create-azure-load-balancer"></a>Erstellen einer Azure Load Balancer-Instanz
 
 In diesem Abschnitt erfahren Sie, wie Sie die folgenden Komponenten des Lastenausgleichs erstellen und konfigurieren:
   - Front-End-IP-Adresse, die den eingehenden Netzwerkdatenverkehr für den Lastenausgleich empfängt
   - Back-End-Pool, an den die Front-End-IP-Adresse den Netzwerkdatenverkehr sendet, für den ein Lastenausgleich durchgeführt wurde
+  - Back-End-Pool für ausgehende Verbindungen 
   - Integritätstest zum Ermitteln der Integrität der Back-End-VM-Instanzen
   - Eingangsregel des Lastenausgleichs, mit der definiert wird, wie der Datenverkehr auf die virtuellen Computer verteilt werden soll
   - Ausgangsregel des Lastenausgleichs, mit der definiert wird, wie der von den virtuellen Computern ausgehende Datenverkehr verteilt werden soll
 
 ### <a name="create-load-balancer"></a>Erstellen oder Aktualisieren eines Lastenausgleichs
 
-Erstellen Sie mit [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) eine Load Balancer-Instanz mit der Eingangs-IP-Adresse mit dem Namen *lb*, die eine IP-Adresskonfiguration des Eingangs-Front-Ends und einen Back-End-Pool enthält (mit Zuordnung zur öffentlichen IP-Adresse *mypublicipinbound*, die Sie im vorherigen Schritt erstellt haben).
+Erstellen Sie mit [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) eine Load Balancer-Instanz mit der Eingangs-IP-Adresse mit dem Namen *lb*, die eine IP-Adresskonfiguration des Eingangs-Front-Ends und einen Back-End-Pool *bepoolinbound* enthält (mit Zuordnung zur öffentlichen IP-Adresse *mypublicipinbound*, die Sie im vorherigen Schritt erstellt haben).
 
 ```azurecli-interactive
   az network lb create \
     --resource-group myresourcegroupoutbound \
     --name lb \
     --sku standard \
-    --backend-pool-name bepool \
+    --backend-pool-name bepoolinbound \
     --frontend-ip-name myfrontendinbound \
     --location eastus2 \
     --public-ip-address mypublicipinbound   
   ```
+
+### <a name="create-outbound-pool"></a>Erstellen eines ausgehenden Pools
+
+Erstellen Sie einen zusätzlichen Back-End-Adresspool, um die ausgehenden Verbindungen für einen Pool von VMs mit [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) mit dem Namen *bepooloutbound* zu definieren.  Die Erstellung eines separaten ausgehenden Pools bietet maximale Flexibilität, aber Sie können diesen Schritt auslassen und auch nur *bepoolinbound* für den eingehenden Datenverkehr verwenden.
+
+```azurecli-interactive
+  az network lb address-pool \
+    --resource-group myresourcegroupoutbound \
+    --lb-name lb \
+    --name bepooloutbound
+```
 
 ### <a name="create-outbound-frontend-ip"></a>Erstellen einer IP-Adresse für das Ausgangs-Front-End
 Erstellen Sie mit [az network lb frontend-ip create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) die IP-Konfiguration für das Ausgangs-Front-End der Load Balancer-Instanz. Diese IP-Konfiguration des Ausgangs-Front-Ends wird *myfrontendoutbound* genannt und der öffentlichen IP-Adresse *mypublicipoutbound* zugeordnet.
@@ -136,7 +147,7 @@ az network lb rule create \
 --backend-port 80 \
 --probe http \
 --frontend-ip-name myfrontendinbound \
---backend-pool-name bepool \
+--backend-pool-name bepoolinbound \
 --disable-outbound-snat
 ```
 
@@ -153,10 +164,12 @@ az network lb outbound-rule create \
  --protocol All \
  --idle-timeout 15 \
  --outbound-ports 10000 \
- --address-pool bepool
+ --address-pool bepooloutbound
 ```
 
-Jetzt können Sie mit dem Hinzufügen Ihrer virtuellen Computer zum Back-End-Pool *bepool* fortfahren, indem Sie die IP-Konfiguration der entsprechenden NIC-Ressourcen aktualisieren.
+Wenn Sie keinen separaten ausgehenden Pool verwenden möchten, können Sie das Argument des Adresspools im vorhergehenden Befehl ändern, um stattdessen *bepoolinbound* anzugeben.  Es wird empfohlen, separate Pools zu verwenden, um die Flexibilität und Lesbarkeit der resultierenden Konfiguration sicherzustellen.
+
+Jetzt können Sie mit dem Hinzufügen Ihrer virtuellen Computer zum Back-End-Pool *bepoolinbound* __und__ *bepooloutbound* fortfahren, indem Sie die IP-Konfiguration der entsprechenden NIC-Ressourcen mit [az network nic ip-config address-pool add](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) aktualisieren.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -171,4 +184,3 @@ In diesem Artikel haben Sie eine Load Balancer Standard-Instanz erstellt und Reg
 
 > [!div class="nextstepaction"]
 > [Azure Load Balancer-Tutorials](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
-

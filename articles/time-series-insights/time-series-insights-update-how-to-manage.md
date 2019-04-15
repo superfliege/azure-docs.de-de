@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.custom: seodec18
-ms.openlocfilehash: 3c6b5094613ee482b0fd3f63e3d9d69dfe4d40f4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 85d5bb822bc9b89c68c70633a22a1bed74118f49
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094853"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758187"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>Bereitstellen und Verwalten der Vorschauversion von Azure Time Series Insights
 
@@ -33,7 +33,7 @@ Wenn Sie eine Azure Time Series Insights Preview-Umgebung bereitstellen, erstell
 Erfahren Sie, [wie Sie Ihre Umgebung planen](./time-series-insights-update-plan.md).
 
 >[!IMPORTANT]
-> Wenn Sie ein v2-Konto verwenden, aktivieren Sie keine Cold/Archiv-Eigenschaften für das Speicherkonto, das Sie verwenden möchten.
+> Stellen Sie für die Vorschauversion sicher, dass Sie ein GPv1-Konto (Azure Storage Universell V1) verwenden.  Die Unterstützung für GPv2 und höher wird in naher Zukunft hinzugefügt.  
 
 Sie können jede Azure Time Series Insights-Umgebung (Vorschauversion) optional mit einer Ereignisquelle verknüpfen. Weitere Informationen finden Sie unter [Hinzufügen einer Event Hub-Quelle](./time-series-insights-how-to-add-an-event-source-eventhub.md) und [Hinzufügen einer IoT Hub-Quelle](./time-series-insights-how-to-add-an-event-source-iothub.md). Sie geben in diesem Schritt eine „Timestamp ID“-Eigenschaft sowie eine eindeutige Consumergruppe an. Auf diese Weise wird sichergestellt, dass die Umgebung Zugriff auf die entsprechenden Ereignisse hat.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: da11d4977cc998c9fccb3628a44e45db95c7d977
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: dcf6acca344fe2a34fdc48fe89c5a1ee62b10b23
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759209"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59255885"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>Bereitstellen von OPC Twin in einem vorhandenen Projekt
 
@@ -30,10 +30,7 @@ Der Modulkern ist die Supervisoridentität. Der Supervisor verwaltet den Endpunk
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-> [!NOTE]
-> Hinweis: Aufgrund der Abhängigkeit vom AzureRM-Modul wird die Bereitstellung derzeit nur unter Windows unterstützt.
-
-Stellen Sie sicher, dass die PowerShell- und [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-1.1.0)-Erweiterungen installiert sind.   Wenn dieser Schritt noch nicht erfolgt ist, klonen Sie dieses GitHub-Repository.  Öffnen Sie eine Eingabeaufforderung oder ein Terminal, und führen Sie Folgendes aus:
+Stellen Sie sicher, dass die PowerShell- und [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)-Erweiterungen installiert sind.   Wenn dieser Schritt noch nicht erfolgt ist, klonen Sie dieses GitHub-Repository.  Öffnen Sie eine Eingabeaufforderung oder ein Terminal, und führen Sie Folgendes aus:
 
 ```bash
 git clone --recursive https://github.com/Azure/azure-iiot-components 
@@ -143,4 +140,4 @@ Der zu verwendende AAD-Mandant.
 Nachdem Sie nun erfahren haben, wie Sie OPC Twin für ein vorhandenes Projekt bereitstellen, lautet unser Vorschlag für den nächsten Schritt:
 
 > [!div class="nextstepaction"]
-> [Schützen der Kommunikation zwischen OPC-Client und OPC PLC ](howto-opc-vault-deploy-existing-client-plc-communication.md)
+> [Schützen der Kommunikation zwischen OPC-Client und OPC PLC](howto-opc-vault-deploy-existing-client-plc-communication.md)

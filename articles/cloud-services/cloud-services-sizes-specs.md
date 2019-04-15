@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 5c4ad5c200bd2e49f3c472d82ad030c6a8f2478d
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 6f3177c37a2db03b8821e3e4f5b68c8b1315a016
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918262"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358249"
 ---
 # <a name="sizes-for-cloud-services"></a>Größen für Clouddienste
 In diesem Thema werden die verfügbaren Größen und Optionen für Cloud Service-Rolleninstanzen (Web- und Workerrollen) beschrieben. Darüber hinaus werden Überlegungen zur Bereitstellung angestellt, die Sie berücksichtigen sollten, wenn Sie eine Verwendung dieser Ressourcen planen. Jede Größe besitzt eine ID, die Sie in Ihre [Dienstdefinitionsdatei](cloud-services-model-and-package.md#csdef) einfügen. Preise für jede Größe sind auf der Seite [Cloud Services Preise](https://azure.microsoft.com/pricing/details/cloud-services/) verfügbar.
@@ -205,7 +205,7 @@ Hier sehen Sie ein Beispiel, bei dem die Rollengröße „Standard_D2“ für ei
 
 ## <a name="changing-the-size-of-an-existing-role"></a>Ändern der Größe einer vorhandenen Rolle
 
-Wenn sich die Art Ihre Workload ändert oder neue VM-Größen verfügbar werden, kann es ratsam sein, die Größe Ihrer Rolle zu ändern. Hierzu müssen Sie die VM-Größe in Ihrer Dienstdefinitionsdatei (wie oben dargestellt) ändern, und Ihren Clouddienst neu packen und bereitstellen. Es ist nicht möglich, VM-Größen direkt über das Portal oder mit PowerShell zu ändern.
+Wenn sich die Art Ihre Workload ändert oder neue VM-Größen verfügbar werden, kann es ratsam sein, die Größe Ihrer Rolle zu ändern. Hierzu müssen Sie die VM-Größe in Ihrer Dienstdefinitionsdatei (wie oben dargestellt) ändern, und Ihren Clouddienst neu packen und bereitstellen.
 
 >[!TIP]
 > Es kann hilfreich sein, unterschiedliche VM-Größen für Ihre Rolle zu verwenden, wenn Sie unterschiedliche Umgebungen nutzen (z.B. für Test und Produktion). Eine Möglichkeit ist die Erstellung von mehreren Dienstdefinitionsdateien (.csdef) in Ihrem Projekt und die anschließende Erstellung von unterschiedlichen Clouddienstpaketen pro Umgebung während des automatisierten Buildvorgangs mit dem CSPack-Tool. Weitere Informationen zu den Elementen eines Clouddienstpakets und zu deren Erstellung finden Sie unter [Was ist das Clouddienstmodell, und wie kann es gepackt werden?](cloud-services-model-and-package.md).

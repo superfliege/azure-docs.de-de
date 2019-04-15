@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 3752e9c227e4db0f583b2f6b21d6c0aa3106d248
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: d8fc929b21bedcb3e7e2bd3f5ed1d6c867bca3c8
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337696"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803373"
 ---
 # <a name="azure-devtest-labs-faq"></a>Häufig gestellte Fragen zu Azure DevTest Labs
 Im Folgenden werden einige der am häufigsten gestellten Fragen zu Azure DevTest Labs beantwortet.
@@ -44,7 +44,7 @@ Wir arbeiten momentan daran, vorhandene Blogbeiträge (mit Ausnahme von Updates 
 In Zukunft werden wir Updates zu Ausfällen unter unserem Twitter-Handle bereitstellen. Folgen Sie uns auf Twitter, um die neuesten Updates zu Ausfällen und bekannten Fehlern zu erhalten.
 
 ### <a name="twitter"></a>Twitter 
-Unser Twitter-Handle lautet: azlabservices
+Unser Twitter-Handle: [@azlabservices](https://twitter.com/azlabservices)
 
 ## <a name="what-if-my-question-isnt-answered-here"></a>Was kann ich tun, wenn meine Frage hier nicht beantwortet wird?
 Wenn Ihre Frage hier nicht aufgeführt wird, informieren Sie uns darüber, damit wir Ihnen helfen können, eine Antwort zu finden.
@@ -139,7 +139,9 @@ Sie haben zwei Optionen, um gleichzeitig mehrere VMs anhand derselben Vorlage zu
 ## <a name="how-do-i-move-my-existing-azure-vms-into-my-devtest-labs-lab"></a>Wie verschiebe ich meine vorhandenen Azure-VMs in mein DevTest Labs-Lab?
 So kopieren Sie Ihre vorhandenen VMs in DevTest Labs
 
-1. Kopieren Sie die VHD-Datei Ihrer vorhandenen VM mithilfe eines [Windows PowerShell-Skripts](https://github.com/Azure/azure-devtestlab/blob/master/Scripts/CopyVHDFromVMToLab.ps1).
+1. Kopieren Sie die VHD-Datei Ihrer vorhandenen VM mithilfe eines PowerShell-Skripts:
+   * Resource Manager: [CopyRmVHDFromVMToLab.ps1](https://github.com/Azure/azure-devtestlab/blob/master/Scripts/CopyRmVHDFromVMToLab.ps1)
+   * Klassisch: [CopyClassicVHDFromVMToLab.ps1](https://github.com/Azure/azure-devtestlab/blob/master/Scripts/CopyClassicVHDFromVMToLab.ps1)
 2. [Erstellen Sie das benutzerdefinierte Image](devtest-lab-create-template.md) in Ihrem DevTest Labs-Lab.
 3. Erstellen Sie anhand des benutzerdefinierten Image eine VM im Lab.
 

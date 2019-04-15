@@ -9,14 +9,14 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5814e05aa65bf005a3156aa75e65747bbd46733c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: db0eccb542cb4253e6e891fa9fa51e60fb7951a1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58171056"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892737"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Bekannte Probleme und Problembehandlung für Azure Machine Learning Service
 
@@ -48,6 +48,11 @@ Wenn `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signa
 
 Um Modelle auf FPGAs bereitzustellen, müssen Sie zuerst ein FPGA-Kontingent anfordern und dessen Genehmigung abwarten. Füllen Sie das Formular zur Kontingentanforderung aus, um Zugriff anzufordern: https://aka.ms/aml-real-time-ai
 
+## <a name="automated-machine-learning"></a>Automatisiertes maschinelles Lernen
+
+Das automatisierte maschinelle Lernen von Tensor Flow unterstützt derzeit nicht die Tensor Flow Version 1.13. Die Installation dieser Version führt dazu, dass Paketabhängigkeiten nicht mehr funktionieren. Wir arbeiten daran, dieses Problem in einer zukünftigen Version zu beheben. 
+
+
 ## <a name="databricks"></a>Databricks
 
 Probleme mit Databricks und Azure Machine Learning:
@@ -57,7 +62,7 @@ Probleme mit Databricks und Azure Machine Learning:
 Bei der Installation des Azure Machine Learning SDK tritt in Azure Databricks ein Fehler auf, wenn mehrere Pakete installiert werden. Einige Pakete, z.B. `psutil`, können Konflikte verursachen. Um Fehler bei der Installation zu vermeiden, frieren Sie die Bibliotheksversion beim Installieren der Pakete ein. Dieses Problem hängt mit Databricks und nicht mit dem Azure Machine Learning Service SDK zusammen. Es kann auch mit anderen Bibliotheken auftreten. Beispiel:
 
 ```python
-pstuil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
+psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
 ```
 
 Falls bei Python-Bibliotheken immer wieder Installationsprobleme auftreten, können Sie alternativ Initialisierungsskripts verwenden. Dieser Ansatz wird nicht offiziell unterstützt. Weitere Informationen finden Sie unter [Initialisierungsskripts im Clusterbereich](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
@@ -91,7 +96,7 @@ Wenn diese Fehlermeldung bei Verwendung von automatisiertem maschinellem Lernen 
 
 1. Trennen Sie den Cluster auf, und fügen Sie ihn dann wieder an Ihr Notebook an. 
 
-Falls das Problem weiterhin besteht, starten Sie den Cluster neu.
+Wenn diese Schritte das Problem nicht beheben, versuchen Sie, den Cluster neu zu starten.
 
 ## <a name="azure-portal"></a>Azure-Portal
 
@@ -99,8 +104,7 @@ Wenn Sie Ihren Arbeitsbereich direkt über einen Freigabelink aus dem SDK oder d
 
 ## <a name="diagnostic-logs"></a>Diagnoseprotokolle
 
-Manchmal kann es hilfreich sein, Diagnoseinformationen bereitstellen zu können, wenn Sie um Hilfe bitten.
-Die Protkolldateien finden Sie hier:
+Manchmal kann es hilfreich sein, Diagnoseinformationen bereitstellen zu können, wenn Sie um Hilfe bitten. Um einige Protokolle anzuzeigen, besuchen Sie das [Azure-Portal](https://portal.azure.com), wechseln Sie zu Ihrem Arbeitsbereich, und wählen Sie **Arbeitsbereich > Experiment > Ausführen > Protokolle** aus.
 
 ## <a name="resource-quotas"></a>Ressourcenkontingente
 
@@ -119,7 +123,3 @@ Wenn Sie einen Verwaltungsvorgang innerhalb eines Remoteauftrags auf ein Compute
 ```
 
 Sie erhalten beispielsweise eine Fehlermeldung, wenn Sie versuchen, ein Computeziel anhand einer ML-Pipeline zu erstellen oder anzuhängen, die zur Remoteausführung übermittelt wird.
-
-## <a name="get-more-support"></a>Weitere Unterstützung
-
-Sie können Supportanfragen stellen und Hilfe vom technischen Support, in Foren usw. erhalten. [Weitere Informationen](support-for-aml-services.md)

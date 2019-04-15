@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door Service – Metriken und Protokollierung | Microsoft-Dokumentation
-description: Dieser Artikel bietet einen Überblick über die verschiedenen Metriken und Zugriffsprotokolle, die Azure Front Door Service unterstützt.
+title: Überwachung von Metriken und Protokollen in Azure Front Door Service | Microsoft-Dokumentation
+description: Dieser Artikel beschreibt die verschiedenen Metriken und Zugriffsprotokolle, die Azure Front Door Service unterstützt.
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,30 +11,30 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: 5d4d591c465cae91c59e8f86ea9d3e421db0f952
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 98aabf5330589bf80f1653bb2882c015a4bc133c
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112108"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862112"
 ---
-# <a name="monitoring-metrics-for-front-door"></a>Überwachungsmetriken für Front Door Service
+# <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>Überwachung von Metriken und Protokollen in Azure Front Door Service
 
 Mit dem Azure Front Door Service können Sie Ressourcen auf die folgenden Arten überwachen:
-* [Protokolle:](#diagnostic-logging) Protokolle ermöglichen das Speichern und Nutzen von Leistungs-, Zugriffs- und anderen Daten einer Ressource zu Überwachungszwecken.
 
-* [Metriken:](#metrics) Application Gateway verfügt derzeit über sieben Metriken, um Leistungsindikatoren anzuzeigen.
+- **Metriken:** Application Gateway verfügt derzeit über sieben Metriken, um Leistungsindikatoren anzuzeigen.
+- **Protokolle**. Protokolle ermöglichen das Speichern und Nutzen von Leistungs-, Zugriffs- und anderen Daten einer Ressource zu Überwachungszwecken.
 
-## <a name="metrics"></a>Metriken
+### <a name="metrics"></a>Metriken
 
-Metriken sind ein Feature für bestimmte Azure-Ressourcen, damit Sie die Leistungsindikatoren im Portal anzeigen können. Für Front Door Service stehen die folgenden Metriken zur Verfügung:
+Metriken sind ein Feature für bestimmte Azure-Ressourcen, mit dem Sie die Leistungsindikatoren im Portal anzeigen können. Die folgenden Front Door-Metriken stehen zur Verfügung:
 
 | Metrik | Metrikanzeigename | Unit | Dimensionen | BESCHREIBUNG |
 | --- | --- | --- | --- | --- |
 | RequestCount | Anzahl der Anforderungen | Count | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Die Anzahl der von Front Door Service bereitgestellten Clientanforderungen.  |
 | RequestSize | Anforderungsgröße | Byte | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Die Anzahl der von Clients als Anforderungen an Front Door Service gesendeten Bytes. |
 | ResponseSize | Antwortgröße | Byte | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Die Anzahl der von Front Door Service als Antworten an Clients gesendeten Bytes. |
-| TotalLatency | Gesamtlatenz | Millisekunden | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Die Zeitspanne zwischen dem Empfang der Clientanforderung durch Front Door Service und der Bestätigung des letzten Antwortbytes von Front Door Service durch den Client. |
+| TotalLatency | Gesamtlatenz | Millisekunden | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Die Zeitspanne zwischen dem Empfang der Clientanforderung durch Front Door und der Bestätigung des letzten Antwortbytes von Front Door durch den Client. |
 | BackendRequestCount | Back-End-Anforderungsanzahl | Count | HttpStatus</br>HttpStatusGroup</br>Back-End | Die Anzahl der von Front Door Service an Back-Ends gesendeten Anforderungen. |
 | BackendRequestLatency | Latenz der Back-End-Anforderung | Millisekunden | Back-End | Die Zeitspanne zwischen dem Senden der Anforderung durch Front Door Service an das Back-End und dem Empfang des letzten Antwortbytes durch Front Door Service vom Back-End. |
 | BackendHealthPercentage | Prozentsatz der Back-End-Integrität | Prozent | Back-End</br>BackendPool | Der Prozentsatz der erfolgreichen Integritätstests von Front Door Service zu Back-Ends. |
@@ -42,35 +42,36 @@ Metriken sind ein Feature für bestimmte Azure-Ressourcen, damit Sie die Leistun
 
 ## <a name="activity-log"></a>Aktivitätsprotokolle
 
-Aktivitätsprotokolle geben Einblick in die Vorgänge, die in Ihrer Front Door-Instanz ausgeführt wurden. Mit dem Aktivitätsprotokoll können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (PUT, POST, DELETE) in Ihrer Front Door-Instanz ermitteln.
+Aktivitätsprotokolle geben Informationen zu den Front Door Service-Vorgängen. Damit können Sie auch die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (put, post oder delete) in Ihrer Front Door Service-Instanz ermitteln.
 
-> [!NOTE]
-> Aktivitätsprotokolle enthalten keine Lesevorgänge (GET) oder Vorgänge, die im Azure-Portal oder mithilfe der ursprünglichen Management-APIs durchgeführt wurden.
+>[!NOTE]
+>Aktivitätsprotokolle umfassen keine Lesevorgänge (get). Sie enthalten auch keine Vorgänge, die Sie entweder mithilfe des Azure-Portals oder der ursprünglichen Verwaltungs-API ausführen.
 
-Sie können in Ihrer Front Door-Instanz auf Aktivitätsprotokolle und in Azure Monitor auf Protokolle für alle Ihre Azure-Ressourcen zugreifen. 
-
-So zeigen Sie Aktivitätsprotokolle an:
+Greifen Sie auf Aktivitätsprotokolle in Ihrer Front Door Service-Instanz oder alle Protokolle Ihrer Azure-Ressourcen in Azure Monitor zu. So zeigen Sie Aktivitätsprotokolle an:
 
 1. Wählen Sie Ihre Front Door-Instanz aus.
-2. Klicken Sie auf **Aktivitätsprotokoll**.
+2. Wählen Sie **Aktivitätsprotokoll** aus.
 
     ![Aktivitätsprotokoll](./media/front-door-diagnostics/activity-log.png)
 
-3. Wählen Sie den gewünschten Filterungsbereich, und klicken Sie auf **Anwenden**.
+3. Wählen Sie einen Filterbereich und dann **Übernehmen** aus.
 
 ## <a name="diagnostic-logging"></a>Diagnoseprotokolle
-Diagnoseprotokolle bieten umfassende Informationen zu Vorgängen und Fehlern, die zur Überwachung und Problembehandlung relevant sind. Diagnoseprotokolle unterscheiden sich von Aktivitätsprotokollen. Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre Azure-Ressourcen ausgeführt wurden. Diagnoseprotokolle bieten Einblick in Vorgänge, die Ihre Ressource selbst ausgeführt hat. Erfahren Sie mehr zu [Azure Monitor-Diagnoseprotokollen](../azure-monitor/platform/diagnostic-logs-overview.md). 
+Diagnoseprotokolle bieten umfassende Informationen zu Vorgängen und Fehlern, die zur Überwachung und Problembehandlung relevant sind. Diagnoseprotokolle unterscheiden sich von Aktivitätsprotokollen.
 
-So konfigurieren Sie Diagnoseprotokolle für Ihre Front Door-Instanz
+Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Azure-Ressourcen ausgeführt wurden. Diagnoseprotokolle bieten Einblicke in Vorgänge, die Ihre Ressource ausgeführt hat. Weitere Informationen finden Sie unter [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../azure-monitor/platform/diagnostic-logs-overview.md).
 
-1. Wählen Sie Ihre APIM-Dienstinstanz aus.
-2. Klicken Sie auf **Diagnoseeinstellungen**.
+![Diagnoseprotokolle](./media/front-door-diagnostics/diagnostic-log.png)
 
-    ![Diagnoseprotokolle](./media/front-door-diagnostics/diagnostic-log.png)
+So konfigurieren Sie Diagnoseprotokolle für Ihre Front Door Service-Instanz:
 
-3. Klicken Sie auf **Diagnose aktivieren**. Sie können Diagnoseprotokolle zusammen mit Metriken in einem Speicherkonto archivieren, an einen Event Hub streamen oder an Azure Monitor-Protokolle senden. 
+1. Wählen Sie Ihren Azure API Management-Dienst aus.
 
-Azure Front Door Service bietet derzeit Diagnoseprotokolle (stündlich erfasst) zu einzelnen API-Anforderungen, bei denen jeder Eintrag das folgende Schema aufweist:
+2. Wählen Sie **Azure-Diagnoseeinstellungen** aus.
+
+3. Wählen Sie **Diagnose aktivieren**. Archivieren Sie Diagnoseprotokolle zusammen mit Metriken in einem Speicherkonto, streamen Sie sie an einen Event Hub, oder senden Sie sie an Azure Monitor-Protokolle.
+
+Front Door Service stellt derzeit Diagnoseprotokolle bereit (stündlicher Batch). Diagnoseprotokolle enthalten einzelne API-Anforderungen, wobei jeder Eintrag folgendem Schema entspricht:
 
 | Eigenschaft  | BESCHREIBUNG |
 | ------------- | ------------- |
@@ -91,5 +92,5 @@ Azure Front Door Service bietet derzeit Diagnoseprotokolle (stündlich erfasst) 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das [Erstellen einer Azure Front Door Service-Konfiguration](quickstart-create-front-door.md).
-- Informieren Sie sich über die [Funktionsweise von Azure Front Door Service](front-door-routing-architecture.md).
+- [Erstellen eines Front Door-Profils](quickstart-create-front-door.md)
+- [Funktionsweise von Azure Front Door Service](front-door-routing-architecture.md)

@@ -12,12 +12,12 @@ manager: celested
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cb7296ea4acfbf90d94b8f94a644b8a382b033b
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 98f81edcfa2a9daf5162ff1c7e23025b405092b8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58877362"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260390"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit
 
@@ -60,7 +60,7 @@ B2B-Zusammenarbeitsbenutzer benötigen keinen Zugriff auf das Azure-Portal, sofe
  Ja. Gehen Sie beim Konfigurieren dieser Richtlinie umsichtig vor, um zu vermeiden, dass versehentlich der Zugriff für Mitglieder und Administratoren gesperrt wird.
 Um den Zugriff eines Gastbenutzers auf das [Azure-Portal](https://portal.azure.com) zu blockieren, verwenden Sie eine Richtlinie für bedingten Zugriff in der API für das klassische Microsoft Azure-Bereitstellungsmodell:
 1. Ändern Sie die Gruppe **Alle Benutzer**, sodass sie nur Mitglieder enthält.
-   ![Screenshot der Gruppe „Alle Benutzer“, deren „UserType“ nicht gleich „Gast“ ist ](media/faq/modify-all-users-group.png)
+   ![Screenshot der Gruppe „Alle Benutzer“, deren „UserType“ nicht gleich „Gast“ ist](media/faq/modify-all-users-group.png)
 2. Erstellen Sie eine dynamische Gruppe mit Gastbenutzern.
    ![Screenshot einer neuen Gruppe „Alle Gastbenutzer“](media/faq/group-with-guest-users.png)
 3. Richten Sie eine Richtlinie für bedingten Zugriff ein, um den Zugriff auf das Portal durch Gastbenutzer zu blockieren, wie im folgenden Video gezeigt wird:

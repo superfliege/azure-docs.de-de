@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6a51e57cfac326663d41b545c9f2883a446467d3
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: c4bdeb4e00a59d6ba2b415801c0689d77ed9a825
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340761"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577559"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurieren einer Entwicklungsumgebung für Azure Machine Learning
 
@@ -40,7 +40,7 @@ Wenn Sie bereits über eine Python 3-Umgebung verfügen oder nur die grundlegend
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure Machine Learning-Dienstbereich. Informationen zum Erstellen des Arbeitsbereichs finden Sie unter [Erste Schritte mit Azure Machine Learning](quickstart-get-started.md).
+- Ein Azure Machine Learning-Dienstbereich. Informationen zum Erstellen des Arbeitsbereichs finden Sie unter [Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](setup-create-workspace.md).
 
 - Den Paket-Manger [Anaconda](https://www.anaconda.com/download/) oder [Miniconda](https://conda.io/miniconda.html).
 
@@ -61,7 +61,7 @@ Wenn Sie bereits über eine Python 3-Umgebung verfügen oder nur die grundlegend
 * Das Azure Machine Learning SDK ist bereits installiert.
 * Nachdem Sie im Azure-Portal einen Arbeitsbereich für den Azure Machine Learning Service erstellt haben, können Sie über eine Schaltfläche Ihre Azure Notebook-Umgebung automatisch für die Arbeit mit dem Arbeitsbereich konfigurieren.
 
-Informationen zum Einstieg in die Entwicklung mit Azure Notebooks finden Sie unter [Erste Schritte mit Azure Machine Learning](quickstart-get-started.md).
+Informationen zum Einstieg in die Entwicklung mit Azure Notebooks finden Sie unter [Erste Schritte mit Azure Machine Learning](quickstart-run-cloud-notebook.md).
 
 Standardmäßig verwendet Azure Notebooks einen kostenlosen Diensttarif, der auf 4GB Arbeitsspeicher und 1GB Daten beschränkt ist. Sie können diese Grenzwerte allerdings entfernen, indem Sie dem Azure Notebooks-Projekt eine Data Science Virtual Machine-Instanz anfügen. Weitere Informationen finden Sie unter [Verwalten und Konfigurieren von Projekten – Compute-Tarif](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
 
@@ -286,8 +286,8 @@ Verwenden Sie die folgenden Einstellungen:
 | Databricks-Laufzeit |immer| Beliebige Nicht-ML-Runtime (nicht ML 4.x, 5.x) |
 | Python-Version |immer| 3 |
 | Worker |immer| 2 oder mehr |
-| VM-Typen des Workerknotens <br>(bestimmt die maximale Anzahl gleichzeitiger Iterationen) |Nur automatisiertes<br>Machine Learning| Arbeitsspeicheroptimierte VM bevorzugt |
-| Automatische Skalierung aktivieren |Nur automatisiertes<br>Machine Learning| Deaktivieren |
+| VM-Typen des Workerknotens <br>(bestimmt die maximale Anzahl gleichzeitiger Iterationen) |Automatisiertes maschinelles Lernen<br>Machine Learning| Arbeitsspeicheroptimierte VM bevorzugt |
+| Automatische Skalierung aktivieren |Automatisiertes maschinelles Lernen<br>Machine Learning| Deaktivieren |
 
 Warten Sie, bis der Cluster ausgeführt wird, bevor Sie fortfahren.
 
@@ -315,7 +315,9 @@ Erstellen Sie nach der Ausführung des Clusters [eine Bibliothek](https://docs.d
    1. Klicken Sie auf der Registerkarte **Bibliotheken** auf **Neu starten**.
       
    Berücksichtigen Sie außerdem Folgendes:
-   + Bei einigen Paketen wie `psutil` kann es während der Installation zu Databricks-Konflikten kommen. Legen Sie beim Installieren der Pakete die Bibliotheksversion (beispielsweise durch `pstuil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0`) fest, um diese Fehler zu vermeiden. 
+   + In der Automl-Konfiguration fügen Sie bei der Verwendung von Azure Databricks die folgenden Parameter hinzu:
+    1. ```max_concurrent_iterations``` basierend auf der Anzahl der Workerknoten in Ihrem Cluster. 
+    2. ```spark_context=sc``` #databricks/spark – Spark-Standardkontext. 
    + Wenn Sie alternativ dazu eine alte SDK-Version nutzen, deaktivieren Sie diese in den installierten Bibliotheken des Clusters, und verschieben Sie sie in den Papierkorb. Installieren Sie die neue SDK-Version, und starten Sie den Cluster neu. Wenn danach ein Problem vorliegt, trennen Sie Ihren Cluster, und fügen Sie ihn wieder an.
 
 Wenn die Installation erfolgreich war, sollte die importierte Bibliothek wie auf einem der folgenden Screenshots gezeigt aussehen:
@@ -350,7 +352,7 @@ Um in Ihrem Code auf diese Datei zuzugreifen, verwenden Sie `ws=Workspace.from_c
 
 Sie können die Konfigurationsdatei auf drei Arten erstellen:
 
-* **Befolgen Sie die Anweisungen im [Schnellstart zu Azure Machine Learning](quickstart-get-started.md)**: In Ihrer Azure Notebooks-Bibliothek wird eine *config.json*-Datei erstellt. Diese Datei enthält die Konfigurationsinformationen für Ihren Arbeitsbereich. Sie können die Datei *config.json* in andere Entwicklungsumgebungen herunterladen oder kopieren.
+* **Befolgen Sie die Schritte unter [Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](setup-create-workspace.md#sdk)**: In Ihrer Azure Notebooks-Bibliothek wird eine *config.json*-Datei erstellt. Diese Datei enthält die Konfigurationsinformationen für Ihren Arbeitsbereich. Sie können die Datei *config.json* in andere Entwicklungsumgebungen herunterladen oder kopieren.
 
 * **Erstellen Sie die Datei manuell**: Bei dieser Methode verwenden Sie einen Text-Editor. Die Werte für die Konfigurationsdatei finden Sie in Ihrem Arbeitsbereich im [Azure-Portal](https://portal.azure.com). Kopieren Sie die Werte für den Arbeitsbereichsnamen, die Ressourcengruppe und die Abonnement-ID, und verwenden Sie sie in der Konfigurationsdatei.
 

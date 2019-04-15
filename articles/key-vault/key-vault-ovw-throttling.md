@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 823eebeddb64c15ef20d103f2f9290c800753f1a
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 0f8aafce4c4feeed742504db84664e4dfd472ca6
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404755"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884141"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Anleitung zur Drosselung von Azure Key Vault
 
@@ -34,7 +34,7 @@ Wenn bei Ihnen ein gültiger Geschäftsvorgang für höhere Drosselungsgrenzwert
 
 ## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>Drosseln einer App als Reaktion auf Diensteinschränkungen
 
-Nachfolgend finden Sie die **bewährten Methoden** zum Drosseln einer App:
+Nachfolgend sind die **bewährten Methoden** aufgeführt, die Sie implementieren sollten, wenn Ihr Dienst gedrosselt ist:
 - Reduzieren Sie die Anzahl von Vorgängen pro Anforderung.
 - Reduzieren Sie die Häufigkeit der Anforderungen.
 - Vermeiden Sie schnelle Wiederholungsversuche. 
@@ -115,7 +115,7 @@ Code zur Implementierung eines exponentiellen Backoffs wird unten dargestellt.
 ```
 
 
-Das Verwenden dieses Codes in einer C\#-Anwendung (einem anderen Web-API-Client-Microservice, einer ASP.NET-MVC-Anwendung oder selbst einer C\#-Xamarin-Anwendung) ist einfach. Das folgende Beispiel zeigt dies mit der HttpClient-Klasse.
+Die Verwendung dieses Codes in einer C\#-Clientanwendung ist einfach. Das folgende Beispiel zeigt dies mit der HttpClient-Klasse.
 
 ```csharp
 public async Task<Cart> GetCartItems(int page)

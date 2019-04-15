@@ -1,47 +1,44 @@
 ---
-title: Modellieren von Dokumentdaten in einer NoSQL-Datenbank
+title: Modellierung von Daten in Azure Cosmos DB
 titleSuffix: Azure Cosmos DB
 description: Lernen Sie die Datenmodellierung in NoSQL-Datenbanken sowie die Unterschiede zwischen der Datenmodellierung in einer relationalen Datenbank und in einer Dokumentdatenbank kennen.
-author: aliuy
+author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: andrl
-ms.custom: seodec18
-ms.openlocfilehash: f122d60a4f4df011a0adbe7806e70ae173222641
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.date: 04/08/2019
+ms.author: rimman
+ms.custom: rimman
+ms.openlocfilehash: e8581cb130c8b2d7ac044838f0ae922b9b5e86cd
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295095"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275690"
 ---
-# <a name="modeling-document-data-for-nosql-databases"></a>Modellieren von Dokumentdaten für NoSQL-Datenbanken
+# <a name="data-modeling-in-azure-cosmos-db"></a>Datenmodellierung in Azure Cosmos DB
 
-Schemafreie Datenbanken wie Azure Cosmos DB erleichtern die Übernahme von Änderungen an Ihrem Datenmodell, dennoch sollten Sie die Verwendung und Verarbeitung Ihrer Daten sorgfältig bedenken.
+Obwohl schemafreie Datenbanken wie Azure Cosmos DB das Speichern und Abfragen unstrukturierter und teilstrukturierter Daten sehr erleichtern, sollten Sie etwas Zeit in die Überlegung investieren, wie Ihr Datenmodell den Dienst im Hinblick auf Leistung, Skalierbarkeit und niedrigste Kosten optimal nutzen kann.
 
-Wie werden die Daten gespeichert? Wie wird Ihre Anwendung Daten abrufen und abfragen? Ist Ihre Anwendung lese- und schreibintensiv?
+Wie werden die Daten gespeichert? Wie wird Ihre Anwendung Daten abrufen und abfragen? Ist Ihre Anwendung eher leseintensiv oder schreibintensiv?
 
 Nach dem Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 
-* Was sollte ich über ein Dokument in einer Dokumentendatenbank wissen?
 * Was ist Datenmodellierung und warum sollte ich mich dafür interessieren?
-* Inwiefern unterscheidet sich das Modellieren von Daten in einer Dokumentendatenbank von einer relationalen Datenbank?
+* Inwiefern unterscheidet sich die Datenmodellierung in Azure Cosmos DB von einer relationalen Datenbank?
 * Wie kann ich Datenbeziehungen in einer nicht-relationalen Datenbank ausdrücken?
 * Wann bette ich Daten ein, und wann verknüpfe ich sie?
 
 ## <a name="embedding-data"></a>Einbetten von Daten
 
-Versuchen Sie beim ersten Modellieren von Daten in einer Dokumentenablage wie etwa Azure Cosmos DB Ihre Entitäten als **eigenständige Dokumente**, dargestellt im JSON-Format, zu behandeln.
+Versuchen Sie beim ersten Modellieren von Daten in Azure Cosmos DB Ihre Entitäten als **eigenständige Elemente**, dargestellt als JSON-Dokumente, zu behandeln.
 
-Bevor wir uns intensiver damit befassen, sehen Sie sich zunächst einmal genau an, wie Sie eine Entität in einer relationalen Datenbank modellieren, ein Konzept, mit dem viele von uns bereits vertraut sind. Das folgende Beispiel zeigt, wie eine Person in einer relationalen Datenbank gespeichert werden kann.
+Zum Vergleich betrachten wir zunächst die Datenmodellierung in einer relationalen Datenbank. Das folgende Beispiel zeigt, wie eine Person in einer relationalen Datenbank gespeichert werden kann.
 
 ![Relationalen Datenbankmodell](./media/sql-api-modeling-data/relational-data-model.png)
 
-Bei der Arbeit mit relationalen Datenbanken galt viele Jahre lang das Motto: normalisieren, normalisieren, normalisieren.
+Bei der Arbeit mit relationalen Datenbanken besteht die Strategie im Normalisieren Ihrer gesamten Daten. Beim Normalisieren von Daten wird in der Regel eine Entität, z.B. eine Person, in einzelne Komponenten aufgeschlüsselt. Im obigen Beispiel kann eine Person über mehrere Kontaktdetaildatensätze sowie mehrere Adressdatensätze verfügen. Kontaktdetails können durch weiteres Extrahieren allgemeiner Felder, wie z.B. eines Typs, weiter aufgeschlüsselt werden. Das gleiche gilt für die Adresse, jeder Datensatz kann vom Typ *Home* oder *Business* sein.
 
-Beim Normalisieren von Daten wird in der Regel eine Entität, z. B. eine Person, in einzelne Datenelemente unterteilt. Im obigen Beispiel kann eine Person über mehrere Kontaktdetaildatensätze sowie mehrere Adressdatensätze verfügen. Wir gehen sogar noch einen Schritt weiter und unterteilen auch die Kontaktdetails, indem zusätzliche allgemeine Felder, wie z. B. Typ, extrahiert werden. Das Gleiche gilt für Adressen: Jeder Datensatz wird einem Typ wie *Privat* oder *Geschäftlich* zugeordnet.
-
-Die beim Normalisieren von Daten geltende Prämisse besteht darin, dass das **Speichern von redundanten Daten in jedem Datensatz zu vermeiden** ist und dass stattdessen auf die einzelnen Daten verwiesen werden soll. Um in diesem Beispiel eine Person mit allen ihren Kontaktdaten und Adressen zu lesen, müssen Sie Verknüpfungen verwenden, um die Daten effektiv zur Laufzeit zu aggregieren.
+Die beim Normalisieren von Daten geltende Prämisse besteht darin, dass das **Speichern von redundanten Daten in jedem Datensatz zu vermeiden** ist und dass stattdessen auf die einzelnen Daten verwiesen werden soll. Um in diesem Beispiel die Informationen zu einer Person mit allen ihren Kontaktdaten und Adressen zu lesen, müssen Sie JOINS verwenden, um Ihre Daten zur Runtime wieder effektiv zusammenzusetzen (oder denormalisieren).
 
     SELECT p.FirstName, p.LastName, a.City, cd.Detail
     FROM Person p
@@ -51,7 +48,7 @@ Die beim Normalisieren von Daten geltende Prämisse besteht darin, dass das **Sp
 
 Für das Aktualisieren einer einzelnen Person mit allen ihren Kontaktdaten und Adressen sind Schreibvorgänge über viele einzelne Tabellen hinweg erforderlich.
 
-Sehen Sie sich jetzt an, wie Sie die gleichen Daten als eigenständige Entität in einer Dokumentendatenbank modellieren können.
+Sehen Sie sich jetzt an, wie Sie die gleichen Daten als eigenständige Entität in Azure Cosmos DB modellieren können.
 
     {
         "id": "1",
@@ -72,10 +69,10 @@ Sehen Sie sich jetzt an, wie Sie die gleichen Daten als eigenständige Entität 
         ]
     }
 
-Mit dem oben stehenden Ansatz haben wir jetzt den Personendatensatz **denormalisiert**, indem wir alle Informationen im Zusammenhang mit dieser Person, etwa ihre Kontaktdaten und Adressen, in ein einzelnes JSON-Dokument **eingebettet** haben.
+Mit dem oben stehenden Ansatz haben wir den Personendatensatz **denormalisiert**, indem wir alle Informationen im Zusammenhang mit dieser Person, etwa ihre Kontaktdaten und Adressen, in ein *einzelnes JSON-Dokument* **eingebettet** haben.
 Da wir nicht auf ein festes Schema beschränkt sind, haben wir darüber hinaus die Flexibilität, z. B. Kontaktdetails in vollständig verschiedenen Formen zu haben.
 
-Das Abrufen eines vollständigen Personendatensatzes aus der Datenbank besteht jetzt aus einem einzelnen Lesevorgang einer einzelne Sammlung und für ein einzelnes Dokument. Das Aktualisieren eines Personendatensatzes zusammen mit den Kontaktinformationen und Adressen ist auch ein einzelner Schreibvorgang in einem einzelnen Dokument.
+Das Abrufen eines vollständigen Personendatensatzes aus der Datenbank besteht jetzt aus einem **einzelnen Lesevorgang** eines einzelnen Containers und für ein einzelnes Element. Das Aktualisieren eines Personendatensatzes zusammen mit den Kontaktinformationen und Adressen ist auch ein **einzelner Schreibvorgang** in einem einzelnen Element.
 
 Durch das Denormalisieren von Daten muss Ihre Anwendung u. U. weniger Abfragen und Aktualisierungen ausgeben, um allgemeine Vorgänge abzuschließen.
 
@@ -86,15 +83,15 @@ Verwenden Sie in der Regel eingebettete Datenmodelle in den folgenden Fällen:
 * Zwischen Entitäten gibt es **contained**-Beziehungen.
 * Zwischen Entitäten gibt es **eins-zu-viele** -Beziehungen.
 * Es gibt eingebettete Daten, die sich **selten ändern**.
-* Es gibt eingebettete Daten, die nicht **grenzenlos**wachsen.
-* Es gibt eingebettete Daten, die von **integraler** Bedeutung für die Daten in einem Dokument sind.
+* Es gibt eingebettete Daten, die nicht **grenzenlos** wachsen.
+* Es gibt eingebettete Daten, die **häufig gemeinsam abgefragt werden**.
 
 > [!NOTE]
 > In der Regel bieten denormalisierte Datenmodelle eine bessere **Leseleistung** .
 
 ### <a name="when-not-to-embed"></a>Wann Sie nicht einbetten sollten
 
-In einer Dokumentdatenbank gilt zwar die Faustregel, dass alles denormalisiert wird und alle Daten in ein einzelnes Dokument eingebettet werden sollen. Dies kann jedoch zu Situationen führen, die es zu vermeiden gilt.
+In Azure Cosmos DB gilt zwar die Faustregel, dass alles denormalisiert wird und alle Daten in ein einzelnes Element eingebettet werden sollen. Dies kann jedoch zu Situationen führen, die es zu vermeiden gilt.
 
 Nehmen Sie beispielsweise diesen JSON-Ausschnitt.
 
@@ -114,13 +111,13 @@ Nehmen Sie beispielsweise diesen JSON-Ausschnitt.
         ]
     }
 
-So könnte eine Beitragsentität mit eingebetteten Kommentaren aussehen, wenn wir ein typisches Blog- oder CMS-System modellieren würden. Das Problem bei diesem Beispiel besteht darin, dass das Kommentar-Array **unbegrenzt** ist, d.h. es gibt (praktisch) keine Begrenzung hinsichtlich der Anzahl an Kommentaren zu einem einzelnen Beitrag. Dies wird zu einem Problem, da die Größe des Dokuments erheblich zunehmen kann.
+So könnte eine Beitragsentität mit eingebetteten Kommentaren aussehen, wenn wir ein typisches Blog- oder CMS-System modellieren würden. Das Problem bei diesem Beispiel besteht darin, dass das Kommentar-Array **unbegrenzt** ist, d.h. es gibt (praktisch) keine Begrenzung hinsichtlich der Anzahl an Kommentaren zu einem einzelnen Beitrag. Dies kann problematisch werden, da die Größe des Elements unendlich zunehmen könnte.
 
-Mit zunehmender Größe des Dokuments wird die Möglichkeit zum Übertragen von Daten über das Netz sowie zum Lesen und Aktualisieren des Dokuments bei Skalierung beeinträchtigt.
+Mit zunehmender Größe des Elements wird die Möglichkeit zum Übertragen von Daten über das Netz sowie zum Lesen und Aktualisieren des Elements bei Skalierung beeinträchtigt.
 
-In einem solchen Fall sollte lieber das folgende Modell in Betracht gezogen werden.
+In einem solchen Fall sollte lieber das folgende Datenmodell in Betracht gezogen werden.
 
-    Post document:
+    Post item:
     {
         "id": "1",
         "name": "What's new in the coolest Cloud",
@@ -132,7 +129,7 @@ In einem solchen Fall sollte lieber das folgende Modell in Betracht gezogen werd
         ]
     }
 
-    Comment documents:
+    Comment items:
     {
         "postId": "1"
         "comments": [
@@ -151,9 +148,9 @@ In einem solchen Fall sollte lieber das folgende Modell in Betracht gezogen werd
         ]
     }
 
-Bei diesem Modell sind die drei aktuellsten Kommentare in den Beitrag selbst eingebettet, wobei es sich diesmal um ein Array mit einer festen Grenze handelt. Die anderen Kommentare sind zu Stapeln von je 100 Kommentaren gruppiert und in separaten Dateien gespeichert. Die Größe des Stapels wurde auf 100 festgelegt, da unsere fiktive Anwendung es dem Benutzer ermöglicht, 100 Kommentare gleichzeitig zu laden.  
+Bei diesem Modell sind die drei aktuellsten Kommentare in den Beitragscontainer eingebettet, wobei es sich diesmal um ein Array mit einem festen Satz von Attributen handelt. Die anderen Kommentare sind zu Stapeln von je 100 Kommentaren gruppiert und in separaten Elementen gespeichert. Die Größe des Stapels wurde auf 100 festgelegt, da unsere fiktive Anwendung es dem Benutzer ermöglicht, 100 Kommentare gleichzeitig zu laden.  
 
-Das Einbetten von Daten ist auch dann keine gute Idee, wenn die eingebetteten Daten häufig in Dokumenten verwendet und häufig geändert werden.
+Das Einbetten von Daten ist auch dann keine gute Idee, wenn die eingebetteten Daten häufig in Elementen verwendet und häufig geändert werden.
 
 Nehmen Sie beispielsweise diesen JSON-Ausschnitt.
 

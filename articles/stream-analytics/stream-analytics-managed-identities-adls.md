@@ -6,20 +6,18 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 04/8/2019
 ms.custom: seodec18
-ms.openlocfilehash: 43947413f061ec8b366392b676e848ebf5e6484e
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 9eb66a9000c9add0718c6edf6674a26ce8e479b3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570112"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257976"
 ---
-# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Authentifizieren von Stream Analytics bei Azure Data Lake Storage Gen1 mithilfe verwalteter Identitäten (Vorschau)
+# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Authentifizieren von Stream Analytics bei Azure Data Lake Storage Gen1 mithilfe verwalteter Identitäten
 
 Azure Stream Analytics unterstützt die Authentifizierung über verwaltete Identitäten für die Azure Data Lake Storage Gen1-Ausgabe. Bei einer Identität handelt es sich um eine in Azure Active Directory registrierte verwaltete Anwendung, die einen bestimmten Stream Analytics-Auftrag repräsentiert und für die Authentifizierung bei einer Zielressource verwendet werden kann. Verwaltete Identitäten beseitigen die Einschränkungen benutzerbasierter Authentifizierungsmethoden, wie etwa die Notwendigkeit einer erneuten Authentifizierung aufgrund von Kennwortänderungen oder Token, die alle 90 Tage ablaufen. Darüber hinaus helfen verwaltete Identitäten bei der Automatisierung von Stream Analytics-Auftragsbereitstellungen, deren Ausgabe in Azure Data Lake Storage Gen1 erfolgt.
-
-Lesen Sie den Blogbeitrag [Eight new features in Azure Stream Analytics](https://azure.microsoft.com/blog/eight-new-features-in-azure-stream-analytics/) (Acht neue Features in Azure Stream Analytics), um sich für diese Vorschau zu registrieren und mehr über neue Features zu erfahren.
 
 Dieser Artikel veranschaulicht drei Methoden, um eine verwaltete Identität für einen Azure Stream Analytics-Auftrag zu aktivieren, dessen Ausgabe an Azure Data Lake Storage Gen1 erfolgt: das Azure-Portal, die Bereitstellung mithilfe von Azure Resource Manager-Vorlagen und Azure Stream Analytics-Tools für Visual Studio.
 
@@ -27,11 +25,11 @@ Dieser Artikel veranschaulicht drei Methoden, um eine verwaltete Identität für
 
 ## <a name="azure-portal"></a>Azure-Portal
 
-1. Erstellen Sie zunächst einen neuen Stream Analytics-Auftrag, oder öffnen Sie einen vorhandenen Auftrag im Azure-Portal. Wählen Sie in der Menüleiste auf der linken Bildschirmseite unter **Konfigurieren** die Option **Verwaltete Identität (Vorschau)**.
+1. Erstellen Sie zunächst einen neuen Stream Analytics-Auftrag, oder öffnen Sie einen vorhandenen Auftrag im Azure-Portal. Wählen Sie in der Menüleiste auf der linken Bildschirmseite unter **Konfigurieren** die Option **Verwaltete Identität**.
 
-   ![Konfigurieren einer verwalteten Identität für Stream Analytics (Vorschau)](./media/stream-analytics-managed-identities-adls/stream-analytics-managed-identity-preview.png)
+   ![Konfigurieren einer verwalteten Identität für Stream Analytics](./media/stream-analytics-managed-identities-adls/stream-analytics-managed-identity-preview.png)
 
-2. Wählen Sie im rechts angezeigten Fenster die Option **Vom System zugewiesene verwaltete Identität verwenden (Vorschau)**. Klicken Sie auf **Speichern** für einen Dienstprinzipal für die Identität des Stream Analytics-Auftrags in Azure Active Directory. Der Lebenszyklus der neu erstellten Identität wird von Azure verwaltet. Wenn der Stream Analytics-Auftrag gelöscht wird, wird die zugeordnete Identität (also der Dienstprinzipal) von Azure automatisch ebenfalls gelöscht.
+2. Wählen Sie im rechts angezeigten Fenster die Option **Vom System zugewiesene verwaltete Identität verwenden**. Klicken Sie auf **Speichern** für einen Dienstprinzipal für die Identität des Stream Analytics-Auftrags in Azure Active Directory. Der Lebenszyklus der neu erstellten Identität wird von Azure verwaltet. Wenn der Stream Analytics-Auftrag gelöscht wird, wird die zugeordnete Identität (also der Dienstprinzipal) von Azure automatisch ebenfalls gelöscht.
 
    Nach dem Speichern der Konfiguration wird die Objekt-ID (OIS) des Dienstprinzipals als Prinzipal-ID aufgeführt, wie hier gezeigt:
 
@@ -39,7 +37,7 @@ Dieser Artikel veranschaulicht drei Methoden, um eine verwaltete Identität für
  
    Der Dienstprinzipal weist den gleichen Namen auf wie der Stream Analytics-Auftrag. Wenn der Name des Auftrags z.B. **MyASAJob** lautet, erhält auch der erstellte Dienstprinzipal den Namen **MyASAJob**.
 
-3. Klicken Sie im Fenster mit den Ausgabeeigenschaften der ADLS Gen1-Ausgabesenke auf die Dropdownliste mit Authentifizierungsmodi, und wählen Sie **Verwaltete Identität (Vorschau)** aus.
+3. Klicken Sie im Fenster mit den Ausgabeeigenschaften der ADLS Gen1-Ausgabesenke auf die Dropdownliste mit Authentifizierungsmodi, und wählen Sie **Verwaltete Identität** aus.
 
 4. Geben Sie die restlichen Eigenschaften an. Weitere Informationen zum Erstellen einer ADLS-Ausgabe finden Sie unter [Erstellen einer Data Lake Store-Ausgabe mit Stream Analytics](../data-lake-store/data-lake-store-stream-analytics.md). Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
@@ -73,7 +71,7 @@ Dieser Artikel veranschaulicht drei Methoden, um eine verwaltete Identität für
 
    ![Stream Analytics-Auftrag – Konfiguration verwalteter Identitäten](./media/stream-analytics-managed-identities-adls/adls-mi-jobconfig-vs.png)
 
-2. Klicken Sie im Fenster mit den Ausgabeeigenschaften der ADLS Gen1-Ausgabesenke auf die Dropdownliste mit Authentifizierungsmodi, und wählen Sie **Verwaltete Identität (Vorschau)** aus.
+2. Klicken Sie im Fenster mit den Ausgabeeigenschaften der ADLS Gen1-Ausgabesenke auf die Dropdownliste mit Authentifizierungsmodi, und wählen Sie **Verwaltete Identität** aus.
 
    ![ADLS-Ausgabe – verwaltete Identitäten](./media/stream-analytics-managed-identities-adls/adls-mi-output-vs.png)
 

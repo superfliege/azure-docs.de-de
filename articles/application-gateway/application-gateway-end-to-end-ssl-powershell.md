@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 1/10/2019
+ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: 3da9982d1af886a4329ddc77a7b297e9e285453e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 258113f5201ad3d09df6119dec738d528e640c40
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101549"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269349"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Konfigurieren von End-to-End-SSL mit Application Gateway mithilfe von PowerShell
 
@@ -52,20 +52,17 @@ Der Konfigurationsprozess wird in den folgenden Abschnitten beschrieben.
 
 Dieser Abschnitt führt Sie durch die Erstellung einer Ressourcengruppe, die das Anwendungsgateway enthält.
 
-
 1. Melden Sie sich beim Azure-Konto an.
 
    ```powershell
    Connect-AzAccount
    ```
 
-
 2. Wählen Sie das Abonnement aus, das für dieses Szenario verwendet werden soll.
 
    ```powershell
    Select-Azsubscription -SubscriptionName "<Subscription name>"
    ```
-
 
 3. Erstellen Sie eine Ressourcengruppe. (Überspringen Sie diesen Schritt, wenn Sie eine vorhandene Ressourcengruppe verwenden.)
 
@@ -77,7 +74,6 @@ Dieser Abschnitt führt Sie durch die Erstellung einer Ressourcengruppe, die das
 
 Im folgenden Beispiel werden ein virtuelles Netzwerk und zwei Subnetze erstellt. In einem Subnetz befindet sich das Anwendungsgateway. Das andere Subnetz wird für die Back-Ends verwendet, die die Webanwendung hosten.
 
-
 1. Weisen Sie einen Adressbereich für das Subnetz zu, das für das Anwendungsgateway verwendet werden soll.
 
    ```powershell
@@ -86,8 +82,7 @@ Im folgenden Beispiel werden ein virtuelles Netzwerk und zwei Subnetze erstellt.
 
    > [!NOTE]
    > Die Größen der für ein Anwendungsgateway konfigurierten Subnetze sollten richtig bemessen sein. Ein Anwendungsgateway kann für bis zu 10 Instanzen konfiguriert werden. Jede Instanz erhält dabei genau eine IP-Adresse aus dem Subnetz. Ein zu kleines Subnetz kann sich negativ auf die Erweiterungsmöglichkeiten eines Anwendungsgateways auswirken.
-   > 
-   > 
+   >
 
 2. Weisen Sie einen Adressbereich zu, der für den Back-End-Adresspool verwendet werden soll.
 
@@ -130,7 +125,6 @@ Vor dem Erstellen des Anwendungsgateways werden die Konfigurationselemente festg
    $gipconfig = New-AzApplicationGatewayIPConfiguration -Name 'gwconfig' -Subnet $gwSubnet
    ```
 
-
 2. Erstellen Sie eine Front-End-IP-Konfiguration. Diese Einstellung ordnet dem Front-End des Anwendungsgateways eine private oder öffentliche IP-Adresse zu. Im folgenden Schritt wird die öffentliche IP-Adresse aus dem vorherigen Schritt der Front-End-IP-Konfiguration zugeordnet.
 
    ```powershell
@@ -145,7 +139,6 @@ Vor dem Erstellen des Anwendungsgateways werden die Konfigurationselemente festg
 
    > [!NOTE]
    > Ein vollqualifizierter Domänenname (FQDN) ist ebenfalls ein gültiger Wert anstelle einer IP-Adresse für die Back-End-Server. Die Aktivierung erfolgt über den Schalter **-BackendFqdns**. 
-
 
 4. Konfigurieren Sie den Front-End-IP-Port für den öffentlichen IP-Endpunkt. Dieser Port ist der Port, mit dem Endbenutzer eine Verbindung herstellen.
 
@@ -177,7 +170,7 @@ Vor dem Erstellen des Anwendungsgateways werden die Konfigurationselemente festg
    > Wenn Sie Hostheader und Servernamensanzeige (SNI) auf dem Back-End verwenden, ist der abgerufene öffentliche Schlüssel nicht zwingend der Zielort für den Datenverkehr. Öffnen Sie im Zweifelsfall auf den Back-End-Servern die Seite https://127.0.0.1/, um sich zu vergewissern, welches Zertifikat für die *standardmäßige* SSL-Bindung verwendet wird. Verwenden Sie den öffentlichen Schlüssel aus der Aufforderung in diesem Abschnitt. Wenn Sie Hostheader und SNI in HTTPS-Bindungen verwenden und durch eine manuelle Browseranforderung in https://127.0.0.1/ auf den Back-End-Servern keine Antwort und kein Zertifikat erhalten, müssen Sie eine Standard-SSL-Bindung auf diesen einrichten. Andernfalls sind die Tests nicht erfolgreich, und das Back-End wird nicht in die Whitelist aufgenommen.
 
    ```powershell
-   $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'whitelistcert1' -CertificateFile C:\users\gwallace\Desktop\cert.cer
+   $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'whitelistcert1' -CertificateFile C:\cert.cer
    ```
 
    > [!NOTE]
@@ -227,7 +220,7 @@ Vor dem Erstellen des Anwendungsgateways werden die Konfigurationselemente festg
     Das folgende Beispiel legt die Mindestprotokollversion auf **TLSv1_2** fest und aktiviert nur **TLS\_ECDHE\_ECDSA\_WITH\_AES\_128\_GCM\_SHA256**, **TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384** und **TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256**.
 
     ```powershell
-    $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256"
+    $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
     ```
 
 ## <a name="create-the-application-gateway"></a>Erstellen des Anwendungsgateways

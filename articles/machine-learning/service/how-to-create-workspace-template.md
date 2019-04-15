@@ -1,5 +1,5 @@
 ---
-title: Verwenden einer Vorlage zum Erstellen eines Arbeitsbereichs
+title: Verwenden einer Azure Resource Manager-Vorlage zum Erstellen eines Arbeitsbereichs
 titleSuffix: Azure Machine Learning service
 description: Erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage verwenden, um einen neuen Azure Machine Learning Service-Arbeitsbereich zu erstellen.
 services: machine-learning
@@ -8,17 +8,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 02/11/2019
-ms.openlocfilehash: 2b5ee1b5079f22985b03aaafac30c11a10a3c8f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/02/2019
+ms.custom: seoapril2019
+ms.openlocfilehash: 7349998325e56d5ebb78de5ca30c0127f09102aa
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850076"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883189"
 ---
-# <a name="create-an-azure-machine-learning-service-workspace-by-using-a-template"></a>Erstellen eines Azure Machine Learning Service-Arbeitsbereichs mithilfe einer Vorlage
+# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>Verwenden einer Azure Resource Manager-Vorlage zum Erstellen eines Arbeitsbereichs für den Azure Machine Learning Service
 
-In diesem Artikel erlernen Sie verschiedene Möglichkeiten zum Erstellen eines Azure Machine Learning Service-Arbeitsbereichs mithilfe von Azure Resource Manager-Vorlagen. 
+In diesem Artikel erlernen Sie verschiedene Möglichkeiten zum Erstellen eines Azure Machine Learning Service-Arbeitsbereichs mithilfe von Azure Resource Manager-Vorlagen. Eine Resource Manager-Vorlage erleichtert das Erstellen von Ressourcen in einem einzelnen, koordinierten Vorgang. Eine Vorlage ist ein JSON-Dokument, das die Ressourcen definiert, die für eine Bereitstellung erforderlich sind. Es kann außerdem bestimmte Bereitstellungsparameter angeben. Parameter werden verwendet, um Eingabewerte bereitzustellen, wenn die Vorlage verwendet wird.
 
 Weitere Informationen finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Resource Manager-Vorlage](../../azure-resource-manager/resource-group-template-deploy.md).
 
@@ -30,9 +31,7 @@ Weitere Informationen finden Sie unter [Bereitstellen einer Anwendung mit einer 
 
 ## <a name="resource-manager-template"></a>Resource Manager-Vorlage
 
-Eine Resource Manager-Vorlage erleichtert das Erstellen von Ressourcen in einem einzelnen, koordinierten Vorgang. Eine Vorlage ist ein JSON-Dokument, das die Ressourcen definiert, die für eine Bereitstellung erforderlich sind. Es kann außerdem bestimmte Bereitstellungsparameter angeben. Parameter werden verwendet, um Eingabewerte bereitzustellen, wenn die Vorlage verwendet wird.
-
-Die folgende Vorlage kann verwendet werden, um einen Azure Machine Learning Service-Arbeitsbereich mit zugeordneten Azure-Ressourcen zu erstellen:
+Die folgende Resource Manager-Vorlage kann verwendet werden, um einen Azure Machine Learning Service-Arbeitsbereich mit zugeordneten Azure-Ressourcen zu erstellen:
 
 ```json
 {

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: 78ee24280600d336d394819d33762d8cf6278858
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: d0f0f3b120187a7538989f219876a8c10569a98e
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58891479"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051469"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>Erstellen einer Klassifizierung mit Custom Vision
 
@@ -56,9 +56,8 @@ Navigieren Sie im Webbrowser zur [Custom Vision-Webseite](https://customvision.a
     |__Food__|Für Fotos von Gerichten optimiert, wie sie beispielsweise auf der Speisekarte von Restaurants abgebildet werden. Wenn Sie Fotos von einzelnen Früchten oder Gemüsen klassifizieren möchten, verwenden Sie die Domäne „Food“.|
     |__Besondere Merkmale__|Optimiert für erkennbare Wahrzeichen (Naturdenkmäler oder künstlich geschaffene Wahrzeichen). Diese Domäne funktioniert am besten, wenn das Wahrzeichen im Foto deutlich zu sehen ist. Die Domäne funktioniert auch, wenn das Wahrzeichen etwas von Personen im Vordergrund verdeckt wird.|
     |__Einzelhandel__|Für Bilder optimiert, wie man sie in einem Einkaufskatalog oder auf einer Einkaufswebsite findet. Wenn Sie eine präzise Klassifizierung zwischen Kleidern, Hosen und Hemden wünschen, verwenden Sie diese Domäne.|
-    |__Erwachsene__|Optimiert für die bessere Unterscheidung zwischen nicht jugendfreien Inhalten und jugendfreien Inhalten. Wenn Sie also beispielsweise Bilder von Personen in Badebekleidung blockieren möchten, können Sie mithilfe dieser Domäne eine entsprechende benutzerdefinierte Klassifizierung erstellen.|
     |__Kompaktdomänen__| Für die Bedingungen der Echtzeitklassifizierung auf Mobilgeräten optimiert. Die von Kompaktdomänen generierten Modelle können für die lokale Ausführung exportiert werden.|
-    
+
 1. Wählen Sie schließlich __Create Project__ (Projekt erstellen) aus.
 
 ## <a name="choose-training-images"></a>Auswählen von Trainingsbildern

@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/16/2018
+ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 503e056a3fa87e48f61d26661110b9bb89456a51
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 1be3c411a208a2a9da1a4f6a319fdf37cc8aa2dd
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338521"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669043"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Hochverfügbarkeit von SAP HANA auf Azure-VMs unter Red Hat Enterprise Linux
 
@@ -108,7 +108,7 @@ Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
     * **DB-Typ**: Wählen Sie **HANA** aus.
     * **SAP-Systemgröße**: Geben Sie die SAPS-Anzahl an, die das neue System bereitstellen soll. Wenn Sie nicht sicher sind, welche SAPS-Anzahl für das System benötigt wird, können Sie sich an den SAP-Technologiepartner oder -Systemintegrator wenden.
     * **Systemverfügbarkeit**: Wählen Sie **HA** (Hohe Verfügbarkeit).
-    * **Administratorbenutzername, Administratorkennwort oder SSH-Schlüssel**: Es wird ein neuer Benutzer erstellt, der sich am Computer anmelden kann.
+    * **Administratorbenutzername, Administratorkennwort oder SSH-Schlüssel**: Ein neuer Benutzer wird erstellt, der für die Anmeldung beim Computer verwendet werden kann.
     * **Subnetz-ID**: Wenn Sie die VM in einem vorhandenen VNET bereitstellen möchten, in dem Sie ein Subnetz definiert haben, dem die VM zugewiesen werden soll, geben Sie die ID dieses spezifischen Subnetzes an. Die ID hat normalerweise das folgende Format: **/subscriptions/\<Abonnement-ID>/resourceGroups/\<Name der Ressourcengruppe>/providers/Microsoft.Network/virtualNetworks/\<Name des virtuellen Netzwerks>/subnets/\<Name des Subnetzes>**. Lassen Sie das Feld leer, wenn Sie ein neues virtuelles Netzwerk erstellen möchten.
 
 ### <a name="manual-deployment"></a>Manuelle Bereitstellung
@@ -183,6 +183,10 @@ Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
 
 Weitere Informationen zu den erforderlichen Ports für SAP HANA finden Sie im Kapitel zu [Verbindungen mit Mandantendatenbanken](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) im Handbuch zu [SAP HANA-Mandantendatenbanken](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) oder im [SAP-Hinweis 2388694][2388694].
 
+> [!IMPORTANT]
+> Aktivieren Sie keine TCP-Zeitstempel auf Azure-VMs hinter Azure Load Balancer. Das Aktivieren von TCP-Zeitstempeln bewirkt, dass bei Integritätstests Fehler auftreten. Legen Sie den Parameter **net.ipv4.tcp_timestamps** auf **0** fest. Ausführliche Informationen finden Sie unter [Lastenausgleichs-Integritätstests](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview).
+> Siehe auch SAP-Hinweis [2382421](https://launchpad.support.sap.com/#/notes/2382421). 
+
 ## <a name="install-sap-hana"></a>Installieren von SAP HANA
 
 Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
@@ -191,7 +195,7 @@ Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
 * **[1]**: Der Schritt gilt nur für den Knoten 1.
 * **[2]**: Der Schritt gilt nur für den Knoten 2 des Pacemaker-Clusters.
 
-1. **[A]** Richten Sie das Datenträgerlayout  **Logical Volume Manager (LVM)** ein.
+1. **[A]** Richten Sie das Datenträgerlayout **Logical Volume Management (LVM)** (Logische Volumeverwaltung) ein.
 
    Es wird empfohlen, LVM für Volumes zu verwenden, die Daten- und Protokolldateien speichern. Im folgenden Beispiel wird davon ausgegangen, dass die virtuellen Computer über vier Datenträger verfügen, die zum Erstellen von zwei Volumes verwendet werden.
 
@@ -257,7 +261,7 @@ Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
    <pre><code>sudo mount -a
    </code></pre>
 
-1. **[A]** Richten Sie das Datenträgerlayout  **Einfache Datenträger** ein.
+1. **[A]** Richten Sie das Datenträgerlayout **Einfache Datenträger** ein.
 
    Für Demosysteme können Sie Ihre HANA-Daten- und Protokolldateien auf einem Datenträger platzieren. Erstellen Sie auf „/dev/disk/azure/scsi1/lun0“ eine Partition, und formatieren Sie sie mit XFS:
 
@@ -307,7 +311,7 @@ Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
    * Wählen Sie weitere Komponenten für die Installation aus: Geben Sie **1** ein.
    * Geben Sie den Installationspfad ein [/hana/shared]: Drücken Sie die EINGABETASTE.
    * Geben Sie den Namen des lokalen Hosts ein [..]: Drücken Sie die EINGABETASTE.
-   * Möchten Sie dem System weitere Hosts hinzufügen? (j/n) [n]: Drücken Sie die EINGABETASTE.
+   * Möchten Sie dem System weitere Hosts hinzufügen? (j/n) [n] : Drücken Sie die EINGABETASTE.
    * Geben Sie die SAP HANA-System-ID ein: Geben Sie die HANA-SID ein, z.B.: **HN1**.
    * Geben Sie die Instanznummer ein [00]: Geben Sie die HANA-Instanznummer ein. Verwenden Sie **03**, wenn Sie die Azure-Vorlage verwendet oder die in diesem Artikel beschriebene manuelle Bereitstellung durchgeführt haben.
    * Wählen Sie den Datenbankmodus / geben Sie den Index ein [1]: Drücken Sie die EINGABETASTE.
@@ -338,7 +342,7 @@ Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
 
 1. **[A]** Konfigurieren Sie die Firewall.
 
-   Erstellen Sie die Firewallregel für den Testport des Azure-Lastenausgleichs.
+   Erstellen Sie die Firewallregel für den Testport des Azure Load Balancers.
 
    <pre><code>sudo firewall-cmd --zone=public --add-port=625<b>03</b>/tcp
    sudo firewall-cmd --zone=public --add-port=625<b>03</b>/tcp --permanent
@@ -357,35 +361,35 @@ Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
    Erstellen Sie Firewallregeln, um die HANA-Systemreplikation und Clientdatenverkehr zuzulassen. Die erforderlichen Ports finden Sie unter [TCP/IP-Ports aller SAP-Produkte](https://help.sap.com/viewer/ports). Die folgenden Befehle sind nur ein Beispiel für die Genehmigung der HANA 2.0-Systemreplikation und des Clientdatenverkehrs zu den Datenbanken SYSTEMDB, HN1 und NW1.
 
    <pre><code>sudo firewall-cmd --zone=public --add-port=40302/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=40302/tcp
-sudo firewall-cmd --zone=public --add-port=40301/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=40301/tcp
-sudo firewall-cmd --zone=public --add-port=40307/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=40307/tcp
-sudo firewall-cmd --zone=public --add-port=40303/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=40303/tcp
-sudo firewall-cmd --zone=public --add-port=40340/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=40340/tcp
-sudo firewall-cmd --zone=public --add-port=30340/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=30340/tcp
-sudo firewall-cmd --zone=public --add-port=30341/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=30341/tcp
-sudo firewall-cmd --zone=public --add-port=30342/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=30342/tcp
+   sudo firewall-cmd --zone=public --add-port=40302/tcp
+   sudo firewall-cmd --zone=public --add-port=40301/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=40301/tcp
+   sudo firewall-cmd --zone=public --add-port=40307/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=40307/tcp
+   sudo firewall-cmd --zone=public --add-port=40303/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=40303/tcp
+   sudo firewall-cmd --zone=public --add-port=40340/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=40340/tcp
+   sudo firewall-cmd --zone=public --add-port=30340/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=30340/tcp
+   sudo firewall-cmd --zone=public --add-port=30341/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=30341/tcp
+   sudo firewall-cmd --zone=public --add-port=30342/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=30342/tcp
    </code></pre>
 
 1. **[1]** Erstellen Sie die Mandantendatenbank.
 
    Wenn Sie SAP HANA 2.0 oder MDC verwenden, erstellen Sie eine Mandantendatenbank für Ihr SAP NetWeaver-System. Ersetzen Sie **NW1** durch die SID des SAP-Systems.
 
-   Melden Sie sich als „\<HANA-SID>adm“ an, und führen Sie den folgenden Befehl aus:
+   Führen Sie als „<hanasid\>adm“ den folgenden Befehl aus:
 
    <pre><code>hdbsql -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> -d SYSTEMDB 'CREATE DATABASE <b>NW1</b> SYSTEM USER PASSWORD "<b>passwd</b>"'
    </code></pre>
 
 1. **[1]** Konfigurieren Sie die Systemreplikation auf dem ersten Knoten.
 
-   Melden Sie sich als „\<HANA-SID>adm“ an, und sichern Sie die Datenbanken:
+   Sichern Sie die Datenbanken als „<hanasid\>adm“:
 
    <pre><code>hdbsql -d SYSTEMDB -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupSYS</b>')"
    hdbsql -d <b>HN1</b> -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupHN1</b>')"
@@ -405,7 +409,7 @@ sudo firewall-cmd --zone=public --add-port=30342/tcp
 
 1. **[2]** Konfigurieren Sie die Systemreplikation auf dem zweiten Knoten.
     
-   Registrieren Sie den zweiten Knoten zum Starten der Replikation. Melden Sie sich als „\<HANA-SID>adm“ an, und führen Sie den folgenden Befehl aus:
+   Registrieren Sie den zweiten Knoten zum Starten der Replikation. Führen Sie den folgenden Befehl als „<hanasid\>adm“ aus:
 
    <pre><code>sapcontrol -nr <b>03</b> -function StopWait 600 10
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b>
@@ -453,7 +457,7 @@ Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
 
 1. **[1]** Erstellen Sie die erforderlichen Benutzer.
 
-   Melden Sie sich als Stammbenutzer an, und führen Sie den folgenden Befehl aus. Achten Sie darauf, die fett formatierten Zeichenfolgen (HANA-System-ID **HN1** und Instanzenanzahl **03**) durch die Werte Ihrer SAP HANA-Installation zu ersetzen:
+   Führen Sie den folgenden Befehl als root aus. Achten Sie darauf, die fett formatierten Zeichenfolgen (HANA-System-ID **HN1** und Instanzenanzahl **03**) durch die Werte Ihrer SAP HANA-Installation zu ersetzen:
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbsql -u system -i <b>03</b> 'CREATE USER <b>hdb</b>hasync PASSWORD "<b>passwd</b>"'
@@ -463,7 +467,7 @@ Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
 
 1. **[A]** Erstellen Sie den Keystoreeintrag.
 
-   Melden Sie sich als root an, und führen Sie den folgenden Befehl aus, um einen neuen Keystoreeintrag zu erstellen:
+   Führen Sie den folgenden Befehl als root aus, um einen neuen Keystoreeintrag zu erstellen:
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbuserstore SET <b>hdb</b>haloc localhost:3<b>03</b>15 <b>hdb</b>hasync <b>passwd</b>
@@ -471,7 +475,7 @@ Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
 
 1. **[1]** Sichern Sie die Datenbank.
 
-   Melden Sie sich als root an, und sichern Sie die Datenbanken:
+   Sichern Sie die Datenbanken als root:
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbsql -d SYSTEMDB -u system -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackup</b>')"
@@ -484,7 +488,7 @@ Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
 
 1. **[1]** Konfigurieren Sie die Systemreplikation auf dem ersten Knoten.
 
-   Melden Sie sich als „\<HANA-SID>adm“ an, und erstellen Sie den primären Standort:
+   Erstellen Sie den primären Standort als „<hanasid\>adm“:
 
    <pre><code>su - <b>hdb</b>adm
    hdbnsutil -sr_enable –-name=<b>SITE1</b>
@@ -492,7 +496,7 @@ Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
 
 1. **[2]** Konfigurieren Sie die Systemreplikation auf dem zweiten Knoten.
 
-   Melden Sie sich als „\<HANA-SID>adm“ an, und registrieren Sie den sekundären Standort:
+   Registrieren Sie den sekundären Standort als „<hanasid\>adm“:
 
    <pre><code>HDB stop
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b>

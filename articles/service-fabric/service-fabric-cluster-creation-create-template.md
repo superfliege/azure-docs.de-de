@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: ddfd8ce14ca20c7094fa927aeafc36ae53271499
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 2fdea1f088dd6eabdf7d72342c837d976133a1bc
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665507"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046179"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Erstellen einer Resource Manager-Vorlage für Service Fabric-Cluster
 
@@ -28,6 +28,9 @@ Ein [Azure Service Fabric-Cluster](service-fabric-deploy-anywhere.md) ist eine v
 Die Clustersicherheit wird konfiguriert, sobald der Cluster zum ersten Mal eingerichtet wird. Diese kann später nicht geändert werden. Bevor Sie einen Cluster einrichten, lesen Sie [Szenarios für die Clustersicherheit in Service Fabric][service-fabric-cluster-security]. In Azure verwendet Service Fabric das X.509-Zertifikat zum Schützen Ihres Clusters und seiner Endpunkte sowie zum Authentifizieren von Clients und Verschlüsseln von Daten. Azure Active Directory wird ebenfalls empfohlen, um den Zugriff auf Verwaltungsendpunkte zu schützen. Azure AD-Mandanten und -Benutzer müssen vor der Erstellung des Clusters erstellt werden.  Weitere Informationen finden Sie unter [Set up Azure AD to authenticate clients (Einrichten von Azure AD zum Authentifizieren von Clients)](service-fabric-cluster-creation-setup-aad.md).
 
 Bevor Sie einen Produktionscluster für die Ausführung von Produktionsworkloads bereitstellen, lesen Sie zuerst die [Prüfliste für die Produktionsbereitschaft](service-fabric-production-readiness-checklist.md).
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-the-resource-manager-template"></a>Erstellen der Resource Manager-Vorlage
 Resource Manager-Beispielvorlagen stehen in den [Azure-Beispielen auf GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates) zur Verfügung. Diese Vorlagen können als Ausgangspunkt für Ihre Clustervorlage verwendet werden.
@@ -242,13 +245,13 @@ Die RM-Module können die Azure AD-Konfiguration nicht für Sie generieren. Wenn
 Verwenden Sie den folgenden PowerShell-Befehl, um Ihre Resource Manager-Vorlage mit einer Parameterdatei zu testen:
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
+Test-AzResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
 ```
 
 Falls Probleme auftreten und Sie kryptische Nachrichten erhalten, verwenden Sie „-Debug“ als Option.
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json -Debug
+Test-AzResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json -Debug
 ```
 
 Das folgende Diagramm veranschaulicht die Platzierung der Schlüsseltresor- und Azure AD-Konfiguration in der Resource Manager-Vorlage.

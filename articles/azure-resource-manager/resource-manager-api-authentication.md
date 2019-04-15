@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/12/2018
+ms.date: 3/22/2019
 ms.author: dugill
-ms.openlocfilehash: 138367eb7eb0d4be2e0a7bec57d1bce551a5e829
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7e6ce8c4e5e6ff79a8e77708bd76cef6c24cadd3
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58107051"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805515"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Verwenden der Resource Manager-Authentifizierungs-API für den Zugriff auf Abonnements
 
@@ -30,7 +30,7 @@ Ihre App kann auf die Resource Manager-APIs auf verschiedene Arten zugreifen:
 1. **Benutzer- und App-Zugriff**: Für Apps, die für einen angemeldeten Benutzer auf Ressourcen zugreifen. Diese Methode funktioniert für Apps wie Web-Apps und Befehlszeilentools, die nur für die „interaktive Verwaltung“ von Azure-Ressourcen verwendet werden.
 2. **Nur App-Zugriff**: Für Apps, die Daemondienste und geplante Aufträge ausführen. Der App-Identität wird direkter Zugriff auf die Ressourcen gewährt. Diese Methode funktioniert für Apps, die einen langfristigen monitorlosen (unbeaufsichtigten) Zugriff auf Azure benötigen.
 
-Dieser Artikel enthält eine schrittweise Anleitung zum Erstellen einer App, in der beide Autorisierungsmethoden genutzt werden. Es beschreibt, wie jeder Schritt mit REST-API oder C# ausgeführt wird. Die vollständige ASP.NET MVC-Anwendung ist verfügbar unter [https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense).
+Dieser Artikel enthält eine schrittweise Anleitung zum Erstellen einer App, in der beide Autorisierungsmethoden genutzt werden. Er beschreibt, wie jeder Schritt mit REST-API oder C# ausgeführt wird. Die vollständige ASP.NET MVC-Anwendung ist verfügbar unter [https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense](https://github.com/dushyantgill/VipSwapper/tree/master/CloudSense).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -255,7 +255,7 @@ Beispielantwort für ein Token zur Gewährung von Clientanmeldeinformationen:
     {"token_type":"Bearer","expires_in":"3599","expires_on":"1432039862","not_before":"1432035962","resource":"https://graph.windows.net/","access_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLndpbmRv****G5gUTV-kKorR-pg"}
 
 ### <a name="get-objectid-of-application-service-principal-in-user-azure-ad"></a>Abrufen der Objekt-ID des Dienstprinzipals der Anwendung im Azure AD-Verzeichnis des Benutzers
-Verwenden Sie jetzt das nur für die App geltende Zugriffstoken, um die API für [Azure AD Graph-Dienstprinzipale](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) abzufragen und die Objekt-ID des Dienstprinzipals der Anwendung im Verzeichnis zu ermitteln.
+Verwenden Sie jetzt das nur für die App geltende Zugriffstoken, um die API für [Azure AD Graph-Dienstprinzipale](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#serviceprincipal-entity) abzufragen und die Objekt-ID des Dienstprinzipals der Anwendung im Verzeichnis zu ermitteln.
 
 Die Methode [GetObjectIdOfServicePrincipalInOrganization](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureADGraphAPIUtil.cs#) der ASP.NET MVC-Beispielanwendung implementiert diesen Aufruf.
 
@@ -283,7 +283,7 @@ Die richtige RBAC-Rolle für Ihre Anwendung:
 
 Die Rollenzuweisung für die Anwendung wird den Benutzern angezeigt, wählen Sie also nur die mindestens erforderlichen Berechtigungen aus.
 
-Rufen Sie die [Resource Manager-API für die Rollendefinition](https://docs.microsoft.com/rest/api/authorization/roledefinitions) zum Auflisten aller Azure-RBAC-Rollen auf. Durchsuchen Sie anschließend das Ergebnis, um die gewünschte Rollendefinition anhand des Namens zu ermitteln.
+Rufen Sie die [Resource Manager-API für die Rollendefinition](https://docs.microsoft.com/rest/api/authorization/roledefinitions) zum Auflisten aller Azure-RBAC-Rollen auf. Durchsuchen Sie anschließend das Ergebnis, um die Rollendefinition anhand des Namens zu ermitteln.
 
 Die Methode [GetRoleId](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L246) der ASP.NET MVC-Beispiel-App implementiert diesen Aufruf.
 
@@ -330,7 +330,7 @@ Beispielanforderung zum Zuweisen einer RBAC-Rolle zur Anwendung:
     Content-Type: application/json
     Content-Length: 230
 
-    {"properties": {"roleDefinitionId":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7","principalId":"c3097b31-7309-4c59-b4e3-770f8406bad2"}}
+    {"properties": {"roleDefinitionId":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c","principalId":"c3097b31-7309-4c59-b4e3-770f8406bad2"}}
 
 In der Anforderung werden die folgenden Werte verwendet:
 
@@ -338,17 +338,17 @@ In der Anforderung werden die folgenden Werte verwendet:
 | --- | --- |
 | 09cbd307-aa71-4aca-b346-5f253e6e3ebb |Die ID des Abonnements |
 | c3097b31-7309-4c59-b4e3-770f8406bad2 |Die Objekt-ID des Dienstprinzipals der Anwendung |
-| acdd72a7-3385-48ef-bd42-f606fba81ae7 |Die ID der Leserrolle |
+| b24988ac-6180-42a0-ab88-20f7382dd24c |Die ID der Rolle „Mitwirkender“ |
 | 4f87261d-2816-465d-8311-70a27558df4c |Eine neue GUID, erstellt für die neue Rollenzuweisung |
 
 Die Antwort hat folgendes Format:
 
     HTTP/1.1 201 Created
 
-    {"properties":{"roleDefinitionId":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7","principalId":"c3097b31-7309-4c59-b4e3-770f8406bad2","scope":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb"},"id":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleAssignments/4f87261d-2816-465d-8311-70a27558df4c","type":"Microsoft.Authorization/roleAssignments","name":"4f87261d-2816-465d-8311-70a27558df4c"}
+    {"properties":{"roleDefinitionId":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c","principalId":"c3097b31-7309-4c59-b4e3-770f8406bad2","scope":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb"},"id":"/subscriptions/09cbd307-aa71-4aca-b346-5f253e6e3ebb/providers/Microsoft.Authorization/roleAssignments/4f87261d-2816-465d-8311-70a27558df4c","type":"Microsoft.Authorization/roleAssignments","name":"4f87261d-2816-465d-8311-70a27558df4c"}
 
 ### <a name="get-app-only-access-token-for-azure-resource-manager"></a>Abrufen eines nur für die App geltenden Zugriffstokens für Azure Resource Manager
-Führen Sie im Abonnement mithilfe eines Tokens, das nur für die App gilt, eine Testaufgabe aus, um zu prüfen, ob die App über den gewünschten Zugriff verfügt.
+Führen Sie im Abonnement mithilfe eines Tokens, das nur für die App gilt, eine Testaufgabe aus, um zu prüfen, ob die App auf das Abonnement zugreifen kann.
 
 Befolgen Sie die Anweisungen im Abschnitt [Abrufen eines nur für die App geltenden Zugriffstokens für die Azure AD Graph-API](#app-azure-ad-graph), und verwenden Sie dabei einen anderen Wert für den Ressourcenparameter:
 
@@ -357,7 +357,7 @@ Befolgen Sie die Anweisungen im Abschnitt [Abrufen eines nur für die App gelten
 Die Metode [ServicePrincipalHasReadAccessToSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L110) der ASP.NET MVC-Beispielanwendung ruft unter Verwendung der Active Directory Authentication Library für .NET ein nur für die App geltendes Zugriffstoken für Azure Resource Manager ab.
 
 #### <a name="get-applications-permissions-on-subscription"></a>Abrufen der Anwendungsberechtigungen für das Abonnement
-Um zu überprüfen, ob die Anwendung den gewünschten Zugriff auf ein Azure-Abonnement hat, können Sie auch die [Resource Manager-API für Berechtigungen](https://docs.microsoft.com/rest/api/authorization/permissions) aufrufen. Dies ist eine ähnliche Vorgehensweise wie wenn Sie bestimmen, ob der Benutzer über Zugriffsverwaltungsrechte für das Abonnement verfügt. Rufen Sie jedoch dieses Mal die Berechtigungs-API mit dem nur für die App geltenden Token auf, das Sie im vorherigen Schritt erhalten haben.
+Um zu überprüfen, ob die Anwendung auf ein Azure-Abonnement zugreifen kann, können Sie auch die [Resource Manager-API für Berechtigungen](https://docs.microsoft.com/rest/api/authorization/permissions) aufrufen. Dies ist eine ähnliche Vorgehensweise wie wenn Sie bestimmen, ob der Benutzer über Zugriffsverwaltungsrechte für das Abonnement verfügt. Rufen Sie jedoch dieses Mal die Berechtigungs-API mit dem nur für die App geltenden Token auf, das Sie im vorherigen Schritt erhalten haben.
 
 Die Methode [ServicePrincipalHasReadAccessToSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceManagerUtil.cs#L110) der ASP.NET MVC-Beispiel-App implementiert diesen Aufruf.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: spelluru
-ms.openlocfilehash: eaa285318a868d0ccee07d830e1cc1be18f457a2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 533770d98b146dea01e91e1249115c4b5c074b3c
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181553"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648434"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Erstellen von virtuellen Computern mit einer Azure Resource Manager-Vorlage 
 
@@ -30,7 +30,7 @@ In diesem Artikel wird beschrieben, inwiefern sich Resource Manager-Vorlagen fü
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="multi-vm-vs-single-vm-resource-manager-templates"></a>Resource Manager-Vorlagen für mehrere VMs und einzelne VMs
-Es gibt zwei Möglichkeiten zum Erstellen von VMs in DevTest Labs mit einer Resource Manager-Vorlage: Stellen Sie die Ressource „Microsoft.DevTestLab/labs/virtualmachines“ oder die Ressource „Microsoft.Commpute/virtualmachines“ bereit. Diese Ressourcen werden jeweils in unterschiedlichen Szenarien genutzt und benötigen unterschiedliche Berechtigungen.
+Es gibt zwei Möglichkeiten zum Erstellen von VMs in DevTest Labs mit einer Resource Manager-Vorlage: Stellen Sie die Ressource „Microsoft.DevTestLab/labs/virtualmachines“ oder die Ressource „Microsoft.Compute/virtualmachines“ bereit. Diese Ressourcen werden jeweils in unterschiedlichen Szenarien genutzt und benötigen unterschiedliche Berechtigungen.
 
 - Mit Resource Manager-Vorlagen, für die der Ressourcentyp „Microsoft.DevTestLab/labs/virtualmachines“ verwendet wird (wie in der „resource“-Eigenschaft der Vorlage deklariert), können einzelne Lab-VMs bereitgestellt werden. Jede VM wird in der DevTest Labs-Liste mit den virtuellen Computern dann als einzelner Eintrag angezeigt:
 

@@ -9,13 +9,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 04/23/2018
-ms.openlocfilehash: 6d667df3062112e0c805e3ba26bc6240022cab8b
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.date: 03/26/2019
+ms.openlocfilehash: 1f0746436fa980b6becfa7a88560734aa07a54e2
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446330"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801928"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Was sind Apache Hive und HiveQL in Azure HDInsight?
 
@@ -37,17 +37,15 @@ HDInsight bietet verschiedene Clustertypen, die für bestimmte Workloads optimie
 
 In der folgenden Tabelle finden Sie Informationen zu unterschiedlichen Methoden der Verwendung von Hive mit HDInsight:
 
-| **Verwenden Sie diese Methode** für ... | ...**interaktive** Abfragen | ...**Batchverarbeitung** | ...mit diesem **Clusterbetriebssystem** | ...von diesem **Clusterbetriebssystem** |
+| **Verwenden Sie diese Methode** für ... | ...**interaktive** Abfragen | ...**Batchverarbeitung** | ...von diesem **Clusterbetriebssystem** |
 |:--- |:---:|:---:|:--- |:--- |
-| [HDInsight Tools for Visual Studio Code](../hdinsight-for-vscode.md) |✔ |✔ |Linux | Linux, Unix, Mac OS X oder Windows |
-| [HDInsight-Tools für Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Linux oder Windows* |Windows |
-| [Struktur anzeigen](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ |Linux |Alle (browserbasiert) |
-| [Beeline-Client](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ |Linux |Linux, Unix, Mac OS X oder Windows |
-| [REST-API](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux oder Windows* |Linux, Unix, Mac OS X oder Windows |
-| [Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Linux oder Windows* |Windows |
+| [HDInsight Tools for Visual Studio Code](../hdinsight-for-vscode.md) |✔ |✔ | Linux, Unix, Mac OS X oder Windows |
+| [HDInsight-Tools für Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Windows |
+| [Struktur anzeigen](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ |Alle (browserbasiert) |
+| [Beeline-Client](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ |Linux, Unix, Mac OS X oder Windows |
+| [REST-API](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |Linux, Unix, Mac OS X oder Windows |
+| [Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |Windows |
 
-> [!IMPORTANT]
-> \*Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="hiveql-language-reference"></a>Referenz zu HiveQL
 
@@ -119,7 +117,6 @@ Hive für HDInsight bietet eine vorab geladene, interne Tabelle mit dem Namen `h
 Die folgenden HiveQL-Anweisungen projizieren Spalten in die Datei `/example/data/sample.log`:
 
 ```hiveql
-set hive.execution.engine=tez;
 DROP TABLE log4jLogs;
 CREATE EXTERNAL TABLE log4jLogs (
     t1 string,
@@ -138,10 +135,6 @@ SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs
 
 Im vorherigen Beispiel führen die HiveQL-Anweisungen die folgenden Aktionen aus:
 
-* `set hive.execution.engine=tez;`: Legt die Ausführungsengine auf Apache Tez fest. Durch die Verwendung von Tez kann eine höhere Abfrageleistung erreicht werden. Weitere Informationen zu Tez finden Sie im Abschnitt [Verwenden von Apache Tez zur Verbesserung der Leistung](#usetez) .
-
-    > [!NOTE]  
-    > Diese Anweisung ist nur erforderlich, wenn Sie einen Windows-basierten HDInsight-Cluster verwenden. Tez ist die Standard-Ausführungs-Engine für Linux-basiertes HDInsight.
 
 * `DROP TABLE`: Wenn die Tabelle bereits vorhanden ist, wird sie gelöscht.
 
@@ -163,7 +156,6 @@ Im vorherigen Beispiel führen die HiveQL-Anweisungen die folgenden Aktionen aus
 Zum Erstellen einer **internen** anstelle einer externen Tabelle, verwenden Sie den folgenden HiveQL-Code:
 
 ```hiveql
-set hive.execution.engine=tez;
 CREATE TABLE IF NOT EXISTS errorLogs (
     t1 string,
     t2 string,
@@ -193,22 +185,13 @@ Diese Anweisungen führen die folgenden Aktionen aus:
 
 ### <a id="usetez"></a>Apache Tez
 
-[Apache Tez](https://tez.apache.org) ist ein Framework, mit dem datenintensive Anwendungen wie Hive wesentlich effizienter ausgeführt und skaliert werden können. Tez ist für Linux-basierte HDInsight-Cluster standardmäßig aktiviert.
-
-> [!NOTE]  
-> Tez ist derzeit für Windows-basierte HDInsight-Cluster standardmäßig deaktiviert und muss aktiviert werden. Um die Vorteile von Tez zu nutzen, muss der folgende Wert in einer Hive-Abfrage gesetzt sein:
->
-> `set hive.execution.engine=tez;`
->
-> Tez ist die Standard-Engine für Linux-basierte HDInsight-Cluster.
-
-Die [Apache Hive mit Tez-Design-Dokumente](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez) enthalten Details zu Implementierungsoptionen und Konfigurationseinstellungen.
+[Apache Tez](https://tez.apache.org) ist ein Framework, mit dem datenintensive Anwendungen wie Hive wesentlich effizienter ausgeführt und skaliert werden können. „Tez“ ist standardmäßig aktiviert.  Die [Apache Hive mit Tez-Design-Dokumente](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez) enthalten Details zu Implementierungsoptionen und Konfigurationseinstellungen.
 
 ### <a name="low-latency-analytical-processing-llap"></a>Low Latency Analytical Processing (LLAP)
 
 [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) (auch als „Live Long and Process“ bezeichnet) ist ein neues Feature in Hive 2.0, das die Zwischenspeicherung von Abfragen im Arbeitsspeicher ermöglicht. LLAP macht Hive-Abfragen deutlich schneller – bis zu [in einigen Fällen 26-mal schneller als Hive 1.x](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
 
-HDInsight stellt LLAP im Clustertyp „Interactive Query“ bereit. Weitere Informationen finden Sie unter [Start with Interactive Query (Einstieg in Interactive Query)](../interactive-query/apache-interactive-query-get-started.md).
+HDInsight stellt LLAP im Clustertyp „Interactive Query“ bereit. Weitere Informationen finden Sie unter [Start with Interactive Query (Einstieg in Interactive Query](../interactive-query/apache-interactive-query-get-started.md).
 
 ## <a name="scheduling-hive-queries"></a>Planen von Hive-Abfragen
 

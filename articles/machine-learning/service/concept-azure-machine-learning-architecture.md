@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: ec35e383a182cf783c253b9242e6abb73e39385d
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 9e910fb3bc75c285986871627d875296f1a2a746
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361097"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577321"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>So funktioniert Azure Machine Learning Service: Architektur und Konzepte
 
@@ -46,11 +46,13 @@ Im Arbeitsbereich wird eine Liste mit Computezielen geführt, die zum Trainieren
 
 Modelle werden beim Arbeitsbereich registriert. Sie verwenden ein registriertes Modell und Bewertungsskripts, um ein Image zu erstellen. Das Image kann dann in Azure Container Instances, Azure Kubernetes Service oder einem FPGA (Field-Programmable Gate Array) als REST-basierter HTTP-Endpunkt bereitgestellt werden. Außerdem kann es als Modul auf einem Azure IoT Edge-Gerät bereitgestellt werden.
 
-Sie können mehrere Arbeitsbereiche erstellen, und jeder Arbeitsbereich kann von mehreren Benutzern gemeinsam genutzt werden. Den Zugriff auf einen freigegebenen Arbeitsbereich steuern Sie, indem Sie Benutzern die folgenden Rollen zuweisen:
+Sie können mehrere Arbeitsbereiche erstellen, und jeder Arbeitsbereich kann von mehreren Benutzern gemeinsam genutzt werden. Den Zugriff auf einen freigegebenen Arbeitsbereich steuern Sie, indem Sie Benutzer zu den folgenden Rollen zuweisen:
 
 * Owner (Besitzer)
 * Mitwirkender
 * Leser
+
+Weitere Informationen zu diesen Rollen finden Sie im Artikel [Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich](how-to-assign-roles.md).
 
 Wenn Sie einen neuen Arbeitsbereich erstellen, werden darin automatisch mehrere Azure-Ressourcen erstellt, die vom Arbeitsbereich verwendet werden:
 

@@ -11,12 +11,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 2/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: b40edf705ba61713f4b695dd55a6a20028936c82
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 56813d9a075e1c327fb5612c50ea72f067ec505d
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993820"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805600"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich
 
@@ -33,7 +33,7 @@ Ein Azure Machine Learning-Arbeitsbereich ist eine Azure-Ressource. Wie jede and
 | **Besitzer** | Vollzugriff auf den Arbeitsbereich, u.a. Anzeigen, Erstellen, Bearbeiten und Löschen (wo zutreffend) von Objekten in einem Arbeitsbereich. Zudem können Besitzer Rollenzuweisungen anpassen. |
 
 > [!IMPORTANT]
-> Der Rollenzugriff kann für mehrere Ebenen in Azure gelten. Z.B. kann es sein, dass ein Benutzer mit Vollzugriff für eine Arbeitsgruppe für die Ressourcengruppe, die diese Arbeitsgruppe enthält, keinen Vollzugriff hat. Weitere Informationen erhalten Sie im Abschnitt „Funktionsweise von RBAC“ unter [Was ist die rollenbasierte Zugriffssteuerung für Azure-Ressourcen?](/azure/role-based-access-control/overview#how-rbac-works).
+> Der Rollenzugriff kann für mehrere Ebenen in Azure gelten. Es kann z. B. sein, dass ein Benutzer mit Vollzugriff für einen Arbeitsbereich für die Ressourcengruppe, die diesen Arbeitsbereich enthält, keinen Vollzugriff hat. Weitere Informationen erhalten Sie im Abschnitt „Funktionsweise von RBAC“ unter [Was ist die rollenbasierte Zugriffssteuerung für Azure-Ressourcen?](/azure/role-based-access-control/overview#how-rbac-works).
 
 Weitere Informationen zu Rollen finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](/azure/role-based-access-control/built-in-roles).
 

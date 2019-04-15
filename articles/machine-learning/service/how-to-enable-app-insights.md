@@ -1,7 +1,7 @@
 ---
-title: Überwachen von Modellen mit Application Insights
+title: Einrichten von Azure Application Insights für die Überwachung von Machine Learning-Modellen
 titleSuffix: Azure Machine Learning service
-description: Verwenden Sie Application Insights, um Webdienste zu überwachen, die über Azure Machine Learning Service bereitgestellt werden.
+description: Überwachen Sie Webdienste, die mit dem Azure Machine Learning Service bereitgestellt werden, mithilfe von Azure Application Insights.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: marthalc
 author: marthalc
-ms.date: 1/07/2019
-ms.custom: seodec18
-ms.openlocfilehash: 32dc55927f614a91c390a417595b7a00c16e9386
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/02/2019
+ms.custom: seoapril2019
+ms.openlocfilehash: 2e481a388d8cbd6baf66b95c74449396b2e70f7d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57847948"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885496"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Überwachen Ihrer Azure Machine Learning-Modelle mit Application Insights
 
@@ -36,7 +36,7 @@ In diesem Artikel erfahren Sie, wie Sie Azure Application Insights für Ihren Az
 * Ein trainiertes Machine Learning-Modell, das in Azure Kubernetes Service (AKS) oder Azure Container Instance (ACI) bereitgestellt werden soll. Wenn Sie keines besitzen, sehen Sie sich das Tutorial zum [Trainieren eines Imageklassifizierungsmodells](tutorial-train-models-with-aml.md) an.
 
 
-## <a name="enable-and-disable-from-the-sdk"></a>Aktivieren und Deaktivieren aus dem SDK
+## <a name="use-sdk-to-configure"></a>Verwenden des SDKs zum Konfigurieren 
 
 ### <a name="update-a-deployed-service"></a>Aktualisieren eines bereitgestellten Diensts
 1. Suchen Sie den Dienst in Ihrem Arbeitsbereich. Der Wert für `ws` ist der Name des Arbeitsbereichs.
@@ -77,7 +77,7 @@ Verwenden Sie den folgenden Code, um Application Insights zu deaktivieren:
 <service_name>.update(enable_app_insights=False)
 ```
     
-## <a name="enable-and-disable-in-the-portal"></a>Aktivieren und Deaktivieren im Portal
+## <a name="use-portal-to-configure"></a>Verwenden des Portals zum Konfigurieren
 
 Sie können Application Insights im Azure-Portal aktivieren und deaktivieren.
 
@@ -85,15 +85,15 @@ Sie können Application Insights im Azure-Portal aktivieren und deaktivieren.
 
 1. Wählen Sie auf der Registerkarte **Bereitstellungen** den Dienst aus, für den Sie Application Insights aktivieren möchten.
 
-   [![Liste der Dienste auf der Registerkarte „Bereitstellungen“](media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
+   [![LListe der Dienste auf der Registerkarte „Bereitstellungen“(media/how-to-enable-app-insights/Deployments.PNG)](./media/how-to-enable-app-insights/Deployments.PNG#lightbox)
 
 3. Wählen Sie **Bearbeiten** aus.
 
-   [![Schaltfläche „Bearbeiten“](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![ESchaltfläche „Bearbeiten“(media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 4. Aktivieren Sie in **Erweiterte Einstellungen** das Kontrollkästchen **AppInsights-Diagnose aktivieren**.
 
-   [![Aktiviertes Kontrollkästchen zum Aktivieren der Diagnose](media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
+   [![SAktiviertes Kontrollkästchen zum Aktivieren der Diagnose(media/how-to-enable-app-insights/AdvancedSettings.png)](./media/how-to-enable-app-insights/AdvancedSettings.png#lightbox)
 
 1. Wählen Sie unten auf dem Bildschirm **Aktualisieren** aus, um die Änderungen zu übernehmen. 
 
@@ -101,11 +101,11 @@ Sie können Application Insights im Azure-Portal aktivieren und deaktivieren.
 1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) Ihren Arbeitsbereich.
 1. Wählen Sie **Bereitstellungen**, den Dienst und dann **Bearbeiten** aus.
 
-   [![Verwenden der Schaltfläche „Bearbeiten“](media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
+   [![UVerwenden der Schaltfläche „Bearbeiten“(media/how-to-enable-app-insights/Edit.PNG)](./media/how-to-enable-app-insights/Edit.PNG#lightbox)
 
 1. Deaktivieren Sie in **Erweiterte Einstellungen** das Kontrollkästchen **AppInsights-Diagnose aktivieren**. 
 
-   [![Deaktiviertes Kontrollkästchen zum Aktivieren der Diagnose](media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
+   [![CDeaktiviertes Kontrollkästchen zum Aktivieren der Diagnose(media/how-to-enable-app-insights/uncheck.png)](./media/how-to-enable-app-insights/uncheck.png#lightbox)
 
 1. Wählen Sie unten auf dem Bildschirm **Aktualisieren** aus, um die Änderungen zu übernehmen. 
  
@@ -115,16 +115,16 @@ Die Daten Ihres Diensts werden in Ihrem Application Insights-Konto in der gleich
 So zeigen Sie sie an:
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Machine Learning Service-Arbeitsbereich, und klicken Sie auf den Link „Application Insights“.
 
-    [![AppInsightsLoc](media/how-to-enable-app-insights/AppInsightsLoc.png)](./media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
+    [![AAppInsightsLoc(media/how-to-enable-app-insights/AppInsightsLoc.png)](./media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
 
 1. Wählen Sie die Registerkarte **Übersicht** aus, um einen Standardsatz von Metriken für Ihren Dienst anzuzeigen.
 
-   [![Übersicht](media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
+   [![OÜbersicht(media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
 3. Um Ihre benutzerdefinierten Ablaufverfolgungen anzuzeigen, wählen Sie **Analyse** aus.
 4. Wählen Sie im Abschnitt „Schema“ den Eintrag **Ablaufverfolgungen** aus. Wählen Sie dann **Ausführen** aus, um die Abfrage auszuführen. Die Daten sollten in einem Tabellenformat angezeigt werden und den benutzerdefinierten Aufrufen in Ihrer Bewertungsdatei zugeordnet sein. 
 
-   [![Benutzerdefinierte Ablaufverfolgungen](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
+   [![CBenutzerdefinierte Ablaufverfolgungen(media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
 
 Weitere Informationen zu Application Insights finden Sie unter [Was ist Application Insights?](../../azure-monitor/app/app-insights-overview.md)
     
@@ -138,6 +138,4 @@ Das Notebook [how-to-use-azureml/deployment/enable-app-insights-in-production-se
 ## <a name="next-steps"></a>Nächste Schritte
 Sie können Daten auch in Ihren Modellen in Produktionsumgebungen sammeln. Lesen Sie den Artikel [Sammeln von Daten für Modelle in der Produktion](how-to-enable-data-collection.md). 
 
-
-## <a name="other-references"></a>Andere Referenzen
-* [Azure Monitor für Container](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json)
+Weitere Informationen finden Sie unter [Azure Monitor für Container](https://docs.microsoft.com/azure/monitoring/monitoring-container-insights-overview?toc=%2fazure%2fmonitoring%2ftoc.json).
