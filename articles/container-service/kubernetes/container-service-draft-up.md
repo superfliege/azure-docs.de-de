@@ -103,8 +103,8 @@ Damit verfügen Sie über einen Cluster und können nun mit dem Befehl [az acs k
 ## <a name="install-and-configure-draft"></a>Installieren und Konfigurieren von Draft
 
 
-1. Laden Sie Draft für Ihre Umgebung von „https://github.com/Azure/draft/releases“ herunter, und installieren Sie Draft in PATH, damit der Befehl verwendet werden kann.
-2. Laden Sie Helm für Ihre Umgebung von „https://github.com/kubernetes/helm/releases“ herunter, und [installieren Sie Helm in PATH, damit der Befehl verwendet werden kann](https://github.com/kubernetes/helm/blob/master/docs/install.md#installing-the-helm-client).
+1. Laden Sie Draft für Ihre Umgebung von „ https://github.com/Azure/draft/releases “ herunter, und installieren Sie Draft in PATH, damit der Befehl verwendet werden kann.
+2. Laden Sie Helm für Ihre Umgebung von „ https://github.com/kubernetes/helm/releases “ herunter, und [installieren Sie Helm in PATH, damit der Befehl verwendet werden kann](https://github.com/kubernetes/helm/blob/master/docs/install.md#installing-the-helm-client).
 3. Konfigurieren Sie Draft so, dass Ihre Registrierung verwendet wird und für jedes erstellte Helm-Diagramm Unterdomänen erstellt werden. Für die Konfiguration von Draft benötigen Sie Folgendes:
    - Ihren Azure Container Registry-Namen (in diesem Beispiel `draftacsdemo`)
    - Ihren Registrierungsschlüssel oder Ihr Kennwort aus `az acr credential show -n <registry name> --output tsv --query "passwords[0].value"`
