@@ -3,19 +3,19 @@ title: Verwenden der Languages-Methode der Textübersetzungs-API
 titlesuffix: Azure Cognitive Services
 description: Verwenden Sie die Languages-Methode der Textübersetzungs-API.
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 45baf915ffbc2723d3ed5b4c4dcd96b583a12802
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1713a05590f389a6de70d72e8d62237c7521d808
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122402"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915763"
 ---
 # <a name="translator-text-api-30-languages"></a>Textübersetzungs-API 3.0: Languages
 
@@ -93,7 +93,7 @@ Eine erfolgreiche Antwort ist ein JSON-Objekt mit einer Eigenschaft für jede an
 
 Der Wert für jede Eigenschaft lautet wie folgt.
 
-* `translation`-Eigenschaft
+* `translation` property
 
   Der Wert der `translation`-Eigenschaft ist ein Wörterbuch aus Schlüssel-Wert-Paaren. Jeder Schlüssel ist ein BCP 47-Sprachtag. Ein Schlüssel identifiziert eine Sprache, in die oder aus der Text übersetzt werden kann. Der Wert, der dem Schlüssel zugeordnet ist, ist ein JSON-Objekt mit Eigenschaften, die die Sprache beschreiben:
 
@@ -119,7 +119,7 @@ Der Wert für jede Eigenschaft lautet wie folgt.
   }
   ```
 
-* `transliteration`-Eigenschaft
+* `transliteration` property
 
   Der Wert der `transliteration`-Eigenschaft ist ein Wörterbuch aus Schlüssel-Wert-Paaren. Jeder Schlüssel ist ein BCP 47-Sprachtag. Ein Schlüssel identifiziert eine Sprache, für die Text aus einem Skript in ein anderes Skript konvertiert werden kann. Der Wert, der dem Schlüssel zugeordnet ist, ist ein JSON-Objekt mit Eigenschaften, die die Sprache und deren unterstützte Skripts beschreiben:
 
@@ -139,7 +139,7 @@ Der Wert für jede Eigenschaft lautet wie folgt.
 
     * `toScripts`: Die Liste der Skripts, in die Text konvertiert werden kann. Jedes Element der `toScripts`-Liste verfügt über die Eigenschaften `code`, `name`, `nativeName` und `dir` (wie zuvor beschrieben).
 
-  Der folgende Code zeigt ein Beispiel:
+  Im folgenden Code wird ein Beispiel veranschaulicht:
 
   ```json
   {
@@ -184,7 +184,7 @@ Der Wert für jede Eigenschaft lautet wie folgt.
   }
   ```
 
-* `dictionary`-Eigenschaft
+* `dictionary` property
 
   Der Wert der `dictionary`-Eigenschaft ist ein Wörterbuch aus Schlüssel-Wert-Paaren. Jeder Schlüssel ist ein BCP 47-Sprachtag. Der Schlüssel identifiziert eine Sprache, für die alternative Übersetzungen und Rückübersetzungen verfügbar sind. Der Wert ist ein JSON-Objekt, das die Quellsprache und die Zielsprachen mit verfügbaren Übersetzungen beschreibt:
 
@@ -281,7 +281,7 @@ Wenn ein Fehler auftritt, gibt die Anforderung auch eine JSON-Fehlerantwort zur�
 
 Im folgenden Beispiel wird dargestellt, wie Sprachen abgerufen werden, die für die Textübersetzung unterstützt werden.
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation"
