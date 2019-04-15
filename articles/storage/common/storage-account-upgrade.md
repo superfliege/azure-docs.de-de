@@ -5,23 +5,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 03/26/2019
 ms.author: tamram
-ms.openlocfilehash: d57023063fe23db9f57d52ab9cdf99e0687c1fdf
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 2d6a5c96bf99439520e26fc905668835944cee29
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217290"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578917"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“
 
-Speicherkonten vom Typ „Allgemein v2“ unterstützen die neuesten Azure Storage-Features und umfassen die gesamte Funktionalität von Konten des Typs „Allgemein v1“ und Blob Storage-Konten. Konten vom Typ „Allgemein v2“ werden für die meisten Speicherszenarien empfohlen. Konten vom Typ „Allgemein v2“ bieten die niedrigsten Preise pro Gigabyte für Azure Storage sowie wettbewerbsfähige Transaktionspreise.
+Speicherkonten vom Typ „Allgemein v2“ unterstützen die neuesten Azure Storage-Features und umfassen die gesamte Funktionalität von Konten des Typs „Allgemein v1“ und von Blob-Speicherkonten. Konten vom Typ „Allgemein v2“ werden für die meisten Speicherszenarien empfohlen. Konten vom Typ „Allgemein v2“ bieten die niedrigsten Preise pro Gigabyte für Azure Storage sowie wettbewerbsfähige Transaktionspreise.
 
-Das Durchführen eines Upgrades zu einem Speicherkonto vom Typ „Allgemein v2“ von einem Speicherkonto vom Typ „Allgemein v1“ oder einem Blobspeicherkonto ist einfach. Sie können für das Upgrade das Azure-Portal, PowerShell oder die Azure CLI verwenden.
+Das Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“ von einem Speicherkonto vom Typ „Allgemein v1“ oder einem Blob-Speicherkonto ist einfach. Sie können für das Upgrade das Azure-Portal, PowerShell oder die Azure CLI verwenden.
 
 > [!IMPORTANT]
-> Ein Upgrade Ihres Speicherkontos des Typs „v1“ auf „Allgemein v2“ ist dauerhaft und kann nicht rückgängig gemacht werden.
+> Ein Upgrade eines Speicherkontos vom Typ „Allgemein v1“ oder eines Blob-Speicherkontos auf „Allgemein v2“ ist dauerhaft und kann nicht rückgängig gemacht werden.
 
 ## <a name="upgrade-using-the-azure-portal"></a>Upgrade mithilfe des Azure-Portals
 
@@ -29,14 +29,16 @@ Das Durchführen eines Upgrades zu einem Speicherkonto vom Typ „Allgemein v2�
 2. Navigieren Sie zum Speicherkonto.
 3. Klicken Sie im Abschnitt **Einstellungen** auf **Konfiguration**.
 4. Klicken Sie unter **Kontoart** auf **Upgrade**.
-5. Geben Sie unter **Confirm upgrade** (Upgrade bestätigen) den Namen Ihres Kontos ein. 
+5. Geben Sie unter **Confirm upgrade** (Upgrade bestätigen) den Namen Ihres Kontos ein.
 6. Klicken Sie unten auf dem Blatt auf **Upgrade durchführen**.
+
+    ![Upgrade für Konto durchführen](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
 
 ## <a name="upgrade-with-powershell"></a>Aktualisieren mit PowerShell
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Wenn Sie für ein Konto vom Typ „Universell V1“ mit PowerShell ein Upgrade auf ein Konto vom Typ „Universell V2“ durchführen möchten, sollten Sie zuerst PowerShell aktualisieren, damit die aktuelle Version des Moduls **Az.Storage** verwendet wird. Informationen zur Installation von PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps). 
+Wenn Sie für ein Konto vom Typ „Allgemein v1“ mit PowerShell ein Upgrade auf ein Konto vom Typ „Allgemein v2“ durchführen möchten, sollten Sie zuerst PowerShell aktualisieren, damit die aktuelle Version des Moduls **Az.Storage** verwendet wird. Informationen zur Installation von PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
 Rufen Sie anschließend den folgenden Befehl auf, um das Konto zu aktualisieren, und ersetzen Sie den Namen Ihrer Ressourcengruppe und des Speicherkontos:
 
@@ -46,30 +48,30 @@ Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-a
 
 ## <a name="upgrade-with-azure-cli"></a>Aktualisieren per Azure CLI
 
-Wenn Sie für ein Konto vom Typ „Allgemein v1“ mit der Azure CLI ein Upgrade auf ein Konto vom Typ „Allgemein v1“ durchführen möchten, installieren Sie zuerst die aktuelle Version der Azure CLI. Informationen zum Installieren der CLI finden Sie unter [Installieren von Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). 
+Wenn Sie für ein Konto vom Typ „Allgemein v1“ mit der Azure CLI ein Upgrade auf ein Konto vom Typ „Allgemein v2“ durchführen möchten, installieren Sie zuerst die aktuelle Version der Azure CLI. Informationen zum Installieren der CLI finden Sie unter [Installieren von Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 Rufen Sie anschließend den folgenden Befehl auf, um das Konto zu aktualisieren, und ersetzen Sie den Namen Ihrer Ressourcengruppe und des Speicherkontos:
 
 ```cli
 az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2
-``` 
+```
 
 ## <a name="specify-an-access-tier-for-blob-data"></a>Angeben einer Zugriffsebene für Blobdaten
 
-Konten vom Typ „Allgemein v2“ unterstützen alle Azure Storage Services und -Datenobjekte, aber Zugriffsebenen sind nur für Blockblobs im Blobspeicher verfügbar. Wenn Sie ein Upgrade auf ein Speicherkonto vom Typ „Allgemein v2“ durchführen, können Sie eine Zugriffsebene für Ihre Blobdaten angeben. 
+Konten vom Typ „Allgemein v2“ unterstützen alle Azure Storage Services und -Datenobjekte, aber Zugriffsebenen sind nur für Blockblobs im Blobspeicher verfügbar. Wenn Sie ein Upgrade auf ein Speicherkonto vom Typ „Allgemein v2“ durchführen, können Sie eine Zugriffsebene für Ihre Blobdaten angeben.
 
-Zugriffsebenen ermöglichen es, den kostengünstigsten Speicher basierend auf Ihren erwarteten Nutzungsmustern auszuwählen. Blockblobs können auf der heißen, der kalten oder der Archivspeicherebene gespeichert werden. Weitere Informationen zu Zugriffsebenen finden Sie unter [Azure Blob Storage: Speicherebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“](../blobs/storage-blob-storage-tiers.md).
+Zugriffsebenen ermöglichen es, den kostengünstigsten Speicher basierend auf Ihren erwarteten Nutzungsmustern auszuwählen. Blockblobs können auf der heißen, der kalten oder der Archivspeicherebene gespeichert werden. Weitere Informationen zu Zugriffsebenen finden Sie unter [Azure Blob Storage: Speicherebenen „Premium“ (Vorschauversion), „Heiß“, „Kalt“ und „Archiv“](../blobs/storage-blob-storage-tiers.md).
 
-Standardmäßig wird ein neues Speicherkonto auf der Zugriffsebene „Heiß“ (Hot) erstellt, und für ein Speicherkonto vom Typ „Universell v1“ wird ein Upgrade auf die Zugriffsebene „Heiß“ durchgeführt. Wenn Sie untersuchen, welche Zugriffsebene nach dem Upgrade Ihrer Daten verwendet werden soll, sollten Sie Ihr Szenario berücksichtigen. Es gibt zwei typische Benutzerszenarien für die Migration auf ein Konto vom Typ „Allgemein v2“:
+Standardmäßig wird ein neues Speicherkonto auf der Zugriffsebene „Heiß“ (Hot) erstellt, und für ein Speicherkonto vom Typ „Allgemein v1“ wird ein Upgrade auf die Zugriffsebene „Heiß“ durchgeführt. Wenn Sie untersuchen, welche Zugriffsebene nach dem Upgrade Ihrer Daten verwendet werden soll, sollten Sie Ihr Szenario berücksichtigen. Es gibt zwei typische Benutzerszenarien für die Migration auf ein Konto vom Typ „Allgemein v2“:
 
 * Sie verfügen über ein vorhandenes Speicherkonto vom Typ „Allgemein v1“ und möchten ein Upgrade auf ein Speicherkonto vom Typ „Allgemein v2“ mit der richtigen Speicherzugriffsebene für Blobdaten bewerten.
-* Sie haben sich für die Nutzung eines Speicherkontos vom Typ „Allgemein v2“ entschieden oder besitzen bereits ein Konto dieser Art und möchten bewerten, ob Sie die Speicherebene „Heiß“ oder „Kalt“ für Blobdaten verwenden sollen.
+* Sie haben sich für die Nutzung eines Speicherkontos vom Typ „Allgemein v2“ entschieden oder besitzen bereits ein Konto dieser Art und möchten bewerten, ob Sie die Speicherebene „Heiß“ oder „Kalt“ für Blobdaten verwenden sollten.
 
 In beiden Fällen sollten Sie zuerst die Kosten für Speicherung, Zugriff und Arbeiten mit Ihren Daten in einem Speicherkonto vom Typ „Allgemein v2“ schätzen und diesen Betrag mit Ihren derzeitigen Kosten vergleichen.
 
 ## <a name="pricing-and-billing"></a>Preise und Abrechnung
 
-Ein Upgrade Ihres Speicherkontos des Typs „v1“ auf „Allgemein v2“ ist kostenlos. Das Ändern der Speicherzugriffstarifs kann zu Änderungen an Ihrer Rechnung führen. 
+Ein Upgrade Ihres Speicherkontos vom Typ „v1“ auf ein Konto vom Typ „Allgemein v2“ ist kostenlos. Das Ändern der Speicherzugriffstarifs kann zu Änderungen an Ihrer Rechnung führen. 
 
 Für alle Speicherkonten wird ein Blobspeicher-Preismodell verwendet, das auf der Ebene der einzelnen Blobs basiert. Bei Verwendung eines Speicherkontos sollten folgende Abrechnungsaspekte berücksichtigt werden:
 
@@ -81,7 +83,7 @@ Für alle Speicherkonten wird ein Blobspeicher-Preismodell verwendet, das auf de
 
 * **Datenübertragungskosten bei Georeplikation:** Diese Gebühr gilt nur für Konten mit konfigurierter Georeplikation (einschließlich GRS und RA-GRS). Die Datenübertragung für die Georeplikation wird pro Gigabyte abgerechnet.
 
-* **Kosten für ausgehende Datenübertragungen:** Ausgehende Datenübertragungen (Daten, die aus einer Azure-Region übertragen werden) werden genau wie bei allgemeinen Speicherkonten nach Bandbreitennutzung pro Gigabyte abgerechnet.
+* **Kosten für ausgehende Datenübertragungen:** Ausgehende Datenübertragungen (Daten, die aus einer Azure-Region übertragen werden) werden genauso wie bei allgemeinen Speicherkonten nach Bandbreitennutzung pro Gigabyte abgerechnet.
 
 * **Änderung der Speicherzugriffsebene:** Bei einem Wechsel der Zugriffsebene des Speicherkontos von „Kalt“ zu „Heiß“ fällt eine Gebühr an, die den Kosten entspricht, die durch das Lesen aller im Speicherkonto vorhandenen Daten entstehen. Beim Ändern der Zugriffsebene des Kontos von „Heiß“ in „Kalt“ fällt aber eine Gebühr an, die dem Schreiben aller Daten auf die Ebene „Kalt“ entspricht (nur GPv2-Konten).
 
@@ -90,13 +92,13 @@ Für alle Speicherkonten wird ein Blobspeicher-Preismodell verwendet, das auf de
 
 ### <a name="estimate-costs-for-your-current-usage-patterns"></a>Schätzen der Kosten für Ihr aktuelles Nutzungsmuster
 
-Zur Ermittlung der Kosten für die Speicherung und den Zugriff auf Blobdaten in einem Speicherkonto vom Typ „Allgemein v2“ auf einer bestimmten Ebene, evaluieren Sie Ihr bestehendes Nutzungsmuster oder schätzen Sie Ihr erwartetes Nutzungsmuster. Dazu benötigen Sie im Allgemeinen folgende Informationen:
+Zur Ermittlung der Kosten für die Speicherung und den Zugriff auf Blobdaten in einem Speicherkonto vom Typ „Allgemein v2“ auf einer bestimmten Ebene evaluieren Sie Ihr bestehendes Nutzungsmuster, oder schätzen Sie Ihr erwartetes Nutzungsmuster. Dazu benötigen Sie im Allgemeinen folgende Informationen:
 
 * Ihr Blobspeicherverbrauch in GB, einschließlich:
     - Wie viele Daten werden im Speicherkonto gespeichert?
     - Wie ändert sich das Datenvolumen monatlich; werden alte Daten beständig durch neue Daten ersetzt?
 * Das primäre Zugriffsmuster für Ihre Blobspeicherdaten, einschließlich:
-    - Wie viele Daten werden aus dem Speicherkonto gelesen und in das Speicherkonto geschrieben? 
+    - Wie viele Daten werden aus dem Speicherkonto gelesen und in das Speicherkonto geschrieben?
     - Wie viele Lesevorgänge finden im Vergleich zu Schreibvorgängen für die Daten im Speicherkonto statt?
 
 Um die für Ihre Bedürfnisse am besten geeignete Zugriffsebene zu bestimmen, kann es hilfreich sein zu ermitteln, wie viel Kapazität Ihre Blobdaten nutzen und wie diese Daten verwendet werden. Dazu überprüfen Sie am besten die Überwachungsmetriken für Ihr Konto.
@@ -108,7 +110,7 @@ Um Ihre vorhandenen Speicherkonten zu überwachen und diese Daten zu sammeln, k�
 Weitere Informationen finden Sie unter [Informationen zu Metriken der Speicheranalyse](https://msdn.microsoft.com/library/azure/hh343258.aspx) und [Schema der Tabellen für Speicheranalysemetriken](https://msdn.microsoft.com/library/azure/hh343264.aspx).
 
 > [!NOTE]
-> Blob-Speicherkonten machen den Tabellenspeicherdienst-Endpunkt nur zum Speichern und Zugreifen auf die Metrikdaten für das Konto verfügbar. 
+> Blob-Speicherkonten machen den Tabellenspeicherdienst-Endpunkt nur zum Speichern und Zugreifen auf die Metrikdaten für das Konto verfügbar.
 
 Zur Überwachung des Speicherbedarfs für den Blobspeicher müssen Sie die Kapazitätsmetriken aktivieren.
 Wenn dies aktiviert ist, werden täglich Kapazitätsdaten für den Blob-Dienst eines Speicherkontos aufgezeichnet. Sie werden als Tabelleneintrag aufgezeichnet, der in die Tabelle *$MetricsCapacityBlob* desselben Speicherkontos geschrieben wird.
@@ -120,7 +122,7 @@ Zum Überwachen des Datenzugriffsmusters für Blobspeicher müssen Sie die Stund
 
 Um eine gute Annäherung des Datenverbrauchs und der Zugriffsmuster zu erhalten, empfehlen wir Ihnen die Auswahl eines Aufbewahrungszeitraums für die Metriken, der für die reguläre Nutzung repräsentativ ist und den Sie dann extrapolieren können. Eine Option besteht darin, die Metrikdaten für sieben Tage aufzubewahren und die Daten jede Woche für die Analyse am Monatsende zu erfassen. Eine andere Möglichkeit ist die Aufbewahrung der Metrikdaten der letzten 30 Tage, um sie dann am Ende der 30 Tage zu erfassen und zu analysieren.
 
-Weitere Informationen zum Aktivieren, Erfassen und Anzeigen von Metrikdaten finden Sie unter [Aktivieren der Azure-Speichermetriken und Anzeigen von Metrikdaten](../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Informationen zum Aktivieren, Erfassen und Anzeigen von Metrikdaten finden Sie unter [Metriken der Speicheranalyse](../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 > [!NOTE]
 > Speicherung, Verwendung und Download von Analysedaten werden genau wie bei regulären Benutzerdaten in Rechnung gestellt.

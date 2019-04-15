@@ -1,33 +1,33 @@
 ---
-title: ASC für IoT-Voraussetzungen (Vorschauversion) | Microsoft-Dokumentation
-description: Hier finden Sie Details zu allen Voraussetzungen für den Einstieg in den ASC für IoT-Dienst.
-services: ascforiot
+title: Voraussetzungen für Azure Security Center für IoT (Vorschauversion) | Microsoft-Dokumentation
+description: Hier finden Sie Details zu allen Voraussetzungen für den Einstieg in den Azure Security Center für IoT-Dienst.
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 790cbcb7-1340-4cc1-9509-7b262e7c3181
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 213e6a95484b5f6953f8423474953125f8739015
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: f09d768c0c6c1d351f737b053da9fd3282867099
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541495"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58861688"
 ---
-# <a name="asc-for-iot-prerequisites"></a>ASC für IoT-Voraussetzungen
+# <a name="azure-security-center-for-iot-prerequisites"></a>Voraussetzungen für Azure Security Center für IoT
 
 > [!IMPORTANT]
-> ASC für IoT befindet sich derzeit in der Public Preview-Phase.
+> Azure Security Center für IoT befindet sich derzeit in der öffentlichen Vorschauphase.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Dieser Artikel erläutert die verschiedenen Bausteine des ASC für IoT-Diensts, die Voraussetzungen sowie grundlegende Konzepte, um den Dienst zu verstehen. 
+Dieser Artikel erläutert die verschiedenen Bausteine des Azure Security Center (ASC) für IoT-Diensts, die Voraussetzungen sowie grundlegende Konzepte, um den Dienst zu verstehen. 
 
 ## <a name="minimum-requirements"></a>Mindestanforderungen
 
@@ -59,10 +59,10 @@ ASC für IoT wird derzeit für IoT Hub-Instanzen in den folgenden Azure-Regione
 
 ## <a name="supported-platforms-for-agents"></a>Unterstützte Plattformen für Agents 
 
-ASC für IoT-Agents unterstützt eine wachsende Anzahl von Geräten und Plattformen. In der [Liste der unterstützten Plattformen](select-deploy-agent.md) können Sie Ihre vorhandene oder geplante Gerätebibliothek überprüfen.  
+ASC für IoT-Agents unterstützt eine wachsende Anzahl von Geräten und Plattformen. In der [Liste der unterstützten Plattformen](how-to-deploy-agent.md) können Sie Ihre vorhandene oder geplante Gerätebibliothek überprüfen.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Übersicht](overview.md)
 - [Aktivieren des Diensts](quickstart-onboard-iot-hub.md)
-- [ASC für IoT – Häufig gestellte Fragen](resources-frequently-asked-questions.md)
+- [ASC for IoT FAQ (Azure Security Center für IoT – Häufig gestellte Fragen)](resources-frequently-asked-questions.md)
 - [Grundlegendes zu ASC für IoT-Warnungen](concept-security-alerts.md)

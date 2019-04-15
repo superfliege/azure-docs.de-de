@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: banders
-ms.openlocfilehash: ee7c471cdd76829abc03fa4578d09b8a7303cb38
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 340cba65a1faac247678cd187f106157ba566f3e
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57891432"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918721"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Nicht in reservierten Azure-VM-Instanzen enthaltene Softwarekosten
 
-Wenn Sie für Ihre reservierten VM-Instanzen keinen Anspruch auf Azure-Hybridvorteil haben, werden Ihnen die im folgenden Abschnitt aufgeführten Verbrauchseinheiten für Software berechnet.
+Wenn Sie für Ihre reservierten VM-Instanzen keinen Azure-Hybridvorteil haben, werden Ihnen die im folgenden Abschnitt aufgeführten Verbrauchseinheiten für Software berechnet.
 
 ## <a name="windows-software-meters-not-included-in-reservation-cost"></a>Nicht in den Reservierungskosten enthaltene Verbrauchseinheiten für Windows-Software
 
@@ -66,18 +66,18 @@ Wenn Sie für Ihre reservierten VM-Instanzen keinen Anspruch auf Azure-Hybridvor
 
 ## <a name="rates-for-azure-meters"></a>Tarife für Azure-Verbrauchseinheiten
 
-Sie können die Kosten jeder dieser Verbrauchseinheiten über die Azure RateCard-API abrufen. Informationen zum Abrufen der Tarife für eine Azure-Verbrauchseinheit finden Sie unter [Abrufen von Preis- und Metadateninformationen für in einem Azure-Abonnement verwendete Ressourcen](https://msdn.microsoft.com/library/azure/mt219004).
+Sie können die Kosten jeder dieser Verbrauchseinheiten über die Azure RateCard-API abrufen. Informationen zum Abrufen der Tarife für eine Azure-Verbrauchseinheit finden Sie unter [Abrufen von Preis- und Metadateninformationen für in einem Azure-Abonnement verwendete Ressourcen](/previous-versions/azure/reference/mt219004(v=azure.100)).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artikeln:
+Weitere Informationen zu Reservierungen für Azure finden Sie in den folgenden Artikeln:
 
 - [Was sind Azure-Reservierungen?](billing-save-compute-costs-reservations.md)
 - [Vorauszahlen für virtuelle Computer mit Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Verwalten von Azure-Reservierungen](billing-manage-reserved-vm-instance.md)
-- [Grundlegendes zur Anwendung des Rabatts für Azure-Reservierungen auf virtuelle Computer](billing-understand-vm-reservation-charges.md)
+- [Grundlegendes zur Anwendung des Rabatts für Reservierungen](billing-understand-vm-reservation-charges.md)
 - [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](billing-understand-reserved-instance-usage.md)
 - [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](billing-understand-reserved-instance-usage-ea.md)
 
-## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
+## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
 
 Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).

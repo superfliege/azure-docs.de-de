@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 04/02/2019
 ms.author: alkohli
-ms.openlocfilehash: e3a24117cfd01c1c0bd0f08e8eca5adddf5ee7b6
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.openlocfilehash: de737f20147e8208dd18388eedcac11583c8cb97
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58119784"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891802"
 ---
-# <a name="data-box-edge-security-and-data-protection-preview"></a>Data Box Edge-Sicherheit und -Datenschutz (Vorschauversion)
+# <a name="data-box-edge-security-and-data-protection"></a>Data Box Edge-Sicherheit und -Datenschutz
 
 Sicherheit ist bei der Einführung neuer Technologien immer ein zentrales Anliegen. Das gilt insbesondere, wenn die Technologie mit vertraulichen oder proprietären Daten verwendet wird. Die Microsoft Azure Data Box-Edge-Lösung trägt dazu bei, dass Ihre Daten nur von autorisierten Entitäten angezeigt, geändert oder gelöscht werden können.
 
@@ -28,9 +28,6 @@ Die Azure Data Box Edge-Lösung besteht aus vier Hauptkomponenten, die miteinand
 - **Mit dem Gerät verbundene Clients/Hosts:** Die Clients in Ihrer Infrastruktur, die mit dem Data Box Edge-Gerät verbunden werden und zu schützende Daten enthalten.
 - **Cloud-Speicher** – Der Speicherort in der Azure-Cloud, an dem die Daten gespeichert werden. Hierbei handelt es sich in der Regel um das Speicherkonto, das mit der von Ihnen erstellten Data Box Edge-Ressource verknüpft ist.
 
-> [!IMPORTANT]
-> Data Box Edge befindet sich in der Vorschauphase. Lesen Sie die [Azure-Vertragsbedingungen für Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/), bevor Sie diese Lösung bestellen und bereitstellen. 
-
 
 ## <a name="data-box-edgedata-box-gateway-service-protection"></a>Schutz des Data Box Edge/Data Box Gateway-Diensts
 
@@ -38,16 +35,18 @@ Der Data Box Edge/Data Box Gateway-Dienst ist ein in Microsoft Azure gehosteter 
 
 - Um auf den Data Box Edge/Data Box Gateway-Dienst zugreifen zu können, muss Ihre Organisation über ein EA-Abonnement (Enterprise Agreement) oder über ein CSP-Abonnement (Cloud Solution Provider) verfügen. Weitere Informationen finden Sie unter [Sign up for Microsoft Azure](https://azure.microsoft.com/resources/videos/sign-up-for-microsoft-azure/) (Registrieren für Microsoft Azure).
 - Da Ihr Verwaltungsdienst in Azure gehostet wird, ist er durch die Azure-Sicherheitsfeatures geschützt. Weitere Informationen zu den Sicherheitsfeatures von Microsoft Azure finden Sie im [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/security/).
+- Bei SDK-Verwaltungsvorgängen steht der Verschlüsselungsschlüssel für Ihre Data Box Edge-/Data Box Gateway-Ressource unter **Geräteeigenschaften** zur Verfügung. Sie können den Verschlüsselungsschlüssel nur anzeigen, wenn Sie über Berechtigungen für die Resource Graph-API verfügen.
 
 ## <a name="data-box-edge-device-protection"></a>Schutz des Data Box Edge-Geräts
 
 Das Data Box Edge-Gerät ist ein lokales Gerät, das Sie bei der Datentransformation unterstützt. Hierzu werden die Daten lokal verarbeitet und anschließend an Azure gesendet. Für Ihr Gerät gilt Folgendes:
 
 - Es benötigt einen Aktivierungsschlüssel für den Zugriff auf den Data Box Edge/Data Box Gateway-Dienst.
-- Es ist jederzeit durch ein Geräteadministratorkennwort geschützt.
+- Es ist jederzeit durch ein Gerätekennwort geschützt.
 - Es ist ein gesperrtes Gerät. BMC und BIOS des Geräts sind kennwortgeschützt (mit eingeschränktem Benutzerzugriff auf das BIOS).
 - Sicherer Start ist aktiviert.
-- Windows Defender Device Guard wird darauf ausgeführt. Device Guard stellt sicher, dass nur vertrauenswürdige Anwendungen ausgeführt werden können, die Sie in Ihren Codeintegritätsrichtlinien definieren. 
+- Windows Defender Device Guard wird darauf ausgeführt. Device Guard stellt sicher, dass nur vertrauenswürdige Anwendungen ausgeführt werden können, die Sie in Ihren Codeintegritätsrichtlinien definieren.
+- Enthält einen Schlüssel in der vorderen Abdeckung, mit dem das Gerät verschlossen werden kann. Wir empfehlen, dass Sie nach dem Konfigurieren des Geräts die Abdeckung öffnen. Suchen Sie den Schlüssel, und verschließen Sie dann die Abdeckung, um jeden unbefugten Zugriff auf Datenträger zu verhindern, die sich auf der Vorderseite des Geräts befinden.
 
 ### <a name="protect-the-device-via-activation-key"></a>Schützen des Geräts mittels Aktivierungsschlüssel
 
@@ -68,14 +67,14 @@ Kennwörter sorgen dafür, dass nur autorisierte Benutzer auf Ihre Daten zugreif
 Ihre Möglichkeiten:
 
 - Stellen Sie über einen Browser eine Verbindung mit der lokalen Webbenutzeroberfläche des Geräts her, und geben Sie ein Kennwort an, um sich bei dem Gerät anzumelden.
-- Stellen Sie eine HTTP-Remoteverbindung mit der PowerShell-Schnittstelle des Geräts her. Die Remoteverwaltung ist standardmäßig aktiviert. Anschließend können Sie das Geräteadministratorkennwort angeben, um sich bei dem Gerät anzumelden. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit der PowerShell-Schnittstelle](data-box-edge-connect-powershell-interface.md#connect-to-the-powershell-interface).
+- Stellen Sie eine HTTP-Remoteverbindung mit der PowerShell-Schnittstelle des Geräts her. Die Remoteverwaltung ist standardmäßig aktiviert. Anschließend können Sie das Gerätekennwort angeben, um sich bei dem Gerät anzumelden. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit der PowerShell-Schnittstelle](data-box-edge-connect-powershell-interface.md#connect-to-the-powershell-interface).
 
 Beachten Sie die folgenden bewährten Methoden:
 
 - Der Data Box Edge-Dienst kann keine vorhandenen Kennwörter abrufen; er kann sie nur über das Azure-Portal zurücksetzen. Es wird empfohlen, alle Kennwörter an einem sicheren Ort zu speichern, damit Sie ein Kennwort nicht zurücksetzen müssen, wenn Sie es vergessen haben. Wenn Sie ein Kennwort zurücksetzen, vergessen Sie nicht, alle Benutzer zuvor zu benachrichtigen.
 - Verwenden Sie zum [Ändern des Kennworts](data-box-gateway-manage-access-power-connectivity-mode.md#manage-device-access) die lokale Webbenutzeroberfläche. Sollten Sie das Kennwort ändern, benachrichtigen Sie alle Benutzer mit Remotezugriff, damit bei ihnen keine Anmeldefehler auftreten.
 - Auf die Windows PowerShell-Oberfläche Ihres Geräts können Sie remote über HTTP zugreifen. Aus Sicherheitsgründen empfiehlt es sich, HTTP nur in vertrauenswürdigen Netzwerken zu verwenden.
-- Geräteadministratorkennwörter müssen sicher und gut geschützt sein. Berücksichtigen Sie die [bewährten Methoden für Kennwörter](https://docs.microsoft.com/azure/security/azure-security-identity-management-best-practices#enable-password-management).
+- Gerätekennwörter müssen sicher und gut geschützt sein. Berücksichtigen Sie die [bewährten Methoden für Kennwörter](https://docs.microsoft.com/azure/security/azure-security-identity-management-best-practices#enable-password-management).
 
 ## <a name="protect-the-data"></a>Schützen der Daten
 

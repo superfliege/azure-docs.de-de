@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 32b9a00aa943813bec3c518c3c9dbf0e37a9bc63
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5a05b8f0f9484ea49fbfb0bbe8818aa9cd0d66ee
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445924"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757135"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway
 
@@ -43,7 +43,7 @@ Bevor Sie die Schritte in diesem Artikel ausführen, müssen zwei Geräte einsat
     Derzeit können sich nur nachgeschaltete Geräte mit der Authentifizierung mit symmetrischen Schlüsseln über IoT Edge-Gateways verbinden. X.509-Zertifizierungsstellen und selbstsignierte X.509-Zertifikate werden derzeit nicht unterstützt.
     
 > [!NOTE]
-> Der „Gatewayname“, der zum Erstellen der Zertifikate in dieser Anweisung verwendet wird, muss der gleiche Name sein, den Sie als Hostnamen in Ihrer IoT Edge-config.yaml-Datei und als GatewayHostName in der Verbindungszeichenfolge des Downstreamgeräts verwendet haben. Der „Gatewayname“ muss sich zu einer IP-Adresse auflösen lassen, entweder mithilfe von DNS oder einem Eintrag in der Hostdatei. Auf der Grundlage des verwendeten Protokolls (MQTTS:8883/AMQPS:5671/HTTPS:433) muss Kommunikation zwischen dem Downstreamgerät und dem transparenten IoT Edge möglich sein. Wenn sich dazwischen eine Firewall befindet, muss der entsprechende Port geöffnet sein.
+> Der in diesem Artikel verwendete „Gatewayname“ muss identisch sein mit dem Namen, der in Ihrer IoT Edge-Datei „config.yaml“ verwendet wird. Der Gatewayname muss in eine IP-Adresse aufgelöst werden – entweder mithilfe von DNS oder einem Eintrag in der Hostdatei. Auf der Grundlage des verwendeten Protokolls (MQTTS:8883/AMQPS:5671/HTTPS:433) muss Kommunikation zwischen dem Downstreamgerät und dem transparenten IoT Edge möglich sein. Wenn sich dazwischen eine Firewall befindet, muss der entsprechende Port geöffnet sein.
 
 ## <a name="prepare-a-downstream-device"></a>Vorbereiten eines nachgeschalteten Geräts
 
@@ -197,6 +197,14 @@ Dies ist ein Beispielbefehl, der überprüft, ob alles ordnungsgemäß eingerich
 ```cmd/sh
 openssl s_client -connect mygateway.contoso.com:8883 -CAfile <CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem -showcerts
 ```
+
+## <a name="troubleshoot-the-gateway-connection"></a>Problembehandlung bei der Gatewayverbindung
+
+Wenn bei Ihrem Blattgerät eine zeitweilige Verbindung mit dessen Gatewaygerät besteht, probieren Sie die folgenden Schritte zur Lösung aus. 
+
+1. Ist der an die Verbindungszeichenfolge angefügte Gatewayname identisch mit dem Hostnamen in der IoT Edge-Datei „config.yaml“ auf dem Gatewaygerät?
+2. Kann der Gatewayname in eine IP-Adresse aufgelöst werden? Sie können zeitweilige Verbindungen entweder über DNS oder durch Hinzufügen eines Eintrags in die Hostdatei auf dem Blattgerät lösen.
+3. Sind in Ihrer Firewall Kommunikationsports geöffnet? Auf der Grundlage des verwendeten Protokolls (MQTTS:8883/AMQPS:5671/HTTPS:433) muss Kommunikation zwischen dem Downstreamgerät und dem transparenten IoT Edge möglich sein.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

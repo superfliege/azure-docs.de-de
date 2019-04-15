@@ -8,15 +8,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: raynew
-ms.openlocfilehash: 500986478e554a3a114d11ee4b25ea40b5decd97
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ea5495867d5f453db014e000e01d533d049dc628
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58004133"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849597"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Verwalten und Überwachen gesicherter SQL Server-Datenbanken
-
 
 In diesem Artikel werden allgemeine Aufgaben zur Verwaltung und Überwachung von SQL Server-Datenbanken beschrieben, die auf einem virtuellen Azure-Computer (Virtual Machine, VM) ausgeführt und mit dem [Azure Backup](backup-overview.md)-Dienst in einem Azure Backup Recovery Services-Tresor gesichert werden. Sie erfahren, wie Sie Aufträge und Warnungen überwachen, Datenbankschutz beenden und fortsetzen, Sicherungsaufträge ausführen und die Registrierung einer VM für Sicherungen aufheben.
 
@@ -113,6 +112,7 @@ Sie können verschiedene Arten von bedarfsgesteuerten Sicherungen ausführen:
 * Differenzielle Sicherung
 * Protokollsicherung
 
+Während Sie die Aufbewahrungsdauer für „Vollständige Kopiesicherung“ angeben müssen, wird die Dauer für andere Sicherungstypen automatisch auf 30 Tage ab dem aktuellen Zeitpunkt festgelegt. <br/>
 Weitere Informationen finden Sie unter [Typen von SQL Server-Sicherungen](backup-architecture.md#sql-server-backup-types).
 
 ## <a name="unregister-a-sql-server-instance"></a>Registrierung einer SQL Server-Instanz aufheben

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 41eed6bc878bff4c9d847f9a449ca693274bf234
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 1cadf61d7ce6ed48ea2d42b299dede860a505f0d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195505"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877430"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Behandeln von Azure Files-Problemen unter Windows
 
@@ -112,7 +112,7 @@ Azure Files unterstützt neben SMB auch REST. Der REST-Zugriff erfolgt über Por
 
 Um zu bestimmen, ob dies die Ursache des Fehlers ist, überprüfen Sie, ob der folgende Registrierungsunterschlüssel auf den Wert 3 festgelegt ist:
 
-**HKLM\SYSTEM\CurrentControlSet\Control\Lsa &gt; LmCompatibilityLevel**
+**HKLM\SYSTEM\CurrentControlSet\Control\Lsa > LmCompatibilityLevel**
 
 Weitere Informationen finden Sie im Thema [LmCompatibilityLevel](https://technet.microsoft.com/library/cc960646.aspx) im TechNet.
 
@@ -205,7 +205,7 @@ Sie können eine der folgenden Methoden verwenden, um dieses Problem zu umgehen:
 
 - Führen Sie den folgenden PowerShell-Befehl aus:
 
-  `New-SmbMapping -LocalPath y: -RemotePath \\server\share -UserName accountName -Password "password can contain / and \ etc" `
+  `New-SmbMapping -LocalPath y: -RemotePath \\server\share -UserName accountName -Password "password can contain / and \ etc"`
 
   Von einer Batchdatei aus können Sie wie unten angegeben den Befehl ausführen:
 

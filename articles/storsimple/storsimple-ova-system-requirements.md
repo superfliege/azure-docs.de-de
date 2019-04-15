@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/11/2019
 ms.author: alkohli
-ms.openlocfilehash: becf48320b346feea82944ed2f7e752125795d40
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a6bea2b5447435930cb0e1f80073a11007e80415
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999504"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876835"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>Systemanforderungen für StorSimple Virtual Array
 ## <a name="overview"></a>Übersicht
@@ -92,7 +92,7 @@ Es wird nur der Azure-Blockblobspeicher unterstützt. Seitenblobs werden nicht u
 ## <a name="networking-requirements"></a>Netzwerkanforderungen
 In der folgenden Tabelle sind die Ports aufgeführt, die in der Firewall für iSCSI-, SMB-, Cloud- oder Verwaltungsdatenverkehr geöffnet werden müssen. In dieser Tabelle bezieht sich *ein* oder *eingehend* auf die Richtung, aus der eingehende Clientanforderungen auf das Gerät zugreifen. Entsprechend bezieht sich *aus* oder *ausgehend* auf die Richtung, in der das StorSimple-Gerät Daten über die Bereitstellung hinaus an externe Ziele sendet: z.B. ausgehende Verbindungen mit dem Internet.
 
-| **Portnr.<sup>1</sup>** | **ein oder aus** | **Portbereich** | **Erforderlich** | **Hinweise** |
+| **Portnr. <sup>1</sup>** | **ein oder aus** | **Portbereich** | **Erforderlich** | **Notizen** |
 | --- | --- | --- | --- | --- |
 | TCP 80 (HTTP) |aus |WAN |Nein  |Der ausgehende Port wird für den Internetzugriff zum Abrufen von Updates verwendet. <br></br>Der ausgehende Webproxy kann vom Benutzer konfiguriert werden. |
 | TCP 443 (HTTPS) |aus |WAN |Ja |Der ausgehende Port wird für den Zugriff auf Daten in der Cloud verwendet. <br></br>Der ausgehende Webproxy kann vom Benutzer konfiguriert werden. |
@@ -130,7 +130,7 @@ Es empfiehlt sich, die Firewallregeln für den ausgehenden Verkehr basierend auf
 | `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Microsoft Update-Server<br> |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |
 | `https://*.partners.extranet.microsoft.com/*` |Supportpaket |
-| `https://*.data.microsoft.com ` |Telemetriedienst in Windows. Informationen finden Sie im [Update für Kundenzufriedenheit und Diagnosetelemetrie](https://support.microsoft.com/en-us/kb/3068708). |
+| `https://*.data.microsoft.com` |Telemetriedienst in Windows. Informationen finden Sie im [Update für Kundenzufriedenheit und Diagnosetelemetrie](https://support.microsoft.com/en-us/kb/3068708). |
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Vorbereiten des Portals zum Bereitstellen von StorSimple Virtual Array](storsimple-virtual-array-deploy1-portal-prep.md)

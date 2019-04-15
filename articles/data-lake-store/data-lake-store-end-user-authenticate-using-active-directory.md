@@ -1,22 +1,22 @@
 ---
-title: 'Endbenutzerauthentifizierung: Azure Data Lake Storage Gen1 mit Azure Active Directory | Microsoft Docs'
+title: 'Authentifizierung von Endbenutzern: Azure Data Lake Storage Gen1 mit Azure Active Directory | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie die Authentifizierung von Endbenutzern bei Azure Data Lake Storage Gen1 mithilfe von Azure Active Directory umsetzen.
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 6f7b812f32eda0c671b1ad1101b13a1290df0482
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.author: twooley
+ms.openlocfilehash: c0fe63e395ee08cb65e9bbbadc4ce1f03032ce95
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954781"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880082"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Endbenutzerauthentifizierung mit Azure Data Lake Storage Gen1 mit Azure Active Directory
 > [!div class="op_single_selector"]
@@ -95,7 +95,7 @@ Führen Sie folgende Schritte aus, um den Umleitungs-URI abzurufen.
 3. Kopieren Sie den angezeigten Wert.
 
 
-## <a name="step-3-set-permissions"></a>Schritt 3: Legen Sie Berechtigungen fest
+## <a name="step-3-set-permissions"></a>Schritt 3: Festlegen von Berechtigungen
 
 1. Wählen Sie im Azure-Portal **Azure Active Directory** aus, klicken Sie auf **App-Registrierungen**, suchen Sie die erstellte native Azure AD-Anwendung, und klicken Sie darauf.
 
@@ -120,6 +120,6 @@ In diesem Artikel haben Sie eine native Azure AD-Anwendung erstellt und die erfo
 
 * [Authentifizierung von Endbenutzern bei Data Lake Storage Gen1 mithilfe des Java SDK](data-lake-store-end-user-authenticate-java-sdk.md)
 * [Authentifizierung von Endbenutzern bei Data Lake Storage Gen1 mithilfe des .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md)
-* [Authentifizierung von Endbenutzern bei Data Lake Storage Gen1 mithilfe des Python SDK](data-lake-store-end-user-authenticate-python.md)
+* [Authentifizierung von Endbenutzern bei Data Lake Storage Gen1 mithilfe von Python](data-lake-store-end-user-authenticate-python.md)
 * [Authentifizierung von Endbenutzern bei Data Lake Storage Gen1 mithilfe der REST-API](data-lake-store-end-user-authenticate-rest-api.md)
 

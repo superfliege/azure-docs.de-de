@@ -3,25 +3,25 @@ title: 'REST-API: Dateisystemvorgänge in Azure Data Lake Storage Gen1 | Microso
 description: Verwenden von WebHDFS-REST-APIs zum Ausführen von Dateisystemvorgängen in Azure Data Lake Storage Gen1
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 4c61d68a948cbc5638dab30713871d1aaf822f03
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: twooley
+ms.openlocfilehash: 351c92f1e1a698893f61004d523ba79ebca253e8
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57529246"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877629"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>Dateisystemvorgänge in Azure Data Lake Storage Gen1 mit der REST-API
 > [!div class="op_single_selector"]
 > * [.NET SDK](data-lake-store-data-operations-net-sdk.md)
-> * [Java SDK](data-lake-store-get-started-java-sdk.md)
+> * [Java-SDK](data-lake-store-get-started-java-sdk.md)
 > * [REST-API](data-lake-store-data-operations-rest-api.md)
 > * [Python](data-lake-store-data-operations-python.md)
 >
@@ -114,7 +114,7 @@ Das Lesen von Daten aus einem Data Lake Storage Gen1-Konto ist ein zweistufiger 
 * Sie müssen zuerst eine GET-Anforderung an den Endpunkt `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN`senden. Mit diesem Aufruf wird ein Speicherort zurückgegeben, an den die nächste GET-Anforderung gesendet werden soll.
 * Dann senden Sie die GET-Anforderung an den Endpunkt `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN&read=true`. Mit diesem Aufruf wird der Inhalt der Datei angezeigt.
 
-Da es in den Eingabeparametern keinen Unterschied zwischen dem ersten und zweiten Schritt gibt, können Sie mit dem `-L` -Parameter die erste Anforderung senden. Mit `-L` werden im Wesentlichen zwei Anforderungen in einer kombiniert, und es wird erreicht, dass cURL die Anforderung am neuen Speicherort noch einmal ausführt. Schließlich wird die Ausgabe aller Anforderungsaufrufe wie im folgenden Codeausschnitt dargestellt angezeigt. Ersetzen Sie **\<yourstorename>** durch Ihren Data Lake Storage Gen1-Kontonamen.
+Da es in den Eingabeparametern keinen Unterschied zwischen dem ersten und zweiten Schritt gibt, können Sie mit dem `-L` -Parameter die erste Anforderung senden. `-L` werden im Wesentlichen zwei Anforderungen in einer einzigen Anforderung kombiniert, und es wird erreicht, dass cURL die Anforderung am neuen Speicherort noch einmal ausführt. Schließlich wird die Ausgabe aller Anforderungsaufrufe wie im folgenden Codeausschnitt dargestellt angezeigt. Ersetzen Sie **\<yourstorename>** durch Ihren Data Lake Storage Gen1-Kontonamen.
 
     curl -i -L GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN'
 

@@ -6,15 +6,15 @@ author: rimman
 manager: kfile
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 03/13/2019
 ms.author: banders
 ms.reviewer: sngun
-ms.openlocfilehash: f6549710f90c8d59ed443ab9ae1a302a2d8278d5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8386d1c43761cfb27746b003d136419f72d7d4ae
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57899518"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648536"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>Grundlegendes zur Anwendung des Rabatts für Reservierungen auf Azure Cosmos DB
 
@@ -24,7 +24,7 @@ Nachdem Sie eine reservierte Azure Cosmos DB-Kapazität erworben haben, wird der
 
 Auf den [bereitgestellten Durchsatz](../cosmos-db/request-units.md) wird ein Reservierungsrabatt in Form von Anforderungseinheiten pro Sekunde (RU/s) auf Stundenbasis angewendet. Bei Azure Cosmos DB-Ressourcen, die nicht über die gesamte Stunde hinweg ausgeführt werden, wird der Reservierungsrabatt automatisch auf andere Cosmos DB-Ressourcen angewendet, die den Reservierungsattributen entsprechen. Der Rabatt kann auf Azure Cosmos DB-Ressourcen angewendet werden, die gleichzeitig ausgeführt werden. Wenn die den Reservierungsattributen entsprechenden Cosmos DB-Ressourcen nicht über die gesamte Stunde hinweg ausgeführt werden, profitieren Sie nicht im vollen Umfang vom Reservierungsrabatt für diese Stunde.
 
-Die Rabatte sind gestaffelt. Für Reservierungen mit mehr Anforderungseinheiten gibt es höhere Rabatte. 
+Die Rabatte sind gestaffelt. Für Reservierungen mit mehr Anforderungseinheiten gibt es höhere Rabatte.
 
 Mit dem Erwerb von Reservierungen werden Rabatte auf alle Regionen im Verhältnis zu den regionalen On-Demand-Preisen angewendet. Informationen zu den Reservierungsrabattsätzen in den einzelnen Regionen finden Sie im Abschnitt [Reservierungsrabatte nach Region](#reservation-discount-per-region) dieses Artikels.
 
@@ -71,15 +71,15 @@ Reservierungsrabatte werden auf Stundenbasis auf die Azure Cosmos DB-Durchsatzko
 Für eine Reservierung gelten folgende Anforderungen:
 
 * Erforderlicher Durchsatz: 50.000 RU/s  
-* Genutzte Regionen: 2 
+* Genutzte Regionen: 2
 
-In diesem Fall werden Ihnen On-Demand-Gebühren für 500 Einheiten zu 100 RU/s Verbrauchseinheiten in diesen beiden Regionen berechnet. Der Gesamtverbrauch beträgt 100.000 RU/s pro Stunde. 
+In diesem Fall werden Ihnen On-Demand-Gebühren für 500 Einheiten zu 100 RU/s Verbrauchseinheiten in diesen beiden Regionen berechnet. Der Gesamtverbrauch beträgt 100.000 RU/s pro Stunde.
 
 **Szenario 1**
 
 Beispiel: Sie benötigen Azure Cosmos DB-Bereitstellungen in den Regionen „USA, Norden-Mitte“ und „USA, Westen“. Jede Region verbraucht einen Durchsatz von 50.000 RU/s. Ein Reservierungserwerb von 100.000 RU/s würde Ihre On-Demand-Gebühren vollständig ausgleichen.
 
-Der durch eine Reservierung abgedeckte Rabatt wird wie folgt berechnet: verbrauchter Durchsatz * Reservierungsrabattsatz_für_diese_Region. Für die Regionen „USA, Norden-Mitte“ und „USA, Westen“ beträgt der Reservierungsrabattsatz „1“. Somit wird für insgesamt 100.000 RU/s ein Rabatt gewährt. Dieser Wert wird wie folgt berechnet: 50.000 × 1 + 50.000 × 1 = 100.000 RU/s. Sie müssen keine zusätzlichen Gebühren zu den üblichen Tarifen der nutzungsbasierten Bezahlung zahlen. 
+Der durch eine Reservierung abgedeckte Rabatt wird wie folgt berechnet: verbrauchter Durchsatz * Reservierungsrabattsatz_für_diese_Region. Für die Regionen „USA, Norden-Mitte“ und „USA, Westen“ beträgt der Reservierungsrabattsatz „1“. Somit wird für insgesamt 100.000 RU/s ein Rabatt gewährt. Dieser Wert wird wie folgt berechnet: 50.000 × 1 + 50.000 × 1 = 100.000 RU/s. Sie müssen keine zusätzlichen Gebühren zu den üblichen Tarifen der nutzungsbasierten Bezahlung zahlen.
 
 |Beschreibung der Verbrauchseinheit | Region |Verbrauchter Durchsatz (RU/s) |Anwendung des Reservierungsrabatts auf Anforderungseinheiten pro Sekunde |
 |---------|---------|---------|---------|
@@ -97,11 +97,15 @@ Beispiel: Sie benötigen Azure Cosmos DB-Bereitstellungen in den Regionen „Aus
 
 50.000 Verbrauchseinheiten in der Region „Australien, Mitte 2“ entsprechen 75.000 RU/s abrechenbarem Verbrauch (oder normalisertem Verbrauch). Dieser Wert wird wie folgt berechnet: verbrauchter Durchsatz * Reservierungsrabattsatz_für_diese_Region. Die Berechnung entspricht 75.000 RU/s abrechenbarer bzw. normalisierter Nutzung. Dieser Wert wird wie folgt berechnet: 50.000 × 1,5 = 75.000 RU/s.
 
-Ein Reservierungserwerb von 100.000 RU/s würde die 75.000 RU/s in der Region „Australien, Mitte 2“ ausgleichen. 25.000 RU/s blieben für die Region „Frankreich, Süden“ übrig. Mit den restlichen 25.000 RU/s wird ein Reservierungsrabatt von 15.384 RU/s auf die Region „Frankreich, Süden“ angewendet. Dieser Rabattwert wird wie folgt berechnet: 25.000 / 1,625 = 15.384 RU/s. Die restlichen 34.616 RU/s in der Region „Frankreich, Süden“ werden mit den üblichen Tarifen der nutzungsbasierten Bezahlung berechnet. 
+Ein Reservierungserwerb von 100.000 RU/s würde die 75.000 RU/s in der Region „Australien, Mitte 2“ ausgleichen. 25.000 RU/s blieben für die Region „Frankreich, Süden“ übrig. Mit den restlichen 25.000 RU/s wird ein Reservierungsrabatt von 15.384 RU/s auf die Region „Frankreich, Süden“ angewendet. Dieser Rabattwert wird wie folgt berechnet: 25.000 / 1,625 = 15.384 RU/s. Die restlichen 34.616 RU/s in der Region „Frankreich, Süden“ werden mit den üblichen Tarifen der nutzungsbasierten Bezahlung berechnet.
 
 Vom Azure-Abrechnungssystem wird der Abrechnungsvorteil für Reservierungen der Instanz zugewiesen, die als erste verarbeitet wird und der Reservierungskonfiguration entspricht, in diesem Fall beispielsweise der Region „Australien, Mitte 2“.
 
 Wenn Sie grundlegende Informationen wünschen und die Anwendung Ihrer Azure-Reservierungen in Abrechnungsnutzungsberichten anzeigen möchten, lesen Sie [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](../billing/billing-understand-reserved-instance-usage-ea.md).
+
+## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
+
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -112,10 +116,5 @@ Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artike
 * [Vorauszahlen von SQL-Datenbank-Computeressourcen mit reservierter Azure SQL-Datenbank-Kapazität](../sql-database/sql-database-reserved-capacity.md)  
 * [Verwalten von Azure-Reservierungen](../billing/billing-manage-reserved-vm-instance.md)  
 * [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](../billing/billing-understand-reserved-instance-usage.md)  
-* [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](../billing/billing-understand-reserved-instance-usage-ea.md)  
+* [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](../billing/billing-understand-reserved-instance-usage-ea.md)
 * [Grundlegendes zur Verwendung von Azure-Reservierungen für CSP-Abonnements](https://docs.microsoft.com/partner-center/azure-reservations)
-
-## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
-
-Wenn Sie Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
-

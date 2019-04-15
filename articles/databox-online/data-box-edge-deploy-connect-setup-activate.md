@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/08/2019
+ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 0aaee4b0582f8acb9302c75463c0bc52698acaeb
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: ad288067fdd40dbfa84352916e84fa1e3ab9af8e
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403467"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629143"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>Tutorial: Verbinden, Einrichten und Aktivieren von Azure Data Box Edge 
 
@@ -75,7 +75,7 @@ Das Dashboard zeigt die verschiedenen Einstellungen an, die zum Konfigurieren un
     ![Seite „Gerätename“ der lokalen Webbenutzeroberfläche](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-2.png)
 
 2. (Optional) Klicken Sie im linken Bereich auf **Netzwerkeinstellungen**, und konfigurieren Sie die Einstellungen anschließend.  
-    Auf dem physischen Gerät sind sechs Netzwerkschnittstellen vorhanden. PORT 1 und PORT 2 sind 1-Gbit/s-Netzwerkschnittstellen. PORT 3, PORT 4, PORT 5 und PORT 6 sind alle 25 Gbit/s-Netzwerkschnittstellen, die auch als 10-Gbit/s-Netzwerkschnittstellen verwendet werden können. PORT 1 wird automatisch als reiner Verwaltungsport konfiguriert, während es sich bei PORT 2 bis PORT 6 um Datenports handelt. Die Seite **Netzwerkeinstellungen** wie unten gezeigt.
+    Auf dem physischen Gerät gibt es sechs Netzwerkschnittstellen. PORT 1 und PORT 2 sind 1-Gbit/s-Netzwerkschnittstellen. PORT 3, PORT 4, PORT 5 und PORT 6 sind alle 25 Gbit/s-Netzwerkschnittstellen, die auch als 10-Gbit/s-Netzwerkschnittstellen verwendet werden können. PORT 1 wird automatisch als reiner Verwaltungsport konfiguriert, während es sich bei PORT 2 bis PORT 6 um Datenports handelt. Die Seite **Netzwerkeinstellungen** wie unten gezeigt.
     
     ![Seite „Netzwerkeinstellungen“ der lokalen Webbenutzeroberfläche](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-3.png)
    
@@ -119,7 +119,14 @@ Das Dashboard zeigt die verschiedenen Einstellungen an, die zum Konfigurieren un
 
         ![Seite „Zeiteinstellungen“ der lokalen Webbenutzeroberfläche](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-5.png)
 
-5. Klicken Sie im linken Bereich auf **Cloudeinstellungen**, und aktivieren Sie Ihr Gerät im Azure-Portal für den Data Box Edge-Dienst.
+5. (Optional) Wählen Sie im linken Bereich **Speichereinstellungen** aus, um die Speicherresilienz auf Ihrem Gerät zu konfigurieren. Diese Funktion steht derzeit als Vorschau zur Verfügung. Der Speicher auf dem Gerät ist standardmäßig nicht resilient, und bei einem Ausfall des Datenträgers auf dem Gerät kommt es zu einem Datenverlust. Wenn Sie die Option „Resilient“ aktivieren, wird der Speicher auf dem Gerät neu konfiguriert, und das Gerät kann den Ausfall eines einzigen Datenträgers ohne Datenverlust überstehen. Durch Konfigurieren des Speichers als resilient wird die nutzbare Kapazität Ihres Geräts reduziert.
+
+    > [!IMPORTANT] 
+    > Die Resilienz kann nur konfiguriert werden, bevor Sie das Gerät aktivieren. 
+
+    ![Seite „Speichereinstellungen“ der lokalen Webbenutzeroberfläche](./media/data-box-edge-deploy-connect-setup-activate/storage-settings.png)
+
+6. Klicken Sie im linken Bereich auf **Cloudeinstellungen**, und aktivieren Sie Ihr Gerät im Azure-Portal für den Data Box Edge-Dienst.
     
     1. Geben Sie im Feld **Aktivierungsschlüssel** den Aktivierungsschlüssel ein, den Sie unter [Aktivierungsschlüssel abrufen](data-box-edge-deploy-prep.md#get-the-activation-key) für Data Box Edge abgerufen haben.
     2. Wählen Sie **Übernehmen**.

@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 52f1316b8167d2e1c3e37dbbfc0059b68e832172
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 827d7d9a3d584342703a84dd2a42e5cda9b3a656
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538560"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579409"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Lesen von Nachrichten, die von Geräten an die Cloud gesendet werden, vom integrierten Endpunkt
 
@@ -24,7 +24,7 @@ Standardmäßig werden Nachrichten an den integrierten dienstseitigen Endpunkt (
 | **Anzahl von Partitionen** | Legen Sie diese Eigenschaft bei der Erstellung fest, um die Anzahl von [Partitionen](../event-hubs/event-hubs-features.md#partitions) für die D2C-Ereigniserfassung zu definieren. |
 | **Aufbewahrungsdauer**  | Diese Eigenschaft gibt den Zeitraum in Tagen an, für den Nachrichten von IoT Hub aufbewahrt werden. Als Standardwert ist ein Tag festgelegt, dieser Wert kann jedoch auf sieben Tage erhöht werden. |
 
-IoT Hub ermöglicht die Datenaufbewahrung in den integrierten Event Hubs für bis zu sieben Tage. Sie können die Aufbewahrungsdauer bei der Erstellung Ihres IoT Hubs festlegen. Der Umfang der Datenaufbewahrung im IoT-Hub hängt von Ihrer IoT Hub-Ebene und dem Typ der Einheit ab. In Bezug auf die Größe können die integrierten Event Hubs Nachrichten mit der maximalen Nachrichtengröße bis zu einem Kontingent von mindestens 24 Stunden speichern. Ein IoT Hub für die Einheit 1 S1 bietet z. B. ausreichend Speicherplatz, um mindestens 400K Nachrichten von je 4K Größe zu speichern. Wenn Ihre Geräte Nachrichten mit geringerer Größe senden, können diese je nach verbrauchtem Speicherplatz länger (bis zu sieben Tage) aufbewahrt werden. Wir garantieren, dass die Daten mindestens für die angegebene Aufbewahrungsdauer aufbewahrt werden.
+IoT Hub ermöglicht die Datenaufbewahrung in den integrierten Event Hubs für bis zu sieben Tage. Sie können die Aufbewahrungsdauer bei der Erstellung Ihres IoT Hubs festlegen. Die Datenaufbewahrungsdauer im IoT-Hub hängt von Ihrer IoT Hub-Ebene und dem Typ der Einheit ab. In Bezug auf die Größe können die integrierten Event Hubs Nachrichten mit der maximalen Nachrichtengröße bis zu einem Kontingent von mindestens 24 Stunden speichern. Ein IoT Hub für die Einheit 1 S1 bietet z. B. ausreichend Speicherplatz, um mindestens 400K Nachrichten von je 4K Größe zu speichern. Wenn Ihre Geräte Nachrichten mit geringerer Größe senden, können diese je nach verbrauchtem Speicherplatz länger (bis zu sieben Tage) aufbewahrt werden. Wir garantieren, dass die Daten mindestens für die angegebene Aufbewahrungsdauer aufbewahrt werden.
 
 Mit dem IoT Hub können Sie außerdem Consumergruppen auf dem integrierten D2C-Empfangsendpunkt verwalten.
 

@@ -11,16 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 5a03805fc055583f1f965854d4da3ae6b0c90e20
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 9fb689a2a6e2c1c309d22836e88a63662fed9832
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444892"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904830"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Verknüpfen einer Partner-ID mit Ihren Azure-Konten
 
 Als Partner können Sie die Auswirkungen Ihrer Kundenbindungen nachverfolgen. Sie können Ihre Partner-ID mit den Konten verknüpfen, die zum Verwalten der Ressourcen eines Kunden verwendet werden.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-access-from-your-customer"></a>Erlangen des Zugriffs seitens Ihres Kunden
 
@@ -57,9 +59,8 @@ Wenn Sie Zugriff auf die Ressourcen des Kunden haben, können Sie Ihre Microsoft
 2. Melden Sie sich entweder mit dem Benutzerkonto oder mit dem Dienstprinzipal beim Mandanten des Kunden an. Weitere Informationen finden Sie unter [Anmelden mit PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps).
  
    ```azurepowershell-interactive
-    C:\> Connect-AzureRmAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX 
+    C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX 
    ```
-
 
 3. Verknüpfen Sie die neue Partner-ID. Die Partner-ID ist die [Microsoft Partner Network](https://partner.microsoft.com/)-ID Ihrer Organisation.
 

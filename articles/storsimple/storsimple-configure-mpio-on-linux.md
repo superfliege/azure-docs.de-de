@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: d1188b40021fbb221bc19af6d4a5397f7ba8f800
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: bc1e8a5abc85af95448570497177030f17649d87
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439871"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877583"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurieren von MPIO auf einem StorSimple-Host mit CentOS
 In diesem Artikel werden die Schritte erläutert, die zum Konfigurieren von Multipfad-E/A (Multipathing IO, MPIO) auf Ihrem CentOS 6.6-Hostserver ausgeführt werden müssen. Der Hostserver ist zur Gewährleistung von Hochverfügbarkeit über iSCSI-Initiatoren mit Ihrem Microsoft Azure StorSimple-Gerät verbunden. Nachfolgend wird im Detail beschrieben, wie Multipfadgeräte automatisch erkannt und wie die Einrichtung für StorSimple-Volumes durchgeführt wird.
@@ -41,9 +41,9 @@ Multipfad bietet zwei Vorteile:
 ### <a name="about-multipathing-components"></a>Grundlegendes zu Multipfadkomponenten
 In Linux umfasst Multipfad Kernelkomponenten und Benutzerbereichskomponenten, wie in der nachstehenden Auflistung gezeigt wird.
 
-* **Kernel**: Die Hauptkomponente ist *device-mapper* , die für eine E/A-Umleitung sorgt und ein Failover für Pfade und Pfadgruppen unterstützt.
+* **Kernel**: Die Hauptkomponente ist *device-mapper*, die für eine E/A-Umleitung sorgt und ein Failover für Pfade und Pfadgruppen unterstützt.
 
-* **Benutzerbereich**: Hier werden über *multipath-tools* Multipfadgeräte verwaltet, indem Anweisungen an das Mutipfadmodul "device-mapper" gesendet werden. Die Tools umfassen Folgendes:
+* **Benutzerbereich**: Hier werden über *multipath-tools* Multipfadgeräte verwaltet, indem Anweisungen an das Multipfadmodul „device-mapper“ gesendet werden. Die Tools umfassen Folgendes:
    
    * **Multipath**: Listet Multipfadgeräte auf und konfiguriert diese.
    * **Multipathd**: Daemon, der Multipfad ausführt und die Pfade überwacht.
@@ -56,11 +56,11 @@ Die Konfigurationsdatei `/etc/multipath.conf` ermöglicht eine Konfiguration vie
 
 Die Datei "multipath.conf" enthält fünf Abschnitte:
 
-- **Standardeinstellungen auf Systemebene***(defaults)*: Sie können die Standardwerte auf Systemebene überschreiben.
-- **Gesperrte Geräte***(blacklist)*: Sie können eine Liste der Geräte konfigurieren, die nicht über "device-mapper" gesteuert werden sollen.
-- **Ausnahmen für schwarze Liste***(blacklist_exceptions)*: Sie können festlegen, dass bestimmte Geräte als Multipfadgeräte behandelt werden, selbst wenn sie in der schwarzen Liste aufgeführt sind.
-- **Einstellungen für den Speichercontroller***(devices)*: Sie können Konfigurationseinstellungen festlegen, die auf Geräte mit Hersteller- und Produktinformationen angewendet werden.
-- **Gerätespezifische Einstellungen***(multipaths)*: Sie können diesen Abschnitt dazu verwenden, die Konfigurationseinstellungen für einzelne LUNs zu optimieren.
+- **Standardeinstellungen auf Systemebene** *(defaults)*: Sie können die Standardwerte auf Systemebene überschreiben.
+- **Gesperrte Geräte** *(blacklist)*: Sie können eine Liste der Geräte angeben, die nicht über „device-mapper“ gesteuert werden sollen.
+- **Blacklistausnahmen** *(blacklist_exceptions)*: Sie können festlegen, dass bestimmte Geräte als Multipfadgeräte behandelt werden sollen, selbst wenn sie in der Blacklist aufgeführt sind.
+- **Einstellungen für den Speichercontroller** *(devices)*: Sie können Konfigurationseinstellungen festlegen, die auf Geräte mit Hersteller- und Produktinformationen angewendet werden.
+- **Gerätespezifische Einstellungen** *(multipaths)*: Sie können diesen Abschnitt dazu verwenden, die Konfigurationseinstellungen für einzelne LUNs zu optimieren.
 
 ## <a name="configure-multipathing-on-storsimple-connected-to-linux-host"></a>Konfigurieren von Multipfad auf StorSimple-Geräten mit Verbindung zu einem Linux-Host
 Ein StorSimple-Gerät, das mit einem Linux-Host verbunden ist, kann für Hochverfügbarkeit und Lastenausgleich konfiguriert werden. Angenommen, der Linux-Host ist über zwei Schnittstellen mit dem SAN verbunden, und das Gerät ist ebenfalls über zwei Schnittstellen mit dem SAN verbunden. Wenn sich diese Schnittstellen im selben Subnetz befinden, stehen 4 Pfade zur Verfügung. Wenn sich jedoch die DATA-Schnittstelle zum Gerät und die Hostschnittstelle in einem unterschiedlichen IP-Subnetz befinden (und nicht routingfähig sind), stehen nur 2 Pfade zur Verfügung. Sie können Multipfad zur automatischen Erkennung aller verfügbaren Pfade konfigurieren, einen Lastenausgleichsalgorithmus für diese Pfade auswählen, spezifische Konfigurationseinstellungen für reine StorSimple-Volumes festlegen und Multipfad anschließend aktivieren und überprüfen.
@@ -183,7 +183,7 @@ Die Abbildung oben zeigt Folgendes:
 ## <a name="configuration-steps"></a>Konfigurationsschritte
 Die Konfigurationsschritte für Multipfad umfassen das Konfigurieren der verfügbaren Pfade für die automatische Erkennung, das Festlegen des gewünschten Lastenausgleichsalgorithmus, das Aktivieren von Multipfad und schließlich das Überprüfen der Konfiguration. Jeder dieser Schritte wird in den folgenden Abschnitten ausführlich erläutert.
 
-### <a name="step-1-configure-multipathing-for-automatic-discovery"></a>Schritt 1: Konfigurieren von Multipfad für die automatische Erkennung
+### <a name="step-1-configure-multipathing-for-automatic-discovery"></a>Schritt 1: Konfigurieren von Multipfad für die automatische Erkennung
 Geräte mit Unterstützung für Multipfad können automatisch erkannt und konfiguriert werden.
 
 1. Initialisieren Sie die Datei `/etc/multipath.conf` . Geben Sie Folgendes ein: 
@@ -210,7 +210,7 @@ Geräte mit Unterstützung für Multipfad können automatisch erkannt und konfig
         path_grouping_policy multibus
         }
 
-### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>Schritt 2: Konfigurieren von Multipfad für StorSimple-Volumes
+### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>Schritt 2: Konfigurieren von Multipfad für StorSimple-Volumes
 Standardmäßig werden in der Datei "multipath.conf" alle Geräte auf die schwarze Liste gesetzt und umgangen. Sie müssen Ausnahmen für die schwarze Liste definieren, um Multipfad für Volumes auf StorSimple-Geräten verwenden zu können.
 
 1. Bearbeiten Sie die Datei `/etc/mulitpath.conf` . Geben Sie Folgendes ein: 
@@ -229,7 +229,7 @@ Standardmäßig werden in der Datei "multipath.conf" alle Geräte auf die schwar
             }
            }
 
-### <a name="step-3-configure-round-robin-multipathing"></a>Schritt 3: Konfigurieren von Multipfad mit Roundrobin
+### <a name="step-3-configure-round-robin-multipathing"></a>Schritt 3: Konfigurieren von Multipfad mit Roundrobin
 Dieser Lastenausgleichsalgorithmus verwendet alle verfügbaren Pfade zum aktiven Controller in ausgeglichener Form (Roundrobin).
 
 1. Bearbeiten Sie die Datei `/etc/multipath.conf` . Geben Sie Folgendes ein: 
@@ -250,7 +250,7 @@ Dieser Lastenausgleichsalgorithmus verwendet alle verfügbaren Pfade zum aktiven
 > 
 > 
 
-### <a name="step-4-enable-multipathing"></a>Schritt 4: Aktivieren von Multipfad
+### <a name="step-4-enable-multipathing"></a>Schritt 4: Aktivieren von Multipfad
 1. Starten Sie den `multipathd` -Daemon neu. Geben Sie Folgendes ein: 
    
     `service multipathd restart`
@@ -259,7 +259,7 @@ Dieser Lastenausgleichsalgorithmus verwendet alle verfügbaren Pfade zum aktiven
         [root@centosSS ~]# service multipathd start
         Starting multipathd daemon:  [OK]
 
-### <a name="step-5-verify-multipathing"></a>Schritt 5: Überprüfen von Multipfad
+### <a name="step-5-verify-multipathing"></a>Schritt 5: Überprüfen von Multipfad
 1. Stellen Sie zunächst folgendermaßen sicher, dass die iSCSI-Verbindung mit dem StorSimple-Gerät eingerichtet ist:
    
    a. Führen Sie eine Erkennung für Ihr StorSimple-Gerät aus. Geben Sie Folgendes ein: 
@@ -351,7 +351,7 @@ Sie sollten möglicherweise auch prüfen, ob nach der Verbindungsherstellung mit
 
 * Verwenden Sie den folgenden Befehl, um den SCSI-Bus erneut zu überprüfen:
   
-    `$ rescan-scsi-bus.sh ` (Teil des sg3_utils-Pakets)
+    `$ rescan-scsi-bus.sh` (Teil des sg3_utils-Pakets)
 * Geben Sie die folgenden Befehle ein:
   
     `$ dmesg | grep sd*`

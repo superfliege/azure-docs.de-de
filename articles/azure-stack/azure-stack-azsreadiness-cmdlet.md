@@ -12,26 +12,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 03/30/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/04/2018
-ms.openlocfilehash: 0b75085754a66fabf07076282c977acd7f10a556
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f920059f97f43a2ac3c48dad1c8f999833f6add1
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992316"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757784"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>Referenz zum Cmdlet „Start-AzsReadinessChecker“
 
-Modul: Microsoft.AzureStack.ReadinessChecker
+Modul: **Microsoft.AzureStack.ReadinessChecker**
 
-Dieses Modul enthält nur ein einzelnes Cmdlet.  Dieses Cmdlet führt eine oder mehrere Funktionen vor der Bereitstellung oder Wartung für Azure Stack durch.
+Dieses Modul enthält nur ein einzelnes Cmdlet. Das Cmdlet führt eine oder mehrere Funktionen vor der Bereitstellung oder Wartung für Azure Stack durch.
 
 ## <a name="syntax"></a>Syntax
 
-```PowerShell
+```powershell
 Start-AzsReadinessChecker
        [-CertificatePath <String>]
        -PfxPassword <SecureString>
@@ -45,7 +45,7 @@ Start-AzsReadinessChecker
        [<CommonParameters>]
 ```
 
-```PowerShell
+```powershell
 Start-AzsReadinessChecker
        [-CertificatePath <String>]
        -PfxPassword <SecureString>
@@ -57,7 +57,7 @@ Start-AzsReadinessChecker
        [<CommonParameters>]
 ```
 
-```PowerShell
+```powershell
 Start-AzsReadinessChecker
        -PaaSCertificates <Hashtable>
        -DeploymentDataJSONPath <String>
@@ -67,7 +67,7 @@ Start-AzsReadinessChecker
        [<CommonParameters>]
 ```
 
-```PowerShell
+```powershell
 Start-AzsReadinessChecker
        -PaaSCertificates <Hashtable>
        -RegionName <String>
@@ -79,7 +79,7 @@ Start-AzsReadinessChecker
        [<CommonParameters>]
 ```
 
-```PowerShell
+```powershell
 Start-AzsReadinessChecker
        -RegionName <String>
        -FQDN <String>
@@ -94,7 +94,7 @@ Start-AzsReadinessChecker
        [<CommonParameters>]
 ```
 
-```PowerShell
+```powershell
 Start-AzsReadinessChecker
        -PfxPassword <SecureString>
        -PfxPath <String>
@@ -105,7 +105,7 @@ Start-AzsReadinessChecker
        [<CommonParameters>]
 ```
 
-```PowerShell
+```powershell
 Start-AzsReadinessChecker
        -AADServiceAdministrator <PSCredential>
        -AADDirectoryTenantName <String>
@@ -118,7 +118,7 @@ Start-AzsReadinessChecker
        [<CommonParameters>]
 ```
 
-```PowerShell
+```powershell
 Start-AzsReadinessChecker
        -AADServiceAdministrator <PSCredential>
        -DeploymentDataJSONPath <String>
@@ -129,7 +129,7 @@ Start-AzsReadinessChecker
        [<CommonParameters>]
 ```
 
-```PowerShell
+```powershell
 Start-AzsReadinessChecker
        -RegistrationAccount <PSCredential>
        -RegistrationSubscriptionID <Guid>
@@ -141,7 +141,7 @@ Start-AzsReadinessChecker
        [<CommonParameters>]
 ```
 
-```PowerShell
+```powershell
 Start-AzsReadinessChecker
        -RegistrationAccount <PSCredential>
        -RegistrationSubscriptionID <Guid>
@@ -153,7 +153,7 @@ Start-AzsReadinessChecker
        [<CommonParameters>]
 ```
 
-```PowerShell
+```powershell
 Start-AzsReadinessChecker
        -ReportPath <String>
        [-ReportSections <String>]
@@ -166,42 +166,42 @@ Start-AzsReadinessChecker
 
 ## <a name="description"></a>BESCHREIBUNG
 
-Das Cmdlet **Start-AzsReadinessChecker** überprüft Zertifikate, Azure-Konten, Azure-Abonnements und Azure Active Directory-Instanzen. Führen Sie vor der Bereitstellung von Azure Stack oder vor Azure Stack-Wartungsaktionen wie der Geheimnisrotation eine Überprüfung aus. Das Cmdlet kann auch zum Generieren von Zertifikatsignieranforderungen für Infrastruktur- und optional PaaS-Zertifikate verwendet werden.  Zu guter Letzt kann das Cmdlet PFX-Zertifikate neu packen, um häufige Probleme mit der Paketerstellung zu beheben.
+Das Cmdlet **Start-AzsReadinessChecker** überprüft Zertifikate, Azure-Konten, Azure-Abonnements und Azure Active Directory-Instanzen. Führen Sie vor dem Bereitstellen von Azure Stack oder vor Azure Stack-Wartungsaktionen wie etwa der Geheimnisrotation eine Überprüfung aus. Das Cmdlet kann auch zum Generieren von Zertifikatsignieranforderungen für Infrastrukturzertifikate (und optional für PaaS-Zertifikate) verwendet werden. Zu guter Letzt kann das Cmdlet PFX-Zertifikate neu packen, um häufige Probleme mit der Paketerstellung zu beheben.
 
 ## <a name="examples"></a>Beispiele
 
-### <a name="example-generate-certificate-signing-request"></a>Beispiel: Generieren der Zertifikatsignieranforderung
+### <a name="example-generate-certificate-signing-request"></a>Beispiel: Generieren einer Zertifikatsignieranforderung
 
-```PowerShell
+```powershell
 $regionName = 'east'
 $externalFQDN = 'azurestack.contoso.com'
 $subjectHash = [ordered]@{"OU"="AzureStack";"O"="Microsoft";"L"="Redmond";"ST"="Washington";"C"="US"}
 Start-AzsReadinessChecker -regionName $regionName -externalFQDN $externalFQDN -subject $subjectHash -IdentitySystem ADFS -requestType MultipleCSR
 ```
 
-In diesem Beispiel generiert Start-AzsReadinessChecker mehrere Zertifikatsignieranforderungen (Certificate Signing Requests, CSR) für Zertifikate, die für eine AD FS-Azure Stack-Bereitstellung mit dem Regionsnamen „Osten“ und dem externen FQDN „azurestack.contoso.com“ geeignet sind.
+In diesem Beispiel generiert `Start-AzsReadinessChecker` mehrere Zertifikatsignieranforderungen (Certificate Signing Requests, CSRs) für Zertifikate, die für eine AD FS-Azure Stack-Bereitstellung mit dem Regionsnamen **east** und dem externen FQDN **azurestack.contoso.com** geeignet sind.
 
 ### <a name="example-validate-certificates"></a>Beispiel: Überprüfen von Zertifikaten
 
-```PowerShell
+```powershell
 $password = Read-Host -Prompt "Enter PFX Password" -AsSecureString
 Start-AzsReadinessChecker -CertificatePath .\Certificates\ -PfxPassword $password -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD
 ```
 
-In diesem Beispiel wird die Angabe des PFX-Kennworts für eine größere Sicherheit angefordert, und Start-AzsReadinessChecker überprüft den relativen Ordner „Zertifikate“ für Zertifikate, die für eine AAD-Bereitstellung mit dem Regionsnamen „Osten“ und dem externen FQDN „azurestack.contoso.com“ gültig sind.
+In diesem Beispiel wird aus Sicherheitsgründen das PFX-Kennwort benötigt, und `Start-AzsReadinessChecker` überprüft den relativen Ordner **Certificates** auf Zertifikate, die für eine AAD-Bereitstellung mit dem Regionsnamen **east** und dem externen FQDN **azurestack.contoso.com** gültig sind.
 
 ### <a name="example-validate-certificates-with-deployment-data-deployment-and-support"></a>Beispiel: Überprüfen von Zertifikaten mit Bereitstellungsdaten (Bereitstellung und Support)
 
-```PowerShell
+```powershell
 $password = Read-Host -Prompt "Enter PFX Password" -AsSecureString
 Start-AzsReadinessChecker -CertificatePath .\Certificates\ -PfxPassword $password -DeploymentDataJSONPath .\deploymentdata.json
 ```
 
-In diesem Beispiel zur Bereitstellung und zum Support wird das PFX-Kennwort für größere Sicherheit angefordert, und Start-AzsReadinessChecker überprüft den relativen Ordner „Zertifikate“ auf Zertifikate, die für eine Bereitstellung geeignet sind, bei der Identität, Region und externer FQDN aus der für die Bereitstellung generierten JSON-Datei mit Bereitstellungsdaten gelesen werden. 
+In diesem Bereitstellungs- und Supportbeispiel wird aus Sicherheitsgründen das PFX-Kennwort benötigt, und `Start-AzsReadinessChecker` überprüft den relativen Ordner **Certificates** auf Zertifikate, die für eine Bereitstellung geeignet sind, bei der Identität, Region und externer FQDN aus der für die Bereitstellung generierten JSON-Datei mit Bereitstellungsdaten gelesen werden.
 
 ### <a name="example-validate-paas-certificates"></a>Beispiel: Überprüfen von PaaS-Zertifikaten
 
-```PowerShell
+```powershell
 $PaaSCertificates = @{
     'PaaSDBCert' = @{'pfxPath' = '<Path to DBAdapter PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
     'PaaSDefaultCert' = @{'pfxPath' = '<Path to Default PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
@@ -212,11 +212,11 @@ $PaaSCertificates = @{
 Start-AzsReadinessChecker -PaaSCertificates $PaaSCertificates – RegionName east -FQDN azurestack.contoso.com
 ```
 
-In diesem Beispiel wird eine Hashtabelle mit Pfaden und Kennwörtern für jedes PaaS-Zertifikat erstellt. Zertifikate können weggelassen werden. Start-AzsReadinessChecker überprüft, ob jeder PFX-Pfad vorhanden ist, und überprüft die Region „Osten“ und den externen FQDN „azurestack.contoso.com“.
+In diesem Beispiel wird eine Hashtabelle mit Pfaden und Kennwörtern für jedes PaaS-Zertifikat erstellt. Zertifikate können weggelassen werden. `Start-AzsReadinessChecker` prüft, ob die einzelnen PFX-Pfade vorhanden sind, und überprüft sie anhand der Region **east** und des externen FQDN **azurestack.contoso.com**.
 
 ### <a name="example-validate-paas-certificates-with-deployment-data"></a>Beispiel: Überprüfen von PaaS-Zertifikaten mit Bereitstellungsdaten
 
-```PowerShell
+```powershell
 $PaaSCertificates = @{
     'PaaSDBCert' = @{'pfxPath' = '<Path to DBAdapter PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
     'PaaSDefaultCert' = @{'pfxPath' = '<Path to Default PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
@@ -227,78 +227,78 @@ $PaaSCertificates = @{
 Start-AzsReadinessChecker -PaaSCertificates $PaaSCertificates -DeploymentDataJSONPath .\deploymentdata.json
 ```
 
-In diesem Beispiel wird eine Hashtabelle mit Pfaden und Kennwörtern für jedes PaaS-Zertifikat erstellt. Zertifikate können weggelassen werden. Start-AzsReadinessChecker überprüft, ob jeder PFX-Pfad vorhanden ist, und überprüft diese anhand der Region und dem externen FQDN, die aus der für die Bereitstellung generierten JSON-Datei mit Bereitstellungsdaten gelesen werden. 
+In diesem Beispiel wird eine Hashtabelle mit Pfaden und Kennwörtern für jedes PaaS-Zertifikat erstellt. Zertifikate können weggelassen werden. `Start-AzsReadinessChecker` prüft, ob die einzelnen PFX-Pfade vorhanden sind, und überprüft sie anhand der Region und des externen FQDN, die aus der für die Bereitstellung generierten JSON-Datei mit Bereitstellungsdaten gelesen werden.
 
 ### <a name="example-validate-azure-identity"></a>Beispiel: Überprüfen der Azure-Identität
 
-```PowerShell
+```powershell
 $serviceAdminCredential = Get-Credential -Message "Enter Credentials for Service Administrator of Azure Active Directory Tenant e.g. serviceadmin@contoso.onmicrosoft.com"
 # Supported values for the <environment name> parameter are AzureCloud, AzureChinaCloud or AzureUSGovernment depending which Azure subscription you are using.
 Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment "<environment name>" -AzureDirectoryTenantName azurestack.contoso.com
 ```
 
-In diesem Beispiel werden die Kontoanmeldeinformationen des Dienstadministrators für größere Sicherheit angefordert, und Start-AzsReadinessChecker überprüft, ob das Azure-Konto und Azure Active Directory für eine AAD-Bereitstellung mit dem Mandantenverzeichnisnamen „azurestack.contoso.com“ gültig sind.
+In diesem Beispiel werden aus Sicherheitsgründen die Kontoanmeldeinformationen des Dienstadministrators benötigt, und `Start-AzsReadinessChecker` überprüft, ob das Azure-Konto und Azure Active Directory für eine AAD-Bereitstellung mit dem Mandantenverzeichnisnamen **azurestack.contoso.com** gültig sind.
 
-### <a name="example-validate-azure-identity-with-deployment-data-deployment-support"></a>Beispiel: Überprüfen der Azure-Identität mit Bereitstellungsdaten (Support für die Bereitstellung)
+### <a name="example-validate-azure-identity-with-deployment-data-deployment-support"></a>Beispiel: Überprüfen der Azure-Identität mit Bereitstellungsdaten (Bereitstellungsunterstützung)
 
 ```PowerSHell
 $serviceAdminCredential = Get-Credential -Message "Enter Credentials for Service Administrator of Azure Active Directory Tenant e.g. serviceadmin@contoso.onmicrosoft.com"
 Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -DeploymentDataJSONPath .\contoso-depploymentdata.json
 ```
 
-In diesem Beispiel werden die Kontoanmeldeinformationen des Dienstadministrators für größere Sicherheit angefordert, und Start-AzsReadinessChecker überprüft, ob das Azure-Konto und Azure Active Directory für eine AAD-Bereitstellung gültig sind, wobei AzureCloud und TenantName aus der für die Bereitstellung generierten JSON-Datei mit Bereitstellungsdaten gelesen werden.
+In diesem Beispiel werden aus Sicherheitsgründen die Kontoanmeldeinformationen des Dienstadministrators benötigt, und `Start-AzsReadinessChecker` überprüft, ob das Azure-Konto und Azure Active Directory für eine AAD-Bereitstellung gültig sind, bei der **AzureCloud** und **TenantName** aus der für die Bereitstellung generierten JSON-Datei mit Bereitstellungsdaten gelesen werden.
 
 ### <a name="example-validate-azure-registration"></a>Beispiel: Überprüfen der Azure-Registrierung
 
-```PowerShell
+```powershell
 $registrationCredential = Get-Credential -Message "Enter Credentials for Subscription Owner e.g. subscriptionowner@contoso.onmicrosoft.com"
 $subscriptionID = "<subscription ID"
 # Supported values for the <environment name> parameter are AzureCloud, AzureChinaCloud or AzureUSGovernment depending which Azure subscription you are using.
 Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -RegistrationSubscriptionID $subscriptionID -AzureEnvironment "<environment name>"
 ```
 
-In diesem Beispiel werden die Anmeldeinformationen des Abonnementbesitzers für größere Sicherheit angefordert, und Start-AzsReadinessChecker führt dann eine Überprüfung anhand des angegebenen Kontos und Abonnements aus, um sicherzustellen, dass diese für die Azure Stack-Registrierung verwendet werden können. 
+In diesem Beispiel werden aus Sicherheitsgründen die Anmeldeinformationen des Abonnementbesitzers benötigt, und `Start-AzsReadinessChecker` führt eine Überprüfung anhand des angegebenen Kontos und Abonnements aus, um sicherzustellen, dass diese für die Azure Stack-Registrierung verwendet werden können.
 
 ### <a name="example-validate-azure-registration-with-deployment-data-deployment-team"></a>Beispiel: Überprüfen der Azure-Registrierung mit Bereitstellungsdaten (Bereitstellungsteam)
 
-```PowerShell
+```powershell
 $registrationCredential = Get-Credential -Message "Enter Credentials for Subscription Owner e.g. subscriptionowner@contoso.onmicrosoft.com"
 $subscriptionID = "<subscription ID>"
 Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -RegistrationSubscriptionID $subscriptionID -DeploymentDataJSONPath .\contoso-deploymentdata.json
 ```
 
-In diesem Beispiel werden die Anmeldeinformationen des Abonnementbesitzers für größere Sicherheit angefordert, und Start-AzsReadinessChecker führt dann eine Überprüfung anhand des angegebenes Kontos und Abonnements aus, um sicherzustellen, dass diese für die Azure Stack-Registrierung verwendet werden können. Zusätzliche Details werden dabei aus der für die Bereitstellung generierten JSON-Datei mit Bereitstellungsdaten gelesen.
+In diesem Beispiel werden aus Sicherheitsgründen die Anmeldeinformationen des Abonnementbesitzers benötigt, und `Start-AzsReadinessChecker` führt eine Überprüfung anhand des angegebenes Kontos und Abonnements aus, um sicherzustellen, dass diese für die Azure Stack-Registrierung verwendet werden können, wobei zusätzliche Details aus der für die Bereitstellung generierten JSON-Datei mit Bereitstellungsdaten gelesen werden.
 
-### <a name="example-importexport-pfx-package"></a>Beispiel: Importieren bzw. Exportieren von PFX-Paketen
+### <a name="example-importexport-pfx-package"></a>Beispiel: Importieren/Exportieren eines PFX-Pakets
 
-```PowerShell
+```powershell
 $password = Read-Host -Prompt "Enter PFX Password" -AsSecureString
 Start-AzsReadinessChecker -PfxPassword $password -PfxPath .\certificates\ssl.pfx -ExportPFXPath .\certificates\ssl_new.pfx
 ```
 
-In diesem Beispiel wird das PFX-Kennwort für größere Sicherheit angefordert. Die Datei „ssl.pfx“ wird in den Zertifikatspeicher des lokalen Computers importiert, mit dem gleichen Kennwort wieder exportiert und als „ssl_new.pfx“ gespeichert.  Diese Vorgehensweise wird verwendet, wenn die Zertifikatüberprüfung gekennzeichnet hat, dass ein privater Schlüssel nicht über den Attributsatz eines lokalen Computers verfügt, die Zertifikatkette unterbrochen ist, irrelevante Zertifikate in der PFX-Datei enthalten sind oder die Zertifikatkette die falsche Reihenfolge aufweist.
+In diesem Beispiel wird aus Sicherheitsgründen das PFX-Kennwort benötigt. Die Datei „Ssl.pfx“ wird in den Zertifikatspeicher des lokalen Computers importiert, mit dem gleichen Kennwort wieder exportiert und als „Ssl_new.pfx“ gespeichert. Diese Vorgehensweise wird verwendet, wenn die Zertifikatüberprüfung festgestellt hat, dass ein privater Schlüssel nicht über den Attributsatz **Lokaler Computer** verfügt, die Zertifikatkette unterbrochen ist, irrelevante Zertifikate in der PFX-Datei enthalten sind oder die Zertifikatkette eine falsche Reihenfolge aufweist.
 
-### <a name="example-view-validation-report-deployment-support"></a>Beispiel: Anzeigen des Überprüfungsberichts (Support für die Bereitstellung)
+### <a name="example-view-validation-report-deployment-support"></a>Beispiel: Anzeigen des Überprüfungsberichts (Bereitstellungsunterstützung)
 
-```PowerShell
+```powershell
 Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json
 ```
 
-In diesem Beispiel erhält das Bereitstellungs- oder Supportteam den Bereitschaftsbericht vom Kunden (Contoso), und Start-AzsReadinessChecker wird verwendet, um den Status der von Contoso ausgeführten Überprüfungsausführungen anzuzeigen.
+In diesem Beispiel erhält das Bereitstellungs- oder Supportteam den Bereitschaftsbericht vom Kunden (Contoso), und `Start-AzsReadinessChecker` wird verwendet, um den Status der von Contoso ausgeführten Überprüfungen anzuzeigen.
 
 ### <a name="example-view-validation-report-summary-for-certificate-validation-only-deployment-and-support"></a>Beispiel: Anzeigen der Zusammenfassung des Überprüfungsberichts ausschließlich zur Zertifikatüberprüfung (Bereitstellung und Support)
 
-```PowerShell
+```powershell
 Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSections Certificate -Summary
 ```
 
-In diesem Beispiel erhält das Bereitstellungs- oder Supportteam den Bereitschaftsbericht vom Kunden Contoso, und Start-AzsReadinessChecker wird verwendet, um einen zusammengefassten Status der von Contoso ausgeführten Zertifikatüberprüfungsausführungen anzuzeigen.
+In diesem Beispiel erhält das Bereitstellungs- oder Supportteam den Bereitschaftsbericht vom Kunden (Contoso), und `Start-AzsReadinessChecker` wird verwendet, um einen zusammengefassten Status der von Contoso ausgeführten Zertifikatüberprüfungen anzuzeigen.
 
 ## <a name="required-parameters"></a>Erforderliche Parameter
 
-> -RegionName
+### <a name="-regionname"></a>-RegionName
 
-Gibt den Regionsnamen der Azure Stack-Bereitstellung an.
+Gibt den Regionsnamen der Azure Stack-Bereitstellung an.
 
 |  |  |
 |----------------------------|--------------|
@@ -308,9 +308,9 @@ Gibt den Regionsnamen der Azure Stack-Bereitstellung an.
 |Pipelineeingabe akzeptieren:      |False         |
 |Platzhalterzeichen akzeptieren: |False         |
 
-> -FQDN
+### <a name="-fqdn"></a>-FQDN
 
-Gibt den externen FQDN der Azure Stack-Bereitstellung an, der auch als Alias für ExternalFQDN und ExternalDomainName verwendet wird.
+Gibt den externen FQDN der Azure Stack-Bereitstellung an, der auch als Alias für **ExternalFQDN** und **ExternalDomainName** verwendet wird.
 
 |  |  |
 |----------------------------|--------------|
@@ -320,9 +320,9 @@ Gibt den externen FQDN der Azure Stack-Bereitstellung an, der auch als Alias fü
 |Pipelineeingabe akzeptieren:      |False         |
 |Platzhalterzeichen akzeptieren: |False         |
 
-> -IdentitySystem
+### <a name="-identitysystem"></a>-IdentitySystem
 
-Gibt die gültigen Werte des Identitätssystems der Azure Stack-Bereitstellung an, d.h. AAD oder ADFS für Azure Active Directory bzw. Active Directory-Verbunddienste (AD FS).
+Gibt die gültigen Werte des Identitätssystems der Azure Stack-Bereitstellung an: „AAD“ für Azure Active Directory oder „ADFS“ für Active Directory-Verbunddienste.
 
 |  |  |
 |----------------------------|--------------|
@@ -333,7 +333,7 @@ Gibt die gültigen Werte des Identitätssystems der Azure Stack-Bereitstellung a
 |Pipelineeingabe akzeptieren:      |False         |
 |Platzhalterzeichen akzeptieren: |False         |
 
-> -PfxPassword
+### <a name="-pfxpassword"></a>-PfxPassword
 
 Gibt das den PFX-Zertifikatdateien zugeordnete Kennwort an.
 
@@ -345,7 +345,7 @@ Gibt das den PFX-Zertifikatdateien zugeordnete Kennwort an.
 |Pipelineeingabe akzeptieren:      |False    |
 |Platzhalterzeichen akzeptieren: |False    |
 
-> -PaaSCertificates
+### <a name="-paascertificates"></a>-PaaSCertificates
 
 Gibt die Hashtabelle an, die Pfade und Kennwörter für PaaS-Zertifikate enthält.
 
@@ -357,7 +357,7 @@ Gibt die Hashtabelle an, die Pfade und Kennwörter für PaaS-Zertifikate enthäl
 |Pipelineeingabe akzeptieren:      |False    |
 |Platzhalterzeichen akzeptieren: |False    |
 
-> -DeploymentDataJSONPath
+### <a name="-deploymentdatajsonpath"></a>-DeploymentDataJSONPath
 
 Gibt die JSON-Konfigurationsdatei mit Azure Stack-Bereitstellungsdaten an. Diese Datei wird für die Bereitstellung generiert.
 
@@ -369,21 +369,9 @@ Gibt die JSON-Konfigurationsdatei mit Azure Stack-Bereitstellungsdaten an. Diese
 |Pipelineeingabe akzeptieren:      |False    |
 |Platzhalterzeichen akzeptieren: |False    |
 
-> -PfxPath
+### <a name="-pfxpath"></a>-PfxPath
 
-Gibt den Pfad zu einem problematischen Zertifikat an, für das die Import-/Exportroutine, die für die Zertifikatüberprüfung in diesem Tool angegeben ist, behandelt werden muss.
-
-|  |  |
-|----------------------------|---------|
-|Geben Sie Folgendes ein:                        |Zeichenfolge   |
-|Position:                   |benannt    |
-|Standardwert:              |Keine     |
-|Pipelineeingabe akzeptieren:      |False    |
-|Platzhalterzeichen akzeptieren: |False    |
-
-> -ExportPFXPath  
-
-Gibt den Zielpfad für die resultierende PFX-Datei von der Import-/Exportroutine an.  
+Gibt den Pfad zu einem problematischen Zertifikat an, für dessen Korrektur eine Import-/Exportroutine erforderlich ist (gemäß Angabe der Zertifikatüberprüfung in diesem Tool).
 
 |  |  |
 |----------------------------|---------|
@@ -393,7 +381,19 @@ Gibt den Zielpfad für die resultierende PFX-Datei von der Import-/Exportroutine
 |Pipelineeingabe akzeptieren:      |False    |
 |Platzhalterzeichen akzeptieren: |False    |
 
-> -Subject
+### <a name="-exportpfxpath"></a>-ExportPFXPath  
+
+Gibt den Zielpfad für die resultierende PFX-Datei der Import-/Exportroutine an.  
+
+|  |  |
+|----------------------------|---------|
+|Geben Sie Folgendes ein:                        |Zeichenfolge   |
+|Position:                   |benannt    |
+|Standardwert:              |Keine     |
+|Pipelineeingabe akzeptieren:      |False    |
+|Platzhalterzeichen akzeptieren: |False    |
+
+### <a name="-subject"></a>-Subject
 
 Gibt ein sortiertes Wörterbuch des Fachgebiets für die Generierung von Zertifikatanforderungen an.
 
@@ -405,12 +405,12 @@ Gibt ein sortiertes Wörterbuch des Fachgebiets für die Generierung von Zertifi
 |Pipelineeingabe akzeptieren:      |False    |
 |Platzhalterzeichen akzeptieren: |False    |
 
-> -RequestType
+### <a name="-requesttype"></a>-RequestType
 
-Gibt den SAN-Typ der Zertifikatanforderung an. Gültige Werte: MultipleCSR, SingleCSR.
+Gibt den SAN-Typ der Zertifikatanforderung an. Gültige Werte: **MultipleCSR**, **SingleCSR**.
 
-- *MultipleCSR* generiert mehrere Zertifikatanforderungen, eine für jeden Dienst.
-- *SingleCSR* generiert eine Zertifikatanforderung für alle Dienste.
+- **MultipleCSR** generiert mehrere Zertifikatanforderungen, eine für jeden Dienst.
+- **SingleCSR** generiert eine Zertifikatanforderung für alle Dienste.
 
 |  |  |
 |----------------------------|---------|
@@ -421,9 +421,9 @@ Gibt den SAN-Typ der Zertifikatanforderung an. Gültige Werte: MultipleCSR, Sing
 |Pipelineeingabe akzeptieren:      |False    |
 |Platzhalterzeichen akzeptieren: |False    |
 
-> -OutputRequestPath
+### <a name="-outputrequestpath"></a>-OutputRequestPath
 
-Gibt den Zielpfad für die Zertifikatanforderungsdateien an (das Verzeichnis muss bereits vorhanden sein).
+Gibt den Zielpfad für die Zertifikatanforderungsdateien an. Das Verzeichnis muss bereits vorhanden sein.
 
 |  |  |
 |----------------------------|---------|
@@ -433,9 +433,9 @@ Gibt den Zielpfad für die Zertifikatanforderungsdateien an (das Verzeichnis mus
 |Pipelineeingabe akzeptieren:      |False    |
 |Platzhalterzeichen akzeptieren: |False    |
 
-> -AADServiceAdministrator
+### <a name="-aadserviceadministrator"></a>-AADServiceAdministrator
 
-Gibt den für die Azure Stack-Bereitstellung zu verwendenden Azure Active Directory-Dienstadministrator an.
+Gibt den Azure Active Directory-Dienstadministrator an, der für die Azure Stack-Bereitstellung verwendet werden soll.
 
 |  |  |
 |----------------------------|---------|
@@ -445,7 +445,7 @@ Gibt den für die Azure Stack-Bereitstellung zu verwendenden Azure Active Direct
 |Pipelineeingabe akzeptieren:      |False    |
 |Platzhalterzeichen akzeptieren: |False    |
 
-> -AADDirectoryTenantName
+### <a name="-aaddirectorytenantname"></a>-AADDirectoryTenantName
 
 Gibt den für die Azure Stack-Bereitstellung zu verwendenden Azure Active Directory-Namen an.
 
@@ -457,7 +457,7 @@ Gibt den für die Azure Stack-Bereitstellung zu verwendenden Azure Active Direct
 |Pipelineeingabe akzeptieren:      |False    |
 |Platzhalterzeichen akzeptieren: |False    |
 
-> -AzureEnvironment
+### <a name="-azureenvironment"></a>-AzureEnvironment
 
 Gibt die Instanz der Azure-Dienste mit den Konten, Verzeichnissen und Abonnements an, die für die Azure Stack-Bereitstellung und -Registrierung verwendet werden sollen.
 
@@ -470,9 +470,9 @@ Gibt die Instanz der Azure-Dienste mit den Konten, Verzeichnissen und Abonnement
 |Pipelineeingabe akzeptieren:      |False    |
 |Platzhalterzeichen akzeptieren: |False    |
 
-> -RegistrationAccount
+### <a name="-registrationaccount"></a>-RegistrationAccount
 
-Gibt das Registrierungskonto an, das für die Azure Stack-Registrierung verwendet werden soll.
+Gibt das Registrierungskonto an, das für die Azure Stack-Registrierung verwendet werden soll.
 
 |  |  |
 |----------------------------|---------|
@@ -482,9 +482,9 @@ Gibt das Registrierungskonto an, das für die Azure Stack-Registrierung verwende
 |Pipelineeingabe akzeptieren:      |False    |
 |Platzhalterzeichen akzeptieren: |False    |
 
-> -RegistrationSubscriptionID
+### <a name="-registrationsubscriptionid"></a>-RegistrationSubscriptionID
 
-Gibt die Registrierungsabonnement-ID an, die für die Azure Stack-Registrierung verwendet werden soll.
+Gibt die Registrierungsabonnement-ID an, die für die Azure Stack-Registrierung verwendet werden soll.
 
 |  |  |
 |----------------------------|---------|
@@ -494,9 +494,9 @@ Gibt die Registrierungsabonnement-ID an, die für die Azure Stack-Registrierung 
 |Pipelineeingabe akzeptieren:      |False    |
 |Platzhalterzeichen akzeptieren: |False    |
 
-> -ReportPath
+### <a name="-reportpath"></a>-ReportPath
 
-Gibt den Pfad für den Bereitschaftsbericht an, für den standardmäßig das aktuelle Verzeichnis und der Standardberichtsname festgelegt sind.
+Gibt den Pfad für den Bereitschaftsbericht an. Standardmäßig werden das aktuelle Verzeichnis und der Standardberichtsname verwendet.
 
 |  |  |
 |----------------------------|---------|
@@ -508,7 +508,7 @@ Gibt den Pfad für den Bereitschaftsbericht an, für den standardmäßig das akt
 
 ## <a name="optional-parameters"></a>Optionale Parameter
 
-> -CertificatePath
+### <a name="-certificatepath"></a>-CertificatePath
 
 Gibt den Pfad an, unter dem nur die für das Zertifikat erforderlichen Zertifikatordner enthalten sind.
 
@@ -528,7 +528,7 @@ ACSBlob, ACSQueue, ACSTable, ADFS, Admin Portal, ARM Admin, ARM Public, Graph, K
 |Pipelineeingabe akzeptieren:      |False    |
 |Platzhalterzeichen akzeptieren: |False    |
 
-> -IncludePaaS  
+### <a name="-includepaas"></a>-IncludePaaS  
 
 Gibt an, ob PaaS-Dienste/-Hostnamen zu Zertifikatanforderungen hinzugefügt werden sollen.
 
@@ -540,7 +540,7 @@ Gibt an, ob PaaS-Dienste/-Hostnamen zu Zertifikatanforderungen hinzugefügt werd
 |Pipelineeingabe akzeptieren:      |False             |
 |Platzhalterzeichen akzeptieren: |False             |
 
-> -ReportSections
+### <a name="-reportsections"></a>-ReportSections
 
 Gibt an, ob nur die Berichtszusammenfassung angezeigt werden soll und Details ausgelassen werden sollen.
 
@@ -553,7 +553,7 @@ Gibt an, ob nur die Berichtszusammenfassung angezeigt werden soll und Details au
 |Pipelineeingabe akzeptieren:      |False    |
 |Platzhalterzeichen akzeptieren: |False    |
 
-> -Summary
+### <a name="-summary"></a>-Summary
 
 Gibt an, ob nur die Berichtszusammenfassung angezeigt werden soll und Details ausgelassen werden sollen.
 
@@ -565,7 +565,7 @@ Gibt an, ob nur die Berichtszusammenfassung angezeigt werden soll und Details au
 |Pipelineeingabe akzeptieren:      |False             |
 |Platzhalterzeichen akzeptieren: |False             |
 
-> -CleanReport
+### <a name="-cleanreport"></a>-CleanReport
 
 Entfernt die vorherige Ausführung und den Überprüfungsverlauf und schreibt Überprüfungen in einen neuen Bericht.
 
@@ -578,9 +578,9 @@ Entfernt die vorherige Ausführung und den Überprüfungsverlauf und schreibt Ü
 |Pipelineeingabe akzeptieren:      |False             |
 |Platzhalterzeichen akzeptieren: |False             |
 
-> -OutputPath
+### <a name="-outputpath"></a>-OutputPath
 
-Gibt den benutzerdefinierte Pfad zum Speichern des Bereitschaft-JSON-Berichts und der ausführlichen Protokolldatei an.  Wenn der Pfad noch nicht vorhanden ist, versucht das Tool, das Verzeichnis zu erstellen.
+Gibt einen benutzerdefinierte Pfad zum Speichern des JSON-Bereitschaftsberichts und der ausführlichen Protokolldatei an. Ist der Pfad noch nicht vorhanden, wird versucht, das Verzeichnis zu erstellen.
 
 |  |  |
 |----------------------------|------------------|
@@ -590,7 +590,7 @@ Gibt den benutzerdefinierte Pfad zum Speichern des Bereitschaft-JSON-Berichts un
 |Pipelineeingabe akzeptieren:      |False             |
 |Platzhalterzeichen akzeptieren: |False             |
 
-> -Confirm
+### <a name="-confirm"></a>-Confirm
 
 Fordert vor der Ausführung des Cmdlets zur Bestätigung auf.
 
@@ -603,7 +603,7 @@ Fordert vor der Ausführung des Cmdlets zur Bestätigung auf.
 |Pipelineeingabe akzeptieren:      |False             |
 |Platzhalterzeichen akzeptieren: |False             |
 
-> -WhatIf
+### <a name="-whatif"></a>-WhatIf
 
 Zeigt, was geschieht, wenn das Cmdlet ausgeführt wird. Das Cmdlet wird nicht ausgeführt.
 
@@ -615,4 +615,3 @@ Zeigt, was geschieht, wenn das Cmdlet ausgeführt wird. Das Cmdlet wird nicht au
 |Standardwert:              |False             |
 |Pipelineeingabe akzeptieren:      |False             |
 |Platzhalterzeichen akzeptieren: |False             |
-

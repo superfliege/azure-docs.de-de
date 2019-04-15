@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: e5dc8ac0716e194dd0949e2e270346ee338a792a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ee6317f61f95b19effd64308b88f53c027582b63
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57839728"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883008"
 ---
 # <a name="understand-terms-on-your-microsoft-customer-agreement-invoice"></a>Grundlegendes zu den Begriffen auf der Rechnung für eine Microsoft-Kundenvereinbarung
 
@@ -49,7 +49,7 @@ Den Abschnitt **Invoice summary** (Rechnungsübersicht) finden Sie oben auf der 
 | P.O. number |Eine optionale Bestellnummer, die Ihnen zur Nachverfolgung zugewiesen wird |
 | Invoice number (Rechnungsnummer) |Eine eindeutige, von Microsoft generierte Rechnungsnummer, die für Nachverfolgungszwecke verwendet wird |
 | Invoice Date |Datum, an dem die Rechnung generiert wurde, in der Regel fünf bis zwölf Tage nach dem Ende des Abrechnungszyklus. Sie können das Rechnungsdatum auch in den Angaben des Abrechnungsprofils überprüfen.|
-| Zahlungsbestimmungen |Die Zahlungsbedingungen Ihrer Microsoft-Rechnung. *Net 30 days* (Zahlbar in 30 Tagen netto) bedeutet, das die Zahlung innerhalb von 30 Tage nach dem Rechnungsdatum per Scheck oder Überweisung getätigt werden muss. |
+| Zahlungsbestimmungen |Die Zahlungsbedingungen Ihrer Microsoft-Rechnung. *Net 30 days* (Zahlbar in 30 Tagen netto) bedeutet, das die Zahlung innerhalb von 30 Tage nach dem Rechnungsdatum getätigt werden muss. |
 
 ### <a name="billing-summary"></a>Billing summary (Abrechnungsübersicht)
 
@@ -105,11 +105,11 @@ Wenn in Ihrer Rechnung Dienste von Drittanbietern aufgeführt werden, werden am 
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
 
-Wenn Sie Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Grundlegendes zu den Gebühren auf der Rechnung für eine Microsoft-Kundenvereinbarung](billing-mca-understand-your-bill.md)
+- [Grundlegendes zu den Gebühren auf der Rechnung für Ihr Abrechnungsprofil](billing-mca-understand-your-bill.md)
 - [Abrufen von Azure-Rechnungen und täglichen Nutzungsdaten](billing-download-azure-invoice-daily-usage-date.md)
 - [Anzeigen der Azure Enterprise Agreement-Preise für Ihre Organisation](billing-ea-pricing.md)
-- [Anzeigen der Steuerdokumente für Ihre Microsoft-Kundenvereinbarung](billing-mca-download-tax-document.md)
+- [Anzeigen der Steuerdokumente für Ihr Abrechnungsprofil](billing-mca-download-tax-document.md)

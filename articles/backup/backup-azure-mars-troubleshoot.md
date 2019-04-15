@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: saurse
-ms.openlocfilehash: a9a445208c151a537c35fa7afafa48b19486828f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4bad788156b2068f24484d3b248f2091409752ad
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58008163"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621616"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent"></a>Problembehandlung beim Microsoft Azure Recovery Services-Agent (MARS)
 
@@ -60,7 +60,7 @@ Erfahren Sie, wie Sie möglicherweise auftretende Fehler bei der Konfiguration, 
 ## <a name="backups-dont-run-according-to-the-schedule"></a>Sicherungen werden nicht gemäß dem Zeitplan ausgeführt.
 Wenn geplante Sicherungen nicht automatisch ausgelöst werden, während manuelle Sicherungen problemlos funktionieren, führen Sie die folgenden Aktionen aus
 
-- Stellen Sie sicher, dass der Sicherungszeitplan für Windows Server nicht mit dem Sicherungszeitplan für Azure Files and Folders in Konflikt steht.
+- Stellen Sie sicher, dass der Sicherungszeitplan für Windows Server mit dem Sicherungszeitplan für Azure Files and Folders nicht in Konflikt steht.
 - Wechseln Sie zu **Systemsteuerung** > **Verwaltung** > **Taskplaner**. Erweitern Sie **Microsoft**, und wählen Sie **Onlinesicherung** aus. Doppelklicken Sie auf **Microsoft-OnlineBackup**, und wechseln Sie zur Registerkarte **Trigger**. Vergewissern Sie sich, dass der Status der Aufgabe **Aktiviert** ist. Wenn dies nicht der Fall ist, wählen Sie **Bearbeiten** aus, aktivieren Sie das Kontrollkästchen **Aktiviert**, und klicken Sie auf **OK**. Navigieren Sie auf der Registerkarte **Allgemein** zu **Sicherheitsoptionen**, und stellen Sie sicher, dass das für die Ausführung der Aufgabe ausgewählte Benutzerkonto **SYSTEM** oder die Gruppe **Lokale Administratoren** auf dem Server ist.
 
 - Überprüfen Sie, ob PowerShell 3.0 oder höher auf dem Server installiert ist. Um die PowerShell-Version zu überprüfen, führen Sie den folgenden Befehl aus, und überprüfen Sie, ob der *Hauptteil* der Versionsnummer mindestens 3 ist.

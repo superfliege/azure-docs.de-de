@@ -3,21 +3,21 @@ title: Registrieren von Daten aus Azure Data Lake Storage Gen1 in Azure Data Cat
 description: Registrieren von Daten aus Azure Data Lake Storage Gen1 in Azure Data Catalog
 services: data-lake-store,data-catalog
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: 3294d91e-a723-41b5-9eca-ace0ee408a4b
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: bc9d6f8f078860000d7a2a38bf4aa1ce00ff450e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: twooley
+ms.openlocfilehash: fd887560c0011fb1ec2141e33f02f7e3d8a39c81
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533441"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877883"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Registrieren von Daten aus Azure Data Lake Storage Gen1 in Azure Data Catalog
 In diesem Artikel erfahren Sie, wie Sie Azure Data Lake Storage Gen1 in Azure Data Catalog integrieren, um Ihre Daten mittels Integration in Data Catalog innerhalb einer Organisation auffindbar zu machen. Weitere Informationen zum Katalogisieren von Daten finden Sie unter [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md). Informationen zu den Szenarien, in denen Sie Data Catalog verwenden können, finden Sie unter [Häufige Szenarien mit Azure Data Catalog](../data-catalog/data-catalog-common-scenarios.md).
@@ -74,10 +74,10 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
      ![Suchen von Daten im Katalog](./media/data-lake-store-with-data-catalog/search-data-in-catalog.png "Suchen von Daten im Katalog")
 1. Sie können nun Vorgänge wie Hinzufügen von Anmerkungen und Dokumenten zu den Daten ausführen. Weitere Informationen finden Sie unter den folgenden Links.
 
-    * [Hinzufügen von Anmerkungen zu Datenquellen in Data Catalog](../data-catalog/data-catalog-how-to-annotate.md)
+    * [Kommentieren von Datenquellen in Data Catalog](../data-catalog/data-catalog-how-to-annotate.md)
     * [Hinzufügen von Dokumenten zu Datenquellen in Data Catalog](../data-catalog/data-catalog-how-to-documentation.md)
 
 ## <a name="see-also"></a>Weitere Informationen
-* [Hinzufügen von Anmerkungen zu Datenquellen in Data Catalog](../data-catalog/data-catalog-how-to-annotate.md)
+* [Kommentieren von Datenquellen in Data Catalog](../data-catalog/data-catalog-how-to-annotate.md)
 * [Hinzufügen von Dokumenten zu Datenquellen in Data Catalog](../data-catalog/data-catalog-how-to-documentation.md)
 * [Integrieren von Data Lake Storage Gen1 in andere Azure-Dienste](data-lake-store-integrate-with-other-services.md)

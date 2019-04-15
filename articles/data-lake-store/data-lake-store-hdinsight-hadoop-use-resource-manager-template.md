@@ -3,21 +3,21 @@ title: Verwenden von Azure-Vorlagen zum Erstellen von Azure HDInsight-Clustern m
 description: Verwenden von Azure Resource Manager-Vorlagen zum Erstellen und Verwenden von HDInsight-Clustern mit Azure Data Lake Storage Gen1
 services: data-lake-store,hdinsight
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: 8ef8152f-2121-461e-956c-51c55144919d
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 5694f8eead2b0fd4be75ee858c3c124dd8c53e03
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: twooley
+ms.openlocfilehash: b09ca2cc358107c5f95fe3426351d380380db3c2
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540377"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880133"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>Erstellen eines HDInsight-Clusters mit Azure Data Lake Storage Gen1 mithilfe einer Azure Resource Manager-Vorlage
 > [!div class="op_single_selector"]

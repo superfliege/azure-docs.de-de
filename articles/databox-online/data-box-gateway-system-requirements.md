@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 04/02/2019
 ms.author: alkohli
-ms.openlocfilehash: 0d898c8d2273c431967603c36c8ff9d0dd8b4b7b
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: cac451634bfa357784f9fd3d3a24e06ef3a4ee19
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58417852"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881765"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Systemanforderungen für Azure Data Box Gateway
 
@@ -48,7 +48,7 @@ Das dem Data Box Gateway zugrunde liegende Hostsystem ist in der Lage, die folge
 
 ## <a name="supported-virtualization-platforms-for-device"></a>Unterstützte Virtualisierungsplattformen für das Gerät
 
-| **Betriebssystem/-plattform**  |**Versionen**   |**Hinweise**  |
+| **Betriebssystem/-plattform**  |**Versionen**   |**Notizen**  |
 |---------|---------|---------|
 |Hyper-V  |  2012 R2 <br> 2016  |         |
 |VMware ESXi     | 6,0 <br> 6,5 <br> 6.7       |VMware-Tools werden nicht unterstützt.         |
@@ -84,6 +84,10 @@ Es empfiehlt sich, die Firewallregeln für den ausgehenden Verkehr basierend auf
 > - Die Ziel-IPs sollten auf die [IP-Bereiche des Azure-Datencenters](https://www.microsoft.com/download/confirmation.aspx?id=41653) festgelegt werden.
 
 [!INCLUDE [URL patterns for firewall](../../includes/data-box-edge-gateway-url-patterns-firewall.md)]
+
+### <a name="url-patterns-for-azure-government"></a>URL-Muster für Azure Government
+
+[!INCLUDE [Azure Government URL patterns for firewall](../../includes/data-box-edge-gateway-gov-url-patterns-firewall.md)]
 
 ## <a name="internet-bandwidth"></a>Internetbandbreite
 

@@ -6,17 +6,17 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: kenchen
-ms.openlocfilehash: 69a2d9e7858c0f152056e821c19caa9852b420d5
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: eb70e65db4a086afc60e91cadf55a8844b102591
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57556602"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620275"
 ---
 # <a name="resiliency-and-disaster-recovery"></a>Resilienz und Notfallwiederherstellung
 
 Resilienz und Notfallwiederherstellung sind eine übliche Anforderung für Onlinesysteme. Azure SignalR Service garantiert schon heute eine Verfügbarkeit von 99,9 %, ist aber noch immer ein regionaler Dienst.
-Ihre Dienstinstanz wird immer in einer Region ausgeführt, und im Fall eines regionsweiten Ausfalls findet kein Failover zu einer anderen Region statt.
+Ihre Dienstinstanz wird immer in einer einzigen Region ausgeführt, und im Fall eines regionsweiten Ausfalls findet kein Failover zu einer anderen Region statt.
 
 Stattdessen bietet unser Dienst-SDK eine Funktion, mit der Sie mehrere SignalR Service-Instanzen unterstützen und automatisch zu anderen Instanzen wechseln können, wenn einige der Instanzen nicht verfügbar sind.
 Mit diesem Feature können Sie bei einem Notfall eine Wiederherstellung durchführen, Sie müssen jedoch selbst die richtige Systemtopologie einrichten. In diesem Dokument erfahren Sie, wie Sie dazu vorgehen.
@@ -28,8 +28,8 @@ Wenn Sie mehrere Dienstinstanzen mit einem App-Server verbinden, gibt es zwei Ro
 Die primäre Instanz ist eine Instanz, die Onlinedatenverkehr akzeptiert. Die sekundäre Instanz ist voll funktionsfähig, dient aber als Sicherungsinstanz für die primäre Instanz.
 In unserer SDK-Implementierung werden bei der Aushandlung nur primäre Endpunkte zurückgegeben. Im Normalfall stellen Clients daher nur eine Verbindung mit primären Endpunkten her.
 Wenn die primäre Instanz ausfällt, werden bei der Aushandlung jedoch sekundäre Endpunkte zurückgegeben, damit Clients weiterhin eine Verbindung herstellen können.
-Die primäre Instanz und der App-Server werden über normale Serververbindungen verbunden. Die sekundäre Instanz und der App-Server werden aber über einen speziellen Verbindungstyp verbunden, der als „unsichere Verbindung“ bezeichnet wird.
-Der Hauptunterschied bei einer unsicheren Verbindung besteht darin, dass sie kein Verbindungsrouting von Clients akzeptiert, weil sich die sekundäre Instanz in der Regel in einer anderen Region befindet. Das Routing eines Clients zu einer anderen Region ist meist keine optimale Lösung (die Wartezeit nimmt zu).
+Die primäre Instanz und der App-Server werden über normale Serververbindungen verbunden. Die sekundäre Instanz und der App-Server aber werden über einen speziellen Verbindungstyp verbunden, der als „unsichere Verbindung“ bezeichnet wird.
+Der Hauptunterschied bei einer unsicheren Verbindung besteht darin, dass sie kein Verbindungsrouting von Clients akzeptiert, weil sich die sekundäre Instanz in der Regel in einer anderen Region befindet. Das Routing eines Clients zu einer anderen Region ist keine optimale Lösung (die Wartezeit nimmt zu).
 
 Eine Dienstinstanz kann beim Herstellen einer Verbindung mit mehreren App-Servern unterschiedliche Rollen innehaben.
 Eine typische Konfiguration für ein regionsübergreifendes Szenario ist die Verwendung von zwei (oder mehr) Paaren von SignalR Service-Instanzen und App-Servern.
@@ -129,3 +129,5 @@ Sie müssen solche Verbindungsabbrüche auf der Clientseite behandeln, damit sie
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel haben Sie erfahren, wie Sie Ihre Anwendung konfigurieren, um Resilienz für SignalR Service zu erreichen. Weitere Details zur Server-/Clientverbindung und zum Verbindungsrouting in SignalR Service finden Sie in [diesem Artikel](signalr-concept-internals.md).
+
+Informationen zu Skalierungsszenarien wie z.B. Sharding, bei denen mehrere Instanzen zusammen verwendet werden, um eine große Anzahl von Verbindungen zu handhaben, finden Sie unter [Skalieren mehrerer Instanzen](signalr-howto-scale-multi-instances.md).

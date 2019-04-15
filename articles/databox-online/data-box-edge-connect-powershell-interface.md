@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 03/29/2019
 ms.author: alkohli
-ms.openlocfilehash: b3effdbace2be582bfe85d0402088f8aa0d96fe7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b4d047f4266d11a5f6b77f33054eb93e31f7090b
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57556452"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58791574"
 ---
-# <a name="manage-an-azure-data-box-edge-device-via-windows-powershell-preview"></a>Verwalten eines Azure Data Box Edge-Geräts mittels Windows PowerShell (Vorschau)
+# <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Verwalten eines Azure Data Box Edge-Geräts mittels Windows PowerShell
 
 Azure Data Box Edge ist eine Lösung, mit der Sie Daten verarbeiten und über ein Netzwerk an Azure senden können. In diesem Artikel werden einige der Konfigurations- und Verwaltungsaufgaben für Ihr Data Box Edge-Gerät beschrieben. Sie können das Azure-Portal, die lokale Webbenutzeroberfläche oder die Windows PowerShell-Schnittstelle verwenden, um Ihr Gerät zu verwalten.
 
@@ -32,18 +32,9 @@ Dieser Artikel enthält die folgenden Verfahren:
 - Abrufen von Computeprotokollen
 - Überwachung und Problembehandlung von Computemodulen
 
-> [!IMPORTANT]
-> Azure Data Box Edge ist derzeit in der Public Preview-Phase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 ## <a name="connect-to-the-powershell-interface"></a>Herstellen einer Verbindung mit der PowerShell-Schnittstelle
 
 [!INCLUDE [Connect to admin runspace](../../includes/data-box-edge-gateway-connect-minishell.md)]
-
-## <a name="start-a-support-session"></a>Starten einer Supportsitzung
-
-[!INCLUDE [Connect to support runspace](../../includes/data-box-edge-gateway-connect-support.md)]
 
 ## <a name="create-a-support-package"></a>Unterstützungspaket erstellen
 
@@ -53,7 +44,22 @@ Dieser Artikel enthält die folgenden Verfahren:
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 
+Sie können auch IoT Edge-Zertifikate hochladen, um eine sichere Verbindung zwischen Ihrem IoT Edge-Gerät und den nachgeschalteten Geräten zu ermöglichen, die möglicherweise damit verbunden sind. Es gibt drei IoT Edge-Zertifikate (*.PEM*-Format), die Sie installieren müssen:
+
+- Zertifikat der Stammzertifizierungsstelle oder der Zertifizierungsstelle des Besitzers
+- Zertifikat der Gerätezertifizierungsstelle
+- Zertifikat des Geräteschlüssels
+
+Nachfolgend sehen Sie ein Beispiel für die Verwendung dieses Cmdlets zum Installieren von IoT Edge-Zertifikaten:
+
+```
+Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cert.pem" -DeviceCertificateFilePath "\\hcfs\device-ca-cert.pem\" -DeviceKeyFilePath "\\hcfs\device-key-cert.pem" -Credential "username/password"
+```
+
+Weitere Informationen zu Zertifikaten finden Sie unter [Zertifikate für Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) oder [Installieren von Zertifikaten auf einem Gateway](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway#install-certificates-on-the-gateway).
+
 ## <a name="view-device-information"></a>Anzeigen von Geräteinformationen
+
  
 [!INCLUDE [View device information](../../includes/data-box-edge-gateway-view-device-info.md)]
 
@@ -70,14 +76,19 @@ Wenn die Computerolle auf Ihrem Gerät konfiguriert ist, können Sie die Compute
 
     Nachfolgend sehen Sie ein Beispiel für die Verwendung dieses Cmdlets:
 
-    ```
+    ```powershell
     Get-AzureDataBoxEdgeComputeRoleLogs -Path "\\hcsfs\logs\myacct" -Credential "username/password" -RoleInstanceName "IotRole" -FullLogCollection
     ```
-    Es folgt eine Beschreibung der verwendeten Parameter des Cmdlets: 
+
+    Es folgt eine Beschreibung der verwendeten Parameter des Cmdlets:
     - `Path`: Geben Sie einen Netzwerkpfad für die Freigabe an, in der Sie das Computeprotokollpaket erstellen möchten.
     - `Credential`: Geben Sie den Benutzernamen und das Kennwort für die Netzwerkfreigabe an.
     - `RoleInstanceName`: Geben Sie die Zeichenfolge `IotRole` für diesen Parameter ein.
     - `FullLogCollection`: Dieser Parameter stellt sicher, dass das Protokollpaket alle Computeprotokolle enthält. Standardmäßig enthält das Protokollpaket nur eine Teilmenge der Protokolle.
+
+## <a name="monitor-and-troubleshoot-compute-modules"></a>Überwachung und Problembehandlung von Computemodulen
+
+[!INCLUDE [Monitor and troubleshoot compute modules](../../includes/data-box-edge-monitor-troubleshoot-compute.md)]
 
 
 ## <a name="next-steps"></a>Nächste Schritte

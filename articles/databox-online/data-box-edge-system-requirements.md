@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/22/2019
+ms.date: 04/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 125ad28f049662ae6d91c61bb5ee79c1c1428af5
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: a67cbd3bfca478a45e12adeb0bf119b891866718
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401752"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905238"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Systemanforderungen für Azure Data Box Edge
 
@@ -80,11 +80,23 @@ Es empfiehlt sich, die Firewallregeln für den ausgehenden Verkehr basierend auf
 
 ### <a name="url-patterns-for-compute-feature"></a>URL-Muster für Compute-Feature
 
-| URL-Muster                      | Komponente oder Funktion                     |   |
-|----------------------------------|---------------------------------------------|---|
-| `https://mcr.microsoft.com`<br></br>https://\*.cdn.mscr.io | Microsoft-Containerregistrierung (erforderlich)               |   |
-| https://\*.azurecr.io                     | Persönliche Containerregistrierungen und Containerregistrierungen von Drittanbietern (optional) |   |
-| https://\*.azure-devices.net              | IoT Hub-Zugriff (erforderlich)                             |   |
+| URL-Muster                      | Komponente oder Funktion                     |   
+|----------------------------------|---------------------------------------------|
+| https://mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft-Containerregistrierung (erforderlich)               |
+| https://\*.azurecr.io                     | Persönliche Containerregistrierungen und Containerregistrierungen von Drittanbietern (optional) | 
+| https://\*.azure-devices.net              | IoT Hub-Zugriff (erforderlich)                             | 
+
+### <a name="url-patterns-for-gateway-for-azure-government"></a>URL-Muster für das Gateway für Azure Government
+
+[!INCLUDE [Azure Government URL patterns for firewall](../../includes/data-box-edge-gateway-gov-url-patterns-firewall.md)]
+
+### <a name="url-patterns-for-compute-for-azure-government"></a>URL-Muster für Compute für Azure Government
+
+| URL-Muster                      | Komponente oder Funktion                     |  
+|----------------------------------|---------------------------------------------|
+| https://mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | Microsoft-Containerregistrierung (erforderlich)               |
+| https://\*.azure-devices.us              | IoT Hub-Zugriff (erforderlich)           |
+| https://\*.azurecr.us                    | Persönliche Containerregistrierungen und Containerregistrierungen von Drittanbietern (optional) | 
 
 ## <a name="internet-bandwidth"></a>Internetbandbreite
 
@@ -92,4 +104,4 @@ Es empfiehlt sich, die Firewallregeln für den ausgehenden Verkehr basierend auf
 
 ## <a name="next-step"></a>Nächster Schritt
 
-- [Bereitstellen von Azure Data Box Edge](data-box-Edge-deploy-prep.md)
+- [Bereitstellen von Azure Data Box Edge](data-box-edge-deploy-prep.md)

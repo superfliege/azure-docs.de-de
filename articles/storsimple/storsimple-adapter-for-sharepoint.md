@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: v-sharos
-ms.openlocfilehash: 2e1b231a5cf13d2655ff66c7e48752729c580f48
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a2f8e75578e396085e7d80f43c1180e158967061
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38232866"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885586"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>Installieren und Konfigurieren des StorSimple-Adapters für SharePoint
 ## <a name="overview"></a>Übersicht
@@ -59,7 +59,7 @@ Bevor Sie die Verwendung von RBS in Ihrer SharePoint-Lösung erwägen, sollten S
 
 * Stellen Sie sicher, dass die Gesamtgröße des Inhalts (die Größe einer Inhaltsdatenbank zzgl. der Größe aller zugeordneten externen BLOBs) nicht die RBS-Größenbeschränkung überschreitet, die von SharePoint unterstützt wird. Dieser Grenzwert beträgt 200 GB. 
   
-    **So messen Sie die Größe der Inhaltsdatenbank und BLOBs**
+    **So messen Sie die Größe der Inhaltsdatenbank und von BLOBs**
   
   1. Führen Sie die Abfrage im Zentraladministration-WFE aus. Starten Sie die SharePoint-Verwaltungsshell, und geben Sie dann den folgenden Windows PowerShell-Befehl ein, um die Größe der Inhaltsdatenbanken abzurufen:
      
@@ -226,7 +226,7 @@ Vor dem Deinstallieren der Software „StorSimple-Adapter für SharePoint“ mü
 4. Klicken Sie auf der Seite **StorSimple-Adapter konfigurieren** jeweils unterhalb der Inhaltsdatenbanken, die aus dem externen Blobspeicher entfernt werden sollen, auf die Schaltfläche **Deaktivieren**. 
 5. Löschen Sie die Objekte aus SharePoint, und laden Sie sie dann wieder hoch.
 
-Alternativ dazu können Sie das Microsoft` RBS Migrate()` PowerShell-Cmdlet aus SharePoint verwenden. Weitere Informationen finden Sie unter [Migrieren von Inhalten in den und aus dem Remote-BLOB-Speicher (Remote BLOB Storage, RBS) (SharePoint Foundation 2010)](https://technet.microsoft.com/library/ff628255.aspx).
+Alternativ dazu können Sie das Microsoft PowerShell-Cmdlet `RBS Migrate()` aus SharePoint verwenden. Weitere Informationen finden Sie unter [Migrieren von Inhalten in den und aus dem Remote-BLOB-Speicher (Remote BLOB Storage, RBS) (SharePoint Foundation 2010)](https://technet.microsoft.com/library/ff628255.aspx).
 
 Fahren Sie nach dem Verschieben der BLOBs zurück in die Inhaltsdatenbank mit dem nächsten Schritt fort: [Deinstallieren des Adapters](#uninstall-the-adapter).
 

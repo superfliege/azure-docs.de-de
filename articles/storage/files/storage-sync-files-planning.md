@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: c032961bf89ba470a38ebccfd846659b080f9fab
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ad3b5a1d684c500eff3d20832d7aa290a13849b9
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013228"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918636"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -75,7 +75,7 @@ Vor der Bereitstellung der Azure-Dateisynchronisierung müssen Sie mit dem Auswe
 #### <a name="download-instructions"></a>Downloadanweisungen
 1. Stellen Sie sicher, dass Sie die aktuelle Version von „PackageManagement“ und „PowerShellGet“ installiert haben (dies ermöglicht Ihnen die Installation der Vorschaumodule).
     
-    ```PowerShell
+    ```powershell
         Install-Module -Name PackageManagement -Repository PSGallery -Force
         Install-Module -Name PowerShellGet -Repository PSGallery -Force
     ```
@@ -83,29 +83,29 @@ Vor der Bereitstellung der Azure-Dateisynchronisierung müssen Sie mit dem Auswe
 2. Starten Sie PowerShell neu.
 3. Installieren der Module
     
-    ```PowerShell
+    ```powershell
         Install-Module -Name Az.StorageSync -AllowPrerelease -AllowClobber -Force
     ```
 
 #### <a name="usage"></a>Verwendung  
 Sie können das Auswertungstool in unterschiedlicher Weise aufrufen: Sie können die Systemprüfungen, die Datasetprüfungen oder beide Prüfungen durchführen. So führen Sie sowohl die System- als auch die Datasetprüfungen durch: 
 
-```PowerShell
+```powershell
     Invoke-AzStorageSyncCompatibilityCheck -Path <path>
 ```
 
 So prüfen Sie nur Ihr Dataset:
-```PowerShell
+```powershell
     Invoke-AzStorageSyncCompatibilityCheck -Path <path> -SkipSystemChecks
 ```
  
 So testen Sie nur die Systemanforderungen:
-```PowerShell
+```powershell
     Invoke-AzStorageSyncCompatibilityCheck -ComputerName <computer name>
 ```
  
 So zeigen Sie die Ergebnisse in einer CSV-Datei an:
-```PowerShell
+```powershell
     $errors = Invoke-AzStorageSyncCompatibilityCheck […]
     $errors | Select-Object -Property Type, Path, Level, Description | Export-Csv -Path <csv path>
 ```
@@ -278,6 +278,8 @@ Um die Failoverintegration zwischen georedundantem Speicher und der Azure-Dateis
 | Asien, Osten           | Asien, Südosten     |
 | USA (Ost)             | USA (Westen)            |
 | USA (Ost) 2           | USA (Mitte)         |
+| Korea, Mitte       | Korea, Süden        |
+| Korea, Süden         | Korea, Mitte      |
 | Nordeuropa        | Europa, Westen        |
 | USA Nord Mitte    | USA Süd Mitte   |
 | Indien (Süden)         | Indien, Mitte      |

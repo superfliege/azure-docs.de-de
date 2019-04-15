@@ -5,20 +5,20 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 07/16/2018
+ms.date: 04/03/2019
 ms.author: tamram
-ms.openlocfilehash: 2641e1653e14a7c101d95b02b8a5af71ceb9fdc6
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 86bb7e736754cbc6a93bba5fff5d8d1877b1e3b4
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398173"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916579"
 ---
 # <a name="set-and-retrieve-properties-and-metadata"></a>Festlegen und Abrufen von Eigenschaften und Metadaten
 
 Objekte in Azure Storage unterstützen zusätzlich zu den Daten, die sie enthalten, Systemeigenschaften und benutzerdefinierte Metadaten. In diesem Artikel wird das Verwalten von Systemeigenschaften und benutzerdefinierten Metadaten mithilfe der [Azure Storage-Clientbibliothek für .NET](https://www.nuget.org/packages/WindowsAzure.Storage/) beschrieben.
 
-* **Systemeigenschaften**: Systemeigenschaften sind in jeder Speicherressource vorhanden. Einige davon können gelesen oder festgelegt werden, während andere schreibgeschützt sind. Darüber hinaus entsprechen einige Systemeigenschaften bestimmten HTTP-Standardheadern. Diese Eigenschaften werden für Sie von den Azure Storage-Clientbibliotheken verwaltet.
+* **Systemeigenschaften**:  Systemeigenschaften sind in jeder Speicherressource vorhanden. Einige davon können gelesen oder festgelegt werden, während andere schreibgeschützt sind. Darüber hinaus entsprechen einige Systemeigenschaften bestimmten HTTP-Standardheadern. Diese Eigenschaften werden für Sie von den Azure Storage-Clientbibliotheken verwaltet.
 
 * **Benutzerdefinierte Metadaten**: Benutzerdefinierte Metadaten bestehen aus einem oder mehreren Name-Wert-Paaren, die Sie für eine Azure Storage-Ressource angeben. Sie können Metadaten verwenden, um weitere Werte zusammen mit einer Ressource zu speichern. Metadatenwerte sind nur für Ihre eigenen Zwecke bestimmt und wirken sich nicht auf das Verhalten der Ressource aus.
 
@@ -27,8 +27,7 @@ Das Abrufen von Eigenschafts- und Metadatenwerten einer Speicherressource ist ei
 > [!IMPORTANT]
 > Wenn Sie feststellen, dass Eigenschaften- oder Metadatenwerte für eine Speicherressource nicht ausgefüllt wurden, überprüfen Sie, ob Ihr Code die **FetchAttributes**- oder **FetchAttributesAsync**-Methode aufruft.
 >
-> Name-Wert-Paare für Metadaten können nur ASCII-Zeichen enthalten. Name-Wert-Paare für Metadaten sind gültige HTTP-Header und müssen daher allen Einschränkungen für HTTP-Header entsprechen. Es wird empfohlen, für Namen und Werte mit Nicht-ASCII-Zeichen die URL- oder Base64-Codierung zu wählen.
->
+> Name-Wert-Paare für Metadaten sind gültige HTTP-Header und sollten daher allen Einschränkungen für HTTP-Header entsprechen. Metadatennamen müssen gültige HTTP-Headernamen sein, dürfen nur ASCII-Zeichen enthalten und sollten als „Keine Beachtung von Groß-/Kleinschreibung“ behandelt werden. Metadatenwerte mit Nicht-ASCII-Zeichen sollten Base64- oder URL-codiert werden.
 
 ## <a name="setting-and-retrieving-properties"></a>Festlegen und Abrufen von Eigenschaften
 Zum Abrufen von Eigenschaftswerten rufen Sie die **FetchAttributesAsync**-Methode für das Blob oder den Container auf, um die Eigenschaften aufzufüllen, und lesen anschließend die Werte.

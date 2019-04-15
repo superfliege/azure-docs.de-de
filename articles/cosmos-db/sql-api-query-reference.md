@@ -5,24 +5,24 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/31/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: e49b521f625dee8c48c448065096ed027cf6c9b2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9625cb75bcae60f7f6eb2bae61e73066520037fc
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090031"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878262"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>SQL-Sprachreferenz für Azure Cosmos DB 
 
-Azure Cosmos DB unterstützt Abfragen von Dokumenten mithilfe einer vertrauten, SQL-ähnlichen (Structured Query Language, strukturierte Abfragesprache) Grammatik für hierarchische JSON-Dokumente, ohne dass ein explizites Schema oder die Erstellung sekundärer Indizes erforderlich ist. Dieser Artikel enthält die Syntaxdokumentation für die SQL-Abfragesprache, die mit SQL-API-Konten kompatibel ist. Eine exemplarische Vorgehensweise mit SQL-Beispielabfragen finden Sie unter [SQL-Abfragen in Cosmos DB](how-to-sql-query.md).  
+Azure Cosmos DB unterstützt Abfragen von Dokumenten mithilfe einer vertrauten, SQL-ähnlichen (Structured Query Language, strukturierte Abfragesprache) Grammatik für hierarchische JSON-Dokumente, ohne dass ein explizites Schema oder die Erstellung sekundärer Indizes erforderlich ist. In diesem Artikel ist die in SQL-API-Konten verwendete Syntax der SQL-Abfragesprache dokumentiert. Eine exemplarische Vorgehensweise mit SQL-Beispielabfragen finden Sie unter [SQL-Abfragebeispiele für Azure Cosmos DB](how-to-sql-query.md).  
   
-Besuchen Sie auch den [Abfrageplayground](https://www.documentdb.com/sql/demo). Dort können Sie Cosmos DB testen und SQL-Abfragen mit unserem Dataset ausführen.  
+Besuchen Sie auch den [Abfrageplayground](https://www.documentdb.com/sql/demo). Dort können Sie Cosmos DB testen und SQL-Abfragen für ein Beispieldataset ausführen.  
   
 ## <a name="select-query"></a>SELECT-Abfrage  
-Jede Abfrage besteht aus einer SELECT-Klausel und optionalen FROM- und WHERE-Klauseln nach ANSI-SQL-Standards. Normalerweise wird in jeder Abfrage die jeweilige Quelle in der From-Klausel aufgelistet. Anschließend wird in der WHERE-Klausel ein Filter auf die Quelle angewendet, um eine Teilmenge der JSON-Dokumente zurückzugeben. Zuletzt wird die SELECT-Klausel verwendet, um die abgefragten JSON-Werte in die ausgewählte Liste zu projizieren. Die Konventionen zum Beschreiben von SELECT-Anweisungen sind im Abschnitt zu Syntaxkonventionen tabellarisch dargestellt. Beispiele finden Sie unter [Beispiele für die SELECT-Abfrage](how-to-sql-query.md#SelectClause).
+Jede Abfrage besteht aus einer SELECT-Klausel und optionalen FROM- und WHERE-Klauseln nach ANSI-SQL-Standards. In jeder Abfrage wird für gewöhnlich die Quelle in der FROM-Klausel aufgezählt. Anschließend wird der Filter in der WHERE-Klausel auf die Quelle angewendet, um eine Teilmenge der JSON-Dokumente abrufen. Zuletzt wird die SELECT-Klausel verwendet, um die abgefragten JSON-Werte in die ausgewählte Liste zu projizieren. Beispiele finden Sie unter [Beispiele für die SELECT-Abfrage](how-to-sql-query.md#SelectClause).
   
 **Syntax**  
   
@@ -38,8 +38,8 @@ SELECT <select_specification>
   
  Weitere Informationen zu den einzelnen Klauseln finden Sie in den folgenden Abschnitten:  
   
--   [SELECT-Klausel](#bk_select_query)    
--   [FROM-Klausel](#bk_from_clause)    
+-   [Die SELECT-Klausel](#bk_select_query)    
+-   [Die FROM-Klausel](#bk_from_clause)    
 -   [WHERE-Klausel](#bk_where_clause)    
 -   [ORDER BY-Klausel](#bk_orderby_clause)  
   
@@ -49,10 +49,10 @@ Die Klauseln in der SELECT-Anweisung müssen wie oben gezeigt sortiert werden. J
   
 Die Klauseln werden in folgender Reihenfolge verarbeitet:  
 
-1.  [FROM-Klausel](#bk_from_clause)  
+1.  [Die FROM-Klausel](#bk_from_clause)  
 2.  [WHERE-Klausel](#bk_where_clause)  
 3.  [ORDER BY-Klausel](#bk_orderby_clause)  
-4.  [SELECT-Klausel](#bk_select_query)  
+4.  [Die SELECT-Klausel](#bk_select_query)  
 
 Beachten Sie, dass sich dies von der Reihenfolge unterscheidet, in der sie in der Syntax auftreten. Die Reihenfolge ist, dass alle von einer verarbeiteten Klausel eingeführten neuen Symbole sichtbar sind und in Klauseln verwendet werden können, die zu einem späteren Zeitpunkt verarbeitet werden. So können z.B. WHERE- und SELECT-Klauseln auf Aliase zugreifen, die in einer FROM-Klausel deklariert werden.  
 
@@ -124,10 +124,10 @@ Sowohl `SELECT <select_list>` als auch `SELECT *` sind sogenannter „syntaktisc
   
    `SELECT VALUE { p1: <expr1>, p2: <expr2>, ..., pN: <exprN> }[other clauses...]`  
   
-**Weitere Informationen**  
+**Siehe auch**  
   
-[Skalarausdrücke](#bk_scalar_expressions)  
-[SELECT-Klausel](#bk_select_query)  
+[Skalare Ausdrücke](#bk_scalar_expressions)  
+[Die SELECT-Klausel](#bk_select_query)  
   
 ##  <a name="bk_from_clause"></a> FROM-Klausel  
 Gibt die Quelle oder verknüpfte Quellen an. Die FROM-Klausel ist optional, es sei denn, die Quelle wird später in der Abfrage gefiltert oder projiziert. Mit dieser Klausel wird die Datenquelle angegeben, auf der die Abfrage operiert. Normalerweise dient der gesamte Container als Quelle, doch Sie können stattdessen auch nur eine Teilmenge des Containers angeben. Wird diese Klausel nicht angegeben, werden andere Klauseln weiterhin so ausgeführt, als würde die FROM-Klausel ein einzelnes Dokument bereitstellen. Beispiele finden Sie unter [Beispiele für die FROM-Klausel](how-to-sql-query.md#FromClause).
@@ -306,7 +306,7 @@ Betrachten Sie die folgende FROM-Klausel: `<from_source1> JOIN <from_source2> JO
   
 **Weitere Informationen**  
   
- [SELECT-Klausel](#bk_select_query)  
+ [Die SELECT-Klausel](#bk_select_query)  
   
 ##  <a name="bk_where_clause"></a> WHERE-Klausel  
  Gibt die Suchbedingung für die Dokumente an, die von der Abfrage zurückgegeben werden. Beispiele finden Sie unter [Beispiele für die WHERE-Klausel](how-to-sql-query.md#WhereClause).
@@ -471,17 +471,17 @@ ORDER BY <sort_specification>
   
  **Operatorkategorien:**  
   
-|**Kategorie**|**Details**|  
+|**Category (Kategorie)**|**Details**|  
 |-|-|  
 |**Arithmetisch**|Der Operator erwartet (eine) Zahl(en) als Eingabe(n). Die Ausgabe ist ebenfalls eine Zahl. Wenn eine der Eingaben **undefiniert** ist oder einen anderen Typ als „Number“ aufweist, ist das Ergebnis **undefiniert**.|  
 |**Bitweise**|Der Operator erwartet (eine) 32-Bit-Ganzzahl(en) mit Vorzeichen als Eingabe(n). Die Ausgabe ist ebenfalls eine 32-Bit-Ganzzahl mit Vorzeichen.<br /><br /> Jeder nicht ganzzahlige Wert wird gerundet. Positive Werte werden abgerundet, negative Werte aufgerundet.<br /><br /> Jeder Wert, der außerhalb des 32-Bit-Ganzzahlbereichs liegt, wird unter Verwendung der letzten 32 Bits seiner Zweierkomplement-Schreibweise konvertiert.<br /><br /> Wenn eine der Eingaben **undefiniert** ist oder einen anderen Typ als „Number“ aufweist, ist das Ergebnis **undefiniert**.<br /><br /> **Hinweis:** Das oben beschriebene Verhalten ist kompatibel mit dem JavaScript-Verhalten des bitweisen Operators.|  
 |**Logisch**|Der Operator erwartet (eine) boolesche Eingabe(n). Die Ausgabe ist ebenfalls boolesch.<br />Wenn eine der Eingaben **undefiniert** ist oder einen anderen Typ als „boolesch“ aufweist, ist das Ergebnis **undefiniert**.|  
 |**Vergleich**|Der Operator erwartet, dass die Eingabe(n) vom gleichen Typ und nicht undefiniert ist (sind). Die Ausgabe ist ein boolescher Wert.<br /><br /> Wenn eine der Eingaben **undefiniert** ist oder sie verschiedene Typen aufweisen, ist das Ergebnis **undefiniert**.<br /><br /> In der Tabelle **Reihenfolge der Werte für den Vergleich** finden Sie weitere Informationen zur Reihenfolge der Werte.|  
-|**string**|Der Operator erwartet String(s) als Eingabe(n). Die Ausgabe ist ebenfalls ein String.<br />Wenn eine der Eingaben **undefiniert** ist oder einen anderen Typ als „String“ aufweist, ist das Ergebnis **undefiniert**.|  
+|**Zeichenfolge**|Der Operator erwartet String(s) als Eingabe(n). Die Ausgabe ist ebenfalls ein String.<br />Wenn eine der Eingaben **undefiniert** ist oder einen anderen Typ als „String“ aufweist, ist das Ergebnis **undefiniert**.|  
   
  **Unäre Operatoren:**  
   
-|**Name**|**Operator**|**Details**|  
+|**NAME**|**Operator**|**Details**|  
 |-|-|-|  
 |**Arithmetisch**|+<br /><br /> -|Gibt den Zahlenwert zurück.<br /><br /> Bitweise Negation. Gibt den negierten Zahlenwert zurück.|  
 |**Bitweise**|~|Einerkomplement. Gibt ein Komplement eines Zahlenwerts zurück.|  
@@ -489,31 +489,31 @@ ORDER BY <sort_specification>
   
  **Binäre Operatoren:**  
   
-|**Name**|**Operator**|**Details**|  
+|**NAME**|**Operator**|**Details**|  
 |-|-|-|  
 |**Arithmetisch**|+<br /><br /> -<br /><br /> *<br /><br /> /<br /><br /> %|Addition.<br /><br /> Subtraktion.<br /><br /> Multiplikation.<br /><br /> Division.<br /><br /> Modulation.|  
 |**Bitweise**|&#124;<br /><br /> &<br /><br /> ^<br /><br /> <<<br /><br /> >><br /><br /> >>>|Bitweises OR.<br /><br /> Bitweises AND.<br /><br /> Bitweises XOR.<br /><br /> Verschiebung nach links.<br /><br /> Verschiebung nach rechts.<br /><br /> Nullauffüllung, Verschiebung nach rechts.|  
 |**Logisch**|**AND**<br /><br /> **OR**|Logische Konjunktion. Gibt **true** zurück, wenn beide Argumente **true** sind, andernfalls **false**.<br /><br /> Logische Disjunktion. Gibt **true** zurück, wenn ein Argument **true** ist, andernfalls **false**.|  
-|**Vergleich**|**=**<br /><br /> **!=, &lt;&gt;**<br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> **??**|Gleich. Gibt **true** zurück, wenn die Argumente gleich sind, andernfalls **false**.<br /><br /> Ungleich. Gibt **true** zurück, wenn die Argumente nicht gleich sind, andernfalls **false**.<br /><br /> Größer als. Gibt **true** zurück, wenn das erste Argument größer als das zweite Argument ist, andernfalls **false**.<br /><br /> Größer als oder gleich. Gibt **true** zurück, wenn das erste Argument größer als das zweite Argument oder ihm gleich ist, andernfalls **false**.<br /><br /> Kleiner als. Gibt **true** zurück, wenn das erste Argument kleiner als das zweite Argument ist, andernfalls **false**.<br /><br /> Kleiner als oder gleich. Gibt **true** zurück, wenn das erste Argument kleiner als das zweite Argument oder ihm gleich ist, andernfalls **false**.<br /><br /> Zusammenfügen. Gibt das zweite Argument zurück, wenn das erste Argument ein **undefinierter** Wert ist.|  
-|**String**|**&#124;&#124;**|Verkettung. Gibt eine Verkettung der beiden Argumente zurück.|  
+|**Vergleich**|**=**<br /><br /> **!=, <>**<br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> **??**|Gleich. Gibt **true** zurück, wenn die Argumente gleich sind, andernfalls **false**.<br /><br /> Ungleich. Gibt **true** zurück, wenn die Argumente nicht gleich sind, andernfalls **false**.<br /><br /> Größer als. Gibt **true** zurück, wenn das erste Argument größer als das zweite Argument ist, andernfalls **false**.<br /><br /> Größer als oder gleich. Gibt **true** zurück, wenn das erste Argument größer als das zweite Argument oder ihm gleich ist, andernfalls **false**.<br /><br /> Kleiner als. Gibt **true** zurück, wenn das erste Argument kleiner als das zweite Argument ist, andernfalls **false**.<br /><br /> Kleiner als oder gleich. Gibt **true** zurück, wenn das erste Argument kleiner als das zweite Argument oder ihm gleich ist, andernfalls **false**.<br /><br /> Zusammenfügen. Gibt das zweite Argument zurück, wenn das erste Argument ein **undefinierter** Wert ist.|  
+|**Zeichenfolge**|**&#124;&#124;**|Verkettung. Gibt eine Verkettung der beiden Argumente zurück.|  
   
  **Ternäre Operatoren:**  
 
-|**Name**|**Operator**|**Details**| 
+|**NAME**|**Operator**|**Details**| 
 |-|-|-|  
 |Ternärer Operator|?|Gibt das zweite Argument zurück, wenn die Auswertung des ersten Arguments **true** ergibt; gibt andernfalls das dritte Argument zurück.|  
 
   
  **Reihenfolge der Werte für den Vergleich**  
   
-|**Typ**|**Reihenfolge der Werte**|  
+|**Type**|**Reihenfolge der Werte**|  
 |-|-|  
-|**Undefiniert**|Nicht vergleichbar.|  
-|**NULL**|Einzelner Wert: **NULL**|  
+|**Undefined**|Nicht vergleichbar.|  
+|**Null**|Einzelner Wert: **NULL**|  
 |**Number**|Natürliche reelle Zahl.<br /><br /> Der negative Unendlichkeitswert ist kleiner als jeder andere Number-Wert.<br /><br /> Der positive Unendlichkeitswert ist größer als jeder andere Number-Wert. **NaN**-Wert ist nicht vergleichbar. Vergleich mit **NaN** führt zu **undefiniertem** Wert.|  
-|**String**|Lexikografische Reihenfolge.|  
+|**Zeichenfolge**|Lexikografische Reihenfolge.|  
 |**Array**|Keine Reihenfolge, aber gleichberechtigt.|  
-|**Object**|Keine Reihenfolge, aber gleichberechtigt.|  
+|**Objekt**|Keine Reihenfolge, aber gleichberechtigt.|  
   
  **Anmerkungen**  
   
@@ -521,7 +521,7 @@ ORDER BY <sort_specification>
   
  Dies bedeutet, dass eine Abfrage wie „SELECT * FROM ROOT r WHERE r.Age = 21“ nur Dokumente zurückgibt, deren Eigenschaft „Age“ der Zahl 21 entspricht. Dokumente, deren Eigenschaft „Age“ der Zeichenfolge „21“ oder der Zeichenfolge „0021“ entspricht, stimmen nicht überein, da der Ausdruck „21“ = 21 als undefiniert ausgewertet wird. Dies ermöglicht eine bessere Verwendung von Indizes, da die Suche nach einem bestimmten Wert (z.B. der Zahl 21) schneller ist als die Suche nach einer unbestimmten Anzahl von möglichen Übereinstimmungen (z.B. der Zahl 21 oder den Zeichenfolgen „21“, „021“, „21,0“ etc.). Dies unterscheidet sich von der Art, in der JavaScript Operatoren für Werte verschiedener Typen auswertet.  
   
- **Arrays und Objekte – Gleichheit und Vergleich**  
+ **Arrays und Objekte – Gleichheit und Vergleich**  
   
  Das Ergebnis des Vergleichs von Array- und Object-Werten mithilfe von Bereichsoperatoren (>, > =, <, < =) ist undefiniert, weil für Object- oder Array-Werte keine Reihenfolge definiert ist. Die Verwendung von Gleichheits-/Ungleichheitsoperatoren (=, ! =, <>) wird jedoch unterstützt, und die Werte werden strukturell verglichen.  
   
@@ -534,15 +534,15 @@ ORDER BY <sort_specification>
   
  **Unterstützte skalare Datentypen:**  
   
-|**Typ**|**Reihenfolge der Werte**|  
+|**Type**|**Reihenfolge der Werte**|  
 |-|-|  
-|**Undefiniert**|Einzelner Wert: **undefiniert**|  
-|**NULL**|Einzelner Wert: **NULL**|  
+|**Undefined**|Einzelner Wert: **undefiniert**|  
+|**Null**|Einzelner Wert: **NULL**|  
 |**Boolescher Wert**|Werte: **false**, **true**.|  
 |**Number**|Eine Gleitkommazahl mit doppelter Genauigkeit, IEEE 754-Standard.|  
-|**String**|Eine Sequenz von null (0) oder mehr Unicode-Zeichen. Zeichenfolgen müssen in einfache oder doppelte Anführungszeichen eingeschlossen sein.|  
+|**Zeichenfolge**|Eine Sequenz von null (0) oder mehr Unicode-Zeichen. Zeichenfolgen müssen in einfache oder doppelte Anführungszeichen eingeschlossen sein.|  
 |**Array**|Eine Sequenz von null (0) oder mehr Elementen. Jedes Element kann einen Wert eines beliebigen skalaren Datentyps mit Ausnahme von „Undefiniert“ aufweisen.|  
-|**Object**|Ungeordneter Satz von null (0) oder mehr Name/Wert-Paaren. Der Name ist eine Unicode-Zeichenfolge, der Wert kann einen beliebigen skalaren Datentyp mit Ausnahme von **Undefiniert** aufweisen.|  
+|**Objekt**|Ungeordneter Satz von null (0) oder mehr Name/Wert-Paaren. Der Name ist eine Unicode-Zeichenfolge, der Wert kann einen beliebigen skalaren Datentyp mit Ausnahme von **Undefiniert** aufweisen.|  
   
  **Syntax**  
   
@@ -618,7 +618,7 @@ ORDER BY <sort_specification>
   
   Folgende Escapesequenzen sind zulässig:  
   
-|**Escapesequenz**|**Beschreibung**|**Unicode-Zeichen**|  
+|**Escapesequenz**|**BESCHREIBUNG**|**Unicode-Zeichen**|  
 |-|-|-|  
 |\\'|Apostroph (')|U+0027|  
 |\\"|Anführungszeichen (")|U+0022|  
@@ -679,7 +679,7 @@ ORDER BY <sort_specification>
 |Funktion|BESCHREIBUNG|  
 |--------------|-----------------|  
 |[Mathematische Funktionen](#bk_mathematical_functions)|Jede mathematische Funktion führt eine Berechnung durch, üblicherweise basierend auf Eingabewerten, die als Argument bereitgestellt werden, und gibt einen numerischen Wert zurück.|  
-|[Funktionen für die Typüberprüfung](#bk_type_checking_functions)|Mit den Funktionen für die Typprüfung können Sie den Typ eines Ausdrucks in SQL-Abfragen prüfen.|  
+|[Funktionen für die Typprüfung](#bk_type_checking_functions)|Mit den Funktionen für die Typprüfung können Sie den Typ eines Ausdrucks in SQL-Abfragen prüfen.|  
 |[Zeichenfolgenfunktionen](#bk_string_functions)|Die folgenden Stringfunktionen führen einen Vorgang für einen Zeichenfolgen-Eingabewert durch und geben eine Zeichenfolge, einen numerischen Wert oder einen booleschen Wert zurück.|  
 |[Arrayfunktionen](#bk_array_functions)|Die Arrayfunktionen führen einen Vorgang für einen Arrayeingabewert aus und geben einen numerischen Wert, booleschen Wert oder Arraywert zurück.|  
 |[Räumliche Funktionen](#bk_spatial_functions)|Die räumlichen Funktionen führen einen Vorgang für den Eingabewert eines räumlichen Objekts aus und geben einen numerischen oder booleschen Wert zurück.|  
@@ -689,10 +689,10 @@ ORDER BY <sort_specification>
   
 ||||  
 |-|-|-|  
-|[ABS](#bk_abs)|[ACOS](#bk_acos)|[ASIN](#bk_asin)|  
+|[ABS (ABS)](#bk_abs)|[ACOS](#bk_acos)|[ASIN](#bk_asin)|  
 |[ATAN](#bk_atan)|[ATN2](#bk_atn2)|[CEILING](#bk_ceiling)|  
 |[COS](#bk_cos)|[COT](#bk_cot)|[DEGREES](#bk_degrees)|  
-|[EXP](#bk_exp)|[FLOOR](#bk_floor)|[LOG](#bk_log)|  
+|[EXP](#bk_exp)|[FLOOR](#bk_floor)|[PROTOKOLL](#bk_log)|  
 |[LOG10](#bk_log10)|[PI](#bk_pi)|[POWER](#bk_power)|  
 |[RADIANS](#bk_radians)|[ROUND](#bk_round)|[SIN](#bk_sin)|  
 |[SQRT](#bk_sqrt)|[SQUARE](#bk_square)|[SIGN](#bk_sign)|  
@@ -1104,7 +1104,7 @@ LOG (<numeric_expression> [, <base>])
   
   Gibt einen numerischen Ausdruck zurück.  
   
-  **Hinweise:**  
+  **Anmerkungen**  
   
   Standardmäßig gibt LOG() den natürlichen Logarithmus zurück. Sie können die Basis des Logarithmus mithilfe des optionalen base-Parameters in einen anderen Wert ändern.  
   
@@ -1561,7 +1561,7 @@ SELECT
  Hier ist das Resultset.  
   
 ```  
-[{$1: false, $2: false, $3: false, $4: false, $5: false, $6: true}]  
+[{"$1":false,"$2":false,"$3":false,"$4":false,"$5":false,"$6":true,"$7":false}]
 ```  
   
 ####  <a name="bk_is_bool"></a> IS_BOOL  
@@ -1601,7 +1601,7 @@ SELECT
  Hier ist das Resultset.  
   
 ```  
-[{$1: true, $2: false, $3: false, $4: false, $5: false, $6: false}]  
+[{"$1":true,"$2":false,"$3":false,"$4":false,"$5":false,"$6":false,"$7":false}]
 ```  
   
 ####  <a name="bk_is_defined"></a> IS_DEFINED  
@@ -1634,10 +1634,7 @@ SELECT IS_DEFINED({ "a" : 5 }.a), IS_DEFINED({ "a" : 5 }.b)
  Hier ist das Resultset.  
   
 ```  
-[{  
-       "$1": true,    
-       "$2": false   
-   }]  
+[{"$1":true,"$2":false}]  
 ```  
   
 ####  <a name="bk_is_null"></a> IS_NULL  
@@ -1677,7 +1674,7 @@ SELECT
  Hier ist das Resultset.  
   
 ```  
-[{$1: false, $2: false, $3: false, $4: true, $5: false, $6: false}]  
+[{"$1":false,"$2":false,"$3":false,"$4":true,"$5":false,"$6":false,"$7":false}]
 ```  
   
 ####  <a name="bk_is_number"></a> IS_NUMBER  
@@ -1717,7 +1714,7 @@ SELECT
  Hier ist das Resultset.  
   
 ```  
-[{$1: false, $2: true, $3: false, $4: false, $5: false, $6: false}]  
+[{"$1":false,"$2":true,"$3":false,"$4":false,"$5":false,"$6":false,"$7":false}]  
 ```  
   
 ####  <a name="bk_is_object"></a> IS_OBJECT  
@@ -1757,7 +1754,7 @@ SELECT
  Hier ist das Resultset.  
   
 ```  
-[{$1: false, $2: false, $3: false, $4: false, $5: true, $6: false}]  
+[{"$1":false,"$2":false,"$3":false,"$4":false,"$5":true,"$6":false,"$7":false}]
 ```  
   
 ####  <a name="bk_is_primitive"></a> IS_PRIMITIVE  
@@ -1837,7 +1834,7 @@ SELECT
  Hier ist das Resultset.  
   
 ```  
-[{$1: false, $2: false, $3: true, $4: false, $5: false, $6: false}]  
+[{"$1":false,"$2":false,"$3":true,"$4":false,"$5":false,"$6":false,"$7":false}] 
 ```  
   
 ###  <a name="bk_string_functions"></a> Zeichenfolgenfunktionen  
@@ -2345,7 +2342,7 @@ StringToArray(<expr>)
   
 - `expr`  
   
-   Ein beliebiger gültiger JSON-Arrayausdruck. Beachten Sie, dass Zeichenfolgenwerte in doppelten Anführungszeichen angegeben werden müssen, damit sie gültig sind. Ausführliche Informationen zum JSON-Format finden Sie unter [json.org](https://json.org/).
+   Ein beliebiger gültiger skalarer Ausdruck, der als JSON-Arrayausdruck ausgewertet werden soll. Beachten Sie, dass geschachtelte Zeichenfolgenwerte in doppelten Anführungszeichen angegeben werden müssen, damit sie gültig sind. Ausführliche Informationen zum JSON-Format finden Sie unter [json.org](https://json.org/).
   
   **Rückgabetypen**  
   
@@ -2355,26 +2352,57 @@ StringToArray(<expr>)
   
   Im folgenden Beispiel wird das typübergreifende Verhalten von StringToArray gezeigt. 
   
-```  
+ Die folgenden Beispiele zeigen eine gültige Eingabe:
+
+```
 SELECT 
-StringToArray('[]'), 
-StringToArray("[1,2,3]"),
-StringToArray("[\"str\",2,3]"),
-IS_ARRAY(StringToArray("[['5','6','7'],['8'],['9']]")), 
-IS_ARRAY(StringToArray('[["5","6","7"],["8"],["9"]]')),
-StringToArray('[1,2,3, "[4,5,6]",[7,8]]'),
-StringToArray("[1,2,3, '[4,5,6]',[7,8]]"),
-StringToArray(false), 
-StringToArray(undefined),
-StringToArray(NaN), 
-StringToArray("[")
-```  
-  
- Hier ist das Resultset.  
-  
-```  
-[{"$1": [], "$2": [1,2,3], "$3": ["str",2,3], "$4": false, "$5": true, "$6": [1,2,3,"[4,5,6]",[7,8]]}]
-```  
+    StringToArray('[]') AS a1, 
+    StringToArray("[1,2,3]") AS a2,
+    StringToArray("[\"str\",2,3]") AS a3,
+    StringToArray('[["5","6","7"],["8"],["9"]]') AS a4,
+    StringToArray('[1,2,3, "[4,5,6]",[7,8]]') AS a5
+```
+
+ Hier ist das Resultset.
+
+```
+[{"a1": [], "a2": [1,2,3], "a3": ["str",2,3], "a4": [["5","6","7"],["8"],["9"]], "a5": [1,2,3,"[4,5,6]",[7,8]]}]
+```
+
+ Das folgende Beispiel zeigt eine ungültige Eingabe. 
+   
+ Einfache Anführungszeichen innerhalb des Arrays sind kein gültiger JSON-Code.
+Sie sind zwar innerhalb einer Abfrage gültig, werden jedoch nicht als gültige Arrays interpretiert. Zeichenfolgen innerhalb der Arrayzeichenfolge müssen mit Escapezeichen versehen werden: "[\\"\\"]". Alternativ kann die Arrayzeichenfolge in einfache Anführungszeichen eingeschlossen werden: '[""]'.
+
+```
+SELECT
+    StringToArray("['5','6','7']")
+```
+
+ Hier ist das Resultset.
+
+```
+[{}]
+```
+
+ Die folgenden Beispiele zeigen eine ungültige Eingabe.
+   
+ Der übergebene Ausdruck wird als JSON-Array analysiert. Folgendes wird nicht als Arraytyp ausgewertet und gibt daher „undefined“ zurück:
+   
+```
+SELECT
+    StringToArray("["),
+    StringToArray("1"),
+    StringToArray(NaN),
+    StringToArray(false),
+    StringToArray(undefined)
+```
+
+ Hier ist das Resultset.
+
+```
+[{}]
+```
 
 ####  <a name="bk_stringtoboolean"></a> StringToBoolean  
  Gibt den Ausdruck übersetzt in einen booleschen Wert zurück. Wenn der Ausdruck nicht übersetzt werden kann, wird „undefined“ zurückgegeben.  
@@ -2389,7 +2417,7 @@ StringToBoolean(<expr>)
   
 - `expr`  
   
-   Ist ein beliebiger gültiger Ausdruck.  
+   Ein beliebiger gültiger skalarer Ausdruck, der als boolescher Ausdruck ausgewertet werden soll.  
   
   **Rückgabetypen**  
   
@@ -2398,25 +2426,55 @@ StringToBoolean(<expr>)
   **Beispiele**  
   
   Im folgenden Beispiel wird das typübergreifende Verhalten von StringToBoolean gezeigt. 
-  
+ 
+ Die folgenden Beispiele zeigen eine gültige Eingabe.
+
+ Leerzeichen sind ausschließlich vor oder nach „true“/„false“ zulässig.
+
 ```  
 SELECT 
-StringToBoolean("true"), 
-StringToBoolean("    false"),
-IS_BOOL(StringToBoolean("false")), 
-StringToBoolean("null"),
-StringToBoolean(undefined),
-StringToBoolean(NaN), 
-StringToBoolean(false), 
-StringToBoolean(true), 
-StringToBoolean("TRUE"),
-StringToBoolean("False")
+    StringToBoolean("true") AS b1, 
+    StringToBoolean("    false") AS b2,
+    StringToBoolean("false    ") AS b3
 ```  
   
  Hier ist das Resultset.  
   
 ```  
-[{"$1": true, "$2": false, "$3": true}]
+[{"b1": true, "b2": false, "b3": false}]
+```  
+
+ Die folgenden Beispiele zeigen eine ungültige Eingabe.
+ 
+ Bei booleschen Werten muss die Groß-/Kleinschreibung beachtet werden. „true“ und „false“ dürfen daher nur Kleinbuchstaben enthalten.
+
+```  
+SELECT 
+    StringToBoolean("TRUE"),
+    StringToBoolean("False")
+```  
+
+ Hier ist das Resultset.  
+  
+```  
+[{}]
+``` 
+
+ Der übergebene Ausdruck wird als boolescher Ausdruck analysiert. Die folgenden Eingaben werden nicht als boolescher Typ ausgewertet und geben daher „undefined“ zurück:
+
+ ```  
+SELECT 
+    StringToBoolean("null"),
+    StringToBoolean(undefined),
+    StringToBoolean(NaN), 
+    StringToBoolean(false), 
+    StringToBoolean(true)
+```  
+
+ Hier ist das Resultset.  
+  
+```  
+[{}]
 ```  
 
 ####  <a name="bk_stringtonull"></a> StringToNull  
@@ -2432,7 +2490,7 @@ StringToNull(<expr>)
   
 - `expr`  
   
-   Ist ein beliebiger gültiger Ausdruck.  
+   Ein beliebiger gültiger skalarer Ausdruck, der als NULL-Ausdruck ausgewertet werden soll.
   
   **Rückgabetypen**  
   
@@ -2441,24 +2499,54 @@ StringToNull(<expr>)
   **Beispiele**  
   
   Im folgenden Beispiel wird das typübergreifende Verhalten von StringToNull gezeigt. 
-  
+
+ Die folgenden Beispiele zeigen eine gültige Eingabe.
+ 
+ Leerzeichen sind ausschließlich vor oder nach „null“ zulässig.
+
 ```  
 SELECT 
-StringToNull("null"), 
-StringToNull("  null "),
-IS_NULL(StringToNull("null")), 
-StringToNull("true"), 
-StringToNull(false), 
-StringToNull(undefined),
-StringToNull(NaN), 
-StringToNull("NULL"),
-StringToNull("Null")
+    StringToNull("null") AS n1, 
+    StringToNull("  null ") AS n2,
+    IS_NULL(StringToNull("null   ")) AS n3
 ```  
   
  Hier ist das Resultset.  
   
 ```  
-[{"$1": null, "$2": null, "$3": true}]
+[{"n1": null, "n2": null, "n3": true}]
+```  
+
+ Die folgenden Beispiele zeigen eine ungültige Eingabe.
+
+ „null“ darf nur Kleinbuchstaben enthalten.
+
+```  
+SELECT    
+    StringToNull("NULL"),
+    StringToNull("Null")
+```  
+  
+ Hier ist das Resultset.  
+  
+```  
+[{}]
+```  
+
+ Der übergebene Ausdruck wird als NULL-Ausdruck analysiert. Die folgenden Eingaben werden nicht als NULL-Typ ausgewertet und geben daher „undefined“ zurück:
+
+```  
+SELECT    
+    StringToNull("true"), 
+    StringToNull(false), 
+    StringToNull(undefined),
+    StringToNull(NaN) 
+```  
+  
+ Hier ist das Resultset.  
+  
+```  
+[{}]
 ```  
 
 ####  <a name="bk_stringtonumber"></a> StringToNumber  
@@ -2474,7 +2562,7 @@ StringToNumber(<expr>)
   
 - `expr`  
   
-   Ein beliebiger gültiger JSON-Ausdruck für eine Zahl. Zahlen müssen in JSON im Integer- oder Gleitkommaformat angegeben werden. Ausführliche Informationen zum JSON-Format finden Sie unter [json.org](https://json.org/).  
+   Ein beliebiger gültiger skalarer Ausdruck, der als JSON-Zahlausdruck ausgewertet werden soll. Zahlen müssen in JSON im Integer- oder Gleitkommaformat angegeben werden. Ausführliche Informationen zum JSON-Format finden Sie unter [json.org](https://json.org/).  
   
   **Rückgabetypen**  
   
@@ -2483,27 +2571,52 @@ StringToNumber(<expr>)
   **Beispiele**  
   
   Im folgenden Beispiel wird das typübergreifende Verhalten von StringToNumber gezeigt. 
-  
+
+ Leerzeichen sind ausschließlich vor oder nach der Zahl zulässig.
+ 
 ```  
 SELECT 
-StringToNumber("1.000000"), 
-StringToNumber("3.14"),
-IS_NUMBER(StringToNumber("   60   ")), 
-StringToNumber("0xF"),
-StringToNumber("-1.79769e+308"),
-IS_STRING(StringToNumber("2")),
-StringToNumber(undefined),
-StringToNumber("99     54"), 
-StringToNumber("false"), 
-StringToNumber(false),
-StringToNumber(" "),
-StringToNumber(NaN)
+    StringToNumber("1.000000") AS num1, 
+    StringToNumber("3.14") AS num2,
+    StringToNumber("   60   ") AS num3, 
+    StringToNumber("-1.79769e+308") AS num4
 ```  
   
  Hier ist das Resultset.  
   
 ```  
-{{"$1": 1, "$2": 3.14, "$3": true, "$5": -1.79769e+308, "$6": false}}
+{{"num1": 1, "num2": 3.14, "num3": 60, "num4": -1.79769e+308}}
+```  
+
+ In JSON muss eine gültige Zahl entweder eine ganze Zahl oder eine Gleitkommazahl sein.
+ 
+```  
+SELECT   
+    StringToNumber("0xF")
+```  
+  
+ Hier ist das Resultset.  
+  
+```  
+{{}}
+```  
+
+ Der übergebene Ausdruck wird als Zahlenausdruck analysiert. Die folgenden Eingaben werden nicht als Zahlentyp ausgewertet und geben daher „undefined“ zurück: 
+
+```  
+SELECT 
+    StringToNumber("99     54"),   
+    StringToNumber(undefined),
+    StringToNumber("false"),
+    StringToNumber(false),
+    StringToNumber(" "),
+    StringToNumber(NaN)
+```  
+  
+ Hier ist das Resultset.  
+  
+```  
+{{}}
 ```  
 
 ####  <a name="bk_stringtoobject"></a> StringToObject  
@@ -2519,7 +2632,7 @@ StringToObject(<expr>)
   
 - `expr`  
   
-   Ein beliebiger gültiger JSON-Ausdruck für ein Objekt. Beachten Sie, dass Zeichenfolgenwerte in doppelten Anführungszeichen angegeben werden müssen, damit sie gültig sind. Ausführliche Informationen zum JSON-Format finden Sie unter [json.org](https://json.org/).  
+   Ein beliebiger gültiger skalarer Ausdruck, der als JSON-Objektausdruck ausgewertet werden soll. Beachten Sie, dass geschachtelte Zeichenfolgenwerte in doppelten Anführungszeichen angegeben werden müssen, damit sie gültig sind. Ausführliche Informationen zum JSON-Format finden Sie unter [json.org](https://json.org/).  
   
   **Rückgabetypen**  
   
@@ -2529,26 +2642,73 @@ StringToObject(<expr>)
   
   Im folgenden Beispiel wird das typübergreifende Verhalten von StringToObject gezeigt. 
   
-```  
+ Die folgenden Beispiele zeigen eine gültige Eingabe.
+ 
+``` 
 SELECT 
-StringToObject("{}"), 
-StringToObject('{"a":[1,2,3]}'),
-StringToObject("{'a':[1,2,3]}"),
-StringToObject("{a:[1,2,3]}"),
-IS_OBJECT(StringToObject('{"obj":[{"b":[5,6,7]},{"c":8},{"d":9}]}')), 
-IS_OBJECT(StringToObject("{\"obj\":[{\"b\":[5,6,7]},{\"c\":8},{\"d\":9}]}")), 
-IS_OBJECT(StringToObject("{'obj':[{'b':[5,6,7]},{'c':8},{'d':9}]}")), 
-StringToObject(false), 
-StringToObject(undefined),
-StringToObject(NaN), 
-StringToObject("{")
+    StringToObject("{}") AS obj1, 
+    StringToObject('{"A":[1,2,3]}') AS obj2,
+    StringToObject('{"B":[{"b1":[5,6,7]},{"b2":8},{"b3":9}]}') AS obj3, 
+    StringToObject("{\"C\":[{\"c1\":[5,6,7]},{\"c2\":8},{\"c3\":9}]}") AS obj4
+``` 
+
+ Hier ist das Resultset.
+
+```
+[{"obj1": {}, 
+  "obj2": {"A": [1,2,3]}, 
+  "obj3": {"B":[{"b1":[5,6,7]},{"b2":8},{"b3":9}]},
+  "obj4": {"C":[{"c1":[5,6,7]},{"c2":8},{"c3":9}]}}]
+```
+ 
+ Die folgenden Beispiele zeigen eine ungültige Eingabe.
+Sie sind zwar innerhalb einer Abfrage gültig, werden jedoch nicht als gültige Objekte interpretiert. Zeichenfolgen innerhalb der Objektzeichenfolge müssen mit Escapezeichen versehen werden: "{\\"a\\":\\"str\\"}". Alternativ kann die Objektzeichenfolge in einfache Anführungszeichen eingeschlossen werden: '{"a": "str"}'.
+
+ Einfache Anführungszeichen um Eigenschaftennamen sind in JSON nicht gültig.
+
+``` 
+SELECT 
+    StringToObject("{'a':[1,2,3]}")
+```
+
+ Hier ist das Resultset.
+
 ```  
-  
- Hier ist das Resultset.  
-  
+[{}]
 ```  
-[{"$1": {}, "$2": {"a": [1,2,3]}, "$5": true, "$6": true, "$7": false}]
+
+ Eigenschaftennamen ohne umgebende Anführungszeichen sind in JSON nicht gültig.
+
+``` 
+SELECT 
+    StringToObject("{a:[1,2,3]}")
+```
+
+ Hier ist das Resultset.
+
 ```  
+[{}]
+``` 
+
+ Die folgenden Beispiele zeigen eine ungültige Eingabe.
+ 
+ Der übergebene Ausdruck wird als JSON-Objekt analysiert. Die folgenden Eingaben werden nicht als Objekttyp ausgewertet und geben daher „undefined“ zurück:
+ 
+``` 
+SELECT 
+    StringToObject("}"),
+    StringToObject("{"),
+    StringToObject("1"),
+    StringToObject(NaN), 
+    StringToObject(false), 
+    StringToObject(undefined)
+``` 
+ 
+ Hier ist das Resultset.
+
+```
+[{}]
+```
 
 ####  <a name="bk_substring"></a> SUBSTRING  
  Gibt einen Teil eines Zeichenfolgenausdrucks zurück. Das angegebene Zeichen ist der Nullpunkt, von dem ab die Teilzeichenfolge in angegebener Länge bzw. bis zum Ende der Zeichenfolge zurückgegeben wird.  
@@ -3128,6 +3288,6 @@ SELECT ST_ISVALIDDETAILED({
   
 ## <a name="next-steps"></a>Nächste Schritte  
 
-- [SQL-Syntax und SQL-Abfrage für Cosmos DB](how-to-sql-query.md)
+- [SQL-Abfragebeispiele für Azure Cosmos DB](how-to-sql-query.md)
 
-- [Dokumentation für Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/)  
+- [Dokumentation für Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/)  

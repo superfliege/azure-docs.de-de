@@ -7,16 +7,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: a3fd89ee67b495d3ca1173faa9381ceba117ef63
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: f0959ff8b8ea5ce8d5516d25fdf0faf29dbcd994
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259311"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629597"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Sichern und Wiederherstellen von virtuellen Azure-Computern mit PowerShell
 
-Dieser Artikel erläutert das Sichern und Wiederherstellen eines virtuellen Azure-Computers in einem [Azure Backup](backup-overview.md)-Recovery Services-Tresor mit PowerShell-Cmdlets. 
+Dieser Artikel erläutert das Sichern und Wiederherstellen eines virtuellen Azure-Computers in einem [Azure Backup](backup-overview.md)-Recovery Services-Tresor mit PowerShell-Cmdlets.
 
 In diesem Artikel wird Folgendes behandelt:
 
@@ -24,10 +24,7 @@ In diesem Artikel wird Folgendes behandelt:
 > * Erstellen eines Recovery Services-Tresors und Einrichten des Tresorkontexts.
 > * Definieren einer Sicherungsrichtlinie
 > * Anwenden der Sicherungsrichtlinie zum Schützen mehrerer virtueller Computer
-> * Auslösen eines bedarfsgesteuerten Sicherungsauftrags für die geschützten virtuellen Computer. Bevor Sie einen virtuellen Computer (Virtual Machine, VM) sichern (oder schützen) können, müssen Sie die [Voraussetzungen](backup-azure-arm-vms-prepare.md) schaffen, um Ihre Umgebung auf den Schutz Ihrer VMs vorzubereiten. 
-
-
-
+> * Auslösen eines bedarfsgesteuerten Sicherungsauftrags für die geschützten virtuellen Computer. Bevor Sie einen virtuellen Computer (Virtual Machine, VM) sichern (oder schützen) können, müssen Sie die [Voraussetzungen](backup-azure-arm-vms-prepare.md) schaffen, um Ihre Umgebung auf den Schutz Ihrer VMs vorzubereiten.
 
 ## <a name="before-you-start"></a>Vorbereitung
 
@@ -44,8 +41,6 @@ Die Objekthierarchie ist im folgenden Diagramm zusammengefasst.
 
 Sehen Sie sich die [Cmdlet-Referenz](https://docs.microsoft.com/powershell/module/Az.RecoveryServices/?view=azps-1.4.0) zu **Az.RecoveryServices** in der Azure-Bibliothek an.
 
-
-
 ## <a name="set-up-and-register"></a>Einrichten und Registrieren
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -58,7 +53,7 @@ Vorbereitung:
 
     ```powershell
     Get-Command *azrecoveryservices*
-    ```   
+    ```
  
     Die Aliase und Cmdlets für Azure Backup, Azure Site Recovery und den Recovery Services-Tresor werden angezeigt. Die folgende Abbildung ist ein Beispiel für die angezeigten Elemente. Dies ist nicht die vollständige Liste mit den Cmdlets.
 
@@ -147,6 +142,18 @@ Verwenden Sie vor dem Aktivieren des Schutzes auf einem virtuellen Computer [Set
 Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultContext
 ```
 
+### <a name="modifying-storage-replication-settings"></a>Ändern der Einstellungen für die Speicherreplikation
+
+Verwenden Sie den Befehl [Set-AzRecoveryServicesBackupProperties](https://docs.microsoft.com/powershell/module/az.recoveryservices/Set-AzRecoveryServicesBackupProperties?view=azps-1.6.0), um die Konfiguration für Speicherreplikation des Tresors auf „LRS/GRS“ festzulegen.
+
+```powershell
+$vault= Get-AzRecoveryServicesVault -name "testvault"
+Set-AzRecoveryServicesBackupProperties -Vault $vault -BackupStorageRedundancy GeoRedundant/LocallyRedundant
+```
+
+> [!NOTE]
+> Die Speicherredundanz kann nur geändert werden, wenn im Tresor keine Sicherungselemente vorhanden sind.
+
 ### <a name="create-a-protection-policy"></a>Erstellen einer Schutzrichtlinie
 
 Wenn Sie einen Recovery Services-Tresor erstellen, enthält er automatisch standardmäßige Schutz- und Aufbewahrungsrichtlinien. Die standardmäßige Schutzrichtlinie löst täglich zu einem angegebenen Zeitpunkt einen Sicherungsauftrag aus. Die standardmäßige Aufbewahrungsrichtlinie bewahrt den täglichen Wiederherstellungspunkt für 30 Tage auf. Mit der Standardrichtlinie können Sie Ihren virtuellen Computer schnell schützen und die Richtlinie später mit anderen Details bearbeiten.
@@ -177,10 +184,18 @@ Eine Sicherungsschutzrichtlinie ist mindestens einer Aufbewahrungsrichtlinie zug
 - Das Cmdlet [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) erstellt ein PowerShell-Objekt, das Informationen zu Sicherungsrichtlinien enthält.
 - Die Zeitplan- und Aufbewahrungsrichtlinienobjekte werden als Eingaben für das Cmdlet New-AzRecoveryServicesBackupProtectionPolicy verwendet.
 
-Im folgenden Beispiel werden die Zeitplanrichtlinie und die Aufbewahrungsrichtlinie in Variablen gespeichert. Im Beispiel werden diese Variablen verwendet, um die Parameter beim Erstellen einer Schutzrichtlinie,*NewPolicy*, zu definieren.
+Eine Startzeit wird standardmäßig im Schedule Policy Object (Zeitplanrichtlinienobjekt) definiert. Verwenden Sie das folgende Beispiel, um die Startzeit in die gewünschte Startzeit zu ändern. Die gewünschte Startzeit sollte ebenfalls in UTC angegeben werden. Beim nachstehenden Beispiel wird vorausgesetzt, dass die gewünschte Startzeit für tägliche Sicherungen 01:00 Uhr UTC ist.
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
+$UtcTime = Get-Date -Date "2019-03-20 01:00:00Z"
+$UtcTime = $UtcTime.ToUniversalTime()
+$schpol.ScheduleRunTimes[0] = $UtcTime
+```
+
+Im folgenden Beispiel werden die Zeitplanrichtlinie und die Aufbewahrungsrichtlinie in Variablen gespeichert. Im Beispiel werden diese Variablen verwendet, um die Parameter beim Erstellen einer Schutzrichtlinie,*NewPolicy*, zu definieren.
+
+```powershell
 $retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "AzureVM"
 New-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -WorkloadType "AzureVM" -RetentionPolicy $retPol -SchedulePolicy $schPol
 ```
@@ -226,7 +241,6 @@ Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGro
 > Wenn Sie die Azure Government-Cloud verwenden, verwenden Sie im Cmdlet [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) den Wert ff281ffe-705c-4f53-9f37-a40e6f2c68f3 für den Parameter ServicePrincipalName.
 >
 
-
 ### <a name="modify-a-protection-policy"></a>Ändern einer Schutzrichtlinie
 
 Verwenden Sie [Set-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy) zum Bearbeiten der Schutzrichtlinie, um die Objekte SchedulePolicy oder RetentionPolicy zu ändern.
@@ -239,6 +253,19 @@ $retPol.DailySchedule.DurationCountInDays = 365
 $pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy"
 Set-AzRecoveryServicesBackupProtectionPolicy -Policy $pol  -RetentionPolicy $RetPol
 ```
+
+#### <a name="configuring-instant-restore-snapshot-retention"></a>Konfigurieren der Aufbewahrungsdauer von Momentaufnahmen für sofortige Wiederherstellung
+
+> [!NOTE]
+> Ab Az PS, Version 1.6.0, kann die Aufbewahrungsdauer von Momentaufnahmen für sofortige Wiederherstellung in Richtlinien mithilfe von PowerShell aktualisiert werden.
+
+````powershell
+PS C:\> $bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
+$bkpPol.SnapshotRetentionInDays=7
+PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+````
+
+Der Standardwert ist „2“. Der Benutzer kann den Wert auf mindestens „1“ und maximal „5“ festlegen. Bei Richtlinien zu wöchentlichen Sicherungen wird der Zeitraum auf „5“ festgelegt und kann nicht geändert werden.
 
 ## <a name="trigger-a-backup"></a>Auslösen einer Sicherung
 
@@ -420,7 +447,7 @@ Aus den resultierenden Auftragsdetails ergibt sich der Vorlagen-URI, der abgefra
    $templateBlobURI = $properties["Template Blob Uri"]
 ```
 
-Stellen Sie einfach die Vorlage bereit, um einen neuen virtuellen Computer wie [hier](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy#deploy-a-template-from-an-external-source) beschrieben zu erstellen.
+Stellen Sie einfach die Vorlage bereit, um einen neuen virtuellen Computer wie [hier](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy) beschrieben zu erstellen.
 
 ```powershell
 New-AzResourceGroupDeployment -Name ExampleDeployment ResourceGroupName ExampleResourceGroup -TemplateUri $templateBlobURI -storageAccountType Standard_GRS
@@ -672,7 +699,7 @@ $rp[0]
 
 Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
 
-```
+```powershell
 RecoveryPointAdditionalInfo :
 SourceVMStorageType         : NormalStorage
 Name                        : 15260861925810
@@ -719,4 +746,4 @@ Disable-AzRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Falls Sie PowerShell für die Arbeit mit Azure-Ressourcen vorziehen, lesen Sie den PowerShell-Artikel [Sicherungen für Windows Server bereitstellen und verwalten](backup-client-automation.md). Wenn Sie DPM-Sicherungen verwalten, finden Sie im Artikel [Bereitstellen und Verwalten der Sicherung für DPM](backup-dpm-automation.md) weitere Informationen. 
+Falls Sie PowerShell für die Arbeit mit Azure-Ressourcen vorziehen, lesen Sie den PowerShell-Artikel [Sicherungen für Windows Server bereitstellen und verwalten](backup-client-automation.md). Wenn Sie DPM-Sicherungen verwalten, finden Sie im Artikel [Bereitstellen und Verwalten der Sicherung für DPM](backup-dpm-automation.md) weitere Informationen.

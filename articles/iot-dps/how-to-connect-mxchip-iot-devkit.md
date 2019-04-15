@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: jeffya
-ms.openlocfilehash: a7131a66e9d722265282ac98b67b52db8de086e2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 80e4895e0b276e701a6d7f10d8fc67649db0f188
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551894"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904490"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Verwenden der automatischen Bereitstellung des Azure IoT Hub Device Provisioning Service zum Registrieren des MXChip IoT DevKit bei IoT Hub
 
@@ -30,7 +30,7 @@ Das [MXChip IoT DevKit](https://aka.ms/iot-devkit) ist ein mit Arduino kompatibl
 
 Um die Schritte in diesem Tutorial auszuführen, erledigen Sie zuerst die folgenden Aufgaben:
 
-* Bereiten Sie Ihr DevKit vor, indem Sie die in [Verbinden von IoT DevKit AZ3166 mit Azure IoT Hub in der Cloud](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) beschriebenen Schritte ausführen.
+* Konfigurieren Sie das WLAN Ihres DevKits, und bereiten Sie Ihre Entwicklungsumgebung vor, indem Sie die in [Verbinden von IoT DevKit AZ3166 mit Azure IoT Hub in der Cloud](/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) beschriebenen Schritte ausführen.
 * Führen Sie ein Upgrade auf die neueste Firmware (1.3.0 oder höher) mit dem Tutorial [Update der DevKit-Firmware](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/) durch.
 * Erstellen und Verknüpfen Sie einen IoT-Hub mit einer Device Provisioning-Dienstinstanz, indem Sie die Schritte in [Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal](/azure/iot-dps/quick-setup-auto-provision) ausführen.
 
@@ -77,7 +77,7 @@ So speichern Sie einen UDS auf dem DevKit:
 Im Gerätecode müssen Sie den [Endpunkt für die Gerätebereitstellung](/azure/iot-dps/concepts-service#device-provisioning-endpoint) und den ID-Bereich angeben, um die Mandantenisolation sicherzustellen.
 
 1. Wählen Sie im Azure-Portal den Bereich **Übersicht** Ihres Device Provisioning-Diensts aus, und notieren Sie sich die Werte von **Globaler Geräteendpunkt** und **ID-Bereich**.
-  ![Globaler Endpunkt und ID-Bereich von Device Provisioning Service](media/how-to-connect-mxchip-iot-devkit/dps-global-endpoint.png)
+  ![Globaler Endpunkt und ID-Bereich des Gerätebereitstellungsdiensts](media/how-to-connect-mxchip-iot-devkit/dps-global-endpoint.png)
 
 1. Öffnen Sie **DeKitDPS.ino**. Suchen und ersetzen Sie `[Global Device Endpoint]` und `[ID Scope]` durch die Werte, die Sie sich gerade notiert hatten.
   ![Endpunkt des Gerätebereitstellungsdiensts](media/how-to-connect-mxchip-iot-devkit/endpoint.png)
@@ -86,7 +86,7 @@ Im Gerätecode müssen Sie den [Endpunkt für die Gerätebereitstellung](/azure/
   ![Registrierungs-ID](media/how-to-connect-mxchip-iot-devkit/registration-id.png)
 
 1. Klicken Sie auf `F1`, geben Sie **Azure IoT Device Workbench: Upload Device Code** (Azure IoT Device Workbench: Gerätecode hochladen) ein, und wählen Sie den angezeigten Befehl aus. VS Code beginnt dann, den Code zu compilieren und auf Ihr DevKit hochzuladen.
-  ![Geräteupload](media/how-to-connect-mxchip-iot-devkit/device-upload.png)
+  ![Gerät hochladen](media/how-to-connect-mxchip-iot-devkit/device-upload.png)
 
 ## <a name="generate-x509-certificate"></a>Generieren eines X.509-Zertifikats
 
@@ -128,7 +128,7 @@ Drücken Sie auf Ihrem DevKit die **Reset**-Taste. Daraufhin sollte **DPS verbun
 
 Wenn Probleme auftreten, lesen Sie die [häufig gestellten Fragen](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) (FAQs) zum IoT DevKit, oder wenden Sie sich über folgende Kanäle an uns:
 
-* [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
+* [Gitter.IM](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>Nächste Schritte

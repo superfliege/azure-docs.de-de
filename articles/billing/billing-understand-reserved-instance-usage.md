@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2018
+ms.date: 03/13/2019
 ms.author: banders
-ms.openlocfilehash: a3bacdb19dfe16a63cf1f89ef6fb162d08cb4d32
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 14bd7b61038bf938f7d370eaf6e16d71b5da43ca
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57883779"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652534"
 ---
 # <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung
 
@@ -64,7 +64,7 @@ Filtern Sie nach **Zusätzliche Informationen**, und geben Sie Ihre **Reservieru
 
 ## <a name="usage-for-sql-database--cosmos-db-reserved-capacity-reservations"></a>Nutzung von Reservierungen von SQL-Datenbank- und Cosmos DB-Kapazitäten
 
-In den folgenden Abschnitten wird der Nutzungsbericht anhand von Azure SQL-Datenbank beschrieben. Mit denselben Schritten können Sie auch die Nutzung für Azure Cosmos DB abrufen. 
+In den folgenden Abschnitten wird der Nutzungsbericht anhand von Azure SQL-Datenbank beschrieben. Mit denselben Schritten können Sie auch die Nutzung für Azure Cosmos DB abrufen.
 
 Es wird davon ausgegangen, dass Sie eine SQL-Datenbank-Gen 4-Instanz in der Region „USA, Osten“ ausführen und Ihre Reservierungsinformationen mit den Angaben in der folgenden Tabelle übereinstimmen:
 
@@ -93,6 +93,10 @@ Filtern Sie nach **Zusätzliche Informationen**, und geben Sie Ihre **Reservieru
 2. **ConsumptionMeter** ist die Verbrauchseinheit-ID für die SQL-Datenbank-Ressource.
 3. Die **Verbrauchseinheit-ID** ist die Reservierungsverbrauchseinheit. Die Kosten für diese Verbrauchseinheit betragen 0,00 USD. Bei SQL-Datenbank-Ressourcen, die für den Reservierungsrabatt qualifiziert sind, wird diese Verbrauchseinheit-ID in der CSV-Datei angezeigt.
 
+## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
+
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artikeln:
@@ -104,9 +108,3 @@ Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artike
 - [Grundlegendes zur Anwendung des Rabatts für Azure-Reservierungen auf virtuelle Computer](billing-understand-vm-reservation-charges.md)
 - [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](billing-understand-reserved-instance-usage-ea.md)
 - [Nicht in Azure-Reservierungen enthaltene Windows-Softwarekosten](billing-reserved-instance-windows-software-costs.md)
-
-## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
-
-Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
-
-

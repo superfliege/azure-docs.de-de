@@ -22,19 +22,16 @@ items:
     href: apache-kafka-quickstart-resource-manager-template.md
 - name: Lernprogramme
   items:
-  - name: 1. Verwenden des strukturierten Apache Spark-Streamings
+  - name: Verwenden des strukturierten Apache Spark-Streamings
     href: ../hdinsight-apache-kafka-spark-structured-streaming.md
     maintainContext: true
-  - name: 2. Schreiben in/Lesen aus Apache Kafka mit Apache Storm
+  - name: Schreiben in/Lesen aus Apache Kafka mit Apache Storm
     href: ../hdinsight-apache-storm-with-kafka.md
     maintainContext: true
-  - name: 3. Verwenden der Producer- und Consumer-API von Apache Kafka
+  - name: Verwenden der Producer- und Consumer-API von Apache Kafka
     href: apache-kafka-producer-consumer-api.md
-  - name: 4. Entwickeln einer App mit der Streams-API von Apache Kafka
+  - name: Entwickeln einer App mit der Streams-API von Apache Kafka
     href: apache-kafka-streams-api.md
-  - name: Überwachen der Clusterverfügbarkeit mit Ambari und Azure Monitor-Protokollen
-    href: ../hdinsight-cluster-availability.md
-    maintainContext: true
 - name: Konzepte
   items:
   - name: Kapazitätsplanung
@@ -159,6 +156,9 @@ items:
       - name: Verwenden der Apache Ambari-REST-API
         href: ../hdinsight-hadoop-manage-ambari-rest-api.md
         maintainContext: true
+      - name: Überwachen der Clusterverfügbarkeit mit Azure Monitor-Protokollen
+        href: ../hdinsight-cluster-availability.md
+        maintainContext: true
       maintainContext: true
     - name: Verwalten von Protokollen für einen HDInsight-Cluster
       href: ../hdinsight-log-management.md
@@ -271,9 +271,9 @@ items:
   - name: Windows-Tools für HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 1bc035c80492c283364e5216184d2e943bacc3aa
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 4549b041bc9e754aca632826c8e1a2afc7622a82
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668142"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565091"

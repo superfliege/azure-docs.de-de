@@ -23,7 +23,7 @@ items:
     href: quickstart-python.md
   - name: Erstellen einer Ruby-App
     href: quickstart-ruby.md
-  - name: Erstellen einer Docker-/Go-App
+  - name: Ausführen eines benutzerdefinierten Containers
     href: quickstart-docker-go.md
   - name: Erstellen einer App mit mehreren Containern
     href: quickstart-multi-container.md
@@ -48,7 +48,7 @@ items:
       href: tutorial-java-enterprise-postgresql-app.md
   - name: App mit mehreren Containern
     href: tutorial-multi-container-app.md
-  - name: Benutzerdefiniertes Docker-Image
+  - name: Ausführen eines Containers über ACR
     href: tutorial-custom-docker-image.md
   - name: Zuordnen einer benutzerdefinierten Domäne
     href: ../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
@@ -72,10 +72,6 @@ items:
     href: ../overview-hosting-plans.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: App Service-Umgebung
     href: ../environment/intro.md
-  - name: Entwicklerhandbuch für Java
-    href: app-service-linux-java.md
-  - name: Handbuch für Java Enterprise
-    href: app-service-java-enterprise.md
   - name: Eingehende und ausgehende IPs
     href: ../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
   - name: Authentifizierung und Autorisierung
@@ -88,10 +84,22 @@ items:
   items:
   - name: Konfigurieren der App
     items:
-    - name: Python-Image
-      href: how-to-configure-python.md
     - name: Verwenden der App-Einstellungen
       href: ../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Konfigurieren von ASP.NET Core
+      href: configure-language-dotnetcore.md
+    - name: Konfigurieren von Node.js
+      href: configure-language-nodejs.md
+    - name: Konfigurieren von PHP
+      href: configure-language-php.md
+    - name: Konfigurieren von Java
+      href: configure-language-java.md
+    - name: Konfigurieren von Python
+      href: how-to-configure-python.md
+    - name: Konfigurieren von Ruby
+      href: configure-language-ruby.md
+    - name: Konfigurieren eines benutzerdefinierten Containers
+      href: configure-custom-container.md
     - name: Bereitstellen von Inhalten mit Storage
       href: how-to-serve-content-from-azure-storage.md
   - name: Bereitstellen in Azure
@@ -158,8 +166,6 @@ items:
       href: ../web-sites-monitor.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
     - name: Aktivieren von Protokollen
       href: ../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Java-APM-Integrationen
-      href: how-to-java-apm-monitoring.md
   - name: Verwalten der App
     items:
     - name: Sichern einer App
@@ -222,9 +228,9 @@ items:
         href: ../faq-open-source-technologies.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
       - name: Häufig gestellte Fragen zu Konfiguration und Verwaltung
         href: ../faq-configuration-and-management.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-ms.openlocfilehash: f29fa4901e2eb8e3a6bcabcc72e4dba37041186a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 250501832c3daaeee9935c2796e6da9df3483e35
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719522"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544871"

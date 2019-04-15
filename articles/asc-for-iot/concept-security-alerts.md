@@ -1,34 +1,41 @@
 ---
-title: Leitfaden zu Sicherheitswarnungen für ASC für IoT (Vorschauversion) | Microsoft-Dokumentation
-description: Hier erhalten Sie Informationen zu Sicherheitswarnungen und empfohlenen Abhilfemaßnahmen unter Verwendung von ASC für IoT-Features und -Diensten.
-services: ascforiot
+title: Leitfaden zu Sicherheitswarnungen für Azure Security Center für IoT (Vorschauversion) | Microsoft-Dokumentation
+description: Hier erhalten Sie Informationen zu Sicherheitswarnungen und empfohlenen Abhilfemaßnahmen unter Verwendung von Azure Security Center für IoT-Features und -Diensten.
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: a5c25cba-59a4-488b-abbe-c37ff9b151f9
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: f39fee9b59dfec643a640a4e17460ed9199c858f
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: f3ae69cb6c8e2a60488b4f1ff3df1bb8ab0c04ea
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541512"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58861977"
 ---
-# <a name="asc-for-iot-security-alerts"></a>ASC für IoT-Sicherheitswarnungen
+# <a name="azure-security-center-for-iot-security-alerts"></a>Azure Security Center für IoT – Sicherheitswarnungen
 
 > [!IMPORTANT]
-> ASC für IoT befindet sich derzeit in der Public Preview-Phase.
+> Azure Security Center für IoT befindet sich derzeit in der öffentlichen Vorschauphase.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
+Azure Security Center (ASC) für IoT analysiert Ihre IoT-Lösung ständig mithilfe von Advanced Analytics- und Threat Intelligence-Funktionen, um Sie vor schädlichen Aktivitäten zu warnen.
+Darüber hinaus können Sie – basierend auf Ihrer Kenntnis des erwarteten Geräteverhaltens – benutzerdefinierte Warnungen erstellen.
+Eine Warnung fungiert als Indikator für eine Kompromittierung, die untersucht und behoben werden sollte.
 
-## <a name="device-alerts"></a>Gerätewarnungen
+In diesem Artikel finden Sie eine Liste von integrierten Warnungen, die auf Ihrem IoT Hub und/oder IoT-Geräten ausgelöst werden können.
+Neben integrierten Warnungen ermöglicht es Ihnen ASC für IoT, benutzerdefinierte Warnungen zu erstellen, die auf dem erwarteten Hub- und/oder Geräteverhalten basieren.
+Weitere Details finden Sie unter [Create custom alerts](quickstart-create-custom-alerts.md) (Erstellen von benutzerdefinierten Warnungen).
+
+## <a name="built-in-alerts-for-iot-devices"></a>Integrierte Warnungen für IoT-Geräte
 
 | Severity | NAME                                                   | Data source | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 |----------|--------------------------------------------------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -72,7 +79,7 @@ ms.locfileid: "58541512"
 | Niedrig      | Bashverlauf gelöscht                                   | Agent       | Das Bashverlaufsprotokoll wurde gelöscht. Angreifer können ihre eigenen Befehle in den Protokollen ausblenden.                                                                                                                                                                                                                                                                                                                                                   |
 | Niedrig      | Fehlgeschlagener Brute-Force-Angriff                                      | Agent       | Mehrere nicht erfolgreiche Anmeldeversuche wurden identifiziert. Ein versuchter und fehlgeschlagener Brute-Force-Angriff erfolgte auf dem Gerät.                                                                                                                                                                                                                                                                                                                                                  |
 
-## <a name="iot-hub-alerts"></a>IoT Hub-Warnungen
+## <a name="built-in-alerts-for-iot-hub"></a>Integrierte Warnungen für IoT Hub
 
 | Severity | NAME                                                                         | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                            |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -88,4 +95,4 @@ ms.locfileid: "58541512"
 
 - [Übersicht](overview.md)
 - [Zugreifen auf Sicherheitsdaten](how-to-security-data-access.md)
-- [Untersuchen eines Geräts](tutorial-investigate-device.md)
+- [Untersuchen eines Geräts](how-to-investigate-device.md)

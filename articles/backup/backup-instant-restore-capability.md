@@ -8,17 +8,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: sogup
-ms.openlocfilehash: 20f934ae418b0a5e37d3e619fabadc5cb6e23642
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 56c75840ca3114af40a2c843e2107f850bbff51a
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285546"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905969"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Verbesserte Sicherungs- und Wiederherstellungsleistung mit der Azure Backup-Funktion zur sofortigen Wiederherstellung
 
 > [!NOTE]
-> Aufgrund des Feedbacks von Benutzern wird **VM-Sicherungsstapel V2** in **Sofortige Wiederherstellung** umbenannt, um Verwechslungen mit Azure Stack-Funktionen zu vermeiden.
+> Aufgrund des Feedbacks von Benutzern wird **VM-Sicherungsstapel V2** in **Sofortige Wiederherstellung** umbenannt, um Verwechslungen mit Azure Stack-Funktionen zu vermeiden.<br/><br/> Für alle Azure Backup-Benutzer wurde nun ein Upgrade auf **sofortige Wiederherstellung** ausgeführt.
 
 Das neue Modell für die sofortige Wiederherstellung bietet die folgenden Featureverbesserungen:
 
@@ -28,6 +28,7 @@ Das neue Modell für die sofortige Wiederherstellung bietet die folgenden Featur
 * Unterstützt SSD Standard-Datenträger sowie HDD Standard-Datenträger und SSD Premium-Datenträger.
 *   Die Möglichkeit zur Verwendung der ursprünglichen Speicherkonten (pro Datenträger) eines nicht verwalteten virtuellen Computers bei der Wiederherstellung. Diese Funktion ist auch dann vorhanden, wenn die VM Datenträger enthält, die an mehrere Speicherkonten verteilt werden. Sie beschleunigt Wiederherstellungsvorgänge für verschiedene VM-Konfigurationen.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="whats-new-in-this-feature"></a>Was ist neu in diesem Feature?
 
@@ -60,13 +61,25 @@ Die inkrementellen Momentaufnahmen werden im Speicherkonto des virtuellen Comput
 >[!NOTE]
 > Die Aufbewahrung einer Momentaufnahme ist für wöchentliche Richtlinien auf fünf Tage festgelegt.
 
-## <a name="configure-snapshot-retention-using-the-azure-portal"></a>Konfigurieren der Aufbewahrung von Momentaufnahmen über das Azure-Portal
+## <a name="configure-snapshot-retention"></a>Konfigurieren der Aufbewahrung einer Momentaufnahme
 
-**Für alle Azure Backup-Benutzer wurde nun ein Upgrade auf sofortige Wiederherstellung ausgeführt**.
+### <a name="using-azure-portal"></a>Verwenden des Azure-Portals
 
 Im Azure-Portal wird ein zusätzliches Feld auf dem Blatt **VM-Sicherungsrichtlinie** unter dem Abschnitt **Sofortige Wiederherstellung** angezeigt. Sie können die Aufbewahrungsdauer für Momentaufnahmen über das Blatt **VM-Sicherungsrichtlinie** für alle virtuellen Computer ändern, die der jeweiligen Sicherungsrichtlinie zugeordnet sind.
 
 ![Funktion zur sofortigen Wiederherstellung](./media/backup-azure-vms/instant-restore-capability.png)
+
+### <a name="using-powershell"></a>Verwenden von PowerShell
+
+>[!NOTE]
+> Ab Azure PowerShell, Version 1.6.0, können Sie die Aufbewahrungsdauer von Momentaufnahmen für sofortige Wiederherstellung in Richtlinien mithilfe von PowerShell aktualisieren.
+
+```powershell
+PS C:\> $bkpPol = Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
+$bkpPol.SnapshotRetentionInDays=5
+PS C:\> Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+```
+Die Standardaufbewahrungsdauer von Momentaufnahmen für jede Richtlinie ist auf 2 Tage festgelegt. Benutzer können den Wert auf mindestens einen Tag und maximal 5 Tage ändern. Die Aufbewahrungsdauer von Momentaufnahmen für wöchentliche Richtlinien ist auf 5 Tage festgelegt.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 

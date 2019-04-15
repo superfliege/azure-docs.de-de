@@ -1,35 +1,35 @@
 ---
-title: Authentifizierungsmethoden für Azure Security Center for IoT (Vorschauversion) | Microsoft-Dokumentation
-description: Lernen Sie die verschiedenen Authentifizierungsmethoden kennen, die für den Azure Security Center for IoT-Dienst verfügbar sind.
-services: ascforiot
+title: Authentifizierungsmethoden für Azure Security Center für IoT (Vorschauversion) | Microsoft-Dokumentation
+description: Lernen Sie die verschiedenen Authentifizierungsmethoden kennen, die für den Azure Security Center für IoT-Dienst verfügbar sind.
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 10b38f20-b755-48cc-8a88-69828c17a108
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 23bc4d0df1c8124ec225ac31239c7acb3f1ab546
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: d1f9d77d1f87e8d201e2cb034401bb3cae14f41b
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541494"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862912"
 ---
 # <a name="security-agent-authentication-methods"></a>Authentifizierungsmethoden des Sicherheits-Agents 
 
 > [!IMPORTANT]
-> Azure Security Center for IoT befindet sich derzeit in der öffentlichen Vorschauphase (Public Preview).
+> Azure Security Center für IoT befindet sich derzeit in der öffentlichen Vorschauphase.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 In diesem Artikel werden die verschiedenen Authentifizierungsmethoden erläutert, die Sie mit dem AzureIoTSecurity-Agent für die Authentifizierung beim IoT Hub verwenden können.
 
-Für jedes Gerät, das im IoT Hub in Azure Security Center for IoT integriert ist, ist ein Sicherheitsmodul erforderlich. Für die Authentifizierung des Geräts kann Azure Security Center for IoT eine der beiden Methoden verwenden. Wählen Sie die Methode aus, die sich am besten für Ihre vorhandene IoT-Lösung eignet. 
+Für jedes Gerät, das im IoT Hub in Azure Security Center (ASC) für IoT integriert ist, ist ein Sicherheitsmodul erforderlich. Für die Authentifizierung des Geräts kann Azure Security Center for IoT eine der beiden Methoden verwenden. Wählen Sie die Methode aus, die sich am besten für Ihre vorhandene IoT-Lösung eignet. 
 
 > [!div class="checklist"]
 > * Sicherheitsmoduloption
@@ -41,10 +41,12 @@ Für den AzureIoTSecurity-Agent gibt es die beiden folgenden Authentifizierungsm
 
  - Authentifizierungsmodus **Modul**<br>
    Das Modul wird unabhängig von dem Gerätezwilling authentifiziert.
-   Die Informationen, die für diese Art der Authentifizierung erforderlich sind, werden durch die Datei „Authentication.config“ für C# bzw. die Datei „LocalConfiguration.json“ für C definiert.
+   Verwenden Sie diesen Authentifizierungstyp, wenn der Sicherheits-Agent eine dedizierte Authentifizierungsmethode über Sicherheitsmodul (nur symmetrischer Schlüssel) verwenden soll.
         
  - Authentifizierungsmodus **Gerät**<br>
-    Bei dieser Methode wird der Sicherheits-Agent zunächst für das Gerät authentifiziert. Nach der ersten Authentifizierung führt der Azure Security Center for IoT-Agent den Aufruf **Rest** am IoT Hub durch und verwendet dabei die Rest-API mit den Authentifizierungsdaten des Geräts. Der Azure Security Center for IoT-Agent fordert dann die Authentifizierungsmethode und -daten des Sicherheitsmoduls vom IoT Hub an. Im letzten Schritt nimmt der Azure Security Center for IoT-Agent eine Authentifizierung beim Azure Security Center for IoT-Modul vor.    
+    Bei dieser Methode wird der Sicherheits-Agent zunächst mit der Geräteidentität authentifiziert. Nach der ersten Authentifizierung führt der Azure Security Center für IoT-Agent den Aufruf **REST** am IoT Hub durch und verwendet dabei die REST-API mit den Authentifizierungsdaten des Geräts. Der Azure Security Center for IoT-Agent fordert dann die Authentifizierungsmethode und -daten des Sicherheitsmoduls vom IoT Hub an. Im letzten Schritt nimmt der Azure Security Center for IoT-Agent eine Authentifizierung beim Azure Security Center for IoT-Modul vor.
+    
+    Verwenden Sie diesen Authentifizierungstyp, wenn der Sicherheits-Agent eine vorhandene Geräteauthentifizierungsmethode (selbstsigniertes Zertifikat oder symmetrischer Schlüssel) erneut verwenden soll. 
 
 Informationen zur Konfiguration finden Sie unter [Security agent installation parameters (Installationsparameter für den Sicherheits-Agent)](#security-agent-installation-parameters).
                                 
@@ -55,13 +57,13 @@ Informationen zur Konfiguration finden Sie unter [Security agent installation pa
 
 ## <a name="security-agent-installation-parameters"></a>Installationsparameter für den Sicherheits-Agent
 
-Beim [Bereitstellen eines Sicherheits-Agents](select-deploy-agent.md) müssen Authentifizierungsdetails als Argumente angegeben werden.
+Beim [Bereitstellen eines Sicherheits-Agents](how-to-deploy-agent.md) müssen Authentifizierungsdetails als Argumente angegeben werden.
 Diese Argumente werden in der folgenden Tabelle gezeigt.
 
 
 |Parameter|BESCHREIBUNG|Optionen|
 |---------|---------------|---------------|
-|**Identität**|Authentifizierungsmodus| **Modul** oder **Gerät**|
+|**identity**|Authentifizierungsmodus| **Modul** oder **Gerät**|
 |**type**|Authentifizierungsart|**SymmetricKey** oder **SelfSignedCertificate**|
 |**filePath**|Vollständiger Pfad der Datei, die das Zertifikat oder den symmetrischen Schlüssel enthält| |
 |**gatewayHostname**|Vollqualifizierter Domänenname (FQDN) des IoT Hubs|Beispiel: ContosoIotHub.azure-devices.net|
@@ -111,5 +113,5 @@ Bearbeiten Sie _LocalConfiguration.json_ mit den folgenden Parametern:
 
 ## <a name="see-also"></a>Weitere Informationen
 - [Security agents overview (Sicherheits-Agents (Übersicht))](security-agent-architecture.md)
-- [Deploy security agent (Bereitstellen eines Sicherheits-Agents)](select-deploy-agent.md)
-- [Access raw security data (Zugreifen auf Sicherheitsrohdaten)](how-to-security-data-access.md)
+- [Deploy security agent (Bereitstellen eines Sicherheits-Agents)](how-to-deploy-agent.md)
+- [Zugreifen auf Sicherheitsrohdaten](how-to-security-data-access.md)

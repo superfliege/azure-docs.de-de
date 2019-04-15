@@ -3,20 +3,20 @@ title: 'Endbenutzerauthentifizierung: .NET SDK mit Azure Data Lake Storage Gen1 
 description: Hier erfahren Sie, wie Sie die Authentifizierung von Endbenutzern bei Azure Data Lake Storage Gen1 mithilfe von Azure Active Directory mit dem .NET SDK umsetzen.
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
+author: twooley
 manager: cgronlun
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 62b7e293468a8b92f22ee1a5fd5b38cd15cfafbf
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.author: twooley
+ms.openlocfilehash: 78a290d8136f8804e853d36a9bc95571625ed89c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261533"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876767"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Authentifizierung von Endbenutzern bei Azure Data Lake Storage Gen1 mithilfe des .NET SDK
 > [!div class="op_single_selector"]
@@ -55,8 +55,8 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe des .NET SDK die Authentifizier
    2. Stellen Sie auf der Registerkarte **NuGet-Paket-Manager** sicher, dass **Paketquelle** auf **nuget.org** festgelegt und das Kontrollkästchen **Vorabversion einbeziehen** aktiviert ist.
    3. Suchen und installieren Sie die folgenden NuGet-Pakete:
 
-      * `Microsoft.Azure.Management.DataLake.Store`: In diesem Tutorial wird „v2.1.3-preview“ verwendet.
-      * `Microsoft.Rest.ClientRuntime.Azure.Authentication`: In diesem Tutorial wird „v2.2.12“ verwendet.
+      * `Microsoft.Azure.Management.DataLake.Store` – In diesem Tutorial wird „v2.1.3-preview“ verwendet.
+      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` – In diesem Tutorial wird „v2.2.12“ verwendet.
 
         ![Hinzufügen einer NuGet-Quelle](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "Erstellen eines neuen Azure Data Lake-Kontos")
    4. Schließen Sie den **NuGet-Paket-Manager**.
@@ -112,6 +112,6 @@ Im Anschluss folgen einige wissenswerte Informationen zu obigem Codeausschnitt:
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie erfahren, wie Sie die Authentifizierung von Endbenutzern verwenden, um sich mithilfe des .NET SDK bei Azure Data Lake Storage Gen1 zu authentifizieren. In den folgenden Artikeln wird erörtert, wie Sie das .NET SDK mit Azure Data Lake Storage Gen1 verwenden.
 
-* [Kontoverwaltungsvorgänge für Azure Data Lake Storage Gen1 mit dem .NET SDK](data-lake-store-get-started-net-sdk.md)
-* [Dateisystemvorgänge in Azure Data Lake Storage Gen1 mit dem .NET SDK](data-lake-store-data-operations-net-sdk.md)
+* [Kontoverwaltungsvorgänge für Data Lake Storage Gen1 mit dem .NET SDK](data-lake-store-get-started-net-sdk.md)
+* [Datenvorgänge in Data Lake Storage Gen1 mit dem .NET SDK](data-lake-store-data-operations-net-sdk.md)
 

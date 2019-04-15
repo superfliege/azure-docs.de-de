@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/03/2018
 ms.author: banders
-ms.openlocfilehash: a66547ed4bf089bb618dc8b98da7f260b6b5536a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bf18d845b7128c8d6f740555f1a0f791767240ae
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57904302"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650222"
 ---
-# <a name="view-reservations-for-azure-in-the-azure-portal"></a>Anzeigen von Reservierungen für Azure im Azure-Portal
+# <a name="view-azure-reservations-in-the-azure-portal"></a>Anzeigen von Azure-Reservierungen im Azure-Portal
 
-Je nach Abonnementtyp und Berechtigungen gibt es mehrere Möglichkeiten, um Reservierungen für Azure-Ressourcen anzuzeigen.
+Je nach Abonnementtyp und Berechtigungen gibt es mehrere Möglichkeiten, um Reservierungen für Azure anzuzeigen.
 
 ## <a name="view-reservations-as-owner-or-reader"></a>Anzeigen von Reservierungen als Besitzer oder Leser
 
@@ -63,14 +63,25 @@ Wenn Sie die Daten mithilfe einer API abrufen möchten, lesen Sie [Abrufen von G
 Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artikeln:
 
 - [Was sind Azure-Reservierungen?](billing-save-compute-costs-reservations.md)
+- [Verwalten von Azure-Reservierungen](billing-manage-reserved-vm-instance.md)
+
+Kaufen eines Serviceplans:
+
 - [Vorauszahlen für reservierte Azure Cosmos DB-Kapazität](../cosmos-db/cosmos-db-reserved-capacity.md)
 - [Vorauszahlen von SQL-Datenbank-Computeressourcen mit reservierter Azure SQL-Datenbank-Kapazität](../sql-database/sql-database-reserved-capacity.md)
 - [Vorauszahlen für virtuelle Computer mit Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Verwalten von Azure-Reservierungen](billing-manage-reserved-vm-instance.md)
+
+Kaufen eines Softwareplans:
+
+- [Vorauszahlen für Red Hat-Softwarepläne aus Azure-Reservierungen](../virtual-machines/linux/prepay-rhel-software-charges.md)
+- [Vorauszahlen für SUSE-Softwarepläne aus Azure-Reservierungen](../virtual-machines/linux/prepay-suse-software-charges.md)
+
+Grundlegendes zur Nutzung:
+
 - [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](billing-understand-reserved-instance-usage.md)
 - [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](billing-understand-reserved-instance-usage-ea.md)
 - [Grundlegendes zur Verwendung von Azure-Reservierungen für CSP-Abonnements](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
+## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
 
 Wenn Sie Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).

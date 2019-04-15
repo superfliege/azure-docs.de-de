@@ -5,15 +5,15 @@ services: storage
 author: rmatchoro
 ms.service: storage
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 04/03/2019
 ms.author: monhaber
 ms.manager: shaik
-ms.openlocfilehash: b2e51b11e2d79d7f35d6b24df4ba5492ecf9a5c4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 78338ece1bc70d8410bd71183a34aaf1a52f2d1b
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58133228"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904116"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection für Azure Storage
 
@@ -22,8 +22,8 @@ Advanced Threat Protection für Azure Storage ermöglicht die Nutzung intelligen
 Bei Anomalien im Rahmen von Aktivitäten werden Sicherheitswarnungen ausgelöst.  Diese Sicherheitswarnungen sind in [Azure Security Center](https://azure.microsoft.com/services/security-center/) integriert und werden mit Informationen zu verdächtigen Aktivitäten und Empfehlungen zur Untersuchung und Beseitigung von Bedrohungen auch per E-Mail an Abonnementadministratoren gesendet.
 
 > [!NOTE]
-> * Advanced Threat Protection für Azure Storage ist derzeit nur für Blob Storage verfügbar. 
-> * Informationen zu den neuen Preisen sind mit einer Option für eine kostenlose Testversion für den Zeitraum der ersten 30 Tage auf der Seite mit der Preisübersicht in [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-pricing) verfügbar. 
+> * Advanced Threat Protection für Azure Storage ist derzeit nur für Blob Storage verfügbar.
+> * Preisdetails, einschließlich einer kostenlosen 30-Tage-Testversion, finden Sie auf der [Seite mit der Preisübersicht zu Azure Security Center]( https://azure.microsoft.com/en-us/pricing/details/security-center/).
 > * ATP für Azure Storage ist derzeit in Azure Government- und Sovereign Cloud-Regionen nicht verfügbar.
 
 Bei Advanced Threat Protection für Azure Storage werden Diagnoseprotokolle von an Blob Storage gesendeten Lese-, Schreib- und Löschanforderungen erfasst, um Bedrohungen zu erkennen. Wenn Sie die Warnungen von Advanced Threat Protection untersuchen möchten, können Sie mithilfe von Storage Analytics Logging entsprechende Speicheraktivitäten anzeigen. Weitere Informationen finden Sie unter [Konfigurieren der Protokollierung](storage-monitor-storage-account.md#configure-logging).
@@ -51,6 +51,24 @@ Wenn Sie den Standard-Tarif in Azure Security Center abonnieren, wird Advanced T
 
 Verwenden Sie zur Bereitstellung eines Azure Storage-Kontos, bei dem Advanced Threat Protection aktiviert ist, eine Azure Resource Manager-Vorlage.
 Weitere Informationen finden Sie unter [Storage account with Advanced Threat Protection (Storage-Konto mit Advanced Threat Protection)](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/).
+
+### <a name="using-azure-policy"></a>Verwenden von Azure Policy
+
+Verwenden Sie eine Azure Policy-Instanz zum Aktivieren von Advanced Threat Protection für Speicherkonten unter einem bestimmten Abonnement oder einer bestimmten Ressourcengruppe.
+
+1. Starten Sie die Azure-Seite **Richtlinie – Definitionen**.
+
+1. Suchen Sie nach der Richtlinie **Advanced Threat Protection für Speicherkonten bereitstellen**.
+
+     ![Richtlinie suchen](./media/storage-advanced-threat-protection/storage-atp-policy-definitions.png)
+  
+1. Wählen Sie ein Azure-Abonnement oder eine Ressourcengruppe aus.
+
+    ![Wählen Sie „Abonnement“ oder „Gruppe“ aus.](./media/storage-advanced-threat-protection/storage-atp-policy2.png)
+
+1. Weisen Sie die Richtlinie zu.
+
+    ![Seite „Richtliniendefinitionen“](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
 ### <a name="using-rest-api"></a>Verwenden der REST-API
 Verwenden Sie REST-API-Befehle, um die Advanced Threat Protection-Einstellung für ein bestimmtes Speicherkonto zu erstellen, zu aktualisieren oder abzurufen.

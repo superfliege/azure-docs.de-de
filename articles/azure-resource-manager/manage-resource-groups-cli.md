@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: c9e6cc68cbd629642849d323d4271722f3232aa3
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 9245d4c01816d26e262b1c8bd35015e2a6a9558c
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56824935"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650732"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Verwalten von Azure Resource Manager-Gruppen mithilfe der Azure CLI
 
@@ -47,7 +47,7 @@ read location &&
 az group create --name $resourceGroupName --location $location
 ```
 
-## <a name="list-resource-groups"></a>Auflisten von Ressourcengruppen
+## <a name="list-resource-groups"></a>Ressourcengruppen auflisten
 
 Das folgende CLI-Skript listet die Ressourcengruppen unter Ihrem Abonnement auf.
 
@@ -83,13 +83,17 @@ Informationen finden Sie unter [Bereitstellen von Ressourcen in einer vorhandene
 
 Mithilfe einer Resource Manager-Vorlage können Sie eine Ressourcengruppe erstellen und Ressourcen in der Ressourcengruppe bereitstellen. Weitere Informationen finden Sie unter [Erstellen einer Ressourcengruppe und Bereitstellen von Ressourcen](./deploy-to-subscription.md#create-resource-group-and-deploy-resources).
 
+## <a name="redeploy-when-deployment-fails"></a>Erneute Bereitstellung bei Bereitstellungsfehlern
+
+Dieses Feature ist auch bekannt als *Rollback bei Fehler*. Weitere Informationen finden Sie unter [Erneute Bereitstellung bei Bereitstellungsfehlern](./resource-group-template-deploy-cli.md#redeploy-when-deployment-fails).
+
 ## <a name="move-to-another-resource-group-or-subscription"></a>Verschieben in eine andere Ressourcengruppe oder ein anderes Abonnement
 
 Sie können Ressourcen aus einer Ressourcengruppe in eine andere Ressourcengruppe verschieben. Weitere Informationen finden Sie unter [Verschieben von Ressourcen](./manage-resources-cli.md#move-resources).
 
 ## <a name="lock-resource-groups"></a>Sperren von Ressourcengruppen
 
-Das Sperren verhindert, dass andere Benutzer in Ihrer Organisation versehentlich wichtige Ressourcen löschen oder ändern, z.B. ein Azure-Abonnement, eine Ressourcengruppe oder eine Ressource. 
+Das Sperren verhindert, dass andere Benutzer in Ihrer Organisation versehentlich wichtige Ressourcen löschen oder ändern, z. B. ein Azure-Abonnement, eine Ressourcengruppe oder eine Ressource. 
 
 Das folgende Skript sperrt eine Ressourcengruppe, sodass sie nicht gelöscht werden kann.
 
@@ -146,7 +150,7 @@ Der Zugriff auf Ressourcen in Azure wird mithilfe der [rollenbasierten Zugriffss
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu Azure Resource Manager finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](./resource-group-overview.md).
+- Weitere Informationen zu Azure Resource Manager finden Sie unter [Übersicht über den Azure Resource Manager](./resource-group-overview.md).
 - Informationen zur Resource Manager-Vorlagensyntax finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](./resource-group-authoring-templates.md).
 - Informationen zum Entwickeln von Vorlagen finden Sie in den [Schritt-für-Schritt-Tutorials](/azure/azure-resource-manager/).
 - Informationen zum Anzeigen der Vorlagenschemas für Azure Resource Manager finden Sie in der [Vorlagenreferenzdokumentation](/azure/templates/).

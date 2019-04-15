@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/11/2018
+ms.date: 04/01/2019
 ms.author: banders
-ms.openlocfilehash: 1fb5ad056c1b8a331034cab12fa3420ba310bb95
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0a17821cc69900c7f24375cbf06a61811bbd52d1
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852337"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762241"
 ---
 # <a name="submit-a-request-to-pay-azure-subscription-by-invoice"></a>Stellen eines Antrags zum Zahlen eines Azure-Abonnements auf Rechnung
 
@@ -36,17 +36,39 @@ Sie können die Zahlungsmethode für Ihr Azure-Abonnement in „Auf Rechnung“ 
 
     ![Schaltfläche „Hilfe und Support“](./media/billing-how-to-pay-by-invoice/helpandsupport.png)
 
-1. Wählen Sie als Problemtyp **Abrechnung** aus. Wählen Sie dann das Abonnement aus, das Sie per Rechnung zahlen möchten, wählen Sie einen Supportplan, und klicken Sie dann auf **Weiter**.
+2. Wählen Sie als Problemtyp **Abrechnung** aus. Wählen Sie dann das Abonnement aus, das Sie per Rechnung zahlen möchten, wählen Sie einen Supportplan, und klicken Sie dann auf **Weiter**.
 
-1. Wählen Sie im Feld **Problemtyp** die Option **Per Rechnung bezahlen** aus.
+3. Wählen Sie im Feld **Problemtyp** die Option **Per Rechnung bezahlen** aus.
 
-1. Geben Sie in das Feld **Details** die folgenden Informationen ein, und klicken Sie dann auf **Weiter**.
+ 4. Geben Sie in das Feld **Details** die folgenden Informationen ein, und klicken Sie dann auf **Weiter**.
 
-    * Name des Unternehmens
-    * Abrechnungsadresse
-    * [E-Mail-Adresse des Kontoadministrators](../role-based-access-control/classic-administrators.md#view-the-account-administrator)
+         New or existing customer:
+         If existing, current payment method:
+         Order ID (requesting for invoice option): 
+         Account Admins Live ID (or Org ID) (should be company domain):
+         Commerce Account ID: 
+         Company Name (as registered under VAT or Government Website): 
+         Company Address (as registered under VAT or Government Website): 
+         Company Website:
+         Country: 
+         TAX ID/ VAT ID:
+         Company Established on (Year):
+         Any prior business with Microsoft: 
+         Contact Name:
+         Contact Phone:
+         Contact Email:
+         Justification on why you prefer Invoice option over credit card: 
+    
+        For cores increase, provide the following additional information:
+    
+         (Old quota) Existing Cores:
+         (New quota) Requested cores:
+         Specific region & series of Subscription: 
+ 
+    - Der **Firmenname** und die **Firmenadresse** sollten mit den Informationen übereinstimmen, die Sie für das Azure-Konto bereitgestellt haben.  Einzelheiten zum Anzeigen oder Aktualisieren der Informationen finden Sie unter [Ändern von Profilinformationen für Ihr Azure-Konto](billing-how-to-change-azure-account-profile.md).
+    - Sie müssen Ihren Rechnungskontakt in Azure Portal hinzufügen, bevor das Guthabenlimit genehmigt werden kann. Die Kontaktdetails sollten im Zusammenhang mit der Kreditorenbuchhaltung oder der Finanzabteilung des Unternehmens stehen. Wenn Sie den Rechnungskontakt aktualisieren möchten, wechseln Sie zum [Azure-Kontocenter](https://account.azure.com/Profile)
 
-1. Überprüfen Sie Ihre Kontaktdaten und Ihre bevorzugte Kontaktmethode, und klicken Sie dann auf **Erstellen**.
+5. Überprüfen Sie Ihre Kontaktdaten und Ihre bevorzugte Kontaktmethode, und klicken Sie dann auf **Erstellen**.
 
 Wenn Sie aufgrund der Höhe des Guthabens, das Sie benötigen, eine Guthabenprüfung durchführen müssen, können wir Ihnen einen entsprechenden Antrag senden. Nachdem Sie den Antrag eingereicht haben, kann dessen Bearbeitung 5-7 Tage dauern.
 

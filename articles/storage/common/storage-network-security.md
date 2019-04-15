@@ -5,21 +5,21 @@ services: storage
 author: cbrooksmsft
 ms.service: storage
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 03/21/2019
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: c7f7768406ae64615b46abeb396b5469caf2f6e9
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 27ba1a1b5fbc0c7533da3634ec8a435468704c33
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750649"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906088"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken
 
 Azure Storage bietet ein mehrschichtiges Sicherheitsmodell. Dank dieses Modells können Sie Ihre Speicherkonten für eine bestimmte Gruppe unterstützter Netzwerke schützen. Wenn Netzwerkregeln konfiguriert wurden, können nur Anwendungen, die Daten aus der angegebenen Gruppe von Netzwerken anfordern, auf ein Speicherkonto zugreifen.
 
-Eine Anwendung, die bei aktivierten Netzwerkregeln auf ein Speicherkonto zugreift, benötigt eine ordnungsgemäße Autorisierung für die Anforderung. Für die Autorisierung können Azure Active Directory-Anmeldeinformationen (für Blobs und Warteschlangen) (Vorschauversion), ein gültiger Kontozugriffsschlüssel oder ein SAS-Token verwendet werden.
+Eine Anwendung, die bei aktivierten Netzwerkregeln auf ein Speicherkonto zugreift, benötigt eine ordnungsgemäße Autorisierung für die Anforderung. Für die Autorisierung können Azure Active Directory (Azure AD)-Anmeldeinformationen für Blobs und Warteschlangen mit einem gültigen Kontozugriffsschlüssel oder mit einem SAS-Token verwendet werden.
 
 > [!IMPORTANT]
 > Wenn Sie Firewallregeln für Ihr Speicherkonto aktivieren, werden eingehende Datenanforderungen standardmäßig blockiert – es sei denn, die Anforderungen stammen von einem Dienst, der innerhalb eines virtuellen Azure-Netzwerks (VNET) agiert. Unter anderem werden Anforderungen von anderen Azure-Diensten, aus dem Azure-Portal und von Protokollierungs-/Metrikdiensten blockiert.
@@ -71,19 +71,19 @@ Standardmäßige Netzwerkzugriffsregeln für Speicherkonten können über das Az
 
 1. Zeigen Sie den Status der Standardregel für das Speicherkonto an.
 
-    ```PowerShell
+    ```powershell
     (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").DefaultAction
     ```
 
 1. Legen Sie die Standardregel auf das standardmäßige Verweigern jeglichen Netzwerkzugriffs fest.
 
-    ```PowerShell
+    ```powershell
     Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Deny
     ```
 
 1. Legen Sie die Standardregel auf das standardmäßige Zulassen von Netzwerkzugriff fest.
 
-    ```PowerShell
+    ```powershell
     Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Allow
     ```
 
@@ -159,26 +159,26 @@ Regeln für virtuelle Netzwerke für Speicherkonten können über das Azure-Port
 
 1. Listen Sie die Regeln für virtuelle Netzwerke auf.
 
-    ```PowerShell
+    ```powershell
     (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").VirtualNetworkRules
     ```
 
 1. Aktivieren Sie den Dienstendpunkt für Azure Storage in einem vorhandenen virtuellen Netzwerk und Subnetz.
 
-    ```PowerShell
+    ```powershell
     Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Set-AzVirtualNetworkSubnetConfig -Name "mysubnet" -AddressPrefix "10.0.0.0/24" -ServiceEndpoint "Microsoft.Storage" | Set-AzVirtualNetwork
     ```
 
 1. Fügen Sie eine Netzwerkregel für ein virtuelles Netzwerk und Subnetz hinzu.
 
-    ```PowerShell
+    ```powershell
     $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
     Add-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id
     ```
 
 1. Entfernen Sie eine Netzwerkregel für ein virtuelles Netzwerk und Subnetz.
 
-    ```PowerShell
+    ```powershell
     $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
     Remove-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id
     ```
@@ -241,7 +241,7 @@ Jedes Speicherkonto unterstützt bis zu 100 IP-Netzwerkregeln, die mit [Regeln f
 
 Wenn Sie mit einer IP-Netzwerkregel den Zugriff über Ihre lokalen Netzwerke auf das Speicherkonto gewähren möchten, müssen Sie die von Ihrem Netzwerk verwendeten Internet-IP-Adressen ermitteln. Hilfe erhalten Sie von Ihrem Netzwerkadministrator.
 
-Sie können Ihr Netzwerk über [ExpressRoute](/azure/expressroute/expressroute-introduction) mit dem Azure-Netzwerk verbinden. Hier wird jede Verbindung mit zwei öffentlichen IP-Adressen konfiguriert. Sie befinden sich im Edgebereich von Microsoft und nutzen [öffentliches Azure-Peering](/azure/expressroute/expressroute-circuit-peerings), um eine Verbindung mit Microsoft-Diensten wie Azure Storage herzustellen. Erstellen Sie IP-Netzwerkregeln für die öffentlichen IP-Adressen Ihrer Verbindungen, um die Kommunikation mit Azure Storage zu ermöglichen. [Erstellen Sie ein Supportticket für ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) über das Azure-Portal, um die öffentlichen IP-Adressen Ihrer ExpressRoute-Verbindung zu ermitteln.
+Wenn Sie [ExpressRoute](/azure/expressroute/expressroute-introduction) lokal für öffentliches Peering oder für Microsoft-Peering verwenden, müssen Sie die verwendeten NAT-IP-Adressen identifizieren. Beim öffentlichen Peering werden für jede ExpressRoute-Verbindung standardmäßig zwei NAT-IP-Adressen verwendet. Diese werden auf den Datenverkehr der Azure-Dienste angewendet, wenn der Datenverkehr im Microsoft Azure-Netzwerk-Backbone eintrifft. Beim Microsoft-Peering werden die verwendeten NAT-IP-Adressen entweder vom Kunden oder vom Dienstanbieter bereitgestellt. Um den Zugriff auf Ihre Dienstressourcen zuzulassen, müssen Sie diese öffentlichen IP-Adressen in der Ressourceneinstellung der IP-Firewall zulassen. [Öffnen Sie über das Azure-Portal ein Supportticket für ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview), um die IP-Adressen Ihrer ExpressRoute-Verbindung für öffentliches Peering zu ermitteln. Erfahren Sie mehr über [NAT für öffentliches ExpressRoute-Peering und Microsoft-Peering](/azure/expressroute/expressroute-nat#nat-requirements-for-azure-public-peering).
 
 ### <a name="managing-ip-network-rules"></a>Verwalten von IP-Netzwerkregeln
 
@@ -267,31 +267,31 @@ IP-Netzwerkregeln für Speicherkonten können über das Azure-Portal, über Powe
 
 1. Listen Sie IP-Netzwerkregeln auf.
 
-    ```PowerShell
+    ```powershell
     (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").IPRules
     ```
 
 1. Fügen Sie eine Netzwerkregel für eine einzelne IP-Adresse hinzu.
 
-    ```PowerShell
+    ```powershell
     Add-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.19"
     ```
 
 1. Fügen Sie eine Netzwerkregel für einen IP-Adressbereich hinzu.
 
-    ```PowerShell
+    ```powershell
     Add-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.0/24"
     ```
 
 1. Entfernen Sie eine Netzwerkregel für eine einzelne IP-Adresse.
 
-    ```PowerShell
+    ```powershell
     Remove-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.19"
     ```
 
 1. Entfernen Sie eine Netzwerkregel für einen IP-Adressbereich.
 
-    ```PowerShell
+    ```powershell
     Remove-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -IPAddressOrRange "16.17.18.0/24"
     ```
 
@@ -385,19 +385,19 @@ Netzwerkregelausnahmen können über das Azure-Portal, über PowerShell oder per
 
 1. Zeigen Sie die Ausnahmen für die Speicherkonto-Netzwerkregeln an.
 
-    ```PowerShell
+    ```powershell
     (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount").Bypass
     ```
 
 1. Konfigurieren Sie die Ausnahmen von den Speicherkonto-Netzwerkregeln.
 
-    ```PowerShell
+    ```powershell
     Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -Bypass AzureServices,Metrics,Logging
     ```
 
 1. Entfernen Sie die Ausnahmen von den Speicherkonto-Netzwerkregeln.
 
-    ```PowerShell
+    ```powershell
     Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -Bypass None
     ```
 

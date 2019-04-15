@@ -3,21 +3,21 @@ title: Analysieren von Daten in Azure Data Lake Storage Gen1 mithilfe von Power 
 description: Verwenden Sie Power BI zum Analysieren von in Azure Data Lake Storage Gen1 gespeicherten Daten
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: 57d19d27-e135-49d9-a7ea-46c48ef4e3bd
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 5db9d18a31af4d6b407fcd9172ac80fc6f93f085
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.author: twooley
+ms.openlocfilehash: b873d90dbc33aff27cd2fc3b5099b08eacf929b6
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297178"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880065"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Analysieren von Daten in Azure Data Lake Storage Gen1 mithilfe von Power BI
 In diesem Artikel erfahren Sie, wie Sie Power BI Desktop verwenden, um in Azure Data Lake Storage Gen1 gespeicherte Daten zu analysieren und zu visualisieren.
@@ -26,7 +26,7 @@ In diesem Artikel erfahren Sie, wie Sie Power BI Desktop verwenden, um in Azure 
 Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* **Ein Data Lake Storage Gen1-Konto**. Befolgen Sie die Anweisungen unter [Erste Schritte mit Azure Data Lake Storage Gen1 über das Azure-Portal](data-lake-store-get-started-portal.md). In diesem Artikel wird davon ausgegangen, dass Sie bereits ein Data Lake Storage Gen1-Konto erstellt, **myadlsg1** aufgerufen und eine Beispieldatendatei (**Drivers.txt**) hochgeladen haben. Diese Beispieldatei kann aus dem [Azure Data Lake Git Repository](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)heruntergeladen werden.
+* **Ein Data Lake Storage Gen1-Konto.** Befolgen Sie die Anweisungen unter [Erste Schritte mit Azure Data Lake Storage Gen1 über das Azure-Portal](data-lake-store-get-started-portal.md). In diesem Artikel wird davon ausgegangen, dass Sie bereits ein Data Lake Storage Gen1-Konto erstellt, **myadlsg1** aufgerufen und eine Beispieldatendatei (**Drivers.txt**) hochgeladen haben. Diese Beispieldatei kann aus dem [Azure Data Lake Git Repository](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)heruntergeladen werden.
 * **Power BI Desktop**. Sie können das Tool aus dem [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=45331) herunterladen. 
 
 ## <a name="create-a-report-in-power-bi-desktop"></a>Erstellen eines Berichts in Power BI Desktop

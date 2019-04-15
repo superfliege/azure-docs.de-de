@@ -3,21 +3,21 @@ title: Schützen von Daten, die in Azure Data Lake Storage Gen1 gespeichert sind
 description: Informationen zum Schützen von Daten in Azure Data Lake Storage Gen1 mithilfe von Gruppen und Zugriffssteuerungslisten
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: ca35e65f-3986-4f1b-bf93-9af6066bb716
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.author: nitinme
-ms.openlocfilehash: 15ef1e1b96a0da24714b4ddbda6b24f1f6f33ae0
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.author: twooley
+ms.openlocfilehash: cebdff5ed233516683df3330e8fd3332ded664e5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296735"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885671"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Sichern von in Azure Data Lake Storage Gen1 gespeicherten Daten
 Das Schützen von Daten in Azure Data Lake Storage Gen1 ist ein Ansatz, der drei Schritte umfasst.  Die rollenbasierte Zugriffssteuerung (RBAC) sowie die Zugriffssteuerungslisten (ACLs) müssen so festgelegt werden, dass der Zugriff auf Daten für Benutzer und Sicherheitsgruppen vollständig aktiviert ist.
@@ -33,7 +33,7 @@ Dieser Artikel enthält eine Anleitung zur Verwendung des Azure-Portals für die
 Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* **Ein Data Lake Storage Gen1-Konto**. Eine Anleitung zum Erstellen eines Kontos finden Sie unter [Erste Schritte mit Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md).
+* **Ein Data Lake Storage Gen1-Konto.** Eine Anleitung zur Erstellung finden Sie unter [Erste Schritte mit Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md).
 
 ## <a name="create-security-groups-in-azure-active-directory"></a>Erstellen von Sicherheitsgruppen in Azure Active Directory
 Eine Anleitung zum Erstellen von AAD-Sicherheitsgruppen und zum Hinzufügen von Benutzern zur Gruppe finden Sie unter [Verwalten von Sicherheitsgruppen in Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).

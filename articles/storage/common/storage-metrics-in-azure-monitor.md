@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: a5ebd50b3a5fe3b611bae28db98979eee40f9490
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4be52fbc6d9fb01ac3cd3c0954042c35b45bbf23
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57899025"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884362"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Storage-Metriken in Azure Monitor
 
@@ -284,9 +284,9 @@ Im folgenden Beispiel wird gezeigt, wie Metrikdaten bei Metriken mit Unterstütz
 
 Die Ressourcen-ID ist ein eindeutiger Bezeichner einer Ressource in Azure. Wenn Sie Metrikdefinitionen oder -werte mithilfe der REST-API von Azure Monitor lesen möchten, müssen Sie die Ressourcen-ID für die gewünschte Ressource verwenden. Die Ressourcen-ID-Vorlage hat folgendes Format:
 
-`
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-`
+```
 
 Mit Azure Monitor bietet Storage Metriken auf der Speicherkontoebene und auf der Dienstebene. So haben Sie beispielsweise die Möglichkeit, nur Metriken für Blob Storage abzurufen. Jede Ebene hat ihre eigene Ressourcen-ID, mit der Metriken für genau diese Ebene abgerufen werden können.
 
@@ -294,34 +294,38 @@ Mit Azure Monitor bietet Storage Metriken auf der Speicherkontoebene und auf der
 
 Das Format zum Angeben der Ressourcen-ID für ein Speicherkonto sieht wie folgt aus:
 
-`
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}
-`
+```
 
 ### <a name="resource-id-for-the-storage-services"></a>Ressourcen-ID für die Speicherdienste
 
 Das Format zum Angeben der Ressourcen-ID für die einzelnen Speicherdienste sieht wie folgt aus:
 
-* Ressourcen-ID für den Blob-Dienst `
+* Ressourcen-ID für den Blobdienst
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/blobServices/default
-`
-* Ressourcen-ID für den Table-Dienst `
+```
+* Ressourcen-ID für den Tabellenspeicherdienst
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/tableServices/default
-`
-* Ressourcen-ID für den Queue-Dienst `
+```
+* Ressourcen-ID für den Warteschlangendienst
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/queueServices/default
-`
-* Ressourcen-ID für den File-Dienst `
+```
+* Ressourcen-ID für den Dateidienst
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/fileServices/default
-`
+```
 
 ### <a name="resource-id-in-azure-monitor-rest-api"></a>Ressourcen-ID in der REST-API von Azure Monitor
 
 Das Muster zum Aufrufen der REST-API von Azure Monitor sieht wie folgt aus:
 
-`
+```
 GET {resourceId}/providers/microsoft.insights/metrics?{parameters}
-`
+```
 
 ## <a name="capacity-metrics"></a>Kapazitätsmetriken
 Kapazitätsmetrikwerte werden stündlich an Azure Monitor gesendet. Die Werte werden täglich aktualisiert. Das Aggregationsintervall definiert das Zeitintervall, für das Metrikwerte dargestellt werden. Das unterstützte Aggregationsintervall für alle Kapazitätsmetriken beträgt eine Stunde (PT1H).

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: d39c2414aa8299282b3896a9ceb57897fdb25ff1
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: b8451a1195ab64d3cd7afda074d786a3209ce785
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445999"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793967"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage
 ## <a name="overview"></a>Übersicht
@@ -297,9 +297,7 @@ Ab Speicherdienstversion 2013-08-15 unterstützt der Tabellendienst die Verwendu
 Weitere Informationen finden Sie im Beitrag [Microsoft Azure Tables: Introducing JSON](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx) (Microsoft Azure-Tabellen: Einführung in JSON) und [Payload Format for Table Service Operations](https://msdn.microsoft.com/library/azure/dn535600.aspx) (Nutzlastformat für Tabellendienstvorgänge).
 
 #### <a name="subheading26"></a>Deaktivieren von Nagle
-Der Nagle-Algorithmus ist in TCP/IP-Netzwerken weit verbreitet, um die Netzwerkleistung zu verbessern. Er ist jedoch nicht unter allen Umständen optimal (z. B. hoch interaktive Umgebungen). Für Azure Storage hat der Nagle-Algorithmus negative Auswirkungen auf Anforderungen an Tabellen- und Warteschlangendienste, daher sollten Sie ihn möglichst deaktivieren.  
-
-Weitere Informationen finden Sie im Blogeintrag [Nagle-Algorithmus geht nicht freundlich mit kleinen Anfragen um](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx), in dem erläutert wird, warum der Nagle-Algorithmus unzureichend mit Tabellen- und Warteschlangenanforderungen interagiert und wie Sie ihn in der Clientanwendung deaktivieren.  
+Der Nagle-Algorithmus ist in TCP/IP-Netzwerken weit verbreitet, um die Netzwerkleistung zu verbessern. Er ist jedoch nicht unter allen Umständen optimal (z. B. hoch interaktive Umgebungen). Für Azure Storage hat der Nagle-Algorithmus negative Auswirkungen auf Anforderungen an Tabellen- und Warteschlangendienste, daher sollten Sie ihn möglichst deaktivieren.
 
 ### <a name="schema"></a>Schema
 Wie Sie Ihre Daten präsentieren und abfragen, ist der größte Faktor mit Auswirkung auf die Leistung des Tabellendiensts. Während jede Anwendung anders ist, sind in diesem Abschnitt einige allgemeine bewährte Vorgehensweisen für folgende Bereiche beschrieben:  

@@ -1,32 +1,32 @@
 ---
 title: Grundlegendes zur Azure Security Center for IoT-Lösungsarchitektur (Vorschauversion) | Microsoft-Dokumentation
 description: Lernen Sie den Informationsfluss im Azure Security Center for IoT-Dienst kennen.
-services: ascforiot
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 2cf6a49b-5d35-491f-abc3-63ec24eb4bc2
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: ee81d9543525ba1187fc6c078391559929b9bf96
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: a0eb459391da65f8d0e2ae251809805924d07ad1
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541500"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862364"
 ---
-# <a name="asc-for-iot-architecture"></a>Architektur von Azure Security Center for IoT
+# <a name="azure-security-center-for-iot-architecture"></a>Azure Security Center für IoT-Architektur
 
-In diesem Artikel wird die funktionale Systemarchitektur der Lösung „Azure Security Center für IoT“ erläutert. 
+In diesem Artikel wird die funktionale Systemarchitektur der Lösung „Azure Security Center (ASC) für IoT“ erläutert. 
 
 > [!IMPORTANT]
-> Azure Security Center for IoT befindet sich derzeit in der öffentlichen Vorschauphase (Public Preview).
+> Azure Security Center für IoT befindet sich derzeit in der öffentlichen Vorschauphase.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="asc-for-iot-components"></a>Azure Security Center for IoT-Komponenten
@@ -55,10 +55,10 @@ Azure Security Center for IoT-Empfehlungen und -Warnungen (Analysepipeline-Ausga
 
 In diesem Artikel haben Sie die grundlegende Architektur und den Workflow der Azure Security Center for IoT-Lösung kennengelernt. Weitere Informationen zu den Voraussetzungen sowie zum Einstieg in Ihre Sicherheitslösung in IoT Hub und zu deren Aktivierung finden Sie in den folgenden Artikeln:
 
-- [ASC für IoT-Voraussetzungen](service-prerequisites.md)
+- [Dienstvoraussetzungen](service-prerequisites.md)
 - [Erste Schritte](getting-started.md)
-- [Konfigurieren Ihrer IoT-Lösung](quickstart-configure-your-solution.md)
+- [Konfigurieren Ihrer Lösung](quickstart-configure-your-solution.md)
 - [Enable security in IoT Hub (Aktivieren der Sicherheit in IoT Hub)](quickstart-onboard-iot-hub.md)
-- [ASC for IoT FAQ (Azure Security Center for IoT – häufig gestellte Fragen)](resources-frequently-asked-questions.md)
-- [ASC for IoT security alerts (Azure Security Center for IoT-Sicherheitswarnungen)](concept-security-alerts.md)
+- [ASC for IoT FAQ (Azure Security Center für IoT – Häufig gestellte Fragen)](resources-frequently-asked-questions.md)
+- [ASC für IoT-Sicherheitswarnungen](concept-security-alerts.md)
 

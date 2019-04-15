@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: jlian
-ms.openlocfilehash: 9057245c108e4a1b9af2549bc87f98258da50535
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 6cc5e45ab28a1c83125a37cefb289b1662096eb0
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240166"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648818"
 ---
 # <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Erkennen und Behandeln von Problemen bei der Trennung von Geräteverbindungen mit Azure IoT Hub
 
@@ -32,7 +32,7 @@ Aktivieren Sie Diagnosen für IoT Hub, um Geräteverbindungsereignisse und -fehl
 1. Wählen Sie **Diagnoseeinstellungen** aus.
 1. Wählen Sie **Diagnose aktivieren**.
 1. Aktivieren Sie **Verbindungen**, damit Protokolle erfasst werden.
-1. Aktivieren Sie zur Vereinfachung der Analyse die Option **An Log Analytics senden** ([siehe Preisübersicht](https://azure.microsoft.com/pricing/details/log-analytics/)). Siehe dazu das Beispiel unter [Lösen von Konnektivitätsproblemen](#Resolve-connectivity-errors).
+1. Aktivieren Sie zur Vereinfachung der Analyse die Option **An Log Analytics senden** ([siehe Preisübersicht](https://azure.microsoft.com/pricing/details/log-analytics/)). Siehe dazu das Beispiel unter [Lösen von Konnektivitätsproblemen](#resolve-connectivity-errors).
 
    ![Empfohlene Einstellungen][2]
 
@@ -40,15 +40,14 @@ Weitere Informationen finden Sie unter [Schnelle Überwachung der Integrität vo
 
 ### <a name="set-up-alerts-for-the-connected-devices-count-metric"></a>Einrichten von Warnungen für die Metrik _Verbundene Geräte_
 
-Um Warnungen zu erhalten, wenn die Verbindung von Geräten getrennt wird, konfigurieren Sie Warnungen in der Metrik **Verbundene Geräte**.
+Um Warnungen zu erhalten, wenn die Verbindung von Geräten getrennt wird, konfigurieren Sie Warnungen in der Metrik **Verbundene Geräte (Vorschau)**.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Navigieren Sie zu Ihrer IoT Hub-Instanz.
-1. Wählen Sie **Warnungen (klassisch)** aus.
-1. Wählen Sie **Metrikwarnung hinzufügen (klassisch)**.
-1. Füllen Sie das Formular aus, und wählen Sie **OK** aus.
-
-   ![Empfohlene Metrikwarnung][3]
+1. Wählen Sie **Warnungen**.
+1. Wählen Sie **Neue Warnungsregel** aus.
+1. Wählen Sie **Bedingung hinzufügen** und dann „Verbundene Geräte (Vorschau)“ aus.
+1. Schließen Sie die Einrichtung Ihrer gewünschten Schwellenwerte und Warnungsoptionen ab, indem Sie den Aufforderungen folgen.
 
 Weitere Informationen finden Sie unter [Was sind klassische Warnungen in Microsoft Azure?](../azure-monitor/platform/alerts-overview.md).
 

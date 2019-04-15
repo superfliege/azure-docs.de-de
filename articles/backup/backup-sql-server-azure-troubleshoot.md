@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 03/13/2019
 ms.author: anuragm
-ms.openlocfilehash: e5565e257e511203043c84e499712cc6a0a78c3f
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: db204c0e881200f667484daf4348c336f94a0ce7
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286011"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916683"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Problembehandlung zum Sichern von SQL Server in Azure
 
@@ -67,7 +67,7 @@ In den folgenden Tabellen sind nach Fehlercode geordnet.
 
 | Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|
-| Azure Backup kann keine Verbindung mit der SQL-Instanz herstellen. | Azure Backup kann keine Verbindung mit der SQL-Instanz herstellen. | Verwenden Sie die zusätzlichen Details im Fehlermenü im Azure-Portal, um die Grundursache einzugrenzen. Lesen Sie [Problembehandlung bei SQL-Sicherung](https://docs.microsoft.com/sql/database-engine/configure-windows/troubleshoot-connecting-to-the-sql-server-database-engine), um den Fehler zu beheben.<br/><ul><li>Wenn die SQL-Standardeinstellungen Remoteverbindungen nicht zulassen, ändern Sie die Einstellungen. Informationen zum Ändern der Einstellungen erhalten Sie über die Links unten.<ul><li>[https://msdn.microsoft.com/library/bb326495.aspx](https://msdn.microsoft.com/library/bb326495.aspx)</li><li>[https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error)</li><li>[https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)</li></ul></li></ul><ul><li>Bei Anmeldeproblemen erhalten Sie weitere Informationen zu Behebung über die Links unten.<ul><li>[https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)</li><li>[https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)</li></ul></li></ul> |
+| Azure Backup kann keine Verbindung mit der SQL-Instanz herstellen. | Azure Backup kann keine Verbindung mit der SQL-Instanz herstellen. | Verwenden Sie die zusätzlichen Details im Fehlermenü im Azure-Portal, um die Grundursache einzugrenzen. Lesen Sie [Problembehandlung bei SQL-Sicherung](https://docs.microsoft.com/sql/database-engine/configure-windows/troubleshoot-connecting-to-the-sql-server-database-engine), um den Fehler zu beheben.<br/><ul><li>Wenn die SQL-Standardeinstellungen Remoteverbindungen nicht zulassen, ändern Sie die Einstellungen. Informationen zum Ändern der Einstellungen finden Sie in den folgenden Artikeln.<ul><li>[MSSQLSERVER_-1](/previous-versions/sql/sql-server-2016/bb326495(v=sql.130))</li><li>[MSSQLSERVER_2](/sql/relational-databases/errors-events/mssqlserver-2-database-engine-error)</li><li>[MSSQLSERVER_53](/sql/relational-databases/errors-events/mssqlserver-53-database-engine-error)</li></ul></li></ul><ul><li>Bei Anmeldeproblemen erhalten Sie weitere Informationen zu Behebung über die Links unten.<ul><li>[MSSQLSERVER_18456](/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error)</li><li>[MSSQLSERVER_18452](/sql/relational-databases/errors-events/mssqlserver-18452-database-engine-error)</li></ul></li></ul> |
 
 ### <a name="usererrorparentfullbackupmissing"></a>UserErrorParentFullBackupMissing
 
@@ -98,12 +98,18 @@ Die folgenden Fehlercodes werden angezeigt, wenn in Wiederherstellungsaufträgen
 |---|---|---|
 | Fehler bei der Wiederherstellung, wie die Datenbank konnte nicht offline geschaltet werden konnte. | Während einer Wiederherstellung muss die Zieldatenbank offline geschaltet werden. Azure Backup kann diese Daten nicht offline schalten. | Verwenden Sie die zusätzlichen Details im Fehlermenü im Azure-Portal, um die Grundursache einzugrenzen. Weitere Informationen finden Sie in der [SQL-Dokumentation](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms). |
 
-
 ###  <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
 
 | Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|
 | Serverzertifikat mit dem Fingerabdruck kann im Ziel nicht gefunden werden. | Die Masterdatenbank auf der Zielinstanz verfügt nicht über einen gültigen Verschlüsselungsfingerabdruck. | Importieren Sie den in der Quellinstanz verwendeten gültigen Zertifikatfingerabdruck in die Zielinstanz. |
+
+### <a name="usererrorrestorenotpossiblebecauselogbackupcontainsbulkloggedchanges"></a>UserErrorRestoreNotPossibleBecauseLogBackupContainsBulkLoggedChanges
+
+| Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
+|---|---|---|
+| Die für die Wiederherstellung verwendete Protokollsicherung enthält massenprotokollierte Änderungen. Sie kann gemäß SQL-Richtlinien nicht verwendet werden, um an einem beliebigen Punkt anzuhalten. | Wenn sich eine Datenbank im massenprotokollierten Wiederherstellungsmodus befindet, können die Daten zwischen einer massenprotokollierten Transaktion und der nächsten protokollierten Transaktion nicht wiederhergestellt werden. | Wählen Sie bitte einen anderen Zeitpunkt für die Wiederherstellung aus. [Weitere Informationen](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186229(v=sql.105))
+
 
 ## <a name="registration-failures"></a>Fehler bei der Registrierung
 
@@ -163,7 +169,8 @@ Zu diesen Symptomen kann es aufgrund von einer oder mehreren der folgenden Ursac
   * VM wurde für längere Zeit heruntergefahren, da die Erweiterungskonfiguration dafür abgelaufen ist
   * VM wurde gelöscht, und eine andere VM wurde mit dem gleichen Namen und in derselben Ressourcengruppe wie die gelöschte VM erstellt
   * Einer der Knoten der Verfügbarkeitsgruppe hat nicht die vollständige Sicherungskonfiguration erhalten. Dies kann entweder bei der Registrierung der Verfügbarkeitsgruppe im Tresor oder beim Hinzufügen eines neuen Knotens passieren.  <br>
-    Für die obigen Szenarien wird empfohlen, auf der VM den Vorgang für die erneute Registrierung auszulösen. Diese Option ist nur über PowerShell verfügbar. Sie wird in Kürze auch im Azure-Portal verfügbar sein.
+   
+Für die vorstehenden Szenarien wird empfohlen, auf der VM den Vorgang für die erneute Registrierung auszulösen. Diese Option ist nur über PowerShell verfügbar. Sie wird in Kürze auch im Azure-Portal verfügbar sein.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

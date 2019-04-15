@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/11/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: e826c7a3fc12e819fd6f145d42b7381087d5970c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c7e78f89883e5cfc3fc8b9088c3ac0b3166682c7
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000246"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878178"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Verwenden des Azure Import/Export-Diensts zum Importieren von Daten in Azure Blob Storage
 
@@ -54,7 +54,7 @@ Führen Sie zum Vorbereiten der Laufwerke die folgenden Schritte aus.
     `cd C:\WaImportExportV1`
 5.  Um den BitLocker-Schlüssel des Laufwerks abzurufen, führen Sie den folgenden Befehl aus:
     
-    ` manage-bde -protectors -get <DriveLetter>: `
+    `manage-bde -protectors -get <DriveLetter>:`
 6.  Um den Datenträger vorzubereiten, führen Sie den folgenden Befehl aus: **Dies kann je nach Größe der Daten mehrere Stunden bis Tage dauern.** 
 
     ```
@@ -70,7 +70,7 @@ Führen Sie zum Vorbereiten der Laufwerke die folgenden Schritte aus.
     |/id:     |Die Sitzungs-ID. Verwenden Sie für jede Instanz des Befehls eine eindeutige Sitzungsnummer.      |
     |/sk:     |Der Azure Storage-Kontoschlüssel         |
     |/t:     |Der Laufwerksbuchstabe des auszuliefernden Datenträgers. Beispiel: Laufwerk `D`         |
-    |/bk:     |Der BitLocker-Schlüssel für das Laufwerk Sein numerisches Kennwort aus der Ausgabe von ` manage-bde -protectors -get D: `      |
+    |/bk:     |Der BitLocker-Schlüssel für das Laufwerk Sein numerisches Kennwort aus der Ausgabe von `manage-bde -protectors -get D:`      |
     |/srcdir:     |Der Laufwerksbuchstabe des auszuliefernden Datenträgers gefolgt von `:\`. Beispiel: `D:\`.         |
     |/dstdir:     |Der Name des Zielcontainers in Azure Storage.         |
     |/skipwrite:     |Option, die angibt, dass keine neuen Daten kopiert werden müssen und vorhandene Daten auf dem Datenträger vorbereitet werden sollen.          |

@@ -3,19 +3,19 @@ title: Erste Schritte mit Azure Data Lake Storage Gen1 mithilfe der Azure CLI | 
 description: Verwenden der Azure CLI zum Erstellen eines Data Lake Storage Gen1-Kontos und Ausführen grundlegender Vorgänge
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: c3e3c456da122e33a67b2ee3377bc15cb684b896
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.author: twooley
+ms.openlocfilehash: 9431cc7fa12b86371ce6b2325aca8e13d264442e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864858"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880575"
 ---
 # <a name="get-started-with-azure-data-lake-store-using-azure-cli"></a>Erste Schritte mit Azure Data Lake Store mithilfe der Azure CLI
 

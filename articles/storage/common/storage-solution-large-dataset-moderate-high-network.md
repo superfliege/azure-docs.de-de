@@ -6,14 +6,14 @@ author: alkohli
 ms.service: storage
 ms.subservice: blobs
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: d3326713b0fbae070d04fa0fe7ead712fbcacf84
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 8dd55032c933cdc31b848addfdac991550376dcf
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58496892"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805581"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>Datenübertragung für große Datasets mit mittlerer bis hoher Netzwerkbandbreite
  
@@ -62,7 +62,7 @@ In den folgenden Tabellen werden die Unterschiede bei den Schlüsselfunktionen f
 
 Wenn Sie die Offlinedatenübertragung nutzen, verwenden Sie die folgende Tabelle, um die Unterschiede in den Schlüsselfunktionen zu verstehen.
 
-|                                     |    Data Box Disk (Vorschau)    |    Data Box                                      |    Data Box Heavy (Vorschau)              |    Import/Export                       |
+|                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy            |    Import/Export                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
 |    Datengröße                        |    Bis zu 35 TB                 |    Bis zu 80 TB pro Gerät                       |    Bis zu 800 TB pro Gerät               |    Variable                            |
 |    Datentyp                        |    Azure-Blobs                  |    Azure-Blobs<br>Azure Files                    |    Azure-Blobs<br>Azure Files            |    Azure-Blobs<br>Azure Files          |
@@ -83,7 +83,7 @@ Bei Nutzung von Onlinedatenübertragung verwenden Sie die Tabelle im folgenden A
 
 ### <a name="high-network-bandwidth"></a>Hohe Netzwerkbandbreite
 
-|                                     |    Tools AzCopy, <br>Azure PowerShell, <br>Azure-Befehlszeilenschnittstelle             |    Azure Storage REST-APIs, SDKs                   |    Data Box Gateway oder Data Box Edge (Vorschau)           |    Azure Data Factory                                            |
+|                                     |    Tools AzCopy, <br>Azure PowerShell, <br>Azure-Befehlszeilenschnittstelle             |    Azure Storage REST-APIs, SDKs                   |    Data Box Gateway oder Data Box Edge          |    Azure Data Factory                                            |
 |-------------------------------------|------------------------------------|----------------------------------------------|----------------------------------|-----------------------------------------------------------------------|
 |    Datentyp                  |    Azure-Blobs, Azure Files, Azure Tables    |    Azure-Blobs, Azure Files, Azure Tables    |    Azure-Blobs, Azure Files                           |   Unterstützt mehr als 70 Datenconnectors für Datenspeicher und Formate    |
 |    Formfaktor                |    Befehlszeilentools                        |    Programmgesteuerte Schnittstelle                    |    Microsoft stellt ein virtuelles <br>oder physisches Gerät bereit     |    Dienst im Azure-Portal                                            |

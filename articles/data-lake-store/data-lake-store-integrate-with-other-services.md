@@ -3,21 +3,21 @@ title: Integrieren von Azure Data Lake Storage Gen1 in andere Azure-Dienste | Mi
 description: Erfahren Sie, wie Sie Azure Data Lake Storage Gen1 in andere Azure-Dienste integrieren.
 documentationcenter: ''
 services: data-lake-store
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: 48a5d1f4-3850-4c22-bbc4-6d1d394fba8a
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: e377a29167ace21e021568f3c65cefd1098d1dab
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: twooley
+ms.openlocfilehash: e28863f9980d6403bef1f88de01b7a9b5271b444
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127137"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879301"
 ---
 # <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>Integrieren von Azure Data Lake Storage Gen1 in andere Azure-Dienste
 Azure Data Lake Storage Gen1 kann zusammen mit anderen Azure-Diensten verwendet werden, um eine breitere Palette von Szenarien zu ermöglichen. Im folgende Artikel werden die Dienste aufgeführt, in die Data Lake Storage Gen1 integriert werden kann.
@@ -28,8 +28,8 @@ Sie können einen [Azure HDInsight](https://azure.microsoft.com/documentation/le
 Anleitungen zum Bereitstellen eines HDInsight-Clusters mit Data Lake Storage Gen1 finden Sie hier:
 
 * [Bereitstellen eines HDInsight-Clusters mit Data Lake Storage Gen1 mithilfe des Azure-Portals](data-lake-store-hdinsight-hadoop-use-portal.md)
-* [Bereitstellen von HDInsight-Clustern mit Data Lake Storage Gen1 als Standardspeicher mithilfe von PowerShell](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
-* [Bereitstellen eines HDInsight-Clusters mit Data Lake Storage Gen1 als Zusatzspeicher mithilfe von PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
+* [Bereitstellen eines HDInsight-Clusters mit Data Lake Storage Gen1 als Standardspeicher mithilfe von Azure PowerShell](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
+* [Bereitstellen eines HDInsight-Clusters mit Data Lake Storage Gen1 als Zusatzspeicher mithilfe von Azure PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
 ## <a name="use-data-lake-storage-gen1-with-azure-data-lake-analytics"></a>Verwenden von Data Lake Storage Gen1 mit Azure Data Lake Analytics
 [Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-overview.md) ermöglicht das Arbeiten mit Big Data in der Cloud. Die Anwendung stellt Ressourcen dynamisch bereit und ermöglicht Ihnen die Durchführung von Analysen von Terabytes oder sogar Exabytes an Daten, die in einer Reihe von unterstützten Datenquellen gespeichert sein können, auch in Data Lake Storage Gen1. Data Lake-Analytics ist speziell für die Arbeit mit Data Lake Storage Gen1 optimiert – so erzielen Sie Höchstwerte bei Leistung, Durchsatz und Parallelisierung bei Big Data-Workloads.

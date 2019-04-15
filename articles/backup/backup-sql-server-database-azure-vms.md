@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 6709bb2beae6dd1964f475ce2ba07b569b9ad4ab
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 1a596462eb42231a356ddc4fa67b6468b63cd97c
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285070"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849309"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern
 
@@ -69,6 +69,7 @@ Vermeiden Sie folgende Zeichen in Datenbanknamen:
   * Nachgestellte/führende Leerzeichen
   * Führende Ausrufezeichen
   * Schließende eckige Klammer „]“
+  * Datenbanknamen, die mit „F:/“ beginnen
 
 Obwohl Aliasing für nicht unterstützte Zeichen aus Azure-Tabellen möglich ist, wird empfohlen, diese Zeichen zu vermeiden. [Weitere Informationen](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN)
 
@@ -145,7 +146,7 @@ Konfigurieren Sie die Sicherung wie folgt:
 
    - Auswahl der Standardrichtlinie: HourlyLogBackup.
    - Auswählen einer vorhandenen, zuvor für SQL erstellten Sicherungsrichtlinie
-   - [Definieren einer neuen Richtlinie](#configure-a-backup-policy) basierend auf Ihrer RPO und Ihrer Beibehaltungsdauer
+   - Definieren einer neuen Richtlinie basierend auf Ihrer RPO und Ihrer Beibehaltungsdauer
 
      ![Auswählen der Sicherungsrichtlinie](./media/backup-azure-sql-database/select-backup-policy.png)
 

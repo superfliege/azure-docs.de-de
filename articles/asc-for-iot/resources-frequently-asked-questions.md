@@ -1,33 +1,33 @@
 ---
-title: Häufig gestellte Fragen zur Vorschauversion von ASC für IoT | Microsoft-Dokumentation
-description: Hier finden Sie Antworten auf häufig gestellte Fragen zu Features und Diensten zu ASC für IoT.
-services: ASCforiot
+title: Häufig gestellte Fragen zu Azure Security Center für IoT (Vorschauversion) | Microsoft-Dokumentation
+description: Hier finden Sie Antworten auf die am häufigsten gestellten Fragen zu Features und Diensten zu Azure Security Center für IoT.
+services: asc-for-iot
+ms.service: ASCforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 97fda6c2-1ecb-491f-b48d-41788bd7e0d3
-ms.service: ASCforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 1eba32683883e60ae48f4d6fec9c434c27ce55da
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: cd9e77e09e2a2fd5fe1108e98da028d26fc623c7
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541502"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863048"
 ---
-# <a name="asc-for-iot-frequently-asked-questions"></a>Häufig gestellte Fragen zu ASC für IoT  
+# <a name="azure-security-center-for-iot-frequently-asked-questions"></a>Azure Security Center für IoT – Häufig gestellte Fragen  
 
 > [!IMPORTANT]
-> ASC für IoT befindet sich derzeit in der öffentlichen Vorschauversion.
+> Azure Security Center für IoT befindet sich derzeit in der öffentlichen Vorschauphase.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Dieser Artikel enthält eine Liste häufig gestellter Fragen (FAQ) zu ASC für IoT sowie die zugehörigen Antworten. 
+Dieser Artikel enthält eine Liste häufig gestellter Fragen (FAQ) zu Azure Security Center (ASC) für IoT sowie die zugehörigen Antworten. 
 
 ## <a name="does-azure-provide-support-for-iot-security"></a>Bietet Azure Unterstützung für IoT-Sicherheit?
 
@@ -77,7 +77,7 @@ Detaillierte Informationen zur Installation und Bereitstellung des Agent finden 
 
 ## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>Wie lauten die Abhängigkeiten und Voraussetzungen für den Agent?
 
-ASC für IoT unterstützt eine Vielzahl von Plattformen. Informationen zur Unterstützung für Ihre spezifischen Geräte finden Sie unter [Unterstützte Geräteplattformen](select-deploy-agent.md). 
+ASC für IoT unterstützt eine Vielzahl von Plattformen. Informationen zur Unterstützung für Ihre spezifischen Geräte finden Sie unter [Unterstützte Geräteplattformen](how-to-deploy-agent.md). 
 
 ## <a name="which-data-is-collected-by-the-agent"></a>Welche Daten sammelt der Agent?
 
@@ -97,9 +97,9 @@ Ja. Die vom Agent übertragenen Daten werden in Ihrem IoT Hub-Kontingent gezähl
 
 ## <a name="what-next-ive-installed-an-agent-and-dont-see-any-activities-or-logs"></a>Nächste Schritte Ich habe einen Agent installiert, es werden aber keine Aktivitäten oder Protokolle angezeigt.
 
-1. Überprüfen Sie, ob der [Typ des Agent mit der angegebenen Betriebssystemplattform Ihres Geräts übereinstimmt](select-deploy-agent.md).
+1. Überprüfen Sie, ob der [Typ des Agent mit der angegebenen Betriebssystemplattform Ihres Geräts übereinstimmt](how-to-deploy-agent.md).
 
-1. Vergewissern Sie sich, dass der [Agent auf dem Gerät ausgeführt wird](concept-agent-configuration.md).
+1. Vergewissern Sie sich, dass der [Agent auf dem Gerät ausgeführt wird](how-to-agent-configuration.md).
 
 2. Überprüfen Sie, ob der [Dienst erfolgreich](quickstart-onboard-iot-hub.md) für **Security** in Ihrem IoT Hub aktiviert wurde. 
 

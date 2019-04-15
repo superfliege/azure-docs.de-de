@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2018
+ms.date: 03/13/2019
 ms.author: banders
-ms.openlocfilehash: 66fd42e5aa110b4c9ef686b1d66429ff7dbaf550
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: daa7f6a116578fa8d1f2b5bf825a6f4cd48f7f64
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57857690"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648298"
 ---
 # <a name="understand-azure-reservation-usage-for-your-enterprise-enrollment"></a>Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt
 
@@ -53,7 +53,7 @@ Sie können die CSV-Enterprise-Nutzungsdatei aus dem Enterprise Portal herunterl
 
 ## <a name="usage-for-sql-database--cosmos-db-reserved-capacity-reservations"></a>Nutzung von Reservierungen von SQL-Datenbank- und Cosmos DB-Kapazitäten
 
-In den folgenden Abschnitten wird der Nutzungsbericht anhand von Azure SQL-Datenbank beschrieben. Mit denselben Schritten können Sie auch die Nutzung für Azure Cosmos DB abrufen. 
+In den folgenden Abschnitten wird der Nutzungsbericht anhand von Azure SQL-Datenbank beschrieben. Mit denselben Schritten können Sie auch die Nutzung für Azure Cosmos DB abrufen.
 
 Es wird davon ausgegangen, dass Sie eine SQL-Datenbank-Gen 4-Instanz in der Region „USA, Osten“ ausführen und Ihre Reservierungsinformationen mit den Angaben in der folgenden Tabelle übereinstimmen:
 
@@ -64,7 +64,7 @@ Es wird davon ausgegangen, dass Sie eine SQL-Datenbank-Gen 4-Instanz in der Regi
 |Produkt| SQL-Datenbank Gen 4 (2 Kerne)|
 |Region | eastus |
 
-### <a name="usage-in-csv-file"></a>Nutzung in einer CSV-Datei 
+### <a name="usage-in-csv-file"></a>Nutzung in einer CSV-Datei
 
 Filtern Sie nach **Zusätzliche Informationen**, und geben Sie Ihre **Reservierungs-ID** ein. Wählen Sie dann die entsprechende **Kategorie für Messung** aus: Azure SQL-Datenbank oder Azure Cosmos DB. Der folgende Screenshot zeigt die Felder, die im Zusammenhang mit der Reservierung stehen.
 
@@ -81,19 +81,20 @@ Ihre Nutzung von Azure-Reservierungen wird darüber hinaus im Enterprise Portal 
 1. Die Hardwarekomponenten der VM werden nicht in Rechnung gestellt, da sie von der Reservierung abgedeckt sind. Bei einer SQL-Datenbank-Reservierung wird eine Zeile mit **Dienstnamen** als Nutzung von reservierten Azure SQL-Datenbank-Kapazitäten angezeigt.
 2. In diesem Beispiel verfügen Sie nicht über den Azure-Hybridvorteil, weshalb Ihnen die Kosten für die Windows-Software, die mit der VM verwendet wurde, in Rechnung gestellt werden.
 
+## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
+
+Wenn Sie Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artikeln:
 
 - [Was sind Azure-Reservierungen?](billing-save-compute-costs-reservations.md)
 - [Vorauszahlen für virtuelle Computer mit Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Vorauszahlen von SQL-Datenbank-Computeressourcen mit reservierter Azure SQL-Datenbank-Kapazität](../sql-database/sql-database-reserved-capacity.md) 
+- [Vorauszahlen von SQL-Datenbank-Computeressourcen mit reservierter Azure SQL-Datenbank-Kapazität](../sql-database/sql-database-reserved-capacity.md)
 - [Verwalten von Azure-Reservierungen](billing-manage-reserved-vm-instance.md)
 - [Grundlegendes zur Anwendung des Rabatts für Azure-Reservierungen auf virtuelle Computer](billing-understand-vm-reservation-charges.md)
 - [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](billing-understand-reserved-instance-usage.md)
 - [Nicht in Azure-Reservierungen enthaltene Windows-Softwarekosten](billing-reserved-instance-windows-software-costs.md)
-
-## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
-
-Wenn Sie Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
 

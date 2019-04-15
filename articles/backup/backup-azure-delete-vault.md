@@ -6,62 +6,53 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/05/2019
+ms.date: 03/28/2019
 ms.author: raynew
-ms.openlocfilehash: e83698af6bb1caab1568375b726753d34a8c8467
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 23e98fd7ea3decc478fc359cec457c70b8fc99dc
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861348"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652215"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Löschen eines Recovery Services-Tresors
 
 In diesem Artikel wird beschrieben, wie Sie einen Recovery Services-Tresor von [Azure Backup](backup-overview.md) löschen. Außerdem enthält er Anweisungen zum Entfernen von Abhängigkeiten und anschließendem Löschen eines Tresors sowie zum erzwungenen Löschen eines Tresors.
 
 
-
-
 ## <a name="before-you-start"></a>Vorbereitung
 
 Bevor Sie beginnen, ist es wichtig zu verstehen, dass Sie keine Recovery Services-Tresore löschen können, in denen Server registriert oder Sicherungsdaten enthalten sind.
 
-
-- Sie müssen die Registrierungen der enthaltenen Server aufheben und die Daten entfernen, um einen Tresor ordnungsgemäß zu löschen.
+- Zum ordnungsgemäßen Löschen eines Tresors heben Sie die Registrierungen der darin enthaltenen Server auf, entfernen die Tresordaten und löschen anschließend den Tresor.
+- Wenn Sie einen Tresor zu löschen versuchen, der immer noch abhängig ist, wird eine Fehlermeldung ausgegeben. Dann müssen Sie die Tresorabhängigkeiten manuell entfernen, einschließlich Folgendem:
+    - Gesicherte Elemente
+    - Geschützte Server
+    - Sicherungsverwaltungsserver (Azure Backup Server, DPM) ![wählen Ihren Tresor aus, um dessen Dashboard zu öffnen](./media/backup-azure-delete-vault/backup-items-backup-infrastructure.png).
 - Wenn Sie keine im Recovery Services-Tresor enthaltenen Daten beibehalten und den Tresor löschen möchten, können Sie das Löschen des Tresors erzwingen.
 - Wenn Sie versuchen, einen Tresor löschen, dies jedoch nicht möglich ist, ist der Tresor noch für den Empfang von Sicherungsdaten konfiguriert.
 
-Informationen zum Löschen eines Tresors finden im Abschnitt [Löschen eines Tresors aus dem Azure-Portal](backup-azure-delete-vault.md#delete-a-vault-from-azure-portal). Weitere Informationen finden Sie unter [Delete the vault by force (Erzwingen des Löschens des Tresors)](backup-azure-delete-vault.md#delete-the-recovery-services-vault-by-force). Wenn Sie nicht sicher sind, was der Tresor enthält ist, und Sie sicherstellen müssen, dass Sie den Tresor löschen können, finden Sie im Abschnitt [Entfernen von Tresorabhängigkeiten und Löschen des Tresors](backup-azure-delete-vault.md#remove-vault-dependencies-and-delete-vault) entsprechende Informationen.
 
 ## <a name="delete-a-vault-from-the-azure-portal"></a>Löschen eines Tresors aus dem Azure-Portal
 
-1. Öffnen Sie die Liste Ihrer Recovery Services-Tresore im Portal.
-2. Wählen Sie in der Liste den Tresor aus, den Sie löschen möchten. Das Dashboard des Tresors wird geöffnet.
+1. Öffnen Sie das Dashboard des Tresors.  
+2. Klicken Sie im Dashboard auf **Löschen**. Geben Sie an, dass Sie den Tresor löschen möchten.
 
     ![Tresor auswählen, um das zugehörige Dashboard zu öffnen](./media/backup-azure-delete-vault/contoso-bkpvault-settings.png)
 
-1. Klicken Sie im Dashboard des Tresors auf **Löschen**. Geben Sie an, dass Sie den Tresor löschen möchten.
+Wenn eine Fehlermeldung angezeigt wird, entfernen Sie [Sicherungselemente](#remove-backup-items), [Infrastrukturserver](#remove-backup-infrastructure-servers) und [Wiederherstellungspunkte](#remove-azure-backup-agent-recovery-points). Löschen Sie anschließend den Tresor.
 
-    ![Tresor auswählen, um das zugehörige Dashboard zu öffnen](./media/backup-azure-delete-vault/click-delete-button-to-delete-vault.png)
+![Tresorfehler beim Löschen](./media/backup-azure-delete-vault/error.png)
 
-2. Wenn Tresorabhängigkeiten vorhanden sind, wird die Fehlermeldung **Fehler beim Löschen von Tresor** angezeigt: 
-
-    ![Fehler beim Löschen des Tresors](./media/backup-azure-delete-vault/vault-delete-error.png)
-
-    - Führen Sie die Anweisungen zum Entfernen der Abhängigkeiten aus, bevor Sie den Tresor löschen.
-    - [Führen Sie diese Anweisungen aus](#delete-the-recovery-services-vault-by-force), um das Löschen des Tresors mit PowerShell zu erzwingen. 
 
 ## <a name="delete-the-recovery-services-vault-by-force"></a>Löschen des Recovery Services-Tresors erzwingen
 
+Sie können das Löschen eines Tresors mit PowerShell erzwingen. „Erzwingen“ bedeutet, dass der Tresor und alle zugehörigen Sicherungsdaten unwiderruflich gelöscht werden.
+
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Sie können PowerShell verwenden, um das Löschen eines Recovery Services-Tresors zu erzwingen. Das bedeutet, dass der Tresor und alle zugehörigen Sicherungsdaten unwiderruflich gelöscht werden. 
 
-> [!Warning]
-> Wenn Sie PowerShell verwenden, um einen Recovery Services-Tresor zu löschen, müssen Sie sicher sein, dass Sie alle Sicherungsdaten im Tresor dauerhaft löschen möchten.
->
-
-So löschen Sie einen Recovery Services-Tresor:
+So erzwingen Sie das Löschen eines Tresors:
 
 1. Melden Sie sich mit dem Befehl `Connect-AzAccount` bei Ihrem Azure-Abonnement an, und befolgen Sie die angezeigten Anweisungen.
 
@@ -96,22 +87,12 @@ So löschen Sie einen Recovery Services-Tresor:
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
    ```
 
-10. Melden Sie sich bei Ihrem Abonnement im Azure-Portal an, und überprüfen, ob der Tresor gelöscht wurde.
+10. Vergewissern Sie sich im Azure-Portal, dass der Tresor gelöscht wird.
 
 
-## <a name="remove-vault-dependencies-and-delete-vault"></a>Entfernen von Tresorabhängigkeiten und Löschen des Tresors
+## <a name="remove-vault-items-and-delete-the-vault"></a>Entfernen von Tresorelementen und Löschen des Tresors
 
-Sie können die Tresorabhängigkeiten wie folgt manuell entfernen:
-
-- Entfernen Sie die Abhängigkeiten im Menü **Sicherungselemente**:
-    - Azure Storage (Azure Files)-Sicherungen
-    - Sicherungen von SQL Server auf einer Azure-VM
-    - Azure Virtual Machines-Sicherungen
-- Entfernen Sie die Abhängigkeiten im Menü **Sicherungsinfrastruktur**:
-    - Microsoft Azure Backup Server-Sicherungen (MABS)
-    - System Center DPM-Sicherungen
-
-![Tresor auswählen, um das zugehörige Dashboard zu öffnen](./media/backup-azure-delete-vault/backup-items-backup-infrastructure.png)
+Diese Verfahren enthalten einige Beispiele zum Entfernen von Sicherungsdaten und Infrastrukturservern. Nachdem der gesamte Inhalt eines Tresors entfernt wurde, können Sie ihn löschen.
 
 ### <a name="remove-backup-items"></a>Entfernen von Sicherungselementen
 
@@ -127,7 +108,7 @@ Dieses Verfahren stellt ein Beispiel für das Entfernen von Sicherungsdaten aus 
 
 
 3. Wählen Sie unter **Sicherung beenden** > **Option auswählen** die Option **Sicherungsdaten löschen** aus.
-4. Geben Sie den Namen des Elements ein, und klicken Sie auf **Sicherung beenden**. 
+4. Geben Sie den Namen des Elements ein, und klicken Sie auf **Sicherung beenden**.
    - Hiermit bestätigen Sie, dass Sie das Element löschen möchten.
    - Nach dieser Bestätigung wird die Schaltfläche **Sicherung beenden** aktiviert.
    - Wenn Sie die Daten beibehalten und nicht löschen, können Sie den Tresor nicht löschen.
@@ -145,7 +126,7 @@ Dieses Verfahren stellt ein Beispiel für das Entfernen von Sicherungsdaten aus 
 ### <a name="remove-backup-infrastructure-servers"></a>Entfernen von Servern der Sicherungsinfrastruktur
 
 1. Klicken Sie im Menü des Tresordashboards auf **Sicherungsinfrastruktur**.
-2. Klicken Sie auf **Sicherungsverwaltungsserver**, um die Server anzuzeigen. 
+2. Klicken Sie auf **Sicherungsverwaltungsserver**, um die Server anzuzeigen.
 
     ![Tresor auswählen, um das zugehörige Dashboard zu öffnen](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 
@@ -154,7 +135,7 @@ Dieses Verfahren stellt ein Beispiel für das Entfernen von Sicherungsdaten aus 
     ![Sicherungstyp auswählen](./media/backup-azure-delete-vault/azure-storage-selected-list.png)
 
 3. . Wählen Sie unter **Sicherung beenden** > **Option auswählen** die Option **Sicherungsdaten löschen** aus.
-4. Geben Sie den Namen des Elements ein, und klicken Sie auf **Sicherung beenden**. 
+4. Geben Sie den Namen des Elements ein, und klicken Sie auf **Sicherung beenden**.
    - Hiermit bestätigen Sie, dass Sie das Element löschen möchten.
    - Nach dieser Bestätigung wird die Schaltfläche **Sicherung beenden** aktiviert.
    - Wenn Sie die Daten beibehalten und nicht löschen, können Sie den Tresor nicht löschen.
@@ -200,12 +181,13 @@ Dieses Verfahren stellt ein Beispiel für das Entfernen von Sicherungsdaten aus 
 
 
 
+
+
+
 ### <a name="delete-the-vault-after-removing-dependencies"></a>Löschen des Tresors nach dem Entfernen der Abhängigkeiten
 
 1. Nachdem alle Abhängigkeiten entfernt wurden, scrollen Sie im Tresormenü zum Bereich **Zusammenfassung**.
-
-    - Hier sollten keine **Sicherungselemente**, **Sicherungsverwaltungsserver** oder **Replizierten Elemente** angezeigt werden.
-    - Wenn weiterhin Elemente im Tresor angezeigt werden, entfernen Sie diese.
+2. Vergewissern Sie sich, dass keine **Sicherungselemente**, **Sicherungsverwaltungsserver** oder **Replizierte Elemente** aufgelistet werden. Wenn weiterhin Elemente im Tresor angezeigt werden, entfernen Sie diese.
 
 2. Wenn sich keine Elemente mehr in Tresor befinden, klicken Sie im Tresor-Dashboard auf **Löschen**.
 
