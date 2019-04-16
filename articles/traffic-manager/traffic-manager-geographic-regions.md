@@ -99,7 +99,7 @@ In diesem Artikel sind die Länder und Regionen aufgelistet, die von der **geogr
 
         - ME(Montenegro)
 
-        - MK(Mazedonien, ehemalige jugoslawische Republik)
+        - MK(Nordmazedonien)
 
         - MT(Malta)
 

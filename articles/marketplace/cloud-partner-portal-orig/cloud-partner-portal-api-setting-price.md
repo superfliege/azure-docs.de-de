@@ -149,7 +149,7 @@ Die folgende Tabelle zeigt die verschiedenen Regionen, die Sie für angepasste K
 | LI         | Liechtenstein        | CHF               |
 | LT         | Litauen            | EUR               |
 | LU         | Luxemburg           | EUR               |
-| MK         | Mazedonien (ehem. jugoslawische Republik Mazedonien)       | MKD               |
+| MK         | Nordmazedonien       | MKD               |
 | MY         | Malaysia             | MYR               |
 | MT         | Malta                | EUR               |
 | MX         | Mexiko               | MXN               |

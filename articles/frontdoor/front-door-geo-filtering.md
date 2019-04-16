@@ -136,7 +136,7 @@ Eine Geofilterungsrichtlinie für Front Door kann über [Azure PowerShell](front
 | MA | Marokko|
 | MD | Republik Moldau|
 | MG | Madagaskar|
-| MK | Mazedonien (ehemalige jugoslawische Republik)|
+| MK | Nordmazedonien|
 | ML | Mali|
 | MM | Myanmar|
 | MN | Mongolei|
