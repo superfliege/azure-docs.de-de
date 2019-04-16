@@ -182,7 +182,7 @@ Darüber hinaus können Sie auf der Grundlage von Überwachungsdaten umfassende 
 ### <a name="azure-activity-log"></a>Azure-Aktivitätsprotokoll
 
 
-Das Aktivitätsprotokoll bietet Einblicke in Vorgänge, die für Ressourcen Ihres Abonnements durchgeführt wurden. Das Aktivitätsprotokoll wurde bisher als „Überwachungsprotokolle“ oder „Vorgangsprotokolle“ bezeichnet, da es Ereignisse der Steuerungsebene für Ihre Abonnements enthält.
+Das Aktivitätsprotokoll bietet Einblicke in Vorgänge, die für Ressourcen Ihres Abonnements durchgeführt wurden. Das Aktivitätsprotokoll wurde bisher als „Überwachungsprotokoll“ oder „Betriebsprotokoll“ bezeichnet, da es Ereignisse der Steuerungsebene für Ihre Abonnements enthält.
 
 ![Azure-Aktivitätsprotokoll](./media/azure-operational-security/azure-operational-security-fig7.png)
 
@@ -192,9 +192,9 @@ Mit dem Aktivitätsprotokoll können Sie die Antworten auf die Fragen „Was“,
 
 Diese Protokolle werden von einer Ressource ausgegeben und stellen umfangreiche, in kurzen Abständen erfasste Betriebsdaten der Ressource bereit. Der Inhalt dieser Protokolle variiert je nach Ressourcentyp.
 
-Windows-Systemereignisprotokolle sind z.B. eine Kategorie des Diagnoseprotokolls für virtuelle Computer und Blob-, Tabellen- und Warteschlangenprotokolle sind Kategorien der Diagnoseprotokolle für Speicherkonten.
+Windows-Ereignissystemprotokolle sind z. B. eine Kategorie des Diagnoseprotokolls für virtuelle Computer, und Blob-, Tabellen- und Warteschlangenprotokolle sind Kategorien der Diagnoseprotokolle für Speicherkonten.
 
-Diagnoseprotokolle unterscheiden sich vom [Aktivitätsprotokoll (früher als Überwachungsprotokoll, oder Betriebsprotokoll bezeichnet)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). Das Aktivitätsprotokoll bietet Einblicke in Vorgänge, die für Ressourcen Ihres Abonnements durchgeführt wurden. Diagnoseprotokolle bieten Einblick in Vorgänge, die Ihre Ressource selbst ausgeführt hat.
+Diagnoseprotokolle unterscheiden sich vom [Aktivitätsprotokoll (früher als Überwachungsprotokoll oder Betriebsprotokoll bezeichnet)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). Das Aktivitätsprotokoll bietet Einblicke in Vorgänge, die für Ressourcen Ihres Abonnements durchgeführt wurden. Diagnoseprotokolle bieten Einblick in Vorgänge, die Ihre Ressource selbst ausgeführt hat.
 
 ### <a name="metrics"></a>Metriken
 
@@ -239,7 +239,7 @@ Network Watcher verfügt derzeit über die folgenden Funktionen:
 
 Von der [Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) können Metriken gespeichert werden, zu denen aggregierte Transaktionsstatistiken und Kapazitätsdaten für die an einen Speicherdienst gesendeten Anforderungen zählen. Berichte zu Transaktionen werden sowohl auf API-Vorgangsebene als auch auf Speicherdienstebene erstellt, während Berichte zur Kapazität nur auf Speicherdienstebene erstellt werden. Mit den Metrikdaten können die Speicherdienstnutzung analysiert, Probleme mit Anforderungen für den Speicherdienst diagnostiziert und die Leistung von Anwendungen verbessert werden, die einen Dienst verwenden.
 
-Die [Azure-Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) führt die Protokollierung aus und stellt Metrikdaten für ein Speicherkonto bereit. Mit diesen Daten können Sie Anforderungen verfolgen, Verwendungstrends analysieren und Probleme mit dem Speicherkonto diagnostizieren. Die Protokollierung der Speicheranalyse ist für [Blob-, Warteschlangen- und Tabellenspeicherdienste](https://docs.microsoft.com/azure/storage/storage-introduction) nicht verfügbar. Die Speicheranalyse protokolliert ausführliche Informationen zu erfolgreichen und nicht erfolgreichen Anforderungen an einen Speicherdienst.
+Die [Azure-Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) führt die Protokollierung aus und stellt Metrikdaten für ein Speicherkonto bereit. Mit diesen Daten können Sie Anforderungen verfolgen, Verwendungstrends analysieren und Probleme mit dem Speicherkonto diagnostizieren. Die Protokollierung der Speicheranalyse ist für [Blob-, Warteschlangen- und Tabellenspeicherdienste](https://docs.microsoft.com/azure/storage/storage-introduction) nicht verfügbar. Storage Analytics protokolliert ausführliche Informationen zu erfolgreichen und nicht erfolgreichen Anforderungen an einen Speicherdienst.
 
 Anhand dieser Informationen können einzelne Anforderungen überwacht und Probleme mit einem Speicherdienst untersucht werden. Anforderungen werden auf Grundlage der besten Leistung protokolliert. Protokolleinträge werden nur erstellt, wenn Anforderungen für den Dienstendpunkt gestellt wurden. Wenn beispielsweise ein Speicherkonto Aktivität im Blob-Endpunkt, jedoch nicht im Tabellen- oder Warteschlangenendpunkt aufweist, werden nur Protokolle für den Blob-Dienst erstellt.
 

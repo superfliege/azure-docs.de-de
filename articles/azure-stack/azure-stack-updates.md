@@ -11,25 +11,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 04/04/2019
 ms.author: mabrigg
-ms.lastreviewed: 01/22/2019
-ms.openlocfilehash: a5fe2d9b295a72b8e2e3adb7e5cffd5a98c03070
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.lastreviewed: 04/04/2019
+ms.reviewer: justini
+ms.openlocfilehash: bf797404b173d6febe133eacbb9d36310160aff6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487514"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281572"
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>Übersicht zum Verwalten von Updates in Azure Stack
 
-*Anwendungsbereich: Integrierte Azure Stack-Systeme*
+*Gilt für: Integrierte Azure Stack-Systeme*
 
-Microsoft-Updatepakete für integrierte Azure Stack-Systeme werden in der Regel um den vierten Dienstag jedes Monats herausgegeben. Fragen Sie Ihren OEM nach seinem spezifischen Benachrichtigungsprozess, um sicherzustellen, dass Updatebenachrichtigungen Ihre Organisation erreichen. Sie können auch in dieser Dokumentationsbibliothek unter **Übersicht** > **Anmerkungen zu dieser Version** überprüfen, ob Informationen zu Releases vorliegen, die aktiv unterstützt werden. 
+Microsoft-Updatepakete für integrierte Azure Stack-Systeme werden in der Regel um den vierten Dienstag jedes Monats herausgegeben. Informieren Sie sich bei Ihrem Originalgerätehersteller (Original Equipment Manufacturer, OEM) nach dem jeweiligen Benachrichtigungsprozess, um sicherzustellen, dass die Updatebenachrichtigungen Ihre Organisation erreichen. Sie können auch in dieser Dokumentationsbibliothek unter **Übersicht** > **Anmerkungen zu dieser Version** überprüfen, ob Informationen zu Releases vorliegen, die aktiv unterstützt werden. 
 
 Jedes Release von Microsoft-Softwareupdates ist in einem einzelnen Updatepaket gebündelt. Als Azure Stack-Operator können Sie über das Administratorportal diese Updatepakete importieren, installieren und ihren Installationsstatus überwachen. 
 
-Ihr Originalgerätehersteller-Hardwareanbieter (Original Equipment Manufacturer, OEM) veröffentlicht auch Updates, z.B. Treiber- und Firmwareupdates. Diese Updates werden zwar als separate Pakete von Ihrem OEM-Hardwarehersteller bereitgestellt, doch sie werden auf die gleiche Weise importiert, installiert und verwaltet wie Updatepakete von Microsoft.
+Ihr OEM-Anbieter veröffentlicht auch Updates, z. B. Treiber- und Firmwareupdates. Diese Updates werden zwar als separate Pakete vom Anbieter bereitgestellt, doch sie werden auf die gleiche Weise importiert, installiert und verwaltet wie Updatepakete von Microsoft.
 
 Um den Support für Ihr System aufrechtzuerhalten, müssen Sie sicherstellen, dass Azure Stack stets bis zu einer bestimmten Version aktualisiert ist. Machen Sie sich unbedingt mit der [Azure Stack servicing policy](azure-stack-servicing-policy.md) (Azure Stack-Wartungsrichtlinie) vertraut.
 
@@ -38,7 +39,7 @@ Um den Support für Ihr System aufrechtzuerhalten, müssen Sie sicherstellen, da
 
 ## <a name="the-update-resource-provider"></a>Der Updateressourcenanbieter
 
-Azure Stack umfasst einen Updateressourcenanbieter, der die Anwendung von Microsoft-Softwareupdates orchestriert. Dieser Ressourcenanbieter stellt sicher, dass Updates alle physischen Hosts, Service Fabric-Anwendungen und Laufzeiten sowie alle virtuellen Computer der Infrastruktur und die ihnen zugeordneten Dienste übergreifend angewandt werden.
+Azure Stack umfasst einen Updateressourcenanbieter, der die Anwendung von Microsoft-Softwareupdates verarbeitet. Dieser Anbieter überprüft, ob Updates auf alle physischen Hosts, Service Fabric-Anwendungen und -Laufzeiten sowie alle virtuellen Computer der Infrastruktur und die ihnen zugeordneten Dienste angewandt werden.
 
 Bei der Installation der Updates können Sie den allgemeinen Status anzeigen, während der Updateprozess die verschiedenen Subsysteme in Azure Stack (z.B. physische Hosts und virtuelle Computer der Infrastruktur) erfasst.
 
@@ -53,25 +54,47 @@ Es wird dringend empfohlen, dass Sie die Benutzer über alle Wartungsvorgänge u
   ``` 
 
 ## <a name="using-the-update-tile-to-manage-updates"></a>Verwenden der Update-Kachel zum Verwalten von Updates
+
 Sie können Updates über das Administratorportal verwalten. Als Azure Stack-Operator können Sie zu folgenden Zwecken die Update-Kachel im Dashboard verwenden:
 
-- Anzeigen wichtiger Informationen wie z.B. der aktuellen Version.
-- Installieren von Updates und Überwachen des Status.
-- Überprüfen des Updateverlaufs der zuvor installierten Updates.
+- Anzeigen wichtiger Informationen wie z. B. der aktuellen Version
+- Installieren von Updates und Überwachen des Status
+- Überprüfen des Updateverlaufs der zuvor installierten Updates
+- Anzeigen der aktuellen OEM-Paketversion der Cloud
  
 ## <a name="determine-the-current-version"></a>Bestimmen der aktuellen Version
 
-Die Update-Kachel zeigt die aktuelle Version von Azure Stack. Sie gelangen mithilfe einer der folgenden Methoden zum Administratorportal:
+Die aktuelle Version von Azure Stack können Sie auf der Kachel „Update“ anzeigen. So öffnen Sie Kachel
 
-- Zeigen Sie auf dem Dashboard die aktuelle Version auf der **Update**-Kachel an.
- 
-   ![Kachel „Updates“ auf dem Standarddashboard](./media/azure-stack-updates/image1.png)
- 
-- Klicken Sie auf der Kachel **Regionsverwaltung** auf den Namen der Region. Zeigen Sie die aktuelle Version auf der **Update**-Kachel an.
+1. Öffnen Sie das Azure Stack-Verwaltungsportal.
+2. Wählen Sie **Dashboard** aus. Auf der Kachel **Update** ist die aktuelle Version aufgeführt. 
+
+    ![Kachel „Updates“ auf dem Standarddashboard](./media/azure-stack-updates/image1.png)
+
+    Im Screenshot wird beispielsweise die Version 1.1903.0.35 angezeigt.
+
+## <a name="install-updates-and-monitor-progress"></a>Installieren von Updates und Überwachen des Status
+
+
+1. Öffnen Sie das Azure Stack-Verwaltungsportal.
+2. Wählen Sie **Dashboard** aus. Wählen Sie die Kachel „Update“ aus.
+3. Wählen Sie **Jetzt aktualisieren** aus.
+
+    ![Details zur Azure Stack-Updateausführung](media/azure-stack-updates/azure-stack-update-button.png)
+
+4.  Sie können den allgemeinen Status anzeigen, während im Updateprozess die verschiedenen Subsysteme in Azure Stack durchlaufen werden. Beispiele für Subsysteme sind physische Hosts, Service Fabric, virtuelle Computer der Infrastruktur und Dienste, die das Administrator- sowie das Benutzerportal umfassen. Während des gesamten Updateprozesses meldet der Updateressourcenanbieter zusätzliche Details zu dem Update, z. B. die Anzahl der erfolgreich ausgeführten Schritte sowie die Anzahl der laufenden Schritte.
+
+5. Wählen Sie auf dem Blatt mit den Details zur Updateausführung die Option **Vollständiges Protokoll herunterladen** aus, um die vollständigen Protokolle herunterzuladen.
+
+    ![Details zur Azure Stack-Updateausführung](media/azure-stack-updates/update-run-details.png)
+
+6. Nach Abschluss des Vorgangs gibt der Updateressourcenanbieter die Bestätigungsmeldung **Erfolgreich** aus. Damit wissen Sie, dass der Updateprozess abgeschlossen ist und wie lange er gedauert hat. Dort können Sie über den Filter Informationen zu allen verfügbaren oder installierten Updates anzeigen.
+
+    ![Details zur Azure Stack-Updateausführung – Erfolgreich](media/azure-stack-updates/update-success.png)
+
+   Wenn beim Update Fehler auftreten, wird auf der Kachel „Update“ die Meldung **Eingreifen erforderlich** angezeigt. Verwenden Sie die Option **Vollständiges Protokoll herunterladen**, um den allgemeinen Status abzurufen und zu ermitteln, wo die Fehler möglicherweise aufgetreten sind. Die Azure Stack-Protokollsammlung erleichtert die Diagnose und Problembehandlung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Azure Stack-Wartungsrichtlinie](azure-stack-servicing-policy.md) 
-- [Region management in Azure Stack](azure-stack-region-management.md) (Regionsverwaltung in Azure Stack)     
-
-
+- [Regionsverwaltung in Azure Stack](azure-stack-region-management.md)

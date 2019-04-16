@@ -268,7 +268,7 @@ ASP.NET-Anwendungen in App Service-Apps können die folgenden Arten von Protokol
 
 Protokollierung beeinträchtigt die Leistung von Apps. Daher können Sie die verschiedenen Protokolltypen unter Azure bei Bedarf einzeln aktivieren und deaktivieren. Für Anwendungsprotokolle können Sie angeben, dass nur Protokolleinträge oberhalb eines bestimmten Schweregrads geschrieben werden sollen. Bei der Erstellung neuer Apps ist sämtliche Protokollierung standardmäßig deaktiviert.
 
-Die Protokolle werden in den Ordner *LogFiles* im Dateisystem Ihrer App geschrieben und sind über FTP zugänglich. Webserver- und Anwendungsprotokolle können auch in ein Azure-Speicherkonto geschrieben werden. Speicherkonten bieten mehr Kapazität für Protokolle als das Dateisystem. Protokolle im Dateisystem sind beschränkt auf 100 Megabyte. (Protokolle im Dateisystem werden nur für kurze Zeit aufbewahrt. Azure löscht alte Protokolldateien, um Platz für neue Dateien zu machen, wenn das Limit erreicht ist.)  
+Die Protokolle werden in den Ordner *LogFiles* im Dateisystem Ihrer App geschrieben und sind über FTP zugänglich. Webserver- und Anwendungsprotokolle können auch in ein Azure Storage-Konto geschrieben werden. Speicherkonten bieten mehr Kapazität für Protokolle als das Dateisystem. Protokolle im Dateisystem sind beschränkt auf 100 Megabyte. (Protokolle im Dateisystem werden nur für kurze Zeit aufbewahrt. Azure löscht alte Protokolldateien, um Platz für neue Dateien zu machen, wenn das Limit erreicht ist.)  
 
 ## <a name="apptracelogs"></a>Erstellen und Anzeigen von Anwendungs-Ablaufprotokollen
 In diesem Abschnitt führen Sie die folgenden Aufgaben aus:
@@ -616,7 +616,7 @@ Sie haben erfahren, wie Visual Studio die Anzeige der Protokolle von App Service
 * Remotedebuggen in Azure
 * Ablaufverfolgung in ASP.NET-Anwendungen
 * Analyse von Webserverprotokollen
-* Analyse der Ablaufverfolgung fehlgeschlagener Anforderungen
+* Analyse der Ablaufverfolgungsprotokolle mit fehlgeschlagenen Anforderungen
 * Debuggen von Cloud-Diensten.
 
 ### <a name="app-service-troubleshooting"></a>Problembehandlung in App Service
@@ -686,11 +686,11 @@ Weitere Informationen zur Analyse von Webserverprotokollen finden Sie in den fol
 * [LogParser](https://www.microsoft.com/download/details.aspx?id=24659)<br/>
   Ein Tool zum Anzeigen von Daten in Webserverprotokollen (*.log* -Dateien).
 * [Problembehandlung bei IIS-Leistungsproblemen oder Anwendungsfehlern mithilfe von LogParser](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
-   (Problembehandlung von IIS-Leistungsproblemen oder Anwendungsfehlern mithilfe von LogParser, in englischer Sprache) Eine Einführung in das LogParser-Tool, das Sie bei der Analyse von Webserverprotokollen unterstützt.
+  (Problembehandlung von IIS-Leistungsproblemen oder Anwendungsfehlern mithilfe von LogParser, in englischer Sprache) Eine Einführung in das LogParser-Tool, das Sie bei der Analyse von Webserverprotokollen unterstützt.
 * [Blogbeiträge von Robert McMurray zur Verwendung von LogParser](https://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
 * [HTTP-Statuscodes in IIS 7.0, IIS 7.5 und IIS 8.0](https://support.microsoft.com/kb/943891)
 
-### <a name="analyzing-failed-request-tracing-logs"></a>Analyse der Ablaufverfolgung fehlgeschlagener Anforderungen
+### <a name="analyzing-failed-request-tracing-logs"></a>Analyse der Ablaufverfolgungsprotokolle mit fehlgeschlagenen Anforderungen
 Die Microsoft TechNet-Website enthält einen Abschnitt zum Thema [Ablaufverfolgung von Anforderungen mit Fehlerrückgabe](https://www.iis.net/learn/troubleshoot/using-failed-request-tracing), der für das Verständnis dieser Protokolle hilfreich ist. Diese Dokumentation konzentriert sich jedoch hauptsächlich auf die Ablaufverfolgung fehlerhafter Anforderungen in IIS. Diese Option ist in Azure App Service nicht verfügbar.
 
 [GetStarted]: app-service-web-get-started-dotnet.md

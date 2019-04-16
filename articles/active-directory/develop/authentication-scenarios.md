@@ -1,6 +1,6 @@
 ---
-title: Authentifizierung in Azure Active Directory
-description: Erfahren Sie mehr über die Authentifizierung in Azure Active Directory (Azure AD), das App-Modell, die API, die Bereitstellung und die häufigsten Authentifizierungsszenarien, die Azure AD unterstützt.
+title: Authentifizierung in Microsoft Identity Platform | Azure
+description: Hier erhalten Sie Informationen zur Authentifizierung in Microsoft Identity Platform, zum App-Modell, zur API und Bereitstellung sowie zu den häufigsten Authentifizierungsszenarien, die Microsoft Identity Platform unterstützt.
 services: active-directory
 documentationcenter: dev-center-name
 author: CelesteDG
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 04/05/2019
 ms.author: celested
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 172bc96857c6aa0ab19fd4f1a13870dd493100bf
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: b1d54347b9a3ccc72cfd5b88400d699d93132fbf
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295707"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266312"
 ---
 # <a name="what-is-authentication"></a>Was ist Authentifizierung?
 
@@ -31,24 +31,24 @@ ms.locfileid: "58295707"
 
 *Autorisierung* ist die Gewährung einer Handlungsberechtigung für einen authentifizierten Sicherheitsprinzipal. Sie gibt an, auf welche Daten Sie zugreifen dürfen und welche Aktionen Sie damit ausführen können. Autorisierung wird manchmal verkürzt als AuthZ bezeichnet.
 
-Azure Active Directory (Azure AD) vereinfacht die Authentifizierung für Anwendungsentwickler durch Bereitstellung von Identity-as-a-Service, durch Unterstützung branchenüblicher Protokolle wie OAuth 2.0 und OpenID Connect sowie durch Open-Source-Bibliotheken für verschiedene Plattformen, sodass Sie schnell mit der Programmierung beginnen können.
+Microsoft Identity Platform vereinfacht die Authentifizierung für Anwendungsentwickler. Die Plattform bietet Identity-as-a-Service mit Unterstützung für Protokolle nach Branchenstandard wie OAuth 2.0 und OpenID Connect sowie Open Source-Bibliotheken für verschiedene Plattformen, sodass Sie schnell mit der Programmierung beginnen können.
 
-Im Programmiermodell von Azure AD sind im Wesentlichen zwei Anwendungsfälle vorgesehen:
+Im Programmiermodell von Microsoft Identity Platform sind im Wesentlichen zwei Anwendungsfälle vorgesehen:
 
 * Im Rahmen einer OAuth 2.0-Autorisierungsgewährung: Wenn der Ressourcenbesitzer die Clientanwendung autorisiert und dem Client dadurch Zugriff auf Ressourcen des Ressourcenbesitzers gewährt.
 * Im Rahmen des Ressourcenzugriffs durch den Client: Gemäß Implementierung durch den Ressourcenserver unter Verwendung der Werte des Anspruchs aus dem Zugriffstoken, die als Grundlage für Zugriffssteuerungsentscheidungen herangezogen werden.
 
-## <a name="authentication-basics-in-azure-active-directory"></a>Grundlagen der Authentifizierung in Azure Active Directory
+## <a name="authentication-basics-in-microsoft-identity-platform"></a>Grundlagen der Authentifizierung in Microsoft Identity Platform
 
 Betrachten Sie das einfachste Szenario, bei dem eine Identität erforderlich ist: Ein Benutzer in einem Webbrowser muss sich gegenüber einer Webanwendung authentifizieren. Im folgenden Diagramm wird dieses Szenario veranschaulicht:
 
-![Übersicht über die Anmeldung bei Webanwendungen](./media/authentication-scenarios/basics_of_auth_in_aad.png)
+![Übersicht über die Anmeldung bei Webanwendungen](./media/authentication-scenarios/auth-basics-microsoft-identity-platform.svg)
 
 Folgendes müssen Sie über die verschiedenen im Diagramm gezeigten Komponenten wissen:
 
-* Azure AD ist der Identitätsanbieter. Der Identitätsanbieter ist für die Überprüfung der Identität von Benutzern und Anwendungen zuständig, die im Verzeichnis einer Organisation vorhanden sind, und bei erfolgreicher Authentifizierung dieser Benutzer und Anwendungen auch für die Ausgabe von Sicherheitstoken.
-* Jede Anwendung, die ihre Authentifizierung in Azure AD auslagern möchte, muss in Azure AD registriert werden. Azure AD registriert die App im Verzeichnis und identifiziert sie eindeutig.
-* Mit den Open-Source-Authentifizierungsbibliotheken von Azure AD können sich die Entwickler um die Protokolldetails kümmern und die Authentifizierung für Sie vereinfachen. Weitere Informationen finden Sie in den [v2.0-Authentifizierungsbibliotheken](reference-v2-libraries.md) und [v1.0-Authentifizierungsbibliotheken](active-directory-authentication-libraries.md) von Azure AD.
+* Microsoft Identity Platform ist der Identitätsanbieter. Der Identitätsanbieter ist für die Überprüfung der Identität von Benutzern und Anwendungen zuständig, die im Verzeichnis einer Organisation vorhanden sind, und bei erfolgreicher Authentifizierung dieser Benutzer und Anwendungen auch für die Ausgabe von Sicherheitstoken.
+* Jede Anwendung, deren Authentifizierung an Microsoft Identity Platform ausgelagert werden soll, muss in Azure Active Directory (Azure AD) registriert werden. Azure AD registriert die App im Verzeichnis und identifiziert sie eindeutig.
+* Entwickler können die Open Source-Authentifizierungsbibliotheken für Microsoft Identity Platform zum Behandeln der Protokolldetails verwenden, um die Authentifizierung zu vereinfachen. Weitere Informationen finden Sie in den [v2.0-Authentifizierungsbibliotheken](reference-v2-libraries.md) und [v1.0-Authentifizierungsbibliotheken](active-directory-authentication-libraries.md) für Microsoft Identity Platform.
 * Nach der Authentifizierung eines Benutzers muss die Anwendung das Sicherheitstoken des Benutzers überprüfen, um sicherzustellen, dass die Authentifizierung erfolgreich war. Es sind Schnellstarts, Tutorials und Codebeispiele in einer Vielzahl von Sprachen und Frameworks verfügbar, die zeigen, wie die Anwendung vorgehen muss.
   * Um eine App schnell zu erstellen und Funktionen wie das Abrufen von Token, Aktualisieren von Token, Anmelden eines Benutzers, Anzeigen einiger Benutzerinformationen und vieles mehr hinzuzufügen, lesen Sie den Abschnitt **Schnellstarts** in der Dokumentation.
   * Ausführlichere, szenariobasierte Verfahren für wichtige Authentifizierungsentwickleraufgaben wie das Abrufen von Zugriffstoken und deren Verwendung in Aufrufen der Microsoft Graph-API und anderer APIs, die Implementierung der Anmeldung bei Microsoft mit einer traditionellen webbrowsergestützten App unter Verwendung von OpenID Connect und mehr finden Sie im Abschnitt **Tutorials** der Dokumentation.
@@ -60,28 +60,28 @@ Im Beispielszenario oben können Sie die Apps gemäß diesen beiden Rollen klass
 * Apps, die sicher auf Ressourcen zugreifen müssen
 * Apps, die die Rolle der Ressource selbst übernehmen
 
-Da Sie nun einen Überblick über die Grundlagen haben, lesen Sie weiter, um das App-Identitätsmodell und die API zu verstehen, um zu erfahren, wie die Bereitstellung in Azure AD funktioniert, und um Links zu detaillierten Informationen zu den allgemeinen Szenarien abzurufen, die Azure AD unterstützt.
+Nachdem Sie einen Einblick in die Grundlagen erhalten haben, können Sie sich in den nächsten Abschnitten mit dem App-Identitätsmodell und der API sowie der Bereitstellung in Microsoft Identity Platform vertraut machen. Zudem finden Sie hier Links zu detaillierten Informationen für die allgemeinen Szenarien, die Microsoft Identity Platform unterstützt.
 
 ## <a name="application-model"></a>Anwendungsmodell
 
-Azure AD stellt Anwendungen dar, die einem bestimmten Modell folgen, das zwei Hauptfunktionen erfüllen soll:
+Microsoft Identity Platform stellt Anwendungen dar, die einem bestimmten Modell folgen, das zwei Hauptfunktionen erfüllen soll:
 
-* **Identifizieren der App anhand der von ihr unterstützten Authentifizierungsprotokolle**: Dies beinhaltet die Aufzählung aller Bezeichner, URLs, Geheimnisse und verwandten Informationen, die zur Authentifizierungszeit benötigt werden. Auf Azure AD trifft dabei Folgendes zu:
+* **Identifizieren der App anhand der von ihr unterstützten Authentifizierungsprotokolle**: Dies beinhaltet die Aufzählung aller Bezeichner, URLs, Geheimnisse und verwandten Informationen, die zur Authentifizierungszeit benötigt werden. Hierbei übernimmt Microsoft Identity Platform die folgenden Aufgaben:
 
     * Enthält alle Daten, die zur Unterstützung der Authentifizierung zur Laufzeit erforderlich sind.
     * Enthält alle Daten, um zu entscheiden, auf welche Ressourcen eine App zugreifen muss und ob und unter welchen Umständen eine bestimmte Anforderung erfüllt werden soll.
     * Stellt die Infrastruktur für die Implementierung der App-Bereitstellung innerhalb des Mandanten des App-Entwicklers und für andere Azure AD-Mandanten bereit.
 
-* **Behandeln der Zustimmung des Benutzers während der Tokenanforderungszeit und Ermöglichen der dynamischen mandantenübergreifenden Bereitstellung von Apps**. Hierbei übernimmt Azure AD die folgenden Aufgaben:
+* **Behandeln der Benutzereinwilligung während der Tokenanforderung und Ermöglichen der dynamischen mandantenübergreifenden Bereitstellung von Apps**. Hierbei übernimmt Microsoft Identity Platform die folgenden Aufgaben:
 
     * Ermöglicht Benutzern und Administratoren, der App dynamisch die Zustimmung zum Zugriff auf Ressourcen in ihrem Namen zu erteilen oder zu verweigern.
     * Ermöglicht es Administratoren, letztendlich zu entscheiden, welche Aktionen Apps ausführen und welche Benutzer bestimmte Apps verwenden dürfen und wie auf die Verzeichnisressourcen zugegriffen wird.
 
-In Azure AD beschreibt ein **Anwendungsobjekt** eine Anwendung als eine abstrakte Entität. Entwickler arbeiten mit Anwendungen. Zum Zeitpunkt der Bereitstellung verwendet Azure AD ein angegebenes Anwendungsobjekt als Blaupause zum Erstellen eines **Dienstprinzipals**, der eine konkrete Instanz einer Anwendung in einem Verzeichnis oder einem Mandanten darstellt. Es ist der Dienstprinzipal, der definiert, welche Aktionen die App in einem bestimmten Zielverzeichnis ausführen darf, wer sie verwenden kann, auf welche Ressourcen sie Zugriff besitzt usw. Azure AD erstellt einen Dienstprinzipal aus einem Anwendungsobjekt über **Zustimmung**.
+In Microsoft Identity Platform beschreibt ein **Anwendungsobjekt** eine Anwendung als eine abstrakte Entität. Entwickler arbeiten mit Anwendungen. Zum Zeitpunkt der Bereitstellung verwendet Microsoft Identity Platform ein angegebenes Anwendungsobjekt als Blaupause zum Erstellen eines **Dienstprinzipals**, der eine konkrete Instanz einer Anwendung in einem Verzeichnis oder Mandanten darstellt. Es ist der Dienstprinzipal, der definiert, welche Aktionen die App in einem bestimmten Zielverzeichnis ausführen darf, wer sie verwenden kann, auf welche Ressourcen sie Zugriff besitzt usw. Microsoft Identity Platform erstellt mittels **Einwilligung** einen Dienstprinzipal aus einem Anwendungsobjekt.
 
-Die folgende Abbildung zeigt einen vereinfachten Azure AD-Bereitstellungsablauf, der durch Zustimmung gesteuert wird.  Darin gibt es zwei Mandanten (A und B), wobei Mandant A Besitzer der Anwendung ist, und Mandant B die Anwendung über einen Dienstprinzipal instanziiert.  
+Die folgende Abbildung zeigt einen vereinfachten Microsoft Identity Platform-Bereitstellungsablauf, der durch die Einwilligung gesteuert wird.  Darin gibt es zwei Mandanten (A und B), wobei Mandant A Besitzer der Anwendung ist, und Mandant B die Anwendung über einen Dienstprinzipal instanziiert.  
 
-![Vereinfachter Bereitstellungsablauf, der durch Zustimmung gesteuert wird](./media/authentication-scenarios/simplified-provisioning-flow-consent.png)
+![Vereinfachter Bereitstellungsablauf, der durch Zustimmung gesteuert wird](./media/authentication-scenarios/simplified-provisioning-flow-consent-driven.svg)
 
 In diesem Bereitstellungsablauf geschieht Folgendes:
 
@@ -90,15 +90,15 @@ In diesem Bereitstellungsablauf geschieht Folgendes:
 | 1 | Ein Benutzer von Mandant B versucht, sich mit der App anzumelden. |
 | 2 | Die Anmeldeinformationen des Benutzers werden abgerufen und überprüft. |
 | 3 | Der Benutzer wird aufgefordert, dem Zugriff auf den Mandanten B für die App zuzustimmen. |
-| 4 | Azure AD verwendet das Anwendungsobjekt in A als Blaupause für das Erstellen eines Dienstprinzipals in Mandant B. |
+| 4 | Microsoft Identity Platform verwendet das Anwendungsobjekt in A als Blaupause für das Erstellen eines Dienstprinzipals in Mandant B. |
 | 5 | Der Benutzer erhält das angeforderte Token. |
 |   |   |
 
-Sie können diesen Vorgang beliebig oft für andere Mandanten (C, D, usw.) wiederholen. Der Mandant A enthält die Blaupause für die App (Anwendungsobjekt). Benutzer und Administratoren aller anderen Mandanten, in denen der App die Zustimmung erteilt wird, behalten durch das entsprechende Dienstprinzipalobjekt in jedem Mandaten die Kontrolle darüber, welche Aktionen die Anwendung ausführen darf. Weitere Informationen finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure AD](app-objects-and-service-principals.md).
+Sie können diesen Vorgang beliebig oft für andere Mandanten (C, D, usw.) wiederholen. Der Mandant A enthält die Blaupause für die App (Anwendungsobjekt). Benutzer und Administratoren aller anderen Mandanten, in denen der App die Zustimmung erteilt wird, behalten durch das entsprechende Dienstprinzipalobjekt in jedem Mandaten die Kontrolle darüber, welche Aktionen die Anwendung ausführen darf. Weitere Informationen finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Microsoft Identity Platform](app-objects-and-service-principals.md).
 
-## <a name="claims-in-azure-ad-security-tokens"></a>Ansprüche in Sicherheitstokens von Azure AD
+## <a name="claims-in-microsoft-identity-platform-security-tokens"></a>Ansprüche in Microsoft Identity Platform-Sicherheitstoken
 
-Von Azure AD ausgestellte Sicherheitstoken (Zugriffs- und ID-Token) enthalten Ansprüche oder Assertionen von Informationen zum authentifizierten Antragsteller. Anwendungen können Ansprüche für verschiedene Aufgaben verwenden, z.B. für die folgenden:
+Von Microsoft Identity Platform ausgestellte Sicherheitstoken (Zugriffs- und ID-Token) enthalten Ansprüche oder Assertionen von Informationen zum authentifizierten Antragsteller. Anwendungen können Ansprüche für verschiedene Aufgaben verwenden, z.B. für die folgenden:
 
 * Überprüfen des Tokens
 * Identifizieren des Verzeichnismandanten des Antragstellers
@@ -107,7 +107,7 @@ Von Azure AD ausgestellte Sicherheitstoken (Zugriffs- und ID-Token) enthalten An
 
 Welche Ansprüche in einem Sicherheitstoken enthalten sind, hängt von der Art des Tokens, von der Art der Anmeldeinformationen für die Benutzerauthentifizierung sowie von der Anwendungskonfiguration ab.
 
-Die folgende Tabelle enthält eine kurze Beschreibung der einzelnen Anspruchsarten, die von Azure AD ausgegeben werden. Weitere Informationen finden Sie finden Sie in den Themen zu den [Zugriffstoken](access-tokens.md) und [ID-Token](id-tokens.md), die von Azure AD ausgestellt werden.
+Die folgende Tabelle enthält eine kurze Beschreibung der Anspruchstypen, die von Microsoft Identity Platform ausgegeben werden. Ausführlichere Informationen finden Sie in den Themen zu den von Microsoft Identity Platform ausgestellten [Zugriffstoken](access-tokens.md) und [ID-Token](id-tokens.md).
 
 | Anspruch | BESCHREIBUNG |
 | --- | --- |
@@ -134,4 +134,4 @@ Die folgende Tabelle enthält eine kurze Beschreibung der einzelnen Anspruchsart
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu den [in Azure Active Directory unterstützten Anwendungstypen und -szenarien](app-types.md)
+* Erfahren Sie mehr über die [in Microsoft Identity Platform unterstützten Anwendungstypen und Szenarien](app-types.md).

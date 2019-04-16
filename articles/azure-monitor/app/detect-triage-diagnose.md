@@ -103,7 +103,7 @@ Die E-Mail zeigt auch, dass eine bestimmte Ausnahme aufgetreten ist, und dass de
 
 Marcela sendet basierend auf dieser E-Mail ein Pingsignal an den Leiter des Datenbankteams. Sie erfährt, dass ein Hotfix in der letzten halben Stunde herausgegeben wurde, und womöglich versehentlich eine geringfügige Schemaänderung durchgeführt worden sein könnte.
 
-Das Problem wird also behoben, noch vor der Untersuchung von Protokollen, und innerhalb von 15 Minuten vor dessen Erscheinen. Marcela klickt trotzdem auf den Link, um Application Insights zu öffnen. Sie wird direkt auf eine fehlgeschlagene Anforderung geleitet und sie kann die fehlerhafte Datenbankanforderung in der Liste der Abhängigkeitsaufrufe sehen.
+Das Problem wird also behoben, noch vor der Untersuchung von Protokollen und innerhalb von 15 Minuten vor dessen Erscheinen. Marcela klickt trotzdem auf den Link, um Application Insights zu öffnen. Sie wird direkt auf eine fehlgeschlagene Anforderung geleitet und sie kann die fehlerhafte Datenbankanforderung in der Liste der Abhängigkeitsaufrufe sehen.
 
 ![Fehlgeschlagene Anforderung](./media/detect-triage-diagnose/23.png)
 

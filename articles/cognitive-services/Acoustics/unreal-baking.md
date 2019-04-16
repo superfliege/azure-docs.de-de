@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: michem
-ms.openlocfilehash: 544de5a3ac48c12d75f05a1c9adb56f48bb540f4
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 48a1c4350b438761aa2e2d8c7e57a872c86ca292
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311557"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470371"
 ---
 # <a name="project-acoustics-unreal-bake-tutorial"></a>Unreal-Bakingtutorial für Projekt Akustik
 In diesem Dokument wird das Übermitteln eines Akustikbakingvorgangs mithilfe der Unreal-Editor-Erweiterung beschrieben.
@@ -40,6 +40,8 @@ Die Registerkarte „Objects“ (Objekte) ist die erste Registerkarte, die nach 
 
 Wählen Sie Objekte im World Outliner aus, oder verwenden Sie den Abschnitt **Bulk Selection** (Massenauswahl), um alle Objekte einer bestimmten Kategorie auszuwählen. Nachdem Objekte ausgewählt wurden, verwenden Sie den Abschnitt **Tagging**, um das gewünschte Tag auf die ausgewählten Objekte anzuwenden.
 
+Objekte, die weder das Tag **AcousticsGeometry** noch das Tag **AcousticsNavigation** aufweisen, werden bei der Simulation ignoriert. Es werden nur statische Gittermodelle, Navigationsgittermodelle und Querformate unterstützt. Wenn Sie ein anderes Objekt taggen, wird es ignoriert.
+
 ### <a name="for-reference-the-objects-tab-parts"></a>Zur Referenz: Die Elemente der Registerkarte „Objects“ (Objekte)
 
 ![Screenshot der Option „Objects“ (Objekte) auf der Registerkarte „Acoustics“ (Akustik) in Unreal](media/unreal-objects-tab-details.png)
@@ -63,9 +65,23 @@ Fügen Sie keine Objekte hinzu, die sich nicht auf die Akustik auswirken sollen,
 
 Die Transformation eines Objekts zum Zeitpunkt der Prüfungsberechnung (über die unten dargestellte Registerkarte „Probes“ (Prüfpunkte)) wird in den Ergebnissen des Bakingvorgangs festgehalten. Wenn Sie eines der markierten Objekte in der Szene bewegen, müssen Sie die Testberechnung und den Bake-Vorgang für die Szene wiederholen.
 
-## <a name="create-or-tag-a-navigation-mesh"></a>Erstellen eines Navigationsgittermodells oder Versehen des Gittermodells mit Tags
+### <a name="create-or-tag-a-navigation-mesh"></a>Erstellen eines Navigationsgittermodells oder Versehen des Gittermodells mit Tags
 
-Ein Navigationsgittermodell wird verwendet, um Testpunkte für die Simulation zu platzieren. Sie können die Funktion [Nav Mesh Bounds Volume](https://api.unrealengine.com/INT/Engine/AI/BehaviorTrees/QuickStart/2/index.html) (Navigationsgittermodell-Grenzvolumen) von Unreal verwenden oder ein eigenes Navigationsgittermodell angeben. Sie müssen mindestens ein Objekt mit dem Tag **AcousticsNavigation** versehen.
+Ein Navigationsgittermodell wird verwendet, um Testpunkte für die Simulation zu platzieren. Sie können die Funktion [Nav Mesh Bounds Volume](https://api.unrealengine.com/INT/Engine/AI/BehaviorTrees/QuickStart/2/index.html) (Navigationsgittermodell-Grenzvolumen) von Unreal verwenden oder ein eigenes Navigationsgittermodell angeben. Sie müssen mindestens ein Objekt mit dem Tag **AcousticsNavigation** versehen. Wenn Sie das Navigationsgittermodell von Unreal verwenden, müssen Sie zunächst sicherstellen, dass Sie das Gittermodell erstellt haben.
+
+### <a name="acoustics-volumes"></a>Akustikvolumen (Acoustics Volume) ###
+
+Mit **Akustikvolumen** können Sie eine erweiterte Anpassung an Ihren Navigationsbereichen vornehmen. **Akustikvolumen** sind Akteure, die Sie Ihrer Szene hinzufügen können und Ihnen die Auswahl von Bereichen ermöglichen, die in Ihr Navigationsgittermodell eingeschlossen oder ignoriert werden sollen. Der Akteur macht eine Eigenschaft verfügbar, die auf „Include“ (Einschließen) oder „Exclude“ (Ausschließen) festgelegt werden kann. Mit Volumen vom Typ „Include“ (Einschließen) können Sie sicherstellen, dass nur Bereiche des Navigationsgittermodells, die in diesen Volumen enthalten sind, berücksichtigt werden. Volumen vom Typ „Exclude“ (Ausschließen) kennzeichnen die Bereiche, die ignoriert werden sollen. Volumen vom Typ „Exclude“ (Ausschließen) werden immer nach denen vom Typ „Include“ (Einschließen) angewendet. Denken Sie daran, **Akustikvolumen** wie oben beschrieben auf der Registerkarte „Objects“ (Objekte) mit dem Tag **AcousticsNavigation** zu versehen. Diese Akteure werden ***nicht*** automatisch mit Tags versehen.
+
+![Screenshot der Eigenschaften von Akustikvolumen in Unreal](media/unreal-acoustics-volume-properties.png)
+
+Volumen vom Typ „Exclude“ (Ausschließen) dienen in erster Linie zur präzisen Steuerung der Stellen, an denen keine Tests platziert werden sollen, um die Ressourcennutzung zu reduzieren.
+
+![Screenshot von Akustikvolumen vom Typ „Exclude“ (Ausschließen) in Unreal](media/unreal-acoustics-volume-exclude.png)
+
+Mit Volumen vom Typ „Include“ (Einschließen) können Sie manuell Szenenabschnitte erstellen, z. B. wenn Sie Ihre Szene in mehreren Akustikzonen aufteilen möchten. Angenommen, Sie haben eine viele Quadratkilometer große Szene mit zwei relevanten Bereichen, für die Sie das Akustikbaking ausführen möchten. Sie können zwei große Volumen vom Typ „Include“ (Einschließen) in der Szene zeichnen und nacheinander ACE-Dateien für diese Volumen erstellen. Im Spiel können Sie dann Triggervolumen in Kombination mit Blaupausenaufrufen verwenden, um die entsprechende ACE-Datei zu laden, wenn sich der Spieler den einzelnen Kacheln nähert.
+
+**Akustikvolumen** schränken nur die Navigation ein, aber ***nicht*** die Geometrie. Beim Durchführen von Wellensimulationen pullt jeder Test in einem **Akustikvolumen** vom Typ „Include“ (Einschließen) nach wie vor die gesamte erforderliche Geometrie außerhalb des Volumens. Daher sollte das Wechseln des Spielers zwischen den Abschnitten nicht zu verdeckten Diskontinuitäten oder anderen Akustikelementen führen.
 
 ## <a name="select-acoustic-materials"></a>Auswählen akustischer Materialien
 
@@ -87,6 +103,7 @@ Die Nachhallzeit eines bestimmten Materials in einem Raum ist umgekehrt proporti
 4. Anzeige der Akustikmaterialien, denen die Szenenmaterialien zugewiesen wurden. Klicken Sie auf eine Dropdownliste, um ein Szenenmaterial einem anderen Akustikmaterial zuzuweisen.
 5. Zeigt den Absorptionskoeffizienten des ausgewählten Akustikmaterials an, das in der vorherigen Spalte ausgewählt wurde. Ein Wert von „0“ bedeutet „perfekte Reflektion“ (keine Absorption), während ein Wert von „1“ „perfekte Absorption“ (keine Reflektion) bedeutet. Durch Ändern dieses Werts wird das Akustikmaterial (Schritt 4) in **Custom** (Benutzerdefiniert) aktualisiert.
 
+Wenn Sie Änderungen an den Materialien in Ihrer Szene vornehmen, müssen Sie im Plug-In „Projekt Akustik“ die Registerkarte wechseln, um diese Änderungen auf der Registerkarte **Materials** (Materialien) zu sehen.
 
 ## <a name="calculate-and-review-listener-probe-locations"></a>Berechnen und Überprüfen der Zuhörer-Prüfpunktpositionen
 
@@ -98,7 +115,7 @@ Wenn Sie die Materialien zugewiesen haben, wechseln Sie zur Registerkarte **Prob
 
 1. Die Schaltfläche **Probes** (Tests), die zum Aufrufen dieser Seite verwendet wird.
 2. Eine kurze Beschreibung, welche Vorgänge Sie mit dieser Seite durchführen müssen.
-3. Verwenden Sie dies, um „Coarse“ (Niedrig) oder „Fine“ (Hoch) als Auflösung für die Simulation auszuwählen. Eine niedrige Auflösung ist schneller, hat jedoch einige Nachteile. Weitere Informationen finden Sie weiter unten unter [Niedrige und hohe Auflösung im Vergleich](#Coarse-vs-Fine-Resolution).
+3. Verwenden Sie dies, um „Coarse“ (Niedrig) oder „Fine“ (Hoch) als Auflösung für die Simulation auszuwählen. Eine niedrige Auflösung ist schneller, hat jedoch einige Nachteile. Ausführliche Informationen finden Sie unter [Bake Resolution](bake-resolution.md) (Bakingauflösung).
 4. Wählen Sie mithilfe dieses Felds den Speicherort für die Akustikdatendateien aus. Klicken Sie auf die Schaltfläche mit den Auslassungspunkten (...), um die Ordnerauswahl zu verwenden. Weitere Informationen zu Datendateien finden Sie weiter unten unter [Datendateien](#Data-Files).
 5. Die Datendateien für diese Szene werden mithilfe des hier bereitgestellten Präfixes benannt. Der Standardwert ist „[Levelname]_AcousticsData“.
 6. Klicken Sie auf die Schaltfläche **Calculate** (Berechnen), um die Szene in Voxel umzuwandeln und Prüfpunktpositionen zu berechnen. Dies wird lokal auf Ihrem Computer durchgeführt und muss daher vor einem Bake-Vorgang erfolgen. Nachdem die Prüfpunkte berechnet wurden, werden die oben genannten Steuerelemente deaktiviert, und diese Schaltfläche wird in **Clear** (Löschen) umbenannt. Klicken Sie auf die Schaltfläche **Clear** (Löschen), um die Berechnungen zu löschen und die Steuerelemente zu aktivieren, damit Sie unter Verwendung der neuen Einstellungen eine Neuberechnung vornehmen können.
@@ -145,23 +162,9 @@ Die Testpunkte entsprechen den möglichen Positionen des Spielers (Listeners). B
 
 Es ist wichtig, sicherzustellen, dass an jeder Position, die der Spieler in der Szene voraussichtlich durchlaufen wird, Prüfpunkte vorhanden sind. Prüfpunkte werden von der Projekt Akustik-Engine im Navigationsgittermodell platziert und können nicht verschoben oder bearbeitet werden. Stellen Sie daher sicher, dass das Navigationsgittermodell alle möglichen Spielerpositionen abdeckt, indem Sie die Prüfpunkte durchgehen.
 
-![Screenshot mit Vorschau der Akustiktests in Unreal](media/unreal-probes-preview.png)
+![Screenshot einer Vorschau der Akustiktests in Unreal](media/unreal-probes-preview.png)
 
-### <a name="Coarse-vs-Fine-Resolution"></a>Niedrige und hohe Auflösung im Vergleich
-
-Der einzige Unterschied zwischen den Auflösungseinstellungen „Coarse“ (Niedrig) und „Fine“ (Hoch) ist die Häufigkeit, mit der die Simulation ausgeführt wird. Bei der Einstellung „Fine“ (Hoch) wird eine doppelt so hohe Häufigkeit wie bei „Coarse“ (Niedrig) verwendet.
-Dieses Prinzip erscheint einfach, hat jedoch einige Auswirkungen auf die Akustiksimulation:
-
-* Die Wellenlänge ist bei „Coarse“ (Niedrig) doppelt so lang wie bei „Fine“ (Hoch), daher sind die Voxel doppelt so groß.
-* Die Simulationszeit hängt direkt von der Voxelgröße ab, daher ist ein Bakingvorgang mit der Einstellung „Coarse“ (Niedrig) bis zu 16-mal schneller als mit der Einstellung „Fine“ (Hoch).
-* „Portale“ (z.B. Türen oder Fenster), die kleiner als die Voxelgröße sind, können nicht simuliert werden. Die Einstellung „Coarse“ (Niedrig) kann dazu führen, dass einige der kleineren Portale nicht simuliert werden, sodass diese zur Laufzeit keinen Sound übergeben. Sie können feststellen, ob dieser Fall eintritt, indem Sie die Voxels anzeigen.
-* Die niedrigere Simulationshäufigkeit führt zu einer verringerten Beugung von Ecken und Kanten.
-* Soundquellen können nicht in „aufgefüllten“ Voxels (also Voxels, die Geometrie enthalten) platziert werden, da ansonsten keine Sounds wiedergegeben werden. Es ist schwieriger, Soundquellen so zu platzieren, dass sie sich nicht in den größeren Voxeln der Einstellung „Coarse“ (Niedrig) befinden, als es bei der Einstellung „Fine“ (Hoch) der Fall ist.
-* Die größeren Voxels überschneiden sich wie im Folgenden dargestellt mehr mit Portalen. Das erste Bild dieses Türbereichs wurde mit der Auflösung „Coarse“ (Niedrig) erstellt, das zweite mit der Auflösung „Fine“ (Hoch). An den roten Markierungen ist erkennbar, dass die Überschneidung mit der Einstellung „Fine“ (Hoch) wesentlich geringer ist. Die blaue Linie stellt den durch die Geometrie definierten Eingang dar, während die rote Linie das Akustikportal darstellt, das von der Voxelgröße definiert wird. Wie diese Überschneidung sich in einer bestimmten Situation auswirkt, hängt vollständig davon ab, wie die Voxels und die Geometrie des Portals ausgerichtet sind. Dies wird von der Größe und Position der Objekte in der Szene bestimmt.
-
-![Screenshot der Voxel mit niedriger Auflösung im Eingang in Unreal](media/unreal-coarse-bake.png)
-
-![Screenshot der Voxel mit hoher Auflösung im Eingang in Unreal](media/unreal-fine-bake.png)
+Ausführliche Informationen zur niedrigen und hohen Auflösung finden Sie unter [Bake Resolution](bake-resolution.md) (Bakingauflösung).
 
 ## <a name="bake-your-level-using-azure-batch"></a>Ausführen des Bakings Ihres Levels mit Azure Batch
 

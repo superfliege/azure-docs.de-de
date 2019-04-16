@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2019
+ms.date: 04/09/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 04/03/2019
-ms.openlocfilehash: 5971692b3e6447bc790b2e34cf84eae66979f7f5
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.lastreviewed: 04/05/2019
+ms.openlocfilehash: 93221b8cd30993c4bdfdc84b5d14ac432fa661d3
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862079"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471281"
 ---
 # <a name="azure-stack-1902-update"></a>Azure Stack-Update 1902
 
@@ -65,6 +65,8 @@ Azure Stack-Hotfixes gelten nur für integrierte Azure Stack-Systeme. Versuchen 
     Test-AzureStack -Include AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
     ```
 
+  Wenn der Parameter `AzsControlPlane` bei der Ausführung von **Test-AzureStack** enthalten ist, wird in der Ausgabe von **Test-AzureStack** der folgende Fehler angezeigt: **FAIL Azure Stack Control Plane Websites Summary** (FEHLER: Websitezusammenfassung der Azure Stack-Steuerungsebene). Sie können diesen spezifischen Fehler ignorieren.
+
 - Wenn Azure Stack von System Center Operations Manager (SCOM) verwaltet wird, müssen Sie das [Management Pack für Microsoft Azure Stack](https://www.microsoft.com/download/details.aspx?id=55184) auf Version 1.0.3.11 aktualisieren, bevor Sie das Update 1902 anwenden.
 
 - Das Paketformat für das Azure Stack-Update wurde ab Release 1902 von **.bin/.exe/.xml** in **.zip/.xml** geändert. Kunden mit verbundenen Azure Stack-Skalierungseinheiten sehen im Portal die Meldung **Update verfügbar**. Kunden ohne Verbindung können die ZIP-Datei mit der entsprechenden XML-Datei jetzt einfach herunterladen und importieren.
@@ -95,16 +97,14 @@ Azure Stack-Hotfixes gelten nur für integrierte Azure Stack-Systeme. Versuchen 
   ```  
   
 - Zum Verbessern der allgemeinen Zuverlässigkeit und Verfügbarkeit von zentralen Infrastrukturdiensten während des Updateprozesses werden im Rahmen des Plans mit den Updateaktionen automatische globale Wartungen vom nativen Ressourcenanbieter erkannt und bei Bedarf aufgerufen. Workflows zur globalen Wartung vom Typ „Reparieren“ umfassen folgende Schritte:
-    - Suchen nach VMs in der Infrastruktur, die sich in einem nicht optimalen Zustand befinden, und diese bei Bedarf reparieren 
-    - Suchen nach Problemen im Rahmen des Steuerungsplans mit dem SQL-Dienst und diese bei Bedarf reparieren
-    - Überprüfen des Status des Software Load Balancer-Diensts (SLB) als Teil des Netzwerkcontrollers (NC) und diesen bei Bedarf reparieren
-    - Überprüfen des Status des Netzwerkcontrollerdiensts (NC) und diesen bei Bedarf reparieren
-    - Überprüfen des Status der ERCS-Service Fabric-Knoten (Emergency Recovery Console Service) und diese bei Bedarf reparieren
-    - Überprüfen des Status der XRP-Service Fabric-Knoten und diese bei Bedarf reparieren
-    - Überprüfen des Status der ACS-Service Fabric-Knoten (Azure Consistent Storage) und diese bei Bedarf reparieren
 
-<!-- 1460884    Hotfix: Adding StorageController service permission to talk to ClusterOrchestrator  Add node -->
-- Verbesserungen der Zuverlässigkeit der Kapazitätserweiterung beim Hinzufügen eines Knotens, wenn die Skalierungseinheit vom Zustand der Speichererweiterung in den Ausführungszustand umgeschaltet wird.    
+  - Suchen nach VMs in der Infrastruktur, die sich in einem nicht optimalen Zustand befinden, und diese bei Bedarf reparieren
+  - Suchen nach Problemen im Rahmen des Steuerungsplans mit dem SQL-Dienst und diese bei Bedarf reparieren
+  - Überprüfen des Status des Software Load Balancer-Diensts (SLB) als Teil des Netzwerkcontrollers (NC) und diesen bei Bedarf reparieren
+  - Überprüfen des Status des Netzwerkcontrollerdiensts (NC) und diesen bei Bedarf reparieren
+  - Status der ERCS-Service Fabric-Knoten (Emergency Recovery Console Service) überprüfen und diese bei Bedarf reparieren
+  - Überprüfen des Status der Infrastrukturrolle und diese bei Bedarf reparieren
+  - Status der ACS-Service Fabric-Knoten (Azure Consistent Storage) überprüfen und diese bei Bedarf reparieren
 
 <!-- 
 1426690 [SOLNET] 3895478-Get-AzureStackLog_Output got terminated in the middle of network log   Diagnostics
@@ -198,6 +198,14 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
 <!-- 1663805 - IS ASDK --> 
 - Sie können mit den Azure Stack-Portalen keine Berechtigungen für Ihr Abonnement anzeigen. Verwenden Sie für die Problemumgehung [PowerShell, um Berechtigungen zu überprüfen](/powershell/module/azs.subscriptions.admin/get-azssubscriptionplan).
 
+<!-- Daniel 3/28 -->
+- Wenn Sie im Benutzerportal in einem Speicherkonto zu einem Blob navigieren und versuchen, in der Navigationsstruktur die Option **Zugriffsrichtlinie** zu öffnen, wird das nachfolgende Fenster nicht geladen. Zum Umgehen dieses Problems können mit den folgenden PowerShell-Cmdlets Zugriffsrichtlinien jeweils erstellt, abgerufen, festgelegt und gelöscht werden:
+
+  - [New-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/new-azurestoragecontainerstoredaccesspolicy)
+  - [Get-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/get-azurestoragecontainerstoredaccesspolicy)
+  - [Set-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/set-azurestoragecontainerstoredaccesspolicy)
+  - [Remove-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/remove-azurestoragecontainerstoredaccesspolicy)
+
 <!-- ### Health and monitoring -->
 
 ### <a name="compute"></a>Compute
@@ -257,6 +265,10 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
  
 <!-- #### Identity -->
 <!-- #### Marketplace -->
+
+### <a name="syslog"></a>syslog 
+
+- Die syslog-Konfiguration wird bei einem Updatezyklus nicht beibehalten, sodass der syslog-Client seine Konfiguration verliert und die syslog-Nachrichten nicht mehr weitergeleitet werden. Dieses Problem betrifft alle Versionen von Azure Stack ab der allgemeinen Verfügbarkeit des syslog-Clients (1809). Um dieses Problem zu umgehen, konfigurieren Sie den syslog-Client nach Anwenden eines Azure Stack-Updates neu.
 
 ## <a name="download-the-update"></a>Herunterladen des Updates
 

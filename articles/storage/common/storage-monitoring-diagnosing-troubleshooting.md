@@ -383,7 +383,7 @@ Ein möglicher Grund für das verzögerte Senden von Anfragen durch den Client i
 
 Prüfen Sie auch, ob der Client mehrere Wiederholungen ausführt, und untersuchen Sie den Grund, falls dies der Fall ist. Um zu ermitteln, ob der Client mehrere Wiederholungen ausführt, können Sie folgende Aktionen ausführen:
 
-* Überprüfen Sie die Speicheranalyseprotokolle. Wenn mehrere Wiederholungen auftreten, sehen Sie mehrere Vorgänge mit der gleichen Client-ID, aber unterschiedliche Serveranfrage-IDs.
+* Überprüfen Sie die Storage Analytics-Protokolle. Wenn mehrere Wiederholungen auftreten, sehen Sie mehrere Vorgänge mit der gleichen Client-ID, aber unterschiedliche Serveranfrage-IDs.
 * Überprüfen Sie die Clientprotokolle. Bei einer ausführlichen Protokollierung wird auch angezeigt, dass ein erneuter Versuch erfolgt ist.
 * Debuggen Sie den Code, und überprüfen Sie die Eigenschaften des **OperationContext** -Objekts, das mit der Anfrage verknüpft ist. Wenn der Vorgang wiederholt wurde, enthält die **RequestResults** -Eigenschaft mehrere eindeutige Serveranforderungs-IDs. Sie können auch die Start- und Endzeiten der einzelnen Anforderungen überprüfen. Weitere Information finden Sie im Codebeispiel im Abschnitt [Serveranfrage-ID].
 
@@ -408,7 +408,7 @@ Hohe Werte bei der **AverageServerLatency** können auch ein Zeichen für schlec
 ### <a name="you-are-experiencing-unexpected-delays-in-message-delivery"></a>Sie stoßen auf unerwartete Verzögerungen bei der Nachrichtenübermittlung in einer Warteschlange
 Wenn Sie eine Verszögerung zwischen dem Zeitpunkt feststellen, in dem eine Anwendung eine Nachricht in eine Warteschlange einfügt, und dem Zeitpunkt, an dem sie zur Verfügung steht, um aus der Warteschlage gelesen zu werden, sollten Sie die folgenden Schritte ausführen, um das Problem zu diagnostizieren:
 
-* Stellen Sie sicher, dass die Anwendung die Nachrichten erfolgreich in die Warteschlange einfügt. Überprüfen Sie, ob die Anwendung die Methode **AddMessage** nicht mehrmals wiederholt, bevor sie zum Erfolg führt. Die Speicher-Clientbibliothek zeigt alle wiederholten Versuche der Speicheroperationen an.
+* Stellen Sie sicher, dass die Anwendung die Nachrichten erfolgreich in die Warteschlange einfügt. Überprüfen Sie, ob die Anwendung die Methode **AddMessage** nicht mehrmals wiederholt, bevor sie zum Erfolg führt. In den Protokollen der Speicherclientbibliothek werden alle wiederholten Versuche der Speicheroperationen angezeigt.
 * Stellen Sie sicher, dass kein Zeitunterschied zwischen der Workerrolle, die die Nachricht in die Warteschlange einfügt, und der Workerrolle, die die Nachricht aus der Warteschlange liest, besteht, der zum Eindruck einer Bearbeitungsverzögerung führt.
 * Prüfen Sie, ob der Fehler bei der Workerrolle liegt, die die Nachrichten aus der Warteschlange liest. Wenn ein Warteschlangenclient die Methode **GetMessage** aufruft, aber nicht mit einer Bestätigung reagiert, bleibt die Nachricht in der Warteschlange unsichtbar, bis der Zeitraum **invisibilityTimeout** abläuft. An diesem Punkt steht die Nachricht wieder zur Verarbeitung zur Verfügung.
 * Prüfen Sie, ob die Länge der Warteschlange im Laufe der Zeit wächst. Dies kann auftreten, wenn Sie nicht über genügend Worker verfügen, um alle Nachrichten zu verarbeiten, die andere Worker in der Warteschlange platzieren. Überprüfen Sie auch die Metriken, um festzustellen, ob Löschanfragen scheitern, sowie die Anzahl der aus der Warteschlange entfernten Nachrichten, was wiederholt gescheiterte Nachrichtenlöschversuche bedeuten könnte.

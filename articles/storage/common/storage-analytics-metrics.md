@@ -32,7 +32,7 @@ Von der Speicheranalyse können Metriken gespeichert werden, zu denen aggregiert
 
  Wenn Sie beispielsweise einen **GetBlob**-Vorgang für Ihren Blob-Dienst ausführen, protokollieren Speicheranalysemetriken die Anforderung und fügen diese in die aggregierten Daten für den Blob-Dienst und den **GetBlob**-Vorgang ein. Wenn jedoch im Verlauf der Stunde kein **GetBlob**-Vorgang angefordert wurde, wird für den betreffenden Vorgang keine Entität in *$MetricsTransactionsBlob* geschrieben.  
 
- Transaktionsmetriken werden sowohl für Anforderungen von Benutzern als auch für Anforderungen aufgezeichnet, die von der Speicheranalyse selbst generiert wurden. So werden z. B. Anforderungen der Speicheranalyse zum Schreiben von Protokollen und Tabellenentitäten aufgezeichnet.
+ Transaktionsmetriken werden sowohl für Anforderungen von Benutzern als auch für Anforderungen aufgezeichnet, die von der Speicheranalyse selbst generiert wurden. So werden z. B. Anforderungen von Storage Analytics zum Schreiben von Protokollen und Tabellenentitäten aufgezeichnet.
 
 ## <a name="capacity-metrics"></a>Kapazitätsmetriken  
 

@@ -113,7 +113,7 @@ Das [Azure-Aktivitätsprotokoll](https://docs.microsoft.com/azure/monitoring-and
 
 [Azure-Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) werden von einer Ressource ausgegeben und stellen umfangreiche und in kurzen Abständen erfasste Betriebsdaten der Ressource bereit. Der Inhalt dieser Protokolle variiert je nach Ressourcentyp.
 
-Windows-Systemereignisprotokolle sind eine Kategorie von Diagnoseprotokollen für virtuelle Computer. Blob-, Tabellen- und Warteschlangenprotokolle sind Kategorien von Diagnoseprotokollen für Speicherkonten.
+Windows-Ereignissystemprotokolle sind eine Kategorie von Diagnoseprotokollen für virtuelle Computer. Blob-, Tabellen- und Warteschlangenprotokolle sind Kategorien von Diagnoseprotokollen für Speicherkonten.
 
 Diagnoseprotokolle unterscheiden sich vom [Aktivitätsprotokoll](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). Das Aktivitätsprotokoll bietet Einblicke in Vorgänge, die für Ressourcen Ihres Abonnements durchgeführt wurden. Diagnoseprotokolle bieten Einblicke in Vorgänge, die Ihre Ressource selbst ausgeführt hat.
 

@@ -309,7 +309,7 @@ Normalerweise ist die Diagnoseprotokollierung in einem Azure App Service deaktiv
 1. Melden Sie sich beim [Azure-Portal]an.
 2. Wählen Sie **Alle Ressourcen** oder **App Services**, und klicken Sie dann auf den Namen Ihres migrierten Mobile Service.
 3. Das Blatt „Einstellungen“ wird standardmäßig geöffnet.
-4. Wählen Sie im Menü „FEATURES“ **Diagnoseprotokolle** .
+4. Wählen Sie im Menü „FEATURES“ die Option **Diagnoseprotokolle** aus.
 5. Klicken Sie für folgende Protokolle auf **EIN**: **Anwendungsprotokollierung (Dateisystem)**, **Detaillierte Fehlermeldungen** und **Ablaufverfolgung für Anforderungsfehler**.
 6. Klicken Sie für Webserverprotokollierung auf **Dateisystem** .
 7. Klicken Sie unten auf der Seite auf **Speichern**.
