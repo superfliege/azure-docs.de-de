@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 04/09/2019
-ms.openlocfilehash: a822e540db87c36358f1a0e34d75e05ed866868d
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 1a8f46c74693b00fd8e30b1e1a78d90111dea08b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471238"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59520744"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>Bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen zu Azure SQL-Datenbank
 
@@ -31,8 +31,10 @@ Im Folgenden werden bekannte Probleme und Einschränkungen in Bezug auf Onlinemi
 
 Wenn die Quelldatenbank eine oder mehrere temporale Tabellen umfasst, treten bei der Datenbankmigration während des Vorgangs „Full data load“ (Vollständiger Datenladevorgang) Fehler auf, und möglicherweise wird die folgende Meldung angezeigt:
 
+```
 { "resourceId":"/subscriptions/<subscription id>/resourceGroups/migrateready/providers/Microsoft.DataMigration/services/<DMS Service name>", "errorType":"Database migration error", "errorEvents":"["Capture functionalities could not be set. RetCode: SQL_ERROR SqlState: 42000 NativeError: 13570 Message: [Microsoft][SQL Server Native Client 11.0][SQL Server]The use of replication is not supported with system-versioned temporal table '[Application. Cities]' Line: 1 Column: -1 "]" }
- 
+```
+
  ![Beispiel für Fehler bei temporalen Tabellen](media/known-issues-azure-sql-online/dms-temporal-tables-errors.png)
 
 **Problemumgehung**

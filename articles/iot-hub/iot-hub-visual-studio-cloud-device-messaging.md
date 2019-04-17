@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/07/2018
 ms.author: xshi
-ms.openlocfilehash: bc955db4e851c1f59012dc1375170850e1b0604c
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ab3c02d7207bca70a90df8aa08c73c1484cd635d
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54109505"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571310"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Senden und Empfangen von Nachrichten zwischen Ihrem Gerät und IoT Hub mithilfe von Cloud-Explorer für Visual Studio
 
-![Lückenloses Diagramm](media/iot-hub-get-started-e2e-diagram/2.png)
+![Lückenloses Diagramm](./media/iot-hub-visual-studio-cloud-device-messaging/e-to-e-diagram.png)
 
 [Cloud-Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) ist eine nützliche Erweiterung für Visual Studio, mit der Sie Ihre Azure-Ressourcen anzeigen, deren Eigenschaften überprüfen und wichtige Entwickleraktionen in Visual Studio ausführen können. Der Schwerpunkt dieses Artikels liegt auf dem Verwenden von Cloud-Explorer zum Senden und Empfangen von Nachrichten zwischen Ihrem Gerät und IoT Hub.
 
@@ -34,7 +34,7 @@ Sie erfahren, wie Sie mit Cloud-Explorer für Visual Studio Gerät-zu-Cloud-Nach
 ## <a name="what-you-need"></a>Voraussetzungen
 
 - Ein aktives Azure-Abonnement.
-- Ein Azure IoT Hub in Ihrem Abonnement.
+- Eine Azure IoT Hub-Instanz in Ihrem Abonnement.
 - Microsoft Visual Studio 2017 Update 8 oder höher
 - Cloud-Explorer-Komponente von Visual Studio-Installer (standardmäßig mit Azure-Workload ausgewählt)
 
@@ -48,10 +48,14 @@ Die Cloud-Explorer-Komponente von Visual Studio-Installer unterstützt nur die �
 
     ![Klicken Sie auf „Kontoverwaltung“.](media/iot-hub-visual-studio-cloud-device-messaging/click-account-management.png)
 
-1. Klicken Sie in Cloud-Explorer auf **Konten verwalten**.
-1. Klicken Sie auf **Konto hinzufügen...** im neuen Fenster, um sich zum ersten Mal bei Azure anzumelden.
-1. Nach der Anmeldung wird Ihre Liste der Azure-Abonnements angezeigt. Wählen Sie das anzuzeigende Azure-Abonnement aus, und klicken Sie auf **Anwenden**.
-1. Erweitern Sie **Ihr Abonnement** > **IoT Hubs** > **Ihr IoT Hub**. Ihre Geräteliste wird unter Ihrem IoT Hub-Knoten angezeigt.
+
+2. Klicken Sie in Cloud-Explorer auf **Konten verwalten**.
+
+3. Klicken Sie auf **Konto hinzufügen...** im neuen Fenster, um sich zum ersten Mal bei Azure anzumelden.
+
+4. Nach der Anmeldung wird Ihre Liste der Azure-Abonnements angezeigt. Wählen Sie das anzuzeigende Azure-Abonnement aus, und klicken Sie auf **Anwenden**.
+
+5. Erweitern Sie **Ihr Abonnement** > **IoT Hubs** > **Ihr IoT Hub**. Ihre Geräteliste wird unter Ihrem IoT Hub-Knoten angezeigt.
 
     ![Geräteliste](media/iot-hub-visual-studio-cloud-device-messaging/device-list.png)
 
@@ -63,11 +67,11 @@ Um Nachrichten zu überwachen, die von Ihrem Gerät an Ihren IoT Hub gesendet we
 
     ![Starten der Überwachung von D2C-Nachrichten](media/iot-hub-visual-studio-cloud-device-messaging/start-monitoring-d2c-message.png)
 
-1. Die überwachten Nachrichten werden im Ausgabebereich **IoT Hub** angezeigt.
+2. Die überwachten Nachrichten werden im Ausgabebereich **IoT Hub** angezeigt.
 
     ![Überwachung von D2C-Nachrichten – Ergebnis](media/iot-hub-visual-studio-cloud-device-messaging/monitor-d2c-message-result.png)
 
-1. Um die Überwachung anzuhalten, klicken Sie mit der rechten Maustaste auf einen IoT Hub oder ein Gerät, und wählen Sie **Überwachung von D2C-Nachrichten beenden** aus.
+3. Um die Überwachung anzuhalten, klicken Sie mit der rechten Maustaste auf einen IoT Hub oder ein Gerät, und wählen Sie **Überwachung von D2C-Nachrichten beenden** aus.
 
 ## <a name="send-cloud-to-device-messages"></a>Senden von C2D-Nachrichten.
 
@@ -77,8 +81,9 @@ Um eine Nachricht von Ihrem IoT Hub zu Ihrem Gerät zu senden, gehen Sie folgend
 
     ![Senden einer C2D-Nachricht](media/iot-hub-visual-studio-cloud-device-messaging/send-c2d-message.png)
 
-1. Geben Sie die Nachricht in das Eingabefeld ein.
-1. Die Ergebnisse werden im Ausgabebereich **IoT Hub** angezeigt.
+2. Geben Sie die Nachricht in das Eingabefeld ein.
+
+3. Die Ergebnisse werden im Ausgabebereich **IoT Hub** angezeigt.
 
     ![Senden einer C2D-Nachricht – Ergebnis](media/iot-hub-visual-studio-cloud-device-messaging/send-c2d-message-result.png)
 

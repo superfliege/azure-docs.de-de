@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 02/21/2019
+ms.date: 04/08/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 0dd0474ad1ad360fd82cfdf746d2e9837f74833a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7c62ec722e5bb909c13b21a7b98d86dd72d9e665
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108374"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425949"
 ---
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>Tutorial: Zurücksenden von Azure Data Box Disk und Überprüfen des Datenuploads in Azure
 
@@ -32,29 +32,115 @@ Stellen Sie zunächst sicher, dass Sie die Schritte unter [Tutorial: Kopieren vo
 ## <a name="ship-data-box-disk-back"></a>Zurücksenden des Data Box-Datenträgers
 
 1. Trennen Sie die Datenträger vom Computer, nachdem die Überprüfung der Daten abgeschlossen ist. Entfernen Sie die Verbindungskabel.
-2. Verpacken Sie die Datenträger und die Verbindungskabel in Luftpolsterfolie, und legen Sie sie in das Versandpaket.
-3. Verwenden Sie das Etikett für den Rückversand in der durchsichtigen Kunststoffhülle, die am Paket angebracht ist. Falls das Etikett beschädigt oder nicht mehr vorhanden ist, können Sie über das Azure-Portal ein neues Versandetikett herunterladen und anbringen. Navigieren Sie zu **Übersicht > Versandetikett herunterladen**.
+2. Verpacken Sie die Datenträger und die Verbindungskabel in Luftpolsterfolie, und legen Sie sie in das Versandpaket. Fehlendes Zubehör wird ggf. in Rechnung gestellt.
+    - Verwenden Sie das Verpackungsmaterial aus der ursprünglichen Lieferung.  
+    - Es empfiehlt sich, die Datenträger sorgfältig in Luftpolsterfolie zu verpacken.
+    - Achten Sie auf einen festen Sitz der Teile im Karton, um ein Verrutschen innerhalb der Verpackung zu vermeiden.
 
-    ![Versandetikett herunterladen](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
+Die nächsten Schritte hängen davon ab, wo Sie das Gerät zurückgeben.
 
-    Mit dieser Aktion können Sie wie unten gezeigt ein Etikett für den Rückversand herunterladen.
+### <a name="pick-up-in-us-canada"></a>Abholung in den USA/in Kanada
 
-    ![Beispiel für Versandetikett](media/data-box-disk-deploy-picked-up/exmple-shipping-label.png)
+Wenn Sie das Gerät in den USA oder in Kanada zurückgeben möchten, gehen Sie wie folgt vor:
 
-4. Verschließen Sie das Versandpaket, und stellen Sie sicher, dass das Etikett für den Rückversand sichtbar ist.
-5. Planen Sie die Abholung durch UPS, falls Sie das Gerät in den USA zurücksenden. Wenn Sie das Gerät in Europa per DHL zurücksenden, können Sie die Abholung durch DHL anfordern, indem Sie auf der DHL-Website die Luftfrachtbrief-Nummer angeben. Greifen Sie auf die DHL Express-Website für Ihr Land zu, und wählen Sie **Abholung buchen > eReturn-Abholung buchen**.
+1. Verwenden Sie das Etikett für den Rückversand in der durchsichtigen Kunststoffhülle, die am Paket angebracht ist. Sollte das Etikett beschädigt oder verloren gegangen sein:
+    - Navigieren Sie zu **Übersicht > Versandetikett herunterladen**.
+
+        ![Versandetikett herunterladen](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
+
+        Mit dieser Aktion können Sie wie unten gezeigt ein Etikett für den Rückversand herunterladen.
+
+        ![Beispiel für Versandetikett](media/data-box-disk-deploy-picked-up/exmple-shipping-label.png)
+    - Bringen Sie das Etikett am Gerät an.
+
+2. Verschließen Sie das Versandpaket, und stellen Sie sicher, dass das Etikett für den Rückversand sichtbar ist.
+3. Planen Sie eine Abholung durch UPS.
+
+
+### <a name="pick-up-in-europe"></a>Abholung in Europa
+
+Wenn Sie das Gerät in Europa zurückgeben möchten, gehen Sie wie folgt vor:
+
+1. Verwenden Sie das Etikett für den Rückversand in der durchsichtigen Kunststoffhülle, die am Paket angebracht ist. Sollte das Etikett beschädigt oder verloren gegangen sein:
+    - Navigieren Sie zu **Übersicht > Versandetikett herunterladen**.
+
+        ![Versandetikett herunterladen](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
+
+        Mit dieser Aktion können Sie wie unten gezeigt ein Etikett für den Rückversand herunterladen.
+
+        ![Beispiel für Versandetikett](media/data-box-disk-deploy-picked-up/exmple-shipping-label.png)
+    - Bringen Sie das Etikett am Gerät an.
+
+2. Verschließen Sie das Versandpaket, und stellen Sie sicher, dass das Etikett für den Rückversand sichtbar ist.
+3. Wenn Sie das Gerät in Europa per DHL zurücksenden, können Sie die Abholung durch DHL anfordern, indem Sie auf der DHL-Website die Luftfrachtbrief-Nummer angeben.
+4. Greifen Sie auf die DHL Express-Website für Ihr Land zu, und wählen Sie **Abholung buchen > eReturn-Abholung buchen**.
 
     ![Rücklieferung mit DHL](media/data-box-disk-deploy-picked-up/dhl-ship-1.png)
     
-    Geben Sie die Luftfrachtbrief-Nummer an, und klicken Sie auf **Abholung beauftragen**, um die Abholung anzufordern.
+3. Geben Sie die Luftfrachtbrief-Nummer an, und klicken Sie auf **Abholung beauftragen**, um die Abholung anzufordern.
 
       ![Abholung beauftragen](media/data-box-disk-deploy-picked-up/dhl-ship-2.png)
 
-7. Nachdem die Datenträger vom Kurierdienst abgeholt wurden, wird der Auftragsstatus im Portal in **Picked up** (Abgeholt) geändert. Außerdem wird eine Nachverfolgungs-ID angezeigt.
+### <a name="pick-up-in-asia-pacific-region"></a>Abholung in der Asien-Pazifik-Region
 
-    ![Datenträger abgeholt](media/data-box-disk-deploy-picked-up/data-box-portal-pickedup.png)
+Dieser Abschnitt enthält Anweisungen für die Abholung in Japan, Korea und Australien.
+
+#### <a name="pick-up-in-australia"></a>Abholung in Australien
+
+Bei Azure-Datencentern in Australien ist aus Sicherheitsgründen eine zusätzliche Benachrichtigung erforderlich. Alle eingehenden Lieferungen müssen vorab angekündigt werden. Gehen Sie für eine Abholung in Australien wie folgt vor:
+
+1. Senden Sie eine E-Mail an `adbops@microsoft.com`, um ein Versandetikett mit eindeutiger Eingangs-ID oder TAU-Code anzufordern. Die Anforderung muss mindestens drei Tage vor dem geplanten Lieferdatum gesendet werden, um das Etikett rechtzeitig zu erhalten.
+2. Der Betreff der E-Mail muss wie folgt lauten: *Request for reverse shipping label with TAU code*. Geben Sie in der E-Mail folgende Informationen an: 
+
+    - Auftragsname
+    - Adresse
+    - Kontaktname
+
+#### <a name="pick-up-in-japan"></a>Abholung in Japan
+
+1. Legen Sie den Rücksendeschein der japanischen Post für eine Nachnahmesendung („Chakubarai“) bei.
+2. Geben Sie auf dem Rücksendeschein den Namen und die Adresse Ihres Unternehmens als Absender an.
+3. Fordern Sie unter der gebührenfreien Nummer 0800-0800-111 eine Abholung durch die japanische Post an. Geben Sie die siebenstellige Postleitzahl für die Abholadresse ein, um an die nächstgelegene Poststelle weitergeleitet zu werden.
+    - Die verfügbaren Abholzeiten hängen von der jeweiligen Poststelle ab.
+    - Geben Sie an, dass es sich um eine Sendung vom Typ "Japan Post Chakubarai Yu-Pack" handelt.
+    - Verwenden Sie den Nachnahme-Rücksendeschein („Chakubarai“), der in der Lieferung enthalten war.
+4. Sollte in der Lieferung kein solcher Rücksendeschein enthalten gewesen sein, senden Sie eine E-Mail an unseren Partner *Quantium Solutions*: `Customerservice.JP@quantiumsolutions.com`. *Quantium Solutions* fordert eine Abholung bei der japanischen Post an und sorgt dafür, dass Sie den Rücksendeschein bei der Abholung erhalten.
+    - Geben Sie die Referenznummer in der Spalte für Bemerkungen auf dem Nachnahme-Rücksendeschein („Chakubarai“) an, den Sie von der japanischen Post erhalten.
+    - Geben Sie die Lieferanschrift wie unten gezeigt an:   
+        ```
+        3F N7 Prologis Park Tokyo Ohta, 1-3-6 Tokai Ohta-ku, Tokyo 143-0001
+        Microsoft Service Center c/o Quantium Solutions Japan
+        TEL: 03-5755-0150
+        ```
+
+Sollte der Nachnahme-Rücksendeschein („Chakubarai“) nicht vorhanden sein, können Sie die Abholung per E-Mail veranlassen. Verwenden Sie dazu die folgende E-Mail-Vorlage:
+
+```
+To: Customerservice.JP@quantiumsolutions.com
+Subject: Pickup request for Azure Data Box Disk｜Job Name： 
+Body: 
+- Azure Data Box Disk job name：
+- Reference number:  
+- Requested pickup date：mmdd (Select a requested time slot from below).
+    a. 08：00-13：00 
+    b. 13：00-15：00 
+    c. 15：00-17：00 
+    d. 17：00-19：00 
+```
+
+#### <a name="pick-up-in-korea"></a>Abholung in Korea
+
+1. Legen Sie den Rücksendeschein bei.
+2. Gehen Sie zum Anfordern der Abholung wie folgt vor:
+    1. Rufen Sie unter 070-8231-1418 die Hotline von *Quantium Solutions International* an (Geschäftszeiten: Montag bis Freitag, 10 bis 17 Uhr). Geben Sie *Microsoft pickup* (Microsoft-Abholung) und die Nummer des Rücksendescheins an, um eine Abholung zu veranlassen.  
+    2. Ist die Hotline überlastet, senden Sie eine E-Mail mit dem Betreff *Microsoft Pickup* und der Nummer des Rücksendescheins an `microsoft@rocketparcel.com`.
+    3. Sollte der Kurier den Abholtermin nicht einhalten, rufen Sie die Hotline von *Quantium Solutions International* an, um eine alternative Lösung zu finden. 
 
 ## <a name="verify-data-upload-to-azure"></a>Überprüfen des Datenuploads in Azure
+
+Nachdem die Datenträger vom Kurierdienst abgeholt wurden, wird der Auftragsstatus im Portal in **Picked up** (Abgeholt) geändert. Außerdem wird eine Nachverfolgungs-ID angezeigt.
+
+![Datenträger abgeholt](media/data-box-disk-deploy-picked-up/data-box-portal-pickedup.png)
 
 Nachdem der Datenträger bei Microsoft eingegangen ist und gescannt wurde, wird der Auftragsstatus in **Received** (Empfangen) geändert. 
 
@@ -114,6 +200,6 @@ In diesem Tutorial haben Sie Informationen zu Azure Data Box-Datenträgern erhal
 Fahren Sie mit dem nächsten Artikel zur Vorgehensweise fort, um zu erfahren, wie Sie den Data Box-Datenträger über das Azure-Portal verwalten.
 
 > [!div class="nextstepaction"]
-> [Use Azure portal to administer Azure Data Box Disk](./data-box-portal-ui-admin.md) (Verwenden des Azure-Portals zum Verwalten des Azure Data Box-Datenträgers)
+> [Verwalten von Data Box Disk über das Azure-Portal](./data-box-portal-ui-admin.md)
 
 

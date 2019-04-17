@@ -15,12 +15,12 @@ ms.date: 12/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 12/18/2018
-ms.openlocfilehash: 54bc6bc105dab2831df6e48a64a6f766582a3fb9
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 22656c66bf5caa275a32ddcaae323fc0ab2b1600
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917559"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271729"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Rotieren von Geheimnissen in Azure Stack
 
@@ -63,13 +63,13 @@ Azure Stack unterstützt Geheimnisrotation mit externen Zertifikaten von einer n
 
 |Installierte Zertifizierungsstelle|ZS, zu der rotiert werden soll|Unterstützt|Unterstützte Versionen von Azure Stack|
 |-----|-----|-----|-----|
-|Von „Selbstsigniert“|Zu „Enterprise“|Nicht unterstützt||
+|Von „Selbstsigniert“|Zu „Enterprise“|Unterstützt|1903 und höher|
 |Von „Selbstsigniert“|Zu „Selbstsigniert“|Nicht unterstützt||
 |Von „Selbstsigniert“|Zu „Öffentlich“<sup>*</sup>|Unterstützt|1803 und höher|
-|Von „Enterprise“|Zu „Enterprise“|Wird unterstützt, solange Kunden die GLEICHE Unternehmens-ZS wie bei der Bereitstellung verwenden.|1803 und höher|
+|Von „Enterprise“|Zu „Enterprise“| Unterstützt. Von 1803 – 1903: Wird unterstützt, solange Kunden die GLEICHE Unternehmens-ZS wie bei der Bereitstellung verwenden.|1803 und höher|
 |Von „Enterprise“|Zu „Selbstsigniert“|Nicht unterstützt||
 |Von „Enterprise“|Zu „Öffentlich“<sup>*</sup>|Unterstützt|1803 und höher|
-|Von „Öffentlich“<sup>*</sup>|Zu „Enterprise“|Nicht unterstützt|1803 und höher|
+|Von „Öffentlich“<sup>*</sup>|Zu „Enterprise“|Unterstützt|1903 und höher|
 |Von „Öffentlich“<sup>*</sup>|Zu „Selbstsigniert“|Nicht unterstützt||
 |Von „Öffentlich“<sup>*</sup>|Zu „Öffentlich“<sup>*</sup>|Unterstützt|1803 und höher|
 
@@ -300,11 +300,11 @@ Das Cmdlet **Start-SecretRotation** rotiert die Infrastrukturgeheimnisse eines A
 
 | Parameter | Type | Erforderlich | Position | Standard | BESCHREIBUNG |
 | -- | -- | -- | -- | -- | -- |
-| PfxFilesPath | Zeichenfolge  | False  | benannt  | Keine  | Der Dateifreigabepfad des Verzeichnisses **\Certificates** mit allen externen Netzwerkendpunkt-Zertifikaten. Nur beim Rotieren externer Geheimnisse erforderlich. Das Endverzeichnis muss **\Certificates** sein. |
-| CertificatePassword | SecureString | False  | benannt  | Keine  | Das Kennwort für alle Zertifikate in „-PfXFilesPath“. Erforderlich, wenn „PfxFilesPath“ beim Rotieren externer Geheimnisse angegeben wird. |
-| Intern | Zeichenfolge | False | benannt | Keine | Das Internal-Flag muss immer dann verwendet werden, wenn ein Azure Stack-Operator die internen Infrastrukturgeheimnisse rotieren möchte. |
-| PathAccessCredential | PSCredential | False  | benannt  | Keine  | Die PowerShell-Anmeldeinformationen für die Dateifreigabe des Verzeichnisses **\Certificates** mit allen externen Netzwerkendpunkt-Zertifikaten. Nur beim Rotieren externer Geheimnisse erforderlich.  |
-| ReRun | SwitchParameter | False  | benannt  | Keine  | Die erneute Ausführung muss immer dann erfolgen, wenn die Geheimnisrotation nach einem fehlgeschlagenen Versuch erneut versucht wird. |
+| `PfxFilesPath` | Zeichenfolge  | False  | benannt  | Keine  | Der Dateifreigabepfad des Verzeichnisses **\Certificates** mit allen externen Netzwerkendpunkt-Zertifikaten. Nur beim Rotieren externer Geheimnisse erforderlich. Das Endverzeichnis muss **\Certificates** sein. |
+| `CertificatePassword` | SecureString | False  | benannt  | Keine  | Das Kennwort für alle Zertifikate in „-PfXFilesPath“. Erforderlich, wenn „PfxFilesPath“ beim Rotieren externer Geheimnisse angegeben wird. |
+| `Internal` | Zeichenfolge | False | benannt | Keine | Das Internal-Flag muss immer dann verwendet werden, wenn ein Azure Stack-Operator die internen Infrastrukturgeheimnisse rotieren möchte. |
+| `PathAccessCredential` | PSCredential | False  | benannt  | Keine  | Die PowerShell-Anmeldeinformationen für die Dateifreigabe des Verzeichnisses **\Certificates** mit allen externen Netzwerkendpunkt-Zertifikaten. Nur beim Rotieren externer Geheimnisse erforderlich.  |
+| `ReRun` | SwitchParameter | False  | benannt  | Keine  | Die erneute Ausführung muss immer dann erfolgen, wenn die Geheimnisrotation nach einem fehlgeschlagenen Versuch erneut versucht wird. |
 
 ### <a name="examples"></a>Beispiele
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: a71b09ba8b3e7fa7299c34c3cdc64503ae4e9857
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 31d8f54cb05bdbba7fe05249527db3dd50385087
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736548"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523408"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Verwenden von Microsoft Azure Traffic Manager zum Verwalten von Endpunktkontingenten über mehrere Schlüssel
 Language Understanding Intelligent Service (LUIS) bietet die Möglichkeit, das Endpunkt-Anforderungskontingent über das Kontingent eines einzelnen Schlüssels hinaus zu erhöhen. Dies erfolgt, indem Sie mehrere Schlüssel für LUIS erstellen und diese der LUIS-Anwendung auf der Seite **Veröffentlichen** im Abschnitt **Resources and Keys** (Ressourcen und Schlüssel) hinzuzufügen. 
@@ -86,7 +86,7 @@ Das Erstellen des Traffic Manager-Profils für „USA, Osten“ umfasst mehrere 
     |-RelativeDnsName|luis-dns-eastus|Dies ist die Unterdomäne für den Dienst: luis-dns-eastus.trafficmanager.net|
     |-Ttl|30|Abrufintervall, 30 Sekunden|
     |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|Der Port und das Protokoll für LUIS lauten HTTPS und 443|
-    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-east`|Ersetzen Sie <appIdLuis> und <subscriptionKeyLuis> durch Ihre eigenen Werte.|
+    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-east`|Ersetzen Sie `<appIdLuis>` und `<subscriptionKeyLuis>` durch Ihre eigenen Werte.|
     
     Bei einer erfolgreichen Anforderung erfolgt keine Antwort.
 
@@ -154,7 +154,7 @@ Das Erstellen des Traffic Manager-Profils für „USA, Westen“ umfasst die gle
     |-RelativeDnsName|luis-dns-westus|Dies ist die Unterdomäne für den Dienst: luis-dns-westus.trafficmanager.net|
     |-Ttl|30|Abrufintervall, 30 Sekunden|
     |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|Der Port und das Protokoll für LUIS lauten HTTPS und 443|
-    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-west`|Ersetzen Sie <appId> und <subscriptionKey> durch Ihre eigenen Werte. Denken Sie daran, dass sich dieser Endpunktschlüssel vom Endpunktschlüssel für „USA, Osten“ unterscheidet.|
+    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-west`|Ersetzen Sie `<appId>` und `<subscriptionKey>` durch Ihre eigenen Werte. Denken Sie daran, dass sich dieser Endpunktschlüssel vom Endpunktschlüssel für „USA, Osten“ unterscheidet.|
     
     Bei einer erfolgreichen Anforderung erfolgt keine Antwort.
 

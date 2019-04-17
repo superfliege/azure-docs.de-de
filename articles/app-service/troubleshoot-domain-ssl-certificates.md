@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 8ae6c9d5238f2853a12c20edfd3dba6d3f529b2c
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: c0584a69349c2785b5b6bce1d17c023c95b36151
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905816"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525380"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Problembehandlung bei Domänen- und SSL-Zertifikaten in Azure App Service
 
@@ -270,8 +270,8 @@ Dieses Problem tritt aus einem der folgenden Gründe auf:
     |Eintragstyp|Host|Verweist auf|
     |------|------|-----|
     |Eine Datei|@|IP-Adresse für App|
-    |TXT|@|<App-Name>.azurewebsites.net|
-    |CNAME|www|<App-Name>.azurewebsites.net|
+    |TXT|@|`<app-name>.azurewebsites.net`|
+    |CNAME|www|`<app-name>.azurewebsites.net`|
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 
@@ -287,7 +287,7 @@ Ja, Sie können die Domäne so einrichten, dass sie auf eine VM verweist. Weiter
 
 App Service-Domänen verwenden GoDaddy zur Domänenregistrierung und Azure DNS zum Hosten der Domänen. 
 
-**Die automatische Verlängerung ist aktiviert. Trotzdem habe ich per E-Mail eine Verlängerungsbenachrichtigung für meine Domäne erhalten. Wie sollte ich vorgehen?**
+**Die automatische Verlängerung ist aktiviert. Trotzdem habe ich per E-Mail eine Verlängerungsbenachrichtigung für meine Domäne erhalten. Wie soll ich vorgehen?**
 
 Wenn die automatische Verlängerung aktiviert ist, müssen Sie keine Maßnahmen ergreifen. In der Benachrichtigungs-E-Mail werden Sie darüber informiert, dass die Domäne in Kürze abläuft und manuell verlängert werden muss, falls die automatische Verlängerung nicht aktiviert ist.
 

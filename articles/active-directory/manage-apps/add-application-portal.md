@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 07/24/2018
+ms.date: 04/09/2019
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af30568d3ab35b35d2a0e0bef00921debb1ea451
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: b15842d7157e8e5a691f37f846dd424bf308eae3
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917803"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565181"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>Schnellstart: Hinzufügen einer Anwendung zu Ihrem Azure Active Directory-Mandanten
 
@@ -44,27 +44,27 @@ So fügen Sie eine Kataloganwendung zu Ihrem Azure AD-Mandanten hinzu:
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Navigationsbereich **Azure Active Directory** aus.
 
-2. Wählen Sie im Bereich **Azure Active Directory** die Option **Unternehmensanwendungen** aus.
+1. Wählen Sie im Bereich **Azure Active Directory** die Option **Unternehmensanwendungen** aus.
 
     ![Öffnen von „Unternehmensanwendungen“](media/add-application-portal/open-enterprise-apps.png)
 
-3. Der Bereich **Alle Anwendungen** wird mit einer nach dem Zufallsprinzip ausgewählten Gruppe von Anwendungen in Ihrem Azure AD-Mandanten geöffnet. Wählen Sie oben im Bereich **Alle Anwendungen** die Option **Neue Anwendung** aus.
+1. Der Bereich **Alle Anwendungen** wird mit einer nach dem Zufallsprinzip ausgewählten Gruppe von Anwendungen in Ihrem Azure AD-Mandanten geöffnet. Wählen Sie oben im Bereich **Alle Anwendungen** die Option **Neue Anwendung** aus.
 
     ![Neue Anwendung](media/add-application-portal/new-application.png)
 
-4. Im Bereich **Kategorien** werden im Abschnitt **Ausgewählte Anwendungen** Symbole für nach dem Zufallsprinzip ausgewählte Kataloganwendungen angezeigt.  Wenn Sie weitere Anwendungen anzeigen möchten, wählen Sie **Mehr anzeigen** aus. Es wird jedoch nicht empfohlen, auf diese Weise zu suchen, da der Katalog Tausende Anwendungen enthält.
+1. Im Bereich **Kategorien** werden im Abschnitt **Ausgewählte Anwendungen** Symbole für nach dem Zufallsprinzip ausgewählte Kataloganwendungen angezeigt.  Wenn Sie weitere Anwendungen anzeigen möchten, wählen Sie **Mehr anzeigen** aus. Es wird jedoch nicht empfohlen, auf diese Weise zu suchen, da der Katalog Tausende Anwendungen enthält.
 
     ![Suchen nach Name oder Kategorie](media/add-application-portal/categories.png)
 
-5. Geben Sie zum Suchen nach einer Anwendung unter **Aus Katalog hinzufügen** den Namen der hinzuzufügenden Anwendung ein. Wählen Sie die Anwendung in den Ergebnissen aus, und klicken Sie auf **Hinzufügen**. Das folgende Beispiel zeigt das Formular **App hinzufügen**, das nach dem Suchvorgang für GitHub.com angezeigt wird.
+1. Geben Sie zum Suchen nach einer Anwendung unter **Aus Katalog hinzufügen** den Namen der hinzuzufügenden Anwendung ein. Wählen Sie die Anwendung in den Ergebnissen aus, und klicken Sie auf **Hinzufügen**. Das folgende Beispiel zeigt das Formular **App hinzufügen**, das nach dem Suchvorgang für GitHub.com angezeigt wird.
 
     ![Hinzufügen einer Anwendung](media/add-application-portal/add-an-application.png)
 
-6. Im anwendungsspezifischen Formular können Sie Informationen zu Eigenschaften ändern. Beispielsweise können Sie den Namen der Anwendung entsprechend den Anforderungen Ihres Unternehmens bearbeiten. In diesem Beispiel wird der Name **GitHub-test** verwendet.
+1. Im anwendungsspezifischen Formular können Sie Informationen zu Eigenschaften ändern. Beispielsweise können Sie den Namen der Anwendung entsprechend den Anforderungen Ihres Unternehmens bearbeiten. In diesem Beispiel wird der Name **GitHub-test** verwendet.
 
-7. Wenn Sie die gewünschten Änderungen an den Eigenschaften vorgenommen haben, wählen Sie **Hinzufügen** aus.
+1. Wenn Sie die gewünschten Änderungen an den Eigenschaften vorgenommen haben, wählen Sie **Hinzufügen** aus.
 
-8. Eine Seite mit ersten Schritten und den Optionen zum Konfigurieren der Anwendung für Ihre Organisation wird angezeigt.
+1. Eine Seite mit ersten Schritten und den Optionen zum Konfigurieren der Anwendung für Ihre Organisation wird angezeigt.
 
 Das Hinzufügen der Anwendung ist abgeschlossen. Sie können nun eine Pause einlegen. In den nächsten Abschnitten wird gezeigt, wie Sie das Logo ändern und weitere Eigenschaften für Ihre Anwendung bearbeiten.
 
@@ -74,13 +74,13 @@ Angenommen, Sie mussten den Vorgang unterbrechen und möchten nun die Konfigurat
 
 1. Wählen Sie im **[Azure-Portal](https://portal.azure.com)** im linken Navigationsbereich **Azure Active Directory** aus.
 
-2. Wählen Sie im Bereich **Azure Active Directory** die Option **Unternehmensanwendungen** aus.
+1. Wählen Sie im Bereich **Azure Active Directory** die Option **Unternehmensanwendungen** aus.
 
-3. Wählen Sie im Dropdownmenü **Anwendungstyp** die Option **Alle Anwendungen** und dann **Anwenden** aus. Weitere Informationen zu den Anzeigeoptionen finden Sie unter [Anzeigen aller von Ihnen verwaltbaren Unternehmens-Apps in Azure Active Directory](view-applications-portal.md).
+1. Wählen Sie im Dropdownmenü **Anwendungstyp** die Option **Alle Anwendungen** und dann **Anwenden** aus. Weitere Informationen zu den Anzeigeoptionen finden Sie unter [Anzeigen aller von Ihnen verwaltbaren Unternehmens-Apps in Azure Active Directory](view-applications-portal.md).
 
-4. Sie können jetzt eine Liste aller Anwendungen im Azure AD-Mandanten anzeigen. Die Liste enthält eine nach dem Zufallsprinzip ausgewählte Gruppe. Wählen Sie zum Anzeigen weiterer Anwendungen mehrmals die Option **Mehr anzeigen** aus.
+1. Sie können jetzt eine Liste aller Anwendungen im Azure AD-Mandanten anzeigen. Die Liste enthält eine nach dem Zufallsprinzip ausgewählte Gruppe. Wählen Sie zum Anzeigen weiterer Anwendungen mehrmals die Option **Mehr anzeigen** aus.
 
-5. Um schnell eine Anwendung in Ihrem Mandanten zu finden, geben Sie den Anwendungsnamen ins Suchfeld ein, und wählen Sie **Anwenden** aus. In diesem Beispiel wird nach der zuvor hinzugefügten Anwendung „GitHub-test“ gesucht.
+1. Um schnell eine Anwendung in Ihrem Mandanten zu finden, geben Sie den Anwendungsnamen ins Suchfeld ein, und wählen Sie **Anwenden** aus. In diesem Beispiel wird nach der zuvor hinzugefügten Anwendung „GitHub-test“ gesucht.
 
     ![Suchen einer Anwendung](media/add-application-portal/find-application.png)
 
@@ -92,17 +92,17 @@ Sie haben die Anwendung gefunden. Nun können Sie sie öffnen und Anwendungseige
 So bearbeiten Sie die Anwendungseigenschaften:
 
 1. Wählen Sie die Anwendung aus, um sie zu öffnen.
-2. Wählen Sie **Eigenschaften** aus, um den Bereich „Eigenschaften“ zur Bearbeitung zu öffnen.
+1. Wählen Sie **Eigenschaften** aus, um den Bereich „Eigenschaften“ zur Bearbeitung zu öffnen.
 
     ![Bereich „Eigenschaften bearbeiten“](media/add-application-portal/edit-properties.png)
 
-3. Nehmen Sie sich einen Moment Zeit, um die Anmeldeoptionen nachzuvollziehen. Die Optionen bestimmen, wie die der Anwendung zugewiesenen bzw. nicht zugewiesenen Benutzer sich bei der Anwendung anmelden können. Darüber hinaus legen die Optionen fest, ob ein Benutzer die Anwendung im Zugriffsbereich sehen kann.
+1. Nehmen Sie sich einen Moment Zeit, um die Anmeldeoptionen nachzuvollziehen. Die Optionen bestimmen, wie die der Anwendung zugewiesenen bzw. nicht zugewiesenen Benutzer sich bei der Anwendung anmelden können. Darüber hinaus legen die Optionen fest, ob ein Benutzer die Anwendung im Zugriffsbereich sehen kann.
 
     - Mit **Aktiviert für die Benutzeranmeldung?** wird festgelegt, ob sich Benutzer, die der Anwendung zugewiesen sind, anmelden können.
     - Mit **Benutzerzuweisung erforderlich?** wird festgelegt, ob sich Benutzer, die der Anwendung nicht zugewiesen sind, anmelden können.
     - Mit **Für Benutzer sichtbar?** wird festgelegt, ob für der App zugewiesene Benutzer die Anwendung im Zugriffsbereich und im Office 365-Startfeld angezeigt wird.
 
-4. Anhand der folgenden Tabellen können Sie die Optionen auswählen, die am besten für Ihre Anforderungen geeignet sind:
+1. Anhand der folgenden Tabellen können Sie die Optionen auswählen, die am besten für Ihre Anforderungen geeignet sind:
 
    - Verhalten für **zugewiesene** Benutzer:
 
@@ -139,10 +139,10 @@ So bearbeiten Sie die Anwendungseigenschaften:
 So verwenden Sie ein benutzerdefiniertes Logo:
 
 1. Erstellen Sie ein Logo mit 215 x 215 Pixeln, und speichern Sie es im PNG-Format.
-2. Da Sie Ihre Anwendung bereits gefunden haben, wählen Sie sie aus.
-2. Wählen Sie im linken Bereich **Eigenschaften** aus.
-4. Laden Sie das Logo hoch.
-5. Wählen Sie abschließend **Speichern** aus.
+1. Da Sie Ihre Anwendung bereits gefunden haben, wählen Sie sie aus.
+1. Wählen Sie im linken Bereich **Eigenschaften** aus.
+1. Laden Sie das Logo hoch.
+1. Wählen Sie abschließend **Speichern** aus.
 
     ![Ändern des Logos](media/add-application-portal/change-logo.png)
 
@@ -154,6 +154,6 @@ In dieser Schnellstartanleitung haben Sie erfahren, wie eine Kataloganwendung zu
 Nun können Sie die Anwendung für einmaliges Anmelden konfigurieren.
 
 > [!div class="nextstepaction"]
-> [Einmaliges Anmelden konfigurieren](configure-single-sign-on-portal.md)
+> [Konfigurieren von einmaligem Anmelden](configure-single-sign-on-portal.md)
 
 

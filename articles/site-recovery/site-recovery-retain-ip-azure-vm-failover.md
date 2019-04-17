@@ -2,16 +2,16 @@
 title: Beibehalten von IP-Adressen während eines Failovers von Azure-VMs mit Azure Site Recovery | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt, wie Sie IP-Adressen beibehalten, wenn bei der Notfallwiederherstellung mit Azure Site Recovery ein Failover für Azure-VMs auf eine sekundäre Region ausgeführt wird.
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 4/9/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: aefb0684ea065841824ad27d1105ef309418c6b9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 618d60417aa6b582eaef94bf75dcf16c74750f83
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090745"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357890"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>Beibehalten von IP-Adressen während eines Failovers
 
@@ -92,7 +92,7 @@ Vor dem Failover sieht die Architektur folgendermaßen aus:
 - Die sekundäre Azure-Region (Zielregion) ist „Asien, Südosten“. - „Asien, Südosten“ verfügt über zwei Wiederherstellungs-VNETs (**Wiederherstellungs-VNET 1** und **Wiederherstellungs-VNET 2**), die mit **Quell-VNET 1** und **Quell-VNET 2** identisch sind.
         - **Wiederherstellungs-VNET 1** und **Wiederherstellungs-VNET 2** umfassen jeweils zwei Subnetze, die den Subnetzen in **Quell-VNET 1** und **Quell-VNET 2** entsprechen. - „Asien, Südosten“ verfügt über ein weiteres VNET (**Azure VNET**) mit dem Adressraum 10.3.0.0/16.
         - **Azure VNET** enthält ein Subnetz (**Subnetz 4**) mit dem Adressraum 10.3.4.0/24.
-        - Die Replikatknoten für SQL Server Always On, Domänencontroller usw. befinden sich in **Subnetz 4**.
+        Die Replikatknoten für SQL Server Always On, Domänencontroller usw. befinden sich in **Subnetz 4**.
 - Es gibt mehrere Site-to-Site-VPN-Verbindungen: 
     - **Quell-VNET 1** und **Azure VNET**
     - **Quell-VNET 2** und **Azure VNET**

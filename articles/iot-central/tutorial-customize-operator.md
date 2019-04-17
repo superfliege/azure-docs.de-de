@@ -3,17 +3,17 @@ title: Anpassen der Ansichten für Bediener in Azure IoT Central | Microsoft-Dok
 description: Als Ersteller können Sie die Ansichten für Bediener in Ihrer Azure IoT Central-Anwendung anpassen.
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 01/29/2018
+ms.date: 03/26/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 86c9a7794146edc4106d8ec30106e1c27556248f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: dc3543af0a10c83d8ca212957a6345c8a70cd58b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769675"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279940"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view-new-ui-design"></a>Tutorial: Anpassen der Azure IoT Central-Ansicht für Bediener (neues Benutzeroberflächendesign)
 
@@ -160,5 +160,5 @@ In diesem Tutorial haben Sie gelernt, wie Sie die Anwendungsdarstellung für Bed
 
 Nachdem Sie nun wissen, wie Sie die Anwendungsdarstellung für Bediener anpassen, können Sie mit folgenden Schritten fortfahren:
 
-* [überwachen Ihrer Geräte](tutorial-monitor-devices.md) (als Bediener)
-* [Hinzufügen eines neuen Geräts zu Ihrer Anwendung](tutorial-add-device.md) (als Bediener und Geräteentwickler)
+* [Überwachen Ihrer Geräte (als Bediener)](tutorial-monitor-devices.md)
+* [Hinzufügen eines neuen Geräts zu Ihrer Anwendung (als Bediener und Geräteentwickler)](tutorial-add-device.md)

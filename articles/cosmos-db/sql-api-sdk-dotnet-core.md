@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: cc6c66ccb0bb08d709b2015d643544fb9dc30f52
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bae180e2ceae6fe0768a5f7951c18dc5147870fa
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57846734"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545245"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK für SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.locfileid: "57846734"
 |**SDK-Download**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)|
 |**API-Dokumentation**|[.NET API-Referenzdokumentation](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
 |**Beispiele**|[.NET-Codebeispiele](sql-api-dotnet-samples.md)|
-|**Erste Schritte**|[Azure Cosmos DB: Erste Schritte mit der DocumentDB-API und .NET Core](sql-api-dotnetcore-get-started.md)|
+|**Erste Schritte**|[Azure Cosmos DB: Erste Schritte mit der DocumentDB-API und .NET Core](sql-api-dotnet-core-get-started-preview.md)|
 |**Web-App-Tutorial**|[Entwicklung von Webanwendungen mit Azure Cosmos DB](sql-api-dotnet-application.md)|
 |**Aktuelles unterstütztes Framework**|[.NET Standard 1.6 und .NET Standard 1.5](https://www.nuget.org/packages/NETStandard.Library)|
 

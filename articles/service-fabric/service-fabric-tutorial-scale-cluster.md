@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 03/19/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 40e372b779d06656b111ad3d7de435b99c401dc3
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: fa9b091beacbc98c6939ec0454bd04da2b7561e7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669502"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278699"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Tutorial: Skalieren eines Service Fabric-Clusters in Azure
 
@@ -38,15 +38,18 @@ In dieser Tutorialserie lernen Sie Folgendes:
 > * Erstellen eines sicheren [Windows-Clusters](service-fabric-tutorial-create-vnet-and-windows-cluster.md) in Azure mithilfe einer Vorlage
 > * [Überwachen eines Clusters](service-fabric-tutorial-monitor-cluster.md)
 > * Horizontales Herunter- oder Hochskalieren eines Clusters
-> * [Aktualisieren der Runtime eines Clusters](service-fabric-tutorial-upgrade-cluster.md)
+> * [Aktualisieren der Runtime eines Service Fabric-Clusters](service-fabric-tutorial-upgrade-cluster.md)
 > * [Löschen eines Clusters](service-fabric-tutorial-delete-cluster.md)
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 
 * Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Installieren Sie das [Azure PowerShell-Modul Version 4.1 oder höher](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) oder [Azure CLI](/cli/azure/install-azure-cli).
+* Installieren Sie [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) oder die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
 * Erstellen eines sicheren [Windows-Clusters](service-fabric-tutorial-create-vnet-and-windows-cluster.md) in Azure
 
 ## <a name="important-considerations-and-guidelines"></a>Wichtige Aspekte und Richtlinien
@@ -98,7 +101,7 @@ Wenn Sie einen Knotentyp der [Zuverlässigkeitsstufe][durability] „Bronze“ h
 Speichern Sie alle Änderungen in den Dateien *template.json* und *parameters.json*.  Führen Sie den folgenden Befehl aus, um die aktualisierte Vorlage bereitzustellen:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ChangingInstanceCount"
+New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ChangingInstanceCount"
 ```
 Oder führen Sie den folgenden Azure-CLI-Befehl aus:
 ```azure-cli
@@ -804,7 +807,7 @@ Fügen Sie in der Datei *parameters.json* die folgenden neuen Parameter und Wert
 Speichern Sie alle Änderungen in den Dateien *template.json* und *parameters.json*.  Führen Sie den folgenden Befehl aus, um die aktualisierte Vorlage bereitzustellen:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "AddingNodeType"
+New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "AddingNodeType"
 ```
 Oder führen Sie den folgenden Azure-CLI-Befehl aus:
 ```azure-cli
@@ -812,19 +815,19 @@ az group deployment create --resource-group sfclustertutorialgroup --template-fi
 ```
 
 ## <a name="remove-a-node-type-from-the-cluster"></a>Entfernen eines Knotentyps aus dem Cluster
-Nachdem Sie einen Service Fabric-Cluster erstellt haben, können Sie einen Cluster horizontal skalieren, indem Sie einen Knotentyp (VM-Skalierungsgruppe) und alle seine Knoten entfernen. Sie können die Skalierung für den Cluster jederzeit durchführen – auch bei Ausführung von Workloads im Cluster. Wenn der Cluster skaliert wird, werden Ihre Anwendungen ebenfalls automatisch skaliert.
+Nachdem Sie einen Service Fabric-Cluster erstellt haben, können Sie einen Cluster horizontal skalieren, indem Sie einen Knotentyp (VM-Skalierungsgruppe) und alle dazugehörigen Knoten entfernen. Sie können die Skalierung für den Cluster jederzeit durchführen – auch bei Ausführung von Workloads im Cluster. Wenn der Cluster skaliert wird, werden Ihre Anwendungen ebenfalls automatisch skaliert.
 
 > [!WARNING]
-> Es wird nicht empfohlen, regelmäßig Remove-AzureRmServiceFabricNodeType zum Entfernen eines Knotentyps aus einem Produktionscluster zu verwenden. Es handelt sich um einen sehr gefährlichen Befehl, da er die VM-Skalierungsgruppenressource hinter dem Knotentyp löscht. 
+> Es wird nicht empfohlen, regelmäßig „Remove-AzServiceFabricNodeType“ zu verwenden, um einen Knotentyp aus einem Produktionscluster zu entfernen. Es handelt sich um einen sehr gefährlichen Befehl, da er die VM-Skalierungsgruppenressource hinter dem Knotentyp löscht. 
 
-Führen Sie das Cmdlet [Remove-AzureRmServiceFabricNodeType](/powershell/module/azurerm.servicefabric/remove-azurermservicefabricnodetype) aus, um den Knotentyp zu entfernen.  Der Knotentyp muss die [Dauerhaftigkeitsstufe][durability] „Silber“ oder „Gold“ haben. Das Cmdlet löscht die dem Knotentyp zugeordnete Skalierungsgruppe, was einige Zeit in Anspruch nimmt.  Führen Sie dann das Cmdlet [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) auf jedem der zu entfernenden Knoten aus, wodurch der Knotenzustand gelöscht und die Knoten aus dem Cluster entfernt werden. Wenn auf den Knoten Dienste vorhanden sind, werden die Dienste zuerst auf einen anderen Knoten verschoben. Wenn der Cluster-Manager keinen Knoten für das Replikat bzw. den Dienst finden kann, wird der Vorgang verzögert/blockiert.
+Führen Sie das Cmdlet [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) aus, um den Knotentyp zu entfernen.  Der Knotentyp muss die [Dauerhaftigkeitsstufe][durability] „Silber“ oder „Gold“ haben. Das Cmdlet löscht die dem Knotentyp zugeordnete Skalierungsgruppe, was einige Zeit in Anspruch nimmt.  Führen Sie dann das Cmdlet [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) auf jedem der zu entfernenden Knoten aus, wodurch der Knotenzustand gelöscht und die Knoten aus dem Cluster entfernt werden. Wenn auf den Knoten Dienste vorhanden sind, werden die Dienste zuerst auf einen anderen Knoten verschoben. Wenn der Cluster-Manager keinen Knoten für das Replikat bzw. den Dienst finden kann, wird der Vorgang verzögert/blockiert.
 
 ```powershell
 $groupname = "sfclustertutorialgroup"
 $nodetype = "nt4vm"
 $clustername = "mysfcluster123"
 
-Remove-AzureRmServiceFabricNodeType -Name $clustername  -NodeType $nodetype -ResourceGroupName $groupname
+Remove-AzServiceFabricNodeType -Name $clustername  -NodeType $nodetype -ResourceGroupName $groupname
 
 Connect-ServiceFabricCluster -ConnectionEndpoint mysfcluster123.eastus.cloudapp.azure.com:19000 `
           -KeepAliveIntervalInSec 10 `
@@ -861,7 +864,7 @@ Die VM-SKU für alle drei Knotentypen wird im Parameter *vmImageSku* festgelegt.
 Speichern Sie alle Änderungen in den Dateien *template.json* und *parameters.json*.  Führen Sie den folgenden Befehl aus, um die aktualisierte Vorlage bereitzustellen:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ScaleUpNodeType"
+New-AzResourceGroupDeployment -ResourceGroupName sfclustertutorialgroup -TemplateFile c:\temp\template.json -TemplateParameterFile c:\temp\parameters.json -Name "ScaleUpNodeType"
 ```
 Oder führen Sie den folgenden Azure-CLI-Befehl aus:
 ```azure-cli
@@ -874,6 +877,18 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Hinzufügen und Entfernen von Knoten (horizontales Hoch- und Herunterskalieren)
+> * Hinzufügen und Entfernen von Knotentypen (horizontales Hoch- und Herunterskalieren)
+> * Erhöhen von Knotenressourcen (zentrales Hochskalieren)
+
+Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie die Runtime eines Clusters aktualisieren:
+> [!div class="nextstepaction"]
+> [Aktualisieren der Runtime eines Service Fabric-Clusters](service-fabric-tutorial-upgrade-cluster.md)
+
+[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
+[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
+[template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.json
+[parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/7-VM-Windows-3-NodeTypes-Secure-NSG/AzureDeploy.Parameters.json
+ )
 > * Hinzufügen und Entfernen von Knotentypen (horizontales Hoch- und Herunterskalieren)
 > * Erhöhen von Knotenressourcen (zentrales Hochskalieren)
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 00e2c143116550aa77d38b4bc93bbe2e0b41c331
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3541376331725fddcd58d94625f5d761ef159c97
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868343"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526494"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>Bereitstellen des Sprachenerkennungscontainers in Azure Kubernetes Service
 
@@ -206,7 +206,7 @@ Die folgenden Schritte sind erforderlich, um die erforderlichen Informationen f�
 
     Speichern Sie den vollständigen Wert für Schritt 3 in diesem Abschnitt. 
 
-1. Erstellen Sie eine Rollenzuweisung, um den korrekten Zugriff für den AKS-Cluster zu gewähren und die Verwendung von in der Containerregistrierung gespeicherten Images zu ermöglichen. Ersetzen Sie <appId> und <acrId> durch die Werte aus den beiden vorherigen Schritten.
+1. Erstellen Sie eine Rollenzuweisung, um den korrekten Zugriff für den AKS-Cluster zu gewähren und die Verwendung von in der Containerregistrierung gespeicherten Images zu ermöglichen. Ersetzen Sie `<appId>` und `<acrId>` durch die Werte aus den beiden vorherigen Schritten.
 
     ```azurecli
     az role assignment create --assignee <appId> --scope <acrId> --role Reader

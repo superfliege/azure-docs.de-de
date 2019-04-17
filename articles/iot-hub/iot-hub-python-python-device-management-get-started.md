@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 80091adaa364289ec9cddf6e259242e376b76b37
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 04fc1da04d9da715acfed8ca9d26e9c325afb403
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549611"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279923"
 ---
 # <a name="get-started-with-device-management-python"></a>Erste Schritte mit der Geräteverwaltung (Python)
 
@@ -23,21 +23,27 @@ ms.locfileid: "57549611"
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 * Verwenden des Azure-Portals zum Erstellen einer IoT Hub-Instanz und einer Geräteidentität im IoT Hub
+
 * Erstellen Sie eine simulierte Geräte-App, die eine direkte Methode enthält, die das Gerät neu startet. Direkte Methoden werden aus der Cloud aufgerufen.
+
 * Erstellen Sie eine Python-Konsolenanwendung, die über Ihren IoT Hub die direkte Methode zum Neustart in der simulierten Geräte-App aufruft.
 
 Am Ende dieses Tutorials verfügen Sie über zwei Python-Konsolen-Apps:
 
-**dmpatterns_getstarted_device.py**: Stellt mit der zuvor erstellten Geräteidentität eine Verbindung mit dem IoT Hub her, empfängt eine direkte Methode zum Neustart, simuliert einen physischen Neustart und meldet den Zeitpunkt des letzten Neustarts.
+* **dmpatterns_getstarted_device.py**: Stellt mit der zuvor erstellten Geräteidentität eine Verbindung mit dem IoT Hub her, empfängt eine direkte Methode zum Neustart, simuliert einen physischen Neustart und meldet den Zeitpunkt des letzten Neustarts.
 
-**dmpatterns_getstarted_service.py**: Ruft eine direkte Methode in der simulierten Geräte-App auf und zeigt die Antwort sowie die gemeldeten aktualisierten Eigenschaften an.
+* **dmpatterns_getstarted_service.py**: Ruft eine direkte Methode in der simulierten Geräte-App auf und zeigt die Antwort sowie die gemeldeten aktualisierten Eigenschaften an.
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * [Python 2.x oder 3.x](https://www.python.org/downloads/). Stellen Sie je nach Einrichtung sicher, dass die 32-Bit- bzw. die 64-Bit-Installation verwendet wird. Fügen Sie Python Ihrer plattformspezifischen Umgebungsvariablen hinzu, wenn Sie während der Installation dazu aufgefordert werden. Bei Verwendung von Python 2.x müssen Sie ggf. [*pip*, das Python-Paketverwaltungssystem, installieren oder upgraden](https://pip.pypa.io/en/stable/installing/).
-    * Installieren des Pakets [azure-iothub-device-client](https://pypi.org/project/azure-iothub-device-client/) mit dem Befehl `pip install azure-iothub-device-client`
-    * Installieren des Pakets [azure-iothub-service-client](https://pypi.org/project/azure-iothub-service-client/) mit dem Befehl `pip install azure-iothub-service-client`
+
+* Installieren des Pakets [azure-iothub-device-client](https://pypi.org/project/azure-iothub-device-client/) mit dem Befehl       `pip install azure-iothub-device-client`
+
+* Installieren des Pakets [azure-iothub-service-client](https://pypi.org/project/azure-iothub-service-client/) mit dem Befehl       `pip install azure-iothub-service-client`
+
 * Bei Verwendung des Windows-Betriebssystems wird das [Visual C++ Redistributable Package](https://www.microsoft.com/download/confirmation.aspx?id=48145) verwendet, um die Verwendung nativer DLLs aus Python zu ermöglichen.
+
 * Ein aktives Azure-Konto. (Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.)
 
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
@@ -49,16 +55,19 @@ Für dieses Tutorial benötigen Sie Folgendes:
 [!INCLUDE [iot-hub-include-find-connection-string](../../includes/iot-hub-include-find-connection-string.md)]
 
 ## <a name="create-a-simulated-device-app"></a>Erstellen einer simulierten Geräte-App
+
 In diesem Abschnitt werden Sie:
 
 * Erstellen einer Python-Konsolen-App, die auf eine von der Cloud aufgerufene direkte Methode antwortet
+
 * Simulieren eines Geräteneustarts
+
 * Verwenden der gemeldeten Eigenschaften, um Gerätezwillingsabfragen zu ermöglichen, die Geräte und den Zeitpunkt ihres letzten Neustarts ermitteln
 
 1. Erstellen Sie mit einem Text-Editor die Datei **dmpatterns_getstarted_device.py**.
 
-1. Fügen Sie am Anfang der Datei `import`dmpatterns_getstarted_device.py**die folgenden**-Anweisungen ein.
-   
+2. Fügen Sie am Anfang der Datei `import`dmpatterns_getstarted_device.py**die folgenden**-Anweisungen ein.
+
     ```python
     import random
     import time, datetime
@@ -68,8 +77,8 @@ In diesem Abschnitt werden Sie:
     from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult, IoTHubError, DeviceMethodReturnValue
     ```
 
-1. Fügen Sie Variablen (einschließlich der Variablen **VERBINDUNGSZEICHENFOLGE**) und die Client-Initialisierung hinzu.  Ersetzen Sie die Verbindungszeichenfolge durch Ihre Geräteverbindungszeichenfolge.  
-   
+3. Fügen Sie Variablen (einschließlich der Variablen **VERBINDUNGSZEICHENFOLGE**) und die Client-Initialisierung hinzu.  Ersetzen Sie die Verbindungszeichenfolge durch Ihre Geräteverbindungszeichenfolge.  
+
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
     PROTOCOL = IoTHubTransportProvider.MQTT
@@ -85,44 +94,43 @@ In diesem Abschnitt werden Sie:
     METHOD_CALLBACKS = 0
     ```
 
-1. Fügen Sie die folgenden Funktionsrückrufe hinzu, um die direkte Methode auf dem Gerät zu implementieren.
-   
+4. Fügen Sie die folgenden Funktionsrückrufe hinzu, um die direkte Methode auf dem Gerät zu implementieren.
+
     ```python
     def send_reported_state_callback(status_code, user_context):
         global SEND_REPORTED_STATE_CALLBACKS
-    
+
         print ( "Device twins updated." )
 
     def device_method_callback(method_name, payload, user_context):
         global METHOD_CALLBACKS
-    
+
         if method_name == "rebootDevice":
             print ( "Rebooting device..." )
-        
             time.sleep(20)
-        
+
             print ( "Device rebooted." )
-        
+
             current_time = str(datetime.datetime.now())
             reported_state = "{\"rebootTime\":\"" + current_time + "\"}"
             CLIENT.send_reported_state(reported_state, len(reported_state), send_reported_state_callback, SEND_REPORTED_STATE_CONTEXT)
-        
+
             print ( "Updating device twins: rebootTime" )
-            
+
         device_method_return_value = DeviceMethodReturnValue()
         device_method_return_value.response = "{ \"Response\": \"This is the response from the device\" }"
         device_method_return_value.status = 200
-    
+
         return device_method_return_value
     ```
 
-1. Starten Sie den Listener der direkten Methode, und warten Sie.
-   
+5. Starten Sie den Listener der direkten Methode, und warten Sie.
+
     ```python
     def iothub_client_init():
         if CLIENT.protocol == IoTHubTransportProvider.MQTT or client.protocol == IoTHubTransportProvider.MQTT_WS:
             CLIENT.set_device_method_callback(device_method_callback, METHOD_CONTEXT)
-        
+
     def iothub_client_sample_run():
         try:
             iothub_client_init()
@@ -149,19 +157,20 @@ In diesem Abschnitt werden Sie:
         iothub_client_sample_run()
     ```
 
-1. Speichern und schließen Sie die Datei **dmpatterns_getstarted_device.py**.
+6. Speichern und schließen Sie die Datei **dmpatterns_getstarted_device.py**.
 
 > [!NOTE]
 > Der Einfachheit halber wird in diesem Tutorial keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie Wiederholungsrichtlinien implementieren (z.B. exponentielles Backoff), wie es im Artikel [Behandeln vorübergehender Fehler](/azure/architecture/best-practices/transient-faults) vorgeschlagen wird.
 
 
 ## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Auslösen eines Remoteneustarts auf dem Gerät über eine direkte Methode
+
 In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, die einen Remote-Neustart auf einem Gerät über eine direkte Methode auslöst. Die App verwendet Gerätezwillingsabfragen, um den Zeitpunkt des letzten Neustarts bei diesem Gerät zu ermitteln.
 
 1. Erstellen Sie mit einem Text-Editor die Datei **dmpatterns_getstarted_service.py**.
 
-1. Fügen Sie am Anfang der Datei **dmpatterns_getstarted_service.py** die folgenden `import`-Anweisungen ein.
-   
+2. Fügen Sie am Anfang der Datei **dmpatterns_getstarted_service.py** die folgenden `import`-Anweisungen ein.
+
     ```python
     import sys, time
     import iothub_service_client
@@ -169,8 +178,8 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, die einen Remote-Neu
     from iothub_service_client import IoTHubDeviceMethod, IoTHubError, IoTHubDeviceTwin
     ```
 
-1. Fügen Sie die folgenden Variablendeklarationen hinzu. Ersetzen Sie nur die Platzhalterwerte für _IoTHubConnectionString_ und _deviceId_.
-   
+3. Fügen Sie die folgenden Variablendeklarationen hinzu. Ersetzen Sie nur die Platzhalterwerte für _IoTHubConnectionString_ und _deviceId_.
+
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
     DEVICE_ID = "{deviceId}"
@@ -181,14 +190,14 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, die einen Remote-Neu
     WAIT_COUNT = 10
     ```
 
-1. Fügen Sie die folgende Funktion zum Aufrufen der Gerätemethode zum Neustart des Zielgeräts hinzu, fragen Sie dann die Gerätezwillinge ab, und rufen Sie den Zeitpunkt des letzten Neustarts ab.
-   
+4. Fügen Sie die folgende Funktion zum Aufrufen der Gerätemethode zum Neustart des Zielgeräts hinzu, fragen Sie dann die Gerätezwillinge ab, und rufen Sie den Zeitpunkt des letzten Neustarts ab.
+
     ```python
     def iothub_devicemethod_sample_run():
         try:
             iothub_twin_method = IoTHubDeviceTwin(CONNECTION_STRING)
             iothub_device_method = IoTHubDeviceMethod(CONNECTION_STRING)
-        
+
             print ( "" )
             print ( "Invoking device to reboot..." )
 
@@ -199,7 +208,7 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, die einen Remote-Neu
 
             print ( "" )
             print ( response.payload )
-        
+
             while True:
                 print ( "" )
                 print ( "IoTHubClient waiting for commands, press Ctrl-C to exit" )
@@ -207,7 +216,7 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, die einen Remote-Neu
                 status_counter = 0
                 while status_counter <= WAIT_COUNT:
                     twin_info = iothub_twin_method.get_twin(DEVICE_ID)
-                
+
                     if twin_info.find("rebootTime") != -1:
                         print ( "Last reboot time: " + twin_info[twin_info.find("rebootTime")+11:twin_info.find("rebootTime")+37])
                     else:
@@ -232,24 +241,24 @@ In diesem Abschnitt erstellen Sie eine Python-Konsolen-App, die einen Remote-Neu
         iothub_devicemethod_sample_run()
     ```
 
-1. Speichern und schließen Sie die Datei **dmpatterns_getstarted_service.py**.
-
+5. Speichern und schließen Sie die Datei **dmpatterns_getstarted_service.py**.
 
 ## <a name="run-the-apps"></a>Ausführen der Apps
+
 Sie können die Apps nun ausführen.
 
 1. Führen Sie an der Eingabeaufforderung den folgenden Befehl aus, um mit dem Lauschen auf die direkte Methode zum Neustarten zu beginnen.
-   
+
     ```
     python dmpatterns_getstarted_device.py
     ```
 
-1. Führen Sie an einer anderen Eingabeaufforderung den folgenden Befehl aus, um den Remoteneustart und die Abfrage an den Gerätezwilling zum Suchen des letzten Neustartzeitpunkts auszulösen.
-   
+2. Führen Sie an einer anderen Eingabeaufforderung den folgenden Befehl aus, um den Remoteneustart und die Abfrage an den Gerätezwilling zum Suchen des letzten Neustartzeitpunkts auszulösen.
+
     ```
     python dmpatterns_getstarted_service.py
     ```
 
-1. Die Reaktion des Geräts auf die direkte Methode wird in der Konsole angezeigt.
+3. Die Reaktion des Geräts auf die direkte Methode wird in der Konsole angezeigt.
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]

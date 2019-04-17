@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: d9c5d731120f939cf7fb28c718cc4159a3702e44
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e4c5607089efb247620766fb311b97cae3772770
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518778"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279872"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migrieren von Enterprise Agreement-APIs zu APIs der Microsoft-Kundenvereinbarung
 
@@ -71,7 +71,7 @@ Die folgenden APIs stehen für MCA-Abrechnungskonten zur Verfügung:
 | Abrechnungskonten<sup>2</sup> | Microsoft.Billing/billingAccounts |
 | Abrechnungsprofile<sup>2</sup> | Microsoft.Billing/billingAccounts/billingProfiles |
 | Rechnungsabschnitte<sup>2</sup> | Microsoft.Billing/billingAccounts/invoiceSections |
-| Rechnungen | Microsoft.Billing/billingAccounts/billingProfiles/invoices |
+| Invoices | Microsoft.Billing/billingAccounts/billingProfiles/invoices |
 | Abrechnungsabonnements | {scope}/billingSubscriptions |
 
 <sup>2</sup> APIs geben Objektlisten zurück. Hierbei handelt es sich um Bereiche, in denen Cost Management-Funktionen im Azure-Portal und in APIs ausgeführt werden. Weitere Informationen zu Cost Management-Bereichen finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
@@ -87,10 +87,10 @@ Wenn Sie vorhandene EA-APIs verwenden, müssen Sie diese für die Unterstützung
 
 Die [API zum Abrufen der Saldozusammenfassung](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) bietet Ihnen eine monatliche Übersicht über:
 
-- Salden
+- Bilanzen
 - Neue Einkäufe
 - Gebühren für den Azure Marketplace-Dienst
-- Anpassungen
+- Adjustments
 - Gebühren für Dienstüberschreitung
 
 Alle Nutzungs-APIs werden durch native Azure-APIs ersetzt, die Azure AD zur Authentifizierung und Autorisierung verwenden. Weitere Informationen zum Aufrufen von Azure-REST-APIs finden Sie unter [Erste Schritte mit der REST-API](/rest/api/azure/#create-the-request).
@@ -126,7 +126,7 @@ Zum Abrufen von Nutzungsdetails mit der Nutzungsdetails-API gehen Sie folgenderm
 
 Die Nutzungsdetails-API ist wie alle Cost Management-APIs in mehreren Bereichen verfügbar. Verwenden Sie für berechnete Kosten, die Sie normalerweise auf Registrierungsebene erhalten würden, den Bereich des Abrechnungsprofils.  Weitere Informationen zu Cost Management-Bereichen finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
 
-| Typ | ID-Format |
+| Type | ID-Format |
 | --- | --- |
 | Abrechnungskonto | `/Microsoft.Billing/billingAccounts/{billingAccountId}` |
 | Abrechnungsprofil | `/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}` |
@@ -170,7 +170,7 @@ Neuer Antworttext:
 
 Der Eigenschaftenname, der das Array von Nutzungsdatensätzen enthält, hat sich von „data“ in _values_ geändert. Jeder Datensatz wies bisher eine flache Liste mit detaillierten Eigenschaften auf. Nun sind jedoch alle Details in einer geschachtelten Eigenschaft mit dem Namen _properties_ enthalten, mit Ausnahme von Tags. Die neue Struktur ist mit anderen Azure-APIs konsistent. Einige Eigenschaftennamen haben sich geändert. Die folgende Tabelle zeigt die sich jeweils entsprechenden Eigenschaften.
 
-| Alte Eigenschaft | Neue Eigenschaft | Hinweise |
+| Alte Eigenschaft | Neue Eigenschaft | Notizen |
 | --- | --- | --- |
 | AccountId | – | Der Abonnementersteller wird nicht nachverfolgt. Verwenden Sie invoiceSectionId (entspricht departmentID). |
 | AccountNameAccountOwnerId und AccountOwnerEmail | – | Der Abonnementersteller wird nicht nachverfolgt. Verwenden Sie invoiceSectionName (entspricht departmentName). |
@@ -181,27 +181,27 @@ Der Eigenschaftenname, der das Array von Nutzungsdatensätzen enthält, hat sich
 | ConsumedServiceId | Keine | &nbsp; |
 | CostCenter | costCenter | &nbsp; |
 | Date und usageStartDate | date | &nbsp;  |
-| Day | Keine | Analysiert den Tag ab Datum. |
+| Day (Tag) | Keine | Analysiert den Tag ab Datum. |
 | DepartmentId | invoiceSectionId | Genaue Werte abweichend. |
-| DepartmentName | invoiceSectionName | Genaue Zeichenfolgenwerte können abweichen. Konfigurieren Sie Rechnungsabschnitte ggf. entsprechend den Abteilungen. |
+| Abteilungsname | invoiceSectionName | Genaue Zeichenfolgenwerte können abweichen. Konfigurieren Sie Rechnungsabschnitte ggf. entsprechend den Abteilungen. |
 | ExtendedCost und Cost | costInBillingCurrency | &nbsp;  |
-| InstanceId | resourceId | &nbsp;  |
+| InstanceId | Ressourcen-ID | &nbsp;  |
 | Is Recurring Charge | Keine | &nbsp;  |
-| Location | location | &nbsp;  |
+| Standort | location | &nbsp;  |
 | MeterCategory | meterCategory | Genaue Zeichenfolgenwerte können abweichen. |
 | MeterId | meterId | Genaue Zeichenfolgenwerte abweichend. |
 | MeterName | meterName | Genaue Zeichenfolgenwerte können abweichen. |
 | MeterRegion | meterRegion | Genaue Zeichenfolgenwerte können abweichen. |
 | MeterSubCategory | meterSubCategory | Genaue Zeichenfolgenwerte können abweichen. |
-| Month | Keine | Analysiert den Monat ab Datum. |
-| Offer Name | Keine | Verwenden Sie publisherName und productOrderName. |
+| Month (Monat) | Keine | Analysiert den Monat ab Datum. |
+| Angebotsname | Keine | Verwenden Sie publisherName und productOrderName. |
 | OfferId | Keine | &nbsp;  |
 | Order Number | Keine | &nbsp;  |
 | PartNumber | Keine | Verwenden Sie meterId und productOrderName zur eindeutigen Identifizierung von Preisen. |
 | Plan Name | productOrderName | &nbsp;  |
-| Product | Product |   |
+| Produkt | Produkt |   |
 | ProductId | productId | Genaue Zeichenfolgenwerte abweichend. |
-| Publisher Name | publisherName | &nbsp;  |
+| Name des Herausgebers | publisherName | &nbsp;  |
 | ResourceGroup | resourceGroupName | &nbsp;  |
 | ResourceGuid | meterId | Genaue Zeichenfolgenwerte abweichend. |
 | ResourceLocation | resourceLocation | &nbsp;  |
@@ -219,7 +219,7 @@ Der Eigenschaftenname, der das Array von Nutzungsdatensätzen enthält, hat sich
 | Tags | tags | Die tags-Eigenschaft gilt für das Stammobjekt und nicht für die geschachtelte properties-Eigenschaft. |
 | UnitOfMeasure | unitOfMeasure | Genaue Zeichenfolgenwerte abweichend. |
 | usageEndDate | date | &nbsp;  |
-| Year | Keine | Analysiert das Jahr ab Datum. |
+| Jahr | Keine | Analysiert das Jahr ab Datum. |
 | (neu) | billingCurrency | Die für die Gebühr verwendete Währung. |
 | (neu) | billingProfileId | Eindeutige ID für das Abrechnungsprofil (entspricht der Registrierung). |
 | (neu) | billingProfileName | Name des Abrechnungsprofils (entspricht der Registrierung). |
@@ -367,9 +367,9 @@ Der Client kann auch einen GET-Aufruf für `Azure-AsyncOperation` starten. Der E
 
 In der folgenden Tabelle sind Felder in der älteren API zum Abrufen des Preisblatts für Unternehmen aufgelistet. Die Tabelle enthält auch die entsprechenden Felder im neuen Preisblatt für Microsoft-Kundenvereinbarungen:
 
-| Alte Eigenschaft | Neue Eigenschaft | Hinweise |
+| Alte Eigenschaft | Neue Eigenschaft | Notizen |
 | --- | --- | --- |
-| billingPeriodId  | _Nicht zutreffend_ | Nicht zutreffend. Bei Microsoft-Kundenvereinbarungen wurde das Konzept der billingPeriodId durch die Rechnung und das zugehörige Preisblatt ersetzt. |
+| billingPeriodId  | _Nicht zutreffend_ | Nicht zutreffend Bei Microsoft-Kundenvereinbarungen wurde das Konzept der billingPeriodId durch die Rechnung und das zugehörige Preisblatt ersetzt. |
 | meterId  | meterId | &nbsp;  |
 | unitOfMeasure  | unitOfMeasure | Genaue Zeichenfolgenwerte können abweichen. |
 | includedQuantity  | includedQuantity | Gilt nicht für Dienste in Microsoft-Kundenvereinbarungen. |
@@ -460,14 +460,14 @@ Die folgenden Felder sind entweder nicht in Preisblatt-APIs für Microsoft-Kunde
 |Nicht mehr verwendetes Feld| BESCHREIBUNG|
 |---|---|
 | billingPeriodId | Nicht zutreffend. Entspricht InvoiceId für MCA. |
-| offerId | Nicht zutreffend. Entspricht productOrderName in MCA. |
-| meterCategory  | Nicht zutreffend. Entspricht Service in MCA. |
-| unit | Nicht zutreffend. Kann aus unitOfMeasure analysiert werden. |
+| offerId | Nicht zutreffend Entspricht productOrderName in MCA. |
+| meterCategory  | Nicht zutreffend Entspricht Service in MCA. |
+| unit | Nicht zutreffend Kann aus unitOfMeasure analysiert werden. |
 | currencyCode | Entspricht pricingCurrency in MCA. |
 | meterLocation | Entspricht meterRegion in MCA. |
 | partNumber partnumber | Nicht zutreffend, da die Teilenummer in MCA-Rechnungen nicht aufgeführt wird. Verwenden Sie anstelle von partnumber die Kombination aus meterId und productOrderName zur eindeutigen Identifizierung von Preisen. |
-| totalIncludedQuantity | Nicht zutreffend. |
-| pretaxStandardRate  | Nicht zutreffend. |
+| totalIncludedQuantity | Nicht zutreffend |
+| pretaxStandardRate  | Nicht zutreffend |
 
 ## <a name="reservation-instance-charge-api-replaced"></a>API für reservierte Instanzgebühren ersetzt
 
@@ -481,7 +481,7 @@ Zum Abrufen von Reservierungserwerbtransaktionen mit der Transaktionen-API gehen
 
 ## <a name="recommendations-apis-replaced"></a>APIs für Empfehlungen ersetzt
 
-APIs für Empfehlungen reservierter Instanzeinkäufe stellen die Nutzung virtueller Computer innerhalb der letzten 7, 30 oder 60 Tage bereit. APIs geben auch Empfehlungen für den Reservierungserwerb. Hierzu gehören Folgende:
+APIs für Empfehlungen reservierter Instanzeinkäufe stellen die Nutzung virtueller Computer innerhalb der letzten 7, 30 oder 60 Tage bereit. APIs geben auch Empfehlungen für den Reservierungserwerb. Hierzu gehören folgende Berechtigungen:
 
 - [API für Empfehlungen zu freigegebenen reservierten Instanzen](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-shared-reserved-instance-recommendations)
 - [API für Empfehlungen zu einzelnen reservierten Instanzen](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations)
@@ -498,7 +498,7 @@ Zum Abrufen von Reservierungsempfehlungen mit der API für Reservierungsempfehlu
 
 Sie können die Reservierungsnutzung in einer Registrierung mit der API für die Nutzung reservierter Instanzen abrufen. Wenn mehr als eine reservierte Instanz in einer Registrierung vorhanden ist, können Sie auch die Nutzung aller Käufe reservierter Instanzen mit dieser API abrufen.
 
-Hierzu gehört Folgendes:
+Hierzu gehören folgende Berechtigungen:
 
 - [Nutzungsdetails zu reservierten Instanzen](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for--reserved-instance-usage-details)
 - [Nutzungszusammenfassung zu reservierten Instanzen](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage)

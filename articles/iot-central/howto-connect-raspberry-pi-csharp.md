@@ -3,17 +3,17 @@ title: Herstellen der Verbindung eines Raspberry Pi-Geräts mit Ihrer Azure IoT 
 description: In diesem Artikel erfahren Sie, wie Sie als Geräteentwickler ein Raspberry Pi-Gerät mit Ihrer Azure IoT Central-Anwendung über C# verbinden.
 author: viv-liu
 ms.author: viviali
-ms.date: 10/31/2018
+ms.date: 04/05/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 6330e941f3308920ff4d5404663824633484146a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 341b4d23664900cdf1f9a209df663ad4e6e96fe4
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108357"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426357"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Verbinden eines Raspberry Pi-Geräts mit Ihrer Azure IoT Central-Anwendung (C#)
 
@@ -25,37 +25,34 @@ In diesem Artikel wird beschrieben, wie Sie als Geräteentwickler ein Raspberry 
 
 Um die in diesem Artikel aufgeführten Schritte auszuführen, benötigen Sie die folgenden Komponenten:
 
-* [.NET Core 2](https://www.microsoft.com/net) muss auf dem Entwicklungscomputer installiert sein. Außerdem benötigen Sie einen geeigneten Code-Editor wie z.B. [Visual Studio Code](https://code.visualstudio.com/).
 * Eine Azure IoT Central-Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde. Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Anwendung](quick-deploy-iot-central.md).
-* Sie verfügen über ein Raspberry Pi-Gerät, auf dem das Raspbian-Betriebssystem ausgeführt wird.
-
+* Sie verfügen über ein Raspberry Pi-Gerät, auf dem das Raspbian-Betriebssystem ausgeführt wird. Das Raspberry Pi-Gerät muss eine Verbindung mit dem Internet herstellen können. Weitere Informationen finden Sie unter [Einrichten Ihres Raspberry Pi-Geräts](https://projects.raspberrypi.org/en/projects/raspberry-pi-setting-up/3).
 
 ## <a name="sample-devkits-application"></a>Anwendungsvorlage **Beispiel-DevKits**
 
-Eine Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde, enthält eine Gerätevorlage **Raspberry Pi** mit den folgenden Eigenschaften: 
+Eine Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde, enthält eine Gerätevorlage **Raspberry Pi** mit den folgenden Eigenschaften:
 
 - Telemetriedaten, darunter die folgenden vom Gerät gesammelten Messungen:
-    - Luftfeuchtigkeit
-    - Temperatur
-    - Pressure
-    - Magnetometer (X, Y, Z)
-    - Beschleunigungsmesser (X, Y, Z)
-    - Gyroskop (X, Y, Z)
+  - Luftfeuchtigkeit
+  - Temperatur
+  - Pressure
+  - Magnetometer (X, Y, Z)
+  - Beschleunigungsmesser (X, Y, Z)
+  - Gyroskop (X, Y, Z)
 - Einstellungen
-    - Spannung
-    - Aktuell
-    - Lüfterdrehzahl
-    - IR-Umschalter
+  - Spannung
+  - Aktuell
+  - Lüfterdrehzahl
+  - IR-Umschalter
 - Eigenschaften
-    - Geräteeigenschaft „Nummer“
-    - Cloudeigenschaft „Standort“
+  - Geräteeigenschaft „Nummer“
+  - Cloudeigenschaft „Standort“
 
-Vollständige Informationen zur Konfiguration der Gerätevorlage finden Sie unter [Details zur Raspberry Pi-Gerätevorlage](howto-connect-raspberry-pi-csharp.md#raspberry-pi-device-template-details).
-
+Vollständige Informationen zur Konfiguration der Gerätevorlage finden Sie unter [Details zur Raspberry Pi-Gerätevorlage](#raspberry-pi-device-template-details).
 
 ## <a name="add-a-real-device"></a>Hinzufügen eines echten Geräts
 
-Fügen Sie in Ihrer Azure IoT Central-Anwendung ein echtes Gerät aus der Gerätevorlage **Raspberry Pi** hinzu, und notieren Sie sich die Verbindungszeichenfolge des Geräts. Weitere Informationen finden Sie unter [Hinzufügen eines echten Geräts zu Ihrer Azure IoT Central-Anwendung](tutorial-add-device.md).
+Fügen Sie in Ihrer Azure IoT Central-Anwendung ein echtes Gerät aus der Gerätevorlage **Raspberry Pi** hinzu. Notieren Sie sich die Geräteverbindungsdetails (**Bereichs-ID**, **Geräte-ID** und **Primärschlüssel**). Weitere Informationen finden Sie unter [Hinzufügen eines echten Geräts zu Ihrer Azure IoT Central-Anwendung](tutorial-add-device.md).
 
 ### <a name="create-your-net-application"></a>Erstellen Ihrer .NET-Anwendung
 
@@ -86,7 +83,7 @@ Für die folgenden Schritte können Sie Visual Studio Code verwenden. Weitere In
         <RuntimeIdentifiers>win-arm;linux-arm</RuntimeIdentifiers>
       </PropertyGroup>
       <ItemGroup>
-        <PackageReference Include="Microsoft.Azure.Devices.Client" Version="1.5.2" />
+        <PackageReference Include="Microsoft.Azure.Devices.Client" Version="1.19.0" />
       </ItemGroup>
     </Project>
     ```
@@ -272,12 +269,9 @@ Für die folgenden Schritte können Sie Visual Studio Code verwenden. Weitere In
 
 ## <a name="run-your-net-application"></a>Ausführen Ihrer .NET-Anwendung
 
-Fügen Sie dem Code Ihre gerätespezifische Verbindungszeichenfolge zur Authentifizierung bei Azure IoT Central hinzu. Sie haben diese Verbindungszeichenfolge notiert, als Sie Ihr echtes Gerät zu Ihrer Azure IoT Central-Anwendung hinzugefügt haben.
+Fügen Sie dem Code Ihre gerätespezifische Verbindungszeichenfolge zur Authentifizierung bei Azure IoT Central hinzu. Führen Sie diese Anleitungen zum [Generieren der Verbindungszeichenfolge für das Gerät](howto-generate-connection-string.md) aus, und verwenden Sie dazu die zuvor notierten Werte für **Bereichs-ID**, **Geräte-ID** und **Primärschlüssel**.
 
-  > [!NOTE]
-   > Azure IoT Central verwendet nun Azure IoT Hub Device Provisioning Service für alle Geräteverbindungen. Führen Sie die Schritte zum [Abrufen der Verbindungszeichenfolge des Geräts](concepts-connectivity.md#get-a-connection-string) aus, und fahren Sie dann mit dem Tutorial fort.
-
-1. Ersetzen Sie `{your device connection string}` in der Datei **Program.cs** durch die zuvor notierte Verbindungszeichenfolge.
+1. Ersetzen Sie `{your device connection string}` in der Datei **Program.cs** durch die generierte Verbindungszeichenfolge.
 
 1. Führen Sie den folgenden Befehl in Ihrer Befehlszeilenumgebung aus:
 
@@ -286,7 +280,7 @@ Fügen Sie dem Code Ihre gerätespezifische Verbindungszeichenfolge zur Authenti
    dotnet publish -r linux-arm
    ```
 
-1. Kopieren Sie den Ordner `pisample\bin\Debug\netcoreapp2.0\linux-arm\publish` auf Ihr Raspberry Pi-Gerät. Die Dateien können Sie z.B. mit dem Befehl **scp** kopieren:
+1. Kopieren Sie den Ordner `pisample\bin\Debug\netcoreapp2.1\linux-arm\publish` auf Ihr Raspberry Pi-Gerät. Die Dateien können Sie z.B. mit dem Befehl **scp** kopieren:
 
     ```cmd/sh
     scp -r publish pi@192.168.0.40:publish
@@ -320,7 +314,6 @@ Fügen Sie dem Code Ihre gerätespezifische Verbindungszeichenfolge zur Authenti
      Der folgende Screenshot zeigt das Raspberry Pi-Gerät, das gerade die Einstellungsänderung empfängt:
 
      ![Raspberry Pi empfängt Einstellungsänderung](./media/howto-connect-raspberry-pi-csharp/device_switch.png)
-
 
 ## <a name="raspberry-pi-device-template-details"></a>Details zur Raspberry Pi-Gerätevorlage
 
@@ -368,6 +361,6 @@ Einstellungen zum Ein-/Ausschalten
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun erfahren haben, wie ein Raspberry Pi-Gerät mit Ihrer Azure IoT Central-Anwendung verbunden wird, werden als Nächstes die folgenden Schritte empfohlen:
+Nachdem Sie erfahren haben, wie ein Raspberry Pi-Gerät mit Ihrer Azure IoT Central-Anwendung verbunden wird, werden als Nächstes die folgenden Schritte empfohlen:
 
 * [Verbinden einer generischen Node.js-Clientanwendung mit Azure IoT Central](howto-connect-nodejs.md)

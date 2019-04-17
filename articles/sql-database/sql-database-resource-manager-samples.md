@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: sample
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 58513b77315badc52acbc0c5116343461b44fa08
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 1e2f55d334d432544ffc185e5c68dfe4325b2b09
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232961"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59356824"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Azure Resource Manager-Vorlagen für Azure SQL-Datenbank
 
@@ -33,7 +33,7 @@ Die folgende Tabelle enthält Links zu Azure Resource Manager-Vorlagen für Azur
 | [Logischer Server](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server) | Diese Azure Resource Manager-Vorlage erstellt einen logischen Server für Azure SQL-Datenbank. |
 | [Pool für elastische Datenbanken](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create) | Mit dieser Vorlage können Sie einen neuen Pool für elastische Datenbanken mit neuer zugeordneter SQL Server-Instanz und neuen zuzuweisenden SQL-Datenbanken bereitstellen. |
 | [Failovergruppen](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-with-failover-group) | Diese Vorlage erstellt zwei logische Azure SQL-Server, eine SQL-Datenbank und eine Failovergruppe.|
-| [Advanced Threat Protection für Azure SQL-Datenbank](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-advanced-threat-protection-server-policy) | Mit dieser Vorlage können Sie einen logischen Azure SQL-Server mit aktivierter Advanced Threat Protection und einer optionalen Azure SQL-Datenbank bereitstellen. SQL Advanced Threat Protection ist ein einheitliches Paket für erweiterte SQL-Sicherheitsfunktionen.|
+| [Erweiterter Schutz vor Bedrohungen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-advanced-threat-protection-server-policy) | Mit dieser Vorlage können Sie einen logischen Azure SQL-Server mit aktivierter Advanced Threat Protection und einer optionalen Azure SQL-Datenbank bereitstellen. SQL Advanced Threat Protection ist ein einheitliches Paket für erweiterte SQL-Sicherheitsfunktionen.|
 | [Bedrohungserkennung](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-threat-detection-db-policy-multiple-databases) | Mit dieser Vorlage können Sie einen logischen Azure SQL-Server und eine Gruppe von Azure SQL-Datenbanken mit aktivierter Bedrohungserkennung und einer E-Mail-Adresse für Warnungen für die einzelnen Datenbanken bereitstellen. Die Bedrohungserkennung ist Teil des ATP-Angebots (Advanced Threat Protection) und bietet eine Sicherheitsebene, die auf potenzielle Bedrohungen für SQL-Server und -Datenbanken reagiert.|
 | [Überwachung mit Azure Blob Storage](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage) | Mit dieser Vorlage können Sie einen logischen Azure SQL-Server mit aktivierter Überwachung bereitstellen, um Überwachungsprotokolle in einen Blobspeicher zu schreiben. Die Überwachung für Azure SQL-Datenbank verfolgt Datenbankereignisse nach und schreibt sie in ein Überwachungsprotokoll, das in Ihrem Azure-Speicherkonto, in Ihrem OMS-Arbeitsbereich oder in Event Hubs platziert werden kann.|
 | [Überwachung mit Azure Event Hub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub) | Mit dieser Vorlage können Sie einen Azure SQL-Server mit aktivierter Überwachung bereitstellen, um Überwachungsprotokolle in einen vorhandenen Event Hub zu schreiben. Um Überwachungsereignisse an einen Event Hub zu senden, müssen Sie die Überwachungseinstellungen mit `Enabled` `State` konfigurieren und `IsAzureMonitorTargetEnabled` auf `true` festlegen. Konfigurieren Sie außerdem die Diagnoseeinstellungen mit der Kategorie `SQLSecurityAuditEvents` für die `master`-Datenbank (zur Überwachung auf Serverebene). Die Überwachung für Azure SQL-Datenbank und SQL Data Warehouse verfolgt Datenbankereignisse nach und schreibt sie in ein Überwachungsprotokoll, das in Ihrem Azure-Speicherkonto, in Ihrem OMS-Arbeitsbereich oder in Event Hubs platziert werden kann.|
@@ -53,4 +53,3 @@ Die folgende Tabelle enthält Links zu Azure Resource Manager-Vorlagen für verw
 | [Netzwerkumgebung für die verwaltete Instanz](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) | Diese Bereitstellung erstellt ein konfiguriertes virtuelles Azure-Netzwerk mit zwei Subnetzen: eins für Ihre verwalteten Instanzen und eins für andere Ressourcen (virtuelle Computer, App Service-Umgebungen und Ähnliches). Diese Vorlage erstellt eine ordnungsgemäß konfigurierte Netzwerkumgebung, in der Sie verwaltete Instanzen bereitstellen können. |
 | [Verwaltete Instanz mit P2S-Verbindung](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-point-to-site-vpn) | Diese Bereitstellung erstellt ein virtuelles Azure-Netzwerk mit zwei Subnetzen: `ManagedInstance` und `GatewaySubnet`. Die verwaltete Instanz wird im Subnetz „ManagedInstance“ bereitgestellt. Das Gateway für virtuelle Netzwerke wird im Subnetz `GatewaySubnet` erstellt und für eine Point-to-Site-VPN-Verbindung konfiguriert. |
 | [Verwaltete Instanz mit virtuellem Computer](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-jumpbox) | Diese Bereitstellung erstellt ein virtuelles Azure-Netzwerk mit zwei Subnetzen: `ManagedInstance` und `Management`. Die verwaltete Instanz wird im Subnetz `ManagedInstance` bereitgestellt. Der virtuelle Computer mit der neuesten Version von SQL Server Management Studio (SSMS) wird im Subnetz `Management` bereitgestellt. |
-

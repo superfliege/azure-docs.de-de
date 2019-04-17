@@ -12,20 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 04/09/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 03/27/2019
-ms.openlocfilehash: 00eb4fc3eb0b2e7120208e6318bf35fc2cc6f188
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: cd07ff5beddf65c9788c9ba94802ba2d37172923
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649406"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360702"
 ---
 # <a name="azure-stack-1901-update"></a>Azure Stack-Update 1901
 
-*Anwendungsbereich: Integrierte Azure Stack-Systeme*
+*Gilt für: Integrierte Azure Stack-Systeme*
 
 Dieser Artikel beschreibt den Inhalt des Updatepakets 1901. Das Update enthält Verbesserungen, Fehlerbehebungen und neue Funktionen für diese Version von Azure Stack. In diesem Artikel werden auch bekannte Probleme in diesem Release beschrieben, und er enthält einen Link zum Herunterladen des Updates. Die bekannten Probleme sind in Probleme unterteilt, die sich direkt auf den Updateprozess beziehen, und in Probleme mit dem Build (nach der Installation).
 
@@ -102,7 +102,7 @@ Dieses Update enthält die folgenden neuen Funktionen und Verbesserungen für Az
          `Get-AzsInfrastructureVolume` ist veraltet. Verwenden Sie das neue Cmdlet `Get-AzsVolume`.  
          `Get-AzsStorageSystem` ist veraltet.  Verwenden Sie das neue Cmdlet `Get-AzsStorageSubSystem`.  
          `Get-AzsStoragePool` ist veraltet. Das `StorageSubSystem`-Objekt enthält die Kapazitätseigenschaft.  
-   * **Azs.Compute.Admin Module**  
+   * **Azs.Compute.Admin-Modul**  
          Fehlerbehebung: `Add-AzsPlatformImage`, `Get-AzsPlatformImage`: `ConvertTo-PlatformImageObject` wird nur im Erfolgspfad aufgerufen.  
          Fehlerbehebung: `Add-AzsVmExtension`, `Get-AzsVmExtension`: „ConvertTo-VmExtensionObject“ wird nur im Erfolgspfad aufgerufen.  
    * **Azs.Storage.Admin Module**  
@@ -223,7 +223,7 @@ Weitere Informationen zu diesen Sicherheitslücken erhalten Sie durch Klicken au
 
 ## <a name="known-issues-with-the-update-process"></a>Bekannte Probleme mit dem Updateprozess
 
-- Wenn während der Ausführung von [Test-AzureStack](azure-stack-diagnostic-test.md) entweder der Test **AzsInfraRoleSummary** oder der Test **AzsPortalApiSummary** fehlschlägt, werden Sie aufgefordert, **Test-AzureStack** mit dem Parameter `-Repair` auszuführen.  Wenn Sie diesen Befehl ausführen, schlägt er mit folgender Fehlermeldung fehl: `Unexpected exception getting Azure Stack health status. Cannot bind argument to parameter 'TestResult' because it is null.`
+- Wenn während der Ausführung von [Test-AzureStack](azure-stack-diagnostic-test.md) entweder der Test **AzsInfraRoleSummary** oder der Test **AzsPortalApiSummary** fehlschlägt, werden Sie aufgefordert, **Test-AzureStack** mit dem Parameter `-Repair` auszuführen.  Wenn Sie diesen Befehl ausführen, schlägt er mit folgender Fehlermeldung fehl:  `Unexpected exception getting Azure Stack health status. Cannot bind argument to parameter 'TestResult' because it is null.`
 
 - Wenn Sie [Test-AzureStack](azure-stack-diagnostic-test.md) ausführen, wird eine Warnmeldung des Baseboard-Verwaltungscontrollers (BMC) angezeigt. Sie können diese Warnung problemlos ignorieren.
 
@@ -315,6 +315,10 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
  
 <!-- #### Identity -->
 <!-- #### Marketplace -->
+
+### <a name="syslog"></a>syslog
+
+- Die Syslog-Konfiguration wird bei einem Updatezyklus, nicht beibehalten, sodass der Syslog-Client seine Konfiguration verliert und die Syslog-Nachrichten nicht mehr weitergeleitet werden. Dieses Problem betrifft alle Versionen von Azure Stack ab der allgemeinen Verfügbarkeit des Syslog-Clients (1809). Um dieses Problem zu umgehen, konfigurieren Sie den Syslog-Client nach Anwenden eines Azure Stack-Updates neu.
 
 ## <a name="download-the-update"></a>Herunterladen des Updates
 

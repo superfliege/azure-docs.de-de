@@ -10,12 +10,12 @@ ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 23120e45a1070f46ae4e1927a29bdab4c990d96f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 51a812762659bcc67762b82e9c120772065aab53
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860710"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549680"
 ---
 # <a name="schema-format"></a>Schemaformat
 
@@ -43,14 +43,14 @@ Es folgt eine Liste der unterstützten Attributdatentypen:
 
 | Type | BESCHREIBUNG | Vorgänge | Beispiel |
 |------|-------------|------------|---------|
-| Zeichenfolge | Zeichenfolge (1 bis 1024 Zeichen) | equals, starts_with | „Hallo Welt“ |
-| Int32 | Ganze 32-Bit-Zahl mit Vorzeichen | equals, starts_with, is_between | 2016 |
-| Int64 | Ganze 64-Bit-Zahl mit Vorzeichen | equals, starts_with, is_between | 9876543210 |
-| Double | Gleitkommawert mit doppelter Genauigkeit | equals, starts_with, is_between | 1.602e-19 |
-| Datum | Datum (1400-01-01 bis 9999-12-31) | equals, is_between | „2016-03-14“ |
-| Guid | GUID (Globally Unique Identifier) | equals | „602DD052-CC47-4B23-A16A-26B52D30C05B“ |
-| Blob | Intern komprimierte nicht indizierte Daten | *Keine* | „Unterstützen Sie jede Person und Organisation weltweit darin, ihre Ziele zu erreichen.“ |
-| Zusammengesetzt | Komposition von mehreren untergeordneten Attributen| *N/V* | { "Name":"harry shum", "Affiliation":"microsoft" } |
+| `String` | Zeichenfolge (1 bis 1024 Zeichen) | equals, starts_with | „Hallo Welt“ |
+| `Int32` | Ganze 32-Bit-Zahl mit Vorzeichen | equals, starts_with, is_between | 2016 |
+| `Int64` | Ganze 64-Bit-Zahl mit Vorzeichen | equals, starts_with, is_between | 9876543210 |
+| `Double` | Gleitkommawert mit doppelter Genauigkeit | equals, starts_with, is_between | 1.602e-19 |
+| `Date` | Datum (1400-01-01 bis 9999-12-31) | equals, is_between | „2016-03-14“ |
+| `Guid` | GUID (Globally Unique Identifier) | equals | „602DD052-CC47-4B23-A16A-26B52D30C05B“ |
+| `Blob` | Intern komprimierte nicht indizierte Daten | *Keine* | „Unterstützen Sie jede Person und Organisation weltweit darin, ihre Ziele zu erreichen.“ |
+| `Composite` | Komposition von mehreren untergeordneten Attributen| *N/V* | { "Name":"harry shum", "Affiliation":"microsoft" } |
 
 Mit Zeichenfolgenattributen werden Zeichenfolgenwerte dargestellt, die als Teil der Benutzerabfrage angezeigt werden können.  Diese unterstützen *equals*-Vorgänge sowie *starts_with*-Vorgänge mit genauer Übereinstimmung bei Szenarien zur Vervollständigung von Abfragen. „micros“ wird beispielsweise in „microsoft“ vervollständigt.  Unterstützung für Übereinstimmung ohne Berücksichtigung von Groß-/Kleinschreibung und Fuzzyübereinstimmung bei der Fehlerbehandlung wird in zukünftigen Releases bereitgestellt.
 

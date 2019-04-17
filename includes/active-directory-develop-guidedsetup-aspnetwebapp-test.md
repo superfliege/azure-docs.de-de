@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 9b88a6f3f7e17cfc549b30d1f0d80d4cdf1c3e2d
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 8795c9ab0a4dbb76327d0ead48ed33fb0cff9e86
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58919230"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528538"
 ---
 ## <a name="test-your-code"></a>Testen Ihres Codes
 
@@ -27,9 +27,9 @@ Um Ihre Anwendung in Visual Studio zu testen, drücken Sie **F5**, um das Projek
 
 Wenn Sie Ihren Test ausführen möchten, verwenden Sie für die Anmeldung ein Microsoft Azure Active Directory-Konto (Azure AD) (Geschäfts-, Schul- oder Unikonto) oder ein persönliches Microsoft-Konto (<span>live.</span>com oder <span>outlook.</span>com).
 
-![Anmelden mit Microsoft](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
+![Bei Microsoft anmelden](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin.png)
 <br/><br/>
-![Anmelden bei Ihrem Azure-Konto](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
+![Mit einem Microsoft-Konto anmelden](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
 #### <a name="view-application-results"></a>Anzeigen von Anwendungsergebnissen
 
@@ -45,10 +45,10 @@ Nachdem Sie die Controlleransicht aufgerufen haben, sollten Sie eine Tabelle mit
 
 |Eigenschaft |Wert |BESCHREIBUNG |
 |---|---|---|
-|**NAME** |Vollständiger Name des Benutzers | Vor- und Nachname des Benutzers
-|**Username** |Benutzer<span>@domain.com</span> | Der zur Identifizierung des Benutzers verwendete Benutzername
-|**Antragsteller** |Antragsteller |Eine Zeichenfolge, die den Benutzer im Internet eindeutig identifiziert|
-|**Mandanten-ID** |Guid | Eine **GUID**, die die Azure AD-Organisation des Benutzers eindeutig identifiziert|
+|**Name** |Vollständiger Name des Benutzers | Vor- und Nachname des Benutzers
+|**Benutzername** |Benutzer<span>@domain.com</span> | Der zur Identifizierung des Benutzers verwendete Benutzername
+|**Betreff** |Antragsteller |Eine Zeichenfolge, die den Benutzer im Internet eindeutig identifiziert|
+|**Tenant ID** |Guid | Eine **GUID**, die die Azure AD-Organisation des Benutzers eindeutig identifiziert|
 
 Darüber hinaus sollten Sie eine Tabelle aller Ansprüche sehen, die in der Authentifizierungsanforderung enthalten sind. Weitere Informationen finden Sie in der [Liste der im Azure AD-ID-Token enthaltenen Ansprüche](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
 
@@ -96,5 +96,3 @@ Sie können den Anmeldezugriff auf bestimmte Benutzerkonten, die in einer Azure 
 #### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>Option 3: Überprüfen von Ausstellern mithilfe einer benutzerdefinierten Methode
 
 Sie können eine benutzerdefinierte Methode implementieren, um Aussteller mit dem **IssuerValidator**-Parameter zu überprüfen. Weitere Informationen zur Verwendung dieses Parameters finden Sie unter [TokenValidationParameters-Klasse](/previous-versions/visualstudio/dn464192(v=vs.114)).
-
-[!INCLUDE [Help and support](./active-directory-develop-help-support-include.md)]

@@ -1,6 +1,6 @@
 ---
-title: Azure AD v2.0 „Im Auftrag von“-OAuth2.0-Ablauf | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie HTTP-Nachrichten zum Implementieren der Dienst-zu-Dienst-Authentifizierung über den Im-Auftrag-von-Ablauf von OAuth2.0 verwenden.
+title: Microsoft Identity Platform und der On-Behalf-Of-Fluss von OAuth2.0 | Azure
+description: In diesem Artikel wird beschrieben, wie Sie HTTP-Nachrichten zum Implementieren der Dienst-zu-Dienst-Authentifizierung über den Im-Auftrag-von-Fluss von OAuth 2.0 verwenden.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -13,30 +13,28 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 04/05/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d933eaf99258a3f3322a915b418b52fad6e459f
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: f4de33bb02a008d6b394055c64119ac2a4fbc4d9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576929"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276047"
 ---
-# <a name="azure-active-directory-v20-and-oauth-20-on-behalf-of-flow"></a>Azure Active Directory v2.0- und Im-Auftrag-von-Ablauf von OAuth2.0
+# <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity Platform und der On-Behalf-Of-Fluss von OAuth2.0
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-Der On-Behalf-Of-Fluss von OAuth 2.0 (OBO) wird verwendet, wenn eine Anwendung eine Dienst- oder Web-API aufruft, die wiederum einen andere Dienst- oder Web-API aufrufen muss. Die Idee dabei ist, die delegierte Benutzeridentität und Berechtigungen über die Anforderungskette weiterzugeben. Damit der Dienst auf der mittleren Ebene Authentifizierungsanforderungen an den Downstream-Dienst stellen kann, muss für den Benutzer ein Zugriffstoken aus Azure Active Directory (Azure AD) abgesichert werden.
+Der On-Behalf-Of-Fluss von OAuth 2.0 (OBO) wird verwendet, wenn eine Anwendung eine Dienst- oder Web-API aufruft, die wiederum einen andere Dienst- oder Web-API aufrufen muss. Die Idee dabei ist, die delegierte Benutzeridentität und Berechtigungen über die Anforderungskette weiterzugeben. Damit der Dienst auf der mittleren Ebene Authentifizierungsanforderungen an den Downstreamdienst stellen kann, muss für den Benutzer ein Zugriffstoken der Microsoft Identity Platform gesichert werden.
 
 > [!NOTE]
-> Der v2.0-Endpunkt unterstützt nicht alle Szenarien und Funktionen von Azure AD. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um herauszufinden, ob Sie den v2.0-Endpunkt verwenden sollten. Insbesondere bekannte Clientanwendungen werden für Apps mit Microsoft-Konto (MSA) und Azure AD-Benutzergruppen nicht unterstützt. Daher funktioniert ein einheitliches Einwilligungsmuster für OBO nicht für Clients, die sich sowohl in persönlichen als auch in Geschäfts-, Schul- oder Unikonten anmelden. Um mehr darüber zu erfahren, wie Sie mit diesen Schritt des Ablaufs verarbeiten, lesen Sie [Erhalten der Zustimmung für die Anwendung der mittleren Ebene](#gaining-consent-for-the-middle-tier-application).
-
-
-> [!IMPORTANT]
-> Ab Mai 2018 können einige implizit vom Fluss abgeleitete `id_token` nicht für den OBO-Fluss verwendet werden. Single-Page-Anwendungen (SPAs) müssen ein **Zugriffstoken** an einen vertraulichen Client der mittleren Ebene übergeben, um stattdessen OBO-Flüsse auszuführen. Weitere Informationen dazu, welche Clients OBO-Aufrufe ausführen können, finden Sie unter [Einschränkungen](#client-limitations).
+>
+> - Der Microsoft Identity Platform-Endpunkt unterstützt nicht alle Szenarien und Features. Informieren Sie sich über die [Einschränkungen von Microsoft Identity Platform](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den Microsoft Identity Platform-Endpunkt verwenden sollten. Insbesondere bekannte Clientanwendungen werden für Apps mit Microsoft-Konto (MSA) und Azure AD-Benutzergruppen nicht unterstützt. Daher funktioniert ein einheitliches Einwilligungsmuster für OBO nicht für Clients, die sich sowohl in persönlichen als auch in Geschäfts-, Schul- oder Unikonten anmelden. Um mehr darüber zu erfahren, wie Sie mit diesen Schritt des Ablaufs verarbeiten, lesen Sie [Erhalten der Zustimmung für die Anwendung der mittleren Ebene](#gaining-consent-for-the-middle-tier-application).
+> - Ab Mai 2018 können einige implizit vom Fluss abgeleitete `id_token` nicht für den OBO-Fluss verwendet werden. Single-Page-Anwendungen (SPAs) müssen ein **Zugriffstoken** an einen vertraulichen Client der mittleren Ebene übergeben, um stattdessen OBO-Flüsse auszuführen. Weitere Informationen dazu, welche Clients OBO-Aufrufe ausführen können, finden Sie unter [Einschränkungen](#client-limitations).
 
 ## <a name="protocol-diagram"></a>Protokolldiagramm
 
@@ -44,16 +42,16 @@ Es wird davon ausgegangen, dass der Benutzer in einer Anwendung authentifiziert 
 
 Die folgenden Schritte entsprechen dem OBO-Fluss und werden anhand des folgenden Diagramms erläutert.
 
-![OAuth2.0 – On-Behalf-Of-Fluss](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
+![OAuth2.0 – On-Behalf-Of-Fluss](./media/v2-oauth2-on-behalf-of-flow/protocols-oauth-on-behalf-of-flow.png)
 
 1. Die Clientanwendung stellt mit Token A eine Anforderung an die API A (mit dem Anspruch `aud` von API A).
-1. Die API A wird beim Azure AD-Tokenausstellungs-Endpunkt authentifiziert und fordert ein Token für den Zugriff auf die API B an.
-1. Der Azure AD-Tokenausstellungs-Endpunkt überprüft mit Token A die Anmeldeinformationen von API A und stellt das Zugriffstoken für API B aus (Token B).
+1. API A wird beim Tokenausstellungs-Endpunkt der Microsoft Identity Platform authentifiziert und fordert ein Token für den Zugriff auf API B an.
+1. Der Tokenausstellungs-Endpunkt der Microsoft Identity Platform überprüft mit Token A die Anmeldeinformationen von API A und stellt das Zugriffstoken für API B (Token B) aus.
 1. Token B wird im Autorisierungsheader der Anforderung an die API B festgelegt.
 1. API B gibt die Daten aus der gesicherten Ressource zurück.
 
 > [!NOTE]
-> In diesem Szenario interagiert der Dienst auf der mittleren Ebene nicht mit dem Benutzer, um dessen Zustimmung für den Zugriff auf die nachgelagerte API zu erlangen. Aus diesem Grund muss die Zugriffsgewährung auf die nachgelagerte API zuvor als Teil des Genehmigungsschrittes während der Authentifizierung als Option angezeigt werden. Um zu erfahren, wie Sie dies für Ihre App einrichten, lesen Sie [Erhalten der Zustimmung für die Anwendung der mittleren Ebene](#gaining-consent-for-the-middle-tier-application). 
+> In diesem Szenario interagiert der Dienst auf der mittleren Ebene nicht mit dem Benutzer, um dessen Zustimmung für den Zugriff auf die nachgelagerte API zu erlangen. Aus diesem Grund muss die Zugriffsgewährung auf die nachgelagerte API zuvor als Teil des Genehmigungsschrittes während der Authentifizierung als Option angezeigt werden. Um zu erfahren, wie Sie dies für Ihre App einrichten, lesen Sie [Erhalten der Zustimmung für die Anwendung der mittleren Ebene](#gaining-consent-for-the-middle-tier-application).
 
 ## <a name="service-to-service-access-token-request"></a>Dienst-zu-Dienst-Zugriffstokenanforderung
 
@@ -139,7 +137,7 @@ Eine erfolgreiche Antwort enthält eine JSON OAuth 2.0-Antwort mit den folgenden
 
 | Parameter | BESCHREIBUNG |
 | --- | --- |
-| `token_type` | Gibt den Wert des Tokentyps an. Der einzige Typ, der von Azure AD unterstützt wird, ist `Bearer`. Weitere Informationen zu Bearertoken finden Sie unter [OAuth 2.0-Autorisierungsframework: Verwendung von Bearertoken (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
+| `token_type` | Gibt den Wert des Tokentyps an. Die Microsoft Identity Platform unterstützt nur den Typ `Bearer`. Weitere Informationen zu Bearertoken finden Sie unter [OAuth 2.0-Autorisierungsframework: Verwendung von Bearertoken (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | `scope` | Der durch das Token gewährte Zugriffsbereich. |
 | `expires_in` | Gibt an, wie lange das Zugriffstoken in Sekunden gültig ist. |
 | `access_token` | Das angeforderte Zugriffstoken. Der aufrufende Dienst kann dieses Token verwenden, um die Authentifizierung für den empfangenden Dienst durchzuführen. |
@@ -161,7 +159,7 @@ Das folgende Beispiel zeigt eine erfolgreiche Antwort auf eine Anforderung eines
 ```
 
 > [!NOTE]
-> Das obige Zugriffstoken ist ein Token mit v1.0-Formatierung. Dies liegt daran, dass das Token basierend auf der Ressource bereitgestellt wird, auf die zugegriffen wird. Microsoft Graph fordert v1.0-Token an. Azure AD erzeugt daher v1.0-Zugriffstoken, wenn ein Client Token für Microsoft Graph anfordert. Nur Anwendungen sollten Zugriffstoken betrachten. Clients müssen diese nicht überprüfen. 
+> Das obige Zugriffstoken ist ein Token mit v1.0-Formatierung. Dies liegt daran, dass das Token basierend auf der Ressource bereitgestellt wird, auf die zugegriffen wird. Microsoft Graph fordert v1.0-Token an. Die Microsoft Identity Platform erzeugt daher v1.0-Zugriffstoken, wenn ein Client Token für Microsoft Graph anfordert. Nur Anwendungen sollten Zugriffstoken betrachten. Clients müssen diese nicht überprüfen.
 
 ### <a name="error-response-example"></a>Beispiel für eine fehlerhafte Antwort
 
@@ -199,9 +197,9 @@ Abhängig von der Benutzergruppe für Ihre Anwendung können Sie verschiedene St
 
 #### <a name="default-and-combined-consent"></a>/.default und kombinierten Einwilligung
 
-Für Anwendungen, die nur Geschäfts-, Schul- oder Unikonten anmelden müssen, reicht der traditionelle Ansatz „Bekannte Clientanwendung“ aus. Die Anwendung der mittleren Ebene fügt den Client in ihrem Manifest der Liste der bekannten Clientanwendungen hinzu, und dann kann der Client einen kombinierten Einwilligungsfluss für sich selbst und die Anwendung der mittleren Ebene auslösen. Auf dem v2.0-Endpunkt geschieht dies mit Hilfe des [`/.default`-Bereichs](v2-permissions-and-consent.md#the-default-scope). Wenn Sie einen Einwilligungssbildschirm mit bekannten Clientanwendungen und `/.default` auslösen, zeigt der Bildschirm sowohl Berechtigungen für den Client an die API der mittleren Ebene an als auch die von der API der mittleren Ebene benötigten Berechtigungen an. Der Benutzer gibt die Einwilligung für beide Anwendungen, und dann funktioniert der OBO-Fluss. 
+Für Anwendungen, die nur Geschäfts-, Schul- oder Unikonten anmelden müssen, reicht der traditionelle Ansatz „Bekannte Clientanwendung“ aus. Die Anwendung der mittleren Ebene fügt den Client in ihrem Manifest der Liste der bekannten Clientanwendungen hinzu, und dann kann der Client einen kombinierten Einwilligungsfluss für sich selbst und die Anwendung der mittleren Ebene auslösen. Auf dem v2.0-Endpunkt geschieht dies mit Hilfe des [`/.default`-Bereichs](v2-permissions-and-consent.md#the-default-scope). Wenn Sie einen Einwilligungssbildschirm mit bekannten Clientanwendungen und `/.default` auslösen, zeigt der Bildschirm sowohl Berechtigungen für den Client an die API der mittleren Ebene an als auch die von der API der mittleren Ebene benötigten Berechtigungen an. Der Benutzer gibt die Einwilligung für beide Anwendungen, und dann funktioniert der OBO-Fluss.
 
-Derzeit unterstützt das persönliche Microsoft-Kontosystem keine kombinierte Einwilligung, sodass dieser Ansatz für Apps, die sich gezielt in persönlichen Konten anmelden möchten, nicht funktioniert. Persönliche Microsoft-Konten, die als Gastkonten bei einem Mandanten verwendet werden, werden über das Azure AD-System verwaltet und können eine kombinierten Einwilligung durchlaufen. 
+Derzeit unterstützt das persönliche Microsoft-Kontosystem keine kombinierte Einwilligung, sodass dieser Ansatz für Apps, die sich gezielt in persönlichen Konten anmelden möchten, nicht funktioniert. Persönliche Microsoft-Konten, die als Gastkonten bei einem Mandanten verwendet werden, werden über das Azure AD-System verwaltet und können eine kombinierten Einwilligung durchlaufen.
 
 #### <a name="pre-authorized-applications"></a>Vorautorisierte Anwendungen
 
@@ -209,24 +207,24 @@ Ein Feature des Anwendungsportals heißt „vorautorisierte Anwendungen“. Auf 
 
 #### <a name="admin-consent"></a>Administratorzustimmung
 
-Ein Mandantenadministrator kann garantieren, dass Anwendungen die Berechtigung haben, ihre erforderlichen APIs aufzurufen, indem er die Einwilligung des Administrators für die Anwendung der mittleren Ebene erteilt. Dazu kann der Administrator die Anwendung der mittleren Ebene in seinem Mandanten suchen, die erforderliche Berechtigungsseite öffnen und die Berechtigung für die App erteilen. Weitere Informationen zur Einwilligung des Administrators finden Sie in der [Dokumentation zu Einwilligungen und Berechtigungen](v2-permissions-and-consent.md). 
+Ein Mandantenadministrator kann garantieren, dass Anwendungen die Berechtigung haben, ihre erforderlichen APIs aufzurufen, indem er die Einwilligung des Administrators für die Anwendung der mittleren Ebene erteilt. Dazu kann der Administrator die Anwendung der mittleren Ebene in seinem Mandanten suchen, die erforderliche Berechtigungsseite öffnen und die Berechtigung für die App erteilen. Weitere Informationen zur Einwilligung des Administrators finden Sie in der [Dokumentation zu Einwilligungen und Berechtigungen](v2-permissions-and-consent.md).
 
 ### <a name="consent-for-azure-ad--microsoft-account-applications"></a>Einwilligung für Azure AD- und Microsoft-Kontoanwendungen
 
-Aufgrund von Einschränkungen im Berechtigungsmodell für persönliche Konten und dem Fehlen eines leitenden Mandanten unterscheiden sich die Einwilligungsanforderungen für persönliche Konten etwas von denen von Azure AD. Es gibt weder einen Mandanten, der eine mandantenweite Einwilligung erteilt, noch die Möglichkeit, eine kombinierte Einwilligung zu erteilen. So bieten sich andere Strategien an – beachten Sie, dass diese für Anwendungen funktionieren, die nur Azure AD-Konten unterstützen müssen. 
+Aufgrund von Einschränkungen im Berechtigungsmodell für persönliche Konten und dem Fehlen eines leitenden Mandanten unterscheiden sich die Einwilligungsanforderungen für persönliche Konten etwas von denen von Azure AD. Es gibt weder einen Mandanten, der eine mandantenweite Einwilligung erteilt, noch die Möglichkeit, eine kombinierte Einwilligung zu erteilen. So bieten sich andere Strategien an – beachten Sie, dass diese für Anwendungen funktionieren, die nur Azure AD-Konten unterstützen müssen.
 
 #### <a name="use-of-a-single-application"></a>Verwenden einer einzelnen Anwendung
 
-In einigen Szenarios kann es vorkommen, dass Sie nur eine einzige Paarung eines Clients der mittleren Ebene und eines Front-End-Clients haben. In diesem Szenario ist es möglicherweise einfacher, eine einzige Anwendung zu erstellen, wodurch die Notwendigkeit einer Anwendung auf mittlerer Ebene ganz entfällt. Um zwischen der Front-End- und der Web-API zu authentifizieren, können Sie Cookies, ein "id_token" oder ein Zugriffstoken für die Anwendung selbst angefordert. Fordern Sie dann die Einwilligung dieser einzelnen Anwendung zur Back-End-Ressource an. 
+In einigen Szenarios kann es vorkommen, dass Sie nur eine einzige Paarung eines Clients der mittleren Ebene und eines Front-End-Clients haben. In diesem Szenario ist es möglicherweise einfacher, eine einzige Anwendung zu erstellen, wodurch die Notwendigkeit einer Anwendung auf mittlerer Ebene ganz entfällt. Um zwischen der Front-End- und der Web-API zu authentifizieren, können Sie Cookies, ein "id_token" oder ein Zugriffstoken für die Anwendung selbst angefordert. Fordern Sie dann die Einwilligung dieser einzelnen Anwendung zur Back-End-Ressource an.
 
 ## <a name="client-limitations"></a>Clienteinschränkungen
 
-Wenn ein Client den impliziten Fluss verwendet, um ein „id_token“ abzurufen, und dieser Client auch über Platzhalter in einer Antwort-URL verfügt, kann das „id_token“ nicht für einen OBO-Fluss verwendet werden.  Allerdings kann ein vertraulicher Client weiterhin Zugriffstoken einlösen, die über den Fluss für die implizite Gewährung erworben wurden, selbst wenn der initiierende Client eine Antwort-URL mit Platzhaltern registriert hat. 
+Wenn ein Client den impliziten Fluss verwendet, um ein „id_token“ abzurufen, und dieser Client auch über Platzhalter in einer Antwort-URL verfügt, kann das „id_token“ nicht für einen OBO-Fluss verwendet werden.  Allerdings kann ein vertraulicher Client weiterhin Zugriffstoken einlösen, die über den Fluss für die implizite Gewährung erworben wurden, selbst wenn der initiierende Client eine Antwort-URL mit Platzhaltern registriert hat.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr über das OAuth 2.0-Protokoll und eine andere Möglichkeit, Dienst-zu-Dienst-Authentifizierungen mit Client-Anmeldedaten auszuführen.
 
-* [Azure Active Directory v2.0 und der OAuth 2.0-Clientanmeldeinformations-Flow](v2-oauth2-client-creds-grant-flow.md)
-* [OAuth 2.0-Codefluss in Azure AD v2.0](v2-oauth2-auth-code-flow.md)
-* [Verwenden des `/.default`-Bereichs](v2-permissions-and-consent.md#the-default-scope) 
+* [Gewähren von OAuth 2.0-Clientanmeldeinformationen auf der Microsoft Identity Platform](v2-oauth2-client-creds-grant-flow.md)
+* [OAuth 2.0-Codeflow auf der Microsoft Identity Platform](v2-oauth2-auth-code-flow.md)
+* [Verwenden des `/.default`-Bereichs](v2-permissions-and-consent.md#the-default-scope)

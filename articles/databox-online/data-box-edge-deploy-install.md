@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: a1357e92b868f85556fc4d665eb475abd095fece
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 46192d32e70e371325abeafd4da26fa29e491b13
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400007"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278478"
 ---
 # <a name="tutorial-install-azure-data-box-edge"></a>Tutorial: Installieren von Azure Data Box Edge
 
@@ -90,7 +90,9 @@ Das Gerät muss in einem standardmäßigen 19-Zoll-Rack installiert werden. Gehe
 
 - Machen Sie sich anhand des Booklets mit Informationen zu Sicherheit, Umwelt und rechtlichen Aspekten zunächst mit den Sicherheitsanweisungen vertraut. Dieses Booklet liegt dem Gerät bei.
 - Installieren Sie die Schienen möglichst weit unten im Rack am dafür vorgesehenen Ort.
-- Für die Schienenmontage mit Werkzeug benötigen Sie acht Schrauben: #10-32, #12-24, #M5 oder #M6. Der Durchmesser des Schraubenkopfs muss weniger als 10 mm (0,4") betragen.
+- Für die Schienenmontage mit Werkzeug benötigen Sie Folgendes:
+    -  Acht Schrauben (#10-32, #12-24, #M5 oder #M6). Der Durchmesser des Schraubenkopfs muss weniger als 10 mm (0,4") betragen.
+    -  Einen Schlitzschraubendreher.
 
 ### <a name="identify-the-rail-kit-contents"></a>Überprüfen des Inhalts des Schienensatzes
 
@@ -102,6 +104,9 @@ Für die Installation der Schienenbaugruppe benötigen Sie folgende Komponenten:
 
 ### <a name="install-and-remove-tool-less-rails-square-hole-or-round-hole-racks"></a>Installieren und Entfernen der Schienen ohne Werkzeug (Racks mit Vierkant- oder Rundlöchern)
 
+> [!TIP]
+> Bei dieser Option können die Schienen unter Verwendung der gewindelosen Vierkant- oder Rundlöcher des Racks ohne Werkzeug installiert und entfernt werden.
+
 1. Positionieren Sie das mit **FRONT** beschriftete Ende der linken und rechten Schiene an der Innenseite, und richten Sie es jeweils an den vorderseitigen Löchern der vertikalen Rackflansche aus.
 2. Richten Sie die Endstücke jeweils an den unteren und oberen Löchern der gewünschten Position im Rack aus.
 3. Schieben Sie das hintere Ende der Schiene in Richtung des vertikalen Rackflanschs, bis es einrastet. Wiederholen Sie die gleiche Prozedur, um das vordere Endstück am vertikalen Rackflansch anzubringen.
@@ -110,6 +115,9 @@ Für die Installation der Schienenbaugruppe benötigen Sie folgende Komponenten:
 ![Installieren und Entfernen der Schienen ohne Werkzeug](./media/data-box-edge-deploy-install/installing-removing-tool-less-rails.png)
 
 ### <a name="install-and-remove-tooled-rails-threaded-hole-racks"></a>Installieren und Entfernen der Schienen mit Werkzeug (Racks mit Gewindelöchern)
+
+> [!TIP]
+> Bei dieser Option wird ein Schlitzschraubendreher_benötigt_, um die Schienen unter Verwendung der runden Gewindelöcher des Racks zu installieren und zu entfernen.
 
 1. Entfernen Sie die Stifte an der vorderen und hinteren Befestigungsklammer mithilfe eines Schlitzschraubendrehers.
 2. Ziehen und drehen Sie die Schienenarretierungen, um sie von den Befestigungsklammern zu entfernen.
@@ -152,7 +160,7 @@ HINWEIS:  Bei Systemen ohne Schnappmechanismus muss das System wie in Schritt 3
 
 1. Suchen Sie an der Innenseite der beiden Rackflansche nach den äußeren CMA-Klammern.
 2. Fassen Sie die Kabel lose zu seinem Bündel zusammen, und achten Sie dabei darauf, dass sie sich außer Reichweite der Systembefestigungen auf der linken und rechten Seite befinden.
-3. Führen Sie die Klettbänder durch die Schlitze für die Werkzeugmontage (an der Außenseite der CMA-Klammern auf beiden Seiten des Systems), um die Kabelbündel zu befestigen.
+3. Führen Sie die Klettbänder durch die Schlitze an der Außenseite der CMA-Klammern auf beiden Seiten des Systems, um die Kabelbündel zu befestigen.
 
 
 ![Verlegen der Kabel](./media/data-box-edge-deploy-install/routing-cables.png)
@@ -213,6 +221,6 @@ In diesem Tutorial wurden unter anderem folgende Data Box Edge-Themen behandelt:
 Im nächsten Tutorial erfahren Sie, wie Sie Ihr Gerät verbinden, einrichten und aktivieren.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Verbinden, Einrichten und Aktivieren von Azure Data Box Edge (Vorschauversion)](./data-box-edge-deploy-connect-setup-activate.md)
+> [Tutorial: Verbinden, Einrichten und Aktivieren von Azure Data Box Edge](./data-box-edge-deploy-connect-setup-activate.md)
 
 

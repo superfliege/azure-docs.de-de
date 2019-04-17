@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/21/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 4d9ec05b2495ec54657405c00e7dd42ee10911b1
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: e6ebd4ff465565be49d98162cd9ca67c194593a4
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58350911"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59563369"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>Beispiel: Aufrufen der Maschinelles Sehen-API
 
@@ -167,13 +167,13 @@ Hier sehen Sie ein Beispiel:
 
 Feld | Type | Inhalt
 ------|------|------|
-Tags  | object | Objekt der obersten Ebene für das Array von Tags
-tags[].Name | Zeichenfolge    | Schlüsselwort von Tags-Klassifizierung
-tags[].Score    | number    | Zuverlässigkeitsbewertung, zwischen 0 und 1.
-Beschreibung  | object   | Objekt der obersten Ebene für eine Beschreibung.
-description.tags[] |    Zeichenfolge  | Liste der Tags.  Wenn nicht sicher ist, dass eine Beschriftung erstellt werden kann, sind diese Tags ggf. die einzigen Informationen, die dem Aufrufenden zur Verfügung stehen.
-description.captions[].text | Zeichenfolge    | Ein Ausdruck, der das Bild beschreibt.
-description.captions[].confidence   | number    | Zuverlässigkeit für den Ausdruck.
+Tags  | `object` | Objekt der obersten Ebene für das Array von Tags
+tags[].Name | `string`  | Schlüsselwort von Tags-Klassifizierung
+tags[].Score    | `number`  | Zuverlässigkeitsbewertung, zwischen 0 und 1.
+Beschreibung  | `object` | Objekt der obersten Ebene für eine Beschreibung.
+description.tags[] |    `string`    | Liste der Tags.  Wenn nicht sicher ist, dass eine Beschriftung erstellt werden kann, sind diese Tags ggf. die einzigen Informationen, die dem Aufrufenden zur Verfügung stehen.
+description.captions[].text | `string`  | Ein Ausdruck, der das Bild beschreibt.
+description.captions[].confidence   | `number`  | Zuverlässigkeit für den Ausdruck.
 
 ## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>Abrufen und Nachvollziehen der JSON-Ausgabe für domänenspezifische Modelle
 
@@ -229,10 +229,10 @@ Das Feld „categories“ ist eine Liste einer oder mehrerer der [86 Kategorien]
 
 Feld   | Type  | Inhalt
 ------|------|------|
-categories | object | Objekt der obersten Ebene
-categories[].name    | Zeichenfolge   | Name aus der 86-Kategorie-Taxonomie
-categories[].score  | number    | Zuverlässigkeitsbewertung, zwischen 0 und 1
-categories[].detail  | object?      | Optionales Detailobjekt
+categories | `object`   | Objekt der obersten Ebene
+categories[].name    | `string` | Name aus der 86-Kategorie-Taxonomie
+categories[].score  | `number`  | Zuverlässigkeitsbewertung, zwischen 0 und 1
+categories[].detail  | `object?`      | Optionales Detailobjekt
 
 Beachten Sie, dass, wenn mehrere Kategorien übereinstimmen (z.B. gibt die 86-Kategorie-Klassifizierung eine Bewertung für „people_“ und „people_young“ zurück, wenn „model=celebrities“), die Details an die allgemeinste Übereinstimmung angehängt werden („people_“ in diesem Beispiel.).
 

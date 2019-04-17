@@ -2,18 +2,18 @@
 title: Includedatei
 description: Includedatei
 services: networking
-author: jimdial
+author: anavinahar
 ms.service: networking
 ms.topic: include
-ms.date: 02/07/2019
-ms.author: jdial
+ms.date: 04/10/2019
+ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: c6c57390e0a2fba0c79d3198df0f5577eb813f88
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ff6e08929d5ede86ba0632e7cfb38d81d21ca7ec
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553573"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59502681"
 ---
 <a name="virtual-networking-limits-classic"></a>Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über das klassische Bereitstellungsmodell verwaltet werden (pro Abonnement). Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
 
@@ -44,7 +44,7 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | --- | --- |
 | Virtuelle Netzwerke |1.000 |
 | Subnetze pro virtuellem Netzwerk |3,000 |
-| VNET-Peerings pro virtuellem Netzwerk |100 |
+| VNET-Peerings pro virtuellem Netzwerk |500 |
 | DNS-Server pro virtuellem Netzwerk |20 |
 | Private IP-Adressen pro virtuellem Netzwerk |65.536 |
 | Private IP-Adressen pro Netzwerkschnittstelle |256 |
@@ -68,7 +68,7 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Ressource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
 | Öffentliche IP-Adressen – dynamisch | 1.000 für Basic. |Wenden Sie sich an den Support. |
-| Öffentliche IP-Adressen – statisch | 200 für Basic. |Wenden Sie sich an den Support. |
+| Öffentliche IP-Adressen – statisch | 1.000 für Basic. |Wenden Sie sich an den Support. |
 | Öffentliche IP-Adressen – statisch | 200 für Standard.|Wenden Sie sich an den Support. |
 | Größe des Präfix für öffentliche IP-Adressen (Vorschau) | /28 | /28 |
 

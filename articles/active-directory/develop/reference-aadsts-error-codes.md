@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ff37184cd8789c5408d02a427080db86de00b7d
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 69440fb99439231cdc046ef48bddfa852c17924c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295452"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271797"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Authentifizierungs- und Autorisierungsfehlercodes
 
@@ -58,7 +58,7 @@ Suchen Sie nach Informationen zu den AADSTS-Fehlercodes, die vom Azure Active Di
 | AADSTS50007 | PartnerEncryptionCertificateMissing: Das Partnerverschlüsselungszertifikat wurde für diese App nicht gefunden. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md) bei Microsoft, um dieses Problem zu beheben. |
 | AADSTS50008 | InvalidSamlToken: Die SAML-Assertion fehlt oder wurde im Token falsch konfiguriert. Wenden Sie sich an Ihren Verbundanbieter. |
 | AADSTS50010 | AudienceUriValidationFailed: Fehler bei der Überprüfung des Benutzergruppen-URI für die App, da keine Tokenzielgruppen konfiguriert wurden. |
-| AADSTS50011 | InvalidReplyTo: Die Antwortadresse fehlt, ist falsch konfiguriert oder stimmt nicht mit den für die App konfigurierten Antwortadressen überein. Versuchen Sie es mit der Lösung, die unter [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application) angegeben ist. Falls weiterhin Probleme auftreten, können Sie sich an den Besitzer oder Administrator der App wenden. |
+| AADSTS50011 | InvalidReplyTo: Die Antwortadresse fehlt, ist falsch konfiguriert oder stimmt nicht mit den für die App konfigurierten Antwortadressen überein.  Fügen Sie zur Behebung der Azure Active Directory-Anwendung diese fehlende Antwortadresse hinzu, oder bitten Sie einen Benutzer mit den Berechtigungen zum Verwalten Ihrer Anwendung in Active Directory, dies für Sie zu tun.|
 | AADSTS50012 | AuthenticationFailed: Fehler bei der Authentifizierung aus einem der folgenden Gründe:<ul><li>Der Antragstellername des signierenden Zertifikats ist nicht autorisiert.</li><li>Eine übereinstimmende Richtlinie der vertrauenswürdige Autorität wurde für den autorisierten Antragstellernamen nicht gefunden.</li><li>Die Zertifikatskette ist ungültig.</li><li>Das Signaturzertifikat ist ungültig.</li><li>Die Richtlinie ist auf dem Mandanten nicht konfiguriert.</li><li>Der Fingerabdruck des Signaturzertifikats ist nicht autorisiert.</li><li>Die Clientassertion enthält eine ungültige Signatur.</li></ul> |
 | AADSTS50013 | InvalidAssertion: Die Assertion ist aus verschiedenen Gründen ungültig: Der Aussteller des Tokens stimmt nicht mit der API-Version innerhalb des gültigen Zeitraums überein, ist abgelaufen, ist falsch formatiert, Aktualisierungstoken in der Assertion ist kein primäres Aktualisierungstoken. |
 | AADSTS50014 | GuestUserInPendingState: Die Einlösung des Benutzers steht aus. Das Gastkonto wurde noch nicht vollständig erstellt. |
@@ -153,7 +153,7 @@ Suchen Sie nach Informationen zu den AADSTS-Fehlercodes, die vom Azure Active Di
 | AADSTS70007 | UnsupportedResponseMode: Die App hat beim Anfordern eines Tokens den nicht unterstützten Wert `response_mode` zurückgegeben.  |
 | AADSTS70008 | ExpiredOrRevokedGrant: Das Aktualisierungstoken ist aufgrund von Inaktivität abgelaufen. Das Token wurde auf XXX ausgestellt und war für einen bestimmten Zeitraum inaktiv. |
 | AADSTS70011 | InvalidScope: Der von der App angeforderte Bereich ist ungültig. |
-| AADSTS70012 | MsaServerError: Beim Authentifizieren eines MSA-Benutzers (Consumer) ist ein Serverfehler aufgetreten. Versuchen Sie es erneut. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md) , wenn der Fehler weiterhin auftritt.|
+| AADSTS70012 | MsaServerError: Beim Authentifizieren eines MSA-Benutzers (Consumer) ist ein Serverfehler aufgetreten. Versuchen Sie es erneut. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md), wenn der Fehler weiterhin auftritt. |
 | AADSTS70016 | AuthorizationPending: OAuth 2.0-Geräteflussfehler. Die Autorisierung steht aus. Das Gerät wird den Abruf der Anforderung wiederholen. |
 | AADSTS70018 | BadVerificationCode: Ungültiger Überprüfungscode, weil der Benutzer den falschen Benutzercode für den Gerätecode-Datenfluss eingegeben hat. Die Autorisierung wird nicht genehmigt. |
 | AADSTS70019 | CodeExpired: Der Überprüfungscode ist abgelaufen. Bitten Sie den Benutzer, die Anmeldung erneut durchzuführen. |

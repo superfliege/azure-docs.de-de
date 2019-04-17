@@ -4,20 +4,20 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 1ae6c6ee59b66e6c61714c0ece9f306f1a885096
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 65c89730e7d3d492b91daa8aba50e5606ca700a1
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553504"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59502908"
 ---
 Die folgende Tabelle enthält die Grenzwerte, die für Ressourcen des Azure IoT Hub Device Provisioning-Diensts gelten.
 
 | Ressource | Begrenzung |
 | --- | --- |
 | Maximale Anzahl von Gerätebereitstellungsdiensten pro Azure-Abonnement | 10 |
-| Maximale Anzahl von Registrierungen (Enrollments) | 500.000 |
-| Maximale Anzahl von Registrierungen (Registrations) | 500.000 |
+| Maximale Anzahl von Registrierungen (Enrollments) | 1.000.000 |
+| Maximale Anzahl von Registrierungen (Registrations) | 1.000.000 |
 | Maximale Anzahl von Registrierungsgruppen | 100 |
 | Maximale Anzahl von Zertifizierungsstellen | 25 |
 

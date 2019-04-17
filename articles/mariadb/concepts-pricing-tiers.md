@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: bb6e27f92f60712cce71ba6fca53b40af00ee714
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.date: 04/15/2019
+ms.openlocfilehash: 5eb2ba509983918a55370ae0deafd019e03f53d8
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354449"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617783"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB – Tarife
 
@@ -20,7 +20,7 @@ Sie können eine Azure Database for MariaDB-Serverinstanz basierend auf drei unt
 |    | **Basic** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
 |:---|:----------|:--------------------|:---------------------|
 | Computegeneration | Gen 5 |Gen 5 | Gen 5 |
-| V-Kerne | 1, 2 | 2, 4, 8, 16, 32 |2, 4, 8, 16 |
+| V-Kerne | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Arbeitsspeicher pro V-Kern | 2 GB | 5 GB | 10 GB |
 | Speichergröße | 5 GB bis 1 TB | 5 GB bis 4 TB | 5 GB bis 4 TB |
 | Speichertyp | Azure-Standardspeicher | Azure Storage Premium | Azure Storage Premium |

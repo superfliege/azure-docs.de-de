@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: mlottner
-ms.openlocfilehash: b45d64f56653ad6d0baabef4a63351ef14f24c42
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: 601ee706adedf522890acc3f3996a7d36b349348
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58861954"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577833"
 ---
 # <a name="deploy-an-azure-security-center-for-iot-c-based-security-agent-for-windows"></a>Bereitstellen eines C#-basierten Sicherheits-Agents von Azure Security Center für IoT unter Windows
 
@@ -86,7 +86,7 @@ Weitere Hilfe erhalten Sie bei Bedarf mithilfe des Befehls „Get-Help“ in Pow
 ### <a name="verify-deployment-status"></a>Überprüfen des Bereitstellungsstatus
 
 - Führen Sie Folgendes aus, um den Bereitstellungsstatus des Agents zu überprüfen:<br>
-    ```sc.exe query "ASC IoT Agent" ```
+    ```sc.exe query "ASC IoT Agent"```
 
 ### <a name="uninstall-the-agent"></a>Deinstallieren des Agents
 

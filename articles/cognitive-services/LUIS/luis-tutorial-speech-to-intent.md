@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/07/2018
+ms.date: 04/08/2018
 ms.author: diberry
-ms.openlocfilehash: 6f775ffaf53019cc50bc38c294b4d5f40c8eca90
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9d6173ee25f28aa884513d126c06a8a7c722098d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076750"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273837"
 ---
 # <a name="integrate-speech-service-with-your-language-understanding-app"></a>Integrieren des Speech-Diensts in Ihre Language Understanding-App
 Der [Spracherkennungsdienst](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) ermöglicht Ihnen, mit einer einzigen Anforderung Audio zu empfangen und JSON-Objekte der LUIS-Vorhersage zurückgeben zu lassen. In diesem Artikel laden Sie ein C#-Projekt herunter und verwenden es in Visual Studio, um eine Äußerung in ein Mikrofon zu sprechen und von LUIS Vorhersageinformationen zu empfangen. Das Projekt verwendet das Spracherkennungspaket [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/), das bereits als Referenz enthalten ist. 
@@ -24,7 +24,7 @@ Der [Spracherkennungsdienst](https://docs.microsoft.com/azure/cognitive-services
 Für diesen Artikel benötigen Sie ein kostenloses [LUIS][LUIS]-Websitekonto, um die Anwendung zu importieren.
 
 ## <a name="create-luis-endpoint-key"></a>Erstellen eines LUIS-Endpunktschlüssels
-[Erstellen](luis-how-to-azure-subscription.md) Sie im Azure-Portal einen **Sprachverständnis**-Schlüssel (LUIS). 
+[Erstellen](luis-how-to-azure-subscription.md) Sie im Azure-Portal einen **Cognitive Service**-Schlüssel (LUIS) für Ihre LUIS-App.  
 
 ## <a name="import-human-resources-luis-app"></a>Importieren der LUIS-App „Personalwesen“
 Die Absichten und Äußerungen für diesen Artikel stammen aus der LUIS-App für das Personalwesen, die im GitHub-Repository mit [Azure-Beispielen](https://github.com/Azure-Samples/cognitive-services-language-understanding) verfügbar ist. Laden Sie die Datei [HumanResources.json](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources.json) herunter, speichern Sie sie mit der Erweiterung `.json`, und [importieren](luis-how-to-start-new-app.md#import-new-app) Sie sie in LUIS. 
@@ -66,7 +66,7 @@ In diesem Artikel wird das Audiogerät Ihres Computers verwendet. Das kann ein H
 
 Das Speech SDK ist bereits als Referenz enthalten. 
 
-[![Screenshot von Visual Studio 2017 mit dem Paket „Microsoft.CognitiveServices.Speech NuGet“](./media/luis-tutorial-speech-to-intent/nuget-package.png "Screenshot von Visual Studio 2017 mit dem Paket „Microsoft.CognitiveServices.Speech NuGet“")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
+[![SScreenshot von Visual Studio 2017 mit dem Paket „Microsoft.CognitiveServices.Speech NuGet“](./media/luis-tutorial-speech-to-intent/nuget-package.png "Screenshot von Visual Studio 2017 mit dem Paket „Microsoft.CognitiveServices.Speech NuGet“")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
 
 ## <a name="modify-the-c-code"></a>Ändern des C#-Codes
 Öffnen Sie die Datei `Program.cs`, und ändern Sie die folgenden Variablen:
@@ -74,7 +74,7 @@ Das Speech SDK ist bereits als Referenz enthalten.
 |Variablenname|Zweck|
 |--|--|
 |LUIS_assigned_endpoint_key|Entspricht dem zugewiesenen Wert „subscription-key“ der Endpunkt-URL auf der Seite „Veröffentlichen“.|
-|LUIS_endpoint_key_region|Entspricht der ersten Unterdomäne der Endpunkt-URL (Beispiel: `westus`).|
+|LUIS_endpoint_key_region|Entspricht der ersten Unterdomäne der Endpunkt-URL. Beispiel: `westus`|
 |LUIS_app_ID|Entspricht der Route der Endpunkt-URL nach **apps/**|
 
 Der Datei `Program.cs` sind bereits die Absichten aus „Personalwesen“ zugeordnet.

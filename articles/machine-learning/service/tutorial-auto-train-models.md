@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: nacharya1
 ms.author: nilesha
 ms.reviewer: trbye
-ms.date: 03/29/2019
+ms.date: 04/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 990991eb1ceb5d74c042b42cfa265c75a073e5ef
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: ee024d627efc42a87d7f6b1971fa8e2e92357a00
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670896"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545228"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Tutorial: Erstellen Ihres Regressionsmodells mit automatisiertem Machine Learning
 
@@ -103,7 +103,7 @@ import os
 
 Erstellen Sie ein Arbeitsbereichsobjekt aus dem vorhandenen Arbeitsbereich. Ein [Arbeitsbereich](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) ist eine Klasse, die Informationen zu Ihrem Azure-Abonnement und Ihren Azure-Ressourcen akzeptiert. Außerdem erstellt der Arbeitsbereich eine Cloudressource zur Überwachung und Nachverfolgung Ihrer Modellausführungen.
 
-`Workspace.from_config()` liest die Datei **aml_config/config.json** und lädt die Details in ein Objekt namens `ws`.  `ws` wird im restlichen Code in diesem Tutorial verwendet.
+`Workspace.from_config()` liest die Datei **config.JSON** und lädt die Details in ein Objekt namens `ws`.  `ws` wird im restlichen Code in diesem Tutorial verwendet.
 
 Nachdem Sie ein Arbeitsbereichsobjekt erstellt haben, geben Sie einen Namen für das Experiment an. Erstellen und registrieren Sie ein lokales Verzeichnis im Arbeitsbereich. Der Verlauf aller Ausführungen wird unter dem angegebenen Experiment und im [Azure-Portal](https://portal.azure.com) aufgezeichnet.
 
@@ -136,8 +136,7 @@ import azureml.dataprep as dprep
 
 file_path = os.path.join(os.getcwd(), "dflows.dprep")
 
-package_saved = dprep.Package.open(file_path)
-dflow_prepared = package_saved.dataflows[0]
+dflow_prepared = dprep.Dataflow.open(file_path)
 dflow_prepared.get_profile()
 ```
 

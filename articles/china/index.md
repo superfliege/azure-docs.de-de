@@ -2,8 +2,8 @@
 title: Dokumentation für China 21Vianet – Tutorials, API-Referenz | Microsoft-Dokumentation
 description: Microsoft Azure, betrieben von 21Vianet (Azure China 21Vianet), auch bekannt als „Mooncake“, ist eine von einem Datentreuhänder in China gesteuerte Cloudplattform. Sie enthält eine wachsende Sammlung integrierter Clouddienste enthält, die Entwickler und IT-Profis zum Erstellen, Bereitstellen und Verwalten von Anwendungen nutzen. Azure China 21Vianet ist eine Sovereign Cloud, d.h. eine physisch getrennte Instanz von Clouddiensten, die sich auf dem chinesischen Festland befindet. Sie wird von Shanghai Blue Cloud Technology Co., Ltd. („21Vianet“) unabhängig betrieben, die auch die Transaktionen abwickelt.
 services: china
-author: czeumault
-manager: carolz
+author: juliako
+manager: femila
 layout: LandingPage
 ms.assetid: ''
 ms.service: china
@@ -11,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 10/19/2017
-ms.author: carolz
-ms.openlocfilehash: 7fe2e0d0732f3b152741bdbd0f575b35cb98e564
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.author: juliako
+ms.openlocfilehash: d19717a55c26d03285a639a17a622a6a45e3e3e5
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "58408367"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522599"
 ---
 # <a name="azure-china-21vianet"></a>Azure China 21Vianet
 

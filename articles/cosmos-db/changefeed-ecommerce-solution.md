@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: 50ae4de8c9c1d10b0b17a9744ffa2340059fc298
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 379c7913f803c599865df080524da5c3fb1d0e52
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58120515"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526339"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Verwenden des Azure Cosmos DB-Änderungsfeeds zum Visualisieren von Echtzeit-Datenanalysen
 
@@ -165,7 +165,7 @@ Um zu sehen, wie der Änderungsfeed neue Aktionen auf einer E-Commerce-Website v
 
 1. Navigieren Sie zurück zum Repository im Datei-Explorer, und klicken Sie mit der rechten Maustaste auf **ChangeFeedFunction.sln**, um diese erneut in einem neuen Visual Studio-Fenster zu öffnen.  
 
-2. Navigieren Sie zur Datei **App.config**. Fügen Sie im <appSettings>-Block den Endpunkt und den eindeutigen **PRIMÄRSCHLÜSSEL** Ihres Azure Cosmos DB-Kontos hinzu, den Sie zuvor abgerufen haben.  
+2. Navigieren Sie zur Datei **App.config**. Fügen Sie im `<appSettings>`-Block den Endpunkt und den eindeutigen **PRIMÄRSCHLÜSSEL** Ihres Azure Cosmos DB-Kontos hinzu, den Sie zuvor abgerufen haben.  
 
 3. Fügen Sie die Namen für **Sammlung** und **Datenbank** ein. (Diese sollten **changefeedlabcollection** und **changefeedlabdatabase** lauten, sofern Sie sie nicht anders benennen möchten.)
 

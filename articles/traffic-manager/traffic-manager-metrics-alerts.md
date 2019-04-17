@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: kumud
-ms.openlocfilehash: 0bce0d407246ceab05c3951dc976884dd6f15b08
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 1c0c48efc7abf4b810e92b5cd04d1538577c71d3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200189"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268284"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Traffic Manager-Metriken und -Warnungen
 
@@ -58,11 +58,11 @@ Diese Metrik kann als ein aggregierter Wert angezeigt werden, der den Status all
 
 *Abbildung 4: Geteilte Ansicht der Metrik zum Endpunktstatus*
 
-Sie können diese Metriken über das Portal des [Azure Monitor-Diensts](../azure-monitor/platform/metrics-supported.md), [REST-API](https://docs.microsoft.com/rest/api/monitor/), [Azure CLI](https://docs.microsoft.com/cli/azure/monitor) und [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights) oder über den Abschnitt „Metriken“ in der Traffic Manager-Portalumgebung nutzen.
+Sie können diese Metriken über das Portal des [Azure Monitor-Diensts](../azure-monitor/platform/metrics-supported.md), [REST-API](https://docs.microsoft.com/rest/api/monitor/), [Azure CLI](https://docs.microsoft.com/cli/azure/monitor) und [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights) oder über den Abschnitt „Metriken“ in der Traffic Manager-Portalumgebung nutzen.
 
 ## <a name="alerts-on-traffic-manager-metrics"></a>Warnungen für Traffic Manager-Metriken
 Zusätzlich zum Verarbeiten und Anzeigen von Metriken aus Traffic Manager ermöglicht Azure Monitor den Kunden, Warnungen zu konfigurieren und zu empfangen, die mit diesen Metriken verknüpft sind. Sie können auswählen, welche Bedingungen in diesen Metriken erfüllt sein müssen, damit eine Warnung auftritt, wie oft diese Bedingungen beobachtet werden müssen und wie die Warnungen an Sie gesendet werden sollen. Weitere Informationen finden Sie in der [Dokumentation zu Azure Monitor-Warnungen](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über den [Azure Monitor-Dienst](../azure-monitor/platform/metrics-supported.md).
-- Erfahren Sie, wie Sie [ein Diagramm mithilfe von Azure Monitor erstellen](../azure-monitor/platform/metrics-charts.md#create-a-new-chart).
+- Erfahren Sie, wie Sie [ein Diagramm mithilfe von Azure Monitor erstellen](../azure-monitor/platform/metrics-getting-started.md#create-your-first-metric-chart).

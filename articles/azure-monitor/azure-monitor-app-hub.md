@@ -5,17 +5,17 @@ title: Dokumentation zu Azure Monitor Application Insights – Tutorials, API-Re
 description: Azure Monitor Application Insights bietet eine umfassende Überwachung der Anwendungsleistung auf Codeebene.
 services: application-insights
 author: mrbullwinkle
-manager: carmonmills
+manager: carmonm
 ms.service: application-insights
 ms.topic: landing-page
 ms.date: 01/15/2019
 ms.author: mbullwin
-ms.openlocfilehash: 4bf1ccd3da83900208ab8f15b54ea110b1dbb2f4
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 514f0c193dbbca6d8583c9f93feadee3415f163c
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244240"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426272"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -110,7 +110,7 @@ ms.locfileid: "56244240"
                                                         <p>
                                                             <a href="./app/proactive-failure-diagnostics.md">Anomalien bei Fehlern</a><br>
                                                             <a href="./app/proactive-performance-diagnostics.md">Leistungsanomalien</a><br>
-                                                            <a href="./app/proactive-trace-severity.md">Verschlechterung der Schweregrade bei der Ablaufverfolgung</a><br>
+                                                            <a href="./app/proactive-trace-severity.md">Ablaufverfolgung der Leistungsminderung</a><br>
                                                             <a href="./app/proactive-exception-volume.md">Ungewöhnliche Zunahme von Ausnahmen</a><br>
                                                             <a href="./app/proactive-potential-memory-leak.md">Arbeitsspeicherverluste</a><br>
                                                             <a href="./app/proactive-low-utilization-cloud-resources.md">Niedrige CPU-Auslastung</a><br>
@@ -124,7 +124,7 @@ ms.locfileid: "56244240"
                                                             <a href="./app/auto-collect-dependencies.md">Automatisches Sammeln von Abhängigkeiten</a><br>
                                                             <a href="./app/correlation.md">Telemetriekorrelation</a><br>
                                                             <a href="./app/nuget.md">NuGet-Pakete</a><br>
-                                                            <a href="./app/azure-functions-supported-features.md">Azure Functions</a>
+                                                            <a href="./app/azure-functions-supported-features.md">Azure-Funktionen</a>
                                                             </p>
                                                     </div>
                                                 </div>
@@ -198,8 +198,8 @@ ms.locfileid: "56244240"
                                                             <a href="./app/usage-funnels.md">Trichter</a><br>
                                                             <a href="./app/usage-cohorts.md">Kohorten</a><br>
                                                             <a href="./app/usage-impact.md">Auswirkung</a><br>
-                                                            <a href="./app/usage-retention.md">Vermerkdauer</a><br>
-                                                            <a href="./app/usage-flows.md">Benutzerflows</a>
+                                                            <a href="./app/usage-retention.md">Aufbewahrung</a><br>
+                                                            <a href="./app/usage-flows.md">Benutzerabläufe</a>
                                                         </p>
                                                         <br><br>
                                                         <h3>Überwachung in Echtzeit,<br> Visualisierung und Analyse</h3>
@@ -217,7 +217,7 @@ ms.locfileid: "56244240"
                                                         <h3>Datenschutz, Sicherheit, Nutzung und Kosten</h3>
                                                         <p>
                                                             <a href="https://docs.microsoft.com/azure/log-analytics/log-analytics-personal-data-mgmt">Umgang mit personenbezogenen Daten</a><br>
-                                                            <a href="./app/data-retention-privacy.md">Datensammlung, -aufbewahrung und&amp; -speicherung</a><br>
+                                                            <a href="./app/data-retention-privacy.md">Datensammlung, -aufbewahrung und -speicherung</a><br>
                                                             <a href="./app/resources-roles-access-control.md">Rollenbasierter Zugriff</a><br>
                                                             <a href="./app/ip-addresses.md">IP-Adressen und Firewallausnahmen</a><br>
                                                             <a href="https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs">Nutzung und geschätzte Kosten</a>
@@ -229,8 +229,8 @@ ms.locfileid: "56244240"
                                                             <a href="./app/data-model-request-telemetry.md">Anforderung</a><br>
                                                             <a href="./app/data-model-dependency-telemetry.md">Abhängigkeit</a><br>
                                                             <a href="./app/data-model-exception-telemetry.md">Ausnahme</a><br>
-                                                            <a href="./app/data-model-trace-telemetry.md">Ablaufverfolgung</a><br>
-                                                            <a href="./app/data-model-event-telemetry.md">Event</a><br>
+                                                            <a href="./app/data-model-trace-telemetry.md">Trace</a><br>
+                                                            <a href="./app/data-model-event-telemetry.md">Ereignis</a><br>
                                                             <a href="./app/data-model-metric-telemetry.md">Metrik</a><br>
                                                             <a href="./app/data-model-context.md">Kontext</a>
                                                             </p>

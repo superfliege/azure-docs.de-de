@@ -9,17 +9,17 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: bonova, carlrab
+ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 02/26/2019
-ms.openlocfilehash: f08b22f24dfde41646f56dc1ecd9777f267620ee
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 801294241f399097d363dd8dc2682f158c0bf2cc
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651311"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358288"
 ---
-# <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Konnektivitätsarchitektur für eine verwaltete Instanz in Azure SQL-Datenbank 
+# <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Konnektivitätsarchitektur für eine verwaltete Instanz in Azure SQL-Datenbank
 
 In diesem Artikel wird die Kommunikation in einer verwalteten Azure SQL-Datenbank-Instanz erläutert. Darüber hinaus wird die Konnektivitätsarchitektur beschrieben, und wie die Komponenten Datenverkehr an die verwaltete Instanz leiten.  
 
@@ -111,13 +111,12 @@ Stellen Sie eine verwaltete Instanz in einem dedizierten Subnetz im virtuellen N
 |mi_subnet   |Beliebig           |Beliebig     |Beliebig              |MI-SUBNETZ*  |ZULASSEN |
 
 > [!IMPORTANT]
-> Stellen Sie sicher, dass es nur eine Regel für eingehenden Datenverkehr für die Ports 9000, 9003, 1438, 1440, 1452 und eine Regel für ausgehenden Datenverkehr für die Ports 80, 443, 12000 gibt. Die Bereitstellung von verwalteten Instanzen über ARM-Bereitstellungen schlägt fehl, wenn Regeln für eingehenden und ausgehenden Datenverkehr für jeden Port separat konfiguriert werden. Wenn für diese Ports separate Regeln gelten, schlägt die Bereitstellung mit dem Fehlercode `VnetSubnetConflictWithIntendedPolicy` fehl.
+> Stellen Sie sicher, dass es nur eine Regel für eingehenden Datenverkehr für die Ports 9000, 9003, 1438, 1440, 1452 und eine Regel für ausgehenden Datenverkehr für die Ports 80, 443, 12000 gibt. Die Bereitstellung von verwalteten Instanzen über ARM-Bereitstellungen schlägt fehl, wenn Regeln für eingehenden und ausgehenden Datenverkehr für jeden Port separat konfiguriert werden. Wenn für diese Ports separate Regeln gelten, schlägt die Bereitstellung mit folgendem Fehlercode fehl: `VnetSubnetConflictWithIntendedPolicy`
 
 \* MI-SUBNETZ bezieht sich auf den IP-Adressbereich für das Subnetz in der Form 10.x.x.x/y. Diese Informationen finden Sie im Azure-Portal in den Subnetzeigenschaften.
 
 > [!IMPORTANT]
 > Obwohl die erforderlichen Eingangssicherheitsregeln den Datenverkehr von _allen_ Quellen an den Ports 9000, 9003, 1438, 1440 und 1452 zulassen, sind diese Ports durch eine integrierte Firewall geschützt. Weitere Informationen finden Sie unter [Ermitteln der IP-Adresse des Verwaltungsendpunkts](sql-database-managed-instance-find-management-endpoint-ip-address.md).
-
 > [!NOTE]
 > Wenn Sie die Transaktionsreplikation in einer verwalteten Instanz verwenden und Sie eine Instanzdatenbank als Herausgeber oder Verteiler einsetzen, öffnen Sie Port 445 (TCP ausgehend) in den Sicherheitsregeln des Subnetzes. Dieser Port ermöglicht den Zugriff auf die Azure-Dateifreigabe.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 635b4e71c09a2e8b3901af5580f221bc4716831d
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 3dbf0aea50f382a0b325bf068a200cde42098733
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917769"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547590"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Verwendung von Azure CDN mit CORS
 ## <a name="what-is-cors"></a>Was ist CORS?
@@ -32,7 +32,7 @@ Es gibt zwei Arten von CORS-Anforderungen: *einfache Anforderungen* und *komplex
 
 1. Der Browser sendet die CORS-Anforderung mit einem zusätzlichen HTTP-Anforderungsheader vom Typ **Ursprung**. Der Wert dieses Headers ist der Ursprung, der die übergeordneten Seite bereitgestellt hat. Dabei handelt es sich um eine Kombination aus *Protokoll*, *Domäne* und *Port*.  Wenn eine Seite aus https://www.contoso.com versucht, auf die Benutzerdaten im Ursprung fabrikam.com zuzugreifen, wird der folgende Anforderungsheader an fabrikam.com gesendet:
 
-   `Origin: https://www.contoso.com`
+   `Origin: https:\//www.contoso.com`
 
 2. Der Server reagiert kann wie folgt reagieren:
 

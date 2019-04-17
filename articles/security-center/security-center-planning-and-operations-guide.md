@@ -3,7 +3,7 @@ title: Planungs- und Betriebshandbuch für Security Center | Microsoft Docs
 description: Dieses Dokument ist hilfreich bei der Planung der Verwendung von Azure Security Center und informiert über Aspekte des täglichen Betriebs.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: f984e4a2-ac97-40bf-b281-2f7f473494c4
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: ece396a85a817df51f650fd1c513085efa3dedf5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/11/2019
+ms.author: monhaber
+ms.openlocfilehash: 3aae2d6adfd520f103ca1e1bd5e67eeb4b542a3d
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842123"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523374"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Planungs- und Betriebshandbuch für Azure Security Center
 Dieses Handbuch ist für IT-Experten, IT-Architekten, Informationssicherheitsanalysten und Cloudadministratoren konzipiert, deren Organisation Azure Security Center verwenden möchte.
@@ -78,15 +78,10 @@ Security Center ermöglicht es den Personen, diese unterschiedlichen Aufgaben au
 
 Security Center verwendet die [rollenbasierte Zugriffssteuerung](../role-based-access-control/role-assignments-portal.md) (Role-Based Access Control, RBAC). Dabei werden [integrierte Rollen](../role-based-access-control/built-in-roles.md) bereitgestellt, die Benutzern, Gruppen und Diensten in Azure zugewiesen werden können. Wenn Benutzer Security Center öffnen, werden nur Informationen zu den Ressourcen angezeigt, auf die jeweils Zugriff besteht. Dies bedeutet, dass dem Benutzer die Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ für das Abonnement oder die Ressourcengruppe einer Ressource zugewiesen wird. Neben diesen Rollen gibt es zwei spezifische Security Center-Rollen:
 
-- **Benutzer mit Leseberechtigung für Sicherheitsfunktionen:** Benutzer, die zu dieser Rolle gehören, können nur Security Center-Konfigurationen (wie etwa Empfehlungen, Warnungen, Richtlinien und die Integrität) anzeigen, aber keine Änderungen vornehmen.
-- **Sicherheitsadministrator:** Es gelten die gleichen Berechtigungen wie bei einem Benutzer mit Leseberechtigung für Sicherheitsfunktionen, zusätzlich sind jedoch auch Rechte zum Ändern der Sicherheitsrichtlinie und zum Verwerfen von Empfehlungen und Warnungen vorhanden.
+- **Sicherheitsleseberechtigter:** Benutzer, die zu dieser Rolle gehören, können nur Security Center-Konfigurationen (wie etwa Empfehlungen, Warnungen, Richtlinien und die Integrität) anzeigen, aber keine Änderungen vornehmen.
+- **Sicherheitsadministrator:** Es gelten die gleichen Berechtigungen wie bei einem Sicherheitsleseberechtigten, zusätzlich sind jedoch auch Rechte zum Ändern der Sicherheitsrichtlinie und zum Verwerfen von Empfehlungen und Warnungen vorhanden.
 
 Die oben beschriebenen Security Center-Rollen haben keinen Zugriff auf andere Dienstbereiche von Azure wie Storage, Web & Mobile oder Internet der Dinge (IoT).  
-
-> [!NOTE]
-> Ein Benutzer muss mindestens ein Abonnementadministrator oder ein Ressourcengruppenbesitzer oder -mitwirkender sein, damit Security Center in Azure sichtbar ist.
->
->
 
 Für die Personae im obigen Diagramm wären die folgenden RBAC-Einstellungen erforderlich:
 

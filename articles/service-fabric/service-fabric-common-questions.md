@@ -14,16 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 3dd2518c23f2cd323d7c3b2b46465e4144c1ba1a
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 0bd8a7d403ad1fe0f7abb15356cc9c90ed6b3f02
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665320"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359426"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Häufig gestellte Fragen zu Service Fabric
 
 Es gibt viele häufig gestellte Fragen zu den Funktionen und zur Verwendung von Service Fabric. In diesem Dokument werden viele dieser häufig gestellten Fragen und die zugehörigen Antworten behandelt.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="cluster-setup-and-management"></a>Clustereinrichtung und -verwaltung
 
@@ -133,7 +136,7 @@ Ja.  Weitere Informationen finden Sie unter [Erstellen eines Clusters mit angef�
 Nachfolgend werden die Möglichkeiten für Ihre Anwendung zum Abrufen von Anmeldeinformationen für die Authentifizierung bei Key Vault aufgeführt:
 
 A. Während des Erstellungs-/Packauftrags Ihrer Anwendungen können Sie ein Zertifikat in das Datenpaket Ihrer Service Fabric-App pullen und dieses für die Authentifizierung bei Key Vault verwenden.
-B: Für MSI-fähige Hosts von VM-Skalierungsgruppen können Sie einen einfachen PowerShell-SetupEntryPoint für Ihre Service Fabric-App entwickeln, um [ein Zugriffstoken vom MSI-Endpunkt](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token) abzurufen und dann [Ihre geheimen Schlüssel aus KeyVault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Get-AzureKeyVaultSecret) abzurufen.
+B: Für MSI-fähige Hosts von VM-Skalierungsgruppen können Sie einen einfachen PowerShell-SetupEntryPoint für Ihre Service Fabric-App entwickeln, um [ein Zugriffstoken vom MSI-Endpunkt](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token) abzurufen und dann [Ihre geheimen Schlüssel aus KeyVault](/powershell/module/azurerm.keyvault/get-azurekeyvaultsecret) abzurufen.
 
 ## <a name="application-design"></a>Anwendungsentwurf
 
@@ -189,4 +192,4 @@ Folgen Sie dem [Service Fabric-Blog](https://blogs.msdn.microsoft.com/azureservi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zu [wesentlichen Service Fabric-Konzepten](service-fabric-technical-overview.md) und [bewährten Methoden](service-fabric-best-practices-overview.md)
+Weitere Informationen zu [wesentlichen Service Fabric-Konzepten](service-fabric-technical-overview.md) und [Bewährte Methoden](service-fabric-best-practices-overview.md) [Service Fabric-Konzepte](service-fabric-technical-overview.md) und [Bewährte Methoden](service-fabric-best-practices-overview.md)

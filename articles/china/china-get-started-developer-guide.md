@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: v-wimarc
-ms.openlocfilehash: cface0b7848182db5d9aee282a2effb631c065bf
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: b48add54e83eb2d30b40faf64bc1b5c2c769f237
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648830"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521676"
 ---
 # <a name="developer-guide-for-azure-china-21vianet"></a>Entwicklerhandbuch für Azure China 21Vianet
 Microsoft bietet verschiedene Tools, die Entwicklern beim Erstellen und Bereitstellen von Cloudanwendungen für die globalen Microsoft Azure-Dienste (die globale Azure-Umgebung) und Microsoft Azure in der Umgebung von 21Vianet (Azure China 21Vianet) helfen. Im Großteil der derzeit verfügbaren technischen Inhalte, z.B. im [Azure-Dokumentationscenter](https://azure.microsoft.com/documentation/), wird davon ausgegangen, dass Anwendungen für die globale Azure-Plattform entwickelt werden. Daher ist es wichtig zu erfahren, welche [Dienste und Features](https://www.azure.cn/home/features/products-by-region) in Microsoft Azure China 21Vianet verfügbar sind.
@@ -52,7 +52,7 @@ Die folgende Tabelle zeigt die zu ändernden Endpunkte.
 
 Weitere Informationen:
 - [Hinweise für Entwickler zu Azure in Anwendungen für China](https://msdn.microsoft.com/library/azure/dn578439.aspx)
-- [IP-Bereiche für Azure-Rechenzentren in China](https://www.microsoft.com/download/details.aspx?id=42064) 
+- [IP-Bereiche für Azure-Rechenzentren in China](https://www.microsoft.com/en-us/download/confirmation.aspx?id=57062) 
 - [Anleitung für Entwickler](https://www.azure.cn/documentation/articles/developerdifferences/#dev-guide) (auf Chinesisch)
 
 | Dienstkategorie | URI der globalen Azure-Umgebung | Azure-URI (in China) |
@@ -81,6 +81,6 @@ Weitere Informationen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Anleitung für Entwickler](https://www.azure.cn/documentation/articles/developerdifferences/#dev-guide) (auf Chinesisch)
-- [IP-Bereiche für Azure-Rechenzentren in China](https://www.microsoft.com/download/details.aspx?id=42064)
+- [IP-Bereiche für Azure-Rechenzentren in China](https://www.microsoft.com/en-us/download/confirmation.aspx?id=57062)
 - [Verwalten von Leistung und Konnektivität](/azure/china/china-how-to-manage-performance)
 - [Azure Architecture Center](https://docs.microsoft.com/azure/architecture/)
