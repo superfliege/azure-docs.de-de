@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.openlocfilehash: 4232227f8598e8b67987412c0f4afdb738a6040c
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 38ff91fe9ac50a85d684895d0ccb6333f6257284
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31591060"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59488249"
 ---
 # <a name="connect-to-azure-germany-by-using-powershell"></a>Herstellen einer Verbindung mit Azure Deutschland über PowerShell
 Zur Verwendung von Azure PowerShell mit Azure Deutschland müssen Sie anstelle einer Verbindung mit der globalen Azure-Umgebung eine Verbindung mit Azure Deutschland herstellen. Sie können Azure PowerShell zum Verwalten eines umfangreichen Abonnements über Skripts oder für den Zugriff auf Features verwenden, die derzeit im Azure-Portal nicht verfügbar sind. Wenn Sie PowerShell bereits in der globalen Azure-Umgebung verwendet haben, ist dies größtenteils identisch. In Azure Deutschland bestehen folgende Unterschiede:
@@ -27,20 +27,21 @@ Zur Verwendung von Azure PowerShell mit Azure Deutschland müssen Sie anstelle e
 * Herstellen der Verbindung mit Ihrem Konto
 * Regionsnamen
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 > [!NOTE]
 > Wenn Sie PowerShell noch nicht verwendet haben, lesen Sie zunächst die [Einführung in Azure PowerShell](/powershell/azure/overview).
-
 
 Wenn Sie PowerShell starten, müssen Sie durch Angeben eines Umgebungsparameters festlegen, dass eine Verbindung mit Azure Deutschland hergestellt wird. Mit dem Parameter wird sichergestellt, dass PowerShell eine Verbindung mit der richtigen Umgebung herstellt. Die Sammlung von Endpunkten wird bestimmt, wenn Sie eine Verbindung mit Ihrem Konto herstellen. Für unterschiedliche APIs sind verschiedene Varianten des Umgebungsparameters erforderlich:
 
 | Verbindungstyp | Get-Help |
 | --- | --- |
-| Befehle für [Azure (klassisches Bereitstellungsmodell)](https://msdn.microsoft.com/library/dn708504.aspx) |`Add-AzureAccount -Environment AzureGermanCloud` |
-| Befehle für [Azure (Resource Manager-Bereitstellungsmodell)](https://msdn.microsoft.com/library/mt125356.aspx) |`Connect-AzureRmAccount -EnvironmentName AzureGermanCloud` |
-| Befehle für [Azure Active Directory (klassisches Bereitstellungsmodell)](https://msdn.microsoft.com/library/azure/jj151815.aspx) |`Connect-MsolService -AzureEnvironment AzureGermanyCloud` |
+| Befehle für [Azure (klassisches Bereitstellungsmodell)](/powershell/azure) |`Add-AzureAccount -Environment AzureGermanCloud` |
+| Befehle für [Azure (Resource Manager-Bereitstellungsmodell)](/powershell/azure) |`Connect-AzAccount -EnvironmentName AzureGermanCloud` |
+| Befehle für [Azure Active Directory (klassisches Bereitstellungsmodell)](/previous-versions/azure/jj151815(v=azure.100)) |`Connect-MsolService -AzureEnvironment AzureGermanyCloud` |
 | Befehle für [Azure Active Directory (Resource Manager-Bereitstellungsmodell)](https://msdn.microsoft.com/library/azure/mt757189.aspx) |`Connect-AzureAD -AzureEnvironmentName AzureGermanyCloud` |
 
-Sie können auch die Option `Environment` verwenden, wenn Sie eine Verbindung mit einem Speicherkonto über `New-AzureStorageContext` herstellen, und `AzureGermanCloud` angeben.
+Sie können auch die Option `Environment` verwenden, wenn Sie eine Verbindung mit einem Speicherkonto über `New-AzStorageContext` herstellen, und `AzureGermanCloud` angeben.
 
 ## <a name="determining-region"></a>Festlegen der Region
 Nach erfolgreicher Verbindungsherstellung besteht ein weiterer Unterschied in den verfügbaren Zielregionen für einen Dienst. Jeder Cloud Service von Azure verfügt über unterschiedliche Regionen. Diese sind auf der Seite für die Dienstverfügbarkeit aufgeführt. Normalerweise verwenden Sie die Region im Parameter `Location` für einen Befehl.
@@ -60,12 +61,12 @@ Nach erfolgreicher Verbindungsherstellung besteht ein weiterer Unterschied in de
 Wenn Sie die verfügbaren Regionen in Azure Deutschland überprüfen möchten, können Sie den folgenden Befehl ausführen und die aktuelle Liste ausgeben. Verwenden Sie für klassische Bereitstellungen den ersten Befehl. Verwenden Sie für Resource Manager-Bereitstellungen den zweiten Befehl.
 
     Get-AzureLocation
-    Get-AzureRmLocation
+    Get-AzLocation
 
 Wenn Sie sich für die in Azure verfügbaren Umgebungen interessieren, können Sie den folgenden Befehl ausführen:
 
     Get-AzureEnvironment
-    Get-AzureRmEnvironment
+    Get-AzEnvironment
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Herstellen der Verbindung mit Azure Deutschland finden Sie in den folgenden Ressourcen:

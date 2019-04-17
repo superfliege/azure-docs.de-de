@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 02/21/2019
 ms.author: tulasim
-ms.openlocfilehash: 462dfb2de8608eebd5609f7044bde03991fca3ca
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: d14e2897183a97da5e84a76b699def529f1d167e
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958047"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579409"
 ---
 # <a name="get-a-knowledge-answer-with-the-generateanswer-api-and-metadata"></a>Abrufen einer wissensbasierten Antwort mit der GenerateAnswer-API und Metadaten
 
@@ -74,7 +74,7 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer?i
 |Header|Content-Typ|Zeichenfolge|Medientyp des an die API gesendeten Texts Der Standardwert ist ``.|
 |Header|Autorisierung|Zeichenfolge|Ihr Endpunktschlüssel (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).|
 |Posttext|JSON-Objekt|JSON|Die Frage mit Einstellungen|
-|Abfragezeichenfolgenparameter (optional)|`isTest`|boolean|Wenn auf TRUE festgelegt, werden Ergebnisse aus dem `testkb`-Suchindex anstatt aus dem veröffentlichten Index zurückgegeben.|
+
 
 Der JSON-Text verfügt über mehrere Einstellungen:
 
@@ -83,6 +83,7 @@ Der JSON-Text verfügt über mehrere Einstellungen:
 |`question`|required|Zeichenfolge|Eine Benutzerfrage, die an die Wissensdatenbank gesendet werden soll.|
 |`top`|optional|integer|Anzahl der priorisierten Ergebnisse für die Ausgabe Der Standardwert ist 1.|
 |`userId`|optional|Zeichenfolge|Eindeutige ID zur Identifizierung des Benutzers. Diese ID wird in den Chatprotokollen aufgezeichnet.|
+|`isTest`|optional|boolean|Wenn auf TRUE festgelegt, werden Ergebnisse aus dem `testkb`-Suchindex anstatt aus dem veröffentlichten Index zurückgegeben.|
 |`strictFilters`|optional|Zeichenfolge|Weist (sofern angegeben) QnA Maker an, nur Antworten mit den angegebenen Metadaten zurückzugeben.|
 
 Ein JSON-Beispieltext sieht folgendermaßen aus:
@@ -91,6 +92,7 @@ Ein JSON-Beispieltext sieht folgendermaßen aus:
 {
     "question": "qna maker and luis",
     "top": 6,
+    "isTest": true,
     "strictFilters": [
     {
         "name": "category",

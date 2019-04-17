@@ -3,17 +3,17 @@ title: Verwenden von symmetrischen Schlüsseln zum Bereitstellen von Legacygerä
 description: Verwenden von symmetrischen Schlüsseln zum Bereitstellen von Legacygeräten mit Ihrer Device Provisioning Service-Instanz
 author: wesmc7777
 ms.author: wesmc
-ms.date: 08/31/2018
+ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: 543c19056a78a1a14a0861231c9ec97d4e6b93b7
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+manager: philmea
+ms.openlocfilehash: 248c7977752eaec86121a0dd197e5bff2621ead5
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486595"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500276"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Bereitstellen von Legacygeräten mit symmetrischen Schlüsseln
 
@@ -53,23 +53,7 @@ In diesem Abschnitt bereiten Sie eine Entwicklungsumgebung vor, die zum Erstelle
 
 Das SDK enthält den Beispielcode für das simulierte Gerät. Dieses simulierte Gerät versucht, die Bereitstellung während seiner Startsequenz auszuführen.
 
-1. Laden Sie das [CMake-Buildsystem](https://cmake.org/download/) herunter. Überprüfen Sie die heruntergeladene Binärdatei mit dem kryptografischen Hashwert, der der heruntergeladenen Version entspricht. Die kryptografischen Hashwerte können ebenfalls über den bereits bereitgestellten CMake-Downloadlink abgerufen werden.
-
-    Im folgenden Beispiel wird Windows PowerShell verwendet, um den kryptografischen Hash für Version 3.13.4 der x64 MSI-Verteilung zu überprüfen:
-
-    ```powershell
-    PS C:\Downloads> $hash = get-filehash .\cmake-3.13.4-win64-x64.msi
-    PS C:\Downloads> $hash.Hash -eq "64AC7DD5411B48C2717E15738B83EA0D4347CD51B940487DFF7F99A870656C09"
-    True
-    ```
-
-    Zum Zeitpunkt der Abfassung dieses Artikels waren auf der Website von CMake die folgenden Hashwerte für Version 3.13.4 aufgeführt:
-
-    ```
-    563a39e0a7c7368f81bfa1c3aff8b590a0617cdfe51177ddc808f66cc0866c76  cmake-3.13.4-Linux-x86_64.tar.gz
-    7c37235ece6ce85aab2ce169106e0e729504ad64707d56e4dbfc982cb4263847  cmake-3.13.4-win32-x86.msi
-    64ac7dd5411b48c2717e15738b83ea0d4347cd51b940487dff7f99a870656c09  cmake-3.13.4-win64-x64.msi
-    ```
+1. Laden Sie das [CMake-Buildsystem](https://cmake.org/download/) herunter.
 
     Wichtig: Die Voraussetzungen für Visual Studio (Visual Studio und die Workload „Desktopentwicklung mit C++“) müssen **vor** Beginn der Installation von `CMake` auf dem Computer installiert sein. Sobald die Voraussetzungen erfüllt sind und der Download überprüft wurde, installieren Sie das CMake-Buildsystem.
 
@@ -78,7 +62,7 @@ Das SDK enthält den Beispielcode für das simulierte Gerät. Dieses simulierte 
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
     ```
-    Die Größe dieses Repositorys beträgt derzeit ca. 220 MB. Sie sollten damit rechnen, dass die Ausführung dieses Vorgangs mehrere Minuten in Anspruch nimmt.
+    Sie sollten damit rechnen, dass die Ausführung dieses Vorgangs mehrere Minuten in Anspruch nimmt.
 
 
 3. Erstellen Sie ein `cmake`-Unterverzeichnis im Stammverzeichnis des Git-Repositorys, und navigieren Sie zu diesem Ordner. 

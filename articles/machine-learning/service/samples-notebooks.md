@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 961983aad0775f9b9d728269e8a57137ff508f02
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b597d6efa87aa2811ce42f3315698acfa17426b2
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451789"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548587"
 ---
 # <a name="use-jupyter-notebooks-to-explore-azure-machine-learning-service"></a>Verwenden von Jupyter-Notebooks zum Erkunden des Azure Machine Learning-Diensts
 
@@ -50,50 +50,6 @@ Führen Sie diese Schritte aus, um auf Ihrem Computer einen lokalen Jupyter Note
 [!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
 
 Mit den Anweisungen in diesem Schnellstart werden die Pakete installiert, die Sie zum Ausführen der Schnellstart- und Tutorial-Notebooks benötigen.  Für andere Beispiel-Notebooks müssen ggf. zusätzliche Komponenten installiert werden.  Weitere Informationen zu diesen Komponenten finden Sie unter [Install the Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/install) (Installieren des Azure Machine Learning SDK für Python).
-
-<a name="automated-ml-setup"></a>
-
-## <a name="automated-machine-learning-setup"></a>Einrichtung für automatisiertes maschinelles Lernen 
-
-_Diese Schritte gelten nur für die Notebooks im Ordner **how-to-use-azureml/automated-machine-learning**._
-
-Sie können zwar die obigen Optionen beliebig verwenden, aber Sie können auch mit der folgenden Anleitung die Umgebung installieren und gleichzeitig einen Arbeitsbereich erstellen. 
-
-1. Installieren Sie [mini-conda](https://conda.io/miniconda.html). Wählen Sie Version 3.7 oder höher. Befolgen Sie die Eingabeaufforderungen, um die Installation durchzuführen. 
-   >[!NOTE]
-   >Sie können eine vorhandene Conda-Installation verwenden, solange es sich dabei um Version 4.4.10 oder höher handelt. Verwenden Sie den Befehl `conda -V`, um die Version anzuzeigen. Sie können eine Conda-Version mit dem folgenden Befehl aktualisieren: `conda update conda`. Es ist nicht erforderlich, eine spezifische Installation von mini-conda durchzuführen.
-
-1. Laden Sie die Beispielnotebooks von [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning
-) als ZIP-Dateien herunter, und extrahieren Sie den Inhalt in ein lokales Verzeichnis. Die Notebooks für automatisiertes maschinelles Lernen befinden sich im Ordner `how-to-use-azureml/automated-machine-learning`.
-
-1. Richten Sie eine neue Conda-Umgebung ein. 
-   1. Öffnen Sie auf Ihrem lokalen Computer eine Conda-Eingabeaufforderung.
-   
-   1. Navigieren Sie zu den Dateien, die Sie auf Ihrem lokalen Computer extrahiert haben.
-   
-   1. Öffnen Sie den Ordner **automated-machine-learning**.
-   
-   1. Führen Sie `automl_setup.cmd` an der Conda-Eingabeaufforderung für Windows bzw. die `.sh`-Datei für Ihr Betriebssystem aus. Die Ausführung kann ca. 10 Minuten dauern.
-
-      Mit dem Setupskript wird Folgendes durchgeführt:
-      + Erstellung einer neuen Conda-Umgebung
-      + Installation der erforderlichen Pakete
-      + Konfiguration des Widgets
-      + Starten eines Jupyter-Notebooks
-      
-   >[!NOTE]
-   > Im Skript wird der Name der Conda-Umgebung als optionaler Parameter verwendet. Der Standardname der Conda-Umgebung lautet `azure_automl`. Der genaue Wortlaut des Befehls richtet sich nach dem Betriebssystem. Dies ist nützlich, wenn Sie eine neue Umgebung erstellen oder ein Upgrade auf eine neue Version durchführen. Sie können beispielsweise „automl_setup.cmd azure_automl_sandbox“ verwenden, um eine Umgebung namens „azure_automl_sandbox“ zu erstellen. 
-      
-1. Nachdem das Skript abgeschlossen wurde, wird in Ihrem Browser die Jupyter Notebook-Startseite angezeigt.
-
-1. Navigieren Sie zum Speicherort, an dem Sie die Notebooks gespeichert haben. 
-
-1. Öffnen Sie den Ordner „automated-machine-learning“ und dann das Notebook **configuration.ipynb**. 
-
-1. Führen Sie die Zellen in den Notebooks aus, um den Machine Learning Services-Ressourcenanbieter zu registrieren und einen Arbeitsbereich zu erstellen.
-
-Sie können die Notebooks, die auf Ihrem lokalen Computer gespeichert sind, jetzt öffnen und ausführen.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
