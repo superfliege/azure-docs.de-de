@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 8a910f35bf25f889150ea3e89f4fa653f3a9ac14
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 825f667029aeb1d75bfdaf52b1084ff5133b5774
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336319"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527335"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Tutorial: Bereitstellen einer Anwendung in Service Fabric Mesh mithilfe einer Vorlage
 
@@ -351,8 +351,8 @@ Aktualisieren Sie in der Parameterdatei die folgenden Parameterwerte:
 |registryPassword|Das Kennwort, das Sie zuvor unter [Abrufen von Anmeldeinformationen für die Registrierung](#retrieve-credentials-for-the-registry) abgerufen haben. Dieser Parameter in der Vorlage ist eine sichere Zeichenfolge und wird nicht im Bereitstellungsstatus oder in den `az mesh service show`-Befehlen angezeigt.|
 |registryUserName|Der Benutzername, den Sie unter [Abrufen von Anmeldeinformationen für die Registrierung](#retrieve-credentials-for-the-registry) abgerufen haben.|
 |registryServer|Der Registrierungsservername, den Sie unter [Abrufen von Anmeldeinformationen für die Registrierung](#retrieve-credentials-for-the-registry) abgerufen haben.|
-|frontEndImage|Das Containerimage für den Front-End-Dienst.  Beispiel: <myregistry>.azurecr.io/seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709|
-|serviceImage|Das Containerimage für den Back-End-Dienst.  Beispiel: <myregistry>.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709|
+|frontEndImage|Das Containerimage für den Front-End-Dienst.  Beispiel: `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709`.|
+|serviceImage|Das Containerimage für den Back-End-Dienst.  Beispiel: `<myregistry>.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709`.|
 
 Führen Sie zum Bereitstellen der Anwendung Folgendes aus:
 

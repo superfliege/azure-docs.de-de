@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3253c26f99c470a256b937844138d8875219cbd1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 35f9a8949f5b51f88b9297890fc5562e7b8dd591
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57878039"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273378"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Tutorial: Azure Active Directory-Integration mit Help Scout
 
@@ -52,7 +52,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Konfigurieren der Integration von Help Scout in Azure AD müssen Sie Help Scout über den Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Um Help Scout aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+**Führen Sie die folgenden Schritte aus, um Help Scout aus dem Katalog hinzuzufügen:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -106,9 +106,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Help S
 
     ![SSO-Informationen zur Domäne und zu den URLs für Help Scout](common/idp-intiated.png)
 
-    a. Der **Bezeichner** ist der **Benutzergruppen-URI (ID der Dienstanbieterentität)** aus Help Scout und beginnt mit `urn:`.
+    a. Der **Bezeichner** ist der **Benutzergruppen-URI (ID der Dienstanbieterentität)** aus Help Scout und beginnt mit `urn:`
 
-    b. Die **Antwort-URL** ist die **Postback-URL (Assertionsverbraucherdienst-URL)** aus Help Scout und beginnt mit `https://`. 
+    b. Die **Antwort-URL** ist die **Postback-URL (Assertionsverbraucherdienst-URL)** aus Help Scout und beginnt mit `https://` 
 
     > [!NOTE]
     > Die Werte in diesen URLs dienen nur Demonstrationszwecken. Aktualisieren Sie diese Werte mit der tatsächlichen Antwort-URL und dem tatsächlichen Bezeichner. Diese Werte finden Sie auf der Registerkarte **Einmaliges Anmelden** im Abschnitt „Authentifizierung“ (wird im weiteren Verlauf des Tutorials noch näher erläutert).
@@ -117,7 +117,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Help S
 
     ![SSO-Informationen zur Domäne und zu den URLs für Help Scout](common/metadata-upload-additional-signon.png)
 
-    Geben Sie im Textfeld **Anmelde-URL** die URL folgendermaßen ein: `https://secure.helpscout.net/members/login/`.
+    Geben Sie im Textfeld **Anmelde-URL** die URL folgendermaßen ein: `https://secure.helpscout.net/members/login/`
 
 6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -157,7 +157,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Help S
 
     ![Configure single sign-on](./media/helpscout-tutorial/settings4.png)
 
-    a. Fügen Sie in das Textfeld **Single Sign-On URL** (SSO-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
+    a. Fügen Sie in das Textfeld **Einfacher Anmeldungs-URL** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
     b. Klicken Sie auf **Zertifikat hochladen**, um das aus dem Azure-Portal heruntergeladene **Zertifikat (Base64)** hochzuladen.
 
@@ -185,7 +185,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**  
+    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.

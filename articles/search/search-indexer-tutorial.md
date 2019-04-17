@@ -1,23 +1,23 @@
 ---
-title: 'Tutorial zur Indizierung von Azure SQL-Datenbanken im Azure-Portal: Azure Search'
-description: In diesem Tutorial erfahren Sie, wie Sie eine Verbindung mit Azure SQL-Datenbank herstellen, durchsuchbare Daten extrahieren und diese in einen Azure Search-Index laden.
+title: 'Tutorial: Indizieren von Daten aus Azure SQL-Datenbanken in einem C#-Beispielcode – Azure Search'
+description: Dieses C#-Codebeispiel veranschaulicht, wie Sie eine Verbindung mit Azure SQL-Datenbank herstellen, durchsuchbare Daten extrahieren und diese in einen Azure Search-Index laden.
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4e94f4c1b5de47e36dd9a5be6b9e7f43d264de82
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 401ad90f1ae4ffb4915a0b51aea41430e7045aa9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201397"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270460"
 ---
-# <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Tutorial: Auffüllung einer Azure SQL-Datenbank unter Verwendung von Azure Search-Indexern
+# <a name="tutorial-in-c-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Tutorial in C#: Auffüllung einer Azure SQL-Datenbank unter Verwendung von Azure Search-Indexern
 
 Sie erfahren, wie Sie einen Indexer konfigurieren, um durchsuchbare Daten aus einer Azure SQL-Beispieldatenbank zu extrahieren. Ein [Indexer](search-indexer-overview.md) ist eine Komponente von Azure Search, die externe Datenquellen durchforstet und einen [Suchindex](search-what-is-an-index.md) auffüllt. Von allen Indexern wird der Indexer für Azure SQL-Datenbank am häufigsten verwendet. 
 
@@ -37,35 +37,39 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
+In dieser Schnellstartanleitung werden die folgenden Dienste, Tools und Daten verwendet: 
+
 [Erstellen Sie einen Azure Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). In diesem Tutorial können Sie einen kostenlosen Dienst verwenden.
 
-* Eine [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/), die die externe Datenquelle für einen Indexer bereitstellt. In der Beispielprojektmappe steht eine SQL-Datendatei zum Erstellen der Tabelle zur Verfügung.
+[Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) speichert die von einem Indexer verwendete externe Datenquelle. In der Beispielprojektmappe steht eine SQL-Datendatei zum Erstellen der Tabelle zur Verfügung. In diesem Tutorial werden die Schritte zum Erstellen des Diensts und der Datenbank erläutert.
 
-* + [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) (beliebige Edition). Der Beispielcode und die Anleitung wurden in der kostenlosen Community-Edition getestet.
+Eine beliebige Version von [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) kann zum Ausführen der Beispielprojektmappe verwendet werden. Der Beispielcode und die Anleitung wurden in der kostenlosen Community-Edition getestet.
+
+[Azure-Samples/search-dotnet-getting-started](https://github.com/Azure-Samples/search-dotnet-getting-started) enthält die Beispielprojektmappe (im GitHub-Repository mit Azure-Beispielen). Laden Sie die Projektmappe herunter, und extrahieren Sie sie. Projektmappen sind standardmäßig schreibgeschützt. Klicken Sie mit der rechten Maustaste auf die Projektmappe, und löschen Sie das Nur-Lese-Attribut, damit Sie Dateien ändern können.
 
 > [!Note]
 > Bei Verwendung des kostenlosen Azure Search-Diensts gilt eine Obergrenze von drei Indizes, drei Indexern und drei Datenquellen. In diesem Tutorial wird davon jeweils eine Instanz erstellt. Vergewissern Sie sich, dass Ihr Dienst über genügend freie Kapazität für die neuen Ressourcen verfügt.
 
-### <a name="download-the-solution"></a>Herunterladen der Projektmappe
+## <a name="get-a-key-and-url"></a>Abrufen eines Schlüssels und einer URL
 
-Die in diesem Tutorial verwendete Indexerprojektmappe stammt aus einer Sammlung von Azure Search-Beispielen, die in einem einzelnen Masterdownload zusammengefasst wurden. Für dieses Tutorial wird die Projektmappe *DotNetHowToIndexers* verwendet.
+Für REST-Aufrufe sind die Dienst-URL und ein Zugriffsschlüssel für jede Anforderung erforderlich. Hierfür wird jeweils ein Suchdienst erstellt. Wenn Sie Azure Search also Ihrem Abonnement hinzugefügt haben, können Sie diese Schritte ausführen, um die erforderlichen Informationen zu erhalten:
 
-1. Navigieren Sie im GitHub-Repository mit den Azure-Beispielen zu [**Azure-Samples/search-dotnet-getting-started**](https://github.com/Azure-Samples/search-dotnet-getting-started).
+1. [Melden Sie sich beim Azure-Portal an](https://portal.azure.com/), und rufen Sie auf der Seite **Übersicht** Ihres Suchdiensts die URL ab. Ein Beispiel für einen Endpunkt ist `https://mydemo.search.windows.net`.
 
-2. Klicken Sie auf **Clone or download** (Klonen oder herunterladen) > **Download ZIP** (ZIP-Datei herunterladen). Standardmäßig wird die Datei in den Ordner „Downloads“ heruntergeladen.
+1. Rufen Sie unter **Einstellungen** > **Schlüssel** einen Administratorschlüssel ab, um Vollzugriff auf den Dienst zu erhalten. Es gibt zwei austauschbare Administratorschlüssel – diese wurden zum Zweck der Geschäftskontinuität bereitgestellt, falls Sie einen Rollover für einen Schlüssel durchführen müssen. Für Anforderungen zum Hinzufügen, Ändern und Löschen von Objekten können Sie den primären oder den sekundären Schlüssel verwenden.
 
-3. Klicken Sie im **Explorer** >  im Ordner **Downloads** mit der rechten Maustaste auf die Datei, und klicken Sie auf **Alle extrahieren**.
+![Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels](media/search-fiddler/get-url-key.png "Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels")
 
-4. Deaktivieren Sie den Schreibschutz. Klicken Sie mit der rechten Maustaste auf den Namen des Ordners. Klicken Sie auf **Eigenschaften** > **Allgemein**, und deaktivieren Sie das Attribut **Schreibgeschützt** für den aktuellen Ordner, die Unterordner und die Dateien.
+Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 
-5. Öffnen Sie in **Visual Studio 2017** die Projektmappe *DotNetHowToIndexers.sln*.
-
-6. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die übergeordnete Projektmappe des obersten Knotens, und klicken Sie anschließend auf **NuGet-Pakete wiederherstellen**.
-
-### <a name="set-up-connections"></a>Einrichten von Verbindungen
+## <a name="set-up-connections"></a>Einrichten von Verbindungen
 Verbindungsinformationen für erforderliche Dienste werden in der Datei **appsettings.json** der Projektmappe angegeben. 
 
-Öffnen Sie im Projektmappen-Explorer die Datei **appsettings.json**, um die einzelnen Einstellungen gemäß den Anweisungen in diesem Tutorial auffüllen zu können.  
+1. Öffnen Sie in Visual Studio die Datei **DotNetHowToIndexers.sln**.
+
+1. Öffnen Sie im Projektmappen-Explorer die Datei **appsettings.json**, um die einzelnen Einstellungen auffüllen zu können.  
+
+Die ersten beiden Einträge können Sie direkt angeben. Verwenden Sie dazu die URL und die Administratorschlüssel für Ihren Azure Search-Dienst. Lautet der Endpunkt `https://mydemo.search.windows.net`, muss als Dienstname `mydemo` angegeben werden.
 
 ```json
 {
@@ -75,48 +79,17 @@ Verbindungsinformationen für erforderliche Dienste werden in der Datei **appset
 }
 ```
 
-### <a name="get-the-search-service-name-and-admin-api-key"></a>Ermitteln von Suchdienstname und Administrator-API-Schlüssel
-
-Den Suchdienstendpunkt und den Schlüssel finden Sie im Portal. Ein Schlüssel ermöglicht den Zugriff auf Dienstvorgänge. Administratorschlüssel ermöglichen Schreibzugriff, der zum Erstellen und Löschen von Objekten wie Indizes und Indexern in Ihrem Dienst erforderlich ist.
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und suchen Sie nach den [Suchdiensten für Ihr Abonnement](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices).
-
-2. Öffnen Sie die Dienstseite.
-
-3. Suchen Sie im oberen Bereich der Hauptseite nach dem Dienstnamen. Im folgenden Screenshot lautet der Name *azs-tutorial*.
-
-   ![Dienstname](./media/search-indexer-tutorial/service-name.png)
-
-4. Kopieren Sie den Namen, und fügen Sie ihn in Visual Studio als ersten Eintrag in **appsettings.json** ein.
-
-   > [!Note]
-   > Ein Dienstname ist Teil des Endpunkts, der „search.windows.net“ enthält. Bei Interesse können Sie sich auf der Übersichtsseite unter **Zusammenfassung** die vollständige URL ansehen. Die URL sieht wie im folgenden Beispiel aus: https://your-service-name.search.windows.net
-
-5. Kopieren Sie im linken Bereich unter **Einstellungen** > **Schlüssel** einen der Administratorschlüssel, und fügen Sie ihn als zweiten Eintrag in **appsettings.json** ein. Schlüssel sind alphanumerische Zeichenfolgen, die im Rahmen der Bereitstellung für Ihren Dienst generiert werden und für den autorisierten Zugriff auf Dienstvorgänge erforderlich sind. 
-
-   Nach dem Hinzufügen der beiden Einstellungen sollte die Datei in etwa wie folgt aussehen:
-
-   ```json
-   {
-    "SearchServiceName": "azs-tutorial",
-    "SearchServiceAdminApiKey": "A1B2C3D4E5F6G7H8I9J10K11L12M13N14",
-    . . .
-   }
-   ```
+Für den letzten Eintrag ist eine vorhandene Datenbank erforderlich. Sie erstellen sie im nächsten Schritt.
 
 ## <a name="prepare-sample-data"></a>Vorbereiten der Beispieldaten
 
-In diesem Schritt erstellen Sie eine externe Datenquelle, die ein Indexer durchforsten kann. Für dieses Tutorial wird die Datendatei *hotels.sql* aus dem Projektmappenordner „\DotNetHowToIndexers“ verwendet. 
-
-### <a name="azure-sql-database"></a>Azure SQL-Datenbank
-
-Das Dataset in Azure SQL-Datenbank kann über das Azure-Portal unter Verwendung der Datei *hotels.sql* aus dem Beispiel erstellt werden. Azure Search nutzt vereinfachte Rowsets, wie sie beispielsweise auf der Grundlage einer Sicht oder Abfrage generiert werden. Die SQL-Datei in der Beispielprojektmappe erstellt eine einzelne Tabelle und füllt sie auf.
+In diesem Schritt erstellen Sie eine externe Datenquelle, die ein Indexer durchforsten kann. Das Dataset in Azure SQL-Datenbank kann über das Azure-Portal unter Verwendung der Datei *hotels.sql* aus dem Beispiel erstellt werden. Azure Search nutzt vereinfachte Rowsets, wie sie beispielsweise auf der Grundlage einer Sicht oder Abfrage generiert werden. Die SQL-Datei in der Beispielprojektmappe erstellt eine einzelne Tabelle und füllt sie auf.
 
 In der folgenden Übung wird davon ausgegangen, dass weder ein Server noch eine Datenbank vorhanden ist. In Schritt 2 werden Sie daher aufgefordert, beides zu erstellen. Optional: Falls Sie bereits über eine Ressource verfügen, können Sie ihr die Hoteltabelle hinzufügen (ab Schritt 4).
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. 
 
-2. Klicken Sie auf **Ressource erstellen** > **SQL-Datenbank**, um eine Datenbank, einen Server und eine Ressourcengruppe zu erstellen. Dabei können Sie die Standardwerte und den günstigsten Tarif verwenden. Die Erstellung eines Servers hat unter anderem den Vorteil, dass Sie einen Administratorbenutzernamen und ein Kennwort angeben können. Diese werden in einem späteren Schritt zum Erstellen und Laden von Tabellen benötigt.
+2. Navigieren Sie zu einer **Azure SQL-Datenbank**, oder erstellen Sie eine, um eine Datenbank, einen Server und eine Ressourcengruppe zu erstellen. Dabei können Sie die Standardwerte und den günstigsten Tarif verwenden. Die Erstellung eines Servers hat unter anderem den Vorteil, dass Sie einen Administratorbenutzernamen und ein Kennwort angeben können. Diese werden in einem späteren Schritt zum Erstellen und Laden von Tabellen benötigt.
 
    ![Seite für die neue Datenbank](./media/search-indexer-tutorial/indexer-new-sqldb.png)
 
@@ -156,13 +129,13 @@ In der folgenden Übung wird davon ausgegangen, dass weder ein Server noch eine 
 
     ```json
     {
-      "SearchServiceName": "azs-tutorial",
-      "SearchServiceAdminApiKey": "A1B2C3D4E5F6G7H8I9J10K11L12M13N14",
+      "SearchServiceName": "<placeholder-Azure-Search-service-name>",
+      "SearchServiceAdminApiKey": "<placeholder-admin-key-for-Azure-Search>",
       "AzureSqlConnectionString": "Server=tcp:hotels-db.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security  Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
     }
     ```
 
-## <a name="understand-index-and-indexer-code"></a>Grundlegendes zum Code für Index und Indexer
+## <a name="understand-the-code"></a>Grundlegendes zum Code
 
 Der Code kann jetzt erstellt und ausgeführt werden. Nehmen Sie sich zuvor kurz Zeit, um sich die Index- und Indexerdefinition für dieses Beispiel etwas genauer anzusehen. Der relevante Code befindet sich in zwei Dateien:
 

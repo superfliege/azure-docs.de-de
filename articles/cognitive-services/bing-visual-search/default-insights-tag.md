@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: conceptual
-ms.date: 04/17/2018
+ms.date: 04/04/2019
 ms.author: scottwhi
-ms.openlocfilehash: 4805b36c48476727938840672a9cdf82506f1d13
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b6bc323f4e8deaf975c292f92d862b1fbe0e2714
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862869"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469386"
 ---
 # <a name="default-insights-tag"></a>Standardinformationstag
 
@@ -100,7 +100,7 @@ Das Standardinformationstag ist das Tag, bei dem für das Feld `displayName` ein
 
 ## <a name="pagesincluding-insight"></a>Auswertung vom Typ PagesIncluding
 
-Die Auswertung vom Typ PagesIncluding bietet eine Liste von Webseiten, die dieses Bild enthalten. Es ist eigentlich eine Liste von Image-Objekten, und das `hostPageUrl`-Feld enthält die URL der Webseite, die das Bild enthält. Ein Verwendungsbeispiel finden Sie unter [Beispiel für PagesIncluding](./bing-insights-usage.md#pagesincluding-insight-example). 
+Die Auswertung vom Typ PagesIncluding bietet eine Liste von Webseiten, die dieses Bild enthalten. Es ist eigentlich eine Liste von `Image`-Objekten, und das `hostPageUrl`-Feld enthält die URL der Webseite, die das Bild enthält. Eine Beispielverwendung finden Sie unter [Beispiel für die Auswertung vom Typ PagesIncluding](./bing-insights-usage.md#pagesincluding-insight-example).
 
 ```json
       {
@@ -166,10 +166,9 @@ Die Auswertung vom Typ ShoppingSources bietet eine Liste von Websites, auf denen
       }
 ```
 
-
 ## <a name="moresizes-insight"></a>Auswertung vom Typ MoreSizes
 
-Die Auswertung vom Typ MoreSizes gibt die Anzahl unterschiedlicher Größen des Bilds (größer oder kleiner) an, die von Bing im Internet gefunden wurde (siehe `availableSizesCount`-Feld).
+Die Auswertung vom Typ MoreSizes gibt die Anzahl unterschiedlicher Größen des Bilds (größer oder kleiner) an, die von Bing im Internet gefunden wurde (siehe `availableSizesCount`-Feld):
 
 ```json
       {
@@ -204,7 +203,7 @@ Die Auswertung vom Typ MoreSizes gibt die Anzahl unterschiedlicher Größen des 
 
 ## <a name="visualsearch-insight"></a>Auswertung vom Typ VisualSearch
 
-Die Auswertung vom Typ VisualSearch bietet eine Liste von Bildern, die dem ursprünglichen Bild ähneln (einen ähnlichen Inhalt wie das ursprüngliche Bild aufweisen). Ein Verwendungsbeispiel finden Sie unter [Beispiel für VisualSearch](./bing-insights-usage.md#visualsearch-insight-example).
+Die Auswertung vom Typ VisualSearch bietet eine Liste von Bildern, die dem ursprünglichen Bild ähneln (einen ähnlichen Inhalt wie das ursprüngliche Bild aufweisen). Ein Verwendungsbeispiel finden Sie unter [Beispiel für die Auswertung vom Typ VisualSearch](./bing-insights-usage.md#visualsearch-insight-example).
 
 ```json
       {
@@ -244,7 +243,7 @@ Die Auswertung vom Typ VisualSearch bietet eine Liste von Bildern, die dem urspr
 
 ## <a name="recipes-insight"></a>Auswertung vom Typ Recipes
 
-Die Auswertung vom Typ Recipes bietet eine Liste von Webseiten, die ein Rezept für das auf dem Bild gezeigte Nahrungsmittel enthalten. Ein Verwendungsbeispiel finden Sie unter [Beispiel für Recipes](./bing-insights-usage.md#recipes-insight-example).
+Die Auswertung vom Typ Recipes bietet eine Liste von Webseiten, die ein Rezept für das auf dem Bild gezeigte Nahrungsmittel enthalten. Ein Verwendungsbeispiel finden Sie unter [Beispiel für die Auswertung vom Typ Recipes](./bing-insights-usage.md#recipes-insight-example).
 
 ```json
       {
@@ -279,7 +278,7 @@ Die Auswertung vom Typ Recipes bietet eine Liste von Webseiten, die ein Rezept f
 
 ## <a name="imagebyid-insight"></a>Auswertung vom Typ ImageById
 
-Die Auswertung vom Typ ImageById bietet ein `Image`-Objekt des Bilds, für das Sie Auswertungen angefordert haben.
+Die Auswertung vom Typ ImageById bietet ein `Image`-Objekt des Bilds, für das Sie Auswertungen angefordert haben:
 
 ```json
       {
@@ -312,10 +311,9 @@ Die Auswertung vom Typ ImageById bietet ein `Image`-Objekt des Bilds, für das S
       },
 ```
 
-
 ## <a name="productvisualsearch-insight"></a>Auswertung vom Typ ProductVisualSearch
 
-Die Auswertung vom Typ ProductVisualSearch bietet eine Liste mit Bildern von Produkten, die den im ursprünglichen Bild gezeigten Produkten ähneln. Das Feld `insightsMetadata` kann Informationen zu Angeboten für den Erwerb des Produkts und zum Preis des Produkts enthalten. 
+Die Auswertung vom Typ ProductVisualSearch bietet eine Liste mit Bildern von Produkten, die den im ursprünglichen Bild gezeigten Produkten ähneln. Das Feld `insightsMetadata` kann Informationen zu Angeboten für den Erwerb des Produkts und zum Preis des Produkts enthalten.
 
 ```json
       {
@@ -377,11 +375,9 @@ Die Auswertung vom Typ ProductVisualSearch bietet eine Liste mit Bildern von Pro
       }
 ```
 
-
 ## <a name="relatedsearches-insight"></a>Auswertung vom Typ RelatedSearches
 
-Die Auswertung vom Typ RelatedSearches bietet eine Liste verwandter Suchvorgänge, die von anderen Personen durchgeführt wurden (basierend auf den Suchbegriffen anderer Benutzer). Ein Verwendungsbeispiel finden Sie unter [Beispiel für RelatedSearches](./bing-insights-usage.md#relatedsearches-insight-example).
-
+Die Auswertung vom Typ RelatedSearches bietet eine Liste verwandter Suchvorgänge, die von anderen Personen durchgeführt wurden (basierend auf den Suchbegriffen anderer Benutzer). Ein Verwendungsbeispiel finden Sie unter [Beispiel für die Auswertung vom Typ RelatedSearches](./bing-insights-usage.md#relatedsearches-insight-example).
 
 ```json
       {
@@ -402,10 +398,9 @@ Die Auswertung vom Typ RelatedSearches bietet eine Liste verwandter Suchvorgäng
       }
 ```
 
-
 ## <a name="documentlevelsuggestions-insight"></a>Auswertung vom Typ DocumentLevelSuggestions
 
-Die Auswertung vom Typ DocumentLevelSuggestions bietet eine Liste vorgeschlagener Suchbegriffe basierend auf dem Inhalt des Bilds. 
+Die Auswertung vom Typ DocumentLevelSuggestions bietet eine Liste vorgeschlagener Suchbegriffe basierend auf dem Inhalt des Bilds:
 
 ```json
       {
@@ -426,10 +421,8 @@ Die Auswertung vom Typ DocumentLevelSuggestions bietet eine Liste vorgeschlagene
       }
 ```
 
-
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich Beispiele für die Anzeige von visuellen Auswertungen in Bing an (siehe [Beispiele für die Nutzung von Bing-Auswertungen](bing-insights-usage.md)).
+Sehen Sie sich [Beispiele für die Verwendung von Auswertungen in Bing](bing-insights-usage.md) an, um zu erfahren, wie Bing möglicherweise die visuellen Auswertungen anzeigt.
 
 Die folgenden Schnellstartanleitungen ermöglichen einen schnellen Einstieg in die Verwendung Ihrer ersten Anforderung: [C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md).

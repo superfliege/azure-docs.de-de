@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/15/2019
 ms.author: wesmc
-ms.openlocfilehash: b7a46fab296fa8d585f1ae70dcf278e6686cca64
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e3b0c0703cb46087db38121055117b50f97ad03f
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520597"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006575"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Schnellstart: Steuern eines mit einem IoT-Hub verbundenen Geräts (Android)
 
@@ -35,13 +35,17 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-
 * Android Studio (https://developer.android.com/studio/). Weitere Informationen zur Android Studio-Installation finden Sie unter [Install Android Studio](https://developer.android.com/studio/install) (Installieren von Android Studio).
 
 * In dem Beispiel in diesem Artikel wird Android SDK 27 verwendet.
 
-* Für diese Schnellstartanleitung sind zwei Beispielanwendungen erforderlich: die [Android-Beispielanwendung für das Geräte-SDK](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample) und die [Android-Beispielanwendung für das Dienst-SDK](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/service/AndroidSample). Beide Beispiele finden Sie im Repository „azure-iot-samples-java“ auf GitHub. Laden Sie das Repository [azure-iot-samples-java](https://github.com/Azure-Samples/azure-iot-samples-java) herunter, oder klonen Sie es.
+* Führen Sie den folgenden Befehl aus, um Ihrer Cloud Shell-Instanz die Microsoft Azure IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle hinzuzufügen. Die IoT-Erweiterung fügt der Azure-Befehlszeilenschnittstelle spezifische Befehle für IoT Hub, IoT Edge und IoT Device Provisioning Service (DPS) hinzu.
 
+   ```azurecli-interactive
+   az extension add --name azure-cli-iot-ext
+   ```
+
+* Für diese Schnellstartanleitung sind zwei Beispielanwendungen erforderlich: die [Android-Beispielanwendung für das Geräte-SDK](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/device/AndroidSample) und die [Android-Beispielanwendung für das Dienst-SDK](https://github.com/Azure-Samples/azure-iot-samples-java/tree/master/iot-hub/Samples/service/AndroidSample). Beide Beispiele finden Sie im Repository „azure-iot-samples-java“ auf GitHub. Laden Sie das Repository [azure-iot-samples-java](https://github.com/Azure-Samples/azure-iot-samples-java) herunter, oder klonen Sie es.
 
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
 
@@ -55,14 +59,13 @@ Wenn Sie das vorherige Tutorial [Schnellstart: Senden von IoT-Telemetriedaten vo
 
 Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung herstellen zu können. In dieser Schnellstartanleitung verwenden Sie Azure Cloud Shell, um ein simuliertes Gerät zu registrieren.
 
-1. Führen Sie die folgenden Befehle in Azure Cloud Shell aus, um die IoT Hub-CLI-Erweiterung hinzuzufügen und die Geräteidentität zu erstellen.
+1. Führen Sie in Azure Cloud Shell den folgenden Befehl aus, um die Geräteidentität zu erstellen.
 
    **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben.
 
    **MyAndroidDevice**: Der für das registrierte Gerät angegebene Name. Verwenden Sie „MyAndroidDevice“ wie gezeigt. Wenn Sie für Ihr Gerät einen anderen Namen wählen, müssen Sie diesen unter Umständen innerhalb des gesamten Artikels verwenden und den Gerätenamen in den Beispielanwendungen aktualisieren, bevor Sie sie ausführen.
 
     ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
     az iot hub device-identity create \
       --hub-name YourIoTHubName --device-id MyAndroidDevice
     ```
@@ -117,10 +120,10 @@ Die Geräte-SDK-Beispielanwendung kann auf einem physischen Android-Gerät oder 
 3. Klicken Sie in Android Studio auf **File** > **Sync Project with Gradle Files** (Datei > Projekt mit Gradle-Dateien synchronisieren). Vergewissern Sie sich, dass der Buildvorgang abgeschlossen wurde.
 
    > [!NOTE]
-   > Wenn bei der Synchronisierung des Projekts ein Fehler auftritt, kann einer der folgenden Gründe infrage kommen:
+   > Sollte bei der Synchronisierung des Projekts ein Fehler auftreten, kann einer der folgenden Gründe vorliegen:
    >
-   > * Die Versionen von Android Gradle-Plug-In und Gradle, auf die im Projekt verwiesen wird, sind für Ihre Version von Android Studio veraltet. Befolgen Sie [diese Anweisungen](https://developer.android.com/studio/releases/gradle-plugin), um die richtigen Versionen des Plug-Ins und von Gradle für Ihre Installation zu installieren und auf sie zu verweisen.
-   > * Der Lizenzvertrag für das Android SDK wurde nicht signiert. Befolgen Sie die Anweisungen in der Buildausgabe, um den Lizenzvertrag zu signieren, und laden Sie das SDK herunter.
+   > * Die Versionen von Android Gradle-Plug-In und Gradle, auf die im Projekt verwiesen wird, sind für Ihre Version von Android Studio veraltet. Gehen Sie wie [hier](https://developer.android.com/studio/releases/gradle-plugin) beschrieben vor, um die richtige Plug-In- und Gradle-Version für Ihre Installation zu installieren und auf sie zu verweisen.
+   > * Der Lizenzvertrag für das Android SDK wurde nicht unterzeichnet. Befolgen Sie die Anweisungen in der Buildausgabe, um den Lizenzvertrag zu unterzeichnen, und laden Sie das SDK herunter.
 
 
 4. Klicken Sie anschließend auf **Run** > **Run 'app'** (Ausführen > App ausführen). Konfigurieren Sie die App für die Ausführung auf einem physischen Android-Gerät oder in einem Android-Emulator. Weitere Informationen zum Ausführen einer Android-App auf einem physischen Gerät oder in einem Emulator finden Sie unter [Run your app](https://developer.android.com/training/basics/firstapp/running-app) (Ausführen Ihrer App).
@@ -172,10 +175,10 @@ Eine IoT Hub-Back-End-Dienstanwendung wird in der Regel in der Cloud ausgeführt
 3. Klicken Sie in Android Studio auf **File** > **Sync Project with Gradle Files** (Datei > Projekt mit Gradle-Dateien synchronisieren). Vergewissern Sie sich, dass der Buildvorgang abgeschlossen wurde.
 
    > [!NOTE]
-   > Wenn bei der Synchronisierung des Projekts ein Fehler auftritt, kann einer der folgenden Gründe infrage kommen:
+   > Sollte bei der Synchronisierung des Projekts ein Fehler auftreten, kann einer der folgenden Gründe vorliegen:
    >
-   > * Die Versionen von Android Gradle-Plug-In und Gradle, auf die im Projekt verwiesen wird, sind für Ihre Version von Android Studio veraltet. Befolgen Sie [diese Anweisungen](https://developer.android.com/studio/releases/gradle-plugin), um die richtigen Versionen des Plug-Ins und von Gradle für Ihre Installation zu installieren und auf sie zu verweisen.
-   > * Der Lizenzvertrag für das Android SDK wurde nicht signiert. Befolgen Sie die Anweisungen in der Buildausgabe, um den Lizenzvertrag zu signieren, und laden Sie das SDK herunter.
+   > * Die Versionen von Android Gradle-Plug-In und Gradle, auf die im Projekt verwiesen wird, sind für Ihre Version von Android Studio veraltet. Gehen Sie wie [hier](https://developer.android.com/studio/releases/gradle-plugin) beschrieben vor, um die richtige Plug-In- und Gradle-Version für Ihre Installation zu installieren und auf sie zu verweisen.
+   > * Der Lizenzvertrag für das Android SDK wurde nicht unterzeichnet. Befolgen Sie die Anweisungen in der Buildausgabe, um den Lizenzvertrag zu unterzeichnen, und laden Sie das SDK herunter.
 
 
 4. Klicken Sie anschließend auf **Run** > **Run 'app'** (Ausführen > App ausführen). Konfigurieren Sie die App für die Ausführung auf einem separaten physischen Android-Gerät oder in einem Android-Emulator. Weitere Informationen zum Ausführen einer Android-App auf einem physischen Gerät oder in einem Emulator finden Sie unter [Run your app](https://developer.android.com/training/basics/firstapp/running-app) (Ausführen Ihrer App).

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 12/17/2018
+ms.date: 04/08/2019
 ms.author: diberry
-ms.openlocfilehash: dd60897d19ef4de7369b2b127c88e778363a387f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e9f8d274d81cdefbf9dfb41708cd537b2d60471a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852267"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273463"
 ---
 # <a name="quickstart-change-model-using-c"></a>Schnellstart: Ändern des Modells mit C#
 
@@ -37,13 +37,13 @@ ms.locfileid: "57852267"
 
 ## <a name="create-quickstart-code"></a>Erstellen des Schnellstartcodes 
 
-Erstellen Sie in Visual Studio mithilfe von .Net Framework eine neue App für eine **klassische Windows-Desktopkonsole**. 
+Erstellen Sie in Visual Studio mithilfe von .Net Framework eine neue App für eine **klassische Windows-Desktopkonsole**. Geben Sie dem Projekt den Namen `ConsoleApp1`.
 
 ![Visual Studio-Projekttyp](./media/luis-quickstart-cs-add-utterance/vs-project-type.png)
 
 ### <a name="add-the-systemweb-dependency"></a>Hinzufügen der System.Web-Abhängigkeit
 
-Für das Visual Studio-Projekt ist **System.Web** erforderlich. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Verweise** und dann auf **Verweis hinzufügen**.
+Für das Visual Studio-Projekt ist **System.Web** erforderlich. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Verweise**, und wählen Sie im Abschnitt mit den Assemblys die Option **Verweis hinzufügen** aus.
 
 ![Hinzufügen des Verweises auf „System.web“](./media/luis-quickstart-cs-add-utterance/system.web.png)
 
@@ -64,7 +64,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp3
+namespace ConsoleApp1
 {
     class Program
     {
@@ -75,7 +75,7 @@ namespace ConsoleApp3
 }
 ```
 
-Fügen Sie die Abhängigkeiten hinzu.
+Aktualisieren Sie die Abhängigkeiten wie folgt:
 
    [!code-csharp[Add the dependencies](~/samples-luis/documentation-samples/quickstarts/change-model/csharp/ConsoleApp1/Program.cs?range=1-11 "Add the dependencies")]
 
@@ -115,7 +115,7 @@ Fügen Sie zum Verwalten von Befehlszeilenargumenten den Hauptcode hinzu. Fügen
 
 ### <a name="copy-utterancesjson-to-output-directory"></a>Kopieren von „utterances.json“ in das Ausgabeverzeichnis
 
-Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf `utterances.json`, und wählen Sie **Eigenschaften** aus. Markieren Sie im Fenster mit den Eigenschaften **Buildaktion** von `Content` und **In Ausgabeverzeichnis kopieren** von `Copy Always`.  
+Fügen Sie im Projektmappen-Explorer die Datei `utterances.json` hinzu. Klicken Sie hierzu im Projektmappen-Explorer mit der rechten Maustaste auf den Projektnamen, und wählen Sie anschließend **Hinzufügen** > **Vorhandenes Element** aus. Wählen Sie die Datei `utterances.json` aus. Dadurch wird die Datei dem Projekt hinzugefügt. Anschließend muss sie dem Ausgabeverzeichnis hinzugefügt werden. Klicken Sie mit der rechten Maustaste auf die Datei `utterances.json`, und wählen Sie **Eigenschaften** aus. Markieren Sie im Fenster mit den Eigenschaften **Buildaktion** von `Content` und **In Ausgabeverzeichnis kopieren** von `Copy Always`.  
 
 ![Markieren der JSON-Datei als Inhalt](./media/luis-quickstart-cs-add-utterance/content-properties.png)
 
@@ -128,7 +128,7 @@ Erstellen Sie den Code in Visual Studio.
 Führen Sie die Anwendung im Verzeichnis „/bin/Debug“ des Projekts über eine Befehlszeile aus. 
 
 ```console
-ConsoleApp\bin\Debug> ConsoleApp1.exe --add utterances.json --train --status
+ConsoleApp1.exe --add utterances.json --train --status
 ```
 
 Die folgende Befehlszeile zeigt das Ergebnis des Aufrufs der API zum Hinzufügen von Äußerungen an. 
@@ -140,4 +140,4 @@ Entfernen Sie nach dem Durchführen dieses Schnellstarts alle Dateien, die Sie i
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"] 
-> [Programmgesteuertes Erstellen einer LUIS-App](luis-tutorial-node-import-utterances-csv.md) 
+> [Programmgesteuertes Erstellen einer LUIS-App mit Node.js](luis-tutorial-node-import-utterances-csv.md) 

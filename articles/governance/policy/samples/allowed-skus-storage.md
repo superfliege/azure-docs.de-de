@@ -1,19 +1,18 @@
 ---
 title: 'Beispiel: Zulässige SKUs für Speicherkonten und virtuelle Computer'
 description: Diese Beispielrichtliniendefinition erfordert, dass Speicherkonten und virtuelle Computer genehmigte SKUs verwenden.
-services: azure-policy
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 7488231363b0cbf96e25da28751065012754212e
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 088dd8414c93b609326e7cd72828426dcb00fc28
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803781"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274568"
 ---
 # <a name="sample---allowed-skus-for-storage-accounts-and-virtual-machines"></a>Beispiel: Zulässige SKUs für Speicherkonten und virtuelle Computer
 
@@ -29,7 +28,7 @@ Sie können diese Vorlage über das [Azure-Portal](#deploy-with-the-portal) oder
 
 ## <a name="deploy-with-the-portal"></a>Bereitstellen über das Portal
 
-[![Bereitstellen des Policy-Beispiels in Azure](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
+[![DBereitstellen des Policy-Beispiels in Azure](https://azuredeploy.net/deploybutton.png)](https://aka.ms/getpolicy)
 
 ## <a name="deploy-with-powershell"></a>Bereitstellen mit PowerShell
 

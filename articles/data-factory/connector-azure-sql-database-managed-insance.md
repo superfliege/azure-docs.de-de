@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 782027f19d4e82f26fc1265f25b86223386d7182
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9cb3c028c14e6c47d47eafcf6279a918c0917442
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57903384"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272205"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Kopieren von Daten auf eine bzw. von einer verwalteten Azure SQL-Datenbank-Instanz mit Azure Data Factory
 
@@ -62,7 +62,7 @@ Folgende Eigenschaften werden für den mit der verwalteten Azure SQL-Datenbank-I
 >[!TIP]
 >Möglicherweise wird der Fehlercode "UserErrorFailedToConnectToSqlServer" mit einer Meldung wie „Das Sitzungslimit für die Datenbank beträgt XXX und wurde erreicht“ angezeigt. Wenn dieser Fehler auftritt, fügen Sie `Pooling=false` zu Ihrer Verbindungszeichenfolge hinzu, und versuchen Sie es erneut.
 
-**Beispiel 1: SQL-Authentifizierung verwenden**
+**Beispiel 1: Verwenden der SQL-Authentifizierung**
 
 ```json
 {
@@ -83,7 +83,7 @@ Folgende Eigenschaften werden für den mit der verwalteten Azure SQL-Datenbank-I
 }
 ```
 
-**Beispiel 2: Verwenden der SQL-Authentifizierung mit Kennwort in Azure Key Vault**
+**Beispiel 2: Verwenden der SQL-Authentifizierung mit Kennwort in Azure Key Vault**
 
 ```json
 {
@@ -112,7 +112,7 @@ Folgende Eigenschaften werden für den mit der verwalteten Azure SQL-Datenbank-I
 }
 ```
 
-**Beispiel 3: Windows-Authentifizierung verwenden**
+**Beispiel 3: Verwenden der Windows-Authentifizierung**
 
 ```json
 {
@@ -282,7 +282,7 @@ Legen Sie zum Kopieren von Daten auf die verwaltete Azure SQL-Datenbank-Instanz 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Senke der Kopieraktivität muss auf **SqlSink** festgelegt sein. | Ja. |
-| writeBatchSize |Diese Eigenschaft fügt Daten in die SQL-Tabelle ein, wenn die Puffergröße „writeBatchSize“ erreicht.<br/>Zulässige Werte sind Integer-Werte für die Anzahl der Zeilen. |Nein (Standardwert: 10.000). |
+| writeBatchSize |Anzahl der Zeilen, die in die SQL-Tabelle **pro Batch** eingefügt werden sollen.<br/>Zulässige Werte sind Integer-Werte für die Anzahl der Zeilen. |Nein (Standardwert: 10.000). |
 | writeBatchTimeout |Diese Eigenschaft gibt die Wartezeit für den Abschluss der Batcheinfügung an, bevor ein Timeout auftritt.<br/>Zulässige Werte werden für die Zeitspanne verwendet. Ein Beispiel ist „00:30:00“. Das sind 30 Minuten. | Nein. |
 | preCopyScript |Diese Eigenschaft gibt eine auszuführende SQL-Abfrage für die Kopieraktivität an, ehe Daten auf die verwaltete Instanz geschrieben werden. Sie wird pro Ausführung der Kopieraktivität nur einmal aufgerufen. Sie können diese Eigenschaft nutzen, um die vorab geladenen Daten zu bereinigen. | Nein. |
 | sqlWriterStoredProcedureName |Dies ist der Name der gespeicherten Prozedur, die definiert, wie Quelldaten auf eine Zieltabelle angewandt werden. Ein Beispiel für diese Prozedur ist die Ausführung eines Upsert-Vorgangs bzw. einer Transformation mithilfe einer eigenen Geschäftslogik. <br/><br/>Diese gespeicherte Prozedur wird *pro Batch aufgerufen*. Auf einen Vorgang auszuführen, der nur einmal ausgeführt wird und nicht mit Quelldaten in Zusammenhang steht (etwa Löschen/Kürzen), verwenden Sie die `preCopyScript`-Eigenschaft. | Nein. |
@@ -292,7 +292,7 @@ Legen Sie zum Kopieren von Daten auf die verwaltete Azure SQL-Datenbank-Instanz 
 > [!TIP]
 > Beim Kopieren von Daten auf die verwaltete Azure SQL-Datenbank-Instanz fügt die Kopieraktivität standardmäßig Daten an die Senkentabelle an. Um einen UPSERT-Vorgang oder zusätzliche Geschäftslogik auszuführen, verwenden Sie die in „SqlSink“ gespeicherte Prozedur. Weitere Informationen finden Sie unter [Aufrufen von gespeicherten Prozeduren aus einer SQL-Senke](#invoke-a-stored-procedure-from-a-sql-sink).
 
-**Beispiel 1: Anfügen von Daten**
+**Beispiel 1: Anfügen von Daten**
 
 ```json
 "activities":[
@@ -324,7 +324,7 @@ Legen Sie zum Kopieren von Daten auf die verwaltete Azure SQL-Datenbank-Instanz 
 ]
 ```
 
-**Beispiel 2: Aufrufen einer gespeicherten Prozedur während des Kopierens für einen Upsert-Vorgang**
+**Beispiel 2: Aufrufen einer gespeicherten Prozedur während des Kopierens für einen Upsert-Vorgang**
 
 Weitere Informationen finden Sie unter [Aufrufen einer gespeicherten Prozedur aus einer SQL-Senke](#invoke-a-stored-procedure-from-a-sql-sink).
 
@@ -390,7 +390,7 @@ create table dbo.TargetTbl
 
 Beachten Sie, dass die Zieltabelle über eine Identitätsspalte verfügt.
 
-**Definition der Quell-Dataset-JSON**
+**JSON-Definition des Quelldatasets**
 
 ```json
 {
@@ -408,7 +408,7 @@ Beachten Sie, dass die Zieltabelle über eine Identitätsspalte verfügt.
 }
 ```
 
-**Definition der Ziel-Dataset-JSON**
+**JSON-Definition des Zieldatasets**
 
 ```json
 {
@@ -438,9 +438,9 @@ Beim Kopieren von Daten auf die verwaltete Azure SQL-Datenbank-Instanz kann eine
 
 Sie können eine gespeicherte Prozedur nutzen, wenn integrierte Kopiermechanismen nicht den Zweck erfüllen. Sie werden in der Regel verwendet, wenn ein Upsert-Vorgang (Update + Einfügen) oder eine zusätzliche Verarbeitung erfolgen muss, bevor die letzte Einfügung von Quelldaten in die Zieltabelle durchgeführt wird. Zusätzliche Verarbeitungen können Aufgaben wie das Zusammenführen von Spalten, die Suche nach zusätzlichen Werten und das Einfügen in mehrere Tabellen beinhalten.
 
-Das folgende Beispiel zeigt, wie Sie eine gespeicherte Prozedur verwenden, um einen einfachen upsert-Vorgang in eine Tabelle der verwalteten Instanz auszuführen. Im Beispiel wird angenommen, dass Eingabedaten vorhanden sind und die Senkentabelle „Marketing“ drei Spalten enthält: „ProfileID“, „State“ und „Category“. Führen Sie einen upsert-Vorgang basierend auf der Spalte „ProfileID“ aus, der nur für eine bestimmte Kategorie gelten soll.
+Das folgende Beispiel zeigt, wie Sie eine gespeicherte Prozedur verwenden, um einen einfachen Upsert-Vorgang in eine Tabelle in der SQL Server-Datenbank auszuführen. Wenn Eingabedaten vorhanden sind und die Senkentabelle **Marketing** heißt, sind drei Spalten vorhanden: **ProfileID**, **State** und **Category**. Führen Sie den Upsert-Vorgang basierend auf der Spalte **ProfileID** aus, und wenden Sie ihn nur auf eine bestimmte Kategorie an.
 
-**Ausgabedataset**
+**Ausgabedataset:** Der „tableName“ sollte in Ihrer gespeicherten Prozedur denselben Tabellentypparameternamen haben. Im Folgenden finden Sie das Skript für die gespeicherte Prozedur.
 
 ```json
 {
@@ -459,7 +459,7 @@ Das folgende Beispiel zeigt, wie Sie eine gespeicherte Prozedur verwenden, um ei
 }
 ```
 
-Definieren Sie den Abschnitt „SqlSink“ in der Kopieraktivität wie folgt:
+Definieren Sie den Abschnitt für die **SQL-Senke** in der Kopieraktivität wie folgt.
 
 ```json
 "sink": {
@@ -474,7 +474,7 @@ Definieren Sie den Abschnitt „SqlSink“ in der Kopieraktivität wie folgt:
 }
 ```
 
-Definieren Sie die gespeicherte Prozedur in der Datenbank mit demselben Namen wie "SqlWriterStoredProcedureName". Sie verarbeitet die Eingabedaten aus der angegebenen Quelle und führt sie mit der Ausgabetabelle zusammen. Der Parametername des Tabellentyps in der gespeicherten Prozedur muss mit dem Element „tableName“ identisch sein, das im Dataset definiert ist.
+Definieren Sie die gespeicherte Prozedur in der Datenbank mit demselben Namen wie **SqlWriterStoredProcedureName**. Sie verarbeitet die Eingabedaten aus der angegebenen Quelle und führt sie mit der Ausgabetabelle zusammen. Der Parametername des Tabellentyps in der gespeicherten Prozedur muss mit dem Element **tableName** identisch sein, das im Dataset definiert ist.
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)

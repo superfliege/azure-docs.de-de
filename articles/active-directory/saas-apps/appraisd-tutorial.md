@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd7d1e3511bf74650ddc9dca1cf77c2b7c297c96
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f1beb825eda7e4d6a59810aada7063863b48d8ec
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861501"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260900"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appraisd"></a>Tutorial: Azure Active Directory-Integration mit Appraisd
 
@@ -51,7 +51,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Konfigurieren der Integration von Appraisd in Azure AD müssen Sie Appraisd aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Um Appraisd aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+**Führen Sie die folgenden Schritte aus, um Appraisd aus dem Katalog hinzuzufügen:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -161,7 +161,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Appraisd
 
 1. Melden Sie sich in einem anderen Webbrowserfenster als Sicherheitsadministrator bei Appraisd an.
 
-2. Klicken Sie oben rechts auf der Seite auf das Symbol **Settings** (Einstellungen), und navigieren Sie dann zu **Configuration** (Konfiguration).
+2. Klicken Sie oben rechts auf der Seite auf das Symbol **Settings** (Einstellungen), und navigieren Sie dann zu **Configuration** (Konfiguration).
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_sett.png)
 
@@ -173,9 +173,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Appraisd
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
 
-    a. Kopieren Sie den Wert für den **Standardrelayzustand**, und fügen Sie ihn im Azure-Portal im Abschnitt  **Grundlegende SAML-Konfiguration** in das Textfeld  **Relayzustand** ein.
+    a. Kopieren Sie den Wert für den **Standardrelayzustand**, und fügen Sie ihn in das Textfeld **Relayzustand** im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ein.
 
-    b. Kopieren Sie den Wert unter **Service-initiated login URL** (Vom Dienst initiierte Anmelde-URL), und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Textfeld **Anmelde-URL** ein.
+    b. Kopieren Sie den Wert für die **Vom Dienst initiierte Anmelde-URL**, und fügen Sie ihn in das Textfeld **Anmelde-URL** im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ein.
 
 5. Scrollen Sie auf derselben Seite nach unten, und führen Sie unter **Benutzer werden identifiziert** die folgenden Schritte aus:
 
@@ -185,7 +185,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Appraisd
 
     b. Fügen Sie in das Textfeld **Aussteller-URL des Identitätsanbieters** den Wert des **Azure AD-Bezeichners** ein, den Sie aus dem Azure-Portal kopiert haben, und klicken Sie auf **Speichern**.
 
-    c. Öffnen Sie in Editor das Base64-codierte Zertifikat, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt, und fügen Sie ihn anschließend in das Feld **X.509-Zertifikat** ein. Klicken Sie dann auf **Speichern**.
+    c. Öffnen Sie in Editor das Base64-codierte Zertifikat, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt, und fügen Sie ihn anschließend in das Feld **X.509-Zertifikat** ein, und klicken Sie auf **Speichern**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -246,11 +246,11 @@ Damit sich Azure AD-Benutzer bei Appraisd anmelden können, müssen sie in Appra
 
 1. Melden Sie sich bei Appraisd als Sicherheitsadministrator an.
 
-2. Klicken Sie oben rechts auf der Seite auf das Symbol **Settings** (Einstellungen), und navigieren Sie dann zu **Administration centre** (Verwaltungscenter).
+2. Klicken Sie oben rechts auf der Seite auf das Symbol **Settings** (Einstellungen), und navigieren Sie dann zu **Administration Centre**.
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
 
-3. Klicken Sie auf der Symbolleiste am oberen Rand der Seite auf **People** (Personen), und navigieren Sie dann zu **Add a new user** (Neuen Benutzer hinzufügen).
+3. Klicken Sie auf der Symbolleiste am oberen Rand der Seite auf **People** (Personen), und navigieren Sie dann zu **Add a new user** (Neuen Benutzer hinzufügen).
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_user.png)
 

@@ -2,7 +2,7 @@
 title: Prüfpunkte und Wiedergabe in Durable Functions – Azure
 description: Es wird beschrieben, wie das Setzen von Prüfpunkten und die Wiedergabe in der Erweiterung „Durable Functions“ für Azure Functions funktioniert.
 services: functions
-author: kashimiz
+author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 9edcc313a9e88b657337ba631218388f70d4b41f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b1fd31a758501620129fdbbc532b8defcf927045
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086750"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607346"
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Prüfpunkte und Wiedergabe in Durable Functions (Azure Functions)
 

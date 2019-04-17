@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
-ms.openlocfilehash: a67cbd3bfca478a45e12adeb0bf119b891866718
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: d1e4af6e73c272a7ccc8996b0ccc854be64dd74b
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905238"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006350"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Systemanforderungen für Azure Data Box Edge
 
@@ -101,6 +101,37 @@ Es empfiehlt sich, die Firewallregeln für den ausgehenden Verkehr basierend auf
 ## <a name="internet-bandwidth"></a>Internetbandbreite
 
 [!INCLUDE [Internet bandwidth](../../includes/data-box-edge-gateway-internet-bandwidth.md)]
+
+## <a name="compute-sizing-considerations"></a>Berechnen von Überlegungen zur Größenanpassung
+
+Nutzen Sie Ihre Erfahrung bei der Entwicklung und dem Testen Ihrer Lösung, um sicherzustellen, dass auf Ihrem Data Box Edge-Gerät ausreichend Kapazität vorhanden ist und Sie die optimale Leistung Ihres Geräts erhalten.
+
+Zu den zu berücksichtigenden Faktoren gehören:
+
+- **Containerdetails**: Bedenken Sie Folgendes.
+
+    - Wie viele Container umfasst Ihre Workload? Sie könnten eine Vielzahl von leichten Containern anstelle von einigen ressourcenintensiven Containern verwenden.
+    - Welche Ressourcen sind diesen Containern zugeordnet im Vergleich zu den von ihnen verbrauchten Ressourcen?
+    - Wie viele Ebenen werden von den Containern gemeinsam genutzt?
+    - Gibt es nicht verwendete Container? Ein angehaltener Container belegt weiterhin Speicherplatz.
+    - In welcher Sprache sind Ihre Container geschrieben?
+- **Umfang der verarbeiteten Daten**: Wie viele Daten werden Ihre Container verarbeiten? Werden diese Daten Speicherplatz verbrauchen oder werden die Daten im Arbeitsspeicher verarbeitet?
+- **Erwartete Leistung**: Was sind die gewünschten Leistungsmerkmale Ihrer Lösung? 
+
+Um die Leistung Ihrer Lösung zu verstehen und zu optimieren, können Sie Folgendes verwenden:
+
+- Die im Azure-Portal verfügbaren Computemetriken. Wechseln Sie zu Ihrer Data Box Edge-Ressource und dann zu **Überwachung > Metriken**. Betrachten Sie **Edgecomputing – Arbeitsspeichernutzung** und **Edgecomputing – CPU in Prozent**, um die verfügbaren Ressourcen zu verstehen und wie die Ressourcen verbraucht werden.
+- Die über die PowerShell-Schnittstelle des Geräts verfügbaren Überwachungsbefehle wie:
+
+    - `dkr` Statistiken zum Abrufen eines Livestreams der Ressourcennutzungsstatistiken für Container. Der Befehl unterstützt Metriken zu CPU, Arbeitsspeicherauslastung, Arbeitsspeicherlimit und Netzwerk-E/A.
+    - `dkr system df` um Informationen bezüglich des belegten Speicherplatzes zu erhalten. 
+    - `dkr image [prune]` um nicht verwendete Images zu löschen und Speicherplatz freizugeben.
+    - `dkr ps --size` um die ungefähre Größe eines aktiven Containers anzuzeigen. 
+
+    Weitere Informationen zu den verfügbaren Befehlen finden Sie unter [Überwachung und Problembehandlung von Computemodulen](data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules).
+
+Stellen Sie abschließend sicher, dass Sie Ihre Lösung für Ihr Dataset validieren und die Leistung auf Data Box Edge quantifizieren, bevor Sie sie in der Produktionsumgebung bereitstellen.
+
 
 ## <a name="next-step"></a>Nächster Schritt
 

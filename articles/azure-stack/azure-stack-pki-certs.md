@@ -16,12 +16,12 @@ ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/30/2019
-ms.openlocfilehash: 51ab999880dd3bfd453b0e6c2d20d8d6f9a0e093
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: d6d3cb99a55ae5eb8276391f22675a88e8b3d072
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660118"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276438"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack-PKI-Zertifikatanforderungen
 
@@ -38,7 +38,7 @@ Azure Stack verfügt über ein öffentliches Infrastrukturnetz mit extern zugän
 Die folgende Liste beschreibt die Zertifikatsanforderungen, die für die Bereitstellung von Azure Stack erfüllt sein müssen: 
 - Zertifikate müssen von einer internen oder öffentlichen Zertifizierungsstelle ausgestellt werden. Wenn eine öffentliche Zertifizierungsstelle verwendet wird, muss diese im Rahmen des Microsoft Trusted Root Authority Program in das Basisbetriebssystem-Image aufgenommen werden. Die vollständige Liste finden Sie hier: https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca 
 - Ihre Azure Stack-Infrastruktur muss über Netzwerkzugriff auf den im Zertifikat veröffentlichten Speicherort der Zertifikatsperrliste (Certificate Revocation List, CRL) der Zertifizierungsstelle verfügen. Bei dieser CRL muss es sich um einen HTTP-Endpunkt handeln.
-- Beim Rotieren von Zertifikaten müssen diese entweder von der gleichen internen Zertifizierungsstelle stammen, die auch zum Signieren der bei der Bereitstellung angegebenen Zertifikate verwendet wurde, oder von einer der oben angegebenen öffentlichen Zertifizierungsstellen.
+- Beim Rotieren von Zertifikaten in Builds vor 1903 müssen diese entweder von der gleichen internen Zertifizierungsstelle stammen, die auch zum Signieren der bei der Bereitstellung angegebenen Zertifikate verwendet wurde, oder von einer der oben angegebenen öffentlichen Zertifizierungsstellen. Ab Build 1903 können Zertifikate von einer beliebige Unternehmens- oder öffentlichen Zertifizierungsstelle ausgestellt werden.
 - Die Verwendung selbstsignierter Zertifikate wird nicht unterstützt.
 - Für Bereitstellung und Rotation können Sie entweder ein einziges Zertifikat verwenden, das alle Namespaces in den Feldern „Antragstellername“ und „Alternativer Antragstellername“ des Zertifikats abdeckt. ODER Sie können einzelne Zertifikate für jeden der folgenden Namespaces verwenden, die die Azure Stack-Dienste benötigen, deren Nutzung Sie planen. Beide Ansätze erfordern bei Bedarf die Verwendung von Platzhaltern für Endpunkte, z.B. **KeyVault** und **KeyVaultInternal**. 
 - Die PFX-Verschlüsselung des Zertifikats sollte mit 3DES erfolgen. 
@@ -86,8 +86,8 @@ Wenn Sie Azure Stack im Azure AD-Bereitstellungsmodus bereitstellen, müssen Sie
 
 |Bereitstellungsordner|Erforderlicher Zertifikatantragsteller und alternative Antragstellernamen|Bereich (pro Region)|Namespace der Unterdomäne|
 |-----|-----|-----|-----|
-|ADFS|adfs.*&lt;region>.&lt;fqdn>*<br>(SSL-Zertifikat)|ADFS|*&lt;region>.&lt;fqdn>*|
-|Graph|graph.*&lt;region>.&lt;fqdn>*<br>(SSL-Zertifikat)|Graph|*&lt;region>.&lt;fqdn>*|
+|ADFS|adfs.*&lt;region>.&lt;fqdn>*<br>(SSL-Zertifikat)|ADFS|*&lt;Region>.&lt;FQDN>*|
+|Graph|graph.*&lt;region>.&lt;fqdn>*<br>(SSL-Zertifikat)|Graph|*&lt;Region>.&lt;FQDN>*|
 |
 
 > [!IMPORTANT]

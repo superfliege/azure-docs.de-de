@@ -9,16 +9,18 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 7f6baec8fee2b046949e2d88b5fff7bb5db9b40b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 1417ecdaf6a85f491e1accfb9564e27d15e13445
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662413"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045832"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Tutorial: Teil 2: Anzeigen der weitergeleiteten Nachrichten
 
 [!INCLUDE [iot-hub-include-routing-intro](../../includes/iot-hub-include-routing-intro.md)]
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="rules-for-routing-the-messages"></a>Regeln für das Routing der Nachrichten
 
@@ -280,22 +282,22 @@ az group delete --name $resourceGroup
 
 ### <a name="use-powershell-to-clean-up-resources"></a>Verwenden von PowerShell zum Bereinigen von Ressourcen
 
-Um die Ressourcengruppe zu entfernen, verwenden Sie den Befehl [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/remove-azurermresourcegroup). `$resourceGroup` wurde zu Beginn dieses Tutorials auf **ContosoResources** festgelegt.
+Verwenden Sie zum Entfernen der Ressourcengruppe den Befehl [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup). `$resourceGroup` wurde zu Beginn dieses Tutorials auf **ContosoResources** festgelegt.
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem zweiteiligen Tutorial haben Sie erfahren, wie Sie die Nachrichtenweiterleitung verwenden, um IoT Hub-Nachrichten an verschiedene Ziele weiterzuleiten. Hierfür haben Sie folgende Aufgaben durchgeführt.  
 
-**Teil 1: Erstellen von Ressourcen, Einrichten des Nachrichtenroutings**
+**Teil I: Erstellen von Ressourcen, Einrichten des Nachrichtenroutings**
 > [!div class="checklist"]
 > * Sie erstellen die Ressourcen: einen IoT-Hub, ein Speicherkonto, eine Service Bus-Warteschlange und ein simuliertes Gerät.
 > * Sie konfigurieren die Endpunkte und Nachrichtenrouten in IoT Hub für das Speicherkonto und die Service Bus-Warteschlange.
 
-**Teil 2: Senden von Nachrichten an den Hub, Anzeigen von Routingergebnissen**
+**Teil II: Senden von Nachrichten an den Hub, Anzeigen von Routingergebnissen**
 > [!div class="checklist"]
 > * Sie erstellen eine Logik-App, die ausgelöst wird und eine E-Mail sendet, wenn der Service Bus-Warteschlange eine Nachricht hinzugefügt wird.
 > * Sie laden eine App herunter und führen sie aus, die ein IoT-Gerät simuliert, das für die verschiedenen Weiterleitungsoptionen Nachrichten an den Hub sendet.
@@ -308,4 +310,4 @@ In diesem zweiteiligen Tutorial haben Sie erfahren, wie Sie die Nachrichtenweite
 Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie den Status eines IoT-Geräts verwalten. 
 
 > [!div class="nextstepaction"]
-> [Tutorial: Set up and use metrics and diagnostic logs with an IoT hub](tutorial-use-metrics-and-diags.md) (Einrichten und Verwenden von Metriken und Diagnoseprotokollen mit einem IoT-Hub)
+> [Einrichten und Verwenden von Metriken und Diagnoseprotokollen mit einem IoT Hub](tutorial-use-metrics-and-diags.md)

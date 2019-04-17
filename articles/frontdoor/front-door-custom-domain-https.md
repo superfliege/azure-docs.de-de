@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: b3ec0616a7f022a104a20589f3281262b2717e35
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b99132cceb8981a93a8f1c10ccc488d5806f7254
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014118"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050976"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Front Door-Domäne
 
@@ -40,6 +40,9 @@ In diesem Tutorial lernen Sie Folgendes:
 > - Verwenden Ihres eigenen Zertifikats (ein benutzerdefiniertes SSL-Zertifikat)
 > - Überprüfen der Domäne
 > - Deaktivieren des HTTPS-Protokolls in Ihrer benutzerdefinierten Domäne
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -86,11 +89,11 @@ Sie können das HTTPS-Feature mit Ihrem eigenen Zertifikat aktivieren. Dabei erf
 
 Registrieren Sie den Dienstprinzipal für Azure Front Door Service als App in Azure Active Directory mithilfe von PowerShell.
 
-1. Installieren Sie bei Bedarf auf dem lokalen Computer [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM/6.0.0) in PowerShell.
+1. Installieren Sie bei Bedarf auf dem lokalen Computer [Azure PowerShell](/powershell/azure/install-az-ps) in PowerShell.
 
 2. Führen Sie in PowerShell den folgenden Befehl aus:
 
-     `New-AzureRmADServicePrincipal -ApplicationId "ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037"`              
+     `New-AzADServicePrincipal -ApplicationId "ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037"`              
 
 #### <a name="grant-azure-front-door-service-access-to-your-key-vault"></a>Gewähren von Zugriff auf Ihren Schlüsseltresor für Azure Front Door Service
  

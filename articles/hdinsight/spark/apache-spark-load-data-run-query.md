@@ -8,13 +8,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.author: hrasheed
-ms.date: 11/06/2018
-ms.openlocfilehash: ddcde2956da774e687c1e587649e65b79003bf3a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.date: 04/03/2019
+ms.openlocfilehash: 18f5d34e50a4ed4ed82a3ceb4740d594ce4bd78d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448984"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274007"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Tutorial: Laden von Daten und Ausführen von Abfragen auf einem Apache Spark-Cluster in Azure HDInsight
 
@@ -24,8 +24,6 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Erstellen eines Dataframes aus einer CSV-Datei
 > * Ausführen von Abfragen gegen Dataframes
-
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -38,7 +36,11 @@ Anwendungen können Dataframes direkt auf der Grundlage von Dateien oder Ordnern
 ![Momentaufnahme der Daten für die interaktive Spark-SQL-Abfrage](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Momentaufnahme der Daten für die interaktive Spark-SQL-Abfrage")
 
 
-1. Öffnen Sie das Jupyter Notebook, das Sie im Voraussetzungenabschnitt erstellt haben.
+1. Öffnen Sie das Jupyter Notebook, das Sie im Abschnitt „Voraussetzungen“ erstellt haben, und erstellen Sie ein neues Notebook mit PySpark.
+
+    > [!NOTE]  
+    > Wenn Sie den PySpark-Kernel zum Erstellen eines Notebooks verwenden, wird die `spark`-Sitzung automatisch für Sie erstellt, wenn Sie die erste Codezelle ausführen. Die Sitzung muss nicht explizit erstellt werden.
+
 2. Fügen Sie den folgenden Code in eine leere Zelle ein, und drücken Sie **UMSCHALT+EINGABE**, um den Code auszuführen. Mit dem Code werden die Typen importiert, die für dieses Szenario benötigt werden:
 
     ```python
@@ -58,10 +60,6 @@ Anwendungen können Dataframes direkt auf der Grundlage von Dateien oder Ordnern
     csvFile.write.saveAsTable("hvac")
     ```
 
-    > [!NOTE]  
-    > Wenn Sie den PySpark-Kernel zum Erstellen eines Notebooks verwenden, wird die `spark`-Sitzung automatisch für Sie erstellt, wenn Sie die erste Codezelle ausführen. Die Sitzung muss nicht explizit erstellt werden.
-
-
 ## <a name="run-queries-on-the-dataframe"></a>Ausführen von Abfragen gegen Dataframes
 
 Nach dem Erstellen der Tabelle führen Sie eine interaktive Abfrage für die Daten aus.
@@ -77,13 +75,13 @@ Nach dem Erstellen der Tabelle führen Sie eine interaktive Abfrage für die Dat
 
      ![Tabellenausgabe des Ergebnisses der interaktiven Spark-Abfrage](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png "Tabellenausgabe des Ergebnisses der interaktiven Spark-Abfrage")
 
-3. Sie können die Ergebnisse auch in anderen Visualisierungen anzeigen. Wählen Sie zum Anzeigen eines Bereichsdiagramms für die gleiche Ausgabe **Bereich** aus, und legen Sie die anderen Werte wie gezeigt fest.
+2. Sie können die Ergebnisse auch in anderen Visualisierungen anzeigen. Wählen Sie zum Anzeigen eines Bereichsdiagramms für die gleiche Ausgabe **Bereich** aus, und legen Sie die anderen Werte wie gezeigt fest.
 
     ![Bereichsdiagramm des Ergebnisses der interaktiven Spark-Abfrage](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Bereichsdiagramm des Ergebnisses der interaktiven Spark-Abfrage")
 
-10. Wählen Sie im Menü **File** (Datei) des Notebooks die Option **Save and Checkpoint** (Speichern und Prüfpunkt) aus. 
+3. Navigieren Sie auf der Menüleiste des Notebooks zu **File** (Datei) > **Save and Checkpoint** (Speichern und Prüfpunkt).
 
-11. Wenn Sie jetzt mit dem [nächsten Tutorial](apache-spark-use-bi-tools.md) fortfahren, lassen Sie das Notebook geöffnet. Falls nicht, fahren Sie das Notebook herunter, um die Clusterressourcen freizugeben: Wählen Sie im Menü **File** (Datei) des Notebooks **Close and Halt** (Schließen und Anhalten) aus.
+4. Wenn Sie jetzt mit dem [nächsten Tutorial](apache-spark-use-bi-tools.md) fortfahren, lassen Sie das Notebook geöffnet. Fahren Sie andernfalls das Notebook herunter, um die Clusterressourcen freizugeben. Navigieren Sie dazu auf der Menüleiste des Notebooks zu **File** (Datei) >  **Close and Halt** (Schließen und anhalten) aus.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -98,11 +96,10 @@ Sie können auch den Namen der Ressourcengruppe auswählen, um die Seite für di
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie Folgendes gelernt:
-
-* Erstellen Sie ein Apache Spark-Dataframe.
-* Führen Sie Spark SQL für den Dataframe aus.
+> [!div class="checklist"]
+> * Erstellen Sie ein Apache Spark-Dataframe.
+> * Führen Sie Spark SQL für den Dataframe aus.
 
 Fahren Sie mit dem nächsten Artikel fort, um zu erfahren, wie die in Apache Spark registrierten Daten in ein BI-Analyse-Tool wie Power BI gezogen werden können. 
 > [!div class="nextstepaction"]
 > [Analysieren von Daten mithilfe von BI-Tools](apache-spark-use-bi-tools.md)
-

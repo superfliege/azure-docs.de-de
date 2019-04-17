@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cda9f976a7680a1338584e4308426683de82a79
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: c1bac4d2c0f236b8fca611c7391846abdb782796
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802117"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009596"
 ---
 # <a name="add-or-delete-users-using-azure-active-directory"></a>Hinzufügen oder Löschen von Benutzern in Azure Active Directory
 Sie können Ihrer Azure Active Directory-Organisation neue Benutzer hinzufügen oder vorhandene Benutzer aus der Azure AD-Organisation löschen.
@@ -83,7 +83,7 @@ Nachdem Sie Ihre Benutzer hinzugefügt haben, können Sie die folgenden grundleg
 
 - [Zuweisen von Rollen zu Benutzern](active-directory-users-assign-role-azure-portal.md)
 
-- [Erstellen einer einfachen Gruppe und Hinzufügen von Mitgliedern](active-directory-groups-create-azure-portal.md)
+- [Erstellen einer Basisgruppe und Hinzufügen von Mitgliedern](active-directory-groups-create-azure-portal.md)
 
 - [Arbeiten mit dynamischen Gruppen und Benutzern](../users-groups-roles/groups-create-rule.md)
 

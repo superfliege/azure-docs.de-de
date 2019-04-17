@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/18/2019
+ms.date: 04/05/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 92ce35e88cc73c16e3d3670e07ff8b996192b825
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6f856aeae74ea285cd6a0326fd225e454a1cbe43
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109813"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265830"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>Grundlegendes zu Cloudyn-Kostenverwaltungsberichten
 
@@ -93,7 +93,7 @@ Jeder nummerierte Bereich in der vorherigen Abbildung wird in den folgenden Info
        - Wählen Sie ein, mehrere oder alle Konten aus. In Azure ist dies die GUID des Azure-Abonnements.
      - **Übergeordnetes Konto**
        - Wählen Sie ein, mehrere oder alle übergeordneten Konten aus.
-     - **Service**
+     - **Dienst**
        - Wählen Sie einen, mehrere oder alle Dienste aus.
      - **Anbieter**
        - Der Cloudanbieter, dem Objekte und Ausgaben zugeordnet sind.
@@ -118,7 +118,7 @@ Jeder nummerierte Bereich in der vorherigen Abbildung wird in den folgenden Info
        - Wählen Sie negative, positive oder beide Gebührentypen aus.
      - **Mandant**
        - Gibt an, ob ein Computer als dedizierter Computer ausgeführt wird.
-     - **Verwendungstyp**
+     - **Nutzungstyp**
        - Der Verwendungstyp kann auf einmalige Gebühr oder wiederkehrende Gebühren festgelegt werden.
 
 5. **Filter**
@@ -191,7 +191,7 @@ Klicken Sie in einem geöffneten Bericht auf **Aktionen**, und wählen Sie dann 
 
 ### <a name="save-a-report-to-cloud-provider-storage"></a>Speichern eines Berichts im Speicher eines Cloudanbieters
 
-Zum Speichern eines Berichts bei Ihrem Cloud-Dienstanbieter müssen Sie bereits ein Speicherkonto konfiguriert haben. Klicken Sie in einem geöffneten Bericht auf **Aktionen**, und wählen Sie dann **Schedule report** (Bericht planen) aus. Geben Sie dem Bericht einen Namen, und fügen Sie dann entweder Ihre eigene URL hinzu, oder verwenden Sie die automatisch erstellte URL. Wählen Sie **Save to storage** (In Speicher speichern), und wählen Sie dann das Speicherkonto aus, oder fügen Sie ein neues hinzu. Geben Sie ein Präfix ein, das an den Namen der Berichtdatei angefügt wird. Wählen Sie entweder CSV oder JSON als Dateiformat aus, und speichern Sie dann den Bericht.
+Zum Speichern eines Berichts bei Ihrem Cloud-Dienstanbieter müssen Sie bereits ein Speicherkonto konfiguriert haben. Klicken Sie in einem geöffneten Bericht auf **Aktionen**, und wählen Sie dann **Schedule report** (Bericht planen) aus. Geben Sie dem Bericht einen Namen, und fügen Sie dann entweder Ihre eigene URL hinzu, oder verwenden Sie die automatisch erstellte URL. Wählen Sie **Save to storage** (In Speicher speichern), und wählen Sie dann das Speicherkonto aus, oder fügen Sie ein neues hinzu. Geben Sie ein Präfix ein, das an den Namen der Berichtdatei angefügt wird. Wählen Sie CSV oder JSON als Dateiformat aus, und speichern Sie dann den Bericht.
 
 ### <a name="schedule-a-report"></a>Planen eines Berichts
 

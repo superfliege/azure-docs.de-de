@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15e831bbcb956401149d8c33fce4d00a3be5a11d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5fa143aac52fe0024620047eb67f24cc79e55c9b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170872"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279311"
 ---
 # <a name="compare-remote-access-solutions"></a>Vergleichen von Remotezugriffslösungen
 

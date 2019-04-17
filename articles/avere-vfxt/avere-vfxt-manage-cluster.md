@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: bc91b052d3d69924af9afeb012c0ebb5be01dfbf
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: be9205fdf7fec0661d7382ed0d1bedf47487b15e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745553"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282195"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Verwalten des Avere vFXT-Clusters
 
@@ -98,7 +98,7 @@ Geben Sie die folgenden Werte an:
 * Name der Ressourcengruppe für den Cluster sowie für Netzwerk- und Speicherressourcen, wenn sie nicht mit dem Cluster übereinstimmen
 * Clusterstandort
 * Clusternetzwerk und Subnetz 
-* Zugriffsrolle für Clusterknoten 
+* Zugriffsrolle für Clusterknoten (verwenden Sie die integrierte Rolle [Avere Operator](../role-based-access-control/built-in-roles.md#avere-operator))
 * IP-Adresse und Administratorkennwort der Clusterverwaltung 
 * Anzahl der hinzuzufügenden Knoten (1, 2 oder 3)
 * Werte für Knoteninstanztyp und Cachegröße 
@@ -113,7 +113,7 @@ Wenn Sie den Prototyp nicht verwenden, müssen Sie einen Befehl wie den folgende
    --add-nodes --nodes NODE_COUNT \
    --management-address CLUSTER_IP --admin-password ADMIN_PASSWORD \
    --instance-type TYPE --node-cache-size SIZE \
-   --azure-role ROLE_NAME \
+   --azure-role "Avere Operator" \
    --log ~/vfxt.log
 ```
 
@@ -187,7 +187,7 @@ Sie können Knoteninstanzen dauerhaft zerstören, indem Sie sie im Azure-Portal 
 
 ### <a name="delete-additional-cluster-resources-from-the-azure-portal"></a>Löschen zusätzlicher Clusterressourcen über das Azure-Portal
 
-Wenn Sie zusätzliche Ressourcen speziell für den vFXT-Cluster erstellt haben, sollten Sie diese möglicherweise entfernen, um den Cluster aufzuheben. Sie sollten keine Elemente zerstören, die erforderliche Daten enthalten, oder Elemente, die mit anderen Projekten geteilt werden.
+Wenn Sie zusätzliche Ressourcen speziell für den vFXT-Cluster erstellt haben, sollten Sie diese möglicherweise entfernen, um den Cluster aufzuheben. Zerstören Sie keine Elemente, die erforderliche Daten enthalten, oder Elemente, die mit anderen Projekten geteilt werden.
 
 Zusätzlich zum Löschen der Clusterknoten sollten Sie erwägen, die folgenden Komponenten zu entfernen: 
 

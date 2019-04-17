@@ -7,16 +7,19 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: ramamill
-ms.openlocfilehash: 93e05390d28b9e9998d84935417121696d2963cc
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: c23f3ec9c85bb3997380d83c097f2690b91c1f4f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58877226"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049696"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>Verwalten des Konfigurationsservers für die Notfallwiederherstellung von virtuellen VMware-Computern
 
 Sie richten einen lokalen Konfigurationsserver ein, wenn Sie [Azure Site Recovery](site-recovery-overview.md) für die Notfallwiederherstellung von VMware-VMs und physischen Servern in Azure verwenden. Der Konfigurationsserver koordiniert die Kommunikation zwischen der lokalen VMware-Umgebung und Azure und verwaltet die Datenreplikation. In diesem Artikel werden häufige Aufgaben zur Verwaltung des Konfigurationsservers nach dessen Bereitstellung zusammengefasst.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="access-configuration-server"></a>Zugreifen auf den Konfigurationsserver
 
@@ -234,28 +237,28 @@ ProxyPassword="Password"
 
 Optional können Sie den Konfigurationsserver mithilfe von PowerShell löschen:
 
-1. [Installieren](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) Sie das Azure PowerShell-Modul.
+1. [Installieren](https://docs.microsoft.com/powershell/azure/install-Az-ps) Sie das Azure PowerShell-Modul.
 2. Melden Sie sich mit diesem Befehl bei Ihrem Azure-Konto an:
 
-    `Connect-AzureRmAccount`
+    `Connect-AzAccount`
 3. Wählen Sie das Tresorabonnement aus:
 
-     `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`
+     `Get-AzSubscription –SubscriptionName <your subscription name> | Select-AzSubscription`
 3.  Legen Sie den Tresorkontext fest.
 
     ```
-    $vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault>
-    Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
+    $vault = Get-AzRecoveryServicesVault -Name <name of your vault>
+    Set-AzSiteRecoveryVaultSettings -ARSVault $vault
     ```
 4. Rufen Sie den Konfigurationsserver ab:
 
-    `$fabric = Get-AzureRmSiteRecoveryFabric -FriendlyName <name of your configuration server>`
+    `$fabric = Get-AzSiteRecoveryFabric -FriendlyName <name of your configuration server>`
 6. Löschen Sie den Konfigurationsserver.
 
-    `Remove-AzureRmSiteRecoveryFabric -Fabric $fabric [-Force]`
+    `Remove-AzSiteRecoveryFabric -Fabric $fabric [-Force]`
 
 > [!NOTE]
-> Sie können die Option **-Force** im Cmdlet Remove-AzureRmSiteRecoveryFabric verwenden, um das Löschen des Konfigurationsservers zu erzwingen.
+> Sie können die Option **-Force** im Cmdlet „Remove-AzSiteRecoveryFabric“ verwenden, um das Löschen des Konfigurationsservers zu erzwingen.
 
 ## <a name="generate-configuration-server-passphrase"></a>Generieren der Passphrase des Konfigurationsservers
 

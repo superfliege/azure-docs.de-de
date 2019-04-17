@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 09eed87dce65325a5b3466346b073a0d786bfb89
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d31be245d906ba0405a44d4482272051982c943c
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861450"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59488336"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Schnellstart: Senden einer Suchanforderung an die Bing-Entitätssuche-REST-API mithilfe von C#
 
@@ -29,7 +29,7 @@ Diese Anwendung ist zwar in C# geschrieben, an sich ist die API aber ein RESTful
 * Eine beliebige [Visual Studio 2017](https://www.visualstudio.com/downloads/)-Edition.
 * Das [Json.NET](https://www.newtonsoft.com/json)-Framework, das als NuGet-Paket verfügbar ist
     * So installieren Sie das NuGet-Paket in Visual Studio:
-        1. Klicken Sie im Projektmappen-Manager mit der rechten Maustaste.
+        1. Klicken Sie im Projektmappen-Explorer Manager mit der rechten Maustaste.
         2. Klicken Sie auf **Manage NuGet Packages**
         3. Suchen Sie nach **newtonsoft.json**, und installieren Sie das Paket.
 

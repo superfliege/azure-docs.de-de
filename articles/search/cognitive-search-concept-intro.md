@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: overview
-ms.date: 03/17/2019
+ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 187e40716bc55f71623ef758722eb58d27651d4d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: c421d99f1071c7a38cfe315cc3054136f81598e0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58882491"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265967"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Was ist die „kognitive Suche“ in Azure Search?
 
@@ -99,6 +99,8 @@ Indizes werden über ein Indexschema generiert, das die Felder, Attribute und we
 + [Schnellstart (Portal)](cognitive-search-quickstart-blob.md)
 + [Tutorial (HTTP-Anforderungen)](cognitive-search-tutorial-blob.md)
 + [Beispiel für benutzerdefinierte Qualifikationen (C#)](cognitive-search-create-custom-skill-example.md)
+
+Es empfiehlt sich, zu Lernzwecken den kostenlosen Dienst zu verwenden. Beachten Sie jedoch, dass die Anzahl kostenloser Transaktionen auf 20 Dokumente pro Tag beschränkt ist. Wenn Sie sowohl die Schnellstartanleitung als auch das Tutorial am gleichen Tag ausführen möchten, verwenden Sie einen kleineren Dateisatz (zehn Dokumente).
 
 **Schritt 3: Überprüfen der API (nur REST)**
 

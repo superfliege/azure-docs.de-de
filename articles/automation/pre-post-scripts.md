@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/01/2019
+ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dc0c516ce9dc3a13474cefc61b6634dbeea0fce0
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: 76cd877380090ccad8b2f7b7dbe79957e0eab5bb
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793656"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263807"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>Verwalten von Pre- und Post-Skripts (Vorschauversion)
 
@@ -67,6 +67,23 @@ Beim Konfigurieren von Pre- und Post-Skripts können Sie wie beim Planen eines R
 Wenn Sie einen anderen Objekttyp benötigen, können Sie eine Typumwandlung in einen anderen Typ mit Ihrer eigenen Logik im Runbook durchführen.
 
 Neben den Standardrunbookparametern ist ein zusätzlicher Parameter verfügbar. **SoftwareUpdateConfigurationRunContext**. Dieser Parameter ist eine JSON-Zeichenfolge, und wenn Sie ihn in Ihrem Pre- oder Post-Skript definieren, wird er automatisch von der Updatebereitstellung übergeben. Der Parameter enthält Informationen zur Updatebereitstellung, bei denen es sich um eine Teilmenge der von der [SoftwareUpdateconfigurations-API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) zurückgegebenen Informationen handelt. In der folgenden Tabelle sind die Eigenschaften aufgeführt, die in der Variablen bereitgestellt werden:
+
+## <a name="stopping-a-deployment"></a>Beenden einer Bereitstellung
+
+Wenn Sie eine Bereitstellung basierend auf einem vorbereitenden Skript stoppen möchten, müssen Sie eine Ausnahme [auslösen](automation-runbook-execution.md#throw). Wenn Sie keine Ausnahme auslösen, werden die Bereitstellung und das nachbereitende Skript weiterhin ausgeführt. Das [Beispiel-Runbook](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44?redir=0) im Katalog zeigt, wie Sie dazu vorgehen können. Das folgende ist ein Codeausschnitt aus diesem Runbook.
+
+```powershell
+#In this case, we want to terminate the patch job if any run fails.
+#This logic might not hold for all cases - you might want to allow success as long as at least 1 run succeeds
+foreach($summary in $finalStatus)
+{
+    if ($summary.Type -eq "Error")
+    {
+        #We must throw in order to fail the patch deployment.  
+        throw $summary.Summary
+    }
+}
+```
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext-Eigenschaften
 
@@ -231,6 +248,17 @@ if ($summary.Type -eq "Error")
 }
 ```
 
+## <a name="abort-patch-deployment"></a>Abbrechen der Bereitstellung von Patches
+
+Wenn Ihr vorbereitendes Skript einen Fehler zurückgibt, sollten Sie die Bereitstellung möglicherweise abbrechen. Dazu müssen Sie in Ihrem Skript für jede Logik, die einen Fehler darstellen würde, einen Fehler [auslösen](/powershell/module/microsoft.powershell.core/about/about_throw).
+
+```powershell
+if (<My custom error logic>)
+{
+    #Throw an error to fail the patch deployment.  
+    throw "There was an error, abort deployment"
+}
+```
 ## <a name="known-issues"></a>Bekannte Probleme
 
 * Sie können keine Objekte oder Arrays an Parameter übergeben, wenn Sie Pre- und Post-Skripts verwenden. Andernfalls tritt bei der Ausführung des Runbooks ein Fehler auf.

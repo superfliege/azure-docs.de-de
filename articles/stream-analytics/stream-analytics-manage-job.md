@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seodec18
 ms.date: 12/07/2018
-ms.openlocfilehash: d802fade0ff9c5b4bc329c7451144d8c782f8d3c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 261b55f722fdc3c1e8f4b45debc664f49db3f898
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58097939"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523544"
 ---
 # <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Analysieren von Telefonanrufdaten mit Stream Analytics und Visualisieren der Ergebnisse in einem Power BI-Dashboard
 
@@ -96,7 +96,7 @@ Vor dem Starten der TelcoGenerator-App sollten Sie diese so konfigurieren, dass 
 1. Extrahieren Sie den Inhalt der Datei [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip).
 2. Öffnen Sie die Datei `TelcoGenerator\TelcoGenerator\telcodatagen.exe.config` in einem Text-Editor Ihrer Wahl. (Da mehr als eine CONFIG-Datei vorhanden ist, sollten Sie darauf achten, dass Sie die richtige Datei öffnen.)
 
-3. Aktualisieren Sie das <appSettings>-Element in der CONFIG-Datei mit den folgenden Details:
+3. Aktualisieren Sie das `<appSettings>`-Element in der CONFIG-Datei mit den folgenden Details:
 
    * Legen Sie den Wert des Schlüssels *EventHubName* auf den Wert von „EntityPath“ in der Verbindungszeichenfolge fest.
    * Legen Sie den Wert des Schlüssels *Microsoft.ServiceBus.ConnectionString* auf die Verbindungszeichenfolge ohne EntityPath-Wert fest.

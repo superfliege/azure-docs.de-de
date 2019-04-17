@@ -4,216 +4,197 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 841a1066-593c-4603-9abe-f48496d73d10
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/26/2018
+ms.topic: tutorial
+ms.date: 03/28/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d0e8f8526d866c308be8684546397f282dcce51
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c034e12c372e0514fa6cbb1f35af48cbdb4bf865
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194103"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278444"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Tutorial: Azure Active Directory-Integration mit vxMaintain
 
 In diesem Tutorial erfahren Sie, wie Sie vxMaintain in Azure Active Directory (Azure AD) integrieren.
+Die Integration von vxMaintain in Azure AD bietet die folgenden Vorteile:
 
-Diese Integration bietet mehrere wichtige Vorteile. Ihre Möglichkeiten:
+* Sie können in Azure AD steuern, wer Zugriff auf vxMaintain hat.
+* Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei vxMaintain anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
+* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-- Steuern Sie in Azure AD , wer Zugriff auf vxMaintain hat.
-- Ermöglichen Sie Benutzern, sich mit ihren Azure AD-Konten automatisch mit einmaligem Anmelden (Single Sign-On, SSO) bei vxMaintain anzumelden.
-- Verwalten Sie Ihre Konten zentral im Azure-Portal.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um die Azure AD-Integration mit vxMaintain konfigurieren zu können, benötigen Sie Folgendes:
 
-- Ein Azure AD-Abonnement
-- Ein SSO-fähiges vxMaintain-Abonnement
-
-> [!NOTE]
-> Es wird nicht empfohlen, zum Testen der Schritte in diesem Tutorial eine Produktionsumgebung zu verwenden.
-
-Beachten Sie beim Testen der Schritte in diesem Tutorial die folgenden Empfehlungen:
-
-- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
+* Ein Azure AD-Abonnement Sollten Sie über keine Azure AD-Umgebung verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
+* Ein vxMaintain-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. 
 
-Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Hinzufügen von vxMaintain aus dem Katalog
-* Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+* vxMaintain unterstützt **IDP-initiiertes** einmaliges Anmelden.
 
-## <a name="add-vxmaintain-from-the-gallery"></a>Hinzufügen von vxMaintain aus dem Katalog
+## <a name="adding-vxmaintain-from-the-gallery"></a>Hinzufügen von vxMaintain aus dem Katalog
+
 Zum Konfigurieren der Integration von vxMaintain in Azure AD müssen Sie vxMaintain aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
-Um vxMaintain aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:
+**Führen Sie zum Hinzufügen von vxMaintain aus dem Katalog die folgenden Schritte aus:**
 
-1. Wählen Sie im linken Bereich des [Azure-Portals](https://portal.azure.com) die Schaltfläche **Azure Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
-    ![Schaltfläche „Azure Active Directory“][1]
+    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-1. Wählen Sie **Unternehmensanwendungen** > **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 
-    ![Bereich „Unternehmensanwendungen“][2]
-    
-1. Um eine Anwendung hinzuzufügen, wählen Sie im Dialogfeld **Alle Anwendungen** die Schaltfläche **Neue Anwendung** aus.
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-    ![Schaltfläche „Neue Anwendung“][3]
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-1. Geben Sie im Suchfeld als Suchbegriff **vxMaintain**ein.
+    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-    ![Die Dropdownliste „SSO-Modus“](./media/vxmaintain-tutorial/tutorial_vxmaintain_search.png)
+4. Geben Sie im Suchfeld **vxMaintain** ein, wählen Sie im Ergebnisbereich **vxMaintain** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-1. Wählen Sie in der Ergebnisliste **vxMaintain** und dann **Hinzufügen**.
+     ![vxMaintain in der Ergebnisliste](common/search-new-app.png)
 
-    ![Der vxMaintain-Link](./media/vxmaintain-tutorial/tutorial_vxmaintain_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden (SSO) von Azure AD mit vxMaintain basierend auf einer Testbenutzerin mit dem Namen Britta Simon.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit vxMaintain mithilfe eines Testbenutzers namens **Britta Simon**.
+Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in vxMaintain eingerichtet werden.
 
-Damit einmaliges Anmelden (SSO) funktioniert, muss Azure AD wissen, welcher Benutzer in vxMaintain als Entsprechung zu einem Benutzer in Azure AD fungiert. Sie müssen also eine Linkbeziehung zwischen dem Azure AD-Benutzer und dem entsprechenden vxMaintain-Benutzer einrichten.
+Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei vxMaintain müssen Sie die folgenden Schritte durchführen:
 
-Um die Linkbeziehung herzustellen, weisen Sie in vxMaintain den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Konfigurieren des einmaligen Anmeldens für vxMaintain](#configure-vxmaintain-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines vxMaintain-Testbenutzers](#create-vxmaintain-test-user)**, um ein Pendant von Britta Simon in vxMaintain zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei vxMaintain führen Sie die folgenden Bausteine aus.
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
-### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
-In diesem Abschnitt können Sie folgendermaßen das einmalige Anmelden von Azure AD sowohl im Azure-Portal aktivieren als auch in Ihrer vxMaintain-Anwendung konfigurieren:
+Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit vxMaintain die folgenden Schritte aus:
 
-1. Wählen Sie im Azure-Portal auf der Anwendungsintegrationsseite für **vxMaintain** die Option **Einmaliges Anmelden**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **vxMaintain** die Option **Einmaliges Anmelden** aus.
 
-    ![Der Befehl „Einmaliges Anmelden“][4]
+    ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
 
-1. Um das einmalige Anmelden zu aktivieren, wählen Sie in der Dropdwonliste **SSO-Modus** die Option **SAML-basierte Anmeldung** aus.
- 
-    ![Der Befehl „SAML-basierte Anmeldung“](./media/vxmaintain-tutorial/tutorial_vxmaintain_samlbase.png)
+2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
 
-1. Gehen Sie unter **Domäne und URLs für vxMaintain** folgendermaßen vor:
+    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-    ![Abschnitt „Domäne und URLs für vxMaintain“](./media/vxmaintain-tutorial/tutorial_vxmaintain_url.png)
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
-    a. Geben Sie im Feld **Bezeichner** eine URL mit folgender Syntax ein: `https://<company name>.verisae.com`.
+    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-    b. Geben Sie im Feld **Antwort-URL** eine URL mit folgender Syntax ein: `https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`.
+4. Führen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** die folgenden Schritte aus:
 
-    > [!NOTE] 
-    > Die vorangehenden Werte sind keine echten Werte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Supportteam von vxMaintain](https://www.hubspot.com/company/contact), um diese Werte zu erhalten.
- 
-1. Wählen Sie unter **SAML-Signaturzertifikat** die Option **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
+    ![SSO-Informationen zur Domäne und zu den URLs für vxMaintain](common/idp-intiated.png)
 
-    ![Der Abschnitt „SAML-Signaturzertifikat“](./media/vxmaintain-tutorial/tutorial_vxmaintain_certificate.png) 
+    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<company name>.verisae.com`
 
-1. Wählen Sie **Speichern** aus.
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
 
-    ![Die Schaltfläche „Speichern“](./media/vxmaintain-tutorial/tutorial_general_400.png)
+    > [!NOTE]
+    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Diese Werte erhalten Sie vom [Supportteam von vxMaintain](https://www.hubspot.com/company/contact). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-1. Um **vxMaintain**-SSO zu konfigurieren, senden Sie die heruntergeladene **Metadaten-XML**-Datei an das [vxMaintain Support-Team](https://www.hubspot.com/company/contact).
+5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
-> [!TIP]
-> Wie Sie die App einrichten, können Sie eine kürzere Version der vorherigen Anweisungen im [Azure-Portal](https://portal.azure.com) lesen. Nachdem Sie diese App über den Abschnitt **Active Directory** > **Unternehmensanwendungen** hinzugefügt haben, wählen Sie die Registerkarte **Einmaliges Anmelden** und rufen anschließend die eingebettete Dokumentation über den Abschnitt **Konfiguration** auf. 
->
->Weitere Informationen zum Feature der eingebetteten Dokumentation finden Sie unter [Verwalten des einmaligen Anmeldens für Unternehmens-Apps](https://go.microsoft.com/fwlink/?linkid=845985).
-> 
+    ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
-In diesem Abschnitt erstellen Sie im Azure-Portal wie folgt einen Testbenutzer mit dem Namen Britta Simon:
+6. Kopieren Sie im Abschnitt **vxMaintain einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
-![Der Azure AD-Testbenutzer][100]
+    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
-1. Wählen Sie im linken Bereich des **Azure-Portals** die Schaltfläche **Azure Active Directory**.
+    a. Anmelde-URL
 
-    ![Schaltfläche „Azure Active Directory“](./media/vxmaintain-tutorial/create_aaduser_01.png) 
+    b. Azure AD-Bezeichner
 
-1. Um die Liste der Benutzer anzuzeigen, gehen Sie zu **Benutzer und Gruppen** > **Alle Benutzer**.
-    
-    ![Der Link „Alle Benutzer“](./media/vxmaintain-tutorial/create_aaduser_02.png)  
-    Das Dialogfeld **Alle Benutzer** wird geöffnet. 
+    c. Abmelde-URL
 
-1. Zum Öffnen des Dialogfelds **Benutzer** wählen Sie **Hinzufügen**.
- 
-    ![Schaltfläche „Hinzufügen“](./media/vxmaintain-tutorial/create_aaduser_03.png) 
+### <a name="configure-vxmaintain-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für vxMaintain
 
-1. Führen Sie im Dialogfeld **Benutzer** folgende Schritte aus:
- 
-    ![Dialogfeld „Benutzer“](./media/vxmaintain-tutorial/create_aaduser_04.png) 
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **vxMaintain** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von vxMaintain](https://www.hubspot.com/company/contact) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
-    a. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
-    b. Geben Sie im Feld **Benutzername** die E-Mail-Adresse der Testbenutzerin Britta Simon ein.
+Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** generiert wurde.
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
-    d. Klicken Sie auf **Erstellen**.
- 
-### <a name="create-a-vxmaintain-test-user"></a>Erstellen eines vxMaintain-Testbenutzers
+    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
-In diesem Abschnitt erstellen Sie in vxMaintain eine Testbenutzerin mit dem Namen Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der vxMaintain-Plattform vom  [vxMaintain-Supportteam](https://www.hubspot.com/company/contact) unterstützen. Bevor Sie SSO verwenden, erstellen und aktivieren Sie die Benutzer.
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
+
+    ![Schaltfläche „Neuer Benutzer“](common/new-user.png)
+
+3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
+
+    ![Dialogfeld „Benutzer“](common/user-properties.png)
+
+    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
+  
+    b. Geben Sie im Feld **Benutzername** den Namen brittasimon@yourcompanydomain.extension ein. Zum Beispiel, BrittaSimon@contoso.com
+
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
+
+    d. Klicken Sie auf **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie der Testbenutzerin Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf vxMaintain gewähren. Führen Sie hierzu folgende Schritte aus:
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf vxMaintain gewähren.
 
-![Testbenutzerin in der Liste „Anzeigename“][200] 
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** > **vxMaintain** aus.
 
-1. Navigieren Sie im Azure-Portal in der Ansicht **Anwendungen** zur Ansicht **Verzeichnis** > **Unternehmensanwendungen** > **Alle Anwendungen**.
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-    ![Der Link „Alle Anwendungen“][201] 
+2. Wählen Sie in der Anwendungsliste **vxMaintain**aus.
 
-1. Wählen Sie in der Liste **Anwendungen** die Option **vxMaintain**.
+    ![vxMaintain-Link in der Anwendungsliste](common/all-applications.png)
 
-    ![Der vxMaintain-Link](./media/vxmaintain-tutorial/tutorial_vxmaintain_app.png) 
+3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
-1. Wählen Sie auf der linken Seite **Benutzer und Gruppen**.
+    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-    ![Link „Benutzer und Gruppen“][202] 
+4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-1. Wählen Sie **Hinzufügen** und dann im Bereich **Zuweisung hinzufügen** die Option **Benutzer und Gruppen**.
+    ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
 
-    ![Link „Benutzer und Gruppen“][203]
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
 
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste **Benutzer** den Eintrag **Britta Simon** und dann die Schaltfläche **Auswählen** aus.
+6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
 
-1. Wählen Sie im Dialogfeld **Zuweisung hinzufügen** die Option **Zuweisen** aus.
-    
-### <a name="test-your-azure-ad-single-sign-on"></a>Testen des einmaligen Anmeldens mit Azure AD
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
+### <a name="create-vxmaintain-test-user"></a>Erstellen eines vxMaintain-Testbenutzers
 
-Bei Auswahl der Kachel **vxMaintain** im Zugriffsbereich sollten Sie automatisch bei Ihrer vxMaintain-Anwendung angemeldet werden.
+In diesem Abschnitt erstellen Sie in vxMaintain einen Benutzer namens Britta Simon. Wenden Sie sich an das  [vxMaintain-Supportteam](https://www.hubspot.com/company/contact), um die Benutzer auf der vxMaintain-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
-Weitere Informationen zum Zugriffspanel finden Sie unter [Einführung in das Zugriffspanel](../user-help/active-directory-saas-access-panel-introduction.md).
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
-## <a name="next-steps"></a>Nächste Schritte
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+Wenn Sie im Zugriffsbereich auf die Kachel „vxMaintain“ klicken, sollten Sie automatisch bei der vxMaintain-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-<!--Image references-->
+## <a name="additional-resources"></a>Weitere Ressourcen
 
-[1]: ./media/vxmaintain-tutorial/tutorial_general_01.png
-[2]: ./media/vxmaintain-tutorial/tutorial_general_02.png
-[3]: ./media/vxmaintain-tutorial/tutorial_general_03.png
-[4]: ./media/vxmaintain-tutorial/tutorial_general_04.png
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-[100]: ./media/vxmaintain-tutorial/tutorial_general_100.png
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[200]: ./media/vxmaintain-tutorial/tutorial_general_200.png
-[201]: ./media/vxmaintain-tutorial/tutorial_general_201.png
-[202]: ./media/vxmaintain-tutorial/tutorial_general_202.png
-[203]: ./media/vxmaintain-tutorial/tutorial_general_203.png
+- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

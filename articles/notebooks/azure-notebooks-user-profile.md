@@ -6,25 +6,25 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 7d069d86-660f-4c94-b6e3-0c0f38c52d0e
-ms.service: azure
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 4186abd215509e0ae9ced50340fb1f3d3b5f9676
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b8c21b908ca9162a7e44c7af1e222babc6ee1eb7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765916"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265609"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks"></a>Ihr Profil und Ihre Benutzer-ID für Azure Notebooks
 
 Innerhalb des leistungsstarken, auf Zusammenarbeit ausgelegten Bereichs von Azure Notebooks stellt Ihr Benutzerprofil Ihr öffentliches Bild für andere dar:
 
-[![Eine Azure Notebooks-Profilseite](media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
+[![AEine Azure Notebooks-Profilseite(media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
 
 Ihre Benutzer-ID ist Teil der URLs, die Sie zum Teilen von Projekten und Notebooks verwenden. In der folgenden Liste sind die verschiedenen URL-Muster beschrieben:
 

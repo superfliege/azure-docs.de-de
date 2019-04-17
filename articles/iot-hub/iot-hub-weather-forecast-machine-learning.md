@@ -1,21 +1,21 @@
 ---
 title: Wettervorhersage in Azure Machine Learning mit Sensordaten von IoT Hub | Microsoft-Dokumentation
 description: Verwenden Sie Azure Machine Learning, um das Regenrisiko basierend auf den Temperatur- und Luftfeuchtigkeitsdaten vorherzusagen, die Ihr IoT Hub von einem Sensor erfasst.
-author: rangv
-manager: ''
+author: robinsh
+manager: philmea
 keywords: Wettervorhersage, Machine Learning
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
-ms.author: rangv
-ms.openlocfilehash: 7fdd2a96044acdae223243d751bfcffb7a99da78
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: robinsh
+ms.openlocfilehash: a203018cb1a27c17b9c7162b50a380f9edae2e60
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534258"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273191"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Wettervorhersage mithilfe von Sensordaten Ihres IoT Hub in Azure Machine Learning
 
@@ -58,7 +58,7 @@ Sie erfahren, wie Sie Azure Machine Learning für eine Wettervorhersage (Regenri
    ![Bereitstellen des Wettervorhersagemodells in Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)
 1. Ziehen Sie im Diagramm das **Web service input**-Modul an eine beliebige Stelle in der Nähe des **Score Model**-Moduls.
 1. Stellen Sie eine Verbindung des **Web service input**-Moduls mit dem **Score Model**-Modul her.
-   ![Herstellen einer Verbindung von zwei Modulen in Azure Machine Learning](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
+   ![Herstellen einer Verbindung von zwei Modulen in Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
 1. Klicken Sie auf **RUN**, um die Schritte im Modell zu überprüfen.
 1. Klicken Sie auf **DEPLOY WEB SERVICE**, um das Modell als Webdienst bereitzustellen.
 1. Laden Sie auf dem Dashboard des Modells das **Excel 2010 or earlier workbook** für **REQUEST/RESPONSE** herunter.

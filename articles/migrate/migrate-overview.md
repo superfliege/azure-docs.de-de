@@ -4,15 +4,15 @@ description: Enthält eine Übersicht über den Azure Migrate-Dienst.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 04/03/2019
+ms.date: 04/04/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 9f1d127405046400e2a92ffc5ab695d287e297bd
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: e0249535813c6b8d652775f68a696d8c25ead5a1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894968"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275452"
 ---
 # <a name="about-azure-migrate"></a>Informationen zu Azure Migrate
 
@@ -32,7 +32,7 @@ Azure Migrate bietet Folgendes:
 - Es können nur lokale virtuelle VMware-Computer (Virtual Machines, VMs) für die Migration zu virtuellen Azure-Computern bewertet werden. Die virtuellen VMware-Computer müssen mit vCenter Server (Version 5.5, 6.0, 6.5 oder 6.7) verwaltet werden.
 - Die Hyper-V-Unterstützung befindet sich derzeit in der Vorschauphase mit Produktionsunterstützung. Bei Interesse können Sie sich [hier](https://aka.ms/migratefuture) registrieren und sie ausprobieren.
 - Für physische Server können Sie unsere [Partnertools](https://azure.microsoft.com/migration/partners/) verwenden.
-- Sie können in einer einzigen Ermittlung bis zu 1.500 und in einem einzelnen Projekt bis zu 1.500 virtuelle Computer ermitteln. Außerdem können Sie in einem einzelnen Assessment bis zu 1.500 virtuelle Computer bewerten.
+- Sie können in einer einzelnen Ermittlung und in einem einzelnen Projekt bis zu 1.500 virtuelle Computer ermitteln. Wir verfügen über eine Vorschauversion, die eine Ermittlung von bis zu 10.000 virtuellen VMware-Computern in einem einzelnen Projekt mit einer einzelnen Instanz ermöglicht. Wenn Sie diese Version testen möchten, registrieren Sie sich [hier](https://aka.ms/migratefuture).
 - Wenn Sie eine Ermittlung für eine größere Umgebung durchführen möchten, können Sie die Ermittlung aufteilen und mehrere Projekte erstellen. [Weitere Informationen](how-to-scale-assessment.md) Azure Migrate unterstützt bis zu 20 Projekte pro Abonnement.
 - Azure Migrate unterstützt nur verwaltete Datenträger für die Migrationsbewertung.
 -  Sie können ein Azure Migrate-Projekt nur in den folgenden geografischen Regionen erstellen. Aber dies schränkt nicht Ihre Möglichkeit zum Erstellen von Bewertungen anderer Azure-Standorte als Ziel ein.

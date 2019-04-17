@@ -9,12 +9,12 @@ ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
-ms.openlocfilehash: c5fabf37ecc97f8edea437f1628949e45aefde77
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 8445b67fa049116d93f3710ff108f904ca7ecd77
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755705"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010548"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Authentifizieren und Zugreifen auf Ressourcen mit verwalteten Identitäten in Azure Logic Apps
 
@@ -61,7 +61,7 @@ Aktivieren Sie die Einstellung **Vom System zugewiesen** in den Identitätseinst
 
    | Eigenschaft | Wert | BESCHREIBUNG | 
    |----------|-------|-------------| 
-   | **Objekt-ID** | <*Identität-Ressourcen-ID*> | Eine GUID (Globally Unique Identifier), die die vom System zugewiesene verwaltete Identität für Ihre Logik-App in einem Azure AD-Mandanten darstellt. | 
+   | **Object ID (Objekt-ID)** | <*Identität-Ressourcen-ID*> | Eine GUID (Globally Unique Identifier), die die vom System zugewiesene verwaltete Identität für Ihre Logik-App in einem Azure AD-Mandanten darstellt. | 
    ||| 
 
 <a name="template"></a>
@@ -113,7 +113,7 @@ Wenn Azure Ihre Logik-App erstellt, enthält die Workflowdefinition der Logik-Ap
 
 | Eigenschaft | Wert | BESCHREIBUNG | 
 |----------|-------|-------------|
-| **principalId** | <*principal-ID*> | Eine GUID (Globally Unique Identifier), die die Logik-App im Azure AD-Mandanten darstellt und manchmal als „Objekt-ID“ oder `objectID` angezeigt wird. | 
+| **principalId** | <*principal-ID*> | Eine GUID (Globally Unique Identifier), die die Logik-App im Azure AD-Mandanten darstellt und manchmal als „Objekt-ID“ oder Folgendes angezeigt wird: `objectID` | 
 | **tenantId** | <*Azure-AD-tenant-ID*> | Eine GUID (Globally Unique Identifier), die für den Azure AD-Mandanten steht, auf dem die Logik-App jetzt Mitglied ist. Unter dem Azure AD-Mandanten hat der Dienstprinzipal den gleichen Namen wie die Logik-App-Instanz. | 
 ||| 
 
@@ -158,7 +158,7 @@ Nach dem Einrichten Ihrer Logik-App mit einer vom System zugewiesenen verwaltete
    Geben Sie im Feld **URI** die Endpunkt-URL für den Azure-Dienst ein. 
    Wenn Sie Azure Resource Manager verwenden, geben Sie diesen Wert für die Eigenschaft **URI** ein:
 
-   `https://management.azure.com/subscriptions/<Azure-subscription-ID>?api-version-2016-06-01`
+   `https://management.azure.com/subscriptions/<Azure-subscription-ID>?api-version=2016-06-01`
 
 1. Wählen Sie in der HTTP-Aktion die Option **Erweiterte Optionen anzeigen**.
 

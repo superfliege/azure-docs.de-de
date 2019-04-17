@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c7d8414fdc1070204ef02cf6d88b238575d0817a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: a91c4d9f5dcdcee436f2dbf012eb5485b7a92192
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472421"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495616"
 ---
 # <a name="heading"></a>Verarbeiten von Azure-Blobdaten mit erweiterter Analyse
 In diesem Dokument werden das Durchsuchen von Daten und Generieren von Funktionen aus Daten in Azure Blob Storage beschrieben. 
@@ -75,11 +75,12 @@ Hier sind einige Beispiele für Möglichkeiten zum Durchsuchen von Daten mithilf
         print miss_num
 7. Löschen fehlender Werte in einer bestimmten Spalte aus den Daten:
    
-     dataframe_blobdata_noNA = dataframe_blobdata.dropna()   dataframe_blobdata_noNA.shape
+        dataframe_blobdata_noNA = dataframe_blobdata.dropna()
+        dataframe_blobdata_noNA.shape
    
    Alternatives Ersetzen der fehlenden Werte mit der "mode"-Funktion:
    
-     dataframe_blobdata_mode = dataframe_blobdata.fillna({'<column_name>':dataframe_blobdata['<column_name>'].mode()[0]})        
+        dataframe_blobdata_mode = dataframe_blobdata.fillna({'<column_name>':dataframe_blobdata['<column_name>'].mode()[0]})        
 8. Erstellen eines Histogramms mithilfe der Variablenanzahl von Gruppen zur Darstellung der Verteilung einer Variablen:    
    
         dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')

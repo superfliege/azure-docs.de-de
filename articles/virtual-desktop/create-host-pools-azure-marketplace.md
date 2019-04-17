@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: cc404c84bf855ab6e49d13207f40b9faa32cdbb2
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: f539a71fccca116ee031781df855ec55158eb63a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58399866"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257449"
 ---
 # <a name="tutorial-create-a-host-pool-with-azure-marketplace"></a>Tutorial: Erstellen eines Hostpools mit Azure Marketplace
 
@@ -68,8 +68,8 @@ Gehen Sie auf dem Blatt mit den VM-Einstellungen wie folgt vor:
 
 Gehen Sie auf dem Blatt mit den Informationen zum Windows Virtual Desktop-Mandanten wie folgt vor:
 
-1. Geben Sie den**** Namen der Windows Virtual Desktop-Mandantengruppe für die Mandantengruppe ein, die Ihren Mandanten enthält. Falls Sie keinen bestimmten Mandantengruppennamen verwenden möchten, übernehmen Sie den Standardwert.
-2. Geben Sie den**** Namen des Windows Virtual Desktop-Mandanten für den Mandanten ein, in dem Sie diesen Hostpool erstellen möchten.
+1. Geben Sie den**Namen der Windows Virtual Desktop-Mandantengruppe** für die Mandantengruppe ein, die Ihren Mandanten enthält. Falls Sie keinen bestimmten Mandantengruppennamen verwenden möchten, übernehmen Sie den Standardwert.
+2. Geben Sie den**Namen des Windows Virtual Desktop-Mandanten** für den Mandanten ein, in dem Sie diesen Hostpool erstellen möchten.
 3. Geben Sie die Art der Anmeldeinformationen an, die Sie für die Authentifizierung als RDS-Besitzer des Windows Virtual Desktop-Mandanten verwenden möchten. Bei Verwendung der Option **Dienstprinzipal** müssen Sie auch die dem Dienstprinzipal zugeordnete **Azure AD-Mandanten-ID** angeben.
 4. Geben Sie die Anmeldeinformationen für das Administratorkonto des Mandanten ein. Es werden nur Dienstprinzipale mit Kennwort unterstützt.
 5. Klicken Sie auf **OK**.
@@ -117,9 +117,12 @@ Derzeit werden folgende Clients unterstützt:
 - [Remotedesktopclient für Windows 7 und Windows 10](connect-windows-7-and-10.md)
 - [Windows Virtual Desktop-Webclient](connect-web.md)
 
+>[!IMPORTANT]
+>Zum Schutz Ihrer Windows Virtual Desktop-Umgebung in Azure empfiehlt es sich, den eingehenden Port 3389 auf Ihren virtuellen Computern nicht zu öffnen. Für Windows Virtual Desktop muss der eingehende Port 3389 nicht geöffnet sein, damit Benutzer auf die virtuellen Computer des Hostpools zugreifen können. Wenn Sie den Port 3389 zur Problembehandlung öffnen müssen, verwenden Sie am besten den [Just-In-Time-Zugriff auf virtuelle Computer](https://docs.microsoft.com/en-us/azure/security-center/security-center-just-in-time).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie nun einen Hostpool erstellt und Benutzer für den Zugriff auf dessen Desktop zugewiesen haben, können Sie den Hostpool als Nächstes mit RemoteApps füllen. Weitere Informationen zum Verwalten von Apps in Windows Virtual Desktop finden Sie im folgenden Tutorial:
 
 > [!div class="nextstepaction"]
-> [Manage app groups for Windows Virtual Desktop Preview](./manage-app-groups.md) (Verwalten von App-Gruppen für Windows Virtual Desktop (Vorschauversion))
+> [Verwalten von App-Gruppen für Windows Virtual Desktop (Vorschauversion)](./manage-app-groups.md)

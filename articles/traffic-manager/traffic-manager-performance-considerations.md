@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 85dd3cca081d492bfeefa3e8ea0d143c9c37af8f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c2821890408e38d0d2be730da10b7926d77697d4
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007949"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048298"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Leistungsüberlegungen zu Traffic Manager
 
@@ -82,5 +82,5 @@ Die Tools dieser Websites messen DNS-Latenzen und zeigen aufgelöste IP-Adressen
 
 [Vorgänge für Traffic Manager (REST-API-Referenz)](https://go.microsoft.com/fwlink/?LinkId=313584)
 
-[Azure Traffic Manager-Cmdlets](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager)
+[Azure Traffic Manager-Cmdlets](https://docs.microsoft.com/powershell/module/az.trafficmanager)
 

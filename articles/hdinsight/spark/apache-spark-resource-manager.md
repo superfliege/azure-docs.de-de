@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8072d72dbb164d5012ad42d5cba66c8b425e99a1
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 023fd8267a557fa57e98a6a57785fb9ebfcb12ab
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53787902"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523969"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Verwalten von Ressourcen für den Apache Spark-Cluster unter Azure HDInsight 
 
@@ -45,7 +45,7 @@ Der Spark-Verlaufsserver ist die Webbenutzeroberfläche für abgeschlossene und 
     https://<ClusterName>.azurehdinsight.net/sparkhistory
     ```
 
-    Ersetzen Sie <ClusterName> durch den Namen Ihres Spark-Clusters.
+    Ersetzen Sie `<ClusterName>` durch den Namen Ihres Spark-Clusters.
 
 Die Webbenutzeroberfläche des Spark-Verlaufsservers sieht wie folgt aus:
 

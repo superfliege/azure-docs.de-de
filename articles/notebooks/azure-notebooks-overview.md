@@ -6,25 +6,25 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 9cea5a8e-c52d-4bdc-9e4a-cecdc1ad02c1
-ms.service: azure
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 01/11/2019
+ms.date: 04/05/2019
 ms.author: kraigb
-ms.openlocfilehash: 9916b75a15098acbafc1cb1f6d44d948cf6de851
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4840a9839fe1f2a31470d4a67b3755b82077fd90
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777718"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280110"
 ---
 # <a name="overview-of-azure-notebooks"></a>Übersicht über Azure Notebooks
 
 Azure Notebooks ist ein kostenloser gehosteter Dienst zum Entwickeln und Ausführen von Jupyter-Notebooks in der Cloud ohne Installation. [Jupyter](https://jupyter.org/) (vormals IPython) ist ein Open Source-Projekt, mit dem Sie Markdowntext, ausführbaren Code, beständige Daten, Grafiken und Visualisierungen einfach in einer einzelnen, gemeinsam nutzbaren Canvas – einem so genannten *Notebook* – zusammenführen können (Bild von „jupyter.org“):
 
-[![Beispiele für Jupyter Notebooks](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
+[![EBeispiele für Jupyter Notebooks](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 Aufgrund dieser leistungsstarken Kombination aus Code, Grafiken und beschreibendem Text ist Jupyter zu einer beliebten Lösung für viele Anwendungsfälle geworden, z.B. Data Science-Anleitung, Datenbereinigung und -transformation, numerische Simulation, statistische Modellierung und Entwicklung von Machine Learning-Modellen.
 
@@ -58,6 +58,8 @@ Kurz zusammengefasst: Mit Azure Notebooks können Sie Ihre Arbeit effizienter er
 Azure Notebooks ist ein kostenloser Dienst, aber jedes Projekt ist auf 4 GB Speicher und 1 GB Daten beschränkt, um Missbrauch zu vermeiden. Für berechtigte Benutzer, die diese Grenzwerte überschreiten, wird eine Captcha-Eingabe abgefragt, bevor die Notebooks weiter ausgeführt werden können.
 
 Melden Sie sich mit einem Konto, das Azure Active Directory nutzt (etwa einem Unternehmenskonto), bei Azure Notebooks an, um alle Beschränkungen aufzuheben. Ist dieses Konto mit einem Azure-Abonnement verknüpft, können Sie eine Verbindung mit beliebigen Data Science Virtual Machine-Instanzen in diesem Abonnement herstellen. Weitere Informationen finden Sie unter [Verwalten und Konfigurieren von Projekten](configure-manage-azure-notebooks-projects.md#compute-tier) im Abschnitt zum Compute-Tarif.
+
+Notebook-Server sind maximal acht Stunden lang vorhanden. In den meisten Fällen ist Ihr Container von diesem Limit nicht betroffen und wird weiter ausgeführt. Langlebige Sitzungen werden jedoch bisweilen aus Stabilitätsgründen herunterfahren.
 
 ## <a name="available-kernels-and-environments"></a>Verfügbare Kernel und Umgebungen
 

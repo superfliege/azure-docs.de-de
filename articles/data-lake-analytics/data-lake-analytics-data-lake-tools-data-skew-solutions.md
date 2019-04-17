@@ -8,12 +8,12 @@ ms.reviewer: jasonwhowell
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/16/2016
-ms.openlocfilehash: b3079a7f2e71e26164d96cf167b67f1a60f7a23b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: af55c161944447f2e6e2245fbb920803779984ca
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046472"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469742"
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>Lösen von Problemen aufgrund von Datenschiefe mithilfe von Azure Data Lake Tools für Visual Studio
 
@@ -44,13 +44,13 @@ Anstatt nur _State_ als Partitionsschlüssel zu verwenden, können Sie auch mehr
 
 ### <a name="option-4-use-round-robin-distribution"></a>Option 4: Roundrobinverteilung
 
-Wenn sich kein geeigneter Schlüssel für Partitionierung und Verteilung finden lässt, können Sie versuchen, eine Roundrobinverteilung zu verwenden. Die Roundrobinverteilung behandelt alle Zeilen gleich und fügt sie nach dem Zufallsprinzip in die entsprechenden Buckets ein. Die Daten werden gleichmäßig verteilt, aber es gehen alle Ortsinformationen verloren, wodurch die Auftragsleistung bei einigen Vorgängen sinken kann. Wenn Sie außerdem ohnehin eine Aggregierung für den schiefen Schlüssel durchführen, bleibt das Problem mit der Datenschiefe weiterhin bestehen. Weitere Informationen zur Roundrobinverteilung finden Sie unter [CREATE TABLE (U-SQL): Creating a Table with Schema](https://msdn.microsoft.com/library/mt706196.aspx#dis_sch) (CREATE TABLE [U-SQL]: Erstellen einer Tabelle mit Schema) im Abschnitt zu U-SQL-Tabellenverteilungen.
+Wenn sich kein geeigneter Schlüssel für Partitionierung und Verteilung finden lässt, können Sie versuchen, eine Roundrobinverteilung zu verwenden. Die Roundrobinverteilung behandelt alle Zeilen gleich und fügt sie nach dem Zufallsprinzip in die entsprechenden Buckets ein. Die Daten werden gleichmäßig verteilt, aber es gehen alle Ortsinformationen verloren, wodurch die Auftragsleistung bei einigen Vorgängen sinken kann. Wenn Sie außerdem ohnehin eine Aggregierung für den schiefen Schlüssel durchführen, bleibt das Problem mit der Datenschiefe weiterhin bestehen. Weitere Informationen zur Roundrobinverteilung finden Sie im Abschnitt zu U-SQL-Tabellenverteilungen unter [CREATE TABLE (U-SQL): Creating a Table with Schema](/u-sql/ddl/tables/create/managed/create-table-u-sql-creating-a-table-with-schema#dis_sch) (Erstellen einer Tabelle mit Schema).
 
-## <a name="solution-2-improve-the-query-plan"></a>Lösung 2 Verbessern des Abfrageplans
+## <a name="solution-2-improve-the-query-plan"></a>Lösung 2: Verbessern des Abfrageplans
 
 ### <a name="option-1-use-the-create-statistics-statement"></a>Option 1: Verwenden der CREATE STATISTICS-Anweisung
 
-U-SQL stellt eine CREATE STATISTICS-Anweisung für Tabellen bereit. Diese Anweisung bietet dem Abfrageoptimierer mehr Informationen zu den in einer Tabelle gespeicherten Datenmerkmalen, wie z.B. die Werteverteilung. Bei den meisten Abfragen generiert der Abfrageoptimierer bereits die notwendigen Statistiken für einen hochwertigen Abfrageplan. In einigen Fällen müssen Sie möglicherweise die Abfrageleistung verbessern, indem Sie mit CREATE STATISTICS weitere Statistiken erstellen oder den Abfrageentwurf ändern. Weitere Informationen finden Sie auf der Seite [CREATE STATISTICS (U-SQL)](https://msdn.microsoft.com/library/azure/mt771898.aspx).
+U-SQL stellt eine CREATE STATISTICS-Anweisung für Tabellen bereit. Diese Anweisung bietet dem Abfrageoptimierer mehr Informationen zu den in einer Tabelle gespeicherten Datenmerkmalen, wie z.B. die Werteverteilung. Bei den meisten Abfragen generiert der Abfrageoptimierer bereits die notwendigen Statistiken für einen hochwertigen Abfrageplan. In einigen Fällen müssen Sie möglicherweise die Abfrageleistung verbessern, indem Sie mit CREATE STATISTICS weitere Statistiken erstellen oder den Abfrageentwurf ändern. Weitere Informationen finden Sie auf der Seite [CREATE STATISTICS (U-SQL)](/u-sql/ddl/statistics/create-statistics).
 
 Codebeispiel:
 
@@ -167,11 +167,11 @@ Attribute des Kombinierungsmodus:
 
 - [SqlUserDefinedCombiner(Mode=CombinerMode.Full)]: Every output row potentially depends on all the input rows from left and right with the same key value.
 
-- SqlUserDefinedCombiner(Mode=CombinerMode.Left): Für jede Ausgabezeile wird eine einzelne Eingabezeile von links und potenziell allen Zeilen von rechts mit dem gleichen Schlüsselwert verwendet.
+- SqlUserDefinedCombiner(Mode=CombinerMode.Left): Jede Ausgabezeile ist von einer einzelnen Eingabezeile von links (und potenziell von allen Zeilen von rechts mit dem gleichen Schlüsselwert) abhängig.
 
-- SqlUserDefinedCombiner(Mode=CombinerMode.Right): Für jede Ausgabezeile wird eine einzelne Eingabezeile von rechts und potenziell allen Zeilen von links mit dem gleichen Schlüsselwert verwendet.
+- qlUserDefinedCombiner(Mode=CombinerMode.Right): Jede Ausgabezeile ist von einer einzelnen Eingabezeile von rechts (und potenziell von allen Zeilen von links mit dem gleichen Schlüsselwert) abhängig.
 
-- SqlUserDefinedCombiner(Mode=CombinerMode.Inner): Für jede Ausgabezeile wird eine einzelne Eingabezeile von links und von rechts mit dem gleichen Wert verwendet.
+- SqlUserDefinedCombiner(Mode=CombinerMode.Inner): Jede Ausgabezeile ist von einer einzelnen Eingabezeile von links und rechts mit dem gleichen Wert abhängig.
 
 Codebeispiel:
 

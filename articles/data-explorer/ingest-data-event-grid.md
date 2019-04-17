@@ -1,20 +1,18 @@
 ---
 title: 'Schnellstart: Erfassen von Azure-Blobs in Azure Data Explorer'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie unter Verwendung eines Event Grid-Abonnements Speicherkontodaten an Azure Data Explorer senden.
-services: data-explorer
 author: radennis
 ms.author: radennis
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 1/30/2019
-Customer intent: As a database administrator, I want Azure Data Explorer to track my blob storage and ingest new blobs.
-ms.openlocfilehash: 8efe8b95b09fa8b4de16c08345699cee88e11285
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.date: 01/30/2019
+ms.openlocfilehash: 19db47610449ced45fa61610bbe964042e815c7a
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756441"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051851"
 ---
 # <a name="quickstart-ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Schnellstart: Erfassen von Blobs in Azure Data Explorer durch das Abonnieren von Event Grid-Benachrichtigungen
 
@@ -44,7 +42,7 @@ In dieser Schnellstartanleitung wird beschrieben, wie Sie ein [Azure Event Grid]
     | Ereignisschema | *Event Grid-Schema* | Das gewünschte Schema für die Event Grid-Instanz. |
     | Thementyp | *Speicherkonto* | Die Art des Event Grid-Themas. |
     | Themenressource | *gridteststorage* | Der Name Ihres Speicherkontos. |
-    | Alle Ereignistypen abonnieren | *Löschen* | Keine Benachrichtigungen für alle Ereignisse. |
+    | Alle Ereignistypen abonnieren | *clear* | Keine Benachrichtigungen für alle Ereignisse. |
     | Definierte Ereignistypen | *Blob erstellt* | Gibt an, bei welchen spezifischen Ereignissen eine Benachrichtigung erfolgen soll. |
     | Endpunkttyp | *Event Hubs* | Die Art des Endpunkts, an den Sie die Ereignisse senden. |
     | Endpunkt | *test-hub* | Der von Ihnen erstellte Event Hub. |
@@ -199,4 +197,4 @@ Wenn Sie Ihre Event Grid-Instanz nicht mehr benötigen, bereinigen Sie **test-hu
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Abfragen von Daten in Azure Data Explorer](web-query-data.md)
+> [Schnellstart: Abfragen von Daten im Azure Data Explorer](web-query-data.md)

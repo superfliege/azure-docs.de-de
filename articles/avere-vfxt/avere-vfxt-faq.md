@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: v-erkell
-ms.openlocfilehash: 1dda3e379a9dcec9dc48d741c107ee352c4f2033
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 69921300163bd9a326f3baedd3182da887ad02c4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404636"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264453"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT für Azure: Häufig gestellte Fragen
 
@@ -199,6 +199,14 @@ Für latenzempfindliche Umgebungen sollten Sie eine Glasfaserlösung mit einer V
 ### <a name="can-i-run-avere-vfxt-with-public-ip-addresses"></a>Kann Avere vFXT mit öffentlichen IP-Adressen ausgeführt werden?
 
 Nein, Avere vFXT ist für den Betrieb in einer Netzwerkumgebung vorgesehen, die durch bewährte Methoden geschützt ist.  
+
+### <a name="can-i-restrict-internet-access-from-my-clusters-virtual-network"></a>Kann ich den Zugriff auf das Internet über das virtuelle Netzwerk meines Clusters einschränken? 
+
+Im Allgemeinen können Sie bei Bedarf zusätzliche Sicherheit in Ihrem virtuellen Netzwerk konfigurieren, aber einige Einschränkungen können den Betrieb des Clusters beeinträchtigen.
+
+Wenn Sie z. B. den ausgehenden Internetzugriff über Ihr virtuelles Netzwerk einschränken, führt dies zu Problemen für den Cluster, es sei denn, Sie fügen Regeln hinzu, die den Zugriff auf „AzureConnectors“ und auf „AzureCloud“ explizit gestatten. Diese Situation ist in der [ergänzenden Dokumentation auf GitHub](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md) beschrieben.
+
+Wenn Sie Hilfe bei der angepassten Sicherheit benötigen, wenden Sie sich an den Support wie unter [Abrufen von Hilfe zu Ihrem System](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) beschrieben.
 
 ## <a name="technical-back-end-storage-core-filers"></a>Technisch: Back-End-Speicher (Kernspeichereinheiten)
 

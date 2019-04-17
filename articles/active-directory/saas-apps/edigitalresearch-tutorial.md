@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a4bebbda528f7ed6d7bee6ce77c744c6349d0bd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 78b21e686d6ee6109ccf142dc4ca9956dc4d36ee
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190890"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278716"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edigitalresearch"></a>Tutorial: Azure Active Directory-Integration mit eDigitalResearch
 
@@ -40,7 +40,7 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter
 Um die Azure AD-Integration mit eDigitalResearch konfigurieren zu können, benötigen Sie Folgendes:
 
 - Ein Azure AD-Abonnement
-- Ein eDigitalResearch-Abonnement, das für das einmalige Anmelden aktiviert ist
+- Ein eDigitalResearch-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 > [!NOTE]
 > Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
@@ -59,7 +59,7 @@ In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Test
 ## <a name="adding-edigitalresearch-from-the-gallery"></a>Hinzufügen von eDigitalResearch aus dem Katalog
 Zum Konfigurieren der Integration von eDigitalResearch in Azure AD müssen Sie eDigitalResearch aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Um eDigitalResearch aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+**Führen Sie die folgenden Schritte aus, um eDigitalResearch aus dem Katalog hinzuzufügen:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
@@ -89,7 +89,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei eDigitalR
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
 1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-1. **[Erstellen eines eDigitalResearch-Testbenutzers](#create-a-edigitalresearch-test-user)**, um ein Pendant von Britta Simon in eDigitalResearch zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **[Erstellen eines eDigitalResearch-Testbenutzers](#create-an-edigitalresearch-test-user)**, um eine Entsprechung von Britta Simon in eDigitalResearch zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
@@ -143,7 +143,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
    ![Erstellen eines Azure AD-Testbenutzers][100]
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+**Führen Sie die folgenden Schritte aus, um einen Testbenutzer in Azure AD zu erstellen:**
 
 1. Klicken Sie im linken Bereich des Azure-Portals auf die Schaltfläche **Azure Active Directory**.
 
@@ -169,7 +169,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     d. Klicken Sie auf **Create**.
   
-### <a name="create-a-edigitalresearch-test-user"></a>Erstellen eines eDigitalResearch-Testbenutzers
+### <a name="create-an-edigitalresearch-test-user"></a>Erstellen eines eDigitalResearch-Testbenutzers
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in eDigitalResearch. 
 
@@ -184,7 +184,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ![Zuweisen der Benutzerrolle][200] 
 
-**Um Britta Simon eDigitalResearch zuzuweisen, führen Sie die folgenden Schritte aus:**
+**Führen Sie die folgenden Schritte aus, um eDigitalResearch den Benutzer „Britta Simon“ zuzuweisen:**
 
 1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
 

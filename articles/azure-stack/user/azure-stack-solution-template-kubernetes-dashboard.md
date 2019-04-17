@@ -15,16 +15,16 @@ ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/27/2019
-ms.openlocfilehash: 4e9df0d413b964b4a14cf9ca48db8b7956b441f9
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: fa663cce10a39ef60a0efa5838b81b257fd02b46
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482588"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59255936"
 ---
 # <a name="access-the-kubernetes-dashboard-in-azure-stack"></a>Zugreifen auf das Kubernetes-Dashboard in Azure Stack 
 
-*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit* 
+*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit* 
 > [!Note]   
 > Kubernetes in Azure Stack befindet sich in der Vorschauphase. Das Szenario mit nicht verbundenem Azure Stack wird von der Preview zurzeit nicht unterstützt. 
 
@@ -47,7 +47,7 @@ Kubernetes enthält ein Webdashboard, das Sie für einfache Verwaltungsvorgänge
 ## <a name="overview-of-steps-to-enable-dashboard"></a>Übersicht über die Schritte zum Aktivieren des Dashboards
 
 1.  Exportieren Sie die Kubernetes-Zertifikate vom Masterknoten in den Cluster. 
-2.  Importieren Sie die Zertifikate von Ihrem Verwaltungscomputer in Azure Stack.
+2.  Importieren Sie die Zertifikate in Ihren Azure Stack-Verwaltungscomputer.
 2.  Öffnen Sie das Kubernetes-Webdashboard. 
 
 ## <a name="export-certificate-from-the-master"></a>Exportieren des Zertifikats vom Master 
@@ -70,7 +70,7 @@ Sie können die URL für das Dashboard vom Masterknoten in Ihrem Cluster abrufen
     ```Bash   
     kubectl cluster-info 
     ``` 
-    Suchen Sie nach der URL für das Dashboard. Beispiel: `https://k8-1258.local.cloudapp.azurestack.external/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
+    Suchen Sie nach der URL für das Dashboard. Beispiel:   `https://k8-1258.local.cloudapp.azurestack.external/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
 
 6.  Extrahieren Sie das selbstsignierte Zertifikat, und konvertieren Sie es in das PFX-Format. Führen Sie den folgenden Befehl aus:
 
@@ -135,6 +135,6 @@ Sie können das Dashboard verwenden. Weitere Informationen zum Kubernetes-Dashbo
 
 [Bereitstellen von Kubernetes in Azure Stack](azure-stack-solution-template-kubernetes-deploy.md)  
 
-[Hinzufügen eines Kubernetes-Clusters zum Marketplace (für Azure Stack-Bediener)](../azure-stack-solution-template-kubernetes-cluster-add.md)  
+[Hinzufügen eines Kubernetes-Clusters zu Marketplace (für Azure Stack-Bediener)](../azure-stack-solution-template-kubernetes-cluster-add.md)  
 
 [Kubernetes in Azure](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)  

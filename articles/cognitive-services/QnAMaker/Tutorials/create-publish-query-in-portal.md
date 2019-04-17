@@ -1,7 +1,7 @@
 ---
 title: Erstellen, Veröffentlichen, Antworten in QnA Maker
 titleSuffix: Azure Cognitive Services
-description: In diesem portalbasierten Tutorial erfahren Sie Schritt für Schritt, wie Sie eine Wissensdatenbank programmgesteuert erstellen und veröffentlichen und anschließend zur Beantwortung von Fragen heranziehen.
+description: Erstellen Sie eine neue Wissensdatenbank mit Fragen und Antworten aus einer öffentlichen webbasierten FAQ-Instanz. Speichern, trainieren und veröffentlichen Sie die Wissensdatenbank. Senden Sie nach dem Veröffentlichen der Wissensdatenbank mithilfe eines cURL-Befehls eine Frage, und erhalten Sie eine Antwort. Erstellen Sie anschließend einen Bot, und testen Sie ihn mit der gleichen Frage.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 12/17/2018
+ms.date: 04/08/2019
 ms.author: diberry
-ms.openlocfilehash: 6f79614e4b1ec660d2ec5c8aee40924908cf8f5c
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 299dd61055503f0b5a11cbe97e137e4760edadda
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58884124"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266952"
 ---
-# <a name="tutorial-create-a-knowledge-base-then-answer-question-via-the-qna-maker-portal"></a>Tutorial: Erstellen einer Wissensdatenbank und Beantworten von Fragen über das QnA Maker-Portal
+# <a name="tutorial-from-qna-maker-portal-create-a-knowledge-base"></a>Tutorial: Erstellen einer Wissensdatenbank über das QnA Maker-Portal
 
-In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie eine Knowledge Base erstellen und veröffentlichen und anschließend zur Beantwortung von Fragen heranziehen.
+Erstellen Sie eine neue Wissensdatenbank mit Fragen und Antworten aus einer öffentlichen webbasierten FAQ-Instanz. Speichern, trainieren und veröffentlichen Sie die Wissensdatenbank. Senden Sie nach dem Veröffentlichen der Wissensdatenbank mithilfe eines cURL-Befehls eine Frage, und erhalten Sie eine Antwort. Erstellen Sie anschließend einen Bot, und testen Sie ihn mit der gleichen Frage. 
 
 In diesem Tutorial lernen Sie Folgendes: 
 
@@ -29,6 +29,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Überprüfen, Speichern und Trainieren der Wissensdatenbank
 > * Veröffentlichen der Knowledge Base
 > * Abfragen der Wissensdatenbank mithilfe von Curl
+> * Erstellen eines Bots
 > 
 > [!NOTE]
 > Die programmgesteuerte Version dieses Tutorials steht zusammen mit einer vollständigen Projektmappe im [GitHub-Repository **Azure-Samples/cognitive-services-qnamaker-csharp**](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base) zur Verfügung.
@@ -51,7 +52,7 @@ Für dieses Tutorial muss ein [QnA Maker-Dienst](../How-To/set-up-qnamaker-servi
 
     |Einstellung|Zweck|
     |--|--|
-    |„Microsoft Azure Directory Id“ (Microsoft Azure-Verzeichnis-ID)|Ihre _Microsoft Azure-Verzeichnis-ID_ ist dem Konto zugeordnet, das Sie für die Anmeldung beim Azure-Portal und beim QnA Maker-Portal verwenden. |
+    |„Microsoft Azure Directory Id“ (Microsoft Azure-Verzeichnis-ID)|Ihre _Microsoft Azure-Verzeichnis-ID_ ist dem Konto zugeordnet, das Sie für die Anmeldung beim Azure-Portal und beim QnA Maker-Portal verwenden. |
     |„Azure Subscription name“ (Name des Azure-Abonnements)|Das Abrechnungskonto, unter dem Sie die QnA Maker-Ressource erstellt haben.|
     |„Azure QnA Service“ (Azure QnA-Dienst)|Ihre vorhandene QnA Maker-Ressource.|
 
@@ -99,7 +100,9 @@ Nachdem die Wissensdatenbank veröffentlicht wurde, wird der Endpunkt angezeigt.
 
 ![Veröffentlichen der Endpunkteinstellungen der Seite](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-2.png)
 
-## <a name="use-curl-to-query-for-an-faq-answer"></a>Abfragen einer FAQ-Antwort mithilfe von Curl
+Schließen Sie die Seite **Veröffentlichen** nicht. Sie wird später noch zum Erstellen eines Bots benötigt. 
+
+## <a name="use-curl-to-query-for-an-faq-answer"></a>Abfragen einer FAQ-Antwort mithilfe von cURL
 
 1. Wählen Sie die Registerkarte **Curl** aus. 
 
@@ -109,7 +112,7 @@ Nachdem die Wissensdatenbank veröffentlicht wurde, wird der Endpunkt angezeigt.
 
 1. Ersetzen Sie `<Your question>` durch `How large can my KB be?`. Dies ähnelt der Frage `How large a knowledge base can I create?`, ist aber nicht exakt das Gleiche. QnA Maker ermittelt mittels Verarbeitung natürlicher Sprache, dass die beiden Fragen gleich sind.     
 
-1. Führen Sie den Curl-Befehl aus, um die JSON-Antwort mit der Bewertung und der Antwort auf die Frage zu erhalten. 
+1. Führen Sie den cURL-Befehl aus, um die JSON-Antwort mit der Bewertung und der Antwort auf die Frage zu erhalten. 
 
     ```TXT
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -133,11 +136,11 @@ Nachdem die Wissensdatenbank veröffentlicht wurde, wird der Endpunkt angezeigt.
 
     QnA Maker ist zu 42,81 Prozent von dem Ergebnis überzeugt.  
 
-## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>Abfragen einer Smalltalk-Antwort mithilfe von Curl
+## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>Abfragen einer Smalltalk-Antwort mithilfe von cURL
 
-1. Ersetzen Sie `How large can my KB be?` im Curl-fähigen Terminal durch eine Benutzeraussage, die das Ende der Botunterhaltung signalisiert (etwa `Thank you`).   
+1. Ersetzen Sie im cURL-fähigen Terminal `How large can my KB be?` durch eine Benutzeraussage, die das Ende der Botunterhaltung signalisiert (etwa `Thank you`).   
 
-1. Führen Sie den Curl-Befehl aus, um die JSON-Antwort mit der Bewertung und der Antwort auf die Frage zu erhalten. 
+1. Führen Sie den cURL-Befehl aus, um die JSON-Antwort mit der Bewertung und der Antwort auf die Frage zu erhalten. 
 
     ```TXT
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -173,13 +176,13 @@ Nachdem die Wissensdatenbank veröffentlicht wurde, wird der Endpunkt angezeigt.
 
     Da die Frage `Thank you` exakt einer Smalltalk-Frage entspricht, ist QnA Maker zu 100 Prozent überzeugt. QnA Maker hat auch alle dazugehörigen Fragen sowie die Metadateneigenschaft mit den Informationen zum Metadatentag für Geplauder zurückgegeben.  
 
-## <a name="use-curl-to-query-for-the-default-answer"></a>Abfragen der Standardantwort mithilfe von Curl
+## <a name="use-curl-to-query-for-the-default-answer"></a>Abfragen der Standardantwort mithilfe von cURL
 
 Jede Frage, bei deren Antwort QnA Maker nicht sicher ist, wird mit einer Standardantwort beantwortet. Diese Antwort wird im Azure-Portal konfiguriert. 
 
 1. Ersetzen Sie `Thank you` im Curl-fähigen Terminal durch `x`. 
 
-1. Führen Sie den Curl-Befehl aus, um die JSON-Antwort mit der Bewertung und der Antwort auf die Frage zu erhalten. 
+1. Führen Sie den cURL-Befehl aus, um die JSON-Antwort mit der Bewertung und der Antwort auf die Frage zu erhalten. 
 
     ```TXT
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -197,15 +200,25 @@ Jede Frage, bei deren Antwort QnA Maker nicht sicher ist, wird mit einer Standar
     }
     ```
     
-    QnA Maker hat als Bewertung den Wert 0 (nicht überzeugt) sowie die Standardantwort zurückgegeben. 
+    QnA Maker hat als Bewertung den Wert `0` (nicht überzeugt) sowie die Standardantwort zurückgegeben. 
+
+## <a name="create-a-knowledge-base-bot"></a>Erstellen einer Wissensdatenbank-Bots
+
+Weitere Informationen finden Sie unter [Tutorial: Erstellen eines QnA-Bots mit Azure Bot Service v4](create-qna-bot.md).
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie den Wissensdatenbank-Bot nicht mehr benötigen, entfernen Sie die Ressourcengruppe `my-tutorial-rg`, um alle im Rahmen des Botprozesses erstellten Azure-Ressourcen zu entfernen.
+
+Wenn Sie die Wissensdatenbank nicht mehr benötigen, wählen Sie im QnA Maker-Portal die Option **My knowledge bases** (Meine Knowledge Bases) aus. Wählen Sie anschließend die Wissensdatenbank **My Tutorial kb** und schließlich ganz rechts in der Zeile das Löschsymbol aus.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu unterstützten Datenformaten finden Sie unter [Datenquellen für QnA Maker-Inhalt](../Concepts/data-sources-supported.md). 
+Weitere Informationen zu unterstützten Datenformaten finden Sie unter [Datenquellen für QnA Maker-Inhalt](../Concepts/data-sources-supported.md). 
 
 Weitere Informationen zu Smalltalk-Persönlichkeiten finden Sie [hier](../Concepts/best-practices.md#chit-chat).
 
 Weitere Informationen zur Standardantwort finden Sie unter [Keine Übereinstimmung gefunden](../Concepts/confidence-score.md#no-match-found). 
 
 > [!div class="nextstepaction"]
-> [Konzepte für Wissensdatenbanken](../Concepts/knowledge-base.md)
+> [Tutorial: Erstellen eines QnA-Bots mit Azure Bot Service v4](create-qna-bot.md)

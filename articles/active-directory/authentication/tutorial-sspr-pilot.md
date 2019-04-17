@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b85284a5c2c3017e7ccc0a7e06a712e41c2a9561
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: a6e1095cc2c5937fa5de762f91a9830161b8d2a5
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215590"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59362126"
 ---
 # <a name="tutorial-complete-an-azure-ad-self-service-password-reset-pilot-roll-out"></a>Tutorial: Ausführen eines Rollouts der Azure AD-Self-Service-Kennwortzurücksetzung für eine Pilotgruppe
 
@@ -43,7 +43,7 @@ Alle Tests der Self-Service-Kennwortzurücksetzung müssen mit Konten ohne Admin
    * Klicken Sie unten auf der Seite auf **Speichern**.
 1. Auf der Seite **Authentifizierungsmethoden**
    * Legen Sie die Option **Anzahl von Methoden, die zurückgesetzt werden müssen** auf **1** fest.
-   * Legen Sie fest, welche **für Benutzer verfügbare Methoden** Ihre Organisation zulassen möchte. Aktivieren Sie in diesem Tutorial die Kontrollkästchen für **E-Mail** und **Code in der mobilen App (Vorschau)**.
+   * Legen Sie fest, welche **für Benutzer verfügbare Methoden** Ihre Organisation zulassen möchte. Aktivieren Sie für dieses Tutorial die Kontrollkästchen zum Aktivieren von **E-Mail**, **Mobiltelefon**, **Bürotelefon**, **Benachrichtigung in der mobilen App (Vorschauversion)** und **Code in der mobilen App (Vorschauversion)**.
    * Klicken Sie unten auf der Seite auf **Speichern**.
 1. Auf der Seite **Registrierung**
    * Wählen Sie für **Registrierung von Benutzern bei der Anmeldung verlangen** die Option **Ja** aus.
@@ -81,4 +81,4 @@ Wenn Sie die im Rahmen dieses Tutorials konfigurierte Funktionalität nicht mehr
 In diesem Tutorial haben Sie die Azure AD-Self-Service-Kennwortzurücksetzung aktiviert. Im nächsten Tutorial erfahren Sie, wie Sie eine lokale Active Directory Domain Services-Infrastruktur in die Umgebung mit Self-Service-Kennwortzurücksetzung integrieren.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Enabling password writeback](tutorial-enable-writeback.md) (Tutorial: Aktivieren des Kennwortrückschreibens)
+> [Aktivieren von SSPR für das lokale Kennwortrückschreiben](tutorial-enable-writeback.md)

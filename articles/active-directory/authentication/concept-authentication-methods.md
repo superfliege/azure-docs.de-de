@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7a2866952d5e66e24770b81e69039d733fdd2a1
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: e0c9af1a9ad8b816809f661d368133997f55329d
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894592"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360653"
 ---
 # <a name="what-are-authentication-methods"></a>Authentifizierungsmethoden
 
@@ -141,6 +141,9 @@ Die Microsoft Authenticator-App kann dazu beitragen, nicht autorisierten Zugriff
 
 Wenn Sie das Empfangen einer Benachrichtigung sowie das Erhalten eines Prüfcodes in der mobilen App aktivieren, können Benutzer, die die Microsoft Authenticator-App mithilfe einer Benachrichtigung registrieren, sowohl die Benachrichtigung als auch den Code zum Bestätigen ihrer Identität verwenden.
 
+> [!NOTE]
+> Wenn es in Ihrer Organisation Mitarbeiter gibt, die in China arbeiten oder nach China reisen, müssen Sie beachten, dass die Methode **Benachrichtigung über mobile App** auf **Android-Geräten** in diesem Land nicht funktioniert. Daher sollten diesen Benutzern alternative Methoden zur Verfügung gestellt werden.
+
 ### <a name="verification-code-from-mobile-app"></a>Überprüfungscode von der mobilen App
 
 Die Microsoft Authenticator-App und andere Drittanbieter-Apps können als Softwaretoken zum Generieren eines OATH-Prüfcodes verwendet werden. Nachdem Sie Benutzernamen und Kennwort eingegeben haben, geben Sie auf dem Anmeldebildschirm den in der App generierten Code ein. Der Überprüfungscode kann als zweite Authentifizierungsmethode eingegeben werden.
@@ -149,11 +152,11 @@ Die Microsoft Authenticator-App und andere Drittanbieter-Apps können als Softwa
 > Wenn bei der Self-Service-Kennwortzurücksetzung nur eine Methode erforderlich ist, steht Benutzern nur der Prüfcode zur Verfügung, **um ein Höchstmaß an Sicherheit zu gewährleisten**.
 >
 
-Benutzer verfügen möglicherweise über eine Kombination von bis zu 5 OATH-Hardware-Token oder Authenticator-Anwendungen wie z.B. die Microsoft Authenticator-App, die für die jederzeitige Verwendung konfiguriert sind.
+Benutzer verfügen möglicherweise über eine Kombination aus bis zu fünf OATH-Hardwaretoken oder Authenticator-Anwendungen wie die Microsoft Authenticator-App, die für die jederzeitige Verwendung konfiguriert sind.
 
 ## <a name="oath-hardware-tokens-public-preview"></a>OATH-Hardwaretoken (Öffentliche Vorschau)
 
-OATH ist ein offener Standard, der angibt, wie Einmalkennwortcodes (OTP) generiert werden. Azure AD unterstützt die Verwendung von OATH-TOTP SHA-1-Token der Varianten 30 Sekunden oder 60 Sekunden. Kunden können sich diese Token vom Hersteller ihrer Wahl beschaffen. Beachten Sie, dass geheime Schlüssel auf 128 Zeichen beschränkt sind, was möglicherweise nicht mit allen Token kompatibel ist.
+OATH ist ein offener Standard, der angibt, wie Einmalkennwortcodes (OTP) generiert werden. Azure AD unterstützt die Verwendung von OATH-TOTP SHA-1-Token der Varianten 30 Sekunden oder 60 Sekunden. Kunden können sich diese Token vom Hersteller ihrer Wahl beschaffen. Geheime Schlüssel sind auf 128 Zeichen beschränkt, was möglicherweise nicht mit allen Token kompatibel ist.
 
 ![Hochladen von OATH-Token in das OATH-Token-Blatt des MFA-Servers](media/concept-authentication-methods/oath-tokens-azure-ad.png)
 
@@ -175,7 +178,7 @@ Je nach Größe der CSV-Datei kann die Verarbeitung ein paar Minuten dauern. Kli
 
 Sobald alle Fehler behoben sind, kann der Administrator jeden Schlüssel aktivieren, indem er für das zu aktivierende Token auf **Aktivieren** klickt und das in dem Token angezeigte OTP eingibt.
 
-Benutzer verfügen möglicherweise über eine Kombination von bis zu 5 OATH-Hardware-Token oder Authenticator-Anwendungen wie z.B. die Microsoft Authenticator-App, die für die jederzeitige Verwendung konfiguriert sind.
+Benutzer verfügen möglicherweise über eine Kombination aus bis zu fünf OATH-Hardwaretoken oder Authenticator-Anwendungen wie die Microsoft Authenticator-App, die für die jederzeitige Verwendung konfiguriert sind.
 
 ## <a name="mobile-phone"></a>Mobiltelefon
 

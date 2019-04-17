@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 04/05/2019
 ms.author: aahi
-ms.openlocfilehash: e06fd7a4b2d072e5528643c2c8517d7545c36ef3
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 084aad5540a2bd56d98e343639a45c16f786e599
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338653"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469096"
 ---
-# <a name="create-a-visual-search-single-page-web-app"></a>Erstellen einer Single-Page-Web-App für die visuelle Suche 
+# <a name="create-a-visual-search-single-page-web-app"></a>Erstellen einer Single-Page-Web-App für die visuelle Suche
 
-Die API für die visuelle Bing-Suche umfasst ähnliche Möglichkeiten wie die Bilddetails auf „bing.com/images“. Bei der visuellen Suche können Sie ein Bild angeben und erhalten weitere Informationen zu dem Bild, wie z.B. visuell ähnliche Bilder, Einkaufsquellen, Webseiten mit diesem Bild und vieles mehr. 
+Die API für die visuelle Bing-Suche gibt Erkenntnisse für ein Bild zurück. Sie können entweder ein Bild hochladen oder eine URL für ein Bild eingeben. Erkenntnisse sind visuell ähnliche Bilder, Einkaufsquellen, Webseiten, auf denen das Bild vorkommt, und Ähnliches. Die von der API für die visuelle Bing-Suche zurückgegebenen Erkenntnisse ähneln den Ergebnissen auf „Bing.com/images“.
 
-In diesem Artikel erfahren Sie, wie Sie eine Single-Page-Web-App für die Bing-Bildersuche-API erweitern. Das Tutorial und den hier verwendeten Quellcode finden Sie unter [Tutorial: Erstellen einer einseitigen Web-App mit der Bing-Bildersuche-API](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md). 
+In diesem Tutorial erfahren Sie, wie Sie eine Single-Page-Web-App für die Bing-Bildersuche-API erweitern. Das Tutorial und den hier verwendeten Quellcode finden Sie unter [Tutorial: Erstellen einer einseitigen Web-App mit der Bing-Bildersuche-API](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md).
 
 Der vollständige Quellcode für diese Anwendung (nach Erweiterung für die Verwendung der API für die visuelle Bing-Suche) steht auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchApp.html) zur Verfügung.
 
@@ -65,7 +65,6 @@ function handleVisualSearchResponse(){
 
 Der folgende Code sendet eine Suchanforderung an die API und verwendet einen Ereignislistener, um `handleVisualSearchResponse()` aufzurufen:
 
-
 ```javascript
 function bingVisualSearch(insightsToken){
     let visualSearchBaseURL = 'https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch',
@@ -83,8 +82,8 @@ function bingVisualSearch(insightsToken){
     let requestBody = startBoundary + newLine;
     requestBody += bodyHeader;
     requestBody += JSON.stringify(postBody) + newLine + newLine;
-    requestBody += endBoundary + newLine;       
-    
+    requestBody += endBoundary + newLine;
+
     let request = new XMLHttpRequest();
 
     try {
@@ -102,7 +101,7 @@ function bingVisualSearch(insightsToken){
 
 ## <a name="capture-insights-token"></a>Erfassen des Auswertungstokens
 
-Fügen Sie den folgenden Code in das Objekt `searchItemsRenderer` ein. Dieser Code fügt einen Link **find similar** hinzu, mit dem durch Klicken die Funktion `bingVisualSearch` aufgerufen wird. Die Funktion empfängt das Bildauswertungstoken (ImageInsightsToken) als Argument.
+Fügen Sie den folgenden Code zum Objekt `searchItemsRenderer` hinzu. Dieser Code fügt einen Link **find similar** hinzu, mit dem durch Klicken die Funktion `bingVisualSearch` aufgerufen wird. Die Funktion empfängt `imageInsightsToken` als Argument.
 
 ``` javascript
 html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + "\");'>find similar</a><br>");
@@ -110,7 +109,7 @@ html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + 
 
 ## <a name="display-similar-images"></a>Anzeigen ähnlicher Bilder
 
-Fügen Sie den folgenden HTML-Code in Zeile 601 hinzu. Dieser Markupcode fügt ein Element hinzu, mit dem die Ergebnisse des Aufrufs der API für die visuelle Bing-Suche angezeigt werden.
+Fügen Sie den folgenden HTML-Code in Zeile 601 hinzu. Dieser Markupcode fügt ein Element hinzu, mit dem die Ergebnisse des Aufrufs der API für die visuelle Bing-Suche angezeigt werden:
 
 ``` html
 <div id="insights">
@@ -124,4 +123,4 @@ Mit dem neuen JavaScript-Code und den HTML-Elementen werden Suchergebnisse mit e
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Zuschneiden und Hochladen von Bildern](tutorial-visual-search-crop-area-results.md)
+> [Tutorial: Zuschneiden eines Bilds mithilfe des Bing Visual Search SDK für C#](tutorial-visual-search-crop-area-results.md)

@@ -9,13 +9,13 @@ manager: craigg
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
-ms.date: 02/09/2019
-ms.openlocfilehash: ed3029f2e336c03de616bc00733f1b9c104ddb86
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.date: 04/03/2019
+ms.openlocfilehash: 1f645a9c9161fb2fd71b2fd9af9ade65bff0be94
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917888"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361132"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Aktualisieren des Data Warehouse zu Gen2
 
@@ -33,8 +33,8 @@ In der folgenden Tabelle sehen Sie, wann der niedrigere Gen2-Computetarif in wel
 | **Region** | **Niedrigerer Gen2-Computetarif verfügbar** | **Beginn automatischer Upgrades** |
 |:--- |:--- |:--- |
 | Australien (Osten) |Verfügbar |1. Juni 2019 |
-| Australien, Südosten |2. April 2019 |1. Mai 2019 |
-| Brasilien Süd |15. Mai 2019 |\* |
+| Australien, Südosten |15. April 2019 |1. Mai 2019 |
+| Brasilien Süd |15. Mai 2019 |1. Juni 2019 |
 | Kanada, Mitte |Verfügbar |1. Juni 2019 |
 | Kanada, Osten |\* |\* |
 | USA (Mitte) |Verfügbar |1. Juni 2019 |
@@ -45,24 +45,24 @@ In der folgenden Tabelle sehen Sie, wann der niedrigere Gen2-Computetarif in wel
 | Asien, Osten |Verfügbar |1. Juni 2019 |
 | USA (Ost) |Verfügbar |1. Juni 2019 |
 | USA (Ost) 2 |Verfügbar |1. Juni 2019 |
-| Frankreich, Mitte |\* |\* |
+| Frankreich, Mitte |\* |1. Juni 2019 |
 | Deutschland, Mitte |\* |\* |
 | Deutschland, Westen-Mitte |1. September 2019|2. Januar 2020 |
 | Indien, Mitte |Verfügbar |1. Juni 2019 |
-| Indien, Süden |2. April 2019 |1. Juni 2019 |
+| Indien, Süden |15. April 2019 |1. Juni 2019 |
 | Japan, Osten |Verfügbar |1. Juni 2019 |
 | Japan, Westen |Verfügbar |1. Mai 2019 |
-| Korea, Mitte |2. April 2019 |1. Juni 2019 |
-| Korea, Süden |2. April 2019 |1. Mai 2019 |
-| USA Nord Mitte |2. April 2019 |1. Mai 2019 |
+| Korea, Mitte |15. April 2019 |1. Juni 2019 |
+| Korea, Süden |15. April 2019 |1. Mai 2019 |
+| USA Nord Mitte |15. April 2019 |1. Mai 2019 |
 | Nordeuropa |Verfügbar |1. Juni 2019 |
 | USA Süd Mitte |Verfügbar |1. Juni 2019 |
 | Südostasien |Verfügbar |1. Juni 2019 |
-| UK, Süden |2. April 2019 |1. Juni 2019 |
+| UK, Süden |15. April 2019 |1. Juni 2019 |
 | UK, Westen |\*|\* |
 | USA, Westen-Mitte |2. September 2019 |2. Januar 2020|
 | Europa, Westen |Verfügbar |1. Juni 2019 |
-| USA (Westen) |2. April 2019 |1. Juni 2019 |
+| USA (Westen) |15. April 2019 |1. Juni 2019 |
 | USA, Westen 2 |Verfügbar |1. Juni 2019 |
 
 ## <a name="automatic-upgrade-process"></a>Automatischer Upgradevorgang

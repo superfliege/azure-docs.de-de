@@ -12,20 +12,20 @@ ms.workload: azure-vs
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 04/08/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 274240aab54f27f36734516026e9feebf64ae4b5
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: da17d114c1ffb920fbaae85a6cdcbc35a66631a4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55248111"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257993"
 ---
 # <a name="install-visual-studio-and-connect-to-azure-stack"></a>Installieren von Visual Studio und Herstellen einer Verbindung mit Azure Stack
 
-*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Sie können Visual Studio zum Schreiben und Bereitstellen von [Azure Resource Manager-Vorlagen](azure-stack-arm-templates.md) für Azure Stack verwenden. Die Schritte in diesem Artikel beschreiben die Installation von Visual Studio in [Azure Stack](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop) oder auf einem externen Computer, wenn Sie eine Verbindung mit Azure Stack per [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) herstellen möchten.
 
@@ -39,7 +39,7 @@ Sie können Visual Studio zum Schreiben und Bereitstellen von [Azure Resource Ma
 
 4. Deinstallieren Sie das **Microsoft Azure PowerShell**, das als Teil des Azure SDKs installiert ist.
 
-    ![Screenshot der WebPI-Installationsschritte](./media/azure-stack-install-visual-studio/image1.png) 
+    ![Screenshot der WebPI-Installationsschritte](./media/azure-stack-install-visual-studio/image1.png)
 
 5. [Installieren von PowerShell für Azure Stack](azure-stack-powershell-install.md)
 
@@ -65,9 +65,7 @@ Nach der Anmeldung können Sie [Vorlagen bereitstellen](azure-stack-deploy-templ
 
 3. Erweitern Sie **Umgebung** im **Navigationsbereich**, und wählen Sie **Konten** aus.
 
-4. Wählen Sie **Hinzufügen** aus, und geben Sie den Azure Resource Manager-Endpunkt des Benutzers ein.  
-  Für das Azure Stack Development Kit lautet die URL `https://management.local.azurestack/external`.  
-  Für integrierte Azure Stack-Systeme lautet die URL `https://management.[Region}.[External FQDN]`.
+4. Wählen Sie **Hinzufügen** aus, und geben Sie den Azure Resource Manager-Endpunkt des Benutzers ein. Für das Azure Stack Development Kit lautet die URL `https://management.local.azurestack/external`.  Für integrierte Azure Stack-Systeme lautet die URL `https://management.[Region}.[External FQDN]`.
 
     ![X](./media/azure-stack-install-visual-studio/image5.png)
 
@@ -79,7 +77,7 @@ Nach der Anmeldung können Sie [Vorlagen bereitstellen](azure-stack-deploy-templ
 
 6. Wählen Sie im Menü **Ansicht** die Option **Cloud-Explorer** aus.
 
-1. Wählen Sie **Konto hinzufügen** aus, und melden Sie sich mit Ihren AD FS-Anmeldeinformationen an.  
+7. Wählen Sie **Konto hinzufügen** aus, und melden Sie sich mit Ihren AD FS-Anmeldeinformationen an.  
 
     ![Cloud-Explorer](./media/azure-stack-install-visual-studio/image7.png)
 
@@ -91,5 +89,5 @@ Nach der Anmeldung können Sie [Vorlagen bereitstellen](azure-stack-deploy-templ
 
 ## <a name="next-steps"></a>Nächste Schritte
 
- - Erfahren Sie mehr über die [parallele Installation mehrerer Visual Studio-Versionen](https://msdn.microsoft.com/library/ms246609.aspx).
- - [Entwickeln Sie Vorlagen für Azure Stack.](azure-stack-develop-templates.md)
+- Erfahren Sie mehr über die [parallele Installation mehrerer Visual Studio-Versionen](/visualstudio/install/install-visual-studio-versions-side-by-side).
+- [Entwickeln Sie Vorlagen für Azure Stack.](azure-stack-develop-templates.md)

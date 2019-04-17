@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17c9ef471ca1536f928ca5ae2fe4f55e8e2b3424
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 4b94004aa4b4834be80c13a044fcf7eb0023b6f7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878416"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259863"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Azure Active Directory-Zugriffstoken
 
@@ -173,14 +173,14 @@ Der `alg`-Anspruch gibt den Algorithmus an, mit dem das Token signiert wurde. De
 
 Zu einem beliebigen Zeitpunkt signiert Azure AD unter Umständen ein ID-Token mithilfe eines bestimmten Satzes von Paaren aus öffentlichen und privaten Schlüsseln. Azure AD wechselt regelmäßig durch die möglichen Sätze von Schlüsseln. Ihre App muss also auf die automatische Verarbeitung dieser Schlüsseländerungen ausgelegt sein. Die von Azure AD verwendeten öffentlichen Schlüssel sollten alle 24 Stunden auf Änderungen überprüft werden.
 
-Sie können die Signaturschlüsseldaten, die zum Überprüfen der Signatur erforderlich sind, mithilfe des OpenID Connect-Metadatendokuments abrufen. Dieses Dokument befindet sich hier:
+Sie können die Signaturschlüsseldaten, die zum Überprüfen der Signatur erforderlich sind, mithilfe des [OpenID Connect-Metadatendokuments](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document) abrufen. Dieses Dokument befindet sich unter:
 
 ```
-https://login.microsoftonline.com/common/.well-known/openid-configuration
+https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 ```
 
 > [!TIP]
-> Testen Sie diese [URL](https://login.microsoftonline.com/common/.well-known/openid-configuration) in einem Browser!
+> Testen Sie diese [URL](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration) in einem Browser!
 
 Dieses Metadatendokument:
 
@@ -190,7 +190,9 @@ Dieses Metadatendokument:
 > [!NOTE]
 > Der v1.0-Endpunkt gibt beide Ansprüche zurück, `x5t` und `kid`, der v2.0-Endpunkt dagegen antwortet nur mit Anspruch `kid`. Für das weitere Vorgehen wird empfohlen, Ihr Token mithilfe des Anspruchs `kid` zu überprüfen.
 
-Die Signaturüberprüfung wird in diesem Dokument nicht erläutert. Es stehen jedoch zahlreiche Open Source-Bibliotheken mit hilfreichen Informationen zur Verfügung.
+Die Signaturüberprüfung wird in diesem Dokument nicht erläutert. Es stehen jedoch zahlreiche Open Source-Bibliotheken mit hilfreichen Informationen zur Verfügung.  Die Microsoft Identity Platform verfügt jedoch über eine Tokensignaturerweiterung für die Standards – benutzerdefinierte Signaturschlüssel.  
+
+Wenn Ihre App durch die Verwendung der Funktion [Anspruchszuordnung](active-directory-claims-mapping.md) über benutzerdefinierte Signaturschlüssel verfügt, müssen Sie einen `appid`-Abfrageparameter mit der App-ID anfügen, um einen `jwks_uri` abzurufen, der auf die Signaturschlüsselinformationen Ihrer App verweist, die für die Überprüfung verwendet werden sollen. Beispiel: `https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` enthält einen `jwks_uri` von `https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`.
 
 ### <a name="claims-based-authorization"></a>Anspruchsbasierte Autorisierung
 

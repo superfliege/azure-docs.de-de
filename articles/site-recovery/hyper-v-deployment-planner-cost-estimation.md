@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 03f71e4e10b65d9f295e13cdd8bc6881622c523d
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: e98ec71f0c21fe640666b9d34e170678ec23c1ff
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320279"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359027"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery-Bereitstellungsplaner-Bericht zur Kostenvorkalkulation 
 
@@ -56,7 +56,7 @@ Im ersten Abschnitt werden die Kosten für die Notfallwiederherstellung nach Kom
 
 **Network** (Netzwerk): Die Kosten für die ExpressRoute- und Site-to-Site-VPN-Verbindung für Notfallwiederherstellungszwecke. 
 
-**ASR license** (ASR-Lizenz): Die Site Recovery-Lizenzkosten für alle kompatiblen VMs. Wenn Sie eine VM manuell in die Tabelle für die ausführliche Kostenanalyse eingegeben haben, sind auch die Site Recovery-Lizenzkosten für diese VM enthalten.
+**Azure Site Recovery-Lizenz**: Die Site Recovery-Lizenzkosten für alle kompatiblen VMs. Wenn Sie eine VM manuell in die Tabelle für die ausführliche Kostenanalyse eingegeben haben, sind auch die Site Recovery-Lizenzkosten für diese VM enthalten.
 
 ### <a name="overall-dr-costs-by-states"></a>Overall DR costs by states (Gesamtkosten der Notfallwiederherstellung nach Zuständen)
 Die Gesamtkosten der Notfallwiederherstellung werden basierend auf zwei unterschiedlichen Zuständen kategorisiert: Replikation und DR-Drill.
@@ -107,23 +107,23 @@ Gehen Sie wie folgt vor, um VMs manuell hinzuzufügen:
 
 1. Fügen Sie in die folgenden Spalten Werte zur ungefähren VM-Größe und die Anzahl von VMs für diese Konfiguration ein: 
 
-    a. **Number of VMs** (Anzahl von VMs)
+    a. **Number of VMs (Anzahl von VMs)**
 
-    b. **IaaS size (Your selection)** (IaaS-Größe (Ihre Auswahl))
+    b. **IaaS size (Your selection) (IaaS-Größe (Ihre Auswahl))**
 
-    c. **Storage type Standard/Premium** (Speichertyp Standard/Premium)
+    c. **Storage Type Standard/Premium (Speichertyp Standard/Premium)**
 
-    d. **VM total storage size (GB)** (VM-Gesamtspeichergröße (GB))
+    d. **VM total storage size (GB) (VM-Gesamtspeichergröße (GB))**
 
-    e. **Number of DR drills in a year** (Anzahl von DR-Drills in einem Jahr)
+    e. **Number of DR drills in a year (Anzahl von DR-Drills in einem Jahr)**
 
-    f. **Each DR-Drill duration (Days)** (Dauer einzelner DR-Drills (Tage))
+    f. **Each DR-Drill duration (Days) (Dauer einzelner DR-Drills (Tage))**
 
-    g. **OS Type** (Betriebssystemtyp)
+    g. **OS Type (Betriebssystemtyp)**
 
-    h. **Data redundancy** (Datenredundanz)
+    h. **Datenredundanz**
 
-    i. **Azure-Hybridnutzungsvorteil**
+    i. **Azure-Vorteil bei Hybridnutzung**
 
 1. Sie können auf alle VMs der Tabelle den gleichen Wert anwenden, indem Sie für **Number of DR drills in a year**, **Each DR drill duration (Days)**, **Data redundancy** und **Azure Hybrid Use Benefit** die Option **Apply to all** (Auf alle anwenden) wählen.
 
@@ -157,7 +157,7 @@ Gehen Sie wie folgt vor, um VMs manuell hinzuzufügen:
 
 **Total DR-Drill cost (average)** (Gesamtkosten für DR-Drill [Durchschnitt]): Die Compute- und Speicherkosten für DR-Drills.
 
-**ASR license cost** (ASR-Lizenzkosten): Die Site Recovery-Lizenzkosten.
+**Azure Site Recovery-Lizenzkosten**: Die Site Recovery-Lizenzkosten.
 
 ## <a name="supported-target-regions"></a>Unterstützte Zielregionen
 Mit dem Site Recovery-Bereitstellungsplaner kann eine Kostenvorkalkulation für die unten angegebenen Azure-Regionen erstellt werden. Falls Ihre Region hier nicht aufgeführt ist, können Sie eine der folgenden Regionen verwenden, deren Preise Ihrer Region am ehesten entsprechen:

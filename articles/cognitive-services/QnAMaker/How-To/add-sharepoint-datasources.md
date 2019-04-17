@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/26/2019
+ms.date: 04/05/2019
 ms.author: tulasim
-ms.openlocfilehash: 97da0608781c286e685fd70dd7be37192dd3c9fd
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 671d76b6c0a5a2cdac5797668fb0e5651b5823e0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580273"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281742"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Hinzufügen einer geschützten SharePoint-Datenquelle zu Ihrer Wissensdatenbank
 
@@ -57,7 +57,7 @@ Nachdem der QnA Maker-Manager das Konto ausgewählt hat, erhält der Active Di
 
 ### <a name="active-directory-manager-grant-file-read-access-to-qna-maker"></a>Active Directory-Manager: Gewähren von Dateilesezugriff für QnA Maker
 
-Der Active Directory-Manager (nicht der QnA Maker-Manager) muss QnA Maker über [diesen Link](https://login.microsoftonline.com/common/oauth2/v2.0/authorize?response_type=id_token&scope=files.read%20openid%20profile&client_id=c2c11949-e9bb-4035-bda8-59542eb907a6&redirect_uri=https%3A%2F%2Fwww.qnamaker.ai%3A%2FCreate&state=68) Zugriff auf die SharePoint-Ressource gewähren, um die App „QnAMakerPortalSharepoint“ zu autorisieren und ihr Dateileseberechtigungen zu erteilen. 
+Der Active Directory-Manager (nicht der QnA Maker-Manager) muss QnA Maker über [diesen Link](https://login.microsoftonline.com/common/oauth2/v2.0/authorize?response_type=id_token&scope=Files.Read%20Files.Read.All%20Sites.Read.All%20User.Read%20User.ReadBasic.All%20profile%20openid%20email&client_id=c2c11949-e9bb-4035-bda8-59542eb907a6&redirect_uri=https%3A%2F%2Fwww.qnamaker.ai%3A%2FCreate&state=68) Zugriff auf die SharePoint-Ressource gewähren, um die App „QnAMakerPortalSharepoint“ zu autorisieren und ihr Dateileseberechtigungen zu erteilen. 
 
 ![Azure Active Directory-Manager gewährt interaktiv Berechtigungen](../media/add-sharepoint-datasources/aad-manager-grants-permission-interactively.png)
 
@@ -96,22 +96,22 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 1. Select **YES** in the pop-up confirmation windows. 
 
     ![Grant required permissions](../media/add-sharepoint-datasources/grant-required-permissions.png)
-
-### Grant access from the Azure Active Directory admin center
-
-1. The Active Directory manager signs in to the Azure portal and opens **[Enterprise applications](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)**. 
-
-1. Search for `QnAMakerPortalSharepoint` the select the QnA Maker app. 
-
-    [![Search for QnAMakerPortalSharepoint in Enterprise apps list](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
-
-1. Under **Security**, go to **Permissions**. Select **Grant admin consent for Organization**. 
-
-    [![Select authenticated user for Active Directory Admin](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png)](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png#lightbox)
-
-1. Select a Sign-On account with permissions to grant permissions for the Active Directory. 
-
 -->
+### <a name="grant-access-from-the-azure-active-directory-admin-center"></a>Gewähren des Zugriffs über das Azure Active Directory Admin Center
+
+1. Der Active Directory-Manager meldet sich beim Azure-Portal an und öffnet **[Unternehmensanwendungen](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)**. 
+
+1. Suchen Sie nach `QnAMakerPortalSharepoint`, und wählen Sie dann die QnA Maker-App aus. 
+
+    [![SSuchen Sie nach QnAMakerPortalSharepoint in der Liste der Unternehmensanwendungen(../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
+
+1. Wechseln Sie unter **Sicherheit** zu **Berechtigungen**. Wählen Sie **Administratoreinwilligung für Organisation gewähren** aus. 
+
+    [![SWählen Sie den authentifizierten Benutzer für Active Directory Admin aus(../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png)](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png#lightbox)
+
+1. Wählen Sie ein Anmeldekonto mit Berechtigungen, um Berechtigungen für Active Directory zu gewähren. 
+
+
   
 <!--
 

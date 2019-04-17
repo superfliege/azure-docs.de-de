@@ -4,14 +4,14 @@ description: Schritte zum Bereitstellen des Avere vFXT-Clusters in Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 04/05/2019
 ms.author: v-erkell
-ms.openlocfilehash: 7dbfc39075bb42b1ec13823849eb769e117ddd4a
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 7ded66c29f12b8f68746726ca6c126bffbc51f0d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409685"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257313"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Bereitstellen des vFXT-Clusters
 
@@ -31,18 +31,17 @@ Vergewissern Sie sich vor der Verwendung der Erstellungsvorlage, dass diese Vora
 1. [Neues Abonnement](avere-vfxt-prereqs.md#create-a-new-subscription)
 1. [Berechtigungen des Abonnementbesitzers](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
 1. [Kontingent für den vFXT-Cluster](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
-1. [Benutzerdefinierte Zugriffsrollen](avere-vfxt-prereqs.md#create-access-roles) – Für die Zuordnung zu den Clusterknoten müssen Sie eine rollenbasierte Zugriffskontrollrolle anlegen. Sie haben die Möglichkeit, auch eine benutzerdefinierte Zugriffsrolle für den Clustercontroller zu erstellen, aber die meisten Benutzer übernehmen standardmäßig die Rolle des Besitzers, die dem Controller Rechten entsprechend einem Ressourcengruppenbesitzer einräumt. Weitere Informationen finden Sie unter [Integrierte Rollen für Azure-Ressourcen](../role-based-access-control/built-in-roles.md#owner).
 1. [Storage-Dienstendpunkt (bei Bedarf)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) – Wird für Bereitstellungen benötigt, bei der ein vorhandenes virtuelles Netzwerk verwendet und ein Blob-Speicher erstellt wird.
 
 Weitere Informationen zu den Schritten und der Planung der Clusterbereitstellung finden Sie unter [Planen Ihres Avere vFXT-Systems](avere-vfxt-deploy-plan.md) und [Übersicht über die Bereitstellung](avere-vfxt-deploy-overview.md).
 
 ## <a name="create-the-avere-vfxt-for-azure"></a>Erstellen des Avere vFXT for Azure
 
-Rufen sie die Erstellungsvorlage im Azure-Portal auf, indem Sie nach Avere suchen und „Avere vFXT ARM-Bereitstellung“ auswählen. 
+Rufen sie die Erstellungsvorlage im Azure-Portal auf, indem Sie nach Avere suchen und „Avere vFXT für Azure ARM-Vorlage“ auswählen. 
 
-![Browserfenster mit dem Azure-Portal mit Breadcrumbs „Neu > Marketplace > Alles“. Auf der Seite „Alles“ enthält das Suchfeld den Begriff „avere“ und das zweite Ergebnis, „Avere vFXT ARM-Bereitstellung“, ist rot hervorgehoben.](media/avere-vfxt-template-choose.png)
+![Browserfenster mit dem Azure-Portal mit Breadcrumbs „Neu > Marketplace > Alles“. Auf der Seite „Alles“ enthält das Suchfeld den Begriff „avere“ und das zweite Ergebnis, „Avere vFXT für Azure ARM-Vorlage“, ist rot hervorgehoben.](media/avere-vfxt-template-choose.png)
 
-Nachdem Sie die Details auf der Seite „Avere vFXT ARM-Bereitstellung“ gelesen haben, klicken Sie auf **Erstellen**, um zu beginnen. 
+Nachdem Sie die Details auf der Seite „Avere vFXT für Azure ARM-Vorlage“ gelesen haben, klicken Sie auf **Erstellen**, um zu beginnen. 
 
 ![Azure Marketplace mit der Anzeige der ersten Seite der Bereitstellungvorlage](media/avere-vfxt-deploy-first.png)
 
@@ -69,14 +68,6 @@ Geben Sie die folgenden Informationen ein:
 
 * **Kennwort** oder **Öffentlicher SSH-Schlüssel** – Je nach Authentifizierungstyp, den Sie ausgewählt haben, müssen Sie einen öffentlichen RSA-Schlüssel oder ein Kennwort in den nächsten Feldern angeben. Diese Anmeldeinformationen werden in Kombination mit dem Benutzernamen verwenden, der zuvor bereitgestellt wurde.
 
-* **ID der Erstellungsrolle für Avere-Cluster** – Verwenden Sie dieses Feld zum Festlegen der Zugriffssteuerungsrolle für den Clustercontroller. Der Standardwert ist die integrierte Rolle [Besitzer](../role-based-access-control/built-in-roles.md#owner). Besitzerberechtigungen für den Clustercontroller sind auf die Ressourcengruppe des Clusters beschränkt. 
-
-  Sie müssen den Globally Unique Identifier (GUID) verwenden, der der Rolle entspricht. Für den Standardwert (Besitzer) lautet der GUID 8e3af657-a8ff-443-c-a75c-2fe8c4bcb635. Um den GUID für eine benutzerdefinierte Rolle zu ermitteln, verwenden Sie diesen Befehl aus: 
-
-  ```azurecli
-  az role definition list --query '[*].{roleName:roleName, name:name}' -o table --name 'YOUR ROLE NAME'
-  ```
-
 * **Abonnement** – Wählen Sie das Avere vFXT-Abonnement aus. 
 
 * **Ressourcengruppe** – Wählen Sie eine vorhandene leere Ressourcengruppe für den Avere vFXT-Cluster aus, oder klicken Sie auf „Neu erstellen“, und geben Sie einen neuen Ressourcengruppennamen ein. 
@@ -97,10 +88,6 @@ Auf der zweiten Seite der Bereitstellungsvorlage können Sie unter anderem Clust
 * **Anzahl der Avere vFXT-Clusterknoten** – Wählen Sie die Anzahl der zu verwendenden Knoten im Cluster aus. Der Mindestwert ist drei Knoten, der Maximalwert 12. 
 
 * **Cluster-Verwaltungskennwort** – Erstellen Sie das Kennwort für die Clusterverwaltung. Dieses Passwort wird mit dem Benutzernamen ```admin``` verwendet, um sich bei der Clustersteuerung anzumelden, um den Cluster zu überwachen und Einstellungen zu konfigurieren.
-
-* **Betriebsrolle für den Avere-Cluster** – Geben Sie den Namen der Zugriffssteuerungsrolle für die Clusterknoten ein. Dies ist eine benutzerdefinierte Rolle, die als ein erforderlicher Schritt erstellt wurde. 
-
-  Bei dem in [Erstellen der Zugriffsrolle für Clusterknoten](avere-vfxt-prereqs.md#create-the-cluster-node-access-role) wird die Datei als ```avere-operator.json``` gespeichert und der dazugehörige Rollenname ist ```avere-operator```.
 
 * **Avere vFXT-Clustername** – Geben Sie dem Cluster einen eindeutigen Namen. 
 
@@ -138,7 +125,7 @@ Auf Seite 3 wird die Konfiguration zusammengefasst und die Parameter werden übe
 
 ![Dritte Seite der Bereitstellungsvorlage – Überprüfung](media/avere-vfxt-deploy-3.png)
 
-Klicken Sie auf Seite 4 auf die Schaltfläche **Erstellen**, um den Bedingungen zustimmen, und erstellen die Avere vFXT for Azure-Cluster. 
+Geben Sie auf Seite 4 alle erforderlichen Kontaktinformationen ein, und klicken Sie auf die Schaltfläche **Erstellen**, um den Bedingungen zustimmen, und erstellen die Avere vFXT for Azure-Cluster. 
 
 ![Vierte Seite der Bereitstellungsvorlage – Bedingungen, Schaltfläche „Erstellen“](media/avere-vfxt-deploy-4.png)
 

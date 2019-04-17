@@ -7,17 +7,17 @@ ms.subservice: managed-instance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: stevestein
+ms.author: sstein
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: c4f8144c3e941c673da3ecc9be7ac7f091583d4a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6362084c11ce7aa9078823758700239694162765
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864660"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359154"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Referenz zur Verwaltungs-API für verwaltete Azure SQL-Datenbank-Instanzen
 
@@ -92,7 +92,7 @@ Verwenden Sie zum Erstellen und Verwalten verwalteter Instanzen die folgenden RE
 |[Verwaltete Instanzen – Löschen](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)|Löscht eine verwaltete Instanz.|
 |[Verwaltete Instanzen – Abrufen](https://docs.microsoft.com/rest/api/sql/managedinstances/get)|Ruft eine verwaltete Instanz ab.|
 |[Verwaltete Instanzen – Auflisten](https://docs.microsoft.com/rest/api/sql/managedinstances/list)|Gibt eine Liste der verwalteten Instanzen in einem Abonnement zurück.|
-|[Verwaltet Instanzen – Auflisten nach Ressourcengruppe](https://docs.microsoft.com/rest/api/sql/managedinstances/listbyresourcegroup)|Gibt eine Liste der verwalteten Instanzen in einer Ressourcengruppe zurück.|
+|[Verwaltete Instanzen – Auflisten nach Ressourcengruppe](https://docs.microsoft.com/rest/api/sql/managedinstances/listbyresourcegroup)|Gibt eine Liste der verwalteten Instanzen in einer Ressourcengruppe zurück.|
 |[Verwaltete Instanzen – Aktualisieren](https://docs.microsoft.com/rest/api/sql/managedinstances/update)|Aktualisiert eine verwaltete Instanz.|
 
 ## <a name="next-steps"></a>Nächste Schritte

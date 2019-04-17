@@ -9,14 +9,14 @@ keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamische
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 030/25/2019
+ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 4b3cba7e7656ea13a6e7b36be4cb2fef99893867
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: e0009e1c6380e02e2e0e24bf86e6dab435b6c022
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439327"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357643"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategien zum Testen Ihres Codes in Azure Functions
 
@@ -252,6 +252,8 @@ Die in dieser Klasse implementierten Elemente sind:
 - **Http_trigger_should_return_string_from_member_data**: Dieser Test verwendet xUnit-Attribute, um der HTTP-Funktion Beispieldaten bereitzustellen.
 
 - **Timer_should_log_message**: Dieser Test erstellt eine Instanz von `ListLogger` und übergibt sie an eine Zeitgeberfunktion. Sobald die Funktion ausgeführt wird, wird das Protokoll überprüft, um sicherzustellen, dass die erwartete Nachricht vorhanden ist.
+
+Wenn Sie in Ihren Tests auf Anwendungseinstellungen zugreifen möchten, können Sie [System.Environment.GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables) verwenden.
 
 ### <a name="run-tests"></a>Ausführen von Tests
 

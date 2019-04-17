@@ -9,16 +9,18 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 3e516eff2ff3262064fa32a8fe31e1f27cd8d4b7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: db26380ef50fd7546f90ceccaec854587e4690c4
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57998758"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491057"
 ---
 # <a name="migrate-storage-resources-to-global-azure"></a>Migrieren von Speicherressourcen zu Azure weltweit
 
 Dieser Artikel enthält Informationen dazu, wie Sie Azure-Speicherressourcen von Azure Deutschland zu Azure weltweit migrieren können.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="blobs"></a>Blobs (in englischer Sprache)
 
@@ -45,7 +47,7 @@ Sie erhalten die drei Teile des URIs (*storageaccountname*, *containername* und 
 Außerdem benötigen Sie die Speicherkontoschlüssel, um auf das Azure Storage-Konto zugreifen zu können. Rufen Sie diese über das Portal, durch Verwenden von PowerShell oder durch Verwenden der Befehlszeilenschnittstelle ab. Beispiel: 
 
 ```powershell
-Get-AzureRmStorageAccountKey -Name <saname> -ResourceGroupName <rgname>
+Get-AzStorageAccountKey -Name <saname> -ResourceGroupName <rgname>
 ```
 
 Wie immer benötigen Sie nur einen der beiden Schlüssel für jedes Speicherkonto.
@@ -142,10 +144,10 @@ Erfahren Sie mehr über Tools, Techniken und Empfehlungen zum Migrieren von Ress
 - [Netzwerk](./germany-migration-networking.md)
 - [Web](./germany-migration-web.md)
 - [Datenbanken](./germany-migration-databases.md)
-- [Analyse](./germany-migration-analytics.md)
+- [Analytics](./germany-migration-analytics.md)
 - [IoT](./germany-migration-iot.md)
 - [Integration](./germany-migration-integration.md)
-- [Identität](./germany-migration-identity.md)
+- [Identity](./germany-migration-identity.md)
 - [Sicherheit](./germany-migration-security.md)
 - [Verwaltungstools](./germany-migration-management-tools.md)
 - [Medien](./germany-migration-media.md)

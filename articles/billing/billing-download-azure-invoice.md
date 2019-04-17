@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 82755f01cc881703eeefb6415b2e8e87e50fba60
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: f71fe9b02765e0fc8fd5f3b7abbd54c87b08132f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652381"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264062"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Anzeigen und Herunterladen der Microsoft Azure-Rechnung
 
@@ -60,7 +60,7 @@ Rechnungen werden für jedes [Abrechnungsprofil](billing-mca-overview.md#underst
 1. Wählen Sie **Rechnungen** aus.
 1. Suchen Sie im Rechnungsraster nach der Zeile der Rechnung, die Sie herunterladen möchten.
 1. Klicken Sie am Ende der Zeile auf die Auslassungspunkte (`...`).
-    ![Screenshot mit den Auslassungspunkten am Ende der Zeile](./media/billing-download-azure-invoice/billingprofile-invoicegrid.png)
+    ![Screenshot, in dem am Ende der Zeile die Auslassungspunkte abgebildet sind](./media/billing-download-azure-invoice/billingprofile-invoicegrid.png)
 1. Wählen Sie im Kontextmenü für den Download **Rechnung** aus.
 
     ![Screenshot des Kontextmenüs](./media/billing-download-azure-invoice/contextmenu.png)
@@ -136,10 +136,10 @@ Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Support
 Lesen Sie die folgenden Artikel, um mehr über Ihre Rechnung und Gebühren zu erfahren:
 
 - [Anzeigen und Herunterladen der Microsoft Azure-Nutzung und -Gebühren](billing-download-azure-daily-usage.md)
-- [Grundlegendes zu Ihrer Rechnung für Microsoft Azure](billing-understand-your-bill.md)
-- [Grundlegendes zu den Benennungen in Ihrer Azure-Rechnung](billing-understand-your-invoice.md)
+- [Informationen zu Ihrer Rechnung für Microsoft Azure](billing-understand-your-bill.md)
+- [Grundlegendes über Benennungen in Ihrer Azure-Rechnung](billing-understand-your-invoice.md)
 - [Grundlegendes über Benennungen zu den Gebühren in der Datei mit ausführlichen Nutzungsdaten zu Microsoft Azure](billing-understand-your-usage.md)
-- [Anzeigen der Azure Enterprise Agreement-Preise für Ihre Organisation](billing-ea-pricing.md)
+- [Anzeigen der Azure-Preise für Ihre Organisation](billing-ea-pricing.md)
 
 Wenn Sie eine Microsoft-Kundenvereinbarung abgeschlossen haben, lesen Sie die folgenden Artikel:
 
@@ -147,4 +147,4 @@ Wenn Sie eine Microsoft-Kundenvereinbarung abgeschlossen haben, lesen Sie die fo
 - [Grundlegendes zu den Benennungen auf der Rechnung für Ihr Abrechnungsprofil](billing-mca-understand-your-invoice.md)
 - [Grundlegendes zur CSV-Datei für die Azure-Nutzung und -Gebühren für Ihr Abrechnungsprofil](billing-mca-understand-your-usage.md)
 - [Anzeigen und Herunterladen von Steuerdokumenten für Ihr Abrechnungsprofil](billing-mca-download-tax-document.md)
-- [Anzeigen der Azure Enterprise Agreement-Preise für Ihre Organisation](billing-ea-pricing.md)
+- [Anzeigen der Azure-Preise für Ihre Organisation](billing-ea-pricing.md)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 1f7c2bde631e42ac94ce4c0394d13e369f6ea23f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 6f577530c42952c6340a15110bcd37383a5fca57
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54049757"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526587"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Abonnements in Azure API Management
 
@@ -51,9 +51,6 @@ Traditionell wurden Abonnements in APIM als Bereich immer einem einzelnen [API-P
 
 ### <a name="subscriptions-for-all-apis-or-an-individual-api"></a>Abonnements für alle APIs oder eine einzelne API
 
-> [!NOTE]
-> Aktuell ist dieses Feature nur im API Management-Verbrauchstarif verfügbar.
-
 Bei Einführung des [Verbrauchstarifs](https://aka.ms/apimconsumptionblog) für API Management wurde einige Änderungen vorgenommen, um die Schlüsselverwaltung zu optimieren:
 - Zunächst wurden zwei weitere Abonnementbereiche hinzugefügt: alle APIs und eine einzelne API. Der Bereich von Abonnements ist nicht länger auf ein API-Produkt beschränkt. Es ist jetzt möglich, Schlüssel zur Zugriffserteilung für eine API (oder alle APIs innerhalb einer API Management-Instanz) zu erstellen, ohne dass zunächst ein Produkt erstellt und diesem die APIs hinzugefügt werden müssen. Außerdem gehört zu jeder API Management-Instanz nun ein unveränderliches Abonnement für alle APIs. Dieses Abonnement erleichtert das Testen und Debuggen von APIs in der Testkonsole.
 
@@ -68,4 +65,4 @@ Weitere Informationen zu API Management:
 
 + Informationen zu weiteren [Konzepten](api-management-terminology.md) in API Management
 + [Tutorials](import-and-publish.md) zum weiteren Kennenlernen von API Management
-+ [FAQ-Seite](api-management-faq.md) für häufige Fragen
++ [FAQ-Seite](api-management-faq.md) für häufig gestellte Fragen

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: b5b39a436ae356cf2543f03db3d6a84d1daa936a
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: bf8c7e76aa6dd69cc505be237e47d8e10e7e8db5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189494"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264861"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ipass-smartconnect"></a>Tutorial: Azure Active Directory-Integration mit iPass SmartConnect
 
@@ -221,7 +221,7 @@ In diesem Abschnitt erstellen Sie in iPass SmartConnect einen Benutzer namens Br
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-**Um die Anwendung im SP-initiierten Fluss zu testen, führen Sie die folgenden Schritte durch:**
+**Führen Sie die folgenden Schritte aus, um die Anwendung im SP-initiierten Fluss zu testen:**
 
 a. Den iPass SmartConnect-Client für Windows können Sie [hier](https://om-activation.ipass.com/ClientActivation/ssolanding.go) herunterladen.
 
@@ -239,7 +239,7 @@ d. Geben Sie einen Azure-Benutzernamen mit Domäne ein. Klicken Sie auf **Contin
 
 e. Nach erfolgreicher Authentifizierung wird die Clientaktivierung gestartet. Der Client wird aktiviert.
 
-**Um die Anwendung im IdP-initiierten Fluss zu testen, führen Sie die folgenden Schritte durch:**
+**Führen Sie die folgenden Schritte aus, um die Anwendung im IdP-initiierten Fluss zu testen:**
 
 a. Melden Sie sich bei [https://myapps.microsoft.com](https://myapps.microsoft.com) an.
 
@@ -257,7 +257,7 @@ f. Der Client wird aktiviert.
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

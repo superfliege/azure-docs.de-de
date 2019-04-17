@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache, C# (.NET Core Windows): Speech-Dienste'
+title: 'Schnellstart: Erkennen von Sprache, C# (.NET Core): Speech-Dienste'
 titleSuffix: Azure Cognitive Services
-description: Hier erfahren Sie, wie die Spracherkennung in C# mit .NET Core unter Windows mit dem Speech SDK funktioniert.
+description: Hier erfahren Sie, wie die Spracherkennung in C# mit .NET Core unter Windows oder macOS mit dem Speech SDK funktioniert.
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: 13d5d5b57c4c52b213f3c369244348b00a49332b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 938efe79d4f9f0b9003fcf83196df80d71d16e75
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895607"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009426"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-core"></a>Schnellstart: Erkennen von Sprache mit dem Speech-SDK für .NET Core
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-In diesem Artikel erstellen Sie eine C#-Konsolenanwendung für .NET Core unter Windows mithilfe des Cognitive Services [Speech SDK](speech-sdk.md). Sie transkribieren über das Mikrofon Ihres Computers Sprache in Echtzeit in Text. Die Anwendung basiert auf dem [NuGet-Paket für das Speech SDK](https://aka.ms/csspeech/nuget) und auf Microsoft Visual Studio 2017 (beliebige Edition).
+In diesem Artikel erstellen Sie eine C#-Konsolenanwendung für .NET Core unter Windows oder macOS mithilfe des Cognitive Services [Speech SDK](speech-sdk.md). Sie transkribieren über das Mikrofon Ihres Computers Sprache in Echtzeit in Text. Die Anwendung basiert auf dem [NuGet-Paket für das Speech SDK](https://aka.ms/csspeech/nuget) und auf Microsoft Visual Studio 2017 (beliebige Edition).
 
 > [!NOTE]
 > .NET Core ist eine Open-Source- und plattformübergreifende .NET-Plattform, die die [.NET Standard](https://docs.microsoft.com/dotnet/standard/net-standard)-Spezifikation implementiert.
@@ -32,7 +32,7 @@ Für diese Schnellstartanleitung benötigen Sie einen Abonnementschlüssel für 
 
 Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
-* [.NET Core SDK](https://dotnet.microsoft.com/download)
+* [.Net Core SDK](https://dotnet.microsoft.com/download)
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
 * Ein Azure-Abonnementschlüssel für den Speech-Dienst. [Hier erhalten Sie einen kostenlosen Schlüssel.](get-started.md)
 
@@ -68,12 +68,12 @@ Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Beispiele, etwa das Lesen von Sprache aus einer Audiodatei, sind auf GitHub verfügbar.
+Weitere Beispiele, z.B. das Auslesen von Sprache aus einer Audiodatei, sind auf GitHub verfügbar.
 
 > [!div class="nextstepaction"]
 > [C#-Beispiele auf GitHub](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Tutorial: Erstellen eines benutzerdefinierten Akustikmodells](how-to-customize-acoustic-models.md)
-- [Tutorial: Erstellen eines benutzerdefinierten Sprachmodells](how-to-customize-language-model.md)
+- [Anpassen von Akustikmodellen](how-to-customize-acoustic-models.md)
+- [Anpassen von Sprachmodellen](how-to-customize-language-model.md)

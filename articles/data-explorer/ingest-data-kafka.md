@@ -1,19 +1,18 @@
 ---
 title: 'Schnellstart: Erfassen von Daten aus Kafka in Azure Data Explorer'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Daten aus Kafka in Azure Data Explorer erfassen (laden).
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/19/2018
-ms.openlocfilehash: 5c7d533cbd8a69b8fd9dcc704e7b83b0e476e499
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 180053aa2146d8ab80df832044ac3ee4d45970da
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756641"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047108"
 ---
 # <a name="quickstart-ingest-data-from-kafka-into-azure-data-explorer"></a>Schnellstart: Erfassen von Daten aus Kafka in Azure Data Explorer
  
@@ -23,7 +22,7 @@ Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Un
  
 * Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen. 
  
-* [Einen Testcluster und eine Testdatenbank](create-cluster-database-portal.md)
+* [Ein Testcluster und eine Testdatenbank](create-cluster-database-portal.md)
  
 * [Eine Beispiel-App](https://github.com/Azure/azure-kusto-samples-dotnet/tree/master/kafka), die Daten generiert und an Kafka sendet
 
@@ -164,4 +163,4 @@ cd ./azure-kusto-samples-dotnet/kafka/
 ## <a name="next-steps"></a>Nächste Schritte
  
 > [!div class="nextstepaction"]
-> [Schnellstart: Abfragen von Daten in Azure Data Explorer](web-query-data.md)
+> [Schnellstart: Abfragen von Daten im Azure Data Explorer](web-query-data.md)

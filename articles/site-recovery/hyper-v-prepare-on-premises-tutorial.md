@@ -5,29 +5,37 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 127e970927e8ac1d0cd9b431c0c0175bdc4f5c0b
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 6e57b629a0007b06af6e37f96e1466e35afafccc
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315774"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361888"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Vorbereiten lokaler Hyper-V-Server für die Notfallwiederherstellung in Azure
 
-In diesem Tutorial wird gezeigt, wie Sie Ihre lokale Hyper-V-Infrastruktur vorbereiten, wenn Sie Hyper-V-VMs für die Notfallwiederherstellung in Azure replizieren möchten. Hyper-V-Hosts können von System Center Virtual Machine Manager (VMM) verwaltet werden, dies ist jedoch nicht erforderlich.  In diesem Tutorial lernen Sie Folgendes:
+In diesem Artikel wird beschrieben, wie Sie Ihre lokale Hyper-V-Infrastruktur vorbereiten, wenn Sie mit [Azure Site Recovery](site-recovery-overview.md) eine Notfallwiederherstellung von virtuellen Hyper-V-Computern für Azure einrichten möchten.
+
+
+Dies ist das zweite Tutorial in einer Reihe, welche die Einrichtung der Notfallwiederherstellung in Azure für lokale virtuelle Hyper-V-Computer veranschaulicht. Im [ersten Tutorial](tutorial-prepare-azure.md) haben wir die erforderlichen Azure-Komponenten für die Hyper-V-Notfallwiederherstellung eingerichtet.
+
+In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Überprüfen der Hyper-V-Anforderungen und der Anforderungen für VMM, falls erforderlich
+> * Überprüfen der Hyper-V-Anforderungen und VMM-Anforderungen, wenn Ihre Hyper-V-Hosts von System Center VMM verwaltet werden
 > * Vorbereiten von VMM, falls erforderlich
 > * Überprüfen des Internetzugriffs auf Azure-Standorte
 > * Vorbereiten von VMs, damit nach einem Failover in Azure auf sie zugegriffen werden kann
 
-Dies ist das zweite Tutorial in der Reihe. Stellen Sie sicher, dass Sie die [Azure-Komponenten eingerichtet haben](tutorial-prepare-azure.md). Die Vorgehensweise dazu wird im vorhergehenden Tutorial beschrieben.
+> [!NOTE]
+> In den Tutorials wird der einfachste Bereitstellungspfad für ein Szenario erläutert. Sie verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade. Ausführliche Anweisungen finden Sie in dem Artikel, der im Anleitungsabschnitt des Site Recovery-Inhaltsverzeichnisses angegeben ist.
 
+## <a name="before-you-start"></a>Vorbereitung
 
+Vergewissern Sie sich, dass Azure wie im [ersten Tutorial dieser Reihe](tutorial-prepare-azure.md) beschrieben vorbereitet wurde.
 
 ## <a name="review-requirements-and-prerequisites"></a>Überprüfen von Anforderungen und Voraussetzungen
 
@@ -79,7 +87,7 @@ Lassen Sie den Zugriff wie folgt zu, um die Verbindung mit Windows-VMs nach dem 
 
 1. Aktivieren Sie vor dem Failover RDP auf dem lokalen virtuellen Computer, um über das Internet darauf zuzugreifen. Stellen Sie sicher, dass TCP- und UDP-Regeln für das Profil **Öffentlich** hinzugefügt werden und dass RDP unter **Windows-Firewall** > **Zugelassene Apps** für alle Profile zugelassen ist.
 2. Für den Zugriff über ein Site-to-Site-VPN aktivieren Sie RDP auf dem lokalen Computer. RDP sollte unter **Windows-Firewall** -> **Zugelassene Apps und Feature** für **private und Domänennetzwerke** zugelassen werden.
-   Achten Sie darauf, dass die SAN-Richtlinie des Betriebssystems auf **OnlineAll** festgelegt ist. [Weitere Informationen](https://support.microsoft.com/kb/3031135) Auf dem virtuellen Computer sollten keine ausstehenden Windows-Updates vorhanden sein, wenn Sie ein Failover auslösen. Andernfalls können Sie sich nach Abschluss des Updates nicht mehr auf dem virtuellen Computer anmelden.
+   Achten Sie darauf, dass die SAN-Richtlinie des Betriebssystems auf **OnlineAll** festgelegt ist. [Weitere Informationen](https://support.microsoft.com/kb/3031135) Auf dem virtuellen Computer sollten keine ausstehenden Windows-Updates vorhanden sein, wenn Sie ein Failover auslösen. Andernfalls können Sie sich nach Abschluss des Updates nicht mehr bei dem virtuellen Computer anmelden.
 3. Aktivieren Sie nach dem Failover auf der Windows-Azure-VM die **Startdiagnose**, um einen Screenshot des virtuellen Computers anzuzeigen. Wenn Sie keine Verbindung herstellen können, überprüfen Sie, ob der virtuelle Computer ausgeführt wird, und sehen sich dann diese [Tipps zur Problembehandlung](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx) an.
 
 Nach dem Failover können Sie mit derselben IP-Adresse wie die lokale replizierte VM oder einer anderen IP-Adresse zugreifen. [Erfahren Sie mehr](concepts-on-premises-to-azure-networking.md) zum Einrichten der IP-Adressierung für das Failover.

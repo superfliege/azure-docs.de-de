@@ -14,16 +14,16 @@ ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 21167366ff3af2bb360c33eaae9d591020bf11a5
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: fa1731c9361be83949aa794ed8842681bd81d995
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487582"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257568"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Verwenden von API-Versionsprofilen mit Azure CLI in Azure Stack
 
-*Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
+*Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Mit den Schritten in diesem Artikel können Sie die Azure-Befehlszeilenschnittstelle (Azure CLI) zum Verwalten von ASDK-Ressourcen (Azure Stack Development Kit) über Linux-, Mac- und Windows-Clientplattformen einrichten.
 
@@ -99,7 +99,7 @@ Daraufhin sollten die Version der Azure-CLI und die anderen abhängigen Biblioth
     python -m pip install --upgrade pip
     ```
 
-3. Installieren Sie das Modul **certifi**. Bei [certifi](https://pypi.org/project/certifi/) handelt es sich um ein Modul und eine Sammlung mit Stammzertifikaten zum Überprüfen der Vertrauenswürdigkeit von SSL-Zertifikaten, während die Identität von TLS-Hosts überprüft wird. Öffnen Sie eine Befehlseingabeaufforderung oder eine PowerShell-Eingabeaufforderung mit erhöhten Rechten, und geben Sie den folgenden Befehl ein:
+3. Installieren Sie das Modul **certifi**. Bei [certifi](https://pypi.org/project/certifi/) handelt es sich um ein Modul und eine Sammlung mit Stammzertifikaten zum Überprüfen der Vertrauenswürdigkeit von SSL-Zertifikaten, während die Identität von TLS-Hosts überprüft wird. Öffnen Sie eine Eingabeaufforderung oder eine PowerShell-Eingabeaufforderung mit erhöhten Rechten, und geben Sie den folgenden Befehl ein:
 
     ```powershell
     pip install certifi
@@ -139,7 +139,7 @@ Daraufhin sollten die Version der Azure-CLI und die anderen abhängigen Biblioth
     sudo -H pip3 install --upgrade pip
     ```
 
-3. Installieren Sie das Modul **certifi**. Bei [certifi](https://pypi.org/project/certifi/) handelt es sich um ein Modul und eine Sammlung mit Stammzertifikaten zum Überprüfen der Vertrauenswürdigkeit von SSL-Zertifikaten, während die Identität von TLS-Hosts überprüft wird. Öffnen Sie eine Befehlseingabeaufforderung oder eine PowerShell-Eingabeaufforderung mit erhöhten Rechten, und geben Sie den folgenden Befehl ein:
+3. Installieren Sie das Modul **certifi**. Bei [certifi](https://pypi.org/project/certifi/) handelt es sich um ein Modul und eine Sammlung mit Stammzertifikaten zum Überprüfen der Vertrauenswürdigkeit von SSL-Zertifikaten, während die Identität von TLS-Hosts überprüft wird. Öffnen Sie eine Eingabeaufforderung oder eine PowerShell-Eingabeaufforderung mit erhöhten Rechten, und geben Sie den folgenden Befehl ein:
 
     ```bash
     pip3 install certifi
@@ -635,5 +635,5 @@ Es gibt bekannte Probleme bei der Verwendung der CLI in Azure Stack:
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Bereitstellen von Vorlagen mit der Azure CLI](azure-stack-deploy-template-command-line.md)
-- [Aktivieren der Azure CLI für Azure Stack-Benutzer (Betreibern)](../azure-stack-cli-admin.md)
+- [Aktivieren der Azure CLI für Azure Stack-Benutzer (Betreiber)](../azure-stack-cli-admin.md)
 - [Verwalten von Benutzerberechtigungen](azure-stack-manage-permissions.md) 

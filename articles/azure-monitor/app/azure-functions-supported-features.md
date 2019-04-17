@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 10/05/2018
 ms.reviewer: mbullwin
 ms.author: tilee
-ms.openlocfilehash: dd28bc3925b0f07a441c46a26498ef1a14c3e650
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 101c985178b8269b4ff542b94b057330d0c2652a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510322"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496060"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Unterstützte Features in Application Insights für Azure Functions
 
@@ -27,12 +27,12 @@ Azure Functions bietet [von Haus aus Integration](https://docs.microsoft.com/azu
 
 | Azure-Funktionen                       | V1                | V2 (Ignite 2018)  | 
 |-----------------------------------    |---------------    |------------------ |
-| **Application Insights .NET SDK**   | **2.5.0**       | **2.7.2**         |
+| **Application Insights .NET SDK**   | **2.5.0**       | **2.9.1**         |
 | | | | 
 | **Automatische Sammlung von**        |                 |                   |               
 | &bull;Anforderungen                     | Ja             | Ja               | 
 | &bull;Ausnahmen                   | Ja             | Ja               | 
-| &bull; Leistungsindikatoren         | Ja             |                   |
+| &bull; Leistungsindikatoren         | Ja             | Ja               |
 | &bull;Abhängigkeiten                   |                   |                   |               
 | &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | Ja               | 
 | &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | Ja               | 
@@ -65,3 +65,30 @@ Die von Ihnen angegebenen benutzerdefinierten Filterkriterien werden an die Live
 ## <a name="sampling"></a>Stichproben
 
 Azure Functions aktiviert die Stichprobenentnahme in der Konfiguration standardmäßig. Weitere Informationen finden Sie unter [Configure Sampling](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling) (Konfigurieren der Stichprobenentnahme).
+
+Wenn Ihr Projekt zur manuellen Nachverfolgung der Telemetrie vom Application Insights SDK abhängig ist, kann ein unerwartetes Verhalten auftreten, wenn Ihre Konfiguration der Stichprobenentnahme von der Konfiguration in Functions abweicht. 
+
+Es wird empfohlen, die gleiche Konfiguration wie Functions zu verwenden. Bei **Functions v2** können Sie mithilfe der Abhängigkeitsinjektion in Ihrem Konstruktor die gleiche Konfiguration erzielen:
+
+```csharp
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Extensibility;
+
+public class Function1 
+{
+
+    private readonly TelemetryClient telemetryClient;
+
+    public Function1(TelemetryConfiguration configuration)
+    {
+        this.telemetryClient = new TelemetryClient(configuration);
+    }
+
+    [FunctionName("Function1")]
+    public async Task<IActionResult> Run(
+        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, ILogger logger)
+    {
+        this.telemetryClient.TrackTrace("C# HTTP trigger function processed a request.");
+    }
+}
+```

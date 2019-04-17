@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 4b83917a76cb4b3e24ca4f5961d3a00c4d2c9cb0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/15/2019
+ms.openlocfilehash: c618a4035e9ec9b1ca1986e898ea1060ac05712d
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077257"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59615947"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Konfigurieren von Serverparametern in Azure Database for MariaDB über das Azure-Portal
 
@@ -46,10 +46,12 @@ Die Liste der unterstützten Serverparameter wächst ständig. Verwenden Sie die
 |Allgemeiner Zweck| 8| 15360| 1250|
 |Allgemeiner Zweck| 16| 31.232| 2500|
 |Allgemeiner Zweck| 32| 62.976| 5.000|
+|Allgemeiner Zweck| 64| 125952| 10000|
 |Arbeitsspeicheroptimiert| 2| 7168| 600|
 |Arbeitsspeicheroptimiert| 4| 15360| 1250|
 |Arbeitsspeicheroptimiert| 8| 30720| 2500|
 |Arbeitsspeicheroptimiert| 16| 62464| 5.000|
+|Arbeitsspeicheroptimiert| 32| 125952| 10000|
 
 Diese zusätzlichen Serverparameter sind im System nicht konfigurierbar:
 

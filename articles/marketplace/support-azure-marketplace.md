@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: f776bdba88902c0b4eaa9f27ef8ed3a4700765cc
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: de31ceea4faeecabd54c0d23e9263cbb4090925d
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620818"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491337"
 ---
 # <a name="support-for-the-marketplace"></a>Support für Marketplace  
 Hier finden Sie eine Liste der Supportoptionen für den Marketplace.  
@@ -40,7 +40,6 @@ Darüber hinaus erhalten Sie im [Marketplace-Kanal des C+AI Community-Forums](ht
 
 | Supportkanal | BESCHREIBUNG |  
 |:--- |:--- |  
-| Slack: [join.marketplace.azure.com](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Slack-Umgebung zur Unterstützung von Partnern bei technischen Problemen. In dieser Umgebung arbeiten derzeit mehr als 350 Partner. |  
 | MSDN-Foren: Marketplace unter [social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Microsoft Developer Network-Forum. |  
 | Stack Overflow: Azure unter [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) | Stack Overflow-Umgebung für Lösungen und Antworten auf allgemeine Fragen zu Azure Marketplace<ul> <li>Stack Overflow: Azure Marketplace unter [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Stack Overflow: Azure Resource Manager unter [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Stack Overflow: Virtuelle Computer in Azure unter [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li> <li>Stack Overflow: Container in Azure unter [stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container)</li> </ul> |
 | Support für AppSource: [appsourcecrm@Microsoft.com](mailto:appsourcecrm@microsoft.com) | Unterstützung beim Veröffentlichen von Dynamics-Apps |

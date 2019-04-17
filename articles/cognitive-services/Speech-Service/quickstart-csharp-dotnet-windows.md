@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: a3990bfac9199fadeff0573d7547d7e5bc551ece
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2f190ccbead9e6349543d04e2419f458888fba2c
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838611"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008746"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-framework-windows"></a>Schnellstart: Erkennen von Sprache mit dem Speech SDK für .NET Framework (Windows)
 
@@ -25,7 +25,7 @@ In dieser Anleitung erfahren Sie, wie Sie unter Verwendung von .NET Framework f�
 
 Eine schnelle Demonstration (ohne eigene Erstellung des Visual Studio-Projekts, wie weiter unten gezeigt) erhalten Sie wie folgt:
 
-Laden Sie das neueste [Cognitive Services Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk) von GitHub herunter.
+Laden Sie die neuesten [Beispiele für das Cognitive Services Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk) von GitHub herunter.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -72,5 +72,5 @@ Für dieses Projekt benötigen Sie Folgendes:
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Tutorial: Erstellen eines benutzerdefinierten Akustikmodells](how-to-customize-acoustic-models.md)
-- [Tutorial: Erstellen eines benutzerdefinierten Sprachmodells](how-to-customize-language-model.md)
+- [Anpassen von Akustikmodellen](how-to-customize-acoustic-models.md)
+- [Anpassen von Sprachmodellen](how-to-customize-language-model.md)

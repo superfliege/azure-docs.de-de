@@ -8,29 +8,29 @@ manager: rosh
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 2/20/2019
+ms.date: 4/02/2019
 ms.author: rosh
-ms.openlocfilehash: 68dd71687e18243a112df0c2568af5b2b6d0d687
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: a0d7c1611f7c6851d98fea734dfdbd3940b59b89
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340982"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048018"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-go"></a>Schnellstart: Gewinnen von Erkenntnissen zu Bildern mit der REST-API für die visuelle Bing-Suche und Go
 
-In dieser Schnellstartanleitung wird die Programmiersprache Go verwendet, um die API für die visuelle Bing-Suche aufzurufen und Ergebnisse anzuzeigen. Über eine Post-Anforderung wird ein Bild auf den API-Endpunkt hochgeladen. Die Ergebnisse enthalten URLs und beschreibende Informationen zu Bildern, die dem hochgeladenen Bild ähneln.
+In dieser Schnellstartanleitung wird die Programmiersprache Go verwendet, um die API für die visuelle Bing-Suche aufzurufen und Ergebnisse anzuzeigen. Über eine POST-Anforderung wird ein Bild in den API-Endpunkt hochgeladen. Die Ergebnisse enthalten URLs und beschreibende Informationen zu Bildern, die dem hochgeladenen Bild ähneln.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 * Installieren Sie die [Go-Binärdateien](https://golang.org/dl/).
-* Der go-spew-Drucker für Schöndruck (deep pretty printer) ist nützlich zum Anzeigen von Ergebnissen.
-    * Installieren Sie diese Bibliothek: `$ go get -u https://github.com/davecgh/go-spew`.
+* Zum Anzeigen der Ergebnisse wird der go-spew-Drucker für Schöndruck verwendet. go-spew kann mithilfe des Befehls `$ go get -u https://github.com/davecgh/go-spew` installiert werden.
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="project-and-libraries"></a>Projekt und Bibliotheken
 
-Erstellen Sie in Ihrer IDE oder in einem Editor ein neues Go-Projekt. Importieren Sie anschließend `net/http` für Anforderungen, `ioutil` zum Lesen der Antwort und `encoding/json` zum Verarbeiten des JSON-Texts der Ergebnisse. Die Bibliothek `go-spew` wird zum Analysieren der JSON-Ergebnisse verwendet. 
+Erstellen Sie in Ihrer IDE oder in einem Editor ein Go-Projekt. Importieren Sie anschließend `net/http` für Anforderungen, `ioutil` zum Lesen der Antwort und `encoding/json` zum Verarbeiten des JSON-Texts der Ergebnisse. Die Bibliothek `go-spew` wird zum Analysieren der JSON-Ergebnisse verwendet.
 
 ```
 package main
@@ -52,7 +52,7 @@ import (
 
 ## <a name="struct-to-format-results"></a>Struktur zum Formatieren von Ergebnissen
 
-Mit der Struktur `BingAnswer` werden Daten formatiert, die in der JSON-Antwort zurückgegeben werden. Diese verfügen über mehrere Ebenen und sind relativ komplex.  Mit der folgenden Implementierung werden einige grundlegende Punkte abgedeckt.
+Mit der Struktur `BingAnswer` werden Daten formatiert, die in der JSON-Antwort zurückgegeben werden. Diese verfügt über mehrere Ebenen und ist komplex. Die folgende Implementierung deckt einige grundlegende Aspekte ab:
 
 ```
 type BingAnswer struct {
@@ -109,7 +109,7 @@ type BingAnswer struct {
 
 ## <a name="main-function-and-variables"></a>main-Funktion und Variablen  
 
-Der folgende Code dient zum Deklarieren der main-Funktion und zum Zuweisen der erforderlichen Variablen. Vergewissern Sie sich, dass der Endpunkt korrekt ist, und ersetzen Sie den Wert `token` durch einen gültigen Abonnementschlüssel aus Ihrem Azure-Konto.  `batchNumber` ist eine GUID, die für führende und nachgestellte Grenzen der Post-Daten erforderlich ist.  Die Variable `fileName` gibt die Bilddatei für den Post-Vorgang an.  In den folgenden Abschnitten werden die Details zum Code beschrieben.
+Der folgende Code dient zum Deklarieren der main-Funktion und zum Zuweisen der erforderlichen Variablen. Vergewissern Sie sich, dass der Endpunkt korrekt ist, und ersetzen Sie den Wert `token` durch einen gültigen Abonnementschlüssel aus Ihrem Azure-Konto. `batchNumber` ist eine GUID, die für führende und nachgestellte Grenzen der POST-Daten erforderlich ist. Die Variable `fileName` gibt die Bilddatei für den POST-Vorgang an. In den folgenden Abschnitten werden die Details des Codes beschrieben:
 
 ```
 func main() {
@@ -157,9 +157,9 @@ func main() {
 
 ```
 
-## <a name="boundaries-of-post-body"></a>Grenzen des Post-Texts
+## <a name="boundaries-of-post-body"></a>Grenzen des POST-Texts
 
-Für eine Post-Anforderung an den Endpunkt der visuellen Suche werden führende und nachgestellte Grenzen benötigt, mit denen die Post-Daten umschlossen werden.  Die führende Grenze umfasst eine Batchnummer, den Inhaltstypbezeichner `Content-Disposition: form-data; name="image"; filename=` sowie den Dateinamen des zu postenden Bilds.  Bei der nachgestellten Grenze handelt es sich einfach um eine Batchnummer.  Diese Funktionen sind nicht im `main`-Block enthalten.
+Für eine POST-Anforderung an den Endpunkt der visuellen Suche werden führende und nachgestellte Grenzen benötigt, mit denen die POST-Daten umschlossen werden. Die führende Grenze umfasst eine Batchnummer, den Inhaltstypbezeichner `Content-Disposition: form-data; name="image"; filename=` sowie den Dateinamen des Bilds, für das der POST-Vorgang ausgeführt werden soll. Bei der nachgestellten Grenze handelt es sich einfach um eine Batchnummer. Diese Funktionen sind nicht im `main`-Block enthalten:
 
 ```
 func BuildFormDataStart(batNum string, fileName string) string{
@@ -176,9 +176,9 @@ func BuildFormDataEnd(batNum string) string{
 }
 
 ```
-## <a name="add-image-bytes-to-post-body"></a>Hinzufügen von Bildbytes zum Post-Text
+## <a name="add-image-bytes-to-post-body"></a>Hinzufügen von Bildbytes zum POST-Text
 
-Mit diesem Codesegment wird die Post-Anforderung erstellt, die die Bilddaten enthält. 
+Mit diesem Codesegment wird die POST-Anforderung erstellt, die die Bilddaten enthält:
 
 ```
 func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, string) {
@@ -207,7 +207,7 @@ func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, stri
 
 ## <a name="send-the-request"></a>Senden der Anforderung
 
-Der folgende Code dient zum Senden der Anforderung und Lesen der Ergebnisse.
+Der folgende Code sendet die Anforderung und liest die Ergebnisse:
 
 ```
 resp, err := client.Do(req)
@@ -226,7 +226,7 @@ resp, err := client.Do(req)
 
 ## <a name="handle-the-response"></a>Verarbeiten der Antwort
 
-Die Funktion `Unmarshall` extrahiert Informationen aus dem JSON-Text, der von der API für die visuelle Bing-Suche zurückgegeben wird.  Der `go-spew`-Drucker für Schöndruck zeigt die Ergebnisse an.
+Die Funktion `Unmarshall` extrahiert Informationen aus dem JSON-Text, der von der API für die visuelle Bing-Suche zurückgegeben wird. Der `go-spew`-Drucker für Schöndruck zeigt die Ergebnisse an:
 
 ```
     // Create a new answer.  
@@ -249,7 +249,7 @@ Die Funktion `Unmarshall` extrahiert Informationen aus dem JSON-Text, der von de
 
 ## <a name="results"></a>Ergebnisse
 
-In den Ergebnissen werden Bilder identifiziert, die dem Bild im Post-Text ähneln.  Die nützlichen Felder lauten `WebSearchUrl` und `Name`.
+In den Ergebnissen werden Bilder identifiziert, die dem Bild im POST-Text ähneln. Die nützlichen Felder sind `WebSearchUrl` und `Name`:
 
 ```
     Value: ([]struct { WebSearchUrl string "json:\"webSearchUrl\""; Name string "json:\"name\"" }) (len=66 cap=94) {
@@ -287,5 +287,5 @@ In den Ergebnissen werden Bilder identifiziert, die dem Bild im Post-Text ähnel
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Was ist die visuelle Bing-Suche?](../overview.md)
-> [Schnellstartanleitung zur Bing-Websuche in Go](../../Bing-Web-Search/quickstarts/go.md)
+> [Was ist die API für die visuelle Bing-Suche?](../overview.md)
+> [Schnellstart: Suchen im Internet unter Verwendung von Bing-Websuche-REST-API und Go](../../Bing-Web-Search/quickstarts/go.md)

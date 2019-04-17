@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 57bde67ac2259b3847f59f95eaefba9c6fddf13e
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 38276757d0472582c3cf5035e1f52d34158a7e38
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316200"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470014"
 ---
 # <a name="project-acoustics-unrealwwise-design-tutorial"></a>Entwurfstutorial für Projekt Akustik in Unreal/Wwise
 Dieses Tutorial beschreibt die Entwurfseinrichtung und den -workflow für Projekt Akustik in Unreal und Wwise.
@@ -62,11 +62,18 @@ Denken Sie daran, dass in der erforderlichen Akteurmixereinrichtung das übliche
 ![Screenshot des Wwise-Editors mit Richtlinien zum Stimmendesign für Projekt Akustik](media/voice-design-guidelines.png)
  
 ### <a name="set-up-distance-attenuation-curves"></a>Einrichten von Distanzdämpfungskurven
-Stellen Sie sicher, dass für alle von Akteurmixern mit Projekt Akustik verwendeten Dämpfungskurven die benutzerdefinierte Aux-Ausgabe auf „output bus volume“ (Ausgabebuslautstärke) festgelegt ist. Dies ist in Wwise für neu erstellte Dämpfungskurven standardmäßig der Fall. Wenn Sie ein vorhandenes Projekt migrieren, überprüfen Sie die Kurveneinstellungen. 
+Stellen Sie sicher, dass für alle von Akteurmixern mit Projekt Akustik verwendeten Dämpfungskurven die benutzerdefinierte Aux-Ausgabe auf „output bus volume“ (Ausgabebuslautstärke) festgelegt ist. Dies ist in Wwise für neu erstellte Dämpfungskurven standardmäßig der Fall. Wenn Sie ein vorhandenes Projekt migrieren, überprüfen Sie die Kurveneinstellungen.
 
 Standardmäßig weist die Projekt Akustik-Simulation einen Radius von 45 Metern um die Spielerposition herum auf. Im Allgemeinen sollten Sie die Dämpfungskurve bei etwa dieser Entfernung auf 200 dB festlegen. Diese Entfernung ist keine feste Einschränkung. Bei einigen Sounds wie Waffen empfiehlt sich ein größerer Radius. Der Nachteil ist in diesen Fällen, dass nur die Geometrie innerhalb von 45 m um die Position des Spielers herum einbezogen wird. Wenn sich der Spieler in einem Raum befindet, und eine Tonquelle befindet sich außerhalb des Raums und ist 100 m weit entfernt, wird sie ordnungsgemäß verdeckt. Wenn sich die Quelle in einem Raum befindet, und der Spieler befindet sich außerhalb und ist 100 m weit entfernt, wird sie nicht ordnungsgemäß verdeckt.
 
 ![Screenshot der Wwise-Dämpfungskurven](media/atten-curve.png)
+
+### <a name="post-mixer-equalization"></a>Post-Mixer-Equalizer ###
+ Falls gewünscht, können Sie auch einen Post-Mixer-Equalizer hinzufügen. Sie können den Projekt Akustik-Bus als typischen Hallbus (im Standardhallmodus) behandeln und zu Ausgleichszwecken einen Filter anwenden. Ein Beispiel dafür finden Sie im Wwise-Beispielprojekt von Projekt Akustik.
+
+![Screenshot: Post-Mixer-Equalizer von Wwise](media/wwise-post-mixer-eq.png)
+
+So kann beispielsweise der Bass von Nahbereichsaufnahmen mit dröhnendem, unrealistischem Hall mit einem Hochpassfilter behandelt werden. Sie können den Equalizer auch über RTPCs anpassen, um ein höheres Maß an Post-Bake-Kontrolle zu erreichen und die Farbe des Halls zur Spielzeit ändern zu können.
 
 ## <a name="set-up-scene-wide-project-acoustics-properties"></a>Einrichten der szenenweiten Projekt Akustik-Eigenschaften
 
@@ -80,7 +87,7 @@ Der Akteur für den Akustikraum stellt viele Steuerelemente bereit, die das Verh
 * **Cache Scale** (Cacheskalierung): steuert die Größe des Caches für akustische Abfragen. Ein kleinerer Cache benötigt weniger Arbeitsspeicher, jedoch eventuell für jede Abfrage eine höhere CPU-Nutzung.
 * **Acoustics Enabled** (Akustik aktiviert): Ein Debugsteuerelement zum schnellen A/B-Umschalten der Akustiksimulation. Dieses Steuerelement wird in zur Auslieferung vorgesehenen Konfigurationen ignoriert. Das Steuerelement ist nützlich, um herauszufinden, ob ein bestimmter Audiofehler durch die Akustikberechnungen oder ein anderes Problem im Wwise-Projekt verursacht wird.
 * **Update Distances** (Entfernungen aktualisieren): Verwenden Sie diese Option, wenn Sie die Akustikinformationen mit vorab ausgeführtem Baking für Entfernungsabfragen verwenden möchten. Diese Abfragen ähneln dem Aussenden von Strahlen, wurden jedoch vorab berechnet und benötigen daher deutlich weniger CPU-Leistung. Eine Beispiel für die Verwendung sind diskrete Reflexionen an der dem Zuhörer am nächsten gelegenen Fläche. Um dies vollständig zu nutzen, müssen Sie Entfernungen in Code oder Blaupausen abfragen.
-* **Draw Stats** (Statistiken anzeigen): Auch wenn die Funktion `stat Acoustics` der Unreal Engine Ihnen CPU-Informationen bereitstellen kann, umfasst diese Statusanzeige die derzeit geladene Karte, Arbeitsspeichernutzung und andere Statusinformationen links oben auf dem Bildschirm.
+* **Draw Stats** (Statistiken anzeigen): Die Funktion `stat Acoustics` der Unreal Engine kann zwar CPU-Informationen bereitstellen, diese Statusanzeige zeigt jedoch die derzeit geladene ACE-Datei, die Arbeitsspeichernutzung und andere Statusinformationen links oben auf dem Bildschirm an.
 * **Draw Voxels** (Voxel anzeigen): Überlagert Voxel nahe am Zuhörer, sodass das während der Laufzeitinterpolation verwendete Voxelraster erkennbar ist. Wenn eine Tonquelle sich in einem Laufzeitvoxel befindet, tritt bei der akustischen Abfrage ein Fehler auf.
 * **Draw Probes** (Prüfpunkte anzeigen): Zeigt alle Prüfpunkte für diese Szene an. Sie werden je nach ihrem Ladezustand in unterschiedlichen Farben dargestellt.
 * **Draw Distances** (Entfernungen anzeigen): Wenn das Aktualisieren von Entfernungen aktiviert ist, wird hiermit ein Feld auf der dem Zuhörer am nächsten gelegenen Fläche in quantisierten Richtungen um den Zuhörer angezeigt.
@@ -96,6 +103,7 @@ Diese Entwurfssteuerelemente beziehen sich auf eine bestimmte Audiokomponente in
 * **Outdoorness Adjustment** (Außenbereichsanpassung): Steuert den Außenbereichsanteil des Halls. Näher an 0 liegende Werte entsprechen stärker geschlossenen Räumen, näher an 1 liegende stärker Außenbereichen. Diese Anpassung erfolgt additiv, sodass ein Festlegen auf -1 geschlossenen Räumen entspricht und ein Festlegen auf +1 einem Außenbereich.
 * **Transmission Db** (Übertragung in dB): Rendert einen weiteren „durch die Wand“ übertragenen Sound mit dieser Lautstärke in Verbindung mit auf der Sichtlinie basierender Distanzdämpfung.
 * **Wet Ratio Distance Warp** (Verwässerungsverhältnis der Entfernungsverzerrung): Passt die Halleigenschaften der Quelle an, als wäre sie weniger weit/weiter entfernt, ohne den direkten Pfad zu beeinflussen.
+* **Play on Start** (Beim Start wiedergeben): Hiermit können Sie steuern, ob der Sound beim Start der Szene automatisch wiedergegeben werden soll. Standardmäßig aktiviert.
 * **Show Acoustic Parameters** (Akustikparameter anzeigen): Zeigt Debuginformationen direkt über der Komponente im Spiel an (nur für nicht für die Auslieferung bestimmte Konfigurationen).
 
 ## <a name="blueprint-functionality"></a>Blaupausenfunktionen

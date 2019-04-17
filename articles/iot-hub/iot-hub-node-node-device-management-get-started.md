@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/25/2017
-ms.openlocfilehash: b1a224c4170349f0797d2d57acbf45e8b7649bd8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 15166d3943bc72a2eeff3580cefdd264ecaba61d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531571"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258084"
 ---
 # <a name="get-started-with-device-management-node"></a>Erste Schritte mit der Geräteverwaltung (Node)
 
@@ -21,20 +21,23 @@ ms.locfileid: "57531571"
 
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
-* Verwenden des Azure-Portals zum Erstellen einer IoT Hub-Instanz und einer Geräteidentität im IoT Hub
+* Verwenden Sie das [Azure-Portal](https://portal.azure.com) zum Erstellen einer IoT Hub-Instanz und einer Geräteidentität im IoT Hub.
+
 * Erstellen Sie eine simulierte Geräte-App, die eine direkte Methode enthält, die das Gerät neu startet. Direkte Methoden werden aus der Cloud aufgerufen.
+
 * Erstellen einer Node.js-Konsolenanwendung, die über Ihre IoT Hub-Instanz eine direkte Neustartmethode in der simulierten Geräte-App aufruft
 
 Am Ende dieses Tutorials verfügen Sie über zwei Node.js-Konsolen-Apps:
 
-**dmpatterns_getstarted_device.js**: Stellt mit der zuvor erstellten Geräteidentität eine Verbindung mit dem IoT Hub her, empfängt eine direkte Methode zum Neustart, simuliert einen physischen Neustart und meldet den Zeitpunkt des letzten Neustarts.
+* **dmpatterns_getstarted_device.js**: Stellt mit der zuvor erstellten Geräteidentität eine Verbindung mit dem IoT Hub her, empfängt eine direkte Methode zum Neustart, simuliert einen physischen Neustart und meldet den Zeitpunkt des letzten Neustarts.
 
-**dmpatterns_getstarted_service.js**: Ruft eine direkte Methode in der simulierten Geräte-App auf und zeigt die Antwort sowie die gemeldeten aktualisierten Eigenschaften an.
+* **dmpatterns_getstarted_service.js**: Ruft eine direkte Methode in der simulierten Geräte-App auf und zeigt die Antwort sowie die gemeldeten aktualisierten Eigenschaften an.
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Node.js Version 4.0.x oder höher, <br/>  Unter [Prepare your development environment][lnk-dev-setup] (Vorbereiten Ihrer Entwicklungsumgebung) wird beschrieben, wie Sie Node.js für dieses Tutorial unter Windows oder Linux installieren.
-* Ein aktives Azure-Konto. (Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto][lnk-free-trial] erstellen.)
+* Node.js Version 4.0.x oder höher Unter [Prepare your development environment](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) (Vorbereiten Ihrer Entwicklungsumgebung) wird beschrieben, wie Sie Node.js für dieses Tutorial unter Windows oder Linux installieren.
+
+* Ein aktives Azure-Konto. (Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.)
 
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
 
@@ -47,23 +50,29 @@ Für dieses Tutorial benötigen Sie Folgendes:
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 ## <a name="create-a-simulated-device-app"></a>Erstellen einer simulierten Geräte-App
-In diesem Abschnitt werden Sie folgende Schritte ausführen:
+
+In diesem Abschnitt führen Sie die folgenden Schritte aus:
 
 * Erstellen einer Node.js-Konsolen-App, die auf eine von der Cloud aufgerufene direkte Methode antwortet
+
 * Auslösen eines simulierten Geräteneustarts
+
 * Verwenden der gemeldeten Eigenschaften, um Gerätezwillingsabfragen zu ermöglichen, die Geräte und den Zeitpunkt ihres letzten Neustarts ermitteln
 
 1. Erstellen Sie einen leeren Ordner mit dem Namen **manageddevice**.  Erstellen Sie im Ordner **manageddevice** die Datei „package.json“, indem Sie an der Eingabeaufforderung den folgenden Befehl ausführen.  Übernehmen Sie alle Standardeinstellungen:
-   
+      
     ```
     npm init
     ```
+
 2. Führen Sie an der Eingabeaufforderung im Ordner **manageddevice** den folgenden Befehl aus, um das Geräte-SDK-Paket **azure-iot-device** und das Paket **azure-iot-device-mqtt** zu installieren:
    
     ```
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
+
 3. Erstellen Sie mit einem Text-Editor im Ordner **manageddevice** die Datei **dmpatterns_getstarted_device.js**.
+
 4. Fügen Sie am Anfang der Datei **dmpatterns_getstarted_device.js** die folgenden require-Anweisungen ein:
    
     ```
@@ -72,12 +81,14 @@ In diesem Abschnitt werden Sie folgende Schritte ausführen:
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
+
 5. Fügen Sie die Variable **connectionString** hinzu, und verwenden Sie sie zum Erstellen einer **Client**-Instanz.  Ersetzen Sie die Verbindungszeichenfolge durch Ihre Geräteverbindungszeichenfolge.  
    
     ```
     var connectionString = 'HostName={youriothostname};DeviceId=myDeviceId;SharedAccessKey={yourdevicekey}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
+
 6. Fügen Sie die folgende Funktion hinzu, um die direkte Methode auf dem Gerät zu implementieren
    
     ```
@@ -119,7 +130,9 @@ In diesem Abschnitt werden Sie folgende Schritte ausführen:
         console.log('Rebooting!');
     };
     ```
+
 7. Öffnen Sie die Verbindung mit dem IoT Hub, und starten Sie den Listener der direkten Methode:
+
    
     ```
     client.open(function(err) {
@@ -131,34 +144,42 @@ In diesem Abschnitt werden Sie folgende Schritte ausführen:
         }
     });
     ```
+
 8. Speichern und schließen Sie die Datei **dmpatterns_getstarted_device.js**.
 
 > [!NOTE]
 > Der Einfachheit halber wird in diesem Tutorial keine Wiederholungsrichtlinie implementiert. Im Produktionscode sollten Sie Wiederholungsrichtlinien implementieren (z.B. exponentielles Backoff), wie es im Artikel [Behandeln vorübergehender Fehler](/azure/architecture/best-practices/transient-faults) vorgeschlagen wird.
 
 ## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>Auslösen eines Remoteneustarts auf dem Gerät über eine direkte Methode
+
 In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die einen Remote-Neustart auf einem Gerät über eine direkte Methode auslöst. Die App verwendet Gerätezwillingsabfragen, um den Zeitpunkt des letzten Neustarts bei diesem Gerät zu ermitteln.
 
-1. Erstellen Sie einen leeren Ordner mit dem Namen **triggerrebootondevice**.  Erstellen Sie im Ordner **triggerrebootondevice** die Datei „package.json“, indem Sie an der Eingabeaufforderung den folgenden Befehl ausführen.  Übernehmen Sie alle Standardeinstellungen:
+1. Erstellen Sie einen leeren Ordner mit dem Namen **triggerrebootondevice**. Erstellen Sie im Ordner **triggerrebootondevice** die Datei „package.json“, indem Sie an der Eingabeaufforderung den folgenden Befehl ausführen. Übernehmen Sie alle Standardeinstellungen:
    
     ```
     npm init
     ```
+
 2. Führen Sie an der Eingabeaufforderung im Ordner **triggerrebootondevice** den folgenden Befehl aus, um das Geräte-SDK-Paket **azure-iothub** und das Paket **azure-iot-device-mqtt** zu installieren:
    
     ```
     npm install azure-iothub --save
     ```
+
 3. Erstellen Sie mit einem Text-Editor im Ordner **triggerrebootondevice** die Datei **dmpatterns_getstarted_service.js**.
+
 4. Fügen Sie am Anfang der Datei **dmpatterns_getstarted_service.js** die folgenden require-Anweisungen ein:
-   
+
+  
     ```
     'use strict';
    
     var Registry = require('azure-iothub').Registry;
     var Client = require('azure-iothub').Client;
     ```
+
 5. Fügen Sie die folgenden Variablendeklarationen hinzu, und ersetzen Sie die Platzhalterwerte:
+
    
     ```
     var connectionString = '{iothubconnectionstring}';
@@ -166,6 +187,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die einen Remote-Ne
     var client = Client.fromConnectionString(connectionString);
     var deviceToReboot = 'myDeviceId';
     ```
+
 6. Fügen Sie die folgende Funktion hinzu, um durch Aufrufen der Gerätemethode das Zielgerät neu zu starten:
    
     ```
@@ -180,7 +202,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die einen Remote-Ne
         };
    
         client.invokeDeviceMethod(deviceToReboot, methodParams, function(err, result) {
-            if (err) { 
+            if (err) {
                 console.error("Direct method error: "+err.message);
             } else {
                 console.log("Successfully invoked the device to reboot.");  
@@ -188,6 +210,7 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die einen Remote-Ne
         });
     };
     ```
+
 7. Fügen Sie die folgende Funktion hinzu, um das Gerät abzufragen und den letzten Neustartzeitpunkt zu erhalten:
    
     ```
@@ -208,41 +231,35 @@ In diesem Abschnitt erstellen Sie eine Node.js-Konsolen-App, die einen Remote-Ne
         });
     };
     ```
+
 8. Fügen Sie den folgenden Code hinzu, um die Funktionen aufrufen, die die direkte Methode zum Neustart auslösen und den letzten Neustartzeitpunkt abfragen:
+
    
     ```
     startRebootDevice();
     setInterval(queryTwinLastReboot, 2000);
     ```
+
 9. Speichern und schließen Sie die Datei **dmpatterns_getstarted_service.js**.
 
 ## <a name="run-the-apps"></a>Ausführen der Apps
+
 Sie können die Apps nun ausführen.
 
 1. Führen Sie an der Eingabeaufforderung im Ordner **manageddevice** den folgenden Befehl aus, um mit dem Lauschen auf die direkte Methode zum Neustarten zu beginnen.
+
    
     ```
     node dmpatterns_getstarted_device.js
     ```
+
 2. Führen Sie an der Eingabeaufforderung im Ordner **triggerrebootondevice** den folgenden Befehl aus, um den Remoteneustart und die Abfrage an den Gerätezwilling zum Ermitteln des letzten Neustartzeitpunkts auszulösen.
+
    
     ```
     node dmpatterns_getstarted_service.js
     ```
+
 3. Die Reaktion des Geräts auf die direkte Methode wird in der Konsole angezeigt.
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]
-
-<!-- images and links -->
-[img-output]: media/iot-hub-get-started-with-dm/image6.png
-[img-dm-ui]: media/iot-hub-get-started-with-dm/dmui.png
-
-[lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
-
-[lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-[Azure portal]: https://portal.azure.com/
-[Using resource groups to manage your Azure resources]: ../azure-portal/resource-group-portal.md
-[lnk-dm-github]: https://github.com/Azure/azure-iot-device-management
-
-[lnk-devtwin]: iot-hub-devguide-device-twins.md
-[lnk-c2dmethod]: iot-hub-devguide-direct-methods.md

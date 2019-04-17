@@ -2,23 +2,21 @@
 title: Programmgesteuertes Erstellen von Azure Enterprise-Abonnements | Microsoft Docs
 description: Erfahren Sie, wie Sie zusätzliche Azure Enterprise- oder Enterprise Dev/Test-Abonnements programmgesteuert erstellen können.
 services: azure-resource-manager
-author: adpick
-manager: adpick
-editor: ''
+author: tfitzmac
 ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/05/2018
-ms.author: adpick
-ms.openlocfilehash: 1b772fdbda8e58db9414e09ef3ef7c98fc9f86b8
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.date: 04/05/2019
+ms.author: tomfitz
+ms.openlocfilehash: 93df0c196d78a4685ff82108354b82a07d67695d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486978"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256922"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>Programmgesteuertes Erstellen von Azure Enterprise-Abonnements (Vorschau)
 
@@ -30,7 +28,7 @@ Wenn Sie über diese API Azure-Abonnements erstellen, unterliegen diese der Vere
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen eine Rolle „Besitzer“ oder „Mitwirkender“ in dem Registrierungskonto, unter dem Sie Abonnements erstellen möchten. Es gibt zwei Möglichkeiten, diese Rollen zu erhalten:
+Sie müssen über die Rolle „Besitzer“ in dem Registrierungskonto verfügen, unter dem Sie Abonnements erstellen möchten. Es gibt zwei Möglichkeiten, diese Rollen zu erhalten:
 
 * Der Registrierungsadministrator kann [Sie zum Kontobesitzer machen](https://ea.azure.com/helpdocs/addNewAccount) (Anmeldung erforderlich), d.h. zum Besitzer des Registrierungskontos. Folgen Sie den Anweisungen in der Einladungs-E-Mail, die Sie erhalten, um manuell ein anfängliches Abonnement zu erstellen. Bestätigen Sie den Kontobesitz, und erstellen Sie manuell ein anfängliches EA-Abonnement, bevor Sie mit dem nächsten Schritt fortfahren. Es reicht nicht aus, das Konto einfach zur Registrierung hinzuzufügen.
 
@@ -42,7 +40,7 @@ Nachdem Sie einer Azure-EA-Registrierung als Kontobesitzer hinzugefügt wurden, 
 
 Um die folgenden Befehle ausführen zu können, müssen Sie im *Basisverzeichnis* des Kontobesitzers angemeldet sein. Dies ist das Verzeichnis, in dem Abonnements standardmäßig erstellt werden.
 
-# <a name="resttabrest"></a>[REST](#tab/rest)
+# [<a name="rest"></a>REST](#tab/rest)
 
 Anforderung zum Auflisten aller Registrierungskonten:
 
@@ -75,7 +73,7 @@ Azure gibt eine Liste aller Registrierungskonten zurück, auf die Sie zugreifen 
 }
 ```
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
 
 Verwenden Sie das Cmdlet [Get-AzEnrollmentAccount](/powershell/module/az.billing/get-azenrollmentaccount) zum Auflisten aller Registrierungskonten, auf die Sie zugreifen können.
 
@@ -91,7 +89,7 @@ ObjectId                               | PrincipalName
 4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | BillingPlatformTeam@contoso.com
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# [<a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Verwenden Sie den Befehl [az billing enrollment-account list](https://aka.ms/EASubCreationPublicPreviewCLI) zum Auflisten aller Registrierungskonten, auf die Sie zugreifen können.
 
@@ -132,7 +130,7 @@ Verwenden Sie die `principalName`-Eigenschaft zum Identifizieren des Kontos, in 
 
 Das folgende Beispiel erstellt eine Anforderung zum Erstellen eines Abonnements namens *Dev Team Subscription*. Das Abonnementangebot lautet *MS-AZR-0017P* (reguläres EA-Abonnement). Das Registrierungskonto ist `747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx` (Platzhalterwert, dieser Wert ist eine GUID), also das Registrierungskonto für SignUpEngineering@contoso.com. Es werden optional auch zwei Benutzer als RBAC-Besitzer für das Abonnement hinzugefügt.
 
-# <a name="resttabrest"></a>[REST](#tab/rest)
+# [<a name="rest"></a>REST](#tab/rest)
 
 Verwenden Sie die `id` des `enrollmentAccount` im Pfad der Anforderung, um das Abonnement zu erstellen.
 
@@ -161,7 +159,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 
 In der Antwort wird ein `subscriptionOperation`-Objekt für die Überwachung zurückgegeben. Nach Abschluss der Erstellung des Abonnements gibt das `subscriptionOperation`-Objekt ein `subscriptionLink`-Objekt zurück, das die Abonnement-ID enthält.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
 
 Um dieses Vorschaumodul zu verwenden, installieren Sie es zunächst durch Ausführen von `Install-Module Az.Subscription -AllowPrerelease`. Um sicherzustellen, dass `-AllowPrerelease` funktioniert, installieren Sie eine aktuelle Version von PowerShellGet aus [PowerShellGet-Modul abrufen](/powershell/gallery/installing-psget).
 
@@ -182,7 +180,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 
 Wenn Sie eine vollständige Liste aller Parameter anzeigen möchten, finden Sie weitere Informationen unter [New-AzSubscription](/powershell/module/az.subscription.preview).
 
-# <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+# [<a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Um diese Vorschauerweiterung zu verwenden, installieren Sie sie zunächst durch Ausführen von `az extension add --name subscription`.
 

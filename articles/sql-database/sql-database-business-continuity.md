@@ -12,13 +12,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: bdb89a89713c093768de3e40eda2bcbb6a311b2b
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.date: 04/04/2019
+ms.openlocfilehash: dfa5d4cb2d782f1466329300157a64fd17765460
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960876"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280960"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank
 
@@ -53,13 +53,17 @@ Anschließend erfahren Sie mehr über die zusätzlichen Mechanismen zur Wiederhe
 
 Jede Funktion weist unterschiedliche Eigenschaften für die geschätzte Wiederherstellungszeit (Estimated Recovery Time, ERT) sowie für mögliche Datenverluste bei kürzlich durchgeführten Transaktionen auf. Wenn Sie diese Optionen kennen, können Sie die richtigen Optionen auswählen und in den meisten Szenarien auch miteinander kombinieren. Wenn Sie Ihren Plan für die Geschäftskontinuität entwickeln, müssen Sie wissen, wie viel Zeit maximal vergehen darf, bis die Anwendung nach einer Störung vollständig wiederhergestellt ist. Die Zeit, die für die vollständige Wiederherstellung einer Anwendung erforderlich ist, wird als RTO (Recovery Time Objective) bezeichnet. Sie müssen auch herausfinden, über welchen Zeitraum kürzlich durchgeführter Datenupdates (in einem bestimmten Zeitraum) maximal verloren gehen dürfen, wenn die Anwendung nach einer Störung wiederhergestellt wird. Der Zeitraum der Updates, der verloren gehen darf, wird als RPO (Recovery Point Objective) bezeichnet.
 
-Die folgende Tabelle vergleicht ERT und RPO für die einzelnen Dienstebenen und die drei häufigsten Szenarien.
+Die folgende Tabelle vergleicht ERT und RPO für die einzelnen Dienstebenen bei den häufigsten Szenarien.
 
 | Funktion | Basic | Standard | Premium | Allgemeiner Zweck | Unternehmenskritisch
 | --- | --- | --- | --- |--- |--- |
 | Point-in-Time-Wiederherstellung von Sicherung |Jeder Wiederherstellungspunkt innerhalb von 7 Tagen |Jeder Wiederherstellungspunkt innerhalb von 35 Tagen |Jeder Wiederherstellungspunkt innerhalb von 35 Tagen |Jeder Wiederherstellungspunkt innerhalb des konfigurierten Zeitraums (bis zu 35 Tage)|Jeder Wiederherstellungspunkt innerhalb des konfigurierten Zeitraums (bis zu 35 Tage)|
 | Geowiederherstellung von georeplizierten Sicherungen |ERT < 12 Stunden<br> RPO < 1 Stunde |ERT < 12 Stunden<br>RPO < 1 Stunde |ERT < 12 Stunden<br>RPO < 1 Stunde |ERT < 12 Stunden<br>RPO < 1 Stunde|ERT < 12 Stunden<br>RPO < 1 Stunde|
 | Autofailover-Gruppen |RTO = 1 Stunde<br>RPO < 5 Sekunden |RTO = 1 Stunde<br>RPO < 5 Sekunden |RTO = 1 Stunde<br>RPO < 5 Sekunden |RTO = 1 Stunde<br>RPO < 5 Sekunden|RTO = 1 Stunde<br>RPO < 5 Sekunden|
+| Manuelles Datenbank-Failover |ERT = 30 s<br>RPO < 5 Sekunden |ERT = 30 s<br>RPO < 5 Sekunden |ERT = 30 s<br>RPO < 5 Sekunden |ERT = 30 s<br>RPO < 5 Sekunden|ERT = 30 s<br>RPO < 5 Sekunden|
+
+> [!NOTE]
+> *Manuelles Datenbank-Failover* bezieht sich auf das Failover einer einzelnen Datenbank mithilfe des [ungeplanten Modus](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities) auf seine georeplizierte sekundäre Datenbank.
 
 ## <a name="recover-a-database-to-the-existing-server"></a>Wiederherstellen einer Datenbank auf dem vorhandenen Server
 
@@ -84,7 +88,7 @@ Es kommt zwar sehr selten vor, aber es ist möglich, dass ein Azure-Rechenzentru
 
 - Eine Möglichkeit ist, einfach zu warten, bis die Datenbank wieder online ist, wenn der Rechenzentrumsausfall behoben wurde. Dies funktioniert bei Anwendungen, bei denen die Datenbank nicht notwendigerweise online sein muss. Beispiele hierfür sind Entwicklungsprojekte oder kostenlose Testversionen, mit denen Sie nicht ständig arbeiten müssen. Wenn ein Rechenzentrum ausfällt, wissen Sie nicht, wie lange der Ausfall dauern kann, daher ist diese Option nur dann in Erwägung zu ziehen, wenn Sie Ihre Datenbank eine Zeit lang nicht benötigen.
 - Eine andere Möglichkeit besteht im Wiederherstellen einer Datenbank auf einem beliebigen Server in einer beliebigen Azure-Region mit [georedundanten Datenbanksicherungen](sql-database-recovery-using-backups.md#geo-restore) (Geowiederherstellung). Die Geowiederherstellung verwendet eine georedundante Sicherung als Quelle und kann selbst dann zum Wiederherstellen einer Datenbank verwendet werden, wenn die Datenbank oder das Rechenzentrum aufgrund eines Ausfalls nicht mehr verfügbar ist.
-- Sie können eine schnelle Wiederherstellung nach einem Ausfall durchführen, wenn Sie entweder geografische Replikate mithilfe der [aktiven Georeplikation](sql-database-active-geo-replication.md) oder eine [Autofailover-Gruppe](sql-database-auto-failover-group.md) für Ihre Datenbank oder Datenbanken konfiguriert haben. Je nach gewählter Technologie können Sie entweder manuelles oder automatisches Failover verwenden. Während das eigentliche Failover nur wenige Sekunden dauert, benötigt der Dienst mindestens 1 Stunde, um es zu aktivieren. Diese Zeit ist erforderlich, um sicherzustellen, dass das Failover durch das Ausmaß des Ausfalls gerechtfertigt ist. Darüber hinaus kann das Failover aufgrund der asynchronen Replikation zu einem geringfügigen Datenverlust führen. Ausführliche Informationen zu RTO und RPO für das automatische Failover finden Sie in der Tabelle weiter oben in diesem Artikel.
+- Sie können eine schnelle Wiederherstellung nach einem Ausfall durchführen, wenn Sie entweder eine sekundäre Geodatenbank mithilfe der [aktiven Georeplikation](sql-database-active-geo-replication.md) oder eine [Autofailover-Gruppe](sql-database-auto-failover-group.md) für Ihre Datenbank oder Datenbanken konfiguriert haben. Je nach gewählter Technologie können Sie entweder manuelles oder automatisches Failover verwenden. Während das eigentliche Failover nur wenige Sekunden dauert, benötigt der Dienst mindestens 1 Stunde, um es zu aktivieren. Diese Zeit ist erforderlich, um sicherzustellen, dass das Failover durch das Ausmaß des Ausfalls gerechtfertigt ist. Darüber hinaus kann das Failover aufgrund der asynchronen Replikation zu einem geringfügigen Datenverlust führen. Ausführliche Informationen zu RTO und RPO für das automatische Failover finden Sie in der Tabelle weiter oben in diesem Artikel.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-protecting-important-DBs-from-regional-disasters-is-easy/player]
 >
@@ -116,7 +120,7 @@ Wenn die Vorbereitung nicht sorgfältig durchgeführt wird, dauert es länger, A
 
 ### <a name="fail-over-to-a-geo-replicated-secondary-database"></a>Failover auf eine georeplizierte sekundäre Datenbank
 
-Wenn Sie aktive Georeplikation und automatische Failovergruppen als Wiederherstellungsmechanismus verwenden, können Sie eine Richtlinie für automatisches Failover konfigurieren oder [manuelles Failover](sql-database-disaster-recovery.md#fail-over-to-geo-replicated-secondary-server-in-the-failover-group) verwenden. Sobald das Failover initiiert wurde, bewirkt es, dass die sekundäre Datenbank zur neuen primären Datenbank wird und neue Transaktionen aufzeichnen sowie auf Abfragen antworten kann. Hierbei entsteht ein minimaler Datenverlust für noch nicht replizierte Daten. Informationen zum Entwerfen des Failoverprozesses finden Sie unter [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
+Wenn Sie aktive Georeplikation oder automatische Failovergruppen als Wiederherstellungsmechanismus verwenden, können Sie eine Richtlinie für automatisches Failover konfigurieren oder [ manuelles ungeplantes Failover](sql-database-active-geo-replication-portal.md#initiate-a-failover) verwenden. Sobald das Failover initiiert wurde, bewirkt es, dass die sekundäre Datenbank zur neuen primären Datenbank wird und neue Transaktionen aufzeichnen sowie auf Abfragen antworten kann. Hierbei entsteht ein minimaler Datenverlust für noch nicht replizierte Daten. Informationen zum Entwerfen des Failoverprozesses finden Sie unter [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
 
 > [!NOTE]
 > Wenn das Rechenzentrum wieder online geschaltet wird, werden die alten primären Datenbanken automatisch wieder mit der neuen primären Datenbank verbunden und damit zu sekundären Datenbanken. Wenn Sie die primäre Datenbank wieder in den ursprünglichen Bereich verschieben müssen, können Sie manuell ein geplantes Failover initiieren (Failback).

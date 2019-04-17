@@ -1,19 +1,18 @@
 ---
 title: 'Schnellstart: Erfassen von Daten mit der Azure Data Explorer-Bibliothek für Python'
 description: In diesem Schnellstart erfahren Sie, wie Sie mit Python Daten im Azure-Daten-Explorer erfassen (laden).
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/16/2018
-ms.openlocfilehash: 309e391412a0e2c698173f02eb9fd00d576ead09
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: fdeae2c6b598feee0abc57c80ea32f2108504330
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757707"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046460"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-python-library"></a>Schnellstart: Erfassen von Daten mit der Azure Data Explorer-Bibliothek für Python
 
@@ -25,7 +24,7 @@ Dieser Schnellstart ist auch als [Azure-Notebook](https://notebooks.azure.com/Ma
 
 * Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-* [Ein Cluster und eine Datenbank](create-cluster-database-portal.md)
+* [Ein Cluster und eine Datenbank.](create-cluster-database-portal.md)
 
 * [Python](https://www.python.org/downloads/) auf dem Entwicklungscomputer
 

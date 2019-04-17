@@ -1,7 +1,6 @@
 ---
 title: Beispiele erweiterter Abfragen
 description: Verwenden Sie Azure Resource Graph, um einige erweiterte Abfragen auszuführen, etwa zur VMSS-Kapazität, zum Auflisten sämtlicher verwendeter Tags und zum Abgleichen von virtuellen Computern mit regulären Ausdrücken.
-services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 01/23/2019
@@ -9,12 +8,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9cb43cfdf930b14449f5c7130df275ef0b8d6484
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9a243dd236a8c499602a9070a7dd61e69541d58d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842616"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256820"
 ---
 # <a name="advanced-resource-graph-queries"></a>Erweiterte Resource Graph-Abfragen
 
@@ -25,7 +24,7 @@ Wir behandeln die folgenden erweiterten Abfragen:
 > [!div class="checklist"]
 > - [Abrufen von VMSS-Kapazität und -Größe](#vmss-capacity)
 > - [Auflisten aller Tagnamen](#list-all-tags)
-> - [Einem regulären Ausdruck entsprechende VMs](#vm-regex)
+> - [Einem regulären Ausdruck entsprechende virtuelle Computer](#vm-regex)
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen, bevor Sie beginnen.
 
@@ -77,12 +76,12 @@ Diese Abfrage sucht nach virtuellen Computern, die einem [regulären Ausdruck](/
 Mit **matches regex \@** wird der reguläre Ausdruck für den Abgleich definiert: `^Contoso(.*)[0-9]+$`. Diese RegEx-Definition wird wie folgt erläutert:
 
 - `^` – Die Übereinstimmung muss am Anfang der Zeichenfolge beginnen.
-- `Contoso` – Zeichenfolge mit Beachtung von Groß-/Kleinschreibung
+- `Contoso` – Bei der Zeichenfolge wird Groß-/Kleinschreibung berücksichtigt.
 - `(.*)` – Eine Übereinstimmung mit einem Teilausdruck:
-  - `.` – stimmt mit einem beliebigen einzelnen Zeichen (außer eines Zeilenumbruchs) überein.
-  - `*` – stimmt mit dem vorhergehenden Element null Mal oder mehrfach überein.
+  - `.` – Stimmt mit einem beliebigen einzelnen Zeichen (mit Ausnahme eines Zeilenumbruchs) überein.
+  - `*` – Stimmt mit dem vorhergehenden Element null Mal oder mehrfach überein.
 - `[0-9]` – Übereinstimmung von Zeichengruppe für die Ziffern 0 bis 9.
-- `+` – stimmt mit dem vorhergehenden Element ein Mal oder mehrfach überein.
+- `+` – Stimmt mit dem vorhergehenden Element ein Mal oder mehrfach überein.
 - `$` – Übereinstimmung des vorhergehenden Elements muss am Ende der Zeichenfolge auftreten.
 
 Nach dem Namensabgleich stellt die Abfrage den Namen dar und sortiert aufsteigend nach Name.

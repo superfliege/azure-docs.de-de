@@ -1,21 +1,21 @@
 ---
 title: Verwalten von Datenbankkonten in Azure Cosmos DB
 description: Verwalten von Datenbankkonten in Azure Cosmos DB
-author: christopheranderson
+author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 10/17/2018
-ms.author: chrande
-ms.openlocfilehash: 6efa0bab6327022bfe4a1f6d94a6a135cd1f91f3
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.date: 04/08/2019
+ms.author: rimman
+ms.openlocfilehash: b2b5e58ca480aa3abaa0766319977b8d1160ebeb
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58849068"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283000"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Verwalten eines Azure Cosmos-Kontos
 
-In diesem Artikel wird die Verwaltung Ihres Azure Cosmos DB-Kontos beschrieben. Sie erfahren, wie Sie Multi-Homing einrichten, eine Region hinzufügen oder entfernen, mehrere Schreibregionen konfigurieren und Failoverprioritäten einrichten. 
+In diesem Artikel wird die Verwaltung Ihres Azure Cosmos-Kontos beschrieben. Sie erfahren, wie Sie Multi-Homing einrichten, eine Region hinzufügen oder entfernen, mehrere Schreibregionen konfigurieren und Failoverprioritäten einrichten. 
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
 
@@ -99,9 +99,9 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.ac
 
 ### <a id="add-remove-regions-via-portal"></a>Azure-Portal
 
-1. Navigieren Sie zu Ihrem Azure Cosmos DB-Konto, und öffnen Sie das Menü **Daten global replizieren**.
+1. Navigieren Sie zu Ihrem Azure Cosmos-Konto, und öffnen Sie das Menü **Daten global replizieren**.
 
-2. Wenn Sie Regionen hinzufügen möchten, wählen Sie auf der Karte die Sechsecke mit der Beschriftung **+** aus, die der gewünschten Region entsprechen. Wenn Sie eine Region hinzufügen möchten, wählen Sie die Option **+ Region hinzufügen** und anschließend eine Region aus dem Dropdownmenü aus.
+2. Wenn Sie Regionen hinzufügen möchten, wählen Sie auf der Karte die Sechsecke mit der Beschriftung **+** aus, die den gewünschten Regionen entsprechen. Alternativ können Sie zum Hinzufügen einer Region die Option **+ Region hinzufügen** und anschließend eine Region aus dem Dropdownmenü auswählen.
 
 3. Wenn Sie Regionen entfernen möchten, entfernen Sie sie von der Karte, indem Sie die blauen, mit einem Häkchen versehenen Sechsecke auswählen. Alternativ können Sie auch neben der Region auf der rechten Seite das Papierkorbsymbol (🗑) auswählen.
 
@@ -116,13 +116,13 @@ Im Schreibmodus mit mehreren Regionen können Sie beliebige Regionen hinzufügen
 ### <a id="add-remove-regions-via-cli"></a>Azure-Befehlszeilenschnittstelle
 
 ```bash
-# Given an account created with 1 region like so
+# Create an account with 1 region
 az cosmosdb create --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations eastus=0
 
-# Add a new region by adding another region to the list
+# Add a region
 az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations eastus=0 westus=1
 
-# Remove a region by removing a region from the list
+# Remove a region
 az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations westus=0
 ```
 
@@ -142,7 +142,7 @@ az cosmosdb create --name <Azure Cosmos account name> --resource-group <Resource
 
 ### <a id="configure-multiple-write-regions-arm"></a>Resource Manager-Vorlage
 
-Der folgende JSON-Code ist ein Beispiel für eine Azure Resource Manager-Vorlage. Damit können Sie ein Azure Cosmos DB-Konto mit einer Konsistenzrichtlinie für begrenzte Veraltung bereitstellen. Das maximale Veraltungsintervall ist auf fünf Sekunden festgelegt. Die maximale Anzahl tolerierter veralteter Anforderungen ist auf 100 festgelegt. Weitere Informationen zum Resource Manager-Vorlagenformat sowie zur Syntax finden Sie unter [Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
+Der folgende JSON-Code ist ein Beispiel für eine [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)-Vorlage. Damit können Sie ein Azure Cosmos-Konto mit der [Konsistenzebene „Begrenzte Veraltung“](consistency-levels.md) bereitstellen. Das maximale Veraltungsintervall ist auf fünf Sekunden festgelegt. Die maximale Anzahl tolerierter veralteter Anforderungen ist auf 100 festgelegt. Weitere Informationen zum Resource Manager-Vorlagenformat sowie zur Syntax finden Sie unter [Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md).
 
 ```json
 {
@@ -197,11 +197,11 @@ Der folgende JSON-Code ist ein Beispiel für eine Azure Resource Manager-Vorlage
 ```
 
 
-## <a id="manual-failover"></a>Aktivieren des manuellen Failovers für Ihr Azure Cosmos DB-Konto
+## <a id="manual-failover"></a>Aktivieren des manuellen Failovers für Ihr Azure Cosmos-Konto
 
 ### <a id="enable-manual-failover-via-portal"></a>Azure-Portal
 
-1. Navigieren Sie zu Ihrem Azure Cosmos DB-Konto, und öffnen Sie das Menü **Daten global replizieren**.
+1. Navigieren Sie zu Ihrem Azure Cosmos-Konto, und öffnen Sie das Menü **Daten global replizieren**.
 
 2. Wählen Sie im oberen Bereich des Menüs die Option **Manuelles Failover** aus.
 
@@ -216,7 +216,7 @@ Der folgende JSON-Code ist ein Beispiel für eine Azure Resource Manager-Vorlage
 ### <a id="enable-manual-failover-via-cli"></a>Azure-Befehlszeilenschnittstelle
 
 ```bash
-# Given your account currently has regions with priority like so: eastus=0 westus=1
+# Given your account currently has regions with priority: eastus=0 westus=1
 # Change the priority order to trigger a failover of the write region
 az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations westus=0 eastus=1
 ```
@@ -252,11 +252,11 @@ az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource
 az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --enable-automatic-failover false
 ```
 
-## <a name="set-failover-priorities-for-your-azure-cosmos-db-account"></a>Festlegen von Failoverprioritäten für Ihr Azure Cosmos DB-Konto
+## <a name="set-failover-priorities-for-your-azure-cosmos-account"></a>Festlegen von Failoverprioritäten für Ihr Azure Cosmos-Konto
 
 ### <a id="set-failover-priorities-via-portal"></a>Azure-Portal
 
-1. Öffnen Sie in Ihrem Azure Cosmos DB-Konto den Bereich **Daten global replizieren**. 
+1. Öffnen Sie in Ihrem Azure Cosmos-Konto den Bereich **Daten global replizieren**. 
 
 2. Wählen Sie im oberen Bereich die Option **Automatisches Failover** aus.
 
@@ -270,7 +270,7 @@ az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource
 
    ![Portalmenü für automatisches Failover](./media/how-to-manage-database-account/automatic-failover.png)
 
-Die Schreibregion kann in diesem Menü nicht geändert werden. Sie müssen ein manuelles Failover durchführen, um die Schreibregion manuell zu ändern.
+Die Leseregion kann in diesem Menü nicht geändert werden. Sie müssen ein manuelles Failover durchführen, um die Schreibregion manuell zu ändern.
 
 ### <a id="set-failover-priorities-via-cli"></a>Azure-Befehlszeilenschnittstelle
 
@@ -281,8 +281,13 @@ az cosmosdb failover-priority-change --name <Azure Cosmos account name> --resour
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich über den Umgang mit Konsistenzebenen und Datenkonflikten in Azure Cosmos DB. Entsprechende Informationen finden Sie in den folgenden Artikeln:
+Lesen Sie die folgenden Artikel:
 
 * [Verwalten der Konsistenz](how-to-manage-consistency.md)
 * [Behandeln von Konflikten zwischen Regionen](how-to-manage-conflicts.md)
+* [Globale Verteilung: Hintergrundinformationen](global-dist-under-the-hood.md)
+* [Konfigurieren von Multimaster in Ihren Anwendungen](how-to-multi-master.md)
+* [Konfigurieren von Clients für Multihoming](how-to-manage-database-account.md#configure-clients-for-multi-homing)
+* [Hinzufügen/Entfernen von Regionen in Ihrem Azure Cosmos DB-Konto](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+* [Erstellen einer benutzerdefinierten Konfliktlösungsrichtlinie](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)
 

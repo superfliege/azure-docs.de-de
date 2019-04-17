@@ -7,17 +7,17 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: stevestein
+ms.author: sstein
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 0e9001111d6aa48f0dad69a2fb3b2186bfc37ab7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 46a620900896d07273da22e53171330b85d3f1ec
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010512"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360192"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Kaufmodelle für Azure SQL-Datenbank
 
@@ -36,7 +36,7 @@ In Azure SQL-Datenbank-Bereitstellungsmodellen sind verschiedene Kaufmodelle ver
 
 In der folgenden Tabelle und im Diagramm werden diese Kaufmodelle verglichen und gegenübergestellt.
 
-|**Kaufmodell**|**Beschreibung**|**Am besten geeignet für**|
+|**Kaufmodell**|**BESCHREIBUNG**|**Am besten geeignet für:**|
 |---|---|---|
 |DTU-basiertes Modell|Dieses Modell basiert auf einem Paket mit Compute-, Speicher- und E/A-Ressourcen. Computegrößen werden für Einzeldatenbanken als Datenbanktransaktionseinheiten (DTUs) und für Pools für elastische Datenbanken als elastische Datenbanktransaktionseinheiten (eDTUs) bezeichnet. Weitere Informationen zu DTUs und eDTUs finden Sie unter [Was sind DTUs und eDTUs?](sql-database-purchase-models.md#dtu-based-purchasing-model).|Eignet sich am besten für Kunden, die einfache, vorkonfigurierte Ressourcenoptionen benötigen.|
 |V-Kern-basiertes Modell|Mit diesem Modell können Sie Compute- und Speicherressourcen einzeln auswählen. Mit dem V-Kern-basierten Kaufmodell können Sie auch den [Azure-Hybridvorteil für SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) nutzen, um Kosten einzusparen.|Eignet sich am besten für Kunden, für die Flexibilität, Kontrolle und Transparenz im Vordergrund stehen.|
@@ -50,11 +50,11 @@ Die Computekosten spiegeln die gesamte Computekapazität wider, die für die Anw
 
 ## <a name="storage-costs"></a>Speicherkosten
 
-Unterschiedliche Arten von Speicher werden auch unterschiedlich berechnet. Für Datenspeicher wird Ihnen der bereitgestellte Speicher basierend auf der von Ihnen gewählten maximalen Datenbank- oder Poolgröße berechnet. Die Kosten ändern sich nicht, sofern Sie dieses Maximum nicht verringern oder erhöhen. Der Sicherungsspeicher ist mit den automatischen Sicherungen Ihrer Instanz verbunden und wird dynamisch zugeordnet. Durch eine Verlängerung der Beibehaltungsdauer Ihrer Sicherungen erhöht sich auch der von Ihrer Instanz verbrauchte Sicherungsspeicher. 
+Unterschiedliche Arten von Speicher werden auch unterschiedlich berechnet. Für Datenspeicher wird Ihnen der bereitgestellte Speicher basierend auf der von Ihnen gewählten maximalen Datenbank- oder Poolgröße berechnet. Die Kosten ändern sich nicht, sofern Sie dieses Maximum nicht verringern oder erhöhen. Der Sicherungsspeicher ist mit den automatischen Sicherungen Ihrer Instanz verbunden und wird dynamisch zugeordnet. Durch eine Verlängerung der Beibehaltungsdauer Ihrer Sicherungen erhöht sich auch der von Ihrer Instanz verbrauchte Sicherungsspeicher.
 
 7 Tage von automatischen Sicherungen Ihrer Datenbanken werden standardmäßig in den RA-GRS Standard-Blobspeicher kopiert. Der Speicher wird für wöchentliche vollständige Sicherungen, tägliche differenzielle Sicherungen und im 5-Minuten-Takt kopierte Sicherungen von Transaktionsprotokollen verwendet. Die Größe des Transaktionsprotokolls hängt von der Änderungsrate der Datenbank ab. Eine Mindestspeichermenge, die der Gesamtgröße der Datenbank entspricht, wird kostenlos zur Verfügung gestellt. Zusätzlich verbrauchter Sicherungsspeicher wird pro GB und Monat abgerechnet.
 
-Weitere Informationen zu den Preisen für Storage finden Sie auf der Seite [Preise](https://azure.microsoft.com/pricing/details/sql-database/single/). 
+Weitere Informationen zu den Preisen für Storage finden Sie auf der Seite [Preise](https://azure.microsoft.com/pricing/details/sql-database/single/).
 
 ## <a name="vcore-based-purchasing-model"></a>Auf virtuellen Kernen basierendes Erwerbsmodell
 
@@ -71,7 +71,7 @@ Mit dem V-Kern-basierten Kaufmodell können Sie Compute- und Speicherressourcen 
 > **Regionseinschränkungen:** Die aktuelle Liste der unterstützten Regionen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Wenn Sie eine verwaltete Instanz in einer Region erstellen möchten, die derzeit nicht unterstützt wird, können Sie eine [Supportanfrage über das Azure-Portal senden](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance).
 .
 
-Wenn Ihre Einzeldatenbank oder Ihr Pool für elastische Datenbanken mehr als 300 DTUs verbraucht, können Sie Ihre Kosten durch eine Umstellung auf das V-Kern-basierte Kaufmodell möglicherweise senken. Wenn Sie sich für eine Umstellung entscheiden, können Sie dazu die API Ihrer Wahl oder das Azure-Portal verwenden, ohne dass es zu Ausfallzeiten kommt. Allerdings ist eine Umstellung nicht erforderlich und erfolgt nicht automatisch. Wenn das DTU-basierte Kaufmodell Ihre Leistungs- und Geschäftsanforderungen erfüllt, sollten Sie es weiter nutzen. Wenn Sie sich für eine Umstellung vom DTU-basierten Kaufmodell auf das V-Kern-basierte Kaufmodell entscheiden, wählen Sie die Computegröße mithilfe der folgenden Faustregeln aus: 
+Wenn Ihre Einzeldatenbank oder Ihr Pool für elastische Datenbanken mehr als 300 DTUs verbraucht, können Sie Ihre Kosten durch eine Umstellung auf das V-Kern-basierte Kaufmodell möglicherweise senken. Wenn Sie sich für eine Umstellung entscheiden, können Sie dazu die API Ihrer Wahl oder das Azure-Portal verwenden, ohne dass es zu Ausfallzeiten kommt. Allerdings ist eine Umstellung nicht erforderlich und erfolgt nicht automatisch. Wenn das DTU-basierte Kaufmodell Ihre Leistungs- und Geschäftsanforderungen erfüllt, sollten Sie es weiter nutzen. Wenn Sie sich für eine Umstellung vom DTU-basierten Kaufmodell auf das V-Kern-basierte Kaufmodell entscheiden, wählen Sie die Computegröße mithilfe der folgenden Faustregeln aus:
 
 - Für jede 100 DTU im Tarif „Standard“ ist mindestens 1 V-Kern im Tarif „Universell“ erforderlich
 - Für jede 125 DTU im Tarif „Premium“ ist mindestens 1 V-Kern im Tarif „Unternehmenskritisch“ erforderlich

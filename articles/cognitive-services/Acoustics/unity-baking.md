@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: f44b6f9ed42770fe830346de08058e33ed68a249
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 8875674b0f9c621a573dda591b4dc2b6f018a83c
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309639"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470337"
 ---
 # <a name="project-acoustics-unity-bake-tutorial"></a>Unity-Bakingtutorial für Projekt Akustik
 Dieses Tutorial beschreibt Akustikbaking mit Projekt Akustik in Unity.
@@ -137,7 +137,7 @@ Der Szenenname wird verwendet, um die Szene mit den Dateien zu verbinden, in den
 
 1. Die Schaltfläche **Probes** (Tests), die zum Aufrufen dieser Seite verwendet wird.
 2. Eine kurze Beschreibung, welche Vorgänge Sie mit dieser Seite durchführen müssen.
-3. Verwenden Sie diese Kontrollkästchen, um „Coarse“ (Niedrig) oder „Fine“ (Hoch) als Auflösung für die Simulation auszuwählen. Eine niedrige Auflösung ist schneller, hat jedoch einige Nachteile. Weitere Informationen finden Sie weiter unten unter [Auswahl einer niedrigen Auflösung im Vergleich mit einer hohen](#Coarse-vs-Fine-Resolution).
+3. Verwenden Sie diese Kontrollkästchen, um „Coarse“ (Niedrig) oder „Fine“ (Hoch) als Auflösung für die Simulation auszuwählen. Eine niedrige Auflösung ist schneller, hat jedoch einige Nachteile. Ausführliche Informationen finden Sie unter [Bake Resolution](bake-resolution.md) (Bakingauflösung).
 4. Wählen Sie mithilfe dieses Felds den Speicherort für die Akustikdatendateien aus. Klicken Sie auf die Schaltfläche mit den Auslassungspunkten (...), um die Ordnerauswahl zu verwenden. Der Standardordner ist **Assets/AcousticsData**. An diesem Speicherort wird ebenfalls ein **Editor**-Unterordner erstellt. Weitere Informationen zu Datendateien finden Sie weiter unten unter [Datendateien](#Data-Files).
 5. Die Datendateien für diese Szene werden mithilfe des hier bereitgestellten Präfixes benannt. Der Standardname ist „Acoustics_[Scene Name]“.
 6. Nachdem die Tests berechnet wurden, werden die oben genannten Steuerelemente deaktiviert. Klicken Sie auf die Schaltfläche **Clear** (Löschen), um die Berechnungen zu löschen und die Steuerelemente zu aktivieren, damit Sie unter Verwendung der neuen Einstellungen eine Neuberechnung vornehmen können.
@@ -145,21 +145,7 @@ Der Szenenname wird verwendet, um die Szene mit den Dateien zu verbinden, in den
 
 In dieser Version von Project Acoustics können Tests nicht manuell platziert werden, sondern müssen über einen automatisierten Prozess platziert werden, der auf der Registerkarte **Probes** (Tests) bereitgestellt wird.
 
-### <a name="Coarse-vs-Fine-Resolution"></a>Auswahl einer niedrigen Auflösung im Vergleich mit einer hohen
-
-Der einzige Unterschied zwischen den Auflösungseinstellungen „Coarse“ (Niedrig) und „Fine“ (Hoch) ist die Häufigkeit, mit der die Simulation ausgeführt wird. Bei der Einstellung „Fine“ (Hoch) wird eine doppelt so hohe Häufigkeit wie bei „Coarse“ (Niedrig) verwendet.
-Dieses Prinzip erscheint einfach, hat jedoch einige Auswirkungen auf die Akustiksimulation:
-
-* Die Wellenlänge ist bei „Coarse“ (Niedrig) doppelt so lang wie bei „Fine“ (Hoch), daher sind die Voxel doppelt so groß.
-* Die Simulationszeit hängt direkt von der Voxelgröße ab, daher ist ein Bakingvorgang mit der Einstellung „Coarse“ (Niedrig) bis zu 16-mal schneller als mit der Einstellung „Fine“ (Hoch).
-* „Portale“ (z.B. Türen oder Fenster), die kleiner als die Voxelgröße sind, können nicht simuliert werden. Die Einstellung „Coarse“ (Niedrig) kann dazu führen, dass einige der kleineren Portale nicht simuliert werden, sodass diese zur Laufzeit keinen Sound übergeben. Sie können feststellen, ob dieser Fall eintritt, indem Sie die Voxels anzeigen.
-* Die niedrigere Simulationshäufigkeit führt zu einer verringerten Beugung von Ecken und Kanten.
-* Soundquellen können nicht in „aufgefüllten“ Voxels (also Voxels, die Geometrie enthalten) platziert werden, da ansonsten keine Sounds wiedergegeben werden. Es ist schwieriger, Soundquellen so zu platzieren, dass sie sich nicht in den größeren Voxeln der Einstellung „Coarse“ (Niedrig) befinden, als es bei der Einstellung „Fine“ (Hoch) der Fall ist.
-* Die größeren Voxels überschneiden sich wie im Folgenden dargestellt mehr mit Portalen. Das erste Bild dieses Türbereichs wurde mit der Auflösung „Coarse“ (Niedrig) erstellt, das zweite mit der Auflösung „Fine“ (Hoch). An den roten Markierungen ist erkennbar, dass die Überschneidung mit der Einstellung „Fine“ (Hoch) wesentlich geringer ist. Die blaue Linie stellt den durch die Geometrie definierten Eingang dar, während die rote Linie das Akustikportal darstellt, das von der Voxelgröße definiert wird. Wie diese Überschneidung sich in einer bestimmten Situation auswirkt, hängt vollständig davon ab, wie die Voxels und die Geometrie des Portals ausgerichtet sind. Dies wird von der Größe und Position der Objekte in der Szene bestimmt.
-
-![Screenshot der Voxel mit niedriger Auflösung im Türbereich](media/coarse-voxel-doorway.png)
-
-![Screenshot der Voxel mit hoher Auflösung im Türbereich](media/fine-voxel-doorway.png)
+Ausführliche Informationen zur niedrigen und hohen Auflösung finden Sie unter [Bake Resolution](bake-resolution.md) (Bakingauflösung).
 
 ## <a name="bake-your-scene-using-azure-batch"></a>Ausführen des Bakings Ihrer Szene mit Azure Batch
 Sie können das Baking Ihrer Szene mit dem Azure Batch-Dienst in einem Computecluster in der Cloud ausführen. Das Unity-Plug-In für Projekt Akustik stellt eine direkte Verbindung mit Azure Batch her, um einen Azure Batch-Cluster für jeden Bakingvorgang zu instanziieren, zu verwalten und zu beenden. Geben Sie auf der Registerkarte **Bake** Ihre Azure-Anmeldeinformationen ein, wählen Sie einen Clustercomputertyp und eine Größe aus, und klicken Sie auf **Bake**.

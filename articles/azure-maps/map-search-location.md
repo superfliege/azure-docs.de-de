@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 8ae6c8a20a05df723d3f6b394e0639f218896a85
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: be01c9d96386804b8bc074d81041104cbf592df6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57845136"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271593"
 ---
 # <a name="show-search-results-on-the-map"></a>Anzeigen von Suchergebnissen auf der Karte
 
@@ -29,11 +29,11 @@ Es gibt zwei Möglichkeiten, um nach einem bestimmten Ort zu suchen. Eine Mögli
 
 Im obigen Code erstellt der erste Codeblock ein Kartenobjekt und legt als Authentifizierungsmechanismus den Abonnementschlüssel fest. Eine Anleitung finden Sie unter [Erstellen einer Karte](./map-create.md).
 
-Der zweite Codeblock erstellt eine **SubscriptionKeyCredentialPolicy**, um HTTP-Anforderungen an Azure Maps mit dem Abonnementschlüssel zu authentifizieren. **atlas.service.MapsURL.newPipeline()** verwendet dann die Richtlinie **SubscriptionKeyCredential** und erstellt eine [Pipeline](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest)-Instanz. Die **searchURL** stellt eine URL zu [Suchvorgängen](https://docs.microsoft.com/rest/api/maps/search) von Azure Maps dar.
+Der zweite Codeblock erstellt eine `SubscriptionKeyCredentialPolicy`, um HTTP-Anforderungen an Azure Maps mit dem Abonnementschlüssel zu authentifizieren. `atlas.service.MapsURL.newPipeline()` verwendet dann die Richtlinie `SubscriptionKeyCredential` und erstellt eine [Pipeline](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest)-Instanz. `searchURL` stellt eine URL zu [Suchvorgängen](https://docs.microsoft.com/rest/api/maps/search) von Azure Maps dar.
 
 Der dritte Codeblock erstellt mit der [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)-Klasse ein Datenquellenobjekt und fügt diesem Suchergebnisse hinzu. Eine [Symbolebene](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) verwendet Text oder Symbole zum Rendern punktbasierter Daten, die in [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) als Symbole auf der Karte umschlossen sind.  Anschließend wird eine Symbolebene erstellt, und die Datenquelle wird der Symbolebene hinzugefügt, die dann der Karte hinzugefügt wird.
 
-Der vierte Codeblock verwendet die [SearchFuzzy](/javascript/api/azure-maps-rest/atlas.service.models.searchgetsearchfuzzyoptionalparams)-Methode im [Dienstmodul](https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2). Sie ermöglicht über die [REST-API „Get Search“ für die Fuzzysuche](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) die Freitextsuche nach Points of Interest. Die REST-API „Get Search“ für die Fuzzysuche kann eine beliebige Kombination von Fuzzyeingaben verarbeiten. Eine GeoJSON-Funktionssammlung aus der Antwort wird dann mit der **geojson.getFeatures()**-Methode extrahiert und der Datenquelle hinzugefügt, und die Daten werden über die Symbolebene automatisch auf der Karte gerendert.
+Der vierte Codeblock verwendet die [SearchFuzzy](/javascript/api/azure-maps-rest/atlas.service.models.searchgetsearchfuzzyoptionalparams)-Methode im [Dienstmodul](https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js). Sie ermöglicht über die [REST-API „Get Search“ für die Fuzzysuche](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) die Freitextsuche nach Points of Interest. Die REST-API „Get Search“ für die Fuzzysuche kann eine beliebige Kombination von Fuzzyeingaben verarbeiten. Eine GeoJSON-Funktionssammlung aus der Antwort wird dann mit der `geojson.getFeatures()`-Methode extrahiert und der Datenquelle hinzugefügt, und die Daten werden über die Symbolebene automatisch auf der Karte gerendert.
 
 Im letzten Codeblock werden mithilfe der Maps-Eigenschaft [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) die Kameragrenzen für die Karte angepasst.
 

@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 1/14/2019
 ms.author: alkarche
-ms.openlocfilehash: 8bbc44e7af68f005f30fff143741bc4bfe0adcf2
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 10d7daa6da45c56e20c622fcbca9ee288e737dab
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58896739"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358163"
 ---
 # <a name="azure-functions-networking-options"></a>Netzwerkoptionen von Azure Functions
 
@@ -43,7 +43,8 @@ Funktions-Apps können auf unterschiedliche Arten gehostet werden.
 
 Mit IP-Einschränkungen können Sie eine nach Priorität sortierte Zulassen/Ablehnen-Liste mit IP-Adressen definieren, die auf Ihre App zugreifen dürfen. Die Zulassen-Liste kann IPv4- und IPv6-Adressen enthalten. Wenn mindestens ein Eintrag vorhanden ist, enthält die Liste am Ende einen impliziten Eintrag vom Typ „Alle ablehnen“. Die Funktion für IP-Einschränkungen funktioniert mit allen Hostingoptionen für Funktionen.
 
-> ![WICHTIG] Um den Azure-Portal-Editor verwenden zu können, muss das Portal direkt auf Ihre ausgeführte Funktions-App zugreifen können. Außerdem muss die IP-Adresse des Geräts, das Sie zum Zugreifen auf das Portal verwenden, in einer Whitelist aufgeführt sein. Wenn die Netzwerkeinschränkungen vorhanden sind, können Sie weiterhin auf die Features der Registerkarte **Plattformfeatures** zugreifen.
+> [!NOTE]
+> Um den Azure-Portal-Editor verwenden zu können, muss das Portal direkt auf Ihre ausgeführte Funktions-App zugreifen können. Außerdem muss die IP-Adresse des Geräts, das Sie zum Zugreifen auf das Portal verwenden, in einer Whitelist aufgeführt sein. Wenn die Netzwerkeinschränkungen vorhanden sind, können Sie weiterhin auf die Features der Registerkarte **Plattformfeatures** zugreifen.
 
 [Weitere Informationen](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 71e71b417f12b58fc03c581826c0e5c2412e684b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c7bfd36bb4e36b10487edbbaa40421f067c9ed3e
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57876645"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048757"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Verwenden der Paketerfassung für die proaktive Netzwerküberwachung mit Warnungen und Azure Functions
 
@@ -33,9 +33,12 @@ Durch den Einsatz von Network Watcher, Warnungen und Funktionen im Azure-Ökosys
 
 ![Szenario][scenario]
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Die neueste Version von [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps)
+* Die neueste Version von [Azure PowerShell](/powershell/azure/install-Az-ps)
 * Eine vorhandene Instanz von Network Watcher. Wenn Sie noch keine haben, [erstellen Sie eine Instanz von Network Watcher](network-watcher-create.md).
 * Ein virtueller Computer in der gleichen Region, in der sich auch die Network Watcher-Instanz befindet – mit der [Windows-Erweiterung](../virtual-machines/windows/extensions-nwa.md) oder mit der [Erweiterung für virtuelle Linux-Computer](../virtual-machines/linux/extensions-nwa.md)
 
@@ -78,7 +81,7 @@ Im ersten Schritt wird eine Azure-Funktion zum Verarbeiten der Warnung und Erste
     |**Abonnement**|[Ihr Abonnement] – das Abonnement, für das die Funktions-App erstellt werden soll||
     |**Ressourcengruppe**|PacketCaptureRG|Die Ressourcengruppe, in der sich die Funktions-App befinden soll|
     |**Hostingplan**|Verbrauchstarif| Die Art des Tarifs, der für Ihre Funktions-App verwendet wird. Zur Auswahl stehen „Verbrauchstarif“ und „Azure App Service-Tarif“. |
-    |**Location**|USA (Mitte)| Die Region, in der Sie die Funktions-App erstellen möchten|
+    |**Standort**|USA (Mitte)| Die Region, in der Sie die Funktions-App erstellen möchten|
     |**Speicherkonto**|{automatisch generiert}| Das Speicherkonto, das von Azure Functions für allgemeine Speicherzwecke benötigt wird.|
 
 3. Wählen Sie auf dem Blatt **PacketCaptureExample** der Funktionen-App die Option **Funktionen** > **Benutzerdefinierte Funktion** >**+** aus.
@@ -88,7 +91,7 @@ Im ersten Schritt wird eine Azure-Funktion zum Verarbeiten der Warnung und Erste
     |**Einstellung** | **Wert** | **Details** |
     |---|---|---|
     |**Szenario**|Experimentell|Art des Szenarios|
-    |**Name Ihrer Funktion**|AlertPacketCapturePowerShell|Name der Funktion|
+    |**Benennen Ihrer Funktion**|AlertPacketCapturePowerShell|Name der Funktion|
     |**Autorisierungsstufe**|Funktion|Autorisierungsebene für die Funktion|
 
 ![Funktionsbeispiel][functions1]
@@ -105,16 +108,16 @@ Um die Network Watcher-PowerShell-Cmdlets zu verwenden, laden Sie das neueste Po
 1. Führen Sie auf dem lokalen Computer mit installierten aktuellsten Azure PowerShell-Modulen den folgenden PowerShell-Befehl aus:
 
     ```powershell
-    (Get-Module AzureRM.Network).Path
+    (Get-Module Az.Network).Path
     ```
 
     In diesem Beispiel wird der lokale Pfad Ihrer Azure PowerShell-Module angegeben. Diese Ordner werden in einem späteren Schritt verwendet. Die folgenden Module werden in diesem Szenario verwendet:
 
-   * AzureRM.Network
+   * Az.Network
 
-   * AzureRM.Profile
+   * Az.Accounts
 
-   * AzureRM.Resources
+   * Az.Resources
 
      ![PowerShell-Ordner][functions5]
 
@@ -128,17 +131,17 @@ Um die Network Watcher-PowerShell-Cmdlets zu verwenden, laden Sie das neueste Po
 
     ![Ordner und Unterordner][functions3]
 
-    * AzureRM.Network
+    * Az.Network
 
-    * AzureRM.Profile
+    * Az.Accounts
 
-    * AzureRM.Resources
+    * Az.Resources
 
-1. Klicken Sie mit der rechten Maustaste auf den Unterordner **AzureRM.Network**, und wählen Sie **Dateien hochladen** aus. 
+1. Klicken Sie mit der rechten Maustaste auf den Unterordner **Az.Network**, und wählen Sie **Dateien hochladen** aus. 
 
-6. Wechseln Sie zu Ihren Azure-Modulen. Wählen Sie im lokalen Ordner **AzureRM.Network** alle Dateien aus. Wählen Sie dann **OK**aus. 
+6. Wechseln Sie zu Ihren Azure-Modulen. Wählen Sie im lokalen Ordner **Az.Network** alle Dateien aus. Wählen Sie dann **OK**aus. 
 
-7. Wiederholen Sie diese Schritte für **AzureRM.Profile** und **AzureRM.Resources**.
+7. Wiederholen Sie diese Schritte für **Az.Accounts** und **Az.Resources**.
 
     ![Hochladen von Dateien][functions6]
 
@@ -196,10 +199,10 @@ Die Client-ID ist die Anwendungs-ID einer Anwendung in Azure Active Directory.
 1. Wenn Sie noch nicht über eine zu verwendende Anwendung verfügen, führen Sie das folgende Beispiel aus, um eine Anwendung zu erstellen.
 
     ```powershell
-    $app = New-AzureRmADApplication -DisplayName "ExampleAutomationAccount_MF" -HomePage "https://exampleapp.com" -IdentifierUris "https://exampleapp1.com/ExampleFunctionsAccount" -Password "<same password as defined earlier>"
-    New-AzureRmADServicePrincipal -ApplicationId $app.ApplicationId
+    $app = New-AzADApplication -DisplayName "ExampleAutomationAccount_MF" -HomePage "https://exampleapp.com" -IdentifierUris "https://exampleapp1.com/ExampleFunctionsAccount" -Password "<same password as defined earlier>"
+    New-AzADServicePrincipal -ApplicationId $app.ApplicationId
     Start-Sleep 15
-    New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $app.ApplicationId
+    New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $app.ApplicationId
     ```
 
    > [!NOTE]
@@ -218,7 +221,7 @@ Die Client-ID ist die Anwendungs-ID einer Anwendung in Azure Active Directory.
 Rufen Sie die Mandaten-ID durch Ausführen des folgenden PowerShell-Beispiels ab:
 
 ```powershell
-(Get-AzureRmSubscription -SubscriptionName "<subscriptionName>").TenantId
+(Get-AzSubscription -SubscriptionName "<subscriptionName>").TenantId
 ```
 
 #### <a name="azurecredpassword"></a>AzureCredPassword
@@ -266,9 +269,9 @@ Bei dem folgenden Beispiel handelt es sich um PowerShell-Code, der in der Funkti
 
 ```powershell
             #Import Azure PowerShell modules required to make calls to Network Watcher
-            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\AzureRM.Profile\AzureRM.Profile.psd1" -Global
-            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\AzureRM.Network\AzureRM.Network.psd1" -Global
-            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\AzureRM.Resources\AzureRM.Resources.psd1" -Global
+            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\Az.Accounts\Az.Accounts.psd1" -Global
+            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\Az.Network\Az.Network.psd1" -Global
+            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\Az.Resources\Az.Resources.psd1" -Global
 
             #Process alert request body
             $requestBody = Get-Content $req -Raw | ConvertFrom-Json
@@ -290,7 +293,7 @@ Bei dem folgenden Beispiel handelt es sich um PowerShell-Code, der in der Funkti
             #Authentication
             $secpassword = $pw | ConvertTo-SecureString -Key (Get-Content $keypath)
             $credential = New-Object System.Management.Automation.PSCredential ($clientid, $secpassword)
-            Connect-AzureRmAccount -ServicePrincipal -Tenant $tenant -Credential $credential #-WarningAction SilentlyContinue | out-null
+            Connect-AzAccount -ServicePrincipal -Tenant $tenant -Credential $credential #-WarningAction SilentlyContinue | out-null
 
 
             #Get the VM that fired the alert
@@ -302,22 +305,22 @@ Bei dem folgenden Beispiel handelt es sich um PowerShell-Code, der in der Funkti
                 Write-Output ("Resource Type:  {0}" -f $requestBody.context.resourceType)
 
                 #Get the Network Watcher in the VM's region
-                $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $requestBody.context.resourceRegion}
-                $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
+                $nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $requestBody.context.resourceRegion}
+                $networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
 
                 #Get existing packetCaptures
-                $packetCaptures = Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher
+                $packetCaptures = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher
 
                 #Remove existing packet capture created by the function (if it exists)
                 $packetCaptures | %{if($_.Name -eq $packetCaptureName)
                 { 
-                    Remove-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName $packetCaptureName
+                    Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName $packetCaptureName
                 }}
 
                 #Initiate packet capture on the VM that fired the alert
-                if ((Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher).Count -lt $packetCaptureLimit){
+                if ((Get-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher).Count -lt $packetCaptureLimit){
                     echo "Initiating Packet Capture"
-                    New-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $requestBody.context.resourceId -PacketCaptureName $packetCaptureName -StorageAccountId $storageaccountid -TimeLimitInSeconds $packetCaptureDuration
+                    New-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $requestBody.context.resourceId -PacketCaptureName $packetCaptureName -StorageAccountId $storageaccountid -TimeLimitInSeconds $packetCaptureDuration
                     Out-File -Encoding Ascii -FilePath $res -inputObject "Packet Capture created on ${requestBody.context.resourceID}"
                 }
             } 
@@ -343,8 +346,8 @@ Navigieren Sie zu einem vorhandenen virtuellen Computer, und fügen Sie eine War
 
   |**Einstellung** | **Wert** | **Details** |
   |---|---|---|
-  |**Name**|TCP_Segments_Sent_Exceeded|Der Name der Warnungsregel.|
-  |**Beschreibung**|Schwellenwertüberschreitung durch gesendete TCP-Segmente|Die Beschreibung für die Warnungsregel.|
+  |**NAME**|TCP_Segments_Sent_Exceeded|Der Name der Warnungsregel.|
+  |**BESCHREIBUNG**|Schwellenwertüberschreitung durch gesendete TCP-Segmente|Die Beschreibung für die Warnungsregel.|
   |**Metrik**|Gesendete TCP-Segmente| Die Metrik zur Auslösung der Warnung. |
   |**Bedingung**|Größer als| Die Bedingung, die bei der Auswertung der Metrik verwendet werden soll.|
   |**Schwellenwert**|100| Der Wert der Metrik, die die Warnung auslöst. Dieser Wert sollte auf einen gültigen Wert für Ihre Umgebung festgelegt werden.|

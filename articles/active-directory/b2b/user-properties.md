@@ -1,27 +1,27 @@
 ---
-title: Eigenschaften eines B2B Collaboration-Benutzers – Azure Active Directory | Microsoft-Dokumentation
-description: Die Eigenschaften von Benutzern der Azure Active Directory B2B-Zusammenarbeit sind konfigurierbar.
+title: Eigenschaften eines B2B-Gastbenutzers – Azure Active Directory | Microsoft-Dokumentation
+description: Eigenschaften und Zustände von Azure Active Directory B2B-Gastbenutzern vor und nach dem Einlösen der Einladung
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 04/08/2019
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 791dcfadf1db6cae48bee5c926f75e454c88fc55
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 4d4466e4ac7a4e818da6332254e3094eccbaf2b4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294653"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257602"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Eigenschaften eines Azure Active Directory B2B-Zusammenarbeitsbenutzers
 
-Ein Azure Active Directory (Azure AD) Business-to-Business (B2B)-Zusammenarbeitsbenutzer ist ein Benutzer mit dem Benutzertyp „Gast“. Dieser Gastbenutzer ist ein der Regel ein Benutzer aus einer Partnerorganisation und verfügt standardmäßig über eingeschränkte Berechtigungen im einladenden Verzeichnis.
+In diesem Artikel werden die Eigenschaften und Zustände beschrieben, die das B2B-Gastbenutzerobjekt in Azure Active Directory (Azure AD) vor und nach dem Einlösen der Einladung aufweisen kann. Ein Azure AD Business-to-Business (B2B) Collaboration-Benutzer ist ein Benutzer mit dem Benutzertyp „Gast“. Dieser Gastbenutzer ist ein der Regel ein Benutzer aus einer Partnerorganisation und verfügt standardmäßig über eingeschränkte Berechtigungen im einladenden Verzeichnis.
 
 Je nach Anforderungen der einladenden Organisation kann ein Azure AD B2B-Zusammenarbeitsbenutzer einen der folgenden Kontozustände aufweisen:
 
@@ -105,6 +105,6 @@ Ja. Gastobjekte sind in der globalen Adressliste Ihres Unternehmens standardmä�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Was ist die Azure AD B2B-Zusammenarbeit?](what-is-b2b.md)
+* [Was ist die Azure AD B2B-Zusammenarbeit?](what-is-b2b.md)
 * [Benutzertoken für die B2B-Zusammenarbeit](user-token.md)
 * [Zuordnen von Benutzeransprüchen für die B2B-Zusammenarbeit](claims-mapping.md)

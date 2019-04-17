@@ -15,12 +15,12 @@ ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: thoroet
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: 520319fb21dce3cf4f3cc1b36c52657cf9eb24e7
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 77dda80e538c8b742a96e7b7f81abe8650ee6b5d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58903997"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257296"
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Integrieren einer externen Überwachungslösung mit Azure Stack
 
@@ -30,7 +30,7 @@ Für die externe Überwachung der Azure Stack-Infrastruktur müssen Sie die Azur
 - Physische Computer können Integritäts- und Warnungsinformationen über die Baseboard-Verwaltungscontroller (Baseboard Management Controller, BMCs) zur Verfügung stellen.
 - Physische Netzwerkgeräte können Integritäts- und Warnungsinformationen über das SNMP-Protokoll zur Verfügung stellen.
 
-Jede Azure Stack-Lösung wird mit einem Hardwarelebenszyklushost ausgeliefert. Auf diesem Host wird die Überwachungssoftware des OEM-Hardwareanbieters (Originalgerätehersteller) für die physischen Server und Netzwerkgeräte ausgeführt. Bei Bedarf können Sie diese Überwachungslösungen umgehen und direkt in bestehende Überwachungslösungen in Ihrem Rechenzentrum integrieren.
+Jede Azure Stack-Lösung wird mit einem Hardwarelebenszyklushost ausgeliefert. Auf diesem Host wird die Überwachungssoftware des OEM-Hardwareanbieters (Originalgerätehersteller) für die physischen Server und Netzwerkgeräte ausgeführt. Informieren Sie sich bei Ihrem OEM-Anbieter, ob dessen Überwachungslösungen in bestehende Überwachungslösungen in Ihrem Rechenzentrum integriert werden können.
 
 > [!IMPORTANT]
 > Die von Ihnen verwendete externe Überwachungslösung darf keine Agenten verwenden. Sie können keine Agenten von Drittanbietern in Azure Stack-Komponenten installieren.
@@ -40,7 +40,7 @@ Das folgende Diagramm zeigt den Datenverkehrsfluss zwischen einem integrierten A
 ![Das Diagramm zeigt den Datenverkehr zwischen Azure Stack, der Überwachungs- und der Ticketausstellungslösung.](media/azure-stack-integrate-monitor/MonitoringIntegration.png)  
 
 > [!NOTE]
-> Die direkte Integration externer Überwachung mit physischen Servern und Netzwerkgeräten ist nicht zulässig und wird aktiv durch Zugriffssteuerungslisten (ACLs) blockiert. 
+> Die direkte Integration externer Überwachung mit physischen Servern ist nicht zulässig und wird aktiv durch Zugriffssteuerungslisten (ACLs) blockiert.  Die direkte Integration externer Überwachung mit physischen Netzwerkgeräten wird unterstützt. Informieren Sie sich bei Ihrem OEM-Anbieter, wie dieses Feature aktiviert wird.
 
 In diesem Artikel wird beschrieben, wie Sie Azure Stack in externe Überwachungslösungen wie System Center Operations Manager und Nagios integrieren können. Außerdem wird beschrieben, wie Sie mithilfe von PowerShell oder über REST-API-Aufrufe programmgesteuert mit Warnungen arbeiten können.
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 40e2baaeaae933e8ff6a88eff2e2d86f645ad37b
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: e734ebb2032a5354e8701129b6a8ad913837bb52
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58881040"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010616"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Häufig gestellte Fragen zu unterschiedlichen APIs in Azure Cosmos DB
 
@@ -95,8 +95,9 @@ Die folgenden Bedingungen gelten für Azure Cosmos DB-Testabonnements:
 * Bis zu drei Sammlungen pro Abonnement für MongoDB-Konten
 * 10 GB Speicherkapazität
 * Die globale Replikation ist in den folgenden [Azure-Regionen](https://azure.microsoft.com/regions/) verfügbar: „USA, Mitte“, „Europa, Norden“ und „Asien, Südosten“
-* Maximaler Durchsatz von 5.000 RU/s
-* Abonnements laufen nach 24 Stunden ab und können auf maximal 48 Stunden erweitert werden.
+* Maximaler Durchsatz von 5.000 RU/s bei Bereitstellung auf Containerebene.
+* Maximaler Durchsatz von 20.000 RU/s bei Bereitstellung auf Datenbankebene.
+* Abonnements laufen nach 30 Tagen ab und können auf maximal 31 Tage verlängert werden.
 * Azure-Supporttickets können nicht für Azure Cosmos DB-Testkonten erstellt werden. Allerdings erhalten Abonnenten mit vorhandenen Supportplänen Support.
 
 ## <a name="set-up-azure-cosmos-db"></a>Einrichten von Azure Cosmos DB

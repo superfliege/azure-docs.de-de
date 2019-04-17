@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 02/20/2019
+ms.date: 04/01/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e25af938d09a254abd5d28ca3a5eecca2d3f8f1
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 804efa6e0a39e009e18bbb9dec5ad1638a163597
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576196"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471629"
 ---
 # <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Erstellen einer Zugriffsüberprüfung für Gruppen oder Anwendungen in Azure AD-Zugriffsüberprüfungen
 
@@ -37,11 +37,11 @@ In diesem Artikel wird die Erstellung einer oder mehrerer Zugriffsüberprüfunge
 
 1. Melden Sie sich beim Azure-Portal an, und öffnen Sie die [Seite „Zugriffsüberprüfungen“](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
-1. Klicken Sie auf **Steuerelemente**.
+1. Klicken Sie im linken Menü auf **Zugriffsüberprüfungen**.
 
 1. Klicken Sie auf **Neue Zugriffsüberprüfung**, um eine neue Zugriffsüberprüfung zu erstellen.
 
-    ![Zugriffsüberprüfung – Steuerelemente](./media/create-access-review/controls.png)
+    ![Zugriffsüberprüfung – Steuerelemente](./media/create-access-review/access-reviews.png)
 
 1. Benennen Sie die Zugriffsüberprüfung. Wahlweise können Sie jeder Überprüfung eine Beschreibung hinzufügen. Den Prüfern werden Name und Beschreibung angezeigt.
 
@@ -51,7 +51,7 @@ In diesem Artikel wird die Erstellung einer oder mehrerer Zugriffsüberprüfunge
 
     ![Erstellen einer Zugriffsüberprüfung – Start- und Enddatum](./media/create-access-review/start-end-dates.png)
 
-1. Soll die Zugriffsüberprüfung wiederholt ausgeführt werden, ändern Sie die **Häufigkeit** von **Einmal** in **Wöchentlich**, **Monatlich**, **Vierteljährlich** oder **Jährlich**. Verwenden Sie den Schieberegler **Dauer** oder das Textfeld, um die Anzahl von Tagen anzugeben, an denen jeweils Eingaben der Prüfer in den einzelnen periodischen Überprüfungen in der Serie möglich sind. Für eine monatliche Überprüfung kann beispielsweise eine maximale Dauer von 27 Tagen angegeben werden, um Überschneidungen zu vermeiden.
+1. Wenn Sie eine Zugriffsüberprüfungsserie erstellen möchten, ändern Sie die Einstellung **Häufigkeit** von **Einmal** in **Wöchentlich**, **Monatlich**,  **Vierteljährlich** oder **Jährlich**. Verwenden Sie den Schieberegler oder das Textfeld **Dauer**, um festzulegen, wie viele Tage Prüfer Eingaben für jede Überprüfung der Serie vornehmen können. Für eine monatliche Überprüfung kann beispielsweise eine maximale Dauer von 27 Tagen angegeben werden, um Überschneidungen zu vermeiden.
 
 1. Geben Sie mithilfe der Einstellung **Ende** an, wie die wiederkehrende Zugriffsüberprüfungsreihe beendet werden soll. Die Reihe kann auf drei Arten enden: Die Serie wird unendlich ausgeführt, um Überprüfungen ohne zeitliche Beschränkung zu starten, die Serie wird bis zu einem bestimmten Datum ausgeführt, oder sie wird nach einer bestimmten Anzahl von Vorkommen beendet. Sie (oder ein anderer Benutzeradministrator oder globaler Administrator) können die Serie nach der Erstellung beenden, indem Sie unter **Einstellungen** das Datum ändern, sodass die Serie an diesem Datum endet.
 
@@ -59,7 +59,7 @@ In diesem Artikel wird die Erstellung einer oder mehrerer Zugriffsüberprüfunge
 
     ![Erstellen einer Zugriffsüberprüfung – Benutzer](./media/create-access-review/users.png)
 
-1. Wählen Sie im Abschnitt **Gruppen** eine oder mehrere Gruppen aus, deren Mitgliedschaft überprüft werden soll.
+1. Wählen Sie im Abschnitt **Gruppe** eine oder mehrere Gruppen aus, deren Mitgliedschaft überprüft werden soll.
 
     > [!NOTE]
     > Bei der Auswahl mehrerer Gruppen werden mehrere Zugriffsüberprüfungen erstellt. Bei der Auswahl von fünf Gruppen werden z. B. fünf separate Zugriffsüberprüfungen erstellt.
@@ -112,7 +112,9 @@ In diesem Artikel wird die Erstellung einer oder mehrerer Zugriffsüberprüfunge
 
 ## <a name="start-the-access-review"></a>Starten der Zugriffsüberprüfung
 
-Klicken Sie nach dem Festlegen der Einstellungen für eine Zugriffsüberprüfung auf **Starten**.
+Klicken Sie nach dem Festlegen der Einstellungen für eine Zugriffsüberprüfung auf **Starten**. Die Zugriffsüberprüfung wird in der Liste mit einer Angabe des Status angezeigt.
+
+![Liste mit den Zugriffsüberprüfungen](./media/create-access-review/access-reviews-list.png)
 
 Standardmäßig sendet Azure AD kurz nach dem Start der Überprüfung eine E-Mail an die Prüfer. Wenn Sie nicht möchten, dass Azure AD die E-Mail sendet, stellen Sie sicher, dass die Prüfer darüber in Kenntnis gesetzt werden, dass sie eine ausstehende Zugriffsüberprüfung abschließen müssen. Sie können ihnen die Anweisungen zum [Überprüfen des Zugriffs auf Gruppen oder Anwendungen](perform-access-review.md) anzeigen. Wenn Ihre Überprüfung für Gäste gedacht ist, die ihren eigenen Zugriff überprüfen sollen, können Sie ihnen die Anweisungen zum [Überprüfen des eigenen Zugriffs auf Gruppen oder Anwendungen ](review-your-access.md) anzeigen.
 
@@ -120,13 +122,15 @@ Wenn es sich bei einigen Prüfern um Gäste handelt: Gäste werden nur dann per 
 
 ## <a name="manage-the-access-review"></a>Verwalten der Zugriffsüberprüfung
 
-Sie können den Fortschritt der Überprüfungen durch die Prüfer im Azure AD-Dashboard im Abschnitt **Zugriffsüberprüfungen** nachverfolgen. Zugriffsrechte werden im Verzeichnis erst geändert, wenn die [Überprüfung abgeschlossen](complete-access-review.md) ist.
+Sie können den Fortschritt der Überprüfungen durch die Prüfer auf der Seite **Übersicht** der Zugriffsüberprüfung nachverfolgen. Zugriffsrechte werden im Verzeichnis erst geändert, wenn die [Überprüfung abgeschlossen](complete-access-review.md) ist.
+
+![Fortschritt der Zugriffsüberprüfungen](./media/create-access-review/overview-progress.png)
 
 Einmalige Überprüfung: Führen Sie nach Ablauf des Zugriffsüberprüfungszeitraums oder nach Beenden der Zugriffsüberprüfung durch den Administrator die Schritte unter [Durchführen einer Gruppen oder Anwendungen betreffenden Zugriffsüberprüfung](complete-access-review.md) aus, um die Ergebnisse anzuzeigen und anzuwenden.  
 
-Um eine Serie von Zugriffsüberprüfungen zu verwalten, navigieren Sie unter **Steuerelemente** zu der Zugriffsüberprüfung. Unter „Geplante Überprüfung“ finden Sie anstehende Überprüfungen. Hier können Sie das Enddatum bearbeiten oder Prüfer entsprechend hinzufügen/entfernen. 
+Um eine Serie von Zugriffsüberprüfungen zu verwalten, navigieren Sie zur Zugriffsüberprüfung. Dort finden Sie unter den geplanten Überprüfungen die anstehenden Überprüfungen, und Sie können das Enddatum bearbeiten oder Prüfer entsprechend hinzufügen/entfernen.
 
-Anhand Ihrer Auswahl unter „Einstellungen nach Abschluss“ wird nach dem Enddatum der Überprüfung oder bei manueller Beendigung der Überprüfung die automatische Anwendung ausgeführt. Der Status der Überprüfung ändert sich von „Abgeschlossen“ über Zwischenzustände wie „Wird angewandt“ bis zum Status „Angewandt“. Erwartungsgemäß sollten abgelehnte Benutzer (sofern vorhanden) innerhalb weniger Minuten aus der Gruppenmitgliedschaft oder Anwendungszuweisung entfernt werden.
+Basierend auf Ihrer Auswahl unter **Einstellungen nach Abschluss** wird nach dem Enddatum der Überprüfung oder bei manueller Beendigung der Überprüfung die automatische Anwendung ausgeführt. Der Status der Überprüfung ändert sich von **Abgeschlossen** über Zwischenzustände wie **Wird angewandt** schließlich in den Status **Angewandt**. Erwartungsgemäß sollten abgelehnte Benutzer (sofern vorhanden) innerhalb weniger Minuten aus der Gruppenmitgliedschaft oder Anwendungszuweisung entfernt werden.
 
 ## <a name="create-reviews-via-apis"></a>Erstellen von Überprüfungen über APIs
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: fd47b5de2226d88b6295cb28713db2a5d251e768
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 27db27d79a05f24461e63242c0395cfd81315432
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577245"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276410"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Verwalten von Protokolldaten und Arbeitsbereichen in Azure Monitor
 In Azure Monitor werden Protokolldaten in einem Log Analytics-Arbeitsbereich gespeichert, bei dem es sich im Wesentlichen um einen Container handelt, der Daten und Konfigurationsinformationen enthält. Zum Verwalten des Zugriffs auf Protokolldaten führen Sie verschiedene Verwaltungsaufgaben für Arbeitsbereiche durch. Sie oder andere Mitglieder Ihrer Organisation können mehrere Arbeitsbereiche nutzen, um unterschiedliche Mengen von Daten zu verwalten, die in Ihrer gesamten IT-Infrastruktur oder Teilen davon erfasst werden.
@@ -36,7 +36,7 @@ Zum Erstellen eines Log Analytics-Arbeitsbereichs benötigen Sie Folgendes:
 Weitere Informationen zum Erstellen eines Arbeitsbereichs finden Sie in den folgenden Artikeln:
 
 - [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../learn/quick-create-workspace.md)
-- [Erstellen eines Log Analytics-Arbeitsbereichs mit der Azure CLI 2.0](../learn/quick-create-workspace-cli.md)
+- [Erstellen eines Log Analytics-Arbeitsbereichs mit Azure CLI 2.0](../learn/quick-create-workspace-cli.md)
 - [Erstellen eines Log Analytics-Arbeitsbereichs mit Azure PowerShell](../learn/quick-create-workspace-posh.md)
 
 ## <a name="determine-the-number-of-workspaces-you-need"></a>Bestimmen der benötigten Anzahl von Arbeitsbereichen
@@ -102,7 +102,6 @@ Der _Zugriffsmodus_ bezieht sich darauf, wie ein Benutzer auf einen Log Analytic
 > - Service Fabric
 > - Application Insights
 > - Container
-> - Benutzerdefinierte Protokolle, die von der HTTP-Datensammler-API erstellt werden
 >
 > Sie können testen, ob Protokolle ordnungsgemäß ihrer Ressource zugeordnet wurden, indem Sie eine Abfrage ausführen und die Datensätze überprüfen, an denen Sie interessiert sind. Wenn sich die richtige Ressourcen-ID in der Eigenschaft [_ResourceId](log-standard-properties.md#_resourceid) befindet, stehen Daten für ressourcenbezogene Abfragen zur Verfügung.
 

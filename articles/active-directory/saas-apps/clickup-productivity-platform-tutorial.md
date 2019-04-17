@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: eababa0d83e1db4934fc8b2315e20407ccc77f27
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3244140999dc61560549db077d4c402b3986956b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57892947"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282643"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>Tutorial: Azure Active Directory-Integration mit ClickUp Productivity Platform
 
@@ -104,9 +104,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit ClickUp
 
     ![SSO-Informationen zur Domäne und zu den URLs für ClickUp Productivity Platform](common/sp-identifier.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** die URL wie folgt ein: `https://app.clickup.com/login/sso`.
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL ein: `https://app.clickup.com/login/sso`
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://api.clickup.com/v1/team/<team_id>/microsoft`.
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://api.clickup.com/v1/team/<team_id>/microsoft`
 
     > [!NOTE]
     > Der ID-Wert ist nicht der tatsächliche Wert. Ersetzen Sie den Wert durch den tatsächlichen Bezeichner. Dies wird später in diesem Tutorial beschrieben.
@@ -213,7 +213,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „ClickUp Productivity Platform“ k
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

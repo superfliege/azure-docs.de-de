@@ -58,7 +58,7 @@ Quelldatendateien werden in der Regel an einen Speicherort in Azure Storage oder
 
 [Azure Storage](https://azure.microsoft.com/services/storage/blobs/) hat [spezifische Saklierbarkeitsziele](../../storage/common/storage-scalability-targets.md).  Für die meisten analytische Knoten lässt sich Azure Storage am besten skalieren, wenn viele kleinere Dateien verarbeitet werden.  Azure Storage garantiert dieselbe Leistung, unabhängig von der Anzahl und Größe der Dateien (sofern Sie sich innerhalb Ihrer Grenzwerte bewegen).  Dies bedeutet, dass Sie Terabytes von Daten speichern können und immer noch eine konsistente Leistung erhalten, egal ob Sie eine Teilmenge der Daten oder alle Daten verwenden.
 
-Azure Storage verfügt über verschiedene Arten von Blobs.  Ein *Anfüge-Blob* ist eine großartige Möglichkeit zum Speichern von Webprotokollen oder Sensordaten.  
+Azure Storage verfügt über verschiedene Arten von Blobs.  Ein *Anfügeblob* ist eine großartige Möglichkeit zum Speichern von Webprotokollen oder Sensordaten.  
 
 Mehrere Blobs können über mehrere Server verteilt werden, um den Zugriff darauf horizontal hochzuskalieren, aber ein einzelnes Blob kann nur von einem einzelnen Server bedient werden. Blobs können zwar logisch in Blob-Containern zusammengefasst werden, allerdings wirkt sich dies nicht auf die Partitionierung einer solchen Gruppierung aus.
 

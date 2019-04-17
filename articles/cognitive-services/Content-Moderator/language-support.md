@@ -41,7 +41,7 @@ ms.locfileid: "58102702"
 | Dhivehi | Bosnisch (kyrillisch) | Ungarisch      | Portugiesisch | |
 | Niederländisch | Bosnisch (lateinisch) | Italienisch             | Rumänisch | |
 | Englisch | (Kreolisch) | Bretonisch [nicht geopolitisch] | Japanisch  | Russisch |
-| Farsi | Bulgarisch | Koreanisch                        | Slowakisch | |
+| Persisch/Dari | Bulgarisch | Koreanisch                        | Slowakisch | |
 | Französisch | Katalanisch | Norwegisch                        | Spanisch ||
 | Deutsch | Zentralkurdisch | Polnisch        | Türkisch | |
 | Griechisch | Cherokee | Portugiesisch | | |

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 12/11/2018
 ms.author: mjbrown
-ms.openlocfilehash: 9f890a8468eaa22fbfce326fc16afe545fd515d6
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: c94509fb39d1c5ebb9aec1acfe1cbacc9cd6fd4a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339311"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268409"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Schreiben von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen in Azure Cosmos DB
 
@@ -279,7 +279,7 @@ function updateMetadataCallback(err, items, responseOptions) {
 }
 ```
 
-Ein wichtiger Aspekt, den es zu beachten gilt, ist die transaktionale Ausführung von Triggern in Azure Cosmos DB. Dieser nachgestellte Trigger wird im Rahmen derselben Transaktion ausgeführt, die vom Azure Cosmos DB-Element „create“ verwendet wird. Daher gilt Folgendes: Wenn während der Ausführung des nachgestellten Triggers eine Ausnahme ausgelöst wird – wenn z.B. das Metadatenelement nicht aktualisiert werden kann –, tritt für die gesamte Transaktion ein Fehler auf, und es wird ein Rollback ausgeführt. Das Azure Cosmos DB-Element wird erstellt, und es wird eine Ausnahme zurückgegeben.
+Ein wichtiger Aspekt, den es zu beachten gilt, ist die transaktionale Ausführung von Triggern in Azure Cosmos DB. Der nachgestellte Trigger wird im Rahmen der gleichen Transaktion für das zugrunde liegende Element ausgeführt. Tritt während der Ausführung des nachgestellten Triggers eine Ausnahme auf, ist die gesamte Transaktion nicht erfolgreich. Sämtliche Commits werden rückgängig gemacht, und eine Ausnahme wird zurückgegeben.
 
 Beispiele für das Registrieren und Aufrufen eines vorangestellten Triggers finden Sie in den Artikeln [Vorangestellte Trigger](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) und [Nachgestellte Trigger](how-to-use-stored-procedures-triggers-udfs.md#post-triggers). 
 
@@ -320,8 +320,8 @@ Lernen Sie weitere Konzepte und Vorgehensweisen zum Schreiben und Verwenden von 
 
 * [Registrieren und Verwenden von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen in Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md)
 
-* [Schreiben von gespeicherten Prozeduren und Triggern mit der JavaScript-Abfrage-API in Azure Cosmos DB](how-to-write-javascript-query-api.md)
+* [Schreiben von gespeicherten Prozeduren und Triggern mit der JavaScript-Abfrage-API in Azure Cosmos DB](how-to-write-javascript-query-api.md)
 
-* [Arbeiten mit gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen in Azure Cosmos DB](stored-procedures-triggers-udfs.md)
+* [Arbeiten mit gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen in Azure Cosmos DB](stored-procedures-triggers-udfs.md)
 
-* [Arbeiten mit der in die JavaScript-Sprache integrierten Abfrage-API in Azure Cosmos DB](javascript-query-api.md)
+* [Arbeiten mit der in die JavaScript-Sprache integrierten Abfrage-API in Azure Cosmos DB](javascript-query-api.md)

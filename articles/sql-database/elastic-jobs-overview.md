@@ -12,12 +12,12 @@ ms.author: srinia
 ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: aa4fff24620ffd74393d549f1888bdf0e1cb0224
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 62efee57f3663f1dad0446da659de16d2800bf75
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773578"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264419"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>Erstellen, Konfigurieren und Verwalten von Aufträgen für die elastische Datenbank
 
@@ -76,6 +76,8 @@ Die Vorschauversion ist aktuell auf 100 gleichzeitige Aufträge beschränkt.
 
 Die Anzahl von Datenbanken, für die ein Auftrag gleichzeitig ausgeführt werden kann, kann beschränkt werden, um sicherzustellen, dass es beim Ausführen von Aufträgen für Datenbanken in einem elastischen SQL-Pool nicht zu einer Überlastung der Ressourcen kommt.
 
+Legen Sie die Anzahl der gleichzeitigen Datenbanken, in denen ein Auftrag ausgeführt wird, mit dem Parameter `@max_parallelism` der gespeicherten Prozedur `sp_add_jobstep` in T-SQL oder mit `Add-AzSqlElasticJobStep -MaxParallelism` in PowerShell fest.
+
 ## <a name="best-practices-for-creating-jobs"></a>Best Practices für die Auftragserstellung
 
 ### <a name="idempotent-scripts"></a>Idempotente Skripts
@@ -97,4 +99,4 @@ Analog dazu muss auch ein Skript erfolgreich ausgeführt werden können, indem l
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erstellen und Verwalten von elastischen Aufträgen mithilfe von PowerShell](elastic-jobs-powershell.md)
-- [Erstellen und Verwalten von Aufträgen für die elastische Datenbank mithilfe von Transact-SQL (T-SQL)](elastic-jobs-tsql.md)
+- [Erstellen und Verwalten von elastischen Aufträgen mithilfe von Transact-SQL (T-SQL)](elastic-jobs-tsql.md)

@@ -10,17 +10,20 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 03/05/2019
-ms.openlocfilehash: 38a59a3a390977c5a3fd22b185542f5f2ec33d79
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/09/2019
+ms.openlocfilehash: a822e540db87c36358f1a0e34d75e05ed866868d
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091493"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471238"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>Bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen zu Azure SQL-Datenbank
 
 Im Folgenden werden bekannte Probleme und Einschränkungen in Bezug auf Onlinemigrationen von SQL Server zu Azure SQL-Datenbank beschrieben.
+
+> [!IMPORTANT]
+> Bei Onlinemigrationen von SQL Server zu Azure SQL-Datenbank wird die Migration von SQL_variant-Datentypen nicht unterstützt.
 
 ### <a name="migration-of-temporal-tables-not-supported"></a>Migration von temporalen Tabellen wird nicht unterstützt
 
@@ -62,17 +65,20 @@ Möglicherweise wird während des Vorgangs „Full data load“ (Vollständiger 
       select object_name(object_id) 'Table name' from sys.columns where system_type_id =240 and object_id in (select object_id from sys.objects where type='U')
       ``` 
 
-   1. Schließen Sie diese Tabellen auf dem Blatt **Migrationseinstellungen konfigurieren**, auf dem Sie die Tabellen für die Migration angeben, aus.
+2. Schließen Sie diese Tabellen auf dem Blatt **Migrationseinstellungen konfigurieren**, auf dem Sie die Tabellen für die Migration angeben, aus.
 
-   1. Führen Sie die Migrationsaktivität erneut aus.
+3. Führen Sie die Migrationsaktivität erneut aus.
 
 ### <a name="migration-failures-with-various-integrity-violations-with-active-triggers-in-the-schema-during-full-data-load-or-incremental-data-sync"></a>Migrationsfehler mit verschiedenen Integritätsverletzungen bei aktiven Triggern im Schema während „Full data load“ (Vollständiger Datenladevorgang) oder „Inkrementelle Datensynchronisierung“
 
 **Problemumgehung**
+
 1. Suchen Sie mithilfe der folgenden Abfrage die Trigger, die derzeit in der Quelldatenbank aktiv sind:
+
      ```
      select * from sys.triggers where is_disabled =0
      ```
+
 2. Deaktivieren Sie mit den im Artikel [DISABLE TRIGGER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017) angegebenen Schritten die Trigger in der Quelldatenbank.
 
 3. Führen Sie die Migrationsaktivität erneut aus.
@@ -101,7 +107,7 @@ In DMS wird der Zeitstempelwert der Quelle nicht migriert, stattdessen wird in d
 
 Wenn DMS den genauen in der Quelltabelle gespeicherten Zeitstempelwert migrieren soll, wenden Sie sich unter [Fragen zur Azure-Datenbankmigration](mailto:AskAzureDatabaseMigrations@service.microsoft.com) an das Entwicklerteam.
 
-### <a name="data-migration-errors-do-not-provide-additional-details-on-the-database-detailed-status-blade"></a>Für Fehler bei der Datenmigration werden keine zusätzlichen Details auf dem Blatt mit dem detaillierten Status der Datenbank angegeben.
+### <a name="data-migration-errors-dont-provide-additional-details-on-the-database-detailed-status-blade"></a>Für Fehler bei der Datenmigration werden keine zusätzlichen Details auf dem Blatt mit dem detaillierten Status der Datenbank angegeben.
 
 **Symptom**
 

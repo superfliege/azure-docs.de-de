@@ -8,17 +8,17 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 2348b4293b8726c406b1f06b2f88c37dfb00e80c
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 86f29f07df6174ecead852fada73ac05f8682fca
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447753"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359982"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>Schnellstart: Verwenden von SQL Server Management Studio zum Herstellen der Verbindung mit einer Instanz von Azure SQL-Datenbank und deren Abfrage
 
@@ -31,7 +31,7 @@ In dieser Schnellstartanleitung verwenden Sie [SQL Server Management Studio][ssm
   || Einzeldatenbank | Verwaltete Instanz |
   |:--- |:--- |:---|
   | Erstellen| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
-  || [BEFEHLSZEILENSCHNITTSTELLE (CLI)](scripts/sql-database-create-and-configure-database-cli.md) | [BEFEHLSZEILENSCHNITTSTELLE (CLI)](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
+  || [Befehlszeilenschnittstelle (CLI)](scripts/sql-database-create-and-configure-database-cli.md) | [Befehlszeilenschnittstelle (CLI)](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Konfigurieren | [IP-Firewallregel auf Serverebene](sql-database-server-level-firewall-rule.md)| [Verbindung von einem virtuellen Computer](sql-database-managed-instance-configure-vm.md)|
   |||[Verbindung von einer lokalen Ressource](sql-database-managed-instance-configure-p2s.md)
@@ -44,7 +44,7 @@ In dieser Schnellstartanleitung verwenden Sie [SQL Server Management Studio][ssm
 
 ## <a name="install-the-latest-ssms"></a>Installieren der neuesten Version von SSMS
 
-Bevor Sie beginnen, stellen Sie sicher, dass Sie die neueste Version von [SSMS][ssms-install-latest-84g] installiert haben. 
+Bevor Sie beginnen, stellen Sie sicher, dass Sie die neueste Version von [SSMS][ssms-install-latest-84g] installiert haben.
 
 ## <a name="get-sql-server-connection-information"></a>Abrufen von SQL Server-Verbindungsinformationen
 
@@ -58,7 +58,7 @@ Rufen Sie die Verbindungsinformationen ab, die Sie zum Herstellen einer Verbindu
 
 ## <a name="connect-to-your-database"></a>Verbinden mit der Datenbank
 
-Stellen Sie in SMSS eine Verbindung mit Ihrer Azure SQL-Datenbankserverinstanz her. 
+Stellen Sie in SMSS eine Verbindung mit Ihrer Azure SQL-Datenbankserverinstanz her.
 
 > [!IMPORTANT]
 > Ein Azure SQL-Datenbankserver lauscht am Port 1433. Um hinter einer Unternehmensfirewall eine Verbindung mit einem SQL-Datenbankserver herzustellen, muss dieser Port in der Firewall geöffnet sein.
@@ -68,11 +68,11 @@ Stellen Sie in SMSS eine Verbindung mit Ihrer Azure SQL-Datenbankserverinstanz h
 
 2. Geben Sie Folgendes ein:
 
-   | Einstellung      | Empfohlener Wert    | BESCHREIBUNG | 
-   | ------------ | ------------------ | ----------- | 
+   | Einstellung      | Empfohlener Wert    | BESCHREIBUNG |
+   | ------------ | ------------------ | ----------- |
    | **Servertyp** | Datenbank-Engine | Erforderlicher Wert. |
    | **Servername** | Der vollqualifizierte Servername | Der Name sollte etwa wie folgt lauten: **mynewserver20170313.database.windows.net**. |
-   | **Authentifizierung** | SQL Server-Authentifizierung | In diesem Tutorial wird SQL-Authentifizierung verwendet. |
+   | **Authentication** | SQL Server-Authentifizierung | In diesem Tutorial wird SQL-Authentifizierung verwendet. |
    | **Anmeldung** | Benutzer-ID des Serveradministratorkontos | Die Benutzer-ID des Serveradministratorkontos, das zum Erstellen des Servers verwendet wird. |
    | **Kennwort** | Kennwort des Serveradministratorkontos | Das zum Erstellen des Servers verwendete Kennwort des Serveradministratorkontos. |
    ||||
@@ -83,7 +83,7 @@ Stellen Sie in SMSS eine Verbindung mit Ihrer Azure SQL-Datenbankserverinstanz h
 
    ![Herstellen einer Verbindung mit der Datenbank auf dem Server](./media/sql-database-connect-query-ssms/options-connect-to-db.png)  
 
-4. Wählen Sie **Verbinden**aus. Die Objekt-Explorer-Fenster wird geöffnet. 
+4. Wählen Sie **Verbinden**aus. Die Objekt-Explorer-Fenster wird geöffnet.
 
 5. Erweitern Sie zum Anzeigen der Objekte der Datenbank **Datenbanken** und dann **mySampleDatabase**.
 
@@ -140,15 +140,14 @@ Führen Sie diesen [INSERT](https://msdn.microsoft.com/library/ms174335.aspx)-Tr
 1. Ersetzen Sie die vorherige Abfrage durch diese.
 
    ```sql
-   SELECT * FROM [SalesLT].[Product] 
-   WHERE Name='myNewProduct' 
+   SELECT * FROM [SalesLT].[Product]
+   WHERE Name='myNewProduct'
    ```
-   
-2. Wählen Sie **Execute**(Ausführen). Das folgende Ergebnis wird angezeigt: 
+
+2. Wählen Sie **Execute**(Ausführen). Das folgende Ergebnis wird angezeigt:
 
    ![result](./media/sql-database-connect-query-ssms/result.png)
 
- 
 ## <a name="update-data"></a>Aktualisieren von Daten
 
 Führen Sie diesen [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx)-Transact-SQL-Code aus, um Ihr neues Produkt zu ändern.
@@ -188,8 +187,6 @@ Führen Sie diesen [DELETE](https://msdn.microsoft.com/library/ms189835.aspx)-Tr
 - Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Python finden Sie unter [Verbinden und Abfragen mit Python](sql-database-connect-query-python.md).
 - Informationen zum Herstellen einer Verbindung und Senden von Abfragen mit Ruby finden Sie unter [Verbinden und Abfragen mit Ruby](sql-database-connect-query-ruby.md).
 
-
 <!-- Article link references. -->
 
 [ssms-install-latest-84g]: https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms
-

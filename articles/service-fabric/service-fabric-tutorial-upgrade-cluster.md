@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/28/2017
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: a3c75d98bda89a4330f064ce944f8b08bbf4734d
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 7e48684024d370d64f44b55cb4df0efb8f16cd3b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58659557"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046239"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>Tutorial: Upgraden der Runtime eines Service Fabric-Clusters in Azure
 
@@ -45,12 +45,15 @@ In dieser Tutorialserie lernen Sie Folgendes:
 > * Aktualisieren der Runtime eines Service Fabric-Clusters
 > * [Löschen eines Clusters](service-fabric-tutorial-delete-cluster.md)
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 
 * Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Installieren Sie das [Azure PowerShell-Modul Version 4.1 oder höher](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) oder [Azure CLI](/cli/azure/install-azure-cli).
+* Installieren Sie [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) oder die [Azure CLI](/cli/azure/install-azure-cli).
 * Erstellen eines sicheren [Windows-Clusters](service-fabric-tutorial-create-vnet-and-windows-cluster.md) in Azure
 * Einrichten einer Windows-Entwicklungsumgebung Installieren Sie [Visual Studio 2017](https://www.visualstudio.com) und die Workloads für **Azure-Entwicklung**, **ASP.NET und Webentwicklung** und **Plattformübergreifende .NET Core-Entwicklung**.  Richten Sie dann eine [.NET-Entwicklungsumgebung](service-fabric-get-started.md) ein.
 
@@ -59,9 +62,9 @@ Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 Melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie Ihr Abonnement aus, bevor Sie Azure-Befehle ausführen.
 
 ```powershell
-Connect-AzureRmAccount
-Get-AzureRmSubscription
-Set-AzureRmContext -SubscriptionId <guid>
+Connect-AzAccount
+Get-AzSubscription
+Set-AzContext -SubscriptionId <guid>
 ```
 
 ## <a name="get-the-runtime-version"></a>Abrufen der Runtimeversion
@@ -69,14 +72,14 @@ Set-AzureRmContext -SubscriptionId <guid>
 Nachdem Sie eine Verbindung mit Azure hergestellt und das Abonnement mit dem Service Fabric-Cluster ausgewählt haben, können Sie die Runtimeversion des Clusters abrufen.
 
 ```powershell
-Get-AzureRmServiceFabricCluster -ResourceGroupName SFCLUSTERTUTORIALGROUP -Name aztestcluster `
+Get-AzServiceFabricCluster -ResourceGroupName SFCLUSTERTUTORIALGROUP -Name aztestcluster `
     | Select-Object ClusterCodeVersion
 ```
 
 Sie können auch einfach folgendermaßen eine Liste aller Cluster in Ihrem Abonnement abrufen:
 
 ```powershell
-Get-AzureRmServiceFabricCluster | Select-Object Name, ClusterCodeVersion
+Get-AzServiceFabricCluster | Select-Object Name, ClusterCodeVersion
 ```
 
 Notieren Sie den Wert **ClusterCodeVersion**. Dieser Wert wird im nächsten Abschnitt verwendet.
@@ -92,7 +95,7 @@ Get-ServiceFabricRuntimeUpgradeVersion -BaseVersion "5.7.198.9494"
 Mit einer Liste von Versionen können Sie den Azure Service Fabric-Cluster anweisen, ein Upgrade auf eine neuere Runtime durchzuführen. Wenn beispielsweise Version `6.0.219.9494` für ein Upgrade verfügbar ist, verwenden Sie den folgenden Befehl zum Aktualisieren des Clusters.
 
 ```powershell
-Set-AzureRmServiceFabricUpgradeType -ResourceGroupName SFCLUSTERTUTORIALGROUP `
+Set-AzServiceFabricUpgradeType -ResourceGroupName SFCLUSTERTUTORIALGROUP `
                                     -Name aztestcluster `
                                     -UpgradeMode Manual `
                                     -Version "6.0.219.9494"
@@ -200,6 +203,11 @@ sfctl cluster upgrade-status
 In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
+> * Abrufen der Version der Clusterruntime
+> * Aktualisieren der Clusterruntime
+> * Überwachen des Upgrades
+
+[!div class="checklist"]
 > * Abrufen der Version der Clusterruntime
 > * Aktualisieren der Clusterruntime
 > * Überwachen des Upgrades

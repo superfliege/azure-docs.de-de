@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 52e227b933533bf60a474d0417c57e4b75c7978f
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: b78fb7d697f8a72b3c2f99c4509ea6ac5c5e5566
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224633"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281181"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Herunterladen oder Anzeigen Ihrer Azure-Rechnungen und täglichen Nutzungsdaten
 
@@ -38,7 +38,7 @@ Wenn Sie über eine Microsoft-Kundenvereinbarung verfügen, müssen Sie über di
 
 Für die meisten Abonnements können Sie die Rechnung aus dem Azure-Portal herunterladen. Wenn Sie eine Microsoft-Kundenvereinbarung abgeschlossen haben, finden Sie weitere Informationen unter „Herunterladen von Rechnungen für ein Abrechnungsprofil“.
 
-### <a name="download-invoices-for-an-individual-subscription"></a>Herunterladen von Rechnungen für ein Abrechnungsprofil
+### <a name="download-invoices-for-an-individual-subscription"></a>Herunterladen von Rechnungen für ein einzelnes Abonnement
 
 1. Wählen Sie im Azure-Portal auf der Seite [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) Ihr Abonnement als [Benutzer mit Zugriff auf Rechnungen](billing-manage-access.md) aus.
 
@@ -74,7 +74,7 @@ Mehrere Gründe können dafür ausschlaggebend sein, dass Sie keine Rechnung seh
 
 - Die Rechnung ist nicht noch erstellt. Warten Sie bis zum Ende des Abrechnungszeitraums.
 
-- Sie haben keine Berechtigung zur Ansicht von Rechnungen. Wenn Sie über eine Microsoft-Kundenvereinbarung verfügen, müssen Sie die Rolle „Besitzer des Abrechnungsprofils“, „Mitwirkender am Abrechnungsprofil“, „Benutzer mit Leseberechtigung für das Abrechnungsprofil“ oder „Rechnungs-Manager“ besitzen. Für andere Abonnements werden ältere Rechnungen nur angezeigt, wenn Sie der Kontoadministrator sind. Weitere Informationen zum Zugriff auf Abrechnungsinformationen finden Sie unter [Verwalten des Zugriffs auf die Azure-Abrechnung mithilfe von Rollen](billing-manage-access.md).
+- Sie haben keine Berechtigung zur Ansicht von Rechnungen. Wenn Sie über eine Microsoft-Kundenvereinbarung verfügen, müssen Sie eine der Rollen „Besitzer des Abrechnungsprofils“, „Mitwirkender am Abrechnungsprofil“, „Benutzer mit Leseberechtigung für das Abrechnungsprofil“ oder „Rechnungs-Manager“ besitzen. Für andere Abonnements werden ältere Rechnungen nur angezeigt, wenn Sie der Kontoadministrator sind. Weitere Informationen zum Zugriff auf Abrechnungsinformationen finden Sie unter [Verwalten des Zugriffs auf die Azure-Abrechnung mithilfe von Rollen](billing-manage-access.md).
 
 - Wenn Sie eine kostenlose Testversion oder nicht überschrittene eine monatliche Gutschrift für Ihr Abonnement verwenden, erhalten Sie nur eine Rechnung, wenn Sie eine Microsoft-Kundenvereinbarung abgeschlossen haben.
 
@@ -189,21 +189,21 @@ Sie können ebenfalls die Monat-bis-Datum-Nutzung für den aktuellen Abrechnungs
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
 
-Wenn Sie Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Lesen Sie die folgenden Artikel, um mehr über Ihre Rechnung und Gebühren zu erfahren:
 
 - [Informationen zu Ihrer Rechnung für Microsoft Azure](billing-understand-your-bill.md)
-- [Grundlegendes zu den Benennungen in Ihrer Azure-Rechnung](billing-understand-your-invoice.md)
+- [Grundlegendes über Benennungen in Ihrer Azure-Rechnung](billing-understand-your-invoice.md)
 - [Grundlegendes über Benennungen zu den Gebühren in der Datei mit ausführlichen Nutzungsdaten zu Microsoft Azure](billing-understand-your-usage.md)
-- [Anzeigen der Azure Enterprise Agreement-Preise für Ihre Organisation](billing-ea-pricing.md)
+- [Anzeigen der Azure-Preise für Ihre Organisation](billing-ea-pricing.md)
 
 Wenn Sie eine Microsoft-Kundenvereinbarung abgeschlossen haben, lesen Sie die folgenden Artikel:
 
-- [Understand the charges on the invoice for your billing profile (Grundlegendes zu den Gebühren auf der Rechnung für Ihr Abrechnungsprofil)](billing-mca-understand-your-bill.md)
-- [Understand terms on the invoice for your billing profile (Grundlegendes zu den Benennungen auf der Rechnung für Ihr Abrechnungsprofil)](billing-mca-understand-your-invoice.md)
-- [Understand the Azure usage and charges file for your billing profile (Grundlegendes zur CSV-Datei für die Azure-Nutzung und -Gebühren für Ihr Abrechnungsprofil)](billing-mca-understand-your-usage.md)
-- [View and download tax documents for your billing profile (Anzeigen und Herunterladen von Steuerdokumenten für Ihr Abrechnungsprofil)](billing-mca-download-tax-document.md)
-- [Anzeigen der Azure Enterprise Agreement-Preise für Ihre Organisation](billing-ea-pricing.md)
+- [Grundlegendes zu den Gebühren auf der Rechnung für Ihr Abrechnungsprofil](billing-mca-understand-your-bill.md)
+- [Grundlegendes zu den Benennungen auf der Rechnung für Ihr Abrechnungsprofil](billing-mca-understand-your-invoice.md)
+- [Grundlegendes zur CSV-Datei für die Azure-Nutzung und -Gebühren für Ihr Abrechnungsprofil](billing-mca-understand-your-usage.md)
+- [Anzeigen und Herunterladen von Steuerdokumenten für Ihr Abrechnungsprofil](billing-mca-download-tax-document.md)
+- [Anzeigen der Azure-Preise für Ihre Organisation](billing-ea-pricing.md)

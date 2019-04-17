@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 03/27/2019
 ms.author: asmalser
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f35de1865f2e02331b8455bbdce92e8fe2f9a1b6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a763b2516f88e8c92efc321db50dc15881f54c9b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210474"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265633"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Asana für die automatische Benutzerbereitstellung
 
@@ -32,16 +32,16 @@ Dieses Tutorial zeigt Ihnen die Schritte, die Sie in Asana und Azure Active Dire
 
 Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
-*   Einen Azure AD-Mandanten
-*   Einen Asana-Mandanten, für den mindestens der [Enterprise](https://www.asana.com/pricing)-Tarif aktiviert ist 
-*   Ein Benutzerkonto in Asana mit Administratorrechten 
+* Einen Azure AD-Mandanten
+* Einen Asana-Mandanten, für den mindestens der [Enterprise](https://www.asana.com/pricing)-Tarif aktiviert ist
+* Ein Benutzerkonto in Asana mit Administratorrechten
 
-> [!NOTE] 
+> [!NOTE]
 > Die Azure AD-Bereitstellungsintegration basiert auf der [Asana-API](https://asana.com/developers/api-reference/users), die für Asana verfügbar ist.
 
 ## <a name="assign-users-to-asana"></a>Zuweisen von Benutzern zu Asana
 
-Azure AD ermittelt anhand von Zuweisungen, welche Benutzer Zugriff auf ausgewählte Apps erhalten sollen. Im Kontext der automatischen Bereitstellung von Benutzerkonten werden nur die Benutzer synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden. 
+Azure AD ermittelt anhand von *Zuweisungen*, welche Benutzer Zugriff auf ausgewählte Apps erhalten sollen. Im Kontext der automatischen Bereitstellung von Benutzerkonten werden nur die Benutzer synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
 
 Vor dem Konfigurieren und Aktivieren des Bereitstellungsdiensts müssen Sie entscheiden, welche Benutzer in Azure AD Zugriff auf Ihre Asana-App benötigen. Anschließend können Sie diese Benutzer Ihrer Asana-App zuweisen, indem Sie die folgenden Anweisungen befolgen:
 
@@ -51,7 +51,7 @@ Vor dem Konfigurieren und Aktivieren des Bereitstellungsdiensts müssen Sie ents
 
 Es wird empfohlen, Asana einen einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der Bereitstellung zu testen. Später können weitere Benutzer zugewiesen werden.
 
-## <a name="configure-user-provisioning-to-asana"></a>Konfigurieren der Benutzerbereitstellung in Asana 
+## <a name="configure-user-provisioning-to-asana"></a>Konfigurieren der Benutzerbereitstellung in Asana
 
 Dieser Abschnitt führt Sie durch das Verbinden Ihres Azure AD mit der Asana-API zum Bereitstellen von Benutzerkonten. Außerdem erfahren Sie, wie Sie den Bereitstellungsdienst zum Erstellen, Aktualisieren und Deaktivieren zugewiesener Benutzerkonten in Asana auf der Grundlage von Benutzerzuweisungen in Azure AD konfigurieren.
 
@@ -86,7 +86,7 @@ Dieser Abschnitt führt Sie durch das Verbinden Ihres Azure AD mit der Asana-API
 
 1. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll. Aktivieren Sie dann das darunter befindliche Kontrollkästchen.
 
-1. Wählen Sie **Speichern** aus. 
+1. Wählen Sie **Speichern** aus.
 
 1. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Asana synchronisieren**.
 
@@ -94,7 +94,7 @@ Dieser Abschnitt führt Sie durch das Verbinden Ihres Azure AD mit der Asana-API
 
 1. Um den Azure AD-Bereitstellungsdienst für Asana zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
-1. Wählen Sie **Speichern** aus. 
+1. Wählen Sie **Speichern** aus.
 
 Dadurch wird die Erstsynchronisierung aller Benutzer gestartet, die Asana im Abschnitt **Benutzer** zugewiesen sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird. Überwachen Sie anhand des Abschnitts **Synchronisierungsdetails** den Fortschritt, und navigieren Sie über Links zu Protokollen zur Bereitstellungsaktivität. In den Überwachungsprotokollen werden sämtliche Aktionen beschrieben, die vom Bereitstellungsdienst für Ihre Asana-App ausgeführt werden.
 
@@ -102,6 +102,6 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Konfigurieren von einmaligem Anmelden](asana-tutorial.md)
+* [Einmaliges Anmelden konfigurieren](asana-tutorial.md)

@@ -1,19 +1,18 @@
 ---
-title: Skalieren von Azure-Daten-Explorer-Clustern zur Anpassung an sich änderndem Bedarf
+title: Horizontales Hochskalieren eines Azure Data Explorer-Clusters
 description: Dieser Artikel beschreibt Schritte zum horizontalen Hoch- und Herunterskalieren eines Azure Data Explorer-Clusters basierend auf sich änderndem Bedarf.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-services: data-explorer
 ms.topic: conceptual
-ms.date: 02/18/2019
-ms.openlocfilehash: 9b54bf182f23eceb47c392059ff52c04bf0a8aed
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.date: 04/05/2019
+ms.openlocfilehash: 24bbddd28943adc929fbaea456eeae8165db290c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755069"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261597"
 ---
 # <a name="manage-cluster-scale-out-to-accommodate-changing-demand"></a>Verwalten der Clusterskalierung bei sich änderndem Bedarf
 
@@ -23,21 +22,23 @@ Ein besserer Ansatz ist die *Skalierung* eines Clusters, wobei je nach Bedarf Ka
 
 In diesem Artikel wird veranschaulicht, wie Sie die horizontale Skalierung eines Clusters verwalten, die auch als Autoskalierung bezeichnet wird. Die automatische Skalierung ermöglicht Ihnen das horizontale Skalieren der Instanzenanzahl basierend auf vordefinierten Regeln und Zeitplänen. Sie legen die Autoskalierungseinstellungen für Ihren Cluster im Azure-Portal fest, wie in diesem Artikel beschrieben.
 
-Zum Custer wechseln Wählen Sie unter **Einstellungen** die Option **Horizontal hochskalieren** aus. Wählen Sie unter **Konfigurieren** die Option **Automatische Skalierung aktivieren** aus.
+## <a name="steps-to-configure-autoscale"></a>Schritte zum Konfigurieren der Autoskalierung
 
-![Aktivieren der automatischen Skalierung](media/manage-cluster-scaling/enable-autoscale.png)
+Navigieren Sie im Azure-Portal zu Ihrer Data Explorer-Clusterressource. Wählen Sie unter der Überschrift **Einstellungen** die Option **Horizontal hochskalieren** aus. Wählen Sie auf der Registerkarte **Konfigurieren** die Option **Autoskalierung aktivieren** aus.
 
-Die folgende Grafik zeigt die Abfolge der nächsten Schritte. Weitere Details finden Sie unterhalb der Grafik.
+   ![Aktivieren der automatischen Skalierung](media/manage-cluster-scaling/enable-autoscale.png)
 
-![Skalierungsregel](media/manage-cluster-scaling/scale-rule.png)
+Die folgende Grafik zeigt die Abfolge der nächsten Schritte. Weitere Details finden Sie in der Grafik.
 
-1. Geben Sie im Feld **Name der Einstellung für die Autoskalierung** einen Namen ein, z. B. *Horizontale Skalierung: Cacheauslastung*.
+1. Geben Sie im Feld **Name der Einstellung für die Autoskalierung** einen Namen ein, z. B. *Horizontale Skalierung: Cacheauslastung*. 
 
-1. Wählen Sie unter **Skalierungsmodus** die Option **Basierend auf einer Metrik skalieren** aus. Dieser Modus ermöglicht die dynamische Skalierung. Sie können auch **Auf eine bestimmte Anzahl von Instanzen skalieren** auswählen.
+   ![Skalierungsregel](media/manage-cluster-scaling/scale-rule.png)
 
-1. Wählen Sie **+ Regel hinzufügen** aus.
+2. Wählen Sie unter **Skalierungsmodus** die Option **Basierend auf einer Metrik skalieren** aus. Dieser Modus ermöglicht die dynamische Skalierung. Sie können auch **Auf eine bestimmte Anzahl von Instanzen skalieren** auswählen.
 
-1. Geben Sie im Abschnitt **Skalierungsregel** auf der rechten Seite Werte für jede Einstellung an.
+3. Wählen Sie **+ Regel hinzufügen** aus.
+
+4. Geben Sie im Abschnitt **Skalierungsregel** auf der rechten Seite Werte für jede Einstellung an.
 
     **Kriterien**
 
@@ -56,25 +57,29 @@ Die folgende Grafik zeigt die Abfolge der nächsten Schritte. Weitere Details fi
     | Einstellung | Beschreibung und Wert |
     | --- | --- |
     | **Vorgang** | Wählen Sie die entsprechende Option zum horizontalen Hoch- oder Herunterskalieren aus. |
-    | **Anzahl der Instanzen** | Wählen Sie die Anzahl von Knoten oder Instanzen aus, die hinzugefügt oder entfernt werden sollen, wenn eine Metrikbedingung erfüllt ist. |
+    | **Anzahl von Instanzen** | Wählen Sie die Anzahl von Knoten oder Instanzen aus, die hinzugefügt oder entfernt werden sollen, wenn eine Metrikbedingung erfüllt ist. |
     | **Abkühlen (Minuten)** | Wählen Sie ein geeignetes Intervall für die Zeit zwischen den einzelnen Skalierungsvorgängen. Beginnen Sie mit dem Standardwert von 5 Minuten. |
     |  |  |
 
-1. Wählen Sie **Hinzufügen**.
+5. Wählen Sie **Hinzufügen**.
 
-1. Geben Sie im Abschnitt **Instanzgrenzwerte** auf der linken Seite Werte für jede Einstellung an.
+6. Geben Sie im Abschnitt **Instanzgrenzwerte** auf der linken Seite Werte für jede Einstellung an.
 
     | Einstellung | Beschreibung und Wert |
     | --- | --- |
-    | **Mindestanforderungen** | Die Anzahl der Instanzen, unter die Ihr Cluster unabhängig von der Auslastung nicht herunterskaliert wird. |
+    | **Minimum** | Die Anzahl der Instanzen, unter die Ihr Cluster unabhängig von der Auslastung nicht herunterskaliert wird. |
     | **Maximum** | Die Anzahl der Instanzen, über die Ihr Cluster unabhängig von der Auslastung nicht hochskaliert wird. |
     | **Standard** | Die Standardanzahl von Instanzen. Diese Einstellung wird verwendet, wenn Probleme beim Lesen der Ressourcenmetriken auftreten. |
     |  |  |
 
-1. Wählen Sie **Speichern** aus.
+7. Wählen Sie **Speichern** aus.
 
 Sie haben nun einen horizontalen Skalierungsvorgang für Ihren Azure-Daten-Explorer-Cluster konfiguriert. Fügen Sie eine weitere Regel für einen Vorgang zum horizontalen Herunterskalieren hinzu. Mit dieser Konfiguration kann Ihr Cluster basierend auf den von Ihnen angegebenen Metriken dynamisch skaliert werden.
 
 Sie können auch das [zentrale Hochskalieren von Clustern verwalten](manage-cluster-scale-up.md), um eine geeignete Größenanpassung vorzunehmen.
 
 Wenn Sie Hilfe bei Clusterskalierungsproblemen benötigen, erstellen Sie im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) eine Supportanfrage.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+[Überwachen der Azure Data Explorer-Leistung, -Integrität und -Nutzung mit Metriken](using-metrics.md)

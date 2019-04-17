@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 03/27/2019
 ms.author: asmalser
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e36d0985aee53f2a7f701f9bf7887ae26a426b68
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d2ab7f58c3061044583baf9db73e193966d7d4eb
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203742"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280331"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Pingboard für die automatische Benutzerbereitstellung
 
@@ -32,11 +32,11 @@ Zweck dieses Tutorials ist die Beschreibung der Schritte, die Sie ausführen mü
 
 Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
-*   Einen Azure AD-Mandanten
-*   Ein [Pro-Konto](https://pingboard.com/pricing) für einen Pingboard-Mandanten 
-*   Ein Benutzerkonto in Pingboard mit Administratorrechten 
+* Einen Azure AD-Mandanten
+* Ein [Pro-Konto](https://pingboard.com/pricing) für einen Pingboard-Mandanten
+* Ein Benutzerkonto in Pingboard mit Administratorrechten
 
-> [!NOTE] 
+> [!NOTE]
 > Die Azure AD-Bereitstellungsintegration basiert auf der [Pingboard-API](https://pingboard.docs.apiary.io/#), die für Ihr Konto verfügbar ist.
 
 ## <a name="assign-users-to-pingboard"></a>Zuweisen von Benutzern zu Pingboard
@@ -69,7 +69,7 @@ Dieser Abschnitt führt Sie durch das Verbinden Ihres Azure AD mit der Pingboard
 1. Legen Sie **Bereitstellungsmodus** auf **Automatisch** fest.
 
     ![Pingboard-Bereitstellung](./media/pingboard-provisioning-tutorial/pingboardazureprovisioning.png)
-    
+
 1. Führen Sie im Abschnitt **Administratoranmeldeinformationen** die folgenden Schritte aus:
 
     a. Geben Sie `https://your_domain.pingboard.com/scim/v2` unter **Mandanten-URL** ein, und ersetzen Sie „your_domain“ durch die richtige Domäne.
@@ -86,7 +86,7 @@ Dieser Abschnitt führt Sie durch das Verbinden Ihres Azure AD mit der Pingboard
 
 1. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll. Aktivieren Sie dann das darunter befindliche Kontrollkästchen.
 
-1. Wählen Sie **Speichern** aus. 
+1. Wählen Sie **Speichern** aus.
 
 1. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Pingboard synchronisieren** aus.
 
@@ -102,6 +102,6 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Konfigurieren von einmaligem Anmelden](pingboard-tutorial.md)
+* [Einmaliges Anmelden konfigurieren](pingboard-tutorial.md)

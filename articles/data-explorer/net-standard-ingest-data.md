@@ -1,19 +1,18 @@
 ---
 title: 'Schnellstart: Erfassen von Daten mit dem .NET Standard SDK für Azure Data Explorer (Vorschauversion)'
 description: In diesem Schnellstart erfahren Sie, wie Sie mit dem .NET Standard SDK Daten in Azure Data Explorer erfassen (laden).
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/18/2018
-ms.openlocfilehash: 327ab46b01e15b77e675e052dbfe8b3453b566a6
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 6a068c45a13bd45a09ed51fd154b5842938e0c5e
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757118"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044666"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Schnellstart: Erfassen von Daten mit dem .NET Standard SDK für Azure Data Explorer (Vorschauversion)
 
@@ -23,7 +22,7 @@ Azure Data Explorer (ADX) ist ein schneller und hochgradig skalierbarer Dienst z
 
 * Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-* [Einen Testcluster und eine Testdatenbank](create-cluster-database-portal.md)
+* [Ein Testcluster und eine Testdatenbank](create-cluster-database-portal.md)
 
 ## <a name="install-the-ingest-library"></a>Installieren der Erfassungsbibliothek
 
@@ -236,4 +235,4 @@ Wenn Sie unsere anderen Schnellstarts und Tutorials durchgehen möchten, behalte
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Write queries](write-queries.md) (Schreiben von Abfragen)
+> [Schreiben von Abfragen](write-queries.md)

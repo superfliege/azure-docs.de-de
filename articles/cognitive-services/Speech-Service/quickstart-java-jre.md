@@ -1,7 +1,7 @@
 ---
 title: 'Schnellstart: Erkennen von Sprache, Java (Windows, Linux) – Speech-Dienste'
 titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung wird beschrieben, wie Sie eine einfache Java-Anwendung erstellen, mit der die Sprache des Benutzers über das Mikrofon Ihres Computers erfasst und transkribiert wird.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie eine einfache Java-Anwendung erstellen, mit der die Sprache des Benutzers über das Mikrofon Ihres Computers erfasst und transkribiert wird.
 services: cognitive-services
 author: fmegen
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: fmegen
-ms.openlocfilehash: 83d6c430d0973d4b45fcfc40bbb93ae283d1133d
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: fe565d63e72b5ec2798dde03ba4f4bd9ff4f48a7
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447581"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009398"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Schnellstart: Erkennen von Sprache mit dem Speech-SDK für Java
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-In diesem Artikel erstellen Sie eine Java-Konsolenanwendung mit dem [Speech SDK](speech-sdk.md). Sie transkribieren über das Mikrofon Ihres Computers Sprache in Echtzeit in Text. Die Anwendung wird mit dem Maven-Paket für das Speech SDK und der Eclipse Java-IDE (v4.8) unter Windows (64 Bit) oder Ubuntu Linux 16.04/18.04 (64 Bit) erstellt. Sie wird in einer 64-Bit Java 8-JRE (Runtime Environment) ausgeführt.
+In diesem Artikel erstellen Sie eine Java-Konsolenanwendung mit dem [Speech SDK](speech-sdk.md). Sie transkribieren über das Mikrofon Ihres Computers Sprache in Echtzeit in Text. Die Anwendung wird mit dem Maven-Paket für das Speech SDK und der Eclipse Java-IDE (Version 4.8) unter Windows (64 Bit), unter Ubuntu Linux 16.04/18.04 (64 Bit) oder unter macOS (ab Version 10.13) erstellt. Sie wird in einer 64-Bit Java 8-JRE (Runtime Environment) ausgeführt.
 
 > [!NOTE]
 > Weitere Informationen zum SDK für sprachaktivierte Geräte und zum Roobo-Gerät finden Sie unter [SDK für sprachaktivierte Geräte](speech-devices-sdk.md).
@@ -30,8 +30,8 @@ In diesem Artikel erstellen Sie eine Java-Konsolenanwendung mit dem [Speech SDK]
 
 Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
-* Betriebssystem: Windows (64 Bit) oder Ubuntu Linux 16.04/18.04 (64 Bit)
-* [Eclipse Java IDE](https://www.eclipse.org/downloads/)
+* Betriebssystem: Windows (64 Bit), Ubuntu Linux 16.04/18.04 (64 Bit) oder macOS (ab Version 10.13)
+* [Eclipse Java-IDE](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) oder [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * Ein Azure-Abonnementschlüssel für den Speech-Dienst. [Hier können Sie den Schlüssel kostenlos erhalten](get-started.md).
 
@@ -42,8 +42,8 @@ sudo apt-get update
 sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 ```
 
-Wenn Sie Windows (64-Bit) ausführen, stellen Sie sicher, dass Sie Microsoft Visual C++ Redistributable für Ihre Plattform installiert haben.
-* [Microsoft Visual C++ Redistributable für Visual Studio 2017 herunterladen](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
+Vergewissern Sie sich bei Verwendung von Windows (64 Bit), dass Microsoft Visual C++ Redistributable für Ihre Plattform installiert ist.
+* [Microsoft Visual C++ Redistributable für Visual Studio 2017 herunterladen](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
 
 
 ## <a name="create-and-configure-project"></a>Erstellen und Konfigurieren des Projekts
@@ -85,5 +85,5 @@ Weitere Beispiele, z.B. das Auslesen von Sprache aus einer Audiodatei, sind auf 
 ## <a name="see-also"></a>Weitere Informationen
 
 - [Schnellstart: Übersetzen von Sprache, Java (Windows, Linux)](quickstart-translate-speech-java-jre.md)
-- [Tutorial: Erstellen eines benutzerdefinierten Akustikmodells](how-to-customize-acoustic-models.md)
-- [Tutorial: Erstellen eines benutzerdefinierten Sprachmodells](how-to-customize-language-model.md)
+- [Anpassen von Akustikmodellen](how-to-customize-acoustic-models.md)
+- [Anpassen von Sprachmodellen](how-to-customize-language-model.md)

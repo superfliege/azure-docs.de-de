@@ -10,12 +10,12 @@ ms.topic: tutorial
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: mmontwil
-ms.openlocfilehash: 49f3f50cd33d2b3fea1e784fcfc70044c568ba31
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b69a793d1d860bf2f2a4d52a92d4bea5cf903c0c
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842412"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426306"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-java"></a>Erste Schritte in Azure Dev Spaces mit Java
 
@@ -26,15 +26,10 @@ In diesem Leitfaden lernen Sie Folgendes:
 - Produktives Entwickeln und Testen Ihres Codes in einer Teamumgebung
 
 > [!Note]
-> **Sollten Sie einmal nicht weiterkommen**, lesen Sie den Abschnitt [Problembehandlung](troubleshooting.md), oder hinterlassen Sie einen Kommentar auf dieser Seite.
-
-Sie können nun einen Kubernetes-basierten Entwicklungsbereich in Azure erstellen.
+> **Sollten Sie einmal nicht weiterkommen**, lesen Sie den Abschnitt [Problembehandlung](troubleshooting.md).
 
 ## <a name="install-the-azure-cli"></a>Installieren der Azure CLI
 Bei Azure Dev Spaces ist der Einrichtungsaufwand für die lokalen Computer minimal. Der Großteil der Konfiguration Ihres Entwicklungsbereichs wird in der Cloud gespeichert und kann gemeinsam mit anderen Benutzern genutzt werden. Laden Sie zunächst die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli?view=azure-cli-latest) (Command-Line Interface, CLI) herunter, und führen Sie sie aus.
-
-> [!IMPORTANT]
-> Falls die Azure CLI bereits installiert ist, vergewissern Sie sich, dass es sich dabei mindestens um Version 2.0.43 handelt.
 
 ### <a name="sign-in-to-azure-cli"></a>Anmelden bei der Azure-Befehlszeilenschnittstelle
 Melden Sie sich bei Azure an. Geben Sie in einem Terminalfenster den folgenden Befehl ein:
@@ -153,7 +148,7 @@ Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 > Bei Azure Dev Spaces geht es nicht nur um die Ausführung von Code in Kubernetes: Mit diesem Dienst sollen Codeänderungen in einer Kubernetes-Umgebung in der Cloud schnell und iterativ sichtbar gemacht werden.
 
 1. Drücken Sie im Terminalfenster `Ctrl+C` (zum Beenden von `azds up`).
-1. Öffnen Sie die Codedatei mit dem Namen `src/main/java/com/ms/sample/webfrontend/Application.java`, und bearbeiten Sie die folgende Begrüßung: `return "Hello from webfrontend in Azure!";`
+1. Öffnen Sie die Codedatei mit dem Namen `src/main/java/com/ms/sample/webfrontend/Application.java`, und bearbeiten Sie die Begrüßung: `return "Hello from webfrontend in Azure!";`
 1. Speichern Sie die Datei .
 1. Führen Sie `azds up` im Terminalfenster aus.
 

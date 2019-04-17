@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 2acdb960df2ebd265d078f37840f7a4c37015044
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 00154ac3c94a1f43872aff3be29ddd108a4173f0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001233"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268840"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>Tutorial: Azure Active Directory-Integration von Springer Link
 
@@ -107,7 +107,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL ein: `https://fsso.springer.com`
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL ein: `https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`.
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL ein: `https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`
 
     c. Klicken Sie auf **Zusätzliche URLs festlegen**.
 
@@ -203,7 +203,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Springer Link“ klicken, sollten 
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: d3aad8f1b032960786564bbb18f99c260fd72113
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cc2d45aee170517d7e41cbda6d92bc21067732d1
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58092717"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59493636"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetriekorrelation in Application Insights
 
@@ -143,9 +143,9 @@ Die [OpenTracing-Datenmodellspezifikation](https://opentracing.io/) und Applicat
 
 | Application Insights                  | OpenTracing                                       |
 |------------------------------------   |-------------------------------------------------  |
-| `Request`, `PageView`                 | `Span` mit `span.kind = server`                  |
-| `Dependency`                          | `Span` mit `span.kind = client`                  |
-| `Id` der `Request` und `Dependency`    | `SpanId`                                          |
+| `Request`, `PageView`                 | `Span` with `span.kind = server`                  |
+| `Dependency`                          | `Span` with `span.kind = client`                  |
+| `Id` von `Request` und `Dependency`    | `SpanId`                                          |
 | `Operation_Id`                        | `TraceId`                                         |
 | `Operation_ParentId`                  | `Reference` vom Typ `ChildOf` (die übergeordnete Spanne)   |
 
@@ -168,7 +168,7 @@ Im [Leitfaden zu Aktivitäten](https://github.com/dotnet/corefx/blob/master/src/
 
 ASP.NET Core 2.0 unterstützt die Extraktion von HTTP-Headern und das Starten einer neuen Aktivität.
 
-`System.Net.HttpClient` ab Version 4.1.0 unterstützt die automatische Injektion der Korrelations-HTTP-Header und die Nachverfolgung des HTTP-Aufrufs als Aktivität.
+`System.Net.HttpClient`ab Version 4.1.0 unterstützt die automatische Injektion der Korrelations-HTTP-Header und die Nachverfolgung des HTTP-Aufrufs als Aktivität.
 
 Für das klassische ASP.NET ist das neue HTTP-Modul [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/) verfügbar. Dieses Modul implementiert Telemetriekorrelationen mithilfe von `DiagnosticSource`. Es startet Aktivitäten basierend auf den eingehenden Anforderungsheadern. Außerdem korreliert es Telemetriedaten aus den verschiedenen Phasen der Anforderungsverarbeitung, selbst in Fällen, in denen jede Phase der Verarbeitung von Internetinformationsdienste (Internet Information Services, IIS) in einem anderen verwalteten Thread ausgeführt wird.
 
@@ -183,6 +183,11 @@ Das [Application Insights SDK für Java](../../azure-monitor/app/java-get-starte
 > Für die Korrelationsfunktion werden nur Aufrufe unterstützt, die über Apache HttpClient erfolgen. Wenn Sie mit Spring Rest Template oder Feign arbeiten, können beide aufgesetzt auf Apache HttpClient verwendet werden.
 
 Derzeit wird die automatische Kontextweitergabe über verschiedene Messagingtechnologien (z.B. Kafka, RabbitMQ oder Azure Service Bus) nicht unterstützt. Es ist jedoch möglich, solche Szenarien manuell mithilfe der APIs `trackDependency` und `trackRequest` zu schreiben. In diesen APIs entsprechen Telemetriedaten den Abhängigkeiten einer Nachricht, die von einem Producer in die Warteschlange eingereiht wird, und die Anforderung entspricht einer Nachricht, die von einem Consumer verarbeitet wird. In diesem Fall müssen sowohl `operation_id` als auch `operation_parentId` in den Eigenschaften der Nachricht weitergegeben werden.
+
+### <a name="telemetry-correlation-in-asynchronous-java-application"></a>Telemetriekorrelation in asynchroner Java-Anwendung
+
+Zum Korrelieren von Telemetriedaten in einer asynchronen Spring Boot-Anwendung folgen Sie [diesem](https://github.com/Microsoft/ApplicationInsights-Java/wiki/Distributed-Tracing-in-Asynchronous-Java-Applications) ausführlichen Artikel. Er enthält Anweisungen für das Instrumentieren von [ThreadPoolTaskExecutor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskExecutor.html) und [ThreadPoolTaskScheduler](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskScheduler.html) für Spring. 
+
 
 <a name="java-role-name"></a>
 ## <a name="role-name"></a>Rollenname

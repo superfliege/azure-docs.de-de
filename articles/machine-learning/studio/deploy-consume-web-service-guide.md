@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 592bf638cf0be26182dfdb28ac5a0c8345a7a250
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0a29d763ab54ee716e514df23576e9c3b294d792
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58116706"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359651"
 ---
 # <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio-Webdienste: Bereitstellung und Nutzung
 
@@ -37,7 +37,7 @@ Unter den folgenden Links finden Sie allgemeine Informationen zur Bereitstellung
 * Spezifische Beispiele für das Bereitstellen eines Webdiensts finden Sie hier:
 
   * [Tutorial 3: Bereitstellen eines Kreditrisikomodells](tutorial-part3-credit-risk-deploy.md)
-  * [Gewusst wie: Bereitstellen eines Webdiensts in mehreren Regionen](/azure/machine-learning/studio/publish-a-machine-learning-web-service#multi-region)
+  * [Bereitstellen eines Webdiensts in mehreren Regionen](/azure/machine-learning/studio/publish-a-machine-learning-web-service#multi-region)
 
 ### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>Mit Webdienste-Ressourcenanbieter-APIs (Azure Resource Manager-APIs)
 
@@ -49,7 +49,7 @@ Der Azure Machine Learning Studio-Ressourcenanbieter für Webdienste ermöglicht
 
 Der Azure Machine Learning Studio-Ressourcenanbieter für Webdienste ermöglicht die Bereitstellung und Verwaltung von Webdiensten mithilfe von PowerShell-Cmdlets.
 
-Um die Cmdlets verwenden zu können, müssen Sie sich innerhalb Ihrer PowerShell-Umgebung zunächst mithilfe des Cmdlets [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) bei Ihrem Azure-Konto anmelden. Wenn Sie mit dem Aufrufen Resource Manager-basierter PowerShell-Befehle nicht vertraut sind, nutzen Sie die Informationen unter [Verwenden von Azure PowerShell mit Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md).
+Um die Cmdlets verwenden zu können, müssen Sie sich innerhalb Ihrer PowerShell-Umgebung zunächst mithilfe des Cmdlets [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) bei Ihrem Azure-Konto anmelden. Wenn Sie mit dem Aufrufen Resource Manager-basierter PowerShell-Befehle nicht vertraut sind, nutzen Sie die Informationen unter [Verwenden von Azure PowerShell mit Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md).
 
 Verwenden Sie [diesen Beispielcode](https://github.com/ritwik20/AzureML-WebServices), um Ihr Vorhersageexperiment zu exportieren. Nachdem Sie die EXE-Datei auf der Grundlage des Codes erstellt haben, können Sie Folgendes eingeben:
 
@@ -78,7 +78,7 @@ Hier sehen Sie ein Beispiel:
 
 Ausführlichere Informationen finden Sie in den folgenden Artikeln sowie im Beispielcode:
 
-* Referenz zu [Azure Machine Learning Studio-Cmdlets](https://docs.microsoft.com/powershell/module/azurerm.machinelearning) auf MSDN
+* Referenz zu [Azure Machine Learning Studio-Cmdlets](https://docs.microsoft.com/powershell/module/az.machinelearning) auf MSDN
 * [Exemplarische Vorgehensweise](https://github.com/raymondlaghaeian/azureml-webservices-arm-powershell/blob/master/sample-commands.txt) auf GitHub
 
 ## <a name="consume-the-web-services"></a>Nutzen von Webdiensten

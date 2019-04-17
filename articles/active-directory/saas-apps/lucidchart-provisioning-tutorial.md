@@ -13,18 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 03/27/2019
 ms.author: asmalser-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9e037e1be36a38631028e5e179e20720d3476a1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fc181625ead251480bb107fc59e3aae46afab1ee
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190856"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257687"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von LucidChart für die automatische Benutzerbereitstellung
-
 
 In diesem Tutorial werden die Schritte beschrieben, die Sie in LucidChart und Azure AD ausführen müssen, um Benutzerkonten von Azure AD in LucidChart automatisch bereitzustellen bzw. deren Bereitstellung automatisch aufzuheben. 
 
@@ -32,13 +31,13 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie in LucidChart und Az
 
 Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
-*   Einen Azure Active Directory-Mandanten
-*   Einen LucidChart-Mandanten, für den mindestens der [Enterprise-Tarif](https://www.lucidchart.com/user/117598685#/subscriptionLevel) aktiviert ist 
-*   Ein Benutzerkonto in LucidChart mit Teamadministratorberechtigungen 
+* Einen Azure Active Directory-Mandanten
+* Einen LucidChart-Mandanten, für den mindestens der [Enterprise-Tarif](https://www.lucidchart.com/user/117598685#/subscriptionLevel) aktiviert ist
+* Ein Benutzerkonto in LucidChart mit Teamadministratorberechtigungen
 
 ## <a name="assigning-users-to-lucidchart"></a>Zuweisen von Benutzern zu LucidChart
 
-Azure Active Directory ermittelt anhand von Zuweisungen, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Bereitstellung von Benutzerkonten werden nur die Benutzer und Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden. 
+Azure Active Directory ermittelt anhand von Zuweisungen, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Bereitstellung von Benutzerkonten werden nur die Benutzer und Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
 
 Vor dem Konfigurieren und Aktivieren des Bereitstellungsdiensts müssen Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD die Benutzer darstellen, die Zugriff auf Ihre LucidChart-App benötigen. Anschließend können Sie diese Benutzer Ihrer LucidChart-App zuweisen, indem Sie diese Anweisungen befolgen:
 
@@ -46,21 +45,18 @@ Vor dem Konfigurieren und Aktivieren des Bereitstellungsdiensts müssen Sie ents
 
 ### <a name="important-tips-for-assigning-users-to-lucidchart"></a>Wichtige Tipps zum Zuweisen von Benutzern zu LucidChart
 
-*   Es wird empfohlen, LucidChart einen einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der Bereitstellung zu testen. Später können weitere Benutzer und/oder Gruppen zugewiesen werden.
+* Es wird empfohlen, LucidChart einen einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der Bereitstellung zu testen. Später können weitere Benutzer und/oder Gruppen zugewiesen werden.
 
-*   Beim Zuweisen eines Benutzers zu LucidChart müssen Sie entweder die Rolle **Benutzer** oder eine andere gültige anwendungsspezifische Rolle (sofern verfügbar) im Dialogfeld für die Zuweisung auswählen. Die Rolle **Standardzugriff** funktioniert nicht für die Bereitstellung. Diese Benutzer werden übersprungen.
+* Beim Zuweisen eines Benutzers zu LucidChart müssen Sie entweder die Rolle **Benutzer** oder eine andere gültige anwendungsspezifische Rolle (sofern verfügbar) im Dialogfeld für die Zuweisung auswählen. Die Rolle **Standardzugriff** funktioniert nicht für die Bereitstellung. Diese Benutzer werden übersprungen.
 
-
-## <a name="configuring-user-provisioning-to-lucidchart"></a>Konfigurieren der Benutzerbereitstellung in LucidChart 
+## <a name="configuring-user-provisioning-to-lucidchart"></a>Konfigurieren der Benutzerbereitstellung in LucidChart
 
 In diesem Abschnitt wird das Herstellen einer Verbindung von Azure AD mit der LucidChart-API zur Bereitstellung von Benutzerkonten sowie das Konfigurieren des Bereitstellungsdiensts für das Erstellen, Aktualisieren und Deaktivieren zugewiesener Benutzerkonten in LucidChart basierend auf der Benutzer- und Gruppenzuweisung in Azure AD beschrieben.
 
 > [!TIP]
 > Sie können auch das SAML-basierte einmalige Anmelden für LucidChart aktivieren. Befolgen Sie hierzu die Anweisungen im [Azure-Portal](https://portal.azure.com). Einmaliges Anmelden kann unabhängig von der automatischen Bereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
 
-
 ### <a name="configure-automatic-user-account-provisioning-to-lucidchart-in-azure-ad"></a>Konfigurieren der automatische Bereitstellung von Benutzerkonten für LucidChart in Azure AD
-
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory > Unternehmens-Apps > Alle Anwendungen**.
 
@@ -72,7 +68,7 @@ In diesem Abschnitt wird das Herstellen einer Verbindung von Azure AD mit der Lu
 
     ![LucidChart-Bereitstellung](./media/lucidchart-provisioning-tutorial/LucidChart1.png)
 
-5. Geben Sie im Abschnitt **Admin Credentials** (Administratoranmeldeinformationen) das von Ihrem LucidChart-Konto generierte **geheime Token** ein. (Sie finden das Token in Ihrem Konto: **Team** > **App-Integration** > **SCIM**). 
+5. Geben Sie im Abschnitt **Admin Credentials** (Administratoranmeldeinformationen) das von Ihrem LucidChart-Konto generierte **geheime Token** ein. (Sie finden das Token in Ihrem Konto: **Team** > **App-Integration** > **SCIM**).
 
     ![LucidChart-Bereitstellung](./media/lucidchart-provisioning-tutorial/LucidChart2.png)
 
@@ -80,7 +76,7 @@ In diesem Abschnitt wird das Herstellen einer Verbindung von Azure AD mit der Lu
 
 7. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen „Bei Fehler E-Mail-Benachrichtigung senden“.
 
-8. Klicken Sie auf **Speichern**. 
+8. Klicken Sie auf **Speichern**.
 
 9. Wählen Sie im Abschnitt „Zuordnungen“ die Option **Azure Active Directory-Benutzer mit LucidChart synchronisieren**.
 
@@ -88,12 +84,11 @@ In diesem Abschnitt wird das Herstellen einer Verbindung von Azure AD mit der Lu
 
 11. Um den Azure AD-Bereitstellungsdienst für LucidChart zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
 
-12. Klicken Sie auf **Speichern**. 
+12. Klicken Sie auf **Speichern**.
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die LucidChart im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Protokollen zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst ausgeführt werden.
 
 Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
-
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

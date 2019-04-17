@@ -1,97 +1,101 @@
 ---
-title: Untersuchen von REST-APIs in Postman oder Fiddler – Azure Search
-description: Verwenden von Postman oder Fiddler zum Senden von HTTP-Anforderungen und REST-API-Aufrufen an Azure Search.
+title: 'Schnellstart: Erkunden von REST-APIs in Postman – Azure Search'
+description: Hier erfahren Sie, wie Sie mithilfe von Postman HTTP-Anforderungen und REST-API-Aufrufe an Azure Search senden.
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c99380faee8fd1bc42922f7f0e367edde1154a9b
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 0e14131ce45d20b99c1b5d5885cb1eb24c975d03
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368900"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269111"
 ---
-# <a name="quickstart-explore-azure-search-rest-apis-using-postman-or-fiddler"></a>Schnellstart: Untersuchen von Azure Search-REST-APIs mit Postman oder Fiddler
+# <a name="quickstart-explore-azure-search-rest-apis-using-postman"></a>Schnellstart: Erkunden von Azure Search-REST-APIs mit Postman
+> [!div class="op_single_selector"]
+> * [postman](search-fiddler.md)
+> * [C#](search-create-index-dotnet.md)
+> * [Portal](search-get-started-portal.md)
+> * [PowerShell](search-howto-dotnet-sdk.md)
+>*
 
-Eine der einfachsten Möglichkeiten zum Untersuchen der [Azure Search-REST-API](https://docs.microsoft.com/rest/api/searchservice) ist die Verwendung von Postman oder Fiddler, um HTTP-Anforderungen zu formulieren und die Antworten zu prüfen. Mit den richtigen Tools und dieser Anleitung können Sie vor dem Schreiben von Code Anforderungen senden und Antworten anzeigen.
+Eine der einfachsten Möglichkeiten zum Erkunden der [Azure Search-REST-API](https://docs.microsoft.com/rest/api/searchservice) besteht darin, mithilfe von Postman oder eines anderen Webtesttools HTTP-Anforderungen zu formulieren und die Antworten zu untersuchen. Mit den richtigen Tools und dieser Anleitung können Sie vor dem Schreiben von Code Anforderungen senden und Antworten anzeigen.
 
 > [!div class="checklist"]
 > * Herunterladen eines Web-API-Testtools
-> * Abrufen des API-Schlüssels und Endpunkts für Ihren Suchdienst
-> * Konfigurieren von Anforderungsheadern
+> * Abrufen eines Schlüssels und einer URL für Ihren Suchdienst
+> * Herstellen einer Verbindung mit Azure Search
 > * Erstellen eines Index
 > * Laden eines Index
 > * Durchsuchen eines Index
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie zuerst ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen und dann die [Registrierung für Azure Search](search-create-service-portal.md) durchführen.
 
-## <a name="download-tools"></a>Herunterladen von Tools
+## <a name="prerequisites"></a>Voraussetzungen
 
-Die folgenden Tools werden häufig für die Webentwicklung eingesetzt, aber auch wenn Sie ein anderes Tool nutzen, sollte die Anleitung in diesem Artikel trotzdem gelten.
+In dieser Schnellstartanleitung werden die folgenden Dienste und Tools verwendet. 
 
-+ [Postman-Desktop-App](https://www.getpostman.com/)
-+ [Telerik Fiddler](https://www.telerik.com/fiddler)
+[Erstellen Sie einen Azure Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. 
 
-## <a name="get-the-api-key-and-endpoint"></a>Abrufen des API-Schlüssels und des Endpunkts
+Zum Senden von Anforderungen an Azure Search wird die [Postman-Desktop-App](https://www.getpostman.com/) oder [Telerik Fiddler](https://www.telerik.com/fiddler) verwendet.
+
+## <a name="get-a-key-and-url"></a>Abrufen eines Schlüssels und einer URL
 
 Für REST-Aufrufe sind die Dienst-URL und ein Zugriffsschlüssel für jede Anforderung erforderlich. Hierfür wird jeweils ein Suchdienst erstellt. Wenn Sie Azure Search also Ihrem Abonnement hinzugefügt haben, können Sie diese Schritte ausführen, um die erforderlichen Informationen zu erhalten:
 
-1. Rufen Sie die URL im Azure-Portal auf der Seite **Übersicht** Ihres Suchdiensts ab. Ein Beispiel für einen Endpunkt ist `https://my-service-name.search.windows.net`.
+1. [Melden Sie sich beim Azure-Portal an](https://portal.azure.com/), und rufen Sie auf der Seite **Übersicht** Ihres Suchdiensts die URL ab. Ein Beispiel für einen Endpunkt ist `https://mydemo.search.windows.net`.
 
-2. Rufen Sie unter **Einstellungen** > **Schlüssel** einen Administratorschlüssel ab, um Vollzugriff auf den Dienst zu erhalten. Es gibt zwei austauschbare Administratorschlüssel – diese wurden zum Zweck der Geschäftskontinuität bereitgestellt, falls Sie einen Rollover für einen Schlüssel durchführen müssen. Für Anforderungen zum Hinzufügen, Ändern und Löschen von Objekten können Sie den primären oder den sekundären Schlüssel verwenden.
+1. Rufen Sie unter **Einstellungen** > **Schlüssel** einen Administratorschlüssel ab, um Vollzugriff auf den Dienst zu erhalten. Es gibt zwei austauschbare Administratorschlüssel – diese wurden zum Zweck der Geschäftskontinuität bereitgestellt, falls Sie einen Rollover für einen Schlüssel durchführen müssen. Für Anforderungen zum Hinzufügen, Ändern und Löschen von Objekten können Sie den primären oder den sekundären Schlüssel verwenden.
 
 ![Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels](media/search-fiddler/get-url-key.png "Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels")
 
 Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 
+## <a name="connect-to-azure-search"></a>Herstellen einer Verbindung mit Azure Search
 
-## <a name="configure-headers"></a>Konfigurieren von Headern
+Verwenden Sie in diesem Abschnitt das Webtool Ihrer Wahl, um Verbindungen mit Azure Search einzurichten. Jedes Tool behält Anforderungsheaderinformationen für die Sitzung bei, sodass Sie den API-Schlüssel und den Inhaltstyp nur einmal eingeben müssen.
 
-Jedes Tool behält Anforderungsheaderinformationen für die Sitzung bei. Dies bedeutet, dass Sie URL-Endpunkt, API-Version, API-Schlüssel und Inhaltstyp nur einmal eingeben müssen.
+Bei beiden Tools müssen Sie einen Befehl auswählen (GET, POST, PUT usw.) und einen URL-Endpunkt angeben. Für bestimmte Aufgaben muss im Text der Anforderung auch JSON-Code angegeben werden. Eine vollständige URL sieht in etwa wie folgt aus:
 
-Die vollständige URL sollte bei Ihnen ähnlich wie im folgenden Beispiel aussehen, aber es sollte ein gültiger Wert für den Platzhalternamen **`my-app`** vorhanden sein: `https://my-app.search.windows.net/indexes/hotels?api-version=2017-11-11`
+    https://<placeholder-for-your-service-name>.search.windows.net/indexes?api-version=2017-11-11
 
-Die Komposition der Dienst-URL enthält die folgenden Elemente:
+Beachten Sie, das HTTPS-Präfix, den Namen des Diensts, den Namen eines Objekts (in diesem Fall: die Indexsammlung) und die [API-Version](search-api-versions.md). Die API-Version ist eine erforderliche Zeichenfolge in Kleinbuchstaben, die für die aktuelle Version als „?api-version=2017-11-11“ angegeben wird. API-Versionen werden regelmäßig aktualisiert. Wenn Sie die API-Version in jede Anforderung einfügen, haben Sie die vollständige Kontrolle darüber, welche jeweils verwendet wird.  
 
-+ HTTPS-Präfix
-+ Dienst-URL aus dem Portal
-+ Ressource (ein Vorgang, bei dem in Ihrem Dienst ein Objekt erstellt wird). In diesem Schritt ist dies ein Index mit dem Namen *hotels*.
-+ API-Version (erforderliche Zeichenfolge in Kleinbuchstaben, die für die aktuelle Version als „?api-version=2017-11-11“ angegeben wird). [API-Versionen](search-api-versions.md) werden regelmäßig aktualisiert. Wenn Sie die API-Version in jede Anforderung einfügen, haben Sie die vollständige Kontrolle darüber, welche jeweils verwendet wird.  
+Der Anforderungsheader enthält den Inhaltstyp (content-type) sowie den API-Schlüssel (api-key) für die Authentifizierung bei Azure Search:
 
-Die Komposition des Anforderungsheaders enthält die beiden Elemente „content-type“ (Inhaltstyp) und „api-key“ (API-Schlüssel), die im vorherigen Abschnitt beschrieben sind:
-
-    api-key: <placeholder>
+    api-key: <placeholder-api-key-for-your-service>
     Content-Type: application/json
 
-
-### <a name="postman"></a>postman
-
-Formulieren Sie eine Anforderung, die wie im folgenden Screenshot aussieht. Wählen Sie **PUT** als Verb aus. 
+Formulieren Sie in Postman eine Anforderung, die wie auf dem folgenden Screenshot aussieht. Wählen Sie **GET** als Verb aus, geben Sie die URL an, und klicken Sie auf **Senden**. Dieser Befehl stellt eine Verbindung mit Azure Search her, liest die Indexsammlung und gibt nach erfolgreicher Verbindungsherstellung den HTTP-Statuscode 200 zurück. Falls Ihr Dienst bereits über Indizes verfügt, enthält die Antwort auch Indexdefinitionen.
 
 ![Postman-Anforderungsheader][6]
 
-### <a name="fiddler"></a>Fiddler
-
-Formulieren Sie eine Anforderung, die wie im folgenden Screenshot aussieht. Wählen Sie **PUT** als Verb aus. Fiddler fügt `User-Agent=Fiddler` hinzu. Sie können die beiden zusätzlichen Anforderungsheader in neuen Zeilen darunter einfügen. Fügen Sie den Inhaltstyp und den API-Schlüssel für Ihren Dienst ein, indem Sie den Administratorschlüssel für Ihren Dienst verwenden.
-
-![Fiddler-Anforderungsheader][1]
-
-> [!Tip]
-> Deaktivieren Sie den Webdatenverkehr, um externe und irrelevante HTTP-Aktivitäten auszublenden. Deaktivieren Sie im Fiddler-Menü **File** (Datei) die Option **Capture Traffic** (Datenverkehr erfassen). 
-
 ## <a name="1---create-an-index"></a>1. Erstellen eines Index
 
-Der Textkörper der Anforderung enthält die Indexdefinition. Wenn Sie den Anforderungstext hinzufügen, ist die Anforderung zum Erzeugen Ihres Index abgeschlossen.
+In Azure Search wird der Index für gewöhnlich vor dem Laden von Daten erstellt. Für diese Aufgabe wird die [REST-API für die Indexerstellung](https://docs.microsoft.com/rest/api/searchservice/create-index) verwendet. 
 
-Neben dem Indexnamen ist die wichtigste Komponente in der Anforderung die Sammlung „fields“. Mit der Sammlung „fields“ wird das Indexschema definiert. Geben Sie für jedes Feld den Typ an. Da Zeichenfolgenfelder in der Volltextsuche verwendet werden, kann es ratsam sein, numerische Daten in Zeichenfolgen umzuwandeln, wenn dieser Inhalt durchsuchbar sein soll.
+Die URL wird um den Indexnamen `hotel` erweitert.
 
-Die Attribute im Feld bestimmen die zulässige Aktion. Die REST-APIs ermöglichen standardmäßig viele Aktionen. Beispielsweise sind alle Zeichenfolgen durchsuchbar, abrufbar, filterbar und facettierbar. Häufig müssen Sie Attribute nur festlegen, wenn Sie ein Verhalten deaktivieren möchten. Weitere Informationen zu Attributen finden Sie unter [Create Index (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/create-index) (Create Index (Azure Search-Dienst-REST-API)).
+Gehen Sie dazu in Postman wie folgt vor:
+
+1. Ändern Sie das Verb in **PUT**.
+2. Kopieren Sie die folgende URL, und fügen Sie sie ein: `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotel?api-version=2017-11-11`
+3. Geben Sie die (weiter unten gezeigte) Indexdefinition im Text der Anforderung an.
+4. Klicken Sie unten auf der Seite auf **Senden**
+
+![Postman-Anforderungstext][8]
+
+### <a name="index-definition"></a>Indexdefinition
+
+Die Feldsammlung definiert die Dokumentstruktur. Jedes Dokument muss über diese Felder verfügen, und jedes Feld muss einen Datentyp besitzen. Da Zeichenfolgenfelder in der Volltextsuche verwendet werden, kann es ratsam sein, numerische Daten in Zeichenfolgen umzuwandeln, wenn dieser Inhalt durchsuchbar sein soll.
+
+Die Attribute im Feld bestimmen die zulässige Aktion. Die REST-APIs ermöglichen standardmäßig viele Aktionen. Beispielsweise sind alle Zeichenfolgen durchsuchbar, abrufbar, filterbar und facettierbar. Häufig müssen Sie Attribute nur festlegen, wenn Sie ein Verhalten deaktivieren möchten.
 
           {
          "name": "hotels",  
@@ -99,6 +103,7 @@ Die Attribute im Feld bestimmen die zulässige Aktion. Die REST-APIs ermögliche
            {"name": "hotelId", "type": "Edm.String", "key":true, "searchable": false},
            {"name": "baseRate", "type": "Edm.Double"},
            {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false},
+           {"name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "analyzer": "fr.lucene"},
            {"name": "hotelName", "type": "Edm.String"},
            {"name": "category", "type": "Edm.String"},
            {"name": "tags", "type": "Collection(Edm.String)"},
@@ -110,31 +115,27 @@ Die Attribute im Feld bestimmen die zulässige Aktion. Die REST-APIs ermögliche
           ]
          }
 
-
 Wenn Sie diese Anforderung senden, sollten Sie die Antwort „HTTP 201“ erhalten, mit der angezeigt wird, dass die Erstellung des Index erfolgreich war. Sie können diese Aktion im Portal überprüfen, aber Sie sollten berücksichtigen, dass für die Portalseite bestimmte Aktualisierungsintervalle gelten. Es kann also ein oder zwei Minuten dauern, bis alles angezeigt wird.
 
-Falls Sie eine "HTTP 504"-Antwort erhalten, prüfen Sie, ob die URL mit HTTPS beginnt. Wenn Sie eine "HTTP 400"- oder "HTTP 404"-Antwort erhalten, prüfen Sie den Hauptteil der Anforderung auf Fehler, die durch Kopieren und Einfügen entstanden sind. "HTTP 403" deutet in der Regel auf ein Problem mit dem api-key hin (entweder ein ungültiger Schlüssel oder ein Syntaxproblem bei der Angabe des API-Schlüssels).
-
-
-### <a name="postman"></a>postman
-
-Kopieren Sie die Indexdefinition in den Anforderungstext (ähnlich wie im folgenden Screenshot), und klicken Sie anschließend rechts oben auf **Send** (Senden), um die fertige Anforderung zu senden.
-
-![Postman-Anforderungstext][8]
-
-### <a name="fiddler"></a>Fiddler
-
-Kopieren Sie die Indexdefinition in den Anforderungstext (ähnlich wie im folgenden Screenshot), und klicken Sie anschließend rechts oben auf **Execute** (Ausführen), um die fertige Anforderung zu senden.
-
-![Fiddler-Anforderungstext][7]
+> [!TIP]
+> Falls Sie eine "HTTP 504"-Antwort erhalten, prüfen Sie, ob die URL mit HTTPS beginnt. Wenn Sie eine "HTTP 400"- oder "HTTP 404"-Antwort erhalten, prüfen Sie den Hauptteil der Anforderung auf Fehler, die durch Kopieren und Einfügen entstanden sind. "HTTP 403" deutet in der Regel auf ein Problem mit dem api-key hin (entweder ein ungültiger Schlüssel oder ein Syntaxproblem bei der Angabe des API-Schlüssels).
 
 ## <a name="2---load-documents"></a>2. Laden von Dokumenten
 
-Das Erstellen und das Auffüllen des Index sind separate Schritte. In Azure Search enthält der Index alle durchsuchbaren Daten, die Sie als JSON-Dokumente bereitstellen können. Informationen zur API für diesen Vorgang finden Sie unter [Add, Update or Delete Documents (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) (Hinzufügen, Aktualisieren oder Löschen von Dokumenten (Azure Search-Dienst-REST-API)).
+Das Erstellen und das Auffüllen des Index sind separate Schritte. In Azure Search enthält der Index alle durchsuchbaren Daten, die Sie als JSON-Dokumente bereitstellen können. Für diese Aufgabe wird die [REST-API zum Hinzufügen, Aktualisieren oder Löschen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) verwendet. 
 
-+ Ändern Sie das Verb für diesen Schritt in **POST**.
-+ Ändern Sie den Endpunkt so, dass er `/docs/index` enthält. Die vollständige URL sollte wie folgt lauten: `https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2017-11-11`
-+ Übernehmen Sie die Anforderungsheader unverändert. 
+Die URL wird um die Sammlungen vom Typ `docs` sowie um den Vorgang `index` erweitert.
+
+Gehen Sie dazu in Postman wie folgt vor:
+
+1. Ändern Sie das Verb in **POST**.
+2. Kopieren Sie die folgende URL, und fügen Sie sie ein: `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs/index?api-version=2017-11-11`
+3. Geben Sie die (weiter unten gezeigten) JSON-Dokumente im Text der Anforderung an.
+4. Klicken Sie unten auf der Seite auf **Senden**
+
+![Postman-Anforderungsnutzlast][10]
+
+### <a name="json-documents-to-load-into-the-index"></a>JSON-Dokumente, die in den Index geladen werden sollen
 
 Der Anforderungstext enthält vier Dokumente, die zum Index "hotels" hinzugefügt werden sollen.
 
@@ -145,7 +146,7 @@ Der Anforderungstext enthält vier Dokumente, die zum Index "hotels" hinzugefüg
              "hotelId": "1",
              "baseRate": 199.0,
              "description": "Best hotel in town",
-             "description_fr": "Meilleur hôtel en ville"
+             "description_fr": "Meilleur hôtel en ville",
              "hotelName": "Fancy Stay",
              "category": "Luxury",
              "tags": ["pool", "view", "wifi", "concierge"],
@@ -209,28 +210,61 @@ Falls Sie eine 207-Antwort erhalten, ist der Upload von mindestens einem Dokumen
 > Für ausgewählte Datenquellen können Sie als Alternative auch den *Indexer*-Ansatz verwenden, bei dem die für die Indizierung erforderliche Menge an Code vereinfacht und reduziert wird. Weitere Informationen finden Sie unter [Indexer operations](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) (Indexer-Vorgänge).
 
 
-### <a name="postman"></a>postman
-
-Ändern Sie das Verb in **POST**. Ändern Sie die URL so, dass sie `/docs/index` enthält. Kopieren Sie die Dokumente in den Anforderungstext (ähnlich wie im folgenden Screenshot), und führen Sie anschließend die Anforderung aus.
-
-![Postman-Anforderungsnutzlast][10]
-
-### <a name="fiddler"></a>Fiddler
-
-Ändern Sie das Verb in **POST**. Ändern Sie die URL so, dass sie `/docs/index` enthält. Kopieren Sie die Dokumente in den Anforderungstext (ähnlich wie im folgenden Screenshot), und führen Sie anschließend die Anforderung aus.
-
-![Fiddler-Anforderungsnutzlast][9]
-
 ## <a name="3---search-an-index"></a>3. Durchsuchen eines Index
+
 Nachdem Sie einen Index erstellt und Dokumente geladen haben, können Sie nun über die [Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents)-REST-API Abfragen ausführen.
 
-+ Ändern Sie das Verb für diesen Schritt in **GET**.
-+ Ändern Sie den Endpunkt so, dass er Abfrageparameter enthält, einschließlich Suchzeichenfolgen. Eine Abfrage-URL kann beispielsweise wie folgt lauten: `https://my-app.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2017-11-11`.
-+ Übernehmen Sie die Anforderungsheader unverändert.
+Die URL wird um eine Abfragezeichenfolge erweitert, die unter Verwendung des Suchoperators angegeben wird.
+
+Gehen Sie dazu in Postman wie folgt vor:
+
++ Ändern Sie das Verb in **GET**.
++ Kopieren Sie die folgende URL, und fügen Sie sie ein: `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2017-11-11`
++ Klicken Sie unten auf der Seite auf **Senden**
 
 Mit dieser Abfrage wird nach dem Wort „motel“ gesucht und die Anzahl von Dokumenten in den Suchergebnissen zurückgegeben. Die Anforderung und die Antwort sollten für Postman in etwa wie im folgenden Screenshot aussehen, nachdem Sie auf **Send** (Senden) geklickt haben. Der Statuscode sollte 200 lauten.
 
  ![Postman-Abfrageantwort][11]
+
+
+## <a name="get-index-properties"></a>Abfragen von Indexeigenschaften
+Sie können auch Systeminformationen abfragen, um die Anzahl von Dokumenten oder die Speicherauslastung zu erhalten: `https://mydemo.search.windows.net/indexes/hotels/stats?api-version=2017-11-11`
+
+In Postman sollte Ihre Anforderung in etwa wie folgt aussehen, und die Antwort enthält dann eine Anzahl von Dokumenten und den belegten Speicher in Byte.
+
+ ![Postman-Systemabfrage][12]
+
+Beachten Sie, dass die Syntax für die API-Version hier anders ist. Verwenden Sie für diese Anforderung `?`, um die API-Version anzufügen. `?` trennt den URL-Pfad von der Abfragezeichenfolge; „&“ trennt die einzelnen Name-Wert-Paare in der Abfragezeichenfolge. Für diese Abfrage ist die API-Version das erste und einzige Element in der Abfragezeichenfolge.
+
+Weitere Informationen zu dieser API finden Sie unter [Get Index Statistics (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics) (Get Index Statistics (Azure Search-Dienst-REST-API)).
+
+
+## <a name="use-fiddler"></a>Verwenden von Fiddler
+
+Dieser Abschnitt ist mit den vorherigen Abschnitten identisch, enthält allerdings Screenshots und Anweisungen für Fiddler.
+
+### <a name="connect-to-azure-search"></a>Herstellen einer Verbindung mit Azure Search
+
+Formulieren Sie eine Anforderung, die wie im folgenden Screenshot aussieht. Wählen Sie **GET** als Verb aus. Fiddler fügt `User-Agent=Fiddler` hinzu. Sie können die beiden zusätzlichen Anforderungsheader in neuen Zeilen darunter einfügen. Fügen Sie den Inhaltstyp und den API-Schlüssel für Ihren Dienst ein, indem Sie den Administratorschlüssel für Ihren Dienst verwenden.
+
+Fügen Sie für das Ziel eine geänderte Version der folgenden URL ein: `https://<placeholder-for-your-service-name>.search.windows.net/indexes?api-version=2017-11-11`
+
+![Fiddler-Anforderungsheader][1]
+
+> [!Tip]
+> Deaktivieren Sie den Webdatenverkehr, um externe und irrelevante HTTP-Aktivitäten auszublenden. Deaktivieren Sie im Fiddler-Menü **File** (Datei) die Option **Capture Traffic** (Datenverkehr erfassen). 
+
+### <a name="1---create-an-index"></a>1. Erstellen eines Index
+
+Ändern Sie das Verb in **PUT**. Fügen Sie eine geänderte Version der folgenden URL ein: `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotel?api-version=2017-11-11`. Kopieren Sie die weiter oben bereitgestellte Indexdefinition, und fügen Sie sie in den Text der Anforderung ein. Ihre Seite sollte in etwa dem folgenden Screenshot entsprechen. Klicken Sie rechts oben auf **Ausführen**, um die fertige Anforderung zu senden.
+
+![Fiddler-Anforderungstext][7]
+
+### <a name="2---load-documents"></a>2. Laden von Dokumenten
+
+Ändern Sie das Verb in **POST**. Ändern Sie die URL so, dass sie `/docs/index` enthält. Kopieren Sie die Dokumente in den Anforderungstext (ähnlich wie im folgenden Screenshot), und führen Sie anschließend die Anforderung aus.
+
+![Fiddler-Anforderungsnutzlast][9]
 
 ### <a name="tips-for-running-our-sample-queries-in-fiddler"></a>Tipps zum Ausführen unserer Beispielabfragen in Fiddler
 
@@ -243,18 +277,6 @@ Die folgende Beispielabfrage stammt aus dem Artikel [Search Documents (Azure Sea
 **Nach dem Ersetzen der Leerzeichen durch „+“ (in „lastRenovationDate+desc“):**
 
         GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2017-11-11
-
-## <a name="get-index-properties"></a>Abfragen von Indexeigenschaften
-Sie können Systeminformationen auch abfragen, um die Anzahl von Dokumenten oder die Speicherauslastung zu erhalten: `https://my-app.search.windows.net/indexes/hotels/stats?api-version=2017-11-11`.
-
-In Postman sollte Ihre Anforderung in etwa wie folgt aussehen, und die Antwort enthält dann eine Anzahl von Dokumenten und den belegten Speicher in Byte.
-
- ![Postman-Systemabfrage][12]
-
-Beachten Sie, dass die Syntax für die API-Version hier anders ist. Verwenden Sie für diese Anforderung `?`, um die API-Version anzufügen. Mit dem Zeichen „?“ wird der URL-Pfad von der Abfragezeichenfolge getrennt, und mit „&“ wird jeweils ein Name-Wert-Paar in der Abfragezeichenfolge getrennt. Für diese Abfrage ist die API-Version das erste und einzige Element in der Abfragezeichenfolge.
-
-Weitere Informationen zu dieser API finden Sie unter [Get Index Statistics (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics) (Get Index Statistics (Azure Search-Dienst-REST-API)).
-
 
 ### <a name="tips-for-viewing-index-statistic-in-fiddler"></a>Tipps zum Anzeigen der Indexstatistik in Fiddler
 

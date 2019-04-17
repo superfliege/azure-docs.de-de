@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 02/20/2019
+ms.date: 04/01/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02c12a8cc8163fa70008b21995ddb35aec57dfcf
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: d42fe972b79ecd9bcee65d0664c5d13da02d2238
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579681"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470609"
 ---
 # <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>Überprüfen des Zugriffs auf Gruppen oder Anwendungen mit Azure AD-Zugriffsüberprüfungen
 
@@ -46,7 +46,7 @@ Wenn Sie keine E-Mail haben, können Sie Ihre ausstehenden Zugriffsüberprüfung
 
 1. Klicken Sie oben rechts auf der Seite auf das Benutzersymbol, neben dem Ihr Name und Ihre Standardorganisation angezeigt werden. Werden mehrere Organisationen aufgelistet, wählen Sie die Organisation aus, die eine Zugriffsüberprüfung angefordert hat.
 
-1. Klicken Sie rechts auf der Seite auf die Kachel **Zugriffsüberprüfungen**, um eine Liste mit den ausstehenden Zugriffsüberprüfungen anzuzeigen.
+1. Klicken Sie auf die Kachel **Zugriffsüberprüfungen**, um eine Liste der ausstehenden Zugriffsüberprüfungen anzuzeigen.
 
     Wenn die Kachel nicht angezeigt wird, sind für diese Organisation keine Zugriffsüberprüfungen auszuführen. Daher ist zurzeit keine Aktion erforderlich.
 
@@ -71,11 +71,13 @@ Es gibt zwei Möglichkeiten, Zugriff zu gewähren oder zu verweigern:
 
 1. Sehen Sie sich die Liste der Benutzer an, um zu entscheiden, ob deren weiterer Zugriff gewährt oder verweigert werden soll.
 
-1. Klicken Sie auf die jeweilige Zeile, um ein Fenster zu öffnen, in dem Sie die entsprechende Maßnahme angeben können, um Anforderungen zu gewähren oder zu verweigern.
+1. Klicken Sie zum Genehmigen oder Verweigern von Anforderungen auf die jeweilige Zeile, um ein Fenster zu öffnen, in dem Sie die auszuführende Aktion angeben können.
 
 1. Klicken Sie auf **Approve** (Gewähren) oder **Deny** (Verweigern). Wenn Sie sich nicht sicher sind, können Sie auch auf **Don‘t know** (Nicht bekannt) klicken. Wenn Sie dies tun, behält der Benutzer seinen Zugriff, aber die Auswahl wird in den Überwachungsprotokollen widergespiegelt.
 
     ![Durchführen der Zugriffsüberprüfung](./media/perform-access-review/approve-deny.png)
+
+1. Geben Sie bei Bedarf im Feld **Grund** einen Grund ein.
 
     Der Administrator der Zugriffsüberprüfung kann möglicherweise verlangen, dass Sie eine Begründung für den weiteren Zugriffsbedarf oder die Gruppenmitgliedschaft angeben, bevor der Zugriff gewährt wird.
 

@@ -1,19 +1,18 @@
 ---
 title: 'Schnellstart: Erfassen von Daten mit der Azure Data Explorer-Bibliothek für Node'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Node.js Daten in Azure Data Explorer erfassen (laden).
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/25/2018
-ms.openlocfilehash: 0a23c171d99d46eb29dd589867ce70ca2739ff29
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: d530ed3710a3406e5cd8115d615e91d5056a5f8c
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756448"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047652"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-node-library"></a>Schnellstart: Erfassen von Daten mit der Azure Data Explorer-Bibliothek für Node
 
@@ -25,7 +24,7 @@ Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azu
 
 Zusätzlich zu einem Azure-Abonnement benötigen Sie zum Abschließen dieses Schnellstarts Folgendes:
 
-* [Einen Testcluster und eine Testdatenbank](create-cluster-database-portal.md)
+* [Ein Testcluster und eine Testdatenbank](create-cluster-database-portal.md)
 
 * [Node.js](https://nodejs.org/en/download/) auf dem Entwicklungscomputer
 
@@ -168,4 +167,4 @@ Wenn Sie unsere anderen Schnellstarts und Tutorials durchgehen möchten, behalte
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Write queries](write-queries.md) (Schreiben von Abfragen)
+> [Schreiben von Abfragen](write-queries.md)

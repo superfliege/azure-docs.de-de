@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/12/2019
 ms.author: aljo
-ms.openlocfilehash: f201ac1f0ea5a4bc07e8c052e7653194140e8759
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 400e4653800d445506d4854e70034a707dcc4629
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669366"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049180"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>Horizontales Herunter- oder Hochskalieren eines Clusters
 
@@ -27,6 +27,9 @@ ms.locfileid: "58669366"
 > Lesen Sie vor dem Skalieren diesen Abschnitt.
 
 Die Skalierung von Computeressourcen zum Ermitteln der Arbeitsauslastung Ihrer Anwendung erfordert eine absichtliche Planung, dauert fast immer länger als eine Stunde für eine Produktionsumgebung und setzt voraus, dass Sie Ihre Arbeitsauslastung und Ihren Geschäftskontext verstehen. Wenn Sie diese Aktivität noch nie zuvor ausgeführt haben, wird empfohlen, dass Sie zunächst die [Überlegungen zur Kapazitätsplanung von Service Fabric-Clustern](service-fabric-cluster-capacity.md) lesen und verstehen, bevor Sie sich mit dem Rest dieses Dokuments beschäftigen. Diese Empfehlung dient dazu, unbeabsichtigte LiveSite-Probleme zu vermeiden. Es wird außerdem empfohlen, die Vorgänge, die Sie für eine Nichtproduktionsumgebung ausführen möchten, erfolgreich zu testen. Sie können jederzeit [Produktionsprobleme melden oder bezahlte Unterstützung für Azure anfordern](service-fabric-support.md#report-production-issues-or-request-paid-support-for-azure). Für Engineers, die für die Ausführung dieser Vorgänge vorgesehen sind und den entsprechendem Kontext kennen, werden in diesem Artikel Skalierungsvorgänge beschrieben. Sie müssen aber entscheiden und verstehen, welche Vorgänge für Ihren Anwendungsfall geeignet sind, z.B. welche Ressourcen skaliert werden sollen (CPU, Speicher, Arbeitsspeicher), in welche Richtung skaliert werden soll (vertikal oder horizontal) und welche Vorgänge ausgeführt werden sollen (Bereitstellung von Ressourcenvorlagen, Portal, PowerShell/CLI).
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules-or-manually"></a>Zentrales Hoch- oder Herunterskalieren eines Service Fabric-Clusters mithilfe von Regeln für die automatische Skalierung oder eines manuellen Verfahrens
 VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Sammlung von virtuellen Computern bereitstellen und verwalten können. Jeder Knotentyp, der in einem Service Fabric-Cluster definiert ist, wird als separate Skalierungsgruppe eines virtuellen Computers eingerichtet. Jeden Knotentyp kann dann unabhängig zentral hoch- oder herunterskaliert werden, bei jedem Typ können unterschiedliche Portgruppen geöffnet sein, und die Typen können verschiedene Kapazitätsmetriken aufweisen. Weitere Informationen finden Sie im Dokument über die [Service Fabric-Knotentypen](service-fabric-cluster-nodetypes.md). Da die Service Fabric-Knotentypen in Ihrem Cluster am Back-End aus VM-Skalierungsgruppen bestehen, müssen Sie für jeden Knotentyp bzw. jede VM-Skalierungsgruppe Regeln für die automatische Skalierung einrichten.
@@ -42,9 +45,9 @@ Zurzeit können Sie über das Portal keine Regeln für die automatische Skalieru
 Führen Sie die folgenden Cmdlets aus, um eine Liste mit den VM-Skalierungsgruppen abzurufen, aus denen Ihr Cluster besteht:
 
 ```powershell
-Get-AzureRmResource -ResourceGroupName <RGname> -ResourceType Microsoft.Compute/VirtualMachineScaleSets
+Get-AzResource -ResourceGroupName <RGname> -ResourceType Microsoft.Compute/VirtualMachineScaleSets
 
-Get-AzureRmVmss -ResourceGroupName <RGname> -VMScaleSetName <virtual machine scale set name>
+Get-AzVmss -ResourceGroupName <RGname> -VMScaleSetName <virtual machine scale set name>
 ```
 
 ## <a name="set-auto-scale-rules-for-the-node-typevirtual-machine-scale-set"></a>Festlegen von Regeln für die automatische Skalierung für Knotentypen bzw. VM-Skalierungsgruppen
@@ -79,10 +82,10 @@ Befolgen Sie das Beispiel bzw. die Anweisungen im [Vorlagenkatalog für den Schn
 Der folgende Code ruft eine Skalierungsgruppe anhand ihres Namens ab und erhöht die **Kapazität** der Skalierungsgruppe um 1:
 
 ```powershell
-$scaleset = Get-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm
+$scaleset = Get-AzVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm
 $scaleset.Sku.Capacity += 1
 
-Update-AzureRmVmss -ResourceGroupName $scaleset.ResourceGroupName -VMScaleSetName $scaleset.Name -VirtualMachineScaleSet $scaleset
+Update-AzVmss -ResourceGroupName $scaleset.ResourceGroupName -VMScaleSetName $scaleset.Name -VirtualMachineScaleSet $scaleset
 ```
 
 Der folgende Code legt die Kapazität auf 6 fest:
@@ -220,10 +223,10 @@ sfctl node remove-state --node-name _nt1vm_5
 Nachdem der Service Fabric-Knoten aus dem Cluster entfernt wurde, kann die VM-Skalierungsgruppe horizontal herunterskaliert werden. Im folgenden Beispiel wird die Kapazität der Skalierungsgruppe um 1 verringert:
 
 ```powershell
-$scaleset = Get-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm
+$scaleset = Get-AzVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm
 $scaleset.Sku.Capacity -= 1
 
-Update-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm -VirtualMachineScaleSet $scaleset
+Update-AzVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm -VirtualMachineScaleSet $scaleset
 ```
 
 Der folgende Code legt die Kapazität auf 5 fest:

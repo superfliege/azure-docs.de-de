@@ -6,35 +6,37 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/18/2018
+ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 883e4cbc33ebbef0328bb1de47025e99e670f7cd
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 1095a80ba05aa3e0ae6dfcd526db7ffd18fb9d4d
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311033"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359375"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Vorbereiten lokaler VMware-Server für die Notfallwiederherstellung in Azure
 
-[Azure Site Recovery](site-recovery-overview.md) unterstützt Ihre Strategien für Geschäftskontinuität und Notfallwiederherstellung, indem die Verfügbarkeit Ihrer Geschäftsanwendungen bei geplanten und ungeplanten Ausfällen gewährleistet wird. Site Recovery verwaltet und koordiniert die Notfallwiederherstellung von lokalen Computern sowie virtuellen Azure-Computern (VMs), einschließlich Replikation, Failover und Wiederherstellung.
+In diesem Artikel erfahren Sie, wie Sie lokale VMware-Server mit den [Azure Site Recovery](site-recovery-overview.md)-Diensten für die Notfallwiederherstellung in Azure einrichten. 
 
-- Dies ist das zweite Tutorial in einer Reihe, welche die Einrichtung der Notfallwiederherstellung in Azure für lokale virtuelle VMware-Computer veranschaulicht. Im ersten Tutorial [richten wir die erforderlichen Azure-Komponenten](tutorial-prepare-azure.md) für die VMware-Notfallwiederherstellung ein.
+Dies ist das zweite Tutorial in einer Reihe, welche die Einrichtung der Notfallwiederherstellung in Azure für lokale virtuelle VMware-Computer veranschaulicht. Im ersten Tutorial [richten wir die erforderlichen Azure-Komponenten](tutorial-prepare-azure.md) für die VMware-Notfallwiederherstellung ein.
 
 
-> [!NOTE]
-> Tutorials dienen zur Veranschaulichung des einfachsten Bereitstellungspfads für ein Szenario. Sie verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade. Eine ausführliche Anleitung finden Sie jeweils im Abschnitt mit der **Gewusst wie-Anleitung** für das entsprechende Szenario.
-
-In diesem Artikel erfahren Sie, wie Sie Ihre lokale VMware-Umgebung vorbereiten, wenn Sie virtuelle VMware-Computer mithilfe von Azure Site Recovery in Azure replizieren möchten. Folgendes wird vermittelt:
+In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
 > * Vorbereiten eines Kontos auf dem vCenter-Server oder dem vSphere ESXi-Host zum Automatisieren der VM-Ermittlung
-> * Vorbereiten eines Kontos für die automatische Installation des Mobility Service auf VMware-VMs
-> * Überprüfen der Anforderungen für VMware-Server und virtuelle Computer
-> * Vorbereiten der Verbindungsherstellung mit Azure-VMs nach dem Failover
+> * Vorbereiten eines Kontos für die automatische Installation von Mobility Service auf virtuellen VMware-Computern
+> * Überprüfen der Anforderungen und der Unterstützung für VMware-Server und virtuelle Computer
+> * Vorbereiten der Verbindungsherstellung mit virtuellen Azure-Computern nach dem Failover
 
+> [!NOTE]
+> In den Tutorials wird der einfachste Bereitstellungspfad für ein Szenario erläutert. Sie verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade. Ausführliche Anweisungen finden Sie in dem Artikel, der im Anleitungsabschnitt des Site Recovery-Inhaltsverzeichnisses angegeben ist.
 
+## <a name="before-you-start"></a>Vorbereitung
+
+Vergewissern Sie sich, dass Azure wie im [ersten Tutorial dieser Reihe](tutorial-prepare-azure.md) beschrieben vorbereitet wurde.
 
 ## <a name="prepare-an-account-for-automatic-discovery"></a>Vorbereiten eines Kontos für die automatische Ermittlung
 
@@ -51,10 +53,10 @@ Erstellen Sie das Konto wie folgt:
 
 ### <a name="vmware-account-permissions"></a>VMware-Kontoberechtigungen
 
-**Aufgabe** | **Rolle/Berechtigungen** | **Details**
+**Aufgabe** | **Rollen/Berechtigungen** | **Details**
 --- | --- | ---
 **VM-Ermittlung** | Mindestens ein Benutzer mit Lesezugriff<br/><br/> Data Center object (Rechenzentrenobjekt) –> Propagate to Child Object (An untergeordnetes Objekt weitergeben), role=Read-only (Rolle=schreibgeschützt) | Der Benutzer wird auf Datencenterebene zugewiesen und hat Zugriff auf alle Objekte im Datencenter.<br/><br/> Um den Zugriff einzuschränken, weisen Sie den untergeordneten Objekten (vSphere-Hosts, Datenspeicher, VMs und Netzwerke) die Rolle **No access** (Kein Zugriff) mit **Propagate to child object** (Auf untergeordnetes Objekt übertragen) zu.
-**Vollständige Replikation, Failover, Failback** |  Erstellen Sie eine Rolle („Azure_Site_Recovery“) mit den erforderlichen Berechtigungen, und weisen Sie die Rolle dann einem VMware-Benutzer oder einer VMware-Gruppe zu.<br/><br/> Rechenzentrumsobjekt -> An untergeordnetes Objekt weitergeben, Rolle=Azure_Site_Recovery<br/><br/> Datenspeicher -> Speicherplatz zuordnen, Datenspeicher durchsuchen, Low-Level-Dateivorgänge, Datei entfernen, Dateien virtueller Computer aktualisieren<br/><br/> Netzwerk -> Netzwerk zuweisen<br/><br/> Ressource -> Zuweisen der VM zu einem Ressourcenpool, ausgeschaltete VM migrieren, eingeschaltete VM migrieren<br/><br/> Tasks (Aufgaben) -> Create task (Aufgabe erstellen), update task (Aufgabe aktualisieren)<br/><br/> Virtueller Computer -> Konfiguration<br/><br/> Virtueller Computer -> Interagieren -> Frage beantworten, Geräteverbindung, CD-Medien konfigurieren, Diskettenmedien konfigurieren, Ausschalten, Einschalten, VMware-Tools installieren<br/><br/> Virtueller Computer -> Inventar -> Erstellen, Registrieren, Registrierung aufheben<br/><br/> Virtueller Computer -> Bereitstellung -> Download virtueller Computer zulassen, Upload von Dateien virtueller Computer zulassen<br/><br/> Virtual machine -> Snapshots -> Remove snapshots | Der Benutzer wird auf Datencenterebene zugewiesen und hat Zugriff auf alle Objekte im Datencenter.<br/><br/> Um den Zugriff einzuschränken, weisen Sie den untergeordneten Objekten (vSphere-Hosts, Datenspeicher, VMs und Netzwerke) die Rolle **No access** (Kein Zugriff) mit **Propagate to child object** (Auf untergeordnetes Objekt übertragen) zu.
+**Vollständige Replikationen, Failover, Failbacks** |  Erstellen Sie eine Rolle („Azure_Site_Recovery“) mit den erforderlichen Berechtigungen, und weisen Sie die Rolle dann einem VMware-Benutzer oder einer VMware-Gruppe zu.<br/><br/> Rechenzentrumsobjekt -> An untergeordnetes Objekt weitergeben, Rolle=Azure_Site_Recovery<br/><br/> Datenspeicher -> Speicherplatz zuordnen, Datenspeicher durchsuchen, Low-Level-Dateivorgänge, Datei entfernen, Dateien virtueller Computer aktualisieren<br/><br/> Netzwerk -> Netzwerk zuweisen<br/><br/> Ressource -> Zuweisen der VM zu einem Ressourcenpool, ausgeschaltete VM migrieren, eingeschaltete VM migrieren<br/><br/> Tasks (Aufgaben) -> Create task (Aufgabe erstellen), update task (Aufgabe aktualisieren)<br/><br/> Virtueller Computer -> Konfiguration<br/><br/> Virtueller Computer -> Interagieren -> Frage beantworten, Geräteverbindung, CD-Medien konfigurieren, Diskettenmedien konfigurieren, Ausschalten, Einschalten, VMware-Tools installieren<br/><br/> Virtueller Computer -> Inventar -> Erstellen, Registrieren, Registrierung aufheben<br/><br/> Virtueller Computer -> Bereitstellung -> Download virtueller Computer zulassen, Upload von Dateien virtueller Computer zulassen<br/><br/> Virtual machine -> Snapshots -> Remove snapshots | Der Benutzer wird auf Datencenterebene zugewiesen und hat Zugriff auf alle Objekte im Datencenter.<br/><br/> Um den Zugriff einzuschränken, weisen Sie den untergeordneten Objekten (vSphere-Hosts, Datenspeicher, VMs und Netzwerke) die Rolle **No access** (Kein Zugriff) mit **Propagate to child object** (Auf untergeordnetes Objekt übertragen) zu.
 
 ## <a name="prepare-an-account-for-mobility-service-installation"></a>Vorbereiten eines Kontos für die Installation des Mobility Services
 
@@ -94,7 +96,7 @@ Gehen Sie wie folgt vor, wenn Sie die Verbindung mit Windows-VMs nach dem Failov
     - Aktivieren Sie vor dem Failover RDP auf dem lokalen Computer.
     - RDP sollte unter **Windows-Firewall** -> **Zugelassene Apps und Feature** für **private und Domänennetzwerke** zugelassen werden.
     - Achten Sie darauf, dass die SAN-Richtlinie des Betriebssystems auf **OnlineAll** festgelegt ist. [Weitere Informationen](https://support.microsoft.com/kb/3031135)
-- Auf dem virtuellen Computer sollten keine ausstehenden Windows-Updates vorhanden sein, wenn Sie ein Failover auslösen. Andernfalls können Sie sich nach Abschluss des Updates nicht mehr auf dem virtuellen Computer anmelden.
+- Auf dem virtuellen Computer sollten keine ausstehenden Windows-Updates vorhanden sein, wenn Sie ein Failover auslösen. Andernfalls können Sie sich nach Abschluss des Updates nicht mehr bei dem virtuellen Computer anmelden.
 - Aktivieren Sie nach dem Failover auf der Windows-Azure-VM die **Startdiagnose**, um einen Screenshot des virtuellen Computers anzuzeigen. Wenn Sie keine Verbindung herstellen können, überprüfen Sie, ob der virtuelle Computer ausgeführt wird, und sehen sich dann diese [Tipps zur Problembehandlung](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx) an.
 
 Gehen Sie wie folgt vor, wenn Sie die Verbindung mit Linux-VMs nach dem Failover per SSH herstellen möchten:
@@ -107,13 +109,13 @@ Gehen Sie wie folgt vor, wenn Sie die Verbindung mit Linux-VMs nach dem Failover
 
 
 ## <a name="failback-requirements"></a>Failbackanforderungen
-Wenn Sie ein Failback zu Ihrer lokalen Umgebung planen, müssen Sie auch sicherstellen, dass bestimmte [Voraussetzungen erfüllt sind](vmware-azure-reprotect.md##before-you-begin). Dieser Schritt ist aber **nicht erforderlich, um mit der Aktivierung der Notfallwiederherstellung für Ihre VMs beginnen zu können**, sondern kann auch nach dem Failover zu Azure noch ausgeführt werden.
+Wenn Sie ein Failback auf Ihren lokalen Standort ausführen möchten, machen Sie sich mit den [Voraussetzungen für das Failback](vmware-azure-reprotect.md##before-you-begin) vertraut. Falls gewünscht, können Sie die erforderlichen Vorbereitungen jetzt durchführen. Sie können damit aber auch bis nach dem Failover auf Azure warten.
 
-## <a name="useful-links"></a>Nützliche Links
 
-Wenn Sie mehrere virtuelle Computer replizieren, müssen Sie Kapazität und Bereitstellung vorab planen. [Weitere Informationen](site-recovery-deployment-planner.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+Richten Sie die Notfallwiederherstellung ein. Planen Sie die Kapazität, falls Sie mehrere virtuelle Computer replizieren.
 > [!div class="nextstepaction"]
-> [Einrichten der Notfallwiederherstellung in Azure für VMware-VMs](vmware-azure-tutorial.md)
+> [Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs](vmware-azure-tutorial.md)
+> [Informationen zum Azure Site Recovery-Bereitstellungsplaner für VMware in Azure](site-recovery-deployment-planner.md)

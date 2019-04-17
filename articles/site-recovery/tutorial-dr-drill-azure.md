@@ -6,27 +6,22 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: tutorial
-ms.date: 03/19/2019
+ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 7e85226d15b818dda65600760b3950fab9dd7aaf
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b93fb92c9170f3e0fb7bd6ee754dde5df729e299
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312324"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358188"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Durchführen eines Notfallwiederherstellungsverfahrens in Azure
 
-Dieser Artikel veranschaulicht das Durchführen einer Notfallwiederherstellungsübung für lokale Computer in Azure mit einem Testfailover. Eine Übung dient der Überprüfung Ihrer Replikationsstrategie ohne Datenverlust.
+In diesem Artikel erfahren Sie, wie Sie für einen lokalen Computer unter Verwendung des [Azure Site Recovery](site-recovery-overview.md)-Diensts ein Notfallwiederherstellungsverfahren in Azure durchführen. Eine Übung dient der Überprüfung Ihrer Replikationsstrategie ohne Datenverlust.
 
-Dies ist das vierte Tutorial in einer Reihe, welche die Einrichtung der Notfallwiederherstellung in Azure für lokale virtuelle VMware-Computer oder virtuelle Hyper-V-Computer veranschaulicht.
 
-In diesem Tutorial wird davon ausgegangen, dass Sie die ersten drei Tutorials abgeschlossen haben:
-- Im [ersten Tutorial](tutorial-prepare-azure.md) haben wir die erforderlichen Azure-Komponenten für die VMware-Notfallwiederherstellung eingerichtet.
-- Im [zweiten Tutorial](vmware-azure-tutorial-prepare-on-premises.md) haben wir lokale Komponenten für die Notfallwiederherstellung vorbereitet und die Anforderungen überprüft.
-- Im [dritten Tutorial](vmware-azure-tutorial.md) haben wir die Replikation für den lokalen virtuellen VMware-Computer eingerichtet und aktiviert.
-- Tutorials dienen zur Veranschaulichung des **einfachsten Bereitstellungspfads für ein Szenario**. Sie verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade. Ausführlichere Informationen zu den Schritten des Testfailovers finden Sie in [dieser Anleitung](site-recovery-test-failover-to-azure.md).
+Dies ist das vierte Tutorial einer Reihe zur Einrichtung der Notfallwiederherstellung in Azure für lokale Computer.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -35,7 +30,17 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Vorbereiten der Verbindungsherstellung mit Azure-VMs nach dem Failover
 > * Ausführen eines Testfailovers für einen einzelnen Computer
 
+> [!NOTE]
+> In den Tutorials wird der einfachste Bereitstellungspfad für ein Szenario erläutert. Sie verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade. Ausführlichere Informationen zu den Schritten des Notfallwiederherstellungsverfahrens finden Sie in [diesem Artikel](site-recovery-test-failover-to-azure.md).
 
+## <a name="before-you-start"></a>Vorbereitung
+
+Absolvieren Sie die vorherigen Tutorials:
+
+1. Vergewissern Sie sich, dass Sie [Azure ordnungsgemäß eingerichtet haben](tutorial-prepare-azure.md) (für die lokale Notfallwiederherstellung virtueller VMware-Computer, virtueller Hyper-V-Computer und physischer Computer in Azure).
+2. Bereiten Sie Ihre lokale [VMware](vmware-azure-tutorial-prepare-on-premises.md)- oder [Hyper-V](hyper-v-prepare-on-premises-tutorial.md)-Umgebung für die Notfallwiederherstellung vor. Falls Sie die Notfallwiederherstellung für physische Server einrichten möchten, sehen Sie sich die [Unterstützungsmatrix](vmware-physical-secondary-support-matrix.md) an.
+3. Richten Sie die Notfallwiederherstellung für [virtuelle VMware-Computer](vmware-azure-tutorial.md), für [virtuelle Hyper-V-Computer](hyper-v-azure-tutorial.md) oder für [physische Computer](physical-azure-disaster-recovery.md) ein.
+ 
 
 ## <a name="verify-vm-properties"></a>Überprüfen von VM-Eigenschaften
 
@@ -76,14 +81,13 @@ Führen Sie das Testfailover wie folgt aus:
 
 In einigen Szenarien erfordert ein Failover zusätzliche Verarbeitungsschritte, die etwa 8 bis 10 Minuten dauern können. Bei VMware-Linux-Computern, VMware-VMs ohne aktivierten DHCP-Dienst und VMware-VMs ohne die Starttreiber storvsc, vmbus, storflt, intelide und atapi kann das Testfailover länger dauern.
 
-## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Vorbereiten der Verbindungsherstellung mit Azure-VMs nach dem Failover
+## <a name="connect-after-failover"></a>Herstellen einer Verbindung nach einem Failover
 
-Wenn Sie nach dem Failover per RDP/SSH eine Verbindung mit Azure-VMs herstellen möchten, müssen Sie die in dieser [Tabelle](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover) zusammengefassten Anforderungen erfüllen.
-
-Führen Sie die [hier](site-recovery-failover-to-azure-troubleshoot.md) beschriebenen Schritte aus, um nach dem Failover ggf. Konnektivitätsprobleme zu beheben.
+Wenn Sie nach einem Failover eine RDP-/SSH-Verbindung mit virtuellen Azure-Computern herstellen möchten, [bereiten Sie die Verbindungsherstellung vor](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover). Sollten nach dem Failover Verbindungsprobleme auftreten, lesen Sie das [Handbuch zur Problembehandlung](site-recovery-failover-to-azure-troubleshoot.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Durchführen von Failover und Failback für lokale VMware-VMs](vmware-azure-tutorial-failover-failback.md)
-> [Durchführen von Failover und Failback für lokale Hyper-V-VMs](hyper-v-azure-failover-failback-tutorial.md)
+> [Durchführen von Failover und Failback für VMware-VMs](vmware-azure-tutorial-failover-failback.md)
+> [Durchführen von Failover und Failback für Hyper-V-VMs](hyper-v-azure-failover-failback-tutorial.md)
+> [Durchführen von Failover und Failback für physische Computer](physical-to-azure-failover-failback.md)

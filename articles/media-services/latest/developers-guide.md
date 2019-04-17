@@ -16,18 +16,21 @@ ms.workload: media
 ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 774ddfa435cb23a8bf5d179fb0f7a0baf9dfca75
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 4f9911259cc4da02429971ef6bddfa62080a9fe6
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755894"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044405"
 ---
 # <a name="start-developing-with-media-services-v3-api-using-sdkstools"></a>Einstieg in die Entwicklung mit der Media Services v3-API und mit SDKs/Tools
 
 Als Entwickler können Sie die [REST-API](https://aka.ms/ams-v3-rest-ref) von Media Services oder Clientbibliotheken verwenden, die es Ihnen ermöglichen, mit der REST-API auf einfache Weise zu interagieren, um benutzerdefinierte Medienworkflows zu erstellen, zu verwalten und zu pflegen. Die [Media Services v3](https://aka.ms/ams-v3-rest-sdk)-API basiert auf der OpenAPI-Spezifikation (ehemals Swagger).
 
 Dieses Thema enthält Links zu den SDKs und Tools sowie zur Dokumentation. Außerdem finden Sie hier einige hilfreiche Informationen für verschiedene Entwicklungsumgebungen.
+
+> [!NOTE]
+> Für die Azure Media Services v3 SDKs wird keine Threadsicherheit garantiert. Wenn Sie eine Multithreadanwendung entwickeln, sollten Sie zum Schutz des Clients Ihre eigene Threadsynchronisierungslogik hinzufügen oder für jeden Thread ein neues AzureMediaServicesClient-Objekt verwenden. Achten Sie außerdem auf Multithreadingprobleme, die durch optionale Objekte entstehen können, die von Ihrem Code für den Client bereitgestellt werden (beispielsweise eine HttpClient-Instanz in .NET).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

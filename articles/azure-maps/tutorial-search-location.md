@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: d35c33a45f2ce23dabfba20bbd902c058e3033d3
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 3db2b810ba4ba96e492c6b6ba841d9cfa35418a8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540455"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260844"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Suchen nach Points of Interest in der Nähe mit Azure Maps
 
@@ -81,11 +81,11 @@ Bei der Kartensteuerelement-API handelt es sich um eine praktische Clientbibliot
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
-        <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
         <!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
-        <script src="https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2"></script>
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
 
         <script>
         function GetMap(){
@@ -116,7 +116,7 @@ Bei der Kartensteuerelement-API handelt es sich um eine praktische Clientbibliot
 
    Beachten Sie, dass der HTML-Header die CSS- und JavaScript-Ressourcendateien enthält, die von der Azure-Kartensteuerelement-Bibliothek gehostet werden. Beachten Sie das Ereignis `onload` im Textkörper der Seite. Dieses Ereignis ruft die Funktion `GetMap` auf, wenn der Textkörper der Seite geladen wurde. Die `GetMap`-Funktion enthält den JavaScript-Inlinecode für den Zugriff auf die Azure Maps-APIs.
 
-3. Fügen Sie der Funktion `GetMap` der HTML-Datei den folgenden JavaScript-Code hinzu. Ersetzen Sie die Zeichenfolge **\<Your Azure Maps Key\>** durch den Primärschlüssel, den Sie aus Ihrem Maps-Konto kopiert haben.
+3. Fügen Sie der Funktion `GetMap` der HTML-Datei den folgenden JavaScript-Code hinzu. Ersetzen Sie die Zeichenfolge `<Your Azure Maps Key>` durch den Primärschlüssel, den Sie aus Ihrem Maps-Konto kopiert haben.
 
     ```JavaScript
     //Instantiate a map object
@@ -129,17 +129,17 @@ Bei der Kartensteuerelement-API handelt es sich um eine praktische Clientbibliot
     });
     ```
 
-   In diesem Segment wird die Kartensteuerelement-API für den Schlüssel Ihres Azure Maps-Kontos initialisiert. **atlas** ist der Namespace, der die API und die dazugehörigen visuellen Komponenten enthält. **atlas.Map** stellt das Steuerelement für ein visuelles Element und eine interaktive Webkarte bereit.
+   In diesem Segment wird die Kartensteuerelement-API für den Schlüssel Ihres Azure Maps-Kontos initialisiert. `atlas` ist der Namespace, der die API und die dazugehörigen visuellen Komponenten enthält. `atlas.Map` stellt das Steuerelement für ein visuelles Element und eine interaktive Webkarte bereit.
 
-4. Speichern Sie die Änderungen in der Datei, und öffnen Sie die HTML-Seite in einem Browser. Dies ist die einfachste Karte, die Sie durch das Aufrufen von **atlas.map** mit Ihrem Kontoschlüssel erstellen können.
+4. Speichern Sie die Änderungen in der Datei, und öffnen Sie die HTML-Seite in einem Browser. Dies ist die einfachste Karte, die Sie durch das Aufrufen von `atlas.Map` mit Ihrem Kontoschlüssel erstellen können.
 
    ![Anzeigen der Karte](./media/tutorial-search-location/basic-map.png)
 
 5. Fügen Sie in der Funktion `GetMap` nach der Karteninitialisierung den folgenden JavaScript-Code hinzu:
 
     ```JavaScript
-    //Wait until the map resources are loaded.
-    map.events.add('load', function() {
+    //Wait until the map resources are ready.
+    map.events.add('ready', function() {
 
         //Create a data source and add it to the map.
         datasource = new atlas.source.DataSource();
@@ -161,7 +161,7 @@ Bei der Kartensteuerelement-API handelt es sich um eine praktische Clientbibliot
     });
     ```
 
-   In diesem Codesegment wird ein Ladeereignis hinzugefügt, das ausgelöst wird, wenn die Kartenressourcen vollständig geladen wurden. Im Ereignishandler für das Laden der Karte wird eine Datenquelle zum Speichern der Ergebnisdaten erstellt. Eine Symbolebene wird erstellt und an die Datenquelle angefügt. Diese Ebene gibt an, wie die Ergebnisdaten in der Datenquelle gerendert werden sollen – in diesem Fall mit einem dunkelblauen runden Stecknadelsymbol, das über der Ergebniskoordinate zentriert wird und von anderen Symbolen überlagert werden kann. Die Ergebnisebene wird den Kartenebenen hinzugefügt.
+   In diesem Codesegment wird ein Ereignis vom Typ `ready` hinzugefügt, das ausgelöst wird, wenn die Kartenressourcen vollständig geladen wurden und auf die Karte zugegriffen werden kann. Im Kartenereignishandler `ready` wird eine Datenquelle zum Speichern der Ergebnisdaten erstellt. Eine Symbolebene wird erstellt und an die Datenquelle angefügt. Diese Ebene gibt an, wie die Ergebnisdaten in der Datenquelle gerendert werden sollen – in diesem Fall mit einem dunkelblauen runden Stecknadelsymbol, das über der Ergebniskoordinate zentriert wird und von anderen Symbolen überlagert werden kann. Die Ergebnisebene wird den Kartenebenen hinzugefügt.
 
 <a id="usesearch"></a>
 
@@ -171,7 +171,7 @@ In diesem Abschnitt wird veranschaulicht, wie mit der [Such-API](https://docs.mi
 
 ### <a name="service-module"></a>Dienstmodul
 
-1. Erstellen Sie im Ereignishandler für das Laden der Karte die Suchdienst-URL, indem Sie den folgenden JavaScript-Code hinzufügen.
+1. Erstellen Sie im Kartenereignishandler `ready` die Suchdienst-URL, indem Sie den folgenden JavaScript-Code hinzufügen:
 
     ```JavaScript
    // Use SubscriptionKeyCredential with a subscription key
@@ -184,9 +184,9 @@ In diesem Abschnitt wird veranschaulicht, wie mit der [Such-API](https://docs.mi
    var searchURL = new atlas.service.SearchURL(pipeline); 
    ```
 
-   **SubscriptionKeyCredential** erstellt ein **SubscriptionKeyCredentialPolicy**-Objekt, um HTTP-Anforderungen mit dem Abonnementschlüssel für Azure Maps zu authentifizieren. **atlas.service.MapsURL.newPipeline()** verwendet die Richtlinie **SubscriptionKeyCredential** und erstellt eine [Pipeline](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest)-Instanz. Die **searchURL** stellt eine URL zu [Suchvorgängen](https://docs.microsoft.com/rest/api/maps/search) von Azure Maps dar.
+   `SubscriptionKeyCredential` erstellt ein `SubscriptionKeyCredentialPolicy`-Element, um HTTP-Anforderungen für Azure Maps mit dem Abonnementschlüssel zu authentifizieren. `atlas.service.MapsURL.newPipeline()` verwendet die Richtlinie `SubscriptionKeyCredential` und erstellt eine [Pipeline](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest)-Instanz. `searchURL` stellt eine URL zu [Suchvorgängen](https://docs.microsoft.com/rest/api/maps/search) von Azure Maps dar.
 
-2. Fügen Sie als Nächstes den folgenden Skriptblock hinzu, um die Suchabfrage zu erstellen. Hier wird der Dienst für die Fuzzysuche (eine einfache Such-API des Suchdiensts) verwendet. Der Dienst für die Fuzzysuche behandelt die meisten Fuzzyeingaben – etwa Adressen, Orte und POIs (Points of Interest). Dieser Code sucht im angegebenen Radius der Längen- und Breitengradangaben nach nahegelegenen Tankstellen. Eine GeoJSON-Funktionssammlung aus der Antwort wird dann mit der **geojson.getFeatures()**-Methode extrahiert und der Datenquelle hinzugefügt, und die Daten werden über die Symbolebene automatisch auf der Karte gerendert. Im letzten Teil des Skripts wird die Kameraansicht der Karte mithilfe des Begrenzungsrahmens der Ergebnisse und unter Verwendung der Karteneigenschaft [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) festgelegt.
+2. Fügen Sie als Nächstes den folgenden Skriptblock hinzu, um die Suchabfrage zu erstellen. Hier wird der Dienst für die Fuzzysuche (eine einfache Such-API des Suchdiensts) verwendet. Der Dienst für die Fuzzysuche behandelt die meisten Fuzzyeingaben – etwa Adressen, Orte und POIs (Points of Interest). Dieser Code sucht im angegebenen Radius der Längen- und Breitengradangaben nach nahegelegenen Tankstellen. Eine GeoJSON-Funktionssammlung aus der Antwort wird dann mit der `geojson.getFeatures()`-Methode extrahiert und der Datenquelle hinzugefügt, und die Daten werden über die Symbolebene automatisch auf der Karte gerendert. Im letzten Teil des Skripts wird die Kameraansicht der Karte mithilfe des Begrenzungsrahmens der Ergebnisse und unter Verwendung der Karteneigenschaft [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) festgelegt.
 
     ```JavaScript
     var query =  'gasoline-station';
@@ -229,7 +229,7 @@ Nun können auf der MapSearch-Seite die Standorte von Points of Interest angezei
 
 Die erstellte Karte verwendet bisher nur die Längen-/Breitengraddaten für die Suchergebnisse. Wenn Sie sich die vom Maps-Suchdienst zurückgegebenen JSON-Rohdaten ansehen, stellen Sie jedoch fest, dass sie zusätzliche Informationen zu den einzelnen Tankstellen enthalten, u.a. den Namen und die Adresse. Diese Daten lassen sich mithilfe interaktiver Popupfelder in die Karte integrieren.
 
-1. Fügen Sie dem Ereignishandler für das Laden der Karte nach dem Code zum Abfragen des Diensts für die Fuzzysuche die folgenden Codezeilen hinzu. Dadurch wird eine Instanz eines Popupfelds erstellt und der Symbolebene ein mouseover-Ereignis hinzugefügt.
+1. Fügen Sie dem Kartenereignishandler `ready` nach dem Code zum Abfragen des Diensts für die Fuzzysuche die folgenden Codezeilen hinzu. Dadurch wird eine Instanz eines Popupfelds erstellt und der Symbolebene ein mouseover-Ereignis hinzugefügt.
 
     ```JavaScript
    //Create a popup but leave it closed so we can update it and display it later.
@@ -239,7 +239,7 @@ Die erstellte Karte verwendet bisher nur die Längen-/Breitengraddaten für die 
     map.events.add('mouseover', resultLayer, showPopup);
     ```
 
-    Die API **atlas.Popup** stellt ein Informationsfenster bereit, das an der erforderlichen Position auf der Karte verankert ist. 
+    Die API `sup` stellt ein Informationsfenster bereit, das an der erforderlichen Position auf der Karte verankert ist. 
 
 2. Fügen Sie im Tag *script* nach der Funktion `GetMap` den folgenden Code hinzu, um im Popupfeld die Informationen des mousover-Ergebnisses anzuzeigen.
 
@@ -282,9 +282,9 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 
 Das Codebeispiel für dieses Tutorial finden Sie hier:
 
-> [Search location with Azure Maps](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html) (Suchen nach dem Standort mit Azure Maps)
+> [Search location with Azure Maps (Suchen nach dem Standort mit Azure Maps)](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)
 
-[Hier](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest) können Sie sich das Beispiel live ansehen.
+[Hier können Sie sich das Beispiel live ansehen.](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
 
 Das nächste Tutorial veranschaulicht, wie Sie eine Route zwischen zwei Orten anzeigen.
 

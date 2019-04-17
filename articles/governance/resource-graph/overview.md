@@ -1,19 +1,18 @@
 ---
 title: Übersicht über Azure Resource Graph
 description: Hier wird erläutert, wie der Azure Resource Graph-Dienst das komplexe bedarfsabhängige Abfragen von Ressourcen ermöglicht.
-services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/06/2019
+ms.date: 03/29/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 15cfdc87fafa25e9f37c63c8159289b25a547817
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 28efdabc024fd32c83ba966b15284ec6ff368d4d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802321"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269287"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Übersicht über den Azure Resource Graph-Dienst
 
@@ -26,13 +25,13 @@ Azure Resource Graph ist ein Dienst in Azure, der die Azure-Ressourcenverwaltung
 In dieser Dokumentation wird jedes Feature ausführlich beschrieben.
 
 > [!NOTE]
-> Azure Resource Graph wird von der neuen Funktion zum „Alle Ressourcen“-Durchsuchen des Azure-Portals verwendet. Es dient zur Unterstützung von Kunden, die umfangreiche Umgebungen verwalten müssen.
+> Azure Resource Graph wird von der neuen Funktion zum „Alle Ressourcen“-Durchsuchen des Azure-Portals verwendet. Sie dient zur Unterstützung von Kunden, die umfangreiche Umgebungen verwalten müssen.
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Wie Resource Graph Azure Resource Manager ergänzt
 
 Azure Resource Manager sendet Daten derzeit an einen begrenzten Ressourcencache, der mehrere Ressourcenfelder verfügbar macht: Ressourcenname, ID, Typ, Ressourcengruppe, Abonnements und Speicherort. Bisher waren für die Verwendung von unterschiedlichen Ressourceneigenschaften Aufrufe für jeden einzelnen Ressourcenanbieter erforderlich, und für jede Ressource mussten Details zu den Anforderungseigenschaften vorhanden sein.
 
-Mit Azure Resource Graph können Sie auf diese Eigenschaften zugreifen, die die Ressourcenanbieter zurückgeben, ohne jeden Ressourcenanbieter einzeln anrufen zu müssen.
+Mit Azure Resource Graph können Sie auf diese Eigenschaften zugreifen, die die Ressourcenanbieter zurückgeben, ohne jeden Ressourcenanbieter einzeln anrufen zu müssen. Die unterstützten Ressourcentypen sind in der Tabelle unter [Löschen von Azure-Ressourcen für Bereitstellungen im vollständigen Modus](../../azure-resource-manager/complete-mode-deletion.md) mit **Ja** gekennzeichnet.
 
 ## <a name="the-query-language"></a>Die Abfragesprache
 
@@ -45,6 +44,9 @@ Informationen zu Vorgängen und Funktionen, die mit Azure Resource Graph verwend
 ## <a name="permissions-in-azure-resource-graph"></a>Berechtigungen in Azure Resource Graph
 
 Um Resource Graph verwenden zu können, müssen Sie über die richtigen Rechte für die [rollenbasierte Zugriffssteuerung](../../role-based-access-control/overview.md) (Role-Based Access Control, RBAC) und mindestens über Lesezugriff auf die abzufragenden Ressourcen verfügen. Wenn Sie nicht mindestens `read`-Berechtigungen für das Azure-Objekt bzw. die Objektgruppe haben, werden keine Ergebnisse zurückgegeben.
+
+> [!NOTE]
+> Ressource Graph verwendet die Abonnements, die für einen Prinzipal während der Anmeldung verfügbar sind. Um Ressourcen eines neuen Abonnements anzuzeigen, die während einer aktiven Sitzung hinzugefügt wurden, muss der Prinzipal den Kontext aktualisieren. Diese Aktion erfolgt nach dem Abmelden und erneuten Anmelden automatisch.
 
 ## <a name="throttling"></a>Drosselung
 

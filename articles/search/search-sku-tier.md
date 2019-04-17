@@ -7,19 +7,21 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 523c99436eb49f1658a5d4c56d64248adccc5c3a
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: da8c8adacfead598a8dec6280cf3518fb7b31f49
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621269"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270950"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Auswählen eines Tarifs für Azure Search
 
-In Azure Search erfolgt das [Erstellen einer Ressource](search-create-service-portal.md) basierend auf einem Tarif oder einer SKU, der/die für die Lebensdauer des Diensts fest ist. Folgende Tarife sind verfügbar: **Free**, **Basic**, **Standard** und **Speicheroptimiert**.  **Standard** und **Speicheroptimiert** sind mit verschiedenen Konfigurationen und Kapazitäten verfügbar. Die meisten Kunden beginnen zu Evaluierungszwecken mit dem Tarif **Free** und wechseln dann für Entwicklungs- und Produktionsbereitstellungen zu einem der höheren kostenpflichtigen Tarife. Sie können alle Schnellstartanleitungen und Tutorials im Tarif **Free** absolvieren, einschließlich jener für ressourcenintensive kognitive Suchen.
+In Azure Search erfolgt das [Erstellen einer Ressource](search-create-service-portal.md) basierend auf einem Tarif oder einer SKU, der/die für die Lebensdauer des Diensts fest ist. Folgende Tarife sind verfügbar: **Free**, **Basic**, **Standard** und **Speicheroptimiert**.  **Standard** und **Speicheroptimiert** sind mit verschiedenen Konfigurationen und Kapazitäten verfügbar. 
+
+Die meisten Kunden beginnen zu Evaluierungszwecken mit dem Tarif **Free** und wechseln dann für Entwicklungs- und Produktionsbereitstellungen zu einem der höheren kostenpflichtigen Tarife. Sie können alle Schnellstartanleitungen und Tutorials im Tarif **Free** absolvieren, einschließlich jener für ressourcenintensive kognitive Suchen.
 
 > [!NOTE]
 > Die Tarife vom Typ „Speicheroptimiert“ sind derzeit als günstigere Vorschauversion zum Testen und Experimentieren erhältlich, um Feedback zu sammeln. Die endgültigen Preise werden später bekannt gegeben, wenn diese Tarife allgemein verfügbar sind. Wir raten davon ab, diese Tarife für Produktionsanwendungen zu verwenden.
@@ -29,7 +31,7 @@ Tarife geben die Merkmale der Hardware wieder, die den Dienst hostet (anstelle v
 + Anzahl der Indizes, die Sie erstellen können
 + Größe und Geschwindigkeit von Partitionen (physischer Speicher)
 
-Obwohl alle Tarife, einschließlich des Tarifs **Free**, in der Regel Featureparität anbieten, können größere Workloads Anforderungen für höhere Tarife diktieren. Beispielsweise ist die Indizierung für die [kognitive Suche](cognitive-search-concept-intro.md) mit Vorgängen zum Ausführen von Qualifikationen mit langer Laufzeit verbunden, sodass bei einem kostenlosen Dienst ein Timeout auftritt, sofern es sich nicht um ein kleines Dataset handelt.
+Obwohl alle Tarife, einschließlich des Tarifs **Free**, in der Regel Featureparität anbieten, können größere Workloads Anforderungen für höhere Tarife diktieren. Beispielsweise ist die [KI-Indizierung mit Cognitive Services](cognitive-search-concept-intro.md) mit Vorgängen zum Ausführen von Qualifikationen mit langer Laufzeit verbunden, sodass bei einem kostenlosen Dienst ein Timeout auftritt, sofern es sich nicht um ein kleines Dataset handelt.
 
 > [!NOTE] 
 > Die Ausnahme bei der Featureparität sind die [Indexer](search-indexer-overview.md), die bei S3HD nicht verfügbar sind.
@@ -53,7 +55,7 @@ In der folgenden Tabelle sind die verfügbaren Tarife aufgeführt. Informationen
 |Speicheroptimiert 2 (L2) | 2 TB pro Partition (max. 24 TB pro Dienst) |
 
 > [!NOTE] 
-> Die speicheroptimierten Tarife bieten eine höhere Speicherkapazität zu einem niedrigeren Preis pro TB als die Standard-Tarife.  Der größte Nachteil ist die höhere Wartezeit. Diese müssen Sie bei Ihren spezifischen Anwendungsanforderungen berücksichtigen.  Weitere Informationen zu den Leistungsaspekten dieses Tarifs finden Sie unter [Bereitstellungsstrategien und bewährte Methoden zur Optimierung der Leistung in Azure Search](search-performance-optimization.md).
+> Die speicheroptimierten Tarife bieten eine höhere Speicherkapazität zu einem niedrigeren Preis pro TB als die Standard-Tarife. Der größte Nachteil ist die höhere Wartezeit. Diese müssen Sie bei Ihren spezifischen Anwendungsanforderungen berücksichtigen.  Weitere Informationen zu den Leistungsaspekten dieses Tarifs finden Sie unter [Bereitstellungsstrategien und bewährte Methoden zur Optimierung der Leistung in Azure Search](search-performance-optimization.md).
 >
 
 ## <a name="how-billing-works"></a>Funktionsweise der Abrechnung
@@ -70,17 +72,27 @@ Im folgenden Screenshot wird der Preis pro Einheit für die Tarife Free, Basic u
 
 Für zusätzliche Replikate und Partitionen fallen zusätzliche Kosten zu den Basiskosten an. Ein Suchdienst benötigt ein Replikat und eine Partition, weshalb die Konfiguration aus mindestens einem Replikat und einer Partition bestehen muss. Über diese Mindestanforderung hinaus können Sie Replikate und Partitionen eigenständig hinzufügen. Beispielsweise könnten Sie nur Replikate oder nur Partitionen hinzufügen. 
 
-Zusätzliche Replikate und Partitionen werden auf Grundlage einer [Formel](#search-units) abgerechnet. Die Kosten sind nicht linear (bei einer Verdopplung der Kapazität fallen mehr als doppelt so hohe Kosten an). Ein Beispiel zur Funktionsweise der Formel finden Sie unter [How to allocate replicas and partitions (Vorgehensweise: Zuordnen von Replikaten und Partitionen)](search-capacity-planning.md#how-to-allocate-replicas-and-partitions).
+Zusätzliche Replikate und Partitionen werden auf Grundlage einer [Formel](#search-units) abgerechnet. Die Kosten sind nicht linear (bei einer Verdopplung der Kapazität fallen mehr als doppelt so hohe Kosten an). Ein Beispiel zur Funktionsweise der Formel finden Sie unter [Zuordnen von Replikaten und Partitionen](search-capacity-planning.md#how-to-allocate-replicas-and-partitions).
 
 ### <a name="2-data-egress-charges-during-indexing"></a>2. Gebühren für ausgehende Daten während der Indizierung
 
-Wenn Sie Daten aus einer Azure SQL-Datenbank oder Cosmos DB-Datenquelle abrufen, werden entsprechende Gebühren für die Transaktion in der Rechnung für diese Ressourcen aufgeführt. Bei diesen Gebühren handelt es sich nicht um Azure Search-Verbrauchseinheiten. Sie werden hier jedoch erwähnt, da Ihnen die Gebühren in Ihrer Rechnung angezeigt werden, wenn Sie Indexer zum Übertragen von Daten aus Azure SQL-Datenbank oder Azure Cosmos DB mithilfe von Pull verwenden.
+Die Verwendung von [Azure Search Indexer](search-indexer-overview.md) kann je nach Position der Dienste zu Auswirkungen auf die Abrechnung führen. Sie können die Gebühren für ausgehende Daten vollständig vermeiden, wenn Sie den Azure Search-Dienst in derselben Region wie Ihre Daten erstellen.
+
++ Keine Gebühren für eingehende Daten zu beliebigen Diensten von Azure.
+
++ Keine Gebühren für ausgehende Daten von Azure Search.
+
++ Keine Gebühren für Daten oder Dateien, die von SQL DB, Cosmos, Blob Storage (eingehend zu Azure Search) ausgehen, solange sich alle Dienste in derselben Region befinden.
+
++ Für ausgehende Daten oder Dateien fallen Gebühren an, wenn sich Speicherung und Azure Search in verschiedenen Regionen befinden.
+
+Wenn Daten über Azure-Regionen geleitet werden, werden in der Rechnung für diese Ressourcen Kosten für die Bandbreite angezeigt. Diese Gebühren sind nicht Teil Ihrer Azure Search-Rechnung, aber sie werden hier erwähnt, denn wenn Sie Indexer verwenden, um Daten oder Dateien mithilfe von Pull zu übertragen, wird diese Gebühr in Ihrer Gesamtrechnung angezeigt.
+
+Wenn Sie keine Indexer verwenden, fallen keine Bandbreitengebühren an. 
 
 ### <a name="3-ai-enriched-indexing-using-cognitive-services"></a>3. Um KI erweiterte Indizierung unter Verwendung von Cognitive Services
 
-Nur bei der [kognitiven Suche](cognitive-search-concept-intro.md) wird das Extrahieren von Bildern während der Dokumentaufschlüsselung basierend auf der Anzahl der aus Ihren Dokumenten extrahierten Bilder in Rechnung gestellt. Das Extrahieren von Text ist derzeit kostenlos. Andere auf [integrierten kognitiven Fähigkeiten](cognitive-search-predefined-skills.md) basierende Erweiterungen werden für eine Cognitive Services-Ressource in Rechnung gestellt. Anreicherungen werden mit der gleichen Gebühr abgerechnet, als ob Sie die Aufgabe direkt mithilfe von Cognitive Services ausgeführt hätten.
-
-Wenn Sie keine [kognitive Suche](cognitive-search-concept-intro.md) oder [Azure Search-Indexer](search-indexer-overview.md) verwenden, beziehen sich Ihre Kosten nur auf die Replikate und Partitionen, die aktiv für normale Indizierungs- und Abfrageworkloads verwendet werden.
+Nur bei der [KI-Indizierung mit Cognitive Services](cognitive-search-concept-intro.md) wird das Extrahieren von Bildern während der Dokumentaufschlüsselung basierend auf der Anzahl der aus Ihren Dokumenten extrahierten Bilder in Rechnung gestellt. Das Extrahieren von Text ist derzeit kostenlos. Andere auf [integrierten kognitiven Fähigkeiten](cognitive-search-predefined-skills.md) basierende Erweiterungen, wie die Verarbeitung natürlicher Sprache, werden für eine Cognitive Services-Ressource in Rechnung gestellt. Anreicherungen werden mit der gleichen Gebühr abgerechnet, als ob Sie die Aufgabe direkt mithilfe von Cognitive Services ausgeführt hätten.
 
 <a name="search-units"></a>
 

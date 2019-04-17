@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 895f6ce728ce608184bf6f68be3b73d5dc384d79
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: f2c4c6b8655d5efb993a2dedf536000ac94328c2
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52893115"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281487"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>Hinzufügen einer Blasenebene zu einer Karte
 
 In diesem Artikel erfahren Sie, wie Sie Punktdaten aus einer Datenquelle als Blasenebene auf einer Karte rendern können. Blasenebenen rendern Punkte als Kreise mit festem Pixelradius auf der Karte. 
 
 > [!TIP]
-> Blasenebenen rendern in der Standardeinstellung die Koordinaten aller Geometrien in einer Datenquelle. Legen Sie die Eigenschaft `filter` der Ebene auf `['==', '$type', 'Point']` fest, um die Ebene dahingehend zu beschränken, dass nur Punktgeometriefunktionen gerendert werden.
+> Blasenebenen rendern in der Standardeinstellung die Koordinaten aller Geometrien in einer Datenquelle. Legen Sie die Eigenschaft `filter` der Ebene auf `['==', ['geometry-type'], 'Point']` oder `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` fest, um die Ebene dahingehend zu beschränken, dass nur Punktgeometriefunktionen gerendert werden, wenn auch MultiPoint-Funktionen berücksichtigt werden sollen.
 
 ## <a name="add-a-bubble-layer"></a>Hinzufügen einer Blasenebene
 
@@ -73,4 +73,7 @@ Erfahren Sie mehr zu den in diesem Artikel verwendeten Klassen und Methoden:
 In den folgenden Artikeln finden Sie weitere Codebeispiele, die Sie Ihren Karten hinzufügen können:
 
 > [!div class="nextstepaction"]
-> [Add a symbol layer (Hinzufügen einer Symbolebene)](./map-add-pin.md)
+> [Hinzufügen einer Symbolebene](map-add-pin.md)
+
+> [!div class="nextstepaction"]
+> [Verwenden von datengesteuerten Formatvorlagenausdrücken](data-driven-style-expressions-web-sdk.md)

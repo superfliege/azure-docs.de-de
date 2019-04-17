@@ -4,18 +4,21 @@ description: Hier erfahren Sie, wie Sie eine große Anzahl lokaler Computer mit 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 04/04/2019
 ms.author: raynew
-ms.openlocfilehash: 8a2ea64d32194ff06378e3227b260c4f10d53175
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ae84313cd750e3d6c7eb9443ec59095dec9c632e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58116672"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265248"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Ermitteln und Bewerten einer umfangreichen VMware-Umgebung
 
-Bei Azure Migrate gilt eine Beschränkung von 1500 Computern pro Projekt. In diesem Artikel erfahren Sie, wie Sie eine große Anzahl lokaler virtueller Computer (VMs) mit [Azure Migrate](migrate-overview.md) bewerten.   
+Bei Azure Migrate gilt eine Beschränkung von 1500 Computern pro Projekt. In diesem Artikel erfahren Sie, wie Sie eine große Anzahl lokaler virtueller Computer (VMs) mit [Azure Migrate](migrate-overview.md) bewerten.
+
+> [!NOTE]
+> Wir verfügen über eine Vorschauversion, die eine Ermittlung von bis zu 10.000 VMware-VMs in einem einzigen Projekt mit einer einzigen Instanz ermöglicht. Wenn Sie diese Version gerne testen möchten, melden Sie sich bitte [hier](https://aka.ms/migratefuture) an.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -284,7 +287,7 @@ Die Collectorappliance ermittelt die folgenden Konfigurationsdaten zu den ausgew
 
 Die Collectorappliance sammelt die folgenden Leistungsindikatoren für jede VM vom ESXi-Host in einem Intervall von 20 Sekunden. Diese Leistungsindikatoren sind vCenter-Leistungsindikatoren und obwohl die Terminologie von Durchschnitt spricht, handelt es sich bei den 20-Sekunden-Stichproben um Echtzeit-Leistungsindikatoren. Die Appliance führt dann ein Rollup der 20-Sekunden-Stichprobe durch, um einen einzelnen Datenpunkt für je 15 Minuten in Form des Spitzenwerts der 20-Sekunden-Stichprobe zu erstellen, und sendet diesen an Azure. Die Leistungsdaten für die virtuellen Computer stehen im Portal zwei Stunden nach dem Starten der Ermittlung zur Verfügung. Bei leistungsbasierten Bewertungen wird dringend empfohlen, mindestens einen Tag mit deren Erstellung zu warten, um korrekte Größenempfehlungen zu erhalten. Wenn Sie sofortige Ergebnisse wünschen, können Sie Bewertungen erstellen, bei denen das Größenkriterium auf *Wie lokal* festgelegt ist, wodurch die Leistungsdaten für die korrekte Größenanpassung nicht berücksichtigt werden.
 
-**Leistungsindikator** |  **Auswirkung auf die Bewertung**
+**Indikator** |  **Auswirkung auf die Bewertung**
 --- | ---
 cpu.usage.average | Empfohlene VM-Größe und -Kosten  
 mem.usage.average | Empfohlene VM-Größe und -Kosten  

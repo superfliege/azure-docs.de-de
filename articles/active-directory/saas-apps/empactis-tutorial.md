@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: ed0b5c990bd12e23fefcc433a656a71207b08683
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: d4d9e988f54abc52eedf0dfc26c78a2d16f72032
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58003744"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277722"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-empactis"></a>Tutorial: Azure Active Directory-Integration mit Empactis
 
@@ -186,7 +186,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Empactis“ klicken, sollten Sie a
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

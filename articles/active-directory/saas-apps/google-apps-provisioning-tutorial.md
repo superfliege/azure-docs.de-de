@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b78cb45d83cd9bc9bc973ec7a09cb75a8b111744
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: ea1f4d4a6b60961515826a1ba7409bf149b318e8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224147"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281300"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von G Suite für die automatische Benutzerbereitstellung
 
@@ -69,78 +69,77 @@ Dieser Abschnitt beschreibt, wie Sie Azure AD mit der API für die Benutzerkonte
 > Eine weitere Option für die Automatisierung der Benutzerbereitstellung für G Suite ist die Verwendung von [Google Apps Directory Sync (GADS)](https://support.google.com/a/answer/106368?hl=en). GADS stellt Ihre lokalen Active Directory-Identitäten für G Suite bereit. Im Gegensatz dazu stellt die Lösung in diesem Tutorial Ihre Azure Active Directory-Benutzer (Cloud) und E-Mail-fähigen Gruppen für G Suite bereit. 
 
 1. Melden Sie sich bei der [Google Apps-Verwaltungskonsole](https://admin.google.com/) mit Ihrem Administratorkonto an, und wählen Sie **Sicherheit** aus. Sollte der Link nicht zu sehen sein, befindet er sich möglicherweise unter dem Menü **Weitere Steuerelemente** am unteren Bildschirmrand.
-   
+
     ![Wählen Sie „Sicherheit“ aus.][10]
 
 1. Wählen Sie auf der Seite **Sicherheit** die Option **API-Referenz** aus.
-   
+
     ![Wählen Sie „API-Referenz“ aus.][15]
 
 1. Wählen Sie **API-Zugriff aktivieren**aus.
-   
+
     ![Wählen Sie „API-Referenz“ aus.][16]
 
    > [!IMPORTANT]
    > Für jeden Benutzer, den Sie für G Suite bereitstellen möchten, *muss* der Benutzername in Azure Active Directory an eine benutzerdefinierte Domäne gebunden werden. Beispielsweise werden Benutzernamen wie bob@contoso.onmicrosoft.com von G Suite nicht akzeptiert. bob@contoso.com ist hingegen zulässig. Sie können die Domäne eines vorhandenen Benutzers ändern, indem Sie seine Eigenschaften in Azure AD bearbeiten. Die folgende Anleitung beschreibt, wie Sie eine benutzerdefinierte Domäne für Azure Active Directory und G Suite einrichten.
-      
+
 1. Führen Sie die folgenden Schritte aus, wenn Sie Ihrem Azure Active Directory noch keinen benutzerdefinierten Domänennamen hinzugefügt haben:
   
-    a. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Navigationsbereich die Option **Active Directory** aus. Wählen Sie in der Verzeichnisliste Ihr Verzeichnis aus. 
+    a. Wählen Sie im [Azure-Portal](https://portal.azure.com) im linken Navigationsbereich die Option **Active Directory** aus. Wählen Sie in der Verzeichnisliste Ihr Verzeichnis aus.
 
     b. Wählen Sie im linken Navigationsbereich die Option **Domänenname** und anschließend **Hinzufügen** aus.
-     
-     ![Domäne](./media/google-apps-provisioning-tutorial/domain_1.png)
 
-     ![Hinzufügen der Domäne](./media/google-apps-provisioning-tutorial/domain_2.png)
+    ![Domäne](./media/google-apps-provisioning-tutorial/domain_1.png)
+
+    ![Hinzufügen der Domäne](./media/google-apps-provisioning-tutorial/domain_2.png)
 
     c. Geben Sie Ihren Domänennamen in das Feld **Domänenname** ein. Dieser Domänenname sollte dem Domänennamen entsprechen, den Sie für G Suite verwenden. Wählen Sie als Nächstes die Schaltfläche **Domäne hinzufügen** aus.
-     
-     ![Domänenname](./media/google-apps-provisioning-tutorial/domain_3.png)
 
-    d. Wählen Sie **Weiter** aus, um zur Überprüfungsseite zu gelangen. Bearbeiten Sie die DNS-Einträge der Domäne gemäß den Werten auf dieser Seite, um zu bestätigen, dass Ihnen die Domäne gehört. Sie können wählen, ob Sie zur Bestätigung **MX-Einträge** oder **TXT-Einträge** verwenden möchten. Dies hängt von der Auswahl für die Option **Eintragstyp** ab. 
-    
+    ![Domänenname](./media/google-apps-provisioning-tutorial/domain_3.png)
+
+    d. Wählen Sie **Weiter** aus, um zur Überprüfungsseite zu gelangen. Bearbeiten Sie die DNS-Einträge der Domäne gemäß den Werten auf dieser Seite, um zu bestätigen, dass Ihnen die Domäne gehört. Sie können wählen, ob Sie zur Bestätigung **MX-Einträge** oder **TXT-Einträge** verwenden möchten. Dies hängt von der Auswahl für die Option **Eintragstyp** ab.
+
     Eine ausführlichere Anleitung zur Bestätigung von Domänennamen mit Azure AD finden Sie unter [Hinzufügen eigener Domänennamen zu Azure AD](https://go.microsoft.com/fwLink/?LinkID=278919&clcid=0x409).
-     
-     ![Domäne](./media/google-apps-provisioning-tutorial/domain_4.png)
+
+    ![Domäne](./media/google-apps-provisioning-tutorial/domain_4.png)
 
     e. Wiederholen Sie die obigen Schritte für alle Domänen, die Sie Ihrem Verzeichnis hinzufügen möchten.
 
-   > [!NOTE]
-   >  Für die Benutzerbereitstellung muss die benutzerdefinierte Domäne dem Domänennamen der Azure AD-Quelle entsprechen. Andernfalls lässt sich das Problem unter Umständen durch eine Anpassung der Attributzuordnung beheben.
-
+    > [!NOTE]
+    > Für die Benutzerbereitstellung muss die benutzerdefinierte Domäne dem Domänennamen der Azure AD-Quelle entsprechen. Andernfalls lässt sich das Problem unter Umständen durch eine Anpassung der Attributzuordnung beheben.
 
 1. Nachdem Sie alle Ihre Domänen mit Azure AD überprüft haben, müssen Sie sie mit Google Apps erneut überprüfen. Führen Sie für jede Domäne, die noch nicht für Google registriert ist, die folgenden Schritte aus:
-   
+
     a. Wählen Sie in der [Google Apps-Verwaltungskonsole](https://admin.google.com/) die Option **Domänen** aus.
-     
-     ![Auswählen von „Domänen“][20]
+
+    ![Auswählen von „Domänen“][20]
 
     b. Wählen Sie **Domäne oder Domänenalias hinzufügen** aus.
-     
-     ![Hinzufügen einer neuen Domäne][21]
+
+    ![Hinzufügen einer neuen Domäne][21]
 
     c. Wählen Sie **Andere Domäne hinzufügen** aus, und geben Sie dann den Namen der Domäne ein, die Sie hinzufügen möchten.
-     
-     ![Geben Sie Ihren Domänennamen ein][22]
+
+    ![Geben Sie Ihren Domänennamen ein][22]
 
     d. Wählen Sie **Weiter und Domänenbesitzrecht überprüfen** aus. Führen Sie dann die Schritte aus, mit denen Sie prüfen, ob Sie den Domänennamen besitzen. Umfassende Anweisungen zum Überprüfen Ihrer Domäne mit Google finden Sie unter [Überprüfen des Websitebesitzrechts mit Google Apps](https://support.google.com/webmasters/answer/35179).
 
     e. Wiederholen Sie die obigen Schritte für alle weiteren Domänen, die Sie Google Apps hinzufügen möchten.
-     
-     > [!WARNING]
-     > Wenn Sie die primäre Domäne für Ihren G Suite-Mandanten ändern und das einmalige Anmelden mit Azure AD bereits konfiguriert haben, müssen Sie Schritt 3 unter Schritt 2: „Einmaliges Anmelden aktivieren“ wiederholen.
-       
+
+    > [!WARNING]
+    > Wenn Sie die primäre Domäne für Ihren G Suite-Mandanten ändern und das einmalige Anmelden mit Azure AD bereits konfiguriert haben, müssen Sie Schritt 3 unter Schritt 2: „Einmaliges Anmelden aktivieren“ wiederholen.
+
 1. Wählen Sie in der [Google Apps-Verwaltungskonsole](https://admin.google.com/) die Option **Administratorrollen** aus.
-   
-     ![Auswählen von „Google Apps“][26]
+
+    ![Auswählen von „Google Apps“][26]
 
 1. Bestimmen Sie, welches Administratorkonto Sie zum Verwalten der Benutzerbereitstellung verwenden möchten. Bearbeiten Sie für die **Administratorrolle** des Kontos die **Berechtigungen** für diese Rolle. Aktivieren Sie alle **Admin-API-Berechtigungen**, damit dieses Konto für die Bereitstellung verwendet werden kann.
-   
-     ![Auswählen von „Google Apps“][27]
-   
+
+    ![Auswählen von „Google Apps“][27]
+
     > [!NOTE]
     > Wenn Sie eine Produktionsumgebung konfigurieren, sollten Sie speziell für diesen Schritt ein Administratorkonto in G Suite erstellen. Diesen Konten muss eine Administratorrolle zugeordnet sein, die über die erforderlichen API-Berechtigungen verfügt.
-     
+
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory** > **Unternehmens-Apps** > **Alle Anwendungen**.
 
 1. Suchen Sie über das Suchfeld nach Ihrer G Suite-Instanz, wenn Sie G Suite bereits für einmaliges Anmelden konfiguriert haben. Wählen Sie andernfalls **Hinzufügen** aus, und suchen Sie im Anwendungskatalog nach **G Suite** oder **Google Apps**. Wählen Sie in den Suchergebnissen Ihre App aus, und fügen Sie die Anwendung Ihrer Anwendungsliste hinzu.
@@ -149,13 +148,13 @@ Dieser Abschnitt beschreibt, wie Sie Azure AD mit der API für die Benutzerkonte
 
 1. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest. 
 
-       ![Provisioning](./media/google-apps-provisioning-tutorial/provisioning.png)
+    ![Bereitstellung](./media/google-apps-provisioning-tutorial/provisioning.png)
 
 1. Wählen Sie im Abschnitt **Administratoranmeldeinformationen** die Option **Autorisieren** aus. In einem neuen Browserfenster wird ein Dialogfeld für die Google-Autorisierung geöffnet.
 
 1. Bestätigen Sie, dass Sie Azure Active Directory die Berechtigung erteilen möchten, Änderungen an Ihrem G Suite-Mandanten vorzunehmen. Wählen Sie **Akzeptieren** aus.
-    
-       ![Confirm permissions.][28]
+
+    ![Überprüfen Sie die Berechtigungen.][28]
 
 1. Wählen Sie im Azure-Portal die Option **Verbindung testen** aus, um zu überprüfen, ob Azure AD eine Verbindung mit Ihrer App herstellen kann. Falls die Verbindung nicht hergestellt werden kann, überprüfen Sie, ob Ihr G Suite-Konto über Teamadministratorberechtigungen verfügt. Führen Sie dann erneut den Schritt **Autorisieren** aus.
 
@@ -179,9 +178,7 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 
 * [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Konfigurieren von einmaligem Anmelden](google-apps-tutorial.md)
-
-
+* [Einmaliges Anmelden konfigurieren](google-apps-tutorial.md)
 
 <!--Image references-->
 

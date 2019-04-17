@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 59dc9f82251e7a406e6fe1339fdb55b4880cd74d
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 34fe5d85829d909989513214406ba96ea5be0aa8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649185"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271100"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>Tutorial: Azure Active Directory-Integration mit Pega Systems
 
@@ -51,7 +51,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Um die Integration von Pega Systems in Azure AD zu konfigurieren, müssen Sie Pega Systems aus dem Katalog zu Ihrer Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Um Pega Systems aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+**Führen Sie die folgenden Schritte aus, um Pega Systems aus dem Katalog hinzuzufügen:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -115,7 +115,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Pega Sy
 
     a. Geben Sie im Textfeld **Anmelde-URL** den Wert der Anmelde-URL ein.
 
-    b. Geben Sie im Textfeld **Relayzustand** eine URL nach folgendem Muster ein: `https://<CUSTOMERNAME>.pegacloud.io/prweb/sso`.
+    b. Geben Sie im Textfeld **Relayzustand** eine URL im folgenden Format ein: `https://<CUSTOMERNAME>.pegacloud.io/prweb/sso`
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL, der Anmelde-URL und der URL für den Relayzustand. Sie finden die Werte von „Bezeichner“ und „Antwort-URL“ in der Pega-Anwendung. Dies ist weiter unten in diesem Tutorial beschrieben. Den Wert für „Relayzustand“ erhalten Sie vom [Supportteam für den Pega Systems-Client](https://www.pega.com/contact-us). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -275,7 +275,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Pega Systems“ klicken, sollten S
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

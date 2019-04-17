@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 1dee51354ba9210e52459dcf7a96695bc3736648
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: b4fbfc1d9c9441c6c9f12987de5feb1a90e9f17f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759728"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256378"
 ---
 # <a name="what-is-industrial-iot-iiot"></a>Was ist Industrial IoT (IIoT)?
 
@@ -23,7 +23,7 @@ IIoT ist das Internet der Dinge für die Industrie. IIoT ermöglicht die Verbess
 
 Steigern Sie die Produktivität und Wirtschaftlichkeit Ihres Unternehmens mit einem Connected Factory-Solution Accelerator. Verbinden und überwachen Sie Ihre Industriemaschinen und -geräte in der Cloud – einschließlich Ihrer Computer, die bereits im Fertigungsbereich betrieben werden. Analysieren Sie Ihre IoT-Daten, um zu ermitteln, wie sich die Fertigungsleistung insgesamt verbessern lässt.
 
-Beschleunigen Sie den Zugriff auf Computer im Fertigungsbereich mit der OPC UA-Geräteverwaltung von Azure IoT (OPC Twin), und konzentrieren Sie sich auf die Entwicklung von IIoT-Lösungen. Optimieren Sie die Zertifikatverwaltung sowie die Integration von Industrieanlagen mit der OPC UA-Zertifikatverwaltung von Azure IoT (OPC Vault), um die Konnektivität Ihrer Anlagen zu gewährleisten. Diese Microservices bieten neben [Azure Industrial IoT-Komponenten](https://github.com/Azure/azure-iiot-opc-ua) auch eine REST-ähnliche API. Die Dienst-API ermöglicht die Steuerung von Edgemodulfunktionen. 
+Beschleunigen Sie den Zugriff auf Computer im Fertigungsbereich mit der OPC UA-Geräteverwaltung von Azure IoT (OPC-Zwilling), und konzentrieren Sie sich auf die Entwicklung von IIoT-Lösungen. Optimieren Sie die Zertifikatverwaltung sowie die Integration von Industrieanlagen mit der OPC UA-Zertifikatverwaltung von Azure IoT (OPC-Tresor), um die Konnektivität Ihrer Anlagen zu gewährleisten. Diese Microservices bieten neben [Azure Industrial IoT-Komponenten](https://github.com/Azure/azure-iiot-opc-ua) auch eine REST-ähnliche API. Die Dienst-API ermöglicht die Steuerung von Edgemodulfunktionen. 
 
 ![Übersicht über Industrial IoT](media/overview-iot-industrial/overview.png)
 
@@ -39,15 +39,15 @@ Sollten Sie noch nicht mit der Funktionsweise von Azure IoT Edge-Modulen vertr
 
 ## <a name="factory-floor-connectivity"></a>Konnektivität im Fertigungsbereich
 
-Die OPC UA-Geräteverwaltung von Azure IoT (auch OPC Twin genannt) ist eine IIoT-Komponente zur Automatisierung der Geräteermittlung und -registrierung, mit der Sie industrielle Geräte über REST-APIs fernsteuern können. OPC Twin nutzt Azure IoT Edge und IoT Hub, um eine Verbindung zwischen Cloud und Fabriknetzwerk herzustellen. Mit OPC Twin können sich IIoT-Entwickler auf die Entwicklung von IIoT-Anwendung konzentrieren, ohne sich Gedanken über den sicheren Zugriff auf die lokalen Computer machen zu müssen.
+Die OPC UA-Geräteverwaltung von Azure IoT (auch OPC-Zwilling genannt) ist eine IIoT-Komponente zur Automatisierung der Geräteermittlung und -registrierung, mit der Sie industrielle Geräte über REST-APIs fernsteuern können. OPC-Zwilling nutzt Azure IoT Edge und IoT Hub, um eine Verbindung zwischen Cloud und Fabriknetzwerk herzustellen. Mit OPC-Zwilling können sich IIoT-Entwickler auf die Entwicklung von IIoT-Anwendung konzentrieren, ohne sich Gedanken über den sicheren Zugriff auf die lokalen Computer machen zu müssen.
 
 ## <a name="security"></a>Sicherheit
 
-Die OPC UA-Zertifikatverwaltung von Azure IoT (OPC Vault) ist eine Implementierung von OPC UA GDS (Global Discovery Server) und dient zum Konfigurieren, Registrieren und Verwalten des Zertifikatlebenszyklus für OPC UA-Server und Clientanwendungen in der Cloud. OPC Vault vereinfacht die Implementierung und Wartung einer sicheren Anlagenkonnektivität im Industriebereich. Durch die Automatisierung der Zertifikatverwaltung sorgt OPC Vault dafür, dass sich Bediener nicht mehr um die manuellen und komplexen Prozesse im Zusammenhang mit Konnektivität und Zertifikatverwaltung kümmern müssen.
+Die OPC UA-Zertifikatverwaltung von Azure IoT (OPC-Tresor) ist eine Implementierung von OPC UA GDS (Global Discovery Server) und dient zum Konfigurieren, Registrieren und Verwalten des Zertifikatlebenszyklus für OPC UA-Server und Clientanwendungen in der Cloud. OPC-Tresor vereinfacht die Implementierung und Wartung einer sicheren Anlagenkonnektivität im Industriebereich. Durch die Automatisierung der Zertifikatverwaltung sorgt OPC-Tresor dafür, dass sich Bediener nicht mehr um die manuellen und komplexen Prozesse im Zusammenhang mit Konnektivität und Zertifikatverwaltung kümmern müssen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nach dieser Einführung in Industrial IoT und die dazugehörigen Komponenten können Sie mit dem nächsten Thema fortfahren:
 
 > [!div class="nextstepaction"]
-> [Was ist die OPC-Geräteverwaltung (Open Platform Communications) von Azure IoT?](overview-opc-twin.md)
+> [Was ist ein OPC-Zwilling?](overview-opc-twin.md)

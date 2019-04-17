@@ -5,21 +5,21 @@ author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/28/2018
+ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 55d6f1393f4f180776557ea9a2651064d61c3e06
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 1cf324887a225ecb9ba2cb40176a1f358e40a8e1
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301500"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361996"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>Ausführen des Azure Site Recovery-Bereitstellungsplaners für die VMware-Notfallwiederherstellung in Azure
 Dieser Artikel ist der Leitfaden zum Deployment Planner (Bereitstellungsplaner) von Azure Site Recovery für Bereitstellungen von „VMware zu Azure“ in der Produktion.
 
 
 ## <a name="modes-of-running-deployment-planner"></a>Modi der Bereitstellungsplaner-Ausführung
-Sie können das Befehlszeilentool (ASRDeploymentPlanner.exe) in einem der folgenden drei Modi ausführen:
+Sie können das Befehlszeilentool (ASRDeploymentPlanner.exe) in einem der folgenden vier Modi ausführen:
 
 1.  [Profilerstellung](#profile-vmware-vms)
 2.  [Berichterstellung](#generate-report)
@@ -81,7 +81,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Protocol| (Optional) Geben Sie als Protokoll entweder „http“ oder „https“ für die Verbindungsherstellung mit vCenter an. Das Standardprotokoll ist „https“.|
 | -StorageAccountName | (Optional) Der Name des Speicherkontos zur Ermittlung des Durchsatzes, der für die Replikation von Daten aus der lokalen Umgebung in Azure erreichbar ist. Mit dem Tool werden Testdaten in dieses Speicherkonto hochgeladen, um den Durchsatz zu berechnen. Das Speicherkonto muss vom Typ „Allgemein v1 (GPv1)“ sein. |
 | -StorageAccountKey | (Optional) Der Schlüssel des Speicherkontos, der zum Zugreifen auf das Speicherkonto verwendet wird. Navigieren Sie im Azure-Portal zu „Speicherkonten“ > <*Name des Speicherkontos*> > Einstellungen > Zugriffsschlüssel > Key1. |
-| -Environment | (optional) Dies ist Ihre Azure Storage-Zielkontoumgebung. Diese drei Werte sind möglich: „AzureCloud“, „AzureUSGovernment“ und „AzureChinaCloud“. Der Standardwert ist „AzureCloud“. Verwenden Sie den Parameter, wenn Sie als Azure-Zielregion Clouds vom Typ „Azure US Government“ oder „Azure China“ verwenden. |
+| -Environment | (optional) Dies ist Ihre Azure Storage-Zielkontoumgebung. Diese drei Werte sind möglich: „AzureCloud“, „AzureUSGovernment“ und „AzureChinaCloud“. Der Standardwert ist „AzureCloud“. Verwenden Sie den Parameter, wenn Sie als Zielregion „Azure US Government“ oder „Azure China 21Vianet“ nutzen. |
 
 
 Es wird empfohlen, die Profilerstellung für Ihre VMs länger als 7 Tage durchzuführen. Wenn sich das Muster der Datenänderung innerhalb eines Monats ändert, ist es ratsam, die Profilerstellung in die Woche mit der höchsten Datenänderung zu legen. Die beste Möglichkeit besteht darin, die Profilerstellung 31 Tage lang durchzuführen, um eine bessere Empfehlung zu erhalten. Während des Zeitraums der Profilerstellung wird „ASRDeploymentPlanner.exe“ weiter ausgeführt. Im Tool wird der Zeitraum für die Profilerstellung in Tagen eingegeben. Sie können die Profilerstellung einige Stunden oder Minuten lang durchführen, um kurz das Tool bzw. den Ablauf (Proof of Concept) zu testen. Die kürzeste zulässige Dauer für die Profilerstellung beträgt 30 Minuten.
@@ -95,7 +95,7 @@ Standardmäßig ist das Tool so konfiguriert, dass für bis zu 1000 VMs Profile 
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>
 ```
-Wenn Sie mit den Standardeinstellungen beispielsweise Profile für 1.500 VMs erstellen möchten, können Sie zwei Dateien vom Typ „VMList.txt“ verwenden. Eine mit 1.000 VMs und eine weitere mit 500 VMs. Führen Sie die beiden Instanzen des ASR-Bereitstellungsplaners aus, eine mit „VMList1.txt“ und eine mit „VMList2.txt“. Sie können zum Speichern der Profildaten beider VMList-VMs den gleichen Verzeichnispfad verwenden.
+Wenn Sie mit den Standardeinstellungen beispielsweise Profile für 1.500 VMs erstellen möchten, können Sie zwei Dateien vom Typ „VMList.txt“ verwenden. Eine mit 1.000 VMs und eine weitere mit 500 VMs. Führen Sie die beiden Instanzen des Azure Site Recovery-Bereitstellungsplaners aus, eine mit „VMList1.txt“ und eine mit „VMList2.txt“. Sie können zum Speichern der Profildaten beider VMList-VMs den gleichen Verzeichnispfad verwenden.
 
 Es wurde verdeutlicht, dass basierend auf der Hardwarekonfiguration – vor allem der RAM-Größe des Servers, auf dem das Tool für die Berichtserstellung ausgeführt wird – der Vorgang aufgrund von unzureichendem Arbeitsspeicher fehlschlagen kann. Wenn Sie über gute Hardware verfügen, können Sie MaxVMsSupported auch auf einen höheren Wert festlegen.  
 
@@ -240,12 +240,12 @@ Es wird dringend empfohlen, beim Planen der Bereitstellung den Zuwachs zu berüc
 
 Der erstellte Microsoft Excel-Bericht enthält die folgenden Informationen:
 
-* [On-premises Summary](site-recovery-vmware-deployment-planner-analyze-report.md#on-premises-summary) (Lokale Zusammenfassung)
+* [On-premises Summary (Lokale Zusammenfassung)](site-recovery-vmware-deployment-planner-analyze-report.md#on-premises-summary)
 * [Empfehlungen](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations)
-* [VM&lt;-&gt;Storage Placement](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement) (VM/Speicher-Anordnung)
-* [Compatible VMs](site-recovery-vmware-deployment-planner-analyze-report.md#compatible-vms) (Kompatible VMs)
-* [Incompatible VMs](site-recovery-vmware-deployment-planner-analyze-report.md#incompatible-vms) (Inkompatible VMs)
-* [Cost Estimation](site-recovery-vmware-deployment-planner-cost-estimation.md) (Kostenvorkalkulation)
+* [VM<->Storage Placement (VM/Speicher-Anordnung)](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement)
+* [Kompatible VMs](site-recovery-vmware-deployment-planner-analyze-report.md#compatible-vms)
+* [Inkompatible VMs](site-recovery-vmware-deployment-planner-analyze-report.md#incompatible-vms)
+* [Cost Estimation (Kostenvorkalkulation)](site-recovery-vmware-deployment-planner-cost-estimation.md)
 
 ![Deployment Planner](media/site-recovery-vmware-deployment-planner-analyze-report/Recommendations-v2a.png)
 
@@ -265,7 +265,7 @@ Führen Sie das Tool im GetThroughput-Modus aus, um den Durchsatz zu schätzen, 
 | -StorageAccountName | Der Name des Speicherkontos zur Ermittlung der Bandbreite, die für die Replikation von Daten aus der lokalen Umgebung in Azure verbraucht wird. Mit dem Tool werden Testdaten in dieses Speicherkonto hochgeladen, um die verbrauchte Bandbreite zu ermitteln. Das Speicherkonto muss vom Typ „Allgemein v1 (GPv1)“ sein.|
 | -StorageAccountKey | Der Schlüssel des Speicherkontos, der zum Zugreifen auf das Speicherkonto verwendet wird. Navigieren Sie im Azure-Portal zu „Speicherkonten“ > <*Name des Speicherkontos*> > „Einstellungen“ > „Zugriffsschlüssel“ > „Key1“ (oder primärer Zugriffsschlüssel für ein klassisches Speicherkonto). |
 | -VMListFile | Die Datei mit der Liste der VMs, für die Profile erstellt werden sollen, um die verbrauchte Bandbreite zu berechnen. Der Dateipfad kann absolut oder relativ sein. Die Datei sollte einen VM-Namen bzw. eine IP-Adresse pro Zeile enthalten. Die in der Datei angegebenen VM-Namen sollten mit den VM-Namen auf dem vCenter-Server/vSphere ESXi-Host identisch sein.<br>Die Datei „VMList.txt“ enthält beispielsweise die folgenden VMs:<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
-| -Environment | (optional) Dies ist Ihre Azure Storage-Zielkontoumgebung. Diese drei Werte sind möglich: „AzureCloud“, „AzureUSGovernment“ und „AzureChinaCloud“. Der Standardwert ist „AzureCloud“. Verwenden Sie den Parameter, wenn Sie als Azure-Zielregion Clouds vom Typ „Azure US Government“ oder „Azure China“ verwenden. |
+| -Environment | (optional) Dies ist Ihre Azure Storage-Zielkontoumgebung. Diese drei Werte sind möglich: „AzureCloud“, „AzureUSGovernment“ und „AzureChinaCloud“. Der Standardwert ist „AzureCloud“. Verwenden Sie den Parameter, wenn Sie als Zielregion „Azure US Government“ oder „Azure China 21Vianet“ nutzen. |
 
 Mit dem Tool werden im angegebenen Verzeichnis mehrere Dateien vom Typ „asrvhdfile<#>.vhd“ (wobei „#“ für eine Zahl steht) mit 64 MB erstellt. Mit dem Tool werden diese Dateien in das Speicherkonto hochgeladen, um den Durchsatz zu ermitteln. Nach dem Messen des Durchsatzes löscht das Tool diese Dateien aus dem Speicherkonto und vom lokalen Server. Wenn das Tool aus irgendeinem Grund beendet wird, während der Durchsatz berechnet wird, werden die Dateien nicht aus dem Speicher oder vom lokalen Server gelöscht. Sie müssen sie manuell löschen.
 

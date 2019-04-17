@@ -4,15 +4,15 @@ description: Dieser Artikel enthält technische Details in Bezug auf die globale
 author: dharmas-cosmos
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/24/2019
+ms.date: 03/31/2019
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: a599be52575ed06cdb3a3713fc2f0915ab2f6c2b
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: 84ce13ae3bb0a4b66b8167e61b720fe6cecbe95c
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407486"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762411"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Globale Datenverteilung mit Azure Cosmos DB: Hintergrundinformationen
 
@@ -50,11 +50,11 @@ Eine physische Partition ist eine selbst verwaltete Gruppe von Replikaten mit dy
 
 ## <a name="partition-sets"></a>Partitionsgruppen
 
-Eine Gruppe physischer Partitionen (jeweils eine aus jeder für die Cosmos-Datenbank konfigurierten Region) dient der Verwaltung derselben Schlüsselsätze, die in allen konfigurierten Regionen repliziert werden. Dieses höhere Koordinationselement wird als Partitionsgruppe bezeichnet. Es stellt eine geografisch verteilte, dynamische Überlagerung der physischen Partitionen für die Verwaltung eines bestimmten Schlüsselsatzes dar. Während der Gültigkeitsbereich einer physischen Partition (einer Replikatgruppe) auf einen Cluster beschränkt ist, kann eine Partitionsgruppe Cluster, Datencenter und geografische Regionen überschreiten, wie die folgende Abbildung zeigt:  
+Eine Gruppe physischer Partitionen (jeweils eine aus jeder für die Cosmos-Datenbank konfigurierten Region) dient der Verwaltung derselben Schlüsselsätze, die in allen konfigurierten Regionen repliziert werden. Dieses höhere Koordinationselement wird als *Partitionsgruppe* bezeichnet. Es stellt eine geografisch verteilte, dynamische Überlagerung der physischen Partitionen für die Verwaltung eines bestimmten Schlüsselsatzes dar. Während der Gültigkeitsbereich einer physischen Partition (einer Replikatgruppe) auf einen Cluster beschränkt ist, kann eine Partitionsgruppe Cluster, Rechenzentren und geografische Regionen überschreiten, wie die folgende Abbildung zeigt:  
 
 ![Partitionsgruppen](./media/global-dist-under-the-hood/dynamic-overlay-of-resource-partitions.png)
 
-Sie können sich eine Partitionsgruppe als eine geografisch verteilte „Superreplikatgruppe“ vorstellen, die mehrere Replikatgruppen mit denselben Schlüsselsätzen umfasst. Ähnlich wie bei einer Replikatgruppe ist auch die Mitgliedschaft einer Partitionsgruppe dynamisch: Sie schwankt basierend auf impliziten Verwaltungsvorgängen der physischen Partition, um neue Partitionen zu einer bestimmten Partitionsgruppe hinzuzufügen bzw. aus ihr zu entfernen (z.B. wenn Sie den Durchsatz für einen Container horizontal hochskalieren, eine Region zu Ihrer Cosmos-Datenbank hinzufügen oder aus ihr entfernen oder wenn Fehler auftreten). Damit die einzelnen Partitionen (einer Partitionsgruppe) die festgelegte Mitgliedschaft in der eigenen Replikatgruppe verwalten können, ist die Mitgliedschaft vollständig dezentralisiert und hochverfügbar. Während der Neukonfiguration einer Partitionsgruppe wird auch die Topologie der Überlagerung zwischen physischen Partitionen eingerichtet. Die Topologie wird dynamisch basierend auf der Konsistenzstufe, dem geografischen Abstand und der zwischen den physischen Quell- und Zielpartitionen verfügbaren Netzwerkbandbreite ausgewählt.  
+Sie können sich eine Partitionsgruppe als eine geografisch verteilte „Superreplikatgruppe“ vorstellen, die mehrere Replikatgruppen mit denselben Schlüsselsätzen umfasst. Wie bei einer Replikatgruppe ist auch bei einer Partitionsgruppe die Mitgliedschaft dynamisch. Sie variiert in Abhängigkeit von impliziten Vorgängen zur Verwaltung physischer Partitionen beim Hinzufügen/Entfernen von Partitionen in einer Partitionsgruppe (wenn Sie z.B. den Durchsatz in einem Container skalieren, in Ihrer Cosmos-Datenbank eine Region hinzufügen/entfernen, oder bei Ausfällen). Damit die einzelnen Partitionen (einer Partitionsgruppe) die festgelegte Mitgliedschaft in der eigenen Replikatgruppe verwalten können, ist die Mitgliedschaft vollständig dezentralisiert und hochverfügbar angelegt. Während der Neukonfiguration einer Partitionsgruppe wird auch die Topologie der Überlagerung zwischen physischen Partitionen eingerichtet. Die Topologie wird dynamisch basierend auf der Konsistenzstufe, dem geografischen Abstand und der zwischen den physischen Quell- und Zielpartitionen verfügbaren Netzwerkbandbreite ausgewählt.  
 
 Der Dienst ermöglicht es Ihnen, Ihre Cosmos-Datenbanken mit einer einzelnen oder mit mehreren Schreibregionen zu konfigurieren. Je nach Ihrer Auswahl werden die Partitionsgruppen so konfiguriert, dass sie Schreibanforderungen in genau einer oder in allen Regionen zulassen. Das System nutzt ein geschachteltes Konsensprotokoll mit zwei Ebenen: Eine Ebene agiert in den Replikaten einer Replikatgruppe einer physischen Partition, die Schreibanforderungen akzeptiert, und die andere agiert auf der Ebene der Partitionsgruppe, um alle committeten Schreibvorgänge in der Partitionsgruppe zu garantierten. Dieser geschachtelte Multiebenenkonsens ist sehr wichtig für die Implementierung unserer strikten SLAs für Hochverfügbarkeit sowie der Konsistenzmodelle, die Cosmos DB den Kunden bietet.  
 
@@ -68,21 +68,21 @@ Wir nutzen codierte Vektoruhren (mit Regions-ID und logischen Taktungen für die
 
 Für Cosmos-Datenbanken, die mit mehreren Schreibregionen konfiguriert wurden, stellt das System Entwicklern eine Reihe flexibler automatischer Richtlinien für die Konfliktlösung bereit, einschließlich: 
 
-- Letzter Schreibvorgang gewinnt (Last-Write-Wins, LWW) nutzt standardmäßig eine vom System definierte Zeitstempeleigenschaft (die auf dem Protokoll zur Zeitsynchronisierung basiert). Cosmos DB erlaubt auch die Angabe einer anderen benutzerdefinierten numerischen Eigenschaft für die Konfliktlösung.  
-- Benutzerdefinierte Richtlinie zur Konfliktlösung (über Mergeprozeduren ausgedrückt), die durch die Anwendung angegeben wird und dafür vorgesehen ist, Konflikte anwendungsdefiniert semantisch zu lösen. Diese Prozeduren werden bei Erkennung eines Schreib-Schreib-Konflikts im Rahmen einer Datenbanktransaktion auf Serverseite aufgerufen. Das System garantiert genau eine Ausführung der Mergeprozedur im Rahmen des Commitprotokolls. Ihnen stehen viele Beispiele zum Testen zur Auswahl.  
+- **Letzter Schreibvorgang gewinnt** (Last-Write-Wins, LWW) nutzt standardmäßig eine vom System definierte Zeitstempeleigenschaft (die auf dem Protokoll zur Zeitsynchronisierung basiert). Cosmos DB erlaubt auch die Angabe einer anderen benutzerdefinierten numerischen Eigenschaft für die Konfliktlösung.  
+- **Anwendungsdefinierte (benutzerdefinierte) Richtlinie zur Konfliktlösung** (über Mergeprozeduren ausgedrückt), die durch die Anwendung angegeben wird und dafür vorgesehen ist, Konflikte anwendungsdefiniert semantisch zu lösen. Diese Prozeduren werden bei Erkennung eines Schreib-Schreib-Konflikts im Rahmen einer Datenbanktransaktion auf Serverseite aufgerufen. Das System garantiert genau eine Ausführung der Mergeprozedur im Rahmen des Commitprotokolls. Ihnen stehen [viele Konfliktlösungsbeispiele](how-to-manage-conflicts.md) zum Testen zur Auswahl.  
 
 ## <a name="consistency-models"></a>Konsistenzmodelle
 
-Unabhängig davon, ob Sie Ihre Cosmos-Datenbank mit einem Schreibbereich oder mehreren Schreibbereichen konfigurieren, können Sie unter fünf genau definierten Konsistenzmodellen wählen. Aufgrund der neu eingeführten Unterstützung für die Aktivierung mehrerer Schreibregionen sollten die folgenden Aspekte von Konsistenzstufen berücksichtigt werden:  
+Unabhängig davon, ob Sie Ihre Cosmos-Datenbank mit einer Schreibregion oder mehreren Schreibregionen konfigurieren, können Sie unter fünf genau definierten Konsistenzmodellen wählen. Mit mehreren Schreibregionen sollten die folgenden Aspekte von Konsistenzstufen berücksichtigt werden:  
 
-Wie bisher garantiert die Konsistenz mit begrenzter Veraltung, dass alle Lesevorgänge innerhalb von k Präfixen oder t Sekunden nach dem letzten Schreibvorgang in einer der Regionen liegen. Darüber hinaus werden für Lesevorgänge mit Konsistenz mit begrenzter Veraltung Monotonie und konsistente Präfixe garantiert. Das Anti-Entropie-Protokoll wird mit Ratenlimit ausgeführt. Es stellt sicher, dass die Präfixe sich nicht anhäufen und dass der Rückstau bei den Schreibanforderungen nicht angewandt werden muss. Wie bisher garantiert Sitzungskonsistenz monotone Lesevorgänge, monotone Schreibvorgänge, Lesen eigener Schreibvorgänge (RYOW), Write-Follows-Read und konsistente Präfixe weltweit. Für die mit starker Konsistenz konfigurierten Datenbanken gelten die Vorteile des Multimastering (geringe Schreiblatenz, hohe Schreibverfügbarkeit) aufgrund der Regionen übergreifenden synchronen Replikation nicht.
+Die Konsistenz mit begrenzter Veraltung garantiert, dass alle Lesevorgänge innerhalb von *k* Präfixen oder *t* Sekunden nach dem letzten Schreibvorgang in einer der Regionen liegen. Darüber hinaus werden für Lesevorgänge mit Konsistenz mit begrenzter Veraltung Monotonie und konsistente Präfixe garantiert. Das Anti-Entropie-Protokoll wird mit Ratenlimit ausgeführt. Es stellt sicher, dass die Präfixe sich nicht anhäufen und dass der Rückstau bei den Schreibanforderungen nicht angewandt werden muss. Sitzungskonsistenz garantiert monotone Lesevorgänge, monotone Schreibvorgänge, Lesen eigener Schreibvorgänge (RYOW), Write-Follows-Read und konsistente Präfixe weltweit. Für die mit starker Konsistenz konfigurierten Datenbanken gelten die Vorteile (geringe Schreiblatenz, hohe Schreibverfügbarkeit) mehrerer Schreibregionen aufgrund der Regionen übergreifenden synchronen Replikation nicht.
 
-Die Semantik der fünf Konsistenzmodelle in Cosmos DB wird [hier](consistency-levels.md) beschrieben und [hier](https://github.com/Azure/azure-cosmos-tla) mathematisch anhand einer TLA+-Spezifikation auf hoher Ebenen veranschaulicht.
+Die Semantik der fünf Konsistenzmodelle in Cosmos DB wird [hier](consistency-levels.md) beschrieben und [hier](https://github.com/Azure/azure-cosmos-tla) mathematisch anhand einer TLA+-Spezifikation auf hoher Ebene erläutert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Als nächstes erfahren Sie, wie Sie die globale Verteilung konfigurieren, indem Sie die folgenden Artikel verwenden:
 
-* [Konfigurieren von Clients für Multihoming](how-to-manage-database-account.md#configure-clients-for-multi-homing)
 * [Hinzufügen/Entfernen von Regionen für Ihr Datenbankkonto](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-* [Erstellen einer benutzerdefinierten Konfliktlösungsrichtlinie für SQL-API-Konten](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)
+* [Konfigurieren von Clients für Multihoming](how-to-manage-database-account.md#configure-clients-for-multi-homing)
+* [Erstellen einer benutzerdefinierten Konfliktlösungsrichtlinie](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: ec66a4fdffcff2d2ff7c11c969900c8b12dda755
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 20fa8945f01a3431d2fd78d545c43d6215c83f56
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669694"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049454"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Leistungsüberwachung mit der Microsoft Azure-Diagnoseerweiterung
 
@@ -27,6 +27,9 @@ In diesem Artikel erfahren Sie, wie Sie die Erfassung von Leistungsindikatoren �
 
  > [!NOTE]
 > Die Microsoft Azure-Diagnoseerweiterung muss in Ihrem Cluster bereitgestellt sein, damit diese Schritte funktionieren. Falls sie nicht eingerichtet ist, helfen Ihnen die Informationen unter [Ereignisaggregation und -sammlung mit der Microsoft Azure-Diagnose](service-fabric-diagnostics-event-aggregation-wad.md) weiter.  
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="collect-performance-counters-via-the-wadcfg"></a>Erfassen von Leistungsindikatoren über WadCfg
 
@@ -192,10 +195,10 @@ Hier ist ein Beispiel für eine Konfiguration mit dem Leistungsindikator für *T
  >[!NOTE]
  >Mithilfe von `*` können Sie zwar Gruppen von Leistungsindikatoren mit ähnlichem Namen angeben, um Leistungsindikatoren jedoch über eine Senke (an Application Insights) senden zu können, müssen sie einzeln deklariert werden. 
 
-1. Nach dem Hinzufügen der zu erfassenden Leistungsindikatoren müssen Sie Ihre Clusterressource upgraden, damit die Änderungen in Ihrem ausgeführten Cluster übernommen werden. Speichern Sie Ihre Änderungen an `template.json`, und öffnen Sie PowerShell. Das Upgrade des Clusters kann mithilfe von `New-AzureRmResourceGroupDeployment` durchgeführt werden. Für den Aufruf müssen Sie den Namen der Ressourcengruppe, die aktualisierte Vorlagendatei und die Parameterdatei angeben. Durch den Aufruf wird Resource Manager angewiesen, entsprechende Änderungen an den von Ihnen aktualisierten Ressourcen vorzunehmen. Vergewissern Sie sich, dass Sie bei Ihrem Konto angemeldet sind und sich im richtigen Abonnement befinden, und führen Sie dann das Upgrade mithilfe des folgenden Befehls durch:
+1. Nach dem Hinzufügen der zu erfassenden Leistungsindikatoren müssen Sie Ihre Clusterressource upgraden, damit die Änderungen in Ihrem ausgeführten Cluster übernommen werden. Speichern Sie Ihre Änderungen an `template.json`, und öffnen Sie PowerShell. Das Upgrade des Clusters kann mithilfe von `New-AzResourceGroupDeployment` durchgeführt werden. Für den Aufruf müssen Sie den Namen der Ressourcengruppe, die aktualisierte Vorlagendatei und die Parameterdatei angeben. Durch den Aufruf wird Resource Manager angewiesen, entsprechende Änderungen an den von Ihnen aktualisierten Ressourcen vorzunehmen. Vergewissern Sie sich, dass Sie bei Ihrem Konto angemeldet sind und sich im richtigen Abonnement befinden, und führen Sie dann das Upgrade mithilfe des folgenden Befehls durch:
 
     ```sh
-    New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
+    New-AzResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
 1. Nachdem der Rollout des Upgrades abgeschlossen ist (was zwischen 15 und 45 Minuten dauert – je nachdem, ob es sich um die erste Bereitstellung handelt und wie groß Ihre Ressourcengruppe ist), sollten die Leistungsindikatoren per Microsoft Azure-Diagnose erfasst und an die Tabelle „WADPerformanceCountersTable“ in dem Speicherkonto gesendet werden, das dem Cluster zugeordnet ist. Sie können die Leistungsindikatoren in Application Insights anzeigen, indem Sie [die AI-Senke der Resource Manager-Vorlage hinzufügen](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template).
@@ -203,4 +206,4 @@ Hier ist ein Beispiel für eine Konfiguration mit dem Leistungsindikator für *T
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfassen Sie weitere Leistungsindikatoren für Ihren Cluster. Eine Liste mit Leistungsindikatoren, die Sie erfassen sollten, finden Sie unter [Leistungsmetriken](service-fabric-diagnostics-event-generation-perf.md).
 * Unter [Verwenden von Überwachung und Diagnose bei einer Windows-VM und Azure Resource Manager-Vorlagen](../virtual-machines/windows/extensions-diagnostics-template.md) erfahren Sie, wie Sie `WadCfg` noch weiter anpassen können und beispielsweise zusätzliche Speicherkonten für die Übermittlung von Diagnosedaten konfigurieren.
-* Mit dem [WadCfg-Generator](https://azure.github.io/azure-diagnostics-tools/config-builder/) können Sie eine ganz neue Vorlage erstellen und sich vergewissern, dass Ihre Syntax korrekt ist.
+* Besuchen Sie den [WadCfg-Generator](https://azure.github.io/azure-diagnostics-tools/config-builder/), um eine Vorlage von Grund auf neu zu erstellen und sicherzustellen, dass Ihre Syntax korrekt ist. (https://azure.github.io/azure-diagnostics-tools/config-builder/), um eine Vorlage von Grund auf neu zu erstellen und sicherzustellen, dass Ihre Syntax korrekt ist.)

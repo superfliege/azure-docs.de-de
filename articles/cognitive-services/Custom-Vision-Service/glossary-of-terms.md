@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: 3530dbfe15f6dbdf481df70de6d03979750aa38e
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 3a34af77a2806ceb56e939e2b153f2e68bba61cd
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58352101"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048935"
 ---
 # <a name="glossary-of-terms-for-custom-vision-service"></a>Glossar für Custom Vision Service
 
@@ -32,7 +32,6 @@ Bei der Projekterstellung wählen Sie eine Domäne für das Projekt aus. Die Dom
 - **Die Domäne für Nahrungsmittel.** Optimiert für Speisen, die sich beispielsweise auf der Speisekarte eines Restaurants befinden können. Die Domäne ist nicht für die Erkennung von einzelnem Obst oder Gemüse optimiert. Wenn Sie Fotos von einzelnem Obst oder Gemüse klassifizieren möchten, verwenden Sie die allgemeine Domäne.
 - **Die Domäne für Wahrzeichen.** Optimiert für erkennbare Wahrzeichen (Naturdenkmäler oder künstlich geschaffene Wahrzeichen). Diese Domäne funktioniert am besten, wenn das Wahrzeichen auf dem Foto gut sichtbar ist (und sogar, wenn es leicht von einer Personengruppe im Vordergrund verdeckt wird).
 - **Die Domäne für Einzelhandel.** Optimiert für die Klassifizierung von Bildern in einem Warenkatalog oder auf einer Einkaufswebsite. Verwenden Sie die Einzelhandelsdomäne, um eine hohe Präzision bei der Klassifizierung von Kleidern, Hosen, Hemden und Ähnlichem zu erzielen.
-- **Die Domäne für nicht jugendfreie Inhalte.** Optimiert für die bessere Unterscheidung zwischen nicht jugendfreien Inhalten und jugendfreien Inhalten. Wenn Sie also beispielsweise Bilder von Personen in Badebekleidung blockieren möchten, können Sie mithilfe dieser Domäne eine entsprechende benutzerdefinierte Klassifizierung erstellen.
 - **Die allgemeine Domäne.** Bestens geeignet für ein breites Spektrum von Bildklassifizierungsaufgaben.
 
 Durch **kompakte Domänen** generierte Modelle können mithilfe der Iterationsfunktion exportiert werden. Sie sind für die Einschränkungen der Echtzeitklassifizierung auf Mobilgeräten optimiert. Mit einer kompakten Domäne erstellte Klassifizierungen sind möglicherweise etwas ungenauer als eine Standarddomäne mit der gleichen Menge an Trainingsdaten. Aufgrund ihrer geringen Größe können sie jedoch nahezu in Echtzeit lokal ausgeführt werden. 

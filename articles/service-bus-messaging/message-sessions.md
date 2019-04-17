@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: d6c46d6ebfa8ae44c9bfac4929d3478f6701758a
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: c767406ceec703b5c14680ec96fdf703c2316044
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497838"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500140"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>Nachrichtensitzungen: FIFO (First In, First Out) 
 
@@ -51,7 +51,7 @@ Sitzungen ermöglichen das gleichzeitige Demultiplexing von verschachtelten Nach
 
 Ein [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession)-Empfänger wird vom Client erstellt, der eine Sitzung annimmt. In C# ruft der Client [QueueClient.AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) oder [QueueClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync) auf. Im reaktiven Rückrufmodell registriert er einen Sitzungshandler.
 
-Wenn die [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) akzeptiert wird und solange sie von einem Client aufrechterhalten wird, hält dieser Client eine exklusive Sperre für alle Nachrichten mit der [SessionId](/en-us/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId), die in der Warteschlange oder im Abonnement vorhanden sind, sowie für alle Nachrichten mit der **SessionId**, die noch während der laufenden Sitzung eingehen.
+Wenn die [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) akzeptiert wird und solange sie von einem Client aufrechterhalten wird, hält dieser Client eine exklusive Sperre für alle Nachrichten mit der [SessionId](/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId), die in der Warteschlange oder im Abonnement vorhanden sind, sowie für alle Nachrichten mit der **SessionId**, die noch während der laufenden Sitzung eingehen.
 
 Die Sperre wird aufgehoben, wenn **Close** oder **CloseAsync** aufgerufen werden oder wenn die Sperre abläuft, weil die Anwendung den Vorgang zum Schließen nicht ausführen kann. Die Sitzungssperre sollte wie eine exklusive Sperre für eine Datei behandelt werden, d.h. die Anwendung sollte die Sitzung schließen, sobald sie diese nicht mehr benötigt und/oder keine weiteren Nachrichten erwartet.
 

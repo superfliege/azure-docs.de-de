@@ -6,16 +6,16 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: d4be7b9c7774163aed8c0efb3414dbd6a794cf7f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 67526eddd19c5869aa54432f963d9b80396f878d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847795"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270981"
 ---
-# <a name="set-up-disaster-recovery-for-sql-server"></a>Einrichten der Notfallwiederherstellung für SQL Server 
+# <a name="set-up-disaster-recovery-for-sql-server"></a>Einrichten der Notfallwiederherstellung für SQL Server
 
 In diesem Artikel erfahren Sie, wie Sie das SQL Server-Back-End einer Anwendung mit einer Kombination aus SQL Server-Technologien für Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR) und [Azure Site Recovery](site-recovery-overview.md) schützen.
 
@@ -30,7 +30,7 @@ Viele Workloads nutzen SQL Server als Grundlage, und die Plattform kann zum Impl
 * **SQL Server-Failoverclustering-Instanzen (Always On-FCI):** Mehrere Knoten mit SQL Server-Instanzen und freigegebenen Datenträgern werden in einem Windows-Failovercluster konfiguriert. Wenn ein Knoten heruntergefahren ist, kann der Cluster ein Failover von SQL Server auf eine andere Instanz ausführen. Dieses Setup wird in der Regel zum Implementieren von Hochverfügbarkeit an einem primären Standort verwendet. Diese Bereitstellung stellt keinen Schutz vor Fehlern oder einem Ausfall auf der Ebene des freigegebenen Speichers dar. Ein freigegebener Datenträger kann per iSCSI, Fibre Channel oder freigegebener VHDX implementiert werden.
 * **SQL-AlwaysOn-Verfügbarkeitsgruppen:** Mehrere Knoten sind in einem Shared-Nothing-Cluster mit SQL Server-Datenbanken in einer Verfügbarkeitsgruppe mit synchroner Replikation und automatischem Failover eingerichtet.
 
- In diesem Artikel werden die folgenden nativen SQL-Notfallwiederherstellungstechnologien zum Wiederherstellen von Datenbanken an einem Remotestandort verwendet:
+  In diesem Artikel werden die folgenden nativen SQL-Notfallwiederherstellungstechnologien zum Wiederherstellen von Datenbanken an einem Remotestandort verwendet:
 
 * SQL AlwaysOn-Verfügbarkeitsgruppen zur Notfallwiederherstellung für SQL Server 2012 oder 2014 Enterprise-Editionen
 * SQL-Datenbankspiegelung im Hochsicherheitsmodus für SQL Server Standard Edition (beliebige Version) oder SQL Server 2008 R2
@@ -40,12 +40,12 @@ Viele Workloads nutzen SQL Server als Grundlage, und die Plattform kann zum Impl
 ### <a name="supported-scenarios"></a>Unterstützte Szenarien
 Site Recovery kann zum Schützen von SQL Server verwendet werden. Dies ist in der Tabelle unten zusammengefasst.
 
-**Szenario** | **Am sekundären Standort** | **In Azure**
+**Szenario** | **Sekundärer Standort** | **Azure**
 --- | --- | ---
-**Hyper-V** | JA | JA
-**VMware** | JA | JA
-**Physischer Server** | JA | JA
-**Azure**|Nicht verfügbar| JA
+**Hyper-V** | Ja | Ja
+**VMware** | Ja | Ja
+**Physischer Server** | Ja | Ja
+**Azure** |Nicht verfügbar| Ja
 
 ### <a name="supported-sql-server-versions"></a>Unterstützte SQL Server-Versionen
 Diese SQL Server-Versionen werden für die unterstützten Szenarien unterstützt:
@@ -64,7 +64,7 @@ Site Recovery kann zur Bereitstellung einer Notfallwiederherstellungslösung mit
 **AlwaysOn-Verfügbarkeitsgruppe** | Mehrere eigenständige Instanzen von SQL Server werden jeweils in einem Failovercluster mit mehreren Knoten ausgeführt.<br/><br/>Datenbanken können in Failovergruppen zusammengefasst werden, die in SQL Server-Instanzen kopiert (gespiegelt) werden können, sodass kein freigegebener Speicher erforderlich ist.<br/><br/>Ermöglicht die Notfallwiederherstellung zwischen einem primären und einem oder mehreren sekundären Standorten. Zwei Knoten können in einem Shared-Nothing-Cluster mit SQL Server-Datenbanken in einer Verfügbarkeitsgruppe mit synchroner Replikation und automatischem Failover eingerichtet werden. | SQL Server 2016, SQL Server 2014 und SQL Server 2012 Enterprise Edition
 **Failoverclustering (Always On-FCI)** | SQL Server nutzt das Windows-Failoverclustering für Hochverfügbarkeit der lokalen SQL Server-Workloads.<br/><br/>Knoten, auf denen Instanzen von SQL Server mit freigegebenen Datenträgern ausgeführt werden, werden in einem Failovercluster konfiguriert. Fällt eine Instanz aus, wird für den Cluster ein Failover zu einer anderen Instanz durchgeführt.<br/><br/>Der Cluster schützt nicht vor Fehlern oder Ausfällen im freigegebenen Speicher. Der freigegebene Datenträger kann mit iSCSI, Fibre Channel oder freigegebenen VHDX-Dateien implementiert werden. | SQL Server Enterprise Editions<br/><br/>SQL Server Standard Edition (auf zwei Knoten beschränkt)
 **Datenbankspiegelung (Modus für hohe Sicherheit)** | Schützt eine einzelne Datenbank mittels einer sekundären Kopie. Replikationsmodi mit hoher Sicherheit (synchron) oder mit hoher Leistung (asynchron) verfügbar. Kein Failovercluster erforderlich. | SQL Server 2008 R2<br/><br/>SQL Server Enterprise (alle Editionen)
-**Eigenständige SQL Server-Instanz** | SQL Server und die Datenbank werden auf einem einzelnen Server (physisch oder virtuell) gehostet. Bei einem virtuellen Server wird Hostclustering verwendet, um Hochverfügbarkeit zu gewährleisten. Keine Hochverfügbarkeit auf Gastebene. | Enterprise oder Standard
+**Eigenständige SQL Server-Instanz** | SQL Server und die Datenbank werden auf einem einzelnen Server (physisch oder virtuell) gehostet. Bei einem virtuellen Server wird Hostclustering verwendet, um Hochverfügbarkeit zu gewährleisten. Keine Hochverfügbarkeit auf Gastebene. | Enterprise oder Standard
 
 ## <a name="deployment-recommendations"></a>Bereitstellungsempfehlungen
 
@@ -73,11 +73,11 @@ Diese Tabelle enthält unsere Empfehlungen für die Integration von SQL Server-
 | **Version** | **Edition** | **Bereitstellung** | **Lokal zu lokal** | **Lokal zu Azure** |
 | --- | --- | --- | --- | --- |
 | SQL Server 2016, 2014 oder 2012 |Enterprise |Failoverclusterinstanz |Always On-Verfügbarkeitsgruppen |Always On-Verfügbarkeitsgruppen |
-|| Enterprise |Always On-Verfügbarkeitsgruppen für Hochverfügbarkeit |Always On-Verfügbarkeitsgruppen |Always On-Verfügbarkeitsgruppen | |
-|| Standard |Failoverclusterinstanz (FCI) |Site Recovery-Replikation mit lokaler Spiegelung |Site Recovery-Replikation mit lokaler Spiegelung | |
-|| Enterprise oder Standard |Eigenständig |Site Recovery-Replikation |Site Recovery-Replikation | |
+|| Enterprise |Always On-Verfügbarkeitsgruppen für Hochverfügbarkeit |Always On-Verfügbarkeitsgruppen |Always On-Verfügbarkeitsgruppen |
+|| Standard |Failoverclusterinstanz (FCI) |Site Recovery-Replikation mit lokaler Spiegelung |Site Recovery-Replikation mit lokaler Spiegelung |
+|| Enterprise oder Standard |Eigenständig |Site Recovery-Replikation |Site Recovery-Replikation |
 | SQL Server 2008 R2 oder 2008 |Enterprise oder Standard |Failoverclusterinstanz (FCI) |Site Recovery-Replikation mit lokaler Spiegelung |Site Recovery-Replikation mit lokaler Spiegelung |
-|| Enterprise oder Standard |Eigenständig |Site Recovery-Replikation |Site Recovery-Replikation | |
+|| Enterprise oder Standard |Eigenständig |Site Recovery-Replikation |Site Recovery-Replikation |
 | SQL Server (beliebige Version) |Enterprise oder Standard |Failoverclusterinstanz – DTC-Anwendung |Site Recovery-Replikation |Nicht unterstützt |
 
 ## <a name="deployment-prerequisites"></a>Voraussetzungen für die Bereitstellung
@@ -101,7 +101,7 @@ Das müssen Sie tun:
 
 1. Importieren Sie Skripts in Ihr Azure Automation-Konto. Hier sind die Skripts zum Durchführen eines Failovers für die SQL-Verfügbarkeitsgruppe auf einem [mit Resource Manager erstellten virtuellen Computer](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1) und einem [klassischen virtuellen Computer](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1).
 
-    [![In Azure bereitstellen](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+    [![DIn Azure bereitstellen(https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 
 1. Fügen Sie ASR-SQL-FailoverAG als vorausgehende Aktion der ersten Gruppe des Wiederherstellungsplans hinzu.
@@ -116,7 +116,7 @@ SQL Always On bietet keine native Unterstützung für ein Testfailover. Daher em
 
 1. Vor dem Auslösen des Testfailovers des Wiederherstellungsplans stellen Sie den virtuellen Computer aus der im vorherigen Schritt erstellten Sicherung wieder her.
 
-    ![Wiederherstellen von Daten aus der Azure-Sicherung ](./media/site-recovery-sql/restore-from-backup.png)
+    ![Wiederherstellen von Daten aus der Azure-Sicherung](./media/site-recovery-sql/restore-from-backup.png)
 
 1. [Erzwingen Sie ein Quorum](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/force-a-wsfc-cluster-to-start-without-a-quorum#PowerShellProcedure) auf dem virtuellen Computer, der aus einer Sicherung wiederhergestellt wurde.
 
@@ -130,9 +130,9 @@ SQL Always On bietet keine native Unterstützung für ein Testfailover. Daher em
 
 1. Erstellen Sie einen Lastenausgleich mit einer IP-Adresse, die im Front-End-IP-Pool entsprechend jedem Verfügbarkeitsgruppenlistener erstellt wurde und der über einen virtuellen SQL-Computer im Back-End-Pool verfügt.
 
-     ![Erstellen eines Lastenausgleichs: Front-End-IP-Pool ](./media/site-recovery-sql/create-load-balancer1.png)
+     ![Erstellen eines Lastenausgleichs: Front-End-IP-Pool](./media/site-recovery-sql/create-load-balancer1.png)
 
-    ![Erstellen eines Lastenausgleichs: Back-End-Pool ](./media/site-recovery-sql/create-load-balancer2.png)
+    ![Erstellen eines Lastenausgleichs: Back-End-Pool](./media/site-recovery-sql/create-load-balancer2.png)
 
 1. Führen Sie ein Testfailover des Wiederherstellungsplans durch.
 

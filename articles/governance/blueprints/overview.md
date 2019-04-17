@@ -1,20 +1,18 @@
 ---
 title: 'Azure Blueprint: Übersicht'
 description: Hier wird erläutert, wie Sie den Azure Blueprints-Dienst zum Erstellen, Definieren und Bereitstellen von Artefakten in Ihrer Azure-Umgebung verwenden.
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 02/08/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
-ms.custom: mvc
-ms.openlocfilehash: 29c58abb3a69da0886d512767cbc301621943f07
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 960b8145e5f53c6c37820604fd634ccf5fd77c6b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802574"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259421"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Übersicht über den Azure Blueprints-Dienst
 
@@ -87,9 +85,9 @@ Jede **veröffentlichte** **Version** einer Blaupause kann einem vorhandenen Abo
 
 Zur Verwendung von Blaupausen müssen Ihnen über die [rollenbasierte Zugriffssteuerung](../../role-based-access-control/overview.md) (Role-Based Access Control, RBAC) Berechtigungen erteilt werden. Zur Erstellung von Blaupausen sind für Ihr Konto die folgenden Berechtigungen erforderlich:
 
-- `Microsoft.Blueprint/blueprints/write`: Erstellen einer Blaupausendefinition
-- `Microsoft.Blueprint/blueprints/artifacts/write`: Erstellen von Artefakten in einer Blaupausendefinition
-- `Microsoft.Blueprint/blueprints/versions/write`: Veröffentlichen einer Blaupause
+- `Microsoft.Blueprint/blueprints/write` : Erstellen einer Blaupausendefinition
+- `Microsoft.Blueprint/blueprints/artifacts/write` : Erstellen von Artefakten in einer Blaupausendefinition
+- `Microsoft.Blueprint/blueprints/versions/write` : Veröffentlichen einer Blaupause
 
 Zum Löschen von Blaupausen sind für Ihr Konto die folgenden Berechtigungen erforderlich:
 
@@ -102,8 +100,8 @@ Zum Löschen von Blaupausen sind für Ihr Konto die folgenden Berechtigungen erf
 
 Zum Zuweisen oder zum Aufheben der Zuweisung einer Blaupause sind für Ihr Konto die folgenden Berechtigungen erforderlich:
 
-- `Microsoft.Blueprint/blueprintAssignments/write`: Zuweisen einer Blaupause
-- `Microsoft.Blueprint/blueprintAssignments/delete`: Aufheben der Zuweisung einer Blaupause
+- `Microsoft.Blueprint/blueprintAssignments/write` : Zuweisen einer Blaupause
+- `Microsoft.Blueprint/blueprintAssignments/delete` : Aufheben der Zuweisung einer Blaupause
 
 > [!NOTE]
 > Da Blaupausenzuweisungen in einem Abonnement erstellt werden, müssen die Berechtigungen zum Zuweisen und Aufheben der Zuweisung von Blaupausen in einem Abonnementbereich erteilt oder vererbt werden.

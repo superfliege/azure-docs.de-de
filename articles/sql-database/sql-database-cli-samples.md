@@ -7,17 +7,17 @@ ms.subservice: service
 ms.custom: overview-samples, mvc
 ms.devlang: azurecli
 ms.topic: sample
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/03/2019
-ms.openlocfilehash: e3a75acb6d591a9fdf1e632369cc2e9ae6b6099d
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 7a1132b5857cf6c54d0566ca29bb76ce1ef88513
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447832"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359431"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database"></a>Azure CLI-Beispiele für Azure SQL-Datenbank
 
@@ -36,11 +36,11 @@ Die folgende Tabelle enthält Links zu Azure CLI-Skriptbeispielen für Azure SQL
 | |  |
 |---|---|
 |**Erstellen einer einzelnen Datenbank und eines Pools für elastische Datenbanken**||
-| [Create a single SQL database and configure a firewall rule using PowerShell](scripts/sql-database-create-and-configure-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) (Erstellen einer einzelnen SQL-Datenbank und Konfigurieren einer Firewallregel mit PowerShell) | In diesem CLI-Skriptbeispiel wird eine einzelne Azure SQL-Datenbank erstellt und eine Firewallregel auf Serverebene konfiguriert. |
-| [Create elastic pools and move databases between pools and out of a pool using PowerShell](scripts/sql-database-move-database-between-pools-cli.md?toc=%2fcli%2fazure%2ftoc.json) (Erstellen von Pools für elastische Datenbanken und Verschieben von Datenbanken zwischen Pools und aus einem Pool mit PowerShell) | In diesem CLI-Skriptbeispiel werden Pools für elastische SQL-Datenbanken erstellt, in einem Pool zusammengefasste Azure SQL-Datenbanken verschoben und Computegrößen geändert.|
+| [Erstellen einer einzelnen SQL-Datenbank und Konfigurieren einer Firewallregel mit PowerShell](scripts/sql-database-create-and-configure-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) | In diesem CLI-Skriptbeispiel wird eine einzelne Azure SQL-Datenbank erstellt und eine Firewallregel auf Serverebene konfiguriert. |
+| [Erstellen von Pools für elastische Datenbanken und Verschieben von in einem Pool zusammengefassten Datenbanken](scripts/sql-database-move-database-between-pools-cli.md?toc=%2fcli%2fazure%2ftoc.json) | In diesem CLI-Skriptbeispiel werden Pools für elastische SQL-Datenbanken erstellt, in einem Pool zusammengefasste Azure SQL-Datenbanken verschoben und Computegrößen geändert.|
 |**Skalieren einer einzelnen Datenbank und eines Pools für elastische Datenbanken**||
-| [Monitor and scale a single SQL database using the Azure CLI](scripts/sql-database-monitor-and-scale-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) (Überwachen und Skalieren einer einzelnen SQL-Datenbank mit Azure CLI) | In diesem CLI-Skriptbeispiel wird eine einzelne Azure SQL-Datenbank nach Abfrage der Größeninformationen für die Datenbank auf eine andere Computegröße skaliert. |
-| [Scale an elastic pool in Azure SQL Database using the Azure CLI](scripts/sql-database-scale-pool-cli.md?toc=%2fcli%2fazure%2ftoc.json) (Skalieren eines Pools für elastische Datenbanken in Azure SQL-Datenbank mit Azure CLI) | In diesem CLI-Skriptbeispiel wird ein Pool für elastische SQL-Datenbanken auf eine andere Computegröße skaliert.  |
+| [Skalieren einer Einzeldatenbank](scripts/sql-database-monitor-and-scale-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) | In diesem CLI-Skriptbeispiel wird eine einzelne Azure SQL-Datenbank nach Abfrage der Größeninformationen für die Datenbank auf eine andere Computegröße skaliert. |
+| [Skalieren eines Pools für elastische Datenbanken](scripts/sql-database-scale-pool-cli.md?toc=%2fcli%2fazure%2ftoc.json) | In diesem CLI-Skriptbeispiel wird ein Pool für elastische SQL-Datenbanken auf eine andere Computegröße skaliert.  |
 |||
 
 Erfahren Sie mehr über die [Azure CLI-API für Einzeldatenbanken](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases).

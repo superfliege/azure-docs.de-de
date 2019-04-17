@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6e43c607c2dc67054bde7689d50e495a59e6b659
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 61fdaec79e563ba4d87e73b22aba52a5c3f8251b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540855"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270802"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Erstellen einer Shopsuche mit Azure Maps
 
@@ -132,14 +132,14 @@ Fügen Sie zum Erstellen der Benutzeroberfläche der Datei *index.html* Code hin
 1. Fügen Sie Verweise für die JavaScript- und CSS-Dateien des Azure Maps-Websteuerelements hinzu:
 
     ```HTML
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
-    <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
     ```
 
 1. Fügen Sie einen Verweis auf das Modul „Dienste“ für Azure Maps hinzu. Bei diesem Modul handelt es sich um eine JavaScript-Bibliothek, die die Azure Maps-REST-Dienste umschließt und die Nutzung in JavaScript vereinfacht. Das Modul ist als Grundlage für die Suchfunktionalität nützlich.
 
     ```HTML
-    <script src="https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2"></script>
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
     ```
 
 1. Fügen Sie Verweise auf *index.js* und *index.css* hinzu:
@@ -454,7 +454,7 @@ In der Benutzeroberfläche ist jetzt alles eingerichtet. Jetzt müssen wir den J
         //Wait until the map resources are ready.
         map.events.add('ready', function() {
 
-        //Add your post-map load functionality.
+            //Add your post-map load functionality.
 
         });
     }
@@ -516,7 +516,7 @@ In der Benutzeroberfläche ist jetzt alles eingerichtet. Jetzt müssen wir den J
     window.onload = initialize;
     ```
 
-1. Fügen Sie im Ereignislistener `load` der Karte ein Zoomsteuerelement und einen HTML-Marker hinzu, um den Mittelpunkt eines Suchbereichs anzuzeigen.
+1. Fügen Sie im Ereignislistener `ready` der Karte ein Zoomsteuerelement und einen HTML-Marker hinzu, um den Mittelpunkt eines Suchbereichs anzuzeigen.
 
     ```JavaScript
     //Add a zoom control to the map.
@@ -533,7 +533,7 @@ In der Benutzeroberfläche ist jetzt alles eingerichtet. Jetzt müssen wir den J
     map.markers.add(centerMarker);
     ```
 
-1. Fügen Sie im Ereignislistener `load` der Karte eine Datenquelle hinzu. Führen Sie anschließend einen Aufruf durch, und analysieren Sie das Dataset. Aktivieren Sie das Clustering für die Datenquelle. Beim Clustering auf der Datenquelle werden sich überlappende Punkte in einem Cluster gruppiert. Die Cluster werden in einzelne Punkte unterteilt, wenn der Benutzer die Ansicht vergrößert. Dies ermöglicht eine flüssigere Benutzererfahrung und sorgt für eine Leistungssteigerung.
+1. Fügen Sie im Ereignislistener `ready` der Karte eine Datenquelle hinzu. Führen Sie anschließend einen Aufruf durch, und analysieren Sie das Dataset. Aktivieren Sie das Clustering für die Datenquelle. Beim Clustering auf der Datenquelle werden sich überlappende Punkte in einem Cluster gruppiert. Die Cluster werden in einzelne Punkte unterteilt, wenn der Benutzer die Ansicht vergrößert. Dies ermöglicht eine flüssigere Benutzererfahrung und sorgt für eine Leistungssteigerung.
 
     ```JavaScript
     //Create a data source, add it to the map, and then enable clustering.
@@ -548,7 +548,7 @@ In der Benutzeroberfläche ist jetzt alles eingerichtet. Jetzt müssen wir den J
     loadStoreData();
     ```
 
-1. Nachdem Sie das Dataset in den Ereignislistener `load` der Karte geladen haben, definieren Sie eine Gruppe mit Ebenen zum Rendern der Daten. Eine Blasenebene wird verwendet, um gruppierte Datenpunkte zu rendern. Eine Symbolebene wird zum Rendern der Anzahl von Punkten in jedem Cluster oberhalb der Blasenebene verwendet. Über eine zweite Symbolebene wird ein benutzerdefiniertes Symbol für einzelne Standorte auf der Karte gerendert.
+1. Nachdem Sie das Dataset in den Ereignislistener `ready` der Karte geladen haben, definieren Sie eine Gruppe mit Ebenen zum Rendern der Daten. Eine Blasenebene wird verwendet, um gruppierte Datenpunkte zu rendern. Eine Symbolebene wird zum Rendern der Anzahl von Punkten in jedem Cluster oberhalb der Blasenebene verwendet. Über eine zweite Symbolebene wird ein benutzerdefiniertes Symbol für einzelne Standorte auf der Karte gerendert.
 
    Fügen Sie die Ereignisse `mouseover` und `mouseout` der Blasen- und Symbolebene hinzu, damit sich der Mauszeiger ändert, wenn der Benutzer die Maus in der Karte auf einen Cluster oder ein Symbol bewegt. Fügen Sie der Clusterblasenebene das Ereignis `click` hinzu. Mit diesem `click`-Ereignis wird die Karte um zwei Zoomfaktoren vergrößert und ein Cluster in der Karte zentriert, wenn der Benutzer den Cluster auswählt. Fügen Sie der Symbolebene ein `click`-Ereignis hinzu. Mit diesem `click`-Ereignis wird ein Popupfenster angezeigt, in dem die Details zu einem Coffee-Shop eingeblendet werden, wenn ein Benutzer ein Symbol für einen Standort wählt. Fügen Sie der Karte ein Ereignis hinzu, um zu überwachen, wann die Verschiebung der Karte abgeschlossen ist. Aktualisieren Sie die Elemente im Listenbereich, wenn dieses Ereignis ausgelöst wird.  
 
@@ -957,9 +957,9 @@ In diesem Tutorial wurde beschrieben, wie Sie mit Azure Maps eine einfache Shops
 
 Das Codebeispiel für dieses Tutorial finden Sie hier:
 
-> [Create a store locator by using Azure Maps](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator) (Erstellen einer Shopsuche mit Azure Maps)
+> [Erstellen einer Shopsuche mit Azure Maps](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)
 
-[Hier](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator) können Sie sich das Beispiel live ansehen.
+[Hier können Sie sich das Beispiel live ansehen.](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)
 
 Weitere Informationen zur Abdeckung und zu den Funktionen von Azure Maps finden Sie unter:
 
@@ -970,3 +970,6 @@ Weitere Codebeispiele und eine Benutzeroberfläche für das interaktive Codieren
 
 > [!div class="nextstepaction"]
 > [Verwenden des Kartensteuerelements](how-to-use-map-control.md)
+
+> [!div class="nextstepaction"]
+> [Verwenden von datengesteuerten Formatvorlagenausdrücken](data-driven-style-expressions-web-sdk.md)

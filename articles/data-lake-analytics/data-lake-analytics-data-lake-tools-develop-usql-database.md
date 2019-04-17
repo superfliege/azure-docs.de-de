@@ -10,18 +10,18 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 1982f974acd1e9d5e8cae91201f6503eb2ae678a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 47235fa5676acd8de8a7cc0d969b813837faf0af
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57898795"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490392"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>Entwickeln einer U-SQL-Datenbank für Azure Data Lake mithilfe eines U-SQL-Datenbankprojekts
 
 U-SQL-Datenbank ermöglicht strukturierte Ansichten von unstrukturierten Daten und verwalteten strukturierten Daten in Tabellen. Darüber hinaus umfasst U-SQL-Datenbank ein allgemeines Metadatenkatalogsystem zum Organisieren von strukturierten Daten und benutzerdefiniertem Code. Über die Datenbank werden diese verbundenen Objekte konzeptionell gruppiert.
 
-Erfahren Sie mehr über die [U-SQL-Datenbank und Data Definition Language (DDL)](https://msdn.microsoft.com/azure/data-lake-analytics/u-sql/data-definition-language-ddl-statements-u-sql). 
+Erfahren Sie mehr über die [U-SQL-Datenbank und Data Definition Language (DDL)](/u-sql/data-definition-language-ddl-statements). 
 
 Das U-SQL-Datenbankprojekt ist ein Projekttyp in Visual Studio, mit dem Entwickler U-SQL-Datenbanken schnell und einfach entwickeln, verwalten und bereitstellen können.
 
@@ -116,6 +116,6 @@ Ein U-SQL-Projekt kann auf ein U-SQL-Datenbankprojekt verweisen. Der Verweis wir
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Einrichten einer CI/CD-Pipeline für Azure Data Lake Analytics](data-lake-analytics-cicd-overview.md)
+- [Gewusst wie: Einrichten einer CI/CD-Pipeline für Azure Data Lake Analytics](data-lake-analytics-cicd-overview.md)
 - [Testen des Azure Data Lake Analytics-Codes](data-lake-analytics-cicd-test.md)
 - [Ausführen von U-SQL-Skripts auf dem lokalen Computer](data-lake-analytics-data-lake-tools-local-run.md)

@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/27/2019
+ms.date: 04/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5213affe953636c46486614ee2a020d7727e1478
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: d2de802b2170feb6130cdce8007e16cc37561f5e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57407512"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265388"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager-Bereitstellungsmodi
 
@@ -33,6 +33,8 @@ Bei der Verarbeitung von Löschungen im vollständigen Modus gibt es zwischen Re
 Beispiel: Wenn Ihre Ressourcengruppe eine DNS-Zone (Ressourcentyp „Microsoft.Network/dnsZones“) und einen CNAME-Eintrag (Ressourcentyp „Microsoft.Network/dnsZones/CNAME“) enthält, ist die DNS-Zone die übergeordnete Ressource des CNAME-Eintrags. Wenn Sie im vollständigen Modus bereitstellen und die DNS-Zone nicht in Ihre Vorlage aufnehmen, werden sowohl die DNS-Zone als auch der CNAME-Eintrag gelöscht. Wenn Sie die DNS-Zone in Ihre Vorlage aufnehmen, den CNAME-Eintrag jedoch nicht, wird der CNAME-Eintrag nicht gelöscht. 
 
 Eine Liste der Verarbeitung von Löschungen durch Ressourcentypen finden Sie unter [Löschen von Azure-Ressourcen für Bereitstellungen im vollständigen Modus](complete-mode-deletion.md).
+
+Wenn die Ressourcengruppe [gesperrt](resource-group-lock-resources.md) ist, werden die Ressourcen im vollständigen Modus nicht gelöscht.
 
 > [!NOTE]
 > Nur Vorlagen auf Stammebene unterstützen den vollständigen Bereitstellungsmodus. Für [verknüpfte oder geschachtelte Vorlagen](resource-group-linked-templates.md) müssen Sie den inkrementellen Modus verwenden. 

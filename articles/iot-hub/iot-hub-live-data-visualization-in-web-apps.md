@@ -1,19 +1,19 @@
 ---
 title: Visualisieren von Sensordaten in Azure IoT Hub in Echtzeit mit Web-Apps | Microsoft-Dokumentation
 description: Verwenden Sie das Web-Apps-Feature von Microsoft Azure App Service, um Temperatur- und Luftfeuchtigkeitsdaten zu visualisieren, die der Sensor gesammelt und an IoT Hub gesendet hat.
-author: rangv
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
-ms.author: rangv
-ms.openlocfilehash: c43431cd6ddbbbf8f6cb709b8c1783179d6cf760
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.author: robinsh
+ms.openlocfilehash: b870c432ea8021d9eeb14eec85ff9912b96ddc96
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158719"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270879"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-by-using-the-web-apps-feature-of-azure-app-service"></a>Visualisieren von Echtzeit-Sensordaten über Azure IoT Hub mithilfe des Web-Apps-Features von Azure App Service
 

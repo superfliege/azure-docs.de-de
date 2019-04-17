@@ -1,21 +1,21 @@
 ---
 title: 'Simuliertes Raspberry Pi in der Cloud (Node.js): Verbinden des Raspberry Pi-Websimulators mit Azure IoT Hub | Microsoft-Dokumentation'
 description: Verbinden Sie den Raspberry Pi-Websimulator mit Azure IoT Hub, damit Raspberry Pi Daten an die Azure-Cloud sendet.
-author: rangv
-manager: ''
+author: wesmc7777
+manager: philmea
 keywords: Raspberry Pi-Simulator, Azure IoT Raspberry Pi, Raspberry Pi IoT Hub, Raspberry Pi sendet Daten an Cloud, Raspberry Pi in der Cloud
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
-ms.author: rangv
-ms.openlocfilehash: 3f8fbf571efafe22d7d0c5ccfd71dded381ba6fb
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.author: wesmc
+ms.openlocfilehash: 58e05ba4fb2e362147f7ca28d83440ddabb6ef38
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847211"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267734"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Verbinden des Raspberry Pi-Onlinesimulators mit Azure IoT Hub (Node.js)
 
@@ -56,7 +56,7 @@ Verbinden Sie simuliertes Raspberry Pi mit einem von Ihnen erstellten IoT Hub. F
 Klicken Sie auf die Schaltfläche, um den Raspberry Pi-Onlinesimulator zu starten.
 
 > [!div class="button"]
-> <a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">Raspberry Pi-Simulator starten</a>
+> <a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">Starten des Raspberry Pi-Simulators</a>
 
 Im Websimulator werden drei Bereiche angezeigt.
 
@@ -90,11 +90,11 @@ Im Websimulator werden drei Bereiche angezeigt.
 ## <a name="run-a-sample-application-on-pi-web-simulator"></a>Ausführen einer Beispielanwendung im Pi-Websimulator
 
 1. Stellen Sie im Codingbereich sicher, dass Sie mit der Standard-Beispielanwendung arbeiten. Ersetzen Sie den Platzhalter in Zeile 15 durch die Verbindungszeichenfolge für das Azure IoT Hub-Gerät.
-   ![Verbindungszeichenfolge für das Gerät ersetzen](media/iot-hub-raspberry-pi-web-simulator/1_connectionstring.png)
+   ![Ersetzen der Verbindungszeichenfolge für das Gerät](media/iot-hub-raspberry-pi-web-simulator/1_connectionstring.png)
 
 2. Klicken Sie auf **Ausführen**, oder geben Sie `npm start` ein, um die Anwendung auszuführen.
 
-Die folgende Ausgabe sollte angezeigt werden, die die Sensordaten und Nachrichten zeigt, die an Ihren IoT Hub gesendet werden.![Ausgabe: Von Raspberry Pi an IoT Hub gesendete Sensordaten](media/iot-hub-raspberry-pi-web-simulator/2_run_application.png)
+Die folgende Ausgabe sollte angezeigt werden, die die Sensordaten und Nachrichten zeigt, die an Ihren IoT Hub gesendet werden. ![Ausgabe: Von Raspberry Pi an IoT Hub gesendete Sensordaten](media/iot-hub-raspberry-pi-web-simulator/2_run_application.png)
 
 ## <a name="read-the-messages-received-by-your-hub"></a>Lesen der von Ihrem Hub empfangenen Nachrichten
 

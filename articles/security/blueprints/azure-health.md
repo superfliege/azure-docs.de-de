@@ -241,7 +241,7 @@ In diesem Abschnitt werden die Standardkonfigurationen und Sicherheitsmaßnahmen
 -   Alle Schlüssel in Key Vault sind durch HSM \[Key Type = HSM Protected 2048-bit RSA Key\] geschützt.
 -   Allen Benutzern/Identitäten werden mithilfe von rollenbasierter Zugriffssteuerung (Role Based Access Control, RBAC) die erforderlichen mindestens erforderlichen Berechtigungen erteilt.
 -   Anwendungen teilen sich nur dann einen Key Vault, wenn sie sich gegenseitig vertrauen und zur Laufzeit Zugriff auf dieselben Geheimnisse benötigen.
--   Diagnoseprotokolle für Key Vault werden mit einer Aufbewahrungsdauer von mindestens 365 Tagen aktiviert.
+-   Diagnoseprotokolle für Key Vault werden mit einer Aufbewahrungsdauer von mindestens 365 Tagen aktiviert.
 -   Zulässige kryptographische Vorgänge für Schlüssel sind auf die erforderlichen Vorgänge beschränkt.
 
 ## <a name="ingest"></a>ERFASSEN 

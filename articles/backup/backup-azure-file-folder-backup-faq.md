@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/6/2018
 ms.author: trinadhk
-ms.openlocfilehash: acf71ae6f37ab6ea32d9cdd0ac06f297b00fba2e
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: c1690fe6d0ce24bd319b042a3850bbfe487ffcfc
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918568"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426255"
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>Fragen zum Azure Backup-Agent
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen, damit Sie sich schnell mit den Komponenten des Azure Backup-Agents vertraut machen können. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)stellen.
@@ -74,8 +74,8 @@ Verwenden Sie die folgende Liste, um den Cachespeicherort zu ändern.
 
 1. Beenden Sie die Backup-Engine, indem Sie den folgenden Befehl an einer Eingabeaufforderung mit erhöhten Rechten ausführen:
 
-    ```PS C:\> Net stop obengine``` 
-  
+    ```PS C:\> Net stop obengine```
+
 2. Verschieben Sie die Dateien nicht. Kopieren Sie den Cacheordner stattdessen auf ein anderes Laufwerk mit ausreichend Speicherplatz. Der ursprüngliche Cachespeicher kann entfernt werden, nachdem bestätigt wurde, dass die Sicherungen mit dem neuen Cachespeicher funktionieren.
 3. Aktualisieren Sie die folgenden Registrierungseinträge mit dem Pfad zum neuen Cacheordner.<br/>
 
@@ -111,7 +111,14 @@ Der Cacheordner und die Metadaten-VHD verfügen nicht über die erforderlichen A
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-by-the-backup-servicebr"></a>Gibt es eine Möglichkeit, die vom Backup-Dienst genutzte Bandbreite anzupassen?<br/>
   Ja. Verwenden Sie die Option **Eigenschaften ändern** im Backup-Agent, um die Bandbreite anzupassen. Sie können die Bandbreitenmenge und die Zeiten anpassen, zu denen Sie die Bandbreite nutzen. Eine Schritt-für-Schritt-Anleitung finden Sie unter **[Aktivieren der Netzwerkdrosselung](backup-configure-vault.md#enable-network-throttling)**.
 
+## <a name="restore"></a>Restore
+
+### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Was geschieht, wenn ich einen laufenden Wiederherstellungsauftrag abbreche?
+Wenn ein laufender Wiederherstellungsauftrag abgebrochen wird, stoppt der Wiederherstellungsvorgang, und alle vor dem Abbruch wiederhergestellten Dateien verbleiben ohne Rollbacks im konfigurierten Ziel (ursprünglicher oder alternativer Speicherort).
+
+
 ## <a name="manage-backups"></a>Verwalten von Sicherungen
+
 ### <a name="what-happens-if-i-rename-a-windows-server-that-is-backing-up-data-to-azurebr"></a>Was geschieht, wenn ich einen Windows-Server umbenenne, der Daten in Azure sichert?<br/>
 Wenn Sie einen Server umbenennen, werden alle derzeit konfigurierten Sicherungen angehalten. Registrieren Sie den neuen Namen des Servers beim Backup-Tresor. Wenn Sie den neuen Namen beim Tresor registrieren, dann ist der erste Sicherungsvorgang ein *vollständiges* Backup. Falls Sie Daten wiederherstellen müssen, die unter dem alten Servernamen im Tresor gesichert wurden, können Sie im Assistenten **Daten wiederherstellen** die Option [**Anderer Server**](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine) verwenden.
 
@@ -119,7 +126,7 @@ Wenn Sie einen Server umbenennen, werden alle derzeit konfigurierten Sicherungen
 Der Azure Backup-Agent basiert auf NTFS. Die [Angabe der Dateipfadlänge ist durch die Windows-API beschränkt](/windows/desktop/FileIO/naming-a-file#fully_qualified_vs._relative_paths). Falls der Dateipfad der zu schützenden Dateien die für die Windows-API zulässige Länge überschreitet, können Sie den übergeordneten Ordner oder das Laufwerk sichern.  
 
 ### <a name="what-characters-are-allowed-in-file-path-of-azure-backup-policy-using-azure-backup-agent-br"></a>Welche Zeichen sind im Dateipfad der Azure Backup-Richtlinie mit dem Azure Backup-Agent zulässig? <br>
- Der Azure Backup-Agent basiert auf NTFS. Für die Angabe der Datei können [von NTFS unterstützte Zeichen](/windows/desktop/FileIO/naming-a-file#naming_conventions) verwendet werden. 
- 
+ Der Azure Backup-Agent basiert auf NTFS. Für die Angabe der Datei können [von NTFS unterstützte Zeichen](/windows/desktop/FileIO/naming-a-file#naming_conventions) verwendet werden.
+
 ### <a name="i-receive-the-warning-azure-backups-have-not-been-configured-for-this-server-even-though-i-configured-a-backup-policy-br"></a>Ich erhalte eine Warnung mit dem Hinweis, dass für den Server noch keine Azure-Sicherungen konfiguriert wurden, obwohl ich eine Sicherungsrichtlinie konfiguriert habe. <br/>
 Diese Warnung tritt auf, wenn die auf dem lokalen Server gespeicherten Sicherungszeitplaneinstellungen nicht den Einstellungen im Sicherungstresor entsprechen. Wenn für den Server oder die Einstellungen ein als funktionierend bekannter Zustand wiederhergestellt wurde, ist unter Umständen die Synchronisierung der Sicherungszeitpläne verloren gegangen. Wenn Sie diese Warnung erhalten, sollten Sie die [Sicherungsrichtlinie neu konfigurieren](backup-azure-manage-windows-server.md) und dann **Sicherung jetzt ausführen** verwenden, um den lokalen Server wieder mit Azure zu synchronisieren.

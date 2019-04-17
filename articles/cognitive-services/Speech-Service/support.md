@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: a4c256a6acd8e51986b40e28a6f658f1103ab337
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bf0916f197ff5bf1a9531fde98fe8cefc8d7727f
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877699"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358066"
 ---
 # <a name="support-and-help-options"></a>Support- und Hilfeoptionen
 
@@ -23,6 +23,7 @@ Beginnen Sie erst damit, die Funktionalität des Speech-Diensts zu untersuchen? 
 
 > [!div class="checklist"]
 > * Halten Sie sich über neue Entwicklungen für *Azure Cognitive Services* auf dem Laufenden, oder suchen Sie nach Neuigkeiten zum *Speech-Dienst*.
+> * Versionshinweise enthalten Informationen zu allen Versionen.
 > * Suchen Sie in der Community, ob Ihr Problem bereits diskutiert wurde oder ob bereits eine Dokumentation für die Funktion, die Sie implementieren möchten, vorhanden ist.
 > * Wenn Sie keine zufriedenstellende Antwort finden, stellen Sie eine Frage bei *Stack Overflow*.
 > * Wenn Sie ein Problem mit einem der Beispiele auf GitHub feststellen, melden Sie in *GitHub* einen Fehler.
@@ -31,6 +32,10 @@ Beginnen Sie erst damit, die Funktionalität des Speech-Diensts zu untersuchen? 
 ## <a name="stay-informed"></a>Immer auf dem neuesten Stand
 
 Neuigkeiten zu Cognitive Services werden im [Cognitive Services-Blog](https://azure.microsoft.com/blog/topics/cognitive-services/) gesammelt. Verfolgen Sie das [Blog zum Speech-Dienst](https://azure.microsoft.com/blog/tag/speech-service/), um die aktuellsten Informationen zum Speech-Dienst zu erhalten.
+
+## <a name="release-notes"></a>Versionshinweise
+
+Die [Versionshinweise](https://aka.ms/csspeech/whatsnew) werden aktualisiert, sobald eine neue Version verfügbar ist. Die Hinweise enthalten Informationen zu neuen Funktionen, Verbesserungen und Fehlerbehebungen.
 
 ## <a name="search"></a>Suchen,
 
@@ -69,14 +74,14 @@ Wenn Sie über die Suche keine Lösung für Ihr Problem finden können, übermit
 
 > [!TIP]
 > Die folgenden Beiträge aus Stack Overflow enthalten Tipps zum Formulieren von Fragen und zum Hinzufügen von Quellcode. Das Befolgen dieser Hinweis kann dazu beitragen, dass Mitglieder der Community schneller auf Ihre Frage reagieren:  
-> * [How do I ask a good question?](https://stackoverflow.com/help/how-to-ask) (Wie stelle ich meine Frage optimal?)
-> * [How to create a Minimal, Complete, and Verifiable example](https://stackoverflow.com/help/mcve) (Erstellen eines minimalen, vollständigen und überprüfbaren Beispiels)
+> * [Wie stelle ich meine Frage optimal?](https://stackoverflow.com/help/how-to-ask)
+> * [Erstellen eines minimalen, vollständigen und überprüfbaren Beispiels](https://stackoverflow.com/help/mcve)
 
 ## <a name="create-a-github-issue"></a>Erstellen eines GitHub-Problems
 
 Beispiele werden häufig als Open Source-Dateien bereitgestellt. Erstellen Sie bei Fragen und Problemen ein *Problem* im entsprechenden GitHub-Repository. Sie können einen Pull Request übermitteln. Die folgende Liste enthält Links zu den Beispielrepositorys:
 
-* [Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues)
+* [Sprach-SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues)
 * [Geräte-SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
 
 Sie können einen Fehlerbericht oder eine Featureanforderung erstellen oder eine allgemeine Frage stellen, aber auch bewährte Methoden teilen. Befolgen Sie für das Melden von Fehlern die bereitgestellte Vorlage:
@@ -99,7 +104,7 @@ Eine klare und präzise Beschreibung dessen, was Sie erwartet haben.
 
 Welche Version des SDK Sie verwenden.
 
-**Plattform, Betriebssysteme und Programmiersprache**
+**Plattform, Betriebssystem und Programmiersprache**
 
  - Betriebssystem: [z.B. Windows, Linux, Android, iOS usw.] – seien Sie genau
  - Hardware: x64, x86, ARM usw.

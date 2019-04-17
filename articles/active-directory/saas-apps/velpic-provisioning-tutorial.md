@@ -13,20 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 03/27/2019
 ms.author: zhchia
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 059ce3a23a9bdacfb978ccad775c7da853772e3f
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 16c302fbe151d6cd8c2198240bc31a2bd69dbd7b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57344285"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270909"
 ---
 # <a name="tutorial-configuring-velpic-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Velpic für die automatische Benutzerbereitstellung
 
-
-Dieses Tutorial zeigt Ihnen die Schritte, die Sie in Velpic und Azure AD ausführen müssen, um Benutzerkonten von Azure AD in Velpic automatisch bereitzustellen bzw. deren Bereitstellung automatisch aufzuheben. 
+Dieses Tutorial zeigt Ihnen die Schritte, die Sie in Velpic und Azure AD ausführen müssen, um Benutzerkonten von Azure AD in Velpic automatisch bereitzustellen bzw. deren Bereitstellung automatisch aufzuheben.
 
 > [!NOTE]
 > In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md).
@@ -35,9 +34,9 @@ Dieses Tutorial zeigt Ihnen die Schritte, die Sie in Velpic und Azure AD ausfüh
 
 Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
-*   Azure Active Directory-Mandant
-*   Einen Velpic-Mandanten, für den mindestens der [Enterprise](https://www.velpic.com/pricing.html)-Plan aktiviert ist 
-*   Ein Benutzerkonto in Velpic mit Administratorrechten 
+* Azure Active Directory-Mandant
+* Einen Velpic-Mandanten, für den mindestens der [Enterprise](https://www.velpic.com/pricing.html)-Plan aktiviert ist
+* Ein Benutzerkonto in Velpic mit Administratorrechten
 
 ## <a name="assigning-users-to-velpic"></a>Zuweisen von Benutzern zu Velpic
 
@@ -49,32 +48,30 @@ Vor dem Konfigurieren und Aktivieren des Bereitstellungsdiensts müssen Sie ents
 
 ### <a name="important-tips-for-assigning-users-to-velpic"></a>Wichtige Tipps zum Zuweisen von Benutzern zu Velpic
 
-*   Es wird empfohlen, Velpic einem einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der Bereitstellung zu testen. Später können weitere Benutzer und/oder Gruppen zugewiesen werden.
+* Es wird empfohlen, Velpic einem einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der Bereitstellung zu testen. Später können weitere Benutzer und/oder Gruppen zugewiesen werden.
 
-*   Beim Zuweisen eines Benutzers zu Velpic müssen Sie entweder die Rolle **Benutzer** oder eine andere gültige anwendungsspezifische Rolle (sofern verfügbar) im Dialogfeld für die Zuweisung auswählen. Achten Sie darauf, dass die Rolle **Standardzugriff** nicht für die Bereitstellung funktioniert. Diese Benutzer werden übersprungen.
+* Beim Zuweisen eines Benutzers zu Velpic müssen Sie entweder die Rolle **Benutzer** oder eine andere gültige anwendungsspezifische Rolle (sofern verfügbar) im Dialogfeld für die Zuweisung auswählen. Achten Sie darauf, dass die Rolle **Standardzugriff** nicht für die Bereitstellung funktioniert. Diese Benutzer werden übersprungen.
 
-
-## <a name="configuring-user-provisioning-to-velpic"></a>Konfigurieren der Benutzerbereitstellung in Velpic 
+## <a name="configuring-user-provisioning-to-velpic"></a>Konfigurieren der Benutzerbereitstellung in Velpic
 
 Dieser Abschnitt führt Sie durch das Herstellen einer Verbindung von Azure AD mit der Velpic-API zur Bereitstellung von Benutzerkonten sowie durch das Konfigurieren des Bereitstellungsdiensts für das Erstellen, Aktualisieren und Deaktivieren zugewiesener Benutzerkonten in Velpic basierend auf der Benutzer- und Gruppenzuweisung in Azure AD.
 
->[!TIP]
->Sie können auch das SAML-basierte einmalige Anmelden für Velpic aktivieren. Befolgen Sie hierzu die Anweisungen im [Azure-Portal](https://portal.azure.com). Einmaliges Anmelden kann unabhängig von der automatischen Bereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
-
+> [!TIP]
+> Sie können auch das SAML-basierte einmalige Anmelden für Velpic aktivieren. Befolgen Sie hierzu die Anweisungen im [Azure-Portal](https://portal.azure.com). Einmaliges Anmelden kann unabhängig von der automatischen Bereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-velpic-in-azure-ad"></a>So konfigurieren Sie die automatische Bereitstellung von Benutzerkonten für Velpic in Azure AD
 
-1.  Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory > Unternehmens-Apps > Alle Anwendungen**.
+1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory > Unternehmens-Apps > Alle Anwendungen**.
 
 2. Wenn Sie Velpic bereits für einmaliges Anmelden konfiguriert haben, suchen Sie über das Suchfeld nach Ihrer Velpic-Instanz. Wählen Sie andernfalls **Hinzufügen** aus, und suchen Sie im Anwendungskatalog nach **Velpic**. Wählen Sie Velpic in den Suchergebnissen aus, und fügen Sie es Ihrer Anwendungsliste hinzu.
 
-3.  Wählen Sie Ihre Velpic-Instanz aus, und wählen Sie dann die Registerkarte **Bereitstellung** aus.
+3. Wählen Sie Ihre Velpic-Instanz aus, und wählen Sie dann die Registerkarte **Bereitstellung** aus.
 
-4.  Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
+4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
     ![Bereitstellung von Velpic](./media/velpic-provisioning-tutorial/Velpic1.png)
 
-5.  Geben Sie im Abschnitt **Administratoranmeldeinformationen** die **Mandanten-URL und das geheime Token** von Velpic ein. (Sie finden diese Werte in Ihrem Velpic-Konto unter **Verwalten von** > **Integration** > **Plug-Ins** > **SCIM**.)
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die **Mandanten-URL und das geheime Token** von Velpic ein. (Sie finden diese Werte in Ihrem Velpic-Konto unter **Verwalten von** > **Integration** > **Plug-Ins** > **SCIM**.)
 
     ![Autorisierungswerte](./media/velpic-provisioning-tutorial/Velpic2.png)
 
@@ -82,7 +79,7 @@ Dieser Abschnitt führt Sie durch das Herstellen einer Verbindung von Azure AD m
 
 7. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das unten gezeigte Kontrollkästchen.
 
-8. Klicken Sie auf **Speichern**. 
+8. Klicken Sie auf **Speichern**.
 
 9. Wählen Sie im Abschnitt „Zuordnungen“ die Option **Azure Active Directory-Benutzer mit Velpic synchronisieren** aus.
 
@@ -90,12 +87,11 @@ Dieser Abschnitt führt Sie durch das Herstellen einer Verbindung von Azure AD m
 
 11. Um den Azure AD-Bereitstellungsdienst für Velpic zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
 
-12. Klicken Sie auf **Speichern**. 
+12. Klicken Sie auf **Speichern**.
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die Velpic im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Beachten Sie, dass die Erstsynchronisierung länger dauert als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Berichten zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst ausgeführt werden.
 
 Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
-
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

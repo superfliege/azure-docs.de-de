@@ -1,24 +1,24 @@
 ---
-title: 'Tutorial: Erstellen eines benutzerdefinierten Java-Moduls – Azure IoT Edge | Microsoft-Dokumentation'
+title: 'Tutorial: Benutzerdefiniertes Java-Modul – Azure IoT Edge | Microsoft-Dokumentation'
 description: In diesem Tutorial wird gezeigt, wie Sie ein IoT Edge-Modul mit Java-Code erstellen und es auf einem Edge-Gerät bereitstellen.
 services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/04/2019
+ms.date: 04/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 9a541f42670b3ccf83331e3e2e9069289bb9b4b3
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: f654f33fe03b29a3aa93386d49e8f5a43cffc9c8
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224072"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470295"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-and-deploy-to-your-simulated-device"></a>Tutorial: Entwickeln und Bereitstellen eines Java-IoT Edge-Moduls für Ihr simuliertes Gerät
 
-Mithilfe von Azure IoT Edge-Modulen können Sie Code bereitstellen, der Ihre Geschäftslogik direkt auf Ihren IoT Edge-Geräten implementiert. In diesem Tutorial wird beschrieben, wie Sie ein IoT Edge-Modul, mit dem Sensordaten gefiltert werden, erstellen und bereitstellen. Sie verwenden das simulierte IoT Edge-Gerät, das Sie in den Schnellstartanleitungen zum Bereitstellen von Azure IoT Edge auf einem simulierten Gerät unter [Windows](quickstart.md) oder [Linux](quickstart-linux.md) erstellt haben. In diesem Tutorial lernen Sie Folgendes:    
+Mithilfe von Azure IoT Edge-Modulen können Sie Code bereitstellen, der Ihre Geschäftslogik direkt auf Ihren IoT Edge-Geräten implementiert. In diesem Tutorial wird beschrieben, wie Sie ein IoT Edge-Modul, mit dem Sensordaten gefiltert werden, erstellen und bereitstellen. Sie verwenden das simulierte Io  Edge-Gerät, das Sie in der Schnellstartanleitung zum Bereitstellen von Azure IoT Edge auf einem simulierten Gerät unter [Linux](quickstart-linux.md) erstellt haben. In diesem Tutorial lernen Sie Folgendes:    
 
 > [!div class="checklist"]
 > * Erstellen eines IoT Edge-Java-Moduls mithilfe von Visual Studio Code auf der Grundlage des Azure IoT Edge-Maven-Vorlagenpakets und des Azure IoT-Java-Geräte-SDK.
@@ -36,8 +36,8 @@ Das IoT Edge-Modul, das Sie in diesem Tutorial erstellen, filtert die von Ihrem 
 
 Ein Azure IoT Edge-Gerät:
 
-* Sie können ein IoT Edge-Gerät einrichten, indem Sie die Schritte in den Schnellstartanleitungen für [Linux](quickstart-linux.md) bzw. [Windows](quickstart.md) ausführen.
-* Bei IoT Edge auf Windows-Geräten unterstützt Version 1.0.5 keine Java-Module. Weitere Informationen finden Sie in den [Versionshinweisen zur Version 1.0.5](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5). Die Schritte zum Installieren einer bestimmten Version finden Sie unter [Aktualisieren des IoT Edge-Sicherheitsdaemons und der Runtime](how-to-update-iot-edge.md).
+* Sie können einen virtuellen Azure-Computer als IoT Edge-Gerät verwenden, indem Sie die Schritte im Schnellstart für [Linux](quickstart-linux.md) ausführen. 
+* Java-Module für IoT Edge unterstützen keine Windows-Container. 
 
 Cloudressourcen:
 
@@ -146,8 +146,9 @@ Die Umgebungsdatei speichert die Anmeldeinformationen für Ihre Containerregistr
 7. Ersetzen Sie die execute-Methode von **MessageCallbackMqtt** durch den folgenden Code. Diese Methode wird aufgerufen, wenn das Modul eine MQTT-Nachricht vom IoT Edge-Hub empfängt. Sie filtert Nachrichten heraus, die Temperaturen unter dem über den Modulzwilling festgelegten Temperaturschwellenwert melden.
 
     ```java
+    protected static class MessageCallbackMqtt implements MessageCallback {
         private int counter = 0;
-       @Override
+        @Override
         public IotHubMessageResult execute(Message msg, Object context) {
             this.counter += 1;
  
@@ -173,6 +174,7 @@ Die Umgebungsdatei speichert die Anmeldeinformationen für Ihre Containerregistr
             }
             return IotHubMessageResult.COMPLETE;
         }
+    }
     ```
 
 8. Fügen Sie die folgenden zwei statischen internen Klassen zur **App**-Klasse hinzu. Mit diesen Klassen wird die Variable „tempThreshold“ aktualisiert, wenn sich die gewünschte Eigenschaft des Modulzwillings ändert. Alle Module haben ihren eigenen Modulzwilling, über den Sie den in einem Modul ausgeführten Code direkt in der Cloud konfigurieren können.
@@ -218,9 +220,9 @@ Die Umgebungsdatei speichert die Anmeldeinformationen für Ihre Containerregistr
 
 11. Speichern Sie die Datei „App.java“.
 
-12. Öffnen Sie im VS Code-Explorer die Datei **deployment.template.json** im Arbeitsbereich für Ihre IoT Edge-Projektmappe. Über diese Datei erhält der IoT Edge-Agent die Informationen dazu, welche Module bereitgestellt werden sollen (hier: **tempSensor** und **JavaModule**). Außerdem wird der IoT Edge-Hub angewiesen, wie die Nachrichten weitergeleitet werden sollen. Die Visual Studio Code-Erweiterung fügt zwar automatisch die meisten Informationen ein, die Sie für die Bereitstellungsvorlage benötigen, aber Sie sollten überprüfen, ob alle Angaben für Ihre Lösung stimmen: 
+12. Öffnen Sie im VS Code-Explorer die Datei **deployment.template.json** im Arbeitsbereich für Ihre IoT Edge-Projektmappe. Mithilfe dieser Datei wird dem IoT Edge-Agent mitgeteilt, welche Module bereitgestellt werden sollen, und dem IoT Edge-Hub wird mitgeteilt, wie Nachrichten zwischen ihnen weitergeleitet werden sollen. In diesem Fall werden die beiden Module **tempSensor** und **javaModule** verwendet. Die Visual Studio Code-Erweiterung fügt zwar automatisch die meisten Informationen ein, die Sie für die Bereitstellungsvorlage benötigen, aber Sie sollten überprüfen, ob alle Angaben für Ihre Lösung stimmen: 
 
-   1. Die Standardplattform Ihrer IoT Edge-Instanz ist auf Ihrer VS Code-Statusleiste auf **amd64** festgelegt. Das bedeutet, dass **JavaModule** auf die Linux-amd64-Version des Images festgelegt ist. Ändern Sie die Standardplattform auf der Statusleiste von **amd64** in **arm32v7** oder **windows-amd64**, sofern es sich dabei um die Architektur Ihres IoT Edge-Geräts handelt. 
+   1. Die Standardplattform Ihrer IoT Edge-Instanz ist auf Ihrer VS Code-Statusleiste auf **amd64** festgelegt. Das bedeutet, dass **JavaModule** auf die Linux-amd64-Version des Images festgelegt ist. Ändern Sie die Standardplattform auf der Statusleiste von **amd64** in **arm32v7**, sofern es sich dabei um die Architektur Ihres IoT Edge-Geräts handelt. 
 
       ![Aktualisieren der Modulimageplattform](./media/tutorial-java-module/image-platform.png)
 
@@ -264,8 +266,9 @@ Sie können die vollständige Adresse des Containerimages mit Tag im integrierte
 >[!TIP]
 >Führen Sie die folgenden Überprüfungen durch, wenn beim Versuch, Ihr Modul zu erstellen und zu pushen, ein Fehler auftritt:
 >* Haben Sie sich mit den Anmeldeinformationen aus Ihrer Containerregistrierung bei Docker in Visual Studio Code angemeldet? Dabei handelt es sich um andere Anmeldeinformationen, als Sie zur Anmeldung beim Azure-Portal verwenden.
->* Ist Ihr Containerrepository richtig? Öffnen Sie **modules** > **cmodule** > **module.json**, und suchen Sie nach dem Feld **Repository**. Das Imagerepository sollte wie folgt aussehen: **\<Registrierungsname\>.azurecr.io/javamodule**. 
->* Erstellen Sie die gleiche Art von Containern, die von Ihrem Entwicklungscomputer ausgeführt wird? Visual Studio Code ist standardmäßig auf Container vom Typ „Linux amd64“ festgelegt. Wenn auf Ihrem Entwicklungscomputer Windows-Container oder Container vom Typ „Linux arm32v7“ ausgeführt werden, aktualisieren Sie die Plattform auf der blauen Statusleiste am unteren Rand der VS Code-Fensters so, dass sie Ihrer Containerplattform entspricht.
+>* Ist Ihr Containerrepository richtig? Öffnen Sie **modules** > **JavaModule** > **module.json**, und suchen Sie nach dem Feld **repository**. Das Imagerepository sollte wie folgt aussehen: **\<Registrierungsname\>.azurecr.io/javamodule**. 
+>* Erstellen Sie die gleiche Art von Containern, die von Ihrem Entwicklungscomputer ausgeführt wird? Visual Studio Code ist standardmäßig auf Container vom Typ „Linux amd64“ festgelegt. Wenn auf Ihrem Entwicklungscomputer Container vom Typ „Linux arm32v7“ ausgeführt werden, aktualisieren Sie die Plattform auf der blauen Statusleiste am unteren Rand des VS Code-Fensters so, dass sie Ihrer Containerplattform entspricht.
+>* Java-Module für IoT Edge unterstützen keine Windows-Container.
 
 ## <a name="deploy-and-run-the-solution"></a>Bereitstellen und Ausführen der Projektmappe
 

@@ -5,21 +5,21 @@ services: container-registry
 author: stevelas
 ms.service: container-registry
 ms.topic: overview
-ms.date: 03/29/2019
+ms.date: 04/03/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 39f643bd66e2a96b0b9b93989d2941a9c30ea7fc
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: ba75d196bdb53fab104ab6c01391e762b4a3841b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894012"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270522"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Einführung in private Docker-Containerregistrierungen in Azure
 
 Die Azure-Containerregistrierung ist ein verwalteter Dienst vom Typ [Docker-Registrierung](https://docs.docker.com/registry/), der auf Version 2.0 der Open Source-Docker-Registrierung basiert. Erstellen und verwalten Sie Azure-Containerregistrierungen, um Ihre privaten [Docker-Container](https://www.docker.com/what-docker)images zu speichern und zu verwalten.
 
-Verwenden Sie Containerregistrierungen in Azure mit Ihren vorhandenen Containerentwicklungs- und Bereitstellungspipelines. Verwenden Sie Azure Container Registry Build (ACR Build) zum Erstellen von Containerimages in Azure. Erstellen Sie bedarfsgesteuerte oder voll automatisierte Builds mit Triggern zum Ausführen von Commits für Quellcode und zum Aktualisieren des Basisimagebuilds.
+Verwenden Sie Containerregistrierungen in Azure mit Ihren vorhandenen Pipelines für die Containerentwicklung und -bereitstellung, oder nutzen Sie [ACR Tasks](#azure-container-registry-tasks), um Containerimages in Azure zu erstellen. Erstellen Sie bedarfsgesteuerte oder voll automatisierte Builds mit Triggern zum Ausführen von Commits für Quellcode und zum Aktualisieren des Basisimagebuilds.
 
 Hintergrundinformationen zu Docker und Containern finden Sie im [Docker – Übersicht](https://docs.docker.com/engine/docker-overview/).
 
@@ -32,7 +32,9 @@ Rufen Sie Images aus einer Azure-Containerregistrierung für verschiedene Bereit
 
 Entwickler können im Rahmen eines Workflows der Containerentwicklung auch eine Pushübertragung in eine Containerregistrierung durchführen. Sie können Daten beispielsweise mit einem Tool für Continuous Integration und Bereitstellung an eine Containerregistrierung wie z.B. [Azure DevOps Services](https://docs.microsoft.com/azure/devops/) oder [Jenkins](https://jenkins.io/) übertragen.
 
-Konfigurieren Sie ACR Tasks, um Anwendungsimages automatisch neu zu erstellen, wenn ihre Basisimages aktualisiert werden. Verwenden Sie ACR Tasks, um Imagebuilds zu automatisieren, wenn das Team ein Commit für Code an ein Git-Repository ausführt.
+Konfigurieren Sie ACR Tasks für das automatische erneute Erstellen von Anwendungsimages, wenn die Basisimages aktualisiert werden, oder automatisieren Sie Imagebuilds, wenn Ihr Team Code in einem Git-Repository committet. Erstellen Sie Tasks mit mehreren Schritten, um das parallele Erstellen, Testen und Patchen mehrerer Containerimages in der Cloud zu automatisieren.
+
+Azure bietet für die Verwaltung Ihrer Azure-Containerregistrierungen verschiedene Tools, etwa die Azure-Befehlszeilenschnittstelle, das Azure-Portal und API-Unterstützung. Installieren Sie optional die [Docker-Erweiterung für Visual Studio Code](https://code.visualstudio.com/docs/azure/docker) und die [Azure-Kontoerweiterung](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) für die Verwendung mit Ihren Azure-Containerregistrierungen. In Visual Studio Code können Sie Pull- und Pushvorgänge für Images in einer Azure-Containerregistrierung oder auch ACR Tasks ausführen.
 
 ## <a name="key-concepts"></a>Wichtige Begriffe
 
@@ -40,7 +42,7 @@ Konfigurieren Sie ACR Tasks, um Anwendungsimages automatisch neu zu erstellen, w
 
   Sie [steuern den Zugriff](container-registry-authentication.md) auf eine Containerregistrierung mit einer Azure-Identität, einem auf Azure Active Directory basierenden [Dienstprinzipal](../active-directory/develop/app-objects-and-service-principals.md) oder einem bereitgestellten Administratorkonto. Melden Sie sich mithilfe der Azure-Befehlszeilenschnittstelle oder mit dem Standardbefehl `docker login` bei der Registrierung an.
 
-* **Repository**: Eine Registrierung enthält mindestens ein Repository, das Gruppen von Containerimages speichert. Die Azure-Containerregistrierung unterstützt Repositorynamespaces mit mehreren Ebenen. Mit Namespaces mit mehreren Ebenen können Sie Sammlungen mit Images für eine bestimmte App oder eine Sammlung von Apps für bestimmte Entwicklungs- oder Betriebsteams gruppieren. Beispiel: 
+* **Repository:** Eine Registrierung enthält mindestens ein Repository. Dabei handelt es sich um virtuelle Gruppen von Containerimages mit dem gleichen Namen, aber unterschiedlichen Tags oder Digests. Die Azure-Containerregistrierung unterstützt Repositorynamespaces mit mehreren Ebenen. Mit Namespaces mit mehreren Ebenen können Sie Sammlungen mit Images für eine bestimmte App oder eine Sammlung von Apps für bestimmte Entwicklungs- oder Betriebsteams gruppieren. Beispiel: 
 
   * `myregistry.azurecr.io/aspnetcore:1.0.1` stellt ein unternehmensweites Image dar.
   * `myregistry.azurecr.io/warrantydept/dotnet-build` stellt ein Image dar, das zum Erstellen von .NET-Apps verwendet wird, die für die Garantieabteilung freigegeben werden.

@@ -8,18 +8,18 @@ manager: rosh
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 2/27/2019
+ms.date: 4/02/2019
 ms.author: rosh
-ms.openlocfilehash: 6b7685f837cabf7ec659311c54f8c168981e4777
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8c350b5c2d945ed48566f549ab85844fc14625dc
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544715"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049285"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>Schnellstart: Gewinnen von Erkenntnissen zu Bildern mit der REST-API für die visuelle Bing-Suche und Ruby
 
-In dieser Schnellstart wird die Programmiersprache Ruby verwendet, um die visuelle Bing-Suche aufzurufen und Ergebnisse anzuzeigen. Über eine Post-Anforderung wird ein Bild an den API-Endpunkt hochgeladen. Die Ergebnisse enthalten URLs und beschreibende Informationen zu Bildern, die dem hochgeladenen Bild ähneln.
+In dieser Schnellstart wird die Programmiersprache Ruby verwendet, um die visuelle Bing-Suche aufzurufen und Ergebnisse anzuzeigen. Über eine POST-Anforderung wird ein Bild in den API-Endpunkt hochgeladen. Die Ergebnisse enthalten URLs und beschreibende Informationen zu Bildern, die dem hochgeladenen Bild ähneln.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,7 +32,7 @@ Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
 ## <a name="project-and-required-modules"></a>Projekt und erforderliche Module
 
-Erstellen Sie in Ihrer IDE oder in einem Editor ein neues Ruby-Projekt. Importieren Sie `net/http`, `uri` und `json` für die Behandlung des JSON-Texts der Ergebnisse. Die Bibliothek `base64` wird verwendet, um die Zeichenfolge des Dateinamens zu codieren. 
+Erstellen Sie in Ihrer IDE oder in einem Editor ein neues Ruby-Projekt. Importieren Sie `net/http`, `uri` und `json` für die Behandlung des JSON-Texts der Ergebnisse. Die Bibliothek `base64` wird verwendet, um die Zeichenfolge des Dateinamens zu codieren: 
 
 ```
 require 'net/https'
@@ -44,7 +44,7 @@ require 'base64'
 
 ## <a name="define-variables"></a>Definieren von Variablen
 
-Der folgende Code weist erforderliche Variablen zu. Vergewissern Sie sich, dass der Endpunkt korrekt ist, und ersetzen Sie den Wert `accessKey` durch einen Abonnementschlüssel aus Ihrem Azure-Konto.  `batchNumber` ist eine GUID, die für führende und nachfolgende Grenzen der Post-Daten erforderlich ist.  Die Variable `fileName` gibt die Bilddatei für den Post-Vorgang an.  Der Block `if` überprüft, ob ein gültiger Abonnementschlüssel vorhanden ist.
+Der folgende Code weist erforderliche Variablen zu. Vergewissern Sie sich, dass der Endpunkt korrekt ist, und ersetzen Sie den Wert `accessKey` durch einen Abonnementschlüssel aus Ihrem Azure-Konto.  `batchNumber` ist eine GUID, die für führende und nachgestellte Grenzen der POST-Daten erforderlich ist.  Die Variable `fileName` gibt die Bilddatei für den POST-Vorgang an.  Der Block `if` überprüft, ob ein gültiger Abonnementschlüssel vorhanden ist.
 
 ```
 accessKey = "ACCESS-KEY"
@@ -61,9 +61,9 @@ end
 
 ```
 
-## <a name="form-data-for-post-request"></a>Formulardaten für die Post-Anforderung
+## <a name="form-data-for-post-request"></a>Formulardaten für die POST-Anforderung
 
-Die Bilddaten für den Post-Vorgang sind von führenden und nachfolgenden Grenzen umschlossen.  Die Grenzen werden mithilfe der folgenden Funktionen festgelegt:
+Die Bilddaten für den POST-Vorgang sind von führenden und nachfolgenden Grenzen umschlossen. Die Grenzen werden mithilfe der folgenden Funktionen festgelegt:
 
 ```
 def BuildFormDataStart(batNum, fileName)
@@ -74,10 +74,9 @@ end
 def BuildFormDataEnd(batNum)
     return "\r\n\r\n" + "--batch_" + batNum + "--" + "\r\n"
 end
-
 ```
 
-Erstellen Sie als Nächstes den Endpunkt-URI und ein Array für den Post-Text.  Verwenden Sie die vorherige Funktion, um die Anfangsgrenze in das Array zu laden. Lesen Sie die Bilddatei in das Array. Lesen Sie anschließend die Endgrenze in das Array. 
+Erstellen Sie als Nächstes den Endpunkt-URI und ein Array für den POST-Text.  Verwenden Sie die vorherige Funktion, um die Anfangsgrenze in das Array zu laden. Lesen Sie die Bilddatei in das Array. Lesen Sie anschließend die Endgrenze in das Array:
 
 ```
 uri = URI(uri + path)
@@ -91,12 +90,11 @@ post_body << BuildFormDataStart(batchNumber, fileName)
 post_body << File.read(fileName) #Base64.encode64(File.read(fileName))
 
 post_body << BuildFormDataEnd(batchNumber)
-
 ```
 
 ## <a name="create-the-http-request"></a>Erstellen der HTTP-Anforderung
 
-Legen Sie den Header `Ocp-Apim-Subscription-Key` fest.  Erstellen der Anforderung  Weisen Sie anschließend den Header und den Inhaltstyp zu.  Verknüpfen Sie den zuvor erstellten Post-Text mit der Anforderung.
+Legen Sie den Header `Ocp-Apim-Subscription-Key` fest.  Erstellen der Anforderung Weisen Sie anschließend den Header und den Inhaltstyp zu. Verknüpfen Sie den zuvor erstellten POST-Text mit der Anforderung:
 
 ```
 header = {'Ocp-Apim-Subscription-Key': accessKey}
@@ -121,7 +119,7 @@ end
 
 ## <a name="print-the-results"></a>Ausgeben der Ergebnisse
 
-Geben Sie die Header der Antwort aus. Formatieren Sie die Ausgabe anschließend mithilfe der JSON-Bibliothek.
+Geben Sie die Header der Antwort aus, und verwenden Sie die JSON-Bibliothek, um die Ausgabe zu formatieren:
 
 ```
 puts "\nRelevant Headers:\n\n"
@@ -286,5 +284,5 @@ JSON Response:
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Übersicht über die visuelle Bing-Suche](../overview.md)
-> [Erstellen einer Web-App für die benutzerdefinierte Suche](../tutorial-bing-visual-search-single-page-app.md)
+> [Was ist die API für die visuelle Bing-Suche?](../overview.md)
+> [Erstellen einer Single-Page-Web-App für die visuelle Suche](../tutorial-bing-visual-search-single-page-app.md)

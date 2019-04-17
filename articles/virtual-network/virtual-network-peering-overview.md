@@ -4,20 +4,20 @@ titlesuffix: Azure Virtual Network
 description: Weitere Informationen zum Peering in virtuellen Netzwerken in Azure
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: anavinahar
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/21/2019
-ms.author: jdial
-ms.openlocfilehash: 3488e8501b0b9bea83bfcce5085d42b6476d3ed2
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.date: 04/01/2019
+ms.author: anavin
+ms.openlocfilehash: e6c5a9aa3e4e173ecfc79f4072d091493677afed
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58880422"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489980"
 ---
 # <a name="virtual-network-peering"></a>Peering in virtuellen Netzwerken
 
@@ -80,7 +80,6 @@ Sie können auch die [Anleitung zum Beheben von Problemen beim Peering in virtue
 
 Die folgenden Einschränkungen gelten nur, wenn virtuelle Netzwerke über globales Peering verbunden werden:
 - Ressourcen in einem virtuellen Netzwerk können nicht mit der Front-End-IP-Adresse eines Load Balancers Standard in einem per globalem Peering verbundenen virtuellen Netzwerk kommunizieren. Unterstützung für Load Balancer Standard besteht nur innerhalb der gleichen Region. Unterstützung für Load Balancer Standard besteht für globales VNet-Peering.
-- In der Vorschauversion können Sie Remotegateways verwenden oder Gatewaytransit in virtuellen Netzwerken mit globalem Peering zulassen. Die Vorschauversion ist in allen Azure-Regionen, China-Cloud-Regionen und Government-Cloud-Regionen verfügbar. Es sind keine Whitelists erforderlich. Sie können in der Vorschau über CLI, PowerShell, Vorlagen oder API testen. Das Portal wird in der Vorschau nicht unterstützt.
 
 Informationen zu Anforderungen und Einschränkungen finden Sie unter [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke](virtual-network-manage-peering.md#requirements-and-constraints). Informationen zu den Grenzwerten für die Anzahl von Peerings, die für ein virtuelles Netzwerk erstellt werden können, finden Sie unter [Netzwerkgrenzwerte – Azure Resource Manager](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). 
 

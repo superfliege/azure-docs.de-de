@@ -1,5 +1,5 @@
 ---
-title: Azure Marketplace-Herausgeberleitfaden für SEO | Microsoft-Dokumentation
+title: Azure Marketplace-Leitfaden zur Suchmaschinenoptimierung (SEO) | Microsoft-Dokumentation
 description: Enthält Anleitungen zu Verbesserungen der Suchmaschinenoptimierung (Search Engine Optimization, SEO).
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -12,21 +12,23 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 04/09/2019
 ms.author: pbutlerm
-ms.openlocfilehash: cacc7c0b269e8006903961049caf3cd7e3bee449
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: da7b59400baa4c964dff71fa1f842fede9d68df1
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834335"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469657"
 ---
-<a name="azure-marketplace-seo-publisher-guide"></a>Azure Marketplace-Herausgeberleitfaden für SEO
-=======================================
+# <a name="azure-marketplace-seo-guidance"></a>Azure Marketplace-Leitfaden zur Suchmaschinenoptimierung (SEO)
 
-### <a name="general-explanation-of-algorithm"></a>Allgemeine Erläuterung des Algorithmus
+In diesem Artikel wird erläutert, wie Sie die Auffindbarkeit Ihres Angebots durch die Suchfunktionen in [Azure Marketplace](https://azuremarketplace.microsoft.com) und [AppSource](https://appsource.microsoft.com) maximieren können. 
 
-Für den Marketplace wird Azure Search genutzt, um die Suchfunktionen für die Website bereitzustellen. Der Algorithmus basiert auf dem Maß für Vorkommenshäufigkeit–inverse Dokumenthäufigkeit (term frequency–inverse document frequency, [Tf-idf-Maß](https://en.wikipedia.org/wiki/Tf–idf)). Es wird die Standardversion des [Lucene-Analysetools](https://lucene.apache.org/core/) verwendet.
+
+## <a name="general-explanation-of-algorithm"></a>Allgemeine Erläuterung des Algorithmus
+
+Microsoft Marketplace verwendet Azure Search, um die Suchfunktionen für die Website bereitzustellen. Der Algorithmus basiert auf dem Maß für Vorkommenshäufigkeit–inverse Dokumenthäufigkeit (term frequency–inverse document frequency, [Tf-idf-Maß](https://en.wikipedia.org/wiki/Tf–idf)). Es wird die Standardversion des [Lucene-Analysetools](https://lucene.apache.org/core/) verwendet.
 
 Grundsätzlich werden alle Textfelder, Kategorien und Branchen in die Gewichtung der Relevanz einbezogen. Spezielle Begriffe, die von Apps selten, in Ihrer App aber häufig verwendet werden, führen zu einer höheren Trefferquote bei einer Suche. Das heißt, ein Einbeziehen von Begriffen wie „VM“ würde nur wenige Vorteile bieten, wogegen „Azure Search“ sehr viel spezieller wäre.
 Nachstehend sind die wichtigsten zu berücksichtigenden Felder aufgeführt.
@@ -42,7 +44,7 @@ Nachstehend sind die wichtigsten zu berücksichtigenden Felder aufgeführt.
 |  |  |  |
 
 
-### <a name="other-tips"></a>Weitere Tipps
+## <a name="other-tips"></a>Weitere Tipps
 
 -   Suchvorschläge führen zu hoher Benutzeraktivität. Dabei werden Übereinstimmungen mit App-Name/Herausgeber priorisiert. „Kurze Beschreibung“ wird das Schlüsselfeld, wenn der Suchbegriff nicht genau mit dem Herausgeber-/App-Namen übereinstimmt.
 -   Dokumente zum Herunterladen werden nicht in die Suchgewichtung einbezogen.

@@ -10,26 +10,26 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: fmegen
-ms.openlocfilehash: 0a06293a648460694bbe222f36f81bea2d6acdac
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a418966ce72876d58d39b939ecb7dd5a05e41b9b
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57841173"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008985"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in JavaScript in einem Browser mit dem Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Dieser Artikel enthält Informationen zur Erstellung einer Website mithilfe der JavaScript-Bindung des Cognitive Services Speech SDK zum Umwandeln von Sprache in Text.
-Die Anwendung basiert auf dem Microsoft Cognitive Services Speech SDK. ([Version 1.3.0 herunterladen](https://aka.ms/csspeech/jsbrowserpackage))
+Die Anwendung basiert auf dem Speech SDK für JavaScript. Die Version 1.4.0 können Sie [hier](https://aka.ms/csspeech/jsbrowserpackage) herunterladen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Abonnementschlüssel für den Spracherkennungsdienst. Informationen finden Sie unter [Kostenloses Testen von Speech Services](get-started.md).
 * Ein PC oder Mac mit einem funktionierenden Mikrofon
 * Ein Texteditor
-* Eine aktuelle Version von Chrome oder Microsoft Edge
+* Eine aktuelle Version von Chrome, Microsoft Edge oder Safari
 * Optional einen Webserver, der das Hosten von PHP-Skripts unterstützt
 
 ## <a name="create-a-new-website-folder"></a>Erstellen eines neuen Websiteordners
@@ -52,7 +52,7 @@ Erstellen Sie eine neue Datei im Ordner `index.html`, und öffnen Sie diese Date
    ```html
    <html>
    <head>
-      <title>Microsoft Cognitive Service Speech SDK JavaScript Quickstart</title>
+      <title>Speech SDK JavaScript Quickstart</title>
    </head>
    <body>
     <!-- UI code goes here -->
@@ -98,6 +98,10 @@ Auf diese Weise verlässt Ihr Abonnementschlüssel nie den Server, während Benu
 ## <a name="build-and-run-the-sample-locally"></a>Erstellen und lokales Ausführen des Beispiels
 
 Um die App zu starten, doppelklicken Sie auf die Datei „index.html“, oder öffnen Sie die Datei „index.html“ mit Ihren bevorzugten Browser. Es wird eine einfache Oberfläche angezeigt, auf der Sie Ihren Abonnementschlüssel und die [Region](regions.md) eingeben und eine Erkennung über das Mikrofon auslösen können.
+
+> [!NOTE]
+> Diese Methode kann für den Safari-Browser nicht verwendet werden.
+> Für Safari muss die Beispielwebseite auf einem Webserver gehostet werden. In Safari können Websites, die aus einer lokalen Datei geladen werden, das Mikrofon nicht verwenden.
 
 ## <a name="build-and-run-the-sample-via-a-web-server"></a>Erstellen und Ausführen des Beispiels über einen Webserver
 

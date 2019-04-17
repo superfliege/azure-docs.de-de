@@ -12,12 +12,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: jowargo
-ms.openlocfilehash: a86c3bd85f9d611787a41754f49ee2475ba33a9a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c24fcd5f007b641bb594bb07348491f70c03ea41
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58175596"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469130"
 ---
 # <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>Massenexportieren und -importieren von Azure Notification Hubs-Registrierungen
 In einigen Szenarios ist das Erstellen oder Anpassen großer Mengen von Registrierungen in einem Notification Hub erforderlich. Bei einigen dieser Szenarios handelt es sich um Tagaktualisierungen, die auf Batchberechnungen folgen, oder Migrationen vorhandener Pushimplementierungen zur Verwendung von Notification Hubs.
@@ -34,7 +34,7 @@ In diesem Abschnitt wird vorausgesetzt, dass Sie über folgende Entitäten verf�
 
 - Ein bereitgestellter Notification Hub
 - Ein Azure Storage-Blobcontainer
-- Verweise auf die Azure Storage- und Azure Service Bus-NuGet-Pakete
+- Verweise auf das [Azure Storage NuGet-Paket](https://www.nuget.org/packages/windowsazure.storage/) und [Notification Hubs NuGet-Paket](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/1.0.9).
 
 ### <a name="create-input-file-and-store-it-in-a-blob"></a>Erstellen einer Eingabedatei und Speichern in einem Blob
 Eine Eingabedatei enthält eine Liste von Registrierungen, die pro Zeile in XML serialisiert sind. Im folgenden Beispiel wird mithilfe des Azure SDK veranschaulicht, wie die Registrierungen serialisiert und in den Blobcontainer hochgeladen werden.
@@ -132,7 +132,7 @@ Diese Dateien enthalten die Liste der erfolgreichen und fehlgeschlagenen Vorgän
 Mit dem folgenden Beispielcode werden Registrierungen in einen Notification Hub importiert.
 
 ```csharp
-using Microsoft.ServiceBus.Notifications;
+using Microsoft.Azure.NotificationHubs;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;

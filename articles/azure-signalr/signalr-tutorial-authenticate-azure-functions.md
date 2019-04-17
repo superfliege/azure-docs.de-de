@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: c18597fde157e0308138348432d63d56446931b7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 28fb3295ef02d508ef04299398a61ea59828df35
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012558"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278835"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Tutorial: Azure SignalR Service-Authentifizierung mit Azure Functions
 
@@ -29,7 +29,7 @@ Hier finden Sie ein ausführliches Tutorial zum Erstellen eines Chatraums mit Au
 
 Für dieses Tutorial ist die folgende Software erforderlich:
 
-* [Git-Client](https://git-scm.com/downloads)
+* [Git](https://git-scm.com/downloads)
 * [Node.js](https://nodejs.org/en/download/) (Version 10.x)
 * [.NET SDK](https://www.microsoft.com/net/download) (Version 2.x, erforderlich für Functions-Erweiterungen)
 * [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools) (Version 2)
@@ -348,7 +348,7 @@ Bisher funktioniert die Chat-App anonym. In Azure verwenden Sie zum Authentifizi
 
 Beim Senden einer Nachricht kann die App entscheiden, ob sie an alle verbundenen Clients oder nur an die Clients gesendet werden soll, die für einen bestimmten Benutzer authentifiziert wurde.
 
-1. Öffnen Sie in VS Code die Datei **SignalRInfo/function.json**.
+1. Öffnen Sie in VS Code die Datei **negotiate/function.json**.
 
 1. Fügen Sie in der Eigenschaft *userId* der *SignalRConnectionInfo*-Bindung einen [Bindungsausdruck](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings) ein: `{headers.x-ms-client-principal-name}`. Damit wird der Wert auf den Benutzernamen des authentifizierten Benutzers festgelegt. Das Attribut sollte nun wie folgt aussehen:
 

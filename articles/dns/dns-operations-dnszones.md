@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: victorh
-ms.openlocfilehash: 2cdf6ea0a992c996f4aeeb117c440e94b55ff8a8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2d3bb37998a037dcb878a988d4aa01245584ca82
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961959"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496419"
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>Verwalten von DNS-Zonen mithilfe der PowerShell
 
 > [!div class="op_single_selector"]
 > * [Portal](dns-operations-dnszones-portal.md)
 > * [PowerShell](dns-operations-dnszones.md)
-> * [Die klassische Azure CLI](dns-operations-dnszones-cli-nodejs.md)
+> * [Klassische Azure-Befehlszeilenschnittstelle](dns-operations-dnszones-cli-nodejs.md)
 > * [Azure-Befehlszeilenschnittstelle](dns-operations-dnszones-cli.md)
 
 In diesem Artikel wird gezeigt, wie DNS-Zonen mithilfe von Azure PowerShell verwaltet werden. Sie können Ihre DNS-Zonen auch mithilfe der plattformübergreifenden [Azure CLI](dns-operations-dnszones-cli.md) oder über das Azure-Portal verwalten.
@@ -166,7 +166,7 @@ Da `High` der Standardwert für `$ConfirmPreference` ist, fordert nur `Remove-Az
 
 Die aktuelle Einstellung für `$ConfirmPreference` kann mithilfe des `-Confirm`-Parameters überschrieben werden. Bei Angabe von `-Confirm` oder `-Confirm:$True` fordert das Cmdlet vor der Ausführung eine Bestätigung an. Bei Verwendung von `-Confirm:$False` fordert das Cmdlet keine Bestätigung an.
 
-Weitere Informationen zu `-Confirm` und `$ConfirmPreference` finden Sie unter [About Preference Variables](https://msdn.microsoft.com/powershell/reference/5.1/Microsoft.PowerShell.Core/about/about_Preference_Variables) (Informationen zu Einstellungsvariablen).
+Weitere Informationen zu `-Confirm` und `$ConfirmPreference` finden Sie unter [About Preference Variables](/powershell/module/microsoft.powershell.core/about/about_preference_variables.1) (Informationen zu Einstellungsvariablen).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

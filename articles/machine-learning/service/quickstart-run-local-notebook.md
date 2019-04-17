@@ -10,27 +10,22 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8bb601ac5c1ed8e9ca6d2027fe1b774a938e1f0a
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: ade0444110dbb23e762a869dc79805872c0f0bf0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58362317"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281130"
 ---
 # <a name="quickstart-use-your-own-notebook-server-to-get-started-with-azure-machine-learning"></a>Schnellstart: Verwenden Ihres eigenen Notebook-Servers für die ersten Schritte mit Azure Machine Learning
 
-In diesem Artikel verwenden Sie Ihren eigenen Notebook-Server zum Ausführen von Code, der im [Arbeitsbereich](concept-azure-machine-learning-architecture.md) von Azure Machine Learning Service protokolliert wird. Der Arbeitsbereich bildet die Grundlage in der Cloud zum Experimentieren, Trainieren und Bereitstellen von Machine Learning-Modellen mit Machine Learning.
+Verwenden Sie Ihren eigenen Notebook-Server, um Code auszuführen, der Werte im [Arbeitsbereich von Azure Machine Learning Service](concept-azure-machine-learning-architecture.md) protokolliert. Der Arbeitsbereich bildet die Grundlage in der Cloud zum Experimentieren, Trainieren und Bereitstellen von Machine Learning-Modellen mit Machine Learning.
 
-In dieser Schnellstartanleitung verwenden Sie Ihre eigene Python-Umgebung und Ihren eigenen Jupyter Notebook-Server. Eine Schnellstartanleitung ohne Installation finden Sie unter [Schnellstart: Verwenden eines cloudbasierten Notebook-Servers für die ersten Schritte mit Azure Machine Learning](quickstart-run-cloud-notebook.md). 
+In dieser Schnellstartanleitung verwenden Sie Ihre eigene Python-Umgebung und Ihren eigenen Jupyter Notebook-Server. Eine Schnellstartanleitung ohne SDK-Installation finden Sie unter [Schnellstart: Verwenden eines cloudbasierten Notebook-Servers für die ersten Schritte mit Azure Machine Learning](quickstart-run-cloud-notebook.md). 
 
 Sehen Sie sich die Videoversion dieser Schnellstartanleitung an:
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2G9N6]
-
-In dieser Schnellstartanleitung führen Sie die folgenden Schritte aus:
-
-* Schreiben von Code, der Werte im Arbeitsbereich protokolliert
-* Anzeigen der protokollierten Werte in Ihrem Arbeitsbereich
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie noch heute die [kostenlose oder kostenpflichtige Version von Azure Machine Learning Service](https://aka.ms/AMLFree) aus.
 
@@ -61,7 +56,7 @@ Nach Abschluss der Ausführung können Sie die Experimentausführung im Azure-Po
 print(run.get_portal_url())
 ```
 
-Verwenden Sie den Link, um die protokollierten Werte im Azure-Portal in Ihrem Browser anzuzeigen.
+Dieser Code gibt einen Link zurück, den Sie verwenden können, um die im Azure-Portal protokollierten Werte in Ihrem Browser anzuzeigen.
 
 ![Protokollierte Werte im Azure-Portal](./media/quickstart-run-local-notebook/logged-values.png)
 
@@ -79,6 +74,6 @@ Wenn Sie nicht planen, die in diesem Artikel erstellten Ressourcen zu verwenden,
 In diesem Artikel haben Sie die Ressourcen erstellt, die Sie zum Experimentieren und zum Bereitstellen von Modellen benötigen. Sie haben Code in einem Notebook ausgeführt und den Ausführungsverlauf für diesen Code in Ihrem Arbeitsbereich in der Cloud untersucht.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Trainieren eines Bildklassifizierungsmodells](tutorial-train-models-with-aml.md)
+> [Tutorial: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning Service](tutorial-train-models-with-aml.md)
 
 Sie können auch [anspruchsvollere Beispiele auf GitHub](https://aka.ms/aml-notebooks) erkunden oder das [SDK-Benutzerhandbuch](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) lesen.

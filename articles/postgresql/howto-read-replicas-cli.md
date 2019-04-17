@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/01/2019
-ms.openlocfilehash: 21408f87c4446ebad4092cb982179c7d78ea9e32
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.date: 04/05/2019
+ms.openlocfilehash: b5e0336a290090ed6bd7f5af508e691677780a80
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847755"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265287"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli"></a>Erstellen und Verwalten von Lesereplikaten über die Azure CLI
 
@@ -44,7 +44,7 @@ Auf dem Masterserver muss der Parameter `azure.replication_support` auf **REPLIC
 
 ## <a name="create-a-read-replica"></a>Erstellen eines Lesereplikats
 
-Für den Befehl `az mysql server replica create` sind folgende Parameter erforderlich:
+Der Befehl [az postgres server replica create](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-create) erfordert die folgenden Parameter:
 
 | Einstellung | Beispielwert | BESCHREIBUNG  |
 | --- | --- | --- |
@@ -64,14 +64,14 @@ Ein Replikat wird mit der gleichen Serverkonfiguration wie der Masterserver erst
 > Bevor Sie die Konfiguration eines Masterservers mit neuen Werten aktualisieren, ändern Sie die Replikatkonfiguration in gleiche oder größere Werte. Durch diese Aktion wird sichergestellt, dass das Replikat mit allen Änderungen, die auf dem Masterserver durchgeführt werden, Schritt halten kann.
 
 ## <a name="list-replicas"></a>Auflisten von Replikaten
-Sie können die Liste der Replikate eines Masterservers anzeigen.
+Sie können die Liste der Replikate eines Masterservers mit dem Befehl [az postgres server replica list](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-list) anzeigen.
 
 ```azurecli-interactive
-az postgres server replica stop --server-name mydemoserver --resource-group myresourcegroup 
+az postgres server replica list --server-name mydemoserver --resource-group myresourcegroup 
 ```
 
 ## <a name="stop-replication-to-a-replica-server"></a>Beenden der Replikation auf einem Replikatserver
-Sie können die Replikation zwischen einem Masterserver und einem Lesereplikat beenden.
+Sie können die Replikation zwischen einem Masterserver und einem Lesereplikat mit dem Befehl [az postgres server replica stop](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-stop) beenden.
 
 Das Beenden der Replikation zwischen einem Masterserver und einem Lesereplikat kann nicht mehr rückgängig gemacht werden. Das Lesereplikat wird zu einem eigenständigen Server, der sowohl Lese- als auch Schreibvorgänge unterstützt. Der eigenständige Server kann nicht wieder in ein Replikat umgewandelt werden.
 
@@ -80,7 +80,7 @@ az postgres server replica stop --name mydemoserver-replica --resource-group myr
 ```
 
 ## <a name="delete-a-master-or-replica-server"></a>Löschen eines Master- oder Replikatservers
-Für das Löschen eines Master- oder Replikatservers führen Sie die gleichen Befehle wie für das Löschen eines eigenständigen Azure Database for PostgreSQL-Servers durch. 
+Wenn Sie einen Master- oder Replikatserver löschen möchten, verwenden Sie den Befehl [az postgres server delete](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-delete).
 
 Wenn Sie einen Masterserver löschen, wird die Replikation auf allen Lesereplikaten beendet. Die Lesereplikate werden zu eigenständigen Servern, die nun Lese- und Schreibvorgänge unterstützen.
 

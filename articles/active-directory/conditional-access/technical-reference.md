@@ -1,7 +1,7 @@
 ---
 title: Referenz zu den Einstellungen für den bedingten Azure Active Directory-Zugriff | Microsoft-Dokumentation
 description: Verschaffen Sie sich einen Überblick über die unterstützten Einstellungen in einer Richtlinie für den bedingten Azure Active Directory-Zugriff.
-services: active-directory.
+services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f2334497c6329ee335c529e1490a2f966f51dff
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 0e87a4c7ebafd8ddcfa54c87b189316b0ce98b0f
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58891717"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358994"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Referenz zu den Einstellungen für den bedingten Azure Active Directory-Zugriff
 
@@ -120,8 +120,8 @@ Diese Einstellung funktioniert mit allen Browsern. Die folgenden Betriebssysteme
 | Windows 10             | Internet Explorer, Microsoft Edge, Chrome     |
 | Windows 8/8.1        | Internet Explorer, Chrome                     |
 | Windows 7              | Internet Explorer, Chrome                     |
-| iOS                    | Safari, Intune Managed Browser                |
-| Android                | Chrome, Intune Managed Browser                |
+| iOS                    | Safari, Microsoft Edge, Intune Managed Browser |
+| Android                | Chrome, Microsoft Edge, Intune Managed Browser |
 | Windows Phone          | Internet Explorer, Microsoft Edge             |
 | Windows Server 2016    | Internet Explorer, Microsoft Edge             |
 | Windows Server 2016    | Chrome                                        |
@@ -232,6 +232,23 @@ Diese Einstellung gilt für die folgenden Client-Apps:
 - Die genehmigten Client-Apps unterstützen das Intune-Feature für die mobile Anwendungsverwaltung.
 - Anforderung **Genehmigte Client-App erforderlich**:
    - Unterstützt als [Geräteplattformbedingung](#device-platform-condition) nur iOS und Android.
+
+## <a name="app-protection-policy-requirement"></a>App-Schutzrichtlinie als Voraussetzung 
+
+In Ihrer Richtlinie für bedingten Zugriff können Sie verlangen, dass eine App-Schutzrichtlinie für die Client-App vorhanden sein muss, bevor der Zugriff auf die ausgewählten Cloud-Apps verfügbar ist. 
+
+![Steuern des Zugriffs mit einer App-Schutzrichtlinie](./media/technical-reference/22.png)
+
+Diese Einstellung gilt für die folgenden Client-Apps:
+
+- Microsoft OneDrive
+- Microsoft Outlook
+
+**Anmerkungen**
+
+- Apps für die App-Schutzrichtlinie unterstützen die mobile Anwendungsverwaltung mit Intune mit Richtlinienschutz.
+- Die Voraussetzung **App-Schutzrichtlinie erforderlich**:
+    - Unterstützt als [Geräteplattformbedingung](#device-platform-condition) nur iOS und Android.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

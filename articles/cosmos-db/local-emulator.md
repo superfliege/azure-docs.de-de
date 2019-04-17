@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/20/2018
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 0adb24458f718511c7134fc3bf36dd0b03173e30
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3d535c71480693d0424c6697776a1ddbf37b47c5
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011514"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470915"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Verwenden des Azure Cosmos-Emulators für lokale Entwicklungs- und Testvorgänge
 
@@ -122,7 +122,7 @@ DocumentClient client = new DocumentClient(
 
 ### <a name="azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB-API für MongoDB
 
-Geben Sie die folgende Verbindungszeichenfolge an, wenn Sie die [Azure Cosmos DB für MongoDB](mongodb-introduction.md) verwenden:
+Geben Sie die folgende Verbindungszeichenfolge an, wenn Sie die [Azure Cosmos DB-API für MongoDB](mongodb-introduction.md) verwenden:
 
 ```bash
 mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true
@@ -151,9 +151,9 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 Starten Sie den Emulator aus der Eingabeaufforderung als Administrator mit „/EnableCassandraEndpoint“. Alternativ können Sie auch die Umgebungsvariable `AZURE_COSMOS_EMULATOR_CASSANDRA_ENDPOINT=true` festlegen.
 
-* [Installieren Sie Python 2.7](https://www.python.org/downloads/release/python-2716/).
+* [Installieren Sie Python 2.7.](https://www.python.org/downloads/release/python-2716/)
 
-* [Installieren Sie Cassandra CLI/CQLSH](http://cassandra.apache.org/download/).
+* [Installieren Sie Cassandra CLI/CQLSH.](http://cassandra.apache.org/download/)
 
 * Führen Sie die folgenden Befehle in einem regulären Eingabeaufforderungsfenster aus:
 
@@ -179,9 +179,9 @@ Starten Sie den Emulator aus der Eingabeaufforderung als Administrator mit „/E
 
 ### <a name="gremlin-api"></a>Gremlin-API
 
-Starten Sie den Emulator aus der Eingabeaufforderung als Administrator mit „/EnableGremlinEndpoint“. Alternativ können Sie auch die Umgebungsvariable `AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true` festlegen.
+Starten Sie den Emulator aus der Eingabeaufforderung als Administrator mit „/EnableGremlinEndpoint“. Alternativ können Sie auch die Umgebungsvariable festlegen. `AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true`
 
-* [Installieren Sie apache-tinkerpop-gremlin-console-3.3.4](http://tinkerpop.apache.org/downloads.html).
+* [Installieren Sie „apache-tinkerpop-gremlin-console-3.3.4“.](http://tinkerpop.apache.org/downloads.html)
 
 * Erstellen Sie im Data Explorer des Emulators eine Datenbank „db1“ und eine Sammlung „coll1“; wählen Sie für den Partitionsschlüssel „/name“.
 
@@ -236,7 +236,7 @@ Sie können die Befehlszeile im Installationspfad verwenden, um den Emulator zu 
 
 Geben Sie zum Anzeigen der Liste der Optionen an der Eingabeaufforderung `CosmosDB.Emulator.exe /?` ein.
 
-|**Option** | **Beschreibung** | **Befehl**| **Argumente**|
+|**Option** | **BESCHREIBUNG** | **Get-Help**| **Argumente**|
 |---|---|---|---|
 |[Keine Argumente] | Startet den Azure Cosmos-Emulator mit den Standardeinstellungen. |CosmosDB.Emulator.exe| |
 |[Hilfe] |Zeigt die Liste mit unterstützten Befehlszeilenargumenten an.|CosmosDB.Emulator.exe /? | |
@@ -280,7 +280,7 @@ Sie können standardmäßig bis zu 25 Container mit fester Größe (nur unterst�
 Wenn Sie versuchen, einen Container zu erstellen, wenn die aktuelle Anzahl von Partitionen überschritten wurde, löst der Emulator eine ServiceUnavailable-Ausnahme mit der folgenden Meldung aus.
 
 „Sorry, we are currently experiencing high demand in this region, and cannot fulfill your request at this time. We work continuously to bring more and more capacity online, and encourage you to try again.
-Please do not hesitate to email askcosmosdb@microsoft.com at any time or for any reason. ActivityId: 12345678-1234-1234-1234-123456789abc“ (Leider verzeichnen wir derzeit eine hohe Nachfrage in dieser Region und können Ihrer Anfrage derzeit nicht nachkommen. Wir arbeiten kontinuierlich daran, mehr Kapazitäten online zu stellen und möchten Sie daher bitten, es erneut zu versuchen. Sie können uns jederzeit eine E-Mail an askcosmosdb@microsoft.com senden. ActivityId:12345678-1234-1234-1234-123456789abc).
+Please do not hesitate to email askcosmosdb@microsoft.com at any time or for any reason. ActivityId: 12345678-1234-1234-1234-123456789abc“ (Leider verzeichnen wir derzeit eine hohe Nachfrage in dieser Region und können Ihrer Anfrage derzeit nicht nachkommen. Wir arbeiten kontinuierlich daran, mehr Kapazitäten online zu stellen und möchten Sie daher bitten, es erneut zu versuchen. Sie können uns jederzeit eine E-Mail an  senden. ActivityId:12345678-1234-1234-1234-123456789abc).
 
 Gehen Sie wie folgt vor, um die Anzahl von Containern zu ändern, die für den Azure Cosmos-Emulator verfügbar sind:
 

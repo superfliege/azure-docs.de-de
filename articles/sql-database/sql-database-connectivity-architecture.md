@@ -1,6 +1,6 @@
 ---
 title: Weiterleiten des Azure-Datenverkehrs an Azure SQL-Datenbank und SQL Data Warehouse | Microsoft-Dokumentation
-description: In diesem Artikel wird die Verbindungsarchitektur von Azure SQL-Datenbank und SQL Data Warehouse von innerhalb und von außerhalb von Azure erläutert.
+description: In diesem Artikel wird die Verbindungsarchitektur von Azure SQL für Datenbankverbindungen von Azure aus oder von außerhalb von Azure erläutert.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,34 +12,16 @@ ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/03/2019
-ms.openlocfilehash: 619893ad42664f8d37fff5e61b8560f6c6d83e23
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 4ff6cc0ba18074f353eb5b99af7052edd658a80e
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918602"
+ms.locfileid: "59006776"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Verbindungsarchitektur von Azure SQL
 
 In diesem Artikel wird die Verbindungsarchitektur von Azure SQL-Datenbank und SQL Data Warehouse erläutert. Zudem wird dargelegt, wie die verschiedenen Komponenten Datenverkehr an Ihre Instanz von Azure SQL leiten. Diese Verbindungskomponenten leiten Netzwerkdatenverkehr mithilfe von Clients, die von innerhalb und von außerhalb von Azure verbunden sind, an Azure SQL-Datenbank und SQL Data Warehouse. Dieser Artikel bietet auch Skriptbeispiele zum Ändern der Verbindungsart und Überlegungen, die beim Ändern der Standardverbindungseinstellungen berücksichtigt werden können.
-
-> [!IMPORTANT]
-> **[Bevorstehende Änderung] Bei Dienstendpunktverbindungen mit Azure SQL-Servern ändert sich das `Default`-Verbindungsverhalten in `Redirect`.**
-> Kunden wird empfohlen, neue Server zu erstellen und vorhandene Server einzurichten, wobei der Verbindungstyp je nach Konnektivitätsarchitektur explizit auf „Redirect“ (vorzugsweise) oder „Proxy“ festgelegt ist.
->
-> Um zu verhindern, dass infolge dieser Änderung Verbindungen über einen Dienstendpunkt in bestehenden Umgebungen unterbrochen werden, setzen wir Telemetrie für folgende Zwecke ein:
->
-> - Bei Servern, bei denen wir feststellen, dass der Zugriff darauf vor der Änderung über Dienstendpunkte erfolgte, wird der Verbindungstyp in `Proxy` geändert.
-> - Bei allen anderen Servern wird der Verbindungstyp in `Redirect` geändert.
->
-> In folgenden Szenarien können Dienstendpunktbenutzer dennoch betroffen sein:
->
-> - Eine Anwendung stellt nur selten eine Verbindung mit einem vorhandenen Server her, sodass die Informationen zu diesen Anwendungen nicht mithilfe der Telemetrie erfasst wurden.
-> - Die automatisierte Bereitstellungslogik erstellt einen SQL-Datenbankserver unter der Annahme, dass das folgende Standardverhalten für Dienstendpunktverbindungen verwendet wird: `Proxy`
->
-> Wenn Dienstendpunktverbindungen mit Azure SQL-Server nicht hergestellt werden konnten und Sie vermuten, dass Sie von dieser Änderung betroffen sind, stellen Sie sicher, dass der Verbindungstyp explizit auf `Redirect` festgelegt ist. In diesem Fall müssen Sie VM-Firewallregeln und Netzwerksicherheitsgruppen (NSG) für alle Azure-IP-Adressen in der Region öffnen, die zum SQL-[Diensttag](../virtual-network/security-overview.md#service-tags) für Ports 11000 bis 11999 gehören. Wenn dies für Sie keine eine Option ist, schalten Sie den Server explizit auf `Proxy` um.
-> [!NOTE]
-> Dieses Thema bezieht sich auf Azure SQL Datenbank-Server, die einzelne Datenbanken und Pool für elastische Datenbanken hosten, SQL Data Warehouse Datenbanken, Azure Database for MySQL, Azure Database for MariaDB und Azure Database for PostgreSQL. Der Einfachheit halber wird die Bezeichnung „SQL-Datenbank“ verwendet, wenn auf die SQL-Datenbank, SQL Data Warehouse, Azure Database for MySQL, Azure Database for MariaDB und Azure Database for PostgreSQL verwiesen wird.
 
 ## <a name="connectivity-architecture"></a>Verbindungsarchitektur
 

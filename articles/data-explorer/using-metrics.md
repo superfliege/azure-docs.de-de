@@ -1,19 +1,18 @@
 ---
 title: Überwachen der Azure Data Explorer-Leistung, -Integrität und -Nutzung mit Metriken
 description: Es wird beschrieben, wie Sie Azure Data Explorer-Metriken zum Überwachen der Leistung, Integrität und Nutzung des Clusters verwenden.
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/01/2019
-ms.openlocfilehash: 5252ca8898439b63a8819f6abfd634de0786932b
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: a9c9f4d827d21c374bebba9d39e33b0bcad8a83e
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58851598"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050612"
 ---
 # <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>Überwachen der Azure Data Explorer-Leistung, -Integrität und -Nutzung mit Metriken
 
@@ -41,17 +40,17 @@ Im Bereich „Metriken“:
 
 1. Wählen Sie zum Erstellen eines Metrikdiagramms wie unten beschrieben den Namen der **Metrik** und die relevante **Aggregation** pro Metrik aus. In der Auswahl für die **Ressource** und den **Metriknamespace** ist Ihr Azure Data Explorer-Cluster bereits ausgewählt.
 
-    **Metrik** | **Einheit** | **Aggregation** | **Beschreibung der Metrik**
+    **Metrik** | **Unit** | **Aggregation** | **Beschreibung der Metrik**
     |---|---|---|---|
-    | Cacheauslastung | Prozent | Avg, Max, Min | Das Verhältnis zwischen der erforderlichen Cachegröße (gemäß der definierten Cacherichtlinie) und der Cachegesamtgröße des Clusters (SSD-Gesamtgröße für Benutzeraktivität). Eine durchschnittliche Cacheauslastung von 80 % oder weniger ist für einen Cluster ein tragbarer Zustand. Wenn die durchschnittliche Cacheauslastung über 80 % liegt, sollte für den Cluster das [zentrale Hochskalieren](manage-cluster-scale-up.md) auf einen Tarif mit Datenspeicheroptimierung oder das [horizontale Hochskalieren](manage-cluster-scale-out.md) auf weitere Instanzen durchgeführt werden. Alternativ hierzu können Sie die Cacherichtlinie anpassen (weniger Tage im Cache). Falls die Cacheauslastung über 100 % liegt, übersteigt die Größe der zwischenzuspeichernden Daten gemäß Cacherichtlinie die Gesamtgröße des Caches im Cluster. |
-    | CPU | Prozent | Avg, Max, Min | Verhältnis zwischen gesamter CPU-Auslastung und verfügbarer CPU-Kapazität im gesamten Cluster. Eine durchschnittliche CPU-Auslastung von 80 % ist für einen Cluster ein tragbarer Zustand. Der Maximalwert der CPU beträgt 100 %. Dies bedeutet, dass keine weiteren Computeressourcen zum Verarbeiten von Daten vorhanden sind. Wenn die Leistung eines Clusters nicht gut ist, sollten Sie den Maximalwert der CPU überprüfen, um zu ermitteln, ob bestimmte CPUs blockiert sind. |
-    | Verarbeitete Ereignisse (für Event Hubs) | Count | Max, Min, Sum | Gesamtzahl von Ereignissen, die von Event Hubs gesendet und vom Cluster empfangen werden. Die Ereignisse werden danach unterteilt, ob sie vom Clustermodul abgelehnt oder akzeptiert werden. |
-    | Latenz bei der Erfassung | Sekunden | Avg, Max, Min | Latenz der erfassten Daten ab dem Empfangszeitpunkt der Daten im Cluster bis zu dem Zeitpunkt, zu dem die Daten bereit zum Abfragen sind. Die Erfassungslatenz wird in Sekunden gemessen. Der Zeitraum der Erfassungslatenz richtet sich nach dem Erfassungsszenario. |
-    | Ergebnis der Datenerfassung | Count | Count | Gesamtzahl von nicht erfolgreichen und erfolgreichen Erfassungsvorgängen. Verwenden Sie die Option **Teilung anwenden**, um Buckets mit Erfolgs- und Fehlerergebnissen zu erstellen.|
-    | Datenerfassungsauslastung | Prozent | Avg, Max, Min | Verhältnis zwischen den tatsächlichen Ressourcen zum Erfassen von Daten und den gesamten Ressourcen, die in der Kapazitätsrichtlinie für die Erfassung zugeordnet sind. Die Standardrichtlinie für die Kapazität umfasst nicht mehr als 512 gleichzeitige Erfassungsvorgänge oder 75 % der Clusterressourcen, die für die Erfassung genutzt werden. Eine durchschnittliche Erfassungsauslastung von 80 % oder weniger ist für einen Cluster ein tragbarer Zustand. Der Maximalwert der Erfassungsauslastung beträgt 100 %. Dies bedeutet, dass die gesamte Erfassungskapazität des Clusters genutzt wird und unter Umständen eine Erfassungswarteschlange entsteht. |
-    | Datenerfassungsvolumen (in MB) | Count | Max, Min, Sum | Die Gesamtgröße der im Cluster erfassten Daten (in MB). Die Einheiten entsprechen dem MB-Wert an erfassten Daten vor der Komprimierung. |
+    | Cacheauslastung | Prozent | Avg, Max, Min | Prozentsatz der zugewiesenen Cacheressourcen, die derzeit vom Cluster genutzt werden. Der Cache bezieht sich auf die Größe der SSD, die für die Benutzeraktivität gemäß der definierten Cacherichtlinie zugeordnet wird. Eine durchschnittliche Cacheauslastung von 80 % oder weniger ist für einen Cluster ein tragbarer Zustand. Wenn die durchschnittliche Cacheauslastung über 80 % liegt, sollte für den Cluster das [zentrale Hochskalieren](manage-cluster-scale-up.md) auf einen Tarif mit Datenspeicheroptimierung oder das [horizontale Hochskalieren](manage-cluster-scale-out.md) auf weitere Instanzen durchgeführt werden. Alternativ hierzu können Sie die Cacherichtlinie anpassen (weniger Tage im Cache). Falls die Cacheauslastung über 100 % liegt, übersteigt die Größe der zwischenzuspeichernden Daten gemäß Cacherichtlinie die Gesamtgröße des Caches im Cluster. |
+    | CPU | Prozent | Avg, Max, Min | Prozentsatz der zugewiesenen Computeressourcen, die derzeit von Computern im Cluster genutzt werden. Eine durchschnittliche CPU-Auslastung von 80 % ist für einen Cluster ein tragbarer Zustand. Der Maximalwert der CPU beträgt 100 %. Dies bedeutet, dass keine weiteren Computeressourcen zum Verarbeiten von Daten vorhanden sind. Wenn die Leistung eines Clusters nicht gut ist, sollten Sie den Maximalwert der CPU überprüfen, um zu ermitteln, ob bestimmte CPUs blockiert sind. |
+    | Verarbeitete Ereignisse (für Event Hubs) | Count | Max, Min, Sum | Gesamtzahl der Ereignisse, die von Event Hubs gelesen und vom Cluster verarbeitet werden. Die Ereignisse werden danach unterteilt, ob sie vom Clustermodul abgelehnt oder akzeptiert werden. |
+    | Latenz bei der Erfassung | Sekunden | Avg, Max, Min | Latenz der erfassten Daten ab dem Empfangszeitpunkt der Daten im Cluster bis zu dem Zeitpunkt, zu dem die Daten bereit zum Abfragen sind. Der Zeitraum der Erfassungslatenz richtet sich nach dem Erfassungsszenario. |
+    | Ergebnis der Datenerfassung | Count | Count | Gesamtzahl von nicht erfolgreichen und erfolgreichen Erfassungsvorgängen. Verwenden Sie die Option **Teilung anwenden**, um Buckets mit Erfolgs- und Fehlerergebnissen zu erstellen und die Dimensionen zu analysieren (**Wert** > **Status**).|
+    | Datenerfassungsauslastung | Prozent | Avg, Max, Min | Prozentsatz der tatsächlichen Ressourcen zum Erfassen von Daten von den gesamten Ressourcen, die in der Kapazitätsrichtlinie für die Erfassung zugeordnet sind. Die Standardrichtlinie für die Kapazität umfasst nicht mehr als 512 gleichzeitige Erfassungsvorgänge oder 75 % der Clusterressourcen, die für die Erfassung genutzt werden. Eine durchschnittliche Erfassungsauslastung von 80 % oder weniger ist für einen Cluster ein tragbarer Zustand. Der Maximalwert der Erfassungsauslastung beträgt 100 %. Dies bedeutet, dass die gesamte Erfassungskapazität des Clusters genutzt wird und unter Umständen eine Erfassungswarteschlange entsteht. |
+    | Datenerfassungsvolumen (in MB) | Count | Max, Min, Sum | Die Gesamtgröße der im Cluster erfassten Daten (in MB) vor der Komprimierung. |
     | Keep-Alive | Count | Avg | Dient zum Nachverfolgen der Reaktionsfähigkeit des Clusters. Für einen Cluster mit höchster Reaktionsfähigkeit wird der Wert 1 zurückgegeben, und für einen blockierten oder getrennten Cluster lautet der Wert 0. |
-    | Abfragedauer | Sekunden | Count, Avg, Min, Max, Sum | Die Gesamtzeit bis zum Empfang von Abfrageergebnissen. |
+    | Abfragedauer | Sekunden | Count, Avg, Min, Max, Sum | Gesamtzeit bis zum Empfangen der Abfrageergebnisse (ohne Netzwerklatenz). |
     | | | |
 
     Weitere Informationen zu [unterstützten Azure Data Explorer-Clustermetriken](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters)
@@ -69,4 +68,4 @@ Weitere Informationen zur Verwendung von [Metrik-Explorer](/azure/azure-monitor/
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Abfragen von Daten in Azure Data Explorer](web-query-data.md)
+> [Schnellstart: Abfragen von Daten im Azure Data Explorer](web-query-data.md)

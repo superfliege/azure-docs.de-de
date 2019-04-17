@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: b93d3d272d570ccffb5ce06d7ed4527c20500698
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 570200a3befbe6205025a2410c4083d38dd11eb9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181264"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262923"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ontrack"></a>Tutorial: Azure Active Directory-Integration mit OnTrack
 
@@ -51,7 +51,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Konfigurieren der Integration von OnTrack in Azure AD müssen Sie OnTrack aus dem Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie die folgenden Schritte aus, um OnTrack über den Katalog hinzuzufügen:**
+**Führen Sie die folgenden Schritte aus, um OnTrack aus den Katalog hinzuzufügen:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -107,15 +107,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit OnTrack
 
     a. Im Textfeld **Bezeichner**:
 
-    Geben Sie für die Testumgebung die URL `https://staging.insigniagroup.com/sso` ein.
+    Geben Sie für die Testumgebung die folgende URL ein: `https://staging.insigniagroup.com/sso`
 
-    Geben Sie für die Produktionsumgebung die URL `https://oeaccessories.com/sso` ein.
+    Geben Sie für die Produktionsumgebung die folgende URL ein: `https://oeaccessories.com/sso`
 
     b. Im Textfeld **Antwort-URL**:
 
-    Geben Sie für die Testumgebung die URL `https://indie.staging.insigniagroup.com/sso/autonation.aspx` ein.
+    Geben Sie für die Testumgebung die folgende URL ein: `https://indie.staging.insigniagroup.com/sso/autonation.aspx`
 
-    Geben Sie für die Produktionsumgebung die URL `https://igaccessories.com/sso/autonation.aspx` ein.
+    Geben Sie für die Produktionsumgebung die folgende URL ein: `https://igaccessories.com/sso/autonation.aspx`
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Clientsupportteam von OnTrack](mailto:CustomerService@insigniagroup.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -233,7 +233,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „OnTrack“ klicken, sollten Sie au
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

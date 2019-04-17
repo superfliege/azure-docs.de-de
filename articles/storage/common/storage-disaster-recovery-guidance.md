@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: f0963e7f558de7b591576a49a74750d6697d7127
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 87499c1b71e243fe976e436b525e0150689d3aa1
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486051"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051188"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Notfallwiederherstellung und Speicherkontofailover (Vorschau) in Azure Storage
 
@@ -22,6 +22,9 @@ Microsoft möcht sicherstellen, dass Azure-Dienste immer verfügbar sind. Es kan
 Azure Storage unterstützt Kontofailover (Vorschau) für georedundante Speicherkonten. Mit Kontofailover können Sie den Failoverprozess für Ihr Speicherkonto einleiten, wenn der primäre Endpunkt nicht mehr verfügbar ist. Bei einem Failover wird der sekundäre Endpunkt so aktualisiert, dass er zum primären Endpunkt für das Speicherkonto wird. Nach Abschluss des Failovers können Clients in den neuen primären Endpunkt schreiben.
 
 Dieser Artikel beschreibt die Konzepte und Prozesse, die mit einem Kontofailover verbunden sind, und erläutert, wie Sie Ihr Speicherkonto auf die Wiederherstellung mit dem geringstmöglichen Einfluss auf den Kunden vorbereiten können. Weitere Informationen zum Initiieren eines Kontofailovers im Azure-Portal oder in PowerShell finden Sie unter [Initiieren eines Kontofailovers (Vorschau)](storage-initiate-account-failover.md).
+
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="choose-the-right-redundancy-option"></a>Auswählen der richtigen Redundanzoption
 
@@ -122,14 +125,14 @@ Diese Vorschau ist nur für die Verwendung außerhalb der Produktion bestimmt. P
 Um sich für die Vorschau zu registrieren, führen Sie die folgenden Befehle in PowerShell aus. Stellen Sie sicher, dass Sie den Platzhalter in Klammern durch Ihre eigene Abonnement-ID ersetzen:
 
 ```powershell
-Connect-AzureRmAccount -SubscriptionId <subscription-id>
-Register-AzureRmProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
+Connect-AzAccount -SubscriptionId <subscription-id>
+Register-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
 Die Genehmigung für die Vorschau dauert möglicherweise 1-2 Tage. Um zu überprüfen, ob Ihre Registrierung genehmigt wurde, führen Sie den folgenden Befehl aus:
 
 ```powershell
-Get-AzureRmProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
+Get-AzProviderFeature -FeatureName CustomerControlledFailover -ProviderNamespace Microsoft.Storage
 ```
 
 ### <a name="additional-considerations"></a>Zusätzliche Überlegungen 
@@ -178,4 +181,4 @@ In extremen Fällen, wenn eine Region durch eine schwerwiegenden Notfall verlore
 
 * [Initiieren eines Kontofailovers (Vorschau)](storage-initiate-account-failover.md)
 * [Entwerfen hochverfügbarer Anwendungen mithilfe von RA-GRS](storage-designing-ha-apps-with-ragrs.md)
-* [Tutorial: Erstellen einer hochverfügbaren Anwendung mit Blob Storage](../blobs/storage-create-geo-redundant-storage.md) 
+* [Tutorial: Erstellen einer hochverfügbaren Anwendung mit Blobspeicher](../blobs/storage-create-geo-redundant-storage.md) 

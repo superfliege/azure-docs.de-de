@@ -8,19 +8,19 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: nberdy
-ms.openlocfilehash: d839e2e9922ac68af3aea37884e8b2f72b80b0e7
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 84f28a1cb411e7df156fc08fa683efe7f83eda64
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791578"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258112"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub-Vorgangsüberwachung (veraltet)
 
 Die IoT Hub-Vorgangsüberwachung ermöglicht Ihnen das Überwachen des Status von Vorgängen auf Ihrem IoT Hub in Echtzeit. IoT Hub verfolgt Ereignisse in verschiedenen Vorgangskategorien nach. Sie können festlegen, dass Ereignisse aus einer oder mehreren Kategorien zur Verarbeitung an einen Endpunkt Ihres IoT-Hubs gesendet werden. Sie können die Daten auf Fehler überwachen oder eine komplexere auf Datenmustern basierende Verarbeitung einrichten.
 
 >[!NOTE]
->Die **Vorgangsüberwachung von IoT Hub ist veraltet und wird am 10. März 2019 aus IoT Hub entfernt**. Informationen zur Überwachung der Vorgänge und Integrität von IoT Hub finden Sie unter [Monitor the health of Azure IoT Hub and diagnose problems quickly][lnk-monitor] (Überwachen der Integrität von Azure IoT Hub und schnelles Diagnostizieren von Problemen). Weitere Informationen zur Veraltungszeitachse finden Sie unter [Monitor your Azure IoT solutions with Azure Monitor and Azure Resource Health][lnk-blog-announcement] (Überwachen Ihrer Azure IoT-Lösungen mit Azure Monitor und Azure Resource Health).
+>Die **Vorgangsüberwachung von IoT Hub ist veraltet und wird am 10. März 2019 aus IoT Hub entfernt**. Informationen zur Überwachung der Vorgänge und Integrität von IoT Hub finden Sie unter [Monitor the health of Azure IoT Hub and diagnose problems quickly](iot-hub-monitor-resource-health.md) (Überwachen der Integrität von Azure IoT Hub und schnelles Diagnostizieren von Problemen). Weitere Informationen zur Veraltungszeitachse finden Sie unter [Monitor your Azure IoT solutions with Azure Monitor and Azure Resource Health](https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health) (Überwachen Ihrer Azure IoT-Lösungen mit Azure Monitor und Azure Resource Health).
 
 IoT Hub überwacht sechs Ereigniskategorien:
 
@@ -36,15 +36,15 @@ IoT Hub überwacht sechs Ereigniskategorien:
 
 ## <a name="how-to-enable-operations-monitoring"></a>Aktivieren der Vorgangsüberwachung
 
-1. Erstellen Sie einen IoT Hub. Anweisungen zum Erstellen eines IoT-Hubs finden Sie in der Anleitung mit den [ersten Schritten][lnk-get-started].
+1. Erstellen Sie einen IoT Hub. Anweisungen zum Erstellen eines IoT Hubs finden Sie in der Anleitung mit den [ersten Schritten](quickstart-send-telemetry-dotnet.md).
 
-1. Öffnen Sie das Blatt Ihres IoT Hubs. Klicken Sie dort auf **Vorgangsüberwachung**.
+2. Öffnen Sie das Blatt Ihres IoT Hubs. Klicken Sie dort auf **Vorgangsüberwachung**.
 
-    ![Zugriff auf die Konfiguration der Vorgangsüberwachung im Portal][1]
+    ![Zugriff auf die Konfiguration der Vorgangsüberwachung im Portal](./media/iot-hub-operations-monitoring/enable-OM-1.png)
 
-1. Wählen Sie die Kategorien aus, die Sie überwachen möchten, und klicken Sie dann auf **Speichern**. Die Ereignisse können aus dem Event Hub-kompatiblen Endpunkt gelesen werden, der in **Überwachungseinstellungen**aufgelistet ist. Der IoT Hub-Endpunkt heißt `messages/operationsmonitoringevents`.
+3. Wählen Sie die Kategorien aus, die Sie überwachen möchten, und klicken Sie dann auf **Speichern**. Die Ereignisse können aus dem Event Hub-kompatiblen Endpunkt gelesen werden, der in **Überwachungseinstellungen**aufgelistet ist. Der IoT Hub-Endpunkt heißt `messages/operationsmonitoringevents`.
 
-    ![Konfigurieren der Vorgangsüberwachung in IoT Hub][2]
+    ![Konfigurieren der Vorgangsüberwachung in IoT Hub](./media/iot-hub-operations-monitoring/enable-OM-2.png)
 
 > [!NOTE]
 > Die Auswahl von **Ausführlich** für die Überwachung für die Kategorie **Verbindungen** bewirkt, dass IoT Hub zusätzliche Diagnosemeldungen generiert. Für alle anderen Kategorien ändert die Einstellung **Ausführlich** die Menge der Informationen, die IoT Hub in jede Fehlermeldung einbezieht.
@@ -145,7 +145,9 @@ Die Kategorie für Verbindungen verfolgt Fehler nach, die auftreten, wenn Gerät
 Die Dateiuploadkategorie dient der Nachverfolgung von Fehlern, die auf dem IoT Hub auftreten und in Beziehung zur Dateiuploadfunktionalität stehen. In diese Kategorie fällt Folgendes:
 
 * Fehler, die beim SAS-URI auftreten, beispielsweise wenn er abläuft, bevor ein Gerät den Hub über einen abgeschlossenen Upload informiert
+
 * Vom Gerät gemeldete Uploadfehler
+
 * Fehler, die auftreten, wenn während der IoT Hub-Benachrichtigungserstellung eine Datei nicht im Speicher gefunden wird
 
 Diese Kategorie kann keine Fehler abfangen, die auftreten, während das Gerät eine Datei in den Speicher hochlädt.
@@ -188,31 +190,31 @@ Die Kategorie „Nachrichtenweiterleitung“ verfolgt Fehler, die während der A
 
 ## <a name="connect-to-the-monitoring-endpoint"></a>Herstellen einer Verbindung mit dem Überwachungsendpunkt
 
-Der Überwachungsendpunkt in IoT Hub ist ein mit Event Hub kompatibler Endpunkt. Sie können einen beliebigen für Event Hubs geeigneten Mechanismus zum Lesen von Überwachungsnachrichten von diesem Endpunkt verwenden. Im folgenden Beispiel wird ein einfacher Reader erstellt, der für eine Bereitstellung mit hohem Durchsatz nicht geeignet ist. Weitere Informationen zum Verarbeiten von Nachrichten von Event Hubs finden Sie im Tutorial [Erste Schritte mit Event Hubs][lnk-eventhubs-tutorial].
+Der Überwachungsendpunkt in IoT Hub ist ein mit Event Hub kompatibler Endpunkt. Sie können einen beliebigen für Event Hubs geeigneten Mechanismus zum Lesen von Überwachungsnachrichten von diesem Endpunkt verwenden. Im folgenden Beispiel wird ein einfacher Reader erstellt, der für eine Bereitstellung mit hohem Durchsatz nicht geeignet ist. Weitere Informationen zum Verarbeiten von Nachrichten von Event Hubs finden Sie im Tutorial [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md) .
 
 Zum Herstellen einer Verbindung mit dem Überwachungsendpunkt benötigen Sie eine Verbindungszeichenfolge und den Endpunktnamen. Führen Sie die folgenden Schritte aus, um die erforderlichen Werte im Portal zu ermitteln:
 
 1. Navigieren Sie im Portal zum Blatt für die IoT Hub-Ressource.
 
-1. Wählen Sie **Vorgangsüberwachung** aus, und notieren Sie sich die Werte für **Event Hub-kompatibler Name** und **Event Hub-kompatibler Endpunkt**:
+2. Wählen Sie **Vorgangsüberwachung** aus, und notieren Sie sich die Werte für **Event Hub-kompatibler Name** und **Event Hub-kompatibler Endpunkt**:
 
-    ![Werte für Event Hub-kompatiblen Endpunkt][img-endpoints]
+    ![Werte für Event Hub-kompatiblen Endpunkt](./media/iot-hub-operations-monitoring/monitoring-endpoint.png)
 
-1. Wählen Sie **Freigegebene Zugriffsrichtlinien** und dann **Dienst** aus. Notieren Sie sich den Wert von **Primärschlüssel**:
+3. Wählen Sie **Freigegebene Zugriffsrichtlinien** und dann **Dienst** aus. Notieren Sie sich den Wert von **Primärschlüssel**:
 
-    ![Primärschlüssel des Diensts unter „SAS-Richtlinie“][img-service-key]
+    ![Primärschlüssel des Diensts unter „SAS-Richtlinie“](./media/iot-hub-operations-monitoring/service-key.png)
 
 Das folgende C#-Codebeispiel stammt aus einer Visual Studio C#-Konsolenanwendung für den **klassischen Windows-Desktop**. Im Projekt ist das NuGet-Paket **WindowsAzure.ServiceBus** installiert.
 
 * Ersetzen Sie den Platzhalter für die Verbindungszeichenfolge durch eine Verbindungszeichenfolge, in der die Werte für **Event Hub-kompatibler Endpunkt** und Dienst-**Primärschlüssel** verwendet werden, die Sie sich zuvor notiert haben, wie im folgenden Beispiel gezeigt:
 
-    ```cs
+    ```csharp
     "Endpoint={your Event Hub-compatible endpoint};SharedAccessKeyName=service;SharedAccessKey={your service primary key value}"
     ```
 
 * Ersetzen Sie den Platzhalter für den Namen des Überwachungsendpunkts durch den Wert von **Event Hub-kompatibler Name**, den Sie sich zuvor notiert haben.
 
-```cs
+```csharp
 class Program
 {
     static string connectionString = "{your monitoring endpoint connection string}";
@@ -263,24 +265,9 @@ class Program
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-* [IoT Hub-Entwicklerhandbuch][lnk-devguide]
-* [Deploy Azure IoT Edge on a simulated device in Linux - preview][lnk-iotedge] (Bereitstellen von Azure IoT Edge auf einem simulierten Gerät in Linux – Vorschauversion)
+* [Entwicklungsleitfaden für IoT Hub](iot-hub-devguide.md)
 
-<!-- Links and images -->
-[1]: media/iot-hub-operations-monitoring/enable-OM-1.png
-[2]: media/iot-hub-operations-monitoring/enable-OM-2.png
-[img-endpoints]: media/iot-hub-operations-monitoring/monitoring-endpoint.png
-[img-service-key]: media/iot-hub-operations-monitoring/service-key.png
-
-[lnk-blog-announcement]: https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health
-[lnk-monitor]: iot-hub-monitor-resource-health.md
-[lnk-get-started]: quickstart-send-telemetry-dotnet.md
-[lnk-diagnostic-metrics]: iot-hub-metrics.md
-[lnk-scaling]: iot-hub-scaling.md
-[lnk-dr]: iot-hub-ha-dr.md
-
-[lnk-devguide]: iot-hub-devguide.md
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-eventhubs-tutorial]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
+* [Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)

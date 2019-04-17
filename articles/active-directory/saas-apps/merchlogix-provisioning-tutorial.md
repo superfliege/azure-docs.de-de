@@ -6,26 +6,26 @@ documentationcenter: ''
 author: zhchia
 writer: zhchia
 manager: beatrizd-msft
-ms.assetid: na
+ms.assetid: 9df4c7c5-9a58-478e-93b7-2f77aae12807
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 03/27/2019
 ms.author: zhchia
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe36969661ae1b729601681c02f79e777b2f8cab
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: c8fecc5232b26c98c4027174454cf29b81b0ee41
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57344383"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263593"
 ---
 # <a name="tutorial-configure-merchlogix-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von MerchLogix für die automatische Benutzerbereitstellung
 
-In diesem Tutorial werden die Schritte erläutert, die in MerchLogix und Azure Active Directory (Azure AD) ausgeführt werden müssen, um Azure AD zum automatischen Bereitstellen und Aufheben der Bereitstellung von Benutzern und/oder Gruppen in MerchLogix zu konfigurieren. 
+In diesem Tutorial werden die Schritte erläutert, die in MerchLogix und Azure Active Directory (Azure AD) ausgeführt werden müssen, um Azure AD zum automatischen Bereitstellen und Aufheben der Bereitstellung von Benutzern und/oder Gruppen in MerchLogix zu konfigurieren.
 
 > [!NOTE]
 > In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md).
@@ -34,14 +34,15 @@ In diesem Tutorial werden die Schritte erläutert, die in MerchLogix und Azure A
 
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
-*   Einen Azure AD-Mandanten
-*   Einen MerchLogix-Mandant
-*   Eine technische Kontaktperson bei MerchLogix, die die URL des SCIM-Endpunkts sowie das geheime Token bereitstellen kann, das für die Benutzerbereitstellung benötigt wird.
+* Einen Azure AD-Mandanten
+* Einen MerchLogix-Mandant
+* Eine technische Kontaktperson bei MerchLogix, die die URL des SCIM-Endpunkts sowie das geheime Token bereitstellen kann, das für die Benutzerbereitstellung benötigt wird.
 
 ## <a name="adding-merchlogix-from-the-gallery"></a>Hinzufügen von Merchlogix aus dem Katalog
+
 Bevor Sie MerchLogix für die automatische Benutzerbereitstellung mit Azure AD konfigurieren, müssen Sie MerchLogix aus dem Azure AD-Anwendungskatalog der Liste der verwalteten SaaS-Anwendungen hinzufügen.
 
-**Führen Sie zum Hinzufügen von MerchLogix aus dem Azure AD-Anwendungskatalog die folgenden Schritte aus:**
+**Führen Sie die folgenden Schritte aus, um MerchLogix aus dem Azure AD-Anwendungskatalog hinzuzufügen:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
@@ -50,7 +51,7 @@ Bevor Sie MerchLogix für die automatische Benutzerbereitstellung mit Azure AD k
 2. Navigieren Sie zu **Unternehmensanwendungen** > **Alle Anwendungen**.
 
     ![Der Abschnitt „Unternehmensanwendungen“][2]
-    
+
 3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um MerchLogix hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“][3]
@@ -67,13 +68,13 @@ Azure Active Directory ermittelt anhand von Zuweisungen, welche Benutzer Zugriff
 
 Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung müssen Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD Zugriff auf MerchLogix benötigen. Anschließend können Sie diese Benutzer und/oder Gruppen MerchLogix wie folgt zuweisen:
 
-*   [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../manage-apps/assign-user-or-group-access-portal.md)
+* [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-merchlogix"></a>Wichtige Tipps zum Zuweisen von Benutzern zu MerchLogix
 
-*    Es empfiehlt sich, MerchLogix einen einzelnen Azure AD-Benutzer zuzuweisen, um die anfängliche Konfiguration der automatischen Benutzerbereitstellung zu testen. Nach erfolgreichem Abschluss der Tests können weitere Benutzer und/oder Gruppen zugewiesen werden.
+* Es empfiehlt sich, MerchLogix einen einzelnen Azure AD-Benutzer zuzuweisen, um die anfängliche Konfiguration der automatischen Benutzerbereitstellung zu testen. Nach erfolgreichem Abschluss der Tests können weitere Benutzer und/oder Gruppen zugewiesen werden.
 
-*   Beim Zuweisen eines Benutzers zu MerchLogix müssen Sie eine gültige anwendungsspezifische Rolle (sofern verfügbar) im Dialogfeld für die Zuweisung auswählen. Benutzer mit der Rolle **Standardzugriff** werden von der Bereitstellung ausgeschlossen.
+* Beim Zuweisen eines Benutzers zu MerchLogix müssen Sie eine gültige anwendungsspezifische Rolle (sofern verfügbar) im Dialogfeld für die Zuweisung auswählen. Benutzer mit der Rolle **Standardzugriff** werden von der Bereitstellung ausgeschlossen.
 
 ## <a name="configuring-automatic-user-provisioning-to-merchlogix"></a>Konfigurieren der automatischen Benutzerbereitstellung in MerchLogix 
 
@@ -96,13 +97,12 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 5. Führen Sie im Abschnitt **Administratoranmeldeinformationen** folgende Aktionen aus:
 
-    *   Geben Sie im Feld **Mandanten-URL** die SCIM-Endpunkt-URL ein, die Ihnen von der technischen Kontaktperson bei MerchLogix zur Verfügung gestellt wurde.
+    * Geben Sie im Feld **Mandanten-URL** die SCIM-Endpunkt-URL ein, die Ihnen von der technischen Kontaktperson bei MerchLogix zur Verfügung gestellt wurde.
 
-    *   Geben Sie im Feld **Geheimes Token** das geheime Token ein, das Ihnen von der technischen Kontaktperson bei MerchLogix zur Verfügung gestellt wurde.
+    * Geben Sie im Feld **Geheimes Token** das geheime Token ein, das Ihnen von der technischen Kontaktperson bei MerchLogix zur Verfügung gestellt wurde.
 
 6. Klicken Sie nach dem Auffüllen der in Schritt 5 gezeigten Felder auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit MerchLogix herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr MerchLogix-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
-    
 7. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
 8. Klicken Sie auf **Speichern**.
@@ -118,7 +118,6 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 13. Wenn Sie den Azure AD-Bereitstellungsdienst für MerchLogix aktivieren möchten, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
 14. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
-
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Berichten zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst in MerchLogix ausgeführt werden.
 

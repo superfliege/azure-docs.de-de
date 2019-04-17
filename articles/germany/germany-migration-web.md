@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 78ec32dcbfc5a1a3b6d480a361f1568fa5427699
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 4e607d821d0a587b25c6cb6929ac6765d500b6fb
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822796"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490628"
 ---
 # <a name="migrate-web-resources-to-global-azure"></a>Migrieren von Webressourcen zu Azure weltweit
 
@@ -40,9 +40,9 @@ Weitere Informationen finden Sie unter:
 
 Um Einstellungen von einer Azure Notification Hubs-Instanz zu einer anderen Instanz zu migrieren, exportieren und importieren Sie alle Registrierungstoken samt deren Tags:
 
-1. [Exportieren Sie die vorhandenen Notification Hub-Registrierungen](https://msdn.microsoft.com/library/azure/dn790624.aspx) in einen Azure Blob Storage-Container.
+1. [Exportieren Sie die vorhandenen Notification Hub-Registrierungen](/previous-versions/azure/azure-services/dn790624(v=azure.100)) in einen Azure Blob Storage-Container.
 1. Erstellen Sie einen neuen Notification Hub in der Zielumgebung.
-1. [Importieren Sie Ihre Registrierungstoken](https://msdn.microsoft.com/library/azure/dn790624.aspx) aus Blobspeicher in Ihren neuen Notification Hub.
+1. [Importieren Sie Ihre Registrierungstoken](/previous-versions/azure/azure-services/dn790624(v=azure.100)) aus Blobspeicher in Ihren neuen Notification Hub.
 
 Weitere Informationen finden Sie unter:
 
@@ -55,12 +55,12 @@ Erfahren Sie mehr über Tools, Techniken und Empfehlungen zum Migrieren von Ress
 
 - [Compute](./germany-migration-compute.md)
 - [Netzwerk](./germany-migration-networking.md)
-- [Speicher](./germany-migration-storage.md)
+- [Storage](./germany-migration-storage.md)
 - [Datenbanken](./germany-migration-databases.md)
-- [Analyse](./germany-migration-analytics.md)
+- [Analytics](./germany-migration-analytics.md)
 - [IoT](./germany-migration-iot.md)
 - [Integration](./germany-migration-integration.md)
-- [Identität](./germany-migration-identity.md)
+- [Identity](./germany-migration-identity.md)
 - [Sicherheit](./germany-migration-security.md)
 - [Verwaltungstools](./germany-migration-management-tools.md)
 - [Medien](./germany-migration-media.md)

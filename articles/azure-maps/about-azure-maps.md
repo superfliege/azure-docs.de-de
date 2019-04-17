@@ -9,18 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 023f5ed43453d7fb20dec5d91651230aa8fb4370
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 944a111ac0c31e755b3991f9ea101ba652c676d3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571302"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268764"
 ---
 # <a name="what-is-azure-maps"></a>Was ist Azure Maps?
 
-Azure Maps ist eine Sammlung von Geodiensten, denen topaktuelle Kartendaten zugrunde liegen, um einen präzisen geografischen Kontext für Ihre webbasierten und mobilen Anwendungen bereitzustellen. Azure Maps beinhaltet REST-APIs zum Rendern von **Karten** in verschiedenen Stilen und mit Satellitenbildern, zur **Suche** nach Adressen, Orten und POIs auf der ganzen Welt, zur **Routenplanung** (A nach B, mehrere Punkte, Optimierung bei Verwendung mehrerer Punkte, Isochrone, gewerbliches Fahrzeug, Berücksichtigung der Verkehrslage und Matrixroutenplanung), zur Anzeige der besten Daten zu Verkehrsfluss und -störungen, zur Ermittlung des Benutzerstandorts mittels **Geolocation** sowie zur Konvertierung des Standorts in **Zeitzonen** und zum Abruf der Zeit an einem Standort. Darüber hinaus bietet Azure Maps Dienste für **Geofencing**, zur Speicherung von **Kartendaten** (Hosten von Standortinformationen in Azure) sowie **räumliche Vorgänge** zur Bereitstellung von Standortinformationen mittels Geoanalysen. Azure Maps-Dienste können direkt als REST-APIs oder über unsere robusten SDKs (**Web SDK** oder **Android SDK**) genutzt werden. Mit diesen Tools können Entwickler im Handumdrehen Lösungen entwickeln und skalieren, die Standortinformationen aus der Azure-Cloud in Azure-Lösungen integrieren. Registrieren Sie sich am besten gleich für ein kostenloses [Azure Maps-Konto](https://azure.microsoft.com/services/azure-maps/), und legen Sie los!
+Azure Maps ist eine Sammlung von Geodiensten, denen topaktuelle Kartendaten zugrunde liegen, um einen präzisen geografischen Kontext für Ihre webbasierten und mobilen Anwendungen bereitzustellen. Azure Maps beinhaltet REST-APIs zum Rendern von **Karten** in verschiedenen Stilen und mit Satellitenbildern, zur **Suche** nach Adressen, Orten und POIs auf der ganzen Welt, zur **Routenplanung** (A nach B, mehrere Punkte, Optimierung bei Verwendung mehrerer Punkte, Isochrone, gewerbliches Fahrzeug, Berücksichtigung der Verkehrslage und Matrixroutenplanung), zur Anzeige branchenführender Daten zu Verkehrsfluss und -störungen, zur Ermittlung des Benutzerstandorts mittels **Geolocation** sowie zur Konvertierung des Standorts in **Zeitzonen** und zum Abruf der Zeit an einem Standort. Darüber hinaus bietet Azure Maps Dienste für **Geofencing**, zur Speicherung von **Kartendaten** (Hosten von Standortinformationen in Azure) sowie **räumliche Vorgänge** zur Bereitstellung von Standortinformationen mittels Geoanalysen. Azure Maps-Dienste können direkt als REST-APIs oder über unsere robusten SDKs (**Web SDK** oder **Android SDK**) genutzt werden. Mit diesen Tools können Entwickler im Handumdrehen Lösungen entwickeln und skalieren, die Standortinformationen aus der Azure-Cloud in Azure-Lösungen integrieren. Registrieren Sie sich am besten gleich für ein kostenloses [Azure Maps-Konto](https://azure.microsoft.com/services/azure-maps/), und legen Sie los!
 
 Im folgenden Video wird Azure Maps ausführlich beschrieben:
+
+<br/>
 
 <iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Maps/player?format=ny" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
@@ -95,7 +97,7 @@ Ausführliche Informationen zu diesem Dienst finden Sie auf der Seite zu den [Az
 Der Verkehrsinfodienst ist eine Suite mit Webdiensten für Entwickler, mit denen Web- und mobile Anwendungen erstellt werden können, für die Verkehrsinformationen erforderlich sind. Der Dienst stellt zwei Typen von Daten bereit:
 
 * Verkehrsfluss: In Echtzeit ermittelte Geschwindigkeiten und Reisezeiten für alle wichtigen Straßen des Verkehrsnetzes
-* Verkehrsunfälle: Präzise Übersicht über die Staus und Störungen bzw. Unfälle im Straßennetz
+* Verkehrsmeldungen: Aktuelle Übersicht über die Staus und Störungen bzw. Unfälle im Straßennetz
 
 ![Azure Maps-Ansicht des Verkehrs](media/about-azure-maps/Introduction_Traffic.png)
 
@@ -121,7 +123,7 @@ Für Azure Maps wird ein schlüsselbasiertes Authentifizierungsschema verwendet.
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 
-Die Azure Maps-API ist derzeit in allen Ländern verfügbar, mit Ausnahme von:
+Die Azure Maps-API ist derzeit in allen Ländern verfügbar, mit Ausnahme folgender Regionen:
 
 * Argentinien
 * China
@@ -139,7 +141,7 @@ Weitere Informationen zu den neuen Features von Azure Maps:
 > [!div class="nextstepaction"]
 > [Routenmatrix, Isochronen, IP-Suche und vieles mehr](https://azure.microsoft.com/blog/route-matrix-isochrones-ip-lookup-and-more-added-to-azure-maps/)
 
-Testen Sie als Nächstes eine Beispiel-App, mit der der Dienst veranschaulicht wird:
+Testen Sie eine Beispiel-App zur Veranschaulichung von Azure Maps:
 
 > [!div class="nextstepaction"]
-> [Demo der interaktiven Kartensuche starten](quick-demo-map-app.md)
+> [Schnellstart: Erstellen einer Web-App](quick-demo-map-app.md)

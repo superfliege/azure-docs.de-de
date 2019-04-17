@@ -10,16 +10,17 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: e8e2bd34ebb5b789bb3e9ba4a419ab424d3fdf5a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 97a3f00bcb5b1a0fb3f499657044b9d83f5b08d7
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550674"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010378"
 ---
 # <a name="select-an-audio-input-device-with-the-speech-sdk"></a>Auswählen eines Audioeingabegeräts mit dem Speech SDK
 
-In Version 1.3.0 des Speech SDK wird eine API zum Auswählen der Audioeingabe eingeführt. In diesem Artikel erfahren Sie, wie Sie die IDs der mit einem System verbundenen Audiogeräte abrufen.
+In Version 1.3.0 des Speech SDK wird eine API zum Auswählen der Audioeingabe eingeführt.
+In diesem Artikel erfahren Sie, wie Sie die IDs der mit einem System verbundenen Audiogeräte abrufen.
 Diese können dann im Speech SDK verwendet werden, indem Sie das Audiogerät über das Objekt `AudioConfig` konfigurieren:
 
 ```C++
@@ -42,8 +43,11 @@ audioConfig = AudioConfiguration.FromMicrophoneInput("<device id>");
 audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 ```
 
-> [!NOTE]
-> Diese Funktion ist für JavaScript noch nicht verfügbar.
+```JavaScript
+audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
+```
+>[!Note]
+> Für JavaScript in Node.js ist keine Mikrofonverwendung verfügbar.
 
 ## <a name="audio-device-ids-on-windows-for-desktop-applications"></a>Audiogeräte-IDs unter Windows für Desktopanwendungen
 
@@ -368,12 +372,16 @@ Ein Beispiel: Die Anweisung
 
 ermöglicht die Verwendung eines Bluetooth-Headsets für eine sprachfähige App.
 
+## <a name="audio-device-ids-in-javascript"></a>Audiogeräte-IDs in JavaScript
+
+In JavaScript kann die Methode [MediaDevices.enumerateDevices()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) verwendet werden, um die Mediengeräte aufzuzählen und eine Geräte-ID für die Übergabe an `fromMicrophone(...)` zu finden.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erkunden unserer Beispiele auf GitHub](https://aka.ms/csspeech/samples)
+> [Beispiele auf GitHub](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Tutorial: Erstellen eines benutzerdefinierten Akustikmodells](how-to-customize-acoustic-models.md)
-- [Tutorial: Erstellen eines benutzerdefinierten Sprachmodells](how-to-customize-language-model.md)
+- [Anpassen von Akustikmodellen](how-to-customize-acoustic-models.md)
+- [Anpassen von Sprachmodellen](how-to-customize-language-model.md)

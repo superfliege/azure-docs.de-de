@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 77519c57c9a603ae0eff46d248ff15432d0404fa
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: a2f55a65d88b499384fc961c3d6a479bac804ba8
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485390"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051528"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>Analysieren der Sicherheit Ihres virtuellen Computers über die Sicherheitsgruppenansicht mithilfe der REST API
 
@@ -29,6 +29,9 @@ ms.locfileid: "58485390"
 > - [REST-API](network-watcher-security-group-view-rest.md)
 
 Die Sicherheitsgruppenansicht gibt konfigurierte und effektive Netzwerksicherheitsregeln zurück, die auf einen virtuellen Computer angewendet werden. Diese Funktion eignet sich zur Überwachung und Diagnose von Netzwerksicherheitsgruppen und Regeln, die auf einem virtuellen Computer konfiguriert sind, um sicherzustellen, dass Datenverkehr ordnungsgemäß zugelassen oder verweigert wird. In diesem Artikel erfahren Sie, wie Sie die effektiven und angewandten Sicherheitsregeln mithilfe der REST-API auf einen virtuellen Computer abrufen.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -50,7 +53,7 @@ armclient login
 
 Führen Sie das folgende Skript aus, um einen virtuellen Computer zurückzugeben. Der folgende Code benötigt Variablen:
 
-- **subscriptionId**: Die Abonnement-ID kann auch mit dem Cmdlet **Get-AzureRMSubscription** abgerufen werden.
+- **subscriptionId:** Die Abonnement-ID kann auch mit dem Cmdlet **Get-AzSubscription** abgerufen werden.
 - **resourceGroupName:** der Name einer Ressourcengruppe, die virtuelle Computer enthält.
 
 ```powershell

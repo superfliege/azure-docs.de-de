@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: e5189e4e-9438-46d1-8686-ed4836bf3356
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 9751801449eebc5d07ca4bbb9b408d9679fef24e
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 122a4b6af78a22f74d5057da75767077f8d9b978
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43040989"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469623"
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>Entwickeln von benutzerdefinierten Operatoren von U-SQL (UDOs)
 In diesem Artikel erfahren Sie, wie Sie benutzerdefinierte Operatoren entwickeln, um Daten in einem U-SQL-Auftrag zu verarbeiten.
@@ -124,5 +124,5 @@ In diesem Artikel erfahren Sie, wie Sie benutzerdefinierte Operatoren entwickeln
 2. Erweitern Sie „Beispielcode“ und „Ausgaben“, und doppelklicken Sie dann auf **Drivers.csv**.
 
 ## <a name="see-also"></a>Weitere Informationen
-* [Erweitern von U-SQL-Ausdrücken mit Benutzercode](https://msdn.microsoft.com/library/azure/mt621316.aspx)
+* [Erweitern von U-SQL-Ausdrücken mit Benutzercode](/u-sql/concepts/extending-u-sql-expressions-with-user-code)
 * [Verwenden von Data Lake-Tools für Visual Studio zum Entwickeln von U-SQL-Anwendungen](data-lake-analytics-data-lake-tools-get-started.md)

@@ -6,15 +6,15 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 01/17/2019
+ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8d3bc70b467cabfc5d45c51b79b43d2942d558ae
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: c48acf7e9074ac3c5a7d19765a9524a411fa26c8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885726"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264028"
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>Erstellen eines Azure Search-Diensts im Portal
 
@@ -22,7 +22,7 @@ Azure Search ist eine eigenständige Ressource, die zum Hinzufügen einer Suchob
 
 In diesem Artikel erfahren Sie, wie Sie eine Azure Search-Ressource im [Azure-Portal](https://portal.azure.com/) erstellen.
 
-[![Animiertes GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
+[![AAnimiertes GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
 Bevorzugen Sie PowerShell? Verwenden Sie die Azure Resource Manager-[Dienstvorlage](https://azure.microsoft.com/resources/templates/101-azure-search-create/). Hilfe zu den ersten Schritten finden Sie unter [Verwalten des Azure Search-Diensts mit PowerShell](search-manage-powershell.md).
 
@@ -71,7 +71,7 @@ Wenn Sie keine Ressourcen in einer einzigen Gruppe kombinieren oder vorhandene R
 
 Als Azure-Dienst kann Azure Search in Rechenzentren auf der ganzen Welt gehostet werden. [Die Preise können sich je nach geografischer Lage unterscheiden.](https://azure.microsoft.com/pricing/details/search/)
 
-Wenn Sie die kognitive Suche verwenden möchten, wählen Sie eine [Region, in der das Feature verfügbar ist](cognitive-search-quickstart-blob.md#supported-regions).
+Wenn Sie Inhalte indizieren möchten, die sich in einem Azure-Dienst (Azure Storage, Azure Cosmos DB, Azure SQL-Datenbank) befinden, erstellen Sie Ihren Azure Search-Dienst in der Region, in der sich auch Ihre Daten befinden, um Bandbreitenkosten zu sparen. Bei Diensten in der gleichen Region fallen keine Gebühren für ausgehende Daten an.
 
 ## <a name="select-a-pricing-tier-sku"></a>Auswählen eines Tarifs (SKU)
 
@@ -143,4 +143,4 @@ Ein zweiter Dienst ist für Hochverfügbarkeit nicht vonnöten. Hochverfügbarke
 Nach dem Bereitstellen eines Azure Search-Diensts können Sie im Portal mit dem Erstellen des ersten Index fortfahren.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Importieren von Daten, Indexieren und Ausführen von Abfragen im Portal](search-get-started-portal.md)
+> [Tutorial: Verwenden von integrierten Portaltools für Azure Search-Importe, -Indizierungen und -Abfragen](search-get-started-portal.md)

@@ -1,5 +1,5 @@
 ---
-title: Schnellstarttutorial zu Indizierung und Abfragen über das Azure-Portal – Azure Search
+title: 'Schnellstart: Erstellen, Laden und Abfragen eines Index im Azure-Portal – Azure Search'
 description: Hier erfahren Sie, wie Sie im Azure-Portal mithilfe von integrierten Daten und mithilfe des Datenimport-Assistenten Ihren ersten Index in Azure Search erstellen und abfragen.
 author: HeidiSteen
 manager: cgronlun
@@ -7,17 +7,23 @@ tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 85fc8a42f5220aa8f05495aa260d05ce009884f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a1cf72d9e3f5c2c6e919304d4d886a607c54f359
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58137826"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282660"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>Schnellstart: Verwenden von integrierten Portaltools für Azure Search-Importe, -Indizierungen und -Abfragen
+> [!div class="op_single_selector"]
+> * [Portal](search-get-started-portal.md)
+> * [PowerShell](search-howto-dotnet-sdk.md)
+> * [postman](search-fiddler.md)
+> * [C#](search-create-index-dotnet.md)
+>*
 
 Für einen schnellen Einstieg in die Azure Search-Konzepte testen Sie die integrierten Tools im Azure-Portal. Assistenten und Editoren bieten keinen vollständigen Ersatz für die .NET- und REST-APIs, aber Sie können schnell mit einer codefreie Einführung beginnen, indem Sie interessante Abfragen für Beispieldaten innerhalb von Minuten schreiben.
 
@@ -34,7 +40,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[Erstellen Sie einen Azure Search-Dienst](search-create-service-portal.md), oder suchen Sie unter Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. 
+[Erstellen Sie einen Azure Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. 
 
 ### <a name="check-for-space"></a>Überprüfen des Speicherplatzes
 
@@ -222,7 +228,7 @@ Bei Treffermarkierungen wird Text, der dem Schlüsselwort entspricht, mit einer 
 
 ### <a name="fuzzy-search"></a> Ausprobieren der Fuzzysuche
 
-Für falsch geschriebene Wörter wie *samamish* für das Samammish-Plateau in der Region Seattle werden bei einer typischen Suche standardmäßig keine Treffer zurückgegeben. Im folgenden Beispiel werden keine Ergebnisse zurückgegeben.
+Für falsch geschriebene Wörter wie *samamish* für das Sammamish-Plateau in der Region Seattle werden bei einer herkömmlichen Suche standardmäßig keine Treffer zurückgegeben. Im folgenden Beispiel werden keine Ergebnisse zurückgegeben.
 
 #### <a name="example-misspelled-term-unhandled-searchsamamish"></a>Beispiel (falsch geschriebener Begriff, keine Verarbeitung): `search=samamish`
 
@@ -266,6 +272,6 @@ Wenn Sie den Azure Search-Dienst in diesem Tutorial zum ersten Mal verwendet hab
 
 Anhand der programmatischen Tools können Sie Azure Search genauer erkunden:
 
-* [Erstellen eines Index mit dem .NET SDK](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
+* [Erstellen eines Index mit dem .NET SDK](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
 * [Erstellen eines Index mit REST-APIs](https://docs.microsoft.com/azure/search/search-create-index-rest-api)
-* [Erstellen eines Index mit Postman oder Fiddler und den Azure Search-REST-APIs](search-fiddler.md)
+* [Erstellen eines Index mit Postman oder Fiddler und den Azure Search-REST-APIs](search-fiddler.md)

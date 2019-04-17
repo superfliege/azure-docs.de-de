@@ -1,10 +1,10 @@
 ---
-title: Erstellen und Verwalten von Pools für elastische Datenbanken – Azure SQL-Datenbank | Microsoft-Dokumentation
+title: Verwalten von Pools für elastische Datenbanken – Azure SQL-Datenbank | Microsoft-Dokumentation
 description: Erstellen und Verwalten von Pools für elastische Datenbanken in Azure SQL-Datenbank
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
-ms.custom: ''
+ms.custom: seoapril2019
 ms.devlang: ''
 ms.topic: conceptual
 author: oslake
@@ -12,14 +12,14 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: e3f3a2260ba877c94262c12f5a999c6b7bdf5cd1
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: debf91f04cff3cb9705ebc5915e2e665679230a9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58892397"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267581"
 ---
-# <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Erstellen und Verwalten von Pools für elastische Datenbanken in Azure SQL-Datenbank
+# <a name="manage-elastic-pools-in-azure-sql-database"></a>Verwalten von Pools für elastische Datenbanken in Azure SQL-Datenbank
 
 Mit einem Pool für elastische Datenbanken legen Sie die Menge der Ressourcen fest, die für den Pool für elastische Datenbanken zur Verarbeitung der Workload der zugehörigen Datenbanken erforderlich sind, sowie die Menge der Ressourcen für die einzelnen in einem Pool zusammengefassten Datenbanken.
 

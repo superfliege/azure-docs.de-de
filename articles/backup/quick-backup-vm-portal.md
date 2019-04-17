@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 7/17/2018
 ms.author: saurse
 ms.custom: mvc
-ms.openlocfilehash: 445437fe92ec75f1d34021808d7d47a372c2a44b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d167ed012e3f0e45988c88b64040208d87623518
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535177"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275491"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Sichern eines virtuellen Computers in Azure
 Azure-Sicherungen können über das Azure-Portal erstellt werden. Bei dieser Methode können Sie die browserbasierte Benutzeroberfläche nutzen, um Azure-Sicherungen und alle dazugehörigen Ressourcen zu erstellen und zu konfigurieren. Sie können Ihre Daten schützen, indem Sie in regelmäßigen Abständen Sicherungen erstellen. Azure Backup erstellt Wiederherstellungspunkte, die in georedundanten Recovery-Tresoren gespeichert werden können. In diesem Artikel wird ausführlich beschrieben, wie Sie einen virtuellen Computer (VM) mit dem Azure-Portal sichern. 
@@ -79,7 +79,7 @@ Wenn Sie mit einem Backup-Tutorial fortfahren möchten, in dem die Wiederherstel
 
 3. Wählen Sie im Dropdownmenü die Option **Sicherungsdaten löschen**.
 
-4. Geben Sie im Dialogfeld **Type the name of the Backup item** (Namen des Backup-Elements eingeben) Ihren VM-Namen ein, z.B. *myVM*. Wählen Sie **Sicherung beenden**.
+4. Geben Sie im Dialogfeld **Type the name of the Backup item** (Namen des Backup-Elements eingeben) Ihren VM-Namen ein, z.B. *myVM*. Wählen Sie **Sicherung beenden** aus.
 
     Nachdem die VM-Sicherung beendet wurde und die Wiederherstellungspunkte entfernt wurden, können Sie die Ressourcengruppe löschen. Wenn Sie eine vorhandene VM verwendet haben, kann es auch sein, dass Sie die Ressourcengruppe und die VM beibehalten möchten.
 

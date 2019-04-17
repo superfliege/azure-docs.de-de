@@ -7,14 +7,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: f4da0a4672bc50688d0a25bbd2db1f3be984ee8b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 58e360bb355c7faf9608b00dd65b14f27aca4367
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821387"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358052"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Einrichten der Notfallwiederherstellung für Active Directory und DNS
 
@@ -106,7 +106,7 @@ Wenn Sie ein Testfailover initiieren, beziehen Sie nicht alle Domänencontroller
 Ab Windows Server 2012 [sind zusätzliche Sicherheitsmechanismen in Active Directory Domain Services (AD DS) integriert](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100). Mit diesen Sicherheitsmechanismen sind virtualisierte Domänencontroller besser vor USN-Rollbacks geschützt, solange die zugrunde liegende Hypervisorplattform **VM-GenerationID** unterstützt. Azure unterstützt **VM-GenerationID**. Deswegen verfügen Domänencontroller, die Windows Server 2012 oder höher auf virtuellen Azure-Computern ausführen, über diese zusätzlichen Sicherheitsmechanismen.
 
 
-Wenn **VM-GenerationID** zurückgesetzt wird, wird der **InvocationID**-Wert der AD DS-Datenbank auch zurückgesetzt. Darüber hinaus wird der RID-Pool verworfen und SYSVOL als nicht autorisierend gekennzeichnet. Weitere Informationen finden Sie unter [Einführung in die Virtualisierung der Active Directory Domain Services](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) und [Sichere Virtualisierung von DFSR](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/).
+Wenn **VM-GenerationID** zurückgesetzt wird, wird der **InvocationID**-Wert der AD DS-Datenbank auch zurückgesetzt. Darüber hinaus wird der RID-Pool verworfen und der Ordner „sysvol“ als nicht autorisierend gekennzeichnet. Weitere Informationen finden Sie unter [Einführung in die Virtualisierung der Active Directory Domain Services](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100) und [Sichere Virtualisierung von DFSR](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/).
 
 Ein Failover in Azure könnte **VM-GenerationID** zurücksetzen. Das Zurücksetzen von **VM-GenerationID** löst beim Starten der virtuellen Domänencontrollercomputer in Azure zusätzliche Sicherheitsmechanismen aus. Dies kann zu einer *erheblichen Verzögerung* bei der Anmeldung beim virtuellen Domänencontrollercomputer führen.
 
@@ -128,11 +128,11 @@ Wenn Virtualisierungssicherheitsmechanismen nach einem Testfailover ausgelöst w
 
     ![Änderung der Aufrufkennung](./media/site-recovery-active-directory/Event1109.png)
 
-* SYSVOL- und NETLOGON-Freigaben sind nicht verfügbar.
+* Sysvol-Ordner und NETLOGON-Freigaben sind nicht verfügbar.
 
-    ![SYSVOL-Freigabe](./media/site-recovery-active-directory/sysvolshare.png)
+    ![Sysvol-Ordnerfreigabe](./media/site-recovery-active-directory/sysvolshare.png)
 
-    ![NtFrs SYSVOL](./media/site-recovery-active-directory/Event13565.png)
+    ![NtFrs sysvol-Ordner](./media/site-recovery-active-directory/Event13565.png)
 
 * DFSR-Datenbanken werden gelöscht.
 
@@ -146,7 +146,7 @@ Wenn Virtualisierungssicherheitsmechanismen nach einem Testfailover ausgelöst w
 >
 >
 
-1. Führen Sie an der Eingabeaufforderung den folgenden Befehl aus, um zu überprüfen, ob die Ordner „SYSVOL“ und „NETLOGON“ freigegeben sind:
+1. Führen Sie an der Eingabeaufforderung den folgenden Befehl aus, um zu überprüfen, ob die Ordner „sysvol“ und „NETLOGON“ freigegeben sind:
 
     `NET SHARE`
 
@@ -166,7 +166,7 @@ Wenn die oben genannten Bedingungen erfüllt sind, ist es wahrscheinlich, dass d
     * Wir empfehlen zwar nicht die [FRS-Replikation](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/), doch führen Sie bei Verwendung der FRS-Replikation die Schritte für eine autorisierende Wiederherstellung aus. Der Prozess wird in [Verwenden des BurFlags-Registrierungsschlüssels zur erneuten Initialisierung des Dateireplikationsdiensts](https://support.microsoft.com/kb/290762) beschrieben.
 
         Weitere Informationen zu BurFlags finden Sie im Blogbeitrag [D2 and D4: What is it for? (D2 und D4: Wozu dient es?)](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/).
-    * Wenn Sie die DFSR-Replikation verwenden, führen Sie die Schritte für eine autorisierende Wiederherstellung aus. Der Prozess wird in [Eine autorisierende und nicht autorisierende Synchronisierung für DFSR-repliziertes SYSVOL erzwingen (wie „D4/D2“ für FRS)](https://support.microsoft.com/kb/2218556) beschrieben.
+    * Wenn Sie die DFSR-Replikation verwenden, führen Sie die Schritte für eine autorisierende Wiederherstellung aus. Der Prozess wird in [Eine autorisierende und nicht autorisierende Synchronisierung für den DFSR-replizierten Ordner „sysvol“ erzwingen (wie „D4/D2“ für FRS)](https://support.microsoft.com/kb/2218556) beschrieben.
 
         Sie können auch die PowerShell-Funktionen verwenden. Weitere Informationen finden Sie unter [DFSR-SYSVOL authoritative/non-authoritative restore PowerShell functions (DFSR-SYSVOL: PowerShell-Funktionen für autorisierende/nicht autorisierende Wiederherstellung)](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/).
 

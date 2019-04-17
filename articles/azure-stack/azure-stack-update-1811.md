@@ -12,20 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 04/09/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: c9f43eb1623ec784bd960fb182dffec48e7b0833
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 138913414a8e45084d498a0c7b2e864bc443197f
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481245"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59362065"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack-Update 1811
 
-*Anwendungsbereich: Integrierte Azure Stack-Systeme*
+*Gilt für: Integrierte Azure Stack-Systeme*
 
 Dieser Artikel beschreibt den Inhalt des Updatepakets 1811. Das Updatepaket enthält Verbesserungen, Fehlerbehebungen und neue Funktionen für diese Version von Azure Stack. In diesem Artikel werden auch bekannte Probleme in diesem Release beschrieben, und er enthält einen Link, damit Sie das Update herunterladen können. Die bekannten Probleme sind in Probleme unterteilt, die sich direkt auf den Updateprozess beziehen, und in Probleme mit dem Build (nach der Installation).
 
@@ -391,6 +391,9 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
 <!-- #### Identity -->
 <!-- #### Marketplace -->
 
+### <a name="syslog"></a>syslog
+
+- Die Syslog-Konfiguration wird bei einem Updatezyklus, nicht beibehalten, sodass der Syslog-Client seine Konfiguration verliert und die Syslog-Nachrichten nicht mehr weitergeleitet werden. Dieses Problem betrifft alle Versionen von Azure Stack ab der allgemeinen Verfügbarkeit des Syslog-Clients (1809). Um dieses Problem zu umgehen, konfigurieren Sie den Syslog-Client nach Anwenden eines Azure Stack-Updates neu.
 
 ## <a name="download-the-update"></a>Herunterladen des Updates
 

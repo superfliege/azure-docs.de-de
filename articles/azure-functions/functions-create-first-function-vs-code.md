@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/07/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d265c391b12a46f509c8663c64892372c8d806ba
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: cbe4dbd2ae741f4225cfdc628c31508956cbb95c
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104521"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469725"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>Erstellen Ihrer ersten Funktion mit Visual Studio Code
 
@@ -115,12 +115,10 @@ Nachdem Sie sichergestellt haben, dass die Funktion auf Ihrem lokalen Computer r
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie haben Visual Studio Code genutzt, um eine Funktions-App mit einer einfachen Funktion zu erstellen, die über HTTP ausgelöst wird. Weitere Informationen zum Entwickeln von Funktionen in einer bestimmten Sprache finden Sie in den Sprachreferenzhandbüchern für [JavaScript](functions-reference-node.md), [.NET](functions-dotnet-class-library.md) oder [Java](functions-reference-java.md).
-
-Als Nächstes möchten Sie möglicherweise mehr über das lokale Testen und Debuggen über das Terminal oder die Eingabeaufforderung unter Verwendung der Azure Functions Core Tools erfahren.
+Sie haben Visual Studio Code genutzt, um eine Funktions-App mit einer einfachen Funktion zu erstellen, die über HTTP ausgelöst wird. Als Nächstes sollten Sie sich näher über das [lokale Testen und Debuggen über das Terminal oder die Eingabeaufforderung](functions-run-local.md) unter Verwendung der Azure Functions Core Tools informieren.
 
 > [!div class="nextstepaction"]
-> [Lokales Codieren und Testen](functions-run-local.md)
+> [Aktivieren der Application Insights-Integration](functions-monitoring.md#manually-connect-an-app-insights-resource)
 
 [Azure Functions Core Tools]: functions-run-local.md
 [Azure Functions-Erweiterung für Visual Studio Code]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions

@@ -10,19 +10,19 @@ ms.subservice: acoustics
 ms.topic: quickstart
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 1575c4f4a1c96a84823f76e8e98e76de3c2ace86
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 691f49e9be8aabe9a3e229bfd3b35ab183f9fed9
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313021"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492404"
 ---
 # <a name="project-acoustics-unrealwwise-quickstart"></a>Schnellstart für Projekt Akustik mit Unreal/Wwise
 In diesem Schnellstart experimentieren Sie mit Entwurfssteuerelementen von Projekt Akustik mithilfe der bereitgestellten Beispielinhalte für die Unreal Engine und Wwise.
 
 Softwareanforderungen:
-* [Unreal Engine 4.21](https://www.unrealengine.com/)
-* [Wwise 2018.1.6](https://www.audiokinetic.com/products/wwise/)
+* [Unreal Engine](https://www.unrealengine.com/) 4.21
+* [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018.1.6
 
 ## <a name="download-the-sample-package"></a>Herunterladen des Beispielpakets
 Laden Sie das [Beispielpaket für Unreal und Wwise für Projekt Akustik](https://www.microsoft.com/download/details.aspx?id=58090) herunter. Das Beispielpaket enthält ein Unreal Engine-Projekt, das Wwise-Projekt für dieses Unreal-Projekt und das Projekt Akustik-Plug-In für Wwise.
@@ -44,13 +44,13 @@ Klicken Sie nun neben dem Projekt Akustik-Beispielprojekt auf **Integrate Wwise 
 
 ![Screenshot des Wwise-Startprogramms mit dem Unreal-Akustikspielprojekt](media/wwise-acoustics-game-project.png)
 
-### <a name="extend-wwises-unreal-plugin-functionality"></a>Erweitern der Funktionen des Unreal-Plug-Ins für Wwise
+### <a name="extend-wwises-unreal-plugin-functionality"></a>Erweitern der Funktionen des Unreal-Plug-Ins von Wwise
 Für das Unreal-Plug-In für Projekt Akustik müssen zusätzliche Funktionen aus der Unreal-Plug-In-API für Wwise verfügbar gemacht werden. Führen Sie die im Unreal-Plug-In für Projekt Akustik bereitgestellte Batchdatei aus, um diese Änderungen zu automatisieren:
 * Führen Sie in `AcousticsGame\Plugins\ProjectAcoustics\Resources` die Datei `PatchWwise.bat` aus.
 
     ![Screenshot des Windows-Explorer-Fensters mit dem Skript zum Patchen des Wwise-Projekts](media/patch-wwise-script.png)
 
-* Wenn das DirectX SDK nicht installiert ist, müssen Sie in `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` die Zeile mit „DXSDK_DIR“ auskommentieren.
+* Wenn das DirectX SDK nicht installiert ist, müssen Sie die Zeile mit „DXSDK_DIR“ auskommentieren in `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs`
 
     ![Screenshot des Code-Editors mit der auskommentierten DXSDK-Zeile](media/directx-sdk-comment.png)
 

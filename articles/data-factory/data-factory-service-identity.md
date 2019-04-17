@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 3663526dc32b0a607c9fca3d7c76496bfb5566f4
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3c1bb38eb12ce77d172257706cd458cebda4bd8c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549142"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260747"
 ---
 # <a name="managed-identity-for-data-factory"></a>Verwaltete Identität für Data Factory
 
@@ -46,7 +46,7 @@ Sollte Ihrer Data Factory nach dem Schritt [Abrufen einer verwalteten Identität
 
 - [Generieren der verwalteten Identität mit PowerShell](#generate-managed-identity-using-powershell)
 - [Generieren der verwalteten Identität mit der REST-API](#generate-managed-identity-using-rest-api)
-- Generieren der verwalteten Identität mithilfe einer Azure Resource Manager-Vorlage
+- [Generieren der verwalteten Identität mithilfe einer Azure Resource Manager-Vorlage](#generate-managed-identity-using-an-azure-resource-manager-template)
 - [Generieren einer verwalteten Identität mit dem SDK](#generate-managed-identity-using-sdk)
 
 >[!NOTE]
@@ -156,11 +156,11 @@ Sie können die verwaltete Identität über das Azure-Portal oder programmgesteu
 
 ### <a name="retrieve-managed-identity-using-azure-portal"></a>Abrufen der verwalteten Identität über das Azure-Portal
 
-Sie finden die Informationen zur verwalteten Identität im Azure-Portal unter „Ihre Data Factory“ > „Einstellungen“ > „Eigenschaften“:
+Sie finden die Informationen zur verwalteten Identität im Azure-Portal unter „Ihre Data Factory“ > „Eigenschaften“:
 
-- DIENSTIDENTITÄTS-ID
-- DIENSTIDENTITÄTSMANDANT
-- **DIENSTIDENTITÄTSANWENDUNGS-ID** > diesen Wert kopieren
+- Objekt-ID der verwalteten Identität
+- Mandant der verwalteten Identität
+- **Anwendungs-ID der verwalteten Identität** > diesen Wert kopieren
 
 ![Abrufen der verwalteten Identität](media/data-factory-service-identity/retrieve-service-identity-portal.png)
 

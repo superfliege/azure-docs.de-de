@@ -9,12 +9,12 @@ ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/23/2017
-ms.openlocfilehash: b70de1e4494bb142da1cad0d0154b5dc7f765983
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9de5c7228944bd0448d9dfa833ef223140ccf0e8
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233355"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469606"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Erste Schritte mit U-SQL in Azure Data Lake Analytics
 U-SQL ist eine Sprache, bei der deklarative SQL mit imperativen C#-Elementen kombiniert wird, damit Sie Daten jedweden Umfangs verarbeiten können. Mit der skalierbaren Funktion für verteilte Abfragen von U-SQL können Sie Daten über relationale Speicher, z.B. Azure SQL-Datenbank, hinweg effizient analysieren. Mit U-SQL können Sie unstrukturierte Daten verarbeiten, indem Sie ein Schema zum Lesen anwenden und benutzerdefinierte Logik und UDFs einfügen. Darüber hinaus bietet U-SQL eine Erweiterbarkeit, die Ihnen eine präzisere Steuerung der Ausführung in großem Umfang ermöglicht. 
@@ -27,7 +27,7 @@ U-SQL ist eine Sprache, bei der deklarative SQL mit imperativen C#-Elementen kom
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie die U-SQL-Beispiele in diesem Dokument durcharbeiten, ist es ratsam, das [Tutorial: Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md) zu lesen und zu absolvieren. In diesem Tutorial wird veranschaulicht, wie Sie U-SQL mit Azure Data Lake Tools für Visual Studio verwenden.
+Bevor Sie die U-SQL-Beispiele in diesem Dokument durchgehen, lesen Sie das [Tutorial: Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md), und schließen Sie es ab. In diesem Tutorial wird veranschaulicht, wie Sie U-SQL mit Azure Data Lake Tools für Visual Studio verwenden.
 
 ## <a name="your-first-u-sql-script"></a>Ihr erstes U-SQL-Skript
 
@@ -117,7 +117,7 @@ Verwenden Sie **SELECT** , um Rowsets zu transformieren:
         TO "/output/SearchLog-transform-rowsets.csv"
         USING Outputters.Csv();
 
-Die WHERE-Klausel verwendet einen [booleschen C#-Ausdruck](https://msdn.microsoft.com/library/6a71f45d.aspx). Sie können die C#-Ausdruckssprache nutzen, um Ihre eigenen Ausdrücke und Funktionen zu erstellen. Sie können sogar komplexere Filtervorgänge durchführen, indem Sie die Ausdrücke und Funktionen mit logischen Konjunktionen (AND) und Disjunktionen (OR) kombinieren.
+Die WHERE-Klausel verwendet einen [booleschen C#-Ausdruck](/dotnet/csharp/language-reference/operators/index). Sie können die C#-Ausdruckssprache nutzen, um Ihre eigenen Ausdrücke und Funktionen zu erstellen. Sie können sogar komplexere Filtervorgänge durchführen, indem Sie die Ausdrücke und Funktionen mit logischen Konjunktionen (AND) und Disjunktionen (OR) kombinieren.
 
 Im folgenden Skript werden die DateTime.Parse()-Methode und eine Konjunktion verwendet.
 
@@ -222,7 +222,7 @@ Die U-SQL-Klausel HAVING kann verwendet werden, um die Ausgabe auf Gruppen zu be
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
 
-Erweiterte Aggregationsszenarien finden Sie in der U-SQL-Referenzdokumentation für [Aggregat-, Analyse- und Referenzfunktionen](https://msdn.microsoft.com/library/azure/mt621335.aspx).
+Erweiterte Aggregationsszenarien finden Sie in der U-SQL-Referenzdokumentation für [Aggregat-, Analyse- und Referenzfunktionen](/u-sql/built-in-functions).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Übersicht über Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)

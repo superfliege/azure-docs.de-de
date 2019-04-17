@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: joesackmsft
 ms.author: josack
-ms.reviewer: carlrab
+ms.reviewer: sstein
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: 2b8c35450ab4586f619993aeb9a578c83cafc0c6
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: a83bc6518409add8a0732e5a0b17ab46c36564af
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216933"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358414"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Neuer DBA in der Cloud: Verwalten Ihrer einzelnen und in einem Pool zusammengefassten Datenbanken in Azure SQL-Datenbank
 
@@ -149,12 +149,12 @@ Die Verschlüsselung bietet wirkungsvollen Schutz vor unbefugten Zugriffen auf s
 Ruhende Daten in den Daten- und Protokolldateien auf einem Speichersubsystem sind in SQL-Datenbank standardmäßig per [Transparent Data Encryption [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) jederzeit vollständig verschlüsselt. Ihre Sicherungen werden ebenfalls verschlüsselt. Bei Verwendung von TDE sind keine Änderungen an den Anwendungen erforderlich, die auf diese Daten zugreifen. Wie der Name erkennen lässt, erfolgen die Verschlüsselung und Entschlüsselung transparent.
 Zum Schutz sensibler Daten, die aktiv oder ruhend sein können, bietet SQL-Datenbank eine Funktion namens [Always Encrypted (AE)](/sql/relational-databases/security/encryption/always-encrypted-database-engine). AE ist eine Form der clientseitigen Verschlüsselung, die sensible Spalten in Ihrer Datenbank verschlüsselt (sodass sie für Datenbankadministratoren und nicht autorisierte Benutzer als Chiffretext dargestellt werden). Der Server empfängt zunächst die verschlüsselten Daten. Der Schlüssel für die Always Encrypted-Verschlüsselung wird ebenfalls auf Clientseite gespeichert, damit die sensiblen Spalten nur von autorisierten Clients entschlüsselt werden können. Server- und Datenadministratoren haben keinen Zugriff auf die sensiblen Daten, da die Verschlüsselungsschlüssel auf dem Client gespeichert sind. AE wendet eine End-to-End-Verschlüsselung auf sensible Tabellenspalten an – von nicht autorisierten Clients bis zum physischen Datenträger. Da AE aktuell Übereinstimmungsvergleiche unterstützt, können DBAs im Rahmen ihrer SQL-Befehle weiterhin verschlüsselte Spalten abfragen. Diese Verschlüsselungsmethode kann mit einer Vielzahl von Schlüsselspeicheroptionen wie [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md), dem Windows-Zertifikatspeicher sowie lokalen Hardware-Sicherheitsmodulen verwendet werden.
 
-|**Merkmale**|**Always Encrypted**|**Transparente Datenverschlüsselung (TDE)**|
+|**Merkmale**|**Always Encrypted**|**Transparent Data Encryption**|
 |---|---|---|
 |**Umfang der Verschlüsselung**|Komplettlösung|Ruhende Daten|
 |**Datenbankserver kann auf sensible Daten zuzugreifen.**|Nein |Ja, da die Verschlüsselung ruhende Daten betrifft.|
 |**Zulässige T-SQL-Vorgänge**|Übereinstimmungsvergleich|Die gesamte T-SQL-Oberfläche ist verfügbar.|
-|**Sind zur Verwendung der Funktion Änderungen an Apps erforderlich?**|Wenig|Sehr wenig|
+|**Erforderliche Änderungen zur Verwendung des Features**|Wenig|Sehr wenig|
 |**Granularität der Verschlüsselung**|Spaltenebene|Datenbankebene|
 ||||
 
@@ -195,19 +195,19 @@ Das folgende Diagramm stellt eine Übersicht über die wichtigsten Schlüsselspe
 
 Der Netzwerkdatenverkehr zwischen Ihrer Organisation und SQL-Datenbank würde normalerweise über das öffentliche Netzwerk geroutet werden. Um diesen Pfad jedoch zu optimieren und sicherer zu gestalten, sollten Sie ExpressRoute in Betracht ziehen. Mit ExpressRoute lässt sich Ihr Unternehmensnetzwerk über eine private Verbindung praktisch auf die Azure-Plattform ausweiten. Auf diese Weise werden keine Daten über das öffentliche Internet übertragen. Zusätzlich erhöhen sich die Sicherheit und Zuverlässigkeit, und das Routing wird optimiert. So erzielen Sie geringere Netzwerklatenzen und höhere Geschwindigkeiten, als das öffentliche Internet normalerweise bietet. Wenn Sie beabsichtigen, einen erheblichen Datenblock zwischen Ihrer Organisation und Azure zu übertragen, bietet ExpressRoute u. U. Kostenvorteile. Für Verbindungen zwischen Ihrer Organisation und Azure stehen drei Konnektivitätsmodelle zur Auswahl:
 
-- [Cloud Exchange und Colocation](../expressroute/expressroute-connectivity-models.md#CloudExchange)
-- [n:n-Konnektivität](../expressroute/expressroute-connectivity-models.md#IPVPN)
-- [Punkt-zu-Punkt-Konnektivität](../expressroute/expressroute-connectivity-models.md#Ethernet)
+- [CloudExchange-Serverhousing](../expressroute/expressroute-connectivity-models.md#CloudExchange)
+- [Any-to-Any](../expressroute/expressroute-connectivity-models.md#IPVPN)
+- [Point-to-Point](../expressroute/expressroute-connectivity-models.md#Ethernet)
 
 Mit ExpressRoute können Sie Ihre kostenpflichtige Bandbreite ohne zusätzliche Gebühren bis auf das Zweifache steigern. Außerdem ist es möglich, die Verbindung regionsübergreifend mithilfe von Express Route zu konfigurieren. Eine Liste von ER-Konnektivitätsanbietern finden Sie unter: [ExpressRoute-Partner und -Peeringstandorte](../expressroute/expressroute-locations.md). In den folgenden Artikeln wird ExpressRoute ausführlicher beschrieben:
 
-- [Einführung in Express Route](../expressroute/expressroute-introduction.md)
+- [Einführung in ExpressRoute](../expressroute/expressroute-introduction.md)
 - [Voraussetzungen](../expressroute/expressroute-prerequisites.md)
 - [Workflows](../expressroute/expressroute-workflows.md)
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>Ist SQL-Datenbank mit allen gesetzlichen Anforderungen kompatibel, und inwiefern hilft dies dabei, die Kompatibilitätsvorgaben meiner eigenen Organisation einzuhalten?
 
-SQL-Datenbank ist mit einer Reihe gesetzlicher Bestimmungen konform. Im [Microsoft Trust Center](https://microsoft.com/trustcenter/compliance/complianceofferings) erfahren Sie, welche Compliancestandards aktuell erfüllt werden. Dort können Sie sich informieren, ob die Complianceanforderungen Ihrer Organisation erfüllt werden, und feststellen, ob SQL-Datenbank zu den konformen Azure-Diensten gehört. Wichtiger Hinweis: Obwohl SQL-Datenbank als konformer Dienst aufgeführt sein kann, unterstützt er den Dienst Ihrer Organisation lediglich bei der Umsetzung der Compliancestandards, ohne automatisch deren Einhaltung zu gewährleisten.
+SQL-Datenbank ist mit einer Reihe gesetzlicher Bestimmungen konform. Im [Microsoft Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) erfahren Sie, welche Compliancestandards von SQL-Datenbank derzeit erfüllt werden. Dort können Sie sich informieren, ob die Complianceanforderungen Ihrer Organisation erfüllt werden, und feststellen, ob SQL-Datenbank zu den konformen Azure-Diensten gehört. Wichtiger Hinweis: Obwohl SQL-Datenbank als konformer Dienst aufgeführt sein kann, unterstützt er den Dienst Ihrer Organisation lediglich bei der Umsetzung der Compliancestandards, ohne automatisch deren Einhaltung zu gewährleisten.
 
 ## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>Intelligente Datenbanküberwachung und -wartung nach der Migration
 

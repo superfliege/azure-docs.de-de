@@ -7,19 +7,19 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: c4622293f05be5f4595136a5bbf194116fb2887c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fd49cc6810f4a3a479748180ddb0c44aedf04e89
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58081099"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275554"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Unterstützung für Gremlin-Diagramme in Azure Cosmos DB
-Azure Cosmos DB unterstützt die Graph-Traversalsprache [Gremlin](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) von [Apache Tinkerpop](https://tinkerpop.apache.org). Dabei handelt es sich um eine Gremlin-API zur Erstellung von Diagrammentitäten und zur Durchführung von Diagrammabfragen. Mithilfe der Gremlin-Sprache können Sie Diagrammentitäten (Vertices und Edges) erstellen, Eigenschaften innerhalb dieser Entitäten ändern, Abfragen und Traversierungen ausführen und Entitäten löschen. 
+Azure Cosmos DB unterstützt die [Apache Tinkerpop](https://tinkerpop.apache.org)-Graphdurchlauf-Sprache, auch als [Gremlin](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) bezeichnet. Mithilfe der Gremlin-Sprache können Sie Diagrammentitäten (Vertices und Edges) erstellen, Eigenschaften innerhalb dieser Entitäten ändern, Abfragen und Traversierungen ausführen und Entitäten löschen. 
 
-Azure Cosmos DB liefert für Unternehmen konzipierte Funktionen für Diagrammdatenbanken. Hierzu zählen globale Verteilung, die unabhängige Skalierung von Speicher und Durchsatz, planbare Wartezeiten im einstelligen Millisekundenbereich, automatische Indizierung, SLAs und Leseverfügbarkeit von Datenbankkonten, die sich über mindestens zwei Azure-Regionen erstrecken. Da Azure Cosmos DB TinkerPop/Gremlin unterstützt, können Sie mühelos mit einer anderen Diagrammdatenbank geschriebene Anwendungen migrieren, ohne Codeänderungen vorzunehmen. Darüber hinaus wird Azure Cosmos DB aufgrund der Unterstützung für Gremlin nahtlos in TinkerPop-fähige Analyseframeworks wie [Apache Spark GraphX](https://spark.apache.org/graphx/) integriert. 
+Azure Cosmos DB liefert für Unternehmen konzipierte Funktionen für Diagrammdatenbanken. Zu diesen Funktionen zählen globale Verteilung, die unabhängige Skalierung von Speicher und Durchsatz, planbare Wartezeiten im einstelligen Millisekundenbereich, automatische Indizierung, SLAs und Leseverfügbarkeit von Datenbankkonten, die sich über mindestens zwei Azure-Regionen erstrecken. Da Azure Cosmos DB TinkerPop/Gremlin unterstützt, können Sie mit einer anderen kompatiblen Graphdatenbank geschriebene Anwendungen mühelos migrieren. Darüber hinaus wird Azure Cosmos DB aufgrund der Unterstützung für Gremlin nahtlos in TinkerPop-fähige Analyseframeworks wie [Apache Spark GraphX](https://spark.apache.org/graphx/) integriert. 
 
-Dieser Artikel enthält eine kurze exemplarische Vorgehensweise zu Gremlin und listet die Funktionen und Schritte von Gremlin auf, die von der Gremlin-API unterstützt werden.
+Dieser Artikel enthält eine kurze exemplarische Vorgehensweise zu Gremlin und listet die Funktionen von Gremlin auf, die von der Gremlin-API unterstützt werden.
 
 ## <a name="gremlin-by-example"></a>Gremlin anhand eines Beispiels
 Anhand eines Beispieldiagramms wird erläutert, wie Abfragen in Gremlin ausgedrückt werden können. Die folgende Abbildung zeigt eine Geschäftsanwendung, die Daten zu Benutzern, Interessen und Geräten in Form eines Diagramms verwaltet.  
@@ -59,7 +59,7 @@ Die folgende Abfrage gibt die Vertices „Person“ in absteigender Reihenfolge 
 :> g.V().hasLabel('person').order().by('firstName', decr)
 ```
 
-Diagramme eignen sich am besten, wenn Sie Fragen wie „Welche Betriebssysteme verwenden Freunde von Thomas?“ beantworten müssen. Um diese Information anhand des Diagramms zu ermitteln, können Sie diese einfache Gremlin-Traversierung ausführen:
+Diagramme eignen sich am besten, wenn Sie Fragen wie „Welche Betriebssysteme verwenden Freunde von Thomas?“ beantworten müssen. Um diese Information anhand des Diagramms zu ermitteln, können Sie diese Gremlin-Traversierung ausführen:
 
 ```
 :> g.V('thomas.1').out('knows').out('uses').out('runsos').group().by('name').by(count())
@@ -123,31 +123,31 @@ Der folgende Ausschnitt zeigt z.B. eine GraphSON-Darstellung eines Vertex in Azu
   }
 ```
 
-Für Vertices werden folgende Eigenschaften von GraphSON verwendet:
+Die von GraphSON für Vertices verwendeten Eigenschaften sind nachfolgend beschrieben:
 
-| Eigenschaft | BESCHREIBUNG |
-| --- | --- |
-| id | Die ID für den Vertex. Muss eindeutig sein (in Kombination mit dem Wert von „_partition“, falls zutreffend). |
-| label | Die Bezeichnung des Vertex. Diese ist optional und dient zur Beschreibung des Entitätstyps. |
-| type | Dient zur Unterscheidung von Vertices von anderen Dokumenten, die keine Diagramme sind. |
-| Eigenschaften | Sammlung von benutzerdefinierten Eigenschaften in Verbindung mit dem Vertex. Jede Eigenschaft kann mehrere Werte enthalten. |
-| _partition (konfigurierbar) | Der Partitionsschlüssel des Vertex. Kann zur Skalierung von Diagrammen auf mehreren Servern verwendet werden. |
-| outE | Enthält eine Liste von externen Edges aus einem Vertex. Die Speicherung von Informationen zur Nähe zum Vertex ermöglicht die schnelle Ausführung von Traversierungen. Edges werden basierend auf deren Bezeichnungen gruppiert. |
+| Eigenschaft | BESCHREIBUNG | 
+| --- | --- | --- |
+| `id` | Die ID für den Vertex. Muss eindeutig sein (in Kombination mit dem Wert von `_partition`, falls zutreffend). Wird kein Wert angegeben, wird automatisch eine GUID bereitgestellt. | 
+| `label` | Die Bezeichnung des Vertex. Diese dient zur Beschreibung des Entitätstyps. |
+| `type` | Dient zur Unterscheidung von Vertices von anderen Dokumenten, die keine Diagramme sind. |
+| `properties` | Sammlung von benutzerdefinierten Eigenschaften in Verbindung mit dem Vertex. Jede Eigenschaft kann mehrere Werte enthalten. |
+| `_partition` | Der Partitionsschlüssel des Vertex. Wird für [Graphpartitionierung](graph-partitioning.md) verwendet. |
+| `outE` | Diese Eigenschaft enthält eine Liste von externen Edges aus einem Vertex. Die Speicherung von Informationen zur Nähe zum Vertex ermöglicht die schnelle Ausführung von Traversierungen. Edges werden basierend auf deren Bezeichnungen gruppiert. |
 
 Zudem enthalten Edges folgende Informationen, die die Navigation in anderen Teilen des Diagramms unterstützen können.
 
 | Eigenschaft | BESCHREIBUNG |
 | --- | --- |
-| id | Die ID für den Edge. Muss eindeutig sein (in Kombination mit dem Wert von „_partition“, falls zutreffend). |
-| label | Die Bezeichnung des Edge. Diese Eigenschaft ist optional, und dient zur Beschreibung des Beziehungstyps. |
-| inV | Enthält eine Liste von In-Vertices für einen Edge. Die Speicherung von Informationen über die Nähe zum Vertex mit dem Edge ermöglicht die schnelle Ausführung von Traversierungen. Vertices werden basierend auf ihren Bezeichnungen gruppiert. |
-| Eigenschaften | Sammlung von benutzerdefinierten Eigenschaften in Verbindung mit dem Edge. Jede Eigenschaft kann mehrere Werte enthalten. |
+| `id` | Die ID für den Edge. Muss eindeutig sein (in Kombination mit dem Wert von `_partition`, falls zutreffend). |
+| `label` | Die Bezeichnung des Edge. Diese Eigenschaft ist optional, und dient zur Beschreibung des Beziehungstyps. |
+| `inV` | Diese Eigenschaft enthält eine Liste von In-Vertices für einen Edge. Die Speicherung von Informationen über die Nähe zum Vertex mit dem Edge ermöglicht die schnelle Ausführung von Traversierungen. Vertices werden basierend auf ihren Bezeichnungen gruppiert. |
+| `properties` | Sammlung von benutzerdefinierten Eigenschaften in Verbindung mit dem Edge. Jede Eigenschaft kann mehrere Werte enthalten. |
 
 Jede Eigenschaft kann mehrere Werte in einem Array speichern. 
 
 | Eigenschaft | BESCHREIBUNG |
 | --- | --- |
-| value | Der Wert der Eigenschaft.
+| `value` | Der Wert der Eigenschaft.
 
 ## <a name="gremlin-steps"></a>Gremlin-Schritte
 Sehen wir uns nun die Gremlin-Schritte an, die von Azure Cosmos DB unterstützt werden. Eine vollständige Referenz zu Gremlin finden Sie in der [TinkerPop-Referenz](https://tinkerpop.apache.org/docs/current/reference).
@@ -158,12 +158,13 @@ Sehen wir uns nun die Gremlin-Schritte an, die von Azure Cosmos DB unterstützt 
 | `addV` | Fügt einen Vertex zum Diagramm hinzu | [addV-Schritt](https://tinkerpop.apache.org/docs/current/reference/#addvertex-step) |
 | `and` | Stellt sicher, dass alle Traversierungen einen Wert zurückgeben | [and-Schritt](https://tinkerpop.apache.org/docs/current/reference/#and-step) |
 | `as` | Ein Schrittmodulator für die Zuweisung einer Variable zur Ausgabe eines Schritts | [as-Schritt](https://tinkerpop.apache.org/docs/current/reference/#as-step) |
-| `by` | Ein mit `group` und `order` verwendeter Schrittmodulator | [by-Schritt](https://tinkerpop.apache.org/docs/current/reference/#by-step) |
+| `by` | Ein mit Folgendem verwendeter Schrittmodulator: `group` und `order` | [by-Schritt](https://tinkerpop.apache.org/docs/current/reference/#by-step) |
 | `coalesce` | Gibt die erste Traversierung, die ein Ergebnis zurückgibt, zurück | [coalesce-Schritt](https://tinkerpop.apache.org/docs/current/reference/#coalesce-step) |
-| `constant` | Gibt einen konstanten Wert zurück. Wird mit `coalesce` verwendet.| [constant-Schritt](https://tinkerpop.apache.org/docs/current/reference/#constant-step) |
+| `constant` | Gibt einen konstanten Wert zurück. Wird verwendet mit `coalesce`| [constant-Schritt](https://tinkerpop.apache.org/docs/current/reference/#constant-step) |
 | `count` | Gibt die Anzahl aus der Traversierung zurück | [count-Schritt](https://tinkerpop.apache.org/docs/current/reference/#count-step) |
 | `dedup` | Gibt die Werte mit entfernten Duplikaten zurück | [dedup-Schritt](https://tinkerpop.apache.org/docs/current/reference/#dedup-step) |
 | `drop` | Löscht die Werte (Vertex/Edge) | [drop-Schritt](https://tinkerpop.apache.org/docs/current/reference/#drop-step) |
+| `executionProfile` | Erstellt eine Beschreibung aller Vorgänge, die im ausgeführten Gremlin-Schritt generiert werden. | [executionProfile-Schritt](graph-execution-profile.md) |
 | `fold` | Fungiert als Grenze, die Ergebnisse berechnet und zusammenfasst| [fold-Schritt](https://tinkerpop.apache.org/docs/current/reference/#fold-step) |
 | `group` | Gruppiert die Werte basierend auf den angegebenen Bezeichnungen| [group-Schritt](https://tinkerpop.apache.org/docs/current/reference/#group-step) |
 | `has` | Wird zum Filtern von Eigenschaften, Vertices und Edges verwendet. Unterstützt die Varianten `hasLabel`, `hasId`, `hasNot` und `has`. | [has-Schritt](https://tinkerpop.apache.org/docs/current/reference/#has-step) |

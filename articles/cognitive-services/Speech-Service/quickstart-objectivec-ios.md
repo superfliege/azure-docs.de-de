@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 2520f05c83cb5b727c8cdae1602b39320de4b99d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ee0be31b10c86651fa36577ad0dffccc3dc7bf59
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094921"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009270"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in Objective-C unter iOS mit dem Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-In diesem Artikel erfahren Sie, wie Sie eine iOS-App in Objective-C mit dem Cognitive Services Speech SDK erstellen, um eine Audiodatei mit aufgezeichneter Sprache in Text zu transkribieren.
+In diesem Artikel erfahren Sie, wie Sie eine iOS-App in Objective-C mit dem Cognitive Services Speech SDK erstellen, um Sprache über das Mikrofon oder aus einer Datei mit Audioaufzeichnung in Text zu transkribieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -29,16 +29,16 @@ Folgendes wird vorausgesetzt:
 
 * Ein [Abonnementschlüssel](get-started.md) für den Speech-Dienst
 * Ein macOS-Computer mit [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) oder einer höheren Version
-* Ziel mindestens auf die iOS-Version 11.4 festgelegt
+* Ziel mindestens auf die iOS-Version 9.3 festgelegt
 
 ## <a name="get-the-speech-sdk-for-ios"></a>Abrufen des Speech SDK für iOS
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Die aktuelle Version des Cognitive Services Speech SDK ist `1.3.1`.
+Die aktuelle Version des Cognitive Services Speech SDK ist `1.4.0`.
 
-Das Cognitive Services Speech SDK für Mac und iOS wird zurzeit als Cocoa-Framework bereitgestellt.
-Es kann von https://aka.ms/csspeech/iosbinary heruntergeladen werden. Laden Sie die Datei in Ihr Basisverzeichnis herunter.
+Das Cognitive Services Speech SDK für iOS wird derzeit als Cocoa-Framework bereitgestellt.
+Es kann [hier](https://aka.ms/csspeech/iosbinary) heruntergeladen werden. Laden Sie die Datei in Ihr Basisverzeichnis herunter.
 
 ## <a name="create-an-xcode-project"></a>Erstellen eines Xcode-Projekts
 
@@ -52,7 +52,7 @@ Treffen Sie in den nachfolgenden Dialogfeldern die folgende Auswahl:
     1. Geben Sie einen entsprechenden Organisationsnamen und die Organisations-ID ein, wenn Sie bereits über ein Apple-Entwicklerkonto verfügen. Zu Testzwecken können Sie einfach einen beliebigen Namen wie `testorg` auswählen. Um die App zu signieren, benötigen Sie ein ordnungsgemäßes Bereitstellungsprofil. Details finden Sie auf der [Apple Developer-Website](https://developer.apple.com/).
     1. Stellen Sie sicher, dass Objective-C als Sprache für das Projekt ausgewählt wird.
     1. Deaktivieren Sie alle Kontrollkästchen für Tests und Kerndaten.
-    ![Projekteinstellungen](media/sdk/qs-objectivec-project-settings.png)
+    ![„Project Settings“ (Projekteinstellungen)](media/sdk/qs-objectivec-project-settings.png)
 1. Auswählen des Projektverzeichnisses
     1. Wählen Sie das Basisverzeichnis aus, in dem das Projekt gespeichert werden soll. Dadurch wird das Verzeichnis `helloworld` in Ihrem Basisverzeichnis erstellt, das alle Dateien für das Xcode-Projekt enthält.
     1. Deaktivieren Sie die Erstellung eines Git-Repositorys für dieses Beispielprojekt.
@@ -103,3 +103,4 @@ Ersetzen Sie den automatisch generierten XML-Code durch diesen Code:
 
 > [!div class="nextstepaction"]
 > [Objective-C-Beispiele auf GitHub](https://aka.ms/csspeech/samples)
+

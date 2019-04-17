@@ -1,19 +1,18 @@
 ---
 title: 'Schnellstart: Erfassen von Daten aus Logstash in Azure Data Explorer'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Daten aus Logstash in Azure Data Explorer erfassen (laden).
-services: data-explorer
 author: tamirkamara
 ms.author: takamara
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 1/14/2019
-ms.openlocfilehash: a5b4917e0d73378b908739a8fc8c0744c70dd1e9
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.date: 01/14/2019
+ms.openlocfilehash: e0d81454e6036d09bb74af6f522063a1aed5fffe
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58754667"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046409"
 ---
 # <a name="quickstart-ingest-data-from-logstash-to-azure-data-explorer"></a>Schnellstart: Erfassen von Daten aus Logstash in Azure Data Explorer
 
@@ -148,4 +147,4 @@ Führen Sie in Ihrer Datenbank den folgenden Befehl aus, um die Tabelle `logs` z
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Write queries](write-queries.md) (Schreiben von Abfragen)
+> [Schreiben von Abfragen](write-queries.md)

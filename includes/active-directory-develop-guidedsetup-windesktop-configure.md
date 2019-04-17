@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/17/2018
+ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 220723988f349bf015d2de7633af78782bc03bac
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 5eaee4f932c4e42f6fed3d839314346b3a93f360
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203220"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59498378"
 ---
 ## <a name="register-your-application"></a>Anwendung registrieren
 
@@ -28,33 +28,25 @@ Sie können Ihre Anwendung auf zwei Arten registrieren.
 ### <a name="option-1-express-mode"></a>Option 1: Expressmodi
 
 Gehen Sie zur schnellen Registrierung Ihrer Anwendung wie folgt vor:
-1. Navigieren Sie zum [Anwendungsregistrierungsportal von Microsoft](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=windowsDesktop&step=configure).
-
-2. Klicken Sie auf **App hinzufügen**.
-
-3. Geben Sie im Feld **Anwendungsname** einen Namen für Ihre Anwendung ein.
-
-4. Vergewissern Sie sich, dass das Kontrollkästchen **Guided Setup** (Geführtes Setup) aktiviert ist, und klicken Sie anschließend auf **Erstellen**.
-
-5. Befolgen Sie die Anweisungen zum Abrufen der Anwendungs-ID, und fügen Sie sie in Ihren Code ein.
+1. Navigieren Sie zur [Anwendungsregistrierung im Azure-Portal](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/WinDesktopQuickstartPage/sourceType/docs).
+1. Geben Sie einen Namen für Ihre Anwendung ein, und wählen Sie **Registrieren** aus.
+1. Befolgen Sie die Anweisungen, um Ihre neue Anwendung mit nur einem Klick herunterzuladen und automatisch zu konfigurieren.
 
 ### <a name="option-2-advanced-mode"></a>Option 2: Erweiterter Modus
 
 Wenn Sie Ihre Anwendung registrieren und die Anwendungsregistrierungsinformationen Ihrer Projektmappe hinzufügen möchten, führen Sie folgende Schritte aus:
-1. Falls Sie Ihre Anwendung noch nicht registriert haben, navigieren Sie zum [Anwendungsregistrierungsportal von Microsoft](https://apps.dev.microsoft.com/portal/register-app).
-
-2. Klicken Sie auf **App hinzufügen**.
-
-3. Geben Sie im Feld **Anwendungsname** einen Namen für Ihre Anwendung ein.
-
-4. Vergewissern Sie sich, dass das Kontrollkästchen **Guided Setup** (Geführtes Setup) deaktiviert ist, und klicken Sie anschließend auf **Erstellen**.
-
-5. Klicken Sie auf **Plattform hinzufügen** > **Native Anwendung** und anschließend auf **Speichern**.
-
-6. Kopieren Sie die GUID im Feld **Anwendungs-ID**.
-
-7. Öffnen Sie in Visual Studio die Datei *App.xaml.cs*, und ersetzen Sie `your_client_id_here` durch die Anwendungs-ID, die Sie soeben registriert und kopiert haben.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Wenn Sie mit Ihrem Konto auf mehrere Mandanten zugreifen können, klicken Sie rechts oben auf Ihr Konto, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
+1. Navigieren Sie zur Seite [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) von Microsoft Identity Platform für Entwickler.
+1. Wählen Sie **Neue Registrierung** aus.
+   - Geben Sie im Abschnitt **Name** einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird (beispielsweise `Win-App-calling-MsGraph`).
+   - Wählen Sie im Abschnitt **Unterstützte Kontotypen** die Option **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten (z. B. Skype, Xbox, Outlook.com)** aus.
+   - Wählen Sie **Registrieren** aus, um die Anwendung zu erstellen.
+1. Wählen Sie in der Liste mit den Seiten für die App die Option **Authentifizierung** aus.
+1. Navigieren Sie im Abschnitt **Umleitungs-URIs** zum Abschnitt **Vorgeschlagene Umleitungs-URIs für öffentliche Clients (Mobilgerät, Desktop)**, und wählen Sie **"urn:ietf:wg:oauth:2.0:oob** aus.
+1. Wählen Sie **Speichern** aus.
+1. Öffnen Sie in Visual Studio die Datei *App.xaml.cs*, und ersetzen Sie `Enter_the_Application_Id_here` durch die Anwendungs-ID, die Sie soeben registriert und kopiert haben.
 
     ```csharp
-    private static string ClientId = "your_application_id_here";
+    private static string ClientId = "Enter_the_Application_Id_here";
     ```

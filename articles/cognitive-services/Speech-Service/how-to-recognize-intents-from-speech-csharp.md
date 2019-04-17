@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: a9b3d8a2670a0b4e6bed2d5e9a9b64e597adcb16
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9a00dfd1186d19ce9432db8e636bffa40eb977af
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855723"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280535"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Tutorial: Erkennen von Absichten anhand von gesprochener Sprache mit dem Speech SDK für C#
 
@@ -131,19 +131,21 @@ Als nächstes erstellen Sie eine Absichtserkennung mit `new IntentRecognizer(con
 
 Importieren Sie nun das Modell aus der LUIS-App mit `LanguageUnderstandingModel.FromAppId()`, und fügen Sie die LUIS-Absichten hinzu, die Sie über die `AddIntent()`-Methode der Erkennung erkennen möchten. Diese beiden Schritte verbessern die Genauigkeit der Spracherkennung, indem sie Wörter angeben, die der Benutzer wahrscheinlich in seinen Anforderungen verwenden wird. Es ist nicht notwendig, alle Absichten der App hinzuzufügen, wenn Sie sie nicht alle in Ihrer Anwendung erkennen müssen.
 
-Für das Hinzufügen von Absichten sind drei Argumente erforderlich: das LUIS-Modell (das soeben erstellt wurde und den Namen `model` trägt), der Absichtsname und eine Absichts-ID. Der Unterschied zwischen der ID und dem Namen ist wie folgt.
+Für das Hinzufügen von Absichten sind drei Argumente erforderlich: das zuvor erstellte LUIS-Modell `model`, der Absichtsname und eine Absichts-ID. Der Unterschied zwischen der ID und dem Namen ist wie folgt.
 
-|`AddIntent()`-Argument|Zweck|
+|`AddIntent()` Argument|Zweck|
 |--------|-------|
 |intentName |Der Name der Absicht, wie in der LUIS-App definiert. Muss genau mit dem Namen der LUIS-Absicht übereinstimmen.|
 |intentID    |Eine ID, die vom Speech SDK einer erkannten Absicht zugewiesen wird. Kann beliebig sein und muss nicht dem Absichtsnamen entsprechen, wie er in der LUIS-App definiert ist. Wenn beispielsweise mehrere Absichten von demselben Code verarbeitet werden, können Sie für sie die gleiche ID verwenden.|
 
-Die LUIS-App für Hausautomatisierung verwendet zwei Absichten: eine zum Einschalten eines Gerätes und eine zum Ausschalten eines Gerätes. Die folgenden Zeilen fügen diese Absichten der Erkennung hinzu. Ersetzen Sie die drei `AddIntent`-Zeilen in der `RecognizeIntentAsync()`-Methode durch diesen Code.
+Die LUIS-App für die Gebäudeautomatisierung verwendet zwei Absichten: eine zum Einschalten eines Geräts und eine zum Ausschalten eines Geräts. Die folgenden Zeilen fügen diese Absichten der Erkennung hinzu. Ersetzen Sie die drei `AddIntent`-Zeilen in der `RecognizeIntentAsync()`-Methode durch diesen Code.
 
 ```csharp
 recognizer.AddIntent(model, "HomeAutomation.TurnOff", "off");
 recognizer.AddIntent(model, "HomeAutomation.TurnOn", "on");
 ```
+
+Anstatt einzelne Absichten hinzuzufügen, können Sie auch die Methode `AddAllIntents` verwenden, um der Erkennung alle Absichten in einem Modell hinzuzufügen.
 
 ## <a name="start-recognition"></a>Starten der Erkennung
 
