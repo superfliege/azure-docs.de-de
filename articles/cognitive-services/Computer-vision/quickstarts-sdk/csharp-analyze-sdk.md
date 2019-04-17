@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/11/2019
+ms.date: 04/15/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 21ee4f8b0fe20588646287945ba35efa5bc55606
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 636072b011c258e8e5ecb05b761bfab8d67e439a
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542980"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609386"
 ---
 # <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>Schnellstart: Analysieren eines Bilds mit dem SDK für maschinelles Sehen und C#
 
@@ -37,7 +37,7 @@ Führen Sie zum Ausführen des Beispiels die folgenden Schritte aus:
     1. Klicken Sie im Menü auf **Werkzeuge**, wählen Sie **NuGet-Paket-Manager** und dann **NuGet-Pakete für Projektmappe verwalten** aus.
     1. Klicken Sie auf die Registerkarte **Durchsuchen**, und geben Sie „Microsoft.Azure.CognitiveServices.Vision.ComputerVision“ in das Feld **Suchen** ein.
     1. Wählen Sie **Microsoft.Azure.CognitiveServices.Vision.ComputerVision** aus, wenn das Paket angezeigt wird, aktivieren Sie das Kontrollkästchen neben dem Projektnamen, und klicken Sie dann auf **Installieren**.
-1. Ersetzen Sie den Inhalt von *Program.cs* durch den folgenden Code. Die Methoden `AnalyzeImageAsync` und `AnalyzeImageInStreamAsync` umschließen die [Bildanalyse-REST-API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) für lokale Bilder bzw. Remotebilder. 
+1. Ersetzen Sie den Inhalt von *Program.cs* durch den folgenden Code. Die Methoden `AnalyzeImageAsync` und `AnalyzeImageInStreamAsync` umschließen die [Bildanalyse-REST-API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) für lokale Bilder bzw. Remotebilder.
 
     ```csharp
     using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
@@ -135,7 +135,14 @@ Führen Sie zum Ausführen des Beispiels die folgenden Schritte aus:
             private static void DisplayResults(ImageAnalysis analysis, string imageUri)
             {
                 Console.WriteLine(imageUri);
-                Console.WriteLine(analysis.Description.Captions[0].Text + "\n");
+                if (analysis.Description.Captions.Count != 0)
+                {
+                    Console.WriteLine(analysis.Description.Captions[0].Text + "\n");
+                }
+                else
+                {
+                    Console.WriteLine("No description generated.");
+                }
             }
         }
     }
@@ -153,7 +160,7 @@ In einer erfolgreichen Antwort werden die relevantesten Titel für jedes Bild an
 
 Unter [API-Schnellstartanleitungen: Analysieren von lokalen Bildern mit C#](../QuickStarts/CSharp-analyze.md#examine-the-response) finden Sie ein Beispiel für eine unformatierte JSON-Ausgabe.
 
-```
+```console
 https://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg
 a large waterfall over a rocky cliff
 ```
