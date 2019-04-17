@@ -2,14 +2,14 @@
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/26/2018
+ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 5f1774e02a34b60a8a6e936b62905a0a27ccfb85
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 81bde837cd78646f1fc59d921246c72978ecb840
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58890956"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59551489"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Verwenden von Infrastrukturautomatisierungstools mit virtuellen Computern in Azure
 Für die umfangreiche konsistente Erstellung und Verwaltung virtueller Azure-Computer (Virtual Machines, VMs) empfiehlt sich in der Regel eine Form der Automatisierung. Es gibt zahlreiche Tools und Lösungen, mit denen Sie die gesamte Azure-Infrastrukturbereitstellung und den gesamten Verwaltungslebenszyklus automatisieren können. In diesem Artikel werden einige der Infrastrukturautomatisierungstools vorgestellt, die Sie in Azure verwenden können. Diese Tools lassen sich in der Regel einem der folgenden Konzepte zuordnen:
@@ -53,23 +53,13 @@ In diesem Artikel werden folgende Themen erläutert:
 
 
 ## <a name="cloud-init"></a>cloud-init
-[Cloud-init](https://cloudinit.readthedocs.io) ist ein weit verbreiteter Ansatz zum Anpassen einer Linux-VM beim ersten Start. Sie können mit cloud-init Pakete installieren und Dateien schreiben oder Benutzer und Sicherheit konfigurieren. Da cloud-init während des ersten Startvorgangs aufgerufen wird, müssen Sie keine zusätzlichen Schritte oder Agents auf Ihre Konfiguration anwenden.  Weitere Informationen zum ordnungsgemäßen Formatieren Ihrer `#cloud-config`-Dateien finden Sie auf der [cloud-init-Dokumentationswebsite](http://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config` Dateien sind Base64-codierte Textdateien.
+[Cloud-init](https://cloudinit.readthedocs.io) ist ein weit verbreiteter Ansatz zum Anpassen einer Linux-VM beim ersten Start. Sie können mit cloud-init Pakete installieren und Dateien schreiben oder Benutzer und Sicherheit konfigurieren. Da cloud-init während des ersten Startvorgangs aufgerufen wird, müssen Sie keine zusätzlichen Schritte oder Agents auf Ihre Konfiguration anwenden.  Weitere Informationen zum ordnungsgemäßen Formatieren Ihrer `#cloud-config`-Dateien finden Sie auf der [cloud-init-Dokumentationswebsite](http://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data).  `#cloud-config`-Dateien sind Base64-codierte Textdateien.
 
 Cloud-init funktioniert auch Distributionen übergreifend. Verwenden Sie z.B. nicht **apt-get install** oder **yum install**, um ein Paket zu installieren. Stattdessen können Sie eine Liste mit zu installierenden Paketen definieren. „cloud-init“ verwendet automatisch das native Paketverwaltungstool für die ausgewählte Distribution.
 
- Wir arbeiten aktiv mit unseren Linux-Distributionspartnern zusammen, um cloud-init-fähige Images im Azure Marketplace zur Verfügung zu stellen. Mit diesen Images funktionieren Ihre cloud-init-Bereitstellungen und -Konfigurationen nahtlos bei VMs und Skalierungsgruppen von virtuellen Computern (VMSS). In der folgenden Tabelle sind die aktuell verfügbaren cloud-init-fähigen Images für die Azure-Plattform aufgeführt:
+Wir arbeiten aktiv mit unseren Linux-Distributionspartnern zusammen, um cloud-init-fähige Images im Azure Marketplace zur Verfügung zu stellen. Mit diesen Images funktionieren Ihre cloud-init-Bereitstellungen und -Konfigurationen nahtlos bei VMs und Skalierungsgruppen von virtuellen Computern (VMSS). Erfahren Sie mehr über cloud-init in Azure:
 
-| Herausgeber | Angebot | SKU | Version | cloud-init-fähig
-|:--- |:--- |:--- |:--- |:--- 
-|Canonical |UbuntuServer |16.04-LTS |neueste |Ja | 
-|Canonical |UbuntuServer |14.04.5-LTS |neueste |Ja |
-|CoreOS |CoreOS |Stable |neueste |Ja |
-|OpenLogic |CentOS |7-CI |neueste |preview |
-|RedHat |RHEL |7-RAW-CI |neueste |preview |
-
-Erfahren Sie mehr über cloud-init in Azure:
-
-- [Cloud-init-Unterstützung für virtuelle Linux-Computer in Azure](../articles/virtual-machines/linux/using-cloud-init.md)
+- [Anpassen einer Linux-VM in Azure mit cloud-init | Microsoft-Dokumentation](../articles/virtual-machines/linux/using-cloud-init.md)
 - [Gewusst wie: Anpassen eines virtuellen Linux-Computers beim ersten Start](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md)
 
 
