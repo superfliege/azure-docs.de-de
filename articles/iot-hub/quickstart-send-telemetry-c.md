@@ -2,20 +2,20 @@
 title: 'Schnellstart: Senden von Telemetriedaten an Azure IoT Hub (C) | Microsoft-Dokumentation'
 description: In dieser Schnellstartanleitung führen Sie zwei C-Beispielanwendungen aus, um simulierte Telemetriedaten an eine IoT Hub-Instanz zu senden und zur Verarbeitung in der Cloud aus der IoT Hub-Instanz zu lesen.
 author: wesmc7777
-manager: timlt
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 02/25/2019
+ms.date: 04/10/2019
 ms.author: wesmc
-ms.openlocfilehash: 9c65020c4d9b80d5f32b87aa8c63878a677ae0c9
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: 1299b627c70b23714ea48dbc62af36ca1f27290e
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006282"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59499902"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (C)
 
@@ -57,23 +57,7 @@ Sie können das SDK verwenden, indem Sie die Pakete und Bibliotheken für die fo
 
 In dieser Schnellstartanleitung bereiten Sie eine Entwicklungsumgebung vor, die zum Klonen und Erstellen des [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) aus GitHub verwendet wird. Das SDK auf GitHub enthält den in dieser Schnellstartanleitung verwendeten Beispielcode. 
 
-1. Laden Sie das [CMake-Buildsystem](https://cmake.org/download/) herunter. Überprüfen Sie die heruntergeladene Binärdatei mit dem kryptografischen Hashwert, der der heruntergeladenen Version entspricht. Die kryptografischen Hashwerte können ebenfalls über den bereits bereitgestellten CMake-Downloadlink abgerufen werden.
-
-    Im folgenden Beispiel wird Windows PowerShell verwendet, um den kryptografischen Hash für Version 3.13.4 der x64 MSI-Verteilung zu überprüfen:
-
-    ```powershell
-    PS C:\Downloads> $hash = get-filehash .\cmake-3.13.4-win64-x64.msi
-    PS C:\Downloads> $hash.Hash -eq "64AC7DD5411B48C2717E15738B83EA0D4347CD51B940487DFF7F99A870656C09"
-    True
-    ```
-
-    Zum Zeitpunkt der Abfassung dieses Artikels waren auf der Website von CMake die folgenden Hashwerte für Version 3.13.4 aufgeführt:
-
-    ```
-    563a39e0a7c7368f81bfa1c3aff8b590a0617cdfe51177ddc808f66cc0866c76  cmake-3.13.4-Linux-x86_64.tar.gz
-    7c37235ece6ce85aab2ce169106e0e729504ad64707d56e4dbfc982cb4263847  cmake-3.13.4-win32-x86.msi
-    64ac7dd5411b48c2717e15738b83ea0d4347cd51b940487dff7f99a870656c09  cmake-3.13.4-win64-x64.msi
-    ```
+1. Laden Sie das [CMake-Buildsystem](https://cmake.org/download/) herunter.
 
     Wichtig: Die Voraussetzungen für Visual Studio (Visual Studio und die Workload „Desktopentwicklung mit C++“) müssen **vor** Beginn der Installation von `CMake` auf dem Computer installiert sein. Sobald die Voraussetzungen erfüllt sind und der Download überprüft wurde, installieren Sie das CMake-Buildsystem.
 
@@ -82,7 +66,7 @@ In dieser Schnellstartanleitung bereiten Sie eine Entwicklungsumgebung vor, die 
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
     ```
-    Die Größe dieses Repositorys beträgt derzeit ca. 220 MB. Sie sollten damit rechnen, dass die Ausführung dieses Vorgangs mehrere Minuten in Anspruch nimmt.
+    Sie sollten damit rechnen, dass die Ausführung dieses Vorgangs mehrere Minuten in Anspruch nimmt.
 
 
 3. Erstellen Sie ein `cmake`-Unterverzeichnis im Stammverzeichnis des Git-Repositorys, und navigieren Sie zu diesem Ordner. 
