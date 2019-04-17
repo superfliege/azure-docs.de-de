@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 8fd737bb784938f7cbff243837678f41d5ac55c9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 96c2f1c021e27a8f5a0f4d2af2b34970b9d44e80
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076801"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524173"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Verwenden des erweiterten Apache Spark-Verlaufsservers zum Debuggen und Diagnostizieren von Apache Spark-Anwendungen
 
@@ -32,7 +32,7 @@ Der Apache Spark-Verlaufsserver ist die Webbenutzeroberfläche für abgeschlosse
     ![Spark-Verlaufsserver](./media/apache-azure-spark-history-server/launch-history-server.png "Spark-Verlaufsserver")
 
 ### <a name="open-the-spark-history-server-web-ui-by-url"></a>Öffnen der Webbenutzeroberfläche des Spark-Verlaufsservers mit einer URL
-Öffnen Sie den Spark-Verlaufsserver durch Navigieren zur folgenden URL. Ersetzen Sie <ClusterName> mit dem Spark-Clusternamen des Kunden.
+Öffnen Sie den Spark-Verlaufsserver durch Navigieren zur folgenden URL. Ersetzen Sie `<ClusterName>` mit dem Spark-Clusternamen des Kunden.
 
    ```
    https://<ClusterName>.azurehdinsight.net/sparkhistory

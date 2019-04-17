@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 225c86ee1a7f764f60b2da0b8e3be02aa5dd22e7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 74666149824627308b6c5b026e0c9ba7a7750ada
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123299"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523612"
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>SMS-Warnungsverhalten in Aktionsgruppen
 ## <a name="overview"></a>Übersicht ##
@@ -32,8 +32,8 @@ Ein SMS-Empfänger, der als Teil einer Aktionsgruppe konfiguriert ist, erhält e
 
 | REPLY | BESCHREIBUNG |
 | ----- | ----------- |
-| DISABLE <Action Group Short name> | Deaktiviert weitere SMS-Benachrichtigungen von der Aktionsgruppe |
-| ENABLE <Action Group Short name> | Aktiviert SMS-Benachrichtigungen von der Aktionsgruppe wieder |
+| DISABLE `<Action Group Short name>` | Deaktiviert weitere SMS-Benachrichtigungen von der Aktionsgruppe |
+| ENABLE `<Action Group Short name>` | Aktiviert SMS-Benachrichtigungen von der Aktionsgruppe wieder |
 | STOP | Deaktiviert weitere SMS-Benachrichtigungen von allen Aktionsgruppen |
 | START | Aktiviert SMS-Benachrichtigungen von ALLEN Aktionsgruppen wieder |
 | HELP | Der Benutzer erhält eine Antwort mit einem Link zu diesem Artikel. |

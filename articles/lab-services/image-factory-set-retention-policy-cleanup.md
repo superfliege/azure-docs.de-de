@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 5c1465f31c8b5eb15b6fe63ed61a946e3b32d550
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 48412b3006a462fcc9c77219f42fb41d08f2df61
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439674"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490738"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Erstellen einer benutzerdefinierten Image Factory in Azure DevTest Labs
 In diesem Artikel wird das Festlegen einer Aufbewahrungsrichtlinie, das Bereinigen der Factory und das Ausmustern alter Images aus allen anderen DevTest Labs in der Organisation behandelt. 
@@ -25,8 +25,8 @@ In diesem Artikel wird das Festlegen einer Aufbewahrungsrichtlinie, das Bereinig
 ## <a name="prerequisites"></a>Voraussetzungen
 Stellen Sie sicher, dass Sie folgende Schritte ausgeführt haben, ehe Sie fortfahren:
 
-- [Erstellen einer Image Factory](image-factory-create.md)
-- [Ausführen einer Image Factory in Azure DevOps](image-factory-set-up-devops-lab.md)
+- [Erstellen einer Imagefactory](image-factory-create.md)
+- [Ausführen einer Imagefactory über AzureDevOps](image-factory-set-up-devops-lab.md)
 - [Speichern von benutzerdefinierten Images und Verteilen an mehrere Labs](image-factory-save-distribute-custom-images.md)
 
 Folgende Elemente sollten bereits vorhanden sein:
@@ -58,7 +58,7 @@ Diese Aufgabe entfernt alle alten Images und behält nur einen Verlauf bei, der 
 
 Die Skriptparameter sind: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(devTestLabName) -ImagesToSave $(ImageRetention)`
 
-## <a name="queue-the-build"></a>Stellen des Builds in die Warteschlange
+## <a name="queue-the-build"></a>Einstellen des Builds in die Warteschlange
 Sobald die Builddefinition vollständig ist, stellen Sie einen neuen Build in die Warteschlange, um sicherzustellen, dass alles funktioniert. Nachdem der Build erfolgreich abgeschlossen wurde, werden die neuen benutzerdefinierten Images im Ziellab angezeigt. Wenn Sie das Image Factory-Lab überprüfen, sehen Sie keine bereitgestellten VMs. Wenn Sie außerdem weitere Builds in die Warteschlange stellen, sehen Sie, wie die Bereinigungsaufgaben alte benutzerdefinierte Images aus den DevTest-Labs gemäß der in der Buildvariablen festgelegten Aufbewahrungsdauer ausmustern.
 
 > [!NOTE]
@@ -73,7 +73,7 @@ Das Hinzufügen eines neuen Image zu Ihrer Factory ist ebenfalls einfach. Wenn S
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-1. [Planen Sie für Ihren Build/Ihr Release](/devops/pipelines/build/triggers?view=azure-devops&tabs=designer) die regelmäßige Ausführung der Image Factory. Dadurch werden die von Ihrer Factory generierten Images regelmäßig aktualisiert.
+1. [Planen Sie für Ihren Build/Ihr Release](/azure/devops/pipelines/build/triggers?view=azure-devops&tabs=designer) die regelmäßige Ausführung der Image Factory. Dadurch werden die von Ihrer Factory generierten Images regelmäßig aktualisiert.
 2. Erstellen Sie weitere Golden Images für Ihre Factory. Sie können auch in Betracht ziehen, [Artefakte](devtest-lab-artifact-author.md) zu erstellen, um zusätzliche Teile Ihrer VM-Einrichtungsaufgaben in ein Skript einzubinden und die Artefakte in Ihre Factory-Images aufzunehmen.
-4. Erstellen Sie einen [separaten Build bzw. ein separates Release](/devops/pipelines/overview.md?view=azure-devops-2019), um das Skript **DistributeImages** getrennt auszuführen. Sie können dieses Skript ausführen, wenn Sie Änderungen an „Labs.json“ vornehmen und Images in Ziellabs kopieren lassen, ohne alle Images erneut erstellen zu müssen.
+4. Erstellen Sie einen [separaten Build bzw. ein separates Release](/azure/devops/pipelines/overview?view=azure-devops-2019), um das Skript **DistributeImages** getrennt auszuführen. Sie können dieses Skript ausführen, wenn Sie Änderungen an „Labs.json“ vornehmen und Images in Ziellabs kopieren lassen, ohne alle Images erneut erstellen zu müssen.
 

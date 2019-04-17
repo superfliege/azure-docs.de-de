@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4aa18ae791e5fa573eae76d5bdb9c45b9311e6b5
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: c77b5810164aef7508f717a0f75d90cf6cba2089
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888082"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273106"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Einrichten von Application Insights: Abhängigkeitsüberwachung
 Eine *Abhängigkeit* ist eine externe Komponente, die von Ihrer App aufgerufen wird. In der Regel handelt es sich um einen Dienst, der über HTTP oder eine Datenbank oder ein Dateisystem aufgerufen wird. [Application Insights](../../azure-monitor/app/app-insights-overview.md) misst, wie lange die Anwendung auf Abhängigkeiten wartet, und wie oft ein Abhängigkeitsaufruf nicht funktioniert. Sie können bestimmte Aufrufe untersuchen, und diese mit Anforderungen und Ausnahmen in Verbindung bringen.
@@ -50,7 +50,7 @@ Teilinformationen von Abhängigkeiten werden automatisch durch das [Application 
 
 ## <a name="where-to-find-dependency-data"></a>Hier finden Sie Abhängigkeitsdaten
 * [Anwendungszuordnung](#application-map) visualisiert Abhängigkeiten zwischen Ihrer App und angrenzenden Komponenten.
-* [Die Blätter „Performance“ (Leistung) „Browser“ und „Failure“ (Fehler)](#performance-and-failure-blades) zeigen Serverabhängigkeitsdaten.
+* [Die Blätter „Performance“ (Leistung) „Browser“ und „Failure“ (Fehler)](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-performance) zeigen Serverabhängigkeitsdaten.
 * [Das Blatt „Browser“](#ajax-calls) zeigt AJAX-Aufrufe von Browsern Ihrer Benutzer.
 * Navigieren Sie zu langsamen oder fehlgeschlagenen Aufrufen, um ihre Abhängigkeitsaufrufe zu überprüfen.
 * [Analyse](#analytics) kann verwendet werden, um Abhängigkeitsdaten abzufragen.
@@ -58,7 +58,7 @@ Teilinformationen von Abhängigkeiten werden automatisch durch das [Application 
 ## <a name="application-map"></a>Anwendungszuordnung
 Die Anwendungszuordnung dient als visuelle Hilfe zum Erkennen von Abhängigkeiten zwischen den Komponenten Ihrer Anwendung. Sie wird automatisch aus der Telemetrie Ihrer App generiert. Dieses Beispiel zeigt die AJAX-Aufrufe aus den Browserskripts und REST-Aufrufe aus der Serveranwendung zu zwei externen Diensten.
 
-![Anwendungszuordnung](./media/asp-net-dependencies/08.png)
+![Anwendungszuordnung](./media/asp-net-dependencies/cloud-rolename.png)
 
 * **Navigieren Sie aus den Feldern** zur relevanten Abhängigkeit und zu anderen Diagrammen.
 * **Heften Sie die Zuordnung** an das [Dashboard](../../azure-monitor/app/app-insights-dashboards.md) an, wo sie voll funktionsfähig sein wird.
@@ -66,13 +66,7 @@ Die Anwendungszuordnung dient als visuelle Hilfe zum Erkennen von Abhängigkeite
 [Weitere Informationen](../../azure-monitor/app/app-map.md)
 
 ## <a name="performance-and-failure-blades"></a>Blätter „Performance“ und „Failure“
-Das Blatt „Performance“ zeigt die Dauer von Abhängigkeitsaufrufen, die durch die Serveranwendung durchgeführt werden. Es gibt ein zusammenfassendes Diagramm und eine nach Aufrufen unterteilte Tabelle.
-
-![Abhängigkeitsdiagramme Blatt „Performance“](./media/asp-net-dependencies/dependencies-in-performance-blade.png)
-
-Klicken Sie sich durch die Abhängigkeitsdiagramme oder die Tabellenelemente, um nach Rohvorkommen dieser Aufrufe zu suchen.
-
-![Instanzen Abhängigkeitsaufrufe](./media/asp-net-dependencies/dependency-call-instance.png)
+Das Blatt „Performance“ zeigt die Dauer von Abhängigkeitsaufrufen, die durch die Serveranwendung durchgeführt werden.
 
 **Die Fehleranzahl** wird auf dem Blatt **Ausfälle** angezeigt. Ein Fehler ist jeder Rückgabecode, der nicht im Bereich 200-399 liegt, oder unbekannt ist.
 
@@ -87,50 +81,9 @@ Das Blatt „Browser“ zeigt die Dauer und Fehlerquote von AJAX-Aufrufen durch 
 ## <a name="diagnosis"></a>Diagnostizieren langsamer Anforderungen
 Jedes Anforderungsereignis bezieht sich auf Abhängigkeitsaufrufe, Ausnahmen und andere Ereignisse, die nachverfolgt werden, während Ihre App die Anforderung verarbeitet. Wenn einige Anforderungen also eine schlechte Leistung zeigen, können Sie herausfinden, ob es an langsamen Antworten einer Abhängigkeit liegt.
 
-Wir sehen uns nun ein Beispiel dazu an.
-
-### <a name="tracing-from-requests-to-dependencies"></a>Ablaufverfolgung von Anforderungen bis Abhängigkeiten
-Öffnen Sie das Blatt „Performance“, und betrachten Sie das Raster der Anforderungen:
-
-![Liste der Anforderungen mit Mittelwerten und Anzahlen](./media/asp-net-dependencies/02-reqs.png)
-
-Die zuerst aufgeführte Instanz dauert sehr lange. Mal sehen, ob wir herausfinden, wo die Zeit beansprucht wird.
-
-Klicken Sie auf diese Zeile, um einzelne Anforderungsereignisse anzuzeigen:
-
-![Liste der Anforderungsinstanzen](./media/asp-net-dependencies/03-instances.png)
-
-Klicken Sie auf eine beliebige Instanz mit langer Ausführungsdauer, um diese näher zu überprüfen, und scrollen Sie nach unten zu den Remoteabhängigkeitsaufrufen, die im Zusammenhang mit dieser Anforderung bestehen:
-
-![Finden von Aufrufen von Remoteabhängigkeiten, Identifizieren ungewöhnlich langer Laufzeiten](./media/asp-net-dependencies/04-dependencies.png)
-
-Der Großteil der Zeit zur Verarbeitung dieser Anforderung wurde für einen Aufruf eines lokalen Diensts aufgewendet.
-
-Wählen Sie diese Zeile aus, um weitere Informationen zu erhalten:
-
-![Klicken Sie sich durch diese Remoteabhängigkeit, um die Ursache herauszufinden](./media/asp-net-dependencies/05-detail.png)
-
-Anscheinend befindet sich das Problem hier. Nachdem das Problem jetzt identifiziert ist, müssen wir noch herausfinden, warum dieser Aufruf so lange dauert.
-
-### <a name="request-timeline"></a>Anfordern der Zeitachse
-In einem anderen Fall handelt es sich nicht um einen Abhängigkeitsaufruf mit langer Ausführungsdauer. Wenn wir aber zur Zeitachsenansicht wechseln, können wir sehen, wo die Verzögerung in unserer internen Verarbeitung aufgetreten ist:
-
-![Finden von Aufrufen von Remoteabhängigkeiten, Identifizieren ungewöhnlich langer Laufzeiten](./media/asp-net-dependencies/04-1.png)
-
-Es scheint eine große Unterbrechung nach dem ersten Abhängigkeitsaufruf zu geben, daher sollten wir den Code betrachten, um den Grund dafür herauszufinden.
-
 ### <a name="profile-your-live-site"></a>Erstellen eines Profils Ihrer Livewebsite
 
-Sie möchten wissen, was am längsten gedauert hat? Der [Application Insights-Profiler](../../azure-monitor/app/profiler.md) verfolgt HTTP-Aufrufe zu Ihrer Livewebsite zurück, und zeigt an, welche Funktionen im Code die meiste Zeit in Anspruch genommen haben.
-
-## <a name="failed-requests"></a>Anforderungsfehler
-Anforderungsfehler können auch fehlgeschlagenen Aufrufen von Abhängigkeiten zugeordnet werden. Wir können erneut bis zum Problem durchklicken.
-
-![Klicken Sie auf das Diagramm mit Anforderungsfehlern](./media/asp-net-dependencies/06-fail.png)
-
-Klicken Sie auf einen Anforderungsfehler, und sehen Sie sich die zugeordneten Ereignisse an.
-
-![Klicken Sie auf den Anforderungstyp, klicken Sie auf die Instanz, um eine andere Ansicht derselben Instanz abzurufen, und klicken Sie darauf, um Details zur Ausnahme zu erhalten.](./media/asp-net-dependencies/07-faildetail.png)
+Sie möchten wissen, was am längsten gedauert hat? Der [Application Insights-Profiler](../../azure-monitor/app/profiler.md) verfolgt HTTP-Aufrufe Ihrer Livewebsite und zeigt an, welche Funktionen im Code die meiste Zeit in Anspruch genommen haben.
 
 ## <a name="analytics"></a>Analytics
 Sie können Abhängigkeiten in der [Abfragesprache Kusto](/azure/kusto/query/) verfolgen. Hier einige Beispiele.
@@ -201,7 +154,7 @@ Wenn Sie das Standardmodul für die Nachverfolgung von Abhängigkeiten deaktivie
 ## <a name="troubleshooting"></a>Problembehandlung
 *Das Erfolgsflag für die Abhängigkeit zeigt immer entweder TRUE oder FALSE.*
 
-*SQL-Abfrage, die nicht vollständig angezeigt wird*
+*SQL-Abfrage, die nicht vollständig angezeigt wird.*
 
 Sehen Sie in der Tabelle unten nach, und stellen Sie sicher, dass Sie die richtige Konfiguration ausgewählt haben, um die Abhängigkeitsüberwachung für Ihre Anwendung zu aktivieren.
 
@@ -212,11 +165,7 @@ Sehen Sie in der Tabelle unten nach, und stellen Sie sicher, dass Sie die richti
 | Azure-Web-App |[Öffnen Sie das Blatt „Application Insights“ in der Systemsteuerung Ihrer Web-App](../../azure-monitor/app/azure-web-apps.md) und wählen Sie bei Aufforderung „Installieren“ aus. |
 | Azure Cloud Service |[Verwenden Sie die Startaufgabe](../../azure-monitor/app/cloudservices.md), oder [Installieren Sie .NET Framework 4.6 oder höher](../../cloud-services/cloud-services-dotnet-install-dotnet.md). |
 
-## <a name="video"></a>Video
-
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
-
 ## <a name="next-steps"></a>Nächste Schritte
 * [Ausnahmen](../../azure-monitor/app/asp-net-exceptions.md)
 * [Daten zu Seiten und Benutzern](../../azure-monitor/app/javascript.md)
-* [Availability](../../azure-monitor/app/monitor-web-app-availability.md)
+* [Verfügbarkeit](../../azure-monitor/app/monitor-web-app-availability.md)

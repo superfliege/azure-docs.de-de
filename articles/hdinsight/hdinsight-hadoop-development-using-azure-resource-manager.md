@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 501f215ae3daf24db6307b4f8afb0c7d3271d8a5
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 2c64019ae667ff4a2ce0694ffc4a9cd69b9116b3
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361862"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048918"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migrieren zu Azure Resource Manager-basierten Entwicklungstools für HDInsight-Cluster
 
@@ -51,9 +51,9 @@ Neue mit Azure Resource Manager verfügbare Befehle sind:
 ### <a name="deprecated-commands"></a>Veraltete Befehle
 Die `azure hdinsight job`-Befehle, die Sie ggf. zum Übermitteln von Aufträgen an Ihren HDInsight-Cluster verwenden, stehen in den Resource Manager-Befehlen nicht zur Verfügung. Wenn Sie Aufträge programmgesteuert von Skripts an HDInsight übermitteln möchten, verwenden Sie die von HDInsight bereitgestellten REST-APIs. Weitere Informationen zum Übermitteln von Aufträgen mithilfe von REST-APIs finden Sie in den folgenden Dokumenten.
 
-* [Ausführen von MapReduce-Aufträgen mit Hadoop in HDInsight mithilfe von Curl](hadoop/apache-hadoop-use-mapreduce-curl.md)
-* [Ausführen von Apache Hive-Abfragen mit Apache Hadoop in HDInsight mit Curl](hadoop/apache-hadoop-use-hive-curl.md)
-* [Ausführen von Apache Pig-Aufträgen mit Apache Hadoop in HDInsight mithilfe von REST](hadoop/apache-hadoop-use-pig-curl.md)
+* [Ausführen von MapReduce-Aufträgen mit Hadoop in HDInsight mithilfe von cURL](hadoop/apache-hadoop-use-mapreduce-curl.md)
+* [Ausführen von Apache Hive-Abfragen mit Apache Hadoop in HDInsight mithilfe von cURL](hadoop/apache-hadoop-use-hive-curl.md)
+* [Ausführen von Apache Pig-Aufträgen mit Apache Hadoop in HDInsight mithilfe von cURL](hadoop/apache-hadoop-use-pig-curl.md)
 
 Informationen zu anderen Möglichkeiten zum interaktiven Ausführen von Apache Hadoop MapReduce, Apache Hive und Apache Pig finden Sie unter [Verwenden von MapReduce mit Apache Hadoop in HDInsight](hadoop/hdinsight-use-mapreduce.md), [Verwenden von Apache Hive mit Apache Hadoop auf HDInsight](hadoop/hdinsight-use-hive.md) und [Verwenden von Apache Pig mit Apache Hadoop auf HDInsight](hadoop/hdinsight-use-pig.md).
 
@@ -94,7 +94,7 @@ Bevor Sie die HDInsight-Cmdlets verwenden können, müssen sich mit Ihrem Azure-
 ### <a name="renamed-cmdlets"></a>Umbenannte Cmdlets
 So listen Sie die HDInsight-ASM-Cmdlets in der Windows-PowerShell-Konsole auf:
 
-    help *azurermhdinsight*
+    help *azurehdinsight*
 
 Die folgende Tabelle enthält die ASM-Cmdlets und deren Namen im Resource Manager-Modus:
 
@@ -180,7 +180,7 @@ Neuer Befehl:
         -SshCredential $sshCredentials
 
 
-**Löschen eines Clusters**
+**Löschen von Clustern**
 
 Alter Befehl (ASM):
 
@@ -190,7 +190,7 @@ Neuer Befehl:
 
     Remove-AzHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName 
 
-**Auflisten von Clusterdetails**
+**Cluster auflisten**
 
 Alter Befehl (ASM):
 
@@ -212,7 +212,7 @@ Neuer Befehl:
 
 
 #### <a name="other-samples"></a>Weitere Beispiele
-* [Erstellen von Hadoop-Clustern in HDInsight](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
+* [Erstellen von HDInsight-Clustern](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
 * [Übermitteln von Apache Hive-Aufträgen](hadoop/apache-hadoop-use-hive-powershell.md)
 * [Übermitteln von Apache Pig-Aufträgen](hadoop/apache-hadoop-use-pig-powershell.md)
 * [Übermitteln von Apache Sqoop-Aufträgen](hadoop/apache-hadoop-use-sqoop-powershell.md)

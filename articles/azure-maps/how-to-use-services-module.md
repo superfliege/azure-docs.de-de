@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 3aa39568904cb0acc9b5b76ff7e07729bf99d6b1
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: e89a4675f867e53c499bb82b239ddb9bec1aed6f
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59278597"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521198"
 ---
 # <a name="using-the-azure-maps-services-module"></a>Verwenden des Moduls „Dienste“ von Azure Maps
 
@@ -24,7 +24,7 @@ Das Azure Maps Web SDK stellt das Modul „Dienste“ (eine unterstützende Bibl
 1. Erstellen Sie eine neue HTML-Datei.
 2. Laden Sie sie in das Modul „Dienste“ von Azure Maps. Dies kann auf einem von zwei Wegen erfolgen:
 
-    a. Verwenden Sie die global gehostete CDN-Version des Moduls „Dienste“ von Azure Maps, indem Sie eine Skriptreferenz auf das Element <head> der Datei hinzufügen:
+    a. Verwenden Sie die global gehostete CDN-Version des Moduls „Dienste“ von Azure Maps, indem Sie eine Skriptreferenz auf das Element `<head>` der Datei hinzufügen:
     
     ```html
     <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>

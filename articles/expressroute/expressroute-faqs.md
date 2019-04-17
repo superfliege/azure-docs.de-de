@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: e078f838620f633743b27d26ba1218e753ff690e
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: f3f013f2e3090b54846ebba94ef54506275d6311
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259821"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282864"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -144,7 +144,7 @@ Falls Ihr Dienstanbieter ExpressRoute an beiden Standorten anbietet, können Sie
 
 ### <a name="can-i-have-multiple-expressroute-circuits-in-the-same-metro-can-i-link-them-to-the-same-virtual-network"></a>Kann ich über mehrere ExpressRoute-Verbindungen am gleichen Standort verfügen? Kann ich sie mit dem gleichen virtuellen Netzwerk verknüpfen?
 
-Ja. Sie können über mehrere ExpressRoute-Verbindungen bei den gleichen oder unterschiedlichen Dienstanbietern verfügen. Wenn der Standort über mehrere ExpressRoute-Peeringstandorte verfügt und die Verbindungen an verschiedenen Peeringstandorten erstellt werden, können Sie sie mit dem gleichen virtuellen Netzwerk verknüpfen. Wenn die Verbindungen am gleichen Peeringstandort erstellt werden, können sie nicht mit dem gleichen virtuellen Netzwerk verknüpft werden. Jeder Standortname im Azure-Portal oder in PowerShell/in der CLI-API steht für einen Peeringstandort. So können Sie beispielsweise die Peeringstandorte „Singapur“ und „Singapur2“ auswählen und Verbindungen dieser Standorte mit dem gleichen virtuellen Netzwerk herstellen. 
+Ja. Sie können über mehrere ExpressRoute-Verbindungen bei den gleichen oder unterschiedlichen Dienstanbietern verfügen. Wenn der Standort über mehrere ExpressRoute-Peeringstandorte verfügt und die Verbindungen an verschiedenen Peeringstandorten erstellt werden, können Sie sie mit dem gleichen virtuellen Netzwerk verknüpfen. Wenn die Verbindungen am gleichen Peeringstandort erstellt werden, können sie weiterhin mit dem gleichen virtuellen Netzwerk verknüpft werden, doch sind maximal vier ExpressRoute-Verbindungen an jedem Peeringstandort zulässig. So können Sie beispielsweise die Peeringstandorte „Singapur“ und „Singapur2“ auswählen und Verbindungen dieser Standorte mit dem gleichen virtuellen Netzwerk herstellen. 
 
 ### <a name="how-do-i-connect-my-virtual-networks-to-an-expressroute-circuit"></a>Wie kann ich meine Virtual Networks mit einer ExpressRoute-Verbindung verbinden?
 

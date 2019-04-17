@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
-ms.openlocfilehash: 31d9e2170461b9c4023bfe6b3e01fb1d7dda7fee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bee64909c7f3b295691ef1cb1840424aa7e3fe49
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895888"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549711"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Erstellen und Verwalten von Warnungsregeln in Log Analytics mithilfe der REST-API
 Mit der REST-API für Log Analytics-Warnungen können Sie Warnungen in Log Analytics erstellen und verwalten.  Dieser Artikel enthält die Details der API und mehrere Beispiele für verschiedene Vorgänge.
@@ -154,8 +154,8 @@ Die Eigenschaften von Schwellenwerten sind in der folgenden Tabelle aufgeführt.
 
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
-| Operator |Operator für den Schwellenwertvergleich. <br> gt = Greater Than (Größer als) <br> lt = Less Than (Kleiner als) |
-| Wert |Der Wert für den Schwellenwert. |
+| `Operator` |Operator für den Schwellenwertvergleich. <br> gt = Greater Than (Größer als) <br> lt = Less Than (Kleiner als) |
+| `Value` |Der Wert für den Schwellenwert. |
 
 Stellen Sie sich beispielsweise eine Ereignisabfrage mit einem Intervall von 15 Minuten, einer Zeitspanne von 30 Minuten und einem Schwellenwert größer als 10 vor. In diesem Fall wird die Abfrage alle 15 Minuten ausgeführt. Eine Warnung wird ausgelöst, wenn 10 Ereignisse zurückgegeben werden, die über einen Zeitraum von 30 Minuten erstellt wurden.
 
@@ -284,7 +284,7 @@ Verwenden Sie die Put-Methode mit einer vorhandenen Aktions-ID, um eine zugeordn
 Standardmäßig gilt für Aktionen eine Standardvorlage und ein Standardformat für Benachrichtigungen. Benutzer können jedoch einige Aktionen anpassen, auch wenn sie durch Aktionsgruppen gesteuert werden. Derzeit ist die Anpassung für E-Mail-Betreff und Webhook-Nutzlast möglich.
 
 ##### <a name="customize-e-mail-subject-for-action-group"></a>Anpassen des E-Mail-Betreffs für Aktionsgruppen
-Der Standard-E-Mail-Betreff für Warnungen lautet: „Alert Notification <AlertName> for <WorkspaceName>“. Dies kann jedoch angepasst werden, sodass Sie bestimmte Wörter oder Tags angeben können, mit denen Sie ohne Aufwand Filterregeln in Ihrem Posteingang einsetzen können. Die Details des angepassten E-Mail-Headers müssen mit den Details zur Aktionsgruppe gesendet werden, wie im Beispiel unten dargestellt.
+Der Standard-E-Mail-Betreff für Warnungen lautet: „Alert Notification `<AlertName>` for `<WorkspaceName>`“. Dies kann jedoch angepasst werden, sodass Sie bestimmte Wörter oder Tags angeben können, mit denen Sie ohne Aufwand Filterregeln in Ihrem Posteingang einsetzen können. Die Details des angepassten E-Mail-Headers müssen mit den Details zur Aktionsgruppe gesendet werden, wie im Beispiel unten dargestellt.
 
      "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
       "properties": {
@@ -360,8 +360,8 @@ Per E-Mail-Benachrichtigung werden E-Mails an einen oder mehrere Empfänger gese
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Recipients |Liste mit den E-Mail-Adressen |
-| Subject |E-Mail-Betreff |
-| Attachment |Anlagen werden derzeit nicht unterstützt. Der Wert lautet daher immer „Keine“. |
+| Antragsteller |E-Mail-Betreff |
+| Anhang |Anlagen werden derzeit nicht unterstützt. Der Wert lautet daher immer „Keine“. |
 
 Unten ist eine Beispielantwort für eine E-Mail-Benachrichtigungsaktion mit einem Schwellenwert angegeben.  
 

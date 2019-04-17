@@ -1,19 +1,18 @@
 ---
 title: Vergleich der Speicheroptionen für die Verwendung mit Azure HDInsight-Clustern
 description: Dieser Artikel bietet einen Überblick über die Speichertypen und deren Funktionsweise mit Azure HDInsight.
-services: hdinsight,storage
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/04/2019
-ms.openlocfilehash: fa08d2fb2185bd4b6cd0e2e9d20e1c44a4a35eae
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/08/2019
+ms.openlocfilehash: ac1a0e4eadc0b84fdd2a170c2e0f6e0a2f2af3a4
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101481"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361783"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Vergleich der Speicheroptionen für die Verwendung mit Azure HDInsight-Clustern
 
@@ -120,6 +119,8 @@ Azure Storage stellt eine robuste universelle Speicherlösung dar, die nahtlos m
 
 Es wird empfohlen, separate Speichercontainer für Ihren Standardclusterspeicher und Ihre Geschäftsdaten zu verwenden, um die HDInsight-Protokolle und die temporären Dateien von Ihren eigenen Geschäftsdaten zu isolieren. Wir empfehlen, die Standardblobcontainer mit den Anwendungs- und Systemprotokollen nach jeder Verwendung zu löschen, um die Speicherkosten zu verringern. Stellen Sie sicher, dass Sie die Protokolle abrufen, bevor Sie den Container löschen.
 
+Wenn Sie sich dazu entscheiden, Ihr Speicherkonto mit den **Firewalls und virtuelle Netzwerke**-Einschränkungen auf **Ausgewählte Netzwerke** zu schützen, denken Sie daran, die Ausnahme **Vertrauenswürdige Microsoft-Dienste zulassen…** zu aktivieren, damit HDInsight auf Ihr Speicherkonto zugreifen kann.
+
 ### <a name="hdinsight-storage-architecture"></a>HDInsight-Speicherarchitektur
 
 Das folgende Diagramm bietet eine verallgemeinerte Übersicht über die HDInsight-Architektur von Azure Storage:
@@ -210,7 +211,7 @@ Data Lake Storage Gen1-Container für Daten sind im Wesentlichen Ordner und Date
 ## <a name="DataLakeStoreSecurity"></a>Datensicherheit in Data Lake Storage Gen1
 Data Lake Storage Gen1 verwendet Azure Active Directory zur Authentifizierung und Zugriffssteuerungslisten (ACLs) zum Verwalten des Zugriffs auf Ihre Daten.
 
-| **Feature** | **Beschreibung** |
+| **Feature** | **BESCHREIBUNG** |
 | --- | --- |
 | Authentication |Zur Identitäts- und Zugriffsverwaltung für alle in Data Lake Storage Gen1 gespeicherten Daten ist Data Lake Storage Gen1 in Azure Active Directory (Azure AD) integriert. Aufgrund dieser Integration profitiert Data Lake Storage Gen1 von allen Azure AD-Features. Dazu gehören mehrstufige Authentifizierung, bedingter Zugriff, rollenbasierte Zugriffssteuerung, Überwachung der Anwendungsnutzung, Sicherheitsüberwachung und -warnungen usw. Data Lake Storage Gen1 unterstützt das OAuth 2.0-Protokoll für die Authentifizierung mit der REST-Schnittstelle. Weitere Informationen finden Sie unter [Authentifizierung bei Azure Data Lake Storage Gen1 mit Azure Active Directory](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md).|
 | Zugriffssteuerung |Data Lake Storage Gen1 ermöglicht eine Zugriffssteuerung durch die Unterstützung von POSIX-Berechtigungen, die durch das WebHDFS-Protokoll verfügbar gemacht werden. ACLs können für Stammordner, Unterordner und einzelne Dateien aktiviert werden. Weitere Informationen zur Funktionsweise von ACLs im Kontext von Data Lake Storage Gen1 finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md). |

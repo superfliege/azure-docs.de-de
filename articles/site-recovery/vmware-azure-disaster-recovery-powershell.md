@@ -4,29 +4,32 @@ description: Hier erfahren Sie, wie Sie Replikation und Failover in Azure für d
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: aa8292aac82f478422f9214c26d974825872eed6
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 5490149f199c2d7887716ceae3f035527ad33961
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226334"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280171"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Einrichten der Notfallwiederherstellung von virtuellen VMware-Computern in Azure mithilfe von PowerShell
 
-In diesem Artikel erfahren Sie etwas über das Replizieren virtueller VMware-Computer in VMM-Clouds und das Ausführen eines Failovers für diese mithilfe von Azure Site Recovery-PowerShell. 
+In diesem Artikel erfahren Sie etwas über das Replizieren virtueller VMware-Computer in VMM-Clouds und das Ausführen eines Failovers für diese mithilfe von Azure Site Recovery-PowerShell.
 
 Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > - Erstellen eines Recovery Services-Tresors und Einrichten des Tresorkontexts.
 > - Überprüfen der Registrierung des Servers im Tresor.
-> - Einrichten der Replikation einschließlich einer Replikationsrichtlinie. Hinzufügen Ihres vCenter-Servers und Erkennung virtueller Computer. 
-> - Hinzufügen eines vCenter-Servers und Erkennung 
+> - Einrichten der Replikation einschließlich einer Replikationsrichtlinie. Hinzufügen Ihres vCenter-Servers und Erkennung virtueller Computer.
+> - Hinzufügen eines vCenter-Servers und Erkennung
 > - Erstellen von Speicherkonten zum Speichern von Replikationsdaten und Replizieren der virtuellen Computer.
 > - Ausführen eines Failovers. Konfigurieren von Failovereinstellungen, Vornehmen von Einstellungen für das Replizieren virtueller Computer.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -34,26 +37,26 @@ Vorbereitung:
 
 - Stellen Sie sicher, dass Sie die [Architektur und die Komponenten des Szenarios](vmware-azure-architecture.md) verstehen.
 - Überprüfen Sie die [Supportanforderungen](site-recovery-support-matrix-to-azure.md) für alle Komponenten.
-- Sie verfügen mindestens über Version 5.0.1 des PowerShell-Moduls AzureRm. Wenn Sie PowerShell installieren oder aktualisieren müssen, befolgen Sie die Anweisungen unter [Handbuch zum Installieren und Konfigurieren von Azure PowerShell](/powershell/azureps-cmdlets-docs).
+- Sie verfügen über das Azure PowerShell-Modul `Az`. Wenn Sie PowerShell installieren oder aktualisieren müssen, befolgen Sie die Anweisungen unter [Handbuch zum Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="log-into-azure"></a>Anmelden bei Azure
 
-Melden Sie sich mit dem Cmdlet Connect-AzureRmAccount bei Ihrem Azure-Konto an:
+Melden Sie sich mit dem Cmdlet „Connect-AzAccount“ bei Ihrem Azure-Konto an:
 
 ```azurepowershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
-Wählen Sie das Azure-Abonnement aus, in dem Sie Ihre VMware-VMs replizieren möchten. Verwenden Sie das Cmdlet Get-AzureRmSubscription zum Abrufen der Liste der Azure-Abonnements, auf die Sie Zugriff haben. Wählen Sie mit dem Cmdlet Select-AzureRmSubscription das gewünschte Azure-Abonnement aus, mit dem Sie arbeiten möchten.
+Wählen Sie das Azure-Abonnement aus, in dem Sie Ihre VMware-VMs replizieren möchten. Verwenden Sie das Cmdlet „Get-AzSubscription“ zum Abrufen der Liste der Azure-Abonnements, auf die Sie Zugriff haben. Wählen Sie mit dem Cmdlet „Select-AzSubscription“ das gewünschte Azure-Abonnement aus, mit dem Sie arbeiten möchten.
 
 ```azurepowershell
-Select-AzureRmSubscription -SubscriptionName "ASR Test Subscription"
+Select-AzSubscription -SubscriptionName "ASR Test Subscription"
 ```
 ## <a name="set-up-a-recovery-services-vault"></a>Richten Sie einen Recovery Services-Tresor ein.
 
 1. Erstellen Sie eine Ressourcengruppe, in der der Recovery Services-Tresor erstellt werden soll. Im nachstehenden Beispiel hat die Ressourcengruppe den Namen VMwareDRtoAzurePS und wird in der Region „Asien, Osten“ erstellt.
 
    ```azurepowershell
-   New-AzureRmResourceGroup -Name "VMwareDRtoAzurePS" -Location "East Asia"
+   New-AzResourceGroup -Name "VMwareDRtoAzurePS" -Location "East Asia"
    ```
    ```
    ResourceGroupName : VMwareDRtoAzurePS
@@ -62,11 +65,11 @@ Select-AzureRmSubscription -SubscriptionName "ASR Test Subscription"
    Tags              :
    ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/VMwareDRtoAzurePS
    ```
-   
+
 2. Erstellen Sie einen Recovery Services-Tresor. Im nachstehenden Beispiel hat der Recovery Services-Tresor den Namen VMwareDRToAzurePs und wird in der Region „Asien, Osten“ und in der Ressourcengruppe, die im vorherigen Schritt erstellt wurde, erstellt.
 
    ```azurepowershell
-   New-AzureRmRecoveryServicesVault -Name "VMwareDRToAzurePs" -Location "East Asia" -ResourceGroupName "VMwareDRToAzurePs"
+   New-AzRecoveryServicesVault -Name "VMwareDRToAzurePs" -Location "East Asia" -ResourceGroupName "VMwareDRToAzurePs"
    ```
    ```
    Name              : VMwareDRToAzurePs
@@ -76,16 +79,16 @@ Select-AzureRmSubscription -SubscriptionName "ASR Test Subscription"
    ResourceGroupName : VMwareDRToAzurePs
    SubscriptionId    : xxxxxxxx-xxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
    Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
-   ``` 
+   ```
 
 3. Laden Sie den Tresorregistrierungsschlüssel für den Tresor herunter. Mit dem Tresorregistrierungsschlüssel wird der lokale Konfigurationsserver bei diesem Tresor registriert. Die Registrierung ist ein Teil des Installationsvorgangs der Konfigurationsserversoftware.
 
    ```azurepowershell
    #Get the vault object by name and resource group and save it to the $vault PowerShell variable 
-   $vault = Get-AzureRmRecoveryServicesVault -Name "VMwareDRToAzurePS" -ResourceGroupName "VMwareDRToAzurePS"
+   $vault = Get-AzRecoveryServicesVault -Name "VMwareDRToAzurePS" -ResourceGroupName "VMwareDRToAzurePS"
 
    #Download vault registration key to the path C:\Work
-   Get-AzureRmRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
+   Get-AzRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
    ```
    ```
    FilePath
@@ -94,15 +97,15 @@ Select-AzureRmSubscription -SubscriptionName "ASR Test Subscription"
    ```
 
 4. Verwenden Sie den heruntergeladenen Registrierungsschlüssel, und führen Sie die Schritte in den nachstehend angegebenen Artikeln aus, um die Installation und Registrierung des Konfigurationsservers abzuschließen.
-   - [Auswählen Ihrer Schutzziele](vmware-azure-set-up-source.md#choose-your-protection-goals)
-   - [Einrichten der Quellumgebung](vmware-azure-set-up-source.md#set-up-the-configuration-server) 
+   - [Auswählen der Schutzziele](vmware-azure-set-up-source.md#choose-your-protection-goals)
+   - [Einrichten der Quellumgebung](vmware-azure-set-up-source.md#set-up-the-configuration-server)
 
 ### <a name="set-the-vault-context"></a>Festlegen des Tresorkontexts
 
 Legen Sie mit dem Cmdlet Set-ASRVaultContext den Tresorkontext fest. Nach dem Festlegen werden nachfolgende Azure Site Recovery-Vorgänge in der PowerShell-Sitzung im Kontext des ausgewählten Tresors ausgeführt.
 
 > [!TIP]
-> Im Lieferumfang des Azure Site Recovery-PowerShell-Moduls (AzureRm.RecoveryServices.SiteRecovery) sind einfach zu verwendende Aliase für die meisten Cmdlets enthalten. Die Cmdlets im Model weisen die Form *\<Vorgang>-**AzureRmRecoveryServicesAsr**\<Objekt>* auf und verfügen über gleichwertige Aliase in der Form *\<Vorgang>-**ASR**\<Objekt>*. In diesem Artikel werden für eine bessere Lesbarkeit die Cmdlet-Aliase verwendet.
+> Im Lieferumfang des Azure Site Recovery-PowerShell-Moduls (Az.RecoveryServices) sind einfach zu verwendende Aliase für die meisten Cmdlets enthalten. Die Cmdlets im Model weisen die Form *\<Vorgang>-**AzRecoveryServicesAsr**\<Objekt>* auf und verfügen über gleichwertige Aliase in der Form *\<Vorgang>-**ASR**\<Objekt>*. In diesem Artikel werden für eine bessere Lesbarkeit die Cmdlet-Aliase verwendet.
 
 Im nachstehenden Beispiel wird mit den Tresordetails aus der $vault-Variable der Tresorkontext für die PowerShell-Sitzung angegeben.
 
@@ -115,11 +118,11 @@ Im nachstehenden Beispiel wird mit den Tresordetails aus der $vault-Variable der
    VMwareDRToAzurePs VMwareDRToAzurePs Microsoft.RecoveryServices vaults
    ```
 
-Als Alternative zum Cmdlet „Set-ASRVaultContext“ kann der Tresorkontext auch mithilfe des Cmdlets „Import-AzureRmRecoveryServicesAsrVaultSettingsFile“ festgelegt werden. Geben Sie für das Cmdlet „Import-AzureRmRecoveryServicesAsrVaultSettingsFile“ mithilfe des Parameters „-path“ den Pfad der Tresorregistrierungsschlüssel-Datei an. Beispiel: 
+Als Alternative zum Cmdlet „Set-ASRVaultContext“ kann der Tresorkontext auch mithilfe des Cmdlets „Import-AzRecoveryServicesAsrVaultSettingsFile“ festgelegt werden. Geben Sie für das Cmdlet „Import-AzRecoveryServicesAsrVaultSettingsFile“ mithilfe des Parameters „-path“ den Pfad der Tresorregistrierungsschlüssel-Datei an. Beispiel: 
 
    ```azurepowershell
-   Get-AzureRmRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
-   Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path "C:\Work\VMwareDRToAzurePs_2017-11-23T19-52-34.VaultCredentials"
+   Get-AzRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
+   Import-AzRecoveryServicesAsrVaultSettingsFile -Path "C:\Work\VMwareDRToAzurePs_2017-11-23T19-52-34.VaultCredentials"
    ```
 In späteren Abschnitten dieses Artikels wird davon ausgegangen, dass der Tresorkontext für Azure Site Recovery-Vorgänge festgelegt wurde.
 
@@ -201,8 +204,8 @@ In diesem Schritt werden zwei Replikationsrichtlinien erstellt. Eine Richtlinie 
    $Job_PolicyCreate = New-ASRPolicy -VMwareToAzure -Name "ReplicationPolicy" -RecoveryPointRetentionInHours 24 -ApplicationConsistentSnapshotFrequencyInHours 4 -RPOWarningThresholdInMinutes 60
 
    # Track Job status to check for completion
-   while (($Job_PolicyCreate.State -eq "InProgress") -or ($Job_PolicyCreate.State -eq "NotStarted")){ 
-           sleep 10; 
+   while (($Job_PolicyCreate.State -eq "InProgress") -or ($Job_PolicyCreate.State -eq "NotStarted")){
+           sleep 10;
            $Job_PolicyCreate = Get-ASRJob -Job $Job_PolicyCreate
    }
 
@@ -247,27 +250,27 @@ In diesem Schritt werden zwei Replikationsrichtlinien erstellt. Eine Richtlinie 
    $ReplicationPolicy = Get-ASRPolicy -Name "ReplicationPolicy"
    $FailbackReplicationPolicy = Get-ASRPolicy -Name "ReplicationPolicy-Failback"
 
-   # Associate the replication policies to the protection container corresponding to the Configuration Server. 
+   # Associate the replication policies to the protection container corresponding to the Configuration Server.
 
    $Job_AssociatePolicy = New-ASRProtectionContainerMapping -Name "PolicyAssociation1" -PrimaryProtectionContainer $ProtectionContainer -Policy $ReplicationPolicy
 
    # Check the job status
-   while (($Job_AssociatePolicy.State -eq "InProgress") -or ($Job_AssociatePolicy.State -eq "NotStarted")){ 
-           sleep 10; 
+   while (($Job_AssociatePolicy.State -eq "InProgress") -or ($Job_AssociatePolicy.State -eq "NotStarted")){
+           sleep 10;
            $Job_AssociatePolicy = Get-ASRJob -Job $Job_AssociatePolicy
    }
    $Job_AssociatePolicy.State
 
-   <# In the protection container mapping used for failback (replicating failed over virtual machines 
-      running in Azure, to the primary VMware site.) the protection container corresponding to the 
+   <# In the protection container mapping used for failback (replicating failed over virtual machines
+      running in Azure, to the primary VMware site.) the protection container corresponding to the
       Configuration server acts as both the Primary protection container and the recovery protection
       container
    #>
     $Job_AssociateFailbackPolicy = New-ASRProtectionContainerMapping -Name "FailbackPolicyAssociation" -PrimaryProtectionContainer $ProtectionContainer -RecoveryProtectionContainer $ProtectionContainer -Policy $FailbackReplicationPolicy
 
    # Check the job status
-   while (($Job_AssociateFailbackPolicy.State -eq "InProgress") -or ($Job_AssociateFailbackPolicy.State -eq "NotStarted")){ 
-           sleep 10; 
+   while (($Job_AssociateFailbackPolicy.State -eq "InProgress") -or ($Job_AssociateFailbackPolicy.State -eq "NotStarted")){
+           sleep 10;
            $Job_AssociateFailbackPolicy = Get-ASRJob -Job $Job_AssociateFailbackPolicy
    }
    $Job_AssociateFailbackPolicy.State
@@ -285,8 +288,8 @@ $Job_AddvCenterServer = New-ASRvCenter -Fabric $ASRFabrics[0] -Name "MyvCenterSe
 
 #Wait for the job to complete and ensure it completed successfully
 
-while (($Job_AddvCenterServer.State -eq "InProgress") -or ($Job_AddvCenterServer.State -eq "NotStarted")) { 
-        sleep 30; 
+while (($Job_AddvCenterServer.State -eq "InProgress") -or ($Job_AddvCenterServer.State -eq "NotStarted")) {
+        sleep 30;
         $Job_AddvCenterServer = Get-ASRJob -Job $Job_AddvCenterServer
 }
 $Job_AddvCenterServer
@@ -321,11 +324,11 @@ In diesem Schritt werden nur die Speicherkonten für die Replikation erstellt. D
 
 ```azurepowershell
 
-$PremiumStorageAccount = New-AzureRmStorageAccount -ResourceGroupName "VMwareDRToAzurePs" -Name "premiumstorageaccount1" -Location "East Asia" -SkuName Premium_LRS
+$PremiumStorageAccount = New-AzStorageAccount -ResourceGroupName "VMwareDRToAzurePs" -Name "premiumstorageaccount1" -Location "East Asia" -SkuName Premium_LRS
 
-$LogStorageAccount = New-AzureRmStorageAccount -ResourceGroupName "VMwareDRToAzurePs" -Name "logstorageaccount1" -Location "East Asia" -SkuName Standard_LRS
+$LogStorageAccount = New-AzStorageAccount -ResourceGroupName "VMwareDRToAzurePs" -Name "logstorageaccount1" -Location "East Asia" -SkuName Standard_LRS
 
-$ReplicationStdStorageAccount= New-AzureRmStorageAccount -ResourceGroupName "VMwareDRToAzurePs" -Name "replicationstdstorageaccount1" -Location "East Asia" -SkuName Standard_LRS
+$ReplicationStdStorageAccount= New-AzStorageAccount -ResourceGroupName "VMwareDRToAzurePs" -Name "replicationstdstorageaccount1" -Location "East Asia" -SkuName Standard_LRS
 ```
 
 ## <a name="replicate-vmware-vms"></a>Replizieren von VMware-VMs
@@ -351,14 +354,14 @@ Replizieren Sie nun die folgenden virtuellen Computer mit den Einstellungen in d
 |CentOSVM1       |ConfigurationServer   |replicationstdstorageaccount1| –                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
 |CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| –                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
 
- 
+
 ```azurepowershell
 
 #Get the target resource group to be used
-$ResourceGroup = Get-AzureRmResourceGroup -Name "VMwareToAzureDrPs"
+$ResourceGroup = Get-AzResourceGroup -Name "VMwareToAzureDrPs"
 
 #Get the target virtual network to be used
-$RecoveryVnet = Get-AzureRmVirtualNetwork -Name "ASR-vnet" -ResourceGroupName "asrrg" 
+$RecoveryVnet = Get-AzVirtualNetwork -Name "ASR-vnet" -ResourceGroupName "asrrg" 
 
 #Get the protection container mapping for replication policy named ReplicationPolicy
 $PolicyMap  = Get-ASRProtectionContainerMapping -ProtectionContainer $ProtectionContainer | where PolicyFriendlyName -eq "ReplicationPolicy"
@@ -368,7 +371,7 @@ $VM1 = Get-ASRProtectableItem -ProtectionContainer $ProtectionContainer -Friendl
 
 # Enable replication for virtual machine Win2K12VM1
 # The name specified for the replicated item needs to be unique within the protection container. Using a random GUID to ensure uniqueness
-$Job_EnableReplication1 = New-ASRReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -RecoveryAzureStorageAccountId $PremiumStorageAccount.Id -LogStorageAccountId $LogStorageAccount.Id -ProcessServer $ProcessServers[0] -Account $AccountHandles[1] -RecoveryResourceGroupId $ResourceGroup.ResourceId -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1" 
+$Job_EnableReplication1 = New-ASRReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -RecoveryAzureStorageAccountId $PremiumStorageAccount.Id -LogStorageAccountId $LogStorageAccount.Id -ProcessServer $ProcessServers[0] -Account $AccountHandles[1] -RecoveryResourceGroupId $ResourceGroup.ResourceId -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1"
 
 #Get the protectable item corresponding to the virtual machine CentOSVM1
 $VM2 = Get-ASRProtectableItem -ProtectionContainer $ProtectionContainer -FriendlyName "CentOSVM1"
@@ -380,7 +383,7 @@ $Job_EnableReplication2 = New-ASRReplicationProtectedItem -VMwareToAzure -Protec
 $VM3 = Get-ASRProtectableItem -ProtectionContainer $ProtectionContainer -FriendlyName "CentOSVM2"
 
 # Enable replication for virtual machine CentOSVM2
-$Job_EnableReplication3 = New-ASRReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM3 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -RecoveryAzureStorageAccountId $ReplicationStdStorageAccount.Id  -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1" 
+$Job_EnableReplication3 = New-ASRReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM3 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -RecoveryAzureStorageAccountId $ReplicationStdStorageAccount.Id  -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1"
 
 ```
 
@@ -444,7 +447,7 @@ Errors           : {}
    #Test failover of Win2K12VM1 to the test virtual network "V2TestNetwork"
 
    #Get details of the test failover virtual network to be used
-   TestFailovervnet = Get-AzureRmVirtualNetwork -Name "V2TestNetwork" -ResourceGroupName "asrrg" 
+   TestFailovervnet = Get-AzVirtualNetwork -Name "V2TestNetwork" -ResourceGroupName "asrrg" 
 
    #Start the test failover operation
    $TFOJob = Start-ASRTestFailoverJob -ReplicationProtectedItem $ReplicatedVM1 -AzureVMNetworkId $TestFailovervnet.Id -Direction PrimaryToRecovery
@@ -487,4 +490,4 @@ In diesem Schritt führen wir ein Failover des virtuellen Computers Win2K12VM1 a
 2. Nachdem das Failover erfolgreich ausgeführt wurde, können Sie den Failovervorgang committen und die umgekehrte Replikation von Azure zurück zum lokalen VMware-Standort einrichten.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informieren Sie sich in der [Azure Site Recovery-PowerShell-Referenz](https://docs.microsoft.com/powershell/module/AzureRM.RecoveryServices.SiteRecovery), wie Sie mehr Aufgaben automatisieren können.
+Informieren Sie sich in der [Azure Site Recovery-PowerShell-Referenz](https://docs.microsoft.com/powershell/module/Az.RecoveryServices), wie Sie mehr Aufgaben automatisieren können.

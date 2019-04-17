@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: 9458f052258993ee598ddfbca262faf8f6cb4ab9
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 690656449fdb86c200a8978f0e17db562e4abbca
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258546"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009177"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in Java unter Android mit dem Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Dieser Artikel enthält Informationen zur Entwicklung einer Java-Anwendung für Android mithilfe des Cognitive Services Speech SDK zum Umwandeln von Sprache in Text.
-Die Anwendung basiert auf dem Maven-Paket für das Microsoft Cognitive Services Speech SDK (Version 1.3.1) sowie auf Android Studio 3.1.
+Die Anwendung basiert auf dem Maven-Paket für das Speech SDK (Version 1.4.0) sowie auf Android Studio 3.3.
 Das Speech SDK ist zurzeit kompatibel mit Android-Geräten mit 32-/64-Bit-ARM-Prozessoren und Prozessoren, die mit Intel x86/x64 kompatibel sind.
 
 > [!NOTE]
@@ -30,7 +30,7 @@ Das Speech SDK ist zurzeit kompatibel mit Android-Geräten mit 32-/64-Bit-ARM-Pr
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zur Durchführung dieses Schnellstarts benötigen Sie einen Abonnementschlüssel für die Spracherkennungsdienste. Sie können einen solchen Schlüssel kostenlos abrufen. Ausführliche Informationen finden Sie unter [Kostenloses Testen von Speech Services](get-started.md).
+Für diese Schnellstartanleitung benötigen Sie einen Abonnementschlüssel für die Speech-Dienste. Sie können einen solchen Schlüssel kostenlos abrufen. Ausführliche Informationen finden Sie unter [Kostenloses Testen von Speech Services](get-started.md).
 
 ## <a name="create-and-configure-a-project"></a>Erstellen und Konfigurieren eines Projekts
 
@@ -38,27 +38,19 @@ Zur Durchführung dieses Schnellstarts benötigen Sie einen Abonnementschlüssel
 
     ![Screenshot des Begrüßungsfensters von Android Studio](media/sdk/qs-java-android-01-start-new-android-studio-project.png)
 
-1. Der Assistent **Neues Projekt erstellen** wird angezeigt. Geben Sie auf dem Bildschirm **Android-Projekt erstellen** **Quickstart** als **Anwendungsnamen** und **samples.speech.cognitiveservices.microsoft.com** als **Unternehmensdomäne** ein. Wählen Sie dann ein Projektverzeichnis aus. Lassen Sie die Kontrollkästchen für C++ und Kotlin deaktiviert, und wählen Sie **Weiter** aus.
+1. Der**Assistent für die Projektauswahl wird angezeigt**. Wählen Sie **Phone and Tablet** (Telefon und Tablet) und im Feld für die Aktivitätsauswahl die Option **Empty Activity** (Leere Aktivität) aus. Klicken Sie auf **Weiter**.
 
-   ![Screenshot des Assistenten „Neues Projekt erstellen“](media/sdk/qs-java-android-02-create-android-project.png)
+   ![Screenshot: Assistent für die Projektauswahl](media/sdk/qs-java-android-02-target-android-devices.png)
 
-1. Wählen Sie auf dem Bildschirm **Android-Zielgeräte** nur **Smartphone und Tablet** aus. Wählen Sie in der Dropdownliste darunter **API 23: Android 6.0 (Marshmallow)** und dann **Weiter** aus.
+1. Geben Sie im**Projektkonfigurationsbildschirm** **Quickstart** als **Name** und **samples.speech.cognitiveservices.microsoft.com** als **Paketname** ein. Wählen Sie dann ein Projektverzeichnis aus. Wählen Sie anschließend unter **Minimum API level** (API-Mindestebene) die Option **API 23: Android 6.0 (Marshmallow)** aus, lassen Sie alle anderen Kontrollkästchen deaktiviert, und wählen Sie **Finish** (Fertig stellen) aus.
 
-   ![Screenshot des Assistenten „Neues Projekt erstellen“](media/sdk/qs-java-android-03-target-android-devices.png)
-
-1. Wählen Sie auf dem Bildschirm **Aktivität für ein mobiles Gerät hinzufügen** die Option **Leere Aktivität** aus, und klicken Sie dann auf **Weiter**.
-
-   ![Screenshot des Assistenten „Neues Projekt erstellen“](media/sdk/qs-java-android-04-add-an-activity-to-mobile.png)
-
-1. Verwenden Sie auf dem Bildschirm **Aktivität konfigurieren** die Angabe **MainActivity** als Aktivitätsnamen und **activity\_main** als Layoutnamen. Aktivieren Sie beide Kontrollkästchen, und wählen Sie dann **Fertig stellen** aus.
-
-   ![Screenshot des Assistenten „Neues Projekt erstellen“](media/sdk/qs-java-android-05-configure-activity.png)
+   ![Screenshot: Projektkonfigurations-Assistent](media/sdk/qs-java-android-03-create-android-project.png)
 
 Android Studio benötigt einen Moment, um Ihr neues Android-Projekt vorzubereiten. Anschließend konfigurieren Sie das Projekt so, dass es über das Speech SDK informiert ist und Java 8 verwendet.
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Die aktuelle Version des Cognitive Services Speech SDK ist `1.3.1`.
+Die aktuelle Version des Cognitive Services Speech SDK ist `1.4.0`.
 
 Das Speech SDK für Android ist als [AAR (Android-Bibliothek)](https://developer.android.com/studio/projects/android-library) verpackt und enthält die erforderlichen Bibliotheken sowie die erforderlichen Android-Berechtigungen.
 Es wird in einem Maven-Repository unter „https:\//csspeechstorage.blob.core.windows.net/maven/“ gehosted.
@@ -73,7 +65,7 @@ Richten Sie Ihr Projekt so ein, dass es das Speech SDK verwendet. Öffnen Sie da
 
    ![Screenshot der Fensters „Projektstruktur“](media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. Geben Sie im angezeigten Fenster den Namen und die Version des Speech SDK für Android ein: `com.microsoft.cognitiveservices.speech:client-sdk:1.3.1`. Wählen Sie dann **OK**aus.
+1. Geben Sie im angezeigten Fenster den Namen und die Version des Speech SDK für Android ein: `com.microsoft.cognitiveservices.speech:client-sdk:1.4.0`. Wählen Sie dann **OK**aus.
    Das Speech SDK sollte nun der Liste der Abhängigkeiten hinzugefügt werden, wie unten dargestellt:
 
    ![Screenshot der Fensters „Projektstruktur“](media/sdk/qs-java-android-08-dependency-added-1.0.0.png)
@@ -100,16 +92,9 @@ Sie erstellen eine einfache Benutzeroberfläche für die Anwendung. Bearbeiten S
 
 Der Text und die grafische Darstellung Ihrer Benutzeroberfläche sollten jetzt etwa wie folgt aussehen:
 
-<table>
-<tr>
-<td valign="top">
 ![](media/sdk/qs-java-android-11-gui.png)
-</td>
-<td valign="top">
+
 [!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java-android/app/src/main/res/layout/activity_main.xml)]
-</td>
-</tr>
-</table>
 
 ## <a name="add-sample-code"></a>Hinzufügen von Beispielcode
 
@@ -148,5 +133,5 @@ Drücken Sie die Schaltfläche in der Anwendung, um einen Spracherkennungsabschn
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Tutorial: Erstellen eines benutzerdefinierten Akustikmodells](how-to-customize-acoustic-models.md)
-- [Tutorial: Erstellen eines benutzerdefinierten Sprachmodells](how-to-customize-language-model.md)
+- [Anpassen von Akustikmodellen](how-to-customize-acoustic-models.md)
+- [Anpassen von Sprachmodellen](how-to-customize-language-model.md)

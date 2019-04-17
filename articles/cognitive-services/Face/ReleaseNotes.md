@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.author: yluiu
-ms.openlocfilehash: 02e4e73bbbc7f843a3483bab4791484b89f97dd7
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: 8502d643986392ba846d509819c6d8f63f931c07
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862028"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544549"
 ---
 # <a name="face-api-release-notes"></a>Anmerkungen zu dieser Version der Gesichtserkennungs-API
 
@@ -27,7 +27,7 @@ Dieser Artikel bezieht sich auf Version 1.0 des Gesichtserkennungs-API-Diensts.
 
 ### <a name="release-changes-in-january-2019"></a>Änderungen im Release vom Januar 2019
 
-* Momentaufnahmenfunktion zur Unterstützung der Datenmigration zwischen Abonnements hinzugefügt: [Momentaufnahme](https://docs.microsoft.com/rest/api/cognitiveservices/face/snapshot). Weitere Informationen finden Sie unter [Migrieren Ihrer Gesichtserkennungsdaten in ein anderes Abonnement für die Gesichtserkennung](Face-API-How-to-Topics/how-to-migrate-face-data.md).
+* Momentaufnahmenfunktion zur Unterstützung der Datenmigration zwischen Abonnements hinzugefügt: [Momentaufnahme](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/snapshot-get). Weitere Informationen finden Sie unter [Migrieren Ihrer Gesichtserkennungsdaten in ein anderes Abonnement für die Gesichtserkennung](Face-API-How-to-Topics/how-to-migrate-face-data.md).
 
 ### <a name="release-changes-in-october-2018"></a>Änderungen im Release von Oktober 2018
 

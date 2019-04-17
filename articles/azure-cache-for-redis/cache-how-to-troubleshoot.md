@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: yegu
-ms.openlocfilehash: 838fc1da3e167d1df04fbb36a2fea33b8ac248a4
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 66361871d365068a90a2eeab70d92adb6b246a83
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482605"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527165"
 ---
 # <a name="how-to-troubleshoot-azure-cache-for-redis"></a>Problembehandlung für Azure Cache for Redis
 
@@ -250,6 +250,7 @@ Diese Fehlermeldung enthält Metriken, mit deren Hilfe Sie die Ursache und die m
 1. Gab es vor mehreren kleineren Anforderungen eine große Anforderung an den Cache, für die ein Timeout auftrat? Der Parameter `qs` in der Fehlermeldung teilt Ihnen mit, wie viele Anforderungen vom Client an den Server gesendet wurden, für die aber bisher keine Antwort verarbeitet wurde. Dieser Wert kann fortlaufend wachsen, weil StackExchange.Redis eine einzige TCP-Verbindung nutzt und zu einem Zeitpunkt jeweils immer nur eine Antwort lesen kann. Obwohl es beim ersten Vorgang zu einem Timeout gekommen ist, wird das Senden von weiteren Daten an den oder vom Server dadurch nicht unterbrochen. Andere Anforderungen werden blockiert, bis die umfangreiche Anforderung fertig gestellt ist. Hierbei kann es zu Timeouts kommen. Als mögliche Lösung können Sie die Wahrscheinlichkeit von Timeouts verringern. Stellen Sie zu diesem Zweck sicher, dass Ihr Cache für Ihre Workload groß genug ist, und teilen Sie große Werte in kleinere Blöcke auf. Eine weitere Lösung besteht darin, in Ihrem Client einen Pool von `ConnectionMultiplexer`-Objekten zu verwenden und beim Senden einer neuen Anforderung den am wenigsten ausgelasteten `ConnectionMultiplexer` zu verwenden. Durch das Laden über mehrere Verbindungsobjekte können Sie verhindern, dass ein einzelnes Timeout weitere Timeouts für andere Anforderungen nach sich zieht.
 1. Wenn Sie `RedisSessionStateProvider` verwenden, müssen Sie das Timeout für Wiederholungsversuche richtig festlegen. `retryTimeoutInMilliseconds` sollte höher sein als `operationTimeoutInMilliseconds`, andernfalls erfolgen keine Wiederholungsversuche. Im folgenden Beispiel ist `retryTimeoutInMilliseconds` auf 3000 festgelegt. Weitere Informationen finden Sie unter [ASP.NET-Sitzungszustandsanbieter für Azure Cache for Redis](cache-aspnet-session-state-provider.md) und [How to use configuration parameters of Session State Provider and Output Cache Provider](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration) (Verwenden der Konfigurationsparameter des Sitzungszustandsanbieters und des Ausgabecacheanbieters).
 
+    ```xml
     <add
       name="AFRedisCacheSessionStateProvider"
       type="Microsoft.Web.Redis.RedisSessionStateProvider"
@@ -262,6 +263,7 @@ Diese Fehlermeldung enthält Metriken, mit deren Hilfe Sie die Ursache und die m
       connectionTimeoutInMilliseconds = "5000"
       operationTimeoutInMilliseconds = "1000"
       retryTimeoutInMilliseconds="3000" />
+    ```
 
 1. Überprüfen Sie die Speicherauslastung auf dem Azure Cache for Redis-Server, indem Sie `Used Memory RSS` und `Used Memory` [überwachen](cache-how-to-monitor.md#available-metrics-and-reporting-intervals). Wenn eine Entfernungsrichtlinie vorhanden ist und `Used_Memory` die Cachegröße erreicht, beginnt Redis mit dem Entfernen von Schlüsseln. Im Idealfall sollte `Used Memory RSS` nur geringfügig höher als `Used memory` sein. Ein großer Unterschied bedeutet, dass eine (interne oder externe) Speicherfragmentierung vorhanden ist. Wenn `Used Memory RSS` niedriger ist als `Used Memory`, bedeutet das, dass ein Teil des Cachespeichers vom Betriebssystem ausgelagert wurde. Im Fall einer solchen Auslagerung müssen Sie mit erheblichen Latenzen rechnen. Da Redis nicht steuern kann, wie seine Belegungen den Speicherseiten zugeordnet werden, ist ein hoher Wert für `Used Memory RSS` oft das Ergebnis einer Speicherauslastungsspitze. Wenn Redis-Server Arbeitsspeicher freigibt, übernimmt der Allocator diesen Speicher, wobei er den Speicher dem System zurückgeben kann, aber nicht muss. Es kann zu einer Diskrepanz zwischen dem Wert für `Used Memory` und der vom Betriebssystem gemeldeten Speichernutzung kommen. Arbeitsspeicher wurde möglicherweise von Redis genutzt und freigegeben, aber nicht an das System zurückgegeben. Um Speicherprobleme möglichst gering zu halten, können Sie die folgenden Schritte ausführen:
 

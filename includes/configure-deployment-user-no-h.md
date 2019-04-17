@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 4f061dc66829c49fba6722215dc36ed2ce6464ee
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: cd7fc7487a41979f37c9a55baeb0b8e172e808c4
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58919241"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59587047"
 ---
 Konfigurieren Sie in Azure Cloud Shell mit dem Befehl [`az webapp deployment user set`](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) Anmeldeinformationen für die Bereitstellung. Bei der FTP- und der lokalen Git-Bereitstellung für eine Web-App ist dieser Bereitstellungsbenutzer erforderlich. Der Benutzername und das Kennwort gelten auf Kontoebene. _Sie unterscheiden sich von den Anmeldeinformationen Ihres Azure-Abonnements._
 
@@ -23,7 +23,7 @@ Ersetzen Sie im folgenden Beispiel *\<username>* und *\<password>* (einschließl
 az webapp deployment user set --user-name <username> --password <password>
 ```
 
-Sie erhalten eine JSON-Ausgabe, in der das Kennwort als `null` angezeigt wird. Wenn Sie den Fehler `'Conflict'. Details: 409` erhalten, müssen Sie den Benutzernamen ändern. Wenn Sie den Fehler ` 'Bad Request'. Details: 400` erhalten, müssen Sie ein sichereres Kennwort verwenden. Der Bereitstellungsbenutzername darf bei lokalen Git-Pushübertragungen kein @-Zeichen enthalten.
+Sie erhalten eine JSON-Ausgabe, in der das Kennwort als `null` angezeigt wird. Wenn Sie den Fehler `'Conflict'. Details: 409` erhalten, müssen Sie den Benutzernamen ändern. Wenn Sie den Fehler `'Bad Request'. Details: 400` erhalten, müssen Sie ein sichereres Kennwort verwenden. Der Bereitstellungsbenutzername darf bei lokalen Git-Pushübertragungen kein @-Zeichen enthalten.
 
 Sie konfigurieren diesen Bereitstellungsbenutzer nur einmal. Sie können ihn für alle Azure-Bereitstellungen verwenden.
 

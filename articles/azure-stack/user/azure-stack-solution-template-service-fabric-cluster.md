@@ -15,12 +15,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: shnatara
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 8041e7e02b117b8938f0f7c18da2d57c31dddb34
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 0a24228f1437fbb23c11070b3e99cea60489c071
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482263"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264986"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Bereitstellen eines Service Fabric-Clusters in Azure Stack
 
@@ -46,7 +46,7 @@ Folgendes ist für die Bereitstellung des Service Fabric-Clusters erforderlich:
 
 1. **Die folgenden Elemente müssen im Azure Stack-Marketplace verfügbar sein:**
     - **Windows Server 2016:** Die Vorlage verwendet das Windows Server 2016-Image zum Erstellen des Clusters.  
-    - **Kundenskripterweiterung:** VM-Erweiterung von Microsoft  
+    - **Benutzerdefinierte Erweiterung:** VM-Erweiterung von Microsoft.  
     - **PowerShell Desired Stage Configuration** (PowerShell-Konfiguration für gewünschte Phase): VM-Erweiterung von Microsoft
 
 

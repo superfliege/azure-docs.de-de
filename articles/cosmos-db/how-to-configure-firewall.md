@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
-ms.openlocfilehash: 308d4527c9ea56a408ddaf05532f5a0b36136262
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 26f2131fd62ddc83c2a6d93c4cff557402a88463
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451766"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281113"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Konfigurieren der IP-Firewall in Azure Cosmos DB
 
@@ -104,9 +104,10 @@ Zum Konfigurieren der Zugriffssteuerung für Ihr Azure Cosmos DB-Konto muss in d
      "name": "[parameters('databaseAccountName')]",
      "location": "[resourceGroup().location]",
      "properties": {
-     "databaseAccountOfferType": "Standard",
-     "name": "[parameters('databaseAccountName')]",
-     "ipRangeFilter":"183.240.196.255, 104.42.195.92,40.76.54.131, 52.176.6.30,52.169.50.45,52.187.184.26"
+       "databaseAccountOfferType": "Standard",
+       "name": "[parameters('databaseAccountName')]",
+       "ipRangeFilter":"183.240.196.255,104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26"
+     }
    }
 ```
 
@@ -125,7 +126,7 @@ az cosmosdb create \
   --resource-group $resourceGroupName \
   --max-interval 10 \
   --max-staleness-prefix 200 \
-  --ip-range-filter "183.240.196.255, 104.42.195.92,40.76.54.131, 52.176.6.30,52.169.50.45,52.187.184.26"
+  --ip-range-filter "183.240.196.255,104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26"
 ```
 
 Führen Sie den folgenden Befehl aus, um die Firewalleinstellungen für ein vorhandenes Konto zu aktualisieren:
@@ -134,7 +135,7 @@ Führen Sie den folgenden Befehl aus, um die Firewalleinstellungen für ein vorh
 az cosmosdb update \
       --name $name \
       --resource-group $resourceGroupName \
-      --ip-range-filter "183.240.196.255, 104.42.195.92,40.76.54.131, 52.176.6.30,52.169.50.45,52.187.184.26"
+      --ip-range-filter "183.240.196.255,104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26"
 ```
 
 ## <a id="troubleshoot-ip-firewall"></a>Behandeln von Problemen mit einer IP-Zugriffssteuerungsrichtlinie

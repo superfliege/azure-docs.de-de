@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6694865909a165842f994501befa404e1bc0a447
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: b5ed614fdd378b36d8f95fc90ce7ff98d63ef31a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164380"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526403"
 ---
 # <a name="troubleshoot-input-connections"></a>Problembehandlung für Eingangsverbindungen
 
@@ -39,7 +39,9 @@ Wenn ein Stream Analytics-Auftrag eine falsch formatierte Nachricht aus einer Ei
 ![Azure Stream Analytics-Kachel „Eingaben“](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
 Aktivieren Sie die Diagnoseprotokolle, um Details zur Warnung anzuzeigen. Bei falsch formatierten Eingabeereignissen enthalten die Ausführungsprotokolle einen Eintrag mit der Meldung, die etwa wie folgt aussieht: 
-<code>Could not deserialize the input event(s) from resource <blob URI> as json.</code>
+```
+Could not deserialize the input event(s) from resource <blob URI> as json.
+```
 
 ### <a name="what-caused-the-deserialization-error"></a>Ursache des Deserialisierungsfehlers
 Sie können die folgenden Schritte durchführen, um die Eingabeereignisse im Detail zu analysieren, um zu verstehen, wodurch der Deserialisierungsfehler verursacht wurde. Sie können dann die Ereignisquelle reparieren, um Ereignisse im richtigen Format zu generieren, damit dieses Problem nicht erneut auftritt.

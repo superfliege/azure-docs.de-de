@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: adugar
-ms.openlocfilehash: 640eb8800f9593aef510d99713595bdd0c844263
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 8a5c74c76662a089675fcbdcd8d5a7ea54b58fd1
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52683428"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009666"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Tutorial: Durchführen der Massenverwaltung für Ihre verbundenen Geräte
 
@@ -57,7 +57,7 @@ Auf Ihrem lokalen Computer muss die folgende Software installiert sein:
 Vorbereitung:
 
 * Stellen Sie sicher, dass das [Startladeprogramm auf Ihrem IoT DevKit-Gerät Version 1.4.0 oder höher](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/) aufweist.
-* Vergewissern Sie sich, dass die Version des IoT DevKit SDK der Version des Startladeprogramms entspricht. Sie können das IoT DevKit SDK mit Azure IoT Workbench in VS Code aktualisieren. Öffnen Sie die Befehlspalette, und geben Sie **Arduino: Board Manager** ein. Weitere Informationen finden Sie unter [Vorbereiten der Entwicklungsumgebung](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md#prepare-the-development-environment).
+* Vergewissern Sie sich, dass die Version des IoT DevKit SDK der Version des Startladeprogramms entspricht. Sie können das IoT DevKit SDK mit Azure IoT Workbench in VS Code aktualisieren. Öffnen Sie die Befehlspalette, und geben Sie Folgendes ein **Arduino: Board Manager**. Weitere Informationen finden Sie unter [Vorbereiten der Entwicklungsumgebung](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md#prepare-the-development-environment).
 
 Außerdem müssen Sie für mindestens ein IoT DevKit-Gerät eine Verbindung mit Ihrem Solution Accelerator für die Remoteüberwachung herstellen. Wenn Sie keine Verbindung mit einem IoT DevKit-Gerät hergestellt haben, helfen Ihnen die Informationen unter [Verbinden von MXChip IoT DevKit AZ3166 mit dem Solution Accelerator für die IoT-Remoteüberwachung](iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md) weiter.
 
@@ -71,7 +71,7 @@ Klicken Sie dann auf der Kachel für den im [Schnellstart](quickstart-remote-mon
 
 Die Geräte müssen Mitglieder einer Gerätegruppe Ihrer Remoteüberwachungslösung sein, damit die Firmware für eine Gruppe mit Geräten automatisch aktualisiert werden kann:
 
-1. Wählen Sie auf der Seite **Geräte** alle **IoT DevKit**-Geräte aus, für die Sie eine Verbindung mit dem Solution Accelerator hergestellt haben. Klicken Sie anschließend auf **Aufträge**.
+1. Wählen Sie auf der Seite **Geräte** alle **IoT DevKit**-Geräte aus, für die Sie eine Verbindung mit dem Solution Accelerator hergestellt haben. Klicken Sie dann auf **Jobs** (Aufträge).
 
 1. Wählen Sie unter **Aufträge** die Option **Tags**, legen Sie den Auftragsnamen auf **AddDevKitTag** fest, und fügen Sie dann ein Texttag mit dem Namen **IsDevKitDevice** und dem Wert **Y** hinzu. Klicken Sie anschließend auf **Übernehmen**.
 
@@ -89,7 +89,7 @@ Die VS Code-Erweiterung [Azure IoT Workbench](https://marketplace.visualstudio.c
 
 1. Stellen Sie sicher, dass Ihr IoT DevKit nicht mit Ihrem Computer verbunden ist. Starten Sie zuerst VS Code, und stellen Sie für das DevKit dann eine Verbindung mit Ihrem Computer her.
 
-1. Drücken Sie **F1**, um die Befehlspalette zu öffnen, geben Sie **IoT Workbench: Beispiele** ein, und wählen Sie den Eintrag aus. Wählen Sie anschließend **IoT DevKit** als Board aus.
+1. Drücken Sie**F1** , um die Befehlspalette zu öffnen, und geben Sie **IoT Workbench: Beispiele** ein. Wählen Sie anschließend **IoT DevKit** als Board aus.
 
 1. Suchen Sie nach **Firmware OTA**, und klicken Sie auf **Beispiel öffnen**. Ein neues VS Code-Fenster wird geöffnet, und der Projektordner **firmware_ota** wird angezeigt:
 
@@ -103,7 +103,7 @@ Die erste Version der Gerätefirmware ist 1.0.0. Die neue Firmware sollte eine h
 
     ![Ändern der Firmwareversion](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
 
-1. Öffnen Sie die Befehlspalette, geben Sie **IoT Workbench: Gerät** ein, und wählen Sie den Eintrag aus. Wählen Sie anschließend die Option **Device Compile** (Gerät kompilieren), um den Code zu kompilieren:
+1. Öffnen Sie die Befehlspalette, und geben Sie **IoT Workbench: Gerät** ein. Wählen Sie anschließend die Option **Device Compile** (Gerät kompilieren), um den Code zu kompilieren:
 
     ![Gerät kompilieren](media/iot-accelerators-remote-monitoring-bulk-configuration-update/iot-workbench-device-compile.png)
 
@@ -111,7 +111,7 @@ Die erste Version der Gerätefirmware ist 1.0.0. Die neue Firmware sollte eine h
 
 ### <a name="generate-the-crc-value-and-calculate-the-firmware-file-size"></a>Generieren des CRC-Werts und Berechnen der Größe der Firmwaredatei
 
-1. Öffnen Sie die Befehlspalette, geben Sie **IoT Workbench: Gerät** ein, und wählen Sie den Eintrag aus. Wählen Sie anschließend die Option **Generate CRC** (CRC generieren):
+1. Öffnen Sie die Befehlspalette, und geben Sie **IoT Workbench: Gerät** ein. Wählen Sie anschließend die Option **Generate CRC** (CRC generieren):
 
     ![CRC generieren](media/iot-accelerators-remote-monitoring-bulk-configuration-update/iot-workbench-device-crc.png)
 
@@ -139,19 +139,19 @@ Verwenden Sie Ihr Azure-Speicherkonto zum Hosten Ihrer neuen Firmwaredatei in de
 
     ![Version 1.0.0](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
 
-1. Öffnen Sie die Befehlspalette, geben Sie **IoT Workbench: Gerät** ein, und wählen Sie den Eintrag aus. Wählen Sie dann die Option **Device Upload** (Gerät hochladen):
+1. Öffnen Sie die Befehlspalette, und geben Sie **IoT Workbench: Gerät** ein. Wählen Sie dann die Option **Device Upload** (Gerät hochladen):
 
     ![Gerät hochladen](media/iot-accelerators-remote-monitoring-bulk-configuration-update/device-upload.png)
 
 1. VS Code überprüft den Code und lädt ihn auf Ihr IoT DevKit-Gerät hoch.
 
-1. Nachdem der Upload abgeschlossen ist, wird das IoT DevKit-Gerät neu gestartet. Nach Abschluss des Neustarts wird auf dem IoT DevKit-Bildschirm **FW version: 1.0.0** und ein Hinweis angezeigt, dass nach neuer Firmware gesucht wird:
+1. Nachdem der Upload abgeschlossen ist, wird das IoT DevKit-Gerät neu gestartet. Nach Abschluss des Neustarts werden auf dem IoT DevKit-Bildschirm **FW version: 1.0.0** (Firmwareversion: 1.0.0) und ein Hinweis angezeigt, dass nach neuer Firmware gesucht wird:
 
     ![ota-1](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-1.jpg)
 
 ## <a name="create-a-device-configuration"></a>Erstellen einer Gerätekonfiguration
 
-Mit einer Gerätekonfiguration wird der gewünschte Zustand Ihrer Geräte angegeben. Normalerweise führt ein Entwickler die [Erstellung der Konfiguration](../iot-hub/iot-hub-auto-device-config.md#create-a-configuration) im Azure-Portal auf der Seite **IoT-Gerätekonfiguration** durch. Eine Gerätekonfiguration ist ein JSON-Dokument, mit dem der gewünschte Zustand Ihrer Geräte sowie ein Satz mit Metriken angegeben wird.
+Mit einer Gerätekonfiguration wird der gewünschte Zustand Ihrer Geräte angegeben. Normalerweise führt ein Entwickler die [Erstellung der Konfiguration](../iot-hub/iot-hub-automatic-device-management.md#create-a-configuration) im Azure-Portal auf der Seite **IoT-Gerätekonfiguration** durch. Eine Gerätekonfiguration ist ein JSON-Dokument, mit dem der gewünschte Zustand Ihrer Geräte sowie ein Satz mit Metriken angegeben wird.
 
 Speichern Sie die folgende Konfiguration als Datei mit dem Namen **firmware-update.json** auf Ihrem lokalen Computer. Ersetzen Sie die Platzhalter `YOURSTRORAGEACCOUNTNAME`, `YOURCHECKSUM` und `YOURPACKAGESIZE` durch die Werte, die Sie sich zuvor notiert haben:
 
@@ -228,11 +228,11 @@ In diesem Abschnitt erstellen Sie eine Bereitstellung, bei der die Gerätekonfig
 
     |Option|Wert|
     |---|---|
-    |Name|Bereitstellen des Firmwareupdates|
+    |NAME|Bereitstellen des Firmwareupdates|
     |Pakettyp|Gerätekonfiguration|
     |Konfigurationstyp|Firmware|
     |Paket|firmware-update.json|
-    |Gerätegruppe|IoT DevKit-Geräte|
+    |Device Group (Gerätegruppe)|IoT DevKit-Geräte|
     |Priorität|10|
 
     ![Bereitstellung erstellen](media/iot-accelerators-remote-monitoring-bulk-configuration-update/newdeployment.png)

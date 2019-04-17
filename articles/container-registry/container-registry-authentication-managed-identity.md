@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: danlep
-ms.openlocfilehash: b09348e98a0dee85338cc9f20289d83b658eb719
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 728a2f8cf61bbe0691350b9de45a5fab6b90cadb
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338461"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526621"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Verwenden einer verwalteten Azure-Identität für die Azure Container Registry-Authentifizierung 
 
@@ -164,7 +164,7 @@ az role assignment create --assignee $spID --scope $resourceID --role acrpull
 
 Stellen Sie eine SSH-Verbindung mit der Docker-VM her, die mit der Identität konfiguriert ist. Führen Sie über die Azure CLI-Installation auf der VM die folgenden Azure CLI-Befehle aus.
 
-Authentifizieren Sie sich zuerst über [az login][az-login] bei der Azure CLI, und verwenden Sie hierbei die Identität, die Sie für die VM konfiguriert haben. Ersetzen Sie <userID> durch die ID der Identität, die Sie in einem der vorherigen Schritte abgerufen haben. 
+Authentifizieren Sie sich zuerst über [az login][az-login] bei der Azure CLI, und verwenden Sie hierbei die Identität, die Sie für die VM konfiguriert haben. Ersetzen Sie `<userID>` durch die ID der Identität, die Sie in einem der vorherigen Schritte abgerufen haben. 
 
 ```azurecli
 az login --identity --username <userID>

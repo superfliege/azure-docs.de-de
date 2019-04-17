@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 46b1da1f117c7ea416b2b818518f678b1a483c75
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9c24bd45e7a44b1ccbf651cda0e36c87a5d8f90c
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58097398"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489167"
 ---
 # <a name="migrate-compute-resources-to-global-azure"></a>Migrieren von Computeressourcen zu Azure weltweit
 
@@ -124,7 +124,7 @@ So stellen Sie Clouddienste über die REST-API erneut bereit:
     https://management.core.windows.net/<subscription-id>/services/hostedservices
     ```
 
-1. Erstellen Sie eine neue Bereitstellung mithilfe der [API zum Erstellen einer Bereitstellung](https://msdn.microsoft.com/library/azure/ee460813.aspx). Um Ihre `.cspkg`- und Ihre `.cscfg`-Definition zu finden, können Sie die [Get-Package-API](https://msdn.microsoft.com/library/azure/jj154121.aspx) aufrufen.
+1. Erstellen Sie eine neue Bereitstellung mithilfe der [API zum Erstellen einer Bereitstellung](/previous-versions/azure/reference/ee460813(v=azure.100)). Um Ihre `.cspkg`- und Ihre `.cscfg`-Definition zu finden, können Sie die [Get-Package-API](/previous-versions/azure/reference/jj154121(v=azure.100)) aufrufen.
 
     ```http
     https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deploymentslots/production
@@ -220,13 +220,13 @@ Weitere Informationen finden Sie unter:
 Erfahren Sie mehr über Tools, Techniken und Empfehlungen zum Migrieren von Ressourcen in den folgenden Dienstkategorien:
 
 - [Netzwerk](./germany-migration-networking.md)
-- [Speicher](./germany-migration-storage.md)
+- [Storage](./germany-migration-storage.md)
 - [Web](./germany-migration-web.md)
 - [Datenbanken](./germany-migration-databases.md)
-- [Analyse](./germany-migration-analytics.md)
+- [Analytics](./germany-migration-analytics.md)
 - [IoT](./germany-migration-iot.md)
 - [Integration](./germany-migration-integration.md)
-- [Identität](./germany-migration-identity.md)
+- [Identity](./germany-migration-identity.md)
 - [Sicherheit](./germany-migration-security.md)
 - [Verwaltungstools](./germany-migration-management-tools.md)
 - [Medien](./germany-migration-media.md)

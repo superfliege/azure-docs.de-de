@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 51db372b288ce388f58ca0e7fdcb2e1b97e511de
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 62356ee35631373b5a5d38ed356bbb2fb489807b
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755715"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577794"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azure
 
@@ -28,8 +28,8 @@ ms.locfileid: "58755715"
 [deployment-guide]:deployment-guide.md
 [dbms-guide]:dbms-guide.md
 [sap-hana-ha]:sap-hana-high-availability.md
-[virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#memory-preserving-maintenance
-[virtual-machines-windows-maintenance]:../../windows/maintenance-and-updates.md#memory-preserving-maintenance
+[virtual-machines-linux-maintenance]:../../linux/maintenance-and-updates.md#maintenance-not-requiring-a-reboot
+[virtual-machines-windows-maintenance]:../../windows/maintenance-and-updates.md#maintenance-not-requiring-a-reboot
 [sles-nfs-guide]:high-availability-guide-suse-nfs.md
 [sles-guide]:high-availability-guide-suse.md
 
@@ -84,7 +84,7 @@ Führen Sie auf allen **virtuellen Computern des iSCSI-Ziels** folgende Befehle 
 
 Führen Sie auf allen **virtuellen Computern des iSCSI-Ziels** folgende Befehle aus, um die iSCSI-Datenträger für die von Ihren SAP-Systemen verwendeten Cluster zu erstellen. Im folgenden Beispiel werden SBD-Geräte für mehrere Cluster erstellt. Es zeigt, wie Sie einen iSCSI-Zielserver für mehrere Cluster verwenden würden. Die SBD-Geräte werden auf dem Betriebssystemdatenträger platziert. Stellen Sie sicher, dass Sie über ausreichend Speicherplatz verfügen.
 
-**` nfs`** wird zum Identifizieren des NFS-Clusters verwendet, **ascsnw1** zum Identifizieren des ASCS-Clusters von **NW1** und **dbnw1** zum Identifizieren des Datenbankclusters von **NW1**. **nfs-0** und **nfs-1** sind die Hostnamen der NFS-Clusterknoten, **nw1-xscs-0** und **nw1-xscs-1** die Hostnamen des ASCS-Clusterknotens von **NW1** und **nw1-db-0** und **nw1-db-1** die Hostnamen der Clusterknoten der Datenbank. Ersetzen Sie diese durch die Hostnamen Ihrer Clusterknoten und die SID Ihres SAP-Systems.
+**`nfs`** wird zum Identifizieren des NFS-Clusters verwendet, **ascsnw1** zum Identifizieren des ASCS-Clusters von **NW1** und **dbnw1** zum Identifizieren des Datenbankclusters von **NW1**. **nfs-0** und **nfs-1** sind die Hostnamen der NFS-Clusterknoten, **nw1-xscs-0** und **nw1-xscs-1** die Hostnamen des ASCS-Clusterknotens von **NW1** und **nw1-db-0** und **nw1-db-1** die Hostnamen der Clusterknoten der Datenbank. Ersetzen Sie diese durch die Hostnamen Ihrer Clusterknoten und die SID Ihres SAP-Systems.
 
 <pre><code># Create the root folder for all SBD devices
 sudo mkdir /sbd
@@ -302,7 +302,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    <b>SBD_WATCHDOG="yes"</b>
    </code></pre>
 
-   Erstellen Sie die ` softdog`-Konfigurationsdatei.
+   Erstellen Sie die `softdog`-Konfigurationsdatei.
 
    <pre><code>echo softdog | sudo tee /etc/modules-load.d/softdog.conf
    </code></pre>

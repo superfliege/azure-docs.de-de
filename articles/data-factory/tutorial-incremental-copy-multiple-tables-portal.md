@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: d8d96d929e55bd4423bdb0cd0dd064e275462ce2
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 77be9d80d535cced48a39c47695257d4868f698c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445359"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257432"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Inkrementelles Laden aus mehreren SQL Server-Tabellen in eine Azure SQL-Datenbank
 In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus mehreren Tabellen einer lokalen SQL Server-Instanz in eine Azure SQL-Datenbank geladen werden.    
@@ -175,6 +175,11 @@ END
 ### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>Erstellen von Datentypen und zusätzlichen gespeicherten Prozeduren in Azure SQL-Datenbank
 Führen Sie die folgende Abfrage aus, um zwei gespeicherte Prozeduren und zwei Datentypen in der SQL-Datenbank zu erstellen. Sie werden zum Zusammenführen der Daten aus Quelltabellen in Zieltabellen verwendet.
 
+Um den Einstieg zu erleichtern, verwenden wir diese gespeicherten Prozeduren direkt. Dabei übergeben wir die Deltadaten mithilfe einer Tabellenvariablen und führen sie anschließend im Zielspeicher zusammen. In der Tabellenvariablen sollten maximal 100 Deltazeilen gespeichert werden.  
+
+Falls Sie im Zielspeicher eine große Anzahl von Deltazeilen zusammenführen möchten, empfiehlt es sich, die Deltadaten zunächst mithilfe der Kopieraktivität in eine temporäre Stagingtabelle im Zielspeicher zu kopieren und anschließen eine eigene gespeicherte Prozedur ohne Tabellenvariable zu erstellen, um die Daten aus der Stagingtabelle in der finalen Tabelle zusammenzuführen. 
+
+
 ```sql
 CREATE TYPE DataTypeforCustomerTable AS TABLE(
     PersonID int,
@@ -226,10 +231,9 @@ END
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
 1. Starten Sie den Webbrowser **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird zurzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
-1. Wählen Sie im Menü auf der linken Seite **Ressource erstellen** > **Daten + Analysen** > **Data Factory** aus: 
+1. Klicken Sie im Menü auf der linken Seite nacheinander auf **Neu**, **Data + Analytics** und **Data Factory**. 
    
-   ![Auswählen von „Data Factory“ im Bereich „Neu“](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
-
+   ![Neu -> Data Factory](./media/tutorial-incremental-copy-multiple-tables-portal/new-azure-data-factory-menu.png)
 1. Geben Sie auf der Seite **Neue Data Factory** unter **Name** den Namen **ADFMultiIncCopyTutorialDF** ein. 
       
      ![Seite „Neue Data Factory“](./media/tutorial-incremental-copy-multiple-tables-portal/new-azure-data-factory.png)
@@ -383,7 +387,7 @@ In diesem Schritt erstellen Sie Datasets zur Darstellung der Datenquelle, des Da
    ![Senkendataset – Verbindung](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-dynamicContent.png)
 
    
-   1. Nachdem Sie auf **Fertig stellen** geklickt haben, wird **\@dataset().SinkTableName** als Tabellenname angezeigt.
+ 1. Nachdem Sie auf **Fertig stellen** geklickt haben, wird **@dataset().SinkTableName** als Tabellenname angezeigt.
    
    ![Senkendataset – Verbindung](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png)
 
@@ -425,11 +429,11 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
     ![Pipelinename](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-name.png)
 1. Führen Sie im **Eigenschaftenfenster** einen der folgenden Schritte aus: 
 
-   1. Klicken Sie auf **+ NEU**. 
-   1. Geben Sie **tableList** für den Parameter **name** ein. 
-   1. Wählen Sie für den Parameter **type** die Option **Object**.
+    1. Klicken Sie auf **+ NEU**. 
+    1. Geben Sie **tableList** für den Parameter **name** ein. 
+    1. Wählen Sie für den Parameter **type** die Option **Object**.
 
-      ![Pipelineparameter](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-parameters.png) 
+    ![Pipelineparameter](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-parameters.png) 
 1. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Iteration & Conditionals** (Iteration und konditionelle Abschnitte), und ziehen Sie die **ForEach**-Aktivität auf die Oberfläche des Pipeline-Designers. Geben Sie im **Eigenschaftenfenster** auf der Registerkarte **Allgemein** den Text **IterateSQLTables** ein. 
 
     ![ForEach-Aktivität – Name](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-name.png)
@@ -458,69 +462,69 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
     ![Zweite Lookup-Aktivität – Name](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-name.png)
 1. Wechseln Sie zur Registerkarte **Einstellungen**.
 
-     1. Wählen Sie unter **Source Dataset** (Quelldataset) die Option **SourceDataset**. 
-     1. Wählen Sie unter **Abfrage verwenden** die Option **Abfrage**.
-     1. Geben Sie unter **Abfrage** die folgende SQL-Abfrage ein:
+    1. Wählen Sie unter **Source Dataset** (Quelldataset) die Option **SourceDataset**. 
+    1. Wählen Sie unter **Abfrage verwenden** die Option **Abfrage**.
+    1. Geben Sie unter **Abfrage** die folgende SQL-Abfrage ein:
 
-         ```sql    
-         select MAX(@{item().WaterMark_Column}) as NewWatermarkvalue from @{item().TABLE_NAME}
-         ```
+        ```sql    
+        select MAX(@{item().WaterMark_Column}) as NewWatermarkvalue from @{item().TABLE_NAME}
+        ```
     
-         ![Zweite Lookup-Aktivität – Einstellungen](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-settings.png)
+        ![Zweite Lookup-Aktivität – Einstellungen](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-settings.png)
 1. Ziehen Sie die **Copy**-Aktivität aus der Toolbox **Aktivitäten**, und geben Sie unter **Name** den Namen **IncrementalCopyActivity** ein. 
 
-     ![Copy-Aktivität – Name](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-name.png)
+    ![Copy-Aktivität – Name](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-name.png)
 1. Verbinden Sie die einzelnen **Lookup**-Aktivitäten jeweils mit der **Copy**-Aktivität. Ziehen Sie das **grüne** Feld, das an die **Lookup**-Aktivität angefügt ist, auf die **Copy**-Aktivität, um die Verbindung herzustellen. Lassen Sie die Maustaste los, wenn sich die Rahmenfarbe der Copy-Aktivität in **Blau** ändert.
 
-     ![Verbinden von Lookup- und Copy-Aktivitäten](./media/tutorial-incremental-copy-multiple-tables-portal/connect-lookup-to-copy.png)
+    ![Verbinden von Lookup- und Copy-Aktivitäten](./media/tutorial-incremental-copy-multiple-tables-portal/connect-lookup-to-copy.png)
 1. Wählen Sie die **Copy**-Aktivität in der Pipeline aus. Wechseln Sie im **Eigenschaftenfenster** zur Registerkarte **Quelle**. 
 
-     1. Wählen Sie unter **Source Dataset** (Quelldataset) die Option **SourceDataset**. 
-     1. Wählen Sie unter **Abfrage verwenden** die Option **Abfrage**. 
-     1. Geben Sie unter **Abfrage** die folgende SQL-Abfrage ein:
+    1. Wählen Sie unter **Source Dataset** (Quelldataset) die Option **SourceDataset**. 
+    1. Wählen Sie unter **Abfrage verwenden** die Option **Abfrage**. 
+    1. Geben Sie unter **Abfrage** die folgende SQL-Abfrage ein:
 
-         ```sql
-         select * from @{item().TABLE_NAME} where @{item().WaterMark_Column} > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and @{item().WaterMark_Column} <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'        
-         ```
+        ```sql
+        select * from @{item().TABLE_NAME} where @{item().WaterMark_Column} > '@{activity('LookupOldWaterMarkActivity').output.firstRow.WatermarkValue}' and @{item().WaterMark_Column} <= '@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}'        
+        ```
 
-         ![Copy-Aktivität – Quelleinstellungen](./media/tutorial-incremental-copy-multiple-tables-portal/copy-source-settings.png)
+        ![Copy-Aktivität – Quelleinstellungen](./media/tutorial-incremental-copy-multiple-tables-portal/copy-source-settings.png)
 1. Wechseln Sie zur Registerkarte **Senke**, und wählen Sie unter **Sink Dataset** (Senkendataset) die Option **SinkDataset**. 
         
-     ![Copy-Aktivität – Senkeneinstellungen](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
+    ![Copy-Aktivität – Senkeneinstellungen](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
 1. Wechseln Sie zur Registerkarte **Parameter**, und führen Sie die folgenden Schritte aus:
 
-     1. Geben Sie für die Eigenschaft **Sink Stored Procedure Name** die Zeichenfolge `@{item().StoredProcedureNameForMergeOperation}` ein.
-     1. Geben Sie für die Eigenschaft **Sink Table Type** die Zeichenfolge `@{item().TableType}` ein.
-     1. Geben Sie im Abschnitt **Sink Dataset** (Senkendataset) für den Parameter **SinkTableName** die Zeichenfolge `@{item().TABLE_NAME}` ein.
+    1. Geben Sie für die Eigenschaft **Sink Stored Procedure Name** die Zeichenfolge `@{item().StoredProcedureNameForMergeOperation}` ein.
+    1. Geben Sie für die Eigenschaft **Sink Table Type** die Zeichenfolge `@{item().TableType}` ein.
+    1. Geben Sie im Abschnitt **Sink Dataset** (Senkendataset) für den Parameter **SinkTableName** die Zeichenfolge `@{item().TABLE_NAME}` ein.
 
-         ![Copy-Aktivität – Parameter](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
+        ![Copy-Aktivität – Parameter](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
 1. Ziehen Sie die **Stored Procedure**-Aktivität aus der Toolbox **Aktivitäten** in die Oberfläche des Pipeline-Designers. Verbinden Sie die **Copy**-Aktivität mit der **Stored Procedure**-Aktivität. 
 
-     ![Copy-Aktivität – Parameter](./media/tutorial-incremental-copy-multiple-tables-portal/connect-copy-to-sproc.png)
+    ![Copy-Aktivität – Parameter](./media/tutorial-incremental-copy-multiple-tables-portal/connect-copy-to-sproc.png)
 1. Wählen Sie die **Stored Procedure**-Aktivität in der Pipeline aus, und geben Sie im **Eigenschaftenfenster** auf der Registerkarte **Allgemein** unter **Name** den Namen **StoredProceduretoWriteWatermarkActivity** ein. 
 
-     ![Stored Procedure-Aktivität – Name](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-name.png)
+    ![Stored Procedure-Aktivität – Name](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-name.png)
 1. Wechseln Sie zur Registerkarte **SQL-Konto**, und wählen Sie unter **Verknüpfter Dienst** die Option **AzureSqlDatabaseLinkedService**.
 
-     ![Stored Procedure-Aktivität – SQL-Konto](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
+    ![Stored Procedure-Aktivität – SQL-Konto](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
 1. Wechseln Sie zur Registerkarte **Gespeicherte Prozedur**, und führen Sie die folgenden Schritte aus:
 
-     1. Wählen Sie unter **Name der gespeicherten Prozedur** den Namen `usp_write_watermark` aus. 
-     1. Wählen Sie die Option **Import parameter** (Importparameter). 
-     1. Geben Sie die folgenden Werte für die Parameter an: 
+    1. Wählen Sie unter **Name der gespeicherten Prozedur** den Namen `usp_write_watermark` aus. 
+    1. Wählen Sie die Option **Import parameter** (Importparameter). 
+    1. Geben Sie die folgenden Werte für die Parameter an: 
 
-         | NAME | Type | Wert | 
-         | ---- | ---- | ----- |
-         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
-         | TableName | Zeichenfolge | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
+        | NAME | Type | Wert | 
+        | ---- | ---- | ----- |
+        | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
+        | TableName | Zeichenfolge | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
-         ![Stored Procedure-Aktivität – Einstellungen für gespeicherte Prozeduren](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
+        ![Stored Procedure-Aktivität – Einstellungen für gespeicherte Prozeduren](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
 1. Klicken Sie im linken Bereich auf **Veröffentlichen**. Mit dieser Aktion werden die von Ihnen erstellten Entitäten für den Data Factory-Dienst veröffentlicht. 
 
-     ![Schaltfläche "Veröffentlichen"](./media/tutorial-incremental-copy-multiple-tables-portal/publish-button.png)
+    ![Schaltfläche "Veröffentlichen"](./media/tutorial-incremental-copy-multiple-tables-portal/publish-button.png)
 1. Warten Sie, bis die Meldung **Erfolgreich veröffentlicht** angezeigt wird. Klicken Sie zum Anzeigen der Benachrichtigungen auf den Link **Benachrichtigungen anzeigen**. Schließen Sie das Benachrichtigungsfenster, indem Sie auf das **X** klicken.
 
-     ![Anzeigen von Benachrichtigungen](./media/tutorial-incremental-copy-multiple-tables-portal/notifications.png)
+    ![Anzeigen von Benachrichtigungen](./media/tutorial-incremental-copy-multiple-tables-portal/notifications.png)
 
  
 ## <a name="run-the-pipeline"></a>Führen Sie die Pipeline aus.
@@ -561,12 +565,12 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
 ## <a name="review-the-results"></a>Überprüfen der Ergebnisse
 Führen Sie in SQL Server Management Studio die folgenden Abfragen für die SQL-Zieldatenbank aus, um sicherzustellen, dass die Daten aus den Quelltabellen in die Zieltabellen kopiert wurden: 
 
-**Abfrage** 
+**Abfragen** 
 ```sql
 select * from customer_table
 ```
 
-**Ausgabe**
+**Output**
 ```
 ===========================================
 PersonID    Name    LastModifytime
@@ -578,13 +582,13 @@ PersonID    Name    LastModifytime
 5           Anny    2017-09-05 08:06:00.000
 ```
 
-**Abfrage**
+**Abfragen**
 
 ```sql
 select * from project_table
 ```
 
-**Ausgabe**
+**Output**
 
 ```
 ===================================
@@ -595,13 +599,13 @@ project2    2016-02-02 01:23:00.000
 project3    2017-03-04 05:16:00.000
 ```
 
-**Abfrage**
+**Abfragen**
 
 ```sql
 select * from watermarktable
 ```
 
-**Ausgabe**
+**Output**
 
 ```
 ======================================
@@ -663,12 +667,12 @@ VALUES
 ## <a name="review-the-final-results"></a>Überprüfen der Endergebnisse
 Führen Sie in SQL Server Management Studio die folgenden Abfragen für die Zieldatenbank aus, um sicherzustellen, dass die aktualisierten bzw. neuen Daten aus den Quelltabellen in die Zieltabellen kopiert wurden. 
 
-**Abfrage** 
+**Abfragen** 
 ```sql
 select * from customer_table
 ```
 
-**Ausgabe**
+**Output**
 ```
 ===========================================
 PersonID    Name    LastModifytime
@@ -682,13 +686,13 @@ PersonID    Name    LastModifytime
 
 Beachten Sie die neuen Werte in **Name** und **LastModifytime** für **PersonID** für Nummer 3. 
 
-**Abfrage**
+**Abfragen**
 
 ```sql
 select * from project_table
 ```
 
-**Ausgabe**
+**Output**
 
 ```
 ===================================
@@ -702,13 +706,13 @@ NewProject  2017-10-01 00:00:00.000
 
 Beachten Sie, dass der Projekttabelle (project_table) der Eintrag **NewProject** hinzugefügt wurde. 
 
-**Abfrage**
+**Abfragen**
 
 ```sql
 select * from watermarktable
 ```
 
-**Ausgabe**
+**Output**
 
 ```
 ======================================

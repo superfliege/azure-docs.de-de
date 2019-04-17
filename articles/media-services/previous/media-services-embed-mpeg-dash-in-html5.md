@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 1390d68a93dd3d80b5977bab6665553ea3f8b398
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: f521fd11a2053cf8cf1ea0f9f91667fe475f0eee
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403073"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522434"
 ---
 # <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>Einbetten eines Videos mit adaptivem Streaming im MPEG-DASH-Format in eine HTML5-Anwendung mit DASH.js  
 
@@ -86,7 +86,7 @@ Als Nächstes instanziieren Sie MediaPlayer, die Hauptklasse des dash.js-Framewo
 
 Die startup()-Funktion der MediaPlayer-Klasse wird aufgerufen, um sicherzustellen, dass der Player für die Wiedergabe des Videos bereit ist. Diese Funktion stellt unter anderem sicher, dass alle erforderlichen Klassen (wie vom Kontext definiert) geladen wurden. Wenn der Player bereit ist, können Sie ihn mithilfe der attachView()-Funktion mit dem Videoelement verknüpfen. Mit der Startfunktion kann MediaPlayer den Videostream in das Element einfügen und zudem die Wiedergabe nach Bedarf steuern.
 
-Übergeben Sie die URL der MPD-Datei an den MediaPlayer, damit dieser weiß, welches Video wiedergegeben werden soll. Die soeben erstellte setupVideo()-Funktion muss ausgeführt werden, sobald die Seite vollständig geladen ist. Verwenden Sie dazu das onload-Ereignis des Textelements. Ändern Sie das <body>-Element wie folgt:
+Übergeben Sie die URL der MPD-Datei an den MediaPlayer, damit dieser weiß, welches Video wiedergegeben werden soll. Die soeben erstellte setupVideo()-Funktion muss ausgeführt werden, sobald die Seite vollständig geladen ist. Verwenden Sie dazu das onload-Ereignis des Textelements. Ändern Sie das `<body>`-Element wie folgt:
 
 ```html
     <body onload="setupVideo()">

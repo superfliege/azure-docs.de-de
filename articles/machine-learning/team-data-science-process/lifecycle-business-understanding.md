@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3e897a3fbc76a75e526e4d0706a2678cd29dfc2e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 35d03a52125bd2646f86b96bcffe123d9fab7f64
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477453"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545313"
 ---
 # <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>Die Phase der geschäftlichen Aspekte des Lebenszyklus des Team Data Science-Prozesses.
 
@@ -46,7 +46,7 @@ In dieser Phase werden zwei Hauptaufgaben durchgeführt:
 ### <a name="define-objectives"></a>Definieren von Zielen
 1. Ein zentrales Ziel dieses Schritts ist die Identifizierung der wichtigsten geschäftlichen Variablen, die von der Analyse vorhergesagt werden müssen. Diese Variablen werden als *Modellziele* bezeichnet und zusammen mit den zugehörigen Metriken verwendet, um den Erfolg des Projekts zu bestimmen. Zwei Beispiele für diese Ziele sind Umsatzprognosen oder die Wahrscheinlichkeit, dass eine Bestellung betrügerisch ist.
 
-2. Definieren Sie die Projektziele, indem Sie präzise Fragen, die relevant, spezifisch und eindeutig sind, stellen und verfeinern. Data Science ist ein Prozess, bei dem Namen und Zahlen verwendet werden, um Antworten auf solche Fragen zu finden. Weitere Informationen zum Stellen präziser Fragen finden Sie im Blog [How to do Data Science](https://blogs.technet.microsoft.com/machinelearning/2016/03/28/how-to-do-data-science/) (Informationen zu Data Science). Data Science oder Machine Learning wird normalerweise verwendet, um fünf Arten von Fragen zu beantworten:
+2. Definieren Sie die Projektziele, indem Sie präzise Fragen, die relevant, spezifisch und eindeutig sind, stellen und verfeinern. Data Science ist ein Prozess, bei dem Namen und Zahlen verwendet werden, um Antworten auf solche Fragen zu finden. Data Science oder Machine Learning wird normalerweise verwendet, um fünf Arten von Fragen zu beantworten:
  
    * Wie viel bzw. wie viele? (Regression)
    * Welche Kategorie? (Klassifizierung)
