@@ -44,7 +44,7 @@ Folgende Eigenschaften werden für den mit Azure Search verknüpften Dienst unte
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureSearch** | Ja |
-| URL | URL für den Azure Search-Dienst. | Ja |
+| url | URL für den Azure Search-Dienst. | Ja |
 | key | Admin-Schlüssel für den Azure Search-Dienst. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
 
@@ -169,11 +169,11 @@ In der folgenden Tabelle wird angegeben, ob ein Azure Search-Datentyp unterstüt
 
 | Azure Search-Datentyp | In Azure Search-Senke unterstützt |
 | ---------------------- | ------------------------------ |
-| Zeichenfolge | J |
+| String | J |
 | Int32 | J |
 | Int64 | J |
 | Double | J |
-| Boolescher Wert | J |
+| Boolean | J |
 | DataTimeOffset | J |
 | String Array | N |
 | GeographyPoint | N |
