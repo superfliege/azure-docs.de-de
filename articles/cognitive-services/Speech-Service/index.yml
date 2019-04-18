@@ -213,8 +213,8 @@ sections:
         items:
           - html: <a href="speech-to-text-sample.md">Spracherkennung (SR)</a><br/>
           - html: <a href="intent.md">Absichtserkennung</a><br/>
-          - html: <a href="translation.md">Sprachübersetzung</a>
-          - html: <a href="quickstart-text-to-speech-dotnet-windows.md">Text-zu-Sprache</a><br/>
+          - html: <a href="translation.md">Übersetzung</a>
+          - html: <a href="quickstart-text-to-speech-dotnet-windows.md">Sprachsynthese</a><br/>
   - title: Beispiele
     items:
       - type: paragraph

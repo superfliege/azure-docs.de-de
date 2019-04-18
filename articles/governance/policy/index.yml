@@ -47,7 +47,7 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: <a href="/azure/governance/policy/tutorials/create-and-manage">Erstellen und Verwalten einer Azure-Richtlinie</a>
+          - html: <a href="/azure/governance/policy/tutorials/create-and-manage">Erstellen und Verwalten von Azure Policy</a>
           - html: <a href="/azure/governance/policy/tutorials/create-custom-policy-definition">Erstellen einer benutzerdefinierten Richtliniendefinition</a>
   - title: Beispiele
     items:
@@ -67,6 +67,6 @@ sections:
           - title: Befehlszeile
             html: '<p><a href="/cli/azure/policy">Azure-Befehlszeilenschnittstelle</a></p><p><a href="/powershell/module/az.resources/#policies">Azure PowerShell (Richtlinie)</a></p><p><a href="/powershell/module/az.policyinsights#policy_insights">Azure PowerShell (Policy Insights)</a></p><p><a href="https://www.powershellgallery.com/packages/Az.GuestConfiguration">Azure PowerShell (Gastkonfiguration)</a></p>'
           - title: Resource Manager-Vorlagen
-            html: <p><a href="/azure/templates/microsoft.authorization/policyassignments">Arbeitsaufträge</a></p><p><a href="/azure/templates/microsoft.authorization/policydefinitions">Richtliniendefinitionen</a></p><p><a href="/azure/templates/microsoft.authorization/policysetdefinitions">Initiativendefinitionen</a></p>
+            html: <p><a href="/azure/templates/microsoft.authorization/policyassignments">Zuweisungen</a></p><p><a href="/azure/templates/microsoft.authorization/policydefinitions">Richtliniendefinitionen</a></p><p><a href="/azure/templates/microsoft.authorization/policysetdefinitions">Initiativendefinitionen</a></p>
           - title: REST
-            html: <p><a href="/rest/api/policy-insights/policyevents">Ereignisse</a></p><p><a href="/rest/api/policy-insights/policystates">Zustände</a></p><p><a href="/rest/api/resources/policyassignments">Arbeitsaufträge</a></p><p><a href="/rest/api/resources/policydefinitions">Richtliniendefinitionen</a></p><p><a href="/rest/api/resources/policysetdefinitions">Initiativendefinitionen</a></p><p><a href="/rest/api/policy-insights/policytrackedresources">Durch Richtlinie überwachte Ressourcen</a></p><p><a href="/rest/api/policy-insights/remediations">Korrekturen</a></p><p><a href="/rest/api/guestconfiguration/">Gastkonfiguration</a></p>
+            html: <p><a href="/rest/api/policy-insights/policyevents">Ereignisse</a></p><p><a href="/rest/api/policy-insights/policystates">Zustände</a></p><p><a href="/rest/api/resources/policyassignments">Zuweisungen</a></p><p><a href="/rest/api/resources/policydefinitions">Richtliniendefinitionen</a></p><p><a href="/rest/api/resources/policysetdefinitions">Initiativendefinitionen</a></p><p><a href="/rest/api/policy-insights/policytrackedresources">Durch Richtlinie überwachte Ressourcen</a></p><p><a href="/rest/api/policy-insights/remediations">Korrekturen</a></p><p><a href="/rest/api/guestconfiguration/">Gastkonfiguration</a></p>

@@ -69,10 +69,10 @@ sections:
         className: cardsD
         items:
           - title: Vorlagen
-            html: <p><a href="/azure/templates/">Vorlagenreferenz</a></p><p><a href="/azure/resource-group-template-functions">Funktionen von Azure-Ressourcen-Manager-Vorlagen</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-functions">Funktionen von Benutzeroberflächendefinitionen</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-elements">Elemente für Benutzeroberflächendefinitionen</a></p>
+            html: <p><a href="/azure/templates/">Vorlagenreferenz</a></p><p><a href="/azure/resource-group-template-functions">Vorlagenfunktionen</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-functions">Funktionen von Benutzeroberflächen-Definitionen</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-elements">Elemente für Benutzeroberflächendefinitionen</a></p>
           - title: Befehlszeile
             html: <p><a href="/cli/azure/resource">Azure-Befehlszeilenschnittstelle</a></p><p><a href="/powershell/module/az.resources">Azure PowerShell</a></p>
-          - title: Languages
+          - title: Sprachen
             html: <p><a href="/dotnet/api/microsoft.azure.management.resourcemanager">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.resources">Java</a></p><p><a href="/python/api/overview/azure/resources?view=azure-python">Python</a></p>
           - title: REST
             html: <p><a href="/rest/api/resources/">REST-API</a></p>
