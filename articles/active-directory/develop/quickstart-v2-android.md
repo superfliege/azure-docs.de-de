@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Azure AD v2 Android | Microsoft Docs'
-description: Erfahren Sie, wie Android-Anwendungen eine API aufrufen können, für die Zugriffstoken vom Azure Active Directory v2.0-Endpunkt erforderlich sind.
+title: 'Schnellstart: Microsoft Identity Platform – Android | Azure'
+description: Hier erfahren Sie, wie Android-Anwendungen eine API aufrufen können, für die Zugriffstoken vom Microsoft Identity Platform-Endpunkt erforderlich sind.
 services: active-directory
 documentationcenter: dev-center-name
 author: danieldobalian
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/01/2019
+ms.date: 04/11/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd78e6acd801f3b973cc45609b72f86b257f4d43
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: f1f174229da565627c0e5791f53031b338880cb3
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862759"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495310"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Schnellstart: Benutzeranmeldung und Aufrufen der Microsoft Graph-API aus einer Android-App
 
@@ -30,7 +30,7 @@ ms.locfileid: "58862759"
 
 Dieser Schnellstart enthält ein Codebeispiel, das zeigt, wie eine Android-Anwendung persönliche, Geschäfts-, Schul- oder Unikonten anmelden, ein Zugriffstoken abrufen und die Microsoft Graph-API aufrufen kann.
 
-![Zeigt, wie die in diesem Schnellstart generierte Beispiel-App funktioniert](media/quickstart-v2-android/android-intro-updated.png)
+![Zeigt, wie die in diesem Schnellstart generierte Beispiel-App funktioniert](media/quickstart-v2-android/android-intro.svg)
 
 > [!NOTE]
 > **Voraussetzungen**
@@ -47,7 +47,7 @@ Dieser Schnellstart enthält ein Codebeispiel, das zeigt, wie eine Android-Anwen
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Option 1: Registrieren und automatisches Konfigurieren Ihrer App und anschließendes Herunterladen des Codebeispiels
 > #### <a name="step-1-register-your-application"></a>Schritt 1: Anwendung registrieren
 > So registrieren Sie Ihre App:
-> 1. Navigieren Sie zur [Anwendungsregistrierung (Vorschau) im Azure-Portal](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AndroidQuickstartPage/sourceType/docs).
+> 1. Navigieren Sie zum neuen Bereich [Azure-Portal – App-Registrierungen](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AndroidQuickstartPage/sourceType/docs).
 > 1. Geben Sie einen Namen für Ihre Anwendung ein, und wählen Sie **Registrieren** aus.
 > 1. Befolgen Sie die Anweisungen, um Ihre neue Anwendung mit nur einem Klick herunterzuladen und automatisch zu konfigurieren.
 >
@@ -58,8 +58,9 @@ Dieser Schnellstart enthält ein Codebeispiel, das zeigt, wie eine Android-Anwen
 >
 > 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
 > 1. Wenn Sie mit Ihrem Konto auf mehrere Mandanten zugreifen können, klicken Sie rechts oben auf Ihr Konto, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
-> 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** und anschließend **App-Registrierungen (Vorschau)** > **Neue Registrierung** aus.
-> 1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** die Registrierungsinformationen Ihrer Anwendung ein:
+> 1. Navigieren Sie zur Seite [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) von Microsoft Identity Platform für Entwickler.
+> 1. Wählen Sie **Neue Registrierung** aus.
+> 1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** die Registrierungsinformationen für Ihre Anwendung ein:
 >      - Geben Sie im Abschnitt **Name** einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird (beispielsweise `Android-Quickstart`).
 >      - Klicken Sie auf die Schaltfläche `Register`.
 > 1. Navigieren Sie zu `Authentication` > `Redirect URIs` > `Suggested Redirect URIs for public clients`, und wählen Sie den Umleitungs-URI mit dem Format **msal{App-ID}://auth** aus. Speichern Sie die Änderungen.
@@ -145,7 +146,7 @@ Lesen Sie die folgenden Abschnitte, um mehr über diesen Schnellstart zu erfahre
 
 ### <a name="msal"></a>MSAL
 
-MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) ist die Bibliothek zum Anmelden von Benutzern und Anfordern von Token, die für den Zugriff auf eine durch Microsoft Azure Active Directory (Azure AD) geschützte API verwendet wird. Sie können Gradle verwenden, um sie zu installieren, indem Sie Folgendes in **Gradle Scripts** > **build.gradle (Modul: app)** unter **Dependencies** hinzufügen:
+MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) ist die Bibliothek zum Anmelden von Benutzern und Anfordern von Token, die für den Zugriff auf eine durch Microsoft Identity Platform geschützte API verwendet wird. Sie können Gradle verwenden, um sie zu installieren, indem Sie Folgendes in **Gradle Scripts** > **build.gradle (Modul: app)** unter **Dependencies** hinzufügen:
 
 ```gradle  
 implementation 'com.android.volley:volley:1.1.1'
@@ -178,7 +179,7 @@ MSAL verwendet zwei Methoden zum Abrufen von Token: `acquireToken` und `acquireT
 
 #### <a name="getting-a-user-token-interactively"></a>Interaktives Abrufen eines Benutzertokens
 
-In einigen Situationen müssen Benutzer gezwungen werden, mit dem Azure AD v2.0-Endpunkt zu interagieren. Dies führt zu einem Kontextwechsel zum Systembrowser, um entweder die Anmeldeinformationen der Benutzer zu überprüfen oder die Zustimmung zu erhalten. Beispiele hierfür sind:
+In einigen Situationen müssen Benutzer gezwungen werden, mit dem Microsoft Identity Platform-Endpunkt zu interagieren. Dies führt zu einem Kontextwechsel zum Systembrowser, um entweder die Anmeldeinformationen der Benutzer zu überprüfen oder die Zustimmung zu erhalten. Beispiele hierfür sind:
 
 * Erstmaliges Anmelden von Benutzern bei der Anwendung.
 * Benutzer müssen ihre Anmeldeinformationen erneut eingeben, weil das Kennwort abgelaufen ist.

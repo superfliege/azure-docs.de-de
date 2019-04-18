@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Azure AD v2 iOS | Microsoft Docs'
+title: 'Schnellstart: Microsoft Identity Platform – iOS | Azure'
 description: Erfahren Sie, wie Sie in einer nativen iOS-Anwendung Benutzer anmelden und Microsoft Graph abfragen.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +17,12 @@ ms.date: 03/20/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57aabb25b960c1135704c62c30b5724026078b08
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: e6340e0f349d66ecf6baaca481722396a6d786c5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439261"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496128"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-native-app"></a>Schnellstart: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer nativen iOS-App
 
@@ -30,7 +30,7 @@ ms.locfileid: "58439261"
 
 Dieser Schnellstart enthält ein Codebeispiel, das zeigt, wie eine native iOS-Anwendung persönliche, Geschäfts-, Schul- oder Unikonten anmelden, ein Zugriffstoken abrufen und die Microsoft Graph-API aufrufen kann.
 
-![Zeigt, wie die in diesem Schnellstart generierte Beispiel-App funktioniert](media/quickstart-v2-ios/ios-intro-updated.png)
+![Zeigt, wie die in diesem Schnellstart generierte Beispiel-App funktioniert](media/quickstart-v2-ios/ios-intro.svg)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download"></a>Registrieren und herunterladen
@@ -147,7 +147,7 @@ self.applicationContext = try MSALPublicClientApplication(clientId: kClientID, a
 > |Hinweis: ||
 > |---------|---------|
 > | `clientId` | Die Anwendungs-ID der in *portal.azure.com* registrierten Anwendung. |
-> | `authority` | Der Azure AD v2.0-Endpunkt. In den meisten Fällen ist dies *https<span/>://login.microsoftonline.com/common*. |
+> | `authority` | Der Microsoft Identity Platform-Endpunkt. In den meisten Fällen ist dies *https<span/>://login.microsoftonline.com/common*. |
 
 ### <a name="requesting-tokens"></a>Anfordern von Token
 
@@ -155,7 +155,7 @@ MSAL verfügt über zwei Methoden, die zum Abrufen von Token verwendet werden: `
 
 #### <a name="getting-an-access-token-interactively"></a>Interaktives Abrufen eines Zugriffstokens
 
-In einigen Situationen müssen Benutzer gezwungen werden, mit dem Azure Active Directory (Azure AD) v2.0-Endpunkt zu interagieren. Dies führt zu einem Kontextwechsel zum Systembrowser, um entweder die Anmeldeinformationen der Benutzer zu überprüfen oder die Zustimmung zu erhalten. Beispiele hierfür sind:
+In einigen Situationen müssen Benutzer gezwungen werden, mit dem Microsoft Identity Platform-Endpunkt zu interagieren. Dies führt zu einem Kontextwechsel zum Systembrowser, um entweder die Anmeldeinformationen der Benutzer zu überprüfen oder die Zustimmung zu erhalten. Beispiele hierfür sind:
 
 * Erstmaliges Anmelden von Benutzern bei der Anwendung.
 * Benutzer müssen ihre Anmeldeinformationen erneut eingeben, weil das Kennwort abgelaufen ist.

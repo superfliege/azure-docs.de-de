@@ -11,49 +11,62 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/13/2018
+ms.date: 04/01/2019
 ms.author: celested
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4239c07c73825f75dd39053e312ae731f6f0d7d1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d03ca64f3f3d2f034433f2aaa49f6babb7f9e5b4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162712"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260288"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal
+
 In diesem Artikel wird beschrieben, wie das [Azure-Portal](https://portal.azure.com) zum Verwalten der automatischen Benutzerkontobereitstellung und zum Aufheben der Bereitstellung für Anwendungen, die dies unterstützen, verwendet wird. Weitere Informationen zur automatisierten Benutzerbereitstellung sowie zu deren Funktionsweise finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](user-provisioning.md).
 
 ## <a name="finding-your-apps-in-the-portal"></a>Suchen Ihrer Apps im Portal
-Alle Anwendungen, die in einem Verzeichnis für einmaliges Anmelden konfiguriert sind, können im [Azure-Portal](https://portal.azure.com) angezeigt und verwaltet werden. Sie finden die Anwendungen im Portal im Abschnitt **Alle Dienste** &gt; **Unternehmensanwendungen**. Unternehmens-Apps sind Apps, die innerhalb Ihrer Organisation bereitgestellt und verwendet werden.
 
-![Bereich für Unternehmensanwendungen](./media/configure-automatic-user-provisioning-portal/enterprise-apps-pane.png)
+Im Azure Active Directory-Portal können Sie alle Anwendungen in einem Verzeichnis anzeigen und verwalten, die für einmaliges Anmelden konfiguriert sind. Unternehmens-Apps sind Apps, die innerhalb Ihrer Organisation bereitgestellt und verwendet werden. Führen Sie zum Anzeigen und Verwalten Ihrer Unternehmens-Apps diese Schritte aus:
 
-Wählen Sie auf der linken Seite den Link **All applications** (Alle Anwendungen), um eine Liste aller konfigurierten Apps anzuzeigen, einschließlich Apps, die aus dem Katalog hinzugefügt wurden. Beim Auswählen einer App wird der Ressourcenbereich für die App geladen, in dem Berichte für die App angezeigt und eine Reihe von Einstellungen verwaltet werden können.
+1. Öffnen Sie das [Azure Active Directory-Portal](https://aad.portal.azure.com).
 
-Einstellungen für die Bereitstellung von Benutzerkonten können durch Auswählen der Option **Bereitstellung** auf der linken Seite verwaltet werden.
+1. Wählen Sie im linken Bereich die Option **Unternehmensanwendungen** aus. Eine Liste aller konfigurierten Apps wird angezeigt, einschließlich Apps, die aus dem Katalog hinzugefügt wurden.
 
-![Bereich für Anwendungsressourcen](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
+1. Wählen Sie eine beliebige App aus, um ihren Ressourcenbereich zu laden, in dem Sie Berichte anzeigen und App-Einstellungen verwalten können.
+
+1. Wählen Sie **Bereitstellung** aus, um die Einstellungen für die Bereitstellung von Benutzerkonten für die ausgewählte App zu verwalten.
+
+   ![Bereich für Anwendungsressourcen](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
 
 ## <a name="provisioning-modes"></a>Bereitstellungsmodi
-Der Bereich **Bereitstellung** beginnt mit dem Menü **Modus**, das anzeigt, welche Bereitstellungsmodi für eine Unternehmensanwendung unterstützt werden, und in dem Sie die Modi konfigurieren können. Die verfügbaren Optionen umfassen:
 
-* **Automatisch**: Diese Option wird angezeigt, wenn Azure AD die automatische API-basierte Bereitstellung bzw. das Aufheben der Bereitstellung von Benutzerkonten für diese Anwendung unterstützt. Bei Auswahl dieses Modus wird eine Schnittstelle angezeigt, die Administratoren durch folgende Aufgaben führt: Konfiguration von Azure AD zum Herstellen einer Verbindung mit der Benutzerverwaltungs-API der Anwendung, Erstellen von Kontozuordnungen und -workflows, die den Fluss von Benutzerkontodaten zwischen Azure AD und der App definieren und Verwaltung des Azure AD-Bereitstellungsdiensts.
-* **Manuell** : Diese Option wird angezeigt, wenn Azure AD die automatische Bereitstellung von Benutzerkonten für diese Anwendung nicht unterstützt. Diese Option bedeutet, dass in der Anwendung gespeicherte Benutzerkontodatensätze basierend auf den Benutzerverwaltungs- und Bereitstellungsfunktionen dieser Anwendung (einschließlich SAML Just-in-Time-Bereitstellung) mit einem externen Prozess verwaltet werden müssen.
+Der Bereich **Bereitstellung** beginnt mit dem Menü **Modus**, das die unterstützten Bereitstellungsmodi eine Unternehmensanwendung zeigt und deren Konfiguration ermöglicht. Die verfügbaren Optionen umfassen:
+
+* **Automatisch**: Diese Option wird angezeigt, wenn Azure AD die automatische API-basierte Bereitstellung bzw. das Aufheben der Bereitstellung von Benutzerkonten für diese Anwendung unterstützt. Wählen Sie den Modus zum Anzeigen einer Oberfläche, auf der Administratoren folgende Aufgaben ausführen können:
+
+  * Konfigurieren von Azure AD zum Herstellen einer Verbindung mit der Benutzerverwaltungs-API der Anwendung
+  * Erstellen von Kontozuordnungen und Workflows, die definieren, wie die Benutzerkontendaten zwischen Azure AD und der App übertragen werden sollen
+  * Verwalten des Azure AD-Bereitstellungsdiensts
+
+* **Manuell**: Diese Option wird angezeigt, wenn Azure AD die automatische Bereitstellung von Benutzerkonten für diese Anwendung nicht unterstützt. Dies bedeutet, dass in der Anwendung gespeicherte Benutzerkontodatensätze basierend auf den Benutzerverwaltungs- und Bereitstellungsfunktionen dieser Anwendung (einschließlich SAML Just-in-Time-Bereitstellung) mit einem externen Prozess verwaltet werden müssen.
 
 ## <a name="configuring-automatic-user-account-provisioning"></a>Konfigurieren der automatischen Bereitstellung von Benutzerkonten
-Bei Auswahl der Option **Automatisch** wird ein Bildschirm angezeigt, der in vier Abschnitte unterteilt ist:
+
+Wählen Sie die Option **Automatisch** aus, um Einstellungen für Administratoranmeldeinformationen, Zuordnungen, das Starten und Beenden sowie für die Synchronisierung anzugeben.
 
 ### <a name="admin-credentials"></a>Administratoranmeldeinformationen
-In diesem Abschnitt müssen die Anmeldeinformationen für Azure AD eingegeben werden, um eine Verbindung mit der Benutzerverwaltungs-API der Anwendung herzustellen. Die erforderliche Eingabe variiert je nach Anwendung. Informationen zu den Anmeldeinformationstypen und den Anforderungen für bestimmte Anwendungen finden Sie im [Konfigurationstutorial der jeweiligen Anwendung](user-provisioning.md).
 
-Durch Auswählen der Schaltfläche **Verbindung testen** können Sie die Anmeldeinformationen testen, indem Azure AD versucht, mit den angegebenen Anmeldeinformationen eine Verbindung mit der Bereitstellungs-App der App herzustellen.
+Erweitern Sie **Administratoranmeldeinformationen**, um die Anmeldeinformationen einzugeben, die Azure AD zum Herstellen einer Verbindung mit der Benutzerverwaltungs-API der Anwendung benötigt. Die erforderliche Eingabe variiert je nach Anwendung. Informationen zu den Anmeldeinformationstypen und den Anforderungen für bestimmte Anwendungen finden Sie im [Konfigurationstutorial der jeweiligen Anwendung](user-provisioning.md).
+
+Durch Klicken auf **Verbindung testen** können Sie die Anmeldeinformationen testen, indem Sie Azure AD versuchen lassen, mit den angegebenen Anmeldeinformationen eine Verbindung mit der Bereitstellungs-App der App herzustellen.
 
 ### <a name="mappings"></a>Zuordnungen
-In diesem Abschnitt können Administratoren anzeigen und bearbeiten, welche Benutzerattribute zwischen Azure AD und der Zielanwendung übertragen werden, wenn Benutzerkonten bereitgestellt oder aktualisiert werden.
 
-Zwischen Azure AD-Benutzerobjekten und den Benutzerobjekten der einzelnen SaaS-Apps ist eine vorkonfigurierte Sammlung von Zuordnungen vorhanden. Einige Apps verwalten andere Objekttypen, z. B. Gruppen oder Kontakte. Bei Auswahl einer dieser Zuordnungen in die Tabelle wird rechts der Mapping-Editor geöffnet, in dem Zuordnungen angezeigt und angepasst werden können.
+Erweitern Sie **Zuordnungen**, um die Benutzerattribute anzuzeigen und zu bearbeiten, die beim Bereitstellen oder Aktualisieren von Benutzerkonten zwischen Azure AD und der Zielanwendung übertragen werden.
+
+Zwischen Azure AD-Benutzerobjekten und Benutzerobjekten der einzelnen SaaS-Apps ist eine vorkonfigurierte Gruppe von Zuordnungen vorhanden. Einige Apps verwalten andere Objekttypen, z. B. Gruppen oder Kontakte. Wählen Sie in der Tabelle eine Zuordnung aus, um den Zuordnungs-Editor auf der rechten Seite zu öffnen, in dem Sie diese anzeigen und anpassen können.
 
 ![Bereich für Anwendungsressourcen](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
 
@@ -61,21 +74,30 @@ Unterstützte Anpassungen umfassen:
 
 * Aktivieren und Deaktivieren von Zuordnungen für bestimmte Objekte, z. B. das Azure AD-Benutzerobjekt an das Benutzerobjekt der SaaS-App.
 * Bearbeiten der Attribute, die vom Azure AD-Benutzerobjekt an das Benutzerobjekt der App übermittelt werden Weitere Informationen zur Attributzuordnung finden Sie unter [Grundlegendes zu Attributzuordnungstypen](customize-application-attributes.md#understanding-attribute-mapping-types).
-* Filtern Sie die Bereitstellungsaktionen, die Azure AD für die Zielanwendung ausführt. Anstatt eine vollständige Synchronisierung von Objekten durch Azure AD zuzulassen, können Sie die ausgeführten Aktionen beschränken. Beispiel: Wenn Sie nur **Aktualisieren**auswählen, aktualisiert Azure AD nur vorhandene Benutzerkonten in einer Anwendung und erstellt keine neuen. Wird nur **Erstellen**ausgewählt, erstellt Azure nur neue Benutzerkonten, aktualisiert jedoch keine vorhandenen Konten. Dieses Feature ermöglicht Administratoren das Erstellen verschiedener Zuordnungen für die Kontoerstellung und das Aktualisieren von Workflows.
+* Filtern Sie die Bereitstellungsaktionen, die Azure AD für die Zielanwendung ausführt. Anstatt eine vollständige Synchronisierung von Objekten durch Azure AD zuzulassen, können Sie die ausgeführten Aktionen beschränken. 
+
+  Beispiel: Wenn Sie nur **Aktualisieren** auswählen, aktualisiert Azure AD nur vorhandene Benutzerkonten in einer Anwendung, ohne neue zu erstellen. Wird nur **Erstellen** ausgewählt, erstellt Azure nur neue Benutzerkonten, ohne vorhandene Konten zu aktualisieren. Dieses Feature ermöglicht Administratoren das Erstellen verschiedener Zuordnungen für Workflows zur Erstellung und Aktualisierung von Konten.
+
+* Hinzufügen einer neuen Attributzuordnung. Klicken Sie unten im Bereich **Attributzuordnung** auf **Neue Zuordnung hinzufügen**. Füllen Sie das Formular **Attribut bearbeiten** aus, und klicken Sie auf **OK**, um die neue Zuordnung der Liste hinzuzufügen. 
 
 ### <a name="settings"></a>Einstellungen
-In diesem Abschnitt können Administratoren den Azure AD-Bereitstellungsdienst für die ausgewählte Anwendung starten und beenden. Außerdem haben sie die Möglichkeit, den Bereitstellungscache zu leeren und den Dienst neu zu starten.
 
-Wenn die Bereitstellung für eine Anwendung zum ersten Mal aktiviert wird, legen Sie den **Bereitstellungsstatus** auf **Ein** fest, um den Dienst zu aktivieren. Aufgrund dieser Änderung führt der Azure AD-Bereitstellungsdienst eine anfängliche Synchronisierung durch. Hierzu liest er die im Abschnitt **Benutzer und Gruppen** zugewiesenen Benutzer, fragt die Zielanwendung für diese Benutzer ab und führt dann die im Azure AD-Abschnitt **Zuordnungen** definierten Bereitstellungsaktionen durch. Während dieses Vorgangs speichert der Bereitstellungsdienst Daten im Cache dazu, welche Benutzerkonten er verwaltet, damit die Bereitstellung nicht verwalteter Konten innerhalb der Zielanwendungen, die nicht im Zuweisungsumfang enthalten waren, nicht aufgehoben wird. Nach der anfänglichen Synchronisierung synchronisiert der Bereitstellungsdienst automatisch Benutzer- und Gruppenobjekte in einem Intervall von 10 Minuten.
+Sie können den Azure AD-Bereitstellungsdienst für die ausgewählte Anwendung im Bildschirm **Bereitstellung** im Bereich **Einstellungen** starten und beenden. Sie können auch den Bereitstellungscache leeren und den Dienst neu starten.
 
-Durch Ändern des **Bereitstellungsstatus** in **Aus** wird der Bereitstellungsdienst lediglich angehalten. In diesem Status werden von Azure keine Benutzer- oder Gruppenobjekte in der App erstellt, aktualisiert oder entfernt. Wird der Status wieder zu „Ein“ geändert, fährt der Dienst fort, wo er unterbrochen wurde.
+Wenn die Bereitstellung für eine Anwendung zum ersten Mal aktiviert wird, legen Sie den **Bereitstellungsstatus** auf **Ein** fest, um den Dienst zu aktivieren. Diese Änderung bewirkt, dass der Azure AD-Bereitstellungsdienst eine anfängliche Synchronisierung ausführt. Hierbei liest er die im Abschnitt **Benutzer und Gruppen** zugewiesenen Benutzer, fragt die Zielanwendung auf diese Benutzer ab und führt dann die im Azure AD-Abschnitt **Zuordnungen** definierten Bereitstellungsaktionen aus. Während dieses Vorgangs speichert der Bereitstellungsdienst Daten im Cache dazu, welche Benutzerkonten er verwaltet, damit die Bereitstellung nicht verwalteter Konten innerhalb der Zielanwendungen, die nicht im Zuweisungsumfang enthalten waren, nicht aufgehoben wird. Nach der anfänglichen Synchronisierung synchronisiert der Bereitstellungsdienst automatisch Benutzer- und Gruppenobjekte in einem Intervall von 10 Minuten.
 
-Wenn das Kontrollkästchen zum **Deaktivieren des aktuellen Status und Starten der Synchronisierung** ausgewählt und dann gespeichert wird, wird der Bereitstellungsdienst beendet, verwirft die zwischengespeicherten Daten zu den von Azure AD verwalteten Konten, startet die Dienste neu und führt die anfängliche Synchronisierung erneut aus. Diese Option ermöglicht Administratoren das erneute Starten des Bereitstellungsprozesses.
+Durch Ändern des **Bereitstellungsstatus** in **Aus** wird der Bereitstellungsdienst angehalten. In diesem Status werden von Azure keine Benutzer- oder Gruppenobjekte in der App erstellt, aktualisiert oder entfernt. Wenn Sie den Zustand wieder in **Ein** ändern, fährt der Dienst da fort, wo er aufgehört hat.
+
+Aktivieren Sie das Kontrollkästchen **Aktuellen Status löschen und Synchronisierung neu starten**, und klicken Sie auf **Speichern**, um Folgendes zu erreichen:
+
+* Beenden des Bereitstellungsdiensts
+* Sichern der zwischengespeicherten Daten zu den von Azure AD verwalteten Konten
+* Neustarten der Dienste und erneutes Ausführen der anfänglichen Synchronisierung
+
+Diese Option ermöglicht Administratoren das erneute Starten des Bereitstellungsprozesses.
 
 ### <a name="synchronization-details"></a>Synchronisierungsdetails
-Dieser Abschnitt enthält weitere Details zum Vorgang des Bereitstellungsdiensts, einschließlich der ersten und letzten Ausführung des Bereitstellungsdiensts für die Anwendung, sowie die Anzahl der verwalteten Benutzer- und Gruppenkonten.
 
-Es wird ein Link zum **Bericht über die Bereitstellungsaktivität** bereitgestellt. Dieser Bericht enthält ein Protokoll zu allen Benutzern und Gruppen, die zwischen Azure AD und der Zielanwendung erstellt, aktualisiert und entfernt wurden. Darüber hinaus wird ein Link zum **Fehlerbericht der Bereitstellung** bereitgestellt. Dieser enthält detaillierte Fehlermeldungen für Benutzer- und Gruppenobjekte, die nicht gelesen, erstellt, aktualisiert oder entfernt werden konnten. 
+Dieser Abschnitt enthält weitere Details zum Betrieb des Bereitstellungsdiensts, einschließlich der ersten und letzten Ausführung des Bereitstellungsdiensts für die Anwendung, sowie die Anzahl der verwalteten Benutzer- und Gruppenkonten.
 
-
-
+Ein Link zum **Bereitstellungsaktivitätsbericht** wird zur Verfügung gestellt, der ein Protokoll aller Benutzer und Gruppen enthält, die zwischen Azure AD und der Zielanwendung erstellt, aktualisiert und entfernt wurden. Es wird auch ein Link zum **Bereitstellungsfehlerbericht** angeboten, der detailliertere Fehlermeldungen für Benutzer- und Gruppenobjekte enthält, die nicht gelesen, erstellt, aktualisiert oder entfernt werden konnten.

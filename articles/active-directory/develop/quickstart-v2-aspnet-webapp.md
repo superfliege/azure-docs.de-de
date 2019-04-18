@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Azure AD v2.0 ASP.NET-Webserver | Microsoft Docs'
+title: 'Schnellstart: Microsoft Identity Platform – ASP.NET-Webserver | Azure'
 description: Erfahren Sie, wie „Bei Microsoft anmelden“ für eine ASP.NET-Web-App mithilfe von OpenID Connect implementiert wird.
 services: active-directory
 documentationcenter: dev-center-name
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ae388798716565c1fdeeb10b274c2a168ca86ea
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 4b83f5e6735f5b2554af2f5e6c74a7c9095d23fd
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200258"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579477"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App
 
@@ -29,7 +29,7 @@ ms.locfileid: "58200258"
 
 In diesem Schnellstart erfahren Sie, wie eine ASP. NET-Web-App persönliche Konten (hotmail.com, outlook.com, andere) und Geschäfts-, Schul- und Unikonten aus jeder Azure AD-Instanz (Azure Active Directory) anmelden kann.
 
-![Zeigt, wie die in diesem Schnellstart generierte Beispiel-App funktioniert](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro-updated.png)
+![Zeigt, wie die in diesem Schnellstart generierte Beispiel-App funktioniert](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Registrieren und Herunterladen Ihrer Schnellstart-App
@@ -39,7 +39,7 @@ In diesem Schnellstart erfahren Sie, wie eine ASP. NET-Web-App persönliche Kont
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Option 1: Registrieren und automatisches Konfigurieren Ihrer App und anschließendes Herunterladen des Codebeispiels
 >
-> 1. Navigieren Sie zur [Anwendungsregistrierung (Vorschau) im Azure-Portal](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs).
+> 1. Navigieren Sie zum neuen Bereich [Azure-Portal – App-Registrierungen](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs).
 > 1. Geben Sie einen Namen für Ihre Anwendung ein, und klicken Sie auf **Registrieren**.
 > 1. Befolgen Sie die Anweisungen, um Ihre neue Anwendung mit einem Klick herunterzuladen und automatisch zu konfigurieren.
 >
@@ -50,10 +50,11 @@ In diesem Schnellstart erfahren Sie, wie eine ASP. NET-Web-App persönliche Kont
 >
 > 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
 > 1. Wenn Sie mit Ihrem Konto auf mehrere Mandanten zugreifen können, klicken Sie rechts oben auf Ihr Konto, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
-> 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** und anschließend **App-Registrierungen (Vorschau)** > **Neue Registrierung** aus.
-> 1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** die Registrierungsinformationen Ihrer Anwendung ein:
+> 1. Navigieren Sie zur Seite [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) von Microsoft Identity Platform für Entwickler.
+> 1. Wählen Sie **Neue Registrierung** aus.
+> 1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** die Registrierungsinformationen für Ihre Anwendung ein:
 >      - Geben Sie im Abschnitt **Name** einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird (beispielsweise `ASPNET-Quickstart`).
->      - Fügen Sie unter **Antwort-URL** die URL `https://localhost:44368/` ein, und klicken Sie auf **Registrieren**.
+>      - Fügen Sie `https://localhost:44368/` unter **Umleitungs-URI** hinzu, und klicken Sie auf **Registrieren**.
 Wählen Sie das Menü **Authentifizierung** aus, und legen Sie **ID-Token** unter **Implizite Genehmigung** fest. Wählen Sie dann **Speichern** aus.
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -132,7 +133,7 @@ public void Configuration(IAppBuilder app)
             // To allow users from only a list of specific organizations, set ValidateIssuer to true and use ValidIssuers parameter
             TokenValidationParameters = new TokenValidationParameters()
             {
-                ValidateIssuer = false
+                ValidateIssuer = false // Simplification (see note below)
             },
             // OpenIdConnectAuthenticationNotifications configures OWIN to send notification of failed authentications to OnAuthenticationFailed method
             Notifications = new OpenIdConnectAuthenticationNotifications
@@ -148,12 +149,17 @@ public void Configuration(IAppBuilder app)
 > |---------|---------|
 > | `ClientId`     | Die Anwendungs-ID der im Azure-Portal registrierten Anwendung. |
 > | `Authority`    | Der STS-Endpunkt für den zu authentifizierenden Benutzer. Normalerweise <https://login.microsoftonline.com/{tenant}/v2.0> für die öffentliche Cloud, wobei {tenant} der Name Ihres Mandanten, Ihre Mandanten-ID oder *common* für einen Verweis auf den allgemeinen Endpunkt (verwendet für mehrinstanzenfähige Anwendungen) ist. |
-> | `RedirectUri`  | Die URL, an die Benutzer nach der Authentifizierung über den Azure AD v2.0-Endpunkt umgeleitet werden. |
+> | `RedirectUri`  | Die URL, an die Benutzer nach der Authentifizierung über den Microsoft Identity Platform-Endpunkt umgeleitet werden. |
 > | `PostLogoutRedirectUri`     | Die URL, an die Benutzer nach der Abmeldung umgeleitet werden. |
 > | `Scope`     | Die Liste der angeforderten Bereiche, getrennt durch Leerzeichen. |
 > | `ResponseType`     | Die Anforderung, dass die Antwort von der Authentifizierung ein ID-Token enthält. |
 > | `TokenValidationParameters`     | Eine Liste von Parametern für die Tokenüberprüfung. In diesem Fall wird `ValidateIssuer` auf `false` festgelegt, um anzugeben, dass Anmeldungen von beliebigen persönlichen oder Geschäfts-, Schul- oder Unikontotypen akzeptiert werden können. |
 > | `Notifications`     | Eine Liste von Delegaten, die für verschiedene *OpenIdConnect*-Nachrichten ausgeführt werden können. |
+
+
+> [!NOTE]
+> Zur Vereinfachung dieser Schnellstartanleitung wird `ValidateIssuer = false` festgelegt. In echten Anwendungen müssen Sie den Aussteller überprüfen.
+> Informationen dazu finden Sie in den Beispielen.
 
 ### <a name="initiate-an-authentication-challenge"></a>Initiieren einer Authentifizierungsaufforderung
 

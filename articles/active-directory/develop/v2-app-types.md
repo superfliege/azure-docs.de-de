@@ -1,6 +1,6 @@
 ---
-title: Anwendungstypen für v2. 0 | Azure
-description: App- und Szenariotypen, die vom Azure Active Directory v2.0-Endpunkt unterstützt werden.
+title: Anwendungstypen für Microsoft Identity Platform | Azure
+description: Die Typen von Apps und Szenarien, die vom Microsoft Identity Platform (v2.0)-Endpunkt unterstützt werden.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -13,36 +13,36 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/18/2018
+ms.date: 04/06/2019
 ms.author: celested
-ms.reviewer: saeeda, jmprieur, andret
+ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aac3e40089c67cd71a2c634280e333964e47902
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 562b45f30bf057feba38a716e040ab2efc15da90
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499980"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283323"
 ---
-# <a name="application-types-for-v20"></a>Anwendungstypen für v2. 0
+# <a name="application-types-for-microsoft-identity-platform"></a>Anwendungstypen für Microsoft Identity Platform
 
-Der Azure Active Directory (Azure AD) v2.0-Endpunkt unterstützt die Authentifizierung für eine Vielzahl moderner App-Architekturen, die alle auf den branchenüblichen Standardprotokollen [OAuth 2.0 oder OpenID Connect](active-directory-v2-protocols.md) basieren. Dieser Artikel beschreibt die App-Typen, die Sie unabhängig von der bevorzugten Sprache oder Plattform mithilfe von Azure AD v2.0 erstellen können. Die Informationen in diesem Artikel dienen Ihrem Verständnis der allgemeinen Szenarios, bevor Sie [mit Code arbeiten](v2-overview.md#getting-started).
+Der Microsoft Identity Platform (v2.0)-Endpunkt unterstützt die Authentifizierung für eine Vielzahl moderner App-Architekturen, die alle auf den branchenüblichen Standardprotokollen [OAuth 2.0 oder OpenID Connect](active-directory-v2-protocols.md) basieren. Dieser Artikel beschreibt die App-Typen, die Sie unabhängig von der bevorzugten Sprache oder Plattform mithilfe von Microsoft Identity Platform erstellen können. Die Informationen dienen Ihrem Verständnis allgemeiner Szenarien, bevor Sie [beginnen, mit Code zuarbeiten](v2-overview.md#getting-started).
 
 > [!NOTE]
-> Der v2.0-Endpunkt unterstützt nicht alle Szenarios und Funktionen von Azure Active Directory. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um herauszufinden, ob Sie den v2.0-Endpunkt verwenden sollten.
+> Der Microsoft Identity Platform-Endpunkt unterstützt nicht alle Azure Active Directory-Szenarien und -Features (Azure AD). Um festzustellen, ob Sie den Microsoft Identity Platform-Endpunkt verwenden sollten, informieren Sie sich über die [Einschränkungen von Microsoft Identity Platform](active-directory-v2-limitations.md).
 
 ## <a name="the-basics"></a>Grundlagen
 
-Sie müssen jede App, die den v2.0-Endpunkt verwendet, im [Microsoft-Portal für die Anwendungsregistrierung](https://apps.dev.microsoft.com) registrieren. Beim App-Registrierungsvorgang werden die folgenden Werte für die App erfasst und zugewiesen:
+Sie müssen jede App, die den Microsoft Identity Platform-Endpunkt verwendet, im [Portal für App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) registrieren. Beim App-Registrierungsvorgang werden die folgenden Werte für die App erfasst und zugewiesen:
 
-* Eine **Anwendungs-ID**, die Ihre App eindeutig identifiziert
+* Eine **Anwendungs- (bzw. Client-) ID**, die Ihre App eindeutig identifiziert
 * Ein **Umleitungs-URI**, der zum Umleiten von Antworten zurück an die App verwendet werden kann
-* Einige andere szenariospezifische Werte
+* Einige andere szenariospezifische Werte, wie z.B. unterstützte Kontotypen
 
-Nähere Informationen finden Sie im Artikel zum [Registrieren einer App](quickstart-v2-register-an-app.md).
+Nähere Informationen finden Sie im Artikel zum [Registrieren einer App](quickstart-register-app.md).
 
-Nachdem die App registriert ist, erfolgt die Kommunikation zwischen der App und Azure AD durch Senden von Anforderungen an den Azure AD v2.0-Endpunkt. Wir stellen Open-Source-Frameworks und -Bibliotheken bereit, über die die Details dieser Anforderungen verarbeitet werden. Zudem können Sie auch selbst die Authentifizierungslogik implementieren, indem Sie Anforderungen an diese Endpunkte erstellen:
+Nach der Registrierung der App erfolgt die Kommunikation zwischen der App und Microsoft Identity Plattform durch Senden von Anforderungen an den Endpunkt. Wir stellen Open-Source-Frameworks und -Bibliotheken bereit, über die die Details dieser Anforderungen verarbeitet werden. Zudem können Sie auch selbst die Authentifizierungslogik implementieren, indem Sie Anforderungen an diese Endpunkte erstellen:
 
 ```
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize
@@ -51,13 +51,13 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 ## <a name="single-page-apps-javascript"></a>Single-Page-Apps (JavaScript)
 
-Viele moderne Apps besitzen ein Single-Page-App-Front-End, das in erster Linie in JavaScript geschrieben ist. Häufig wird dazu ein Framework verwendet, z.B. AngularJS, Ember.js oder Durandal.js. Der Azure AD v2.0-Endpunkt unterstützt diese Apps mithilfe des [impliziten OAuth 2.0-Flusses](v2-oauth2-implicit-grant-flow.md).
+Viele moderne Apps besitzen ein Single-Page-App-Front-End, das in erster Linie in JavaScript geschrieben ist. Häufig wird dazu ein Framework verwendet, z.B. AngularJS, Ember.js oder Durandal.js. Der Microsoft Identity Plattform-Endpunkt unterstützt diese Apps mithilfe des [impliziten OAuth 2.0-Flusses](v2-oauth2-implicit-grant-flow.md).
 
-Bei diesem Ablauf empfängt die App Token direkt vom v2.0-Autorisierungsendpunkt ohne jegliche Server-zu-Server-Kommunikation. Die gesamte Authentifizierungslogik und Sitzungsverarbeitung erfolgt ohne zusätzliche Seitenumleitungen vollständig im JavaScript-Client.
+In diesem empfängt die App Token direkt vom Microsoft Identity Plattform-Autorisierungsendpunkt, ohne dass eine Kommunikation zwischen Servern stattfindet. Die gesamte Authentifizierungslogik und Sitzungsverarbeitung erfolgt ohne zusätzliche Seitenumleitungen vollständig im JavaScript-Client.
 
-![Impliziter Authentifizierungsablauf](./media/v2-app-types/convergence_scenarios_implicit.png)
+![Impliziter Authentifizierungsablauf](./media/v2-app-types/convergence-scenarios-implicit.svg)
 
-Um dieses Szenario in Aktion zu sehen, testen Sie eines der Codebeispiele für Single-Page-Apps im Abschnitt [Erste Schritte mit v2.0](v2-overview.md#getting-started).
+Um dieses Szenario in Aktion zu sehen, testen Sie eines der Codebeispiele für Apps mit einer Seite im Abschnitt [Erste Schritte mit Microsoft Identity Plattform](v2-overview.md#getting-started).
 
 ## <a name="web-apps"></a>Web-Apps
 
@@ -76,21 +76,21 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 }
 ```
 
-Weitere Informationen zu verschiedenen Tokentypen, die im v2.0-Endpunkt verwendet werden, finden Sie in der Referenz zu [Zugriffstoken](access-tokens.md) und zu [`id_token`](id-tokens.md).
+Weitere Informationen zu verschiedenen Tokentypen, die im Microsoft Identity Plattform-Endpunkt verwendet werden, finden Sie in der Referenz zu [Zugriffstoken](access-tokens.md) und zu [id_token](id-tokens.md).
 
 In Webserver-Apps werden beim Authentifizierungsablauf für die Anmeldung folgende allgemeine Schritte ausgeführt:
 
-![Authentifizierungsablauf für Web-Apps](./media/v2-app-types/convergence_scenarios_webapp.png)
+![Authentifizierungsablauf für Web-Apps](./media/v2-app-types/convergence-scenarios-webapp.svg)
 
-Sie können die Identität des Benutzers validieren, indem Sie das ID-Token mit einem öffentlichen Signaturschlüssel überprüfen, der vom v2.0-Endpunkt empfangen wird. Ein Sitzungscookie wird festgelegt, das zur Identifizierung des Benutzers in nachfolgenden Seitenanforderungen verwendet werden kann.
+Sie können die Identität des Benutzers validieren, indem Sie das ID-Token mit einem öffentlichen Signaturschlüssel überprüfen, der vom Microsoft Identity Plattform-Endpunkt empfangen wird. Ein Sitzungscookie wird festgelegt, das zur Identifizierung des Benutzers in nachfolgenden Seitenanforderungen verwendet werden kann.
 
-Um dieses Szenario in Aktion zu sehen, können Sie eines der Web-App-Codebeispiele für die Anmeldung im Abschnitt [Erste Schritte mit v2.0](v2-overview.md#getting-started) testen.
+Um dieses Szenario in Aktion zu sehen, können Sie eines der Web-App-Codebeispiele für die Anmeldung im Abschnitt [Erste Schritte mit Microsoft Identity Plattform](v2-overview.md#getting-started) testen.
 
 Neben der einfachen Anmeldung benötigt eine Webserver-App möglicherweise Zugriff auf einen anderen Webdienst, z.B. auf eine REST-API. In diesem Fall wird die Webserver-App in einem kombinierten OpenID Connect- und OAuth 2.0-Vorgang ausgeführt, indem der [OAuth 2.0-Autorisierungscodefluss](active-directory-v2-protocols.md) verwendet wird. Weitere Informationen zu diesem Szenario finden Sie in den [ersten Schritten mit Web-Apps und Web-APIs](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md).
 
 ## <a name="web-apis"></a>Web-APIs
 
-Mit dem v2.0-Endpunkt können Sie Webdienste schützen, z.B. die RESTful-Web-API Ihrer App. Anstelle von ID-Token und Sitzungscookies verwendet eine Web-API ein OAuth 2.0-Zugriffstoken zum Sichern der zugehörigen Daten und zum Authentifizieren eingehender Anforderungen. Der Aufrufer einer Web-API fügt wie folgt ein Zugriffstoken im Autorisierungsheader einer HTTP-Anforderung an:
+Mit dem Microsoft Identity Plattform-Endpunkt können Sie Webdienste schützen, z.B. die RESTful-Web-API Ihrer App. Anstelle von ID-Token und Sitzungscookies verwendet eine Web-API ein OAuth 2.0-Zugriffstoken zum Sichern der zugehörigen Daten und zum Authentifizieren eingehender Anforderungen. Der Aufrufer einer Web-API fügt wie folgt ein Zugriffstoken im Autorisierungsheader einer HTTP-Anforderung an:
 
 ```
 GET /api/items HTTP/1.1
@@ -100,32 +100,32 @@ Accept: application/json
 ...
 ```
 
-Die Web-API verwendet das Zugriffstoken zum Überprüfen der Identität des API-Aufrufers und zum Extrahieren von Informationen über den Aufrufer aus Ansprüchen, die im Zugriffstoken codiert sind. Weitere Informationen zu verschiedenen Tokentypen, die im v2.0-Endpunkt verwendet werden, finden Sie in der Referenz zu [Zugriffstoken](access-tokens.md) und zu [`id_token`](id-tokens.md).
+Die Web-API verwendet das Zugriffstoken zum Überprüfen der Identität des API-Aufrufers und zum Extrahieren von Informationen über den Aufrufer aus Ansprüchen, die im Zugriffstoken codiert sind. Weitere Informationen zu verschiedenen Tokentypen, die im Microsoft Identity Plattform-Endpunkt verwendet werden, finden Sie in der Referenz zu [Zugriffstoken](access-tokens.md) und zu [id_token](id-tokens.md).
 
-Eine Web-API kann Benutzern die Möglichkeit geben, sich für oder gegen bestimmte Funktionen oder Daten zu entscheiden, indem sie Berechtigungen erhalten, die auch [Bereiche](v2-permissions-and-consent.md) genannt werden. Damit eine aufrufende App Berechtigungen für einen Bereich erhält, muss der Benutzer während eines Ablaufs seine Zustimmung für den Bereich erteilen. Der v2.0-Endpunkt fragt die Zustimmung des Benutzers ab und zeichnet dann die Berechtigungen in allen Zugriffstoken auf, die die Web-API empfängt. Die Web-API überprüft das Zugriffstoken, das bei jedem Aufruf empfangen wird, und führt Autorisierungsprüfungen durch.
+Eine Web-API kann Benutzern die Möglichkeit geben, sich für oder gegen bestimmte Funktionen oder Daten zu entscheiden, indem sie Berechtigungen erhalten, die auch [Bereiche](v2-permissions-and-consent.md) genannt werden. Damit eine aufrufende App Berechtigungen für einen Bereich erhält, muss der Benutzer während eines Ablaufs seine Zustimmung für den Bereich erteilen. Der Microsoft Identity Plattform-Endpunkt fragt die Zustimmung des Benutzers ab und zeichnet dann die Berechtigungen in allen Zugriffstoken auf, die die Web-API empfängt. Die Web-API überprüft das Zugriffstoken, das bei jedem Aufruf empfangen wird, und führt Autorisierungsprüfungen durch.
 
 Eine Web-API kann Zugriffstoken von allen App-Typen empfangen, z.B. von Webserver-Apps, Desktop-Apps, mobilen Apps, Single Page-Apps, serverseitigen Daemons und selbst von anderen Web-APIs. Der allgemeine Ablauf für eine Web-API sieht wie folgt aus:
 
-![Authentifizierungsablauf für eine Web-API](./media/v2-app-types/convergence_scenarios_webapi.png)
+![Authentifizierungsablauf für eine Web-API](./media/v2-app-types/convergence-scenarios-webapi.svg)
 
-Informationen zum Schützen einer Web-API mithilfe von OAuth2-Zugriffstoken finden Sie in den Web-API-Codebeispielen im Abschnitt [Erste Schritte mit v2.0](v2-overview.md#getting-started).
+Informationen zum Schützen einer Web-API mithilfe von OAuth2-Zugriffstoken finden Sie in den Web-API-Codebeispielen im Abschnitt [Erste Schritte mit Microsoft Identity Plattform](v2-overview.md#getting-started).
 
-Oftmals müssen Web-APIs auch ausgehende Anforderungen an nachgelagerte Web-APIs stellen, die von Azure Active Directory geschützt werden. Zu diesem Zweck können Web-APIs den Fluss **Im Namen von** von Azure AD nutzen, der der Web-API ermöglicht, ein eingehendes Zugriffstoken gegen ein anderes Zugriffstoken zu tauschen, das in ausgehenden Anforderungen verwendet werden soll. Der Fluss „Im Namen von“ des v2.0-Endpunkts wird [hier detailliert beschrieben](v2-oauth2-on-behalf-of-flow.md).
+Oftmals müssen Web-APIs auch ausgehende Anforderungen an nachgelagerte Web-APIs stellen, die von Microsoft Identity Plattform geschützt werden. Zu diesem Zweck können Web-APIs den **On-Behalf-Of**-Fluss nutzen, der der Web-API ermöglicht, ein eingehendes Zugriffstoken gegen ein anderes Zugriffstoken zu tauschen, das in ausgehenden Anforderungen verwendet werden soll. Weitere Informationen finden Sie unter [Microsoft Identity Plattform und On-Behalf-Of-Fluss in OAuth 2.0](v2-oauth2-on-behalf-of-flow.md).
 
 ## <a name="mobile-and-native-apps"></a>Mobile und native Apps
 
 Auf Geräten installierte Apps, z.B. mobile Apps und Desktop-Apps, benötigen häufig Zugriff auf Back-End-Dienste oder Web-APIs, die im Auftrag eines Benutzers Daten speichern und Funktionen ausführen. Diese Apps können sich mithilfe des [OAuth 2.0-Autorisierungscodeflusses](v2-oauth2-auth-code-flow.md) bei Back-End-Diensten anmelden und die Autorisierung hinzufügen.
 
-Bei diesem Ablauf empfängt die App bei der Anmeldung des Benutzers einen Autorisierungscode vom v2.0-Endpunkt. Der Autorisierungscode stellt die Berechtigung der App zum Aufrufen von Back-End-Diensten im Namen des angemeldeten Benutzers dar. Die App kann den Autorisierungscode im Hintergrund gegen ein OAuth 2.0-Zugriffstoken und ein Aktualisierungstoken austauschen. Die App kann mithilfe des Zugriffstokens Web-APIs in HTTP-Anforderungen authentifizieren und mithilfe des Aktualisierungstokens neue Zugriffstoken abrufen, wenn die älteren Zugriffstoken abgelaufen sind.
+Bei diesem Fluss empfängt die App bei der Anmeldung des Benutzers vom Microsoft Identity Platform-Endpunkt einen Autorisierungscode. Der Autorisierungscode stellt die Berechtigung der App zum Aufrufen von Back-End-Diensten im Namen des angemeldeten Benutzers dar. Die App kann den Autorisierungscode im Hintergrund gegen ein OAuth 2.0-Zugriffstoken und ein Aktualisierungstoken austauschen. Die App kann mithilfe des Zugriffstokens Web-APIs in HTTP-Anforderungen authentifizieren und mithilfe des Aktualisierungstokens neue Zugriffstoken abrufen, wenn die älteren Zugriffstoken abgelaufen sind.
 
-![Authentifizierungsablauf für native Apps](./media/v2-app-types/convergence_scenarios_native.png)
+![Authentifizierungsablauf für native Apps](./media/v2-app-types/convergence-scenarios-native.svg)
 
 ## <a name="daemons-and-server-side-apps"></a>Daemons und serverseitige Apps
 
-Apps, die lang andauernde Prozesse enthalten oder ohne Benutzereingriff ausgeführt werden, benötigen auch die Möglichkeit, auf sichere Ressourcen wie Web-APIs zuzugreifen. Diese Apps können mithilfe der App-Identität (anstelle der delegierten Benutzeridentität) über den OAuth 2.0-Ablauf für Clientanmeldeinformationen die Authentifizierung durchführen und Token abrufen. Sie können die Identität der App mit einem geheimen Clientschlüssel oder einem Zertifikat nachweisen. Weitere Informationen finden Sie unter [Authentifizierung bei Azure AD in Daemon-Apps mit Zertifikaten](https://azure.microsoft.com/resources/samples/active-directory-dotnet-daemon-certificate-credential/).
+Apps, die lang andauernde Prozesse enthalten oder ohne Benutzereingriff ausgeführt werden, benötigen auch die Möglichkeit, auf sichere Ressourcen wie Web-APIs zuzugreifen. Diese Apps können mithilfe der App-Identität (anstelle der delegierten Benutzeridentität) über den OAuth 2.0-Ablauf für Clientanmeldeinformationen die Authentifizierung durchführen und Token abrufen. Sie können die Identität der App mit einem geheimen Clientschlüssel oder einem Zertifikat nachweisen. Weitere Informationen finden Sie unter [Authentifizierung bei Microsoft Identity Platform in Daemon-Apps mit Zertifikaten](https://azure.microsoft.com/resources/samples/active-directory-dotnet-daemon-certificate-credential/).
 
 In diesem Flow interagiert die App direkt mit dem `/token`-Endpunkt, um Zugriff zu erhalten:
 
-![Authentifizierungsablauf für Daemon-Apps](./media/v2-app-types/convergence_scenarios_daemon.png)
+![Authentifizierungsablauf für Daemon-Apps](./media/v2-app-types/convergence-scenarios-daemon.svg)
 
 Informationen zum Erstellen einer Daemon-App finden Sie in der [Dokumentation zu Clientanmeldeinformationen](v2-oauth2-client-creds-grant-flow.md). Sie können aber auch eine [.NET-Beispiel-App](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2) testen.

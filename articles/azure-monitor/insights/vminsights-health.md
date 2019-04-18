@@ -11,16 +11,16 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/02/2019
+ms.date: 04/08/2019
 ms.author: magoedte
-ms.openlocfilehash: 987d28470b8a848755cdd7d1264ba7f7f66544df
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 4c330e36210e97172c8f06bbfc3850210e200777
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918942"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260339"
 ---
-# <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>Überwachen der Integrität Ihrer virtuellen Azure-Computer mit Azure Monitor für VMs (Vorschauversion)
+# <a name="understand-the-health-of-your-azure-virtual-machines"></a>Grundlegendes zur Integrität Ihrer Azure-VMs 
 Azure beinhaltet mehrere Dienste, die einzeln eine bestimmte Rolle oder Aufgabe im Überwachungsbereich ausführen, aber ein tiefgreifender Blick auf die Integrität des auf Azure-VMs gehosteten Betriebssystems war bisher nicht verfügbar.  Zwar konnten Sie mithilfe von Azure Monitor verschiedene Bedingungen überwachen, die Azure Monitor-Plattform war jedoch nicht darauf ausgelegt, die Integrität von Kernkomponenten oder die Gesamtintegrität der VM zu modellieren und darzustellen.  Das Integritätsfeature von Azure Monitor for VMs überwacht proaktiv die Verfügbarkeit und Leistung des Windows- oder Linux-Gastbetriebssystems mit einem Modell, das Schlüsselkomponenten und ihre Beziehungen modelliert, und mit Kriterien, die angeben, wie die Integrität dieser Komponenten gemessen wird, und eine Warnung an Sie auslösen, wenn ein Zustand eingeschränkter Integrität erkannt wird.  
 
 Die Anzeige des Integritätsgesamtstatus von Azure-VMs und des zugrundeliegenden Betriebssystems mit dem Azure Monitor for VMs kann aus zwei verschiedenen Perspektiven erfolgen, einmal direkt in einer VM oder übergreifend über alle in einer Ressourcengruppe enthaltenen VMs mithilfe von Azure Monitor.
@@ -92,16 +92,16 @@ Die für eine VM definierten Integritätszustände sind in der folgenden Tabelle
 
 |Symbol |Integritätsstatus |Bedeutung |
 |-----|-------------|------------|
-| |Healthy |Der Integritätszustand lautet „Fehlerfrei“, wenn er innerhalb des Bereichs der definierten Integritätsbedingungen liegt, für den virtuellen Computer keine Probleme erkannt werden und dieser wie erwartet ausgeführt wird. Im Fall eines übergeordneten Rollupmonitors wird ein Rollup der Integrität durchgeführt, die dann den Best-Case- oder Worst-Case-Status des untergeordneten Elements wiedergibt.|
-| |Kritisch |Der Integritätszustand lautet „Kritisch“, wenn er nicht innerhalb des Bereichs der definierten Integritätsbedingung liegt und ein oder mehrere kritische Probleme erkannt wurden, die behoben werden müssen, um die normale Funktionsweise wiederherzustellen. Im Fall eines übergeordneten Rollupmonitors wird ein Rollup der Integrität durchgeführt, die dann den Best-Case- oder Worst-Case-Status des untergeordneten Elements wiedergibt.|
-| |Warnung |Der Integritätszustand lautet „Warnung“, wenn er zwischen zwei Schwellenwerten für die definierte Integritätsbedingung liegt, wobei ein Wert den Zustand *Warnung* und der andere Wert den Zustand *kritisch* angibt (drei Schwellenwerte für den Integritätszustand können konfiguriert werden), oder wenn ein nicht kritisches Problem erkannt wird, das zu kritischen Problemen führen kann, wenn es nicht behoben wird. Im Fall eines übergeordneten Rollupmonitors erhält das übergeordnete Element den Zustand *Warnung*, wenn mindestens eines der untergeordneten Elemente den Zustand „Warnung“ aufweist. Wenn ein untergeordnetes Element vorhanden ist, das den Status *Kritisch* und zugleich ein weiteres untergeordnetes Element den Status *Warnung* aufweist, weist das übergeordnete Rollup den Integritätsstatus *Kritisch* aus.|
+| |Healthy |Der Integritätszustand lautet „Fehlerfrei“, wenn er innerhalb des Bereichs der definierten Integritätsbedingungen liegt, für den virtuellen Computer keine Probleme erkannt werden und dieser wie erwartet ausgeführt wird. Bei einem übergeordneten Rollupmonitor wird ein Rollup der Integrität durchgeführt, das den Status des untergeordneten Elements im günstigsten und ungünstigsten Fall wiedergibt.|
+| |Kritisch |Der Integritätszustand lautet „Kritisch“, wenn er nicht innerhalb des Bereichs der definierten Integritätsbedingung liegt und ein oder mehrere kritische Probleme erkannt wurden, die behoben werden müssen, um die normale Funktionsweise wiederherzustellen. Bei einem übergeordneten Rollupmonitor wird ein Rollup der Integrität durchgeführt, das den Status des untergeordneten Elements im günstigsten und ungünstigsten Fall wiedergibt.|
+| |Warnung |Der Integritätszustand lautet „Warnung“, wenn er zwischen zwei Schwellenwerten für die definierte Integritätsbedingung liegt, wobei ein Wert den Zustand *Warnung* und der andere Wert den Zustand *kritisch* angibt (drei Schwellenwerte für den Integritätszustand können konfiguriert werden), oder wenn ein nicht kritisches Problem erkannt wird, das zu kritischen Problemen führen kann, wenn es nicht behoben wird. Bei einem übergeordneten Rollupmonitor gibt das übergeordnete Element den Status *Warnung* wieder, wenn mindestens eines der untergeordneten Elemente den Status „Warnung“ aufweist. Wenn ein untergeordnetes Element vorhanden ist, das den Status *Kritisch* und zugleich ein weiteres untergeordnetes Element den Status *Warnung* aufweist, weist das übergeordnete Rollup den Integritätsstatus *Kritisch* aus.|
 | |Unknown |Der Integritätszustand lautet *Unbekannt*, wenn er aus verschiedenen Gründen nicht berechnet werden kann, etwa wegen fehlender Möglichkeit zum Erfassen von Daten, fehlender Dienstinitialisierung usw. Dieser Integritätszustand ist nicht konfigurierbar.| 
 
 Durch Auswählen von **Integritätsdiagnose anzeigen** wird eine Seite geöffnet, auf der alle Komponenten der VM mit den ihnen zugeordneten Integritätskriterien, Statusänderungen und sonstigen wichtigen Problemen dargestellt sind, die durch Überwachung der mit der VM zusammenhängenden Komponenten gefunden wurden. Weitere Informationen finden Sie unter [Integritätsdiagnose](#health-diagnostics). 
 
 Die Tabelle unter dem Abschnitt **Integrität der Komponente** zeigt einen Integritätsrollupstatus der wichtigsten Leistungskategorien, die anhand von Integritätskriterien für die betreffenden Bereiche überwacht werden, im Einzelnen **CPU**, **Arbeitsspeicher**, **Datenträger** und **Netzwerk**.  Durch Auswählen einer der Komponenten wird eine Seite geöffnet, auf der alle Integritätsaspekte für die einzelnen Integritätskriterien der betreffenden Komponente mit dem jeweiligen Integritätsstatus aufgelistet sind.  
 
-Beim Zugriff auf die Integrität aus einer Azure-VM, die das Betriebssystem Windows ausführt, wird der Integritätsstatus der fünf wichtigsten Windows-Kerndienste unter **Integrität der Kerndienste** angezeigt.  Durch Auswählen eines der Dienste wird eine Seite geöffnet, auf der die Integritätskriterien zur Überwachung der betreffenden Komponente und ihr Integritätsstatus aufgelistet werden.  Ein Klick auf den Namen eines Integritätskriteriums öffnet dessen Eigenschaftenseite, auf der Sie die Konfigurationsdetails überprüfen können, darunter auch, ob für das Integritätskriterium eine entsprechende Azure Monitor-Warnung definiert ist. Weitere Informationen finden Sie unter [Integritätsdiagnose](#health-diagnostics) im Abschnitt zur Verwendung von Integritätskriterien.  
+Beim Zugriff auf „Integrität“ on einer Azure-VM, die das Betriebssystem Windows ausführt, wird der Integritätsstatus der fünf wichtigsten Windows-Kerndienste unter **Integrität der Kerndienste** angezeigt.  Durch Auswählen eines der Dienste wird eine Seite geöffnet, auf der die Integritätskriterien zur Überwachung der betreffenden Komponente und ihr Integritätsstatus aufgelistet werden.  Ein Klick auf den Namen eines Integritätskriteriums öffnet dessen Eigenschaftenseite, auf der Sie die Konfigurationsdetails überprüfen können, darunter auch, ob für das Integritätskriterium eine entsprechende Azure Monitor-Warnung definiert ist. Weitere Informationen finden Sie unter [Integritätsdiagnose](#health-diagnostics) im Abschnitt zur Verwendung von Integritätskriterien.  
 
 ## <a name="aggregate-virtual-machine-perspective"></a>Aggregieren der VM-Perspektive
 Um die Integritätssammlung aller Ihrer virtuellen Computer in einer Ressourcengruppe anzuzeigen, wählen Sie in der Navigationsliste im Portal **Azure Monitor** und dann **Virtual Machines (Vorschau)** aus.  
@@ -133,7 +133,7 @@ In der VM-Listenansicht wird durch Klicken auf den Namen einer VM die Seite **In
 
 ![VM Insights einer ausgewählten Azure Virtual Machine](./media/vminsights-health/vminsights-directvm-health.png)
 
-Hier ist ein Rollup des **Integritätsstatus** für die VM mit **Warnungen** nach Schweregrad kategorisiert dargestellt, die die Warnungen zur VM-Integrität darstellen, die beim Wechsel des Integritätsstatus von fehlerfrei zu fehlerhaft für ein bestimmtes Integritätskriterium ausgelöst werden.  Durch Auswählen von **VMs in kritischem Zustand** wird eine Seite mit einer Liste einer oder mehrerer VMs geöffnet, die sich in einem kritischen Integritätsstatus befinden.  Durch Klicken auf den Integritätsstatus für eine der VMs in der Liste wird die Ansicht **Integritätsdiagnose** der betreffenden VM angezeigt.  Hier können Sie herausfinden, welche Integritätskriterien ein Problem mit dem Integritätsstatus widerspiegeln. Wenn die Seite **Integritätsdiagnose** geöffnet wird, zeigt sie alle Komponenten der VM und die ihnen zugeordneten Integritätskriterien mit dem aktuellen Integritätsstatus an.  Im Abschnitt [Integritätsdiagnose](#health-diagnostics) finden Sie weitere Details.  
+Hier ist ein Rollup des **Integritätsstatus** für die VM mit **Warnungen** nach Schweregrad kategorisiert dargestellt, die die Warnungen zur VM-Integrität darstellen, die beim Wechsel des Integritätsstatus von fehlerfrei zu fehlerhaft für ein bestimmtes Integritätskriterium ausgelöst werden.  Durch Auswählen von **VMs in kritischem Zustand** wird eine Seite mit einer Liste einer oder mehrerer VMs geöffnet, die sich in einem kritischen Integritätsstatus befinden.  Durch Klicken auf den Integritätsstatus für eine der VMs in der Liste wird die Ansicht **Integritätsdiagnose** der betreffenden VM angezeigt.  Hier können Sie herausfinden, welche Integritätskriterien ein Problem mit dem Integritätsstatus widerspiegeln. Wenn die Seite **Integritätsdiagnose** geöffnet wird, zeigt sie alle Komponenten der VM und die ihnen zugeordneten Integritätskriterien mit dem aktuellen Integritätsstatus an. Weitere Informationen finden Sie unter [Integritätsdiagnose](#health-diagnostics).  
 
 Wenn Sie **Alle Integritätskriterien anzeigen** auswählen, wird eine Seite geöffnet, die eine Liste aller für dieses Feature verfügbaren Integritätskriterien anzeigt.  Die Informationen können auf der Grundlage der folgenden Optionen weiter gefiltert werden:
 
@@ -164,7 +164,7 @@ In Integritätsdiagnosen sind die Integritätsinformationen nach den folgenden K
 * Verfügbarkeit
 * Leistung
  
-Alle für eine bestimmte Komponente (z.B. logischer Datenträger oder CPU) definierten Integritätskriterien werden angezeigt. Zudem ist die Kategorie der Überwachung daneben in der Spalte **Integritätskriterien** zu sehen.  
+Alle für eine bestimmte Komponente definierten Integritätskriterien wie logischer Datenträger, CPU usw. können ohne Filterung anhand der beiden Kategorien angezeigt werden (in einer Gesamtansicht aller Kriterien). Sie können die Ergebnisse auch nach beiden Kategorien filtern, wenn Sie die Optionen **Verfügbarkeit** oder **Leistung** auf der Seite auswählen. Zudem ist die Kategorie der Kriterien daneben in der Spalte **Integritätskriterien** zu sehen. Wenn die Kriterien nicht mit der ausgewählten Kategorie übereinstimmen, wird in der Spalte **Integritätskriterien** die Meldung **Für die ausgewählte Kategorie ist kein Integritätskriterium verfügbar** angezeigt.  
 
 Integritätskriterien werden durch einen dieser vier Zustände definiert: *Kritisch*, *Warnung*, *Fehlerfrei* und *Unbekannt*. Die ersten drei sind konfigurierbar, d.h., Sie können die Schwellenwerte der Überwachung mit der [Workloadüberwachungs-API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update) ändern. *Unbekannt* kann nicht konfiguriert werden und ist für bestimmte Szenarien reserviert.  
 
@@ -190,7 +190,7 @@ Die mittlere Spalte auf der Seite „Integritätsdiagnose“ ist die Spalte **In
 
 Ein Integritätskriterium misst die Integrität der überwachten Instanz anhand bestimmter Kriterien, bei denen es sich z.B. um einen Schwellenwert oder den Zustand einer Entität handeln kann. Ein Integritätskriterium weist wie weiter oben beschrieben entweder zwei oder drei Schwellenwerte für den Integritätszustand auf. Das Integritätskriterium kann sich jederzeit nur in einem seiner möglichen Zustände befinden. 
 
-Die Gesamtintegrität eines Ziels wird durch die Integrität der einzelnen im Integritätsmodell definierten Integritätskriterien bestimmt. Dabei handelt es sich um eine Kombination aus Integritätskriterien, die direkt auf das Ziel gerichtet sind, und Integritätskriterien, die auf Komponenten gerichtet sind, für die mittels eines Aggregatintegritätskriteriums ein Rollup zum Ziel ausgeführt wird. Diese Hierarchie ist im Abschnitt **Integritätskriterien** der Seite Integritätsdiagnose veranschaulicht. Die Richtlinie für den Integritätsrollup ist Bestandteil der Konfiguration der Aggregatintegritätskriterien (Standardwert ist auf *Worst-of* festgelegt). Sie finden eine Liste der standardmäßig festgelegten Integritätskriterien, die im Rahmen dieses Features ausgeführt werden, im Abschnitt [Details der Überwachungskonfiguration](#monitoring-configuration-details).  
+Die Gesamtintegrität eines Ziels wird durch die Integrität der einzelnen im Integritätsmodell definierten Integritätskriterien bestimmt. Dies ist eine Kombination aus Integritätskriterien, die direkt auf das Ziel gerichtet sind, und Integritätskriterien, die auf Komponenten abzielen, für die mittels eines Aggregatintegritätskriteriums ein Rollup zum Ziel ausgeführt wird. Diese Hierarchie ist im Abschnitt **Integritätskriterien** der Seite Integritätsdiagnose veranschaulicht. Die Richtlinie für den Integritätsrollup ist Bestandteil der Konfiguration der Aggregatintegritätskriterien (Standardwert ist auf *Worst-of* festgelegt). Sie finden eine Liste der standardmäßig festgelegten Integritätskriterien, die im Rahmen dieses Features ausgeführt werden, im Abschnitt [Details der Überwachungskonfiguration](#monitoring-configuration-details).  
 
 Für Integritätskriterien vom Typ **Einheit** kann die Konfiguration durch Klicken auf den Link mit den Auslassungspunkten ganz rechts geändert und durch Auswählen von **Details anzeigen** der Konfigurationsbereich geöffnet werden. 
 
@@ -256,6 +256,64 @@ Die Seite **Warnungsdetail** wird angezeigt, wenn Sie eine Warnung auswählen, s
 ![Bereich „Warnungsdetails“ für eine ausgewählte Warnung](./media/vminsights-health/alert-details-pane-01.png)
 
 Der Warnungszustand kann außerdem für eine oder mehrere Warnungen geändert werden, indem Sie in der oberen linken Ecke der Seite **Alle Warnungen** den Befehl **Status ändern** auswählen. Im Bereich **Warnungsstatus ändern** wählen Sie einen der Status aus, fügen eine Beschreibung der Änderung im Feld **Kommentar** hinzu und klicken dann auf **OK**, um Ihre Änderungen zu committen. Während die Informationen überprüft und die Änderungen übernommen werden, können Sie den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen.  
+
+### <a name="configure-alerts"></a>Konfigurieren von Warnungen
+Bestimmte Warnungsverwaltungsaufgaben können nicht über das Azure-Portal ausgeführt werden und müssen mit der [Azure Monitor-REST-API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components) erfolgen. Dies gilt insbesondere in folgenden Fällen:
+
+- Aktivieren oder Deaktivieren einer Warnung für Integritätskriterien 
+- Einrichten von Benachrichtigungen für Warnungen zu Integritätskriterien 
+
+Der in den einzelnen Beispielen verwendete Ansatz sieht die Verwendung von [ARMClient](https://github.com/projectkudu/armclient) auf Ihrem Windows-Computer vor. Wenn Sie nicht mit dieser Vorgehensweise vertraut sind, siehe [Verwenden von ARMClient](../platform/rest-api-walkthrough.md#use-armclient).  
+
+#### <a name="enable-or-disable-alert-rule"></a>Aktivieren oder Deaktivieren der Warnungsregel
+
+Um eine Warnungsregel für ein bestimmtes Integritätskriterium zu aktivieren oder zu deaktivieren, muss die Eigenschaft *alertGeneration* der Integritätskriterien in den Wert **Disabled** oder **Enabled** geändert werden. Um die *monitorId* eines bestimmten Integritätskriteriums zu ermitteln, wird im folgenden Beispiel gezeigt, wie der Wert für das Kriterium **Logischer Datenträger\Mittlere Dauer pro Übertragung** abgefragt werden kann.
+
+1. Geben Sie in einem Terminalfenster **armclient.exe login**ein. Dabei werden Sie dazu aufgefordert, sich bei Azure anzumelden.
+
+2. Geben Sie den folgenden Befehl ein, um alle auf einem bestimmten virtuellen Computer aktiven Integritätskriterien abzurufen und den Wert für die Eigenschaft *monitorId* zu bestimmen. 
+
+    ```
+    armclient GET "subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/monitors?api-version=2018-08-31-preview”
+    ```
+
+    Das folgende Beispiel zeigt die Ausgabe dieses Befehls. Notieren Sie sich den rot hervorgehobenen Wert von *MonitorId*. Dieser Wert ist im nächsten Schritt erforderlich, bei dem wir die ID der Integritätskriterien angeben und ihre Eigenschaft ändern müssen, um eine Warnung zu erstellen.
+
+    ![Beispiel des Abrufens der Monitor-ID für Integritätskriterien](./media/vminsights-health/get-monitor-identifier-01.png)
+
+3. Geben Sie den folgenden Befehl zum Ändern der *alertGeneration*-Eigenschaft ein.
+
+    ```
+    armclient patch subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/monitors/Microsoft_LogicalDisk_AvgDiskSecPerTransfer?api-version=2018-08-31-preview 1-preview "{'properties':{'alertGeneration':'Disabled'}}"
+    ```   
+
+4. Geben Sie den in Schritt 2 verwendeten GET-Befehl ein, um zu überprüfen, ob der Wert der Eigenschaft auf **Disabled** festgelegt ist.  
+
+#### <a name="associate-action-group-with-health-criteria"></a>Zuordnen einer Aktionsgruppe zu Integritätskriterien
+
+Die Funktion „Integrität“ von Azure Monitor für VMs unterstützt SMS-und E-Mail-Benachrichtigungen, wenn Warnungen generiert werden, sobald Integritätskriterien fehlerhaft werden. Um Benachrichtigungen zu konfigurieren, müssen Sie den Namen der Aktionsgruppe notieren, die für das Senden von SMS- oder E-Mail-Benachrichtigungen konfiguriert ist. 
+
+>[!NOTE]
+>Diese Aktion muss für jede überwachte VM erfolgen, für die Sie eine Benachrichtigung erhalten möchten.
+
+1. Geben Sie in einem Terminalfenster **armclient.exe login**ein. Dabei werden Sie dazu aufgefordert, sich bei Azure anzumelden.
+
+2. Geben Sie den folgenden Befehl ein, um einer Aktionsgruppe Warnungsregeln zuzuordnen.
+ 
+    ```
+    $payload = "{'properties':{'ActionGroupResourceIds':['/subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/microsoft.insights/actionGroups/actiongroupName']}}" 
+    armclient PUT https://management.azure.com/subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/notificationSettings/default?api-version=2018-08-31-preview $payload
+    ```
+
+3. Um zu überprüfen, ob der Wert der Eigenschaft **actionGroupResourceIds** erfolgreich aktualisiert wurde, geben Sie den folgenden Befehl ein.
+
+    ```
+    armclient GET "subscriptions/subscriptionName/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/notificationSettings?api-version=2018-08-31-preview"
+    ```
+
+    Die Ausgabe sollte wie folgt aussehen:
+    
+    ![Beispielausgabe von Get-notificationSettings](./media/vminsights-health/get-notification-config-status.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zum Erkennen von Engpässen und Gesamtauslastung im Hinblick auf die Leistung Ihrer VM finden Sie unter [View Azure VM Performance](vminsights-performance.md) (Anzeigen der Leistung von Azure-VMs). Informationen zu erkannten Anwendungsabhängigkeiten finden Sie unter [View Azure Monitor for VMs Map](vminsights-maps.md) (Anzeigen der Zuordnung von Azure Monitor for VMs). 

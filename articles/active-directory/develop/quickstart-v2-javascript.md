@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Azure AD v2 JavaScript | Microsoft-Dokumentation'
-description: Es wird beschrieben, wie JavaScript-Anwendungen, für die Zugriffstoken vom Azure Active Directory v2.0-Endpunkt erforderlich sind, eine API aufrufen können.
+title: 'Schnellstart: Microsoft Identity Platform – JavaScript | Azure'
+description: Hier erfahren Sie, wie JavaScript-Anwendungen eine API aufrufen können, für die Zugriffstoken vom Microsoft Identity Platform-Endpunkt erforderlich sind.
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -12,24 +12,32 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe8c2287da7a7eabc26ff134d8bb44c5e45085f1
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 2021c5028637a6f7e732df61b6f7c034ef79324f
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203046"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547396"
 ---
-# <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-application"></a>Schnellstart: Anmelden von Benutzern und Beschaffen eines Zugriffstokens von einer JavaScript-Anwendung
+# <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application-spa"></a>Schnellstart: Anmelden von Benutzern und Beschaffen eines Zugriffstokens von einer JavaScript-Single-Page-Webanwendung
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
-In dieser Schnellstartanleitung wird ein Codebeispiel beschrieben. Darin wird veranschaulicht, wie eine JavaScript-Single-Page-Anwendung (SPA) die Anmeldung für persönliche Konten und Geschäfts-, Schul- und Unikonten durchführen und ein Zugriffstoken abrufen kann, um die Microsoft Graph-API oder eine beliebige Web-API aufzurufen.
+In dieser Schnellstartanleitung wird ein Codebeispiel beschrieben. Darin wird veranschaulicht, wie eine JavaScript-Single-Page-Webanwendung (SPA) die Anmeldung für persönliche Konten und Geschäfts-, Schul- und Unikonten durchführen und ein Zugriffstoken abrufen kann, um die Microsoft Graph-API oder eine beliebige Web-API aufzurufen.
 
-![Zeigt, wie die in diesem Schnellstart generierte Beispiel-App funktioniert](media/quickstart-v2-javascript/javascriptspa-intro-updated.png)
+![Zeigt, wie die in diesem Schnellstart generierte Beispiel-App funktioniert](media/quickstart-v2-javascript/javascriptspa-intro.svg)
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Für diese Schnellstartanleitung benötigen Sie das folgende Setup:
+* Führen Sie zum Ausführen des Projekts mit einem Node.js-Server die folgenden Schritte aus:
+    * Installieren von [Node.js](https://nodejs.org/en/download/)
+    * Installieren von [Visual Studio Code](https://code.visualstudio.com/download) zum Bearbeiten der Projektdateien
+* Wenn Sie das Projekt als Visual Studio-Projektmappe ausführen möchten, installieren Sie [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/).
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-application"></a>Registrieren und Herunterladen Ihrer Schnellstartanwendung
@@ -39,7 +47,9 @@ In dieser Schnellstartanleitung wird ein Codebeispiel beschrieben. Darin wird ve
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Option 1: Registrieren und automatisches Konfigurieren Ihrer App und anschließendes Herunterladen des Codebeispiels
 >
-> 1. Navigieren Sie zur [Anwendungsregistrierung (Vorschau) im Azure-Portal](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs).
+> 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+> 1. Wenn Sie mit Ihrem Konto auf mehrere Mandanten zugreifen können, klicken Sie rechts oben auf Ihr Konto, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
+> 1. Navigieren Sie zum neuen Bereich [Azure-Portal – App-Registrierungen](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs).
 > 1. Geben Sie einen Namen für Ihre Anwendung ein, und klicken Sie auf **Registrieren**.
 > 1. Befolgen Sie die Anweisungen, um Ihre neue Anwendung mit einem Klick herunterzuladen und automatisch zu konfigurieren.
 >
@@ -47,9 +57,10 @@ In dieser Schnellstartanleitung wird ein Codebeispiel beschrieben. Darin wird ve
 >
 > #### <a name="step-1-register-your-application"></a>Schritt 1: Anwendung registrieren
 >
-> 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, um eine Anwendung zu registrieren.
+> 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
 > 1. Wenn Sie mit Ihrem Konto auf mehrere Mandanten zugreifen können, klicken Sie rechts oben auf Ihr Konto, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
-> 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus, und klicken Sie anschließend auf **App-Registrierungen (Vorschau) > Neue Registrierung**.
+> 1. Navigieren Sie zur Seite [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) von Microsoft Identity Platform für Entwickler.
+> 1. Wählen Sie **Neue Registrierung** aus.
 > 1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** einen Namen für Ihre Anwendung ein.
 > 1. Wählen Sie unter **Unterstützte Kontotypen** **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten** aus.
 > 1. Wählen Sie die **Web**-Plattform unter dem Abschnitt **Umleitungs-URI** aus, und legen Sie den Wert auf `http://localhost:30662/` fest.
@@ -121,14 +132,16 @@ var applicationConfig = {
 
 * Stellen Sie bei Verwendung von [Visual Studio](https://visualstudio.microsoft.com/downloads/) sicher, dass Sie die Projektlösung auswählen, und drücken Sie dann **F5**, um Ihr Projekt auszuführen.
 
+Klicken Sie auf **Anmelden**, wenn der Browser die Anwendung geladen hat.  Bei der ersten Anmeldung werden Sie aufgefordert, Ihre Zustimmung zu geben, dass die Anwendung auf Ihr Profil zugreifen und Sie anmelden darf. Bei erfolgreicher Anmeldung sollten Ihre Benutzerprofilinformationen auf der Seite angezeigt werden.
+
 ## <a name="more-information"></a>Weitere Informationen
 
 ### <a name="msaljs"></a>*msal.js*
 
-MSAL ist die Bibliothek zum Anmelden von Benutzern und Anfordern von Token, die für den Zugriff auf eine per Microsoft Azure Active Directory (Azure AD) geschützte API verwendet werden. Die Datei *index.html* der Schnellstartanleitung enthält einen Verweis auf die Bibliothek:
+MSAL ist die Bibliothek zum Anmelden von Benutzern und Anfordern von Token, die für den Zugriff auf eine durch Microsoft Identity Platform geschützte API verwendet wird. Die Datei *index.html* der Schnellstartanleitung enthält einen Verweis auf die Bibliothek:
 
 ```html
-<script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.2.3/js/msal.min.js"></script>
+<script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.2.4/js/msal.min.js"></script>
 ```
 
 Falls Sie Node installiert haben, ist der Download per npm möglich:
@@ -189,14 +202,14 @@ myMSALObj.acquireTokenSilent(applicationConfig.graphScopes).then(function (acces
 
 #### <a name="get-a-user-token-interactively"></a>Interaktives Abrufen eines Benutzertokens
 
-Es gibt Situationen, in denen Sie die Interaktion mit dem Azure AD v2.0-Endpunkt erzwingen müssen. Beispiel: 
+Es gibt Situationen, in denen Sie die Interaktion mit dem Microsoft Identity Platform-Endpunkt erzwingen müssen. Beispiel: 
 * Benutzer müssen ihre Anmeldeinformationen ggf. erneut eingeben, weil ihr Kennwort abgelaufen ist.
 * Ihre Anwendung fordert Zugriff auf zusätzliche Ressourcenbereiche an, für die der Benutzer seine Zustimmung erteilen muss.
 * Die zweistufige Authentifizierung ist erforderlich.
 
 Das übliche empfohlene Muster für die meisten Anwendungen ist zuerst das Aufrufen von `acquireTokenSilent`, das anschließende Abfangen der Ausnahme und dann das Aufrufen von `acquireTokenRedirect` (oder `acquireTokenPopup`), um eine interaktive Anforderung zu starten.
 
-Der Aufruf von `acquireTokenPopup(scope)` führt zu einem Popupfenster (`acquireTokenRedirect(scope)` führt dazu, dass Benutzer an den Azure AD v2.0-Endpunkt umgeleitet werden), mit dem Benutzer interagieren müssen. Entweder bestätigen sie ihre Anmeldeinformationen, indem sie ihre Zustimmung zur erforderlichen Ressource erteilen, oder sie führen die zweistufige Authentifizierung durch.
+Der Aufruf von `acquireTokenPopup(scope)` führt zu einem Popupfenster (`acquireTokenRedirect(scope)` führt dazu, dass Benutzer an den Microsoft Identity Platform-Endpunkt umgeleitet werden), mit dem Benutzer interagieren müssen. Entweder bestätigen sie ihre Anmeldeinformationen, indem sie ihre Zustimmung zur erforderlichen Ressource erteilen, oder sie führen die zweistufige Authentifizierung durch.
 
 ```javascript
 myMSALObj.acquireTokenPopup(applicationConfig.graphScopes).then(function (accessToken) {

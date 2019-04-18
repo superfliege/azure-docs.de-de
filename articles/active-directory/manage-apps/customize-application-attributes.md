@@ -11,47 +11,56 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/09/2018
+ms.date: 04/03/2019
 ms.author: celested
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1926849c8ec63b4240d951e46b1341f31f7c5bd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8a2965fecd3aca17d6c4df7e49ad466377de9762
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170345"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267207"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory
-Microsoft Azure AD bietet Unterstützung für die Benutzerbereitstellung für SaaS-Anwendungen von Drittanbietern, z. B. Salesforce, Google Apps usw. Wenn Sie die Benutzerbereitstellung für eine SaaS-Anwendung eines Drittanbieters aktiviert haben, steuert das Azure-Portal deren Attributwerte mithilfe von Attributzuordnungen.
+Microsoft Azure AD bietet Unterstützung für die Benutzerbereitstellung für SaaS-Anwendungen von Drittanbietern, z. B. Salesforce, Google Apps usw. Wenn Sie die Benutzerbereitstellung für eine SaaS-Anwendung eines Drittanbieters aktivieren, steuert das Azure-Portal deren Attributwerte mithilfe von Attributzuordnungen.
 
-Es ist eine vorkonfigurierte Sammlung von Attributen und Attributzuordnungen zwischen Azure AD-Benutzerobjekten und den Benutzerobjekten der einzelnen SaaS-Apps verfügbar. Einige Apps verwalten neben Benutzern andere Objekttypen wie beispielsweise Gruppen. <br> 
- Sie können die Standardattributzuordnungen den Anforderungen Ihres Unternehmens entsprechend anpassen. Dies bedeutet, dass Sie vorhandene Attributzuordnungen ändern oder löschen und neue Attributzuordnungen erstellen können.
+Es ist eine vorkonfigurierte Sammlung von Attributen und Attributzuordnungen zwischen Azure AD-Benutzerobjekten und den Benutzerobjekten der einzelnen SaaS-Apps verfügbar. Einige Apps verwalten neben Benutzern andere Objekttypen wie beispielsweise Gruppen.
+
+Sie können die Standardattributzuordnungen den Anforderungen Ihres Unternehmens entsprechend anpassen. Dies bedeutet, dass Sie vorhandene Attributzuordnungen ändern oder löschen und neue Attributzuordnungen erstellen können.
  
 ## <a name="editing-user-attribute-mappings"></a>Bearbeiten von Benutzerattributzuordnungen
 
-Im Azure AD-Portal können Sie auf dieses Feature zugreifen, indem Sie auf eine **Zuordnungen**-Konfiguration unter **Bereitstellung** im Abschnitt **Verwalten** einer **Unternehmensanwendung** klicken.
+Führen Sie diese Schritte aus, um auf die Funktion **Zuordnungen** für die Benutzerbereitstellung zuzugreifen:
 
+1. Melden Sie sich beim [Azure Active Directory-Portal](https://aad.portal.azure.com) an.
 
-![Salesforce](./media/customize-application-attributes/21.png) 
+1. Wählen Sie im linken Bereich die Option **Unternehmensanwendungen** aus. Eine Liste aller konfigurierten Apps wird angezeigt, einschließlich Apps, die aus dem Katalog hinzugefügt wurden.
 
-Wenn Sie auf eine **Zuordnungskonfiguration** klicken, wird der zugehörige Bildschirm **Attributzuordnung** geöffnet. Es gibt Attributzuordnungen, die erforderlich sind, damit eine SaaS-Anwendung ordnungsgemäß funktioniert. Für die erforderlichen Attribute ist das Feature **Löschen** nicht verfügbar.
+1. Wählen Sie eine beliebige App aus, um den App-Verwaltungsbereich zu laden, in dem Sie Berichte anzeigen und App-Einstellungen verwalten können.
 
+1. Wählen Sie **Bereitstellung** aus, um die Einstellungen für die Bereitstellung von Benutzerkonten für die ausgewählte App zu verwalten.
 
-![Salesforce](./media/customize-application-attributes/22.png)
+1. Erweitern Sie **Zuordnungen**, um die Benutzerattribute anzuzeigen und zu bearbeiten, die zwischen Azure AD und Zielanwendung übertragen werden. Wenn die Zielanwendung dies unterstützt, können Sie in diesem Abschnitt auch optional die Bereitstellung von Gruppen und Benutzerkonten konfigurieren.
 
-Im Beispiel oben können Sie sehen, dass das Attribut **Benutzername** eines verwalteten Objekts in Salesforce mit dem Wert **userPrincipalName** des verknüpften Azure AD-Objekts aufgefüllt wird.
+   ![Salesforce](./media/customize-application-attributes/21.png) 
 
-Sie können vorhandene **Attributzuordnungen** durch Klicken auf eine Zuordnung anpassen. Daraufhin wird der Bildschirm **Attribut bearbeiten** geöffnet.
+1. Wählen Sie eine **Zuordnungskonfiguration** aus, um den zugehörigen Bildschirm **Attributzuordnung** zu öffnen. Einige Attributzuordnungen sind erforderlich, damit eine SaaS-Anwendung ordnungsgemäß funktioniert. Für die erforderlichen Attribute ist das Feature **Löschen** nicht verfügbar.
 
-![Salesforce](./media/customize-application-attributes/23.png)
+   ![Salesforce](./media/customize-application-attributes/22.png)
+
+   In diesem Screenshot können Sie sehen, dass das Attribut **Benutzername** eines verwalteten Objekts in Salesforce mit dem Wert **userPrincipalName** des verknüpften Azure Active Directory-Objekts aufgefüllt wird.
+
+1. Wählen Sie eine vorhandene **Attributzuordnung** aus, um den Bildschirm **Attribut bearbeiten** zu öffnen. Hier können Sie die Benutzerattribute bearbeiten, die zwischen Azure AD und Zielanwendung übertragen werden.
+
+   ![Salesforce](./media/customize-application-attributes/23.png)
 
 
 ### <a name="understanding-attribute-mapping-types"></a>Grundlegendes zu Attributzuordnungstypen
 Mit Attributzuordnungen steuern Sie, wie die Attribute in einer SaaS-Anwendung eines Drittanbieters mit Daten aufgefüllt werden. Vier verschiedene Zuordnungstypen werden unterstützt:
 
 * **Direkt** : Das Zielattribut wird mit dem Wert eines Attributs des verknüpften Objekts in Azure AD aufgefüllt.
-* **Konstant** : Das Zielattribut wird mit einer bestimmten Zeichenfolge, die Sie angegeben haben, aufgefüllt.
+* **Konstante**: Das Zielattribut wird mit einer bestimmten Zeichenfolge aufgefüllt, die Sie angegeben haben.
 * **Ausdruck** : Das Zielattribut wird abhängig vom Ergebnis eines skriptähnlichen Ausdrucks mit Daten aufgefüllt. 
   Weitere Informationen finden Sie unter [Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory](functions-for-customizing-application-data.md).
 * **Kein** : Das Zielattribut bleibt unverändert. Wenn das Zielattribut allerdings leer ist, wird es mit dem von Ihnen angegebenen Standardwert aufgefüllt.
@@ -61,12 +70,12 @@ Zusätzlich zu diesen vier Basistypen unterstützen benutzerdefinierte Attributz
 
 ### <a name="understanding-attribute-mapping-properties"></a>Grundlegendes zu Attributzuordnungseigenschaften
 
-Im vorherigen Abschnitt wurde bereits die Attributzuordnungstyp-Eigenschaft eingeführt.
+Im vorherigen Abschnitt haben Sie bereits die Attributzuordnungstyp-Eigenschaft kennengelernt.
 Zusätzlich zu dieser Eigenschaft unterstützen Attributzuordnungen auch die folgenden Attribute:
 
 - **Quellattribut:** Das Benutzerattribut aus dem Quellsystem (Beispiel: Azure Active Directory).
 - **Zielattribut**: Das Benutzerattribut im Zielsystem (Beispiel: ServiceNow).
-- **Objekte mit diesem Attribut abgleichen**: Gibt an, ob diese Zuordnung zum eindeutigen Bestimmen von Benutzern zwischen Quell- und Zielsystem verwendet werden soll. Dies wird in der Regel mit dem userPrincipalName- oder mail-Attribut in Azure AD festgelegt, das in der Regel einem Benutzernamenfeld in einer Zielanwendung zugeordnet ist.
+- **Objekte mit diesem Attribut abgleichen**: Gibt an, ob diese Zuordnung zum eindeutigen Bestimmen von Benutzern zwischen Quell- und Zielsystem verwendet werden soll. Diese Einstellung wird in der Regel auf das „userPrincipalName“- oder „mail“-Attribut in Azure AD festgelegt, das üblicherweise einem Benutzernamenfeld in einer Zielanwendung zugeordnet ist.
 - **Rangfolge für Abgleich**: Es können mehrere Attribute für den Abgleich festgelegt werden. Falls mehrere vorhanden sind, werden sie entsprechend der in diesem Feld festgelegten Reihenfolge ausgewertet. Sobald eine Übereinstimmung gefunden wird, werden keine weiteren Attribute für den Abgleich mehr ausgewertet.
 - **Diese Zuordnung anwenden**
     - **Immer**: Wenden Sie diese Zuordnung sowohl bei der Aktion zum Erstellen eines Benutzers als auch bei der zum Aktualisieren eines Benutzers an.
@@ -75,11 +84,11 @@ Zusätzlich zu dieser Eigenschaft unterstützen Attributzuordnungen auch die fol
 
 ## <a name="editing-group-attribute-mappings"></a>Bearbeiten von Gruppenattributzuordnungen
 
-Einige ausgewählte Anwendungen (z. B. ServiceNow, Box und Google Apps) bieten die Möglichkeit, neben Benutzerobjekten auch Gruppenobjekte bereitzustellen. Gruppenobjekte können zusätzlich zu den Gruppenmitgliedern Gruppeneigenschaften wie Anzeigenamen und E-Mail-Aliase enthalten.
+Einige ausgewählte Anwendungen (z.B. ServiceNow, Box und Google Apps) bieten die Möglichkeit, neben Benutzerobjekten auch Gruppenobjekte bereitzustellen. Gruppenobjekte können zusätzlich zu den Gruppenmitgliedern Gruppeneigenschaften wie Anzeigenamen und E-Mail-Aliase enthalten.
 
 ![ServiceNow](./media/customize-application-attributes/24.png)
 
-Die Gruppenbereitstellung kann optional aktiviert oder deaktiviert werden, indem Sie die Gruppenzuordnung unter **Zuordnungen** auswählen und die Einstellung **Aktiviert** auf dem Bildschirm **Attributzuordnung** wie gewünscht festlegen.
+Die Gruppenbereitstellung kann optional aktiviert oder deaktiviert werden, indem Sie die Gruppenzuordnung unter **Zuordnungen** auswählen und die Einstellung **Aktiviert** auf dem Bildschirm **Attributzuordnung** auf die gewünschte Option festlegen.
 
 Die Attribute, die zusammen mit den Gruppenobjekten bereitgestellt werden, können wie Benutzerobjekte angepasst werden (siehe obige Beschreibung). 
 
@@ -89,9 +98,9 @@ Die Attribute, die zusammen mit den Gruppenobjekten bereitgestellt werden, könn
 
 ## <a name="editing-the-list-of-supported-attributes"></a>Bearbeiten der Liste unterstützter Attribute
 
-Die unterstützen Attribute für eine bestimmte Anwendung sind vorkonfiguriert. Die meisten Benutzerverwaltungs-APIs von Anwendungen unterstützen die Schemaerkennung nicht. Der Azure AD-Bereitstellungsdienst kann die Liste der unterstützten Attribute daher nicht dynamisch durch Aufrufe an die Anwendung generieren. 
+Die unterstützen Attribute für eine bestimmte Anwendung sind vorkonfiguriert. Die Benutzerverwaltungs-APIs der meisten Anwendungen unterstützen nicht die Schemaerkennung. Daher ist der Azure AD-Bereitstellungsdienst nicht in der Lage, die Liste der unterstützten Attribute dynamisch zu generieren, indem er Aufrufe an die Anwendung richtet. 
 
-Einige Anwendungen unterstützen jedoch benutzerdefinierte Attribute. Damit der Azure AD-Bereitstellungsdienst benutzerdefinierte Attribute lesen und schreiben kann, müssen ihre Definitionen im Azure-Portal eingegeben werden. Verwenden Sie dazu das Kontrollkästchen **Erweiterte Optionen anzeigen** unten auf dem Bildschirm **Attributzuordnung**.
+Einige Anwendungen unterstützen jedoch benutzerdefinierte Attribute, die der Azure AD-Bereitstellungsdienst lesen und in die er schreiben kann. Um ihre Definitionen in das Azure-Portal einzugeben, aktivieren Sie unter auf dem Bildschirm **Attributzuordnung** das Kontrollkästchen **Erweiterte Optionen anzeigen** und wählen dann für Ihre App **Attributliste bearbeiten** aus.
 
 Folgende Anwendungen und Systeme unterstützen die Anpassung der Attributliste:
 
@@ -104,24 +113,22 @@ Folgende Anwendungen und Systeme unterstützen die Anpassung der Attributliste:
 >[!NOTE]
 >Das Bearbeiten der Liste unterstützter Attribute wird nur für Administratoren empfohlen, die das Schema ihrer Anwendungen und Systeme angepasst haben und aus erster Hand wissen, wie ihre benutzerdefinierten Attribute definiert wurden. Dies erfordert mitunter Kenntnisse der von einer Anwendung oder einem System bereitgestellten APIs und Entwicklertools. 
 
-![Editor](./media/customize-application-attributes/25.png) 
-
 Beim Bearbeiten der Liste unterstützter Attribute sind die folgenden Eigenschaften verfügbar:
 
 * **Name**: Der im Schema des Zielobjekts definierte Systemname des Attributs. 
-* **Typ**: Der im Schema des Zielobjekts definierte Datentyp, den das Attribut speichert. Mögliche Werte:
+* **Typ**: Der im Schema des Zielobjekts definierte Datentyp, den das Attribut speichert. Möglich ist einer der folgenden Typen:
    * *Binary* – Das Attribut enthält Binärdaten.
    * *Boolean* – Das Attribut enthält einen Wert „True“ oder „False“.
    * *DateTime* – Das Attribut enthält eine Datumszeichenfolge.
    * *Integer* – Das Attribut enthält eine ganze Zahl.
    * *Reference* – Das Attribut enthält eine ID, die auf einen in einer anderen Tabelle in der Zielanwendung gespeicherten Wert verweist.
    * *String* – Das Attribut enthält eine Textzeichenfolge. 
-* **Primärschlüssel?**: Gibt an, ob das Attribut als Primärschlüsselfeld im Schema des Zielobjekts definiert ist.
+* **Primärschlüssel?** Gibt an, ob das Attribut als Primärschlüsselfeld im Schema des Zielobjekts definiert ist.
 * **Erforderlich?** Gibt an, ob das Attribut in der Zielanwendung oder im Zielsystem aufgefüllt werden muss.
-* **Mehrwertig?**: Gibt an, ob das Attribut mehrere Werte unterstützt.
-* **Exact case?** (Groß-/Kleinschreibung beachten?): Gibt an, ob die Attributwerte unter Berücksichtigung der Groß-/Kleinschreibung ausgewertet werden.
-* **API-Ausdruck**: Verwenden Sie diese Eigenschaft nur, wenn Sie in der Dokumentation für einen bestimmten Bereitstellungsconnector (z. B. Workday) dazu angewiesen werden.
-* **Referenced Object Attribute** (Referenzierter Objekttyp): Im Fall eines Attributs vom Typ „Reference“ können Sie in diesem Menü die Tabelle und das Attribut in der Zielanwendung auswählen, die den zugehörigen Wert für das Attribut enthält. Bei einem Attribut mit dem Namen „Abteilung“, dessen gespeicherter Wert auf ein Objekt in einer separaten Tabelle „Abteilungen“ verweist, würden Sie beispielsweise „Abteilungen.Name“ auswählen. Beachten Sie, dass die unterstützten Verweistabellen und Felder für die primäre ID für eine bestimmte Anwendung vorkonfiguriert sind und derzeit nicht im Azure-Portal, aber mit der [Graph-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes) bearbeitet werden können.
+* **Mehrwertig?** Gibt an, ob das Attribut mehrere Werte unterstützt.
+* **Genaue Schreibweise?** Gibt an, ob die Attributwerte unter Berücksichtigung der Groß-/Kleinschreibung ausgewertet werden.
+* **API-Ausdruck**: Verwenden Sie diese Eigenschaft nur, wenn Sie in der Dokumentation für einen bestimmten Bereitstellungsconnector (z. B. Workday) dazu aufgefordert werden.
+* **Referenced Object Attribute** (Referenziertes Objektattribut): Im Fall eines Attributs vom Typ „Reference“ können Sie in diesem Menü die Tabelle und das Attribut in der Zielanwendung auswählen, die den zugehörigen Wert für das Attribut enthält. Bei einem Attribut mit dem Namen „Abteilung“, dessen gespeicherter Wert auf ein Objekt in einer separaten Tabelle „Abteilungen“ verweist, würden Sie beispielsweise „Abteilungen.Name“ auswählen. Die unterstützten Verweistabellen und Felder für die primäre ID für eine bestimmte Anwendung sind vorkonfiguriert und können derzeit nicht im Azure-Portal, aber mit der [Graph-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes) bearbeitet werden.
 
 Um ein neues Attribut hinzuzufügen, scrollen Sie zum Ende der Liste der unterstützten Attribute, füllen Sie die obigen Felder anhand der verfügbaren Eingaben auf, und klicken Sie auf **Attribut hinzufügen**. Klicken Sie nach dem Hinzufügen von Attributen auf **Speichern**. Sie müssen die Registerkarte **Bereitstellung** anschließend erneut laden, damit die neuen Attribute im Attributzuordnungs-Editor verfügbar werden.
 
@@ -146,7 +153,7 @@ Durch die Auswahl dieser Option wird eine erneute Synchronisierung aller Benutze
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Automatisieren der Bereitstellung/Bereitstellungsaufhebung von Benutzern für SaaS-Apps](user-provisioning.md)
+* [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](user-provisioning.md)
 * [Schreiben von Ausdrücken für Attributzuordnungen](functions-for-customizing-application-data.md)
 * [Bereichsfilter für die Benutzerbereitstellung](define-conditional-rules-for-provisioning-user-accounts.md)
 * [Verwenden von SCIM für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen](use-scim-to-provision-users-and-groups.md)
