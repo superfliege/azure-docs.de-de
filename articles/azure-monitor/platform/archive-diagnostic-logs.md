@@ -79,7 +79,7 @@ Set-AzDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-89012
 | ResourceId |Ja |Ressourcen-ID der Ressource, für die Sie eine Diagnoseeinstellung festlegen möchten |
 | StorageAccountId |Nein  |Ressourcen-ID des Speicherkontos, in dem Diagnoseprotokolle gespeichert werden sollen |
 | Categories |Nein  |Durch Trennzeichen getrennte Liste der zu aktivierenden Protokollkategorien |
-| Aktiviert |Ja |Boolescher Wert, der angibt, ob die Diagnose für diese Ressource aktiviert oder deaktiviert werden soll |
+| Enabled |Ja |Boolescher Wert, der angibt, ob die Diagnose für diese Ressource aktiviert oder deaktiviert werden soll |
 | RetentionEnabled |Nein  |Boolescher Wert, der angibt, ob eine Aufbewahrungsrichtlinie für diese Ressource aktiviert ist |
 | RetentionInDays |Nein  |Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von 0 werden die Protokolle dauerhaft gespeichert. |
 
@@ -153,10 +153,10 @@ Die einzelnen Ereignisse werden innerhalb der Datei „PT1H.json“ im folgenden
 | Elementname | BESCHREIBUNG |
 | --- | --- |
 | time |Zeitstempel der Ereignisgenerierung durch den Azure-Dienst, der die zum Ereignis gehörende Anforderung verarbeitet hat. |
-| ResourceId |Ressourcen-ID der betroffenen Ressource. |
+| resourceId |Ressourcen-ID der betroffenen Ressource. |
 | operationName |Name des Vorgangs. |
 | category |Protokollkategorie des Ereignisses |
-| Eigenschaften |Satz mit `<Key, Value>` -Paaren (Wörterbuch), die die Details des Ereignisses beschreiben. |
+| properties |Satz mit `<Key, Value>` -Paaren (Wörterbuch), die die Details des Ereignisses beschreiben. |
 
 > [!NOTE]
 > Die Eigenschaften und deren Verwendung können je nach Ressource variieren.
