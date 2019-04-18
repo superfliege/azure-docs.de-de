@@ -181,7 +181,7 @@ Legen Sie zum Kopieren von Daten aus SQL Server den Quellentyp in der Kopierakti
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **SqlSource** | Ja |
-| SqlReaderQuery |Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `select * from MyTable`. |Nein  |
+| sqlReaderQuery |Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `select * from MyTable`. |Nein  |
 | sqlReaderStoredProcedureName |Der Name der gespeicherten Prozedur, die Daten aus der Quelltabelle liest. Die letzte SQL-Anweisung muss eine SELECT-Anweisung in der gespeicherten Prozedur sein. |Nein  |
 | storedProcedureParameters |Parameter für die gespeicherte Prozedur.<br/>Zulässige Werte: Name/Wert-Paare. Die Namen und die Groß-/Kleinschreibung von Parametern müssen denen der Parameter der gespeicherten Prozedur entsprechen. |Nein  |
 
@@ -513,14 +513,14 @@ Beim Kopieren von Daten in/aus SQL Server werden die folgenden Zuordnungen von S
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
-| Bit |Boolescher Wert |
+| bit |Boolean |
 | char |String, Char[] |
 | date |DateTime |
-| DateTime |DateTime |
+| Datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
-| FILESTREAM-Attribut (varbinary(max)) |Byte[] |
+| FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
 | image |Byte[] |
 | int |Int32 |
@@ -534,7 +534,7 @@ Beim Kopieren von Daten in/aus SQL Server werden die folgenden Zuordnungen von S
 | smalldatetime |DateTime |
 | smallint |Int16 |
 | smallmoney |Decimal |
-| sql_variant |Objekt |
+| sql_variant |Object |
 | text |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
@@ -542,7 +542,7 @@ Beim Kopieren von Daten in/aus SQL Server werden die folgenden Zuordnungen von S
 | uniqueidentifier |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
-| xml |xml |
+| xml |Xml |
 
 >[!NOTE]
 > Für Datentypen, die dem Zwischendatentyp „Decimal“ zugeordnet sind, unterstützt ADF derzeit eine maximale Genauigkeit von 28. Daten mit einer höheren Genauigkeit müssen in SQL-Abfragen ggf. in eine Zeichenfolge konvertiert werden.
