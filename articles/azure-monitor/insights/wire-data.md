@@ -397,7 +397,7 @@ Ein Datensatz mit dem Typ _WireData_ wird für jeden Eingabedatentyp erstellt. D
 | ReceivedBytes | Summe empfangener Bytes |
 | ProtocolName | Name des verwendeten Netzwerkprotokolls |
 | IPVersion | IP-Version |
-| Richtung | Eingehend oder ausgehend |
+| Direction | Eingehend oder ausgehend |
 | MaliciousIP | IP-Adresse einer bekannten schädlichen Quelle |
 | Severity | Vermuteter Malwareschweregrad |
 | RemoteIPCountry | Land der Remote-IP-Adresse |
