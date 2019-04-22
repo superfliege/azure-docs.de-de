@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5592ee7f3c4b5f55785100ceff09659aa437cb6
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: d524f5f58e7381dd89f36c5d2821e6911ed9ec15
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578576"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045456"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen
 
@@ -81,8 +81,8 @@ Konfigurieren Sie die verwaltete Identität für Azure App Service anhand der fo
 
 Verwenden Sie die folgende Liste, um eine verwaltete Identität mit [Azure Blueprints](../../governance/blueprints/overview.md) zu nutzen:
 
-- [Azure-Portal: Blaupausenzuweisung](../../governance/blueprints/create-blueprint-portal.md#assign-a-blueprint)
-- [REST-API: Blaupausenzuweisung](../../governance/blueprints/create-blueprint-rest-api.md#assign-a-blueprint)
+- [Azure-Portal – Blaupausenzuweisung](../../governance/blueprints/create-blueprint-portal.md#assign-a-blueprint)
+- [REST-API – Blaupausenzuweisung](../../governance/blueprints/create-blueprint-rest-api.md#assign-a-blueprint)
 
 ### <a name="azure-functions"></a>Azure-Funktionen
 
@@ -156,10 +156,10 @@ Die folgenden Dienste unterstützen die Azure AD-Authentifizierung und wurden mi
 
 Konfigurieren Sie den Zugriff auf Azure Resource Manager anhand der folgenden Liste:
 
-- [Zuweisen des Zugriffs im Azure-Portal](howto-assign-access-portal.md)
+- [Zuweisen des Zugriffs über das Azure-Portal](howto-assign-access-portal.md)
 - [Zuweisen des Zugriffs mithilfe von PowerShell](howto-assign-access-powershell.md)
-- [Zuweisen des Zugriffs mithilfe der Azure CLI](howto-assign-access-CLI.md)
-- [Zuweisen des Zugriffs mit Azure Resource Manager-Vorlagen](../../role-based-access-control/role-assignments-template.md)
+- [Zuweisen des Zugriffs mithilfe der Azure-Befehlszeilenschnittstelle](howto-assign-access-CLI.md)
+- [Zuweisen des Zugriffs mithilfe der Azure Resource Manager-Vorlage](../../role-based-access-control/role-assignments-template.md)
 
 | Cloud | Ressourcen-ID | Status |
 |--------|------------|--------|
@@ -177,7 +177,7 @@ Konfigurieren Sie den Zugriff auf Azure Resource Manager anhand der folgenden Li
 | Azure Deutschland |  `https://vault.microsoftazure.de` | Verfügbar |
 | Azure China 21Vianet | `https://vault.azure.cn` | Verfügbar |
 
-## <a name="azure-data-lake"></a>Azure Data Lake 
+### <a name="azure-data-lake"></a>Azure Data Lake 
 
 | Cloud | Ressourcen-ID | Status |
 |--------|------------|--------|
@@ -186,7 +186,7 @@ Konfigurieren Sie den Zugriff auf Azure Resource Manager anhand der folgenden Li
 | Azure Deutschland |   | Nicht verfügbar. |
 | Azure China 21Vianet |  | Nicht verfügbar. |
 
-## <a name="azure-sql"></a>Azure SQL 
+### <a name="azure-sql"></a>Azure SQL 
 
 | Cloud | Ressourcen-ID | Status |
 |--------|------------|--------|
@@ -195,7 +195,7 @@ Konfigurieren Sie den Zugriff auf Azure Resource Manager anhand der folgenden Li
 | Azure Deutschland | `https://database.cloudapi.de/` | Verfügbar |
 | Azure China 21Vianet | `https://database.chinacloudapi.cn/` | Verfügbar |
 
-## <a name="azure-event-hubs"></a>Azure Event Hubs
+### <a name="azure-event-hubs"></a>Azure Event Hubs
 
 | Cloud | Ressourcen-ID | Status |
 |--------|------------|--------|
@@ -204,7 +204,7 @@ Konfigurieren Sie den Zugriff auf Azure Resource Manager anhand der folgenden Li
 | Azure Deutschland |   | Nicht verfügbar. |
 | Azure China 21Vianet |  | Nicht verfügbar. |
 
-## <a name="azure-service-bus"></a>Azure-Servicebus
+### <a name="azure-service-bus"></a>Azure-Servicebus
 
 | Cloud | Ressourcen-ID | Status |
 |--------|------------|--------|
@@ -213,7 +213,7 @@ Konfigurieren Sie den Zugriff auf Azure Resource Manager anhand der folgenden Li
 | Azure Deutschland |   | Nicht verfügbar. |
 | Azure China 21Vianet |  | Nicht verfügbar. |
 
-## <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Azure Storage
 
 | Cloud | Ressourcen-ID | Status |
 |--------|------------|--------|

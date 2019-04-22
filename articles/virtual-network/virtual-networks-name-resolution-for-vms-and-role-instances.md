@@ -4,20 +4,20 @@ titlesuffix: Azure Virtual Network
 description: Szenarien für die Namensauflösung für Azure IaaS, Hybridlösungen, zwischen verschiedenen Clouddiensten, Active Directory und Verwenden eines eigenen DNS-Servers
 services: virtual-network
 documentationcenter: na
-author: subsarma
+author: rohinkoul
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
-ms.author: subsarma
-ms.openlocfilehash: ea15468722fcf1b9e2649236ef4dd05549d8f460
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.author: rohink
+ms.openlocfilehash: 78c66ac25e9d20d9202236407d42f815879cd3f2
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418736"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426425"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken
 
@@ -214,11 +214,11 @@ Wenn Sie das klassische Bereitstellungsmodell verwenden, können Sie DNS-Server 
 
 Azure Resource Manager-Bereitstellungsmodell:
 
-* [Erstellen, Ändern oder Löschen eines virtuellen Netzwerks](manage-virtual-network.md)
-* [Erstellen, Ändern oder Löschen von Netzwerkschnittstellen](virtual-network-network-interface.md)
+* [Verwalten virtueller Netzwerke](manage-virtual-network.md)
+* [Verwalten von Netzwerkschnittstellen](virtual-network-network-interface.md)
 
 Klassisches Bereitstellungsmodell:
 
-* [Azure-Dienstkonfigurationsschema (.cscfg-Datei)](https://msdn.microsoft.com/library/azure/ee758710)
-* [Konfigurationsschema für virtuelle Netzwerke](https://msdn.microsoft.com/library/azure/jj157100)
+* [Azure-Dienstkonfigurationsschema](https://msdn.microsoft.com/library/azure/ee758710)
+* [Konfigurationsschema von Virtual Network](https://msdn.microsoft.com/library/azure/jj157100)
 * [Konfigurieren eines virtuellen Netzwerks mithilfe einer Netzwerkkonfigurationsdatei](virtual-networks-using-network-configuration-file.md)

@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/18/2019
-ms.openlocfilehash: d259fd5fc8c60837c6b6110eb751360227d70836
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: d685b06b95af42f07449cc84e70220dd1a4afa9f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338427"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051783"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure Stream Analytics-Ausgabe an Azure SQL-Datenbank
 
@@ -29,7 +29,7 @@ Hier sind einige Konfigurationen innerhalb der einzelnen Dienste aufgeführt, mi
 - **Partitionierung erben** – Diese Konfigurationsoption für die SQL-Ausgabe ermöglicht das Erben des Partitionierungsschemas des vorherigen Abfrageschritts oder der vorherigen Eingabe. Wenn diese Option aktiviert ist, sind beim Schreiben in eine datenträgerbasierte Tabelle und beim Verwenden einer [vollständig parallelen](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs) Topologie für Ihren Auftrag bessere Durchsatzwerte zu erwarten. Diese Partitionierung erfolgt für viele weitere [Ausgaben](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#partitions-in-sources-and-sinks) bereits automatisch. Die Tabellensperre (TABLOCK) wird für mit dieser Option durchgeführte Masseneinfügungen ebenfalls deaktiviert.
 
 > [!NOTE] 
-> Wenn mehr als acht Eingabepartitionen vorliegen, ist das Erben des Eingabepartitionierungsschemas möglicherweise keine geeignete Option. Die Obergrenze wurde für eine Tabelle mit einer einzigen Identitätsspalte und einem gruppierten Index festgestellt. Basierend auf Ihrem Schema und Ihrer Auswahl von Indizes können Ihre Beobachtungen abweichen.
+> Wenn mehr als acht Eingabepartitionen vorliegen, ist das Erben des Eingabepartitionierungsschemas möglicherweise keine geeignete Option. Die Obergrenze wurde für eine Tabelle mit einer einzigen Identitätsspalte und einem gruppierten Index festgestellt. Erwägen Sie in diesem Fall die Verwendung von [INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) 8 in Ihrer Abfrage, um die Zahl der Ausgabeschreiber explizit anzugeben. Basierend auf Ihrem Schema und Ihrer Auswahl von Indizes können Ihre Beobachtungen abweichen.
 
 - **Batchgröße**: In der SQL-Ausgabekonfiguration können Sie die maximale Batchgröße in einer Azure Stream Analytics-SQL-Ausgabe basierend auf der Natur Ihrer Zieltabelle/Arbeitsauslastung angeben. Die Batchgröße ist die maximale Anzahl von Datensätzen, die bei jeder Masseneinfügungstransaktion gesendet werden. In gruppierten Columnstore-Indizes ermöglichen Batchgrößen von etwa [100.000](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance) eine weitere Parallelisierung, minimale Protokollierung sowie Sperroptimierungen. In datenträgerbasierten Tabellen ist möglicherweise ein Wert von höchstens 10.000 (Standard) für Ihre Lösung optimal, weil durch höhere Batchgrößen eine Sperrenausweitung bei Masseneinfügungen ausgelöst werden kann.
 

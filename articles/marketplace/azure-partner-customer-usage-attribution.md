@@ -9,12 +9,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
-ms.openlocfilehash: 9becc7bacf1b2263f41d4cfb7b9cf3957063b230
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 078815185ddb6018a394401f57f7557ac3aedb73
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649577"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050151"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Zuordnen der Nutzung durch Kunden von Azure-Partnern
 
@@ -31,6 +31,9 @@ Als Microsoft-Partner können Sie die Azure-Nutzung allen Azure-Ressourcen zuord
 Die Zuordnung der Nutzung durch Kunden gilt für neue Bereitstellung. Das Markieren vorhandener, bereits bereitgestellter Ressourcen wird nicht unterstützt.
 
 Die Zuordnung der Nutzung durch Kunden ist für [Azure-Anwendungsangebote](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/azure-applications/cpp-azure-app-offer) für Lösungsvorlagen erforderlich, die über den Azure Marketplace veröffentlicht werden.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="use-resource-manager-templates"></a>Verwenden von Resource Manager-Vorlagen
 Viele Partnerlösungen werden mithilfe von Resource Manager-Vorlagen im Abonnement eines Kunden bereitgestellt. Wenn Sie eine Resource Manager-Vorlage besitzen, die im Azure Marketplace, auf GitHub oder als Schnellstart verfügbar ist, können Sie die Vorlage einfach bearbeiten, um die Zuordnung der Nutzung durch Kunden zu aktivieren.
@@ -223,12 +226,12 @@ Param(
 
 # Get the correlationId of the pid deployment
 
-$correlationId = (Get-AzureRmResourceGroupDeployment -ResourceGroupName
+$correlationId = (Get-AzResourceGroupDeployment -ResourceGroupName
 $resourceGroupName -Name "pid-$guid").correlationId
 
 # Find all deployments with that correlationId
 
-$deployments = Get-AzureRmResourceGroupDeployment -ResourceGroupName $resourceGroupName | Where-Object{$_.correlationId -eq $correlationId}
+$deployments = Get-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName | Where-Object{$_.correlationId -eq $correlationId}
 
 # Find all deploymentOperations in a deployment by name
 # PowerShell doesn't surface outputResources on the deployment
@@ -239,7 +242,7 @@ foreach ($deployment in $deployments){
 # Get deploymentOperations by deploymentName
 # then the resourceId for any create operation
 
-($deployment | Get-AzureRmResourceGroupDeploymentOperation | Where-Object{$_.properties.provisioningOperation -eq "Create" -and $_.properties.targetResource.resourceType -ne "Microsoft.Resources/deployments"}).properties.targetResource.id
+($deployment | Get-AzResourceGroupDeploymentOperation | Where-Object{$_.properties.provisioningOperation -eq "Create" -and $_.properties.targetResource.resourceType -ne "Microsoft.Resources/deployments"}).properties.targetResource.id
 
 }
 ```
@@ -313,7 +316,7 @@ Im Anschluss werden Sie von einem technischen Berater eines Microsoft-Partners k
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 
-**Welchen Vorteil hat das Hinzufügen der GUID zur Vorlage?**
+**Welchen Vorteil bietet das Hinzufügen der GUID zur Vorlage?**
 
 Microsoft stellt Partnern eine Ansicht über die Kundenbereitstellungen ihrer Lösungen und Erkenntnisse über den Einfluss auf die Nutzung bereit. Sowohl Microsoft als auch der Partner können diese Informationen dazu verwenden, eine engere Beziehung zwischen den Vertriebsteams zu fördern. Microsoft und der Partner können damit auch eine konsistentere Ansicht des Einflusses der einzelnen Partner auf das Azure-Wachstum erhalten.
 
@@ -321,7 +324,7 @@ Microsoft stellt Partnern eine Ansicht über die Kundenbereitstellungen ihrer L�
 
 Ja, ein Kunde oder Implementierungspartner kann die Vorlage anpassen und die GUID ändern oder entfernen. Es wird empfohlen, dass Partner ihren Kunden und Partnern proaktiv die Funktion der Ressource und der GUID beschreiben, um das Entfernen oder Ändern der GUID zu verhindern. Eine Änderung der GUID hat nur Auswirkungen auf neue, noch nicht vorhandene Bereitstellungen und Ressourcen.
 
-**Kann ich Vorlagen nachverfolgen, die nicht über ein Microsoft-Repository, sondern z.B. über GitHub bereitgestellt wurden?**
+**Kann ich Vorlagen nachverfolgen, die nicht über ein Microsoft-Repository, sondern z. B. über GitHub bereitgestellt wurden?**
 
 Ja, solange die GUID bei der Bereitstellung der Vorlage vorhanden ist, wird die Nutzung nachverfolgt. Partner müssen über ein Profil im Cloudpartnerportal verfügen, um die GUIDs zu registrieren, die für Bereitstellungen außerhalb vom Azure Marketplace verwendet werden.
 
@@ -333,17 +336,17 @@ Kunden können ihre Nutzung einzelner Ressourcen oder benutzerdefinierter Ressou
 
 Diese neue Methode für das Verbinden von Bereitstellung und Nutzung mit der Lösung eines Partners stellt einen Mechanismus zum Verknüpfen einer Partnerlösung mit der Azure-Nutzung bereit. Mit DPOR soll ein Beratungspartner (Systemintegrator) oder Verwaltungspartner (Managed Services Provider) dem Azure-Abonnement eines Kunden zugeordnet werden.
 
-**Was ist der Vorteil bei der Verwendung des GUID-Generatorformulars von Azure Storage?**
+**Welche Vorteile bietet die Verwendung des GUID-Generatorformulars von Azure Storage?**
 
 Das GUID-Generatorformular von Azure Storage generiert eine GUID garantiert im erforderlichen Format. Wenn Sie außerdem eine der Verfolgungsmethoden von Azure Storage für die Datenebene verwenden, können Sie dieselbe GUID für die Verfolgung der Marketplace-Steuerungsebene verwenden. Auf diese Weise können Sie eine einzelne einheitliche GUID für die Partnerzuordnung nutzen, ohne separate GUIDs verwalten zu müssen.
 
-**Kann ich eine private, benutzerdefinierte virtuelle Festplatte für ein Angebot für Lösungsvorlagen im Azure Marketplace verwenden?**
+**Kann ich eine private, benutzerdefinierte virtuelle Festplatte (VHD) für ein Angebot für Lösungsvorlagen im Azure Marketplace verwenden?**
 
 Nein, das ist nicht möglich. Das VM-Image muss aus dem Azure Marketplace stammen. Weitere Informationen finden Sie unter [https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines).
 
 Sie können ein mit einer benutzerdefinierten virtuellen Festplatte ein VM-Angebot im Marketplace erstellen und es als „Privat“ markieren, sodass andere Benutzer dieses nicht einsehen können. Verweisen Sie dann in der Lösungsvorlage auf diese VM.
 
-**Warum ist das Aktualisieren der Eigenschaft *contentVersion* für die Hauptvorlage fehlgeschlagen?**
+**Warum konnte die *contentVersion*-Eigenschaft für die Hauptvorlage nicht aktualisiert werden?**
 
 Es liegt wahrscheinlich ein Fehler vor, bei dem die Vorlage mithilfe der TemplateLink-Eigenschaft einer anderen Vorlage bereitgestellt wurde, die eine ältere contentVersion-Eigenschaft erwartet. Verwenden Sie als Problemumgehung die Metadateneigenschaft:
 

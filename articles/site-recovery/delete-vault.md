@@ -7,18 +7,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: f5ce1fa46206588a1c84388b8d543051f97919a3
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: b5d035308c50525449edf47131c4a6a8c62b750b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449188"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045523"
 ---
 # <a name="delete-a-site-recovery-services-vault"></a>Löschen eines Site Recovery Services-Tresors
 
 Abhängigkeiten können das Löschen eines Azure Site Recovery-Tresors verhindern. Die von Ihnen auszuführenden Aktionen hängen vom jeweiligen Site Recovery-Szenario ab. Informationen zum Löschen eines in Azure Backup verwendeten Tresors finden Sie unter [Löschen eines Azure Backup-Tresors](../backup/backup-azure-delete-vault.md).
 
-
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="delete-a-site-recovery-vault"></a>Löschen eines Site Recovery-Tresors 
 Befolgen Sie die empfohlenen Schritte für Ihr Szenario, um den Tresor zu löschen:
@@ -65,12 +65,12 @@ Befolgen Sie die empfohlenen Schritte für Ihr Szenario, um den Tresor zu lösch
 
 Verwenden Sie die folgenden Befehle, um den Site Recovery-Tresor zu löschen, selbst wenn geschützte Elemente vorhanden sind:
 
-    Connect-AzureRmAccount
+    Connect-AzAccount
 
-    Select-AzureRmSubscription -SubscriptionName "XXXXX"
+    Select-AzSubscription -SubscriptionName "XXXXX"
 
-    $vault = Get-AzureRmRecoveryServicesVault -Name "vaultname"
+    $vault = Get-AzRecoveryServicesVault -Name "vaultname"
 
-    Remove-AzureRmRecoveryServicesVault -Vault $vault
+    Remove-AzRecoveryServicesVault -Vault $vault
 
-Erfahren Sie mehr über [Get-AzureRMRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/get-azurermrecoveryservicesvault) und [Remove-AzureRMRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/remove-azurermrecoveryservicesvault).
+Erfahren Sie mehr über [Get-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault) und [Remove-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault).

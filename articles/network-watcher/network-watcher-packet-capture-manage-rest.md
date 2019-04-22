@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 49a703164b302443d8b50ba950cf23b8601cb599
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 614c3e1831680fff50058cd5192449f8e6e28179
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480701"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049795"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>Verwalten von Paketerfassungen mit Azure Network Watcher mithilfe der Azure-REST-API
 
@@ -35,10 +35,13 @@ Dieser Artikel führt Sie durch die verschiedenen Verwaltungsaufgaben, die derze
 
 - [**Abrufen einer Paketerfassung**](#get-a-packet-capture)
 - [**Auflisten aller Paketerfassungen**](#list-all-packet-captures)
-- [**Abfragen des Status einer Paketerfassung**](#query-packet-capture-status)
+- [**Status einer Paketerfassung abfragen**](#query-packet-capture-status)
 - [**Starten einer Paketerfassung**](#start-packet-capture)
 - [**Beenden einer Paketerfassung**](#stop-packet-capture)
 - [**Löschen einer Paketerfassung**](#delete-packet-capture)
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -60,7 +63,7 @@ Führen Sie das folgende Skript aus, um einen virtuellen Computer zurückzugeben
 
 Der folgende Code benötigt Variablen:
 
-- **subscriptionId:** Die Abonnement-ID kann auch mit dem Cmdlet **Get-AzureRMSubscription** abgerufen werden.
+- **subscriptionId:** Die Abonnement-ID kann auch mit dem Cmdlet **Get-AzSubscription** abgerufen werden.
 - **resourceGroupName:** der Name einer Ressourcengruppe, die virtuelle Computer enthält.
 
 ```powershell

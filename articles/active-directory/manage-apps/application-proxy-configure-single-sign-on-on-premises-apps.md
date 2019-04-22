@@ -16,18 +16,18 @@ ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 415b33dce42945c40aedd996d4dcfa5c6b987b44
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 2e103604af7aba2a0ef2e3d0e02a721ae4740c40
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336217"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469691"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy-preview"></a>SAML-SSO (einmaliges Anmelden) für lokale Anwendungen mit dem Anwendungsproxy (Vorschauversion)
 
 Sie können das einmalige Anmelden (SSO) für lokale Anwendungen bereitstellen, die mit der SAML-Authentifizierung gesichert werden, und für diese Anwendungen über das Anwendungsproxy Remotezugriff gewähren. Mit SAML-SSO nimmt Azure Active Directory (Azure AD) die Authentifizierung bei der Anwendung mithilfe des Azure AD-Kontos des Benutzers vor. Azure AD gibt die Informationen für das einmalige Anmelden über ein Verbindungsprotokoll an die Anwendung weiter. Sie können Benutzer auch basierend auf Regeln, die Sie in Ihren SAML-Ansprüchen definieren, bestimmten Anwendungsrollen zuordnen. Wenn Sie zusätzlich zu SAML-SSO das Anwendungsproxy aktivieren, profitieren Ihre Benutzer vom externen Zugriff auf die Anwendung sowie von nahtlosem SSO.
 
-Die Anwendungen müssen in der Lage sein, SAML-Token zu nutzen, die von **Azure Active Directory** ausgestellt wurden. Diese Konfiguration gilt nicht für Anwendungen, die einen lokalen Identitätsanbieter verwenden. Wir empfehlen Ihnen für solche Szenarios die Informationen unter [Ressourcen zum Migrieren von Anwendungen zu Azure Active Directory](migration-resources.md).
+Die Anwendungen müssen in der Lage sein, SAML-Token zu nutzen, die von **Azure Active Directory** ausgestellt wurden. Diese Konfiguration gilt nicht für Anwendungen, die einen lokalen Identitätsanbieter verwenden. Wir empfehlen Ihnen für solche Szenarien die Informationen unter [Ressourcen zum Migrieren von Anwendungen zu Azure Active Directory](migration-resources.md).
 
 SAML-SSO mit dem Anwendungsproxy kann auch mit dem Feature SAML-Tokenverschlüsselung verwendet werden. Weitere Informationen finden Sie unter [Configure Azure AD SAML token encryption (Vorgehensweise: Konfigurieren der Azure AD-SAML-Tokenverschlüsselung)](howto-saml-token-encryption.md).
 
@@ -41,7 +41,7 @@ Bedenken Sie bei der Ausführung des Tutorials Folgendes:
 )).
 * Kopieren Sie die **externe URL** für die Anwendung.
 * Es hat sich bewährt, für eine optimierte Benutzerfreundlichkeit nach Möglichkeit benutzerdefinierte Domänen zu verwenden. Weitere Informationen finden Sie unter [Arbeiten mit benutzerdefinierten Domänen im Azure AD-Anwendungsproxy](application-proxy-configure-custom-domain.md).
-* Fügen Sie mindestens einen Benutzer zur Anwendung hinzu, und stellen Sie sicher, dass das Testkonto Zugriff auf die lokale Anwendung hat.
+* Fügen Sie mindestens einen Benutzer zur Anwendung hinzu, und stellen Sie sicher, dass das Testkonto Zugriff auf die lokale Anwendung hat. Testen Sie, ob das Testkonto Zugriff auf die Anwendung hat, indem Sie die **externe URL** aufrufen und überprüfen, ob der Anwendungsproxy ordnungsgemäß eingerichtet ist. Informationen zur Problembehandlung finden Sie unter [Beheben von Problemen mit Anwendungsproxys und Fehlermeldungen](application-proxy-troubleshoot.md).
 
 ## <a name="set-up-saml-sso"></a>Einrichten von SAML-SSO
 
@@ -50,7 +50,8 @@ Bedenken Sie bei der Ausführung des Tutorials Folgendes:
 1. Wählen Sie als SSO-Methode die Option **SAML** aus.
 1. Bearbeiten Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** die Daten zu **Grundlegende SAML-Konfiguration**, und befolgen Sie die Anweisungen unter [Eingabe der SAML-Basiskonfiguration](configure-single-sign-on-non-gallery-applications.md#saml-based-single-sign-on), um die SAML-basierte Authentifizierung für die Anwendung zu konfigurieren.
 
-   * Stellen Sie sicher, dass der Stamm der **Antwort-URL** mit der **externen URL** für die lokale Anwendung übereinstimmt, die Sie für den Remotezugriff über das Anwendungsproxy in Azure AD hinzugefügt haben, oder dass er einen Pfad unter dieser darstellt.
+   * Stellen Sie sicher, dass die **Antwort-URL** mit der **externen URL** für die lokale Anwendung, die Sie über den Anwendungsproxy veröffentlicht haben, übereinstimmt oder ein Pfad unter der externen URL ist. Wenn in der Anwendung eine andere **Antwort-URL** für die SAML-Konfiguration erforderlich ist, fügen Sie sie als **erste** URL in der Liste hinzu, und behalten Sie die **externe URL** als zusätzliche URL nach der ersten URL bei.
+   * Stellen Sie sicher, dass in der Anwendung zudem die richtige **Antwort-URL** oder Assertionsverbraucherdienst-URL für den Empfang des Authentifizierungstokens angegeben ist.
 
      ![Eingabe der SAML-Basiskonfigurationsdaten](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 
@@ -62,7 +63,7 @@ Bedenken Sie bei der Ausführung des Tutorials Folgendes:
 Nachdem Sie alle Schritte abgeschlossen haben, sollte Ihre App betriebsbereit sein. So testen Sie die App:
 
 1. Öffnen Sie einen Browser, und navigieren Sie zur externen URL, die Sie erstellt haben, als Sie die App veröffentlicht haben. 
-1. Melden Sie sich mit dem Testkonto an, das Sie der App zugewiesen haben.
+1. Melden Sie sich mit dem Testkonto an, das Sie der App zugewiesen haben. Es sollte möglich sein, dass Sie die Anwendung laden und sich per einmaligem Anmelden bei der Anwendung anmelden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

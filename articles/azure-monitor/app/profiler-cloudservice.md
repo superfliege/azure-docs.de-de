@@ -12,19 +12,19 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 2e13f1f09fcdfb68a99e705511e3659f1632132e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 93d0f148c1fa3f13e79b28e19527251455a1b65c
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895480"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470830"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Erstellen von Profilen für Azure Cloud Services-Liveinstanzen mit Application Insights
 
 Application Insights Profiler kann auch für diese Dienste bereitgestellt werden:
 * [Azure App Service](profiler.md?toc=/azure/azure-monitor/toc.json)
-* [Azure Service Fabric-Anwendungen](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
-* [Dokumentation zu virtuellen Computern](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Service Fabric-Liveanwendungen](profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Virtual Machines](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 Application Insights Profiler wird mit der Azure-Diagnoseerweiterung installiert. Sie müssen Azure-Diagnose nur so konfigurieren, dass Profiler installiert wird und Profile an Ihre Application Insights-Ressource sendet.
 
@@ -33,7 +33,7 @@ Application Insights Profiler wird mit der Azure-Diagnoseerweiterung installiert
 
 1. Fügen Sie das [Application Insights SDK für Azure Cloud Services](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json) hinzu.
 
-   >**Der Profiler, der in der neuesten Version von WAD für Cloud Services enthalten ist, weist einen Fehler auf.** Zur Verwendung des Profilers mit einem Clouddienst wird nur das AI SDK bis Version 2.7.2 unterstützt. Wenn Sie eine neuere Version des AI SDK verwenden, müssen Sie zu Version 2.7.2 zurückkehren, um den Profiler zu verwenden. Wenn Sie Visual Studio für das Downgrade der App Insights SDK-Version verwenden, wird zur Laufzeit möglicherweise ein Bindungsumleitungsfehler angezeigt. Der Grund dafür ist, dass „newVersion“ in der Datei „web.config“ für „Microsoft.ApplicationInsights“ nach dem Downgrade des AI SDK auf „2.7.2.0" festgelegt sein sollte, dies aber nicht automatisch aktualisiert wird.
+    **Der Fehler im Profiler, der mit WAD für Cloud Services geliefert wird, wurde behoben.** Die neueste Version von WAD (1.12.2.0) für Cloud Services funktioniert mit allen neueren Versionen des App Insights-SDK. Cloud Service-Hosts führen ein automatisches Upgrade für WAD durch, doch erfolgt dies nicht unmittelbar. Soll ein Upgrade erzwungen werden, können Sie den Dienst erneut bereitstellen oder den Knoten neu starten.
 
 1. Verfolgen Sie Anforderungen mit Application Insights:
 

@@ -3,17 +3,17 @@ title: Azure IoT Hub Device Provisioning Service – Nachweis des symmetrischen 
 description: Dieser Artikel bietet eine konzeptionelle Übersicht über den Nachweis des symmetrischen Schlüssels mit IoT Hub Device Provisioning Service.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 08/18/2018
+ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: 80828876ffe8b58697cfaacad4991354ac070730
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+manager: philmea
+ms.openlocfilehash: 2f6e1e1a27e32e567cf0eaa8ff7a99046ed81bbe
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971789"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050943"
 ---
 # <a name="symmetric-key-attestation"></a>Nachweis des symmetrischen Schlüssels
 
@@ -48,8 +48,8 @@ Jedes Token enthält die folgenden Komponenten:
 
 | Wert | BESCHREIBUNG |
 | --- | --- |
-| {signature} |Eine HMAC-SHA256-Signaturzeichenfolge. Für individuelle Registrierungen wird diese Signatur erstellt, indem der symmetrische Schlüssel (primär oder sekundär) zum Ausführen des Hashvorgangs verwendet wird. Für Registrierungsgruppen wird ein aus dem Registrierungsgruppenschlüssel abgeleiteter Schlüssel zum Ausführen des Hashvorgangs verwendet. Der Hashvorgang wird für eine Nachricht im folgenden Format ausgeführt: `URL-encoded-resourceURI + "\n" + expiry`. **Wichtig:** Der Schlüssel muss aus Base64 decodiert werden, bevor er zum Ausführen der HMAC-SHA256-Berechnung verwendet wird. Zudem muss das Signaturergebnis URL-codiert sein. |
-| {resourceURI} |Der URI des Registrierungsendpunkts, auf den mit diesem Token zugegriffen werden kann. Der URI beginnt mit der Bereichs-ID für die Device Provisioning Service-Instanz. Zum Beispiel, `{Scope ID}/registrations/{Registration ID}` |
+| {signature} |Eine HMAC-SHA256-Signaturzeichenfolge. Für individuelle Registrierungen wird diese Signatur erstellt, indem der symmetrische Schlüssel (primär oder sekundär) zum Ausführen des Hashvorgangs verwendet wird. Für Registrierungsgruppen wird ein aus dem Registrierungsgruppenschlüssel abgeleiteter Schlüssel zum Ausführen des Hashvorgangs verwendet. Der Hashvorgang wird für eine Nachricht im folgenden Format ausgeführt: `URL-encoded-resourceURI + "\n" + expiry`. **Wichtig**: Der Schlüssel muss aus Base64 decodiert werden, bevor er zum Ausführen der HMAC-SHA256-Berechnung verwendet wird. Zudem muss das Signaturergebnis URL-codiert sein. |
+| {resourceURI} |Der URI des Registrierungsendpunkts, auf den mit diesem Token zugegriffen werden kann. Der URI beginnt mit der Bereichs-ID für die Device Provisioning Service-Instanz. Beispiel: `{Scope ID}/registrations/{Registration ID}` |
 | {expiry} |UTF8-Zeichenfolge, dargestellt als die Anzahl von Sekunden seit dem 1. Januar 1970 um 00:00:00 UTC. |
 | {URL-encoded-resourceURI} |URL-Codierung des Ressourcen-URI (beides in Kleinbuchstaben) |
 | {policyName} |Der Name der gemeinsam genutzten Zugriffsrichtlinie, auf die dieses Token verweist. Der Richtlinienname, der bei der Bereitstellung mit Nachweis des symmetrischen Schlüssels verwendet wird, ist **registration**. |
@@ -116,4 +116,4 @@ Nachdem Sie sich mit dem Nachweis des symmetrischen Schlüssels vertraut gemacht
 
 * [Schnellstart: Bereitstellen eines simulierten Geräts mit symmetrischen Schlüsseln](quick-create-simulated-device-symm-key.md)
 * [Konzepte für die automatische Bereitstellung](./concepts-auto-provisioning.md)
-* [Erste Schritte mit der automatischen Bereitstellung](./quick-setup-auto-provision.md) 
+* [Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal](./quick-setup-auto-provision.md) 

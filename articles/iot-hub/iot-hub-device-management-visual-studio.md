@@ -7,16 +7,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: xshi
-ms.openlocfilehash: f0cb740f04970aeed4342511a046862f05aaa736
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 87a0847f5d42e014f3b2691c96446892176b481b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54109225"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269570"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Verwenden des Cloud-Explorers für Visual Studio für die Geräteverwaltung mit Azure IoT Hub
 
-![Lückenloses Diagramm](media/iot-hub-get-started-e2e-diagram/2.png)
+![Lückenloses Diagramm](media/iot-hub-device-management-visual-studio/iot-e2e-simple.png)
 
 [Cloud-Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) ist eine nützliche Erweiterung für Visual Studio, mit der Sie Ihre Azure-Ressourcen anzeigen, deren Eigenschaften überprüfen und wichtige Entwickleraktionen in Visual Studio ausführen können. Es bietet Verwaltungsoptionen, die Sie zum Ausführen verschiedener Aufgaben verwenden können.
 
@@ -35,7 +35,7 @@ Gerätezwillinge sind JSON-Dokumente, in denen Gerätestatusinformationen (Metad
 
 ## <a name="what-you-learn"></a>Lerninhalt
 
-Es wird beschrieben, wie Sie den Cloud-Explorer für Visual Studio mit unterschiedlichen Verwaltungsoptionen auf Ihrem Entwicklungscomputer verwenden.
+Sie erfahren, wie Sie den Cloud-Explorer für Visual Studio mit unterschiedlichen Verwaltungsoptionen auf Ihrem Entwicklungscomputer verwenden.
 
 ## <a name="what-you-do"></a>Aufgaben
 
@@ -43,8 +43,8 @@ Führen Sie den Cloud-Explorer für Visual Studio mit verschiedenen Verwaltungso
 
 ## <a name="what-you-need"></a>Voraussetzungen
 
-- Ein aktives Azure-Abonnement.
-- Eine Azure IoT Hub-Instanz in Ihrem Abonnement.
+- Ein aktives Azure-Abonnement
+- Eine Azure IoT Hub-Instanz in Ihrem Abonnement
 - Microsoft Visual Studio 2017 Update 8 oder höher
 - Cloud-Explorer-Komponente von Visual Studio-Installer (standardmäßig mit Azure-Workload ausgewählt)
 

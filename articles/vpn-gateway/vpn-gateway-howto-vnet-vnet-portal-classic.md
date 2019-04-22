@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 6924d4eca52bfab8c90e7787bb8849b47df064db
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e323a8d71bbffd1d29ad793dff7b5b4a072b6979
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112261"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046121"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>Konfigurieren einer VNet-zu-VNet-Verbindung (klassisch)
 
@@ -33,12 +33,14 @@ Dieser Artikel hilft Ihnen beim Erstellen einer VPN-Gatewayverbindung zwischen v
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure-Befehlszeilenschnittstelle](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure-Portal (klassisch)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
-> * [Verbinden von verschiedenen Bereitstellungsmodellen – Azure-Portal](vpn-gateway-connect-different-deployment-models-portal.md)
-> * [Verbinden von verschiedenen Bereitstellungsmodellen – PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
+> * [Azure-Portal: Verbinden verschiedener Bereitstellungsmodelle](vpn-gateway-connect-different-deployment-models-portal.md)
+> * [PowerShell: Verbinden verschiedener Bereitstellungsmodelle](vpn-gateway-connect-different-deployment-models-powershell.md)
 >
 >
 
 ![VNet-zu-VNet-Konnektivitätsdiagramm](./media/vpn-gateway-howto-vnet-vnet-portal-classic/v2vclassic.png)
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="about-vnet-to-vnet-connections"></a>Über VNet-zu-VNet-Verbindungen
 
@@ -116,13 +118,13 @@ Ressourcengruppe: ClassicRG<br>
 Standort: USA (Westen)<br>
 Gatewaysubnetz: 10.41.1.0/27
 
-**Berücksichtigen Sie bei der Erstellung der VNETs folgende Einstellungen:**
+**Berücksichtigen Sie bei der Erstellung der VNETs die folgenden Einstellungen:**
 
 * **Adressräume von Virtual Network** – Geben Sie auf der Seite „Adressräume von Virtual Network“ den Adressbereich an, der für das virtuelle Netzwerk verwendet werden soll. Dies sind die dynamischen IP-Adressen, die den VMs und anderen Rolleninstanzen zugewiesen werden, die Sie für dieses virtuelle Netzwerk bereitstellen.<br>Die Adressräume, die Sie auswählen, dürfen nicht die Adressräume von anderen VNETs oder lokalen Standorten überlappen, zu denen dieses VNET eine Verbindung herstellt.
 
 * **Standort**: Wenn Sie ein virtuelles Netzwerk erstellen, ordnen Sie dieses einem Azure-Standort (einer Region) zu. Wenn Sie z. B. wünschen, dass Ihre virtuellen Computer, die Sie für Ihr virtuelles Netzwerk bereitgestellt haben, physisch in "USA West" vorhanden sind, wählen Sie diesen Standort aus. Sie können den Ihrem virtuellen Netzwerk zugeordnete Standort nach dem Erstellen nicht mehr ändern.
 
-**Nach der Erstellung der VNETs können Sie folgende Einstellungen hinzufügen:**
+**Nach der Erstellung der VNETs können Sie die folgenden Einstellungen hinzufügen:**
 
 * **Adressraum** – Für diese Konfiguration ist kein zusätzlicher Adressraum erforderlich, Sie können jedoch nach der Erstellung des VNET zusätzliche Adressräume hinzufügen.
 
@@ -219,19 +221,19 @@ In den folgenden Schritten stellen Sie eine Verbindung zu Ihrem Azure-Konto her.
 2. Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
 
    ```powershell
-   Connect-AzureRmAccount
+   Connect-AzAccount
    ```
 
    Überprüfen Sie die Abonnements für das Konto.
 
    ```powershell
-   Get-AzureRmSubscription
+   Get-AzSubscription
    ```
 
    Wenn Sie über mehr als ein Abonnement verfügen, wählen Sie das Abonnement aus, das Sie verwenden möchten.
 
    ```powershell
-   Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
    ```
 
    Verwenden Sie als nächstes das folgende Cmdlet, um PowerShell Ihr Azure-Abonnement für das klassische Bereitstellungsmodell hinzuzufügen.

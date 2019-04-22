@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 84db71f8dabfb7557b5efbc06e024c43e654b56d
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: f93f6c8891ba9f7407310a8f09387e97f5c1f578
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805073"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267343"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Beheben von Fehlern bei Runbooks
 
@@ -483,6 +483,29 @@ Es gibt zwei Möglichkeiten, diesen Fehler zu beheben:
 
 * Bearbeiten Sie das Runbook, und verringern Sie die Anzahl ausgegebener Auftragsdatenströme.
 * Verringern Sie die Anzahl von Datenströmen, die beim Ausführen des Cmdlets abgerufen werden. Wenn Sie dieses Verhalten nutzen möchten, können Sie den Parameter `-Stream Output` für das Cmdlet `Get-AzureRmAutomationJobOutput` angeben, um ausschließlich Ausgabedatenströme abzurufen. 
+
+### <a name="cannot-invoke-method"></a>Szenario: Bei einem PowerShell-Auftrag wird folgender Fehler ausgegeben: Cannot invoke method (Methode kann nicht aufgerufen werden)
+
+#### <a name="issue"></a>Problem
+
+Beim Starten eines PowerShell-Auftrags in einem in Azure ausgeführten Runbook wird die folgende Fehlermeldung angezeigt:
+
+```error
+Exception was thrown - Cannot invoke method. Method invocation is supported only on core types in this language mode.
+```
+
+#### <a name="cause"></a>Ursache
+
+Dieser Fehler kann auftreten, wenn Sie einen PowerShell-Auftrag in einem in Azure ausgeführten Runbook starten. Dieses Verhalten kann auftreten, da Runbooks, die in einer Azure-Sandbox ausgeführt werden, möglicherweise nicht im [vollständigen Sprachmodus](/powershell/module/microsoft.powershell.core/about/about_language_modes) ausgeführt werden.
+
+#### <a name="resolution"></a>Lösung
+
+Es gibt zwei Möglichkeiten, diesen Fehler zu beheben:
+
+* Verwenden Sie `Start-AzureRmAutomationRunbook` anstelle von `Start-Job` zum Starten eines Runbooks.
+* Wenn diese Fehlermeldung für Ihr Runbook angezeigt wird, führen Sie es in einem Hybrid Runbook Worker aus.
+
+Weitere Informationen zu diesem Verhalten und anderen Verhaltensmerkmalen von Azure Automation-Runbooks finden Sie unter [Runbook-Verhalten](../automation-runbook-execution.md#runbook-behavior).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

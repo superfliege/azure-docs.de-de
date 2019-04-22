@@ -7,23 +7,23 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 04/04/2019
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: 9fb3cdd4b4b809e45180cd95b8fe930cce86826e
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: ed2e0bd352823a932cfea719c18e05ae6c913621
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498807"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471731"
 ---
 # <a name="example-add-suggestions-or-autocomplete-to-your-azure-search-application"></a>Beispiel: Hinzufügen von Vorschlägen oder AutoVervollständigen zur Azure Search-Anwendung
 
-In diesem Beispiel erfahren Sie, wie Sie mit [Vorschlägen](https://docs.microsoft.com/rest/api/searchservice/suggestions) und [AutoVervollständigen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) ein leistungsfähiges Suchfeld erstellen können, das das Verhalten „Vorschläge während der Eingabe“ unterstützt.
+In diesem Artikel erfahren Sie, wie Sie mit [Vorschlägen](https://docs.microsoft.com/rest/api/searchservice/suggestions) und [AutoVervollständigen](https://docs.microsoft.com/rest/api/searchservice/autocomplete) ein leistungsfähiges Suchfeld erstellen können, das Vorschläge während der Eingabe unterstützt.
 
-+ *Vorschläge* ist eine Liste von vorgeschlagenen Ergebnissen, die während der Eingabe generiert werden, wobei jeder Vorschlag ein einzelnes Ergebnis aus dem Index darstellt, das Ihrer bisherigen Eingabe entspricht. 
++ *Vorschläge* sind vorgeschlagene Ergebnisse, die während der Eingabe generiert werden, wobei jeder Vorschlag ein einzelnes Ergebnis aus dem Index darstellt, das Ihrer bisherigen Eingabe entspricht. 
 
-+ *AutoVervollständigen* ist eine [Previewfunktion](search-api-preview.md), die die von einem Benutzer aktuell eingegebenen Wörter bzw. Ausdrücke „vervollständigt“. Wie bei Vorschlägen basiert ein vervollständigtes Wort oder ein vervollständigter Ausdruck auf einer Übereinstimmung im Index. 
++ *AutoVervollständigen* ist eine [Previewfunktion](search-api-preview.md), die die von einem Benutzer aktuell eingegebenen Wörter bzw. Ausdrücke „vervollständigt“. Anstatt Ergebnisse zurückzugeben, vervollständigt sie eine Abfrage, die Sie dann ausführen können, um Ergebnisse zurückzugeben. Wie bei Vorschlägen basiert ein vervollständigtes Wort oder ein vervollständigter Ausdruck in einer Abfrage auf einer Übereinstimmung im Index. Der Dienst schlägt keine Abfragen vor, die keine Ergebnisse im Index zurückgeben.
 
 Sie können den Beispielcode in **DotNetHowToAutocomplete** herunterladen und ausführen, um diese Features auszuwerten. Der Beispielcode ist auf einen vordefinierten Index ausgerichtet, der mit [NYCJobs-Demodaten](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) gefüllt ist. Der NYCJobs-Index enthält ein [Vorschlagsfunktionskonstrukt](index-add-suggesters.md), das eine Voraussetzung für die Verwendung von Vorschlägen oder AutoVervollständigen ist. Sie können den in einem Sandboxdienst gehosteten vorbereiteten Index verwenden oder einen [eigenen Index](#configure-app) mit einem Datenlader in der NYCJobs-Beispiellösung füllen. 
 
@@ -156,7 +156,7 @@ $(function () {
 });
 ```
 
-## <a name="c-version"></a>C#-Version
+## <a name="c-example"></a>C#-Beispiel
 
 Nachdem wird den JavaScript-Code für die Webseite überprüft haben, schauen wir uns nun den serverseitigen C#-Controllercode an, der die Vorschläge tatsächlich über das .NET SDK von Azure Search abruft.
 
@@ -164,7 +164,7 @@ Nachdem wird den JavaScript-Code für die Webseite überprüft haben, schauen wi
 
 Zunächst bemerken Sie möglicherweise im oberen Bereich der Klasse eine Methode mit dem Namen `InitSearch`. Mit dieser Methode wird für den Azure Search-Dienst ein authentifizierter Client für den HTTP-Index erstellt. Weitere Informationen finden Sie unter [Verwenden von Azure Search aus einer .NET-Anwendung](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
 
-Beachten Sie in Zeile 41 die Vorschlagsfunktion. Sie basiert auf der [DocumentsOperationsExtensions.Suggest-Methode](https://docs.microsoft.com/dotnet/api/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet-preview).
+Beachten Sie in Zeile 41 die Vorschlagsfunktion. Sie basiert auf der [DocumentsOperationsExtensions.Suggest-Methode](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet-preview).
 
 ```csharp
 public ActionResult Suggest(bool highlights, bool fuzzy, string term)
@@ -229,9 +229,11 @@ Die Funktion „AutoVervollständigen“ übernimmt die Eingabe des Suchbegriffs
 
 Die anderen Beispiele auf der Seite folgen beim Hinzufügen von Treffermarkierungen und bei Facets zur Unterstützung des clientseitigen Zwischenspeicherns der Ergebnisse der automatischen Vervollständigung dem gleichen Muster. Überprüfen Sie alle Beispiele, um zu verstehen, wie sie funktionieren und wie Sie diese in Ihrer Suchumgebung nutzen können.
 
-## <a name="javascript-version-with-rest"></a>JavaScript-Version mit REST
+## <a name="javascript-example"></a>JavaScript-Beispiel
 
-Öffnen Sie für die JavaScript-Implementierung **IndexJavaScript.cshtml**. Beachten Sie, dass die Funktion jQuery UI AutoVervollständigen auch für das Suchfeld verwendet wird, um Suchbegriffseingaben zu sammeln und asynchrone Anrufe an Azure Search zu starten, um vorgeschlagene Übereinstimmungen oder vervollständigte Begriffe abzurufen. 
+Eine JavaScript-Implementierung von AutoVervollständigen und Vorschlägen ruft die REST-API auf und verwendet dabei einen URI als Quelle, um den Index und den Vorgang anzugeben. 
+
+Öffnen Sie zur Überprüfung der JavaScript-Implementierung **IndexJavaScript.cshtml**. Beachten Sie, dass die Funktion jQuery UI AutoVervollständigen auch für das Suchfeld verwendet wird, um Suchbegriffseingaben zu sammeln und asynchrone Anrufe an Azure Search zu starten, um vorgeschlagene Übereinstimmungen oder vervollständigte Begriffe abzurufen. 
 
 Schauen Sie sich den JavaScript-Code im ersten Beispiel an:
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: ec509fc8957d20f95123e9f0f645c3e9b6e832f2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d75deaca7ce052d40274f1f57a8f6603a3ecdfd2
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122368"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046154"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Einrichten von Computezielen für das Modelltraining
 
@@ -40,7 +40,7 @@ Azure Machine Learning Service bietet unterschiedliche Unterstützung für die v
 
 |Computeziel für das Training| GPU-Beschleunigung | Automatisiert<br/> Hyperparameteroptimierung | Automatisiert</br> Machine Learning | Azure Machine Learning-Pipelines |
 |----|:----:|:----:|:----:|:----:|
-|[Lokaler Computer](#local)| Vielleicht | &nbsp; | ✓ | &nbsp; |
+|[Lokalem Computer](#local)| Vielleicht | &nbsp; | ✓ | &nbsp; |
 |[Azure Machine Learning Compute](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
 |[Remote-VM](#vm) | ✓ | ✓ | ✓ | ✓ |
 |[Azure Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | &nbsp; | ✓ | ✓ |
@@ -89,7 +89,7 @@ Der folgende Code ist ein Beispiel für die Trainingsausführungen für eine vom
 
 Konfigurieren Sie die Computeziele anhand der folgenden Abschnitte:
 
-* [Lokaler Computer](#local)
+* [Lokalem Computer](#local)
 * [Azure Machine Learning Compute](#amlcompute)
 * [Virtuelle Remotecomputer](#vm)
 * [Azure HDInsight](#hdinsight)
@@ -118,7 +118,10 @@ Sie können eine Azure Machine Learning Compute-Umgebung bedarfsgesteuert beim P
 
 #### <a name="run-based-creation"></a>Ausführungsbasierte Erstellung
 
-Sie können eine Azure Machine Learning Compute-Umgebung als Computeziel zur Laufzeit erstellen. Das Computeziel wird automatisch für Ihre Ausführung erstellt. Der Cluster skaliert bis zur Anzahl von **max_nodes**,die Sie in Ihrer Laufzeitkonfiguration angeben haben, zentral hoch. Das Computeziel wird nach Abschluss der Ausführung automatisch gelöscht.
+Sie können eine Azure Machine Learning Compute-Umgebung als Computeziel zur Laufzeit erstellen. Das Computeziel wird automatisch für Ihre Ausführung erstellt. Das Computeziel wird nach Abschluss der Ausführung automatisch gelöscht. 
+
+> [!NOTE]
+> Zum Festlegen einer maximalen Anzahl der zu verwendenden Knoten würden Sie normalerweise `node_count` auf die jeweilige Anzahl von Knoten festlegen. Derzeit (4.4.2019) gibt es einen Fehler, der diese Funktionsweise verhindert. Verwenden Sie die `amlcompute._cluster_max_node_count`-Eigenschaft der Ausführungskonfiguration, um dieses Problem zu umgehen. Beispiel: `run_config.amlcompute._cluster_max_node_count = 5`.
 
 > [!IMPORTANT]
 > Die ausführungsbasierte Erstellung von Azure Machine Learning Compute ist zurzeit als Vorschauversion verfügbar. Verwenden Sie die ausführungsbasierte Erstellung nicht, wenn Sie die Hyperparameteroptimierung oder automatisiertes maschinelles Lernen nutzen. Um Hyperparameteroptimierung oder automatisches maschinelles Lernen zu verwenden, erstellen Sie stattdessen ein [persistentes Computeziel](#persistent).

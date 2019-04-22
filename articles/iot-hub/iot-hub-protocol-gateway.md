@@ -3,23 +3,25 @@ title: Azure IoT-Protokollgateway | Microsoft Docs
 description: Erfahren Sie, wie Sie mit einem Azure IoT-Protokollgateway die IoT Hub-Funktionen und die unterstützten Protokolle erweitern, damit Geräte Verbindungen mit Ihrem Hub mithilfe von Protokollen, die nicht nativ von IoT Hub unterstützt werden, herstellen können.
 author: robinsh
 manager: philmea
-ms.author: robin.shahan
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.openlocfilehash: 91d61ffecc0e5345d02db88af73aee4586f7099e
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 9dbb7905c2a0fed65ede610577e0fa11a1deef92
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57009850"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276234"
 ---
 # <a name="support-additional-protocols-for-iot-hub"></a>Unterstützen zusätzlicher Protokolle für IoT Hub
+
 Azure IoT Hub bietet nativ Unterstützung für die Kommunikation über die Protokolle MQTT, AMQP und HTTPS. In einigen Fällen können Geräte oder Bereichsgateways möglicherweise keines dieser Standardprotokolle verwenden und erfordern eine Protokollanpassung. In solchen Fällen können Sie ein benutzerdefiniertes Gateway verwenden. Ein benutzerdefiniertes Gateway dient für den IoT Hub-Datenverkehr als Brücke und ermöglicht damit die Protokollanpassung für IoT Hub-Endpunkte. Sie können das [Azure IoT-Protokollgateway](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md) als benutzerdefiniertes Gateways zum Ermöglichen der Protokollanpassung für IoT Hub verwenden.
 
 ## <a name="azure-iot-protocol-gateway"></a>Azure IoT-Protokollgateway
-Das Azure IoT-Protokollgateway ist ein Framework zur Protokollanpassung für die hoch skalierbare, bidirektionale Gerätekommunikation mit IoT Hub. Das Protokollgateway ist eine Passthrough-Komponente, die Geräteverbindungen über ein bestimmtes Protokoll akzeptiert. Es fungiert als Brücke für den Datenverkehr zum IoT Hub über AMQP 1.0. 
+
+Das Azure IoT-Protokollgateway ist ein Framework zur Protokollanpassung für die hoch skalierbare, bidirektionale Gerätekommunikation mit IoT Hub. Das Protokollgateway ist eine Passthrough-Komponente, die Geräteverbindungen über ein bestimmtes Protokoll akzeptiert. Es fungiert als Brücke für den Datenverkehr zum IoT Hub über AMQP 1.0.
 
 Sie können das Protokollgateway in Azure auf hochgradig skalierbare Weise mithilfe von Azure Service Fabric, Azure Cloud Services-Workerrollen oder virtuellen Windows-Computern bereitstellen. Darüber hinaus kann das Protokollgateway in lokalen Umgebungen wie z. B. Bereichsgateways bereitgestellt werden.
 
@@ -30,17 +32,17 @@ Der MQTT-Adapter veranschaulicht außerdem das Programmiermodell zum Erstellen v
 Für mehr Flexibilität werden das Azure IoT-Protokollgateway und die MQTT-Implementierung als Open-Source-Softwareprojekt bereitgestellt. Mit diesem können Sie verschiedene Protokolle und Protokollversionen unterstützen oder die Implementierung für Ihr Szenario anpassen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen über das Azure IoT-Protokollgateway sowie dessen Verwendung und Bereitstellung im Rahmen Ihrer IoT-Lösung finden Sie unter:
 
 * [Repository für das Azure IoT-Protokollgateway auf GitHub](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)
-* [Entwicklungsleitfaden für das Azure IoT-Protokollgateway](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/docs/DeveloperGuide.md)
+
+* [Entwicklungshandbuch für das Azure IoT-Protokollgateway](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/docs/DeveloperGuide.md)
 
 Weitere Informationen zum Planen Ihrer IoT Hub-Bereitstellung finden Sie unter:
 
-* [Vergleich mit Event Hubs][lnk-compare]
-* [Skalierung, Hochverfügbarkeit und Notfallwiederherstellung][lnk-scaling]
-* [IoT Hub-Entwicklerhandbuch][lnk-devguide]
+* [Vergleich mit Event Hubs](iot-hub-compare-event-hubs.md)
 
-[lnk-compare]: iot-hub-compare-event-hubs.md
-[lnk-scaling]: iot-hub-scaling.md
-[lnk-devguide]: iot-hub-devguide.md
+* [Skalierung, Hochverfügbarkeit und Notfallwiederherstellung](iot-hub-scaling.md)
+
+* [Entwicklerhandbuch für IoT Hub](iot-hub-devguide.md)

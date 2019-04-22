@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 6c38591aa283491369562db8ea840ef7e5b17e6d
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 9db84ee23a2b2b19d05e458ff38854076a530e38
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402625"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470839"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Arbeiten mit Azure Functions Core Tools
 
@@ -467,6 +467,16 @@ Die folgenden Optionen für die Bereitstellung benutzerdefinierter Container sin
 | **`--min`**  | Legt optional die Mindestanzahl von Funktions-App-Instanzen fest, in denen die Bereitstellung erfolgen soll. |
 | **`--config`** | Legt eine optionale Bereitstellungskonfigurationsdatei fest. |
 
+## <a name="monitoring-functions"></a>Überwachen von Funktionen
+
+Die empfohlene Methode zum Überwachen der Ausführung Ihrer Funktionen ist die Integration in Azure Application Insights. Wenn Sie eine Funktions-App im Azure-Portal erstellen, wird diese Integration standardmäßig für Sie erledigt. Wenn Sie Ihre Funktions-App mithilfe der Azure CLI erstellen, erfolgt die Integration in Ihre Funktions-App in Azure nicht.
+
+So aktivieren Sie Application Insights für Ihre Funktions-App:
+
+[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+
+Weitere Informationen finden Sie unter [Überwachen von Azure Functions](functions-monitoring.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Azure Functions Core Tools ist ein [Open Source-Programm und wird auf GitHub gehostet](https://github.com/azure/azure-functions-cli).  
@@ -477,5 +487,5 @@ Um einen Fehler zu melden oder ein Feature anzufordern, [öffnen Sie ein GitHub-
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
 [Azure-Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
-[FUNCTIONS_WORKER_RUNTIME]: functions-app-settings.md#functions_worker_runtime
-[AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage
+[`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
+[`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 56de300a95d750957494865f9871127b2a9c8283
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 5a7531be73a872d9c088a0bf02a8686f947c220a
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50980259"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047363"
 ---
 # <a name="prepare-your-container-technical-assets"></a>Vorbereiten Ihrer technischen Containerressourcen
 
@@ -52,9 +52,9 @@ Außerdem empfehlen wir Ihnen, Ihrer Entwicklungsumgebung die folgenden Tools hi
 
 -   [Azure Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 -   [Visual Studio Code](https://code.visualstudio.com/)
-    *   Erweiterung: [Azure Resource Manager-Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    *   Erweiterung: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     *   Erweiterung: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-    *   Erweiterung: [JSON-Optimierung](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+    *   Erweiterung: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
 Außerdem empfehlen wir Ihnen, sich die verfügbaren Tools auf der Seite [Azure-Entwicklungstools](https://azure.microsoft.com/tools/) und – bei Verwendung von Visual Studio – den [Visual Studio Marketplace](https://marketplace.visualstudio.com/) anzusehen.
 
@@ -66,4 +66,4 @@ Außerdem empfehlen wir Ihnen, sich die verfügbaren Tools auf der Seite [Azure-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erstellen Ihres Containerangebots](./cpp-create-offer.md)
+[Erstellen eines neuen Containerangebots mit dem Cloud-Partnerportal](./cpp-create-offer.md)

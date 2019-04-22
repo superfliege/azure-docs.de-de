@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 543c19d41cee55a309b5345af4f811c60b82a613
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5e5a8d46f67553cc10bd9cdb31cf64511858948f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178973"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046494"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen
 
@@ -56,14 +56,14 @@ Informationen dazu, wie Sie als Mandantenadministrator einen Link zu den Datensc
 
 ## <a name="terms-of-use"></a>Nutzungsbedingungen
 
-Mithilfe des Nutzungsbedingungsfeatures von Azure AD können Sie dem Gastbenutzer im Rahmen der erstmaligen Einlösung Nutzungsbedingungen anzeigen. Dieses Feature befindet sich in Azure Active Directory unter **Verwalten** > **Organisationsbeziehungen** > **Nutzungsbedingungen** oder unter **Sicherheit** > **Bedingter Zugriff** > **Nutzungsbedingungen**. Ausführliche Informationen finden Sie unter [Nutzungsbedingungsfeature für Azure Active Directory](../governance/active-directory-tou.md).
+Mithilfe des Nutzungsbedingungsfeatures von Azure AD können Sie dem Gastbenutzer im Rahmen der erstmaligen Einlösung Nutzungsbedingungen anzeigen. Dieses Feature befindet sich in Azure Active Directory unter **Verwalten** > **Organisationsbeziehungen** > **Nutzungsbedingungen** oder unter **Sicherheit** > **Bedingter Zugriff** > **Nutzungsbedingungen**. Ausführliche Informationen finden Sie unter [Nutzungsbedingungsfeature für Azure Active Directory](../conditional-access/terms-of-use.md).
 
 ![Screenshot mit neuen Nutzungsbedingungen](media/redemption-experience/organizational-relationships-terms-of-use.png) 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Was ist die Azure AD B2B-Zusammenarbeit?](what-is-b2b.md)
-- [Add Azure Active Directory B2B collaboration users in the Azure portal](add-users-administrator.md) (Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal)
-- [How do information workers add B2B collaboration users to Azure Active Directory?](add-users-information-worker.md) (Wie fügen Information-Worker B2B-Zusammenarbeitsbenutzer zu Azure Active Directory hinzu?)
-- [Azure Active Directory B2B collaboration API and customization](customize-invitation-api.md#powershell) (Azure Active Directory B2B-Zusammenarbeit: API und Anpassung)
-- [Leave an organization as a guest user](leave-the-organization.md) (Verlassen einer Organisation als Gastbenutzer)
+- [Was ist die Azure AD B2B-Zusammenarbeit?](what-is-b2b.md)
+- [Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal](add-users-administrator.md)
+- [Wie fügen Information-Worker B2B-Zusammenarbeitsbenutzer zu Azure Active Directory hinzu?](add-users-information-worker.md)
+- [Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern mithilfe von PowerShell](customize-invitation-api.md#powershell)
+- [Verlassen einer Organisation als Gastbenutzer](leave-the-organization.md)

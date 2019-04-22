@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: c2f58a3510699cdf74e3150d3ad5882929f4f05b
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 99798b35419ec9574c99aaba42803fbeeb1555f1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358710"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267122"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Schemazuordnung in Kopieraktivität
 In diesem Artikel wird beschrieben, wie Kopieraktivität in Azure Data Factory Schemazuordnung und Datentypzuordnung von Quelldaten zu Daten der Empfangsquelle (Senkendaten) beim Kopieren der Daten ausführt.
@@ -146,8 +146,8 @@ Die Schemazuordnung wird angewendet, wenn Daten zwischen hierarchisch und tabell
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft der Kopieraktivität „translator“ muss auf Folgendes festgelegt werden: **TabularTranslator** | JA |
-| schemaMapping | Eine Sammlung von Schlüssel-Wert-Paaren, die die Zuordnungsbeziehung von der tabellarischen zur hierarchischen Seite darstellt.<br/>- **Key:** Der Spaltenname der tabellarischen Daten wie in der Datasetstruktur definiert.<br/>- **Value:** Der Ausdruck des JSON-Pfads für jedes Feld, das extrahiert und zugeordnet werden soll. Bei Feldern unter dem Stammobjekt beginnen Sie mit Stamm „$“. Bei Feldern innerhalb des Arrays, die anhand der `collectionReference`-Eigenschaft ausgewählt werden, beginnen Sie mit dem Arrayelement.  | JA |
+| type | Die type-Eigenschaft der Kopieraktivität „translator“ muss auf Folgendes festgelegt werden: **TabularTranslator** | Ja |
+| schemaMapping | Eine Sammlung von Schlüssel-Wert-Paaren, die die Zuordnungsbeziehung **von der Quelle zur Senke** darstellt.<br/>- **Schlüssel:** stellt die Quelle dar. Für eine **tabellarische Quelle** legen Sie den Spaltennamen wie in der Datasetstruktur definiert fest. Für eine **hierarchische Quelle** legen Sie den Ausdruck des JSON-Pfads für jedes zu extrahierende und zuzuordnende Feld fest.<br/>- **Wert:** stellt die Senke dar. Für eine **tabellarische Senke** legen Sie den Spaltennamen wie in der Datasetstruktur definiert fest. Für eine **hierarchische Senke** legen Sie den Ausdruck des JSON-Pfads für jedes zu extrahierende und zuzuordnende Feld fest. <br/> Bei hierarchischen Daten beginnt der JSON-Pfad für Felder unter der Stammobjekt mit dem Stamm „$“. Für Felder innerhalb des von der `collectionReference`-Eigenschaften ausgewählten Arrays beginnt der JSON-Pfad mit dem Array-Element.  | Ja |
 | collectionReference | Wenn Sie Daten durchlaufen und Objekte **innerhalb eines Arrayfelds** mit demselben Muster extrahieren, und wenn Sie möchten, dass jedes Objekt in einer neuen Zeile steht, geben Sie den JSON-Pfad dieses Arrays für die übergreifende Anwendung an. Diese Eigenschaft wird nur unterstützt, wenn hierarchische Daten die Quelle sind. | Nein  |
 
 **Beispiel: Kopieren aus MongoDB nach SQL:**
@@ -232,7 +232,7 @@ Data Factory unterstützt die folgenden Zwischendatentypen: Sie können beim Kon
 * Boolescher Wert
 * DateTime
 * Datetimeoffset
-* DECIMAL
+* Decimal
 * Double
 * Guid
 * Int16
@@ -267,6 +267,6 @@ In folgenden Szenarien wird „structure“ im Dataset vorgeschlagen:
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in den anderen Artikeln zur Kopieraktivität:
 
-- [Kopieraktivität – Übersicht](copy-activity-overview.md)
-- [Fault tolerance of copy activity in Azure Data Factory](copy-activity-fault-tolerance.md) (Fehlertoleranz der Kopieraktivität in Azure Data Factory)
-- [Copy Activity performance and tuning guide](copy-activity-performance.md) (Handbuch zur Leistung und Optimierung der Kopieraktivität)
+- [Kopieraktivität in Azure Data Factory](copy-activity-overview.md)
+- [Fehlertoleranz der Kopieraktivität in Azure Data Factory](copy-activity-fault-tolerance.md)
+- [Handbuch zur Leistung und Optimierung der Kopieraktivität](copy-activity-performance.md)

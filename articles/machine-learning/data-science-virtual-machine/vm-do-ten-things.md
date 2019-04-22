@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: 81646c979748b7a23762a25538ced447e382f72a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f30c241feced3031d9ed9791c27c6bb1e1e99efb
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57878430"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046178"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Zehn Dinge, die Sie mit der Windows Data Science Virtual Machine machen können
 
@@ -50,6 +50,9 @@ In diesem Artikel wird beschrieben, wie Sie Ihre DSVM nutzen können, um verschi
 
 * Sie benötigen ein Azure-Abonnement. Sie können sich [hier](https://azure.microsoft.com/free/)für eine kostenlose Testversion registrieren.
 * Anleitungen für die Bereitstellung einer Data Science Virtual Machine im Azure-Portal finden Sie unter [Erstellen eines virtuellen Computers](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016).
+
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="1-explore-data-and-develop-models-using-microsoft-ml-server-or-python"></a>1. Durchsuchen von Daten und Entwickeln von Modellen mit Microsoft ML Server oder Python
 Sie können Ihre Datenanalysen mit Sprachen wie R und Python direkt auf der DSVM ausführen.
@@ -223,22 +226,22 @@ Azure PowerShell können Sie verwenden, um eine Azure-Dateidienstfreigabe zu ers
 
 ```powershell
 # Authenticate to Azure.
-Connect-AzureRmAccount
+Connect-AzAccount
 # Select your subscription
-Get-AzureRmSubscription –SubscriptionName "<your subscription name>" | Select-AzureRmSubscription
+Get-AzSubscription –SubscriptionName "<your subscription name>" | Select-AzSubscription
 # Create a new resource group.
-New-AzureRmResourceGroup -Name <dsvmdatarg>
+New-AzResourceGroup -Name <dsvmdatarg>
 # Create a new storage account. You can reuse existing storage account if you wish.
-New-AzureRmStorageAccount -Name <mydatadisk> -ResourceGroupName <dsvmdatarg> -Location "<Azure Data Center Name For eg. South Central US>" -Type "Standard_LRS"
+New-AzStorageAccount -Name <mydatadisk> -ResourceGroupName <dsvmdatarg> -Location "<Azure Data Center Name For eg. South Central US>" -Type "Standard_LRS"
 # Set your current working storage account
-Set-AzureRmCurrentStorageAccount –ResourceGroupName "<dsvmdatarg>" –StorageAccountName <mydatadisk>
+Set-AzCurrentStorageAccount –ResourceGroupName "<dsvmdatarg>" –StorageAccountName <mydatadisk>
 
 # Create an Azure File Service Share
-$s = New-AzureStorageShare <<teamsharename>>
+$s = New-AzStorageShare <<teamsharename>>
 # Create a directory under the FIle share. You can give it any name
-New-AzureStorageDirectory -Share $s -Path <directory name>
+New-AzStorageDirectory -Share $s -Path <directory name>
 # List the share to confirm that everything worked
-Get-AzureStorageFile -Share $s
+Get-AzStorageFile -Share $s
 ```
 
 Die neu erstellte Azure-Dateidienstfreigabe können Sie nun in jeden virtuellen Computer in Azure einbinden. Die VM sollte sich in dem gleichen Azure-Rechenzentrum wie das Speicherkonto befinden, um Latenz und Datenübertragungsgebühren zu vermeiden. Mit den folgenden Befehlen binden Sie das Laufwerk in die DSVM ein, die Sie unter Azure PowerShell ausführen können.
@@ -283,7 +286,7 @@ Azure Blob ist ein zuverlässiger, wirtschaftlicher Cloudspeicher für große un
 
 ![Screenshot des Azure Storage-Explorers mit Zugriff auf ein Speicherkonto](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
 
-**Verschieben von Daten vom virtuellen Computer in Azure Blob: AzCopy**
+**Verschieben von Daten vom virtuellen Computer in Azure Blob Storage: AzCopy**
 
 Zum Verschieben von Daten zwischen Ihren lokalen Dateien und dem Blobspeicher können Sie AzCopy in der Befehlszeile oder PowerShell verwenden:
 
@@ -308,20 +311,20 @@ Kurz nachdem Sie den AzCopy-Befehl zum Kopieren in ein Azure-Blob ausgeführt ha
 
 ![Screenshot des Speicherkontos, das die hochgeladene CSV-Datei anzeigt](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
 
-**Verschieben von Daten vom virtuellen Computer in Azure Blob: Azure Storage-Explorer**
+**Verschieben von Daten vom virtuellen Computer in Azure Blob Storage: Azure Storage-Explorer**
 
 Außerdem können Sie Daten aus der lokalen Datei auf Ihrem virtuellen Computer mit dem Azure Storage-Explorer hochladen:
 
-* Um Daten in einen Container hochzuladen, wählen Sie den Zielcontainer aus und klicken Sie dann auf die Schaltfläche **Hochladen**.![Screenshot der Schaltfläche „Hochladen“ in Azure Storage-Explorer](./media/vm-do-ten-things/storage-accounts.png).
-* Klicken Sie rechts neben dem Feld **Dateien** auf die Schaltfläche **...**, wählen Sie im Dateisystem eine oder mehrere Dateien zum Hochladen aus, und klicken Sie auf **Hochladen**, um mit dem Hochladen der Dateien zu beginnen.![Screenshot des Dialogfelds „Dateien hochladen“](./media/vm-do-ten-things/upload-files-to-blob.png)
+* Wählen Sie den Zielcontainer aus, und klicken Sie auf **Hochladen**, um Daten in einen Container hochzuladen. ![Screenshot: Schaltfläche zum Hochladen im Azure Storage-Explorer](./media/vm-do-ten-things/storage-accounts.png)
+* Klicken Sie rechts neben dem Feld **Dateien** auf die Schaltfläche **...**, wählen Sie im Dateisystem mindestens eine Datei zum Hochladen aus, und klicken Sie auf **Hochladen**, um mit dem Hochladen der Dateien zu beginnen. ![Screenshot: Dialogfeld „Dateien hochladen“](./media/vm-do-ten-things/upload-files-to-blob.png)
 
-**Lesen von Daten aus Azure Blob: Machine Learning-Readermodul**
+**Lesen von Daten aus Azure Blob Storage: Machine Learning-Readermodul**
 
 In Azure Machine Learning Studio können Sie mit einem **„Import Data“-Modul** Daten aus Ihrem Blob lesen.
 
 ![Screenshot des Moduls „Daten importieren“ in Machine Learning Studio](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
 
-**Lesen von Daten aus Azure Blob: Python ODBC**
+**Lesen von Daten aus Azure Blob Storage: Python ODBC**
 
 Sie können die **BlobService** -Bibliothek verwenden, um Daten direkt aus dem Blob in einem Jupyter Notebook- oder Python-Programm zu lesen.
 
@@ -394,7 +397,7 @@ Sie können **Azure Data Lake Explorer** zum Hochladen von Daten aus den lokalen
 
 Sie können auch eine Datenpipeline erstellen, um die Datenverschiebung zu oder von Azure Data Lake mithilfe der [Azure Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/) zu operationalisieren. In [diesem Artikel](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/) finden Sie eine Anleitung zum Erstellen einer Datenpipeline.
 
-**Lesen von Daten aus Azure Blob in Data Lake: U-SQL**
+**Lesen von Daten aus Azure Blob Storage in Data Lake: U-SQL**
 
 Wenn Ihre Daten sich in Azure Blob Storage befinden, können Sie die Daten mit einer U-SQL-Abfrage direkt aus Azure Blob Storage lesen. Stellen Sie vor dem Formulieren der U-SQL-Abfrage sicher, dass Ihr Blobspeicherkonto mit Azure Data Lake verknüpft ist. Rufen Sie das **Azure-Portal** auf, klicken Sie auf Ihrem Azure Data Lake Analytics-Dashboard auf **Datenquelle hinzufügen**, wählen Sie als Speichertyp **Azure Storage** aus, und geben Sie den Namen und den Schlüssel Ihres Azure Storage-Kontos an. Anschließend können Sie auf die auf dem Speicherkonto gespeicherten Daten verweisen.
 
@@ -589,7 +592,7 @@ for i in range(1,13):
 
 Nachdem die Daten in den HDI-Cluster geladen wurden, können Sie Ihre Daten im Azure Storage-Explorer überprüfen. Und Sie besitzen eine im HDI-Cluster erstellte Datenbank „nyctaxidb“.
 
-**Datenuntersuchung: Hive-Abfragen in Python**
+**Untersuchen von Daten: Hive-Abfragen in Python**
 
 Da sich die Daten im Hadoop-Cluster befinden, können Sie das Paket „pyodbc“ verwenden, um Verbindungen mit Hadoop-Clustern herzustellen und die Datenbank mit Hive abzufragen, um Durchsuchungsvorgänge und Funktionsverarbeitungen durchzuführen. Sie können die vorhandenen Tabellen anzeigen, die wir im erforderlichen Schritt erstellt haben.
 

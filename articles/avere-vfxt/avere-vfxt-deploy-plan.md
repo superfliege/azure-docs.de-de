@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 3212befac60e3677c0b556825560cc548df42969
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 46978d19a0789bb43e861ca89661aa5b78eb4ec7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990984"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271066"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Planen des Avere vFXT-Systems
 
@@ -130,6 +130,17 @@ Beim Erstellen des Clusters können Sie auswählen, ob Sie eine öffentliche IP-
 
 * Wenn Sie ein neues VNET oder ein neues Subnetz erstellen, wird dem Clustercontroller eine öffentliche IP-Adresse zugewiesen.
 * Wenn Sie ein vorhandenes VNET und Subnetz auswählen, verfügt der Clustercontroller nur über private IP-Adressen. 
+
+## <a name="vm-access-roles"></a>Rollen für den Zugriff auf virtuelle Computer 
+
+Azure verwendet die [rollenbasierte Zugriffssteuerung](../role-based-access-control/index.yml) (RBAC), um die virtuellen Clustercomputer für die Ausführung bestimmter Aufgaben zu autorisieren. Für den Clustercontroller ist beispielsweise die Autorisierung zum Erstellen und Konfigurieren der Clusterknoten-VMs erforderlich. In den Clusterknoten muss es möglich sein, anderen Clusterknoten IP-Adressen zuzuweisen oder neu zuzuweisen.
+
+Für die virtuellen Avere vFXT-Computer werden zwei integrierte Azure-Rollen verwendet: 
+
+* Der Clustercontroller verwendet die integrierte Rolle [Avere-Mitwirkender](../role-based-access-control/built-in-roles.md#avere-contributor). 
+* Clusterknoten verwenden die integrierte Rolle [Avere-Bediener](../role-based-access-control/built-in-roles.md#avere-operator).
+
+Wenn Sie die Zugriffsrollen für Avere vFXT-Komponenten anpassen möchten, müssen Sie eine eigene Rolle definieren und diese dann den virtuellen Computern bei der Erstellung zuweisen. Sie können nicht die Bereitstellungsvorlage im Azure Marketplace verwenden. Sie können sich an den Microsoft-Kundendienst und -Support wenden, indem Sie wie unter [Abrufen von Hilfe zu Ihrem System](avere-vfxt-open-ticket.md) beschrieben ein Supportticket im Azure-Portal erstellen. 
 
 ## <a name="next-step-understand-the-deployment-process"></a>Nächster Schritt: Verstehen des Bereitstellungsprozesses
 

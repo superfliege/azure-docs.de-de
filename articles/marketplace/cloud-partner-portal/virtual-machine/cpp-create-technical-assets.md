@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: pbutlerm
-ms.openlocfilehash: da3e7e44ed1ad0698392ba1afcb59887ffbc53fe
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 6f1a93c3d3059e612d8c309b263e263dbb84c67f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639134"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050100"
 ---
 # <a name="create-technical-assets-for-a-virtual-machine-offer"></a>Erstellen von technischen Ressourcen für ein VM-Angebot
 
@@ -35,8 +35,9 @@ Sie müssen das VM-Betriebssystem, die VM-Größe, die zu öffnenden Ports und b
 > Fügen Sie unabhängig vom verwendeten Betriebssystem immer nur die von der SKU benötigte Mindestanzahl an Datenträgern hinzu. Kunden können Datenträger, die Teil eines Images sind, zum Zeitpunkt der Bereitstellung nicht entfernen. Sie haben aber immer die Möglichkeit, während oder nach der Bereitstellung Datenträger hinzuzufügen. 
 
 > [!IMPORTANT]
-> *Ändern Sie nicht die Anzahl der Datenträger in einer neuen Imageversion.* Wenn Sie Datenträger im Image neu konfigurieren müssen, definieren Sie eine neue SKU. Das Veröffentlichen einer neuen Imageversion mit einer anderen Anzahl von Datenträgern birgt das Risiko des Fehlschlagens der neuen Bereitstellung basierend auf der neuen Imageversion bei automatischer Skalierung, automatischen Bereitstellungen von Lösungen mithilfe von Azure Resource Manager-Vorlagen und anderen Szenarien.
+> *Ändern Sie nicht die Anzahl der Datenträger in einer neuen Imageversion.*  Wenn Sie Datenträger im Image neu konfigurieren müssen, definieren Sie eine neue SKU. Das Veröffentlichen einer neuen Imageversion mit einer anderen Anzahl von Datenträgern birgt das Risiko des Fehlschlagens der neuen Bereitstellung basierend auf der neuen Imageversion bei automatischer Skalierung, automatischen Bereitstellungen von Lösungen mithilfe von Azure Resource Manager-Vorlagen und anderen Szenarien.
 
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="fundamental-technical-knowledge"></a>Grundlegende technische Kenntnisse
 
@@ -58,9 +59,9 @@ Außerdem empfehlen wir Ihnen, Ihrer Entwicklungsumgebung die folgenden Tools hi
 
 -   [Azure Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 -   [Visual Studio Code](https://code.visualstudio.com/)
-    *   Erweiterung: [Azure Resource Manager-Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
+    *   Erweiterung: [Azure Resource Manager Tools](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools)
     *   Erweiterung: [Beautify](https://marketplace.visualstudio.com/items?itemName=HookyQR.beautify)
-    *   Erweiterung: [JSON-Optimierung](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
+    *   Erweiterung: [Prettify JSON](https://marketplace.visualstudio.com/items?itemName=mohsen1.prettify-json)
 
 Außerdem empfehlen wir Ihnen, sich die verfügbaren Tools auf der Seite [Azure-Entwicklungstools](https://azure.microsoft.com/tools/) und – bei Verwendung von Visual Studio – den [Visual Studio Marketplace](https://marketplace.visualstudio.com/) anzusehen.
 

@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 4f558d8d1e5e4e743e6d44cca1a804b3e5898b30
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: b60d8a8fb9b9300a6914ad33b2f760fb5adde3b4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58443435"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278223"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery-to-azure"></a>Konfigurieren und Verwalten von Replikationsrichtlinien für die VMware-Notfallwiederherstellung in Azure
 In diesem Artikel wird beschrieben, wie Sie mithilfe von [Azure Site Recovery](site-recovery-overview.md) eine Replikationsrichtlinie für die Replikation von VMware-VMs in Azure konfigurieren.
@@ -20,7 +20,7 @@ In diesem Artikel wird beschrieben, wie Sie mithilfe von [Azure Site Recovery](s
 ## <a name="create-a-policy"></a>Erstellen einer Richtlinie
 
 1. Wählen Sie **Verwalten** > **Site Recovery-Infrastruktur**.
-2. Wählen Sie unter **For VMware and Physical machines** (Für VMware und physische Computer) die Option **Replikationsrichtlinien** aus. 
+2. Wählen Sie unter **For VMware and Physical machines** (Für VMware und physische Computer) die Option **Replikationsrichtlinien** aus.
 3. Klicken Sie auf **+ Replikationsrichtlinie**, und geben Sie den Richtliniennamen an.
 4. Geben Sie unter **RPO-Schwellenwert** den RPO-Grenzwert an. Wenn die fortlaufende Replikation diesen Grenzwert überschreitet, werden Warnungen generiert.
 5. Geben Sie unter **Aufbewahrungszeitraum des Wiederherstellungspunkts** die Dauer des Aufbewahrungszeitfensters für die einzelnen Wiederherstellungspunkte (in Stunden) an. Geschützte Computer können innerhalb eines Aufbewahrungszeitfensters an einem beliebigen Punkt wiederhergestellt werden. Für in Storage Premium replizierte Computer wird eine Aufbewahrungsdauer von bis zu 24 Stunden unterstützt. Bei Storage Standard werden bis zu 72 Stunden unterstützt.
@@ -29,7 +29,7 @@ In diesem Artikel wird beschrieben, wie Sie mithilfe von [Azure Site Recovery](s
 
 Wenn Sie eine Replikationsrichtlinie erstellen, wird automatisch eine entsprechende Replikationsrichtlinie für das Failback erstellt, die das Suffix „failback“ enthält. Nach dem Erstellen der Richtlinie können Sie sie bearbeiten, indem Sie **Einstellungen bearbeiten** auswählen.
 
-## <a name="associate-a-configuration-server"></a>Zuordnen eines Konfigurationsservers 
+## <a name="associate-a-configuration-server"></a>Zuordnen eines Konfigurationsservers
 
 Ordnen Sie Ihrem lokalen Konfigurationsserver die Replikationsrichtlinie zu.
 
@@ -45,7 +45,7 @@ Ordnen Sie Ihrem lokalen Konfigurationsserver die Replikationsrichtlinie zu.
 1. Wählen Sie **Verwalten** > **Site Recovery-Infrastruktur** > **Replikationsrichtlinien** aus.
 2. Wählen Sie die Replikationsrichtlinie aus, die Sie ändern möchten.
 3. Klicken Sie auf **Einstellungen bearbeiten**, und aktualisieren Sie die Felder „RPO-Schwellenwert“, „Aufbewahrung des Wiederherstellungspunkts (in Stunden)“ oder „Häufigkeit der Momentaufnahmen für App-Konsistenz“ nach Bedarf.
-4. Wenn Sie die Generierung anwendungskonsistenter Punkte deaktivieren möchten, wählen Sie in der Dropdownliste des Feld **Häufigkeit der Momentaufnahmen für App-Konsistenz** den Wert „Aus“ aus.
+4. Wenn Sie die Generierung anwendungskonsistenter Punkte deaktivieren möchten, wählen Sie in der Dropdownliste des Felds **App-konsistente Momentaufnahmenhäufigkeit** den Wert „Aus“ aus.
 5. Klicken Sie auf **Speichern**. Die Richtlinie sollte innerhalb von 30 bis 60 Sekunden aktualisiert werden.
 
 ## <a name="disassociate-or-delete-a-replication-policy"></a>Aufheben der Zuordnung oder Löschen einer Replikationsrichtlinie

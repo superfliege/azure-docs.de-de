@@ -14,16 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: ff02f79321823e42c25897e9de30dfbb6fac46b0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 552c9820cca4380c00e1bf435fdb3d068c0690fb
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949617"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047938"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Programmgesteuertes Skalieren eines Service Fabric-Clusters 
 
 Service Fabric-Cluster, die in Azure ausgeführt werden, basieren auf VM-Skalierungsgruppen.  Im Artikel zur [Clusterskalierung](./service-fabric-cluster-scale-up-down.md) wird beschrieben, wie Service Fabric-Cluster entweder manuell oder mit Regeln für die automatische Skalierung skaliert werden können. In diesem Artikel wird beschrieben, wie Sie Anmeldeinformationen verwalten und einen Cluster horizontal hoch- oder herunterskalieren, indem Sie das Azure Fluent-Compute-SDK verwenden. Dies ist ein anspruchsvolleres Szenario. Eine Übersicht hierzu finden Sie in dem Artikel, in dem die [programmgesteuerten Methoden zum Koordinieren von Azure-Skalierungsvorgängen](service-fabric-cluster-scaling.md#programmatic-scaling) beschrieben werden. 
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="manage-credentials"></a>Verwalten von Anmeldeinformationen
 Eine Herausforderung beim Schreiben von einem Dienst für die Skalierung besteht darin, dass der Dienst ohne eine interaktive Anmeldung Zugriff auf VM-Skalierungsgruppenressourcen haben muss. Der Zugriff auf den Service Fabric-Cluster ist einfach, wenn der Skalierungsdienst seine eigene Service Fabric-Anwendung ändert, für den Zugriff auf die Skalierungsgruppe jedoch Anmeldeinformationen erforderlich sind. Für die Anmeldung können Sie einen mit der [Azure CLI](https://github.com/azure/azure-cli) erstellen [Dienstprinzipal](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) verwenden.
@@ -31,9 +34,9 @@ Eine Herausforderung beim Schreiben von einem Dienst für die Skalierung besteht
 Ein Dienstprinzipal kann mit den folgenden Schritten erstellt werden:
 
 1. Melden Sie sich bei der Azure CLI (`az login`) als Benutzer mit Zugriff auf die VM-Skalierungsgruppe an.
-2. Erstellen Sie den Dienstprinzipal mit `az ad sp create-for-rbac`.
+2. Erstellen Sie den Dienstprinzipal mit `az ad sp create-for-rbac`
     1. Notieren Sie sich App-ID (an anderer Stelle als „Client-ID“ bezeichnet), Name, Kennwort und Mandant für die spätere Verwendung.
-    2. Sie benötigen auch Ihre Abonnement-ID, die mit `az account list` angezeigt werden kann.
+    2. Sie benötigen außerdem Ihre Abonnement-ID, die Sie mit folgendem Befehl anzeigen können: `az account list`
 
 Die Fluent-Compute-Bibliothek kann wie folgt die Anmeldung mit diesen Anmeldeinformationen durchführen (beachten Sie, dass sich Core-Fluent-Azure-Typen wie `IAzure` im Paket [Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) befinden):
 
@@ -65,7 +68,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-Alternativ kann die Größe der VM-Skalierungsgruppe auch mit PowerShell-Cmdlets verwaltet werden. [`Get-AzureRmVmss`](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss) kann das Objekt der VM-Skalierungsgruppe abrufen. Die aktuelle Kapazität ist über die Eigenschaft `.sku.capacity` verfügbar. Nach der Änderung der Kapazität in den gewünschten Wert kann die VM-Skalierungsgruppe mit dem Befehl [`Update-AzureRmVmss`](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) in Azure aktualisiert werden.
+Alternativ kann die Größe der VM-Skalierungsgruppe auch mit PowerShell-Cmdlets verwaltet werden. [`Get-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) kann das Objekt der VM-Skalierungsgruppe abrufen. Die aktuelle Kapazität ist über die Eigenschaft `.sku.capacity` verfügbar. Nach der Änderung der Kapazität in den gewünschten Wert kann die VM-Skalierungsgruppe mit dem Befehl [`Update-AzVmss`](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) in Azure aktualisiert werden.
 
 Wie beim manuellen Hinzufügen eines Knotens sollte zum Starten eines neuen Service Fabric-Knotens nur das Hinzufügen einer Skalierungsgruppe erforderlich sein, da die Skalierungsgruppenvorlage Erweiterungen beinhaltet, um dem Service Fabric-Cluster automatisch neue Instanzen hinzuzufügen. 
 

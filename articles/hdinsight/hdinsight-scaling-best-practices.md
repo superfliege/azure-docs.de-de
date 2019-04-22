@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: ashish
-ms.openlocfilehash: cae0c97cb3084b0578f277852d646c199d1e2313
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: d2eaab80abed6615f46ef190bae56b8a70db2888
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316251"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050678"
 ---
 # <a name="scale-hdinsight-clusters"></a>Skalieren von HDInsight-Clustern
 
@@ -22,16 +22,19 @@ HDInsight bietet Flexibilität, indem Sie die Anzahl der Workerknoten in Ihren C
 
 Wenn Sie beispielsweise einmal täglich oder monatlich eine Batchverarbeitung durchführen, kann der HDInsight-Cluster ein paar Minuten vor diesem geplanten Ereignis zentral hochskaliert werden, damit ausreichend Arbeitsspeicher und CPU-Rechenleistung zur Verfügung stehen.  Später, wenn nach der Verarbeitung die Nutzung wieder sinkt, können Sie den HDInsight-Cluster auf weniger Workerknoten zentral herunterskalieren.
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="utilities-to-scale-clusters"></a>Hilfsprogramme zum Skalieren von Clustern
 
 Microsoft bietet die folgenden Hilfsprogramme für das Skalieren von Clustern:
 
 |Hilfsprogramm | BESCHREIBUNG|
 |---|---|
-|[PowerShell Az](https://docs.microsoft.com/powershell/azure/new-azureps-module-az)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -ClusterName \<Clustername> -TargetInstanceCount \<NeueGröße>|
-|[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm/overview) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -ClusterName \<Clustername> -TargetInstanceCount \<NeueGröße>|
+|[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -ClusterName \<Clustername> -TargetInstanceCount \<NeueGröße>|
+|[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -ClusterName \<Clustername> -TargetInstanceCount \<NeueGröße>|
 |[Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)|[az hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --resource-group \<Ressourcengruppe> --name \<Clustername> --target-instance-count \<NeueGröße>|
-|[Klassische Azure-Befehlszeilenschnittstelle](hdinsight-administer-use-command-line.md)|azure hdinsight cluster resize \<Clustername> \<Zielinstanzgröße>|
+|[Die klassische Azure CLI](hdinsight-administer-use-command-line.md)|azure hdinsight cluster resize \<Clustername> \<Zielinstanzgröße>|
 |[Azure-Portal](https://portal.azure.com)|Öffnen Sie Ihren HDInsight-Clusterbereich, wählen Sie im linken Menü **Clustergröße** aus, geben Sie dann im Bereich „Clustergröße“ die Anzahl der Workerknoten ein, und wählen Sie „Speichern“ aus.|  
 
 ![Skalieren von Clustern](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)

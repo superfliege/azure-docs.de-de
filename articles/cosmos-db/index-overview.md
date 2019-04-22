@@ -1,17 +1,17 @@
 ---
 title: Indizierung in Azure Cosmos DB
 description: Erhalten Sie Informationen zur Funktionsweise der Indizierung in Azure Cosmos DB.
-author: markjbrown
+author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/10/2018
-ms.author: mjbrown
-ms.openlocfilehash: 9e1ae9faecea67e1abb2a1b08d5641bc25c9f38a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 04/08/2019
+ms.author: rimman
+ms.openlocfilehash: ecf53251020ce1b639a5bf8da65f5d31ff699db9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469089"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265694"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indizierung in Azure Cosmos DB: Übersicht
 
@@ -19,30 +19,30 @@ Azure Cosmos DB ist eine schemaunabhängige Datenbank und ermöglicht es Ihnen, 
 
 ## <a name="items-as-trees"></a>Elemente als Strukturen
 
-Indem Elemente in einem Container als JSON-Dokumente projiziert und als Strukturen dargestellt werden, normalisiert Azure Cosmos DB sowohl die Struktur als auch die Instanzwerte für alle Elemente in das vereinheitlichende Konzept einer  **dynamisch codierten Pfadstruktur**. In dieser Darstellung wird jede Bezeichnung in einem JSON-Dokument, das sowohl die Eigenschaftsnamen als auch deren Werte enthält, zu einem Knoten des Struktur. Die Blätter des Strukturbaums enthalten Istwerte und die Zwischenknoten enthalten die Schemainformationen. Das folgende Bild zeigt die Strukturen, die für zwei Elemente (1 und 2) in einem Container erstellt wurden:
+Indem Elemente in einem Container als JSON-Dokumente projiziert und als Strukturen dargestellt werden, normalisiert Azure Cosmos DB sowohl die Struktur als auch die Instanzwerte für alle Elemente in das vereinheitlichende Konzept einer **dynamisch codierten Pfadstruktur**. In dieser Darstellung wird jede Bezeichnung in einem JSON-Dokument, das sowohl die Eigenschaftennamen als auch deren Werte enthält, zu einem Knoten des Struktur. Die Blätter des Strukturbaums enthalten die tatsächlichen Werte, und die Zwischenknoten enthalten die Schemainformationen. Das folgende Bild zeigt die Strukturen, die für zwei Elemente (1 und 2) in einem Azure Cosmos-Container erstellt wurden:
 
 ![Strukturdarstellung für zwei verschiedene Elemente in einem Azure Cosmos-Container](./media/index-overview/indexing-as-tree.png)
 
-Ein Pseudostammknoten wird als übergeordneter Knoten zu den eigentlichen Knoten angelegt, die den Bezeichnungen im darunter liegenden Dokument entsprechen. Die geschachtelten Datenstrukturen unterstützen die Hierarchie in der Struktur. Zwischenliegende künstliche Knoten, die mit numerischen Werten bezeichnet sind (z.B. 0, 1, ....), werden zur Darstellung von Enumerationen und Arrayindizes verwendet.
+Ein Pseudostammknoten wird als übergeordneter Knoten zu den eigentlichen Knoten angelegt, die den Bezeichnungen im darunter liegenden JSON-Dokument entsprechen. Die geschachtelten Datenstrukturen unterstützen die Hierarchie in der Struktur. Zwischenliegende künstliche Knoten, die mit numerischen Werten bezeichnet sind (z.B. 0, 1, ....), werden zur Darstellung von Enumerationen und Arrayindizes verwendet.
 
 ## <a name="index-paths"></a>Indexpfade
 
-Azure Cosmos DB stellt Elemente als JSON-Dokumente und den Index als Strukturen dar. Sie können die Richtlinien für Pfade innerhalb der Struktur optimieren. Sie können Pfade in die Indizierung einschließen bzw. von dieser ausschließen. Dies kann bessere Schreibleistungen und geringeren Indexspeicherbedarf für Szenarien bieten, in denen die Abfragemuster im Voraus bekannt sind. Weitere Informationen finden Sie unter [Indexpfade](index-paths.md).
+Azure Cosmos DB stellt Elemente in einem Azure Cosmos-Container als JSON-Dokumente und den Index als Strukturen dar. Sie können die Indexrichtlinien für Pfade innerhalb der Struktur optimieren. Sie können Pfade in die Indizierung einschließen bzw. von dieser ausschließen. Dies kann bessere Schreibleistungen und geringeren Indexspeicherbedarf für Szenarien bieten, in denen die Abfragemuster im Voraus bekannt sind. Weitere Informationen finden Sie unter [Indexpfade](index-paths.md).
 
 ## <a name="indexing-under-the-hood"></a>Indizierung: Im Hintergrund
 
-Die Azure Cosmos-Datenbank wendet die automatische Indizierung auf die Daten an, wobei jeder Pfad in einer Struktur indiziert wird, es sei denn, Sie nehmen die Konfiguration so vor, dass bestimmte Pfade ausgeschlossen werden.
+Die Azure Cosmos-Datenbank wendet die *automatische Indizierung* auf die Daten an, wobei jeder Pfad in einer Struktur indiziert wird, es sei denn, Sie schließen in der Konfiguration bestimmte Pfade aus.
 
-Die Azure Cosmos-Datenbank verwendet eine invertierte Indexdatenstruktur, um die Informationen zu jedem Element zu speichern und eine effiziente Darstellung der Abfrage zu ermöglichen. Die Indexstruktur ist ein Dokument, das aus der Vereinigung aller Strukturen besteht, die einzelne Elemente im Container darstellen. Die Indexstruktur wächst im Laufe der Zeit, wenn neue Elemente hinzugefügt oder bestehende Elemente im Container aktualisiert werden. Im Gegensatz zur Indexierung relationaler Datenbanken startet Azure Cosmos DB die Indizierung nicht von Grund auf neu, wenn neue Felder eingeführt und neue Elemente der bestehenden Struktur hinzugefügt werden. 
+Die Azure Cosmos-Datenbank verwendet eine invertierte Indexdatenstruktur, um die Informationen zu jedem Element zu speichern und eine effiziente Darstellung der Abfrage zu ermöglichen. Die Indexstruktur ist ein Dokument, das aus der Vereinigung aller Strukturen besteht, die einzelne Elemente in einem Container darstellen. Die Indexstruktur wächst im Lauf der Zeit, wenn neue Elemente hinzugefügt oder bestehende Elemente im Container aktualisiert werden. Im Gegensatz zur Indexierung relationaler Datenbanken startet Azure Cosmos DB die Indizierung nicht von Grund auf neu, wenn neue Felder eingeführt werden. Neue Elemente werden der vorhandenen Indexstruktur hinzugefügt. 
 
-Jeder Knoten der Indexstruktur ist ein Indexeintrag, der die Bezeichnungs- und Positionswerte, die sogenannte Benennung, und die IDs der Elemente, die sogenannten Buchungen, enthält. Die Buchungen in den geschweiften Klammern (z.B. {1,2}) in der invertierten Indexzahl entsprechen den Elementen wie Document1 und Document2, die den angegebenen Bezeichungswert enthalten. Eine wichtige Schlussfolgerung für eine einheitliche Behandlung sowohl der Schemabezeichnungen als auch der Instanzwerte ist, dass alles in einen großen Index eingebunden ist. Ein Instanzwert, der sich noch in den Blättern befindet, wird nicht wiederholt, er kann in unterschiedlichen Elemente verschiedenen Rollen mit unterschiedlichen Schemabezeichnungen einnehmen, aber es ist derselbe Wert. Die folgende Abbildung zeigt die invertierte Indizierung für verschiedene Elemente:
+Jeder Knoten der Indexstruktur ist ein Indexeintrag, der die Bezeichnungs- und Positionswerte, die sogenannte *Benennung*, und die IDs der Elemente, die sogenannten *Postings*, enthält. Die Postings in den geschweiften Klammern (z. B. {1,2}) in der invertierten Indexzahl entsprechen den Elementen wie *Document1* und *Document2*, die den angegebenen Bezeichungswert enthalten. Eine wichtige Schlussfolgerung für eine einheitliche Behandlung sowohl der Schemabezeichnungen als auch der Instanzwerte ist, dass alles in einen großen Index eingebunden ist. Ein Instanzwert, der sich noch in den Blättern befindet, wird nicht wiederholt, er kann in unterschiedlichen Elemente verschiedenen Rollen mit unterschiedlichen Schemabezeichnungen einnehmen, aber es ist derselbe Wert. Die folgende Abbildung zeigt die invertierte Indizierung für zwei unterschiedliche Elemente:
 
 ![Funktionsweise der Indizierung, invertierter Index](./media/index-overview/inverted-index.png)
 
 > [!NOTE]
 > Der invertierte Index kann ähnlich aussehen wie die Indizierungsstrukturen, die in einer Suchmaschine in der Domäne zum Abrufen von Information verwendet werden. Mit dieser Methode ermöglicht es Ihnen Azure Cosmos DB, Ihre Datenbank unabhängig von seiner Schemastruktur nach jedem Element zu durchsuchen.
 
-Für den normalisierten Pfad codiert der Index den Weiterleitungspfad vom Stammverzeichnis bis zum Wert zusammen mit den Typinformationen des Wertes. Der Pfad und der Wert werden codiert, um verschiedene Arten der Indizierung bereitzustellen, wie z.B. Bereich, räumliche Arten. Die Wertecodierung ist so konzipiert, dass sie einen eindeutigen Wert oder eine Zusammensetzung aus einer Reihe von Pfaden liefert.
+Für den normalisierten Pfad codiert der Index den Weiterleitungspfad vom Stammverzeichnis bis zum Wert zusammen mit den Typinformationen des Wertes. Der Pfad und der Wert werden codiert, um verschiedene Arten der Indizierung bereitzustellen, wie z. B. nach Bereich, räumlich usw. Die Wertecodierung ist so konzipiert, dass sie einen eindeutigen Wert oder eine Zusammensetzung aus einer Reihe von Pfaden liefert.
 
 ## <a name="querying-with-indexes"></a>Abfragen mit Indizes
 
@@ -50,7 +50,7 @@ Der invertierte Index ermöglicht es einer Abfrage, die Dokumente, die mit dem A
 
 ![Beispiel für eine Punktabfrage](./media/index-overview/index-point-query.png)
 
-Bei einer Bereichsabfrage ist GermanTax eine benutzerdefinierte Funktion, die im Rahmen der Abfrageverarbeitung ausgeführt wird. Die benutzerdefinierte Funktion ist eine beliebige registrierte Javascript-Funktion, die eine umfangreiche Programmierlogik bieten kann, die in die Abfrage integriert ist. Die folgende Abbildung zeigt ein Beispiel für die Indizierung in einer Bereichsabfrage:
+Bei einer Bereichsabfrage ist *GermanTax* eine [benutzerdefinierte Funktion](stored-procedures-triggers-udfs.md#udfs), die im Rahmen der Abfrageverarbeitung ausgeführt wird. Die benutzerdefinierte Funktion ist eine beliebige registrierte JavaScript-Funktion, die eine umfangreiche Programmierlogik bieten kann, die in die Abfrage integriert ist. Die folgende Abbildung zeigt ein Beispiel für die Indizierung in einer Bereichsabfrage:
 
 ![Beispiel für eine Bereichsabfrage](./media/index-overview/index-range-query.png)
 
@@ -61,4 +61,4 @@ Weitere Informationen zur Indizierung erhalten Sie in den folgenden Artikeln:
 - [Indizierungsrichtlinie](index-policy.md)
 - [Indextypen](index-types.md)
 - [Indexpfade](index-paths.md)
-- [Gewusst wie: Verwalten der Indizierungsrichtlinie](how-to-manage-indexing-policy.md)
+- [Verwalten von Indizierungsrichtlinien](how-to-manage-indexing-policy.md)

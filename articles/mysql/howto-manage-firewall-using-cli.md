@@ -6,16 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 870910654101b4d6689b51464f8a29aef41bf9cb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/09/2018
+ms.openlocfilehash: dca7d09a5358f5e8b4025dc5e35e4465e21d77a2
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58103127"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59488164"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Erstellen und Verwalten von Firewallregeln für Azure Database for MySQL mithilfe der Azure CLI
-Mithilfe von Firewallregeln auf Serverebene können Administratoren den Zugriff auf eine Azure Database for MySQL-Serverinstanz über eine bestimmte IP-Adresse oder über einen IP-Adressbereich verwalten. Dank praktischer Azure CLI-Befehle können Sie zum Verwalten Ihres Servers Firewallregeln erstellen, aktualisieren, löschen, auflisten und anzeigen. Eine Übersicht über Firewalls für Azure-Datenbank für MySQL finden Sie unter [Azure Database for MySQL server firewall rules](./concepts-firewall-rules.md) (Firewallregeln des Servers für Azure-Datenbank für MySQL).
+Firewallregeln auf Serverebene können verwendet werden, um den Zugriff auf eine Azure Database for MySQL-Serverinstanz über eine bestimmte IP-Adresse oder über einen IP-Adressbereich zu verwalten. Dank praktischer Azure CLI-Befehle können Sie zum Verwalten Ihres Servers Firewallregeln erstellen, aktualisieren, löschen, auflisten und anzeigen. Eine Übersicht über Firewalls für Azure-Datenbank for MySQL finden Sie unter [Firewallregeln für Azure-Datenbank für MySQL-Server](./concepts-firewall-rules.md).
+
+Virtual Network-Regeln (VNet) können auch verwendet werden, um den Zugriff auf Ihren Server zu sichern. Weitere Informationen finden Sie unter [Erstellen und Verwalten von VNET-Dienstendpunkten und -Regeln mithilfe der Azure CLI](howto-manage-vnet-using-cli.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli)
@@ -31,7 +33,7 @@ Befehle:
 - **show**: Dient zum Anzeigen der Details einer Firewallregel für den Azure MySQL-Server.
 - **update**: Dient zum Aktualisieren einer Firewallregel für den Azure MySQL-Server.
 
-## <a name="log-in-to-azure-and-list-your-azure-database-for-mysql-servers"></a>Anmelden bei Azure und Auflisten Ihrer Azure Database for MySQL-Serverinstanzen
+## <a name="sign-in-to-azure-and-list-your-azure-database-for-mysql-servers"></a>Anmelden bei Azure und Auflisten Ihrer Azure Database for MySQL-Serverinstanzen
 Stellen Sie mit dem Befehl **az login** eine sichere Verbindung zwischen der Azure CLI und Ihrem Azure-Konto her.
 
 1. Führen Sie an der Befehlszeile den folgenden Befehl aus:
@@ -119,3 +121,4 @@ Bei erfolgreicher Ausführung wird keine Ausgabe angezeigt. Bei einem Fehler wir
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zu den [Firewallregeln einer Azure Database for MySQL-Serverinstanz](./concepts-firewall-rules.md).
 - [Erstellen und Verwalten von Firewallregeln für Azure Database for MySQL mithilfe des Azure-Portals](./howto-manage-firewall-using-portal.md)
+- Sichern Sie den Zugriff auf Ihren Server noch mehr, indem Sie [VNET-Dienstendpunkte und -Regeln mithilfe der Azure CLI erstellen und verwalten](howto-manage-vnet-using-cli.md).

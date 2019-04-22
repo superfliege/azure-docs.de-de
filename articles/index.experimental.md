@@ -3,12 +3,12 @@ layout: HubPage
 hide_bc: true
 title: Microsoft Azure-Dokumentation
 description: Erfahren Sie, wie Sie mit Microsoft Azure-Clouddiensten leistungsstarke Anwendungen erstellen und verwalten. Laden Sie die Dokumentation, Beispielcode, Tutorials und vieles mehr herunter.
-ms.openlocfilehash: 023dd29d536ba1d5d963ca1c6b833f016acb7250
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 537d7d830ef5e6d779c3c236314717a768822e71
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736451"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046726"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -61,7 +61,7 @@ ms.locfileid: "56736451"
                                     </div>
                                 </div>
                                 <div class="cardText">
-                                    <span class="likeAnH3">Kostenloses PluralSight-Videotraining für Azure</span>
+                                    <span class="likeAnH3">Kostenloses Pluralsight-Videotraining für Azure</span>
                                 </div>
                             </div>
                         </div>
@@ -161,9 +161,9 @@ ms.locfileid: "56736451"
                                                 <h3>Verwalten von Daten und AI</h3>
                                                 <h4>Relationale Datenbanken</h4>
                                                 <ul class="noBullet">
-                                                    <li><a class="barLink" href="/azure/sql-database/">SQL Database as a Service</a></li>
-                                                    <li><a class="barLink" href="/azure/postgresql/">Postgre SQL Database as a Service</a></li>
-                                                    <li><a class="barLink" href="/azure/mysql/">My SQL Database as a Service</a></li>
+                                                    <li><a class="barLink" href="/azure/sql-database/">Database as a Service (SQL)</a></li>
+                                                    <li><a class="barLink" href="/azure/postgresql/">Database as a Service (PostgreSQL)</a></li>
+                                                    <li><a class="barLink" href="/azure/mysql/">Database as a Service (MySQL)</a></li>
                                                 </ul>
                                                 <h4>NoSQL</h4>
                                                 <ul class="noBullet">
@@ -188,7 +188,7 @@ ms.locfileid: "56736451"
                                                 <div class="ico48Link">
                                                     <a href="/cli/azure">
                                                         <img src="media/index/azure_dev-7.svg" alt="">
-                                                        <span>Azure<br />CLI</span>
+                                                        <span>Azure<br />Befehlszeilenschnittstelle (CLI)</span>
                                                     </a>
                                                 </div>
                                                 <div class="ico48Link">
@@ -2266,7 +2266,7 @@ ms.locfileid: "56736451"
                         </ul>
                     </li>
                     <li>
-                        <a href="#iot">Internet der Dinge (IoT)</a>
+                        <a href="#iot">Internet der Dinge</a>
                         <ul id="iot" class="cardsA">
                             <li>
                                 <a href="https://azure.microsoft.com/develop/iot/">
@@ -3065,7 +3065,7 @@ ms.locfileid: "56736451"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Microsoft Azure Stack</h3>
-                                                    <p>Bereitstellen von Azure-Diensten aus Ihrem eigenen Datencenter mit dieser neuen Hybridcloudplattform</p>
+                                                    <p>Bereitstellen von Azure-Diensten aus Ihrem eigenen Datencenter mit dieser neuen Hybrid Cloud-Plattform</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3080,7 +3080,7 @@ ms.locfileid: "56736451"
                 <a href="#sdkstools">SDKs/Tools</a>
                 <ul id="sdkstools">
                     <li>
-                        <a href="#sdkstools-all">Alle</a>
+                        <a href="#sdkstools-all">alle</a>
                         <ul id="sdkstools-all" class="cardsF">
                             <li>
                                 <div class="container">
@@ -3122,7 +3122,7 @@ ms.locfileid: "56736451"
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://pypi.python.org/pypi/azure"> Abrufen des Python SDK</a>
+                                                    <a href="https://pypi.python.org/pypi/azure">Abrufen des SDK für Python</a>
                                                 </h3>
                                                 <p>
                                                     <a href="https://docs.microsoft.com/python/azure/?view=azure-python">Erste Schritte</a>
@@ -3131,7 +3131,7 @@ ms.locfileid: "56736451"
                                                     <a href="https://docs.microsoft.com/python/azure/?view=azure-python">API-Referenz</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/resources/samples/?platform=python">Beispiele abrufen</a>
+                                                    <a href="https://azure.microsoft.com/resources/samples/?platform=python">Herunterladen von Beispielen</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://azure.microsoft.com/develop/python">Weitere Informationen</a>
@@ -3152,7 +3152,7 @@ ms.locfileid: "56736451"
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://www.npmjs.com/package/azure">Abrufen des Node.js SDK</a>
+                                                    <a href="https://www.npmjs.com/package/azure">Abrufen des SDK für Node.js</a>
                                                 </h3>
                                                 <p>
                                                     <a href="https://azure.github.io/azure-sdk-for-node/">Erste Schritte</a>
@@ -3161,7 +3161,7 @@ ms.locfileid: "56736451"
                                                     <a href="https://azure.github.io/azure-sdk-for-node/">API-Referenz</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=nodejs">Beispiele abrufen</a>
+                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=nodejs">Herunterladen von Beispielen</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://azure.microsoft.com/develop/nodejs">Weitere Informationen</a>
@@ -3206,7 +3206,7 @@ ms.locfileid: "56736451"
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://rubygems.org/gems/azure">Abrufen des Ruby SDK</a>
+                                                    <a href="https://rubygems.org/gems/azure">Abrufen des SDK für Ruby</a>
                                                 </h3>
                                                 <p>
                                                     <a href="https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md">Erste Schritte</a>
@@ -3215,7 +3215,7 @@ ms.locfileid: "56736451"
                                                     <a href="https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md">API-Referenz</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=ruby">Beispiele abrufen</a>
+                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=ruby">Herunterladen von Beispielen</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://azure.microsoft.com/develop/ruby/">Weitere Informationen</a>
@@ -3236,13 +3236,13 @@ ms.locfileid: "56736451"
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/go/azure/">Abrufen des Go SDK</a>
+                                                    <a href="/go/azure/">Abrufen des SDK für Go</a>
                                                 </h3>
                                                 <p>
                                                     <a href="/go/azure/azure-sdk-go-qs-vm">Erste Schritte</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://godoc.org/github.com/Azure/azure-sdk-for-go">Referenz</a>
+                                                    <a href="https://godoc.org/github.com/Azure/azure-sdk-for-go">Verweis</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -3263,10 +3263,10 @@ ms.locfileid: "56736451"
                                                     <a href="/rest/api/">Erste Schritte mit REST</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="/rest/api">Referenz</a>
+                                                    <a href="/rest/api">Verweis</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=rest">Beispiele abrufen</a>
+                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=rest">Herunterladen von Beispielen</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -3293,10 +3293,10 @@ ms.locfileid: "56736451"
                                                     <a href="/cli/azure">Erste Schritte</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/cli/azure/install-azure-cli">Azure CLI 2.0 herunterladen</a>
+                                                    <a href="/cli/azure/install-azure-cli">Herunterladen der Azure CLI</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/cli/azure">Referenz</a>
+                                                    <a href="/cli/azure">Verweis</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -3318,10 +3318,10 @@ ms.locfileid: "56736451"
                                                     <a href="/powershell/azure/get-started-azureps">Erste Schritte</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/powershell/azure/azurerm/install-azurerm-ps">Herunterladen von PowerShell</a>
+                                                    <a href="/powershell/azure/install-Az-ps">Herunterladen von Azure PowerShell</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/powershell/azure/overview">Referenz</a>
+                                                    <a href="/powershell/azure/overview">Verweis</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -3352,7 +3352,7 @@ ms.locfileid: "56736451"
                                                     <a href="https://aka.ms/webpi-azure-cli">Herunterladen der Azure CLI für Windows</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/azure/virtual-machines/azure-cli-arm-commands?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">Referenz</a>
+                                                    <a href="/azure/virtual-machines/azure-cli-arm-commands?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">Verweis</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -3378,7 +3378,7 @@ ms.locfileid: "56736451"
                                                     <a href="https://www.visualstudio.com/vs/azure-tools/">Visual Studio-Tools für Azure</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VWDOrVs2015AzurePack.appids">Herunterladen</a>
+                                                    <a href="https://www.microsoft.com/web/handlers/webpi.ashx/getinstaller/VWDOrVs2015AzurePack.appids">Download</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -3426,10 +3426,10 @@ ms.locfileid: "56736451"
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597">PowerShell-Tools für Visual Studio 2015</a>
+                                                    <a href="https://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597">PowerShell Tools for Visual Studio</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597">Herunterladen</a>
+                                                    <a href="https://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597">Download</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -3495,7 +3495,7 @@ ms.locfileid: "56736451"
                 </ul>
             </li>
             <li>
-                <a href="#architecture">Architektur</a>
+                <a href="#architecture">Architecture</a>
                 <ul id="architecture">
                     <li>
                         <a href="#architecture1"></a>

@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/08/2019
+ms.date: 04/09/2019
 ms.author: magoedte
-ms.openlocfilehash: 5a72c0539cabec3bf4168280c85a2afb92569b25
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 3261c2389a9706537366bcd60e00517bbcfb5f48
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233999"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426391"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Verstehen der Leistung von AKS-Clustern mit Azure Monitor für Container 
 Mit Azure Monitor für Container können Sie die Leistungsdiagramme und den Integritätsstatus verwenden, um die Workload Ihrer Azure Kubernetes Service-Cluster (AKS) aus zwei Perspektiven zu überwachen, direkt aus einem AKS-Cluster oder aus allen AKS-Clustern in einem Abonnement von Azure Monitor. Die Anzeige von Azure Container Instances (ACI) ist auch möglich, wenn Sie einen bestimmten AKS-Cluster überwachen.
@@ -71,7 +71,7 @@ Die folgende Tabelle stellt eine Aufschlüsselung der Berechnung dar, die die In
 | |Warnung |– |
 | |Kritisch |<100 % |
 | |Unknown |Wenn keine Meldung in den letzten 30 Minuten erfolgt ist |
-|**Node** | | |
+|**Knoten** | | |
 | |Healthy |>85 % |
 | |Warnung |60–84 % |
 | |Kritisch |<60 % |
@@ -99,6 +99,33 @@ Das Leistungsdiagramm zeigt vier Leistungsmetriken an:
 - **Podanzahl der Aktivität**: Die Podanzahl und der Status von Kubernetes. Die Status der dargestellten Pods sind *Alle*, *Ausstehend*, *Wird ausgeführt* und *Unbekannt*. Der Status kann im Selektor oberhalb des Diagramms einzeln oder kombiniert gefiltert werden. 
 
 Mit den Pfeiltasten nach links/rechts können Sie durch jeden Datenpunkt im Diagramm blättern und mit den Pfeiltasten nach oben/unten durch die Perzentilzeilen.
+
+Azure Monitor für Container unterstützt auch den Azure Monitor-[Metrik-Explorer](../platform/metrics-getting-started.md), in dem Sie eigene Boxplotdiagramme erstellen, Trends korrelieren und untersuchen und an Dashboards anheften können. Im Metrik-Explorer können Sie die Kriterien, die Sie für die Visualisierung Ihrer Metriken festgelegt haben, als Grundlage einer [metrikbasierten Warnungsregel](../platform/alerts-metric.md) verwenden.  
+
+## <a name="view-container-metrics-in-metrics-explorer"></a>Anzeigen von Containermetriken im Metrik-Explorer
+Im Metrik-Explorer können Sie Metriken für aggregierte Knoten und Podnutzung aus Azure Monitor für Container anzeigen. In der folgenden Tabelle sind die Details zur Verwendung der Metrikdiagramme für die Visualisierung von Containermetriken zusammengefasst.
+
+|Namespace | Metrik |
+|----------|--------|
+| insights.container/nodes | |
+| | cpuUsageMillicores |
+| | cpuUsagePercentage |
+| | memoryRssBytes |
+| | memoryRssPercentage |
+| | memoryWorkingSetBytes |
+| | memoryWorkingSetPercentage |
+| | nodesCount |
+| insights.container/pods | |
+| | PodCount |
+
+Sie können die [Teilung](../platform/metrics-charts.md#apply-splitting-to-a-chart) einer Metrik anwenden, um sie nach Dimension anzuzeigen und damit zu visualisieren, wie verschiedene Segmente der Metrik zusammenhängen. Für einen Knoten können Sie das Diagramm nach der Dimension *Host* segmentieren und in einem Pod können Sie es nach folgenden Dimensionen segmentieren:
+
+* Controller
+* Kubernetes-Namespace
+* Knoten
+* Phase
+
+## <a name="analyze-nodes-controllers-and-container-health"></a>Analysieren von Knoten, Controllern und der Containerintegrität
 
 Wenn Sie zur Registerkarte **Knoten**, **Controller** und **Container** wechseln, wird der Eigenschaftenbereich automatisch rechts auf der Seite angezeigt.  Dort werden die Eigenschaften des ausgewählten Elements einschließlich der Bezeichnungen angezeigt, die Sie definieren, um die Kubernetes-Objekte zu organisieren. Klicken Sie auf den **>>**-Link im Bereich, um ihn anzuzeigen\auszublenden.  
 
@@ -133,7 +160,7 @@ Standardmäßig beziehen sich Leistungsdaten auf die letzten sechs Stunden, jedo
 
 Wenn Sie den Mauszeiger über das Balkendiagramm unter der Spalte **Trend** bewegen, zeigt jeder Balken innerhalb eines Stichprobenzeitraums von 15 Minuten entweder die CPU- oder Speicherauslastung an, je nachdem, welche Metrik ausgewählt ist. Nachdem Sie das Trenddiagramm über eine Tastatur ausgewählt haben, können Sie mit den Tasten Alt+Bild-auf oder Alt+Bild-ab durch jeden Balken einzeln blättern und die gleichen Details wie beim Bewegen mit der Maus erhalten.
 
-![Beispiel für ein Trend-Balkendiagramm mit Mauszeigerbewegung](./media/container-insights-analyze/containers-metric-trend-bar-01.png)    
+![Beispiel für ein Trendbalkendiagramm mit Mauszeigerbewegung](./media/container-insights-analyze/containers-metric-trend-bar-01.png)    
 
 Beachten Sie im nächsten Beispiel, dass für den ersten Knoten in der Liste, *aks-nodepool1-*, der Wert von **Container** 9 ist, was einen Rollup der Gesamtzahl der bereitgestellten Container darstellt.
 
@@ -176,7 +203,7 @@ Die folgende Tabelle beschreibt die Informationen, die bei der Anzeige von Contr
 |--------|-------------|
 | NAME | Der Name des Controllers.|
 | Status | Der Rollupstatus der Container, wenn deren Ausführung mit einem Status abgeschlossen wurde, z. B. *OK*, *Abgebrochen*, *Fehler*, *Beendet* oder *Angehalten*. Wenn der Container ausgeführt wird, der Status jedoch entweder nicht richtig angezeigt oder nicht vom Agent übernommen wurde und seit über 30 Minuten nicht antwortet, ist der Status *Unbekannt*. Zusätzliche Details zu dem Symbol „Status“ werden in der folgenden Tabelle angegeben.|
-| Mittelw.&nbsp;%, Min.&nbsp;%, Max.&nbsp;%, 50.&nbsp;%, 90.&nbsp;% | Durchschnittliches Rollup des durchschnittlichen Prozentsatzes jeder Entität für die ausgewählte Metrik und das ausgewählte Perzentil. |
+| Mittelw.&nbsp;%, Min.&nbsp;%, Max.&nbsp;%, 50.&nbsp;%, 90.&nbsp;% | Durchschnittlicher Rollup des durchschnittlichen Prozentsatzes jeder Entität für die ausgewählte Metrik und das ausgewählte Perzentil. |
 | Mittelw., Min., Max., 50., 90.  | Rollup der durchschnittlichen CPU-Millicore oder Speicherleistung des Containers für das ausgewählte Perzentil. Der Mittelwert wird ausgehend vom festgelegten CPU-/Speichergrenzwert für einen Pod gemessen. |
 | Container | Gesamtanzahl der Container für den Controller oder Pod. |
 | Neustarts | Rollup der Anzahl von Containerneustarts. |

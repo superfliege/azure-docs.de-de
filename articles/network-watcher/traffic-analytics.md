@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: ac4351bd2e125c922cb3044c1d06298b3ad6de97
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: f00c816f34978ee2f14f16ee9882860750d0e658
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805056"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051885"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -28,6 +28,9 @@ Traffic Analytics ist eine cloudbasierte Lösung, die Einblick in Benutzer- und 
 - Erkennen von Sicherheitsrisiken für das Netzwerk und Schützen Ihres Netzwerks mithilfe von Informationen zu offenen Ports, Anwendungen, die versuchen, Zugriff auf das Internet zu erhalten, und virtuellen Computern (VM), die Verbindungen mit betrügerischen Netzwerken herstellen
 - Verstehen von Mustern im Datenverkehr über Azure-Regionen und das Internet zur Optimierung Ihrer Netzwerkbereitstellung im Hinblick auf Leistung und Kapazität
 - Ermitteln von Fehlkonfigurationen im Netzwerk, die zu fehlerhaften Verbindungen in Ihrem Netzwerk führen
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="why-traffic-analytics"></a>Gründe für die Nutzung der Datenverkehrsanalyse
 
@@ -133,7 +136,7 @@ Um Datenverkehr analysieren zu können, benötigen Sie eine Instanz von Network 
 Bevor Sie die Datenverkehrsanalyse verwenden können, müssen Sie Ihren Netzwerkressourcenanbieter erneut registrieren. Klicken Sie im folgenden Codefeld auf **Ausprobieren**, um die Azure Cloud Shell zu öffnen. Die Cloud Shell meldet Sie automatisch bei Ihrem Azure-Abonnement an. Nachdem die Cloud Shell geöffnet ist, geben Sie den folgenden Befehl ein, um den Netzwerkressourcenanbieter erneut zu registrieren:
 
 ```azurepowershell-interactive
-Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Network"
+Register-AzResourceProvider -ProviderNamespace "Microsoft.Network"
 ```
 
 ### <a name="select-a-network-security-group"></a>Auswählen einer Netzwerksicherheitsgruppe
@@ -153,13 +156,13 @@ Vor der Aktivierung der Flussprotokolleinstellungen müssen Sie die folgenden Au
 Registrieren Sie den Azure Insights-Anbieter, falls dieser nicht bereits für Ihr Abonnement registriert wurde:
 
 ```azurepowershell-interactive
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Insights
+Register-AzResourceProvider -ProviderNamespace Microsoft.Insights
 ```
 
 Wenn Sie noch kein Azure Storage-Konto zum Speichern der NSG-Flussprotokolle besitzen, müssen Sie ein Speicherkonto erstellen. Sie können mit dem folgenden Befehl ein Speicherkonto erstellen. Ersetzen Sie vor dem Ausführen des Befehls `<replace-with-your-unique-storage-account-name>` durch einen Namen, der an allen Azure-Standorten eindeutig und zwischen 3 und 24 Zeichen lang ist und nur Ziffern und Kleinbuchstaben enthält. Sie können bei Bedarf auch den Namen der Ressourcengruppe ändern.
 
 ```azurepowershell-interactive
-New-AzureRmStorageAccount `
+New-AzStorageAccount `
   -Location westcentralus `
   -Name <replace-with-your-unique-storage-account-name> `
   -ResourceGroupName myResourceGroup `
@@ -182,7 +185,7 @@ Wählen Sie die folgenden Optionen aus, wie in der Abbildung dargestellt:
 
 Wiederholen Sie die oben angegebenen Schritte für alle weiteren NSGs, für die Sie die Datenverkehrsanalyse aktivieren möchten. Die Daten aus den Flussprotokollen werden an den Arbeitsbereich gesendet, daher müssen Sie sicherstellen, dass die vor Ort geltenden Gesetze und Vorschriften in Ihrem Land eine Datenspeicherung in der Region, in der sich der Arbeitsbereich befindet, erlauben.
 
-Sie können Datenverkehrsanalysen auch mit dem Cmdlet [Set-AzureRmNetworkWatcherConfigFlowLog PowerShell](/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog) in AzureRm PowerShell-Modulversion 6.2.1 oder höher konfigurieren. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/azurerm/install-azurerm-ps) Informationen dazu.
+Sie können Datenverkehrsanalysen auch mit dem PowerShell-Cmdlet [Set-AzNetworkWatcherConfigFlowLog](/powershell/module/az.network/set-aznetworkwatcherconfigflowlog) in Azure PowerShell konfigurieren. Führen Sie `Get-Module -ListAvailable Az` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-Az-ps) Informationen dazu.
 
 ## <a name="view-traffic-analytics"></a>Anzeigen der Datenverkehrsanalyse
 

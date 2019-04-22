@@ -5,16 +5,18 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 555904642df069e9d87b2286bce23181da0f8184
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/09/2019
+ms.openlocfilehash: cb142e01009efbeaabd5d4e56dbedfe6384c5fc6
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086631"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470796"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-the-azure-portal"></a>Erstellen und Verwalten von Firewallregeln für Azure-Datenbank für PostgreSQL mithilfe des Azure-Portals
-Mithilfe von Firewallregeln auf Serverebene können Administratoren über eine bestimmte IP-Adresse oder über einen IP-Adressbereich auf einen Server für Azure-Datenbank für PostgreSQL zugreifen. 
+Mithilfe von Firewallregeln auf Serverebene kann der Zugriff auf einen Server für Azure-Datenbank für PostgreSQL über eine bestimmte IP-Adresse oder über einen IP-Adressbereich verwaltet werden.
+
+Virtual Network-Regeln (VNet) können auch verwendet werden, um den Zugriff auf Ihren Server zu sichern. Weitere Informationen finden Sie unter [Erstellen und Verwalten von VNET-Dienstendpunkten und -Regeln für Azure Database for PostgreSQL mithilfe des Azure-Portals](howto-manage-vnet-using-portal.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
@@ -34,7 +36,7 @@ Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
 
    ![Bing-Suche für „Wie lautet meine IP?“](./media/howto-manage-firewall-using-portal/3-what-is-my-ip.png)
 
-4. Fügen Sie weitere Adressräume hinzu. In den Firewallregeln für Azure Database for PostgreSQL können Sie eine einzelne IP-Adresse oder einen Adressbereich angeben. Wenn Sie die Regel auf eine einzelne IP-Adresse beschränken möchten, geben Sie dieselbe Adresse in das Feld für Start-IP und End-IP ein. Mit dem Öffnen der Firewall wird es Administratoren, Benutzern und Anwendungen ermöglicht, sich auf dem PostgreSQL-Server bei allen Datenbanken anzumelden, für die sie über gültige Anmeldeinformationen verfügen.
+4. Fügen Sie weitere Adressräume hinzu. In den Firewallregeln für Azure Database for PostgreSQL können Sie eine einzelne IP-Adresse oder einen Adressbereich angeben. Wenn Sie die Regel auf eine einzelne IP-Adresse beschränken möchten, geben Sie dieselbe Adresse in das Feld für Start-IP und End-IP ein. Mit dem Öffnen der Firewall wird es Administratoren, Benutzern und Anwendungen ermöglicht, auf dem PostgreSQL-Server auf alle Datenbanken zuzugreifen, für die sie über gültige Anmeldeinformationen verfügen.
 
    ![Azure-Portal – Firewallregeln](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
 
@@ -58,4 +60,5 @@ Wiederholen Sie die Schritte zum Verwalten der Firewallregeln.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Sie können auch ein Skript zum [Erstellen und Verwalten von Firewallregeln für Azure Database for PostgreSQL mithilfe der Azure CLI](howto-manage-firewall-using-cli.md) schreiben.
+- Sichern Sie den Zugriff auf Ihren Server noch mehr, indem Sie [VNET-Dienstendpunkte und -Regeln für Azure Database for PostgreSQL mithilfe des Azure-Portals erstellen und verwalten](howto-manage-vnet-using-portal.md).
 - Wenn Sie Unterstützung beim Herstellen einer Verbindung mit einem Server für Azure Database for PostgreSQL benötigen, lesen Sie die Informationen unter [Datenverbindungsbibliotheken für Azure Database for PostgreSQL](concepts-connection-libraries.md).

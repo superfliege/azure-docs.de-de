@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b36b6e513e382e25f7d7038f49e7467a21686a0f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 87a416b6ff73fd658158276a02796aaae946bc20
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311729"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470354"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrieren Ihrer vorhandenen NPS-Infrastruktur in Azure Multi-Factor Authentication
 
@@ -59,8 +59,8 @@ Windows Server 2008 R2 SP1 oder höher
 
 Diese Bibliotheken werden automatisch mit der Erweiterung installiert.
 
-- [Visual C++ Redistributable Packages für Visual Studio 2013 (x64)](https://www.microsoft.com/download/details.aspx?id=40784)
-- [Microsoft Azure Active Directory-Modul für Windows PowerShell, Version 1.1.166.0](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
+- [Visual C++ Redistributable Packages für Visual Studio 2013 (x64)](https://www.microsoft.com/download/details.aspx?id=40784)
+- [Microsoft Azure Active Directory-Modul für Windows PowerShell, Version 1.1.166.0](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
 
 Das Microsoft Azure Active Directory-Modul für Windows PowerShell wird, sofern es nicht bereits vorhanden ist, über ein Konfigurationsskript installiert, das Sie als Teil des Installationsvorgangs ausführen. Es ist nicht erforderlich, dieses Modul vorab zu installieren, wenn es nicht bereits installiert ist.
 
@@ -207,6 +207,8 @@ Sie können diesen Schlüssel erstellen und auf FALSE festlegen, während Ihre B
 
 Suchen Sie das vom Installationsprogramm erstellte selbstsignierte Zertifikat im Zertifikatspeicher, und prüfen Sie, ob der private Schlüssel dem Benutzer **NETZWERKDIENST** Berechtigungen erteilt. Das Zertifikat hat den Antragstellernamen **CN \<Mandanten-ID\>, OU = Microsoft NPS Extension**.
 
+Selbstsignierte Zertifikate, die mit dem Skript *AzureMfaNpsExtnConfigSetup.ps1* generiert werden, haben eine Gültigkeitsdauer von zwei Jahren. Wenn Sie überprüfen, ob das Zertifikat installiert ist, sollten Sie auch überprüfen, ob das Zertifikat nicht abgelaufen ist.
+
 -------------------------------------------------------------
 
 ### <a name="how-can-i-verify-that-my-client-cert-is-associated-to-my-tenant-in-azure-active-directory"></a>Wie kann ich überprüfen, ob mein Clientzertifikat meinem Mandanten in Azure Active Directory zugeordnet ist?
@@ -261,6 +263,14 @@ Dieser Fehler kann verschiedene Gründe haben. Gehen Sie zur Problembehandlung f
 ### <a name="why-do-i-see-http-connect-errors-in-logs-with-all-my-authentications-failing"></a>Warum enthalten meine Protokolle HTTP-Verbindungs- und Authentifizierungsfehler?
 
 Überprüfen Sie auf dem Server, auf dem die NPS-Erweiterung ausgeführt wird, ob auf „https://adnotifications.windowsazure.com“ zugegriffen werden kann.
+
+-------------------------------------------------------------
+
+### <a name="why-is-authentication-not-working-despite-a-valid-certificate-being-present"></a>Warum funktioniert die Authentifizierung trotz eines gültigen Zertifikats nicht?
+
+Wenn das vorherige Computerzertifikat abgelaufen ist und ein neues Zertifikat generiert wurde, sollten Sie alle abgelaufenen Zertifikate löschen. Bei abgelaufenen Zertifikaten können beim Start der NPS-Erweiterung Probleme auftreten.
+
+Um festzustellen, ob ein gültiges Zertifikat vorhanden ist, überprüfen Sie über MMC den Zertifikatspeicher des lokalen Computerkontos, und stellen Sie sicher, dass das Ablaufdatum des Zertifikats nicht überschritten wurde. Um ein neues gültiges Zertifikat zu generieren, führen Sie die Schritte im Abschnitt [Ausführen des PowerShell-Skripts](#run-the-powershell-script) erneut aus.
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>Verwalten von TLS/SSL-Protokollen und Verschlüsselungssammlungen
 

@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 65bbb5fe-9939-4e8e-8f5b-c197d4be142a
-ms.service: azure
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 8fa873ca1ab20fbd8b3ca4ff57507adf34529246
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d5ccf3e9f35a8d35387962278577333ff92ff02b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57903656"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258530"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Tutorial: Erstellen und Ausführen einer Jupyter Notebook-Datei mit Python
 
@@ -128,7 +128,7 @@ Da die Datendatei nun bereit ist und die Projektumgebung festgelegt ist, können
 1. Da Sie in den Umgebungseinstellungen über eine *requirements.txt*-Datei verfügen, wird die folgende Meldung angezeigt: „Waiting for your container to finish being prepared“ (Auf die Vorbereitung Ihres Containers wird gewartet). Sie können auf **OK** klicken, um die Meldung zu schließen und mit der Arbeit im Notebook fortzufahren. Allerdings können Sie keine Codezellen ausführen, bis die Umgebung vollständig eingerichtet ist.
 1. Das Notebook wird standardmäßig mit einer einzelnen leeren Codezelle in der Jupyter-Schnittstelle geöffnet.
 
-    [![Anfängliche Ansicht eines neuen Notebooks in Azure Notebooks](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
+    [![IAnfangsansicht eines neuen Notebooks in Azure Notebooks(media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
 
 ## <a name="tour-the-notebook-interface"></a>Einführung in die Notebook-Schnittstelle
 
@@ -144,7 +144,7 @@ Am oberen Rand des Fensters finden Sie folgende Elemente:
 (F) Ein Indikator, der angibt, ob das Notebook vertrauenswürdig ist (der Standardwert ist **Not Trusted** (Nicht vertrauenswürdig)).
 (G) Der Kernel, der zum Ausführen des Notebooks verwendet wird, mit einem Indikator für die Aktivität.
 
-[![Hauptbereiche der Benutzeroberfläche der Jupyter-Schnittstelle](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
+[![PHauptbereiche der Benutzeroberfläche der Jupyter-Schnittstelle(media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
 
 Jupyter stellt eine integrierte Einführung für die primären Benutzeroberflächenelemente bereit. Diese Einführung können Sie starten, indem Sie auf **Help** > **User Interface Tour** (Hilfe > Einführung in die Benutzeroberfläche) klicken. Dann können Sie sich durch die angezeigten Popupfenster klicken.
 
@@ -421,7 +421,7 @@ Zusätzliche Funktionen von Visual Studio Code für Jupyter-Notebooks werden auc
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erkunden von Beispielnotebooks](azure-notebooks-samples.md)
+- [Informationen zu Beispielnotebooks](azure-notebooks-samples.md)
 
 Gewusst-wie-Artikel:
 

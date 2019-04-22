@@ -4,22 +4,20 @@ description: Hier werden die Funktionen beschrieben, die in einer Azure Resource
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2018
+ms.date: 04/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: 109bd1c987c86721c6064fc0294913c85fa3a901
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 9065c6bc71a153ae94ddc20d5b41a152094fc111
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267868"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470150"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Logische Funktionen für Azure Resource Manager-Vorlagen
 
@@ -29,11 +27,10 @@ Resource Manager stellt mehrere Funktionen zum Durchführen von Vergleichen in V
 * [bool](#bool)
 * [if](#if)
 * [not](#not)
-* [or](#or)
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+* [oder](#or)
 
 ## <a name="and"></a>and
+
 `and(arg1, arg2, ...)`
 
 Überprüft, ob alle Parameterwerte zutreffen.
@@ -84,19 +81,8 @@ Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 | orExampleOutput | Bool | True |
 | notExampleOutput | Bool | False |
 
-Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
-```
-
-Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
-```
-
 ## <a name="bool"></a>bool
+
 `bool(arg1)`
 
 Konvertiert den Parameter in einen booleschen Wert.
@@ -149,19 +135,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | trueInt | Bool | True |
 | falseInt | Bool | False |
 
-Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/bool.json
-```
-
-Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/bool.json
-```
-
 ## <a name="if"></a>if
+
 `if(condition, trueValue, falseValue)`
 
 Gibt einen Wert abhängig davon zurück, ob eine Bedingung zutrifft oder nicht.
@@ -170,7 +145,7 @@ Gibt einen Wert abhängig davon zurück, ob eine Bedingung zutrifft oder nicht.
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| condition |Ja |boolean |Der Wert, für den überprüft wird, ob er zutrifft. |
+| condition |Ja |boolean |Der Wert, für den überprüft wird, ob er zutrifft oder nicht. |
 | trueValue |Ja | Zeichenfolge, Integer, Objekt oder Array |Der zurückzugebende Wert, wenn die Bedingung zutrifft. |
 | falseValue |Ja | Zeichenfolge, Integer, Objekt oder Array |Der zurückzugebende Wert, wenn die Bedingung nicht zutrifft. |
 
@@ -180,49 +155,7 @@ Gibt den zweiten Parameter zurück, wenn der erste Parameter **True** ist, ander
 
 ### <a name="remarks"></a>Anmerkungen
 
-Mit dieser Funktion können Sie eine Ressourceneigenschaft „bedingt“ festlegen. Das folgende Beispiel ist keine vollständige Vorlage, aber es zeigt die relevanten Abschnitte für das bedingte Festlegen der Verfügbarkeitsgruppe.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        ...
-        "availabilitySet": {
-            "type": "string",
-            "allowedValues": [
-                "yes",
-                "no"
-            ]
-        }
-    },
-    "variables": {
-        ...
-        "availabilitySetName": "availabilitySet1",
-        "availabilitySet": {
-            "id": "[resourceId('Microsoft.Compute/availabilitySets',variables('availabilitySetName'))]"
-        }
-    },
-    "resources": [
-        {
-            "condition": "[equals(parameters('availabilitySet'),'yes')]",
-            "type": "Microsoft.Compute/availabilitySets",
-            "name": "[variables('availabilitySetName')]",
-            ...
-        },
-        {
-            "apiVersion": "2016-03-30",
-            "type": "Microsoft.Compute/virtualMachines",
-            "properties": {
-                "availabilitySet": "[if(equals(parameters('availabilitySet'),'yes'), variables('availabilitySet'), json('null'))]",
-                ...
-            }
-        },
-        ...
-    ],
-    ...
-}
-```
+Wenn die Bedingung zutrifft (**True**), wird nur der Wert „True“ ausgewertet. Wenn die Bedingung nicht zutrifft (**False**), wird nur der Wert „False“ ausgewertet. Mit der **if**-Funktion („Wenn“) können Sie Ausdrücke einschließen, die nur bedingt gültig sind. Beispielsweise können Sie auf eine Ressource verweisen, die unter der einen Bedingung, nicht aber unter der anderen Bedingung vorhanden ist. Ein Beispiel für die bedingte Auswertung von Ausdrücken wird im nächsten Abschnitt gezeigt.
 
 ### <a name="examples"></a>Beispiele
 
@@ -259,19 +192,56 @@ Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 | noOutput | Zeichenfolge | no |
 | objectOutput | Objekt | { "test": "value1" } |
 
-Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
+In der folgenden [Beispielvorlage](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json) wird gezeigt, wie Sie diese Funktion mit Ausdrücken verwenden, die nur bedingt gültig sind.
 
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/if.json
-```
-
-Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/if.json
+```json
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vmName": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "logAnalytics": {
+            "type": "string",
+            "defaultValue": ""
+        }
+    },
+    "resources": [
+        {
+            "condition": "[greaterOrEquals(parameters('logAnalytics'), '0')]",
+            "name": "[concat(parameters('vmName'),'/omsOnboarding')]",
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "location": "[parameters('location')]",
+            "apiVersion": "2017-03-30",
+            "properties": {
+                "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+                "type": "MicrosoftMonitoringAgent",
+                "typeHandlerVersion": "1.0",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "workspaceId": "[if(greaterOrEquals(parameters('logAnalytics'), '0'), reference(parameters('logAnalytics'), '2015-11-01-preview').customerId, json('null'))]"
+                },
+                "protectedSettings": {
+                    "workspaceKey": "[if(greaterOrEquals(parameters('logAnalytics'), '0'), listKeys(parameters('logAnalytics'), '2015-11-01-preview').primarySharedKey, json('null'))]"
+                }
+            }
+        }
+    ],
+    "outputs": {
+        "mgmtStatus": {
+            "type": "string",
+            "value": "[if(greaterOrEquals(parameters('logAnalytics'), '0'), 'Enabled monitoring for VM!', 'Nothing to enable')]"
+        }
+    }
+}
 ```
 
 ## <a name="not"></a>not
+
 `not(arg1)`
 
 Konvertiert den booleschen Wert in seinen gegenteiligen Wert.
@@ -320,18 +290,6 @@ Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 | orExampleOutput | Bool | True |
 | notExampleOutput | Bool | False |
 
-Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
-```
-
-Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
-```
-
 In der folgenden [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) wird **not** mit „[equals](resource-group-template-functions-comparison.md#equals)“ verwendet.
 
 ```json
@@ -354,19 +312,8 @@ Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 
-Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
-```
-
-Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/not-equals.json
-```
-
 ## <a name="or"></a>oder
+
 `or(arg1, arg2, ...)`
 
 Überprüft, ob einer der Parameterwerte zutrifft.
@@ -417,19 +364,8 @@ Die Ausgabe aus dem vorherigen Beispiel lautet wie folgt:
 | orExampleOutput | Bool | True |
 | notExampleOutput | Bool | False |
 
-Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
-```
-
-Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/andornot.json
-```
-
 ## <a name="next-steps"></a>Nächste Schritte
+
 * Eine Beschreibung der Abschnitte in einer Azure Resource Manager-Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
 * Informationen zum Zusammenführen mehrerer Vorlagen finden Sie unter [Verwenden von verknüpften Vorlagen bei der Bereitstellung von Azure-Ressourcen](resource-group-linked-templates.md).
 * Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).

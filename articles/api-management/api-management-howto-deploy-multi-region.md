@@ -11,20 +11,20 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 82ae0ef72bb4f546a1f946f3127aa5d74bec3c3b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: d22da92355616c208c7616b4b0e8c26b7f9e7006
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957758"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278648"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Bereitstellen einer Azure API Management-Dienstinstanz für mehrere Azure-Regionen
 
 Azure API Management unterstützt eine Bereitstellung für mehrere Regionen, wodurch API-Herausgeber einen einzelnen API-Verwaltungsdienst in einer beliebigen Anzahl von gewünschten Azure-Regionen zur Verfügung stellen können. Dies trägt dazu bei, die Anforderungslatenz bei geografisch verteilten API-Nutzern zu verringern, und verbessert gleichzeitig die Dienstverfügbarkeit, wenn eine Region offline geht.
 
-Ein neuer Azure API Management-Dienst enthält zunächst nur eine [Einheit][unit] in einer Azure-Region (der primären Region). Mit dem Azure-Portal können auf einfache Weise weitere Regionen hinzugefügt werden. Ein API Management-Gatewayserver wird in jeder Region bereitgestellt und Datenverkehr durch Aufrufe wird an das nächstgelegene Gateway geroutet. Wenn eine Region offline geht, wird der Datenverkehr automatisch an das nächstgelegene Gateway umgeleitet.
+Ein neuer Azure API Management-Dienst enthält zunächst nur eine [Einheit][unit] in einer Azure-Region (der primären Region). Mit dem Azure-Portal können auf einfache Weise weitere Regionen hinzugefügt werden. In jeder Region wird ein API Management-Gatewayserver bereitgestellt, und Datenverkehr durch Aufrufe wird an das nächstgelegene Gateway (das mit der geringsten Latenz) geroutet. Wenn eine Region offline geht, wird der Datenverkehr automatisch an das nächstgelegene Gateway umgeleitet.
 
 > [!NOTE]
 > Azure API Management repliziert nur die API-Gatewaykomponente regionsübergreifend. Die Dienstverwaltungskomponente wird nur in der primären Region gehostet. Im Falle eines Ausfalls in der primären Region ist es nicht möglich, Konfigurationsänderungen auf eine Azure API Management-Dienstinstanz anzuwenden (einschließlich Einstellungen oder Richtlinienupdates).
@@ -105,6 +105,20 @@ Um die geografische Verteilung Ihres Systems voll auszuschöpfen, sollten Sie Ba
         </on-error>
     </policies>
     ```
+
+> [!TIP]
+> Sie können Ihren Back-End-Diensten auch [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) vorschalten, die API-Aufrufe an Traffic Manager weiterleiten und diesem das automatische Routing überlassen.
+
+## <a name="custom-routing"> </a>Verwenden von benutzerdefiniertem Routing an regionale API Management-Gateways
+
+API Management leitet die Anforderungen basierend auf [der geringsten Latenz](../traffic-manager/traffic-manager-routing-methods.md#performance) an ein regionales *Gateway* weiter. Es ist zwar nicht möglich, diese Einstellung in API Management außer Kraft zu setzen, Sie können jedoch Ihre eigene Traffic Manager-Instanz mit benutzerdefinierten Routingregeln verwenden.
+
+1. Erstellen Sie Ihren eigenen [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/).
+1. Bei Verwendung einer benutzerdefinierten Domäne [verwenden Sie sie mit Traffic Manager](../traffic-manager/traffic-manager-point-internet-domain.md) anstelle des API Management-Diensts.
+1. [Konfigurieren Sie die regionalen API Management-Endpunkte in Traffic Manager](../traffic-manager/traffic-manager-manage-endpoints.md). Die regionalen Endpunkte folgen dem URL-Muster `https://<service-name>-<region>-01.regional.azure-api.net`, z. B. `https://contoso-westus2-01.regional.azure-api.net`.
+1. [Konfigurieren Sie die regionalen API Management-Statusendpunkte in Traffic Manager](../traffic-manager/traffic-manager-monitoring.md). Die regionalen Statusendpunkte folgen dem URL-Muster `https://<service-name>-<region>-01.regional.azure-api.net/status-0123456789abcdef`, z. B. `https://contoso-westus2-01.regional.azure-api.net/status-0123456789abcdef`.
+1. Geben Sie die [Routingmethode](../traffic-manager/traffic-manager-routing-methods.md) von Traffic Manager an.
+
 
 [api-management-management-console]: ./media/api-management-howto-deploy-multi-region/api-management-management-console.png
 

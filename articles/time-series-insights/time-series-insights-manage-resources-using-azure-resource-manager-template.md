@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.custom: seodec18
-ms.openlocfilehash: fe348daa4613e0b515244686e48ed63a41991d81
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 79751dc0de8817c940355e8b64652014b1c67c35
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58009371"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045899"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Erstellen von Time Series Insights-Ressourcen mit Azure Resource Manager-Vorlagen
 
@@ -33,11 +33,14 @@ Time Series Insights unterstützt die folgenden Ressourcen:
 
 Eine Resource Manager-Vorlage ist eine JSON-Datei, mit der die Infrastruktur und Konfiguration von Ressourcen in einer Ressourcengruppe definiert wird. Weitere Informationen finden Sie in den folgenden Dokumenten:
 
-- [Übersicht über den Azure Resource Manager – Bereitstellung von Vorlagen](../azure-resource-manager/resource-group-overview.md#template-deployment)
+- [Übersicht über den Azure Resource Manager: Vorlagenbereitstellung](../azure-resource-manager/resource-group-overview.md#template-deployment)
 - [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
 - [Microsoft.TimeSeriesInsights-Ressourcentypen](/azure/templates/microsoft.timeseriesinsights/allversions)
 
 Die Schnellstartvorlage [201-timeseriesinsights-environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) ist auf GitHub verfügbar. Mit dieser Vorlage werden eine Time Series Insights-Umgebung, eine untergeordnete Ereignisquelle, die für die Nutzung von Ereignissen von einem Event Hub konfiguriert ist, und Zugriffsrichtlinien erstellt, mit denen Zugriff auf die Daten der Umgebung gewährt wird. Wenn Sie keinen vorhandenen Event Hub angeben, wird einer für die Bereitstellung erstellt.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>Lokales Bereitstellen der Schnellstartvorlage mit PowerShell
 
@@ -110,8 +113,8 @@ Kopieren Sie die Datei [201-timeseriesinsights-environment-with-eventhub](https:
    | eventSourceDisplayName | Ein optionaler Anzeigename, der in Tools oder Benutzeroberflächen anstelle des Ereignisquellennamens angezeigt wird. |
    | eventSourceTimestampPropertyName | Die Ereigniseigenschaft, die als Zeitstempel der Ereignisquelle verwendet wird. Wenn für timestampPropertyName kein Name oder wenn Null oder eine leere Zeichenfolge angegeben wird, wird der Zeitpunkt der Ereigniserstellung verwendet. |
    | eventSourceKeyName | Der Name des freigegebenen Zugriffsschlüssels, der vom Time Series Insights-Dienst verwendet wird, um eine Verbindung mit dem Event Hub herzustellen. |
-   | accessPolicyReaderObjectIds | Eine Liste mit Objekt-IDs der Benutzer oder Anwendungen in Azure AD, die über Lesezugriff auf die Umgebung verfügen sollen. Die objectId des Dienstprinzipals kann abgerufen werden, indem das Cmdlet **Get-AzureRMADUser** oder **Get-AzureRMADServicePrincipal** aufgerufen wird. Die Erstellung einer Zugriffsrichtlinie für Azure AD-Gruppen wird noch nicht unterstützt. |
-   | accessPolicyContributorObjectIds | Eine Liste mit Objekt-IDs der Benutzer oder Anwendungen in Azure AD, die über den Zugriff „Mitwirkender“ auf die Umgebung verfügen sollen. Die objectId des Dienstprinzipals kann abgerufen werden, indem das Cmdlet **Get-AzureRMADUser** oder **Get-AzureRMADServicePrincipal** aufgerufen wird. Die Erstellung einer Zugriffsrichtlinie für Azure AD-Gruppen wird noch nicht unterstützt. |
+   | accessPolicyReaderObjectIds | Eine Liste mit Objekt-IDs der Benutzer oder Anwendungen in Azure AD, die über Lesezugriff auf die Umgebung verfügen sollen. Die Objekt-ID des Dienstprinzipals kann abgerufen werden, indem das **Get-AzADUser** oder das **Get-AzADServicePrincipal**-Cmdlet aufgerufen wird. Die Erstellung einer Zugriffsrichtlinie für Azure AD-Gruppen wird noch nicht unterstützt. |
+   | accessPolicyContributorObjectIds | Eine Liste mit Objekt-IDs der Benutzer oder Anwendungen in Azure AD, die über den Zugriff „Mitwirkender“ auf die Umgebung verfügen sollen. Die Objekt-ID des Dienstprinzipals kann abgerufen werden, indem das **Get-AzADUser** oder das **Get-AzADServicePrincipal**-Cmdlet aufgerufen wird. Die Erstellung einer Zugriffsrichtlinie für Azure AD-Gruppen wird noch nicht unterstützt. |
 
 Beispielsweise wird die folgende Parameterdatei verwendet, um eine Umgebung und eine Ereignisquelle zu erstellen, über die Ereignisse von einem vorhandenen Event Hub gelesen werden. Außerdem werden hiermit zwei Zugriffsrichtlinien erstellt, mit denen der Zugriff „Mitwirkender“ auf die Umgebung gewährt wird.
 
@@ -155,27 +158,27 @@ Weitere Informationen finden Sie im Artikel [Parameter](../azure-resource-manage
 Führen Sie an einer PowerShell-Eingabeaufforderung den folgenden Befehl aus:
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 Sie werden aufgefordert, sich bei Ihrem Azure-Konto anzumelden. Führen Sie nach der Anmeldung den folgenden Befehl aus, um Ihre verfügbaren Abonnements anzuzeigen:
 
 ```powershell
-Get-AzureRMSubscription
+Get-AzSubscription
 ```
 
 Dieser Befehl gibt eine Liste der verfügbaren Azure-Abonnements zurück. Wählen Sie ein Abonnement für die aktuelle Sitzung aus, indem Sie folgenden Befehl ausführen. Ersetzen Sie `<YourSubscriptionId>` durch die GUID des Azure-Abonnements, das Sie verwenden möchten:
 
 ```powershell
-Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
+Set-AzContext -SubscriptionID <YourSubscriptionId>
 ```
 
 ### <a name="set-the-resource-group"></a>Festlegen der Ressourcengruppe
 
-Wenn noch keine Ressourcengruppe vorhanden ist, können Sie mit dem Befehl **New-AzureRmResourceGroup** eine neue Ressourcengruppe erstellen. Geben Sie den Namen der gewünschten Ressourcengruppe und den gewünschten Speicherort ein. Beispiel: 
+Wenn noch keine Ressourcengruppe vorhanden ist, erstellen Sie mit dem Befehl **New-AzResourceGroup** eine neue Ressourcengruppe. Geben Sie den Namen der gewünschten Ressourcengruppe und den gewünschten Speicherort ein. Beispiel: 
 
 ```powershell
-New-AzureRmResourceGroup -Name MyDemoRG -Location "West US"
+New-AzResourceGroup -Name MyDemoRG -Location "West US"
 ```
 
 Nach erfolgreicher Ausführung wird eine Zusammenfassung der neuen Ressourcengruppe angezeigt:
@@ -190,38 +193,38 @@ ResourceId        : /subscriptions/<GUID>/resourceGroups/MyDemoRG
 
 ### <a name="test-the-deployment"></a>Testen der Bereitstellung
 
-Überprüfen Sie Ihre Bereitstellung, indem Sie das Cmdlet `Test-AzureRmResourceGroupDeployment` ausführen. Geben Sie beim Testen der Bereitstellung die Parameter exakt so an wie beim Ausführen der Bereitstellung.
+Überprüfen Sie Ihre Bereitstellung, indem Sie das Cmdlet `Test-AzResourceGroupDeployment` ausführen. Geben Sie beim Testen der Bereitstellung die Parameter exakt so an wie beim Ausführen der Bereitstellung.
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
+Test-AzResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
 ```
 
 ### <a name="create-the-deployment"></a>Erstellen der Bereitstellung
 
-Um die neue Bereitstellung zu erstellen, führen Sie das Cmdlet `New-AzureRmResourceGroupDeployment` aus, und geben Sie bei entsprechender Aufforderung die erforderlichen Parameter an. Die Parameter enthalten einen Namen für Ihre Bereitstellung, den Namen Ihrer Ressourcengruppe und den Pfad oder die URL zur Vorlagendatei. Wenn der Parameter **Mode** nicht angegeben wurde, wird der Standardwert **Incremental** verwendet. Weitere Informationen finden Sie unter [Inkrementelle und vollständige Bereitstellungen](../azure-resource-manager/deployment-modes.md).
+Um die neue Bereitstellung zu erstellen, führen Sie das Cmdlet `New-AzResourceGroupDeployment` aus, und geben Sie bei entsprechender Aufforderung die erforderlichen Parameter an. Die Parameter enthalten einen Namen für Ihre Bereitstellung, den Namen Ihrer Ressourcengruppe und den Pfad oder die URL zur Vorlagendatei. Wenn der Parameter **Mode** nicht angegeben wurde, wird der Standardwert **Incremental** verwendet. Weitere Informationen finden Sie unter [Inkrementelle und vollständige Bereitstellungen](../azure-resource-manager/deployment-modes.md).
 
 Mit dem folgenden Befehl werden Sie aufgefordert, die fünf erforderlichen Parameter im PowerShell-Fenster einzugeben:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json 
+New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json 
 ```
 
 Um stattdessen eine Parameterdatei zu verwenden, geben Sie folgenden Befehl ein:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
+New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
 ```
 
 Sie können beim Ausführen des Bereitstellungs-Cmdlets auch Inlineparameter verwenden. Der Befehl lautet wie folgt:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
+New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
 ```
 
 Legen Sie zum Ausführen einer [vollständigen](../azure-resource-manager/deployment-modes.md) Bereitstellung den Parameter **Mode** auf **Complete** fest:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
+New-AzResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
 ## <a name="verify-the-deployment"></a>Überprüfen der Bereitstellung

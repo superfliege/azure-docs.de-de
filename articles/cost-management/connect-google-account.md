@@ -5,24 +5,22 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/14/2019
+ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: d8bdf2a422516038f8f5e1216ce27489387d7926
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7f63293900e116fd3175b0ea6d704993a2dcf591
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002611"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051392"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>Herstellen einer Verbindung eines Google Cloud Platform-Kontos
 
 Sie können eine Verbindung Ihres bestehenden Google Cloud Platform-Kontos mit Cloudyn herstellen. Nachdem Sie eine Verbindung Ihres Kontos mit Cloudyn hergestellt haben, sind Kosten und Verwendungsdaten in Cloudyn-Berichten verfügbar. Dieser Artikel unterstützt Sie beim Herstellen einer Verbindung Ihres Google-Kontos mit Cloudyn und beim Konfigurieren.
 
-> [!NOTE]
-> Google hat die Kontosicherheit geändert, was verhindert, dass neue Verbindungen zwischen Cloudyn und Google hergestellt werden. Cloudyn sammelt weiterhin Google-Daten für Benutzer, die Cloudyn bereits mit Google verbunden haben. Allerdings können Cloudyn zurzeit keine neuen Google-Konten hinzufügen. Das Cloudyn-Team weiß nicht, wann die Unterstützung für das Hinzufügen neuer Google-Konten zu Cloudyn fortgesetzt wird. Wir werden diesen Hinweis entfernen, wenn die Unterstützung fortgesetzt wird.
 
 ## <a name="collect-project-information"></a>Sammeln von Projektinformationen
 
@@ -41,7 +39,7 @@ Wenn Sie Google Cloud Storage zum Speichern von Verwendungsberichten nutzen, fal
 
 1. Wenn Sie das Exportieren der Abrechnung in eine Datei nicht aktiviert haben, befolgen Sie die Anweisungen unter [Abrechnungsdaten in Datei exportieren](https://cloud.google.com/billing/docs/how-to/export-data-file#how_to_enable_billing_export_to_a_file). Sie können entweder das JSON- oder CSV-Abrechnungsexportformat verwenden.
 2. Wechseln Sie andernfalls in der Google Cloud Platform-Konsole zu **Billing (Abrechnung)** > **Billing export (Abrechnungsexport)**. Notieren Sie **Bucket name (Bucket name)** und **Report prefix (Berichtpräfix)** für Ihre Abrechnung.  
-    ![Abrechnungsexportinformationen, die auf der Abrechnungsexportseite angezeigt werden](./media/connect-google-account/billing-export.png)
+    ![Informationen zum Abrechnungsexport auf der Abrechnungsexportseite](./media/connect-google-account/billing-export.png)
 
 ## <a name="enable-google-cloud-platform-apis"></a>Aktivieren der Google Cloud Platform-APIs
 
@@ -69,7 +67,7 @@ Zum Sammeln von Nutzungs- und Ressourceninformationen setzt Cloudyn voraus, dass
 4. Geben Sie in **Google Account Name (Google-Kontoname)** die E-Mail-Adresse für das Abrechnungskonto ein, und klicken Sie auf **Next (Weiter)**.
 5. Wählen Sie im Google-Authentifizierungsdialogfeld ein Google-Konto aus, bzw. geben Sie es ein, und **ALLOW (ERLAUBEN)** Sie „cloudyn.com“ dann den Zugriff auf Ihr Konto.
 6. Fügen Sie die Anforderungsprojektinformationen hinzu, die Sie vorher notiert haben. Dazu zählen **Projekt-ID**, **Projektname**, **Name des Abrechnungsbuckets** und Berichtpräfix der **Abrechnungsdatei**. Klicken Sie dann auf **Save (Speichern)**.  
-    ![Hinzufügen des Google-Projekts zum Cloudyn-Konto](./media/connect-google-account/add-project.png)
+    ![Hinzufügen eines Google-Projekts zum Cloudyn-Konto](./media/connect-google-account/add-project.png)
 
 Ihr Google-Konto wird in der Liste der Benutzerkonten angezeigt, und es müsste **Authenticated (Authentifiziert)** angegeben werden. Darunter werden Ihr Google-Projektname und die Projekt-ID angezeigt, beide mit einem grünen Häkchensymbol versehen. Der „Account Status“ (Kontostatus) sollte **Completed (Abgeschlossen)** lauten.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: ganesr;cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 5bf6f5662e20b003bd387a6826ab87117be3f113
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1d6fc4a54ca600bd094a68e5eaab1306e7e831ac
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075781"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047911"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>Ändern einer ExpressRoute-Verbindung mit PowerShell (klassisch)
 
@@ -33,6 +33,9 @@ In diesem Artikel werden die Schritte beschrieben, die zum Überprüfen des Stat
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 Installieren Sie die aktuellen Versionen der PowerShell-Module für die Azure-Dienstverwaltung und das ExpressRoute-Modul.  Beachten Sie bei Verwendung des folgenden Beispiels, dass sich die Versionsnummer (hier: 5.1.1) ändert, wenn neuere Versionen der Cmdlets veröffentlicht werden.
@@ -49,17 +52,17 @@ Verwenden Sie das folgende Beispiel, um sich bei Ihrem Azure-Konto anzumelden:
 1. Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung herzustellen:
 
    ```powershell
-   Connect-AzureRmAccount
+   Connect-AzAccount
    ```
 2. Überprüfen Sie die Abonnements für das Konto.
 
    ```powershell
-   Get-AzureRmSubscription
+   Get-AzSubscription
    ```
 3. Wenn Sie über mehr als ein Abonnement verfügen, wählen Sie das Abonnement aus, das Sie verwenden möchten.
 
    ```powershell
-   Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
    ```
 
 4. Verwenden Sie als nächstes das folgende Cmdlet, um PowerShell Ihr Azure-Abonnement für das klassische Bereitstellungsmodell hinzuzufügen.

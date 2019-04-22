@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: c1165fcebf8382d30b1be86f102da78ef0a4ac9a
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 8026576478b16b753ba960155c383ffec62c61ce
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244365"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469793"
 ---
 # <a name="set-alerts-in-application-insights"></a>Einrichten von Warnungen in Application Insights
 [Azure Application Insights][start] kann Sie bei Änderungen der Leistung oder von Nutzungsmetriken in Ihrer Web-App benachrichtigen. 
@@ -45,7 +45,7 @@ Es gibt mehrere Warnungstypen:
 * Legen Sie eine [Webhookadresse](../../azure-monitor/platform/alerts-webhooks.md) fest, wenn Sie eine Web-App eingerichtet haben, die auf Warnungen reagiert. Der Aufruf erfolgt bei Aktivierung der Warnung und bei Auflösung der Warnung. (Beachten Sie aber, dass Abfrageparameter derzeit nicht als Webhook-Eigenschaften übergeben werden.)
 * Sie können die Warnung deaktivieren oder aktivieren: Die zugehörigen Schaltflächen sehen Sie oben.
 
-*Ich sehe keine Schaltfläche zum Hinzufügen von Benachrichtigungen.*
+*Ich sehe die Schaltfläche „Warnung hinzufügen“ nicht.*
 
 * Verwenden Sie ein Organisationskonto? Sie können Warnungen festlegen, wenn Sie für diese Anwendungsressource über Zugriffsberechtigungen für Besitzer oder Mitwirkende verfügen. Sehen Sie sich die Registerkarte „Access Control“ an. [Erfahren Sie mehr über Access Control][roles].
 
@@ -143,7 +143,25 @@ In diesem Abschnitt erfahren Sie, wie eine abfragebasierte Ausnahmewarnung festg
 
 10. Fügen Sie anschließend Ihre Warnungsdetails (Name der Warnungsregel, Beschreibung, Schweregrad) hinzu. Klicken Sie zuletzt unten auf **Warnungsregel erstellen**.
 
-    ![Geben Sie unter „Warnungsdetails“ Ihren Namen für die Warnungsregel und eine Beschreibung ein, und legen Sie einen Schweregrad fest. ](./media/alerts/9alertdetails.png)
+    ![Geben Sie unter „Warnungsdetails“ Ihren Namen für die Warnungsregel und eine Beschreibung ein, und legen Sie einen Schweregrad fest.](./media/alerts/9alertdetails.png)
+
+## <a name="how-to-unsubscribe-from-classic-alert-e-mail-notifications"></a>Abbestellen von E-Mail-Benachrichtigungen zu klassischen Warnungen
+
+Dieser Abschnitt bezieht sich auf **klassische Verfügbarkeitswarnungen**, **Application Insights-Metrikwarnungen** und **klassische Warnungen zu Fehleranomalien**.
+
+Sie erhalten E-Mail-Benachrichtigungen für diese klassischen Warnungen, wenn Folgendes zutrifft:
+
+* Ihre E-Mail-Adresse ist im Feld „Empfänger von E-Mail-Benachrichtigungen“ in den Einstellungen für Warnungsregeln aufgeführt.
+
+* Die Option zum Senden von E-Mail-Benachrichtigungen an Benutzer mit bestimmten Rollen für das Abonnement ist aktiviert, und Sie haben eine entsprechende Rolle für dieses bestimmte Azure-Abonnement.
+
+![Screenshot für Warnungsbenachrichtigungen](./media/alerts/alert-notification.png)
+
+Um Sicherheit und Datenschutz besser steuern zu können, wird generell empfohlen, dass Sie im Feld **Empfänger von E-Mail-Benachrichtigungen** die Benachrichtigungsempfänger für die klassischen Warnungen explizit angeben. Die Option zum Benachrichtigen aller Benutzer mit bestimmten Rollen ist für die Abwärtskompatibilität vorgesehen.
+
+Wenn Sie die über eine bestimmte Warnungsregel generierten E-Mail-Benachrichtigungen abbestellen möchten, entfernen Sie Ihre E-Mail-Adresse im Feld **Empfänger von E-Mail-Benachrichtigungen**.
+
+Wenn Ihre E-Mail-Adresse nicht explizit aufgeführt ist, wird empfohlen, dass Sie die Option zur automatischen Benachrichtigung aller Benutzer mit bestimmten Rollen deaktivieren und stattdessen im Feld „Empfänger von E-Mail-Benachrichtigungen“ die E-Mail-Adressen aller Benutzer aufführen, die Benachrichtigungen für die Warnungsregel erhalten sollen.
 
 ## <a name="who-receives-the-classic-alert-notifications"></a>Wer erhält die (klassischen) Warnungsbenachrichtigungen?
 

@@ -15,18 +15,21 @@ ms.workload: NA
 ms.date: 9/26/2018
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 84c7a39e121c3c41a0e57609efa076ce329aa331
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 92b1e95598da27f0b7d7df30dfa4a82824b4a48c
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669230"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046392"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Integrieren von API Management in Service Fabric in Azure
 
 Bei der Bereitstellung von Azure API Management mit Service Fabric handelt es sich um ein erweitertes Szenario.  API Management ist nützlich, wenn Sie APIs mit einem umfangreichen Satz von Routingregeln für Ihre Service Fabric-Back-End-Dienste veröffentlichen möchten. Cloudanwendungen benötigen normalerweise ein Front-End-Gateway, um für Benutzer, Geräte oder andere Anwendungen einen zentralen Eingangspunkt bereitzustellen. In Service Fabric kann ein Gateway ein beliebiger zustandsloser Dienst sein, der für den Eingang von Datenverkehr ausgelegt ist, z.B. eine ASP.NET Core-Anwendung, Event Hubs, IoT Hub oder Azure API Management.
 
 In diesem Artikel wird beschrieben, wie Sie [Azure API Management](../api-management/api-management-key-concepts.md) mit Service Fabric einrichten, um Datenverkehr an einen Back-End-Dienst in Service Fabric weiterzuleiten.  Am Ende des Tutorials haben Sie API Management für ein VNET bereitgestellt und einen API-Vorgang zum Senden von Datenverkehr an zustandslose Back-End-Dienste konfiguriert. Weitere Informationen zu den Azure API Management-Szenarios mit Service Fabric finden Sie im [Übersichtsartikel](service-fabric-api-management-overview.md).
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="availability"></a>Verfügbarkeit
 
@@ -38,7 +41,7 @@ In diesem Artikel wird beschrieben, wie Sie [Azure API Management](../api-manage
 Vorbereitungen
 
 * Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Installieren Sie das [Azure PowerShell-Modul Version 4.1 oder höher](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) oder [Azure CLI](/cli/azure/install-azure-cli).
+* Installieren Sie [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) oder die [Azure CLI](/cli/azure/install-azure-cli).
 * Erstellen Sie einen sicheren [Windows-Cluster](service-fabric-tutorial-create-vnet-and-windows-cluster.md) in einer Netzwerksicherheitsgruppe.
 * Wenn Sie einen Windows-Cluster bereitstellen, richten Sie eine Windows-Entwicklungsumgebung ein. Installieren Sie [Visual Studio 2017](https://www.visualstudio.com) und die Workloads für **Azure-Entwicklung**, **ASP.NET und Webentwicklung** und **Plattformübergreifende .NET Core-Entwicklung**.  Richten Sie dann eine [.NET-Entwicklungsumgebung](service-fabric-get-started.md) ein.
 
@@ -53,9 +56,9 @@ Nach dem Erstellen eines sicheren [Windows-Clusters](service-fabric-tutorial-cre
 Melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie Ihr Abonnement aus, bevor Sie Azure-Befehle ausführen.
 
 ```powershell
-Connect-AzureRmAccount
-Get-AzureRmSubscription
-Set-AzureRmContext -SubscriptionId <guid>
+Connect-AzAccount
+Get-AzSubscription
+Set-AzContext -SubscriptionId <guid>
 ```
 
 ```azurecli
@@ -244,9 +247,9 @@ $groupname = "sfclustertutorialgroup"
 $clusterloc="southcentralus"
 $templatepath="C:\clustertemplates"
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName $groupname -TemplateFile "$templatepath\network-apim.json" -TemplateParameterFile "$templatepath\network-apim.parameters.json" -Verbose
+New-AzResourceGroupDeployment -ResourceGroupName $groupname -TemplateFile "$templatepath\network-apim.json" -TemplateParameterFile "$templatepath\network-apim.parameters.json" -Verbose
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName $groupname -TemplateFile "$templatepath\apim.json" -TemplateParameterFile "$templatepath\apim.parameters.json" -Verbose
+New-AzResourceGroupDeployment -ResourceGroupName $groupname -TemplateFile "$templatepath\apim.json" -TemplateParameterFile "$templatepath\apim.parameters.json" -Verbose
 ```
 
 ```azurecli
@@ -285,11 +288,11 @@ Sie können jetzt versuchen, eine Anforderung an den Back-End-Dienst in Service 
 
 Ein Cluster besteht neben der Clusterressource selbst noch aus weiteren Azure-Ressourcen. Die einfachste Möglichkeit zum Löschen des Clusters und aller darin genutzten Ressourcen besteht darin, die Ressourcengruppe zu löschen.
 
-Melden Sie sich bei Azure an, und wählen Sie die Abonnement-ID aus, mit der Sie den Cluster entfernen möchten.  Sie finden Ihre Abonnement-ID, indem Sie sich beim [Azure-Portal](https://portal.azure.com) anmelden. Löschen Sie die Ressourcengruppe und alle Clusterressourcen mithilfe des Cmdlets [Remove-AzureRMResourceGroup](/en-us/powershell/module/azurerm.resources/remove-azurermresourcegroup).
+Melden Sie sich bei Azure an, und wählen Sie die Abonnement-ID aus, mit der Sie den Cluster entfernen möchten.  Sie finden Ihre Abonnement-ID, indem Sie sich beim [Azure-Portal](https://portal.azure.com) anmelden. Löschen Sie die Ressourcengruppe und alle Clusterressourcen mit dem [Remove-AzResourceGroup-Cmdlet](/en-us/powershell/module/az.resources/remove-azresourcegroup).
 
 ```powershell
 $ResourceGroupName = "sfclustertutorialgroup"
-Remove-AzureRmResourceGroup -Name $ResourceGroupName -Force
+Remove-AzResourceGroup -Name $ResourceGroupName -Force
 ```
 
 ```azurecli
@@ -308,6 +311,10 @@ Erfahren Sie mehr über die Verwendung von [API Management](/azure/api-managemen
 
 [network-arm]: https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/service-integration/network-apim.json
 [network-parameters-arm]: https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/service-integration/network-apim.parameters.json
+
+<!-- pics -->
+[sf-apim-topology-overview]: ./media/service-fabric-tutorial-deploy-api-management/sf-apim-topology-overview.png
+vice-fabric-scripts-and-templates/blob/master/templates/service-integration/network-apim.parameters.jsonn
 
 <!-- pics -->
 [sf-apim-topology-overview]: ./media/service-fabric-tutorial-deploy-api-management/sf-apim-topology-overview.png

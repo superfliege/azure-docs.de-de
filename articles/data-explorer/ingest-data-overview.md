@@ -1,19 +1,18 @@
 ---
 title: Datenerfassung im Azure-Daten-Explorer
 description: Erfahren Sie mehr über die verschiedenen Möglichkeiten, wie Sie Daten im Azure-Daten-Explorer erfassen (laden) können.
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 2/18/2019
-ms.openlocfilehash: e2dd67b7b8e7eaac1b823c044fe3d345ce7e8c7b
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.date: 02/18/2019
+ms.openlocfilehash: 6c9cb7282ba9d99ea643bbd023d876b8fbe3904c
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755772"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045593"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Datenerfassung im Azure-Daten-Explorer
 
@@ -67,7 +66,7 @@ Kusto bietet Client SDKs, die zum Erfassen und Abfragen von Daten mit folgenden 
 
 * [.NET SDK](/azure/kusto/api/netfx/about-the-sdk)
 
-* [Java SDK](/azure/kusto/api/java/kusto-java-client-library)
+* [Java-SDK](/azure/kusto/api/java/kusto-java-client-library)
 
 * [Node SDK](/azure/kusto/api/node/kusto-node-client-library)
 
@@ -92,9 +91,9 @@ Kusto bietet Client SDKs, die zum Erfassen und Abfragen von Daten mit folgenden 
 | Methode | Latency |
 | --- | --- |
 | **Inline-Erfassung** | Unmittelbar |
-| **Erfassen aus der Abfrage** | Abfragezeit + Verarbeitungszeit |
+| **Erfassung aus der Abfrage** | Abfragezeit + Verarbeitungszeit |
 | **Erfassung aus dem Speicher** | Downloadzeit + Verarbeitungszeit |
-| **Erfassen aus der Warteschlange** | Batchverarbeitungszeit + Verarbeitungszeit |
+| **Erfassung aus der Warteschlange** | Batchverarbeitungszeit + Verarbeitungszeit |
 | |
 
 Verarbeitungszeit hängt von der Größe der Daten ab – weniger als einige Sekunden. Die Batchverarbeitungszeit beträgt standardmäßig fünf Minuten.
@@ -145,7 +144,7 @@ Die Schemazuordnung hilft dabei, Quelldatenfelder an Spalten der Zieltabelle zu 
 > [Erfassen von Daten aus Event Hub in Azure Data Explorer](ingest-data-event-hub.md)
 
 > [!div class="nextstepaction"]
-> [Erfassen von Azure-Blobs in Azure Data Explorer durch Abonnieren von Event Grid-Benachrichtigungen](ingest-data-event-grid.md)
+> [Erfassen von Blobs in Azure Data Explorer durch das Abonnieren von Event Grid-Benachrichtigungen](ingest-data-event-grid.md)
 
 > [!div class="nextstepaction"]
 > [Erfassen von Daten aus Kafka in Azure Data Explorer](ingest-data-kafka.md)

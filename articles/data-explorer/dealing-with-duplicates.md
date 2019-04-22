@@ -1,21 +1,20 @@
 ---
-title: Behandeln von doppelten Daten
-description: In diesem Thema werden verschiedene Möglichkeiten für den Umgang mit doppelten Daten behandelt.
-services: data-explorer
+title: Behandeln von doppelten Daten in Azure Data Explorer
+description: In diesem Artikel werden verschiedene Ansätze für die Behandlung doppelter Daten mit Azure Data Explorer beschrieben.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 7a9ccd5139168393019a70aafb9b7b705ca25919
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 8f55b6dfb7b5bc9eda675aca4ed80a66b8a25a7f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756361"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045780"
 ---
-# <a name="deal-with-duplicate-data"></a>Behandeln von doppelten Daten
+# <a name="handle-duplicate-data-in-azure-data-explorer"></a>Behandeln von doppelten Daten in Azure Data Explorer
 
 Geräte, die Daten an die Cloud senden, speichern die Daten in einem lokalen Cache zwischen. Je nach Größe der Daten werden diese unter Umständen über Tage oder sogar Monate im lokalen Cache gespeichert. Es empfiehlt sich, Ihre Analysedatenbanken vor fehlerhaften Geräten zu schützen, die die zwischengespeicherten Daten erneut senden und so zu duplizierten Daten in der Analysedatenbank führen. In diesem Thema werden bewährte Methoden für den Umgang mit doppelten Daten in Szenarien dieser Art beschrieben.
 

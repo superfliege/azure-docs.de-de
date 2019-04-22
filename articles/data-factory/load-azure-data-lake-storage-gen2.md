@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: 2c04c13eb6399bebf908337d8f71bd03adf4d06a
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 8e3a23b38dc95f05ed9a6d99d303f3d86eac60ad
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447220"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269264"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Laden von Daten in Azure Data Lake Storage Gen2 mit Azure Data Factory
 
@@ -34,7 +34,7 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure-Abonnement: Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-* Azure Storage-Konto mit aktiviertem Data Lake Storage Gen2: Wenn Sie noch kein Speicherkonto besitzen, klicken Sie auf [hier](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM), um eines zu erstellen.
+* Azure Storage-Konto mit aktiviertem Data Lake Storage Gen2: [Erstellen Sie ein Speicherkonto](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM), wenn Sie noch keines besitzen.
 * AWS-Konto mit einem S3-Bereich, der Daten enthält: Dieser Artikel zeigt, wie Daten aus Amazon S3 kopiert werden. Sie können andere Datenspeicher verwenden, indem Sie ähnliche Schritte ausführen.
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
@@ -104,7 +104,7 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
    
    ![Angeben eines Azure Data Lake Storage Gen2-Kontos](./media/load-azure-data-lake-storage-gen2/specify-adls.png)
 
-9. Geben Sie auf der Seite **Ausgabedatei oder -ordner auswählen** die Zeichenfolge **copyfroms3** als Name für den Ausgabeordner ein, und klicken Sie dann auf **Weiter**: 
+9. Geben Sie auf der Seite **Choose the output file or folder** (Ausgabedatei oder -ordner auswählen) die Zeichenfolge **copyfroms3** als Name für den Ausgabeordner ein, und klicken Sie dann auf **Weiter**. Die ADF erstellt das entsprechende ADLS Gen2-Dateisystem und die Unterordner während des Kopierens, wenn diese noch nicht existieren.
 
     ![Angeben des Ausgabeordners](./media/load-azure-data-lake-storage-gen2/specify-adls-path.png)
 

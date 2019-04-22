@@ -3,17 +3,17 @@ title: Gerätekonnektivität in Azure IoT Central | Microsoft-Dokumentation
 description: In diesem Artikel werden die wichtigsten Konzepte in Bezug auf die Gerätekonnektivität in Azure IoT Central vorgestellt.
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/28/2019
+ms.date: 04/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: e45960363290879af2e72211f5ef31b825461947
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 9e1e85d1ab1c5e7ce0cbd96c64137309c2e2916a
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522093"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425966"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Gerätekonnektivität in Azure IoT Central
 
@@ -30,7 +30,7 @@ DPS ermöglicht Folgendes:
 - Sie können Ihre eigenen Geräte-IDs verwenden, um Geräte in IoT Central zu registrieren. Die Verwendung Ihrer eigenen Geräte-IDs vereinfacht die Integration in vorhandene Backofficesysteme.
 - Eine einheitliche Möglichkeit, Geräte mit IoT Central zu verbinden.
 
-In diesem Artikel wird die Vorgehensweise in den folgenden vier Anwendungsfälle beschrieben:
+In diesem Artikel werden die folgenden vier Anwendungsfälle beschrieben:
 
 1. [Schnelles Verbinden eines einzelnen Geräts mit SAS](#connect-a-single-device)
 1. [Verbinden von Geräten nach Maß mit SAS](#connect-devices-at-scale-using-sas)
@@ -39,24 +39,7 @@ In diesem Artikel wird die Vorgehensweise in den folgenden vier Anwendungsfälle
 
 ## <a name="connect-a-single-device"></a>Verbinden eines einzelnen Geräts
 
-Dieser Ansatz ist nützlich, wenn Sie mit IoT Central experimentieren oder Geräte testen.
-
-Gehen Sie folgendermaßen vor, um mithilfe von SAS die Verbindung eines einzelnen Geräts mit IoT Central herzustellen:
-
-1. Um ein reales Gerät hinzuzufügen, navigieren Sie zum **Geräte-Explorer**, wählen Sie eine Gerätevorlage aus, und wählen Sie **+Neu > Real** aus:
-    - Geben Sie Ihre eigene **Geräte-ID** (in Kleinbuchstaben) ein, oder verwenden Sie die vorgeschlagene ID.
-    - Geben Sie einen **Gerätenamen** ein, oder verwenden Sie den vorgeschlagenen Namen.
-
-      ![Gerät hinzufügen](media/concepts-connectivity/add-device.png)
-
-1. Um die Verbindungsinformationen des Geräts zu erhalten, wählen Sie **Verbinden** auf der Geräteseite aus. Sie benötigen die Werte **Bereichs-ID**, **Geräte-ID** und **Primärschlüssel**:
-    - Jede IoT Central-Anwendung verfügt über eine eindeutige [Bereichs-ID](../iot-dps/concepts-device.md#id-scope), die vom DPS generiert wird.
-    - Die [Geräte-ID](../iot-dps/concepts-device.md#device-id) ist die eindeutige Geräte-ID. Die Geräte-ID wird in der [Identitätsregistrierung](../iot-hub/iot-hub-devguide-identity-registry.md) gespeichert.
-    - Der **Primärschlüssel** ist ein SAS-Token, das von IoT Central für das Gerät generiert wird.
-
-      ![Verbindungsdetails](media/concepts-connectivity/device-connect.png)
-
-Verwenden Sie die Verbindungsinformationen in Ihrem Gerätecode, um das Herstellen einer Verbindung Ihres Geräts mit Ihrer IoT Central-Anwendung und das Senden von Daten an IoT zu ermöglichen. Weitere Informationen zum Verbinden von Geräten finden Sie unter [Nächste Schritte](#next-steps).
+Dieser Ansatz ist nützlich, wenn Sie mit IoT Central experimentieren oder Geräte testen. Sie können die Geräte-Verbindungsinformationen aus Ihrer IoT Central-Anwendung verwenden, um die Verbindungszeichenfolge für ein Gerät zu generieren. Detaillierte Schritte dazu finden Sie unter [Generieren einer Geräte-Verbindungszeichenfolge für die Verbindung mit einer Azure IoT Central-Anwendung](howto-generate-connection-string.md).
 
 ## <a name="connect-devices-at-scale-using-sas"></a>Verbinden von Geräten nach Maß mit SAS
 
@@ -104,7 +87,7 @@ In den folgenden Schritten wird das Herstellen der Verbindung von Geräten mit I
 
 - Beispielimplementierung für [Raspberry Pi](https://aka.ms/iotcentral-docs-Raspi-releases).
 
-- [Beispiel für einen Geräteclient in C](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md).
+- [Beispiel für einen Geräteclient in C.](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)
 
 ### <a name="for-testing-purposes-only"></a>Nur für Testzwecke
 
@@ -152,7 +135,7 @@ In den folgenden Schritten wird dieser Prozess detaillierter beschrieben. Die Sc
 
 1. Um Ihre Geräte einzurichten, speichern Sie auf jedem Gerät **Bereichs-ID**, **Geräte-ID** und **X.509-Gerätezertifikat** oder **SAS-Schlüssel**.
 
-1. Schalten Sie dann das Gerät ein, damit es eine Verbindung mit Ihrer IoT Central-Anwendung herstellt. Wenn Sie ein Gerät einschalten, stellt es zuerst eine Verbindung mit dem DPS her, um seine IoT Central-Registrierungsinformationen abzurufen.
+1. Schalten Sie dann das Gerät ein, damit es eine Verbindung mit Ihrer IoT Central-Anwendung herstellt. Wenn Sie ein Gerät einschalten, stellt es zuerst eine Verbindung mit DPS her, um seine IoT Central-Registrierungsinformationen abzurufen.
 
 1. Das verbundene Gerät wird anfänglich als **Nicht zugeordnetes Gerät** auf der **Geräte-Explorer**-Seite angezeigt. Der Bereitstellungsstatus des Geräts lautet **Registriert**. Sie können das Gerät nun der entsprechenden Gerätevorlage **zuordnen** und es genehmigen, um die Verbindung mit Ihrer IoT Central-Anwendung herzustellen. Das Gerät kann anschließend eine Verbindungszeichenfolge von IoT Hub abrufen und beginnen, Daten zu senden. Die Gerätebereitstellung ist jetzt abgeschlossen, und der Bereitstellungsstatus lautet jetzt **Bereitgestellt**.
 
@@ -168,26 +151,6 @@ Wenn ein reales Gerät eine Verbindung mit Ihrer IoT Central-Anwendung herstellt
 1. Der Bereitstellungsstatus des Geräts ändert sich in **Bereitgestellt**, wenn das Gerät, das mit gültigen Anmeldeinformationen eine Verbindung mit Ihrer IoT Central-Anwendung hergestellt hat, den Bereitstellungsschritt ausführt. In diesem Schritt ruft das Gerät eine Verbindungszeichenfolge von IoT Hub ab. Das Gerät kann jetzt eine Verbindung mit IoT Hub herstellen und beginnen, Daten zu senden.
 
 1. Ein Operator kann ein Gerät blockieren. Wenn ein Gerät blockiert wird, kann es keine Daten an Ihre IoT Central-Anwendung senden. Blockierte Geräte haben den Bereitstellungsstatus **Blockiert**. Ein Operator muss das Gerät zurücksetzen, bevor es wieder Daten senden kann. Wenn ein Operator das Blockieren eines Geräts aufhebt, wird der Bereitstellungsstatus auf den vorherigen Wert zurückgesetzt – **Registriert** oder **Bereitgestellt**.
-
-## <a name="get-a-connection-string"></a>Abrufen einer Verbindungszeichenfolge
-
-In den folgenden Schritten wird beschrieben, wie Sie eine Verbindungszeichenfolge für ein Gerät abrufen können:
-
-1. Wählen Sie **Verbinden** auf der Seite **Geräte-Explorer**, um die Details der Verbindung abzurufen: **Bereichs-ID**, **Geräte-ID** und **Geräteprimärschlüssel**:
-
-    ![Verbindungsdetails](media/concepts-connectivity/device-connect.png)
-
-1. Verwenden Sie das `dps-keygen`-Befehlszeilen-Hilfsprogramm, um eine Verbindungszeichenfolge zu generieren:  Führen Sie zum Installieren des [Schlüsselgenerator-Hilfsprogramms](https://github.com/Azure/dps-keygen) den folgenden Befehl aus:
-
-    ```cmd/sh
-    npm i -g dps-keygen
-    ```
-
-    Um eine Verbindungszeichenfolge zu generieren, führen Sie den folgenden Befehl aus:
-
-    ```cmd/sh
-    dps-keygen -di:<device_id> -dk:<device_key> -si:<scope_id>
-    ```
 
 ## <a name="sdk-support"></a>SDK-Unterstützung
 
@@ -245,4 +208,4 @@ Nachdem Sie sich mit der Gerätekonnektivität in Azure IoT Central vertraut gem
 - [Vorbereiten und Verbinden eines DevKit-Geräts](howto-connect-devkit.md)
 - [Vorbereiten und Verbinden eines Raspberry Pi](howto-connect-raspberry-pi-python.md)
 - [Verbinden eines generischen Node.js-Clients mit Ihrer Azure IoT Central-Anwendung](howto-connect-nodejs.md)
-- [C SDK: Provisioning Device Client SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md) (C SDK: Bereitstellung des Geräteclient-SDK)
+- [C SDK: Bereitstellung des Geräteclient-SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)

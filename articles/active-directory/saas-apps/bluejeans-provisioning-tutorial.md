@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2018
+ms.date: 03/27/2019
 ms.author: v-ant
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa740a558015b28e6d3fa7245c9041dc4167f832
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6d8fedb372fb245b7bc35cb440bd758336ab2a68
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110357"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258758"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von BlueJeans für die automatische Benutzerbereitstellung
 
@@ -34,53 +34,48 @@ In diesem Tutorial werden die Schritte erläutert, die in BlueJeans und Azure Ac
 
 Das in diesem Tutorial beschriebene Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
-*   Einen Azure AD-Mandanten
-*   Ein BlueJeans-Mandant mit aktiviertem Plan [Mein Unternehmen](https://www.BlueJeans.com/pricing) oder besser
-*   Ein Benutzerkonto in BlueJeans mit Administratorrechten
+* Einen Azure AD-Mandanten
+* Ein BlueJeans-Mandant mit aktiviertem Plan [Mein Unternehmen](https://www.BlueJeans.com/pricing) oder besser
+* Ein Benutzerkonto in BlueJeans mit Administratorrechten
 
 > [!NOTE]
 > Die Integration der Azure AD-Bereitstellung basiert auf der [BlueJeans-API](https://BlueJeans.github.io/developer), die für BlueJeans-Teams mit dem Standard-Tarif oder einem höheren Tarif zur Verfügung steht.
 
 ## <a name="adding-bluejeans-from-the-gallery"></a>Hinzufügen von BlueJeans aus dem Katalog
+
 Bevor Sie BlueJeans für die automatische Benutzerbereitstellung mit Azure AD konfigurieren, müssen Sie BlueJeans aus dem Azure AD-Anwendungskatalog der Liste der verwalteten SaaS-Anwendungen hinzufügen.
 
 **Führen Sie zum Hinzufügen von BlueJeans aus dem Azure AD-Anwendungskatalog die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+1. Wählen Sie im **[Azure-Portal](https://portal.azure.com)** im linken Navigationsbereich **Azure Active Directory** aus.
 
-    ![Schaltfläche „Azure Active Directory“][1]
+    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** > **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
 
-    ![Der Abschnitt „Unternehmensanwendungen“][2]
-    
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um BlueJeans hinzuzufügen.
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-    ![Schaltfläche „Neue Anwendung“][3]
+3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-4. Geben Sie im Suchfeld als Suchbegriff **BlueJeans** ein.
+    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-    ![Bereitstellung von BlueJeans](./media/bluejeans-provisioning-tutorial/BluejeansAppSearch.png)
+4. Geben Sie im Suchfeld **BlueJeans** ein, wählen Sie im Ergebnisbereich **BlueJeans** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-5. Wählen Sie im Ergebnisbereich **BlueJeans** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um BlueJeans der Liste der SaaS-Anwendungen hinzuzufügen.
+    ![BlueJeans in der Ergebnisliste](common/search-new-app.png)
 
-    ![Bereitstellung von BlueJeans](./media/bluejeans-provisioning-tutorial/BluejeansAppSearchResults.png)
-
-    ![Bereitstellung von BlueJeans](./media/bluejeans-provisioning-tutorial/BluejeansAppCreate.png)
-    
 ## <a name="assigning-users-to-bluejeans"></a>Zuweisen von Benutzern zu BlueJeans
 
 Azure Active Directory ermittelt anhand von Zuweisungen, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und/oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
 
 Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung müssen Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD Zugriff auf BlueJeans benötigen. Anschließend können Sie diese Benutzer und/oder Gruppen BlueJeans anhand der folgenden Anweisungen zuweisen:
 
-*   [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../manage-apps/assign-user-or-group-access-portal.md)
+* [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-bluejeans"></a>Wichtige Tipps zum Zuweisen von Benutzern zu BlueJeans
 
-*   Es wird empfohlen, BlueJeans einen einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der automatischen Benutzerbereitstellung zu testen. Später können weitere Benutzer und/oder Gruppen zugewiesen werden.
+* Es wird empfohlen, BlueJeans einen einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der automatischen Benutzerbereitstellung zu testen. Später können weitere Benutzer und/oder Gruppen zugewiesen werden.
 
-*   Beim Zuweisen eines Benutzers zu BlueJeans müssen Sie eine gültige anwendungsspezifische Rolle (sofern verfügbar) im Dialogfeld für die Zuweisung auswählen. Benutzer mit der Rolle **Standardzugriff** werden von der Bereitstellung ausgeschlossen.
+* Beim Zuweisen eines Benutzers zu BlueJeans müssen Sie eine gültige anwendungsspezifische Rolle (sofern verfügbar) im Dialogfeld für die Zuweisung auswählen. Benutzer mit der Rolle **Standardzugriff** werden von der Bereitstellung ausgeschlossen.
 
 ## <a name="configuring-automatic-user-provisioning-to-bluejeans"></a>Konfigurieren der automatischen Benutzerbereitstellung für BlueJeans
 
@@ -91,11 +86,13 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 ### <a name="to-configure-automatic-user-provisioning-for-bluejeans-in-azure-ad"></a>So konfigurieren Sie die automatische Benutzerbereitstellung für BlueJeans in Azure AD
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu **Azure Active Directory > Unternehmensanwendungen > Alle Anwendungen**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie **Unternehmensanwendungen**, **Alle Anwendungen** und dann **BlueJeans** aus.
 
-2. Wählen Sie BlueJeans in der Liste der SaaS-Anwendungen aus.
- 
-    ![Bereitstellung von BlueJeans](./media/bluejeans-provisioning-tutorial/Bluejeans2.png)
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+
+2. Wählen Sie in der Anwendungsliste die Option **BlueJeans** aus.
+
+    ![BlueJeans-Link in der Anwendungsliste](common/all-applications.png)
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
@@ -158,9 +155,10 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../manage-apps/check-status-user-account-provisioning.md)
+* [Erfahren Sie, wie Sie Protokolle überprüfen und Bereitstellungsaktivitätsberichte abrufen.](../manage-apps/check-status-user-account-provisioning.md)
 
 <!--Image references-->
+
 [1]: ./media/bluejeans-provisioning-tutorial/tutorial_general_01.png
 [2]: ./media/bluejeans-tutorial/tutorial_general_02.png
 [3]: ./media/bluejeans-tutorial/tutorial_general_03.png

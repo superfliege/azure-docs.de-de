@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: f886de9160b52b8a4e3ee8beaf2e22022a097666
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: d49104c1d1402969917de63e22bd41e7489a08c7
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662787"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046291"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Ereignisaggregation und -sammlung mit der Windows Azure-Diagnose
 > [!div class="op_single_selector"]
@@ -31,6 +31,9 @@ ms.locfileid: "58662787"
 Bei Verwendung eines Azure Service Fabric-Clusters empfiehlt es sich, die Protokolle aller Knoten an einem zentralen Ort zu sammeln. Das Sammeln der Protokolle an einem zentralen Ort hilft Ihnen bei Analyse und Behandlung von Problemen, die ggf. in Ihrem Cluster oder in den Anwendungen und Diensten des Clusters auftreten.
 
 Eine Möglichkeit zum Hochladen und Sammeln von Protokollen ist die Verwendung der Windows Azure-Diagnose (WAD)-Erweiterung, mit der Protokolle in Azure Storage hochgeladen und an Azure Application Insights oder Event Hubs gesendet werden können. Sie können zudem einen externen Prozess verwenden, um die Ereignisse aus dem Speicher zu lesen und in einem Analyseplattformprodukt wie [Azure Monitor-Protokolle](../log-analytics/log-analytics-service-fabric.md) oder in einer anderen Protokollanalyselösung zu verwenden.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Artikel werden folgende Tools verwendet:
@@ -71,7 +74,7 @@ Wenn Sie einen Cluster mithilfe von Resource Manager erstellen möchten, müssen
 
 Öffnen Sie die Datei „azuredeploy.json“ und suchen nach **IaaSDiagnostics**, um die Diagnoseeinstellung in der Resource Manager-Vorlage anzuzeigen. Klicken Sie zum Erstellen eines Clusters mit dieser Vorlage einfach auf die Schaltfläche **In Azure bereitstellen** (unter dem oben angegebenen Link).
 
-Alternativ können Sie das Resource Manager-Beispiel herunterladen, anpassen und den Befehl `New-AzureRmResourceGroupDeployment` in einem Azure PowerShell-Fenster ausführen, um einen Cluster mit der geänderten Vorlage zu erstellen. Im folgenden Code finden Sie die Parameter, die Sie an den Befehl übergeben. Ausführliche Informationen zum Bereitstellen einer Ressourcengruppe mit PowerShell finden Sie im Artikel [Bereitstellen einer Ressourcengruppe mit einer Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-template-deploy.md).
+Alternativ können Sie das Resource Manager-Beispiel herunterladen, anpassen und den Befehl `New-AzResourceGroupDeployment` in einem Azure PowerShell-Fenster ausführen, um einen Cluster mit der geänderten Vorlage zu erstellen. Im folgenden Code finden Sie die Parameter, die Sie an den Befehl übergeben. Ausführliche Informationen zum Bereitstellen einer Ressourcengruppe mit PowerShell finden Sie im Artikel [Bereitstellen einer Ressourcengruppe mit einer Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-template-deploy.md).
 
 ### <a name="add-the-diagnostics-extension-to-an-existing-cluster"></a>Hinzufügen der Diagnoseerweiterung zu einem vorhandenen Cluster
 Wenn Sie bereits über einen Cluster ohne Diagnosebereitstellung verfügen, können Sie sie mithilfe der Clustervorlage hinzufügen oder den Cluster aktualisieren. Ändern Sie die zum Erstellen des vorhandenen Clusters verwendete Resource Manager-Vorlage, oder laden Sie die Vorlage, wie oben beschrieben, aus dem Portal herunter. Ändern Sie die Datei „template.json“ wie folgt:
@@ -189,7 +192,7 @@ Nachdem Sie die Datei „template.json“ wie beschrieben geändert haben, verö
 
 ### <a name="update-storage-quota"></a>Aktualisieren des Speicherkontingents
 
-Da die von der Erweiterung gefüllten Tabellen so lange wachsen, bis das Kontingent erreicht ist, empfiehlt es sich unter Umständen, die Kontingentgröße zu verringern. Der Wert ist standardmäßig auf 50 GB festgelegt und kann in der Vorlage unter dem Feld `overallQuotaInMB` (unter `DiagnosticMonitorConfiguration`) konfiguriert werden.
+Da die von der Erweiterung gefüllten Tabellen so lange wachsen, bis das Kontingent erreicht ist, empfiehlt es sich unter Umständen, die Kontingentgröße zu verringern. Der Standardwert ist 50 GB und kann in der Vorlage im Feld `overallQuotaInMB` konfiguriert werden. `DiagnosticMonitorConfiguration`
 
 ```json
 "overallQuotaInMB": "50000",
@@ -269,7 +272,7 @@ Um den **Basisbetriebskanal** unserer Empfehlung für umfassende Protokollierung
 
 Wenn Sie die Diagnose aktualisieren möchten, um Protokolle aus neuen EventSource-Kanälen zu sammeln, die eine neu bereitzustellende Anwendung darstellen, führen Sie die Schritte aus, die zuvor für die Einrichtung der Diagnose für einen vorhandenen Cluster beschrieben wurden.
 
-Aktualisieren Sie den Abschnitt `EtwEventSourceProviderConfiguration` in der template.json-Datei, und fügen Sie Einträge für die neuen EventSource-Kanäle hinzu, bevor Sie das Konfigurationsupdate mithilfe des PowerShell-Befehls `New-AzureRmResourceGroupDeployment` anwenden. Der Name der Ereignisquelle wird als Teil des Codes in der von Visual Studio generierten Datei „ServiceEventSource.cs“ definiert.
+Aktualisieren Sie den Abschnitt `EtwEventSourceProviderConfiguration` in der template.json-Datei, und fügen Sie Einträge für die neuen EventSource-Kanäle hinzu, bevor Sie das Konfigurationsupdate mithilfe des PowerShell-Befehls `New-AzResourceGroupDeployment` anwenden. Der Name der Ereignisquelle wird als Teil des Codes in der von Visual Studio generierten Datei „ServiceEventSource.cs“ definiert.
 
 Wenn Ihre Ereignisquelle beispielsweise My-Eventsource heißt, fügen Sie folgenden Code hinzu, um Ereignisse aus My-Eventsource in eine Tabelle namens MyDestinationTableName zu platzieren.
 
@@ -347,4 +350,6 @@ Wenn Sie die Azure-Diagnose richtig konfiguriert haben, enthalten Ihre Speichert
 
 * [Erfahren Sie, wie Sie Leistungsindikatoren oder Protokolle mithilfe der Diagnoseerweiterung sammeln können.](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Ereignisanalyse und Visualisierung mit Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [Ereignisanalyse und -visualisierung mit Azure Monitor-Protokollen](service-fabric-diagnostics-event-analysis-oms.md)
+* [Ereignisanalyse und Visualisierung mit Azure Monitor-Protokollen](service-fabric-diagnostics-event-analysis-oms.md)
+* [Ereignisanalyse und Visualisierung mit Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md)
+* [Ereignisanalyse und Visualisierung mit Azure Monitor-Protokollen](service-fabric-diagnostics-event-analysis-oms.md)

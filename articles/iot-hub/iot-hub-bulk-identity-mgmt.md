@@ -7,15 +7,15 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/03/2017
-ms.author: robin.shahan
-ms.openlocfilehash: 5ef34fb039d35ff714e249a6ac107e6ec615093e
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.author: robinsh
+ms.openlocfilehash: 274b77644326cbf73696aae77b48afcbc63aa4c2
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010989"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049971"
 ---
-# <a name="manage-your-iot-hub-device-identities-in-bulk"></a>Massenverwaltung von IoT Hub-Geräteidentitäten
+# <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Importieren und Exportieren von IoT Hub-Geräteidentitäten per Massenvorgang
 
 Jeder IoT Hub verfügt über eine Identitätsregistrierung, die Sie zum Erstellen von gerätebasierten Ressourcen im Dienst verwenden können. Außerdem wird mit der Identitätsregistrierung der Zugriff auf geräteseitige Endpunkte ermöglicht. In diesem Artikel wird das massenhafte Importieren und Exportieren von Geräteidentitäten in und aus einer Identitätsregistrierung beschrieben.
 
@@ -256,9 +256,9 @@ Verwenden Sie die optionale **importMode**-Eigenschaft in den Importserialisieru
 | importMode | BESCHREIBUNG |
 | --- | --- |
 | **createOrUpdate** |Wenn ein Gerät mit der angegebenen **ID**nicht vorhanden ist, wird es neu registriert. <br/>Wenn das Gerät bereits vorhanden ist, werden vorhandene Informationen mit den bereitgestellten Eingabedaten ohne Berücksichtigung des **ETag** -Werts überschrieben. <br> Der Benutzer kann optional Zwillingsdaten mit den Gerätedaten angeben. Das ETag des Zwillings wird, sofern angegeben, unabhängig vom Geräte-ETag verarbeitet. Wenn ein Konflikt mit dem ETag des vorhandenen Zwillings vorliegt, wird ein Fehler in die Protokolldatei geschrieben. |
-| **erstellen** |Wenn ein Gerät mit der angegebenen **ID**nicht vorhanden ist, wird es neu registriert. <br/>Wenn das Gerät bereits vorhanden ist, wird ein Fehler in die Protokolldatei geschrieben. <br> Der Benutzer kann optional Zwillingsdaten mit den Gerätedaten angeben. Das ETag des Zwillings wird, sofern angegeben, unabhängig vom Geräte-ETag verarbeitet. Wenn ein Konflikt mit dem ETag des vorhandenen Zwillings vorliegt, wird ein Fehler in die Protokolldatei geschrieben. |
-| **update** |Wenn ein Gerät mit der angegebenen **ID** bereits vorhanden ist, werden vorhandene Informationen durch die bereitgestellten Eingabedaten ohne Berücksichtigung des **ETag**-Werts überschrieben. <br/>Wenn das Gerät nicht vorhanden ist, wird ein Fehler in die Protokolldatei geschrieben. |
-| **updateIfMatchETag** |Wenn ein Gerät mit der angegebenen **ID** bereits vorhanden ist, werden vorhandene Informationen durch die bereitgestellten Eingabedaten nur überschrieben, wenn es eine Übereinstimmung mit einem **ETag** gibt. <br/>Wenn das Gerät nicht vorhanden ist, wird ein Fehler in die Protokolldatei geschrieben. <br/>Wenn es keine Übereinstimmung mit einem **ETag** gibt, wird ein Fehler in die Protokolldatei geschrieben. |
+| **create** |Wenn ein Gerät mit der angegebenen **ID**nicht vorhanden ist, wird es neu registriert. <br/>Wenn das Gerät bereits vorhanden ist, wird ein Fehler in die Protokolldatei geschrieben. <br> Der Benutzer kann optional Zwillingsdaten mit den Gerätedaten angeben. Das ETag des Zwillings wird, sofern angegeben, unabhängig vom Geräte-ETag verarbeitet. Wenn ein Konflikt mit dem ETag des vorhandenen Zwillings vorliegt, wird ein Fehler in die Protokolldatei geschrieben. |
+| **aktualisieren** |Wenn ein Gerät mit der angegebenen **ID** bereits vorhanden ist, werden vorhandene Informationen mit den bereitgestellten Eingabedaten ohne Berücksichtigung des **ETag**-Werts überschrieben. <br/>Wenn das Gerät nicht vorhanden ist, wird ein Fehler in die Protokolldatei geschrieben. |
+| **updateIfMatchETag** |Wenn ein Gerät mit der angegebenen **ID** bereits vorhanden ist, werden vorhandene Informationen mit den bereitgestellten Eingabedaten nur überschrieben, wenn es eine Übereinstimmung mit einem **ETag** gibt. <br/>Wenn das Gerät nicht vorhanden ist, wird ein Fehler in die Protokolldatei geschrieben. <br/>Wenn es keine Übereinstimmung mit einem **ETag** gibt, wird ein Fehler in die Protokolldatei geschrieben. |
 | **createOrUpdateIfMatchETag** |Wenn ein Gerät mit der angegebenen **ID**nicht vorhanden ist, wird es neu registriert. <br/>Wenn das Gerät bereits vorhanden ist, werden vorhandene Informationen mit den bereitgestellten Eingabedaten nur überschrieben, wenn es eine Übereinstimmung mit einem **ETag** gibt. <br/>Wenn es keine Übereinstimmung mit einem **ETag** gibt, wird ein Fehler in die Protokolldatei geschrieben. <br> Der Benutzer kann optional Zwillingsdaten mit den Gerätedaten angeben. Das ETag des Zwillings wird, sofern angegeben, unabhängig vom Geräte-ETag verarbeitet. Wenn ein Konflikt mit dem ETag des vorhandenen Zwillings vorliegt, wird ein Fehler in die Protokolldatei geschrieben. |
 | **delete** |Wenn ein Gerät mit der angegebenen **ID** bereits vorhanden ist, wird es ohne Berücksichtigung des **ETag**-Werts gelöscht. <br/>Wenn das Gerät nicht vorhanden ist, wird ein Fehler in die Protokolldatei geschrieben. |
 | **deleteIfMatchETag** |Wenn ein Gerät mit der angegebenen **ID** bereits vorhanden ist, wird es nur gelöscht, wenn es eine Übereinstimmung mit einem **ETag** gibt. Wenn das Gerät nicht vorhanden ist, wird ein Fehler in die Protokolldatei geschrieben. <br/>Wenn es keine Übereinstimmung mit einem ETag gibt, wird ein Fehler in die Protokolldatei geschrieben. |
@@ -424,7 +424,7 @@ In diesem Artikel haben Sie gelernt, wie Massenvorgänge auf die Identitätsregi
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-* [Entwicklungsleitfaden für IoT Hub](iot-hub-devguide.md)
+* [Entwicklerhandbuch für IoT Hub](iot-hub-devguide.md)
 * [Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
 
 Informationen, die Sie beim Erforschen der Verwendung des IoT Hub Device Provisioning-Diensts für die Just-in-Time-Bereitstellung ohne Benutzereingriff unterstützen, finden Sie in: 

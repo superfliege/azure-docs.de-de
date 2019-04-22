@@ -3,17 +3,17 @@ title: 'IoT Hub Device Provisioning-Dienst: Konzepte für automatische Bereitste
 description: Dieser Artikel bietet einen konzeptionellen Überblick über die Phasen der automatischen Gerätebereitstellung mit dem IoT Device Provisioning-Dienst, IoT Hub und Client-SDKs.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 06/01/2018
+ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 6ba21e29673da176c380d6b367e84b2ea7536955
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0df4eb664accd828c47d834fb0014d0d60f57458
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080030"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051732"
 ---
 # <a name="auto-provisioning-concepts"></a>Konzepte für die automatische Bereitstellung
 

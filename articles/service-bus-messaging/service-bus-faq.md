@@ -9,16 +9,18 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: a10b4d7fac29a6b016b5660b0430d042f2443fbd
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 41a5f08be833d1235146d6e748580751af2c9d73
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498076"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046086"
 ---
 # <a name="service-bus-faq"></a>Service Bus – Häufig gestellte Fragen
 
 In diesem Artikel werden einige häufig gestellte Fragen zu Microsoft Azure Service Bus behandelt. Sie können auch [Häufig gestellte Fragen zum Azure-Support](https://azure.microsoft.com/support/faq/) aufrufen, wenn Sie nach allgemeinen Informationen zu Azure-Preisen und zum Support suchen.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-questions-about-azure-service-bus"></a>Allgemeine Fragen zu Azure Service Bus
 ### <a name="what-is-azure-service-bus"></a>Was ist Azure Service Bus?
@@ -107,21 +109,21 @@ Mit der folgenden PowerShell-Befehlssequenz wird ein Namespace aus einem Azure-A
 
 ```powershell
 # Create a new resource group in target subscription
-Select-AzureRmSubscription -SubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff'
-New-AzureRmResourceGroup -Name 'targetRG' -Location 'East US'
+Select-AzSubscription -SubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff'
+New-AzResourceGroup -Name 'targetRG' -Location 'East US'
 
 # Move namespace from source subscription to target subscription
-Select-AzureRmSubscription -SubscriptionId 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
-$res = Find-AzureRmResource -ResourceNameContains mynamespace -ResourceType 'Microsoft.ServiceBus/namespaces'
-Move-AzureRmResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
+Select-AzSubscription -SubscriptionId 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
+$res = Find-AzResource -ResourceNameContains mynamespace -ResourceType 'Microsoft.ServiceBus/namespaces'
+Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Service Bus finden Sie in den folgenden Artikeln:
 
-* [Einführung in Azure Service Bus Premium (Blogbeitrag)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
-* [Einführung in Azure Service Bus Premium (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
-* [Übersicht über Service Bus](service-bus-messaging-overview.md)
+* [Introducing Azure Service Bus Premium (blog post) (Einführung in Azure Service Bus Premium (Blogbeitrag))](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
+* [Introducing Azure Service Bus Premium (Channel9) (Einführung in Azure Service Bus Premium (Channel9))](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
+* [Was ist Azure Service Bus](service-bus-messaging-overview.md)
 * [Erste Schritte mit Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
 
 [Best practices for performance improvements using Service Bus]: service-bus-performance-improvements.md

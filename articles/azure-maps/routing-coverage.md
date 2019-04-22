@@ -3,17 +3,17 @@ title: Streckenabdeckung in Azure Maps | Microsoft-Dokumentation
 description: Erfahren Sie mehr über Streckenabdeckung in Azure Maps
 author: jingjing-z
 ms.author: jinzh
-ms.date: 03/22/2019
+ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 9337a8fcc7aa097c94515bc2dc64d0f059be5e0a
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 718eefc95384dde050a4a25e6850fe6db574d294
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369461"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258928"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure Maps-Streckenabdeckung
 
@@ -190,7 +190,7 @@ In der folgenden Tabelle finden Sie Informationen zur Abdeckung für Azure Maps-
 | Liechtenstein                  |        ✓       |         ✓            |             |
 | Litauen                      |        ✓       |         ✓            |     ✓      | 
 | Luxemburg                     |        ✓       |         ✓            |     ✓      | 
-| Mazedonien (ehemalige jugoslawische Republik)                      |        ✓       |                      |             |
+| Nordmazedonien                      |        ✓       |                      |             |
 | Malta                          |        ✓       |         ✓            |             |
 | Moldau                        |        ✓       |                      |             |
 | Monaco                         |        ✓       |         ✓            |             |
@@ -233,7 +233,7 @@ In der folgenden Tabelle finden Sie Informationen zur Abdeckung für Azure Maps-
 |--------------------------------|:---------------:|:--------------------:|:------------:|
 | Bahrain                        |        ✓       |         ✓            |             |
 | Irak                           |        ✓       |                      |             |
-| Israel                         |                |         ✓            |             |
+| Israel                         |        ✓       |         ✓            |             |
 | Jordan                         |        ✓       |                      |             |
 | Kuwait                         |        ✓       |         ✓            |             |
 | Libanon                        |        ✓       |                      |             |

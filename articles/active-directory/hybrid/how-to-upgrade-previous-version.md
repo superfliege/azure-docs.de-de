@@ -12,19 +12,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: Identity
-ms.date: 07/18/2018
+ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa21b1054fa6860a8acc5d6971f75e1d74c889f7
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 2a3e7373a8b0354a3d08debf944f2f77f1609382
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193754"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267037"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Aktualisieren von einer früheren Version auf die aktuelle Version
 In diesem Thema werden die verschiedenen Methoden beschrieben, die Sie verwenden können, um Ihre Azure Active Directory (Azure AD) Connect-Installation auf die aktuelle Version zu aktualisieren. Es wird empfohlen, immer die aktuelle Version von Azure AD Connect zu nutzen. Sie können auch die unter [Swing-Migration](#swing-migration) beschriebenen Schritte ausführen, wenn Sie wesentliche Änderungen an der Konfiguration vornehmen.
+
+>[!NOTE]
+> Derzeit kann ein Upgrade von jeder Version von Azure AD Connect auf die aktuelle Version durchgeführt werden. Direkte Upgrades von DirSync oder ADSync werden nicht unterstützt, stattdessen ist eine Swing-Migration erforderlich.  Wenn Sie ein Upgrade von DirSync durchführen möchten, finden Sie entsprechende Informationen unter [Upgrade von Azure AD-Synchronisierungstools (DirSync)](how-to-dirsync-upgrade-get-started.md) oder im Abschnitt [Swing-Migration](#swing-migration).  </br>In der Praxis treten bei Kunden mit außerordentlich alten Versionen möglicherweise Probleme auf, die nicht direkt mit Azure AD Connect zusammenhängen. Bei Servern, die seit mehreren Jahren im Einsatz sind, wurden normalerweise mehrere Patches angewandt, die nicht alle berücksichtigt werden können.  Im Allgemeinen sollten Kunden, die 12 bis 18 Monate lang kein Upgrade durchgeführt haben, stattdessen ein Swing-Upgrade durchführen, da dies die konservativste und mit am wenigsten Risiken verbundene Option ist.
 
 Wenn Sie von DirSync aktualisieren möchten, lesen Sie stattdessen [Aktualisieren des Windows Azure Active Directory-Synchronisierungstools (DirSync)](how-to-dirsync-upgrade-get-started.md).
 
@@ -32,7 +35,7 @@ Es gibt verschiedene Strategien für das Upgrade von Azure AD Connect.
 
 | Methode | BESCHREIBUNG |
 | --- | --- |
-| [Automatisches Upgrade](how-to-connect-install-automatic-upgrade.md) |Für Kunden mit einer Expressinstallation ist dies die einfachste Methode. |
+| [automatische Upgrade](how-to-connect-install-automatic-upgrade.md) |Für Kunden mit einer Expressinstallation ist dies die einfachste Methode. |
 | [Direktes Upgrade](#in-place-upgrade) |Wenn Sie über einen einzelnen Server verfügen, können Sie die Installation direkt auf demselben Server aktualisieren. |
 | [Swing-Migration](#swing-migration) |Wenn Sie über zwei Server verfügen, können Sie einen der Server mit der neuen Version oder Konfiguration vorbereiten und den aktiven Server ändern, wenn Sie bereit sind. |
 
@@ -130,7 +133,7 @@ Manchmal sollen diese Außerkraftsetzungen aber möglicherweise nicht direkt nac
    >[!IMPORTANT]
    > Die erforderlichen Synchronisierungsschritte sollten zum frühestmöglichen Zeitpunkt ausgeführt werden. Sie können die Schritte entweder manuell mit dem Synchronization Service Manager ausführen oder die Außerkraftsetzungen mithilfe des Cmdlets „Set-ADSyncSchedulerConnectorOverride“ wieder hinzufügen.
 
-Führen Sie das folgende Cmdlet aus, um die Außerkraftsetzungen für den vollständigen Import und die vollständige Synchronisierung eines beliebigen Connectors hinzuzufügen: `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
+Führen Sie das folgende Cmdlet aus, um die Außerkraftsetzungen für den vollständigen Import und die vollständige Synchronisierung eines beliebigen Connectors hinzuzufügen:  `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
 
 ## <a name="troubleshooting"></a>Problembehandlung
 Der folgende Abschnitt enthält Details zur Problembehandlung sowie Informationen, die hilfreich sind, wenn beim Upgrade von Azure AD Connect Probleme auftreten.
@@ -141,7 +144,7 @@ Wenn Sie Azure AD Connect von einer vorherigen Version aktualisieren, tritt zu B
 
 ![Error](./media/how-to-upgrade-previous-version/error1.png)
 
-Dieser Fehler tritt auf, weil Azure Active Directory Connector mit dem Bezeichner „b891884f-051e-4a83-95af-2544101c9083“ in der aktuellen Azure AD Connect-Konfiguration nicht vorhanden ist. Um zu überprüfen, ob dies der Fall ist, öffnen Sie ein PowerShell-Fenster, und führen Sie das Cmdlet `Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083` aus:
+Dieser Fehler tritt auf, weil Azure Active Directory Connector mit dem Bezeichner „b891884f-051e-4a83-95af-2544101c9083“ in der aktuellen Azure AD Connect-Konfiguration nicht vorhanden ist. Um zu überprüfen, ob dies der Fall ist, öffnen Sie ein PowerShell-Fenster, und führen Sie das folgende Cmdlet aus: `Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083`
 
 ```
 PS C:\> Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083

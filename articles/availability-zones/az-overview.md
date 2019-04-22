@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/19/2019
+ms.date: 04/02/2019
 ms.author: cynthn
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: 3d4b0b143b41daca376aecc64cf734fadcc94faa
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 557757fc4d99fe57ad545e9d2eebcce61ddb3a8f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226571"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268720"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>Was sind Verfügbarkeitszonen in Azure?
 Verfügbarkeitszonen sind ein Hochverfügbarkeitsangebot, das Anwendungen und Daten vor Ausfällen von Rechenzentren schützt. Verfügbarkeitszonen sind eindeutige physische Standorte in einer Azure-Region. Jede Zone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Zur Gewährleistung der Resilienz sind in allen aktivierten Regionen mindestens drei separate Zonen vorhanden. Die physische Trennung von Verfügbarkeitszonen innerhalb einer Region schützt Anwendungen und Daten vor Ausfällen von Rechenzentren. Zonenredundante Dienste replizieren Ihre Anwendungen und Daten zum Schutz vor einzelnen Fehlerquellen über Verfügbarkeitszonen hinweg. Mit Verfügbarkeitszonen bietet Azure die branchenweit beste Betriebszeit-SLA von 99,99 % für VMs. Die vollständige [Azure-SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) erläutert die garantierte Verfügbarkeit von Azure insgesamt.
@@ -45,6 +45,7 @@ Um eine umfassende Geschäftskontinuität in Azure zu erreichen, erstellen Sie d
 - Frankreich, Mitte
 - Nordeuropa
 - Asien, Südosten 
+- Vereinigtes Königreich, Süden &#42;
 - Europa, Westen
 - USA, Westen 2
 
@@ -57,8 +58,8 @@ Die folgenden Azure Dienste unterstützen Verfügbarkeitszonen:
 - Virtuelle Windows-Computer
 - Virtual Machine Scale Sets
 - Managed Disks
-- Load Balancer
-- Öffentliche IP-Adresse
+- Load Balancer Standard &#42;
+- Öffentliche Standard-IP-Adresse &#42;
 - Zonenredundanter Speicher
 - SQL-Datenbank
 - Event Hubs
@@ -66,6 +67,8 @@ Die folgenden Azure Dienste unterstützen Verfügbarkeitszonen:
 - VPN Gateway
 - ExpressRoute
 - Application Gateway (Vorschau)
+
+&#42; Ressourcen, die im Vereinigten Königreich, Süden vor dem 25. März 2019 erstellt wurden, werden bald in zonenredundante Ressourcen konvertiert. Ressourcen, die nach dem 25. März 2019 erstellt werden, sind sofort zonenredundant.
 
 ## <a name="services-resiliency"></a>Resilienz von Diensten
 Alle Azure-Verwaltungsdienste sind so konstruiert, dass Sie gegenüber regionsweiten Ausfällen resilient sind. Im Spektrum möglicher Ausfälle besitzen ein oder mehrere Verfügbarkeitszonenausfälle innerhalb einer Region einen geringeren Ausfallradius als der Ausfall einer ganzen Region. Azure kann von einem zonenweiten Ausfall von Verwaltungsdiensten innerhalb der Region oder aus einer anderen Azure-Region wiederhergestellt werden. Azure führt wichtige Wartungsaufgaben immer zonenweise innerhalb einer Region durch, um Ausfälle zu verhindern, die sich auf Kundenressourcen auswirken, die über Verfügbarkeitszonen innerhalb einer Region hinweg bereitgestellt sind.
@@ -76,10 +79,10 @@ Es fallen keine zusätzlichen Kosten für virtuelle Computer an, die in einer Ve
 
 ## <a name="get-started-with-availability-zones"></a>Erste Schritte mit Verfügbarkeitszonen
 - [Erstellen eines virtuellen Computers](../virtual-machines/windows/create-portal-availability-zone.md)
-- [Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
+- [Hinzufügen eines verwalteten Datenträgers mithilfe von PowerShell](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 - [Erstellen einer zonenredundanten VM-Skalierungsgruppe](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [Zonenübergreifender Lastenausgleich für virtuelle Computer mithilfe eines Standardlastenausgleichs mit einem zonenredundanten Front-End](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
-- [Lastenausgleich für virtuelle Computer innerhalb einer Zone mithilfe eines Standardlastenausgleichs mit einem zonalen Front-End](../load-balancer/load-balancer-standard-public-zonal-cli.md)
+- [Lastenausgleich für VMs über alle Verfügbarkeitszonen hinweg mithilfe von Load Balancer Standard mit einem zonenredundanten Front-End](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
+- [Lastenausgleich für VMs innerhalb einer Zone mithilfe von Load Balancer Standard mit einem Zonen-Front-End](../load-balancer/load-balancer-standard-public-zonal-cli.md)
 - [Zonenredundanter Speicher](../storage/common/storage-redundancy-zrs.md)
 - [SQL-Datenbank](../sql-database/sql-database-high-availability.md#zone-redundant-configuration)
 - [Georedundante Notfallwiederherstellung in Event Hubs](../event-hubs/event-hubs-geo-dr.md#availability-zones)

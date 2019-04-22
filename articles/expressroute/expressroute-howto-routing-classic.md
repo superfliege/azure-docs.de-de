@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 5542d61c5e615361ca96f911cfe11540fcd09037
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 598ddaa98b0c98d2123f0084a0b8b6dfaf615deb
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58103824"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045712"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>Erstellen und Ändern des Peerings für eine ExpressRoute-Verbindung (klassisch)
 > [!div class="op_single_selector"]
@@ -35,6 +35,9 @@ Diese Anweisungen gelten nur für Verbindungen, die über Dienstanbieter erstell
 **Informationen zu Azure-Bereitstellungsmodellen**
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="configuration-prerequisites"></a>Konfigurationsvoraussetzungen
 
@@ -59,17 +62,17 @@ Verwenden Sie die folgenden Beispiele, um sich bei Ihrem Azure-Konto anzumelden:
 1. Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und stellen Sie eine Verbindung mit Ihrem Konto her.
 
    ```powershell
-   Connect-AzureRmAccount
+   Connect-AzAccount
    ```
 2. Überprüfen Sie die Abonnements für das Konto.
 
    ```powershell
-   Get-AzureRmSubscription
+   Get-AzSubscription
    ```
 3. Wenn Sie über mehr als ein Abonnement verfügen, wählen Sie das Abonnement aus, das Sie verwenden möchten.
 
    ```powershell
-   Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
    ```
 
 4. Verwenden Sie als nächstes das folgende Cmdlet, um PowerShell Ihr Azure-Abonnement für das klassische Bereitstellungsmodell hinzuzufügen.
@@ -190,7 +193,7 @@ Dieser Abschnitt enthält Anweisungen zum Erstellen, Abrufen, Aktualisieren und 
 1. **Erstellen Sie eine ExpressRoute-Verbindung.**
 
    Führen Sie die Schritte zum Erstellen einer [ExpressRoute-Verbindung](expressroute-howto-circuit-classic.md) aus, und lassen Sie sie vom Konnektivitätsanbieter bereitstellen. Wenn Ihr Konnektivitätsanbieter verwaltete Layer 3-Dienste im Angebot hat, können Sie die Aktivierung für das private Azure-Peering anfordern. In diesem Fall müssen Sie die Anweisungen in den nächsten Abschnitten nicht befolgen. Falls Ihr Konnektivitätsanbieter das Routing für Sie nicht verwaltet, müssen Sie nach dem Erstellen der Verbindung die unten angegebenen Anweisungen befolgen.
-2. **Überprüfen Sie die ExpressRoute-Verbindung, um sicherzustellen, dass sie bereitgestellt wurde.**
+2. **Überprüfen der ExpressRoute-Verbindung, um sicherzustellen, dass sie bereitgestellt wurde**
 
    Sie müssen zuerst überprüfen, ob die ExpressRoute-Verbindung bereitgestellt (Provisioned) und aktiviert (Enabled) wurde.
 
@@ -217,7 +220,7 @@ Dieser Abschnitt enthält Anweisungen zum Erstellen, Abrufen, Aktualisieren und 
    ServiceProviderProvisioningState : Provisioned
    Status                           : Enabled
    ```
-4. **Konfigurieren Sie das öffentliche Azure-Peering für die Verbindung.**
+4. **Konfigurieren des öffentlichen Azure-Peering für die Verbindung**
    
    Stellen Sie vorab sicher, dass die folgenden Informationen vorliegen:
    
@@ -294,7 +297,7 @@ Dieser Abschnitt enthält Anweisungen zum Erstellen, Abrufen, Aktualisieren und 
 1. **Erstellen Sie eine ExpressRoute-Verbindung.**
   
    Führen Sie die Schritte zum Erstellen einer [ExpressRoute-Verbindung](expressroute-howto-circuit-classic.md) aus, und lassen Sie sie vom Konnektivitätsanbieter bereitstellen. Wenn Ihr Konnektivitätsanbieter verwaltete Layer 3-Dienste im Angebot hat, können Sie anfordern, dass der Anbieter für Sie das private Azure-Peering aktiviert. In diesem Fall müssen Sie die Anweisungen in den nächsten Abschnitten nicht befolgen. Falls Ihr Konnektivitätsanbieter das Routing für Sie nicht verwaltet, müssen Sie nach dem Erstellen der Verbindung die unten angegebenen Anweisungen befolgen.
-2. **Überprüfen Sie die ExpressRoute-Verbindung, um sicherzustellen, dass sie bereitgestellt wurde.**
+2. **Überprüfen der ExpressRoute-Verbindung, um sicherzustellen, dass sie bereitgestellt wurde**
 
    Vergewissern Sie sich, dass für die Verbindung „Provisioned“ und „Enabled“ angezeigt wird. 
    
@@ -321,7 +324,7 @@ Dieser Abschnitt enthält Anweisungen zum Erstellen, Abrufen, Aktualisieren und 
    ServiceProviderProvisioningState : Provisioned
    Status                           : Enabled
    ```
-3. **Konfigurieren Sie das Microsoft-Peering für die Verbindung.**
+3. **Konfigurieren des Microsoft-Peering für die Verbindung**
    
     Stellen Sie vorab sicher, dass die folgenden Informationen vorliegen:
    

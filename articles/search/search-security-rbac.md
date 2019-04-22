@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/20/2018
+ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 38b8e8a0e413f367d34a4ccf5dbd87817891b8ea
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 34def35eba1e5c1645e6e1f9a505704d153ac716
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313019"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277782"
 ---
 # <a name="set-rbac-roles-for-administrative-access"></a>Festlegen von RBAC-Rollen für den Administratorzugriff
 
@@ -39,5 +39,5 @@ Rollen erteilen keine Zugriffsrechte für den Dienstendpunkt. Suchdienstoperatio
 ## <a name="see-also"></a>Weitere Informationen
 
 + [Verwalten mit PowerShell](search-manage-powershell.md) 
-+ [Überlegungen zur Leistung und Optimierung von Azure Search](search-performance-optimization.md)
++ [Bereitstellungsstrategien und bewährte Methoden zur Optimierung der Leistung in Azure Search](search-performance-optimization.md)
 + [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../role-based-access-control/overview.md)

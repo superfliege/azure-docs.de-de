@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 06fedddffd51dc22b45e8ae6e415ad139346c5b6
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 49ebf4ab95816a3da2f74a464b12b46de6228456
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670386"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280552"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Hinzufügen von benutzerdefinierten Service Fabric-Integritätsberichten
 Azure Service Fabric bietet ein [Integritätsmodell](service-fabric-health-introduction.md) , das fehlerhafte Cluster- und Anwendungsbedingungen auf bestimmten Entitäten kennzeichnet. Das Integritätsmodell verwendet **Integritäts-Reporter** (Systemkomponenten und Watchdogs). Das Ziel ist die einfache und schnelle Diagnose und Reparatur. Dienstautoren müssen im Vorfeld an die Integrität denken. Jede Bedingung, die zur Beeinträchtigung der Integrität führen kann, sollte gemeldet werden, insbesondere wenn damit die Ursachen von Problemen ermittelt werden können. Die Integritätsinformationen können Zeit und Aufwand beim Debuggen und Untersuchen einsparen. Besonders deutlich wird der Nutzen, wenn der Dienst im gewünschten Umfang in der Cloud ausgeführt wird (private oder Azure-Cloud).
@@ -55,18 +55,18 @@ Sobald das Design für die Integritätsberichterstellung feststeht, können Inte
 > 
 
 ## <a name="health-client"></a>Integritätsclient
-Die Integritätsberichte werden über einen Integritätsclient innerhalb des Fabric-Clients an den Integritätsspeicher gesendet. Der Integritätsclient kann mit folgenden Einstellungen konfiguriert werden:
+Die Integritätsberichte werden über einen Integritätsclient innerhalb des Fabric-Clients an den Integritäts-Manager gesendet. Der Integritäts-Manager speichert Berichte im Integritätsspeicher. Der Integritätsclient kann mit folgenden Einstellungen konfiguriert werden:
 
-* **HealthReportSendInterval:** Die Verzögerung zwischen dem Hinzufügen des Berichts zum Client und dem Senden des Berichts an den Integritätsspeicher. Dadurch können Berichte in einer einzelnen Nachricht zusammengefasst werden, anstatt für jeden Bericht eine eigene Nachricht zu senden. So wird die Leistung verbessert. Standardwert: 30 Sekunden.
-* **HealthReportRetrySendInterval:** Das Intervall, in dem der Integritätsclient kumulierte Integritätsberichte erneut an den Integritätsspeicher sendet. Standardwert: 30 Sekunden.
-* **HealthOperationTimeout:** Das Zeitlimit für eine Berichtsnachricht, die an den Integritätsspeicher gesendet wurde. Wenn bei einer Nachricht das Zeitlimit überschritten wird, wiederholt der Integritätsclient den Sendevorgang, bis der Integritätsspeicher die Verarbeitung des Berichts bestätigt. Standardwert: 2 Minuten.
+* **HealthReportSendInterval:** Die Verzögerung zwischen dem Hinzufügen des Berichts zum Client und dem Senden des Berichts an den Integritäts-Manager. Dadurch können Berichte in einer einzelnen Nachricht zusammengefasst werden, anstatt für jeden Bericht eine eigene Nachricht zu senden. So wird die Leistung verbessert. Standardwert: 30 Sekunden.
+* **HealthReportRetrySendInterval:** Das Intervall, in dem der Integritätsclient kumulierte Integritätsberichte erneut an den Integritäts-Manager sendet. Standardwert: 30 Sekunden, Mindestwert: 1 Sekunde
+* **HealthOperationTimeout:** Das Zeitlimit für eine Berichtsnachricht, die an den Integritäts-Manager gesendet wurde. Wenn bei einer Nachricht das Zeitlimit überschritten wird, wiederholt der Integritätsclient den Sendevorgang, bis der Integritäts-Manager die Verarbeitung des Berichts bestätigt. Standardwert: 2 Minuten.
 
 > [!NOTE]
-> Wenn die Berichte zusammengefasst werden, muss der Fabric-Client mindestens für die Dauer von „HealthReportSendInterval“ aktiv bleiben, um sicherzustellen, dass sie gesendet werden. Wenn die Nachricht verloren geht oder der Integritätsspeicher die Berichte aufgrund von vorübergehenden Fehlern nicht anwenden kann, muss der Fabric-Client länger aktiv bleiben, um einen erneuten Versuch zu ermöglichen.
+> Wenn die Berichte zusammengefasst werden, muss der Fabric-Client mindestens für die Dauer von „HealthReportSendInterval“ aktiv bleiben, um sicherzustellen, dass sie gesendet werden. Wenn die Nachricht verloren geht oder der Integritäts-Manager die Berichte aufgrund von vorübergehenden Fehlern nicht anwenden kann, muss der Fabric-Client länger aktiv bleiben, um einen erneuten Versuch zu ermöglichen.
 > 
 > 
 
-Bei der Pufferung auf dem Client wird auf die Eindeutigkeit der Berichte geachtet. Beispiel: Wenn ein bestimmter schlechter Reporter pro Sekunde 100 Berichte für die gleiche Eigenschaft der gleichen Entität sendet, werden die Berichte jeweils durch die letzte Version ersetzt. In der Clientwarteschlange ist höchstens ein solcher Bericht vorhanden. Wenn die Batchverarbeitung konfiguriert ist, wird pro Sendeintervall nur ein Bericht an den Integritätsspeicher gesendet. Dieser Bericht ist der zuletzt hinzugefügte Bericht, der den aktuellen Zustand der Entität angibt.
+Bei der Pufferung auf dem Client wird auf die Eindeutigkeit der Berichte geachtet. Beispiel: Wenn ein bestimmter schlechter Reporter pro Sekunde 100 Berichte für die gleiche Eigenschaft der gleichen Entität sendet, werden die Berichte jeweils durch die letzte Version ersetzt. In der Clientwarteschlange ist höchstens ein solcher Bericht vorhanden. Wenn die Batchverarbeitung konfiguriert ist, wird pro Sendeintervall nur ein Bericht an den Integritäts-Manager gesendet. Dieser Bericht ist der zuletzt hinzugefügte Bericht, der den aktuellen Zustand der Entität angibt.
 Geben Sie Konfigurationsparameter an, wenn `FabricClient` durch Übergabe von [FabricClientSettings](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclientsettings) mit den gewünschten Werten für integritätsbezogene Einträge erstellt wird.
 
 Im folgenden Beispiel wird ein Fabric-Client erstellt und angegeben, dass die Berichte unmittelbar nach dem Hinzufügen gesendet werden sollen. Bei Zeitüberschreitungen und Fehlern, bei denen Wiederholungsversuche möglich sind, wird alle 40 Sekunden ein Wiederholungsversuch ausgeführt.

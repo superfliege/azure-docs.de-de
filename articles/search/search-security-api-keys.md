@@ -8,14 +8,14 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 04/06/2019
 ms.author: heidist
-ms.openlocfilehash: a59451c659effb55a2e16236b359b7601eb31cd4
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 64b07d37ce9267681ccfb5de3c7201586bd85b35
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286600"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273412"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Erstellen und Verwalten von API-Schlüsseln für einen Azure Search-Dienst
 
@@ -53,30 +53,37 @@ Zugriffsschlüssel stehen über das Portal oder über die [Verwaltungs-REST-API]
 
 ## <a name="create-query-keys"></a>Erstellen von Abfrageschlüsseln
 
-Abfrageschlüssel werden für den schreibgeschützten Zugriff auf Dokumente in einem Index verwendet. Das Einschränken des Zugriffs und der Vorgänge in Client-Apps ist besonders wichtig, um die Suchobjekte in Ihrem Dienst zu schützen. Verwenden Sie für Abfragen aus einer Client-App immer einen Abfrageschlüssel anstelle eines Administratorschlüssels.
+Abfrageschlüssel werden für den schreibgeschützten Zugriff auf Dokumente in einem Index für die Vorgänge für eine Dokumentensammlung verwendet. Such-, Filter- und Vorschlagsabfragen sind Vorgänge, die einen Abfrageschlüssel verwenden. Alle schreibgeschützten Vorgänge, die Systemdaten oder Objektdefinitionen zurückgeben, z. B. eine Indexdefinition oder einen Indexerstatus, erfordern einen Administratorschlüssel.
+
+Das Einschränken des Zugriffs und der Vorgänge in Client-Apps ist besonders wichtig, um die Suchobjekte in Ihrem Dienst zu schützen. Verwenden Sie für Abfragen aus einer Client-App immer einen Abfrageschlüssel anstelle eines Administratorschlüssels.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Listen Sie die [Suchdienste](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) für Ihr Abonnement auf.
 3. Wählen Sie den Dienst aus, und klicken Sie auf der Seite „Übersicht“ auf **Einstellungen** >**Schlüssel**.
 4. Klicken Sie auf **Abfrageschlüssel verwalten**.
-5. Verwenden Sie eine bereits für Ihren Dienst generierte Abfrage, oder erstellen Sie bis zu 50 neue Abfrageschlüssel. Der Standardabfrageschlüssel ist nicht benannt. Sie können zusätzliche Abfrageschlüssel jedoch für eine einfachere Verwaltbarkeit benennen.
+5. Verwenden Sie einen bereits für Ihren Dienst generierten Abfrageschlüssel, oder erstellen Sie bis zu 50 neue Abfrageschlüssel. Der Standardabfrageschlüssel ist nicht benannt. Sie können zusätzliche Abfrageschlüssel jedoch für eine einfachere Verwaltbarkeit benennen.
 
    ![Erstellen oder Verwenden von Abfrageschlüsseln](media/search-security-overview/create-query-key.png) 
-
 
 > [!Note]
 > Ein Codebeispiel für die Verwendung von Abfrageschlüsseln finden Sie in [Abfragen eines Azure Search-Index in C#](search-query-dotnet.md).
 
+<a name="regenerate-admin-keys"></a>
+
 ## <a name="regenerate-admin-keys"></a>Erneutes Generieren von Administratorschlüsseln
 
-Für jeden Dienst werden zwei Administratorschlüssel erstellt, sodass Sie einen Primärschlüssel mit dem Sekundärschlüssel für den weiteren Zugriff rotieren können.
-
-Wenn Sie sowohl Primär- als auch Sekundärschlüssel gleichzeitig neu generieren, haben alle Anwendungen, die einen der beiden Schlüssel für den Zugriff auf Dienstvorgänge verwenden, keinen Zugriff mehr auf den Dienst.
+Für jeden Dienst werden zwei Administratorschlüssel erstellt, sodass Sie einen Primärschlüssel mit dem Sekundärschlüssel für Geschäftskontinuität rotieren können.
 
 1. Kopieren Sie den Sekundärschlüssel auf der Seite **Einstellungen** >**Schlüssel**.
 2. Aktualisieren Sie für alle Anwendungen die Einstellungen des API-Schlüssels so, dass der Sekundärschlüssel verwendet wird.
 3. Generieren Sie den Primärschlüssel neu.
 4. Aktualisieren Sie alle Anwendungen so, dass sie den neuen Primärschlüssel verwenden.
+
+Wenn Sie versehentlich beide Schlüssel gleichzeitig neu generieren, wird für alle Clientanforderungen, die diese Schlüssel verwenden, der Fehler „HTTP 403 – Verboten“ zurückgegeben. Allerdings werden die Inhalte nicht gelöscht, und Sie sind nicht dauerhaft gesperrt. 
+
+Sie können weiterhin über das Portal oder die Verwaltungsebene ([REST-API](https://docs.microsoft.com/rest/api/searchmanagement/), [PowerShell](https://docs.microsoft.com/azure/search/search-manage-powershell) oder Azure Resource Manager) auf den Dienst zugreifen. Verwaltungsfunktionen werden über eine Abonnement-ID und nicht einen Dienst-API-Schlüssel verwendet und sind daher auch dann verfügbar, wenn Ihre API-Schlüssel nicht verfügbar sind. 
+
+Nach der Erstellung neuer Schlüssel über das Portal oder die Verwaltungsebene wird der Zugriff auf Ihre Inhalte (Indizes, Indexer, Datenquellen, Synonymzuordnungen) wiederhergestellt, sobald Sie die neuen Schlüssel haben und nach Aufforderung angeben.
 
 ## <a name="secure-api-keys"></a>Sichern von API-Schlüsseln
 Die Sicherheit der Schlüssel wird erreicht, indem der Zugriff über das Portal oder Resource Manager-Oberflächen (PowerShell oder Befehlszeilenschnittstelle) eingeschränkt wird. Wie bereits erwähnt, können Abonnementadministratoren alle API-Schlüssel anzeigen und neu generieren. Informieren Sie sich über Rollenzuweisungen, damit Sie wissen, wer Zugriff auf die Admin-Schlüssel hat.

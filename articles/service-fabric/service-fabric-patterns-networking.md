@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: aljo
-ms.openlocfilehash: feea57122d805ae065278458f90afbc960221a9d
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: d5aa09f3ff899766e6eb6d1784e4417f7b48eac0
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670250"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049896"
 ---
 # <a name="service-fabric-networking-patterns"></a>Netzwerkmuster für Service Fabric
 Sie können Ihre Azure Service Fabric-Cluster in andere Azure-Netzwerkfeatures integrieren. In diesem Artikel erfahren Sie, wie Sie Cluster erstellen, die folgende Features nutzen:
@@ -34,6 +34,9 @@ Service Fabric wird in einer standardmäßigen VM-Skalierungsgruppe ausgeführt.
 Service Fabric unterscheidet sich in einem Aspekt von anderen Netzwerkfeatures. Das [Azure-Portal](https://portal.azure.com) verwendet intern den Service Fabric-Ressourcenanbieter, um Informationen über Knoten und Anwendungen von einem Cluster abzurufen. Der Service Fabric-Ressourcenanbieter erfordert öffentlich zugänglichen eingehenden Zugriff auf den HTTP-Gatewayport (standardmäßig Port 19080) auf dem Verwaltungsendpunkt. [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) verwendet den Verwaltungsendpunkt zur Verwaltung Ihres Clusters. Der Service Fabric-Ressourcenanbieter verwendet diesen Port außerdem zur Abfrage von Informationen über Ihren Cluster, um sie im Azure-Portal anzuzeigen. 
 
 Wenn vom Service Fabric-Ressourcenanbieter aus kein Zugriff auf Port 19080 möglich ist, wird eine Meldung wie *Knoten nicht gefunden* im Portal angezeigt, und die Liste Ihrer Knoten und Anwendungen ist leer. Wenn Sie Ihren Cluster im Azure-Portal anzeigen möchten, muss Ihr Lastenausgleich eine öffentliche IP-Adresse bereitstellen, und Ihre Netzwerksicherheitsgruppe muss über Port 19080 eingehenden Datenverkehr zulassen. Wenn Ihr Setup diese Anforderungen nicht erfüllt, zeigt das Azure-Portal den Status Ihres Clusters nicht an.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="templates"></a>Vorlagen
 
@@ -51,7 +54,7 @@ Im folgenden Beispiel beginnen wir mit einem vorhandenen virtuellen Netzwerk mit
 Eine statische öffentliche IP-Adresse ist im Allgemeinen eine dedizierte Ressourcen, die getrennt von dem virtuellen Computer bzw. den virtuellen Computern verwaltet wird, dem bzw. denen sie zugewiesen ist. Sie wird in einer dedizierten Netzwerkressourcengruppe bereitgestellt (statt in der Service Fabric-Clusterressourcengruppe selbst). Erstellen Sie entweder über das Azure-Portal oder PowerShell eine statische öffentliche IP-Adresse mit dem Namen staticIP1 in der gleichen Ressourcengruppe ExistingRG:
 
 ```powershell
-PS C:\Users\user> New-AzureRmPublicIpAddress -Name staticIP1 -ResourceGroupName ExistingRG -Location westus -AllocationMethod Static -DomainNameLabel sfnetworking
+PS C:\Users\user> New-AzPublicIpAddress -Name staticIP1 -ResourceGroupName ExistingRG -Location westus -AllocationMethod Static -DomainNameLabel sfnetworking
 
 Name                     : staticIP1
 ResourceGroupName        : ExistingRG
@@ -166,8 +169,8 @@ In den Beispielen in diesem Artikel wird die Service Fabric-template.json verwen
 6. Stellen Sie die Vorlage bereit:
 
     ```powershell
-    New-AzureRmResourceGroup -Name sfnetworkingexistingvnet -Location westus
-    New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingexistingvnet -TemplateFile C:\SFSamples\Final\template\_existingvnet.json
+    New-AzResourceGroup -Name sfnetworkingexistingvnet -Location westus
+    New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingexistingvnet -TemplateFile C:\SFSamples\Final\template\_existingvnet.json
     ```
 
     Nach der Bereitstellung sollte Ihr virtuelles Netzwerk die neuen Skalierungsgruppen-VMs enthalten. Der Knotentyp der VM-Skalierungsgruppe sollte das vorhandene virtuelle Netzwerk und Subnetz anzeigen. Sie können auch mit dem Remotedesktopprotokoll (Remote Desktop Protocol, RDP) auf den virtuellen Computer zugreifen, der sich bereits im virtuellen Netzwerk befand, und die neuen Skalierungsgruppen-VMs pingen:
@@ -276,13 +279,13 @@ Ein weiteres Beispiel, das nicht für Service Fabric spezifisch ist, finden Sie 
 8. Stellen Sie die Vorlage bereit:
 
     ```powershell
-    New-AzureRmResourceGroup -Name sfnetworkingstaticip -Location westus
+    New-AzResourceGroup -Name sfnetworkingstaticip -Location westus
 
-    $staticip = Get-AzureRmPublicIpAddress -Name staticIP1 -ResourceGroupName ExistingRG
+    $staticip = Get-AzPublicIpAddress -Name staticIP1 -ResourceGroupName ExistingRG
 
     $staticip
 
-    New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingstaticip -TemplateFile C:\SFSamples\Final\template\_staticip.json -existingStaticIPResourceGroup $staticip.ResourceGroupName -existingStaticIPName $staticip.Name -existingStaticIPDnsFQDN $staticip.DnsSettings.Fqdn
+    New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkingstaticip -TemplateFile C:\SFSamples\Final\template\_staticip.json -existingStaticIPResourceGroup $staticip.ResourceGroupName -existingStaticIPName $staticip.Name -existingStaticIPDnsFQDN $staticip.DnsSettings.Fqdn
     ```
 
 Nach der Bereitstellung sehen Sie, dass Ihr Lastenausgleich an die öffentliche statische IP-Adresse aus der anderen Ressourcengruppe gebunden ist. Der Service Fabric-Clientverbindungsendpunkt und der [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)-Endpunkt zeigen beide auf den DNS-FDQN der statischen IP-Adresse.
@@ -378,9 +381,9 @@ Dieses Szenario ersetzt den externen Lastenausgleich in der standardmäßigen Se
 7. Stellen Sie die Vorlage bereit:
 
     ```powershell
-    New-AzureRmResourceGroup -Name sfnetworkinginternallb -Location westus
+    New-AzResourceGroup -Name sfnetworkinginternallb -Location westus
 
-    New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternallb -TemplateFile C:\SFSamples\Final\template\_internalonlyLB.json
+    New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternallb -TemplateFile C:\SFSamples\Final\template\_internalonlyLB.json
     ```
 
 Nach der Bereitstellung verwendet Ihr Lastenausgleich die private statische IP-Adresse 10.0.0.250. Wenn Sie in diesem gleichen virtuellen Netzwerk über einen anderen Computer verfügen, können Sie zu dem internen [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)-Endpunkt gehen. Beachten Sie, dass er eine Verbindung mit einem der Knoten hinter dem Lastenausgleich herstellt.
@@ -595,9 +598,15 @@ In einem Zwei-Knotentypen-Cluster befindet sich ein Knotentyp auf dem externen L
 7. Stellen Sie die Vorlage bereit:
 
     ```powershell
-    New-AzureRmResourceGroup -Name sfnetworkinginternalexternallb -Location westus
+    New-AzResourceGroup -Name sfnetworkinginternalexternallb -Location westus
 
-    New-AzureRmResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternalexternallb -TemplateFile C:\SFSamples\Final\template\_internalexternalLB.json
+    New-AzResourceGroupDeployment -Name deployment -ResourceGroupName sfnetworkinginternalexternallb -TemplateFile C:\SFSamples\Final\template\_internalexternalLB.json
+    ```
+
+Nach der Bereitstellung sehen Sie zwei Lastenausgleichsmodule in der Ressourcengruppe. Wenn Sie die Lastenausgleichsmodule durchsuchen, sehen Sie die öffentliche IP-Adresse und die Verwaltungsendpunkte (Ports 19000 und 19080), die der öffentlichen IP-Adresse zugewiesen sind. Sie können auch die statische interne IP-Adresse und den Anwendungsendpunkt (Port 80) sehen, die dem internen Lastenausgleich zugewiesen sind. Beide Lastenausgleichsmodule verwenden den gleichen VM-Skalierungsgruppen-Back-End-Pool.
+
+## <a name="next-steps"></a>Nächste Schritte
+[Erstellen eines Clusters](service-fabric-cluster-creation-via-arm.md) ternalLB.json
     ```
 
 Nach der Bereitstellung sehen Sie zwei Lastenausgleichsmodule in der Ressourcengruppe. Wenn Sie die Lastenausgleichsmodule durchsuchen, sehen Sie die öffentliche IP-Adresse und die Verwaltungsendpunkte (Ports 19000 und 19080), die der öffentlichen IP-Adresse zugewiesen sind. Sie können auch die statische interne IP-Adresse und den Anwendungsendpunkt (Port 80) sehen, die dem internen Lastenausgleich zugewiesen sind. Beide Lastenausgleichsmodule verwenden den gleichen VM-Skalierungsgruppen-Back-End-Pool.

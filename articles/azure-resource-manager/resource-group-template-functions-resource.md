@@ -4,22 +4,20 @@ description: Hier werden die Funktionen beschrieben, die in einer Azure Resource
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2019
+ms.date: 04/09/2019
 ms.author: tomfitz
-ms.openlocfilehash: 87ce2019f85a2c1be742d3abf6c2fc61c5dcec10
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 4d5e6d20cb93c339d75c12ca1c0f56eaa5cc8cdd
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866928"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470711"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Ressourcenfunktionen für Azure Resource Manager-Vorlagen
 
@@ -33,8 +31,6 @@ Der Ressourcen-Manager stellt die folgenden Funktionen zum Abrufen von Ressource
 * [Abonnement](#subscription)
 
 Informationen zum Abrufen von Werten aus Parametern, Variablen oder der aktuellen Bereitstellung finden Sie unter [Funktionen für Bereitstellungswerte](resource-group-template-functions-deployment.md).
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 <a id="listkeys" />
 <a id="list" />
@@ -173,11 +169,13 @@ Das zurückgegebene Objekt ist abhängig von der list-Funktion, die Sie verwende
 }
 ```
 
-Andere list-Funktionen weisen andere Rückgabeformate auf. Um das Format einer Funktion anzuzeigen, geben Sie es im Abschnitt „outputs“ wie in der Beispielvorlage dargestellt an. 
+Andere list-Funktionen weisen andere Rückgabeformate auf. Um das Format einer Funktion anzuzeigen, geben Sie es im Abschnitt „outputs“ wie in der Beispielvorlage dargestellt an.
 
 ### <a name="remarks"></a>Anmerkungen
 
 Geben Sie die Ressource entweder mithilfe des Ressourcennamens oder der [resourceId-Funktion](#resourceid) an. Wenn Sie eine list-Funktion in der gleichen Vorlage verwenden, die auch die referenzierte Ressource bereitstellt, verwenden Sie den Ressourcennamen.
+
+Bei Verwendung einer **list**-Funktion mit einer Ressource mit bedingter Bereitstellung wird die Funktion auch dann ausgewertet, wenn die Ressource nicht bereitgestellt wird. Es wird eine Fehlermeldung angezeigt, wenn die **list**-Funktion auf eine nicht vorhandene Ressource verweist. Verwenden Sie die **if**-Funktion, um sicherzustellen, dass die Funktion nur ausgewertet wird, wenn die Ressource vorhanden ist. Eine Beispielvorlage, die „if“ und „list“ mit einer bedingt bereitgestellten Ressource verwendet, finden Sie unter der [if](resource-group-template-functions-logical.md#if)-Funktion.
 
 ### <a name="example"></a>Beispiel
 
@@ -246,23 +244,10 @@ Um das SAS-Token abzurufen, übergeben Sie ein Objekt für die Ablaufzeit. Die A
         }
     }
 }
-``` 
-
-Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/listkeys.json --parameters storagename=<your-storage-account>
 ```
-
-Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/listkeys.json -storagename <your-storage-account>
-```
-
-<a id="providers" />
 
 ## <a name="providers"></a>providers
+
 `providers(providerNamespace, [resourceType])`
 
 Gibt Informationen zu einem Ressourcenanbieter und den von ihm unterstützten Ressourcentypen zurück. Wenn Sie keinen Ressourcentyp angeben, gibt die Funktion alle unterstützten Typen für den Ressourcenanbieter zurück.
@@ -336,21 +321,8 @@ Für den Ressourcenanbieter **Microsoft.Web** und den Ressourcentyp **sites** wi
 }
 ```
 
-Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/providers.json --parameters providerNamespace=Microsoft.Web resourceType=sites
-```
-
-Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/providers.json -providerNamespace Microsoft.Web -resourceType sites
-```
-
-<a id="reference" />
-
 ## <a name="reference"></a>Referenz
+
 `reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])`
 
 Gibt ein Objekt zurück, das den Laufzeitstatus einer Ressource darstellt.
@@ -374,6 +346,8 @@ Die Verweisfunktion ruft den Runtime-Status einer zuvor bereitgestellten Ressour
 Die Verweisfunktion kann nur in den Eigenschaften einer Ressourcendefinition und im Abschnitt „outputs“ einer Vorlage oder Bereitstellung verwendet werden.
 
 Mithilfe der Referenzfunktion deklarieren Sie implizit, dass eine Ressource von einer anderen abhängt, wenn die referenzierte Ressource innerhalb der gleichen Vorlage zur Verfügung gestellt wird und Sie anhand des Ressourcennamens (nicht der Ressourcen-ID) auf die Ressource verweisen. Die dependsOn-Eigenschaft muss nicht zusätzlich verwendet werden. Die Funktion wird erst dann ausgewertet, wenn die Ressource, auf die verwiesen wird, die Bereitstellung abgeschlossen hat.
+
+Bei Verwendung der **reference**-Funktion mit einer Ressource mit bedingter Bereitstellung wird die Funktion auch dann ausgewertet, wenn die Ressource nicht bereitgestellt wird.  Es wird eine Fehlermeldung angezeigt, wenn die **reference**-Funktion auf eine nicht vorhandene Ressource verweist. Verwenden Sie die **if**-Funktion, um sicherzustellen, dass die Funktion nur ausgewertet wird, wenn die Ressource vorhanden ist. Eine Beispielvorlage, die „if“ und „reference“ mit einer bedingt bereitgestellten Ressource verwendet, finden Sie unter der [if](resource-group-template-functions-logical.md#if)-Funktion.
 
 Um die Eigenschaftennamen und Werte für einen Ressourcentyp anzuzeigen, erstellen Sie eine Vorlage, die das Objekt im Abschnitt „outputs“ zurückgibt. Wenn Sie über eine Ressource dieses Typs verfügen, gibt Ihre Vorlage das Objekt zurück, ohne neue Ressourcen bereitzustellen. 
 
@@ -514,18 +488,6 @@ Das vollständige Objekt hat das folgende Format:
 }
 ```
 
-Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/referencewithstorage.json --parameters storageAccountName=<your-storage-account>
-```
-
-Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/referencewithstorage.json -storageAccountName <your-storage-account>
-```
-
 Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/reference.json) verweist auf ein Speicherkonto, das nicht in dieser Vorlage bereitgestellt wird. Das Speicherkonto ist bereits in demselben Abonnement vorhanden.
 
 ```json
@@ -550,21 +512,8 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/reference.json --parameters storageResourceGroup=<rg-for-storage> storageAccountName=<your-storage-account>
-```
-
-Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/reference.json -storageResourceGroup <rg-for-storage> -storageAccountName <your-storage-account>
-```
-
-<a id="resourcegroup" />
-
 ## <a name="resourcegroup"></a>Ressourcengruppe
+
 `resourceGroup()`
 
 Gibt ein Objekt zurück, das die aktuelle Ressourcengruppe darstellt. 
@@ -635,21 +584,8 @@ Im vorherigen Beispiel wird ein Objekt im folgenden Format zurückgegeben:
 }
 ```
 
-Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourcegroup.json
-```
-
-Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourcegroup.json 
-```
-
-<a id="resourceid" />
-
 ## <a name="resourceid"></a>Ressourcen-ID
+
 `resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2]...)`
 
 Gibt den eindeutigen Bezeichner einer Ressource zurück. Diese Funktion wird verwendet, wenn der Ressourcenname zweideutig ist oder nicht innerhalb der gleichen Vorlage zur Verfügung gestellt wird. 
@@ -789,21 +725,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | differentSubOutput | Zeichenfolge | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | nestedResourceOutput | Zeichenfolge | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
 
-Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourceid.json
-```
-
-Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/resourceid.json 
-```
-
-<a id="subscription" />
-
 ## <a name="subscription"></a>Abonnement
+
 `subscription()`
 
 Gibt Details zum Abonnement für die aktuelle Bereitstellung zurück. 
@@ -839,19 +762,8 @@ Die folgende [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/
 }
 ```
 
-Stellen Sie diese Beispielvorlage mit der Azure CLI wie folgt bereit:
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/subscription.json
-```
-
-Um diese Beispielvorlage mit PowerShell bereitzustellen, verwenden Sie:
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/subscription.json 
-```
-
 ## <a name="next-steps"></a>Nächste Schritte
+
 * Eine Beschreibung der Abschnitte in einer Azure Resource Manager-Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
 * Informationen zum Zusammenführen mehrerer Vorlagen finden Sie unter [Verwenden von verknüpften Vorlagen bei der Bereitstellung von Azure-Ressourcen](resource-group-linked-templates.md).
 * Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](resource-group-create-multiple.md).

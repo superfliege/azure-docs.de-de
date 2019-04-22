@@ -8,12 +8,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/27/2018
 ms.author: cherylmc
-ms.openlocfilehash: bab38b98fa1f39691dfdeaf0b0492a2e3ed0df93
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 21676ff329613f792d6570713f044bb7440e58d4
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58116859"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045366"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Verbinden eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung mithilfe von PowerShell (klassisch)
 > [!div class="op_single_selector"]
@@ -33,6 +33,9 @@ Sie können bis zu 10 virtuelle Netzwerke mit einer ExpressRoute-Verbindung verk
 **Informationen zu Azure-Bereitstellungsmodellen**
 
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="configuration-prerequisites"></a>Konfigurationsvoraussetzungen
 
@@ -61,17 +64,17 @@ Verwenden Sie die folgenden Beispiele, um sich bei Ihrem Azure-Konto anzumelden:
 1. Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und stellen Sie eine Verbindung mit Ihrem Konto her.
 
    ```powershell
-   Connect-AzureRmAccount
+   Connect-AzAccount
    ```
 2. Überprüfen Sie die Abonnements für das Konto.
 
    ```powershell
-   Get-AzureRmSubscription
+   Get-AzSubscription
    ```
 3. Wenn Sie über mehr als ein Abonnement verfügen, wählen Sie das Abonnement aus, das Sie verwenden möchten.
 
    ```powershell
-   Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
    ```
 
 4. Verwenden Sie als nächstes das folgende Cmdlet, um PowerShell Ihr Azure-Abonnement für das klassische Bereitstellungsmodell hinzuzufügen.
