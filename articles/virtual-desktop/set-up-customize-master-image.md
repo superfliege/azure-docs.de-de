@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 03/21/2019
+ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: fb107d9e48db5a9809ceb7ffcbac09550279f12d
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: d22fffcb792227b4d0805abd005d8c050cb97248
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485865"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006198"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Vorbereiten und Anpassen eines VHD-Masterimages
 
@@ -188,7 +188,7 @@ Hier ist beschrieben, wie Sie OneDrive im Modus „Pro Computer“ installieren:
 
 1. Erstellen Sie zunächst einen Speicherort zum Bereitstellen des OneDrive-Installationsprogramms. Hierfür ist ein lokaler Datenträgerordner oder ein Speicherort vom Typ [\\\\unc](file://unc) geeignet.
 
-2. Laden Sie die Datei „OneDriveSetup.exe“ mit diesem Link an Ihren bereitgestellten Speicherort herunter: <https://aka.ms/OneDriveWVD-Installer>.
+2. Laden Sie die Datei „OneDriveSetup.exe“ mit diesem Link an Ihren bereitgestellten Speicherort herunter: <https://aka.ms/OneDriveWVD-Installer>
 
 3. Wenn Sie Office mit OneDrive installiert und **\<ExcludeApp ID="OneDrive" /\>** weggelassen haben, sollten Sie alle vorhandenen OneDrive-Installationen im Modus „Pro Benutzer“ entfernen, indem Sie an einer Eingabeaufforderung mit erhöhten Rechten den folgenden Befehl ausführen:
     
@@ -260,7 +260,7 @@ Sie können die Richtlinien für Remotesitzungen auch manuell konfigurieren, ind
 ```batch
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v RemoteAppLogoffTimeLimit /t REG_DWORD /d 0 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fResetBroken /t REG_DWORD /d 1 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxConnectionTime /t REG_DWORD /d 600000 /f
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxConnectionTime /t REG_DWORD /d 10800000 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v RemoteAppLogoffTimeLimit /t REG_DWORD /d 0 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxDisconnectionTime /t REG_DWORD /d 5000 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxIdleTime /t REG_DWORD /d 7200000 /f
@@ -300,9 +300,9 @@ reg add HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\S
 
 In diesem Artikel wird nicht beschrieben, wie Sie die Unterstützung von Sprachen und Regionen konfigurieren. Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Add languages to Windows images](https://docs.microsoft.com/windows-hardware/manufacture/desktop/add-language-packs-to-windows) (Hinzufügen von Sprachen zu Windows-Images)
-- [Features on demand](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities) (On-Demand-Features)
-- [Language and region Features on Demand (FOD)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-language-fod) (Sprachen und Regionen: On-Demand-Features)
+- [Add languages to Windows images (Hinzufügen von Sprachen zu Windows-Images)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/add-language-packs-to-windows)
+- [Features on demand (On-Demand-Features)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities)
+- [Language and region Features on Demand (FOD) (Sprachen und Regionen: On-Demand-Features)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-language-fod)
 
 ### <a name="other-applications-and-registry-configuration"></a>Konfiguration anderer Anwendungen und der Registrierung
 

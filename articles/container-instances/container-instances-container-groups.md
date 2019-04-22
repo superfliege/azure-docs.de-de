@@ -6,15 +6,15 @@ author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 03/20/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 8724bd7e13b0d8607ad5a6814b27c8c06681f331
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: f4bbea8acd447a731cf5c56f9876baf9183735ea
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202009"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59005533"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Containergruppen in Azure Container Instances
 
@@ -42,6 +42,8 @@ Für diese Beispielcontainergruppe gilt Folgendes:
 ## <a name="deployment"></a>Bereitstellung
 
 Zwei gebräuchliche Wege zum Bereitstellen einer Gruppe mit mehreren Containern sind eine [Resource Manager-Vorlage][resource-manager template] und eine [YAML-Datei][yaml-file]. Verwenden Sie eine Resource Manager-Vorlage, wenn Sie bei der Bereitstellung von Containerinstanzen zusätzliche Azure-Dienstressourcen (z.B. eine [Azure Files-Freigabe][azure-files]) bereitstellen müssen. Das YAML-Format ist präziser, daher wird eine YAML-Datei empfohlen, wenn Ihre Bereitstellung nur Containerinstanzen enthält.
+
+Mit dem Azure CLI-Befehl [az container export][az-container-export] können Sie die Konfiguration einer Containergruppe in eine YAML-Datei exportieren, um diese beizubehalten. Durch den Export können Sie die Konfiguration einer Containergruppe in der Versionskontrolle für „Konfiguration als Code“ speichern. Oder Sie können die exportierte Datei als Ausgangspunkt bei der Entwicklung einer neuen Konfiguration in YAML verwenden.
 
 ## <a name="resource-allocation"></a>Ressourcenzuteilung
 
@@ -110,3 +112,4 @@ Informieren Sie sich über das Bereitstellen einer Gruppe mit mehreren Container
 [azure-files]: container-instances-volume-azure-files.md
 [virtual-network]: container-instances-vnet.md
 [gpus]: container-instances-gpu.md
+[az-container-export]: /cli/azure/container#az-container-export

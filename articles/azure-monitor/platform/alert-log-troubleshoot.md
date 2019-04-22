@@ -1,5 +1,5 @@
 ---
-title: Behandeln von Aktivitätsprotokollwarnungen in Azure Monitor
+title: Behandeln von Aktivitätsprotokollwarnungen in Azure Monitor | Microsoft Dokumentation
 description: Allgemeine Probleme, Fehler und deren Behandlung für Protokollwarnungsregeln in Azure.
 author: msvijayn
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 56d76cd43b63a389569ae39c1e987a5fccbb9793
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: aa42e8975432de8ca489cf9b1b6dd509c9fb01c1
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429445"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59005305"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>Behandeln von Aktivitätsprotokollwarnungen in Azure Monitor  
 
@@ -21,7 +21,7 @@ ms.locfileid: "54429445"
 
 Dieser Artikel zeigt die Lösung häufiger Probleme beim Einrichten von Protokollwarnungen in Azure Monitor. Er enthält außerdem Lösungen zu häufig gestellten Fragen bezüglich der Funktionalität oder der Konfiguration von Protokollwarnungen. 
 
-Der Begriff **Protokollwarnungen** beschreibt Warnungen, die basierend auf einer benutzerdefinierten Abfrage in [Log Analytics](../learn/tutorial-viewdata.md) oder [Application Insights](../../azure-monitor/app/analytics.md) ausgelöst werden. Erfahren Sie mehr über Funktionen, Terminologie und Typen unter [Protokollwarnungen – Übersicht](../platform/alerts-unified-log.md).
+Der Begriff **Protokollwarnungen** beschreibt Warnungen, die basierend auf einer Protokollabfrage in einem [Log Analytics-Workspace](../learn/tutorial-viewdata.md) oder in [Application Insights](../../azure-monitor/app/analytics.md) ausgelöst werden. Erfahren Sie mehr über Funktionen, Terminologie und Typen unter [Protokollwarnungen – Übersicht](../platform/alerts-unified-log.md).
 
 > [!NOTE]
 > In diesem Artikel werden keine Fälle berücksichtigt, in denen das Azure-Portal eine ausgelöste Warnungsregel und eine durchgeführte Benachrichtigung über zugeordnete Aktionsgruppen anzeigt. Informationen zu solchen Situationen finden Sie im Artikel zu [Aktionsgruppen](../platform/action-groups.md).
@@ -33,7 +33,7 @@ Im Folgenden finden Sie einige häufige Gründe, warum ein konfigurierter Status
 
 ### <a name="data-ingestion-time-for-logs"></a>Datenerfassungszeit für Protokolle
 
-Die Protokollwarnung führt Ihre Abfrage in regelmäßigen Abständen basierend auf [Log Analytics](../learn/tutorial-viewdata.md) oder [Application Insights](../../azure-monitor/app/analytics.md) aus. Da Log Analytics viele Terabyte an Daten von Tausenden Kunden und aus verschiedenen Quellen auf der ganzen Welt verarbeitet, ist der Dienst anfällig für unterschiedliche zeitliche Verzögerungen. Weitere Informationen finden Sie unter [Datenerfassungszeit in Log Analytics](../platform/data-ingestion-time.md).
+Die Protokollwarnung führt Ihre Abfrage in regelmäßigen Abständen basierend auf [Log Analytics](../learn/tutorial-viewdata.md) oder [Application Insights](../../azure-monitor/app/analytics.md) aus. Da Azure Monitor viele Terabyte an Daten von Tausenden Kunden und aus verschiedenen Quellen auf der ganzen Welt verarbeitet, ist der Dienst anfällig für unterschiedliche zeitliche Verzögerungen. Weitere Informationen finden Sie unter [Protokolldatenerfassungszeit in Azure Monitor](../platform/data-ingestion-time.md).
 
 Um Verzögerungen bei der Datenerfassung zu verringern, wartet das System und wiederholt die Warnungsabfrage mehrere Male, falls die benötigten Daten noch nicht erfasst wurden. Für das System ist eine exponentiell zunehmende Wartezeit festgelegt. Die Protokollwarnung wird erst ausgelöst, sobald die Daten verfügbar sind. Ursache für die Verzögerung kann also eine langsame Protokolldatenerfassung sein. 
 
@@ -84,7 +84,7 @@ Im Folgenden finden Sie einige häufige Gründe, warum eine konfigurierte [Proto
 
 ### <a name="alert-triggered-by-partial-data"></a>Warnung wird durch unvollständige Daten ausgelöst.
 
-Da Analytics (und damit Log Analytics) und Application Insights Verzögerungen bei der Erfassung und Verarbeitung unterliegen, kann es vorkommen, dass zum Ausführungszeitpunkt der angegebenen Protokollwarnungsabfrage keine Daten oder nur ein Teil der Daten verfügbar sind. Weitere Informationen finden Sie unter [Datenerfassungszeit in Log Analytics](../platform/data-ingestion-time.md).
+Da Analytics (und damit Log Analytics) und Application Insights Verzögerungen bei der Erfassung und Verarbeitung unterliegen, kann es vorkommen, dass zum Ausführungszeitpunkt der angegebenen Protokollwarnungsabfrage keine Daten oder nur ein Teil der Daten verfügbar sind. Weitere Informationen finden Sie unter [Protokolldatenerfassungszeit in Azure Monitor](../platform/data-ingestion-time.md).
 
 Abhängig von der Konfiguration der Warnungsregel kann es zu einer fehlerhaften Auslösung kommen, wenn zum Zeitpunkt der Warnungsausführung keine Daten oder nur ein Teil der Daten vorhanden sind. In solchen Fällen ist es empfehlenswert, die Warnungsabfrage oder -konfiguration zu ändern. 
 
@@ -100,4 +100,4 @@ Im Feld **Auszuführende Abfrage** wird das dargestellt, was der Warnungsprotoko
 
 - Erfahren Sie mehr über [Protokollwarnungen in Azure-Warnungen](../platform/alerts-unified-log.md).
 - Weitere Informationen zu [Application Insights](../../azure-monitor/app/analytics.md)
-- Erfahren Sie mehr über [Log Analytics](../../log-analytics/log-analytics-overview.md).
+- Erfahren Sie mehr über [Protokollabfragen](../log-query/log-query-overview.md).

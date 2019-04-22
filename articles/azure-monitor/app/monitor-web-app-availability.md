@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: 9b04ca359a0c71a04e762452fa33345201f37e84
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9f48303396d1ecd03fdffd2c6ab1e0c122615a21
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124319"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59005746"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Überwachen der Verfügbarkeit und Reaktionsfähigkeit von Websites
 Nachdem Sie die Web-App oder Website an einen beliebigen Server bereitgestellt haben, können Sie Tests einrichten, um die Verfügbarkeit und Reaktionsfähigkeit zu überwachen. [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) sendet regelmäßig Webanforderungen von verschiedenen Punkten auf der ganzen Welt an Ihre Anwendung. Sie werden benachrichtigt, wenn Ihre Anwendung langsam oder gar nicht reagiert.
@@ -92,7 +92,7 @@ Verwenden Sie Visual Studio Enterprise, um eine Websitzung aufzuzeichnen.
 
     ![Erstellen Sie in der Visual Studio Enterprise Edition ein Projekt aus der Vorlage für Webleistungs- und Auslastungstests.](./media/monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
 
-   * *Wird die Vorlage für Webleistungs- und Auslastungstests nicht angezeigt?* - Schließen Sie Visual Studio Enterprise. Öffnen Sie den **Visual Studio-Installer**, um Ihre Visual Studio Enterprise-Installation zu ändern. Wählen Sie unter **Einzelne Komponenten** die Option **Tools für Webleistung und Auslastungstests**.
+   * *Die Vorlage für Webleistungs- und Auslastungstests wird nicht angezeigt.* - Schließen Sie Visual Studio Enterprise. Öffnen Sie den **Visual Studio-Installer**, um Ihre Visual Studio Enterprise-Installation zu ändern. Wählen Sie unter **Einzelne Komponenten** die Option **Tools für Webleistung und Auslastungstests**.
 
 2. Öffnen Sie die .webtest-Datei und starten Sie die Aufzeichnung.
 
@@ -167,7 +167,7 @@ Sie können Filter auf den Testnamen oder Standort anwenden, um Trends eines bes
 
 ## <a name="edit"></a> Überprüfen und Bearbeiten der Tests
 
-Wählen Sie auf der Registerkarte „Details“ für einen bestimmten Test die Auslassungspunkte ganz rechts aus, um ihn zu bearbeiten, vorübergehend zu deaktivieren, zu löschen oder um einen Webtest herunterzuladen.
+Wählen Sie auf der Registerkarte „Details“ für einen bestimmten Test die Auslassungspunkte ganz rechts aus, um ihn zu bearbeiten, vorübergehend zu deaktivieren, zu löschen oder um einen Webtest herunterzuladen. Es kann bis zu 20 Minuten dauern, bevor Konfigurationsänderungen weitergegeben werden.
 
 Wählen Sie für einen bestimmten Test **Testdetails anzeigen** aus, um sein Punktdiagramm und spezifische Teststandortdetails anzuzeigen.
 
@@ -305,7 +305,7 @@ Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 
     * Haben allel Standorte Fehler gemeldet oder nur einige? Wenn nur einige Standorte Fehler gemeldet haben, kann es an Netzwerk-/CDN-Problemen liegen. Auch in diesem Fall sollte das Klicken auf die roten Punkte Ihnen zu einem besseren Verständnis verhelfen, warum der Standort Fehler gemeldet hat.
 
-* *Ich habe keine E-Mail erhalten, als die Warnung ausgelöst oder behoben wurde, oder beides?*
+* *Ich habe keine E-Mail erhalten, als die Warnung ausgelöst und/oder behoben wurde.*
 
     Überprüfen Sie die klassische Warnungskonfiguration, um zu bestätigen, dass Ihre E-Mail-Adresse direkt aufgeführt ist, oder dass eine Verteilerliste, deren Mitglied Sie sind, für den Empfang von Benachrichtigungen konfiguriert ist. Ist dies der Fall, überprüfen Sie die Konfiguration der Verteilerliste, um zu bestätigen, dass sie externe E-Mails empfangen kann. Überprüfen Sie außerdem, ob Ihr E-Mail-Administrator eventuell Richtlinien konfiguriert hat, die dieses Problem verursachen können.
 
@@ -313,7 +313,7 @@ Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 
     Überprüfen Sie, ob die Anwendung, die die Webhookbenachrichtigung empfängt, verfügbar ist und die Webhookanforderungen erfolgreich verarbeitet. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook).
 
-* *Zeitweiliger Testfehler aufgrund einer Protokollverletzung?*
+* *Ein zeitweiliger Testfehler aufgrund einer Protokollverletzung ist aufgetreten.*
 
     Der Fehler („protocol violation..CR must be followed by LF“) weist auf ein Problem mit dem Server (oder mit Abhängigkeiten) hin. Er wird angezeigt, wenn falsch formatierte Header in der Antwort festgelegt werden. Der Fehler kann durch Lastenausgleichsmodule oder CDNs verursacht werden. Genauer gesagt geben einige Header unter Umständen das Zeilenende nicht mit CRLF an, was gegen die HTTP-Spezifikation verstößt. Daher schlägt die Validierung auf .NET-WebRequest-Ebene fehl. Überprüfen Sie die Antwort, um Header zu ermitteln, die gegen diese Spezifikation verstoßen.
     
@@ -325,7 +325,7 @@ Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 
 * *Kann ich Code aus meinem Webtest aufrufen?*
 
-    Nein. Die Schritte des Tests müssen in der Webtest-Datei enthalten sein. Und Sie können keine anderen Webtests aufrufen oder Schleifen verwenden. Aber es gibt mehrere hilfreiche Plug-Ins.
+     Nein. Die Schritte des Tests müssen in der Webtest-Datei enthalten sein. Und Sie können keine anderen Webtests aufrufen oder Schleifen verwenden. Aber es gibt mehrere hilfreiche Plug-Ins.
 
 * *Wird HTTPS unterstützt?*
 
@@ -342,7 +342,7 @@ Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
     * Konfigurieren Sie die Firewall so, dass eingehende Anforderungen von den [IP-Adressen der Webtest-Agents](../../azure-monitor/app/ip-addresses.md) zugelassen werden.
     * Schreiben Sie eigenen Code zum regelmäßigen Testen Ihres internen Servers. Führen Sie den Code als Hintergrundprozess auf einem Testserver hinter Ihrer Firewall aus. Die Ergebnisse des Testvorgangs können an Application Insights gesendet werden, indem die [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability)-API im Core SDK-Paket verwendet wird. Hierfür ist es erforderlich, dass Ihr Testserver Zugriff in ausgehender Richtung auf den Application Insights-Erfassungsendpunkt hat. Dies ist aber ein deutlich geringeres Sicherheitsrisiko als bei der Alternativlösung, bei der eingehende Anforderungen zugelassen werden. Die Ergebnisse werden nicht auf den Blättern der Verfügbarkeitswebtests angezeigt, sondern als Verfügbarkeitsergebnisse in Analytics, Search und Metrik-Explorer.
 
-* *Fehler beim Hochladen eines Webtests mit mehreren Schritten*
+* *Fehler beim Hochladen eines mehrstufigen Webtests*
 
     Einige Gründe, warum dies geschehen kann:
     * Die Größenbeschränkung beträgt 300 K.
@@ -350,7 +350,7 @@ Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
     * Verweise auf andere Webtests werden nicht unterstützt.
     * Datenquellen werden nicht unterstützt.
 
-* *Test mit mehreren Schritten wird nicht abgeschlossen*
+* *Mein mehrstufiger Test wird nicht abgeschlossen.*
 
     Pro Test können maximal 100 Anforderungen verwendet werden. Der Test wird außerdem beendet, wenn seine Ausführung länger als zwei Minuten dauert.
 

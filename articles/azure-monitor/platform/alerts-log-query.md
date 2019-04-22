@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: bwren
 ms.subservice: alerts
-ms.openlocfilehash: 53cd84d669a3f14d5ac028cc29ae483962860f72
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 429770b7651a93473c03f5e386d8f7b72692c161
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447213"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006101"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Abfragen von Protokollwarnungen in Azure Monitor
 [Warnungsregeln, die auf Azure Monitor-Protokollen basieren](alerts-unified-log.md), werden in regelmäßigen Abständen ausgeführt. Sie sollten deshalb sicherstellen, dass sie so geschrieben sind, dass Mehraufwand und Latenz minimiert werden. Dieser Artikel enthält Empfehlungen zum Schreiben effizienter Abfragen für Protokollwarnungen und einen Prozess zum Konvertieren vorhandener Abfragen. 
 
 ## <a name="types-of-log-queries"></a>Typen von Protokollabfragen
-[Abfragen in Log Analytics](../log-query/log-query-overview.md) beginnen entweder mit einer Tabelle oder einem [search](/azure/kusto/query/searchoperator)- oder [union](/azure/kusto/query/unionoperator)-Operator.
+[Protokollabfragen in Azure Monitor](../log-query/log-query-overview.md) beginnen entweder mit einer Tabelle oder einem [search](/azure/kusto/query/searchoperator)- oder [union](/azure/kusto/query/unionoperator)-Operator.
 
 Beispielsweise ist die folgende Abfrage auf die Tabelle _SecurityEvent_ beschränkt und sucht nach einer bestimmten Ereignis-ID. Dies ist die einzige Tabelle, die von der Abfrage verarbeitet werden muss.
 

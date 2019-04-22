@@ -1,6 +1,6 @@
 ---
 title: Webhookaktionen für Protokollwarnungen in Azure-Warnungen
-description: In diesem Artikel wird beschrieben, wie eine Protokollwarnungsregel mit Log Analytics oder Application Insights per Pushvorgang Daten als HTTP-Webhook überträgt, und es werden Details zu den verschiedenen möglichen Anpassungen erläutert.
+description: In diesem Artikel wird beschrieben, wie eine Protokollwarnungsregel mit einem Log Analytics-Workspace oder mit Application Insights per Pushvorgang Daten als HTTP-Webhook überträgt, und es werden Details zu den verschiedenen möglichen Anpassungen erläutert.
 author: msvijayn
 services: monitoring
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: a592dc150d535df775a62c157f76f327b54240fd
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 2307fa985c88608d80400c8951c47b9f20caa1dc
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58496087"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006618"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhookaktionen für Protokollwarnungsregeln
 Wenn eine [Protokollwarnung in Azure erstellt](alerts-log.md) wird, haben Sie die Möglichkeit [mithilfe von Aktionsgruppen die Ausführung von Aktionen zu konfigurieren](action-groups.md).  Dieser Artikel beschreibt die verschiedenen verfügbaren Webhookaktionen und Details zur Konfiguration des benutzerdefinierten JSON-basierten Webhooks.
@@ -202,5 +202,5 @@ Im Folgenden sehen Sie eine Beispielnutzlast für eine benutzerdefinierte Webhoo
 - Grundlegendes zur [Verwaltung von Protokollwarnungen in Azure](alerts-log.md)
 - Erstellen und Verwalten von [Aktionsgruppen in Azure](action-groups.md)
 - Weitere Informationen zu [Application Insights](../../azure-monitor/app/analytics.md)
-- Erfahren Sie mehr über [Log Analytics](../../azure-monitor/log-query/log-query-overview.md). 
+- Weitere Informationen zum [Analysieren von Protokolldaten in Azure Monitor](../log-query/log-query-overview.md). 
 

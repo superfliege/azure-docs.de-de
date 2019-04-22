@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 139c5d47fe6ea82148e2d5e1cf2f5fcb72d4020e
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: f825cf8f381a7a2974b150a74a091412b24b09bc
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339396"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59005171"
 ---
 # <a name="enable-custom-pronunciation"></a>Aktivieren der benutzerdefinierten Aussprache
 
@@ -63,7 +63,7 @@ Die benutzerdefinierte Aussprache wird derzeit nur für US-amerikanisches Englis
 Eine Darstellungsform kann ausschließlich ein benutzerdefiniertes Wort, ein Akronym oder ein Kompositum sein, bei dem existierende Wörter zusammengesetzt werden.
 
 >[!NOTE]
->Es wird davon abgeraten, dieses Feature zur Umformulierung häufig verwendeter Wörter oder zur Änderung der gesprochenen Form zu verwenden. Falls besondere Wörter (z.B. Abkürzungen, Fachwörter und Fremdwörter) nicht korrekt decodiert werden, wird empfohlen, den Decoder auszuführen. Werden diese korrekt decodiert, fügen Sie sie der Datei für die benutzerdefinierte Aussprache hinzu. Im Sprachmodell sollten Sie stets und ausschließlich die Darstellungsform eines Worts verwenden.
+>Es wird davon abgeraten, dieses Feature zur Umformulierung häufig verwendeter Wörter oder zur Änderung der gesprochenen Form zu verwenden. Es empfiehlt sich, zu prüfen, ob besondere Wörter (z.B. Abkürzungen, Fachwörter und Fremdwörter) nicht korrekt transkribiert werden, bevor das Feature verwendet wird. Werden diese korrekt decodiert, fügen Sie sie der Datei für die benutzerdefinierte Aussprache hinzu. Im Sprachmodell sollten Sie stets und ausschließlich die Darstellungsform eines Worts verwenden.
 
 ## <a name="requirements-for-the-file-size"></a>Anforderungen für die Dateigröße
 Die Größe der TXT-Datei, die die Einträge für die Aussprache enthält, ist auf 1 Megabyte (1 KB bei Schlüsseln in einem kostenlosen Tarif) beschränkt. In der Regel müssen keine großen Datenmengen über diese Datei hochgeladen werden. Die meisten benutzerdefinierten Aussprachedateien nehmen allenfalls nur wenige Kilobyte (KBs) in Anspruch. Als Codierung der TXT-Datei für alle Gebietsschemas sollte die UTF-8-BOM verwendet werden. Für das englische Gebietsschema kann auch der ANSI-Zeichensatz verwendet werden.

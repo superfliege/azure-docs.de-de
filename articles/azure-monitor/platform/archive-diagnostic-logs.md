@@ -76,7 +76,7 @@ Set-AzDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-89012
 
 | Eigenschaft | Erforderlich | BESCHREIBUNG |
 | --- | --- | --- |
-| ResourceId |Ja |Ressourcen-ID der Ressource, für die Sie eine Diagnoseeinstellung festlegen möchten |
+| resourceId |Ja |Ressourcen-ID der Ressource, für die Sie eine Diagnoseeinstellung festlegen möchten |
 | StorageAccountId |Nein  |Ressourcen-ID des Speicherkontos, in dem Diagnoseprotokolle gespeichert werden sollen |
 | Categories |Nein  |Durch Trennzeichen getrennte Liste der zu aktivierenden Protokollkategorien |
 | Enabled |Ja |Boolescher Wert, der angibt, ob die Diagnose für diese Ressource aktiviert oder deaktiviert werden soll |

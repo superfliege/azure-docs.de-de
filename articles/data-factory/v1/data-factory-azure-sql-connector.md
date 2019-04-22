@@ -641,9 +641,9 @@ Beim Verschieben von Daten in und aus Azure SQL-Datenbank werden die folgenden Z
 | binary |Byte[] |
 | bit |Boolean |
 | char |String, Char[] |
-| date |DateTime |
-| Datetime |DateTime |
-| datetime2 |DateTime |
+| date |Datetime |
+| Datetime |Datetime |
+| datetime2 |Datetime |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
@@ -657,7 +657,7 @@ Beim Verschieben von Daten in und aus Azure SQL-Datenbank werden die folgenden Z
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
-| smalldatetime |DateTime |
+| smalldatetime |Datetime |
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object * |
@@ -668,7 +668,7 @@ Beim Verschieben von Daten in und aus Azure SQL-Datenbank werden die folgenden Z
 | uniqueidentifier |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
-| xml |Xml |
+| Xml |Xml |
 
 ## <a name="map-source-to-sink-columns"></a>Zuordnen von Quell- zur Senkenspalten
 Weitere Informationen zum Zuordnen von Spalten im Quelldataset zu Spalten im Senkendataset finden Sie unter [Zuordnen von Datasetspalten in Azure Data Factory](data-factory-map-columns.md).
