@@ -4,9 +4,15 @@ description: Informationen zu Verwaltungsgruppen und ihrer Verwendung sowie zur 
 author: rthorn17
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.service: azure-resource-manager
-ms.date: 02/20/2019
+ms.date: 04/17/2019
 ms.author: rithorn
 ms.topic: overview
+ms.openlocfilehash: 157701e826d6a281a60393e1ec270cf061be8214
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699380"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen
 
@@ -37,11 +43,11 @@ Eine Zuweisung in der Verwaltungsgruppe kann Benutzern den Zugriff auf alles erm
 ## <a name="root-management-group-for-each-directory"></a>Stammverwaltungsgruppe für jedes Verzeichnis
 
 Jedes Verzeichnis erhält eine einzelne Verwaltungsgruppe auf oberster Ebene, die als Stammverwaltungsgruppe bezeichnet wird.
-Die Stammverwaltungsgruppe ist in die Hierarchie integriert, sodass ihr alle Verwaltungsgruppen und Abonnements untergeordnet sind. Diese Stammverwaltungsgruppe ermöglicht das Anwenden von globalen Richtlinien und RBAC-Zuweisungen auf Verzeichnisebene. Der [globale Azure AD-Administrator muss seine eigenen Rechte erhöhen](../../role-based-access-control/elevate-access-global-admin.md), um der erste Besitzer dieser Stammgruppe zu sein. Sobald der Administrator der Besitzer der Gruppe ist, kann er jede RBAC-Rolle anderen Benutzern oder Gruppen des Verzeichnisses zuweisen, um die Hierarchie zu verwalten.
+Die Stammverwaltungsgruppe ist in die Hierarchie integriert, sodass ihr alle Verwaltungsgruppen und Abonnements untergeordnet sind. Diese Stammverwaltungsgruppe ermöglicht das Anwenden von globalen Richtlinien und RBAC-Zuweisungen auf Verzeichnisebene. Der [globale Azure AD-Administrator muss zu Beginn seine eigenen Rechte erhöhen](../../role-based-access-control/elevate-access-global-admin.md) – und zwar auf die Rolle des Benutzerzugriffsadministrators dieser Stammgruppe. Nach der Erhöhung der Zugriffsrechte kann der Administrator jede RBAC-Rolle anderen Benutzern oder Gruppen des Verzeichnisses zuweisen, um die Hierarchie zu verwalten. Als Administrator können Sie Ihr eigenes Konto als Besitzer der Stammverwaltungsgruppe zuweisen.
 
 ### <a name="important-facts-about-the-root-management-group"></a>Wichtige Fakten zur Stammverwaltungsgruppe
 
-- Der Name und die ID der Stammverwaltungsgruppe werden standardmäßig vergeben. Der Anzeigename kann jederzeit aktualisiert werden, damit er im Azure-Portal entsprechend angezeigt wird.
+- Der Name und die ID der Stammverwaltungsgruppe werden standardmäßig vergeben. Der Anzeigename kann jederzeit aktualisiert werden, damit er im Azure-Portal entsprechend angezeigt wird. Damit Sie den [Namen ändern](manage.md#change-the-name-of-a-management-group) können, muss Ihrem Konto die Rolle „Besitzer“ oder „Mitwirkender“ für die Stammverwaltungsgruppe zugewiesen sein.
   - Der Name lautet „Mandantenstammgruppe“.
   - Die ID ist die Azure Active Directory-ID.
 - Die Stammverwaltungsgruppe kann im Gegensatz zu anderen Verwaltungsgruppen nicht verschoben oder gelöscht werden.  
@@ -63,7 +69,7 @@ Wenn ein Benutzer mit der Verwendung von Verwaltungsgruppen beginnt, findet ein 
 
 ## <a name="trouble-seeing-all-subscriptions"></a>Probleme beim Anzeigen aller Abonnements
 
-Bei einigen Verzeichnissen, bei denen früh in der Vorschauphase (vor dem 25. Juni 2018) mit der Verwendung von Verwaltungsgruppen begonnen wurde, trat ein Problem auf, aufgrund dessen die Abonnements nicht in der Hierarchie enthalten waren.  Die Prozesse zum Aufnehmen von Abonnements in die Hierarchie wurden implementiert, nachdem eine Rollen- oder Richtlinienzuweisung für die Stammverwaltungsgruppe im Verzeichnis durchgeführt wurde.
+Bei einigen Verzeichnissen, bei denen früh in der Vorschauphase (vor dem 25. Juni 2018) mit der Verwendung von Verwaltungsgruppen begonnen wurde, trat ein Problem auf, aufgrund dessen nicht alle Abonnements in der Hierarchie enthalten waren. Der Prozess zum Aufnehmen von Abonnements in die Hierarchie wurde implementiert, nachdem eine Rollen- oder Richtlinienzuweisung für die Stammverwaltungsgruppe im Verzeichnis durchgeführt wurde. 
 
 ### <a name="how-to-resolve-the-issue"></a>So lösen Sie das Problem:
 

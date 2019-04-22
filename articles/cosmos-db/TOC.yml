@@ -1,675 +1,674 @@
-items:
 - name: Dokumentation für Azure Cosmos DB
   href: index.yml
 - name: Übersicht
   items:
-  - name: Willkommen bei Azure Cosmos DB
-    href: introduction.md
+    - name: Willkommen bei Azure Cosmos DB
+      href: introduction.md
 - name: Schnellstarts
-  items:
-  - name: .NET
-    href: create-sql-api-dotnet.md
-  - name: .NET (Vorschauversion)
-    href: create-sql-api-dotnet-preview.md
-  - name: Java
-    href: create-sql-api-java.md
-  - name: Node.js
-    href: create-sql-api-nodejs.md
-  - name: Python
-    href: create-sql-api-python.md
-  - name: Xamarin
-    href: create-sql-api-xamarin-dotnet.md
   expanded: true
+  items:
+    - name: .NET
+      href: create-sql-api-dotnet.md
+    - name: .NET (Vorschauversion)
+      href: create-sql-api-dotnet-preview.md
+    - name: Java
+      href: create-sql-api-java.md
+    - name: Node.js
+      href: create-sql-api-nodejs.md
+    - name: Python
+      href: create-sql-api-python.md
+    - name: Xamarin
+      href: create-sql-api-xamarin-dotnet.md
 - name: Lernprogramme
   items:
-  - name: 1. Erstellen und Verwalten von Daten
-    items:
-    - name: Erstellen einer Konsolen-App
+    - name: 1. Erstellen und Verwalten von Daten
       items:
-      - name: .NET
-        href: sql-api-get-started.md
-      - name: .NET (Vorschauversion)
-        href: sql-api-dotnet-get-started-preview.md
-      - name: .NET Core
-        href: sql-api-dotnetcore-get-started.md
-      - name: .NET Core (Vorschauversion)
-        href: sql-api-dotnet-core-get-started-preview.md
-      - name: Java
-        href: sql-api-java-get-started.md
-      - name: Async Java
-        href: sql-api-async-java-get-started.md
-      - name: Node.js
-        href: sql-api-nodejs-get-started.md
-    - name: Erstellen einer Web-App
-      items:
-      - name: .NET
-        href: sql-api-dotnet-application.md
-      - name: .NET (Vorschauversion)
-        href: sql-api-dotnet-application-preview.md
-      - name: Java
-        href: sql-api-java-application.md
-      - name: Node.js
-        href: sql-api-nodejs-application.md
-      - name: Xamarin
-        href: mobile-apps-with-xamarin.md
-  - name: 2. Migrieren von Daten
-    displayName: import
-    href: import-data.md
-  - name: 3. Abfragen von Daten
-    href: tutorial-query-sql-api.md
-  - name: 4. Globale Verteilung von Daten
-    href: tutorial-global-distribution-sql-api.md
+        - name: Erstellen einer Konsolen-App
+          items:
+            - name: .NET
+              href: sql-api-get-started.md
+            - name: .NET (Vorschauversion)
+              href: sql-api-dotnet-get-started-preview.md
+            - name: .NET Core
+              href: sql-api-dotnetcore-get-started.md
+            - name: .NET Core (Vorschauversion)
+              href: sql-api-dotnet-core-get-started-preview.md
+            - name: Java
+              href: sql-api-java-get-started.md
+            - name: Async Java
+              href: sql-api-async-java-get-started.md
+            - name: Node.js
+              href: sql-api-nodejs-get-started.md
+        - name: Erstellen einer Web-App
+          items:
+            - name: .NET
+              href: sql-api-dotnet-application.md
+            - name: .NET (Vorschauversion)
+              href: sql-api-dotnet-application-preview.md
+            - name: Java
+              href: sql-api-java-application.md
+            - name: Node.js
+              href: sql-api-nodejs-application.md
+            - name: Xamarin
+              href: mobile-apps-with-xamarin.md
+    - name: 2. Migrieren von Daten
+      displayName: import
+      href: import-data.md
+    - name: 3. Abfragen von Daten
+      href: tutorial-query-sql-api.md
+    - name: 4. Globale Verteilung von Daten
+      href: tutorial-global-distribution-sql-api.md
 - name: Beispiele
   items:
-  - name: Beispiele für .NET
-    href: sql-api-dotnet-samples.md
-  - name: Beispiele für Java
-    href: sql-api-java-samples.md
-  - name: Async Java-Beispiele
-    href: sql-api-async-java-samples.md
-  - name: Beispiele für Node.js
-    href: sql-api-nodejs-samples.md
-  - name: Python-Beispiele
-    href: sql-api-python-samples.md
-  - name: PowerShell
-    href: powershell-samples.md
-  - name: Azure-Befehlszeilenschnittstelle
-    href: cli-samples.md
+    - name: Beispiele für .NET
+      href: sql-api-dotnet-samples.md
+    - name: Beispiele für Java
+      href: sql-api-java-samples.md
+    - name: Async Java-Beispiele
+      href: sql-api-async-java-samples.md
+    - name: Beispiele für Node.js
+      href: sql-api-nodejs-samples.md
+    - name: Python-Beispiele
+      href: sql-api-python-samples.md
+    - name: PowerShell
+      href: powershell-samples.md
+    - name: Azure-Befehlszeilenschnittstelle
+      href: cli-samples.md
 - name: Konzepte
   items:
-  - name: Globale Verteilung
-    items:
-    - name: Übersicht
-      displayName: replication, replicate, geo distribution
-      href: distribute-data-globally.md
-    - name: Konsistenzebenen
-      displayName: session, consistency prefix, strong, eventual, bounded staleness
-      href: consistency-levels.md
-    - name: Auswählen der richtigen Konsistenzebene
-      displayName: session, consistency prefix, strong, eventual, bounded staleness
-      href: consistency-levels-choosing.md
-    - name: Konsistenzebenen und Azure Cosmos DB-APIs
-      href: consistency-levels-across-apis.md
-    - name: Kompromisse in Bezug auf Konsistenz, Verfügbarkeit und Leistung
-      href: consistency-levels-tradeoffs.md
-    - name: Hochverfügbarkeit
-      href: high-availability.md
-    - name: Globales Skalieren von bereitgestelltem Durchsatz
-      displayName: request units, RUs, RU
-      href: scaling-throughput.md
-    - name: Konflikttypen und Konfliktauflösungsrichtlinien
-      displayName: last write wins, custom
-      href: conflict-resolution-policies.md
-    - name: 'Globale Verteilung: Hintergrundinformationen'
-      href: global-dist-under-the-hood.md
-    - name: Regionale Präsenz
-      href: regional-presence.md
-  - name: Partitionierung
-    items:
-    - name: Übersicht
-      href: partitioning-overview.md
-    - name: Partitionierung und horizontale Skalierung
-      href: partition-data.md
-    - name: Erstellen eines synthetischen Partitionsschlüssels
-      href: synthetic-partition-keys.md
-  - name: Bereitgestellter Durchsatz
-    items:
-    - name: Anforderungseinheiten
-      displayName: RUs, RU
-      href: request-units.md
-    - name: Bereitstellen des Durchsatzes für Container und Datenbanken
-      displayName: request units, RUs, RU, limits, database throughput, shared throughput, container throughput
-      href: set-throughput.md
-  - name: Arbeiten mit einem Azure Cosmos-Konto
-    href: account-overview.md
-  - name: Container und Elemente
-    items:
-    - name: Arbeiten mit Datenbanken, Containern und Elementen
-      displayName: collection, document
-      href: databases-containers-items.md
-    - name: SQL-Referenz
-      displayName: collection, document
-      href: sql-api-query-reference.md
-    - name: Beispiele für SQL-Abfragen
-      displayName: collection, document, order by, where, top, value, aggregate, between, scalar, join, count, contains
-      href: how-to-sql-query.md
-    - name: Modelldokumentdaten
-      displayName: document
-      href: modeling-data.md
-    - name: Indizierung
+    - name: Globale Verteilung
       items:
-      - name: Übersicht
-        href: index-overview.md
-      - name: Indexrichtlinie
-        displayName: consistent, none
-        href: index-policy.md
-      - name: Indextypen
-        displayName: hash, range, spatial
-        href: index-types.md
-      - name: Indexpfade
-        href: index-paths.md
-    - name: Änderungsfeed
+        - name: Übersicht
+          displayName: 'replication, replicate, geo distribution'
+          href: distribute-data-globally.md
+        - name: Konsistenzebenen
+          displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
+          href: consistency-levels.md
+        - name: Auswählen der richtigen Konsistenzebene
+          displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
+          href: consistency-levels-choosing.md
+        - name: Konsistenzebenen und Azure Cosmos DB-APIs
+          href: consistency-levels-across-apis.md
+        - name: 'Kompromisse in Bezug auf Konsistenz, Verfügbarkeit und Leistung'
+          href: consistency-levels-tradeoffs.md
+        - name: Hochverfügbarkeit
+          href: high-availability.md
+        - name: Globales Skalieren von bereitgestelltem Durchsatz
+          displayName: 'request units, RUs, RU'
+          href: scaling-throughput.md
+        - name: Konflikttypen und Konfliktauflösungsrichtlinien
+          displayName: 'last write wins, custom'
+          href: conflict-resolution-policies.md
+        - name: 'Globale Verteilung: Hintergrundinformationen'
+          href: global-dist-under-the-hood.md
+        - name: Regionale Präsenz
+          href: regional-presence.md
+    - name: Partitionierung
       items:
-      - name: Übersicht
-        href: change-feed.md
-      - name: Lesen des Änderungsfeeds
-        href: read-change-feed.md
-      - name: Change Feed Processor
-        href: change-feed-processor.md
-      - name: Auslösen von Azure Functions
-        displayName: change feed
-        href: change-feed-functions.md
-    - name: Gültigkeitsdauer
-      displayName: delete, delete data, ttl
-      href: time-to-live.md
-    - name: Einschränkungen für eindeutige Schlüssel
-      href: unique-keys.md
-    - name: Transaktionen und Steuerung für optimistische Nebenläufigkeit
-      href: database-transactions-optimistic-concurrency.md
-  - name: Serverseitige Programmierung
-    items:
-    - name: Gespeicherte Prozeduren, Trigger und UDFs
-      href: stored-procedures-triggers-udfs.md
-    - name: JavaScript-Abfrage-API
-      href: javascript-query-api.md
-  - name: Optimieren der Kosten für Azure Cosmos DB
-    items:
-    - name: Preismodell
-      href: how-pricing-works.md
-    - name: Gesamtkosten
-      href: total-cost-ownership.md
-    - name: Erläuterungen zur Rechnung
-      href: understand-your-bill.md
-    - name: Optimieren der Kosten für den bereitgestellten Durchsatz
-      displayName: request units, RUs, RU
-      href: optimize-cost-throughput.md
-    - name: Optimieren der Abfragekosten
-      href: optimize-cost-queries.md
-    - name: Optimieren der Speicherkosten
-      href: optimize-cost-storage.md
-    - name: Optimieren der Kosten für Lese- und Schreibvorgänge
-      href: optimize-cost-reads-writes.md
-    - name: Optimieren von Kosten für mehrere Regionen
-      href: optimize-cost-regions.md
-    - name: Optimieren der Kosten für Entwicklung/Tests
-      href: optimize-dev-test.md
-    - name: Optimieren der Kosten mit Reservekapazität
-      href: cosmos-db-reserved-capacity.md
-  - name: Sicherheit
-    items:
-    - name: Übersicht
-      href: database-security.md
-    - name: Datenverschlüsselung
-      href: database-encryption-at-rest.md
-    - name: Sicherer Zugriff auf Daten
-      displayName: master key, resource token, users, roles
-      href: secure-access-to-data.md
-    - name: IP-Firewall
-      href: firewall-support.md
-    - name: Zugriff über virtuelle Netzwerke
-      href: vnet-service-endpoint.md
-  - name: Unternehmensfähigkeit
-    items:
-    - name: Onlinesicherung und bedarfsgesteuerte Wiederherstellung
-      href: online-backup-and-restore.md
-    - name: Compliance
-      href: compliance.md
-- name: Cassandra- und MongoDB-API sowie weitere APIs
-  items:
-  - name: Azure Cosmos DB-API für MongoDB
-    items:
-    - name: Einführung
-      href: mongodb-introduction.md
-    - name: Wire Protocol-Unterstützung
-      href: mongodb-feature-support.md
-    - name: Schnellstarts
+        - name: Übersicht
+          href: partitioning-overview.md
+        - name: Partitionierung und horizontale Skalierung
+          href: partition-data.md
+        - name: Erstellen eines synthetischen Partitionsschlüssels
+          href: synthetic-partition-keys.md
+    - name: Bereitgestellter Durchsatz
       items:
-      - name: .NET
-        href: create-mongodb-dotnet.md
-      - name: Java
-        href: create-mongodb-java.md
-      - name: Node.js
-        href: create-mongodb-nodejs.md
-      - name: Python
-        href: create-mongodb-flask.md
-      - name: Xamarin
-        href: create-mongodb-xamarin.md
-      - name: Golang
-        href: create-mongodb-golang.md
-    - name: Lernprogramme
+        - name: Anforderungseinheiten
+          displayName: 'RUs, RU'
+          href: request-units.md
+        - name: Bereitstellen des Durchsatzes für Container und Datenbanken
+          displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
+          href: set-throughput.md
+    - name: Arbeiten mit einem Azure Cosmos-Konto
+      href: account-overview.md
+    - name: Container und Elemente
       items:
-      - name: 1. Erstellen und Verwalten von Daten
-        items:
-        - name: NET-Konsolenanwendung
-          href: mongodb-samples.md
-        - name: Node.js- und Angular-App
+        - name: 'Arbeiten mit Datenbanken, Containern und Elementen'
+          displayName: 'collection, document'
+          href: databases-containers-items.md
+        - name: SQL-Referenz
+          displayName: 'collection, document'
+          href: sql-api-query-reference.md
+        - name: Beispiele für SQL-Abfragen
+          displayName: 'collection, document, order by, where, top, value, aggregate, between, scalar, join, count, contains'
+          href: how-to-sql-query.md
+        - name: Modelldokumentdaten
+          displayName: document
+          href: modeling-data.md
+        - name: Indizierung
           items:
-          - name: 'Teil 1: Einführung'
-            href: tutorial-develop-mongodb-nodejs.md
-          - name: 'Teil 2: Erstellen einer Node-App'
-            href: tutorial-develop-mongodb-nodejs-part2.md
-          - name: 'Teil 3: Hinzufügen der Benutzeroberfläche mit Angular'
-            href: tutorial-develop-mongodb-nodejs-part3.md
-          - name: 'Teil 4: Erstellen eines Kontos'
-            href: tutorial-develop-mongodb-nodejs-part4.md
-          - name: 'Teil 5: Herstellen einer Verbindung mit Cosmos DB'
-            href: tutorial-develop-mongodb-nodejs-part5.md
-          - name: 'Teil 6: Ausführen von CRUD-Vorgängen'
-            href: tutorial-develop-mongodb-nodejs-part6.md
-        - name: Node.js- und React-App
-          href: tutorial-develop-mongodb-react.md
-      - name: 2. Migrieren von Daten
-        displayName: import
-        href: https://docs.microsoft.com/azure/dms/tutorial-mongodb-cosmos-db?toc=/azure/cosmos-db/toc.json
-      - name: 3. Abfragen von Daten
-        href: tutorial-query-mongodb.md
-      - name: 4. Globale Verteilung von Daten
-        href: tutorial-global-distribution-mongodb.md
-    - name: Anleitungen
+            - name: Übersicht
+              href: index-overview.md
+            - name: Indexrichtlinie
+              displayName: 'consistent, none'
+              href: index-policy.md
+            - name: Indextypen
+              displayName: 'hash, range, spatial'
+              href: index-types.md
+            - name: Indexpfade
+              href: index-paths.md
+        - name: Änderungsfeed
+          items:
+            - name: Übersicht
+              href: change-feed.md
+            - name: Lesen des Änderungsfeeds
+              href: read-change-feed.md
+            - name: Change Feed Processor
+              href: change-feed-processor.md
+            - name: Auslösen von Azure Functions
+              displayName: change feed
+              href: change-feed-functions.md
+        - name: Gültigkeitsdauer
+          displayName: 'delete, delete data, ttl'
+          href: time-to-live.md
+        - name: Einschränkungen für eindeutige Schlüssel
+          href: unique-keys.md
+        - name: Transaktionen und Steuerung für optimistische Nebenläufigkeit
+          href: database-transactions-optimistic-concurrency.md
+    - name: Serverseitige Programmierung
       items:
-      - name: Abrufen der Verbindungszeichenfolge
-        href: connect-mongodb-account.md
-      - name: Herstellen einer Verbindung mithilfe von Studio 3T
-        href: mongodb-mongochef.md
-      - name: Herstellen einer Verbindung mithilfe von Robomongo
-        href: mongodb-robomongo.md
-      - name: Herstellen einer Verbindung mithilfe von Mongoose
-        href: mongodb-mongoose.md
-      - name: Globales Verteilen von Lesevorgängen
-        displayName: read preference
-        href: mongodb-readpreference.md
-      - name: Gültigkeitsdauer – MongoDB
-        href: mongodb-time-to-live.md
-      - name: Verwalten der Datenindizierung
-        href: mongodb-indexing.md
-      - name: Speichern und Verwalten von Spring-Daten
-        href: /java/azure/spring-framework/configure-spring-data-mongodb-with-cosmos-db
-        maintainContext: true
-      - name: MongoDB-Erweiterungsbefehle
-        displayName: custom commands
-        href: mongodb-custom-commands.md
-  - name: Gremlin-API
-    displayName: graph, graph database
-    items:
-    - name: Einführung
-      href: graph-introduction.md
-    - name: Wire Protocol-Unterstützung
-      href: gremlin-support.md
-    - name: Schnellstarts
+        - name: 'Gespeicherte Prozeduren, Trigger und UDFs'
+          href: stored-procedures-triggers-udfs.md
+        - name: JavaScript-Abfrage-API
+          href: javascript-query-api.md
+    - name: Optimieren der Kosten für Azure Cosmos DB
       items:
-      - name: Gremlin-Konsole
-        href: create-graph-gremlin-console.md
-      - name: .NET
-        href: create-graph-dotnet.md
-      - name: Java
-        href: create-graph-java.md
-      - name: Node.js
-        href: create-graph-nodejs.md
-      - name: Python
-        href: create-graph-python.md
-      - name: PHP
-        href: create-graph-php.md
-    - name: Lernprogramme
+        - name: Preismodell
+          href: how-pricing-works.md
+        - name: Gesamtkosten
+          href: total-cost-ownership.md
+        - name: Erläuterungen zur Rechnung
+          href: understand-your-bill.md
+        - name: Optimieren der Kosten für den bereitgestellten Durchsatz
+          displayName: 'request units, RUs, RU'
+          href: optimize-cost-throughput.md
+        - name: Optimieren der Abfragekosten
+          href: optimize-cost-queries.md
+        - name: Optimieren der Speicherkosten
+          href: optimize-cost-storage.md
+        - name: Optimieren der Kosten für Lese- und Schreibvorgänge
+          href: optimize-cost-reads-writes.md
+        - name: Optimieren von Kosten für mehrere Regionen
+          href: optimize-cost-regions.md
+        - name: Optimieren der Kosten für Entwicklung/Tests
+          href: optimize-dev-test.md
+        - name: Optimieren der Kosten mit Reservekapazität
+          href: cosmos-db-reserved-capacity.md
+    - name: Sicherheit
       items:
-      - name: 1. Abfragen von Daten
-        href: tutorial-query-graph.md
-    - name: Anleitungen
+        - name: Übersicht
+          href: database-security.md
+        - name: Datenverschlüsselung
+          href: database-encryption-at-rest.md
+        - name: Sicherer Zugriff auf Daten
+          displayName: 'master key, resource token, users, roles'
+          href: secure-access-to-data.md
+        - name: IP-Firewall
+          href: firewall-support.md
+        - name: Zugriff über virtuelle Netzwerke
+          href: vnet-service-endpoint.md
+    - name: Unternehmensfähigkeit
       items:
-      - name: Importieren von Diagrammdaten
-        href: bulk-executor-graph-dotnet.md
-      - name: Partitionierung von Diagrammdaten
-        href: graph-partitioning.md
-      - name: Optimieren von Gremlin-Abfragen
-        href: graph-execution-profile.md
-      - name: Speichern und Verwalten von Spring-Daten
-        href: /java/azure/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db
-        maintainContext: true
-  - name: Cassandra-API
-    items:
-    - name: Einführung
-      href: cassandra-introduction.md
-    - name: Wire Protocol-Unterstützung
-      href: cassandra-support.md
-    - name: Schnellstarts
-      items:
-      - name: .NET
-        href: create-cassandra-dotnet.md
-      - name: Java
-        href: create-cassandra-java.md
-      - name: Node.js
-        href: create-cassandra-nodejs.md
-      - name: Python
-        href: create-cassandra-python.md
-    - name: Lernprogramme
-      items:
-      - name: 1. Erstellen und Verwalten von Daten
-        href: create-cassandra-api-account-java.md
-      - name: '2: Laden von Daten'
-        href: cassandra-api-load-data.md
-      - name: 3. Abfragen von Daten
-        href: cassandra-api-query-data.md
-      - name: '4: Migrieren von Daten'
-        displayName: import
-        href: cassandra-import-data.md
-    - name: Anleitungen
-      items:
-      - name: Speichern und Verwalten von Spring-Daten
-        href: /java/azure/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db
-        maintainContext: true
-      - name: Cassandra und Spark
-        items:
-        - name: Einführung
-          href: cassandra-spark-generic.md
-        - name: Herstellen einer Verbindung mit Databricks
-          href: cassandra-spark-databricks.md
-        - name: Herstellen einer Verbindung mit HDInsight
-          href: cassandra-spark-hdinsight.md
-        - name: Erstellen eines Keyspace und einer Tabelle
-          href: cassandra-spark-ddl-ops.md
-        - name: Einfügen von Daten
-          href: cassandra-spark-create-ops.md
-        - name: Lesen von Daten
-          href: cassandra-spark-read-ops.md
-        - name: Durchführen von Upsert für Daten
-          href: cassandra-spark-upsert-ops.md
-        - name: Löschen von Daten
-          href: cassandra-spark-delete-ops.md
-        - name: Aggregationsvorgänge
-          href: cassandra-spark-aggregation-ops.md
-        - name: Kopieren von Tabellendaten
-          href: cassandra-spark-table-copy-ops.md
-  - name: Tabelle-API
-    items:
-    - name: Einführung
-      href: table-introduction.md
-    - name: Schnellstarts
-      items:
-      - name: .NET
-        href: create-table-dotnet.md
-      - name: Java
-        href: create-table-java.md
-      - name: Node.js
-        href: create-table-nodejs.md
-      - name: Python
-        href: create-table-python.md
-    - name: Lernprogramme
-      items:
-      - name: 1. Erstellen und Verwalten von Daten
-        href: tutorial-develop-table-dotnet.md
-      - name: 2. Migrieren von Daten
-        displayName: import
-        href: table-import.md
-      - name: 3. Abfragen von Daten
-        href: tutorial-query-table.md
-      - name: 4. Globale Verteilung von Daten
-        href: tutorial-global-distribution-table.md
-    - name: Beispiele
-      items:
-      - name: .NET
-        href: table-storage-how-to-use-dotnet.md
-      - name: Java
-        href: table-storage-how-to-use-java.md
-      - name: Node.js
-        href: table-storage-how-to-use-nodejs.md
-      - name: Python
-        href: table-storage-how-to-use-python.md
-      - name: PHP
-        href: table-storage-how-to-use-php.md
-      - name: C++
-        href: table-storage-how-to-use-c-plus.md
-      - name: Ruby
-        href: table-storage-how-to-use-ruby.md
-      - name: F#
-        href: https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
-    - name: Anleitungen
-      items:
-      - name: Erstellen von Apps mit der Tabellen-API
-        href: table-support.md
-      - name: Handbuch für den Tabellenspeicherentwurf
-        href: table-storage-design-guide.md
-    - name: Verweis
-      items:
-      - name: .NET
-        href: table-sdk-dotnet.md
-      - name: .NET Standard
-        href: table-sdk-dotnet-standard.md
-      - name: Java
-        href: table-sdk-java.md
-      - name: Node.js
-        href: table-sdk-nodejs.md
-      - name: Python
-        href: table-sdk-python.md
-      - name: Table Storage-REST-APIs
-        href: /rest/api/storageservices/Table-Service-Concepts
+        - name: Onlinesicherung und bedarfsgesteuerte Wiederherstellung
+          href: online-backup-and-restore.md
+        - name: Compliance
+          href: compliance.md
+- name: Cassandra- und MongoDB-API sowie weitere APIs
   expanded: true
+  items:
+    - name: Azure Cosmos DB-API für MongoDB
+      items:
+        - name: Einführung
+          href: mongodb-introduction.md
+        - name: Wire Protocol-Unterstützung
+          href: mongodb-feature-support.md
+        - name: Schnellstarts
+          items:
+            - name: .NET
+              href: create-mongodb-dotnet.md
+            - name: Java
+              href: create-mongodb-java.md
+            - name: Node.js
+              href: create-mongodb-nodejs.md
+            - name: Python
+              href: create-mongodb-flask.md
+            - name: Xamarin
+              href: create-mongodb-xamarin.md
+            - name: Golang
+              href: create-mongodb-golang.md
+        - name: Lernprogramme
+          items:
+            - name: 1. Erstellen und Verwalten von Daten
+              items:
+                - name: NET-Konsolenanwendung
+                  href: mongodb-samples.md
+                - name: Node.js- und Angular-App
+                  items:
+                    - name: 'Teil 1: Einführung'
+                      href: tutorial-develop-mongodb-nodejs.md
+                    - name: 'Teil 2: Erstellen einer Node-App'
+                      href: tutorial-develop-mongodb-nodejs-part2.md
+                    - name: 'Teil 3: Hinzufügen der Benutzeroberfläche mit Angular'
+                      href: tutorial-develop-mongodb-nodejs-part3.md
+                    - name: 'Teil 4: Erstellen eines Kontos'
+                      href: tutorial-develop-mongodb-nodejs-part4.md
+                    - name: 'Teil 5: Herstellen einer Verbindung mit Cosmos DB'
+                      href: tutorial-develop-mongodb-nodejs-part5.md
+                    - name: 'Teil 6: Ausführen von CRUD-Vorgängen'
+                      href: tutorial-develop-mongodb-nodejs-part6.md
+                - name: Node.js- und React-App
+                  href: tutorial-develop-mongodb-react.md
+            - name: 2. Migrieren von Daten
+              displayName: import
+              href: 'https://docs.microsoft.com/azure/dms/tutorial-mongodb-cosmos-db?toc=/azure/cosmos-db/toc.json'
+            - name: 3. Abfragen von Daten
+              href: tutorial-query-mongodb.md
+            - name: 4. Globale Verteilung von Daten
+              href: tutorial-global-distribution-mongodb.md
+        - name: Anleitungen
+          items:
+            - name: Abrufen der Verbindungszeichenfolge
+              href: connect-mongodb-account.md
+            - name: Herstellen einer Verbindung mithilfe von Studio 3T
+              href: mongodb-mongochef.md
+            - name: Herstellen einer Verbindung mithilfe von Robomongo
+              href: mongodb-robomongo.md
+            - name: Herstellen einer Verbindung mithilfe von Mongoose
+              href: mongodb-mongoose.md
+            - name: Globales Verteilen von Lesevorgängen
+              displayName: read preference
+              href: mongodb-readpreference.md
+            - name: Gültigkeitsdauer – MongoDB
+              href: mongodb-time-to-live.md
+            - name: Verwalten der Datenindizierung
+              href: mongodb-indexing.md
+            - name: Speichern und Verwalten von Spring-Daten
+              href: /java/azure/spring-framework/configure-spring-data-mongodb-with-cosmos-db
+              maintainContext: true
+            - name: MongoDB-Erweiterungsbefehle
+              href: mongodb-custom-commands.md
+              displayName: custom commands
+    - name: Gremlin-API
+      displayName: 'graph, graph database'
+      items:
+        - name: Einführung
+          href: graph-introduction.md
+        - name: Wire Protocol-Unterstützung
+          href: gremlin-support.md
+        - name: Schnellstarts
+          items:
+            - name: Gremlin-Konsole
+              href: create-graph-gremlin-console.md
+            - name: .NET
+              href: create-graph-dotnet.md
+            - name: Java
+              href: create-graph-java.md
+            - name: Node.js
+              href: create-graph-nodejs.md
+            - name: Python
+              href: create-graph-python.md
+            - name: PHP
+              href: create-graph-php.md
+        - name: Lernprogramme
+          items:
+            - name: 1. Abfragen von Daten
+              href: tutorial-query-graph.md
+        - name: Anleitungen
+          items:
+            - name: Importieren von Diagrammdaten
+              href: bulk-executor-graph-dotnet.md
+            - name: Partitionierung von Diagrammdaten
+              href: graph-partitioning.md
+            - name: Optimieren von Gremlin-Abfragen
+              href: graph-execution-profile.md
+            - name: Speichern und Verwalten von Spring-Daten
+              href: /java/azure/spring-framework/configure-spring-data-gremlin-java-app-with-cosmos-db
+              maintainContext: true
+    - name: Cassandra-API
+      items:
+        - name: Einführung
+          href: cassandra-introduction.md
+        - name: Wire Protocol-Unterstützung
+          href: cassandra-support.md
+        - name: Schnellstarts
+          items:
+            - name: .NET
+              href: create-cassandra-dotnet.md
+            - name: Java
+              href: create-cassandra-java.md
+            - name: Node.js
+              href: create-cassandra-nodejs.md
+            - name: Python
+              href: create-cassandra-python.md
+        - name: Lernprogramme
+          items:
+            - name: 1. Erstellen und Verwalten von Daten
+              href: create-cassandra-api-account-java.md
+            - name: '2: Laden von Daten'
+              href: cassandra-api-load-data.md
+            - name: 3. Abfragen von Daten
+              href: cassandra-api-query-data.md
+            - name: '4: Migrieren von Daten'
+              displayName: import
+              href: cassandra-import-data.md
+        - name: Anleitungen
+          items:
+            - name: Speichern und Verwalten von Spring-Daten
+              href: /java/azure/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db
+              maintainContext: true
+            - name: Cassandra und Spark
+              items:
+                - name: Einführung
+                  href: cassandra-spark-generic.md
+                - name: Herstellen einer Verbindung mit Databricks
+                  href: cassandra-spark-databricks.md
+                - name: Herstellen einer Verbindung mit HDInsight
+                  href: cassandra-spark-hdinsight.md
+                - name: Erstellen eines Keyspace und einer Tabelle
+                  href: cassandra-spark-ddl-ops.md
+                - name: Einfügen von Daten
+                  href: cassandra-spark-create-ops.md
+                - name: Lesen von Daten
+                  href: cassandra-spark-read-ops.md
+                - name: Durchführen von Upsert für Daten
+                  href: cassandra-spark-upsert-ops.md
+                - name: Löschen von Daten
+                  href: cassandra-spark-delete-ops.md
+                - name: Aggregationsvorgänge
+                  href: cassandra-spark-aggregation-ops.md
+                - name: Kopieren von Tabellendaten
+                  href: cassandra-spark-table-copy-ops.md
+    - name: Tabelle-API
+      items:
+        - name: Einführung
+          href: table-introduction.md
+        - name: Schnellstarts
+          items:
+            - name: .NET
+              href: create-table-dotnet.md
+            - name: Java
+              href: create-table-java.md
+            - name: Node.js
+              href: create-table-nodejs.md
+            - name: Python
+              href: create-table-python.md
+        - name: Lernprogramme
+          items:
+            - name: 1. Erstellen und Verwalten von Daten
+              href: tutorial-develop-table-dotnet.md
+            - name: 2. Migrieren von Daten
+              displayName: import
+              href: table-import.md
+            - name: 3. Abfragen von Daten
+              href: tutorial-query-table.md
+            - name: 4. Globale Verteilung von Daten
+              href: tutorial-global-distribution-table.md
+        - name: Beispiele
+          items:
+            - name: .NET
+              href: table-storage-how-to-use-dotnet.md
+            - name: Java
+              href: table-storage-how-to-use-java.md
+            - name: Node.js
+              href: table-storage-how-to-use-nodejs.md
+            - name: Python
+              href: table-storage-how-to-use-python.md
+            - name: PHP
+              href: table-storage-how-to-use-php.md
+            - name: C++
+              href: table-storage-how-to-use-c-plus.md
+            - name: Ruby
+              href: table-storage-how-to-use-ruby.md
+            - name: 'F#'
+              href: 'https://docs.microsoft.com/dotnet/articles/fsharp/using-fsharp-on-azure/table-storage'
+        - name: Anleitungen
+          items:
+            - name: Erstellen von Apps mit der Tabellen-API
+              href: table-support.md
+            - name: Handbuch für den Tabellenspeicherentwurf
+              href: table-storage-design-guide.md
+        - name: Verweis
+          items:
+            - name: .NET
+              href: table-sdk-dotnet.md
+            - name: .NET Standard
+              href: table-sdk-dotnet-standard.md
+            - name: Java
+              href: table-sdk-java.md
+            - name: Node.js
+              href: table-sdk-nodejs.md
+            - name: Python
+              href: table-sdk-python.md
+            - name: Table Storage-REST-APIs
+              href: /rest/api/storageservices/Table-Service-Concepts
 - name: Anleitungen
   items:
-  - name: Verwalten eines Azure Cosmos-Kontos
-    href: how-to-manage-database-account.md
-  - name: Globale Verteilung
-    items:
-    - name: Konfigurieren von Multimaster
-      href: how-to-multi-master.md
-    - name: Verwalten von Konsistenzebenen
-      displayName: session, consistency prefix, strong, eventual, bounded staleness
-      href: how-to-manage-consistency.md
-    - name: Implementieren der benutzerdefinierten Synchronisierung
-      href: how-to-custom-synchronization.md
-    - name: Konfigurieren von Richtlinien für die Konfliktlösung
-      href: how-to-manage-conflicts.md
-  - name: Bereitgestellter Durchsatz
-    items:
-    - name: Bereitstellen von Durchsatz für einen Container
-      displayName: request units, RUs, RU, collection level
-      href: how-to-provision-container-throughput.md
-    - name: Bereitstellen von Durchsatz für eine Datenbank
-      displayName: request units, RUs, RU, shared throughput, database level
-      href: how-to-provision-database-throughput.md
-    - name: Ermitteln der Gebühr für Anforderungseinheiten
-      displayName: request units, RUs, RU, charge, consumption
-      href: find-request-unit-charge.md
-  - name: Arbeiten mit Containern und Elementen
-    items:
-    - name: Erstellen eines Containers
-      href: how-to-create-container.md
-    - name: Abfragen eines Containers
-      href: how-to-query-container.md
-    - name: 'Datenmodellierung und -partitionierung: praktisches Beispiel'
-      displayName: model, partition, example
-      href: how-to-model-partition-example.md
-    - name: Konfigurieren der Gültigkeitsdauer (TTL)
-      displayName: delete, delete data, ttl
-      href: how-to-time-to-live.md
-    - name: Arbeiten mit Daten unter Verwendung von Azure Storage-Explorer
-      href: storage-explorer.md
-    - name: Arbeiten mit Daten unter Verwendung von Azure Cosmos-Explorer
-      href: data-explorer.md
-    - name: Indizierung
+    - name: Verwalten eines Azure Cosmos-Kontos
+      href: how-to-manage-database-account.md
+    - name: Globale Verteilung
       items:
-      - name: Verwalten der Indizierung
-        href: how-to-manage-indexing-policy.md
-  - name: Serverseitige Programmierung
-    items:
-    - name: Schreiben von gespeicherten Prozeduren, Triggern und UDFs
-      href: how-to-write-stored-procedures-triggers-udfs.md
-    - name: Schreiben von gespeicherten Prozeduren und Triggern mit der JavaScript-Abfrage-API
-      href: how-to-write-javascript-query-api.md
-    - name: Verwenden von gespeicherten Prozeduren, Triggern und UDFs
-      href: how-to-use-stored-procedures-triggers-udfs.md
-  - name: Sicherheit
-    items:
-    - name: Konfigurieren der IP-Firewall
-      href: how-to-configure-firewall.md
-    - name: Konfigurieren des Zugriffs über virtuelle Netzwerke
-      href: how-to-configure-vnet-service-endpoint.md
-    - name: Konfigurieren von CORS (Cross-Origin Resource Sharing)
-      href: how-to-configure-cross-origin-resource-sharing.md
-    - name: Sichern von Azure Cosmos-Schlüsseln mit Key Vault
-      href: access-secrets-from-keyvault.md
-  - name: Unternehmensfähigkeit
-    items:
-    - name: Wiederherstellen von Daten aus einer Sicherung
-      href: how-to-backup-and-restore.md
-  - name: Verwalten von Azure Cosmos DB-Ressourcen
-    items:
-    - name: Verwalten mit PowerShell
-      href: manage-account-with-powershell.md
-    - name: Verwalten mithilfe der Azure-Befehlszeilenschnittstelle
-      href: manage-with-cli.md
-  - name: Protokollierung
-    items:
-    - name: Diagnoseprotokollierung
-      href: logging.md
-    - name: Anwendungsprotokollierung mit Logic Apps
-      href: https://docs.microsoft.com/azure/logic-apps/logic-apps-scenario-error-and-exception-handling?toc=/azure/cosmos-db/toc.json
-  - name: Überwachen
-    items:
-    - name: Mit Metriken überwachen
-      href: use-metrics.md
-    - name: Überwachen von SLAs
-      href: monitor-accounts.md
-  - name: Lokale Entwicklung
-    items:
-    - name: Verwenden des Emulators
-      href: local-emulator.md
-    - name: Exportieren von Zertifikaten
-      href: local-emulator-export-ssl-certificates.md
-    - name: Visual Studio Code-Erweiterung
-      href: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb
-  - name: Einrichten der Azure DevOps-CI/CD-Pipeline
-    href: tutorial-setup-ci-cd.md
-  - name: Datentypen
-    items:
-    - name: DateTime
-      href: working-with-dates.md
-    - name: Geodaten
-      href: geospatial.md
-  - name: Bewährte Methoden
-    items:
-    - name: Leistungstipps
+        - name: Konfigurieren von Multimaster
+          href: how-to-multi-master.md
+        - name: Verwalten von Konsistenzebenen
+          displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
+          href: how-to-manage-consistency.md
+        - name: Implementieren der benutzerdefinierten Synchronisierung
+          href: how-to-custom-synchronization.md
+        - name: Konfigurieren von Richtlinien für die Konfliktlösung
+          href: how-to-manage-conflicts.md
+    - name: Bereitgestellter Durchsatz
       items:
-      - name: Optimieren der Abfrageleistung
-        href: sql-api-query-metrics.md
-      - name: Tipps zur Leistungssteigerung für das .NET SDK
-        href: performance-tips.md
-      - name: Tipps zur Leistungssteigerung für das Java SDK
-        href: performance-tips-java.md
-      - name: Tipps zur Leistungssteigerung für das Async Java SDK
-        href: performance-tips-async-java.md
-      - name: 'Leistungstest: Beispiel-App'
-        href: performance-testing.md
-    - name: Kostengünstige Lese- und Schreibvorgänge
-      href: key-value-store-cost.md
-  - name: Visualisieren von Cosmos DB-Daten
-    items:
-    - name: Verwenden von Power BI
-      href: powerbi-visualize.md
-    - name: Verwenden von Qlik Sense
-      href: visualize-qlik-sense.md
-  - name: Integrieren in andere Azure-Dienste
-    items:
-    - name: 'Änderungsfeed: E-Commerce-Lösung'
-      href: changefeed-ecommerce-solution.md
-    - name: Azure App Service
-      href: create-website.md
-    - name: Azure Search-Indexer
-      href: https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json
-    - name: Azure-Funktionen
+        - name: Bereitstellen von Durchsatz für einen Container
+          displayName: 'request units, RUs, RU, collection level'
+          href: how-to-provision-container-throughput.md
+        - name: Bereitstellen von Durchsatz für eine Datenbank
+          displayName: 'request units, RUs, RU, shared throughput, database level'
+          href: how-to-provision-database-throughput.md
+        - name: Ermitteln der Gebühr für Anforderungseinheiten
+          displayName: 'request units, RUs, RU, charge, consumption'
+          href: find-request-unit-charge.md
+    - name: Arbeiten mit Containern und Elementen
       items:
-      - name: Serverloses Computing
-        href: serverless-computing-database.md
-      - name: Azure Functions-Bindungen
-        href: https://docs.microsoft.com/azure/azure-functions/functions-bindings-cosmosdb?toc=/azure/cosmos-db/toc.json
-    - name: Azure Data Factory
-      href: https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db?toc=/azure/cosmos-db/toc.json
-    - name: Azure Stream Analytics
-      href: ../stream-analytics/stream-analytics-define-outputs.md#azure-cosmos-db
-    - name: Logic Apps und Service Bus
-      href: change-feed-hl7-fhir-logic-apps.md
-    - name: Azure Event Hubs und Azure Storage
-      href: https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md
-    - name: Verwenden von Spring Boot Starter
-      href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
-      maintainContext: true
-    - name: Lambda-Architektur
-      href: lambda-architecture.md
-    - name: Azure Databricks (Spark-Connector)
-      href: spark-connector.md
-    - name: Spark und Kafka
-      href: https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json
-    - name: ODBC-Treiber
-      href: odbc-driver.md
-  - name: BulkExecutor-Bibliothek
-    items:
-    - name: Informationen zur BulkExecutor-Bibliothek
-      href: bulk-executor-overview.md
-    - name: 'BulkExecutor: .NET-Bibliothek'
-      href: bulk-executor-dot-net.md
-    - name: 'BulkExecutor: Java-Bibliothek'
-      href: bulk-executor-java.md
-  - name: Problembehandlung
-    items:
-    - name: Problembehandlung für das Java Async SDK
-      href: troubleshoot-java-async-sdk.md
-    - name: Problembehandlung für das .NET SDK
-      href: troubleshoot-dot-net-sdk.md
+        - name: Erstellen eines Containers
+          href: how-to-create-container.md
+        - name: Abfragen eines Containers
+          href: how-to-query-container.md
+        - name: 'Datenmodellierung und -partitionierung: praktisches Beispiel'
+          displayName: 'model, partition, example'
+          href: how-to-model-partition-example.md
+        - name: Konfigurieren der Gültigkeitsdauer (TTL)
+          displayName: 'delete, delete data, ttl'
+          href: how-to-time-to-live.md
+        - name: Arbeiten mit Daten unter Verwendung von Azure Storage-Explorer
+          href: storage-explorer.md
+        - name: Arbeiten mit Daten unter Verwendung von Azure Cosmos-Explorer
+          href: data-explorer.md
+        - name: Indizierung
+          items:
+            - name: Verwalten der Indizierung
+              href: how-to-manage-indexing-policy.md
+    - name: Änderungsfeed
+      items:
+        - name: Mehrere Azure Cosmos DB-Trigger
+          href: how-to-create-multiple-cosmos-db-triggers.md
+        - name: Problembehandlung für Azure Cosmos DB-Trigger
+          href: troubleshoot-changefeed-functions.md
+    - name: Serverseitige Programmierung
+      items:
+        - name: 'Schreiben von gespeicherten Prozeduren, Triggern und UDFs'
+          href: how-to-write-stored-procedures-triggers-udfs.md
+        - name: Schreiben von gespeicherten Prozeduren und Triggern mit der JavaScript-Abfrage-API
+          href: how-to-write-javascript-query-api.md
+        - name: 'Verwenden von gespeicherten Prozeduren, Triggern und UDFs'
+          href: how-to-use-stored-procedures-triggers-udfs.md
+    - name: Sicherheit
+      items:
+        - name: Konfigurieren der IP-Firewall
+          href: how-to-configure-firewall.md
+        - name: Konfigurieren des Zugriffs über virtuelle Netzwerke
+          href: how-to-configure-vnet-service-endpoint.md
+        - name: Konfigurieren von CORS (Cross-Origin Resource Sharing)
+          href: how-to-configure-cross-origin-resource-sharing.md
+        - name: Sichern von Azure Cosmos-Schlüsseln mit Key Vault
+          href: access-secrets-from-keyvault.md
+    - name: Unternehmensfähigkeit
+      items:
+        - name: Wiederherstellen von Daten aus einer Sicherung
+          href: how-to-backup-and-restore.md
+    - name: Verwalten von Azure Cosmos DB-Ressourcen
+      items:
+        - name: Verwalten mit PowerShell
+          href: manage-account-with-powershell.md
+        - name: Verwalten mithilfe der Azure-Befehlszeilenschnittstelle
+          href: manage-with-cli.md
+    - name: Protokollierung
+      items:
+        - name: Diagnoseprotokollierung
+          href: logging.md
+        - name: Anwendungsprotokollierung mit Logic Apps
+          href: 'https://docs.microsoft.com/azure/logic-apps/logic-apps-scenario-error-and-exception-handling?toc=/azure/cosmos-db/toc.json'
+    - name: Überwachen
+      items:
+        - name: Mit Metriken überwachen
+          href: use-metrics.md
+        - name: Überwachen von SLAs
+          href: monitor-accounts.md
+    - name: Lokale Entwicklung
+      items:
+        - name: Verwenden des Emulators
+          href: local-emulator.md
+        - name: Exportieren von Zertifikaten
+          href: local-emulator-export-ssl-certificates.md
+        - name: Visual Studio Code-Erweiterung
+          href: 'https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb'
+    - name: Einrichten der Azure DevOps-CI/CD-Pipeline
+      href: tutorial-setup-ci-cd.md
+    - name: Datentypen
+      items:
+        - name: DateTime
+          href: working-with-dates.md
+        - name: Geodaten
+          href: geospatial.md
+    - name: Bewährte Methoden
+      items:
+        - name: Leistungstipps
+          items:
+            - name: Optimieren der Abfrageleistung
+              href: sql-api-query-metrics.md
+            - name: Tipps zur Leistungssteigerung für das .NET SDK
+              href: performance-tips.md
+            - name: Tipps zur Leistungssteigerung für das Java SDK
+              href: performance-tips-java.md
+            - name: Tipps zur Leistungssteigerung für das Async Java SDK
+              href: performance-tips-async-java.md
+            - name: 'Leistungstest: Beispiel-App'
+              href: performance-testing.md
+        - name: Kostengünstige Lese- und Schreibvorgänge
+          href: key-value-store-cost.md
+    - name: Visualisieren von Cosmos DB-Daten
+      items:
+        - name: Verwenden von Power BI
+          href: powerbi-visualize.md
+        - name: Verwenden von Qlik Sense
+          href: visualize-qlik-sense.md
+    - name: Integrieren in andere Azure-Dienste
+      items:
+        - name: 'Änderungsfeed: E-Commerce-Lösung'
+          href: changefeed-ecommerce-solution.md
+        - name: Azure App Service
+          href: create-website.md
+        - name: Azure Search-Indexer
+          href: 'https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json'
+        - name: Azure-Funktionen
+          items:
+            - name: Serverloses Computing
+              href: serverless-computing-database.md
+            - name: Azure Functions-Bindungen
+              href: 'https://docs.microsoft.com/azure/azure-functions/functions-bindings-cosmosdb?toc=/azure/cosmos-db/toc.json'
+        - name: Azure Data Factory
+          href: 'https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db?toc=/azure/cosmos-db/toc.json'
+        - name: Azure Stream Analytics
+          href: '../stream-analytics/stream-analytics-define-outputs.md#azure-cosmos-db'
+        - name: Logic Apps und Service Bus
+          href: change-feed-hl7-fhir-logic-apps.md
+        - name: Azure Event Hubs und Azure Storage
+          href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
+        - name: Verwenden von Spring Boot Starter
+          href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
+          maintainContext: true
+        - name: Lambda-Architektur
+          href: lambda-architecture.md
+        - name: Azure Databricks (Spark-Connector)
+          href: spark-connector.md
+        - name: Spark und Kafka
+          href: 'https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json'
+        - name: ODBC-Treiber
+          href: odbc-driver.md
+    - name: BulkExecutor-Bibliothek
+      items:
+        - name: Informationen zur BulkExecutor-Bibliothek
+          href: bulk-executor-overview.md
+        - name: 'BulkExecutor: .NET-Bibliothek'
+          href: bulk-executor-dot-net.md
+        - name: 'BulkExecutor: Java-Bibliothek'
+          href: bulk-executor-java.md
+    - name: Problembehandlung
+      items:
+        - name: Problembehandlung für das Java Async SDK
+          href: troubleshoot-java-async-sdk.md
+        - name: Problembehandlung für das .NET SDK
+          href: troubleshoot-dot-net-sdk.md
 - name: Verweis
   items:
-  - name: .NET
-    href: sql-api-sdk-dotnet.md
-  - name: .NET Core
-    href: sql-api-sdk-dotnet-core.md
-  - name: .NET-Änderungsfeedbibliothek
-    href: sql-api-sdk-dotnet-changefeed.md
-  - name: .NET-BulkExecutor-Bibliothek
-    href: sql-api-sdk-bulk-executor-dot-net.md
-  - name: Java
-    href: sql-api-sdk-java.md
-  - name: Java-BulkExecutor-Bibliothek
-    href: sql-api-sdk-bulk-executor-java.md
-  - name: Async Java
-    href: sql-api-sdk-async-java.md
-  - name: Node.js
-    href: sql-api-sdk-node.md
-  - name: Python
-    href: sql-api-sdk-python.md
-  - name: REST
-    href: /rest/api/cosmos-db/
-  - name: REST-Ressourcenanbieter
-    href: /rest/api/cosmos-db-resource-provider/
-  - name: Resource Manager-Vorlage
-    href: /azure/templates/microsoft.documentdb/databaseaccounts
+    - name: .NET
+      href: sql-api-sdk-dotnet.md
+    - name: .NET Core
+      href: sql-api-sdk-dotnet-core.md
+    - name: .NET-Änderungsfeedbibliothek
+      href: sql-api-sdk-dotnet-changefeed.md
+    - name: .NET-BulkExecutor-Bibliothek
+      href: sql-api-sdk-bulk-executor-dot-net.md
+    - name: Java
+      href: sql-api-sdk-java.md
+    - name: Java-BulkExecutor-Bibliothek
+      href: sql-api-sdk-bulk-executor-java.md
+    - name: Async Java
+      href: sql-api-sdk-async-java.md
+    - name: Node.js
+      href: sql-api-sdk-node.md
+    - name: Python
+      href: sql-api-sdk-python.md
+    - name: REST
+      href: /rest/api/cosmos-db/
+    - name: REST-Ressourcenanbieter
+      href: /rest/api/cosmos-db-resource-provider/
+    - name: Resource Manager-Vorlage
+      href: /azure/templates/microsoft.documentdb/databaseaccounts
 - name: Ressourcen
   items:
-  - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
-    href: /learn/browse/?products=azure-cosmos-db
-  - name: Cheat Sheet für die Abfrage
-    href: query-cheat-sheet.md
-  - name: Arbeiten mit SQL
-    href: https://aka.ms/cosmos-db-playground
-  - name: Häufig gestellte Fragen
-    href: faq.md
-  - name: Whitepaper
-    href: whitepapers.md
-  - name: Partner
-    href: partners-migration-cosmosdb.md
-  - name: Videos
-    href: https://azure.microsoft.com/resources/videos/index/?services=cosmos-db
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/roadmap/
-  - name: Azure Cosmos DB kostenlos testen
-    href: https://azure.microsoft.com/try/cosmosdb/
-  - name: Preise
-    href: https://azure.microsoft.com/pricing/details/cosmos-db/
-  - name: Anwendungsfälle
-    items:
-    - name: Gängige Anwendungsfälle
-      href: use-cases.md
-    - name: Apps für soziale Medien
-      href: social-media-apps.md
-ms.openlocfilehash: d13fd91e079349bac4e57bc0224916075389d61e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257857"
+    - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
+      href: /learn/browse/?products=azure-cosmos-db
+    - name: Cheat Sheet für die Abfrage
+      href: query-cheat-sheet.md
+    - name: Arbeiten mit SQL
+      href: 'https://aka.ms/cosmos-db-playground'
+    - name: Häufig gestellte Fragen
+      href: faq.md
+    - name: Whitepaper
+      href: whitepapers.md
+    - name: Partner
+      href: partners-migration-cosmosdb.md
+    - name: Videos
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=cosmos-db'
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Azure Cosmos DB kostenlos testen
+      href: 'https://azure.microsoft.com/try/cosmosdb/'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/cosmos-db/'
+    - name: Anwendungsfälle
+      items:
+        - name: Gängige Anwendungsfälle
+          href: use-cases.md
+        - name: Apps für soziale Medien
+          href: social-media-apps.md

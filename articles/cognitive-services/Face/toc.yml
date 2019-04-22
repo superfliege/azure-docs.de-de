@@ -1,118 +1,111 @@
-items:
 - name: Dokumentation zur Gesichtserkennungs-API
   href: index.yml
 - name: Übersicht
-  items:
-  - name: Was ist die Gesichtserkennungs-API?
-    href: Overview.md
   expanded: true
+  items:
+    - name: Was ist die Gesichtserkennungs-API?
+      href: Overview.md
 - name: Schnellstarts
   items:
-  - name: Verwenden des Client-SDK
-    items:
-    - name: Gesichtserkennung in einem Bild
+    - name: Verwenden des Client-SDK
       items:
-      - name: C#
-        href: QuickStarts/csharp-detect-sdk.md
-      - name: Python
-        href: Tutorials/FaceAPIinPythonTutorial.md
-  - name: Verwenden der REST-API
-    items:
-    - name: Gesichtserkennung in einem Bild
+        - name: Gesichtserkennung in einem Bild
+          items:
+            - name: 'C#'
+              href: QuickStarts/csharp-detect-sdk.md
+            - name: Python
+              href: Tutorials/FaceAPIinPythonTutorial.md
+    - name: Verwenden der REST-API
       items:
-      - name: C#
-        href: QuickStarts/CSharp.md
-      - name: cURL
-        href: QuickStarts/curl.md
-      - name: Go
-        href: QuickStarts/go.md
-      - name: Java
-        href: QuickStarts/Java.md
-      - name: JavaScript
-        href: QuickStarts/JavaScript.md
-      - name: Node.js
-        href: QuickStarts/node.md
-      - name: PHP
-        href: QuickStarts/PHP.md
-      - name: Python
-        href: QuickStarts/Python.md
-      - name: Ruby
-        href: QuickStarts/Ruby.md
+        - name: Gesichtserkennung in einem Bild
+          items:
+            - name: 'C#'
+              href: QuickStarts/CSharp.md
+            - name: cURL
+              href: QuickStarts/curl.md
+            - name: Go
+              href: QuickStarts/go.md
+            - name: Java
+              href: QuickStarts/Java.md
+            - name: JavaScript
+              href: QuickStarts/JavaScript.md
+            - name: Node.js
+              href: QuickStarts/node.md
+            - name: PHP
+              href: QuickStarts/PHP.md
+            - name: Python
+              href: QuickStarts/Python.md
+            - name: Ruby
+              href: QuickStarts/Ruby.md
 - name: Lernprogramme
   items:
-  - name: Verwenden des Client-SDK
-    items:
-    - name: C#
-      href: Tutorials/FaceAPIinCSharpTutorial.md
-    - name: Android
-      href: Tutorials/FaceAPIinJavaForAndroidTutorial.md
+    - name: Verwenden des Client-SDK
+      items:
+        - name: 'C#'
+          href: Tutorials/FaceAPIinCSharpTutorial.md
+        - name: Android
+          href: Tutorials/FaceAPIinJavaForAndroidTutorial.md
 - name: Anleitungen
   items:
-  - name: Gesichtserkennung
-    href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
-  - name: Gesichtsidentifikation
-    href: Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md
-  - name: Hinzufügen von Gesichtern
-    href: Face-API-How-to-Topics/how-to-add-faces.md
-  - name: Angeben eines Gesichtserkennungsmodells
-    href: Face-API-How-to-Topics/specify-recognition-model.md
-  - name: Verwenden des Features für die Verarbeitung in großem Umfang
-    href: Face-API-How-to-Topics/how-to-use-large-scale.md
-  - name: Videoanalyse in Echtzeit
-    href: Face-API-How-to-Topics/HowtoAnalyzeVideo_Face.md
-  - name: Migrieren von Gesichtserkennungsdaten
-    href: Face-API-How-to-Topics/how-to-migrate-face-data.md
-  - name: Verwenden von Containern
-    items:
-    - name: Installieren und Ausführen von Containern
-      href: face-how-to-install-containers.md
-    - name: Konfigurieren von Containern
-      href: face-resource-container-config.md
-  - name: Verwenden des verbundenen Diensts für die Gesichtserkennungs-API
-    href: vs-face-connected-service.md
+    - name: Gesichtserkennung
+      href: Face-API-How-to-Topics/HowtoDetectFacesinImage.md
+    - name: Gesichtsidentifikation
+      href: Face-API-How-to-Topics/HowtoIdentifyFacesinImage.md
+    - name: Hinzufügen von Gesichtern
+      href: Face-API-How-to-Topics/how-to-add-faces.md
+    - name: Angeben eines Gesichtserkennungsmodells
+      href: Face-API-How-to-Topics/specify-recognition-model.md
+    - name: Verwenden des Features für die Verarbeitung in großem Umfang
+      href: Face-API-How-to-Topics/how-to-use-large-scale.md
+    - name: Videoanalyse in Echtzeit
+      href: Face-API-How-to-Topics/HowtoAnalyzeVideo_Face.md
+    - name: Migrieren von Gesichtserkennungsdaten
+      href: Face-API-How-to-Topics/how-to-migrate-face-data.md
+    - name: Verwenden von Containern
+      items:
+        - name: Installieren und Ausführen von Containern
+          href: face-how-to-install-containers.md
+        - name: Konfigurieren von Containern
+          href: face-resource-container-config.md
+    - name: Verwenden des verbundenen Diensts für die Gesichtserkennungs-API
+      href: vs-face-connected-service.md
 - name: Beispiele
   items:
-  - name: Codebeispiele
-    href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face
+    - name: Codebeispiele
+      href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face'
 - name: Verweis
   items:
-  - name: Gesichtserkennungs-API
-    href: APIReference.md
-  - name: SDKs
-    items:
-    - name: .NET
-      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/face?view=azure-dotnet
-    - name: Node.js
-      href: https://docs.microsoft.com/javascript/api/azure-cognitiveservices-face/?view=azure-node-latest
-    - name: Python
-      href: https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python
-    - name: Go
-      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face
-    - name: Android (Java)
-      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable
-    - name: iOS
-      href: https://github.com/Microsoft/Cognitive-Face-iOS
+    - name: Gesichtserkennungs-API
+      href: APIReference.md
+    - name: SDKs
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/face?view=azure-dotnet'
+        - name: Node.js
+          href: 'https://docs.microsoft.com/javascript/api/azure-cognitiveservices-face/?view=azure-node-latest'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python'
+        - name: Go
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face'
+        - name: Android (Java)
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable'
+        - name: iOS
+          href: 'https://github.com/Microsoft/Cognitive-Face-iOS'
 - name: Ressourcen
   items:
-  - name: Glossar
-    href: Glossary.md
-  - name: Häufig gestellte Fragen
-    href: FAQ.md
-  - name: Preise und Einschränkungen
-    href: https://azure.microsoft.com/pricing/details/cognitive-services/face-api
-  - name: UserVoice
-    href: https://cognitive.uservoice.com/forums/430315-face-api
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/updates/?product=cognitive-services
-  - name: Regionale Verfügbarkeit
-    href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-  - name: Versionshinweise
-    href: ReleaseNotes.md
-ms.openlocfilehash: 1c03cba2c6f318c87a8a060558e2f851b72f70fe
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58804785"
+    - name: Glossar
+      href: Glossary.md
+    - name: Häufig gestellte Fragen
+      href: FAQ.md
+    - name: Preise und Einschränkungen
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/430315-face-api'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
+    - name: Regionale Verfügbarkeit
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
+    - name: Versionshinweise
+      href: ReleaseNotes.md

@@ -1,300 +1,293 @@
-items:
 - name: Dokumentation zu IoT Solution Accelerators
   href: index.md
 - name: Übersicht
-  items:
-  - name: Was sind IoT Solution Accelerators?
-    href: about-iot-accelerators.md
-  - name: AzureIoTSolution.com
-    href: iot-accelerators-permissions.md
   expanded: true
+  items:
+    - name: Was sind IoT Solution Accelerators?
+      href: about-iot-accelerators.md
+    - name: AzureIoTSolution.com
+      href: iot-accelerators-permissions.md
 - name: Remoteüberwachung
   items:
-  - name: Übersicht
-    href: iot-accelerators-remote-monitoring-sample-walkthrough.md
-    items:
-    - name: Architekturoptionen
-      href: iot-accelerators-remote-monitoring-architectural-choices.md
-  - name: Schnellstarts
-    items:
-    - name: Testen einer Remoteüberwachungslösung
-      href: quickstart-remote-monitoring-deploy.md
-  - name: Lernprogramme
-    items:
-    - name: Überwachen von IoT-Geräten
-      href: iot-accelerators-remote-monitoring-monitor.md
-    - name: Erkennen von Geräteproblemen
-      href: iot-accelerators-remote-monitoring-automate.md
-    - name: Konfigurieren von Geräten
-      href: iot-accelerators-remote-monitoring-manage.md
-    - name: Ausführen einer Analyse der Grundursache für eine Warnung
-      href: iot-accelerators-remote-monitoring-root-cause-analysis.md
-    - name: Verwenden von Warnungen und Beheben von Geräteproblemen
-      href: iot-accelerators-remote-monitoring-maintain.md
-    - name: Massenaktualisierung von Gerätekonfigurationen
-      href: iot-accelerators-remote-monitoring-bulk-configuration-update.md
-    - name: Erkennen von Anomalien im Edge-Bereich
-      href: iot-accelerators-remote-monitoring-edge.md
-  - name: Anleitungen
-    items:
-    - name: Bereitstellen der Lösung
+    - name: Übersicht
+      href: iot-accelerators-remote-monitoring-sample-walkthrough.md
       items:
-      - name: Bereitstellen mit der Befehlszeilenschnittstelle
-        href: iot-accelerators-remote-monitoring-deploy-cli.md
-      - name: Lokales Bereitstellen mit Visual Studio
-        href: iot-accelerators-remote-monitoring-deploy-local.md
-      - name: Lokales Bereitstellen mit VS Code
-        href: iot-accelerators-remote-monitoring-deploy-local-vscode.md
-      - name: Lokales Bereitstellen mit IntelliJ
-        href: iot-accelerators-remote-monitoring-deploy-local-java.md
-      - name: Lokales Bereitstellen mit Docker
-        href: iot-accelerators-remote-monitoring-deploy-local-docker.md
-    - name: Herstellen einer Verbindung mit einem echten Gerät
+        - name: Architekturoptionen
+          href: iot-accelerators-remote-monitoring-architectural-choices.md
+    - name: Schnellstarts
       items:
-      - name: C unter Windows
-        href: iot-accelerators-connecting-devices.md
-      - name: C unter Linux
-        href: iot-accelerators-connecting-devices-linux.md
-      - name: C auf Raspberry Pi
-        href: iot-accelerators-connecting-pi-c.md
-      - name: Node.js (generisch)
-        href: iot-accelerators-connecting-devices-node.md
-      - name: Node.js auf Raspberry Pi
-        href: iot-accelerators-connecting-pi-node.md
-      - name: MXChip IoT DevKit
-        href: iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md
-    - name: Simulieren eines Geräts
+        - name: Testen einer Remoteüberwachungslösung
+          href: quickstart-remote-monitoring-deploy.md
+    - name: Lernprogramme
       items:
-      - name: Erstellen Sie ein simuliertes Gerät.
-        href: iot-accelerators-remote-monitoring-create-simulated-device.md
-      - name: Bereitstellen eines simulierten Geräts
-        href: iot-accelerators-remote-monitoring-deploy-simulated-device.md
-    - name: Anpassen der Benutzeroberfläche
-      href: iot-accelerators-remote-monitoring-customize.md
+        - name: Überwachen von IoT-Geräten
+          href: iot-accelerators-remote-monitoring-monitor.md
+        - name: Erkennen von Geräteproblemen
+          href: iot-accelerators-remote-monitoring-automate.md
+        - name: Konfigurieren von Geräten
+          href: iot-accelerators-remote-monitoring-manage.md
+        - name: Ausführen einer Analyse der Grundursache für eine Warnung
+          href: iot-accelerators-remote-monitoring-root-cause-analysis.md
+        - name: Verwenden von Warnungen und Beheben von Geräteproblemen
+          href: iot-accelerators-remote-monitoring-maintain.md
+        - name: Massenaktualisierung von Gerätekonfigurationen
+          href: iot-accelerators-remote-monitoring-bulk-configuration-update.md
+        - name: Erkennen von Anomalien im Edge-Bereich
+          href: iot-accelerators-remote-monitoring-edge.md
+    - name: Anleitungen
       items:
-      - name: Hinzufügen einer Seite
-        href: iot-accelerators-remote-monitoring-customize-page.md
-      - name: Hinzufügen eines Diensts
-        href: iot-accelerators-remote-monitoring-customize-service.md
-      - name: Hinzufügen eines Rasters
-        href: iot-accelerators-remote-monitoring-customize-grid.md
-      - name: Hinzufügen eines Flyouts
-        href: iot-accelerators-remote-monitoring-customize-flyout.md
-      - name: Hinzufügen eines Bereichs
-        href: iot-accelerators-remote-monitoring-customize-panel.md
-    - name: Anpassen und erneutes Bereitstellen eines Microservice
-      href: iot-accelerators-microservices-example.md
-    - name: Importieren des Gerätekonfigurationspakets
-      href: iot-accelerators-remote-monitoring-import-adm-package.md
-    - name: Verbinden von IoT Edge-Geräten
+        - name: Bereitstellen der Lösung
+          items:
+            - name: Bereitstellen mit der Befehlszeilenschnittstelle
+              href: iot-accelerators-remote-monitoring-deploy-cli.md
+            - name: Lokales Bereitstellen mit Visual Studio
+              href: iot-accelerators-remote-monitoring-deploy-local.md
+            - name: Lokales Bereitstellen mit VS Code
+              href: iot-accelerators-remote-monitoring-deploy-local-vscode.md
+            - name: Lokales Bereitstellen mit IntelliJ
+              href: iot-accelerators-remote-monitoring-deploy-local-java.md
+            - name: Lokales Bereitstellen mit Docker
+              href: iot-accelerators-remote-monitoring-deploy-local-docker.md
+        - name: Herstellen einer Verbindung mit einem echten Gerät
+          items:
+            - name: C unter Windows
+              href: iot-accelerators-connecting-devices.md
+            - name: C unter Linux
+              href: iot-accelerators-connecting-devices-linux.md
+            - name: C auf Raspberry Pi
+              href: iot-accelerators-connecting-pi-c.md
+            - name: Node.js (generisch)
+              href: iot-accelerators-connecting-devices-node.md
+            - name: Node.js auf Raspberry Pi
+              href: iot-accelerators-connecting-pi-node.md
+            - name: MXChip IoT DevKit
+              href: iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2.md
+        - name: Simulieren eines Geräts
+          items:
+            - name: Erstellen Sie ein simuliertes Gerät.
+              href: iot-accelerators-remote-monitoring-create-simulated-device.md
+            - name: Bereitstellen eines simulierten Geräts
+              href: iot-accelerators-remote-monitoring-deploy-simulated-device.md
+        - name: Anpassen der Benutzeroberfläche
+          href: iot-accelerators-remote-monitoring-customize.md
+          items:
+            - name: Hinzufügen einer Seite
+              href: iot-accelerators-remote-monitoring-customize-page.md
+            - name: Hinzufügen eines Diensts
+              href: iot-accelerators-remote-monitoring-customize-service.md
+            - name: Hinzufügen eines Rasters
+              href: iot-accelerators-remote-monitoring-customize-grid.md
+            - name: Hinzufügen eines Flyouts
+              href: iot-accelerators-remote-monitoring-customize-flyout.md
+            - name: Hinzufügen eines Bereichs
+              href: iot-accelerators-remote-monitoring-customize-panel.md
+        - name: Anpassen und erneutes Bereitstellen eines Microservice
+          href: iot-accelerators-microservices-example.md
+        - name: Importieren des Gerätekonfigurationspakets
+          href: iot-accelerators-remote-monitoring-import-adm-package.md
+        - name: Verbinden von IoT Edge-Geräten
+          items:
+            - name: Hinzufügen eines IoT Edge-Geräts
+              href: iot-accelerators-remote-monitoring-add-edge-device.md
+            - name: Importieren eines IoT Edge-Pakets
+              href: iot-accelerators-remote-monitoring-import-edge-package.md
+        - name: Konfigurieren von E-Mail-Aktionen
+          href: iot-accelerators-remote-monitoring-email-actions.md
+        - name: Konfigurieren der Zugriffssteuerung
+          href: iot-accelerators-remote-monitoring-rbac.md
+        - name: Untersuchen von Telemetriedaten
+          items:
+            - name: Visualisieren von Telemetriedaten mit Power BI
+              href: iot-accelerators-integrate-data-powerbi.md
+            - name: Integrieren von Azure Time Series Insights mit Remoteüberwachung
+              href: iot-accelerators-remote-monitoring-integrate-time-series-insights.md
+            - name: Analysieren von Telemetriedaten mit Data Lake
+              href: iot-accelerators-integrate-data-lake.md
+            - name: Gewähren des Zugriffs auf den Telemetriedaten-Explorer
+              href: iot-accelerators-remote-monitoring-rbac-tsi.md
+        - name: Integrieren von SIM-Daten
+          href: iot-accelerators-remote-monitoring-telefonica-sim.md
+    - name: Verweis
       items:
-      - name: Hinzufügen eines IoT Edge-Geräts
-        href: iot-accelerators-remote-monitoring-add-edge-device.md
-      - name: Importieren eines IoT Edge-Pakets
-        href: iot-accelerators-remote-monitoring-import-edge-package.md
-    - name: Konfigurieren von E-Mail-Aktionen
-      href: iot-accelerators-remote-monitoring-email-actions.md
-    - name: Konfigurieren der Zugriffssteuerung
-      href: iot-accelerators-remote-monitoring-rbac.md
-    - name: Untersuchen von Telemetriedaten
+        - name: Gerätemodellschema
+          href: iot-accelerators-remote-monitoring-device-schema.md
+        - name: Gerätemodellverhalten
+          href: iot-accelerators-remote-monitoring-device-behavior.md
+    - name: Ressourcen
       items:
-      - name: Visualisieren von Telemetriedaten mit Power BI
-        href: iot-accelerators-integrate-data-powerbi.md
-      - name: Integrieren von Azure Time Series Insights mit Remoteüberwachung
-        href: iot-accelerators-remote-monitoring-integrate-time-series-insights.md
-      - name: Analysieren von Telemetriedaten mit Data Lake
-        href: iot-accelerators-integrate-data-lake.md
-      - name: Gewähren des Zugriffs auf den Telemetriedaten-Explorer
-        href: iot-accelerators-remote-monitoring-rbac-tsi.md
-    - name: Integrieren von SIM-Daten
-      href: iot-accelerators-remote-monitoring-telefonica-sim.md
-  - name: Verweis
-    items:
-    - name: Gerätemodellschema
-      href: iot-accelerators-remote-monitoring-device-schema.md
-    - name: Gerätemodellverhalten
-      href: iot-accelerators-remote-monitoring-device-behavior.md
-  - name: Ressourcen
-    items:
-    - name: Referenzhandbuch für Entwickler (.NET)
-      href: https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide
-    - name: Referenzhandbuch für Entwickler (Java)
-      href: https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/wiki/Developer-Reference-Guide
-    - name: Handbuch zur Problembehandlung für Entwickler
-      href: https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide
-    - name: GitHub-Repository (.NET)
-      href: https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet
-    - name: GitHub-Repository (Java)
-      href: https://github.com/Azure/azure-iot-pcs-remote-monitoring-java
-    - name: 'Remoteüberwachung: Häufig gestellte Fragen'
-      href: iot-accelerators-faq-rm-v2.md
+        - name: Referenzhandbuch für Entwickler (.NET)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide'
+        - name: Referenzhandbuch für Entwickler (Java)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/wiki/Developer-Reference-Guide'
+        - name: Handbuch zur Problembehandlung für Entwickler
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide'
+        - name: GitHub-Repository (.NET)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet'
+        - name: GitHub-Repository (Java)
+          href: 'https://github.com/Azure/azure-iot-pcs-remote-monitoring-java'
+        - name: 'Remoteüberwachung: Häufig gestellte Fragen'
+          href: iot-accelerators-faq-rm-v2.md
 - name: Industrielles IoT
   items:
-  - name: Übersicht
-    items:
-    - name: Was ist das industrielle IoT?
-      href: overview-iot-industrial.md
-    - name: OPC-Zwilling
+    - name: Übersicht
       items:
-      - name: Was ist ein OPC-Zwilling?
-        href: overview-opc-twin.md
-      - name: Architektur für OPC-Zwillinge
-        href: overview-opc-twin-architecture.md
-    - name: OPC-Tresor
+        - name: Was ist das industrielle IoT?
+          href: overview-iot-industrial.md
+        - name: OPC-Zwilling
+          items:
+            - name: Was ist ein OPC-Zwilling?
+              href: overview-opc-twin.md
+            - name: Architektur für OPC-Zwillinge
+              href: overview-opc-twin-architecture.md
+        - name: OPC-Tresor
+          items:
+            - name: Was ist ein OPC-Tresor?
+              href: overview-opc-vault.md
+        - name: Verbundene Factory
+          items:
+            - name: 'Verbundene Factory: Übersicht'
+              href: iot-accelerators-connected-factory-features.md
+            - name: 'Verbundene Factory: Architektur'
+              href: iot-accelerators-connected-factory-sample-walkthrough.md
+    - name: Schnellstarts
       items:
-      - name: Was ist ein OPC-Tresor?
-        href: overview-opc-vault.md
-    - name: Verbundene Factory
+        - name: Testen einer Lösung für verbundene Factorys
+          href: quickstart-connected-factory-deploy.md
+    - name: Anleitungen
       items:
-      - name: 'Verbundene Factory: Übersicht'
-        href: iot-accelerators-connected-factory-features.md
-      - name: 'Verbundene Factory: Architektur'
-        href: iot-accelerators-connected-factory-sample-walkthrough.md
-  - name: Schnellstarts
-    items:
-    - name: Testen einer Lösung für verbundene Factorys
-      href: quickstart-connected-factory-deploy.md
-  - name: Anleitungen
-    items:
-    - name: Verbundene Factory
+        - name: Verbundene Factory
+          items:
+            - name: Verwenden des Dashboards
+              href: iot-accelerators-connected-factory-dashboard.md
+            - name: Bereitstellen eines Gateways
+              href: iot-accelerators-connected-factory-gateway-deployment.md
+            - name: Verwenden von OPC Publisher
+              href: 'https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md'
+            - name: Konfigurieren des Solution Accelerators
+              href: iot-accelerators-connected-factory-configure.md
+            - name: Anpassen des Solution Accelerators
+              href: iot-accelerators-connected-factory-customize.md
+        - name: OPC-Zwilling
+          items:
+            - name: Bereitstellen von Diensten für OPC-Zwillinge
+              href: howto-opc-twin-deploy-existing.md
+            - name: Bereitstellen eines OPC-Zwillingsmoduls in IoT Edge
+              href: howto-opc-twin-deploy-modules.md
+            - name: Ausschließliches Bereitstellen von Abhängigkeiten für OPC-Zwillinge
+              href: howto-opc-twin-deploy-dependencies.md
+        - name: OPC-Tresor
+          items:
+            - name: Bereitstellen eines OPC-Tresors in einem vorhandenen Projekt
+              items:
+                - name: Schützen der Kommunikation zwischen OPC-Client und OPC PLC
+                  href: howto-opc-vault-deploy-existing-client-plc-communication.md
+                - name: Schützen der Anwendungen für OPC UA-Clients und OPC UA-Server
+                  href: howto-opc-vault-deploy-existing-client-server-communication.md
+            - name: Bereitstellen eines OPC-Tresors von Grund auf
+              href: howto-opc-vault-deploy-scratch.md
+    - name: Ressourcen
       items:
-      - name: Verwenden des Dashboards
-        href: iot-accelerators-connected-factory-dashboard.md
-      - name: Bereitstellen eines Gateways
-        href: iot-accelerators-connected-factory-gateway-deployment.md
-      - name: Verwenden von OPC Publisher
-        href: https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md
-      - name: Konfigurieren des Solution Accelerators
-        href: iot-accelerators-connected-factory-configure.md
-      - name: Anpassen des Solution Accelerators
-        href: iot-accelerators-connected-factory-customize.md
-    - name: OPC-Zwilling
-      items:
-      - name: Bereitstellen von Diensten für OPC-Zwillinge
-        href: howto-opc-twin-deploy-existing.md
-      - name: Bereitstellen eines OPC-Zwillingsmoduls in IoT Edge
-        href: howto-opc-twin-deploy-modules.md
-      - name: Ausschließliches Bereitstellen von Abhängigkeiten für OPC-Zwillinge
-        href: howto-opc-twin-deploy-dependencies.md
-    - name: OPC-Tresor
-      items:
-      - name: Bereitstellen eines OPC-Tresors in einem vorhandenen Projekt
-        items:
-        - name: Schützen der Kommunikation zwischen OPC-Client und OPC PLC
-          href: howto-opc-vault-deploy-existing-client-plc-communication.md
-        - name: Schützen der Anwendungen für OPC UA-Clients und OPC UA-Server
-          href: howto-opc-vault-deploy-existing-client-server-communication.md
-      - name: Bereitstellen eines OPC-Tresors von Grund auf
-        href: howto-opc-vault-deploy-scratch.md
-  - name: Ressourcen
-    items:
-    - name: GitHub-Repository
-      href: https://github.com/Azure/azure-iot-connected-factory
-    - name: 'Verbundene Factory: Häufig gestellte Fragen'
-      href: iot-accelerators-faq-cf.md
+        - name: GitHub-Repository
+          href: 'https://github.com/Azure/azure-iot-connected-factory'
+        - name: 'Verbundene Factory: Häufig gestellte Fragen'
+          href: iot-accelerators-faq-cf.md
 - name: Gerätesimulation
   items:
-  - name: Übersicht
-    href: iot-accelerators-device-simulation-overview.md
-  - name: Schnellstarts
-    items:
-    - name: Testen einer Gerätesimulationslösung
-      href: quickstart-device-simulation-deploy.md
-  - name: Lernprogramme
-    items:
-    - name: Erstellen und Ausführen einer Simulation
-      href: iot-accelerators-device-simulation-create-simulation.md
-    - name: Erstellen eines benutzerdefinierten simulierten Geräts
-      href: iot-accelerators-device-simulation-create-custom-device.md
-  - name: Anleitungen
-    items:
-    - name: Vorhandenen IoT Hub verwenden
-      href: iot-accelerators-device-simulation-choose-hub.md
-    - name: Erstellen eines erweiterten simulierten Geräts
-      href: iot-accelerators-device-simulation-advanced-device.md
-    - name: Visualisieren von Telemetriedaten mit Time Series Insights
-      href: iot-accelerators-device-simulation-time-series-insights.md
-    - name: Serialisieren von Telemetrie mithilfe von Protbuf
-      href: iot-accelerators-device-simulation-protobuf.md
-    - name: Bereitstellen eines benutzerdefinierten Docker-Images
-      href: iot-accelerators-device-simulation-deploy-image.md
-  - name: Ressourcen
-    items:
-    - name: Referenzhandbuch für Entwickler
-      href: https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide
-    - name: GitHub-Repository
-      href: https://github.com/Azure/device-simulation-dotnet
+    - name: Übersicht
+      href: iot-accelerators-device-simulation-overview.md
+    - name: Schnellstarts
+      items:
+        - name: Testen einer Gerätesimulationslösung
+          href: quickstart-device-simulation-deploy.md
+    - name: Lernprogramme
+      items:
+        - name: Erstellen und Ausführen einer Simulation
+          href: iot-accelerators-device-simulation-create-simulation.md
+        - name: Erstellen eines benutzerdefinierten simulierten Geräts
+          href: iot-accelerators-device-simulation-create-custom-device.md
+    - name: Anleitungen
+      items:
+        - name: Vorhandenen IoT Hub verwenden
+          href: iot-accelerators-device-simulation-choose-hub.md
+        - name: Erstellen eines erweiterten simulierten Geräts
+          href: iot-accelerators-device-simulation-advanced-device.md
+        - name: Visualisieren von Telemetriedaten mit Time Series Insights
+          href: iot-accelerators-device-simulation-time-series-insights.md
+        - name: Serialisieren von Telemetrie mithilfe von Protbuf
+          href: iot-accelerators-device-simulation-protobuf.md
+        - name: Bereitstellen eines benutzerdefinierten Docker-Images
+          href: iot-accelerators-device-simulation-deploy-image.md
+    - name: Ressourcen
+      items:
+        - name: Referenzhandbuch für Entwickler
+          href: 'https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide'
+        - name: GitHub-Repository
+          href: 'https://github.com/Azure/device-simulation-dotnet'
 - name: Predictive Maintenance
   items:
-  - name: Übersicht
-    href: iot-accelerators-predictive-walkthrough.md
-  - name: Schnellstarts
-    items:
-    - name: Testen einer Predictive Maintenance-Lösung
-      href: quickstart-predictive-maintenance-deploy.md
-  - name: Ressourcen
-    items:
-    - name: GitHub-Repository
-      href: https://github.com/Azure/azure-iot-predictive-maintenance
+    - name: Übersicht
+      href: iot-accelerators-predictive-walkthrough.md
+    - name: Schnellstarts
+      items:
+        - name: Testen einer Predictive Maintenance-Lösung
+          href: quickstart-predictive-maintenance-deploy.md
+    - name: Ressourcen
+      items:
+        - name: GitHub-Repository
+          href: 'https://github.com/Azure/azure-iot-predictive-maintenance'
 - name: Referenzarchitektur
   items:
-  - name: Übersicht
-    href: iot-accelerators-architecture-overview.md
-  - name: Download
-    href: https://aka.ms/iotrefarchitecture
-  - name: Partnerimplementierungen
-    items:
-    - name: Intel Connected Logistics Platform
-      href: https://www.azureiotsolutions.com/Accelerators#description/intel-connected-logistics-platform
-    - name: Edge Dynamometer Analysis
-      href: https://www.azureiotsolutions.com/Accelerators#description/edge-dynamometer-analysis
-    - name: Lösung für digitale Beschilderung
-      href: https://www.azureiotsolutions.com/Accelerators#description/digital-signage-solution
+    - name: Übersicht
+      href: iot-accelerators-architecture-overview.md
+    - name: Download
+      href: 'https://aka.ms/iotrefarchitecture'
+    - name: Partnerimplementierungen
+      items:
+        - name: Intel Connected Logistics Platform
+          href: 'https://www.azureiotsolutions.com/Accelerators#description/intel-connected-logistics-platform'
+        - name: Edge Dynamometer Analysis
+          href: 'https://www.azureiotsolutions.com/Accelerators#description/edge-dynamometer-analysis'
+        - name: Lösung für digitale Beschilderung
+          href: 'https://www.azureiotsolutions.com/Accelerators#description/digital-signage-solution'
 - name: Verwandte Themen
   items:
-  - name: Lösungen
-    items:
-    - name: IoT Solution Accelerators
-      href: /azure/iot-accelerators
-    - name: IoT Central
-      href: https://docs.microsoft.com/microsoft-iot-central/
-  - name: Plattformdienste
-    items:
-    - name: IoT Hub
-      href: /azure/iot-hub
-    - name: IoT Hub Device Provisioning Service
-      href: /azure/iot-dps
-    - name: IoT-Dienst-SDKs
-      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
-    - name: Karten
-      href: /azure/azure-maps
-    - name: Time Series Insights
-      href: /azure/time-series-insights
-  - name: Microsoft Edge
-    items:
-    - name: IoT Edge
-      href: /azure/iot-edge
-    - name: IoT-Geräte-SDKs
-      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
-  - name: Stream Analytics
-    href: /azure/stream-analytics/
-  - name: Event Hubs
-    href: /azure/event-hubs/
-  - name: Machine Learning
-    href: /azure/machine-learning/
+    - name: Lösungen
+      items:
+        - name: IoT Solution Accelerators
+          href: /azure/iot-accelerators
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+    - name: Plattformdienste
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: IoT-Dienst-SDKs
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Karten
+          href: /azure/azure-maps
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Microsoft Edge
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT-Geräte-SDKs
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+    - name: Stream Analytics
+      href: /azure/stream-analytics/
+    - name: Event Hubs
+      href: /azure/event-hubs/
+    - name: Machine Learning
+      href: /azure/machine-learning/
 - name: Ressourcen
   items:
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/roadmap/
-  - name: Häufig gestellte Fragen
-    href: iot-accelerators-faq.md
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-iot-suite
-  - name: Remoteüberwachung V1
-    href: https://docs.microsoft.com/previous-versions/azure/iot-suite/
-ms.openlocfilehash: 5adec8ee936df920e2b96c38c5a2e78828af5b2e
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59496453"
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Häufig gestellte Fragen
+      href: iot-accelerators-faq.md
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-iot-suite'
+    - name: Remoteüberwachung V1
+      href: 'https://docs.microsoft.com/previous-versions/azure/iot-suite/'

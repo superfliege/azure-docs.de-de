@@ -1,223 +1,216 @@
-items:
 - name: Azure Maps-Dokumentation
   href: index.yml
 - name: Übersicht
   items:
-  - name: Was ist Azure Maps?
-    href: about-azure-maps.md
+    - name: Was ist Azure Maps?
+      href: about-azure-maps.md
 - name: Schnellstarts
   items:
-  - name: Erstellen einer Web-App
-    href: quick-demo-map-app.md
+    - name: Erstellen einer Web-App
+      href: quick-demo-map-app.md
 - name: Lernprogramme
   items:
-  - name: Tutorials für das Web-SDK
-    items:
-    - name: Suchen nach einem Point of Interest
-      href: tutorial-search-location.md
-    - name: Route zu einem Ziel
-      href: tutorial-route-location.md
-    - name: Mehrere Routen nach Fortbewegungsmittel
-      href: tutorial-prioritized-routes.md
-    - name: Erstellen einer Shopsuche
-      href: tutorial-create-store-locator.md
-  - name: REST-API-Tutorials
-    items:
-    - name: Einrichten eines Geofence
-      href: tutorial-geofence.md
+    - name: Tutorials für das Web-SDK
+      items:
+        - name: Suchen nach einem Point of Interest
+          href: tutorial-search-location.md
+        - name: Route zu einem Ziel
+          href: tutorial-route-location.md
+        - name: Mehrere Routen nach Fortbewegungsmittel
+          href: tutorial-prioritized-routes.md
+        - name: Erstellen einer Shopsuche
+          href: tutorial-create-store-locator.md
+    - name: REST-API-Tutorials
+      items:
+        - name: Einrichten eines Geofence
+          href: tutorial-geofence.md
 - name: Konzepte
   items:
-  - name: Authentifizierung mit Azure Maps
-    href: azure-maps-authentication.md
-  - name: Azure Maps Event Grid-Integration
-    href: azure-maps-event-grid-integration.md
-  - name: Auswählen des richtigen Tarifs
-    href: choose-pricing-tier.md
-  - name: Abdeckung
-    items:
-    - name: Abdeckung durch Geocodierung
-      href: geocoding-coverage.md
-    - name: Verkehrserschließung
-      href: traffic-coverage.md
-    - name: Abgedeckter Renderbereich
-      href: render-coverage.md
-    - name: Abgedeckter Routingbereich
-      href: routing-coverage.md
-  - name: Unterstützte Sprachen
-    href: supported-languages.md
-  - name: Unterstützte Kartenstile
-    href: supported-map-styles.md
-  - name: 'Web SDK: unterstützte Browser'
-    href: supported-browsers.md
-  - name: Zoomfaktoren und Linienraster
-    href: zoom-levels-and-tile-grid.md
+    - name: Authentifizierung mit Azure Maps
+      href: azure-maps-authentication.md
+    - name: Azure Maps Event Grid-Integration
+      href: azure-maps-event-grid-integration.md
+    - name: Auswählen des richtigen Tarifs
+      href: choose-pricing-tier.md
+    - name: Abdeckung
+      items:
+        - name: Abdeckung durch Geocodierung
+          href: geocoding-coverage.md
+        - name: Verkehrserschließung
+          href: traffic-coverage.md
+        - name: Abgedeckter Renderbereich
+          href: render-coverage.md
+        - name: Abgedeckter Routingbereich
+          href: routing-coverage.md
+    - name: Unterstützte Sprachen
+      href: supported-languages.md
+    - name: Unterstützte Kartenstile
+      href: supported-map-styles.md
+    - name: 'Web SDK: unterstützte Browser'
+      href: supported-browsers.md
+    - name: Zoomfaktoren und Linienraster
+      href: zoom-levels-and-tile-grid.md
 - name: Anleitungen
   items:
-  - name: Verwalten von Azure Maps-Konten
-    items:
-    - name: Konten verwalten
-      href: how-to-manage-account-keys.md
-    - name: Verwalten der Authentifizierung
-      href: how-to-manage-authentication.md
-    - name: Verwalten des Tarifs
-      href: how-to-manage-pricing-tier.md
-    - name: Anzeigen von Nutzungsmetriken
-      href: how-to-view-api-usage.md
-  - name: Abrufen von Kartendaten aus REST-APIs
-    items:
-    - name: Suchen nach einer Adresse
-      href: how-to-search-for-address.md
-    - name: Bewährte Suchmethoden
-      href: how-to-use-best-practices-for-search.md
-    - name: Rendern von benutzerdefinierten Daten auf einer statischen Karte
-      href: how-to-render-custom-data.md
-  - name: Entwickeln mit dem Web SDK
-    items:
-    - name: Kartensteuerelement
+    - name: Verwalten von Azure Maps-Konten
       items:
-      - name: Verwenden des Kartensteuerelements
-        href: how-to-use-map-control.md
-      - name: Erstellen einer Karte
-        href: map-create.md
-      - name: Auswählen eines Kartenstils
-        href: choose-map-style.md
-      - name: Hinzufügen von Steuerelementen zur Karte
-        href: map-add-controls.md
-      - name: Hinzufügen einer Symbolebene
-        href: map-add-pin.md
-      - name: Hinzufügen eines Popups
-        href: map-add-popup.md
-      - name: Hinzufügen einer Blasenebene
-        href: map-add-bubble-layer.md
-      - name: Hinzufügen von Formen
-        href: map-add-shape.md
-      - name: Hinzufügen einer Wärmebildebene
-        href: map-add-heat-map-layer.md
-      - name: Clusterpunktdaten
-        href: clustering-point-data-web-sdk.md
-      - name: Verwenden von datengesteuerten Formatvorlagenausdrücken
-        href: data-driven-style-expressions-web-sdk.md
-      - name: Überlagern eines Bilds
-        href: map-add-image-layer.md
-      - name: Hinzufügen von Kachelebenen
-        href: map-add-tile-layer.md
-      - name: HTML-Marker
-        href: map-add-custom-html.md
-      - name: Anzeigen des Verkehrs
-        href: map-show-traffic.md
-      - name: Interaktion mit Mausereignissen
-        href: map-events.md
-      - name: Ermöglichen des Zugriffs auf Ihre App
-        href: map-accessibility.md
-    - name: Dienstmodule
+        - name: Konten verwalten
+          href: how-to-manage-account-keys.md
+        - name: Verwalten der Authentifizierung
+          href: how-to-manage-authentication.md
+        - name: Verwalten des Tarifs
+          href: how-to-manage-pricing-tier.md
+        - name: Anzeigen von Nutzungsmetriken
+          href: how-to-view-api-usage.md
+    - name: Abrufen von Kartendaten aus REST-APIs
       items:
-      - name: Verwenden der Dienstmodule
-        href: how-to-use-services-module.md
-      - name: Anzeigen von Suchergebnissen
-        href: map-search-location.md
-      - name: Abrufen von Informationen von einer Koordinate
-        href: map-get-information-from-coordinate.md
-      - name: Anzeigen einer Wegbeschreibung von A nach B
-        href: map-route.md
-  - name: Entwickeln mit dem Android SDK
-    items:
-    - name: Verwenden des Android-Kartensteuerelements
-      href: how-to-use-android-map-control-library.md
+        - name: Suchen nach einer Adresse
+          href: how-to-search-for-address.md
+        - name: Bewährte Suchmethoden
+          href: how-to-use-best-practices-for-search.md
+        - name: Rendern von benutzerdefinierten Daten auf einer statischen Karte
+          href: how-to-render-custom-data.md
+    - name: Entwickeln mit dem Web SDK
+      items:
+        - name: Kartensteuerelement
+          items:
+            - name: Verwenden des Kartensteuerelements
+              href: how-to-use-map-control.md
+            - name: Erstellen einer Karte
+              href: map-create.md
+            - name: Auswählen eines Kartenstils
+              href: choose-map-style.md
+            - name: Hinzufügen von Steuerelementen zur Karte
+              href: map-add-controls.md
+            - name: Hinzufügen einer Symbolebene
+              href: map-add-pin.md
+            - name: Hinzufügen eines Popups
+              href: map-add-popup.md
+            - name: Hinzufügen einer Blasenebene
+              href: map-add-bubble-layer.md
+            - name: Hinzufügen von Formen
+              href: map-add-shape.md
+            - name: Hinzufügen einer Wärmebildebene
+              href: map-add-heat-map-layer.md
+            - name: Clusterpunktdaten
+              href: clustering-point-data-web-sdk.md
+            - name: Verwenden von datengesteuerten Formatvorlagenausdrücken
+              href: data-driven-style-expressions-web-sdk.md
+            - name: Überlagern eines Bilds
+              href: map-add-image-layer.md
+            - name: Hinzufügen von Kachelebenen
+              href: map-add-tile-layer.md
+            - name: HTML-Marker
+              href: map-add-custom-html.md
+            - name: Anzeigen des Verkehrs
+              href: map-show-traffic.md
+            - name: Interaktion mit Mausereignissen
+              href: map-events.md
+            - name: Ermöglichen des Zugriffs auf Ihre App
+              href: map-accessibility.md
+        - name: Dienstmodule
+          items:
+            - name: Verwenden der Dienstmodule
+              href: how-to-use-services-module.md
+            - name: Anzeigen von Suchergebnissen
+              href: map-search-location.md
+            - name: Abrufen von Informationen von einer Koordinate
+              href: map-get-information-from-coordinate.md
+            - name: Anzeigen einer Wegbeschreibung von A nach B
+              href: map-route.md
+    - name: Entwickeln mit dem Android SDK
+      items:
+        - name: Verwenden des Android-Kartensteuerelements
+          href: how-to-use-android-map-control-library.md
 - name: Verweis
   items:
-  - name: API- und Parametererweiterungen
-    items:
-    - name: Fahrzeugnutzungsmodell
-      href: consumption-model.md
-    - name: GeoJSON-Format erweitern
-      href: extend-geojson.md
-    - name: GEOJSON-Format des Geofence
-      href: geofence-geojson.md
-    - name: Unterstützte Suchkategorien
-      href: supported-search-categories.md
-  - name: REST
-    items:
-    - name: Datendienst
-      href: https://docs.microsoft.com/rest/api/maps/data
-    - name: Geolocation-Dienst
-      href: https://docs.microsoft.com/rest/api/maps/geolocation
-    - name: Renderingdienst
-      href: https://docs.microsoft.com/rest/api/maps/render
-    - name: Routendienst
-      href: https://docs.microsoft.com/rest/api/maps/route
-    - name: Suchdienst
-      href: https://docs.microsoft.com/rest/api/maps/search
-    - name: Räumlicher Dienst
-      href: https://docs.microsoft.com/rest/api/maps/spatial
-    - name: Zeitzonendienst
-      href: https://docs.microsoft.com/rest/api/maps/timezone
-    - name: Verkehrsinfodienst
-      href: https://docs.microsoft.com/rest/api/maps/traffic
-    - name: Kartenkontoverwaltung
-      href: https://docs.microsoft.com/rest/api/maps-management
-  - name: JavaScript
-    items:
-    - name: Kartensteuerelement
-      href: https://docs.microsoft.com/javascript/api/azure-maps-javascript/
-    - name: Dienstmodule
-      href: https://docs.microsoft.com/javascript/api/azure-maps-rest/
-  - name: Resource Manager-Vorlage
-    href: /azure/templates/microsoft.maps/accounts
+    - name: API- und Parametererweiterungen
+      items:
+        - name: Fahrzeugnutzungsmodell
+          href: consumption-model.md
+        - name: GeoJSON-Format erweitern
+          href: extend-geojson.md
+        - name: GEOJSON-Format des Geofence
+          href: geofence-geojson.md
+        - name: Unterstützte Suchkategorien
+          href: supported-search-categories.md
+    - name: REST
+      items:
+        - name: Datendienst
+          href: 'https://docs.microsoft.com/rest/api/maps/data'
+        - name: Geolocation-Dienst
+          href: 'https://docs.microsoft.com/rest/api/maps/geolocation'
+        - name: Renderingdienst
+          href: 'https://docs.microsoft.com/rest/api/maps/render'
+        - name: Routendienst
+          href: 'https://docs.microsoft.com/rest/api/maps/route'
+        - name: Suchdienst
+          href: 'https://docs.microsoft.com/rest/api/maps/search'
+        - name: Räumlicher Dienst
+          href: 'https://docs.microsoft.com/rest/api/maps/spatial'
+        - name: Zeitzonendienst
+          href: 'https://docs.microsoft.com/rest/api/maps/timezone'
+        - name: Verkehrsinfodienst
+          href: 'https://docs.microsoft.com/rest/api/maps/traffic'
+        - name: Kartenkontoverwaltung
+          href: 'https://docs.microsoft.com/rest/api/maps-management'
+    - name: JavaScript
+      items:
+        - name: Kartensteuerelement
+          href: 'https://docs.microsoft.com/javascript/api/azure-maps-javascript/'
+        - name: Dienstmodule
+          href: 'https://docs.microsoft.com/javascript/api/azure-maps-rest/'
+    - name: Resource Manager-Vorlage
+      href: /azure/templates/microsoft.maps/accounts
 - name: Ressourcen
   items:
-  - name: Nutzungsbedingungen für Azure Maps
-    href: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31
-  - name: Azure Maps-Preise
-    href: https://azure.microsoft.com/pricing/details/azure-maps
-  - name: Preisrechner
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-maps
-  - name: MSDN-Forum
-    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs
-  - name: Azure Maps-Videos
-    href: https://aka.ms/AzureMapsVideos
-  - name: Azure Maps-Glossar
-    href: glossary.md
-  - name: Dienstupdates
-    href: https://azure.microsoft.com/updates
-  - name: Azure IoT Developer Center
-    href: https://azure.microsoft.com/develop/iot/
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/roadmap/?category=iot
-  - name: Technische Fallstudien
-    href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
-  - name: Azure Maps in IoT School
-    href: https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo
+    - name: Nutzungsbedingungen für Azure Maps
+      href: 'https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31'
+    - name: Azure Maps-Preise
+      href: 'https://azure.microsoft.com/pricing/details/azure-maps'
+    - name: Preisrechner
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-maps'
+    - name: MSDN-Forum
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'
+    - name: Azure Maps-Videos
+      href: 'https://aka.ms/AzureMapsVideos'
+    - name: Azure Maps-Glossar
+      href: glossary.md
+    - name: Dienstupdates
+      href: 'https://azure.microsoft.com/updates'
+    - name: Azure IoT Developer Center
+      href: 'https://azure.microsoft.com/develop/iot/'
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=iot'
+    - name: Technische Fallstudien
+      href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
+    - name: Azure Maps in IoT School
+      href: 'https://iotschool.microsoft.com/learning-paths/4ZktHn3KEUIiUw64C0Aieo'
 - name: Verwandte Themen
   items:
-  - name: Lösungen
-    items:
-    - name: IoT Solution Accelerators
-      href: /azure/iot-suite
-    - name: IoT Central
-      href: https://docs.microsoft.com/microsoft-iot-central/
-  - name: Plattformdienste
-    items:
-    - name: IoT Hub
-      href: /azure/iot-hub
-    - name: IoT Hub Device Provisioning Service
-      href: /azure/iot-dps
-    - name: Karten
-      href: /azure/azure-maps
-    - name: Dienst-SDKs
-      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
-    - name: Time Series Insights
-      href: /azure/time-series-insights
-  - name: IoT Edge
-    items:
+    - name: Lösungen
+      items:
+        - name: IoT Solution Accelerators
+          href: /azure/iot-suite
+        - name: IoT Central
+          href: 'https://docs.microsoft.com/microsoft-iot-central/'
+    - name: Plattformdienste
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: Karten
+          href: /azure/azure-maps
+        - name: Dienst-SDKs
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Time Series Insights
+          href: /azure/time-series-insights
     - name: IoT Edge
-      href: /azure/iot-edge
-    - name: IoT-Geräte-SDKs
-      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
-ms.openlocfilehash: 94e02b599bffd24e9c9aa65560e4a74bd05ecea6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263592"
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT-Geräte-SDKs
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

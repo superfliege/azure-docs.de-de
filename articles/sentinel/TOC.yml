@@ -1,96 +1,89 @@
-items:
 - name: Dokumentation zur Vorschauversion von Azure Sentinel
   href: index.yml
 - name: Übersicht
   href: overview.md
 - name: Schnellstarts
-  items:
-  - name: Ausführen des Onboardings für Azure Sentinel
-    href: quickstart-onboard.md
-  - name: Einblick in Warnungen
-    href: quickstart-get-visibility.md
   expanded: true
+  items:
+    - name: Ausführen des Onboardings für Azure Sentinel
+      href: quickstart-onboard.md
+    - name: Einblick in Warnungen
+      href: quickstart-get-visibility.md
 - name: Lernprogramme
   items:
-  - name: Erkennen von verdächtigen Bedrohungen
-    href: tutorial-detect-threats.md
-  - name: Untersuchen von Fällen
-    href: tutorial-investigate-cases.md
-  - name: Reagieren auf Bedrohungen
-    href: tutorial-respond-threats-playbook.md
+    - name: Erkennen von verdächtigen Bedrohungen
+      href: tutorial-detect-threats.md
+    - name: Untersuchen von Fällen
+      href: tutorial-investigate-cases.md
+    - name: Reagieren auf Bedrohungen
+      href: tutorial-respond-threats-playbook.md
 - name: Anleitungen
   items:
-  - name: Herstellen einer Verbindung mit Datenquellen
-    href: connect-data-sources.md
-    items:
-    - name: Herstellen einer Verbindung mit Microsoft-Diensten
+    - name: Herstellen einer Verbindung mit Datenquellen
+      href: connect-data-sources.md
       items:
-      - name: Herstellen einer Verbindung mit Azure AD
-        href: connect-azure-active-directory.md
-      - name: Herstellen einer Verbindung mit Office 365
-        href: connect-office-365.md
-      - name: Herstellen einer Verbindung mit Cloud App Security
-        href: connect-cloud-app-security.md
-      - name: Herstellen einer Verbindung mit Azure-Aktivitätsprotokollen
-        href: connect-azure-activity.md
-      - name: Herstellen einer Verbindung mit Azure AD Identity Protection
-        href: connect-azure-ad-identity-protection.md
-      - name: Herstellen einer Verbindung mit Azure Information Protection
-        href: connect-azure-information-protection.md
-      - name: Herstellen einer Verbindung mit Azure ATP
-        href: connect-azure-atp.md
-      - name: Herstellen einer Verbindung mit Azure Security Center
-        href: connect-azure-security-center.md
-      - name: Herstellen einer Verbindung mit Microsoft Web Application Firewall
-        href: connect-microsoft-waf.md
-      - name: Herstellen einer Verbindung mit der Windows-Firewall
-        href: connect-windows-firewall.md
-      - name: Herstellen einer Verbindung mit Windows-Sicherheitsereignissen
-        href: connect-windows-security-events.md
-    - name: Herstellen einer Verbindung mit externen Lösungen
+        - name: Herstellen einer Verbindung mit Microsoft-Diensten
+          items:
+            - name: Herstellen einer Verbindung mit Azure AD
+              href: connect-azure-active-directory.md
+            - name: Herstellen einer Verbindung mit Office 365
+              href: connect-office-365.md
+            - name: Herstellen einer Verbindung mit Cloud App Security
+              href: connect-cloud-app-security.md
+            - name: Herstellen einer Verbindung mit Azure-Aktivitätsprotokollen
+              href: connect-azure-activity.md
+            - name: Herstellen einer Verbindung mit Azure AD Identity Protection
+              href: connect-azure-ad-identity-protection.md
+            - name: Herstellen einer Verbindung mit Azure Information Protection
+              href: connect-azure-information-protection.md
+            - name: Herstellen einer Verbindung mit Azure ATP
+              href: connect-azure-atp.md
+            - name: Herstellen einer Verbindung mit Azure Security Center
+              href: connect-azure-security-center.md
+            - name: Herstellen einer Verbindung mit Microsoft Web Application Firewall
+              href: connect-microsoft-waf.md
+            - name: Herstellen einer Verbindung mit der Windows-Firewall
+              href: connect-windows-firewall.md
+            - name: Herstellen einer Verbindung mit Windows-Sicherheitsereignissen
+              href: connect-windows-security-events.md
+        - name: Herstellen einer Verbindung mit externen Lösungen
+          items:
+            - name: Herstellen einer Verbindung mit CEF (generisch)
+              href: connect-common-event-format.md
+            - name: Herstellen einer Verbindung mit Barracuda
+              href: connect-barracuda.md
+            - name: Herstellen einer Verbindung mit Check Point
+              href: connect-checkpoint.md
+            - name: Herstellen einer Verbindung mit Palo Alto Networks
+              href: connect-paloalto.md
+            - name: Herstellen einer Verbindung mit Fortinet
+              href: connect-fortinet.md
+            - name: Herstellen einer Verbindung mit F5
+              href: connect-f5.md
+            - name: Herstellen einer Verbindung mit Syslog
+              href: connect-syslog.md
+            - name: Herstellen einer Verbindung mit Symantec ICDX
+              href: connect-symantec.md
+            - name: Herstellen einer Verbindung mit Cisco
+              href: connect-cisco.md
+        - name: Herstellen einer Verbindung mit Threat Intelligence
+          href: connect-threat-intelligence.md
+    - name: Suche
+      href: hunting.md
       items:
-      - name: Herstellen einer Verbindung mit CEF (generisch)
-        href: connect-common-event-format.md
-      - name: Herstellen einer Verbindung mit Barracuda
-        href: connect-barracuda.md
-      - name: Herstellen einer Verbindung mit Check Point
-        href: connect-checkpoint.md
-      - name: Herstellen einer Verbindung mit Palo Alto Networks
-        href: connect-paloalto.md
-      - name: Herstellen einer Verbindung mit Fortinet
-        href: connect-fortinet.md
-      - name: Herstellen einer Verbindung mit F5
-        href: connect-f5.md
-      - name: Herstellen einer Verbindung mit Syslog
-        href: connect-syslog.md
-      - name: Herstellen einer Verbindung mit Symantec ICDX
-        href: connect-symantec.md
-      - name: Herstellen einer Verbindung mit Cisco
-        href: connect-cisco.md
-    - name: Herstellen einer Verbindung mit Threat Intelligence
-      href: connect-threat-intelligence.md
-  - name: Suche
-    href: hunting.md
-    items:
-    - name: Suchen mithilfe von Notebooks
-      href: notebooks.md
-    - name: Suchen mithilfe von Textmarken
-      href: bookmarks.md
-  - name: Aktivieren von Fusion
-    href: connect-fusion.md
+        - name: Suchen mithilfe von Notebooks
+          href: notebooks.md
+        - name: Suchen mithilfe von Textmarken
+          href: bookmarks.md
+    - name: Aktivieren von Fusion
+      href: connect-fusion.md
 - name: Ressourcen
   items:
-  - name: Nützliche Ressourcen
-    href: resources.md
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/roadmap/?category=security-identity
-  - name: Azure-Blog zu Sicherheit, Datenschutz und Compliance
-    href: https://blogs.msdn.com/b/azuresecurity/
-  - name: Regionale Verfügbarkeit
-    href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 886f07fa45e7795251d50880a977cfbc331dfb2b
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59493985"
+    - name: Nützliche Ressourcen
+      href: resources.md
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: 'Azure-Blog zu Sicherheit, Datenschutz und Compliance'
+      href: 'https://blogs.msdn.com/b/azuresecurity/'
+    - name: Regionale Verfügbarkeit
+      href: 'https://azure.microsoft.com/regions/services/'
