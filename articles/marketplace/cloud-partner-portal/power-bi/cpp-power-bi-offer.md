@@ -12,20 +12,20 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 03/27/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 11bbd87eb283dca2c7da19e32833221c7320a79f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: f18a1b05e5a38a79945d8df6706dd2147d6b43df
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817795"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009715"
 ---
 # <a name="power-bi-app-offer"></a>Power BI-App-Angebot
 
 |              |                                |
-|-|--------------------------------|
-| In diesem Artikel wird erläutert, wie Sie eine Power BI-App im Microsoft [AppSource Marketplace](https://appsource.microsoft.com/) veröffentlichen. Eine Power BI-Anwendung bündelt Power BI-Inhalte und verwendet Dataflows, um Berichte und Dashboards mit Daten in einem gemeinsamen Datenspeicher zu verbinden. Über AppSource können Sie die App dann für andere Mandanten bereitstellen. | ![Power BI-Symbol](./media/powerbi-icon.png) |
+|--------------|--------------------------------|
+| In diesem Artikel wird erläutert, wie Sie eine Power BI-App im Microsoft [AppSource Marketplace](https://appsource.microsoft.com/) veröffentlichen.  In einer Power BI-App werden anpassbare Power BI-Inhalte, z. B. Datasets, Berichte und Dashboards, gebündelt. Sie können die App dann über AppSource in anderen Power BI-Mandanten bereitstellen, die vom Entwickler zugelassenen Änderungen und Anpassungen vornehmen und die App mit Ihren Daten verbinden. | ![Power BI-Symbol](./media/powerbi-icon.png) |
 
 
 Dieser Artikel ist in drei Hauptabschnitte unterteilt:
@@ -43,16 +43,15 @@ Die Veröffentlichung eines Power BI-App-Angebots umfasst die folgenden allgemei
 
 Der Veröffentlichungsprozess für ein Power BI-App-Angebot besteht aus folgenden Schritten:
 
-1. Erstellen Sie eine Dienstanwendung in Power BI. Mit dieser Aktion wird eine Paket-Installations-URL generiert, welche die technischen Ressourcen für das Angebot beinhaltet. Weitere Informationen finden Sie unter [Was ist Power BI?](https://go.microsoft.com/fwlink/?linkid=2028636)
-2. Sammeln oder erstellen Sie die geschäftlichen Ressourcen wie beispielsweise:
-    - Marketingmaterial
-    - Rechtliche Hinweise und Supportdokumente
-3.  Erstellen Sie das Angebot. Verwenden Sie das Cloud-Partnerportal, um die Details und Informationen für das Angebot zu konfigurieren. Hierzu zählen die Angebotsbeschreibung, Marketingmaterial, rechtliche Hinweise und Supportinformationen sowie Ressourcenspezifikationen.
-4.  Zertifizieren und veröffentlichen Sie das Angebot. Dadurch wird der Veröffentlichungsprozess gestartet.
-    - Das AppSource-Onboardingteam testet, überprüft und zertifiziert Ihre Anwendung. 
-    - Nach der Zertifizierung des Angebots sollten Sie es in einer Testumgebung prüfen und freigeben.
+1. Erstellen Sie eine Vorlagenanwendung in Power BI. Mit dieser Aktion wird eine Paketinstallations-URL generiert, die die primäre technische Ressource für das Angebot beinhaltet. Stufen Sie das Testpaket zu diesem Zeitpunkt auch in die Präproduktion hoch. Weitere Informationen finden Sie unter [Was sind Power BI-Vorlagen-Apps?](https://docs.microsoft.com/power-bi/service-template-apps-overview) 
+2. Erfassen oder erstellen Sie das Marketingmaterial für das Angebot, z. B. offizieller Name, Beschreibung, Logos usw. 
+3. Erfassen oder erstellen Sie die rechtlichen und unterstützenden Dokumente: *Nutzungsbedingungen*, *Datenschutzrichtlinie*, *Unterstützungsrichtlinie*, Benutzerhilfe usw.
+4. Erstellen Sie das Angebot: Im Cloud-Partnerportal werden die Details für das Angebot festgelegt. Hierzu zählen die Angebotsbeschreibung, Marketingmaterial, rechtliche und unterstützende Informationen sowie Ressourcenspezifikationen.  Nachdem die Angaben für das Angebot vollständig sind, übermitteln Sie es zur Veröffentlichung.
+5. Überwachen Sie den Veröffentlichungsprozess im Cloud-Partnerportal.  Bei diesem Schritt testet, überprüft und zertifiziert das AppSource-Onboardingteam Ihre Anwendung. 
+6. Prüfen Sie die App nach der erfolgreichen Zertifizierung in einer Testumgebung, und geben Sie sie frei. 
+7. Die Power BI-App wird in AppSource gelistet (sie wird „live geschaltet“).
+8. Stufen Sie das Paket der Präproduktion in Power BI in die Produktion hoch. Weitere Informationen finden Sie unter [Verwalten der Freigabe der Vorlagen-App](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release).
 
-Nachdem Sie diese Schritte abgeschlossen haben, wird Ihr Power BI-App-Angebot auf AppSource live geschaltet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,7 +1,6 @@
 ---
 title: Grundlegendes zur Vorgehensweise beim Überwachen des Inhalts eines virtuellen Computers
 description: Hier erfahren Sie, wie Azure Policy mithilfe von Guest Configuration Einstellungen in einem virtuellen Azure-Computer überprüft.
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/18/2019
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 045339ec0a725359593797bda172a2e93f7c2890
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: c11d6519986cf7a0e70d1fe004ef527c3df247d5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339022"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277721"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informationen zu Guest Configuration von Azure Policy
 

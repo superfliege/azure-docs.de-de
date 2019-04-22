@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: e186effb63c1ca96ace33ec389c2487448e4d20d
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: af47678b19209936aed86c132a8a3f400c3a7e8f
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407096"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360338"
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>Gruppieren von Computern per Mapping von Computerabhängigkeiten
 
@@ -121,17 +121,55 @@ Nach der Erstellung der Gruppe wird empfohlen, alle Agents auf sämtlichen Compu
 
 ## <a name="query-dependency-data-from-azure-monitor-logs"></a>Abfragen von Abhängigkeitsdaten aus Azure Monitor-Protokollen
 
-Von der Dienstzuordnung erfasste Abhängigkeitsdaten stehen zur Abfrage im Log Analytics-Arbeitsbereich zur Verfügung, der Ihrem Azure Migrate-Projekt zugeordnet ist. [Erfahren Sie mehr](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) über die Dienstzuordnungs-Datentabellen, die in Azure Monitor-Protokollen abgefragt werden sollen. 
+Von der Dienstzuordnung erfasste Abhängigkeitsdaten stehen zur Abfrage im Log Analytics-Arbeitsbereich zur Verfügung, der Ihrem Azure Migrate-Projekt zugeordnet ist. [Weitere Informationen](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) zu den Dienstzuordnungs-Datentabellen zum Abfragen in Azure Monitor-Protokollen. 
 
 So führen Sie die Kusto-Abfragen aus:
 
 1. Navigieren Sie nach der Installation des Agents zum Portal, und klicken Sie auf **Übersicht**.
 2. Wechseln Sie in der 0**Übersicht** zum Abschnitt **Essentials** des Projekts, und klicken Sie auf den Arbeitsbereichsnamen, der neben dem **OMS-Arbeitsbereich** steht.
 3. Klicken Sie auf der Log Analytics-Arbeitsbereichsseite auf **Allgemein** > **Protokolle**.
-4. Schreiben Sie Ihre Abfrage, um mit Azure Monitor-Protokollen Abhängigkeitsdaten zu sammeln. Beispielabfragen zum Sammeln von Abhängigkeitsdaten finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches).
+4. Schreiben Sie Ihre Abfrage, um mit Azure Monitor-Protokollen Abhängigkeitsdaten zu sammeln. Beispielabfragen finden Sie im nächsten Abschnitt.
 5. Führen Sie Ihre Abfrage aus, indem Sie auf „Ausführen“ klicken. 
 
 [Erfahren Sie mehr](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) über das Schreiben von Kusto-Abfragen. 
+
+### <a name="sample-azure-monitor-logs-queries"></a>Beispielabfragen für Azure Monitor-Protokolle
+
+Nachfolgend finden Sie Beispielabfragen, mit denen Sie Abhängigkeitsdaten extrahieren können. Sie können die Abfragen ändern, um Ihre bevorzugten Datenpunkte zu extrahieren. Eine vollständige Liste der Felder in Abhängigkeitsdatensätzen ist [hier](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) verfügbar. Weitere Beispielabfragen finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches).
+
+#### <a name="summarize-inbound-connections-on-a-set-of-machines"></a>Zusammenfassen von eingehenden Verbindungen in einer Gruppe von Computern
+
+Beachten Sie, dass die Datensätze in der Tabelle für Verbindungsmetriken „VMConnection“ keine einzelnen physischen Netzwerkverbindungen darstellen. Mehrere physische Netzwerkverbindungen werden in einer logischen Verbindung gruppiert. Weitere Informationen dazu, wie Daten von physischen Netzwerkverbindungen in einem einzelnen logischen Datensatz in VMConnection aggregiert werden, finden Sie [hier](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#connections). 
+
+```
+// the machines of interest
+let ips=materialize(ServiceMapComputer_CL
+| summarize ips=makeset(todynamic(Ipv4Addresses_s)) by MonitoredMachine=ResourceName_s
+| mvexpand ips to typeof(string));
+let StartDateTime = datetime(2019-03-25T00:00:00Z);
+let EndDateTime = datetime(2019-03-30T01:00:00Z); 
+VMConnection
+| where Direction == 'inbound' 
+| where TimeGenerated > StartDateTime and TimeGenerated  < EndDateTime
+| join kind=inner (ips) on $left.DestinationIp == $right.ips
+| summarize sum(LinksEstablished) by Computer, Direction, SourceIp, DestinationIp, DestinationPort
+```
+
+#### <a name="summarize-volume-of-data-sent-and-received-on-inbound-connections-between-a-set-of-machines"></a>Zusammenfassen der gesendeten und empfangenen Daten in eingehenden Verbindungen zwischen einer Gruppe von Computern
+
+```
+// the machines of interest
+let ips=materialize(ServiceMapComputer_CL
+| summarize ips=makeset(todynamic(Ipv4Addresses_s)) by MonitoredMachine=ResourceName_s
+| mvexpand ips to typeof(string));
+let StartDateTime = datetime(2019-03-25T00:00:00Z);
+let EndDateTime = datetime(2019-03-30T01:00:00Z); 
+VMConnection
+| where Direction == 'inbound' 
+| where TimeGenerated > StartDateTime and TimeGenerated  < EndDateTime
+| join kind=inner (ips) on $left.DestinationIp == $right.ips
+| summarize sum(BytesSent), sum(BytesReceived) by Computer, Direction, SourceIp, DestinationIp, DestinationPort
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

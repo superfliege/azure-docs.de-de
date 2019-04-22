@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: ca9c4c959d21f26369600129f3897b7624dd84f2
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 96322c730300e360ed03f4b623db2a7f18825f55
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371172"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267700"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>Skalierbarkeits- und Leistungsziele für Speicherkonten in Azure Storage
 
@@ -23,7 +23,7 @@ Testen Sie unbedingt Ihren Dienst, um festzustellen, ob seine Leistung Ihren Anf
 
 Wenn Ihre Anwendung die Grenze dessen erreicht, was eine Partition an Workload bewältigen kann, dann gibt Azure Storage den Fehlercode 503 (Server ausgelastet) oder den Fehlercode 500 (Zeitüberschreitung für Vorgang) zurück. Wenn 503-Fehler auftreten, sollte die Anwendung so geändert werden, dass sie eine exponentielle Backoffrichtlinie für Wiederholungen verwendet. Durch exponentielle Backoffs kann die Auslastung der Partition verringert werden, um die Datenverkehrsspitzen bei dieser Partition auszugleichen.
 
-## <a name="standard-performance-storage-account-scale-limits"></a>Skalierungslimits für Speicherkonten der Leistungsstufe „Standard“
+## <a name="storage-account-scale-limits"></a>Skalierungslimits für Speicherkonten
 
 [!INCLUDE [azure-storage-limits](../../../includes/azure-storage-limits.md)]
 
@@ -45,6 +45,36 @@ Weitere Informationen zu den Skalierbarkeits- und Leistungszielen für Azure Fil
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
+### <a name="premium-files-scale-targets"></a>Skalierbarkeitsziele für Premiumdateien
+
+Es gibt drei Kategorien von Einschränkungen, die für Premiumdateien zu berücksichtigen sind: Speicherkonten, Datenfreigaben und Dateien.
+
+Beispiel:  Eine einzelne Freigabe kann einen IOPS von 100.000 erreichen, und eine einzelne Datei kann bis zu einem IOPS von 5.000 zentral hochskalieren. Wenn Sie beispielsweise drei Dateien in einer Freigabe haben, entspricht der maximale IOPS aus dieser Freigabe 15.000.
+
+#### <a name="premium-file-share-limits"></a>Freigabelimits für Premiumdateien
+
+> [!IMPORTANT]
+> Die Einschränkungen für Speicherkonten gelten für alle Freigaben. Zentrales Hochskalieren bis zum Maximalwert für Speicherkonten ist nur möglich, wenn es nur eine Freigabe pro Speicherkonto gibt.
+
+|Bereich  |Ziel  |
+|---------|---------|
+|Mindestgröße                        |100 GB      |
+|Max. Größe                        |ca. 100 TiB      |
+|Mindestgröße vergrößern/verkleinern    |1 GiB      |
+|IOPS-Grundwert    |1 IOPS pro GiB bis zu 100.000|
+|IOPS-Bursting    |3 x IOPS pro GiB bis zu 100.000|
+|Mindestbandbreite                     |100        |
+|Bandbreite |0,1 MB/s pro GiB bis zu 5 GiB/s     |
+|Maximale Anzahl von Momentaufnahmen        |200       |
+
+#### <a name="premium-file-limits"></a>Grenzwerte für Premiumdateien
+
+|Bereich  |Ziel  |
+|---------|---------|
+|Größe                  |1 TiB         |
+|Max. IOPS pro Datei     |5.000         |
+|Gleichzeitige Handles    |2.000         |
+
 ### <a name="azure-file-sync-scale-targets"></a>Skalierbarkeitsziele für die Azure-Dateisynchronisierung
 
 Azure File Sync wurde mit dem Ziel der unbegrenzten Nutzung entwickelt, aber unbegrenzte Nutzung ist nicht immer möglich. Die folgende Tabelle gibt an, welche Grenzen für Tests von Microsoft gelten und welche Ziele feste Grenzwerte sind:
@@ -62,6 +92,6 @@ Azure File Sync wurde mit dem Ziel der unbegrenzten Nutzung entwickelt, aber unb
 ## <a name="see-also"></a>Siehe auch
 
 - [Speicher – Preisdetails](https://azure.microsoft.com/pricing/details/storage/)
-- [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../../azure-subscription-service-limits.md)
+- [Grenzwerte für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../../azure-subscription-service-limits.md)
 - [Azure Storage-Replikation](../storage-redundancy.md)
 - [Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage](../storage-performance-checklist.md)

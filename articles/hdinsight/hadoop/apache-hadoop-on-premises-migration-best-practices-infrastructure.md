@@ -3,24 +3,22 @@ title: Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – Best Pract
 description: Erfahren Sie mehr zu Best Practices für die Infrastruktur bei der Migration von lokalen Hadoop-Clustern zu Azure HDInsight.
 services: hdinsight
 author: hrasheed-msft
-ms.reviewer: ashishth
+ms.reviewer: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 04/05/2019
 ms.author: hrasheed
-ms.openlocfilehash: 6c57b62d63be55abc51b85327957afffa5dd3a42
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 4fe47feff6ac3a58ba4db8c700a3e34b2cdc0df9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360196"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274688"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – Best Practices für Infrastruktur
 
 Dieser Artikel enthält Empfehlungen für die Verwaltung der Infrastruktur von Azure HDInsight-Clustern. Er ist Teil einer Reihe von Artikeln, die bewährte Methoden für die Migration von lokalen Apache Hadoop-Systemen zu Azure HDInsight enthalten.
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="plan-for-hdinsight-cluster-capacity"></a>Planen der HDInsight-Clusterkapazität
 
@@ -105,7 +103,7 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 ## <a name="customize-hdinsight-configs-using-bootstrap"></a>Anpassen von HDInsight-Konfigurationen mithilfe von Bootstrap
 
-Änderungen an Konfigurationen in den Konfigurationsdateien wie `core-site.xml`, `hive-site.xml` und `oozie-env.xml` können mit Bootstrap vorgenommen werden. Das folgende Skript ist ein Beispiel mit PowerShell:
+Änderungen an Konfigurationen in den Konfigurationsdateien wie `core-site.xml`, `hive-site.xml` und `oozie-env.xml` können mit Bootstrap vorgenommen werden. Das folgende Skript ist ein Beispiel für die Verwendung des [AZ-Moduls](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) und des Cmdlets [New-AzHDInsightClusterConfig](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) von PowerShell:
 
 ```powershell
 # hive-site.xml configuration
@@ -130,7 +128,7 @@ New—AzHDInsightCluster `
     —Config $config
 ```
 
-Weitere Informationen finden Sie im Artikel [Anpassen von HDInsight-Clustern mithilfe von Bootstrap](../hdinsight-hadoop-customize-cluster-bootstrap.md).
+Weitere Informationen finden Sie im Artikel [Anpassen von HDInsight-Clustern mithilfe von Bootstrap](../hdinsight-hadoop-customize-cluster-bootstrap.md).  Siehe auch [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-REST-API](../hdinsight-hadoop-manage-ambari-rest-api.md).
 
 ## <a name="access-client-tools-from-hdinsight-hadoop-cluster-edge-nodes"></a>Zugreifen auf Clienttools über Edgeknoten des HDInsight Hadoop-Clusters
 
@@ -148,37 +146,10 @@ Weitere Informationen finden Sie im Artikel [Verwenden leerer Edgeknoten in Apac
 
 ## <a name="use-scale-up-and-scale-down-feature-of-clusters"></a>Verwenden des Features zum Hoch- und Herunterskalieren von Clustern
 
-HDInsight bietet Flexibilität, indem Sie die Anzahl der Workerknoten in Ihren Clustern zentral hoch- und herunterskalieren können. So können Sie einen Cluster nach den Geschäftsstunden oder am Wochenende verkleinern und während der Spitzenbelastungen erweitern.
+HDInsight bietet Flexibilität, indem Sie die Anzahl der Workerknoten in Ihren Clustern zentral hoch- und herunterskalieren können. So können Sie einen Cluster nach den Geschäftsstunden oder am Wochenende verkleinern und während der Spitzenbelastungen erweitern. Weitere Informationen finden Sie unter
 
-Die Clusterskalierung kann mithilfe der folgenden Methoden automatisiert werden:
-
-### <a name="powershell-cmdlet"></a>PowerShell-Cmdlet
-
-```powershell
-Set-AzHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <NewSize>
-```
-
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-
-```powershell
-azure hdinsight cluster resize [options] <clusterName> <Target Instance Count>
-```
-
-### <a name="azure-portal"></a>Azure-Portal
-
-Wenn Sie Ihrem ausgeführten HDInsight-Cluster Knoten hinzufügen, sind ausstehende oder laufende Aufträge nicht betroffen. Neue Aufträge können sicher übermittelt werden, während der Skalierungsprozess ausgeführt wird. Wenn bei der Skalierung aus beliebigem Grund ein Fehler auftritt, wird der Fehler ordnungsgemäß behandelt, sodass der Cluster funktionsfähig bleibt.
-
-Wenn Sie jedoch Knoten entfernen, um Ihren Cluster zentral herunter zu skalieren, tritt bei ausstehenden oder laufenden Aufträgen ein Fehler auf, wenn die Skalierung abgeschlossen ist. Der Grund für diesen Fehler ist, dass einige Dienste während des Prozesses neu gestartet werden. Um dieses Problem zu beheben, können Sie warten, bis die Aufträge abgeschlossen sind, bevor Sie Ihren Cluster zentral herunterskalieren, die Aufträge manuell beenden oder sie nach Abschluss der Skalierung erneut übermitteln.
-
-Wenn Sie Ihren Cluster auf das Minimum von einem Workerknoten verkleinern, kann HDFS im abgesicherten Modus hängen bleiben, wenn Workerknoten aufgrund des Patchens oder unmittelbar nach der Skalierung neu gestartet werden. Sie können den folgenden Befehl ausführen, um HDFS aus dem abgesicherten Modus zu holen:
-
-```bash
-hdfs dfsadmin -D 'fs.default.name=hdfs://mycluster/' -safemode leave
-```
-
-Nach dem Verlassen des abgesicherten Modus können Sie die temporären Dateien manuell entfernen oder darauf warten, dass Hive sie letztendlich automatisch bereinigt.
-
-Weitere Informationen finden Sie im Artikel [Skalieren von HDInsight-Clustern](../hdinsight-scaling-best-practices.md).
+* [Skalieren von HDInsight-Clustern](../hdinsight-scaling-best-practices.md)
+* [Skalieren von Clustern](../hdinsight-administer-use-portal-linux.md#scale-clusters)
 
 ## <a name="use-hdinsight-with-azure-virtual-network"></a>Verwenden von HDInsight mit Azure Virtual Network
 
@@ -197,17 +168,17 @@ HDInsight kann entweder zu einem neuen oder vorhandenen Azure Virtual Network hi
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Azure Virtual Networks – Übersicht](../../virtual-network/virtual-networks-overview.md)
+- [Was ist Azure Virtual Network?](../../virtual-network/virtual-networks-overview.md)
 - [Erweitern von Azure HDInsight per Azure Virtual Network](../hdinsight-extend-hadoop-virtual-network.md)
 
 ## <a name="securely-connect-to-azure-services-with-azure-virtual-network-service-endpoints"></a>Herstellen einer sicheren Verbindung mit Azure-Diensten unter Verwendung von Azure Virtual Network-Dienstendpunkten
 
-HDInsight unterstützt [Virtual Network-Dienstendpunkte](../../virtual-network/virtual-network-service-endpoints-overview.md) , mit denen Sie eine sichere Verbindung zu Azure Blob Storage, Azure Data Lake Storage Gen2, Cosmos DB und SQL-Datenbanken herstellen können. Durch die Aktivierung eines Dienstendpunkts für Azure HDInsight, durchläuft der Datenverkehr eine geschützte Route im Azure-Rechenzentrum. Dank dieser höheren Sicherheit in der Netzwerkschicht können Sie große Datenspeicherkonten auf ihre spezifischen Virtual Networks (VNETs) festlegen und dennoch HDInsight-Cluster nahtlos nutzen, um auf diese Daten zuzugreifen und sie zu verarbeiten.
+HDInsight unterstützt [Virtual Network-Dienstendpunkte](../../virtual-network/virtual-network-service-endpoints-overview.md), mit denen Sie eine sichere Verbindung zu Azure Blob Storage, Azure Data Lake Storage Gen2, Cosmos DB und SQL-Datenbanken herstellen können. Durch die Aktivierung eines Dienstendpunkts für Azure HDInsight, durchläuft der Datenverkehr eine geschützte Route im Azure-Rechenzentrum. Dank dieser höheren Sicherheit in der Netzwerkschicht können Sie große Datenspeicherkonten auf ihre spezifischen Virtual Networks (VNETs) festlegen und dennoch HDInsight-Cluster nahtlos nutzen, um auf diese Daten zuzugreifen und sie zu verarbeiten.
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Virtuelles Netzwerk – Dienstendpunkte](../../virtual-network/virtual-network-service-endpoints-overview.md)
-- [Erhöhen der Sicherheit von HDInsight mit Dienstendpunkten](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)
+- [Dienstendpunkte im virtuellen Netzwerk](../../virtual-network/virtual-network-service-endpoints-overview.md)
+- [Enhance HDInsight security with service endpoints (Erhöhen der Sicherheit von HDInsight mit Dienstendpunkten)](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)
 
 ## <a name="connect-hdinsight-to-the-on-premises-network"></a>Verbinden von HDInsight mit einem lokalen Netzwerk
 

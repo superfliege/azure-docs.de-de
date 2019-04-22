@@ -34,8 +34,8 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: <a href="/azure/azure-maps/tutorial-search-location">Suchen nach Points of Interest</a>
-          - html: <a href="/azure/azure-maps/tutorial-route-location">Route zu einem Point of Interest</a>
+          - html: <a href="/azure/azure-maps/tutorial-search-location">Suchen nach interessanten Punkten</a>
+          - html: <a href="/azure/azure-maps/tutorial-route-location">Route zu interessanten Punkten</a>
           - html: <a href="/azure/azure-maps/tutorial-prioritized-routes">Routen nach Fortbewegungsmittel</a>
           - html: <a href="/azure/azure-maps/tutorial-create-store-locator">Erstellen einer Shopsuche</a>
       - html: <b>REST-API-Tutorials</b>

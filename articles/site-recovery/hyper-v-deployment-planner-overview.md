@@ -1,18 +1,18 @@
 ---
 title: Informationen zum Azure Site Recovery-Bereitstellungsplaner für die Notfallwiederherstellung von Hyper-V-VMs in Azure | Microsoft-Dokumentation
 description: Erfahren Sie mehr über den Azure Site Recovery-Bereitstellungsplaner für die Hyper-V-Notfallwiederherstellung in Azure.
-author: nsoneji
+author: mayurigupta13
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
-ms.author: nisoneji
-ms.openlocfilehash: 06e3139ffa958637721aae7e912b34070d307757
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 4/9/2019
+ms.author: mayg
+ms.openlocfilehash: 43431c401f13117af1f60d3affd284fc125be7eb
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207393"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360281"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Informationen zum Azure Site Recovery-Bereitstellungsplaner für die Hyper-V-Notfallwiederherstellung in Azure
 
@@ -38,7 +38,7 @@ Das Tool umfasst die folgenden Details:
 * Auswirkung auf die gewünschte RPO, wenn eine niedrigere Bandbreite bereitgestellt wird
 
     
-**Azure-Infrastrukturanforderungen**
+**Anforderungen an die Azure-Infrastruktur**
 
 * Speichertypanforderung (Standard- oder Storage Premium-Konto) für jede VM
 * Gesamtzahl von Standard- und Storage Premium-Konten zur Einrichtung für die Replikation
@@ -72,7 +72,7 @@ Das Tool umfasst die folgenden Details:
 
 | | **VMware zu Azure** |**Hyper-V in Azure**|**Azure zu Azure**|**Hyper-V zum sekundären Standort**|**VMware zum sekundären Standort**
 --|--|--|--|--|--
-Unterstützte Szenarien |JA|JA|Nein |Ja*|Nein 
+Unterstützte Szenarien |Ja|Ja|Nein |Ja*|Nein 
 Unterstützte Version | vCenter 6.5, 6.0 oder 5.5| Windows Server 2016, Windows Server 2012 R2 | Nicht verfügbar |Windows Server 2016, Windows Server 2012 R2|Nicht verfügbar
 Unterstützte Konfiguration|vCenter, ESXi| Hyper-V-Cluster, Hyper-V-Host|Nicht verfügbar|Hyper-V-Cluster, Hyper-V-Host|Nicht verfügbar|
 Anzahl von Servern, für die pro ausgeführter Azure Site Recovery-Bereitstellungsplaner-Instanz die Profilerstellung durchgeführt werden kann |Einzeln (für VMs, die zu einem vCenter Server oder einem ESXi-Server gehören, kann die Profilerstellung auf einmal durchgeführt werden)|Mehrere (für VMs mehrerer Hosts oder Hostcluster kann die Profilerstellung auf einmal durchgeführt werden)| Nicht verfügbar |Mehrere (für VMs mehrerer Hosts oder Hostcluster kann die Profilerstellung auf einmal durchgeführt werden)| Nicht verfügbar
@@ -132,8 +132,8 @@ Wählen Sie eine der folgenden Vorgehensweisen, wenn Sie über eine vorherige Ve
   >Jeder neue Deployment Planner ist ein kumulatives Update der ZIP-Datei. Es ist nicht erforderlich, die neuesten Dateien in den vorherigen Ordner zu kopieren. Sie können einen neuen Ordner erstellen und verwenden.
 
 ## <a name="version-history"></a>Versionsverlauf
-Die aktuelle Version des Tools ASR-Bereitstellungsplaner ist 2.3.
-Auf der Seite [ASR Deployment Planner Version History](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx) (ASR-Bereitstellungsplaner – Versionsverlauf) finden Sie Informationen zu den Fehlerbehebungen, die in den einzelnen Updates hinzugefügt werden.
+Die aktuelle Version des Azure Site Recovery-Bereitstellungsplaners ist Version 2.3.
+Auf der Seite [ASR Deployment Planner Version History](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx) (Azure Site Recovery-Bereitstellungsplaner – Versionsverlauf) finden Sie Informationen zu den Fehlerbehebungen, die in den einzelnen Updates hinzugefügt werden.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

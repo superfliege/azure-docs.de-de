@@ -1,7 +1,7 @@
 ---
-title: Erstellen, Laden und Abfragen eines Index mit PowerShell und der REST-API – Azure Search
-description: Erstellen und laden Sie einen Index mit PowerShell, Invoke-RestMethod und der Azure Search-REST-API, und erstellen Sie eine Abfrage für den Index.
-ms.date: 03/15/2019
+title: 'Schnellstart: Erstellen, Laden und Abfragen eines Index mit PowerShell und der REST-API – Azure Search'
+description: Erstellen und laden Sie einen Index mit der Invoke-RestMethod in PowerShell und der Azure Search-REST-API, und erstellen Sie eine Abfrage für den Index.
+ms.date: 04/08/2019
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 9e1b6fc0dc4e6a6c2c191960fa061c810e3a2e79
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2deba4bf941d561fcef7c2dff804646732e7ce24
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372113"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268023"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-powershell-and-the-rest-api"></a>Schnellstart: Erstellen eines Azure Search-Index mit PowerShell und der REST-API
 > [!div class="op_single_selector"]
@@ -29,19 +29,23 @@ In diesem Artikel wird Schritt für Schritt das Erstellen, Laden und Abfragen ei
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[Erstellen Sie einen Azure Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. Weitere Voraussetzungen sind:
+In diesem Schnellstart werden die folgenden Dienste und Tools verwendet. 
+
+[Erstellen Sie einen Azure Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. 
 
 [PowerShell 5.1 oder höher](https://github.com/PowerShell/PowerShell) mit [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) für sequenzielle und interaktive Schritte.
 
-Rufen Sie den URL-Endpunkt und den API-Administratorschlüssel für Ihren Suchdienst ab. Hierfür wird jeweils ein Suchdienst erstellt. Wenn Sie Azure Search also Ihrem Abonnement hinzugefügt haben, können Sie diese Schritte ausführen, um die erforderlichen Informationen zu erhalten:
+## <a name="get-a-key-and-url"></a>Abrufen eines Schlüssels und einer URL
 
-1. Rufen Sie die URL im Azure-Portal auf der Seite **Übersicht** Ihres Suchdiensts ab. Ein Beispiel für einen Endpunkt lautet: „https:\//my-service-name.search.windows.net“.
+Für REST-Aufrufe sind die Dienst-URL und ein Zugriffsschlüssel für jede Anforderung erforderlich. Hierfür wird jeweils ein Suchdienst erstellt. Wenn Sie Azure Search also Ihrem Abonnement hinzugefügt haben, können Sie diese Schritte ausführen, um die erforderlichen Informationen zu erhalten:
+
+1. [Melden Sie sich beim Azure-Portal an](https://portal.azure.com/), und rufen Sie auf der Seite **Übersicht** Ihres Suchdiensts die URL ab. Ein Beispiel für einen Endpunkt ist `https://mydemo.search.windows.net`.
 
 2. Rufen Sie unter **Einstellungen** > **Schlüssel** einen Administratorschlüssel ab, um Vollzugriff auf den Dienst zu erhalten. Es gibt zwei austauschbare Administratorschlüssel – diese wurden zum Zweck der Geschäftskontinuität bereitgestellt, falls Sie einen Rollover für einen Schlüssel durchführen müssen. Für Anforderungen zum Hinzufügen, Ändern und Löschen von Objekten können Sie den primären oder den sekundären Schlüssel verwenden.
 
-   ![Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels](media/search-fiddler/get-url-key.png "Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels")
+![Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels](media/search-fiddler/get-url-key.png "Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels")
 
-   Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
+Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 
 ## <a name="connect-to-azure-search"></a>Herstellen einer Verbindung mit Azure Search
 

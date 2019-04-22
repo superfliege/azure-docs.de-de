@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: ellacroi
-ms.openlocfilehash: 5ac8e35614d6f0514f60932bc34aa8cab2c0ad11
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2eabe0c234df6165b78e2dc55dcdc73067aabaa6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542147"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273225"
 ---
 # <a name="marketplace-faqs"></a>Häufig gestellte Fragen zum Marketplace
 
@@ -74,7 +74,7 @@ Azure Marketplace-Angebote können hier erworben werden:
 
 **Kann ich auswählen, in welchen Microsoft Azure-Regionen mein Azure Marketplace-Einkauf bereitgestellt wird?**
 
-Die Herausgeber haben die Möglichkeit, die Bereitstellung in jede Azure-Datencenterregion vorzunehmen, die von ihnen aktiviert wurde. Wir empfehlen, die Rechenzentrumsstandorte mit der geringsten Entfernung zu Ihren Diensten auszuwählen, um die Leistung zu optimieren und die Kosten möglichst gering zu halten.
+Der Kunde kann die Bereitstellung in jeder Azure-Rechenzentrumsregion vornehmen, die von ihnen aktiviert wurde. Wir empfehlen, die Rechenzentrumsstandorte mit der geringsten Entfernung zu Ihren Diensten auszuwählen, um die Leistung zu optimieren und die Kosten möglichst gering zu halten.
 
 **Kann ich das versehentliche Löschen eines Azure Marketplace-Einkaufs „rückgängig“ machen?**
 
@@ -90,7 +90,7 @@ Abhängigkeiten werden für Azure Marketplace-Angebote nicht automatisch verwalt
 
 **Kann ich Azure Marketplace-Lösungen bei einem Azure Cloud Solution Provider erwerben?**
 
-Gegenwärtig sind über Azure CSP- und Open-Kunden im Marketplace nur kostenlose Angebote und BYOL-Angebote (Bring-Your-Own-License, Verwendung Ihrer eigenen Lizenz) verfügbar.
+Wenn der Herausgeber das Angebot so konfiguriert hat, dass es über den CSP-Kanal verfügbar ist, ist es über Ihren Reseller verfügbar.
 
 **Welche Länder werden für den Kauf von Anwendungen und Diensten unterstützt, die im Azure Marketplace verkauft/bereitgestellt werden?**
 
@@ -161,7 +161,7 @@ Dies sind die gängigsten Optionen pro Angebotstyp:
 
 Die „Kostenlose Testversion“ eines Abonnementangebots ist unbefristet kostenlos.  Eine „Kostenlose Software-Testversion“ („Jetzt testen“) bei einem Angebot ist ein kostenpflichtiges Angebot, das aber für einen begrenzten Testzeitraum kostenlos ist.
 
-**Benötige ich ein registriertes Zahlungsinstrument (z. B. eine Kreditkarte), um Angebote im Tarif „Free“ oder als BYOL-Version (Bring Your Own License) bereitzustellen?**
+**Benötige ich ein registriertes Zahlungsinstrument (z.B. eine Kreditkarte), um Angebote im Tarif „Free“ oder als BYOL-Version (Bring Your Own License) bereitzustellen?**
 
  Nein. Zur Bereitstellung von Angeboten im Free-Tarif oder als BYOL-Version ist kein Zahlungsinstrument erforderlich. Für kostenlose Testangebote ist hingegen ein Zahlungsinstrument erforderlich. Listings, die die Schaltflächen **Jetzt anfordern** oder **Kostenlose Testversion** enthalten, werden in dem ausgewählten Azure-Abonnement bereitgestellt.  Diese Listings werden über die registrierte Zahlungsmethode des ausgewählten Kontos abgerechnet. Azure-Nutzungsgebühren werden getrennt von den Softwarelizenzgebühren abgerechnet.
 
@@ -438,7 +438,7 @@ Ja, der neue Preis wird sofort berechnet.  Preisänderungen treten auf, wenn ein
 
 Der Azure Marketplace unterstützt derzeit keine knotenbasierte Abrechnung für virtuelle Computer. Herausgeber können jedoch eine knotenbasierte Abrechnungsrate basierend auf den Microsoft-VM-Abrechnungsraten bestimmen.  Die Berechnung erfolgt, indem die Anzahl von virtuellen Computern, die Anzahl von Nutzungsstunden sowie die Rate pro Stunde berechnet wird.
 
-**An wen wende ich mich, wenn ich Fragen zur Abrechnung oder zur Angebotsverwaltung habe?**
+**An wen wende ich mich, wenn ich Fragen zur Abrechnung oder Angebotsverwaltung habe?**
 
 Tragen Sie ein Ticket beim [Microsoft-Support](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfName=productselection&prid=15635) ein.
 
@@ -454,7 +454,7 @@ Wenden Sie sich bei Problemen mit der Abrechnung und dem Abonnement Ihres Azure 
 
 Besuchen Sie das [Azure Marketplace-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket).
 
-**An wen wende ich mich, wenn ich Fragen zur Veröffentlichung oder zur Angebotsverwaltung habe?**
+**An wen wende ich mich, wenn ich Fragen zur Veröffentlichung oder Angebotsverwaltung habe?**
 
 Im [Azure Marketplace-Herausgeberleitfaden](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) finden Sie aktuelle Ressourcen und Informationen zu häufig gestellten Fragen. Darüber hinaus können Sie im [Cloud-Partnerportal ein Ticket für den Microsoft-Support](https://support.microsoft.com/en-us/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953) eintragen.
 
@@ -472,10 +472,6 @@ Der Azure Marketplace ist der Store, in dem IT-Experten und Entwickler technisch
 
 Sie finden Azure Marketplace-Angebote über die [webbasierte Storefront](https://azuremarketplace.microsoft.com/marketplace/), im [Microsoft Azure-Verwaltungsportal](https://portal.azure.com/) oder über die [Azure Marketplace Command Line Interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest). Sobald Sie im Azure Marketplace angemeldet sind, können Sie Lösungen von Microsoft und unseren Partnern entdecken und kaufen. Hinweis: Vorausbezahlte Guthaben und andere Formen finanzieller Verpflichtungen werden nicht auf Softwarelizenzgebühren angerechnet.  Stattdessen werden sie zur Deckung zugehöriger Azure-Nutzungsgebühren verwendet. Ausnahmen sind in der [Azure-Zahlungsverpflichtung](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) aufgeführt.
 
-**Kann ich auswählen, in welchen Microsoft Azure-Regionen mein Azure Marketplace-Einkauf bereitgestellt wird?**
-
-Kunden haben die Möglichkeit, die Bereitstellung in jeder Azure-Datencenterregion vorzunehmen, die von einem Herausgeber aktiviert wurde. Sie können Rechenzentrumsstandorte mit der geringsten Entfernung zu den angebotenen Diensten auswählen, um die Leistung zu optimieren und die Kosten möglichst gering zu halten.
-
 **Kann ich das versehentliche Löschen eines Azure Marketplace-Einkaufs „rückgängig“ machen?**
 
 Nein, Löschungen sind endgültig. Wenn Sie versehentlich ein Abonnement löschen, können Sie problemlos neu beginnen, indem Sie es erneut kaufen.  Allerdings sind alle nicht verwendeten Funktionen oder bereits bezahlten Dienste verloren, weshalb Sie also beim Löschen eines Abonnements sehr sorgfältig vorgehen sollten.
@@ -488,15 +484,11 @@ Nein, Azure warnt Sie nicht, wenn Sie einen Einkauf löschen, von dem Ihre Anwen
 
 Abhängigkeiten werden für Azure Marketplace-Angebote nicht automatisch verwaltet. Überprüfen Sie sorgfältig die Beschreibung Ihres Azure Marketplace-Einkaufs vor dessen Verwendung.  Sie sollten ermitteln, ob Abhängigkeiten vorhanden sind, bevor Sie die Lösung bereitstellen.
 
-**Kann ich Azure Marketplace-Lösungen bei einem Azure Cloud Solution Provider (CSP) erwerben?**
-
-Gegenwärtig sind für Azure CSP- und Open-Kunden im Marketplace nur kostenlose Angebote und BYOL-Angebote (Bring-Your-Own-License, Verwendung Ihrer eigenen Lizenz) verfügbar.
-
 **Wer kann Anwendungen und Dienste kaufen, die im Azure Marketplace verkauft/bereitgestellt werden?**
 
 Der Azure Marketplace ist in den folgenden Ländern für Microsoft Azure-Kunden verfügbar:
 
-Algerien, Argentinien, Australien, Österreich, Bahrain, Belarus, Belgien, Brasilien, Bulgarien, Kanada, Chile, Kolumbien, Costa Rica, Kroatien, Zypern, Tschechische Republik, Dänemark, Dominikanische Republik, Ecuador, Ägypten, El Salvador, Estland, Finnland, Frankreich, Deutschland, Griechenland, Guatemala, Hongkong, Ungarn, Island, Indien, Indonesien, Irland, Israel, Italien, Japan, Jordanien, Kasachstan, Kenia, Kuwait, Lettland, Liechtenstein, Litauen, Luxemburg, Mazedonien (ehemalige jugoslawische Republik), Malaysia, Malta, Mexiko, Montenegro, Marokko, Niederlande, Neuseeland, Nigeria, Norwegen, Oman, Pakistan, Panama, Paraguay, Peru, Philippinen, Polen, Portugal, Puerto Rico, Katar, Rumänien, Russland, Saudi-Arabien, Serbien, Singapur, Slowakei, Slowenien, Südafrika, Südkorea, Spanien, Sri Lanka, Schweden, Schweiz, Taiwan, Thailand, Trinidad und Tobago, Tunesien, Türkei, Ukraine, Vereinigte Arabische Emirate, Vereinigtes Königreich, USA, Uruguay, Venezuela.
+Algerien, Argentinien, Australien, Österreich, Bahrain, Belarus, Belgien, Brasilien, Bulgarien, Kanada, Chile, Kolumbien, Costa Rica, Kroatien, Zypern, Tschechische Republik, Dänemark, Dominikanische Republik, Ecuador, Ägypten, El Salvador, Estland, Finnland, Frankreich, Deutschland, Griechenland, Guatemala, Hongkong, Ungarn, Island, Indien, Indonesien, Irland, Israel, Italien, Japan, Jordanien, Kasachstan, Kenia, Kuwait, Lettland, Liechtenstein, Litauen, Luxemburg, Nordmazedonien, Malaysia, Malta, Mexiko, Montenegro, Marokko, Niederlande, Neuseeland, Nigeria, Norwegen, Oman, Pakistan, Panama, Paraguay, Peru, Philippinen, Polen, Portugal, Puerto Rico, Katar, Rumänien, Russland, Saudi-Arabien, Serbien, Singapur, Slowakei, Slowenien, Südafrika, Südkorea, Spanien, Sri Lanka, Schweden, Schweiz, Taiwan, Thailand, Trinidad und Tobago, Tunesien, Türkei, Ukraine, Vereinigte Arabische Emirate, Vereinigtes Königreich, USA, Uruguay, Venezuela.
 
 **Wie definiere ich meine geografische Verfügbarkeit, um den Verkauf in verschiedenen Ländern zu aktivieren?**
 
@@ -562,7 +554,7 @@ Die Preisdetails finden Sie auf der Detailseite der Lösung unter [https://azure
 
 Ein Abonnement im Free-Tarif ist unbefristet kostenlos.  Ein Angebot als „Kostenlose Software-Testversion“ („Jetzt testen“) ist ein kostenpflichtiges Abonnement, das nur für einen begrenzten Zeitraum kostenlos ist.
 
-**Benötige ich ein registriertes Zahlungsinstrument (z. B. eine Kreditkarte), um Angebote im Tarif „Free“ oder als BYOL-Version (Bring Your Own License) bereitzustellen?**
+**Benötige ich ein registriertes Zahlungsinstrument (z.B. eine Kreditkarte), um Angebote im Tarif „Free“ oder als BYOL-Version (Bring Your Own License) bereitzustellen?**
 
  Nein. Zur Bereitstellung von Angeboten im Free-Tarif oder als BYOL-Version ist kein Zahlungsinstrument erforderlich. Für kostenlose Testangebote ist hingegen ein Zahlungsinstrument erforderlich.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: jdial
-ms.openlocfilehash: 0b859b6c3fa37e8dbac82436d1e2f2444c9d2dcf
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: f718e57e257a79a18ad4d0b6b47c10f855b6db60
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312153"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006999"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>Diagnoseprotokollierung für eine Netzwerksicherheitsgruppe
 
@@ -198,11 +198,11 @@ Das Regelzählerprotokoll enthält Informationen über jede Regel, die auf Resso
 ## <a name="view-and-analyze-logs"></a>Anzeigen und Analysieren von Protokollen
 
 Lesen Sie den Artikel [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), um zu erfahren, wie Sie Diagnoseprotokolldaten anzeigen. Beim Senden von Diagnosedaten in folgenden Lösungen sollten Sie Folgendes wissen:
-- **Azure Monitor-Protokolle:** Mit der [Analyselösung für Netzwerksicherheitsgruppen](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-log-analytics
+- **Azure Monitor-Protokolle:** Mit der [Analyselösung für Netzwerksicherheitsgruppen](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-azure-monitor
 ) können Sie bessere Erkenntnisse erzielen. Die Lösung bietet Visualisierungen für NSG-Regeln, die Datenverkehr mittels der MAC-Adresse der Netzwerkschnittstelle auf einem virtuellen Computer zulassen oder ablehnen.
 - **Azure Storage-Konto**: Daten werden in eine Datei namens „PT1H.json“ geschrieben. Folgende Informationen finden Sie in den angegebenen Speicherorten:
-  - Ereignisprotokoll unter folgendem Pfad: `insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
-  - Regelzählerprotokoll unter folgendem Pfad: `insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
+  - Das Ereignisprotokoll finden Sie unter folgendem Pfad: `insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
+  - Das Regelzählerprotokoll finden Sie unter folgendem Pfad: `insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
 
 ## <a name="next-steps"></a>Nächste Schritte
 

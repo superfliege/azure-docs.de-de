@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: 7490287a56a4cd1fe72e843e2666d171bb9b6729
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 52623183139be2b8ac6b12d3adca64e72de932d3
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665301"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050320"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager 
 > [!div class="op_single_selector"]
@@ -34,6 +34,9 @@ Die Clustersicherheit wird bei der Ersteinrichtung des Clusters konfiguriert und
 
 Wenn Sie einen Produktionscluster für die Ausführung von Produktionsworkloads erstellen, empfehlen wir, davor die [Prüfliste für die Produktionsbereitschaft](service-fabric-production-readiness-checklist.md) durchzulesen.
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>Voraussetzungen 
 Verwenden Sie in diesem Artikel die Service Fabric-RM-Powershell- oder Azure CLI- Module zum Bereitstellen eines Clusters:
 
@@ -41,16 +44,16 @@ Verwenden Sie in diesem Artikel die Service Fabric-RM-Powershell- oder Azure CLI
 * [Azure-Befehlszeilenschnittstelle ab Version 2.0][azure-CLI]
 
 Die Referenzdokumentation für die Service Fabric-Module finden Sie hier:
-* [AzureRM.ServiceFabric](https://docs.microsoft.com/powershell/module/azurerm.servicefabric)
-* [az SF CLI module](https://docs.microsoft.com/cli/azure/sf?view=azure-cli-latest)
+* [Az.ServiceFabric](https://docs.microsoft.com/powershell/module/az.servicefabric)
+* [CLI-Modul „az SF“](https://docs.microsoft.com/cli/azure/sf?view=azure-cli-latest)
 
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich vor der Ausführung des ersten Befehls in diesem Artikel bei Azure an.
 
 ```powershell
-Connect-AzureRmAccount
-Set-AzureRmContext -SubscriptionId <subscriptionId>
+Connect-AzAccount
+Set-AzContext -SubscriptionId <subscriptionId>
 ```
 
 ```azurecli
@@ -71,7 +74,7 @@ Die Vorlage, die verwendet wird, ist unter den [Azure Service Fabric-Vorlagenbei
 Mit dem folgenden Befehl können entweder Windows- oder Linux-Cluster erstellt werden. Geben Sie das Betriebssystem entsprechend an. Die PowerShell-/CLI-Befehle geben außerdem das Zertifikat im angegebenen *CertificateOutputFolder*-Ordner zurück. Stellen Sie daher sicher, dass der Zertifikatordner bereits erstellt ist. Der Befehl akzeptiert auch andere Parameter wie VM-SKU.
 
 > [!NOTE]
-> Der folgende PowerShell-Befehl funktioniert nur mit einer höheren Azure Resource Manager PowerShell-Version als 6.1. Um die aktuelle Version von Azure Resource Manager PowerShell zu überprüfen, führen Sie den PowerShell-Befehl „Get-Module AzureRM“-aus. Folgen Sie [diesem Link](/powershell/azure/azurerm/install-azurerm-ps), um ein Upgrade für Ihre Azure Resource Manager PowerShell-Version durchzuführen. 
+> Der folgende PowerShell-Befehl funktioniert nur mit dem `Az`-Modul von Azure PowerShell. Führen Sie den PowerShell-Befehl „Get-Module Az“ aus, um die aktuelle Version von Azure Resource Manager PowerShell zu überprüfen. Folgen Sie [diesem Link](/powershell/azure/install-Az-ps), um ein Upgrade für Ihre Azure Resource Manager PowerShell-Version durchzuführen. 
 >
 >
 
@@ -89,7 +92,7 @@ $vmuser="myadmin"
 $os="WindowsServer2016DatacenterwithContainers"
 $certOutputFolder="c:\certificates"
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -OS $os -VmPassword $vmpassword -VmUserName $vmuser
+New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -OS $os -VmPassword $vmpassword -VmUserName $vmuser
 ```
 
 Bereitstellen des Clusters mithilfe der Azure CLI:
@@ -143,7 +146,7 @@ $certOutputFolder="c:\certificates"
 $parameterFilePath="c:\mytemplates\mytemplateparm.json"
 $templateFilePath="c:\mytemplates\mytemplate.json"
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
+New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
 ```
 
 Bereitstellen des Clusters mithilfe der Azure CLI:
@@ -167,7 +170,7 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 Verwenden Sie den folgenden Befehl zum Erstellen eines Clusters, wenn Sie über ein Zertifikat verfügen, das Sie zum Schützen des Clusters verwenden möchten.
 
-Wenn dies ein von einer ZS signiertes Zertifikat ist, das Sie letztendlich auch für andere Zwecke einsetzen möchten, dann empfiehlt es sich, eine unterschiedliche Ressourcengruppe speziell für Ihren Schlüsseltresor bereitzustellen. Es empfiehlt sich, den Schlüsseltresor in einer eigenen Ressourcengruppe zu platzieren. Dadurch können Sie die Compute- und Speicherressourcengruppen (einschließlich der Ressourcengruppe mit Ihrem Service Fabric-Cluster) entfernen, ohne Ihre Schlüssel und geheimen Schlüssel zu verlieren. **Die Ressourcengruppe mit Ihrem Schlüsseltresor *muss sich in der gleichen Region* befinden wie der Cluster, der den Tresor verwendet.**
+Wenn dies ein von einer ZS signiertes Zertifikat ist, das Sie letztendlich auch für andere Zwecke einsetzen möchten, dann empfiehlt es sich, eine unterschiedliche Ressourcengruppe speziell für Ihren Schlüsseltresor bereitzustellen. Es empfiehlt sich, den Schlüsseltresor in einer eigenen Ressourcengruppe zu platzieren. Dadurch können Sie die Compute- und Speicherressourcengruppen (einschließlich der Ressourcengruppe mit Ihrem Service Fabric-Cluster) entfernen, ohne Ihre Schlüssel und geheimen Schlüssel zu verlieren. **Die Ressourcengruppe mit Ihrem Schlüsseltresor *muss sich in der gleichen Region befinden* wie der Cluster, der den Tresor verwendet.**
 
 ### <a name="use-the-default-five-node-one-node-type-template-that-ships-in-the-module"></a>Verwenden der im Modul enthaltenen standardmäßigen „5 Node 1“-Knotentypvorlage
 Die verwendete Vorlage ist in den [Azure-Beispielen: Windows-Vorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) und [Ubuntu-Vorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure) verfügbar.
@@ -184,7 +187,7 @@ $vmpassword=("Password!4321" | ConvertTo-SecureString -AsPlainText -Force)
 $vmuser="myadmin"
 $os="WindowsServer2016DatacenterwithContainers"
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -KeyVaultResourceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile C:\MyCertificates\chackocertificate3.pfx -CertificatePassword $certPassword -OS $os -VmPassword $vmpassword -VmUserName $vmuser 
+New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -KeyVaultResourceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile C:\MyCertificates\chackocertificate3.pfx -CertificatePassword $certPassword -OS $os -VmPassword $vmpassword -VmUserName $vmuser 
 ```
 
 Bereitstellen des Clusters mithilfe der Azure CLI:
@@ -237,7 +240,7 @@ $parameterFilePath="c:\mytemplates\mytemplateparm.json"
 $templateFilePath="c:\mytemplates\mytemplate.json"
 $certificateFile="C:\MyCertificates\chackonewcertificate3.pem"
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -TemplateFile $templateFilePath -ParameterFile $parameterFilePath -KeyVaultResourceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile $certificateFile -CertificatePassword $certPassword
+New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -TemplateFile $templateFilePath -ParameterFile $parameterFilePath -KeyVaultResourceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile $certificateFile -CertificatePassword $certPassword
 ```
 
 Bereitstellen des Clusters mithilfe der Azure CLI:
@@ -264,13 +267,13 @@ Zur Verwendung eines vorhandenen Schlüsseltresors muss dieser [für die Bereits
 Bereitstellen des Clusters mithilfe von PowerShell:
 
 ```powershell
-Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
+Set-AzKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
 
 $parameterFilePath="c:\mytemplates\mytemplate.json"
 $templateFilePath="c:\mytemplates\mytemplateparm.json"
 $secretID="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -SecretIdentifier $secretId -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
+New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -SecretIdentifier $secretId -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
 ```
 
 Bereitstellen des Clusters mithilfe der Azure CLI:
@@ -292,7 +295,7 @@ Sie verfügen jetzt über einen sicheren Cluster, der in Azure ausgeführt wird.
 Informationen zur JSON-Syntax und zu den Eigenschaften, die in einer Vorlage verwendet werden sollen, finden Sie in der Vorlagenreferenz [Microsoft.ServiceFabric/clusters](/azure/templates/microsoft.servicefabric/clusters).
 
 <!-- Links -->
-[azure-powershell]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
+[azure-powershell]:https://docs.microsoft.com/powershell/azure/install-Az-ps
 [azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [customize-your-cluster-template]: service-fabric-cluster-creation-create-template.md

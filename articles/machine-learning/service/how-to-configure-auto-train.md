@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: fd937aba302004f23904e4f743c93e69460f9026
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 5aa9a60c624e1bfaa1570d02bfd1a421fcab3301
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541144"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358294"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>Konfigurieren von automatisierten Machine Learning-Experimenten
 
@@ -26,7 +26,7 @@ Beispiele automatisierter Machine Learning-Experimente finden Sie in den Tutoria
 
 Für das automatisierte maschinelle Lernen sind folgende Konfigurationsoptionen verfügbar:
 
-* Wählen Sie die Experimentart aus: Klassifizierung, Regression oder Vorhersage
+* Wählen Sie die Experimentart aus: Klassifizierung, Regression oder Zeitreihenvorhersage
 * Datenquelle, Datenformate und Abrufen von Daten
 * Wählen Sie das Computeziel aus: lokal oder remote.
 * Einstellungen für automatisierte Machine Learning-Experimente
@@ -39,7 +39,7 @@ Legen Sie vor Experimentbeginn fest, welche Art von Problem des maschinellen Ler
 
 Das automatisierte Machine Learning unterstützt während des Automatisierungs- und Optimierungsprozesses die folgenden Algorithmen. Als Benutzer müssen Sie den Algorithmus nicht angeben. Obwohl während des Trainings DNN-Algorithmen zur Verfügung stehen, erstellt automatisiertes ML keine DNN-Modelle.
 
-Classification | Regression | Vorhersagen
+Classification | Regression | Zeitreihe und Vorhersage
 |-- |-- |--
 [Logistische Regression](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [Elastisches Netz](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [Elastisches Netz](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
 [Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
@@ -84,7 +84,7 @@ Beispiele:
 
 ## <a name="fetch-data-for-running-experiment-on-remote-compute"></a>Abrufen von Daten zum Ausführen von Experimenten auf einem Remotecomputeziel
 
-Wenn Sie Ihr Experiment mit einem Remotecomputeziel ausführen, muss der Datenabruf in ein separates Python-Skript `get_data()` eingebunden werden. Dieses Skript wird auf dem gleichen Remotecomputeziel ausgeführt wie das automatisierte Machine Learning-Experiment. Mit `get_data` müssen die Daten nicht bei jeder Iteration über die Leitung abgerufen werden. Ohne `get_data` schlägt das Experiment fehl, wenn Sie es auf einem Remotecomputeziel ausführen.
+Wenn Sie Ihr Experiment mit einem Remotecomputeziel ausführen, muss der Datenabruf in ein separates Python-Skript `get_data()` eingebunden werden. Dieses Skript wird auf dem gleichen Remotecomputeziel ausgeführt wie das automatisierte Machine Learning-Experiment. `get_data` sorgt dafür, dass die Daten nicht bei jeder Iteration über die Leitung abgerufen werden müssen. Ohne `get_data` schlägt das Experiment fehl, wenn Sie es auf einem Remotecomputeziel ausführen.
 
 Hier ist ein Beispiel für `get_data`:
 
@@ -110,9 +110,9 @@ Geben Sie in Ihrem `AutoMLConfig`-Objekt den Parameter `data_script` und den Pfa
 automl_config = AutoMLConfig(****, data_script=project_folder + "/get_data.py", **** )
 ```
 
-Das `get_data`-Skript kann Folgendes zurückgeben:
+`get_data` Skript kann Folgendes zurückgeben:
 
-Schlüssel | Type |    Gegenseitiger Ausschluss mit | BESCHREIBUNG
+Schlüssel | Type | Gegenseitiger Ausschluss mit    | BESCHREIBUNG
 ---|---|---|---
 X | Pandas-Datenrahmen oder NumPy-Array | data_train, label, columns |  Alle Funktionen zum Trainieren.
 y | Pandas-Datenrahmen oder NumPy-Array |   label   | Labeldaten zum Trainieren. Bei der Klassifizierung muss es ein Array von ganzen Zahlen sein.
@@ -191,6 +191,7 @@ Beispiele hierfür sind:
         primary_metric='AUC_weighted',
         max_time_sec=12000,
         iterations=50,
+        blacklist_models='XGBoostClassifier',
         X=X,
         y=y,
         n_cross_validations=2)
@@ -202,55 +203,25 @@ Beispiele hierfür sind:
         task='regression',
         max_time_sec=600,
         iterations=100,
+        whitelist_models='kNN regressor'
         primary_metric='r2_score',
         X=X,
         y=y,
         n_cross_validations=5)
     ```
 
-Es gibt drei verschiedene Werte des `task`-Parameters, die die Liste der anzuwendenden Algorithmen bestimmen.  Verwenden Sie die Parameter `whitelist` oder `blacklist`, um Iterationen mit den verfügbaren Algorithmen zum Ein- oder Ausschließen weiter zu modifizieren.
-* Classification
-    * LogisticRegression
-    * SGD
-    * MultinomialNaiveBayes
-    * BernoulliNaiveBayes
-    * SVM
-    * LinearSVM
-    * KNN
-    * DecisionTree
-    * RandomForest
-    * ExtremeRandomTrees
-    * LightGBM
-    * GradientBoosting
-    * TensorFlowDNN
-    * TensorFlowLinearClassifier
-    * XGBoostClassifier
-* Regression
-    * ElasticNet
-    * GradientBoosting
-    * DecisionTree
-    * KNN
-    * LassoLars
-    * SGD 
-    * RandomForest
-    * ExtremeRandomTree
-    * LightGBM
-    * TensorFlowLinearRegressor
-    * TensorFlowDNN
-    * XGBoostRegressor
-* Vorhersagen
-    * ElasticNet
-    * GradientBoosting
-    * DecisionTree
-    * KNN
-    * LassoLars
-    * SGD 
-    * RandomForest
-    * ExtremeRandomTree
-    * LightGBM
-    * TensorFlowLinearRegressor
-    * TensorFlowDNN
-    * XGBoostRegressor
+Die drei verschiedenen Werte des `task`-Parameters bestimmen die Liste der anzuwendenden Algorithmen.  Verwenden Sie die Parameter `whitelist` oder `blacklist`, um Iterationen mit den verfügbaren Algorithmen zum Ein- oder Ausschließen weiter zu modifizieren. Die Liste der unterstützten Modelle finden Sie unter der [SupportedAlgorithms-Klasse](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedalgorithms?view=azure-ml-py).
+
+## <a name="primary-metric"></a>Primäre Metrik
+Die primäre Metrik – bestimmt wie in den obigen Beispielen gezeigt, die Metrik, die während des Modelltrainings für die Optimierung verwendet werden soll. Die primäre Metrik, die Sie auswählen können, richtet sich nach der Art der ausgewählten Aufgabe. Im Folgenden finden Sie eine Liste der verfügbaren Metriken.
+
+|Classification | Regression | Zeitreihe und Vorhersage
+|-- |-- |--
+|accuracy| spearman_correlation | spearman_correlation
+|AUC_weighted | normalized_root_mean_squared_error | normalized_root_mean_squared_error
+|average_precision_score_weighted | r2_score | r2_score
+|norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
+|precision_score_weighted |
 
 ## <a name="data-pre-processing-and-featurization"></a>Datenvorverarbeitung und Featurebereitstellung
 
@@ -269,7 +240,7 @@ Bei Verwendung von `preprocess=True` werden die folgenden Datenvorverarbeitungss
 
 ## <a name="time-series-forecasting"></a>Zeitreihe und Vorhersage
 Für den Aufgabentyp „Zeitreihenvorhersage“ müssen Sie zusätzliche Parameter definieren.
-1. time_horizon_named: Dies ist ein erforderlicher Parameter, der den Namen der Spalte in Ihren Trainingsdaten mit Datum/Uhrzeit-Reihen definiert. 
+1. time_column_name: Dies ist ein erforderlicher Parameter, der den Namen der Spalte in Ihren Trainingsdaten mit Datum/Uhrzeit-Reihen definiert. 
 1. max_horizon: Definiert die Zeitspanne, die Sie basierend auf der Periodizität der Trainingsdaten vorhersagen möchten. Wenn z. B. Trainingsdaten mit täglichen Aggregationsintervallen vorliegen, legen Sie fest, für wie viele Tage das Modell im voraus trainieren soll.
 1. grain_column_names: Definiert den Namen von Spalten, die in Ihren Trainingsdaten einzelne Zeitreihendaten enthalten. Wenn Sie z. B. den Umsatz einer bestimmten Marke nach Filialen vorhersagen, würden Sie Filial- und Markenspalten als Aggregationsspalten definieren.
 
@@ -324,7 +295,6 @@ Es gibt einige Optionen, die Sie definieren können, um Ihr Experiment abzuschli
 1. Nach gewisser Zeit beenden: Mithilfe von „experiment_timeout_minutes“ in Ihren Einstellungen können Sie festlegen, wie lange ein Experiment fortgesetzt werden soll (in Minuten).
 1. Nach Erreichen eines Ergebnisses beenden: Mit „experiment_exit_score“ können Sie das Experiment abschließen, nachdem ein Ergebnis basierend auf Ihrer primären Metrik erreicht wurde.
 
-
 ## <a name="explore-model-metrics"></a>Untersuchen von Modellmetriken
 Sie können die Ergebnisse in einem Widget oder in der Inlineansicht anzeigen, wenn Sie ein Notebook verwenden. Weitere Details finden Sie unter [Verfolgen und Auswerten von Modellen](how-to-track-experiments.md#view-run-details).
 
@@ -355,7 +325,7 @@ recall_score_micro|Recall ist der prozentuale Anteil der Elemente, die sich tats
 recall_score_weighted|Recall ist der prozentuale Anteil der Elemente, die sich tatsächlich in einer bestimmten Klasse befinden und richtig bezeichnet sind. Der gewichtete Wert ist das arithmetische Mittel des Recalls für jede Klasse, gewichtet gemäß der Anzahl der TRUE-Instanzen in jeder Klasse.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="weighted"|
 weighted_accuracy|Gewichtete Genauigkeit ist die Genauigkeit, bei der die Gewichtung, die jedem Beispiel zugewiesen wird, gleich dem Anteil der TRUE-Instanzen in der TRUE-Klasse dieses Beispiels ist.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|sample_weight ist ein Vektor gleich dem Anteil der betreffenden Klasse für jedes Element im Ziel.|
 
-### <a name="regression-and-forecasting-metrics"></a>Regressions- und Vorhersagemetrik
+### <a name="regression-and-time-series-forecasting-metrics"></a>Regressions- und Zeitreihenvorhersagemetrik
 In jeder Iteration wird die folgende Metrik für eine Regressions- oder Vorhersageaufgabe gespeichert:
 
 |Metrik|BESCHREIBUNG|Berechnung|Zusätzliche Parameter

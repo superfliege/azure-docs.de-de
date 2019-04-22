@@ -5,21 +5,24 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5b664285ae7d8b5af6e64c2b7ba3d4c6bdadd656
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 64559f653ba8a466de7bec10db34383b508e3e4b
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312664"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361297"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Einrichten der Notfallwiederherstellung von lokalen Hyper-V-VMs in VMM-Clouds nach Azure
 
-Der Dienst [Azure Site Recovery](site-recovery-overview.md) unterstützt Ihre Strategie zur Notfallwiederherstellung, indem Replikation, Failover und Failback von lokalen Computern und virtuellen Azure-Computern (Virtual Machines, VMs) verwaltet und orchestriert werden.
+In diesem Artikel wird beschrieben, wie Sie mithilfe des Diensts [Azure Site Recovery](site-recovery-overview.md) die Replikation für lokale Hyper-V-VMs, die in System Center Virtual Machine Manager (VMM) verwaltet werden, für die Notfallwiederherstellung in Azure aktivieren. Wenn Sie VMM nicht verwenden, finden Sie entsprechende Informationen in [diesem Tutorial](hyper-v-azure-tutorial.md).
 
-In diesem Tutorial erfahren Sie, wie Sie die Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure einrichten. Das Tutorial gilt für Hyper-V-VMs, die von System Center Virtual Machine Manager (VMM) verwaltet werden. In diesem Tutorial lernen Sie Folgendes:
+Dies ist das dritte in einer Reihe von Tutorials zur Einrichtung der Notfallwiederherstellung in Azure für lokale VMware-VMs. Im vorherigen Tutorial haben Sie sich mit der [Vorbereitung der lokalen Hyper-V-Umgebung](hyper-v-prepare-on-premises-tutorial.md) für die Notfallwiederherstellung in Azure befasst. 
+
+In diesem Tutorial lernen Sie Folgendes:
+
 
 > [!div class="checklist"]
 > * Wählen Sie die Replikationsquelle und das Replikationsziel aus.
@@ -28,37 +31,45 @@ In diesem Tutorial erfahren Sie, wie Sie die Notfallwiederherstellung von lokale
 > * Erstellen einer Replikationsrichtlinie
 > * Aktivieren der Replikation für eine VM
 
+
+> [!NOTE]
+> In den Tutorials wird der einfachste Bereitstellungspfad für ein Szenario erläutert. Sie verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade. Ausführliche Anweisungen finden Sie in dem Artikel, der im Anleitungsabschnitt des Site Recovery-Inhaltsverzeichnisses angegeben ist.
+
+## <a name="before-you-begin"></a>Voraussetzungen
+
 Dies ist das dritte Tutorial in einer Reihe. In diesem Tutorial wird davon ausgegangen, dass Sie bereits die Aufgaben in den vorherigen Tutorials durchgearbeitet haben:
 
 1. [Vorbereiten von Azure](tutorial-prepare-azure.md)
-2. [Vorbereiten lokaler Hyper-V-Instanzen](tutorial-prepare-on-premises-hyper-v.md)
-
-Bevor Sie beginnen, empfiehlt sich eine [Überprüfung der Architektur](concepts-hyper-v-to-azure-architecture.md) für dieses Notfallwiederherstellungsszenario.
-
+2. [Vorbereiten lokaler Hyper-V-Instanzen](tutorial-prepare-on-premises-hyper-v.md) Dies ist das dritte Tutorial in einer Reihe. In diesem Tutorial wird davon ausgegangen, dass Sie bereits die Aufgaben in den vorherigen Tutorials durchgearbeitet haben:
 
 
 ## <a name="select-a-replication-goal"></a>Auswählen eines Replikationsziels
 
-1. Klicken Sie unter **Alle Dienste** > **Recovery Services-Tresore** auf den Namen des Tresors, den wir in diesen Tutorials verwenden: **ContosoVMVault**.
+1. Wählen Sie unter **Recovery Services-Tresore** den Tresor aus. Im vorherigen Tutorial wurde der Tresor **ContosoVMVault** vorbereitet.
 2. Klicken Sie in **Erste Schritte** auf **Site Recovery**. Klicken Sie dann auf **Infrastruktur vorbereiten**.
-3. Wählen Sie in **Schutzziel** > **Wo befinden sich Ihre Computer?** die Option **Lokal** aus.
-4. Wählen Sie in **Wohin möchten Sie Ihre Computer replizieren?** die Option **Nach Azure** aus.
-5. Wählen Sie in **Sind Ihre Computer virtualisiert?** die Option **Ja, mit Hyper-V** aus.
+3. Wählen Sie unter **Schutzziel** > **Wo befinden sich Ihre Computer?** die Option **Lokal** aus.
+4. Wählen Sie unter **Wohin möchten Sie Ihre Computer replizieren?** die Option **Nach Azure** aus.
+5. Wählen Sie unter **Sind Ihre Computer virtualisiert?** die Option **Ja, mit Hyper-V** aus.
 6. Wählen Sie in **Are you using System Center VMM** (Verwenden Sie System Center VMM?) die Option **Ja** aus. Klicken Sie dann auf **OK**.
 
     ![Replikationsziel](./media/hyper-v-vmm-azure-tutorial/replication-goal.png)
 
 
+## <a name="confirm-deployment-planning"></a>Bestätigen der Bereitstellungsplanung
+
+1. Falls Sie eine umfangreiche Bereitstellung planen, laden Sie unter **Bereitstellungsplanung** über den auf der Seite bereitgestellten Link den Bereitstellungsplaner für Hyper-V herunter. Weitere Informationen zur Hyper-V-Bereitstellungsplanung finden Sie [hier](hyper-v-deployment-planner-overview.md).
+2. In diesem Tutorial wird der Bereitstellungsplaner nicht benötigt. Wählen Sie unter **Haben Sie die Bereitstellungsplanung abgeschlossen?** die Option **Wird später durchgeführt** aus. Klicken Sie dann auf **OK**.
+
 
 ## <a name="set-up-the-source-environment"></a>Einrichten der Quellumgebung
 
-Bei der Einrichtung der Quellumgebung installieren Sie den Azure Site Recovery-Anbieter und den Azure Recovery Services-Agent und registrieren die lokalen Server im Tresor. 
+Beim Einrichten der Quellumgebung installieren Sie den Azure Site Recovery-Anbieter auf dem VMM-Server und registrieren den Server im Tresor. Sie installieren den Azure Recovery Services-Agent auf den einzelnen Hyper-V-Hosts. 
 
 1. Klicken Sie unter **Bereiten Sie die Infrastruktur vor** auf **Quelle**.
 2. Klicken Sie unter **Quelle vorbereiten** auf **+ VMM**, um einen VMM-Server hinzuzufügen. Überprüfen Sie unter **Server hinzufügen**, ob unter **Servertyp** die Option **System Center VMM-Server** angezeigt wird.
 3. Laden Sie das Installationsprogramm für den Microsoft Azure Site Recovery-Anbieter herunter.
 4. Laden Sie den Tresorregistrierungsschlüssel herunter. Sie benötigen diesen beim Ausführen des Anbietersetups. Der Schlüssel ist nach der Erstellung fünf Tage lang gültig.
-5. Laden Sie den Recovery Services-Agent herunter.
+5. Laden Sie das Installationsprogramm für den Microsoft Azure Recovery Services-Agent herunter.
 
     ![Download](./media/hyper-v-vmm-azure-tutorial/download-vmm.png)
 
@@ -75,7 +86,7 @@ Bei der Einrichtung der Quellumgebung installieren Sie den Azure Site Recovery-A
 
 Nach der Registrierung ruft Azure Site Recovery Metadaten vom Server ab, und der VMM-Server wird in **Site Recovery-Infrastruktur** angezeigt.
 
-### <a name="install-the-recovery-services-agent"></a>Installieren des Recovery Services-Agents
+### <a name="install-the-recovery-services-agent-on-hyper-v-hosts"></a>Installieren des Recovery Services-Agent auf den Hyper-V-Hosts
 
 Installieren Sie den Agent auf jedem Hyper-V-Host, auf dem sich virtuelle Computer befinden, die Sie replizieren möchten.
 
@@ -90,7 +101,7 @@ Installieren Sie den Agent auf jedem Hyper-V-Host, auf dem sich virtuelle Comput
 
 1. Klicken Sie auf **Infrastruktur vorbereiten** > **Ziel**.
 2. Wählen Sie das Abonnement und die Ressourcengruppe (**ContosoRG**) aus, in denen Sie die Azure-VMs nach dem Failover erstellen möchten.
-3. Wählen Sie das **Resource Manager**-Bereitstellungsmodell aus.
+3. Wählen Sie das Bereitstellungsmodell **Resource Manager** aus.
 
 Site Recovery prüft, ob Sie über ein oder mehrere kompatible Azure-Speicherkonten und -Netzwerke verfügen.
 
@@ -108,10 +119,10 @@ Site Recovery prüft, ob Sie über ein oder mehrere kompatible Azure-Speicherkon
 ## <a name="set-up-a-replication-policy"></a>Einrichten einer Replikationsrichtlinie
 
 1. Klicken Sie auf **Infrastruktur vorbereiten** > **Replikationseinstellungen** > **+Erstellen und zuordnen**.
-2. Geben Sie unter **Richtlinie erstellen und zuordnen** den Richtliniennamen **ContosoReplicationPolicy** an.
+2. Geben Sie unter **Richtlinie erstellen und zuordnen**einen Richtliniennamen an. Hier wird **ContosoReplicationPolicy** verwendet.
 3. Übernehmen Sie die Standardeinstellungen, und klicken Sie auf **OK**.
     - **Kopierhäufigkeit** gibt an, dass Deltadaten (nach der ersten Replikation) alle fünf Minuten repliziert werden sollen.
-    - **Aufbewahrungszeitraum des Wiederherstellungspunkts** gibt an, dass das Aufbewahrungszeitfenster für die einzelnen Wiederherstellungspunkte zwei Stunden beträgt.
+    - **Aufbewahrungszeitraum des Wiederherstellungspunkts** gibt an, dass alle Wiederherstellungspunkte zwei Stunden lang aufbewahrt werden.
     - **App-konsistente Momentaufnahmehäufigkeit** gibt an, dass Wiederherstellungspunkte mit anwendungskonsistenten Momentaufnahmen jede Stunde erstellt werden sollen.
     - **Startzeit der ersten Replikation** gibt an, dass die erste Replikation sofort beginnen soll.
     - **In Azure gespeicherte Daten verschlüsseln:** Die Standardeinstellung **Deaktiviert** gibt an, dass ruhende Daten in Azure nicht verschlüsselt werden.
@@ -128,5 +139,7 @@ Site Recovery prüft, ob Sie über ein oder mehrere kompatible Azure-Speicherkon
    Sie können den Fortschritt der Aktion **Schutz aktivieren** unter **Aufträge** > **Site Recovery-Aufträge** verfolgen. Nach der Ausführung des Auftrags **Schutz abschließen** ist die erste Replikation abgeschlossen und der virtuelle Computer bereit zum Failover.
 
 
+
 ## <a name="next-steps"></a>Nächste Schritte
-[Durchführen eines Notfallwiederherstellungsverfahrens](tutorial-dr-drill-azure.md)
+> [!div class="nextstepaction"]
+> [Durchführen eines Notfallwiederherstellungsverfahrens](tutorial-dr-drill-azure.md)

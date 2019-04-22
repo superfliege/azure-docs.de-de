@@ -8,15 +8,15 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/22/2019
+ms.date: 04/04/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: d7084a42f64234cff4e5e2742ed3d27a3fd00e1e
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: f4a0cba18f27c9cabfc03d1934469e6899c5cd18
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652296"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010412"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Überwachen des Ressourcenverbrauchs und der Abfrageaktivität in Azure Search
 
@@ -96,7 +96,7 @@ Die Protokollierung ist aktiviert, nachdem Sie das Profil gespeichert haben. Con
 * „insights-logs-operationlogs“: für Suchdatenverkehrsprotokolle
 * „insights-metrics-pt1m“: für Metriken
 
-Die Container werden nach einer Stunde in Blob Storage angezeigt. Es gibt einen Blob pro Stunde pro Container. 
+**Die Container werden nach einer Stunde in Blob Storage angezeigt. Es gibt einen Blob pro Stunde pro Container.**
 
 Die Container können Sie mithilfe von [Visual Studio Code](#download-and-open-in-visual-studio-code) oder eines anderen JSON-Editors anzeigen. 
 
@@ -171,7 +171,7 @@ Sowohl die REST-API von Azure Search als auch das .NET SDK bieten programmgesteu
 * [Dienststatistiken abrufen](/rest/api/searchservice/get-service-statistics)
 * [Indexstatistiken abrufen](/rest/api/searchservice/get-index-statistics)
 * [Dokumentenanzahl](/rest/api/searchservice/count-documents)
-* [Abrufen des Indexerstatus](/rest/api/searchservice/get-indexer-status)
+* [Indexer-Status abrufen](/rest/api/searchservice/get-indexer-status)
 
 Informationen zur Aktivierung mit PowerShell oder Azure CLI finden Sie in [dieser](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs#how-to-enable-collection-of-diagnostic-logs) Dokumentation.
 

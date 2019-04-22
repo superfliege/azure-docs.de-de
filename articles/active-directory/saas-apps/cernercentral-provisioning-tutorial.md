@@ -13,27 +13,26 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 03/27/2019
 ms.author: asmalser-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dda84d30124eca1526f227ffec134f48451c9cb0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 00a967d61a5f81fc871488ea48df9cb4cf18c269
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102566"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268601"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Cerner Central für die automatische Benutzerbereitstellung
 
-Dieses Tutorial zeigt Ihnen die Schritte, die Sie in Cerner Central und Azure AD ausführen müssen, um Benutzerkonten von Azure AD in Cerner Central in einem Cerner User Roster automatisch bereitzustellen bzw. deren Bereitstellung automatisch aufzuheben. 
-
+Dieses Tutorial zeigt Ihnen die Schritte, die Sie in Cerner Central und Azure AD ausführen müssen, um Benutzerkonten von Azure AD in Cerner Central in einem Cerner User Roster automatisch bereitzustellen bzw. deren Bereitstellung automatisch aufzuheben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
-*   Azure Active Directory-Mandant
-*   Einen Cerner Central-Mandanten 
+* Azure Active Directory-Mandant
+* Einen Cerner Central-Mandanten
 
 > [!NOTE]
 > Die Integration von Azure Active Directory mit Cerner Central erfolgt über das [SCIM](http://www.simplecloud.info/)-Protokoll.
@@ -48,12 +47,11 @@ Vor dem Konfigurieren und Aktivieren des Bereitstellungsdiensts sollten Sie ents
 
 ### <a name="important-tips-for-assigning-users-to-cerner-central"></a>Wichtige Tipps zum Zuweisen von Benutzern zu Cerner Central
 
-*   Es wird empfohlen, Cerner Central einen einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der Bereitstellung zu testen. Später können weitere Benutzer und/oder Gruppen zugewiesen werden.
+* Es wird empfohlen, Cerner Central einen einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der Bereitstellung zu testen. Später können weitere Benutzer und/oder Gruppen zugewiesen werden.
 
 * Nach Abschluss des anfänglichen Testens für einen einzelnen Benutzer empfiehlt Cerner Central, die gesamte Liste von Benutzern, die auf eine Cerner-Lösung (nicht nur Cerner Central) zugreifen dürfen, zur Bereitstellung für den Cerner User Roster zuzuweisen.  Andere Cerner-Lösungen nutzen diese Liste von Benutzern im Cerner User Roster.
 
-*   Beim Zuweisen eines Benutzers zu Cerner Central müssen Sie im Dialogfeld „Zuweisung“ die Rolle **Benutzer** auswählen. Benutzer mit der Rolle „Standardzugriff“ werden von der Bereitstellung ausgeschlossen.
-
+* Beim Zuweisen eines Benutzers zu Cerner Central müssen Sie im Dialogfeld „Zuweisung“ die Rolle **Benutzer** auswählen. Benutzer mit der Rolle „Standardzugriff“ werden von der Bereitstellung ausgeschlossen.
 
 ## <a name="configuring-user-provisioning-to-cerner-central"></a>Konfigurieren der Benutzerbereitstellung in Cerner Central
 
@@ -62,9 +60,7 @@ Dieser Abschnitt führt Sie durch das Herstellen einer Verbindung von Azure AD m
 > [!TIP]
 > Sie können auch das SAML-basierte einmalige Anmelden für Cerner Central aktivieren. Befolgen Sie hierzu die Anweisungen im [Azure-Portal](https://portal.azure.com). Einmaliges Anmelden kann unabhängig von der automatischen Bereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen. Weitere Informationen finden Sie unter [Tutorial: Azure Active Directory-Integration in Cerner Central](cernercentral-tutorial.md).
 
-
 ### <a name="to-configure-automatic-user-account-provisioning-to-cerner-central-in-azure-ad"></a>So konfigurieren Sie die automatische Bereitstellung von Benutzerkonten für Cerner Central in Azure AD
-
 
 Sie müssen für die Bereitstellung von Benutzerkonten in Cerner Central ein Cerner Central-Systemkonto bei Cerner anfordern und ein OAuth-Bearertoken generieren, das Azure AD zum Herstellen einer Verbindung mit dem SCIM-Endpunkt von Cerner verwenden kann. Sie sollten auch die Integration vor der Bereitstellung in der Produktion in einer Sandkastenumgebung von Cerner durchzuführen.
 
@@ -106,9 +102,9 @@ Sie müssen für die Bereitstellung von Benutzerkonten in Cerner Central ein Cer
 
    * Geben Sie im Feld **Mandanten-URL** eine URL im unten angegebenen Format an, und ersetzen Sie die Bereichs-ID für die Benutzerliste durch die Bereichs-ID, die Sie in Schritt 4 abgerufen haben.
 
-> Sandbox: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
-> 
-> Produktion: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+    > Sandbox: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
+    > 
+    > Produktion: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
    * Geben Sie im Feld **Geheimes Token** das in Schritt 3 generierte OAuth-Bearertoken ein, und klicken Sie auf **Verbindung testen**.
 
@@ -116,13 +112,13 @@ Sie müssen für die Bereitstellung von Benutzerkonten in Cerner Central ein Cer
 
 1. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das unten gezeigte Kontrollkästchen.
 
-1. Klicken Sie auf **Speichern**. 
+1. Klicken Sie auf **Speichern**.
 
 1. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzer- und Gruppenattribute, die von Azure AD mit Cerner Central synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten und Gruppen in Cerner Central werden für Updatevorgänge verwendet. Wählen Sie die Schaltfläche „Speichern“, um alle Änderungen zu übernehmen.
 
 1. Um den Azure AD-Bereitstellungsdienst für Cerner Central zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
 
-1. Klicken Sie auf **Speichern**. 
+1. Klicken Sie auf **Speichern**.
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die Cerner Central im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Protokollen zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst in Ihrer Cerner Central-App ausgeführt werden.
 
@@ -130,10 +126,11 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Cerner Central: Publishing identity data using Azure AD](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD) (Cerner Central: Veröffentlichung von Identitätsdaten mithilfe von Azure AD)
-* [Tutorial: Konfigurieren von Cerner Central für einmaliges Anmelden mit Azure Active Directory](cernercentral-tutorial.md)
+* [Cerner Central: Publishing identity data using Azure AD (Cerner Central: Veröffentlichung von Identitätsdaten mithilfe von Azure AD)](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD)
+* [Tutorial: Azure Active Directory-Integration in Cerner Central](cernercentral-tutorial.md)
 * [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting).

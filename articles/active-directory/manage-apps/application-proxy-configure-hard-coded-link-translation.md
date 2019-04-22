@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c010a7bcd2d811b31d9c2d05e81cce5dc85c2ce
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2949559542759cadf90d329bc50b352998b3eb7e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118594"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262549"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Umleiten von hartcodierten Links für Apps, die mit Azure AD-Anwendungsproxy veröffentlicht wurden
 
@@ -82,6 +82,31 @@ Es gibt zwei verbreitete Typen von internen Links in lokalen Anwendungen:
 - **Relative interne Links**, die auf eine freigegebene Ressource in einer lokalen Dateistruktur wie `/claims/claims.html` zeigen. Diese Links funktionieren automatisch in Apps, die über den Anwendungsproxy veröffentlicht werden, und funktionieren auch weiterhin mit oder ohne Linkübersetzung. 
 - **Hartcodierte interne Links** zu anderen lokalen Apps wie `http://expenses` oder veröffentlichten Dateien wie `http://expenses/logo.jpg`. Das Linkübersetzungsfeature funktioniert für hartcodierte interne Links und ändert diese, sodass sie auf die externen URLs zeigen, die für Remotebenutzer gelten.
 
+In der vollständigen Liste der HTML-Codetags, für die der Anwendungsproxy die Übersetzung von Links unterstützt, ist Folgendes enthalten:
+* a
+* audio
+* base
+* button
+* div
+* embed
+* form
+* frame
+* head
+* html
+* iframe
+* Abbildung
+* input
+* link
+* menuitem
+* meta
+* object
+* script
+* Quelle
+* track
+* video
+
+Zusätzlich wird das URL-Attribut innerhalb von CSS übersetzt.
+
 ### <a name="how-do-apps-link-to-each-other"></a>Wie funktionieren Links zwischen Apps?
 
 Die Linkübersetzung ist für jede Anwendung aktiviert, damit Sie die Kontrolle über die Benutzererfahrung für die einzelnen Apps behalten. Aktivieren Sie die Linkübersetzung für eine App, wenn die Links *aus* dieser App übersetzt werden sollen, nicht Links *auf* diese App. 
@@ -123,4 +148,4 @@ Wir sind auf Ihre Hilfe angewiesen, damit dieses Feature für alle Ihre Apps fun
 ## <a name="next-steps"></a>Nächste Schritte
 [Verwenden von benutzerdefinierten Domänen mit Azure AD-Anwendungsproxy](application-proxy-configure-custom-domain.md), damit diese dieselbe interne und externe URL aufweisen
 
-[Konfigurieren alternativer Zugriffszuordnungen für SharePoint 2013](https://technet.microsoft.com/library/cc263208.aspx)
+[Configure alternate access mappings for SharePoint 2013 (Konfigurieren alternativer Zugriffszuordnungen für SharePoint 2013)](https://technet.microsoft.com/library/cc263208.aspx)

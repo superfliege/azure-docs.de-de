@@ -14,15 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: rkarlin
-ms.openlocfilehash: 3282afb87672ba25294e65ea1474a9e06df03362
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7e26dc37c5c4f85e3db634bd961bf9308e418a03
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57871061"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045763"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Erzielen der mandantenweiten Sichtbarkeit für Azure Security Center
 Dieser Artikel erleichtert Ihnen den Einstieg, indem Sie mehrere Aktionen durchführen, mit denen die Vorteile von Azure Security Center maximiert werden. Mit diesen Aktionen können Sie Sichtbarkeit für alle Azure-Abonnements erzielen, die mit Ihrem Azure Active Directory-Mandanten verknüpft sind, und den Sicherheitsstatus Ihrer Organisation bedarfsabhängig effektiv verwalten. Hierzu wenden Sie auf aggregierende Weise Sicherheitsrichtlinien übergreifend auf mehrere Abonnements an.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="management-groups"></a>Verwaltungsgruppen
 Azure-Verwaltungsgruppen ermöglichen Ihnen das effiziente Verwalten der Bereiche Zugriff, Richtlinien und Berichterstellung für Gruppen von Abonnements sowie das effektive Verwalten der gesamten Azure-Umgebung, indem Aktionen für die Stammverwaltungsgruppe durchgeführt werden. Jeder Azure AD-Mandant erhält eine einzelne Verwaltungsgruppe der obersten Ebene, die als Stammverwaltungsgruppe bezeichnet wird. Die Stammverwaltungsgruppe ist in die Hierarchie integriert, sodass ihr alle Verwaltungsgruppen und Abonnements untergeordnet sind. Diese Gruppe ermöglicht das Anwenden von globalen Richtlinien und RBAC-Zuweisungen auf Verzeichnisebene. 

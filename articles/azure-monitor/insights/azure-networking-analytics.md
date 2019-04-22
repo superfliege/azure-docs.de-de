@@ -1,6 +1,6 @@
 ---
-title: Azure Networking Analytics-Lösung in Log Analytics | Microsoft Docs
-description: Mit der Azure Networking Analytics-Lösung in Log Analytics können Sie Protokolle für Azure-Netzwerksicherheitsgruppen und Azure Application Gateway-Protokolle überprüfen.
+title: Azure Networking Analytics-Lösung in Azure Monitor | Microsoft-Dokumentation
+description: Mit der Azure Networking Analytics-Lösung in Azure Monitor können Sie Protokolle für Azure-Netzwerksicherheitsgruppen und Azure Application Gateway-Protokolle überprüfen.
 services: log-analytics
 documentationcenter: ''
 author: richrundmsft
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: richrund
-ms.openlocfilehash: b1bcaa3a6246a97f15cbd249040844602f03a7b1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0a5d886558e72ef24b03a49750ed75cf7130bf08
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58107558"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006385"
 ---
-# <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Azure-Netzwerküberwachungslösungen in Log Analytics
+# <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure-Netzwerküberwachungslösungen in Azure Monitor
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Log Analytics bietet die folgenden Lösungen zur Überwachung Ihrer Netzwerke:
+Azure Monitor umfasst die folgenden Lösungen zur Überwachung Ihrer Netzwerke:
 * Netzwerkleistungsmonitor (NPM) zum
     * Überwachen der Integrität Ihres Netzwerks
 * Azure Application Gateway-Analyse zur Überprüfung
@@ -46,15 +46,15 @@ Weitere Informationen finden Sie unter [Netzwerkleistungsmonitor](https://docs.m
 
 ## <a name="azure-application-gateway-and-network-security-group-analytics"></a>Azure Application Gateway- und Netzwerksicherheitsgruppen-Analysen
 Verwendung der Lösungen:
-1. Fügen Sie Log Analytics die Verwaltungslösung hinzu, und
-2. Aktivieren Sie die Diagnose, um die Diagnose an einen Log Analytics-Arbeitsbereich weiterzuleiten. Die Protokolle müssen nicht in Azure Blob Storage geschrieben werden.
+1. Fügen Sie die Verwaltungslösung in Azure Monitor hinzu, und
+2. Aktivieren Sie die Diagnose, um die Diagnose an einen Log Analytics-Arbeitsbereich in Azure Monitor weiterzuleiten. Die Protokolle müssen nicht in Azure Blob Storage geschrieben werden.
 
 Sie können die Diagnose und die entsprechende Lösung für Application Gateway und/oder Netzwerksicherheitsgruppen aktivieren.
 
 Wenn Sie die Diagnoseprotokollierung für einen bestimmten Ressourcentyp nicht aktivieren, aber die Lösung installieren, sind die Dashboardblätter für diese Ressource leer und enthalten eine Fehlermeldung.
 
 > [!NOTE]
-> Im Januar 2017 wurde die unterstützte Vorgehensweise zum Senden von Protokollen von Application Gateways und Netzwerksicherheitsgruppen an Log Analytics geändert. Wenn Sie die **Azure Networking Analytics**-Lösung (veraltet) sehen, finden Sie unter [Migrieren von der alten Networking Analytics-Lösung](#migrating-from-the-old-networking-analytics-solution) Schritte, die Sie befolgen müssen.
+> Im Januar 2017 wurde die unterstützte Vorgehensweise zum Senden von Protokollen von Application Gateways und Netzwerksicherheitsgruppen an einen Log Analytics-Arbeitsbereich geändert. Wenn Sie die **Azure Networking Analytics**-Lösung (veraltet) sehen, finden Sie unter [Migrieren von der alten Networking Analytics-Lösung](#migrating-from-the-old-networking-analytics-solution) Schritte, die Sie befolgen müssen.
 >
 >
 
@@ -68,7 +68,7 @@ Die folgende Tabelle zeigt Datenerfassungsmethoden und andere Details zur Art de
 | Azure |  |  |&#8226; |  |  |Bei der Anmeldung |
 
 
-## <a name="azure-application-gateway-analytics-solution-in-log-analytics"></a>Azure Application Gateway-Analyselösung in Log Analytics
+## <a name="azure-application-gateway-analytics-solution-in-azure-monitor"></a>Azure Application Gateway-Analyselösung in Azure Monitor
 
 ![Symbol für Azure Application Gateway-Analyse](media/azure-networking-analytics/azure-analytics-symbol.png)
 
@@ -86,13 +86,13 @@ Für Anwendungsgateways werden folgende Metriken unterstützt:
 ### <a name="install-and-configure-the-solution"></a>Installieren und Konfigurieren der Lösung
 Gehen Sie folgendermaßen vor, um die Azure Application Gateway-Analyselösung zu installieren und zu konfigurieren:
 
-1. Aktivieren Sie die Azure Application Gateway-Analyselösung in [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) oder anhand des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](../../azure-monitor/insights/solutions.md) beschriebenen Prozesses.
+1. Aktivieren Sie die Azure Application Gateway-Analyselösung in [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureAppGatewayAnalyticsOMS?tab=Overview) oder anhand des unter [Hinzufügen von Azure Monitor-Lösungen aus dem Lösungskatalog](../../azure-monitor/insights/solutions.md) beschriebenen Prozesses.
 2. Aktivieren Sie die Diagnoseprotokollierung für die [Application Gateways](../../application-gateway/application-gateway-diagnostics.md), die Sie überwachen möchten.
 
 #### <a name="enable-azure-application-gateway-diagnostics-in-the-portal"></a>Aktivieren der Azure Application Gateway-Diagnose im Portal
 
 1. Navigieren Sie im Azure-Portal zur Application Gateway-Ressource, die überwacht werden soll.
-2. Wählen Sie *Diagnoseprotokolle*, um die folgende Seite zu öffnen.
+2. Wählen Sie *Diagnoseprotokolle* aus, um die folgende Seite zu öffnen.
 
    ![Abbildung der Azure Application Gateway-Ressource](media/azure-networking-analytics/log-analytics-appgateway-enable-diagnostics01.png)
 3. Klicken Sie auf *Diagnose aktivieren*, um die folgende Seite zu öffnen.
@@ -102,7 +102,7 @@ Gehen Sie folgendermaßen vor, um die Azure Application Gateway-Analyselösung z
 5. Klicken Sie auf das Kontrollkästchen *An Log Analytics senden*.
 6. Wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich aus, oder erstellen Sie einen Arbeitsbereich.
 7. Klicken Sie für jeden der Protokolltypen, die erfasst werden sollen, auf das Kontrollkästchen unter **Protokoll**.
-8. Klicken Sie auf *Speichern*, um die Protokollierung der Diagnose in Log Analytics zu aktivieren.
+8. Klicken Sie auf *Speichern*, um die Protokollierung der Diagnose in Azure Monitor zu aktivieren.
 
 #### <a name="enable-azure-network-diagnostics-using-powershell"></a>Aktivieren der Azure-Netzwerkdiagnose mit PowerShell
 
@@ -139,7 +139,7 @@ Prüfen Sie auf dem **Azure Application Gateway**-Analysedashboard die Zusammenf
 Sie können auf jeder Seite für die Protokollsuche die Ergebnisse nach Zeit, detaillierte Ergebnisse und Ihren Protokollsuchverlauf anzeigen. Außerdem können Sie nach Facets filtern, um die Ergebnisse einzugrenzen.
 
 
-## <a name="azure-network-security-group-analytics-solution-in-log-analytics"></a>Analyselösung der Azure-Netzwerksicherheitsgruppe in Log Analytics
+## <a name="azure-network-security-group-analytics-solution-in-azure-monitor"></a>Analyselösung der Azure-Netzwerksicherheitsgruppe in Azure Monitor
 
 ![Symbol für Azure-Netzwerksicherheitsgruppen-Analyse](media/azure-networking-analytics/azure-analytics-symbol.png)
 
@@ -157,7 +157,7 @@ Die folgenden Protokolle werden für Netzwerksicherheitsgruppen unterstützt:
 ### <a name="install-and-configure-the-solution"></a>Installieren und Konfigurieren der Lösung
 Gehen Sie folgendermaßen vor, um die Azure Networking Analytics-Lösung zu installieren und zu konfigurieren:
 
-1. Aktivieren Sie die Azure-Netzwerksicherheitsgruppen-Analyselösung in [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) oder mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](../../azure-monitor/insights/solutions.md) beschriebenen Prozesses.
+1. Aktivieren Sie die Azure-Netzwerksicherheitsgruppen-Analyselösung in [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) oder mithilfe des unter [Hinzufügen von Azure Monitor-Lösungen aus dem Lösungskatalog](../../azure-monitor/insights/solutions.md) beschriebenen Prozesses.
 2. Aktivieren Sie die Diagnoseprotokollierung für die [Netzwerksicherheitsgruppen](../../virtual-network/virtual-network-nsg-manage-log.md)-Ressourcen, die Sie überwachen möchten.
 
 ### <a name="enable-azure-network-security-group-diagnostics-in-the-portal"></a>Aktivieren der Diagnose für die Azure-Netzwerksicherheitsgruppe im Portal
@@ -205,17 +205,17 @@ Prüfen Sie im **Azure Network Security Group analytics** (Azure-Netzwerksicherh
 Sie können auf jeder Seite für die Protokollsuche die Ergebnisse nach Zeit, detaillierte Ergebnisse und Ihren Protokollsuchverlauf anzeigen. Außerdem können Sie nach Facets filtern, um die Ergebnisse einzugrenzen.
 
 ## <a name="migrating-from-the-old-networking-analytics-solution"></a>Migrieren von der alten Networking Analytics-Lösung
-Im Januar 2017 wurde die unterstützte Vorgehensweise zum Senden von Protokollen von Azure Application Gateways und Azure-Netzwerksicherheitsgruppen an Log Analytics geändert. Diese Änderungen bieten folgende Vorteile:
-+ Protokolle werden direkt in Log Analytics geschrieben, sodass kein Speicherkonto mehr notwendig ist
-+ Geringere Latenz ab dem Zeitpunkt, zu dem Protokolle generiert werden, bis zu ihrer Verfügbarkeit in Log Analytics
+Im Januar 2017 wurde die unterstützte Vorgehensweise zum Senden von Protokollen von Azure Application Gateways und Azure-Netzwerksicherheitsgruppen an einen Log Analytics-Arbeitsbereich geändert. Diese Änderungen bieten folgende Vorteile:
++ Protokolle werden direkt in Azure Monitor geschrieben, sodass kein Speicherkonto mehr notwendig ist
++ Geringere Latenz ab dem Zeitpunkt, zu dem Protokolle generiert werden, bis zu ihrer Verfügbarkeit in Azure Monitor
 + Weniger Konfigurationsschritte
 + Ein gemeinsames Format für alle Typen der Azure-Diagnose
 
 So verwenden Sie die aktualisierte Lösung:
 
-1. [Configure diagnostics to be sent directly to Log Analytics from Azure Application Gateways](#enable-azure-application-gateway-diagnostics-in-the-portal) (Konfigurieren der Diagnose, die direkt aus Azure Application Gateways an Log Analytics gesendet werden soll)
-2. [Configure diagnostics to be sent directly to Log Analytics from Azure Network Security Groups](#enable-azure-network-security-group-diagnostics-in-the-portal) (Konfigurieren der Diagnose, die direkt aus Azure-Netzwerksicherheitsgruppen an Log Analytics gesendet werden soll)
-2. Aktivieren Sie die *Azure Application Gateway*- und die *Azure-Netzwerksicherheitsgruppen*-Analyselösung mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](../../azure-monitor/insights/solutions.md) beschriebenen Prozesses.
+1. [Konfigurieren der Diagnose, sodass sie direkt aus Azure Application Gateways an Azure Monitor gesendet wird](#enable-azure-application-gateway-diagnostics-in-the-portal)
+2. [Konfigurieren der Diagnose, sodass sie direkt aus Azure-Netzwerksicherheitsgruppen an Azure Monitor gesendet wird](#enable-azure-network-security-group-diagnostics-in-the-portal)
+2. Aktivieren Sie die *Azure Application Gateway*- und die *Azure-Netzwerksicherheitsgruppen*-Analyselösung mithilfe des unter [Hinzufügen von Azure Monitor -Lösungen aus dem Lösungskatalog](solutions.md) beschriebenen Prozesses.
 3. Aktualisieren Sie alle gespeicherten Abfragen, Dashboards oder Warnungen zur Verwendung des neuen Datentyps.
    + Der Typ lautet AzureDiagnostics. Sie können „ResourceType“ verwenden, um nach Azure-Netzwerkprotokollen zu filtern.
 
@@ -228,7 +228,7 @@ So verwenden Sie die aktualisierte Lösung:
    + Ändern Sie für jedes Feld, dessen Name das Suffix \_s, \_d oder \_g enthält, das erste Zeichen in einen Kleinbuchstaben.
    + Für jedes Feld, dessen Name das Suffix „\_o“ enthält, werden die Daten basierend auf den geschachtelten Feldnamen in einzelne Felder aufgeteilt.
 4. Entfernen Sie die *Azure Networking Analytics*-Lösung (veraltet).
-   + Wenn Sie PowerShell einsetzen, verwenden Sie `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`.
+   + Wenn Sie PowerShell einsetzen, verwenden Sie `Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
 
 Daten, die vor der Änderung gesammelt wurden, werden in der neuen Lösung nicht angezeigt. Sie können die Abfrage dieser Daten mithilfe des alten Typs und der alten Feldnamen fortsetzen.
 
@@ -236,4 +236,4 @@ Daten, die vor der Änderung gesammelt wurden, werden in der neuen Lösung nicht
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Verwenden Sie [Protokollsuchen in Log Analytics](../../azure-monitor/log-query/log-query-overview.md), um ausführliche Azure-Diagnosedaten anzuzeigen.
+* Verwenden Sie [Protokollabfragen in Azure Monitor](../log-query/log-query-overview.md), um detaillierte Azure-Diagnosedaten anzuzeigen.

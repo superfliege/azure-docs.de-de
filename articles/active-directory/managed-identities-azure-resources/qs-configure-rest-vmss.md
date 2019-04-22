@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc3a32f9fb2755fc164c33a6759d0130ac7ddad5
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: cafb3c97befd64cc6413a2eefa5e5baa9e01bf93
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445754"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009581"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen in einer VM-Skalierungsgruppe mithilfe von REST-API-Aufrufen
 
@@ -92,7 +92,7 @@ Zum Erstellen einer VM-Skalierungsgruppe mit aktivierter systemzugewiesener verw
 
    |Anforderungsheader  |BESCHREIBUNG  |
    |---------|---------|
-   |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+   |*Content-Typ*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
    |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest. | 
 
    **Anforderungstext**
@@ -160,7 +160,7 @@ Zum Erstellen einer VM-Skalierungsgruppe mit aktivierter systemzugewiesener verw
     }  
    ```  
 
-### <a name="enable-system-assigned-managed-identity-on-a-existing-virtual-machine-scale-set"></a>Aktivieren einer vom System zugewiesenen verwalteten Identität in einer vorhandenen VM-Skalierungsgruppe
+### <a name="enable-system-assigned-managed-identity-on-an-existing-virtual-machine-scale-set"></a>Aktivieren einer vom System zugewiesenen verwalteten Identität in einer vorhandenen VM-Skalierungsgruppe
 
 Um die systemzugewiesene verwaltete Identität in einer vorhandenen VM-Skalierungsgruppe zu aktivieren, müssen Sie ein Zugriffstoken abrufen und dann CURL verwenden, um den Resource Manager-REST-Endpunkt zum Aktualisieren des Identitätstyps aufzurufen.
 
@@ -187,7 +187,7 @@ Um die systemzugewiesene verwaltete Identität in einer vorhandenen VM-Skalierun
 
    |Anforderungsheader  |BESCHREIBUNG  |
    |---------|---------|
-   |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+   |*Content-Typ*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
    |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest. | 
 
    **Anforderungstext**
@@ -220,7 +220,7 @@ Um die systemzugewiesene verwaltete Identität in einer vorhandenen VM-Skalierun
 
    |Anforderungsheader  |BESCHREIBUNG  |
    |---------|---------|
-   |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+   |*Content-Typ*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
    |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest. |
  
    **Anforderungstext**
@@ -254,7 +254,7 @@ Um die systemzugewiesene verwaltete Identität in einer vorhandenen VM-Skalierun
 
    |Anforderungsheader  |BESCHREIBUNG  |
    |---------|---------|
-   |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+   |*Content-Typ*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
    |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest. | 
 
    **Anforderungstext**
@@ -298,7 +298,7 @@ Um eine systemzugewiesene Identität in einer vorhandenen VM-Skalierungsgruppe z
 
    |Anforderungsheader  |BESCHREIBUNG  |
    |---------|---------|
-   |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+   |*Content-Typ*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
    |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest. | 
 
    **Anforderungstext**
@@ -355,7 +355,7 @@ In diesem Abschnitt erfahren Sie, wie Sie unter Verwendung von CURL für Aufrufe
 
    |Anforderungsheader  |BESCHREIBUNG  |
    |---------|---------|
-   |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+   |*Content-Typ*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
    |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest. | 
 
    **Anforderungstext**
@@ -442,7 +442,7 @@ In diesem Abschnitt erfahren Sie, wie Sie unter Verwendung von CURL für Aufrufe
 
    |Anforderungsheader  |BESCHREIBUNG  |
    |---------|---------|
-   |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+   |*Content-Typ*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
    |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest. |
  
    **Anforderungstext**
@@ -558,7 +558,7 @@ In diesem Abschnitt erfahren Sie, wie Sie unter Verwendung von CURL für Aufrufe
 
    |Anforderungsheader  |BESCHREIBUNG  |
    |---------|---------|
-   |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+   |*Content-Typ*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
    |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest. | 
 
    **Anforderungstext**
@@ -590,7 +590,7 @@ In diesem Abschnitt erfahren Sie, wie Sie unter Verwendung von CURL für Aufrufe
 
    |Anforderungsheader  |BESCHREIBUNG  |
    |---------|---------|
-   |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+   |*Content-Typ*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
    |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest. | 
 
    **Anforderungstext**
@@ -626,7 +626,7 @@ In diesem Abschnitt erfahren Sie, wie Sie unter Verwendung von CURL für Aufrufe
 
    |Anforderungsheader  |BESCHREIBUNG  |
    |---------|---------|
-   |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+   |*Content-Typ*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
    |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest. | 
 
    **Anforderungstext**
@@ -665,7 +665,7 @@ In diesem Abschnitt erfahren Sie, wie Sie unter Verwendung von CURL für Aufrufe
 
    |Anforderungsheader  |BESCHREIBUNG  |
    |---------|---------|
-   |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+   |*Content-Typ*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
    |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest. | 
 
    **Anforderungstext**
@@ -726,7 +726,7 @@ In diesem Abschnitt erfahren Sie, wie Sie unter Verwendung von CURL für Aufrufe
 
    |Anforderungsheader  |BESCHREIBUNG  |
    |---------|---------|
-   |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+   |*Content-Typ*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
    |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest. | 
 
    **Anforderungstext**
@@ -758,7 +758,7 @@ In diesem Abschnitt erfahren Sie, wie Sie unter Verwendung von CURL für Aufrufe
 
    |Anforderungsheader  |BESCHREIBUNG  |
    |---------|---------|
-   |*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+   |*Content-Typ*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
    |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest. | 
 
    **Anforderungstext**
@@ -788,7 +788,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 |Anforderungsheader  |BESCHREIBUNG  |
 |---------|---------|
-|*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+|*Content-Typ*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
 |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest. | 
 
 **Anforderungstext**
@@ -815,7 +815,7 @@ PATCH https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 
 |Anforderungsheader  |BESCHREIBUNG  |
 |---------|---------|
-|*Content-Type*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
+|*Content-Typ*     | Erforderlich. Legen Sie diese Option auf `application/json` fest.        |
 |*Autorisierung*     | Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer`-Zugriffstoken fest. | 
 
 **Anforderungstext**

@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: carlrab
+ms.reviewer: sstein
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 04a99be40f1a89d834c560bddf3f49c2a73f34b8
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: ec9bd3ee106571484c513c2d005a374a90c1d17e
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650256"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359727"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Vorauszahlen von SQL-Datenbank-Computeressourcen mit reservierter Azure SQL-Datenbank-Kapazität
 
@@ -89,7 +89,7 @@ Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artike
 - [Grundlegendes zum Rabatt für Azure-Reservierungen](../billing/billing-understand-reservation-charges.md)
 - [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](../billing/billing-understand-reserved-instance-usage.md)
 - [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](../billing/billing-understand-reserved-instance-usage-ea.md)
-- [Verkaufen Microsoft Azure Reserved Instances](https://docs.microsoft.com/partner-center/azure-reservations)
+- [Azure Reservations in Partner Center Cloud Solution Provider (CSP) program (Azure-Reservierungen im Azure Cloud Solution Provider-Programm im Partner Center)](https://docs.microsoft.com/partner-center/azure-reservations)
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
 

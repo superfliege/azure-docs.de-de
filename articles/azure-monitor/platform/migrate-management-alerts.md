@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/14/2017
 ms.author: johnkem
 ms.subservice: alerts
-ms.openlocfilehash: 4d82cc59eb1098451a263957aa028b66996bb072
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: fb54e11c9da6bec2a1e0354317df6343140cbf09
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307181"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006796"
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>Migrieren von Azure-Warnungen für Verwaltungsereignisse zu Aktivitätsprotokollwarnungen
 
@@ -104,7 +104,7 @@ Für die Erstellung einer neuen Aktivitätsprotokollwarnung stehen Ihnen folgend
 * Unser Leitfaden zum [Erstellen einer Warnung im Azure-Portal](../../azure-monitor/platform/activity-log-alerts.md)
 * Der Artikel [Erstellen einer Warnung mithilfe einer Resource Manager-Vorlage](../../azure-monitor/platform/alerts-activity-log.md)
  
-Zuvor erstellte Warnungen für Verwaltungsereignisse werden nicht automatisch zu Aktivitätsprotokollwarnungen migriert. Sie müssen das vorangehende PowerShell-Skript verwenden, um die gegenwärtig konfigurierten Warnungen für Verwaltungsereignisse aufzulisten und diese manuell als Aktivitätsprotokollwarnungen neu zu erstellen. Dies muss vor dem 1. Oktober geschehen, da Warnungen für Verwaltungsereignisse danach nicht mehr in Ihrem Azure-Abonnement angezeigt werden. Andere Arten von Azure-Warnungen, einschließlich Azure Monitor-Metrikwarnungen, Application Insights-Warnungen und Log Analytics-Warnungen, sind von dieser Änderung nicht betroffen. Bei Fragen fügen Sie in den unten stehenden Kommentaren Ihren Beitrag hinzu.
+Zuvor erstellte Warnungen für Verwaltungsereignisse werden nicht automatisch zu Aktivitätsprotokollwarnungen migriert. Sie müssen das vorangehende PowerShell-Skript verwenden, um die gegenwärtig konfigurierten Warnungen für Verwaltungsereignisse aufzulisten und diese manuell als Aktivitätsprotokollwarnungen neu zu erstellen. Dies muss vor dem 1. Oktober geschehen, da Warnungen für Verwaltungsereignisse danach nicht mehr in Ihrem Azure-Abonnement angezeigt werden. Andere Arten von Azure-Warnungen, einschließlich Azure Monitor-Metrikwarnungen, Application Insights-Warnungen und Log Search-Warnungen, sind von dieser Änderung nicht betroffen. Bei Fragen fügen Sie in den unten stehenden Kommentaren Ihren Beitrag hinzu.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

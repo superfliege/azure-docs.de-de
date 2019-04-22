@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: cb0d04e46834530c8fea29ef79a2156caabeeeff
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: f9cadfcf0c027f4aec4f9d4928872709ee7d3e99
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202366"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008971"
 ---
 # <a name="example-add-synonyms-for-azure-search-in-c"></a>Beispiel: Hinzufügen von Synonymen für Azure Search in C#
 

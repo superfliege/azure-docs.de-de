@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c20ae6acaf600cdde6e168c6db96deb7a28e9fa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1527a326ca0107df33857284774252b327b7d8bc
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112703"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273259"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Azure Active Directory v2.0 und das OpenID Connect-Protokoll
 
@@ -57,24 +57,26 @@ Der `{tenant}` kann einen von vier möglichen Werten annehmen:
 | `common` |Benutzer mit einem persönlichen Microsoft-Konto und einem Geschäfts-, Schul- oder Unikonto aus Azure Active Directory (Azure AD) können sich bei der Anwendung anmelden. |
 | `organizations` |Nur Benutzer mit Geschäfts-, Schul- oder Unikonten aus Azure AD können sich bei der Anwendung anmelden. |
 | `consumers` |Nur Benutzer mit einem persönlich Microsoft-Konto können sich bei der Anwendung anmelden. |
-| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` oder `contoso.onmicrosoft.com` |Nur Benutzer mit einem Geschäfts-, Schul- oder Unikonto eines bestimmten Azure AD-Mandanten können sich bei der Anwendung anmelden. Dabei kann entweder der Anzeigename der Domäne des Azure AD-Mandanten oder der GUID-Bezeichner des Mandanten verwendet werden. |
+| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` oder `contoso.onmicrosoft.com` | Nur Benutzer mit einem Geschäfts-, Schul- oder Unikonto eines bestimmten Azure AD-Mandanten können sich bei der Anwendung anmelden. Dabei kann entweder der Anzeigename der Domäne des Azure AD-Mandanten oder der GUID-Bezeichner des Mandanten verwendet werden. Sie können auch den Consumermandanten `9188040d-6c67-4c5b-b112-36a304b66dad` anstelle des Mandanten `consumers` verwenden.  |
 
 Bei den Metadaten handelt es sich um ein einfaches JavaScript Object Notation-Dokument (JSON). Die folgenden Codeausschnitte zeigen Beispiele. Die vollständigen Inhalte der Codeausschnitte werden in der [OpenID Connect-Spezifikation](https://openid.net/specs/openid-connect-discovery-1_0.html#rfc.section.4.2) beschrieben.
 
 ```
 {
-  "authorization_endpoint": "https:\/\/login.microsoftonline.com\/common\/oauth2\/v2.0\/authorize",
-  "token_endpoint": "https:\/\/login.microsoftonline.com\/common\/oauth2\/v2.0\/token",
+  "authorization_endpoint": "https:\/\/login.microsoftonline.com\/{tenant}\/oauth2\/v2.0\/authorize",
+  "token_endpoint": "https:\/\/login.microsoftonline.com\/{tenant}\/oauth2\/v2.0\/token",
   "token_endpoint_auth_methods_supported": [
     "client_secret_post",
     "private_key_jwt"
   ],
-  "jwks_uri": "https:\/\/login.microsoftonline.com\/common\/discovery\/v2.0\/keys",
+  "jwks_uri": "https:\/\/login.microsoftonline.com\/{tenant}\/discovery\/v2.0\/keys",
 
   ...
 
 }
 ```
+Wenn Ihre App durch die Verwendung der Funktion [Anspruchszuordnung](active-directory-claims-mapping.md) über benutzerdefinierte Signaturschlüssel verfügt, müssen Sie einen `appid`-Abfrageparameter mit der App-ID anfügen, um einen `jwks_uri` abzurufen, der auf die Signaturschlüsselinformationen Ihrer App verweist. Beispiel: `https://login.microsoftonline.com/{tenant}/.well-known/v2.0/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` enthält einen `jwks_uri` von `https://login.microsoftonline.com/{tenant}/discovery/v2.0/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`.
+
 
 In der Regel verwenden Sie dieses Metadatendokument zum Konfigurieren einer OpenID Connect-Bibliothek oder eines SDKs; die Bibliothek führt ihre Aufgaben mithilfe der Metadaten durch. Wenn Sie jedoch keine OpenID Connect-Prä-Build-Bibliothek verwenden, können Sie die Schritte weiter unten in diesem Artikel ausführen, um die Anmeldung bei einer Web-App mithilfe des v2.0-Endpunkts durchzuführen.
 
@@ -87,7 +89,7 @@ Wenn die Web-App den Benutzer authentifizieren muss, kann sie ihn direkt an den 
 * Die Anforderung muss den `nonce` -Parameter enthalten.
 
 > [!IMPORTANT]
-> Zur erfolgreichen Anforderung eines ID-Tokens muss für die App-Registrierung im [Registrierungsportal](https://apps.dev.microsoft.com) die **[implizite Genehmigung](v2-oauth2-implicit-grant-flow.md)** für den Webclient aktiviert sein. Wenn sie nicht aktiviert ist, wird ein Fehler des Typs `unsupported_response` zurückgegeben: „Der angegebene Wert für den Eingabeparameter 'response_type' ist für diesen Client unzulässig. Expected value is ‚code‘“. (Der angegebene Wert für den Eingabeparameter ‚response_type‘ ist für diesen Client nicht zulässig. Erwarteter Wert: ‚code‘.)
+> Zur erfolgreichen Anforderung eines ID-Tokens vom Endpunkt „/authorization“ muss für die App-Registrierung im [Registrierungsportal](https://portal.azure.com) auf der Registerkarte „Authentifizierung“ die implizite Genehmigung von „id_tokens“ aktiviert sein (dadurch wird das Flag `oauth2AllowIdTokenImplicitFlow` im [Anwendungsmanifest ](reference-app-manifest.md) auf `true` festgelegt). Wenn sie nicht aktiviert ist, wird ein Fehler des Typs `unsupported_response` zurückgegeben: „Der angegebene Wert für den Eingabeparameter 'response_type' ist für diesen Client unzulässig. Expected value is ‚code‘“. (Der angegebene Wert für den Eingabeparameter ‚response_type‘ ist für diesen Client nicht zulässig. Erwarteter Wert: ‚code‘.)
 
 Beispiel: 
 
@@ -113,14 +115,14 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | Mandant |Erforderlich |Mit dem `{tenant}`-Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Zulässige Werte sind `common`, `organizations`, `consumers` und Mandantenbezeichner. Weitere Informationen finden Sie in den [Protokollgrundlagen](active-directory-v2-protocols.md#endpoints). |
 | client_id |Erforderlich |Die Anwendungs-ID, die das [Azure-Registrierungsportal](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) Ihrer App zugewiesen hat. |
 | response_type |Erforderlich |Muss das `id_token` für die OpenID Connect-Anmeldung enthalten. Es kann auch andere `response_type`-Werte enthalten, z.B. `code`. |
-| redirect_uri |Empfohlen |Der Umleitungs-URI der App, in dem Authentifizierungsantworten gesendet und von der App empfangen werden können. Er muss genau mit einer der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben – mit dem Unterschied, dass er URL-codiert sein muss. |
+| redirect_uri |Empfohlen |Der Umleitungs-URI der App, in dem Authentifizierungsantworten gesendet und von der App empfangen werden können. Er muss genau mit einer der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben – mit dem Unterschied, dass er URL-codiert sein muss. Wenn dieser Parameter nicht vorhanden ist, wählt der Endpunkt nach dem Zufallsprinzip einen registrierten Umleitungs-URI aus, der an den Benutzer zurückgesendet wird. |
 | scope |Erforderlich |Eine durch Leerzeichen getrennte Liste von Bereichen. Für OpenID Connect muss der Bereich `openid`enthalten sein, der auf der Zustimmungsbenutzeroberfläche die Anmeldeberechtigung ergibt. Sie können in diese Anforderung auch andere Bereiche für das Anfordern der Zustimmung aufnehmen. |
 | nonce |Erforderlich |Ein Wert in der Anforderung, der von der App erzeugt wird und im resultierenden ID-Tokenwert als Anspruch enthalten ist. Die App kann diesen Wert überprüfen, um die Gefahr von Tokenwiedergabeangriffen zu reduzieren. Der Wert ist in der Regel eine zufällige, eindeutige Zeichenfolge, die verwendet werden kann, um den Ursprung der Anforderung zu identifizieren. |
 | response_mode |Empfohlen |Gibt die Methode an, die zum Senden des resultierenden Autorisierungscodes zurück an Ihre App verwendet werden soll. Kann `form_post` oder `fragment` sein. Bei Webanwendungen empfiehlt sich die Verwendung von `response_mode=form_post`, um eine möglichst sichere Tokenübertragung an die Anwendung zu gewährleisten. |
 | state |Empfohlen |Ein in der Anforderung enthaltener Wert, der auch in der Tokenantwort zurückgegeben wird. Es kann sich um eine Zeichenfolge mit jedem beliebigen Inhalt handeln. Normalerweise wird ein zufällig generierter eindeutiger Wert verwendet, um [websiteübergreifende Anforderungsfälschungsangriffe zu verhindern](https://tools.ietf.org/html/rfc6749#section-10.12). Der Status wird außerdem verwendet, um Informationen über den Status des Benutzers in der App zu codieren, bevor die Authentifizierungsanforderung aufgetreten ist, z.B. Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat. |
 | prompt |Optional |Gibt den Typ der erforderlichen Benutzerinteraktion an. Die einzigen gültigen Werte sind gegenwärtig `login`, `none` und `consent`. Der Anspruch `prompt=login` zwingt den Benutzer, seine Anmeldeinformationen bei dieser Anforderung einzugeben. Einmaliges Anmelden ist dadurch nicht möglich. Der Anspruch `prompt=none` verhält sich genau entgegengesetzt. Dieser Wert stellt sicher, dass dem Benutzer keinerlei interaktive Eingabeaufforderung angezeigt wird. Wenn die Anforderung nicht über einmaliges Anmelden im Hintergrund abgeschlossen werden kann, gibt der v2.0-Endpunkt einen Fehler aus. Der Anspruch `prompt=consent` löst das OAuth-Zustimmungsdialogfeld aus, sobald sich der Benutzer angemeldet hat. Das Dialogfeld fordert den Benutzer zum Erteilen von Berechtigungen für die App auf. |
 | login_hint |Optional |Sie können diesen Parameter verwenden, um das Feld für den Benutzernamen und die E-Mail-Adresse auf der Anmeldeseite vorab für den Benutzer auszufüllen, wenn dessen Benutzername im Vorfeld bekannt ist. Apps verwenden diesen Parameter häufig für die erneute Authentifizierung, nachdem sie den Benutzernamen bereits aus einer vorherigen Anmeldung mithilfe des `preferred_username`-Anspruchs extrahiert haben. |
-| domain_hint |Optional |Mögliche Werte sind `consumers` oder `organizations`. Wenn dieser Parameter vorhanden ist, wird der E-Mail-basierte Ermittlungsvorgang übersprungen, den der Benutzer auf der v2.0-Anmeldeseite durchläuft, was die Benutzerfreundlichkeit verbessert. Apps verwenden diesen Parameter häufig für die erneute Authentifizierung, indem sie den Anspruch `tid` aus dem ID-Token extrahieren. Verwenden Sie `domain_hint=consumers`, wenn für den Anspruch `tid` der Wert `9188040d-6c67-4c5b-b112-36a304b66dad` festgelegt ist (der Consumermandant des Microsoft-Kontos). Verwenden Sie andernfalls `domain_hint=organizations`. |
+| domain_hint |Optional | Der Bereich des Benutzers in einem Verbundverzeichnis.  Mit diesem Parameter wird der E-Mail-basierte Ermittlungsvorgang übersprungen, den der Benutzer auf der v2.0-Anmeldeseite durchläuft, was die Benutzerfreundlichkeit verbessert. Für Mandanten, die über ein lokales Verzeichnis wie z. B. AD FS verbunden sind, führt dies aufgrund der vorhandenen Anmeldesitzung häufig zu einer nahtlosen Anmeldung. |
 
 An dieser Stelle wird der Benutzer dazu aufgefordert, seine Anmeldeinformationen einzugeben und die Authentifizierung abzuschließen. Der v2.0-Endpunkt stellt sicher, dass der Benutzer den Berechtigungen zugestimmt hat, die im `scope`-Abfrageparameter angegeben sind. Wenn der Benutzer keiner der Berechtigungen zugestimmt hat, wird er vom v2.0-Endpunkt aufgefordert, den erforderlichen Berechtigungen zuzustimmen. Lesen Sie mehr über [Berechtigungen, die Zustimmung und mehrinstanzenfähige Apps](v2-permissions-and-consent.md).
 
@@ -179,7 +181,6 @@ Die folgende Tabelle beschreibt die Fehlercodes, die im Parameter `error` der Fe
 Das Empfangen eines ID-Tokens allein reicht nicht aus, um den Benutzer zu authentifizieren. Sie müssen die Signatur des ID-Tokens validieren und die Ansprüche im Token gemäß der App-Anforderungen überprüfen. Der v2.0-Endpunkt verwendet [JSON-Webtoken (JSTs)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) und die Verschlüsselung mit öffentlichem Schlüssel, um Token zu signieren und deren Gültigkeit zu überprüfen.
 
 Sie können `id_token` auch im Clientcode überprüfen. Es ist jedoch eine bewährte Methode, `id_token` an einen Back-End-Server zu senden und die Überprüfung dort auszuführen. Nachdem Sie die Signatur des ID-Tokens validiert haben, müssen Sie noch einige Ansprüche überprüfen. Weitere Informationen finden Sie in der [`id_token`-Referenz](id-tokens.md). Dort finden Sie auch Einzelheiten zum [Überprüfen von Token](id-tokens.md#validating-an-id_token) und [Wichtige Informationen zum Rollover von Signaturschlüsseln](active-directory-signing-key-rollover.md). Wir empfehlen, zum Analysieren und Überprüfen von Token eine Bibliothek zu verwenden. Für die meisten Sprachen und Plattformen ist mindestens eine Bibliothek verfügbar.
-<!--TODO: Improve the information on this-->
 
 Sie können je nach Szenario auch zusätzliche Ansprüche überprüfen. Einige allgemeinen Überprüfungen umfassen:
 

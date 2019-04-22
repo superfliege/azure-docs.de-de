@@ -6,18 +6,18 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2018
+ms.date: 04/08/2019
 ms.author: raynew
-ms.openlocfilehash: 419974138d6f556a2f774e8c1a355729c824fddc
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 60ca12e5b362a37eb9f85c9a0d1fc23ca99e9edc
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310607"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360792"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Unterstützungsmatrix für die Notfallwiederherstellung von Hyper-V-VMs in einem sekundären Standort
 
-In diesem Artikel ist zusammengefasst, was unterstützt wird, wenn Sie den [Azure Site Recovery](site-recovery-overview.md)-Dienst nutzen, um virtuelle Hyper-V-Computer, die in System Center Virtual Machine Manager-Clouds (VMM) verwaltet werden, an sekundäre Standorte zu replizieren. Wenn Sie virtuelle Hyper-V-Computer in Azure replizieren möchten, lesen Sie [diese Unterstützungsmatrix](hyper-v-azure-support-matrix.md).
+In diesem Artikel wird zusammengefasst, was unterstützt wird, wenn Sie den [Azure Site Recovery](site-recovery-overview.md)-Dienst nutzen, um virtuelle Hyper-V-Computer, die in System Center Virtual Machine Manager-Clouds (VMM) verwaltet werden, an sekundäre Standorte zu replizieren. Wenn Sie virtuelle Hyper-V-Computer in Azure replizieren möchten, lesen Sie [diese Unterstützungsmatrix](hyper-v-azure-support-matrix.md).
 
 > [!NOTE]
 > Eine Replikation an einen sekundären Standort ist nur möglich, wenn die Hyper-V-Hosts in VMM-Clouds verwaltet werden.
@@ -108,7 +108,7 @@ Verschieben von Speicher, Netzwerk, Azure-VMs zwischen Ressourcengruppen (innerh
 
 Der Anbieter koordiniert die Kommunikation zwischen VMM-Servern. 
 
-**Neueste** | **Updates**
+**Neueste Version** | **Aktualisierungen**
 --- | --- 
 5.1.19 ([über das Portal verfügbar](https://aka.ms/downloaddra)) | [Neueste Features und Fixes](https://support.microsoft.com/kb/3155002)
 

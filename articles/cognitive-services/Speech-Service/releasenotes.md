@@ -8,17 +8,51 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 2/20/2019
+ms.date: 4/5/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 7f54507fdfd21c9402e04eb867710a774f9e6bb3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d53019294a255e42c4cf66f59226c9234a5adf73
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57856089"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359741"
 ---
 # <a name="release-notes"></a>Versionshinweise
+
+## <a name="speech-sdk-141"></a>Speech SDK 1.4.1
+
+Dieses Release gilt nur für JavaScript. Es wurden keine Features hinzugefügt. Die folgenden Fehler wurden behoben:
+
+* Verhindern Sie das Laden von https-proxy-agent durch Webpack.
+
+## <a name="speech-sdk-140-2019-april-release"></a>Speech SDK 1.4.0: Release von April 2019
+
+**Neue Funktionen** 
+
+* Das SDK unterstützt jetzt den Text-Sprach-Dienst als Betaversion. Dies wird unter Windows- und Linux-Desktops für C++, C# und Java unterstützt. Weitere Informationen finden in der [Übersicht über die Sprachsynthese](text-to-speech.md#get-started-with-text-to-speech).
+* Das SDK unterstützt jetzt MP3- und Opus/Ogg-Audiodateien als Streameingabedateien an. Dieses Feature steht nur unter Linux mit C++ und C# zur Verfügung und befindet sich derzeit in der Betaversion (weitere Details finden Sie [hier](how-to-use-compressed-audio-input-streams.md)).
+* Das Speech SDK für Java, .NET Core, C++ und Objective-C unterstützt nun auch macOS. Die Objective-C-Unterstützung für macOS befindet sich derzeit in der Betaphase.
+* iOS: Das Speech SDK für iOS (Objective-C) wird jetzt auch als ein CocoaPod veröffentlicht.
+* JavaScript: Unterstützung von nicht standardisierten Mikrofonen als Eingabegeräte.
+* JavaScript: Proxyunterstützung für Node.js.
+
+**Beispiele**
+
+* Beispiele für die Verwendung des Speech SDK mit C++ und Objective-C unter macOS wurden hinzugefügt.
+* Beispiele zur Veranschaulichung der Verwendung des Text-zu-Sprache-Diensts wurden hinzugefügt.
+
+**Verbesserungen/Änderungen**
+
+* Python: Zusätzliche Eigenschaften der Erkennungsergebnisse werden jetzt über die `properties`-Eigenschaft verfügbar gemacht.
+* Zur weiteren Unterstützung beim Entwickeln und Debuggen können Sie die Informationen aus SDK-Protokollierung und Diagnose in eine Protokolldatei umleiten (weitere Details finden Sie [hier](how-to-use-logging.md)).
+* JavaScript: Verbesserte Prozessleistung bei Audiodaten.
+
+**Fehlerbehebungen**
+
+* Mac/iOS: Ein Fehler, der zu einer langen Wartezeit geführt hat, wenn keine Verbindung mit Speech Services hergestellt werden konnte, wurde behoben.
+* Python: verbesserte Fehlerbehandlung für Argumente in Python-Rückrufen.
+* JavaScript: Ein Fehler bei Statusmeldungen nach dem Ende der Spracheingabe mit RequestSession wurde behoben.
 
 ## <a name="speech-sdk-131-2019-february-refresh"></a>Sprach-SDK 1.3.1: Aktualisierung von Februar 2019
 
@@ -30,7 +64,7 @@ Dies ist ein Fehlerbehebungsrelease und betrifft nur das native/verwaltete SDK. 
 
 ## <a name="speech-sdk-130-2019-february-release"></a>Speech SDK 1.3.0: Version von Februar 2019
 
-**Neue Features**
+**Neue Funktionen**
 
 * Das Speech SDK unterstützt die Auswahl des Eingangsmikrofons über die AudioConfig-Klasse. Dadurch können Sie Audiodaten über ein anderes als das Standardmikrofon an den Speech-Dienst streamen. Weitere Informationen finden Sie in der Dokumentation, in der die [Auswahl eines Audioeingabegeräts](how-to-select-audio-input-devices.md) beschrieben wird. Für JavaScript ist diese Option noch nicht verfügbar.
 * Das Speech SDK unterstützt jetzt Unity in einer Betaversion. Senden Sie uns Feedback über den Abschnitt für Issues im [GitHub-Beispielrepository](https://aka.ms/csspeech/samples). Dieses Release unterstützt Unity unter Windows x86 und x64 (Desktopanwendungen oder Anwendungen der universellen Windows-Plattform) und unter Android (ARM32/64, x86). Weitere Informationen finden Sie in unserem [Unity-Schnellstart](quickstart-csharp-unity.md).
@@ -86,7 +120,7 @@ Dieses Release gilt nur für JavaScript. Es wurden keine Features hinzugefügt. 
 
 ## <a name="speech-sdk-120-2018-december-release"></a>Speech SDK 1.2.0: Release von Dezember 2018
 
-**Neue Features**
+**Neue Funktionen**
 
 * Python
   * Die Betaversion der Python-Unterstützung (ab 3.5) ist mit diesem Release verfügbar. Weitere Informationen finden Sie hier (quickstart-python.md).
@@ -127,7 +161,7 @@ Dieses Release gilt nur für JavaScript. Es wurden keine Features hinzugefügt. 
 
 ## <a name="speech-sdk-110"></a>Speech SDK 1.1.0
 
-**Neue Features**
+**Neue Funktionen**
 
 * Unterstützung für Android x86/x64.
 * Proxyunterstützung: Im SpeechConfig-Objekt können Sie jetzt eine Funktion aufrufen, um die Proxyinformationen (Hostname, Port, Benutzername und Kennwort) festzulegen. Dieses Feature ist in iOS noch nicht verfügbar.
@@ -172,7 +206,7 @@ Im [Beispielrepository](https://aka.ms/csspeech/samples) wurde ein neues Beispie
 
 ## <a name="cognitive-services-speech-sdk-100-2018-september-release"></a>Cognitive Services Speech SDK 1.0.0: Release von September 2018
 
-**Neue Features**
+**Neue Funktionen**
 
 * Unterstützung für Objective-C unter iOS. Sehen Sie sich unseren [Objective-C-Schnellstart für iOS](quickstart-objectivec-ios.md) an.
 * Unterstützung für JavaScript im Browser. Sehen Sich unseren [JavaScript-Schnellstart](quickstart-js-browser.md) an.
@@ -184,7 +218,7 @@ Im [Beispielrepository](https://aka.ms/csspeech/samples) wurde ein neues Beispie
 
 ## <a name="cognitive-services-speech-sdk-060-2018-august-release"></a>Cognitive Services Speech SDK 0.6.0: Release von August 2018
 
-**Neue Features**
+**Neue Funktionen**
 
 * Mit dem Speech SDK erstellte UWP-Apps erfüllen nun die Anforderungen des Windows App Certification Kit (WACK).
   Sehen Sie sich den [UWP-Schnellstart](quickstart-csharp-uwp.md) an.
@@ -210,7 +244,7 @@ Im [Beispielrepository](https://aka.ms/csspeech/samples) wurde ein neues Beispie
 
 ## <a name="cognitive-services-speech-sdk-050-2018-july-release"></a>Cognitive Services Speech SDK 0.5.0: Release von Juli 2018
 
-**Neue Features**
+**Neue Funktionen**
 
 * Unterstützung für Android-Plattform (API 23: Android 6.0 Marshmallow oder höher). Sehen Sie sich den [Android-Schnellstart](quickstart-java-android.md) an.
 * Unterstützung für .NET Standard 2.0 unter Windows. Sehen Sie sich den [.NET Core-Schnellstart](quickstart-csharp-dotnetcore-windows.md) an.
@@ -241,7 +275,7 @@ Im [Beispielrepository](https://aka.ms/csspeech/samples) wurde ein neues Beispie
 * Die Abhängigkeit von Media Foundation-Bibliotheken für Windows wurde entfernt. Das SDK verwendet jetzt die Core Audio-APIs.
 * Korrektur der Dokumentation: Eine Seite [Regionen](regions.md) wurde hinzugefügt, um die unterstützten Regionen zu beschreiben.
 
-**Bekanntes Problem**
+**Bekannte Probleme**
 
 * Das Speech SDK für Android meldet die Ergebnisse der Sprachsynthese für Übersetzungen nicht. Dieses Problem wird im nächsten Release behoben.
 
@@ -257,7 +291,7 @@ Im [Beispielrepository](https://aka.ms/csspeech/samples) wurde ein neues Beispie
 
   Beim Erstellen von `SpeechRecognizer` können Sie das Ausgabeformat `Detailed` oder `Simple` anfordern. `DetailedSpeechRecognitionResult` enthält eine Zuverlässigkeitsbewertung, erkannten Text, eine lexikalische Rohform, eine normalisierte Form und eine normalisierte Form mit maskierten anstößigen Ausdrücken.
 
-**Wichtige Änderung**
+**Breaking Change**
 
 - Änderung von `SpeechRecognitionResult.RecognizedText` in `SpeechRecognitionResult.Text` in C#.
 

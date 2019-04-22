@@ -6,41 +6,168 @@ author: srinathv
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 04/08/2019
 ms.author: srinathv
-ms.openlocfilehash: e5e84c22285d1cdec9678c8bf33dab1568d333cd
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: e8b739c7b4dee67273e2f5c500c6d3b05190b3a5
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621582"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361516"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Problembehandlung bei der Sicherung virtueller Azure-Computer
 Sie können Fehler, die beim Verwenden von Azure Backup auftreten, anhand der in der folgenden Tabelle aufgeführten Informationen beheben:
 
+## <a name="backup"></a>Backup
+
+### <a name="copyingvhdsfrombackupvaulttakinglongtime--copying-backed-up-data-from-vault-timed-out"></a>CopyingVHDsFromBackUpVaultTakingLongTime – Timeout beim Kopieren gesicherter Daten aus dem Tresor
+
+Fehlercode: CopyingVHDsFromBackUpVaultTakingLongTime <br/>
+Fehlermeldung: Timeout beim Kopieren gesicherter Daten aus dem Tresor
+
+Dies kann durch vorübergehende Speicherfehler oder einen Mangel an Speicherkonto-IOPS für den Sicherungsdienst zum Übertragen von Daten in den Tresor innerhalb des Timeoutzeitraums passieren. Konfigurieren Sie die VM-Sicherung mit diesen [bewährten Methoden](backup-azure-vms-introduction.md#best-practices), und wiederholen Sie den Sicherungsvorgang.
+
+### <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState – Aufgrund des Zustands des virtuellen Computers sind keine Sicherungen möglich.
+
+Fehlercode: UserErrorVmNotInDesirableState <br/>
+Fehlermeldung: Aufgrund des Zustands des virtuellen Computers sind keine Sicherungen möglich.<br/>
+
+Beim Sicherungsvorgang ist ein Fehler aufgetreten, da sich der virtuelle Computer im Status „Fehlerhaft“ befindet. Damit die Sicherung erfolgreich ist, sollte der virtuelle Computer sich im Status „Wird ausgeführt“, „Beendet“ oder „Beendet (Zuordnung aufgehoben)“ befinden.
+
+* Wenn sich der virtuelle Computer in einem Übergangszustand zwischen **Wird ausgeführt** und **Heruntergefahren** befindet, müssen Sie warten, bis der Zustand geändert wurde. Lösen Sie dann den Sicherungsauftrag aus.
+*  Schließen Sie im Falle eines virtuellen Linux-Computers mit dem Kernelmodul Security Enhanced Linux den Azure Linux-Agent-Pfad **/var/lib/waagent** aus der Sicherheitsrichtlinie aus, und stellen Sie sicher, dass die Azure Backup-Erweiterung installiert ist.
+
+### <a name="usererrorfsfreezefailed---failed-to-freeze-one-or-more-mount-points-of-the-vm-to-take-a-file-system-consistent-snapshot"></a>UserErrorFsFreezeFailed – Fehler beim Einfrieren mindestens eines Bereitstellungspunkts der VM zum Erfassen einer dateisystemkonsistenten Momentaufnahme
+
+Fehlercode: UserErrorFsFreezeFailed <br/>
+Fehlermeldung: Fehler beim Einfrieren mindestens eines Bereitstellungspunkts der VM zum Erfassen einer dateisystemkonsistenten Momentaufnahme.
+
+* Überprüfen Sie den Dateisystemzustand aller eingebundenen Geräte mit dem **tune2fs**-Befehl, z.B. **tune2fs -l /dev/sdb1 \\**.\| grep **Dateisystemstatus**.
+* Heben Sie mit dem Befehl **umount** die Bereitstellung der Geräte auf, deren Dateisystemstatus nicht bereinigt wurde.
+* Führen Sie mit dem Befehl **fsck** eine Dateisystem-Konsistenzprüfung für diese Geräte aus.
+* Stellen Sie die Geräte erneut bereit, und versuchen Sie, die Sicherung auszuführen.</ol>
+
+### <a name="extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error"></a>ExtensionSnapshotFailedCOM / ExtensionInstallationFailedCOM / ExtensionInstallationFailedMDTC – Fehler bei Installation/Betrieb der Erweiterung aufgrund eines COM+-Fehlers
+
+Fehlercode: ExtensionSnapshotFailedCOM <br/>
+Fehlermeldung: Fehler bei Momentaufnahmevorgang aufgrund eines COM+-Fehlers
+
+Fehlercode: ExtensionInstallationFailedCOM  <br/>
+Fehlermeldung: Fehler bei Installation/Betrieb der Erweiterung aufgrund eines COM+-Fehlers
+
+Fehlercode: ExtensionInstallationFailedMDTC-Fehlermeldung: Die Erweiterungsinstallation ist mit dem Fehler "COM+ konnte keine Daten mit dem Microsoft Distributed Transaction Coordinator austauschen" fehlgeschlagen.
+
+Fehler beim Sicherungsvorgang aufgrund eines Problems mit dem Windows-Dienst **COM+-Systemanwendung**.  Gehen Sie folgendermaßen vor, um das Problem zu beheben:
+
+* Versuchen Sie, den Windows-Dienst **COM+-Systemanwendung** zu starten / neu zu starten (über eine Eingabeaufforderung mit erhöhten Rechten **- net start COMSysApp**).
+* Stellen Sie sicher, dass die **Distributed Transaction Coordinator**-Dienste als **Netzwerkdienst**-Konto ausgeführt werden. Wenn nicht, ändern Sie sie zur Ausführung als **Netzwerkdienst**-Konto, und starten Sie **COM+-Systemanwendung** neu.
+* Wenn es nicht möglich ist, den Dienst neu zu starten, installieren Sie den **Distributed Transaction Coordinator**-Dienst mit folgenden Schritten neu:
+    * Beenden Sie den Dienst „MS DTC“.
+    * Öffnen Sie eine Eingabeaufforderung (cmd).
+    * Führen Sie den Befehl „msdtc -uninstall“ aus.
+    * Führen Sie den Befehl „msdtc -install“ aus.
+    * Starten Sie den Dienst „MS DTC“.
+* Starten Sie den Windows-Dienst **COM+-Systemanwendung**. Lösen Sie nach dem Starten des Diensts **COM+-Systemanwendung** einen Sicherungsauftrag über das Azure-Portal aus.</ol>
+
+### <a name="extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state"></a>ExtensionFailedVssWriterInBadState – Fehler beim Momentaufnahmevorgang aufgrund eines fehlerhaften Zustands von VSS Writer-Instanzen
+
+Fehlercode: ExtensionFailedVssWriterInBadState <br/>
+Fehlermeldung: Fehler beim Momentaufnahmevorgang aufgrund eines fehlerhaften Zustands von VSS Writer-Instanzen.
+
+Starten Sie die in einem fehlerhaften Zustand befindlichen VSS Writer-Instanzen neu. Führen Sie an einer Eingabeaufforderung mit erhöhten Rechten den Befehl ```vssadmin list writers``` aus. Die Ausgabe enthält alle VSS Writer-Instanzen und deren Zustand. Führen Sie für jede VSS Writer-Instanz, deren Zustand nicht **[1] Stable** lautet, zum Neustarten der VSS Writer-Instanz die folgenden Befehle an einer Eingabeaufforderung mit erhöhten Rechten aus:
+
+  * ```net stop serviceName```
+  * ```net start serviceName```
+
+### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure – Fehler beim Analysieren der Konfigurationsdatei für die Sicherungserweiterung
+
+Fehlercode: ExtensionConfigParsingFailure<br/>
+Fehlermeldung: Fehler beim Analysieren der Konfigurationsdatei für die Sicherungserweiterung.
+
+Dieser Fehler tritt aufgrund geänderter Berechtigungen für das Verzeichnis **MachineKeys** (**%systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**) auf.
+Führen Sie den folgenden Befehl aus, und stellen Sie sicher, dass für das Verzeichnis **MachineKeys** die Standardberechtigungen gelten: **icacls %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**.
+
+Die Standardberechtigungen lauten wie folgt:
+* Jeder: Lesen/Schreiben (R, W)
+* VORDEFINIERT\Administratoren: (F)
+
+Wenn für das Verzeichnis **MachineKeys** andere Berechtigungen als die Standardberechtigungen festgelegt sind, führen Sie die folgenden Schritte aus, um die Berechtigungen zu korrigieren, das Zertifikat zu löschen und den Sicherungsvorgang auszulösen:
+
+1. Korrigieren Sie die Berechtigungen für das Verzeichnis **MachineKeys**. Setzen Sie die Berechtigungen mithilfe von Explorer-Sicherheitseigenschaften und erweiterten Sicherheitseinstellungen für das Verzeichnis auf die Standardwerte zurück. Entfernen Sie alle Benutzerobjekte mit Ausnahme der Standardobjekte aus dem Verzeichnis, und stellen Sie sicher, dass für die Berechtigung **Jeder** die folgenden speziellen Zugriffsberechtigungen gelten:
+
+    * Ordner auflisten/Daten lesen
+    * Attribute lesen
+    * Erweiterte Attribute lesen
+    * Dateien erstellen/Daten schreiben
+    * Ordner erstellen/Daten anhängen
+    * Attribute schreiben
+    * Erweiterte Attribute schreiben
+    * Leseberechtigungen
+2. Löschen Sie alle Zertifikate, für die **Ausgestellt für** das klassische Bereitstellungsmodell oder **Windows Azure CRP Certificate Generator** ist:
+    * [Öffnen Sie in der Konsole auf dem lokalen Computer die Zertifikate](https://msdn.microsoft.com/library/ms788967(v=vs.110).aspx).
+    * Löschen Sie unter **Eigene Zertifikate** > **Zertifikate** alle Zertifikate, für die **Ausgestellt für** das klassische Bereitstellungsmodell ist, oder löschen Sie **Microsoft Azure CRP Certificate Generator**.
+3. Lösen Sie einen Sicherungsauftrag für den virtuellen Computer aus.
+
+### <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>ExtensionStuckInDeletionState – Sicherungsvorgang wird von Erweiterungsstatus nicht unterstützt
+
+Fehlercode: ExtensionStuckInDeletionState <br/>
+Fehlermeldung: Sicherungsvorgang wird von Erweiterungsstatus nicht unterstützt
+
+Beim Sicherungsvorgang ist aufgrund eines inkonsistenten Status der Sicherungserweiterung ein Fehler aufgetreten. Gehen Sie folgendermaßen vor, um das Problem zu beheben:
+
+* Stellen Sie sicher, dass der Gast-Agent installiert ist und reagiert.
+* Navigieren Sie im Azure-Portal zu **Virtueller Computer** > **Alle Einstellungen** > **Erweiterungen**.
+* Wählen Sie die Sicherungserweiterung VmSnapshot oder VmSnapshotLinux aus, und klicken Sie auf **Deinstallieren**.
+* Wiederholen Sie den Sicherungsvorgang, nachdem Sie die Sicherungserweiterung gelöscht haben.
+* Mit dem nachfolgenden Sicherungsvorgang wird die neue Erweiterung mit dem gewünschten Status installiert.
+
+### <a name="extensionfailedsnapshotlimitreachederror---snapshot-operation-failed-as-snapshot-limit-is-exceeded-for-some-of-the-disks-attached"></a>ExtensionFailedSnapshotLimitReachedError – Fehler bei Momentaufnahmevorgang, weil für einige der angefügten Datenträger das Limit für Momentaufnahmen überschritten wurde
+
+Fehlercode: ExtensionFailedSnapshotLimitReachedError  <br/>
+Fehlermeldung: Fehler bei Momentaufnahmevorgang, weil für einige der angefügten Datenträger das Limit für Momentaufnahmen überschritten wurde
+
+Beim Momentaufnahmevorgang ist ein Fehler aufgetreten, da das Momentaufnahmenlimit für einige der angefügten Datenträger überschritten wurde. Führen Sie die folgenden Problembehandlungsschritte aus, und wiederholen Sie dann den Vorgang.
+
+* Löschen Sie die nicht erforderlichen Blobmomentaufnahmen von Datenträgern. Achten Sie darauf, dass Sie keine Datenträgerblobs löschen, nur Momentaufnahmenblobs sollten gelöscht werden.
+* Wenn vorläufiges Löschen für die VM-Datenträger-Speicherkonten aktiviert ist, konfigurieren Sie die Aufbewahrung von vorläufigen Löschungen so, dass vorhandene Momentaufnahmen zu jedem Zeitpunkt kleiner als maximal zulässig sind.
+* Wenn Azure Site Recovery auf dem gesicherten virtuellen Computer aktiviert ist, führen Sie Folgendes aus:
+
+    * Vergewissern Sie sich, dass in „/etc/azure/vmbackup.conf“ für **isanysnapshotfailed** der Wert „false“ festgelegt ist.
+    * Planen Sie Azure Site Recovery für einen anderen Zeitpunkt, sodass kein Konflikt mit dem Sicherungsvorgang auftritt.
+
+### <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive – Fehler beim Momentaufnahmevorgang aufgrund nicht ausreichender VM-Ressourcen.
+
+Fehlercode: ExtensionFailedTimeoutVMNetworkUnresponsive<br/>
+Fehlermeldung: Fehler beim Momentaufnahmevorgang aufgrund nicht ausreichender VM-Ressourcen.
+
+Fehler beim Sicherungsvorgang auf der VM aufgrund von Netzwerkaufrufen beim Durchführen des Momentaufnahmevorgangs. Führen Sie Schritt 1 aus, um dieses Problem zu lösen. Führen Sie die Schritte 2 und 3 aus, falls das Problem weiterhin besteht.
+
+**Schritt 1:** Erstellen einer Momentaufnahme über den Host
+
+Führen Sie an einer Eingabeaufforderung mit erhöhten Rechten (Administrator) den folgenden Befehl aus:
+
+```
+REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotMethod /t REG_SZ /d firstHostThenGuest /f
+REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTimeFromHost /t REG_SZ /d True /f
+```
+
+So wird sichergestellt, dass die Momentaufnahmen nicht über den Gast, sondern über den Host erstellt werden. Wiederholen Sie den Sicherungsvorgang.
+
+**Schritt 2:** Versuchen Sie, den Sicherungszeitplan in einen Zeitpunkt zu ändern, zu dem die VM eine geringere Auslastung aufweist (in Bezug auf CPU/IOPS usw.).
+
+**Schritt 3:** Versuchen Sie, [die Größe der VM zu erhöhen](https://azure.microsoft.com/blog/resize-virtual-machines/) und den Vorgang dann erneut durchzuführen.
+
+### <a name="common-vm-backup-errors"></a>Häufige Fehler bei der VM-Sicherung
+
 | Fehlerdetails | Problemumgehung |
 | ------ | --- |
-| Azure Backup konnte den Vorgang nicht ausführen, weil der virtuelle Computer (Virtual Machine, VM) nicht mehr vorhanden ist: <br>Beenden Sie den Schutz für den virtuellen Computer, ohne die Sicherungsdaten zu löschen. Weitere Informationen finden Sie unter [Beenden des Schutzes für virtuelle Computer](https://go.microsoft.com/fwlink/?LinkId=808124). |Dieser Fehler tritt auf, wenn der primäre virtuelle Computer gelöscht wird, die Sicherungsrichtlinie jedoch weiterhin einen zu sichernden virtuellen Computer sucht. Führen Sie zum Beheben dieses Fehlers die folgenden Schritte aus: <ol><li> Erstellen Sie den virtuellen Computer mit dem gleichen Namen und dem gleichen Ressourcengruppennamen (**Clouddienstname**) neu.<br>**or**</li><li> Beenden Sie den Schutz für den virtuellen Computer mit oder ohne Löschung der Sicherungsdaten. Weitere Informationen finden Sie unter [Beenden des Schutzes für virtuelle Computer](https://go.microsoft.com/fwlink/?LinkId=808124).</li></ol> |
-| Der Agent für virtuelle Azure-Computer (VM-Agent) kann nicht mit dem Azure Backup-Dienst kommunizieren: <br>Stellen Sie sicher, dass der virtuelle Computer über Netzwerkkonnektivität verfügt und die neueste VM-Agent-Version ausgeführt wird. Weitere Informationen finden Sie unter [Beheben von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung](https://go.microsoft.com/fwlink/?LinkId=800034). |Dieser Fehler tritt auf, wenn ein Problem mit dem VM-Agent besteht oder der Netzwerkzugriff auf die Azure-Infrastruktur blockiert ist. Weitere Informationen finden Sie unter [Debuggen von Problemen mit VM-Momentaufnahmen](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup). <br><br>Wenn der VM-Agent keine Probleme verursacht, starten Sie den virtuellen Computer neu. Ein fehlerhafter Zustand des virtuellen Computers kann Probleme verursachen. Durch den Neustart des virtuellen Computers wird der Zustand zurückgesetzt. |
+| Fehlercode: 320001<br/> Fehlermeldung: Der Vorgang konnte nicht ausgeführt werden, da der virtuelle Computer nicht mehr vorhanden ist. <br/> <br/> Fehlercode: 400094 <br/> Fehlermeldung: Der virtuelle Computer ist nicht vorhanden <br/> <br/>  Der virtuelle Azure-Computer wurde nicht gefunden.  |Dieser Fehler tritt auf, wenn der primäre virtuelle Computer gelöscht wird, die Sicherungsrichtlinie jedoch weiterhin einen zu sichernden virtuellen Computer sucht. Führen Sie zum Beheben dieses Fehlers die folgenden Schritte aus: <ol><li> Erstellen Sie den virtuellen Computer mit dem gleichen Namen und dem gleichen Ressourcengruppennamen (**Clouddienstname**) neu.<br>**oder**</li><li> Beenden Sie den Schutz für den virtuellen Computer mit oder ohne Löschung der Sicherungsdaten. Weitere Informationen finden Sie unter [Beenden des Schutzes für virtuelle Computer](backup-azure-manage-vms.md#stop-protecting-a-vm).</li></ol>|
 | Der VM befindet sich im Zustand „Fehler bei der Bereitstellung“: <br>Starten Sie den virtuellen Computer neu, und stellen Sie sicher, dass der VM ausgeführt oder heruntergefahren wird. | Dieser Fehler tritt auf, wenn einer der Erweiterungsfehler dazu führt, dass der virtuelle Computer in den Zustand „Fehler bei der Bereitstellung“ versetzt wird. Wechseln Sie zur Liste der Erweiterungen, überprüfen Sie, ob eine fehlerhafte Erweiterung vorliegt, entfernen Sie diese, und wiederholen Sie den Neustart des virtuellen Computers. Wenn alle Erweiterungen ausgeführt werden, überprüfen Sie, ob der VM-Agent-Dienst ausgeführt wird. Wenn dies nicht der Fall ist, starten Sie den VM-Agent-Dienst neu. |
-| Azure Backup konnte die Momentaufnahme des virtuellen Computers konnte nicht kopieren, weil das Speicherkonto nicht über genügend freien Speicherplatz verfügt: <br>Stellen Sie sicher, dass das Speicherkonto über genügend freien Speicherplatz für die Daten auf den Premium-Speicherdatenträgern verfügt, die an den virtuellen Computer angefügt sind. | Bei Premium-VMs mit dem VM-Sicherungsstapel V1 wird die Momentaufnahme in das Speicherkonto kopiert. Durch diesen Schritt wird sichergestellt, dass der Sicherungsverwaltungsdatenverkehr für die Momentaufnahme nicht die Anzahl der IOPS begrenzt, die der Anwendung zur Verfügung stehen, die Premium-Datenträger verwendet. <br><br>Wir empfehlen Ihnen, nur 50 % (17,5 TB) des gesamten Speicherplatzes des Speicherkontos zuzuordnen. Der Azure Backup-Dienst kann dann die Momentaufnahme in das Speicherkonto kopieren und Daten von diesem Kopierspeicherort in das Speicherkonto des Tresors übertragen. |
-| Azure Backup kann den Vorgang nicht ausführen, weil der VM-Agent nicht reagiert. |Dieser Fehler tritt auf, wenn ein Problem mit dem VM-Agent besteht oder der Netzwerkzugriff auf die Azure-Infrastruktur blockiert ist. Überprüfen Sie bei Windows-VMs unter „Dienste“ den VM-Agent-Dienststatus, und sehen Sie nach, ob der Agent in der Systemsteuerung unter „Programme“ angezeigt wird. <br><br>Versuchen Sie, das Programm aus der Systemsteuerung zu entfernen, und installieren Sie den Agent (wie unter [VM-Agent](#vm-agent) beschrieben) erneut. Lösen Sie nach der erneuten Installation des Agents eine Ad-hoc-Sicherung zur Überprüfung aus. |
-| Fehler beim Vorgang für die Recovery Services-Erweiterung: <br>Stellen Sie sicher, dass die neueste VM-Agent-Version auf dem virtuellen Computer vorhanden ist und der VM-Agent-Dienst ausgeführt wird. Wiederholen Sie den Sicherungsvorgang. Wenn beim Sicherungsvorgang ein Fehler auftritt, wenden Sie sich an den Microsoft-Support. |Dieser Fehler tritt auf, wenn der VM-Agent nicht mehr aktuell ist. Informationen zum Aktualisieren des VM-Agents finden Sie unter „Problembehandlung bei der Sicherung virtueller Azure-Computer“. |
-| Der virtuelle Computer ist nicht vorhanden: <br>Stellen Sie sicher, dass der virtuelle Computer vorhanden ist, oder wählen Sie einen anderen virtuellen Computer aus. |Dieser Fehler tritt auf, wenn der primäre virtuelle Computer gelöscht wird, die Sicherungsrichtlinie jedoch weiterhin einen zu sichernden virtuellen Computer sucht. Führen Sie zum Beheben dieses Fehlers die folgenden Schritte aus: <ol><li> Erstellen Sie den virtuellen Computer mit dem gleichen Namen und dem gleichen Ressourcengruppennamen (**Clouddienstname**) neu.<br>**or**<br></li><li>Beenden Sie den Schutz für den virtuellen Computer ohne die Sicherheitsdaten zu löschen. Weitere Informationen finden Sie unter [Beenden des Schutzes für virtuelle Computer](https://go.microsoft.com/fwlink/?LinkId=808124).</li></ol> |
-| Der Befehl konnte nicht ausgeführt werden: <br>Für dieses Element wird aktuell ein anderer Vorgang ausgeführt. Warten Sie, bis der vorherige Vorgang abgeschlossen ist. Wiederholen Sie dann den Vorgang. |Ein vorhandener Sicherungsauftrag wird ausgeführt. Ein neuer Auftrag kann erst dann gestartet werden, wenn der aktuelle Auftrag abgeschlossen ist. |
-| Zeitüberschreitung beim Kopieren von VHDs aus dem Recovery Services-Tresor: <br>Wiederholen Sie den Vorgang in einigen Minuten. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. | Dieser Fehler tritt auf, wenn auf der Speicherseite ein vorübergehender Fehler vorliegt oder der Azure Backup-Dienst nicht ausreichend Speicherkonto-IOPS empfängt, um die Daten innerhalb des Zeitlimits an den Tresor übertragen zu können. Achten Sie beim [Konfigurieren Ihrer virtuellen Computer auf die Umsetzung der Best Practices](backup-azure-vms-introduction.md#best-practices). Verschieben Sie Ihren virtuellen Computer in ein anderes Speicherkonto, das nicht geladen wird, und wiederholen Sie den Sicherungsauftrag.|
-| Beim Azure Backup-Vorgang ist ein interner Fehler aufgetreten: <br>Wiederholen Sie den Vorgang in einigen Minuten. Wenden Sie sich an den Microsoft Support, wenn das Problem weiterhin besteht. |Dieser Fehler kann aus zwei Gründen auftreten: <ul><li> Es liegt ein vorübergehendes Problem beim Zugreifen auf den VM-Speicher vor. Überprüfen Sie auf der [Azure-Status-Website](https://azure.microsoft.com/status/), ob in der Region Compute-, Speicher- oder Netzwerkprobleme vorliegen. Wiederholen Sie den Sicherungsauftrag, nachdem das Problem behoben wurde. <li> Der ursprüngliche virtuelle Computer wurde gelöscht, und der Wiederherstellungspunkt kann nicht erstellt werden. Heben Sie den Schutz für den virtuellen Computer auf, und wählen Sie die Option zum Beibehalten der Daten aus, um die Sicherungsdaten für einen gelöschten virtuellen Computer beizubehalten, aber die Sicherungsfehler zu entfernen. Diese Aktion beendet die geplante Sicherung und die wiederkehrenden Fehlermeldungen. |
-| Azure Backup konnte die Azure Recovery Services-Erweiterung für das ausgewählte Element nicht installieren: <br>Der VM-Agent ist eine erforderliche Komponente für die Azure Recovery Services-Erweiterung. Installieren Sie den Agent für virtuelle Azure-Computer, und starten Sie den Registrierungsvorgang erneut. |<ol> <li>Überprüfen Sie, ob der VM-Agent ordnungsgemäß installiert ist. <li>Stellen Sie sicher, dass das Flag für die VM-Konfiguration richtig festgelegt wurde.</ol> Erfahren Sie mehr über das Installieren des VM-Agents und das Überprüfen der VM-Agent-Installation. |
-| Die Erweiterungsinstallation ist mit dem Fehler **COM+ konnte keine Daten mit dem Microsoft Distributed Transaction Coordinator austauschen** fehlgeschlagen. |Dieser Fehler bedeutet in der Regel, dass der COM+-Dienst nicht ausgeführt wird. Wenden Sie sich an den Microsoft-Support, um Hilfe beim Beheben dieses Problems zu erhalten. |
+|Fehlercode: UserErrorBCMPremiumStorageQuotaError<br/> Fehlermeldung: Die Momentaufnahme des virtuellen Computers konnte nicht kopiert werden, weil das Speicherkonto nicht über genügend freien Speicherplatz verfügt | Bei Premium-VMs mit dem VM-Sicherungsstapel V1 wird die Momentaufnahme in das Speicherkonto kopiert. Durch diesen Schritt wird sichergestellt, dass der Sicherungsverwaltungsdatenverkehr für die Momentaufnahme nicht die Anzahl der IOPS begrenzt, die der Anwendung zur Verfügung stehen, die Premium-Datenträger verwendet. <br><br>Wir empfehlen Ihnen, nur 50 % (17,5 TB) des gesamten Speicherplatzes des Speicherkontos zuzuordnen. Der Azure Backup-Dienst kann dann die Momentaufnahme in das Speicherkonto kopieren und Daten von diesem Kopierspeicherort in das Speicherkonto des Tresors übertragen. |
+| Fehler beim Installieren der Microsoft Recovery Services-Erweiterung, da der virtuelle Computer nicht ausgeführt wird <br>Der VM-Agent ist eine erforderliche Komponente für die Azure Recovery Services-Erweiterung. Installieren Sie den Agent für virtuelle Azure-Computer, und starten Sie den Registrierungsvorgang erneut. |<ol> <li>Überprüfen Sie, ob der VM-Agent ordnungsgemäß installiert ist. <li>Stellen Sie sicher, dass das Flag für die VM-Konfiguration richtig festgelegt wurde.</ol> Erfahren Sie mehr über das Installieren des VM-Agents und das Überprüfen der VM-Agent-Installation. |
 | Der Momentaufnahmevorgang ist mit dem folgenden Vorgangsfehler des Volumeschattenkopie-Diensts (Volume Shadow Copy Service, VSS) fehlgeschlagen: **Dieses Laufwerk ist durch die BitLocker-Laufwerkverschlüsselung gesperrt. Das Laufwerk muss mithilfe der Systemsteuerung entsperrt werden.** |Deaktivieren Sie BitLocker für alle Laufwerke auf dem virtuellen Computer, und überprüfen Sie, ob der VSS-Fehler behoben wurde. |
 | Der Zustand des virtuellen Computers lässt keine Sicherungen zu. |<ul><li>Wenn sich der virtuelle Computer in einem Übergangszustand zwischen **Wird ausgeführt** und **Heruntergefahren** befindet, müssen Sie warten, bis der Zustand geändert wurde. Lösen Sie dann den Sicherungsauftrag aus. <li> Schließen Sie im Falle eines virtuellen Linux-Computers mit dem Kernelmodul Security Enhanced Linux den Azure Linux-Agent-Pfad **/var/lib/waagent** aus der Sicherheitsrichtlinie aus, und stellen Sie sicher, dass die Azure Backup-Erweiterung installiert ist.  |
-| Der virtuelle Azure-Computer wurde nicht gefunden. |Dieser Fehler tritt auf, wenn der primäre virtuelle Computer gelöscht wird, die Sicherungsrichtlinie jedoch weiterhin den gelöschten virtuellen Computer sucht. Beheben Sie diesen Fehler wie folgt: <ol><li>Erstellen Sie den virtuellen Computer mit dem gleichen Namen und dem gleichen Ressourcengruppennamen (**Clouddienstname**) neu. <br>**or** <li> Deaktivieren Sie den Schutz für diesen virtuellen Computer, damit keine Sicherungsaufträge erstellt werden. </ol> |
 | Der VM-Agent ist auf dem virtuellen Computer nicht vorhanden: <br>Installieren Sie alle erforderlichen Komponenten und den VM-Agent. Wiederholen Sie dann den Vorgang. |Erfahren Sie mehr über die [VM-Agent-Installation und das Überprüfen der VM-Agent-Installation](#vm-agent). |
-| Fehler beim Momentaufnahmevorgang aufgrund eines fehlerhaften Zustands von VSS Writer-Instanzen. |Starten Sie die in einem fehlerhaften Zustand befindlichen VSS Writer-Instanzen neu. Führen Sie an einer Eingabeaufforderung mit erhöhten Rechten den Befehl ```vssadmin list writers``` aus. Die Ausgabe enthält alle VSS Writer-Instanzen und deren Zustand. Führen Sie für jede VSS Writer-Instanz, deren Zustand nicht **[1] Stable** lautet, zum Neustarten der VSS Writer-Instanz die folgenden Befehle an einer Eingabeaufforderung mit erhöhten Rechten aus: <ol><li>```net stop serviceName``` <li> ```net start serviceName```</ol>|
-| Fehler beim Momentaufnahmevorgang aufgrund eines Fehlers beim Analysieren der Konfiguration. |Dieser Fehler tritt aufgrund geänderter Berechtigungen für das Verzeichnis **MachineKeys** (**%systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**) auf. <br> Führen Sie den folgenden Befehl aus, und stellen Sie sicher, dass für das Verzeichnis **MachineKeys** die Standardberechtigungen gelten:<br>**icacls %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**. <br><br>Die Standardberechtigungen lauten wie folgt: <ul><li>Jeder: Lesen/Schreiben (R, W) <li>VORDEFINIERT\Administratoren: (F)</ul> Wenn für das Verzeichnis **MachineKeys** andere Berechtigungen als die Standardberechtigungen festgelegt sind, führen Sie die folgenden Schritte aus, um die Berechtigungen zu korrigieren, das Zertifikat zu löschen und den Sicherungsvorgang auszulösen: <ol><li>Korrigieren Sie die Berechtigungen für das Verzeichnis **MachineKeys**. Setzen Sie die Berechtigungen mithilfe von Explorer-Sicherheitseigenschaften und erweiterten Sicherheitseinstellungen für das Verzeichnis auf die Standardwerte zurück. Entfernen Sie alle Benutzerobjekte mit Ausnahme der Standardobjekte aus dem Verzeichnis, und stellen Sie sicher, dass für die Berechtigung **Jeder** die folgenden speziellen Zugriffsberechtigungen gelten: <ul><li>Ordner auflisten/Daten lesen <li>Attribute lesen <li>Erweiterte Attribute lesen <li>Dateien erstellen/Daten schreiben <li>Ordner erstellen/Daten anhängen<li>Attribute schreiben<li>Erweiterte Attribute schreiben<li>Leseberechtigungen </ul><li>Löschen Sie alle Zertifikate, für die **Ausgestellt für** das klassische Bereitstellungsmodell oder **Windows Azure CRP Certificate Generator** ist:<ol><li>[Öffnen Sie in der Konsole auf dem lokalen Computer die Zertifikate](https://msdn.microsoft.com/library/ms788967(v=vs.110).aspx).<li>Löschen Sie unter **Eigene Zertifikate** > **Zertifikate** alle Zertifikate, für die **Ausgestellt für** das klassische Bereitstellungsmodell ist, oder löschen Sie **Microsoft Azure CRP Certificate Generator**.</ol> <li>Lösen Sie einen Sicherungsauftrag für den virtuellen Computer aus. </ol>|
-| Der Azure Backup-Dienst verfügt nicht über ausreichende Berechtigungen für Azure Key Vault zur Sicherung verschlüsselter virtueller Computer. |Weisen Sie dem Backup-Dienst diese Berechtigungen in PowerShell zu, indem Sie die unter [Erstellen eines virtuellen Computers aus wiederhergestellten Datenträgern](backup-azure-vms-automation.md) aufgeführten Schritte ausführen. |
-|Die Installation der Momentaufnahmenerweiterung ist mit dem Fehler **COM+ konnte keine Daten mit dem Microsoft Distributed Transaction Coordinator austauschen** fehlgeschlagen. | Starten Sie über eine Eingabeaufforderung mit erhöhten Rechten den Windows-Dienst **COM+-Systemanwendung**. Hierzu können Sie beispielsweise den Befehl **net start COMSysApp** ausführen. Wenn der Dienst nicht gestartet wird, führen Sie die folgenden Schritte aus:<ol><li> Stellen Sie sicher, dass für den Dienst **Distributed Transaction Coordinator** das Anmeldekonto **Netzwerkdienst** lautet. Wenn das nicht der Fall ist, ändern Sie das Anmeldekonto in **Netzwerkdienst**, und starten Sie den Dienst neu. Versuchen Sie dann, **COM+-Systemanwendung** zu starten.<li>Wenn **COM+-Systemanwendung** nicht gestartet wird, führen Sie die folgenden Schritte aus, um den Dienst **Distributed Transaction Coordinator** zu deinstallieren und zu installieren: <ol><li>Beenden Sie den MS DTC-Dienst. <li>Öffnen Sie eine Eingabeaufforderung, **cmd**. <li>Führen Sie den Befehl ```msdtc -uninstall```aus. <li>Führen Sie den Befehl ```msdtc -install```aus. <li>Starten Sie den MS DTC-Dienst. </ol> <li>Starten Sie den Windows-Dienst **COM+-Systemanwendung**. Lösen Sie nach dem Starten des Diensts **COM+-Systemanwendung** einen Sicherungsauftrag über das Azure-Portal aus.</ol> |
-|  Der Momentaufnahmevorgang ist aufgrund eines COM+-Fehlers fehlgeschlagen. | Es wird empfohlen, den Windows-Dienst **COM+-Systemanwendung** an einer Eingabeaufforderung mit erhöhten Rechten mit dem Befehl **net start COMSysApp** neu zu starten. Wenn das Problem weiterhin besteht, starten Sie den virtuellen Computer neu. Wenn der Neustart der VM nicht hilfreich war, versuchen Sie das [Entfernen der VMSnapshot-Erweiterung](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout), und lösen Sie die Sicherung manuell aus. |
 | Azure Backup konnte zum Erfassen einer dateisystemkonsistenten Momentaufnahme mindestens einen Bereitstellungspunkt des virtuellen Computers nicht einfrieren. | Führen Sie den folgenden Schritt aus: <ul><li>Überprüfen Sie mit dem Befehl **tune2fs** den Dateisystemstatus aller bereitgestellten Geräte. Beispiel: **tune2fs -l /dev/sdb1 \\**.\| grep **Filesystem state**. <li>Heben Sie mit dem Befehl **umount** die Bereitstellung der Geräte auf, deren Dateisystemstatus nicht fehlerfrei ist. <li> Führen Sie mit dem Befehl **fsck** eine Dateisystemkonsistenzprüfung für diese Geräte aus. <li> Stellen Sie die Geräte erneut bereit, und versuchen Sie, die Sicherung auszuführen.</ol> |
 | Der Momentaufnahmevorgang ist aufgrund eines Fehlers beim Erstellen eines sicheren Netzwerkkommunikationskanals fehlgeschlagen. | <ol><li> Öffnen Sie den Registrierungs-Editor, indem Sie **regedit.exe** im Modus mit erhöhten Rechten ausführen. <li> Identifizieren Sie alle auf Ihrem System vorhandenen Versionen von .NET Framework. Sie werden unter der Hierarchie des Registrierungsschlüssels **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft** aufgeführt. <li> Fügen Sie für jede im Registrierungsschlüssel vorhandene .NET Framework-Version den folgenden Schlüssel hinzu: <br> **SchUseStrongCrypto"=dword:00000001** </ol>|
 | Der Momentaufnahmevorgang ist aufgrund eines Fehlers beim Installieren von Visual C++ Redistributable für Visual Studio 2012 fehlgeschlagen. | Navigieren Sie zu „C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion“, und installieren Sie „vcredist2012_x64“. Stellen Sie sicher, dass der richtige Registrierungsschlüsselwert zum Zulassen dieser Dienstinstallation festgelegt ist. Der Wert des Registrierungsschlüssels **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** muss dazu auf **3** und nicht auf **4** festgelegt sein. <br><br>Wenn immer noch Probleme bei der Installation bestehen, starten Sie den Installationsdienst neu, indem Sie an einer Eingabeaufforderung mit erhöhten Rechten den Befehl **MSIEXEC /UNREGISTER** und dann **MSIEXEC /REGISTER** ausführen.  |
@@ -51,7 +178,7 @@ Sie können Fehler, die beim Verwenden von Azure Backup auftreten, anhand der in
 | Fehlerdetails | Problemumgehung |
 | --- | --- |
 | Ein Abbruch wird für diesen Auftragstyp nicht unterstützt: <br>Warten Sie, bis der Auftrag abgeschlossen ist. |Keine |
-| Der Auftrag kann in diesem Status nicht abgebrochen werden: <br>Warten Sie, bis der Auftrag abgeschlossen ist. <br>**or**<br> Der ausgewählte Auftrag kann in diesem Status nicht abgebrochen werden: <br>Warten Sie auf den Abschluss des Auftrags. |Wahrscheinlich ist der Auftrag fast vollständig abgeschlossen. Warten Sie, bis der Auftrag vollständig abgeschlossen wurde.|
+| Der Auftrag kann in diesem Status nicht abgebrochen werden: <br>Warten Sie, bis der Auftrag abgeschlossen ist. <br>**oder**<br> Der ausgewählte Auftrag kann in diesem Status nicht abgebrochen werden: <br>Warten Sie auf den Abschluss des Auftrags. |Wahrscheinlich ist der Auftrag fast vollständig abgeschlossen. Warten Sie, bis der Auftrag vollständig abgeschlossen wurde.|
 | Azure Backup kann den Auftrag nicht abbrechen, weil sich dieser nicht in Bearbeitung befindet: <br>Ein Abbruch wird nur für in Bearbeitung befindliche Aufträge unterstützt. Versuchen Sie, einen in Bearbeitung befindlichen Auftrag abzubrechen. |Dieser Fehler tritt aufgrund eines Übergangszustands auf. Warten Sie eine Minute, und wiederholen Sie den Abbruchvorgang. |
 | Azure Backup konnte den Auftrag nicht abbrechen: <br>Warten Sie, bis der Auftrag abgeschlossen ist. |Keine |
 

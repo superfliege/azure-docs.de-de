@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: 379477cd063192fc8c23c73b4a8814ad13507043
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 4b4ddd765996d8bb936d2abda4015f37d6df9098
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667531"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361540"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassen von Service Fabric-Clustereinstellungen
 Dieser Artikel beschreibt die verschiedenen Fabric-Einstellungen, die Sie für Ihren Service Fabric-Cluster anpassen können. Für in Azure gehostete Cluster können Sie Einstellungen über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage anpassen. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines Azure-Clusters](service-fabric-cluster-config-upgrade-azure.md). Für eigenständige Cluster passen Sie die Einstellungen durch Aktualisieren der Datei *ClusterConfig.json* und ein Konfigurationsupgrade in Ihrem Cluster an. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines eigenständigen Clusters](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -159,7 +159,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 | --- | --- | --- | --- |
 |ConnectionInitializationTimeout |Zeit in Sekunden, Standardwert 2 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Timeoutintervall für Verbindungen für jeden Versuch eines Clients, eine Verbindung mit dem Gateway zu öffnen.|
 |HealthOperationTimeout |Zeit in Sekunden, Standardwert 120 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das Timeout für eine an den Integritätsdienst gesendete Berichtsnachricht. |
-|HealthReportRetrySendInterval |Zeit in Sekunden, Standardwert 30 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das Intervall, in dem Berichtskomponenten kumulierte Integritätsberichte erneut an den Integritätsdienst senden. |
+|HealthReportRetrySendInterval |Zeit in Sekunden, Standardwert 30, Mindestwert 1 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das Intervall, in dem Berichtskomponenten kumulierte Integritätsberichte erneut an den Integritäts-Manager senden. |
 |HealthReportSendInterval |Zeit in Sekunden, Standardwert 30 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das Intervall, in dem Berichtskomponenten kumulierte Integritätsberichte an den Integritätsdienst senden. |
 |KeepAliveIntervalInSeconds |Ganze Zahl, Standardwert 20 |statischen|Das Intervall, in dem der FabricClient-Transport Keep-Alive-Nachrichten an das Gateway sendet. Bei 0 ist „keepAlive“ deaktiviert. Der Wert muss eine positive Zahl sein. |
 |MaxFileSenderThreads |Uint, Standardwert 10 |statischen|Die maximale Anzahl von Dateien, die gleichzeitig übertragen werden. |
@@ -407,11 +407,14 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |AzureStorageMaxWorkerThreads | Ganze Zahl, Standardwert 25 |Dynamisch|Die maximale Anzahl von parallelen Workerthreads. |
 |AzureStorageOperationTimeout | Zeit in Sekunden, Standardwert 6000 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Timeout für den Abschluss des xstore-Vorgangs. |
 |CleanupApplicationPackageOnProvisionSuccess|Boolesch, Standardwert FALSE |Dynamisch|Diese Konfiguration aktiviert oder deaktiviert die automatische Bereinigung von Anwendungspaketen nach der erfolgreichen Bereitstellung. |
+|CleanupUnusedApplicationTypes|Boolesch, Standardwert ist „false“ |Dynamisch|Wenn diese Konfiguration aktiviert wird, ermöglicht sie das automatische Aufheben der Registrierung nicht genutzter Versionen von Anwendungstypen, wobei die letzten drei nicht genutzten Versionen übersprungen werden. Damit wird der vom Imagespeicher verbrauchte Speicherplatz auf dem Datenträger reduziert. Die automatische Bereinigung wird am Ende der erfolgreichen Bereitstellung für den spezifischen Anwendungstyp ausgelöst und auch regelmäßig einmal pro Tag für alle Anwendungstypen ausgeführt. Die Anzahl nicht verwendeter Versionen, die übersprungen werden sollen, kann über den Parameter MaxUnusedAppTypeVersionsToKeep konfiguriert werden. |
 |DisableChecksumValidation | Boolesch, Standardwert „false“ |statischen| Diese Konfiguration ermöglicht es, die Prüfsummenüberprüfung während der Anwendungsbereitstellung zu aktivieren oder zu deaktivieren. |
 |DisableServerSideCopy | Boolesch, Standardwert „false“ |statischen|Diese Konfiguration aktiviert oder deaktiviert serverseitiges Kopieren des Anwendungspakets in ImageStore während der Anwendungsbereitstellung. |
 |ImageCachingEnabled | Boolesch, Standardwert „true“ |statischen|Diese Konfiguration ermöglicht es, das Zwischenspeichern zu aktivieren oder zu deaktivieren. |
 |ImageStoreConnectionString |SecureString |statischen|Die Verbindungszeichenfolge für das Stammverzeichnis für ImageStore. |
 |ImageStoreMinimumTransferBPS | Ganze Zahl, Standardwert 1024 |Dynamisch|Die minimale Übertragungsrate zwischen dem Cluster und ImageStore. Dieser Wert wird verwendet, um das Timeout zu bestimmen, wenn auf den externen ImageStore zugegriffen wird. Ändern Sie diesen Wert nur, wenn die Latenz zwischen dem Cluster und ImageStore hoch ist, damit der Cluster mehr Zeit für Downloads aus dem externen ImageStore erhält. |
+|MaxUnusedAppTypeVersionsToKeep | Ganze Zahl, Standardwert 3 |Dynamisch|Diese Konfiguration definiert die Anzahl der nicht verwendeten Versionen von Anwendungstypen, die bei der Bereinigung übersprungen werden sollen. Dieser Parameter gilt nur, wenn der Parameter CleanupUnusedApplicationTypes aktiviert ist. |
+
 
 ## <a name="metricactivitythresholds"></a>MetricActivityThresholds
 | **Parameter** | **Zulässige Werte** |**Upgraderichtlinie**| **Anleitung oder Kurzbeschreibung** |

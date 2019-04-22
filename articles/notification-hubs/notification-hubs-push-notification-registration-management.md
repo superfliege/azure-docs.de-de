@@ -13,13 +13,13 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.author: jowargo
-ms.date: 01/23/2019
-ms.openlocfilehash: 028e9a2973ed524037f6415d9e802f947458cfa6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/08/2019
+ms.openlocfilehash: 559dd5ecfa4615e42e4f7ac40008e69c9210e2a4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58166768"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260451"
 ---
 # <a name="registration-management"></a>Registrierungsverwaltung
 
@@ -45,12 +45,12 @@ Eine Installation ist eine erweiterte Registrierung, die einen Behälter von Eig
 Im Folgenden sind die wichtigsten Vorteile bei der Verwendung von Installationen beschrieben:
 
 - Das Erstellen oder Aktualisieren einer Installation ist vollständig idempotent. Sie können eine Installation wiederholen, ohne sich um doppelte Registrierungen sorgen zu müssen.
-- Das Installationsmodell erleichtert die Ausführung individueller Pushvorgänge für bestimmte Geräte. Bei jeder installationsbasierten Registrierung wird automatisch das Systemtag **"$InstallationId:[installationId]"** hinzugefügt. So können Sie ein Sendetag für ein bestimmtes Gerät aufrufen, ohne dass zusätzlicher Code geschrieben werden muss.
+- Das Installationsmodell unterstützt ein spezielles Tagformat (`$InstallationId:{INSTALLATION_ID}`), das das direkte Senden von Benachrichtigungen an das spezifische Gerät ermöglicht. Wenn der Code der App beispielsweise eine Installations-ID von `joe93developer` für dieses spezifische Gerät zulässt, kann ein Entwickler dieses Gerät als Ziel zum Senden einer Benachrichtigung an das `$InstallationId:{joe93developer}`-Tag verwenden. So können Sie ein spezifisches Gerät als Ziel verwenden, ohne zusätzlichen Code schreiben zu müssen.
 - Mithilfe von Installationen können Sie zudem Registrierungsteilupdates durchführen. Das Teilupdate einer Installation wird mit einer PATCH-Methode unter Verwendung des [JSON-Patch-Standards](https://tools.ietf.org/html/rfc6902)angefordert. Dies ist nützlich, wenn Sie Tags für die Registrierung aktualisieren möchten. Sie müssen nicht die gesamte Registrierung auflösen und dann alle vorherigen Tags erneut senden.
 
 Eine Installation kann folgende Eigenschaften enthalten. Eine vollständige Liste der Installationseigenschaften finden Sie unter [Erstellen oder Überschreiben einer Installation mit der REST-API](https://msdn.microsoft.com/library/azure/mt621153.aspx) oder [Installationseigenschaften](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx).
 
-```javascript
+```json
 // Example installation format to show some supported properties
 {
     installationId: "",
@@ -101,8 +101,7 @@ Jeder Vorlagenname ist einem Vorlagentext und einer optionalen Gruppe von Tags z
 
 Für Windows Store-Clientanwendungen ist das Senden von Benachrichtigungen an sekundäre Kacheln und an die primäre Kachel identisch. Dies wird auch in Installationen unterstützt. Sekundäre Kacheln verfügen über einen unterschiedlichen ChannelUri, der vom SDK in der Client-App transparent behandelt wird.
 
-Das SecondaryTiles-Wörterbuch verwendet dieselbe TileId, die zum Erstellen des SecondaryTiles-Objekts in der Windows Store-App verwendet wird.
-Wie beim primären ChannelUri können sich ChannelUris sekundärer Kacheln jederzeit ändern. Damit die Installationen im Notification Hub aktuell bleiben, müssen sie vom Gerät mit den aktuellen ChannelUris der sekundären Kacheln aktualisiert werden.
+Das SecondaryTiles-Wörterbuch verwendet dieselbe TileId, die zum Erstellen des SecondaryTiles-Objekts in der Windows Store-App verwendet wird. Wie beim primären ChannelUri können sich ChannelUris sekundärer Kacheln jederzeit ändern. Damit die Installationen im Notification Hub aktuell bleiben, müssen sie vom Gerät mit den aktuellen ChannelUris der sekundären Kacheln aktualisiert werden.
 
 ## <a name="registration-management-from-the-device"></a>Registrierungsverwaltung über das Gerät
 

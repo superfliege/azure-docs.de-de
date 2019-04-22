@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: 98cc6ee2428523b93b42fca73daadc118103b7d7
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 5a4b7514005da9e9a998dba014fa0ea6c014397a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667479"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268516"
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>ASP.NET Core in zuverlässigen Service Fabric-Diensten
 
@@ -134,7 +134,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 
 ### <a name="httpsys-in-a-stateful-service"></a>HttpSys in einem zustandsbehafteten Dienst
 
-Aufgrund von Schwierigkeiten mit dem zugrunde liegenden *http.sys*-Portfreigabefeature ist `HttpSysCommunicationListener` derzeit nicht für die Verwendung in zustandsbehafteten Diensten geeignet. Weitere Informationen finden Sie im folgenden Abschnitt zur dynamischen Portzuordnung mit HttpSys. Für zustandsbehaftete Dienste wird Kestrel als Webserver empfohlen.
+`HttpSysCommunicationListener` ist aufgrund von Schwierigkeiten mit den zugrundeliegenden *http.sys*-Portfreigabefeature derzeit nicht für die Verwendung in zustandsbehafteten Diensten geeignet. Weitere Informationen finden Sie im folgenden Abschnitt zur dynamischen Portzuordnung mit HttpSys. Für zustandsbehaftete Dienste wird Kestrel als Webserver empfohlen.
 
 ### <a name="endpoint-configuration"></a>Endpunktkonfiguration
 
@@ -340,7 +340,7 @@ Die App-Konfiguration in ASP.NET Core basiert auf Schlüssel-Wert-Paaren, die v
 In diesem Abschnitt werden die Service Fabric-Konfigurationsanbieter beschrieben, die durch Importieren des NuGet-Pakets `Microsoft.ServiceFabric.AspNetCore.Configuration` in die ASP.NET Core-Konfiguration integriert werden.
 
 ### <a name="addservicefabricconfiguration-startup-extensions"></a>AddServiceFabricConfiguration-Starterweiterungen
-Nachdem Sie das NuGet-Paket `Microsoft.ServiceFabric.AspNetCore.Configuration` importiert haben, müssen Sie die Service Fabric-Konfigurationsquelle bei der ASP.NET Core-Konfigurations-API registrieren. Verwenden Sie dazu Erweiterungen vom Typ **AddServiceFabricConfiguration** im Namespace `Microsoft.ServiceFabric.AspNetCore.Configuration` für `IConfigurationBuilder`.
+Nachdem Sie das NuGet-Paket `Microsoft.ServiceFabric.AspNetCore.Configuration` importiert haben, müssen Sie die Service Fabric-Konfigurationsquelle bei der ASP.NET Core-Konfigurations-API registrieren. Verwenden Sie dazu Erweiterungen vom Typ **AddServiceFabricConfiguration** im Namespace `Microsoft.ServiceFabric.AspNetCore.Configuration` für `IConfigurationBuilder`
 
 ```csharp
 using Microsoft.ServiceFabric.AspNetCore.Configuration;
@@ -369,7 +369,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 ### <a name="default-key-mapping"></a>Standardschlüsselzuordnung
-Der Service Fabric-Konfigurationsanbieter enthält standardmäßig den Paketnamen, den Abschnittsnamen und den Eigenschaftsnamen. Aus diesen Namen wird dann mithilfe der folgenden Funktion der ASP.NET Core-Konfigurationsschlüssel gebildet:
+Der Service Fabric-Konfigurationsanbieter enthält standardmäßig den Paketnamen, den Abschnittsnamen und den Eigenschaftsnamen. Aus diesen Namen wird dann mithilfe der folgenden Funktion der ASP.NET Core-Konfigurationsschlüssel gebildet:
 ```csharp
 $"{this.PackageName}{ConfigurationPath.KeyDelimiter}{section.Name}{ConfigurationPath.KeyDelimiter}{property.Name}"
 ```
@@ -469,7 +469,7 @@ Kestrel ist der empfohlene Webserver für Front-End-Dienste, die externe HTTP-En
  
 Ein für das Internet verfügbar gemachter zustandsloser Dienst muss einen bekannten und stabilen Endpunkt verwenden, der über einen Load Balancer erreichbar ist. Das ist die URL, die Sie den Benutzern Ihrer Anwendung zur Verfügung stellen. Empfohlene Konfiguration:
 
-|  |  | **Hinweise** |
+|  |  | **Notizen** |
 | --- | --- | --- |
 | Webserver | Kestrel | Kestrel ist der bevorzugte Webserver, da er unter Windows und Linux unterstützt wird. |
 | Portkonfiguration | Statisch | In der `Endpoints`-Konfiguration von „ServiceManifest.xml“ muss ein bekannter statischer Port konfiguriert werden – beispielsweise 80 für HTTP oder 443 für HTTPS. |
@@ -494,7 +494,7 @@ Wenn sich mehrere extern verfügbar gemachte Dienste die gleichen Knoten teilen,
 ### <a name="internal-only-stateless-aspnet-core-service"></a>Zustandsloser ASP.NET Core-Dienst (nur intern)
 Zustandslose Dienste, die nur innerhalb des Clusters aufgerufen werden, sollten eindeutige URLs und dynamisch zugewiesene Ports verwenden, um die Zusammenarbeit zwischen mehreren Diensten zu gewährleisten. Empfohlene Konfiguration:
 
-|  |  | **Hinweise** |
+|  |  | **Notizen** |
 | --- | --- | --- |
 | Webserver | Kestrel | Für interne zustandslose Dienste kann zwar HttpSys verwendet werden, als Server wird jedoch Kestrel empfohlen, um die gemeinsame Verwendung eines Hosts durch mehrere Dienstinstanzen zu ermöglichen.  |
 | Portkonfiguration | Dynamisch zugewiesen | Mehrere Replikate eines zustandsbehafteten Diensts können gemeinsam einen Hostprozess oder ein Hostbetriebssystem verwenden und benötigen daher eindeutige Ports. |
@@ -504,7 +504,7 @@ Zustandslose Dienste, die nur innerhalb des Clusters aufgerufen werden, sollten 
 ### <a name="internal-only-stateful-aspnet-core-service"></a>Zustandsbehafteter ASP.NET Core-Dienst (nur intern)
 Zustandsbehaftete Dienste, die nur innerhalb des Clusters aufgerufen werden, sollten dynamisch zugewiesene Ports verwenden, um die Zusammenarbeit zwischen mehreren Diensten zu gewährleisten. Empfohlene Konfiguration:
 
-|  |  | **Hinweise** |
+|  |  | **Notizen** |
 | --- | --- | --- |
 | Webserver | Kestrel | `HttpSysCommunicationListener` ist nicht für die Verwendung durch zustandsbehaftete Dienste konzipiert, in denen sich Replikate einen Hostprozess teilen. |
 | Portkonfiguration | Dynamisch zugewiesen | Mehrere Replikate eines zustandsbehafteten Diensts können gemeinsam einen Hostprozess oder ein Hostbetriebssystem verwenden und benötigen daher eindeutige Ports. |

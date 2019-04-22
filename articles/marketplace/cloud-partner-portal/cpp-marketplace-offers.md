@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 03/27/2019
 ms.author: pbutlerm
-ms.openlocfilehash: fd51a9f70d60219a9429ff66d6f1d404391f6fb0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f537a43f5d4d0431e1659daa258e0c1453f2295b
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57446708"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010580"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Angebote für Azure Marketplace und Microsoft AppSource
 
@@ -29,7 +29,7 @@ Das folgende Video stellt die verschiedenen Funktionen und Angebotstypen in Azur
 
 > [!VIDEO https://channel9.msdn.com/Events/Build/2018/BRK2513/player]
 
-**Erstellen von Apps und Beratungsdiensten für Azure Marketplace und AppSource – Build 2018**
+**Build 2018: Erstellen von Apps und Diensten für Azure Marketplace und AppSource**
 
 Weitere Informationen zu diesen Marketplaces finden Sie unter [Veröffentlichungsleitfaden für Azure Marketplace und AppSource](../marketplace-publishers-guide.md).
 
@@ -59,8 +59,8 @@ Die folgende Tabelle enthält die aktuellen Angebotstypen, die vom [Cloud-Partne
 | [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | Ein Paket, das dieses Customer Resource Management-System (CRM) um die Module „Vertrieb“, „Service“, „Project Service“ und „Außendienst“ erweitert.  |
 | [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | Ein Paket, das diesen Enterprise Resource Planning-Dienst (ERP) erweitert, der erweiterte Features für Finanzierung, operative Vorgänge, Fertigung und Lieferkettenmanagement unterstützt. |
 | [IoT Edge-Modul](./iot-edge-module/cpp-offer-process-parts.md) | Azure | Ein Docker-kompatibler Container, der auf einem IoT Edge-Gerät ausgeführt wird.  Er enthält kleine Berechnungsmodule, die eine Kombination aus benutzerdefiniertem Code, anderen Azure-Diensten und Diensten von Drittanbietern verwenden. |
-| [Power BI-App](./power-bi/cpp-power-bi-offer.md) | AppSource | Ein Paket, das Datenströme verwendet, um Berichte und Dashboards mit Daten in einem gemeinsamen Datenspeicher zu verbinden. |
-| [SaaS-App](./saas-app/cpp-saas-offer.md) | Azure | Die Lösung ist ein vom Herausgeber verwaltetes Software-as-a-Service-Abonnement, an dem sich die Benutzer über eine benutzerdefinierte Schnittstelle anmelden, und das das Azure Active Directory nutzt. |
+| [Power BI-App](./power-bi/cpp-power-bi-offer.md) | AppSource | In einer Power BI-App werden anpassbare Power BI-Inhalte, z. B. Datasets, Berichte und Dashboards, gebündelt. |
+| [SaaS-App](./saas-app/cpp-saas-offer.md) | Azure | Die Lösung ist ein vom Herausgeber verwaltetes Software-as-a-Service-Abonnement, an dem sich die Benutzer über eine benutzerdefinierte Schnittstelle anmelden, die Azure Active Directory nutzt. |
 | [Virtueller Computer](./virtual-machine/cpp-virtual-machine-offer.md)  | Azure  | Die Lösung ist auf einem einzigen virtuellen Computer enthalten, der im Abonnement des Kunden bereitgestellt wird.  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |   |   |
 
@@ -69,4 +69,4 @@ Weitere Informationen finden Sie im [Leitfaden zur Veröffentlichung nach Angebo
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Welche allgemeinen Vorgänge Sie im Rahmen der Marketplace-Angeboten durchführen können und deren gemeinsame technische Eigenschaften und Objekt erfahren Sie im Thema [Verwalten von Angeboten](./manage-offers/cpp-manage-offers.md).
+Die allgemeinen Vorgänge, die Sie mit Marketplace-Angeboten durchführen können, und deren gemeinsame technische Attribute und Ressourcen lernen Sie im Artikel [Verwalten von Angeboten](./manage-offers/cpp-manage-offers.md) kennen.

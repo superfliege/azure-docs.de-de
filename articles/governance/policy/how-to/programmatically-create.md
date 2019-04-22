@@ -1,7 +1,6 @@
 ---
 title: Programmgesteuertes Erstellen von Richtlinien und Anzeigen von Konformitätsdaten
 description: In diesem Artikel wird das programmgesteuerte Erstellen und Verwalten von Richtlinien für Azure Policy Schritt für Schritt beschrieben.
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 01/31/2019
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: e929fd80e87524b62c08a159c457be6f1f21eaad
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: ade5d55833f1d63a8d70b6eedb3c3e4bdffe590b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768603"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276489"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programmgesteuertes Erstellen von Richtlinien und Anzeigen von Konformitätsdaten
 
@@ -98,10 +97,10 @@ Im ersten Schritt zur besseren Sichtbarkeit Ihrer Ressourcen werden Richtlinien 
    Der Parameter **Scope** für `New-AzPolicyAssignment` kann mit einer Verwaltungsgruppe, einem Abonnement, einer Ressourcengruppe oder einer einzelnen Ressource verwendet werden. Der Parameter verwendet einen vollständigen Ressourcenpfad, den die Eigenschaft **ResourceId** in `Get-AzResourceGroup` zurückgibt. Das Muster für **Scope** sieht für jeden Container wie folgt aus. Ersetzen Sie `{rName}`, `{rgName}`, `{subId}` und `{mgName}` durch Ihre(n) Ressourcennamen, Ressourcengruppennamen, Abonnement-ID bzw. Namen der Verwaltungsgruppe.
    `{rType}` wird durch den **Ressourcentyp** der Ressource ersetzt, z. B. `Microsoft.Compute/virtualMachines` für eine VM.
 
-   - Ressource: `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
-   - Ressourcengruppe: `/subscriptions/{subId}/resourceGroups/{rgName}`
-   - Abonnement: `/subscriptions/{subId}/`
-   - Verwaltungsgruppe: `/providers/Microsoft.Management/managementGroups/{mgName}`
+   - Ressource - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Ressourcengruppe - `/subscriptions/{subId}/resourceGroups/{rgName}`
+   - Abonnement - `/subscriptions/{subId}/`
+   - Verwaltungsgruppe - `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 Weitere Informationen zum Verwalten von Ressourcenrichtlinien unter Verwendung des Azure Resource Manager-PowerShell-Moduls finden Sie unter [Az.Resources](/powershell/module/az.resources/#policies).
 
@@ -226,10 +225,10 @@ Verwenden Sie das folgende Verfahren, um eine Richtliniendefinition zu erstellen
 
    Die Parameter **--scope** für `az policy assignment create` kann mit einer Verwaltungsgruppe, einem Abonnement, einer Ressourcengruppe oder einer einzelnen Ressource verwendet werden. Der Parameter verwendet einen vollständigen Ressourcenpfad. Das Muster für **--scope** für die einzelnen Container ist unten aufgeführt. Ersetzen Sie `{rName}`, `{rgName}`, `{subId}` und `{mgName}` durch Ihre(n) Ressourcennamen, Ressourcengruppennamen, Abonnement-ID bzw. Namen der Verwaltungsgruppe. `{rType}` wird durch den **Ressourcentyp** der Ressource ersetzt, z. B. `Microsoft.Compute/virtualMachines` für eine VM.
 
-   - Ressource: `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
-   - Ressourcengruppe: `/subscriptions/{subID}/resourceGroups/{rgName}`
-   - Abonnement: `/subscriptions/{subID}`
-   - Verwaltungsgruppe: `/providers/Microsoft.Management/managementGroups/{mgName}`
+   - Ressource - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - Ressourcengruppe - `/subscriptions/{subID}/resourceGroups/{rgName}`
+   - Abonnement - `/subscriptions/{subID}`
+   - Verwaltungsgruppe - `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 Sie können die ID der Richtliniendefinition abrufen, indem Sie PowerShell mit dem folgenden Befehl verwenden:
 

@@ -10,18 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 78d82f7604d86b50ee5e05e5c3b5b9802a9559e5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cb1b8171dc45c286d3f87a3c33e366d818cfaad9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877937"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283408"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>Kopieren von Daten in und aus SQL Server mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1](v1/data-factory-sqlserver-connector.md)
+> * [Version 1](v1/data-factory-sqlserver-connector.md)
 > * [Aktuelle Version](connector-sql-server.md)
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten in und aus einer SQL Server-Datenbank zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
@@ -64,7 +64,7 @@ Folgende Eigenschaften werden für den mit SQL Server verknüpften Dienst unters
 >[!TIP]
 >Wenn ein Fehler mit dem Fehlercode „UserErrorFailedToConnectToSqlServer“ auftritt und eine Meldung wie „Das Sitzungslimit für die Datenbank ist XXX und wurde erreicht“ angezeigt wird, fügen Sie `Pooling=false` zu Ihrer Verbindungszeichenfolge hinzu, und versuchen Sie es erneut.
 
-**Beispiel 1: SQL-Authentifizierung**
+**Beispiel 1: Verwenden der SQL-Authentifizierung**
 
 ```json
 {
@@ -85,7 +85,7 @@ Folgende Eigenschaften werden für den mit SQL Server verknüpften Dienst unters
 }
 ```
 
-**Beispiel 2: Verwenden der SQL-Authentifizierung mit Kennwort in Azure Key Vault**
+**Beispiel 2: Verwenden der SQL-Authentifizierung mit Kennwort im Azure Key Vault**
 
 ```json
 {
@@ -258,7 +258,7 @@ Legen Sie zum Kopieren von Daten aus SQL Server den Quellentyp in der Kopierakti
 ]
 ```
 
-**Die Definition der gespeicherten Prozedur:**
+**Definition der gespeicherten Prozedur:**
 
 ```sql
 CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
@@ -284,7 +284,7 @@ Legen Sie zum Kopieren von Daten in SQL Server den Senkentyp in der Kopieraktivi
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Senke der Kopieraktivität muss auf Folgendes festgelegt sein: **SqlSink** | Ja |
-| writeBatchSize |Fügt Daten in die SQL-Tabelle ein, wenn die Puffergröße "writeBatchSize" erreicht.<br/>Zulässige Werte: Ganze Zahlen (Anzahl der Zeilen). |Nein (Standardwert: 10.000) |
+| writeBatchSize |Anzahl der Zeilen, die in die SQL-Tabelle **pro Batch** eingefügt werden sollen.<br/>Zulässige Werte: Ganze Zahlen (Anzahl der Zeilen). |Nein (Standardwert: 10.000) |
 | writeBatchTimeout |Die Wartezeit für den Abschluss der Batcheinfügung, bis das Timeout wirksam wird.<br/>Zulässige Werte: Zeitraum Beispiel: „00:30:00“ (30 Minuten). |Nein  |
 | preCopyScript |Geben Sie eine auszuführende SQL-Abfrage für die Copy-Aktivität an, ehe Daten in SQL Server geschrieben werden. Sie wird pro Ausführung der Copy-Aktivität nur einmal aufgerufen. Sie können diese Eigenschaft nutzen, um die vorab geladenen Daten zu bereinigen. |Nein  |
 | sqlWriterStoredProcedureName |Der Name der gespeicherten Prozedur, die definiert, wie Quelldaten in der Zieltabelle angewendet werden (etwa durch Ausführen von Upserts oder Transformationen mit eigener Geschäftslogik). <br/><br/>Beachten Sie, dass diese gespeicherte Prozedur **pro Batch aufgerufen wird**. Verwenden Sie bei einem Vorgang, der nur einmal ausgeführt wird und nicht mit Quelldaten in Zusammenhang steht (etwa Löschen/Kürzen), die `preCopyScript`-Eigenschaft. |Nein  |
@@ -326,7 +326,7 @@ Legen Sie zum Kopieren von Daten in SQL Server den Senkentyp in der Kopieraktivi
 ]
 ```
 
-**Beispiel 2: Aufrufen einer gespeicherten Prozedur während des Kopierens für den upsert-Vorgang**
+**Beispiel 2: Aufrufen einer gespeicherten Prozedur während des Kopierens für den UPSERT-Vorgang**
 
 Weitere Informationen finden Sie unter [Aufrufen einer gespeicherten Prozedur für die SQL-Senke](#invoking-stored-procedure-for-sql-sink).
 
@@ -392,7 +392,7 @@ create table dbo.TargetTbl
 
 Beachten Sie, dass die Zieltabelle über eine Identitätsspalte verfügt.
 
-**Definition der Quell-Dataset-JSON**
+**JSON-Definition des Quelldatasets**
 
 ```json
 {
@@ -410,7 +410,7 @@ Beachten Sie, dass die Zieltabelle über eine Identitätsspalte verfügt.
 }
 ```
 
-**Definition der Ziel-Dataset-JSON**
+**JSON-Definition des Zieldatasets**
 
 ```json
 {
@@ -440,9 +440,9 @@ Beim Kopieren von Daten in eine SQL Server-Datenbank kann eine vom Benutzer ange
 
 Eine gespeicherte Prozedur kann genutzt werden, wenn integrierte Kopiermechanismen nicht den Zweck erfüllen. Sie wird in der Regel genutzt, wenn ein Upsert-Vorgang (Insert + Update, Einfügen + Aktualisieren) oder eine zusätzliche Verarbeitung (Zusammenführen von Spalten, Suchen nach zusätzlichen Werten, Einfügen in mehrere Tabellen usw.) vor dem endgültigen Einfügen von Quelldaten in die Zieltabelle durchgeführt werden muss.
 
-Das folgende Beispiel zeigt, wie Sie eine gespeicherte Prozedur verwenden, um einen einfachen Upsert-Vorgang in eine Tabelle in der SQL Server-Datenbank auszuführen. Vorausgesetzt, Eingabedaten sind vorhanden, und die Senkentabelle heißt „Marketing“, sind drei Spalten vorhanden: „ProfileID“, „State“ und „Category“. Führen Sie einen upsert-Vorgang basierend auf der Spalte „ProfileID“ aus, der nur für eine bestimmte Kategorie gelten soll.
+Das folgende Beispiel zeigt, wie Sie eine gespeicherte Prozedur verwenden, um einen einfachen Upsert-Vorgang in eine Tabelle in der SQL Server-Datenbank auszuführen. Wenn Eingabedaten vorhanden sind und die Senkentabelle **Marketing** heißt, sind drei Spalten vorhanden: **ProfileID**, **State** und **Category**. Führen Sie den Upsert-Vorgang basierend auf der Spalte **ProfileID** aus, und wenden Sie ihn nur auf eine bestimmte Kategorie an.
 
-**Ausgabedataset**
+**Ausgabedataset:** Der „tableName“ sollte in Ihrer gespeicherten Prozedur denselben Tabellentypparameternamen haben. Im Folgenden finden Sie das Skript für die gespeicherte Prozedur:
 
 ```json
 {
@@ -461,7 +461,7 @@ Das folgende Beispiel zeigt, wie Sie eine gespeicherte Prozedur verwenden, um ei
 }
 ```
 
-Definieren Sie den Abschnitt „SqlSink“ in der Kopieraktivität wie folgt.
+Definieren Sie den Abschnitt **SqlSink** in der Kopieraktivität wie folgt.
 
 ```json
 "sink": {
@@ -476,7 +476,7 @@ Definieren Sie den Abschnitt „SqlSink“ in der Kopieraktivität wie folgt.
 }
 ```
 
-Definieren Sie die gespeicherte Prozedur in der Datenbank mit demselben Namen wie "SqlWriterStoredProcedureName". Sie verarbeitet die Eingabedaten aus der angegebenen Quelle und führt sie mit der Ausgabetabelle zusammen. Der Parametername des Tabellentyps in der gespeicherten Prozedur muss mit dem Element „tableName“ identisch sein, das im Dataset definiert ist.
+Definieren Sie die gespeicherte Prozedur in der Datenbank mit demselben Namen wie **SqlWriterStoredProcedureName**. Sie verarbeitet die Eingabedaten aus der angegebenen Quelle und führt sie mit der Ausgabetabelle zusammen. Der Parametername des Tabellentyps in der gespeicherten Prozedur muss mit dem Element **tableName** identisch sein, das im Dataset definiert ist.
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)
@@ -515,9 +515,9 @@ Beim Kopieren von Daten in/aus SQL Server werden die folgenden Zuordnungen von S
 | binary |Byte[] |
 | bit |Boolean |
 | char |String, Char[] |
-| date |DateTime |
-| Datetime |DateTime |
-| datetime2 |DateTime |
+| date |Datetime |
+| Datetime |Datetime |
+| datetime2 |Datetime |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
@@ -531,7 +531,7 @@ Beim Kopieren von Daten in/aus SQL Server werden die folgenden Zuordnungen von S
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
-| smalldatetime |DateTime |
+| smalldatetime |Datetime |
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object |
@@ -542,7 +542,7 @@ Beim Kopieren von Daten in/aus SQL Server werden die folgenden Zuordnungen von S
 | uniqueidentifier |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
-| xml |Xml |
+| Xml |Xml |
 
 >[!NOTE]
 > Für Datentypen, die dem Zwischendatentyp „Decimal“ zugeordnet sind, unterstützt ADF derzeit eine maximale Genauigkeit von 28. Daten mit einer höheren Genauigkeit müssen in SQL-Abfragen ggf. in eine Zeichenfolge konvertiert werden.

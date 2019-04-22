@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/12/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: b6ea852c9a1bb8ea6eb51df310aab97e9b10d48e
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 5c6dfa359a85b5330e70a2618d59ffab15cf24f4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58399676"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276642"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>Einführung in Azure Sentinel Preview
 
@@ -29,22 +29,21 @@ ms.locfileid: "58399676"
 
 In diesem Schnellstart erfahren Sie, wie Sie mit Azure Sentinel loslegen können. 
 
-Zum Integrieren von Azure Sentinel müssen Sie zuerst eine Verbindung mit Ihren Datenquellen herstellen. Azure Sentinel enthält eine Reihe von Connectors für Microsoft-Lösungen, die vorkonfiguriert verfügbar sind und Echtzeitintegration bieten, u. a. für Microsoft Threat Protection-Lösungen und Microsoft 365-Quellen (darunter Office 365, Azure AD, Azure ATP, Microsoft Cloud App Security usw.). Außerdem stehen integrierte Connectors für Sicherheitslösungen von anderen Anbietern als Microsoft zur Verfügung. Sie können auch Common Event Format (CEF), Syslog oder eine REST-API verwenden, um Ihre Datenquellen mit Azure Sentinel zu verbinden.  
+Wenn Sie Azure Sentinel integrieren wollen, müssen Sie Azure Sentinel zuerst aktivieren und dann eine Verbindung mit Ihren Datenquellen herstellen. Azure Sentinel enthält eine Reihe von Connectors für Microsoft-Lösungen, die vorkonfiguriert verfügbar sind und Echtzeitintegration bieten, u. a. für Microsoft Threat Protection-Lösungen und Microsoft 365-Quellen (darunter Office 365, Azure AD, Azure ATP, Microsoft Cloud App Security usw.). Außerdem stehen integrierte Connectors für Sicherheitslösungen von anderen Anbietern als Microsoft zur Verfügung. Sie können auch Common Event Format (CEF), Syslog oder eine REST-API verwenden, um Ihre Datenquellen mit Azure Sentinel zu verbinden.  
 
 Nachdem Sie die Datenquellen verbunden haben, steht Ihnen ein Katalog von professionell erstellten Dashboards zur Anzeige der Erkenntnisse, die Sie aus Ihren Daten gewinnen, zur Auswahl. Diese Dashboards können einfach an Ihre Anforderungen angepasst werden.
 
 
 ## <a name="global-prerequisites"></a>Globale Voraussetzungen
 
-- Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+- Aktives Azure-Abonnement: Wenn Sie über keines verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 - Log Analytics-Arbeitsbereich. Informationen zum [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../log-analytics/log-analytics-quick-create-workspace.md)
 
-- Mitwirkungsberechtigungen für Ihren Mandanten, um Azure Sentinel zu aktivieren
-
-- Globale oder Sicherheitsadministratorberechtigungen für Ihren Mandanten
+-  Für das Abonnement, in dem sich der Azure Sentinel-Arbeitsbereich befindet, benötigen Sie Berechtigungen für Mitwirkende, um Azure Sentinel zu aktivieren. 
+- Für die Ressourcengruppe, zu der der Arbeitsbereich gehört, benötigen Sie entweder Berechtigungen für Mitwirkende oder für Betrachter, um Azure Sentinel zu verwenden.
+- Möglicherweise sind für die Verbindung mit bestimmten Datenquellen zusätzliche Berechtigungen erforderlich.
  
-
 ## Aktivieren von Azure Sentinel <a name="enable"></a>
 
 1. Melden Sie sich im Azure-Portal an.
@@ -80,6 +79,6 @@ Sobald Ihre Datenquellen verbunden wurden, beginnt das Streaming Ihrer Daten zu 
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokumentationsartikel haben Sie Informationen zur Verbindung von Datenquellen mit Azure Sentinel erhalten. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
-- Erfahren Sie, wie Sie [ Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
+- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
 - Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats.md) (Tutorial: Detect threats with Azure Sentinel Preview).
 - Streamen Sie Daten aus [Appliances im Common Error Format](connect-common-event-format.md) zu Azure Sentinel.

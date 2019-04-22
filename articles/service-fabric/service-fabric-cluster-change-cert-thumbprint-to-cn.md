@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/01/2019
 ms.author: aljo
-ms.openlocfilehash: e7d5e51ea7048a134a5085715dec1797af32da17
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: d6860cdfb2e453a2151b4c5e425cfe0b12d88f8b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664413"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050474"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Ändern des Clusters von „Zertifikatfingerabdruck“ zu „Allgemeiner Name“
 Keine zwei Zertifikate können den gleichen Fingerabdruck haben, was ein Clusterzertifikatrollover oder die Verwaltung erschwert. Mehrere Zertifikate können jedoch den gleichen allgemeinen Namen oder den gleichen Antragsteller haben.  Durch den Wechsel von „Zertifikatfingerabdruck“ zu „Allgemeiner Name“ bei einem bereitgestellten Cluster wird die Zertifikatverwaltung vereinfacht. In diesem Artikel wird beschrieben, wie Sie einen aktuell ausgeführten Service Fabric-Cluster für die Verwendung des allgemeinen Namens (anstelle des Zertifikatfingerabdrucks) aktualisieren.
@@ -27,6 +27,9 @@ Keine zwei Zertifikate können den gleichen Fingerabdruck haben, was ein Cluster
 >[!NOTE]
 > Wenn in Ihrer Vorlage zwei Fingerabdrücke deklariert sind, müssen Sie zwei Bereitstellungen durchführen.  Die erste Bereitstellung muss abgeschlossen sein, bevor Sie die Schritte in diesem Artikel ausführen.  Die erste Bereitstellung legt Ihre **thumbprint**-Eigenschaft in der Vorlage auf das verwendete Zertifikat fest und entfernt die **thumbprintSecondary**-Eigenschaft.  Für die zweite Bereitstellung befolgen Sie die Schritte in diesem Artikel.
  
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="get-a-certificate"></a>Abrufen eines Zertifikats
 Fordern Sie zunächst ein Zertifikat von einer [Zertifizierungsstelle (CA)](https://wikipedia.org/wiki/Certificate_authority) an.  Der allgemeine Name des Zertifikats sollte der Hostname des Clusters sein.  Beispiel: "meinclustername.southcentralus.cloudapp.azure.com".  
 
@@ -44,7 +47,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser -Force
 $SubscriptionId  =  "<subscription ID>"
 
 # Sign in to your Azure account and select your subscription
-Login-AzureRmAccount -SubscriptionId $SubscriptionId
+Login-AzAccount -SubscriptionId $SubscriptionId
 
 $region = "southcentralus"
 $KeyVaultResourceGroupName  = "mykeyvaultgroup"
@@ -56,10 +59,10 @@ $VmssResourceGroupName     = "myclustergroup"
 $VmssName                  = "prnninnxj"
 
 # Create new Resource Group 
-New-AzureRmResourceGroup -Name $KeyVaultResourceGroupName -Location $region
+New-AzResourceGroup -Name $KeyVaultResourceGroupName -Location $region
 
 # Create the new key vault
-$newKeyVault = New-AzureRmKeyVault -VaultName $VaultName -ResourceGroupName $KeyVaultResourceGroupName `
+$newKeyVault = New-AzKeyVault -VaultName $VaultName -ResourceGroupName $KeyVaultResourceGroupName `
     -Location $region -EnabledForDeployment 
 $resourceId = $newKeyVault.ResourceId 
 
@@ -81,17 +84,17 @@ Write-Host "Common Name              :"  $CommName
 Set-StrictMode -Version 3
 $ErrorActionPreference = "Stop"
 
-$certConfig = New-AzureRmVmssVaultCertificateConfig -CertificateUrl $CertificateURL -CertificateStore "My"
+$certConfig = New-AzVmssVaultCertificateConfig -CertificateUrl $CertificateURL -CertificateStore "My"
 
 # Get current VM scale set 
-$vmss = Get-AzureRmVmss -ResourceGroupName $VmssResourceGroupName -VMScaleSetName $VmssName
+$vmss = Get-AzVmss -ResourceGroupName $VmssResourceGroupName -VMScaleSetName $VmssName
 
 # Add new secret to the VM scale set.
-$vmss = Add-AzureRmVmssSecret -VirtualMachineScaleSet $vmss -SourceVaultId $SourceVault `
+$vmss = Add-AzVmssSecret -VirtualMachineScaleSet $vmss -SourceVaultId $SourceVault `
     -VaultCertificate $certConfig
 
 # Update the VM scale set 
-Update-AzureRmVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
+Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Verbose `
     -Name $VmssName -VirtualMachineScaleSet $vmss 
 ```
 
@@ -193,13 +196,13 @@ Stellen Sie nach Abschluss der Änderungen die aktualisierte Vorlage erneut bere
 ```powershell
 $groupname = "sfclustertutorialgroup"
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName $groupname -Verbose `
+New-AzResourceGroupDeployment -ResourceGroupName $groupname -Verbose `
     -TemplateParameterFile "C:\temp\cluster\parameters.json" -TemplateFile "C:\temp\cluster\template.json" 
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über [Clustersicherheit](service-fabric-cluster-security.md).
 * Erfahren Sie, wie Sie einen [Rollover für ein Cluster-Zertifikat ausführen](service-fabric-cluster-rollover-cert-cn.md).
-* [Aktualisieren und Verwalten von Clusterzertifikaten](service-fabric-cluster-security-update-certs-azure.md)
+* [Verwalten von Clusterzertifikaten](service-fabric-cluster-security-update-certs-azure.md)
 
 [image1]: ./media/service-fabric-cluster-change-cert-thumbprint-to-cn/PortalViewTemplates.png

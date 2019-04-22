@@ -1,6 +1,6 @@
 ---
 title: Konfigurieren der automatischen Anmeldebeschleunigung für eine Anwendung mit einer Richtlinie für die Startbereichsermittlung | Microsoft Docs
-description: Dieser Artikel erläutert, was ein Azure AD-Mandant ist und wie Azure über Azure Active Directory verwaltet wird.
+description: Erfahren Sie, wie Sie eine Richtlinie für die Startbereichsermittlung für die Azure Active Directory-Authentifizierung für Verbundbenutzer konfigurieren, einschließlich automatischer Beschleunigung und Domänenhinweisen.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -11,19 +11,20 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/08/2018
+ms.date: 04/08/2019
 ms.author: celested
+ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 333258ef9696e6dbe4aab5b10e815bb84428d425
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d82ccf7c2983051597ff634117be81311c4c78a9
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190261"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360940"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurieren des Verhaltens der Azure Active Directory-Anmeldung für eine Anwendung mit einer Richtlinie für die Startbereichsermittlung (Home Realm Discovery, HDR)
 
-Das folgende Dokument enthält eine Einführung zum Konfigurieren des Azure Active Directory-Authentifizierungsverhaltens für Verbundbenutzer.   Es behandelt die Konfiguration der automatischen Beschleunigung und Authentifizierungseinschränkungen für Benutzer in Verbunddomänen.
+Dieser Artikel enthält eine Einführung zum Konfigurieren des Azure Active Directory-Authentifizierungsverhaltens für Verbundbenutzer. Es behandelt die Konfiguration der automatischen Beschleunigung und Authentifizierungseinschränkungen für Benutzer in Verbunddomänen.
 
 ## <a name="home-realm-discovery"></a>Startbereichsermittlung (Home Realm Discovery, HDR)
 Die Startbereichsermittlung (Home Realm Discovery, HDR) bezeichnet den Prozess, mit dem Azure Active Directory (Azure AD) ermitteln kann, wo sich ein Benutzer bei der Anmeldung authentifizieren muss.  Wenn sich ein Benutzer bei einem Azure AD-Mandanten oder auf der allgemeinen Anmeldeseite von Azure AD anmeldet, um auf eine Ressource zuzugreifen, gibt er einen Benutzernamen (UPN) ein. Azure AD verwendet diesen, um zu ermitteln, wo sich der Benutzer anmelden muss. 

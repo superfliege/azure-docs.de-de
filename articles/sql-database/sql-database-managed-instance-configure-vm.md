@@ -9,19 +9,19 @@ ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: carlrab, srbozovi, bonova
+ms.reviewer: sstein, carlrab, srbozovi, bonova
 manager: craigg
 ms.date: 02/18/2019
-ms.openlocfilehash: 9e1001816e9a4cf62d2e6c84c72aae84428148d0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 59088ad53e923f1303c0e800df9c25f70e63812f
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57997918"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360489"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Schnellstart: Konfigurieren einer Azure-VM für das Herstellen einer Verbindung mit einer verwalteten Azure SQL-Datenbank-Instanz
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie einen virtuellen Azure-Computer konfigurieren, um über SQL Server Management Studio (SSMS) eine Verbindung mit einer verwalteten Azure SQL-Datenbank-Instanz herzustellen. Eine Schnellstartanleitung, die zeigt, wie Sie von einem lokalen Clientcomputer über eine Point-to-Site-Verbindung eine Verbindung herstellen, finden Sie unter [Konfigurieren einer Point-to-Site-Verbindung](sql-database-managed-instance-configure-p2s.md). 
+In dieser Schnellstartanleitung erfahren Sie, wie Sie einen virtuellen Azure-Computer konfigurieren, um über SQL Server Management Studio (SSMS) eine Verbindung mit einer verwalteten Azure SQL-Datenbank-Instanz herzustellen. Eine Schnellstartanleitung, die zeigt, wie Sie von einem lokalen Clientcomputer über eine Point-to-Site-Verbindung eine Verbindung herstellen, finden Sie unter [Konfigurieren einer Point-to-Site-Verbindung](sql-database-managed-instance-configure-p2s.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,7 +33,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="create-a-new-subnet-in-the-managed-instance-vnet"></a>Erstellen eines neuen Subnetzes im VNET der verwalteten Instanz
 
-In den folgenden Schritten wird im VNET der verwalteten Instanz ein neues Subnetz erstellt, sodass ein virtueller Azure-Computer eine Verbindung mit der verwalteten Instanz herstellen kann. Das Subnetz der verwalteten Instanz ist für verwaltete Instanzen reserviert. In diesem Subnetz können keine anderen Ressourcen (beispielsweise virtuelle Azure-Computer) erstellt werden. 
+In den folgenden Schritten wird im VNET der verwalteten Instanz ein neues Subnetz erstellt, sodass ein virtueller Azure-Computer eine Verbindung mit der verwalteten Instanz herstellen kann. Das Subnetz der verwalteten Instanz ist für verwaltete Instanzen reserviert. In diesem Subnetz können keine anderen Ressourcen (beispielsweise virtuelle Azure-Computer) erstellt werden.
 
 1. Öffnen Sie die Ressourcengruppe für die verwaltete Instanz, die Sie in der Schnellstartanleitung [Erstellen einer verwalteten Instanz](sql-database-managed-instance-get-started.md) erstellt haben. Wählen Sie das virtuelle Netzwerk für Ihre verwaltete Instanz aus.
 
@@ -45,22 +45,22 @@ In den folgenden Schritten wird im VNET der verwalteten Instanz ein neues Subnet
 
 3. Füllen Sie das Formular mit den Angaben aus der folgenden Tabelle aus:
 
-   | Einstellung| Empfohlener Wert | Beschreibung |
-   | ---------------- | ----------------- | ----------- | 
-   | **Name** | Ein gültiger Name|Gültige Namen finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
+   | Einstellung| Empfohlener Wert | BESCHREIBUNG |
+   | ---------------- | ----------------- | ----------- |
+   | **NAME** | Ein gültiger Name|Gültige Namen finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
    | **Adressbereich (CIDR-Block)** | Ein gültiger Bereich | Der Standardwert reicht für diesen Schnellstart aus.|
    | **Netzwerksicherheitsgruppe** | Keine | Der Standardwert reicht für diesen Schnellstart aus.|
    | **Routingtabelle** | Keine | Der Standardwert reicht für diesen Schnellstart aus.|
    | **Dienstendpunkte** | 0 ausgewählt | Der Standardwert reicht für diesen Schnellstart aus.|
    | **Subnetzdelegierung** | Keine | Der Standardwert reicht für diesen Schnellstart aus.|
- 
+
    ![Neues Subnetz der verwalteten Instanz für die Client-VM](./media/sql-database-managed-instance-configure-vm/new-subnet.png)
 
 4. Wählen Sie **OK** aus, um dieses zusätzliche Subnetz im VNET der verwalteten Instanz zu erstellen.
 
 ## <a name="create-a-virtual-machine-in-the-new-subnet-in-the-vnet"></a>Erstellen eines virtuellen Computers im neuen Subnetz im VNET
 
-In den folgenden Schritten wird veranschaulicht, wie Sie einen virtuellen Computer im neuen Subnetz erstellen, um eine Verbindung mit der verwalteten Instanz herzustellen. 
+In den folgenden Schritten wird veranschaulicht, wie Sie einen virtuellen Computer im neuen Subnetz erstellen, um eine Verbindung mit der verwalteten Instanz herzustellen.
 
 ## <a name="prepare-the-azure-virtual-machine"></a>Vorbereiten des virtuellen Azure-Computers
 
@@ -78,16 +78,16 @@ Die einfachste Möglichkeit zum Erstellen eines virtuellen Clientcomputers mit a
    | ---------------- | ----------------- | ----------- |
    | **Abonnement** | Ein gültiges Abonnement | Hierbei muss es sich um ein Abonnement mit der Berechtigung zum Erstellen neuer Ressourcen handeln. |
    | **Ressourcengruppe** |Die Ressourcengruppe, die Sie im Schnellstart [Erstellen einer verwalteten Instanz](sql-database-managed-instance-get-started.md) angegeben haben.|In dieser Ressourcengruppe muss das VNET enthalten sein.|
-   | **Location** | Der Standort für die Ressourcengruppe | Dieser Wert wird basierend auf der ausgewählten Ressourcengruppe ausgefüllt. | 
+   | **Standort** | Der Standort für die Ressourcengruppe | Dieser Wert wird basierend auf der ausgewählten Ressourcengruppe ausgefüllt. |
    | **Name des virtuellen Computers**  | Ein gültiger Name | Gültige Namen finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
-   |**Benutzername des Administrators**|Ein beliebiger gültiger Benutzername|Gültige Namen finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Verwenden Sie nicht „serveradmin“. Hierbei handelt es sich um eine reservierte Rolle auf Serverebene.<br>Dieser Benutzername wird beim [Herstellen einer Verbindung mit dem virtuellen Computer](#connect-to-virtual-machine) verwendet.| 
+   |**Administratorbenutzername**|Ein beliebiger gültiger Benutzername|Gültige Namen finden Sie unter [Benennungskonventionen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Verwenden Sie nicht „serveradmin“. Hierbei handelt es sich um eine reservierte Rolle auf Serverebene.<br>Dieser Benutzername wird beim [Herstellen einer Verbindung mit dem virtuellen Computer](#connect-to-virtual-machine) verwendet.|
    |**Kennwort**|Ein gültiges Kennwort|Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm) erfüllen.<br>Dieses Kennwort wird beim [Herstellen einer Verbindung mit dem virtuellen Computer](#connect-to-virtual-machine) verwendet.|
-   | **Größe des virtuellen Computers** | Eine beliebige gültige Größe | Für diese Schnellstartanleitung ist der Standardwert der Vorlage (**Standard_B2s**) ausreichend. |
-   | **Location**|[resourceGroup().location].| Ändern Sie diesen Wert nicht. |
+   | **VM-Größe** | Eine beliebige gültige Größe | Für diese Schnellstartanleitung ist der Standardwert der Vorlage (**Standard_B2s**) ausreichend. |
+   | **Standort**|[resourceGroup().location].| Ändern Sie diesen Wert nicht. |
    | **Name des virtuellen Netzwerks**|Das virtuelle Netzwerk, in dem Sie die verwaltete Instanz erstellt haben.|
    | **Subnetzname**|Der Name des Subnetzes, das Sie im vorherigen Verfahren erstellt haben| Wählen Sie nicht das Subnetz aus, in dem Sie die verwaltete Instanz erstellt haben.|
-   | **Artefaktspeicherort** | [deployment().properties.templateLink.uri] | Ändern Sie diesen Wert nicht. |
-   | **SAS-Token des Artefaktspeicherorts** | Lassen Sie dieses Feld leer. | Ändern Sie diesen Wert nicht. |
+   | **artifacts Location („_artifacts“-Speicherort)** | [deployment().properties.templateLink.uri] | Ändern Sie diesen Wert nicht. |
+   | **artifacts Location Sas Token (SAS-Token für „_artifacts“-Speicherort)** | Lassen Sie dieses Feld leer. | Ändern Sie diesen Wert nicht. |
 
    ![Erstellen des virtuellen Clientcomputers](./media/sql-database-managed-instance-configure-vm/create-client-sql-vm.png)
 
@@ -108,31 +108,31 @@ In den folgenden Schritten wird veranschaulicht, wie Sie für Ihren neu erstellt
 
     ![VM](./media/sql-database-managed-instance-configure-vm/vm.png)  
 
-2. Wählen Sie **Verbinden**aus. 
-   
-   Eine Formular für eine RDP-Datei (Remotedesktopprotokoll) wird mit der öffentlichen IP-Adresse und der Portnummer für den virtuellen Computer angezeigt. 
+2. Wählen Sie **Verbinden**aus.
+
+   Eine Formular für eine RDP-Datei (Remotedesktopprotokoll) wird mit der öffentlichen IP-Adresse und der Portnummer für den virtuellen Computer angezeigt.
 
    ![RDP-Formular](./media/sql-database-managed-instance-configure-vm/rdp.png)  
 
 3. Wählen Sie **RDP-Datei herunterladen** aus.
- 
+
    > [!NOTE]
    > Sie können für die Verbindung mit Ihrem virtuellen Computer auch SSH verwenden.
 
 4. Schließen Sie das Formular **Mit virtuellem Computer verbinden**.
-5. Öffnen Sie die heruntergeladene RDP-Datei, um eine Verbindung mit Ihrem virtuellen Computer herzustellen. 
+5. Öffnen Sie die heruntergeladene RDP-Datei, um eine Verbindung mit Ihrem virtuellen Computer herzustellen.
 6. Wenn Sie dazu aufgefordert werden, wählen Sie **Connect** aus. Auf einem Macintosh benötigen Sie einen RDP-Client, z.B. diesen [Remotedesktopclient](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12) aus dem Mac App Store.
 
-6. Geben Sie den Benutzernamen und das Kennwort ein, den bzw. das Sie beim Erstellen des virtuellen Computers festgelegt haben, und wählen Sie anschließend **OK** aus.
+7. Geben Sie den Benutzernamen und das Kennwort ein, den bzw. das Sie beim Erstellen des virtuellen Computers festgelegt haben, und wählen Sie anschließend **OK** aus.
 
-7. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Wählen Sie **Ja** bzw. **Weiter** aus, um mit dem Herstellen der Verbindung fortzufahren.
+8. Während des Anmeldevorgangs wird unter Umständen eine Zertifikatwarnung angezeigt. Wählen Sie **Ja** bzw. **Weiter** aus, um mit dem Herstellen der Verbindung fortzufahren.
 
 Auf dem Server-Manager-Dashboard wird eine Verbindung mit Ihrem virtuellen Computer hergestellt.
 
 ## <a name="use-ssms-to-connect-to-the-managed-instance"></a>Verwenden von SSMS zum Verbinden mit der verwalteten Instanz
 
 1. Öffnen Sie SQL Server Management Studio (SSMS) auf dem virtuellen Computer.
- 
+
    Das Öffnen dauert einen Moment, da die Konfiguration bei diesem ersten Start von SSMS abgeschlossen wird.
 2. Geben Sie im Dialogfeld **Mit Server verbinden** den vollqualifizierten **Hostnamen** für Ihre verwaltete Instanz in das Feld **Servername** ein. Wählen Sie **SQL Server-Authentifizierung** aus, geben Sie Ihren Benutzernamen und Ihr Kennwort ein, und wählen Sie anschließend **Verbinden** aus.
 

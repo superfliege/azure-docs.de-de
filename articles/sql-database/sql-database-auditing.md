@@ -11,13 +11,13 @@ author: vainolo
 ms.author: arib
 ms.reviewer: vanto
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: a98ec18f2ed38b290d04c3fdc36d9a6ff80a675a
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.date: 04/08/2019
+ms.openlocfilehash: 9fac8291799216b4ca4527b482aefee169f7fc59
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407350"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361282"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Erste Schritte bei der Überwachung von SQL-Datenbank
 
@@ -25,7 +25,7 @@ Die Überwachung von Azure [SQL-Datenbank](sql-database-technical-overview.md) u
 
 - Sie kann Ihnen dabei helfen, die gesetzlichen Bestimmungen einzuhalten, die Datenbankaktivität zu verstehen und Einblicke in Abweichungen und Anomalien zu erhalten, die auf geschäftsspezifische Bedenken oder mutmaßliche Sicherheitsverstöße hinweisen können.
 
-- Sie ermöglicht und unterstützt die Einhaltung von Standards, garantiert diese aber nicht. Weitere Informationen zu Azure-Programmen, die die Einhaltung von Standards unterstützen, finden Sie im [Microsoft Azure-Vertrauenscenter](https://azure.microsoft.com/support/trust-center/compliance/).
+- Sie ermöglicht und unterstützt die Einhaltung von Standards, garantiert diese aber nicht. Weitere Informationen zu Azure-Programmen zur Unterstützung bei der Einhaltung von Standards finden Sie im [Azure Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942), wo die aktuelle Liste von Compliancezertifizierungen für SQL-Datenbank angezeigt wird.
 
 
 > [!NOTE] 
@@ -231,7 +231,7 @@ In einer Produktionsumgebung werden Sie Ihre Speicherschlüssel wahrscheinlich r
 
 - [Erstellen oder Aktualisieren der Datenbanküberwachungsrichtlinie (Set-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
 - [Erstellen oder Aktualisieren der Serverüberwachungsrichtlinie (Set-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)
-- [Abrufen der Datenbank-Blobüberwachungsrichtlinie (Get-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseauditing)
+- [Abrufen der Datenbanküberwachungsrichtlinie (Get-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseauditing)
 - [Abrufen der Serverüberwachungsrichtlinie (Get-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverauditing)
 
 Ein Skriptbeispiel finden Sie unter [Konfigurieren von Überwachung von SQL-Datenbank und Bedrohungserkennung mit PowerShell](scripts/sql-database-auditing-and-threat-detection-powershell.md).
@@ -240,25 +240,25 @@ Ein Skriptbeispiel finden Sie unter [Konfigurieren von Überwachung von SQL-Date
 
 **REST-API**:
 
-- [Erstellen oder Aktualisieren einer Richtlinie für die Überwachung von Datenbanken](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
-- [Erstellen oder Aktualisieren einer Richtlinie für die Überwachung von Servern](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [Abrufen einer Richtlinie für die Überwachung von Datenbanken](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
-- [Abrufen einer Richtlinie für die Überwachung von Servern](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [Erstellen oder Aktualisieren der Datenbanküberwachungsrichtlinie](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
+- [Erstellen oder Aktualisieren der Serverüberwachungsrichtlinie](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [Abrufen der Datenbanküberwachungsrichtlinie](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
+- [Abrufen der Serverüberwachungsrichtlinie](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 Erweiterte Richtlinie mit Unterstützung der WHERE-Klausel für zusätzliche Filterung:
 
 - [Erstellen oder Aktualisieren einer *erweiterten* Datenbanküberwachungsrichtlinie](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
 - [Erstellen oder Aktualisieren einer *erweiterten* Serverüberwachungsrichtlinie](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [Abrufen einer *erweiterten* Datenbanküberwachungsrichtlinie ](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
-- [Abrufen einer *erweiterten* Serverüberwachungsrichtlinie ](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [Abrufen einer *erweiterten* Datenbanküberwachungsrichtlinie](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
+- [Abrufen einer *erweiterten* Serverüberwachungsrichtlinie](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 ## <a id="subheading-10"></a>Verwalten der Überwachung von SQL-Datenbank mithilfe von ARM-Vorlagen
 
 Sie können die Überwachung von Azure SQL-Datenbank mithilfe von [Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) verwalten, wie die folgenden Beispiele zeigen:
 
-- [Bereitstellen von Azure SQL Server mit aktivierter Überwachung zum Schreiben von Überwachungsprotokollen in ein Azure Blob Storage-Konto](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage)
-- [Bereitstellen von Azure SQL Server mit aktivierter Überwachung zum Schreiben von Überwachungsprotokollen in Log Analytics](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
-- [Bereitstellen von Azure SQL Server mit aktivierter Überwachung zum Schreiben von Überwachungsprotokollen in Event Hubs](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub)
+- [Bereitstellen von Azure SQL Server mit aktivierter Überwachung zum Schreiben von Überwachungsprotokollen in ein Azure Blob Storage-Konto](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage)
+- [Bereitstellen von Azure SQL Server mit aktivierter Überwachung zum Schreiben von Überwachungsprotokollen in Log Analytics](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
+- [Bereitstellen von Azure SQL Server mit aktivierter Überwachung zum Schreiben von Überwachungsprotokollen in Event Hubs](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub)
 
 > [!NOTE]
 > Die verknüpften Beispiele befinden sich in einem externen öffentlichen Repository und werden wie besehen ohne Gewähr zur Verfügung gestellt und werden von keinem Microsoft-Supportprogramm/-dienst unterstützt.

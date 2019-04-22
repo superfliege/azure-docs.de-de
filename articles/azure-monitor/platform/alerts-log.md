@@ -1,5 +1,5 @@
 ---
-title: Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor
+title: Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor | Microsoft-Dokumentation
 description: Verwenden Sie Azure Monitor, um Protokollwarnungsregeln in Azure zu erstellen, anzuzeigen und zu verwalten.
 author: msvijayn
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: f26c8e670855513995463ffaaf7e49a8e00e35fa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d3285a6b2aa09dd78bbb63c384bd1f65c17034ff
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57873790"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006948"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor
 
@@ -23,10 +23,10 @@ In diesem Artikel wird erläutert, wie Sie im Azure-Portal mithilfe der Oberflä
 - Kriterien: Eine bestimmte Bedingung oder Logik, die beim Vorkommen in einem Signal eine Aktion auslösen soll
 - Aktion: Eine bestimmte Form der Kontaktaufnahme, die an einen Empfänger einer Benachrichtigung (z. B. E-Mail, SMS oder Webhook usw.) gesendet wird.
 
-Der Begriff **Protokollwarnungen** beschreibt Warnungen basierend auf [Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) oder [Application Insights](../../azure-monitor/app/analytics.md), bei denen das Signal eine benutzerdefinierte Abfrage darstellt. Erfahren Sie mehr über Funktionen, Terminologie und Typen von [Protokollwarnungen – Übersicht](../../azure-monitor/platform/alerts-unified-log.md).
+Der Begriff **Protokollwarnungen** beschreibt Warnungen, die von Protokollabfragen in einem [Log Analytics-Arbeitsbereich](../learn/tutorial-viewdata.md) oder in [Application Insights](../app/analytics.md) ausgelöst werden. Erfahren Sie mehr über Funktionen, Terminologie und Typen von [Protokollwarnungen – Übersicht](alerts-unified-log.md).
 
 > [!NOTE]
-> Gängige Protokolldaten aus [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) sind nun auch auf der Metrikplattform in Azure Monitor verfügbar. Eine Detailansicht finden Sie unter [Metrikwarnung für Protokolle](../../azure-monitor/platform/alerts-metric-logs.md).
+> In [Log Analytics-Arbeitsbereichen](../../azure-monitor/learn/tutorial-viewdata.md) beliebte Protokolldaten stehen nun ebenfalls auf der Metrikplattform in Azure Monitor zur Verfügung. Eine Detailansicht finden Sie unter [Metrikwarnung für Protokolle](alerts-metric-logs.md).
 
 ## <a name="managing-log-alerts-from-the-azure-portal"></a>Verwalten von Protokollwarnungen über das Azure-Portal
 
@@ -58,7 +58,7 @@ Als nächstes wird die schrittweise Anleitung zur Verwendung von Protokollwarnun
 
    > [!NOTE]
    > 
-   > Über die Listen von „Warnungen“ kann eine Analyseabfrage als Signaltyp **Protokoll (gespeicherte Abfrage)** importiert werden. Dies ist in der obigen Abbildung dargestellt. Benutzer können Ihre Abfrage so in Analytics verfeinern und zur zukünftigen Nutzung in Warnungen speichern. Weitere Informationen zum Speichern von Abfragen finden Sie unter [Suchen von Daten mit Protokollsuchen in Log Analytics](../../azure-monitor/log-query/log-query-overview.md) oder [Was ist Log Analytics?](../../azure-monitor/log-query/log-query-overview.md).
+   > Über die Listen von „Warnungen“ kann eine Analyseabfrage als Signaltyp **Protokoll (gespeicherte Abfrage)** importiert werden. Dies ist in der obigen Abbildung dargestellt. Benutzer können Ihre Abfrage so in Analytics verfeinern und zur zukünftigen Nutzung in Warnungen speichern. Weitere Informationen zum Speichern von Abfragen finden Sie unter [Analysieren von Protokolldaten in Azure Monitor](../log-query/log-query-overview.md) oder [Analysieren von Protokolldaten in Azure Monitor](../log-query/log-query-overview.md).
 
 1. *Protokollwarnungen*: Wenn Sie diese Option ausgewählt haben, können im Feld **Suchabfrage** Abfragen für Warnungen angegeben werden. Ist die Abfragesyntax falsch, wird eine Fehlermeldung in ROT angezeigt. Wenn die Abfragesyntax korrekt ist, werden für die angegebene Abfrage Referenzverlaufsdaten als Diagramm angezeigt. Dabei besteht die Möglichkeit, das Zeitfenster von den letzten sechs Stunden bis zur letzten Woche anzupassen.
 
@@ -119,19 +119,19 @@ Benutzer können ihre Analyseabfrage auch in [Logs Analytics](../log-query/porta
     > Protokollwarnungsregeln bestehen aus einer benutzerdefinierten, abfragebasierten Logik, die von Benutzern bereitgestellt wird und somit keinen aufgelösten Zustand aufweisen. Daher wird sie jedes Mal ausgelöst, wenn die in der Protokollwarnungsregel festgelegten Bedingungen erfüllt sind.
 
 1. Wählen Sie in der oberen Leiste die Schaltfläche **Regeln verwalten** aus, um zum Abschnitt „Regelverwaltung“ zu navigieren, wobei alle erstellten Warnungsregeln sowie deaktivierte Warnungen aufgeführt sind.
-    ![Verwalten von Warnungsregeln](media/alerts-log/manage-alert-rules.png)
+    ![ Verwalten von Warnungsregeln](media/alerts-log/manage-alert-rules.png)
 
 ## <a name="managing-log-alerts-using-azure-resource-template"></a>Verwalten von Protokollwarnungen mithilfe von Azure-Ressourcenvorlagen
 
 Protokollwarnungen in Azure Monitor sind dem Ressourcentyp `Microsoft.Insights/scheduledQueryRules/` zugeordnet. Weitere Informationen zu diesem Ressourcentyp finden Sie unter [Azure Monitor: Referenz für die Scheduled Query Rules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/). Protokollwarnungen für Application Insights oder Log Analytics können mithilfe der [Scheduled Query Rules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) erstellt werden.
 
 > [!NOTE]
-> Protokollwarnungen für Log Analytics können zudem über die [Legacywarnungs-API von Log Analytics](../../azure-monitor/platform/api-alerts.md) sowie über Legacyvorlagen von [gespeicherten Log Analytics-Suchen und -Warnungen](../../azure-monitor/insights/solutions-resources-searches-alerts.md) verwaltet werden. Weitere Informationen zur standardmäßigen Verwendung der hier beschriebenen neuen ScheduledQueryRules-API finden Sie unter [Wechseln zur neuen API für Log Analytics-Warnungen](alerts-log-api-switch.md).
+> Protokollwarnungen für Log Analytics können zudem über die [Legacywarnungs-API von Log Analytics](api-alerts.md) sowie über Legacyvorlagen von [gespeicherten Log Analytics-Suchen und -Warnungen](../insights/solutions-resources-searches-alerts.md) verwaltet werden. Weitere Informationen zur standardmäßigen Verwendung der hier beschriebenen neuen ScheduledQueryRules-API finden Sie unter [Wechseln zur neuen API für Log Analytics-Warnungen](alerts-log-api-switch.md).
 
 
 ### <a name="sample-log-alert-creation-using-azure-resource-template"></a>Beispiel für das Erstellen einer Protokollwarnung mithilfe einer Azure-Ressourcenvorlage
 
-Im Folgenden sehen Sie die Struktur für die auf der [Scheduled Query Rules-Erstellung](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) basierende Ressourcenvorlage mithilfe der Standardprotokollsuchabfrage [Anzahl der Ergebnistyp-Protokollwarnungen](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules) mit einem Stichprobendataset als Variablen.
+Im Folgenden sehen Sie die Struktur für die auf der [Scheduled Query Rules-Erstellung](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) basierende Ressourcenvorlage mithilfe der Standardprotokollsuchabfrage [Anzahl der Ergebnistyp-Protokollwarnungen](alerts-unified-log.md#number-of-results-alert-rules) mit einem Stichprobendataset als Variablen.
 
 ```json
 {
@@ -316,7 +316,7 @@ Azure Monitor – API für geplante Abfrageregeln](https://docs.microsoft.com/re
 
 
 > [!NOTE]
-> Protokollwarnungen für Log Analytics können zudem über die [Legacywarnungs-API von Log Analytics](../../azure-monitor/platform/api-alerts.md) sowie über Legacyvorlagen von [gespeicherten Log Analytics-Suchen und -Warnungen](../../azure-monitor/insights/solutions-resources-searches-alerts.md) verwaltet werden. Weitere Informationen zur standardmäßigen Verwendung der hier beschriebenen neuen ScheduledQueryRules-API finden Sie unter [Wechseln zur neuen API für Log Analytics-Warnungen](alerts-log-api-switch.md).
+> Protokollwarnungen für Log Analytics können zudem über die [Legacywarnungs-API von Log Analytics](api-alerts.md) sowie über Legacyvorlagen von [gespeicherten Log Analytics-Suchen und -Warnungen](../insights/solutions-resources-searches-alerts.md) verwaltet werden. Weitere Informationen zur standardmäßigen Verwendung der hier beschriebenen neuen ScheduledQueryRules-API finden Sie unter [Wechseln zur neuen API für Log Analytics-Warnungen](alerts-log-api-switch.md).
 
 Protokollwarnungen verfügen derzeit über keine dedizierten PowerShell- oder CLI-Befehle. Sie können jedoch wie nachfolgend veranschaulicht über das PowerShell-Cmdlet von Azure Resource Manager für die weiter oben im Abschnitt „Ressourcenvorlage“ dargestellte Ressourcenvorlage (sampleScheduledQueryRule.json) verwendet werden:
 
@@ -335,4 +335,4 @@ On successful operation, 201 will be returned to state new alert rule creation o
 * Learn about [Log Alerts in Azure Alerts](../../azure-monitor/platform/alerts-unified-log.md)
 * Understand [Webhook actions for log alerts](../../azure-monitor/platform/alerts-log-webhook.md)
 * Learn more about [Application Insights](../../azure-monitor/app/analytics.md)
-* Learn more about [Log Analytics](../../azure-monitor/log-query/log-query-overview.md).
+* Learn more about [log queries](../log-query/log-query-overview.md).

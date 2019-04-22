@@ -13,19 +13,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/15/2019
+ms.date: 04/08/2019
 ms.author: celested
 ms.reviewer: elisol, bryanla
-ms.custom: aaddev
+ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cda09a6b407621e595b0cb8ed9103b1fbbd5cc5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1b5ec950a91f3ed0099873e40c7235a9d59f0cb2
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58097956"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283578"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Gewusst wie: Auflisten Ihrer Anwendung zum Azure Active Directory-Anwendungskatalog
+
+In diesem Artikel wird erläutert, wie eine Anwendung im Azure AD-Anwendungskatalog aufgelistet wird, das einmalige Anmelden (Single Sign-On, SSO) implementiert und der Listeneintrag verwaltet wird.
 
 ## <a name="what-is-the-azure-ad-application-gallery"></a>Was ist der Azure AD-Anwendungskatalog?
 

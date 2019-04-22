@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
-ms.openlocfilehash: 4b5b7cf3a00e21b9904f72a98d5f24264bb0ecbc
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 544ef8947f3a593071cabea018c722db96ab1475
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484286"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266204"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
@@ -84,7 +84,12 @@ Wenn Sie die Konfiguration von einem anderen Bereitstellungsslot klonen, kann di
 * Überwachungs- und Diagnoseeinstellungen
 * Öffentliche Zertifikate
 * WebJobs-Inhalte
-* Hybridverbindungen
+* Hybridverbindungen *
+* VNET-Integration *
+* Dienstendpunkte *
+* Azure CDN *
+
+Features, die mit einem * markiert sind, sollen so konfiguriert werden, dass sie beim Slot verbleiben. 
 
 **Einstellungen, die nicht ausgetauscht werden**:
 
@@ -93,10 +98,15 @@ Wenn Sie die Konfiguration von einem anderen Bereitstellungsslot klonen, kann di
 * Private Zertifikate und SSL-Bindungen
 * Skalierungseinstellungen
 * WebJobs-Planer
+* IP-Einschränkungen
+* Always On
+* Protokolleinstellungen (HTTP**S**, TLS-Version, Clientzertifikate)
+* Einstellungen für das Diagnoseprotokoll
+* CORS
 
-<!-- VNET, IP restrictions, CORS, hybrid connections? -->
+<!-- VNET and hybrid connections not yet sticky to slot -->
 
-Wenn Sie eine App-Einstellung oder eine Verbindungszeichenfolge so konfigurieren möchten, dass sie bei einem bestimmten Slot verbleibt (also nicht ausgetauscht wird), navigieren Sie zur Seite **Anwendungseinstellungen** für den gewünschten Slot, und aktivieren Sie das Kontrollkästchen **Sloteinstellung** für die Konfigurationselemente, die bei dem Slot verbleiben sollten. Als slotspezifisch markierte Konfigurationselemente werden von App Service nicht ausgetauscht.
+Wenn Sie eine App-Einstellung oder eine Verbindungszeichenfolge so konfigurieren möchten, dass sie bei einem bestimmten Slot verbleibt (also nicht ausgetauscht wird), navigieren Sie zur Seite **Anwendungseinstellungen** für den gewünschten Slot, und aktivieren Sie das Kontrollkästchen **Sloteinstellung** für die Konfigurationselemente, die bei dem Slot verbleiben sollten. Als slotspezifisch markierte Konfigurationselemente werden von App Service nicht ausgetauscht. 
 
 ![Sloteinstellung](./media/web-sites-staged-publishing/SlotSetting.png)
 

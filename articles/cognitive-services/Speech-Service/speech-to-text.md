@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 6400e3d3fa7f0317ff927f2931e705365a450770
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 9e6bc1264e668ba5c6593ce36e721f54e685c391
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520665"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008491"
 ---
 # <a name="what-is-speech-to-text"></a>Was ist die Spracherkennung?
 
@@ -51,17 +51,17 @@ Wir stellen Schnellstartanleitungen für die gängigsten Programmiersprachen ber
 
 | Schnellstart | Plattform | API-Referenz |
 |------------|----------|---------------|
-| [C#, .NET Core](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-csharp-dotnetcore-windows) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C#, .NET Framework](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-csharp-dotnet-windows) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C#, UWP](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-csharp-uwp) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
-| [C++](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-cpp-windows) | Windows | [Browse](https://aka.ms/csspeech/cppref)|
-| [C++](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-cpp-linux) | Linux | [Browse](https://aka.ms/csspeech/cppref) |
-| [Java](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-java-android) | Android | [Browse](https://aka.ms/csspeech/javaref) |
-| [Java](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-java-jre) | Windows, Linux | [Browse](https://aka.ms/csspeech/javaref) |
-| [Javascript, Browser](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-js-browser) | Browser, Windows, Linux, macOS | [Browse](https://aka.ms/AA434tv) |
-| [Javascript, Node.js](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-js-node) | Windows, Linux, macOS | [Browse](https://aka.ms/AA434tv) |
-| [Objective-C](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-objectivec-ios) | iOS | [Browse](https://aka.ms/csspeech/objectivecref) |
-| [Python](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-python) | Windows, Linux, macOS | [Browse](https://aka.ms/AA434tr)  |
+| [C#, .NET Core](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-csharp-dotnetcore-windows) | Windows | [Durchsuchen](https://aka.ms/csspeech/csharpref) |
+| [C#, .NET Framework](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-csharp-dotnet-windows) | Windows | [Durchsuchen](https://aka.ms/csspeech/csharpref) |
+| [C#, UWP](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-csharp-uwp) | Windows | [Durchsuchen](https://aka.ms/csspeech/csharpref) |
+| [C++](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-cpp-windows) | Windows | [Durchsuchen](https://aka.ms/csspeech/cppref)|
+| [C++](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-cpp-linux) | Linux | [Durchsuchen](https://aka.ms/csspeech/cppref) |
+| [Java](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-java-android) | Android | [Durchsuchen](https://aka.ms/csspeech/javaref) |
+| [Java](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-java-jre) | Windows, Linux | [Durchsuchen](https://aka.ms/csspeech/javaref) |
+| [JavaScript, Browser](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-js-browser) | Browser, Windows, Linux, macOS | [Durchsuchen](https://aka.ms/AA434tv) |
+| [JavaScript, Node.js](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-js-node) | Windows, Linux, macOS | [Durchsuchen](https://aka.ms/AA434tv) |
+| [Objective-C](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-objectivec-ios) | iOS | [Durchsuchen](https://aka.ms/csspeech/objectivecref) |
+| [Python](https://docs.microsoft.com/azure/cognitive-services/speech-service/quickstart-python) | Windows, Linux, macOS | [Durchsuchen](https://aka.ms/AA434tr)  |
 
 Wenn Sie den Spracherkennungs-REST-Dienst verwenden möchten, finden Sie weitere Informationen unter [REST-APIs](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
 
@@ -73,8 +73,8 @@ Nachdem Sie Gelegenheit hatten, die Speech-Dienste zu verwenden, erfahren Sie in
 
 Beispielcode für das Speech SDK finden Sie auf GitHub. In den Beispielen werden gängige Szenarios wie etwa das Lesen von Audiodaten aus einer Datei oder einem Stream, die kontinuierliche und einmalige Erkennung oder die Verwendung benutzerdefinierter Modelle behandelt.
 
-* [Speech-to-text samples (SDK) (Spracherkennungsbeispiele (SDK))](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
-* [Batch transcription samples (REST) (Batchtranskriptionsbeispiele (REST))](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
+* [Speech-to-text samples (SDK) (Beispiele für die Spracherkennung (SDK))](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+* [Batch transcription samples (REST) (Beispiele für die Batchtranskription (REST))](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
 
 ## <a name="customization"></a>Anpassung
 
@@ -82,7 +82,7 @@ Die Speech-Dienste verwenden das Universal Language Model. Sie können aber auch
 
 | Modell | BESCHREIBUNG |
 |-------|-------------|
-| [Akustikmodell](how-to-customize-acoustic-models.md) | Wenn Sie ein benutzerdefiniertes Akustikmodell erstellen, ist dies besonders für Anwendungen, Tools oder Geräte hilfreich, die in speziellen Umgebungen (etwa in einem Auto oder in einer Produktionshalle) verwendet werden, in denen jeweils besondere Aufzeichnungsverhältnisse herrschen. Zu Beispielen zählen Sprechen mit Akzent, bestimmte Hintergrundgeräusche oder die Verwendung eines bestimmten Mikrofons für Aufzeichnungen. |
+| [Akustische Modell](how-to-customize-acoustic-models.md) | Wenn Sie ein benutzerdefiniertes Akustikmodell erstellen, ist dies besonders für Anwendungen, Tools oder Geräte hilfreich, die in speziellen Umgebungen (etwa in einem Auto oder in einer Produktionshalle) verwendet werden, in denen jeweils besondere Aufzeichnungsverhältnisse herrschen. Zu Beispielen zählen Sprechen mit Akzent, bestimmte Hintergrundgeräusche oder die Verwendung eines bestimmten Mikrofons für Aufzeichnungen. |
 | [Sprachmodell](how-to-customize-language-model.md) | Erstellen Sie ein benutzerdefiniertes Sprachmodell, um die Transkription spezifischen Vokabulars und spezifischer Grammatik (beispielsweise aus der Medizin- oder IT-Branche) zu verbessern. |
 | [Aussprachemodell](how-to-customize-pronunciation.md) | Durch ein benutzerdefiniertes Aussprachemodell können Sie die phonetische Form und Darstellung eines Worts oder Begriffs definieren. Dies ist für die Verarbeitung angepasster Benennungen wie Produktnamen oder Akronymen hilfreich. Erforderlich ist zu Beginn lediglich eine Aussprachedatei – eine einfache TXT-Datei. |
 
@@ -96,18 +96,18 @@ Die Speech-Dienste verwenden das Universal Language Model. Sie können aber auch
 
 Wenn Ihre Anwendungen, Tools oder Produkte die Bing-Spracheingabe-APIs oder Custom Speech verwenden, finden Sie in den nachfolgend aufgelisteten Leitfäden Informationen zur Migration zu den Speech-Diensten.
 
-* [Migrieren von der Bing-Spracheingabe zum Spracherkennungsdienst](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-bing-speech)
-* [Migrieren vom Custom Speech Service zum Speech-Dienst](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-custom-speech-service)
+* [Migrieren von der Bing-Spracheingabe zu den Spracherkennungsdiensten](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-bing-speech)
+* [Migrieren von Custom Speech zu den Spracherkennungsdiensten](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-custom-speech-service)
 
 ## <a name="reference-docs"></a>Referenz
 
-* [Speech SDK](speech-sdk-reference.md)
+* [Sprach-SDK](speech-sdk-reference.md)
 * [Speech-Geräte-SDK](speech-devices-sdk.md)
 * [REST-API: Spracherkennung](rest-speech-to-text.md)
-* [REST-API: Sprachsynthese](rest-text-to-speech.md)
-* [REST-API: Batchtranskription und Anpassung](https://westus.cris.ai/swagger/ui/index)
+* [REST-API: Text-zu-Sprache](rest-text-to-speech.md)
+* [REST-API: Batch transcription and customization (REST-API: Batch-Transkription und Anpassung)](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Beziehen eines kostenlosen Abonnementschlüssels für die Spracherkennungsdienste](get-started.md)
+* [Get a Speech Services subscription key for free (Kostenloses Testen der Spracherkennungsdienste)](get-started.md)
 * [Abrufen des Speech SDK](speech-sdk.md)

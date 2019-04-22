@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 3/7/2019
+ms.date: 4/4/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 063699f016c3e165dfb07d17c26e7f29a13c81f8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e709ccee9dfcc6b6931df86b5dd38c7255baefdb
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118611"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260764"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Versionshinweise zum Azure-Dateisynchronisierungs-Agent
 Mit der Azure-Dateisynchronisierung können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Ihre Windows Server-Installationen werden in einen schnellen Cache Ihrer Azure-Dateifreigabe transformiert. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen (z.B. SMB, NFS und FTPS). Sie können weltweit so viele Caches wie nötig nutzen.
@@ -25,7 +25,8 @@ Für den Azure-Dateisynchronisierungs-Agent werden die folgenden Versionen unter
 
 | Meilenstein | Agent-Versionsnummer | Herausgabedatum | Status |
 |----|----------------------|--------------|------------------|
-| Updaterollup von März 2019: [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 7. März 2019 | Unterstützt (empfohlene Version) |
+| Updaterollup von April 2019: [KB4481061](https://support.microsoft.com/help/4481061)| 5.2.0.0 | 4. April 2019 | Unterstützt (empfohlene Version) |
+| Updaterollup von März 2019: [KB4481060](https://support.microsoft.com/help/4481060)| 5.1.0.0 | 7. März 2019 | Unterstützt |
 | V5 Release – [KB4459989](https://support.microsoft.com/help/4459989)| 5.0.2.0 | 12. Februar 2019 | Unterstützt |
 | Updaterollup von Januar 2019: [KB4481059](https://support.microsoft.com/help/4481059)| 4.3.0.0 | 14. Januar 2019 | Unterstützt |
 | Updaterollup von Dezember 2018: [KB4459990](https://support.microsoft.com/help/4459990)| 4.2.0.0 | 10. Dezember 2018 | Unterstützt |
@@ -38,6 +39,13 @@ Für den Azure-Dateisynchronisierungs-Agent werden die folgenden Versionen unter
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Updaterichtlinie für den Azure-Dateisynchronisierungs-Agent
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-5200"></a>Agent-Version 5.2.0.0
+Die folgenden Versionshinweise gelten für Version 5.2.0.0 des Azure-Dateisynchronisierungs-Agents, die am 4. April 2019 veröffentlicht wurde. Diese Hinweise gelten zusätzlich zu den Versionshinweisen, die für Version 5.0.2.0 angegeben sind.
+
+Liste der in dieser Version behobenem Probleme:  
+- Verbesserte Zuverlässigkeit bei Features für Offlinedatenübertragung und Datenübertragungsfortsetzung
+- Verbesserungen bei den Synchronisierungstelemetriedaten
 
 ## <a name="agent-version-5100"></a>Agent-Version 5.1.0.0
 Die folgenden Versionshinweise gelten für Version 5.1.0.0 des Azure-Dateisynchronisierungs-Agents, die am 7. März 2019 veröffentlicht wurde. Diese Hinweise gelten zusätzlich zu den Versionshinweisen, die für Version 5.0.2.0 angegeben sind.

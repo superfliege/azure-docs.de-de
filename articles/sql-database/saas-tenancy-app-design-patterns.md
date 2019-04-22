@@ -4,7 +4,7 @@ description: Erfahren Sie mehr über die Anforderungen und allgemeinen Datenarch
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seoapril2019
 ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
@@ -12,18 +12,18 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: d55d8f8f945e30402cb772c7e26b234e3e460698
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 6332555c1a176a06004ddfeee513844ad5875c30
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217868"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260543"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Mandantenmuster für mehrinstanzenfähige SaaS-Datenbanken
 
-Wenn Sie eine mehrinstanzenfähige SaaS-Anwendung entwerfen, wählen Sie nach sorgfältiger Überlegung das Mandantenmodell aus, das den Anforderungen Ihrer Anwendung am besten gerecht wird.  Ein Mandantenmodell legt fest, wie die Daten eines jeden Mandanten dem Speicher zugeordnet werden.  Die Wahl des Mandantenmodells wirkt sich auf den Entwurf und die Verwaltung der Anwendung aus.  Ein späterer Wechsel zu einem anderen Modell kann sich mitunter als kostspielig erweisen.
+In diesem Artikel werden die verschiedenen Mandantenmodelle beschrieben, die für eine mehrinstanzenfähige SaaS-Anwendung verfügbar sind.
 
-Dieser Artikel beschreibt die alternativen Mandantenmodelle.
+Wenn Sie eine mehrinstanzenfähige SaaS-Anwendung entwerfen, wählen Sie nach sorgfältiger Überlegung das Mandantenmodell aus, das den Anforderungen Ihrer Anwendung am besten gerecht wird.  Ein Mandantenmodell legt fest, wie die Daten eines jeden Mandanten dem Speicher zugeordnet werden.  Die Wahl des Mandantenmodells wirkt sich auf den Entwurf und die Verwaltung der Anwendung aus.  Ein späterer Wechsel zu einem anderen Modell kann sich mitunter als kostspielig erweisen.
 
 ## <a name="a-saas-concepts-and-terminology"></a>A. SaaS-Konzepte und -Terminologie
 
@@ -71,7 +71,7 @@ Die Informationen zu Mandanten beziehen sich hauptsächlich auf die *Datenschich
 
 In diesem Modell wird die gesamte Anwendung mehrmals installiert, nämlich einmal pro Mandant.  Da jede Instanz der App eine eigenständige Instanz darstellt, interagiert sie nie mit einer anderen eigenständigen Instanz.  Jede App-Instanz umfasst nur einen Mandanten und erfordert daher nur eine Datenbank.  Die gesamte Datenbank ist somit ausschließlich für den jeweiligen Mandanten bestimmt.
 
-![Entwurf einer eigenständigen App mit einer Einzelinstanzdatenbank][image-standalone-app-st-db-111a]
+![Entwurf einer eigenständigen App mit einer Datenbank mit nur einem Mandanten.][image-standalone-app-st-db-111a]
 
 Jede App-Instanz wird in einer separaten Azure-Ressourcengruppe installiert.  Die Ressourcengruppe kann einem Abonnement zugeordnet sein, das dem Softwarehersteller oder Mandanten gehört.  In beiden Fällen kann der Hersteller die Software für den Mandanten verwalten.  Jede Anwendungsinstanz ist so konfiguriert, dass sie eine Verbindung mit der entsprechenden Datenbank herstellt.
 
@@ -146,7 +146,7 @@ Bei mehrinstanzenfähigen Datenbanken ist die Implementierung von Verwaltungsvor
 
 Die meisten SaaS-Anwendungen greifen auf die Daten von jeweils nur einem Mandanten zu.  Bei diesem Zugriffsmuster können Mandantendaten auf mehrere Datenbanken oder Shards aufgeteilt werden, wobei alle Daten eines beliebigen Mandanten in einem Shard enthalten sind.  In Kombination mit einem Muster einer mehrinstanzenfähigen Datenbank ermöglicht ein Modell in Shards eine nahezu unbegrenzte Skalierbarkeit.
 
-![Entwurf einer mehrinstanzenfähigen App mit mehrinstanzenfähigen Datenbanken mit Sharding][image-mt-app-sharded-mt-db-174s]
+![Entwurf einer mehrinstanzenfähigen App mit mehrinstanzenfähigen Sharddatenbanken][image-mt-app-sharded-mt-db-174s]
 
 #### <a name="manage-shards"></a>Verwalten von Shards
 

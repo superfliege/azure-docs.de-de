@@ -5,26 +5,25 @@ author: bolzmj
 ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/24/2019
-ms.openlocfilehash: b01238b0ebfe07b605824a75301165e477bd05e9
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.date: 04/05/2019
+ms.openlocfilehash: 0521283f917d05a56d26503dc6f0af349f1ac1e5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54910711"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260322"
 ---
 # <a name="azure-database-for-postgresql-advanced-threat-protection"></a>Azure Database for PostgreSQL – Advanced Threat Protection
 
 Advanced Threat Protection für Azure Database for PostgreSQL erkennt Anomalien bei Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Datenbanken zuzugreifen oder diese zu nutzen.
 
-Threat Protection ist Teil des Angebots „Advanced Threat Protection“ (ATP). Dabei handelt es sich um ein vereinheitlichtes Paket für erweiterte Sicherheitsfunktionen. Über das [Azure-Portal](https://portal.azure.com) können Sie auf den Dienst Advanced Threat Protection zugreifen und diesen verwalten. Er befindet sich derzeit in der Vorschauversion.
+> [!NOTE]
+> Advanced Threat Protection befindet sich in der Public Preview.
+
+Threat Protection ist Teil des Angebots „Advanced Threat Protection“ (ATP). Dabei handelt es sich um ein vereinheitlichtes Paket für erweiterte Sicherheitsfunktionen. Sie können über das [Azure-Portal](https://portal.azure.com) oder mithilfe der [REST-API](/rest/api/postgresql/serversecurityalertpolicies) auf den Advanced Threat Protection-Dienst zugreifen und diesen verwalten. Das Feature ist für universelle und arbeitsspeicheroptimierte Server verfügbar.
 
 > [!NOTE]
 > Das Advanced Threat Protection-Feature ist in den folgenden Azure Government- und Sovereign Cloud-Regionen **nicht** verfügbar: „US Gov Texas“, „US Gov Arizona“, „US Gov Iowa“, „US Gov Virginia“, „US DoD, Osten“, „US DoD, Mitte“, „Deutschland, Mitte“, „Deutschland, Norden“, „China, Osten“, „China, Osten 2“. Informationen zur allgemeinen Produktverfügbarkeit finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/).
->
-
-> [!NOTE]
-> Dieses Feature steht in allen Regionen von Azure zur Verfügung, in denen Azure Database for PostgreSQL für universelle und arbeitsspeicheroptimierte Server bereitgestellt wird.
 
 ## <a name="what-is-advanced-threat-protection"></a>Was ist Advanced Threat Protection?
 

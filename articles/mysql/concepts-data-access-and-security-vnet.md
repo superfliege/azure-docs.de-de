@@ -7,12 +7,12 @@ manager: jhubbard
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.openlocfilehash: aef55660d07c8923a82baf7f8b6320abf3ccdd1d
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 37cc8192cc5934cf967ad9b9c62614d0b4503fb4
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430215"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006600"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Verwenden von VNET-Dienstendpunkten und -Regeln für Azure Database for MySQL
 
@@ -108,6 +108,8 @@ Sie können mit der [rollenbasierten Zugriffssteuerung (RBAC)][rbac-what-is-813s
 
 Bei Azure Database for MySQL gelten für VNET-Regeln folgende Einschränkungen:
 
+- Eine Web-App kann einer privaten IP in einem VNET/Subnetz zugeordnet werden. Auch wenn Dienstendpunkte im entsprechenden VNET/Subnetz aktiviert sind, haben Verbindungen zwischen der Web-App und dem Server keine VNET-/Subnetzquelle, sondern eine öffentliche Azure-IP-Quelle. Um die Verbindung einer Web-App mit einem Server mit VNET-Firewallregeln zu ermöglichen, müssen Sie auf dem Server Azure-Diensten den Zugriff auf den Server erlauben.
+
 - In der Firewall für Azure Database for MySQL verweist jede VNET-Regel auf ein Subnetz. Alle diese Subnetze müssen in derselben geografischen Region gehostet werden wie Azure Database for MySQL.
 
 - Jeder Azure Database for MySQL-Server kann für ein beliebiges virtuelles Netzwerk maximal 128 Einträge in der Zugriffssteuerungsliste haben.
@@ -140,8 +142,8 @@ Verwenden Sie die Azure CLI oder das Azure-Portal, um das Flag **IgnoreMissingSe
 
 ## <a name="next-steps"></a>Nächste Schritte
 Hier finden Sie weitere Artikel zum Erstellen von VNET-Regeln:
-- [Erstellen und Verwalten von VNET-Regeln für Azure Database for MySQL über das Azure-Portal](howto-manage-vnet-using-portal.md)
-- [Erstellen und Verwalten von VNET-Regeln für Azure Database for MySQL über Azure CLI](howto-manage-vnet-using-cli.md)
+- [Erstellen und Verwalten von VNET-Dienstendpunkten und VNET-Regeln für Azure Database for MySQL mithilfe des Microsoft Azure-Portals](howto-manage-vnet-using-portal.md)
+- [Erstellen und Verwalten von VNET-Dienstendpunkten und -Regeln für Azure Database for MySQL mithilfe der Azure CLI](howto-manage-vnet-using-cli.md)
 
 <!-- Link references, to text, Within this same GitHub repo. -->
 [arm-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md

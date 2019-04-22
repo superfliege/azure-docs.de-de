@@ -13,28 +13,27 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 03/27/2019
 ms.author: asmalser-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31f10ba0c04ccbd9f52b95c43fea7cc551fe64ee
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: baac3ca65558f2a67a3aecabd4b253f23ea94ad9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888014"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261665"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von GitHub für die automatische Benutzerbereitstellung
 
-
-In diesem Tutorial werden die Schritte beschrieben, die Sie in GitHub und Azure AD ausführen müssen, um Benutzerkonten von Azure AD in GitHub automatisch bereitzustellen bzw. deren Bereitstellung automatisch aufzuheben. 
+In diesem Tutorial werden die Schritte beschrieben, die Sie in GitHub und Azure AD ausführen müssen, um Benutzerkonten von Azure AD in GitHub automatisch bereitzustellen bzw. deren Bereitstellung automatisch aufzuheben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
-*   Einen Azure Active Directory-Mandanten
-*   Eine in [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise) erstellte GitHub-Organisation (erfordert den [Abrechnungsplan für GitHub Enterprise](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)).
-*   Ein Benutzerkonto in GitHub mit Administratorberechtigungen für die Organisation
+* Einen Azure Active Directory-Mandanten
+* Eine in [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise) erstellte GitHub-Organisation (erfordert den [Abrechnungsplan für GitHub Enterprise](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)).
+* Ein Benutzerkonto in GitHub mit Administratorberechtigungen für die Organisation
 
 > [!NOTE]
 > Die Integration der Azure AD-Bereitstellung basiert auf der [GitHub-SCIM-API](https://developer.github.com/v3/scim/), die für [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise)-Kunden gemäß dem [GitHub Enterprise-Abrechnungsplan](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations) zur Verfügung steht.
@@ -49,21 +48,18 @@ Vor dem Konfigurieren und Aktivieren des Bereitstellungsdiensts müssen Sie ents
 
 ### <a name="important-tips-for-assigning-users-to-github"></a>Wichtige Tipps zum Zuweisen von Benutzern zu GitHub
 
-*   Es wird empfohlen, GitHub einen einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der Bereitstellung zu testen. Später können weitere Benutzer und/oder Gruppen zugewiesen werden.
+* Es wird empfohlen, GitHub einen einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der Bereitstellung zu testen. Später können weitere Benutzer und/oder Gruppen zugewiesen werden.
 
-*   Beim Zuweisen eines Benutzers zu GitHub müssen Sie entweder die Rolle **Benutzer** oder eine andere gültige anwendungsspezifische Rolle (sofern verfügbar) im Dialogfeld für die Zuweisung auswählen. Die Rolle **Standardzugriff** funktioniert nicht für die Bereitstellung. Diese Benutzer werden übersprungen.
+* Beim Zuweisen eines Benutzers zu GitHub müssen Sie entweder die Rolle **Benutzer** oder eine andere gültige anwendungsspezifische Rolle (sofern verfügbar) im Dialogfeld für die Zuweisung auswählen. Die Rolle **Standardzugriff** funktioniert nicht für die Bereitstellung. Diese Benutzer werden übersprungen.
 
-
-## <a name="configuring-user-provisioning-to-github"></a>Konfigurieren der Benutzerbereitstellung in GitHub 
+## <a name="configuring-user-provisioning-to-github"></a>Konfigurieren der Benutzerbereitstellung in GitHub
 
 In diesem Abschnitt wird das Herstellen einer Verbindung von Azure AD mit der GitHub-API zur Bereitstellung von Benutzerkonten sowie das Konfigurieren des Bereitstellungsdiensts für das Erstellen, Aktualisieren und Deaktivieren zugewiesener Benutzerkonten in GitHub basierend auf der Benutzer- und Gruppenzuweisung in Azure AD beschrieben.
 
 > [!TIP]
 > Sie können auch das SAML-basierte einmalige Anmelden für GitHub aktivieren. Befolgen Sie hierzu die Anweisungen im [Azure-Portal](https://portal.azure.com). Einmaliges Anmelden kann unabhängig von der automatischen Bereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
 
-
 ### <a name="configure-automatic-user-account-provisioning-to-github-in-azure-ad"></a>Konfigurieren der automatischen Bereitstellung von Benutzerkonten für GitHub in Azure AD
-
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory > Unternehmens-Apps > Alle Anwendungen**.
 
@@ -87,7 +83,7 @@ In diesem Abschnitt wird das Herstellen einer Verbindung von Azure AD mit der Gi
 
 8. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen „Bei Fehler E-Mail-Benachrichtigung senden“.
 
-9. Klicken Sie auf **Speichern**. 
+9. Klicken Sie auf **Speichern**.
 
 10. Wählen Sie im Abschnitt „Zuordnungen“ die Option **Azure Active Directory-Benutzer mit GitHub synchronisieren**.
 
@@ -95,12 +91,11 @@ In diesem Abschnitt wird das Herstellen einer Verbindung von Azure AD mit der Gi
 
 12. Um den Azure AD-Bereitstellungsdienst für GitHub zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
 
-13. Klicken Sie auf **Speichern**. 
+13. Klicken Sie auf **Speichern**.
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die GitHub im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Protokollen zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst ausgeführt werden.
 
 Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
-
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
@@ -109,4 +104,4 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../manage-apps/check-status-user-account-provisioning.md)
+* [Tutorial: Berichterstellung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md)

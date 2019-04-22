@@ -8,25 +8,24 @@ writer: zhchia
 manager: beatrizd
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/12/2018
+ms.date: 03/27/2019
 ms.author: v-wingf
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fd7145be5f82a90acced0f02e35f6c8880dbcad
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 77dab6ad0480bc1565c219766d17211995dcfc20
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58120396"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278411"
 ---
 # <a name="tutorial-configure-cisco-spark-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Cisco Spark für die automatische Benutzerbereitstellung
 
-
 In diesem Tutorial werden die Schritte erläutert, die in Cisco Spark und Azure Active Directory (Azure AD) ausgeführt werden müssen, um Azure AD für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzern in Cisco Spark zu konfigurieren.
-
 
 > [!NOTE]
 > In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md).
@@ -35,40 +34,34 @@ In diesem Tutorial werden die Schritte erläutert, die in Cisco Spark und Azure 
 
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
-*   Einen Azure AD-Mandanten
-*   Einen Cisco Spark-Mandanten
-*   Ein Benutzerkonto in Cisco Spark mit Administratorrechten
-
+* Einen Azure AD-Mandanten
+* Einen Cisco Spark-Mandanten
+* Ein Benutzerkonto in Cisco Spark mit Administratorrechten
 
 > [!NOTE]
 > Die Azure AD-Bereitstellungsintegration basiert auf dem [Cisco Spark-Webdienst](https://developer.webex.com/getting-started.html), der für Cisco Spark-Teams verfügbar ist.
 
 ## <a name="adding-cisco-spark-from-the-gallery"></a>Hinzufügen von Cisco Spark aus dem Katalog
+
 Bevor Sie Cisco Spark für die automatische Benutzerbereitstellung mit Azure AD konfigurieren, müssen Sie Cisco Spark aus dem Azure AD-Anwendungskatalog der Liste der verwalteten SaaS-Anwendungen hinzufügen.
 
 **Führen Sie zum Hinzufügen von Cisco Spark aus dem Azure AD-Anwendungskatalog die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
-    ![Schaltfläche „Azure Active Directory“][1]
+    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** > **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 
-    ![Der Abschnitt „Unternehmensanwendungen“][2]
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um Cisco Spark hinzuzufügen.
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-    ![Schaltfläche „Neue Anwendung“][3]
+    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld den Suchbegriff **Cisco Spark** ein.
+4. Geben Sie im Suchfeld **Cisco Spark** ein, wählen Sie im Ergebnisbereich **Cisco Spark** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-    ![Cisco Spark-Bereitstellung](./media/cisco-spark-provisioning-tutorial/AppSearch.png)
-
-5. Wählen Sie im Ergebnisbereich **Cisco Spark** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um Cisco Spark der Liste der SaaS-Anwendungen hinzuzufügen.
-
-    ![Cisco Spark-Bereitstellung](./media/cisco-spark-provisioning-tutorial/AppSearchResults.png)
-
-    ![Cisco Spark-Bereitstellung](./media/cisco-spark-provisioning-tutorial/AppCreation.png)
+    ![Cisco Spark in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="assigning-users-to-cisco-spark"></a>Zuweisen von Benutzern zu Cisco Spark
 
@@ -76,27 +69,27 @@ Azure Active Directory ermittelt anhand von Zuweisungen, welche Benutzer Zugriff
 
 Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung müssen Sie entscheiden, welche Benutzer in Azure AD Zugriff auf Cisco Spark benötigen. Anschließend können Sie diese Benutzer Cisco Spark zuweisen, indem Sie diese Anweisungen befolgen:
 
-*   [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../manage-apps/assign-user-or-group-access-portal.md)
+* [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-cisco-spark"></a>Wichtige Tipps zum Zuweisen von Benutzern zu Cisco Spark
 
-*   Es wird empfohlen, Cisco Spark einen einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der automatischen Benutzerbereitstellung zu testen. Später können weitere Benutzer zugewiesen werden.
+* Es wird empfohlen, Cisco Spark einen einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der automatischen Benutzerbereitstellung zu testen. Später können weitere Benutzer zugewiesen werden.
 
-*   Beim Zuweisen eines Benutzers zu Cisco Spark müssen Sie eine gültige anwendungsspezifische Rolle (sofern verfügbar) im Dialogfeld für die Zuweisung auswählen. Benutzer mit der Rolle **Standardzugriff** werden von der Bereitstellung ausgeschlossen.
+* Beim Zuweisen eines Benutzers zu Cisco Spark müssen Sie eine gültige anwendungsspezifische Rolle (sofern verfügbar) im Dialogfeld für die Zuweisung auswählen. Benutzer mit der Rolle **Standardzugriff** werden von der Bereitstellung ausgeschlossen.
 
 ## <a name="configuring-automatic-user-provisioning-to-cisco-spark"></a>Konfigurieren der automatischen Benutzerbereitstellung für Cisco Spark
 
 In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitstellungsdiensts für das Erstellen, Aktualisieren und Deaktivieren von Benutzern in Cisco Spark auf der Grundlage von Benutzerzuweisungen in Azure AD erläutert.
 
-
 ### <a name="to-configure-automatic-user-provisioning-for-cisco-spark-in-azure-ad"></a>So konfigurieren Sie die automatische Benutzerbereitstellung für Cisco Spark in Azure AD
 
+1. Melden Sie sich im [Azure-Portal](https://portal.azure.com) an, und wählen Sie **Unternehmensanwendungen**, **Alle Anwendungen** und dann **Cisco Spark** aus.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu **Azure Active Directory > Unternehmensanwendungen > Alle Anwendungen**.
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-2. Wählen Sie Cisco Spark in der Liste der SaaS-Anwendungen aus.
+2. Wählen Sie in der Anwendungsliste **Cisco Spark**aus.
 
-    ![Cisco Spark-Bereitstellung](./media/cisco-spark-provisioning-tutorial/Successcenter2.png)
+    ![Cisco Spark-Link in der Anwendungsliste](common/all-applications.png)
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
@@ -108,19 +101,27 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die Werte für **Mandanten-URL** und **Geheimes Token** Ihres Cisco Spark-Kontos ein.
 
-    *   Tragen Sie in das Feld **Mandanten-URL** die Cisco Spark-SCIM-API-URL für Ihren Mandanten ein, die die Form `https://api.ciscospark.com/v1/scim/[Tenant ID]/` hat, wobei `[Tenant ID]` wie in Schritt 6 beschrieben eine alphanumerische Zeichenfolge ist.
+    ![Cisco Spark-Bereitstellung](./media/cisco-spark-provisioning-tutorial/secrettoken1.png)
 
-    *   Geben Sie im Feld **Geheimes Token** das geheime Token wie in Schritt 6 beschrieben ein.
+    * Tragen Sie in das Feld **Mandanten-URL** die Cisco Spark-SCIM-API-URL für Ihren Mandanten ein, die die Form `https://api.ciscospark.com/v1/scim/[Tenant ID]/` hat, wobei `[Tenant ID]` wie in Schritt 6 beschrieben eine alphanumerische Zeichenfolge ist.
 
-1. Um **Mandanten-ID** und **Geheimes Token** für Ihr Cisco Spark-Konto zu ermitteln, melden Sie sich mit Ihrem Administratorkonto bei der [Cisco Spark-Entwicklerwebsite](https://developer.webex.com/) an. Sobald Sie angemeldet sind:
+    * Geben Sie im Feld **Geheimes Token** das geheime Token wie in Schritt 6 beschrieben ein.
+
+6. Um **Mandanten-ID** und **Geheimes Token** für Ihr Cisco Spark-Konto zu ermitteln, melden Sie sich mit Ihrem Administratorkonto bei der [Cisco Spark-Entwicklerwebsite](https://developer.webex.com/) an. Sobald Sie angemeldet sind:
+
    * Gehen Sie zur Seite [Getting Started (Erste Schritte)](https://developer.webex.com/getting-started.html).
-   * Scrollen Sie nach unten zum Abschnitt [Authentication (Authentifizierung)](https://developer.webex.com/getting-started.html#authentication)
-     ![Cisco Spark Authentication Token (Cisco Spark-Authentifizierungstoken)](./media/cisco-spark-provisioning-tutorial/SecretToken.png).
+
+   * Scrollen Sie nach unten bis zum [Abschnitt „Authentifizierung“](https://developer.webex.com/getting-started.html#authentication).
+  
+    ![Screenshot: Cisco Spark-Authentifizierungstoken](./media/cisco-spark-provisioning-tutorial/SecretToken.png)
+
    * Die alphanumerische Zeichenfolge im Feld ist Ihr **Geheimes Token**. Kopieren Sie dieses Token in die Zwischenablage.
+
    * Wechseln Sie zu der Seite [Get My Own Details (Meine eigenen Details abrufen)](https://developer.webex.com/endpoint-people-me-get.html).
        * Stellen Sie sicher, dass der Testmodus auf „ON“ (EIN) festgelegt ist.
        * Geben Sie das Wort „Bearer“ gefolgt von einem Leerzeichen ein, und fügen Sie das geheime Token in das Feld „Authorization“ (Autorisierung) ein. ![Cisco Spark-Authentifizierungstoken](./media/cisco-spark-provisioning-tutorial/GetMyDetails.png)
        * Klicken Sie auf „Run“ (Ausführen).
+
    * Im Antworttext auf der rechten Seite wird die **Mandanten-ID** als „orgId“ angezeigt:
 
      ```json
@@ -136,7 +137,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
      }
      ```
 
-1. Klicken Sie nach dem Ausfüllen der in Schritt 5 gezeigten Felder auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Cisco Spark herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr Cisco Spark-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+7. Klicken Sie nach dem Ausfüllen der in Schritt 5 gezeigten Felder auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Cisco Spark herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr Cisco Spark-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
     ![Cisco Spark-Bereitstellung](./media/cisco-spark-provisioning-tutorial/TestConnection.png)
 
@@ -168,7 +169,6 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Cisco Spark-Bereitstellung](./media/cisco-spark-provisioning-tutorial/Save.png)
 
-
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Berichten zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst in Cisco Spark ausgeführt werden.
 
 Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
@@ -182,10 +182,9 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 * [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../manage-apps/check-status-user-account-provisioning.md)
+* [Tutorial: Berichterstellung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/cisco-spark-provisioning-tutorial/tutorial_general_01.png

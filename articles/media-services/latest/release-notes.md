@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 04/04/2019
 ms.author: juliako
-ms.openlocfilehash: a6746fa193331aff66b8726da1cb3afe49fdc9bf
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: de5432c4e04fb0cfaf0517426fe9ee9da2a57b37
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351545"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266986"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Versionshinweise zu Azure Media Services v3
 
@@ -37,6 +37,8 @@ Weitere Informationen finden Sie unter [Hinweise zur Migration von Media Service
 ## <a name="march-2019"></a>März 2019
 
 Die dynamische Paketerstellung unterstützt jetzt Dolby Atmos. Weitere Informationen finden Sie unter [Von der dynamischen Paketerstellung unterstützte Audiocodecs](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging).
+
+Sie können nun eine Liste von Medienobjekt- oder Kontenfiltern angeben, die für Ihren Streaminglocator gelten würden. Weitere Informationen finden Sie unter [Zuordnen von Filtern mit Streaminglocator](filters-concept.md#associate-filters-with-streaming-locator).
 
 ## <a name="february-2019"></a>Februar 2019
 
@@ -83,31 +85,31 @@ Das CLI 2.0-Modul ist ab sofort für [Azure Media Services v3 (allgemein verfüg
 
 #### <a name="asset-commands"></a>Assetbefehle
 
-- Die Argumente ```--storage-account``` und ```--container``` wurden hinzugefügt.
+- ```--storage-account``` und ```--container``` wurden als Argumente hinzugefügt.
 - Standardwerte für Ablaufzeit (aktueller Zeitpunkt + 23 Std.) und Berechtigungen (Lesen) im Befehl ```az ams asset get-sas-url``` wurden hinzugefügt.
 
 #### <a name="job-commands"></a>Auftragsbefehle
 
-- Die Argumente ```--correlation-data``` und ```--label``` wurden hinzugefügt.
+- ```--correlation-data``` und ```--label``` wurden als Argumente hinzugefügt.
 - ```--output-asset-names``` wurde in ```--output-assets``` umbenannt. Ab sofort wird eine durch Leerzeichen getrennte Ressourcenliste im Format „assetName=Bezeichnung“ akzeptiert. Assets ohne Bezeichnung können wie folgt gesendet werden: „assetName=“.
 
 #### <a name="streaming-locator-commands"></a>streaming locator-Befehle
 
-- Der Basisbefehl ```az ams streaming locator``` wurde durch ```az ams streaming-locator``` ersetzt.
-- Die Argumente ```--streaming-locator-id``` und ```--alternative-media-id support``` wurden hinzugefügt.
-- Das Argument ```--content-keys argument``` wurde aktualisiert.
+- ```az ams streaming locator``` wurde als Basisbefehl durch ```az ams streaming-locator``` ersetzt.
+- ```--streaming-locator-id``` und ```--alternative-media-id support``` wurden als Argumente hinzugefügt.
+- ```--content-keys argument``` -Argument wurde aktualisiert.
 - ```--content-policy-name``` wurde in ```--content-key-policy-name``` umbenannt.
 
 #### <a name="streaming-policy-commands"></a>streaming policy-Richtlinien
 
-- Der Basisbefehl ```az ams streaming policy``` wurde durch ```az ams streaming-policy``` ersetzt.
+- ```az ams streaming policy``` wurde als Basisbefehl durch ```az ams streaming-policy``` ersetzt.
 - Unterstützung für Verschlüsselungsparameter für ```az ams streaming-policy create``` wurde hinzugefügt.
 
 #### <a name="transform-commands"></a>transform-Befehle
 
-- Das Argument ```--preset-names``` wurde durch ```--preset``` ersetzt. Ab sofort kann nur noch eine einzelne Ausgabe/Voreinstellung festgelegt werden. (Wenn Sie weitere hinzufügen möchten, müssen Sie ```az ams transform output add``` ausführen.) Darüber hinaus können Sie eine benutzerdefinierte Voreinstellung für den Standard-Encoder (StandardEncoderPreset) festlegen, indem Sie den Pfad an Ihr benutzerdefiniertes JSON-Objekt übergeben.
-- Für ```az ams transform output remove``` kann der zu entfernende Ausgabeindex übergeben werden.
-- Die Argumente ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` wurden in ```az ams transform create``` und den Befehlen ```az ams transform output add``` hinzugefügt.
+- ```--preset-names``` wurde als Argument durch ```--preset``` ersetzt. Ab sofort kann nur noch eine einzelne Ausgabe/Voreinstellung festgelegt werden. (Wenn Sie weitere hinzufügen möchten, müssen Sie ```az ams transform output add``` ausführen.) Darüber hinaus können Sie eine benutzerdefinierte Voreinstellung für den Standard-Encoder (StandardEncoderPreset) festlegen, indem Sie den Pfad an Ihr benutzerdefiniertes JSON-Objekt übergeben.
+- ```az ams transform output remove``` kann ausgeführt werden, indem der zu entfernende Ausgabeindex übergeben wird.
+- ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` wurden als Argumente in den Befehlen ```az ams transform create``` und ```az ams transform output add``` hinzugefügt.
 
 ## <a name="october-2018---ga"></a>Oktober 2018 – Allgemeine Verfügbarkeit (GA)
 

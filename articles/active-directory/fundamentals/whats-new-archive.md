@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50b49ce05eb3309f5b21761dc55ab17a1a18f7cc
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f6fe7b2cefdd29f0497bbc18e969a77ac295ba42
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670930"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051953"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiv für Neuerungen in Azure Active Directory
 
@@ -246,9 +246,9 @@ Azure AD ermöglicht Ihnen das automatisierte Erstellen, Warten und Entfernen vo
 
 - [Cisco Spark](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-spark-provisioning-tutorial)
 
-- [Cisco Webex](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-webex-provisioning-tutorial)
+- [Cisco WebEx](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-webex-provisioning-tutorial)
 
-- [Bonusly](https://docs.microsoft.com/azure/active-directory/saas-apps/bonusly-provisioning-tutorial)
+- [Bonus.ly](https://docs.microsoft.com/azure/active-directory/saas-apps/bonusly-provisioning-tutorial)
 
 Eine Liste mit allen Anwendungen, für die die Benutzerbereitstellung im Azure AD-Katalog unterstützt wird, finden Sie unter [SaaS-Anwendungsintegration mit Azure Active Directory](https://aka.ms/appstutorial).
 
@@ -308,7 +308,7 @@ Weitere Informationen zu diesem Update finden Sie unter [Azure AD Connect: Verla
 
 Wir aktualisieren die Zustimmungszeichenfolge in der Endbenutzeroberfläche der ToU.
 
-**Aktueller Text.** Für den Zugriff auf die [Mandantenname]-Ressourcen müssen Sie die Nutzungsbedingungen lesen.<br>**Neuer Text.** Für den Zugriff auf die [Mandantenname]-Ressource müssen Sie die Nutzungsbedingungen lesen.
+**Aktueller Text:** Für den Zugriff auf die [Mandantenname]-Ressourcen müssen Sie die Nutzungsbedingungen lesen.<br>**Neuer Text:** Für den Zugriff auf die [Mandantenname]-Ressource müssen Sie die Nutzungsbedingungen lesen.
 
 **Aktueller Text:** Wenn Sie „Akzeptieren“ auswählen, bedeutet dies, dass Sie allen oben aufgeführten Nutzungsbedingungen zustimmen.<br>**Neuer Text:** Klicken Sie auf „Akzeptieren“, um zu bestätigen, dass Sie die Nutzungsbedingungen gelesen und verstanden haben.
 
@@ -466,7 +466,7 @@ Weitere Informationen zum Kennwortschutz für Azure AD finden Sie unter [Beseiti
 
 Während der Erstellung der Nutzungsbedingungen wird eine neue Vorlage für eine Richtlinie für bedingten Zugriff auch für „Alle Gäste“ und „Alle Apps“ erstellt. Diese neue Richtlinienvorlage wendet die neu erstellten Nutzungsbedingungen an und optimiert den Erstellungs- und Erzwingungsprozess für Gäste.
 
-Weitere Informationen finden Sie unter [Nutzungsbedingungsfeature für Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-tou).
+Weitere Informationen finden Sie unter [Nutzungsbedingungsfeature für Azure Active Directory](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
 
 ---
 
@@ -478,7 +478,7 @@ Weitere Informationen finden Sie unter [Nutzungsbedingungsfeature für Azure Act
 
 Während der Erstellung der Nutzungsbedingungen wird auch eine neue „benutzerdefinierte“ Vorlage für eine Richtlinie für bedingten Zugriff erstellt. Mit dieser neuen Richtlinienvorlage können Sie die Nutzungsbedingungen erstellen und dann sofort zum Blatt für die Erstellung von Richtlinien mit bedingtem Zugriff wechseln, ohne manuell durch das Portal navigieren zu müssen.
 
-Weitere Informationen finden Sie unter [Nutzungsbedingungsfeature für Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-tou).
+Weitere Informationen finden Sie unter [Nutzungsbedingungsfeature für Azure Active Directory](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
 
 ---
 
@@ -590,7 +590,7 @@ Azure AD ermöglicht Ihnen das automatisierte Erstellen, Warten und Entfernen vo
 
 - [BlueJeans](https://docs.microsoft.com/azure/active-directory/active-directory-saas-bluejeans-provisioning-tutorial)
 
-- [Cornerstone OnDemand](https://docs.microsoft.com/azure/active-directory/active-directory-saas-cornerstone-ondemand-provisioning-tutorial)
+- [cornerstone ondemand](https://docs.microsoft.com/azure/active-directory/active-directory-saas-cornerstone-ondemand-provisioning-tutorial)
 
 - [Zendesk](https://docs.microsoft.com/azure/active-directory/active-directory-saas-zendesk-provisioning-tutorial)
 
@@ -739,7 +739,7 @@ Weitere Informationen finden Sie unter
  
 Administratoren können jetzt bestimmte Nutzungsbedingungen auswählen und alle Benutzer anzeigen, die diesen Nutzungsbedingungen zugestimmt haben, sowie Datum/Uhrzeit der Zustimmung.
 
-Weitere Informationen finden Sie unter [Nutzungsbedingungsfeature für Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-tou).
+Weitere Informationen finden Sie unter [Nutzungsbedingungsfeature für Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
 
 ---
  
@@ -782,7 +782,7 @@ Weitere Informationen finden Sie unter [Konfigurieren des einmaligen Anmeldens f
 
 Azure AD-Nutzungsbedingungen wurden von „Public Preview“ in „Allgemein verfügbar“ geändert.
 
-Weitere Informationen finden Sie unter [Nutzungsbedingungsfeature für Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-tou).
+Weitere Informationen finden Sie unter [Nutzungsbedingungsfeature für Azure AD](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
 
 ---
 
@@ -906,7 +906,7 @@ Weitere Informationen finden Sie unter [Was ist die Azure AD B2B-Zusammenarbeit
 **Dienstkategorie:** Bedingter Zugriff  
 **Produktfunktion:** Identitätssicherheit und -schutz
  
-**Jetzt in der Public Preview!**
+**Jetzt in der öffentlichen Vorschauversion!**
 
 **Intune Managed Browser – SSO:** Ihre Mitarbeiter können einmaliges Anmelden übergreifend für native Clients (wie Microsoft Outlook) und Intune Managed Browser für alle mit Azure AD verbundenen Apps verwenden.
 
@@ -916,9 +916,9 @@ Weitere Informationen hierzu finden Sie in unserem [Blogbeitrag](https://cloudbl
 
 Weitere Informationen finden Sie unter
 
-- [App-basierter bedingter Zugriff mit Azure Active Directory](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
+- [Einrichten des app-basierten bedingten Zugriffs](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
-- [Verwalten des Internetzugriffs mittels Richtlinien für Managed Browser mit Microsoft Intune](https://aka.ms/managedbrowser)  
+- [Configure managed browser policies (Konfigurieren verwalteter Browserrichtlinien)](https://aka.ms/managedbrowser)  
 
 ---
  
@@ -1414,7 +1414,7 @@ Folgen Sie diesen Schritten:
 
 4. Nun können Sie sich die akzeptierten Nutzungsbedingungen ansehen. 
 
-Weitere Informationen finden Sie unter [Nutzungsbedingungsfeature (Vorschauversion) für Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-tou).
+Weitere Informationen finden Sie unter [Nutzungsbedingungsfeature (Vorschauversion) für Azure Active Directory](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
  
 ---
  
@@ -1454,7 +1454,7 @@ Eine Option für Administratoren wurde hinzugefügt, mit der Benutzer aufgeforde
 
 Wählen Sie **Ein** oder **Aus** aus, um die Erweiterung der Nutzungsbedingungen durch den Benutzer zu erfordern. Bei der Einstellung **Ein** wird vorausgesetzt, dass sich Benutzer diese vor dem Akzeptieren der Nutzungsbedingungen ansehen.
 
-Weitere Informationen finden Sie unter [Nutzungsbedingungsfeature (Vorschauversion) für Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-tou).
+Weitere Informationen finden Sie unter [Nutzungsbedingungsfeature (Vorschauversion) für Azure Active Directory](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
  
 ---
 
@@ -1659,14 +1659,14 @@ Weitere Informationen finden Sie unter [Verwalten von Geräten mit dem Azure-Por
 
 Ab sofort können Sie macOS als Geräteplattformbedingung in Ihre Richtlinie für den bedingten Azure AD-Zugriff einschließen (oder ausschließen). Durch das Hinzufügen von macOS als unterstützte Geräteplattform haben Sie folgende Möglichkeiten:
 
-- **Registrieren und Verwalten von macOS-Geräten mit Intune**: Ähnlich wie für andere Plattformen (z.B. iOS und Android) steht für macOS eine Unternehmensportalanwendung bereit, um einheitliche Registrierungen durchzuführen. Sie können ein Gerät mithilfe der neuen Unternehmensportal-App für macOS bei Intune und Azure AD registrieren.
-- **Sicherstellen, dass macOS-Geräte die in Intune definierten Konformitätsrichtlinien Ihrer Organisation einhalten**: In Intune im Azure-Portal können Sie nun Konformitätsrichtlinien für macOS-Geräte einrichten. 
-- **Beschränken des Zugriffs auf Anwendungen in Azure AD auf ausschließlich konforme macOS-Geräte**: Für die Erstellung bedingter Zugriffsrichtlinien ist macOS als separate Geräteplattformoption festgelegt. Nun können Sie macOS-spezifische Richtlinien für den bedingten Zugriff für die festgelegte Zielanwendung in Azure erstellen.
+- **Registrieren und Verwalten von macOS-Geräten mit Intune** Ähnlich wie für andere Plattformen (z.B. iOS und Android) steht für macOS eine Unternehmensportalanwendung bereit, um einheitliche Registrierungen durchzuführen. Sie können ein Gerät mithilfe der neuen Unternehmensportal-App für macOS bei Intune und Azure AD registrieren.
+- **Sicherstellen, dass macOS-Geräte die in Intune definierten Konformitätsrichtlinien Ihrer Organisation einhalten** In Intune im Azure-Portal können Sie nun Konformitätsrichtlinien für macOS-Geräte einrichten. 
+- **Beschränken des Zugriffs auf Anwendungen in Azure AD auf ausschließlich konforme macOS-Geräte** Für die Erstellung bedingter Zugriffsrichtlinien ist macOS als separate Geräteplattformoption festgelegt. Nun können Sie macOS-spezifische Richtlinien für den bedingten Zugriff für die festgelegte Zielanwendung in Azure erstellen.
 
 Weitere Informationen finden Sie unter
 
-- [Erstellen einer Gerätekonformitätsrichtlinie für macOS-Geräte mit Intune](https://aka.ms/macoscompliancepolicy)
-- [Bedingter Zugriff in Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
+- [Create a device compliance policy for macOS devices with Intune (Erstellen einer Gerätekonformitätsrichtlinie für macOS-Geräte mit Intune)](https://aka.ms/macoscompliancepolicy)
+- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
  
 ---
 
@@ -1695,7 +1695,7 @@ Im Azure AD Admin Center haben Sie jetzt folgende Möglichkeiten:
 - Wiederherstellen eines gelöschten Benutzers 
 - Dauerhaftes Löschen eines Benutzers
 
-**So können Sie es ausprobieren**
+**So können Sie es ausprobieren:**
 
 1. Wählen Sie im Azure AD Admin Center im Abschnitt **Verwalten** die Option [Alle Benutzer](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/All) aus. 
 
@@ -1807,7 +1807,7 @@ Sie können Azure AD-Nutzungsbedingungen in den folgenden Szenarien verwenden:
 - Spezifische Nutzungsbedingungen basierend auf Benutzerattributen (z.B. Ärzte im Vergleich zu Krankenschwestern oder einheimische Mitarbeiter im Vergleich zu ausländischen Mitarbeitern) von dynamischen Gruppen
 - Spezifische Nutzungsbedingungen für den Zugriff auf bedeutende Geschäftsanwendungen wie Salesforce
 
-Weitere Informationen finden Sie im [Azure AD B2C](https://docs.microsoft.com/azure/active-directory/active-directory-tou).
+Weitere Informationen finden Sie im [Azure AD B2C](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use).
 
 ---
 

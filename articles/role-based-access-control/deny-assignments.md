@@ -15,12 +15,12 @@ ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: fff213c8d1a408bf96e385f2097a5ef30dcc05d2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 497571a65510f806d7d7994c9dc37f9a00b65a5f
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992091"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006728"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>Verstehen von Ablehnungszuweisungen für Azure-Ressourcen
 
@@ -56,12 +56,12 @@ In diesem Artikel wird die Definition von Ablehnungszuweisungen beschrieben.
 
 ## <a name="system-defined-principal"></a>Systemseitig definierter Prinzipal
 
-Zur Unterstützung von Ablehnungszuweisungen wurde der **systemseitig definierte Prinzipal** eingeführt. Dieser Prinzipal repräsentiert alle Benutzer, Gruppen, Dienstprinzipale und verwalteten Identitäten in einem Azure AD-Verzeichnis. Wenn die Prinzipal-ID eine aus Nullen bestehende GUID `00000000-0000-0000-0000-000000000000` ist und der Prinzipaltyp `SystemDefined` lautet, repräsentiert der Prinzipal alle Prinzipale. `SystemDefined` kann mit `ExcludePrincipals` kombiniert werden, um den Zugriff für alle Prinzipale mit Ausnahme einiger Benutzer zu verweigern. Für `SystemDefined` gelten die folgenden Einschränkungen:
+Zur Unterstützung von Ablehnungszuweisungen wurde der **systemseitig definierte Prinzipal** eingeführt. Dieser Prinzipal repräsentiert alle Benutzer, Gruppen, Dienstprinzipale und verwalteten Identitäten in einem Azure AD-Verzeichnis. Wenn die Prinzipal-ID eine aus Nullen bestehende GUID `00000000-0000-0000-0000-000000000000` ist und der Prinzipaltyp `SystemDefined` lautet, repräsentiert der Prinzipal alle Prinzipale. `SystemDefined` kann mit `ExcludePrincipals` kombiniert werden, um den Zugriff für alle Prinzipale mit Ausnahme einiger Benutzer zu verweigern. `SystemDefined` hat die folgenden Einschränkungen:
 
 - Kann nur in `Principals` verwendet werden, aber nicht in `ExcludePrincipals`.
-- `Principals[i].Type` muss auf `SystemDefined` festgelegt werden.
+- `Principals[i].Type` auf `SystemDefined` festgelegt werden muss.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mithilfe der REST-API](deny-assignments-rest.md)
+* [Anzeigen von Ablehnungszuweisungen für Azure-Ressourcen mit dem Azure-Portal](deny-assignments-portal.md)
 * [Grundlegendes zu Rollendefinitionen für Azure-Ressourcen](role-definitions.md)

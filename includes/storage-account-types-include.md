@@ -8,18 +8,19 @@ ms.topic: include
 ms.date: 03/23/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: bffe948eec81b480e51d0cf5a25f6091f397dd15
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: d4f57eca89cbb68d61546c6d5ce5bcd04f9256e7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372849"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59286370"
 ---
 Azure Storage bietet mehrere Arten von Speicherkonten. Jeder Typ unterstützt unterschiedliche Features und verfügt über ein eigenes Preismodell. Informieren Sie sich vor dem Erstellen eines Speicherkontos genau über diese Unterschiede, um den Kontotyp zu ermitteln, der sich für Ihre Anwendungen am besten eignet. Folgende Speicherkontotypen stehen zur Verfügung:
 
 - **Konten vom Typ „Allgemein v2“:** Grundlegender Speicherkontotyp für Blobs, Dateien, Warteschlangen und Tabellen. Empfohlen für die meisten Azure Storage-Szenarien.
 - **Konten vom Typ „Allgemein v1“:** Legacy-Speicherkontotyp für Blobs, Dateien, Warteschlangen und Tabellen. Verwenden Sie nach Möglichkeit Konten vom Typ „Allgemein v2“.
 - **Konten vom Typ „Blockblobspeicher“**: Reine Blobspeicherkonten mit Premium-Leistungsmerkmalen. Für Szenarien mit hohen Transaktionsraten empfohlen, die kleinere Objekte verwenden oder gleichbleibend geringe Speicherlatenz erfordern.
+- **FileStorage-Speicherkonten (Vorschau):** Reine Dateispeicherkonten mit Premium-Leistungsmerkmalen Empfohlen für Unternehmens- oder Hochleistungsanwendungen
 - **Konten vom Typ „Blobspeicher“:** Reine Blobspeicherkonten. Verwenden Sie nach Möglichkeit Konten vom Typ „Allgemein v2“.
 
 Die folgende Tabelle beschreibt die Speicherkontotypen und ihre jeweiligen Funktionen:
@@ -29,6 +30,7 @@ Die folgende Tabelle beschreibt die Speicherkontotypen und ihre jeweiligen Funkt
 | Allgemein v2   | Blob, Datei, Warteschlange, Tabelle und Datenträger       | Standard, Premium<sup>5</sup> | Heiß, kalt, Archiv<sup>3</sup> | LRS, ZRS<sup>4</sup>, GRS, RA-GRS | Ressourcen-Manager             | Verschlüsselt              |
 | Allgemein v1   | Blob, Datei, Warteschlange, Tabelle und Datenträger       | Standard, Premium<sup>5</sup> | –                            | LRS, GRS, RA-GRS                  | Resource Manager, klassisch    | Verschlüsselt              |
 | Blockblobspeicher   | Blob (nur Blockblobs und Anfügeblobs) | Premium                       | –                            | LRS                               | Ressourcen-Manager             | Verschlüsselt              |
+| FileStorage (Vorschauversion)   | Nur Dateien | Premium                       | –                            | LRS                               | Ressourcen-Manager             | Verschlüsselt              |
 | Blob Storage         | Blob (nur Blockblobs und Anfügeblobs) | Standard                      | Heiß, kalt, Archiv<sup>3</sup> | LRS, GRS, RA-GRS                  | Ressourcen-Manager             | Verschlüsselt              |
 
 <sup>1</sup>Die Verwendung des Azure Resource Manager-Bereitstellungsmodells wird empfohlen. Speicherkonten, die das klassische Bereitstellungsmodell verwenden, können an einigen Standorten weiterhin erstellt werden, und vorhandene klassische Konten werden weiterhin unterstützt. Weitere Informationen finden Sie unter [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen](../articles/azure-resource-manager/resource-manager-deployment-model.md).

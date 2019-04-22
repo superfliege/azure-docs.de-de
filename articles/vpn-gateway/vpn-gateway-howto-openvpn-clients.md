@@ -7,16 +7,16 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 1/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 9818ae9b8571628d9be09f539abf2995a3927e08
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d1e57e623e3e95f3d71e895c49c928f00aa0ad46
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010542"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274671"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway-preview"></a>Konfigurieren von OpenVPN-Clients für Azure VPN Gateway (Vorschau)
 
-Dieser Artikel bietet Informationen zum Konfigurieren von OpenVPN-Clients.
+Dieser Artikel umfasst Informationen zum Konfigurieren von **OpenVPN ® Protocol**-Clients.
 
 > [!IMPORTANT]
 > Diese öffentliche Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -138,4 +138,6 @@ Vergewissern Sie sich, dass Sie die Schritte zum Konfigurieren von OpenVPN für 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn die VPN-Clients Zugriff auf Ressourcen in einem anderen VNET (Produktion) haben sollen, folgen Sie den Anweisungen im Artikel [Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md), um eine VNET-zu-VNET-Verbindung einzurichten. Stellen Sie sicher, dass BGP (Border Gateway Protocol) für die Gateways und die Verbindungen aktiviert ist, da andernfalls kein Datenverkehr fließt.
+Wenn die VPN-Clients Zugriff auf Ressourcen in einem anderen VNET (Produktion) haben sollen, führen Sie die Anweisungen im Artikel [Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) aus, um eine VNET-zu-VNET-Verbindung einzurichten. Stellen Sie sicher, dass BGP (Border Gateway Protocol) für die Gateways und die Verbindungen aktiviert ist, da andernfalls kein Datenverkehr fließt.
+
+**„OpenVPN“ ist eine Marke von OpenVPN Inc.**

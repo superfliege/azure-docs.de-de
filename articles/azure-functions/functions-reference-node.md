@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: d9de47ad83f37fa976c3816a0cb2e3e3beaa5472
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 9ef7dd7603b93f6b15988cc4cca089f0486eb3b0
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437576"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010115"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 
@@ -273,7 +273,7 @@ Ermöglicht das Schreiben in die Streamingfunktionsprotokolle auf Standard-Ablau
 
 | Methode                 | BESCHREIBUNG                                |
 | ---------------------- | ------------------------------------------ |
-| **Fehler(_Meldung_)**   | Schreibt in Protokollierung auf Fehlerebene oder niedriger.   |
+| **error(_Meldung_)**   | Schreibt in Protokollierung auf Fehlerebene oder niedriger.   |
 | **warn(_Meldung_)**    | Schreibt in Protokollierung auf Warnungsebene oder niedriger. |
 | **info(_Meldung_)**    | Schreibt in Protokollierung auf Informationsebene oder niedriger.    |
 | **verbose(_Meldung_)** | Schreibt in Protokollierung auf ausführlicher Ebene.           |
@@ -395,9 +395,9 @@ Beim Arbeiten mit HTTP-Triggern bestehen verschiedene Möglichkeiten, auf die HT
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ **_[Nur Antwort]_ Durch Aufrufen von `context.res.send(body?: any)`.** Eine HTTP-Antwort wird mit der Eingabe `body` als Antworttext erstellt. `context.done()` wird implizit aufgerufen.
++ **_[Nur Antwort]_  Durch Aufrufen von `context.res.send(body?: any)`.** Eine HTTP-Antwort wird mit der Eingabe `body` als Antworttext erstellt. `context.done()` wird implizit aufgerufen.
 
-+ **_[Nur Antwort]_ Durch Aufrufen von `context.done()`.** Eine besondere Art der HTTP-Bindung gibt die Antwort zurück, die der `context.done()`-Methode übergeben wird. Die folgende HTTP-Ausgabebindung definiert einen `$return`-Ausgabeparameter:
++ **_[Nur Antwort]_  Durch Aufrufen von `context.done()`.** Eine besondere Art der HTTP-Bindung gibt die Antwort zurück, die der `context.done()`-Methode übergeben wird. Die folgende HTTP-Ausgabebindung definiert einen `$return`-Ausgabeparameter:
 
     ```json
     {
@@ -628,4 +628,4 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 + [Entwicklerreferenz zu Azure Functions](functions-reference.md)
 + [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
 
-[Arbeiten mit Azure Functions Core Tools]: functions-run-local.md#project-file-deployment
+[`func azure functionapp publish`]: functions-run-local.md#project-file-deployment

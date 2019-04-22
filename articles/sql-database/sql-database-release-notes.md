@@ -8,18 +8,41 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 03/05/2019
+ms.date: 04/03/2019
 ms.author: carlrab
-ms.openlocfilehash: 6600a578ba9c73c8a2c71466fd0b008f19058b80
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c63ce51f442c8d7552c382f0e103be443afb9c75
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861287"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360083"
 ---
 # <a name="sql-database-release-notes"></a>Versionshinweise zu SQL-Datenbank
 
 In diesem Artikel erhalten Sie weitere Informationen zu den neuen Features und Verbesserungen in Azure SQL-Datenbank und in der zugehörigen Dokumentation. Die Verbesserungen an SQL-Datenbank finden Sie außerdem unter [Azure-Updates](https://azure.microsoft.com/updates/?product=sql-database). Informationen zu Verbesserungen bei anderen Azure-Diensten finden Sie unter [Dienstupdates](https://azure.microsoft.com/updates).
+
+## <a name="features-in-public-preview"></a>Features in der öffentlichen Vorschau
+
+| Feature | Details |
+| ---| --- |
+| Aufträge für die elastische Datenbank | Weitere Informationen finden Sie unter [Erstellen, Konfigurieren und Verwalten von Aufträgen für die elastische Datenbank](elastic-jobs-overview.md). |
+| Elastische Transaktionen | [Verteilte Transaktionen über Clouddatenbanken](sql-database-elastic-transactions-overview.md) |
+| Elastische Abfragen | Weitere Informationen finden Sie unter [Übersicht über elastische Abfragen](sql-database-elastic-query-overview.md). |
+| Replikation mit verwalteten Instanzen |Weitere Informationen finden Sie unter [Konfigurieren der Replikation in einer verwalteten Azure SQL-Datenbank-Instanzdatenbank](replication-with-sql-database-managed-instance.md).|
+| Instanzensortierung bei verwalteten Instanzen |Weitere Informationen finden Sie unter [Verwenden von PowerShell mit einer Azure Resource Manager-Vorlage zum Erstellen einer verwalteten Instanz in Azure SQL-Datenbank](./scripts/sql-managed-instance-create-powershell-azure-resource-manager-template.md).|
+| R-Dienste/maschinelles Lernen mit Singletons und Pools für elastische Datenbanken |Weitere Informationen finden Sie unter [Machine Learning Services in Azure SQL-Datenbank](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database).|
+| Beschleunigte Datenbankwiederherstellung bei Singletons und Pools für elastische Datenbanken | Weitere Informationen finden Sie unter [Schnellere Datenbankwiederherstellung](sql-database-accelerated-database-recovery.md).|
+| Datenermittlung und -klassifizierung  |Weitere Informationen finden Sie unter [Azure SQL-Datenbank und SQL Data Warehouse: Datenermittlung und -klassifizierung](sql-database-data-discovery-and-classification.md).|
+| Transparent Data Encryption (TDE) mit Bring Your Own Key-Szenarien (BYOK) bei verwalteten Instanzen |Weitere Informationen finden Sie unter [Azure SQL Transparent Data Encryption mithilfe von Schlüsseln, die vom Kunden in Azure Key Vault verwaltet werden: Bring Your Own Key-Unterstützung](transparent-data-encryption-byok-azure-sql.md).|
+| Erneutes Erstellen gelöschter Datenbanken mit verwalteten Instanzen |Weitere Informationen finden Sie unter [Re-create dropped databases in Azure SQL Managed Instance](https://medium.com/azure-sqldb-managed-instance/re-create-dropped-databases-in-azure-sql-managed-instance-dc369ed60266) (Erneutes Erstellen gelöschter Datenbanken in verwalteten Azure SQL-Datenbank-Instanzen).|
+| Bedrohungserkennung bei verwalteten Instanzen |Weitere Informationen finden Sie unter [Konfigurieren der Bedrohungserkennung für eine verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance-threat-detection.md).|
+| Hyperscale-Dienstebene mit Singletons |Weitere Informationen finden Sie unter [Hyperscale-Dienstebene für bis zu 100 TB](sql-database-service-tier-hyperscale.md)|
+| Abfrage-Editor im Azure-Portal |Weitere Informationen finden Sie unter [Verwenden des SQL-Abfrage-Editors im Azure-Portal zum Verbinden und Abfragen von Daten](sql-database-connect-query-portal.md).|
+|Geschätzte eindeutige Anzahl|Weitere Informationen finden Sie unter [Geschätzte Abfrageverarbeitung](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing).|
+|Batchmodus für Rowstore (unter Kompatibilitätsgrad 150)|Weitere Informationen finden Sie unter [Batchmodus bei Rowstore](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore).|
+|Feedback zur Speicherzuweisung (Zeilenmodus) (unter Kompatibilitätsgrad 150)|Weitere Informationen finden Sie unter [Feedback zur Speicherzuweisung im Zeilenmodus](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback).|
+|Verzögerte Kompilierung von Tabellenvariablen (unter Kompatibilitätsgrad 150)|Weitere Informationen finden Sie unter [Verzögerte Kompilierung von Tabellenvariablen](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation).|
+|||
 
 ## <a name="march-2019"></a>März 2019
 
@@ -27,7 +50,7 @@ In diesem Artikel erhalten Sie weitere Informationen zu den neuen Features und V
 
 | Verbesserungen beim Dienst | Details |
 | --- | --- |
-| In Kürze verfügbar ||
+| Allgemeine Verfügbarkeit: Unterstützung für die horizontale Leseskalierung in Azure SQL-Datenbank | Weitere Informationen finden Sie unter [Horizontale Leseskalierung](sql-database-read-scale-out.md).|
 | &nbsp; |
 
 ### <a name="documentation-improvements"></a>Verbesserungen bei der Dokumentation

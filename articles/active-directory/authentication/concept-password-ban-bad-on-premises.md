@@ -1,5 +1,5 @@
 ---
-title: Kennwortschutz für Azure AD
+title: Azure AD-Kennwortschutz – Azure Active Directory
 description: Sperren unsicherer Kennwörter im lokalen Active Directory mit dem Kennwortschutz für Azure AD
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1b3660d256e4beda948f723035aa75ca8a9ed2e
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: d58c019cf3d801ce938a4ca6eca70b1606bf4ff6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58284867"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264470"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Erzwingen des Azure AD-Kennwortschutzes für Windows Server Active Directory
 
@@ -31,9 +31,17 @@ Der Kennwortschutz für Azure AD wurde unter Berücksichtigung der folgenden Pri
 * Es sind keine Änderungen des Active Directory-Schemas erforderlich. Die Software verwendet die vorhandenen Active Directory-Schemaobjekte vom Typ **container** und **serviceConnectionPoint**.
 * Für die Funktionsebene von Active Directory-Domäne oder Gesamtstruktur (DFL\FFL) gelten keine Mindestanforderungen.
 * Die Software erstellt oder erfordert keine Konten in den von ihr geschützten Active Directory-Domänen.
-* Klartextkennwörter verlassen den Domänencontroller weder bei der Kennwortüberprüfung noch zu anderen Zeitpunkten.
-* Die inkrementelle Bereitstellung wird unterstützt. Die Kennwortrichtlinie wird jedoch nur dort erzwungen, wo der Domänencontrolleragent (DC-Agent) installiert ist.
-* Installieren Sie den DC-Agent auf allen Domänencontrollern, um die Durchsetzung des universellen Kennwortschutzes zu gewährleisten.
+* Klartextkennwörter verlassen niemals den Domänencontroller (sei es während der Kennwortvalidierung oder zu einem anderen Zeitpunkt).
+* Die Software hängt nicht von anderen Azure AD-Funktionen ab. Die Azure AD-Kennworthashsynchronisierung ist beispielsweise nicht damit verbunden und nicht erforderlich, damit der Azure AD-Kennwortschutz funktioniert.
+* Die inkrementelle Bereitstellung wird unterstützt. Die Kennwortrichtlinie wird jedoch nur dort erzwungen, wo der Domänencontroller-Agent (DC-Agent) installiert ist. Weitere Informationen finden Sie im nächsten Thema.
+
+## <a name="incremental-deployment"></a>Inkrementelle Bereitstellung
+
+Der Azure AD-Kennwortschutz unterstützt die inkrementelle Bereitstellung auf Domänencontrollern in einer Active Directory-Domäne. Jedoch ist es wichtig zu verstehen, was das wirklich bedeutet und worin die Vor- und Nachteile liegen.
+
+Mit der DC-Agent-Software für den Azure AD-Kennwortschutz können Kennwörter nur validiert werden, wenn sie auf einem Domänencontroller installiert ist, und dies auch nur für Kennwortänderungen, die an diesen Domänencontroller gesendet werden. Es kann nicht gesteuert werden, welche Domänencontroller auf Windows-Clientcomputern für die Verarbeitung von Kennwortänderungen ausgewählt werden. Um ein konsistentes Verhalten und eine universelle Erzwingung der Passwortsicherheit zu gewährleisten, MUSS die DC-Agent-Software auf allen Domänencontrollern einer Domäne installiert sein.
+
+Für viele Organisationen empfiehlt es sich vor der vollständigen Bereitstellung, den Azure AD-Kennwortschutz für eine Teilmenge ihrer Domänencontroller sorgfältig zu testen. Der Azure AD-Kennwortschutz unterstützt eine partielle Bereitstellung, d. h., mit der auf einem bestimmten Domänencontroller installierten DC-Agent-Software werden Kennwörter aktiv validiert, auch wenn die DC-Agent-Software auf anderen Domänencontrollern in der Domäne nicht installiert ist. Partielle Bereitstellungen dieses Typs sind NICHT sicher und werden NUR für Testzwecke empfohlen.
 
 ## <a name="architectural-diagram"></a>Architekturdiagramm
 
@@ -55,7 +63,7 @@ Der DC-Agent-Dienst ist dafür verantwortlich, das Herunterladen einer neuen Ken
 
 Nachdem der DC-Agent-Dienst eine neue Kennwortrichtlinie von Azure AD erhalten hat, speichert er die Richtlinie in einem speziellen Ordner im Stammverzeichnis der *sysvol*-Ordnerfreigabe seiner Domäne. Der DC-Agent-Dienst überwacht auch diesen Ordner, falls neuere Richtlinien von anderen DC-Agent-Diensten in der Domäne repliziert werden.
 
-Der DC-Agent-Dienst fordert beim Starten des Diensts immer eine neue Richtlinie an. Nachdem der DC-Agent-Dienst gestartet wurde, überprüft er stündlich das Alter der aktuellen lokal verfügbaren Richtlinie. Wenn die Richtlinie älter als eine Stunde ist, fordert der DC-Agent wie oben beschrieben eine neue Richtlinie von Azure AD an. Wenn die aktuelle Richtlinie nicht älter als eine Stunde ist, verwendet der DC-Agent weiterhin diese Richtlinie.
+Der DC-Agent-Dienst fordert beim Starten des Diensts immer eine neue Richtlinie an. Nachdem der DC-Agent-Dienst gestartet wurde, überprüft er stündlich das Alter der aktuellen lokal verfügbaren Richtlinie. Wenn die Richtlinie älter als eine Stunde ist, fordert der DC-Agent wie oben beschrieben über den Proxydienst eine neue Richtlinie von Azure AD an. Wenn die aktuelle Richtlinie nicht älter als eine Stunde ist, verwendet der DC-Agent weiterhin diese Richtlinie.
 
 Wenn eine Kennwortrichtlinie für den Azure AD-Kennwortschutz heruntergeladen wird, gilt diese Richtlinie spezifisch für einen Mandanten. Anders gesagt: Kennwortrichtlinien sind stets eine Kombination der globalen Liste gesperrter Kennwörter von Microsoft und der benutzerdefinierten Liste gesperrter Kennwörter des Mandanten.
 
@@ -71,21 +79,13 @@ Der DC-Agent-Dienst verwendet immer die neueste lokal verfügbare Kennwortrichtl
 
 Der Azure AD-Kennwortschutz ist kein Echtzeitmodul für die Richtlinienanwendung. Zwischen einer Änderung der Kennwortrichtlinienkonfiguration in Azure AD und dem Zeitpunkt, zu dem sie alle Domänencontroller erreicht und dort durchgesetzt wird, kann eine Verzögerung auftreten.
 
+Der Azure AD-Kennwortschutz dient als Ergänzung zu den vorhandenen Active Directory-Kennwortrichtlinien und soll diese nicht ersetzen. Dies gilt auch für andere möglicherweise installierte Kennwortfilter-DLLs von Drittanbietern. In Active Directory ist es immer erforderlich, dass in allen Komponenten der Kennwortüberprüfung eine Zustimmung erfolgt, bevor ein Kennwort akzeptiert wird.
+
 ## <a name="foresttenant-binding-for-password-protection"></a>Gesamtstruktur-/Mandantenbindung für den Kennwortschutz
 
 Wenn Sie den Kennwortschutz für Azure AD in einer Active Directory-Gesamtstruktur bereitstellen möchten, müssen Sie diese Gesamtstruktur bei Azure AD registrieren. Die bereitgestellten Proxydienste müssen ebenfalls bei Azure AD registriert werden. Diese Registrierungen der Gesamtstrukturen und Proxydienste sind einem bestimmten Azure AD-Mandanten zugeordnet, der implizit über die bei der Registrierung verwendeten Anmeldeinformationen identifiziert wird.
 
 Die Active Directory-Gesamtstruktur und alle bereitgestellten Proxydienste innerhalb einer Gesamtstruktur müssen beim gleichen Mandanten registriert werden. Active Directory-Gesamtstrukturen oder andere Proxydienste in dieser Gesamtstruktur können nicht bei unterschiedlichen Azure AD-Mandanten registriert werden. Wenn die Bereitstellung falsch konfiguriert wurde, können Sie beispielsweise keine Kennwortrichtlinien herunterladen.
-
-## <a name="license-requirements"></a>Lizenzanforderungen
-
-Die Vorteile der Liste global gesperrter Kennwörter gelten für alle Benutzer von Azure AD.
-
-Die Liste benutzerdefinierter gesperrter Kennwörter erfordert Azure AD Basic-Lizenzen.
-
-Azure AD-Kennwortschutz für Windows Server Active Directory erfordert Azure AD Premium-Lizenzen.
-
-Weitere Informationen zur Lizenzierung finden Sie unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="download"></a>Download
 

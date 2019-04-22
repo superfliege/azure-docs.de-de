@@ -4,22 +4,20 @@ description: Hier werden die Funktionen beschrieben, die in einer Azure Resource
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/11/2019
+ms.date: 04/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: 07221e5d93c004a2542adfc3a5374fd75ca34b31
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: bf9faa34c1f0923761ce583c22ba4084d7bd42a8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621405"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278784"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Zeichenfolgenfunktionen für Azure Resource Manager-Vorlagen
 
@@ -35,18 +33,19 @@ Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit Zei
 * [empty](#empty)
 * [endsWith](#endswith)
 * [first](#first)
-* [guid](#guid)
+* [format](#format)
+* [GUID](#guid)
 * [indexOf](#indexof)
 * [last](#last)
 * [lastIndexOf](#lastindexof)
-* [Länge](#length)
+* [length](#length)
 * [newGuid](#newguid)
 * [padLeft](#padleft)
 * [replace](#replace)
 * [skip](#skip)
 * [split](#split)
 * [startsWith](#startswith)
-* [string](#string)
+* [Zeichenfolge](#string)
 * [substring](#substring)
 * [take](#take)
 * [toLower](#tolower)
@@ -541,7 +540,7 @@ Bestimmt, ob ein Array, Objekt oder eine Zeichenfolge leer ist.
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Ja |Array, Objekt oder Zeichenfolge |Der Wert, für den geprüft werden soll, ob er leer ist. |
+| itemToTest |Ja |Array, Objekt oder Zeichenfolge |Der Wert, für den überprüft werden soll, ob er leer ist. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -714,9 +713,66 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | arrayOutput | Zeichenfolge | one |
 | stringOutput | Zeichenfolge | O |
 
+## <a name="format"></a>format
+
+`format(formatString, arg1, arg2, ...)`
+
+Erstellt eine formatierte Zeichenfolge aus Eingabewerten.
+
+### <a name="parameters"></a>Parameter
+
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+|:--- |:--- |:--- |:--- |
+| formatString | Ja | Zeichenfolge | Die zusammengesetzte Formatzeichenfolge. |
+| arg1 | Ja | Zeichenfolge, Integer oder boolescher Wert | Der Wert, der in die formatierte Zeichenfolge aufgenommen werden soll. |
+| zusätzliche Argumente | Nein  | Zeichenfolge, Integer oder boolescher Wert | Weitere Werte, die in die formatierte Zeichenfolge aufgenommen werden sollen. |
+
+### <a name="remarks"></a>Anmerkungen
+
+Verwenden Sie diese Funktion zum Formatieren einer Zeichenfolge in Ihrer Vorlage. Sie verwendet die gleichen Formatierungsoptionen wie die [System.String.Format](/dotnet/api/system.string.format)-Methode in .NET.
+
+### <a name="examples"></a>Beispiele
+
+Die folgende Beispielvorlage zeigt die Verwendung der format-Funktion.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "greeting": {
+            "type": "string",
+            "defaultValue": "Hello"
+        },
+        "name": {
+            "type": "string",
+            "defaultValue": "User"
+        },
+        "numberToFormat": {
+            "type": "int",
+            "defaultValue": 8175133
+        }
+    },
+    "resources": [
+    ],
+    "outputs": {
+        "formatTest": {
+            "type": "string",
+            "value": "[format('{0}, {1}. Formatted number: {2:N0}', parameters('greeting'), parameters('name'), parameters('numberToFormat'))]"
+        }
+    }
+}
+```
+
+Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
+
+| NAME | Type | Wert |
+| ---- | ---- | ----- |
+| formatTest | Zeichenfolge | Hallo, Benutzer. Formatierte Zahl: 8.175.133 |
+
 ## <a name="guid"></a>GUID
 
-`guid (baseString, ...)`
+`guid(baseString, ...)`
 
 Erstellt einen Wert im Format eines Globally Unique Identifiers basierend auf den als Parameter angegebenen Werten.
 
@@ -731,7 +787,7 @@ Erstellt einen Wert im Format eines Globally Unique Identifiers basierend auf de
 
 Diese Funktion ist hilfreich, wenn Sie einen Wert im Format eines Globally Unique Identifiers erstellen müssen. Sie geben Parameterwerte an, die den Eindeutigkeitsbereich für das Ergebnis einschränken. Sie können angeben, ob der Name bis hinunter zum Abonnement, zur Ressourcengruppe oder zur Bereitstellung eindeutig ist.
 
-Der zurückgegebene Wert ist keine zufällige Zeichenfolge, sondern das Ergebnis einer Hashfunktion, die für die Parameter ausgeführt wurde. Der zurückgegebene Wert ist 36 Zeichen lang. Er ist nicht global eindeutig. Verwenden Sie die Funktion [newGuid](#newguid), um eine neue GUID zu erstellen, die nicht auf diesem Hashwert der Parameter basiert.
+Der zurückgegebene Wert ist keine zufällige Zeichenfolge, sondern das Ergebnis einer Hashfunktion, die für die Parameter ausgeführt wurde. Der zurückgegebene Wert ist 36 Zeichen lang. Er ist nicht global eindeutig. Verwenden Sie die [newGuid](#newguid)-Funktion, um eine neue GUID zu erstellen, die nicht auf diesem Hashwert der Parameter basiert.
 
 Die folgenden Beispiele zeigen, wie Sie mithilfe des GUID einen eindeutigen Wert für häufig verwendete Ebenen erstellen können.
 
@@ -1229,7 +1285,7 @@ Gibt eine Zeichenfolge mit allen Zeichen gemäß der angegebenen Anzahl von Zeic
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | originalValue |Ja |Array oder Zeichenfolge |Array oder Zeichenfolge, wo Elemente übersprungen werden sollen. |
-| numberToSkip |Ja |int |Die Anzahl der zu überspringenden Elemente bzw. Zeichen. Wenn dieser Wert 0 (null) oder kleiner ist, werden alle Elemente oder Zeichen in dem Wert zurückgegeben. Ist der Wert größer als die Länge des Arrays bzw. der Zeichenfolge, wird ein leeres Array bzw. eine leere Zeichenfolge zurückgegeben. |
+| numberToSkip |Ja |int |Die Anzahl der zu überspringenden Elemente bzw. Zeichen. Wenn dieser Wert 0 (null) oder kleiner ist, werden alle Elemente oder Zeichen in dem Wert zurückgegeben. Ist er größer als die Länge des Arrays bzw. der Zeichenfolge, wird ein leeres Array bzw. eine leere Zeichenfolge zurückgegeben. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -1554,7 +1610,7 @@ Gibt eine Zeichenfolge mit der angegebenen Anzahl von Zeichen ab dem Anfang der 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | originalValue |Ja |Array oder Zeichenfolge |Das Array bzw. die Zeichenfolge, wo die Elemente entnommen werden sollen. |
-| numberToTake |Ja |int |Die Anzahl der zu entnehmenden Elemente bzw. Zeichen. Ist dieser Wert 0 oder kleiner, wird ein leeres Array bzw. eine leere Zeichenfolge zurückgegeben. Ist der Wert größer als die Länge des entsprechenden Arrays bzw. der Zeichenfolge, werden alle Elemente des Arrays bzw. der Zeichenfolge zurückgegeben. |
+| numberToTake |Ja |int |Die Anzahl der zu entnehmenden Elemente bzw. Zeichen. Ist dieser Wert 0 oder kleiner, wird ein leeres Array bzw. eine leere Zeichenfolge zurückgegeben. Ist er größer als die Länge des entsprechenden Arrays bzw. der Zeichenfolge, werden alle Elemente des Arrays bzw. der Zeichenfolge zurückgegeben. |
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -1809,7 +1865,7 @@ Das folgende Beispiel zeigt, wie Sie einen eindeutigen Namen für ein Speicherko
     ...
 ```
 
-Wenn Sie für jedes Mal, wenn Sie eine Vorlage bereitstellen, einen neuen eindeutigen Namen erstellen müssen und die Ressource nicht aktualisieren möchten, können Sie die Funktion [utcNow](#utcnow) mit „uniqueString“ verwenden. Diesen Ansatz können Sie in einer Testumgebung verwenden. Ein Beispiel finden Sie unter [utcNow](#utcnow).
+Wenn Sie bei jeder Bereitstellung einer Vorlage einen neuen eindeutigen Namen erstellen müssen und die Ressource nicht aktualisieren möchten, können Sie die [utcNow](#utcnow)-Funktion mit uniqueString verwenden. Diesen Ansatz können Sie in einer Testumgebung verwenden. Ein Beispiel finden Sie unter [utcNow](#utcnow).
 
 ### <a name="return-value"></a>Rückgabewert
 

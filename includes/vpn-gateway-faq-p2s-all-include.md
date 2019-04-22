@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/18/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 55e92632b43d365c4041c79f20e68a0a63477d6f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f72ce02a8655ea97497098dc1412f69e07686861
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58125099"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59284908"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Wie viele VPN-Clientendpunkte kann meine Punkt-zu-Standort-Konfiguration umfassen?
 
@@ -70,7 +70,7 @@ Nein. Sie können nur den nativen VPN-Client unter Windows für SSTP und den nat
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Unterstützt Azure IKEv2-VPN unter Windows?
 
-IKEv2 wird unter Windows 10 und Server 2016 unterstützt. Zur Verwendung von IKEv2 müssen Sie jedoch Updates installieren und lokal einen Registrierungsschlüsselwert festlegen. Betriebssystemversionen vor Windows 10 werden nicht unterstützt und können nur SSTP oder das OpenVPN-Protokoll verwenden.
+IKEv2 wird unter Windows 10 und Server 2016 unterstützt. Zur Verwendung von IKEv2 müssen Sie jedoch Updates installieren und lokal einen Registrierungsschlüsselwert festlegen. Betriebssystemversionen vor Windows 10 werden nicht unterstützt und können nur SSTP oder **OpenVPN® Protocol** verwenden.
 
 Vorbereitung von Windows 10 oder Server 2016 für IKEv2:
 

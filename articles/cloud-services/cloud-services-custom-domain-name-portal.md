@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 814ae0e79ac24d5b645c4bf107287ab1b8326ff4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2255004ae8cd92473b5fe71b44cccb79021a8bf7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121620"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267142"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Konfigurieren eines benutzerdefinierten Domänennamens für einen Azure-Clouddienst
 Wenn Sie einen Clouddienst erstellen, weist Azure diesen einer Unterdomäne von **cloudapp.net**zu. Wenn der Clouddienst beispielsweise den Namen „contoso“ hat, können Ihre Benutzer auf die Anwendung über eine URL wie http://contoso.cloudapp.net zugreifen. Darüber hinaus weist Azure eine virtuelle IP-Adresse zu.
@@ -64,7 +64,7 @@ Sie müssen einen neuen Eintrag zu der DNS-Tabelle Ihrer benutzerdefinierten Dom
 
 1. Verwenden Sie eine dieser Methoden, um den **.cloudapp.net** -Domänennamen zu ermitteln, der Ihrem Clouddienst zugewiesen ist.
 
-   * Melden Sie sich beim klassischen [Azure-Portal] an, und wählen Sie Ihren Clouddienst aus. Suchen Sie im Abschnitt **Essentials** nach dem Eintrag **Website-URL**.
+   * Melden Sie sich beim [Azure-Portal] an, und wählen Sie Ihren Clouddienst aus. Suchen Sie im Abschnitt **Übersicht** nach dem Eintrag **Website-URL**.
 
        ![Die Schnelleinsicht zeigt die Site-URL.][csurl]
 
@@ -97,7 +97,7 @@ Sie müssen zunächst die virtuelle IP-Adresse Ihres Clouddiensts ermitteln, um 
 
 1. Verwenden Sie eine der folgenden Methoden, um die IP-Adresse Ihres Clouddiensts zu ermitteln.
 
-   * Melden Sie sich beim klassischen [Azure-Portal] an, und wählen Sie Ihren Clouddienst aus. Suchen Sie im Abschnitt **Essentials** nach dem Eintrag **Öffentliche IP-Adressen**.
+   * Melden Sie sich beim [Azure-Portal] an, und wählen Sie Ihren Clouddienst aus. Suchen Sie im Abschnitt **Übersicht** nach dem Eintrag **Öffentliche IP-Adressen**.
 
        ![Die Schnelleinsicht zeigt die VIP.][vip]
 
@@ -130,8 +130,8 @@ Dieses Beispiel zeigt das Erstellen eines A-Datensatzes für die Stammdomäne. W
 > 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Verwalten von Cloud Services](cloud-services-how-to-manage-portal.md)
-* [Zuordnen von CDN-Inhalt (Content Delivery Network) zu einer benutzerdefinierten Domäne](../cdn/cdn-map-content-to-custom-domain.md)
+* [Verwalten von Clouddiensten](cloud-services-how-to-manage-portal.md)
+* [Tutorial: Hinzufügen einer benutzerdefinierten Domäne zum Azure CDN-Endpunkt](../cdn/cdn-map-content-to-custom-domain.md)
 * [Allgemeine Konfiguration Ihres Clouddiensts](cloud-services-how-to-configure-portal.md)
 * Weitere Informationen zum [Bereitstellen eines Clouddiensts](cloud-services-how-to-create-deploy-portal.md)
 * Konfigurieren von [SSL-Zertifikaten](cloud-services-configure-ssl-certificate-portal.md)

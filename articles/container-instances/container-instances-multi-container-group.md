@@ -1,43 +1,53 @@
 ---
-title: Bereitstellen von Gruppen mit mehreren Containern in Azure Container Instances
-description: Hier erfahren Sie, wie Sie eine Containergruppe mit mehreren Containern mit einer Azure Resource Manager-Vorlage in Azure Container Instances bereitstellen.
+title: 'Tutorial: Bereitstellen einer Gruppe mit mehreren Containern in Azure Container Instances – Vorlage'
+description: In diesem Tutorial erfahren Sie, wie Sie eine Containergruppe mit mehreren Containern über die Azure-Befehlszeilenschnittstelle mit einer Azure Resource Manager-Vorlage in Azure Container Instances bereitstellen.
 services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 04/03/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 93f73e133e99025b479d0b38512e26088a8eaefa
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: f769beda1654dc9f58ecff733741fb1ab9118031
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369111"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006919"
 ---
-# <a name="deploy-a-multi-container-group-with-a-resource-manager-template"></a>Bereitstellen einer Gruppe mit mehreren Containern per Resource Manager-Vorlage
+# <a name="tutorial-deploy-a-multi-container-group-using-a-resource-manager-template"></a>Tutorial: Bereitstellen einer Gruppe mit mehreren Containern über eine Resource Manager-Vorlage
 
-Azure Container Instances unterstützt die Bereitstellung von mehreren Containern auf einem einzelnen Host mit einer [Containergruppe](container-instances-container-groups.md). Dies ist nützlich, wenn eine Sidecar-Anwendung für die Protokollierung, die Überwachung oder irgendeine andere Konfiguration, bei der ein Dienst einen zweiten angefügten Prozess benötigt, erstellt wird.
+> [!div class="op_single_selector"]
+> * [YAML](container-instances-multi-container-yaml.md)
+> * [Ressourcen-Manager](container-instances-multi-container-group.md)
 
-Es gibt zwei Möglichkeiten zum Bereitstellen von Gruppen mit mehreren Containern über die Azure CLI:
+Azure Container Instances unterstützt die Bereitstellung von mehreren Containern auf einem einzelnen Host mit einer [Containergruppe](container-instances-container-groups.md). Containergruppen sind nützlich, wenn eine Sidecaranwendung für die Protokollierung, die Überwachung oder eine andere Konfiguration, bei der ein Dienst einen zweiten angefügten Prozess benötigt, erstellt wird.
 
-* Resource Manager-Vorlagenbereitstellung (dieser Artikel)
-* [YAML-Dateibereitstellung](container-instances-multi-container-yaml.md)
+In diesem Tutorial befolgen Sie Schritte zum Ausführen einer einfachen Sidecarkonfiguration mit zwei Containern durch Bereitstellung einer Azure Resource Manager-Vorlage mithilfe der Azure-Befehlszeilenschnittstelle. Folgendes wird vermittelt:
 
-Wenn Sie bei der Bereitstellung von Containerinstanzen zusätzliche Azure-Dienstressourcen (z.B. eine Azure Files-Freigabe) bereitstellen müssen, wird die Bereitstellung mit einer Resource Manager-Vorlage empfohlen. Das YAML-Format ist präziser, daher wird die Bereitstellung mit einer YAML-Datei empfohlen, wenn Ihre Bereitstellung *nur* Containerinstanzen enthält.
+> [!div class="checklist"]
+> * Konfigurieren einer Vorlage für eine Gruppe mit mehreren Containern
+> * Bereitstellen der Containergruppe
+> * Anzeigen der Protokolle der Container
+
+Eine Resource Manager-Vorlage kann für Szenarien angepasst werden, in denen Sie mit der Containergruppe zusätzliche Azure-Dienstressourcen (z. B. eine Azure Files-Freigabe oder ein virtuelles Netzwerk) bereitstellen müssen. 
 
 > [!NOTE]
-> Gruppen mit mehreren Containern sind aktuell auf Linux-Container beschränkt. Bis alle Features auch für Windows-Container verfügbar sind, finden Sie die aktuellen Plattformunterschiede unter [Kontingente und Regionsverfügbarkeit für Azure Container Instances](container-instances-quotas.md).
+> Gruppen mit mehreren Containern sind aktuell auf Linux-Container beschränkt. 
 
-Weitere Beispiele für Vorlagen finden Sie unter [Azure Resource Manager-Vorlagen für Azure Container Instances](container-instances-samples-rm.md). 
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="configure-the-template"></a>Konfigurieren der Vorlage
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-In den Abschnitten in diesem Artikel wird das Ausführen einer einfachen Sidecar-Konfiguration mit mehreren Containern durch das Bereitstellen einer Azure Resource Manager-Vorlage beschrieben.
+## <a name="configure-a-template"></a>Konfigurieren einer Vorlage
 
-Erstellen Sie zunächst eine Datei mit dem Namen `azuredeploy.json`, und fügen Sie dann den folgende JSON-Code ein.
+Beginnen Sie, indem Sie den folgenden JSON-Code in eine neue Datei mit dem Namen `azuredeploy.json` kopieren. In Azure Cloud Shell können Sie die Datei mit Visual Studio Code in Ihrem Arbeitsverzeichnis erstellen:
 
-Diese Resource Manager-Vorlage definiert eine Containergruppe mit zwei Containern, einer öffentlichen IP-Adresse und zwei verfügbar gemachten Ports. Die Container werden aus öffentlichen Microsoft-Images bereitgestellt. Der erste Container in der Gruppe führt eine Anwendung mit Internetverbindung aus. Der zweite Container, der Sidecar, stellt eine HTTP-Anforderung an die Hauptwebanwendung über das lokale Netzwerk der Gruppe.
+```
+code azuredeploy.json
+```
+
+Diese Resource Manager-Vorlage definiert eine Containergruppe mit zwei Containern, einer öffentlichen IP-Adresse und zwei verfügbar gemachten Ports. Der erste Container in der Gruppe führt eine Webanwendung mit Internetverbindung aus. Der zweite Container, der Sidecar, stellt eine HTTP-Anforderung an die Hauptwebanwendung über das lokale Netzwerk der Gruppe.
 
 ```JSON
 {
@@ -169,9 +179,9 @@ Name              ResourceGroup    Status    Image                              
 myContainerGroup  danlep0318r      Running   mcr.microsoft.com/azuredocs/aci-tutorial-sidecar,mcr.microsoft.com/azuredocs/aci-helloworld:latest  20.42.26.114:80,8080  Public     1.0 core/1.5 gb  Linux     eastus
 ```
 
-## <a name="view-logs"></a>Anzeigen von Protokollen
+## <a name="view-container-logs"></a>Anzeigen von Containerprotokollen
 
-Zeigen Sie die Protokollausgabe eines Containers mit dem Befehl [az container logs][az-container-logs] an. Das `--container-name`-Argument gibt den Container an, aus dem Protokolle erhalten werden können. In diesem Beispiel wird der erste Container angegeben.
+Zeigen Sie die Protokollausgabe eines Containers mit dem Befehl [az container logs][az-container-logs] an. Das `--container-name`-Argument gibt den Container an, aus dem Protokolle erhalten werden können. In diesem Beispiel wird der Container `aci-tutorial-app` angegeben.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-app
@@ -186,7 +196,7 @@ listening on port 80
 ::1 - - [21/Mar/2019:23:17:54 +0000] "HEAD / HTTP/1.1" 200 1663 "-" "curl/7.54.0"
 ```
 
-Führen Sie den gleichen Befehl aus, und geben Sie den zweiten Containernamen an, um die Protokolle für den Sidecar-Container anzuzeigen.
+Führen Sie einen ähnlichen Befehl aus, in dem Sie den Container `aci-tutorial-sidecar` angeben, um die Protokolle für den Sidecarcontainer anzuzeigen.
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name myContainerGroup --container-name aci-tutorial-sidecar
@@ -212,14 +222,21 @@ Date: Thu, 21 Mar 2019 20:36:41 GMT
 Connection: keep-alive
 ```
 
-Wie Sie sehen können, erfolgt vom Sidecar in regelmäßigen Abständen eine HTTP-Anforderung an die Hauptwebanwendung über das lokale Netzwerk der Gruppe, um sicherzustellen, dass er ausgeführt wird. Dieses Sidecar-Beispiel kann erweitert werden, um eine Warnung auszulösen, wenn ein anderer HTTP-Antwortcode als 200 OK empfangen wird.
+Wie Sie sehen können, erfolgt vom Sidecar in regelmäßigen Abständen eine HTTP-Anforderung an die Hauptwebanwendung über das lokale Netzwerk der Gruppe, um sicherzustellen, dass er ausgeführt wird. Dieses Sidecarbeispiel kann erweitert werden, um eine Warnung auszulösen, wenn ein anderer HTTP-Antwortcode als `200 OK` empfangen wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Dieser Artikel behandelt die für die Bereitstellung einer Azure-Instanz mit mehreren Containern erforderlichen Schritte. Ein umfassende Beschreibung von Azure Container Instances finden Sie im Azure Container Instances-Tutorial.
+In diesem Tutorial haben Sie eine Containergruppe mit mehreren Containern mit einer Azure Resource Manager-Vorlage in Azure Container Instances bereitgestellt. Es wurde Folgendes vermittelt:
 
-> [!div class="nextstepaction"]
-> [Azure Container Instances-Tutorial][aci-tutorial]
+> [!div class="checklist"]
+> * Konfigurieren einer Vorlage für eine Gruppe mit mehreren Containern
+> * Bereitstellen der Containergruppe
+> * Anzeigen der Protokolle der Container
+
+Weitere Beispiele für Vorlagen finden Sie unter [Azure Resource Manager-Vorlagen für Azure Container Instances](container-instances-samples-rm.md).
+
+Sie können eine Gruppe mit mehreren Containern auch mithilfe einer [YAML-Datei](container-instances-multi-container-yaml.md) angeben. Das YAML-Format ist präziser, daher ist die Bereitstellung mit einer YAML-Datei eine gute Wahl, wenn Ihre Bereitstellung nur Containerinstanzen enthält.
+
 
 <!-- LINKS - Internal -->
 [aci-tutorial]: ./container-instances-tutorial-prepare-app.md

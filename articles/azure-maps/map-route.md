@@ -9,18 +9,18 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: 786880c5fa919fce5ed60d011211e6d7348f7260
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: b8205383c25ba04212126e0e6ca1bd44e4efad1a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570061"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264521"
 ---
 # <a name="show-directions-from-a-to-b"></a>Anzeigen einer Wegbeschreibung von A nach B
 
 In diesem Artikel erfahren Sie, wie Sie eine Route anfordern und die Route auf der Karte anzeigen.
 
-Dafür gibt es zwei Möglichkeiten. Die erste Möglichkeit besteht darin, die [Azure Maps-Routen-API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) über ein Dienstmodul abzufragen. Die zweite Möglichkeit besteht in der Nutzung der [Fetch-API](https://fetch.spec.whatwg.org/) für eine Suchanforderung an die [Routen-API von Azure Maps](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Beide Möglichkeiten werden im Folgenden erläutert.
+Dafür gibt es zwei Möglichkeiten. Die erste Möglichkeit besteht darin, die [Azure Maps-Routen-API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections) über ein Dienstmodul abzufragen. Die zweite Möglichkeit besteht in der Verwendung der [Fetch-API](https://fetch.spec.whatwg.org/) für eine Suchanforderung an die [Routen-API von Azure Maps](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Beide Möglichkeiten werden im Folgenden erläutert.
 
 ## <a name="query-the-route-via-service-module"></a>Abfragen der Route über das Dienstmodul
 
@@ -29,17 +29,17 @@ Dafür gibt es zwei Möglichkeiten. Die erste Möglichkeit besteht darin, die [A
 
 Im obigen Code erstellt der erste Codeblock ein Kartenobjekt und legt als Authentifizierungsmechanismus den Abonnementschlüssel fest. Eine Anleitung finden Sie unter [Erstellen einer Karte](./map-create.md).
 
-Der zweite Codeblock erstellt eine **SubscriptionKeyCredentialPolicy**, um HTTP-Anforderungen an Azure Maps mit dem Abonnementschlüssel zu authentifizieren. **atlas.service.MapsURL.newPipeline()** verwendet die Richtlinie **SubscriptionKeyCredential** und erstellt eine [Pipeline](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest)-Instanz. **routeURL** stellt eine URL zu [Routenvorgängen](https://docs.microsoft.com/rest/api/maps/route) von Azure Maps dar.
+Der zweite Codeblock erstellt eine `SubscriptionKeyCredentialPolicy`, um HTTP-Anforderungen an Azure Maps mit dem Abonnementschlüssel zu authentifizieren. `atlas.service.MapsURL.newPipeline()` verwendet die Richtlinie `SubscriptionKeyCredential` und erstellt eine [Pipeline](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest)-Instanz. `routeURL` stellt eine URL zu [Routenvorgängen](https://docs.microsoft.com/rest/api/maps/route) von Azure Maps dar.
 
 Mit dem dritten Codeblock wird ein [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)-Objekt erstellt und der Karte hinzugefügt.
 
 Mit dem vierten Codeblock werden [points](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest)-Objekte als Start- und Endpunkte erstellt und dem dataSource-Objekt hinzugefügt.
 
-Eine Linie ist ein [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)-Objekt von LineString. Ein [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest)-Objekt rendert Linienobjekte, die von [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) umschlossen sind, als Linien in der Karte. Mit dem vierten Codeblock wird eine Linienebene erstellt und der Karte hinzugefügt. Die Eigenschaften einer Linienebene finden Sie unter [LinestringLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest).
+Eine Linie ist ein [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)-Objekt von LineString. Ein [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest)-Objekt rendert Linienobjekte, die von [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) umschlossen sind, als Linien in der Karte. Mit dem letzten Codeblock wird eine Linienebene erstellt und der Karte hinzugefügt. Die Eigenschaften einer Linienebene finden Sie unter [LinestringLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest).
 
 Eine [Symbolebene](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) verwendet Text oder Symbole zum Rendern punktbasierter Daten, die in [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) als Symbole auf der Karte umschlossen sind. Mit dem fünften Codeblock wird eine Symbolebene erstellt und der Karte hinzugefügt.
 
-Mit dem sechsten Codeblock wird der Azure Maps-Routingdienst abgefragt, der Teil des [Dienstmoduls](https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2) ist. Die [calculateRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest#methods)-Methode von RouteURL wird genutzt, um eine Route zwischen den Start- und Endpunkten zu erhalten. Anschließend wird mit der Methode **geojson.getFeatures()** eine GeoJSON-Merkmalsauswahl extrahiert und der Datenquelle hinzugefügt. Anschließend wird die Antwort als Route in der Karte gerendert. Weitere Informationen zum Hinzufügen einer Linie zur Karte finden Sie unter [Hinzufügen einer Linie zur Karte](./map-add-shape.md#addALine).
+Mit dem sechsten Codeblock wird der Azure Maps-Routingdienst abgefragt, der Teil des [Dienstmoduls](https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js) ist. Die [calculateRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest#methods)-Methode von RouteURL wird genutzt, um eine Route zwischen den Start- und Endpunkten zu erhalten. Anschließend wird mit der `geojson.getFeatures()`-Methode eine GeoJSON-Merkmalsauswahl extrahiert und der Datenquelle hinzugefügt. Anschließend wird die Antwort als Route in der Karte gerendert. Weitere Informationen zum Hinzufügen einer Linie zur Karte finden Sie unter [Hinzufügen einer Linie zur Karte](./map-add-shape.md#addALine).
 
 Mit dem letzten Codeblock werden die Grenzen der Karte mithilfe der [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-)-Eigenschaft der Karte festgelegt.
 
@@ -62,7 +62,7 @@ Eine [Symbolebene](https://docs.microsoft.com/javascript/api/azure-maps-control/
 
 Mit dem nächsten Codeblock werden die Punkte `SouthWest` und `NorthEast` für die Start- und Endpunkte erstellt und die Grenzen der Karte festgelegt, indem die [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-)-Eigenschaft der Karte verwendet wird.
 
-Der letzte Codeblock nutzt die [Fetch-API](https://fetch.spec.whatwg.org/) für eine Suchanforderung an die [Routen-API von Azure Maps](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Anschließend wird die eingehende Antwort analysiert. Zur Erstellung einer erfolgreichen Antwort werden die Breiten- und Längengradinformationen für jeden Routenpunkt erfasst, und es wird ein Array mit Linien erstellt, indem diese Punkte verbunden werden. Anschließend werden diese Linien dann dem dataSource-Objekt hinzugefügt, um die Route in der Karte zu rendern. Eine Anleitung finden Sie unter [Hinzufügen einer Linie zur Karte](./map-add-shape.md#addALine).
+Der letzte Codeblock verwendet die [Fetch-API](https://fetch.spec.whatwg.org/) für eine Suchanforderung an die [Routen-API von Azure Maps](https://docs.microsoft.com/rest/api/maps/route/getroutedirections). Die Antwort wird dann analysiert. Bei einer erfolgreichen Antwort wird anhand der Breiten- und Längengradinformationen ein Array mit Linien erstellt, indem diese Punkte verbunden werden. Die Liniendaten werden dann der Datenquelle hinzugefügt, um die Route in der Karte zu rendern. Eine Anleitung finden Sie unter [Hinzufügen einer Linie zur Karte](./map-add-shape.md#addALine).
 
 Die Routenabfrage, die Datenquelle, die Symbolebene, die Linienebenen und die Kameragrenzen werden im [Ereignislistener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) der Karte erstellt und festgelegt, um sicherzustellen, dass die Ergebnisse nach dem vollständigen Laden der Karte angezeigt werden.
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: fdf2d3aeea32beba0b8e95c1816a80140d7cf6be
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 5a4e6819eeff2a2c8efaf3807c38cc06f7c35002
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958914"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006687"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Verwenden von VNET-Dienstendpunkten und -Regeln für Azure Database for MariaDB
 
@@ -91,7 +91,7 @@ Bei der Verwaltung der Dienstendpunkte des virtuellen Netzwerks erfolgt eine Tre
 - **Netzwerkadministrator:** &nbsp;Aktivieren des Endpunkts.
 - **Datenbankadministrator:** &nbsp;Aktualisieren der Zugriffssteuerungsliste, um das angegebene Subnetz dem Azure Database for MariaDB-Server hinzuzufügen.
 
-*Alternative zur rollenbasierten Zugriffssteuerung:*
+*Alternative zur rollenbasierten Zugriffssteuerung (RBAC):*
 
 Die Rollen „Netzwerkadministrator“ und „Datenbankadministrator“ haben mehr Zugriffsrechte, als für die Verwaltung von Regeln für ein virtuelles Netzwerk erforderlich ist. Es wird nur eine Teilmenge der Zugriffsrechte benötigt.
 
@@ -105,6 +105,8 @@ Sie können mit der [rollenbasierten Zugriffssteuerung (RBAC)][rbac-what-is-813s
 ## <a name="limitations"></a>Einschränkungen
 
 Bei Azure Database for MariaDB gelten für VNET-Regeln folgende Einschränkungen:
+
+- Eine Web-App kann einer privaten IP in einem VNET/Subnetz zugeordnet werden. Auch wenn Dienstendpunkte im entsprechenden VNET/Subnetz aktiviert sind, haben Verbindungen zwischen der Web-App und dem Server keine VNET-/Subnetzquelle, sondern eine öffentliche Azure-IP-Quelle. Um die Verbindung einer Web-App mit einem Server mit VNET-Firewallregeln zu ermöglichen, müssen Sie auf dem Server Azure-Diensten den Zugriff auf den Server erlauben.
 
 - In der Firewall für Azure Database for MariaDB verweist jede VNET-Regel auf ein Subnetz. Alle diese Subnetze müssen in derselben geografischen Region gehostet werden wie Azure Database for MariaDB.
 
@@ -138,7 +140,7 @@ Verwenden Sie die Azure CLI oder das Azure-Portal, um das Flag **IgnoreMissingSe
 
 ## <a name="next-steps"></a>Nächste Schritte
 Hier finden Sie weitere Artikel zum Erstellen von VNET-Regeln:
-- [Create and manage Azure Database for MariaDB VNet service endpoints and VNet rules by using the Azure portal](howto-manage-vnet-portal.md) (Erstellen und Verwalten von Azure Database for MariaDB-VNET-Dienstendpunkten und VNET-Regeln im Azure-Portal)
+- [Erstellen und Verwalten von VNET-Regeln für Azure Database for MariaDB im Azure-Portal](howto-manage-vnet-portal.md)
  
 <!--
 - [Create and manage Azure Database for MariaDB VNet rules using Azure CLI](howto-manage-vnet-using-cli.md)

@@ -12,40 +12,41 @@ ms.date: 03/12/2019
 ms.author: celested
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84f1b7c9461d2eba5e13be8b15b2cbcc62715c23
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 0357b7f421da753f102d2f05eaf8021cfc74aa2c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792037"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261614"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Einmaliges Anmelden bei Anwendungen in Azure Active Directory
+
 Mit dem einmaligen Anmelden (Single Sign-On, SSO) ist für Sicherheit und Komfort gesorgt, wenn sich Benutzer in Azure Active Directory (Azure AD) an Anwendungen anmelden. In diesem Artikel werden die Methoden für einmaliges Anmelden beschrieben, und Sie erhalten Hilfestellung beim Auswählen der am besten geeigneten SSO-Methode zum Konfigurieren Ihrer Anwendungen.
 
-- **Mit einmaligem Anmelden** melden sich Benutzer einmal mit einem Konto an, um auf in die Domäne eingebundene Geräte, Unternehmensressourcen, SaaS-Anwendungen (Software-as-a-Service) und Webanwendungen zuzugreifen. Nach der Anmeldung kann der Benutzer Anwendungen aus dem Office 365-Portal oder dem Azure AD-Zugriffsbereich MyApps starten. Administratoren können die Verwaltung von Benutzerkonten zentralisieren und den Benutzerzugriff auf Anwendungen basierend auf der Gruppenmitgliedschaft automatisch hinzufügen oder entfernen. 
+- **Mit einmaligem Anmelden** melden sich Benutzer einmal mit einem Konto an, um auf in die Domäne eingebundene Geräte, Unternehmensressourcen, SaaS-Anwendungen (Software-as-a-Service) und Webanwendungen zuzugreifen. Nach der Anmeldung kann der Benutzer Anwendungen aus dem Office 365-Portal oder dem Azure AD-Zugriffsbereich MyApps starten. Administratoren können die Verwaltung von Benutzerkonten zentralisieren und den Benutzerzugriff auf Anwendungen basierend auf der Gruppenmitgliedschaft automatisch hinzufügen oder entfernen.
 
 - **Ohne einmaliges Anmelden** müssen sich die Benutzer anwendungsspezifische Kennwörter merken und sich für jede Anwendung anmelden. IT-Mitarbeiter müssen Benutzerkonten für jede Anwendung erstellen und aktualisieren, z.B. Office 365, Box oder Salesforce. Benutzer müssen sich ihre Kennwörter merken und außerdem Zeit für die Anmeldung bei jeder Anwendung verbringen.
 
 ## <a name="choosing-a-single-sign-on-method"></a>Auswählen einer Methode für einmaliges Anmelden
 
-Es gibt mehrere Möglichkeiten, eine Anwendung für einmaliges Anmelden zu konfigurieren. Die Auswahl einer Methode für einmaliges Anmelden hängt davon ab, wie die Anwendung für die Authentifizierung konfiguriert ist. 
+Es gibt mehrere Möglichkeiten, eine Anwendung für einmaliges Anmelden zu konfigurieren. Die Auswahl einer Methode für einmaliges Anmelden hängt davon ab, wie die Anwendung für die Authentifizierung konfiguriert ist.
 
 - Cloudanwendungen können für einmaliges Anmelden die Methoden „OpenID Connect“, „OAuth“, „SAML“, „Kennwort“, „Verknüpft“ oder „Deaktiviert“ verwenden. 
 - Lokale Anwendungen können für einmaliges Anmelden die Methoden „Kennwort“, „Integrierte Windows-Authentifizierung“, „Header“, „Verknüpft“ oder „Deaktiviert“ verwenden. Die lokalen Optionen funktionieren, wenn die Anwendungen für den Anwendungsproxy konfiguriert wurden.
 
-Dieses Flussdiagramm erleichtert Ihnen die Entscheidung, welche Methode des einmaligen Anmeldens für Ihre Situation am besten geeignet ist. 
+Dieses Flussdiagramm erleichtert Ihnen die Entscheidung, welche Methode des einmaligen Anmeldens für Ihre Situation am besten geeignet ist.
 
-![Auswählen einer Methode für einmaliges Anmelden](./media/what-is-single-sign-on/choose-single-sign-on-method-updated.png)
+![Auswählen einer Methode für einmaliges Anmelden](./media/what-is-single-sign-on/choose-single-sign-on-method-040419.png)
 
-In der folgenden Tabelle werden die Methoden für einmaliges Anmelden zusammengefasst und Links zu weiteren Details angegeben. 
+In der folgenden Tabelle werden die Methoden für einmaliges Anmelden zusammengefasst und Links zu weiteren Details angegeben.
 
 | Methode für einmaliges Anmelden | Anwendungstypen | Einsatzgebiete |
 | :------ | :------- | :----- |
-| [OpenID Connect und OAuth](#openid-connect-and-oauth) | Nur Cloud | Verwenden Sie OpenID Connect und OAuth, wenn Sie eine neue Anwendung entwickeln. Dieses Protokoll vereinfacht die Anwendungskonfiguration, verfügt über leicht zu verwendende SDKs und ermöglicht für Ihre Anwendung die Nutzung von MS Graph.
+| [OpenID Connect und OAuth 2.0](#openid-connect-and-oauth) | Nur Cloud | Verwenden Sie OpenID Connect und OAuth, wenn Sie eine neue Anwendung entwickeln. Dieses Protokoll vereinfacht die Anwendungskonfiguration, verfügt über leicht zu verwendende SDKs und ermöglicht für Ihre Anwendung die Nutzung von MS Graph.
 | [SAML](#saml-sso) | Cloud und lokal | Wählen Sie SAML nach Möglichkeit immer für vorhandene Anwendungen, für die nicht OpenID Connect oder OAuth genutzt wird. SAML funktioniert für Anwendungen, bei denen die Authentifizierung mit einem der SAML-Protokolle durchgeführt wird.|
 | [Kennwortbasiert](#password-based-sso) | Cloud und lokal | Wählen Sie die kennwortbasierte Methode, wenn die Anwendung die Authentifizierung mit Benutzername und Kennwort vornimmt. Das kennwortbasierte einmalige Anmelden ermöglicht die sichere Speicherung des Anwendungskennworts und dessen Wiedergabe mit einer Webbrowsererweiterung oder einer mobilen App. Mit dieser Methode wird der von der Anwendung bereitgestellte vorhandene Anmeldevorgang genutzt, die Kennwortverwaltung kann jedoch der Administrator übernehmen. |
 | [Verknüpft](#linked-sso) | Cloud und lokal | Wählen Sie das verknüpfte einmalige Anmelden, wenn die Anwendung für einmaliges Anmelden bei einem anderen Identitätsanbieterdienst konfiguriert ist. Mit dieser Option wird der Anwendung kein einmaliges Anmelden hinzugefügt. Die Anwendung kann das einmalige Anmelden jedoch möglicherweise bereits über einen anderen Dienst implementiert haben, z.B. Active Directory-Verbunddienste.|
-| [Disabled](#disabled-sso) | Cloud und lokal | Wählen Sie das deaktivierte einmalige Anmelden, wenn die App nicht für einmaliges Anmelden konfiguriert werden kann. Benutzer müssen bei jedem Start dieser Anwendung ihren Benutzernamen und ihr Kennwort eingeben.|
+| [Deaktiviert](#disabled-sso) | Cloud und lokal | Wählen Sie das deaktivierte einmalige Anmelden, wenn die App nicht für einmaliges Anmelden konfiguriert werden kann. Benutzer müssen bei jedem Start dieser Anwendung ihren Benutzernamen und ihr Kennwort eingeben.|
 | [Integrierte Windows-Authentifizierung (IWA)](#integrated-windows-authentication-iwa-sso) | Nur lokal | Wählen Sie einmaliges Anmelden vom Typ IWA für Anwendungen, die die [integrierte Windows-Authentifizierung (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication) verwenden oder Ansprüche unterstützen. Bei IWA verwenden die Anwendungsproxyconnectors die eingeschränkte Kerberos-Delegierung (Kerberos Constrained Delegation, KCD), um Benutzer für die Anwendung zu authentifizieren. | 
 | [Headerbasiert](#header-based-sso) | Nur lokal | Verwenden Sie das headerbasierte einmalige Anmelden, wenn die Anwendung für die Authentifizierung Header verwendet. Headerbasiertes einmaliges Anmelden erfordert PingAccess für Azure AD. Der Anwendungsproxy verwendet Azure AD, um den Benutzer zu authentifizieren, und leitet Datenverkehr dann über den Connectordienst weiter.  | 
 
@@ -54,7 +55,7 @@ Verwenden Sie beim Entwickeln neuer Anwendungen moderne Protokolle wie OpenID Co
 
 Weitere Informationen finden Sie unter
 
-- [OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md)
+- [OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md)
 - [OpenID Connect 1.0](../develop/v2-protocols-oidc.md)
 - [Entwicklerhandbuch zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
 
@@ -187,8 +188,8 @@ Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](../fun
 
 ## <a name="related-articles"></a>Verwandte Artikel
 * [Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](../saas-apps/tutorial-list.md)
-* [Tutorial zum Konfigurieren des einmaligen Anmeldens](configure-single-sign-on-portal.md)
-* [Einführung in die Verwaltung des Zugriffs auf Anwendungen](what-is-access-management.md)
+* [Tutorial: Konfigurieren des SAML-basierten einmaligen Anmeldens für eine Anwendung mit Azure Active Directory](configure-single-sign-on-portal.md)
+* [Verwalten des Zugriffs auf Apps](what-is-access-management.md)
 * Downloadlink: [Single sign-on deployment plan](https://aka.ms/SSODeploymentPlan) (Bereitstellungsplan für einmaliges Anmelden)
 
 

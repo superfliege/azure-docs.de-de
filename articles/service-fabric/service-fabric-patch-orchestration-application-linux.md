@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 5efcc92bc2054dfb66b5fe03ae083c49f924d2ce
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 537450dbc386a94fa5c2e0d9334435dce041a32f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668193"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266136"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>Patchen des Linux-Betriebssystems in Ihrem Service Fabric-Cluster
 
@@ -76,7 +76,7 @@ In Azure-Linux-Clustern auf Dauerhaftigkeitsstufe „Silver“ und „Gold“ is
 
 ##### <a name="azure-portal"></a>Azure-Portal
 Sie können den Reparatur-Manager beim Einrichten des Clusters über das Azure-Portal aktivieren. Wählen Sie bei der Clusterkonfiguration unter **Add-On-Features** die Option **Reparatur-Manager einschließen** aus.
-![Abbildung zur Aktivierung des Reparatur-Managers über das Azure-Portal](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
+![Abbildung zur Aktivierung von Repair Manager über das Azure-Portal](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
 
 ##### <a name="azure-resource-manager-deployment-model"></a>Azure Resource Manager-Bereitstellungsmodell
 Alternativ können Sie den Reparatur-Manager-Dienst für neue und vorhandene Service Fabric-Cluster über das [Azure Resource Manager-Bereitstellungsmodell](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) aktivieren. Rufen Sie die Vorlage für den Cluster ab, den Sie bereitstellen möchten. Sie können entweder die Beispielvorlagen verwenden oder eine benutzerdefinierte Vorlage für das Azure Resource Manager-Bereitstellungsmodell erstellen. 
@@ -121,13 +121,13 @@ Für Ubuntu wird [unattended-upgrades](https://help.ubuntu.com/community/Automat
 
 Die Anwendung kann zusammen mit Installationsskripts über den [Archivlink](https://go.microsoft.com/fwlink/?linkid=867984) heruntergeladen werden.
 
-Die Anwendung im SFPKG-Format kann über den [SFPKG-Link](https://aka.ms/POA/POA_v2.0.2.sfpkg) heruntergeladen werden. Dies ist praktisch für die [Azure Resource Manager-basierte Anwendungsbereitstellung](service-fabric-application-arm-resource.md).
+Die Anwendung im SFPKG-Format kann über den [SFPKG-Link](https://aka.ms/POA/POA_v2.0.3.sfpkg) heruntergeladen werden. Dies ist praktisch für die [Azure Resource Manager-basierte Anwendungsbereitstellung](service-fabric-application-arm-resource.md).
 
 ## <a name="configure-the-app"></a>Konfigurieren der App
 
 Das Verhalten der App für die Patchorchestrierung kann Ihren Anforderungen entsprechend konfiguriert werden. Überschreiben Sie die Standardwerte, indem Sie während der Erstellung bzw. Aktualisierung einer Anwendung den Anwendungsparameter übergeben. Anwendungsparameter können durch Angeben von `ApplicationParameter` in den Cmdlets `Start-ServiceFabricApplicationUpgrade` oder `New-ServiceFabricApplication` festgelegt werden.
 
-|**Parameter**        |**Typ**                          | **Details**|
+|**Parameter**        |**Type**                          | **Details**|
 |:-|-|-|
 |MaxResultsToCache    |Long                              | Maximale Anzahl von Updateergebnissen, die zwischengespeichert werden sollen. <br>Der Standardwert ist 3000, wobei Folgendes angenommen wird: <br> – Es sind 20 Knoten vorhanden. <br> – Jeden Monat können fünf Updates auf einem Knoten erfolgen. <br> – Pro Vorgang können zehn Ergebnisse vorliegen. <br> – Es sollen die Ergebnisse für die letzten drei Monaten gespeichert werden. |
 |TaskApprovalPolicy   |Enum <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy gibt die Richtlinie an, die vom Koordinatordienst zum Installieren von Updates auf den Service Fabric-Clusterknoten verwendet werden soll.<br>                         Zulässige Werte sind: <br>                                                           <b>NodeWise</b>. Updates werden immer nur auf jeweils einem Knoten installiert. <br>                                                           <b>UpgradeDomainWise</b>. Updates werden immer nur in jeweils einer Upgradedomäne installiert. (Höchstens alle Knoten in einer Upgradedomäne können ein Update verwenden.)
@@ -173,7 +173,8 @@ Zur Vereinfachung werden ein PowerShell-Skript („Undeploy.ps1“) und ein Bash
 
 ## <a name="view-the-update-results"></a>Anzeigen der Updateergebnisse
 
-Die App für die Patchorchestrierung macht eine REST-API verfügbar, um dem Benutzer die Verlaufsergebnisse anzuzeigen. Im Folgenden ist ein Beispielergebnis aufgeführt: ```testadm@bronze000001:~$ curl -X GET http://10.0.0.5:20002/PatchOrchestrationApplication/v1/GetResults```
+Die App für die Patchorchestrierung macht eine REST-API verfügbar, um dem Benutzer die Verlaufsergebnisse anzuzeigen. Im Folgenden ist ein Beispielergebnis aufgeführt:
+```testadm@bronze000001:~$ curl -X GET http://10.0.0.5:20002/PatchOrchestrationApplication/v1/GetResults```
 ```json
 [ 
   { 
@@ -271,7 +272,7 @@ Wenn der Reparatur-Manager-Dienst im Cluster nicht gefunden werden kann, wird f�
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
-F: **Warum befindet sich mein Cluster im Status „Fehler“, wenn die App für die Patchorchestrierung ausgeführt wird?**
+F: **Warum befindet sich mein Cluster in einem Fehlerzustand, wenn die App für die Patchorchestrierung ausgeführt wird?**
 
 A. Während des Installationsprozesses deaktiviert die App für die Patchorchestrierung Knoten oder startet sie neu. Dieser Vorgang kann dazu führen, dass die Integrität des Clusters vorübergehend beeinträchtigt wird.
 
@@ -285,7 +286,7 @@ Im folgenden Beispiel ist der Cluster vorübergehend in einen Fehlerzustand gewe
 
 Sollte das Problem dauerhaft auftreten, lesen Sie die Informationen im Abschnitt zur Problembehandlung.
 
-F: **Die App für die Patchorchestrierung befindet sich im Status „Warnung“.**
+F: **Die App für die Patchorchestrierung befindet sich im Warnungszustand.**
 
 A. Überprüfen Sie, ob der für die Anwendung gesendete Integritätsbericht Informationen zur Ursache enthält. Üblicherweise enthält die Warnung Details zum Problem. Wenn das Problem vorübergehend ist, ist zu erwarten, dass die Anwendung automatisch wiederhergestellt wird.
 
@@ -293,7 +294,7 @@ F: **Was kann ich tun, wenn mein Cluster einen Fehler aufweist und ich ein dring
 
 A. Die App für die Patchorchestrierung installiert keine Updates, solange der Cluster sich in einem fehlerhaften Zustand befindet. Versetzen Sie den Cluster in einen fehlerfreien Zustand, um den Workflow der App für die Patchorchestrierung fortzuführen.
 
-F: **Warum dauert das Patchen für den gesamten Cluster so lange?**
+F: **Warum dauert das Patchen mehrerer Cluster so lange?**
 
 A. Die Ausführungsdauer der App für die Patchorchestrierung ist größtenteils von den folgenden Faktoren abhängig:
 
@@ -308,12 +309,12 @@ F: **Wie ermittelt die App für die Patchorchestrierung, bei welchen Updates es 
 A. Die App für die Patchorchestrierung verwendet distributionsspezifische Logik zum Ermitteln, bei welchen der verfügbaren Updates es sich um Sicherheitsupdates handelt. Beispiel:  In Ubuntu sucht die App nach Updates aus den Archiven „$RELEASE-security“ und „$RELEASE-updates“ („$RELEASE = xenial“ oder die Linux Standard-Basis-Releaseversion). 
 
  
-F: **Wie kann ich eine Sperre für eine bestimmte Paketversion festlegen?**
+F: **Wie kann ich eine bestimmte Paketversion sperren?**
 
 A. Verwenden Sie die ApprovedPatches-Einstellungen, um Pakete für eine bestimmte Version zu sperren. 
 
 
-F: **Wie verhält es sich mit in Ubuntu aktivierten automatischen Updates?**
+F: **Was geschieht, wenn automatische Updates in Ubuntu aktiviert sind?**
 
 A. Sobald Sie die App für die Patchorchestrierung im Cluster installieren, wird unattended-upgrades auf dem Clusterknoten deaktiviert. Der gesamte Workflow für regelmäßige Updates wird dann durch die App für die Patchorchestrierung gesteuert.
 Für die Konsistenz der Umgebung im Cluster empfiehlt es sich, die Updates ausschließlich über die App für die Patchorchestrierung zu installieren. 
@@ -373,5 +374,10 @@ Die App für die Patchorchestrierung sammelt Telemetriedaten zum Nachverfolgen v
 ### <a name="version-201"></a>Version 2.0.1
 - Die App wurde mithilfe des neuesten Service Fabric-SDK erneut kompiliert.
 
-### <a name="version-202-latest"></a>Version 2.0.2 (aktuelle Version)
+### <a name="version-202"></a>Version 2.0.2 
 - Es wurde ein Problem behoben, bei dem Zustandswarnungen während des Neustarts vernachlässigt wurden.
+
+### <a name="version-203-latest"></a>Version 2.0.3 (aktuelle Version)
+- Behebung eines Problems, bei dem die CPU-Auslastung des Knoten-Agent-Daemon-Diensts auf Standard_D1_v2-VMs bis zu 99 % erreicht hat.
+- Behebung eines Problems, bei dem der Patchinglebenszyklus auf einem Knoten beeinflusst wurde, wenn Knoten einen Namen aufwiesen, der Teil des aktuellen Knotennamens war. Bei diesen Knoten wird das Patching u. U. nicht ausgeführt, oder der Neustart steht aus.
+- Es wurde ein Fehler behoben, bei dem der Knoten-Agent-Daemon immer wieder abgestürzt ist, wenn beschädigte Einstellungen an den Dienst übergeben wurden.

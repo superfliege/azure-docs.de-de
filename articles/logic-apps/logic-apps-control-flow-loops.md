@@ -10,18 +10,18 @@ ms.reviewer: klam, LADocs
 manager: jeconnoc
 ms.date: 01/05/2019
 ms.topic: article
-ms.openlocfilehash: c37e41bce481fff5e172687907cce527c10ae006
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 3faa3b0a5cd919752f8b7e4969e3affd668c8077
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225007"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360764"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Erstellen von Schleifen in Azure Logic Apps, die Workflowaktionen wiederholen oder Arrays verarbeiten
 
 Um ein Array in Ihrer Logik-App zu verarbeiten, können Sie eine [„ForEach“-Schleife](#foreach-loop) erstellen. Diese Schleife wiederholt eine oder mehrere Aktionen für jedes Element im Array. Informationen über die maximale Anzahl der Arrayelemente, die „ForEach“-Schleifen verarbeiten können, finden Sie unter [Grenzwerte und -Konfiguration](../logic-apps/logic-apps-limits-and-config.md). 
 
-Um Aktionen zu wiederholen, bis eine Bedingung erfüllt ist oder sich ein Zustand ändert, können Sie eine [„Until“-Schleife](#until-loop) erstellen. Ihre Logik-App führt alle Aktionen innerhalb der Schleife aus und überprüft anschließend die Bedingung oder den Status. Wenn die Bedingung erfüllt ist, wird die Schleife beendet. Andernfalls wird die Schleife wiederholt. Informationen über die maximale Anzahl der „Until“-Schleifen in einer Logik-App-Ausführung finden Sie unter [Grenzwerte und -Konfiguration](../logic-apps/logic-apps-limits-and-config.md). 
+Um Aktionen zu wiederholen, bis eine Bedingung erfüllt ist oder sich ein Zustand ändert, können Sie eine [„Until“-Schleife](#until-loop) erstellen. Ihre Logik-App führt zuerst alle Aktionen innerhalb der Schleife aus und überprüft anschließend die Bedingung oder den Status. Wenn die Bedingung erfüllt ist, wird die Schleife beendet. Andernfalls wird die Schleife wiederholt. Informationen über die maximale Anzahl der „Until“-Schleifen in einer Logik-App-Ausführung finden Sie unter [Grenzwerte und -Konfiguration](../logic-apps/logic-apps-limits-and-config.md). 
 
 > [!TIP]
 > Wenn Sie einen Auslöser verwenden, der ein Array empfängt, und für jedes Arrayelement einen Workflow ausführen möchten, können Sie dieses Array mit der [**Auslösereigenschaft** SplitOn](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) *aus dem Batch lösen*. 
@@ -154,7 +154,9 @@ Wenn Sie mit der JSON-Definition Ihrer Logik-App arbeiten, können Sie die Optio
 
 ## <a name="until-loop"></a>„Until“-Schleife
   
-Um Aktionen zu wiederholen, bis eine Bedingung erfüllt ist oder sich ein Status ändert, können Sie diese Aktionen in eine „Until“-Schleife verlegen. Hier sind einige gängige Szenarios für eine „Until“-Schleife:
+Wenn Sie Aktionen ausführen und wiederholen möchten, bis eine Bedingung erfüllt ist oder sich ein Status ändert, können Sie diese Aktionen in eine „Until“-Schleife verlegen. Ihre Logik-App führt zuerst alle Aktionen innerhalb der Schleife aus und überprüft anschließend die Bedingung oder den Status. Wenn die Bedingung erfüllt ist, wird die Schleife beendet. Andernfalls wird die Schleife wiederholt.
+
+Hier sind einige gängige Szenarios für eine „Until“-Schleife:
 
 * Rufen Sie einen Endpunkt auf, bis Sie die gewünschte Antwort erhalten.
 
@@ -193,8 +195,8 @@ Diese beispielhafte Logik-App inkrementiert täglich um 8:00 Uhr eine Variable, 
 
    | Eigenschaft | Wert | BESCHREIBUNG |
    | -------- | ----- | ----------- |
-   | **Name** | Begrenzung | Name Ihrer Variablen | 
-   | **Typ** | Ganze Zahl  | Datentyp Ihrer Variablen | 
+   | **NAME** | Begrenzung | Name Ihrer Variablen | 
+   | **Type** | Ganze Zahl  | Datentyp Ihrer Variablen | 
    | **Wert** | 0 | Startwert Ihrer Variablen | 
    |||| 
 
@@ -234,9 +236,9 @@ Diese beispielhafte Logik-App inkrementiert täglich um 8:00 Uhr eine Variable, 
 
       | Eigenschaft | Wert | BESCHREIBUNG |
       | -------- | ----- | ----------- | 
-      | **An** | *<E-Mail-Adresse\@Domäne>* | Die E-Mail-Adresse des Empfängers. Geben Sie zum Testen Ihre eigene E-Mail-Adresse an. | 
-      | **Betreff** | Aktueller Wert für „Limit“ ist **Limit** | Legen Sie den E-Mail-Betreff fest. Stellen Sie in diesem Beispiel sicher, dass Sie die **Limit**-Variable einbeziehen. | 
-      | **Text** | <*E-Mail-Inhalt*> | Geben Sie den Inhalt der E-Mail-Nachricht an, die Sie senden möchten. In diesem Beispiel können Sie beliebigen Text eingeben. | 
+      | **To** | *<E-Mail-Adresse\@Domäne>* | Die E-Mail-Adresse des Empfängers. Geben Sie zum Testen Ihre eigene E-Mail-Adresse an. | 
+      | **Antragsteller** | Aktueller Wert für „Limit“ ist **Limit** | Legen Sie den E-Mail-Betreff fest. Stellen Sie in diesem Beispiel sicher, dass Sie die **Limit**-Variable einbeziehen. | 
+      | **Body** | <*E-Mail-Inhalt*> | Geben Sie den Inhalt der E-Mail-Nachricht an, die Sie senden möchten. In diesem Beispiel können Sie beliebigen Text eingeben. | 
       |||| 
 
 1. Speichern Sie Ihre Logik-App. Wählen Sie in der Symbolleiste des Designers die Option **Ausführen**, um Ihre Logik-App manuell zu testen.

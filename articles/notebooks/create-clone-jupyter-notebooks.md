@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 9b6a49e2-1d71-4c0b-9e5d-16e059427e38
-ms.service: azure
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: b99197f44961bdfa23050e9481e290e6c3d24845
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0ee0c7162e26b875c74796b6d5379b414981e2d5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57759084"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282320"
 ---
 # <a name="create-and-clone-projects"></a>Erstellen und Klonen von Projekten
 
@@ -30,19 +30,19 @@ Ein Projekt verwaltet außerdem Metadaten und andere Konfigurationseinstellungen
 
 Ihr Dashboard **Meine Projekte** unter `https://notebooks.azure.com/<userID>/projects` ist der Ort, an dem Sie Projekte anzeigen, verwalten und erstellen:
 
-[![Dashboard „Meine Projekte“ in Azure Notebooks](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
+[![MDashboard „Meine Projekte“ in Azure Notebooks(media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
 
 Die für Sie auf dem Dashboard möglichen Aktionen hängen davon ab, ob Sie mit dem Konto angemeldet sind, das die Benutzer-ID besitzt:
 
 | Get-Help | Verfügbar für | BESCHREIBUNG |
 | --- | --- | --- |
-| **Run** | Owner (Besitzer) | Startet den Projektserver und öffnet den Projektordner in Jupyter. (Sie werden wohl häufiger zuerst in den Projektordner navigieren und dann dort ein Notebook starten.) |
+| **Ausführen** | Owner (Besitzer) | Startet den Projektserver und öffnet den Projektordner in Jupyter. (Sie werden wohl häufiger zuerst in den Projektordner navigieren und dann dort ein Notebook starten.) |
 | **Download** | Beliebiger Benutzer | Lädt eine Kopie des ausgewählten Projekts als ZIP-Datei herunter. |
-| **Teilen** | Beliebiger Benutzer | Zeigt das Freigabepopupfenster, über das Sie eine URL zu einem ausgewählten Projekt erhalten, in sozialen Medien teilen, eine E-Mail mit der URL senden und wahlweise HTML- oder Markdowncode zusammen mit einem Badge „Notebook starten“ (siehe dazu [Abrufen eines Notebook-Badge](#obtain-a-launch-badge)) zusammen mit der URL erhalten können. |
+| **Freigabe** | Beliebiger Benutzer | Zeigt das Freigabepopupfenster, über das Sie eine URL zu einem ausgewählten Projekt erhalten, in sozialen Medien teilen, eine E-Mail mit der URL senden und wahlweise HTML- oder Markdowncode zusammen mit einem Badge „Notebook starten“ (siehe dazu [Abrufen eines Notebook-Badge](#obtain-a-launch-badge)) zusammen mit der URL erhalten können. |
 | **Löschen** | Owner (Besitzer) | Löscht das ausgewählte Projekt. Dieser Vorgang kann nicht rückgängig gemacht werden. |
 | **Terminal** | Owner (Besitzer) | Startet den Projektserver und öffnet dann ein neues Fenster mit dem Bash-Terminal für den betreffenden Server. |
 | **+ Neues Projekt** | Owner (Besitzer) | Erstellt ein neues Projekt. Siehe dazu [Erstellen eines neuen Projekts](#create-a-new-project). |
-| **Upload GitHub Repo** (GitHub-Repository hochladen) | Owner (Besitzer) | Importiert ein Projekt von GitHub. [Importieren eines Projekts von GitHub](#import-a-project-from-github). |
+| **Hochladen eines GitHub-Repositorys** | Owner (Besitzer) | Importiert ein Projekt von GitHub. [Importieren eines Projekts von GitHub](#import-a-project-from-github). |
 | **Klonen** | Beliebiger Benutzer | Kopiert ein ausgewähltes Projekt in Ihr eigenes Konto. Fordert Sie zur Anmeldung auf, wenn das noch nicht erfolgt ist. Siehe dazu [Klonen eines Projekts](#clone-a-project). |
 
 ### <a name="obtain-a-launch-badge"></a>Abrufen eines Start-Badge
@@ -120,7 +120,7 @@ So klonen Sie ein Projekt:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erkunden von Beispielnotebooks](azure-notebooks-samples.md)
+- [Informationen zu Beispielnotebooks](azure-notebooks-samples.md)
 - [Gewusst wie: Konfigurieren und Verwalten von Projekten](configure-manage-azure-notebooks-projects.md)
 - [Gewusst wie: Installieren von Paketen aus einem Notebook](install-packages-jupyter-notebook.md)
 - [Gewusst wie: Zeigen einer Bildschirmpräsentation](present-jupyter-notebooks-slideshow.md)

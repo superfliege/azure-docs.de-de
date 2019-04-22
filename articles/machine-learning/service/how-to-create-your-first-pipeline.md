@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1ace13b8802c86b3ad40725554c698851ff421b0
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: cc561bd88c18788be3ed1b9aef8a6a985af8a6f2
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360519"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278546"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Erstellen und Ausführen einer Machine Learning-Pipeline mit dem Azure Machine Learning SDK
 
@@ -35,6 +35,8 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erste
 * Erstellen Sie einen [Azure Machine Learning-Arbeitsbereich](how-to-configure-environment.md#workspace), um Ihre gesamten Pipelineressourcen aufzunehmen. 
 
   ```python
+  from azureml.core import Workspace
+  
   ws = Workspace.create(
      name = '<workspace-name>',
      subscription_id = '<subscription-id>',
@@ -91,7 +93,7 @@ blob_input_data = DataReference(
     path_on_datastore="20newsgroups/20news.pkl")
 ```
 
-Zwischendaten (oder die Ausgabe eines Schritts) werden durch ein [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)-Objekt dargestellt. `output_data1` wird als Ausgabe eines Schritts erstellt und als Eingabe für einen oder mehrere zukünftige Schritte verwendet. `PipelineData` führt eine Datenabhängigkeit zwischen den Schritten ein und erzeugt eine implizite Ausführungsreihenfolge in der Pipeline.
+Zwischendaten (oder die Ausgabe eines Schritts) werden durch ein [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py)-Objekt dargestellt. `output_data1` wird als Ausgabe eines Schritts erstellt und als Eingabe für mindestens einen zukünftigen Schritt verwendet. `PipelineData` führt eine Datenabhängigkeit zwischen den Schritten ein und erzeugt eine implizite Ausführungsreihenfolge in der Pipeline.
 
 ```python
 output_data1 = PipelineData(
@@ -118,6 +120,8 @@ Nachfolgend sind Beispiele zum Erstellen und Anfügen von Computezielen für Fol
 Sie können eine Azure Machine Learning-Computeressource zum Ausführen Ihrer Schritte erstellen.
 
 ```python
+from azureml.core.compute import ComputeTarget, AmlCompute
+
 compute_name = "aml-compute"
  if compute_name in ws.compute_targets:
     compute_target = ws.compute_targets[compute_name]

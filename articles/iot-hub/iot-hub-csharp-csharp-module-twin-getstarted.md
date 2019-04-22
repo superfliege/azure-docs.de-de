@@ -8,12 +8,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: 7a6362ea33a27b27798f1304e779099fca60cdd5
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 3b10ae0998acbb010e61ebb41c602c7d42bc14fa
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54446560"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263161"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-net-back-end-and-net-device"></a>Erste Schritte mit der Modulidentität und dem Modulzwilling von IoT Hub unter Verwendung eines .NET-Back-Ends und eines .NET-Geräts
 
@@ -54,7 +54,7 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App auf Ihrem simulierten G
 
 1. **Erstellen Sie ein Visual Studio-Projekt:** Fügen Sie in Visual Studio in der vorhandenen Projektmappe mithilfe der Projektvorlage **Konsolenanwendung (.NET Framework)** ein Visual C#-Projekt für den klassischen Windows-Desktop hinzu. Stellen Sie sicher, dass .NET Framework-Version 4.6.1 oder höher verwendet wird. Nennen Sie das Projekt **UpdateModuleTwinReportedProperties**.
 
-    ![Erstellen eines Visual Studio-Projekts](./media/iot-hub-csharp-csharp-module-twin-getstarted/update-twins-csharp1.JPG)
+    ![Erstellen eines Visual Studio-Projekts](./media/iot-hub-csharp-csharp-module-twin-getstarted/update-twins-csharp1.png)
 
 2. **Installieren Sie das neueste Azure IoT Hub-.NET-Geräte-SDK:** Die Modulidentität und der Modulzwilling befinden sich in der Public Preview. Sie sind nur in der Vorabversion der IoT Hub-Geräte-SDKs verfügbar. Navigieren Sie in Visual Studio zu „Tools“ > „NuGet-Paket-Manager“ > „NuGet-Pakete für Projektmappe verwalten“. Suchen Sie nach „Microsoft.Azure.Devices.Client“. Vergewissern Sie sich, dass das Kontrollkästchen „Vorabversion einbeziehen“ aktiviert ist. Wählen Sie die neueste Version aus, und installieren Sie sie. Sie haben nun Zugriff auf alle Modulfeatures. 
 
@@ -62,7 +62,7 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App auf Ihrem simulierten G
 
 3. **Abrufen der Modulverbindungszeichenfolge**: Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. Navigieren Sie zu Ihrer IoT Hub-Instanz, und klicken Sie auf „IoT-Geräte“. Suchen Sie nach „myFirstDevice“, und öffnen Sie den Eintrag. Sie sehen, dass „myFirstModule“ erfolgreich erstellt wurde. Kopieren Sie die Modulverbindungszeichenfolge. Sie wird im nächsten Schritt benötigt.
 
-    ![Moduldetails im Azure-Portal](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG)
+    ![Moduldetails im Azure-Portal](./media/iot-hub-csharp-csharp-module-twin-getstarted/module-detail.png)
 
 4. **Erstellen der Konsolen-App „UpdateModuleTwinReportedProperties“**
 
@@ -107,7 +107,7 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App auf Ihrem simulierten G
         }
     ```
 
-    Fügen Sie abschließend der **Main**-Methode die folgenden Zeilen hinzu:
+    Fügen Sie abschließend der **Main** -Methode die folgenden Zeilen hinzu:
 
     ```csharp
     static void Main(string[] args)
@@ -160,11 +160,11 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App auf Ihrem simulierten G
 
 ## <a name="run-the-apps"></a>Ausführen der Apps
 
-Sie können die Apps nun ausführen. Klicken Sie in Visual Studio im Projektmappen-Explorer mit der rechten Maustaste auf Ihre Projektmappe, und klicken Sie dann auf **Startprojekte festlegen**. Wählen Sie **Mehrere Startprojekte** und dann **Starten** als Aktion für die Konsolen-App aus. Drücken Sie F5, um die App zu starten. 
+Sie können die Apps nun ausführen. Klicken Sie in Visual Studio im Projektmappen-Explorer mit der rechten Maustaste auf Ihre Projektmappe, und klicken Sie dann auf **Startprojekte festlegen**. Wählen Sie **Mehrere Startprojekte** und dann **Starten** als Aktion für die Konsolen-App aus. Drücken Sie F5, um die App zu starten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zu den weiteren ersten Schritten mit IoT Hub und zum Kennenlernen anderer IoT-Szenarien finden Sie in den folgenden Artikeln:
 
 * [Erste Schritte mit der Geräteverwaltung](iot-hub-node-node-device-management-get-started.md)
-* [Erste Schritte mit IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Bereitstellen Ihres ersten IoT Edge-Moduls auf einem Linux-Gerät](../iot-edge/tutorial-simulate-device-linux.md)

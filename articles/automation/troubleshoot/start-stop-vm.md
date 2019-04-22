@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/13/2019
+ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f503d890dcc8ba90a8a4d8bafc09d5fd8b2856e6
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 03bad12b7fcba5a247e05884aa0eb0493163a5c4
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58804852"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009783"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Problembehandlung beim Starten/Beenden von VMs außerhalb der Geschäftszeiten
 
@@ -88,7 +88,7 @@ Dieser Fehler kann einen der folgenden Gründe haben:
 
 * Überprüfen Sie, ob Sie einen Zeitplan für die Starten/Beenden-VM-Lösung ordnungsgemäß konfiguriert haben. Wie Sie einen Zeitplan konfigurieren, erfahren Sie im Artikel [Planen eines Runbooks in Azure Automation](../automation-schedules.md).
 
-* Überprüfen Sie die Auftragsdatenströme für die Runbooks auf Fehler. Gehen Sie im Portal zu Ihrem Automation-Konto, und wählen Sie unter **Prozessautomatisierung** die Option **Aufträge** aus. Suchen Sie auf der Seite **Aufträge** nach Aufträgen aus einem der folgenden Runbooks:
+* Überprüfen Sie die [Auftragsdatenströme](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) auf Fehler. Gehen Sie im Portal zu Ihrem Automation-Konto, und wählen Sie unter **Prozessautomatisierung** die Option **Aufträge** aus. Suchen Sie auf der Seite **Aufträge** nach Aufträgen aus einem der folgenden Runbooks:
 
   * AutoStop_CreateAlert_Child
   * AutoStop_CreateAlert_Parent
@@ -143,6 +143,8 @@ Dieser Fehler kann einen der folgenden Gründe haben:
 
 * Wenn beim Starten oder Aufheben der Zuordnung des virtuellen Computers Probleme auftreten, kann dieses Verhalten durch ein Problem auf dem virtuellen Computer selbst verursacht worden sein. Einige Beispiele oder mögliche Probleme: Ein Update wird während des Versuchs angewendet, herunterzufahren, ein Dienst reagiert nicht mehr und Sonstiges. Navigieren Sie zu Ihrer VM-Ressource, und überprüfen Sie die **Aktivitätsprotokolle**, um festzustellen, ob Fehler in den Protokollen vorhanden sind. Sie können auch versuchen, sich bei dem virtuellen Computer anzumelden, um festzustellen, ob Fehler im Ereignisprotokoll vorhanden sind. Weitere Informationen zur Problembehandlung Ihrer VM finden Sie unter [Problembehandlung von virtuellen Azure-Computern](../../virtual-machines/troubleshooting/index.md).
 
+* Überprüfen Sie die [Auftragsdatenströme](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) auf Fehler. Gehen Sie im Portal zu Ihrem Automation-Konto, und wählen Sie unter **Prozessautomatisierung** die Option **Aufträge** aus.
+
 ## <a name="custom-runbook"></a>Szenario: Mein benutzerdefiniertes Runbook startet oder beendet meine virtuellen Computer nicht
 
 ### <a name="issue"></a>Problem
@@ -155,7 +157,7 @@ Es kommen viele Ursachen für diesen Fehler infrage. Gehen Sie zu Ihrem Automati
 
 ### <a name="resolution"></a>Lösung
 
-Sie sollten die [Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation](../automation-solution-vm-management.md) zum Starten und Beenden von virtuellen Computern in Azure Automation verwenden. Diese Lösung stammt von Microsoft. Benutzerdefinierte Runbooks werden von Microsoft nicht unterstützt. Möglicherweise finden Sie eine Lösung für Ihr benutzerdefiniertes Runbook in dem Artikel [Beheben von Fehlern bei Runbooks](runbooks.md). Dieser Artikel enthält allgemeine Richtlinien und Problembehandlung für Runbooks aller Typen.
+Sie sollten die [Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation](../automation-solution-vm-management.md) zum Starten und Beenden von virtuellen Computern in Azure Automation verwenden. Diese Lösung stammt von Microsoft. Benutzerdefinierte Runbooks werden von Microsoft nicht unterstützt. Möglicherweise finden Sie eine Lösung für Ihr benutzerdefiniertes Runbook in dem Artikel [Beheben von Fehlern bei Runbooks](runbooks.md). Dieser Artikel enthält allgemeine Richtlinien und Problembehandlung für Runbooks aller Typen. Überprüfen Sie die [Auftragsdatenströme](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) auf Fehler. Gehen Sie im Portal zu Ihrem Automation-Konto, und wählen Sie unter **Prozessautomatisierung** die Option **Aufträge** aus.
 
 ## <a name="dont-start-stop-in-sequence"></a>Szenario: Virtuelle Computer werden nicht in der richtigen Reihenfolge gestartet oder beendet
 
@@ -209,7 +211,7 @@ Oft können Fehler durch Verwendung einer alten und veralteten Version der Lösu
 
 ### <a name="resolution"></a>Lösung
 
-Zum Beheben vieler Fehler sollten Sie die Lösung entfernen und aktualisieren. Wie Sie die Lösung aktualisieren, erfahren Sie unter [Aktualisieren der Lösung](../automation-solution-vm-management.md#update-the-solution).
+Zum Beheben vieler Fehler sollten Sie die Lösung entfernen und aktualisieren. Wie Sie die Lösung aktualisieren, erfahren Sie unter [Aktualisieren der Lösung](../automation-solution-vm-management.md#update-the-solution). Überprüfen Sie außerdem die [Auftragsdatenströme](../automation-runbook-execution.md#viewing-job-status-from-the-azure-portal) auf Fehler. Gehen Sie im Portal zu Ihrem Automation-Konto, und wählen Sie unter **Prozessautomatisierung** die Option **Aufträge** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

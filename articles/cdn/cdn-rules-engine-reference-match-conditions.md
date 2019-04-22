@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: 1e17ec48c35a7e01ca87016406fb416a05544b41
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 877d994968dbc575c8baa7ac4c8a40b76f6d617f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087192"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283476"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Übereinstimmungsbedingungen der Azure CDN-Regel-Engine 
 Dieser Artikel enthält ausführliche Beschreibungen der verfügbaren Übereinstimmungsbedingungen für die [Regel-Engine](cdn-rules-engine.md) des Azure Content Delivery Network (CDN).
@@ -45,7 +45,7 @@ Die Übereinstimmungsbedingung „Device“ bestimmt Anforderungen von einem Mob
 
 NAME | Zweck
 -----|--------
-[Device](#device) | Bestimmt Anforderungen von einem Mobilgerät anhand seiner Eigenschaften.
+[Gerät](#device) | Bestimmt Anforderungen von einem Mobilgerät anhand seiner Eigenschaften.
 
 ## <a name="location-match-conditions"></a>Location-Übereinstimmungsbedingungen
 
@@ -101,7 +101,7 @@ NAME | Zweck
 
 
 ## <a name="reference-for-rules-engine-match-conditions"></a>Referenz für Übereinstimmungsbedingungen der Regel-Engine
-
+<a name="main"></a>
 ---
 ### <a name="always"></a>Always
 
@@ -970,9 +970,9 @@ user=joe              | Für dieses Muster ergibt sich eine Übereinstimmung, we
 </br>
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Übersicht über Azure Content Delivery Network](cdn-overview.md)
+* [Was ist ein Content Delivery Network in Azure?](cdn-overview.md)
 * [Regel-Engine – Referenz](cdn-rules-engine-reference.md)
-* [Regel-Engine – bedingte Ausdrücke](cdn-rules-engine-reference-conditional-expressions.md)
+* [Regel-Engine – Bedingte Ausdrücke](cdn-rules-engine-reference-conditional-expressions.md)
 * [Regel-Engine – Features](cdn-rules-engine-reference-features.md)
-* [Überschreiben des HTTP-Standardverhaltens mithilfe der Regel-Engine](cdn-rules-engine.md)
+* [Überschreiben des HTTP-Verhaltens mithilfe der Azure CDN-Regel-Engine](cdn-rules-engine.md)
 

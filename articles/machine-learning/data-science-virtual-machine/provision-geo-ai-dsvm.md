@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: c4b178cc7e0604f38e4da25452a3bad01f8145de
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dde9b71c3615a592f8c08e040c5e9ba7bc756bd6
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57858139"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008837"
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Bereitstellen einer Data Science-VM für geografische KI in Azure 
 
@@ -87,7 +87,7 @@ Andernfalls können Sie sich für ein neues ArcGIS-Konto und eine Lizenz registr
 
 ![Kostenlose Testversion von ArcGIS](./media/provision-geo-ai-dsvm/ArcGIS-Free-Trial.png)
 
-Sobald Sie sich für ein kostenpflichtiges oder kostenloses ArcGIS-Testkonto registriert haben, können Sie ArcGIS Pro für Ihr Konto autorisieren. Befolgen Sie dazu die Anweisungen in der [Dokumentation zum Einstieg in ArcGIS Pro](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf). 
+Sobald Sie sich für ein kostenpflichtiges oder kostenloses ArcGIS-Testkonto registriert haben, können Sie ArcGIS Pro für Ihr Konto autorisieren. Führen Sie hierzu die Anweisungen unter [Getting Started with ArcGIS Pro (Erste Schritte mit ArcGIS Pro)](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf) aus. 
 
 Nachdem Sie sich mit Ihrem ArcGIS-Konto bei ArcGIS Pro Desktop angemeldet haben, können Sie die auf dem virtuellen Computer installierten und konfigurierten Data Science-Tools für Ihre geografischen Analysen und Ihre Projekte für maschinelles Lernen verwenden.
 

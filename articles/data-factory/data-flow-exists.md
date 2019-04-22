@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 18d8a0e231e8b4dbe33911dd6267966674366904
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 6ce27ba699ae766ed4d2428f67d91379464bb9f1
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734488"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006137"
 ---
 # <a name="azure-data-factory-mapping-data-flow-exists-transformation"></a>Azure Data Factory Mapping Data Flow: Exists-Transformation
 
@@ -25,3 +25,10 @@ Die Exists-Transformation ist eine Zeilenfilterungstransformation, die das Durch
 Wählen Sie die zweite Quelle für Exists aus, damit Datenfluss die Werte aus Datenstrom 1 mit Datenstrom 2 vergleichen kann.
 
 Wählen Sie die Spalte aus Quelle 1 und aus Quelle 2 aus, deren Werte Sie auf das Vorhandensein oder Nichtvorhandensein überprüfen möchten.
+
+## <a name="multiple-exists-conditions"></a>Mehrere Exists-Bedingungen
+
+Neben jeder Zeile in Ihrer Spalte für Exists-Bedingungen wird ein Pluszeichen (+) angezeigt, wenn Sie auf die jeweilige Zeile zeigen. Dadurch können Sie mehrere Zeilen für Exists-Bedingungen hinzufügen.
+
+## <a name="next-steps"></a>Nächste Schritte
+

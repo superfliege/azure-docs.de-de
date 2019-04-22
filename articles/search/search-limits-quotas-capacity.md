@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8a6023c87dd1d68ab76c5c2342cb825e63d2b336
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: c52ac6128ad00d9bb772816d6130f3aedc480138
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620639"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273395"
 ---
 # <a name="service-limits-in-azure-search"></a>Grenzwerte für den Azure Search-Dienst
 Die Grenzwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und anderen Objekten hängen davon ab, ob die [Bereitstellung von Azure Search](search-create-service-portal.md) im Tarif **Free**, **Basic**, **Standard** oder **Storage Optimized** erfolgt.
@@ -114,7 +114,7 @@ Ressourcenintensive Vorgänge wie Bildanalysen in der Azure-BLOB-Indizierung ode
 | Blobindexer: maximale Blobgröße, MB |16 |16 |128 |256 |256 |–  |256 |256 |
 | Blobindexer: maximale Anzahl der Zeichen des aus einem Blob extrahierten Inhalts |32.000 |64.000 |4 Millionen |4 Millionen |4 Millionen |– |4 Millionen |4 Millionen |
 
-<sup>1</sup> Die maximale Indexerausführungszeit bei Diensten im Free-Tarif beträgt drei Minuten für Blobquellen und eine Minute für alle anderen Datenquellen.
+<sup>1</sup> Die maximale Indexerausführungszeit bei Diensten im Free-Tarif beträgt drei Minuten für Blobquellen und eine Minute für alle anderen Datenquellen. Für eine KI-Indizierung, die Aufrufe in Cognitive Services ausführt, gilt bei den kostenlosen Diensten ein Limit von 20 kostenlosen Transaktionen pro Tag. Dabei ist eine Transaktion als ein Dokument definiert, das die Anreicherungspipeline erfolgreich durchläuft.
 
 <sup>2</sup> Bei Diensten mit dem Tarif „Basic“, die nach Ende 2017 erstellt wurden, wurde das Limit auf 15 Indizes, Datenquellen und Indexer erhöht. Für zuvor erstellte Dienste gilt eine Begrenzung auf 5.
 

@@ -7,16 +7,16 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: 50a8c30831ba806d0ea02d4f67b4e672e71e6325
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 8cc2a6d4ad06bf4a55d4ef078970823df1e0d910
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415084"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281963"
 ---
 # <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway-preview"></a>Konfigurieren von OpenVPN-Clients für Azure VPN Gateway (Point-to-Site) (Vorschau)
 
-In diesem Artikel erfahren Sie, wie Sie OpenVPN für Azure VPN Gateway einrichten. In diesem Artikel wird davon ausgegangen, dass Sie in einer Point-to-Site-Umgebung arbeiten. Falls nicht, befolgen Sie die Anweisungen in Schritt 1, um ein Point-to-Site-VPN zu erstellen.
+In diesem Artikel erfahren Sie, wie Sie **OpenVPN® Protocol** für Azure VPN Gateway einrichten. In diesem Artikel wird davon ausgegangen, dass Sie in einer Point-to-Site-Umgebung arbeiten. Falls nicht, befolgen Sie die Anweisungen in Schritt 1, um ein Point-to-Site-VPN zu erstellen.
 
 > [!IMPORTANT]
 > Diese öffentliche Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -54,15 +54,11 @@ Wenn Sie noch keine funktionsfähige Point-to-Site-Umgebung haben, folgen Sie de
 > [!IMPORTANT]
 > Die Basic-SKU wird für OpenVPN nicht unterstützt.
 
-## <a name="cmdlets"></a>2. Installieren von PowerShell-Cmdlets
-
-Installieren Sie die aktuelle Version der PowerShell-Cmdlets für Resource Manager. Weitere Informationen zum Installieren von PowerShell-Cmdlets finden Sie unter [Overview of Azure PowerShell](/powershell/azure/overview) (Übersicht über Azure PowerShell). Dies ist wichtig, da frühere Versionen der Cmdlets nicht die aktuellen Werte enthalten, die Sie für diese Übung benötigen.
-
-## <a name="enable"></a>3. Aktivieren von OpenVPN auf dem Gateway
+## <a name="enable"></a>2. Aktivieren von OpenVPN auf dem Gateway
 
 Aktivieren Sie OpenVPN auf Ihrem Gateway. Vergewissern Sie sich, dass das Gateway bereits für Point-to-Site (IKEv2 oder SSTP) konfiguriert ist, bevor Sie die folgenden Befehle ausführen:
 
-```powershell
+```azurepowershell-interactive
 $gw = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $name
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -VpnClientProtocol OpenVPN
 ```
@@ -70,3 +66,5 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -VpnClientProtocol OpenVP
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zum Konfigurieren von OpenVPN finden Sie unter [Konfigurieren von OpenVPN-Clients](vpn-gateway-howto-openvpn-clients.md).
+
+**„OpenVPN“ ist eine Marke von OpenVPN Inc.**

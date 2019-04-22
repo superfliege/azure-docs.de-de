@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15b37c4845526227799173b09f468701954fc7b5
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 6ecbac8af86c3c2c76b7710eb61f71481b86291b
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449330"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009868"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen in einer Azure VM-Skalierungsgruppe mithilfe einer Vorlage
 
@@ -60,7 +60,7 @@ Unabhängig von der gewählten Option ist die Vorlagensyntax während der urspr�
 
 In diesem Abschnitt aktivieren und deaktivieren Sie die systemzugewiesene verwaltete Identität mithilfe einer Azure Resource Manager-Vorlage.
 
-### <a name="enable-system-assigned-managed-identity-during-creation-the-creation-of-a-virtual-machines-scale-set-or-a-existing-virtual-machine-scale-set"></a>Aktivieren der vom System zugewiesenen verwalteten Identität bei der Erstellung einer VM-Skalierungsgruppe oder in einer vorhandenen VM-Skalierungsgruppe
+### <a name="enable-system-assigned-managed-identity-during-creation-the-creation-of-a-virtual-machines-scale-set-or-an-existing-virtual-machine-scale-set"></a>Aktivieren der vom System zugewiesenen verwalteten Identität bei der Erstellung einer VM-Skalierungsgruppe oder in einer vorhandenen VM-Skalierungsgruppe
 
 1. Verwenden Sie unabhängig davon, ob Sie sich bei Azure lokal oder über das Azure-Portal anmelden, ein Konto, das dem Azure-Abonnement zugeordnet ist, das die VM-Skalierungsgruppe enthält.
 2. Um die vom System zugewiesene verwaltete Identität zu aktivieren, laden Sie die Vorlage in einem Editor, suchen Sie die gewünschte Ressource `Microsoft.Compute/virtualMachinesScaleSets` im Ressourcenabschnitt, und fügen Sie die `identity`-Eigenschaft auf der gleichen Ebene wie die `"type": "Microsoft.Compute/virtualMachinesScaleSets"`-Eigenschaft hinzu. Verwenden Sie die folgende Syntax:

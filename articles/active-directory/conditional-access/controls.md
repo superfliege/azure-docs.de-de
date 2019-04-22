@@ -18,12 +18,12 @@ ms.date: 03/23/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ceaf472f53c48b17701b14fdf4107045c2e43fdc
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: a92d10f67533efc2f5893b012aefbcb92efee59a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521974"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258741"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Was sind die Zugriffssteuerungen beim bedingten Zugriff mit Azure Active Directory?
 
@@ -58,7 +58,7 @@ Mit Gewährungssteuerelementen können Sie entweder den gesamten Zugriff sperren
 - Alle ausgewählten Steuerelemente müssen erfüllt werden (*AND*)
 - Ein ausgewähltes Steuerelement muss erfüllt werden (*OR*)
 
-![Kontrolle](./media/controls/17.png)
+![Kontrolle](./media/controls/18.png)
 
 ### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
@@ -76,9 +76,9 @@ Sie können die Richtlinien für den bedingten Zugriff auf Geräteebene festlege
 
 Ihr Gerät muss in Azure AD registriert werden, bevor es als konform markiert werden kann. Zum Registrieren eines Geräts stehen Ihnen drei Optionen zur Auswahl: 
 
-- [In Azure AD registrierte Geräte](../devices/overview.md#azure-ad-registered-devices)
+- [Bei Azure AD registrierte Geräte](../devices/overview.md#azure-ad-registered-devices)
 - [In Azure AD eingebundene Geräte](../devices/overview.md#azure-ad-joined-devices)  
-- [Über Azure AD Hybrid Join eingebundene Geräte](../devices/overview.md#hybrid-azure-ad-joined-devices)
+- [In Azure AD eingebundene Hybridgeräte](../devices/overview.md#hybrid-azure-ad-joined-devices)
 
 Weitere Informationen finden Sie unter [Vorschreiben der Verwendung verwalteter Geräte für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs](require-managed-devices.md).
 
@@ -94,6 +94,18 @@ Da Ihre Mitarbeiter mobile Geräte sowohl für private als auch für berufliche 
 Sie können [Intune-Richtlinien für den App-Schutz](https://docs.microsoft.com/intune/app-protection-policy) verwenden, um die Daten Ihres Unternehmens unabhängig von der jeweiligen MDM-Lösung (Mobile Device Management, mobile Geräteverwaltung) zu schützen.
 
 Wenn Sie genehmigte Client-Apps verwenden, können Sie die Anforderung festlegen, dass eine Client-App, die auf Ihre Cloud-Apps zugreifen möchte, die [Intune-Richtlinien für den App-Schutz](https://docs.microsoft.com/intune/app-protection-policy) unterstützen muss. Sie können zum Beispiel den Zugriff auf Exchange Online für die Outlook-App einschränken. Eine Richtlinie für den bedingten Zugriff, die genehmigte Client-Apps erfordert, wird auch als [Richtlinie für den App-basierten bedingten Zugriff](app-based-conditional-access.md) bezeichnet. Eine Liste der unterstützten genehmigten Client-Apps finden Sie unter [Genehmigte Client-App als Voraussetzung](technical-reference.md#approved-client-app-requirement).
+
+### <a name="app-protection-policy-preview"></a>App-Schutzrichtlinie (Vorschauversion)
+
+Da Ihre Mitarbeiter mobile Geräte sowohl für private als auch für berufliche Zwecke verwenden, sollten Sie die Möglichkeit haben, Unternehmensdaten, auf die mit den Geräten zugegriffen wird, auch dann zu schützen, wenn diese Geräte nicht von Ihnen verwaltet werden.
+Sie können [Intune-Richtlinien für den App-Schutz](https://docs.microsoft.com/intune/app-protection-policy) verwenden, um die Daten Ihres Unternehmens unabhängig von der jeweiligen MDM-Lösung (Mobile Device Management, mobile Geräteverwaltung) zu schützen.
+
+Über App-Schutzrichtlinien können Sie den Zugriff auf Clientanwendungen begrenzen, deren [Intune-App-Schutzrichtlinien](https://docs.microsoft.com/intune/app-protection-policy) bei Azure AD gemeldet wurden. Sie können zum Beispiel den Zugriff auf Exchange Online auf die Outlook-App beschränken, die eine Intune-App-Schutzrichtlinie aufweist. Eine Richtlinie für den bedingten Zugriff, die eine App-Schutzrichtlinie erfordert, wird auch als [Schutzrichtlinie für den App-basierten bedingten Zugriff](app-protection-based-conditional-access.md) bezeichnet. 
+
+Ihr Gerät muss bei Azure AD registriert werden, bevor eine Anwendung als von einer Richtlinie geschützt gekennzeichnet werden kann.
+
+Eine Liste der unterstützen durch Richtlinien geschützten Client-Apps finden Sie unter [Genehmigte Client-App als Voraussetzung](technical-reference.md#app-protection-policy-requirement).
+
 
 ### <a name="terms-of-use"></a>Terms of Use (Nutzungsbedingungen)
 
@@ -162,9 +174,9 @@ Sie können dieses Steuerelement verwenden, um von Azure AD anzufordern, die Ger
 
 Weitere Informationen finden Sie unter:
 
-- [Aktivieren des eingeschränkten Zugriffs mit SharePoint Online](https://aka.ms/spolimitedaccessdocs)
+- [Enabling limited access with SharePoint Online (Aktivieren des eingeschränkten Zugriffs mit SharePoint Online)](https://aka.ms/spolimitedaccessdocs)
 
-- [Aktivieren des eingeschränkten Zugriffs mit Exchange Online](https://aka.ms/owalimitedaccess)
+- [Enabling limited access with Exchange Online (Aktivieren des eingeschränkten Zugriffs mit Exchange Online)](https://aka.ms/owalimitedaccess)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

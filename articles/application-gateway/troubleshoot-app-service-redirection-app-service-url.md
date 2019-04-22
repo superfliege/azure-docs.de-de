@@ -7,27 +7,35 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: 359d75f10f95b0e41ccd9a869d49247355f0d5d0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f456cfec82a315a2be877a52e4f3f1850b992736
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123180"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274535"
 ---
-# <a name="troubleshoot-application-gateway-with-app-service--redirection-to-app-services-url"></a>Problembehandlung für Application Gateway mit App Service: Umleitung zur App Service-URL
+# <a name="troubleshoot-application-gateway-with-app-service"></a>Problembehandlung für Application Gateway mit App Service
 
- Erfahren Sie, wie Sie Umleitungsprobleme mit Application Gateway in Szenarios diagnostizieren und beheben, in denen die App Service-URL verfügbar gemacht wird.
+Erfahren Sie, wie Sie aufgetretene Probleme bei Application Gateway und App Service als Back-End-Server diagnostizieren und beheben können.
 
 ## <a name="overview"></a>Übersicht
+
+In diesem Artikel erfahren Sie, wie Sie die folgenden Probleme beheben können:
+
+> [!div class="checklist"]
+> * App Service-URL wird bei einer Umleitung im Browser angezeigt
+> * ARRAffinity-Cookiedomäne von App Service ist auf App Service-Hostname (example.azurewebsites.net) und nicht auf ursprünglichen Host festgelegt
 
 Wenn Sie eine öffentliche App Service-Instanz im Back-End-Pool von Application Gateway konfigurieren und im Anwendungscode eine Umleitung eingerichtet ist, werden Sie beim Zugriff auf Application Gateway möglicherweise vom Browser direkt zur App Service-URL umgeleitet.
 
 Dieses Problem kann folgende Hauptursachen haben:
 
-- Sie haben für App Service eine Umleitung konfiguriert. Diese ist im einfachsten Fall auf einen nachgestellten Schrägstrich zurückzuführen, der der Anforderung hinzugefügt wurde.
+- Sie haben für App Service eine Umleitung konfiguriert. Diese kann im einfachsten Fall auf einen nachgestellten Schrägstrich zurückzuführen sein, der der Anforderung hinzugefügt wurde.
 - Die Umleitung wird durch die Nutzung der Azure AD-Authentifizierung ausgelöst.
 - Sie haben in den HTTP-Einstellungen von Application Gateway die Option „Hostnamen aus Back-End-Adresse auswählen“ aktiviert.
 - Sie haben Ihre benutzerdefinierte Domäne nicht bei App Service registriert.
+
+Auch wenn Sie App Services hinter Application Gateway und für den Zugriff auf Application Gateway eine benutzerdefinierte Domäne verwenden, entspricht der Domänenwert für das von App Service festgelegte ARRAffinity-Cookie möglicherweise dem Domänennamen „example.azurewebsites.net“. Wenn der ursprüngliche Hostname auch für die Cookiedomäne verwendet werden soll, befolgen Sie die Anweisungen in der Lösung zur Problembehandlung in diesem Artikel.
 
 ## <a name="sample-configuration"></a>Beispielkonfiguration
 
@@ -94,6 +102,16 @@ Hierzu müssen Sie über eine benutzerdefinierte Domäne verfügen und die im Fo
 - Ordnen Sie den benutzerdefinierten Test wieder den Back-End-HTTP-Einstellungen zu, und überprüfen Sie die Back-End-Integrität.
 
 - Der Hostname „www.contoso.com“ sollte nun von Application Gateway an die App Service-Instanz weitergeleitet und außerdem für die Umleitung verwendet werden. Im Folgenden sehen Sie ein Beispiel für Anforderungs- und Antwortheader.
+
+Um die oben beschriebenen Schritte unter Verwendung von PowerShell für ein vorhandenes Setup zu implementieren, führen Sie das nachfolgende PowerShell-Beispielskript aus. Beachten Sie, dass die „-PickHostname“-Switches in der Konfiguration für die Test- und HTTP-Einstellungen nicht verwendet wurden.
+
+```azurepowershell-interactive
+$gw=Get-AzApplicationGateway -Name AppGw1 -ResourceGroupName AppGwRG
+Set-AzApplicationGatewayProbeConfig -ApplicationGateway $gw -Name AppServiceProbe -Protocol Http -HostName "example.azurewebsites.net" -Path "/" -Interval 30 -Timeout 30 -UnhealthyThreshold 3
+$probe=Get-AzApplicationGatewayProbeConfig -Name AppServiceProbe -ApplicationGateway $gw
+Set-AzApplicationGatewayBackendHttpSettings -Name appgwhttpsettings -ApplicationGateway $gw -Port 80 -Protocol Http -CookieBasedAffinity Disabled -Probe $probe -RequestTimeout 30
+Set-AzApplicationGateway -ApplicationGateway $gw
+```
   ```
   ## Request headers to Application Gateway:
 

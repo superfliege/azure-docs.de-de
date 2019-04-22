@@ -1,23 +1,30 @@
 ---
 title: Suchen nach einer Adresse mit dem Suchdienst von Azure Maps | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mit dem Suchdienst von Azure Maps nach einer Adresse suchen.
-author: dsk-2015
-ms.author: dkshir
-ms.date: 09/11/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 04/05/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
-ms.openlocfilehash: ba5ea7205a5d0e5fdbadc8a1ba955091ae95b569
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+manager: philmea
+ms.openlocfilehash: 8ab2c73030c0860fc709a774b9fd84d20a6d7c99
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875785"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277322"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Suchen nach einer Adresse mit dem Suchdienst von Azure Maps
 
 Bei dem Maps-Suchdienst handelt es sich um eine für Entwickler konzipierte Gruppe von RESTful-APIs für die Suche nach Adressen, Orten, interessanten Orten, Brancheneinträgen und anderen geografischen Informationen. Der Dienst weist einer bestimmten Adresse, einer Querstraße, einem geografischen Objekt oder einem interessanten Ort (POI) einen Breiten- und Längengrad zu. Die von der Suche zurückgegebenen Werte für den Breiten- und Längengrad können als Parameter in anderen Maps-Diensten verwendet werden, z.B. für Routen oder Verkehrsfluss.
+
+In diesem Artikel wird Folgendes behandelt:
+
+* Suchen nach einer Adresse mithilfe der [API für die Fuzzysuche](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)
+* Suchen nach einer Adresse mit deren Eigenschaften und Koordinaten
+* Ausführen einer [inversen Adresssuche](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse), um nach einer Anschrift zu suchen
+* Suchen nach der Querstraße mithilfe der [API für die inverse Adresssuche nach Querstraßen](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -6,12 +6,12 @@ ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.openlocfilehash: f5c42b73b0452392cdd2a06619722b3f7de2cc27
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 83d16071cbcac4199db9f3757121f9811db49727
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417481"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006335"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql"></a>Verwenden von VNET-Dienstendpunkten und -Regeln für Azure Database for PostgreSQL
 
@@ -92,7 +92,7 @@ Bei der Verwaltung der Dienstendpunkte des virtuellen Netzwerks erfolgt eine Tre
 - **Netzwerkadministrator:** &nbsp;Aktivieren des Endpunkts.
 - **Datenbankadministrator:** &nbsp;Aktualisieren der Zugriffssteuerungsliste, um das angegebene Subnetz dem Azure Database for PostgreSQL-Server hinzuzufügen.
 
-*Alternative zur rollenbasierten Zugriffssteuerung:*
+*Alternative zur rollenbasierten Zugriffssteuerung (RBAC):*
 
 Die Rollen „Netzwerkadministrator“ und „Datenbankadministrator“ haben mehr Zugriffsrechte, als für die Verwaltung von Regeln für ein virtuelles Netzwerk erforderlich ist. Es wird nur eine Teilmenge der Zugriffsrechte benötigt.
 
@@ -106,6 +106,8 @@ Sie können mit der [rollenbasierten Zugriffssteuerung (RBAC)][rbac-what-is-813s
 ## <a name="limitations"></a>Einschränkungen
 
 Bei Azure Database for PostgreSQL gelten für VNET-Regeln folgende Einschränkungen:
+
+- Eine Web-App kann einer privaten IP in einem VNET/Subnetz zugeordnet werden. Auch wenn Dienstendpunkte im entsprechenden VNET/Subnetz aktiviert sind, haben Verbindungen zwischen der Web-App und dem Server keine VNET-/Subnetzquelle, sondern eine öffentliche Azure-IP-Quelle. Um die Verbindung einer Web-App mit einem Server mit VNET-Firewallregeln zu ermöglichen, müssen Sie auf dem Server Azure-Diensten den Zugriff auf den Server erlauben.
 
 - In der Firewall für Azure Database for PostgreSQL verweist jede VNET-Regel auf ein Subnetz. Alle diese Subnetze müssen in derselben geografischen Region gehostet werden wie Azure Database for PostgreSQL.
 
@@ -140,7 +142,7 @@ Verwenden Sie die Azure CLI oder das Azure-Portal, um das Flag **IgnoreMissingSe
 ## <a name="next-steps"></a>Nächste Schritte
 Hier finden Sie weitere Artikel zum Erstellen von VNET-Regeln:
 - [Erstellen und Verwalten von VNET-Regeln für Azure Database for PostgreSQL über das Azure-Portal](howto-manage-vnet-using-portal.md)
-- [Erstellen und Verwalten von VNET-Regeln für Azure Database for PostgreSQL über Azure CLI](howto-manage-vnet-using-cli.md)
+- [Erstellen und Verwalten von VNET-Regeln für Azure Database for PostgreSQL mithilfe der Azure CLI](howto-manage-vnet-using-cli.md)
 
 
 <!-- Link references, to text, Within this same GitHub repo. -->

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/28/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: b741528b2770314be7e851f38817611d6908352b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 588b8b11a02551a790145aafb013759699004267
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814944"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009964"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: Überwachung und Diagnose mit einer Latenzzeit von 1 Sekunde
 
@@ -34,9 +34,9 @@ Mit Live Metrics Stream haben Sie folgende Möglichkeiten:
 * Überwachen Sie Windows-Leistungsindikatoren live.
 * Identifizieren Sie mühelos einen Server mit Problemen, und filtern Sie nach allen KPIs/dem Livefeed nur für diesen Server.
 
-[![Video zu Live Metrics Stream](./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
+[![Live Metrics Stream video (Video zu Live Metrics Stream)](./media/live-stream/youtube.png)](https://www.youtube.com/watch?v=zqfHf1Oi5PY)
 
-Livemetriken werden derzeit für ASP.NET, ASP.NET Core, Azure Functions und Java-Apps unterstützt.
+Livemetriken werden derzeit für ASP.NET-, ASP.NET Core-, Azure Functions-, Java- und Node.js-Apps unterstützt.
 
 ## <a name="get-started"></a>Erste Schritte
 
@@ -60,7 +60,7 @@ Livemetriken werden derzeit für ASP.NET, ASP.NET Core, Azure Functions und Java
 | |Live Stream | Metrik-Explorer und Analytics |
 |---|---|---|
 |Latenz|Daten werden innerhalb einer Sekunde angezeigt.|Aggregation innerhalb mehrerer Minuten|
-|Keine Beibehaltung|Daten werden beibehalten, solange sie im Diagramm angezeigt werden, und dann verworfen.|[Daten werden 90 Tage lang beibehalten.](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
+|Keine Beibehaltung|Daten werden beibehalten, solange sie im Diagramm angezeigt werden, und dann verworfen.|[Daten werden 90 Tage lang aufbewahrt.](../../azure-monitor/app/data-retention-privacy.md#how-long-is-the-data-kept)|
 |On-Demand-Streaming|Daten werden beim Öffnen von Live Metrics gestreamt.|Daten werden gesendet, sobald das SDK installiert und aktiviert wird.|
 |Kostenlos|Keine Gebühren für Live Stream-Daten|[Gebührenpflichtig](../../azure-monitor/app/pricing.md)
 |Stichproben|Alle ausgewählten Metriken und Indikatoren werden übertragen. Für Fehler und Stapelüberwachungen werden Stichproben erstellt. Telemetrieprozessoren werden nicht angewendet.|Für Ereignisse können [Stichproben](../../azure-monitor/app/api-filtering-sampling.md) erstellt werden.|
@@ -207,7 +207,7 @@ Sie sehen keine Daten? Wenn sich Ihre Anwendung in einem geschützten Netzwerk b
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Überwachen der Verwendung mit Application Insights](../../azure-monitor/app/usage-overview.md)
-* [Verwenden der Diagnosesuche](../../azure-monitor/app/diagnostic-search.md)
+* [Verwendungsanalyse mit Application Insights](../../azure-monitor/app/usage-overview.md)
+* [Verwenden von Search in Application Insights](../../azure-monitor/app/diagnostic-search.md)
 * [Profiler](../../azure-monitor/app/profiler.md)
-* [Snapshot Debugger](../../azure-monitor/app/snapshot-debugger.md)
+* [Debugger für Momentaufnahmen](../../azure-monitor/app/snapshot-debugger.md)

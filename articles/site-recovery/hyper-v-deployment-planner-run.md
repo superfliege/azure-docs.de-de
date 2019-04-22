@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 776523bb001848e6ecc153f670a96e3143e2ac0d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6528b683ec9464c2b1982d631455718e6fe6f3b7
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006352"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361337"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Ausführen des Azure Site Recovery-Bereitstellungsplaners für die Hyper-V-Notfallwiederherstellung in Azure
 
@@ -98,7 +98,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Password|(Optional) Das Kennwort zum Herstellen der Verbindung mit dem Hyper-V-Host. Wenn Sie es nicht als Parameter angeben, werden Sie beim Ausführen des Befehls zum Eingeben aufgefordert.|
 |-StorageAccountName|(Optional) Der Name des Speicherkontos zur Ermittlung des Durchsatzes, der für die Replikation von Daten aus der lokalen Umgebung in Azure erreichbar ist. Mit dem Tool werden Testdaten in dieses Speicherkonto hochgeladen, um den Durchsatz zu berechnen. Das Speicherkonto muss vom Typ „Allgemein v1 (GPv1)“ sein.|
 |-StorageAccountKey|(Optional) Der Schlüssel, der zum Zugreifen auf das Speicherkonto verwendet wird. Navigieren Sie im Azure-Portal zu **Speicherkonten** > *<Name des Speicherkontos>* > **Einstellungen** > **Zugriffsschlüssel** > **Key1** (oder der primäre Zugriffsschlüssel für ein klassisches Speicherkonto).|
-|-Environment|(Optional) Ihre Zielumgebung für das Azure-Speicherkonto. Dies kann einer von drei Werten sein: „AzureCloud“, „AzureUSGovernment“ oder „AzureChinaCloud“. Der Standardwert ist „AzureCloud“. Verwenden Sie den Parameter, wenn Sie als Zielregion „Azure US Government“ oder „Azure China“ nutzen.|
+|-Environment|(Optional) Ihre Zielumgebung für das Azure-Speicherkonto. Dies kann einer von drei Werten sein: „AzureCloud“, „AzureUSGovernment“ oder „AzureChinaCloud“. Der Standardwert ist „AzureCloud“. Verwenden Sie den Parameter, wenn Sie als Zielregion „Azure US Government“ oder „Azure China 21Vianet“ nutzen.|
 
 Es wird empfohlen, die Profilerstellung für Ihre VMs länger als 7 Tage durchzuführen. Wenn sich das Muster der Datenänderung innerhalb eines Monats ändert, ist es ratsam, die Profilerstellung in die Woche mit der höchsten Datenänderung zu legen. Die beste Möglichkeit besteht darin, die Profilerstellung 31 Tage lang durchzuführen, um eine bessere Empfehlung zu erhalten. 
 
@@ -254,14 +254,14 @@ Es wird dringend empfohlen, bei der Bereitstellungsplanung den künftigen Zuwach
 
 Der erstellte Microsoft Excel-Bericht enthält die folgenden Informationen:
 
-* [On-premises Summary](hyper-v-deployment-planner-analyze-report.md#on-premises-summary) (Lokale Zusammenfassung)
+* [On-premises Summary (Lokale Zusammenfassung)](hyper-v-deployment-planner-analyze-report.md#on-premises-summary)
 * [Empfehlungen](hyper-v-deployment-planner-analyze-report.md#recommendations)
-* [VM-storage placement](hyper-v-deployment-planner-analyze-report.md#vm-storage-placement-recommendation) (VM/Speicher-Anordnung)
-* [Compatible VMs](hyper-v-deployment-planner-analyze-report.md#compatible-vms) (Kompatible VMs)
-* [Incompatible VMs](hyper-v-deployment-planner-analyze-report.md#incompatible-vms) (Inkompatible VMs)
-* [On-premises Storage Requirement](hyper-v-deployment-planner-analyze-report.md#on-premises-storage-requirement) (Bedarf an lokalem Speicher)
-* [IR batching](hyper-v-deployment-planner-analyze-report.md#initial-replication-batching) (IR-Batchverarbeitung)
-* [Cost Estimation](hyper-v-deployment-planner-cost-estimation.md) (Kostenvorkalkulation)
+* [VM/Speicher-Anordnung](hyper-v-deployment-planner-analyze-report.md#vm-storage-placement-recommendation)
+* [Kompatible VMs](hyper-v-deployment-planner-analyze-report.md#compatible-vms)
+* [Inkompatible VMs](hyper-v-deployment-planner-analyze-report.md#incompatible-vms)
+* [On-premises Storage Requirement (Bedarf an lokalem Speicher)](hyper-v-deployment-planner-analyze-report.md#on-premises-storage-requirement)
+* [IR-Batchverarbeitung](hyper-v-deployment-planner-analyze-report.md#initial-replication-batching)
+* [Cost Estimation (Kostenvorkalkulation)](hyper-v-deployment-planner-cost-estimation.md)
 
 ![Bereitstellungsplaner-Bericht](media/hyper-v-deployment-planner-run/deployment-planner-report-h2a.png)
 
@@ -283,7 +283,7 @@ ASRDeploymentPlanner.exe -Operation GetThroughput /?
 | -StorageAccountName | Der Name des Speicherkontos zur Ermittlung der Bandbreite, die für die Replikation von Daten aus der lokalen Umgebung in Azure verbraucht wird. Mit dem Tool werden Testdaten in dieses Speicherkonto hochgeladen, um die verbrauchte Bandbreite zu ermitteln. Das Speicherkonto muss vom Typ „Allgemein v1 (GPv1)“ sein.|
 | -StorageAccountKey | Der Schlüssel des Speicherkontos, der zum Zugreifen auf das Speicherkonto verwendet wird. Navigieren Sie zum Azure-Portal und dann zu **Speicherkonten** > *Name des Speicherkontos* > **Einstellungen** > **Zugriffsschlüssel** > **Key1**.|
 | -VMListFile | Die Datei mit der Liste der VMs, für die Profile erstellt werden sollen, um die verbrauchte Bandbreite zu berechnen. Der Dateipfad kann absolut oder relativ sein. Für Hyper-V ist diese Datei die Ausgabedatei des Vorgangs GetVMList. Falls Sie die Vorbereitung manuell durchführen, sollte die Datei einen Servernamen oder eine IP-Adresse gefolgt vom VM-Namen (mit dem Trennzeichen „\“ pro Zeile) enthalten. Der in der Datei angegebene VM-Name sollte dem VM-Namen auf dem Hyper-V-Host entsprechen.<br><br>**Beispiel:** „VMList.txt“ enthält die folgenden VMs:<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
-|-Environment|(Optional) Ihre Zielumgebung für das Azure-Speicherkonto. Dies kann einer von drei Werten sein: „AzureCloud“, „AzureUSGovernment“ oder „AzureChinaCloud“. Der Standardwert ist „AzureCloud“. Verwenden Sie den Parameter, wenn Sie als Azure-Zielregion „Azure US Government“ oder „Azure China“ nutzen.|
+|-Environment|(Optional) Ihre Zielumgebung für das Azure-Speicherkonto. Dies kann einer von drei Werten sein: „AzureCloud“, „AzureUSGovernment“ oder „AzureChinaCloud“. Der Standardwert ist „AzureCloud“. Verwenden Sie den Parameter, wenn Sie als Zielregion „Azure US Government“ oder „Azure China 21Vianet“ nutzen.|
 
 ### <a name="example"></a>Beispiel
 ```

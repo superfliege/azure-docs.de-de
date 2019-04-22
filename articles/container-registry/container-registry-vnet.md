@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 04/03/2019
 ms.author: danlep
-ms.openlocfilehash: 0a4d9f355a5cdc92bab4491c08677042c42986cb
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 15b67218b129b5e017e67651587c389af412d7a1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517928"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268412"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Beschränken des Zugriffs auf eine Azure-Containerregistrierung mithilfe eines virtuellen Azure-Netzwerks oder mit Firewallregeln
 
@@ -29,6 +29,8 @@ In diesem Artikel werden zwei Szenarios vorgestellt, bei denen mithilfe von Netz
 * Nur im Tarif **Premium** kann die Containerregistrierung mit Netzwerkregeln konfiguriert werden. Informationen zu den Tarifen des Registrierungsdiensts finden Sie unter [Azure Container Registry-SKUs](container-registry-skus.md). 
 
 * Nur ein [Azure Kubernetes Service](../aks/intro-kubernetes.md)-Cluster oder ein [virtueller Azure-Computer](../virtual-machines/linux/overview.md) kann in einem virtuellen Netzwerk als Host für den Zugriff auf die Containerregistrierung verwendet werden. *Andere Azure-Dienste einschließlich Azure Container Instances werden derzeit nicht unterstützt.*
+
+* [ACR Tasks](container-registry-tasks-overview.md)-Vorgänge werden derzeit in einer Containerregistrierung, die in einem virtuellen Netzwerk bereitgestellt wurde, nicht unterstützt.
 
 * Jede Registrierung unterstützt bis zu 100 Regeln für virtuelle Netzwerke.
 

@@ -13,18 +13,39 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/01/2019
+ms.date: 04/02/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b186aa2692033a774d1d8f294315fcc0f5e874d5
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: 8240308b3e0955b1d4d3ef2e82cad215daf95b00
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58763062"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009367"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Steuerung von HANA in Azure (große Instanzen) über das Azure-Portal
 Dieses Dokument beschreibt, wie [HANA (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) im [Azure-Portal](https://portal.azure.com) dargestellt wird und welche Aktivitäten Sie über das Azure-Portal mit den für Sie bereitgestellten Einheiten von HANA (große Instanzen) ausführen können. Die Sichtbarkeit von HANA (große Instanzen) im Azure-Portal wird über einen Azure-Ressourcenanbieter für HANA (große Instanzen) bereitgestellt. Diese Funktion befindet sich derzeit in der öffentlichen Vorschau.
+
+## <a name="register-hana-large-instance-resource-provider"></a>Registrieren des Ressourcenanbieters für HANA (große Instanzen)
+In Ihrem Azure-Abonnement, das Sie für Bereitstellungen von HANA (große Instanzen) verwendet haben, ist der Ressourcenanbieter für HANA (große Instanzen) in der Regel registriert. Wenn jedoch keine bereitgestellten HANA-Einheiten (große Instanzen) angezeigt werden, sollten Sie den Ressourcenanbieter in Ihrem Azure-Abonnement registrieren. Für die Registrierung des Ressourcenanbieters für HANA (große Instanzen) stehen zwei Möglichkeiten zur Verfügung.
+
+### <a name="register-through-cli-interface"></a>Registrierung über die Befehlszeilenschnittstelle
+Sie müssen über die Azure-Befehlszeilenschnittstelle bei dem Azure-Abonnement angemeldet sein, das für die Bereitstellung von HANA (große Instanzen) verwendet wird. Sie können den Ressourcenanbieter für HANA (große Instanzen) mit dem folgenden Befehl registrieren oder erneut registrieren:
+    
+    az provider register --namespace Microsoft.HanaOnAzure
+
+Weitere Informationen finden Sie im Artikel [Ressourcenanbieter und -typen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#azure-cli).
+
+
+### <a name="register-through-azure-portal"></a>Registrierung über das Azure-Portal
+Sie können den Ressourcenanbieter für HANA (große Instanzen) über das Azure-Portal registrieren oder erneut registrieren. Sie müssen Ihr Abonnement, das für die Bereitstellung der HANA-Einheiten (große Instanzen) verwendet wurde, im Azure-Portal anzeigen und darauf doppelklicken. Wählen Sie wie unten gezeigt auf der Übersichtsseite Ihres Abonnements die Option „Ressourcenanbieter“ aus, und geben Sie „HANA“ im Suchfenster ein. 
+
+![Registrieren des Ressourcenanbieters für HANA (große Instanzen) über das Azure-Portal](./media/hana-li-portal/portal-register-hli-rp.png)
+
+Im abgebildeten Screenshot wurde der Ressourcenanbieter bereits registriert. Für den Fall, dass der Ressourcenanbieter noch nicht registriert ist, klicken Sie auf „Erneut registrieren“ oder „Registrieren“.
+
+Weitere Informationen finden Sie im Artikel [Ressourcenanbieter und -typen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#azure-powershell).
+
 
 ## <a name="display-of-hana-large-instance-units-in-the-azure-portal"></a>Anzeige der Einheiten von HANA (große Instanzen) im Azure-Portal
 Wenn Sie eine Bereitstellungsanforderung für HANA (große Instanzen) übermitteln, werden Sie aufgefordert, das Azure-Abonnement anzugeben, das mit HANA (große Instanzen) verknüpft werden soll. Es wird empfohlen, dasselbe Abonnement zu verwenden, das Sie zum Bereitstellen der SAP-Anwendungsschicht einsetzen, die den Einheiten von HANA (große Instanzen) entgegenwirkt.
@@ -46,6 +67,8 @@ Wenn Sie die Ressourcengruppe gefunden haben, zeigen Sie deren Details an. Die L
 
 Alle aufgeführten Einheiten stellen eine einzelne Einheit von HLI (HANA Large Instances, große Instanzen) dar, die in Ihrem Abonnement bereitgestellt wurde. In diesem Fall betrachten wir acht verschiedene Einheiten von HANA (große Instanzen), die in Ihrem Abonnement bereitgestellt wurden.
 
+Wenn Sie mehrere Mandanten für HANA (große Instanzen) unter demselben Azure-Abonnement bereitgestellt haben, werden mehrere Azure-Ressourcengruppen angezeigt. 
+
 
 ## <a name="look-at-attributes-of-single-hli-unit"></a>Anzeigen von Attributen einer einzelnen HLI-Einheit
 In der Liste der Einheiten von HANA (große Instanzen) können Sie auf eine einzelne Einheit klicken und zu den Details der einzelnen Einheit von HANA (große Instanzen) gelangen. 
@@ -57,7 +80,7 @@ Auf der Übersichtsseite erhalten Sie eine Darstellung der Einheit, die in etwa 
 Wenn Sie die verschiedenen dargestellten Attribute betrachten, unterscheiden sich diese Attribute nicht wesentlich von Azure-VM-Attributen. Auf der linken Seite des Headers werden die Ressourcengruppe, die Azure-Region, der Abonnementname und die ID sowie einige von Ihnen hinzugefügte Tags angezeigt. Standardmäßig ist den Einheiten von HANA (große Instanzen) kein Tag zugewiesen. Auf der rechten Seite des Headers wird der Name der Einheit so aufgeführt, wie er bei der Bereitstellung zugewiesen wurde. Außerdem werden das Betriebssystem und die IP-Adresse angezeigt. Wie bei VMs wird auch der Einheitentyp von HANA (große Instanzen) mit der Anzahl von CPU-Threads und dem Arbeitsspeicher aufgeführt. Weitere Informationen zu den verschiedenen Einheiten von HANA (große Instanzen) finden Sie hier:
 
 - [Verfügbare SKUs für HLI](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus)
-- [Speicherarchitektur von SAP HANA (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-storage-architecture) 
+- [SAP HANA-Speicherarchitektur (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-storage-architecture) 
 
 Ein zusätzliches Feld in der rechten Spalte des Headers informiert Sie über den Energiezustand der Einheit von HANA (große Instanzen).
 
@@ -86,7 +109,7 @@ Der Abschnitt **Eigenschaften** enthält wichtige Informationen, die Sie bei Üb
 
 ![Oberer Teil der HLI-Eigenschaften im Azure-Portal](./media/hana-li-portal/portal-properties-top.png)
 
-Die ersten paar Datenelemente haben Sie bereits im Übersichtsbildschirm gesehen. Ein wichtiger Bestandteil der Daten ist jedoch die ID der ExpressRoute-Verbindung, die Sie bei der Übergabe der ersten bereitgestellten Einheiten erhalten. In einigen Supportfällen werden Sie möglicherweise nach diesen Daten gefragt. Ein wichtiger Dateneintrag wird im unteren Teil des Screenshot gezeigt. Dabei handelt es sich um die IP-Adresse des NFS-Speicherheads, die Ihren Speicher im Stapel von HANA (große Instanzen) auf Ihren **Mandanten** isoliert. Diese IP-Adresse ist auch erforderlich, wenn Sie die [Konfigurationsdatei für Sicherungen von Speichermomentaufnahmen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore#set-up-storage-snapshots) bearbeiten. 
+Die ersten paar Datenelemente haben Sie bereits im Übersichtsbildschirm gesehen. Ein wichtiger Bestandteil der Daten ist jedoch die ID der ExpressRoute-Verbindung, die Sie bei der Übergabe der ersten bereitgestellten Einheiten erhalten haben. In einigen Supportfällen werden Sie möglicherweise nach diesen Daten gefragt. Ein wichtiger Dateneintrag wird im unteren Teil des Screenshot gezeigt. Dabei handelt es sich um die IP-Adresse des NFS-Speicherheads, die Ihren Speicher im Stapel von HANA (große Instanzen) auf Ihren **Mandanten** isoliert. Diese IP-Adresse ist auch erforderlich, wenn Sie die [Konfigurationsdatei für Sicherungen von Speichermomentaufnahmen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore#set-up-storage-snapshots) bearbeiten. 
 
 Während Sie im Eigenschaftenbereich nach unten scrollen, erhalten Sie zusätzliche Daten wie eine eindeutige Ressourcen-ID für Ihre Einheit für HANA (große Instanzen) oder die Abonnement-ID, die der Bereitstellung zugewiesen wurde.
 
@@ -99,6 +122,9 @@ Wenn Sie auf die Schaltfläche „Neu starten“ klicken, werden Sie gefragt, ob
 
 > [!NOTE]
 > Während des Neustartvorgangs dauert es einen Augenblick, bis der Zustand der Einheit von **Wird gestartet** zu **Gestartet** wechselt. Der Zustand **Gestartet** weist darauf hin, dass das Betriebssystem gerade gestartet wird oder bereits vollständig gestartet wurde. Daher können Sie sich nach einem Neustart der Einheit möglicherweise nicht sofort bei der Einheit anmelden, sobald der Zustand zu **Gestartet** wechselt.
+
+> [!IMPORTANT]
+> Abhängig von der Speichermenge in Ihrer HANA-Einheit (große Instanzen) kann der Neustart der Hardware und des Betriebssystems bis zu einer Stunde dauern.
 
 
 ## <a name="open-a-support-request-for-hana-large-instances"></a>Öffnen einer Supportanfrage für HANA (große Instanzen)
@@ -115,7 +141,7 @@ In der Liste der Dienste finden Sie den Dienst **SAP HANA (große Instanzen)**. 
 
 ![Auswählen der Problemklasse im Azure-Portal](./media/hana-li-portal/portal-select-problem-class.png)
 
-Unter jedem der verschiedenen Problemtypen wird Ihnen eine Auswahl von Problemuntertypen angeboten, die Sie zur weiteren Eingrenzung des Problems auswählen müssen. Nach Auswahl des Untertyps können Sie jetzt den Betreff benennen. Sobald Sie mit dem Auswahlprozess fertig sind, können Sie mit dem nächsten Erstellungsschritt fortfahren. Im Abschnitt **Lösungen** werden Sie auf Dokumentation zu HANA (große Instanzen) verwiesen. Dort finden Sie möglicherweise Hinweise auf eine Lösung Ihres Problems. Wenn Sie in der vorgeschlagenen Dokumentation keine Lösung für Ihr Problem finden, wechseln Sie zum nächsten Schritt. Im nächsten Schritt werden Sie gefragt, ob das Problem bei VMs oder bei Einheiten von HANA (große Instanzen) auftritt. So wird die Supportanfrage an die richtigen Experten weitergeleitet. 
+Unter jedem der verschiedenen Problemtypen wird Ihnen eine Auswahl von Problemuntertypen angeboten, die Sie zur weiteren Eingrenzung des Problems auswählen müssen. Nach Auswahl des Untertyps können Sie jetzt den Betreff benennen. Sobald Sie mit dem Auswahlprozess fertig sind, können Sie mit dem nächsten Erstellungsschritt fortfahren. Im Abschnitt **Lösungen** werden Sie auf Dokumentation zu HANA (große Instanzen) verwiesen. Dort finden Sie möglicherweise Hinweise auf eine Lösung Ihres Problems. Wenn Sie in der vorgeschlagenen Dokumentation keine Lösung für Ihr Problem finden, wechseln Sie zum nächsten Schritt. Im nächsten Schritt werden Sie gefragt, ob das Problem bei VMs oder bei Einheiten von HANA (große Instanzen) auftritt. Anhand dieser Angaben wird die Supportanfrage an die richtigen Experten weitergeleitet. 
 
 ![Details einer Supportanfrage im Azure-Portal](./media/hana-li-portal/portal-support-request-details.png)
 

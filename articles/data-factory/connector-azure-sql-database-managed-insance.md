@@ -55,8 +55,8 @@ Folgende Eigenschaften werden für den mit der verwalteten Azure SQL-Datenbank-I
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf **SqlServer** festgelegt sein. | Ja. |
 | connectionString |Diese Eigenschaft gibt die „connectionString“-Informationen an, die zum Herstellen einer Verbindung mit der verwalteten Instanz mithilfe der SQL- oder Windows-Authentifizierung benötigt werden. Weitere Informationen finden Sie in den folgenden Beispielen. <br/>Markieren Sie dieses Feld als „SecureString“, um es sicher in Data Factory zu speichern. Sie können auch das Kennwort in Azure Key Vault speichern und bei Verwendung der SQL-Authentifizierung die `password`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie im JSON-Beispiel unter der Tabelle und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja. |
-| userName |Diese Eigenschaft gibt einen Benutzernamen an, wenn Sie Windows-Authentifizierung verwenden. Ein Beispiel lautet **domainname\\username**. | Nein. |
-| password |Diese Eigenschaft gibt ein Kennwort für das Benutzerkonto an, das Sie für „username“ angegeben haben. Wählen Sie [SecureString](store-credentials-in-key-vault.md) aus, um die connectionString-Informationen sicher in Data Factory zu speichern, oder **verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis**. | Nein. |
+| userName |Diese Eigenschaft gibt einen Benutzernamen an, wenn Sie Windows-Authentifizierung verwenden. Ein Beispiel lautet **domainname\\username**. |Nein. |
+| password |Diese Eigenschaft gibt ein Kennwort für das Benutzerkonto an, das Sie für „username“ angegeben haben. Wählen Sie [SecureString](store-credentials-in-key-vault.md) aus, um die connectionString-Informationen sicher in Data Factory zu speichern, oder **verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis**. |Nein. |
 | connectVia | Diese [Integration Runtime](concepts-integration-runtime.md) wird zum Herstellen einer Verbindung mit dem Datenspeicher verwendet. Stellen Sie die selbstgehostete Integration Runtime in demselben virtuellen Netzwerk wie Ihre verwaltete Instanz bereit. |Ja. |
 
 >[!TIP]
@@ -179,9 +179,9 @@ Legen Sie zum Kopieren von Daten von der verwalteten Azure SQL-Datenbank-Instanz
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **SqlSource** festgelegt sein. | Ja. |
-| sqlReaderQuery |Diese Eigenschaft verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Ein Beispiel ist `select * from MyTable`. | Nein. |
-| sqlReaderStoredProcedureName |Diese Eigenschaft ist der Name der gespeicherten Prozedur, die Daten aus der Quelltabelle liest. Die letzte SQL-Anweisung muss eine SELECT-Anweisung in der gespeicherten Prozedur sein. | Nein. |
-| storedProcedureParameters |Diese Parameter werden für die gespeicherte Prozedur verwendet.<br/>Zulässige Werte sind Namen oder Name-Wert-Paare. Die Namen und die Groß-/Kleinschreibung der Parameter müssen denen der Parameter der gespeicherten Prozedur entsprechen. | Nein. |
+| sqlReaderQuery |Diese Eigenschaft verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Ein Beispiel ist `select * from MyTable`. |Nein. |
+| sqlReaderStoredProcedureName |Diese Eigenschaft ist der Name der gespeicherten Prozedur, die Daten aus der Quelltabelle liest. Die letzte SQL-Anweisung muss eine SELECT-Anweisung in der gespeicherten Prozedur sein. |Nein. |
+| storedProcedureParameters |Diese Parameter werden für die gespeicherte Prozedur verwendet.<br/>Zulässige Werte sind Namen oder Name-Wert-Paare. Die Namen und die Groß-/Kleinschreibung der Parameter müssen denen der Parameter der gespeicherten Prozedur entsprechen. |Nein. |
 
 Beachten Sie folgende Punkte:
 
@@ -283,7 +283,7 @@ Legen Sie zum Kopieren von Daten auf die verwaltete Azure SQL-Datenbank-Instanz 
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Senke der Kopieraktivität muss auf **SqlSink** festgelegt sein. | Ja. |
 | writeBatchSize |Anzahl der Zeilen, die in die SQL-Tabelle **pro Batch** eingefügt werden sollen.<br/>Zulässige Werte sind Integer-Werte für die Anzahl der Zeilen. |Nein (Standardwert: 10.000). |
-| writeBatchTimeout |Diese Eigenschaft gibt die Wartezeit für den Abschluss der Batcheinfügung an, bevor ein Timeout auftritt.<br/>Zulässige Werte werden für die Zeitspanne verwendet. Ein Beispiel ist „00:30:00“. Das sind 30 Minuten. | Nein. |
+| writeBatchTimeout |Diese Eigenschaft gibt die Wartezeit für den Abschluss der Batcheinfügung an, bevor ein Timeout auftritt.<br/>Zulässige Werte werden für die Zeitspanne verwendet. Ein Beispiel ist „00:30:00“. Das sind 30 Minuten. |Nein. |
 | preCopyScript |Diese Eigenschaft gibt eine auszuführende SQL-Abfrage für die Kopieraktivität an, ehe Daten auf die verwaltete Instanz geschrieben werden. Sie wird pro Ausführung der Kopieraktivität nur einmal aufgerufen. Sie können diese Eigenschaft nutzen, um die vorab geladenen Daten zu bereinigen. | Nein. |
 | sqlWriterStoredProcedureName |Dies ist der Name der gespeicherten Prozedur, die definiert, wie Quelldaten auf eine Zieltabelle angewandt werden. Ein Beispiel für diese Prozedur ist die Ausführung eines Upsert-Vorgangs bzw. einer Transformation mithilfe einer eigenen Geschäftslogik. <br/><br/>Diese gespeicherte Prozedur wird *pro Batch aufgerufen*. Auf einen Vorgang auszuführen, der nur einmal ausgeführt wird und nicht mit Quelldaten in Zusammenhang steht (etwa Löschen/Kürzen), verwenden Sie die `preCopyScript`-Eigenschaft. | Nein. |
 | storedProcedureParameters |Diese Parameter werden für die gespeicherte Prozedur verwendet.<br/>Zulässige Werte sind Namen oder Name-Wert-Paare. Die Namen und die Groß-/Kleinschreibung der Parameter müssen denen der Parameter der gespeicherten Prozedur entsprechen. | Nein. |
@@ -513,9 +513,9 @@ Beim Kopieren von Daten auf die bzw. von der verwalteten Azure SQL-Datenbank-Ins
 | binary |Byte[] |
 | bit |Boolean |
 | char |String, Char[] |
-| date |DateTime |
-| Datetime |DateTime |
-| datetime2 |DateTime |
+| date |Datetime |
+| Datetime |Datetime |
+| datetime2 |Datetime |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
@@ -529,7 +529,7 @@ Beim Kopieren von Daten auf die bzw. von der verwalteten Azure SQL-Datenbank-Ins
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
-| smalldatetime |DateTime |
+| smalldatetime |Datetime |
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object |
@@ -540,7 +540,7 @@ Beim Kopieren von Daten auf die bzw. von der verwalteten Azure SQL-Datenbank-Ins
 | uniqueidentifier |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
-| xml |Xml |
+| Xml |Xml |
 
 >[!NOTE]
 > Für Datentypen, die dem Zwischentyp „Decimal“ zugeordnet sind, unterstützt Azure Data Factory derzeit eine Genauigkeit von bis zu 28. Wenn Ihre Daten eine höhere Genauigkeit als 28 erfordern, erwägen Sie, sie per SQL-Abfrage in eine Zeichenfolge zu konvertieren.

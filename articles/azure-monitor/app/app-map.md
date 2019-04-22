@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: a42eb7b57319df7de4c5277cdcdd93eb777f376c
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 11f7bb69ed408adf87d62a4af1aa4bd87e70bd6d
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622109"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009194"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Anwendungsübersicht: Selektieren verteilter Anwendungen
 
@@ -109,7 +109,8 @@ namespace CustomInitializer.Telemetry
             if (string.IsNullOrEmpty(telemetry.Context.Cloud.RoleName))
             {
                 //set custom role name here
-                telemetry.Context.Cloud.RoleName = "RoleName";
+                telemetry.Context.Cloud.RoleName = "Custom RoleName";
+                telemetry.Context.Cloud.RoleInstance = "Custom RoleInstance"
             }
         }
     }
@@ -184,6 +185,32 @@ appInsights.context.addTelemetryInitializer((envelope) => {
 });
 });
 ```
+
+### <a name="understanding-cloudrolename-within-the-context-of-the-application-map"></a>Grundlegendes zu „Cloud.RoleName“ im Kontext der Anwendungsübersicht
+
+Im Hinblick auf „Cloud.RoleName“ kann es hilfreich sein, sich eine Anwendungsübersicht anzusehen, die mehrere „Cloud.RoleName“-Werte enthält:
+
+![Screenshot: Anwendungsübersicht](media/app-map/cloud-rolename.png)
+
+In der Anwendungsübersicht oben sind alle Namen in grünen Kreisen „Cloud.RoleName/role“-Werte für verschiedene Aspekte dieser spezifischen verteilten Anwendung. Somit umfasst diese Anwendung folgende Rollen: `Authentication`, `acmefrontend`, `Inventory Management` und `Payment Processing Worker Role`. 
+
+Bei dieser Anwendung stellt jeder dieser `Cloud.RoleNames` auch eine unterschiedliche eindeutige Application Insights-Ressource mit eigenen Instrumentierungsschlüsseln dar. Da der Besitzer dieser Anwendung Zugriff auf jede dieser vier verschiedenen Application Insights-Ressourcen hat, können in der Anwendungsübersicht die zugrunde liegenden Beziehungen zusammengefügt werden.
+
+[Offizielle Definitionen:](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/39a5ef23d834777eefdd72149de705a016eb06b0/Schema/PublicSchema/ContextTagKeys.bond#L93)
+
+```
+   [Description("Name of the role the application is a part of. Maps directly to the role name in azure.")]
+    [MaxStringLength("256")]
+    705: string      CloudRole = "ai.cloud.role";
+    
+    [Description("Name of the instance where the application is running. Computer name for on-premises, instance name for Azure.")]
+    [MaxStringLength("256")]
+    715: string      CloudRoleInstance = "ai.cloud.roleInstance";
+```
+
+Alternativ kann „Cloud.RoleInstance“ hilfreich in Szenarien sein, in denen über „Cloud.RoleName“ angegeben wird, dass das Problem im Web-Front-End aufgetreten ist. Möglicherweise führen Sie das Web-Front-End jedoch auf mehreren Servern mit Lastenausgleich aus, sodass die Möglichkeit, über Kusto-Abfragen die Details der nächsttieferen Ebene anzuzeigen, und die Kenntnis darüber, ob sich das Problem auf alle Server bzw. Instanzen des Web-Front-Ends auswirkt, äußerst wichtig sind.
+
+Ein Fall, bei dem Sie den Wert für „Cloud.RoleInstance“ überschreiben können, ist beispielsweise ein Szenario, in dem die Anwendung in einer Containerumgebung ausgeführt wird und die Kenntnis des einzelnen Servers nicht genügt, um ein bestimmtes Problem zu lokalisieren.
 
 Weitere Informationen zum Überschreiben der Eigenschaft „cloud_RoleName“ mit Telemetrieinitialisierern finden Sie unter [Add properties: ITelemetryInitializer](api-filtering-sampling.md#add-properties-itelemetryinitializer) (Hinzufügen von Eigenschaften: ITelemetryInitializer).
 

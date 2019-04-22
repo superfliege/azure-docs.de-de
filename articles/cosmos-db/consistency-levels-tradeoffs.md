@@ -1,18 +1,18 @@
 ---
 title: Kompromisse in Bezug auf Verfügbarkeit und Leistung für verschiedene Konsistenzebenen in Azure Cosmos DB
 description: Kompromisse in Bezug auf Verfügbarkeit und Leistung für verschiedene Konsistenzebenen in Azure Cosmos DB
-author: markjbrown
+author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 2/13/2019
-ms.author: mjbrown
+ms.date: 04/08/2019
+ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: ac5b6e0d44376332e005d30b4a8fcc97021c4eda
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: a76e277bf56861bcaefb5bf7f8b3b3bc03ad1164
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407520"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266425"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisse in Bezug auf Konsistenz, Verfügbarkeit und Leistung 
 
@@ -20,11 +20,11 @@ Bei verteilten Datenbanken, die mithilfe der Replikation Hochverfügbarkeit, nie
 
 Azure Cosmos DB bietet in Bezug auf die Datenkonsistenz vielfältige Auswahlmöglichkeiten. Dieser Ansatz beinhaltet mehr Optionen als die beiden Extreme der starken und der letztlichen Konsistenz. Sie können im Hinblick auf die Konsistenz aus fünf gut definierten Modellen auswählen. Diese sind (vom stärksten bis zum schwächsten Modell):
 
-- *Starke Konsistenz*
-- *Begrenzte Veraltung*
-- *Sitzungskonsistenz*
-- *Präfixkonsistenz*
-- *Letztliche Konsistenz*
+- *STARK (Strong)*
+- *Bounded staleness*
+- *Sitzung*
+- *Konsistentes Präfix*
+- *Letztlich (Eventual)*
 
 Jedes Modell ermöglicht Verfügbarkeits- und Leistungskompromisse und wird durch umfassende SLAs abgesichert.
 
@@ -69,4 +69,4 @@ Die folgenden Artikel bieten weitere Informationen zur globalen Verteilung und z
 
 - [Konsistenzkompromisse im Design moderner verteilter Datenbanksysteme](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 - [Hochverfügbarkeit](high-availability.md)
-- [Azure Cosmos DB-SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)
+- [Azure Cosmos DB-SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

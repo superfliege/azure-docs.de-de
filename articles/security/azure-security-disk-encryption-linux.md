@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 03/15/2019
+ms.date: 04/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: d6c1438fa70a1e8520ecb2a98dfb4d74d2818ffc
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 624ad22b1c63498e8ce936472cfc884910bc6f84
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286175"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276948"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms"></a>Aktivieren von Azure Disk Encryption für virtuelle Linux-IaaS-Computer 
 
@@ -133,7 +133,7 @@ Die folgende Tabelle enthält Resource Manager-Vorlagenparameter für vorhandene
 | Parameter | BESCHREIBUNG |
 | --- | --- |
 | vmName | Der Name des virtuellen Computers, der den Verschlüsselungsvorgang ausführt. |
-| keyVaultName | Der Name des Schlüsseltresors, in den der BitLocker-Schlüssel hochgeladen werden soll. Sie können ihn abrufen, indem Sie das Cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` oder den Azure CLI-Befehl `az keyvault list --resource-group "MyKeyVaultResourceGroupName"` verwenden.|
+| keyVaultName | Der Name des Schlüsseltresors, in den der BitLocker-Schlüssel hochgeladen werden soll. Sie können ihn mit dem Cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` oder dem Azure CLI-Befehl abrufen. `az keyvault list --resource-group "MyKeyVaultResourceGroupName"`|
 | keyVaultResourceGroup | Der Name der Ressourcengruppe mit dem Schlüsseltresor|
 |  keyEncryptionKeyURL | Die URL des KEK, der zum Verschlüsseln des generierten BitLocker-Schlüssels verwendet wird. Dieser Parameter ist optional, wenn Sie in der Dropdownliste „UseExistingKek“ die Option **nokek** auswählen. Wenn Sie in der Dropdownliste „UseExistingKek“ die Option **kek** auswählen, müssen Sie den Wert _keyEncryptionKeyURL_ eingeben. |
 | volumeType | Der Typ des Volumes, auf dem der Verschlüsselungsvorgang durchgeführt wird. Gültige Werte sind _OS_, _Data_ und _All_. 
@@ -144,7 +144,7 @@ Die folgende Tabelle enthält Resource Manager-Vorlagenparameter für vorhandene
 
 
 ## <a name="encrypt-virtual-machine-scale-sets"></a>Verschlüsseln von VM-Skalierungsgruppen
-Mit [Azure-VM-Skalierungsgruppen](../virtual-machine-scale-sets/overview.md) können Sie eine Gruppe identischer virtueller Computer mit Lastenausgleich erstellen und verwalten. Die Anzahl von VM-Instanzen kann automatisch erhöht oder verringert werden, wenn sich der Bedarf ändert, oder es kann ein Zeitplan festgelegt werden. Verwenden Sie zum Verschlüsseln von VM-Skalierungsgruppen die Befehlszeilenschnittstelle oder Azure PowerShell.
+Mit [Azure-VM-Skalierungsgruppen](../virtual-machine-scale-sets/overview.md) können Sie eine Gruppe identischer virtueller Computer mit Lastenausgleich erstellen und verwalten. Die Anzahl von VM-Instanzen kann automatisch erhöht oder verringert werden, wenn sich der Bedarf ändert, oder es kann ein Zeitplan festgelegt werden. Verwenden Sie zum Verschlüsseln von VM-Skalierungsgruppen die Befehlszeilenschnittstelle oder Azure PowerShell. Nur die Verschlüsselung von Datenträgern wird auf Linux-VMs mit Skalierungsgruppen unterstützt.
 
 Ein Batchdateibeispiel für die Datenträgerverschlüsselung von Linux-Skalierungsgruppen finden Sie [hier](https://github.com/Azure-Samples/azure-cli-samples/tree/master/disk-encryption/vmss). Dieses Beispiel erstellt eine Ressourcengruppe und eine Linux-Skalierungsgruppe, bindet einen 5-GB-Datenträger für Daten ein und verschlüsselt die VM-Skalierungsgruppe.
 
@@ -154,12 +154,12 @@ Verwenden Sie [az vmss encryption enable](/cli/azure/vmss/encryption#az-vmss-enc
 
 -  **Verschlüsseln einer ausgeführten VM-Skalierungsgruppe**
     ```azurecli-interactive
-    az vmss encryption enable --resource-group "MyVMScaleSetResourceGroup" --name "MySecureVmss" --disk-encryption-keyvault "MySecureVault" 
+    az vmss encryption enable --resource-group "MyVMScaleSetResourceGroup" --name "MySecureVmss" --volume-type DATA --disk-encryption-keyvault "MySecureVault"
     ```
 
 -  **Verschlüsseln einer ausgeführten VM-Skalierungsgruppe unter Verwendung von KEK zum Umschließen des Schlüssel**
      ```azurecli-interactive
-     az vmss encryption enable --resource-group "MyVMScaleSetResourceGroup" --name "MySecureVmss" --disk-encryption-keyvault "MySecureVault" --key-encryption-key "MyKEK" --key-encryption-keyvault "MySecureVault" 
+     az vmss encryption enable --resource-group "MyVMScaleSetResourceGroup" --name "MySecureVmss" --volume-type DATA --disk-encryption-keyvault "MySecureVault" --key-encryption-key "MyKEK" --key-encryption-keyvault "MySecureVault"
      ```
 
     >[!NOTE]
@@ -189,7 +189,7 @@ Verwenden Sie das Cmdlet [Set-AzVmssDiskEncryptionExtension](/powershell/module/
       $KeyVault = Get-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $KVRGname;
       $DiskEncryptionKeyVaultUrl = $KeyVault.VaultUri;
       $KeyVaultResourceId = $KeyVault.ResourceId;
-      Set-AzVmssDiskEncryptionExtension -ResourceGroupName $VMSSRGname -VMScaleSetName $VmssName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId;
+      Set-AzVmssDiskEncryptionExtension -ResourceGroupName $VMSSRGname -VMScaleSetName $VmssName -VolumeType Data -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId;
       ```
 
 -  **Verschlüsseln einer ausgeführten VM-Skalierungsgruppe unter Verwendung von KEK zum Umschließen des Schlüssel**:
@@ -203,7 +203,7 @@ Verwenden Sie das Cmdlet [Set-AzVmssDiskEncryptionExtension](/powershell/module/
       $DiskEncryptionKeyVaultUrl = $KeyVault.VaultUri;
       $KeyVaultResourceId = $KeyVault.ResourceId;
       $KeyEncryptionKeyUrl = (Get-AzKeyVaultKey -VaultName $KeyVaultName -Name $keyEncryptionKeyName).Key.kid;
-      Set-AzVmssDiskEncryptionExtension -ResourceGroupName $VMSSRGname -VMScaleSetName $VmssName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl  -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $KeyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId;
+      Set-AzVmssDiskEncryptionExtension -ResourceGroupName $VMSSRGname -VMScaleSetName $VmssName -VolumeType Data -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl  -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $KeyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId;
       ```
 
     >[!NOTE]
@@ -226,7 +226,6 @@ Verwenden Sie das Cmdlet [Set-AzVmssDiskEncryptionExtension](/powershell/module/
 Wenn Sie Skalierungsgruppen für virtuelle Linux-Computer verschlüsseln oder entschlüsseln möchten, verwenden Sie die Azure Resource Manager-Vorlagen und die folgenden Anweisungen:
 
 - [Aktivieren der Verschlüsselung für eine Skalierungsgruppe für virtuelle Linux-Computer](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-running-vmss-linux)
-- [Bereitstellen einer Skalierungsgruppe für virtuelle Linux-Computer mit einer Jumpbox und Aktivieren der Verschlüsselung](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)
 - [Deaktivieren der Verschlüsselung für eine Skalierungsgruppe für virtuelle Linux-Computer](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)
 
      1. Klicken Sie auf Schaltfläche zum **Bereitstellen in Azure**.
@@ -414,4 +413,4 @@ Sie können die Verschlüsselung mit Azure PowerShell, der Azure CLI oder einer 
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]
-> [Aktivieren von Azure Disk Encryption für Windows](azure-security-disk-encryption-windows.md)
+> [Aktivieren von Azure Disk Encryption für virtuelle Windows-IaaS-Computer](azure-security-disk-encryption-windows.md)

@@ -8,14 +8,14 @@ manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 04/04/2019
 ms.author: sajagtap
-ms.openlocfilehash: 76990fb3b6ed1815ada724f28f8276bac1cf28d4
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 006f7d6691b8872aaa7ff8ccacff484585761d00
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757415"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263076"
 ---
 # <a name="define-and-use-moderation-workflows"></a>Definieren und Verwenden von Moderationsworkflows
 
@@ -65,9 +65,9 @@ Nachdem Sie nun einen benutzerdefinierten Workflow definiert haben, testen Sie i
 
 ![Workflowtest](images/image-workflow-execute.PNG)
 
-Speichern Sie dieses [Beispielbild](https://moderatorsampleimages.blob.core.windows.net/samples/sample3.png) auf Ihrem lokalen Laufwerk. Wählen Sie dann **Datei(en) auswählen** aus, und laden Sie das Bild in den Workflow hoch.
+Speichern Sie dieses [Beispielbild](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg) auf Ihrem lokalen Laufwerk. Wählen Sie dann **Datei(en) auswählen** aus, und laden Sie das Bild in den Workflow hoch.
 
-![Frau im Badeanzug](images/sample-racy.PNG)
+![Screenshot: Bild einer Läuferin und ein Zitat im Vordergrund auf dem Bild](images/sample-text.jpg)
 
 ### <a name="track-progress"></a>Nachverfolgen des Status
 

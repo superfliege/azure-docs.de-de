@@ -1,19 +1,18 @@
 ---
 title: Arbeiten mit großen Datasets
 description: Hier erfahren Sie, wie Sie bei der Verwendung von Azure Resource Graph umfangreiche Datasets abrufen und steuern.
-services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/26/2019
+ms.date: 04/01/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: ef61314ae124668fc8970e6d68a0f927bdf771bc
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 729e9fe749212942c6dc18fc7d6301934e7dd184
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889034"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262464"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Arbeiten mit großen Datasets von Azure-Ressourcen
 
@@ -63,7 +62,7 @@ In der [REST-API](/rest/api/azureresourcegraph/resources/resources) wird das Ste
 
 ## <a name="paging-results"></a>Auslagerungsergebnisse
 
-Wenn es erforderlich ist, ein Resultset in kleinere Datensatzgruppen zu unterteilen, um sie zu verarbeiten oder weil das Resultset den maximal zulässigen Wert von _5000_ zurückgegebenen Datensätzen überschreitet, verwenden Sie die Paginierung. Die **QueryResponse**-[REST-API](/rest/api/azureresourcegraph/resources/resources) enthält folgende Werte, um anzugeben, dass ein Resultset aufgeteilt wurde: **resultTruncated** und **$skipToken**.
+Wenn es erforderlich ist, ein Resultset in kleinere Datensatzgruppen zu unterteilen, um sie zu verarbeiten oder weil das Resultset den maximal zulässigen Wert von _1000_ zurückgegebenen Datensätzen überschreitet, verwenden Sie die Paginierung. Die **QueryResponse**-[REST-API](/rest/api/azureresourcegraph/resources/resources) enthält folgende Werte, um anzugeben, dass ein Resultset aufgeteilt wurde: **resultTruncated** und **$skipToken**.
 **resultTruncated** ist ein boolescher Wert, über den der Consumer informiert wird, wenn zusätzliche Datensätze vorhanden sind, die in der Antwort nicht zurückgegeben werden. Diese Bedingung kann auch erkannt werden, wenn der Wert der Eigenschaft **count** kleiner ist als der Wert der Eigenschaft **totalRecords**. **totalRecords** definiert die Anzahl der Datensätze, die mit der Abfrage übereinstimmen.
 
 Wenn **resultTruncated** auf **true** festgelegt ist, wird in der Antwort die Eigenschaft **$skipToken** festgelegt. Dieser Wert wird mit den gleichen Werten für die Abfrage und das Abonnement verwendet, um die nächste Datensatzgruppe abzurufen, die mit der Abfrage übereinstimmt.

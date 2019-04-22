@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 334537e77d5f291dc38e008af7fed9a4ea973265
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7f5d3ff6759cebca2f592e1cd4822ee85959ecb9
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108847"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361312"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-azure-vms-after-failover"></a>Einrichten von IP-Adressen für Verbindungen mit virtuellen Azure-Computern nach einem Failover
 
@@ -54,7 +54,7 @@ Sehen wir uns mithilfe des fiktiven Unternehmens Woodgrove Bank ein Beispiel fü
 
 ![Vor dem Subnetzfailover](./media/site-recovery-network-design/network-design7.png)
 
-**Infrastruktur vor dem Failover**
+**Infrastruktur vor einem Failover**
 
 
 Da Woodgrove in der Lage sein muss, seine virtuellen Computer zu Azure zu replizieren und gleichzeitig die IP-Adressen beizubehalten, muss das Unternehmen folgende Schritte ausführen:

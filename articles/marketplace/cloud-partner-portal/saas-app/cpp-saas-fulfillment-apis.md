@@ -12,18 +12,22 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 02/27/2019
+ms.date: 03/26/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 6084687f54be265e88e6755e7d082da7c32eda1b
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: c7da46984d592abc6ed97d7490fde732bf26b0ba
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58349517"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009444"
 ---
 # <a name="saas-fulfillment-apis"></a>SaaS-Fulfillment-APIs
 
-Mit der SaaS-Fulfillment-API können unabhängige Softwarehersteller (ISVs) ihre SaaS-Anwendungen in den Azure Marketplace integrieren. Mit dieser API können ISVs für ihre Anwendungen alle Handelskanäle nutzen: direkt, über Partner (Reseller) und über den Vertrieb.  Diese API ist eine Voraussetzung für die Auflistung transaktionsfähiger SaaS-Angebote im Azure Marketplace.
+Mit den SaaS-Fulfillment-APIs können unabhängige Softwarehersteller (ISVs) ihre SaaS-Anwendungen in den Azure Marketplace integrieren. Mit diesen APIs können ISVs für ihre Anwendungen alle Handelskanäle nutzen: direkt, über Partner (Reseller) und über den Vertrieb.  Sie sind eine Voraussetzung für die Auflistung transaktionsfähiger SaaS-Angebote im Azure Marketplace.
+
+> [!WARNING]
+> Die aktuelle Version dieser API ist Version 2, die für alle neuen SaaS-Angebote verwendet werden sollte.  Version 1 der API ist veraltet und wird zur Unterstützung vorhandener Angebote noch gepflegt.
+
 
 ## <a name="business-model-support"></a>Geschäftsmodellunterstützung
 
@@ -37,4 +41,4 @@ Diese API unterstützt die folgenden Geschäftsmodellfunktionen für folgende Au
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Verwenden Sie diese Schnittstelle für die Entwicklung: [SaaS Fulfillment API Version 2](./cpp-saas-fulfillment-api-v2.md).
+Wenn nicht bereits geschehen, registrieren Sie Ihre SaaS-Anwendung im [Azure-Portal](https://ms.portal.azure.com) wie unter [Registrieren einer Azure AD-Anwendung](./cpp-saas-registration.md) erklärt.  Verwenden Sie anschließend für die Entwicklung die aktuelle Version dieser Schnittstelle: [SaaS Fulfillment API Version 2](./cpp-saas-fulfillment-api-v2.md).

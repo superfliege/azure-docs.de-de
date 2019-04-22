@@ -1,7 +1,6 @@
 ---
 title: Verstehen der Bereitstellungsreihenfolge
 description: Erfahren Sie mehr über den Lebenszyklus einer Blaupausendefinition und die einzelnen Phasen.
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/25/2019
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 8451b858717e1a3e66214f66db624ee41f6da375
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 5552e44fcca056bd4fd5b4fd19559adfbd005444
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58434805"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266187"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Verstehen der Bereitstellungsreihenfolge in Azure Blueprint
 
@@ -26,7 +25,7 @@ Azure Blueprints bestimmt mit einer **Reihenfolge**, die Abfolge der Ressourcene
 
 In den JSON-Beispielen gibt es Variablen, die Sie durch Ihre eigenen Werte ersetzen müssen:
 
-- Ersetzen Sie `{YourMG}` durch den Namen Ihrer Verwaltungsgruppe.
+- `{YourMG}` - Ersetzen durch den Namen Ihrer Verwaltungsgruppe.
 
 ## <a name="default-sequencing-order"></a>Standardreihenfolge
 

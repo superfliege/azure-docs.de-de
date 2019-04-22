@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 0dc4fc31-ae1c-422c-ac34-7b025e6651b4
-ms.service: azure
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: eb162e51a6091b22abd4a8d12275423d726b1785
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 2ef327721fd42e5274381834721fd987ec7e9d75
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763944"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263280"
 ---
 # <a name="use-azure-machine-learning-service-in-a-notebook"></a>Verwenden von Azure Machine Learning Service in einem Notebook
 
@@ -47,9 +47,9 @@ Azure Notebooks ist mit der erforderlichen Umgebung für das Arbeiten mit [Azure
 
 Die Dokumentation zu Azure Machine Learning Services enthält eine Vielzahl weiterer Ressourcen, um Sie durch die Arbeit mit Machine Learning Service innerhalb von Notebooks zu führen:
 
-- [Schnellstart: Verwenden von Python für die ersten Schritte mit Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/quickstart-create-workspace-with-python)
-- [Tutorial 1: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning Service](https://docs.microsoft.com/azure/machine-learning/service/tutorial-train-models-with-aml)
-- [Tutorial 2: Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances (ACI)](https://docs.microsoft.com/azure/machine-learning/service/tutorial-deploy-models-with-aml)
-- [Tutorial: Trainieren eines Klassifizierungsmodells mit automatisiertem maschinellem Lernen im Azure Machine Learning Service](https://docs.microsoft.com/azure/machine-learning/service/tutorial-auto-train-models)
+- [Schnellstart: Verwenden Ihres eigenen Notebook-Servers für die ersten Schritte mit Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/quickstart-create-workspace-with-python)
+- [Tutorial #1: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning Service](https://docs.microsoft.com/azure/machine-learning/service/tutorial-train-models-with-aml)
+- [Tutorial #2: Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances (ACI)](https://docs.microsoft.com/azure/machine-learning/service/tutorial-deploy-models-with-aml)
+- [Tutorial: Erstellen Ihres Regressionsmodells mit automatisiertem Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/tutorial-auto-train-models)
 
 Lesen Sie außerdem die Dokumentation zum [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).

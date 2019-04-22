@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
-ms.date: 03/27/2019
-ms.openlocfilehash: 1cd5f48e8e0e74dfa04465993246e5d68840a783
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.date: 04/09/2019
+ms.openlocfilehash: fbcafb61ecd69f58bb3c14d1b15f36f1b21f2833
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58920001"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469776"
 ---
 # <a name="azure-machine-learning-interpretability-sdk"></a>Azure Machine Learning Interpretability SDK
 
-Erfahren Sie, wie Sie erklären können, warum Ihr Modell zu den Vorhersagen gelangt, die es trifft. Das Azure Machine Learning Interpretability SDK ermöglicht Ihnen, Ihr Modell zu erklären, was aus den folgenden Gründen wichtig ist:
+In diesem Artikel erfahren Sie, wie Sie mithilfe des Azure Machine Learning Interpretability SDK erklären können, warum Ihr Modell genau die getroffenen Vorhersagen getroffen hat. Die Erklärung des Modells ist aus folgenden Gründen wichtig:
 
 * Kunden und andere Beteiligte möchten wissen, ob sie den **Vorhersagen, die Ihr Modell macht, vertrauen können**.
 * Als Data Scientist möchten Sie verstehen, **wie Sie das Modell abfragen können, um Erkenntnisse zu gewinnen**. Sie benötigen auch Tools, um fundierte Entscheidungen darüber zu treffen, **wie Sie Ihr Modell verbessern können**.
@@ -27,20 +27,14 @@ Erfahren Sie, wie Sie erklären können, warum Ihr Modell zu den Vorhersagen gel
 
 Interpretierbarkeit beim maschinellem Lernen ist in zwei Phasen von des zugehörigen Entwicklungszyklus wichtig: **Training** und **Herleitung von Rückschlüssen**:
 
-* Beim **Training**: Zuständige für den Entwurf und die Auswertung von Modellen benötigen Interpretationstools, um den beteiligten Akteuren die Ergebnisse eines Modells zu erklären und Vertrauen aufzubauen. Interpretationstools ermöglichen auch das Debuggen des Modells:
-
-    * Entspricht sein Verhalten den Zielen und Vorgaben?
-    * Ist es verzerrt?
-
+* Beim **Training**: Zuständige für den Entwurf und die Auswertung von Modellen benötigen Interpretationstools, um den beteiligten Akteuren die Ergebnisse eines Modells zu erklären und Vertrauen aufzubauen. Sie benötigen auch Einblicke in das Modell, damit sie das Modell debuggen und Entscheidungen darüber treffen können, ob das Verhalten ihren Zielen entspricht. Schließlich müssen sie sicherstellen, dass das Modell nicht voreingenommen ist.
 * Beim **Herleiten von Rückschlüssen**: Vorhersagen müssen den Personen, die Ihr Modell verwenden, verständlich sein. Warum hat das Modell beispielsweise ein Hypothekendarlehen abgelehnt oder vorhergesagt, dass ein Anlageportfolio mit einem höheren Risiko behaftet ist?
 
-Das Azure Machine Learning Interpretability SDK enthält von Microsoft entwickelte Technologien und bewährte Bibliotheken von Drittanbietern (z.B. SHAP und LIME). Es bietet eine gemeinsame API für die integrierten Bibliotheken und kann in Azure Machine Learning Services integriert werden. 
-
-Mit diesem SDK können Sie Machine Learning-Modelle **global für alle Daten** oder **lokal für einen bestimmten Datenpunkt** mithilfe modernster Technologien auf einfache und skalierbare Weise erklären.
+Das Azure Machine Learning Interpretability SDK enthält von Microsoft entwickelte Technologien und bewährte Bibliotheken von Drittanbietern (z. B. SHAP und LIME). Das SDK erstellt eine gemeinsame API für die integrierten Bibliotheken und integriert Azure Machine Learning Services. Mit diesem SDK können Sie Machine Learning-Modelle **global für alle Daten** oder **lokal für einen bestimmten Datenpunkt** mithilfe modernster Technologien auf einfache und skalierbare Weise erklären.
 
 ## <a name="how-does-it-work"></a>Wie funktioniert dies?
 
-Azure Machine Learning Interpretability kann angewendet werden, um das globale Verhalten des Modells oder eine bestimmte Vorhersage zu verstehen. Erstere wird als globale Erklärung und letztere als lokale Erklärung bezeichnet.
+Azure Machine Learning Interpretability kann angewandt werden, um das globale Verhalten des Modells oder bestimmte Vorhersagen zu verstehen. Erstere wird als globale Erklärung und letztere als lokale Erklärung bezeichnet.
 
 Azure Machine Learning Interpretability-Methoden können auch kategorisiert werden, je nachdem, ob die Methode modellunabhängig oder modellspezifisch ist. Einige Methoden zielen auf bestimmte Arten von Modellen ab. Der Tree Explainer von SHAP eignet sich nur für baumstrukturbasierte Modelle. Einige Methoden behandeln das Modell als Blackbox, wie z.B. der Mimic Explainer oder der Kernel Explainer von SHAP. Das Azure Machine Learning Interpretability SDK verfolgt diese verschiedenen Ansätze basierend auf Datasets, Modelltypen und Anwendungsfällen.
 
@@ -48,11 +42,6 @@ Azure Machine Learning Interpretability gibt eine Reihe von Informationen darüb
 
 * Global/lokale relative Featurepriorität
 * Global/lokale Beziehung zwischen Feature und Vorhersage
-* Interaktive Visualisierungen für Folgendes:
-
-    * Vorhersagen
-    * Beziehungen zwischen Feature und Vorhersage
-    * Globale und lokale relative Featureprioritätswerte
 
 ## <a name="architecture"></a>Architecture
 
@@ -80,11 +69,10 @@ __Direkte Explainer__ stammen aus integrierten Bibliotheken. Das SDK bündelt al
 * **LIME Explainer**: Basierend auf LIME verwendet der LIME Explainer den hochmodernen LIME-Algorithmus (Local Interpretable Model-Agnostic Explanations), um lokale Surrogatmodelle zu erstellen. Im Gegensatz zu den globalen Surrogatmodellen konzentriert sich LIME auf das Training lokaler Surrogatmodelle, um individuelle Vorhersagen zu erklären.
 * **HAN Text Explainer**: Der HAN Text Explainer verwendet ein Hierarchical Attention Network, um Modellerklärungen aus Textdaten zu einem bestimmten Blackbox-Textmodell zu erhalten. Wir trainieren das HAN-Surrogatmodell anhand der vorhergesagten Ergebnisse eines gegebenen Lehrermodells. Nach einem globalen Training über den gesamten Textkorpus haben wir einen Optimierungsschritt für ein spezifisches Dokument hinzugefügt, um die Genauigkeit der Erklärungen zu verbessern. HAN verwendet ein rekurrentes neuronales Netz (RNN) mit zwei Aufmerksamkeitsebenen hinsichtlich Satz und Wort. Sobald das DNN (Deep Neural Network) am Lehrermodell trainiert und für ein bestimmtes Dokument optimiert wurde, können wir die Wichtigkeiten von Worten aus den Aufmerksamkeitsebenen extrahieren. Wir haben festgestellt, dass HAN bei Textdaten genauer ist als LIME oder SHAP, aber auch aufwendiger in Bezug auf die Trainingszeit. Wir haben jedoch die Trainingszeit verbessert, indem wir dem Benutzer die Möglichkeit gegeben haben, das Netzwerk mit GloVe-Worteinbettungen zu initialisieren, obwohl es immer noch langsam ist. Die Trainingszeit kann durch den Einsatz von HAN auf einer Azure GPU-Remote-VM deutlich verbessert werden. „Hierarchical Attention Networks for Document Classification (Yang u.a., 2016)“ ([https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf](https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf)) enthält eine Beschreibung der Implementierung von HAN.
 
-__Meta-Explainer__ wählen automatisch einen geeigneten direkten Explainer aus und generieren die besten Erklärungsinformationen basierend auf dem gegebenen Modell und den gegebenen Datasets. Die Meta-Explainer nutzen alle Bibliotheken (SHAP, LIME, GA2M, Mimic usw.), die wir integriert oder entwickelt haben. Es folgt eine Liste der Meta-Explainer, die im SDK verfügbar sind:
+__Meta-Explainer__ wählen automatisch einen geeigneten direkten Explainer aus und generieren die besten Erklärungsinformationen basierend auf dem gegebenen Modell und den gegebenen Datasets. Die Meta-Explainer nutzen alle Bibliotheken (SHAP, LIME, Mimic usw.), die wir integriert oder entwickelt haben. Es folgt eine Liste der Meta-Explainer, die im SDK verfügbar sind:
 
 * **Tabular Explainer**: Wird mit tabellarischen Datasets verwendet.
 * **Text Explainer**: Wird mit Textdatasets verwendet.
-* **Image Explainer**: Wird mit Bilddatasets verwendet.
 
 Neben der Meta-Auswahl der direkten Explainer entwickeln Meta-Explainer zusätzliche Features mithilfe der zugrunde liegenden Bibliotheken und verbessern die Geschwindigkeit und Skalierbarkeit im Vergleich mit den direkten Explainern.
 
@@ -100,7 +88,6 @@ Die in `TabularExplainer` integrierte Intelligenz wird ausgefeilter werden, da m
 
 * **Zusammenfassung des Initialisierungsdatasets**. In Fällen, in denen die Erklärungsgeschwindigkeit am wichtigsten ist, fassen wir das Initialisierungsdataset zusammen und erzeugen einen kleinen Satz repräsentativer Stichproben, was sowohl die globale als auch die lokale Erklärung beschleunigt.
 * **Stichprobenentnahme im Auswertungsdataset**. Wenn der Benutzer eine Vielzahl von Auswertungsstichproben übergibt, aber nicht alle davon ausgewertet werden müssen, kann der Stichprobenparameter auf TRUE festgelegt werden, um die globale Erklärung zu beschleunigen.
-* **Schnelle KNN-Erklärung (K-Nearest Neighbor)**. Für den Fall, dass die Erklärung so schnell sein muss wie eine einzelne Bewertung/Vorhersage, kann eine KNN-Methode verwendet werden. Bei der globalen Erklärung bleiben sowohl die Initialisierungsstichproben als auch die entsprechenden top-k-Features erhalten. Um die Erklärung für jede Auswertungsstichprobe zu generieren, wird die KNN-Methode verwendet, um die am ähnlichsten Stichprobe in den Initialisierungsstichproben zu finden. Die top-k-Features der ähnlichsten Stichprobe werden als top-k-Features für die Auswertungsstichprobe zurückgegeben.
 
 Das folgende Diagramm zeigt die Beziehung zwischen den beiden Gruppen von direkten und Meta-Explainern.
 
@@ -114,11 +101,7 @@ Die Erklärungsunktionen akzeptieren sowohl Modelle als auch Pipelines als Einga
 
 ### <a name="local-and-remote-compute-target"></a>Lokales- und Remotecomputeziel
 
-Das Machine Learning Interpretability SDK funktioniert mit lokalen und Remotecomputezielen. 
-
-* Bei **lokaler** Ausführung werden vom SDK keine Verbindungen mit Azure-Diensten hergestellt.
-
-* Bei **Remote**ausführung werden Informationen zur Ausführung der Azure Machine Learning-Diensten für den Ausführungsverlauf protokolliert. Nachdem diese Informationen protokolliert wurden, stehen Berichte und Visualisierungen aus der Erklärung im Portal mit den Azure Machine Learning-Arbeitsbereichen zur Analyse durch den Benutzer bereit.
+Das Machine Learning Interpretability SDK funktioniert mit lokalen und Remotecomputezielen. Bei lokaler Ausführung werden über die SDK-Funktionen keine Verbindungen mit Azure-Diensten hergestellt. Sie können die Erklärung per Remotezugriff in Azure Machine Learning Compute ausführen und die Erklärungsinformationen im Ausführungsverlauf von Azure Machine Learning Services protokollieren. Nachdem diese Informationen protokolliert wurden, stehen Berichte und Visualisierungen aus der Erklärung im Portal mit den Azure Machine Learning-Arbeitsbereichen zur Analyse durch den Benutzer bereit.
 
 ## <a name="train-and-explain-locally"></a>Lokales Trainieren und Erklären
 
@@ -138,20 +121,17 @@ Das Machine Learning Interpretability SDK funktioniert mit lokalen und Remotecom
     model = clf.fit(x_train, y_train)
     ```
 
-2. Rufen Sie den Explainer auf. Übergeben Sie beim Instanziieren eines Explainer-Objekts das Modell und die Trainingsdaten. Optional können Sie interessante Features übergeben. Übergeben Sie bei Verwenden der Klassifizierung die Namen der Ausgabeklassen.
-
-    Das folgende Beispiel veranschaulicht die Erstellung eines Explainer-Objekts unter lokaler Verwendung von [TabularExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.tabularexplainer?view=azure-ml-py), [MimicExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.mimic.mimicexplainer?view=azure-ml-py) und `LimeExplainer`. `TabularExplainer` ruft einen der drei darunter liegenden Explainer (`TreeExplainer`, `DeepExplainer` oder `KernelExplainer`) auf und wählt automatisch den für Ihren Anwendungsfall am besten geeigneten aus. Sie können jedoch jeden der drei zugrunde liegenden Explainer direkt aufrufen.
+2. Rufen Sie den Explainer auf: Zum Initiieren eines Explainer-Objekts müssen Sie das Modell, die Trainingsdaten, interessante Funktionen (optional) und die Namen der Ausgabeklassen (bei Klassifizierung) an den Explainer übergeben. Es folgen Beispiele für das Instanziieren eines Explainer-Objekts unter lokaler Verwendung von [TabularExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.tabularexplainer?view=azure-ml-py), [MimicExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.mimic.mimicexplainer?view=azure-ml-py) und `LimeExplainer`. `TabularExplainer` ruft einen der drei darunter liegenden Explainer (`TreeExplainer`, `DeepExplainer` oder `KernelExplainer`) auf und wählt automatisch den für Ihren Anwendungsfall am besten geeigneten aus. Sie können jedoch jeden der drei zugrunde liegenden Explainer direkt aufrufen.
 
     ```python
     from azureml.explain.model.tabular_explainer import TabularExplainer
     explainer = TabularExplainer(model, x_train, features=breast_cancer_data.feature_names, classes=classes)
-    or
+    ```
+    oder
+    ```python
     from azureml.explain.model.mimic.mimic_explainer import MimicExplainer
     from azureml.explain.model.mimic.models.lightgbm_model import LGBMExplainableModel
     explainer = MimicExplainer(model, x_train, LGBMExplainableModel, features=breast_cancer_data.feature_names, classes=classes)
-    or
-    from azureml.contrib.explain.model.lime.lime_explainer import LIMEExplainer
-    explainer = LIMEExplainer(model, x_train, features=breast_cancer_data.feature_names, classes=classes)
     ```
 
 3. Rufen Sie die Wichtigkeitswerte globaler Features ab.
@@ -170,9 +150,16 @@ Das Machine Learning Interpretability SDK funktioniert mit lokalen und Remotecom
     ```python
     # explain the first data point in the test set
     local_explanation = explainer.explain_local(x_test[0,:])
-    or
+    
+    # sorted feature importance values and feature names
+    sorted_local_importance_names = local_explanation.get_ranked_local_names()
+    sorted_local_importance_values = local_explanation.get_ranked_local_values()
+    ```
+    oder
+    ```python
     # explain the first five data points in the test set
     local_explanation = explainer.explain_local(x_test[0:4,:])
+    
     # sorted feature importance values and feature names
     sorted_local_importance_names = local_explanation.get_ranked_local_names()
     sorted_local_importance_values = local_explanation.get_ranked_local_values()
@@ -188,21 +175,14 @@ Sie können auf den verschiedenen vom Azure Machine Learning Service unterstütz
     run = Run.get_context()
     client = ExplanationClient.from_run(run)
     
-    breast_cancer_data = load_breast_cancer()
-    X_train, X_test, y_train, y_test = train_test_split(breast_cancer_data.data, breast_cancer_data.target, test_size = 0.2, random_state = 0)
-    data = {
-        "train":{"X": X_train, "y": y_train},        
-        "test":{"X": X_test, "y": y_test}
-    }
-    clf = svm.SVC(gamma=0.001, C=100., probability=True)
-    model = clf.fit(data['train']['X'], data['train']['y'])
-    joblib.dump(value = clf, filename = 'model.pkl')
+    # Train your model here
+
     # explain predictions on your local machine    
     explainer = TabularExplainer(model, x_train, features=breast_cancer_data.feature_names, classes=classes)
     # explain overall model predictions (global explanation)
-    global_explanation = explainer.explain_global(data["test"]["X"])
+    global_explanation = explainer.explain_global(x_test)
     # explain local data points (individual instances)
-    local_explanation = explainer.explain_local(data["test"]["X"][0,:])
+    local_explanation = explainer.explain_local(x_test[0,:])
     # upload global and local explanation objects to Run History
     upload_model_explanation(run, local_explanation, top_k=2, comment='local explanation: top 2 features')
     # Uploading global model explanation data for storage or visualization in webUX
@@ -213,9 +193,11 @@ Sie können auf den verschiedenen vom Azure Machine Learning Service unterstütz
     #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
     ```
 
-2. Um eine Trainingsausführung zu übermitteln, befolgen Sie die Anweisungen im Artikel [Einrichten von Computezielen für das Modelltraining](how-to-set-up-training-targets.md#amlcompute). Führen Sie die Schritte zum Erstellen eines Azure Machine Learning Compute-Ziels aus, und übermitteln Sie dann eine Trainingsausführung.
+2. Befolgen Sie die Anweisungen unter [Einrichten von Computezielen für das Modelltraining](how-to-set-up-training-targets.md#amlcompute), um eine Azure Machine Learning Compute-Instanz als Computeziel einzurichten und die Trainingsausführung zu übermitteln.
 
 3. Laden Sie die Erklärung in Ihr lokales Jupyter-Notebook herunter. 
+    > [!IMPORTANT]
+    > Der Inhalt von „azureml.contrib.explain.model“ wird nicht vollständig unterstützt. Sobald die experimentellen Funktionen ausgereift sind, werden sie schrittweise in das Hauptpaket verlagert.
 
     ``` python
     from azureml.contrib.explain.model.explanation.explanation_client import ExplanationClient

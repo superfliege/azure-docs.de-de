@@ -9,30 +9,33 @@ ms.topic: conceptual
 ms.subservice: implement
 ms.date: 03/18/2019
 ms.author: rortloff
-ms.reviewer: igorstan
-ms.openlocfilehash: fe19510d9b4c6311923b4b2ea15f133249e6cbd5
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.reviewer: jrasnick
+ms.custom: seoapril2019
+ms.openlocfilehash: eab64d9494ef2d2838e16c55eed6ecf0db9736e9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58190038"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270046"
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>Indizieren von Tabellen in SQL Data Warehouse
+
 Empfehlungen und Beispiele für die Indizierung von Tabellen in Azure SQL Data Warehouse
 
-## <a name="what-are-index-choices"></a>Was ist eine Indexauswahl?
+## <a name="index-types"></a>Indextypen
 
 SQL Data Warehouse bietet mehrere Indizierungsoptionen, z.B. [gruppierte Columnstore-Indizes](/sql/relational-databases/indexes/columnstore-indexes-overview), [gruppierte Indizes und nicht gruppierte Indizes](/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described) sowie eine Option ohne Index, die auch als [Heap](/sql/relational-databases/indexes/heaps-tables-without-clustered-indexes) bezeichnet wird.  
 
 Informationen zum Erstellen einer Tabelle mit einem Index finden Sie in der Dokumentation [CREATE TABLE (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse).
 
 ## <a name="clustered-columnstore-indexes"></a>Gruppierte Columnstore-Indizes
+
 SQL Data Warehouse erstellt standardmäßig einen gruppierten Columnstore-Index, wenn in einer Tabelle keine Indizierungsoptionen angegeben werden. Gruppierte Columnstore-Tabellen bieten sowohl den höchsten Grad an Datenkomprimierung als auch die beste Gesamtabfrageleistung.  Gruppierte Columnstore-Tabellen weisen normalerweise eine höhere Leistung als gruppierte Indizes oder Heaptabellen auf und stellen für große Tabellen meist die beste Wahl dar.  Aus diesen Gründen ist der gruppierte Columnstore der beste Einstieg, wenn Sie nicht sicher sind, wie Sie Ihre Tabelle indizieren sollen.  
 
 Geben Sie zum Erstellen einer gruppierten Columnstore-Tabelle in der WITH-Klausel einfach CLUSTERED COLUMNSTORE INDEX an, oder lassen Sie die WITH-Klausel deaktiviert:
 
 ```SQL
-CREATE TABLE myTable   
+CREATE TABLE myTable
   (  
     id int NOT NULL,  
     lastName varchar(20),  
@@ -48,6 +51,7 @@ Es gibt einige Szenarien, in denen der gruppierte Columnstore keine gute Option 
 - Kleine Tabellen mit weniger als 60 Millionen Zeilen. Erwägen Sie die Verwendung von Heaptabellen.
 
 ## <a name="heap-tables"></a>Heaptabellen
+
 Wenn Sie Daten vorübergehend in SQL Data Warehouse anordnen, werden Sie wahrscheinlich merken, dass der Gesamtprozess durch die Nutzung einer Heaptabelle beschleunigt wird. Dies liegt daran, dass Ladevorgänge für Heaps schneller als das Indizieren von Tabellen sind und der nachfolgende Lesevorgang in einigen Fällen aus dem Cache erfolgen kann.  Wenn Sie Daten nur laden, um sie vor dem Ausführen weiterer Transformationen bereitzustellen, ist das Laden der Tabelle in eine Heaptabelle deutlich schneller als das Laden der Daten in eine gruppierte Columnstore-Tabelle. Beim Laden von Daten in eine [temporäre Tabelle](sql-data-warehouse-tables-temporary.md) wird der Ladevorgang außerdem schneller als beim Laden einer Tabelle in einen dauerhaften Speicher durchgeführt.  
 
 Für kleine Nachschlagetabellen mit weniger als 60 Millionen Zeilen ist häufig die Nutzung von Heaptabellen sinnvoll.  Für gruppierte Columnstore-Tabellen wird die optimale Komprimierung erst erreicht, wenn mehr als 60 Millionen Zeilen vorhanden sind.
@@ -55,7 +59,7 @@ Für kleine Nachschlagetabellen mit weniger als 60 Millionen Zeilen ist häufig 
 Geben Sie zum Erstellen einer Heaptabelle in der WITH-Klausel einfach HEAP an:
 
 ```SQL
-CREATE TABLE myTable   
+CREATE TABLE myTable
   (  
     id int NOT NULL,  
     lastName varchar(20),  
@@ -65,12 +69,13 @@ WITH ( HEAP );
 ```
 
 ## <a name="clustered-and-nonclustered-indexes"></a>Gruppierte und nicht gruppierte Indizes
+
 Gruppierte Indizes können eine höhere Leistung als gruppierte Columnstore-Tabellen erzielen, wenn eine einzelne Zeile schnell abgerufen werden muss. Damit für Abfragen, bei denen nur eine oder sehr wenige Zeilensuchen erforderlich sind, eine sehr hohe Geschwindigkeit erzielt werden kann, können Sie die Verwendung eines gruppierten Index oder eines nicht gruppierten sekundären Index erwägen. Der Nachteil bei der Verwendung eines gruppierten Index ist, dass nur Abfragen profitieren, bei denen für die Spalte mit dem gruppierten Index ein hochgradig selektiver Filter eingesetzt wird. Um die Filterung für andere Spalten zu verbessern, kann den anderen Spalten ein nicht gruppierter Index hinzugefügt werden. Für jeden Index, der einer Tabelle hinzugefügt wird, erhöhen sich bei Ladevorgängen sowohl der Speicherplatzbedarf als auch die Verarbeitungszeit.
 
 Geben Sie zum Erstellen einer Tabelle mit gruppiertem Index in der WITH-Klausel einfach CLUSTERED INDEX an:
 
 ```SQL
-CREATE TABLE myTable   
+CREATE TABLE myTable
   (  
     id int NOT NULL,  
     lastName varchar(20),  
@@ -86,6 +91,7 @@ CREATE INDEX zipCodeIndex ON myTable (zipCode);
 ```
 
 ## <a name="optimizing-clustered-columnstore-indexes"></a>Optimieren von gruppierten Columnstore-Indizes
+
 Gruppierte Columnstore-Tabellen sind in Daten in Segmenten angeordnet.  Eine hohe Segmentqualität ist entscheidend, um für eine Columnstore-Tabelle eine optimale Abfrageleistung zu erzielen.  Die Segmentqualität kann anhand der Anzahl von Zeilen in einer komprimierten Zeilengruppe gemessen werden.  Die Segmentqualität ist am besten, wenn mindestens 100.000 Zeilen pro komprimierter Zeilengruppe vorhanden sind. Die Leistung verbessert sich, je näher die Anzahl von Zeilen pro Zeilengruppe an 1.048.576 heranreicht. Dies ist der Höchstwert für Zeilen in einer Zeilengruppe.
 
 Die unten angegebene Sicht kann erstellt und auf Ihrem System verwendet werden, um die durchschnittlichen Zeilen pro Zeilengruppe zu berechnen und alle suboptimalen gruppierten Columnstore-Indizes zu identifizieren.  Die letzte Spalte dieser Sicht generiert eine SQL-Anweisung, die zum Neuerstellen Ihrer Indizes verwendet werden kann.
@@ -137,7 +143,7 @@ GROUP BY
 ;
 ```
 
-Führen Sie nach dem Erstellen der Sicht diese Abfrage aus, um Tabellen mit Zeilengruppen mit weniger als 100.000 Zeilen zu identifizieren. Sie können den Schwellenwert von 100.000 natürlich erhöhen, wenn Sie eine noch bessere Segmentqualität erzielen möchten. 
+Führen Sie nach dem Erstellen der Sicht diese Abfrage aus, um Tabellen mit Zeilengruppen mit weniger als 100.000 Zeilen zu identifizieren. Sie können den Schwellenwert von 100.000 natürlich erhöhen, wenn Sie eine noch bessere Segmentqualität erzielen möchten.
 
 ```sql
 SELECT    *
@@ -172,6 +178,7 @@ Nachdem Sie die Abfrage ausgeführt haben, können Sie die Daten anzeigen und di
 | [Rebuild_Index_SQL] |SQL-Code zum Neuerstellen des Columnstore-Index für eine Tabelle |
 
 ## <a name="causes-of-poor-columnstore-index-quality"></a>Ursachen für eine schlechte Qualität des Columnstore-Index
+
 Wenn Sie Tabellen mit schlechter Segmentqualität identifiziert haben, sollten Sie die Hauptursache ermitteln.  Unten sind einige andere häufige Ursachen für eine schlechte Segmentqualität aufgeführt:
 
 1. Hohe Speicherauslastung bei der Erstellung des Index
@@ -179,33 +186,39 @@ Wenn Sie Tabellen mit schlechter Segmentqualität identifiziert haben, sollten S
 3. Kleine oder langsame Ladevorgänge
 4. Zu viele Partitionen
 
-Diese Faktoren können dazu führen, dass ein Columnstore-Index über deutlich weniger als die optimalen 1 Million Zeilen pro Zeilengruppe verfügt. Sie können auch verursachen, dass Zeilen in die Deltazeilengruppe anstatt in eine komprimierte Zeilengruppe aufgenommen werden. 
+Diese Faktoren können dazu führen, dass ein Columnstore-Index über deutlich weniger als die optimalen 1 Million Zeilen pro Zeilengruppe verfügt. Sie können auch verursachen, dass Zeilen in die Deltazeilengruppe anstatt in eine komprimierte Zeilengruppe aufgenommen werden.
 
 ### <a name="memory-pressure-when-index-was-built"></a>Hohe Speicherauslastung bei der Erstellung des Index
+
 Die Anzahl von Zeilen pro komprimierter Zeilengruppe hängt direkt mit der Breite der Zeile und der Speichermenge zusammen, die zum Verarbeiten der Zeilengruppe verfügbar ist.  Wenn Zeilen bei hohem Arbeitsspeicherdruck in Columnstore-Tabellen geschrieben werden, kann die Qualität von Columnstore-Segmenten leiden.  Die bewährte Methode besteht deshalb darin, der Sitzung, in der in Ihre Columnstore-Indextabellen geschrieben wird, Zugriff auf so viel Arbeitsspeicher wie möglich gewährt wird.  Da ein Kompromiss zwischen Arbeitsspeicher und Parallelität eingegangen werden muss, richtet sich die Empfehlung zur richtigen Speicherbelegung nach den folgenden Aspekten: den Daten in jeder Zeile der Tabelle, den Data Warehouse-Einheiten, die Ihrem System zugeordnet sind, und der Anzahl von Parallelitätsslots, die Sie für eine Sitzung vergeben können, von der Daten in Ihre Tabelle geschrieben werden.
 
 ### <a name="high-volume-of-dml-operations"></a>Hohes Volumen von DML-Vorgängen
+
 Ein hohes Volumen von DML-Vorgängen, mit denen Zeilen aktualisiert und gelöscht werden, sorgen für Ineffizienz im Columnstore. Dies gilt insbesondere, wenn der Großteil der Zeilen in einer Zeilengruppe geändert wird.
 
 - Das Löschen einer Zeile aus einer komprimierten Zeilengruppe kennzeichnet die Zeile nur logisch als gelöscht. Die Zeile verbleibt in der komprimierten Zeilengruppe, bis die Partition oder Tabelle erneut erstellt wird.
-- Beim Einfügen einer Zeile wird die Zeile einer internen Rowstore-Tabelle hinzugefügt, die als Deltazeilengruppe bezeichnet wird. Die eingefügte Zeile wird erst in das Columnstore-Format konvertiert, wenn die Deltazeilengruppe voll und als geschlossen markiert ist. Zeilengruppen werden geschlossen, sobald sie die maximale Kapazität von 1.048.576 Zeilen erreichen. 
+- Beim Einfügen einer Zeile wird die Zeile einer internen Rowstore-Tabelle hinzugefügt, die als Deltazeilengruppe bezeichnet wird. Die eingefügte Zeile wird erst in das Columnstore-Format konvertiert, wenn die Deltazeilengruppe voll und als geschlossen markiert ist. Zeilengruppen werden geschlossen, sobald sie die maximale Kapazität von 1.048.576 Zeilen erreichen.
 - Das Aktualisieren einer Zeile im Columnstore-Format wird als logisches Löschen und anschließendes Einfügen verarbeitet. Die eingefügte Zeile kann im Deltaspeicher gespeichert werden.
 
-Als Batch ausgeführte Aktualisierungs- und Einfügevorgänge, die den Massenschwellenwert von 102.400 Zeilen pro nach Partition ausgerichteter Verteilung überschreiten, werden direkt in das Columnstore-Format geschrieben. Bei einer gleichmäßigen Verteilung müssten Sie allerdings 6,144 Millionen Zeilen in einem einzigen Vorgang ändern, damit dies eintritt. Wenn die Anzahl der Zeilen für eine bestimmte nach Partition ausgerichtete Verteilung geringer als 102.400 Zeilen ist, werden die Zeilen in den Deltaspeicher aufgenommen, bis genügend Zeilen eingefügt oder geändert wurden, um die Zeilengruppe zu schließen, oder bis der Index neu erstellt wird.
+Als Batch ausgeführte Aktualisierungs- und Einfügevorgänge, die den Massenschwellenwert von 102.400 Zeilen pro nach Partition ausgerichteter Verteilung überschreiten, werden direkt in das Columnstore-Format geschrieben. Bei einer gleichmäßigen Verteilung müssten Sie allerdings 6,144 Millionen Zeilen in einem einzigen Vorgang ändern, damit dies eintritt. Wenn die Anzahl der Zeilen für eine bestimmte nach Partition ausgerichtete Verteilung geringer als 102.400 Zeilen ist, werden die Zeilen in den Deltaspeicher aufgenommen, bis genügend Zeilen eingefügt oder geändert wurden, um die Zeilengruppe zu schließen, oder bis der Index neu erstellt wird.
 
 ### <a name="small-or-trickle-load-operations"></a>Kleine oder langsame Ladevorgänge
+
 Kleine Ladevorgänge in SQL Data Warehouse werden manchmal auch als langsame Ladevorgänge bezeichnet. Sie stellen in der Regel einen annähernd konstanten Datenstrom dar, der vom System erfasst wird. Dieser Datenstrom ist zwar fast kontinuierlich, die Anzahl der Zeilen ist jedoch nicht besonders groß. In den meisten Fällen liegt die Datenmenge deutlich unter dem Schwellenwert, der für ein direktes Laden in das Columnstore-Format erforderlich ist.
 
 In diesen Situationen ist es oft besser, die Daten zunächst in Azure Blob Storage zu laden, damit sie sich vor dem Laden ansammeln können. Diese Technik wird auch als *Verarbeitung von Mikrobatches*bezeichnet.
 
 ### <a name="too-many-partitions"></a>Zu viele Partitionen
-Ein weiterer zu berücksichtigender Aspekt ist die Auswirkung der Partitionierung auf Ihre gruppierten Columnstore-Tabellen.  Vor dem Partitionieren teilt SQL Data Warehouse Ihre Daten bereits auf 60 Datenbanken auf.  Durch die Partitionierung werden die Daten dann noch weiter aufgeteilt.  Beim Partitionieren Ihrer Daten sollten Sie darauf achten, dass **jede** Partition mindestens 1 Million Zeilen aufweisen muss, um von einem gruppierten Columnstore-Index zu profitieren.  Wenn Sie Ihre Tabelle in 100 Partitionen unterteilen, muss die Tabelle mindestens 6 Milliarden Zeilen aufweisen, um von einem gruppierten Columnstore-Index zu profitieren (60 Distributionen * 100 Partitionen * 1 Million Zeilen). Falls Ihre Tabelle mit 100 Partitionen nicht 6 Milliarden Zeilen enthält, sollten Sie entweder die Anzahl der Partitionen reduzieren oder stattdessen eine Heaptabelle verwenden.
+
+Ein weiterer zu berücksichtigender Aspekt ist die Auswirkung der Partitionierung auf Ihre gruppierten Columnstore-Tabellen.  Vor dem Partitionieren teilt SQL Data Warehouse Ihre Daten bereits auf 60 Datenbanken auf.  Durch die Partitionierung werden die Daten dann noch weiter aufgeteilt.  Beim Partitionieren Ihrer Daten sollten Sie darauf achten, dass **jede** Partition mindestens 1 Million Zeilen aufweisen muss, um von einem gruppierten Columnstore-Index zu profitieren.  Wenn Sie Ihre Tabelle in 100 Partitionen unterteilen, muss die Tabelle mindestens 6 Milliarden Zeilen aufweisen, um von einem gruppierten Columnstore-Index zu profitieren (60 Verteilungen *100 Partitionen* 1 Million Zeilen). Falls Ihre Tabelle mit 100 Partitionen nicht 6 Milliarden Zeilen enthält, sollten Sie entweder die Anzahl der Partitionen reduzieren oder stattdessen eine Heaptabelle verwenden.
 
 Führen Sie nach dem Laden der Tabellen mit einigen Daten die unten angegebenen Schritte aus, um Tabellen mit suboptimalen gruppierten Columnstore-Indizes zu identifizieren und neu zu erstellen.
 
 ## <a name="rebuilding-indexes-to-improve-segment-quality"></a>Neuerstellen von Indizes zur Verbesserung der Segmentqualität
+
 ### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>Schritt 1: Identifizieren oder Erstellen eines Benutzers, der die richtige Ressourcenklasse verwendet
-Eine schnelle Möglichkeit zur sofortigen Verbesserung der Seqmentqualität besteht darin, den Index neu zu erstellen.  Mit dem von der obigen Sicht zurückgegebenen SQL-Code wird eine ALTER INDEX REBUILD-Anweisung zurückgegeben, die zum Neuerstellen der Indizes verwendet werden kann. Stellen Sie beim Neuerstellen der Indizes sicher, dass Sie der Sitzung, mit der Ihr Index neu erstellt wird, genügend Arbeitsspeicher zuordnen.  Erhöhen Sie hierzu die Ressourcenklasse eines Benutzers, der über die Berechtigungen zum Neuerstellen des Index für diese Tabelle verfügt, bis auf das empfohlene Minimum. 
+
+Eine schnelle Möglichkeit zur sofortigen Verbesserung der Seqmentqualität besteht darin, den Index neu zu erstellen.  Mit dem von der obigen Sicht zurückgegebenen SQL-Code wird eine ALTER INDEX REBUILD-Anweisung zurückgegeben, die zum Neuerstellen der Indizes verwendet werden kann. Stellen Sie beim Neuerstellen der Indizes sicher, dass Sie der Sitzung, mit der Ihr Index neu erstellt wird, genügend Arbeitsspeicher zuordnen.  Erhöhen Sie hierzu die Ressourcenklasse eines Benutzers, der über die Berechtigungen zum Neuerstellen des Index für diese Tabelle verfügt, bis auf das empfohlene Minimum.
 
 Unten ist ein Beispiel dafür angegeben, wie Sie einem Benutzer mehr Arbeitsspeicher zuordnen, indem Sie seine Ressourcenklasse erhöhen. Informationen zur Verwendung von Ressourcenklassen finden Sie unter [Ressourcenklassen für die Workloadverwaltung](resource-classes-for-workload-management.md).
 
@@ -214,9 +227,10 @@ EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 ```
 
 ### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>Schritt 2: Neuerstellen von gruppierten Columnstore-Indizes mit einem Benutzer mit einer höheren Ressourcenklasse
-Melden Sie sich als der Benutzer aus Schritt 1 an (z.B. LoadUser), für den jetzt eine höhere Ressourcenklasse verwendet wird, und führen Sie die ALTER INDEX-Anweisungen aus. Stellen Sie sicher, dass dieser Benutzer über die ALTER-Berechtigung für die Tabellen verfügt, in denen der Index neu erstellt wird. Diese Beispiele zeigen, wie Sie den gesamten Columnstore-Index bzw. eine einzelne Partition neu erstellen. Bei großen Tabellen ist es praktischer, die Indizes Partition für Partition neu zu erstellen.
 
-Anstatt den Index neu zu erstellen, können Sie alternativ dazu die Tabelle per [CTAS](sql-data-warehouse-develop-ctas.md) in eine neue Tabelle kopieren. Welche Methode ist am besten geeignet? Bei großen Datenmengen ist CTAS in der Regel schneller als [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql). Bei kleineren Datenmengen ist ALTER INDEX einfacher zu verwenden, und das Auslagern der Tabelle ist nicht erforderlich. 
+Melden Sie sich als der Benutzer aus Schritt 1 an (z. B. LoadUser), für den jetzt eine höhere Ressourcenklasse verwendet wird, und führen Sie die ALTER INDEX-Anweisungen aus. Stellen Sie sicher, dass dieser Benutzer über die ALTER-Berechtigung für die Tabellen verfügt, in denen der Index neu erstellt wird. Diese Beispiele zeigen, wie Sie den gesamten Columnstore-Index bzw. eine einzelne Partition neu erstellen. Bei großen Tabellen ist es praktischer, die Indizes Partition für Partition neu zu erstellen.
+
+Anstatt den Index neu zu erstellen, können Sie alternativ dazu die Tabelle per [CTAS](sql-data-warehouse-develop-ctas.md) in eine neue Tabelle kopieren. Welche Methode ist am besten geeignet? Bei großen Datenmengen ist CTAS in der Regel schneller als [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql). Bei kleineren Datenmengen ist ALTER INDEX einfacher zu verwenden, und das Auslagern der Tabelle ist nicht erforderlich.
 
 ```sql
 -- Rebuild the entire clustered index
@@ -241,10 +255,12 @@ ALTER INDEX ALL ON [dbo].[FactInternetSales] REBUILD Partition = 5 WITH (DATA_CO
 Die Neuerstellung eines Index in SQL Data Warehouse ist ein Offlinevorgang.  Weitere Informationen zur Neuerstellung von Indizes finden Sie im Abschnitt zu ALTER INDEX REBUILD in [Columnstore-Indexdefragmentierung](/sql/relational-databases/indexes/columnstore-indexes-defragmentation) und [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql).
 
 ### <a name="step-3-verify-clustered-columnstore-segment-quality-has-improved"></a>Schritt 3: Sicherstellen, dass sich die Qualität gruppierter Columnstore-Segmente verbessert hat
+
 Führen Sie die Abfrage, mit der die Tabelle mit schlechter Segmentqualität identifiziert wurde, erneut aus, und vergewissern Sie sich, dass sich die Segmentqualität verbessert hat.  Falls sich die Segmentqualität nicht verbessert hat, kann dies daran liegen, dass die Zeilen in der Tabelle besonders breit sind.  Erwägen Sie, beim Neuerstellen der Indizes eine höhere Ressourcenklasse oder DWU-Anzahl zu verwenden.
 
 ## <a name="rebuilding-indexes-with-ctas-and-partition-switching"></a>Neuerstellen von Indizes per CTAS und Partitionswechsel
-In diesem Beispiel werden die Anweisung [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) und ein Partitionswechsel zum Neuerstellen einer Tabellenpartition eingesetzt. 
+
+In diesem Beispiel werden die Anweisung [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) und ein Partitionswechsel zum Neuerstellen einer Tabellenpartition eingesetzt.
 
 ```sql
 -- Step 1: Select the partition of data and write it out to a new table using CTAS
@@ -270,5 +286,5 @@ ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [
 Weitere Informationen zum Neuerstellen von Partitionen mittels CTAS finden Sie unter [Verwendung von Partitionen in SQL Data Warehouse](sql-data-warehouse-tables-partition.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Entwickeln von Tabellen finden Sie in den Artikeln zur [Entwicklung von Tabellen](sql-data-warehouse-tables-overview.md).
 
+Weitere Informationen zum Entwickeln von Tabellen finden Sie in den Artikeln zur [Entwicklung von Tabellen](sql-data-warehouse-tables-overview.md).
