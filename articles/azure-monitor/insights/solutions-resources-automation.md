@@ -80,7 +80,7 @@ Die Eigenschaften für Runbooks werden in der folgenden Tabelle beschrieben.
 | runbookType |Gibt den Typ des Runbooks an. <br><br> Script – PowerShell-Skript <br>PowerShell – PowerShell-Workflow <br> GraphPowerShell – Grafisches PowerShell-Skript-Runbook <br> GraphPowerShellWorkflow – Grafisches PowerShell-Workflow-Runbook |
 | logProgress |Gibt an, ob für das Runbook [Datensätze zum Status](../../automation/automation-runbook-output-and-messages.md) erstellt werden sollen |
 | logVerbose |Gibt an, ob für das Runbook [ausführliche Datensätze](../../automation/automation-runbook-output-and-messages.md) erstellt werden sollen |
-| Beschreibung |Optionale Beschreibung für das Runbook |
+| description |Optionale Beschreibung für das Runbook |
 | publishContentLink |Gibt den Inhalt des Runbooks an <br><br>uri – Gibt den URI für den Inhalt des Runbooks an.  Dies wird eine PS1-Datei für PowerShell und Skript-Runbooks sowie eine exportierte grafische Runbook-Datei für ein grafisches Runbook sein.  <br> version – Version des Runbooks für Ihre eigene Nachverfolgung |
 
 
@@ -114,7 +114,7 @@ Die Eigenschaften für Automatisierungsaufträge werden in der folgenden Tabelle
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | runbook |Einzelne name-Entität mit dem Namen des zu startenden Runbooks |
-| Parameter |Vom Runbook benötigte Entität für jeden Parameterwert. |
+| parameters |Vom Runbook benötigte Entität für jeden Parameterwert. |
 
 Der Auftrag umfasst das Senden des Runbook-Namens und aller Parameterwerte an das Runbook.  Der Auftrag sollte von dem Runbook [abhängen]( solutions-solution-file.md#resources), von dem er gestartet wird, da das Runbook vor dem Auftrag erstellt werden muss.  Wenn Sie über mehrere Runbooks verfügen, die gestartet werden sollen, können Sie die Reihenfolge festlegen, indem ein Auftrag von allen anderen Aufträgen abhängt, die zuerst ausgeführt werden sollen.
 
@@ -199,7 +199,7 @@ Die Eigenschaften für Zeitplanressourcen werden in der folgenden Tabelle beschr
 
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
-| Beschreibung |Optionale Beschreibung für den Zeitplan |
+| description |Optionale Beschreibung für den Zeitplan |
 | startTime |Gibt die Startzeit eines Zeitplans als DateTime-Objekt an. Eine Zeichenfolge kann bereitgestellt werden, wenn sie in ein gültiges DateTime-Objekt konvertiert werden kann. |
 | isEnabled |Gibt an, ob der Zeitplan aktiviert ist |
 | interval |Der Typ des Intervalls für den Zeitplan<br><br>day<br>hour |
@@ -242,8 +242,8 @@ Die Eigenschaften für Auftragszeitpläne werden in der folgenden Tabelle beschr
 
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
-| Zeitplanname |Einzelne **name**-Entität mit dem Namen des Zeitplans |
-| Runbookname  |Einzelne **name**-Entität mit dem Namen des Runbooks  |
+| schedule name |Einzelne **name**-Entität mit dem Namen des Zeitplans |
+| runbook name  |Einzelne **name**-Entität mit dem Namen des Runbooks  |
 
 
 
@@ -269,7 +269,7 @@ Die Eigenschaften für Variablenressourcen werden in der folgenden Tabelle besch
 
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
-| Beschreibung | Optionale Beschreibung für die Variable |
+| description | Optionale Beschreibung für die Variable |
 | isEncrypted | Gibt an, ob die Variable verschlüsselt werden soll |
 | type | Diese Eigenschaft hat derzeit keine Auswirkungen.  Der Datentyp der Variablen wird durch den Anfangswert bestimmt. |
 | value | Wert für die Variable |
@@ -281,10 +281,10 @@ Wenn Sie den Anfangswert für die Variable festlegen, muss er mit dem richtigen 
 
 | Datentyp | BESCHREIBUNG | Beispiel | Aufgelöst in |
 |:--|:--|:--|:--|
-| Zeichenfolge   | Wert in doppelte Anführungszeichen einschließen  | "\"Hello world\"" | "Hello world" |
+| string   | Wert in doppelte Anführungszeichen einschließen  | "\"Hello world\"" | "Hello world" |
 | numeric  | Numerische Werte in einfache Anführungszeichen einschließen| "64" | 64 |
 | boolean  | **true** oder **false** in Anführungszeichen einschließen.  Beachten Sie, dass dieser Wert klein geschrieben werden muss. | „true“ | true |
-| Datetime | Serialisierter Datumswert.<br>Mit dem Cmdlet ConvertTo-Json in PowerShell können Sie diesen Wert für ein bestimmtes Datum generieren.<br>Beispiel: Get-Date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
+| datetime | Serialisierter Datumswert.<br>Mit dem Cmdlet ConvertTo-Json in PowerShell können Sie diesen Wert für ein bestimmtes Datum generieren.<br>Beispiel: Get-Date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Module
 Ihre Verwaltungslösung muss keine [globalen Module](../../automation/automation-integration-modules.md) definieren, die von Ihren Runbooks verwendet werden, da diese in Ihrem Automation-Konto immer verfügbar sind.  Für jedes andere von Ihren Runbooks verwendete Modul müssen Sie jedoch eine Ressource hinzufügen.
