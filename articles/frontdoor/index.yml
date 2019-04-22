@@ -31,7 +31,7 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: <a href="front-door-custom-domain.md">Hinzufügen einer benutzerdefinierten Domäne für Ihre „Front Door“</a>
+          - html: <a href="front-door-custom-domain.md">Hinzufügen einer benutzerdefinierten Domäne für Front Door</a>
           - html: <a href="front-door-custom-domain-https.md">Aktivieren von HTTPS für eine benutzerdefinierte Domäne</a>
   - title: Verweis
     items:

@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/9/2019
+ms.date: 4/15/2019
 ms.author: mayg
-ms.openlocfilehash: 7f5d3ff6759cebca2f592e1cd4822ee85959ecb9
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 2e1cbb2446501d0afda29eba179e388b5a22e6a8
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361312"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565681"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-azure-vms-after-failover"></a>Einrichten von IP-Adressen für Verbindungen mit virtuellen Azure-Computern nach einem Failover
 
@@ -54,7 +54,7 @@ Sehen wir uns mithilfe des fiktiven Unternehmens Woodgrove Bank ein Beispiel fü
 
 ![Vor dem Subnetzfailover](./media/site-recovery-network-design/network-design7.png)
 
-**Infrastruktur vor einem Failover**
+**Infrastruktur vor dem Failover**
 
 
 Da Woodgrove in der Lage sein muss, seine virtuellen Computer zu Azure zu replizieren und gleichzeitig die IP-Adressen beizubehalten, muss das Unternehmen folgende Schritte ausführen:
@@ -62,7 +62,7 @@ Da Woodgrove in der Lage sein muss, seine virtuellen Computer zu Azure zu repliz
 
 1. Erstellen eines virtuellen Azure-Netzwerks, in dem die Azure-VMs nach einem Failover der lokalen Computer erstellt werden. Dies sollte eine Erweiterung des lokalen Netzwerks sein, sodass für Anwendungen ein nahtloses Failover ausgeführt werden kann.
 2. In Site Recovery weisen sie den Computereigenschaften vor dem Failover die gleiche IP-Adresse zu. Nach dem Failover weist Site Recovery diese Adresse der Azure-VM zu.
-3. Nachdem das Failover ausgeführt wird und die Azure-VMs mit der gleichen IP-Adresse erstellt wurden, verbinden sie sich mithilfe einer [VNet-zu-VNet-Verbindung](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md) mit dem Netzwerk. Für diese Aktion kann ein Skript erstellt werden.
+3. Nachdem das Failover ausgeführt wird und die Azure-VMs mit der gleichen IP-Adresse erstellt wurden, verbinden sie sich mithilfe einer [VNet-zu-VNet-Verbindung](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) mit dem Netzwerk. Für diese Aktion kann ein Skript erstellt werden.
 4. Sie müssen Routen ändern, um darauf zu reagieren, dass 192.168.1.0/24 sich jetzt in Azure befindet.
 
 

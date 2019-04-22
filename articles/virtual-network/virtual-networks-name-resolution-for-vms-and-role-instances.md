@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: 78c66ac25e9d20d9202236407d42f815879cd3f2
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: fe63b76589c841706ae335c61e56a57c3c33fb3e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426425"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527182"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken
 
@@ -147,7 +147,7 @@ Durch die DNS-Weiterleitung wird außerdem eine DNS-Auflösung zwischen virtuell
 
 > [!NOTE]
 > Eine Rolleninstanz kann die Namensauflösung von virtuellen Computern innerhalb des gleichen virtuellen Netzwerks ausführen. Diese erfolgt mithilfe des FQDN, der aus dem Hostnamen des virtuellen Computers und dem DNS-Suffix **internal.cloudapp.net** besteht. In diesem Fall ist die Namensauflösung jedoch nur erfolgreich, wenn für die Rolleninstanz der Namen des virtuellen Computers im [Rollenschema (CSCFG-Datei)](https://msdn.microsoft.com/library/azure/jj156212.aspx) definiert ist.
-> <Role name="<role-name>" vmName="<vm-name>">
+> `<Role name="<role-name>" vmName="<vm-name>">`
 >
 > Rolleninstanzen, die eine Namensauflösung virtueller Computer in einem anderen virtuellen Netzwerk ausführen müssen (FQDN mit dem Suffix **internal.cloudapp.net**), müssen diese mit der in diesem Abschnitt beschriebenen Methode vornehmen (über benutzerdefinierte DNS-Server, die für eine Weiterleitung zwischen den beiden virtuellen Netzwerken sorgen).
 >
@@ -214,11 +214,11 @@ Wenn Sie das klassische Bereitstellungsmodell verwenden, können Sie DNS-Server 
 
 Azure Resource Manager-Bereitstellungsmodell:
 
-* [Verwalten virtueller Netzwerke](manage-virtual-network.md)
-* [Verwalten von Netzwerkschnittstellen](virtual-network-network-interface.md)
+* [Erstellen, Ändern oder Löschen eines virtuellen Netzwerks](manage-virtual-network.md)
+* [Erstellen, Ändern oder Löschen von Netzwerkschnittstellen](virtual-network-network-interface.md)
 
 Klassisches Bereitstellungsmodell:
 
-* [Azure-Dienstkonfigurationsschema](https://msdn.microsoft.com/library/azure/ee758710)
-* [Konfigurationsschema von Virtual Network](https://msdn.microsoft.com/library/azure/jj157100)
+* [Azure-Dienstkonfigurationsschema (.cscfg-Datei)](https://msdn.microsoft.com/library/azure/ee758710)
+* [Konfigurationsschema für virtuelle Netzwerke](https://msdn.microsoft.com/library/azure/jj157100)
 * [Konfigurieren eines virtuellen Netzwerks mithilfe einer Netzwerkkonfigurationsdatei](virtual-networks-using-network-configuration-file.md)

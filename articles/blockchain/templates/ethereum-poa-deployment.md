@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: CodyBorn
 ms.author: coborn
-ms.date: 8/2/2018
+ms.date: 04/08/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 5a693fef2f77471f799bec46f149ff19d6edca80
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 3531b43e6aee1eedef811e81e192873c5b5ed561
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905918"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274789"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Ethereum-PoA-Konsortium
 
@@ -279,7 +279,7 @@ Netzwerk-ID|Die Netzwerk-ID für das bereitgestellte Ethereum-Konsortiumsnetzwer
 Ethereum-Administratoradresse|Die Adresse des Ethereum-Kontos, die für die Teilnahme am PoA-Governance-Prozess verwendet wird.  Es wird empfohlen, MetaMask zum Generieren einer Ethereum-Adresse zu verwenden.|42 alphanumerische Zeichen, beginnend mit 0x|Nicht verfügbar
 Erweiterte Optionen|Erweiterte Optionen für Ethereum-Einstellungen|Aktivieren oder deaktivieren|Disable
 Öffentliche IP-Adresse (Erweiterte Optionen = Aktivieren)|Stellt das Netzwerk hinter einem VNET-Gateway bereit und entfernt den Peeringzugriff. Wenn diese Option ausgewählt ist, müssen alle Mitglieder ein VNET-Gateway nutzen, damit die Verbindung kompatibel ist.|Öffentliche IP-Adresse – Privates VNET|Öffentliche IP-Adresse
-Block Gas Limit (Erweiterte Optionen = Aktivieren)|Das anfängliche block gas-Limit des Netzwerks|Beliebiger numerischer Wert|50.000.00
+Block Gas Limit (Erweiterte Optionen = Aktivieren)|Das anfängliche block gas-Limit des Netzwerks|Beliebiger numerischer Wert|50000000
 Zeitraum für erneute Blockversiegelung (Sek.)|Die Häufigkeit, mit der leere Blöcke erstellt werden, wenn im Netzwerk keine Transaktionen vorhanden sind. Eine höhere Häufigkeit führt zu einer schnelleren Finalität, jedoch auch zu erhöhten Speicherkosten.|Beliebiger numerischer Wert|15
 Vertrag zu Transaktionsberechtigungen (Erweiterte Optionen = Aktivieren)|Bytecode für den Vertrag zur Berechtigungsvergabe für Transaktionen. Beschränkt die Smart Contract-Bereitstellung und -Ausführung auf eine berechtigungsbasierte Liste mit Ethereum-Konten.|Bytecode für Vertrag|Nicht verfügbar
 

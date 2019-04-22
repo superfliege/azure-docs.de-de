@@ -7,10 +7,10 @@ ms.topic: hub-page
 featureFlags:
 - clicktale
 ms.openlocfilehash: 3b35608c30262f633af073daacc8795f8eca1e7e
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496504"
 ---
 <div id="main" class="v2">
@@ -204,7 +204,7 @@ Go</a>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/cosmos-db/">Azure Cosmos DB</a></li>
                                                 </ul>
-                                                <h4>Storage</h4>
+                                                <h4>Speicher</h4>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/storage/">Blob Storage</a></li>
                                                 </ul>
@@ -212,7 +212,7 @@ Go</a>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/machine-learning/">Machine Learning </a></li>
                                                     <li><a class="barLink" href="/azure/cognitive-services/">Cognitive Services</a></li>
-                                                    <li><a class="barLink" href="/azure/notebooks/">Azure-Notebooks</a></li>
+                                                    <li><a class="barLink" href="/azure/notebooks/">Azure Notebooks</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -229,7 +229,7 @@ Go</a>
                                                     <li>
                                                         <a class="barLink" href="/cli/azure">
                                                             <img src="media/index/azure_dev-7.svg" alt="">
-Azure-Befehlszeilenschnittstelle </a>
+Azure CLI </a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="/powershell/azure/overview">
@@ -2759,7 +2759,7 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                         </ul>
                     </li>
                     <li>
-                        <a href="#mobile">Mobile</a>
+                        <a href="#mobile">Mobil</a>
                         <ul id="mobile" class="cardsA">
                             <li>
                                 <a href="/azure/app-service-mobile">
@@ -3988,7 +3988,7 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                         </ul>
                     </li>
                     <li>
-                        <a href="#iot">Internet der Dinge</a>
+                        <a href="#iot">Internet der Dinge (IoT)</a>
                         <ul id="iot" class="cardsA">
                             <li>
                                 <a href="/azure/iot-fundamentals">
@@ -4497,7 +4497,7 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                         </ul>
                     </li>
                     <li>
-                        <a href="#identity">Identity</a>
+                        <a href="#identity">Identität</a>
                         <ul id="identity" class="cardsA">
                             <li>
                                 <a href="/azure/active-directory/">
@@ -5951,7 +5951,7 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                 <a href="#sdkstools">SDKs/Tools</a>
                 <ul id="sdkstools">
                     <li>
-                        <a href="#sdkstools-all">alle</a>
+                        <a href="#sdkstools-all">Alle</a>
                         <ul id="sdkstools-all" class="cardsF">
                             <li>
                                 <div class="container">
@@ -6114,7 +6114,7 @@ Azure-Befehlszeilenschnittstelle </h3>
                                                     <a href="/cli/azure">Erste Schritte</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/cli/azure/reference-index">Verweis</a>
+                                                    <a href="/cli/azure/reference-index">Referenz</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -6136,7 +6136,7 @@ Azure-Befehlszeilenschnittstelle </h3>
                                                     <a href="/powershell/azure/get-started-azureps">Erste Schritte</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/powershell/azure/overview">Verweis</a>
+                                                    <a href="/powershell/azure/overview">Referenz</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -6227,7 +6227,7 @@ Azure-Befehlszeilenschnittstelle </h3>
                                                     <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice">App Service</a>
                                                 </p>
                                                  <p>
-                                                    <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions">Azure-Funktionen</a>
+                                                    <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions">Azure Functions</a>
                                                 </p>
                                                 <p>
                                                     <a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage">Storage</a>
@@ -6341,7 +6341,7 @@ Azure Resource Manager </h3>
                                                     <a href="https://azure.microsoft.com/resources/templates/">Beispielvorlagen</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://docs.microsoft.com/azure/templates/">Verweis</a>
+                                                    <a href="https://docs.microsoft.com/azure/templates/">Referenz</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -6450,13 +6450,13 @@ Azure Dev Spaces </h3>
                                                     <a href="https://docs.microsoft.com/azure/dev-spaces/azure-dev-spaces">Erste Schritte</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-netcore">Herunterladen für .NET Core und VS Code</a>
+                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-netcore">Download für .NET Core und VS Code</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-netcore-visualstudio">Herunterladen für .NET Core und Visual Studio</a>
+                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-netcore-visualstudio">Download für .NET Core und Visual Studio</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-nodejs">Herunterladen für Node.js</a>
+                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-nodejs">Download für Node.js</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -6468,7 +6468,7 @@ Azure Dev Spaces </h3>
                 </ul>
             </li>
             <li>
-                <a href="#architecture">Architecture</a>
+                <a href="#architecture">Architektur</a>
                 <ul id="architecture">
                     <li>
                         <a href="#architecture1"></a>
