@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 81bbf2b69e0e492ea75e8cbbe980d7e83a86eae7
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 6624ded670ef506dfef225a8b595da2e5ea19427
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912849"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051613"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>Diagnostizieren von Problemen mit dem Netzwerkrouting eines virtuellen Computers – Azure PowerShell
 
@@ -30,22 +30,26 @@ In diesem Artikel stellen Sie einen virtuellen Computer (Virtual Machine, VM) be
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-powershell.md)]
 
-Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 5.4.1 des AzureRM PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/azurerm/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für diesen Artikel das `Az`-Modul für Azure PowerShell verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-Az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+
+
 
 ## <a name="create-a-vm"></a>Erstellen einer VM
 
-Bevor Sie einen virtuellen Computer erstellen können, müssen Sie eine Ressourcengruppe erstellen, die den virtuellen Computer enthalten soll. Erstellen Sie mit [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup) eine Ressourcengruppe. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
+Bevor Sie einen virtuellen Computer erstellen können, müssen Sie eine Ressourcengruppe erstellen, die den virtuellen Computer enthalten soll. Erstellen Sie mit [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup) eine Ressourcengruppe. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*.
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
+New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-Erstellen Sie mit [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) den virtuellen Computer. Wenn Sie diesen Schritt ausführen, werden Sie aufgefordert, Anmeldeinformationen einzugeben. Die eingegebenen Werte werden als Benutzername und Kennwort für den virtuellen Computer konfiguriert.
+Erstellen Sie mit [New-AzVM](/powershell/module/az.compute/new-azvm) den virtuellen Computer. Wenn Sie diesen Schritt ausführen, werden Sie aufgefordert, Anmeldeinformationen einzugeben. Die eingegebenen Werte werden als Benutzername und Kennwort für den virtuellen Computer konfiguriert.
 
 ```azurepowershell-interactive
-$vM = New-AzureRmVm `
+$vM = New-AzVm `
     -ResourceGroupName "myResourceGroup" `
     -Name "myVm" `
     -Location "East US"
@@ -59,18 +63,18 @@ Wenn Sie die Netzwerkkommunikation mit Network Watcher testen möchten, müssen 
 
 ## <a name="enable-network-watcher"></a>Aktivieren von Network Watcher
 
-Wenn Sie bereits eine Komponente zur Netzwerküberwachung in der Region „USA, Osten“ aktiviert haben, verwenden Sie [Get-AzureRmNetworkWatcher](/powershell/module/azurerm.network/get-azurermnetworkwatcher), um die Komponente zur Netzwerküberwachung abzurufen. Im folgenden Beispiel wird eine vorhandene Komponente zur Netzwerküberwachung namens *NetworkWatcher_eastus* abgerufen, die sich in der Ressourcengruppe *NetworkWatcherRG* befindet:
+Wenn Sie bereits eine Komponente zur Netzwerküberwachung in der Region „USA, Osten“ aktiviert haben, verwenden Sie [Get-AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher), um die Komponente zur Netzwerküberwachung abzurufen. Im folgenden Beispiel wird eine vorhandene Komponente zur Netzwerküberwachung namens *NetworkWatcher_eastus* abgerufen, die sich in der Ressourcengruppe *NetworkWatcherRG* befindet:
 
 ```azurepowershell-interactive
-$networkWatcher = Get-AzureRmNetworkWatcher `
+$networkWatcher = Get-AzNetworkWatcher `
   -Name NetworkWatcher_eastus `
   -ResourceGroupName NetworkWatcherRG
 ```
 
-Wenn Sie noch keine Komponente zur Netzwerküberwachung in der Region „USA, Osten“ aktiviert haben, verwenden Sie [New-AzureRmNetworkWatcher](/powershell/module/azurerm.network/new-azurermnetworkwatcher), um eine Komponente zur Netzwerküberwachung in der Region „USA, Osten“ zu erstellen:
+Wenn Sie noch keine Komponente zur Netzwerküberwachung in der Region „USA, Osten“ aktiviert haben, verwenden Sie [New-AzNetworkWatcher](/powershell/module/az.network/new-aznetworkwatcher), um eine Komponente zur Netzwerküberwachung in der Region „USA, Osten“ zu erstellen:
 
 ```azurepowershell-interactive
-$networkWatcher = New-AzureRmNetworkWatcher `
+$networkWatcher = New-AzNetworkWatcher `
   -Name "NetworkWatcher_eastus" `
   -ResourceGroupName "NetworkWatcherRG" `
   -Location "East US"
@@ -78,12 +82,12 @@ $networkWatcher = New-AzureRmNetworkWatcher `
 
 ### <a name="use-next-hop"></a>Verwenden der Funktion „Nächster Hop“
 
-Azure erstellt automatisch Routen zu Standardzielen. Sie können benutzerdefinierte Routen erstellen, mit denen die Standardrouten außer Kraft gesetzt werden. In manchen Fällen können benutzerdefinierte Routen zu Fehlern bei der Kommunikation führen. Verwenden Sie zum Testen des Routings von einem virtuellen Computer den Befehl [Get-AzureRmNetworkWatcherNextHop](/powershell/module/azurerm.network/get-azurermnetworkwatchernexthop), um den nächsten Routinghop zu bestimmen, wenn Datenverkehr für eine bestimmte Adresse bestimmt ist.
+Azure erstellt automatisch Routen zu Standardzielen. Sie können benutzerdefinierte Routen erstellen, mit denen die Standardrouten außer Kraft gesetzt werden. In manchen Fällen können benutzerdefinierte Routen zu Fehlern bei der Kommunikation führen. Verwenden Sie zum Testen des Routings von einem virtuellen Computer den Befehl [Get-AzNetworkWatcherNextHop](/powershell/module/az.network/get-aznetworkwatchernexthop), um den nächsten Routinghop zu bestimmen, wenn Datenverkehr für eine bestimmte Adresse bestimmt ist.
 
-Testen Sie die ausgehende Kommunikation des virtuellen Computers mit einer der IP-Adressen für „www.bing.com“:
+Testen Sie die ausgehende Kommunikation des virtuellen Computers mit einer der IP-Adressen für www.bing.com:
 
 ```azurepowershell-interactive
-Get-AzureRmNetworkWatcherNextHop `
+Get-AzNetworkWatcherNextHop `
   -NetworkWatcher $networkWatcher `
   -TargetVirtualMachineId $VM.Id `
   -SourceIPAddress 192.168.1.4 `
@@ -95,7 +99,7 @@ Nach wenigen Sekunden informiert Sie die Ausgabe darüber, dass **NextHopType** 
 Testen Sie die ausgehende Kommunikation des virtuellen Computers für 172.31.0.100:
 
 ```azurepowershell-interactive
-Get-AzureRmNetworkWatcherNextHop `
+Get-AzNetworkWatcherNextHop `
   -NetworkWatcher $networkWatcher `
   -TargetVirtualMachineId $VM.Id `
   -SourceIPAddress 192.168.1.4 `
@@ -106,10 +110,10 @@ Die zurückgegebene Ausgabe informiert Sie darüber, dass **Keiner** **NextHopTy
 
 ## <a name="view-details-of-a-route"></a>Anzeigen von Details einer Route
 
-Zur weiteren Analyse des Routings überprüfen Sie die effektiven Routen für die Netzwerkschnittstelle mit dem Befehl [Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable):
+Zur weiteren Analyse des Routings überprüfen Sie die effektiven Routen für die Netzwerkschnittstelle mit dem Befehl [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable):
 
 ```azurepowershell-interactive
-Get-AzureRmEffectiveRouteTable `
+Get-AzEffectiveRouteTable `
   -NetworkInterfaceName myVm `
   -ResourceGroupName myResourceGroup |
   Format-table
@@ -131,10 +135,10 @@ Wie Sie in der vorherigen Ausgabe sehen, leitet die Route mit dem Wert **0.0.0.0
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die Ressourcengruppe und alle darin enthaltenen Ressourcen nicht mehr benötigen, können Sie sie mit dem Befehl [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) entfernen:
+Wenn Sie die Ressourcengruppe und alle darin enthaltenen Ressourcen nicht mehr benötigen, können Sie sie mit dem Befehl [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) entfernen:
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 04af92f21cecaa832e857a7017b67f815f6ab685
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 352833b12c00abbefcf7016d27dfb580ee25e450
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58417971"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275877"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Vorbereiten der Avere vFXT-Erstellung
 
@@ -30,23 +30,16 @@ So erstellen Sie ein neues Azure-Abonnement im Azure-Portal
 
 ## <a name="configure-subscription-owner-permissions"></a>Konfigurieren der Berechtigungen des Abonnementbesitzers
 
-Ein Benutzer mit Besitzerberechtigungen für das Abonnement sollte den vFXT-Cluster erstellen. Für diese Aktionen sind unter anderem Berechtigungen des Abonnementbesitzers erforderlich:
+Ein Benutzer mit Besitzerberechtigungen für das Abonnement sollte den vFXT-Cluster erstellen. Zum Akzeptieren der Nutzungsbedingungen der Software und zum Ausführen anderer Aktionen sind Berechtigungen des Abonnementbesitzers erforderlich. 
 
-* Akzeptieren der Bedingungen für die Avere vFXT-Software
-* Erstellen der Zugriffsrolle für Clusterknoten 
+Es gibt einige Problemumgehungsszenarien, in denen es möglich ist, dass Nicht-Besitzer einen Avere vFXT für Azure-Cluster erstellen. Diese Szenarien beinhalten die Einschränkung von Ressourcen und die Zuordnung zusätzlicher Rollen zum Ersteller. In beiden Fällen muss ein Abonnementbesitzer auch die [Nutzungsbedingungen für die Avere vFXT-Software](#accept-software-terms) vorab akzeptieren. 
 
-Es gibt zwei Möglichkeiten, wenn Sie den Benutzern, die den vFXT erstellen, keinen Besitzerzugriff gewähren möchten:
-
-* Ein Ressourcengruppenbesitzer kann einen Cluster erstellen, wenn die folgenden Bedingungen erfüllt sind:
-
-  * Ein Abonnementbesitzer muss [die Nutzungsbedingungen für die Avere vFXT-Software](#accept-software-terms) akzeptieren und [die Zugriffsrolle für Clusterknoten](#create-the-cluster-node-access-role) erstellen. 
-  * Alle Avere vFXT-Ressourcen müssen innerhalb der Ressourcengruppe bereitgestellt werden, einschließlich:
-    * Clustercontroller
-    * Clusterknoten
-    * Blob Storage
-    * Netzwerkelemente
+| Szenario | Einschränkungen | Erforderliche Zugriffsrollen für die Erstellung des Avere vFXT-Clusters | 
+|----------|--------|-------|
+| Ressourcengruppenadministrator | Das virtuelle Netzwerk, der Clustercontroller und die Clusterknoten müssen in der Ressourcengruppe erstellt werden. | Rolle [Benutzerzugriffsadministrator](../role-based-access-control/built-in-roles.md#user-access-administrator) und [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor), beide für die Zielressourcengruppe festgelegt | 
+| Externes VNET | Der Clustercontroller und die Clusterknoten werden in der Ressourcengruppe erstellt, jedoch wird ein vorhandenes virtuelles Netzwerk in einer anderen Ressourcengruppe verwendet. | (1) Rolle [Benutzerzugriffsadministrator](../role-based-access-control/built-in-roles.md#user-access-administrator) und [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor), festgelegt auf die vFXT-Ressourcengruppe; und (2) Rolle [Mitwirkender von virtuellen Computern](../role-based-access-control/built-in-roles.md#virtual-machine-contributor), [Benutzerzugriffsadministrator](../role-based-access-control/built-in-roles.md#user-access-administrator) und [Avere-Mitwirkender](../role-based-access-control/built-in-roles.md#avere-contributor), festgelegt auf die VNET-Ressourcengruppe |
  
-* Ein Benutzer ohne Besitzerberechtigung kann vFXT-Cluster erstellen, indem er dem Benutzer über die rollenbasierte Zugriffskontrolle (RBAC) vorab Berechtigungen zuweist. Diese Methode gewährt diesen Benutzern jedoch erhebliche Berechtigungen. [In diesem Artikel](avere-vfxt-non-owner.md) wird erläutert, wie eine Zugriffsrolle erstellt wird, um Nicht-Besitzer für die Erstellung von Clustern zu autorisieren.
+Alternativ können Sie wie in [diesem Artikel](avere-vfxt-non-owner.md) beschrieben vorab eine benutzerdefinierte RBAC-Rolle (role-based access control, rollenbasierte Zugriffssteuerung) erstellen und dem Benutzer Berechtigungen zuweisen. Diese Methode gewährt diesen Benutzern jedoch erhebliche Berechtigungen. 
 
 ## <a name="quota-for-the-vfxt-cluster"></a>Kontingent für den vFXT-Cluster
 
@@ -83,75 +76,6 @@ So akzeptieren Sie die Nutzungsbedingungen der Software im Voraus
    ```azurecli
    az vm image accept-terms --urn microsoft-avere:vfxt:avere-vfxt-controller:latest
    ```
-
-## <a name="create-access-roles"></a>Zugriffsrollen erstellen 
-
-[Rollenbasierte Zugriffssteuerung](../role-based-access-control/index.yml) (RBAC) gibt dem vFXT-Clustercontroller und Clusterknoten die Berechtigung, erforderliche Aufgaben auszuführen.
-
-* Der Clustercontroller benötigt die Berechtigung zum Erstellen und Ändern virtueller Computer, um den Cluster zu erstellen. 
-
-* Im Rahmen des normalen vFXT-Clusterbetriebs müssen einzelne vFXT-Knoten Aufgaben wie das Lesen von Azure-Ressourceneigenschaften, das Verwalten von Speicher und die Steuerung der Netzwerkschnittstelleneinstellungen anderer Knoten übernehmen.
-
-Bevor Sie Ihren Avere vFXT-Cluster erstellen können, müssen Sie eine benutzerdefinierte Rolle für die Verwendung mit den Clusterknoten definieren. 
-
-Für den Clustercontroller können Sie die Standardrolle aus der Vorlage übernehmen. Der Standardwert gewährt dem Clustercontroller die Berechtigungen eines Ressourcengruppenbesitzers. Wenn Sie eine benutzerdefinierte Rolle für den Controller erstellen möchten, lesen Sie [Angepasste Controllerzugriffsrolle](avere-vfxt-controller-role.md).
-
-> [!NOTE] 
-> Nur ein Abonnementbesitzer oder ein Benutzer mit der Rolle „Besitzer“ oder „Benutzerzugriffsadministrator“ kann Rollen anlegen. Die Rollen können vorab erstellt werden.  
-
-### <a name="create-the-cluster-node-access-role"></a>Erstellen der Zugriffsrolle für Clusterknoten
-
-<!-- caution - this header is linked to in the template so don't change it unless you can change that -->
-
-Sie müssen die Clusterknotenrolle anlegen, bevor Sie den Avere vFXT for Azure-Cluster erstellen können.
-
-> [!TIP] 
-> Interne Microsoft-Benutzer sollten die vorhandene Rolle mit dem Namen „Avere Cluster Runtime Operator“ verwenden, anstatt zu versuchen, eine neue zu erstellen. 
-
-1. Kopieren Sie diese Datei. Fügen Sie Ihre Abonnement-ID in die Zeile „AssignableScopes“ ein.
-
-   (Die aktuelle Version dieser Datei befindet sich im Repository github.com/Azure/Avere unter der Bezeichnung [AvereOperator.txt](https://github.com/Azure/Avere/blob/master/src/vfxt/src/roles/AvereOperator.txt).)  
-
-   ```json
-   {
-      "AssignableScopes": [
-          "/subscriptions/PUT_YOUR_SUBSCRIPTION_ID_HERE"
-      ],
-      "Name": "Avere Operator",
-      "IsCustom": "true",
-      "Description": "Used by the Avere vFXT cluster to manage the cluster",
-      "NotActions": [],
-      "Actions": [
-          "Microsoft.Compute/virtualMachines/read",
-          "Microsoft.Network/networkInterfaces/read",
-          "Microsoft.Network/networkInterfaces/write",
-          "Microsoft.Network/virtualNetworks/read",
-          "Microsoft.Network/virtualNetworks/subnets/read",
-          "Microsoft.Network/virtualNetworks/subnets/join/action",
-          "Microsoft.Network/networkSecurityGroups/join/action",
-          "Microsoft.Resources/subscriptions/resourceGroups/read",
-          "Microsoft.Storage/storageAccounts/blobServices/containers/delete",
-          "Microsoft.Storage/storageAccounts/blobServices/containers/read",
-          "Microsoft.Storage/storageAccounts/blobServices/containers/write"
-      ],
-      "DataActions": [
-          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete",
-          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
-          "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
-      ]
-   }
-   ```
-
-1. Speichern Sie die Datei unter ``avere-operator.json`` oder einem ähnlichen einprägsamen Namen. 
-
-
-1. Öffnen Sie eine Azure Cloud Shell, und melden Sie sich mit Ihrer Abonnement-ID an ([weiter oben in diesem Dokument](#accept-software-terms) beschrieben). Verwenden Sie diesen Befehl, um die Rolle zu erstellen:
-
-   ```bash
-   az role definition create --role-definition /avere-operator.json
-   ```
-
-Der Rollenname wird beim Erstellen des Clusters verwendet. In diesem Beispiel lautet der Name ``avere-operator``.
 
 ## <a name="create-a-storage-service-endpoint-in-your-virtual-network-if-needed"></a>Erstellen eines Speicherdienstendpunkts in Ihrem virtuellen Netzwerk (falls erforderlich)
 

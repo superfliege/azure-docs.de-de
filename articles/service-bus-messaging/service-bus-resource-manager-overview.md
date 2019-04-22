@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 09/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 4fa9026405789a6a90bbb9213cc54346aa8374c8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 196b00f1268eada20d0e35473dc6eb43c9e48df6
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57845401"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045268"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Erstellen von Service Bus-Ressourcen mithilfe von Azure Resource Manager-Vorlagen
 
@@ -29,18 +29,18 @@ Azure Resource Manager-Vorlagen helfen Ihnen dabei, die für eine Lösung bereit
 
 > [!NOTE]
 > Die Beispiele in diesem Artikel zeigen, wie Sie Azure Resource Manager verwenden, um einen Service Bus-Namespace und eine Messagingentität (Warteschlange) zu erstellen. Um Beispiele für andere Vorlagen zu finden, rufen Sie den [Katalog mit Azure-Schnellstartvorlagen][Azure Quickstart Templates gallery] auf und suchen dort nach **Service Bus**.
->
->
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="service-bus-resource-manager-templates"></a>Resource Manager-Vorlagen für Service Bus
 
 Diese Azure Resource Manager-Vorlagen für Service Bus sind zum Download und zur Bereitstellung verfügbar. Klicken Sie auf die folgenden Links, um Details zu jeder Vorlage abzurufen (auf jeder Seite finden Sie Links zu den Vorlagen in GitHub):
 
-* [Erstellen eines Service Bus-Namespaces](service-bus-resource-manager-namespace.md)
-* [Create a Service Bus namespace and a queue using an Azure Resource Manager template (Erstellen eines Service Bus-Namespace und einer Warteschlange mit einer Azure Resource Manager-Vorlage)](service-bus-resource-manager-namespace-queue.md)
-* [Create a Service Bus namespace with topic and subscription using an Azure Resource Manager template (Erstellen eines Service Bus-Namespace mit Thema und Abonnement mit einer Azure Resource Manager-Vorlage)](service-bus-resource-manager-namespace-topic.md)
-* [Create a Service Bus authorization rule for namespace and queue using an Azure Resource Manager template](service-bus-resource-manager-namespace-auth-rule.md)
-* [Create a Service Bus namespace with topic, subscription, and rule (Erstellen eines Service Bus-Namespace mit Thema, Abonnement und Regel)](service-bus-resource-manager-namespace-topic-with-rule.md)
+* [Erstellen eines Service Bus-Namespace](service-bus-resource-manager-namespace.md)
+* [Erstellen eines Service Bus-Namespace und einer Warteschlange](service-bus-resource-manager-namespace-queue.md)
+* [Erstellen eines Service Bus-Namespace mit einem Thema und einem Abonnement](service-bus-resource-manager-namespace-topic.md)
+* [Erstellen eines Service Bus-Namespace mit einer Warteschlange und einer Autorisierungsregel](service-bus-resource-manager-namespace-auth-rule.md)
+* [Erstellen eines Service Bus-Namespace mit einem Thema, einem Abonnement und einer Regel](service-bus-resource-manager-namespace-topic-with-rule.md)
 
 ## <a name="deploy-with-powershell"></a>Bereitstellen mit PowerShell
 
@@ -164,27 +164,27 @@ Weitere Informationen finden Sie im Artikel [Parameter](../azure-resource-manage
 Führen Sie an einer PowerShell-Eingabeaufforderung den folgenden Befehl aus:
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 Sie werden aufgefordert, sich bei Ihrem Azure-Konto anzumelden. Führen Sie nach der Anmeldung den folgenden Befehl aus, um Ihre verfügbaren Abonnements anzuzeigen:
 
 ```powershell
-Get-AzureRMSubscription
+Get-AzSubscription
 ```
 
 Dieser Befehl gibt eine Liste der verfügbaren Azure-Abonnements zurück. Wählen Sie ein Abonnement für die aktuelle Sitzung aus, indem Sie folgenden Befehl ausführen. Ersetzen Sie `<YourSubscriptionId>` durch die GUID des Azure-Abonnements, das Sie verwenden möchten:
 
 ```powershell
-Set-AzureRmContext -SubscriptionID <YourSubscriptionId>
+Set-AzContext -SubscriptionID <YourSubscriptionId>
 ```
 
 ### <a name="set-the-resource-group"></a>Festlegen der Ressourcengruppe
 
-Wenn noch keine Ressourcengruppe vorhanden ist, können Sie mit dem Befehl **New-AzureRmResourceGroup** eine neue Ressourcengruppe erstellen. Geben Sie den Namen der gewünschten Ressourcengruppe und den gewünschten Speicherort ein. Beispiel: 
+Wenn noch keine Ressourcengruppe vorhanden ist, erstellen Sie mit dem Befehl **New-AzResourceGroup** eine neue Ressourcengruppe. Geben Sie den Namen der gewünschten Ressourcengruppe und den gewünschten Speicherort ein. Beispiel: 
 
 ```powershell
-New-AzureRmResourceGroup -Name MyDemoRG -Location "West US"
+New-AzResourceGroup -Name MyDemoRG -Location "West US"
 ```
 
 Nach erfolgreicher Ausführung wird eine Zusammenfassung der neuen Ressourcengruppe angezeigt:
@@ -199,38 +199,38 @@ ResourceId        : /subscriptions/<GUID>/resourceGroups/MyDemoRG
 
 ### <a name="test-the-deployment"></a>Testen der Bereitstellung
 
-Überprüfen Sie Ihre Bereitstellung, indem Sie das Cmdlet `Test-AzureRmResourceGroupDeployment` ausführen. Geben Sie beim Testen der Bereitstellung die Parameter exakt so an wie beim Ausführen der Bereitstellung.
+Überprüfen Sie Ihre Bereitstellung, indem Sie das Cmdlet `Test-AzResourceGroupDeployment` ausführen. Geben Sie beim Testen der Bereitstellung die Parameter exakt so an wie beim Ausführen der Bereitstellung.
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
+Test-AzResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
 ### <a name="create-the-deployment"></a>Erstellen der Bereitstellung
 
-Um die neue Bereitstellung zu erstellen, führen Sie das Cmdlet `New-AzureRmResourceGroupDeployment` aus, und geben Sie bei entsprechender Aufforderung die erforderlichen Parameter an. Die Parameter enthalten einen Namen für Ihre Bereitstellung, den Namen Ihrer Ressourcengruppe und den Pfad oder die URL zur Vorlagendatei. Wenn der Parameter **Mode** nicht angegeben wurde, wird der Standardwert **Incremental** verwendet. Weitere Informationen finden Sie unter [Inkrementelle und vollständige Bereitstellungen](../azure-resource-manager/deployment-modes.md).
+Um die neue Bereitstellung zu erstellen, führen Sie das Cmdlet `New-AzResourceGroupDeployment` aus, und geben Sie bei entsprechender Aufforderung die erforderlichen Parameter an. Die Parameter enthalten einen Namen für Ihre Bereitstellung, den Namen Ihrer Ressourcengruppe und den Pfad oder die URL zur Vorlagendatei. Wenn der Parameter **Mode** nicht angegeben wurde, wird der Standardwert **Incremental** verwendet. Weitere Informationen finden Sie unter [Inkrementelle und vollständige Bereitstellungen](../azure-resource-manager/deployment-modes.md).
 
 Der folgende Befehl fordert die Angabe der drei Parameter im PowerShell-Fenster:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
+New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
 Um stattdessen eine Parameterdatei zu verwenden, geben Sie folgenden Befehl ein:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
+New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -TemplateParameterFile <path to parameters file>\azuredeploy.parameters.json
 ```
 
 Sie können beim Ausführen des Bereitstellungs-Cmdlets auch Inlineparameter verwenden. Der Befehl lautet wie folgt:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
+New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
 ```
 
 Legen Sie zum Ausführen einer [vollständigen](../azure-resource-manager/deployment-modes.md) Bereitstellung den Parameter **Mode** auf **Complete** fest:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
+New-AzResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
 ```
 
 ### <a name="verify-the-deployment"></a>Überprüfen der Bereitstellung
@@ -257,7 +257,7 @@ Sie haben nun den grundlegenden Workflow und die grundlegenden Befehle für die 
 
 * [Übersicht über den Azure Resource Manager][Azure Resource Manager overview]
 * [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Azure PowerShell][Deploy resources with Azure Resource Manager templates]
-* [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md)
 * [Microsoft.ServiceBus-Ressourcentypen](/azure/templates/microsoft.servicebus/allversions)
 
 [Azure Resource Manager overview]: ../azure-resource-manager/resource-group-overview.md

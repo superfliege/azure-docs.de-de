@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: a5b4e0465e83dec5620954998db329e7902fb59c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f37ab1b9eef5be4aff6e5f8aecebc3688592f040
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106048"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046681"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>Bereitstellen eines virtuellen Computers auf Basis der VHDs
 
@@ -30,15 +30,16 @@ Nachdem Sie Ihre virtuellen Festplatten – die generalisierte Betriebssystem-VH
 Weitere Informationen zu VM-Images finden Sie in den folgenden Blogbeiträgen:
 
 - [VM-Image](https://azure.microsoft.com/blog/vm-image-blog-post/)
-- [VM Image PowerShell How To](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/) (VM-Images in PowerShell – Vorgehensweisen)
+- [VM-Images in PowerShell – Vorgehensweisen](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)
 
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisite-install-the-necessary-tools"></a>Voraussetzung: Installieren der erforderlichen Tools
 
 Falls Sie dies noch nicht getan haben, installieren Sie Azure PowerShell und die Azure CLI gemäß den folgenden Anweisungen:
 
-- [Installieren von Azure PowerShell unter Windows mit PowerShellGet](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps)
-- [Installieren der Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
+- [Installieren von Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps)
+- [Installieren der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli)
 
 
 ## <a name="deployment-steps"></a>Bereitstellungsschritte
@@ -55,13 +56,13 @@ Nachdem Ihr virtueller Computer bereitgestellt wurde, können Sie [Ihr VM-Image 
    ![Erstellen einer Vorlage für die VHD-Bereitstellung im Azure-Portal](./media/publishvm_021.png)
 
 1. Kopieren Sie diese [JSON-Vorlage](./cpp-deploy-json-template.md), fügen Sie sie in den Editor ein, und klicken Sie auf **Speichern**. <br/>
-   ![Speichern der Vorlage für die VHD-Bereitstellung im Azure-Portal](./media/publishvm_022.png)
+   ![Speichern einer Vorlage für die VHD-Bereitstellung im Azure-Portal](./media/publishvm_022.png)
 
 1. Geben Sie die Parameterwerte für die angezeigten Eigenschaftenseiten für die **benutzerdefinierte Bereitstellung** ein.
 
    <table> <tr> <td valign="top"> <img src="./media/publishvm_023.png" alt="Custom deployment property page 1"> </td> <td valign="top"> <img src="./media/publishvm_024.png" alt="Custom deployment property page 2"> </td> </tr> </table> <br/> 
 
-   |  **Parameter**              |   **Beschreibung**                                                            |
+   |  **Parameter**              |   **BESCHREIBUNG**                                                            |
    |  -------------              |   ---------------                                                            |
    | Name des Speicherkontos des Benutzers   | Name des Speicherkontos, in dem sich die generalisierte VHD befindet                    |
    | Name des Speichercontainers des Benutzers | Name des Containers, in dem sich die generalisierte VHD befindet                          |
@@ -71,7 +72,7 @@ Nachdem Ihr virtueller Computer bereitgestellt wurde, können Sie [Ihr VM-Image 
    | OS Type (Betriebssystemtyp)                     | VM-Betriebssystem: `Windows` \| `Linux`                                    |
    | Abonnement-ID             | Bezeichner des ausgewählten Abonnements                                      |
    | Standort                    | Geografischer Standort der Bereitstellung                                        |
-   | Größe des virtuellen Computers                     | [Größe des virtuellen Azure-Computers](https://docs.microsoft.com/azure/virtual-machines/windows/sizes), z.B. `Standard_A2` |
+   | Größe des virtuellen Computers                     | [Größe des virtuellen Azure-Computers](https://docs.microsoft.com/azure/virtual-machines/windows/sizes), z. B. `Standard_A2` |
    | Öffentliche IP-Adresse      | Name der öffentlichen IP-Adresse                                               |
    | VM-Name                     | Name des neuen virtuellen Computers                                                           |
    | Name des virtuellen Netzwerks        | Name des virtuellen Netzwerks, das von der VM verwendet wird                                   |

@@ -10,21 +10,21 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 154e0dcefab6d5bcdfc9532ba4258d09593f0970
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 28d8c077f106f12812f7ed710217febd24d81efc
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311131"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267156"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieraktivität in Azure Data Factory
 
 ## <a name="overview"></a>Übersicht
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1](v1/data-factory-data-movement-activities.md)
+> * [Version 1](v1/data-factory-data-movement-activities.md)
 > * [Aktuelle Version](copy-activity-overview.md)
 
 In Azure Data Factory können Sie die Kopieraktivität verwenden, um Daten zwischen lokalen Datenspeichern und Clouddatenspeichern zu kopieren. Nach dem Kopieren können die Daten weiter transformiert und analysiert werden. Sie können die Kopieraktivität auch zum Veröffentlichen von Transformations- und Analyseergebnissen für die Verwendung für Business Intelligence (BI) und in Anwendungen verwenden.
@@ -54,14 +54,15 @@ Die Kopieraktivität durchläuft die folgenden Phasen, um Daten aus einer Quelle
 
 Sie können die Kopieraktivität verwenden, um **Dateien unverändert** zwischen zwei dateibasierten Datenspeichern zu kopieren. In diesem Fall werden die Daten effizient ohne Serialisierung/Deserialisierung kopiert.
 
-Die Kopieraktivität unterstützt auch das Lesen von und Schreiben in Dateien in bestimmten Formaten: **Text, JSON, Avro, ORC und Parquet** sowie die Komprimierungscodecs **GZip, Deflate, BZip2 und ZipDeflate** werden unterstützt. Weitere Informationen finden Sie unter [Unterstützte Datei- und Komprimierungsformate](supported-file-formats-and-compression-codecs.md).
+Die Kopieraktivität unterstützt auch das Lesen von und Schreiben in Dateien in bestimmten Formaten: **Text, JSON, Avro, ORC und Parquet** sowie das Komprimieren und Dekomprimieren von Dateien mit den folgenden Codecs: **GZip, Deflate, BZip2 und ZipDeflate**. Weitere Informationen finden Sie unter [Unterstützte Datei- und Komprimierungsformate](supported-file-formats-and-compression-codecs.md).
 
 Sie können z.B. folgende Kopieraktivitäten ausführen:
 
-* Kopieren von Daten in einer lokalen SQL Server-Instanz und Schreiben in Azure Data Lake Store im ORC-Format
+* Kopieren von Daten in einer lokalen SQL Server-Instanz und Schreiben in Azure Data Lake Storage Gen2 im Parquet-Format
 * Kopieren von Dateien im Textformat (CSV) aus dem lokalen Dateisystem und Schreiben in einen Azure-Blob im Avro-Format
-* Kopieren von ZIP-Dateien aus dem lokalen Dateisystem und Dekomprimieren in Azure Data Lake Store
+* Kopieren von ZIP-Dateien aus dem lokalen Dateisystem und Dekomprimieren in Azure Data Lake Storage Gen2
 * Kopieren von Daten im GZip-komprimierten Textformat (CSV) aus einem Azure-Blob und Schreiben in Azure SQL-Datenbank
+* Und viele weitere Fälle, die Serialisierung/Deserialisierung oder Komprimierung/Dekomprimierung erfordern.
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 
@@ -160,7 +161,7 @@ Klicken Sie unter **Aktionen** auf den Link **Details**, um Details und Leistung
 >[!TIP]
 >In einigen Szenarien finden Sie oben auf der Seite zur Kopierüberwachung auch **Tipps zur Leistungsoptimierung**, in denen der identifizierte Engpass aufgeführt ist, und Sie erfahren, welche Änderungen vorgenommen werden müssen, um den Kopiedurchsatz zu erhöhen, siehe Beispiel mit Details [hier](#performance-and-tuning).
 
-**Beispiel: Kopieren aus Amazon S3 in Azure Data Lake Store**
+**Beispiel: Kopieren aus Amazon S3 in Azure Data Lake Storage**
 ![Überwachen von Details der Aktivitätsausführung](./media/copy-activity-overview/monitor-activity-run-details-adls.png)
 
 **Beispiel: Gestaffeltes Kopieren aus Azure SQL-Datenbank in Azure SQL Data Warehouse**
@@ -253,6 +254,6 @@ In Version 1 unterstützte Azure Data Factory das Lesen oder Schreiben von parti
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in den folgenden Schnellstartanleitungen, Tutorials und Beispielen:
 
-- [Kopieren von Daten von einem Speicherort an einen anderen Speicherort in der gleichen Azure Blob Storage-Instanz](quickstart-create-data-factory-dot-net.md)
-- [Kopieren von Daten aus Azure Blob Storage in Azure SQL-Datenbank](tutorial-copy-data-dot-net.md)
-- [Kopieren von Daten aus einer lokalen SQL Server-Instanz in Azure](tutorial-hybrid-copy-powershell.md)
+- [Schnellstart: Erstellen einer Data Factory und Pipeline mit dem .NET SDK](quickstart-create-data-factory-dot-net.md)
+- [Kopieren von Daten aus Azure Blob Storage nach Azure SQL-Datenbank mithilfe von Azure Data Factory](tutorial-copy-data-dot-net.md)
+- [Tutorial: Kopieren von Daten aus einer lokalen SQL Server-Datenbank nach Azure Blob Storage](tutorial-hybrid-copy-powershell.md)

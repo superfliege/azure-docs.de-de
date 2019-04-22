@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/22/2019
 ms.author: aljo
-ms.openlocfilehash: a620563be9ffe18ae0f7fa4a78df83ea5b35a5d2
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 2e9c41409c1f528947e3bef281e9a3c34da39e9b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488070"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050441"
 ---
 # <a name="enable-disk-encryption-for-service-fabric-windows-cluster-nodes"></a>Aktivieren der Datenträgerverschlüsselung für Service Fabric-Windows-Clusterknoten 
 > [!div class="op_single_selector"]
@@ -35,33 +35,34 @@ In diesem Leitfaden werden folgende Verfahren behandelt:
 * Vorbereitende Schritte, die Sie vor dem Aktivieren der Datenträgerverschlüsselung auf einer VM-Skalierungsgruppe im Service Fabric-Windows-Cluster ausführen müssen.
 * Schritte, die Sie zum Aktivieren der Datenträgerverschlüsselung auf einer VM-Skalierungsgruppe im Service Fabric-Windows-Cluster ausführen müssen.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * **Selbstregistrierung**: Zur Verwendung der Vorschau der Datenträgerverschlüsselung auf einer VM-Skalierungsgruppe ist eine Selbstregistrierung erforderlich.
 * Sie können Ihr Abonnement mit folgenden Schritten selbst registrieren: 
 ```powershell
-Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
+Register-AzProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
 ```
 * Warten Sie ca. 10 Minuten, bis der Status „Registriert“ angezeigt wird. Sie können den Status überprüfen, indem Sie den folgenden Befehl ausführen: 
 ```powershell
-Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
+Get-AzProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
+Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 * **Azure Key Vault**: Erstellen Sie einen Schlüsseltresor im selben Abonnement und derselben Region wie die Skalierungsgruppe, und legen Sie als Zugriffsrichtlinie auf dem Schlüsseltresor mit seinem PS-Cmdlet „EnabledForDiskEncryption“ fest. Sie können die Richtlinie auch unter Verwendung der KeyVault-Benutzeroberfläche im Azure-Portal festlegen: 
 ```powershell
-Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption
+Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption
 ```
-* Installieren Sie die aktuelle [Azure CLI 2.0](/cli/azure/install-azure-cli?view=azure-cli-latest) mit den neuen Verschlüsselungsbefehlen.
-* Installieren Sie die aktuelle Version des [Azure SDK aus dem Azure PowerShell-Release](https://github.com/Azure/azure-powershell/releases). Es folgen die ADE-Cmdlets der VM-Skalierungsgruppe zum Aktivieren ([Set](/powershell/module/azurerm.compute/set-azurermvmssdiskencryptionextension?view=azurermps-4.4.1)) der Verschlüsselung, Abrufen ([Get](/powershell/module/azurerm.compute/get-azurermvmssvmdiskencryption?view=azurermps-4.4.1)) des Verschlüsselungsstatus und Entfernen ([disable](/powershell/module/azurerm.compute/disable-azurermvmssdiskencryption?view=azurermps-4.4.1)) der Verschlüsselung von der Skalierungsgruppeninstanz.
+* Installieren Sie die aktuellste [Azure CLI](/cli/azure/install-azure-cli) mit den neuen Verschlüsselungsbefehlen.
+* Installieren Sie die aktuelle Version des [Azure SDK aus dem Azure PowerShell-Release](https://github.com/Azure/azure-powershell/releases). Es folgen die ADE-Cmdlets der VM-Skalierungsgruppe zum Aktivieren ([Set](/powershell/module/az.compute/set-azvmssdiskencryptionextension)) der Verschlüsselung, Abrufen ([Get](/powershell/module/az.compute/get-azvmssvmdiskencryption)) des Verschlüsselungsstatus und Entfernen ([disable](/powershell/module/az.compute/disable-azvmssdiskencryption)) der Verschlüsselung von der Skalierungsgruppeninstanz.
 
 | Get-Help | Version |  Quelle  |
 | ------------- |-------------| ------------|
-| Get-AzureRmVmssDiskEncryptionStatus   | 3.4.0 oder höher | AzureRM.Compute |
-| Get-AzureRmVmssVMDiskEncryptionStatus   | 3.4.0 oder höher | AzureRM.Compute |
-| Disable-AzureRmVmssDiskEncryption   | 3.4.0 oder höher | AzureRM.Compute |
-| Get-AzureRmVmssDiskEncryption   | 3.4.0 oder höher | AzureRM.Compute |
-| Get-AzureRmVmssVMDiskEncryption   | 3.4.0 oder höher | AzureRM.Compute |
-| Set-AzureRmVmssDiskEncryptionExtension   | 3.4.0 oder höher | AzureRM.Compute |
+| Get-AzVmssDiskEncryptionStatus   | 1.0.0 oder höher | Az.Compute |
+| Get-AzVmssVMDiskEncryptionStatus   | 1.0.0 oder höher | Az.Compute |
+| Disable-AzVmssDiskEncryption   | 1.0.0 oder höher | Az.Compute |
+| Get-AzVmssDiskEncryption   | 1.0.0 oder höher | Az.Compute |
+| Get-AzVmssVMDiskEncryption   | 1.0.0 oder höher | Az.Compute |
+| Set-AzVmssDiskEncryptionExtension   | 1.0.0 oder höher | Az.Compute |
 
 
 ## <a name="supported-scenarios-for-disk-encryption"></a>Unterstützte Szenarien für die Datenträgerverschlüsselung
@@ -77,8 +78,8 @@ Verwenden Sie die folgenden Befehle, um Cluster zu erstellen und die Datenträge
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure 
 
 ```powershell
-Login-AzureRmAccount
-Set-AzureRmContext -SubscriptionId <guid>
+Login-AzAccount
+Set-AzContext -SubscriptionId <guid>
 
 ```
 
@@ -119,7 +120,7 @@ $parameterFilePath="c:\templates\templateparam.json"
 $templateFilePath="c:\templates\template.json"
 
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
+New-AzServiceFabricCluster -ResourceGroupName $resourceGroupName -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
 
 ```
 
@@ -153,11 +154,11 @@ Führen Sie die Schritte sowie Anleitungen zum [Bereitstellen und Entfernen von 
 $VmssName = "nt1vm"
 $vaultName = "mykeyvault"
 $resourceGroupName = "mycluster"
-$KeyVault = Get-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgName
+$KeyVault = Get-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName
 $DiskEncryptionKeyVaultUrl = $KeyVault.VaultUri
 $KeyVaultResourceId = $KeyVault.ResourceId
 
-Set-AzureRmVmssDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMScaleSetName $VmssName -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -VolumeType All
+Set-AzVmssDiskEncryptionExtension -ResourceGroupName $resourceGroupName -VMScaleSetName $VmssName -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -VolumeType All
 
 ```
 
@@ -176,9 +177,9 @@ Ein weiterer Benutzer kann sich bei der VM in der Skalierungsgruppe anmelden und
 
 $VmssName = "nt1vm"
 $resourceGroupName = "mycluster"
-Get-AzureRmVmssDiskEncryption -ResourceGroupName $resourceGroupName -VMScaleSetName $VmssName
+Get-AzVmssDiskEncryption -ResourceGroupName $resourceGroupName -VMScaleSetName $VmssName
 
-Get-AzureRmVmssVMDiskEncryption -ResourceGroupName $resourceGroupName -VMScaleSetName $VmssName -InstanceId "0"
+Get-AzVmssVMDiskEncryption -ResourceGroupName $resourceGroupName -VMScaleSetName $VmssName -InstanceId "0"
 
 ```
 
@@ -196,7 +197,7 @@ Das Deaktivieren der Datenträgerverschlüsselung bezieht sich auf die gesamte V
 
 $VmssName = "nt1vm"
 $resourceGroupName = "mycluster"
-Disable-AzureRmVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $VmssName
+Disable-AzVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $VmssName
 
 ```
 

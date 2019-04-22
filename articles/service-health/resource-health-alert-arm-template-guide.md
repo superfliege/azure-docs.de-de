@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: de5419bbfa5a364cb570651fd4d57d7560e4aafd
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: afa89fc90552c7ccba1fcea0945ee223d0096be4
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663433"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047516"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurieren von Ressourcenintegritätswarnungen mithilfe von Resource Manager-Vorlagen
 
@@ -22,30 +22,32 @@ Azure Resource Health informiert Sie über den aktuellen und den vergangenen Int
 > [!NOTE]
 > Resource Health-Warnungen sind derzeit als Vorschau verfügbar.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Damit Sie die Anweisungen auf dieser Seite ausführen können, müssen Sie vorab einige Komponenten einrichten:
 
-1. Sie müssen das [Azure PowerShell-Modul](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) (`AzureRm`) installieren.
+1. Sie müssen das [Azure PowerShell-Modul](https://docs.microsoft.com/powershell/azure/install-Az-ps) installieren.
 2. Sie können [eine Aktionsgruppe erstellen oder wiederverwenden](../azure-monitor/platform/action-groups.md), die so konfiguriert ist, dass Sie benachrichtigt werden.
 
 ## <a name="instructions"></a>Anleitung
 1. Melden Sie sich unter Verwendung von PowerShell und Ihres Kontos bei Azure an, und wählen Sie das gewünschte Abonnement aus.
 
-        Login-AzureRmAccount
-        Select-AzureRmSubscription -Subscription <subscriptionId>
+        Login-AzAccount
+        Select-AzSubscription -Subscription <subscriptionId>
 
-    > Sie können mit `Get-AzureRmSubscription` die Abonnements auflisten, auf die Sie Zugriff haben.
+    > Sie können mit `Get-AzSubscription` die Abonnements auflisten, auf die Sie Zugriff haben.
 
 2. Suchen Sie die vollständige Azure Resource Manager-ID für Ihre Aktionsgruppe, und speichern Sie sie.
 
-        (Get-AzureRmActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
+        (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
 
 3. Erstellen Sie eine Resource Manager-Vorlage für Resource Health-Warnungen, und speichern Sie sie unter `resourcehealthalert.json`. ([Details siehe unten](#resource-manager-template-for-resource-health-alerts))
 
 4. Erstellen Sie mit dieser Vorlage eine neue Azure Resource Manager-Bereitstellung.
 
-        New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <resourceGroup> -TemplateFile <path\to\resourcehealthalert.json>
+        New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <resourceGroup> -TemplateFile <path\to\resourcehealthalert.json>
 
 5. Sie werden zur Eingabe des Warnungsnamen und der Ressourcen-ID der Aktionsgruppe aufgefordert, die Sie zuvor kopiert haben:
 
@@ -162,7 +164,7 @@ Für einen Bereich auf Ressourcenebene sieht der Abschnitt „scopes“ etwa wie
 ],
 ```
 
-Beispiel: `"/subscriptions/d37urb3e-ed41-4670-9c19-02a1d2808ff9/resourcegroups/myRG/providers/microsoft.compute/virtualmachines/myVm"`
+Beispiel:  `"/subscriptions/d37urb3e-ed41-4670-9c19-02a1d2808ff9/resourcegroups/myRG/providers/microsoft.compute/virtualmachines/myVm"`
 
 > Diese Zeichenfolge erhalten Sie, indem Sie Ihre Azure-Ressource im Azure-Portal anzeigen und sich die URL ansehen.
 

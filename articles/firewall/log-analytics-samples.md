@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 2/15/2019
 ms.author: victorh
-ms.openlocfilehash: 21309060b7b4a93d798c444bd96bc21c62693a54
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3f329d3dd4af1faef8f77d08db655cc7d6ef79fd
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534002"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051817"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Azure Firewall-Protokollanalyse – Beispiele
 
@@ -40,7 +40,7 @@ Die Netzwerkregelprotokolldaten werden wie folgt angezeigt:
 
 ![Netzwerkregelprotokolldaten]( ./media/log-analytics-samples/azurefirewall-networkrulelogstats.png)
 
-Mit Azure Firewall werden Daten unter AzureDiagnostics mit der Kategorie **AzureFirewallApplicationRule** oder **AzureFirewallApplicationRule** protokolliert. Die Daten, die die Details enthalten, werden im Feld „msg_s“ gespeichert. Mit dem [parse](https://docs.microsoft.com/azure/kusto/query/parseoperator)-Operator können die verschiedenen Eigenschaften aus dem Feld „msg_s“ extrahiert werden. Mit den Abfragen unten werden die Informationen für beide Kategorien extrahiert.
+Mit Azure Firewall werden Daten unter AzureDiagnostics mit der Kategorie **AzureFirewallApplicationRule** oder **AzureFirewallNetworkRule** protokolliert. Die Daten, die die Details enthalten, werden im Feld „msg_s“ gespeichert. Mit dem [parse](https://docs.microsoft.com/azure/kusto/query/parseoperator)-Operator können die verschiedenen Eigenschaften aus dem Feld „msg_s“ extrahiert werden. Mit den Abfragen unten werden die Informationen für beide Kategorien extrahiert.
 
 ## <a name="application-rules-log-data-query"></a>Abfrage der Anwendungsregelprotokolldaten
 

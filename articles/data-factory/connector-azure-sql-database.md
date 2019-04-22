@@ -10,18 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: e9efe96490ea1c9351d87b5b2477474ef68fbda9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d0ecf6a48735ec2ba1623f97d4760d230a6e6fbf
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57875236"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266310"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure SQL-Datenbank mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
-> * [Version 1](v1/data-factory-azure-sql-connector.md)
+> * [Version 1](v1/data-factory-azure-sql-connector.md)
 > * [Aktuelle Version](connector-azure-sql-database.md)
 
 In diesem Artikel wird die Verwendung der Kopieraktivität in Azure Data Factory zum Kopieren von Daten in und aus Azure SQL-Datenbank beschrieben. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
@@ -93,7 +93,7 @@ Weitere Voraussetzungen und JSON-Beispiele für die verschiedenen Authentifizier
 }
 ```
 
-**Kennwort in Azure Key Vault:** 
+**Kennwort im Azure Key Vault:** 
 
 ```json
 {
@@ -373,7 +373,7 @@ Legen Sie zum Kopieren von Daten aus Azure SQL-Datenbank die **type**-Eigenschaf
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft der Senke der Kopieraktivität muss auf **SqlSink** festgelegt sein. | Ja |
-| writeBatchSize | Fügt Daten in die SQL-Tabelle ein, wenn die Puffergröße **writeBatchSize** erreicht.<br/> Zulässiger Wert: **integer** (Anzahl der Zeilen) | Nein. Standard: 10000 |
+| writeBatchSize | Anzahl der Zeilen, die in die SQL-Tabelle **pro Batch** eingefügt werden sollen.<br/> Zulässiger Wert: **integer** (Anzahl der Zeilen) | Nein. Standard: 10000 |
 | writeBatchTimeout | Wartezeit für den Abschluss der Batcheinfügung, bis das Timeout wirksam wird.<br/> Zulässiger Wert: **timespan**. Beispiel: „00:30:00“ (30 Minuten). | Nein  |
 | preCopyScript | Geben Sie eine auszuführende SQL-Abfrage für die Kopieraktivität an, ehe Sie Daten in Azure SQL-Datenbank schreiben. Sie wird pro Ausführung der Kopieraktivität nur einmal aufgerufen. Sie können diese Eigenschaft nutzen, um vorab geladene Daten zu bereinigen. | Nein  |
 | sqlWriterStoredProcedureName | Der Name der gespeicherten Prozedur, die definiert, wie Quelldaten auf eine Zieltabelle angewandt werden. Ein Beispiel ist für die ein Upsert-Vorgang bzw. eine Transformation mithilfe einer eigenen Geschäftslogik. <br/><br/>Diese gespeicherte Prozedur wird **pro Batch aufgerufen**. Für Vorgänge, die nur einmal ausgeführt werden und nichts mit den Quelldaten zu tun haben, verwenden Sie die `preCopyScript`-Eigenschaft. Beispielvorgänge sind das Löschen und Abschneiden. | Nein  |
@@ -535,7 +535,7 @@ Sie können eine gespeicherte Prozedur nutzen, wenn integrierte Kopiermechanisme
 
 Das folgende Beispiel zeigt, wie Sie eine gespeicherte Prozedur verwenden, um einen einfachen Upsert-Vorgang in eine Tabelle in Azure SQL-Datenbank auszuführen. Wenn Eingabedaten vorhanden sind und die Senkentabelle **Marketing** heißt, sind drei Spalten vorhanden: **ProfileID**, **State** und **Category**. Führen Sie den Upsert-Vorgang basierend auf der Spalte **ProfileID** aus, und wenden Sie ihn nur auf eine bestimmte Kategorie an.
 
-#### <a name="output-dataset"></a>Ausgabedataset
+**Ausgabedataset:** Der „tableName“ sollte in Ihrer gespeicherten Prozedur denselben Tabellentypparameternamen haben. Im Folgenden finden Sie das Skript für die gespeicherte Prozedur:
 
 ```json
 {
@@ -554,7 +554,7 @@ Das folgende Beispiel zeigt, wie Sie eine gespeicherte Prozedur verwenden, um ei
 }
 ```
 
-Definieren Sie den Abschnitt **SqlSink** in der Kopieraktivität wie folgt:
+Definieren Sie den Abschnitt **SqlSink** in der Kopieraktivität wie folgt.
 
 ```json
 "sink": {
@@ -608,9 +608,9 @@ Beim Kopieren von Daten aus bzw. nach Azure SQL-Datenbank werden die folgenden Z
 | binary |Byte[] |
 | bit |Boolean |
 | char |String, Char[] |
-| date |DateTime |
-| Datetime |DateTime |
-| datetime2 |DateTime |
+| date |Datetime |
+| Datetime |Datetime |
+| datetime2 |Datetime |
 | Datetimeoffset |DateTimeOffset |
 | Decimal |Decimal |
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
@@ -624,7 +624,7 @@ Beim Kopieren von Daten aus bzw. nach Azure SQL-Datenbank werden die folgenden Z
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
-| smalldatetime |DateTime |
+| smalldatetime |Datetime |
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object |
@@ -635,7 +635,7 @@ Beim Kopieren von Daten aus bzw. nach Azure SQL-Datenbank werden die folgenden Z
 | uniqueidentifier |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
-| xml |Xml |
+| Xml |Xml |
 
 >[!NOTE]
 > Für Datentypen, die dem Zwischendatentyp „Decimal“ zugeordnet sind, unterstützt ADF derzeit eine maximale Genauigkeit von 28. Daten mit einer höheren Genauigkeit müssen in SQL-Abfragen ggf. in eine Zeichenfolge konvertiert werden.

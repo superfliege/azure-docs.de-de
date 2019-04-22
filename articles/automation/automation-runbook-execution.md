@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/18/2019
+ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dbb50ba703221c28576b4c3614c77bbac7eeabb9
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 0445643d3aae0e4e072e7fa8e3a73dc8973e84a5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519118"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268499"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Ausführen von Runbooks in Azure Automation
 
@@ -43,7 +43,7 @@ Runbooks in Azure Automation können entweder in einer Sandbox in Azure oder auf
 |Datei oder Ordner mit einem Runbook überwachen|Hybrid Runbook Worker|[Watchertask](automation-watchers-tutorial.md) auf einem Hybrid Runbook Worker verwenden|
 |Ressourcenintensives Skript|Hybrid Runbook Worker| Für Azure-Sandboxes bestehen [Einschränkungen in Bezug auf Ressourcen](../azure-subscription-service-limits.md#automation-limits)|
 |Verwenden von Modulen mit spezifischen Anforderungen| Hybrid Runbook Worker|Hier einige Beispiele:</br> **WinSCP** – Abhängigkeit von „winscp.exe“ </br> **IISAdministration** – benötigt IIS zur Aktivierung|
-|Modul installieren, das Installationsprogramm erfordert|Hybrid Runbook Worker|Module für Sandbox müssen XCOPY-fähig sein|
+|Modul installieren, das Installationsprogramm erfordert|Hybrid Runbook Worker|Module für Sandbox müssen kopiert werden können|
 |Verwenden von Runbooks oder Modulen, die eine andere .NET Framework-Version als 4.7.2 erfordern|Hybrid Runbook Worker|Automation-Sandboxes haben .NET Framework 4.7.2, und es gibt keine Möglichkeit zum Upgraden|
 |Skripts, für die eine Rechteerweiterung erforderlich ist|Hybrid Runbook Worker|Sandboxes lassen keine Rechteerweiterung zu. Verwenden Sie in einem solchen Fall einen Hybrid Runbook Worker. Dann können Sie die Benutzerkontensteuerung deaktivieren und `Invoke-Command` verwenden, wenn Sie den Befehl ausführen, für den eine Rechteerweiterung erforderlich ist.|
 |Skripts, für die Zugriff auf WMI erforderlich ist|Hybrid Runbook Worker|Aufträge, die in Sandboxes in der Cloud ausgeführt werden, [haben keinen Zugriff auf WMI](#device-and-application-characteristics)|
@@ -51,6 +51,8 @@ Runbooks in Azure Automation können entweder in einer Sandbox in Azure oder auf
 ## <a name="runbook-behavior"></a>Runbook-Verhalten
 
 Runbooks werden auf der Grundlage der Logik ausgeführt, die in ihnen definiert ist. Wenn ein Runbook unterbrochen wird, startet das Runbook am Anfang neu. Dieses Verhalten setzt voraus, dass Runbooks so geschrieben werden, dass sie neu gestartet werden können, wenn vorübergehend Probleme aufgetreten sind.
+
+PowerShell-Aufträge, die auf einem Runbook gestartet wurden, das in einer Azure-Sandbox ausgeführt wird, können möglicherweise nicht im vollständigen Sprachmodus ausgeführt werden. Weitere Informationen zu den Sprachmodi in PowerShell finden Sie unter [PowerShell language modes (PowerShell-Sprachmodi)](/powershell/module/microsoft.powershell.core/about/about_language_modes). Weitere Informationen zur Interaktion mit Aufträgen in Azure Automation finden Sie im Abschnitt [Abrufen des Auftragsstatus mithilfe von Windows PowerShell](#retrieving-job-status-using-powershell).
 
 ### <a name="creating-resources"></a>Erstellen von Ressourcen
 
@@ -246,9 +248,9 @@ Zeigen Sie die Aufträge für ein Runbook mithilfe der folgenden Schritte an.
 3. Klicken Sie auf der Seite für das ausgewählte Runbook auf die Kachel **Aufträge**.
 4. Wenn Sie auf einen der Aufträge in der Liste klicken, können Sie auf der Seite für die Runbook-Auftragsdetails die Details und die Ausgabe anzeigen.
 
-## <a name="retrieving-job-status-using-windows-powershell"></a>Abrufen des Auftragsstatus mithilfe von Windows PowerShell
+## <a name="retrieving-job-status-using-powershell"></a>Abrufen des Auftragsstatus mithilfe von Windows PowerShell
 
-Sie können [Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjob) verwenden, um die für ein Runbook erstellten Aufträge und die Details zu einem bestimmten Auftrag anzuzeigen. Wenn Sie ein Runbook über Windows PowerShell mithilfe des Befehls [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook)starten, wird der resultierende Auftrag zurückgegeben. Verwenden Sie [Get-AzureRmAutomationJobOutput](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjoboutput), um die Ausgabe eines Auftrags abzurufen.
+Sie können [Get-AzureRmAutomationJob](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjob) verwenden, um die für ein Runbook erstellten Aufträge und die Details zu einem bestimmten Auftrag anzuzeigen. Wenn Sie ein Runbook über PowerShell mithilfe des Befehls [Start-AzureRmAutomationRunbook](https://docs.microsoft.com/powershell/module/azurerm.automation/start-azurermautomationrunbook) starten, wird der resultierende Auftrag zurückgegeben. Verwenden Sie [Get-AzureRmAutomationJobOutput](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationjoboutput), um die Ausgabe eines Auftrags abzurufen.
 
 Die folgenden Beispielbefehle rufen den letzten Auftrag für ein Beispielrunbook ab und zeigen seinen Status, die für die Runbookparameter bereitgestellten Werte und die Ausgabe des Auftrags an.
 
@@ -285,11 +287,30 @@ Weitere Details wie die Person oder das Konto, das das Runbook gestartet hat, k�
 
 ```powershell-interactive
 $SubID = "00000000-0000-0000-0000-000000000000"
-$rg = "ResourceGroup01"
-$AutomationAccount = "MyAutomationAccount"
-$JobResourceID = "/subscriptions/$subid/resourcegroups/$rg/providers/Microsoft.Automation/automationAccounts/$AutomationAccount/jobs"
+$AutomationResourceGroupName = "MyResourceGroup"
+$AutomationAccountName = "MyAutomationAccount"
+$RunbookName = "MyRunbook"
+$StartTime = (Get-Date).AddDays(-1)
+$JobActivityLogs = Get-AzureRmLog -ResourceGroupName $AutomationResourceGroupName -StartTime $StartTime `
+                                | Where-Object {$_.Authorization.Action -eq "Microsoft.Automation/automationAccounts/jobs/write"}
 
-Get-AzureRmLog -ResourceId $JobResourceID -MaxRecord 1 | Select Caller
+$JobInfo = @{}
+foreach ($log in $JobActivityLogs)
+{
+    # Get job resource
+    $JobResource = Get-AzureRmResource -ResourceId $log.ResourceId
+
+    if ($JobInfo[$log.SubmissionTimestamp] -eq $null -and $JobResource.Properties.runbook.name -eq $RunbookName)
+    { 
+        # Get runbook
+        $Runbook = Get-AzureRmAutomationJob -ResourceGroupName $AutomationResourceGroupName -AutomationAccountName $AutomationAccountName `
+                                            -Id $JobResource.Properties.jobId | ? {$_.RunbookName -eq $RunbookName}
+
+        # Add job information to hash table
+        $JobInfo.Add($log.SubmissionTimestamp, @($Runbook.RunbookName,$Log.Caller, $JobResource.Properties.jobId))
+    }
+}
+$JobInfo.GetEnumerator() | sort key -Descending | Select-Object -First 1
 ```
 
 ## <a name="fair-share"></a>gleichmäßige Verteilung

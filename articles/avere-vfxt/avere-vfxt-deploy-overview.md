@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0c61db5e34ba58bb767b0bda773a54c8e65cd404
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 88305e5d877f5bc3cc7ebb116f69b0f49f162b79
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991800"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268380"
 ---
 # <a name="avere-vfxt-for-azure---deployment-overview"></a>Avere vFXT für Azure – Übersicht über die Bereitstellung
 
@@ -32,14 +32,6 @@ Hier folgt eine Übersicht über alle Schritte.
 1. Konfigurieren der Voraussetzungen 
 
    Bevor Sie einen virtuellen Computer erstellen, müssen Sie ein neues Abonnement für das Avere vFXT-Projekt erstellen, den Abonnementbesitz konfigurieren, Kontingente prüfen und bei Bedarf eine Erhöhung anfordern sowie Bedingungen für die Nutzung der Avere vFXT-Software akzeptieren. Ausführliche Anweisungen finden Sie unter [Vorbereiten der Avere vFXT-Erstellung](avere-vfxt-prereqs.md).
-
-1. Erstellen einer Zugriffsrolle für die Clusterknoten
-
-   Azure verwendet die [rollenbasierte Zugriffssteuerung](../role-based-access-control/index.yml) (RBAC), um die virtuellen Clusterknotencomputer für die Ausführung bestimmter Aufgaben zu autorisieren. Die Clusterknoten müssen z. B. in der Lage sein, anderen Clusterknoten IP-Adressen zuzuordnen oder neu zuzuordnen. Bevor Sie den Cluster erstellen, müssen Sie eine Rolle definieren, die ihm ausreichende Berechtigungen zuweist.
-
-   Anweisungen finden Sie unter [Erstellen der Zugriffsrolle für Clusterknoten](avere-vfxt-prereqs.md#create-the-cluster-node-access-role).
-
-   Der Cluster-Controller verwendet auch eine Zugriffsrolle, aber Sie können die Standardrolle „Besitzer“ übernehmen, anstatt eine eigene Rolle zu erstellen. Wenn Sie eine benutzerdefinierte Rolle für den Clustercontroller erstellen möchten, lesen Sie [Angepasste Controllerzugriffsrolle](avere-vfxt-controller-role.md). 
 
 1. Erstellen des Avere vFXT-Clusters 
 

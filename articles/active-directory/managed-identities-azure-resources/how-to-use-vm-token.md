@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7354ed8362412c40d52a3895a9b4118eb7c1544
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: abdeb7ce5327db57b8a6ae48fdd8d8c0c81879a7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449394"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258911"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Verwenden von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer zum Abrufen eines Zugriffstokens 
 
@@ -79,10 +79,11 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `Metadata` | Ein HTTP-Anforderungsheader-Feld, das für verwaltete Identitäten für Azure-Ressourcen als Maßnahme gegen SSRF-Angriffe (Server Side Request Forgery) erforderlich ist. Dieser Wert muss auf „true“ (in Kleinbuchstaben) festgelegt werden. |
 | `object_id` | (Optional) Ein Abfragezeichenfolgen-Parameter, der den object_id-Wert der verwalteten Identität angibt, für die das Token gelten soll. Erforderlich, wenn Ihr virtueller Computer über mehrere vom Benutzer zugewiesene verwaltete Identitäten verfügt.|
 | `client_id` | (Optional) Ein Abfragezeichenfolgen-Parameter, der den client_id-Wert der verwalteten Identität angibt, für die das Token gelten soll. Erforderlich, wenn Ihr virtueller Computer über mehrere vom Benutzer zugewiesene verwaltete Identitäten verfügt.|
+| `mi_res_id` | (Optional) Ein Abfragezeichenfolgenparameter, der das Element „mi_res_id“ (Azure-Ressourcen-ID) der verwalteten Identität angibt, für die das Token gelten soll. Erforderlich, wenn Ihr virtueller Computer über mehrere vom Benutzer zugewiesene verwaltete Identitäten verfügt. |
 
 Beispielanforderung mit dem VM-Erweiterungsendpunkt für verwaltete Identitäten für Azure-Ressourcen *(Veraltung geplant für Januar 2019)*:
 
-```
+```http
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
 Metadata: true
 ```
@@ -96,10 +97,9 @@ Metadata: true
 | `object_id` | (Optional) Ein Abfragezeichenfolgen-Parameter, der den object_id-Wert der verwalteten Identität angibt, für die das Token gelten soll. Erforderlich, wenn Ihr virtueller Computer über mehrere vom Benutzer zugewiesene verwaltete Identitäten verfügt.|
 | `client_id` | (Optional) Ein Abfragezeichenfolgen-Parameter, der den client_id-Wert der verwalteten Identität angibt, für die das Token gelten soll. Erforderlich, wenn Ihr virtueller Computer über mehrere vom Benutzer zugewiesene verwaltete Identitäten verfügt.|
 
-
 Beispiel für eine Antwort:
 
-```
+```json
 HTTP/1.1 200 OK
 Content-Type: application/json
 {

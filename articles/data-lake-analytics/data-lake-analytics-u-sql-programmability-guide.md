@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: f0f5a4ee5206201cca20e705011126e6cf472a1a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d1b230b40d1f880787334ebfd39e704e3a650baa
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835451"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471085"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL-Programmierbarkeitshandbuch
 
@@ -533,9 +533,9 @@ Die `IFormatter`-Schnittstelle serialisiert und deserialisiert ein Objektdiagram
 
 * **Serialize:** Serialisiert ein Objekt oder Objektdiagramm mit dem angegebenen Stamm in den angegebenen Datenstrom.
 
-`MyType`-Instanz: Die Instanz des Typs.  
-Writer `IColumnWriter`; Reader `IColumnReader`: Der zugrunde liegende Spaltendatenstrom.  
-Kontext `ISerializationContext`: Enumeration, die eine Gruppe von Flags definiert, die den Quell- oder Zielkontext für den Datenstrom während der Serialisierung angibt.
+`MyType` instance: Die Instanz des Typs.  
+`IColumnWriter` writer / `IColumnReader` reader: Der zugrunde liegende Spaltendatenstrom.  
+`ISerializationContext` context: Enumeration, die eine Gruppe von Flags definiert, die den Quell- oder Zielkontext für den Datenstrom während der Serialisierung angibt.
 
 * **Intermediate:** Gibt an, dass der Quell- oder Zielkontext kein permanenter Speicher ist.
 
@@ -1601,7 +1601,7 @@ CROSS APPLYis used to pass parameters
 new MyScript.MyApplier(param1, param2) AS alias(output_param1 string, …);
 ```
 
-Weitere Informationen zur Verwendung von Appliers in einem SELECT-Ausdruck finden Sie unter [U-SQL SELECT Selecting from CROSS APPLY and OUTER APPLY](https://msdn.microsoft.com/library/azure/mt621307.aspx) (U-SQL SELECT: Auswählen aus CROSS APPLY und OUTER APPLY).
+Weitere Informationen zur Verwendung von Appliers in einem SELECT-Ausdruck finden Sie unter [U-SQL SELECT Selecting from CROSS APPLY and OUTER APPLY](/u-sql/statements-and-expressions/select/from/select-selecting-from-cross-apply-and-outer-apply) (U-SQL SELECT: Auswählen aus CROSS APPLY und OUTER APPLY).
 
 Die Basisklassendefinition eines benutzerdefinierten Appliers sieht wie folgt aus:
 
@@ -1815,7 +1815,7 @@ Combine_Expression :=
     USING_Clause.
 ```
 
-Weitere Informationen finden Sie unter [COMBINE Expression (U-SQL)](https://msdn.microsoft.com/library/azure/mt621339.aspx) (COMBINE-Ausdruck [U-SQL]).
+Weitere Informationen finden Sie unter [COMBINE Expression (U-SQL)](/u-sql/statements-and-expressions/combine-expression) (COMBINE-Ausdruck [U-SQL]).
 
 Um einen benutzerdefinierten Combiner zu definieren, müssen wir die `ICombiner`-Schnittstelle mit dem [`SqlUserDefinedCombiner`]-Attribut (für die Definition eines benutzerdefinierten Combiners optional) erstellen.
 
@@ -1877,7 +1877,7 @@ Eingaberowsets werden als **left**- und **right**-`IRowset`-Schnittstellentyp ü
 
 Für die Zwischenspeicherung können wir einen List\<T\>-Typ der Arbeitsspeicherstruktur als Ergebnis einer LINQ-Abfragenausführung (genauer gesagt: List<`IRow`>) erstellen. Der anonyme Datentyp kann während der Aufzählung ebenfalls verwendet werden.
 
-Unter [Introduction to LINQ Queries (C#)](https://msdn.microsoft.com/library/bb397906.aspx) (Einführung in LINQ-Abfragen (C#)) finden Sie weitere Informationen zu LINQ-Abfragen. Unter [IEnumerable\<T\> Interface](https://msdn.microsoft.com/library/9eekhta0(v=vs.110).aspx) (IEnumerable<T>-Schnittstelle) finden Sie weitere Informationen zur IEnumerable\<T\>-Schnittstelle.
+Unter [Introduction to LINQ Queries (C#)](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries) (Einführung in LINQ-Abfragen (C#)) finden Sie weitere Informationen zu LINQ-Abfragen. Unter [IEnumerable\<T\> Interface](/dotnet/api/system.collections.generic.ienumerable-1) (IEnumerable<T>-Schnittstelle) finden Sie weitere Informationen zur IEnumerable\<T\>-Schnittstelle.
 
 Um die tatsächlichen Datenwerte aus dem eingehenden `IRowset`-Element abzurufen, verwenden wir die Get()-Methode der `IRow`-Schnittstelle.
 

@@ -11,16 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 2b480df0100690a7a5064044d435a34845516fa6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 2ce2e2b35d731c3edfed931d158b420e66ed5620
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442102"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045746"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Verwenden von PowerShell zum Verwalten von Traffic Manager
 
 Azure Resource Manager ist die bevorzugte Verwaltungsschnittstelle für Dienste in Azure. Azure Traffic Manager-Profile können mithilfe von APIs und Tools auf Basis von Azure Resource Manager verwaltet werden.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="resource-model"></a>Ressourcenmodell
 
@@ -253,10 +255,10 @@ Diese Änderungen können durch Abrufen, Aktualisieren und Festlegen des Endpunk
 
 ### <a name="example-1-enabling-and-disabling-a-traffic-manager-profile"></a>Beispiel 1: Aktivieren und Deaktivieren eines Traffic Manager-Profils
 
-Verwenden Sie zum Aktivieren eines Traffic Manager-Profils `Enable-AzureRmTrafficManagerProfile`. Das Profil kann mithilfe eines Profilobjekts angegeben werden. Das Profilobjekt kann über die Pipeline oder über den Parameter „-TrafficManagerProfile“ übergeben werden. In diesem Beispiel geben wir das Profil durch den Profil- und Ressourcegruppennamen an.
+Verwenden Sie zum Aktivieren eines Traffic Manager-Profils `Enable-AzTrafficManagerProfile`. Das Profil kann mithilfe eines Profilobjekts angegeben werden. Das Profilobjekt kann über die Pipeline oder über den Parameter „-TrafficManagerProfile“ übergeben werden. In diesem Beispiel geben wir das Profil durch den Profil- und Ressourcegruppennamen an.
 
 ```powershell
-Enable-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyResourceGroup
+Enable-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyResourceGroup
 ```
 
 So deaktivieren Sie ein Traffic Manager-Profil:
@@ -269,13 +271,13 @@ Das Cmdlet „Disable-AzureTrafficManagerProfile“ fordert zur Bestätigung auf
 
 ### <a name="example-2-enabling-and-disabling-a-traffic-manager-endpoint"></a>Beispiel 2: Aktivieren und Deaktivieren eines Traffic Manager-Endpunkts
 
-Verwenden Sie zum Aktivieren eines Traffic Manager-Endpunkts `Enable-AzureRmTrafficManagerEndpoint`. Es gibt zwei Möglichkeiten zum Angeben des Endpunkts:
+Verwenden Sie zum Aktivieren eines Traffic Manager-Endpunkts `Enable-AzTrafficManagerEndpoint`. Es gibt zwei Möglichkeiten zum Angeben des Endpunkts:
 
 1. Mithilfe eines TrafficManagerEndpoint-Objekts, das über die Pipeline übergeben wird, oder mithilfe des Parameters „-TrafficManagerEndpoint“
 2. Mithilfe des Endpunktnamens, des Endpunkttyps, des Profilnamens und des Ressourcengruppennamens:
 
 ```powershell
-Enable-AzureRmTrafficManagerEndpoint -Name MyEndpoint -Type AzureEndpoints -ProfileName MyProfile -ResourceGroupName MyRG
+Enable-AzTrafficManagerEndpoint -Name MyEndpoint -Type AzureEndpoints -ProfileName MyProfile -ResourceGroupName MyRG
 ```
 
 Beim Deaktivieren eines Traffic Manager-Endpunkts gehen Sie ähnlich vor:
@@ -321,6 +323,6 @@ Get-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG | Remove-AzT
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Traffic Manager-Überwachung](traffic-manager-monitoring.md)
+[Traffic Manager-Endpunktüberwachung](traffic-manager-monitoring.md)
 
 [Leistungsüberlegungen zu Traffic Manager](traffic-manager-performance-considerations.md)

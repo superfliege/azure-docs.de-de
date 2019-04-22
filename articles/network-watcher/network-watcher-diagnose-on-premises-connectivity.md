@@ -14,18 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: f5c4f8d2c9cec4372ef5de70485d45ab33e022de
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 323e5d63b5f8566d570dfd47323fcf12f7c6b28b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099395"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051579"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnostizieren der lokalen Konnektivität über VPN-Gateways
 
 Azure VPN Gateway ermöglicht Ihnen die Erstellung einer Hybridlösung für Ihre Anforderungen an eine sichere Verbindung zwischen dem lokalen Netzwerk und Ihrem virtuellen Azure-Netzwerk. Da Ihre Anforderungen einzigartig sind, gilt dies auch für die Wahl des lokalen VPN-Geräts. Azure unterstützt derzeit [verschiedene VPN-Geräte](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable), die ständig in Zusammenarbeit mit den Geräteherstellern getestet werden. Überprüfen Sie die gerätespezifischen Konfigurationseinstellungen vor dem Konfigurieren Ihres lokalen VPN-Geräts. Auf ähnliche Weise wird Azure VPN Gateway mit einem Satz von [unterstützten IPsec-Parametern](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) konfiguriert, die für das Herstellen von Verbindungen verwendet werden. Zurzeit besteht keine Möglichkeit, eine bestimmte Kombination von IPsec-Parametern in Azure VPN Gateway anzugeben oder auszuwählen. Für eine erfolgreiche Verbindung zwischen einem Standort und Azure müssen die lokalen VPN-Geräteeinstellungen mit den von Azure VPN Gateway vorgeschriebenen IPsec-Parametern übereinstimmen. Sind die Einstellungen falsch, kann keine Verbindung hergestellt werden. Bisher war auch die Problembehandlung schwierig, und es dauerte in der Regel mehrere Stunden, bis das Problem identifiziert und behoben war.
 
 Durch das Azure Network Watcher-Feature zur Problembehandlung können Sie Probleme mit dem Gateway und den Verbindungen innerhalb von Minuten diagnostizieren und verfügen dann über genügend Informationen, um eine fundierte Entscheidung zum Beheben des Problems treffen zu können.
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scenario"></a>Szenario
 
@@ -42,7 +45,7 @@ Ein wichtiger Konfigurationsschritt ist die Konfiguration der IPsec-Kommunikatio
 
 ### <a name="ike-phase-1-setup"></a>IKE Phase 1-Einrichtung
 
-| **Eigenschaft** | **PolicyBased** | **Routenbasiertes und Standard- oder Hochleistungs-VPN-Gateway** |
+| **Eigenschaft** | **PolicyBased** | **RouteBased und Standard- oder Hochleistungs-VPN-Gateway** |
 | --- | --- | --- |
 | IKE-Version |IKEv1 |IKEv2 |
 | Diffie-Hellman-Gruppe |Gruppe 2 (1024 Bit) |Gruppe 2 (1024 Bit) |
@@ -57,7 +60,7 @@ Diese Probleme sind schwierig zu beheben, und die eigentlichen Ursachen sind hä
 
 ## <a name="troubleshooting-using-azure-network-watcher"></a>Beheben von Problemen mithilfe von Azure Network Watcher
 
-Um eine Diagnose für die Verbindung durchzuführen, stellen Sie eine Verbindung mit Azure PowerShell her und initiieren das Cmdlet `Start-AzureRmNetworkWatcherResourceTroubleshooting`. Einzelheiten zur Verwendung dieses Cmdlets finden Sie unter [Beheben von Problemen bei Virtual Network-Gateways und -Verbindungen – PowerShell](network-watcher-troubleshoot-manage-powershell.md). Dies Ausführung dieses Cmdlets kann einige Minuten dauern.
+Um eine Diagnose für die Verbindung durchzuführen, stellen Sie eine Verbindung mit Azure PowerShell her und initiieren das Cmdlet `Start-AzNetworkWatcherResourceTroubleshooting`. Einzelheiten zur Verwendung dieses Cmdlets finden Sie unter [Beheben von Problemen bei Virtual Network-Gateways und -Verbindungen – PowerShell](network-watcher-troubleshoot-manage-powershell.md). Dies Ausführung dieses Cmdlets kann einige Minuten dauern.
 
 Wenn die Ausführung des Cmdlets abgeschlossen wurde, können Sie zu dem im Cmdlet angegebenen Speicherort navigieren, um ausführliche Informationen zu dem Problem und den Protokollen zu erhalten. Azure Network Watcher erstellt einen ZIP-Ordner, der die folgenden Protokolldateien enthält:
 
@@ -80,7 +83,7 @@ Das Azure Network Watcher-Feature zur Problembehandlung ermöglicht es Ihnen, Pr
 
 | Fehlertyp | Grund | Protokoll|
 |---|---|---|
-| NoFault | Es wurde kein Fehler erkannt. |JA|
+| NoFault | Es wurde kein Fehler erkannt. |Ja|
 | GatewayNotFound | Das Gateway wurde nicht gefunden oder nicht bereitgestellt. |Nein |
 | PlannedMaintenance |  Die Gatewayinstanz wird zurzeit gewartet.  |Nein |
 | UserDrivenUpdate | Es wird ein Benutzerupdate des Geräts durchgeführt. Dies könnte z.B. eine Größenänderung sein. | Nein  |
@@ -88,26 +91,26 @@ Das Azure Network Watcher-Feature zur Problembehandlung ermöglicht es Ihnen, Pr
 | PlatformInActive | Es ist ein Problem mit der Plattform aufgetreten. | Nein |
 | ServiceNotRunning | Der zugrunde liegende Dienst wird nicht ausgeführt. | Nein |
 | NoConnectionsFoundForGateway | Es gibt keine Verbindungen auf dem Gateway. Dies ist nur eine Warnung.| Nein |
-| ConnectionsNotConnected | Es wurde keine der Verbindungen hergestellt. Dies ist nur eine Warnung.| JA|
-| GatewayCPUUsageExceeded | Die aktuelle CPU-Auslastung auf dem Gateway liegt über 95 %. | JA |
+| ConnectionsNotConnected | Es wurde keine der Verbindungen hergestellt. Dies ist nur eine Warnung.| Ja|
+| GatewayCPUUsageExceeded | Die aktuelle CPU-Auslastung auf dem Gateway liegt über 95 %. | Ja |
 
 ### <a name="connection"></a>Verbindung
 
 | Fehlertyp | Grund | Protokoll|
 |---|---|---|
-| NoFault | Es wurde kein Fehler erkannt. |JA|
+| NoFault | Es wurde kein Fehler erkannt. |Ja|
 | GatewayNotFound | Das Gateway wurde nicht gefunden oder nicht bereitgestellt. |Nein |
 | PlannedMaintenance | Die Gatewayinstanz wird zurzeit gewartet.  |Nein |
 | UserDrivenUpdate | Es wird ein Benutzerupdate des Geräts durchgeführt. Dies könnte z.B. eine Größenänderung sein.  | Nein  |
 | VipUnResponsive | Die primäre Instanz des Gateways ist nicht erreichbar. Dies tritt auf, wenn beim Integritätstest ein Fehler auftritt. | Nein  |
 | ConnectionEntityNotFound | Die Verbindungskonfiguration fehlt. | Nein  |
 | ConnectionIsMarkedDisconnected | Die Verbindung ist als „getrennt“ gekennzeichnet. |Nein |
-| ConnectionNotConfiguredOnGateway | Für den zugrunde liegenden Dienst wurde die Verbindung nicht konfiguriert. | JA |
-| ConnectionMarkedStandby | Der zugrunde liegende Dienst ist als im Ruhezustand gekennzeichnet.| JA|
-| Authentifizierung | Der vorinstallierte Schlüssel stimmt nicht überein. | JA|
-| PeerReachability | Das Peergateway ist nicht erreichbar. | JA|
-| IkePolicyMismatch | Das Peergateway verfügt über IKE-Richtlinien, die von Azure nicht unterstützt werden. | JA|
-| WfpParse-Fehler | Beim Analysieren des WFP-Protokolls ist ein Fehler aufgetreten. |JA|
+| ConnectionNotConfiguredOnGateway | Für den zugrunde liegenden Dienst wurde die Verbindung nicht konfiguriert. | Ja |
+| ConnectionMarkedStandby | Der zugrunde liegende Dienst ist als im Ruhezustand gekennzeichnet.| Ja|
+| Authentication | Der vorinstallierte Schlüssel stimmt nicht überein. | Ja|
+| PeerReachability | Das Peergateway ist nicht erreichbar. | Ja|
+| IkePolicyMismatch | Das Peergateway verfügt über IKE-Richtlinien, die von Azure nicht unterstützt werden. | Ja|
+| WfpParse Error | Beim Analysieren des WFP-Protokolls ist ein Fehler aufgetreten. |Ja|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

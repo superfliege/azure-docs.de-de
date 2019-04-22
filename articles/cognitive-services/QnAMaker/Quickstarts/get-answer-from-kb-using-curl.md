@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 04/05/2019
 ms.author: diberry
-ms.openlocfilehash: 3b728984b2bda836d3d4924b93f1b11a5d05d8bb
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: ce2d39f3941030059cef329aa60e804a44d73a98
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342461"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263093"
 ---
 # <a name="quickstart-get-answer-from-knowledge-base-using-curl"></a>Schnellstart: Abrufen einer Antwort aus einer Wissensdatenbank mit cURL
 
@@ -28,13 +28,13 @@ In diesem Schnellstart auf cURL-Basis wird Schritt für Schritt erläutert, wie 
 
 ## <a name="publish-to-get-endpoint"></a>Veröffentlichen zum Abrufen des Endpunkts
 
-Wenn Sie bereit sind, eine Antwort auf eine Frage aus Ihrer Wissensdatenbank zu generieren, [veröffentlichen](../How-to/publish-knowledge-base.md) Sie Ihre Wissensdatenbank.
+Wenn Sie bereit sind, eine Antwort auf eine Frage aus Ihrer Wissensdatenbank zu generieren, [veröffentlichen](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) Sie Ihre Wissensdatenbank.
 
 ## <a name="use-production-endpoint-with-curl"></a>Verwenden des Produktionsendpunkts mit cURL
 
 Wenn Ihre Wissensdatenbank veröffentlicht wird, werden auf der Seite **Veröffentlichen** die HTTP-Anforderungseinstellungen zum Generieren einer Antwort angezeigt. Die Registerkarte **CURL** zeigt die Einstellungen, die zum Generieren einer Antwort über das Befehlszeilentool [cURL](https://www.getpostman.com) erforderlich sind.
 
-[![Veröffentlichen der Ergebnisse](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png)](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png#lightbox)
+[![Publish results (Ergebnisse veröffentlichen)](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png)](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png#lightbox)
 
 Um eine Antwort mit cURL zu generieren, führen Sie die folgenden Schritte aus:
 
@@ -78,4 +78,4 @@ Wenn Sie eine Antwort vom Stagingendpunkt erhalten möchten, verwenden Sie den b
 Die Veröffentlichungsseite enthält auch Informationen zum [Generieren einer Antwort](get-answer-from-kb-using-postman.md) mit Postman. 
 
 > [!div class="nextstepaction"]
-> [Verwenden von Metadaten beim Generieren einer Antwort](../How-to/metadata-generateanswer-usage.md)
+> [Abrufen einer wissensbasierten Antwort mit der GenerateAnswer-API und Metadaten](../How-to/metadata-generateanswer-usage.md)

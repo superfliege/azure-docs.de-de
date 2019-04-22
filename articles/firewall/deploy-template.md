@@ -8,12 +8,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 12/01/2018
 ms.author: victorh
-ms.openlocfilehash: a15ffa23b64f944d8b2c088113bcc29443ce6873
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: e0fbec8b22993345114d8d6642e42095191d0b37
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038958"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046273"
 ---
 # <a name="deploy-azure-firewall-using-a-template"></a>Bereitstellen von Azure Firewall mit einer Vorlage
 
@@ -24,6 +24,9 @@ Die Firewall befindet sich im Subnetz *AzureFirewallSubnet*, und der Zugriff auf
 Es wird eine benutzerdefinierte Route erstellt, die den Netzwerkverkehr vom Subnetz *ServersSubnet* durch die Firewall leitet, wo die Firewallregeln angewendet werden.
 
 Weitere Informationen zu Azure Firewall finden Sie unter [Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal](tutorial-firewall-deploy-portal.md).
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="use-the-template-to-deploy-azure-firewall"></a>Verwenden der Vorlage zum Bereitstellen von Azure Firewall
 
@@ -56,10 +59,10 @@ Weitere Informationen zur JSON-Syntax und den Eigenschaften für eine Firewall i
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie sie nicht mehr benötigen, können Sie die Ressourcengruppe, die Firewall und alle zugehörigen Ressourcen entfernen, indem Sie den PowerShell-Befehl [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) ausführen. Zum Entfernen einer Ressourcengruppe mit dem Namen *MyResourceGroup* führen Sie diesen Befehl aus: 
+Wenn Sie sie nicht mehr benötigen, können Sie die Ressourcengruppe, die Firewall und alle zugehörigen Ressourcen entfernen, indem Sie den PowerShell-Befehl [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) ausführen. Zum Entfernen einer Ressourcengruppe mit dem Namen *MyResourceGroup* führen Sie diesen Befehl aus: 
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name MyResourceGroup
+Remove-AzResourceGroup -Name MyResourceGroup
 ```
 Entfernen Sie die Ressourcengruppe und die Firewall noch nicht, wenn Sie mit dem Tutorial zur Firewallüberwachung fortfahren möchten. 
 

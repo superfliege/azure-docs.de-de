@@ -14,16 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
-ms.openlocfilehash: e30e8c94547ac0f9106a69f1e99cf9a7c03abea5
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 2433f4b3563cc8b301d1815cccf5ab24406e8662
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43695896"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045576"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay – häufig gestellte Fragen
 
 In diesem Artikel werden einige häufig gestellte Fragen zu [Azure Relay](https://azure.microsoft.com/services/service-bus/) beantwortet. Allgemeine Informationen zu Azure-Preisen und zum Azure-Support finden Sie unter [Häufig gestellte Fragen zum Azure-Support](https://azure.microsoft.com/support/faq/).
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-questions"></a>Allgemeine Fragen
 ### <a name="what-is-azure-relay"></a>Was ist Azure Relay?
@@ -111,13 +114,13 @@ Verwenden Sie die folgende Befehlssequenz, wenn Sie einen Namespace mithilfe von
 
 ```azurepowershell-interactive
 # Create a new resource group in the target subscription.
-Select-AzureRmSubscription -SubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff'
-New-AzureRmResourceGroup -Name 'targetRG' -Location 'East US'
+Select-AzSubscription -SubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff'
+New-AzResourceGroup -Name 'targetRG' -Location 'East US'
 
 # Move the namespace from the source subscription to the target subscription.
-Select-AzureRmSubscription -SubscriptionId 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
-$res = Find-AzureRmResource -ResourceNameContains mynamespace -ResourceType 'Microsoft.ServiceBus/namespaces'
-Move-AzureRmResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
+Select-AzSubscription -SubscriptionId 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
+$res = Find-AzResource -ResourceNameContains mynamespace -ResourceType 'Microsoft.ServiceBus/namespaces'
+Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
 ```
 
 ## <a name="troubleshooting"></a>Problembehandlung
@@ -131,7 +134,7 @@ Bei Shared Access Signatures handelt es sich um einen Authentifizierungsmechanis
 Ja. Der Relayclient stellt mithilfe vollqualifizierter Domänennamen Verbindungen mit dem Azure Relay-Dienst her. Kunden können einen Eintrag für `*.servicebus.windows.net` für Firewalls hinzufügen, die DNS-Whitelists unterstützen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Erstellen eines Namespaces](relay-create-namespace-portal.md)
+* [Erstellen eines Namespace](relay-create-namespace-portal.md)
 * [Erste Schritte mit .NET](relay-hybrid-connections-dotnet-get-started.md)
 * [Erste Schritte mit Node](relay-hybrid-connections-node-get-started.md)
 

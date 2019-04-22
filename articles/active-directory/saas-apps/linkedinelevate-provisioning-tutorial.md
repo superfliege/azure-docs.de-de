@@ -13,35 +13,34 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/28/2018
+ms.date: 03/28/2019
 ms.author: asmalser-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b98f685dec974fa551d4092587c1fc13afc1bfdd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e95fae67d3e7fd97cf4be1642f41b64a07fd0145
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211375"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259608"
 ---
 # <a name="tutorial-configure-linkedin-elevate-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von LinkedIn Elevate für die automatische Benutzerbereitstellung
 
-
-Dieses Tutorial zeigt Ihnen die Schritte, die Sie in LinkedIn Elevate und Azure AD ausführen müssen, um Benutzerkonten von Azure AD in LinkedIn Elevate automatisch bereitzustellen bzw. deren Bereitstellung automatisch aufzuheben. 
+Dieses Tutorial zeigt Ihnen die Schritte, die Sie in LinkedIn Elevate und Azure AD ausführen müssen, um Benutzerkonten von Azure AD in LinkedIn Elevate automatisch bereitzustellen bzw. deren Bereitstellung automatisch aufzuheben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
-*   Azure Active Directory-Mandant
-*   Ein LinkedIn Elevate-Mandant 
-*   Ein Administratorkonto in LinkedIn Elevate mit Zugriff auf das LinkedIn Account Center
+* Azure Active Directory-Mandant
+* Ein LinkedIn Elevate-Mandant
+* Ein Administratorkonto in LinkedIn Elevate mit Zugriff auf das LinkedIn Account Center
 
 > [!NOTE]
 > Integration von Azure Active Directory mit LinkedIn Elevate mit dem [SCIM](http://www.simplecloud.info/)-Protokoll
 
 ## <a name="assigning-users-to-linkedin-elevate"></a>Zuweisen von Benutzern zu LinkedIn Elevate
 
-Azure Active Directory ermittelt anhand von Zuweisungen, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Bereitstellung von Benutzerkonten werden nur die Benutzer und Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden. 
+Azure Active Directory ermittelt anhand von Zuweisungen, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Bereitstellung von Benutzerkonten werden nur die Benutzer und Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
 
 Vor dem Konfigurieren und Aktivieren des Bereitstellungsdiensts müssen Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD die Benutzer darstellen, die Zugriff auf LinkedIn Elevate benötigen. Anschließend können Sie diese Benutzer LinkedIn Elevate zuweisen, indem Sie diese Anweisungen befolgen:
 
@@ -49,10 +48,9 @@ Vor dem Konfigurieren und Aktivieren des Bereitstellungsdiensts müssen Sie ents
 
 ### <a name="important-tips-for-assigning-users-to-linkedin-elevate"></a>Wichtige Tipps zum Zuweisen von Benutzern zu LinkedIn Elevate
 
-*   Es wird empfohlen, LinkedIn Elevate einen einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der Bereitstellung zu testen. Später können weitere Benutzer und/oder Gruppen zugewiesen werden.
+* Es wird empfohlen, LinkedIn Elevate einen einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der Bereitstellung zu testen. Später können weitere Benutzer und/oder Gruppen zugewiesen werden.
 
-*   Beim Zuweisen eines Benutzers zu LinkedIn Elevate müssen Sie im Dialogfeld „Zuweisung“ die Rolle **Benutzer** auswählen. Die Rolle „Standardzugriff“ funktioniert nicht für die Bereitstellung.
-
+* Beim Zuweisen eines Benutzers zu LinkedIn Elevate müssen Sie im Dialogfeld „Zuweisung“ die Rolle **Benutzer** auswählen. Die Rolle „Standardzugriff“ funktioniert nicht für die Bereitstellung.
 
 ## <a name="configuring-user-provisioning-to-linkedin-elevate"></a>Konfigurieren der Benutzerbereitstellung in LinkedIn Elevate
 
@@ -60,69 +58,68 @@ Dieser Abschnitt führt Sie durch das Herstellen einer Verbindung von Azure AD m
 
 **Tipp:** Optional können Sie das SAML-basierte einmalige Anmelden für LinkedIn Elevate aktivieren. Befolgen Sie dazu die Anweisungen im [Azure-Portal](https://portal.azure.com). Einmaliges Anmelden kann unabhängig von der automatischen Bereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
 
-
 ### <a name="to-configure-automatic-user-account-provisioning-to-linkedin-elevate-in-azure-ad"></a>So konfigurieren Sie die automatische Bereitstellung von Benutzerkonten für LinkedIn Elevate in Azure AD:
-
 
 Der erste Schritt besteht aus Abrufen Ihres LinkedIn-Zugriffstoken. Wenn Sie ein Enterprise-Administrator sind, können Sie das Zugriffstoken selbst bereitstellen. Gehen Sie in Ihrem Kontocenter auf **Einstellungen &gt; Globale Einstellungen**, und öffnen Sie den Bereich **SCIM Setup**.
 
 > [!NOTE]
 > Wenn Sie direkt auf das Kontocenter zugreifen und nicht über einen Link, können Sie es über die folgenden Schritte erreichen.
 
-1)  Melden Sie sich am Kontocenter an.
+1. Melden Sie sich am Kontocenter an.
 
-2)  Wählen Sie **Administrator &gt; Administratoreinstellungen** aus.
+2. Wählen Sie **Administrator &gt; Administratoreinstellungen** aus.
 
-3)  Klicken Sie auf **Advanced Integrations** (Erweiterte Integrationen) auf der linken Seitenleiste. Sie werden zum Kontocenter weitergeleitet.
+3. Klicken Sie auf **Advanced Integrations** (Erweiterte Integrationen) auf der linken Seitenleiste. Sie werden zum Kontocenter weitergeleitet.
 
-4)  Klicken Sie auf **+ Add new SCIM configuration** (+ Neue SCIM-Konfiguration hinzufügen), und befolgen Sie das Verfahren, indem Sie jedes Feld ausführen.
+4. Klicken Sie auf **+ Add new SCIM configuration** (+ Neue SCIM-Konfiguration hinzufügen), und befolgen Sie das Verfahren, indem Sie jedes Feld ausführen.
 
-> Wenn die automatische Zuweisung von Lizenzen nicht aktiviert ist, bedeutet das, dass nur Benutzerdaten synchronisiert werden.
+    > [!NOTE]
+    > Wenn die automatische Zuweisung von Lizenzen nicht aktiviert ist, bedeutet das, dass nur Benutzerdaten synchronisiert werden.
 
-![Bereitstellung von LinkedIn Elevate](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate1.PNG)
+    ![Bereitstellung von LinkedIn Elevate](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate1.PNG)
 
-> Wenn die automatische Zuweisung von Lizenzen aktiviert ist, müssen Sie die Anwendungsinstanz und den Lizenztyp notieren. Lizenzen werden nach dem Prinzip „Wer zuerst kommt, malt zuerst“ zugewiesen, bis alle Lizenzen ausgeführt sind.
+    > [!NOTE]
+    > Wenn die automatische Zuweisung von Lizenzen aktiviert ist, müssen Sie die Anwendungsinstanz und den Lizenztyp notieren. Lizenzen werden nach dem Prinzip „Wer zuerst kommt, malt zuerst“ zugewiesen, bis alle Lizenzen ausgeführt sind.
 
-![Bereitstellung von LinkedIn Elevate](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate2.PNG)
+    ![Bereitstellung von LinkedIn Elevate](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate2.PNG)
 
-5)  Klicken Sie dann auf **Token generieren**. Ihr Zugriffstoken sollte unter dem Feld **Zugriffstoken** angezeigt werden.
+5. Klicken Sie dann auf **Token generieren**. Ihr Zugriffstoken sollte unter dem Feld **Zugriffstoken** angezeigt werden.
 
-6)  Speichern Sie Ihren Zugriffstoken in Ihrer Zwischenablage oder auf dem Computer, bevor Sie diese Seite verlassen.
+6. Speichern Sie Ihr Zugriffstoken in der Zwischenablage oder auf dem Computer, bevor Sie diese Seite verlassen.
 
-7) Wechseln Sie als Nächstes im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory > Unternehmens-Apps > Alle Anwendungen**.
+7. Wechseln Sie als Nächstes im [Azure-Portal](https://portal.azure.com) zum Abschnitt **Azure Active Directory > Unternehmens-Apps > Alle Anwendungen**.
 
-8) Wenn Sie LinkedIn Elevate bereits für einmaliges Anmelden konfiguriert haben, suchen Sie über das Suchfeld nach Ihrer LinkedIn Elevate-Instanz. Wählen Sie andernfalls **Hinzufügen**, und suchen Sie im Anwendungskatalog nach **LinkedIn Elevate**. Wählen Sie „LinkedIn Elevate“ in den Suchergebnissen aus, und fügen Sie es Ihrer Anwendungsliste hinzu.
+8. Wenn Sie LinkedIn Elevate bereits für einmaliges Anmelden konfiguriert haben, suchen Sie über das Suchfeld nach Ihrer LinkedIn Elevate-Instanz. Wählen Sie andernfalls **Hinzufügen**, und suchen Sie im Anwendungskatalog nach **LinkedIn Elevate**. Wählen Sie „LinkedIn Elevate“ in den Suchergebnissen aus, und fügen Sie es Ihrer Anwendungsliste hinzu.
 
-9)  Wählen Sie Ihre LinkedIn Elevate-Instanz aus, und wählen Sie dann die Registerkarte **Bereitstellung**.
+9. Wählen Sie Ihre LinkedIn Elevate-Instanz aus, und wählen Sie dann die Registerkarte **Bereitstellung**.
 
-10) Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
+10. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-![Bereitstellung von LinkedIn Elevate](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate3.PNG)
+    ![Bereitstellung von LinkedIn Elevate](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate3.PNG)
 
-11)  Füllen Sie die folgenden Felder unter **Administratoranmeldeinformationen** aus:
+11. Füllen Sie die folgenden Felder unter **Administratoranmeldeinformationen** aus:
 
-* Geben Sie im Feld **Mandanten-URL** die URL https://api.linkedin.com ein.
+    * Geben Sie im Feld **Mandanten-URL** die URL `https://api.linkedin.com` ein.
 
-* Geben Sie im Feld **Geheimes Token** den im Schritt 1 generierten Zugriffstoken ein, und klicken Sie auf **Verbindung testen**.
+    * Geben Sie im Feld **Geheimes Token** den im Schritt 1 generierten Zugriffstoken ein, und klicken Sie auf **Verbindung testen**.
 
-* Nun sollten Sie oben rechts im Portal eine Benachrichtigung über die erfolgreiche Ausführung sehen.
+    * Nun sollten Sie oben rechts im Portal eine Benachrichtigung über die erfolgreiche Ausführung sehen.
 
-12) Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das unten gezeigte Kontrollkästchen.
+12. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das unten gezeigte Kontrollkästchen.
 
-13) Klicken Sie auf **Speichern**. 
+13. Klicken Sie auf **Speichern**.
 
-14) Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzer- und Gruppenattribute, die von Azure AD mit LinkedIn Elevate synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten und Gruppen in LinkedIn Elevate für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche „Speichern“, um alle Änderungen zu übernehmen.
+14. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzer- und Gruppenattribute, die von Azure AD mit LinkedIn Elevate synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten und Gruppen in LinkedIn Elevate für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche „Speichern“, um alle Änderungen zu übernehmen.
 
-![Bereitstellung von LinkedIn Elevate](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate4.PNG)
+    ![Bereitstellung von LinkedIn Elevate](./media/linkedinelevate-provisioning-tutorial/linkedin_elevate4.PNG)
 
-15) Um den Azure AD-Bereitstellungsdienst für LinkedIn Elevate zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
+15. Um den Azure AD-Bereitstellungsdienst für LinkedIn Elevate zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
 
-16) Klicken Sie auf **Speichern**. 
+16. Klicken Sie auf **Speichern**.
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die LinkedIn Elevate im Abschnitt „Benutzer und Gruppen“ zugewiesen sind. Beachten Sie, dass die Erstsynchronisierung länger dauert als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Dienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Protokollen zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Bereitstellungsdienst in Ihrer LinkedIn Elevate-App ausgeführt werden.
 
 Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
-
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 

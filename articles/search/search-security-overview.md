@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/18/2019
+ms.date: 04/06/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c0f824e2be0215192ca4ca1a722e814cbf299b7a
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 11b2fb5a246dfa8f5b1295a11cc57de36120898e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342421"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269553"
 ---
 # <a name="security-and-data-privacy-in-azure-search"></a>Sicherheit und Datenschutz in Azure Search
 
@@ -29,9 +29,9 @@ Azure Search ist wie [im Juni 2018 angekündigt](https://azure.microsoft.com/blo
 + [ISO 27001:2013](https://www.iso.org/isoiec-27001-information-security.html) 
 + [Konformität mit SOC 2 Type 2](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) Den vollständigen Bericht finden Sie im [SOC 2 Type II-Bericht für Azure und Azure Government](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports). 
 + [Health Insurance Portability and Accountability Act (HIPAA)](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
-+ [GxP (21 CFR Teil 11)](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
++ [GxP (21 CFR Teil 11)](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
 + [HITRUST](https://en.wikipedia.org/wiki/HITRUST)
-+ [PCI-DSS Level 1](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
++ [PCI-DSS Level 1](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
 + [Australia IRAP Unclassified DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
 
 Die Standardkonformität gilt für allgemein verfügbare Features. Previewfunktionen werden beim Übergang in die allgemeine Verfügbarkeit zertifiziert und dürfen nicht in Lösungen, für die bestimmte Standardanforderungen erfüllt werden müssen, verwendet werden. Die Konformitätszertifizierung ist in [Übersicht der Microsoft Azure-Konformität](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) und [Trust Center](https://www.microsoft.com/en-us/trustcenter) dokumentiert. 
@@ -58,6 +58,8 @@ Für die gesamte Azure-Umgebung sind verschiedene Sicherheitsmechanismen verfüg
 
 Alle Azure-Dienste unterstützen die rollenbasierte Zugriffssteuerung (Role-based Access Control, RBAC) zum einheitlichen Festlegen von Zugriffsebenen für alle Dienste. So ist beispielsweise das Anzeigen sensibler Daten (etwa des Administratorschlüssels) auf die Rollen „Besitzer“ und „Mitwirkender“ beschränkt, der Dienststatus kann dagegen von Mitgliedern aller Rollen angezeigt werden. RBAC bietet die Rollen „Besitzer“, „Mitwirkenden“ und „Leser“. Administratoren sind standardmäßig Mitglieder der Rolle "Besitzer".
 
+<a name="service-access-and-authentication"></a>
+
 ## <a name="service-access-and-authentication"></a>Dienstzugriff und -authentifizierung
 
 Azure Search erbt nicht nur die Sicherheitsmaßnahmen der Azure-Plattform, sondern bietet auch eine eigene schlüsselbasierte Authentifizierung. Ein API-Schlüssel ist eine Zeichenfolge, die aus zufällig generierten Zahlen und Buchstaben besteht. Der Typ des Schlüssels (Administrator oder Abfrage) bestimmt die Zugriffsebene. Die Übermittlung eines gültigen Schlüssels gilt als Beleg dafür, dass die Anforderung von einer vertrauenswürdigen Entität stammt. 
@@ -65,11 +67,11 @@ Azure Search erbt nicht nur die Sicherheitsmaßnahmen der Azure-Plattform, sonde
 Es gibt zwei Ebenen des Zugriffs auf Ihren Suchdienst, die durch zwei Arten von Schlüsseln aktiviert werden:
 
 * Administratorzugriff (gültig für alle Lese-/Schreibvorgänge für den Dienst)
-* Abfragezugriff (gültig für Lesevorgänge, z.B. Abfragen eines Index)
+* Abfragezugriff (gültig für Lesevorgänge, z. B. Abfragen der Dokumentsammlung eines Index)
 
-*Administratorschlüssel* werden erstellt, wenn der Dienst bereitgestellt wird. Es gibt zwei Administratorschlüssel, die zur besseren Unterscheidung als *primärer* und *sekundärer* Schlüssel bezeichnet werden. In Wirklichkeit sind sie aber austauschbar. Jeder Dienst verfügt über zwei Admin-Schlüssel, sodass Sie für einen Schlüssel ein Rollover durchführen können, ohne den Zugriff auf den Dienst zu verlieren. Sie können beide Admin-Schlüssel austauschen, können allerdings keine weiteren Schlüssel hinzufügen. Pro Dienst können maximal zwei Admin-Schlüssel vorhanden sein.
+*Administratorschlüssel* werden erstellt, wenn der Dienst bereitgestellt wird. Es gibt zwei Administratorschlüssel, die zur besseren Unterscheidung als *primärer* und *sekundärer* Schlüssel bezeichnet werden. In Wirklichkeit sind sie aber austauschbar. Jeder Dienst verfügt über zwei Admin-Schlüssel, sodass Sie für einen Schlüssel ein Rollover durchführen können, ohne den Zugriff auf den Dienst zu verlieren. Sie können gemäß den bewährten Methoden von Azure regelmäßig die [Administratorschlüssel neu generieren](search-security-api-keys.md#regenerate-admin-keys), aber Sie können der Gesamtanzahl der Administratorschlüssel keine weiteren hinzufügen. Pro Suchdienst können maximal zwei Administratorschlüssel vorhanden sein.
 
-*Abfrageschlüssel* werden bei Bedarf erstellt und sind für Clientanwendungen bestimmt, bei denen Search direkt aufgerufen wird. Sie können bis zu 50 Abfrage-Schlüssel generieren. Im Anwendungscode geben Sie die Such-URL und einen Abfrage-API-Schlüssel ein, um den Lesezugriff auf den Dienst zuzulassen. Im Anwendungscode wird auch der Index angegeben, der von der Anwendung verwendet wird. Zusammen definieren der Endpunkt, ein API-Schlüssel für den Lesezugriff und ein Zielindex den Bereich und die Zugriffsebene der Verbindung von Ihrer Clientanwendung.
+*Abfrageschlüssel* werden bei Bedarf erstellt und sind für Clientanwendungen bestimmt, die Abfragen ausgeben. Sie können bis zu 50 Abfrage-Schlüssel generieren. Im Anwendungscode geben Sie die Such-URL und einen Abfrage-API-Schlüssel ein, um den Lesezugriff auf die Dokumentsammlung eines bestimmten Index zuzulassen. Zusammen definieren der Endpunkt, ein API-Schlüssel für den Lesezugriff und ein Zielindex den Bereich und die Zugriffsebene der Verbindung von Ihrer Clientanwendung.
 
 Für jede Anforderung – bestehend aus einem obligatorischen Schlüssel, einem Vorgang und einem Objekt – ist eine Authentifizierung erforderlich. In Kombination lässt sich durch die beiden Berechtigungsstufen (uneingeschränkte bzw. Lese-/Schreibberechtigung) und den Kontext (z.B. eine Indexabfrage) ein vollumfängliches Sicherheitsspektrum für Dienstvorgänge erreichen. Weitere Informationen finden Sie unter [Erstellen und Verwalten von API-Schlüsseln für einen Azure Search-Dienst](search-security-api-keys.md).
 
@@ -83,17 +85,11 @@ Der Indexzugriff von Administratoren und Entwicklern ist undifferenziert: Beide 
 
 Mehrinstanzenfähige Lösungen, die Sicherheitsgrenzen auf der Indexebene erfordern, enthalten in der Regel eine mittlere Ebene, die Kunden für die Indexisolierung verwenden. Weitere Informationen zum mehrinstanzenfähigen Anwendungsfall finden Sie unter [Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure Search](search-modeling-multitenant-saas-applications.md).
 
-## <a name="admin-access-from-client-apps"></a>Administratorzugriff über Client-Apps
+## <a name="admin-access"></a>Administratorzugriff
 
-Die Verwaltungs-REST-API von Azure Search ist eine Erweiterung von Azure Resource Manager und verfügt über die gleichen Abhängigkeiten. Folglich wird für die Verwaltung des Azure Search-Diensts Active Directory vorausgesetzt. Jegliche aus Clientcode stammende Verwaltungsanforderung muss mithilfe von Azure Active Directory authentifiziert werden, bevor die Anforderung Resource Manager erreicht.
+[Rollenbasierter Zugriff (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) legt fest, ob Sie Zugriff auf Steuerelemente für den Dienst und seinen Inhalt haben. Wenn Sie ein Besitzer oder Mitwirkender für einen Azure Search-Dienst sind, können Sie das Portal oder das PowerShell-Modul **Az.Search** verwenden, um im Dienst Objekte zu erstellen, zu aktualisieren oder zu löschen. Sie können auch die [REST-API für die Azure Search-Verwaltung](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api) verwenden.
 
-Bei Datenanforderungen für den Azure Search-Dienstendpunkt – beispielsweise „Index erstellen“ (REST-API des Azure Search-Diensts) oder „Dokumente suchen“ (REST-API des Azure Search-Diensts) – wird ein API-Schlüssel im Anforderungsheader verwendet.
-
-Falls Ihr Anwendungscode sowohl Dienstverwaltungsvorgänge als auch Datenvorgänge für Suchindizes oder Dokumente umfasst, implementieren Sie darin zwei Authentifizierungsmethoden: den für Azure Search nativen Zugriffsschlüssel und die für Resource Manager benötigte Active Directory-Authentifizierungsmethode. 
-
-Informationen zum Strukturieren einer Anforderung in Azure Search finden Sie unter [Azure Search Service REST](https://docs.microsoft.com/rest/api/searchservice/) (Azure Search-Dienst: REST). Weitere Informationen zu Authentifizierungsanforderungen für Resource Manager finden Sie unter [Verwenden der Resource Manager-Authentifizierungs-API für den Zugriff auf Abonnements](../azure-resource-manager/resource-manager-api-authentication.md).
-
-## <a name="user-access-to-index-content"></a>Benutzerzugriff auf den Indexinhalt
+## <a name="user-access"></a>Benutzerzugriff
 
 Standardmäßig wird der Benutzerzugriff auf einen Index durch den Zugriffsschlüssel auf die Abfrageanforderung bestimmt. Die meisten Entwickler erstellen und weisen [*Abfrageschlüssel*](search-security-api-keys.md) für clientseitige Suchanforderungen zu. Ein Abfrageschlüssel gewährt Lesezugriff auf alle Inhalte innerhalb des Index.
 

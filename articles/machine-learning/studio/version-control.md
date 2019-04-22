@@ -9,15 +9,17 @@ ms.topic: conceptual
 author: xiaoharper
 ms.author: amlstudiodocs
 ms.date: 10/27/2016
-ms.openlocfilehash: ff7aa1ab8972b6cbb891a67b1065044b48f1cfa3
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 046afaa0e83fa572d6cd43a3717707892b25af69
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446216"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051868"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Application Lifecycle Management in Azure Machine Learning Studio
 Azure Machine Learning Studio ist ein Tool, mit dem Machine Learning-Experimente entwickelt und auf der Azure-Cloudplattform ausgeführt werden. Es ist vergleichbar mit der Zusammenführung der Visual Studio IDE mit skalierbaren Clouddiensten zu einer einzelnen Plattform. Sie können standardmäßige ALM-Vorgehensweisen (Application Lifecycle Management) – von der Versionsverwaltung verschiedener Ressourcen bis zur automatischen Ausführung und Bereitstellung – in Azure Machine Learning Studio integrieren. In diesem Artikel werden einige der Optionen und Ansätze behandelt.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="versioning-experiment"></a>Versionsverwaltungsexperiment
 Es gibt zwei empfohlene Methoden zur Verwaltung der Versionen Ihrer Experimente. Sie können sich entweder auf den integrierten Ausführungsverlauf verlassen oder das Experiment in einem JSON-Format exportieren, um es extern zu verwalten. Jeder Ansatz hat Vor- und Nachteile.
@@ -73,7 +75,7 @@ Im Lauf der Zeit haben Sie ggf. im selben Webdienst zahlreiche Endpunkte erstell
 Sie können auch viele identische Webdienst-Endpunkte erstellen und dann verschiedene Versionen der iLearner-Datei mit dem Endpunkt patchen, um einen ähnlichen Effekt zu erzielen. In diesem [Artikel](create-models-and-endpoints-with-powershell.md) wird ausführlicher erläutert, wie Sie dies durchführen können.
 
 ### <a name="new-web-service"></a>Neuer Webdienst
-Wenn Sie einen neuen Webdienst auf Azure Resource Manager-Basis erstellen, ist das Endpunktkonstrukt nicht mehr verfügbar. Sie können stattdessen anhand Ihres Vorhersageexperiments mit dem PowerShell-Cmdlet [Export-AmlWebServiceDefinitionFromExperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) oder von einem Webdienst auf Basis des Resource Manager mit dem PowerShell-Cmdlet [*Export-AzureRmMlWebservice*](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/export-azurermmlwebservice) WSD-Dateien (Web Service Definition, Webdienstdefinition) im JSON-Format generieren.
+Wenn Sie einen neuen Webdienst auf Azure Resource Manager-Basis erstellen, ist das Endpunktkonstrukt nicht mehr verfügbar. Sie können stattdessen anhand Ihres Vorhersageexperiments mit dem PowerShell-Cmdlet [Export-AmlWebServiceDefinitionFromExperiment](https://github.com/hning86/azuremlps#export-amlwebservicedefinitionfromexperiment) oder von einem Webdienst auf Basis des Resource Manager aus mit dem PowerShell-Cmdlet [*Export-AzMlWebservice*](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) WSD-Dateien (Web Service Definition, Webdienstdefinition) im JSON-Format generieren.
 
 Nachdem Sie die WSD-Datei exportiert haben und ihre Version verwalten, können Sie auch die WSD in einem anderen Webdienstplan in einer anderen Azure-Region als neuen Webdienst bereitstellen. Achten Sie nur darauf, dass Sie sowohl die richtige Speicherkontokonfiguration als auch die neue Webdienstplan-ID angeben. Um in verschiedenen iLearner-Dateien zu patchen, können Sie die WSD-Datei ändern und den Speicherortverweis des trainierten Modells aktualisieren und als neuen Webdienst bereitstellen.
 

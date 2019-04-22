@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 20ca4b9d347b9dc01e3b890fcf3758fb2fb135b9
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: ccc1f94b9411a158b5c60509e09bd3edc0a61640
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486137"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277594"
 ---
 # <a name="userjourneys"></a>UserJourneys
 

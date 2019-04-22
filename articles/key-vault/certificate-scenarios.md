@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8b56151ae56de44cbab3003743ce6df33ec89612
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 20c05bddddce4c7748e29551fe78d3e5609b2fa5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075628"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275894"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Erste Schritte mit Key Vault-Zertifikaten
 Die folgenden Szenarien stellen verschiedene der primären Verwendungen des Key Vault-Zertifikatverwaltungdiensts dar. Dazu gehören auch die zusätzlichen Schritte, die zum Erstellen Ihres ersten Zertifikats in Ihrem Schlüsseltresor erforderlich sind.
@@ -82,7 +82,7 @@ Hinweis: Dieser Prozess bis Schritt 3.1 ist ein einmaliger Vorgang.
       -   Erneuerungsinformationen - > Beispiel: 90 Tage vor Ablauf  
 
   - Ein Zertifikaterstellungsprozess ist normalerweise ein asynchroner Prozess und umfasst das Abrufen des Status der Zertifikaterstellung von Ihrem Schlüsseltresor.  
-[Zertifikatabrufvorgang](/rest/api/keyvault/getcertificateoperation/getcertificateoperation)  
+[Get certificate operation (Abrufen des Zertifikatvorgangs)](/rest/api/keyvault/getcertificateoperation/getcertificateoperation)  
       -   Status: abgeschlossen, Fehler mit Fehlerinformationen oder abgebrochen  
       -   Aufgrund einer Verzögerung bei der Erstellung kann ein Abbruchvorgang initiiert werden. Der Abbruchvorgang ist aber möglicherweise nicht wirksam.  
 
@@ -101,6 +101,17 @@ Hinweis: Dieser Prozess bis Schritt 3.1 ist ein einmaliger Vorgang.
 -   Wenn keine weiteren Vorgänge ausstehen, sendet Key Vault zuerst einen Ablaufhinweis. 
 
 -   Darüber hinaus kann der Benutzer die Richtlinie bearbeiten, die zum Zeitpunkt des Imports funktionsfähig ist, aber an den Stellen Standardwerte enthält, an denen beim Import keine Informationen angegeben waren. Beispiel: Keine Informationen zum Aussteller  
+
+### <a name="formats-of-import-we-support"></a>Unterstützte Importformate
+Die folgenden Importtypen werden für das PEM-Dateiformat unterstützt. Ein einzelnes PEM-codiertes Zertifikat mit einem PKCS#8-codiertem, nicht verschlüsselten Schlüssel, das Folgendes aufweist:
+
+-----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
+
+-----BEGIN PRIVATE KEY----- -----END PRIVATE KEY-----
+
+Bei der Zusammenführung von Zertifikaten werden zwei PEM-basierte Formate unterstützt. Sie können entweder ein einzelnes PKCS#8-codiertes Zertifikat oder eine base64-codierte P7B-Datei zusammenführen. -----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
+
+EC-Schlüssel werden derzeit nicht im PEM-Format unterstützt.
 
 ## <a name="creating-a-certificate-with-a-ca-not-partnered-with-key-vault"></a>Erstellen eines Zertifikats mit einer nicht mit Key Vault verbundenen Zertifizierungsstelle  
  Diese Methode ermöglicht das Arbeiten mit anderen Zertifizierungsstellen als den Key Vault-Partneranbietern. Ihre Organisation kann also mit einer Zertifizierungsstelle ihrer Wahl arbeiten.  

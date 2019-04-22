@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed27830aa1f4212e4bc26af8da4febc1b61a76cc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c56970091da74cfc389d60ad91f430fcb64d4bba
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175093"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266969"
 ---
 # <a name="v20-protocols---oauth-20-and-openid-connect"></a>v2.0-Protokolle – OAuth 2.0- und OpenID Connect
 
@@ -44,7 +44,8 @@ In fast allen OAuth 2.0- und OpenID Connect-Vorgängen sind vier Beteiligte am A
 * Der **Ressourcenserver** ist der Ort, an dem die Ressource oder die Daten abgelegt sind. Er vertraut dem Autorisierungsserver, dass der OAuth-Client sicher authentifiziert und autorisiert wird, und verwendet Bearerzugriffstoken, um sicherzustellen, dass der Zugriff auf eine Ressource gewährt werden kann.
 
 ## <a name="app-registration"></a>App-Registrierung
-Jede App, die den v2.0-Endpunkt verwendet, muss in [apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) oder durch die neue **App-Registrierungen (Vorschauversion)** im [Azure-Portal](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) registriert sein, bevor sie über OAuth oder OpenID Connect interagieren kann. Der Registrierungsprozess für die App sammelt einige Werte und weist ihr einige Werte zu:
+
+Jede App, die sowohl persönliche als auch Geschäfts-, Schul- oder Unikonten akzeptieren soll, muss über die neue Funktion **App-Registrierungen (Vorschau)** des [Azure-Portals](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) registriert werden, bevor diese Benutzer mit OAuth 2.0 oder OpenID Connect angemeldet werden können. Der Registrierungsprozess für die App sammelt einige Werte und weist ihr einige Werte zu:
 
 * Eine **Anwendungs-ID**, die Ihre App eindeutig identifiziert
 * Einen **Umleitungs-URI** oder **Paketbezeichner**, der zum Umleiten von Antworten zurück an die App verwendet werden kann
@@ -72,6 +73,9 @@ Dabei ist für `{tenant}` einer von vier verschiedenen Werten möglich:
 
 Um zu erfahren, wie Sie mit diesen Endpunkten interagieren, wählen Sie im Abschnitt [Protokolle](#protocols) einen bestimmten App-Typ aus, und folgen Sie den Links für weitere Informationen.
 
+> [!TIP]
+> Jede in Azure AD registrierte App kann den v2.0-Endpunkt verwenden, selbst wenn keine persönlichen Konten angemeldet werden.  Auf diese Weise können Sie vorhandene Anwendungen zu v2.0 und [MSAL](reference-v2-libraries.md) migrieren, ohne Ihre Anwendung neu erstellen zu müssen.  
+
 ## <a name="tokens"></a>Token
 
 Die v2.0-Implementierung von OAuth 2.0 und OpenID Connect macht ausgiebig Gebrauch von Bearertoken (auch in Form von JWTs). Ein Trägertoken ist ein einfaches Sicherheitstoken, das dem „Träger“ den Zugriff auf eine geschützte Ressource ermöglicht. In diesem Kontext ist der „Träger“ jede beliebige Partei, die das Token vorweisen kann. Um das Trägertoken zu erhalten, muss sich die Partei zwar zunächst bei Azure AD authentifizieren, falls jedoch keine Maßnahmen ergriffen werden, um das Token bei der Übertragung und Speicherung zu schützen, kann das Token von einer fremden Partei abgefangen und verwendet werden. Einige Sicherheitstoken verfügen über einen integrierten Mechanismus, der eine unbefugte Verwendung durch nicht autorisierte Parteien verhindert. Trägertoken besitzen dagegen keinen solchen Mechanismus und müssen über einen sicheren Kanal wie etwa Transport Layer Security (HTTPS) übertragen werden. Wird ein Bearertoken als Klartext gesendet, kann eine böswillige Partei das Token mithilfe eines Man-in-the-Middle-Angriffs abfangen und damit unautorisiert auf eine geschützte Ressource zugreifen. Die gleichen Sicherheitsprinzipien gelten für die (Zwischen-)Speicherung von Trägertoken zur späteren Verwendung. Stellen Sie daher sicher, dass Ihre App Bearertoken stets auf sichere Weise überträgt und speichert. Weitere Sicherheitsüberlegungen zu Bearertoken finden Sie unter [RFC 6750, Abschnitt 5](https://tools.ietf.org/html/rfc6750).
@@ -82,8 +86,8 @@ Weitere Informationen zu verschiedenen Tokentypen, die im v2.0-Endpunkt verwende
 
 Wenn Sie einige Beispielanforderungen sehen möchten, beginnen Sie mit einem der folgenden Lernprogramme. Jedes Lernprogramm entspricht einem bestimmten Szenario. Wenn Sie Hilfe bei der Bestimmung des richtigen Arbeitsablaufs benötigen, informieren Sie sich über die [App-Typen, die mit dem v2.0-Endpunkt erstellt werden können](v2-app-types.md).
 
-* [Erstellen von mobilen und nativen Anwendungen mit OAuth 2.0](v2-oauth2-auth-code-flow.md)
+* [Erstellen mobiler und nativer Anwendungen mit OAuth 2.0](v2-oauth2-auth-code-flow.md)
 * [Erstellen von Web-Apps mit OpenID Connect](v2-protocols-oidc.md)
 * [Erstellen von Single-Page-Apps mit dem impliziten OAuth 2.0-Datenfluss](v2-oauth2-implicit-grant-flow.md)
-* [Erstellen von Daemons oder serverseitigen Prozessen mit dem OAuth 2.0-Clientanmeldeinformations-Datenfluss](v2-oauth2-client-creds-grant-flow.md)
-* [Abrufen von Token in einer Web-API mit dem „Im Namen von“-Datenfluss von OAuth 2.0](v2-oauth2-on-behalf-of-flow.md)
+* [Erstellen von Daemons oder serverseitigen Prozessen mit dem OAuth 2.0-Datenfluss für Clientanmeldeinformationen](v2-oauth2-client-creds-grant-flow.md)
+* [Abrufen von Token in einer Web-API mit dem On-Behalf-Of-Fluss von OAuth 2.0](v2-oauth2-on-behalf-of-flow.md)

@@ -3,7 +3,7 @@ title: Fehlertoleranz der Kopieraktivität in Azure Data Factory | Microsoft-Dok
 description: Erfahren Sie, wie Sie der Kopieraktivität von Azure Data Factory Fehlertoleranz hinzufügen, indem inkompatible Zeilen übersprungen werden.
 services: data-factory
 documentationcenter: ''
-author: linda33wj
+author: dearandyxu
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
@@ -11,17 +11,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/26/2018
-ms.author: jingwang
-ms.openlocfilehash: f1a40c09c2d08eddedd3b6b51d2a138ec403f6bc
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.author: yexu
+ms.openlocfilehash: ef0bb3716a32a0f25b90e74bc44d7291c146b431
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014912"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267462"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Fehlertoleranz der Kopieraktivität in Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1](v1/data-factory-copy-activity-fault-tolerance.md)
+> * [Version 1](v1/data-factory-copy-activity-fault-tolerance.md)
 > * [Aktuelle Version](copy-activity-fault-tolerance.md)
 
 Die Kopieraktivität in Azure Data Factory bietet beim Kopieren von Daten zwischen Quell- und Senkendatenspeichern zwei Optionen für den Umgang mit nicht kompatiblen Zeilen:
@@ -108,7 +108,7 @@ data4, data5, data6, "2627", "Violation of PRIMARY KEY constraint 'PK_tblintstrd
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in den anderen Artikeln zur Kopieraktivität:
 
-- [Kopieraktivität – Übersicht](copy-activity-overview.md)
-- [Leistung der Kopieraktivität](copy-activity-performance.md)
+- [Kopieraktivität in Azure Data Factory](copy-activity-overview.md)
+- [Handbuch zur Leistung und Optimierung der Kopieraktivität](copy-activity-performance.md)
 
 

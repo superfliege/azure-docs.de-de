@@ -7,16 +7,19 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: yizhon
-ms.openlocfilehash: 683f3ca88c349fef31f9647566dbed8a840f94dd
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 7788bca621a59ec8cdfe36edf73a99efca8c460c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451730"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261393"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>Entwickeln für eingeschränkte Geräte mit dem Azure IoT-SDK für C
 
 Das Azure IoT Hub SDK für C ist in ANSI C (C99) geschrieben, wodurch es sich gut für eine Vielzahl von Plattformen mit geringem Datenträger- und Arbeitsspeicherbedarf eignet. Der empfohlene Arbeitsspeicher beträgt mindestens 64 KB. Der genaue Arbeitsspeicherbedarf hängt jedoch vom verwendeten Protokoll, der Anzahl der geöffneten Verbindungen sowie der Zielplattform ab.
+> [!NOTE]
+> * Durch das Azure IoT-SDK für C werden regelmäßig Informationen zum Ressourcenverbrauch veröffentlicht, um die Entwicklung zu unterstützen.  Besuchen Sie unser [GitHub-Repository](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md) und überprüfen Sie den neuesten Vergleichstest.
+>
 
 Das SDK für C ist in Paketform über apt-get NuGet und MBED verfügbar. Wenn Sie eingeschränkte Geräte zum Ziel haben, können Sie das SDK lokal für Ihre Zielplattform erstellen. Diese Dokumentation veranschaulicht, wie mit [cmake](https://cmake.org/) bestimmte Funktionen entfernt werden, um den Platzbedarf des SDK für C zu reduzieren. Darüber hinaus werden in dieser Dokumentation die bewährten Programmiermodelle für die Arbeit mit eingeschränkten Geräten erläutert.
 

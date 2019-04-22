@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 03/06/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ca71fdc8074e56adc8595ee905d5b1db3b60cef1
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 52226d07595120395909dd5f47d5d896f5cdaa75
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371796"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278988"
 ---
 # <a name="azure-storage-account-overview"></a>Übersicht über Azure Storage-Konten
 
-Ein Azure Storage-Konto enthält all Ihre Azure Storage-Datenobjekte: Blobs, Dateien, Warteschlangen, Tabellen und Datenträger. Die Daten in Ihrem Azure Storage-Konto sind stabil, hoch verfügbar, sicher, massiv skalierbar und über HTTP oder HTTPS von jedem Ort der Welt zugänglich. 
+Ein Azure Storage-Konto enthält all Ihre Azure Storage-Datenobjekte: Blobs, Dateien, Warteschlangen, Tabellen und Datenträger. Die Daten in Ihrem Azure Storage-Konto sind stabil, hoch verfügbar, sicher, massiv skalierbar und über HTTP oder HTTPS von jedem Ort der Welt zugänglich.
 
 Um zu erfahren, wie Sie ein Azure Storage-Konto erstellen, lesen Sie den Artikel [Erstellen eines Speicherkontos](storage-quickstart-create-account.md).
 
@@ -52,7 +52,7 @@ Konten vom Typ „Allgemein v1“ ermöglichen Zugriff auf alle Azure Storage-Di
 - Warteschlangen
 - Tabellen
 
-Während Allgemein v2-Konten für die meisten Fälle empfohlen werden, eignen sich Allgemein v1-Konten am besten für folgende Szenarien: 
+Während Allgemein v2-Konten für die meisten Fälle empfohlen werden, eignen sich Allgemein v1-Konten am besten für folgende Szenarien:
 
 * Ihre Anwendungen erfordern das klassische Azure-Bereitstellungsmodell. Allgemein v2- und Blob Storage-Konten unterstützen nur das Azure Resource Manager-Bereitstellungsmodell.
 
@@ -64,6 +64,10 @@ Während Allgemein v2-Konten für die meisten Fälle empfohlen werden, eignen si
 
 Ein Blockblob-Speicherkonto ist ein spezielles Speicherkonto, das dazu dient, unstrukturierte Objektdaten als Blockblobs oder Anfügeblobs zu speichern. Blockblob-Speicherkonten bieten mehrere Zugriffsebenen, um Daten auf Ihren Nutzungsmustern basierend zu speichern. Weitere Informationen finden Sie unter [Zugriffsebenen für Blockblobdaten](#access-tiers-for-block-blob-data).
 
+### <a name="filestorage-preview-storage-accounts"></a>FileStorage-Speicherkonten (Vorschau)
+
+Ein FileStorage-Speicherkonto ist ein spezielles Speicherkonto, das zum Speichern und Erstellen von Premium-Dateifreigaben verwendet wird. FileStorage-Speicherkonten bieten einzigartige leistungsorientierte Merkmale wie IOPS-Bursting. Weitere Informationen zu diesen Merkmalen finden Sie im Abschnitt [Leistungsstufen für Dateifreigaben](../files/storage-files-planning.md#file-share-performance-tiers) des Planungshandbuchs für Azure Files.
+
 ## <a name="naming-storage-accounts"></a>Benennen von Speicherkonten
 
 Beachten Sie bei der Benennung Ihres Speicherkontos folgende Regeln:
@@ -71,7 +75,7 @@ Beachten Sie bei der Benennung Ihres Speicherkontos folgende Regeln:
 - Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten.
 - Der Name Ihres Speicherkontos muss innerhalb von Azure eindeutig sein. Zwei Speicherkonten können nicht denselben Namen haben.
 
-## <a name="performance-tiers"></a>Leistungsstufen
+## <a name="general-purpose-performance-tiers"></a>Allgemeine Leistungsstufen
 
 Allgemeine Speicherkonten können für jede der folgenden Leistungsstufen konfiguriert werden:
 
@@ -85,8 +89,8 @@ Azure Storage bietet verschiedene Optionen für den Zugriff auf Blockblobdaten b
 Folgende Zugriffsebenen sind verfügbar:
 
 * Die Zugriffsebene **Heiß**, die für häufigen Zugriff auf Objekte im Speicherkonto optimiert ist. Der Zugriff auf Daten auf der Zugriffsebene „Heiß“ ist sehr kosteneffektiv, aber die Speicherkosten liegen etwas höher. Neue Speicherkonten werden standardmäßig auf dieser Ebene erstellt.
-* Die Zugriffsebene **Kalt**, die für die Speicherung von großen Datenmengen optimiert ist, auf die selten zugegriffen wird und die mindestens 30 Tage lang gespeichert werden. Das Speichern von Daten auf der Ebene „Kalt“ ist sehr kosteneffektiv, aber der Zugriff auf die Daten ist unter Umständen etwas kostenintensiver als der Zugriff auf Daten auf der Ebene „Heiß“.
-* Die Ebene **Archiv**, die nur für einzelne Blockblobs verfügbar ist. Diese Ebene ist für Daten optimiert, die mehrere Stunden Abruflatenz tolerieren und mindestens 180 Tage lang auf der Ebene „Archiv“ verbleiben. Die Ebene „Archiv“ ist die kosteneffektivste Option für das Speichern von Daten, aber der Zugriff auf die Daten ist kostenintensiver als der Zugriff auf Daten auf der Ebene „Heiß“ oder „Kalt“. 
+* Die Zugriffsebene **Kalt**, die für die Speicherung von großen Datenmengen optimiert ist, auf die selten zugegriffen wird und die mindestens 30 Tage lang gespeichert werden. Das Speichern von Daten auf der Ebene „Kalt“ ist kostengünstiger, aber der Zugriff auf die Daten ist unter Umständen etwas kostenintensiver als der Zugriff auf Daten auf der Ebene „Heiß“.
+* Die Ebene **Archiv**, die nur für einzelne Blockblobs verfügbar ist. Diese Ebene ist für Daten optimiert, die mehrere Stunden Abruflatenz tolerieren und mindestens 180 Tage lang auf der Ebene „Archiv“ verbleiben. Die Ebene „Archiv“ ist die kosteneffektivste Option für das Speichern von Daten, aber der Zugriff auf die Daten ist kostenintensiver als der Zugriff auf Daten auf der Ebene „Heiß“ oder „Kalt“.
 
 Wenn sich das Nutzungsmusters Ihrer Daten ändern, können Sie jederzeit zwischen den Zugriffsebenen wechseln. Weitere Informationen zu Zugriffsebenen finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“](../blobs/storage-blob-storage-tiers.md).
 

@@ -8,20 +8,33 @@ ms.topic: include
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e3d2466f05028a963256dbcc052c46650857836d
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 1cb353d22e39447d7aeb723b5506ac0209cf74d8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372712"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59287101"
 ---
 ### <a name="premium-performance-block-blob-storage"></a>Blockblobspeicher mit Premium-Leistung
 
-Ein Blockblob-Speicherkonto mit Premium-Leistung ist für Anwendungen optimiert, die kleinere Objekte im Kilobytebereich verwenden. Dies ist ideal für Anwendungen, die sehr hohe Transaktionsraten oder Speicher mit gleichbleibend geringer Latenz erfordern. Der Blockblobspeicher mit Premium-Leistung ist zur Skalierung mit Ihren Anwendungen ausgelegt. Wenn Sie Anwendungen bereitstellen möchten, die Hunderttausende von Anforderungen pro Sekunde oder Speicherkapazität im Petabytebereich erfordern, nehmen Sie Kontakt mit uns auf, indem Sie eine Supportanfrage im [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) übermitteln.
+Ein Blockblob-Speicherkonto mit Premium-Leistung ist für Anwendungen optimiert, die kleinere Objekte im Kilobytebereich verwenden. Dies ist ideal für Anwendungen, die hohe Transaktionsraten oder Speicher mit gleichbleibend kurzer Wartezeit erfordern. Der Blockblobspeicher mit Premium-Leistung ist zur Skalierung mit Ihren Anwendungen ausgelegt. Wenn Sie Anwendungen bereitstellen möchten, die Hunderttausende von Anforderungen pro Sekunde oder Speicherkapazität im Petabytebereich erfordern, nehmen Sie Kontakt mit uns auf, indem Sie eine Supportanfrage im [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) übermitteln.
+
+### <a name="premium-performance-filestorage-preview"></a>Premiumleistung von FileStorage (Vorschau)
+
+Premiumdateien verwenden ein eindeutiges Speicherkonto namens **FileStorage (Vorschau)**. Dieser Kontotyp ist für Workloads mit hohem IOPS und hohem Durchsatz bei gleichbleibend kurzer Wartezeit konzipiert. Der Speicher für die Premiumdateien skaliert mit der bereitgestellten Freigabegröße.
+
+|Bereich  |Ziel  |
+|---------|---------|
+|Max. Größe     |5 TiB (öffentliche Vorschau), 100 TiB (eingeschränkte öffentliche Vorschau)     |
+|Freigaben   |Unbegrenzt  |
+|IOPS     |100.000 (eingeschränkte öffentliche Vorschau)    |
+|Bandbreite|5 GB/s     |
+
+ Weitere Informationen zu Skalierbarkeitsziele für die Freigabe von Premiumdateien finden Sie im Abschnitt [Premium files scale targets (Skalierbarkeitsziele für Premiumdateien)](../articles/storage/common/storage-scalability-targets.md#premium-files-scale-targets).
 
 ### <a name="premium-performance-page-blob-storage"></a>Seitenblobspeicher mit Premium-Leistung
 
-Speicherkonten des Typs „Premium-Leistung“, „Allgemein v1“ oder „Allgemein v2“ weisen die folgenden Skalierbarkeitsziele auf:
+Speicherkonten des Typs „Premium-Leistung“, „Universell V1“ oder „Universell V2“ weisen die folgenden Skalierbarkeitsziele auf:
 
 | Gesamtkapazität des Kontos                            | Gesamtbandbreite für ein lokal redundantes Speicherkonto                     |
 | ------------------------------------------------- | --------------------------------------------------------------------------- |

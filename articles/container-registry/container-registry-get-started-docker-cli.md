@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: 180cbb9c31d14c36679bb84f92b3c9892ee3602d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2cb401dfd68075ff0867ae3f89eee3474000b5de
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011156"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282694"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Pushübertragung des ersten Images an eine private Containerregistrierung mit der Docker CLI
 
@@ -129,3 +129,11 @@ Nachdem Sie sich mit den Grundlagen vertraut gemacht haben, können Sie mit der 
 * [Azure Kubernetes Service (AKS)](../aks/tutorial-kubernetes-prepare-app.md)
 * [Azure Container Instances](../container-instances/container-instances-tutorial-prepare-app.md)
 * [Service Fabric](../service-fabric/service-fabric-tutorial-create-container-images.md)
+
+Installieren Sie optional die [Docker-Erweiterung für Visual Studio Code](https://code.visualstudio.com/docs/azure/docker) und die [Azure-Kontoerweiterung](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) für die Verwendung mit Ihren Azure-Containerregistrierungen. In Visual Studio Code können Sie Pull- und Pushvorgänge für Images in einer Azure-Containerregistrierung oder auch ACR Tasks ausführen.
+
+
+<!-- LINKS - external -->
+[docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
+[docker-mac]: https://docs.docker.com/docker-for-mac/
+[docker-windows]: https://docs.docker.com/docker-for-windows/
