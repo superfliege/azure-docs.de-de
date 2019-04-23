@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 2abec4d9d74cf58503dec667080f478b1fec06ff
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 0c654070e2bbeb8ee5dbc64fe9b4f58ee97f2e47
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485151"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000724"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Verwenden der Service Map-Lösung in Azure
 Service Map ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. Mit Service Map können Sie die Server Ihrer Vorstellung gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen. Dienstzuordnung zeigt Verbindungen zwischen Servern, Prozessen, ein- und ausgehende Verbindungslatenz und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich.
@@ -299,22 +299,22 @@ Um Kosten und Komplexität im Zaum zu halten, stellen die Verbindungsdatensätze
 
 | Eigenschaft | BESCHREIBUNG |
 |:--|:--|
-|Richtung |Richtung der Verbindung, der Wert ist *inbound* oder *outbound* |
-|Computer |Der vollqualifizierte Domänenname des Computers |
-|Prozess |Identität des Prozesses oder Gruppe von Prozessen, die die Verbindung einleitet/akzeptiert |
-|SourceIp |IP-Adresse der Quelle |
-|DestinationIp |IP-Adresse des Ziels |
-|DestinationPort |Portnummer des Ziels |
-|Protokoll |Für die Verbindung verwendetes Protokoll.  Der Wert ist *tcp*. |
+| `Direction` |Richtung der Verbindung, der Wert ist *inbound* oder *outbound* |
+| `Machine` |Der vollqualifizierte Domänenname des Computers |
+| `Process` |Identität des Prozesses oder Gruppe von Prozessen, die die Verbindung einleitet/akzeptiert |
+| `SourceIp` |IP-Adresse der Quelle |
+| `DestinationIp` |IP-Adresse des Ziels |
+| `DestinationPort` |Portnummer des Ziels |
+| `Protocol` |Für die Verbindung verwendetes Protokoll.  Der Wert ist *tcp*. |
 
 Um dem Einfluss der Gruppierung Rechnung zu tragen, werden Informationen über die Anzahl der gruppierten physischen Verbindungen in den folgenden Eigenschaften des Datensatzes bereitgestellt:
 
 | Eigenschaft | BESCHREIBUNG |
 |:--|:--|
-|LinksEstablished |Die Anzahl der physischen Netzwerkverbindungen, die während des Berichtszeitraums eingerichtet wurden |
-|LinksTerminated |Die Anzahl der physischen Netzwerkverbindungen, die während des Berichtszeitraums beendet wurden |
-|LinksFailed |Die Anzahl der physischen Netzwerkverbindungen, die während des Berichtszeitraums für ungültig erklärt wurden. Diese Informationen sind derzeit nur für ausgehende Verbindungen verfügbar. |
-|LinksLive |Die Anzahl der physischen Netzwerkverbindungen, die am Ende des Berichtszeitraums offen waren|
+| `LinksEstablished` |Die Anzahl der physischen Netzwerkverbindungen, die während des Berichtszeitraums eingerichtet wurden |
+| `LinksTerminated` |Die Anzahl der physischen Netzwerkverbindungen, die während des Berichtszeitraums beendet wurden |
+| `LinksFailed` |Die Anzahl der physischen Netzwerkverbindungen, die während des Berichtszeitraums für ungültig erklärt wurden. Diese Informationen sind derzeit nur für ausgehende Verbindungen verfügbar. |
+| `LinksLive` |Die Anzahl der physischen Netzwerkverbindungen, die am Ende des Berichtszeitraums offen waren|
 
 #### <a name="metrics"></a>Metriken
 
@@ -322,12 +322,12 @@ Um dem Einfluss der Gruppierung Rechnung zu tragen, werden Informationen über d
 
 | Eigenschaft | BESCHREIBUNG |
 |:--|:--|
-|BytesSent |Gesamtzahl der Bytes, die während des Berichtszeitraums gesendet wurden |
-|BytesReceived |Gesamtzahl der Bytes, die während des Berichtszeitraums empfangen wurden |
-|Antworten |Die Anzahl der Antworten, die während des Berichtszeitraums beobachtet wurden. 
-|ResponseTimeMax |Die längste Antwortzeit (in Millisekunden), die während des Berichtszeitraums beobachtet wurde.  Wenn kein Wert vorliegt, ist die Eigenschaft leer.|
-|ResponseTimeMin |Die kürzeste Antwortzeit (in Millisekunden), die während des Berichtszeitraums beobachtet wurde.  Wenn kein Wert vorliegt, ist die Eigenschaft leer.|
-|ResponseTimeSum |Die Summe aller Antwortzeiten (in Millisekunden), die während des Berichtszeitraums beobachtet wurden.  Wenn kein Wert vorliegt, ist die Eigenschaft leer.|
+| `BytesSent` |Gesamtzahl der Bytes, die während des Berichtszeitraums gesendet wurden |
+| `BytesReceived` |Gesamtzahl der Bytes, die während des Berichtszeitraums empfangen wurden |
+| `Responses` |Die Anzahl der Antworten, die während des Berichtszeitraums beobachtet wurden. 
+| `ResponseTimeMax` |Die längste Antwortzeit (in Millisekunden), die während des Berichtszeitraums beobachtet wurde.  Wenn kein Wert vorliegt, ist die Eigenschaft leer.|
+| `ResponseTimeMin` |Die kürzeste Antwortzeit (in Millisekunden), die während des Berichtszeitraums beobachtet wurde.  Wenn kein Wert vorliegt, ist die Eigenschaft leer.|
+| `ResponseTimeSum` |Die Summe aller Antwortzeiten (in Millisekunden), die während des Berichtszeitraums beobachtet wurden.  Wenn kein Wert vorliegt, ist die Eigenschaft leer.|
 
 Die dritte Art Daten, die gemeldet werden, sind Antwortzeiten – wie viel Zeit verbringt ein Aufrufer mit Warten auf die Verarbeitung und Antwort durch den Remoteendpunkt für eine über eine Verbindung gesendete Anforderung. Die gemeldete Antwortzeit ist eine Schätzung der tatsächlichen Antwortzeit des zugrundeliegenden Anwendungsprotokolls. Sie wird mit heuristischen Verfahren auf der Grundlage der Beobachtung des Datenflusses zwischen dem Quell- und dem Zielende einer physischen Netzwerkverbindung berechnet. Konzeptionell handelt es sich um die Differenz zwischen dem Zeitpunkt, zu dem das letzte Byte einer Anforderung den Sender verlässt, und dem Zeitpunkt, zu dem das letzte Byte der Antwort wieder bei ihm eintrifft. Diese beiden Zeitstempel werden verwendet, um Anforderungs- und Antwortereignisse für eine bestehende physische Verbindung darzustellen. Die Differenz zwischen ihnen stellt die Antwortzeit für eine einzelne Anforderung dar. 
 
@@ -348,26 +348,26 @@ Der Einfachheit halber ist die IP-Adresse des Remoteendes einer Verbindung in de
 
 | Eigenschaft | BESCHREIBUNG |
 |:--|:--|
-|RemoteCountry |Der Name des Landes, in dem „RemoteIp“ gehostet ist.  Beispielsweise *USA* |
-|RemoteLatitude |Der Breitengrad der Geolocation.  Beispielsweise *47,68* |
-|RemoteLongitude |Der Längengrad der Geolocation.  Beispielsweise *-122,12* |
+| `RemoteCountry` |Der Name des Landes, in dem „RemoteIp“ gehostet ist.  Beispielsweise *USA* |
+| `RemoteLatitude` |Der Breitengrad der Geolocation.  Beispielsweise *47,68* |
+| `RemoteLongitude` |Der Längengrad der Geolocation.  Beispielsweise *-122,12* |
 
 #### <a name="malicious-ip"></a>Schädliche IP-Adressen
 Jede RemoteIp-Eigenschaft in der Tabelle *VMConnection* wird anhand einer Sammlung von IPs überprüft, die für schädliche Aktivitäten bekannt sind. Wenn die RemoteIp als bösartig identifiziert wurde, werden die folgenden Eigenschaften des Datensatzes aufgefüllt (sie sind leer, wenn die IP nicht als schädlich angesehen wird):
 
 | Eigenschaft | BESCHREIBUNG |
 |:--|:--|
-|MaliciousIp |Die RemoteIp-Adresse |
-|IndicatorThreadType |„Bedrohungsindikator erkannt“ kann einen der folgenden Werte haben: *Botnet*, *C2*, *CryptoMining*, *Darknet*, *DDos* , *MaliciousUrl*, *Malware*, *Phishing*, *Proxy*, *PUA*, *Watchlist*.   |
-|BESCHREIBUNG |Beschreibung der beobachteten Bedrohung. |
-|TLPLevel |TLP-Stufe (Ampelprotokoll) ist einer der definierten Werte *White*, *Green*, *Amber*, *Red*. |
-|Zuverlässigkeit |Werte sind *0–100*. |
-|Severity |Werte sind *0–5*, wobei *5* am schwerwiegendsten und *0* überhaupt nicht schwerwiegend ist. Der Standardwert ist *3*.  |
-|FirstReportedDateTime |Die Uhrzeit, zu der der Anbieter den Indikator zum ersten Mal gemeldet hat. |
-|LastReportedDateTime |Die Uhrzeit, zu der der Indikator zum letzten Mal von Interflow beobachtet wurde. |
-|IsActive |Gibt an, dass die Indikatoren deaktiviert sind, mit dem Wert *true* oder *false*. |
-|ReportReferenceLink |Links zu Berichten, die im Zusammenhang mit einer bestimmten Beobachtung stehen. |
-|AdditionalInformation |Bietet zusätzliche Informationen, falls zutreffend, zur beobachteten Bedrohung. |
+| `MaliciousIp` |Die RemoteIp-Adresse |
+| `IndicatorThreadType` |„Bedrohungsindikator erkannt“ kann einen der folgenden Werte haben: *Botnet*, *C2*, *CryptoMining*, *Darknet*, *DDos* , *MaliciousUrl*, *Malware*, *Phishing*, *Proxy*, *PUA*, *Watchlist*.   |
+| `Description` |Beschreibung der beobachteten Bedrohung. |
+| `TLPLevel` |TLP-Stufe (Ampelprotokoll) ist einer der definierten Werte *White*, *Green*, *Amber*, *Red*. |
+| `Confidence` |Werte sind *0–100*. |
+| `Severity` |Werte sind *0–5*, wobei *5* am schwerwiegendsten und *0* überhaupt nicht schwerwiegend ist. Der Standardwert ist *3*.  |
+| `FirstReportedDateTime` |Die Uhrzeit, zu der der Anbieter den Indikator zum ersten Mal gemeldet hat. |
+| `LastReportedDateTime` |Die Uhrzeit, zu der der Indikator zum letzten Mal von Interflow beobachtet wurde. |
+| `IsActive` |Gibt an, dass die Indikatoren deaktiviert sind, mit dem Wert *true* oder *false*. |
+| `ReportReferenceLink` |Links zu Berichten, die im Zusammenhang mit einer bestimmten Beobachtung stehen. |
+| `AdditionalInformation` |Bietet zusätzliche Informationen, falls zutreffend, zur beobachteten Bedrohung. |
 
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL-Datensätze
 Datensätze des Typs *ServiceMapComputer_CL* enthalten Bestandsdaten für Server mit Service Map-Agents. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
@@ -399,7 +399,7 @@ Datensätze des Typs *ServiceMapProcess_CL* enthalten Bestandsdaten für über T
 
 | Eigenschaft | BESCHREIBUNG |
 |:--|:--|
-| `Type | *ServiceMapProcess_CL* |
+| `Type` | *ServiceMapProcess_CL* |
 | `SourceSystem` | *OpsManager* |
 | `ResourceId` | Der eindeutige Bezeichner für den Prozess innerhalb des Arbeitsbereichs |
 | `ResourceName_s` | Der eindeutige Bezeichner für den Prozess auf dem Computer, auf dem er ausgeführt wird|

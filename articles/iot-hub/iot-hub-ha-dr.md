@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: rkmanda
-ms.openlocfilehash: 192966eef20ac59ac3a6eb14d7d450357989b851
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 7479d9a230bd28c2ed2e4c8c79ba9301028af36c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58879691"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007626"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Hochverfügbarkeit und Notfallwiederherstellung von IoT Hub
 
@@ -82,8 +82,6 @@ Die manuelle Failoveroption ist immer verfügbar, unabhängig davon, ob in der p
 > - Testdrills sollten nicht in IoT Hub-Instanzen ausgeführt werden, die in Ihrer Produktionsumgebung verwendet werden.
 >
 > - Das manuelle Failover sollte nicht als Mechanismus verwendet werden, um Ihren Hub dauerhaft zwischen den geografisch gekoppelten Azure-Regionen zu migrieren. Die Folge wäre eine erhöhte Latenz bei den Vorgängen, die von Geräten in der alten primären Region für den Hub ausgeführt werden.
->
-> - Das manuelle Failover ist derzeit nur in der Vorschauversion und nicht in den folgenden Azure-Regionen verfügbar: USA (Osten, Westen, Süden-Mitte), Europa (Norden, Westen) und Brasilien (Süden).
 
 ### <a name="failback"></a>Failback
 

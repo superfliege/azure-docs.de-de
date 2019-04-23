@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 3541376331725fddcd58d94625f5d761ef159c97
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 95ba3c905541d2168dcbbc1bb2c1bc1d05468cb5
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526494"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006419"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>Bereitstellen des Sprachenerkennungscontainers in Azure Kubernetes Service
 
@@ -325,7 +325,7 @@ In diesem Abschnitt wird die Befehlszeilenschnittstelle **kubectl** verwendet, u
     |Zeile 78<br> `image`-Eigenschaft|Speicherort des Sprachimages in Ihrer Containerregistrierung<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
     |Zeile 95<br> `name`-Eigenschaft|Geheimnis der Containerregistrierung für das Image (weiter oben als `<client-secret>` bezeichnet).|
     |Zeile 91<br> `apiKey`-Eigenschaft|Der Schlüssel Ihrer Textanalyseressource.|
-    |Zeile 92<br> `billing`-Eigenschaft|Der Abrechnungsendpunkt für Ihre Textanalyseressource.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
+    |Zeile 92<br> `billing`-Eigenschaft|Der Abrechnungsendpunkt für Ihre Textanalyseressource.<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
     Da **apiKey** und **Abrechnungsendpunkt** im Rahmen der Kubernetes-Orchestrierungsdefinition festgelegt werden, müssen sie dem Websitecontainer nicht bekannt sein und nicht zusammen mit der Anforderung übergeben werden. Der Websitecontainer verweist auf den Sprachenerkennungscontainer anhand des Orchestratornamens `language`. 
 

@@ -1,17 +1,17 @@
 ---
 title: Ermitteln von Datenquellen in Azure Data Catalog
 description: Dieser Artikel bietet Informationen zum Ermitteln von Datenobjekten, die in Azure Data Catalog registriert wurden, einschließlich der Verwendung der Funktionen für Suchen und Filtern sowie Treffermarkierung im Azure Data Catalog-Portal.
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 04/05/2019
-ms.openlocfilehash: 892a0909f68d89acc463d37edd466dba6a721177
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: b21bf1b50152130d7b6edd227c87fcaca28c1e6a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59277685"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007864"
 ---
 # <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>Ermitteln von Datenquellen in Azure Data Catalog
 

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: aeaf8fb5112fe9f6d8f2ca77ed9c1fd244fd9603
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1347e28fe36ffe9595516252aea102d817a705a7
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877070"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000044"
 ---
 # <a name="azure-media-services-community"></a>Azure Media Services-Community  
 
@@ -37,10 +37,13 @@ Auf dieser Seite der Azure Media Services-Community (AMS) lernen Sie verschieden
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="discussion"></a>Diskussion
+
 ### <a name="twitter"></a>Twitter
+
 Verwenden Sie das Twitter-Handle [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia), um sich mit uns in Verbindung zu setzen oder Updates auf Twitter zu folgen. Sie können den Twitter-Handle [@AzureSupport](https://twitter.com/azuresupport) zum Anfordern von Support auf Twitter verwenden.  
 
 ### <a name="online-forums"></a>Onlineforen
+
 Die folgenden Foren können zum Stellen von Fragen zu aktuellen Produkten und Features genutzt werden.
 
 Derzeit ist MSDN das primäre Communityforum des Media Services-Teams.
@@ -48,9 +51,11 @@ Derzeit ist MSDN das primäre Communityforum des Media Services-Teams.
 [![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
 
 Das Team überwacht auch Fragen, die in Stack Overflow mit „azure-media-services“ gekennzeichnet werden.
+
 [![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
 ## <a name="contact-the-team"></a>Kontaktaufnahme mit dem Team
+
 Die primäre E-Mail-Adresse für den Azure Media Services-Support lautet: **amshelp\@microsoft.com**.
 
 Die folgende Tabelle enthält die E-Mail-Adressen der Teams der einzelnen Features:

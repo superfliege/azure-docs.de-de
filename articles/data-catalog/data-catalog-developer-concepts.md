@@ -2,18 +2,18 @@
 title: Azure Data Catalog – Entwicklerkonzepte
 description: Eine Einführung in die wichtigsten Konzepte im konzeptionellen Modell von Azure Data Catalog, die durch die Catalog-REST-API verfügbar gemacht werden.
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: 89de9137-a0a4-40d1-9f8d-625acad31619
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: bca006ab33379f52281f77fb5a04a24022bac373
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 42e4b545a48bcbd0ad4b7faf077ebdbfe21648b1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314552"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006691"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Data Catalog – Entwicklerkonzepte
 **Azure Data Catalog** von Microsoft ist ein vollständig verwalteter Clouddienst mit Funktionen für die Datenquellenermittlung und das Crowdsourcing von Datenquellenmetadaten. Entwickler können den Dienst über die REST-APIs nutzen. Eine erfolgreiche Integration von **Azure Data Catalog**setzt voraus, dass die Entwickler mit den implementierten Konzepten vertraut sind.
@@ -78,14 +78,14 @@ Die UX kann dann entscheiden, wie die Kombination dargestellt wird. Für die Anz
 Wie bereits im Abschnitt mit den wichtigen Begriffen angedeutet, enthält das Objektmodell von **Azure Data Catalog** Elemente, bei denen es sich um Assets oder Anmerkungen handeln kann. Elemente besitzen optionale oder erforderliche Eigenschaften. Einige Eigenschaften gelten für alle Elemente. Einige Eigenschaften gelten für alle Assets. Einige Eigenschaften gelten nur für bestimmte Assettypen.
 
 ### <a name="system-properties"></a>Systemeigenschaften
-<table><tr><td><b>Eigenschaftenname</b></td><td><b>Datentyp</b></td><td><b>Kommentare</b></td></tr><tr><td>timestamp</td><td>DateTime</td><td>Der Zeitpunkt der letzten Änderung des Elements. Dieses Feld wird vom Server generiert, wenn ein Element eingefügt wird, sowie bei jeder Aktualisierung eines Elements. Der Wert dieser Eigenschaft wird bei der Eingabe von Veröffentlichungsvorgängen ignoriert.</td></tr><tr><td>id</td><td>Uri</td><td>Die absolute URL des Elements (schreibgeschützt). Es handelt sich hierbei um den eindeutig adressierbaren URI für das Element.  Der Wert dieser Eigenschaft wird bei der Eingabe von Veröffentlichungsvorgängen ignoriert.</td></tr><tr><td>type</td><td>Zeichenfolge</td><td>Der Typ des Assets (schreibgeschützt).</td></tr><tr><td>etag</td><td>Zeichenfolge</td><td>Eine Zeichenfolge entsprechend der Version des Elements, die beim Ausführen von Vorgängen, mit denen Elemente im Katalog aktualisiert werden, für die Steuerung optimistischer Nebenläufigkeit verwendet werden kann. Mit „*“ kann die Übereinstimmung mit einem beliebigen Wert angegeben werden.</td></tr></table>
+<table><tr><td><b>Eigenschaftenname</b></td><td><b>Datentyp</b></td><td><b>Kommentare</b></td></tr><tr><td>timestamp</td><td>Datetime</td><td>Der Zeitpunkt der letzten Änderung des Elements. Dieses Feld wird vom Server generiert, wenn ein Element eingefügt wird, sowie bei jeder Aktualisierung eines Elements. Der Wert dieser Eigenschaft wird bei der Eingabe von Veröffentlichungsvorgängen ignoriert.</td></tr><tr><td>id</td><td>Uri</td><td>Die absolute URL des Elements (schreibgeschützt). Es handelt sich hierbei um den eindeutig adressierbaren URI für das Element.  Der Wert dieser Eigenschaft wird bei der Eingabe von Veröffentlichungsvorgängen ignoriert.</td></tr><tr><td>type</td><td>Zeichenfolge</td><td>Der Typ des Assets (schreibgeschützt).</td></tr><tr><td>etag</td><td>Zeichenfolge</td><td>Eine Zeichenfolge entsprechend der Version des Elements, die beim Ausführen von Vorgängen, mit denen Elemente im Katalog aktualisiert werden, für die Steuerung optimistischer Nebenläufigkeit verwendet werden kann. Mit „*“ kann die Übereinstimmung mit einem beliebigen Wert angegeben werden.</td></tr></table>
 
 ### <a name="common-properties"></a>Allgemeine Eigenschaften
 Diese Eigenschaften gelten für alle Stammassettypen und für alle Anmerkungstypen.
 
 <table>
 <tr><td><b>Eigenschaftenname</b></td><td><b>Datentyp</b></td><td><b>Kommentare</b></td></tr>
-<tr><td>fromSourceSystem</td><td>Boolescher Wert</td><td>Gibt an, ob Daten des Elements aus einem Quellsystem (z.B. SQL Server-Datenbank, Oracle-Datenbank) abgeleitet oder von einem Benutzer erstellt wurde.</td></tr>
+<tr><td>fromSourceSystem</td><td>Boolean</td><td>Gibt an, ob Daten des Elements aus einem Quellsystem (z.B. SQL Server-Datenbank, Oracle-Datenbank) abgeleitet oder von einem Benutzer erstellt wurde.</td></tr>
 </table>
 
 ### <a name="common-root-properties"></a>Allgemeine Stammeigenschaften
@@ -105,7 +105,7 @@ Diese Eigenschaften gelten für alle Nicht-Singleton-Anmerkungstypen (Anmerkunge
 ### <a name="root-asset-types"></a>Stammassettypen
 Stammassettypen stellen die verschiedenen Typen von Datenassets dar, die im Katalog registriert werden können. Für jeden Stammtyp gibt es eine Sicht, die die in der Sicht enthaltenen Assets und Anmerkungen beschreibt. Der Sichtname sollte bei der Veröffentlichung eines Assets mithilfe der REST-API im entsprechenden {view_name}-URL-Segment verwendet werden.
 
-<table><tr><td><b>Assettyp (Sichtname)</b></td><td><b>Zusätzliche Eigenschaften</b></td><td><b>Datentyp</b></td><td><b>Zulässige Anmerkungen</b></td><td><b>Kommentare</b></td></tr><tr><td>Tabelle („tables“)</td><td></td><td></td><td>BESCHREIBUNG<p>FriendlyName<p>Tag<p>Schema<p>ColumnDescription<p>ColumnTag<p> Experten<p>Vorschau<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentation<p></td><td>Eine Tabelle stellt beliebige Tabellendaten dar.  Beispiel:  SQL-Tabelle, SQL-Sicht, tabellarische Analysis Services-Tabelle, mehrdimensionale Analysis Services-Dimension, Oracle-Tabelle usw.   </td></tr><tr><td>Kennzahl („measures“)</td><td></td><td></td><td>BESCHREIBUNG<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation<p></td><td>Dieser Typ stellt eine Analysis Services-Kennzahl dar.</td></tr><tr><td></td><td>Kennzahl</td><td>Column</td><td></td><td>Metadaten zur Beschreibung der Kennzahl.</td></tr><tr><td></td><td>isCalculated </td><td>Boolescher Wert</td><td></td><td>Gibt an, ob es sich um eine berechnete Kennzahl handelt.</td></tr><tr><td></td><td>measureGroup</td><td>Zeichenfolge</td><td></td><td>Der physische Container für die Kennzahl.</td></tr><td>KPI („kpis“)</td><td></td><td></td><td>BESCHREIBUNG<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation</td><td></td></tr><tr><td></td><td>measureGroup</td><td>Zeichenfolge</td><td></td><td>Der physische Container für die Kennzahl.</td></tr><tr><td></td><td>goalExpression</td><td>Zeichenfolge</td><td></td><td>Ein numerischer MDX-Ausdruck oder eine Berechnung, die den Zielwert des KPI zurückgibt.</td></tr><tr><td></td><td>valueExpression</td><td>Zeichenfolge</td><td></td><td>Ein numerischer MDX-Ausdruck, der den tatsächlichen Wert des KPI zurückgibt.</td></tr><tr><td></td><td>statusExpression</td><td>Zeichenfolge</td><td></td><td>Ein MDX-Ausdruck, der den Status des KPI zu einem bestimmten Zeitpunkt darstellt.</td></tr><tr><td></td><td>trendExpression</td><td>Zeichenfolge</td><td></td><td>Ein MDX-Ausdruck, der den Wert des KPI im Zeitverlauf auswertet. Der Trend kann ein beliebiges zeitbasiertes Kriterium sein, das in einem bestimmten Geschäftskontext hilfreich ist.</td>
+<table><tr><td><b>Assettyp (Sichtname)</b></td><td><b>Zusätzliche Eigenschaften</b></td><td><b>Datentyp</b></td><td><b>Zulässige Anmerkungen</b></td><td><b>Kommentare</b></td></tr><tr><td>Tabelle („tables“)</td><td></td><td></td><td>BESCHREIBUNG<p>FriendlyName<p>Tag<p>Schema<p>ColumnDescription<p>ColumnTag<p> Experten<p>Vorschau<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentation<p></td><td>Eine Tabelle stellt beliebige Tabellendaten dar.  Beispiel:  SQL-Tabelle, SQL-Sicht, tabellarische Analysis Services-Tabelle, mehrdimensionale Analysis Services-Dimension, Oracle-Tabelle usw.   </td></tr><tr><td>Kennzahl („measures“)</td><td></td><td></td><td>BESCHREIBUNG<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation<p></td><td>Dieser Typ stellt eine Analysis Services-Kennzahl dar.</td></tr><tr><td></td><td>Kennzahl</td><td>Column</td><td></td><td>Metadaten zur Beschreibung der Kennzahl.</td></tr><tr><td></td><td>isCalculated </td><td>Boolean</td><td></td><td>Gibt an, ob es sich um eine berechnete Kennzahl handelt.</td></tr><tr><td></td><td>measureGroup</td><td>Zeichenfolge</td><td></td><td>Der physische Container für die Kennzahl.</td></tr><td>KPI („kpis“)</td><td></td><td></td><td>BESCHREIBUNG<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation</td><td></td></tr><tr><td></td><td>measureGroup</td><td>Zeichenfolge</td><td></td><td>Der physische Container für die Kennzahl.</td></tr><tr><td></td><td>goalExpression</td><td>Zeichenfolge</td><td></td><td>Ein numerischer MDX-Ausdruck oder eine Berechnung, die den Zielwert des KPI zurückgibt.</td></tr><tr><td></td><td>valueExpression</td><td>Zeichenfolge</td><td></td><td>Ein numerischer MDX-Ausdruck, der den tatsächlichen Wert des KPI zurückgibt.</td></tr><tr><td></td><td>statusExpression</td><td>Zeichenfolge</td><td></td><td>Ein MDX-Ausdruck, der den Status des KPI zu einem bestimmten Zeitpunkt darstellt.</td></tr><tr><td></td><td>trendExpression</td><td>Zeichenfolge</td><td></td><td>Ein MDX-Ausdruck, der den Wert des KPI im Zeitverlauf auswertet. Der Trend kann ein beliebiges zeitbasiertes Kriterium sein, das in einem bestimmten Geschäftskontext hilfreich ist.</td>
 <tr><td>Bericht („reports“)</td><td></td><td></td><td>BESCHREIBUNG<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation<p></td><td>Dieser Typ stellt einen SQL Server Reporting Services-Bericht dar. </td></tr><tr><td></td><td>assetCreatedDate</td><td>Zeichenfolge</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>Zeichenfolge</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>Zeichenfolge</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>Zeichenfolge</td><td></td><td></td></tr><tr><td>Container („containers“)</td><td></td><td></td><td>BESCHREIBUNG<p>FriendlyName<p>Tag<p>Experten<p>AccessInstruction<p>Dokumentation<p></td><td>Dieser Typ stellt einen Container für andere Objekte dar, z. B. eine SQL-Datenbank, ein Azure-Blobcontainer oder ein Analysis Services-Modell.</td></tr></table>
 
 ### <a name="annotation-types"></a>Anmerkungstypen
@@ -189,7 +189,7 @@ Allgemeine Typen können als Typen für Eigenschaften verwendet werden, sind abe
 <tr><td></td><td>type</td><td>Zeichenfolge</td><td>Der Datentyp der Spalte oder des Attributs. Die zulässigen Typen hängen vom Datenquellentyp des Assets ab.  Nur eine Teilmenge von Typen wird unterstützt.</td></tr>
 <tr><td></td><td>maxLength</td><td>int</td><td>Die maximal zulässige Länge für die Spalte oder das Attribut. Abgeleitet von der Datenquelle. Gilt nur für einige Datenquellentypen.</td></tr>
 <tr><td></td><td>Genauigkeit</td><td>byte</td><td>Die Genauigkeit für die Spalte oder das Attribut. Abgeleitet von der Datenquelle. Gilt nur für einige Datenquellentypen.</td></tr>
-<tr><td></td><td>isNullable</td><td>Boolescher Wert</td><td>Gibt an, ob die Spalte einen Nullwert enthalten kann. Abgeleitet von der Datenquelle. Gilt nur für einige Datenquellentypen.</td></tr>
+<tr><td></td><td>isNullable</td><td>Boolean</td><td>Gibt an, ob die Spalte einen Nullwert enthalten kann. Abgeleitet von der Datenquelle. Gilt nur für einige Datenquellentypen.</td></tr>
 <tr><td></td><td>expression</td><td>Zeichenfolge</td><td>Wenn es sich bei dem Wert um eine berechnete Spalte handelt, enthält dieses Feld den Ausdruck, der den Wert angibt. Abgeleitet von der Datenquelle. Gilt nur für einige Datenquellentypen.</td></tr>
 
 <tr><td>ColumnDataProfile</td><td></td><td></td><td></td></tr>
@@ -229,7 +229,7 @@ Der Satz der unterstützten Protokolle kann programmgesteuert erweitert werden. 
 
 <tr><td>DataSourceProtocolIdentitySet</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>name</td><td>Zeichenfolge</td><td>Der Name des Identitätssatzes.</td></tr>
-<tr><td></td><td>Eigenschaften</td><td>string[]</td><td>Die Liste der in diesem Identitätssatz enthaltenen Identitätseigenschaften. Sie darf keine Duplikate enthalten. Jede Eigenschaft, auf die der Identitätssatz verweist, muss in der Liste der „identityProperties“ des Protokolls definiert werden.</td></tr>
+<tr><td></td><td>properties</td><td>string[]</td><td>Die Liste der in diesem Identitätssatz enthaltenen Identitätseigenschaften. Sie darf keine Duplikate enthalten. Jede Eigenschaft, auf die der Identitätssatz verweist, muss in der Liste der „identityProperties“ des Protokolls definiert werden.</td></tr>
 
 </table>
 

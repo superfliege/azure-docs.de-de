@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: spelluru
-ms.openlocfilehash: 28f963ab807cbd679b7efe8b034ab91f2893198e
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 6985bd0bbae858ad258e723ef4d6d6d687b2c86e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58659455"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005348"
 ---
 # <a name="enable-and-use-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>Aktivieren und Verwenden von Remotedesktop für virtuelle Linux-Computer in einem Lab in Azure Lab Services
 In diesem Artikel wird gezeigt, wie Sie Folgendes durchführen:
@@ -35,6 +35,7 @@ Während der Lab-Erstellung können Lehrkräfte die **Remotedesktopverbindung** 
 > [!IMPORTANT] 
 > Beim Aktivieren der **Remotedesktopverbindung** wird auf Linux-Computern nur der **RDP**-Port geöffnet. Sie als Lehrkraft stellen eine Verbindung mit dem Linux-Computer beim ersten Mal per SSH her und installieren RDP- und GUI-Pakete, damit Sie später RDP nutzen können, um eine Verbindung mit dem Linux-Computer herzustellen. Anschließend **veröffentlichen** Sie das Image, damit die Kursteilnehmer per RDP eine Verbindung mit den virtuellen Linux-Computern herstellen können, die für sie bestimmt sind. 
 
+## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 Derzeit wird die Remotedesktopverbindung für die folgenden Betriebssysteme unterstützt:
 
 - openSUSE Leap 42.3

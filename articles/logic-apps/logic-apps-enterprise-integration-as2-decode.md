@@ -4,18 +4,18 @@ description: Decodieren von AS-Nachrichten mit Azure Logic Apps und Enterprise I
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
-author: divyaswarnkar
-ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+author: ecfan
+ms.author: estfan
+ms.reviewer: jonfan, divswa, LADocs
 ms.topic: article
 ms.assetid: cf44af18-1fe5-41d5-9e06-cc57a968207c
 ms.date: 08/08/2018
-ms.openlocfilehash: 06ffa6bddc1340ad548f9baf30eba65ba503bf73
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: ca297e1b4a007db3020b4369132b190608484738
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128280"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001625"
 ---
 # <a name="decode-as2-messages-with-azure-logic-apps-and-enterprise-integration-pack"></a>Decodieren von AS2-Nachrichten mit Azure Logic Apps und Enterprise Integration Pack 
 
@@ -32,7 +32,7 @@ Sie benötigen Folgendes:
 
 ## <a name="decode-as2-messages"></a>Decodieren von AS2-Nachrichten
 
-1. [Erstellen Sie eine Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+1. [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
 2. Da der Connector „AS2-Nachricht decodieren“ über keine Trigger verfügt, müssen Sie einen Trigger zum Starten Ihrer Logik-App hinzufügen (beispielsweise einen Anforderungstrigger). Fügen Sie im Logik-App-Designer einen Trigger hinzu, und fügen Sie anschließend Ihrer Logik-App eine Aktion hinzu.
 

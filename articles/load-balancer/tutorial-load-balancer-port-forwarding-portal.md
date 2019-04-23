@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 44b9e592d60c541e6b1e7f0e8c639b641af414e4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: db94f1d241223a9c54a6e3d516840dd17fd0c576
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118356"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007507"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Tutorial: Konfigurieren der Portweiterleitung im Azure Load Balancer mit dem Portal
 
@@ -60,7 +60,7 @@ Erstellen Sie zunächst einen öffentlichen Load Balancer im Tarif „Standard�
     |Verfügbarkeitszone| Wählen Sie **Zonenredundant** aus.    |
      
     >[!NOTE]
-     >Stellen Sie sicher, dass Sie Ihren Load Balancer und alle seine Ressourcen an einem Standort erstellen, der Verfügbarkeitszonen unterstützt. Weitere Informationen siehe [Regionen, die Verfügbarkeitszonen unterstützen](../availability-zones/az-overview.md#regions-that-support-availability-zones). 
+     >Stellen Sie sicher, dass Sie Ihren Load Balancer und alle seine Ressourcen an einem Standort erstellen, der Verfügbarkeitszonen unterstützt. Weitere Informationen siehe [Regionen, die Verfügbarkeitszonen unterstützen](../availability-zones/az-overview.md#services-support-by-region). 
 
 3. Klicken Sie auf der Registerkarte **Überprüfen + erstellen** auf **Erstellen**.  
   

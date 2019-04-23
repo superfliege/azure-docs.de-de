@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a66969504dee5ba526cdccbbb39471ef5af971c0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 0e0c83d411242be38992dd763dea72eda70ffbf4
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439331"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006455"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und der REST-API
 
@@ -28,7 +28,7 @@ Der Zugriff auf Azure-Ressourcen wird mithilfe der [rollenbasierten Zugriffssteu
 
 ## <a name="list-access"></a>Auflisten des Zugriffs
 
-Zum Auflisten des Zugriffs in RBAC führen Sie die Rollenzuweisungen auf. Um Rollenzuweisungen aufzulisten, verwenden Sie eine der REST-APIs unter [Rollenzuweisungen – Auflisten](/rest/api/authorization/roleassignments/list). Um die Ergebnisse einzugrenzen, geben Sie einen Bereich und einen optionalen Filter an. Zum Aufrufen der API benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/read` für den angegebenen Bereich. Einigen [integrierten Rollen für Azure-Ressourcen](built-in-roles.md) wird der Zugriff auf diesen Vorgang gewährt.
+Zum Auflisten des Zugriffs in RBAC führen Sie die Rollenzuweisungen auf. Um Rollenzuweisungen aufzulisten, verwenden Sie eine der REST-APIs unter [Rollenzuweisungen – Auflisten](/rest/api/authorization/roleassignments/list). Um die Ergebnisse einzugrenzen, geben Sie einen Bereich und einen optionalen Filter an.
 
 1. Beginnen Sie mit der folgenden Anforderung:
 

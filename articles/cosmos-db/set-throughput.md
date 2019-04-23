@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/31/2019
 ms.author: rimman
-ms.openlocfilehash: 1f8bec6fbf0bce9a3ac272231058a96a5d9e84cc
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: ed3a171e60c078975de7003cdf599f0bac62c402
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762496"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004753"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>Bereitstellen des Durchsatzes für Container und Datenbanken
 
@@ -88,7 +88,7 @@ Sie können den Mindestdurchsatz eines Containers oder einer Datenbank programmg
 
 Bei Verwendung des .NET SDK ermöglicht Ihnen die [DocumentClient.ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet)-Methode das Abrufen des Mindestdurchsatzes eines Containers oder einer Datenbank. 
 
-Sie können den bereitgestellten Durchsatz eines Containers oder einer Datenbank jederzeit skalieren. Der Vorgang zum zentralen Herunterskalieren kann nach einer Leerlaufzeit von 4 Stunden ausgeführt werden. Die Leerlaufzeit ist als der Zeitraum definiert, in dem keine Vorgänge zur Angebotsersetzung (einschließlich Hoch- und Herunterskalieren) in einem Container oder einer Datenbank erfolgten. 
+Sie können den bereitgestellten Durchsatz eines Containers oder einer Datenbank jederzeit skalieren. 
 
 ## <a name="comparison-of-models"></a>Vergleich der Modelle
 

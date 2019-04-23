@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 04/17/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 2e04d86e7067db98c8399cfc3e202457b8f253d6
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 579a47e70f292222914723606d032737b98822bc
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351948"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004872"
 ---
 # <a name="computer-vision-api-frequently-asked-questions"></a>Häufig gestellte Fragen zur Maschinelles Sehen-API
 
@@ -37,28 +37,9 @@ ms.locfileid: "58351948"
 
 -----
 
-**Frage:** *Welche Sprachen werden für maschinelles Sehen unterstützt?*
-
-**Antwort:** Unterstützte Sprachen:
-
-| | | Unterstützte Sprachen | | |
-|---------------- |------------------ |------------------ |--------------------------- |--------------------
-| Dänisch (da-DK)  | Niederländisch (nl-NL)     | Englisch           | Finnisch (fi-FI)            |Französisch (fr-FR)
-| Deutsch (de-DE)  | Griechisch (el-GR)     | Ungarisch (hu-HU) | Italienisch (it-IT)            | Japanisch (ja-JP)
-| Koreanisch (ko-KR)  | Norwegisch (nb-NO) | Polnisch (pl-PL)    | Portugiesisch (pt-BR) (pt-PT) | Russisch (ru-RU)
-| Spanisch (es-ES)   | Schwedisch (sv-SV)     | Türkisch (tr-TR)   |                            |
-
------
-
 **Frage:** *Kann maschinelles Sehen zum Lesen von Kfz-Kennzeichen verwendet werden?*
 
 **Antwort:** Die Maschinelles Sehen-API bietet eine gute Texterkennung mit OCR, aber sie ist derzeit nicht für Kfz-Kennzeichen optimiert. Wir sind ständig bemüht, unseren Dienst zu verbessern und haben OCR zur automatischen Nummernschilderkennung in unsere Liste der Funktionswünsche aufgenommen.
-
------
-
-**Frage:** *Welche Sprachen werden für die Handschrifterkennung unterstützt?*
-
-**Antwort:** Derzeit wird nur Englisch unterstützt.
 
 -----
 
