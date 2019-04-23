@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/14/2018
 ms.author: tamram
-ms.openlocfilehash: 95b960245e00a353bb165e1f1d38db56bce62a8f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a1a931573967f12eb7abc791bd951dc6e1e9e60b
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57996731"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607397"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit Python
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Python Blockblobs in einem Container in Azure Blob Storage hochladen, herunterladen und auflisten. 
+In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Python Blockblobs in einem Container in Azure Blob Storage hochladen, herunterladen und auflisten. Bei Blobs handelt es sich lediglich um Objekte, die eine beliebige Menge an Text oder binären Daten (z. B. Bilder, Dokumente, Streamingmedien, Archivdaten usw.) enthalten und die in Azure Storage getrennt von Dateifreigaben, schemalosen Tabellen und Nachrichtenwarteschlangen vorliegen. (Weitere Informationen finden Sie unter [Einführung in Azure Storage](/azure/storage/common/storage-introduction.md).)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

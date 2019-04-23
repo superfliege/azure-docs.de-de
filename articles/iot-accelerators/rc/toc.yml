@@ -1,18 +1,11 @@
-items:
 - name: Azure
   tocHref: /azure/
   topicHref: /azure/index
   items:
-  - name: Internet der Dinge
-    tocHref: /azure/iot-fundamentals/
-    topicHref: /azure/iot-fundamentals/
-    items:
-    - name: IoT Solution Accelerators
+    - name: Internet der Dinge
       tocHref: /azure/iot-fundamentals/
-      topicHref: /azure/iot-accelerators/
-ms.openlocfilehash: f6174336e4043de5afaf40c85aa25099b93abdbe
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35762314"
+      topicHref: /azure/iot-fundamentals/
+      items:
+        - name: IoT Solution Accelerators
+          tocHref: /azure/iot-fundamentals/
+          topicHref: /azure/iot-accelerators/

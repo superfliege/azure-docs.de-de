@@ -1,6 +1,6 @@
 ---
 title: Schützen einer Einzel- oder Pooldatenbank in Azure SQL-Datenbank | Microsoft-Dokumentation
-description: Hier erfahren Sie mehr über die Methoden und Funktionen zum Schützen einer Einzeldatenbank oder einer in einem Pool zusammengefassten Datenbank in Azure SQL-Datenbank.
+description: In diesem Tutorial erfahren Sie mehr über die Methoden und Funktionen zum Schützen einer Einzeldatenbank oder einer in einem Pool zusammengefassten Datenbank in Azure SQL-Datenbank.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,14 +10,23 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: d6f14a7cdcb77c1ca47d0f79f587e0bf3606b5d5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.custom: seoapril2019
+ms.openlocfilehash: d09af0a4c2d09004d5c1bbf3261a14850eef7714
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57893270"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496436"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Tutorial: Schützen einer Einzel- oder Pooldatenbank
+
+In diesem Tutorial lernen Sie Folgendes:
+
+> [!div class="checklist"]
+> - Erstellen von Firewallregeln auf Server- und Datenbankebene
+> - Konfigurieren eines Azure AD-Administrators (Azure Active Directory)
+> - Verwalten des Benutzerzugriffs mit SQL-Authentifizierung, Azure AD-Authentifizierung und sicheren Verbindungszeichenfolgen
+> - Aktivieren von Sicherheitsfeatures (beispielsweise Advanced Data Security, Überwachung, Datenmaskierung und Verschlüsselung)
 
 Azure SQL-Datenbank bietet folgende Möglichkeiten, um Daten in einer Einzeldatenbank oder einer in einem Pool zusammengefassten Datenbank zu schützen:
 
@@ -28,14 +37,6 @@ Azure SQL-Datenbank bietet folgende Möglichkeiten, um Daten in einer Einzeldate
 
 > [!NOTE]
 > Eine Azure SQL-Datenbank in einer verwalteten Instanz wird mithilfe von Netzwerksicherheitsregeln und privaten Endpunkten geschützt, wie unter [Verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance-index.yml) und unter [Verbindungsarchitektur der verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-connectivity-architecture.md) beschrieben.
-
-Die Datenbanksicherheit lässt sich mit wenigen einfachen Schritten verbessern. In diesem Tutorial lernen Sie Folgendes:
-
-> [!div class="checklist"]
-> - Erstellen von Firewallregeln auf Server- und Datenbankebene
-> - Konfigurieren eines Azure AD-Administrators (Azure Active Directory)
-> - Verwalten des Benutzerzugriffs mit SQL-Authentifizierung, Azure AD-Authentifizierung und sicheren Verbindungszeichenfolgen
-> - Aktivieren von Sicherheitsfeatures (beispielsweise Advanced Data Security, Überwachung, Datenmaskierung und Verschlüsselung)
 
 Weitere Informationen finden Sie in den Artikeln [Azure SQL-Datenbank – Erweiterte Sicherheit](/azure/sql-database/sql-database-security-index) und [Eine Übersicht über die Sicherheitsfunktionen von Azure SQL-Datenbank](sql-database-security-overview.md).
 
@@ -142,7 +143,7 @@ Informationen zum Konfigurieren von Azure AD finden Sie hier:
 
 - [Was ist eine Hybrididentität?](../active-directory/hybrid/whatis-hybrid-identity.md)
 - [Hinzufügen Ihres benutzerdefinierten Domänennamens über das Azure Active Directory-Portal](../active-directory/active-directory-domains-add-azure-portal.md)
-- [Windows Azure now supports federation with Windows Server Active Directory](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/) (Microsoft Azure unterstützt jetzt die Verbunderstellung mit Windows Server AD)
+- [Microsoft Azure now supports federation with Windows Server Active Directory (Microsoft Azure unterstützt jetzt die Verbunderstellung mit Windows Server AD)](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)
 - [Verwalten Ihres Azure AD-Verzeichnisses](../active-directory/fundamentals/active-directory-administer.md)
 - [Übersicht über Azure PowerShell](/powershell/azure/overview?view=azureadps-2.0)
 - [Erforderliche Ports und Protokolle für die Hybrid-Identität](../active-directory/hybrid/reference-connect-ports.md)

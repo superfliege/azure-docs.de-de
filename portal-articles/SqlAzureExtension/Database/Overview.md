@@ -6,24 +6,24 @@ author: sewatson
 manager: lwelicki
 ms.service: sql-database
 ms.topic: article
-ms.date: 04/27/2017
-ms.author: sewatson
-ms.openlocfilehash: b41b4b7d302b0f3c528fa424627b4446a5e2c0ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/09/2019
+ms.author: ninarn
+ms.openlocfilehash: 99f19971eafaa1ddad1f96b187e18b79810560a2
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23073927"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545881"
 ---
 # <a name="sql-database-documentation"></a>SQL-Datenbank-Dokumentation
 
-Azure SQL-Datenbank ist eine relationale, auf Microsoft SQL Server basierende Database-as-a-Service-Lösung. SQL-Datenbank ist eine zuverlässige und sichere Hochleistungsdatenbank, mit der Sie datengesteuerte Anwendungen und Websites in der Programmiersprache Ihrer Wahl erstellen können, ohne dass eine Infrastruktur verwaltet werden muss. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie SQL-Datenbank verwenden.
+Azure SQL-Datenbank ist eine universelle relationale DBaaS-Lösung (Database-as-a-Service) und basiert auf der neuesten stabilen Version der Microsoft SQL Server-Datenbank-Engine. SQL-Datenbank ist eine zuverlässige und sichere Hochleistungs-Clouddatenbank, mit der Sie datengesteuerte Anwendungen und Websites in der Programmiersprache Ihrer Wahl erstellen können, ohne dass eine Infrastruktur verwaltet werden muss. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie SQL-Datenbank verwenden.
 
 ## <a name="5-minute-quickstarts"></a>Fünfminütige Schnellstarts
 
-Erfahren Sie, wie Sie eine SQL-Datenbank erstellen, sie mit SQL Management Studio verwalten und sie für die Entwicklung in C#, Java, Python, Node.js und Ruby nutzen:
+Mit Azure SQL-Datenbank können Sie über das Azure-Portal, über die Azure CLI und über Azure PowerShell ganz einfach grundlegende Verwaltungsaufgaben ausführen. Informationen zum Ausführen grundlegender Verwaltungsaufgaben finden Sie in den folgenden Schnellstartbeispielen:
 
-- [Azure-Portal](/azure/sql-database/sql-database-get-started-portal)
+- [Azure-Portal](/azure/sql-database/sql-database-single-database-get-started)
 - [Azure PowerShell](/azure/sql-database/sql-database-get-started-powershell)
 - [Azure-Befehlszeilenschnittstelle](/azure/sql-database/sql-database-get-started-cli)
 
@@ -31,8 +31,9 @@ Erfahren Sie, wie Sie eine SQL-Datenbank erstellen, sie mit SQL Management Studi
 
 Enthält Informationen dazu, wie Sie Datenbanken per SQL-Datenbank erstellen, verwalten und migrieren.
 
-- [Erstellen und Entwerfen des Schemas für eine neue SQL-Datenbank](/azure/sql-database/sql-database-design-first-database)
-- [Migrieren einer vorhandenen SQL Server-Datenbank zur Verwendung von Azure SQL-Datenbank](/azure/sql-database/sql-database-migrate-your-sql-server-database)
+- Ersten Schritte mit einer [einzelnen Datenbank](/azure/sql-database/sql-database-single-database-quickstart-guide) mithilfe unseres Schnellstarthandbuchs
+- Erstellen und Entwerfen des Schemas für eine neue Einzeldatenbank per [SSMS](/azure/sql-database/sql-database-design-first-database) oder [.NET](/azure/sql-database/sql-database-design-first-database-csharp)
+- Migrieren einer vorhandenen Datenbank zu Azure mithilfe des [Datenmigrations-Assistenten](/azure/dms/tutorial-sql-server-to-azure-sql) oder [durch Importieren einer BACPAC-Datei](/azure/sql-database/sql-database-import)
 - [Sichern Ihrer SQL-Datenbank](/azure/sql-database/sql-database-security-tutorial)
 - [Verbessern der Leistung der SQL-Datenbank](/azure/sql-database/sql-database-performance-tutorial)
 - [Implementieren einer mehrinstanzenfähigen SaaS-Anwendung mit SQL-Datenbank](/azure/sql-database/sql-database-multi-tenant-application)
@@ -41,7 +42,7 @@ Enthält Informationen dazu, wie Sie Datenbanken per SQL-Datenbank erstellen, ve
 
 - [Entwickeln mit .NET](https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02)
 
-## <a name="samples"></a>Beispiele 
+## <a name="samples"></a>Beispiele
 
 Suchen von Skripts zum Verwalten allgemeiner Aufgaben.
 

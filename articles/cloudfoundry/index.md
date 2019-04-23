@@ -12,11 +12,11 @@ ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: carolz
 ms.openlocfilehash: 850ed1418a8880e30273f62aec3b3420c41b2ef6
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44294516"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60198061"
 ---
 <div class="content">
     <h1>Cloud Foundry in Azure</h1>
@@ -33,7 +33,7 @@ Cloud Foundry ist eine Open Source-PaaS (Platform-as-a-Service) für die Erstell
   <li><a href="/azure/virtual-machines/linux/cloudfoundry-get-started">Erste Schritte mit Cloud Foundry in Azure</a></li>
   <li><a href="/azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app">Deploy Cloud Foundry App to Azure (Bereitstellen einer Cloud Foundry-App für Azure)</a></li>  
 </ol>
-<h2>angeben</h2>
+<h2>Ressourcen</h2>
 <p>Unter den folgenden Links finden Sie weiteres Referenzmaterial und weitere Tools für die Verwendung von Cloud Foundry in Azure:<p>
 <a href="https://pivotal.io/partners/microsoft">Pivotal Cloud Foundry on Azure (Pivotal Cloud Foundry in Azure)</a><br/>
 <a href="/azure/cloudfoundry/how-cloud-foundry-integrates-with-azure">Integrieren von Cloud Foundry in Azure</a><br/>

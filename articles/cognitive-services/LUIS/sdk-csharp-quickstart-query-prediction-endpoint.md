@@ -64,7 +64,7 @@ Erstellen Sie in Visual Studio Community 2017 ein .NET Core-Konsolenprojekt.
 
 ## <a name="add-sdk-with-nuget"></a>Hinzufügen des SDK mit NuGet
 
-1. Wählen Sie in der Strukturansicht des**** Projektmappen-Explorers das Projekt mit dem Namen **QueryPrediction** aus, und klicken Sie mit der rechten Maustaste darauf. Wählen Sie im Menü die Option **NuGet-Pakete verwalten...** aus.
+1. Wählen Sie in der Strukturansicht des **Projektmappen-Explorers** das Projekt mit dem Namen **QueryPrediction** aus, und klicken Sie mit der rechten Maustaste darauf. Wählen Sie im Menü die Option **NuGet-Pakete verwalten...** aus.
 1. Wählen Sie **Durchsuchen** aus, und geben Sie `Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime` ein. Wenn die Paketinformationen angezeigt werden, wählen Sie **Installieren** aus, um das Paket im Projekt zu installieren. 
 1. Fügen Sie am Anfang von **Program.cs** die folgenden _using_-Anweisungen hinzu. Behalten Sie die bereits vorhandene _using_-Anweisung für `System` bei. 
 

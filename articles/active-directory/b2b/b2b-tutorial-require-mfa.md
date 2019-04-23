@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 06/25/2018
+ms.date: 04/10/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celested
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94e5f4eaf32815dd0342ef73705efb2c575b71bc
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: d83cad9c6681a9d1c852c3d874028ceb6913344f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293991"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496623"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>Tutorial: Erzwingen der mehrstufigen Authentifizierung für B2B-Gastbenutzer
 
@@ -72,7 +72,7 @@ Für die Durchführung des Szenarios im Rahmen dieses Tutorials benötigen Sie F
 3.  Melden Sie sich ab.
 
 ## <a name="create-a-conditional-access-policy-that-requires-mfa"></a>Erstellen einer Richtlinie für bedingten Zugriff mit erforderlicher MFA
-1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
+1.  Melden Sie sich am [Azure-Portal](https://portal.azure.com/) als Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
 2.  Wählen Sie im Azure-Portal die Option **Azure Active Directory** aus. 
 3.  Wählen Sie auf der Seite **Azure Active Directory** im Abschnitt **Sicherheit** **Bedingter Zugriff** aus.
 4.  Wählen Sie auf der Seite **Bedingter Zugriff** in der Symbolleiste oben **Neue Richtlinie** aus.

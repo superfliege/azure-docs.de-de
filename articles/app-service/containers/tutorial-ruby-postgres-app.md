@@ -1,23 +1,23 @@
 ---
-title: 'Erstellen von Ruby-Apps mit Postgres unter Linux: Azure App Service | Microsoft-Dokumentation'
-description: Hier erhalten Sie Informationen zum Ausführen einer Ruby-App in Azure, die Sie mit einer PostgreSQL-Datenbank in Azure verbinden.
+title: 'Ruby (Rails) mit Postgres unter Linux: Azure App Service | Microsoft-Dokumentation'
+description: Hier erhalten Sie Informationen zum Ausführen einer Ruby-App in Azure, die Sie mit einer PostgreSQL-Datenbank in Azure verbinden. In diesem Tutorial wird Rails verwendet.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
-manager: cfowler
+manager: jeconnoc
 ms.service: app-service-web
 ms.workload: web
 ms.devlang: ruby
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: e42d9592d74e845410441097fa6082cfb3f4ac5e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 3ec19b1c564c09406ab1f29c38aef6332d80f8f1
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713878"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544687"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Erstellen einer Ruby- und Postgres-App in Azure App Service für Linux
 
@@ -65,7 +65,7 @@ Geben Sie `\q` ein, um den Postgres-Client zu beenden.
 Erstellen Sie einen Postgres Benutzer, der Datenbanken erstellen kann. Führen Sie dazu unter Verwendung des angemeldeten Linux-Benutzernamenn den folgenden Befehl aus:
 
 ```bash
-sudo -u postgres createuser -d <signed_in_user>
+sudo -u postgres createuser -d <signed-in-user>
 ```
 
 <a name="step2"></a>
@@ -125,10 +125,10 @@ In diesem Schritt erstellen Sie eine Postgres-Datenbank in [Azure Database for P
 
 Erstellen Sie mit dem Befehl [`az postgres server create`](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-create) einen PostgreSQL-Server.
 
-Führen Sie den folgenden Befehl in Cloud Shell aus, und ersetzen Sie den Platzhalter *\<postgres_server_name>* durch einen eindeutigen Servernamen. Der Servername muss in Azure über alle Server hinweg eindeutig sein. 
+Führen Sie den folgenden Befehl in Cloud Shell aus, und ersetzen Sie den Platzhalter *\<postgres-server-name>* durch einen eindeutigen Servernamen. Der Servername muss in Azure über alle Server hinweg eindeutig sein. 
 
 ```azurecli-interactive
-az postgres server create --location "West Europe" --resource-group myResourceGroup --name <postgres_server_name> --admin-user adminuser --admin-password My5up3r$tr0ngPa$w0rd! --sku-name GP_Gen4_2
+az postgres server create --location "West Europe" --resource-group myResourceGroup --name <postgres-server-name> --admin-user adminuser --admin-password My5up3r$tr0ngPa$w0rd! --sku-name GP_Gen4_2
 ```
 
 Nach dem Erstellen der Azure-Datenbank für den PostgreSQL-Server zeigt die Azure-Befehlszeilenschnittstelle Informationen wie im folgenden Beispiel an:
@@ -137,10 +137,10 @@ Nach dem Erstellen der Azure-Datenbank für den PostgreSQL-Server zeigt die Azur
 {
   "administratorLogin": "adminuser",
   "earliestRestoreDate": "2018-06-15T12:38:25.280000+00:00",
-  "fullyQualifiedDomainName": "<postgres_server_name>.postgres.database.azure.com",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgres_server_name>",
+  "fullyQualifiedDomainName": "<postgres-server-name>.postgres.database.azure.com",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.DBforPostgreSQL/servers/<postgres-server-name>",
   "location": "westeurope",
-  "name": "<postgres_server_name>",
+  "name": "<postgres-server-name>",
   "resourceGroup": "myResourceGroup",
   "sku": {
     "capacity": 2,
@@ -155,10 +155,10 @@ Nach dem Erstellen der Azure-Datenbank für den PostgreSQL-Server zeigt die Azur
 
 ### <a name="configure-server-firewall"></a>Konfigurieren der Serverfirewall
 
-Erstellen Sie in Cloud Shell mit dem Befehl [`az postgres server firewall-rule create`](/cli/azure/postgres/server/firewall-rule?view=azure-cli-latest#az-postgres-server-firewall-rule-create) eine Firewallregel für Ihren Postgres-Server, um Clientverbindungen zuzulassen. Wenn sowohl Start- als auch End-IP auf 0.0.0.0 festgelegt ist, wird die Firewall nur für andere Azure-Ressourcen geöffnet. Geben Sie für den Platzhalter *\<postgres_server_name>* einen eindeutigen Servernamen ein.
+Erstellen Sie in Cloud Shell mit dem Befehl [`az postgres server firewall-rule create`](/cli/azure/postgres/server/firewall-rule?view=azure-cli-latest#az-postgres-server-firewall-rule-create) eine Firewallregel für Ihren Postgres-Server, um Clientverbindungen zuzulassen. Wenn sowohl Start- als auch End-IP auf 0.0.0.0 festgelegt ist, wird die Firewall nur für andere Azure-Ressourcen geöffnet. Geben Sie für den Platzhalter *\<postgres-server-name>* einen eindeutigen Servernamen ein.
 
 ```azurecli-interactive
-az postgres server firewall-rule create --resource-group myResourceGroup --server <postgres_server_name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
+az postgres server firewall-rule create --resource-group myResourceGroup --server <postgres-server-name> --name AllowAllIps --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
 ```
 
 > [!TIP] 
@@ -167,10 +167,10 @@ az postgres server firewall-rule create --resource-group myResourceGroup --serve
 
 ### <a name="connect-to-production-postgres-server-locally"></a>Herstellen einer lokalen Verbindung mit dem Postgres-Produktionsserver
 
-Stellen Sie in Cloud Shell eine Verbindung mit dem Postgres-Server in Azure her. Verwenden Sie den Wert, den Sie zuvor für den Platzhalter _&lt;postgres_server_name>_ angegeben haben.
+Stellen Sie in Cloud Shell eine Verbindung mit dem Postgres-Server in Azure her. Verwenden Sie den Wert, den Sie zuvor für den Platzhalter _&lt;postgres-server-name>_ angegeben haben.
 
 ```bash
-psql -U adminuser@<postgres_server_name> -h <postgres_server_name>.postgres.database.azure.com postgres
+psql -U adminuser@<postgres-server-name> -h <postgres-server-name>.postgres.database.azure.com postgres
 ```
 
 Wenn Sie zur Eingabe eines Kennworts aufgefordert werden, verwenden Sie _My5up3r$tr0ngPa$w0rd!_, das Sie beim Erstellen des Datenbankservers angegeben haben.
@@ -188,7 +188,7 @@ CREATE DATABASE sampledb;
 Erstellen Sie einen Datenbankbenutzer mit dem Namen _railsappuser_, und weisen Sie ihm alle Berechtigungen in der Datenbank `sampledb` zu.
 
 ```sql
-CREATE USER railsappuser WITH PASSWORD 'MyPostgresAzure2017'; 
+CREATE USER railsappuser WITH PASSWORD 'MyPostgresAzure2017';
 GRANT ALL PRIVILEGES ON DATABASE sampledb TO railsappuser;
 ```
 
@@ -220,13 +220,13 @@ Speichern Sie die Änderungen.
 Legen Sie im lokalen Terminal die folgenden Umgebungsvariablen fest:
 
 ```bash
-export DB_HOST=<postgres_server_name>.postgres.database.azure.com
+export DB_HOST=<postgres-server-name>.postgres.database.azure.com
 export DB_DATABASE=sampledb 
-export DB_USERNAME=railsappuser@<postgres_server_name>
+export DB_USERNAME=railsappuser@<postgres-server-name>
 export DB_PASSWORD=MyPostgresAzure2017
 ```
 
-Führen Sie die Rails-Datenbankmigrationen mit den Produktionswerten aus, die Sie soeben konfiguriert haben, um die Tabellen in Ihrer Postgres-Datenbank in Azure Database for PostgreSQL zu erstellen. 
+Führen Sie die Rails-Datenbankmigrationen mit den Produktionswerten aus, die Sie soeben konfiguriert haben, um die Tabellen in Ihrer Postgres-Datenbank in Azure Database for PostgreSQL zu erstellen.
 
 ```bash
 rake db:migrate RAILS_ENV=production
@@ -247,8 +247,8 @@ rails secret
 Speichern Sie den geheimen Schlüssel für die jeweiligen Variablen, die von der Rails-Produktionsumgebung verwendet werden. Verwenden Sie der Einfachheit halber für beide Variablen den gleichen Schlüssel.
 
 ```bash
-export RAILS_MASTER_KEY=<output_of_rails_secret>
-export SECRET_KEY_BASE=<output_of_rails_secret>
+export RAILS_MASTER_KEY=<output-of-rails-secret>
+export SECRET_KEY_BASE=<output-of-rails-secret>
 ```
 
 Aktivieren Sie die Rails-Produktionsumgebung für die Bereitstellung von JavaScript- und CSS-Dateien.
@@ -302,15 +302,15 @@ In diesem Schritt stellen Sie die mit Postgres verbundene Rails-Anwendung in Azu
 
 Verwenden Sie in App Service den Befehl [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) in Cloud Shell, um Umgebungsvariablen als _App-Einstellungen_ festzulegen.
 
-Mit dem folgenden Cloud Shell-Befehl werden die App-Einstellungen `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` und `DB_PASSWORD` konfiguriert. Ersetzen Sie die Platzhalter _&lt;appname>_ und _&lt;postgres_server_name>_.
+Mit dem folgenden Cloud Shell-Befehl werden die App-Einstellungen `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` und `DB_PASSWORD` konfiguriert. Ersetzen Sie die Platzhalter _&lt;appname>_ und _&lt;postgres-server-name>_.
 
 ```azurecli-interactive
-az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DB_HOST="<postgres_server_name>.postgres.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="railsappuser@<postgres_server_name>" DB_PASSWORD="MyPostgresAzure2017"
+az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<postgres-server-name>.postgres.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="railsappuser@<postgres-server-name>" DB_PASSWORD="MyPostgresAzure2017"
 ```
 
 ### <a name="configure-rails-environment-variables"></a>Konfigurieren der Rails-Umgebungsvariablen
 
-Generieren Sie im lokalen Terminal einen neuen geheimen Schlüssel für die Rails-Produktionsumgebung in Azure.
+[Generieren Sie im lokalen Terminal ein neues Geheimnis](configure-language-ruby.md#set-secret_key_base-manually) für die Rails-Produktionsumgebung in Azure.
 
 ```bash
 rails secret
@@ -318,20 +318,20 @@ rails secret
 
 Konfigurieren Sie die für die Rails-Produktionsumgebung erforderlichen Variablen.
 
-Ersetzen Sie im folgenden Cloud Shell-Befehl die beiden _&lt;output_of_rails_secret>_-Platzhalter durch den neuen geheimen Schlüssel, den Sie im lokalen Terminal generiert haben.
+Ersetzen Sie im folgenden Cloud Shell-Befehl die beiden _&lt;output-of-rails-secret>_-Platzhalter durch den neuen geheimen Schlüssel, den Sie im lokalen Terminal generiert haben.
 
 ```azurecli-interactive
-az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings RAILS_MASTER_KEY="<output_of_rails_secret>" SECRET_KEY_BASE="<output_of_rails_secret>" RAILS_SERVE_STATIC_FILES="true" ASSETS_PRECOMPILE="true"
+az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings RAILS_MASTER_KEY="<output-of-rails-secret>" SECRET_KEY_BASE="<output-of-rails-secret>" RAILS_SERVE_STATIC_FILES="true" ASSETS_PRECOMPILE="true"
 ```
 
-`ASSETS_PRECOMPILE="true"` weist den Ruby-Standardcontainer an, bei jeder Git-Bereitstellung Ressourcen vorzukompilieren.
+`ASSETS_PRECOMPILE="true"` weist den Ruby-Standardcontainer an, bei jeder Git-Bereitstellung Ressourcen vorzukompilieren. Weitere Informationen finden Sie unter [Vorkompilieren von Ressourcen](configure-language-ruby.md#precompile-assets) und [Bereitstellen von statischen Ressourcen](configure-language-ruby.md#serve-static-assets).
 
 ### <a name="push-to-azure-from-git"></a>Übertragen von Git an Azure mithilfe von Push
 
 Fügen Sie im lokalen Terminal Ihrem lokalen Git-Repository eine Azure-Remoteinstanz hinzu.
 
 ```bash
-git remote add azure <paste_copied_url_here>
+git remote add azure <paste-copied-url-here>
 ```
 
 Führen Sie einen Pushvorgang an die Azure-Remoteinstanz durch, um die Ruby on Rails-Anwendung bereitzustellen. Sie werden zur Angabe des Kennworts aufgefordert, das Sie zuvor bei der Erstellung des Bereitstellungsbenutzers angegeben haben.
@@ -359,7 +359,7 @@ remote: Running deployment command...
 
 ### <a name="browse-to-the-azure-app"></a>Navigieren Sie zur Azure-App.
 
-Browsen Sie zu `http://<app_name>.azurewebsites.net`, und fügen Sie der Liste einige Aufgaben hinzu.
+Browsen Sie zu `http://<app-name>.azurewebsites.net`, und fügen Sie der Liste einige Aufgaben hinzu.
 
 ![In Azure App Service ausgeführte Ruby on Rails-App](./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png)
 
@@ -476,6 +476,10 @@ Wechseln Sie nach Abschluss des `git push`-Vorgangs zur Azure-App, und testen Si
 
 Wenn Sie Aufgaben hinzugefügt haben, werden sie in der Datenbank beibehalten. Bei Updates des Datenschemas bleiben vorhandene Daten erhalten.
 
+## <a name="stream-diagnostic-logs"></a>Streamen von Diagnoseprotokollen
+
+[!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
+
 ## <a name="manage-the-azure-app"></a>Verwalten der Azure-App
 
 Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um die erstellte App zu verwalten.
@@ -509,4 +513,9 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihrer App einen benutzerdefinierten DNS-Namen zuordnen.
 
 > [!div class="nextstepaction"]
-> [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service](../app-service-web-tutorial-custom-domain.md)
+> [Tutorial: Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service](../app-service-web-tutorial-custom-domain.md)
+
+Oder sehen Sie sich weitere Ressourcen an:
+
+> [!div class="nextstepaction"]
+> [Konfigurieren der Ruby-App](configure-language-ruby.md)

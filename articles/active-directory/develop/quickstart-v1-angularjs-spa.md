@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c508c402707663489fc383dccd958559df6b217f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6596d1d8251bafd1ff013961555b20475e3a06d3
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194681"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544939"
 ---
 # <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>Schnellstart: Erstellen einer AngularJS-Single-Page-Webanwendung für das An- und Abmelden mit Azure Active Directory
 
@@ -45,6 +45,9 @@ Zur Entwicklung einer vollständigen, funktionstüchtigen Anwendung müssen Sie 
 1. Registrieren Sie Ihre App in Azure AD.
 2. Installieren Sie die ADAL, und konfigurieren Sie die einseitige Anwendung.
 3. Verwenden Sie die ADAL, um Seiten in der einseitigen Anwendung zu schützen.
+
+> [!NOTE]
+> Wenn Sie die Anmeldung über persönliche Konten zusätzlich zu Geschäfts-, Schul- oder Unikonten aktivieren müssen, können Sie den *[Microsoft Identity Platform-Endpunkt](azure-ad-endpoint-comparison.md)* verwenden. Weitere Informationen finden Sie in [diesem JavaScript SPA-Tutorial](tutorial-v2-javascript-spa.md) und in [diesem Artikel](active-directory-v2-limitations.md), der eine Beschreibung des *Microsoft Identity Platform-Endpunkts* enthält. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

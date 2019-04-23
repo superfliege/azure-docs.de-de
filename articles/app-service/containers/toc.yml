@@ -1,236 +1,229 @@
-items:
 - name: App Service unter Linux – Dokumentation
   href: index.yml
 - name: Übersicht
   items:
-  - name: Informationen zu Web-Apps
-    href: ../overview.md
-  - name: Informationen zu App Service unter Linux
-    href: app-service-linux-intro.md
-  - name: Vergleich von Hostingoptionen
-    href: ../overview-compare.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Informationen zu Web-Apps
+      href: ../overview.md
+    - name: Informationen zu App Service unter Linux
+      href: app-service-linux-intro.md
+    - name: Vergleich von Hostingoptionen
+      href: ../overview-compare.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
 - name: Schnellstarts
-  items:
-  - name: Erstellen einer .NET Core-App
-    href: quickstart-dotnetcore.md
-  - name: Erstellen einer PHP-App
-    href: quickstart-php.md
-  - name: Erstellen einer Node.js-App
-    href: quickstart-nodejs.md
-  - name: Erstellen einer Java-App
-    href: quickstart-java.md
-  - name: Erstellen einer Python-App
-    href: quickstart-python.md
-  - name: Erstellen einer Ruby-App
-    href: quickstart-ruby.md
-  - name: Ausführen eines benutzerdefinierten Containers
-    href: quickstart-docker-go.md
-  - name: Erstellen einer App mit mehreren Containern
-    href: quickstart-multi-container.md
   expanded: true
+  items:
+    - name: Erstellen einer .NET Core-App
+      href: quickstart-dotnetcore.md
+    - name: Erstellen einer PHP-App
+      href: quickstart-php.md
+    - name: Erstellen einer Node.js-App
+      href: quickstart-nodejs.md
+    - name: Erstellen einer Java-App
+      href: quickstart-java.md
+    - name: Erstellen einer Python-App
+      href: quickstart-python.md
+    - name: Erstellen einer Ruby-App
+      href: quickstart-ruby.md
+    - name: Ausführen eines benutzerdefinierten Containers
+      href: quickstart-docker-go.md
+    - name: Erstellen einer App mit mehreren Containern
+      href: quickstart-multi-container.md
 - name: Lernprogramme
   items:
-  - name: App mit Datenbank
-    items:
-    - name: .NET Core mit SQL-Datenbank
-      href: tutorial-dotnetcore-sqldb-app.md
-    - name: Ruby mit Postgres
-      href: tutorial-ruby-postgres-app.md
-    - name: PHP mit MySQL
-      href: tutorial-php-mysql-app.md
-    - name: Node.js mit MongoDB
-      href: tutorial-nodejs-mongodb-app.md
-    - name: Python mit Postgres
-      href: tutorial-python-postgresql-app.md
-    - name: Java mit Spring Data
-      href: tutorial-java-spring-cosmosdb.md
-    - name: Java Enterprise mit Postgres
-      href: tutorial-java-enterprise-postgresql-app.md
-  - name: App mit mehreren Containern
-    href: tutorial-multi-container-app.md
-  - name: Ausführen eines Containers über ACR
-    href: tutorial-custom-docker-image.md
-  - name: Zuordnen einer benutzerdefinierten Domäne
-    href: ../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-  - name: Binden eines SSL-Zertifikats
-    href: ../app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-  - name: Hinzufügen von CDN
-    href: ../../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-  - name: Authentifizieren von Benutzern
-    href: tutorial-auth-aad.md
+    - name: App mit Datenbank
+      items:
+        - name: .NET Core mit SQL-Datenbank
+          href: tutorial-dotnetcore-sqldb-app.md
+        - name: Ruby mit Postgres
+          href: tutorial-ruby-postgres-app.md
+        - name: PHP mit MySQL
+          href: tutorial-php-mysql-app.md
+        - name: Node.js mit MongoDB
+          href: tutorial-nodejs-mongodb-app.md
+        - name: Python mit Postgres
+          href: tutorial-python-postgresql-app.md
+        - name: Java mit Spring Data
+          href: tutorial-java-spring-cosmosdb.md
+        - name: Java Enterprise mit Postgres
+          href: tutorial-java-enterprise-postgresql-app.md
+    - name: App mit mehreren Containern
+      href: tutorial-multi-container-app.md
+    - name: Ausführen eines Containers über ACR
+      href: tutorial-custom-docker-image.md
+    - name: Zuordnen einer benutzerdefinierten Domäne
+      href: ../app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Binden eines SSL-Zertifikats
+      href: ../app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Hinzufügen von CDN
+      href: ../../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Authentifizieren von Benutzern
+      href: tutorial-auth-aad.md
 - name: Beispiele
   items:
-  - name: Azure-Befehlszeilenschnittstelle
-    href: ../samples-cli.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-  - name: Azure PowerShell
-    href: ../samples-powershell.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Azure-Befehlszeilenschnittstelle
+      href: ../samples-cli.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Azure PowerShell
+      href: ../samples-powershell.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
 - name: Konzepte
   items:
-  - name: So funktioniert App Service
-    href: ../app-service-how-works-readme.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-  - name: App Service-Pläne
-    href: ../overview-hosting-plans.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-  - name: App Service-Umgebung
-    href: ../environment/intro.md
-  - name: Eingehende und ausgehende IPs
-    href: ../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-  - name: Authentifizierung und Autorisierung
-    href: ../overview-authentication-authorization.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-  - name: Auswählen des Bereitstellungstyps
-    href: choose-deployment-type.md
-  - name: Diagnose
-    href: ../overview-diagnostics.md
+    - name: So funktioniert App Service
+      href: ../app-service-how-works-readme.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: App Service-Pläne
+      href: ../overview-hosting-plans.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: App Service-Umgebung
+      href: ../environment/intro.md
+    - name: Eingehende und ausgehende IPs
+      href: ../overview-inbound-outbound-ips.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Authentifizierung und Autorisierung
+      href: ../overview-authentication-authorization.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Auswählen des Bereitstellungstyps
+      href: choose-deployment-type.md
+    - name: Diagnose
+      href: ../overview-diagnostics.md
 - name: Anleitungen
   items:
-  - name: Konfigurieren der App
-    items:
-    - name: Verwenden der App-Einstellungen
-      href: ../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Konfigurieren von ASP.NET Core
-      href: configure-language-dotnetcore.md
-    - name: Konfigurieren von Node.js
-      href: configure-language-nodejs.md
-    - name: Konfigurieren von PHP
-      href: configure-language-php.md
-    - name: Konfigurieren von Java
-      href: configure-language-java.md
-    - name: Konfigurieren von Python
-      href: how-to-configure-python.md
-    - name: Konfigurieren von Ruby
-      href: configure-language-ruby.md
-    - name: Konfigurieren eines benutzerdefinierten Containers
-      href: configure-custom-container.md
-    - name: Bereitstellen von Inhalten mit Storage
-      href: how-to-serve-content-from-azure-storage.md
-  - name: Bereitstellen in Azure
-    items:
-    - name: Bereitstellen der App
+    - name: Konfigurieren der App
       items:
-      - name: Bereitstellen über FTP
-        href: ../deploy-ftp.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-      - name: Bereitstellen über Cloudsynchronisierung
-        href: ../deploy-content-sync.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-      - name: Kontinuierliche Bereitstellung
-        href: ../containers/app-service-linux-ci-cd.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-      - name: Bereitstellen über lokales Git
-        href: ../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-      - name: Bereitstellen mit Vorlage
-        href: ../deploy-complex-application-predictably.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-      - name: Java SE mit Maven
-        href: https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Anmeldeinformationen für die Bereitstellung zurücksetzen
-      href: ../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Erstellen von Stagingumgebungen
-      href: ../deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-  - name: Zuordnen einer benutzerdefinierte Domäne
-    items:
-    - name: Kaufen einer Domäne
-      href: ../manage-custom-dns-buy-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Zuordnen von Domänen mithilfe von Traffic Manager
-      href: ../web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Migrieren einer aktiven Domäne
-      href: ../manage-custom-dns-migrate-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-  - name: Sichern der App
-    items:
-    - name: Kaufen eines SSL-Zertifikats
-      href: ../web-sites-purchase-ssl-web-site.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Authentifizieren von Benutzern
+        - name: Verwenden der App-Einstellungen
+          href: ../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+        - name: Konfigurieren von ASP.NET Core
+          href: configure-language-dotnetcore.md
+        - name: Konfigurieren von Node.js
+          href: configure-language-nodejs.md
+        - name: Konfigurieren von PHP
+          href: configure-language-php.md
+        - name: Konfigurieren von Java
+          href: configure-language-java.md
+        - name: Konfigurieren von Python
+          href: how-to-configure-python.md
+        - name: Konfigurieren von Ruby
+          href: configure-language-ruby.md
+        - name: Konfigurieren eines benutzerdefinierten Containers
+          href: configure-custom-container.md
+        - name: Bereitstellen von Inhalten mit Storage
+          href: how-to-serve-content-from-azure-storage.md
+    - name: Bereitstellen in Azure
       items:
-      - name: Authentifizierung über Azure AD
-        href: ../configure-authentication-provider-aad.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-      - name: Authentifizierung über Facebook
-        href: ../configure-authentication-provider-facebook.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-      - name: Authentifizierung über Google
-        href: ../configure-authentication-provider-google.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-      - name: Authentifizierung über Microsoft-Konto
-        href: ../configure-authentication-provider-microsoft.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-      - name: Authentifizierung über Twitter
-        href: ../configure-authentication-provider-twitter.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Erweiterte Authentifizierung
-      href: ../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Konfigurieren der gegenseitigen TLS-Authentifizierung
-      href: ../app-service-web-configure-tls-mutual-auth.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-  - name: Skalieren der App
-    items:
-    - name: Zentrales Hochskalieren der Serverkapazität
-      href: ../web-sites-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Horizontales Hochskalieren auf mehrere Instanzen
-      href: ../../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: High Density-Hosting
-      href: ../manage-scale-per-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-  - name: Überwachen der App
-    items:
-    - name: Herstellen einer Verbindung mit der App über SSH
-      href: app-service-linux-ssh-support.md
-    - name: Kontingente und Warnungen
-      href: ../web-sites-monitor.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Aktivieren von Protokollen
-      href: ../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-  - name: Verwalten der App
-    items:
-    - name: Sichern einer App
-      href: ../manage-backup.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Wiederherstellen einer Sicherung
-      href: ../web-sites-restore.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Klonen einer App
-      href: ../app-service-web-app-cloning.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Verschieben von Ressourcen
-      href: ../../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-service-limitations
+        - name: Bereitstellen der App
+          items:
+            - name: Bereitstellen über FTP
+              href: ../deploy-ftp.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+            - name: Bereitstellen über Cloudsynchronisierung
+              href: ../deploy-content-sync.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+            - name: Kontinuierliche Bereitstellung
+              href: ../containers/app-service-linux-ci-cd.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+            - name: Bereitstellen über lokales Git
+              href: ../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+            - name: Bereitstellen mit Vorlage
+              href: ../deploy-complex-application-predictably.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+            - name: Java SE mit Maven
+              href: 'https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json'
+        - name: Anmeldeinformationen für die Bereitstellung zurücksetzen
+          href: ../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+        - name: Erstellen von Stagingumgebungen
+          href: ../deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Zuordnen einer benutzerdefinierte Domäne
+      items:
+        - name: Kaufen einer Domäne
+          href: ../manage-custom-dns-buy-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+        - name: Zuordnen von Domänen mithilfe von Traffic Manager
+          href: ../web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+        - name: Migrieren einer aktiven Domäne
+          href: ../manage-custom-dns-migrate-domain.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Sichern der App
+      items:
+        - name: Kaufen eines SSL-Zertifikats
+          href: ../web-sites-purchase-ssl-web-site.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+        - name: Authentifizieren von Benutzern
+          items:
+            - name: Authentifizierung über Azure AD
+              href: ../configure-authentication-provider-aad.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+            - name: Authentifizierung über Facebook
+              href: ../configure-authentication-provider-facebook.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+            - name: Authentifizierung über Google
+              href: ../configure-authentication-provider-google.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+            - name: Authentifizierung über Microsoft-Konto
+              href: ../configure-authentication-provider-microsoft.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+            - name: Authentifizierung über Twitter
+              href: ../configure-authentication-provider-twitter.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+        - name: Erweiterte Authentifizierung
+          href: ../app-service-authentication-how-to.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+        - name: Konfigurieren der gegenseitigen TLS-Authentifizierung
+          href: ../app-service-web-configure-tls-mutual-auth.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Skalieren der App
+      items:
+        - name: Zentrales Hochskalieren der Serverkapazität
+          href: ../web-sites-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+        - name: Horizontales Hochskalieren auf mehrere Instanzen
+          href: ../../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+        - name: High Density-Hosting
+          href: ../manage-scale-per-app.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Überwachen der App
+      items:
+        - name: Herstellen einer Verbindung mit der App über SSH
+          href: app-service-linux-ssh-support.md
+        - name: Kontingente und Warnungen
+          href: ../web-sites-monitor.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+        - name: Aktivieren von Protokollen
+          href: ../troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Verwalten der App
+      items:
+        - name: Sichern einer App
+          href: ../manage-backup.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+        - name: Wiederherstellen einer Sicherung
+          href: ../web-sites-restore.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+        - name: Klonen einer App
+          href: ../app-service-web-app-cloning.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+        - name: Verschieben von Ressourcen
+          href: '../../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-service-limitations'
 - name: Verweis
   items:
-  - name: Azure-Befehlszeilenschnittstelle
-    href: /cli/azure/appservice
-  - name: Azure PowerShell
-    href: /powershell
-  - name: REST-API
-    href: /rest/api/appservice/
+    - name: Azure-Befehlszeilenschnittstelle
+      href: /cli/azure/appservice
+    - name: Azure PowerShell
+      href: /powershell
+    - name: REST-API
+      href: /rest/api/appservice/
 - name: Ressourcen
   items:
-  - name: App Service unter Linux – häufig gestellte Fragen
-    href: app-service-linux-faq.md
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/roadmap/
-  - name: Preise
-    href: https://azure.microsoft.com/pricing/details/app-service/
-  - name: Informationen zum Kontingent
-    href: ../../azure-subscription-service-limits.md#app-service-limits
-  - name: Dienstupdates
-    href: https://azure.microsoft.com/updates/?product=app-service
-  - name: Bewährte Methoden
-    href: ../app-service-best-practices.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-  - name: Beispiele
-    href: https://azure.microsoft.com/resources/samples/?service=app-service
-  - name: Videos
-    href: https://azure.microsoft.com/resources/videos/index/?services=app-service
-  - name: Cookbooks
-    items:
-    - name: Referenzarchitekturen
-      href: /azure/architecture/reference-architectures/app-service-web-app/
-    - name: Bereitstellungsskripts
-      href: https://azure.microsoft.com/documentation/scripts/
-  - name: Problembehandlung
-    items:
-    - name: Problembehandlung mit Visual Studio
-      href: ../troubleshoot-dotnet-visual-studio.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Problembehandlung von Node.js-Apps
-      href: ../app-service-web-nodejs-best-practices-and-troubleshoot-guide.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Problembehandlung bei HTTP 502 und 503
-      href: ../troubleshoot-http-502-http-503.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Behandeln von Leistungsproblemen
-      href: ../troubleshoot-performance-degradation.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-    - name: Häufig gestellte Fragen
+    - name: App Service unter Linux – häufig gestellte Fragen
+      href: app-service-linux-faq.md
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/app-service/'
+    - name: Informationen zum Kontingent
+      href: '../../azure-subscription-service-limits.md#app-service-limits'
+    - name: Dienstupdates
+      href: 'https://azure.microsoft.com/updates/?product=app-service'
+    - name: Bewährte Methoden
+      href: ../app-service-best-practices.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Beispiele
+      href: 'https://azure.microsoft.com/resources/samples/?service=app-service'
+    - name: Videos
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=app-service'
+    - name: Cookbooks
       items:
-      - name: Häufig gestellte Fragen zu Verfügbarkeit, Leistung und Anwendungen
-        href: ../faq-availability-performance-application-issues.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-      - name: Häufig gestellte Fragen zur Bereitstellung
-        href: ../faq-deployment.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-      - name: Häufig gestellte Fragen zu Open Source-Technologien
-        href: ../faq-open-source-technologies.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-      - name: Häufig gestellte Fragen zu Konfiguration und Verwaltung
-        href: ../faq-configuration-and-management.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-ms.openlocfilehash: 250501832c3daaeee9935c2796e6da9df3483e35
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544871"
+        - name: Referenzarchitekturen
+          href: /azure/architecture/reference-architectures/app-service-web-app/
+        - name: Bereitstellungsskripts
+          href: 'https://azure.microsoft.com/documentation/scripts/'
+    - name: Problembehandlung
+      items:
+        - name: Problembehandlung mit Visual Studio
+          href: ../troubleshoot-dotnet-visual-studio.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+        - name: Problembehandlung von Node.js-Apps
+          href: ../app-service-web-nodejs-best-practices-and-troubleshoot-guide.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+        - name: Problembehandlung bei HTTP 502 und 503
+          href: ../troubleshoot-http-502-http-503.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+        - name: Behandeln von Leistungsproblemen
+          href: ../troubleshoot-performance-degradation.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+        - name: Häufig gestellte Fragen
+          items:
+            - name: 'Häufig gestellte Fragen zu Verfügbarkeit, Leistung und Anwendungen'
+              href: ../faq-availability-performance-application-issues.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+            - name: Häufig gestellte Fragen zur Bereitstellung
+              href: ../faq-deployment.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+            - name: Häufig gestellte Fragen zu Open Source-Technologien
+              href: ../faq-open-source-technologies.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+            - name: Häufig gestellte Fragen zu Konfiguration und Verwaltung
+              href: ../faq-configuration-and-management.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json

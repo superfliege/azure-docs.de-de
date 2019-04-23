@@ -1,104 +1,97 @@
-items:
 - name: Resilienz mit Azure
   items:
-  - name: Featureseite für Resilienz mit Azure
-    href: https://azure.microsoft.com/features/resiliency
-  - name: Entwickeln robuster Anwendungen für Azure
-    href: https://docs.microsoft.com/azure/architecture/resiliency/
+    - name: Featureseite für Resilienz mit Azure
+      href: 'https://azure.microsoft.com/features/resiliency'
+    - name: Entwickeln robuster Anwendungen für Azure
+      href: 'https://docs.microsoft.com/azure/architecture/resiliency/'
 - name: Hochverfügbarkeit
   items:
-  - name: Hochverfügbarkeit für Azure-Anwendungen
-    href: https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications
-  - name: Dokumentation zu Verfügbarkeitszonen
-    items:
-    - name: Was sind Verfügbarkeitszonen?
-      href: az-overview.md
-    - name: Virtuelle Computer
+    - name: Hochverfügbarkeit für Azure-Anwendungen
+      href: 'https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications'
+    - name: Dokumentation zu Verfügbarkeitszonen
       items:
-      - name: Erstellen eines virtuellen Linux-Computers in einer Verfügbarkeitszone mit CLI
-        href: ../virtual-machines/linux/create-cli-availability-zone.md
-      - name: Erstellen eines virtuellen Windows-Computers in einer Verfügbarkeitszone mit PowerShell
-        href: ../virtual-machines/windows/create-powershell-availability-zone.md
-      - name: Erstellen eines virtuellen Windows-Computers in einer Verfügbarkeitszone mit dem Azure-Portal
-        href: ../virtual-machines/windows/create-portal-availability-zone.md
-    - name: Verwaltete Datenträger
-      items:
-      - name: Hinzufügen eines verwalteten Datenträgers in Verfügbarkeitszonen mit CLI
-        href: ../virtual-machines/linux/add-disk.md#use-managed-disks
-      - name: Hinzufügen eines verwalteten Datenträgers in Verfügbarkeitszonen mit PowerShell
-        href: ../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine
-    - name: VM-Skalierungsgruppen
-      items:
-      - name: Erstellen einer Skalierungsgruppe in einer Verfügbarkeitszone
-        href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md
-    - name: Load Balancer
-      items:
-      - name: Was ist der Lastenausgleich?
-        href: ../load-balancer/load-balancer-standard-overview.md
-      - name: Load Balancer Standard und Verfügbarkeitszonen
-        href: ../load-balancer/load-balancer-standard-availability-zones.md
-      - name: Erstellen eines zonenredundanten öffentlichen Lastenausgleichs im Standard-Tarif
-        href: ../load-balancer/load-balancer-get-started-internet-az-portal.md
-        items:
-        - name: Erstellen eines zonenredundanten öffentlichen Lastenausgleichs im Standard-Tarif (PowerShell)
-          href: ../load-balancer/load-balancer-get-started-internet-az-powershell.md
-        - name: Erstellen eines zonenredundanten öffentlichen Lastenausgleichs im Standard-Tarif (CLI)
-          href: ../load-balancer/load-balancer-get-started-internet-az-cli.md
-      - name: Erstellen eines zonalen öffentlichen Lastenausgleichs im Standard-Tarif
-        href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-portal.md
-        items:
-        - name: Erstellen eines zonalen öffentlichen Lastenausgleichs im Standard-Tarif (PowerShell)
-          href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-powershell.md
-        - name: Erstellen eines zonalen öffentlichen Lastenausgleichs im Standard-Tarif (CLI)
-          href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-cli.md
-      - name: Durchführen eines verfügbarkeitszonenübergreifenden Lastenausgleichs für virtuelle Computer
-        href: ../load-balancer/load-balancer-standard-public-availability-zones-portal.md
-        items:
-        - name: Lastenausgleich für virtuelle Computer über Verfügbarkeitszonen hinweg mit Azure (CLI)
-          href: ../load-balancer/load-balancer-standard-public-zone-redundant-cli.md
-    - name: Öffentliche IP-Adresse
-      href: ../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address
-    - name: SQL-Datenbank
-      items:
-      - name: Verfügbarkeitszonen mit SQL-Datenbank
-        href: ../sql-database/sql-database-high-availability.md#zone-redundant-configuration
-    - name: Storage
-      items:
-      - name: Zonenredundanter Speicher
-        href: ../storage/common/storage-redundancy-zrs.md
-    - name: Event Hubs
-      items:
-      - name: Georedundante Notfallwiederherstellung in Event Hubs
-        href: ../event-hubs/event-hubs-geo-dr.md#availability-zones-preview
-    - name: Service Bus
-      items:
-      - name: Georedundante Notfallwiederherstellung in Service Bus
-        href: ../service-bus-messaging/service-bus-geo-dr.md#availability-zones-preview
-    - name: VPN Gateway
-      items:
-      - name: Erstellen eines zonenredundanten Gateways für virtuelle Netzwerke
-        href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
-    - name: ExpressRoute
-      items:
-      - name: Erstellen eines zonenredundanten Gateways für virtuelle Netzwerke
-        href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+        - name: Was sind Verfügbarkeitszonen?
+          href: az-overview.md
+        - name: Virtuelle Computer
+          items:
+            - name: Erstellen eines virtuellen Linux-Computers in einer Verfügbarkeitszone mit CLI
+              href: ../virtual-machines/linux/create-cli-availability-zone.md
+            - name: Erstellen eines virtuellen Windows-Computers in einer Verfügbarkeitszone mit PowerShell
+              href: ../virtual-machines/windows/create-powershell-availability-zone.md
+            - name: Erstellen eines virtuellen Windows-Computers in einer Verfügbarkeitszone mit dem Azure-Portal
+              href: ../virtual-machines/windows/create-portal-availability-zone.md
+        - name: Verwaltete Datenträger
+          items:
+            - name: Hinzufügen eines verwalteten Datenträgers in Verfügbarkeitszonen mit CLI
+              href: '../virtual-machines/linux/add-disk.md#use-managed-disks'
+            - name: Hinzufügen eines verwalteten Datenträgers in Verfügbarkeitszonen mit PowerShell
+              href: '../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine'
+        - name: VM-Skalierungsgruppen
+          items:
+            - name: Erstellen einer Skalierungsgruppe in einer Verfügbarkeitszone
+              href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md
+        - name: Load Balancer
+          items:
+            - name: Was ist der Lastenausgleich?
+              href: ../load-balancer/load-balancer-standard-overview.md
+            - name: Load Balancer Standard und Verfügbarkeitszonen
+              href: ../load-balancer/load-balancer-standard-availability-zones.md
+            - name: Erstellen eines zonenredundanten öffentlichen Lastenausgleichs im Standard-Tarif
+              href: ../load-balancer/load-balancer-get-started-internet-az-portal.md
+              items:
+                - name: Erstellen eines zonenredundanten öffentlichen Lastenausgleichs im Standard-Tarif (PowerShell)
+                  href: ../load-balancer/load-balancer-get-started-internet-az-powershell.md
+                - name: Erstellen eines zonenredundanten öffentlichen Lastenausgleichs im Standard-Tarif (CLI)
+                  href: ../load-balancer/load-balancer-get-started-internet-az-cli.md
+            - name: Erstellen eines zonalen öffentlichen Lastenausgleichs im Standard-Tarif
+              href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-portal.md
+              items:
+                - name: Erstellen eines zonalen öffentlichen Lastenausgleichs im Standard-Tarif (PowerShell)
+                  href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-powershell.md
+                - name: Erstellen eines zonalen öffentlichen Lastenausgleichs im Standard-Tarif (CLI)
+                  href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-cli.md
+            - name: Durchführen eines verfügbarkeitszonenübergreifenden Lastenausgleichs für virtuelle Computer
+              href: ../load-balancer/load-balancer-standard-public-availability-zones-portal.md
+              items:
+                - name: Lastenausgleich für virtuelle Computer über Verfügbarkeitszonen hinweg mit Azure (CLI)
+                  href: ../load-balancer/load-balancer-standard-public-zone-redundant-cli.md
+        - name: Öffentliche IP-Adresse
+          href: '../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address'
+        - name: SQL-Datenbank
+          items:
+            - name: Verfügbarkeitszonen mit SQL-Datenbank
+              href: '../sql-database/sql-database-high-availability.md#zone-redundant-configuration'
+        - name: Storage
+          items:
+            - name: Zonenredundanter Speicher
+              href: ../storage/common/storage-redundancy-zrs.md
+        - name: Event Hubs
+          items:
+            - name: Georedundante Notfallwiederherstellung in Event Hubs
+              href: '../event-hubs/event-hubs-geo-dr.md#availability-zones-preview'
+        - name: Service Bus
+          items:
+            - name: Georedundante Notfallwiederherstellung in Service Bus
+              href: '../service-bus-messaging/service-bus-geo-dr.md#availability-zones-preview'
+        - name: VPN Gateway
+          items:
+            - name: Erstellen eines zonenredundanten Gateways für virtuelle Netzwerke
+              href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+        - name: ExpressRoute
+          items:
+            - name: Erstellen eines zonenredundanten Gateways für virtuelle Netzwerke
+              href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
 - name: Notfallwiederherstellung
   items:
-  - name: Von Azure Site Recovery
-    href: https://docs.microsoft.com/azure/site-recovery/
+    - name: Von Azure Site Recovery
+      href: 'https://docs.microsoft.com/azure/site-recovery/'
 - name: Azure Backup
   items:
-  - name: Verwenden von Azure Backup
-    href: https://docs.microsoft.com/azure/backup/
+    - name: Verwenden von Azure Backup
+      href: 'https://docs.microsoft.com/azure/backup/'
 - name: Ressourcen
   items:
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/roadmap/
-  - name: Azure-Regionen
-    href: https://azure.microsoft.com/regions/
-ms.openlocfilehash: 45a73ec4d5e3649be38133e5ce055f206ecf80ab
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58340675"
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Azure-Regionen
+      href: 'https://azure.microsoft.com/regions/'

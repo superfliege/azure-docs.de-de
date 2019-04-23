@@ -1,40 +1,33 @@
-items:
 - name: Cloud Foundry-Dokumentation
   href: index.md
 - name: Schnellstarts
-  items:
-  - name: Marketplace-Vorlage
-    href: https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry
   expanded: true
+  items:
+    - name: Marketplace-Vorlage
+      href: 'https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry'
 - name: Lernprogramme
   items:
-  - name: Erstellen einer CF-Instanz in Azure
-    href: /azure/cloudfoundry/create-cloud-foundry-on-azure
-  - name: Bereitstellen einer CF-App für Azure
-    href: /azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app
-  - name: Verwenden von OSBA mit einer App in PCF
-    href: /azure/cloudfoundry/use-osba-pcf-app
-  - name: Cloud Foundry in Azure
-    href: /azure/virtual-machines/linux/cloudfoundry-get-started
-  - name: Bereitstellen von Nozzle für CF OMS
-    href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
-  - name: Integrieren von Cloud Foundry in Azure
-    href: /azure/cloudfoundry/how-cloud-foundry-integrates-with-azure
+    - name: Erstellen einer CF-Instanz in Azure
+      href: /azure/cloudfoundry/create-cloud-foundry-on-azure
+    - name: Bereitstellen einer CF-App für Azure
+      href: /azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app
+    - name: Verwenden von OSBA mit einer App in PCF
+      href: /azure/cloudfoundry/use-osba-pcf-app
+    - name: Cloud Foundry in Azure
+      href: /azure/virtual-machines/linux/cloudfoundry-get-started
+    - name: Bereitstellen von Nozzle für CF OMS
+      href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
+    - name: Integrieren von Cloud Foundry in Azure
+      href: /azure/cloudfoundry/how-cloud-foundry-integrates-with-azure
 - name: Ressourcen
   items:
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/roadmap/
-  - name: Cloud Foundry-Website
-    href: https://docs.cloudfoundry.org/
-  - name: Installieren von CF in Azure
-    href: https://docs.pivotal.io/pivotalcf/1-11/customizing/pcf_azure.html
-  - name: Pivotal und Azure
-    href: https://pivotal.io/partners/microsoft
-  - name: Azure DevOps-Plug-In für CF
-    href: https://github.com/Microsoft/vsts-cloudfoundry
-ms.openlocfilehash: b702d42142bd809e678792f1f07a3e104f1e21c1
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229216"
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Cloud Foundry-Website
+      href: 'https://docs.cloudfoundry.org/'
+    - name: Installieren von CF in Azure
+      href: 'https://docs.pivotal.io/pivotalcf/1-11/customizing/pcf_azure.html'
+    - name: Pivotal und Azure
+      href: 'https://pivotal.io/partners/microsoft'
+    - name: Azure DevOps-Plug-In für CF
+      href: 'https://github.com/Microsoft/vsts-cloudfoundry'

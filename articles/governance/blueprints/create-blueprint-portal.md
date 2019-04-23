@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 598df72bf9c37b8687e2122813609e165ae8c2fa
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 28fef394ee400949f9911983bdbca41d6bfcb458
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260662"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505684"
 ---
 # <a name="define-and-assign-a-blueprint-in-the-portal"></a>Definieren und Zuweisen einer Blaupause im Portal
 
@@ -41,116 +41,117 @@ Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wi
 
    ![Erstellen einer Blaupause über die Seite „Blaupausendefinitionen“](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. Geben Sie einen **Namen der Blaupause** an, z. B. **MyBlueprint**. (Sie können maximal 48 Buchstaben und Zahlen verwenden, aber keine Leerzeichen oder Sonderzeichen.) Lassen Sie das Feld **Blaupausenbeschreibung** vorerst leer. 
-   
+1. Geben Sie einen **Namen der Blaupause** an, z. B. **MyBlueprint**. (Sie können maximal 48 Buchstaben und Zahlen verwenden, aber keine Leerzeichen oder Sonderzeichen.) Lassen Sie das Feld **Blaupausenbeschreibung** vorerst leer.
+
 1. Wählen Sie im Feld **Speicherort der Definition** die Auslassungspunkte auf der rechten Seite und dann die [Verwaltungsgruppe](../management-groups/overview.md) oder das Abonnement aus, in der bzw. dem Sie die Blaupause speichern möchten. Wählen Sie anschließend die Option **Auswählen**.
 
-1. Vergewissern Sie sich, dass die Informationen korrekt sind. Die Felder **Name der Blaupause** und **Speicherort der Definition** können später geändert werden. Wählen Sie anschließend **Weiter: Artefakte** oder oben auf der Seite die Registerkarte **Artefakte**.
+1. Vergewissern Sie sich, dass die Informationen korrekt sind. Die Felder **Name der Blaupause** und **Speicherort der Definition** können später geändert werden. Wählen Sie anschließend **Weiter: Artefakte** oder oben auf der Seite auf die Registerkarte **Artefakte**.
 
-1. Fügen Sie eine Rollenzuweisung auf der Abonnementebene hinzu: 
+1. Fügen Sie eine Rollenzuweisung auf der Abonnementebene hinzu:
 
-   a. Wählen Sie unter **Abonnement** die Zeile **+ Artefakt hinzufügen** aus. Auf der rechten Seite des Browsers wird das Fenster **Artefakt hinzufügen** geöffnet. 
-   
-   b. Wählen Sie unter **Artefakttyp** die Option **Rollenzuweisung**. 
-   
-   c. Wählen Sie unter **Rolle** die Option **Mitwirkender**. Behalten Sie für das Feld **Benutzer, App oder Gruppe hinzufügen** das Kontrollkästchen bei, mit dem ein dynamischer Parameter angegeben wird. 
-   
-   d. Wählen Sie **Hinzufügen**, um der Blaupause dieses Artefakt hinzuzufügen.
+   1. Wählen Sie unter **Abonnement** die Zeile **+ Artefakt hinzufügen** aus. Auf der rechten Seite des Browsers wird das Fenster **Artefakt hinzufügen** geöffnet.
+
+   1. Wählen Sie unter **Artefakttyp** die Option **Rollenzuweisung**.
+
+   1. Wählen Sie unter **Rolle** die Option **Mitwirkender**. Behalten Sie für das Feld **Benutzer, App oder Gruppe hinzufügen** das Kontrollkästchen bei, mit dem ein dynamischer Parameter angegeben wird.
+
+   1. Wählen Sie **Hinzufügen**, um der Blaupause dieses Artefakt hinzuzufügen.
 
    ![Rollenzuweisung für ein Blaupausenartefakt](./media/create-blueprint-portal/add-role-assignment.png)
 
    > [!NOTE]
    > Die meisten Artefakte unterstützen Parameter. Ein Parameter, dem während der Erstellung der Blaupause ein Wert zugewiesen wird, ist ein *statischer Parameter*. Wenn der Parameter während der Blaupausenzuweisung zugewiesen wird, ist er ein *dynamischer Parameter*. Weitere Informationen finden Sie unter [Blaupausenparameter](./concepts/parameters.md).
 
-1. Fügen Sie eine Richtlinienzuweisung auf der Abonnementebene hinzu: 
+1. Fügen Sie eine Richtlinienzuweisung auf der Abonnementebene hinzu:
 
-   a. Wählen Sie unterhalb des Artefakts für die Rollenzuweisung die Zeile **+ Artefakt hinzufügen** aus. 
-   
-   b. Wählen Sie **Richtlinienzuweisung** als **Artefakttyp** aus. 
-   
-   c. Ändern Sie **Typ** in **Integriert**. Geben Sie unter **Suche** den Suchbegriff **tag** ein. 
-   
-   d. Klicken Sie von **Suche** aus, damit die Filterung ausgeführt wird. Wählen Sie **Tag und dessen Standardwert auf Ressourcengruppen anwenden**. 
-   
-   e. Wählen Sie **Hinzufügen**, um der Blaupause dieses Artefakt hinzuzufügen.
+   1. Wählen Sie unterhalb des Artefakts für die Rollenzuweisung die Zeile **+ Artefakt hinzufügen** aus.
 
-1. Wählen Sie die Zeile der Richtlinienzuweisung **Tag und dessen Standardwert auf Ressourcengruppen anwenden** aus. 
+   1. Wählen Sie **Richtlinienzuweisung** als **Artefakttyp** aus.
+
+   1. Ändern Sie **Typ** in **Integriert**. Geben Sie unter **Suche** den Suchbegriff **tag** ein.
+
+   1. Klicken Sie von **Suche** aus, damit die Filterung ausgeführt wird. Wählen Sie **Tag und dessen Standardwert auf Ressourcengruppen anwenden**.
+
+   1. Wählen Sie **Hinzufügen**, um der Blaupause dieses Artefakt hinzuzufügen.
+
+1. Wählen Sie die Zeile der Richtlinienzuweisung **Tag und dessen Standardwert auf Ressourcengruppen anwenden** aus.
 
 1. Das Fenster zum Bereitstellen von Parametern für das Artefakt als Teil der Blaupausendefinition wird geöffnet und ermöglicht das Festlegen der Parameter für alle Zuweisungen (statische Parameter) basierend auf dieser Blaupause (anstatt während der Zuweisung (dynamische Parameter)). In diesem Beispiel werden bei der Blaupausenzuweisung dynamische Parameter verwendet. Behalten Sie daher die Standardwerte bei, und wählen Sie **Abbrechen**.
 
-1. Fügen Sie eine Ressourcengruppe auf der Abonnementebene hinzu: 
+1. Fügen Sie eine Ressourcengruppe auf der Abonnementebene hinzu:
 
-   a. Wählen Sie unter **Abonnement** die Zeile **+ Artefakt hinzufügen** aus. 
-   
-   b. Wählen Sie unter **Artefakttyp** die Option **Ressourcengruppe**. 
-   
-   c. Lassen Sie die Felder **Anzeigename für Artefakt**, **Ressourcengruppenname** und **Speicherort** leer, aber stellen Sie sicher, dass die Kontrollkästchen aller Eigenschaften aktiviert sind, um sie zu dynamischen Parametern zu machen. 
-   
-   d. Wählen Sie **Hinzufügen**, um der Blaupause dieses Artefakt hinzuzufügen.
+   1. Wählen Sie unter **Abonnement** die Zeile **+ Artefakt hinzufügen** aus.
 
-1. Fügen Sie unter der Ressourcengruppe eine Vorlage hinzu: 
+   1. Wählen Sie unter **Artefakttyp** die Option **Ressourcengruppe**.
 
-   a. Wählen Sie unter dem Eintrag **Ressourcengruppe** die Zeile **+ Artefakt hinzufügen** aus. 
-   
-   b. Wählen Sie unter **Artefakttyp** die Option **Azure Resource Manager-Vorlage**, legen Sie für **Anzeigename für Artefakt** die Option **StorageAccount** fest, und lassen Sie **Beschreibung** leer. 
-   
-   c. Fügen Sie auf der Registerkarte **Vorlage** im Editorfeld die folgende Resource Manager-Vorlage ein. Wählen Sie nach dem Einfügen der Vorlage die Registerkarte **Parameter**. Sie sehen, dass die Vorlagenparameter **storageAccountType** und **location** erkannt wurden. Jeder Parameter wurde automatisch erkannt und aufgefüllt, aber als dynamischer Parameter konfiguriert. 
-   
-   > [!IMPORTANT]
-   > Falls Sie die Vorlage importieren möchten, sollten Sie sicherstellen, dass die Datei nur JSON-Code und keinen HTML-Code enthält. Stellen Sie beim Verweisen auf eine URL in GitHub sicher, dass Sie **RAW** ausgewählt haben, um die reine JSON-Datei und nicht die mit HTML umschlossene Datei für die Anzeige auf GitHub zu erhalten. Wenn die importierte Vorlage kein reiner JSON-Code ist, tritt ein Fehler auf.
+   1. Lassen Sie die Felder **Anzeigename für Artefakt**, **Ressourcengruppenname** und **Speicherort** leer, aber stellen Sie sicher, dass die Kontrollkästchen aller Eigenschaften aktiviert sind, um sie zu dynamischen Parametern zu machen.
 
-   ```json
-   {
-       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-       "contentVersion": "1.0.0.0",
-       "parameters": {
-           "storageAccountType": {
-               "type": "string",
-               "defaultValue": "Standard_LRS",
-               "allowedValues": [
-                   "Standard_LRS",
-                   "Standard_GRS",
-                   "Standard_ZRS",
-                   "Premium_LRS"
-               ],
-               "metadata": {
-                   "description": "Storage Account type"
-               }
-           },
-           "location": {
-               "type": "string",
-               "defaultValue": "[resourceGroups('ResourceGroup').location]",
-               "metadata": {
-                   "description": "Location for all resources."
-               }
-           }
-       },
-       "variables": {
-           "storageAccountName": "[concat('store', uniquestring(resourceGroup().id))]"
-       },
-       "resources": [{
-           "type": "Microsoft.Storage/storageAccounts",
-           "name": "[variables('storageAccountName')]",
-           "location": "[parameters('location')]",
-           "apiVersion": "2018-07-01",
-           "sku": {
-               "name": "[parameters('storageAccountType')]"
-           },
-           "kind": "StorageV2",
-           "properties": {}
-       }],
-       "outputs": {
-           "storageAccountName": {
-               "type": "string",
-               "value": "[variables('storageAccountName')]"
-           }
-       }
-   }
-   ```
+   1. Wählen Sie **Hinzufügen**, um der Blaupause dieses Artefakt hinzuzufügen.
 
-   d. Deaktivieren Sie das Kontrollkästchen **storageAccountType**, und beachten Sie, dass die Dropdownliste nur Werte enthält, die in der Resource Manager-Vorlage unter **allowedValues** enthalten sind. Aktivieren Sie das Kästchen, um es wieder auf einen dynamischen Parameter zurückzusetzen. 
-   
-   e. Wählen Sie **Hinzufügen**, um der Blaupause dieses Artefakt hinzuzufügen.
+1. Fügen Sie unter der Ressourcengruppe eine Vorlage hinzu:
+
+   1. Wählen Sie unter dem Eintrag **Ressourcengruppe** die Zeile **+ Artefakt hinzufügen** aus.
+
+   1. Wählen Sie unter **Artefakttyp** die Option **Azure Resource Manager-Vorlage**, legen Sie für **Anzeigename für Artefakt** die Option **StorageAccount** fest, und lassen Sie **Beschreibung** leer.
+
+   1. Fügen Sie auf der Registerkarte **Vorlage** im Editorfeld die folgende Resource Manager-Vorlage ein.
+      Wählen Sie nach dem Einfügen der Vorlage die Registerkarte **Parameter**. Sie sehen, dass die Vorlagenparameter **storageAccountType** und **location** erkannt wurden. Jeder Parameter wurde automatisch erkannt und aufgefüllt, aber als dynamischer Parameter konfiguriert.
+
+      > [!IMPORTANT]
+      > Falls Sie die Vorlage importieren möchten, sollten Sie sicherstellen, dass die Datei nur JSON-Code und keinen HTML-Code enthält. Stellen Sie beim Verweisen auf eine URL in GitHub sicher, dass Sie **RAW** ausgewählt haben, um die reine JSON-Datei und nicht die mit HTML umschlossene Datei für die Anzeige auf GitHub zu erhalten. Wenn die importierte Vorlage kein reiner JSON-Code ist, tritt ein Fehler auf.
+
+      ```json
+      {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+              "storageAccountType": {
+                  "type": "string",
+                  "defaultValue": "Standard_LRS",
+                  "allowedValues": [
+                      "Standard_LRS",
+                      "Standard_GRS",
+                      "Standard_ZRS",
+                      "Premium_LRS"
+                  ],
+                  "metadata": {
+                      "description": "Storage Account type"
+                  }
+              },
+              "location": {
+                  "type": "string",
+                  "defaultValue": "[resourceGroup().location]",
+                  "metadata": {
+                      "description": "Location for all resources."
+                  }
+              }
+          },
+          "variables": {
+              "storageAccountName": "[concat('store', uniquestring(resourceGroup().id))]"
+          },
+          "resources": [{
+              "type": "Microsoft.Storage/storageAccounts",
+              "name": "[variables('storageAccountName')]",
+              "location": "[parameters('location')]",
+              "apiVersion": "2018-07-01",
+              "sku": {
+                  "name": "[parameters('storageAccountType')]"
+              },
+              "kind": "StorageV2",
+              "properties": {}
+          }],
+          "outputs": {
+              "storageAccountName": {
+                  "type": "string",
+                  "value": "[variables('storageAccountName')]"
+              }
+          }
+      }
+      ```
+
+   1. Deaktivieren Sie das Kontrollkästchen **storageAccountType**, und beachten Sie, dass die Dropdownliste nur Werte enthält, die in der Resource Manager-Vorlage unter **allowedValues** enthalten sind. Aktivieren Sie das Kästchen, um es wieder auf einen dynamischen Parameter zurückzusetzen.
+
+   1. Wählen Sie **Hinzufügen**, um der Blaupause dieses Artefakt hinzuzufügen.
 
    ![Resource Manager-Vorlage für das Blaupausenartefakt](./media/create-blueprint-portal/add-resource-manager-template.png)
 
@@ -172,16 +173,16 @@ Unter [Erstellen einer Blaupause](#create-a-blueprint) haben Sie keine Beschreib
 
 1. Wählen Sie **Weiter: Artefakte** oder oben auf der Seite auf die Registerkarte **Artefakte**.
 
-1. Fügen Sie eine Rollenzuweisung unter der Ressourcengruppe hinzu: 
+1. Fügen Sie eine Rollenzuweisung unter der Ressourcengruppe hinzu:
 
-   a. Wählen Sie direkt unter dem Eintrag **Ressourcengruppe** die Zeile **+ Artefakt hinzufügen** aus. 
-   
-   b. Wählen Sie unter **Artefakttyp** die Option **Rollenzuweisung**. 
-   
-   c. Wählen Sie unter **Rolle** die Option **Besitzer**, und deaktivieren Sie das Kontrollkästchen unterhalb des Felds **Benutzer, App oder Gruppe hinzufügen**. 
-   
-   d. Suchen Sie nach einem Benutzer, einer App oder einer Gruppe, und wählen Sie den Eintrag aus, der hinzugefügt werden soll. Dieses Artefakt verwendet einen statischen Parameter, der in jeder Zuordnung dieser Blaupause auf den gleichen Wert festgelegt wird. 
-   
+   1. Wählen Sie direkt unter dem Eintrag **Ressourcengruppe** die Zeile **+ Artefakt hinzufügen** aus.
+
+   1. Wählen Sie unter **Artefakttyp** die Option **Rollenzuweisung**.
+
+   1. Wählen Sie unter **Rolle** die Option **Besitzer**, und deaktivieren Sie das Kontrollkästchen unterhalb des Felds **Benutzer, App oder Gruppe hinzufügen**.
+
+   1. Suchen Sie nach einem Benutzer, einer App oder einer Gruppe, und wählen Sie den Eintrag aus, der hinzugefügt werden soll. Dieses Artefakt verwendet einen statischen Parameter, der in jeder Zuordnung dieser Blaupause auf den gleichen Wert festgelegt wird.
+
    e. Wählen Sie **Hinzufügen**, um der Blaupause dieses Artefakt hinzuzufügen.
 
    ![Zweite Rollenzuweisung für das Blaupausenartefakt](./media/create-blueprint-portal/add-role-assignment-2.png)
@@ -217,15 +218,15 @@ Nach dem Veröffentlichen einer Blaupause kann sie einem Abonnement zugewiesen w
 
    Falls unterstützte Enterprise-Angebote der [Azure-Abrechnungsverwaltung](../../billing/index.md) vorhanden sind, wird unter dem Feld **Abonnement** der Link **Neu erstellen** aktiviert. Folgen Sie diesen Schritten:
 
-   a. Wählen Sie den Link **Neu erstellen**, um ein neues Abonnement zu erstellen (anstatt ein vorhandenes auszuwählen).
+   1. Wählen Sie den Link **Neu erstellen**, um ein neues Abonnement zu erstellen (anstatt ein vorhandenes auszuwählen).
 
-   b. Geben Sie einen **Anzeigenamen** für das neue Abonnement an.
+   1. Geben Sie einen **Anzeigenamen** für das neue Abonnement an.
 
-   c. Wählen Sie in der Dropdownliste das verfügbare **Angebot** aus.
+   1. Wählen Sie in der Dropdownliste das verfügbare **Angebot** aus.
 
-   d. Verwenden Sie die Auslassungspunkte zum Auswählen der [Verwaltungsgruppe](../management-groups/index.md), der das Abonnement untergeordnet werden soll.
+   1. Verwenden Sie die Auslassungspunkte zum Auswählen der [Verwaltungsgruppe](../management-groups/index.md), der das Abonnement untergeordnet werden soll.
 
-   e. Wählen Sie am unteren Rand der Seite die Option **Erstellen**.
+   1. Wählen Sie am unteren Rand der Seite die Option **Erstellen**.
 
    ![Erstellen eines Abonnements für eine Blaupausenzuweisung](./media/create-blueprint-portal/assignment-create-subscription.png)
 
@@ -254,7 +255,8 @@ Nach dem Veröffentlichen einer Blaupause kann sie einem Abonnement zugewiesen w
 1. Geben Sie für **ResourceGroup** unter **Name** den Namen **StorageAccount** und unter **Standort** den Standort **USA, Osten 2** aus der Dropdownliste ein.
 
    > [!NOTE]
-   > Jedes Artefakt, das Sie während der Blaupausendefinition unter der Ressourcengruppe hinzugefügt haben, wird eingerückt, um es an der Ressourcengruppe oder dem Objekt auszurichten, mit der bzw. dem Sie es bereitstellen. Artefakte, die entweder keine Parameter verwenden oder für die bei der Zuweisung keine Parameter definiert werden, werden lediglich als Kontextinformationen aufgelistet.
+   > Jedes Artefakt, das Sie während der Blaupausendefinition unter der Ressourcengruppe hinzugefügt haben, wird eingerückt, um es an der Ressourcengruppe oder dem Objekt auszurichten, mit der bzw. dem Sie es bereitstellen.
+   > Artefakte, die entweder keine Parameter verwenden oder für die bei der Zuweisung keine Parameter definiert werden, werden lediglich als Kontextinformationen aufgelistet.
 
 1. Wählen Sie in der Azure Resource Manager-Vorlage **StorageAccount** für den Parameter **storageAccountType** die Option **Standard_GRS**.
 
@@ -294,7 +296,8 @@ Entfernen Sie eine Blaupausenzuweisung aus einem Abonnement, wenn Sie sie nicht 
 1. Klicken Sie mit der rechten Maustaste auf die Blaupause, die Sie löschen möchten, und wählen Sie **Blaupause löschen**. Wählen Sie anschließend im Bestätigungsdialogfeld die Option **Ja**.
 
 > [!NOTE]
-> Wenn eine Blaupause auf diese Weise gelöscht wird, werden auch alle veröffentlichten Versionen der ausgewählten Blaupause gelöscht. Öffnen Sie zum Löschen einer einzelnen Version die Blaupause, wählen Sie die Registerkarte **Veröffentlichte Versionen**, und wählen Sie die gewünschte Version aus. Wählen Sie dann die Option **Diese Version löschen**. Eine Blaupause kann außerdem erst gelöscht werden, nachdem Sie alle Blaupausenzuweisungen der betreffenden Blaupausendefinition gelöscht haben.
+> Wenn eine Blaupause auf diese Weise gelöscht wird, werden auch alle veröffentlichten Versionen der ausgewählten Blaupause gelöscht.
+> Öffnen Sie zum Löschen einer einzelnen Version die Blaupause, wählen Sie die Registerkarte **Veröffentlichte Versionen**, und wählen Sie die gewünschte Version aus. Wählen Sie dann die Option **Diese Version löschen**. Eine Blaupause kann außerdem erst gelöscht werden, nachdem Sie alle Blaupausenzuweisungen der betreffenden Blaupausendefinition gelöscht haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

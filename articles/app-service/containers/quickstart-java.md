@@ -4,7 +4,7 @@ description: In dieser Schnellstartanleitung stellen Sie in wenigen Minuten Ihre
 services: app-service\web
 documentationcenter: ''
 author: msangapu
-manager: cfowler
+manager: jeconnoc
 editor: ''
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.service: app-service-web
@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 12/10/2018
+ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 4b95c75b863cdc86dd8a1ebe8347b77b637b110c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: af1256b4432e42f91209b622239ca55901929a1b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999105"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544737"
 ---
 # <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>Schnellstart: Erstellen einer Java-App in App Service unter Linux
 
@@ -99,17 +99,15 @@ Navigieren Sie nach Abschluss der Bereitstellung zur bereitgestellten Anwendung,
 
 **Glückwunsch!** Sie haben Ihre erste Java-App für App Service unter Linux bereitgestellt.
 
-
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie mit Maven eine Java-App erstellt, das [Maven-Plug-In für Azure-Web-Apps](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) konfiguriert und anschließend eine in einem Webarchiv verpackte Java-App in App Service unter Linux bereitgestellt. In den folgenden Tutorials und Anleitungen finden Sie weitere Informationen zum Hosten von Java-Anwendungen in App Serivce für Linux.
+> [!div class="nextstepaction"]
+> [Tutorial: Java-Unternehmens-App mit PostgreSQL](tutorial-java-enterprise-postgresql-app.md)
 
-- [Tutorial: Bereitstellen einer Java-Unternehmens-App mit PostgreSQL](tutorial-java-enterprise-postgresql-app.md)
-- [Konfigurieren einer Tomcat-Datenquelle](app-service-linux-java.md#tomcat)
-- [CI/CD mit Jenkins](/azure/jenkins/deploy-jenkins-app-service-plugin)
-- [Einrichten der Tools zur Überwachung der Anwendungsleistung](how-to-java-apm-monitoring.md)
-- [Java-Entwicklerleitfaden für App Service für Linux](app-service-linux-java.md)
+> [!div class="nextstepaction"]
+> [Konfigurieren der Java-App](configure-custom-container.md)
 
+> [!div class="nextstepaction"]
+> [CI/CD mit Jenkins](/azure/jenkins/deploy-jenkins-app-service-plugin)

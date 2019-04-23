@@ -1,5 +1,5 @@
 ---
-title: Was ist die OPC UA-Geräteverwaltung von Azure IoT? | Microsoft-Dokumentation
+title: Was ist OPC Twin? – Azure | Microsoft-Dokumentation
 description: Übersicht über OPC-Zwilling
 author: dominicbetts
 ms.author: dobett
@@ -8,15 +8,16 @@ ms.topic: overview
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 3bbc20aa61faafb1405fa756b334bae05ec4129b
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 9daf1a7e58af23cb78705691217bf9709359c4d5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759716"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496810"
 ---
 # <a name="what-is-azure-iot-open-platform-communications-opc-device-management"></a>Was ist die OPC-Geräteverwaltung (Open Platform Communications) von Azure IoT?
-Die OPC UA-Geräteverwaltung von Azure IoT wird auch als OPC-Zwilling bezeichnet und umfasst Microservices, die über Azure IoT Edge und IoT Hub eine Verbindung zwischen Cloud und Fabriknetzwerk herstellen. OPC-Zwilling bietet Erkennungs- und Registrierungsfunktionen und ermöglicht die Fernsteuerung von Industriegeräten über Rest-APIs. OPC-Zwilling erfordert kein OPC UA SDK (Unified Architecture), ist unabhängig von der Programmiersprache und kann in einen serverlosen Workflow integriert werden. In diesem Artikel werden einige Anwendungsfälle für OPC-Zwilling beschrieben.
+
+OPC Twin umfasst Microservices, die über Azure IoT Edge und IoT Hub eine Verbindung zwischen der Cloud und dem Fabriknetzwerk herstellen. OPC-Zwilling bietet Erkennungs- und Registrierungsfunktionen und ermöglicht die Fernsteuerung von Industriegeräten über Rest-APIs. OPC-Zwilling erfordert kein OPC UA SDK (Unified Architecture), ist unabhängig von der Programmiersprache und kann in einen serverlosen Workflow integriert werden. In diesem Artikel werden einige Anwendungsfälle für OPC-Zwilling beschrieben.
 
 ## <a name="discovery-and-control"></a>Ermittlung und Steuerung
 OPC-Zwilling ermöglicht eine einfache Ermittlung und Registrierung.
@@ -41,4 +42,4 @@ OPC -Zwilling kann über REST-APIs mit Anwendungen in einer beliebigen Programm
 Nachdem Sie sich hier über OPC-Zwilling und entsprechende Verwendungsmöglichkeiten informiert haben, können Sie mit dem nächsten Thema fortfahren:
 
 > [!div class="nextstepaction"]
-> [OPC Twin-Architektur](overview-opc-twin-architecture.md)
+> [Was ist ein OPC-Tresor?](overview-opc-twin-architecture.md)

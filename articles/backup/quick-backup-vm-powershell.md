@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 03/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 00ec813aec37697526233532b75ba6c55bf852c2
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 850fce4e04ce07a323e830d2daf74ea1a324f1a0
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58906071"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489381"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Sichern eines virtuellen Computers in Azure mit PowerShell
 
@@ -29,7 +29,7 @@ Für diese Schnellstartanleitung ist Version 1.0.0 oder höher des Azure PowerSh
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="log-in-and-register"></a>Anmeldung und Registrierung
+## <a name="sign-in-and-register"></a>Anmeldung und Registrierung
 
 1. Melden Sie sich mit dem Befehl `Connect-AzAccount` bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
 
@@ -53,7 +53,7 @@ Beachten Sie beim Erstellen des Tresors die folgenden Punkte:
 - Wenn Sie dieses [Beispielskript](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) zum Erstellen des virtuellen Computers (Virtual Machine, VM) verwendet haben, heißt die Ressourcengruppe **myResourceGroup**, der VM **myVM**, und die Ressourcen befinden sich in der Region **WestEurope**.
 - Azure Backup übernimmt automatisch die Speicherung der gesicherten Daten. Der Tresor verwendet standardmäßig den [georedundanten Speicher (GRS)](../storage/common/storage-redundancy-grs.md). Durch Georedundanz wird sichergestellt, dass die gesicherten Daten in einer sekundären Azure-Region repliziert werden, die Hunderte von Kilometern von der primären Region entfernt ist.
 
-Erstellen Sie jetzt einen Tresor.
+Erstellen Sie jetzt einen Tresor:
 
 
 1. Verwenden Sie das Cmdlet [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault), um den Tresor zu erstellen:
@@ -162,7 +162,7 @@ Wenn der virtuelle Computer nicht mehr gesichert werden muss, können Sie ihn be
 - Wenn Sie den virtuellen Computer wiederherstellen möchten, überspringen Sie die Bereinigung.
 - Wenn Sie einen vorhandenen virtuellen Computer verwendet haben, können Sie das letzte Cmdlet [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) überspringen, um die Ressourcengruppe und den VM beizubehalten.
 
-Deaktivieren Sie den Schutz, entfernen Sie die Wiederherstellungspunkte und den Tresor. Löschen Sie dann die Ressourcengruppe und die zugehörigen VM-Ressourcen wie folgt:
+Deaktivieren Sie den Schutz, und entfernen Sie die Wiederherstellungspunkte und den Tresor. Löschen Sie anschließend die Ressourcengruppe und die zugehörigen VM-Ressourcen wie folgt:
 
 ```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $item -RemoveRecoveryPoints

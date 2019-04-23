@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: cdd852e56cf966371cda62f89cee62956551f5c0
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 9eab8a29db40118f2a15064c52419ecebcd4aecb
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313106"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490318"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Ermitteln und Bewerten lokaler virtueller VMware-Computer für die Migration zu Azure
 
@@ -56,7 +56,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 4. Erstellen Sie eine neue Ressourcengruppe.
 5. Geben Sie die Region an, in der das Projekt erstellt werden soll, und klicken Sie dann auf **Erstellen**. Sie können ein Azure Migrate-Projekt nur in den folgenden geografischen Regionen erstellen. Sie können Ihre Migration jedoch trotzdem für jeden beliebigen Zielort von Azure planen. Die für das Projekt angegebene Region wird nur zum Speichern der Metadaten verwendet, die von den lokalen VMs erfasst werden.
 
-**Geografie** | **Speicherort**
+**Gebiet** | **Speicherort**
 --- | ---
 Azure Government | US Government, Virginia
 Asien | Asien, Südosten
@@ -194,6 +194,9 @@ Importieren Sie die heruntergeladene Datei auf den vCenter Server.
     - Geben Sie den Namen (FQDN) oder die IP-Adresse des vCenter-Servers an.
     - Geben Sie unter **Benutzername** und **Kennwort** die Anmeldeinformationen für das schreibgeschützte Konto an, über das der Collector virtuelle Computer auf dem vCenter-Server ermittelt.
     - Wählen Sie unter **Sammlungsbereich** einen Bereich für die Ermittlung virtueller Computer aus. Der Collector kann nur virtuelle Computer innerhalb des angegebenen Bereichs ermitteln. Der Bereich kann auf einen bestimmten Ordner, ein Rechenzentrum oder einen Cluster festgelegt werden. Er sollte nicht mehr als 1500 VMs umfassen. [Erfahren Sie mehr](how-to-scale-assessment.md) über die Möglichkeiten zum Erkennen einer größeren Umgebung.
+
+       > [!NOTE]
+       > Im **Sammlungsbereich** sind nur Ordner von Hosts und Clustern aufgeführt. Ordner von virtuellen Computern können nicht direkt als Sammlungsbereich ausgewählt werden. Die Ermittlung ist aber mit einem vCenter-Konto möglich, für das Zugriff auf die einzelnen virtuellen Computer besteht. [Erfahren Sie mehr](https://docs.microsoft.com/azure/migrate/how-to-scale-assessment#set-up-permissions) zur Bereichseinteilung eines Ordners mit virtuellen Computern.
 
 7. Geben Sie unter **Migrationsprojekt angeben** die ID und den Schlüssel für das Azure Migrate-Projekt an, die sie im Portal kopiert haben. Wenn Sie diese Angaben nicht kopiert haben, öffnen Sie das Azure-Portal über den virtuellen Collectorcomputer. Klicken Sie auf der Seite **Übersicht** des Projekts auf **Computer ermitteln**, und kopieren Sie die Werte.  
 8. Überwachen Sie in **Sammlungsfortschritt anzeigen** den Ermittlungsstatus. [Erfahren Sie mehr](https://docs.microsoft.com/azure/migrate/concepts-collector) über die vom Azure Migrate-Collector gesammelten Daten.

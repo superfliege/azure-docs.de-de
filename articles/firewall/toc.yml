@@ -1,84 +1,77 @@
-items:
 - name: Azure Firewall-Dokumentation
   href: index.yml
 - name: Übersicht
   items:
-  - name: Was ist Azure Firewall?
-    href: overview.md
+    - name: Was ist Azure Firewall?
+      href: overview.md
 - name: Lernprogramme
-  items:
-  - name: Bereitstellen und konfigurieren
-    href: tutorial-firewall-deploy-portal.md
-  - name: Bereitstellen in einem Hybridnetzwerk
-    href: tutorial-hybrid-ps.md
-  - name: Filtern von eingehendem Datenverkehr mit DNAT
-    href: tutorial-firewall-dnat.md
-  - name: Diagnoseprotokolle überwachen
-    href: tutorial-diagnostics.md
   expanded: true
+  items:
+    - name: Bereitstellen und konfigurieren
+      href: tutorial-firewall-deploy-portal.md
+    - name: Bereitstellen in einem Hybridnetzwerk
+      href: tutorial-hybrid-ps.md
+    - name: Filtern von eingehendem Datenverkehr mit DNAT
+      href: tutorial-firewall-dnat.md
+    - name: Diagnoseprotokolle überwachen
+      href: tutorial-diagnostics.md
 - name: Beispiele
   items:
-  - name: Azure PowerShell
-    href: sample-powershell.md
-  - name: Azure Monitor-Protokolle
-    href: log-analytics-samples.md
+    - name: Azure PowerShell
+      href: sample-powershell.md
+    - name: Azure Monitor-Protokolle
+      href: log-analytics-samples.md
 - name: Konzepte
   items:
-  - name: FQDN-Tags
-    href: fqdn-tags.md
-  - name: Infrastruktur-FQDNs
-    href: infrastructure-fqdns.md
-  - name: Protokolle und Metriken
-    href: logs-and-metrics.md
-  - name: Bedrohungsanalyse
-    href: threat-intel.md
-  - name: Regelverarbeitungslogik
-    href: rule-processing.md
-  - name: Diensttags
-    href: service-tags.md
+    - name: FQDN-Tags
+      href: fqdn-tags.md
+    - name: Infrastruktur-FQDNs
+      href: infrastructure-fqdns.md
+    - name: Protokolle und Metriken
+      href: logs-and-metrics.md
+    - name: Bedrohungsanalyse
+      href: threat-intel.md
+    - name: Regelverarbeitungslogik
+      href: rule-processing.md
+    - name: Diensttags
+      href: service-tags.md
 - name: Anleitungen
   items:
-  - name: Bereitstellen mit Azure PowerShell
-    href: deploy-ps.md
-  - name: Mithilfe einer Vorlage bereitstellen
-    href: deploy-template.md
-  - name: Integrieren mit Lastenausgleich
-    href: integrate-lb.md
+    - name: Bereitstellen mit Azure PowerShell
+      href: deploy-ps.md
+    - name: Mithilfe einer Vorlage bereitstellen
+      href: deploy-template.md
+    - name: Integrieren mit Lastenausgleich
+      href: integrate-lb.md
 - name: Verweis
   items:
-  - name: Azure-Befehlszeilenschnittstelle
-    href: /cli/azure/network
-  - name: Azure PowerShell
-    href: /powershell/module/az.network/new-azfirewall
-  - name: .NET
-    href: /dotnet/api
-  - name: Java
-    href: /java/api
-  - name: Node.js
-    href: https://azure.microsoft.com/develop/nodejs/#azure-sdk
-  - name: Python
-    href: https://azure.microsoft.com/develop/python/
-  - name: REST
-    href: /rest/api/firewall
-  - name: Azure Resource Manager
-    href: ../azure-resource-manager/resource-group-overview.md
+    - name: Azure-Befehlszeilenschnittstelle
+      href: /cli/azure/network
+    - name: Azure PowerShell
+      href: /powershell/module/az.network/new-azfirewall
+    - name: .NET
+      href: /dotnet/api
+    - name: Java
+      href: /java/api
+    - name: Node.js
+      href: 'https://azure.microsoft.com/develop/nodejs/#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: REST
+      href: /rest/api/firewall
+    - name: Azure Resource Manager
+      href: ../azure-resource-manager/resource-group-overview.md
 - name: Ressourcen
   items:
-  - name: Häufig gestellte Fragen
-    href: firewall-faq.md
-  - name: Verfassen von Vorlagen
-    href: ../azure-resource-manager/resource-group-authoring-templates.md
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/roadmap/
-  - name: Communityvorlagen
-    href: https://azure.microsoft.com/documentation/templates
-  - name: Preise
-    href: https://azure.microsoft.com/pricing/details/azure-firewall/
-  - name: Regionale Verfügbarkeit
-    href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: a5f0125020cd0ed340127bb39c727bbe070721c6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792182"
+    - name: Häufig gestellte Fragen
+      href: firewall-faq.md
+    - name: Verfassen von Vorlagen
+      href: ../azure-resource-manager/resource-group-authoring-templates.md
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Communityvorlagen
+      href: 'https://azure.microsoft.com/documentation/templates'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/azure-firewall/'
+    - name: Regionale Verfügbarkeit
+      href: 'https://azure.microsoft.com/regions/services/'

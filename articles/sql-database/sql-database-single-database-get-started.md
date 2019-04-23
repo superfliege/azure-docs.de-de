@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
 author: sachinpMSFT
-ms.author: sachinp
+ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/25/2019
-ms.openlocfilehash: 5aeb84e5086fb0cf5c30e175ad419ee70bed55ad
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/11/2019
+ms.openlocfilehash: a5fbc58feea8779ba8a7a61dfc89158e20bd2c92
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075184"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544278"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal"></a>Schnellstart: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank über das Azure-Portal
 
@@ -34,51 +34,62 @@ Eine Einzeldatenbank enthält einen definierten Satz von Compute-, Arbeitsspeich
 So erstellen Sie eine Einzeldatenbank mit den AdventureWorksLT-Beispieldaten:
 
 1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
-2. Wählen Sie **Datenbanken** und dann **SQL-Datenbank** aus.
-3. Geben Sie im Formular **SQL-Datenbank erstellen** die folgenden Werte ein, oder wählen Sie sie aus:
+2. Wählen Sie die Option **Datenbanken** und dann **SQL-Datenbank**, um die Seite **SQL-Datenbank erstellen** zu öffnen. 
 
-   - **Datenbankname**: Geben Sie *mySampleDatabase* ein.
-   - **Abonnement**: Wählen Sie in der Dropdownliste das richtige Abonnement aus, falls es nicht angezeigt wird.
-   - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, geben Sie *myResourceGroup* ein, und klicken Sie auf **OK**.
-   - **Quelle auswählen**: Wählen Sie in der Dropdownliste **Sample (AdventureWorksLT)** aus.
-
-     > [!IMPORTANT]
-     > Sie müssen die Daten **Sample (AdventureWorksLT)** auswählen, um diesen Schnellstart und andere Schnellstarts für Azure SQL-Datenbank, in denen diese Daten verwendet werden, einfach ausführen zu können.
-  
    ![Erstellen einer Einzeldatenbank](./media/sql-database-get-started-portal/create-database-1.png)
 
-4. Wählen Sie unter **Server** die Option **Neu erstellen**.
-5. Geben Sie im Formular **Neuer Server** die folgenden Werte ein, oder wählen Sie sie aus:
+1. Geben Sie auf der Registerkarte **Grundlagen** im Abschnitt **Projektdetails** die folgenden Werte ein, bzw. wählen Sie sie aus:
 
-   - **Servername**: Geben Sie *mysqlserver* ein.
-   - **Serveradministratoranmeldung**: Geben Sie *azureuser* ein.
-   - **Kennwort**: Geben Sie *Azure1234567* ein.
-   - **Kennwort bestätigen**: Geben Sie das Kennwort erneut ein.
-   - **Standort**: Wählen Sie in der Dropdownliste einen gültigen Standort aus.  
+   - **Abonnement**: Wählen Sie in der Dropdownliste das richtige Abonnement aus, falls es nicht angezeigt wird.
+   - **Ressourcengruppe**: Wählen Sie **Neu erstellen**, geben Sie `myResourceGroup` ein, und wählen Sie **OK**.
+
+   ![Neue SQL-Datenbank: Registerkarte „Grundlagen“](media/sql-database-get-started-portal/new-sql-database-basics.png)
+
+
+1. Geben Sie im Abschnitt **Datenbankdetails** die folgenden Werte ein, bzw. wählen Sie sie aus: 
+
+   - **Datenbankname**: Geben Sie `mySampleDatabase` ein.
+   - **Server**: Wählen Sie **Neu erstellen**, und geben Sie die folgenden Werte ein. Wählen Sie anschließend die Option **Auswählen**. 
+       - **Servername**: Geben Sie `mysqlserver` mit einigen Zahlen ein, um die Eindeutigkeit sicherzustellen. 
+       - **Serveradministratoranmeldung**: Geben Sie `azureuser`ein.
+       - **Kennwort**: Geben Sie ein komplexes Kennwort ein, das die Anforderungen für Kennwörter erfüllt. 
+       - **Standort**: Wählen Sie in der Dropdownliste einen Standort aus, z. B. `West US 2`. 
+
+       ![Neuer Server](media/sql-database-get-started-portal/new-server.png)
+
+        > [!IMPORTANT]
+        > Notieren Sie sich die Serveradministratoranmeldung (Anmelde-ID) und das Kennwort, damit Sie sich für diesen und andere Schnellstarts beim Server und bei den Datenbanken anmelden können. Falls Sie die Anmeldeinformationen vergessen, können Sie auf der Seite **SQL Server** die Anmelde-ID abrufen oder das Kennwort zurücksetzen. Um die Seite **SQL Server** zu öffnen, wählen Sie nach dem Erstellen der Datenbank auf der Seite **Übersicht** für die Datenbank den Servernamen aus.
+
+      ![SQL-Datenbankdetails](media/sql-database-get-started-portal/sql-db-basic-db-details.png)
+
+   - **Möchten Sie einen Pool für elastische SQL-Datenbanken verwenden?** Wählen Sie die Option **Nein**. 
+   - **Compute und Speicher**: Wählen Sie die Option **Datenbank konfigurieren** und für diese Schnellstartanleitung die Dienstebene **Standard** und anschließend mithilfe des Schiebereglers **10 DTUs (S0)** und **1 GB** Speicher aus. Wählen Sie **Übernehmen**. 
+
+    ![Konfigurieren des Tarifs](media/sql-database-get-started-portal/create-database-s1.png) 
+
+
+      > [!NOTE]
+      > In diesem Schnellstart wird das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md) verwendet, das [V-Kern-basierte Kaufmodell](sql-database-service-tiers-vcore.md) ist jedoch ebenfalls verfügbar.
+      > [!IMPORTANT]
+      > In allen Regionen außer den folgenden ist im Premium-Tarif derzeit mehr als 1 TB Speicher verfügbar: Regionen „China, Osten“, „China, Norden“, „Deutschland, Mitte“, „Deutschland, Nordosten“, „USA, Westen-Mitte“, „US DoD“ und „US Government, Mitte“. In diesen Regionen ist der Speicher im Tarif „Premium“ auf 1 TB begrenzt.  Weitere Informationen finden Sie unter [Einschränkungen von P11 und P15](sql-database-single-database-scale.md#dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+
+    
+
+
+
+1. Wählen Sie die Registerkarte **Zusätzliche Einstellungen**. 
+1. Wählen Sie im Abschnitt **Datenquelle** unter **Vorhandene Daten verwenden** die Option `Sample`. 
+
+   ![Weitere Einstellungen der SQL-Datenbank](media/sql-database-get-started-portal/create-sql-database-additional-settings.png)
 
    > [!IMPORTANT]
-   > Notieren Sie sich die Serveradministratoranmeldung (Anmelde-ID) und das Kennwort, damit Sie sich für diesen und andere Schnellstarts beim Server und bei den Datenbanken anmelden können. Falls Sie die Anmeldeinformationen vergessen, können Sie auf der Seite **SQL Server** die Anmelde-ID abrufen oder das Kennwort zurücksetzen. Um die Seite **SQL Server** zu öffnen, wählen Sie nach dem Erstellen der Datenbank auf der Seite **Übersicht** für die Datenbank den Servernamen aus.
+   > Sie müssen die Daten **Sample (AdventureWorksLT)** auswählen, um diesen Schnellstart und andere Schnellstarts für Azure SQL-Datenbank, in denen diese Daten verwendet werden, einfach ausführen zu können.
 
-    ![Server erstellen](./media/sql-database-get-started-portal/create-database-server.png)
+1. Behalten Sie die restlichen Standardwerte bei, und wählen Sie unten im Formular die Option **Bewerten + erstellen**. 
+1. Überprüfen Sie die endgültigen Einstellungen, und wählen Sie **Erstellen**. 
 
-6. Wählen Sie **Auswählen**.
-7. Wählen Sie im Formular **SQL-Datenbank** die Option **Tarif** aus. Sehen Sie sich die Anzahl von Datenbanktransaktionseinheiten (Database Transaction Unit, DTU) und den verfügbaren Speicher für die einzelnen Dienstebenen an.
+8. Klicken Sie im Formular **SQL-Datenbank** auf **Erstellen**, um die Ressourcengruppe, den Server und die Datenbank bereitzustellen.
 
-   > [!NOTE]
-   > In diesem Schnellstart wird das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md) verwendet, das [V-Kern-basierte Kaufmodell](sql-database-service-tiers-vcore.md) ist jedoch ebenfalls verfügbar.
-   > [!IMPORTANT]
-   > In allen Regionen außer den folgenden ist im Premium-Tarif derzeit mehr als 1 TB Speicher verfügbar: Regionen „China, Osten“, „China, Norden“, „Deutschland, Mitte“, „Deutschland, Nordosten“, „USA, Westen-Mitte“, „US DoD“ und „US Government, Mitte“. In diesen Regionen ist der Speicher im Tarif „Premium“ auf 1 TB begrenzt.  Weitere Informationen finden Sie unter [Einschränkungen von P11 und P15](sql-database-single-database-scale.md#dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
-
-8. Wählen Sie für diesen Schnellstart die Dienstebene **Standard** und anschließend mithilfe des Schiebereglers **10 DTUs (S0)** und **1** GB Speicher aus.
-9. Wählen Sie **Übernehmen**.  
-
-   ![Auswählen des Tarifs](./media/sql-database-get-started-portal/create-database-s1.png)
-
-10. Klicken Sie im Formular **SQL-Datenbank** auf **Erstellen**, um die Ressourcengruppe, den Server und die Datenbank bereitzustellen.
-
-    Die Bereitstellung nimmt einige Minuten in Anspruch. Sie können auf der Symbolleiste auf **Benachrichtigungen** klicken, um den Status des Bereitstellungsprozesses zu überwachen.
-
-    ![Benachrichtigung](./media/sql-database-get-started-portal/notification.png)
 
 ## <a name="query-the-database"></a>Abfragen der Datenbank
 
@@ -120,5 +131,5 @@ Wenn Sie diese Ressourcen nicht mehr benötigen, können Sie sie wie folgt lösc
 - Nachdem Sie eine Firewallregel auf Serverebene erstellt haben, können Sie mit verschiedenen Tools und Programmiersprachen eine [Verbindung mit Ihrer Datenbank herstellen und Abfragen ausführen](sql-database-connect-query.md).
   - [Verbinden und Abfragen mit SQL Server Management Studio (SSMS)](sql-database-connect-query-ssms.md)
   - [Verbinden und Abfragen mit Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
-- Informationen zum Erstellen von Einzeldatenbanken mit der Azure-Befehlszeilenschnittstelle finden Sie unter [Azure CLI-Beispiele für Azure SQL-Datenbank](sql-database-cli-samples.md).
-- Informationen zum Erstellen von Einzeldatenbanken mit Azure PowerShell finden Sie unter [Azure PowerShell-Beispiele für Azure SQL-Datenbank](sql-database-powershell-samples.md).
+- Informationen zum Erstellen einer Einzeldatenbank mit der Azure CLI finden Sie unter [Azure CLI-Beispiele für Azure SQL-Datenbank](sql-database-cli-samples.md).
+- Informationen zum Erstellen einer Einzeldatenbank mit Azure PowerShell finden Sie unter [Azure PowerShell-Beispiele für Azure SQL-Datenbank](sql-database-powershell-samples.md).

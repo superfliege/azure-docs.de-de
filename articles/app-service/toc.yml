@@ -1,269 +1,262 @@
-items:
 - name: App Service-Dokumentation
   href: index.yml
 - name: Übersicht
   items:
-  - name: Informationen zu Web-Apps
-    href: overview.md
-  - name: Informationen zu App Service unter Linux
-    href: containers/app-service-linux-intro.md
-  - name: Informationen zu App Service-Umgebungen
-    href: environment/intro.md
-  - name: Vergleich von Hostingoptionen
-    href: overview-compare.md
+    - name: Informationen zu Web-Apps
+      href: overview.md
+    - name: Informationen zu App Service unter Linux
+      href: containers/app-service-linux-intro.md
+    - name: Informationen zu App Service-Umgebungen
+      href: environment/intro.md
+    - name: Vergleich von Hostingoptionen
+      href: overview-compare.md
 - name: Schnellstarts
-  items:
-  - name: Erstellen einer .NET Core-App
-    href: app-service-web-get-started-dotnet.md
-  - name: Erstellen einer .NET Framework-App
-    href: app-service-web-get-started-dotnet-framework.md
-  - name: Erstellen einer Node.js-App
-    href: app-service-web-get-started-nodejs.md
-  - name: Erstellen einer PHP-App
-    href: app-service-web-get-started-php.md
-  - name: Erstellen einer Java-App
-    href: app-service-web-get-started-java.md
-  - name: Erstellen einer statischen HTML-Website
-    href: app-service-web-get-started-html.md
-  - name: Ausführen eines Windows-Containers
-    href: app-service-web-get-started-windows-container.md
   expanded: true
+  items:
+    - name: Erstellen einer .NET Core-App
+      href: app-service-web-get-started-dotnet.md
+    - name: Erstellen einer .NET Framework-App
+      href: app-service-web-get-started-dotnet-framework.md
+    - name: Erstellen einer Node.js-App
+      href: app-service-web-get-started-nodejs.md
+    - name: Erstellen einer PHP-App
+      href: app-service-web-get-started-php.md
+    - name: Erstellen einer Java-App
+      href: app-service-web-get-started-java.md
+    - name: Erstellen einer statischen HTML-Website
+      href: app-service-web-get-started-html.md
+    - name: Ausführen eines Windows-Containers
+      href: app-service-web-get-started-windows-container.md
 - name: Lernprogramme
   items:
-  - name: App mit Datenbank
-    items:
-    - name: .NET Core mit SQL-Datenbank
-      href: app-service-web-tutorial-dotnetcore-sqldb.md
-    - name: .NET mit SQL DB
-      href: app-service-web-tutorial-dotnet-sqldatabase.md
-    - name: PHP mit MySQL
-      href: app-service-web-tutorial-php-mysql.md
-    - name: Node.js mit MongoDB
-      href: app-service-web-tutorial-nodejs-mongodb-app.md
-  - name: Anpassen von Windows (Container)
-    href: app-service-web-tutorial-windows-containers-custom-fonts.md
-  - name: Sicherer Zugriff auf SQL-Datenbank
-    href: app-service-web-tutorial-connect-msi.md
-  - name: Hosten einer RESTful-API
-    href: app-service-web-tutorial-rest-api.md
-  - name: Zuordnen einer benutzerdefinierten Domäne
-    href: app-service-web-tutorial-custom-domain.md
-  - name: Binden eines SSL-Zertifikats
-    href: app-service-web-tutorial-custom-ssl.md
-  - name: Hinzufügen von CDN
-    href: ../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fcdn%2ftoc.json
-  - name: Authentifizieren von Benutzern
-    href: app-service-web-tutorial-auth-aad.md
+    - name: App mit Datenbank
+      items:
+        - name: .NET Core mit SQL-Datenbank
+          href: app-service-web-tutorial-dotnetcore-sqldb.md
+        - name: .NET mit SQL DB
+          href: app-service-web-tutorial-dotnet-sqldatabase.md
+        - name: PHP mit MySQL
+          href: app-service-web-tutorial-php-mysql.md
+        - name: Node.js mit MongoDB
+          href: app-service-web-tutorial-nodejs-mongodb-app.md
+    - name: Anpassen von Windows (Container)
+      href: app-service-web-tutorial-windows-containers-custom-fonts.md
+    - name: Sicherer Zugriff auf SQL-Datenbank
+      href: app-service-web-tutorial-connect-msi.md
+    - name: Hosten einer RESTful-API
+      href: app-service-web-tutorial-rest-api.md
+    - name: Zuordnen einer benutzerdefinierten Domäne
+      href: app-service-web-tutorial-custom-domain.md
+    - name: Binden eines SSL-Zertifikats
+      href: app-service-web-tutorial-custom-ssl.md
+    - name: Hinzufügen von CDN
+      href: ../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fcdn%2ftoc.json
+    - name: Authentifizieren von Benutzern
+      href: app-service-web-tutorial-auth-aad.md
 - name: Beispiele
   items:
-  - name: Azure-Befehlszeilenschnittstelle
-    href: samples-cli.md
-  - name: Azure PowerShell
-    href: samples-powershell.md
-  - name: Resource Manager-Vorlagen
-    href: samples-resource-manager-templates.md
+    - name: Azure-Befehlszeilenschnittstelle
+      href: samples-cli.md
+    - name: Azure PowerShell
+      href: samples-powershell.md
+    - name: Resource Manager-Vorlagen
+      href: samples-resource-manager-templates.md
 - name: Konzepte
   items:
-  - name: So funktioniert App Service
-    href: app-service-how-works-readme.md
-  - name: App Service-Pläne
-    href: overview-hosting-plans.md
-  - name: Java Runtime-Unterstützung
-    href: app-service-jre-support.md
-  - name: Betriebssystemfunktionalität
-    href: operating-system-functionality.md
-  - name: Sicherheit
-    href: overview-security.md
-    items:
-    - name: Authentifizierung und Autorisierung
-      href: overview-authentication-authorization.md
-    - name: Betriebssystem- und Runtimepatching
-      href: overview-patch-os-runtime.md
-  - name: Eingehende und ausgehende IPs
-    href: overview-inbound-outbound-ips.md
-  - name: Hybridverbindungen
-    href: app-service-hybrid-connections.md
-  - name: Traffic Manager-Integration
-    href: web-sites-traffic-manager.md
-  - name: Lokaler Cache
-    href: overview-local-cache.md
-  - name: Diagnose
-    href: overview-diagnostics.md
+    - name: So funktioniert App Service
+      href: app-service-how-works-readme.md
+    - name: App Service-Pläne
+      href: overview-hosting-plans.md
+    - name: Betriebssystemfunktionalität
+      href: operating-system-functionality.md
+    - name: Sicherheit
+      href: overview-security.md
+      items:
+        - name: Authentifizierung und Autorisierung
+          href: overview-authentication-authorization.md
+        - name: Betriebssystem- und Runtimepatching
+          href: overview-patch-os-runtime.md
+    - name: Eingehende und ausgehende IPs
+      href: overview-inbound-outbound-ips.md
+    - name: Hybridverbindungen
+      href: app-service-hybrid-connections.md
+    - name: Traffic Manager-Integration
+      href: web-sites-traffic-manager.md
+    - name: Lokaler Cache
+      href: overview-local-cache.md
+    - name: Diagnose
+      href: overview-diagnostics.md
 - name: Anleitungen
   items:
-  - name: Konfigurieren der App
-    items:
-    - name: Verwenden der App-Einstellungen
-      href: web-sites-configure.md
-    - name: Konfigurieren von PHP
-      href: web-sites-php-configure.md
-    - name: Verbindungsherstellung mit lokalen Ressourcen
-      href: web-sites-integrate-with-vnet.md
-  - name: Bereitstellen in Azure
-    items:
-    - name: Bereitstellen der App
+    - name: Konfigurieren der App
       items:
-      - name: Bereitstellen der ZIP- oder WAR-Datei
-        href: deploy-zip.md
-      - name: Bereitstellen über FTP
-        href: deploy-ftp.md
-      - name: Bereitstellen über Cloudsynchronisierung
-        href: deploy-content-sync.md
-      - name: Kontinuierliche Bereitstellung
-        href: deploy-continuous-deployment.md
-      - name: Bereitstellen über lokales Git
-        href: deploy-local-git.md
-      - name: Bereitstellen mit Vorlage
-        href: deploy-complex-application-predictably.md
-    - name: Anmeldeinformationen für die Bereitstellung zurücksetzen
-      href: deploy-configure-credentials.md
-    - name: Erstellen von Stagingumgebungen
-      href: deploy-staging-slots.md
-    - name: Anleitung für Resource Manager-Vorlagen
-      href: deploy-resource-manager-template.md
-  - name: Zuordnen einer benutzerdefinierte Domäne
-    items:
-    - name: Kaufen einer Domäne
-      href: manage-custom-dns-buy-domain.md
-    - name: Zuordnen von Domänen mithilfe von Traffic Manager
-      href: web-sites-traffic-manager-custom-domain-name.md
-    - name: Migrieren einer aktiven Domäne
-      href: manage-custom-dns-migrate-domain.md
-  - name: Sichern der App
-    items:
-    - name: Kaufen eines SSL-Zertifikats
-      href: web-sites-purchase-ssl-web-site.md
-    - name: Authentifizieren von Benutzern
+        - name: Verwenden der App-Einstellungen
+          href: web-sites-configure.md
+        - name: Konfigurieren von PHP
+          href: web-sites-php-configure.md
+        - name: Entwicklerhandbuch für Java
+          href: configure-language-java.md
+        - name: Verbindungsherstellung mit lokalen Ressourcen
+          href: web-sites-integrate-with-vnet.md
+    - name: Bereitstellen in Azure
       items:
-      - name: Authentifizierung über Azure AD
-        href: configure-authentication-provider-aad.md
-      - name: Authentifizierung über Facebook
-        href: configure-authentication-provider-facebook.md
-      - name: Authentifizierung über Google
-        href: configure-authentication-provider-google.md
-      - name: Authentifizierung über Microsoft-Konto
-        href: configure-authentication-provider-microsoft.md
-      - name: Authentifizierung über Twitter
-        href: configure-authentication-provider-twitter.md
-    - name: Erweiterte Authentifizierung
-      href: app-service-authentication-how-to.md
-    - name: Beschränken von IP-Adressen
-      href: app-service-ip-restrictions.md
-    - name: Verwenden einer verwalteten Identität
-      href: overview-managed-identity.md
-    - name: Verweisen auf Geheimnisse aus Key Vault
-      href: app-service-key-vault-references.md
-    - name: Verwenden des SSL-Zertifikats im Anwendungscode
-      href: app-service-web-ssl-cert-load.md
-    - name: Konfigurieren der gegenseitigen TLS-Authentifizierung
-      href: app-service-web-configure-tls-mutual-auth.md
-  - name: Skalieren der App
-    items:
-    - name: Zentrales Hochskalieren der Serverkapazität
-      href: web-sites-scale.md
-    - name: Konfigurieren der PremiumV2-Ebene
-      href: app-service-configure-premium-tier.md
-    - name: Horizontales Hochskalieren auf mehrere Instanzen
-      href: ../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json
-    - name: High Density-Hosting
-      href: manage-scale-per-app.md
-  - name: Überwachen der App
-    items:
-    - name: Kontingente und Warnungen
-      href: web-sites-monitor.md
-    - name: Aktivieren von Protokollen
-      href: troubleshoot-diagnostic-logs.md
-  - name: Verwalten der App
-    items:
-    - name: Verwalten des Hostingplans
-      href: app-service-plan-manage.md
-    - name: Sichern einer App
-      href: manage-backup.md
-    - name: Wiederherstellen einer Sicherung
-      href: web-sites-restore.md
-    - name: Wiederherstellen einer Momentaufnahme
-      href: app-service-web-restore-snapshots.md
-    - name: Klonen einer App
-      href: app-service-web-app-cloning.md
-    - name: Verschieben von Ressourcen
-      href: ../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations
-  - name: Ausführen von Hintergrundaufgaben
-    items:
-    - name: Erstellen von Webaufträgen
-      href: webjobs-create.md
-    - name: Entwickeln von Webaufträgen mit VS
-      href: webjobs-dotnet-deploy-vs.md
-    - name: Erste Schritte mit dem WebJobs SDK
-      href: webjobs-sdk-get-started.md
-    - name: Verwenden des WebJobs SDK
-      href: webjobs-sdk-how-to.md
+        - name: Bereitstellen der App
+          items:
+            - name: Bereitstellen der ZIP- oder WAR-Datei
+              href: deploy-zip.md
+            - name: Bereitstellen über FTP
+              href: deploy-ftp.md
+            - name: Bereitstellen über Cloudsynchronisierung
+              href: deploy-content-sync.md
+            - name: Kontinuierliche Bereitstellung
+              href: deploy-continuous-deployment.md
+            - name: Bereitstellen über lokales Git
+              href: deploy-local-git.md
+            - name: Bereitstellen mit Vorlage
+              href: deploy-complex-application-predictably.md
+        - name: Anmeldeinformationen für die Bereitstellung zurücksetzen
+          href: deploy-configure-credentials.md
+        - name: Erstellen von Stagingumgebungen
+          href: deploy-staging-slots.md
+        - name: Anleitung für Resource Manager-Vorlagen
+          href: deploy-resource-manager-template.md
+    - name: Zuordnen einer benutzerdefinierte Domäne
+      items:
+        - name: Kaufen einer Domäne
+          href: manage-custom-dns-buy-domain.md
+        - name: Zuordnen von Domänen mithilfe von Traffic Manager
+          href: web-sites-traffic-manager-custom-domain-name.md
+        - name: Migrieren einer aktiven Domäne
+          href: manage-custom-dns-migrate-domain.md
+    - name: Sichern der App
+      items:
+        - name: Kaufen eines SSL-Zertifikats
+          href: web-sites-purchase-ssl-web-site.md
+        - name: Authentifizieren von Benutzern
+          items:
+            - name: Authentifizierung über Azure AD
+              href: configure-authentication-provider-aad.md
+            - name: Authentifizierung über Facebook
+              href: configure-authentication-provider-facebook.md
+            - name: Authentifizierung über Google
+              href: configure-authentication-provider-google.md
+            - name: Authentifizierung über Microsoft-Konto
+              href: configure-authentication-provider-microsoft.md
+            - name: Authentifizierung über Twitter
+              href: configure-authentication-provider-twitter.md
+        - name: Erweiterte Authentifizierung
+          href: app-service-authentication-how-to.md
+        - name: Beschränken von IP-Adressen
+          href: app-service-ip-restrictions.md
+        - name: Verwenden einer verwalteten Identität
+          href: overview-managed-identity.md
+        - name: Verweisen auf Geheimnisse aus Key Vault
+          href: app-service-key-vault-references.md
+        - name: Verwenden des SSL-Zertifikats im Anwendungscode
+          href: app-service-web-ssl-cert-load.md
+        - name: Konfigurieren der gegenseitigen TLS-Authentifizierung
+          href: app-service-web-configure-tls-mutual-auth.md
+    - name: Skalieren der App
+      items:
+        - name: Zentrales Hochskalieren der Serverkapazität
+          href: web-sites-scale.md
+        - name: Konfigurieren der PremiumV2-Ebene
+          href: app-service-configure-premium-tier.md
+        - name: Horizontales Hochskalieren auf mehrere Instanzen
+          href: ../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json
+        - name: High Density-Hosting
+          href: manage-scale-per-app.md
+    - name: Überwachen der App
+      items:
+        - name: Kontingente und Warnungen
+          href: web-sites-monitor.md
+        - name: Aktivieren von Protokollen
+          href: troubleshoot-diagnostic-logs.md
+    - name: Verwalten der App
+      items:
+        - name: Verwalten des Hostingplans
+          href: app-service-plan-manage.md
+        - name: Sichern einer App
+          href: manage-backup.md
+        - name: Wiederherstellen einer Sicherung
+          href: web-sites-restore.md
+        - name: Wiederherstellen einer Momentaufnahme
+          href: app-service-web-restore-snapshots.md
+        - name: Klonen einer App
+          href: app-service-web-app-cloning.md
+        - name: Verschieben von Ressourcen
+          href: '../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations'
+    - name: Ausführen von Hintergrundaufgaben
+      items:
+        - name: Erstellen von Webaufträgen
+          href: webjobs-create.md
+        - name: Entwickeln von Webaufträgen mit VS
+          href: webjobs-dotnet-deploy-vs.md
+        - name: Erste Schritte mit dem WebJobs SDK
+          href: webjobs-sdk-get-started.md
+        - name: Verwenden des WebJobs SDK
+          href: webjobs-sdk-how-to.md
 - name: Verweis
   items:
-  - name: Azure-Befehlszeilenschnittstelle
-    href: /cli/azure/appservice
-  - name: Azure PowerShell
-    href: /powershell
-  - name: REST-API
-    href: /rest/api/appservice/
-  - name: Resource Manager-Vorlage
-    href: /azure/templates/microsoft.web/allversions
+    - name: Azure-Befehlszeilenschnittstelle
+      href: /cli/azure/appservice
+    - name: Azure PowerShell
+      href: /powershell
+    - name: REST-API
+      href: /rest/api/appservice/
+    - name: Resource Manager-Vorlage
+      href: /azure/templates/microsoft.web/allversions
 - name: Ressourcen
   items:
-  - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
-    href: /learn/browse/
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/roadmap/
-  - name: Preise
-    href: https://azure.microsoft.com/pricing/details/app-service/
-  - name: Informationen zum Kontingent
-    href: ../azure-subscription-service-limits.md#app-service-limits
-  - name: Dienstupdates
-    href: https://azure.microsoft.com/updates/?product=app-service
-  - name: Bewährte Methoden
-    href: app-service-best-practices.md
-  - name: Beispiele
-    href: https://azure.microsoft.com/resources/samples/?service=app-service
-  - name: Videos
-    href: https://azure.microsoft.com/resources/videos/index/?services=app-service
-  - name: Cookbooks
-    items:
-    - name: Referenzarchitekturen
-      href: https://docs.microsoft.com/azure/architecture/reference-architectures/#web-applications
-    - name: Bereitstellungsskripts
-      href: https://azure.microsoft.com/documentation/scripts/
-  - name: Problembehandlung
-    items:
-    - name: Problembehandlung mit Visual Studio
-      href: troubleshoot-dotnet-visual-studio.md
-    - name: Problembehandlung von Node.js-Apps
-      href: app-service-web-nodejs-best-practices-and-troubleshoot-guide.md
-    - name: Problembehandlung bei HTTP 502 und 503
-      href: troubleshoot-http-502-http-503.md
-    - name: Behandeln von Leistungsproblemen
-      href: troubleshoot-performance-degradation.md
-    - name: Behandeln von Domänen- und Zertifikatproblemen
-      href: troubleshoot-domain-ssl-certificates.md
-    - name: Häufig gestellte Fragen
+    - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
+      href: /learn/browse/
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/app-service/'
+    - name: Informationen zum Kontingent
+      href: '../azure-subscription-service-limits.md#app-service-limits'
+    - name: Dienstupdates
+      href: 'https://azure.microsoft.com/updates/?product=app-service'
+    - name: Bewährte Methoden
+      href: app-service-best-practices.md
+    - name: Beispiele
+      href: 'https://azure.microsoft.com/resources/samples/?service=app-service'
+    - name: Videos
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=app-service'
+    - name: Cookbooks
       items:
-      - name: Häufig gestellte Fragen zu Verfügbarkeit, Leistung und Anwendungen
-        href: faq-availability-performance-application-issues.md
-      - name: Häufig gestellte Fragen zur Bereitstellung
-        href: faq-deployment.md
-      - name: Häufig gestellte Fragen zu Open Source-Technologien
-        href: faq-open-source-technologies.md
-      - name: Häufig gestellte Fragen zu Konfiguration und Verwaltung
-        href: faq-configuration-and-management.md
-  - name: Änderung der IP-Adresse
-    items:
-    - name: IP-Adresse für eingehenden Datenverkehr
-      href: ip-address-change-inbound.md
-    - name: IP-Adresse für ausgehenden Datenverkehr
-      href: ip-address-change-outbound.md
-    - name: SSL-Adresse
-      href: ip-address-change-ssl.md
-ms.openlocfilehash: 205d7437b8e738211d7d85f7a85190c90ac9c56f
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522127"
+        - name: Referenzarchitekturen
+          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/#web-applications'
+        - name: Bereitstellungsskripts
+          href: 'https://azure.microsoft.com/documentation/scripts/'
+    - name: Problembehandlung
+      items:
+        - name: Problembehandlung mit Visual Studio
+          href: troubleshoot-dotnet-visual-studio.md
+        - name: Problembehandlung von Node.js-Apps
+          href: app-service-web-nodejs-best-practices-and-troubleshoot-guide.md
+        - name: Problembehandlung bei HTTP 502 und 503
+          href: troubleshoot-http-502-http-503.md
+        - name: Behandeln von Leistungsproblemen
+          href: troubleshoot-performance-degradation.md
+        - name: Behandeln von Domänen- und Zertifikatproblemen
+          href: troubleshoot-domain-ssl-certificates.md
+        - name: Häufig gestellte Fragen
+          items:
+            - name: 'Häufig gestellte Fragen zu Verfügbarkeit, Leistung und Anwendungen'
+              href: faq-availability-performance-application-issues.md
+            - name: Häufig gestellte Fragen zur Bereitstellung
+              href: faq-deployment.md
+            - name: Häufig gestellte Fragen zu Open Source-Technologien
+              href: faq-open-source-technologies.md
+            - name: Häufig gestellte Fragen zu Konfiguration und Verwaltung
+              href: faq-configuration-and-management.md
+    - name: Änderung der IP-Adresse
+      items:
+        - name: IP-Adresse für eingehenden Datenverkehr
+          href: ip-address-change-inbound.md
+        - name: IP-Adresse für ausgehenden Datenverkehr
+          href: ip-address-change-outbound.md
+        - name: SSL-Adresse
+          href: ip-address-change-ssl.md

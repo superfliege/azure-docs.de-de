@@ -6,19 +6,19 @@ ms.author: radennis
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 03/25/2019
-ms.openlocfilehash: b1cc7d2966572da23a64e4555a0e94b440efa005
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.date: 04/10/2019
+ms.openlocfilehash: 1fb9027ab3301bb860d260aed737ab7674039d9b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59043971"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524717"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>Erstellen eines Azure Data Explorer-Clusters und einer Datenbank über die Azure-Befehlszeilenschnittstelle
 
 > [!div class="op_single_selector"]
 > * [Portal](create-cluster-database-portal.md)
-> * [Befehlszeilenschnittstelle (CLI)](create-cluster-database-cli.md)
+> * [BEFEHLSZEILENSCHNITTSTELLE (CLI)](create-cluster-database-cli.md)
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
@@ -32,7 +32,7 @@ Für diese Schnellstartanleitung benötigen Sie ein Azure-Abonnement. Falls Sie 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für diese Schnellstartanleitung mindestens die Azure CLI-Version 2.0.4 verwenden. Führen Sie `az --version` aus, um Ihre Version zu überprüfen. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
+Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für diese Schnellstartanleitung mindestens die Azure CLI-Version 2.0.4 verwenden. Führen Sie `az --version` aus, um Ihre Version zu überprüfen. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="configure-the-cli-parameters"></a>Konfigurieren der CLI-Parameter
 
@@ -79,7 +79,7 @@ Wenn das Ergebnis `provisioningState` mit dem Wert `Succeeded` enthält, wurde d
 1. Erstellen Sie Ihre Datenbank mit dem folgenden Befehl:
 
     ```azurecli-interactive
-    az kusto database create --cluster-name azureclitest --name clidatabase --resource-group testrg --soft-delete-period 3650:00:00:00 --hot-cache-period 3650:00:00:00
+    az kusto database create --cluster-name azureclitest --name clidatabase --resource-group testrg --soft-delete-period P365D --hot-cache-period P31D
     ```
 
    |**Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**|
@@ -87,8 +87,8 @@ Wenn das Ergebnis `provisioningState` mit dem Wert `Succeeded` enthält, wurde d
    | cluster-name | *azureclitest* | Der Name Ihres Clusters, in dem die Datenbank erstellt werden soll.|
    | name | *clidatabase* | Der Name Ihrer Datenbank.|
    | resource-group | *testrg* | Der Name der Ressourcengruppe, in der der Cluster erstellt werden soll |
-   | soft-delete-period | *3650:00:00:00* | Der Zeitraum, für den Daten für Abfragen verfügbar sein sollen. |
-   | hot-cache-period | *3650:00:00:00* | Der Zeitraum, für den Daten im Cache verfügbar sein sollen. |
+   | soft-delete-period | *P365D* | Gibt den Zeitraum an, wie lange Daten für Abfragen verfügbar sein sollen. Weitere Informationen finden Sie unter [Aufbewahrungsrichtlinie](/azure/kusto/concepts/retentionpolicy). |
+   | hot-cache-period | *P31D* | Gibt den Zeitraum an, wie lange Daten im Cache verfügbar sein sollen. Weitere Informationen finden Sie unter [Cacherichtlinie](/azure/kusto/concepts/cachepolicy). |
 
 1. Führen Sie den folgenden Befehl aus, um die erstellte Datenbank anzuzeigen:
 

@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 00752e0b42b907699e9f314c2f216b69c9d3b2e8
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506735"
 documentType: LandingData
 title: 'Dokumentation zur Verwaltung von Unternehmensbenutzern: Azure Active Directory'
 metadata:
-  document_id: 
-  title: Dokumentation zu Benutzern, Gruppen, Rollen und Lizenzen in Azure Active Directory
-  description: Hier erfahren Sie, wie Sie mithilfe von Benutzern, Gruppen, Rollen und Lizenzen die Authentifizierung bei Azure-Clouddiensten in Ihrem Mandanten verwalten.
+  document_id: null
+  title: 'Dokumentation zu Benutzern, Gruppen, Rollen und Lizenzen in Azure Active Directory'
+  description: 'Hier erfahren Sie, wie Sie mithilfe von Benutzern, Gruppen, Rollen und Lizenzen die Authentifizierung bei Azure-Clouddiensten in Ihrem Mandanten verwalten.'
   services: active-directory
   ms.subservice: users-groups-roles
   author: curtand
@@ -20,33 +14,33 @@ metadata:
   ms.date: 01/31/2019
   ms.author: curtand
 abstract:
-  description: Mit Azure AD-Benutzerverwaltungstools wie der Zuweisung von Gruppen- und Administratorrollen können Sie häufig ausgeführte Aufgaben beschleunigen und Wachstum ermöglichen. Sie können Lizenzen oder Zugriff für bzw. auf SaaS-Apps Gruppen anstelle von Einzelpersonen zuweisen oder Berechtigungen delegieren, um den Aufwand für die Azure AD-Identitätsverwaltung zu verteilen.
+  description: 'Mit Azure AD-Benutzerverwaltungstools wie der Zuweisung von Gruppen- und Administratorrollen können Sie häufig ausgeführte Aufgaben beschleunigen und Wachstum ermöglichen. Sie können Lizenzen oder Zugriff für bzw. auf SaaS-Apps Gruppen anstelle von Einzelpersonen zuweisen oder Berechtigungen delegieren, um den Aufwand für die Azure AD-Identitätsverwaltung zu verteilen.'
 sections:
-- title: Fünfminütige Schnellstarts
-  items:
-  - type: paragraph
-    text: Hier erfahren Sie mehr über die Verwendung von Verwaltungstools in Azure Active Directory.
-  - type: list
-    style: unordered
+  - title: Fünfminütige Schnellstarts
     items:
-    - html: <a href="/azure/active-directory/fundamentals/add-users-azure-active-directory">Hinzufügen von Benutzern zu Azure AD</a>
-    - html: <a href="/azure/active-directory/fundamentals/license-users-groups">Zuweisen von Lizenzen zu Benutzern</a>
-    - html: <a href="/azure/active-directory/fundamentals/active-directory-get-started-premium">Registrieren für Azure AD Premium</a>
-    - html: '<a href="/azure/active-directory/users-groups-roles/groups-quickstart-expiration">Quickstart: Set Office 365 groups to expire in Azure Active Directory</a> (Schnellstart: Festlegen des Ablaufs von Office 365-Gruppen in Azure Active Directory)'
-    - html: '<a href="/azure/active-directory/users-groups-roles/groups-quickstart-naming-policy">Quickstart: Naming policy for groups in Azure Active Directory</a> (Schnellstart: Benennungsrichtlinie für Gruppen in Azure Active Directory)'
-- title: Schritt-für-Schritt-Tutorials
-  items:
-  - type: paragraph
-    text: Hier erfahren Sie, wie sie Gruppen in Azure Active Directory dynamisch auffüllen.
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: Hier erfahren Sie mehr über die Verwendung von Verwaltungstools in Azure Active Directory.
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/fundamentals/add-users-azure-active-directory">Hinzufügen von Benutzern zu Azure AD</a>
+          - html: <a href="/azure/active-directory/fundamentals/license-users-groups">Zuweisen von Lizenzen zu Benutzern</a>
+          - html: <a href="/azure/active-directory/fundamentals/active-directory-get-started-premium">Registrieren für Azure AD Premium</a>
+          - html: '<a href="/azure/active-directory/users-groups-roles/groups-quickstart-expiration">Quickstart: Set Office 365 groups to expire in Azure Active Directory</a> (Schnellstart: Festlegen des Ablaufs von Office 365-Gruppen in Azure Active Directory)'
+          - html: '<a href="/azure/active-directory/users-groups-roles/groups-quickstart-naming-policy">Quickstart: Naming policy for groups in Azure Active Directory</a> (Schnellstart: Benennungsrichtlinie für Gruppen in Azure Active Directory)'
+  - title: Schritt-für-Schritt-Tutorials
     items:
-    - html: '<a href="/azure/active-directory/users-groups-roles/groups-dynamic-tutorial">Tutorial: Add or remove group members automatically</a> (Tutorial: Automatisches Hinzufügen oder Entfernen von Gruppenmitgliedern)'
-- title: Verweis
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 'Hier erfahren Sie, wie sie Gruppen in Azure Active Directory dynamisch auffüllen.'
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="/azure/active-directory/users-groups-roles/groups-dynamic-tutorial">Tutorial: Add or remove group members automatically</a> (Tutorial: Automatisches Hinzufügen oder Entfernen von Gruppenmitgliedern)'
+  - title: Verweis
     items:
-    - title: Referenzlinks
-      html: <p><a href="https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0">Azure AD PowerShell-Cmdlets</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Referenzlinks
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0">Azure AD PowerShell-Cmdlets</a></p>'

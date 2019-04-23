@@ -8,36 +8,34 @@ ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 01/12/2019
+ms.date: 04/10/2019
 ms.author: spelluru
-ms.openlocfilehash: ef510ca88f1b305125c7840932641c8a2359d8c9
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 31b1b852c92ad671564fd54520af3f3a23b3e3c2
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59045240"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59499800"
 ---
 # <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>Schnellstart: Verwenden von Azure PowerShell zum Erstellen einer Service Bus-Warteschlange
-Microsoft Azure Service Bus ist ein Nachrichtenbroker für die Unternehmensintegration, der sicheres Messaging und absolute Zuverlässigkeit bietet. Ein typisches Service Bus-Szenario umfasst normalerweise die Entkopplung von zwei oder mehr Anwendungen, Diensten oder Prozessen und die Übertragung von Zustands- oder Datenänderungen. Szenarien dieser Art können die Planung mehrerer Batchaufträge in einer anderen Anwendung oder einem Dienst oder die Auslösung der Auftragsabwicklung umfassen. Beispielsweise kann es sein, dass ein Einzelhandelsunternehmen seine Point-of-Sale-Daten an ein Backoffice oder regionales Verteilungszentrum sendet, um den Bestand auffüllen bzw. aktualisieren zu lassen. Bei diesem Szenario sendet die Client-App Nachrichten an eine Service Bus-Warteschlange und empfängt Nachrichten von dieser Warteschlange.
-
-![queue](./media/service-bus-quickstart-powershell/quick-start-queue.png)
-
 In dieser Schnellstartanleitung wird beschrieben, wie Sie Nachrichten an eine Service Bus-Warteschlange senden und von dieser empfangen. Sie verwenden Azure PowerShell, um einen Messaging-Namespace und eine Warteschlange innerhalb dieses Namespace zu erstellen und die Anmeldeinformationen dieses Namespace für die Autorisierung zu beschaffen. Anschließend wird gezeigt, wie Sie für diese Warteschlange das Senden und Empfangen von Nachrichten über die [.NET-Standardbibliothek](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) durchführen.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][] erstellen, bevor Sie beginnen.
-
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Damit Sie dieses Tutorial ausführen können, müssen folgende Komponenten installiert sein:
 
-- [Visual Studio 2017 Update 3 (Version 15.3, 26730.01)](https://www.visualstudio.com/vs) oder höher
+- Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][] erstellen, bevor Sie beginnen. 
+- [Visual Studio 2017 Update 3 (Version 15.3, 26730.01)](https://www.visualstudio.com/vs) oder höher Sie verwenden Visual Studio zum Erstellen eines Beispiels, in dem Nachrichten an eine Warteschlange gesendet bzw. von dort empfangen werden. Das Beispiel dient zum Testen der Warteschlange, die Sie im Portal erstellt haben. 
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) ab Version 2.0
 
-Diese Schnellstartanleitung setzt voraus, dass Sie die aktuelle Version von Azure PowerShell verwenden. Wenn Sie eine Installation oder ein Upgrade durchführen müssen, helfen Ihnen die Informationen unter [Installieren und Konfigurieren von Azure PowerShell][] weiter.
+Diese Schnellstartanleitung setzt voraus, dass Sie die aktuelle Version von Azure PowerShell verwenden. Wenn Sie eine Installation oder ein Upgrade durchführen müssen, helfen Ihnen die Informationen unter [Installieren und Konfigurieren von Azure PowerShell][] weiter. Wenn Sie mit Azure Cloud Shell vertraut sind, können Sie den Dienst auch verwenden, ohne Azure PowerShell auf Ihrem Computer zu installieren. Ausführliche Informationen zu Azure Cloud Shell finden Sie unter [Übersicht über Azure Cloud Shell](../cloud-shell/overview.md).
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 1. Installieren Sie zunächst das Service Bus-PowerShell-Modul, sofern noch nicht geschehen:
 
@@ -167,7 +165,7 @@ Die `Main()`-Methode startet dann die asynchrone Nachrichtenschleife `MainAsync(
 
 ### <a name="message-loop"></a>Nachrichtenschleife
 
-Die Methode „MainAsync()“ erstellt einen Warteschlangenclient mit den Befehlszeilenargumenten, ruft einen Nachrichtenhandler für den Empfang mit dem Namen `RegisterOnMessageHandlerAndReceiveMessages()` auf und sendet die Nachrichten:
+Die „MainAsync()“-Methode erstellt einen Warteschlangenclient mit den Befehlszeilenargumenten, ruft einen Nachrichtenhandler für den Empfang mit dem Namen `RegisterOnMessageHandlerAndReceiveMessages()` auf und sendet die Nachrichten:
 
 ```csharp
 static async Task MainAsync(string ServiceBusConnectionString, string QueueName)
@@ -259,10 +257,10 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie einen Service Bus-Namespace und weitere erforderliche Ressourcen zum Senden und Empfangen von Nachrichten für eine Warteschlange erstellt. Weitere Informationen zum Schreiben von Code für das Senden und Empfangen von Nachrichten erhalten Sie im folgenden Tutorial zu Service Bus:
+In diesem Artikel haben Sie einen Service Bus-Namespace und weitere erforderliche Ressourcen zum Senden und Empfangen von Nachrichten für eine Warteschlange erstellt. Weitere Informationen zum Schreiben von Code und Senden und Empfangen von Nachrichten finden Sie in den Tutorials im Abschnitt **Senden und Empfangen von Nachrichten**. 
 
 > [!div class="nextstepaction"]
-> [Aktualisieren des Bestands mit Azure PowerShell](./service-bus-tutorial-topics-subscriptions-powershell.md)
+> [Senden und Empfangen von Nachrichten](service-bus-dotnet-get-started-with-queues.md)
 
 [kostenloses Konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [Installieren und Konfigurieren von Azure PowerShell]: /powershell/azure/install-Az-ps

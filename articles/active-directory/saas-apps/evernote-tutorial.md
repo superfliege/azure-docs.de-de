@@ -8,19 +8,19 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/07/2019
+ms.date: 04/10/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46d8b4c20ee7aa932109c0e89904456fea8dd437
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2ce05e904484a6d773a0132734208b87e161f960
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57854703"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59499919"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-evernote"></a>Tutorial: Azure Active Directory-Integration mit Evernote
 
@@ -53,7 +53,7 @@ Zum Konfigurieren der Integration von Evernote in Azure AD müssen Sie Evernote 
 
 **Führen Sie die folgenden Schritte aus, um Evernote über den Katalog hinzuzufügen:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
+1. Klicken Sie im **[Azure-Portal](https://portal.azure.com)** im linken Navigationsbereich auf das Symbol für **Azure Active Directory**.
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
@@ -61,7 +61,7 @@ Zum Konfigurieren der Integration von Evernote in Azure AD müssen Sie Evernote 
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie am oberen Rand des Dialogfelds auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
@@ -117,7 +117,17 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Evernote
 
     ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
-7. Kopieren Sie im Abschnitt **Evernote einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+7. Klicken Sie zum Ändern der Optionen unter **Signieren** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **SAML-Signaturzertifikat** zu öffnen.
+
+    ![image](common/edit-certificate.png) 
+
+    ![image](./media/evernote-tutorial/samlassertion.png)
+
+    a. Wählen Sie unter **Signaturoption** die Option **SAML-Antwort und-Assertion signieren**.
+
+    b. Klicken Sie unten auf der Seite auf **Speichern**.
+
+8. Kopieren Sie im Abschnitt **Evernote einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
@@ -169,8 +179,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
-    Zum Beispiel, BrittaSimon@contoso.com
+    b. Geben Sie im Feld **Benutzername** den Namen `brittasimon@yourcompanydomain.extension` ein. Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
@@ -207,7 +216,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 Damit sich Azure AD-Benutzer bei Evernote anmelden können, müssen sie in Evernote bereitgestellt werden.  
 Im Fall von Evernote ist die Bereitstellung eine manuelle Aufgabe.
 
-**Führen Sie zum Bereitstellen von Benutzerkonten die folgenden Schritte aus:**
+**So stellen Sie Benutzerkonten bereit:**
 
 1. Melden Sie sich bei der Evernote-Unternehmenswebsite als Administrator an.
 
@@ -231,7 +240,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmeld
 
 Wenn Sie im Zugriffsbereich auf die Kachel „Evernote“ klicken, sollten Sie automatisch bei der Evernote-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Weitere Ressourcen
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 - [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

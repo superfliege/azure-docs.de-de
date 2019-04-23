@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Aufrufen von Cognitive Services-APIs in einer Indizierungspipeline – Azure Search'
-description: Sehen Sie sich Schritt für Schritt ein Beispiel mit Datenextraktion, natürlicher Sprache und KI-basierter Bildverarbeitung in der Azure Search-Indizierung für Datenextraktion und -transformation über JSON-Blobs an.
+title: 'Tutorial: Aufrufen von Cognitive Services-REST-APIs in einer Indizierungspipeline – Azure Search'
+description: Enthält ein Schritt-für-Schritt-Beispiel für Datenextraktion, natürliche Sprache und KI-basierte Bildverarbeitung bei der Azure Search-Indizierung für Datenextraktion und -transformation über JSON-Blobs (mit Postman und REST-API).
 manager: pablocas
 author: luiscabrer
 services: search
@@ -10,14 +10,14 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 5fbcef1d8bc19df251a4d33cafa2fa7b5a7d9431
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: b6e3335ba78d29896c8a253ac710e6ec0da1829a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59261920"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528372"
 ---
-# <a name="tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline-preview"></a>Tutorial: Aufrufen von Cognitive Services-APIs in einer Azure Search-Indizierungspipeline (Vorschau)
+# <a name="rest-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline-preview"></a>REST-Tutorial: Aufrufen von Cognitive Services-APIs in einer Azure Search-Indizierungspipeline (Vorschau)
 
 In diesem Tutorial lernen Sie die Mechanismen des Programmierens von Datenanreicherung in Azure Search mithilfe von *kognitiven Qualifikationen* kennen. Qualifikationen werden durch die Verarbeitung von natürlicher Sprache und Bildanalysefunktionen in Cognitive Services unterstützt. Durch die Zusammenstellung und Konfiguration von Qualifikationsgruppen können Sie Text und Textdarstellungen eines Bilds oder einer gescannten Dokumentdatei extrahieren. Sie können außerdem Sprachen, Entitäten, Schlüsselbegriffe und mehr erkennen. Das Endergebnis besteht in reichhaltigen zusätzlichen Inhalten in einem Azure Search-Index, die von einer KI-unterstützten Indizierungspipeline erstellt wurden. 
 
@@ -43,31 +43,37 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
+In diesem Tutorial werden die folgenden Dienste, Tools und Daten verwendet. 
+
 [Erstellen Sie einen Azure Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). In diesem Tutorial können Sie einen kostenlosen Dienst verwenden.
+
+[Erstellen Sie ein Azure-Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) zum Speichern der Beispieldaten.
 
 REST-Aufrufe für Azure Search werden mithilfe der [Postman-Desktop-App](https://www.getpostman.com/) durchgeführt.
 
-### <a name="get-an-azure-search-api-key-and-endpoint"></a>Abrufen eines API-Schlüssels und eines Endpunkts für Azure Search
+Die [Beispieldaten](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) bestehen aus einem kleinen Satz Dateien verschiedenen Typs. 
+
+## <a name="get-a-key-and-url"></a>Abrufen eines Schlüssels und einer URL
 
 Für REST-Aufrufe sind die Dienst-URL und ein Zugriffsschlüssel für jede Anforderung erforderlich. Hierfür wird jeweils ein Suchdienst erstellt. Wenn Sie Azure Search also Ihrem Abonnement hinzugefügt haben, können Sie diese Schritte ausführen, um die erforderlichen Informationen zu erhalten:
 
-1. Rufen Sie die URL im Azure-Portal auf der Seite **Übersicht** Ihres Suchdiensts ab. Ein Beispiel für einen Endpunkt ist `https://my-service-name.search.windows.net`.
+1. [Melden Sie sich beim Azure-Portal an](https://portal.azure.com/), und rufen Sie auf der Seite **Übersicht** Ihres Suchdiensts die URL ab. Ein Beispiel für einen Endpunkt ist `https://mydemo.search.windows.net`.
 
-2. Rufen Sie unter **Einstellungen** > **Schlüssel** einen Administratorschlüssel ab, um Vollzugriff auf den Dienst zu erhalten. Es gibt zwei austauschbare Administratorschlüssel – diese wurden zum Zweck der Geschäftskontinuität bereitgestellt, falls Sie einen Rollover für einen Schlüssel durchführen müssen. Für Anforderungen zum Hinzufügen, Ändern und Löschen von Objekten können Sie den primären oder den sekundären Schlüssel verwenden.
+1. Rufen Sie unter **Einstellungen** > **Schlüssel** einen Administratorschlüssel ab, um Vollzugriff auf den Dienst zu erhalten. Es gibt zwei austauschbare Administratorschlüssel – diese wurden zum Zweck der Geschäftskontinuität bereitgestellt, falls Sie einen Rollover für einen Schlüssel durchführen müssen. Für Anforderungen zum Hinzufügen, Ändern und Löschen von Objekten können Sie den primären oder den sekundären Schlüssel verwenden.
 
 ![Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels](media/search-fiddler/get-url-key.png "Abrufen eines HTTP-Endpunkts und Zugriffsschlüssels")
 
 Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 
-### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Einrichten des Azure Blob-Diensts und Laden von Beispieldaten
+## <a name="prepare-sample-data"></a>Vorbereiten der Beispieldaten
 
-Die Anreicherungspipeline lädt per Pull aus Azure-Datenquellen herunter. Quelldaten müssen von einem unterstützten Datenquellentyp eines [Azure Search-Indexers](search-indexer-overview.md) stammen. Bitte beachten Sie, dass der Azure-Tabellenspeicher für die kognitive Suche nicht unterstützt wird. Für diese Übung verwenden wir Blobspeicher, um verschiedene Inhaltstypen anschaulich vorzustellen.
+Die Anreicherungspipeline lädt per Pull aus Azure-Datenquellen herunter. Quelldaten müssen von einem unterstützten Datenquellentyp eines [Azure Search-Indexers](search-indexer-overview.md) stammen. Azure Table Storage wird für die kognitive Suche nicht unterstützt. Für diese Übung verwenden wir Blobspeicher, um verschiedene Inhaltstypen anschaulich vorzustellen.
 
-1. [Laden Sie die Beispieldaten herunter](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4), die aus einem kleinen Satz Dateien verschiedener Typen bestehen. 
+1. [Melden Sie sich beim Azure-Portal an](https://portal.azure.com), navigieren Sie zu Ihrem Azure-Speicherkonto, klicken Sie auf **BLOBs** und dann auf **+ Container**.
 
-1. [Registrieren Sie sich für Azure Blob Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal), erstellen Sie ein Speicherkonto, öffnen Sie die Seiten für Blob-Dienste, und erstellen Sie einen Container. Erstellen Sie das Speicherkonto in der gleichen Region wie Azure Search.
+1. [Erstellen Sie einen Blobcontainer](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) für die Beispieldaten. Sie können die öffentliche Zugriffsebene auf beliebige gültige Werte festlegen.
 
-1. Klicken Sie im von Ihnen erstellten Container auf **Hochladen**, um die in einem vorherigen Schritt heruntergeladenen Beispieldateien hochzuladen.
+1. Öffnen Sie den Container nach der Erstellung, und wählen Sie in der Befehlsleiste die Option **Hochladen**, um die Beispieldateien hochzuladen, die Sie in einem vorherigen Schritt heruntergeladen haben.
 
    ![Quelldateien in Azure Blob Storage](./media/cognitive-search-quickstart-blob/sample-data.png)
 
@@ -81,11 +87,22 @@ Die Anreicherungspipeline lädt per Pull aus Azure-Datenquellen herunter. Quelld
 
 Es gibt andere Möglichkeiten zum Angeben der Verbindungszeichenfolge, etwa das Bereitstellen einer Shared Access Signature (SAS). Weitere Informationen über Anmeldeinformationen für Datenquellen finden Sie unter [Indizieren von Azure Blob Storage](search-howto-indexing-azure-blob-storage.md#Credentials).
 
+## <a name="set-up-postman"></a>Einrichten von Postman
+
+Starten Sie Postman, und richten Sie eine HTTP-Anforderung ein. Wenn Sie mit diesem Tool nicht vertraut sind, lesen Sie [Untersuchen von Azure Search-REST-APIs mit Postman oder Fiddler](search-fiddler.md).
+
+Die in diesem Tutorial verwendeten Anforderungsmethoden sind **POST**, **PUT** und **GET**. Die Headerschlüssel sind „Content-type“ mit der Einstellung „application/json“ und „api-key“ mit der Einstellung auf einen Administratorschlüssel Ihres Azure Search-Diensts. Im Text ordnen Sie den eigentlichen Inhalt Ihres Aufrufs an. 
+
+  ![Teilweise strukturierte Suche](media/search-semi-structured-data/postmanoverview.png)
+
+Wir nutzen Postman zum Senden von vier API-Aufrufen an Ihren Suchdienst, um eine Datenquelle, eine Qualifikationsgruppe, einen Index und einen Indexer zu erstellen. Die Datenquelle enthält einen Zeiger auf Ihr Speicherkonto und Ihre JSON-Daten. Ihr Suchdienst stellt die Verbindung beim Laden der Daten her.
+
+
 ## <a name="create-a-data-source"></a>Erstellen einer Datenquelle
 
 Jetzt, da Ihre Dienste und Datenquellen vorbereitet sind, beginnen Sie damit, die Komponenten Ihrer Indizierungspipeline zusammenzustellen. Beginnen Sie mit einem [Datenquellenobjekt](https://docs.microsoft.com/rest/api/searchservice/create-data-source), das Azure Search anweist, wie die externen Quelldaten abzurufen sind.
 
-Verwenden Sie für dieses Lernprogramm die REST-API und ein Tool, das HTTP-Anforderungen formulieren und senden kann, z.B. PowerShell, Postman oder Fiddler. Geben Sie im Anforderungsnamen den Dienstnamen, den Sie beim Erstellen des Azure Search-Diensts verwendet haben, und den für Ihren Suchdienst generierten API-Schlüssel an. Geben Sie im Hauptteil der Anforderung den Namen des Blobcontainers und die Verbindungszeichenfolge an.
+Geben Sie im Anforderungsnamen den Dienstnamen, den Sie beim Erstellen des Azure Search-Diensts verwendet haben, und den für Ihren Suchdienst generierten API-Schlüssel an. Geben Sie im Hauptteil der Anforderung den Namen des Blobcontainers und die Verbindungszeichenfolge an.
 
 ### <a name="sample-request"></a>Beispiel für eine Anforderung
 ```http
@@ -108,7 +125,7 @@ api-key: [admin key]
 ```
 Senden Sie die Anforderung. Das Web Test-Tool sollte den Erfolg durch Rückgabe von Statuscode 201 bestätigen. 
 
-Da es sich hier um Ihre erste Anforderung handelt, überprüfen Sie im Azure-Portal, ob die Datenquelle in Azure Search erstellt wurde. Überprüfen Sie auf der Dashboard-Seite des Suchdiensts, ob die Kachel „Datenquellen“ einen neuen Eintrag aufweist. Möglicherweise müssen Sie einige Minuten warten, bis die Portalseite aktualisiert wurde. 
+Da es sich hier um Ihre erste Anforderung handelt, überprüfen Sie im Azure-Portal, ob die Datenquelle in Azure Search erstellt wurde. Überprüfen Sie auf der Dashboard-Seite des Suchdiensts, ob die Liste „Datenquellen“ einen neuen Eintrag enthält. Möglicherweise müssen Sie einige Minuten warten, bis die Portalseite aktualisiert wurde. 
 
   ![Kachel „Datenquellen“ im Portal](./media/cognitive-search-tutorial-blob/data-source-tile.png "Kachel „Datenquellen“ im Portal")
 
@@ -116,13 +133,13 @@ Wenn der Fehler 403 oder 404 angezeigt wird, überprüfen Sie die Konstruktion d
 
 ## <a name="create-a-skillset"></a>Erstellen eines Skillsets
 
-In diesem Schritt definieren Sie eine Reihe von Anreicherungsschritten, die Sie auf Ihre Daten anwenden möchten. Jeder Anreicherungsschritt wird als *Qualifikation* und der Satz von Anreicherungsschritten als *Qualifikationsgruppe* bezeichnet. Dieses Tutorial verwendet für die Qualifikationsgruppe [vordefinierte kognitive Qualifikationen](cognitive-search-predefined-skills.md):
+In diesem Schritt definieren Sie eine Reihe von Anreicherungsschritten, die Sie auf Ihre Daten anwenden möchten. Jeder Anreicherungsschritt wird als *Qualifikation* und der Satz von Anreicherungsschritten als *Qualifikationsgruppe* bezeichnet. In diesem Tutorial werden für die Qualifikationsgruppe [integrierte kognitive Qualifikationen](cognitive-search-predefined-skills.md) verwendet:
 
 + [Spracherkennung](cognitive-search-skill-language-detection.md), um die Sprache der Inhalte zu bestimmen.
 
 + [Text unterteilen](cognitive-search-skill-textsplit.md), um große Inhalte vor dem Aufrufen der Schlüsselbegriffserkennungs-Qualifikation in kleinere Stücke aufzuteilen. Die Schlüsselbegriffserkennung akzeptiert Eingaben von 50.000 Zeichen oder weniger. Für einige der Beispieldateien ist eine Aufteilung erforderlich, um diesen Grenzwert zu erfüllen.
 
-+ [Eigennamenerkennung](cognitive-search-skill-named-entity-recognition.md), um die Namen von Organisationen aus Inhalten im Blobcontainer zu extrahieren.
++ [Entitätserkennung](cognitive-search-skill-entity-recognition.md), um die Namen von Organisationen aus Inhalten im Blobcontainer zu extrahieren.
 
 + [Schlüsselbegriffserkennung](cognitive-search-skill-keyphrases.md), um die wichtigsten Schlüsselbegriffe herauszuziehen. 
 
@@ -144,7 +161,7 @@ Content-Type: application/json
   "skills":
   [
     {
-      "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
+      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
       "categories": [ "Organization" ],
       "defaultLanguageCode": "en",
       "inputs": [
@@ -217,7 +234,7 @@ Content-Type: application/json
 
 Senden Sie die Anforderung. Das Web Test-Tool sollte den Erfolg durch Rückgabe von Statuscode 201 bestätigen. 
 
-#### <a name="about-the-request"></a>Informationen zur Anforderung
+#### <a name="explore-the-request-body"></a>Untersuchen des Anforderungstexts
 
 Beachten Sie, in welcher Weise die Schlüsselbegriffserkennungs-Qualifikation für die einzelnen Seiten angewendet wird. Durch Festlegen des Kontexts auf ```"document/pages/*"``` führen Sie diesen Anreicherungsschritt für jedes Element des Dokument-/Seitenarrays (für jede Seite im Dokument) aus.
 
@@ -306,11 +323,13 @@ Weitere Informationen zum Definieren eines Index finden Sie unter [Index erstell
 
 ## <a name="create-an-indexer-map-fields-and-execute-transformations"></a>Erstellen eines Indexers, Zuordnen von Feldern und Ausführen von Transformationen
 
-Bisher haben Sie eine Datenquelle, eine Qualifikationsgruppe und einen Index erstellt. Diese drei Komponenten werden Teil eines [Indexers](search-indexer-overview.md), der jedes einzelne Stück per Pull in einen einzelnen mehrstufigen Vorgang herunterlädt. Um diese in einem Indexer zusammenzuführen, müssen Sie Feldzuordnungen definieren. Feldzuordnungen sind Bestandteil der Indexerdefinition und führen die Transformationen aus, wenn Sie die Anforderung senden.
+Bisher haben Sie eine Datenquelle, eine Qualifikationsgruppe und einen Index erstellt. Diese drei Komponenten werden Teil eines [Indexers](search-indexer-overview.md), der jedes einzelne Stück per Pull in einen einzelnen mehrstufigen Vorgang herunterlädt. Um diese in einem Indexer zusammenzuführen, müssen Sie Feldzuordnungen definieren. 
 
-Für nicht anreichernde Indizierung stellt der Indexer einen optionalen Abschnitt *fieldMappings* zur Verfügung, wenn die Feldnamen oder Datentypen nicht exakt übereinstimmen oder Sie eine Funktion verwenden möchten.
++ fieldMappings werden vor der Qualifikationsgruppe verarbeitet, und die Quellfelder der Datenquelle werden Zielfeldern in einem Index zugeordnet. Wenn die Feldnamen und -typen auf beiden Seiten gleich sind, ist keine Zuordnung erforderlich.
 
-Für Workloads der kognitiven Suche, die eine Anreicherungspipeline aufweisen, benötigt ein Indexer *outputFieldMappings*. Diese Zuordnungen werden verwendet, wenn ein interner Vorgang (die Anreicherungspipeline) die Quelle der Feldwerte bildet. Zu den Verhalten, die *outputFieldMappings* exklusiv auszeichnen, gehört die Fähigkeit zum Verarbeiten komplexer Typen, die im Rahmen der Anreicherung (mithilfe der Shaper-Qualifikation) erstellt werden. Ferner können pro Dokument viele Elemente vorkommen (beispielsweise mehrere Organisationen in einem Dokument). Das Konstrukt *outputFieldMappings* kann das System anweisen, Sammlungen von Elementen in einem einzelnen Datensatz zu „vereinfachen“.
++ outputFieldMappings werden nach der Qualifikationsgruppe verarbeitet. Es wird auf nicht vorhandene sourceFieldNames verwiesen, bis diese per Dokumententschlüsselung oder Anreicherung erstellt werden. targetFieldName ist ein Feld in einem Index.
+
+Neben dem Verknüpfen von Ein- und Ausgaben können Sie auch Feldzuordnungen nutzen, um Datenstrukturen zu vereinfachen. Weitere Informationen finden Sie unter [Zuordnen angereicherter Felder zu einem durchsuchbaren Index](cognitive-search-output-field-mapping.md).
 
 ### <a name="sample-request"></a>Beispiel für eine Anforderung
 
@@ -378,7 +397,7 @@ Sie sollten damit rechnen, dass die Ausführung dieses Schritts mehrere Minuten 
 > [!TIP]
 > Die Pipeline wird durch Erstellen eines Indexers aufgerufen. Wenn beim Zugriff auf die Daten, dem Zuordnen von Ein- und Ausgaben oder der Reihenfolge der Vorgänge Probleme bestehen, äußern sie sich in dieser Phase. Um die Pipeline mit Code- oder Skriptänderungen auszuführen, müssen Sie möglicherweise zuerst Objekte löschen. Weitere Informationen finden Sie unter [Reset and re-run](#reset) (Zurücksetzen und erneut Ausführen).
 
-### <a name="explore-the-request-body"></a>Untersuchen des Anforderungstexts
+#### <a name="explore-the-request-body"></a>Untersuchen des Anforderungstexts
 
 Das Skript legt ```"maxFailedItems"``` auf -1 fest, was die Indexengine anweist, Fehler beim Datenimport zu ignorieren. Dies ist nützlich, weil die Demodatenquelle nur wenige Dokumente enthält. Für eine größere Datenquelle sollten Sie den Wert größer als 0 festlegen.
 

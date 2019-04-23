@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 561cecbb3f3cb985c71ca9d56dbff6cefef13e5a
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730425"
 documentType: LandingData
 title: Dokumentation zur Bing-Websuche-API
 metadata:
   document_id: 6111ada8-aec2-11e7-abc4-cec278b6b50a
   title: 'Dokumentation zur Bing-Websuche-API: Tutorials, Schnellstartanleitungen, API-Referenzen | Microsoft-Dokumentation'
-  description: Hier erfahren Sie, wie Sie mit der Bing-Websuche-API Web nach Webseiten, Bildern, Videos, Nachrichten und mehr suchen.
+  description: 'Hier erfahren Sie, wie Sie mit der Bing-Websuche-API Web nach Webseiten, Bildern, Videos, Nachrichten und mehr suchen.'
   services: cognitive-services
   author: nitinme
   manager: cgronlun
@@ -22,92 +16,92 @@ metadata:
   ms.date: 9/24/2018
   ms.author: nitinme
 abstract:
-  description: Mithilfe der Bing-Websuche-API können Sie die Suchfunktionen von Bing in Ihre Anwendungen integrieren. Sie können Suchabfragen über die API senden und relevante Webseiten, Bilder, Videos, Nachrichten und mehr abrufen.
+  description: 'Mithilfe der Bing-Websuche-API können Sie die Suchfunktionen von Bing in Ihre Anwendungen integrieren. Sie können Suchabfragen über die API senden und relevante Webseiten, Bilder, Videos, Nachrichten und mehr abrufen.'
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/bing-web-search/overview
+            html: <p>Informationen zur Bing-Websuche-API</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Worum handelt es sich bei der Bing-Websuche?
+          - href: /azure/cognitive-services/bing-web-search/search-responses
+            html: <p>Verstehen des Antworttexts einer Bing-Websuche-API</p>
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: Antworten der Websuche
+          - href: /azure/cognitive-services/bing-web-search/autosuggest-bing-search-terms
+            html: '<p>Erfahren Sie, wie die Vorschlagssuche bei Ihrer Suchabfrage funktioniert</p>'
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: Vorschlagssuche für Bing-Abfragen
+  - title: Fünfminütige Schnellstarts
     items:
-    - href: /azure/cognitive-services/bing-web-search/overview
-      html: <p>Informationen zur Bing-Websuche-API</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: Worum handelt es sich bei der Bing-Websuche?
-    - href: /azure/cognitive-services/bing-web-search/search-responses
-      html: <p>Verstehen des Antworttexts einer Bing-Websuche-API</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: Antworten der Websuche
-    - href: /azure/cognitive-services/bing-web-search/autosuggest-bing-search-terms
-      html: <p>Erfahren Sie, wie die Vorschlagssuche bei Ihrer Suchabfrage funktioniert</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: Vorschlagssuche für Bing-Abfragen
-- title: Fünfminütige Schnellstarts
-  items:
-  - type: paragraph
-    text: 'Suchen im Web mit:'
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: 'Suchen im Web mit:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/logo_csharp.svg
+            href: web-search-sdk-quickstart
+            text: 'C&#35;'
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_gopher.svg'
+            href: quickstarts/go
+            text: Go
+          - image:
+              src: media/index/logo_java.svg
+            href: web-sdk-java-quickstart
+            text: Java
+          - image:
+              src: media/index/logo_nodejs.svg
+            href: web-search-sdk-node-quickstart
+            text: Node.js
+          - image:
+              src: media/index/logo_php.svg
+            href: quickstarts/php
+            text: PHP
+          - image:
+              src: media/index/logo_python.svg
+            href: web-sdk-python-quickstart
+            text: Python
+          - image:
+              src: media/index/logo_ruby.svg
+            href: quickstarts/ruby
+            text: Ruby
+  - title: Schritt-für-Schritt-Tutorials
     items:
-    - image:
-        src: media/index/logo_csharp.svg
-      href: web-search-sdk-quickstart
-      text: C&#35;
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_gopher.svg
-      href: quickstarts/go
-      text: Go
-    - image:
-        src: media/index/logo_java.svg
-      href: web-sdk-java-quickstart
-      text: Java
-    - image:
-        src: media/index/logo_nodejs.svg
-      href: web-search-sdk-node-quickstart
-      text: Node.js
-    - image:
-        src: media/index/logo_php.svg
-      href: quickstarts/php
-      text: PHP
-    - image:
-        src: media/index/logo_python.svg
-      href: web-sdk-python-quickstart
-      text: Python
-    - image:
-        src: media/index/logo_ruby.svg
-      href: quickstarts/ruby
-      text: Ruby
-- title: Schritt-für-Schritt-Tutorials
-  items:
-  - type: paragraph
-    text: 'Hier erfahren Sie, wie Anwendungen unter Verwendung der Bing-Websuche-API entwickelt werden:'
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Hier erfahren Sie, wie Anwendungen unter Verwendung der Bing-Websuche-API entwickelt werden:'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="tutorial-bing-web-search-single-page-app">Einzelseiten-Web-App</a>
+  - title: Beispiele
     items:
-    - html: <a href="tutorial-bing-web-search-single-page-app">Einzelseiten-Web-App</a>
-- title: Beispiele
-  items:
-  - type: paragraph
-    text: 'Suchen Sie Beispiele für die Bing-Websuche-API:'
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 'Suchen Sie Beispiele für die Bing-Websuche-API:'
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="https://github.com/Azure-Samples/cognitive-services-REST-api-samples">REST-Beispiele</a>'
+          - html: <a href="sdk-samples.md">SDK-Beispiele</a>
+  - title: Verweis
     items:
-    - html: <a href="https://github.com/Azure-Samples/cognitive-services-REST-api-samples">REST-Beispiele</a>
-    - html: <a href="sdk-samples.md">SDK-Beispiele</a>
-- title: Verweis
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: REST
-      html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference">Bing-Websuche-API v7</a></p><p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v5-reference/">Bing-Websuche-API v5</a></p>
-    - title: SDKs
-      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/websearch?view=azure-node-latest">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/websearch?view=azure-python">Python</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/websearch">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/websearch?view=azure-java-stable">Java</a></p>
-    - title: PowerShell
-      html: <p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
-    - title: Befehlszeilenschnittstelle (CLI)
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure-Befehlszeilenschnittstelle</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST
+            html: '<p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference">Bing-Websuche-API v7</a></p><p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v5-reference/">Bing-Websuche-API v5</a></p>'
+          - title: SDKs
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingwebsearchapi?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-websearch?view=azure-node-latest">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/websearch?view=azure-python">Python</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/websearch">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/websearch?view=azure-java-stable">Java</a></p>'
+          - title: PowerShell
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: Befehlszeilenschnittstelle (CLI)
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure-Befehlszeilenschnittstelle</a></p>'

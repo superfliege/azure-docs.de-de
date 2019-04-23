@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/20/2018
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 3d535c71480693d0424c6697776a1ddbf37b47c5
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 1db103fe46db292e2aa41b648c0ace16fd450d90
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59470915"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525421"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Verwenden des Azure Cosmos-Emulators für lokale Entwicklungs- und Testvorgänge
 
@@ -151,9 +151,9 @@ table.Execute(TableOperation.Insert(new DynamicTableEntity("partitionKey", "rowK
 
 Starten Sie den Emulator aus der Eingabeaufforderung als Administrator mit „/EnableCassandraEndpoint“. Alternativ können Sie auch die Umgebungsvariable `AZURE_COSMOS_EMULATOR_CASSANDRA_ENDPOINT=true` festlegen.
 
-* [Installieren Sie Python 2.7.](https://www.python.org/downloads/release/python-2716/)
+* [Installieren Sie Python 2.7](https://www.python.org/downloads/release/python-2716/).
 
-* [Installieren Sie Cassandra CLI/CQLSH.](http://cassandra.apache.org/download/)
+* [Installieren Sie Cassandra CLI/CQLSH](http://cassandra.apache.org/download/).
 
 * Führen Sie die folgenden Befehle in einem regulären Eingabeaufforderungsfenster aus:
 
@@ -179,9 +179,9 @@ Starten Sie den Emulator aus der Eingabeaufforderung als Administrator mit „/E
 
 ### <a name="gremlin-api"></a>Gremlin-API
 
-Starten Sie den Emulator aus der Eingabeaufforderung als Administrator mit „/EnableGremlinEndpoint“. Alternativ können Sie auch die Umgebungsvariable festlegen. `AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true`
+Starten Sie den Emulator aus der Eingabeaufforderung als Administrator mit „/EnableGremlinEndpoint“. Alternativ können Sie auch die Umgebungsvariable `AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true` festlegen.
 
-* [Installieren Sie „apache-tinkerpop-gremlin-console-3.3.4“.](http://tinkerpop.apache.org/downloads.html)
+* [Installieren Sie apache-tinkerpop-gremlin-console-3.3.4](http://tinkerpop.apache.org/downloads.html).
 
 * Erstellen Sie im Data Explorer des Emulators eine Datenbank „db1“ und eine Sammlung „coll1“; wählen Sie für den Partitionsschlüssel „/name“.
 
@@ -236,7 +236,7 @@ Sie können die Befehlszeile im Installationspfad verwenden, um den Emulator zu 
 
 Geben Sie zum Anzeigen der Liste der Optionen an der Eingabeaufforderung `CosmosDB.Emulator.exe /?` ein.
 
-|**Option** | **BESCHREIBUNG** | **Get-Help**| **Argumente**|
+|**Option** | **Beschreibung** | **Befehl**| **Argumente**|
 |---|---|---|---|
 |[Keine Argumente] | Startet den Azure Cosmos-Emulator mit den Standardeinstellungen. |CosmosDB.Emulator.exe| |
 |[Hilfe] |Zeigt die Liste mit unterstützten Befehlszeilenargumenten an.|CosmosDB.Emulator.exe /? | |
@@ -252,7 +252,7 @@ Geben Sie zum Anzeigen der Liste der Optionen an der Eingabeaufforderung `Cosmos
 | GremlinPort | Die für den Gremlin-Endpunkt zu verwendende Portnummer. Der Standardwert ist 8901. | CosmosDB.Emulator.exe /GremlinPort=\<port\> | \<port\>: Einzelne Portnummer. |
 |TablePort | Die für den Azure-Tabellenendpunkt zu verwendende Portnummer. Der Standardwert ist 8902. | CosmosDB.Emulator.exe /TablePort=\<port\> | \<port\>: Einzelne Portnummer.|
 | KeyFile | Liest den Autorisierungsschlüssel aus der angegebenen Datei. Verwenden Sie die Option „/GenKeyFile“, um eine Schlüsseldatei zu generieren. | CosmosDB.Emulator.exe /KeyFile=\<file_name\> | \<file_name\>: Der Pfad zur Datei. |
-| ResetDataPath | Entfernt rekursiv alle Dateien im angegebenen Pfad. Wenn Sie keinen Pfad angeben, wird standardmäßig „%LOCALAPPDATA%\CosmosDbEmulator“ verwendet. | CosmosDB.Emulator.exe /ResetDataPath[=<path>] | \<path\>: Dateipfad  |
+| ResetDataPath | Entfernt rekursiv alle Dateien im angegebenen Pfad. Wenn Sie keinen Pfad angeben, wird standardmäßig „%LOCALAPPDATA%\CosmosDbEmulator“ verwendet. | CosmosDB.Emulator.exe /ResetDataPath[=\<path>] | \<path\>: Dateipfad  |
 | StartTraces  |  Startet das Sammeln von Debugablaufverfolgungsprotokollen. | CosmosDB.Emulator.exe /StartTraces | |
 | StopTraces     | Beendet das Sammeln von Debugablaufverfolgungsprotokollen. | CosmosDB.Emulator.exe /StopTraces  | |
 |EnableTableEndpoint | Aktiviert die Azure-Tabellen-API | CosmosDB.Emulator.exe /EnableTableEndpoint | |

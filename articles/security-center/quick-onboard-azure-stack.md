@@ -3,7 +3,7 @@ title: 'Schnellstart für Azure Security Center: Integrieren Ihrer Azure Stack-
 description: In diesem Schnellstart erfahren Sie, wie Sie die VM-Erweiterung zur Update- und Konfigurationsverwaltung für Azure Monitor auf einer Azure Stack-VM bereitstellen.
 services: security-center
 documentationcenter: na
-author: monhaber
+author: pipposera
 manager: dsavage
 editor: ''
 ms.assetid: 8982348a-0624-40c7-8a1e-642a523c7f6b
@@ -14,13 +14,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
-ms.author: monhaber
-ms.openlocfilehash: 9efd6514b722168f8ecb1235159e7463ce318118
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.author: fiseraci
+ms.openlocfilehash: 7a630acee079301b95e7e05f5c5333dd116abb68
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904014"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59563793"
 ---
 # <a name="quickstart--onboard-your-azure-stack-virtual-machines-to-security-center"></a>Schnellstart:  Integrieren Ihrer Azure Stack-VMs in Security Center
 Nachdem Sie Ihr Azure-Abonnement eingebunden haben, können Sie Security Center zum Schützen Ihrer in Azure Stack ausgeführten VMs einrichten, indem Sie die VM-Erweiterung zur **Update- und Konfigurationsverwaltung für Azure Monitor** aus dem Azure Stack-Marketplace hinzufügen.
@@ -32,7 +32,7 @@ Für den Einstieg in Security Center benötigen Sie ein Microsoft Azure-Abonneme
 
 Bevor Sie mit diesem Schnellstart beginnen, benötigen Sie ein Azure-Abonnement für den Standard-Tarif von Security Center. Anweisungen zum Upgrade finden Sie unter [Schnellstart: Einbinden Ihres Azure-Abonnements in Security Center Standard](security-center-get-started.md). Sie können den Standard-Tarif von Security Center 30 Tage lang kostenlos testen. Weitere Informationen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/security-center/).
 
-## <a name="add-an-azure-stack-virtual-machine"></a>Hinzufügen einer Azure Stack-VM
+## <a name="select-your-workspace-in-azure-security-center"></a>Auswählen Ihres Arbeitsbereichs in Azure Security Center
 
 1. Melden Sie sich beim [Azure-Portal](https://azure.microsoft.com/features/azure-portal/) an.
 2. Wählen Sie im Menü **Microsoft Azure** die Option **Security Center**. **Security Center – Übersicht** wird geöffnet. 
@@ -65,6 +65,10 @@ Jetzt müssen Sie die VM-Erweiterung zur **Update- und Konfigurationsverwaltung 
 3. Wählen Sie **Erweiterungen**. Die Liste der auf dieser VM installierten VM-Erweiterungen wird angezeigt.
 4. Klicken Sie auf die Registerkarte **Hinzufügen**. Das Menüblatt **Neue Ressource** mit einer Liste der verfügbaren VM-Erweiterungen wird geöffnet. 
 5. Wählen Sie die Erweiterung **Azure Monitor, Update and Configuration Management** (Azure Monitor, Update- und Konfigurationsverwaltung) aus, und klicken Sie auf **Erstellen**. Das Konfigurationsblatt **Erweiterung installieren** wird geöffnet.
+
+>[!NOTE]
+> Falls die Erweiterung **Azure Monitor, Update- und Konfigurationsverwaltung** in Ihrem Marketplace nicht aufgeführt ist, können Sie sich an Ihren Azure Stack-Betreiber wenden, damit sie zur Verfügung gestellt wird.
+
 6. Fügen Sie auf dem Konfigurationsblatt **Erweiterung installieren** die **Arbeitsbereichs-ID** und den **Arbeitsbereichsschlüssel (Primärschlüssel)** ein, die Sie im vorherigen Schritt in Editor kopiert haben.
 7.  Geben Sie die erforderlichen Konfigurationseinstellungen an, und klicken Sie dann auf **Weiter**.
 8. Nach Abschluss der Installation wird die Erweiterung mit dem Status **Bereitstellung erfolgreich** angezeigt. Es kann bis zu einer Stunde dauern, bis die VM im Security Center-Portal angezeigt wird.

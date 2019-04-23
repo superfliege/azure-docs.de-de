@@ -2,8 +2,8 @@
 documentType: LandingData
 title: Dokumentation zu API Management
 metadata:
-  title: Dokumentation für Azure API Management – Tutorials, API-Referenz | Microsoft-Dokumentation
-  description: Hier erfahren Sie, wie Sie APIs mithilfe von API Management sicher und skalierbar für externe und interne Entwickler sowie für Entwicklungspartner veröffentlichen. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie moderne API-Gateways für vorhandene Back-End-Dienste erstellen und verwalten – ganz gleich, wo diese gehostet werden.
+  title: 'Dokumentation für Azure API Management – Tutorials, API-Referenz | Microsoft-Dokumentation'
+  description: 'Hier erfahren Sie, wie Sie APIs mithilfe von API Management sicher und skalierbar für externe und interne Entwickler sowie für Entwicklungspartner veröffentlichen. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie moderne API-Gateways für vorhandene Back-End-Dienste erstellen und verwalten – ganz gleich, wo diese gehostet werden.'
   services: api-management
   author: czeumault
   manager: carolz
@@ -13,51 +13,45 @@ metadata:
   ms.topic: landing-page
   ms.date: 11/15/2017
   ms.author: carolz
-  ms.openlocfilehash: 627498481ff5e64573478dd736cdd28962036caf
-  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
-  ms.translationtype: HT
-  ms.contentlocale: de-DE
-  ms.lasthandoff: 01/12/2018
-  ms.locfileid: "27786695"
 abstract:
-  description: Hier erfahren Sie, wie Sie APIs mithilfe von API Management sicher und skalierbar für externe und interne Entwickler sowie für Entwicklungspartner veröffentlichen. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie moderne API-Gateways für vorhandene Back-End-Dienste erstellen und verwalten – ganz gleich, wo diese gehostet werden.
+  description: 'Hier erfahren Sie, wie Sie APIs mithilfe von API Management sicher und skalierbar für externe und interne Entwickler sowie für Entwicklungspartner veröffentlichen. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie moderne API-Gateways für vorhandene Back-End-Dienste erstellen und verwalten – ganz gleich, wo diese gehostet werden.'
 sections:
-- title: Fünfminütige Schnellstarts
-  items:
-  - type: paragraph
-    text: Erstellen einer API Management-Instanz
-  - type: list
-    style: icon48
+  - title: Fünfminütige Schnellstarts
     items:
-    - image:
-        src: https://docs.microsoft.com/azure/sql-database/media/index/portal.svg
-      text: Erstellen einer Instanz – Portal
-      href: /azure/api-management/get-started-create-service-instance
-    - image:
-        src: https://docs.microsoft.com/azure/sql-database/media/index/logo_powershell.svg
-      text: Erstellen einer Instanz – PowerShell
-      href: /azure/api-management/powershell-create-service-instance
-- title: Schritt-für-Schritt-Tutorials
-  items:
-  - type: paragraph
-    text: Informationen zur Verwalten von API Management
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: Erstellen einer API Management-Instanz
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
+            text: Erstellen einer Instanz – Portal
+            href: /azure/api-management/get-started-create-service-instance
+          - image:
+              src: 'https://docs.microsoft.com/azure/sql-database/media/index/logo_powershell.svg'
+            text: Erstellen einer Instanz – PowerShell
+            href: /azure/api-management/powershell-create-service-instance
+  - title: Schritt-für-Schritt-Tutorials
     items:
-    - html: <a href="/azure/api-management/import-and-publish">Importieren und Veröffentlichen Ihrer ersten API</a>
-    - html: <a href="/azure/api-management/api-management-howto-add-products">Erstellen und Veröffentlichen eines Produkts</a>
-    - html: <a href="/azure/api-management/mock-api-responses">API-Modellantworten</a>
-    - html: <a href="/azure/api-management/transform-api">Transformieren und Schützten Ihrer API</a>
-    - html: <a href="/azure/api-management/api-management-howto-use-azure-monitor">Überwachen von veröffentlichten APIs</a>
-    - html: <a href="/azure/api-management/api-management-howto-api-inspector">Debuggen von APIs mit der Anforderungsablaufverfolgung</a>
-    - html: <a href="/azure/api-management/api-management-get-started-revise-api">Gefahrloses Vornehmen geringfügiger Änderungen mithilfe von Revisionen</a>
-    - html: <a href="/azure/api-management/api-management-get-started-publish-versions">Veröffentlichen mehrerer Versionen Ihrer API</a>
-    - html: <a href="/azure/api-management/api-management-customize-styles">Anpassen des Stils der Seiten im Entwicklerportal</a>
-- title: Beispiele
-  items:
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: Informationen zur Verwalten von API Management
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/api-management/import-and-publish">Importieren und Veröffentlichen Ihrer ersten API</a>
+          - html: <a href="/azure/api-management/api-management-howto-add-products">Erstellen und Veröffentlichen eines Produkts</a>
+          - html: <a href="/azure/api-management/mock-api-responses">API-Modellantworten</a>
+          - html: <a href="/azure/api-management/transform-api">Transformieren und Schützten Ihrer API</a>
+          - html: <a href="/azure/api-management/api-management-howto-use-azure-monitor">Überwachen von veröffentlichten APIs</a>
+          - html: <a href="/azure/api-management/api-management-howto-api-inspector">Debuggen von APIs mit der Anforderungsablaufverfolgung</a>
+          - html: <a href="/azure/api-management/api-management-get-started-revise-api">Gefahrloses Vornehmen geringfügiger Änderungen mithilfe von Revisionen</a>
+          - html: <a href="/azure/api-management/api-management-get-started-publish-versions">Veröffentlichen mehrerer Versionen Ihrer API</a>
+          - html: <a href="/azure/api-management/api-management-customize-styles">Anpassen des Stils der Seiten im Entwicklerportal</a>
+  - title: Beispiele
     items:
-    - html: <a href="/azure/api-management/policy-samples">Richtlinie</a>
-    - html: <a href="/azure/api-management/powershell-samples">Azure PowerShell</a>
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/api-management/policy-samples">Richtlinie</a>
+          - html: <a href="/azure/api-management/powershell-samples">Azure PowerShell</a>

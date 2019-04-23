@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 61fdaec79e563ba4d87e73b22aba52a5c3f8251b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: f53e21b8121006a6a6a1d2099b26e7cb28ca0ed9
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59270802"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545296"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Erstellen einer Shopsuche mit Azure Maps
 
@@ -569,7 +569,7 @@ In der Benutzeroberfläche ist jetzt alles eingerichtet. Jetzt müssen wir den J
         },
 
         textOptions: {
-            textField: '{point_count_abbreviated}',
+            textField: ['get', 'point_count_abbreviated'],
             size: 12,
             font: ['StandardFont-Bold'],
             offset: [0, 0.4],
@@ -955,11 +955,11 @@ In diesem Tutorial wurde beschrieben, wie Sie mit Azure Maps eine einfache Shops
 > * Stellen Sie Ihre Shopsuche als [Azure App Service-Web-App](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html) bereit. 
 > * Speichern Sie Ihre Daten in einer Datenbank, und suchen Sie nach Standorten in der Nähe. Weitere Informationen finden Sie unter [Übersicht über räumliche Datentypen](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017) und [Abfragen von nächsten Nachbarn aus räumlichen Daten](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017).
 
-Das Codebeispiel für dieses Tutorial finden Sie hier:
+> [!div class="nextstepaction"]
+> [Anzeigen des vollständigen Quellcodes](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)
 
-> [Erstellen einer Shopsuche mit Azure Maps](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)
-
-[Hier können Sie sich das Beispiel live ansehen.](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)
+> [!div class="nextstepaction"]
+> [Anzeigen eines Livebeispiels](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)
 
 Weitere Informationen zur Abdeckung und zu den Funktionen von Azure Maps finden Sie unter:
 

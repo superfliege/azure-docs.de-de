@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: db01c2f51e9069e8fc9ee979eacf746bee8dbdd2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 3e33eef430db627a82bb82e8c22ddc861d08982b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260917"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546265"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>Ermitteln von Routen für verschiedene Fortbewegungsarten per Azure Maps
 
@@ -283,11 +283,11 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Erstellen von Routenanfragen, die die Fortbewegungsart deklarieren
 > * Anzeigen mehrerer Routen auf Ihrer Karte
 
-Das Codebeispiel für dieses Tutorial finden Sie hier:
+> [!div class="nextstepaction"]
+> [Anzeigen des vollständigen Quellcodes](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html)
 
-> [Mehrere Routen mit Azure Maps](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/truckRoute.html)
-
-[Hier können Sie sich das Beispiel live ansehen.](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel)
+> [!div class="nextstepaction"]
+> [Anzeigen eines Livebeispiels](https://azuremapscodesamples.azurewebsites.net/?sample=Multiple%20routes%20by%20mode%20of%20travel)
 
 Im nächsten Tutorial wird der Prozess für die Erstellung einer einfachen Shopsuche mit Azure Maps erläutert.
 

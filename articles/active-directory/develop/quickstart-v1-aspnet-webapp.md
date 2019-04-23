@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d762e5bb358964b439d1dc6027abc01332da21
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a6119baf79b9323a5c1ad06d75e1410f632015f0
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007612"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548550"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App
 
@@ -32,7 +32,7 @@ In diesem Schnellstart erfahren Sie, wie „Mit Microsoft anmelden“ mithilfe e
 Am Ende dieses Schnellstarts akzeptiert Ihre Anwendung Anmeldungen von Geschäfts-, Schul- oder Unikonten aus Organisationen, die in Azure Active Directory (Azure AD) integriert sind.
 
 > [!NOTE]
-> Wenn Sie die Anmeldung über persönliche Konten zusätzlich zu Geschäfts-, Schul- oder Unikonten aktivieren müssen, verwenden Sie den [v2.0-Endpunkt](azure-ad-endpoint-comparison.md). Weitere Informationen finden Sie in [diesem ASP.NET-Tutorial für den v2.0-Endpunkt](tutorial-v2-asp-webapp.md) sowie in [diesem Artikel](active-directory-v2-limitations.md), der die aktuellen Einschränkungen des v2.0-Endpunkts erläutert.
+> Wenn Sie die Anmeldung über persönliche Konten zusätzlich zu Geschäfts-, Schul- oder Unikonten aktivieren müssen, können Sie den *[Microsoft Identity Platform-Endpunkt](azure-ad-endpoint-comparison.md)* verwenden. Weitere Informationen finden Sie in [diesem ASP.NET-Tutorial](tutorial-v2-asp-webapp.md) und in [diesem Artikel](active-directory-v2-limitations.md), der eine Beschreibung des *Microsoft Identity Platform-Endpunkts* enthält.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

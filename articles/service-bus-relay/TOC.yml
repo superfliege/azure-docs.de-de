@@ -1,96 +1,89 @@
-items:
 - name: Service Bus Relay-Dokumentation
   href: index.yml
 - name: Übersicht
   items:
-  - name: Was ist ein Relay?
-    href: relay-what-is-it.md
+    - name: Was ist ein Relay?
+      href: relay-what-is-it.md
 - name: Lernprogramme
   items:
-  - name: Hybridverbindungen
-    items:
-    - name: 'Senden und Empfangen von Nachrichten: .NET-WebSockets'
-      href: relay-hybrid-connections-dotnet-get-started.md
-    - name: 'Senden und Empfangen von Nachrichten: .NET HTTP'
-      href: relay-hybrid-connections-http-requests-dotnet-get-started.md
-    - name: 'Senden und Empfangen von Nachrichten: Node-WebSockets'
-      href: relay-hybrid-connections-node-get-started.md
-    - name: 'Senden und Empfangen von Nachrichten: Node HTTP'
-      href: relay-hybrid-connections-http-requests-node-get-started.md
-  - name: Windows Communication Foundation (WCF)
-    items:
-    - name: Verfügbarmachen eines lokalen WCF-Diensts für eine Webanwendung in der Cloud
-      href: service-bus-dotnet-hybrid-app-using-service-bus-relay.md
-    - name: Verfügbarmachen eines lokalen WCF-Diensts für einen WCF-Client außerhalb Ihres Netzwerks
-      href: service-bus-relay-tutorial.md
-    - name: Verfügbarmachen eines lokalen WCF-REST-Diensts für einen Client außerhalb Ihres Netzwerks
-      href: service-bus-relay-rest-tutorial.md
+    - name: Hybridverbindungen
+      items:
+        - name: 'Senden und Empfangen von Nachrichten: .NET-WebSockets'
+          href: relay-hybrid-connections-dotnet-get-started.md
+        - name: 'Senden und Empfangen von Nachrichten: .NET HTTP'
+          href: relay-hybrid-connections-http-requests-dotnet-get-started.md
+        - name: 'Senden und Empfangen von Nachrichten: Node-WebSockets'
+          href: relay-hybrid-connections-node-get-started.md
+        - name: 'Senden und Empfangen von Nachrichten: Node HTTP'
+          href: relay-hybrid-connections-http-requests-node-get-started.md
+    - name: Windows Communication Foundation (WCF)
+      items:
+        - name: Verfügbarmachen eines lokalen WCF-Diensts für eine Webanwendung in der Cloud
+          href: service-bus-dotnet-hybrid-app-using-service-bus-relay.md
+        - name: Verfügbarmachen eines lokalen WCF-Diensts für einen WCF-Client außerhalb Ihres Netzwerks
+          href: service-bus-relay-tutorial.md
+        - name: Verfügbarmachen eines lokalen WCF-REST-Diensts für einen Client außerhalb Ihres Netzwerks
+          href: service-bus-relay-rest-tutorial.md
 - name: Beispiele
   items:
-  - name: Hybridverbindungen
-    href: https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections
-  - name: WCF-Relay
-    href: https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay
+    - name: Hybridverbindungen
+      href: 'https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections'
+    - name: WCF-Relay
+      href: 'https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay'
 - name: Konzepte
   items:
-  - name: Authentifizierung und Autorisierung
-    href: relay-authentication-and-authorization.md
-  - name: Hybridverbindungsprotokoll
-    href: relay-hybrid-connections-protocol.md
+    - name: Authentifizierung und Autorisierung
+      href: relay-authentication-and-authorization.md
+    - name: Hybridverbindungsprotokoll
+      href: relay-hybrid-connections-protocol.md
 - name: Anleitung
   items:
-  - name: Planen und Entwerfen
-    items:
-    - name: Migrieren von ACS zu SAS
-      href: relay-migrate-acs-sas.md
-  - name: Entwickeln
-    items:
-    - name: Erstellen eines Namespace
-      href: relay-create-namespace-portal.md
-    - name: Verwenden von WCF Relay, um WCF-Dienste für externe Clients verfügbar zu machen
-      href: relay-wcf-dotnet-get-started.md
-    - name: Verfügbare APIs
-      href: relay-api-overview.md
+    - name: Planen und Entwerfen
       items:
-      - name: .NET
-        href: relay-hybrid-connections-dotnet-api-overview.md
-      - name: Knoten
-        href: relay-hybrid-connections-node-ws-api-overview.md
-  - name: Verwalten
-    items:
-    - name: Überwachen von Azure Relay mit Azure-Überwachung
-      href: relay-metrics-azure-monitor.md
+        - name: Migrieren von ACS zu SAS
+          href: relay-migrate-acs-sas.md
+    - name: Entwickeln
+      items:
+        - name: Erstellen eines Namespace
+          href: relay-create-namespace-portal.md
+        - name: 'Verwenden von WCF Relay, um WCF-Dienste für externe Clients verfügbar zu machen'
+          href: relay-wcf-dotnet-get-started.md
+        - name: Verfügbare APIs
+          href: relay-api-overview.md
+          items:
+            - name: .NET
+              href: relay-hybrid-connections-dotnet-api-overview.md
+            - name: Knoten
+              href: relay-hybrid-connections-node-ws-api-overview.md
+    - name: Verwalten
+      items:
+        - name: Überwachen von Azure Relay mit Azure-Überwachung
+          href: relay-metrics-azure-monitor.md
 - name: Verweis
   items:
-  - name: .NET
-    items:
-    - name: Microsoft.Azure.Relay
-      href: /dotnet/api/microsoft.azure.relay
-    - name: Microsoft.ServiceBus
-      href: /dotnet/api/Microsoft.ServiceBus
-  - name: Ausnahmen
-    href: relay-exceptions.md
-  - name: Porteinstellungen
-    href: relay-port-settings.md
+    - name: .NET
+      items:
+        - name: Microsoft.Azure.Relay
+          href: /dotnet/api/microsoft.azure.relay
+        - name: Microsoft.ServiceBus
+          href: /dotnet/api/Microsoft.ServiceBus
+    - name: Ausnahmen
+      href: relay-exceptions.md
+    - name: Porteinstellungen
+      href: relay-port-settings.md
 - name: Ressourcen
   items:
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/roadmap/?category=enterprise-integration
-  - name: Häufig gestellte Fragen
-    href: relay-faq.md
-  - name: Blog
-    href: https://blogs.msdn.microsoft.com/servicebus/
-  - name: Preise
-    href: https://azure.microsoft.com/pricing/details/service-bus/
-  - name: Preisrechner
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Beispiele
-    href: https://github.com/azure/azure-relay/tree/master/samples
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-servicebusrelay
-ms.openlocfilehash: c90beee9189b54bf3dddc0773ce024eba0762b05
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57883847"
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=enterprise-integration'
+    - name: Häufig gestellte Fragen
+      href: relay-faq.md
+    - name: Blog
+      href: 'https://blogs.msdn.microsoft.com/servicebus/'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/service-bus/'
+    - name: Preisrechner
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Beispiele
+      href: 'https://github.com/azure/azure-relay/tree/master/samples'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-servicebusrelay'

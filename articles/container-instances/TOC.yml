@@ -1,142 +1,135 @@
-items:
 - name: Container Instances
   href: index.yml
 - name: Übersicht
   items:
-  - name: Informationen zu Azure Container Instances
-    href: container-instances-overview.md
+    - name: Informationen zu Azure Container Instances
+      href: container-instances-overview.md
 - name: Schnellstarts
-  items:
-  - name: 'Bereitstellen einer Containerinstanz: CLI'
-    href: container-instances-quickstart.md
-  - name: 'Bereitstellen einer Containerinstanz: Portal'
-    href: container-instances-quickstart-portal.md
-  - name: 'Bereitstellen einer Containerinstanz: PowerShell'
-    href: container-instances-quickstart-powershell.md
   expanded: true
+  items:
+    - name: 'Bereitstellen einer Containerinstanz: CLI'
+      href: container-instances-quickstart.md
+    - name: 'Bereitstellen einer Containerinstanz: Portal'
+      href: container-instances-quickstart-portal.md
+    - name: 'Bereitstellen einer Containerinstanz: PowerShell'
+      href: container-instances-quickstart-powershell.md
 - name: Lernprogramme
   items:
-  - name: Erstellen und Bereitstellen von Containerimages
-    items:
-    - name: 1. Erstellen des Containerimages
-      href: container-instances-tutorial-prepare-app.md
-    - name: 2. Erstellen der Containerregistrierung
-      href: container-instances-tutorial-prepare-acr.md
-    - name: 3. Bereitstellen der Anwendung
-      href: container-instances-tutorial-deploy-app.md
-  - name: Bereitstellen einer Gruppe mit mehreren Containern
-    items:
-    - name: 'Bereitstellen einer Containergruppe: YAML'
-      href: container-instances-multi-container-yaml.md
-    - name: 'Bereitstellen einer Containergruppe: Resource Manager'
-      href: container-instances-multi-container-group.md
+    - name: Erstellen und Bereitstellen von Containerimages
+      items:
+        - name: 1. Erstellen des Containerimages
+          href: container-instances-tutorial-prepare-app.md
+        - name: 2. Erstellen der Containerregistrierung
+          href: container-instances-tutorial-prepare-acr.md
+        - name: 3. Bereitstellen der Anwendung
+          href: container-instances-tutorial-deploy-app.md
+    - name: Bereitstellen einer Gruppe mit mehreren Containern
+      items:
+        - name: 'Bereitstellen einer Containergruppe: YAML'
+          href: container-instances-multi-container-yaml.md
+        - name: 'Bereitstellen einer Containergruppe: Resource Manager'
+          href: container-instances-multi-container-group.md
 - name: Beispiele
   items:
-  - name: Codebeispiele
-    href: https://azure.microsoft.com/resources/samples/?sort=0&term=aci
-  - name: Resource Manager-Vorlagen
-    href: container-instances-samples-rm.md
+    - name: Codebeispiele
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&term=aci'
+    - name: Resource Manager-Vorlagen
+      href: container-instances-samples-rm.md
 - name: Konzepte
   items:
-  - name: Containergruppen
-    href: container-instances-container-groups.md
-  - name: Kontingente und Grenzwerte
-    href: container-instances-quotas.md
-  - name: Regionale Verfügbarkeit
-    href: container-instances-region-availability.md
-  - name: Beziehung zu Orchestratoren
-    href: container-instances-orchestrator-relationship.md
+    - name: Containergruppen
+      href: container-instances-container-groups.md
+    - name: Kontingente und Grenzwerte
+      href: container-instances-quotas.md
+    - name: Regionale Verfügbarkeit
+      href: container-instances-region-availability.md
+    - name: Beziehung zu Orchestratoren
+      href: container-instances-orchestrator-relationship.md
 - name: Anleitungen
   items:
-  - name: Bereitstellen
-    items:
-    - name: Bereitstellen in einem virtuellen Netzwerk (Vorschauversion)
-      href: container-instances-vnet.md
-    - name: Bereitstellen aus Azure Container Registry
-      href: container-instances-using-azure-container-registry.md
-  - name: Containerszenarien
-    items:
-    - name: Festlegen der Neustartrichtlinie für Aufgaben mit einmaliger Ausführung
-      href: container-instances-restart-policy.md
-    - name: Festlegen von Umgebungsvariablen (env)
-      href: container-instances-environment-variables.md
-    - name: Überschreiben des Containereinstiegspunkts
-      href: container-instances-start-command.md
-    - name: Ausführen eines Befehls (exec)
-      href: container-instances-exec.md
-    - name: Ausführen eines Jenkins-Buildauftrags
-      href: container-instances-jenkins.md
-    - name: Verwenden einer verwalteten Identität (Vorschau)
-      href: container-instances-managed-identity.md
-    - name: Verwenden von GPU-Ressourcen (Vorschauversion)
-      href: container-instances-gpu.md
-  - name: Einbinden von Datenvolumes
-    items:
-    - name: Azure-Dateifreigabe
-      href: container-instances-volume-azure-files.md
-    - name: Geheimer Schlüssel
-      href: container-instances-volume-secret.md
-    - name: Leeres Verzeichnis
-      href: container-instances-volume-emptydir.md
-    - name: Geklontes Git-Repository
-      href: container-instances-volume-gitrepo.md
-  - name: Verwalten ausgeführter Container
-    items:
-    - name: Konfigurieren von Livetests
-      href: container-instances-liveness-probe.md
-    - name: Beenden und Starten von Containern
-      href: container-instances-stop-start.md
-    - name: Aktualisieren ausgeführter Container
-      href: container-instances-update.md
-  - name: Überwachen und Protokollieren
-    items:
-    - name: Überwachen der CPU- und Arbeitsspeicherauslastung
-      href: container-instances-monitor.md
-    - name: Abrufen von Containerprotokollen und -ereignissen
-      href: container-instances-get-logs.md
-    - name: Protokollierung mit Azure Log Analytics
-      href: container-instances-log-analytics.md
-  - name: Problembehandlung
-    items:
-    - name: Häufig auftretende Probleme und Problembehandlung
-      href: container-instances-troubleshooting.md
+    - name: Bereitstellen
+      items:
+        - name: Bereitstellen in einem virtuellen Netzwerk (Vorschauversion)
+          href: container-instances-vnet.md
+        - name: Bereitstellen aus Azure Container Registry
+          href: container-instances-using-azure-container-registry.md
+    - name: Containerszenarien
+      items:
+        - name: Festlegen der Neustartrichtlinie für Aufgaben mit einmaliger Ausführung
+          href: container-instances-restart-policy.md
+        - name: Festlegen von Umgebungsvariablen (env)
+          href: container-instances-environment-variables.md
+        - name: Überschreiben des Containereinstiegspunkts
+          href: container-instances-start-command.md
+        - name: Ausführen eines Befehls (exec)
+          href: container-instances-exec.md
+        - name: Ausführen eines Jenkins-Buildauftrags
+          href: container-instances-jenkins.md
+        - name: Verwenden einer verwalteten Identität (Vorschau)
+          href: container-instances-managed-identity.md
+        - name: Verwenden von GPU-Ressourcen (Vorschauversion)
+          href: container-instances-gpu.md
+    - name: Einbinden von Datenvolumes
+      items:
+        - name: Azure-Dateifreigabe
+          href: container-instances-volume-azure-files.md
+        - name: Geheimer Schlüssel
+          href: container-instances-volume-secret.md
+        - name: Leeres Verzeichnis
+          href: container-instances-volume-emptydir.md
+        - name: Geklontes Git-Repository
+          href: container-instances-volume-gitrepo.md
+    - name: Verwalten ausgeführter Container
+      items:
+        - name: Konfigurieren von Livetests
+          href: container-instances-liveness-probe.md
+        - name: Beenden und Starten von Containern
+          href: container-instances-stop-start.md
+        - name: Aktualisieren ausgeführter Container
+          href: container-instances-update.md
+    - name: Überwachen und Protokollieren
+      items:
+        - name: Überwachen der CPU- und Arbeitsspeicherauslastung
+          href: container-instances-monitor.md
+        - name: Abrufen von Containerprotokollen und -ereignissen
+          href: container-instances-get-logs.md
+        - name: Protokollierung mit Azure Log Analytics
+          href: container-instances-log-analytics.md
+    - name: Problembehandlung
+      items:
+        - name: Häufig auftretende Probleme und Problembehandlung
+          href: container-instances-troubleshooting.md
 - name: Verweis
   items:
-  - name: Azure-Befehlszeilenschnittstelle
-    href: /cli/azure/container
-  - name: REST
-    href: /rest/api/container-instances
-  - name: PowerShell
-    href: /powershell/module/az.containerinstance
-  - name: .NET
-    href: /dotnet/api/overview/azure/containerinstance
-  - name: Python
-    href: /python/api/overview/azure/containerinstance
-  - name: Java
-    href: /java/api/overview/azure/containerinstance
-  - name: Node.js
-    href: /javascript/api/overview/azure/containerinstances
-  - name: Resource Manager-Vorlage
-    href: /azure/templates/microsoft.containerinstance/containergroups
+    - name: Azure-Befehlszeilenschnittstelle
+      href: /cli/azure/container
+    - name: REST
+      href: /rest/api/container-instances
+    - name: PowerShell
+      href: /powershell/module/az.containerinstance
+    - name: .NET
+      href: /dotnet/api/overview/azure/containerinstance
+    - name: Python
+      href: /python/api/overview/azure/containerinstance
+    - name: Java
+      href: /java/api/overview/azure/containerinstance
+    - name: Node.js
+      href: /javascript/api/overview/azure/containerinstances
+    - name: Resource Manager-Vorlage
+      href: /azure/templates/microsoft.containerinstance/containergroups
 - name: Ressourcen
   items:
-  - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
-    href: /learn/browse/?products=azure-container-instances
-  - name: Regionale Verfügbarkeit
-    href: https://azure.microsoft.com/regions/services/
-  - name: Preise
-    href: https://azure.microsoft.com/pricing/details/container-instances/
-  - name: Roadmap
-    href: https://azure.microsoft.com/roadmap/
-  - name: Abgeben von Produktfeedback
-    href: https://feedback.azure.com/forums/602224-azure-container-instances
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-container-instances
-  - name: Videos
-    href: https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest
-ms.openlocfilehash: 5a95264c8fc909e58a2db0f423ded86225d5a71c
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608417"
+    - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
+      href: /learn/browse/?products=azure-container-instances
+    - name: Regionale Verfügbarkeit
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/container-instances/'
+    - name: Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Abgeben von Produktfeedback
+      href: 'https://feedback.azure.com/forums/602224-azure-container-instances'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-container-instances'
+    - name: Videos
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'

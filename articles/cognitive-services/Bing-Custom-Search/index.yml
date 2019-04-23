@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: ef8403c16358536284e0f6efbe2656a126599504
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56726022"
 documentType: LandingData
 title: Benutzerdefinierte Bing-Suche – Dokumentation
 metadata:
   title: 'Dokumentation zur API für die benutzerdefinierte Bing-Suche: Tutorials, Schnellstartanleitungen, API-Referenz – Microsoft Cognitive Services | Microsoft-Dokumentation'
-  description: Hier erfahren Sie, wie Sie mit dem Portal und der API für die benutzerdefinierte Bing-Suche eine benutzerdefinierte Suchumgebung erstellen.
+  description: 'Hier erfahren Sie, wie Sie mit dem Portal und der API für die benutzerdefinierte Bing-Suche eine benutzerdefinierte Suchumgebung erstellen.'
   services: cognitive-services
   author: v-deken
   manager: cgronlun
@@ -21,69 +15,69 @@ metadata:
   ms.date: 01/16/2019
   ms.author: v-deken
 abstract:
-  description: Erstellen Sie mit der API für die benutzerdefinierte Bing-Suche eine Suchinstanz für Themen, die Ihnen wichtig sind. Sie können die zu durchsuchenden Domänen und Webseiten angeben sowie die Suchrangfolgen ändern, um Ihre Suchumgebung anzupassen.
+  description: 'Erstellen Sie mit der API für die benutzerdefinierte Bing-Suche eine Suchinstanz für Themen, die Ihnen wichtig sind. Sie können die zu durchsuchenden Domänen und Webseiten angeben sowie die Suchrangfolgen ändern, um Ihre Suchumgebung anzupassen.'
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/bing-custom-search/overview
+            html: <p>Informationen zur API für die benutzerdefinierte Bing-Suche</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Worum handelt es sich bei der API für die benutzerdefinierte Bing-Suche?
+          - href: /azure/cognitive-services/bing-custom-search/quick-start
+            html: '<p>Informationen zum Anpassen Ihrer Suchumgebung, um eine benutzerdefinierte Ansicht im Web zu erhalten</p>'
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: Erstellen einer benutzerdefinierten Suchinstanz
+          - href: /azure/cognitive-services/bing-custom-search/hosted-ui
+            html: <p>Informationen zur einfachen Integration einer gehosteten Benutzeroberfläche in Webseiten und Web-Apps</p>
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: Konfigurieren einer gehosteten Benutzeroberfläche
+  - title: Fünfminütige Schnellstarts
     items:
-    - href: /azure/cognitive-services/bing-custom-search/overview
-      html: <p>Informationen zur API für die benutzerdefinierte Bing-Suche</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: Worum handelt es sich bei der API für die benutzerdefinierte Bing-Suche?
-    - href: /azure/cognitive-services/bing-custom-search/quick-start
-      html: <p>Informationen zum Anpassen Ihrer Suchumgebung, um eine benutzerdefinierte Ansicht im Web zu erhalten</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: Erstellen einer benutzerdefinierten Suchinstanz
-    - href: /azure/cognitive-services/bing-custom-search/hosted-ui
-      html: <p>Informationen zur einfachen Integration einer gehosteten Benutzeroberfläche in Webseiten und Web-Apps</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: Konfigurieren einer gehosteten Benutzeroberfläche
-- title: Fünfminütige Schnellstarts
-  items:
-  - type: paragraph
-    text: 'Suchen Sie mit Ihrer benutzerdefinierten Ansicht im Web – mit:'
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: "Suchen Sie mit Ihrer benutzerdefinierten Ansicht im Web\_– mit:"
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/logo_Csharp.svg
+            href: sdk-csharp-quick-start
+            text: 'C&#35;'
+          - image:
+              src: media/logo_java.svg
+            href: call-endpoint-java
+            text: Java
+          - image:
+              src: media/logo_nodejs.svg
+            href: call-endpoint-nodejs
+            text: Node.js
+          - image:
+              src: media/logo_python.svg
+            href: call-endpoint-python
+            text: Python
+  - title: Schritt-für-Schritt-Tutorial
     items:
-    - image:
-        src: media/logo_Csharp.svg
-      href: sdk-csharp-quick-start
-      text: C&#35;
-    - image:
-        src: media/logo_java.svg
-      href: call-endpoint-java
-      text: Java
-    - image:
-        src: media/logo_nodejs.svg
-      href: call-endpoint-nodejs
-      text: Node.js
-    - image:
-        src: media/logo_python.svg
-      href: call-endpoint-python
-      text: Python
-- title: Schritt-für-Schritt-Tutorial
-  items:
-  - type: paragraph
-    text: 'Erfahren Sie, wie Sie Anwendungen mit der API für die benutzerdefinierte Bing-Suche entwickeln:'
-  - type: paragraph
-    text: <a href="tutorials/custom-search-web-page">Erstellen einer benutzerdefinierten Suchwebseite</a>
-- title: Verweis
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 'Erfahren Sie, wie Sie Anwendungen mit der API für die benutzerdefinierte Bing-Suche entwickeln:'
+      - type: paragraph
+        text: <a href="tutorials/custom-search-web-page">Erstellen einer benutzerdefinierten Suchwebseite</a>
+  - title: Verweis
     items:
-    - title: APIs
-      html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference">API für die benutzerdefinierte Suche – v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference">API für die benutzerdefinierte Vorschlagssuche – v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference">API für die benutzerdefinierte Bildersuche – v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference">API für die benutzerdefinierte Videosuche – v7</a></p>
-    - title: SDKs
-      html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customsearch?view=azure-java-stable">Java: Benutzerdefinierte Suche</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customimagesearch?view=azure-java-stable">Java: Benutzerdefinierte Bildersuche</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customsearch?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/customsearch?view=azure-node-latest">Node.js</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customsearch">Go: Benutzerdefinierte Suche</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customimagesearch">Go: Benutzerdefinierte Bildersuche</a></p>'
-    - title: PowerShell
-      html: <p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
-    - title: Befehlszeilenschnittstelle (CLI)
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure-Befehlszeilenschnittstelle</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: APIs
+            html: '<p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference">API für die benutzerdefinierte Suche – v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference">API für die benutzerdefinierte Vorschlagssuche – v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference">API für die benutzerdefinierte Bildersuche – v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference">API für die benutzerdefinierte Videosuche – v7</a></p>'
+          - title: SDKs
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingcustomsearch?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customsearch?view=azure-java-stable">Java: Benutzerdefinierte Suche</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customimagesearch?view=azure-java-stable">Java: Benutzerdefinierte Bildersuche</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customsearch?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-customsearch?view=azure-node-latest">Node.js</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customsearch">Go: Benutzerdefinierte Suche</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/customimagesearch">Go: Benutzerdefinierte Bildersuche</a></p>'
+          - title: PowerShell
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: Befehlszeilenschnittstelle (CLI)
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure-Befehlszeilenschnittstelle</a></p>'

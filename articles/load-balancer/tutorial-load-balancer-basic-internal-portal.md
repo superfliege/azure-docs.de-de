@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 6abae32f5d8781735bc6a50dc888fddacbe8d0b9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 56568cfb8fc659308475e581955e5acbdfd32b44
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58105300"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489313"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Tutorial: Ausgleichen der internen Datenverkehrslast mithilfe eines Lastenausgleichs im Tarif „Basic“ über das Azure-Portal
 
@@ -95,11 +95,10 @@ Erstellen Sie einen internen Load Balancer im Tarif „Basic“, indem Sie das P
     | Ressourcengruppe         | Wählen Sie **Neu erstellen**, und geben Sie *MyResourceGroupLB* in das Textfeld ein.|
     | NAME                   | *myLoadBalancer*                                   |
     | Region         | Wählen Sie **Europa, Westen** aus.                                        |
-    | Type          | Wählen Sie **Öffentlich** aus.                                        |
+    | Type          | Wählen Sie **Intern** aus.                                        |
     | SKU           | Wählen Sie **Basic** aus.                          |
     | Virtuelles Netzwerk           | Wählen Sie *MyVNet* aus.                          |    
-| Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**. |
-    | Zuweisung der öffentlichen IP-Adresse              | Wählen Sie **Statisch** aus.   |
+    | IP-Adresszuweisung              | Wählen Sie **Statisch** aus.   |
     | Private IP-Adresse|Geben Sie eine Adresse ein, die im Adressraum Ihres virtuellen Netzwerks und Subnetzes enthalten ist (beispielsweise *10.3.0.7*).  |
 
 3. Klicken Sie auf der Registerkarte **Überprüfen + erstellen** auf **Erstellen**. 
@@ -266,4 +265,4 @@ In diesem Tutorial haben Sie einen internen Load Balancer im Tarif „Basic“ e
 Informieren Sie sich als Nächstes darüber, wie Sie über mehrere Verfügbarkeitszonen hinweg einen Lastenausgleich für virtuelle Computer durchführen.
 
 > [!div class="nextstepaction"]
-> [Lastenausgleich für virtuelle Computer über Verfügbarkeitszonen hinweg](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+> [Durchführen eines verfügbarkeitszonenübergreifenden Lastenausgleichs für virtuelle Computer](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: pim
 ms.topic: overview
-ms.date: 01/16/2019
+ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22f4caed1ea0490470009c21f22624861808cb2d
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: be8b9fe027a023cec6c816fa641beb41e5849741
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578678"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496077"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Was ist Azure AD Privileged Identity Management?
 
@@ -79,9 +79,9 @@ Nachdem Sie PIM eingerichtet haben, werden im linken Navigationsmenü die Option
 
 Wenn Sie die erste Person sind, die PIM verwendet, werden Ihnen automatisch die Rollen [Sicherheitsadministrator](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) und [Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) im Verzeichnis zugewiesen.
 
-Für Azure AD-Rollen gilt: Nur ein Benutzer mit der Rolle eines Administrators für privilegierte Rollen kann Zuweisungen für andere Administratoren in PIM verwalten. Sie können [Zugriff für andere Administratoren zum Verwalten von PIM gewähren](pim-how-to-give-access-to-pim.md). Globale Administratoren, Sicherheitsadministratoren und Benutzer mit Leseberechtigung für Sicherheitsfunktionen können Azure AD-Rollenzuweisungen in PIM anzeigen.
+Für Azure AD-Rollen gilt: Nur ein Benutzer mit der Rolle eines Administrators für privilegierte Rollen kann Zuweisungen für andere Administratoren in PIM verwalten. Sie können [Zugriff für andere Administratoren zum Verwalten von PIM gewähren](pim-how-to-give-access-to-pim.md). Globale Administratoren, Sicherheitsadministratoren und Sicherheitsleseberechtigte können Azure AD-Rollenzuweisungen in PIM anzeigen.
 
-Bei Azure-Ressourcenrollen können nur Abonnementadministratoren, Ressourcenbesitzer und Ressourcen-Benutzerzugriffsadministratoren Zuweisungen für andere Administratoren in PIM verwalten. Administratoren für privilegierte Rollen, Sicherheitsadministratoren oder Benutzer mit Leseberechtigung für Sicherheitsfunktionen haben nicht standardmäßig Zugriff auf Zuweisungen zu Azure-Ressourcenrollen in PIM.
+Bei Azure-Ressourcenrollen können nur Abonnementadministratoren, Ressourcenbesitzer und Ressourcen-Benutzerzugriffsadministratoren Zuweisungen für andere Administratoren in PIM verwalten. Administratoren für privilegierte Rollen, Sicherheitsadministratoren oder Sicherheitsleseberechtigte haben nicht standardmäßig Zugriff auf Zuweisungen zu Azure-Ressourcenrollen in PIM.
 
 ## <a name="scenarios"></a>Szenarien
 
@@ -107,6 +107,6 @@ PIM unterstützt folgende Szenarien:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [License requirements to use PIM](subscription-requirements.md) (Lizenzanforderungen für die Verwendung von PIM)
+- [Lizenzanforderungen für die Verwendung von PIM](subscription-requirements.md)
 - [Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-- [Bereitstellen von Privileged Identity Management (PIM)](pim-deployment-plan.md)
+- [Bereitstellen von PIM](pim-deployment-plan.md)

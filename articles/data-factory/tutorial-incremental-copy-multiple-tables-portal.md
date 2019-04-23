@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: 77be9d80d535cced48a39c47695257d4868f698c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: b9dafd31ed84298c97932b1cdb5593eb17769ef9
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257432"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59566004"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Inkrementelles Laden aus mehreren SQL Server-Tabellen in eine Azure SQL-Datenbank
 In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus mehreren Tabellen einer lokalen SQL Server-Instanz in eine Azure SQL-Datenbank geladen werden.    
@@ -491,11 +491,12 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
 1. Wechseln Sie zur Registerkarte **Senke**, und wählen Sie unter **Sink Dataset** (Senkendataset) die Option **SinkDataset**. 
         
     ![Copy-Aktivität – Senkeneinstellungen](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
-1. Wechseln Sie zur Registerkarte **Parameter**, und führen Sie die folgenden Schritte aus:
+1. Führen Sie folgende Schritte aus:
 
-    1. Geben Sie für die Eigenschaft **Sink Stored Procedure Name** die Zeichenfolge `@{item().StoredProcedureNameForMergeOperation}` ein.
-    1. Geben Sie für die Eigenschaft **Sink Table Type** die Zeichenfolge `@{item().TableType}` ein.
-    1. Geben Sie im Abschnitt **Sink Dataset** (Senkendataset) für den Parameter **SinkTableName** die Zeichenfolge `@{item().TABLE_NAME}` ein.
+    1. Geben Sie in der Eigenschaft **Dataset** für den Parameter **SinkTableName** Folgendes ein: `@{item().TABLE_NAME}`.
+    1. Geben Sie für die Eigenschaft **Stored Procedure Name** die Zeichenfolge `@{item().StoredProcedureNameForMergeOperation}` ein.
+    1. Geben Sie für die Eigenschaft **Table Type** die Zeichenfolge `@{item().TableType}` ein.
+
 
         ![Copy-Aktivität – Parameter](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
 1. Ziehen Sie die **Stored Procedure**-Aktivität aus der Toolbox **Aktivitäten** in die Oberfläche des Pipeline-Designers. Verbinden Sie die **Copy**-Aktivität mit der **Stored Procedure**-Aktivität. 
@@ -565,12 +566,12 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
 ## <a name="review-the-results"></a>Überprüfen der Ergebnisse
 Führen Sie in SQL Server Management Studio die folgenden Abfragen für die SQL-Zieldatenbank aus, um sicherzustellen, dass die Daten aus den Quelltabellen in die Zieltabellen kopiert wurden: 
 
-**Abfragen** 
+**Abfrage** 
 ```sql
 select * from customer_table
 ```
 
-**Output**
+**Ausgabe**
 ```
 ===========================================
 PersonID    Name    LastModifytime
@@ -582,13 +583,13 @@ PersonID    Name    LastModifytime
 5           Anny    2017-09-05 08:06:00.000
 ```
 
-**Abfragen**
+**Abfrage**
 
 ```sql
 select * from project_table
 ```
 
-**Output**
+**Ausgabe**
 
 ```
 ===================================
@@ -599,13 +600,13 @@ project2    2016-02-02 01:23:00.000
 project3    2017-03-04 05:16:00.000
 ```
 
-**Abfragen**
+**Abfrage**
 
 ```sql
 select * from watermarktable
 ```
 
-**Output**
+**Ausgabe**
 
 ```
 ======================================
@@ -667,12 +668,12 @@ VALUES
 ## <a name="review-the-final-results"></a>Überprüfen der Endergebnisse
 Führen Sie in SQL Server Management Studio die folgenden Abfragen für die Zieldatenbank aus, um sicherzustellen, dass die aktualisierten bzw. neuen Daten aus den Quelltabellen in die Zieltabellen kopiert wurden. 
 
-**Abfragen** 
+**Abfrage** 
 ```sql
 select * from customer_table
 ```
 
-**Output**
+**Ausgabe**
 ```
 ===========================================
 PersonID    Name    LastModifytime
@@ -686,13 +687,13 @@ PersonID    Name    LastModifytime
 
 Beachten Sie die neuen Werte in **Name** und **LastModifytime** für **PersonID** für Nummer 3. 
 
-**Abfragen**
+**Abfrage**
 
 ```sql
 select * from project_table
 ```
 
-**Output**
+**Ausgabe**
 
 ```
 ===================================
@@ -706,13 +707,13 @@ NewProject  2017-10-01 00:00:00.000
 
 Beachten Sie, dass der Projekttabelle (project_table) der Eintrag **NewProject** hinzugefügt wurde. 
 
-**Abfragen**
+**Abfrage**
 
 ```sql
 select * from watermarktable
 ```
 
-**Output**
+**Ausgabe**
 
 ```
 ======================================

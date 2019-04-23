@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 8e20f612bc54433091036377d51a7e59e3abec51
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: bc5c12d4bb92edaafcc9808da8c48106a6e0cbd5
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402149"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548034"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Zugreifen auf ein Classroom-Lab in Azure Lab Services
 In diesem Artikel wird beschrieben, wie Sie auf ein Classroom-Lab zugreifen, eine Verbindung mit der VM im Lab herstellen und die VM beenden können. 
@@ -36,7 +36,7 @@ In diesem Artikel wird beschrieben, wie Sie auf ein Classroom-Lab zugreifen, ein
 ## <a name="view-all-the-classroom-labs"></a>Anzeigen aller Classroom-Labs
 Nachdem Sie sich bei den Labs registriert haben, können Sie alle Classroom-Labs anzeigen, indem Sie die folgenden Schritte ausführen: 
 
-1. Navigieren Sie zu [https://labs.azure.com](https://labs.azure.com). 
+1. Navigieren Sie zu [https://labs.azure.com](https://labs.azure.com). Beachten Sie den Hinweis, dass Internet Explorer 11 noch nicht unterstützt wird. 
 2. Melden Sie sich mit dem Benutzerkonto, das Sie zum Registrieren beim Lab verwendet haben, beim Dienst an. 
 3. Überprüfen Sie, ob alle Labs angezeigt werden, auf die Sie Zugriff haben. 
 
@@ -47,8 +47,8 @@ Nachdem Sie sich bei den Labs registriert haben, können Sie alle Classroom-Labs
 1. Wählen Sie **Starten** auf der Kachel aus, um den virtuellen Computer zu starten (sofern noch nicht geschehen). 
 2. Klicken Sie auf der Kachel des virtuellen Computers des Labs, auf den Sie zugreifen möchten, auf **Verbinden**. 
 3. Führen Sie einen der folgenden Schritte aus: 
-   1. Speichern Sie für **Windows**-VMs die **RDP**-Datei auf der Festplatte. Öffnen Sie die RDP-Datei, um eine Verbindung mit dem virtuellen Computer herzustellen. Verwenden Sie den **Benutzernamen** und das **Kennwort**, den bzw. das Sie von Ihrer Lehrkraft erhalten haben, um sich beim Computer anzumelden. 
-   3. Kopieren und speichern Sie für **Linux**-VMs die SSH-Verbindungszeichenfolge im Dialogfeld **Eine Verbindung zu Ihrem virtuellen Computer herstellen** . Verwenden Sie diese Verbindungszeichenfolge aus einem SSH-Terminal (z.B. [Putty](https://www.putty.org/)) zum Herstellen der Verbindung mit dem virtuellen Computer.
+   1. Speichern Sie für virtuelle **Windows**-Computer die **RDP**-Datei auf der Festplatte. Öffnen Sie die RDP-Datei, um eine Verbindung mit dem virtuellen Computer herzustellen. Verwenden Sie die Kombination aus **Benutzername** und **Kennwort**, die Sie von Ihrer Lehrkraft erhalten haben, um sich bei dem Computer anzumelden. 
+   3. Kopieren und speichern Sie für virtuelle **Linux**-Computer die SSH-Verbindungszeichenfolge im Dialogfeld **Eine Verbindung zu Ihrem virtuellen Computer herstellen**. Verwenden Sie diese Verbindungszeichenfolge aus einem SSH-Terminal (z.B. [Putty](https://www.putty.org/)) zum Herstellen der Verbindung mit dem virtuellen Computer.
 
 ## <a name="stop-the-virtual-machine-in-a-classroom-lab"></a>Beenden des virtuellen Computers in einem Classroom-Lab
 

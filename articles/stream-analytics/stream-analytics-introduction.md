@@ -1,21 +1,19 @@
 ---
 title: Übersicht über Azure Stream Analytics
 description: Erfahren Sie mehr über Stream Analytics, einen verwalteten Dienst, der Ihnen bei der Analyse der Streamingdaten aus dem Internet der Dinge (IoT) in Echtzeit hilft.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: overview
-ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/07/2018
-ms.openlocfilehash: f0104bdc4b5ea5c5c6333e12b95defafb34665b3
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 09f402f81700b53eb9e4a95e36545ef02850660a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295503"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524479"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Was ist Azure Stream Analytics?
 
@@ -51,9 +49,9 @@ Azure Stream Analytics ist benutzerfreundlich, flexibel, zuverlässig und auf je
 
 ## <a name="ease-of-getting-started"></a>Einfacher Einstieg
 
-Der Einstieg in Azure Stream Analytics ist einfach. Es sind nur wenige Klicks erforderlich, um eine Verbindung mit mehreren Quellen oder Senken herzustellen und eine End-to-End-Pipeline zu erstellen. Stream Analytics kann eine Verbindung mit [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/) und [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/) herstellen, um Streamingdaten zu erfassen. Außerdem kann eine Verbindung mit dem Dienst [Azure Blob Storage](https://docs.microsoft.com/azure/storage/storage-introduction) hergestellt werden, um Verlaufsdaten zu erfassen. Daten von Event Hubs können mit anderen Datenquellen und Verarbeitungsmodulen kombiniert werden. Die Auftragseingabe kann auch Referenzdaten enthalten, bei denen es sich um statische oder sich langsam ändernde Daten handelt, und Sie können Streamingdaten mit diesen Referenzdaten verknüpfen, um Nachschlagevorgänge durchzuführen.
+Der Einstieg in Azure Stream Analytics ist einfach. Es sind nur wenige Klicks erforderlich, um eine Verbindung mit mehreren Quellen oder Senken herzustellen und eine End-to-End-Pipeline zu erstellen. Stream Analytics kann eine Verbindung mit [Azure Event Hubs](/azure/event-hubs/) und [Azure IoT Hub](/azure/iot-hub/) herstellen, um Streamingdaten zu erfassen. Außerdem kann eine Verbindung mit dem Dienst [Azure Blob Storage](/azure/storage/storage-introduction) hergestellt werden, um Verlaufsdaten zu erfassen. Daten von Event Hubs können mit anderen Datenquellen und Verarbeitungsmodulen kombiniert werden. Die Auftragseingabe kann auch Referenzdaten enthalten, bei denen es sich um statische oder sich langsam ändernde Daten handelt, und Sie können Streamingdaten mit diesen Referenzdaten verknüpfen, um Nachschlagevorgänge durchzuführen.
 
-Stream Analytics kann Auftragsausgaben an viele Speichersysteme leiten, z.B. [Azure-Blobs](https://docs.microsoft.com/azure/storage/storage-introduction), [Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/), [Azure Data Lake Stores](https://docs.microsoft.com/azure/data-lake-store/) oder [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/introduction). Nach dem Speichern können Sie die Batchanalyse mit Azure HDInsight ausführen oder die Ausgabe an einen anderen Dienst senden, z.B. an Event Hubs zur Nutzung oder an [Power BI](https://docs.microsoft.com/power-bi/) zur Durchführung von Echtzeitvisualisierungen per Power BI-Streaming-API.
+Stream Analytics kann Auftragsausgaben an viele Speichersysteme leiten, z.B. [Azure-Blobs](/azure/storage/storage-introduction), [Azure SQL-Datenbank](/azure/sql-database/), [Azure Data Lake Stores](/azure/data-lake-store/) oder [Azure Cosmos DB](/azure/cosmos-db/introduction). Nach dem Speichern können Sie die Batchanalyse mit Azure HDInsight ausführen oder die Ausgabe an einen anderen Dienst senden, z.B. an Event Hubs zur Nutzung oder an [Power BI](https://docs.microsoft.com/power-bi/) zur Durchführung von Echtzeitvisualisierungen per Power BI-Streaming-API.
 
 ## <a name="programmer-productivity"></a>Produktivität der Programmierer
 
@@ -79,7 +77,8 @@ Stream Analytics ist ein kostenoptimierter Clouddienst. Es fallen keine Anfangsk
 ## <a name="mission-critical-ready"></a>Geeignet für unternehmenskritische Workloads
 Azure Stream Analytics ist in mehreren Regionen auf der ganzen Welt verfügbar und dank seiner Zuverlässigkeit, Sicherheit und Compliance für die Ausführung unternehmenskritischer Workloads geeignet.
 ### <a name="reliability"></a>Zuverlässigkeit
-Für Azure Stream Analytics wird die Exactly-Once-Ereignisverarbeitung (genau einmal) und die At-Least-Once-Zustellung (mindestens einmal) von Ereignissen garantiert, sodass Ereignisse niemals verloren gehen. Die Exactly-Once-Verarbeitung wird mit ausgewählter Ausgabe garantiert, wie unter [Event Delivery Guarantees (Azure Stream Analytics)](https://docs.microsoft.com/en-us/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) (Garantien zur Ereignisbereitstellung (Azure Stream Analytics)) beschrieben. Azure Stream Analytics verfügt über integrierte Wiederherstellungsfunktionen für den Fall, dass für ein Ereignis ein Fehler auftritt. Darüber hinaus verfügt Stream Analytics über eine integrierte Prüfpunktausführung, um den korrekten Zustand Ihres Auftrags sicherzustellen, und Sie erhalten wiederholbare Ergebnisse.
+Für Azure Stream Analytics wird die Exactly-Once-Ereignisverarbeitung (genau einmal) und die At-Least-Once-Zustellung (mindestens einmal) von Ereignissen garantiert, sodass Ereignisse niemals verloren gehen. Die Exactly-Once-Verarbeitung wird mit ausgewählter Ausgabe garantiert, wie unter [Event Delivery Guarantees (Azure Stream Analytics)](/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) (Garantien zur Ereignisbereitstellung (Azure Stream Analytics)) beschrieben.
+Azure Stream Analytics verfügt über integrierte Wiederherstellungsfunktionen für den Fall, dass für ein Ereignis ein Fehler auftritt. Darüber hinaus verfügt Stream Analytics über eine integrierte Prüfpunktausführung, um den korrekten Zustand Ihres Auftrags sicherzustellen, und Sie erhalten wiederholbare Ergebnisse.
 
 Als verwalteter Dienst wird für Stream Analytics eine Ereignisverarbeitung mit einer Verfügbarkeit von 99,9 Prozent (minutengenau) garantiert. Weitere Informationen finden Sie auf der Seite [SLA für Stream Analytics](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/). 
 

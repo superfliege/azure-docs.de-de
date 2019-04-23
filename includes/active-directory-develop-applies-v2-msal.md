@@ -3,7 +3,7 @@ title: Includedatei
 description: Includedatei
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/26/2018
-ms.author: andret
+ms.date: 04/12/2019
+ms.author: celested
 ms.custom: include file
-ms.openlocfilehash: ab9ed773a6aff4b991541203ad4e42035f66872b
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 06300f487d11d7f0751a35231aedf389fb3e82b3
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843290"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59503170"
 ---
 |   |
 |---|
-| **Anwendungsbereich:**<br><ul><li>Azure AD v2.0-Endpunkt<li>Microsoft Authentication Library (MSAL) – Vorschauversion</ul><br>Verwenden Sie für eine Bibliothek mit allgemeiner Verfügbarkeit (GA) den v1.0-Endpunkt und Azure ADAL (AD Authentication Library). Weitere Informationen finden Sie unter [Info zu v1.0](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-developers-guide). |
+| **Gilt für:**<br><ul><li>Microsoft Identity Platform-Endpunkt<li>Microsoft Authentication Library (MSAL) – Vorschauversion</ul><br>Verwenden Sie für eine Bibliothek mit allgemeiner Verfügbarkeit (GA) den Azure AD v1.0-Endpunkt und die Azure ADAL (AD Authentication Library). Weitere Informationen finden Sie unter [Info zu v1.0](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-developers-guide). |
 |   |

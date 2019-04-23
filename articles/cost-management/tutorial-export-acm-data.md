@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/13/2019
+ms.date: 04/10/2019
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: a0b50b86ca164199ca723354e39e194c6cd7423f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: df893683c387f8d694500ae1ace93a5a146ea352
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014133"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496793"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Tutorial: Erstellen und Verwalten von exportierten Daten
 
@@ -63,7 +63,7 @@ Zunächst kann es ein bis zwei Stunden dauern, bis der Export ausgeführt wird. 
 
 ### <a name="export-schedule"></a>Exportzeitplan
 
-Uhrzeit und Wochentag der ersten Erstellung eines Exports wirken sich auf geplante Exporte aus. Wenn Sie einen geplanten Export erstellen, werden alle folgenden Exportvorgänge zur gleichen Tageszeit ausgeführt. Beispiel: Sie erstellen einen täglichen Export um 13:00 Uhr. Der nächste Export wird am folgenden Tag um 13:00 Uhr ausgeführt. Die aktuelle Uhrzeit wirkt sich nach dem gleichen Prinzip auf alle anderen Exporttypen aus: Sie werden immer zur gleichen Tageszeit ausgeführt, zu der Sie den Export anfangs erstellt haben. Ein weiteres Beispiel: Sie erstellen einen wöchentlichen Export am Montag um 16:00 Uhr. Der nächste Export wird am folgenden Montag um 16:00 Uhr ausgeführt. *Exportierte Daten sind innerhalb von vier Stunden ab der Laufzeit verfügbar.*
+Uhrzeit und Wochentag der ersten Erstellung eines Exports wirken sich auf geplante Exporte aus. Wenn Sie einen geplanten Export erstellen, werden alle folgenden Exportvorgänge zur gleichen Tageszeit ausgeführt. Beispiel: Sie erstellen einen täglichen Export um 13:00 Uhr. Der nächste Export wird am folgenden Tag um 13:00 Uhr ausgeführt. Die aktuelle Uhrzeit wirkt sich nach dem gleichen Prinzip auf alle anderen Exporttypen aus: Sie werden immer zur gleichen Tageszeit ausgeführt, zu der Sie den Export anfangs erstellt haben. Ein weiteres Beispiel: Sie erstellen einen wöchentlichen Export am Montag um 16:00 Uhr. Der nächste Export wird am folgenden Montag um 16:00 Uhr ausgeführt. *Exportierte Daten sind innerhalb von vier Stunden ab dem Ausführungszeitpunkt verfügbar.*
 
 Bei jedem Export wird eine neue Datei erstellt, sodass ältere Exporte nicht überschrieben werden.
 
@@ -74,6 +74,10 @@ Es gibt drei Typen von Exportoptionen:
 **Wöchentlicher Export der Kosten für die vergangenen sieben Tage**: Der erste Export wird sofort ausgeführt. Nachfolgende Exporte werden jeweils am gleichen Wochentag und zur gleichen Uhrzeit wie der erste Export ausgeführt. Dabei werden Kosten für die letzten sieben Tage angegeben.
 
 **Benutzerdefiniert**: Damit können Sie wöchentliche und monatliche Exporte mit Optionen für die bisherige Woche und dem bisherigen Monat planen. *Der erste Export wird sofort ausgeführt.*
+
+Wenn Sie über ein Abonnement mit nutzungsbasierter Bezahlung, ein MSDN-Abonnement oder ein Visual Studio-Abonnement verfügen, stimmt der Abrechnungszeitraum für Ihre Rechnung möglicherweise nicht mit dem Kalendermonat überein. Bei diesen Arten von Abonnements und Ressourcengruppen können Sie einen Export erstellen, der Ihrem Rechnungszeitraum oder Kalendermonaten entspricht. Navigieren Sie zum Erstellen eines Exports, der Ihrem Rechnungsmonat entspricht, zu **Benutzerdefiniert**, und wählen Sie dann die Option **Bisheriger Abrechnungszeitraum**.  Wählen Sie **Monat bis Datum**, um einen Export zu erstellen, der dem Kalendermonat entspricht.
+>
+>
 
 ![Neuer Export: Registerkarte „Grundlagen“, die eine benutzerdefinierte Auswahl für wöchentliche Exporte seit Wochenbeginn zeigt](./media/tutorial-export-acm-data/tutorial-export-schedule-weekly-week-to-date.png)
 
@@ -92,6 +96,7 @@ Navigieren Sie im Storage-Explorer zu dem Container, den Sie öffnen möchten, u
 Die Datei wird mit dem Programm oder der Anwendung geöffnet, die zum Öffnen von CSV-Dateierweiterungen ausgewählt ist. Hier sehen Sie ein Beispiel in Excel.
 
 ![Beispiel für in Excel angezeigte exportierte CSV-Daten](./media/tutorial-export-acm-data/example-export-data.png)
+
 
 ## <a name="access-exported-data-from-other-systems"></a>Zugreifen auf exportierte Daten über andere Systeme
 

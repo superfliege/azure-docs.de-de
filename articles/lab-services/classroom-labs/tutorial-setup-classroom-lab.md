@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/29/2019
 ms.author: spelluru
-ms.openlocfilehash: 00c32d1aaace765a1b46d5b25e82bab6e937d2ed
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 66293d6d6d0e15af7d879e6784d85f9e85457aad
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649707"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544329"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Tutorial: Einrichten eines Classroom-Labs 
 In diesem Tutorial richten Sie ein Classroom-Lab mit virtuellen Computern ein, die von den Teilnehmern im Classroom verwendet werden.  
@@ -39,7 +39,7 @@ Ein Labbesitzer kann andere Benutzer zur Rolle **Ersteller des Labs** hinzufüge
 
 ## <a name="create-a-classroom-lab"></a>Erstellen eines Classroom-Labs
 
-1. Navigieren Sie zur Website [Azure Lab Services](https://labs.azure.com). 
+1. Navigieren Sie zur Website [Azure Lab Services](https://labs.azure.com). Beachten Sie den Hinweis, dass Internet Explorer 11 noch nicht unterstützt wird. 
 2. Wählen Sie **Anmelden**, und geben Sie Ihre Anmeldeinformationen ein. Azure Lab Services unterstützt Geschäfts-, Schul- oder Unikonten und Microsoft-Konten. 
 3. Führen Sie im Fenster **Neues Lab** die folgenden Aktionen aus: 
     1. Geben Sie unter **Name** einen Namen für Ihr Lab an. 
@@ -119,7 +119,7 @@ Ein Labbesitzer kann andere Benutzer zur Rolle **Ersteller des Labs** hinzufüge
     ![Senden eines Registrierungslinks per E-Mail](../media/tutorial-setup-classroom-lab/send-email.png)
 4. Führen Sie auf der Seite **Send registration link by email** (Registrierungslink per E-Mail senden) die folgenden Schritte aus: 
     1. Geben Sie eine **optionale Nachricht** ein, die an die Kursteilnehmer gesendet werden soll. Die E-Mail enthält automatisch den Registrierungslink. 
-    2. Wählen Sie auf der Seite **Send registration link by email** (Registrierungslink per E-Mail senden) die Option **Senden** aus. Der Status der Einladung wird in **Einladung wird gesendet** und anschließend in **Die Einladung wurde gesendet.** geändert. 
+    2. Wählen Sie auf der Seite **Send registration link by email** (Registrierungslink per E-Mail senden) die Option **Senden** aus. Der Status der Einladung wird in **Einladung wird gesendet** und anschließend in **Die Einladung wurde gesendet** geändert. 
         
         ![Gesendete Einladungen](../media/tutorial-setup-classroom-lab/invitations-sent.png)
 

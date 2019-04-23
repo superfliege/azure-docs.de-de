@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Indizieren von teilweise strukturierten Daten in JSON-Blobs: Azure Search'
-description: Erfahren Sie, wie Sie teilweise strukturierte Azure-JSON-Blobs mithilfe von Azure Search und Postman indizieren und durchsuchen.
+description: Erfahren Sie, wie Sie teilweise strukturierte Azure-JSON-Blobs mithilfe von Azure Search-REST-APIs und Postman indizieren und durchsuchen.
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4df64595f83bd7280fa781f27f3030eda3729911
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 147f67f40a060f3e274fe1f3fa368ebfd01711b6
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471459"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525346"
 ---
-# <a name="tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>Tutorial: Indizieren und Durchsuchen von teilweise strukturierten Daten (JSON-Blobs) in Azure Search
+# <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>REST-Tutorial: Indizieren und Durchsuchen von teilweise strukturierten Daten (JSON-Blobs) in Azure Search
 
 Azure Search kann JSON-Dokumente und -Arrays in Azure Blob Storage mithilfe eines [Indexers](search-indexer-overview.md) indizieren, der teilweise strukturierte Daten lesen kann. Teilweise strukturierte Daten enthalten Tags oder Markierungen, mit denen Inhalte in den Daten voneinander getrennt werden. Sie bilden den Unterschied zwischen unstrukturierten Daten, die vollständig indiziert werden müssen, und formal strukturierten Daten, die einem Datenmodell entsprechen (wie z. B. einem Schema einer relationalen Datenbank), das pro Feld indiziert werden kann.
 
@@ -37,9 +37,9 @@ In diesem Schnellstart werden die folgenden Dienste, Tools und Daten verwendet.
 
 [Erstellen Sie einen Azure Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). In diesem Tutorial können Sie einen kostenlosen Dienst verwenden. 
 
-[Erstellen Sie ein Azure-Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account), das zum Speichern der Beispieldaten verwendet wird.
+[Erstellen Sie ein Azure-Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) zum Speichern der Beispieldaten.
 
-Die [Postman-Desktop-App](https://www.getpostman.com/) wird zum Senden von Anforderungen an Azure Search verwendet.
+[Postman-Desktop-App](https://www.getpostman.com/) zum Senden von Anforderungen an Azure Search.
 
 [Clinical-trials-json.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) enthält die Daten, die in diesem Tutorial verwendet werden. Laden Sie die Datei herunter, und entzippen Sie sie in einem eigenen Ordner. Die Daten stammen aus [ClinicalTrials.gov](https://clinicaltrials.gov/ct2/results) und werden für dieses Tutorial in JSON konvertiert.
 
@@ -59,9 +59,7 @@ Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erford
 
 1. [Melden Sie sich beim Azure-Portal an](https://portal.azure.com), navigieren Sie zu Ihrem Azure-Speicherkonto, klicken Sie auf **BLOBs** und dann auf **+ Container**.
 
-1. [Erstellen Sie einen Blobcontainer](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) für die Beispieldaten. Da Sie einen Schlüssel und einen Speicherkontonamen für die Verbindung verwenden, müssen Sie sicherstellen, dass die öffentliche Zugriffsebene des Containers auf „Container (anonymous read access for container)“ (Container (anonymer Lesezugriff für Container)) festgelegt ist.
-
-   ![Festlegen der öffentlichen Zugriffsebene](media/search-semi-structured-data/container-public-access-level.png "Festlegen der öffentlichen Zugriffsebene")
+1. [Erstellen Sie einen Blobcontainer](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) für die Beispieldaten. Sie können die öffentliche Zugriffsebene auf beliebige gültige Werte festlegen.
 
 1. Nachdem der Container erstellt wurde, öffnen Sie ihn, und wählen Sie auf der Befehlsleiste die Option **Hochladen** aus.
 
@@ -295,7 +293,7 @@ Die schnellste Möglichkeit, das System nach einem Tutorial zu bereinigen, beste
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie können KI-basierte Cognitive Services-Algorithmen an eine Indexer-Pipeline anfügen. Als Nächstes fahren Sie mit dem folgenden Tutorial fort.
+Es gibt verschiedene Ansätze und mehrere Optionen für die Indizierung von JSON-Blobs. Überprüfen und testen Sie im nächsten Schritt die unterschiedlichen Optionen, um zu ermitteln, was für Ihr Szenario am besten funktioniert.
 
 > [!div class="nextstepaction"]
-> [Indizieren mit künstlicher Intelligenz (KI)](cognitive-search-tutorial-blob.md)
+> [Indizieren von JSON-Blobs mit dem Azure Search-Blobindexer](search-howto-index-json-blobs.md)

@@ -141,7 +141,7 @@ Wählen Sie im oberen rechten Navigationsbereich **Train** (Trainieren) aus, um 
 
 ## <a name="test-your-new-app-with-the-interactive-test-pane"></a>Testen der neuen App im interaktiven Testbereich
 
-Verwenden Sie den interaktiven **** Testbereich im LUIS-Portal, um zu überprüfen, ob die Entität aus neuen Äußerungen, die die App noch nicht kennt, extrahiert wird.
+Verwenden Sie den interaktiven **Testbereich** im LUIS-Portal, um zu überprüfen, ob die Entität aus neuen Äußerungen, die die App noch nicht kennt, extrahiert wird.
 
 1. Wählen Sie im Menü oben rechts die Option **Testen** aus.
 

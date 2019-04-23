@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
 ms.openlocfilehash: 01c1768f60da98206f0dfd041745428256f545fc
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58861878"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Erstellen eines benutzerdefinierten Tests für ein Azure Application Gateway (klassisch) mithilfe von PowerShell
@@ -150,7 +150,7 @@ Die Konfigurationsparameter sind:
 
 |Parameter|BESCHREIBUNG|
 |---|---|
-|**NAME** |Referenzname für den benutzerdefinierten Test. |
+|**Name** |Referenzname für den benutzerdefinierten Test. |
 | **Protokoll** | Verwendetes Protokoll (mögliche Werte: „HTTP“ und „HTTPS“).|
 | **Host** und **Pfad** | Vollständiger URL-Pfad, der vom Anwendungsgateway aufgerufen wird, um die Integrität der Instanz zu ermitteln. Beispiel: Für die Website „http:\//contoso.com/“ können Sie den benutzerdefinierten Test für „http:\//contoso.com/path/custompath.htm“ konfigurieren, damit die HTTP-Antwort bei den Überprüfungen des Tests erfolgreich ist.|
 | **Intervall** | Konfiguriert die Intervalle der Testausführungen (in Sekunden).|

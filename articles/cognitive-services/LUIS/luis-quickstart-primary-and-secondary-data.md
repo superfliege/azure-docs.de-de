@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 02/19/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: b9ddd82d18b7f67f61e5c1589511ea6db4fa18a3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ea9a2df1f06ba6836ef88bc57dc3f95fd31e1ee9
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100291"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526563"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Tutorial: Extrahieren von Namen mit der Simple-Entität und einer Begriffsliste
 
@@ -48,7 +48,7 @@ Die Simple-Entität eignet sich gut für diese Art von Daten, wenn folgende Bedi
 * Die Daten sind nicht wohlgeformt, wie etwa ein regulärer Ausdruck.
 * Die Daten sind nicht gängig, etwa wie eine vorkonfigurierte Entität von Telefonnummer oder Daten.
 * Die Daten stimmen nicht exakt mit einer Liste bekannter Wörter überein, wie etwa eine Listenentität.
-* Die Daten enthalten keine anderen Datenelemente, wie etwa eine zusammengesetzte Entität oder eine hierarchische Entität.
+* Die Daten enthalten keine anderen Datenelemente, z. B. eine zusammengesetzte Entität oder kontextbezogene Rollen.
 
 Sehen Sie sich die folgenden Äußerungen eines Chatbots an:
 

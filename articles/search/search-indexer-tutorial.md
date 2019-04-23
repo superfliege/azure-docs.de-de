@@ -7,17 +7,17 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 04/09/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 401ad90f1ae4ffb4915a0b51aea41430e7045aa9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 8550e220a2c87823fc337154ea33dd3c4ec81ed0
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59270460"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528049"
 ---
-# <a name="tutorial-in-c-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Tutorial in C#: Auffüllung einer Azure SQL-Datenbank unter Verwendung von Azure Search-Indexern
+# <a name="c-tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>C#-Tutorial: Auffüllung einer Azure SQL-Datenbank unter Verwendung von Azure Search-Indexern
 
 Sie erfahren, wie Sie einen Indexer konfigurieren, um durchsuchbare Daten aus einer Azure SQL-Beispieldatenbank zu extrahieren. Ein [Indexer](search-indexer-overview.md) ist eine Komponente von Azure Search, die externe Datenquellen durchforstet und einen [Suchindex](search-what-is-an-index.md) auffüllt. Von allen Indexern wird der Indexer für Azure SQL-Datenbank am häufigsten verwendet. 
 
@@ -37,7 +37,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In dieser Schnellstartanleitung werden die folgenden Dienste, Tools und Daten verwendet: 
+In diesem Schnellstart werden die folgenden Dienste, Tools und Daten verwendet. 
 
 [Erstellen Sie einen Azure Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). In diesem Tutorial können Sie einen kostenlosen Dienst verwenden.
 
@@ -87,7 +87,7 @@ In diesem Schritt erstellen Sie eine externe Datenquelle, die ein Indexer durchf
 
 In der folgenden Übung wird davon ausgegangen, dass weder ein Server noch eine Datenbank vorhanden ist. In Schritt 2 werden Sie daher aufgefordert, beides zu erstellen. Optional: Falls Sie bereits über eine Ressource verfügen, können Sie ihr die Hoteltabelle hinzufügen (ab Schritt 4).
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. 
+1. [Melden Sie sich am Azure-Portal an.](https://portal.azure.com/) 
 
 2. Navigieren Sie zu einer **Azure SQL-Datenbank**, oder erstellen Sie eine, um eine Datenbank, einen Server und eine Ressourcengruppe zu erstellen. Dabei können Sie die Standardwerte und den günstigsten Tarif verwenden. Die Erstellung eines Servers hat unter anderem den Vorteil, dass Sie einen Administratorbenutzernamen und ein Kennwort angeben können. Diese werden in einem späteren Schritt zum Erstellen und Laden von Tabellen benötigt.
 
@@ -99,7 +99,7 @@ In der folgenden Übung wird davon ausgegangen, dass weder ein Server noch eine 
 
    ![SQL-Datenbankseite](./media/search-indexer-tutorial/hotels-db.png)
 
-4. Klicken Sie auf der Befehlsleiste auf **Tools** > **Abfrage-Editor**.
+4. Klicken Sie im Navigationsbereich auf **Abfrage-Editor (Vorschau)**.
 
 5. Klicken Sie auf **Anmelden**, und geben Sie den Benutzernamen und das Kennwort des Serveradministrators ein.
 
@@ -137,7 +137,7 @@ In der folgenden Übung wird davon ausgegangen, dass weder ein Server noch eine 
 
 ## <a name="understand-the-code"></a>Grundlegendes zum Code
 
-Der Code kann jetzt erstellt und ausgeführt werden. Nehmen Sie sich zuvor kurz Zeit, um sich die Index- und Indexerdefinition für dieses Beispiel etwas genauer anzusehen. Der relevante Code befindet sich in zwei Dateien:
+Sobald die Daten und Konfigurationseinstellungen vorhanden sind, kann das Beispielprogramm **DotNetHowToIndexers.sln** kompiliert und ausgeführt werden. Nehmen Sie sich zuvor kurz Zeit, um sich die Index- und Indexerdefinition für dieses Beispiel etwas genauer anzusehen. Der relevante Code befindet sich in zwei Dateien:
 
   + **hotel.cs**: Enthält das Schema, das den Index definiert.
   + **Program.cs**: Enthält die Funktionen zum Erstellen und Verwalten von Strukturen in Ihrem Dienst.
@@ -155,45 +155,65 @@ public string HotelName { get; set; }
 
 Ein Schema kann auch andere Elemente enthalten. Hierzu zählen beispielsweise Bewertungsprofile zur Erhöhung einer Suchbewertung, benutzerdefinierte Analysen und andere Konstrukte. Für unsere Zwecke reicht jedoch eine einfache Schemadefinition, die lediglich Felder aus den Beispieldatasets enthält.
 
-In diesem Tutorial ruft der Indexer Daten aus einer einzelnen Datenquelle ab. In der Praxis können Sie mehrere Indexer an den gleichen Index anfügen und so einen konsolidierten durchsuchbaren Index erstellen, der auf mehreren Datenquellen und Indexern basiert. Abhängig von Ihren Flexiblitätsanforderungen können Sie das gleiche Index-Indexer-Paar nutzen und nur die Datenquellen variieren oder einen einzelnen Index mit verschiedenen Indexer-/Datenquellenkombinationen verwenden.
+In diesem Tutorial ruft der Indexer Daten aus einer einzelnen Datenquelle ab. In der Praxis können Sie mehrere Indexer an den gleichen Index anfügen und so einen konsolidierten durchsuchbaren Index erstellen, der auf mehreren Datenquellen basiert. Abhängig von Ihren Flexiblitätsanforderungen können Sie das gleiche Index-Indexer-Paar nutzen und nur die Datenquellen variieren oder einen einzelnen Index mit verschiedenen Indexer-/Datenquellenkombinationen verwenden.
 
 ### <a name="in-programcs"></a>Program.cs
 
-Das Hauptprogramm enthält Funktionen für alle drei repräsentativen Datenquellen. Für Azure SQL-Datenbank sind besonders folgende Objekte hervorzuheben:
+Das Hauptprogramm enthält Logik zum Erstellen eines Clients, eines Index, einer Datenquelle und eines Indexers. Der Code sucht und löscht vorhandene Ressourcen mit dem gleichen Namen (unter der Annahme, dass Sie dieses Programm ggf. mehrmals ausführen).
+
+Das Datenquellenobjekt wird mit Einstellungen konfiguriert, die speziell für Ressourcen von Azure SQL-Datenbank gelten, z. B. [inkrementelle Indizierung](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) zur Nutzung der integrierten [Features für die Erkennung von Änderungen](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) von Azure SQL. Die Demodatenbank „hotels“ in Azure SQL enthält eine Spalte für Vorläufiges Löschen mit dem Namen **IsDeleted**. Wenn diese Spalte in der Datenbank auf „true“ festgelegt ist, entfernt der Indexer das entsprechende Dokument aus dem Azure Search-Index.
 
   ```csharp
-  private const string IndexName = "hotels";
-  private const string AzureSqlHighWaterMarkColumnName = "RowVersion";
-  private const string AzureSqlDataSourceName = "azure-sql";
-  private const string AzureSqlIndexerName = "azure-sql-indexer";
+  Console.WriteLine("Creating data source...");
+
+  DataSource dataSource = DataSource.AzureSql(
+      name: "azure-sql",
+      sqlConnectionString: configuration["AzureSQLConnectionString"],
+      tableOrViewName: "hotels",
+      deletionDetectionPolicy: new SoftDeleteColumnDeletionDetectionPolicy(
+          softDeleteColumnName: "IsDeleted",
+          softDeleteMarkerValue: "true"));
+  dataSource.DataChangeDetectionPolicy = new SqlIntegratedChangeTrackingPolicy();
+
+  searchService.DataSources.CreateOrUpdateAsync(dataSource).Wait();
   ```
 
-Zu den Objekten, die in Azure Search unabhängig voneinander angezeigt, konfiguriert und gelöscht werden können, zählen Indizes, Indexer und Datenquellen (*hotels*, *azure-sql-indexer* bzw. *azure-sql*). 
-
-Die Spalte *AzureSqlHighWaterMarkColumnName* verdient besondere Erwähnung: Sie enthält Informationen zur Erkennung von Änderungen, auf deren Grundlage der Indexer ermittelt, ob sich eine Zeile seit der letzten Indizierungsworkload geändert hat. [Änderungserkennungsrichtlinien](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md) werden nur in Indexern unterstützt und variieren je nach Datenquelle. Für Azure SQL-Datenbank können Sie sich abhängig von Ihren Datenbankanforderungen für eine von zwei Richtlinien entscheiden.
-
-Der folgende Code zeigt die Methoden in „Program.cs“ zum Erstellen einer Datenquelle und eines Indexers. Der Code sucht und löscht vorhandene Ressourcen mit dem gleichen Namen (unter der Annahme, dass Sie dieses Programm ggf. mehrmals ausführen).
+Ein Indexerobjekt ist plattformagnostisch. Dies bedeutet, dass die Konfiguration, die Zeitplanung und das Aufrufen unabhängig von der Quelle gleich sind. Dieses Indexerbeispiel enthält einen Zeitplan und eine Zurücksetzungsoption, mit der der Verlauf des Indexers gelöscht wird. Außerdem wird eine Methode zum sofortigen Erstellen und Ausführen des Indexers aufgerufen.
 
   ```csharp
-  private static string SetupAzureSqlIndexer(SearchServiceClient serviceClient, IConfigurationRoot configuration)
+  Console.WriteLine("Creating Azure SQL indexer...");
+  Indexer indexer = new Indexer(
+      name: "azure-sql-indexer",
+      dataSourceName: dataSource.Name,
+      targetIndexName: index.Name,
+      schedule: new IndexingSchedule(TimeSpan.FromDays(1)));
+  // Indexers contain metadata about how much they have already indexed
+  // If we already ran the sample, the indexer will remember that it already
+  // indexed the sample data and not run again
+  // To avoid this, reset the indexer if it exists
+  exists = await searchService.Indexers.ExistsAsync(indexer.Name);
+  if (exists)
   {
-    Console.WriteLine("Deleting Azure SQL data source if it exists...");
-    DeleteDataSourceIfExists(serviceClient, AzureSqlDataSourceName);
+      await searchService.Indexers.ResetAsync(indexer.Name);
+  }
 
-    Console.WriteLine("Creating Azure SQL data source...");
-    DataSource azureSqlDataSource = CreateAzureSqlDataSource(serviceClient, configuration);
+  await searchService.Indexers.CreateOrUpdateAsync(indexer);
 
-    Console.WriteLine("Deleting Azure SQL indexer if it exists...");
-    DeleteIndexerIfExists(serviceClient, AzureSqlIndexerName);
+  // We created the indexer with a schedule, but we also
+  // want to run it immediately
+  Console.WriteLine("Running Azure SQL indexer...");
 
-    Console.WriteLine("Creating Azure SQL indexer...");
-    Indexer azureSqlIndexer = CreateIndexer(serviceClient, AzureSqlDataSourceName, AzureSqlIndexerName);
-
-    return azureSqlIndexer.Name;
+  try
+  {
+      await searchService.Indexers.RunAsync(indexer.Name);
+  }
+  catch (CloudException e) when (e.Response.StatusCode == (HttpStatusCode)429)
+  {
+      Console.WriteLine("Failed to run indexer: {0}", e.Response.Content);
   }
   ```
 
-Wie Sie sehen, sind die Indexer-API-Aufrufe plattformunabhängig. (Einzige Ausnahme: [DataSourceType](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasourcetype?view=azure-dotnet) zum Angeben der Art des aufzurufenden Crawlers.)
+
 
 ## <a name="run-the-indexer"></a>Ausführen des Indexers
 
@@ -236,12 +256,10 @@ Klicken Sie im Azure-Portal im oberen Bereich der Übersichtsseite des Suchdiens
 
 Alle Indexer werden im Portal angezeigt. Das gilt auch für den, den Sie gerade programmgesteuert erstellt haben. Sie können eine Indexerdefinition öffnen und die dazugehörige Datenquelle anzeigen oder einen Aktualisierungszeitplan zur Erfassung neuer und geänderter Zeilen konfigurieren.
 
-1. Öffnen Sie die Übersichtsseite Ihres Azure Search-Diensts.
-2. Scrollen Sie nach unten zu den Kacheln für **Indexer** und **Datenquellen**.
-3. Klicken Sie auf eine Kachel, um eine Liste der einzelnen Ressourcen zu öffnen. Sie können einzelne Indexer oder Datenquellen auswählen, um Konfigurationseinstellungen anzuzeigen oder zu ändern.
+1. [Melden Sie sich am Azure-Portal](https://portal.azure.com/) an, und klicken Sie in Ihrem Suchdienst auf der Seite **Übersicht** auf die Links für **Indizes**, **Indexer** und **Datenquellen**.
+3. Wählen Sie einzelne Objekte aus, um die Konfigurationseinstellungen anzuzeigen oder zu ändern.
 
    ![Kachel „Indexer“ und „Datenquellen“](./media/search-indexer-tutorial/tiles-portal.png)
-
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

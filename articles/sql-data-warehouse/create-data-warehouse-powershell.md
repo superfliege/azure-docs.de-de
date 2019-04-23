@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
 ms.subservice: manage
-ms.date: 11/16/2018
+ms.date: 4/11/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 01a1c1fef5dd2dabf99677d59126caf41e1f6885
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d76f7ac6c8b60e2dec7d7d95cf419e1352b97f15
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57900606"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545127"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-with-azure-powershell"></a>Schnellstart: Erstellen und Abfragen eines Azure SQL Data Warehouse mit Azure PowerShell
 
@@ -103,8 +103,8 @@ New-AzSqlServerFirewallRule -ResourceGroupName $resourcegroupname `
 >
 
 
-## <a name="create-a-data-warehouse-with-sample-data"></a>Erstellen eines Data Warehouse mit Beispieldaten
-Dieses Beispiel erstellt ein Data Warehouse mit den zuvor definierten Variablen.  Es gibt das Dienstziel als DW400 an. Dies ist ein kostengünstiger Ausgangspunkt für Ihr Data Warehouse. 
+## <a name="create-a-data-warehouse"></a>Erstellen eines Data Warehouse
+Dieses Beispiel erstellt ein Data Warehouse mit den zuvor definierten Variablen.  Das Dienstziel wird als DW100c angegeben. Dies ist ein kostengünstiger Ausgangspunkt für Ihr Data Warehouse. 
 
 ```Powershell
 New-AzSqlDatabase `
@@ -112,7 +112,7 @@ New-AzSqlDatabase `
     -ServerName $servername `
     -DatabaseName $databasename `
     -Edition "DataWarehouse" `
-    -RequestedServiceObjectiveName "DW400" `
+    -RequestedServiceObjectiveName "DW100c" `
     -CollationName "SQL_Latin1_General_CP1_CI_AS" `
     -MaxSizeBytes 10995116277760
 ```
@@ -128,7 +128,7 @@ Erforderliche Parameter:
 Optionale Parameter:
 
 - **CollationName**: Ohne Angabe wird die Standardsortierung „SQL_Latin1_General_CP1_CI_AS“ verwendet. Die Sortierung kann für eine Datenbank nicht geändert werden.
-- **MaxSizeBytes**: Die maximale Größe einer Datenbank beträgt standardmäßig 10 GB.
+- **MaxSizeBytes**: Die maximale Größe einer Datenbank beträgt standardmäßig 240 TB. Durch die maximale Größe werden die Rowstore-Daten begrenzt. Die Speichermenge für Spaltendaten ist nicht begrenzt.
 
 Weitere Informationen zu den Parameteroptionen finden Sie unter [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase).
 

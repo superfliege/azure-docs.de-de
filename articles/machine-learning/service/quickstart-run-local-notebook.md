@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: ade0444110dbb23e762a869dc79805872c0f0bf0
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 3afea20fe02eafbf14b5162eef3a198d27140b9e
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59281130"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549134"
 ---
 # <a name="quickstart-use-your-own-notebook-server-to-get-started-with-azure-machine-learning"></a>Schnellstart: Verwenden Ihres eigenen Notebook-Servers für die ersten Schritte mit Azure Machine Learning
 
@@ -33,7 +33,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erste
 
 * Python 3.6-Notebook-Server mit installiertem Azure Machine Learning SDK
 * Azure Machine Learning Service-Arbeitsbereich
-* Konfigurationsdatei für den Arbeitsbereich (**aml_config/config.json**)
+* Konfigurationsdatei für den Arbeitsbereich (**.azureml/config.json**)
 
 Diese erforderlichen Komponenten erhalten Sie unter [Create an Azure Machine Learning service workspace](setup-create-workspace.md#portal) (Erstellen eines Azure Machine Learning Service-Arbeitsbereichs).
 
@@ -74,6 +74,6 @@ Wenn Sie nicht planen, die in diesem Artikel erstellten Ressourcen zu verwenden,
 In diesem Artikel haben Sie die Ressourcen erstellt, die Sie zum Experimentieren und zum Bereitstellen von Modellen benötigen. Sie haben Code in einem Notebook ausgeführt und den Ausführungsverlauf für diesen Code in Ihrem Arbeitsbereich in der Cloud untersucht.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning Service](tutorial-train-models-with-aml.md)
+> [Tutorial: Trainieren eines Bildklassifizierungsmodells](tutorial-train-models-with-aml.md)
 
 Sie können auch [anspruchsvollere Beispiele auf GitHub](https://aka.ms/aml-notebooks) erkunden oder das [SDK-Benutzerhandbuch](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) lesen.

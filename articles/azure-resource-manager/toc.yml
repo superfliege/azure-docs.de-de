@@ -1,262 +1,255 @@
-items:
 - name: Dokumentation zum Azure Resource Manager
   href: index.yml
 - name: Übersicht
   items:
-  - name: Was ist Resource Manager?
-    href: resource-group-overview.md
+    - name: Was ist Resource Manager?
+      href: resource-group-overview.md
 - name: Schnellstarts
-  items:
-  - name: Erstellen von Vorlagen – Portal
-    href: resource-manager-quickstart-create-templates-use-the-portal.md
-  - name: Erstellen von Vorlagen – VS Code
-    href: resource-manager-quickstart-create-templates-use-visual-studio-code.md
-  - name: Erstellen von Vorlagen – Visual Studio
-    href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
   expanded: true
+  items:
+    - name: Erstellen von Vorlagen – Portal
+      href: resource-manager-quickstart-create-templates-use-the-portal.md
+    - name: Erstellen von Vorlagen – VS Code
+      href: resource-manager-quickstart-create-templates-use-visual-studio-code.md
+    - name: Erstellen von Vorlagen – Visual Studio
+      href: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
 - name: Lernprogramme
   items:
-  - name: Nutzen der Vorlagenreferenz
-    href: resource-manager-tutorial-create-encrypted-storage-accounts.md
-  - name: Erstellen mehrerer Instanzen
-    displayName: iteration,copy
-    href: resource-manager-tutorial-create-multiple-instances.md
-  - name: Festlegen der Reihenfolge für die Ressourcenbereitstellung
-    displayName: dependent resources, dependency
-    href: resource-manager-tutorial-create-templates-with-dependent-resources.md
-  - name: Verwenden von Bedingungen
-    href: resource-manager-tutorial-use-conditions.md
-  - name: Integrieren von Key Vault
-    displayName: secrets
-    href: resource-manager-tutorial-use-key-vault.md
-  - name: Erstellen verknüpfter Vorlagen
-    href: resource-manager-tutorial-create-linked-templates.md
-  - name: Bereitstellen von VM-Erweiterungen
-    displayName: virtual machine extensions
-    href: resource-manager-tutorial-deploy-vm-extensions.md
-  - name: Bereitstellen von SQL-Erweiterungen
-    href: resource-manager-tutorial-deploy-sql-extensions-bacpac.md
-  - name: Schützen von Artefakten
-    href: resource-manager-tutorial-secure-artifacts.md
-  - name: Verwenden von sicheren Bereitstellungsmethoden
-    displayName: adm
-    href: deployment-manager-tutorial.md
-  - name: Problembehandlung bei der Vorlagenbereitstellung
-    href: resource-manager-tutorial-troubleshoot.md
+    - name: Nutzen der Vorlagenreferenz
+      href: resource-manager-tutorial-create-encrypted-storage-accounts.md
+    - name: Erstellen mehrerer Instanzen
+      displayName: 'iteration,copy'
+      href: resource-manager-tutorial-create-multiple-instances.md
+    - name: Festlegen der Reihenfolge für die Ressourcenbereitstellung
+      displayName: 'dependent resources, dependency'
+      href: resource-manager-tutorial-create-templates-with-dependent-resources.md
+    - name: Verwenden von Bedingungen
+      href: resource-manager-tutorial-use-conditions.md
+    - name: Integrieren von Key Vault
+      displayName: secrets
+      href: resource-manager-tutorial-use-key-vault.md
+    - name: Erstellen verknüpfter Vorlagen
+      href: resource-manager-tutorial-create-linked-templates.md
+    - name: Bereitstellen von VM-Erweiterungen
+      displayName: virtual machine extensions
+      href: resource-manager-tutorial-deploy-vm-extensions.md
+    - name: Bereitstellen von SQL-Erweiterungen
+      href: resource-manager-tutorial-deploy-sql-extensions-bacpac.md
+    - name: Schützen von Artefakten
+      href: resource-manager-tutorial-secure-artifacts.md
+    - name: Verwenden von sicheren Bereitstellungsmethoden
+      displayName: adm
+      href: deployment-manager-tutorial.md
+    - name: Problembehandlung bei der Vorlagenbereitstellung
+      href: resource-manager-tutorial-troubleshoot.md
 - name: Beispiele
   items:
-  - name: Resource Manager-Vorlagen
-    href: template-samples.md
-  - name: Codebeispiele
-    href: https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager
+    - name: Resource Manager-Vorlagen
+      href: template-samples.md
+    - name: Codebeispiele
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager'
 - name: Konzepte
   items:
-  - name: Vorlagendateistruktur
-    displayName: parameters,variables,resources,outputs
-    href: resource-group-authoring-templates.md
-  - name: Bewährte Methoden für Vorlagen
-    href: template-best-practices.md
-  - name: Vorlagen für Cloudkonsistenz
-    href: templates-cloud-consistency.md
-  - name: Ressourcenanbieter und -typen
-    href: resource-manager-supported-services.md
-  - name: Bereitstellungs-Manager
-    displayName: adm
-    href: deployment-manager-overview.md
-  - name: Bereitstellungsmodi
-    href: deployment-modes.md
-  - name: Ressourcenlöschung
-    href: resource-group-delete.md
-  - name: Resource Manager-Bereitstellung und klassische Bereitstellung
-    href: resource-manager-deployment-model.md
+    - name: Vorlagendateistruktur
+      displayName: 'parameters,variables,resources,outputs'
+      href: resource-group-authoring-templates.md
+    - name: Bewährte Methoden für Vorlagen
+      href: template-best-practices.md
+    - name: Vorlagen für Cloudkonsistenz
+      href: templates-cloud-consistency.md
+    - name: Ressourcenanbieter und -typen
+      href: resource-manager-supported-services.md
+    - name: Bereitstellungs-Manager
+      displayName: adm
+      href: deployment-manager-overview.md
+    - name: Bereitstellungsmodi
+      href: deployment-modes.md
+    - name: Ressourcenlöschung
+      href: resource-group-delete.md
+    - name: Resource Manager-Bereitstellung und klassische Bereitstellung
+      href: resource-manager-deployment-model.md
 - name: Anleitung
   items:
-  - name: Erstellen von Vorlagen
-    items:
-    - name: Erstellen der Vorlage
-      href: how-to-create-template.md
-    - name: Erstellen von Ressourcengruppen und Ressourcen für ein Abonnement
-      displayName: subscription level deployment
-      href: deploy-to-subscription.md
-    - name: Definieren von Ressourcenabhängigkeiten
-      href: resource-group-define-dependencies.md
-    - name: Modularisieren von Vorlagen
-      displayName: linked templates, nested templates
-      href: resource-group-linked-templates.md
-    - name: Verwalten von Geheimnissen
-      href: resource-manager-keyvault-parameter.md
-      displayname: key vault
-    - name: Erstellen mehrerer Instanzen
-      href: resource-group-create-multiple.md
-    - name: Verwenden von Vorlagenerweiterungen
-      href: resource-manager-use-extensions.md
-    - name: Aktualisieren von Ressourcen
-      href: /azure/architecture/building-blocks/extending-templates/update-resource
-  - name: Bereitstellen von Vorlagen
-    items:
-    - name: 'Bereitstellen: Portal'
-      displayName: deployment
-      href: resource-group-template-deploy-portal.md
-    - name: 'Bereitstellen: CLI'
-      displayName: deployment,rollback on error,redeploy
-      href: resource-group-template-deploy-cli.md
-    - name: 'Bereitstellen: PowerShell'
-      displayName: deployment,rollback on error,redeploy
-      href: resource-group-template-deploy.md
-    - name: 'Bereitstellen: REST-API'
-      displayName: deployment,rollback on error,redeploy
-      href: resource-group-template-deploy-rest.md
-    - name: Sichern von Vorlagen mit SAS-Token
+    - name: Erstellen von Vorlagen
       items:
-      - name: Verwenden der Azure-CLI
-        href: resource-manager-cli-sas-token.md
-      - name: Mithilfe von Azure PowerShell
-        href: resource-manager-powershell-sas-token.md
-    - name: Bereitstellen in mehreren Ressourcengruppen oder Abonnements
-      href: resource-manager-cross-resource-group-deployment.md
-    - name: Continuous Integration mit Azure DevOps Services
-      href: ../vs-azure-tools-resource-groups-ci-in-vsts.md
-      maintainContext: true
-  - name: Verwalten
-    items:
-    - name: Verwalten von Ressourcengruppen
+        - name: Erstellen der Vorlage
+          href: how-to-create-template.md
+        - name: Erstellen von Ressourcengruppen und Ressourcen für ein Abonnement
+          displayName: subscription level deployment
+          href: deploy-to-subscription.md
+        - name: Definieren von Ressourcenabhängigkeiten
+          href: resource-group-define-dependencies.md
+        - name: Modularisieren von Vorlagen
+          displayName: 'linked templates, nested templates'
+          href: resource-group-linked-templates.md
+        - name: Verwalten von Geheimnissen
+          displayname: key vault
+          href: resource-manager-keyvault-parameter.md
+        - name: Erstellen mehrerer Instanzen
+          href: resource-group-create-multiple.md
+        - name: Verwenden von Vorlagenerweiterungen
+          href: resource-manager-use-extensions.md
+        - name: Aktualisieren von Ressourcen
+          href: /azure/architecture/building-blocks/extending-templates/update-resource
+    - name: Bereitstellen von Vorlagen
       items:
-      - name: Verwenden des Azure-Portals
-        displayName: create,list,open,delete,deploy,move,lock,tag,export
-        href: manage-resource-groups-portal.md
-      - name: Verwenden der Azure-CLI
-        displayName: create,list,open,delete,deploy,move,lock,tag,export
-        href: manage-resource-groups-cli.md
-      - name: Mithilfe von Azure PowerShell
-        displayName: create,list,open,delete,deploy,move,lock,tag,export
-        href: manage-resource-groups-powershell.md
-    - name: Verwalten von Ressourcen
+        - name: 'Bereitstellen: Portal'
+          displayName: deployment
+          href: resource-group-template-deploy-portal.md
+        - name: 'Bereitstellen: CLI'
+          displayName: 'deployment,rollback on error,redeploy'
+          href: resource-group-template-deploy-cli.md
+        - name: 'Bereitstellen: PowerShell'
+          displayName: 'deployment,rollback on error,redeploy'
+          href: resource-group-template-deploy.md
+        - name: 'Bereitstellen: REST-API'
+          displayName: 'deployment,rollback on error,redeploy'
+          href: resource-group-template-deploy-rest.md
+        - name: Sichern von Vorlagen mit SAS-Token
+          items:
+            - name: Verwenden der Azure-CLI
+              href: resource-manager-cli-sas-token.md
+            - name: Mithilfe von Azure PowerShell
+              href: resource-manager-powershell-sas-token.md
+        - name: Bereitstellen in mehreren Ressourcengruppen oder Abonnements
+          href: resource-manager-cross-resource-group-deployment.md
+        - name: Continuous Integration mit Azure DevOps Services
+          href: ../vs-azure-tools-resource-groups-ci-in-vsts.md
+          maintainContext: true
+    - name: Verwalten
       items:
-      - name: Verwenden des Azure-Portals
-        displayName: open,delete,deploy,move,lock,tag,monitor
-        href: manage-resources-portal.md
-      - name: Verwenden der Azure-CLI
-        displayName: open,delete,deploy,move,lock,tag
-        href: manage-resources-cli.md
-      - name: Mithilfe von Azure PowerShell
-        displayName: open,delete,deploy,move,lock,tag
-        href: manage-resources-powershell.md
-    - name: Verschieben von Ressourcen
-      href: resource-group-move-resources.md
-    - name: Organisieren von Ressourcen
-      displayName: tags
-      href: resource-group-using-tags.md
-    - name: Sperren von Ressourcen
-      href: resource-group-lock-resources.md
-    - name: Authentifizierungs-API für den Zugriff auf Abonnements
-      href: resource-manager-api-authentication.md
-    - name: Erstellen von EA-Abonnements
-      href: programmatically-create-subscription.md
-    - name: Gewähren des Zugriffs zur Erstellung von EA-Abonnements
-      href: grant-access-to-create-subscription.md
-    - name: Mandantenübergreifende Authentifizierung
-      href: authenticate-multi-tenant.md
-  - name: Überwachen von Bereitstellungen
-    items:
-    - name: Anzeigen von Aktivitätsprotokollen
-      href: resource-group-audit.md
-    - name: Bereitstellungsvorgänge anzeigen
-      href: resource-manager-deployment-operations.md
-  - name: Behandeln von Bereitstellungsproblemen
-    items:
-    - name: Behandeln von Bereitstellungsfehlern
-      href: resource-manager-common-deployment-errors.md
-    - name: AccountNameInvalid
-      href: resource-manager-storage-account-name-errors.md
-    - name: InvalidTemplate
-      href: resource-manager-invalid-template-errors.md
-    - name: Linux-Bereitstellungsprobleme
-      href: ../virtual-machines/linux/troubleshoot-deploy-vm.md
-    - name: NoRegisteredProviderFound
-      href: resource-manager-register-provider-errors.md
-    - name: NotFound
-      href: resource-manager-not-found-errors.md
-    - name: ParentResourceNotFound
-      href: resource-manager-parent-resource-errors.md
-    - name: Bereitstellungs- und Zuteilungsprobleme bei Linux
-      href: ../virtual-machines/linux/troubleshoot-deployment-new-vm.md
-    - name: Bereitstellungs- und Zuteilungsprobleme bei Windows
-      href: ../virtual-machines/windows/troubleshoot-deployment-new-vm.md
-    - name: RequestDisallowedByPolicy
-      href: resource-manager-policy-requestdisallowedbypolicy-error.md
-    - name: ReservedResourceName
-      href: resource-manager-reserved-resource-name.md
-    - name: ResourceQuotaExceeded
-      href: resource-manager-quota-errors.md
-    - name: SkuNotAvailable
-      href: resource-manager-sku-not-available-errors.md
-    - name: Windows-Bereitstellungsprobleme
-      href: ../virtual-machines/windows/troubleshoot-deploy-vm.md
-  - name: Drosselungsanforderungen
-    href: resource-manager-request-limits.md
-  - name: Nachverfolgen asynchroner Vorgänge
-    href: resource-manager-async-operations.md
+        - name: Verwalten von Ressourcengruppen
+          items:
+            - name: Verwenden des Azure-Portals
+              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+              href: manage-resource-groups-portal.md
+            - name: Verwenden der Azure-CLI
+              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+              href: manage-resource-groups-cli.md
+            - name: Mithilfe von Azure PowerShell
+              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+              href: manage-resource-groups-powershell.md
+        - name: Verwalten von Ressourcen
+          items:
+            - name: Verwenden des Azure-Portals
+              displayName: 'open,delete,deploy,move,lock,tag,monitor'
+              href: manage-resources-portal.md
+            - name: Verwenden der Azure-CLI
+              displayName: 'open,delete,deploy,move,lock,tag'
+              href: manage-resources-cli.md
+            - name: Mithilfe von Azure PowerShell
+              displayName: 'open,delete,deploy,move,lock,tag'
+              href: manage-resources-powershell.md
+        - name: Verschieben von Ressourcen
+          href: resource-group-move-resources.md
+        - name: Organisieren von Ressourcen
+          displayName: tags
+          href: resource-group-using-tags.md
+        - name: Sperren von Ressourcen
+          href: resource-group-lock-resources.md
+        - name: Authentifizierungs-API für den Zugriff auf Abonnements
+          href: resource-manager-api-authentication.md
+        - name: Erstellen von EA-Abonnements
+          href: programmatically-create-subscription.md
+        - name: Gewähren des Zugriffs zur Erstellung von EA-Abonnements
+          href: grant-access-to-create-subscription.md
+        - name: Mandantenübergreifende Authentifizierung
+          href: authenticate-multi-tenant.md
+    - name: Überwachen von Bereitstellungen
+      items:
+        - name: Anzeigen von Aktivitätsprotokollen
+          href: resource-group-audit.md
+        - name: Bereitstellungsvorgänge anzeigen
+          href: resource-manager-deployment-operations.md
+    - name: Behandeln von Bereitstellungsproblemen
+      items:
+        - name: Behandeln von Bereitstellungsfehlern
+          href: resource-manager-common-deployment-errors.md
+        - name: AccountNameInvalid
+          href: resource-manager-storage-account-name-errors.md
+        - name: InvalidTemplate
+          href: resource-manager-invalid-template-errors.md
+        - name: Linux-Bereitstellungsprobleme
+          href: ../virtual-machines/linux/troubleshoot-deploy-vm.md
+        - name: NoRegisteredProviderFound
+          href: resource-manager-register-provider-errors.md
+        - name: NotFound
+          href: resource-manager-not-found-errors.md
+        - name: ParentResourceNotFound
+          href: resource-manager-parent-resource-errors.md
+        - name: Bereitstellungs- und Zuteilungsprobleme bei Linux
+          href: ../virtual-machines/linux/troubleshoot-deployment-new-vm.md
+        - name: Bereitstellungs- und Zuteilungsprobleme bei Windows
+          href: ../virtual-machines/windows/troubleshoot-deployment-new-vm.md
+        - name: RequestDisallowedByPolicy
+          href: resource-manager-policy-requestdisallowedbypolicy-error.md
+        - name: ReservedResourceName
+          href: resource-manager-reserved-resource-name.md
+        - name: ResourceQuotaExceeded
+          href: resource-manager-quota-errors.md
+        - name: SkuNotAvailable
+          href: resource-manager-sku-not-available-errors.md
+        - name: Windows-Bereitstellungsprobleme
+          href: ../virtual-machines/windows/troubleshoot-deploy-vm.md
+    - name: Drosselungsanforderungen
+      href: resource-manager-request-limits.md
+    - name: Nachverfolgen asynchroner Vorgänge
+      href: resource-manager-async-operations.md
 - name: Verweis
   items:
-  - name: Vorlagenreferenz
-    href: subtoc/toc.yml
-  - name: Funktionen von Azure-Ressourcen-Manager-Vorlagen
-    items:
-    - name: Alle Funktionen
-      href: resource-group-template-functions.md
-    - name: Array- und Objektfunktionen
-      href: resource-group-template-functions-array.md
-    - name: Vergleichsfunktionen
-      href: resource-group-template-functions-comparison.md
-    - name: Bereitstellungsfunktionen
-      href: resource-group-template-functions-deployment.md
-    - name: Logische Funktionen
-      href: resource-group-template-functions-logical.md
-    - name: Numerische Funktionen
-      href: resource-group-template-functions-numeric.md
+    - name: Vorlagenreferenz
+      href: subtoc/toc.yml
+    - name: Funktionen von Azure-Ressourcen-Manager-Vorlagen
+      items:
+        - name: Alle Funktionen
+          href: resource-group-template-functions.md
+        - name: Array- und Objektfunktionen
+          href: resource-group-template-functions-array.md
+        - name: Vergleichsfunktionen
+          href: resource-group-template-functions-comparison.md
+        - name: Bereitstellungsfunktionen
+          href: resource-group-template-functions-deployment.md
+        - name: Logische Funktionen
+          href: resource-group-template-functions-logical.md
+        - name: Numerische Funktionen
+          href: resource-group-template-functions-numeric.md
+        - name: Ressourcenfunktionen
+          href: resource-group-template-functions-resource.md
+        - name: Zeichenfolgenfunktionen
+          href: resource-group-template-functions-string.md
     - name: Ressourcenfunktionen
-      href: resource-group-template-functions-resource.md
-    - name: Zeichenfolgenfunktionen
-      href: resource-group-template-functions-string.md
-  - name: Ressourcenfunktionen
-    items:
-    - name: Löschung des vollständigen Modus
-      href: complete-mode-deletion.md
-    - name: Unterstützung für das Verschieben
-      href: move-support-resources.md
-    - name: Tagunterstützung
-      href: tag-support.md
-  - name: 'REST: Resource Manager'
-    href: /rest/api/resources/
-  - name: 'REST: Bereitstellungs-Manager'
-    href: /rest/api/deploymentmanager/
-  - name: Azure PowerShell
-    href: /powershell/module/az.resources
-  - name: Azure-Befehlszeilenschnittstelle
-    href: /cli/azure/resource
-  - name: .NET
-    href: /dotnet/api/microsoft.azure.management.resourcemanager
-  - name: Java
-    href: /java/api/com.microsoft.azure.management.resources
-  - name: Python
-    href: /python/api/overview/azure/resources?view=azure-python
+      items:
+        - name: Löschung des vollständigen Modus
+          href: complete-mode-deletion.md
+        - name: Unterstützung für das Verschieben
+          href: move-support-resources.md
+        - name: Tagunterstützung
+          href: tag-support.md
+    - name: 'REST: Resource Manager'
+      href: /rest/api/resources/
+    - name: 'REST: Bereitstellungs-Manager'
+      href: /rest/api/deploymentmanager/
+    - name: Azure PowerShell
+      href: /powershell/module/az.resources
+    - name: Azure-Befehlszeilenschnittstelle
+      href: /cli/azure/resource
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.resourcemanager
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.resources
+    - name: Python
+      href: /python/api/overview/azure/resources?view=azure-python
 - name: Ressourcen
   items:
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/roadmap/?category=monitoring-management
-  - name: Preisrechner
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Dienstupdates
-    href: https://azure.microsoft.com/updates/?product=azure-resource-manager
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-resource-manager
-  - name: Verwalten persönlicher Daten
-    href: resource-manager-personal-data.md
-  - name: Videos
-    href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 2e81e982be95d195d591f326d09458185d4b9698
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679025"
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
+    - name: Preisrechner
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Dienstupdates
+      href: 'https://azure.microsoft.com/updates/?product=azure-resource-manager'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-resource-manager'
+    - name: Verwalten persönlicher Daten
+      href: resource-manager-personal-data.md
+    - name: Videos
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager'
