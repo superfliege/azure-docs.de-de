@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 9cd2e5e211fcda7c59469d3b09e9c9e5bdefdbd6
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: ca6ed58cfabb5027830828812c4820c1b586875c
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546583"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148899"
 ---
 # <a name="import-virtual-machines-from-another-lab-in-azure-devtest-labs"></a>Importieren virtueller Computer aus einem anderen Lab in Azure DevTest Labs
-In diesem Artikel erfahren Sie, wie Sie virtuelle Computer aus einem anderen Lab in Ihr Lab importieren. 
+In diesem Artikel erfahren Sie, wie Sie virtuelle Computer aus einem anderen Lab in Ihr Lab importieren.
 
 ## <a name="scenarios"></a>Szenarien
-Folgende Beispiele beschreiben Szenarios, in denen Sie VMs aus einem Lab in ein anderes Lab importieren müssen: 
+Folgende Beispiele beschreiben Szenarios, in denen Sie VMs aus einem Lab in ein anderes Lab importieren müssen:
 
 - Ein Mitglied eines Teams wechselt zu einer anderen Gruppe im Unternehmen und möchte den Entwicklerdesktop mit in die DevTest Labs-Umgebung des neuen Teams nehmen.
 - Die Gruppe hat das [Kontingent auf Abonnementebene](../azure-subscription-service-limits.md) erreicht und möchte die Teams in mehrere Abonnements unterteilen.
@@ -34,8 +34,8 @@ Mit diesem Feature können Sie VMs aus einem Lab (Quelle) in ein anderes Lab (Z
 
 Der Vorgang dauert einige Zeit und wird von den folgenden Faktoren beeinflusst:
 
-- Anzahl bzw. Größe der Datenträger, die mit dem Quellcomputer verbunden sind (da es sich um einen Kopier- und nicht um einen Verschiebevorgang handelt). 
-- Distanz zum Ziel (z.B. von der Region „USA, Osten“ nach „Asien, Südosten“).  
+- Anzahl bzw. Größe der Datenträger, die mit dem Quellcomputer verbunden sind (da es sich um einen Kopier- und nicht um einen Verschiebevorgang handelt).
+- Distanz zum Ziel (z.B. von der Region „USA, Osten“ nach „Asien, Südosten“).
 
 Sobald der Vorgang abgeschlossen ist, bleibt der virtuelle Quellcomputer im heruntergefahrenen Zustand, und der neue virtuelle Computer läuft im Ziellab.
 
@@ -47,12 +47,12 @@ Zwei Haupteinschränkungen müssen bei der Planung des Imports von VMs aus einem
 - Zurzeit wird dieses Feature ausschließlich von PowerShell und REST-API unterstützt.
 
 ## <a name="use-powershell"></a>Verwenden von PowerShell
-Laden Sie die ImportVirtualMachines.ps1-Datei von [GitHub](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImportVirtualMachines) herunter. Mithilfe des Skripts können Sie eine einzelne VM oder alle VMs aus dem Quelllab in das Ziellab importieren. 
+Laden Sie die ImportVirtualMachines.ps1-Datei von [GitHub](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImportVirtualMachines) herunter. Mithilfe des Skripts können Sie eine einzelne VM oder alle VMs aus dem Quelllab in das Ziellab importieren.
 
 ### <a name="use-powershell-to-import-a-single-vm"></a>Importieren einer einzelnen VM mit PowerShell
 Zur Ausführung dieses PowerShell-Skripts müssen Sie die Quell-VM und das Ziellab sowie optional einen neuen Namen für den Zielcomputer angeben:
 
-```powershell 
+```powershell
 ./ImportVirtualMachines.ps1 -SourceSubscriptionId "<ID of the subscription that contains the source lab>" `
                             -SourceDevTestLabName "<Name of the source lab>" `
                             -SourceVirtualMachineName "<Name of the VM to be imported from the source lab> " `
@@ -63,7 +63,7 @@ Zur Ausführung dieses PowerShell-Skripts müssen Sie die Quell-VM und das Ziell
 
 ### <a name="use-powershell-to-import-all-vms-in-the-source-lab"></a>Importieren aller VMs aus dem Quelllab mit PowerShell
 Wenn kein virtueller Quellcomputer angegeben ist, importiert das Skript automatisch alle VMs in die DevTest Labs-Umgebung.  Beispiel: 
- 
+
 ```powershell
 ./ImportVirtualMachines.ps1 -SourceSubscriptionId "<ID of the subscription that contains the source lab>" `
                             -SourceDevTestLabName "<Name of the source lab>" `
@@ -83,7 +83,7 @@ POST https://management.azure.com/subscriptions/<DestinationSubscriptionID>/reso
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Entsprechende Informationen finden Sie in den folgenden Artikeln: 
+Entsprechende Informationen finden Sie in den folgenden Artikeln:
 
 - [Festlegen von Richtlinien für ein Lab](devtest-lab-get-started-with-lab-policies.md)
 - [Häufig gestellte Fragen](devtest-lab-faq.md)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 00f64deaa5e02f9bb74baaf86bfdf71690a3345d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ec79f6a9b255d44e66b901a0aae263c8dbbf2863
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248247"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149859"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>Skalierungskontingente und -beschränkungen in DevTest Labs
 Bei der Arbeit mit DevTest Labs werden Sie möglicherweise feststellen, dass bestimmte Standardbeschränkungen für Azure-Ressourcen gelten, die sich auf den DevTest Labs-Dienst auswirken können. Diese Beschränkungen werden als **Kontingente** bezeichnet.
@@ -28,7 +28,7 @@ Bei der Arbeit mit DevTest Labs werden Sie möglicherweise feststellen, dass bes
 
 Sie können jede Azure-Ressource bis zur Ausschöpfung des Kontingents nutzen. Jedes Abonnement verfügt über separate Kontingente; die Nutzungsnachverfolgung erfolgt pro Abonnement.
 
-Jedes Abonnement weist z.B. ein Standardkontingent von 20 Kernen auf. Wenn Sie in Ihrem Lab demnach VMs mit jeweils vier Kernen erstellen, können Sie lediglich fünf VMs erstellen. 
+Jedes Abonnement weist z.B. ein Standardkontingent von 20 Kernen auf. Wenn Sie in Ihrem Lab demnach VMs mit jeweils vier Kernen erstellen, können Sie lediglich fünf VMs erstellen.
 
 Unter [Beschränkungen des Azure-Abonnements und -Diensts](https://docs.microsoft.com/azure/azure-subscription-service-limits) werden einige der am häufigsten geltenden Kontingente für Azure-Ressourcen aufgeführt. Zu Ressourcen, die am häufigsten in einem Lab verwendet werden und für die eventuell Kontingente gelten, zählen VM-Kerne, öffentliche IP-Adressen, Netzwerkschnittstellen, verwaltete Datenträger, RBAC-Rollenzuweisung und ExpressRoute-Verbindungen.
 
@@ -67,4 +67,4 @@ Der Artikel [Grundlegendes zu Azure-Grenzwerten und -Erhöhungen](https://azure.
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ### <a name="next-steps"></a>Nächste Schritte
-* Erkunden Sie den [DevTest Labs-Azure Resource Manager-Katalog mit Schnellstartvorlagen](https://github.com/Azure/azure-devtestlab/tree/master/Samples).
+* Erkunden Sie den [DevTest Labs-Azure Resource Manager-Katalog mit Schnellstartvorlagen](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).

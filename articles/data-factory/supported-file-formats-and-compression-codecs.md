@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 9e30337eb8acaa6dc3386f5e60285faa80dd6307
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: d7e2ecd9c9c27140fff4d483e01eaaca632e929a
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257908"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60150031"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Unterstützte Dateiformate und Komprimierungscodecs in Azure Data Factory
 
@@ -43,9 +43,9 @@ Wenn Sie aus einer Textdatei lesen oder in eine Textdatei schreiben möchten, le
 | quoteChar |Das Zeichen, das verwendet wird, um einen Zeichenfolgenwert zu zitieren. Die Spalten- und Zeilentrennzeichen innerhalb der Anführungszeichen werden als Teil des Zeichenfolgenwerts behandelt. Diese Eigenschaft gilt für Eingabe- und Ausgabedatasets.<br/><br/>Sie können für eine Tabelle nicht gleichzeitig escapeChar und quoteChar verwenden. |Es ist nur ein Zeichen zulässig. Kein Standardwert. <br/><br/>Beispiel: Wenn Sie das Komma (,) als Spaltentrennzeichen gewählt haben, das Kommazeichen jedoch im Text (Beispiel: <Hello, world>) verwenden möchten, können Sie das doppelte gerade Anführungszeichen (") als Escapezeichen definieren und die Zeichenfolge "Hello, world" in der Quelle verwenden. |Nein  |
 | nullValue |Ein oder mehrere Zeichen, das/die verwendet wird/werden, um einen Null-Wert darzustellen. |Ein oder mehrere Zeichen. Die **Standardwerte** lauten **„\N“ und „NULL“** beim Lesen und **„\N“** beim Schreiben. |Nein  |
 | encodingName |Geben Sie den Codierungsnamen an. |Ein gültiger Codierungsname. Siehe [Encoding.EncodingName-Eigenschaft](https://msdn.microsoft.com/library/system.text.encoding.aspx). Beispiel: windows-1250 oder shift_jis. Der **Standardwert** lautet **UTF-8**. |Nein  |
-| firstRowAsHeader |Gibt an, ob die erste Zeile als Kopfzeile betrachtet werden soll. Bei einem Eingabedataset liest Data Factory die erste Zeile als Kopfzeile. Bei einem Ausgabedataset schreibt Data Factory die erste Zeile als Kopfzeile. <br/><br/>Beispielszenarien finden Sie unter [Szenarien für die Verwendung von `firstRowAsHeader` und `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |True<br/><b>False (Standardwert)</b> |Nein  |
+| firstRowAsHeader |Gibt an, ob die erste Zeile als Kopfzeile betrachtet werden soll. Bei einem Eingabedataset liest Data Factory die erste Zeile als Kopfzeile. Bei einem Ausgabedataset schreibt Data Factory die erste Zeile als Kopfzeile. <br/><br/>Beispielszenarien finden Sie unter [Szenarien für die Verwendung von `firstRowAsHeader` und `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |True<br/><b>False (Standard)</b> |Nein  |
 | skipLineCount |Gibt an, wie viele **nicht leere** Zeilen beim Lesen von Daten aus Eingabedateien übersprungen werden sollen. Wenn sowohl skipLineCount und firstRowAsHeader angegeben sind, werden erst die Zeilen übersprungen und dann die Kopfzeileninformationen aus der Eingabedatei gelesen. <br/><br/>Beispielszenarien finden Sie unter [Szenarien für die Verwendung von `firstRowAsHeader` und `skipLineCount`](#scenarios-for-using-firstrowasheader-and-skiplinecount). |Ganze Zahl  |Nein  |
-| treatEmptyAsNull |Gibt an, ob eine NULL- oder eine leere Zeichenfolge beim Lesen von Daten aus einer Eingabedatei als NULL-Wert behandelt werden sollen. |**True (Standardwert)**<br/>False |Nein  |
+| treatEmptyAsNull |Gibt an, ob eine NULL- oder eine leere Zeichenfolge beim Lesen von Daten aus einer Eingabedatei als NULL-Wert behandelt werden sollen. |**True (Standard)**<br/>False |Nein  |
 
 ### <a name="textformat-example"></a>TextFormat-Beispiel
 
@@ -230,7 +230,7 @@ und ihn im folgenden Format in eine Azure SQL-Tabelle kopieren möchten, indem S
 
 Das Eingabedataset vom Typ **JsonFormat** ist wie folgt definiert: (Teildefinition ausschließlich mit den relevanten Teilen). Dies gilt insbesondere in folgenden Fällen:
 
-- `structure` definiert die benutzerdefinierten Spaltennamen und den entsprechenden Datentyp beim Konvertieren in tabellarische Daten. Dieser Abschnitt ist **optional**, solange Sie keine Spaltenzuordnung ausführen müssen. Weitere Informationen finden Sie unter [Zuordnen von Spalten im Quelldataset zu Spalten im Zieldataset](copy-activity-schema-and-type-mapping.md).
+- Abschnitt `structure` definiert die benutzerdefinierten Spaltennamen und den entsprechenden Datentyp beim Konvertieren in tabellarische Daten. Dieser Abschnitt ist **optional**, solange Sie keine Spaltenzuordnung ausführen müssen. Weitere Informationen finden Sie unter [Zuordnen von Spalten im Quelldataset zu Spalten im Zieldataset](copy-activity-schema-and-type-mapping.md).
 - `jsonPathDefinition` gibt den JSON-Pfad für jede Spalte an, die anzeigt, wo die Daten extrahiert werden sollen. Um Daten aus dem Array zu kopieren, können Sie mit `array[x].property` den Wert der angegebenen Eigenschaft aus dem `xth`-Objekt extrahieren oder mit `array[*].property` in einem beliebigen Objekt mit entsprechender Eigenschaft nach dem Wert suchen.
 
 ```json
@@ -305,7 +305,7 @@ und Sie ihn in eine Azure SQL-Tabelle im folgenden Format kopieren möchten, ind
 
 Das Eingabedataset vom Typ **JsonFormat** ist wie folgt definiert: (Teildefinition ausschließlich mit den relevanten Teilen). Dies gilt insbesondere in folgenden Fällen:
 
-- `structure` definiert die benutzerdefinierten Spaltennamen und den entsprechenden Datentyp beim Konvertieren in tabellarische Daten. Dieser Abschnitt ist **optional**, solange Sie keine Spaltenzuordnung ausführen müssen. Weitere Informationen finden Sie unter [Zuordnen von Spalten im Quelldataset zu Spalten im Zieldataset](copy-activity-schema-and-type-mapping.md).
+- Abschnitt `structure` definiert die benutzerdefinierten Spaltennamen und den entsprechenden Datentyp beim Konvertieren in tabellarische Daten. Dieser Abschnitt ist **optional**, solange Sie keine Spaltenzuordnung ausführen müssen. Weitere Informationen finden Sie unter [Zuordnen von Spalten im Quelldataset zu Spalten im Zieldataset](copy-activity-schema-and-type-mapping.md).
 - `jsonNodeReference` gibt an, dass die Iteration und Extraktion von Daten aus den Objekten mit dem Muster unter **Array** `orderlines` erfolgt.
 - `jsonPathDefinition` gibt den JSON-Pfad für jede Spalte an, die anzeigt, wo die Daten extrahiert werden sollen. In diesem Beispiel unterliegen `ordernumber`, `orderdate` und `city` dem Stammobjekt mit dem JSON-Pfad, der mit `$.` beginnt. `order_pd` und `order_price` beginnen hingegen mit dem Pfad, der sich aus dem Array-Element ohne `$.` ableitet.
 
@@ -442,7 +442,7 @@ Beispiel: Legen Sie für die Variable `_JAVA_OPTIONS` den Wert `-Xms256m -Xmx16g
 
 | Data Factory-Zwischendatentyp | Primitiver Parquet-Typ | Ursprünglicher Parquet-Typ (Deserialisieren) | Ursprünglicher Parquet-Typ (Serialisieren) |
 |:--- |:--- |:--- |:--- |
-| Boolescher Wert | Boolescher Wert | – | – |
+| Boolean | Boolean | – | – |
 | SByte | Int32 | Int8 | Int8 |
 | Byte | Int32 | UInt8 | Int16 |
 | Int16 | Int32 | Int16 | Int16 |
@@ -455,7 +455,7 @@ Beispiel: Legen Sie für die Variable `_JAVA_OPTIONS` den Wert `-Xms256m -Xmx16g
 | Double | Double | – | – |
 | Decimal | Binär | Decimal | Decimal |
 | Zeichenfolge | Binär | Utf8 | Utf8 |
-| DateTime | Int96 | – | – |
+| Datetime | Int96 | – | – |
 | TimeSpan | Int96 | – | – |
 | DateTimeOffset | Int96 | – | – |
 | ByteArray | Binär | – | – |
@@ -478,7 +478,7 @@ Beachten Sie folgende Punkte:
 
 * Komplexe Datentypen werden nicht unterstützt (STRUCT, MAP, LIST, UNION).
 * Ein Leerzeichen im Spaltennamen wird nicht unterstützt.
-* Für die ORC-Datei stehen drei [mit der Komprimierung zusammenhängende Optionen](http://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/) zur Verfügung: NONE, ZLIB, SNAPPY. Data Factory unterstützt das Lesen von Daten aus ORC-Dateien in jedem der oben genannten komprimierten Formate. Zum Lesen der Daten wird der Komprimierungscodec in den Metadaten verwendet. Beim Schreiben in eine ORC-Datei wählt Data Factory hingegen ZLIB (Standardeinstellung für ORC). Derzeit gibt es keine Option zum Überschreiben dieses Verhaltens.
+* Für die ORC-Datei stehen drei [mit der Komprimierung zusammenhängende Optionen](https://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/) zur Verfügung: NONE, ZLIB, SNAPPY. Data Factory unterstützt das Lesen von Daten aus ORC-Dateien in jedem der oben genannten komprimierten Formate. Zum Lesen der Daten wird der Komprimierungscodec in den Metadaten verwendet. Beim Schreiben in eine ORC-Datei wählt Data Factory hingegen ZLIB (Standardeinstellung für ORC). Derzeit gibt es keine Option zum Überschreiben dieses Verhaltens.
 
 > [!IMPORTANT]
 > Wenn Sie bei Kopiervorgängen mithilfe einer selbstgehosteten Integration Runtime, z.B. zwischen lokalen Datenspeichern und der Cloud, ORC-Dateien nicht **unverändert** kopieren, müssen Sie die **64-Bit-Version der JRE 8 (Java Runtime Environment) oder OpenJDK** auf Ihrem IR-Computer installieren. Weitere Details finden Sie im folgenden Absatz.
@@ -492,7 +492,7 @@ Für Kopiervorgänge in der selbstgehosteten Integration Runtime mit Serialisier
 
 | Data Factory-Zwischendatentyp | ORC-Typen |
 |:--- |:--- |
-| Boolescher Wert | Boolescher Wert |
+| Boolean | Boolean |
 | SByte | Byte |
 | Byte | Schnellstart |
 | Int16 | Schnellstart |
@@ -505,7 +505,7 @@ Für Kopiervorgänge in der selbstgehosteten Integration Runtime mit Serialisier
 | Double | Double |
 | Decimal | Decimal |
 | Zeichenfolge | Zeichenfolge |
-| DateTime | Zeitstempel |
+| Datetime | Zeitstempel |
 | DateTimeOffset | Zeitstempel |
 | TimeSpan | Zeitstempel |
 | ByteArray | Binär |

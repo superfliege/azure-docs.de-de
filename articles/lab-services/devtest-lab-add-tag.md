@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 38ec93afd27ac75a97a28fef59bd10fafdf963c9
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e4d9aeb527461cc7292235fef1de0abdfa4242bd
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247040"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148916"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Hinzufügen von Tags zu einem Lab in Azure DevTest Labs
 
@@ -42,8 +42,8 @@ Jedes Tag besteht aus einem **Name**/**Wert**-Paar. Sie können beispielsweise e
 
 1. Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 1. Wählen Sie ggf. **Alle Dienste** und dann in der Liste die Option **DevTest Labs**. Ihr Lab wird unter Umständen bereits auf dem Dashboard unter **Alle Ressourcen** angezeigt.
-1. Wählen Sie in der Liste der Labs das Lab aus, in dem Sie Tags hinzufügen oder verwalten möchten.  
-1. Wählen Sie im Bereich **Übersicht** des Labs die Option **Konfiguration und Richtlinien** aus.  
+1. Wählen Sie in der Liste der Labs das Lab aus, in dem Sie Tags hinzufügen oder verwalten möchten.
+1. Wählen Sie im Bereich **Übersicht** des Labs die Option **Konfiguration und Richtlinien** aus.
 
     ![Schaltfläche „Konfiguration und Richtlinien“](./media/devtest-lab-add-tag/devtestlab-config-and-policies.png)
 
@@ -56,7 +56,7 @@ Jedes Tag besteht aus einem **Name**/**Wert**-Paar. Sie können beispielsweise e
 
 Für Tags gelten folgende Einschränkungen:
 
-* Jede Ressource oder Ressourcengruppe kann maximal 15 Tagname-Wert-Paare besitzen. Diese Einschränkung gilt nur für Tags, die direkt auf die Ressourcengruppe oder die Ressource angewendet werden. Eine Ressourcengruppe kann zahlreiche Ressourcen mit jeweils 15 Tagname-Wert-Paaren enthalten. 
+* Jede Ressource oder Ressourcengruppe kann maximal 15 Tagname-Wert-Paare besitzen. Diese Einschränkung gilt nur für Tags, die direkt auf die Ressourcengruppe oder die Ressource angewendet werden. Eine Ressourcengruppe kann zahlreiche Ressourcen mit jeweils 15 Tagname-Wert-Paaren enthalten.
 * Der Tagname ist auf 512 Zeichen beschränkt und der Tagwert auf 256 Zeichen. Bei Speicherkonten ist der Tagname auf 128 Zeichen beschränkt und der Tagwert auf 256 Zeichen.
 * Auf die Ressourcengruppe angewendete Tags werden nicht von den in dieser Ressourcengruppe enthaltenen Ressourcen geerbt.
 
@@ -66,4 +66,4 @@ Der Artikel [Verwenden von Tags zum Organisieren von Azure-Ressourcen](https://d
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Sie können mithilfe benutzerdefinierter Richtlinien Einschränkungen und Konventionen für Ihr Abonnement festlegen. Bei einer von Ihnen definierten Richtlinie kann es erforderlich sein, dass alle Ressourcen über einen Wert für ein bestimmtes Tag verfügen. Weitere Informationen finden Sie unter [Verwalten aller Richtlinien für ein Lab in Azure DevTest Labs](devtest-lab-set-lab-policy.md).
-* Erkunden Sie den [DevTest Labs-Azure Resource Manager-Katalog mit Schnellstartvorlagen](https://github.com/Azure/azure-devtestlab/tree/master/Samples).
+* Erkunden Sie den [DevTest Labs-Azure Resource Manager-Katalog mit Schnellstartvorlagen](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).

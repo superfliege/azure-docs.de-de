@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: fca78c86849ef8210bb3aaeb8ad96e1fba3d7c05
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2fe31271fa84bc4170bd431a4aadbcafc0df9086
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542487"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148967"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Posten einer Ankündigung in einem Lab in Azure DevTest Labs
 
@@ -37,8 +37,8 @@ Das Ankündigungsfeature ist für vorübergehende Ankündigungen gedacht.  Sie k
 
 1. Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
 1. Wählen Sie ggf. **Alle Dienste** und dann in der Liste die Option **DevTest Labs**. (Ihr Lab wird im Dashboard unter Umständen bereits unter **Alle Ressourcen** angezeigt.)
-1. Wählen Sie in der Liste mit den Labs das Lab aus, in dem Sie eine Ankündigung posten möchten.  
-1. Wählen Sie im Bereich **Übersicht** des Labs die Option **Konfiguration und Richtlinien** aus.  
+1. Wählen Sie in der Liste mit den Labs das Lab aus, in dem Sie eine Ankündigung posten möchten.
+1. Wählen Sie im Bereich **Übersicht** des Labs die Option **Konfiguration und Richtlinien** aus.
 
     ![Schaltfläche „Konfiguration und Richtlinien“](./media/devtest-lab-announcements/devtestlab-config-and-policies.png)
 
@@ -83,7 +83,7 @@ Wenn diese Ankündigung den Lab-Benutzern nicht mehr angezeigt werden soll, kön
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-Vorlage
-Sie können eine Ankündigung als Teil einer Azure Resource Manager-Vorlage angeben, wie im folgenden Beispiel gezeigt: 
+Sie können eine Ankündigung als Teil einer Azure Resource Manager-Vorlage angeben, wie im folgenden Beispiel gezeigt:
 
 ```json
 {
@@ -119,7 +119,7 @@ Sie können eine Ankündigung als Teil einer Azure Resource Manager-Vorlage ange
                 "support": {
                     "markdown": "",
                     "enabled": "Enabled"
-                }                
+                }
             },
             "resources": [
                 {
@@ -167,4 +167,4 @@ Sie können eine Azure Resource Manager-Vorlage auf eine der folgenden Arten ber
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Wenn Sie eine Lab-Richtlinie ändern oder festlegen, kann es ratsam sein, eine Ankündigung zu posten, um Benutzer zu informieren. [Festlegen von Richtlinien und Zeitplänen](devtest-lab-set-lab-policy.md) enthält Informationen zum Anwenden von Einschränkungen und Konventionen für Ihr gesamtes Abonnement mit benutzerdefinierten Richtlinien.
-* Erkunden Sie den [DevTest Labs-Azure Resource Manager-Katalog mit Schnellstartvorlagen](https://github.com/Azure/azure-devtestlab/tree/master/Samples).
+* Erkunden Sie den [DevTest Labs-Azure Resource Manager-Katalog mit Schnellstartvorlagen](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).

@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: b38b1af8c72b814813804a49642668c28f3898d6
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: fded37fee844a01f4d51518f2ca56dcf575704b2
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56302621"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60150148"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Löschen von Azure-Ressourcen für Bereitstellungen im vollständigen Modus
 Dieser Artikel beschreibt, wie Ressourcentypen das Löschen handhaben, wenn sie sich nicht in einer Vorlage befinden, die im vollständigen Modus bereitgestellt wird.
@@ -633,7 +633,7 @@ Um die gleichen Daten als Datei mit durch Trennzeichen getrennten Werten abzuruf
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 | Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
-| clusters | Ja | 
+| clusters | Nein  | 
 | clusters/applications | Nein  | 
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport

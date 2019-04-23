@@ -2,18 +2,18 @@
 title: Problembehandlung bei der Hyper-V-Notfallwiederherstellung in Azure mit Azure Site Recovery | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Probleme bei der Notfallwiederherstellung während der Hyper-V-Replikation in Azure mithilfe von Azure Site Recovery behoben werden.
 services: site-recovery
-author: Rajeswari-Mamilla
+author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
-ms.author: ramamill
-ms.openlocfilehash: 14d763126cccadf8042da79b20d15e5c93a8ce62
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/14/2019
+ms.author: rajanaki
+ms.openlocfilehash: 8bb790571e1499bd45fb8bee27f4f1896046cbc2
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094176"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149083"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Problembehandlung bei der Hyper-V-zu-Azure-Replikation und Failover
 

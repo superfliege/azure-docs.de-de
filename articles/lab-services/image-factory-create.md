@@ -1,6 +1,6 @@
 ---
 title: Erstellen einer Image Factory in Azure DevTest Labs | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie eine benutzerdefinierte Image Factory in Azure DevTest Labs erstellen.
+description: Erfahren Sie, wie Sie in Azure DevTest Labs eine benutzerdefinierte Image Factory erstellen.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: e51c56f54a4e30b5e9094388ed92aa0a62ba0840
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: cf1bb31614c04d6073bc40c510fc43b2f8e4e189
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58879147"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148984"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Erstellen einer benutzerdefinierten Image Factory in Azure DevTest Labs
-In diesem Artikel wird beschrieben, wie Sie eine benutzerdefinierte Image Factory einrichten, indem Sie Beispielskripts aus dem [Git-Repository](https://github.com/Azure/azure-devtestlab/tree/master/Scripts/ImageFactory) verwenden.
+In diesem Artikel wird beschrieben, wie Sie eine benutzerdefinierte Image Factory einrichten, indem Sie Beispielskripts aus dem [Git-Repository](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory) verwenden.
 
 ## <a name="whats-an-image-factory"></a>Was ist eine Image Factory?
 Eine Image Factory ist eine Konfiguration-als-Code-Lösung, die Images automatisch in regelmäßigen Abständen mit allen gewünschten Konfigurationen erstellt und verteilt. Die Images in der Image Factory sind stets auf dem neuesten Stand, und nach der Automatisierung des gesamten Prozesses fällt praktisch keinerlei Aufwand für die laufende Wartung mehr an. Da alle erforderlichen Konfigurationen bereits im Image enthalten sind, entfällt der Zeitaufwand für das manuelle Konfigurieren des Systems, nachdem ein virtueller Computer mit dem Basisbetriebssystem erstellt wurde.
@@ -39,7 +39,7 @@ Mit dieser Lösung wird das Erstellen virtueller Computer aus benutzerdefinierte
 
 ![Allgemeiner Überblick über die Lösung](./media/create-image-factory/high-level-view-of-solution.png)
 
-Es gibt eine [VSTS-Erweiterung für DevTest Labs](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks), mit der Sie die folgenden Einzelschritte auszuführen können: 
+Es gibt eine [VSTS-Erweiterung für DevTest Labs](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks), mit der Sie die folgenden Einzelschritte auszuführen können:
 
 - Erstellen eines benutzerdefinierten Image
 - Erstellen eines virtuellen Computers
