@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 8e082f15cff616b9dc63fbf4ad51e94d078a04f3
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: ae6e0e186f5cc0c9e3f0cd02d45d57c079eb3539
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811289"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995539"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Nachverfolgen von benutzerdefinierten Vorgängen mit dem Application Insights .NET SDK
 
@@ -384,12 +384,13 @@ Bei einigen Warteschlangen können Sie mehrere Nachrichten mit einer Anforderung
 Jede Nachricht sollte in einer eigenen asynchronen Ablaufsteuerung verarbeitet werden. Weitere Informationen erhalten Sie im Abschnitt [Nachverfolgung von ausgehenden Abhängigkeiten](#outgoing-dependencies-tracking).
 
 ## <a name="long-running-background-tasks"></a>Hintergrundaufgaben mit langer Ausführungsdauer
+
 Einige Anwendungen starten einen Vorgang mit langer Ausführungsdauer, der unter Umständen durch Benutzeranforderungen verursacht wird. Aus Sicht der Nachverfolgung bzw. Instrumentierung unterscheidet sich dies nicht von der Instrumentierung von Anforderungen oder Abhängigkeiten: 
 
 ```csharp
 async Task BackgroundTask()
 {
-    var operation = telemetryClient.StartOperation<RequestTelemetry>(taskName);
+    var operation = telemetryClient.StartOperation<DependencyTelemetry>(taskName);
     operation.Telemetry.Type = "Background";
     try
     {
@@ -414,9 +415,9 @@ async Task BackgroundTask()
 }
 ```
 
-In diesem Beispiel wird mit `telemetryClient.StartOperation` das Element `RequestTelemetry` erstellt und der Korrelationskontext eingefügt. Angenommen, Sie verfügen über einen übergeordneten Vorgang, der von eingehenden Anforderungen für die Planung des Vorgangs erstellt wurde. Sofern `BackgroundTask` in derselben asynchronen Ablaufsteuerung wie eine eingehende Anforderung gestartet wird, wird die Korrelation mit diesem übergeordneten Vorgang durchgeführt. `BackgroundTask` und alle geschachtelten Telemetrieelemente werden automatisch mit der Anforderung korreliert, die der Auslöser war. Dies gilt auch nach Abschluss der Anforderung.
+In diesem Beispiel wird mit `telemetryClient.StartOperation` das Element `DependencyTelemetry` erstellt und der Korrelationskontext eingefügt. Angenommen, Sie verfügen über einen übergeordneten Vorgang, der von eingehenden Anforderungen für die Planung des Vorgangs erstellt wurde. Sofern `BackgroundTask` in derselben asynchronen Ablaufsteuerung wie eine eingehende Anforderung gestartet wird, wird die Korrelation mit diesem übergeordneten Vorgang durchgeführt. `BackgroundTask` und alle geschachtelten Telemetrieelemente werden automatisch mit der Anforderung korreliert, die der Auslöser war. Dies gilt auch nach Abschluss der Anforderung.
 
-Wenn der Task über den Hintergrundthread gestartet wird, dem kein Vorgang (`Activity`) zugeordnet ist, weist `BackgroundTask` kein übergeordnetes Element auf. Geschachtelte Vorgänge können jedoch vorhanden sein. Alle Telemetrieelemente, die von dem Task gemeldet werden, werden mit dem in `BackgroundTask` erstellten `RequestTelemetry`-Element korreliert.
+Wenn der Task über den Hintergrundthread gestartet wird, dem kein Vorgang (`Activity`) zugeordnet ist, weist `BackgroundTask` kein übergeordnetes Element auf. Geschachtelte Vorgänge können jedoch vorhanden sein. Alle Telemetrieelemente, die von dem Task gemeldet werden, werden mit dem in `BackgroundTask` erstellten `DependencyTelemetry`-Element korreliert.
 
 ## <a name="outgoing-dependencies-tracking"></a>Nachverfolgung von ausgehenden Abhängigkeiten
 Sie können Ihre eigene Art von Abhängigkeit oder einen Vorgang nachverfolgen, der nicht von Application Insights unterstützt wird.

@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: a5d34b2964d805cdbeced0d4fad3dd889da9f3e8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b8ee1bdfece35d774cdc79595a495b0b3719a836
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57900623"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996644"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Schnellstart: Erstellen einer iOS-App mit Azure Spatial Anchors in Swift oder Objective-C
 
@@ -88,15 +88,15 @@ Im nächsten Schritt wird die App zur Verwendung des Kontobezeichners und Kontos
 
 # <a name="swifttabopenproject-swift"></a>[Swift](#tab/openproject-swift)
 
-Öffnen Sie `iOS/Swift/SampleSwift/ViewController.swift`.
+Öffnen Sie `iOS/Swift/SampleSwift/ViewControllers/BaseViewController.swift`.
 
-Suchen Sie nach dem Feld `SpatialAnchorsAccountKey`, und ersetzen Sie `Set me` durch den Kontoschlüssel.
+Suchen Sie nach dem Feld `spatialAnchorsAccountKey`, und ersetzen Sie `Set me` durch den Kontoschlüssel.
 
-Suchen Sie nach dem Feld `SpatialAnchorsAccountId`, und ersetzen Sie `Set me` durch den Kontobezeichner.
+Suchen Sie nach dem Feld `spatialAnchorsAccountId`, und ersetzen Sie `Set me` durch den Kontobezeichner.
 
 # <a name="objective-ctabopenproject-objc"></a>[Objective-C](#tab/openproject-objc)
 
-Öffnen Sie `iOS/Objective-C/SampleObjC/ViewController.m`.
+Öffnen Sie `iOS/Objective-C/SampleObjC/BaseViewController.m`.
 
 Suchen Sie nach dem Feld `SpatialAnchorsAccountKey`, und ersetzen Sie `Set me` durch den Kontoschlüssel.
 

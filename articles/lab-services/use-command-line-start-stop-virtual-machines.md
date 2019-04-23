@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 51c45fdb0c96e84d3f37f485279aa805361f3818
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: a8132735d1af08055e9341608dcac0564ed4b927
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051205"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996457"
 ---
 # <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Starten und Beenden von virtuellen Computern in Azure DevTest Labs mit Befehlszeilentools
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure PowerShell oder der Azure CLI virtuelle Computer in einem Lab in Azure DevTest Labs starten bzw. beenden. Zur Automatisierung dieser Vorgänge können Sie PowerShell- bzw. CLI-Skripts erstellen. 
@@ -34,7 +34,7 @@ In einigen Szenarios sollten Sie das Starten und Beenden von VMs jedoch ggf. üb
 - Ein Task soll innerhalb eines CI/CD-Workflows ausgeführt werden, um die VMs am Anfang des Workflows zu starten, die VMs als Build-Computer, Testcomputer oder Infrastruktur zu verwenden und dann die VMs nach Abschluss des Prozesses zu beenden. Ein Beispiel hierfür wäre die benutzerdefinierte Image Factory mit Azure DevTest Labs.  
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-Das folgende PowerShell-Skript startet eine VM in einem Lab. [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azurermps-6.13.0) ist der Schwerpunkt dieses Skripts. Der **ResourceId**-Parameter ist die vollqualifizierte Ressourcen-ID für die VM in dem Lab. Im **Action**-Parameter werden je nach Bedarf die Optionen **Start** bzw. **Stop** festgelegt.
+Das folgende PowerShell-Skript startet eine VM in einem Lab. [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) ist der Schwerpunkt dieses Skripts. Der **ResourceId**-Parameter ist die vollqualifizierte Ressourcen-ID für die VM in dem Lab. Im **Action**-Parameter werden je nach Bedarf die Optionen **Start** bzw. **Stop** festgelegt.
 
 ```powershell
 # The id of the subscription

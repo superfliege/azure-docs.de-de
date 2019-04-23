@@ -15,12 +15,12 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cab5b9317102a86dd75d2cb7e5a820cf64d2e831
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b808654baded5bbe721866441a8d1115eff7bcaa
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535545"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997902"
 ---
 # <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>Anzeigen von Aktivitätsprotokollen für RBAC-Änderungen an Azure-Ressourcen
 
@@ -66,7 +66,7 @@ Get-AzLog -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Act
 Dieser Befehl führt alle Änderungen an der Rollendefinition in einer Ressourcengruppe für die letzten sieben Tage auf:
 
 ```azurepowershell
-Get-AzLog -ResourceGroupName pharma-sales-projectforecast -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/roleDefinitions/*'}
+Get-AzLog -ResourceGroupName pharma-sales -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/roleDefinitions/*'}
 ```
 
 Dieser Befehl führt alle Änderungen an der Rollenzuweisung und der Rollendefinition in einem Abonnement für die letzten sieben Tage auf und stellt die Ergebnisse in einer Liste dar:
@@ -88,7 +88,7 @@ EventTimestamp          : 4/20/2018 9:18:05 PM
 $_.Authorization.Action : Microsoft.Authorization/roleAssignments/write
 Properties              :
                           requestbody    : {"Id":"22222222-2222-2222-2222-222222222222","Properties":{"PrincipalId":"33333333-3333-3333-3333-333333333333","RoleDefinitionId":"/subscriptions/00000000-0000-0000-0000-000000000000/providers
-                          /Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c","Scope":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales-projectforecast"}}
+                          /Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c","Scope":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"}}
 
 ```
 
@@ -99,7 +99,7 @@ Verwenden Sie den Befehl [az monitor activity-log list](/cli/azure/monitor/activ
 Dieser Befehl führt die Aktivitätsprotokolle in einer Ressourcengruppe seit dem Start auf:
 
 ```azurecli
-az monitor activity-log list --resource-group pharma-sales-projectforecast --start-time 2018-04-20T00:00:00Z
+az monitor activity-log list --resource-group pharma-sales --start-time 2018-04-20T00:00:00Z
 ```
 
 Dieser Befehl führt die Aktivitätsprotokolle für den Ressourcenanbieter der Autorisierung seit dem Start auf:

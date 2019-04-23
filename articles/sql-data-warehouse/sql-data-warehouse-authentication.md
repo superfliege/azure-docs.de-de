@@ -11,11 +11,11 @@ ms.date: 04/02/2019
 ms.author: kavithaj
 ms.reviewer: igorstan
 ms.openlocfilehash: a3bed9df5b62ce7f2f3df7046357dc4f2458575c
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917905"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59797034"
 ---
 # <a name="authenticate-to-azure-sql-data-warehouse"></a>Authentifizierung für Azure SQL Data Warehouse
 Es wird beschrieben, wie Sie die Authentifizierung für Azure SQL Data Warehouse durchführen, indem Sie Azure Active Directory (AAD) oder die SQL Server-Authentifizierung nutzen.

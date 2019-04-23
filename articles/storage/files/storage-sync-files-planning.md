@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: ad3b5a1d684c500eff3d20832d7aa290a13849b9
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: e5078176b14835938c190daa031c12055ba9ffc3
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918636"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996355"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -242,7 +242,7 @@ Die Azure-Dateisynchronisierung ist nur in den folgenden Regionen verfügbar:
 | Kanada, Osten | Quebec City |
 | Indien, Mitte | Pune |
 | USA (Mitte) | Iowa |
-| Asien, Osten | Hongkong |
+| Asien, Osten | Hongkong (SAR) |
 | USA (Ost) | Virginia |
 | USA (Ost 2) | Virginia |
 | Japan, Osten | Tokio, Saitama |

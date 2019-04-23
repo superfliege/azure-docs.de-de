@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/05/2018
 ms.author: spelluru
 ms.openlocfilehash: 96e3a24b0c9f9ab21652ffcd1b29deeb512581e5
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046613"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59796932"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen
 

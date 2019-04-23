@@ -5,11 +5,11 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: c664b089f316255fabc4c8dc36b291d7d63e6280
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58890948"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59804104"
 ---
 In diesem Abschnitt aktualisieren Sie Code in Ihrem vorhandenen Mobile Apps-Back-End-Projekt so, dass bei jedem Hinzufügen eines neuen Elements eine Pushbenachrichtigung gesendet wird. Dieser Vorgang beruht auf dem [Vorlagenfeature](../articles/notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) von Azure Notification Hubs, das plattformübergreifende Pushbenachrichtigungen ermöglicht. Die verschiedenen Clients werden mithilfe von Vorlagen für Pushbenachrichtigungen registriert. Eine universelle Pushbenachrichtigung kann dann von sämtlichen Clientplattformen empfangen werden.
 

@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: lahugh
-ms.openlocfilehash: f6693de861658c7174614e80906ee83633fcb313
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 679a1c60e44694bde86cafba21d7f1d2c6fb94d9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500910"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995624"
 ---
 # <a name="creating-and-using-resource-files"></a>Erstellen und Verwenden von Ressourcendateien
 
@@ -72,7 +72,7 @@ Eine Alternative zum Generieren einer SAS-URL ist die Aktivierung eines anonymen
 
 Anstatt eine SAS-URL zu konfigurieren und zu erstellen, können Sie den Namen Ihres Azure-Speichercontainers verwenden, um auf Ihre Blobdaten zuzugreifen. Der verwendete Speichercontainer muss sich im Azure-Speicherkonto befinden, das mit Ihrem Batch-Konto verknüpft ist, das als Autostorage-Konto bekannt ist. Mit dem Speichercontainernamen eines Autostorage-Kontos können Sie die Konfiguration und Erstellung einer SAS-URL für den Zugriff auf einen Speichercontainer umgehen.
 
-In diesem Beispiel gehen wir davon aus, dass sich die Daten, die für die Erstellung von Ressourcendateien verwendet werden sollen, bereits in einem Azure-Speicherkonto befinden, das mit Ihrem Batch-Konto verknüpft ist. Wenn Sie kein Autostorage-Konto haben, lesen Sie die Schritte unter [Erstellen eines Batch-Kontos](/create-a-batch-account.md) für Details zur Erstellung und Verknüpfung eines Kontos.
+In diesem Beispiel gehen wir davon aus, dass sich die Daten, die für die Erstellung von Ressourcendateien verwendet werden sollen, bereits in einem Azure-Speicherkonto befinden, das mit Ihrem Batch-Konto verknüpft ist. Wenn Sie kein Autostorage-Konto haben, lesen Sie die Schritte unter [Erstellen eines Batch-Kontos](batch-account-create-portal.md) für Details zur Erstellung und Verknüpfung eines Kontos.
 
 Durch die Verwendung eines verknüpften Speicherkonto müssen Sie keine SAS-URL zu einem Speichercontainer erstellen und konfigurieren. Geben Sie stattdessen den Namen des Speichercontainers in Ihrem verknüpften Speicherkonto an.
 

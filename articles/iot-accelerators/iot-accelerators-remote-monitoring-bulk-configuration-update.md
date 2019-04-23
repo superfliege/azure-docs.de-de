@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: adugar
 ms.openlocfilehash: 8a5c74c76662a089675fcbdcd8d5a7ea54b58fd1
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59009666"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59799036"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Tutorial: Durchführen der Massenverwaltung für Ihre verbundenen Geräte
 
@@ -57,7 +57,7 @@ Auf Ihrem lokalen Computer muss die folgende Software installiert sein:
 Vorbereitung:
 
 * Stellen Sie sicher, dass das [Startladeprogramm auf Ihrem IoT DevKit-Gerät Version 1.4.0 oder höher](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/) aufweist.
-* Vergewissern Sie sich, dass die Version des IoT DevKit SDK der Version des Startladeprogramms entspricht. Sie können das IoT DevKit SDK mit Azure IoT Workbench in VS Code aktualisieren. Öffnen Sie die Befehlspalette, und geben Sie Folgendes ein **Arduino: Board Manager**. Weitere Informationen finden Sie unter [Vorbereiten der Entwicklungsumgebung](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md#prepare-the-development-environment).
+* Vergewissern Sie sich, dass die Version des IoT DevKit SDK der Version des Startladeprogramms entspricht. Sie können das IoT DevKit SDK mit Azure IoT Workbench in VS Code aktualisieren. Öffnen Sie die Befehlspalette, und geben Sie Folgendes ein **Arduino: Board Manager** ein, und wählen Sie den Eintrag aus. Weitere Informationen finden Sie unter [Vorbereiten der Entwicklungsumgebung](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md#prepare-the-development-environment).
 
 Außerdem müssen Sie für mindestens ein IoT DevKit-Gerät eine Verbindung mit Ihrem Solution Accelerator für die Remoteüberwachung herstellen. Wenn Sie keine Verbindung mit einem IoT DevKit-Gerät hergestellt haben, helfen Ihnen die Informationen unter [Verbinden von MXChip IoT DevKit AZ3166 mit dem Solution Accelerator für die IoT-Remoteüberwachung](iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md) weiter.
 

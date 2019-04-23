@@ -360,8 +360,8 @@ Per E-Mail-Benachrichtigung werden E-Mails an einen oder mehrere Empfänger gese
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Recipients |Liste mit den E-Mail-Adressen |
-| Antragsteller |E-Mail-Betreff |
-| Anhang |Anlagen werden derzeit nicht unterstützt. Der Wert lautet daher immer „Keine“. |
+| Subject |E-Mail-Betreff |
+| Attachment |Anlagen werden derzeit nicht unterstützt. Der Wert lautet daher immer „Keine“. |
 
 Unten ist eine Beispielantwort für eine E-Mail-Benachrichtigungsaktion mit einem Schwellenwert angegeben.  
 

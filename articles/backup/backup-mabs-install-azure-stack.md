@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: 8269cde7c1be5ba5671bafdae850d88c43db27ea
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: d3a2ffdedda7f541fb1a3f37a8b40bc7af3dcb57
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497926"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996508"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Installieren von Azure Backup Server in Azure Stack
 
@@ -61,7 +61,7 @@ Bei einer gemeinsamen Nutzung mit anderen virtuellen Computern können sich die 
 Jeder virtuelle Azure Stack-Computer verfügt über temporären Datenträgerspeicher, der für den Benutzer als Volume `D:\` verfügbar ist. Der von Azure Backup benötigte lokale Stagingbereich kann so konfiguriert werden, dass er sich auf `D:\` befindet, und der Cachespeicherort kann auf `C:\` angeordnet werden. Auf diese Weise muss kein Speicher der Datenträger für Daten in Anspruch genommen werden, die an den virtuellen Azure Backup Server-Computer angefügt sind.
 
 ### <a name="storing-backup-data-on-local-disk-and-in-azure"></a>Speichern von Sicherungsdaten auf einem lokalen Datenträger in Azure
-Azure Backup Server speichert Sicherungsdaten auf Azure-Datenträgern, die an den virtuellen Computer angefügt sind, um die Wiederherstellung des Betriebs zu ermöglichen. Nachdem die Datenträger und der Speicherplatz an den virtuellen Computer angefügt wurden, wird der Speicher für Sie von Azure Backup Server verwaltet. Die Menge an Sicherungsdatenspeicher richtet sich nach der Anzahl und Größe von Datenträgern, die an die einzelnen [virtuellen Azure Stack-Computer](../azure-stack/user/azure-stack-storage-overview.md) angefügt sind. Jede Azure Stack-VM-Größe verfügt über eine maximale Anzahl von Datenträgern, die an den virtuellen Computer angefügt werden kann. Beispielsweise umfasst A2 vier Datenträger. A3 umfasst acht Datenträger. A4 umfasst 16 Datenträger. Auch hier bestimmt die Größe und Anzahl von Datenträgern die Gesamtgröße des Sicherungsspeicherpools.
+Azure Backup Server speichert Sicherungsdaten auf Azure-Datenträgern, die an den virtuellen Computer angefügt sind, um die Wiederherstellung des Betriebs zu ermöglichen. Nachdem die Datenträger und der Speicherplatz an den virtuellen Computer angefügt wurden, wird der Speicher für Sie von Azure Backup Server verwaltet. Die Menge an Sicherungsdatenspeicher richtet sich nach der Anzahl und Größe von Datenträgern, die an die einzelnen [virtuellen Azure Stack-Computer](/azure-stack/user/azure-stack-storage-overview) angefügt sind. Jede Azure Stack-VM-Größe verfügt über eine maximale Anzahl von Datenträgern, die an den virtuellen Computer angefügt werden kann. Beispielsweise umfasst A2 vier Datenträger. A3 umfasst acht Datenträger. A4 umfasst 16 Datenträger. Auch hier bestimmt die Größe und Anzahl von Datenträgern die Gesamtgröße des Sicherungsspeicherpools.
 
 > [!IMPORTANT]
 > Sie sollten Sicherungsdaten für die Wiederherstellung des Betriebs **nicht** länger als fünf Tage auf Datenträgern aufbewahren, die an Azure Backup Server angefügt sind.
@@ -73,7 +73,7 @@ Erstellen bzw. verwenden Sie einen Recovery Services-Tresor, um Sicherungsdaten 
  
 ### <a name="scaling-deployment"></a>Skalieren der Bereitstellung
 Wenn Sie Ihre Bereitstellung skalieren möchten, haben Sie die folgenden Optionen:
-  - Zentral hochskalieren: Erhöhen Sie die Größe des virtuellen Azure Backup Server-Computers von der A-Serie auf die D-Serie, und erhöhen Sie den lokalen Speicher [gemäß der Anleitung zum virtuellen Azure Stack-Computer](../azure-stack/user/azure-stack-manage-vm-disks.md).
+  - Zentral hochskalieren: Erhöhen Sie die Größe des virtuellen Azure Backup Server-Computers von der A-Serie auf die D-Serie, und erhöhen Sie den lokalen Speicher [gemäß der Anleitung zum virtuellen Azure Stack-Computer](/azure-stack/user/azure-stack-manage-vm-disks).
   - Daten auslagern: Senden Sie ältere Daten an Azure, und behalten Sie nur die neuesten Daten in dem Speicher bei, der dem Azure Backup Server angefügt ist.
   - Horizontal hochskalieren: Fügen Sie weitere Azure Backup Server-Instanzen hinzu, um die Workloads zu schützen.
 

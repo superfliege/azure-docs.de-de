@@ -11,11 +11,11 @@ ms.date: 05/06/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 62846fe744e7295f58902481400ce91770c916da
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58893094"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798102"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>Verwalten von Benutzerdaten in Azure Active Directory B2C
 

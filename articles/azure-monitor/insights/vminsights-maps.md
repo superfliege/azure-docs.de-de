@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
 ms.openlocfilehash: 34e6ce7f3b38dfd583aa557d2f1d7340ea444da9
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58916732"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798042"
 ---
 # <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Verwenden der Zuordnung in Azure Monitor für VMs (Vorschauversion) zum Verstehen von Anwendungskomponenten
 Das Anzeigen der ermittelten Anwendungskomponenten auf virtuellen Windows- und Linux-Computern, die in Ihrer Azure-Umgebung ausgeführt werden, kann mit Azure Monitor für VMs auf zwei Arten erfolgen: direkt in einem virtuellen Computer oder übergreifend für eine Gruppe von VMs in Azure Monitor. 

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 04/16/2019
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: a0e3b0758f8c70bec14d533ef62ce75f57a198cb
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 31da745727d567e1b3b85b3508df368d78ad84a0
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259651"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002662"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>FairPlay-Streaming im Offlinemodus für iOS 
 
@@ -27,7 +27,10 @@ ms.locfileid: "58259651"
 > * [Version 3](../latest/offline-fairplay-for-ios.md)
 > * [Version 2](media-services-protect-hls-with-offline-fairplay.md)
 
- Azure Media Services bietet eine Reihe von ausgereiften [Content Protection-Diensten](https://azure.microsoft.com/services/media-services/content-protection/), die Folgendes abdecken:
+> [!NOTE]
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+
+Azure Media Services bietet eine Reihe von ausgereiften [Content Protection-Diensten](https://azure.microsoft.com/services/media-services/content-protection/), die Folgendes abdecken:
 
 - Microsoft PlayReady
 - Google Widevine

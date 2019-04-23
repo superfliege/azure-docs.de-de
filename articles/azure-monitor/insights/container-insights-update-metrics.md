@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: 15be0039006d322c3d5e19d4ef141d1543c7b1c0
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 2f500ea127d3f2042e7c97eeace592b4da8d8d0e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580875"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995981"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Gewusst wie: Aktualisieren von Azure Monitor für Container zum Aktivieren von Metriken
 Mit Azure Monitor für Container wird Unterstützung für die Erfassung von Metriken aus AKS-Clusterknoten und -Pods (Azure Kubernetes Service) und das Schreiben in den Azure Monitor-Metrikspeicher eingeführt. Diese Änderung soll zu einer verbesserten Zeitgenauigkeit führen, wenn Aggregatberechnungen (Avg, Count, Max, Min, Sum) in Leistungsdiagrammen dargestellt werden, und das Anheften von Leistungsdiagrammen in Dashboards des Azure-Portals und Metrikwarnungen unterstützen.
@@ -35,7 +35,7 @@ Die Aktualisierung des Clusters zur Unterstützung dieser neuen Funktionen kann 
 Bei beiden Prozessen wird die Rolle **Überwachungsmetriken veröffentlichen** dem Dienstprinzipal des Clusters zugewiesen, sodass die vom Agent erfassten Daten für Ihre Clusterressource veröffentlicht werden können. Die Rolle „Überwachungsmetriken veröffentlichen“ verfügt nur über die Berechtigung zum Übertragen von Metriken per Pushvorgang an die Ressource. Das Ändern eines Zustands, Aktualisieren der Ressource oder Lesen von Daten ist nicht möglich. Weitere Informationen zur Rolle finden Sie unter [Herausgeber von Überwachungsmetriken](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
 
 ## <a name="prerequisites"></a>Voraussetzungen 
-Stellen Sie zunächst sicher, dass Sie Mitglied der Rolle **[Besitzer](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-role.mds#owner)** in der AKS-Clusterressource sind, um die Erfassung von benutzerdefinierten Leistungsmetriken für Knoten und Pods zu ermöglichen. 
+Stellen Sie zunächst sicher, dass Sie Mitglied der Rolle **[Besitzer](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-role.md#owner)** in der AKS-Clusterressource sind, um die Erfassung von benutzerdefinierten Leistungsmetriken für Knoten und Pods zu ermöglichen. 
 
 Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren und lokal verwenden. Sie benötigen Azure CLI 2.0.59 oder höher. Um Ihre Version zu ermitteln, führen Sie `az --version` aus. Informationen zur Installation und zum Upgrade von Azure CLI finden Sie unter [Installieren von Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 

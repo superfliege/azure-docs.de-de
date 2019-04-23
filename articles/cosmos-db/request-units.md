@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 03/31/2019
 ms.author: rimman
 ms.openlocfilehash: 72ec8332a3363d5336fb84b3390d5e44ced0b2e5
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59047318"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798962"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Anforderungseinheiten in Azure Cosmos DB
 

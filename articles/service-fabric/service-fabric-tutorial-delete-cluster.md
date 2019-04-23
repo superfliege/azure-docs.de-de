@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/26/2018
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 38e776a5398ea5217a0d7e385d6ebb45d2199d51
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 0e5137a8183f378ee5960846e281222c6ecaaa47
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59044606"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995709"
 ---
 # <a name="tutorial-remove-a-service-fabric-cluster-running-in-azure"></a>Tutorial: Entfernen eines in Azure ausgeführten Service Fabric-Clusters
 
@@ -37,7 +37,7 @@ In dieser Tutorialserie lernen Sie Folgendes:
 > * Erstellen eines sicheren [Windows-Clusters](service-fabric-tutorial-create-vnet-and-windows-cluster.md) in Azure mithilfe einer Vorlage
 > * [Überwachen eines Clusters](service-fabric-tutorial-monitor-cluster.md)
 > * [Horizontales Herunter- oder Hochskalieren eines Clusters](service-fabric-tutorial-scale-cluster.md)
-> * [Aktualisieren der Runtime eines Service Fabric-Clusters](service-fabric-tutorial-upgrade-cluster.md)
+> * [Aktualisieren der Runtime eines Clusters](service-fabric-tutorial-upgrade-cluster.md)
 > * Löschen eines Clusters
 
 
@@ -48,7 +48,7 @@ In dieser Tutorialserie lernen Sie Folgendes:
 Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 
 * Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Installieren Sie [Azure Powershell](https://docs.microsoft.com/powershell/azure//install-Az-ps) oder die [Azure CLI](/cli/azure/install-azure-cli).
+* Installieren Sie [Azure PowerShell](https://docs.microsoft.com/powershell/azure//install-Az-ps) oder die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
 * Erstellen eines sicheren [Windows-Clusters](service-fabric-tutorial-create-vnet-and-windows-cluster.md) in Azure
 
 ## <a name="delete-the-resource-group-containing-the-service-fabric-cluster"></a>Löschen der Ressourcengruppe, die den Service Fabric-Cluster enthält
@@ -121,4 +121,3 @@ Nachdem Sie dieses Tutorial abgeschlossen haben, fahren Sie mit Folgendem fort:
 * Erfahren Sie, wie Sie einen Service Fabric-Cluster mithilfe von [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) untersuchen und verwalten.
 * Erfahren Sie, wie Sie [Patches für das Windows-Betriebssystem](service-fabric-patch-orchestration-application.md) der Clusterknoten aufspielen.
 * Erfahren Sie, wie Sie Ereignisse für [Windows-Cluster](service-fabric-diagnostics-event-aggregation-wad.md) aggregieren und erfassen und [Log Analytics einrichten](service-fabric-diagnostics-oms-setup.md), um Clusterereignisse zu überwachen.
-ms-setup.md) zum Überwachen von Clusterereignissen.

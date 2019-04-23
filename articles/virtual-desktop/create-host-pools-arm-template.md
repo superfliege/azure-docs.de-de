@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 04/05/2019
 ms.author: helohr
 ms.openlocfilehash: ba98328002cafbcede855b1187881d39f1de8fc5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59279226"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59796425"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Erstellen eines Hostpools mit einer Azure Resource Manager-Vorlage
 
@@ -77,4 +77,4 @@ Der UPN des Benutzers muss der Identität des Benutzers in Azure Active Director
 Nach Abschluss dieser Schritte können sich Benutzer, die der Desktopanwendungsgruppe hinzugefügt wurden, mit unterstützten Remotedesktopclients bei Windows Virtual Desktop anmelden und eine Ressource für einen Sitzungsdesktop anzeigen.
 
 >[!IMPORTANT]
->Um Ihre Windows Virtual Desktop-Umgebung in Azure zu schützen, empfiehlt es sich, dass Sie den eingehenden Port 3389 auf Ihren virtuellen Computern nicht öffnen. Für Windows Virtual Desktop ist es nicht erforderlich, dass der eingehende Port 3389 offen ist, damit Benutzer auf die virtuellen Computer des Hostpools zugreifen können. Wenn Sie Port 3389 aus Gründen der Problembehandlung öffnen müssen, sollten Sie [Just-In-Time-Zugriff auf virtuelle Computer](https://docs.microsoft.com/en-us/azure/security-center/security-center-just-in-time) verwenden.
+>Um Ihre Windows Virtual Desktop-Umgebung in Azure zu schützen, empfiehlt es sich, dass Sie den eingehenden Port 3389 auf Ihren virtuellen Computern nicht öffnen. Für Windows Virtual Desktop muss der eingehende Port 3389 nicht geöffnet sein, damit Benutzer auf die virtuellen Computer des Hostpools zugreifen können. Wenn Sie Port 3389 aus Gründen der Problembehandlung öffnen müssen, sollten Sie [Just-In-Time-Zugriff auf virtuelle Computer](https://docs.microsoft.com/en-us/azure/security-center/security-center-just-in-time) verwenden.
