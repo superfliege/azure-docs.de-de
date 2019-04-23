@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/25/2018
 ms.author: glenga
 ms.openlocfilehash: 4e9bd4e9ea467446c2814cdb8956a40b1503b027
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59469504"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59784924"
 ---
 # <a name="manage-connections-in-azure-functions"></a>Verwalten von Verbindungen in Azure Functions
 

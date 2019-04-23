@@ -14,13 +14,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/28/2018
-ms.openlocfilehash: 570f0a825f679ec5f0cc4c62b0608ec517148161
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/20/2019
+ms.openlocfilehash: 7a2bd8ebf2e96cf2251d98501bbf42007d43a660
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894001"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683000"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Was ist Azure Machine Learning Studio?
 Microsoft Azure Machine Learning Studio ist ein Tool für die Zusammenarbeit per Drag & Drop, mit der Sie Lösungen für Vorhersageanalysen erstellen, testen und bereitstellen können, die mit Ihren Daten arbeiten. Machine Learning Studio veröffentlicht Modelle als Webdienste, die von benutzerdefinierten Apps oder BI-Tools wie Excel problemlos genutzt werden können.
@@ -108,7 +108,7 @@ Hilfe zur Navigation durch die umfassende Bibliothek verfügbarer Machine Learni
 ## <a name="deploying-a-predictive-analytics-web-service"></a>Bereitstellen eines Predictive Analytics-Webdiensts
 Wenn Ihr Predictive Analytics-Modell bereit ist, können Sie es als Webdienst direkt von Machine Learning Studio aus bereitstellen. Weitere Informationen zu diesem Verfahren finden Sie unter [Bereitstellen eines Azure Machine Learning-Webdiensts](publish-a-machine-learning-web-service.md).
 
-
+<a name="compare"></a>
 ## <a name="how-is-machine-learning-studio-different-from-azure-machine-learning-service"></a>Inwiefern unterscheidet sich Azure Machine Studio von Azure Machine Learning Service?
 
 [Azure Machine Learning Service](../service/overview-what-is-azure-ml.md) bietet SDKs und Dienste zum schnellen Vorbereiten von Daten sowie zum Trainieren und Bereitstellen von Machine Learning-Modellen. Erhöhen Sie die Produktivität, und senken Sie die Kosten dank der automatischen Skalierung von Computeressourcen und Pipelines. Diese Funktionen stehen Ihnen über Open-Source-Python-Frameworks (etwa PyTorch, TensorFlow und sciKit-learn) zur Verfügung. 

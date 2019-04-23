@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: diberry
 ms.openlocfilehash: 2af11d7776a29288801e5db049262481ae27c102
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58893689"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59785352"
 ---
 # <a name="concepts-for-enabling-active-learning-by-reviewing-endpoint-utterances"></a>Konzepte für das Aktivieren des aktiven Lernens durch Überprüfen von Endpunktäußerungen
 Aktives Lernen ist eine von drei Strategien zur Verbesserung der Vorhersagegenauigkeit. Von diesen ist sie am einfachsten zu implementieren. Mit aktivem Lernen überprüfen Sie Endpunktäußerungen auf die Richtigkeit von Absicht und Entität. LUIS wählt Endpunktäußerungen aus, bei denen es nicht sicher ist.

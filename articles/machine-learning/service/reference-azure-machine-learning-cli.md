@@ -12,11 +12,11 @@ author: jpe316
 ms.date: 12/04/2018
 ms.custom: seodec18
 ms.openlocfilehash: 2504ca9cb785529a9eab321c2521db46390632b7
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793202"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59789172"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>Verwenden der CLI-Erweiterung für Azure Machine Learning Service
 

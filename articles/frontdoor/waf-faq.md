@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: kumud;tyao
 ms.openlocfilehash: 05d01851d0a3dc9df6c396e862ce93defd957c70
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59255919"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59788920"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall"></a>Häufig gestellte Fragen zu Azure Web Application Firewall
 
@@ -78,4 +78,4 @@ Azure Front Door wird global im Edgebereich des Azure-Netzwerks verteilt. Dadurc
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zu Azure Web Application Firewall finden Sie [hier](waf-overview.md).
-- Weitere Informationen zu Azure Front Door finden Sie [hier](front-door-overview.md).
+- Erfahren Sie mehr zu [Azure Front Door](front-door-overview.md).

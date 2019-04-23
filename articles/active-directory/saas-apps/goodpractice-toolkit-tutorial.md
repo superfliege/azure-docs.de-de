@@ -8,19 +8,20 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 65b2979d-9e2f-4530-bc08-546975269ebc
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9b847fd424e14eba492018887dbc28c44100f61
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 5e55399337e06314a5079f9d0e692a771855f8ca
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58885348"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683578"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-goodpractice-toolkit"></a>Tutorial: Azure Active Directory-Integration mit GoodPractice Toolkit
 
@@ -52,7 +53,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Konfigurieren der Integration von GoodPractice Toolkit in Azure AD müssen Sie GoodPractice Toolkit aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie zum Hinzufügen von GoodPractice Toolkit aus dem Katalog die folgenden Schritte aus:**
+**Um GoodPractice Toolkit aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -69,7 +70,7 @@ Zum Konfigurieren der Integration von GoodPractice Toolkit in Azure AD müssen S
 4. Geben Sie im Suchfeld **GoodPractice Toolkit** ein, wählen Sie im Ergebnisbereich **GoodPractice Toolkit** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
      ![GoodPractice Toolkit in der Ergebnisliste](common/search-new-app.png)
-   ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei GoodPractice Toolkit mithilfe eines Testbenutzers namens **Britta Simon**.
 Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in GoodPractice Toolkit eingerichtet werden.
@@ -79,8 +80,8 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei GoodPract
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
 2. **[Konfigurieren des einmaligen Anmeldens für GoodPractice Toolkit](#configure-goodpractice-toolkit-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
 3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-4. **[Erstellen eines GoodPractice Toolkit-Testbenutzers](#create-goodpractice-toolkit-test-user)**, um eine Entsprechung von Britta Simon in GoodPractice Toolkit zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-5. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines GoodPractice Toolkit-Testbenutzers](#create-goodpractice-toolkit-test-user)**, um eine Entsprechung von Britta Simon in GoodPractice Toolkit zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
@@ -146,8 +147,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.endung**.  
-    Zum Beispiel, BrittaSimon@contoso.com
+    b. Geben Sie im Feld **Benutzername** den Namen `brittasimon\@yourcompanydomain.extension` ein. Beispiel: BrittaSimon@contoso.com.
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 

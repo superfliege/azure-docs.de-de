@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: 0c1c466149b4992d99e18cfb1fd5d8416834df35
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 90a57483fc7a530f214d34bf619a718b4c196e79
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904524"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683148"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Behandeln von Problemen mit der Azure Application Gateway-Sitzungsaffinität
 
@@ -96,7 +96,7 @@ Dieses Problem tritt auf, da das Cookie mit einer Kurznamen-URL in Internet Expl
 
 #### <a name="resolution"></a>Lösung
 
-Um dieses Problem zu beheben, sollten Sie unter Verwendung eines vollqualifizierten Domänennamens (FQDN) auf das Anwendungsgateway zugreifen. Verwenden Sie beispielsweise [http://website.com](http://website.com/) oder [http://appgw.website.com](http://appgw.website.com/).
+Um dieses Problem zu beheben, sollten Sie unter Verwendung eines vollqualifizierten Domänennamens (FQDN) auf das Anwendungsgateway zugreifen. Verwenden Sie beispielsweise [http://website.com](https://website.com/) oder [http://appgw.website.com](http://appgw.website.com/).
 
 ## <a name="additional-logs-to-troubleshoot"></a>Zusätzliche Protokolle für die Problembehandlung
 

@@ -2,18 +2,18 @@
 title: Includedatei
 description: Includedatei
 services: virtual-machines
-author: jonbeck7
+author: ayshakeen
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/09/2018
-ms.author: azcspmt;jonbeck;cynthn
+ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
-ms.openlocfilehash: 0e0b78d1e492e4d0fbbf0a44b57bebc2d8d3b1e7
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: d76a3bb463452207e4b5b023cfe07dfd156e95f4
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58763299"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684683"
 ---
 Bei virtuellen Computern der B-Serie können Sie wählen, welche VM-Größe Ihnen die nötige Grundleistung für Ihre Workload bietet. Zudem haben Sie die Möglichkeit, die CPU-Leistung um bis zu 100 Prozent einer vCPU vom Typ Intel® Broadwell E5-2673 v4 mit 2,3 GHz oder Intel® Haswell E5-2673 v3 mit 2,4 GHz zu steigern.
 
@@ -21,7 +21,7 @@ Virtuelle Computer der B-Serie sind ideal für Workloads, die nicht kontinuierli
 
 Die B-Serie ist in sechs VM-Größen erhältlich:
 
-| Größe             | vCPU  | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | CPU-Grundleistung des virtuellen Computers | Maximale CPU-Leistung des virtuellen Computers | Guthabenbildung/Stunde | Maximalguthaben | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs |          
+| Größe             | vCPU  | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | CPU-Grundleistung des virtuellen Computers | Maximale CPU-Leistung des virtuellen Computers | Guthabenbildung/Stunde | Maximalguthaben | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBps | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBps | Maximale Anzahl NICs |          
 |---------------|-------------|----------------|----------------------------|-----------------------|--------------------|--------------------|----------------|----------------------------------------|-------------------------------------------|-------------------------------------------|----------|
 | Standard_B1ls<sup>1</sup>  | 1           | 0,5              | 4                          | 5 %                   | 100 %                   | 3                  | 72            | 2                                      | 200/10                                  | 160/10                                  | 2  |
 | Standard_B1s  | 1           | 1              | 4                          | 10%                   | 100 %                   | 6                  | 144            | 2                       | 400/10                                  | 320/10                                  | 2  |

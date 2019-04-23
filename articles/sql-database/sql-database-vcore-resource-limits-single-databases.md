@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/19/2019
-ms.openlocfilehash: b1467550ac84c57eaad9178d32fdcfaf14d84ae8
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.date: 04/17/2019
+ms.openlocfilehash: d5ada9b992afe98241162749b1c45723b89a6b77
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58260229"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699354"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Limits des auf virtuellen Kernen basierenden Kaufmodells für eine Einzeldatenbank in Azure SQL-Datenbank
 
@@ -96,7 +96,7 @@ Sie können mit [Azure-Portal](sql-database-single-databases-manage.md#manage-an
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Ziel-IOPS (64 KB)|500|1000|1500|2000|2500|3000|3500|
-|Grenzwerte für die Protokollrate (MB/s)|2.5|56|7,5|10|12,5|15|17,5|
+|Grenzwerte für die Protokollrate (MB/s)|2.5|5.6|7,5|10|12,5|15|17,5|
 |Max. gleichzeitige Worker (Anforderungen)|200|400|600|800|1000|1200|1400|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|
 |Anzahl von Replikaten|1|1|1|1|1|1|1|

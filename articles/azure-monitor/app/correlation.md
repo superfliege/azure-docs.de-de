@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: cc2d45aee170517d7e41cbda6d92bc21067732d1
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 565f08f0c69aef393a9296f3cce90570a3f0bc2c
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59493636"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683018"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetriekorrelation in Application Insights
 
@@ -143,9 +143,9 @@ Die [OpenTracing-Datenmodellspezifikation](https://opentracing.io/) und Applicat
 
 | Application Insights                  | OpenTracing                                       |
 |------------------------------------   |-------------------------------------------------  |
-| `Request`, `PageView`                 | `Span` with `span.kind = server`                  |
-| `Dependency`                          | `Span` with `span.kind = client`                  |
-| `Id` von `Request` und `Dependency`    | `SpanId`                                          |
+| `Request`, `PageView`                 | `Span` mit `span.kind = server`                  |
+| `Dependency`                          | `Span` mit `span.kind = client`                  |
+| `Id` der `Request` und `Dependency`    | `SpanId`                                          |
 | `Operation_Id`                        | `TraceId`                                         |
 | `Operation_ParentId`                  | `Reference` vom Typ `ChildOf` (die übergeordnete Spanne)   |
 
@@ -168,7 +168,7 @@ Im [Leitfaden zu Aktivitäten](https://github.com/dotnet/corefx/blob/master/src/
 
 ASP.NET Core 2.0 unterstützt die Extraktion von HTTP-Headern und das Starten einer neuen Aktivität.
 
-`System.Net.HttpClient`ab Version 4.1.0 unterstützt die automatische Injektion der Korrelations-HTTP-Header und die Nachverfolgung des HTTP-Aufrufs als Aktivität.
+`System.Net.HttpClient` ab Version 4.1.0 unterstützt die automatische Injektion der Korrelations-HTTP-Header und die Nachverfolgung des HTTP-Aufrufs als Aktivität.
 
 Für das klassische ASP.NET ist das neue HTTP-Modul [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/) verfügbar. Dieses Modul implementiert Telemetriekorrelationen mithilfe von `DiagnosticSource`. Es startet Aktivitäten basierend auf den eingehenden Anforderungsheadern. Außerdem korreliert es Telemetriedaten aus den verschiedenen Phasen der Anforderungsverarbeitung, selbst in Fällen, in denen jede Phase der Verarbeitung von Internetinformationsdienste (Internet Information Services, IIS) in einem anderen verwalteten Thread ausgeführt wird.
 
@@ -217,7 +217,7 @@ Gelegentlich möchten Sie möglicherweise die Art und Weise anpassen, wie Kompon
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Schreiben Sie [benutzerdefinierte Telemetriedaten](../../azure-monitor/app/api-custom-events-metrics.md).
-- Erfahren Sie mehr über das [Festlegen von cloud_RoleName](../../azure-monitor/app/app-map.md#set-cloud_rolename) für andere SDKs.
+- Erfahren Sie mehr über das [Festlegen von cloud_RoleName](../../azure-monitor/app/app-map.md#set-cloud-role-name) für andere SDKs.
 - Integrieren Sie alle Komponenten Ihres Microservices in Application Insights. Sehen Sie sich die [unterstützten Plattformen](../../azure-monitor/app/platforms.md) an.
 - Lesen Sie die Informationen zu den Application Insights-Typen im [Datenmodell](../../azure-monitor/app/data-model.md).
 - Informationen zum [Erweitern und Filtern von Telemetriedaten](../../azure-monitor/app/api-filtering-sampling.md).

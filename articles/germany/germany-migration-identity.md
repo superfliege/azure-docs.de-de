@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: c67b3abd03be42e1b596885a53c3e6cdcc7106b6
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 07ecaa564f2fda21967ab6f0c30c06fa876e4171
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894721"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699193"
 ---
 # <a name="migrate-identity-resources-to-global-azure"></a>Migrieren von Identitätsressourcen zu Azure weltweit
 
@@ -137,8 +137,6 @@ Azure AD Connect ist ein Tool, das Ihre Identitätsdaten zwischen einer lokalen 
 - Definieren Sie einen neuen Anmeldenamen für Ihre Benutzer. Der Domänenteil (nach **\@**) des Anmeldenamens muss in jeder Umgebung unterschiedlich sein.
 - Definieren Sie eine klare „Quelle der Wahrheit“, wenn Sie auch rückwärts synchronisieren (aus Azure AD in das lokale Active Directory).
 
-Weitere Informationen dazu, wie Sie in verschiedenen Cloudumgebungen über Azure AD Connect synchronisieren, finden Sie in dem Blogbeitrag [Using ADConnect with multiple clouds](https://blogs.technet.microsoft.com/ralfwi/2017/01/24/using-adconnect-with-multiple-clouds/).
-
 Wenn Sie bereits Azure AD Connect verwenden, um nach und aus Azure Deutschland zu synchronisieren, müssen Sie daran denken, alle manuell erstellten Benutzer zu migrieren. Das folgende PowerShell-Cmdlet listet alle Benutzer auf, die nicht über Azure AD Connect synchronisiert werden:
 
 ```powershell
@@ -169,10 +167,10 @@ Erfahren Sie mehr über Tools, Techniken und Empfehlungen zum Migrieren von Ress
 
 - [Compute](./germany-migration-compute.md)
 - [Netzwerk](./germany-migration-networking.md)
-- [Storage](./germany-migration-storage.md)
+- [Speicher](./germany-migration-storage.md)
 - [Web](./germany-migration-web.md)
 - [Datenbanken](./germany-migration-databases.md)
-- [Analytics](./germany-migration-analytics.md)
+- [Analyse](./germany-migration-analytics.md)
 - [IoT](./germany-migration-iot.md)
 - [Integration](./germany-migration-integration.md)
 - [Sicherheit](./germany-migration-security.md)

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 7e120980ed1379fb4ea18bca9f1e84938964cac5
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 50d0ed644b5afa744e8bce478199079fd4fb7432
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58882817"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684156"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Bewährte Methoden zur Verwendung von Azure Data Lake Storage Gen1
 
@@ -187,5 +187,4 @@ Bei der normalen Verarbeitung von Batchdaten direkt in Datenbanken, z.B. Hive od
 * [Optimieren der Leistung von Azure Data Lake Storage Gen1](data-lake-store-performance-tuning-guidance.md)
 * [Anleitung für die Leistungsoptimierung für Spark in HDInsight und Azure Data Lake Storage Gen1](data-lake-store-performance-tuning-spark.md)
 * [Anleitung für die Leistungsoptimierung für Hive in HDInsight und Azure Data Lake Storage Gen1](data-lake-store-performance-tuning-hive.md)
-* [Data Orchestration using Azure Data Factory for Azure Data Lake Storage Gen1 (Datenorchestrierung mithilfe von Azure Data Factory für Azure Data Lake Storage Gen1)](https://mix.office.com/watch/1oa7le7t2u4ka)
 * [Erstellen von HDInsight-Clustern mit Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

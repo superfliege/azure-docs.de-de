@@ -10,11 +10,11 @@ ms.workload: infrastructure-services
 ms.date: 04/07/2019
 ms.author: kumud;tyao
 ms.openlocfilehash: 744c6fb9235c9daa2d5239ef9fd13679db943650
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59362874"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59783966"
 ---
 #  <a name="custom-rules-for-web-application-firewall-with-azure-front-door"></a>Benutzerdefinierte Regeln für Web Application Firewall mit Azure Front Door
 Web Application Firewall (WAF) von Azure mit Front Door Service ermöglicht Ihnen, den Zugriff auf Ihre Webanwendungen anhand der Bedingungen, die Sie definieren, zu steuern. Eine benutzerdefinierte WAF-Regel besteht aus einer Prioritätsnummer, einem Regeltyp, Übereinstimmungsbedingungen und einer Aktion. Es gibt zwei Arten von benutzerdefinierten Regeln: Übereinstimmungsregeln und Ratenlimitregeln. Eine Übereinstimmungsregel steuert den Zugriff basierend auf Übereinstimmungsbedingungen, während eine Ratenlimitregel den Zugriff basierend auf Übereinstimmungsbedingungen und den Raten der eingehenden Anforderungen steuert. Sie können eine benutzerdefinierte Regel deaktivieren, damit sie nicht ausgewertet wird, aber dennoch die Konfiguration beibehalten. Dieser Artikel beschreibt die Übereinstimmungsregeln, die auf HTTP-Parametern basieren.
