@@ -10,10 +10,10 @@ ms.date: 03/31/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 6d7b99da3e8e81973c51bbd68a15517828c9736d
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58762938"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation
@@ -253,7 +253,7 @@ Automation erstellt zwei Arten von Datensätzen im Log Analytics-Arbeitsbereich:
 |CorrelationId | Die GUID, bei der es sich um die Korrelations-ID des Runbookauftrags handelt.|
 |JobId | Die GUID, bei der es sich um die ID des Runbookauftrags handelt.|
 |operationName | Gibt den Typ des in Azure ausgeführten Vorgangs an. Für Automation lautet der Wert „Job“.|
-|Ressourcen-ID | Gibt den Ressourcentyp in Azure an. Für Automation ist der Wert das dem Runbook zugeordnete Automation-Konto.|
+|resourceId | Gibt den Ressourcentyp in Azure an. Für Automation ist der Wert das dem Runbook zugeordnete Automation-Konto.|
 |ResourceGroup | Gibt den Namen der Ressourcengruppe des Runbookauftrags an.|
 |ResourceProvider | Gibt den Azure-Dienst an, über den Sie die Ressourcen beziehen, die Sie bereitstellen und verwalten können. Für Automation lautet der Wert „Azure Automation“.|
 |ResourceType | Gibt den Ressourcentyp in Azure an. Für Automation ist der Wert das dem Runbook zugeordnete Automation-Konto.|
@@ -274,7 +274,7 @@ Automation erstellt zwei Arten von Datensätzen im Log Analytics-Arbeitsbereich:
 |JobId | Die GUID, bei der es sich um die ID des Runbookauftrags handelt.|
 |operationName | Gibt den Typ des in Azure ausgeführten Vorgangs an. Für Automation lautet der Wert „Job“.|
 |ResourceGroup | Gibt den Namen der Ressourcengruppe des Runbookauftrags an.|
-|Ressourcen-ID | Gibt die Ressourcen-ID in Azure an. Für Automation ist der Wert das dem Runbook zugeordnete Automation-Konto.|
+|resourceId | Gibt die Ressourcen-ID in Azure an. Für Automation ist der Wert das dem Runbook zugeordnete Automation-Konto.|
 |ResourceProvider | Gibt den Azure-Dienst an, über den Sie die Ressourcen beziehen, die Sie bereitstellen und verwalten können. Für Automation lautet der Wert „Azure Automation“.|
 |ResourceType | Gibt den Ressourcentyp in Azure an. Für Automation ist der Wert das dem Runbook zugeordnete Automation-Konto.|
 |resultType | Das Ergebnis des Runbookauftrags zum Zeitpunkt der Ereignisgenerierung. Ein möglicher Wert ist:<br>- InProgress|

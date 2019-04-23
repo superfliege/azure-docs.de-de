@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
 ms.openlocfilehash: 6d92273298c0448d7377acab6f3b8ea1cc1ed908
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58762921"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Virtuelle Netzwerkarchitektur mit Azure HDInsight
@@ -22,7 +22,7 @@ In diesem Artikel werden die Ressourcen erläutert, die beim Bereitstellen eines
 
 In Azure HDInsight-Clustern gibt es unterschiedliche Typen virtueller Computer bzw. Knoten. Jeder Knotentyp spielt eine Rolle beim Betrieb des Systems. In der folgenden Tabelle sind diese Knotentypen und ihre Rollen im Cluster zusammengefasst.
 
-| Typ | Beschreibung |
+| Type | BESCHREIBUNG |
 | --- | --- |
 | Hauptknoten |  Bei allen Clustertypen, mit Ausnahme von Apache Storm, hosten die Hauptknoten die Prozesse, welche die Ausführung der verteilten Anwendung verwalten. Der Hauptknoten ist auch der Knoten, zu dem Sie eine SSH-Verbindung herstellen und mit dem Sie Anwendungen ausführen können, die dann für die Ausführung mit den Clusterressourcen koordiniert werden. Die Anzahl der Hauptknoten ist bei allen Clustertypen auf zwei (2) festgelegt. |
 | ZooKeeper-Knoten | Zookeeper koordiniert Aufgaben zwischen den Knoten, welche die Datenverarbeitung ausführen. Er nimmt auch die Auswahl des führenden Hauptknotens vor, und verfolgt, welcher Hauptknoten einen bestimmten Master-Dienst ausführt. Die Anzahl der ZooKeeper-Knoten ist auf zwei (2) festgelegt. |
@@ -44,18 +44,18 @@ Die folgende Tabelle enthält die neun Clusterknoten, die erstellt werden, wenn 
 
 | Ressourcentyp | Vorhandene Anzahl | Details |
 | --- | --- | --- |
-|Hauptknoten | zwei |    |
-|ZooKeeper-Knoten | drei | |
-|Workerknoten | zwei | Diese Anzahl kann sich je nach Clusterkonfiguration und Skalierung ändern. Für Apache Kafka sind mindestens drei Workerknoten erforderlich.  |
-|Gatewayknoten | zwei | Gatewayknoten sind virtuelle Azure-Computer, die zwar in Azure erstellt, in Ihrem Abonnement jedoch nicht angezeigt werden. Wenden Sie sich an den Support, wenn Sie diese Knoten neu starten müssen. |
+|Hauptknoten | two |    |
+|ZooKeeper-Knoten | three | |
+|Workerknoten | two | Diese Anzahl kann sich je nach Clusterkonfiguration und Skalierung ändern. Für Apache Kafka sind mindestens drei Workerknoten erforderlich.  |
+|Gatewayknoten | two | Gatewayknoten sind virtuelle Azure-Computer, die zwar in Azure erstellt, in Ihrem Abonnement jedoch nicht angezeigt werden. Wenden Sie sich an den Support, wenn Sie diese Knoten neu starten müssen. |
 
 Die folgenden Netzwerkressourcen werden innerhalb des virtuellen Netzwerks, das mit HDInsight verwendet wird, automatisch erstellt:
 
 | Netzwerkressource | Vorhandene Anzahl | Details |
 | --- | --- | --- |
-|Load Balancer | drei | |
+|Load Balancer | three | |
 |Netzwerkschnittstellen | neun | Dieser Wert basiert auf einem normalen Cluster, in dem jeder Knoten eine eigene Netzwerkschnittstelle hat. Die neun Schnittstellen sind für die in der vorherigen Tabelle beschriebenen Knoten bestimmt: zwei Hauptknoten, drei Zookeeper-Knoten, zwei Workerknoten und zwei Gatewayknoten. |
-|Öffentliche IP-Adressen | zwei |    |
+|Öffentliche IP-Adressen | two |    |
 
 ## <a name="endpoints-for-connecting-to-hdinsight"></a>Endpunkte zum Herstellen einer Verbindung mit HDInsight
 
