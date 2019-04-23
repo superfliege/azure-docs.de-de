@@ -34,8 +34,8 @@ Die Daten für einen Geofence oder eine Reihe von Geofences werden durch das `Fe
 | :------------ |:------------: |:---------------:| :-----|
 | startTime | DateTime  | true | Das Anfangsdatum und die Anfangsuhrzeit der Gültigkeitsdauer. |
 | endTime   | DateTime  | true |  Das Enddatum und die Enduhrzeit der Gültigkeitsdauer. |
-| recurrenceType | Zeichenfolge | false |   Der Wiederholungstyp des Zeitraums. Der Wert kann `Daily`, `Weekly`, `Monthly` oder `Yearly` lauten. Der Standardwert ist `Daily`.|
-| businessDayOnly | Boolescher Wert | false |  Gibt an, ob die Daten nur an Werktagen gültig sind. Der Standardwert ist `false`.|
+| recurrenceType | string | false |   Der Wiederholungstyp des Zeitraums. Der Wert kann `Daily`, `Weekly`, `Monthly` oder `Yearly` lauten. Der Standardwert ist `Daily`.|
+| businessDayOnly | Boolean | false |  Gibt an, ob die Daten nur an Werktagen gültig sind. Der Standardwert ist `false`.|
 
 
 * Alle Koordinatenwerte werden als [Breitengrad, Längengrad] gemäß der Definition in `WGS84` dargestellt.
