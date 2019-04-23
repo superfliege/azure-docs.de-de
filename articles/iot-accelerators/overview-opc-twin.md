@@ -9,10 +9,10 @@ ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 9daf1a7e58af23cb78705691217bf9709359c4d5
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496810"
 ---
 # <a name="what-is-azure-iot-open-platform-communications-opc-device-management"></a>Was ist die OPC-Geräteverwaltung (Open Platform Communications) von Azure IoT?
@@ -42,4 +42,4 @@ OPC -Zwilling kann über REST-APIs mit Anwendungen in einer beliebigen Programm
 Nachdem Sie sich hier über OPC-Zwilling und entsprechende Verwendungsmöglichkeiten informiert haben, können Sie mit dem nächsten Thema fortfahren:
 
 > [!div class="nextstepaction"]
-> [Was ist ein OPC-Tresor?](overview-opc-twin-architecture.md)
+> [OPC Twin-Architektur](overview-opc-twin-architecture.md)

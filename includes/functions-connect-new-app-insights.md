@@ -9,10 +9,10 @@ ms.date: 04/06/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: b6cafcfe6c892cd43f056458fe3586da834c2fd1
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59497343"
 ---
 Mit Functions ist es einfach, die Application Insights-Integration über das [Azure-Portal] einer Funktionen-App hinzuzufügen.
@@ -25,10 +25,10 @@ Mit Functions ist es einfach, die Application Insights-Integration über das [Az
 
    ![Erstellen einer Application Insights-Ressource](media/functions-connect-new-app-insights/ai-general.png)
 
-    | Einstellung      | Empfohlener Wert  | BESCHREIBUNG                                        |
+    | Einstellung      | Empfohlener Wert  | Beschreibung                                        |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **NAME** | Eindeutiger App-Name | Es ist am einfachsten, den gleichen Namen wie für Ihre Funktionen-App zu verwenden, der in Ihrem Abonnement eindeutig sein muss. | 
-    | **Standort** | Europa, Westen | Verwenden Sie nach Möglichkeit dieselbe [Region](https://azure.microsoft.com/regions/) wie für Ihre Funktionen-App (oder eine Region in der Nähe). |
+    | **Name** | Eindeutiger App-Name | Es ist am einfachsten, den gleichen Namen wie für Ihre Funktionen-App zu verwenden, der in Ihrem Abonnement eindeutig sein muss. | 
+    | **Location** | Europa, Westen | Verwenden Sie nach Möglichkeit dieselbe [Region](https://azure.microsoft.com/regions/) wie für Ihre Funktionen-App (oder eine Region in der Nähe). |
 
 1. Klicken Sie auf **OK**. Die Application Insights-Ressource wird in derselben Ressourcengruppe und unter demselben Abonnement wie Ihre Funktionen-App erstellt. Schließen Sie das Application Insights-Fenster, nachdem die Erstellung abgeschlossen ist.
 

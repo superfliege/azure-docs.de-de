@@ -53,5 +53,5 @@ Haben Sie eine Frage zu einem fehlenden Feature bzw. einer fehlenden Funktion? E
 
 ## <a name="see-also"></a>Weitere Informationen
 
- [StackOverflow: Textanalyse-API   
+ [StackOverflow: Textanalyse-API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
  [StackOverflow: Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

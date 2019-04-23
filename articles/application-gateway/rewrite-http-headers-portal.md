@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: 16f59ecaf934813890cd25e89896182378f376ed
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 6afc07f98905469b06622e7829ec4a215b94845e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549066"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59994604"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>Erneutes Generieren von HTTP-Anforderungs- und Antwortheadern mit Azure Application Gateway – Azure-Portal
 
@@ -26,7 +26,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Sie benötigen eine Application Gateway v2-SKU, da die Funktion zum erneuten Generieren von Headern für die v1-SKU nicht unterstützt wird. Wenn Sie nicht über die v2-SKU verfügen, erstellen Sie eine [Application Gateway v2-SKU](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps>), bevor Sie beginnen.
+Sie benötigen eine Application Gateway v2-SKU, da die Funktion zum erneuten Generieren von Headern für die v1-SKU nicht unterstützt wird. Wenn Sie nicht über die v2-SKU verfügen, erstellen Sie eine [Application Gateway v2-SKU](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps), bevor Sie beginnen.
 
 ## <a name="what-is-required-to-rewrite-a-header"></a>Voraussetzungen zum erneuten Generieren eines Headers
 

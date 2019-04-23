@@ -11,10 +11,10 @@ manager: philmea
 ms.devlang: csharp
 ms.custom: mvc
 ms.openlocfilehash: f375044fe7e2276b68476e609f33ca8372db9921
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59500871"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Schnellstart: Registrieren von X.509-Geräten für den Device Provisioning-Dienst mit C#
@@ -176,4 +176,4 @@ Wenn Sie planen, sich das C#-Dienstbeispiel näher anzusehen, sollten Sie die in
 In dieser Schnellstartanleitung haben Sie eine Registrierungsgruppe für ein X.509-Zwischenzertifikat oder -Stammzertifikat einer Zertifizierungsstelle erstellt, indem Sie den Azure IoT Hub Device Provisioning-Dienst verwendet haben. Ausführlichere Informationen zur Gerätebereitstellung finden Sie im Tutorial zur Einrichtung des Device Provisioning-Diensts über das Azure-Portal. 
  
 > [!div class="nextstepaction"]
-> [Tutorials für den Azure IoT Hub Device Provisioning Service](./tutorial-set-up-cloud.md)
+> [Tutorials für den Azure IoT Hub Device Provisioning-Dienst](./tutorial-set-up-cloud.md)

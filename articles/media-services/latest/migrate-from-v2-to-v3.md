@@ -16,10 +16,10 @@ ms.workload: media
 ms.date: 03/27/2019
 ms.author: juliako
 ms.openlocfilehash: 70e28377b19b682f2191e0a8fb95792101fa8ec7
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59045673"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Hinweise zur Migration von Media Services v2 zu v3
@@ -98,9 +98,9 @@ Die folgende Tabelle zeigt die Codeunterschiede zwischen v2 und v3 für gängige
 
 |Szenario|V2-API|V3-API|
 |---|---|---|
-|Erstellen eines Medienobjekts und Hochladen einer Datei |[Beispiel für v2 .NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[Beispiel für v3 .NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
-|Übermitteln eines Auftrags|[Beispiel für v2 .NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[Beispiel für v3 .NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Zeigt, wie zuerst eine Transformation erstellt und dann ein Auftrag übermittelt wird.|
-|Veröffentlichen eines Medienobjekts mit AES-Verschlüsselung |1. Erstellen von ContentKeyAuthorizationPolicyOption<br/>2. Erstellen von ContentKeyAuthorizationPolicy<br/>3. Erstellen von AssetDeliveryPolicy<br/>4. Erstellen eines Medienobjekts und Hochladen von Inhalten ODER Übermitteln eines Auftrags und Verwenden des Ausgabemedienobjekts<br/>5. Zuordnen von AssetDeliveryPolicy zu Medienobjekt<br/>6. Erstellen von ContentKey<br/>7. Zuordnen von ContentKey zu einem Medienobjekt<br/>8. Erstellen von AccessPolicy<br/>9. Erstellen von Locator<br/><br/>[Beispiel für v2 .NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. Erstellen einer Richtlinie für Inhaltsschlüssel<br/>2. Erstellen eines Medienobjekts<br/>3. Hochladen von Inhalten oder Verwenden von Medienobjekt als JobOutput<br/>4. Erstellen eines Streaminglocators<br/><br/>[Beispiel für v3 .NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
+|Erstellen eines Medienobjekts und Hochladen einer Datei |[Beispiel für v2-.NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L113)|[Beispiel für v3-.NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L169)|
+|Übermitteln eines Auftrags|[Beispiel für v2-.NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L146)|[Beispiel für v3-.NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L298)<br/><br/>Zeigt, wie zuerst eine Transformation erstellt und dann ein Auftrag übermittelt wird.|
+|Veröffentlichen eines Medienobjekts mit AES-Verschlüsselung |1. Erstellen von ContentKeyAuthorizationPolicyOption<br/>2. Erstellen von ContentKeyAuthorizationPolicy<br/>3. Erstellen von AssetDeliveryPolicy<br/>4. Erstellen eines Medienobjekts und Hochladen von Inhalten ODER Übermitteln eines Auftrags und Verwenden des Ausgabemedienobjekts<br/>5. Zuordnen von AssetDeliveryPolicy zu Medienobjekt<br/>6. Erstellen von ContentKey<br/>7. Zuordnen von ContentKey zu einem Medienobjekt<br/>8. Erstellen von AccessPolicy<br/>9. Erstellen von Locator<br/><br/>[Beispiel für v2-.NET](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-aes/blob/master/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs#L64)|1. Erstellen einer Richtlinie für Inhaltsschlüssel<br/>2. Erstellen eines Medienobjekts<br/>3. Hochladen von Inhalten oder Verwenden von Medienobjekt als JobOutput<br/>4. Erstellen eines Streaminglocators<br/><br/>[Beispiel für v3-.NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs#L105)|
 |Abrufen von Auftragsdetails und Verwalten von Aufträgen |[Verwalten von Aufträgen mit v2](../previous/media-services-dotnet-manage-entities.md#get-a-job-reference) |[Verwalten von Aufträgen mit v3](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#L546)|
 
 ## <a name="known-issues"></a>Bekannte Probleme

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/04/2019
 ms.author: juliako
 ms.openlocfilehash: 8f8a1434af768180e34afcaacd6e92ab402ad8cd
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361244"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Verbinden mit der Media Services v3-API – .NET
@@ -225,16 +225,16 @@ namespace ConsoleApp1
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Tutorial: Hochladen, Codieren und Streamen von Videos – .NET](stream-files-tutorial-with-api.md) 
-- [Tutorial: Livestreaming mit Media Services v3 – .NET](stream-live-tutorial-with-api.md)
-- [Tutorial: Analysieren von Videos mit Media Services v3 – .NET](analyze-videos-tutorial-with-api.md)
-- [Erstellen einer Auftragseingabe aus einer lokalen Datei – .NET](job-input-from-local-file-how-to.md)
-- [Erstellen einer Auftragseingabe aus einer HTTPS-URL – .NET](job-input-from-http-how-to.md)
-- [Codieren einer benutzerdefinierten Transformation – .NET](customize-encoder-presets-how-to.md)
-- [Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts – .NET](protect-with-aes128.md)
-- [Verwenden der dynamischen DRM-Verschlüsselung und des Lizenzbereitstellungsdiensts – .NET](protect-with-drm.md)
-- [Abrufen eines Signaturschlüssels aus der vorhandenen Richtlinie – .NET](get-content-key-policy-dotnet-howto.md)
-- [Erstellen von Filtern mit Media Services – .NET](filters-dynamic-manifest-dotnet-howto.md)
+- [Tutorial: Hochladen, Codieren und Streamen von Videos mithilfe von .NET](stream-files-tutorial-with-api.md) 
+- [Tutorial: Livestreaming mit Media Services v3 unter Verwendung von .NET](stream-live-tutorial-with-api.md)
+- [Tutorial: Analysieren von Videos mit Media Services v3 mithilfe von .NET](analyze-videos-tutorial-with-api.md)
+- [Erstellen einer Auftragseingabe aus einer lokalen Datei](job-input-from-local-file-how-to.md)
+- [Erstellen einer Auftragseingabe aus einer HTTPS-URL](job-input-from-http-how-to.md)
+- [Codieren einer benutzerdefinierten Transformation](customize-encoder-presets-how-to.md)
+- [Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts](protect-with-aes128.md)
+- [Verwenden der dynamischen DRM-Verschlüsselung und des Lizenzbereitstellungsdiensts](protect-with-drm.md)
+- [Abrufen eines Signaturschlüssels aus der vorhandenen Richtlinie](get-content-key-policy-dotnet-howto.md)
+- [Erstellen von Filtern mit dem Media Services .NET SDK](filters-dynamic-manifest-dotnet-howto.md)
 - [Erweiterte Video-on-Demand-Beispiele von Azure Functions v2 mit Media Services v3](https://aka.ms/ams3functions)
 
 ## <a name="see-also"></a>Weitere Informationen

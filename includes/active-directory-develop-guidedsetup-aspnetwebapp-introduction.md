@@ -15,10 +15,10 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: 86113246fab399e8364653198e9a6971317e3f2c
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59505793"
 ---
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App
@@ -27,7 +27,7 @@ Diese Anleitung veranschaulicht das Implementieren von „Mit Microsoft anmelden
 
 Am Ende dieser Anleitung kann Ihre Anwendung Anmeldungen sowohl von persönlichen Konten (z.B. outlook.com, live.com u.a.) als auch von Geschäfts-, Schul- und Unikonten von Unternehmen oder Organisationen akzeptieren, die in Azure Active Directory integriert wurden.
 
-> Für diesen Leitfaden wird Visual Studio 2017 benötigt.  Nicht vorhanden?  [Sie können Visual Studio 2017 kostenlos herunterladen.](https://www.visualstudio.com/downloads/)
+> Für diesen Leitfaden wird Visual Studio 2017 benötigt.  Sie haben beides nicht?  [Laden Sie Visual Studio 2017 kostenlos herunter](https://www.visualstudio.com/downloads/)
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Funktionsweise der über diesen Leitfaden generierten Beispiel-App
 

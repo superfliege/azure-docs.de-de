@@ -12,10 +12,10 @@ manager: craigg
 ms.date: 02/08/2019
 ms.custom: seoapril2019
 ms.openlocfilehash: d09af0a4c2d09004d5c1bbf3261a14850eef7714
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496436"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Tutorial: Schützen einer Einzel- oder Pooldatenbank
@@ -143,7 +143,7 @@ Informationen zum Konfigurieren von Azure AD finden Sie hier:
 
 - [Was ist eine Hybrididentität?](../active-directory/hybrid/whatis-hybrid-identity.md)
 - [Hinzufügen Ihres benutzerdefinierten Domänennamens über das Azure Active Directory-Portal](../active-directory/active-directory-domains-add-azure-portal.md)
-- [Microsoft Azure now supports federation with Windows Server Active Directory (Microsoft Azure unterstützt jetzt die Verbunderstellung mit Windows Server AD)](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)
+- [Windows Azure now supports federation with Windows Server Active Directory](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/) (Microsoft Azure unterstützt jetzt die Verbunderstellung mit Windows Server AD)
 - [Verwalten Ihres Azure AD-Verzeichnisses](../active-directory/fundamentals/active-directory-administer.md)
 - [Übersicht über Azure PowerShell](/powershell/azure/overview?view=azureadps-2.0)
 - [Erforderliche Ports und Protokolle für die Hybrid-Identität](../active-directory/hybrid/reference-connect-ports.md)

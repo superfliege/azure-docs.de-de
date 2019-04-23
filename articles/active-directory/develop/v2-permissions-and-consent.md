@@ -19,10 +19,10 @@ ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 87103b1052b5d9168928193eacc78a935e68067f
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59501245"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt
@@ -40,7 +40,7 @@ Die Microsoft Identity Platform implementiert das [OAuth 2.0](active-directory-v
 
 * Microsoft Graph: `https://graph.microsoft.com`
 * API für Office 365-E-Mail: `https://outlook.office.com`
-* Azure AD Graph: `https://graph.windows.net`
+* Microsoft Azure AD Graph: `https://graph.windows.net`
 
 > [!NOTE]
 > Es wird dringend empfohlen, Microsoft Graph anstelle von Microsoft Azure AD Graph, der API für Office 365-E-Mail usw. zu verwenden.
@@ -285,7 +285,7 @@ Es gibt keine Einwilligung für den Benutzer zwischen dem Client und Microsoft G
 
 #### <a name="example-3-the-user-has-consented-and-the-client-requests-additional-scopes"></a>Beispiel 3: Der Benutzer hat eingewilligt und der Client fordert zusätzliche Bereiche an.
 
-Der Benutzer hat bereits in `mail.read` für den Client eingewilligt. Der Client hat sich in seiner Registrierung für den Bereich `contacts.read` registriert. Wenn der Client eine Anforderung für ein Token mit `scope=https://graph.microsoft.com/.default` stellt und die Einwilligung über `prompt=consent` anfordert, sieht der Benutzer einen Einwilligungsbildschirm für alle von der Anwendung registrierten Berechtigungen. `contacts.read` wird auf dem Einwilligungsbildschirm angezeigt, `mail.read` aber nicht. Das zurückgegebene Token gilt für Microsoft Graph und enthält `mail.read` und `contacts.read`.
+Der Benutzer hat bereits in `mail.read` für den Client eingewilligt. Der Client hat sich in seiner Registrierung für den Bereich `contacts.read` registriert. Wenn der Client eine Anforderung für ein Token mit `scope=https://graph.microsoft.com/.default` stellt und die Einwilligung über `prompt=consent` anfordert, sieht der Benutzer einen Einwilligungsbildschirm für alle von der Anwendung registrierten Berechtigungen. `contacts.read` wird im Einwilligungsbildschirm angezeigt, `mail.read` aber nicht. Das zurückgegebene Token gilt für Microsoft Graph und enthält `mail.read` und `contacts.read`.
 
 ### <a name="using-the-default-scope-with-the-client"></a>Verwenden des Bereichs „/.default“ mit dem Client
 

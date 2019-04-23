@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 04/12/2019
 ms.author: assafi
-ms.openlocfilehash: 0bc50ddbd93fce24454ca1628894f87b90d0d57c
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 7051f1c1ce43be7dce5d88a06fccee9d876a70f4
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608145"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010176"
 ---
 # <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>Schnellstart: Verwenden von C# zum Aufrufen der Textanalyse von Cognitive Services
 <a name="HOLTop"></a>
@@ -36,7 +36,7 @@ Außerdem benötigen Sie den [Endpunkt und den Zugriffsschlüssel](../How-tos/te
 1. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach **Microsoft.Azure.CognitiveServices.Language.TextAnalytics**.
 
 > [!Tip]
->  Sie können die [HTTP-Endpunkte](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) zwar direkt über C# aufrufen, das SDK Microsoft.Azure.CognitiveServices.Language erleichtert jedoch das Aufrufen des Diensts erheblich, und Sie müssen sich nicht um die Serialisierung und Deserialisierung von JSON kümmern.
+>  Sie können die [HTTP-Endpunkte](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) zwar direkt über C# aufrufen, das SDK Microsoft.Azure.CognitiveServices.Language erleichtert jedoch das Aufrufen des Diensts erheblich, und Sie müssen sich nicht um die Serialisierung und Deserialisierung von JSON kümmern.
 >
 > Einige nützliche Links:
 > - [NuGet-Seite des SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)

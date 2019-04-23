@@ -9,10 +9,10 @@ ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 84ed1632a61ae097bd2e187de4766dfc50f2503f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59263776"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Abrufen von Compliancedaten von Azure-Ressourcen
@@ -55,8 +55,8 @@ Ein Auswertungsscan für ein Abonnement oder eine Ressourcengruppe kann mit eine
 
 In jedem REST-API-URI gibt es Variablen, die Sie durch Ihre eigenen Werte ersetzen müssen:
 
-- `{YourRG}` – Ersetzen Sie diese Variable durch den Namen Ihrer Ressourcengruppe.
-- `{subscriptionId}` - Ersetzen Sie diese Variable durch Ihre Abonnement-ID.
+- Ersetzen Sie `{YourRG}` durch den Namen Ihrer Ressourcengruppe.
+- Ersetzen Sie `{subscriptionId}` durch Ihre Abonnement-ID.
 
 Der Scan unterstützt die Auswertung von Ressourcen in einem Abonnement oder in einer Ressourcengruppe. Starten Sie einen Scan nach Bereich mit einem REST-API-Befehl **POST** anhand der folgenden URI-Strukturen:
 
@@ -415,7 +415,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor-Protokolle
 
-Wenn Sie über einen [Log Analytics-Arbeitsbereich](../../../log-analytics/log-analytics-overview.md) mit `AzureActivity` aus der [Log Analytics-Aktivitätslösung](../../../azure-monitor/platform/collect-activity-logs.md) verfügen, die mit Ihrem Abonnement verknüpft ist, können Sie auch nicht kompatible Ergebnisse aus dem Auswertungszyklus mithilfe einfacher Kusto-Abfragen und über die Tabelle `AzureActivity` anzeigen. Mithilfe von Details in Azure Monitor können Warnmeldungen konfiguriert werden, um Verstöße gegen die Konformität zu überwachen.
+Wenn Sie über einen [Log Analytics-Arbeitsbereich](../../../log-analytics/log-analytics-overview.md) mit `AzureActivity` aus der [Log Analytics-Aktivitätslösung](../../../azure-monitor/platform/collect-activity-logs.md) verfügen, die mit Ihrem Abonnement verknüpft ist, können Sie auch nicht kompatible Ergebnisse aus dem Auswertungszyklus mithilfe einfacher Kusto-Abfragen und über die Tabelle `AzureActivity` anzeigen. Mithilfe von Details in Azure Monitor-Protokollen können Warnmeldungen konfiguriert werden, um Verstöße gegen die Konformität zu überwachen.
 
 ![Richtlinienkonformität mithilfe Azure Monitor-Protokollen](../media/getting-compliance-data/compliance-loganalytics.png)
 

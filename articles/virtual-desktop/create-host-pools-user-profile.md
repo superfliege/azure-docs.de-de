@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/05/2019
 ms.author: helohr
 ms.openlocfilehash: 0cb4df099faad8ca482fd15cf0bb50504c1528ab
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59276387"
 ---
 # <a name="set-up-a-user-profile-share-for-a-host-pool"></a>Einrichten einer Benutzerprofilfreigabe für einen Hostpool
@@ -64,7 +64,7 @@ Führen Sie auf allen Computern, die für den Hostpool registriert sind, Folgend
 
 | NAME                | Type               | Daten/Wert                        |
 |---------------------|--------------------|-----------------------------------|
-| Aktiviert             | DWORD              | 1                                 |
+| Enabled             | DWORD              | 1                                 |
 | VHDLocations        | Mehrteiliger Zeichenfolgenwert | „Netzwerkpfad für Dateifreigabe“     |
 
 >[!IMPORTANT]

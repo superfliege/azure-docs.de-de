@@ -15,10 +15,10 @@ ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: dcfc341b89a3cfebcb5538f88481fd2fbb2936a7
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59505800"
 ---
 ## <a name="set-up-your-project"></a>Einrichten des Projekts
@@ -56,8 +56,8 @@ Die folgenden Schritte dienen zum Erstellen der OWIN-Middleware-Klasse „Startu
 
 > [!TIP]
 > Wenn das Projekt nicht die Datei `Startup.cs` im Stammordner enthält:
-> 1. Klicken Sie mit der rechten Maustaste auf den Stammordner des Projekts und dann auf `Add` > `New Item...` > .`OWIN Startup class`<br/>
-> 2. Vergeben Sie einen Namen. `Startup.cs`
+> 1. Klicken Sie mit der rechten Maustaste auf den Stammordner des Projekts: > `Add` > `New Item...` > `OWIN Startup class`<br/>
+> 2. Vergeben Sie den Namen `Startup.cs`.
 >
 >> Stellen Sie sicher, dass die ausgewählte Klasse eine OWIN-Klasse des Typs „Startup“ und keine C#-Standardklasse ist. Bestätigen Sie dies, indem Sie überprüfen, ob `[assembly: OwinStartup(typeof({NameSpace}.Startup))]` über dem Namespace angezeigt wird.
 

@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 9584f0ee4264724787c5913c0d6baa4c2769fa82
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 39fbe30ccf4429003dc0c9f11165c5dd057a89cd
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085676"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549151"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>Hinzufügen von Sprachanalysetools zu einem Azure Search-Index
 
@@ -92,7 +92,7 @@ Weitere Informationen zu Indexeigenschaften finden Sie unter [Erstellen eines In
 |Irisch||ga.lucene|  
 |Italienisch|it.microsoft|it.lucene|  
 |Japanisch|ja.microsoft|ja.lucene|  
-|Kannada|ka.microsoft||  
+|Kannada|kn.microsoft||  
 |Koreanisch|ko.microsoft|ko.lucene|  
 |Lettisch|lv.microsoft|lv.lucene|  
 |Litauisch|lt.microsoft||  

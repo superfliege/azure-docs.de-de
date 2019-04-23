@@ -9,10 +9,10 @@ ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 9b5b151c62c4294563f704dc9a0cf7daeaca874f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59279974"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Erstellen dynamischer Blaupausen mithilfe von Parametern
@@ -76,8 +76,8 @@ Ein Parameterwert, der in der Definition einer Blaupause definiert ist, wird als
 
 In jedem REST-API-URI gibt es Variablen, die Sie durch Ihre eigenen Werte ersetzen müssen:
 
-- `{YourMG}` – Ersetzen Sie diese Variable durch den Namen Ihrer Verwaltungsgruppe.
-- `{subscriptionId}` - Ersetzen Sie diese Variable durch Ihre Abonnement-ID.
+- Ersetzen Sie `{YourMG}` durch den Namen Ihrer Verwaltungsgruppe.
+- Ersetzen Sie `{subscriptionId}` durch Ihre Abonnement-ID.
 
 ##### <a name="blueprint-level-parameter"></a>Parameter auf Blaupausenebene
 

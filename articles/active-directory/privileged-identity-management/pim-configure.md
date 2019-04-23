@@ -15,10 +15,10 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: be8b9fe027a023cec6c816fa641beb41e5849741
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496077"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Was ist Azure AD Privileged Identity Management?
@@ -107,6 +107,6 @@ PIM unterstützt folgende Szenarien:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Lizenzanforderungen für die Verwendung von PIM](subscription-requirements.md)
+- [License requirements to use PIM](subscription-requirements.md) (Lizenzanforderungen für die Verwendung von PIM)
 - [Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-- [Bereitstellen von PIM](pim-deployment-plan.md)
+- [Bereitstellen von Privileged Identity Management (PIM)](pim-deployment-plan.md)

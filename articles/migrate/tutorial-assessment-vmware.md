@@ -8,10 +8,10 @@ ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 9eab8a29db40118f2a15064c52419ecebcd4aecb
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59490318"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Ermitteln und Bewerten lokaler virtueller VMware-Computer für die Migration zu Azure
@@ -56,7 +56,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 4. Erstellen Sie eine neue Ressourcengruppe.
 5. Geben Sie die Region an, in der das Projekt erstellt werden soll, und klicken Sie dann auf **Erstellen**. Sie können ein Azure Migrate-Projekt nur in den folgenden geografischen Regionen erstellen. Sie können Ihre Migration jedoch trotzdem für jeden beliebigen Zielort von Azure planen. Die für das Projekt angegebene Region wird nur zum Speichern der Metadaten verwendet, die von den lokalen VMs erfasst werden.
 
-**Gebiet** | **Speicherort**
+**Geografie** | **Speicherort**
 --- | ---
 Azure Government | US Government, Virginia
 Asien | Asien, Südosten

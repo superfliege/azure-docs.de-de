@@ -10,10 +10,10 @@ services: iot-dps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 93fc426d9de027100e70502bcf6ea3aad2c44e10
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59500208"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Schnellstart: Bereitstellen eines simulierten Geräts mit symmetrischen Schlüsseln
@@ -205,4 +205,4 @@ Wenn Sie das Geräteclientbeispiel weiter verwenden und erkunden möchten, über
 In dieser Schnellstartanleitung haben Sie auf Ihrem Windows-Computer ein simuliertes Gerät erstellt und es im Portal mit dem symmetrischen Schlüssel mithilfe des Azure IoT Hub Device Provisioning Service für Ihre IoT Hub-Instanz bereitgestellt. Informationen zum programmgesteuerten Registrieren Ihres Geräts finden Sie in der Schnellstartanleitung für die programmgesteuerte Registrierung von X.509-Geräten. 
 
 > [!div class="nextstepaction"]
-> [Azure-Schnellstart: Registrieren von X.509-Geräten für den Azure IoT Hub Device Provisioning-Dienst](quick-enroll-device-x509-java.md)
+> [Registrieren von X.509-Geräten für den Azure IoT Hub Device Provisioning-Dienst per Java-Dienst-SDK](quick-enroll-device-x509-java.md)

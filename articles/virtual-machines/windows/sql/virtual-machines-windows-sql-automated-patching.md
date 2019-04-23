@@ -17,10 +17,10 @@ ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 348979a53bff76c85e6d1531bd16cd695145e21b
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59425984"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Automatisiertes Patchen für SQL Server auf virtuellen Azure-Computern (Resource Manager)
@@ -70,7 +70,7 @@ In der folgenden Tabelle werden die Optionen beschrieben, die für das automatis
 | **Wartungszeitplan** |Täglich, Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag, Sonntag |Der Zeitplan für das Herunterladen und Installieren von Windows-, SQL Server- und Microsoft-Updates für den virtuellen Computer |
 | **Wartung beginnt um** |0-24 |Die lokale Startzeit zum Aktualisieren des virtuellen Computers |
 | **Dauer des Wartungsfensters** |30-180 |Der Zeitraum in Minuten, in dem das Herunterladen und Installieren von Updates abgeschlossen werden darf |
-| **Patchkategorie** |Wichtig | Die Kategorie der Windows-Updates, die heruntergeladen und installiert werden.|
+| **Patch Category** |Wichtig | Die Kategorie der Windows-Updates, die heruntergeladen und installiert werden.|
 
 ## <a name="configuration-in-the-portal"></a>Konfiguration im Portal
 Mit dem Azure-Portal können Sie das automatisierte Patchen während der Bereitstellung oder für vorhandene virtuelle Computer konfigurieren.

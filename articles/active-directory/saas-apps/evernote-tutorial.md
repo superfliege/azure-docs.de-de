@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.openlocfilehash: 2ce05e904484a6d773a0132734208b87e161f960
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59499919"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-evernote"></a>Tutorial: Azure Active Directory-Integration mit Evernote
@@ -216,7 +216,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 Damit sich Azure AD-Benutzer bei Evernote anmelden können, müssen sie in Evernote bereitgestellt werden.  
 Im Fall von Evernote ist die Bereitstellung eine manuelle Aufgabe.
 
-**So stellen Sie Benutzerkonten bereit:**
+**Führen Sie zum Bereitstellen von Benutzerkonten die folgenden Schritte aus:**
 
 1. Melden Sie sich bei der Evernote-Unternehmenswebsite als Administrator an.
 

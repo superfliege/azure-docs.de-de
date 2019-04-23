@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 0203/26/2019
 ms.author: bwren
-ms.openlocfilehash: 59213c5391b5b652eeead05c4a5af761571fcece
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: ec037b16840afe669ac3934beaa832f850cdcfb0
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59360627"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003682"
 ---
 # <a name="logs-in-azure-monitor"></a>Protokolle in Azure Monitor
 
@@ -112,7 +112,7 @@ Azure Monitor kann Protokolldaten aus einer Vielzahl von Quellen sammeln, sowohl
 
 | Daten | BESCHREIBUNG |
 |:---|:---|
-| Azure Monitor für Container | Von [Azure Monitor für Container](../insights/container-insights-overview.md) gesammelte Bestands-und Leistungsdaten. Eine Liste der Tabellen finden Sie unter [Details zur Datensammlung in Containern](../insights/container-insights-analyze.md#container-data-collection-details). |
+| Azure Monitor für Container | Von [Azure Monitor für Container](../insights/container-insights-overview.md) gesammelte Bestands-und Leistungsdaten. Eine Liste der Tabellen finden Sie unter [Details zur Datensammlung in Containern](../insights/container-insights-log-search.md#container-records). |
 | Azure Monitor für VMs | Von [Azure Monitor für VMs](../insights/vminsights-overview.md) gesammelte Zuordnungs-und Leistungsdaten. Ausführliche Informationen zum Abfragen dieser Daten finden Sie unter [Abfragen von Protokollen aus Azure Monitor für VMs](../insights/vminsights-log-search.md). |
 
 ### <a name="custom"></a>Benutzerdefiniert 
