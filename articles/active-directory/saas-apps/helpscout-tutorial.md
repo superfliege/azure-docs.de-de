@@ -16,10 +16,10 @@ ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 35f9a8949f5b51f88b9297890fc5562e7b8dd591
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273378"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Tutorial: Azure Active Directory-Integration mit Help Scout
@@ -52,7 +52,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Konfigurieren der Integration von Help Scout in Azure AD müssen Sie Help Scout über den Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie die folgenden Schritte aus, um Help Scout aus dem Katalog hinzuzufügen:**
+**Um Help Scout aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -106,9 +106,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Help S
 
     ![SSO-Informationen zur Domäne und zu den URLs für Help Scout](common/idp-intiated.png)
 
-    a. Der **Bezeichner** ist der **Benutzergruppen-URI (ID der Dienstanbieterentität)** aus Help Scout und beginnt mit `urn:`
+    a. Der **Bezeichner** ist der **Benutzergruppen-URI (ID der Dienstanbieterentität)** aus Help Scout und beginnt mit `urn:`.
 
-    b. Die **Antwort-URL** ist die **Postback-URL (Assertionsverbraucherdienst-URL)** aus Help Scout und beginnt mit `https://` 
+    b. Die **Antwort-URL** ist die **Postback-URL (Assertionsverbraucherdienst-URL)** aus Help Scout und beginnt mit `https://`. 
 
     > [!NOTE]
     > Die Werte in diesen URLs dienen nur Demonstrationszwecken. Aktualisieren Sie diese Werte mit der tatsächlichen Antwort-URL und dem tatsächlichen Bezeichner. Diese Werte finden Sie auf der Registerkarte **Einmaliges Anmelden** im Abschnitt „Authentifizierung“ (wird im weiteren Verlauf des Tutorials noch näher erläutert).
@@ -117,7 +117,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Help S
 
     ![SSO-Informationen zur Domäne und zu den URLs für Help Scout](common/metadata-upload-additional-signon.png)
 
-    Geben Sie im Textfeld **Anmelde-URL** die URL folgendermaßen ein: `https://secure.helpscout.net/members/login/`
+    Geben Sie im Textfeld **Anmelde-URL** die URL folgendermaßen ein: `https://secure.helpscout.net/members/login/`.
 
 6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 

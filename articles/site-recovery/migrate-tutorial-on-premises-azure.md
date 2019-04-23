@@ -9,10 +9,10 @@ ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: fc15db91b8f4cc6dbdecd0e7321abdbf81744f08
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357977"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrieren von lokalen Computern zu Azure
@@ -90,7 +90,7 @@ Hyper-V | Einrichten einer [Replikationsrichtlinie](hyper-v-azure-tutorial.md#se
 --- | --- 
 VMware | [Aktivieren Sie die Replikation](vmware-azure-enable-replication.md) für VMware-VMs.
 Physischer Computer | [Aktivieren der Replikation](physical-azure-disaster-recovery.md#enable-replication) für physische Computer
-Hyper-V | [Aktivieren der Replikation](hyper-v-azure-tutorial.md#enable-replication)<br/><br/> [Aktivieren der Replikation](hyper-v-vmm-azure-tutorial.md#enable-replication) für Hyper-V mit System Center VMM-Bereitstellung
+Hyper-V | [Replikation aktivieren](hyper-v-azure-tutorial.md#enable-replication)<br/><br/> [Aktivieren der Replikation](hyper-v-vmm-azure-tutorial.md#enable-replication) für Hyper-V mit System Center VMM-Bereitstellung
 
 
 ## <a name="run-a-test-migration"></a>Ausführen einer Testmigration
@@ -159,7 +159,7 @@ Einige Schritte können im Rahmen des Migrationsvorgangs mithilfe der integriert
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie lokale VMs in Azure-VMs migriert. Führen Sie nun folgende Aktion aus:
+In diesem Tutorial haben Sie lokale VMs in Azure-VMs migriert. Now
 
 > [!div class="nextstepaction"]
 > [Einrichten der Notfallwiederherstellung](azure-to-azure-replicate-after-migration.md) in einer sekundären Azure-Region für die virtuellen Azure-Computer

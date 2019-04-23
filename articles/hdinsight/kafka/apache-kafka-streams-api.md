@@ -10,10 +10,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 04/02/2019
 ms.openlocfilehash: 1e02eaeae4757a9a41ec59be81c3d9510d035232
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273820"
 ---
 # <a name="tutorial-apache-kafka-streams-api"></a>Tutorial: Apache Kafka Streams-API
@@ -270,4 +270,4 @@ Führen Sie die folgenden Schritte aus, um das Projekt in Ihrem Cluster für Kaf
 In diesem Dokument haben Sie erfahren, wie Sie die Apache Kafka Streams-API mit Kafka in HDInsight verwenden. Verwenden Sie Folgendes, um weitere Informationen zur Verwendung von Kafka zu erhalten:
 
 * [Analysieren von Apache Kafka-Protokollen](apache-kafka-log-analytics-operations-management.md)
-* [Replizieren von Daten zwischen Apache Kafka-Clustern](apache-kafka-mirroring.md)
+* [Replizieren von Daten zwischen Apache Kafka-Clustern](apache-kafka-mirroring.md)

@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 6d434295a6a46ee5b7089608cbf788ff91589fb7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59281674"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-netscaler"></a>Tutorial: Azure Active Directory-Integration mit Citrix Netscaler
@@ -53,7 +53,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Konfigurieren der Integration von Citrix Netscaler in Azure AD müssen Sie Citrix Netscaler aus dem Katalog zur Liste der verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie die folgenden Schritte aus, um Citrix Netscaler aus dem Katalog hinzuzufügen:**
+**Um Citrix Netscaler aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -107,11 +107,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Citrix Ne
 
     ![SSO-Informationen zur Domäne und zu den URLs für Citrix Netscaler](common/sp-identifier-reply.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<<Your FQDN>>/CitrixAuthService/AuthService.asmx`
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<<Your FQDN>>/CitrixAuthService/AuthService.asmx`.
     
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<<Your FQDN>>`
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<<Your FQDN>>`.
 
-    c. Geben Sie im Textfeld **Antwort-URL (Assertionsverbraucherdienst-URL)** eine URL in folgendem Format ein: `https://<<Your FQDN>>/CitrixAuthService/AuthService.asmx`
+    c. Geben Sie im Textfeld **Antwort-URL (Assertionsverbraucherdienst-URL)** eine URL in folgendem Format ein: `https://<<Your FQDN>>/CitrixAuthService/AuthService.asmx`.
     
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Clientsupportteam von Citrix Netscaler](https://www.citrix.com/contact/technical-support.html), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.

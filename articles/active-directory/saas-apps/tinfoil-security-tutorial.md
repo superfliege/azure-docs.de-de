@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 135b5719422d1b28a82ac2eda06f76d6dd746800
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59262379"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tinfoil-security"></a>Tutorial: Azure Active Directory-Integration in TINFOIL SECURITY
@@ -51,7 +51,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Konfigurieren der Integration von TINFOIL SECURITY in Azure AD müssen Sie TINFOIL SECURITY aus dem Katalog zur Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie die folgenden Schritte aus, um TINFOIL SECURITY aus dem Katalog hinzuzufügen:**
+**Um TINFOIL SECURITY aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -233,7 +233,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 Damit sich Azure AD-Benutzer bei TINFOIL SECURITY anmelden können, müssen sie in TINFOIL SECURITY bereitgestellt werden. Im Fall von TINFOIL SECURITY ist die Bereitstellung eine manuelle Aufgabe.
 
-**So rufen Sie einen bereitgestellten Benutzer ab:**
+**Führen Sie zum Bereitstellen eines Benutzers die folgenden Schritte aus:**
 
 1. Wenn der Benutzer einen Teil eines Enterprise-Kontos ist, müssen Sie sich [an das TINFOIL SECURITY-Supportteam wenden](https://www.tinfoilsecurity.com/contact), um das Benutzerkonto anlegen zu lassen.
 

@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
 ms.openlocfilehash: 2f190ccbead9e6349543d04e2419f458888fba2c
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59008746"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-framework-windows"></a>Schnellstart: Erkennen von Sprache mit dem Speech SDK für .NET Framework (Windows)
@@ -72,5 +72,5 @@ Für dieses Projekt benötigen Sie Folgendes:
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Anpassen von Akustikmodellen](how-to-customize-acoustic-models.md)
-- [Anpassen von Sprachmodellen](how-to-customize-language-model.md)
+- [Tutorial: Erstellen eines benutzerdefinierten Akustikmodells](how-to-customize-acoustic-models.md)
+- [Tutorial: Erstellen eines benutzerdefinierten Sprachmodells](how-to-customize-language-model.md)

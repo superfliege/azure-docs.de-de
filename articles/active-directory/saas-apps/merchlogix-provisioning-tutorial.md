@@ -17,10 +17,10 @@ ms.date: 03/27/2019
 ms.author: zhchia
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c8fecc5232b26c98c4027174454cf29b81b0ee41
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59263593"
 ---
 # <a name="tutorial-configure-merchlogix-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von MerchLogix f체r die automatische Benutzerbereitstellung
@@ -42,7 +42,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 Bevor Sie MerchLogix f체r die automatische Benutzerbereitstellung mit Azure AD konfigurieren, m체ssen Sie MerchLogix aus dem Azure AD-Anwendungskatalog der Liste der verwalteten SaaS-Anwendungen hinzuf체gen.
 
-**F체hren Sie die folgenden Schritte aus, um MerchLogix aus dem Azure AD-Anwendungskatalog hinzuzuf체gen:**
+**F체hren Sie zum Hinzuf체gen von MerchLogix aus dem Azure AD-Anwendungskatalog die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol f체r **Azure Active Directory**. 
 

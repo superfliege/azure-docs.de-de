@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: anroth
 ms.openlocfilehash: 6fac6531ea0a39796de13f95aee33b30dc91f131
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59274449"
 ---
 # <a name="how-to-move-your-limited-trial-project-to-azure"></a>Verschieben Ihres Projekts aus der eingeschränkten Testversion in Azure
@@ -33,7 +33,7 @@ Das [Migrationsskript](https://github.com/Azure-Samples/custom-vision-move-proje
     - Wenn Sie noch nicht über ein Azure-Konto verfügen, [erstellen Sie ein Konto](https://azure.microsoft.com/free/) kostenlos.
     - Eine Einführung zu den Konzepten der Abonnements und Ressourcen bei Azure finden Sie im [Handbuch für Entwickler in Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#manage-your-subscriptions).
 -  [Python](https://www.python.org/downloads/)
-- [pip](https://pip.pypa.io/en/stable/installing/)
+- [Pip](https://pip.pypa.io/en/stable/installing/)
 
 ## <a name="create-custom-vision-resources-in-the-azure-portal"></a>Erstellen von Custom Vision-Ressourcen im Azure-Portal
 

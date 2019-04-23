@@ -16,10 +16,10 @@ ms.topic: overview
 ms.date: 10/27/2017
 ms.author: gokuma
 ms.openlocfilehash: 74fe2345af5d1249d6704c7560b42323561bc623
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918245"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Einführung in Azure Data Science Virtual Machine für Linux und Windows
@@ -66,7 +66,7 @@ Der virtuelle Computer für Data Science hat viele beliebte Data Science- und De
 | Relationale Datenbanken                                                            | [SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition| [PostgreSQL](https://www.postgresql.org/) (CentOS),<br/>[SQL Server 2017](https://www.microsoft.com/sql-server/sql-server-2017) <br/> Developer Edition (Ubuntu) |
 | Datenbanktools                                                       | * SQL Server Management Studio <br/>* SQL Server Integration Services<br/>* [bcp, sqlcmd](https://docs.microsoft.com/sql/tools/command-prompt-utility-reference-database-engine)<br /> * ODBC/JDBC-Treiber| * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/) (Abfrage-Tool), <br /> * bcp, sqlcmd <br /> * ODBC/JDBC-Treiber|
 | Skalierbare In-Database-Analyse mit SQL Server-ML-Diensten (R, Python) | J     |N              |
-| **[Jupyter Notebook-Server](https://jupyter.org/) mit folgenden Kernels**                                  | J     | J |
+| **[Jupyter-Notebook-Server](https://jupyter.org/) mit folgenden Kernels,**                                  | J     | J |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* R | J | J |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* Python | J | J |
 |     &nbsp;&nbsp;&nbsp;&nbsp;* Julia | J | J |
@@ -100,7 +100,7 @@ Der virtuelle Computer für Data Science hat viele beliebte Data Science- und De
 | &nbsp;&nbsp;&nbsp;&nbsp;* [Microsoft-Datenverwaltungsgateway:](https://msdn.microsoft.com/library/dn879362.aspx) Verschieben von Daten zwischen lokalen Quellen und der Cloud | J | N |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Unix/Linux-Befehlszeilenprogramme | J | J |
 | [Apache Drill](https://drill.apache.org) für das Durchsuchen von Daten | J | J |
-| **Machine Learning-Tools** |||
+| **Tools für maschinelles Lernen** |||
 | &nbsp;&nbsp;&nbsp;&nbsp;* Integration mit [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) (R, Python) | J | J |
 | &nbsp;&nbsp;&nbsp;&nbsp;*   [Xgboost](https://github.com/dmlc/xgboost) | J | J |
 | &nbsp;&nbsp;&nbsp;&nbsp;*   [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit) | J | J |
@@ -125,7 +125,7 @@ Der virtuelle Computer für Data Science hat viele beliebte Data Science- und De
 | &nbsp;&nbsp;&nbsp;&nbsp;* [TensorFlow Serving](https://www.tensorflow.org/serving/) | N | J |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [TensorRT](https://developer.nvidia.com/tensorrt) | N | J |
 | &nbsp;&nbsp;&nbsp;&nbsp;* [CUDA, cuDNN, NVIDIA-Treiber](https://developer.nvidia.com/cuda-toolkit) | J | J |
-| **Big Data-Plattform (nur Devtest)**|||
+| **Big Data Platform (nur Devtest)**|||
 | &nbsp;&nbsp;&nbsp;&nbsp;* Lokale [Spark](https://spark.apache.org/)-Instanz | J | J |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Lokale [Hadoop](https://hadoop.apache.org/) (HDFS, YARN) | N | J |
 

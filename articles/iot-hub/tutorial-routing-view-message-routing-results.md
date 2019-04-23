@@ -10,10 +10,10 @@ ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: 1417ecdaf6a85f491e1accfb9564e27d15e13445
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59045832"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Tutorial: Teil 2: Anzeigen der weitergeleiteten Nachrichten
@@ -292,12 +292,12 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 In diesem zweiteiligen Tutorial haben Sie erfahren, wie Sie die Nachrichtenweiterleitung verwenden, um IoT Hub-Nachrichten an verschiedene Ziele weiterzuleiten. Hierfür haben Sie folgende Aufgaben durchgeführt.  
 
-**Teil I: Erstellen von Ressourcen, Einrichten des Nachrichtenroutings**
+**Teil 1: Erstellen von Ressourcen, Einrichten des Nachrichtenroutings**
 > [!div class="checklist"]
 > * Sie erstellen die Ressourcen: einen IoT-Hub, ein Speicherkonto, eine Service Bus-Warteschlange und ein simuliertes Gerät.
 > * Sie konfigurieren die Endpunkte und Nachrichtenrouten in IoT Hub für das Speicherkonto und die Service Bus-Warteschlange.
 
-**Teil II: Senden von Nachrichten an den Hub, Anzeigen von Routingergebnissen**
+**Teil 2: Senden von Nachrichten an den Hub, Anzeigen von Routingergebnissen**
 > [!div class="checklist"]
 > * Sie erstellen eine Logik-App, die ausgelöst wird und eine E-Mail sendet, wenn der Service Bus-Warteschlange eine Nachricht hinzugefügt wird.
 > * Sie laden eine App herunter und führen sie aus, die ein IoT-Gerät simuliert, das für die verschiedenen Weiterleitungsoptionen Nachrichten an den Hub sendet.
@@ -310,4 +310,4 @@ In diesem zweiteiligen Tutorial haben Sie erfahren, wie Sie die Nachrichtenweite
 Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie den Status eines IoT-Geräts verwalten. 
 
 > [!div class="nextstepaction"]
-> [Einrichten und Verwenden von Metriken und Diagnoseprotokollen mit einem IoT Hub](tutorial-use-metrics-and-diags.md)
+> [Tutorial: Set up and use metrics and diagnostic logs with an IoT hub](tutorial-use-metrics-and-diags.md) (Einrichten und Verwenden von Metriken und Diagnoseprotokollen mit einem IoT-Hub)

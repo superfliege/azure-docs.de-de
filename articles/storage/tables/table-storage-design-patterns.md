@@ -9,10 +9,10 @@ ms.date: 04/08/2019
 ms.author: tamram
 ms.subservice: tables
 ms.openlocfilehash: a428abd95f955a16d03c4ab86f05644f6db65da5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59271627"
 ---
 # <a name="table-design-patterns"></a>Entwurfsmuster für die Tabelle
@@ -125,7 +125,7 @@ Verwenden Sie dieses Muster, wenn Ihre Clientanwendung Entitäten abrufen muss, 
 ### <a name="related-patterns-and-guidance"></a>Zugehörige Muster und Anleitungen
 Die folgenden Muster und Anleitungen können auch relevant sein, wenn dieses Muster implementiert wird:  
 
-* [Eventual Consistency-Transaktionsmuster](#eventually-consistent-transactions-pattern)  
+* [Eventual Consistency Transaktionsmuster](#eventually-consistent-transactions-pattern)  
 * [Sekundäres Indexmuster für Intra-Partition](#intra-partition-secondary-index-pattern)  
 * [Zusammengesetzte Schlüsselmuster](#compound-key-pattern)  
 * Entitätsgruppentransaktionen  
@@ -197,7 +197,7 @@ Um die Suche nach dem Nachnamen mit der oben dargestellten Entitätsstruktur zu 
 * Erstellen von Index-Entitäten in der gleichen Partition wie für die Mitarbeiterentitäten.  
 * Erstellen von Index-Entitäten in einer separaten Partition oder Tabelle.  
 
-<u>Option 1: Verwenden von Blob Storage</u>  
+<u>Option 1: Verwenden von Blobspeicher</u>  
 
 Für die erste Option erstellen Sie ein Blob für jeden eindeutigen Nachnamen und speichern in jedem Blob eine Liste mit den Werten **PartitionKey** (Abteilung) und **RowKey** (Mitarbeiter-ID) für die Mitarbeiter mit diesem Nachnamen. Beim Hinzufügen oder Löschen eines Mitarbeiters sollten Sie sicherstellen, dass der Inhalt des relevanten Blob mit den Mitarbeiterentitäten Eventually Consistent ist.  
 
@@ -250,7 +250,7 @@ Verwenden Sie dieses Muster, wenn Sie eine Reihe von Entitäten nachschlagen mö
 Die folgenden Muster und Anleitungen können auch relevant sein, wenn dieses Muster implementiert wird:  
 
 * [Zusammengesetzte Schlüsselmuster](#compound-key-pattern)  
-* [Eventual Consistency-Transaktionsmuster](#eventually-consistent-transactions-pattern)  
+* [Eventual Consistency Transaktionsmuster](#eventually-consistent-transactions-pattern)  
 * Entitätsgruppentransaktionen  
 * [Arbeiten mit heterogenen Entitätstypen](#working-with-heterogeneous-entity-types)  
 
@@ -327,7 +327,7 @@ Die folgenden Muster und Anleitungen können auch relevant sein, wenn dieses Mus
 
 * Entitätsgruppentransaktionen  
 * [Arbeiten mit heterogenen Entitätstypen](#working-with-heterogeneous-entity-types)  
-* [Eventual Consistency-Transaktionsmuster](#eventually-consistent-transactions-pattern)  
+* [Eventual Consistency Transaktionsmuster](#eventually-consistent-transactions-pattern)  
 
 ## <a name="log-tail-pattern"></a>Log Tail-Muster
 Abrufen der *n* Entitäten, die zuletzt einer Partition hinzugefügt wurden, indem Sie einen **RowKey** -Wert verwenden, mit dem nach Datum und Uhrzeit in umgekehrter Reihenfolge sortiert wird.  
@@ -480,7 +480,7 @@ Verwenden Sie dieses Muster, wenn Sie Entitäten speichern müssen, deren Größ
 ### <a name="related-patterns-and-guidance"></a>Zugehörige Muster und Anleitungen
 Die folgenden Muster und Anleitungen können auch relevant sein, wenn dieses Muster implementiert wird:  
 
-* [Eventual Consistency-Transaktionsmuster](#eventually-consistent-transactions-pattern)  
+* [Eventual Consistency Transaktionsmuster](#eventually-consistent-transactions-pattern)  
 * [Breite Entitätenmuster](#wide-entities-pattern)
 
 <a name="prepend-append-anti-pattern"></a>

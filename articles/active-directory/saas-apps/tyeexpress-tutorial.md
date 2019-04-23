@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: d3459f7bcfc0e2e61cb55b38a05b7b6a21ea3e9e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59283510"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>Tutorial: Azure Active Directory-Integration mit T&E Express
@@ -51,7 +51,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Konfigurieren der Integration von T&E Express in Azure AD müssen Sie T&E Express aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie die folgenden Schritte aus, um T&E Express aus dem Katalog hinzuzufügen:**
+**Um T&amp;E Express aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -105,7 +105,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit T&E Exp
 
     ![SSO-Informationen zur Domäne und zu den URLs für T&E Express](common/idp-intiated.png)
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<domain>.tyeexpress.com`
+    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<domain>.tyeexpress.com`.
 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<domain>.tyeexpress.com/authorize/samlConsume.aspx`
 
@@ -195,7 +195,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 Damit sich Azure AD-Benutzer bei T&E Express anmelden können, müssen sie in T&E Express bereitgestellt werden. Im Fall von T&E Express ist die Bereitstellung eine manuelle Aufgabe.
 
-**So stellen Sie Benutzerkonten bereit:**
+**Führen Sie zum Bereitstellen von Benutzerkonten die folgenden Schritte aus:**
 
 1. Melden Sie sich bei der T&E Express-Unternehmenswebsite als Administrator an.
 

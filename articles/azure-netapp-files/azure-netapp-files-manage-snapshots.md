@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: b-juche
 ms.openlocfilehash: 01387d0c219c86f33762b9c3fbf9f81cf04b4455
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58880813"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Verwalten von Momentaufnahmen mithilfe von Azure NetApp Files
@@ -53,13 +53,13 @@ Derzeit können Sie eine Momentaufnahme nur auf einem neuen Volume wiederherstel
     ![Wiederherstellen von Momentaufnahme auf neuem Volume](../media/azure-netapp-files/azure-netapp-files-snapshot-restore-to-new-volume.png)
 
 4. Geben Sie im Fenster „Neues Volume“ die folgenden Informationen für das neue Volume an:  
-    * **NAME**   
+    * **Name**   
         Geben Sie den Namen für das Volume an, das Sie erstellen möchten.  
         
         Der Name muss innerhalb einer Ressourcengruppe eindeutig sein. Er muss mindestens drei Zeichen lang sein.  Er darf beliebige alphanumerische Zeichen enthalten.
 
     * **Dateipfad**     
-        Geben Sie den Dateipfad zum Erstellen des Exportpfads für das neue Volume an. Der Exportpfad dient zum Einbinden und Zugreifen auf das Volume.   
+        Geben Sie den Dateipfad an, der zum Erstellen des Exportpfads für das neue Volume verwendet wird. Der Exportpfad dient zum Einbinden und Zugreifen auf das Volume.   
         
         Das Einbindungsziel ist der Endpunkt der IP-Adresse des NFS-Diensts. Es wird automatisch generiert.   
         

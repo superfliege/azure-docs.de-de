@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 02091f1b650e3e9932f9924bf36a5841861d3b1e
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58876954"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Dateisystemvorgänge in Azure Data Lake Storage Gen1 mit dem .NET SDK
 > [!div class="op_single_selector"]
 > * [.NET SDK](data-lake-store-data-operations-net-sdk.md)
-> * [Java-SDK](data-lake-store-get-started-java-sdk.md)
+> * [Java SDK](data-lake-store-get-started-java-sdk.md)
 > * [REST-API](data-lake-store-data-operations-rest-api.md)
 > * [Python](data-lake-store-data-operations-python.md)
 >
@@ -59,8 +59,8 @@ Das auf [GitHub](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-g
    2. Stellen Sie auf der Registerkarte **NuGet-Paket-Manager** sicher, dass **Paketquelle** auf **nuget.org** festgelegt und das Kontrollkästchen **Vorabversion einbeziehen** aktiviert ist.
    3. Suchen und installieren Sie die folgenden NuGet-Pakete:
 
-      * `Microsoft.Azure.DataLake.Store` – In diesem Tutorial wird „v1.0.0“ verwendet.
-      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` – In diesem Tutorial wird „v2.3.1“ verwendet.
+      * `Microsoft.Azure.DataLake.Store`: In diesem Tutorial wird „v1.0.0“ verwendet.
+      * `Microsoft.Rest.ClientRuntime.Azure.Authentication`: In diesem Tutorial wird „v2.3.1“ verwendet.
     
       Schließen Sie den **NuGet-Paket-Manager**.
 

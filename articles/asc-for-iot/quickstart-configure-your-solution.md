@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 64a04861b14e48eaa14a369546dd9d54bf59f019
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58861920"
 ---
 # <a name="quickstart-configure-your-iot-solution"></a>Schnellstart: Konfigurieren Ihrer IoT-Lösung
@@ -61,4 +61,4 @@ ASC für IoT überwacht nun die neu hinzugefügten Ressourcen und zeigt relevant
 Im nächsten Artikel erfahren Sie, wie Sie Sicherheitsmodule erstellen:
 
 > [!div class="nextstepaction"]
-> [Erstellen von Sicherheitsmodulen](quickstart-create-security-twin.md)
+> [Quickstart: Create an azureiotsecurity module twin](quickstart-create-security-twin.md) (Schnellstart: Erstellen eines azureiotsecurity-Modulzwillings)

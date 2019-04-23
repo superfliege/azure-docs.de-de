@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 82301a17bb461b6d8733d5f046fe791ffbcf3ecb
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885705"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Verwenden von Service Bus aus .NET mit AMQP 1.0
@@ -76,7 +76,7 @@ Um die Interoperabilität mit Nicht-.NET-Clients zu erleichtern, verwenden Sie n
 | double |double |AMQP Value |
 | decimal |decimal128 |AMQP Value |
 | char |char |AMQP Value |
-| DateTime |timestamp |AMQP Value |
+| Datetime |timestamp |AMQP Value |
 | Guid |uuid |AMQP Value |
 | Byte[] |binary |AMQP Value |
 | Zeichenfolge |Zeichenfolge |AMQP Value |
@@ -117,7 +117,7 @@ Die [.NET-APIs](/dotnet/api/) stellen mehrere Einstellungen zum Steuern des Verh
 Möchten Sie mehr erfahren? Nutzen Sie die folgenden Links:
 
 * [Übersicht über Service Bus AMQP]
-* [Leitfaden zum AMQP 1.0-Protokoll]
+* [AMQP 1.0 – Protokollleitfaden]
 
 [Create a Service Bus namespace using the Azure portal]: service-bus-create-namespace-portal.md
 [DataContractSerializer]: https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer.aspx
@@ -127,5 +127,5 @@ Möchten Sie mehr erfahren? Nutzen Sie die folgenden Links:
 [NuGet]: https://nuget.org/packages/WindowsAzure.ServiceBus/
 [Azure portal]: https://portal.azure.com
 [Übersicht über Service Bus AMQP]: service-bus-amqp-overview.md
-[Leitfaden zum AMQP 1.0-Protokoll]: service-bus-amqp-protocol-guide.md
+[AMQP 1.0 – Protokollleitfaden]: service-bus-amqp-protocol-guide.md
 

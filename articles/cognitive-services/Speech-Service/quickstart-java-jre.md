@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: fmegen
 ms.openlocfilehash: fe565d63e72b5ec2798dde03ba4f4bd9ff4f48a7
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59009398"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>Schnellstart: Erkennen von Sprache mit dem Speech-SDK für Java
@@ -31,7 +31,7 @@ In diesem Artikel erstellen Sie eine Java-Konsolenanwendung mit dem [Speech SDK]
 Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
 * Betriebssystem: Windows (64 Bit), Ubuntu Linux 16.04/18.04 (64 Bit) oder macOS (ab Version 10.13)
-* [Eclipse Java-IDE](https://www.eclipse.org/downloads/)
+* [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) oder [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * Ein Azure-Abonnementschlüssel für den Speech-Dienst. [Hier können Sie den Schlüssel kostenlos erhalten](get-started.md).
 
@@ -43,7 +43,7 @@ sudo apt-get install build-essential libssl1.0.0 libasound2 wget
 ```
 
 Vergewissern Sie sich bei Verwendung von Windows (64 Bit), dass Microsoft Visual C++ Redistributable für Ihre Plattform installiert ist.
-* [Microsoft Visual C++ Redistributable für Visual Studio 2017 herunterladen](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
+* [Microsoft Visual C++ Redistributable für Visual Studio 2017 herunterladen](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
 
 
 ## <a name="create-and-configure-project"></a>Erstellen und Konfigurieren des Projekts
@@ -85,5 +85,5 @@ Weitere Beispiele, z.B. das Auslesen von Sprache aus einer Audiodatei, sind auf 
 ## <a name="see-also"></a>Weitere Informationen
 
 - [Schnellstart: Übersetzen von Sprache, Java (Windows, Linux)](quickstart-translate-speech-java-jre.md)
-- [Anpassen von Akustikmodellen](how-to-customize-acoustic-models.md)
-- [Anpassen von Sprachmodellen](how-to-customize-language-model.md)
+- [Tutorial: Erstellen eines benutzerdefinierten Akustikmodells](how-to-customize-acoustic-models.md)
+- [Tutorial: Erstellen eines benutzerdefinierten Sprachmodells](how-to-customize-language-model.md)

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2018
 ms.author: magoedte
 ms.openlocfilehash: 40f0705cfa7f0e9bb45d300a629adebd0cc5be47
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883671"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>Problembehandlung für die Log Analytics-VM-Erweiterung in Azure Monitor
@@ -42,19 +42,19 @@ Um den Status der Erweiterung zu überprüfen, führen Sie im Azure-Portal die f
 Wenn die VM-Erweiterung *MicrosoftMonitoringAgent* nicht installiert ist oder keine Berichte erstellt, können Sie die folgenden Schritte ausführen, um das Problem zu beheben.
 
 1. Überprüfen Sie, ob der Azure-VM-Agent installiert ist und ordnungsgemäß funktioniert, indem Sie die Schritte unter [KB 2965986](https://support.microsoft.com/kb/2965986#mt1) ausführen.
-   * Sie können auch die folgende Protokolldatei des VM-Agents überprüfen: `C:\WindowsAzure\logs\WaAppAgent.log`
+   * Sie können auch die Protokolldatei `C:\WindowsAzure\logs\WaAppAgent.log` des VM-Agents überprüfen.
    * Wenn das Protokoll nicht vorhanden ist, wurde der VM-Agent nicht installiert.
    * [Installieren des Azure-VM-Agents](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
 2. Vergewissern Sie sich anhand der folgenden Schritte, dass die Taktaufgabe der Microsoft Monitoring Agent-Erweiterung ausgeführt wird:
    * Melden Sie sich beim virtuellen Computer an.
    * Öffnen Sie den Taskplaner, und suchen Sie die Aufgabe `update_azureoperationalinsight_agent_heartbeat`.
    * Vergewissern Sie sich, dass die Aufgabe aktiviert ist und jede Minute ausgeführt wird.
-   * Überprüfen Sie die Taktprotokolldatei in `C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\heartbeat.log`
-3. Überprüfen Sie die Protokolldateien der Microsoft Monitoring Agent-VM-Erweiterung in `C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent`
+   * Überprüfen Sie die Taktprotokolldatei in `C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\heartbeat.log`.
+3. Überprüfen Sie die Protokolldateien der Microsoft Monitoring Agent-VM-Erweiterung in `C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent`.
 4. Stellen Sie sicher, dass der virtuelle Computer PowerShell-Skripts ausführen kann.
 5. Vergewissern Sie sich, dass die Berechtigungen für „C:\Windows\temp“ nicht geändert wurden.
-6. Zeigen Sie den Status des Microsoft Monitoring Agents an, indem Sie Folgendes in einem PowerShell-Fenster mit erhöhten Rechten auf dem virtuellen Computer eingeben: `(New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`
-7. Überprüfen Sie die Setupprotokolldateien des Microsoft Monitoring Agents in `C:\Windows\System32\config\systemprofile\AppData\Local\SCOM\Logs`
+6. Zeigen Sie den Status des Microsoft Monitoring Agents an, indem Sie Folgendes in einem PowerShell-Fenster mit erhöhten Rechten auf dem virtuellen Computer eingeben: `(New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`.
+7. Überprüfen Sie die Setupprotokolldateien des Microsoft Monitoring Agents in `C:\Windows\System32\config\systemprofile\AppData\Local\SCOM\Logs`.
 
 Weitere Informationen finden Sie unter [Behandeln von Problemen bei Windows-Erweiterungen](../../virtual-machines/extensions/oms-windows.md).
 
@@ -62,11 +62,11 @@ Weitere Informationen finden Sie unter [Behandeln von Problemen bei Windows-Erwe
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 Wenn die VM-Erweiterung *Log Analytics-Agent für Linux* nicht installiert ist oder keine Berichte erstellt, können Sie die folgenden Schritte ausführen, um das Problem zu beheben.
 
-1. Wenn der Status der Erweiterung *Unbekannt* lautet, überprüfen Sie, ob der Azure-VM-Agent installiert ist und ordnungsgemäß funktioniert. Dazu überprüfen Sie die Protokolldatei des VM-Agents: `/var/log/waagent.log`
+1. Wenn der Status der Erweiterung *Unbekannt* lautet, überprüfen Sie, ob der Azure-VM-Agent installiert ist und ordnungsgemäß funktioniert. Dazu überprüfen Sie die Protokolldatei des VM-Agents: `/var/log/waagent.log`.
    * Wenn das Protokoll nicht vorhanden ist, wurde der VM-Agent nicht installiert.
    * [Installieren des Azure-VM-Agents auf Linux-VMs](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
-2. Bei einem anderen fehlerhaften Status sollten Sie die Protokolldateien der VM-Erweiterung Log Analytics-Agent für Linux in folgenden Verzeichnissen überprüfen: `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` und `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log`
-3. Wenn der Status der Erweiterung fehlerfrei ist, aber keine Daten hochgeladen werden, sollten Sie die Protokolldateien des Log Analytics-Agents für Linux im folgenden Verzeichnis überprüfen: `/var/opt/microsoft/omsagent/log/omsagent.log`
+2. Bei einem anderen fehlerhaften Status sollten Sie die Protokolldateien der VM-Erweiterung Log Analytics-Agent für Linux in `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` und `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log` überprüfen.
+3. Wenn der Status der Erweiterung fehlerfrei ist, aber keine Daten hochgeladen werden, sollten Sie Protokolldateien des Log Analytics-Agents für Linux in `/var/opt/microsoft/omsagent/log/omsagent.log` überprüfen.
 
 Weitere Informationen finden Sie unter [Behandeln von Problemen bei Linux-Erweiterungen](../../virtual-machines/extensions/oms-linux.md).
 

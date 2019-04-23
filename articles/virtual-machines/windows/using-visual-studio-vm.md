@@ -17,10 +17,10 @@ ms.date: 04/02/2019
 ms.author: phillee
 keywords: visualstudio
 ms.openlocfilehash: df91ba12c1ee74b8e28f75344a5cd55af018d3cd
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58884872"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio-Images in Azure
@@ -97,7 +97,7 @@ Das Spektrum der Entwicklungsumgebungen ist unüberschaubar, und für den Ausbau
 
 Kurze Zusammenfassung: Verwenden Sie das Tool für die Systemvorbereitung (Sysprep), und fahren Sie die ausgeführte VM herunter. Erfassen Sie die VM *(Abbildung 1)* anschließend über die Benutzeroberfläche des Azure-Portals als Image. Azure speichert die Datei `.vhd` mit dem Image im Speicherkonto Ihrer Wahl. Anschließend wird das neue Image als Imageressource in der Liste der Ressourcen Ihres Abonnements angezeigt.
 
-<img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center>*(Abbildung 1) Erfassen eines Images über die Benutzeroberfläche des Azure-Portals.*</center>
+<img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center>*Abbildung 1: Erfassen eines Images über die Benutzeroberfläche des Azure-Portals*</center>
 
 Weitere Informationen finden Sie unter [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](/azure/virtual-machines/windows/capture-image-resource).
 

@@ -9,10 +9,10 @@ ms.date: 10/23/2018
 ms.author: wgries
 ms.subservice: files
 ms.openlocfilehash: 9d7162eca3c2979b1dd333bdaf95c7c43e875b9d
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59049148"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>Tutorial: Erweitern von Windows-Dateiservern mit der Azure-Dateisynchronisierung
@@ -220,10 +220,10 @@ Für die Bereitstellung der Azure-Dateisynchronisierung platzieren Sie zuerst ei
 
    | Wert | BESCHREIBUNG |
    | ----- | ----- |
-   | **NAME** | Ein eindeutiger Name (pro Abonnement) für den Speichersynchronisierungsdienst.<br><br>Verwenden Sie für dieses Tutorial _afssyncservice02_. |
+   | **Name** | Ein eindeutiger Name (pro Abonnement) für den Speichersynchronisierungsdienst.<br><br>Verwenden Sie für dieses Tutorial _afssyncservice02_. |
    | **Abonnement** | Das Azure-Abonnement, das Sie für dieses Tutorial verwenden. |
    | **Ressourcengruppe** | Die Ressourcengruppe, die den Speichersynchronisierungsdienst enthält.<br><br>Verwenden Sie für dieses Tutorial _afsresgroup101918_. |
-   | **Standort** | USA (Ost) |
+   | **Location** | USA (Ost) |
 
 1. Wenn Sie fertig sind, können Sie **Erstellen** wählen, um den **Speichersynchronisierungsdienst** bereitzustellen.
 1. Wählen Sie die Registerkarte **Benachrichtigungen** und dann **Zu Ressource wechseln**.
@@ -253,7 +253,7 @@ Sie haben den Azure-Synchronisierungsdienst bereitgestellt und den Agent auf der
 
 Durch das Registrieren des Windows-Servers bei einem Speichersynchronisierungsdienst wird eine Vertrauensstellung zwischen dem Server (oder Cluster) und dem Speichersynchronisierungsdienst geschaffen. Ein Server kann jeweils nur für einen Speichersynchronisierungsdienst registriert sein. Er kann mit anderen Servern und Azure-Dateifreigaben synchronisiert werden, die diesem Speichersynchronisierungsdienst zugeordnet sind.
 
-Die Benutzeroberfläche der Serverregistrierung sollte sich automatisch öffnen, nachdem Sie den Azure-Dateisynchronisierungs-Agent installiert haben. Wenn dies nicht der Fall ist, können Sie sie aus ihrem Dateispeicherort manuell öffnen: `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.`
+Die Benutzeroberfläche der Serverregistrierung sollte sich automatisch öffnen, nachdem Sie den Azure-Dateisynchronisierungs-Agent installiert haben. Wenn dies nicht der Fall ist, können Sie sie über den entsprechenden Dateispeicherort manuell öffnen: `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.`.
 
 1. Wählen Sie **OK**, wenn die Benutzeroberfläche für die Serverregistrierung auf dem virtuellen Computer geöffnet wird.
 1. Wählen Sie **Anmelden**, um zu beginnen.
@@ -308,9 +308,9 @@ Ein Serverendpunkt stellt einen bestimmten Speicherort auf einem registrierten S
    | ----- | ----- |
    | Wert | BESCHREIBUNG |
    | **Registrierter Server** | Der Name des Servers, den Sie erstellt haben. Verwenden Sie *afsvm101918* für dieses Tutorial. |
-   | **path** | Der Windows Server-Pfad zum Laufwerk, das Sie erstellt haben. Verwenden Sie *f:\filestosync* für dieses Tutorial. |
+   | **Path** | Der Windows Server-Pfad zum Laufwerk, das Sie erstellt haben. Verwenden Sie *f:\filestosync* für dieses Tutorial. |
    | **Cloudtiering** | Lassen Sie diese Option für dieses Tutorial deaktiviert. |
-   | **Freier Speicherplatz auf Volume** | Lassen Sie diese Option für dieses Tutorial leer. |
+   | **Freier Volumespeicherplatz** | Lassen Sie diese Option für dieses Tutorial leer. |
 
 1. Klicken Sie auf **Erstellen**.
 

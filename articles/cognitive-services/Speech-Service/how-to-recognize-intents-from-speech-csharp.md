@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
 ms.openlocfilehash: 9a00dfd1186d19ce9432db8e636bffa40eb977af
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59280535"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Tutorial: Erkennen von Absichten anhand von gesprochener Sprache mit dem Speech SDK für C#
@@ -133,7 +133,7 @@ Importieren Sie nun das Modell aus der LUIS-App mit `LanguageUnderstandingModel.
 
 Für das Hinzufügen von Absichten sind drei Argumente erforderlich: das zuvor erstellte LUIS-Modell `model`, der Absichtsname und eine Absichts-ID. Der Unterschied zwischen der ID und dem Namen ist wie folgt.
 
-|`AddIntent()` Argument|Zweck|
+|`AddIntent()`-Argument|Zweck|
 |--------|-------|
 |intentName |Der Name der Absicht, wie in der LUIS-App definiert. Muss genau mit dem Namen der LUIS-Absicht übereinstimmen.|
 |intentID    |Eine ID, die vom Speech SDK einer erkannten Absicht zugewiesen wird. Kann beliebig sein und muss nicht dem Absichtsnamen entsprechen, wie er in der LUIS-App definiert ist. Wenn beispielsweise mehrere Absichten von demselben Code verarbeitet werden, können Sie für sie die gleiche ID verwenden.|

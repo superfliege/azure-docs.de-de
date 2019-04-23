@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: d02ec23e7e6ce936fdbcce63d1394e3a8681c65b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59268635"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>Tutorial: Azure Active Directory-Integration mit Silverback
@@ -107,7 +107,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<YOURSILVERBACKURL>.com/ssp`
 
-    b. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: `<YOURSILVERBACKURL>.com`
+    b. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: `<YOURSILVERBACKURL>.com`.
 
     c. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<YOURSILVERBACKURL>.com/sts/authorize/login`
 

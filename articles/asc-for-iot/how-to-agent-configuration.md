@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 1e212e752309fd8347836d462a3394da2fca4a15
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862776"
 ---
 # <a name="tutorial-configure-security-agents"></a>Tutorial: Konfigurieren von Sicherheits-Agents
@@ -138,6 +138,6 @@ Standardwerte sind im entsprechenden Schema auf [GitHub](https://aka.ms/iot-secu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Grundlegendes zu ASC für IoT-Empfehlungen](concept-recommendations.md)
+- [ASC für IoT-Empfehlungen](concept-recommendations.md)
 - [Informationen zu ASC für IoT-Benachrichtigungen](concept-security-alerts.md)
-- [Zugreifen auf Sicherheitsrohdaten](how-to-security-data-access.md)
+- [Access raw security data (Zugreifen auf Sicherheitsrohdaten)](how-to-security-data-access.md)

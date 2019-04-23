@@ -10,10 +10,10 @@ ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 161d3ff3e00f7e9e979527533f6b8ac365c41490
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59265014"
 ---
 # <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-and-sample-data"></a>Schnellstart: Erstellen einer KI-basierten Indizierungspipeline unter Verwendung kognitiver Qualifikationen und Beispieldaten
@@ -183,4 +183,4 @@ Experimentieren Sie je nach Art der Bereitstellung der Cognitive Services-Ressou
 Alternativ können Sie die erstellten Beispieldaten und Dienste wiederverwenden und im nächsten Tutorial lernen, wie Sie diese Aufgaben programmgesteuert erledigen. 
 
 > [!div class="nextstepaction"]
-> [Tutorial: Aufrufen von Cognitive Services-APIs in einer Azure Search-Indizierungspipeline (Vorschau)](cognitive-search-tutorial-blob.md)
+> [Tutorial: Erlernen der REST-APIs für kognitive Suche](cognitive-search-tutorial-blob.md)

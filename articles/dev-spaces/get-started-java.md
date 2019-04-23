@@ -11,10 +11,10 @@ description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: mmontwil
 ms.openlocfilehash: b69a793d1d860bf2f2a4d52a92d4bea5cf903c0c
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426306"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-java"></a>Erste Schritte in Azure Dev Spaces mit Java
@@ -148,7 +148,7 @@ Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 > Bei Azure Dev Spaces geht es nicht nur um die Ausführung von Code in Kubernetes: Mit diesem Dienst sollen Codeänderungen in einer Kubernetes-Umgebung in der Cloud schnell und iterativ sichtbar gemacht werden.
 
 1. Drücken Sie im Terminalfenster `Ctrl+C` (zum Beenden von `azds up`).
-1. Öffnen Sie die Codedatei mit dem Namen `src/main/java/com/ms/sample/webfrontend/Application.java`, und bearbeiten Sie die Begrüßung: `return "Hello from webfrontend in Azure!";`
+1. Öffnen Sie die Codedatei mit dem Namen `src/main/java/com/ms/sample/webfrontend/Application.java`, und bearbeiten Sie die folgende Begrüßung: `return "Hello from webfrontend in Azure!";`
 1. Speichern Sie die Datei .
 1. Führen Sie `azds up` im Terminalfenster aus.
 

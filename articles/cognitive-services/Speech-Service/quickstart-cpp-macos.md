@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 04/03/2019
 ms.author: wolfma
 ms.openlocfilehash: be4c5d6187e6367ba04ce7debcc0701937e87ae9
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59012348"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-macos-by-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in C++ unter macOS mit dem Speech SDK
@@ -113,6 +113,6 @@ Laden Sie das SDK wie folgt herunter, und installieren Sie es:
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Anpassen von Akustikmodellen](how-to-customize-acoustic-models.md)
-- [Anpassen von Sprachmodellen](how-to-customize-language-model.md)
+- [Tutorial: Erstellen eines benutzerdefinierten Akustikmodells](how-to-customize-acoustic-models.md)
+- [Tutorial: Erstellen eines benutzerdefinierten Sprachmodells](how-to-customize-language-model.md)
 

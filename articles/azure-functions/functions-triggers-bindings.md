@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: 3865f748a9ca2fe09660d6454542d64f73a8e3c1
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58889837"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Konzepte für Azure Functions-Trigger und -Bindungen
@@ -72,8 +72,8 @@ Andere Optionen für `dataType` sind `stream` und `string`.
 
 Alle Trigger und Bindungen enthalten eine `direction`-Eigenschaft in der Datei [function.json](./functions-reference.md):
 
-- Für Trigger ist die Richtung immer gleich `in`
-- Für Eingabe- und Ausgabebindungen werden verwendet `in` und `out`
+- Für Trigger ist die Richtung immer gleich `in`.
+- Für Eingabe- und Ausgabebindungen werden `in` und `out` verwendet.
 - Einige Bindungen unterstützen die spezielle Richtung `inout`. Wenn Sie `inout` verwenden, ist nur **Erweiterter Editor** auf der Registerkarte **Integrieren** im Portal verfügbar.
 
 Wenn Sie zum Konfigurieren von Triggern und Bindungen [Attribute in einer Klassenbibliothek](functions-dotnet-class-library.md) verwenden, wird die Richtung in einem Attributkonstruktor angegeben oder aus dem Parametertyp abgeleitet.
@@ -87,7 +87,7 @@ Informationen darüber, welche Bindungen sich in der Vorschauversion befinden od
 ## <a name="resources"></a>Ressourcen
 - [Bindungsausdrücke und Muster](./functions-bindings-expressions-patterns.md)
 - [Verwenden des Rückgabewerts einer Azure-Funktion](./functions-bindings-return-value.md)
-- [Registrieren eines Bindungsausdrucks](./functions-bindings-register.md)
+- [Vorgehensweise: Registrieren eines Bindungsausdrucks](./functions-bindings-register.md)
 - Test:
   - [Strategien zum Testen Ihres Codes in Azure Functions](functions-test-a-function.md)
   - [Manuelles Ausführen einer Funktion ohne HTTP-Trigger](functions-manually-run-non-http.md)

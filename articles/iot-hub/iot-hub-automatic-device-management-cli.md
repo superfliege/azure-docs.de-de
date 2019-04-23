@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: chrisgre
 ms.openlocfilehash: 0302146634904ccf1d87220d3a24553149e10372
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59011557"
 ---
 # <a name="automatic-iot-device-management-at-scale-using-the-azure-cli"></a>Automatische bedarfsgerechte Geräteverwaltung über die Azure CLI
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
-Die automatische Geräteverwaltung in Azure IoT Hub automatisiert viele der repetitiven und komplexen Aufgaben im Zusammenhang mit der Verwaltung eines umfangreichen Gerätebestands. Mit der automatischen Geräteverwaltung können Sie eine Gruppe von Geräten auf der Grundlage ihrer Eigenschaften als Ziel festlegen, eine gewünschte Konfiguration definieren und dann IoT Hub die Geräte aktualisieren lassen, wenn sie in den entsprechenden Bereich fallen. Diese Aktualisierung erfolgt mithilfe einer _automatischen Gerätekonfiguration_, mit der Sie die Fertigstellung und Compliance zusammenfassen, Zusammenführung und Konflikte verarbeiten sowie Konfigurationen gestaffelt einführen können.
+Die automatische Geräteverwaltung in Azure IoT Hub automatisiert viele der repetitiven und komplexen Aufgaben im Zusammenhang mit der Verwaltung eines umfangreichen Gerätebestands. Mit der automatischen Geräteverwaltung können Sie eine Gruppe von Geräten auf der Grundlage ihrer Eigenschaften als Ziel festlegen, eine gewünschte Konfiguration definieren und dann IoT Hub die Geräte aktualisieren lassen, wenn sie in den entsprechenden Bereich fallen. Diese Aktualisierung erfolgt mithilfe einer _automatischen Gerätekonfiguration_, mit der Sie die Fertigstellung und Compliance zusammenfassen, Zusammenführung und Konflikte verarbeiten und Konfigurationen gestaffelt einführen können.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -99,11 +99,11 @@ Verwenden Sie den folgenden Befehl, um eine Konfiguration zu erstellen:
 
 * --**config-id**: Der Name der Konfiguration, die im IoT Hub erstellt werden soll. Geben Sie Ihrer Konfiguration einen eindeutigen Namen, der bis zu 128 Kleinbuchstaben umfasst. Verwenden Sie dabei weder Leerzeichen noch die folgenden ungültigen Zeichen: `& ^ [ ] { } \ | " < > /`.
 
-* --**labels**: Fügen Sie Bezeichnungen hinzu, um Ihre Konfigurationen im Blick zu behalten. Bezeichnungen sind Name-Wert-Paare, die Ihre Bereitstellung beschreiben. Beispielsweise `HostPlatform, Linux` oder `Version, 3.0.1`
+* --**labels**: Fügen Sie Bezeichnungen hinzu, um Ihre Konfigurationen im Blick zu behalten. Bezeichnungen sind Name-Wert-Paare, die Ihre Bereitstellung beschreiben. Beispiel: `HostPlatform, Linux` oder `Version, 3.0.1`
 
 * --**content**: Inline-JSON-Code oder Dateipfad zum Zielinhalt, der als gewünschte Eigenschaften des Gerätezwillings festgelegt werden soll. 
 
-* --**hub-name**: Der Name des IoT Hubs, in dem die Konfiguration erstellt werden soll. Der Hub muss aus dem aktuellen Abonnement stammen. Wechseln Sie zum gewünschten Abonnement mit dem Befehl `az account set -s [subscription name]`
+* --**hub-name**: Der Name des IoT Hubs, in dem die Konfiguration erstellt werden soll. Der Hub muss aus dem aktuellen Abonnement stammen. Wechseln Sie mit dem Befehl `az account set -s [subscription name]` zum gewünschten Abonnement.
 
 * --**target-condition**: Geben Sie eine Zielbedingung ein, um festzulegen, auf welche Geräte diese Konfiguration angewandt werden soll. Die Bedingung basiert auf den Gerätezwillingstags oder auf den gewünschten Eigenschaften des Gerätezwillings und muss dem Ausdrucksformat entsprechen. Beispiel: `tags.environment='test'` oder `properties.desired.devicemodel='4000x'`. 
 
@@ -122,7 +122,7 @@ az iot hub configuration show --config-id [configuration id] \
 
 * --**config-id**: Der Name der Konfiguration, die im IoT Hub vorhanden ist.
 
-* --**hub-name**: Der Name des IoT Hubs, in dem die Konfiguration vorhanden ist. Der Hub muss aus dem aktuellen Abonnement stammen. Wechseln Sie zum gewünschten Abonnement mit dem Befehl `az account set -s [subscription name]`
+* --**hub-name**: Der Name des IoT Hubs, in dem die Konfiguration vorhanden ist. Der Hub muss aus dem aktuellen Abonnement stammen. Wechseln Sie mit dem Befehl `az account set -s [subscription name]` zum gewünschten Abonnement.
 
 Überprüfen Sie die Konfiguration im Befehlsfenster. Die Eigenschaft **metrics** enthält eine Anzahl für jede Metrik, die von den einzelnen Hubs ausgewertet wird:
 
@@ -202,8 +202,8 @@ In diesem Artikel haben Sie erfahren, wie IoT-Geräte bedarfsgerecht konfigurier
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
-* [Entwicklerhandbuch für IoT Hub](iot-hub-devguide.md)
-* [Bereitstellen von KI auf Edgegeräten mit Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Entwicklungsleitfaden für IoT Hub](iot-hub-devguide.md)
+* [Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
 
 Informationen, die Sie beim Erforschen der Verwendung des IoT Hub Device Provisioning-Diensts für die Just-in-Time-Bereitstellung ohne Benutzereingriff unterstützen, finden Sie in: 
 

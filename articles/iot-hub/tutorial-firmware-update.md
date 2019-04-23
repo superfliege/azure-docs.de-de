@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 02/22/2019
 ms.custom: mvc
 ms.openlocfilehash: 1418a9815e155a0c491fc65b16307fa2755bd964
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59008901"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Tutorial: Implementieren eines Updateprozesses für die Gerätefirmware
@@ -117,8 +117,8 @@ Die Konfiguration enthält die folgenden Abschnitte:
 
 * `content` gibt die gewünschten Eigenschaften für die Firmware an, die an die ausgewählten Geräte gesendet werden.
 * `metrics` gibt die auszuführenden Abfragen an, mit denen der Status des Firmwareupdates gemeldet wird.
-* `targetCondition` wählt die Geräte aus, die das Firmwareupdate erhalten sollen.
-* `priorty` legt die relative Priorität dieser Konfiguration gegenüber anderen Konfigurationen fest.
+* Mit `targetCondition` werden die Geräte ausgewählt, die das Firmwareupdate erhalten sollen.
+* Mit `priorty` wird die relative Priorität dieser Konfiguration gegenüber anderen Konfigurationen festgelegt.
 
 Die Back-End-Anwendung nutzt den folgenden Code, um die Konfiguration zum Festlegen der gewünschten Eigenschaften zu erstellen:
 

@@ -8,10 +8,10 @@ ms.date: 04/04/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: e0249535813c6b8d652775f68a696d8c25ead5a1
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59275452"
 ---
 # <a name="about-azure-migrate"></a>Informationen zu Azure Migrate
@@ -37,7 +37,7 @@ Azure Migrate bietet Folgendes:
 - Azure Migrate unterstützt nur verwaltete Datenträger für die Migrationsbewertung.
 -  Sie können ein Azure Migrate-Projekt nur in den folgenden geografischen Regionen erstellen. Aber dies schränkt nicht Ihre Möglichkeit zum Erstellen von Bewertungen anderer Azure-Standorte als Ziel ein.
 
-    **Gebiet** | **Speicherort**
+    **Geografie** | **Speicherort**
     --- | ---
     Azure Government | US Government, Virginia
     Asien | „Asien, Südosten“ und „Asien, Osten“
@@ -59,15 +59,15 @@ Bewertungseinstellungen können je nach Bedarf angepasst werden. Die Bewertungse
 
 **Eigenschaft** | **Details**
 --- | ---
-**Zielspeicherort** | Der Azure-Standort, zu dem die Migration durchgeführt werden soll.<br/><br/>Azure Migrate unterstützt derzeit 33 Regionen als Standort des Migrationsziels. [Hier](https://azure.microsoft.com/global-infrastructure/services/) sind die Regionen aufgeführt. Die Zielregion ist standardmäßig auf „USA, Osten“ festgelegt.
+**Zielstandort** | Der Azure-Standort, zu dem die Migration durchgeführt werden soll.<br/><br/>Azure Migrate unterstützt derzeit 33 Regionen als Standort des Migrationsziels. [Hier](https://azure.microsoft.com/global-infrastructure/services/) sind die Regionen aufgeführt. Die Zielregion ist standardmäßig auf „USA, Osten“ festgelegt.
 **Speichertyp** | Der Typ der verwalteten Datenträger, den Sie für alle virtuellen Computer zuordnen möchten, die Teil der Bewertung sind. Lautet das Größenkriterium *Größenanpassung vom Typ „Wie lokal“*, können Sie als Zieldatenträger Premium-Datenträger (Standardeinstellung), Standard-SSD-Datenträger oder Standard-HDD-Datenträger angeben. Bei *leistungsbasierter Größenanpassung* sowie den oben genannten Optionen können Sie „Automatisch“ auswählen. Dadurch wird sichergestellt, dass für die Größenempfehlung automatisch die Leistungsdaten der virtuellen Computer herangezogen werden. Wenn Sie beispielsweise eine [SLA von 99,9% für Einzelinstanz-VMs](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) erzielen möchten, können Sie den Speichertyp als „Managed Disks Premium“ angeben. So wird sichergestellt, dass alle Datenträger der Bewertung als Datenträger vom Typ „Managed Disks Premium“ empfohlen werden. Hinweis: Azure Migrate unterstützt nur verwaltete Datenträger für die Migrationsbewertung.
 **Reservierte Instanzen** |  Mit dieser Eigenschaft wird angegeben, ob Sie [reservierte Instanzen](https://azure.microsoft.com/pricing/reserved-vm-instances/) in Azure besitzen. Dies wird dann von Azure Migrate bei der Kostenschätzung entsprechend berücksichtigt.
 **Größenkriterium** | Sie können die Größenanpassung auf der Grundlage des **Leistungsverlaufs** der lokalen virtuellen Computer vornehmen (Standardeinstellung) oder die Größe ohne Berücksichtigung des Leistungsverlauf **an die lokale Umgebung** anpassen.
 **Leistungsverlauf** | Standardmäßig bewertet Azure Migrate die Leistung lokaler Computer anhand des Leistungsverlaufs des letzten Tags mit einem 95-prozentigen Perzentilwert.
 **Komfortfaktor** | Bei Azure Migrate wird während der Bewertung ein Puffer (Komfortfaktor) berücksichtigt. Dieser Puffer wird zusätzlich zu den Daten zur Computernutzung für VMs (CPU, Arbeitsspeicher, Datenträger und Netzwerk) angewendet. Beim Komfortfaktor geht es um Bereiche wie saisonale Nutzung, kurzer Leistungsverlauf und voraussichtliche zukünftige Zunahme der Nutzung.<br/><br/> Beispiel: Für einen virtuellen Computer mit zehn Kernen und einer Auslastung von 20 Prozent ergibt sich normalerweise ein virtueller Computer mit zwei Kernen. Bei einem Komfortfaktor von 2.0x ist das Ergebnis dagegen eine VM mit vier Kernen. Die Standardeinstellung für den Komfortfaktor lautet 1.3x.
 **VM-Serie** | Die für die Größenschätzung verwendete VM-Serie. Wenn Sie beispielsweise eine Produktionsumgebung haben, die Sie nicht zu virtuellen Computern der A-Serie in Azure migrieren möchten, können Sie die A-Serie aus der Liste oder Serie ausschließen. Die Größenanpassung erfolgt nur basierend auf der ausgewählten Serie.   
-**Currency** | Rechnungswährung. Der Standardwert ist US-Dollar.
-**Abzug (%)** | Alle abonnementspezifischen Rabatte, die Sie zusätzlich zum Azure-Angebot erhalten. Die Standardeinstellung ist 0 %.
+**Währung** | Rechnungswährung. Der Standardwert ist US-Dollar.
+**Rabatt (%)** | Alle abonnementspezifischen Rabatte, die Sie zusätzlich zum Azure-Angebot erhalten. Die Standardeinstellung ist 0 %.
 **VM-Betriebszeit** | Wenn Ihre virtuellen Computer nicht rund um die Uhr in Azure aktiv sind, können Sie den Zeitraum angeben (Anzahl der Tage pro Monat und Anzahl der Stunden pro Tag), für den sie voraussichtlich ausgeführt werden, um eine entsprechende Kostenschätzung zu erhalten. Der Standardwert sind 31 Tage pro Monat und 24 Stunden pro Tag.
 **Azure-Angebot** | Das [Azure-Angebot](https://azure.microsoft.com/support/legal/offer-details/), bei dem Sie registriert sind. Dies wird dann von Azure Migrate bei der Kostenschätzung entsprechend berücksichtigt.
 **Azure-Hybridvorteil** | Mit dieser Eigenschaft wird angegeben, ob Sie über Software Assurance verfügen und Anspruch auf den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-use-benefit/) mit Preisnachlässen haben.

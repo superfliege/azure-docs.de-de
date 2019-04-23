@@ -17,10 +17,10 @@ ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 0c12c75bd5c357613d55e04aed67c0cc901135e6
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58881085"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Azure Virtual Machines – SQL Server-DBMS-Bereitstellung für SAP NetWeaver
@@ -362,7 +362,7 @@ Bei Azure-VMs der M-Serie kann die Latenz beim Schreiben in das Transaktionsprot
 ### <a name="formatting-the-disks"></a>Formatieren der Datenträger
 Für SQL Server sollte die NTFS-Blockgröße für Datenträger, die SQL Server-Daten und -Protokolldateien enthalten, 64 KB betragen. Es ist nicht erforderlich, Laufwerk „D:\“ zu formatieren. Dieses Laufwerk ist bereits vorformatiert.
 
-Um sicherzustellen, dass die Wiederherstellung oder Erstellung von Datenbanken die Datendateien nicht initialisiert, indem der Inhalt der Dateien gelöscht wird, sollten Sie überprüfen, ob der Benutzerkontext, in dem der SQL Server-Dienst ausgeführt wird, eine bestimmte Berechtigung hat. Normalerweise verfügen die Benutzer in der Windows-Administratorengruppe über diese Berechtigungen. Wenn der SQL Server-Dienst im Benutzerkontext eines Benutzers ausgeführt wird, der kein Windows-Administrator ist, müssen Sie diesem Benutzer das Benutzerrecht **Volumenwartungsaufgaben durchführen** zuweisen.  Ausführliche Informationen finden Sie in diesem Microsoft Knowledge Base-Artikel: <https://support.microsoft.com/kb/2574695>
+Um sicherzustellen, dass die Wiederherstellung oder Erstellung von Datenbanken die Datendateien nicht initialisiert, indem der Inhalt der Dateien gelöscht wird, sollten Sie überprüfen, ob der Benutzerkontext, in dem der SQL Server-Dienst ausgeführt wird, eine bestimmte Berechtigung hat. Normalerweise verfügen die Benutzer in der Windows-Administratorengruppe über diese Berechtigungen. Wenn der SQL Server-Dienst im Benutzerkontext eines Benutzers ausgeführt wird, der kein Windows-Administrator ist, müssen Sie diesem Benutzer das Benutzerrecht **Volumenwartungsaufgaben durchführen** zuweisen.  Ausführliche Informationen finden Sie im Microsoft Knowledge Base-Artikel: <https://support.microsoft.com/kb/2574695>
 
 ### <a name="impact-of-database-compression"></a>Auswirkungen der Datenbankkomprimierung
 Bei Konfigurationen, bei denen die E/A-Bandbreite zum begrenzenden Faktor werden könnte, sollte jede Möglichkeit ergriffen werden, die IOPS zu senken. Dadurch kann die ausführbare Workload in einem IaaS-Szenario wie Azure besser verteilt werden. Falls noch nicht erfolgt, wird sowohl von SAP als auch von Microsoft empfohlen, vor dem Hochladen vorhandener SAP-Datenbanken in Azure die SQL Server-Seitenkomprimierung anzuwenden.
@@ -450,7 +450,7 @@ Da die SQL Server-Images im Azure Marketplace nicht die Sortierung verwenden, di
 * Öffnen Sie als Administrator ein Windows-Befehlsfenster.
 * Ändern Sie das Verzeichnis in „C:\Program Files\Microsoft SQL Server\110\Setup Bootstrap\SQLServer2012“.
 * Führen Sie den folgenden Befehl aus: Setup.exe /QUIET /ACTION=REBUILDDATABASE /INSTANCENAME=MSSQLSERVER /SQLSYSADMINACCOUNTS=`<local_admin_account_name`> /SQLCOLLATION=SQL_Latin1_General_Cp850_BIN2   
-  * `<local_admin_account_name`> ist das Konto, das als Administratorkonto definiert wurde, als der virtuelle Computer zum ersten Mal über den Katalog bereitgestellt wurde.
+  * `<local_admin_account_name`&gt; ist das Konto, das als Administratorkonto definiert wurde, als die VM zum ersten Mal über den Katalog bereitgestellt wurde.
 
 Dieser Vorgang sollte nur wenige Minuten dauern. Um sicherzustellen, dass dieser Schritt zum richtigen Ergebnis geführt hat, führen Sie die folgenden Schritte durch:
 

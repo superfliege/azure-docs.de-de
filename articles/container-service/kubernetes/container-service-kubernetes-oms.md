@@ -10,10 +10,10 @@ ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
 ms.openlocfilehash: d7370fc14a5ede23744e04ac9d35140f2368e21f
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58877396"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>(VERALTET) Überwachen eines Azure Container Service-Clusters mit Log Analytics
@@ -123,7 +123,7 @@ Zum Schutz der Log Analytics-Arbeitsbereichs-ID und des Schlüssels können Sie 
   KEY:    88 bytes
   ```
 
-  - Erstellen Ihrer OMS-Agent-Daemongruppe durch Ausführen von ```kubectl create -f omsagent-ds-secrets.yaml```
+  - Erstellen Sie Ihr OMS-Agent-DaemonSet durch Ausführen des folgenden Befehls: ```kubectl create -f omsagent-ds-secrets.yaml```
 
 ### <a name="conclusion"></a>Zusammenfassung
 Das ist alles! Nach wenigen Minuten sollten Daten bei Ihrem Log Analytics-Dashboard eingehen.

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
 ms.openlocfilehash: c77b5810164aef7508f717a0f75d90cf6cba2089
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273106"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Einrichten von Application Insights: Abhängigkeitsüberwachung
@@ -154,7 +154,7 @@ Wenn Sie das Standardmodul für die Nachverfolgung von Abhängigkeiten deaktivie
 ## <a name="troubleshooting"></a>Problembehandlung
 *Das Erfolgsflag für die Abhängigkeit zeigt immer entweder TRUE oder FALSE.*
 
-*SQL-Abfrage, die nicht vollständig angezeigt wird.*
+*SQL-Abfrage, die nicht vollständig angezeigt wird*
 
 Sehen Sie in der Tabelle unten nach, und stellen Sie sicher, dass Sie die richtige Konfiguration ausgewählt haben, um die Abhängigkeitsüberwachung für Ihre Anwendung zu aktivieren.
 
@@ -168,4 +168,4 @@ Sehen Sie in der Tabelle unten nach, und stellen Sie sicher, dass Sie die richti
 ## <a name="next-steps"></a>Nächste Schritte
 * [Ausnahmen](../../azure-monitor/app/asp-net-exceptions.md)
 * [Daten zu Seiten und Benutzern](../../azure-monitor/app/javascript.md)
-* [Verfügbarkeit](../../azure-monitor/app/monitor-web-app-availability.md)
+* [Availability](../../azure-monitor/app/monitor-web-app-availability.md)

@@ -12,10 +12,10 @@ ms.date: 04/08/2019
 ms.author: tulasim
 ms.custom: seodec18
 ms.openlocfilehash: eac5e43c69cc09c5945316827a35f729c158d47a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59264317"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Migrieren einer Knowledge Base durch Exportieren und Importieren
@@ -63,4 +63,4 @@ Die Migration von Chatprotokollen ist nicht möglich, da die neue Wissensdatenba
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Bearbeiten einer Wissensdatenbank](../How-To/edit-knowledge-base.md)
+> [Bearbeiten einer Knowledge Base](../How-To/edit-knowledge-base.md)

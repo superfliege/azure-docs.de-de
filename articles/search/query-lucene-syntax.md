@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 64a688df3b6ed8602bb440d72e7f061c5f5893d1
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885603"
 ---
 # <a name="lucene-query-syntax-in-azure-search"></a>Lucene-Abfragesyntax in Azure Search
@@ -168,5 +168,5 @@ Im folgenden Beispiel werden die Unterschiede veranschaulicht. Angenommen, Sie h
 ## <a name="see-also"></a>Weitere Informationen  
 
 + [Dokumente durchsuchen](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
-+ [OData-Ausdrucksfilter für Filter und die Sortierung](query-odata-filter-orderby-syntax.md)   
-+ [Einfache Abfragesyntax in Azure Search](query-simple-syntax.md)   
++ [OData expression syntax for filters and sorting](query-odata-filter-orderby-syntax.md) (OData-Ausdrucksfilter für Filter und die Sortierung)   
++ [Simple query syntax in Azure Search](query-simple-syntax.md) (Einfache Abfragesyntax in Azure Search)   

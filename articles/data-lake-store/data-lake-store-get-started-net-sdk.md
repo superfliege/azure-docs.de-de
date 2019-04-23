@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 8ab051d49e7ed67e642ef656dfb382ed07763ed2
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58879708"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Kontoverwaltungsvorgänge für Azure Data Lake Storage Gen1 mithilfe des .NET SDK
@@ -53,8 +53,8 @@ Eine Anleitung zum Durchführen von Datenverwaltungsvorgängen in Data Lake Stor
    2. Stellen Sie auf der Registerkarte **NuGet-Paket-Manager** sicher, dass **Paketquelle** auf **nuget.org** festgelegt und das Kontrollkästchen **Vorabversion einbeziehen** aktiviert ist.
    3. Suchen und installieren Sie die folgenden NuGet-Pakete:
 
-      * `Microsoft.Azure.Management.DataLake.Store` – In diesem Tutorial wird „v2.1.3-preview“ verwendet.
-      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` – In diesem Tutorial wird „v2.2.12“ verwendet.
+      * `Microsoft.Azure.Management.DataLake.Store`: In diesem Tutorial wird „v2.1.3-preview“ verwendet.
+      * `Microsoft.Rest.ClientRuntime.Azure.Authentication`: In diesem Tutorial wird „v2.2.12“ verwendet.
 
         ![Hinzufügen einer NuGet-Quelle](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "Erstellen eines neuen Azure Data Lake-Kontos")
    4. Schließen Sie den **NuGet-Paket-Manager**.
@@ -142,7 +142,7 @@ Im folgenden Codeausschnitt wird das zuvor erstellte Data Lake Storage Gen1-Kont
     _adlsClient.Account.Delete(_resourceGroupName, _adlsAccountName);
 
 ## <a name="see-also"></a>Weitere Informationen
-* [Dateisystemvorgänge in Data Lake Storage Gen1 mit dem .NET SDK](data-lake-store-data-operations-net-sdk.md)
+* [Dateisystemvorgänge in Azure Data Lake Storage Gen1 mit dem .NET SDK](data-lake-store-data-operations-net-sdk.md)
 * [.NET SDK-Referenz zu Data Lake Storage Gen1](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 
 ## <a name="next-steps"></a>Nächste Schritte

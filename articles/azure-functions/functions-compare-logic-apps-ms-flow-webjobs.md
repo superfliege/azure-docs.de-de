@@ -13,10 +13,10 @@ ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
 ms.openlocfilehash: ea99c7fe9bc7fd8d6e4e26baa0afe45505949098
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895646"
 ---
 # <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>Was sind Microsoft Flow, Logic Apps, Functions und WebJobs?
@@ -88,7 +88,7 @@ Azure Functions basiert auf dem WebJobs SDK und verfügt daher über viele gleic
 |[Entwicklung und Tests im Browser](functions-create-first-azure-function.md) |✔||
 |[Nutzungsbasierte Bezahlung](functions-scale.md#consumption-plan)|✔||
 |[Integration in Logic Apps](functions-twitter-email.md)|✔||
-| Auslösende Ereignisse |[Timer](functions-bindings-timer.md)<br>[Azure Storage-Warteschlangen und -Blobs](functions-bindings-storage-blob.md)<br>[Azure Service Bus-Warteschlangen und -Themen](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Timer](functions-bindings-timer.md)<br>[Azure Storage-Warteschlangen und -Blobs](functions-bindings-storage-blob.md)<br>[Azure Service Bus-Warteschlangen und -Themen](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[Dateisystem](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
+| Auslösende Ereignisse |[Zeitgeber](functions-bindings-timer.md)<br>[Azure Storage-Warteschlangen und -Blobs](functions-bindings-storage-blob.md)<br>[Azure Service Bus-Warteschlangen und -Themen](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Zeitgeber](functions-bindings-timer.md)<br>[Azure Storage-Warteschlangen und -Blobs](functions-bindings-storage-blob.md)<br>[Azure Service Bus-Warteschlangen und -Themen](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[Dateisystem](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
 | Unterstützte Sprachen  |C#<br>F#<br>JavaScript<br>Java (Vorschau) |C#<sup>1</sup>|
 |Paket-Manager|NPM und NuGet|NuGet<sup>2</sup>|
 
@@ -130,4 +130,4 @@ Beginnen Sie, indem Sie Ihre erste Flow-, Logic Apps- oder Functions-App erstell
 
 * [Erste Schritte mit Microsoft Flow](https://flow.microsoft.com/en-us/documentation/getting-started/)
 * [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md)
-* [Erstellen Ihrer ersten Azure-Funktion](functions-create-first-azure-function.md)
+* [Erstellen Sie Ihre erste Funktion in Azure Functions](functions-create-first-azure-function.md)

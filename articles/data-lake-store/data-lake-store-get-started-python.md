@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: b6ef5a5c12bb766fb7106d5c7a8189c4b92980d2
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58880201"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Kontoverwaltungsvorgänge für Azure Data Lake Storage Gen1 mit Python
@@ -135,5 +135,5 @@ Der folgende Codeausschnitt erstellt zunächst den Data Lake Storage Gen1-Kontoc
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Referenz zu „azure-datalake-store Python“ (Dateisystem)](https://azure-datalake-store.readthedocs.io/en/latest)
+* [Referenz zu azure-datalake-store Python (Dateisystem)](https://azure-datalake-store.readthedocs.io/en/latest)
 * [Mit Azure Data Lake Storage Gen1 kompatible Open-Source-Big Data-Anwendungen](data-lake-store-compatible-oss-other-applications.md)

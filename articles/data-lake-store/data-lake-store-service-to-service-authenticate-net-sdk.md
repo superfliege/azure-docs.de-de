@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: be8d4172476ca0613e80e62739b9ab36f8ab4c3b
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58881153"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Dienst-zu-Dienst-Authentifizierung mit Azure Data Lake Storage Gen1 unter Verwendung des .NET SDK
@@ -54,8 +54,8 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe des .NET SDK die Dienst-zu-Dien
    2. Stellen Sie auf der Registerkarte **NuGet-Paket-Manager** sicher, dass **Paketquelle** auf **nuget.org** festgelegt und das Kontrollkästchen **Vorabversion einbeziehen** aktiviert ist.
    3. Suchen und installieren Sie die folgenden NuGet-Pakete:
 
-      * `Microsoft.Azure.Management.DataLake.Store` – In diesem Tutorial wird „v2.1.3-preview“ verwendet.
-      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` – In diesem Tutorial wird „v2.2.12“ verwendet.
+      * `Microsoft.Azure.Management.DataLake.Store`: In diesem Tutorial wird „v2.1.3-preview“ verwendet.
+      * `Microsoft.Rest.ClientRuntime.Azure.Authentication`: In diesem Tutorial wird „v2.2.12“ verwendet.
 
         ![Hinzufügen einer NuGet-Quelle](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "Erstellen eines neuen Azure Data Lake-Kontos")
    4. Schließen Sie den **NuGet-Paket-Manager**.
@@ -123,4 +123,4 @@ Im vorangehenden Ausschnitt wird die Hilfsfunktion `GetCreds_SPI_Cert` verwendet
 In diesem Artikel haben Sie erfahren, wie Sie die Dienst-zu-Dienst-Authentifizierung verwenden, um sich mithilfe des .NET SDK mit Data Lake Storage Gen1 zu authentifizieren. In den folgenden Artikeln erfahren Sie, wie Sie das .NET SDK für die Arbeit mit Data Lake Storage Gen1 verwenden.
 
 * [Kontoverwaltungsvorgänge für Data Lake Storage Gen1 mit dem .NET SDK](data-lake-store-get-started-net-sdk.md)
-* [Datenvorgänge in Data Lake Storage Gen1 mit dem .NET SDK](data-lake-store-data-operations-net-sdk.md)
+* [Dateisystemvorgänge in Azure Data Lake Storage Gen1 mit dem .NET SDK](data-lake-store-data-operations-net-sdk.md)

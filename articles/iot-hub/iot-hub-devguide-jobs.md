@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.openlocfilehash: aacb0ab69dad45f9ca7655daaae0c2acff0403f5
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59044371"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Planen von Aufträgen auf mehreren Geräten
@@ -32,7 +32,7 @@ Erwägen Sie das Arbeiten mit Aufträgen, wenn Sie den Fortschritt der folgenden
 Aufträge werden vom Lösungs-Back-End eingeleitet und vom IoT Hub verwaltet. Sie können einen Auftrag über einen dienstseitigen URI (`PUT https://<iot hub>/jobs/v2/<jobID>?api-version=2018-06-30`) auslösen und den Fortschritt eines in der Ausführung befindlichen Auftrags über einen dienstseitigen URI (`GET https://<iot hub>/jobs/v2/<jobID?api-version=2018-06-30`) abfragen. Um den Status der zurzeit ausgeführten Aufträge nach der Initiierung eines Auftrags zu aktualisieren, führen Sie eine Auftragsabfrage aus.
 
 > [!NOTE]
-> Wenn Sie einen Auftrag initiieren, dürfen Eigenschaftennamen und -werte nur druckbare alphanumerische US-ASCII-Zeichen mit Ausnahme der folgenden enthalten: `$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`
+> Wenn Sie einen Auftrag initiieren, dürfen Eigenschaftennamen und -werte nur druckbare alphanumerische US-ASCII-Zeichen mit Ausnahme der folgenden enthalten: `$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`.
 
 ## <a name="jobs-to-execute-direct-methods"></a>Aufträge zum Ausführen direkter Methoden
 

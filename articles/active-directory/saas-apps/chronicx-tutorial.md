@@ -16,10 +16,10 @@ ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 499cbcada19728a0d0eba1831460ea38245b7f5c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59267411"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-chronicx"></a>Tutorial: Azure Active Directory-Integration mit ChronicX®
@@ -52,7 +52,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Konfigurieren der Integration von ChronicX® in Azure AD müssen Sie ChronicX® aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie die folgenden Schritte aus, um ChronicX® aus dem Katalog hinzuzufügen:**
+**So fügen Sie ChronicX® aus dem Katalog hinzu**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -106,9 +106,9 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD 
 
     ![SSO-Informationen zur Domäne und zu den URLs für ChronicX®](common/sp-identifier.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.chronicx.com/ups/processlogonSSO.jsp`
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.chronicx.com/ups/processlogonSSO.jsp`.
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL ein: `ups.chronicx.com`
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL ein: `ups.chronicx.com`.
 
     > [!NOTE]
     >Der Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam von ChronicX®](https://www.casebank.com/contact-us/), um den Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.

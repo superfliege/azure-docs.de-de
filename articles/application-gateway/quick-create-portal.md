@@ -9,10 +9,10 @@ ms.date: 1/8/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 42d3bd2285574b4416ec06af13006353880a7ca5
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58903521"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway – Azure-Portal
@@ -30,7 +30,7 @@ Melden Sie sich mit Ihrem Azure-Konto beim [Azure-Portal](https://portal.azure.c
 
 ## <a name="create-an-application-gateway"></a>Erstellen eines Anwendungsgateways
 
-Für die Kommunikation in Azure zwischen den von Ihnen erstellten Ressourcen ist ein virtuelles Netzwerk erforderlich. Sie können ein neues virtuelles Netzwerk erstellen oder ein vorhandenes auswählen. In diesem Beispiel erstellen wir ein neues virtuelles Netzwerk. Sie können ein virtuelles Netzwerk zum gleichen Zeitpunkt erstellen wie das Anwendungsgateway. Application Gateway-Instanzen werden in separaten Subnetzen erstellt. In diesem Beispiel erstellen Sie zwei Subnetze: eins für das Anwendungsgateway und eins für die Back-End-Server.
+Für die Kommunikation in Azure zwischen den von Ihnen erstellten Ressourcen ist ein virtuelles Netzwerk erforderlich. Sie können ein neues virtuelles Netzwerk erstellen oder ein bereits vorhandenes virtuelles Netzwerk auswählen. In diesem Beispiel wird ein neues virtuelles Netzwerk erstellt. Sie können ein virtuelles Netzwerk zum gleichen Zeitpunkt erstellen wie das Anwendungsgateway. Application Gateway-Instanzen werden in separaten Subnetzen erstellt. In diesem Beispiel erstellen Sie zwei Subnetze: eins für das Anwendungsgateway und eins für die Back-End-Server.
 
 1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressource erstellen**. Das Fenster **Neu** wird angezeigt.
 
@@ -79,11 +79,11 @@ Für die Kommunikation in Azure zwischen den von Ihnen erstellten Ressourcen ist
 
 Der Back-End-Pool wird zum Weiterleiten von Anforderungen an die Back-End-Server verwendet, die die Anforderung verarbeiten. Back-End-Pools können Netzwerkkarten, VM-Skalierungsgruppen, öffentliche IP-Adressen, interne IP-Adressen, vollqualifizierte Domänennamen (Fully Qualified Domain Names, FQDN) und Back-Ends mit mehreren Mandanten wie Azure App Service umfassen. Sie müssen Ihre Back-End-Ziele zu einem Back-End-Pool hinzufügen.
 
-In diesem Beispiel verwenden wir virtuelle Computer als das Ziel-Back-End. Wir können entweder vorhandene virtuelle Computer verwenden oder neue erstellen. In diesem Beispiel erstellen wir zwei virtuelle Computer, die von Azure als Back-End-Server für das Anwendungsgateway verwendet werden. Dazu führen wir die folgenden Schritte aus:
+In diesem Beispiel verwenden wir virtuelle Computer als das Ziel-Back-End. Wir können entweder vorhandene virtuelle Computer verwenden oder neue erstellen. In diesem Beispiel erstellen wir zwei virtuelle Computer, die von Azure als Back-End-Server für die Application Gateway-Instanz verwendet werden. Dazu führen wir die folgenden Schritte aus:
 
 1. Erstellen eines neuen Subnetzes (*myBackendSubnet*), in dem die neuen virtuellen Computer erstellt werden. 
 2. Erstellen von zwei neuen virtuellen Computern (*myVM* und *myVM2*), die als Back-End-Server verwendet werden.
-3. Installieren von IIS auf den virtuellen Computern, um zu überprüfen, ob das Anwendungsgateway erfolgreich erstellt wurde.
+3. Installieren von IIS auf den virtuellen Computern, um zu überprüfen, ob die Application Gateway-Instanz erfolgreich erstellt wurde
 4. Fügen Sie die Back-End-Server zum Back-End-Pool hinzu.
 
 ### <a name="add-a-subnet"></a>Hinzufügen eines Subnetzes

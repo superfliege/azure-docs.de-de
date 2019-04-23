@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: b648c51b1b169c02f149493c53b6ef738b736e61
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59281895"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tonicdm"></a>Tutorial: Azure Active Directory-Integration von TonicDM
@@ -53,7 +53,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Konfigurieren der Integration von TonicDM in Azure AD müssen Sie TonicDM aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie die folgenden Schritte aus, um TonicDM aus dem Katalog hinzuzufügen:**
+**So fügen Sie TonicDM aus dem Katalog hinzu**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -107,9 +107,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit TonicDM
 
     ![SSO-Informationen zur Domäne und zu den URLs für TonicDM](common/sp-identifier.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL ein: `https://tonicdm.com/`
+    a. Geben Sie im Textfeld **Anmelde-URL** die URL wie folgt ein: `https://tonicdm.com/`.
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL ein: `https://tonicdm.com/saml/metadata`
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL ein: `https://tonicdm.com/saml/metadata`.
 
 5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 

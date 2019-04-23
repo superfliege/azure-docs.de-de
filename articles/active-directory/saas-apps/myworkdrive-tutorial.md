@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: d16aa8442f71845e7b46377c6c290212f9c400a3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59280501"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-myworkdrive"></a>Tutorial: Azure Active Directory-Integration von MyWorkDrive
@@ -50,7 +50,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Konfigurieren der Integration von MyWorkDrive in Azure AD müssen Sie MyWorkDrive aus dem Katalog zur Liste der verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie die folgenden Schritte aus, um MyWorkDrive aus dem Katalog hinzuzufügen:**
+**Führen Sie die folgenden Schritte aus, um MyWorkDrive über den Katalog hinzuzufügen:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -117,7 +117,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
     > 
     > Antwort-URL: `https://yourserver.yourdomain.com/SAML/AssertionConsumerService.aspx`
     > 
-    > Anmelde-URL:`https://yourserver.yourdomain.com/Account/Login-saml`
+    > Anmelde-URL: `https://yourserver.yourdomain.com/Account/Login-saml`
     > 
     > Wenden Sie sich an das [Supportteam für MyWorkDrive](mailto:support@myworkdrive.com), wenn Sie unsicher sind, wie Sie Ihren eigenen Hostnamen und das SSL-Zertifikat für diese Werte einrichten.
 

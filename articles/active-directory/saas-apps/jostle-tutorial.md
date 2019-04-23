@@ -16,10 +16,10 @@ ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6304f4afa05850ced8b88bb81c0f94e4a31fb5be
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59277264"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jostle"></a>Tutorial: Azure Active Directory-Integration mit Jostle
@@ -51,7 +51,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Konfigurieren der Integration von Jostle in Azure AD müssen Sie Jostle aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie die folgenden Schritte aus, um Jostle aus dem Katalog hinzuzufügen:**
+**Um Jostle aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -105,11 +105,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Jostle d
 
     ![SSO-Informationen zur Domäne und zu den URLs für Jostle](common/sp-identifier-reply.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** die folgende URL ein: `https://login-prod.jostle.us`
+    a. Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://login-prod.jostle.us`.
 
-    b. Geben Sie im Feld **Bezeichner** die folgende URL ein: `https://jostle.us`
+    b. Geben Sie im Feld **Bezeichner** die folgende URL ein: `https://jostle.us`.
 
-    c. Geben Sie im Textfeld **Antwort-URL** die folgende URL ein: `https://login-prod.jostle.us/saml/SSO/alias/newjostle.us`
+    c. Geben Sie im Textfeld **Antwort-URL** die folgende URL ein: `https://login-prod.jostle.us/saml/SSO/alias/newjostle.us`.
 
 5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 

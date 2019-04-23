@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/08/2018
 ms.author: diberry
 ms.openlocfilehash: 9d6173ee25f28aa884513d126c06a8a7c722098d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273837"
 ---
 # <a name="integrate-speech-service-with-your-language-understanding-app"></a>Integrieren des Speech-Diensts in Ihre Language Understanding-App
@@ -66,7 +66,7 @@ In diesem Artikel wird das Audiogerät Ihres Computers verwendet. Das kann ein H
 
 Das Speech SDK ist bereits als Referenz enthalten. 
 
-[![SScreenshot von Visual Studio 2017 mit dem Paket „Microsoft.CognitiveServices.Speech NuGet“](./media/luis-tutorial-speech-to-intent/nuget-package.png "Screenshot von Visual Studio 2017 mit dem Paket „Microsoft.CognitiveServices.Speech NuGet“")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
+[![Screenshot von Visual Studio 2017 mit dem Paket „Microsoft.CognitiveServices.Speech NuGet“](./media/luis-tutorial-speech-to-intent/nuget-package.png "Screenshot von Visual Studio 2017 mit dem Paket „Microsoft.CognitiveServices.Speech NuGet“")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
 
 ## <a name="modify-the-c-code"></a>Ändern des C#-Codes
 Öffnen Sie die Datei `Program.cs`, und ändern Sie die folgenden Variablen:
@@ -74,7 +74,7 @@ Das Speech SDK ist bereits als Referenz enthalten.
 |Variablenname|Zweck|
 |--|--|
 |LUIS_assigned_endpoint_key|Entspricht dem zugewiesenen Wert „subscription-key“ der Endpunkt-URL auf der Seite „Veröffentlichen“.|
-|LUIS_endpoint_key_region|Entspricht der ersten Unterdomäne der Endpunkt-URL. Beispiel: `westus`|
+|LUIS_endpoint_key_region|Entspricht der ersten Unterdomäne der Endpunkt-URL (Beispiel: `westus`).|
 |LUIS_app_ID|Entspricht der Route der Endpunkt-URL nach **apps/**|
 
 Der Datei `Program.cs` sind bereits die Absichten aus „Personalwesen“ zugeordnet.

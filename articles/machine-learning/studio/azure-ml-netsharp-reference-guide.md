@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
 ms.openlocfilehash: c352100392a5bf7b590b27b9448f7f37fb105fbe
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58886096"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Erläuterungen zur Net#-Spezifikationssprache für neuronale Netzwerke für Azure Machine Learning Studio
@@ -149,7 +149,7 @@ Unmittelbar nachdem Sie die trainierbare Schicht deklariert haben, müssen Sie V
 
 Derzeit werden fünf Arten von Verbindungsbündeln unterstützt:
 
-+ **Vollständige** Bündel; diese werden mit dem folgenden Schlüsselwort angegeben `all`
++ **Vollständige** Bündel; diese werden mit dem Schlüsselwort `all` angegeben.
 + **Gefilterte** Bündel; diese werden mit dem Schlüsselwort `where` gefolgt von einem Prädikatausdruck angegeben.
 + **Konvolutionsbündel**; diese werden mit dem Schlüsselwort `convolve` gefolgt von den Konvolutionsattributen angegeben.
 + **Poolingbündel**; diese werden mit dem Schlüsselwort **max pool** oder **mean pool** angegeben.
@@ -454,8 +454,7 @@ output Digit [10] from Hid3 all;
 + Die Anzahl von Gewichtungen pro Kernel beträgt `1 + KernelShape\[0] * KernelShape\[1] * KernelShape\[2] = 1 + 1 * 5 * 5 = 26`. Oder `26 * 50 = 1300`.
 + Sie können die Knoten in jeder verdeckten Schicht wie folgt berechnen:
 
-    `NodeCount\[0] = (5 - 1) / 1 + 1 = 5`
-    `NodeCount\[1] = (13 - 5) / 2 + 1 = 5`
+    `NodeCount\[0] = (5 - 1) / 1 + 1 = 5``NodeCount\[1] = (13 - 5) / 2 + 1 = 5`
     `NodeCount\[2] = (13 - 5) / 2 + 1 = 5`
 
 + Die Gesamtzahl der Knoten kann anhand der deklarierten Dimensionalität der Schicht [50, 5, 5] wie folgt berechnet werden: `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`

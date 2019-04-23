@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.openlocfilehash: 5015068f9b165190bef3b0cb97ddb194e173303e
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59045916"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Referenz: IoT Hub-Endpunkte
@@ -103,4 +103,4 @@ Weitere Referenzthemen in diesem IoT Hub-Entwicklungsleitfaden:
 
 * [IoT Hub-Abfragesprache für Gerätezwillinge, Aufträge und Nachrichtenrouting](iot-hub-devguide-query-language.md)
 * [Kontingente und Drosselung](iot-hub-devguide-quotas-throttling.md)
-* [IoT Hub MQTT-Unterstützung](iot-hub-mqtt-support.md)
+* [IoT Hub-MQTT-Unterstützung](iot-hub-mqtt-support.md)

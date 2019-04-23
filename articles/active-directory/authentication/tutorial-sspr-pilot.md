@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6e1095cc2c5937fa5de762f91a9830161b8d2a5
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59362126"
 ---
 # <a name="tutorial-complete-an-azure-ad-self-service-password-reset-pilot-roll-out"></a>Tutorial: Ausführen eines Rollouts der Azure AD-Self-Service-Kennwortzurücksetzung für eine Pilotgruppe
@@ -81,4 +81,4 @@ Wenn Sie die im Rahmen dieses Tutorials konfigurierte Funktionalität nicht mehr
 In diesem Tutorial haben Sie die Azure AD-Self-Service-Kennwortzurücksetzung aktiviert. Im nächsten Tutorial erfahren Sie, wie Sie eine lokale Active Directory Domain Services-Infrastruktur in die Umgebung mit Self-Service-Kennwortzurücksetzung integrieren.
 
 > [!div class="nextstepaction"]
-> [Aktivieren von SSPR für das lokale Kennwortrückschreiben](tutorial-enable-writeback.md)
+> [Tutorial: Enabling password writeback](tutorial-enable-writeback.md) (Tutorial: Aktivieren des Kennwortrückschreibens)

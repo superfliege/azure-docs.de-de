@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
 ms.openlocfilehash: aac15d766439a725f593ca421cbdc6da496f29f4
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862691"
 ---
 # <a name="get-started-with-azure-security-center-for-iot"></a>Erste Schritte mit Azure Security Center für IoT 
@@ -51,7 +51,7 @@ Wählen Sie das Workflowszenario aus, das die Anforderungen Ihrer IoT-Geräte- u
 
 Zur Überwachung des Identitätsverwaltung Ihres Geräts und der Kommunikationsmuster zwischen Gerät und Cloud sowie Cloud und Gerät verwenden Sie den folgenden grundlegenden Workflow zum Testen und Starten des Diensts: 
 
-1. [Aktivieren des Diensts von ASC für IoT in Ihrer IoT Hub-Instanz](quickstart-onboard-iot-hub.md)
+1. [Aktivieren des Diensts von ASC für IoT in Ihrer IoT Hub-Instanz](quickstart-onboard-iot-hub.md)
 1. Wenn für Ihre IoT Hub-Instanz keine Geräte registriert sind, [registrieren Sie ein neues Gerät](https://docs.microsoft.com/azure/iot-accelerators/quickstart-device-simulation-deploy).
 1. [Erstellen Sie ein „azureiotsecurity“-Sicherheitsmodul](quickstart-create-security-twin.md) für Ihre Geräte. 
 1. Definieren Sie das normale Geräte- und Systemverhalten über [benutzerdefinierte Benachrichtigungen](quickstart-create-custom-alerts.md). 
@@ -63,7 +63,7 @@ Zur Überwachung des Identitätsverwaltung Ihres Geräts und der Kommunikationsm
 
 Nutzen Sie die erweiterten Sicherheitsfunktionen von ASC für IoT, wie z.B. die Überwachung von Remoteverbindungen, aktiven Anwendungen und Anmeldeereignissen sowie bewährten Methoden bei der Betriebssystemkonfiguration, indem Sie den Dienst mit dem folgenden grundlegenden Workflow testen und aktivieren: 
 
-1. [Aktivieren des Diensts von ASC für IoT für Ihre IoT Hub-Instanz](quickstart-onboard-iot-hub.md)
+1. [Aktivieren des Diensts von ASC für IoT für Ihre IoT Hub-Instanz](quickstart-onboard-iot-hub.md)
 1. Wenn für Ihre IoT Hub-Instanz keine Geräte registriert sind, [registrieren Sie ein neues Gerät](https://docs.microsoft.com/azure/iot-accelerators/quickstart-device-simulation-deploy).
 1. [Erstellen Sie ein azureiotsecurity-Sicherheitsmodul](quickstart-create-security-twin.md) für Ihre Geräte.
 1. Um den Agent auf einem simulierten Azure-Gerät anstatt auf einem echten Gerät zu installieren, [starten Sie eine neue Azure-VM](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal) in einer verfügbaren Zone. 
@@ -76,6 +76,6 @@ Nutzen Sie die erweiterten Sicherheitsfunktionen von ASC für IoT, wie z.B. die 
 
 - Aktivieren von [ASC für IoT](quickstart-onboard-iot-hub.md)
 - [Quickstart: Configure your IoT solution](quickstart-configure-your-solution.md) (Schnellstart: Konfigurieren Ihrer IoT-Lösung)
-- [Erstellen von Sicherheitsmodulen](quickstart-create-security-twin.md)
+- [Quickstart: Create an azureiotsecurity module twin](quickstart-create-security-twin.md) (Schnellstart: Erstellen eines azureiotsecurity-Modulzwillings)
 - [Quickstart: Create custom alerts](quickstart-create-custom-alerts.md) (Schnellstart: Erstellen benutzerdefinierter Benachrichtigungen)
-- [Bereitstellen eines Sicherheits-Agents](how-to-deploy-agent.md)
+- [Select and deploy a security agent on your IoT device](how-to-deploy-agent.md) (Auswählen und Bereitstellen eines Sicherheits-Agents auf Ihrem IoT-Gerät)

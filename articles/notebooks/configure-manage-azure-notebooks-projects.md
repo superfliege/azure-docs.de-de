@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
 ms.openlocfilehash: d1f94c5fd774b51f57da2885d1ccd8eb909cd3c0
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59268006"
 ---
 # <a name="manage-and-configure-projects"></a>Verwalten und Konfigurieren von Projekten
@@ -95,7 +95,7 @@ Mit dem Befehl **+ Neu** (Tastenkombination: n) werden neue Dateien oder Ordner 
 
 | Elementtyp | BESCHREIBUNG | Verhalten des Befehls |
 | --- | --- | --- |
-| **Notizbuch** | Ein Jupyter-Notebook | Zeigt ein Popup an, in dem Sie den Dateinamen und die Sprache des Notebooks angeben. |
+| **Notebook** | Ein Jupyter-Notebook | Zeigt ein Popup an, in dem Sie den Dateinamen und die Sprache des Notebooks angeben. |
 | **Ordner** | Ein Unterordner | Erstellt ein Bearbeitungsfeld in der Dateiliste des Projekts, in dem Sie den Ordnernamen eingeben. |
 | **Leere Datei** | Eine Datei, in der Sie beliebige Inhalte speichern können, also Text, Daten usw. | Erstellt ein Bearbeitungsfeld in der Dateiliste des Projekts, in dem Sie den Dateinamen eingeben. |
 | **Markdown** | Eine Markdowndatei. | Erstellt ein Bearbeitungsfeld in der Dateiliste des Projekts, in dem Sie den Dateinamen eingeben. |

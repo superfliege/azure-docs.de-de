@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 7252fcd0ce3e12c411729002e9594d1a75a49885
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59258526"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tango-analytics"></a>Tutorial: Azure Active Directory-Integration mit Tango Analytics
@@ -51,7 +51,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Konfigurieren der Integration von Tango Analytics in Azure AD müssen Sie Tango Analytics aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie die folgenden Schritte aus, um Tango Analytics aus dem Katalog hinzuzufügen:**
+**Um Tango Analytics aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -105,7 +105,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Tango A
 
     ![SSO-Informationen zur Domäne und zu den URLs für Tango Analytics](common/idp-intiated.png)
 
-    a. Geben Sie im Textfeld **Bezeichner** den folgenden Wert ein: `TACORE_SSO`
+    a. Geben Sie im Textfeld **Bezeichner** den folgenden Wert ein: `TACORE_SSO`.
 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://mts.tangoanalytics.com/saml2/sp/acs/post`
 

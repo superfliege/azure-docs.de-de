@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: v-sharos
 ms.openlocfilehash: a2f8e75578e396085e7d80f43c1180e158967061
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885586"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>Installieren und Konfigurieren des StorSimple-Adapters für SharePoint
@@ -59,7 +59,7 @@ Bevor Sie die Verwendung von RBS in Ihrer SharePoint-Lösung erwägen, sollten S
 
 * Stellen Sie sicher, dass die Gesamtgröße des Inhalts (die Größe einer Inhaltsdatenbank zzgl. der Größe aller zugeordneten externen BLOBs) nicht die RBS-Größenbeschränkung überschreitet, die von SharePoint unterstützt wird. Dieser Grenzwert beträgt 200 GB. 
   
-    **So messen Sie die Größe der Inhaltsdatenbank und von BLOBs**
+    **So messen Sie die Größe der Inhaltsdatenbank und BLOBs**
   
   1. Führen Sie die Abfrage im Zentraladministration-WFE aus. Starten Sie die SharePoint-Verwaltungsshell, und geben Sie dann den folgenden Windows PowerShell-Befehl ein, um die Größe der Inhaltsdatenbanken abzurufen:
      

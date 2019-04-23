@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/29/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 6ee3e2b452dedbf791bdc05bbc81b07531e1f075
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59049312"
 ---
 # <a name="deploy-a-virtual-machine-from-the-azure-marketplace"></a>Bereitstellen eines virtuellen Computers über den Azure Marketplace
@@ -31,7 +31,7 @@ In diesem Artikel wird beschrieben, wie Sie einen vorkonfigurierten virtuellen C
 
 Die Azure-VM-Bereitstellungsvorlage für den Schnellstart ist als Onlinedatei unter [azuredeploy.json](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-vm-winrm-keyvault-windows/azuredeploy.json) verfügbar.  Sie enthält die folgenden Parameter:
 
-|  **Parameter**        |   **BESCHREIBUNG**                                 |
+|  **Parameter**        |   **Beschreibung**                                 |
 |  -------------        |   ---------------                                 |
 | newStorageAccountName | Name des Speicherkontos                       |
 | dnsNameForPublicIP    | DNS-Name für die öffentliche IP-Adresse. Muss aus Kleinbuchstaben bestehen.    |
@@ -44,7 +44,7 @@ Die Azure-VM-Bereitstellungsvorlage für den Schnellstart ist als Onlinedatei un
 | vmName                | Name des virtuellen Computers                                    |
 | vaultName             | Der Name des Schlüsseltresors                             |
 | vaultResourceGroup    | Die Ressourcengruppe des Schlüsseltresors                   |
-| certificateUrl        | URL für das Zertifikat, einschließlich der Version in KeyVault, z. B.  `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` |
+| certificateUrl        | URL für das Zertifikat, einschließlich der Version in KeyVault, z.B. `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` |
 |  |  |
 
 

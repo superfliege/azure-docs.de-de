@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.openlocfilehash: ed8884462030e10625f332b182bd900e833f34f4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59272732"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Verwenden von Data Lake Storage Gen1 mit Azure HDInsight-Clustern
@@ -60,8 +60,8 @@ Das Verwenden von Data Lake Storage Gen1 als zusätzliches Speicherkonto wirkt s
 
 Wenn HDInsight mit Data Lake Storage Gen1 als Standardspeicher bereitgestellt wird, werden die clusterbezogenen Dateien in `adl://mydatalakestore/<cluster_root_path>/` gespeichert, wobei `<cluster_root_path>` der Name eines Ordners ist, den Sie in Data Lake Storage erstellen. Indem Sie einen Stammpfad für jeden Cluster angeben, können Sie dasselbe Data Lake Storage-Konto für mehrere Cluster verwenden. Beispielsweise können Sie das folgende Setup verwenden:
 
-* Cluster1 kann den Pfad nutzen `adl://mydatalakestore/cluster1storage`
-* Cluster2 kann den Pfad nutzen `adl://mydatalakestore/cluster2storage`
+* Cluster1 kann den Pfad `adl://mydatalakestore/cluster1storage` nutzen.
+* Cluster2 kann den Pfad `adl://mydatalakestore/cluster2storage` nutzen.
 
 Beachten Sie, dass für beide Cluster dasselbe Data Lake Storage Gen1-Konto **mydatalakestore** verwendet wird. Jeder Cluster hat in Data Lake Storage Zugriff auf sein eigenes Stammdateisystem. Bei der Bereitstellung im Azure-Portal werden Sie aufgefordert, für den Stammpfad einen Ordnernamen wie **/clusters/\<Clustername>** zu verwenden.
 
@@ -159,9 +159,9 @@ Es gibt mehrere Möglichkeiten, wie Sie auf die Dateien in Data Lake Storage üb
 Unter den folgenden Links finden Sie eine ausführliche Anleitung, wie Sie HDInsight-Cluster mit Zugriff auf Data Lake Storage Gen1 erstellen.
 
 * [Verwenden des Portals](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
-* [Verwenden von PowerShell (mit Data Lake Storage Gen1 als Standardspeicher)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
-* [Verwenden von PowerShell (mit Data Lake Storage Gen1 als zusätzlicher Speicher)](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
-* [Verwenden von Azure-Vorlagen](../data-lake-store/data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
+* [Erstellen von HDInsight-Clustern mit Azure Data Lake Storage Gen1 als Standardspeicher mithilfe von PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
+* [Erstellen eines HDInsight-Clusters mit Azure Data Lake Storage Gen1 (als zusätzlichem Speicher) mithilfe von Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
+* [Erstellen eines HDInsight-Clusters mit Data Lake Store mithilfe einer Azure Resource Manager-Vorlage](../data-lake-store/data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 
 ## <a name="refresh-the-hdinsight-certificate-for-data-lake-storage-gen1-access"></a>Aktualisieren des HDInsight-Zertifikats für den Data Lake Storage Gen1-Zugriff
 
@@ -243,8 +243,8 @@ In diesem Artikel wurde beschrieben, wie Sie HDFS-kompatibles Azure Data Lake St
 Weitere Informationen finden Sie unter
 
 * [Erste Schritte mit Azure HDInsight][hdinsight-get-started]
-* [Schnellstart: Einrichten von Clustern in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
-* [Erstellen eines HDInsight-Clusters zur Verwendung von Data Lake Storage Gen1 mithilfe von Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
+* [Quickstart: Set up clusters in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) (Schnellstart: Einrichten von Clustern in HDInsight)
+* [Erstellen eines HDInsight-Clusters mit Azure Data Lake Storage Gen1 (als zusätzlichem Speicher) mithilfe von Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [Hochladen von Daten in HDInsight][hdinsight-upload-data]
 * [Verwenden von Apache Hive mit HDInsight][hdinsight-use-hive]
 * [Verwenden von Apache Pig mit HDInsight][hdinsight-use-pig]

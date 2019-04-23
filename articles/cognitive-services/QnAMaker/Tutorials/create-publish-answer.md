@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: diberry
 ms.openlocfilehash: d209d73d67af96e99589dddcb71b6b50214356ee
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58877277"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Tutorial: Erstellen einer Wissensdatenbank und Beantworten von Fragen unter Verwendung von C#
@@ -158,7 +158,7 @@ Der _primäre Endpunkt_ wird als Header übergeben, um die Anforderung für die 
 
 |Headername|Headerwert|
 |--|--|
-|Autorisierung|`Endpoint` + **Primärer Endpunkt**<br>Beispiel: `Endpoint xxxxxxx`<br>Beachten Sie das Leerzeichen zwischen dem Text `Endpoint` und dem Wert des primären Endpunkts. 
+|Autorisierung|`Endpoint` + **primärer Endpunkt**<br>Beispiel: `Endpoint xxxxxxx`<br>Beachten Sie das Leerzeichen zwischen dem Text `Endpoint` und dem Wert des primären Endpunkts. 
 
 Der Hauptteil der Anforderung muss den korrekten JSON-Code übergeben:
 

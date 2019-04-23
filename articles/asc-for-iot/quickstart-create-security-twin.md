@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
 ms.openlocfilehash: 16b5525973b93bc6b073c50c0c657dcbb4679040
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862215"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>Schnellstart: Erstellen eines Azure IoT-Sicherheitsmodulzwillings
@@ -67,7 +67,7 @@ Verwenden Sie die folgende Anleitung, um für ein Gerät manuell einen neuen _az
 
 1. Wählen Sie auf Ihrer Azure IoT Hub-Instanz im Menü **Explorer** die Option **IoT-Geräte**.    
 1. Geben Sie die Geräte-ID ein, oder wählen Sie im Feld **Gerät abfragen** eine Option aus, und klicken Sie auf **Geräte abfragen**. 
-    ![Abfragen von Geräten](./media/quickstart/verify-security-module-twin.png)
+    ![Geräte abfragen](./media/quickstart/verify-security-module-twin.png)
 1. Wählen Sie das Gerät aus, oder doppelklicken Sie darauf, um die Seite „Gerätedetails“ zu öffnen. 
 1. Wählen Sie das Menü **Modulidentitäten** aus, und bestätigen Sie das Vorhandensein des Moduls **azureiotsecurity** in der Liste mit den Modulidentitäten, die dem Gerät zugeordnet sind. 
     ![Einem Gerät zugeordnete Module](./media/quickstart/verify-security-module-twin-3.png)
@@ -80,4 +80,4 @@ Weitere Informationen zum Anpassen der Eigenschaften von ASC für IoT-Modulzwill
 Fahren Sie mit dem nächsten Artikel fort, um sich über das Konfigurieren von benutzerdefinierten Warnungen zu informieren.
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Erstellen benutzerdefinierter Benachrichtigungen](quickstart-create-custom-alerts.md)
+> [Konfigurieren von benutzerdefinierten Warnungen](quickstart-create-custom-alerts.md)

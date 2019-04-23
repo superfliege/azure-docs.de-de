@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: v-jansko
 ms.openlocfilehash: bd7a05f2f597d1882293387e5aac8e4d7367d051
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916630"
 ---
 # <a name="add-profanity-filtering-with-the-translator-text-api"></a>Hinzufügen der Filterung von Obszönitäten mit der Textübersetzungs-API
@@ -34,4 +34,4 @@ Für die Translate()-Methode wird der Parameter „options“ verwendet, der das
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]
-> [Anwenden der Filterung von Obszönitäten in Ihrem Aufruf der Textübersetzungs-API](reference/v3-0-translate.md)
+> [Anwenden der Filterung von Obszönitäten in Ihrem Aufruf der Translator-API](reference/v3-0-translate.md)

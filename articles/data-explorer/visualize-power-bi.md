@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.openlocfilehash: 70a06b75db9ff49222c2de4aa78519b32d863478
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59049879"
 ---
 # <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>Tutorial: Visualisieren von Daten über Azure Data Explorer in Power BI
@@ -33,7 +33,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Zusätzlich zu Azure- und Power BI-Abonnements benötigen Sie für dieses Tutorial Folgendes:
 
-* [Ein Testcluster und eine Testdatenbank](create-cluster-database-portal.md)
+* [Einen Testcluster und eine Testdatenbank](create-cluster-database-portal.md)
 
 * [Die StormEvents-Beispieldaten](ingest-sample-data.md) [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
@@ -228,4 +228,4 @@ Falls Sie den erstellten Bericht nicht aufbewahren möchten, löschen Sie einfac
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Schreiben von Abfragen](write-queries.md)
+> [Write queries](write-queries.md) (Schreiben von Abfragen)

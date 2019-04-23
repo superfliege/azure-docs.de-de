@@ -17,10 +17,10 @@ ms.date: 04/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9167a5ed72e6fec2ca03cc97d1d41dd6cd4aaba6
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885841"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secret-server-on-premises"></a>Tutorial: Azure Active Directory-Integration mit Secret Server (On-Premises)
@@ -109,7 +109,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![SSO-Informationen zur Domäne und zu den URLs für Secret Server (On-Premises)](./media/secretserver-on-premises-tutorial/tutorial_secretserver_url.png)
 
-    a. Geben Sie im Textfeld **Bezeichner** den vom Benutzer ausgewählten Wert als Beispiel ein: `https://secretserveronpremises.azure`
+    a. Geben Sie im Textfeld **Bezeichner** den vom Benutzer ausgewählten Wert als Beispiel ein: `https://secretserveronpremises.azure`.
 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<SecretServerURL>/SAML/AssertionConsumerService.aspx`
 
@@ -120,7 +120,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![SSO-Informationen zur Domäne und zu den URLs für Secret Server (On-Premises)](./media/secretserver-on-premises-tutorial/tutorial_secretserver_url1.png)
 
-    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SecretServerURL>/login.aspx`
+    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SecretServerURL>/login.aspx`.
      
     > [!NOTE] 
     > Hierbei handelt es sich um Beispielwerte. Die Werte müssen durch die tatsächliche Antwort-URL und die tatsächliche Anmelde-URL ersetzt werden. Wenden Sie sich an das [Supportteam für den Secret Server (On-Premises)-Client](https://thycotic.force.com/support/s/), um diese Werte zu erhalten.

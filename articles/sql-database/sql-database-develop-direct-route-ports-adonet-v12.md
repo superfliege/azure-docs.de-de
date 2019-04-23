@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 04/03/2019
 ms.openlocfilehash: ddb115370c62371e769ef98e0031f7e0379bafbf
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916171"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Andere Ports als 1433 für ADO.NET 4.5
@@ -83,7 +83,7 @@ In diesem Abschnitt werden die Moniker erläutert, die auf Produktversionen verw
 
 * [Liste der TDS-Protokollversionen](http://www.freetds.org/userguide/tdshistory.htm)
 * [Übersicht über die Entwicklung von SQL-Datenbanken](sql-database-develop-overview.md)
-* [Firewall von Azure SQL-Datenbank](sql-database-firewall-configure.md)
-* [Gewusst wie: Konfigurieren von Firewalleinstellungen für Azure SQL-Datenbank](sql-database-configure-firewall-settings.md)
+* [Firewall für die Azure SQL-Datenbank](sql-database-firewall-configure.md)
+* [Gewusst wie: Konfigurieren von Firewalleinstellungen für SQL-Datenbank](sql-database-configure-firewall-settings.md)
 
 

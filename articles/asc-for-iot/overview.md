@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/18/2019
 ms.author: mlottner
 ms.openlocfilehash: 49decb2d67c8ff16f9912fea8e8ece1a3bd9feb5
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58863031"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Einführung in Azure Security Center für IoT
@@ -56,9 +56,9 @@ Verwenden Sie erweiterte Analysefunktionen und Microsoft Intelligent Security Gr
 In dieser Übersicht haben Sie mehr über die Features und Dienste von Azure Security Center for IoT erfahren. Weitere Informationen zur Architektur von Azure Security Center for IoT, zu den Voraussetzungen und zum Einstieg finden Sie in folgenden Artikeln:
 
 - [Architecture](architecture.md)
-- [Dienstvoraussetzungen](service-prerequisites.md)
+- [ASC für IoT-Voraussetzungen](service-prerequisites.md)
 - [Erste Schritte](getting-started.md)
-- [Definieren Ihrer Lösung](quickstart-configure-your-solution.md)
-- [ASC for IoT FAQ (Azure Security Center für IoT – Häufig gestellte Fragen)](resources-frequently-asked-questions.md)
-- [ASC for IoT alerts (Warnungen in Azure Security Center für IoT)](concept-security-alerts.md)
+- [Schnellstart: Konfigurieren Ihrer IoT-Lösung](quickstart-configure-your-solution.md)
+- [ASC for IoT FAQ (Azure Security Center for IoT – häufig gestellte Fragen)](resources-frequently-asked-questions.md)
+- [ASC for IoT alerts (Warnungen in Azure Security Center for IoT)](concept-security-alerts.md)
 

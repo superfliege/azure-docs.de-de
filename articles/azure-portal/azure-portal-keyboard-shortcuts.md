@@ -16,10 +16,10 @@ ms.date: 04/08/2019
 ms.author: kfollis
 ms.custom: accessibility
 ms.openlocfilehash: fb0b347228fe82725d5246ae9eacdab8dff01257
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59359726"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Tastenkombinationen im Azure-Portal
@@ -30,7 +30,7 @@ In diesem Artikel sind die Tastenkombinationen aufgelistet, die im gesamten Azur
 
 |Aufgabe |Drücken Sie |
 | --- | --- |
-|Ressource erstellen|G+N|
+|Erstellen einer Ressource|G+N|
 |**Alle Dienste** öffnen|G+B|
 |Ressourcen, Dienste und Dokumente durchsuchen|G+/|
 |Ressourcenmenüelemente durchsuchen|STRG+/ |

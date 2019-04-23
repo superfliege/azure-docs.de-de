@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
 ms.openlocfilehash: 02b239922f481240341225ea68d8d0ee7492c48b
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59044173"
 ---
 # <a name="what-is-azure-data-explorer"></a>Was ist der Azure-Daten-Explorer?
@@ -48,13 +48,13 @@ Die Arbeit im Azure-Daten-Explorer folgt im Allgemeinen diesem Muster:
 
 1. **Daten erfassen:** Laden Sie Daten in Datenbanktabellen, sodass Sie diese abfragen können. [Schnellstart: Erfassen von Daten aus Event Hub in Azure Data Explorer](ingest-data-event-hub.md)
 
-1. **Datenbank abfragen:** Nutzen Sie unsere Webanwendung, um Abfragen auszuführen und um deren Abfrageergebnisse zu prüfen und zu teilen. Sie steht im Azure-Portal sowie als eigenständige Anwendung zur Verfügung. Darüber hinaus können Sie Abfragen programmgesteuert (mit einem SDK) oder an einen REST-API-Endpunkt senden. [Schnellstart: Abfragen von Daten im Azure Data Explorer](web-query-data.md)
+1. **Datenbank abfragen:** Nutzen Sie unsere Webanwendung, um Abfragen auszuführen und um deren Abfrageergebnisse zu prüfen und zu teilen. Sie steht im Azure-Portal sowie als eigenständige Anwendung zur Verfügung. Darüber hinaus können Sie Abfragen programmgesteuert (mit einem SDK) oder an einen REST-API-Endpunkt senden. [Schnellstart: Abfragen von Daten in Azure Data Explorer](web-query-data.md)
 
 ## <a name="query-experience"></a>Abfrageverhalten
 
 Eine Abfrage in Azure-Daten-Explorer ist eine schreibgeschützte Anforderung, Daten zu verarbeiten und die Ergebnisse dieser Daten zurückzugeben; die Daten und Metadaten werden dabei nicht geändert. Sie können Ihre Abfragen laufend optimieren, bis Sie die Analyse abgeschlossen haben. Azure Data Explorer erleichtert diesen Vorgang durch seine äußerst schnellen Ad-hoc-Abfragen.
 
-Azure-Daten-Explorer eignet sich gleichermaßen gut für die Verarbeitung großer Mengen strukturierter, halbstrukturierter (geschachtelte JSON-Typen) und unstrukturierter Daten (Freitext). Er ermöglicht das Suchen nach bestimmten Textbegriffen, das Auffinden konkreter Ereignisse und das Durchführen metrischer Berechnungen für strukturierte Daten. Azure-Daten-Explorer schlägt eine Brücke zwischen Protokollen mit unstrukturiertem Text und strukturierten Zahlen und Dimensionen, indem Werte zur Laufzeit aus Freitextfeldern extrahiert werden. Das Durchsuchen der Daten wird durch eine Kombination aus schneller Textindizierung, ColumnStore- und Zeitreihenvorgängen erleichtert.
+Azure-Daten-Explorer eignet sich gleichermaßen gut für die Verarbeitung großer Mengen strukturierter, halbstrukturierter (geschachtelte JSON-Typen) und unstrukturierter Daten (Freitext). Er ermöglicht das Suchen nach bestimmten Textbegriffen, das Auffinden konkreter Ereignisse und das Durchführen metrischer Berechnungen für strukturierte Daten. Azure Data Explorer schlägt eine Brücke zwischen Protokollen mit unstrukturiertem Text und strukturierten Zahlen und Dimensionen, indem Werte zur Laufzeit aus Freitextfeldern extrahiert werden. Das Durchsuchen der Daten wird durch eine Kombination aus schneller Textindizierung, ColumnStore- und Zeitreihenvorgängen erleichtert.
 
 Die Funktionen von Azure Data Explorer werden durch andere Dienste erweitert, die auf seiner leistungsfähigen Abfragesprache aufbauen, u. a. durch [Azure Monitor-Protokolle](/azure/log-analytics/), [Application Insights](/azure/application-insights/), [Time Series Insights](/azure/time-series-insights/) und [Windows Defender Advanced Threat Protection](/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection/).
 
@@ -64,7 +64,7 @@ Wir würden uns sehr über Ihr Feedback zu Azure-Daten-Explorer und seiner Abfra
 
 - Fragen stellen.
   - [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-data-explorer)
-  - [Technische Microsoft-Community](https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto)
+  - [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto)
   - [MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto)
 - [Unterbreiten Sie Produktvorschläge in User Voice](https://aka.ms/AzureDataExplorer.UserVoice)
 
@@ -74,4 +74,4 @@ Wir würden uns sehr über Ihr Feedback zu Azure-Daten-Explorer und seiner Abfra
 
 [Schnellstart: Erfassen von Daten aus Event Hub in Azure Data Explorer](ingest-data-event-hub.md)
 
-[Schnellstart: Abfragen von Daten im Azure Data Explorer](web-query-data.md)
+[Schnellstart: Abfragen von Daten in Azure Data Explorer](web-query-data.md)

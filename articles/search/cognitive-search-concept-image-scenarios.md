@@ -12,10 +12,10 @@ ms.date: 05/01/2018
 ms.author: luisca
 ms.custom: seodec2018
 ms.openlocfilehash: f1491d6b87816dfc70e94e01653567bda101d045
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916970"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Verarbeiten und Extrahieren von Text aus Bildern in kognitiven Suchszenarien
@@ -109,7 +109,7 @@ Mit der OCR-Qualifikation können Sie den Algorithmus für die Texterkennung in 
 
 Ein gängiges Szenario ist die Erstellung einer einzelnen Zeichenfolge mit sämtlichen Dateiinhalten (sowohl Text als auch Bildursprungstext):  
 
-1. [Extrahieren von „normalized_images“](#get-normalized-images)
+1. [Extrahieren Sie „normalized_images“.](#get-normalized-images)
 1. Führen Sie die OCR-Qualifikation mit `"/document/normalized_images"` als Eingabe aus.
 1. Führen Sie die Textdarstellung dieser Bilder mit dem unformatierten Text aus der Datei zusammen. Die beiden Textblöcke können mithilfe der [Textzusammenführungsqualifikation](cognitive-search-skill-textmerger.md) in einer einzelnen umfangreichen Zeichenfolge konsolidiert werden.
 
@@ -218,9 +218,9 @@ Um die normalisierten Koordinaten auf den ursprünglichen Koordinatenraum zu üb
 ```
 
 ## <a name="see-also"></a>Weitere Informationen
-+ [Erstellen eines Indexers (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
-+ [Kognitive Qualifikation: Bildanalyse](cognitive-search-skill-image-analysis.md)
-+ [OCR-Qualifikation](cognitive-search-skill-ocr.md)
-+ [Kognitive Qualifikation: Textzusammenführung](cognitive-search-skill-textmerger.md)
-+ [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
-+ [Zuordnen angereicherter Felder](cognitive-search-output-field-mapping.md)
++ [Create Indexer (Azure Search Service REST api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-indexer) (Erstellen eines Indexers (REST-API für den Azure Search-Dienst: Version 2017-11-11-Preview))
++ [Image Analysis cognitive skill](cognitive-search-skill-image-analysis.md) (Kognitive Qualifikation: Bildanalyse)
++ [OCR cognitive skill](cognitive-search-skill-ocr.md) (Kognitive Qualifikation: OCR)
++ [Text Merge cognitive skill](cognitive-search-skill-textmerger.md) (Kognitive Qualifikation: Textzusammenführung)
++ [How to create a skillset in an enrichment pipeline](cognitive-search-defining-skillset.md) (Erstellen einer Qualifikationsgruppe in einer Anreicherungspipeline)
++ [How to map enriched fields to a searchable index](cognitive-search-output-field-mapping.md) (Zuordnen angereicherter Felder zu einem durchsuchbaren Index)

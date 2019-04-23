@@ -16,10 +16,10 @@ ms.date: 10/23/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d70dfceb0101c4f6dbd76f3c6b34d85e5255aa72
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59261461"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Was sind verwaltete Identitäten für Azure-Ressourcen?
@@ -73,7 +73,7 @@ Das folgende Diagramm zeigt, wie verwaltete Dienstidentitäten mit virtuellen Az
     1. Aktualisiert den Azure Instance Metadata Service-Identitätsendpunkt mit der Client-ID und dem Zertifikat des Dienstprinzipals.
     1. Stellt die VM-Erweiterung bereit (geplante Einstufung als veraltet im Januar 2019) und fügt die Client-ID und das Zertifikat des Dienstprinzipals hinzu. (Wird in Kürze als veraltet eingestuft.)
 4. Wenn der virtuelle Computer über eine Identität verfügt, verwenden wir die Dienstprinzipalinformationen, um ihm Zugriff auf Azure-Ressourcen zu gewähren. Verwenden Sie zum Aufrufen von Azure Resource Manager die rollenbasierte Zugriffssteuerung (RBAC) in Azure AD, um dem VM-Dienstprinzipal die entsprechende Rolle zuzuweisen. Gewähren Sie Ihrem Code zum Aufrufen von Key Vault Zugriff auf das spezifische Geheimnis oder den spezifischen Schlüssel in Key Vault.
-5. Der auf dem virtuellen Computer ausgeführte Code kann ein Token vom Azure IMDS-Endpunkt (Instance Metadata Service) anfordern, auf das nur von dem virtuellen Computer aus zugegriffen werden kann: `http://169.254.169.254/metadata/identity/oauth2/token`
+5. Der auf dem virtuellen Computer ausgeführte Code kann ein Token vom Azure IMDS-Endpunkt (Instance Metadata Service) anfordern, auf das nur von dem virtuellen Computer aus zugegriffen werden kann: `http://169.254.169.254/metadata/identity/oauth2/token`
     - Der Ressourcenparameter gibt den Dienst an, an den das Token gesendet wird. Verwenden Sie `resource=https://management.azure.com/` für die Authentifizierung bei Azure Resource Manager.
     - Der API-Versionsparameter gibt die IMDS-Version an. Verwenden Sie mindestens „api-version=2018-02-01“.
 
@@ -95,7 +95,7 @@ Das folgende Diagramm zeigt, wie verwaltete Dienstidentitäten mit virtuellen Az
    > [!Note]
    > Sie können diesen Schritt auch vor Schritt 3 ausführen.
 
-5. Der auf dem virtuellen Computer ausgeführte Code kann ein Token vom Azure IMDS-Identitätsendpunkt (Instance Metadata Service) anfordern, auf das nur von dem virtuellen Computer aus zugegriffen werden kann: `http://169.254.169.254/metadata/identity/oauth2/token`
+5. Der auf dem virtuellen Computer ausgeführte Code kann ein Token vom Azure IMDS-Identitätsendpunkt (Instance Metadata Service) anfordern, auf das nur von dem virtuellen Computer aus zugegriffen werden kann: `http://169.254.169.254/metadata/identity/oauth2/token`
     - Der Ressourcenparameter gibt den Dienst an, an den das Token gesendet wird. Verwenden Sie `resource=https://management.azure.com/` für die Authentifizierung bei Azure Resource Manager.
     - Der Client-ID-Parameter gibt die Identität an, für die das Token angefordert wird. Dieser Wert ist erforderlich, um Mehrdeutigkeiten zu vermeiden, wenn auf einer einzelnen VM mehrere vom Benutzer zugewiesene Identitäten vorhanden sind.
     - Der API-Versionsparameter gibt die Azure Instance Metadata Service-Version an. Verwenden Sie `api-version=2018-02-01` oder höher.
@@ -119,23 +119,23 @@ Erfahren Sie, wie Sie eine verwaltete Identität mit einer Windows-VM verwenden:
 * [Zugreifen auf Azure Resource Manager](tutorial-windows-vm-access-arm.md)
 * [Zugreifen auf Azure SQL](tutorial-windows-vm-access-sql.md)
 * [Zugreifen auf Azure Storage mithilfe eines Zugriffsschlüssels](tutorial-windows-vm-access-storage.md)
-* [Zugreifen auf Azure Storage mithilfe von Shared Access Signatures](tutorial-windows-vm-access-storage-sas.md)
-* [Zugreifen auf eine Azure AD-fremde Ressource mithilfe von Azure Key Vault](tutorial-windows-vm-access-nonaad.md)
+* [Zugreifen auf Azure Storage mithilfe von SAS-Anmeldeinformationen](tutorial-windows-vm-access-storage-sas.md)
+* [Zugreifen auf eine Nicht-Azure AD-Ressource mithilfe von Azure Key Vault](tutorial-windows-vm-access-nonaad.md)
 
 Erfahren Sie, wie Sie eine verwaltete Identität mit einer Linux-VM verwenden:
 
 * [Zugreifen auf Azure Data Lake Store](tutorial-linux-vm-access-datalake.md)
 * [Zugreifen auf Azure Resource Manager](tutorial-linux-vm-access-arm.md)
 * [Zugreifen auf Azure Storage mithilfe eines Zugriffsschlüssels](tutorial-linux-vm-access-storage.md)
-* [Zugreifen auf Azure Storage mithilfe von Shared Access Signatures](tutorial-linux-vm-access-storage-sas.md)
-* [Zugreifen auf eine Azure AD-fremde Ressource mithilfe von Azure Key Vault](tutorial-linux-vm-access-nonaad.md)
+* [Zugreifen auf Azure Storage mithilfe von SAS-Anmeldeinformationen](tutorial-linux-vm-access-storage-sas.md)
+* [Zugreifen auf eine Nicht-Azure AD-Ressource mithilfe von Azure Key Vault](tutorial-linux-vm-access-nonaad.md)
 
 Erfahren Sie, wie Sie eine verwaltete Identität mit anderen Azure-Diensten verwenden:
 
 * [Azure App Service](/azure/app-service/overview-managed-identity)
 * [Azure-Funktionen](/azure/app-service/overview-managed-identity)
 * [Azure Logic Apps](/azure/logic-apps/create-managed-service-identity)
-* [Azure-Servicebus](../../service-bus-messaging/service-bus-managed-service-identity.md)
+* [Azure Service Bus](../../service-bus-messaging/service-bus-managed-service-identity.md)
 * [Azure Event Hubs](../../event-hubs/event-hubs-managed-service-identity.md)
 * [Azure API Management](../../api-management/api-management-howto-use-managed-service-identity.md)
 * [Azure Container Instances](../../container-instances/container-instances-managed-identity.md)
@@ -148,5 +148,5 @@ Verwaltete Identitäten für Azure-Ressourcen können zur Authentifizierung bei 
 
 Informationen zu den ersten Schritten mit der Funktion für verwaltete Identitäten für Azure-Ressourcen finden Sie in den folgenden Schnellstartanleitungen:
 
-* [Verwenden einer systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Resource Manager](tutorial-windows-vm-access-arm.md)
-* [Verwenden einer systemseitig zugewiesenen verwalteten Identität eines virtuellen Linux-Computers für den Zugriff auf Azure Resource Manager](tutorial-linux-vm-access-arm.md)
+* [Use a Windows VM system-assigned managed identity to access Resource Manager](tutorial-windows-vm-access-arm.md) (Verwenden der systemseitig zugewiesenen verwalteten Identität einer Windows-VM für den Zugriff auf Resource Manager)
+* [Use a Linux VM system-assigned managed identity to access Resource Manager](tutorial-linux-vm-access-arm.md) (Verwenden der systemseitig zugewiesenen verwalteten Identität einer Linux-VM für den Zugriff auf Resource Manager)

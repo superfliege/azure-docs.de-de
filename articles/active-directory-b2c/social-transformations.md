@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 53608654392d7efb73b6dadac14f01a94bb035a7
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58893519"
 ---
 # <a name="social-accounts-claims-transformations"></a>Anspruchstransformationen für Social Media-Konten
@@ -81,7 +81,7 @@ Fügt eine `AlternativeSecurityId` an einen `alternativeSecurityIdCollection`-An
 Das folgende Beispiel verknüpft eine neue Social Media-Identität mit einem vorhandenen Konto. So verknüpfen Sie eine neue Social Media-Identität
 1. Geben Sie in den technischen Profilen **AAD-UserReadUsingAlternativeSecurityId** und **AAD-UserReadUsingObjectId** den **alternativeSecurityIds**-Anspruch des Benutzers aus.
 1. Bitten Sie den Benutzer, sich mit einem der Identitätsanbieter, die nicht mit diesem Benutzer verknüpft sind, anzumelden.
-1. Erstellen Sie mithilfe der Anspruchstransformation **CreateAlternativeSecurityId** einen neuen **alternativeSecurityId**-Anspruchstyp namens `AlternativeSecurityId2`
+1. Erstellen Sie mithilfe der Anspruchstransformation **CreateAlternativeSecurityId** einen neuen **alternativeSecurityId**-Anspruchstyp mit dem Namen `AlternativeSecurityId2`.
 1. Rufen Sie die Anspruchstransformation **AddItemToAlternativeSecurityIdCollection** auf, um den **AlternativeSecurityId2**-Anspruch dem vorhandenen **AlternativeSecurityIds**-Anspruch hinzuzufügen.
 1. Behalten Sie den **alternativeSecurityIds**-Anspruch im Benutzerkonto bei.
 

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2019
 ms.author: magoedte
 ms.openlocfilehash: ef5ab3d4fe71f688a0b4f3879248ea1715874a0b
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58793729"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurieren von Service Map in Azure
@@ -95,7 +95,7 @@ Im folgenden Abschnitt sind die unterstützten Betriebssysteme für den Dependen
 
 | Betriebssystemversion | Kernelversion |
 |:--|:--|
-| Ubuntu 18.04 | Kernel 4.15.\*<br>4.18* |
+| Ubuntu 18.04 | kernel 4.15.\*<br>4.18* |
 | Ubuntu 16.04.3 | Kernel 4.15.* |
 | 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
 | 14.04 | 3.13.\*<br>4.4.\* |

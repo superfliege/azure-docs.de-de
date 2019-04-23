@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
 ms.openlocfilehash: 7edf0a9f8d4eb4c01b6d80fd82a1061b6cbb1e35
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918551"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Verwenden von Azure CDN mit SAS
@@ -89,8 +89,7 @@ Diese Option ist nur für **Azure CDN Premium von Verizon**-Profile verfügbar. 
    ![CDN-URL-Rewriteregel – links](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
    ![CDN-URL-Rewriteregel – rechts](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
 
-2. Nach Aktivierung der neuen Regel können Benutzer auch ohne Verwendung des SAS-Tokens in der URL auf Dateien im angegebenen Container am CDN-Endpunkt zugreifen. Das Format sieht wie folgt aus:
-   `https://<endpoint hostname>.azureedge.net/<container>/<file>`
+2. Nach Aktivierung der neuen Regel können Benutzer auch ohne Verwendung des SAS-Tokens in der URL auf Dateien im angegebenen Container am CDN-Endpunkt zugreifen. Das Format sieht wie folgt aus: `https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
    Beispiel:    
    `https://sasstoragedemo.azureedge.net/container1/demo.jpg`

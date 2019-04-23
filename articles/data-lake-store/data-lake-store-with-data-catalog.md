@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: fd887560c0011fb1ec2141e33f02f7e3d8a39c81
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58877883"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Registrieren von Daten aus Azure Data Lake Storage Gen1 in Azure Data Catalog
@@ -74,10 +74,10 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
      ![Suchen von Daten im Katalog](./media/data-lake-store-with-data-catalog/search-data-in-catalog.png "Suchen von Daten im Katalog")
 1. Sie können nun Vorgänge wie Hinzufügen von Anmerkungen und Dokumenten zu den Daten ausführen. Weitere Informationen finden Sie unter den folgenden Links.
 
-    * [Kommentieren von Datenquellen in Data Catalog](../data-catalog/data-catalog-how-to-annotate.md)
+    * [Hinzufügen von Anmerkungen zu Datenquellen in Data Catalog](../data-catalog/data-catalog-how-to-annotate.md)
     * [Hinzufügen von Dokumenten zu Datenquellen in Data Catalog](../data-catalog/data-catalog-how-to-documentation.md)
 
 ## <a name="see-also"></a>Weitere Informationen
-* [Kommentieren von Datenquellen in Data Catalog](../data-catalog/data-catalog-how-to-annotate.md)
+* [Hinzufügen von Anmerkungen zu Datenquellen in Data Catalog](../data-catalog/data-catalog-how-to-annotate.md)
 * [Hinzufügen von Dokumenten zu Datenquellen in Data Catalog](../data-catalog/data-catalog-how-to-documentation.md)
 * [Integrieren von Data Lake Storage Gen1 in andere Azure-Dienste](data-lake-store-integrate-with-other-services.md)

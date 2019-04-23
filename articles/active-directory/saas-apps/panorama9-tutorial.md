@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: ff26acc1050a6104525ec44304fd9fee21d6d3cb
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59275577"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>Tutorial: Azure Active Directory-Integration mit Panorama9
@@ -105,9 +105,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Panorama
 
     ![SSO-Informationen zur Domäne und zu den URLs für Panorama9](common/sp-identifier.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL ein: `https://dashboard.panorama9.com/saml/access/3262`
+    a. Geben Sie im Textfeld **Anmelde-URL** die URL wie folgt ein: `https://dashboard.panorama9.com/saml/access/3262`.
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://www.panorama9.com/saml20/<tenant-name>`
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://www.panorama9.com/saml20/<tenant-name>`.
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den Panorama9-Client](https://support.panorama9.com/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -208,7 +208,7 @@ Damit sich Azure AD-Benutzer bei Panorama9 anmelden können, müssen sie in Pan
 
 Im Fall von Panorama9 ist die Bereitstellung eine manuelle Aufgabe.
 
-**So konfigurieren Sie die Benutzerbereitstellung**
+**Um die Benutzerbereitstellung zu konfigurieren, führen Sie die folgenden Schritte durch:**
 
 1. Melden Sie sich bei der **Panorama9**-Unternehmenswebsite als Administrator an.
 

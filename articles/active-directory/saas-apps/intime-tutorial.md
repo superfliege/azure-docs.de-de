@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: bd1ed30d56e8d23057e560b1180c35e0a29542b6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59274942"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intime"></a>Tutorial: Azure Active Directory-Integration mit InTime
@@ -51,7 +51,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Konfigurieren der Integration von InTime in Azure AD müssen Sie InTime aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie die folgenden Schritte aus, um InTime aus dem Katalog hinzuzufügen:**
+**Um InTime aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -105,9 +105,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit InTime 
 
     ![SSO-Informationen zur Domäne und zu den URLs für InTime](common/sp-identifier.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL ein: `https://intime6.intimesoft.com/mytime/login/login.xhtml`
+    a. Geben Sie im Textfeld **Anmelde-URL** die URL wie folgt ein: `https://intime6.intimesoft.com/mytime/login/login.xhtml`.
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL ein: `https://auth.intimesoft.com/auth/realms/master`
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL ein: `https://auth.intimesoft.com/auth/realms/master`.
 
 5. Die InTime-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. **nameidentifier** ist hier **user.userprincipalname** zugeordnet. Die InTime-Anwendung erwartet, dass **nameidentifier** der Wert **user.mail** zugeordnet ist. Sie müssen die Attributzuordnung daher entsprechend ändern, indem Sie auf das Symbol **Bearbeiten** klicken.
 

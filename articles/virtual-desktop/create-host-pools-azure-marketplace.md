@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: helohr
 ms.openlocfilehash: f539a71fccca116ee031781df855ec55158eb63a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59257449"
 ---
 # <a name="tutorial-create-a-host-pool-with-azure-marketplace"></a>Tutorial: Erstellen eines Hostpools mit Azure Marketplace
@@ -125,4 +125,4 @@ Derzeit werden folgende Clients unterstützt:
 Nachdem Sie nun einen Hostpool erstellt und Benutzer für den Zugriff auf dessen Desktop zugewiesen haben, können Sie den Hostpool als Nächstes mit RemoteApps füllen. Weitere Informationen zum Verwalten von Apps in Windows Virtual Desktop finden Sie im folgenden Tutorial:
 
 > [!div class="nextstepaction"]
-> [Verwalten von App-Gruppen für Windows Virtual Desktop (Vorschauversion)](./manage-app-groups.md)
+> [Manage app groups for Windows Virtual Desktop Preview](./manage-app-groups.md) (Verwalten von App-Gruppen für Windows Virtual Desktop (Vorschauversion))

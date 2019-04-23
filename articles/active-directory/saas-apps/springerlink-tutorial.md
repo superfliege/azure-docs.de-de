@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 00154ac3c94a1f43872aff3be29ddd108a4173f0
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59268840"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>Tutorial: Azure Active Directory-Integration von Springer Link
@@ -107,7 +107,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL ein: `https://fsso.springer.com`
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL ein: `https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL ein: `https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`.
 
     c. Klicken Sie auf **Zusätzliche URLs festlegen**.
 

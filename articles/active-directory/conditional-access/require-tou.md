@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c37a58cb9f9d1082d02854f43e511e5431d90c13
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58894250"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Schnellstart: Fordern der Annahme von Nutzungsbedingungen vor dem Zugreifen auf Cloud-Apps
@@ -42,7 +42,7 @@ Für die Durchführung des Szenarios im Rahmen dieses Schnellstarts benötigen S
 
 Das Ziel dieses Schritts besteht darin, den Anmeldevorgang ohne eine Richtlinie für bedingten Zugriff zu überprüfen.
 
-**So testen Sie Ihre Anmeldung:**
+**So testen Sie Ihre Anmeldung**
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als Isabella Simonsen an.
 1. Melden Sie sich ab.
@@ -51,7 +51,7 @@ Das Ziel dieses Schritts besteht darin, den Anmeldevorgang ohne eine Richtlinie 
 
 Dieser Abschnitt enthält die Schritte, die Sie zum Erstellen von Beispielnutzungsbedingungen ausführen müssen. Wenn Sie Nutzungsbedingungen erstellen, wählen Sie einen Wert für **Mit Richtlinienvorlagen für bedingten Zugriff erzwingen** aus. Nach dem Auswählen von **Benutzerdefinierte Richtlinie** wird das Dialogfeld zum Erstellen einer neuen Richtlinie für bedingten Zugriff geöffnet, sobald Ihre Nutzungsbedingungen erstellt wurden.
 
-**So erstellen Sie Ihre Nutzungsbedingungen:**
+**So erstellen Sie Ihre Nutzungsbedingungen**
 
 1. Erstellen Sie in Microsoft Word ein neues Dokument.
 
@@ -110,7 +110,7 @@ Legen Sie in Ihrer Richtlinie Folgendes fest:
 
 ![Richtlinie erstellen](./media/require-tou/1234.png)
 
-**So konfigurieren Sie die Richtlinie für bedingten Zugriff:**
+**So konfigurieren Sie die Richtlinie für bedingten Zugriff**
 
 1. Geben Sie auf der Seite **Neu** im Textfeld **Name** den Text **Nutzungsbedingungen für Isabella erforderlich** ein.
 
@@ -184,7 +184,7 @@ Durch Klicken auf **What If** wird ein Simulationsbericht mit folgenden Informat
 
 ![What If-Richtlinientool](./media/require-tou/79.png)
 
-**So werten Sie die Richtlinie für bedingten Zugriff aus:**
+**So werten Sie die Richtlinie für bedingten Zugriff aus**
 
 1. Klicken Sie auf der Seite [Bedingter Zugriff – Richtlinien](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) im Menü am oberen Rand auf **What If**.  
 

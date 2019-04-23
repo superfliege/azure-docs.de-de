@@ -11,10 +11,10 @@ ms.date: 03/03/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 12b464d9b6bd09acb9c93ab1de0ba178f28a778a
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58894900"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C: Migrieren von Benutzern mit Identitäten in sozialen Netzwerken
@@ -31,7 +31,7 @@ Dieser Artikel ist eine Fortsetzung des Artikels „Azure Active Directory B2C: 
 
 * **Kombinieren eines lokalen Kontos mit einer Identität eines sozialen Netzwerks**: Wie bereits erwähnt, werden Anmeldenamen lokaler Konten und Kontoidentitäten sozialer Netzwerke in verschiedenen Attributen gespeichert. `signInNames` wird für das lokale Konto verwendet und `userIdentities` für das Konto des sozialen Netzwerks. Ein Azure AD B2C-Konto kann entweder ausschließlich ein lokales Konto oder ausschließlich ein Konto eines sozialen Netzwerks sein oder ein lokales Konto mit einer Identität eines sozialen Netzwerks in einem Benutzerdatensatz kombinieren. Dieses Verhalten ermöglicht die Verwaltung eines einzelnen Kontos, wobei sich ein Benutzer mit den Anmeldeinformationen des lokalen Kontos oder mit den sozialen Identitäten anmelden kann.
 
-* `UserIdentity` Typ: Enthält Informationen zur Identität eines Benutzers mit einem Konto bei einem sozialen Netzwerk in einem Azure AD B2C-Mandanten:
+* `UserIdentity`-Typ: Enthält Informationen über die Identität eines Benutzers mit einem Konto bei einem sozialen Netzwerk in einem Azure AD B2C-Mandanten:
   * `issuer` Die Zeichenfolgendarstellung des Identitätsanbieters, der die Benutzer-ID ausgegeben hat (z.B. „facebook.com“).
   * `issuerUserId` Die eindeutige Benutzer-ID im base64-Format, die vom Identitätsanbieter eines sozialen Netzwerks verwendet wird.
 

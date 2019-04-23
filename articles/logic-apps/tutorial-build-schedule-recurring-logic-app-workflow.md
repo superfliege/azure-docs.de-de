@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
 ms.openlocfilehash: ebc6388f1ebc7546ffda07095ead50797bde4e8b
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58884685"
 ---
 # <a name="check-traffic-on-a-schedule-with-azure-logic-apps"></a>Überprüfen der Verkehrslage gemäß eines Zeitplans mit Azure Logic Apps
@@ -59,10 +59,10 @@ Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim <a href="ht
 
    | Einstellung | Wert | BESCHREIBUNG | 
    | ------- | ----- | ----------- | 
-   | **NAME** | LA-TravelTime | Der Name Ihrer Logik-App | 
+   | **Name** | LA-TravelTime | Der Name Ihrer Logik-App | 
    | **Abonnement** | <*Name Ihres Azure Abonnements*> | Der Name Ihres Azure-Abonnements | 
    | **Ressourcengruppe** | LA-TravelTime-RG | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md), die zum Organisieren verwandter Ressourcen verwendet wird. | 
-   | **Standort** | USA (Ost) 2 | Die Region, in der die Informationen zu Ihrer Logik-App gespeichert werden sollen. | 
+   | **Location** | USA (Ost) 2 | Die Region, in der die Informationen zu Ihrer Logik-App gespeichert werden sollen. | 
    | **Log Analytics** | Aus | Behalten Sie die Einstellung **Aus** für die Diagnoseprotokollierung bei. | 
    |||| 
 
@@ -78,8 +78,7 @@ Fügen Sie als Nächstes den Wiederholungs-[Trigger](../logic-apps/logic-apps-ov
 
    ![Suchen und Hinzufügen des Triggers „Zeitplan: Wiederholung“](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-schedule-recurrence-trigger.png)
 
-2. Klicken Sie im Bereich **Wiederholung** auf die Schaltfläche **...** (**Ellipse**) und anschließend auf **Umbenennen**. Benennen Sie den Trigger wie folgt um:
-```Check travel time every weekday morning```
+2. Klicken Sie im Bereich **Wiederholung** auf die Schaltfläche **...** (**Ellipse**) und anschließend auf **Umbenennen**. Nennen Sie den Trigger wie folgt: ```Check travel time every weekday morning```
 
    ![Umbenennen des Triggers](./media/tutorial-build-scheduled-recurring-logic-app-workflow/rename-recurrence-schedule-trigger.png)
 
@@ -130,8 +129,7 @@ Sie verfügen über einen Trigger und können nun eine [Aktion](../logic-apps/lo
    | **API-Schlüssel** | <*Ihr Bing Maps-Schlüssel*> | Geben Sie den Bing Maps-Schlüssel ein, den Sie zuvor abgerufen haben. Falls Sie keinen Bing Maps-Schlüssel besitzen, lesen Sie die Informationen zum <a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">Abrufen eines Schlüssels</a>. | 
    | | | |  
 
-4. Benennen Sie die Aktion wie folgt um:
-```Get route and travel time with traffic```
+4. Nennen Sie die Aktion wie folgt: ```Get route and travel time with traffic```
 
 5. Geben Sie wie hier gezeigt und beschrieben Details für die Aktion **Get route** (Route ermitteln) an. Beispiel:
 
@@ -142,11 +140,11 @@ Sie verfügen über einen Trigger und können nun eine [Aktion](../logic-apps/lo
    | **Wegpunkt 1** | <*Start*> | Ausgangspunkt für die Route | 
    | **Wegpunkt 2** | <*Ziel*> | Ziel der Route | 
    | **Vermeiden** | Keine | Elemente, die auf der Route vermieden werden sollen, etwa Autobahnen, Mautgebühren usw. | 
-   | **Optimierung** | timeWithTraffic | Ein Parameter zur Optimierung der Route, z.B. Entfernung, Reisezeit basierend auf der aktuellen Verkehrslage, usw. Wählen Sie den Parameter „timeWithTraffic“. | 
-   | **Distance unit (Einheit für Entfernung)** | <*Ihre Präferenz*> | Die Einheit der Entfernung für die Route. In diesem Artikel wird die folgende Einheit verwendet: „Meile“  | 
-   | **Travel mode (Reisemodus)** | Driving (Auto) | Der Reisemodus für die Route. Wählen Sie den folgenden Modus aus: Driving (Auto) | 
-   | **Transit Date-Time (Datum und Uhrzeit für Transit)** | Keine | Gilt für nur für den Transitmodus. | 
-   | **Date-Time Type (Datums-/Uhrzeittyp)** | Keine | Gilt für nur für den Transitmodus. | 
+   | **Optimieren** | timeWithTraffic | Ein Parameter zur Optimierung der Route, z.B. Entfernung, Reisezeit basierend auf der aktuellen Verkehrslage, usw. Wählen Sie den Parameter „timeWithTraffic“. | 
+   | **Distance unit** (Einheit für Entfernung) | <*Ihre Präferenz*> | Die Einheit der Entfernung für die Route. In diesem Artikel wird die folgende Einheit verwendet: „Meile“  | 
+   | **Travel mode** (Reisemodus) | Driving (Auto) | Der Reisemodus für die Route. Wählen Sie den folgenden Modus aus: Driving (Auto) | 
+   | **Transit Date-Time** (Datum und Uhrzeit für Transit) | Keine | Gilt für nur für den Transitmodus. | 
+   | **Date-Time Type** (Datums-/Uhrzeittyp) | Keine | Gilt für nur für den Transitmodus. | 
    |||| 
 
    Weitere Informationen zu diesen Parametern finden Sie unter [Calculate a route](https://msdn.microsoft.com/library/ff701717.aspx) (Berechnen einer Route).
@@ -167,15 +165,14 @@ Die vorherige Aktion **Get route** (Route abrufen) gibt im Feld **Travel Duratio
 
    ![Auswählen der Aktion „Variablen – Variable initialisieren“](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-initialize-variable-action.png)
 
-3. Benennen Sie diese Aktion wie folgt um:
-```Create variable to store travel time```
+3. Nennen Sie diese Aktion wie folgt: ```Create variable to store travel time```
 
 4. Geben Sie die Details für die Variable an wie hier beschrieben:
 
    | Einstellung | Wert | BESCHREIBUNG | 
    | ------- | ----- | ----------- | 
-   | **NAME** | travelTime | Der Name für die Variable | 
-   | **Type** | Ganze Zahl  | Der Datentyp für die Variable | 
+   | **Name** | travelTime | Der Name für die Variable | 
+   | **Typ** | Ganze Zahl  | Der Datentyp für die Variable | 
    | **Wert** | Ein Ausdruck, der die aktuelle Reisezeit von Sekunden in Minuten umwandelt. (Sehen Sie sich die Schritte unterhalb dieser Tabelle an.) | Der Anfangswert für die Variable | 
    |||| 
 
@@ -193,7 +190,7 @@ Die vorherige Aktion **Get route** (Route abrufen) gibt im Feld **Travel Duratio
       Ist das Browserfenster breit, wird die Liste mit den dynamischen Inhalten angezeigt. 
       Ist das Browserfenster schmal, wird eine Parameterliste inline unterhalb des Bearbeitungsfelds angezeigt, das gerade fokussiert ist.
 
-   2. Geben Sie im Ausdrucks-Editor den folgenden Ausdruck ein: ```div(,60)```
+   2. Geben Sie im Ausdrucks-Editor den folgenden Ausdruck ein: ```div(,60)```.
 
       ![Eingeben des Ausdrucks „div(,60)“](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-2.png)
 
@@ -222,7 +219,7 @@ Fügen Sie als Nächstes eine Bedingung hinzu, die überprüft, ob die aktuelle 
 
 1. Klicken Sie unter der vorherigen Aktion auf **+ Neuer Schritt** > **Bedingung hinzufügen**. 
 
-2. Benennen Sie die Bedingung wie folgt um: ```If travel time exceeds limit```
+2. Nennen Sie die Bedingung wie folgt: ```If travel time exceeds limit```
 
 3. Erstellen Sie wie hier beschrieben und gezeigt eine Bedingung, die überprüft, ob **travelTime** den von Ihnen angegebenen Grenzwert überschreitet:
 
@@ -259,8 +256,7 @@ Fügen Sie nun eine Aktion hinzu, die Ihnen eine E-Mail sendet, wenn die Reiseze
 
    Logic Apps erstellt eine Verbindung mit Ihrem E-Mail-Konto.
 
-4. Benennen Sie die Aktion wie folgt um:
-```Send email with travel time```
+4. Nennen Sie die Aktion wie folgt: ```Send email with travel time```
 
 5. Geben Sie im Feld **An** die E-Mail-Adresse des Empfängers ein. Geben Sie zu Testzwecken Ihre E-Mail-Adresse an.
 

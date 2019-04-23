@@ -16,10 +16,10 @@ ms.date: 02/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f250a5ac5f6fefa099303b033a9687f1a219efd8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59262311"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bersin"></a>Tutorial: Azure Active Directory-Integration mit Bersin
@@ -51,7 +51,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Konfigurieren der Integration von Bersin in Azure AD müssen Sie Bersin aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie die folgenden Schritte aus, um Bersin aus dem Katalog hinzuzufügen:**
+**Um Bersin aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -108,7 +108,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD 
 
     b. Klicken Sie auf **Zusätzliche URLs festlegen**.
 
-    c. Geben Sie im Textfeld **Relayzustand** eine URL im folgenden Format ein: `https://www.bersin.com/secure/`
+    c. Geben Sie im Textfeld **Relayzustand** eine URL nach folgendem Muster ein: `https://www.bersin.com/secure/`.
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten** Modus konfigurieren möchten:
 

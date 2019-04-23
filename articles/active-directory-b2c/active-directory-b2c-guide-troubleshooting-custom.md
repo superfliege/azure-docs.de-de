@@ -11,10 +11,10 @@ ms.date: 05/07/2017
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: b33b76175558c71720c15a2a4e206e26a60f1f95
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58880643"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Beheben von Problemen mit benutzerdefinierten Azure AD B2C-Richtlinien und dem Framework für die Identitätsfunktion
@@ -44,7 +44,7 @@ Es kann auch hilfreich sein, sich die XML-Regeln anzusehen. Bei Azure AD B2C wer
 Fehlercodeausschnitt: `... makes a reference to ClaimType with id "displaName" but neither the policy nor any of its base policies contain such an element`
 * Der „ClaimType“-Wert ist ggf. falsch geschrieben oder ist im Schema nicht vorhanden.
 * „ClaimType“-Werte müssen in mindestens einer Datei der Richtlinie definiert sein. 
-    Beispiel:  `<ClaimType Id="socialIdpUserId">`
+    Beispiel: `<ClaimType Id="socialIdpUserId">`
 * Wenn „ClaimType“ in der Datei mit den Erweiterungen definiert ist, aber auch in einem „TechnicalProfile“-Wert der Basisdatei verwendet wird, führt das Hochladen der Basisdatei zu einem Fehler.
 
 Fehlercodeausschnitt: `...makes a reference to a ClaimsTransformation with id...`
@@ -66,7 +66,7 @@ Fehlercodeausschnitt: `Reason: User is currently logged as a user of 'yourtenant
 
 ## <a name="recommended-practices"></a>Empfohlene Vorgehensweisen
 
-**Bewahren Sie mehrere Versionen Ihrer Szenarien auf. Gruppieren Sie sie mit Ihrer Anwendung in einem Projekt.** Die Basisdateien, Dateien mit Erweiterungen und Dateien der vertrauenden Seite sind direkt voneinander abhängig. Speichern Sie sie als Gruppe. Wenn Ihren Richtlinien neue Features hinzugefügt werden, ist es ratsam, separate Arbeitsversionen zu verwenden. Stellen Sie Arbeitsversionen in Ihrem eigenen Dateisystem mit dem Anwendungscode für die Interaktion bereit.  Es kann sein, dass Ihre Anwendungen für einen Mandanten viele verschiedene Richtlinien der vertrauenden Seite aufrufen. Diese können unter Umständen eine Abhängigkeit von den Ansprüchen entwickeln, die sie von Ihren Azure AD B2C-Richtlinien erwarten.
+**Halten Sie mehrere Versionen Ihrer Szenarien vor. Gruppieren Sie sie mit Ihrer Anwendung in einem Projekt.** Die Basisdateien, Dateien mit Erweiterungen und Dateien der vertrauenden Seite sind direkt voneinander abhängig. Speichern Sie sie als Gruppe. Wenn Ihren Richtlinien neue Features hinzugefügt werden, ist es ratsam, separate Arbeitsversionen zu verwenden. Stellen Sie Arbeitsversionen in Ihrem eigenen Dateisystem mit dem Anwendungscode für die Interaktion bereit.  Es kann sein, dass Ihre Anwendungen für einen Mandanten viele verschiedene Richtlinien der vertrauenden Seite aufrufen. Diese können unter Umständen eine Abhängigkeit von den Ansprüchen entwickeln, die sie von Ihren Azure AD B2C-Richtlinien erwarten.
 
 **Entwickeln und testen Sie technische Profile mit bekannten User Journeys.** Verwenden Sie getestete Starter Pack-Richtlinien, um Ihre technischen Profile einzurichten. Testen Sie diese separat, bevor Sie sie in Ihre eigenen User Journeys einbinden.
 

@@ -12,10 +12,10 @@ ms.date: 01/17/2019
 ms.author: gamal
 manager: craigg
 ms.openlocfilehash: 2edd4e28a0dd67be3c06159bce2e968d681b7f70
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58905255"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Continuous Integration und Continuous Delivery (CI/CD) in Azure Data Factory
@@ -868,7 +868,7 @@ Hier finden Sie einige Richtlinien für die Erstellung der benutzerdefinierten P
       * `-` bedeutet, dass der Standardwert für den Parameter nicht beibehalten werden soll.
       * `|` ist ein Sonderfall für Geheimnisse aus Azure Key Vault für Verbindungszeichenfolgen oder Schlüssel.
    * `<name>` ist der Name des Parameters. Ist dieser Wert leer, wird der Name der Eigenschaft verwendet. Beginnt der Wert mit dem Zeichen `-`, wird der Name gekürzt. `AzureStorage1_properties_typeProperties_connectionString` wird beispielsweise in `AzureStorage1_connectionString` gekürzt.
-   * `<stype>` ist der Typ des Parameters. Wenn  `<stype>`  leer ist, wird standardmäßig der Typ `string` verwendet. Unterstützte Werte: `string`, `bool`, `number`, `object` und `securestring`.
+   * `<stype>` ist der Typ des Parameters. Wenn `<stype>` leer ist, wird standardmäßig der Typ `string` verwendet. Unterstützte Werte: `string`, `bool`, `number`, `object` und `securestring`.
 * Wenn Sie ein Array in der Definitionsdatei angeben, bedeutet das, dass die entsprechende Eigenschaft in der Vorlage ein Array ist. Data Factory durchläuft alle Objekte im Array anhand der Definition, die im Integration Runtime-Objekt des Arrays angegeben ist. Das zweite Objekt (eine Zeichenfolge) wird zum Namen der Eigenschaft, der bei jeder Iteration als Name für den Parameter verwendet wird.
 * Es ist nicht möglich, eine Ressourceninstanz-spezifische Definition zu verwenden. Jede Definition gilt für alle Ressourcen dieses Typs.
 * Standardmäßig werden alle sicheren Zeichenfolgen (etwa Key Vault-Geheimnisse, Verbindungszeichenfolgen, Schlüssel und Token) parametrisiert.

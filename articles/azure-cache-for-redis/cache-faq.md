@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: yegu
 ms.openlocfilehash: 65e8553969aa92848b1c4496724a7b7754b5d659
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895595"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Häufig gestellte Fragen zu Azure Cache for Redis
@@ -69,7 +69,7 @@ Im Folgenden finden Sie häufig gestellte Fragen zu grundlegenden Konzepten. Fra
 * [Was muss bei der Verwendung gängiger Redis-Befehle beachtet werden?](#what-are-some-of-the-considerations-when-using-common-redis-commands)
 * [Wie kann ich die Leistung meines Caches messen und testen?](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 * [Wichtige Details zum Threadpool-Wachstum](#important-details-about-threadpool-growth)
-* [Aktivieren der Garbage Collection auf dem Server-, um bei Verwenden von „StackExchange.Redis“ mehr Durchsatz auf dem Client zu erzielen](#enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis)
+* [Aktivieren der Garbage Collection auf dem Server, um bei Verwenden von „StackExchange.Redis“ mehr Durchsatz auf dem Client zu erzielen](#enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis)
 * [Überlegungen zur Leistung im Zusammenhang mit Verbindungen](#performance-considerations-around-connections)
 
 ## <a name="monitoring-and-troubleshooting-faqs"></a>Häufig gestellte Fragen zur Überwachung und Problembehandlung
@@ -135,7 +135,7 @@ Aus dieser Tabelle können folgende Schlussfolgerungen gezogen werden:
 
 | Tarif | Größe | CPU-Kerne | Verfügbare Bandbreite | 1 KB Wertgröße | 1 KB Wertgröße |
 | --- | --- | --- | --- | --- | --- |
-| **Standard-Cachegrößen** | | |**Megabits pro Sekunde (MBit/s)/Megabyte pro Sekunde (MB/s)** |**Anforderungen pro Sekunde (RPS), kein SLL** |**Anforderungen pro Sekunde (RPS), SLL** |
+| **Standard-Cachegröße** | | |**Megabits pro Sekunde (MBit/s)/Megabyte pro Sekunde (MB/s)** |**Anforderungen pro Sekunde (RPS), kein SLL** |**Anforderungen pro Sekunde (RPS), SLL** |
 | C0 |250 MB |Shared |100 / 12,5 |15.000 |7.500 |
 | C1 |1 GB |1 |500 / 62,5 |38.000 |20.720 |
 | C2 |2,5 GB |2 |500 / 62,5 |41.000 |37.000 |
@@ -143,7 +143,7 @@ Aus dieser Tabelle können folgende Schlussfolgerungen gezogen werden:
 | C4 |13 GB |2 |500 / 62,5 |60.000 |55.000 |
 | C5 |26 GB |4 |1.000/125 |102.000 |93.000 |
 | C6 |53 GB |8 |2.000/250 |126.000 |120.000 |
-| **Premium-Cachegrößen** | |**CPU-Kerne pro Shard** | **Megabits pro Sekunde (MBit/s)/Megabyte pro Sekunde (MB/s)** |**Anforderungen pro Sekunde (RPS), kein SLL, pro Shard** |**Anforderungen pro Sekunde (RPS), SLL, pro Shard** |
+| **Premium-Cachegröße** | |**CPU-Kerne pro Shard** | **Megabits pro Sekunde (MBit/s)/Megabyte pro Sekunde (MB/s)** |**Anforderungen pro Sekunde (RPS), kein SLL, pro Shard** |**Anforderungen pro Sekunde (RPS), SLL, pro Shard** |
 | P1 |6 GB |2 |1.500/187,5 |180.000 |172.000 |
 | P2 |13 GB |4 |3.000/375 |350.000 |341.000 |
 | P3 |26 GB |4 |3.000/375 |350.000 |341.000 |

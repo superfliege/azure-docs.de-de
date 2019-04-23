@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 0b16154edbda4bedfd4e9b680ba4311e7a235212
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878756"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Verwenden von Azure Data Lake Storage Gen1 für Big Data-Anforderungen
@@ -80,7 +80,7 @@ Große Datenmengen können in vorhandenen Hadoop-Clustern oder lokal auf Compute
 
 | Vorgehensweise | Details | Vorteile | Überlegungen |
 | --- | --- | --- | --- |
-| Verwenden Sie Azure Data Factory (ADF), um Daten direkt aus Hadoop-Clustern in Azure Data Lake Storage Gen1 zu kopieren. |[ADF unterstützt HDFS als Datenquelle](../data-factory/connector-hdfs.md) |ADF bietet sofortige Unterstützung für HDFS und erstklassige End-to-End-Verwaltung und -Überwachung. |Ein Datenverwaltungsgateway muss lokal oder im IaaS-Cluster bereitgestellt werden. |
+| Verwenden Sie Azure Data Factory (ADF), um Daten direkt aus Hadoop-Clustern in Azure Data Lake Storage Gen1 zu kopieren. |[ADF unterstützt HDFS als Datenquelle.](../data-factory/connector-hdfs.md) |ADF bietet sofortige Unterstützung für HDFS und erstklassige End-to-End-Verwaltung und -Überwachung. |Ein Datenverwaltungsgateway muss lokal oder im IaaS-Cluster bereitgestellt werden. |
 | Exportieren Sie Daten in Form von Dateien aus Hadoop. Kopieren Sie die Dateien dann mit einer geeigneten Methode in Azure Data Lake Storage Gen1. |Sie können Dateien mithilfe der folgenden Komponenten in Azure Data Lake Storage Gen1 kopieren: <ul><li>[Azure PowerShell für Windows-Betriebssystem](data-lake-store-get-started-powershell.md)</li><li>[Azure-Befehlszeilenschnittstelle](data-lake-store-get-started-cli-2.0.md)</li><li>Benutzerdefinierte App mit einem Data Lake Storage Gen1-SDK</li></ul> |Lässt sich schnell einrichten. Benutzerdefinierte Uploads sind möglich. |Der Prozess erfordert mehrere Schritte und verschiedene Technologien. Da die Tools benutzerdefiniert sind, werden Verwaltung und Überwachung im Lauf der Zeit schwierig. |
 | Verwenden Sie Distcp, um Daten von Hadoop in Azure Storage zu kopieren. Kopieren Sie die Daten dann mit einer geeigneten Methode aus Azure Storage in Data Lake Storage Gen1. |Sie können Daten mithilfe der folgenden Komponenten aus Azure Storage in Data Lake Storage Gen1 kopieren: <ul><li>[Azure Data Factory](../data-factory/copy-activity-overview.md)</li><li>[AdlCopy-Tool](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[Ausführung von Apache DistCp auf HDInsight-Clustern](data-lake-store-copy-data-wasb-distcp.md)</li></ul> |Sie können Open Source-Tools verwenden. |Der Prozess erfordert mehrere Schritte und verschiedene Technologien. |
 

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: geetha
 ms.openlocfilehash: 13eb800cd64e0de736b1fdea308a03d8a8d0f046
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59358200"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Wiederherstellen von Key Vault-Schlüssel und -Geheimschlüssel für verschlüsselte virtuelle Computer mithilfe von Azure Backup
@@ -66,7 +66,7 @@ Restore-AzureKeyVaultKey -VaultName '<target_key_vault_name>' -InputFile $keyDes
 
 Rufen Sie mithilfe der zuvor generierten JSON-Datei den Geheimnisnamen und -wert ab, und fügen Sie sie in das Cmdlet zum Festlegen von Geheimnissen ein, um das Geheimnis (BEK) wieder im Schlüsseltresor zu platzieren. Verwenden Sie diese Cmdlets, wenn Ihr **virtueller Computer mit BEK und KEK verschlüsselt ist**.
 
-**Verwenden Sie diese Cmdlets, wenn Ihr virtueller Windows-Computer mit BEK und KEK verschlüsselt ist.**
+Verwenden Sie diese Cmdlets, wenn Ihr **virtueller Windows-Computer mit BEK und KEK verschlüsselt ist**.
 
 ```powershell
 $secretdata = $encryptionObject.OsDiskKeyAndSecretDetails.SecretData
@@ -76,7 +76,7 @@ $Tags = @{'DiskEncryptionKeyEncryptionAlgorithm' = 'RSA-OAEP';'DiskEncryptionKey
 Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -SecretValue $Secret -ContentType  'Wrapped BEK' -Tags $Tags
 ```
 
-**Verwenden Sie diese Cmdlets, wenn Ihr virtueller Linux-Computer mit BEK und KEK verschlüsselt ist.**
+Verwenden Sie diese Cmdlets, wenn Ihr **virtueller Linux-Computer mit BEK und KEK verschlüsselt ist**.
 
 ```powershell
 $secretdata = $encryptionObject.OsDiskKeyAndSecretDetails.SecretData

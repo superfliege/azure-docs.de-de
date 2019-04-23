@@ -10,10 +10,10 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.openlocfilehash: 7ad2c9dd89843a36a786eeefee8403d32027e11c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59274517"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Hochladen von Dateien von Ihrem Gerät in die Cloud mit IoT Hub
@@ -216,6 +216,6 @@ Sie können das Verwaltungsportal verwenden, um die hochgeladene Datei im Speich
 
 In diesem Tutorial haben Sie gelernt, wie Sie die IoT Hub-Funktionen zum Hochladen von Dateien nutzen, um Dateiuploads zu vereinfachen. In den folgenden Artikeln werden weitere IoT Hub-Features und -Szenarien vorgestellt:
 
-*  [Programmgesteuertes Erstellen eines IoT Hubs](iot-hub-rm-template-powershell.md)
-*  [Einführung in das C SDK](iot-hub-device-sdk-c-intro.md)
+*  [Erstellen einer IoT Hub-Instanz mithilfe einer Azure Resource Manager-Vorlage (PowerShell)](iot-hub-rm-template-powershell.md)
+*  [Azure IoT-Geräte-SDK für C](iot-hub-device-sdk-c-intro.md)
 *  [Azure IoT SDKs](iot-hub-devguide-sdks.md)

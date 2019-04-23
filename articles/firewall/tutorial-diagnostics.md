@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
 ms.openlocfilehash: 393441e7ff620f3795e42c2cb376f99f8763f25b
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59044860"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Tutorial: Überwachen von Azure Firewall-Protokollen und -Metriken
@@ -60,7 +60,7 @@ Nach dem Aktivieren der Diagnoseprotokollierung kann es noch einige Minuten daue
 9. Geben Sie auf der Seite **Log Analytics-Arbeitsbereich** den Namen **firewall-oms** für den neuen **Log Analytics-Arbeitsbereich** ein.
 10. Wählen Sie Ihr Abonnement aus, verwenden Sie die vorhandene Ressourcengruppe für die Firewall (**Test-FW-RG**), und wählen Sie den Standort **USA, Osten** sowie den Tarif **Free** aus.
 11. Klicken Sie auf **OK**.
-   ![Starten des Konfigurationsprozesses][1] OMS-Arbeitsbereiche werden jetzt als Log Analytics-Arbeitsbereiche bezeichnet.  
+   ![Starten des Konfigurationsprozesses][1] OMS-Arbeitsbereiche werden jetzt als Log Analytics-Arbeitsbereiche bezeichnet.  
 12. Klicken Sie unter **Protokoll** auf **AzureFirewallApplicationRule** und **AzureFirewallNetworkRule**, um Protokolle für Anwendungs- und Netzwerkregeln zu erfassen.
    ![Speichern der Diagnoseeinstellungen][2]
 13. Klicken Sie auf **Speichern**.
@@ -116,7 +116,7 @@ Navigieren Sie zu einer Azure Firewall-Instanz, und klicken Sie unter **Überwac
 Nachdem Sie Ihre Firewall für die Erfassung von Protokollen konfiguriert haben, können Sie sich als Nächstes mit dem Anzeigen der Daten in Azure Monitor-Protokollen beschäftigen.
 
 > [!div class="nextstepaction"]
-> [Azure-Netzwerküberwachungslösungen in Log Analytics](../azure-monitor/insights/azure-networking-analytics.md)
+> [Azure-Netzwerküberwachungslösungen in Azure Monitor-Protokollen](../azure-monitor/insights/azure-networking-analytics.md)
 
 [1]: ./media/tutorial-diagnostics/figure1.png
 [2]: ./media/tutorial-diagnostics/figure2.png

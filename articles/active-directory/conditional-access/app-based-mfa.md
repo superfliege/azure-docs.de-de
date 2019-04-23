@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cd5ab513034d6e2946dcb31f3a31dbf86f14873e
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895984"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Schnellstart: Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für bestimmte Apps über den bedingten Zugriff von Azure Active Directory
@@ -64,7 +64,7 @@ Legen Sie in Ihrer Richtlinie Folgendes fest:
 
 ![Erweiterte Richtlinie für bedingten Zugriff](./media/app-based-mfa/31.png)
 
-**So konfigurieren Sie die Richtlinie für bedingten Zugriff:**
+**So konfigurieren Sie die Richtlinie für bedingten Zugriff**
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
 
@@ -152,7 +152,7 @@ Durch Klicken auf **What If** wird ein Simulationsbericht mit folgenden Informat
 
 ![What If-Richtlinientool](./media/app-based-mfa/23.png)
 
-**So werten Sie die Richtlinie für bedingten Zugriff aus:**
+**So werten Sie die Richtlinie für bedingten Zugriff aus**
 
 1. Klicken Sie auf der Seite [Bedingter Zugriff – Richtlinien](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) im Menü am oberen Rand auf **What If**.  
 

@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: bf8c7e76aa6dd69cc505be237e47d8e10e7e8db5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59264861"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ipass-smartconnect"></a>Tutorial: Azure Active Directory-Integration mit iPass SmartConnect
@@ -221,7 +221,7 @@ In diesem Abschnitt erstellen Sie in iPass SmartConnect einen Benutzer namens Br
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-**Führen Sie die folgenden Schritte aus, um die Anwendung im SP-initiierten Fluss zu testen:**
+**Um die Anwendung im SP-initiierten Fluss zu testen, führen Sie die folgenden Schritte durch:**
 
 a. Den iPass SmartConnect-Client für Windows können Sie [hier](https://om-activation.ipass.com/ClientActivation/ssolanding.go) herunterladen.
 
@@ -239,7 +239,7 @@ d. Geben Sie einen Azure-Benutzernamen mit Domäne ein. Klicken Sie auf **Contin
 
 e. Nach erfolgreicher Authentifizierung wird die Clientaktivierung gestartet. Der Client wird aktiviert.
 
-**Führen Sie die folgenden Schritte aus, um die Anwendung im IdP-initiierten Fluss zu testen:**
+**Um die Anwendung im IdP-initiierten Fluss zu testen, führen Sie die folgenden Schritte durch:**
 
 a. Melden Sie sich bei [https://myapps.microsoft.com](https://myapps.microsoft.com) an.
 

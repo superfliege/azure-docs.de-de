@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: v-jansko
 ms.openlocfilehash: b9a182da0ce03bf3964b6da30f1ed68de38c8141
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918228"
 ---
 # <a name="customize-your-text-translations"></a>Anpassen von Textübersetzungen
@@ -54,7 +54,7 @@ Weitere Informationen über die verschiedenen Anpassungsstufen basierend auf ver
 | SMT-Anpassung | Ja   | Nein  |
 | NMT-Anpassung | Nein     | Ja |
 | Neue einheitliche Anpassung der Sprachdienste | Nein     | Ja |
-| [Keine Ablaufverfolgung](https://www.aka.ms/notrace) | Ja  | Ja |
+| [No Trace (Keine Ablaufverfolgung)](https://www.aka.ms/notrace) | Ja  | Ja |
 
 ## <a name="collaborative-translations-framework"></a>Framework für kollaborative Übersetzungen
 
@@ -66,4 +66,4 @@ Weitere Informationen über die verschiedenen Anpassungsstufen basierend auf ver
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Einrichten eines angepassten Sprachsystems mit dem benutzerdefinierten Translator](https://aka.ms/CustomTranslatorDocs)
+> [Set up a customized language system using Custom Translator (Einrichten eines angepassten Sprachsystems mit dem benutzerdefinierten Translator)](https://aka.ms/CustomTranslatorDocs)

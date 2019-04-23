@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 7db9c6400ac7d235153a59965e34e30d9b809a81
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59359694"
 ---
 # <a name="how-to-use-azure-sql-database"></a>Verwenden von Azure SQL-Datenbank
@@ -65,7 +65,7 @@ In diesem Abschnitt sind verschiedene Anleitungen, Skripts und Erläuterungen au
 - [Konfigurieren von TDE mit BYOK](transparent-data-encryption-byok-azure-sql-configure.md)
 - [Rotieren von TDE-BYOK-Schlüsseln](transparent-data-encryption-byok-azure-sql-key-rotation.md)
 - [Entfernen einer TDE-Schutzvorrichtung](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md)
-- [Konfigurieren von In-Memory-OLTP](sql-database-in-memory-oltp-migration.md)
+- [Konfigurieren von In-Memory OLTP](sql-database-in-memory-oltp-migration.md)
 - [Konfigurieren von Azure Automation](sql-database-manage-automation.md)
 
 ## <a name="develop-applications"></a>Entwickeln von Anwendungen

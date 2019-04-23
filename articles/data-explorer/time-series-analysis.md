@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
 ms.openlocfilehash: 8492f736e64366802b3601f9b5fc8bd1d9b6ea79
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273072"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Zeitreihenanalysen in Azure Data Explorer
@@ -78,7 +78,7 @@ Die Filterung ist ein gängiges Verfahren zur Signalverarbeitung und eignet sich
 - Es gibt zwei allgemeine Filterfunktionen:
     - [`series_fir()`](/azure/kusto/query/series-firfunction): Anwenden eines FIR-Filters. Wird zur einfachen Berechnung des gleitenden Durchschnitts und zur Differenzierung der Zeitreihe zum Erkennen von Änderungen verwendet.
     - [`series_iir()`](/azure/kusto/query/series-iirfunction): Anwenden eines IIR-Filters. Wird zur exponentiellen Glättung und für kumulative Summen verwendet.
-- `Extend` : Erweitern Sie die Zeitreihe, indem Sie der Abfrage eine neue Reihe für den gleitenden Durchschnitt von Abschnitten der Größe 5 (namens *ma_num*) hinzufügen:
+- `Extend`: Erweitern Sie die Zeitreihe, indem Sie der Abfrage eine neue Reihe für den gleitenden Durchschnitt von Abschnitten der Größe 5 (namens *ma_num*) hinzufügen:
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));

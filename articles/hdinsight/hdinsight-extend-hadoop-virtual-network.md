@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.openlocfilehash: a2d06cdbcc6ce995c55c858cb7a50a93ef6b3fb1
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883563"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Erweitern von Azure HDInsight per Azure Virtual Network
@@ -111,10 +111,10 @@ Führen Sie die Schritte in diesem Abschnitt aus, um zu erfahren, wie Sie einen 
 
 4. Erstellen Sie einen HDInsight-Cluster, und wählen Sie während der Konfiguration die virtuelle Azure-Netzwerk-Instanz aus. Den Vorgang zur Clustererstellung können Sie anhand der Schritte in den folgenden Dokumenten nachvollziehen:
 
-    * [Erstellen von HDInsight mithilfe des Azure-Portals](hdinsight-hadoop-create-linux-clusters-portal.md)
-    * [Erstellen von HDInsight mit Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
-    * [Erstellen von HDInsight mit der klassischen Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
-    * [Erstellen von HDInsight mit Azure Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
+    * [Erstellen von Linux-basierten Clustern in HDInsight mithilfe des Azure-Portals](hdinsight-hadoop-create-linux-clusters-portal.md)
+    * [Erstellen von Linux-basierten Clustern in HDInsight mit Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
+    * [Erstellen von HDInsight-Clustern mit der klassischen Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
+    * [Erstellen von Hadoop-Clustern in HDInsight mit Azure Resource Manager-Vorlagen](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
    > [!IMPORTANT]  
    > Das Hinzufügen von HDInsight zu einem virtuellen Netzwerk ist ein optionaler Konfigurationsschritt. Achten Sie darauf, beim Konfigurieren des Clusters das virtuelle Netzwerk auszuwählen.
@@ -259,7 +259,7 @@ Wenn Sie Netzwerksicherheitsgruppen verwenden, müssen Sie Datenverkehr von den 
 
 1. Datenverkehr von den folgenden IP-Adressen muss immer zugelassen werden:
 
-    | Quell-IP-Adresse | Zielport | Richtung |
+    | Quell-IP-Adresse | Zielport | Direction |
     | ---- | ----- | ----- |
     | 168.61.49.99 | 443 | Eingehend |
     | 23.99.5.239 | 443 | Eingehend |
@@ -271,7 +271,7 @@ Wenn Sie Netzwerksicherheitsgruppen verwenden, müssen Sie Datenverkehr von den 
     > [!IMPORTANT]  
     > Wenn die verwendete Azure-Region nicht aufgeführt ist, verwenden Sie nur die vier IP-Adressen aus Schritt 1.
 
-    | Country | Region | Zulässige Quell-IP-Adressen | Zulässiger Zielport | Richtung |
+    | Country | Region | Zulässige Quell-IP-Adressen | Zulässiger Zielport | Direction |
     | ---- | ---- | ---- | ---- | ----- |
     | Asien | Asien, Osten | 23.102.235.122</br>52.175.38.134 | 443 | Eingehend |
     | &nbsp; | Asien, Südosten | 13.76.245.160</br>13.76.136.249 | 443 | Eingehend |
@@ -328,7 +328,7 @@ Die Beispiele in diesem Abschnitt veranschaulichen, wie Sie Netzwerksicherheitsg
 
 Mit der folgenden Resource Manager-Vorlage wird ein virtuelles Netzwerk erstellt, mit dem eingehender Datenverkehr eingeschränkt wird, während Datenverkehr von den IP-Adressen zugelassen wird, die für HDInsight benötigt werden. Mit dieser Vorlage wird auch ein HDInsight-Cluster im virtuellen Netzwerk erstellt.
 
-* [Bereitstellen eines geschützten Azure Virtual Network und eines HDInsight Hadoop-Clusters](https://azure.microsoft.com/resources/templates/101-hdinsight-secure-vnet/)
+* [Deploy a secured Azure Virtual Network and an HDInsight Hadoop cluster](https://azure.microsoft.com/resources/templates/101-hdinsight-secure-vnet/) (Bereitstellen eines geschützten Azure Virtual Network und eines HDInsight Hadoop-Clusters)
 
 > [!IMPORTANT]  
 > Ändern Sie die IP-Adressen, die in diesem Beispiel verwendet werden, damit sie der von Ihnen verwendeten Azure-Region entsprechen. Sie finden diese Informationen im Abschnitt [HDInsight mit Netzwerksicherheitsgruppen und benutzerdefinierten Routen](#hdinsight-ip).

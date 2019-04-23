@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/17/2018
 ms.author: barclayn
 ms.openlocfilehash: f872c61ad0597d2307cd244668fdfc258f7a45cb
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895685"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden
@@ -181,21 +181,21 @@ Bewerten Sie die Konten, die zugewiesen werden oder für die Rolle „globaler A
 **Bewährte Methode**: Führen Sie Maßnahmen zum Abwehren der am häufigsten verwendeten Angriffstechniken durch.  
 **Detail**: [Identifizieren Sie Microsoft-Konten in Administratorrollen, die auf Geschäfts-, Schul- oder Unikonten umgestellt werden müssen.](../active-directory/users-groups-roles/directory-admin-roles-secure.md#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
 
-[Sicherstellen von separaten Benutzerkonten und E-Mail-Weiterleitung für globale Administratorkonten](../active-directory/users-groups-roles/directory-admin-roles-secure.md)  
+[Stellen Sie separate Benutzerkonten und E-Mail-Weiterleitung für globale Administratorkonten sicher.](../active-directory/users-groups-roles/directory-admin-roles-secure.md)  
 
 [Stellen Sie sicher, dass die Kennwörter von Administratorkonten kürzlich geändert wurden.](../active-directory/users-groups-roles/directory-admin-roles-secure.md#ensure-the-passwords-of-administrative-accounts-have-recently-changed)  
 
-[Aktivieren der Kennworthashsynchronisierung](../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)  
+[Aktivieren Sie die Kennworthashsynchronisierung.](../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)  
 
 [Fordern Sie die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) sowohl für Benutzer in allen privilegierten Rollen als auch für Benutzer mit hoher Gefährdung.](../active-directory/users-groups-roles/directory-admin-roles-secure.md#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
 
-[Abrufen Ihres Office 365 Secure Score (bei Verwendung von Office 365)](../active-directory/users-groups-roles/directory-admin-roles-secure.md#obtain-your-office-365-secure-score-if-using-office-365)  
+[Rufen Sie Ihren Office 365 Secure Score ab (bei Verwendung von Office 365).](../active-directory/users-groups-roles/directory-admin-roles-secure.md#obtain-your-office-365-secure-score-if-using-office-365)  
 
-[Leitfaden: Überprüfen der Office 365-Sicherheit und -Konformität (bei Verwendung von Office 365)](../active-directory/users-groups-roles/directory-admin-roles-secure.md#review-the-office-365-security-and-compliance-guidance-if-using-office-365)  
+[Überprüfen Sie die Office 365-Sicherheit und -Konformität (bei Verwendung von Office 365).](../active-directory/users-groups-roles/directory-admin-roles-secure.md#review-the-office-365-security-and-compliance-guidance-if-using-office-365)  
 
-[Konfigurieren der Office 365-Aktivitätsüberwachung (bei Verwendung von Office 365)](../active-directory/users-groups-roles/directory-admin-roles-secure.md#configure-office-365-activity-monitoring-if-using-office-365)  
+[Konfigurieren Sie die Office 365-Aktivitätsüberwachung (bei Verwendung von Office 365).](../active-directory/users-groups-roles/directory-admin-roles-secure.md#configure-office-365-activity-monitoring-if-using-office-365)  
 
-[Einrichten von Notfallreaktionsplan-Besitzern](../active-directory/users-groups-roles/directory-admin-roles-secure.md#establish-incidentemergency-response-plan-owners)  
+[Richten Sie Notfallreaktionsplan-Besitzer ein.](../active-directory/users-groups-roles/directory-admin-roles-secure.md#establish-incidentemergency-response-plan-owners)  
 
 [Schützen Sie lokale privilegierte Administratorkonten.](../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)
 

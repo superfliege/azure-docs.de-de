@@ -10,10 +10,10 @@ ms.date: 09/27/2017
 ms.author: seguler
 ms.subservice: common
 ms.openlocfilehash: 0641a097761530285c2dd9aa176ddd8c2c159001
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878739"
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>Übertragen von Daten mit der Microsoft Azure Storage Data Movement-Bibliothek
@@ -32,7 +32,7 @@ In diesem Dokument wird erläutert, wie eine .NET Core-Konsolenanwendung erstell
 - Kopieren der Datei aus der URL in Blob Storage
 - Kopieren aus Blob Storage in Blob Storage
 
-**Was Sie benötigen:**
+**Erforderliche Komponenten:**
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 * Ein [Azure Storage-Konto](storage-quickstart-create-account.md)
@@ -49,12 +49,12 @@ In diesem Dokument wird erläutert, wie eine .NET Core-Konsolenanwendung erstell
 3. Öffnen Sie dieses Verzeichnis in Visual Studio Code. Dieser Schritt kann schnell über die Befehlszeile ausgeführt werden, indem Sie `code .` in Windows eingeben.
 4. Installieren Sie die [C#-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) über Visual Studio Code Marketplace. Starten Sie Visual Studio Code neu.
 5. An diesem Punkt sehen Sie zwei Eingabeaufforderungen. Eine dient zum Hinzufügen von „erforderlichen Ressourcen zum Erstellen und Debuggen“. Klicken Sie auf „Ja“. Eine andere Eingabeaufforderung dient zum Wiederherstellen nicht aufgelöster Abhängigkeiten. Klicken Sie auf „Wiederherstellen“.
-6. Ändern Sie `launch.json` unter `.vscode`, um ein externes Terminal als Konsole zu verwenden. Diese Einstellung sollte gelesen werden als `"console": "externalTerminal"`
+6. Ändern Sie `launch.json` unter `.vscode`, um ein externes Terminal als Konsole zu verwenden. Diese Einstellung sollte als `"console": "externalTerminal"` gelesen werden.
 7. Mit Visual Studio Code können Sie .NET Core-Anwendungen debuggen. Klicken Sie auf `F5`, um die Anwendung auszuführen, und stellen Sie sicher, dass das Setup funktioniert. „Hello World!“ muss auf der Konsole ausgegeben werden.
 
 ## <a name="add-data-movement-library-to-your-project"></a>Hinzufügen der Data Movement-Bibliothek zu Ihrem Projekt
 
-1. Fügen Sie die neueste Version der Data Movement-Bibliothek zum `dependencies`-Abschnitt Ihrer `<project-name>.csproj`-Datei hinzu. Zum Zeitpunkt des Verfassens wäre diese Version `"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
+1. Fügen Sie die neueste Version der Data Movement-Bibliothek zum `dependencies`-Abschnitt Ihrer `<project-name>.csproj`-Datei hinzu. Zum Zeitpunkt des Verfassens wäre diese Version `"Microsoft.Azure.Storage.DataMovement": "0.6.2"`.
 2. Eine Eingabeaufforderung muss angezeigt werden, um das Projekt wiederherzustellen. Klicken Sie auf die Schaltfläche „Wiederherstellen“. Sie können das Projekt auch über die Befehlszeile wiederherstellen, indem Sie den Befehl `dotnet restore` in das Stammverzeichnis des Projekts eingeben.
 
 Ändern Sie `<project-name>.csproj`:

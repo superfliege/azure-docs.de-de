@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: facbcd6def7451ca83bdf00fe9b7c7cac2c74945
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58879946"
 ---
 # <a name="query-eventstore-apis-for-cluster-events"></a>Abfragen von EventStore-APIs nach Clusterereignissen
@@ -41,16 +41,16 @@ Zusätzlich zu diesen Parametern sind optionale Parameter verfügbar, darunter:
 
 Jede Entität eines Clusters kann nach Ereignissen abgefragt werden. Außerdem können Sie für alle Entitäten eines Typs Ereignisse abfragen. Beispielsweise können Sie Ereignisse für einen bestimmten Knoten oder für alle Knoten Ihres Clusters abfragen. Dies ist der aktuelle Satz mit Entitäten, für die Sie Ereignisse abfragen können (mit Strukturierung der Abfrage):
 * Cluster: `/EventsStore/Cluster/Events`
-* Knoten: `/EventsStore/Nodes/Events`
-* Knoten: `/EventsStore/Nodes/<NodeName>/$/Events`
-* Anwendungen: `/EventsStore/Applications/Events`
-* Anwendung: `/EventsStore/Applications/<AppName>/$/Events`
-* Dienste: `/EventsStore/Services/Events`
-* Dienst: `/EventsStore/Services/<ServiceName>/$/Events`
-* Partitionen: `/EventsStore/Partitions/Events`
+* Nodes: `/EventsStore/Nodes/Events`
+* Node: `/EventsStore/Nodes/<NodeName>/$/Events`
+* Applications: `/EventsStore/Applications/Events`
+* Application: `/EventsStore/Applications/<AppName>/$/Events`
+* Services: `/EventsStore/Services/Events`
+* Service: `/EventsStore/Services/<ServiceName>/$/Events`
+* Partitions: `/EventsStore/Partitions/Events`
 * Partition: `/EventsStore/Partitions/<PartitionID>/$/Events`
-* Replikate: `/EventsStore/Partitions/<PartitionID>/$/Replicas/Events`
-* Replikat: `/EventsStore/Partitions/<PartitionID>/$/Replicas/<ReplicaID>/$/Events`
+* Replicas: `/EventsStore/Partitions/<PartitionID>/$/Replicas/Events`
+* Replica: `/EventsStore/Partitions/<PartitionID>/$/Replicas/<ReplicaID>/$/Events`
 
 >[!NOTE]
 >Beim Verweisen auf einen Anwendungs- oder Dienstnamen muss die Abfrage das Präfix „fabric:/“ nicht unbedingt enthalten. Beachten Sie außerdem Folgendes: Falls Ihre Anwendungs- oder Dienstnamen einen Schrägstrich („/“) enthalten, sollten Sie diesen durch „~“ ersetzen, um die Funktionsweise der Abfrage sicherzustellen. Wenn Ihre Anwendung beispielsweise als „fabric:/App1/FrontendApp“ angezeigt wird, wären Ihre App-spezifischen Abfragen wie folgt strukturiert: `/EventsStore/Applications/App1~FrontendApp/$/Events`.
@@ -121,8 +121,7 @@ Hier ist zu sehen, dass zwischen `2018-04-03T18:00:00Z` und `2018-04-04T18:00:00
 
 Sie können die EventStore-Komponente auch programmgesteuert über die [Service Fabric-Clientbibliothek](https://docs.microsoft.com/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library) abfragen.
 
-Nachdem Sie den Service Fabric-Client eingerichtet haben, können Sie Ereignisse abfragen, indem Sie wie folgt auf die EventStore-Komponente zugreifen:
-`sfhttpClient.EventStore.<request>`
+Nachdem Sie den Service Fabric-Client eingerichtet haben, können Sie Ereignisse abfragen, indem Sie wie folgt auf die EventStore-Komponente zugreifen: `sfhttpClient.EventStore.<request>`.
 
 Hier ist eine Beispielanforderung für alle Clusterereignisse zwischen `2018-04-03T18:00:00Z` und `2018-04-04T18:00:00Z` über die Funktion `GetClusterEventListAsync` angegeben.
 
@@ -181,23 +180,19 @@ Hier sind einige Beispiele dafür angegeben, wie Sie die EventStore-REST-APIs au
 
 *Clusterupgrades:*
 
-Um anzuzeigen, wann für Ihren Cluster während der letzten Woche zum letzten Mal erfolgreich ein Upgrade durchgeführt wurde (oder ein entsprechender Versuch unternommen wurde), können Sie die APIs nach zuletzt abgeschlossenen Upgrades für den Cluster abfragen. Fragen Sie hierzu die ClusterUpgradeComplete-Ereignisse in der EventStore-Komponente ab:
-`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ClusterUpgradeCompleted`
+Um anzuzeigen, wann für Ihren Cluster während der letzten Woche zum letzten Mal erfolgreich ein Upgrade durchgeführt wurde (oder ein entsprechender Versuch unternommen wurde), können Sie die APIs nach zuletzt abgeschlossenen Upgrades für den Cluster abfragen. Fragen Sie hierzu die ClusterUpgradeComplete-Ereignisse in der EventStore-Komponente ab: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ClusterUpgradeCompleted`.
 
 *Probleme mit Clusterupgrades:*
 
-Falls bei einem kürzlich durchgeführten Clusterupgrade Probleme aufgetreten sind, können Sie alle Ereignisse für die Clusterentität abfragen. Es werden verschiedene Ereignisse angezeigt, einschließlich der Initiierung von Upgrades und aller Upgradedomänen, für die das Upgrade erfolgreich abgeschlossen wurde. Außerdem werden Ereignisse für den Punkt, an dem der Rollback gestartet wurde, und die entsprechenden Integritätsereignisse angezeigt. Hier ist die Abfrage angegeben, die Sie hierfür verwenden:
-`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
+Falls bei einem kürzlich durchgeführten Clusterupgrade Probleme aufgetreten sind, können Sie alle Ereignisse für die Clusterentität abfragen. Es werden verschiedene Ereignisse angezeigt, einschließlich der Initiierung von Upgrades und aller Upgradedomänen, für die das Upgrade erfolgreich abgeschlossen wurde. Außerdem werden Ereignisse für den Punkt, an dem der Rollback gestartet wurde, und die entsprechenden Integritätsereignisse angezeigt. Hier ist die Abfrage angegeben, die Sie hierfür verwenden: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`.
 
-*Änderungen des Knotenstatus:*
+*Änderung des Knotenstatus:*
 
-Verwenden Sie die folgende Abfrage, um die Änderungen des Knotenstatus für die letzten Tage anzuzeigen – das Hoch- oder Herunterfahren von Knoten bzw. deren Aktivierung oder Deaktivierung (entweder über die Plattform, den Chaosdienst oder per Benutzereingabe):
-`https://mycluster.cloudapp.azure.com:19080/EventsStore/Nodes/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
+Verwenden Sie die folgende Abfrage, um die Änderungen des Knotenstatus für die letzten Tage anzuzeigen – das Hoch- oder Herunterfahren von Knoten bzw. deren Aktivierung oder Deaktivierung (entweder über die Plattform, den Chaosdienst oder per Benutzereingabe): `https://mycluster.cloudapp.azure.com:19080/EventsStore/Nodes/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`.
 
 *Anwendungsereignisse:*
 
-Sie können auch Ihre zuletzt durchgeführten Anwendungsbereitstellungen und -upgrades nachverfolgen. Verwenden Sie die folgende Abfrage, um alle Anwendungsereignisse in Ihrem Cluster anzuzeigen:
-`https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
+Sie können auch Ihre zuletzt durchgeführten Anwendungsbereitstellungen und -upgrades nachverfolgen. Verwenden Sie die folgende Abfrage, um alle Anwendungsereignisse in Ihrem Cluster anzuzeigen: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`.
 
 *Integritätsverlauf für eine Anwendung:*
 
@@ -205,16 +200,13 @@ Es kann sein, dass Sie nicht nur Ereignisse zum Anwendungslebenszyklus anzeigen 
 
 *Integritätsverlauf für alle Dienste in „myApp“:*
 
-Derzeit werden Integritätsberichtsereignisse für Dienste unter der entsprechenden Anwendungsentität als `DeployedServicePackageNewHealthReport`-Ereignisse angezeigt. Verwenden Sie die folgende Abfrage, um den Verlauf für Ihre Dienste für „App1“ anzuzeigen:
-`https://winlrc-staging-10.southcentralus.cloudapp.azure.com:19080/EventsStore/Applications/myapp/$/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=DeployedServicePackageNewHealthReport`
+Derzeit werden Integritätsberichtsereignisse für Dienste unter der entsprechenden Anwendungsentität als `DeployedServicePackageNewHealthReport`-Ereignisse angezeigt. Verwenden Sie die folgende Abfrage, um den Verlauf für Ihre Dienste für „App1“ anzuzeigen: `https://winlrc-staging-10.southcentralus.cloudapp.azure.com:19080/EventsStore/Applications/myapp/$/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=DeployedServicePackageNewHealthReport`.
 
 *Neukonfiguration der Partition:*
 
-Fragen Sie das `PartitionReconfigured`-Ereignis ab, um alle Partitionsbewegungen des Clusters anzuzeigen. Auf diese Weise können Sie ermitteln, welche Workloads zu bestimmten Zeiten auf welchem Knoten ausgeführt wurden, wenn Sie Probleme in Ihrem Cluster diagnostizieren. Hier ist eine Beispielabfrage angegeben, die diesen Zweck erfüllt:
-`https://mycluster.cloudapp.azure.com:19080/EventsStore/Partitions/Events?api-version=6.4&starttimeutc=2018-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=PartitionReconfigured`
+Fragen Sie das `PartitionReconfigured`-Ereignis ab, um alle Partitionsbewegungen des Clusters anzuzeigen. Auf diese Weise können Sie ermitteln, welche Workloads zu bestimmten Zeiten auf welchem Knoten ausgeführt wurden, wenn Sie Probleme in Ihrem Cluster diagnostizieren. Hier ist eine Beispielabfrage angegeben, die diesen Zweck erfüllt: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Partitions/Events?api-version=6.4&starttimeutc=2018-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=PartitionReconfigured`.
 
 *Chaosdienst:*
 
-Es ist ein Ereignis für den Start bzw. die Beendigung des Chaosdiensts vorhanden, das auf der Clusterebene verfügbar gemacht wird. Verwenden Sie die folgende Abfrage, um Ihre letzte Nutzung des Chaosdiensts anzuzeigen:
-`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ChaosStarted,ChaosStopped`
+Es ist ein Ereignis für den Start bzw. die Beendigung des Chaosdiensts vorhanden, das auf der Clusterebene verfügbar gemacht wird. Verwenden Sie die folgende Abfrage, um Ihre letzte Nutzung des Chaosdiensts anzuzeigen: `https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ChaosStarted,ChaosStopped`.
 

@@ -9,10 +9,10 @@ ms.date: 01/08/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 629a97048ceba4ac02e3aa1dd59310980e5a0c95
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58894165"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Installieren und Konfigurieren eines lokalen Datengateways
@@ -21,18 +21,18 @@ Ein lokales Datengateway ist erforderlich, wenn sich mindestens ein Azure Analys
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-**Mindestanforderungen:**
+**Mindestanforderungen.**
 
 * .NET 4.5 Framework
 * 64-Bit-Version von Windows 7/Windows Server 2008 R2 (oder höher)
 
-**Empfohlen:**
+**Empfohlen.**
 
 * 8-Kern-CPU
 * 8 GB Arbeitsspeicher
 * 64-Bit-Version von Windows 2012 R2 (oder höher)
 
-**Wichtige Überlegungen:**
+**Wichtige Hinweise:**
 
 * Wenn sich Ihr Gateway während des Setups bei Azure registriert, wird die Standardregion für Ihr Abonnement ausgewählt. Sie können eine andere Region auswählen. Wenn Sie Server in mehreren Regionen haben, müssen Sie für jede Region ein Gateway installieren. 
 * Das Gateway darf nicht auf einem Domänencontroller installiert werden.
@@ -47,7 +47,7 @@ Ein lokales Datengateway ist erforderlich, wenn sich mindestens ein Azure Analys
 
 ## <a name="download"></a>Herunterladen
 
- [Herunterladen des Gateways](https://aka.ms/azureasgateway)
+ [Gateway herunterladen](https://aka.ms/azureasgateway)
 
 ## <a name="install"></a>Installieren
 

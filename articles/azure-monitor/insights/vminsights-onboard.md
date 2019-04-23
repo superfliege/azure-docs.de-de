@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/13/2019
 ms.author: magoedte
 ms.openlocfilehash: 1a4bfae22477e345176971bd40b0afa91c8867fb
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885824"
 ---
 # <a name="deploy-azure-monitor-for-vms-preview"></a>Bereitstellen von Azure Monitor für VMs (Vorschauversion)
@@ -57,7 +57,7 @@ Azure Monitor für VMs unterstützt einen Log Analytics-Arbeitsbereich in den fo
 Wenn Sie über keinen Arbeitsbereich verfügen, können Sie diesen mit einer der folgenden Methoden erstellen:
 * [Die Azure-CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
 * [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
-* [Das Azure-Portal](../../azure-monitor/learn/quick-create-workspace.md)
+* [Azure-Portal](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
 
 Wenn Sie im Azure-Portal die Überwachung für einen einzelnen virtuellen Azure-Computer aktivieren, können Sie während dieses Vorgangs einen Arbeitsbereich erstellen.

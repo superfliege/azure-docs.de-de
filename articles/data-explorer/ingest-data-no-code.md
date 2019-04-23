@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 04/07/2019
 ms.openlocfilehash: 9f4b7ee0dcc87ca03fd051be0dacedf0912b5320
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59262906"
 ---
 # <a name="tutorial-ingest-data-in-azure-data-explorer-without-one-line-of-code"></a>Tutorial: Erfassen von Daten in Azure Data Explorer ohne jeglichen Code
@@ -72,7 +72,7 @@ Bei Azure-Diagnoseprotokollen handelt es sich um Metriken, die von einem Azure-D
 }
 ```
 
-### <a name="activity-logs-example"></a>Beispiel für Aktivitätsprotokoll
+### <a name="activity-logs-example"></a>Beispiel für Aktivitätsprotokolle
 
 Azure-Aktivitätsprotokolle sind Protokolle auf Abonnementebene, die einen Einblick in die Vorgänge geben, die mit Ressourcen in Ihrem Abonnement ausgeführt werden. Hier ist ein Beispiel für ein Aktivitätsprotokollereignis zur Überprüfung des Zugriffs angegeben:
 
@@ -268,7 +268,7 @@ Mit Azure-Diagnoseprotokollen können Metriken in ein Speicherkonto oder einen E
 
 1. Erstellen Sie einen Event Hub, indem Sie im Azure-Portal eine Azure Resource Manager-Vorlage verwenden. Klicken Sie zum Ausführen der restlichen Schritte dieses Artikels mit der rechten Maustaste auf die Schaltfläche **In Azure bereitstellen**, und wählen Sie die Option **In neuem Fenster öffnen**. Mit der Schaltfläche **In Azure bereitstellen** gelangen Sie zum Azure-Portal.
 
-    [![DSchaltfläche „In Azure bereitstellen](media/ingest-data-no-code/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+    [![Schaltfläche „In Azure bereitstellen“](media/ingest-data-no-code/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
 1. Erstellen Sie einen Event Hubs-Namespace und einen Event Hub für die Diagnoseprotokolle.
 
@@ -276,11 +276,11 @@ Mit Azure-Diagnoseprotokollen können Metriken in ein Speicherkonto oder einen E
 
 1. Füllen Sie das Formular mit den folgenden Informationen aus. Verwenden Sie für alle Einstellungen, die nicht in der folgenden Tabelle aufgeführt sind, die jeweiligen Standardwerte.
 
-    **Einstellung** | **Empfohlener Wert** | **BESCHREIBUNG**
+    **Einstellung** | **Empfohlener Wert** | **Beschreibung**
     |---|---|---|
     | **Abonnement** | *Ihr Abonnement* | Wählen Sie das Azure-Abonnement aus, das Sie für Ihren Event Hub verwenden möchten.|
     | **Ressourcengruppe** | *test-resource-group* | Erstellen Sie eine neue Ressourcengruppe. |
-    | **Standort** | Wählen Sie die Region aus, die Ihre Anforderungen am besten erfüllt. | Erstellen Sie den Event Hubs-Namespace an demselben Standort wie die anderen Ressourcen.
+    | **Location** | Wählen Sie die Region aus, die Ihre Anforderungen am besten erfüllt. | Erstellen Sie den Event Hubs-Namespace an demselben Standort wie die anderen Ressourcen.
     | **Namespacename** | *AzureMonitoringData* | Wählen Sie einen eindeutigen Namen, der Ihren Namespace identifiziert.
     | **Event Hub-Name** | *DiagnosticLogsData* | Der Event Hub befindet sich unter dem Namespace, der einen eindeutigen Bereichscontainer bereitstellt. |
     | **Name der Consumergruppe** | *adxpipeline* | Erstellen Sie einen Consumergruppennamen. Durch Consumergruppen können mehrere verarbeitende Anwendungen jeweils über eine separate Ansicht des Ereignisdatenstroms verfügen. |
@@ -378,7 +378,7 @@ Nun müssen Sie die Datenverbindungen für Ihre Diagnose- und Aktivitätsprotoko
 
      **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
-    | **Table** | *DiagnosticLogsRawRecords* | Die Tabelle, die Sie in der Datenbank *TestDatabase* erstellt haben. |
+    | **Tabelle** | *DiagnosticLogsRawRecords* | Die Tabelle, die Sie in der Datenbank *TestDatabase* erstellt haben. |
     | **Datenformat** | *JSON* | Das Format, das in der Tabelle verwendet wird. |
     | **Spaltenzuordnung** | *DiagnosticLogsRecordsMapping* | Die Zuordnung, die Sie in der Datenbank *TestDatabase* erstellt haben und mit der eingehende JSON-Daten den Spaltennamen und Datentypen der Tabelle *DiagnosticLogsRecords* zugeordnet werden.|
     | | |
@@ -407,7 +407,7 @@ Wiederholen Sie die Schritte des Abschnitts „Erstellen der Datenverbindung fü
 
      **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
-    | **Table** | *ActivityLogsRawRecords* | Die Tabelle, die Sie in der Datenbank *TestDatabase* erstellt haben. |
+    | **Tabelle** | *ActivityLogsRawRecords* | Die Tabelle, die Sie in der Datenbank *TestDatabase* erstellt haben. |
     | **Datenformat** | *JSON* | Das Format, das in der Tabelle verwendet wird. |
     | **Spaltenzuordnung** | *ActivityLogsRawRecordsMapping* | Die Zuordnung, die Sie in der Datenbank *TestDatabase* erstellt haben und mit der eingehende JSON-Daten den Spaltennamen und Datentypen der Tabelle *ActivityLogsRawRecords* zugeordnet werden.|
     | | |

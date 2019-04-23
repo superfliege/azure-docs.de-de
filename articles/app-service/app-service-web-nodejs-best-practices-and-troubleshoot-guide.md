@@ -16,10 +16,10 @@ ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
 ms.openlocfilehash: 321dbf891c77007952f01b32bb509a15c2ac3e6f
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895782"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Bewährte Methoden und Problembehandlungsschritte für Node-Anwendungen in Azure App Service unter Windows
@@ -90,7 +90,7 @@ Für das Streaming von Anwendungen müssen Sie außerdem responseBufferLimit fü
 
 ### <a name="watchedfiles"></a>watchedFiles
 
-Eine durch Semikolons getrennte Liste mit Dateien, die auf Änderungen überprüft werden. Jede Änderung einer Datei bewirkt, dass die Anwendung „recycelt“ wird. Jeder Eintrag besteht aus einem optionalen Verzeichnisnamen und einem erforderlichen Dateinamen. Diese Namen gelten relativ zu dem Verzeichnis, in dem sich der Haupteinstiegspunkt der Anwendung befindet. Platzhalter sind nur im Dateinamenteil zulässig. Der Standardwert lautet `*.js;iisnode.yml`
+Eine durch Semikolons getrennte Liste mit Dateien, die auf Änderungen überprüft werden. Jede Änderung einer Datei bewirkt, dass die Anwendung „recycelt“ wird. Jeder Eintrag besteht aus einem optionalen Verzeichnisnamen und einem erforderlichen Dateinamen. Diese Namen gelten relativ zu dem Verzeichnis, in dem sich der Haupteinstiegspunkt der Anwendung befindet. Platzhalter sind nur im Dateinamenteil zulässig. Der Standardwert lautet `*.js;iisnode.yml`.
 
 ### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 
@@ -173,7 +173,7 @@ http.createServer(function (req, res) {
 }).listen(process.env.PORT);
 ```
 
-Wechseln Sie zur Website der Debugging-Konsole unter `https://yoursite.scm.azurewebsites.net/DebugConsole`
+Wechseln Sie zur Website der Debugging-Konsole unter `https://yoursite.scm.azurewebsites.net/DebugConsole`.
 
 Wechseln Sie in das Verzeichnis „site/wwwroot“. Es wird eine Eingabeaufforderung wie im folgenden Beispiel angezeigt:
 
@@ -274,7 +274,7 @@ Aktivieren Sie FREB für Ihre Anwendung, um den win32-Fehlercode anzuzeigen. (St
 | 503 |1002 |Überprüfen Sie den win32-Fehlercode auf den tatsächlichen Grund. Die Anforderung konnte nicht für „node.exe“ zugestellt werden. |
 | 503 |1003 |Die Named Pipe ist zu stark ausgelastet. Überprüfen Sie, ob „node.exe“ einen hohen CPU-Verbrauch aufweist. |
 
-NODE.exe verfügt über eine Einstellung namens `NODE_PENDING_PIPE_INSTANCES`. In Azure App Service ist dieser Wert auf 5000 festgelegt. Dies bedeutet, dass „node.exe“ für die benannte Pipe 5000 Anforderungen auf einmal akzeptieren kann. Dieser Wert sollte für die meisten Node-Anwendungen ausreichen, die in Azure App Service ausgeführt werden. 503.1003 sollte in Azure App Service nicht angezeigt werden, und zwar wegen des hohen Werts für `NODE_PENDING_PIPE_INSTANCES`
+NODE.exe verfügt über eine Einstellung namens `NODE_PENDING_PIPE_INSTANCES`. In Azure App Service ist dieser Wert auf 5000 festgelegt. Dies bedeutet, dass „node.exe“ für die benannte Pipe 5000 Anforderungen auf einmal akzeptieren kann. Dieser Wert sollte für die meisten Node-Anwendungen ausreichen, die in Azure App Service ausgeführt werden. 503.1003 sollte in Azure App Service nicht angezeigt werden, da für `NODE_PENDING_PIPE_INSTANCES` ein hoher Wert gilt.
 
 ## <a name="more-resources"></a>Weitere Ressourcen
 
@@ -285,4 +285,4 @@ Unter den unten angegebenen Links finden Sie weitere Informationen zu „node.js
 * [Verwenden von Node.js-Modulen mit Azure-Anwendungen](../nodejs-use-node-modules-azure-apps.md)
 * [Azure App Service-Web-Apps: Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
 * [Node.js Developer Center (in englischer Sprache)](../nodejs-use-node-modules-azure-apps.md)
-* [Exploring the Super Secret Kudu Debug Console (Erkunden der geheimen Kudu-Debugging-Konsole)](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)
+* [Exploring the Super Secret Kudu Debug Console (Erkunden der geheimen Kudu-Debugkonsole)](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)

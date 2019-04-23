@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 2f4a877974c21dd7aead00f0b6aa949c84e2b80f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59282609"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-ordering"></a>Tutorial: Azure Active Directory-Integration mit Predictix Ordering
@@ -51,7 +51,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Konfigurieren der Integration von Predictix Ordering in Azure AD müssen Sie Predictix Ordering aus dem Katalog Ihrer Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie die folgenden Schritte aus, um Predictix Ordering aus dem Katalog hinzuzufügen:**
+**Um Predictix Ordering aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -105,7 +105,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Predicti
 
     ![SSO-Informationen zur Domäne und zu den URLs für Predictix Ordering](common/sp-identifier.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname-pricing>.ordering.predictix.com/sso/request`
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname-pricing>.ordering.predictix.com/sso/request`.
 
     b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein:
 

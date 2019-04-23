@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d5defdf2d33d32042775271fe01aba377687ae75
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58891564"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Schnellstart: Blockieren des Zugriffs, wenn ein Sitzungsrisiko beim bedingten Azure Active Directory-Zugriff erkannt wird  
@@ -44,7 +44,7 @@ Für die Durchführung des Szenarios im Rahmen dieses Tutorials benötigen Sie F
 
 Mit diesem Schritt soll sichergestellt werden, dass Sie mit dem Tor Browser über das Testkonto auf Ihren Mandanten zugreifen können.
 
-**So testen Sie Ihre Anmeldung:**
+**So testen Sie Ihre Anmeldung**
 
 1. Melden Sie sich bei Ihrem [Azure-Portal](https://portal.azure.com) als **Alain Charon** an.
 1. Melden Sie sich ab.
@@ -64,7 +64,7 @@ In diesem Abschnitt wird gezeigt, wie Sie die erforderliche Richtlinie für bedi
 
 ![Richtlinie erstellen](./media/app-sign-in-risk/130.png)
 
-**So konfigurieren Sie die Richtlinie für bedingten Zugriff:**
+**So konfigurieren Sie die Richtlinie für bedingten Zugriff**
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
 
@@ -156,7 +156,7 @@ Wenn Sie das **What-If-Richtlinientool** für dieses Szenario verwenden, muss di
 
 ![Benutzer](./media/app-sign-in-risk/117.png)
 
-**So werten Sie die Richtlinie für bedingten Zugriff aus:**
+**So werten Sie die Richtlinie für bedingten Zugriff aus**
 
 1. Klicken Sie auf der Seite [Bedingter Zugriff – Richtlinien](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) im Menü am oberen Rand auf **What If**.  
 

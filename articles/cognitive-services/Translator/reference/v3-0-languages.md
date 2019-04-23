@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
 ms.openlocfilehash: 1713a05590f389a6de70d72e8d62237c7521d808
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58915763"
 ---
 # <a name="translator-text-api-30-languages"></a>Textübersetzungs-API 3.0: Languages
@@ -93,7 +93,7 @@ Eine erfolgreiche Antwort ist ein JSON-Objekt mit einer Eigenschaft für jede an
 
 Der Wert für jede Eigenschaft lautet wie folgt.
 
-* `translation` property
+* `translation`-Eigenschaft
 
   Der Wert der `translation`-Eigenschaft ist ein Wörterbuch aus Schlüssel-Wert-Paaren. Jeder Schlüssel ist ein BCP 47-Sprachtag. Ein Schlüssel identifiziert eine Sprache, in die oder aus der Text übersetzt werden kann. Der Wert, der dem Schlüssel zugeordnet ist, ist ein JSON-Objekt mit Eigenschaften, die die Sprache beschreiben:
 
@@ -119,7 +119,7 @@ Der Wert für jede Eigenschaft lautet wie folgt.
   }
   ```
 
-* `transliteration` property
+* `transliteration`-Eigenschaft
 
   Der Wert der `transliteration`-Eigenschaft ist ein Wörterbuch aus Schlüssel-Wert-Paaren. Jeder Schlüssel ist ein BCP 47-Sprachtag. Ein Schlüssel identifiziert eine Sprache, für die Text aus einem Skript in ein anderes Skript konvertiert werden kann. Der Wert, der dem Schlüssel zugeordnet ist, ist ein JSON-Objekt mit Eigenschaften, die die Sprache und deren unterstützte Skripts beschreiben:
 
@@ -139,7 +139,7 @@ Der Wert für jede Eigenschaft lautet wie folgt.
 
     * `toScripts`: Die Liste der Skripts, in die Text konvertiert werden kann. Jedes Element der `toScripts`-Liste verfügt über die Eigenschaften `code`, `name`, `nativeName` und `dir` (wie zuvor beschrieben).
 
-  Im folgenden Code wird ein Beispiel veranschaulicht:
+  Der folgende Code zeigt ein Beispiel:
 
   ```json
   {
@@ -184,7 +184,7 @@ Der Wert für jede Eigenschaft lautet wie folgt.
   }
   ```
 
-* `dictionary` property
+* `dictionary`-Eigenschaft
 
   Der Wert der `dictionary`-Eigenschaft ist ein Wörterbuch aus Schlüssel-Wert-Paaren. Jeder Schlüssel ist ein BCP 47-Sprachtag. Der Schlüssel identifiziert eine Sprache, für die alternative Übersetzungen und Rückübersetzungen verfügbar sind. Der Wert ist ein JSON-Objekt, das die Quellsprache und die Zielsprachen mit verfügbaren Übersetzungen beschreibt:
 
@@ -281,7 +281,7 @@ Wenn ein Fehler auftritt, gibt die Anforderung auch eine JSON-Fehlerantwort zur�
 
 Im folgenden Beispiel wird dargestellt, wie Sprachen abgerufen werden, die für die Textübersetzung unterstützt werden.
 
-# [<a name="curl"></a>curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation"

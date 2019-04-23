@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.openlocfilehash: ac1a0e4eadc0b84fdd2a170c2e0f6e0a2f2af3a4
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361783"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Vergleich der Speicheroptionen für die Verwendung mit Azure HDInsight-Clustern
@@ -29,9 +29,9 @@ Die folgende Tabelle enthält die Azure Storage-Dienste, die mit den unterschied
 | Speicherdienst | Kontotyp | Namespacetyp | Unterstützte Dienste | Unterstützte Leistungsstufen | Unterstützte Zugriffsebenen | HDInsight-Version | Clustertyp |
 |---|---|---|---|---|---|---|---|
 |Azure Data Lake Storage Gen2| Allgemein v2 | Hierarchisch (Dateisystem) | Blob | Standard | Heiß, Kalt, Archiv | 3.6 und höher | Alle |
-|Azure Storage| Allgemein v2 | Objekt | Blob | Standard | Heiß, Kalt, Archiv | 3.6 und höher | Alle |
-|Azure Storage| Allgemein v1 | Objekt | Blob | Standard | – | Alle | Alle |
-|Azure Storage| Blob Storage | Objekt | Blob | Standard | Heiß, Kalt, Archiv | Alle | Alle |
+|Azure Storage| Allgemein v2 | Object | Blob | Standard | Heiß, Kalt, Archiv | 3.6 und höher | Alle |
+|Azure Storage| Allgemein v1 | Object | Blob | Standard | – | Alle | Alle |
+|Azure Storage| Blob Storage | Object | Blob | Standard | Heiß, Kalt, Archiv | Alle | Alle |
 |Azure Data Lake Storage Gen1| – | Hierarchisch (Dateisystem) | – | – | – | Nur 3.6 | Alle mit Ausnahme von HBase |
 
 Weitere Informationen zu Azure Storage-Zugriffsebenen finden Sie unter [Azure Blob Storage: Speicherebenen „Premium“ (Vorschauversion), „Heiß“, „Kalt“ und „Archiv“](../storage/blobs/storage-blob-storage-tiers.md).
@@ -211,7 +211,7 @@ Data Lake Storage Gen1-Container für Daten sind im Wesentlichen Ordner und Date
 ## <a name="DataLakeStoreSecurity"></a>Datensicherheit in Data Lake Storage Gen1
 Data Lake Storage Gen1 verwendet Azure Active Directory zur Authentifizierung und Zugriffssteuerungslisten (ACLs) zum Verwalten des Zugriffs auf Ihre Daten.
 
-| **Feature** | **BESCHREIBUNG** |
+| **Feature** | **Beschreibung** |
 | --- | --- |
 | Authentication |Zur Identitäts- und Zugriffsverwaltung für alle in Data Lake Storage Gen1 gespeicherten Daten ist Data Lake Storage Gen1 in Azure Active Directory (Azure AD) integriert. Aufgrund dieser Integration profitiert Data Lake Storage Gen1 von allen Azure AD-Features. Dazu gehören mehrstufige Authentifizierung, bedingter Zugriff, rollenbasierte Zugriffssteuerung, Überwachung der Anwendungsnutzung, Sicherheitsüberwachung und -warnungen usw. Data Lake Storage Gen1 unterstützt das OAuth 2.0-Protokoll für die Authentifizierung mit der REST-Schnittstelle. Weitere Informationen finden Sie unter [Authentifizierung bei Azure Data Lake Storage Gen1 mit Azure Active Directory](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md).|
 | Zugriffssteuerung |Data Lake Storage Gen1 ermöglicht eine Zugriffssteuerung durch die Unterstützung von POSIX-Berechtigungen, die durch das WebHDFS-Protokoll verfügbar gemacht werden. ACLs können für Stammordner, Unterordner und einzelne Dateien aktiviert werden. Weitere Informationen zur Funktionsweise von ACLs im Kontext von Data Lake Storage Gen1 finden Sie unter [Zugriffssteuerung in Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-access-control.md). |

@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.openlocfilehash: a0f21165af0bcbd8bda28f0eae20d3ee837f3be9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59275656"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mozy-enterprise"></a>Tutorial: Azure Active Directory-Integration mit Mozy Enterprise
@@ -50,7 +50,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Konfigurieren der Integration von Mozy Enterprise in Azure AD müssen Sie Mozy Enterprise aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie die folgenden Schritte aus, um Mozy Enterprise aus dem Katalog hinzuzufügen:**
+**Um Mozy Enterprise aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -209,7 +209,7 @@ Damit sich Azure AD-Benutzer bei Mozy Enterprise anmelden können, müssen sie i
 >[!NOTE]
 >Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Mozy Enterprise-Benutzerkonten oder mithilfe der von Mozy Enterprise bereitgestellten APIs erstellen.
 
-**So stellen Sie Benutzerkonten bereit:**
+**Führen Sie zum Bereitstellen von Benutzerkonten die folgenden Schritte aus:**
 
 1. Melden Sie sich bei Ihrem **Mozy Enterprise** -Mandanten an.
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: v-jansko
 ms.openlocfilehash: d3ffdcb79a56bf2f9f4a6eb192293bbc6bab7dab
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916715"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Migration der Textübersetzungs-API von Version 2 zu Version 3
@@ -45,8 +45,8 @@ Die folgende Liste der V2- und V3-Methoden enthält die V3-Methoden und -APIs, d
 |:----------- |:-------------|
 | `Translate`     | [Translate](reference/v3-0-translate.md)          |
 | `TranslateArray`      | [Translate](reference/v3-0-translate.md)        |
-| `GetLanguageNames`      | [Languages](reference/v3-0-languages.md)         |
-| `GetLanguagesForTranslate`     | [Languages](reference/v3-0-languages.md)       |
+| `GetLanguageNames`      | [Sprachen](reference/v3-0-languages.md)         |
+| `GetLanguagesForTranslate`     | [Sprachen](reference/v3-0-languages.md)       |
 | `GetLanguagesForSpeak`      | [Microsoft Speech-Dienst](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
 | `Speak`     | [Microsoft Speech-Dienst](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
 | `Detect`     | [Detect](reference/v3-0-detect.md)         |
@@ -147,4 +147,4 @@ In keiner Version der Translator-API wird eine Aufzeichnung Ihrer Übersetzungen
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Anzeigen der Dokumentation zu V3.0](reference/v3-0-reference.md)
+> [Dokumentation zu V3.0](reference/v3-0-reference.md)

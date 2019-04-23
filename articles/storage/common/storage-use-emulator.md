@@ -9,10 +9,10 @@ ms.date: 08/10/2018
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: bc78dade345c9f9c72cf936136d9969b79bc1398
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878586"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Verwenden des Azure-Speicheremulators für Entwicklung und Tests
@@ -139,7 +139,7 @@ Beispielsweise kann für den Zugriff auf ein Blob im Speicheremulator die folgen
 
 Die Dienstendpunkte für den Speicheremulator sind:
 
-* Blobdienst: `http://127.0.0.1:10000/<account-name>/<resource-path>`
+* Blob-Dienst: `http://127.0.0.1:10000/<account-name>/<resource-path>`
 * Warteschlangendienst: `http://127.0.0.1:10001/<account-name>/<resource-path>`
 * Tabellenspeicherdienst: `http://127.0.0.1:10002/<account-name>/<resource-path>`
 
@@ -169,7 +169,7 @@ Geben Sie zum Anzeigen der Liste der Optionen an der Eingabeaufforderung `/help`
 
 | Option | BESCHREIBUNG | Get-Help | Argumente |
 | --- | --- | --- | --- |
-| **Start** |Startet den Speicheremulator. |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*: Startet den Emulator im aktuellen Prozess, anstatt einen neuen Prozess zu erstellen. |
+| **Starten** |Startet den Speicheremulator. |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*: Startet den Emulator im aktuellen Prozess, anstatt einen neuen Prozess zu erstellen. |
 | **Beenden** |Beendet den Speicheremulator. |`AzureStorageEmulator.exe stop` | |
 | **Status** |Zeigt den Status des Speicheremulators an. |`AzureStorageEmulator.exe status` | |
 | **Clear** |Löscht die Daten in allen Diensten, die an der Befehlszeile angegeben werden. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*blob*: Löscht Blobdaten. <br/>*queue*: Löscht Warteschlangendaten. <br/>*table*: Löscht Tabellendaten. <br/>*all*: Löscht sämtliche Daten in allen Diensten. |

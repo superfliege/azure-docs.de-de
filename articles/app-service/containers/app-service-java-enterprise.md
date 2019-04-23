@@ -14,10 +14,10 @@ ms.date: 08/29/2018
 ms.author: routlaw
 ms.custom: seodec18
 ms.openlocfilehash: 8db65fd9a1f271aea4ceb345f4d9dfbb6b9ff8a6
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58877379"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>Java Enterprise-Leitfaden für App Service unter Linux
@@ -119,5 +119,4 @@ App Service umfasst Tools, mit denen Sie Probleme in Ihrer Anwendung beheben kö
 
 -   Aktivieren Sie die Protokollierung, indem Sie im linken Navigationsbereich auf **Diagnoseprotokolle** klicken. Klicken Sie auf **Dateisystem**, um das Speicherkontingent und den Aufbewahrungszeitraum festzulegen und die Änderungen zu speichern. Diese Protokolle befinden sich unter `/home/LogFiles/`.
 -   [Stellen Sie über SSH eine Verbindung mit der Anwendungsinstanz her](app-service-linux-ssh-support.md), um die Protokolle für ausgeführte Anwendungen anzuzeigen.
--   Überprüfen Sie die Diagnoseprotokolle im Bereich **Diagnoseprotokolle** des Portals oder durch Ausführen des folgenden Azure CLI-Befehls:
-`az webapp log tail --name <your-app-name> --resource-group <your-apps-resource-group>`
+-   Überprüfen Sie die Diagnoseprotokolle im Bereich **Diagnoseprotokolle** des Portals oder durch Ausführen des folgenden Azure CLI-Befehls: `az webapp log tail --name <your-app-name> --resource-group <your-apps-resource-group>`

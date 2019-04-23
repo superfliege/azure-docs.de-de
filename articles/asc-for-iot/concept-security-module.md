@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
 ms.openlocfilehash: c5814b188c73ea03094d7dae565e40ca09e705c2
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862436"
 ---
 # <a name="security-module"></a>Sicherheitsmodul
@@ -49,4 +49,4 @@ Unter [Erstellen eines Sicherheitsmodulzwillings](quickstart-create-security-twi
 ## <a name="see-also"></a>Weitere Informationen
 - [ASC für IoT (Vorschauversion)](overview.md)
 - [Bereitstellen von Sicherheits-Agents](how-to-deploy-agent.md)
-- [Authentifizierungsmethoden des Sicherheits-Agents](concept-security-agent-authentication-methods.md)
+- [Sicherheits-Agent-Authentifizierungsmethoden](concept-security-agent-authentication-methods.md)

@@ -18,10 +18,10 @@ ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 69440fb99439231cdc046ef48bddfa852c17924c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59271797"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Authentifizierungs- und Autorisierungsfehlercodes
@@ -153,7 +153,7 @@ Suchen Sie nach Informationen zu den AADSTS-Fehlercodes, die vom Azure Active Di
 | AADSTS70007 | UnsupportedResponseMode: Die App hat beim Anfordern eines Tokens den nicht unterstützten Wert `response_mode` zurückgegeben.  |
 | AADSTS70008 | ExpiredOrRevokedGrant: Das Aktualisierungstoken ist aufgrund von Inaktivität abgelaufen. Das Token wurde auf XXX ausgestellt und war für einen bestimmten Zeitraum inaktiv. |
 | AADSTS70011 | InvalidScope: Der von der App angeforderte Bereich ist ungültig. |
-| AADSTS70012 | MsaServerError: Beim Authentifizieren eines MSA-Benutzers (Consumer) ist ein Serverfehler aufgetreten. Versuchen Sie es erneut. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md), wenn der Fehler weiterhin auftritt. |
+| AADSTS70012 | MsaServerError: Beim Authentifizieren eines MSA-Benutzers (Consumer) ist ein Serverfehler aufgetreten. Versuchen Sie es erneut. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md) , wenn der Fehler weiterhin auftritt.|
 | AADSTS70016 | AuthorizationPending: OAuth 2.0-Geräteflussfehler. Die Autorisierung steht aus. Das Gerät wird den Abruf der Anforderung wiederholen. |
 | AADSTS70018 | BadVerificationCode: Ungültiger Überprüfungscode, weil der Benutzer den falschen Benutzercode für den Gerätecode-Datenfluss eingegeben hat. Die Autorisierung wird nicht genehmigt. |
 | AADSTS70019 | CodeExpired: Der Überprüfungscode ist abgelaufen. Bitten Sie den Benutzer, die Anmeldung erneut durchzuführen. |

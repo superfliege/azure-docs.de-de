@@ -10,10 +10,10 @@ ms.date: 04/05/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 5408f920a16860972dca6450d5e51152048bbf82
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361808"
 ---
 # <a name="what-is-azure-backup"></a>Was ist Azure Backup?
@@ -98,14 +98,14 @@ Informieren Sie sich ausführlicher über die [Funktionsweise der Sicherung](bac
 
 **Szenario** | **Agent**
 --- | ---
-**Sichern von Azure-VMs** | Kein Agent erforderlich. Die Azure-VM-Erweiterung für die Sicherung wird auf dem virtuellen Azure-Computer installiert, wenn Sie die erste Azure-VM-Sicherung ausführen.<br/><br/> Diese Option wird für Windows und Linux unterstützt.
+**Sichern virtueller Azure-Computer** | Kein Agent erforderlich. Die Azure-VM-Erweiterung für die Sicherung wird auf dem virtuellen Azure-Computer installiert, wenn Sie die erste Azure-VM-Sicherung ausführen.<br/><br/> Diese Option wird für Windows und Linux unterstützt.
 **Sichern lokaler Windows-Computer** | Für dieses Szenario muss der MARS-Agent direkt auf den Computer heruntergeladen und dort installiert und ausgeführt werden.
 **Sichern virtueller Azure-Computer mit dem MARS-Agent** | Für dieses Szenario muss der MARS-Agent direkt auf den Computer heruntergeladen und dort installiert und ausgeführt werden. Der MARS-Agent kann parallel zur Sicherungserweiterung ausgeführt werden.
 **Sichern lokaler Computer und virtueller Azure-Computer mit DPM/MABS** | Der DPM- oder MABS-Schutz-Agent wird auf den Computern ausgeführt, die Sie schützen möchten. Der MARS-Agent wird auf dem DPM-Server/in der MABS-Instanz für die Sicherung in Azure ausgeführt.
 
 ## <a name="which-backup-agent-should-i-use"></a>Welchen Sicherungs-Agent soll ich verwenden?
 
-**Backup** | **Lösung** | **Einschränkung**
+**Sicherung** | **Lösung** | **Einschränkung**
 --- | --- | ---
 **Ich möchte einen vollständigen virtuellen Azure-Computer sichern.** | Aktivieren Sie die Sicherung für den virtuellen Azure-Computer. Die Sicherungserweiterung wird auf dem virtuellen Azure-Computer unter Windows oder Linux automatisch konfiguriert. | Der gesamte virtuelle Computer wird gesichert. <br/><br/> Bei virtuellen Windows-Computern ist die Sicherung App-konsistent. Für Linux ist die Sicherung dateikonsistent. Wenn Sie eine App-fähige Sicherung für virtuelle Linux-Computer benötigen, müssen Sie dies mithilfe benutzerdefinierter Skripts konfigurieren.
 **Ich möchte bestimmte Dateien/Ordner auf einem virtuellen Azure-Computer sichern.** | Stellen Sie den MARS-Agent auf dem virtuellen Computer bereit.

@@ -16,10 +16,10 @@ ms.date: 09/20/2017
 ms.author: atsenthi
 ms.custom: mvc
 ms.openlocfilehash: cd2895378f713749b3a1d0ac01986b728ceafd2b
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59009002"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Übersicht über Azure Service Fabric
@@ -92,7 +92,7 @@ Mit Service Fabric können Sie Folgendes tun:
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen finden Sie unter:
   * [Gründe für einen Microservice-Ansatz zum Erstellen von Anwendungen](service-fabric-overview-microservices.md)
-  * [Terminologieübersicht](service-fabric-technical-overview.md)
+  * [Technische Übersicht](service-fabric-technical-overview.md)
 * Einrichten der [Windows-Entwicklungsumgebung](service-fabric-get-started.md)  
 * Einrichten der [Linux-Entwicklungsumgebung](service-fabric-get-started-linux.md)
 * Informieren Sie sich über [Service Fabric-Supportoptionen](service-fabric-support.md).

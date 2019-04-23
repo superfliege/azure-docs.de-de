@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/18/2018
 ms.openlocfilehash: 6a068c45a13bd45a09ed51fd154b5842938e0c5e
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59044666"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>Schnellstart: Erfassen von Daten mit dem .NET Standard SDK für Azure Data Explorer (Vorschauversion)
@@ -22,7 +22,7 @@ Azure Data Explorer (ADX) ist ein schneller und hochgradig skalierbarer Dienst z
 
 * Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-* [Ein Testcluster und eine Testdatenbank](create-cluster-database-portal.md)
+* [Einen Testcluster und eine Testdatenbank](create-cluster-database-portal.md)
 
 ## <a name="install-the-ingest-library"></a>Installieren der Erfassungsbibliothek
 
@@ -235,4 +235,4 @@ Wenn Sie unsere anderen Schnellstarts und Tutorials durchgehen möchten, behalte
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Schreiben von Abfragen](write-queries.md)
+> [Write queries](write-queries.md) (Schreiben von Abfragen)

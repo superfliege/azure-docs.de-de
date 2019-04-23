@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
 ms.openlocfilehash: f09d768c0c6c1d351f737b053da9fd3282867099
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58861688"
 ---
 # <a name="azure-security-center-for-iot-prerequisites"></a>Voraussetzungen für Azure Security Center für IoT
@@ -64,5 +64,5 @@ ASC für IoT-Agents unterstützt eine wachsende Anzahl von Geräten und Plattfor
 ## <a name="next-steps"></a>Nächste Schritte
 - [Übersicht](overview.md)
 - [Aktivieren des Diensts](quickstart-onboard-iot-hub.md)
-- [ASC for IoT FAQ (Azure Security Center für IoT – Häufig gestellte Fragen)](resources-frequently-asked-questions.md)
+- [ASC für IoT – Häufig gestellte Fragen](resources-frequently-asked-questions.md)
 - [Grundlegendes zu ASC für IoT-Warnungen](concept-security-alerts.md)

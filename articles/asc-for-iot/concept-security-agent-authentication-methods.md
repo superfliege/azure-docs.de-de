@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
 ms.openlocfilehash: d1f9d77d1f87e8d201e2cb034401bb3cae14f41b
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862912"
 ---
 # <a name="security-agent-authentication-methods"></a>Authentifizierungsmethoden des Sicherheits-Agents 
@@ -63,7 +63,7 @@ Diese Argumente werden in der folgenden Tabelle gezeigt.
 
 |Parameter|BESCHREIBUNG|Optionen|
 |---------|---------------|---------------|
-|**identity**|Authentifizierungsmodus| **Modul** oder **Gerät**|
+|**Identität**|Authentifizierungsmodus| **Modul** oder **Gerät**|
 |**type**|Authentifizierungsart|**SymmetricKey** oder **SelfSignedCertificate**|
 |**filePath**|Vollständiger Pfad der Datei, die das Zertifikat oder den symmetrischen Schlüssel enthält| |
 |**gatewayHostname**|Vollqualifizierter Domänenname (FQDN) des IoT Hubs|Beispiel: ContosoIotHub.azure-devices.net|
@@ -114,4 +114,4 @@ Bearbeiten Sie _LocalConfiguration.json_ mit den folgenden Parametern:
 ## <a name="see-also"></a>Weitere Informationen
 - [Security agents overview (Sicherheits-Agents (Übersicht))](security-agent-architecture.md)
 - [Deploy security agent (Bereitstellen eines Sicherheits-Agents)](how-to-deploy-agent.md)
-- [Zugreifen auf Sicherheitsrohdaten](how-to-security-data-access.md)
+- [Access raw security data (Zugreifen auf Sicherheitsrohdaten)](how-to-security-data-access.md)

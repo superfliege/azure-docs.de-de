@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
 ms.openlocfilehash: 244779e647c4b184b036b1a5ea77aac199be5994
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269400"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Inkrementelles Laden aus mehreren SQL Server-Tabellen in eine Azure SQL-Datenbank
@@ -730,12 +730,12 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
 ## <a name="review-the-results"></a>Überprüfen der Ergebnisse
 Führen Sie in SQL Server Management Studio die folgenden Abfragen für die SQL-Zieldatenbank aus, um sicherzustellen, dass die Daten aus den Quelltabellen in die Zieltabellen kopiert wurden: 
 
-**Abfragen** 
+**Abfrage** 
 ```sql
 select * from customer_table
 ```
 
-**Output**
+**Ausgabe**
 ```
 ===========================================
 PersonID    Name    LastModifytime
@@ -747,13 +747,13 @@ PersonID    Name    LastModifytime
 5           Anny    2017-09-05 08:06:00.000
 ```
 
-**Abfragen**
+**Abfrage**
 
 ```sql
 select * from project_table
 ```
 
-**Output**
+**Ausgabe**
 
 ```
 ===================================
@@ -764,13 +764,13 @@ project2    2016-02-02 01:23:00.000
 project3    2017-03-04 05:16:00.000
 ```
 
-**Abfragen**
+**Abfrage**
 
 ```sql
 select * from watermarktable
 ```
 
-**Output**
+**Ausgabe**
 
 ```
 ======================================
@@ -816,12 +816,12 @@ VALUES
 ## <a name="review-the-final-results"></a>Überprüfen der Endergebnisse
 Führen Sie in SQL Server Management Studio die folgenden Abfragen für die Zieldatenbank aus, um sicherzustellen, dass die aktualisierten bzw. neuen Daten aus den Quelltabellen in die Zieltabellen kopiert wurden. 
 
-**Abfragen** 
+**Abfrage** 
 ```sql
 select * from customer_table
 ```
 
-**Output**
+**Ausgabe**
 ```
 ===========================================
 PersonID    Name    LastModifytime
@@ -835,13 +835,13 @@ PersonID    Name    LastModifytime
 
 Beachten Sie die neuen Werte in **Name** und **LastModifytime** für **PersonID** für Nummer 3. 
 
-**Abfragen**
+**Abfrage**
 
 ```sql
 select * from project_table
 ```
 
-**Output**
+**Ausgabe**
 
 ```
 ===================================
@@ -855,13 +855,13 @@ NewProject  2017-10-01 00:00:00.000
 
 Beachten Sie, dass der Projekttabelle (project_table) der Eintrag **NewProject** hinzugefügt wurde. 
 
-**Abfragen**
+**Abfrage**
 
 ```sql
 select * from watermarktable
 ```
 
-**Output**
+**Ausgabe**
 
 ```
 ======================================

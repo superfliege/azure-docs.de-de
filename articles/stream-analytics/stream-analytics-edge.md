@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 4/2/2019
 ms.custom: seodec18
 ms.openlocfilehash: 4ecea8864a565997b8df119d870e7efee8448143
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58892227"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics auf IoT Edge
@@ -211,7 +211,7 @@ Um Hilfe zu erhalten, nutzen Sie das [Azure Stream Analytics-Forum](https://soci
 
 * [Weitere Informationen zu Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
 * [Tutorial zu ASA unter IoT Edge](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
-* [Entwickeln von Stream Analytics-Edgeaufträgen mit Visual Studio-Tools](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
+* [Entwickeln von Stream Analytics-Edge-Aufträgen mit Visual Studio-Tools](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
 * [Implementieren von CI/CD für Stream Analytics mithilfe von APIs](stream-analytics-cicd-api.md)
 
 <!--Link references-->

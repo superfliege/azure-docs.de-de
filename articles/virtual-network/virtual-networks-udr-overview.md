@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: malop;kumud
 ms.openlocfilehash: ad35d440904c7b65e27b4ead75cec00daa20f8ff
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878501"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing von Datenverkehr für virtuelle Netzwerke
@@ -255,8 +255,8 @@ Die Routentabelle für *Subnet2* enthält alle von Azure erstellten Standardrout
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Create a user-defined route table with routes and a network virtual appliance (Erstellen einer benutzerdefinierten Routentabelle mit Routen und einem virtuellen Netzwerkgerät)](tutorial-create-route-table-portal.md)
+- [Create a user-defined route table with routes and a network virtual appliance](tutorial-create-route-table-portal.md) (Erstellen einer benutzerdefinierten Routentabelle mit Routen und einem virtuellen Netzwerkgerät)
 - [Konfigurieren von BGP für Azure VPN Gateways mithilfe von PowerShell](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-- [Use BGP with ExpressRoute (Verwenden von BGP mit ExpressRoute)](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#route-aggregation-and-prefix-limits)
+- [Use BGP with ExpressRoute](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#route-aggregation-and-prefix-limits) (Verwenden von BGP mit ExpressRoute)
 - [View all routes for a subnet](diagnose-network-routing-problem.md) (Anzeigen aller Routen für ein Subnetz). In einer benutzerdefinierten Routentabelle werden Ihnen nur die benutzerdefinierten Routen angezeigt, nicht die Standard- und BGP-Routen für ein Subnetz. Beim Anzeigen aller Routen werden die Standard-, BGP- und benutzerdefinierten Routen für das Subnetz angegeben, in dem sich eine Netzwerkschnittstelle befindet.
 - [Herausfinden des Typs des nächsten Hops ](../network-watcher/diagnose-vm-network-routing-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json) zwischen einem virtuellen Computer und einer IP-Zieladresse. Mit dem Azure Network Watcher-Feature „Nächster Hop“ können Sie ermitteln, ob Datenverkehr ein Subnetz verlässt und an den gewünschten Ort weitergeleitet wird.

@@ -9,10 +9,10 @@ ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 043b67d4b4c708f2d243f9be04fb2a706591947b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273157"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>Definieren und Zuweisen einer Azure-Blaupause mit der REST-API
@@ -70,8 +70,8 @@ Im ersten Schritt beim Definieren eines Standardmusters für die Konformität wi
 
 In jedem REST-API-URI gibt es Variablen, die Sie durch Ihre eigenen Werte ersetzen müssen:
 
-- `{YourMG}` - Ersetzen Sie diese Variable durch die ID Ihrer Verwaltungsgruppe.
-- `{subscriptionId}` - Ersetzen Sie diese Variable durch Ihre Abonnement-ID.
+- Ersetzen Sie `{YourMG}` durch die ID Ihrer Verwaltungsgruppe.
+- Ersetzen Sie `{subscriptionId}` durch Ihre Abonnement-ID.
 
 > [!NOTE]
 > Blaupausen können auch auf Abonnementebene erstellt werden. Ein Beispiel finden Sie unter [Erstellen einer Blaupause für ein Abonnement](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint).
@@ -336,9 +336,9 @@ Nach dem Veröffentlichen einer Blaupause mit der REST-API kann sie einem Abonne
 
 In jedem REST-API-URI gibt es Variablen, die Sie durch Ihre eigenen Werte ersetzen müssen:
 
-- `{tenantId}` - Ersetzen Sie diese Variable durch Ihre Mandanten-ID.
-- `{YourMG}` - Ersetzen Sie diese Variable durch die ID Ihrer Verwaltungsgruppe.
-- `{subscriptionId}` - Ersetzen Sie diese Variable durch Ihre Abonnement-ID.
+- Ersetzen Sie `{tenantId}` durch Ihre Mandanten-ID.
+- Ersetzen Sie `{YourMG}` durch die ID Ihrer Verwaltungsgruppe.
+- Ersetzen Sie `{subscriptionId}` durch Ihre Abonnement-ID.
 
 1. Geben Sie für den Azure Blueprint-Dienstprinzipal die Rolle **Besitzer** für das Zielabonnement an. Die AppId ist statisch (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), aber die Dienstprinzipal-IDs variieren je nach Mandant. Details für Ihren Mandanten können mit der folgenden REST-API angefordert werden. Sie verwendet die [Azure Active Directory Graph-API](../../active-directory/develop/active-directory-graph-api.md), die eine andere Autorisierung aufweist.
 

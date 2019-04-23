@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.openlocfilehash: 3244140999dc61560549db077d4c402b3986956b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59282643"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>Tutorial: Azure Active Directory-Integration mit ClickUp Productivity Platform
@@ -104,9 +104,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit ClickUp
 
     ![SSO-Informationen zur Domäne und zu den URLs für ClickUp Productivity Platform](common/sp-identifier.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL ein: `https://app.clickup.com/login/sso`
+    a. Geben Sie im Textfeld **Anmelde-URL** die URL wie folgt ein: `https://app.clickup.com/login/sso`.
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://api.clickup.com/v1/team/<team_id>/microsoft`
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://api.clickup.com/v1/team/<team_id>/microsoft`.
 
     > [!NOTE]
     > Der ID-Wert ist nicht der tatsächliche Wert. Ersetzen Sie den Wert durch den tatsächlichen Bezeichner. Dies wird später in diesem Tutorial beschrieben.

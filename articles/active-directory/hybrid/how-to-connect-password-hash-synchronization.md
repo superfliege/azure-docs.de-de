@@ -16,10 +16,10 @@ search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 146fdc3ca2af708a96e6b9a604493eb63c2e6530
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916375"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
@@ -143,6 +143,6 @@ Informationen zu Sicherheitsfragen und FIPS finden Sie im Blogbeitrag [AAD Passw
 Wenn bei der Kennworthashsynchronisierung Probleme auftreten, finden Sie weitere Informationen unter [Problembehandlung bei der Kennworthashsynchronisierung](tshoot-connect-password-hash-synchronization.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Azure AD Connect-Synchronisierung: Anpassen von Synchronisierungsoptionen](how-to-connect-sync-whatis.md)
-* [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](whatis-hybrid-identity.md)
+* [Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung](how-to-connect-sync-whatis.md)
+* [Integrieren lokaler Identitäten in Azure Active Directory](whatis-hybrid-identity.md)
 * [Sehen Sie sich einen ausführlichen Bereitstellungsplan für die Migration von AD FS zur Kennworthashsynchronisierung an.](https://aka.ms/authenticationDeploymentPlan)

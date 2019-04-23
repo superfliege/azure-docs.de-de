@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/02/2019
 ms.author: monhaber
 ms.openlocfilehash: 63ee603f83d0c2de3bc89b8792ada4a61edb7e00
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59006742"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Datensammlung in Azure Security Center
@@ -77,11 +77,11 @@ Security Center kann automatisch einen Standardarbeitsbereich zum Speichern der 
 Auswählen eines von Security Center erstellten Arbeitsbereichs:
 
 1. Wählen Sie unter **Standardmäßige Arbeitsbereichskonfiguration** die Option „Von Security Center erstellte Arbeitsbereiche verwenden“ aus.
-   ![Auswählen des Tarifs][10] 
+   ![Tarif auswählen][10] 
 
 1. Klicken Sie auf **Speichern**.<br>
     Security Center erstellt eine neue Ressourcengruppe und einen Standardarbeitsbereich an diesem Standort und verbindet den Agent mit diesem Arbeitsbereich. Für den Arbeitsbereich und die Ressourcengruppe gilt folgende Namenskonvention:<br>
-   **Arbeitsbereich: DefaultWorkspace-[Abonnement-ID]-[Region]<br> Ressourcengruppe: DefaultResourceGroup-[geo]**
+   **Arbeitsbereich: DefaultWorkspace-[Abonnement-ID]-[Region]<br> Ressourcengruppe: DefaultResourceGroup-[Region]**
 
    Wenn ein Abonnement VMs aus mehreren Geolocations enthält, erstellt Security Center mehrere Arbeitsbereiche. Mehrere Arbeitsbereiche werden erstellt, um Datenschutzregeln zu verwalten.
 1. Security Center aktiviert gemäß dem für das Abonnement festgelegten Tarif automatisch eine Security Center-Lösung im Arbeitsbereich. 
@@ -138,7 +138,7 @@ So wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich aus:
      
     b.  Wählen Sie den Arbeitsbereich aus, in dem Sie die Agent-Verbindung herstellen möchten. Klicken Sie hierzu in der Spalte „Einstellungen“ für das gewünschte Abonnement in der Liste auf **Einstellungen bearbeiten**.
         ![Arbeitsbereich auswählen][8] c. Legen Sie den Tarif fest.
-        ![Auswählen des Tarifs][9] 
+        ![Tarif auswählen][9] 
    
    >[!NOTE]
    >Wenn für den Arbeitsbereich bereits eine **Security**- oder **SecurityCenterFree**-Lösung aktiviert ist, werden die Preise automatisch festgelegt. 
@@ -256,7 +256,7 @@ Damit Security Center Sicherheitsdaten auf Ihren virtuellen Computern erfassen u
    b.  Wählen Sie den Arbeitsbereich aus, in dem Sie den Agent verbinden möchten. Stellen Sie sicher, dass sich der Arbeitsbereich im gleichen Abonnement befindet, das Sie in Security Center verwenden, und dass Sie über Lese-/Schreibberechtigungen für den Arbeitsbereich verfügen.
        ![Arbeitsbereich auswählen][8]
 3. Legen Sie den Tarif fest.
-   ![Auswählen des Tarifs][9] 
+   ![Tarif auswählen][9] 
    >[!NOTE]
    >Wenn für den Arbeitsbereich bereits eine **Security**- oder **SecurityCenterFree**-Lösung aktiviert ist, werden die Preise automatisch festgelegt. 
    > 

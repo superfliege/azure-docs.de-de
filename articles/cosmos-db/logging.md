@@ -8,10 +8,10 @@ ms.date: 03/15/2019
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 8839d7ea93bcb205b1900e63d3ab98394e72cd75
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58904864"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Diagnoseprotokollierung in Azure Cosmos DB 
@@ -442,9 +442,9 @@ Die folgende Tabelle beschreibt die Inhalte der einzelnen Protokolleinträge.
 | --- | --- | --- |
 | **time** | **TimeGenerated** | Datum und Uhrzeit (UTC), zu denen der Vorgang aufgetreten ist. |
 | **Ressourcen-ID** | **Ressource** | Das Azure Cosmos DB-Konto, für das Protokolle aktiviert sind.|
-| **category** | **Category (Kategorie)** | Für Azure Cosmos DB-Protokolle ist **DataPlaneRequests** der einzige verfügbare Wert. |
-| **operationName** | **NameVorgang** | Name des Vorgangs. Bei diesem Wert kann es sich um einen der folgenden Vorgänge handeln: Create, Update, Read, ReadFeed, Delete, Replace, Execute, SqlQuery, Query, JSQuery, Head, HeadFeed, Upsert.   |
-| **Eigenschaften** | – | Die Inhalte dieser Felder werden in den folgenden Zeilen beschrieben. |
+| **category** | **Kategorie** | Für Azure Cosmos DB-Protokolle ist **DataPlaneRequests** der einzige verfügbare Wert. |
+| **operationName** | **OperationName** | Name des Vorgangs. Bei diesem Wert kann es sich um einen der folgenden Vorgänge handeln: Create, Update, Read, ReadFeed, Delete, Replace, Execute, SqlQuery, Query, JSQuery, Head, HeadFeed, Upsert.   |
+| **properties** | – | Die Inhalte dieser Felder werden in den folgenden Zeilen beschrieben. |
 | **activityId** | **activityId_g** | Die eindeutige GUID für den protokollierten Vorgang. |
 | **userAgent** | **userAgent_s** | Eine Zeichenfolge, die den Benutzer-Agent des Clients angibt, der die Anforderung ausführt. Das Format lautet {Name des Benutzer-Agents}/{version}.|
 | **requestResourceType** | **requestResourceType_s** | Der Typ der Ressource, auf die zugegriffen wird. Bei diesem Wert kann es sich um einen der folgenden Ressourcentypen handeln: Database, Container, Document, Attachment, User, Permission, StoredProcedure, Trigger, UserDefinedFunction, Offer. |

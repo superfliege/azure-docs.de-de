@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: sujayt
 ms.openlocfilehash: c7c91a2cf9a25d0a5a4aeed6621e89f9c7cc18f0
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269621"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Problembehandlung für Azure-zu-Azure-VM-Replikationsprobleme
@@ -230,7 +230,7 @@ Azure Site Recovery gibt derzeit vor, dass sich die Quellressourcengruppe für d
 **Ursache 2: Diese Ressourcengruppe ist nicht Teil des ausgewählten Abonnements.** <br>
 Möglicherweise können Sie die Ressourcengruppe während des Schutzzeitraums nicht finden, wenn sie nicht Teil des angegebenen Abonnements ist. Stellen Sie sicher, dass die Ressourcengruppe zum verwendeten Abonnement gehört.
 
- **Ursache 3: Veraltete Konfiguration** <br>
+ **Ursache 3: Veraltete Konfiguration.** <br>
 Wird der virtuelle Computer, für den Sie die Replikation aktivieren möchten, nicht angezeigt, ist die Ursache unter Umständen eine veraltete Site Recovery-Konfiguration auf dem virtuellen Azure-Computer. Die veraltete Konfiguration kann in den folgenden Fällen auf einer Azure-VM verbleiben:
 
 - Sie haben die Replikation für die Azure-VM mithilfe von Site Recovery aktiviert und anschließend den Site Recovery-Tresor gelöscht, ohne die Replikation auf der VM explizit zu deaktivieren.
@@ -300,7 +300,7 @@ Sie können die Konsole „Dienste“ öffnen und sicherstellen, dass für „CO
 
 ## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-error-code-151126"></a>Fehler bei Schutz aktiviert, da in der GRUB-Konfiguration erwähnter Gerätename statt UUID vorliegt (Fehlercode 151126)
 
-**Mögliche Ursache:** </br>
+**Mögliche Ursache**: </br>
 Die GRUB-Konfigurationsdateien („/boot/grub/menu.lst“, „/boot/grub/grub.cfg“, „/boot/grub2/grub.cfg“ oder „/etc/default/grub“) könnten den Wert für die Parameter **root** und **resume** als tatsächliche Gerätenamen statt UUID enthalten. Site Recovery bevorzugt den UUID-Ansatz, da Gerätenamen sich beim Neustart des virtuellen Computers ändern können, da die VM möglicherweise bei dem Failover nicht den Namen beibehält, was zu Problemen führen kann. Beispiel:  </br>
 
 

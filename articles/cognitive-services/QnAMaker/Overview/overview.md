@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 04/05/2019
 ms.author: tulasim
 ms.openlocfilehash: bafc39e7d9237fc7dd8469e5f9e97adb30355c8f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59257228"
 ---
 # <a name="what-is-qna-maker"></a>Was ist QnA Maker?
@@ -74,4 +74,4 @@ Die QnA Maker-Architektur umfasst die beiden folgenden Komponenten:
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erstellen eines QnA Maker-Diensts](../how-to/set-up-qnamaker-service-azure.md)
+> [Create a QnA Maker service](../how-to/set-up-qnamaker-service-azure.md) (Erstellen eines QnA Maker-Diensts)

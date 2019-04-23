@@ -13,10 +13,10 @@ ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4d4466e4ac7a4e818da6332254e3094eccbaf2b4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59257602"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Eigenschaften eines Azure Active Directory B2B-Zusammenarbeitsbenutzers
@@ -105,6 +105,6 @@ Ja. Gastobjekte sind in der globalen Adressliste Ihres Unternehmens standardmä�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Was ist die Azure AD B2B-Zusammenarbeit?](what-is-b2b.md)
+* [Was ist die Azure AD B2B-Zusammenarbeit?](what-is-b2b.md)
 * [Benutzertoken für die B2B-Zusammenarbeit](user-token.md)
 * [Zuordnen von Benutzeransprüchen für die B2B-Zusammenarbeit](claims-mapping.md)

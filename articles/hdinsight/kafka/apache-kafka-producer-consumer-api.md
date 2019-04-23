@@ -10,10 +10,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 04/02/2019
 ms.openlocfilehash: 6b77cd9939e244fd031788164cdfe391c3e2b9d5
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916392"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Tutorial: Verwenden der Apache Kafka Producer- und Consumer-APIs
@@ -226,5 +226,5 @@ Datensätze werden in Kafka in der Reihenfolge gespeichert, in der sie in einer 
 In diesem Dokument haben Sie erfahren, wie Sie die Apache Kafka Producer- und Consumer-APIs mit Kafka in HDInsight verwenden. Verwenden Sie Folgendes, um weitere Informationen zur Verwendung von Kafka zu erhalten:
 
 * [Analysieren von Apache Kafka-Protokollen](apache-kafka-log-analytics-operations-management.md)
-* [Replizieren von Daten zwischen Apache Kafka-Clustern](apache-kafka-mirroring.md)
+* [Replizieren von Daten zwischen Apache Kafka-Clustern](apache-kafka-mirroring.md)
 * [Apache Kafka Streams-API mit HDInsight](apache-kafka-streams-api.md)

@@ -9,10 +9,10 @@ ms.date: 03/31/2019
 ms.author: mjbrown
 ms.custom: seodec18
 ms.openlocfilehash: 22b03417495625ef70650a015530d6f56b32fd4f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59283646"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>SQL-Sprachreferenz für Azure Cosmos DB 
@@ -38,8 +38,8 @@ SELECT <select_specification>
   
  Weitere Informationen zu den einzelnen Klauseln finden Sie in den folgenden Abschnitten:  
   
--   [Die SELECT-Klausel](#bk_select_query)    
--   [Die FROM-Klausel](#bk_from_clause)    
+-   [SELECT-Klausel](#bk_select_query)    
+-   [FROM-Klausel](#bk_from_clause)    
 -   [WHERE-Klausel](#bk_where_clause)    
 -   [ORDER BY-Klausel](#bk_orderby_clause)  
   
@@ -49,10 +49,10 @@ Die Klauseln in der SELECT-Anweisung müssen wie oben gezeigt sortiert werden. J
   
 Die Klauseln werden in folgender Reihenfolge verarbeitet:  
 
-1.  [Die FROM-Klausel](#bk_from_clause)  
+1.  [FROM-Klausel](#bk_from_clause)  
 2.  [WHERE-Klausel](#bk_where_clause)  
 3.  [ORDER BY-Klausel](#bk_orderby_clause)  
-4.  [Die SELECT-Klausel](#bk_select_query)  
+4.  [SELECT-Klausel](#bk_select_query)  
 
 Beachten Sie, dass sich dies von der Reihenfolge unterscheidet, in der sie in der Syntax auftreten. Die Reihenfolge ist, dass alle von einer verarbeiteten Klausel eingeführten neuen Symbole sichtbar sind und in Klauseln verwendet werden können, die zu einem späteren Zeitpunkt verarbeitet werden. So können z.B. WHERE- und SELECT-Klauseln auf Aliase zugreifen, die in einer FROM-Klausel deklariert werden.  
 
@@ -124,10 +124,10 @@ Sowohl `SELECT <select_list>` als auch `SELECT *` sind sogenannter „syntaktisc
   
    `SELECT VALUE { p1: <expr1>, p2: <expr2>, ..., pN: <exprN> }[other clauses...]`  
   
-**Siehe auch**  
+**Weitere Informationen**  
   
-[Skalare Ausdrücke](#bk_scalar_expressions)  
-[Die SELECT-Klausel](#bk_select_query)  
+[Skalarausdrücke](#bk_scalar_expressions)  
+[SELECT-Klausel](#bk_select_query)  
   
 ##  <a name="bk_from_clause"></a> FROM-Klausel  
 Gibt die Quelle oder verknüpfte Quellen an. Die FROM-Klausel ist optional, es sei denn, die Quelle wird später in der Abfrage gefiltert oder projiziert. Mit dieser Klausel wird die Datenquelle angegeben, auf der die Abfrage operiert. Normalerweise dient der gesamte Container als Quelle, doch Sie können stattdessen auch nur eine Teilmenge des Containers angeben. Wird diese Klausel nicht angegeben, werden andere Klauseln weiterhin so ausgeführt, als würde die FROM-Klausel ein einzelnes Dokument bereitstellen. Beispiele finden Sie unter [Beispiele für die FROM-Klausel](how-to-sql-query.md#FromClause).
@@ -306,7 +306,7 @@ Betrachten Sie die folgende FROM-Klausel: `<from_source1> JOIN <from_source2> JO
   
 **Weitere Informationen**  
   
- [Die SELECT-Klausel](#bk_select_query)  
+ [SELECT-Klausel](#bk_select_query)  
   
 ##  <a name="bk_where_clause"></a> WHERE-Klausel  
  Gibt die Suchbedingung für die Dokumente an, die von der Abfrage zurückgegeben werden. Beispiele finden Sie unter [Beispiele für die WHERE-Klausel](how-to-sql-query.md#WhereClause).
@@ -471,17 +471,17 @@ ORDER BY <sort_specification>
   
  **Operatorkategorien:**  
   
-|**Category (Kategorie)**|**Details**|  
+|**Kategorie**|**Details**|  
 |-|-|  
 |**Arithmetisch**|Der Operator erwartet (eine) Zahl(en) als Eingabe(n). Die Ausgabe ist ebenfalls eine Zahl. Wenn eine der Eingaben **undefiniert** ist oder einen anderen Typ als „Number“ aufweist, ist das Ergebnis **undefiniert**.|  
 |**Bitweise**|Der Operator erwartet (eine) 32-Bit-Ganzzahl(en) mit Vorzeichen als Eingabe(n). Die Ausgabe ist ebenfalls eine 32-Bit-Ganzzahl mit Vorzeichen.<br /><br /> Jeder nicht ganzzahlige Wert wird gerundet. Positive Werte werden abgerundet, negative Werte aufgerundet.<br /><br /> Jeder Wert, der außerhalb des 32-Bit-Ganzzahlbereichs liegt, wird unter Verwendung der letzten 32 Bits seiner Zweierkomplement-Schreibweise konvertiert.<br /><br /> Wenn eine der Eingaben **undefiniert** ist oder einen anderen Typ als „Number“ aufweist, ist das Ergebnis **undefiniert**.<br /><br /> **Hinweis:** Das oben beschriebene Verhalten ist kompatibel mit dem JavaScript-Verhalten des bitweisen Operators.|  
 |**Logisch**|Der Operator erwartet (eine) boolesche Eingabe(n). Die Ausgabe ist ebenfalls boolesch.<br />Wenn eine der Eingaben **undefiniert** ist oder einen anderen Typ als „boolesch“ aufweist, ist das Ergebnis **undefiniert**.|  
 |**Vergleich**|Der Operator erwartet, dass die Eingabe(n) vom gleichen Typ und nicht undefiniert ist (sind). Die Ausgabe ist ein boolescher Wert.<br /><br /> Wenn eine der Eingaben **undefiniert** ist oder sie verschiedene Typen aufweisen, ist das Ergebnis **undefiniert**.<br /><br /> In der Tabelle **Reihenfolge der Werte für den Vergleich** finden Sie weitere Informationen zur Reihenfolge der Werte.|  
-|**Zeichenfolge**|Der Operator erwartet String(s) als Eingabe(n). Die Ausgabe ist ebenfalls ein String.<br />Wenn eine der Eingaben **undefiniert** ist oder einen anderen Typ als „String“ aufweist, ist das Ergebnis **undefiniert**.|  
+|**string**|Der Operator erwartet String(s) als Eingabe(n). Die Ausgabe ist ebenfalls ein String.<br />Wenn eine der Eingaben **undefiniert** ist oder einen anderen Typ als „String“ aufweist, ist das Ergebnis **undefiniert**.|  
   
  **Unäre Operatoren:**  
   
-|**NAME**|**Operator**|**Details**|  
+|**Name**|**Operator**|**Details**|  
 |-|-|-|  
 |**Arithmetisch**|+<br /><br /> -|Gibt den Zahlenwert zurück.<br /><br /> Bitweise Negation. Gibt den negierten Zahlenwert zurück.|  
 |**Bitweise**|~|Einerkomplement. Gibt ein Komplement eines Zahlenwerts zurück.|  
@@ -489,31 +489,31 @@ ORDER BY <sort_specification>
   
  **Binäre Operatoren:**  
   
-|**NAME**|**Operator**|**Details**|  
+|**Name**|**Operator**|**Details**|  
 |-|-|-|  
 |**Arithmetisch**|+<br /><br /> -<br /><br /> *<br /><br /> /<br /><br /> %|Addition.<br /><br /> Subtraktion.<br /><br /> Multiplikation.<br /><br /> Division.<br /><br /> Modulation.|  
 |**Bitweise**|&#124;<br /><br /> &<br /><br /> ^<br /><br /> <<<br /><br /> >><br /><br /> >>>|Bitweises OR.<br /><br /> Bitweises AND.<br /><br /> Bitweises XOR.<br /><br /> Verschiebung nach links.<br /><br /> Verschiebung nach rechts.<br /><br /> Nullauffüllung, Verschiebung nach rechts.|  
 |**Logisch**|**AND**<br /><br /> **OR**|Logische Konjunktion. Gibt **true** zurück, wenn beide Argumente **true** sind, andernfalls **false**.<br /><br /> Logische Disjunktion. Gibt **true** zurück, wenn ein Argument **true** ist, andernfalls **false**.|  
-|**Vergleich**|**=**<br /><br /> **!=, <>**<br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> **??**|Gleich. Gibt **true** zurück, wenn die Argumente gleich sind, andernfalls **false**.<br /><br /> Ungleich. Gibt **true** zurück, wenn die Argumente nicht gleich sind, andernfalls **false**.<br /><br /> Größer als. Gibt **true** zurück, wenn das erste Argument größer als das zweite Argument ist, andernfalls **false**.<br /><br /> Größer als oder gleich. Gibt **true** zurück, wenn das erste Argument größer als das zweite Argument oder ihm gleich ist, andernfalls **false**.<br /><br /> Kleiner als. Gibt **true** zurück, wenn das erste Argument kleiner als das zweite Argument ist, andernfalls **false**.<br /><br /> Kleiner als oder gleich. Gibt **true** zurück, wenn das erste Argument kleiner als das zweite Argument oder ihm gleich ist, andernfalls **false**.<br /><br /> Zusammenfügen. Gibt das zweite Argument zurück, wenn das erste Argument ein **undefinierter** Wert ist.|  
-|**Zeichenfolge**|**&#124;&#124;**|Verkettung. Gibt eine Verkettung der beiden Argumente zurück.|  
+|**Vergleich**|**=**<br /><br /> **!=, &lt;&gt;**<br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> **??**|Gleich. Gibt **true** zurück, wenn die Argumente gleich sind, andernfalls **false**.<br /><br /> Ungleich. Gibt **true** zurück, wenn die Argumente nicht gleich sind, andernfalls **false**.<br /><br /> Größer als. Gibt **true** zurück, wenn das erste Argument größer als das zweite Argument ist, andernfalls **false**.<br /><br /> Größer als oder gleich. Gibt **true** zurück, wenn das erste Argument größer als das zweite Argument oder ihm gleich ist, andernfalls **false**.<br /><br /> Kleiner als. Gibt **true** zurück, wenn das erste Argument kleiner als das zweite Argument ist, andernfalls **false**.<br /><br /> Kleiner als oder gleich. Gibt **true** zurück, wenn das erste Argument kleiner als das zweite Argument oder ihm gleich ist, andernfalls **false**.<br /><br /> Zusammenfügen. Gibt das zweite Argument zurück, wenn das erste Argument ein **undefinierter** Wert ist.|  
+|**String**|**&#124;&#124;**|Verkettung. Gibt eine Verkettung der beiden Argumente zurück.|  
   
  **Ternäre Operatoren:**  
 
-|**NAME**|**Operator**|**Details**| 
+|**Name**|**Operator**|**Details**| 
 |-|-|-|  
 |Ternärer Operator|?|Gibt das zweite Argument zurück, wenn die Auswertung des ersten Arguments **true** ergibt; gibt andernfalls das dritte Argument zurück.|  
 
   
  **Reihenfolge der Werte für den Vergleich**  
   
-|**Type**|**Reihenfolge der Werte**|  
+|**Typ**|**Reihenfolge der Werte**|  
 |-|-|  
-|**Undefined**|Nicht vergleichbar.|  
-|**Null**|Einzelner Wert: **NULL**|  
+|**Undefiniert**|Nicht vergleichbar.|  
+|**NULL**|Einzelner Wert: **NULL**|  
 |**Number**|Natürliche reelle Zahl.<br /><br /> Der negative Unendlichkeitswert ist kleiner als jeder andere Number-Wert.<br /><br /> Der positive Unendlichkeitswert ist größer als jeder andere Number-Wert. **NaN**-Wert ist nicht vergleichbar. Vergleich mit **NaN** führt zu **undefiniertem** Wert.|  
-|**Zeichenfolge**|Lexikografische Reihenfolge.|  
+|**String**|Lexikografische Reihenfolge.|  
 |**Array**|Keine Reihenfolge, aber gleichberechtigt.|  
-|**Objekt**|Keine Reihenfolge, aber gleichberechtigt.|  
+|**Object**|Keine Reihenfolge, aber gleichberechtigt.|  
   
  **Anmerkungen**  
   
@@ -521,7 +521,7 @@ ORDER BY <sort_specification>
   
  Dies bedeutet, dass eine Abfrage wie „SELECT * FROM ROOT r WHERE r.Age = 21“ nur Dokumente zurückgibt, deren Eigenschaft „Age“ der Zahl 21 entspricht. Dokumente, deren Eigenschaft „Age“ der Zeichenfolge „21“ oder der Zeichenfolge „0021“ entspricht, stimmen nicht überein, da der Ausdruck „21“ = 21 als undefiniert ausgewertet wird. Dies ermöglicht eine bessere Verwendung von Indizes, da die Suche nach einem bestimmten Wert (z.B. der Zahl 21) schneller ist als die Suche nach einer unbestimmten Anzahl von möglichen Übereinstimmungen (z.B. der Zahl 21 oder den Zeichenfolgen „21“, „021“, „21,0“ etc.). Dies unterscheidet sich von der Art, in der JavaScript Operatoren für Werte verschiedener Typen auswertet.  
   
- **Arrays und Objekte – Gleichheit und Vergleich**  
+ **Arrays und Objekte – Gleichheit und Vergleich**  
   
  Das Ergebnis des Vergleichs von Array- und Object-Werten mithilfe von Bereichsoperatoren (>, > =, <, < =) ist undefiniert, weil für Object- oder Array-Werte keine Reihenfolge definiert ist. Die Verwendung von Gleichheits-/Ungleichheitsoperatoren (=, ! =, <>) wird jedoch unterstützt, und die Werte werden strukturell verglichen.  
   
@@ -534,15 +534,15 @@ ORDER BY <sort_specification>
   
  **Unterstützte skalare Datentypen:**  
   
-|**Type**|**Reihenfolge der Werte**|  
+|**Typ**|**Reihenfolge der Werte**|  
 |-|-|  
-|**Undefined**|Einzelner Wert: **undefiniert**|  
-|**Null**|Einzelner Wert: **NULL**|  
+|**Undefiniert**|Einzelner Wert: **undefiniert**|  
+|**NULL**|Einzelner Wert: **NULL**|  
 |**Boolescher Wert**|Werte: **false**, **true**.|  
 |**Number**|Eine Gleitkommazahl mit doppelter Genauigkeit, IEEE 754-Standard.|  
-|**Zeichenfolge**|Eine Sequenz von null (0) oder mehr Unicode-Zeichen. Zeichenfolgen müssen in einfache oder doppelte Anführungszeichen eingeschlossen sein.|  
+|**String**|Eine Sequenz von null (0) oder mehr Unicode-Zeichen. Zeichenfolgen müssen in einfache oder doppelte Anführungszeichen eingeschlossen sein.|  
 |**Array**|Eine Sequenz von null (0) oder mehr Elementen. Jedes Element kann einen Wert eines beliebigen skalaren Datentyps mit Ausnahme von „Undefiniert“ aufweisen.|  
-|**Objekt**|Ungeordneter Satz von null (0) oder mehr Name/Wert-Paaren. Der Name ist eine Unicode-Zeichenfolge, der Wert kann einen beliebigen skalaren Datentyp mit Ausnahme von **Undefiniert** aufweisen.|  
+|**Object**|Ungeordneter Satz von null (0) oder mehr Name/Wert-Paaren. Der Name ist eine Unicode-Zeichenfolge, der Wert kann einen beliebigen skalaren Datentyp mit Ausnahme von **Undefiniert** aufweisen.|  
   
  **Syntax**  
   
@@ -618,7 +618,7 @@ ORDER BY <sort_specification>
   
   Folgende Escapesequenzen sind zulässig:  
   
-|**Escapesequenz**|**BESCHREIBUNG**|**Unicode-Zeichen**|  
+|**Escapesequenz**|**Beschreibung**|**Unicode-Zeichen**|  
 |-|-|-|  
 |\\'|Apostroph (')|U+0027|  
 |\\"|Anführungszeichen (")|U+0022|  
@@ -679,7 +679,7 @@ ORDER BY <sort_specification>
 |Funktion|BESCHREIBUNG|  
 |--------------|-----------------|  
 |[Mathematische Funktionen](#bk_mathematical_functions)|Jede mathematische Funktion führt eine Berechnung durch, üblicherweise basierend auf Eingabewerten, die als Argument bereitgestellt werden, und gibt einen numerischen Wert zurück.|  
-|[Funktionen für die Typprüfung](#bk_type_checking_functions)|Mit den Funktionen für die Typprüfung können Sie den Typ eines Ausdrucks in SQL-Abfragen prüfen.|  
+|[Funktionen für die Typüberprüfung](#bk_type_checking_functions)|Mit den Funktionen für die Typprüfung können Sie den Typ eines Ausdrucks in SQL-Abfragen prüfen.|  
 |[Zeichenfolgenfunktionen](#bk_string_functions)|Die folgenden Stringfunktionen führen einen Vorgang für einen Zeichenfolgen-Eingabewert durch und geben eine Zeichenfolge, einen numerischen Wert oder einen booleschen Wert zurück.|  
 |[Arrayfunktionen](#bk_array_functions)|Die Arrayfunktionen führen einen Vorgang für einen Arrayeingabewert aus und geben einen numerischen Wert, booleschen Wert oder Arraywert zurück.|  
 |[Räumliche Funktionen](#bk_spatial_functions)|Die räumlichen Funktionen führen einen Vorgang für den Eingabewert eines räumlichen Objekts aus und geben einen numerischen oder booleschen Wert zurück.|  
@@ -689,10 +689,10 @@ ORDER BY <sort_specification>
   
 ||||  
 |-|-|-|  
-|[ABS (ABS)](#bk_abs)|[ACOS](#bk_acos)|[ASIN](#bk_asin)|  
+|[ABS](#bk_abs)|[ACOS](#bk_acos)|[ASIN](#bk_asin)|  
 |[ATAN](#bk_atan)|[ATN2](#bk_atn2)|[CEILING](#bk_ceiling)|  
 |[COS](#bk_cos)|[COT](#bk_cot)|[DEGREES](#bk_degrees)|  
-|[EXP](#bk_exp)|[FLOOR](#bk_floor)|[PROTOKOLL](#bk_log)|  
+|[EXP](#bk_exp)|[FLOOR](#bk_floor)|[LOG](#bk_log)|  
 |[LOG10](#bk_log10)|[PI](#bk_pi)|[POWER](#bk_power)|  
 |[RADIANS](#bk_radians)|[ROUND](#bk_round)|[SIN](#bk_sin)|  
 |[SQRT](#bk_sqrt)|[SQUARE](#bk_square)|[SIGN](#bk_sign)|  
@@ -1104,7 +1104,7 @@ LOG (<numeric_expression> [, <base>])
   
   Gibt einen numerischen Ausdruck zurück.  
   
-  **Anmerkungen**  
+  **Hinweise:**  
   
   Standardmäßig gibt LOG() den natürlichen Logarithmus zurück. Sie können die Basis des Logarithmus mithilfe des optionalen base-Parameters in einen anderen Wert ändern.  
   
@@ -3295,6 +3295,6 @@ SELECT ST_ISVALIDDETAILED({
   
 ## <a name="next-steps"></a>Nächste Schritte  
 
-- [SQL-Abfragebeispiele für Azure Cosmos DB](how-to-sql-query.md)
+- [SQL-Syntax und SQL-Abfrage für Cosmos DB](how-to-sql-query.md)
 
-- [Dokumentation für Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/)  
+- [Dokumentation für Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/)  

@@ -16,10 +16,10 @@ ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 37455c278d665d05636ec120ca91b76153e53d16
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58894917"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Apps in Azure App Service
@@ -51,16 +51,16 @@ App Service protokolliert auch Bereitstellungsinformationen, wenn Sie Inhalte in
 Navigieren Sie zur Seite für Ihre App und klicken auf **Einstellungen > Diagnoseprotokolle**, um die Diagnose im [Azure-Portal](https://portal.azure.com) zu aktivieren.
 
 <!-- todo:cleanup dogfood addresses in screenshot -->
-![Protokolle Teil](./media/web-sites-enable-diagnostic-log/logspart.png)
+![Bereich „Protokolle“](./media/web-sites-enable-diagnostic-log/logspart.png)
 
 Wenn Sie die **Anwendungsdiagnose** aktivieren, können Sie auch die **Ebene** auswählen. Die folgende Tabelle zeigt die Kategorien von Protokollen auf den einzelnen Ebenen:
 
 | Ebene| Enthaltene Protokollkategorien |
 |-|-|
-|**Deaktiviert** | Keine |
-|**Error** | Fehler, Kritisch |
-|**Warnung** | Warnung, Fehler, Kritisch|
-|**Information** | Info, Warnung, Fehler, Kritisch|
+|**Disabled** | Keine |
+|**Fehler** | Fehler, Kritisch |
+|**Warning** | Warnung, Fehler, Kritisch|
+|**Informationen** | Info, Warnung, Fehler, Kritisch|
 |**Ausführlich** | Ablaufverfolgung, Debugging, Info, Warnung, Fehler, Kritisch (alle Kategorien) |
 |-|-|
 
@@ -98,11 +98,11 @@ Im Dateisystem der App gespeicherte Diagnoseinformationen können direkt über d
 
 Protokolle werden in der folgenden Verzeichnisstruktur gespeichert:
 
-* **Anwendungsprotokolle** - /LogFiles/Application/. Dieser Ordner enthält eine oder mehrere Textdateien mit Informationen, die bei der Anwendungsprotokollierung erzeugt wurden.
+* **Anwendungsprotokolle**: /LogFiles/Application/. Dieser Ordner enthält eine oder mehrere Textdateien mit Informationen, die bei der Anwendungsprotokollierung erzeugt wurden.
 * **Protokolle für fehlgeschlagene Anforderungen** - /LogFiles/W3SVC#########/. Dieser Ordner enthält eine XSL-Datei und eine oder mehrere XML-Dateien. Vergewissern Sie sich, dass Sie die XSL-Datei in dasselbe Verzeichnis wie die XML-Datei(en) herunterladen, da die XSL-Datei die Funktionalität zum Formatieren und Filtern des Inhalts der XML-Datei(en) zur Anzeige in Internet Explorer zur Verfügung stellt.
-* **Detaillierte Fehlerprotokolle** - /LogFiles/DetailedErrors/. Dieser Ordner enthält eine oder mehrere HTM-Dateien, die umfangreiche Informationen zu aufgetretenen HTTP-Fehlern bereitstellen.
-* **Webserverprotokolle** - /LogFiles/http/RawLogs. Dieser Ordner enthält eine oder mehrere Textdateien im [erweiterten W3C-Protokolldateiformat](/windows/desktop/Http/w3c-logging).
-* **Bereitstellungsprotokolle** - /LogFiles/Git. Dieser Ordner enthält Protokolle, die von den internen Bereitstellungsprozessen von Azure App Service erzeugt werden, sowie Protokolle für Git-Bereitstellungen. Bereitstellungsprotokolle können sich auch unter „D:\home\site\deployments“ befinden.
+* **Detaillierte Fehlerprotokolle**: /LogFiles/DetailedErrors/. Dieser Ordner enthält eine oder mehrere HTM-Dateien, die umfangreiche Informationen zu aufgetretenen HTTP-Fehlern bereitstellen.
+* **Webserverprotokolle**: /LogFiles/http/RawLogs. Dieser Ordner enthält eine oder mehrere Textdateien im [erweiterten W3C-Protokolldateiformat](/windows/desktop/Http/w3c-logging).
+* **Bereitstellungsprotokolle**: /LogFiles/Git. Dieser Ordner enthält Protokolle, die von den internen Bereitstellungsprozessen von Azure App Service erzeugt werden, sowie Protokolle für Git-Bereitstellungen. Bereitstellungsprotokolle können sich auch unter „D:\home\site\deployments“ befinden.
 
 ### <a name="ftp"></a>FTP
 
@@ -230,6 +230,6 @@ Webserverprotokolle werden im [erweiterten W3C-Protokolldateiformat](/windows/de
 >
 
 ## <a name="nextsteps"></a> Nächste Schritte
-* [Überwachen von Apps in Azure App Service](web-sites-monitor.md)
-* [Problembehandlung von Apps in Azure App Service mit Visual Studio](troubleshoot-dotnet-visual-studio.md)
+* [How to Monitor Azure App Service (Vorgehensweise: Überwachen von Azure App Service)](web-sites-monitor.md)
+* [Troubleshooting Azure App Service in Visual Studio (Problembehandlung für Azure App Service in Visual Studio)](troubleshoot-dotnet-visual-studio.md)
 * [Analyze app Logs in HDInsight (Analyse von App-Protokollen in HDInsight)](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

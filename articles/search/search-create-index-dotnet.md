@@ -11,10 +11,10 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/08/2019
 ms.openlocfilehash: 83842893e0ffc6bb954832cd65b6312b59bbcaa3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269043"
 ---
 # <a name="quickstart-1---create-an-azure-search-index-in-c"></a>Schnellstart: 1 – Erstellen eines Azure Search-Indexes in C#
@@ -22,7 +22,7 @@ ms.locfileid: "59269043"
 > * [C#](search-create-index-dotnet.md)
 > * [Portal](search-get-started-portal.md)
 > * [PowerShell](search-howto-dotnet-sdk.md)
-> * [postman](search-fiddler.md)
+> * [Postman](search-fiddler.md)
 >*
 
 In diesem Artikel lernen Sie, wie Sie einen [Azure Search-Index](search-what-is-an-index.md) mit C# und dem [.NET SDK](https://aka.ms/search-sdk) erstellen. Dies ist die erste Lektion einer dreiteiligen Übung zum Erstellen, Laden und Abfragen eines Indexes. Ein Index wird mit folgenden Schritten erstellt:
@@ -78,7 +78,7 @@ Alternativ dazu finden Sie eine detaillierte Beschreibung des SDK-Verhaltens unt
 
 ## <a name="2---create-a-client"></a>2 – Erstellen eines Clients
 
-Um das Azure Search .NET SDK zu verwenden, erstellen Sie eine Instanz der `SearchServiceClient`-Klasse. Diese Klasse verfügt über mehrere Konstruktoren. Für den gewünschten Konstruktor werden der Name Ihres Suchdiensts und ein `SearchCredentials` -Objekt als Parameter verwendet. `SearchCredentials` umschließt Ihren API-Schlüssel.
+Um das Azure Search .NET SDK zu verwenden, erstellen Sie eine Instanz der `SearchServiceClient`-Klasse. Diese Klasse verfügt über mehrere Konstruktoren. Für den gewünschten Konstruktor werden der Name Ihres Suchdiensts und ein `SearchCredentials` -Objekt als Parameter verwendet. `SearchCredentials` umfasst Ihren API-Schlüssel.
 
 Den folgenden Code finden Sie in der Datei „Program.cs“. Dieser Code erstellt einen neuen `SearchServiceClient` mit den Werten für den Namen des Suchdiensts und den API-Schlüssel, die in der Konfigurationsdatei der Anwendung (appsettings.json) gespeichert sind.
 
@@ -93,7 +93,7 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 }
 ```
 
-`SearchServiceClient` hat eine Eigenschaft vom Typ `Indexes`. Diese Eigenschaft stellt alle Methoden bereit, die Sie benötigen, um Azure Search-Indizes zu erstellen, aufzulisten, zu aktualisieren oder zu löschen.
+`SearchServiceClient` verfügt über eine `Indexes`-Eigenschaft. Diese Eigenschaft stellt alle Methoden bereit, die Sie benötigen, um Azure Search-Indizes zu erstellen, aufzulisten, zu aktualisieren oder zu löschen.
 
 > [!NOTE]
 > Die `SearchServiceClient`-Klasse verwaltet die Verbindungen mit Ihrem Suchdienst. Um zu vermeiden, dass zu viele Verbindungen geöffnet werden, sollten Sie nur eine Instanz von `SearchServiceClient` in Ihrer Anwendung freigeben, sofern dies möglich ist. Die zugehörigen Methoden sind threadsicher und ermöglichen diese Freigabe.
@@ -219,4 +219,4 @@ In dieser Schnellstartanleitung haben Sie anhand eines Schemas, das Felddatentyp
 Die nächste Schnellstartanleitung in dieser Reihe erläutert, wie Sie den Index mit durchsuchbarem Inhalt laden.
 
 > [!div class="nextstepaction"]
-> [Laden von Daten in einen Azure Search-Index mit C#](search-import-data-dotnet.md)
+> [Laden von Daten in einen Azure Search-Index mit C#](search-import-data-dotnet.md)

@@ -11,10 +11,10 @@ ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: 1f645a9c9161fb2fd71b2fd9af9ade65bff0be94
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361132"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Aktualisieren des Data Warehouse zu Gen2
@@ -150,8 +150,8 @@ Weitere Informationen finden Sie unter [Optimieren der Leistung durch ein Upgrad
 - [Upgradeschritte](upgrade-to-latest-generation.md)
 - [Wartungsfenster](maintenance-scheduling.md)
 - [Überwachung der Ressourcenintegrität](https://docs.microsoft.com/azure/service-health/resource-health-overview)
-- [Überprüfung vor Beginn einer Migration](upgrade-to-latest-generation.md#before-you-begin)
+- [Voraussetzungen](upgrade-to-latest-generation.md#before-you-begin)
 - [Direktes Upgrade und Upgrade von einem Wiederherstellungspunkt aus](upgrade-to-latest-generation.md)
 - [Erstellen eines benutzerdefinierten Wiederherstellungspunkts](sql-data-warehouse-restore.md#restore-through-the-azure-portal)
-- [Informationen zum Wiederherstellen von Gen2](sql-data-warehouse-restore.md#restore-an-active-or-paused-database-using-the-azure-portal)
-- [Erstellen eines Supporttickets für SQL Data Warehouse](https://go.microsoft.com/fwlink/?linkid=857950)
+- [Wiederherstellen einer aktiven oder angehaltenen Datenbank im Azure-Portal](sql-data-warehouse-restore.md#restore-an-active-or-paused-database-using-the-azure-portal)
+- [Gewusst wie: Erstellen eines Supporttickets für SQL Data Warehouse](https://go.microsoft.com/fwlink/?linkid=857950)

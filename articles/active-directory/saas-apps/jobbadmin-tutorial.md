@@ -16,10 +16,10 @@ ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad55656ba91c2f344024700344550849a36ed9b6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59263994"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobbadmin"></a>Tutorial: Azure Active Directory-Integration mit Jobbadmin
@@ -51,7 +51,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Konfigurieren der Integration von Jobbadmin in Azure AD müssen Sie Jobbadmin aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie die folgenden Schritte aus, um Jobbadmin aus dem Katalog hinzuzufügen:**
+**Um Jobbadmin aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -105,9 +105,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Jobbadmin
 
     ![SSO-Informationen zur Domäne und zu den URLs für Jobbadmin](common/sp-identifier-reply.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<instancename>.jobbnorge.no/auth/saml2/login.ashx`
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<instancename>.jobbnorge.no/auth/saml2/login.ashx`.
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<instancename>.jobnorge.no`
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<instancename>.jobnorge.no`.
 
     c. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<instancename>.jobbnorge.no/auth/saml2/login.ashx`
 

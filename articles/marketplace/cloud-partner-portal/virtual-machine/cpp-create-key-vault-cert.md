@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/29/2018
 ms.author: pbutlerm
 ms.openlocfilehash: a25418f30225184424011527def468d0d3909563
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59045695"
 ---
 # <a name="create-certificates-for-azure-key-vault"></a>Erstellen von Zertifikaten für Azure Key Vault
@@ -39,7 +39,7 @@ Für diesen Vorgang können Sie entweder eine neue oder eine vorhandene Azure-Re
 
 Bearbeiten Sie das folgende Azure PowerShell-Skript, und führen Sie es aus, um die Zertifikatsdatei (PFX) in einem lokalen Ordner zu erstellen.  Sie müssen die Werte der folgenden Parameter ersetzen:
 
-|  **Parameter**        |   **BESCHREIBUNG**                                                               |
+|  **Parameter**        |   **Beschreibung**                                                               |
 |  -------------        |   ---------------                                                               |
 | `$certroopath` | Der lokale Ordner, in dem die PFX-Datei gespeichert werden soll  |
 | `$location`    | Einer der geografischen Azure-Standardstandorte  |
@@ -85,7 +85,7 @@ Bearbeiten Sie das folgende Azure PowerShell-Skript, und führen Sie es aus, um 
 
 Kopieren Sie den Inhalt der [Key Vault-Bereitstellungsvorlage](./cpp-key-vault-deploy-template.md) in eine Datei auf Ihrem lokalen Computer. (Im folgenden Beispielskript ist diese Ressource `C:\certLocation\keyvault.json`.)  Bearbeiten Sie das folgende Azure PowerShell-Skript, und führen Sie es aus, um eine Azure Key Vault-Instanz und die zugeordnete Ressourcengruppe zu erstellen.  Sie müssen die Werte der folgenden Parameter ersetzen:
 
-|  **Parameter**        |   **BESCHREIBUNG**                                                               |
+|  **Parameter**        |   **Beschreibung**                                                               |
 |  -------------        |   ---------------                                                               |
 | `$postfix`            | Beliebige numerische Zeichenfolge, die an die Bereitstellungs-IDs angefügt wird                     |
 | `$rgName`             | Der Name der zu erstellenden Azure-Ressourcengruppe (RG)                                        |

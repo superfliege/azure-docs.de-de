@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: 28fb3295ef02d508ef04299398a61ea59828df35
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59278835"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Tutorial: Azure SignalR Service-Authentifizierung mit Azure Functions
@@ -29,7 +29,7 @@ Hier finden Sie ein ausführliches Tutorial zum Erstellen eines Chatraums mit Au
 
 Für dieses Tutorial ist die folgende Software erforderlich:
 
-* [Git](https://git-scm.com/downloads)
+* [Git-Client](https://git-scm.com/downloads)
 * [Node.js](https://nodejs.org/en/download/) (Version 10.x)
 * [.NET SDK](https://www.microsoft.com/net/download) (Version 2.x, erforderlich für Functions-Erweiterungen)
 * [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools) (Version 2)

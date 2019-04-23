@@ -12,10 +12,10 @@ ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: aschhab
 ms.openlocfilehash: dd73fd8105de2a5fd24ffa8ad5db85da5e52228c
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918840"
 ---
 # <a name="what-is-azure-service-bus"></a>Was ist Azure Service Bus?
@@ -116,8 +116,8 @@ Service Bus unterstützt Clientbibliotheken für [.NET](https://github.com/Azure
 Service Bus lässt sich vollständig in folgende Azure-Dienste integrieren:
 
 - [Event Grid](https://azure.microsoft.com/services/event-grid/) 
-- [Logic Apps](https://azure.microsoft.com/services/logic-apps/) 
-- [Functions](https://azure.microsoft.com/services/functions/) 
+- [Logik-Apps](https://azure.microsoft.com/services/logic-apps/) 
+- [Funktionen](https://azure.microsoft.com/services/functions/) 
 - [Dynamics 365](https://dynamics.microsoft.com)
 - [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)
  
@@ -125,7 +125,7 @@ Service Bus lässt sich vollständig in folgende Azure-Dienste integrieren:
 
 Informationen zu den ersten Schritten mit Service Bus-Messaging finden Sie in folgenden Artikeln:
 
-* [Auswahl von Azure-Messagingdiensten: Event Grid, Event Hubs und Service Bus](../event-grid/compare-messaging-services.md?toc=%2fazure%2fservice-bus-messaging%2ftoc.json&bc=%2fazure%2fservice-bus-messaging%2fbreadcrumb%2ftoc.json)
+* [Gegenüberstellung der Azure-Messagingdienste](../event-grid/compare-messaging-services.md?toc=%2fazure%2fservice-bus-messaging%2ftoc.json&bc=%2fazure%2fservice-bus-messaging%2fbreadcrumb%2ftoc.json)
 * [Informationen zum Standard- und Premium-Tarif für Azure Service Bus](https://azure.microsoft.com/pricing/details/service-bus/)
 * [Leistung und Wartezeit beim Premium-Tarif von Azure Service Bus](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Premium-Messaging-How-fast-is-it/ba-p/370722)
 * Schnellstartanleitung für [.NET](service-bus-dotnet-get-started-with-queues.md), [Java](service-bus-java-how-to-use-queues.md) oder [JMS](service-bus-java-how-to-use-jms-api-amqp.md)

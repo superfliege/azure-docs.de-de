@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: micflan
 ms.custom: ''
 ms.openlocfilehash: e4c5607089efb247620766fb311b97cae3772770
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59279872"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migrieren von Enterprise Agreement-APIs zu APIs der Microsoft-Kundenvereinbarung
@@ -185,7 +185,7 @@ Der Eigenschaftenname, der das Array von Nutzungsdatensätzen enthält, hat sich
 | DepartmentId | invoiceSectionId | Genaue Werte abweichend. |
 | Abteilungsname | invoiceSectionName | Genaue Zeichenfolgenwerte können abweichen. Konfigurieren Sie Rechnungsabschnitte ggf. entsprechend den Abteilungen. |
 | ExtendedCost und Cost | costInBillingCurrency | &nbsp;  |
-| InstanceId | Ressourcen-ID | &nbsp;  |
+| InstanceId | resourceId | &nbsp;  |
 | Is Recurring Charge | Keine | &nbsp;  |
 | Standort | location | &nbsp;  |
 | MeterCategory | meterCategory | Genaue Zeichenfolgenwerte können abweichen. |

@@ -15,10 +15,10 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 04/08/2019
 ms.openlocfilehash: 6ada2a5e505bfe37f4f9a956570d8b6f38f55e55
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357429"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Erste Schritte bei der Überwachung von verwalteten Azure SQL-Datenbank-Instanzen
@@ -237,7 +237,7 @@ Wichtigste Unterschiede in der Syntax von `CREATE AUDIT` zur Überwachung in Azu
 - Die neue Syntax `TO EXTERNAL MONITOR` wird bereitgestellt, um Ziele in Event Hubs und Azure Monitor-Protokolle zu ermöglichen.
 - Die Syntax `TO FILE` wird **nicht unterstützt**, da SQL-Datenbank nicht auf Windows-Dateifreigaben zugreifen kann.
 - Die Option zum Herunterfahren wird **nicht unterstützt**.
-- `queue_delay` Der Wert „0“ für wird **nicht unterstützt**.
+- Der Wert „0“ für `queue_delay` wird **nicht unterstützt**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

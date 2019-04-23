@@ -17,10 +17,10 @@ ms.date: 5/10/2018
 ms.author: erikre
 ms.custom: seodec18
 ms.openlocfilehash: 99772579fd28b0880d497abb038fb25fd2a6139e
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918211"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Verwenden der Azure-Abrechnungs-APIs, um programmgesteuerte Einblicke in die Nutzung Ihrer Azure-Ressourcen zu erlangen
@@ -67,7 +67,7 @@ Hier sind einige Szenarios angegeben, die aufgrund der Kombination aus Nutzungs-
 * Sehen Sie sich die Codebeispiele auf GitHub an:
   * [Codebeispiel der Rechnungs-API](https://go.microsoft.com/fwlink/?linkid=845124)
 
-  * [Codebeispiel der Nutzungs-API](https://github.com/Azure-Samples/billing-dotnet-usage-api)
+  * [Codebeispiel der Nutzung-API](https://github.com/Azure-Samples/billing-dotnet-usage-api)
 
   * [Codebeispiel der RateCard-API](https://github.com/Azure-Samples/billing-dotnet-ratecard-api)
 

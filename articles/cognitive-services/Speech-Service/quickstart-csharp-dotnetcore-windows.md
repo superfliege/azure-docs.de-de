@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
 ms.openlocfilehash: 938efe79d4f9f0b9003fcf83196df80d71d16e75
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59009426"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-core"></a>Schnellstart: Erkennen von Sprache mit dem Speech-SDK für .NET Core
@@ -32,7 +32,7 @@ Für diese Schnellstartanleitung benötigen Sie einen Abonnementschlüssel für 
 
 Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
-* [.Net Core SDK](https://dotnet.microsoft.com/download)
+* [.NET Core SDK](https://dotnet.microsoft.com/download)
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
 * Ein Azure-Abonnementschlüssel für den Speech-Dienst. [Hier erhalten Sie einen kostenlosen Schlüssel.](get-started.md)
 
@@ -68,12 +68,12 @@ Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Beispiele, z.B. das Auslesen von Sprache aus einer Audiodatei, sind auf GitHub verfügbar.
+Weitere Beispiele, etwa das Lesen von Sprache aus einer Audiodatei, sind auf GitHub verfügbar.
 
 > [!div class="nextstepaction"]
 > [C#-Beispiele auf GitHub](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Anpassen von Akustikmodellen](how-to-customize-acoustic-models.md)
-- [Anpassen von Sprachmodellen](how-to-customize-language-model.md)
+- [Tutorial: Erstellen eines benutzerdefinierten Akustikmodells](how-to-customize-acoustic-models.md)
+- [Tutorial: Erstellen eines benutzerdefinierten Sprachmodells](how-to-customize-language-model.md)

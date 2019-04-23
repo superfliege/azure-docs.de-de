@@ -17,10 +17,10 @@ ms.date: 05/16/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 24f4983f2ba1567241a6dfc6231a4925805947cd
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878433"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reviewsnap"></a>Tutorial: Azure Active Directory-Integration mit Reviewsnap
@@ -59,7 +59,7 @@ In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Test
 ## <a name="adding-reviewsnap-from-the-gallery"></a>Hinzufügen von Reviewsnap aus dem Katalog
 Zum Konfigurieren der Integration von Reviewsnap in Azure AD müssen Sie Reviewsnap aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie die folgenden Schritte aus, um Reviewsnap aus dem Katalog hinzuzufügen:**
+**So fügen Sie Reviewsnap aus dem Katalog hinzu**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
@@ -95,7 +95,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Reviewsnap-Anwendung.
 
-**Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Reviewsnap zu konfigurieren:**
+**So konfigurieren Sie das einmalige Anmelden von Azure AD mit Reviewsnap**
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Reviewsnap** auf **Einmaliges Anmelden**.
 
@@ -117,7 +117,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![SSO-Informationen zur Domäne und zu den URLs für Reviewsnap](./media/reviewsnap-tutorial/tutorial_reviewsnap_url1.png)
 
-    Geben Sie im Textfeld **Anmelde-URL** eine URL wie die Folgende ein: `https://app.reviewsnap.com/login`
+    Geben Sie im Textfeld **Anmelde-URL** eine URL wie die Folgende ein: `https://app.reviewsnap.com/login`.
      
     > [!NOTE] 
     > Der Wert der Antwort-URL entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie den Wert mit der richtigen Antwort-URL. Wenden Sie sich an das [Supportteam von Reviewsnap](mailto:support@reviewsnap.com), um diesen Wert zu erhalten. 
@@ -178,7 +178,7 @@ In diesem Abschnitt gewähren Sie Britta Simon Zugriff auf Reviewsnap, damit sie
 
 ![Zuweisen der Benutzerrolle][200] 
 
-**Führen Sie die folgenden Schritte aus, um Britta Simon Reviewsnap zuzuweisen:**
+**So weisen Sie Britta Simon Reviewsnap zu**
 
 1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
 

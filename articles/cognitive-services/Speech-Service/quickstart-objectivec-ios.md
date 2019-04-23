@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
 ms.openlocfilehash: ee0be31b10c86651fa36577ad0dffccc3dc7bf59
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59009270"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in Objective-C unter iOS mit dem Speech SDK
@@ -52,7 +52,7 @@ Treffen Sie in den nachfolgenden Dialogfeldern die folgende Auswahl:
     1. Geben Sie einen entsprechenden Organisationsnamen und die Organisations-ID ein, wenn Sie bereits über ein Apple-Entwicklerkonto verfügen. Zu Testzwecken können Sie einfach einen beliebigen Namen wie `testorg` auswählen. Um die App zu signieren, benötigen Sie ein ordnungsgemäßes Bereitstellungsprofil. Details finden Sie auf der [Apple Developer-Website](https://developer.apple.com/).
     1. Stellen Sie sicher, dass Objective-C als Sprache für das Projekt ausgewählt wird.
     1. Deaktivieren Sie alle Kontrollkästchen für Tests und Kerndaten.
-    ![„Project Settings“ (Projekteinstellungen)](media/sdk/qs-objectivec-project-settings.png)
+    ![Projekteinstellungen](media/sdk/qs-objectivec-project-settings.png)
 1. Auswählen des Projektverzeichnisses
     1. Wählen Sie das Basisverzeichnis aus, in dem das Projekt gespeichert werden soll. Dadurch wird das Verzeichnis `helloworld` in Ihrem Basisverzeichnis erstellt, das alle Dateien für das Xcode-Projekt enthält.
     1. Deaktivieren Sie die Erstellung eines Git-Repositorys für dieses Beispielprojekt.

@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 04/08/2019
 ms.author: tomfitz
 ms.openlocfilehash: b5a1f12a877008a3ce2ff7bd9635b9ed47b379f7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59280314"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Vorlagenfunktionen im Azure-Ressourcen-Manager
@@ -45,18 +45,18 @@ Informationen zum Erstellen Ihrer eigenen Funktionen finden Sie unter [Benutzerd
 ## <a name="array-and-object-functions"></a>Array- und Objektfunktionen
 Resource Manager stellt mehrere Funktionen zum Arbeiten mit Arrays und Objekten bereit.
 
-* [Array](resource-group-template-functions-array.md#array)
+* [array](resource-group-template-functions-array.md#array)
 * [coalesce](resource-group-template-functions-array.md#coalesce)
 * [concat](resource-group-template-functions-array.md#concat)
 * [contains](resource-group-template-functions-array.md#contains)
 * [createArray](resource-group-template-functions-array.md#createarray)
 * [empty](resource-group-template-functions-array.md#empty)
 * [first](resource-group-template-functions-array.md#first)
-* [Schnittmenge](resource-group-template-functions-array.md#intersection)
+* [intersection](resource-group-template-functions-array.md#intersection)
 * [json](resource-group-template-functions-array.md#json)
 * [last](resource-group-template-functions-array.md#last)
-* [length](resource-group-template-functions-array.md#length)
-* [Min](resource-group-template-functions-array.md#min)
+* [Länge](resource-group-template-functions-array.md#length)
+* [min](resource-group-template-functions-array.md#min)
 * [max](resource-group-template-functions-array.md#max)
 * [range](resource-group-template-functions-array.md#range)
 * [skip](resource-group-template-functions-array.md#skip)
@@ -85,9 +85,9 @@ Resource Manager stellt mehrere Funktionen zum Durchführen von Vergleichen in V
 ## <a name="deployment-value-functions"></a>Funktionen für Bereitstellungswerte
 Der Ressourcen-Manager stellt die folgenden Funktionen zum Abrufen von Werten aus Vorlagenabschnitten sowie von bereitstellungsbezogenen Werten bereit:
 
-* [Bereitstellung](resource-group-template-functions-deployment.md#deployment)
-* [Parameter](resource-group-template-functions-deployment.md#parameters)
-* [variables](resource-group-template-functions-deployment.md#variables)
+* [deployment](resource-group-template-functions-deployment.md#deployment)
+* [parameters](resource-group-template-functions-deployment.md#parameters)
+* [Variablen](resource-group-template-functions-deployment.md#variables)
 
 <a id="and" />
 <a id="bool" />
@@ -102,7 +102,7 @@ Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit log
 * [bool](resource-group-template-functions-logical.md#bool)
 * [if](resource-group-template-functions-logical.md#if)
 * [not](resource-group-template-functions-logical.md#not)
-* [oder](resource-group-template-functions-logical.md#or)
+* [or](resource-group-template-functions-logical.md#or)
 
 <a id="add" />
 <a id="copyindex" />
@@ -121,9 +121,9 @@ Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit gan
 * [Hinzufügen](resource-group-template-functions-numeric.md#add)
 * [copyIndex](resource-group-template-functions-numeric.md#copyindex)
 * [div](resource-group-template-functions-numeric.md#div)
-* [Gleitkommawert](resource-group-template-functions-numeric.md#float)
+* [float](resource-group-template-functions-numeric.md#float)
 * [int](resource-group-template-functions-numeric.md#int)
-* [Min](resource-group-template-functions-numeric.md#min)
+* [min](resource-group-template-functions-numeric.md#min)
 * [max](resource-group-template-functions-numeric.md#max)
 * [mod](resource-group-template-functions-numeric.md#mod)
 * [mul](resource-group-template-functions-numeric.md#mul)
@@ -195,18 +195,18 @@ Der Ressourcen-Manager stellt die folgenden Funktionen für das Arbeiten mit Zei
 * [endsWith](resource-group-template-functions-string.md#endswith)
 * [first](resource-group-template-functions-string.md#first)
 * [format](resource-group-template-functions-string.md#format)
-* [GUID](resource-group-template-functions-string.md#guid)
+* [guid](resource-group-template-functions-string.md#guid)
 * [indexOf](resource-group-template-functions-string.md#indexof)
 * [last](resource-group-template-functions-string.md#last)
 * [lastIndexOf](resource-group-template-functions-string.md#lastindexof)
-* [length](resource-group-template-functions-string.md#length)
+* [Länge](resource-group-template-functions-string.md#length)
 * [newGuid](resource-group-template-functions-string.md#newguid)
 * [padLeft](resource-group-template-functions-string.md#padleft)
 * [replace](resource-group-template-functions-string.md#replace)
 * [skip](resource-group-template-functions-string.md#skip)
 * [split](resource-group-template-functions-string.md#split)
 * [startsWith](resource-group-template-functions-string.md#startswith)
-* [Zeichenfolge](resource-group-template-functions-string.md#string)
+* [string](resource-group-template-functions-string.md#string)
 * [substring](resource-group-template-functions-string.md#substring)
 * [take](resource-group-template-functions-string.md#take)
 * [toLower](resource-group-template-functions-string.md#tolower)

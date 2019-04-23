@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 2a96364d486ed6c0db2762256798ac56afa69a78
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59268454"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>Tutorial: Azure Active Directory-Integration in moconavi
@@ -50,7 +50,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Konfigurieren der Integration von moconavi in Azure AD müssen Sie moconavi aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie die folgenden Schritte aus, um moconavi aus dem Katalog hinzuzufügen:**
+**So fügen Sie moconavi aus dem Katalog hinzu**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -106,7 +106,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit moconav
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<yourserverurl>/moconavi-saml2/saml/login`
 
-    b. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: `https://<yourserverurl>/moconavi-saml2`
+    b. Geben Sie im Feld **Bezeichner** eine URL im folgenden Format ein: `https://<yourserverurl>/moconavi-saml2`.
 
     c. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<yourserverurl>/moconavi-saml2/saml/SSO`
 

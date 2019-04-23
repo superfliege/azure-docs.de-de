@@ -10,10 +10,10 @@ ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
 ms.openlocfilehash: 8445b67fa049116d93f3710ff108f904ca7ecd77
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59010548"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Authentifizieren und Zugreifen auf Ressourcen mit verwalteten Identitäten in Azure Logic Apps
@@ -61,7 +61,7 @@ Aktivieren Sie die Einstellung **Vom System zugewiesen** in den Identitätseinst
 
    | Eigenschaft | Wert | BESCHREIBUNG | 
    |----------|-------|-------------| 
-   | **Object ID (Objekt-ID)** | <*Identität-Ressourcen-ID*> | Eine GUID (Globally Unique Identifier), die die vom System zugewiesene verwaltete Identität für Ihre Logik-App in einem Azure AD-Mandanten darstellt. | 
+   | **Objekt-ID** | <*Identität-Ressourcen-ID*> | Eine GUID (Globally Unique Identifier), die die vom System zugewiesene verwaltete Identität für Ihre Logik-App in einem Azure AD-Mandanten darstellt. | 
    ||| 
 
 <a name="template"></a>
@@ -113,7 +113,7 @@ Wenn Azure Ihre Logik-App erstellt, enthält die Workflowdefinition der Logik-Ap
 
 | Eigenschaft | Wert | BESCHREIBUNG | 
 |----------|-------|-------------|
-| **principalId** | <*principal-ID*> | Eine GUID (Globally Unique Identifier), die die Logik-App im Azure AD-Mandanten darstellt und manchmal als „Objekt-ID“ oder Folgendes angezeigt wird: `objectID` | 
+| **principalId** | <*principal-ID*> | Eine GUID (Globally Unique Identifier), die die Logik-App im Azure AD-Mandanten darstellt und manchmal als „Objekt-ID“ oder `objectID` angezeigt wird. | 
 | **tenantId** | <*Azure-AD-tenant-ID*> | Eine GUID (Globally Unique Identifier), die für den Azure AD-Mandanten steht, auf dem die Logik-App jetzt Mitglied ist. Unter dem Azure AD-Mandanten hat der Dienstprinzipal den gleichen Namen wie die Logik-App-Instanz. | 
 ||| 
 

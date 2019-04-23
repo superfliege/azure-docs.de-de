@@ -16,10 +16,10 @@ ms.date: 10/24/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 936ad2e49aaf449144296dd941a3fbc42719fe4f
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58879028"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>Tutorial: Azure Active Directory-Integration mit Skillport
@@ -117,19 +117,19 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
       
       Rechenzentrum in Europa: `https://adfs.skillport.eu`
    
-      Rechenzentrum in den USA: `https://sso.skillport.com`
+      Rechenzentrum in den USA:`https://sso.skillport.com`
 
     b. Geben Sie im Textfeld **Bezeichner** die folgende URL ein:
       
       Rechenzentrum in Europa: `http://adfs.skillport.eu/adfs/services/trust`
    
-      Rechenzentrum in den USA: `https://sso.skillport.com`
+      Rechenzentrum in den USA:`https://sso.skillport.com`
    
     c. Geben Sie im Textfeld **Antwort-URL** folgende URL ein:
     
       Rechenzentrum in Europa: `https://adfs.skillport.eu/adfs/ls/`
     
-      Rechenzentrum in den USA: `https://sso.skillport.com/sp/ACS.saml2`
+      Rechenzentrum in den USA:`https://sso.skillport.com/sp/ACS.saml2`
  
 1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die XML-Datei dann auf Ihrem Computer.
 

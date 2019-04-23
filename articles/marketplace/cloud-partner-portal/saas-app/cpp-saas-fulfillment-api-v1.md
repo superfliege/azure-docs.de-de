@@ -16,10 +16,10 @@ ms.date: 03/28/2019
 ms.author: pbutlerm
 ROBOTS: NOINDEX
 ms.openlocfilehash: 4908233280c69a37ea470eed2ef077cb220a7930
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59009733"
 ---
 # <a name="saas-fulfillment-apis-version-1--deprecated"></a>SaaS Fulfillment APIs Version 1 (veraltet)
@@ -61,7 +61,7 @@ Wenn ein Benutzer zur Website eines ISV weitergeleitet wird, enthält die URL in
 
 **https://marketplaceapi.microsoft.com/api/saas/subscriptions/resolve?api-version=2017-04-15**
 
-|  **Parametername** |     **BESCHREIBUNG**                                      |
+|  **Parametername** |     **Beschreibung**                                      |
 |  ------------------ |     ---------------------------------------------------- |
 |  api-version        |  Die Version des für diese Anforderung zu verwendenden Vorgangs.   |
 |  |  |
@@ -69,7 +69,7 @@ Wenn ein Benutzer zur Website eines ISV weitergeleitet wird, enthält die URL in
 
 *Header*
 
-| **Headerschlüssel**     | **Erforderlich** | **BESCHREIBUNG**                                                                                                                                                                                                                  |
+| **Headerschlüssel**     | **Erforderlich** | **Beschreibung**                                                                                                                                                                                                                  |
 |--------------------|--------------|-----------------------------------------------------------|
 | x-ms-requestid     | Nein            | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
 | x-ms-correlationid | Nein            | Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser korreliert alle Ereignisse des Clientvorgangs mit Ereignissen auf der Serverseite. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
@@ -90,7 +90,7 @@ Wenn ein Benutzer zur Website eines ISV weitergeleitet wird, enthält die URL in
 }
 ```
 
-| **Parametername** | **Datentyp** | **BESCHREIBUNG**                       |
+| **Parametername** | **Datentyp** | **Beschreibung**                       |
 |--------------------|---------------|---------------------------------------|
 | id                 | Zeichenfolge        | ID des SaaS-Abonnements.          |
 | subscriptionName| Zeichenfolge| Name des SaaS-Abonnements, das vom Benutzer beim Abonnieren des SaaS-Diensts in Azure festgelegt wurde.|
@@ -101,7 +101,7 @@ Wenn ein Benutzer zur Website eines ISV weitergeleitet wird, enthält die URL in
 
 *Antwortcodes*
 
-| **HTTP-Statuscode** | **Fehlercode**     | **BESCHREIBUNG**                                                                         |
+| **HTTP-Statuscode** | **Fehlercode**     | **Beschreibung**                                                                         |
 |----------------------|--------------------| --------------------------------------------------------------------------------------- |
 | 200                  | `OK`                 | Token erfolgreich aufgelöst.                                                            |
 | 400                  | `BadRequest`         | Entweder fehlen erforderliche Header, oder eine ungültige API-Version wurde angegeben. Fehler beim Auflösen des Tokens, da das Token entweder falsch formatiert oder abgelaufen ist (nach dem Generieren ist das Token nur eine Stunde lang gültig). |
@@ -113,7 +113,7 @@ Wenn ein Benutzer zur Website eines ISV weitergeleitet wird, enthält die URL in
 
 *Antwortheader*
 
-| **Headerschlüssel**     | **Erforderlich** | **BESCHREIBUNG**                                                                                        |
+| **Headerschlüssel**     | **Erforderlich** | **Beschreibung**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Ja          | Vom Client empfangene Anforderungs-ID.                                                                   |
 | x-ms-correlationid | Ja          | Korrelations-ID, wenn vom Client übergeben; andernfalls ist dieser Wert die Serverkorrelations-ID.                   |
@@ -130,7 +130,7 @@ Der Abonnementendpunkt ermöglicht Benutzern das Starten des Abonnements eines S
 
 **https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
 
-| **Parametername**  | **BESCHREIBUNG**                                       |
+| **Parametername**  | **Beschreibung**                                       |
 |---------------------|-------------------------------------------------------|
 | subscriptionId      | Eindeutige ID des SaaS-Abonnements, die nach dem Auflösen des Tokens über die API-Auflösung abgerufen wird.                              |
 | api-version         | Die Version des für diese Anforderung zu verwendenden Vorgangs. |
@@ -138,7 +138,7 @@ Der Abonnementendpunkt ermöglicht Benutzern das Starten des Abonnements eines S
 
 *Header*
 
-|  **Headerschlüssel**        | **Erforderlich** |  **BESCHREIBUNG**                                                  |
+|  **Headerschlüssel**        | **Erforderlich** |  **Beschreibung**                                                  |
 | ------------------     | ------------ | --------------------------------------------------------------------------------------- |
 | x-ms-requestid         |   Nein          | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
 | x-ms-correlationid     |   Nein          | Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Wert dient zum Korrelieren aller Ereignisse des Clientvorgangs mit Ereignissen auf der Serverseite. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
@@ -148,7 +148,7 @@ Der Abonnementendpunkt ermöglicht Benutzern das Starten des Abonnements eines S
 | x-ms-marketplace-session-mode| Nein  | Flag zum Aktivieren des Probelaufmodus beim Abonnieren eines SaaS-Angebots. Wenn es festgelegt ist, wird das Abonnement nicht belastet. Nützlich für ISV-Testszenarien. Legen Sie es auf **„dryrun“** fest.|
 |  |  |  |
 
-*Body*
+*Text*
 
 ``` json
 {
@@ -156,14 +156,14 @@ Der Abonnementendpunkt ermöglicht Benutzern das Starten des Abonnements eines S
 }
 ```
 
-| **Elementname** | **Datentyp** | **BESCHREIBUNG**                      |
+| **Elementname** | **Datentyp** | **Beschreibung**                      |
 |------------------|---------------|--------------------------------------|
 | planId           | (Erforderliche) Zeichenfolge        | Tarif-ID des SaaS-Diensts, den der Benutzer abonniert.  |
 |  |  |  |
 
 *Antwortcodes*
 
-| **HTTP-Statuscode** | **Fehlercode**     | **BESCHREIBUNG**                                                           |
+| **HTTP-Statuscode** | **Fehlercode**     | **Beschreibung**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
 | 202                  | `Accepted`           | Aktivierung des SaaS-Abonnements für einen bestimmten Tarif erhalten.                   |
 | 400                  | `BadRequest`         | Entweder fehlen erforderliche Header, oder der Text der JSON-Datei ist falsch formatiert. |
@@ -178,7 +178,7 @@ Verfolgen Sie für die Antwort 202 den Status des Anforderungsvorgangs am Header
 
 *Antwortheader*
 
-| **Headerschlüssel**     | **Erforderlich** | **BESCHREIBUNG**                                                                                        |
+| **Headerschlüssel**     | **Erforderlich** | **Beschreibung**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Ja          | Vom Client empfangene Anforderungs-ID.                                                                   |
 | x-ms-correlationid | Ja          | Korrelations-ID, wenn vom Client übergeben; andernfalls ist dieser Wert die Serverkorrelations-ID.                   |
@@ -195,7 +195,7 @@ Der Änderungsendpunkt ermöglicht dem Benutzer das Konvertieren seines derzeit 
 
 **https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
 
-| **Parametername**  | **BESCHREIBUNG**                                       |
+| **Parametername**  | **Beschreibung**                                       |
 |---------------------|-------------------------------------------------------|
 | subscriptionId      | ID des SaaS-Abonnements.                              |
 | api-version         | Die Version des für diese Anforderung zu verwendenden Vorgangs. |
@@ -203,7 +203,7 @@ Der Änderungsendpunkt ermöglicht dem Benutzer das Konvertieren seines derzeit 
 
 *Header*
 
-| **Headerschlüssel**          | **Erforderlich** | **BESCHREIBUNG**                                                                                                                                                                                                                  |
+| **Headerschlüssel**          | **Erforderlich** | **Beschreibung**                                                                                                                                                                                                                  |
 |-------------------------|--------------|---------------------------------------------------------------------------------------------------------------------|
 | x-ms-requestid          | Nein            | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client. Es wird eine GUID empfohlen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.   |
 | x-ms-correlationid      | Nein            | Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Wert dient zum Korrelieren aller Ereignisse des Clientvorgangs mit Ereignissen auf der Serverseite. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
@@ -212,7 +212,7 @@ Der Änderungsendpunkt ermöglicht dem Benutzer das Konvertieren seines derzeit 
 | authorization           | Ja          | JWT-Bearertoken (JSON Web Token)                    |
 |  |  |  |
 
-*Body*
+*Text*
 
 ```json
 {
@@ -220,14 +220,14 @@ Der Änderungsendpunkt ermöglicht dem Benutzer das Konvertieren seines derzeit 
 }
 ```
 
-|  **Elementname** |  **Datentyp**  | **BESCHREIBUNG**                              |
+|  **Elementname** |  **Datentyp**  | **Beschreibung**                              |
 |  ---------------- | -------------   | --------------------------------------       |
 |  planId           |  (Erforderliche) Zeichenfolge         | Tarif-ID des SaaS-Diensts, den der Benutzer abonniert.          |
 |  |  |  |
 
 *Antwortcodes*
 
-| **HTTP-Statuscode** | **Fehlercode**     | **BESCHREIBUNG**                                                           |
+| **HTTP-Statuscode** | **Fehlercode**     | **Beschreibung**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
 | 202                  | `Accepted`           | Aktivierung des SaaS-Abonnements für einen bestimmten Tarif erhalten.                   |
 | 400                  | `BadRequest`         | Entweder fehlen erforderliche Header, oder der Text der JSON-Datei ist falsch formatiert. |
@@ -240,7 +240,7 @@ Der Änderungsendpunkt ermöglicht dem Benutzer das Konvertieren seines derzeit 
 
 *Antwortheader*
 
-| **Headerschlüssel**     | **Erforderlich** | **BESCHREIBUNG**                                                                                        |
+| **Headerschlüssel**     | **Erforderlich** | **Beschreibung**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Ja          | Vom Client empfangene Anforderungs-ID.                                                                   |
 | x-ms-correlationid | Ja          | Korrelations-ID, wenn vom Client übergeben; andernfalls ist dieser Wert die Serverkorrelations-ID.                   |
@@ -259,7 +259,7 @@ Die DELETE-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Löschen 
 
 **https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
 
-| **Parametername**  | **BESCHREIBUNG**                                       |
+| **Parametername**  | **Beschreibung**                                       |
 |---------------------|-------------------------------------------------------|
 | subscriptionId      | ID des SaaS-Abonnements.                              |
 | api-version         | Die Version des für diese Anforderung zu verwendenden Vorgangs. |
@@ -267,7 +267,7 @@ Die DELETE-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Löschen 
 
 *Header*
 
-| **Headerschlüssel**     | **Erforderlich** | **BESCHREIBUNG**                                                                                                                                                                                                                  |
+| **Headerschlüssel**     | **Erforderlich** | **Beschreibung**                                                                                                                                                                                                                  |
 |--------------------|--------------| ----------------------------------------------------------|
 | x-ms-requestid     | Nein            | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client. Es wird eine GUID empfohlen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.                                                           |
 | x-ms-correlationid | Nein            | Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Wert dient zum Korrelieren aller Ereignisse des Clientvorgangs mit Ereignissen auf der Serverseite. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
@@ -276,7 +276,7 @@ Die DELETE-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Löschen 
 
 *Antwortcodes*
 
-| **HTTP-Statuscode** | **Fehlercode**     | **BESCHREIBUNG**                                                           |
+| **HTTP-Statuscode** | **Fehlercode**     | **Beschreibung**                                                           |
 |----------------------|--------------------|---------------------------------------------------------------------------|
 | 202                  | `Accepted`           | Aktivierung des SaaS-Abonnements für einen bestimmten Tarif erhalten.                   |
 | 400                  | `BadRequest`         | Entweder fehlen erforderliche Header, oder der Text der JSON-Datei ist falsch formatiert. |
@@ -290,7 +290,7 @@ Verfolgen Sie für die Antwort 202 den Status des Anforderungsvorgangs am Header
 
 *Antwortheader*
 
-| **Headerschlüssel**     | **Erforderlich** | **BESCHREIBUNG**                                                                                        |
+| **Headerschlüssel**     | **Erforderlich** | **Beschreibung**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Ja          | Vom Client empfangene Anforderungs-ID.                                                                   |
 | x-ms-correlationid | Ja          | Korrelations-ID, wenn vom Client übergeben, andernfalls ist dies die Serverkorrelations-ID.                   |
@@ -309,7 +309,7 @@ Dieser Endpunkt ermöglicht dem Benutzer das Nachverfolgen des Status eines ausg
 
 **https://marketplaceapi.microsoft.com/api/saas/operations/*{operationId}*?api-version=2017-04-15**
 
-| **Parametername**  | **BESCHREIBUNG**                                       |
+| **Parametername**  | **Beschreibung**                                       |
 |---------------------|-------------------------------------------------------|
 | operationId         | Eindeutige ID für den ausgelösten Vorgang.                |
 | api-version         | Die Version des für diese Anforderung zu verwendenden Vorgangs. |
@@ -317,7 +317,7 @@ Dieser Endpunkt ermöglicht dem Benutzer das Nachverfolgen des Status eines ausg
 
 *Header*
 
-| **Headerschlüssel**     | **Erforderlich** | **BESCHREIBUNG**                                                                                                                                                                                                                  |
+| **Headerschlüssel**     | **Erforderlich** | **Beschreibung**                                                                                                                                                                                                                  |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Nein            | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client. Es wird eine GUID empfohlen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.   |
 | x-ms-correlationid | Nein            | Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Wert dient zum Korrelieren aller Ereignisse des Clientvorgangs mit Ereignissen auf der Serverseite. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
@@ -336,18 +336,18 @@ Dieser Endpunkt ermöglicht dem Benutzer das Nachverfolgen des Status eines ausg
 }
 ```
 
-| **Parametername** | **Datentyp** | **BESCHREIBUNG**                                                                                                                                               |
+| **Parametername** | **Datentyp** | **Beschreibung**                                                                                                                                               |
 |--------------------|---------------|-------------------------------------------------------------------------------------------|
 | id                 | Zeichenfolge        | ID des Vorgangs.                                                                      |
 | status             | Enum          | Vorgangsstatus, einer der folgenden Werte: `In Progress`, `Succeeded`, oder `Failed`.          |
 | resourceLocation   | Zeichenfolge        | Link zum erstellten oder geänderten Abonnement. Hilft dem Client beim Abrufen des aktualisierten Status nach dem Vorgang. Dieser Wert wird für `Unsubscribe`-Vorgänge nicht festgelegt. |
-| created            | DateTime      | Erstellungszeitpunkt (UTC) des Vorgangs.                                                           |
-| lastModified       | DateTime      | Letzte Aktualisierung des Vorgangs in UTC.                                                      |
+| created            | Datetime      | Erstellungszeitpunkt (UTC) des Vorgangs.                                                           |
+| lastModified       | Datetime      | Letzte Aktualisierung des Vorgangs in UTC.                                                      |
 |  |  |  |
 
 *Antwortcodes*
 
-| **HTTP-Statuscode** | **Fehlercode**     | **BESCHREIBUNG**                                                              |
+| **HTTP-Statuscode** | **Fehlercode**     | **Beschreibung**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
 | 200                  | `OK`                 | Die GET-Anforderung wurde erfolgreich aufgelöst, und der Text enthält die Antwort.    |
 | 400                  | `BadRequest`         | Entweder fehlen erforderliche Header, oder eine ungültige API-Version wurde angegeben. |
@@ -359,7 +359,7 @@ Dieser Endpunkt ermöglicht dem Benutzer das Nachverfolgen des Status eines ausg
 
 *Antwortheader*
 
-| **Headerschlüssel**     | **Erforderlich** | **BESCHREIBUNG**                                                                                        |
+| **Headerschlüssel**     | **Erforderlich** | **Beschreibung**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Ja          | Vom Client empfangene Anforderungs-ID.                                                                   |
 | x-ms-correlationid | Ja          | Korrelations-ID, wenn vom Client übergeben, andernfalls ist dies die Serverkorrelations-ID.                   |
@@ -377,7 +377,7 @@ Die GET-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Abrufen eine
 
 **https://marketplaceapi.microsoft.com/api/saas/subscriptions/*{subscriptionId}*?api-version=2017-04-15**
 
-| **Parametername**  | **BESCHREIBUNG**                                       |
+| **Parametername**  | **Beschreibung**                                       |
 |---------------------|-------------------------------------------------------|
 | subscriptionId      | ID des SaaS-Abonnements.                              |
 | api-version         | Die Version des für diese Anforderung zu verwendenden Vorgangs. |
@@ -385,7 +385,7 @@ Die GET-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Abrufen eine
 
 *Header*
 
-| **Headerschlüssel**     | **Erforderlich** | **BESCHREIBUNG**                                                                                           |
+| **Headerschlüssel**     | **Erforderlich** | **Beschreibung**                                                                                           |
 |--------------------|--------------|-----------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Nein            | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.                                                           |
 | x-ms-correlationid | Nein            | Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Wert dient zum Korrelieren aller Ereignisse des Clientvorgangs mit Ereignissen auf der Serverseite. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
@@ -406,20 +406,20 @@ Die GET-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Abrufen eine
 }
 ```
 
-| **Parametername**     | **Datentyp** | **BESCHREIBUNG**                               |
+| **Parametername**     | **Datentyp** | **Beschreibung**                               |
 |------------------------|---------------|-----------------------------------------------|
 | id                     | Zeichenfolge        | ID der SaaS-Abonnementsressource in Azure.    |
 | offerId                | Zeichenfolge        | Angebots-ID, die der Benutzer abonniert hat.         |
 | planId                 | Zeichenfolge        | Tarif-ID, die der Benutzer abonniert hat.          |
 | saasSubscriptionName   | Zeichenfolge        | Name des SaaS-Abonnements.                |
 | saasSubscriptionStatus | Enum          | Vorgangsstatus  Einer der folgenden:  <br/> - `Subscribed`: Das Abonnement ist aktiv.  <br/> - `Pending`: Die Ressource wurde vom Benutzer erstellt, vom ISV jedoch nicht aktiviert.   <br/> - `Unsubscribed`: Der Benutzer hat das Abonnement gekündigt.   <br/> - `Suspended`: Der Benutzer hat das Abonnement angehalten.   <br/> - `Deactivated`:  Das Azure-Abonnement wurde angehalten.  |
-| created                | DateTime      | Zeitstempelwert der Abonnementerstellung in UTC. |
-| lastModified           | DateTime      | Zeitstempelwert der Abonnementänderung in UTC. |
+| created                | Datetime      | Zeitstempelwert der Abonnementerstellung in UTC. |
+| lastModified           | Datetime      | Zeitstempelwert der Abonnementänderung in UTC. |
 |  |  |  |
 
 *Antwortcodes*
 
-| **HTTP-Statuscode** | **Fehlercode**     | **BESCHREIBUNG**                                                              |
+| **HTTP-Statuscode** | **Fehlercode**     | **Beschreibung**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
 | 200                  | `OK`                 | Die GET-Anforderung wurde erfolgreich aufgelöst, und der Text enthält die Antwort.    |
 | 400                  | `BadRequest`         | Entweder fehlen erforderliche Header, oder eine ungültige API-Version wurde angegeben. |
@@ -431,7 +431,7 @@ Die GET-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Abrufen eine
 
 *Antwortheader*
 
-| **Headerschlüssel**     | **Erforderlich** | **BESCHREIBUNG**                                                                                        |
+| **Headerschlüssel**     | **Erforderlich** | **Beschreibung**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Ja          | Vom Client empfangene Anforderungs-ID.                                                                   |
 | x-ms-correlationid | Ja          | Korrelations-ID, wenn vom Client übergeben, andernfalls ist dies die Serverkorrelations-ID.                   |
@@ -450,14 +450,14 @@ Die GET-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Abrufen alle
 
 **https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2017-04-15**
 
-| **Parametername**  | **BESCHREIBUNG**                                       |
+| **Parametername**  | **Beschreibung**                                       |
 |---------------------|-------------------------------------------------------|
 | api-version         | Die Version des für diese Anforderung zu verwendenden Vorgangs. |
 |  |  |
 
 *Header*
 
-| **Headerschlüssel**     | **Erforderlich** | **BESCHREIBUNG**                                           |
+| **Headerschlüssel**     | **Erforderlich** | **Beschreibung**                                           |
 |--------------------|--------------|-----------------------------------------------------------|
 | x-ms-requestid     | Nein            | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client. Es wird eine GUID empfohlen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.             |
 | x-ms-correlationid | Nein            | Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Wert dient zum Korrelieren aller Ereignisse des Clientvorgangs mit Ereignissen auf der Serverseite. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
@@ -478,20 +478,20 @@ Die GET-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Abrufen alle
 }
 ```
 
-| **Parametername**     | **Datentyp** | **BESCHREIBUNG**                               |
+| **Parametername**     | **Datentyp** | **Beschreibung**                               |
 |------------------------|---------------|-----------------------------------------------|
 | id                     | Zeichenfolge        | ID der SaaS-Abonnementsressource in Azure.    |
 | offerId                | Zeichenfolge        | Angebots-ID, die der Benutzer abonniert hat.         |
 | planId                 | Zeichenfolge        | Tarif-ID, die der Benutzer abonniert hat.          |
 | saasSubscriptionName   | Zeichenfolge        | Name des SaaS-Abonnements.                |
 | saasSubscriptionStatus | Enum          | Vorgangsstatus  Einer der folgenden:  <br/> - `Subscribed`: Das Abonnement ist aktiv.  <br/> - `Pending`: Die Ressource wurde vom Benutzer erstellt, vom ISV jedoch nicht aktiviert.   <br/> - `Unsubscribed`: Der Benutzer hat das Abonnement gekündigt.   <br/> - `Suspended`: Der Benutzer hat das Abonnement angehalten.   <br/> - `Deactivated`:  Das Azure-Abonnement wurde angehalten.  |
-| created                | DateTime      | Zeitstempelwert der Abonnementerstellung in UTC. |
-| lastModified           | DateTime      | Zeitstempelwert der Abonnementänderung in UTC. |
+| created                | Datetime      | Zeitstempelwert der Abonnementerstellung in UTC. |
+| lastModified           | Datetime      | Zeitstempelwert der Abonnementänderung in UTC. |
 |  |  |  |
 
 *Antwortcodes*
 
-| **HTTP-Statuscode** | **Fehlercode**     | **BESCHREIBUNG**                                                              |
+| **HTTP-Statuscode** | **Fehlercode**     | **Beschreibung**                                                              |
 |----------------------|--------------------|------------------------------------------------------------------------------|
 | 200                  | `OK`                 | Die GET-Anforderung wurde erfolgreich aufgelöst, und der Text enthält die Antwort.    |
 | 400                  | `BadRequest`         | Entweder fehlen erforderliche Header, oder eine ungültige API-Version wurde angegeben. |
@@ -503,7 +503,7 @@ Die GET-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Abrufen alle
 
 *Antwortheader*
 
-| **Headerschlüssel**     | **Erforderlich** | **BESCHREIBUNG**                                                                                        |
+| **Headerschlüssel**     | **Erforderlich** | **Beschreibung**                                                                                        |
 |--------------------|--------------|--------------------------------------------------------------------------------------------------------|
 | x-ms-requestid     | Ja          | Vom Client empfangene Anforderungs-ID.                                                                   |
 | x-ms-correlationid | Ja          | Korrelations-ID, wenn vom Client übergeben, andernfalls ist dies die Serverkorrelations-ID.                   |
@@ -515,7 +515,7 @@ Die GET-Aktion am Abonnementendpunkt ermöglicht einem Benutzer das Abrufen alle
 
 Ein SaaS-Webhook wird verwendet, um Änderungen proaktiv an den SaaS-Dienst zu melden. Diese POST-API muss nicht authentifiziert werden und wird vom Microsoft-Dienst aufgerufen. Der SaaS-Dienst muss die API-Vorgänge zur Überprüfung und Autorisierung aufrufen, bevor er auf die Webhookbenachrichtigung reagieren kann. 
 
-*Body*
+*Text*
 
 ``` json
   {
@@ -528,7 +528,7 @@ Ein SaaS-Webhook wird verwendet, um Änderungen proaktiv an den SaaS-Dienst zu m
   }
 ```
 
-| **Parametername**     | **Datentyp** | **BESCHREIBUNG**                               |
+| **Parametername**     | **Datentyp** | **Beschreibung**                               |
 |------------------------|---------------|-----------------------------------------------|
 | id  | Zeichenfolge       | Eindeutige ID für den ausgelösten Vorgang.                |
 | activityId   | Zeichenfolge        | Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Dienst. Dieser Wert wird für alle Abstimmungen verwendet.               |

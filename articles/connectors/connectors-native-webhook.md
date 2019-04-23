@@ -12,10 +12,10 @@ ms.topic: article
 tags: connectors
 ms.date: 07/21/2016
 ms.openlocfilehash: c3047000843e054e71ec1a80313118a25e7c4905
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895578"
 ---
 # <a name="create-event-based-workflows-or-actions-by-using-webhooks-and-azure-logic-apps"></a>Erstellen ereignisbasierter Workflows oder Aktionen mithilfe von Webhooks und Azure Logic Apps
@@ -104,7 +104,7 @@ Mit einem * gekennzeichnete Felder sind Pflichtfelder.
 | Abonnieren: Authentifizierung |authentication |HTTP-Authentifizierung für das Abonnement. Für weitere Details siehe [HTTP-Connector](connectors-native-http.md#authentication). |
 | Abbestellen: Text |body |HTTP-Anforderungstext für die Abbestellung |
 | Abbestellen: Header |headers |HTTP-Anforderungsheader für die Abbestellung |
-| Abbestellen: Authentifizierung |authentication |HTTP-Authentifizierung für die Abbestellung. [HTTP-Connector](connectors-native-http.md#authentication) . |
+| Abbestellen: Authentifizierung |authentication |HTTP-Authentifizierung für die Abbestellung. Für weitere Details siehe [HTTP-Connector](connectors-native-http.md#authentication). |
 
 **Ausgabedetails**
 
@@ -140,7 +140,7 @@ Mit einem * gekennzeichnete Felder sind Pflichtfelder.
 | Abonnieren: Authentifizierung |authentication |HTTP-Authentifizierung für das Abonnement. Für weitere Details siehe [HTTP-Connector](connectors-native-http.md#authentication). |
 | Abbestellen: Text |body |HTTP-Anforderungstext für die Abbestellung |
 | Abbestellen: Header |headers |HTTP-Anforderungsheader für die Abbestellung |
-| Abbestellen: Authentifizierung |authentication |HTTP-Authentifizierung für die Abbestellung. [HTTP-Connector](connectors-native-http.md#authentication) . |
+| Abbestellen: Authentifizierung |authentication |HTTP-Authentifizierung für die Abbestellung. Für weitere Details siehe [HTTP-Connector](connectors-native-http.md#authentication). |
 
 **Ausgabedetails**
 
@@ -155,4 +155,4 @@ Webhookanforderung
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erstellen einer Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md)
-* [Suchen nach anderen Connectors](apis-list.md)
+* [Andere Connectors](apis-list.md)

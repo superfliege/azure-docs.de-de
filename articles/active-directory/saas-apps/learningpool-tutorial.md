@@ -16,10 +16,10 @@ ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: edfc1f0b2d49510926cfbc306dacf6715225c5c1
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59272154"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>Tutorial: Azure Active Directory-Integration mit Learningpool Act
@@ -51,7 +51,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Konfigurieren der Integration von Learningpool Act in Azure AD müssen Sie Learningpool Act über den Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie die folgenden Schritte aus, um Learningpool Act aus dem Katalog hinzuzufügen:**
+**Um Learningpool Act aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -105,7 +105,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Learningp
 
     ![SSO-Informationen zur Domäne und zu den URLs für Learningpool Act](common/sp-identifier.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://parliament.preview.Learningpool.com/auth/shibboleth/index.php`
+    a. Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://parliament.preview.Learningpool.com/auth/shibboleth/index.php`.
 
     b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein:
     

@@ -10,10 +10,10 @@ ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.topic: conceptual
 ms.date: 06/20/2017
 ms.openlocfilehash: 59a52b2aeb83732a608f1fcf5bc4de907d25dfd1
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885025"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>Erweitern von U-SQL-Skripts mit R-Code in Azure Data Lake Analytics
@@ -93,7 +93,7 @@ Verwenden Sie ein U-SQL-Skript, um das R-Skript mit der Anweisung „DEPLOY RESO
 ### <a name="datatypes"></a>Datentypen
 * Zeichenfolgen- und numerische Spalten von U-SQL werden unmittelbar zwischen R-Datenrahmen (DataFrame) und U-SQL konvertiert [unterstützte Typen: `double`, `string`, `bool`, `integer`, `byte`].
 * Der Datentyp „`Factor`“ wird in U-SQL nicht unterstützt.
-* `byte[]` muss als Base64-codierte `string` serialisiert werden.
+* „`byte[]`“ muss als Base64-codierte `string` serialisiert werden.
 * U-SQL-Zeichenfolgen können in Faktoren (factors) in R-Code konvertiert werden, nachdem U-SQL R-Eingabedatenrahmen erstellt oder indem Sie den Reducer-Parameter auf „`stringsAsFactors: true`“ festlegen.
 
 ### <a name="schemas"></a>Schemas

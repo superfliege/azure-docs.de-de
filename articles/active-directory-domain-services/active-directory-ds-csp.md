@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: ergreenl
 ms.openlocfilehash: 8beba4f66cf24a937eec77e4bfdee2057b417269
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58892805"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Azure Active Directory (AD) Domain Services für Azure Cloud Solution Provider (CSP)
@@ -89,5 +89,5 @@ Die folgenden wichtigen Überlegungen gelten für die Verwaltung einer verwaltet
 ## <a name="next-steps"></a>Nächste Schritte
 * [Registrieren Sie sich für das Azure CSP-Programm](https://docs.microsoft.com/partner-center/enrolling-in-the-csp-program), und profitieren Sie von Azure CSP.
 * Prüfen Sie die Liste der [in Azure CSP verfügbaren Azure-Dienste](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services).
-* [Aktivieren von Azure AD Domain Services mit PowerShell](active-directory-ds-enable-using-powershell.md)
+* [Enable Azure AD Domain Services using PowerShell (Aktivieren von Azure AD Domain Services mit PowerShell)](active-directory-ds-enable-using-powershell.md)
 * [Erste Schritte mit Azure AD Domain Services](active-directory-ds-getting-started.md)
