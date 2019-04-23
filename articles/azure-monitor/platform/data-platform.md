@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
 ms.openlocfilehash: 8883c1e7f2874e1e2e61b8eca122f2ec294c7849
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862062"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59790925"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor-Datenplattform
 
@@ -71,7 +71,7 @@ Die folgende Tabelle enthält einen Vergleich zwischen Metriken und Protokollen 
 |:---|:---|:---|
 | Vorteile | Einfach strukturiert und für Szenarien nahezu in Echtzeit geeignet, z.B. Warnungen. Ideal für das schnelle Erkennen von Problemen. | Mit umfangreicher Abfragesprache analysiert. Ideal für tiefgehende Analysen und Identifizierung der zugrunde liegenden Ursache. |
 | Daten | Nur numerische Werte | Text oder numerische Daten |
-| Struktur | Standardsatz von Eigenschaften, z.B. Stichprobenzeit, überwachte Ressource, ein numerischer Wert. Einige Metriken umfassen mehrere Dimensionen für die weitere Definition. | Eindeutiger Satz von Eigenschaften je nach Protokolltyp. |
+| Strukturdefinition | Standardsatz von Eigenschaften, z.B. Stichprobenzeit, überwachte Ressource, ein numerischer Wert. Einige Metriken umfassen mehrere Dimensionen für die weitere Definition. | Eindeutiger Satz von Eigenschaften je nach Protokolltyp. |
 | Sammlung | Werden in regelmäßigen Abständen gesammelt. | Werden möglicherweise sporadisch gesammelt, wenn Ereignisse das Erstellen eines Datensatzes auslösen. |
 | Ansicht im Azure-Portal | Metrik-Explorer | Log Analytics |
 | Enthaltene Datenquellen | Von Azure-Ressourcen gesammelte Plattformmetriken<br>Von Application Insights überwachte Anwendungen<br>Benutzerdefiniert nach Anwendung oder API | Anwendungs- und Diagnoseprotokolle<br>Überwachungslösungen<br>Agents und VM-Erweiterungen<br>Anwendungsanforderungen und -ausnahmen<br>Azure Security Center<br>Datensammler-API |

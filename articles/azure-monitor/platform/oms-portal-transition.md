@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: bwren
 ms.openlocfilehash: c4950d03449f2b293a87ab88f1ea3f49eee29557
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006646"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59790093"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Wechsel des OMS-Portals zu Azure
 

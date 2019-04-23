@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
 ms.openlocfilehash: 2118f137f2c0d32f891a170c3509bceee7ba13ed
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426136"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59794437"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Sammeln von Daten aus CollectD mithilfe von Linux-Agents in Azure Monitor
 [CollectD](https://collectd.org/) ist ein Open-Source-Linux-Deamon, der regelmäßig Leistungsmetriken aus Anwendungen und Informationen aus der Betriebssystemebene sammelt. Beispiele für diese Anwendungen sind Java Virtual Machine (JVM), MySQL Server und Nginx. In diesem Artikel erfahren Sie, wie Sie in Azure Monitor Leistungsdaten aus CollectD sammeln.

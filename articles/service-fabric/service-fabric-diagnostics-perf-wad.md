@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: 20fa8945f01a3431d2fd78d545c43d6215c83f56
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59049454"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59791506"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Leistungsüberwachung mit der Microsoft Azure-Diagnoseerweiterung
 
