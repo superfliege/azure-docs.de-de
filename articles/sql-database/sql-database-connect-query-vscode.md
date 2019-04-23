@@ -14,10 +14,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
 ms.openlocfilehash: 8901855ad68a5edb4710853dcde9311216fa2d61
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357122"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>Schnellstart: Verwenden von Visual Studio Code zum Herstellen einer Verbindung mit und Abfragen einer Instanz von Azure SQL-Datenbank
@@ -31,7 +31,7 @@ ms.locfileid: "59357122"
   || Einzeldatenbank | Verwaltete Instanz |
   |:--- |:--- |:---|
   | Erstellen| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
-  || [Befehlszeilenschnittstelle (CLI)](scripts/sql-database-create-and-configure-database-cli.md) | [Befehlszeilenschnittstelle (CLI)](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
+  || [BEFEHLSZEILENSCHNITTSTELLE (CLI)](scripts/sql-database-create-and-configure-database-cli.md) | [BEFEHLSZEILENSCHNITTSTELLE (CLI)](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Konfigurieren | [IP-Firewallregel auf Serverebene](sql-database-server-level-firewall-rule.md)| [Verbindung von einem virtuellen Computer](sql-database-managed-instance-configure-vm.md)|
   |||[Verbindung von einer lokalen Ressource](sql-database-managed-instance-configure-p2s.md)
@@ -48,7 +48,7 @@ Stellen Sie sicher, dass Sie die neueste Version von [Visual Studio Code](https:
 
 ## <a name="configure-visual-studio-code"></a>Konfigurieren von Visual Studio Code
 
-### **<a name="mac-os"></a>Mac OS**
+### <a name="mac-os"></a>**Mac OS**
 
 Für macOS müssen Sie OpenSSL installieren, da dies eine Voraussetzung für .NET Core ist. .NET Core wird von der mssql-Erweiterung verwendet. Öffnen Sie Ihr Terminal, und geben Sie die folgenden Befehle ein, um **brew** und **OpenSSL** zu installieren.
 
@@ -61,11 +61,11 @@ ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/
 ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 ```
 
-### **<a name="linux-ubuntu"></a>Linux (Ubuntu)**
+### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
 
 Keine besondere Konfiguration erforderlich.
 
-### **<a name="windows"></a>Windows**
+### <a name="windows"></a>**Windows**
 
 Keine besondere Konfiguration erforderlich.
 
@@ -110,7 +110,7 @@ Verwenden Sie Visual Studio Code, um eine Verbindung mit Ihrem Azure SQL-Datenba
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Servername** | Der vollqualifizierte Servername | Der Name sollte etwa wie folgt lauten: **mynewserver20170313.database.windows.net**. |
    | **Datenbankname** | mySampleDatabase | Die Datenbank für die Verbindung. |
-   | **Authentication** | SQL-Anmeldung| In diesem Tutorial wird SQL-Authentifizierung verwendet. |
+   | **Authentifizierung** | SQL-Anmeldung| In diesem Tutorial wird SQL-Authentifizierung verwendet. |
    | **Benutzername** | Benutzername | Der Benutzername des Serveradministratorkontos, das zum Erstellen des Servers verwendet wird. |
    | **Kennwort (SQL-Anmeldung)** | Kennwort | Das Kennwort des Serveradministratorkontos, das zum Erstellen des Servers verwendet wird. |
    | **Kennwort speichern?** | Ja oder nein | Wählen Sie **Ja** aus, wenn Sie das Kennwort nicht jedes Mal erneut eingeben möchten. |

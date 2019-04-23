@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: c92bb8e7441e9701d11f3223fa6ebde7869d6233
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: a1d66cf4506e3b8f58572576db908812f4e2be07
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895724"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59490409"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>HTTP-Trigger und -Bindungen in Azure Functions
 
@@ -117,6 +117,8 @@ Weitere Informationen zu diesen Eigenschaften finden Sie im Abschnitt [Konfigura
 C#-Skriptcode für die Bindung an `HttpRequest`:
 
 ```cs
+#r "Newtonsoft.Json"
+
 using System.Net;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;

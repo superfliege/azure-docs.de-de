@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 01/04/2019
+ms.date: 04/09/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cd391af4e4b4722e433e9bf25f0d584fba2321e
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: ce0d99fb283be8cbeba6f8a7954ff49161a2d511
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577228"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59496708"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-pim"></a>Konfigurieren von Sicherheitswarnungen für Azure AD-Rollen in PIM
 

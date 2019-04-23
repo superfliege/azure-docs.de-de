@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: seguler
-ms.openlocfilehash: 8328ea5afb66bbecdafbb06dcbf6700194d62f9e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3b58dc8dabc55ba428ce6e35091a6947e5f4a824
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864059"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678379"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Kopieren von Daten zwischen Azure Storage-Blobs und Azure Data Lake Storage Gen2 mit DistCp
 
@@ -27,7 +27,7 @@ DistCp bietet eine Vielzahl von Befehlszeilenparametern. Wir empfehlen Ihnen dri
 * **Ein vorhandenes Azure Storage-Konto ohne aktivierte Data Lake Storage Gen2-Funktionen (hierarchischer Namespace)**.
 * **Ein Azure Storage-Konto mit aktiviertem Feature Azure Data Lake Storage Gen2**. Anweisungen zum Erstellen eines solchen Speicherkontos finden Sie unter [Erstellen eines Azure Data Lake Storage Gen2-Speicherkontos](data-lake-storage-quickstart-create-account.md).
 * **Ein Dateisystem**, das im Speicherkonto mit aktiviertem hierarchischen Namespace erstellt wird.
-* **Azure HDInsight-Cluster** mit Zugriff auf ein Speicherkonto mit aktiviertem Data Lake Storage Gen2. Siehe [Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern](data-lake-storage-use-hdi-cluster.md). Stellen Sie sicher, dass Remotedesktop für den Cluster aktiviert ist.
+* **Azure HDInsight-Cluster** mit Zugriff auf ein Speicherkonto mit aktiviertem Data Lake Storage Gen2. Siehe [Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Stellen Sie sicher, dass Remotedesktop für den Cluster aktiviert ist.
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>Verwenden von DistCp in einem HDInsight-Linux-Cluster
 

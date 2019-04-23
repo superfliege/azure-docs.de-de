@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: dc3543af0a10c83d8ca212957a6345c8a70cd58b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 7fc42b24090b5fc68176fea2c7b993643ea24200
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59279940"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678223"
 ---
-# <a name="tutorial-customize-the-azure-iot-central-operators-view-new-ui-design"></a>Tutorial: Anpassen der Azure IoT Central-Ansicht für Bediener (neues Benutzeroberflächendesign)
+# <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Tutorial: Anpassen der Azure IoT Central-Ansicht für Bediener
 
 Dieses Tutorial richtet sich an Ersteller und erläutert, wie Sie die Darstellung Ihrer Anwendung für Bediener anpassen. Wenn Sie als Ersteller eine Änderung an der Anwendung vornehmen, können Sie in der Microsoft Azure IoT Central-Anwendung eine Vorschau der Ansicht für Bediener anzeigen.
 
@@ -61,7 +61,7 @@ Als Ersteller können Sie definieren, welche Informationen auf einem Gerätedash
     | Messungstyp | Telemetrie |
     | Messung | Temperatur |
     | Aggregation | Maximum |
-    | Sichtbarkeit  | Aktiviert |
+    | Sichtbarkeit  | Enabled |
 
     ![Hinzufügen eines KPIs](media/tutorial-customize-operator/addkpi.png)
 
@@ -160,5 +160,5 @@ In diesem Tutorial haben Sie gelernt, wie Sie die Anwendungsdarstellung für Bed
 
 Nachdem Sie nun wissen, wie Sie die Anwendungsdarstellung für Bediener anpassen, können Sie mit folgenden Schritten fortfahren:
 
-* [Überwachen Ihrer Geräte (als Bediener)](tutorial-monitor-devices.md)
-* [Hinzufügen eines neuen Geräts zu Ihrer Anwendung (als Bediener und Geräteentwickler)](tutorial-add-device.md)
+* [überwachen Ihrer Geräte](tutorial-monitor-devices.md) (als Bediener)
+* [Hinzufügen eines neuen Geräts zu Ihrer Anwendung](tutorial-add-device.md) (als Bediener und Geräteentwickler)

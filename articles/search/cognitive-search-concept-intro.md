@@ -11,10 +11,10 @@ ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: c421d99f1071c7a38cfe315cc3054136f81598e0
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59265967"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Was ist die „kognitive Suche“ in Azure Search?
@@ -76,9 +76,9 @@ Indizes werden über ein Indexschema generiert, das die Felder, Attribute und we
 
 | Konzept | BESCHREIBUNG| Links |
 |---------|------------|-------|
-| Fähigkeitengruppe | Eine benannte allgemeine Ressource mit einer Sammlung von Fähigkeiten. Eine Fähigkeitengruppe in der Anreicherungspipeline. Sie wird während der Indizierung durch einen Indexer aufgerufen. | [Definieren von Fertigkeiten](cognitive-search-defining-skillset.md) |
+| Fähigkeitengruppe | Eine benannte allgemeine Ressource mit einer Sammlung von Fähigkeiten. Eine Fähigkeitengruppe in der Anreicherungspipeline. Sie wird während der Indizierung durch einen Indexer aufgerufen. | [Definieren einer Fähigkeitengruppe](cognitive-search-defining-skillset.md) |
 | Kognitive Fähigkeit | Eine atomische Transformation in einer Anreicherungspipeline. Häufig handelt es sich dabei um eine Komponente, die sich mit der Extrahierung oder der Erschließung einer Struktur befasst und folglich Ihr Verständnis der Eingabedaten ergänzt. Die Ausgabe ist fast immer textbasiert. Bei der Verarbeitung wird auf die Verarbeitung natürlicher Sprache oder die Bildbearbeitung zurückgegriffen, bei der Text aus Bildeingaben extrahiert oder generiert wird. Die Ausgabe aus einer Fähigkeit kann einem Feld in einem Index zugeordnet werden oder als Eingabe für eine Downstream-Anreicherung verwendet werden. Eine Fähigkeit ist entweder vordefiniert und wird von Microsoft bereitgestellt, oder sie ist benutzerdefiniert und wird von Ihnen erstellt und bereitgestellt. | [Vordefinierte Skills](cognitive-search-predefined-skills.md) |
-| Extrahieren von Daten | Deckt ein breites Verarbeitungsspektrum ab, in Bezug auf Cognitive Search wird die Fähigkeit zur Erkennung benannter Entitäten jedoch zumeist zum Extrahieren von Daten (einer Entität) aus einer Quelle verwendet, die diese Informationen nicht nativ bereitstellt. | [Qualifikation: Erkennung benannter Entitäten](cognitive-search-skill-named-entity-recognition.md)| 
+| Extrahieren von Daten | Deckt ein breites Verarbeitungsspektrum ab, in Bezug auf Cognitive Search wird die Fähigkeit zur Erkennung benannter Entitäten jedoch zumeist zum Extrahieren von Daten (einer Entität) aus einer Quelle verwendet, die diese Informationen nicht nativ bereitstellt. | [Fähigkeit: Erkennung benannter Entitäten](cognitive-search-skill-named-entity-recognition.md)| 
 | Bildverarbeitung | Erschließt sich Text aus einem Bild, z.B. die Fähigkeit der Erkennung eines Wahrzeichens oder des Extrahierens von Text aus einem Bild. Typische Beispiele dafür sind OCR für das Löschen von Zeichen aus einer Datei mit einem gescannten Dokument (JPEG) oder das Erkennen eines Straßennamens auf einem Foto mit einem Straßenschild. | [Fähigkeit: Bildanalyse](cognitive-search-skill-image-analysis.md) oder [Fähigkeit: OCR](cognitive-search-skill-ocr.md)
 | Verarbeitung natürlicher Sprache | Textverarbeitung für Einblicke und Informationen zu Texteingaben. Sprachenerkennung, Standpunktanalyse und Schlüsselbegriffserkennung sind Fähigkeiten, die in den Bereich der Verarbeitung natürlicher Sprache fallen.  | [Fähigkeit: Schlüsselbegriffserkennung](cognitive-search-skill-keyphrases.md), [Fähigkeit: Sprachenerkennung](cognitive-search-skill-language-detection.md), [Fähigkeit: Standpunktanalyse](cognitive-search-skill-sentiment.md) |
 | Dokumententschlüsselung | Der Prozess des Extrahierens oder Erstellens von Textinhalt aus Nicht-Text-Quellen während der Indizierung. OCR (Optical Character Recognition) ist ein Beispiel hierfür. In der Regel bezieht sich dies jedoch auf die Kernfunktionalität des Indexers, da dieser Inhalte aus Anwendungsdateien extrahiert. Sowohl die Datenquelle, die den Speicherort der Quelldatei bereitstellt, als auch die Indexerdefinition, die Feldzuordnungen zur Verfügung stellt, stellen Schlüsselfaktoren bei der Dokumententschlüsselung dar. | Weitere Informationen finden Sie unter [Indexer](search-indexer-overview.md). |
@@ -98,7 +98,7 @@ Indizes werden über ein Indexschema generiert, das die Felder, Attribute und we
 
 + [Schnellstart (Portal)](cognitive-search-quickstart-blob.md)
 + [Tutorial (HTTP-Anforderungen)](cognitive-search-tutorial-blob.md)
-+ [Beispiel für benutzerdefinierte Qualifikationen (C#)](cognitive-search-create-custom-skill-example.md)
++ [Beispiel für benutzerdefinierte Fähigkeiten (C#)](cognitive-search-create-custom-skill-example.md)
 
 Es empfiehlt sich, zu Lernzwecken den kostenlosen Dienst zu verwenden. Beachten Sie jedoch, dass die Anzahl kostenloser Transaktionen auf 20 Dokumente pro Tag beschränkt ist. Wenn Sie sowohl die Schnellstartanleitung als auch das Tutorial am gleichen Tag ausführen möchten, verwenden Sie einen kleineren Dateisatz (zehn Dokumente).
 
@@ -108,8 +108,8 @@ Derzeit werden nur REST-APIs bereitgestellt. Verwenden Sie `api-version=2017-11-
 
 | REST-API | BESCHREIBUNG |
 |-----|-------------|
-| [Datenquelle erstellen](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Eine Ressource, die eine externe Datenquelle identifiziert, welche Quelldaten zum Erstellen angereicherter Dokumente bereitstellt.  |
-| [Erstellen eines Skillsets (API-Version: 2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Eine Ressource, welche die Verwendung von [vordefinierten Fähigkeiten](cognitive-search-predefined-skills.md) und [benutzerdefinierten kognitiven Fähigkeiten](cognitive-search-custom-skill-interface.md) in einer Anreicherungspipeline während der Indizierung koordiniert. |
+| [Erstellen der Datenquelle](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Eine Ressource, die eine externe Datenquelle identifiziert, welche Quelldaten zum Erstellen angereicherter Dokumente bereitstellt.  |
+| [Erstellen einer Fähigkeitengruppe (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Eine Ressource, welche die Verwendung von [vordefinierten Fähigkeiten](cognitive-search-predefined-skills.md) und [benutzerdefinierten kognitiven Fähigkeiten](cognitive-search-custom-skill-interface.md) in einer Anreicherungspipeline während der Indizierung koordiniert. |
 | [Index erstellen](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Ein Schema zur Beschreibung eines Azure Search-Indexes. Felder im Index werden Feldern in den Quelldaten zugeordnet oder Feldern, die während der Anreicherungsphase erstellt wurden (z.B. ein von der Entitätserkennung erstelltes Feld für Organisationsnamen). |
 | [Erstellen eines Indexers (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Eine Ressource, die während der Indizierung verwendete Komponenten definiert: Dazu zählen eine Datenquelle, eine Fähigkeitengruppe, Feldzuordnungen der Quelle, intermediäre Datenstrukturen für den Zielindex und der Index selbst. Die Ausführung des Indexers ist Auslöser für die Datenerfassung und -anreicherung. Die Ausgabe ist ein Suchkorpus basierend auf dem Indexschema und wird mit Quelldaten aufgefüllt, die durch Fähigkeitengruppen angereichert werden.  |
 
@@ -137,6 +137,6 @@ Weitere Informationen zu bestimmten Fragen oder Problemen finden Sie unter [Prob
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-+ [Cognitive Search-Dokumentation](cognitive-search-resources-documentation.md)
++ [Dokumentation zu Cognitive Search](cognitive-search-resources-documentation.md)
 + [Schnellstart: Testen der kognitiven Suche anhand einer exemplarischen Vorgehensweise zu Portalfunktionen](cognitive-search-quickstart-blob.md)
 + [Tutorial: Informationen zum Aufrufen von APIs der kognitiven Suche](cognitive-search-tutorial-blob.md)

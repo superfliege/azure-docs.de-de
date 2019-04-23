@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 05b25a524894248152114ca9c756d4a0f8944ad8
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: d5e62bf1838c8f07068208019d28d7273c28bd63
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199629"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59492344"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>Konfigurieren des VPN-Gatewaytransits für ein Peering virtueller Netzwerke
 
@@ -36,9 +36,6 @@ In diesem Dokument werden zwei Szenarien beschrieben:
 
 1. Beide virtuellen Netzwerke verwenden das Ressourcen-Manager-Bereitstellungsmodell
 2. Das virtuelle Spoke-Netzwerk verwendet das klassische Bereitstellungsmodell, das virtuelle Hub-Netzwerk mit Gateway das Ressourcen-Manager-Bereitstellungsmodell
-
-> [!IMPORTANT]  
-> Gatewaytransit wird derzeit beim Peering globaler virtueller Netzwerke in der Vorschauversion unterstützt. Die Vorschauversion ist in allen Azure-Regionen, China-Cloud-Regionen und Government-Cloud-Regionen verfügbar, jedoch nicht Cloud-übergreifend. Es sind keine Whitelists erforderlich. Sie können in der Vorschau über CLI, PowerShell, Vorlagen oder API testen. Das Portal wird in der Vorschau nicht unterstützt. 
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 

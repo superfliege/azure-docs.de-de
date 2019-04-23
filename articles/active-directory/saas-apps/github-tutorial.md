@@ -16,10 +16,10 @@ ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 25540d1f26fa6021ef05108f9743e77a6184f3b3
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426323"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-github"></a>Tutorial: Azure Active Directory-Integration in GitHub
@@ -53,7 +53,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Konfigurieren der Integration von GitHub in Azure AD müssen Sie GitHub aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie die folgenden Schritte aus, um GitHub aus dem Katalog hinzuzufügen:**
+**Um GitHub aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -107,9 +107,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei GitHub d
 
     ![SSO-Informationen zur Domäne und den URLs für GitHub](common/sp-identifier.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://github.com/orgs/<entity-id>/sso`
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://github.com/orgs/<entity-id>/sso`.
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://github.com/orgs/<entity-id>`
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://github.com/orgs/<entity-id>`.
 
     > [!NOTE]
     > Hinweis: Hierbei handelt es sich um Beispielwerte. Die Werte müssen durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner ersetzt werden. Hier empfehlen wir Ihnen, den eindeutigen Wert der Zeichenfolge im Bezeichner zu verwenden. Navigieren Sie zum Abschnitt „GitHub Admin“ (GitHub-Verwaltung), um diese Werte abzurufen.
@@ -222,7 +222,7 @@ In diesem Abschnitt gewähren Sie Britta Simon Zugriff auf GitHub, damit sie das
 
 In diesem Abschnitt wird in GitHub eine Benutzerin namens Britta Simon erstellt. GitHub unterstützt die automatische Benutzerbereitstellung, die standardmäßig aktiviert ist. Weitere Details zur Konfiguration der automatischen Benutzerbereitstellung finden Sie [hier](github-provisioning-tutorial.md).
 
-**Wenn Sie einen Benutzer manuell erstellen müssen, führen Sie die folgenden Schritte aus:**
+**Wenn Sie einen Benutzer manuell erstellen möchten, führen Sie die folgenden Schritte aus:**
 
 1. Melden Sie sich bei der GitHub-Unternehmenswebsite als Administrator an.
 

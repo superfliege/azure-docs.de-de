@@ -15,10 +15,10 @@ ms.date: 04/09/2019
 ms.author: magoedte
 ms.custom: mvc
 ms.openlocfilehash: d1403b35319df6ef9ec45c07dc56d6f2ca38fa60
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426629"
 ---
 # <a name="configure-log-analytics-agent-for-windows-computers-in-a-hybrid-environment"></a>Konfigurieren des Log Analytics-Agents für Windows-Computer in einer Hybridumgebung
@@ -135,4 +135,4 @@ Jetzt sammeln Sie Betriebs- und Leistungsdaten von Ihrem lokalen Linux-Computer 
 Um zu erfahren, wie Sie die Daten anzeigen und analysieren, fahren Sie mit dem Tutorial fort.   
 
 > [!div class="nextstepaction"]
-> [Anzeigen oder Analysieren von Daten in Log Analytics](tutorial-viewdata.md)
+> [Anzeigen oder Analysieren der Daten in Log Analytics](tutorial-viewdata.md)

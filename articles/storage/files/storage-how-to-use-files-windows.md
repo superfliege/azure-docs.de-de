@@ -9,10 +9,10 @@ ms.date: 06/07/2018
 ms.author: renash
 ms.subservice: files
 ms.openlocfilehash: 315bad5c4ffc3d5e8909c86cb8de703e9cb941b0
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59048842"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Verwenden einer Azure-Dateifreigabe mit Windows
@@ -225,7 +225,7 @@ Sie können **Öffnen** auswählen, um eine bestimmte Momentaufnahme zu öffnen.
 
 #### <a name="restore-from-a-previous-version"></a>Wiederherstellen aus einer vorherigen Version
 Wählen Sie **Wiederherstellen**, um den Inhalt des gesamten Verzeichnisses rekursiv zum Erstellungszeitpunkt der Freigabemomentaufnahme am ursprünglichen Speicherort zu kopieren.
- ![Warnmeldung mit Schaltfläche „Wiederherstellen“](./media/storage-how-to-use-files-windows/snapshot-windows-restore.png) 
+ ![Wiederherstellungsschaltfläche in Warnmeldung](./media/storage-how-to-use-files-windows/snapshot-windows-restore.png) 
 
 ## <a name="securing-windowswindows-server"></a>Sichern von Windows/Windows Server
 Zum Einbinden einer Azure-Dateifreigabe unter Windows muss Port 445 zugänglich sein. Viele Organisationen blockieren Port 445 aufgrund von mit SMB 1 verbundenen Sicherheitsrisiken. SMB 1, auch bekannt als CIFS (Common Internet File System) ist ein älteres Dateisystemprotokoll, das in Windows und Windows Server enthalten ist. SMB 1 ist ein veraltetes, ineffizientes und vor allem unsicheres Protokoll. Die gute Nachricht ist, dass Azure Files SMB 1 nicht unterstützt und alle unterstützten Versionen von Windows und Windows Server das Entfernen oder Deaktivieren von SMB 1 ermöglichen. Wir [empfehlen immer dringend](https://aka.ms/stopusingsmb1), unter Windows den SMB 1-Client und -Server vor der Verwendung von Azure-Dateifreigaben in der Produktion zu entfernen oder zu deaktivieren.
@@ -237,13 +237,13 @@ Die folgende Tabelle enthält ausführliche Informationen zum Status von SMB 1 f
 | Windows Server 2019 (Vorschauversion)             | Deaktiviert             | Entfernen mit Windows-Funktion |
 | Windows Server, Versionen ab 1709            | Deaktiviert             | Entfernen mit Windows-Funktion |
 | Windows 10, Versionen ab 1709                | Deaktiviert             | Entfernen mit Windows-Funktion |
-| Windows Server 2016                       | Aktiviert              | Entfernen mit Windows-Funktion |
-| Windows 10,Versionen 1507, 1607 und 1703 | Aktiviert              | Entfernen mit Windows-Funktion |
-| Windows Server 2012 R2                    | Aktiviert              | Entfernen mit Windows-Funktion | 
-| Windows 8.1                               | Aktiviert              | Entfernen mit Windows-Funktion | 
-| Windows Server 2012                       | Aktiviert              | Deaktivieren mit Registrierung       | 
-| Windows Server 2008 R2                    | Aktiviert              | Deaktivieren mit Registrierung       |
-| Windows 7                                 | Aktiviert              | Deaktivieren mit Registrierung       | 
+| Windows Server 2016                       | Enabled              | Entfernen mit Windows-Funktion |
+| Windows 10,Versionen 1507, 1607 und 1703 | Enabled              | Entfernen mit Windows-Funktion |
+| Windows Server 2012 R2                    | Enabled              | Entfernen mit Windows-Funktion | 
+| Windows 8.1                               | Enabled              | Entfernen mit Windows-Funktion | 
+| Windows Server 2012                       | Enabled              | Deaktivieren mit Registrierung       | 
+| Windows Server 2008 R2                    | Enabled              | Deaktivieren mit Registrierung       |
+| Windows 7                                 | Enabled              | Deaktivieren mit Registrierung       | 
 
 ### <a name="auditing-smb-1-usage"></a>Überwachung der Verwendung von SMB 1
 > Gilt für Windows Server 2019 (Vorschauversion), den halbjährlichen Windows Server-Kanal (Versionen 1709 und 1803), Windows Server 2016, Windows 10 (Versionen 1507, 1607, 1703, 1709 und 1803), Windows Server 2012 R2 und Windows 8.1
@@ -307,4 +307,4 @@ Nach der Erstellung dieses Registrierungsschlüssels müssen Sie den Server neu 
 Weitere Informationen zu Azure Files finden Sie unter diesen Links:
 - [Planung für eine Azure Files-Bereitstellung](storage-files-planning.md)
 - [Häufig gestellte Fragen](../storage-files-faq.md)
-- [Problembehandlung unter Windows](storage-troubleshoot-windows-file-connection-problems.md)      
+- [Troubleshoot Azure File storage problems in Windows](storage-troubleshoot-windows-file-connection-problems.md) (Beheben von Problemen mit Azure File Storage unter Windows)      

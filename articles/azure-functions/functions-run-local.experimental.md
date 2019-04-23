@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.openlocfilehash: 84c578fdbcfb555bde23d6a9e6f8258259cff8de
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471276"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59497099"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Arbeiten mit Azure Functions Core Tools
 
@@ -497,5 +497,5 @@ Um einen Fehler zu melden oder ein Feature anzufordern, [öffnen Sie ein GitHub-
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
 [Azure-Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
-[`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
-[`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage
+[FUNCTIONS_WORKER_RUNTIME]: functions-app-settings.md#functions_worker_runtime
+[AzureWebJobsStorage]: functions-app-settings.md#azurewebjobsstorage

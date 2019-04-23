@@ -10,10 +10,10 @@ ms.date: 04/08/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
 ms.openlocfilehash: 7c62ec722e5bb909c13b21a7b98d86dd72d9e665
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59425949"
 ---
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>Tutorial: Zurücksenden von Azure Data Box Disk und Überprüfen des Datenuploads in Azure
@@ -200,6 +200,6 @@ In diesem Tutorial haben Sie Informationen zu Azure Data Box-Datenträgern erhal
 Fahren Sie mit dem nächsten Artikel zur Vorgehensweise fort, um zu erfahren, wie Sie den Data Box-Datenträger über das Azure-Portal verwalten.
 
 > [!div class="nextstepaction"]
-> [Verwalten von Data Box Disk über das Azure-Portal](./data-box-portal-ui-admin.md)
+> [Use Azure portal to administer Azure Data Box Disk](./data-box-portal-ui-admin.md) (Verwenden des Azure-Portals zum Verwalten des Azure Data Box-Datenträgers)
 
 

@@ -13,10 +13,10 @@ ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5adb857e6032e46c31a86685913277ec3eb571be
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496402"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Behandeln von Problemen mit der Self-Service-Kennwortzurücksetzung
@@ -55,8 +55,8 @@ Haben Sie Probleme mit der Self-Service-Kennwortzurücksetzung (Self-Service Pas
 
 | Error | Lösung |
 | --- | --- |
-| Die Kennwortzurücksetzung ist für das Verzeichnis nicht aktiviert. **Ihr Administrator hat die Verwendung dieser Funktion nicht für Sie aktiviert.** | Legen Sie das Flag **Self-Service-Kennwortzurücksetzung aktiviert** auf **Ausgewählt** oder **Alle** fest, und klicken Sie auf **Speichern**. |
-| Dem Benutzer ist keine Azure AD Premium- oder Basic-Lizenz zugewiesen. **Ihr Administrator hat die Verwendung dieser Funktion nicht für Sie aktiviert.** | Dieses Problem kann auftreten, wenn dem Administrator, der diesen Vorgang durchführt, keine Azure AD Premium- oder Basic-Lizenz zugewiesen wurde. <br> <br> Zur Behebung dieses Problems können Sie dem betreffenden Administratorkonto eine Lizenz zuweisen. Eine entsprechende Anleitung finden Sie unter [Schritt 1: Zuweisen der erforderlichen Lizenzen](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).|
+| Die Kennwortzurücksetzung ist für das Verzeichnis nicht aktiviert. **Ihr Administrator hat die Verwendung dieses Features für Sie nicht aktiviert.** | Legen Sie das Flag **Self-Service-Kennwortzurücksetzung aktiviert** auf **Ausgewählt** oder **Alle** fest, und klicken Sie auf **Speichern**. |
+| Dem Benutzer ist keine Azure AD Premium- oder Basic-Lizenz zugewiesen. **Ihr Administrator hat die Verwendung dieses Features für Sie nicht aktiviert.** | Dieses Problem kann auftreten, wenn dem Administrator, der diesen Vorgang durchführt, keine Azure AD Premium- oder Basic-Lizenz zugewiesen wurde. <br> <br> Zur Behebung dieses Problems können Sie dem betreffenden Administratorkonto eine Lizenz zuweisen. Eine entsprechende Anleitung finden Sie unter [Schritt 1: Zuweisen der erforderlichen Lizenzen](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).|
 | Beim Verarbeiten der Anforderung ist ein Fehler aufgetreten. | Dieser Fehler kann verschiedene Ursachen haben, im Allgemeinen wird er jedoch entweder durch einen Dienstausfall oder einen Konfigurationsfehler verursacht. Falls dieser Fehler angezeigt wird und Auswirkungen auf Ihre Geschäftstätigkeit hat, wenden Sie sich an den Microsoft-Support, um zusätzliche Unterstützung zu erhalten. |
 
 ## <a name="troubleshoot-the-password-reset-portal"></a>Problembehandlung: Kennwortzurücksetzungsportal
@@ -183,7 +183,7 @@ Führen Sie zum Beheben von Konnektivitätsproblemen oder anderen vorübergehend
 1. Suchen Sie nach dem Eintrag **Microsoft Azure AD Sync**.
 1. Klicken Sie mit der rechten Maustaste auf den Diensteintrag, klicken Sie auf **Neu starten**, und warten Sie, bis der Vorgang abgeschlossen wurde.
 
-   ![Neustarten des Azure AD-Synchronisierungsdiensts über die grafische Benutzeroberfläche][Service restart]
+   ![Neustarten des Azure AD Sync-Diensts mit der grafischen Benutzeroberfläche][Service restart]
 
 Durch Ausführen dieser Schritte wird erneut eine Verbindung mit dem Clouddienst hergestellt, und mögliche Unterbrechungen werden behoben. Wenn das Problem durch einen Neustart des ADSync-Diensts nicht behoben wurde, deaktivieren Sie das Kennwortrückschreibenfeature, und aktivieren Sie es anschließend wieder.
 
@@ -292,7 +292,7 @@ Die folgenden Artikel enthalten weitere Informationen zur Kennwortzurücksetzung
 * [Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung](howto-sspr-authenticationdata.md)
 * [Authentifizierungsmethoden](concept-sspr-howitworks.md#authentication-methods)
 * [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](concept-sspr-policy.md)
-* [Gewusst wie: Konfigurieren von Kennwortrückschreiben](howto-sspr-writeback.md)
+* [Übersicht über die Kennwortrückschreibung](howto-sspr-writeback.md)
 * [Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD](howto-sspr-reporting.md)
-* [Welche Optionen sind für SSPR verfügbar, und was bedeuten sie?](concept-sspr-howitworks.md)
+* [Ausführliche Informationen zur Self-Service-Kennwortzurücksetzung in Azure AD](concept-sspr-howitworks.md)
 * [Häufig gestellte Fragen zur Kennwortverwaltung](active-directory-passwords-faq.md)

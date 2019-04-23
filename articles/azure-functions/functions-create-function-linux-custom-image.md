@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
 ms.openlocfilehash: 03e1ec58b0ef3ad50a04f82ced7d20119ab3ef5b
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59491456"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Erstellen einer Funktion unter Linux mit einem benutzerdefinierten Image
@@ -260,7 +260,7 @@ Sie können jetzt Ihre Funktionen unter Linux in Azure testen.
 
 Die empfohlene Methode zum Überwachen der Ausführung Ihrer Funktionen ist die Integration Ihrer Funktions-App in Azure Application Insights. Wenn Sie eine Funktions-App im Azure-Portal erstellen, wird diese Integration standardmäßig für Sie erledigt. Wenn Sie Ihre Funktions-App mithilfe der Azure CLI erstellen, erfolgt die Integration in Ihre Funktions-App in Azure nicht.
 
-So aktivieren Sie Application Insights für Ihre Funktions-App:
+So aktivieren Sie Application Insights für Ihre Funktions-App
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: 47235fa5676acd8de8a7cc0d969b813837faf0af
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59469708"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59490392"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>Entwickeln einer U-SQL-Datenbank für Azure Data Lake mithilfe eines U-SQL-Datenbankprojekts
 
@@ -116,6 +116,6 @@ Ein U-SQL-Projekt kann auf ein U-SQL-Datenbankprojekt verweisen. Der Verweis wir
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Gewusst wie: Einrichten einer CI/CD-Pipeline für Azure Data Lake Analytics](data-lake-analytics-cicd-overview.md)
+- [Einrichten einer CI/CD-Pipeline für Azure Data Lake Analytics](data-lake-analytics-cicd-overview.md)
 - [Testen des Azure Data Lake Analytics-Codes](data-lake-analytics-cicd-test.md)
 - [Ausführen von U-SQL-Skripts auf dem lokalen Computer](data-lake-analytics-data-lake-tools-local-run.md)

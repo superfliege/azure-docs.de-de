@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 48412b3006a462fcc9c77219f42fb41d08f2df61
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59490738"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Erstellen einer benutzerdefinierten Image Factory in Azure DevTest Labs
@@ -25,8 +25,8 @@ In diesem Artikel wird das Festlegen einer Aufbewahrungsrichtlinie, das Bereinig
 ## <a name="prerequisites"></a>Voraussetzungen
 Stellen Sie sicher, dass Sie folgende Schritte ausgeführt haben, ehe Sie fortfahren:
 
-- [Erstellen einer Imagefactory](image-factory-create.md)
-- [Ausführen einer Imagefactory über AzureDevOps](image-factory-set-up-devops-lab.md)
+- [Erstellen einer Image Factory](image-factory-create.md)
+- [Ausführen einer Image Factory in Azure DevOps](image-factory-set-up-devops-lab.md)
 - [Speichern von benutzerdefinierten Images und Verteilen an mehrere Labs](image-factory-save-distribute-custom-images.md)
 
 Folgende Elemente sollten bereits vorhanden sein:
@@ -58,7 +58,7 @@ Diese Aufgabe entfernt alle alten Images und behält nur einen Verlauf bei, der 
 
 Die Skriptparameter sind: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(devTestLabName) -ImagesToSave $(ImageRetention)`
 
-## <a name="queue-the-build"></a>Einstellen des Builds in die Warteschlange
+## <a name="queue-the-build"></a>Stellen des Builds in die Warteschlange
 Sobald die Builddefinition vollständig ist, stellen Sie einen neuen Build in die Warteschlange, um sicherzustellen, dass alles funktioniert. Nachdem der Build erfolgreich abgeschlossen wurde, werden die neuen benutzerdefinierten Images im Ziellab angezeigt. Wenn Sie das Image Factory-Lab überprüfen, sehen Sie keine bereitgestellten VMs. Wenn Sie außerdem weitere Builds in die Warteschlange stellen, sehen Sie, wie die Bereinigungsaufgaben alte benutzerdefinierte Images aus den DevTest-Labs gemäß der in der Buildvariablen festgelegten Aufbewahrungsdauer ausmustern.
 
 > [!NOTE]

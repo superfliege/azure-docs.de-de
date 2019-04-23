@@ -8,19 +8,20 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: db204a46-6460-4ace-bdbb-4353846723ad
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/17/2019
+ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10ffd7207367d0bbdd670fb8402775b26952ae5d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9d9f83e0b6136a27c0cd519a345e085040f47cc6
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852592"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680127"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-apex-portal"></a>Tutorial: Azure Active Directory-Integration mit Apex Portal
 
@@ -68,7 +69,7 @@ Zum Konfigurieren der Integration von Apex Portal in Azure AD müssen Sie Apex P
 
 4. Geben Sie im Suchfeld **Apex Portal** ein, wählen Sie im Ergebnisbereich **Apex Portal** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![Apex Portal in der Ergebnisliste](common/search-new-app.png)
+    ![Apex Portal in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -106,9 +107,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Apex Por
 
     ![SSO-Informationen zur Domäne und zu den URLs für Apex Portal](common/idp-intiated.png)
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<customer name>.apexanalytix.com/saml/sso.aspx`
+    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<customer name>.apexportal.net/saml/sso.aspx`
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<customer name>.apexanalytix.com/saml/sso.aspx`
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<customer name>.apexportal.net/saml/sso.aspx`
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Supportteam für den Apex Portal-Client](mailto:support@apexanalytix.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -120,7 +121,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Apex Por
 6. Bearbeiten Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die Ansprüche mithilfe des Symbols zum **Bearbeiten**, oder fügen Sie die Ansprüche über **Neuen Anspruch hinzufügen** hinzu, um das SAML-Tokenattribut wie in der obigen Abbildung gezeigt zu konfigurieren. Führen Sie dann die folgenden Schritte aus:
 
     | NAME | Quellattribut|
-    | ------------------- | -------------------- |
+    | -------- | --------- |
     | FIRSTNAME | user.givenname |
     | LASTNAME | user.surname |
     | MAIL | user.mail |
@@ -180,8 +181,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
-    Zum Beispiel, BrittaSimon@contoso.com
+    b. Geben Sie im Feld **Benutzername** den Namen `brittasimon\@yourcompanydomain.extension` ein. Beispiel: BrittaSimon@contoso.com.
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
@@ -233,4 +233,3 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Apex Portal“ klicken, sollten Si
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

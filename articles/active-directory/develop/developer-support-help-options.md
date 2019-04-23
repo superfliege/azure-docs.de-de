@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur, dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9f3f041fa3b594b4b680d794c1c013e55b97da4
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 0de9b3e3535253724d068f806b219736f6889477
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235188"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59501588"
 ---
 # <a name="support-and-help-options-for-developers"></a>Support- und Hilfeoptionen für Entwickler
 
@@ -36,7 +36,7 @@ Wenn Sie gerade mit der Integration mit Azure Active Directory (Azure AD), Micro
 > * Wenn Sie auf ein Problem mit einer unserer Authentifizierungsbibliotheken stoßen, erstellen Sie ein *GitHub*-Problem.
 > * Wenn Sie schließlich mit einer Person sprechen müssen, stellen Sie eine Supportanfrage.
 
-## <a name="search"></a>Suchen
+## <a name="search"></a>Suchen,
 
 Wenn Sie eine entwicklungsspezifische Frage haben, finden Sie die gewünschte Antwort möglicherweise in der Dokumentation, den [GitHub-Beispielen](https://github.com/azure-samples) oder in den Antworten auf Fragen auf [Stack Overflow](https://www.stackoverflow.com).
 
@@ -55,10 +55,9 @@ Hierbei entspricht *{Your Search Terms}* Ihren Schlüsselwörtern für die Suche
 | Tool  | BESCHREIBUNG  |
 |---------|---------|
 | [jwt.ms](https://jwt.ms) | Fügen Sie eine ID oder ein Zugriffstoken zum Entschlüsseln von Anspruchsnamen und Werten ein. |
-| [Error Code Analyzer](https://apps.dev.microsoft.com/portal/tools/errors)| Fügen Sie einen Fehlercode ein, den Sie bei der Anmeldung oder von Zustimmungsseiten erhalten haben, um mögliche Ursachen und Lösungen anzuzeigen. |
 | [Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer)| Ein Tool, mit dem Sie Anforderungen an die Microsoft Graph-API richten und deren Antworten anzeigen können. |
 
-## <a name="post-a-question-to-stack-overflow"></a>Posten einer Frage auf Stack Overflow
+## <a name="post-a-question-to-stack-overflow"></a>Richten einer Frage an Stack Overflow
 
 Stack Overflow ist der bevorzugte Kanal für entwicklungsbezogene Fragen. Hier sind Mitglieder der Entwicklercommunity und Microsoft-Teammitglieder direkt an der Lösung Ihrer Probleme beteiligt.
 

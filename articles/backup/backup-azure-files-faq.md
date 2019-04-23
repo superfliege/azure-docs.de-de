@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.service: backup
 manager: carmonm
 ms.openlocfilehash: 139ce3fd81c14f9bf97e45c8aebb83d2fb1bbe10
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426612"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Fragen zum Sichern von Azure Files
@@ -112,6 +112,6 @@ Wenn eine neue Richtlinie auf Dateifreigaben angewendet wird, werden der Zeitpla
 
 ## <a name="see-also"></a>Weitere Informationen
 Diese Informationen beziehen sich nur auf das Sichern von Azure Files. Wenn Sie weitere Informationen zu anderen Bereichen von Azure Backup benötigen, sehen Sie sich die folgenden Artikel mit häufig gestellten Fragen zu Backup an:
--  [Häufig gestellte Fragen zum Recovery Services-Tresor](backup-azure-backup-faq.md)
+-  [Häufig gestellte Fragen zum Recovery Services-Tresor](backup-azure-backup-faq.md)
 -  [Häufig gestellte Fragen zur Azure-VM-Sicherung](backup-azure-vm-backup-faq.md)
--  [Häufig gestellte Fragen zum Azure Backup-Agent](backup-azure-file-folder-backup-faq.md)
+-  [Häufig gestellte Fragen zur Sicherung von Dateien/Ordnern mit dem Azure Backup-Agent](backup-azure-file-folder-backup-faq.md)

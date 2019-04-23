@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.openlocfilehash: f7120e80d079723ed8265320ba4b38d76a825a00
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59499817"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-c"></a>Schnellstart: Übersetzen von Sprache mit dem Speech-SDK für C++
@@ -69,5 +69,5 @@ Weitere Beispiele, z.B. zum Auslesen von Sprache aus einer Audiodatei und Ausgeb
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Anpassen von Akustikmodellen](how-to-customize-acoustic-models.md)
-- [Anpassen von Sprachmodellen](how-to-customize-language-model.md)
+- [Tutorial: Erstellen eines benutzerdefinierten Akustikmodells](how-to-customize-acoustic-models.md)
+- [Tutorial: Erstellen eines benutzerdefinierten Sprachmodells](how-to-customize-language-model.md)

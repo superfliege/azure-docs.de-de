@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/26/2019
 ms.author: absha
 ms.openlocfilehash: cfc63349e20aa6dbef4e0d31e81842d325bd3ec6
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58905536"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>Konfigurieren einer Application Gateway-Instanz mit einem Endpunkt für den internen Lastenausgleich (Internal Load Balancer, ILB)
@@ -30,7 +30,7 @@ In diesem Artikel wird Folgendes behandelt:
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Melden Sie sich beim Azure-Portal an unter <https://portal.azure.com>
+Melden Sie sich unter <https://portal.azure.com> beim Azure-Portal an.
 
 ## <a name="create-an-application-gateway"></a>Erstellen eines Anwendungsgateways
 

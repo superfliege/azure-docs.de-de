@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
 ms.openlocfilehash: 6c0aa42cc22d22431d7d0270aca52e089046cb01
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58847747"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
@@ -162,12 +162,12 @@ Das Verhalten der App für die Patchorchestrierung kann Ihren Anforderungen ents
 |TaskApprovalPolicy   |Enum <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy gibt die Richtlinie an, die vom Koordinatordienst zum Installieren von Windows-Updates auf den Service Fabric-Clusterknoten verwendet werden soll.<br>                         Zulässige Werte sind: <br>                                                           <b>NodeWise</b>. Windows Update wird immer nur auf jeweils einem Knoten installiert. <br>                                                           <b>UpgradeDomainWise</b>. Windows Update wird immer nur in jeweils einer Upgradedomäne installiert. (Höchstens alle Knoten in einer Upgradedomäne können Windows Update verwenden.)<br> Entscheiden Sie mithilfe des Abschnitts [Häufig gestellte Fragen](#frequently-asked-questions), welche Richtlinie für Ihren Cluster am besten geeignet ist.
 |LogsDiskQuotaInMB   |Long  <br> (Standard: 1024)               |Maximale Größe der Protokolle für die App für die Patchorchestrierung in MB, die lokal auf jedem Knoten beibehalten werden können.
 | WUQuery               | Zeichenfolge<br>(Standard: „IsInstalled=0“)                | Abfrage zum Abrufen von Windows-Updates. Weitere Informationen finden Sie unter [WuQuery](https://msdn.microsoft.com/library/windows/desktop/aa386526(v=vs.85).aspx).
-| InstallWindowsOSOnlyUpdates | Boolescher Wert <br> (Standard: false)                 | Verwenden Sie dieses Flag, um zu steuern, welche Updates heruntergeladen und installiert werden sollen. Folgende Werte sind zulässig. <br>TRUE: installiert nur Updates des Windows-Betriebssystems.<br>FALSE: installiert alle verfügbaren Updates auf dem Computer.          |
+| InstallWindowsOSOnlyUpdates | Boolean <br> (Standard: false)                 | Verwenden Sie dieses Flag, um zu steuern, welche Updates heruntergeladen und installiert werden sollen. Folgende Werte sind zulässig. <br>TRUE: installiert nur Updates des Windows-Betriebssystems.<br>FALSE: installiert alle verfügbaren Updates auf dem Computer.          |
 | WUOperationTimeOutInMinutes | Int <br>(Standard: 90)                   | Gibt den Timeoutwert für jeden Windows Update-Vorgang an (Suchen/Herunterladen/Installieren). Wenn der Vorgang nicht innerhalb des angegebenen Timeoutzeitraums abgeschlossen ist, wird er abgebrochen.       |
 | WURescheduleCount     | Int <br> (Standard: 5)                  | Gibt an, wie oft der Dienst das Windows Update maximal erneut plant, falls bei dem Vorgang wiederholt ein Fehler auftritt.          |
 | WURescheduleTimeInMinutes | Int <br>(Standard: 30) | Das Intervall, nach dem der Dienst das Windows-Update erneut plant, falls der Fehler weiterhin besteht. |
 | WUFrequency           | Durch Trennzeichen getrennte Zeichenfolge (Standard: „Wöchentlich, Mittwoch, 7:00:00“)     | Die Häufigkeit, mit der Windows-Updates installiert werden sollen. Folgende Formate und Werte sind möglich: <br>– Monatlich, TT, HH:MM:SS, z.B. Monatlich, 5,12:22:32.<br>Zulässige Werte für das Feld „TT“ (Tag) sind Zahlen im Bereich 1–28 und „last“. <br> – Wöchentlich, TAG, HH:MM:SS, z.B. Wöchentlich, Dienstag, 12:22:32  <br> – Täglich, HH:MM:SS, z.B. Täglich, 12:22:32.  <br> – Keine: Gibt an, dass keine Windows-Updates durchgeführt werden sollen.  <br><br> Die Uhrzeiten sind in UTC angegeben.|
-| AcceptWindowsUpdateEula | Boolescher Wert <br>(Standardwert: true) | Wenn Sie dieses Flag festlegen, akzeptiert die Anwendung den Endbenutzer-Lizenzvertrag für Windows Update für den Besitzer des Computers.              |
+| AcceptWindowsUpdateEula | Boolean <br>(Standardwert: true) | Wenn Sie dieses Flag festlegen, akzeptiert die Anwendung den Endbenutzer-Lizenzvertrag für Windows Update für den Besitzer des Computers.              |
 
 > [!TIP]
 > Wenn Windows Update sofort ausgeführt werden soll, legen Sie `WUFrequency` relativ zum Zeitpunkt der Anwendungsbereitstellung fest. Angenommen, Sie haben einen Testcluster mit fünf Knoten und möchten die App ca. um 17:00 Uhr (UTC) bereitstellen. Wenn Sie davon ausgehen, dass das Upgrade oder die Bereitstellung der Anwendung maximal 30 Minuten dauert, legen Sie WUFrequency auf „Täglich, 17:30:00“ fest.

@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1e67c22a55068ce42cb1eb6d9c0c9bdf8215f44e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a723ca6d69d45613636c7659e6566cec19b31d65
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58167982"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679031"
 ---
-# <a name="manage-devices-in-your-azure-iot-central-application-new-ui-design"></a>Verwalten von Geräten in Ihrer Azure IoT Central-Anwendung (neues Design der Benutzeroberfläche)
+# <a name="manage-devices-in-your-azure-iot-central-application"></a>Verwalten von Geräten in Ihrer Azure IoT Central-Anwendung
 
 In diesem Artikel wird beschrieben, wie Sie als Operator Gerätegruppen in Ihrer Azure IoT Central-Anwendung verwalten. Als Operator können Sie folgende Aktionen ausführen:
 

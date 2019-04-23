@@ -11,10 +11,10 @@ ms.custom: mvc
 ms.date: 04/10/2019
 ms.author: wesmc
 ms.openlocfilehash: 1299b627c70b23714ea48dbc62af36ca1f27290e
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59499902"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz und Lesen der Telemetriedaten aus der IoT Hub-Instanz mit einer Back-End-Anwendung (C)
@@ -202,4 +202,4 @@ In dieser Schnellstartanleitung haben Sie einen IoT-Hub eingerichtet, ein Gerät
 Weitere Informationen zum Entwickeln mit dem Azure IoT Hub C SDK finden Sie in der folgenden Schrittanleitung:
 
 > [!div class="nextstepaction"]
-> [Entwickeln mit dem Azure IoT Hub SDK für C](iot-hub-devguide-develop-for-constrained-devices.md)
+> [Entwickeln mit dem Azure IoT Hub C SDK](iot-hub-devguide-develop-for-constrained-devices.md)

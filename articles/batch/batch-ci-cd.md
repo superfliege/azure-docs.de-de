@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
 ms.openlocfilehash: 5b7c44d3ea3394ff728adfb9d9fd72293138fb2e
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59494643"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Verwenden von Azure Pipelines zum Erstellen und Bereitstellen von HPC-Lösungen
@@ -30,7 +30,7 @@ In diesem Beispiel erstellen wir eine Build- und Releaseepipeline, um eine Azure
 
 Um den Schritten in diesem Artikel folgen zu können, benötigen Sie eine Azure DevOps-Organisation und ein Teamprojekt.
 
-* [Erstellen einer Azure DevOps-Organisation](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops)
+* [Schnellstart: Erstellen einer Organisation](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops)
 * [Erstellen eines Projekts in Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/projects/create-project?view=azure-devops)
 
 ### <a name="source-control-for-your-environment"></a>Quellcodeverwaltung für Ihre Umgebung
@@ -51,7 +51,7 @@ Die in diesem Beispiel verwendete Codebasisstruktur ähnelt dem Folgenden:
 In diesem Abschnitt wird davon ausgegangen, dass Sie mit der Versionskontrolle und dem Entwerfen von Resource Manager-Vorlagen vertraut sind. Wenn Sie mit diesen Konzepten nicht vertraut sind, finden Sie auf den folgenden Seiten weitere Informationen.
 
 * [Was ist Quellcodeverwaltung?](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops)
-* [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Grundlegendes zur Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md)
 
 #### <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen
 

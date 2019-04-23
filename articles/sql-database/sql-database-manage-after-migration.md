@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 02/13/2019
 ms.openlocfilehash: a83bc6518409add8a0732e5a0b17ab46c36564af
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59358414"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Neuer DBA in der Cloud: Verwalten Ihrer einzelnen und in einem Pool zusammengefassten Datenbanken in Azure SQL-Datenbank
@@ -149,12 +149,12 @@ Die Verschlüsselung bietet wirkungsvollen Schutz vor unbefugten Zugriffen auf s
 Ruhende Daten in den Daten- und Protokolldateien auf einem Speichersubsystem sind in SQL-Datenbank standardmäßig per [Transparent Data Encryption [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) jederzeit vollständig verschlüsselt. Ihre Sicherungen werden ebenfalls verschlüsselt. Bei Verwendung von TDE sind keine Änderungen an den Anwendungen erforderlich, die auf diese Daten zugreifen. Wie der Name erkennen lässt, erfolgen die Verschlüsselung und Entschlüsselung transparent.
 Zum Schutz sensibler Daten, die aktiv oder ruhend sein können, bietet SQL-Datenbank eine Funktion namens [Always Encrypted (AE)](/sql/relational-databases/security/encryption/always-encrypted-database-engine). AE ist eine Form der clientseitigen Verschlüsselung, die sensible Spalten in Ihrer Datenbank verschlüsselt (sodass sie für Datenbankadministratoren und nicht autorisierte Benutzer als Chiffretext dargestellt werden). Der Server empfängt zunächst die verschlüsselten Daten. Der Schlüssel für die Always Encrypted-Verschlüsselung wird ebenfalls auf Clientseite gespeichert, damit die sensiblen Spalten nur von autorisierten Clients entschlüsselt werden können. Server- und Datenadministratoren haben keinen Zugriff auf die sensiblen Daten, da die Verschlüsselungsschlüssel auf dem Client gespeichert sind. AE wendet eine End-to-End-Verschlüsselung auf sensible Tabellenspalten an – von nicht autorisierten Clients bis zum physischen Datenträger. Da AE aktuell Übereinstimmungsvergleiche unterstützt, können DBAs im Rahmen ihrer SQL-Befehle weiterhin verschlüsselte Spalten abfragen. Diese Verschlüsselungsmethode kann mit einer Vielzahl von Schlüsselspeicheroptionen wie [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md), dem Windows-Zertifikatspeicher sowie lokalen Hardware-Sicherheitsmodulen verwendet werden.
 
-|**Merkmale**|**Always Encrypted**|**Transparent Data Encryption**|
+|**Merkmale**|**Always Encrypted**|**Transparente Datenverschlüsselung (TDE)**|
 |---|---|---|
 |**Umfang der Verschlüsselung**|Komplettlösung|Ruhende Daten|
 |**Datenbankserver kann auf sensible Daten zuzugreifen.**|Nein |Ja, da die Verschlüsselung ruhende Daten betrifft.|
 |**Zulässige T-SQL-Vorgänge**|Übereinstimmungsvergleich|Die gesamte T-SQL-Oberfläche ist verfügbar.|
-|**Erforderliche Änderungen zur Verwendung des Features**|Wenig|Sehr wenig|
+|**Sind zur Verwendung der Funktion Änderungen an Apps erforderlich?**|Wenig|Sehr wenig|
 |**Granularität der Verschlüsselung**|Spaltenebene|Datenbankebene|
 ||||
 
@@ -195,13 +195,13 @@ Das folgende Diagramm stellt eine Übersicht über die wichtigsten Schlüsselspe
 
 Der Netzwerkdatenverkehr zwischen Ihrer Organisation und SQL-Datenbank würde normalerweise über das öffentliche Netzwerk geroutet werden. Um diesen Pfad jedoch zu optimieren und sicherer zu gestalten, sollten Sie ExpressRoute in Betracht ziehen. Mit ExpressRoute lässt sich Ihr Unternehmensnetzwerk über eine private Verbindung praktisch auf die Azure-Plattform ausweiten. Auf diese Weise werden keine Daten über das öffentliche Internet übertragen. Zusätzlich erhöhen sich die Sicherheit und Zuverlässigkeit, und das Routing wird optimiert. So erzielen Sie geringere Netzwerklatenzen und höhere Geschwindigkeiten, als das öffentliche Internet normalerweise bietet. Wenn Sie beabsichtigen, einen erheblichen Datenblock zwischen Ihrer Organisation und Azure zu übertragen, bietet ExpressRoute u. U. Kostenvorteile. Für Verbindungen zwischen Ihrer Organisation und Azure stehen drei Konnektivitätsmodelle zur Auswahl:
 
-- [CloudExchange-Serverhousing](../expressroute/expressroute-connectivity-models.md#CloudExchange)
-- [Any-to-Any](../expressroute/expressroute-connectivity-models.md#IPVPN)
-- [Point-to-Point](../expressroute/expressroute-connectivity-models.md#Ethernet)
+- [Cloud Exchange und Colocation](../expressroute/expressroute-connectivity-models.md#CloudExchange)
+- [n:n-Konnektivität](../expressroute/expressroute-connectivity-models.md#IPVPN)
+- [Punkt-zu-Punkt-Konnektivität](../expressroute/expressroute-connectivity-models.md#Ethernet)
 
 Mit ExpressRoute können Sie Ihre kostenpflichtige Bandbreite ohne zusätzliche Gebühren bis auf das Zweifache steigern. Außerdem ist es möglich, die Verbindung regionsübergreifend mithilfe von Express Route zu konfigurieren. Eine Liste von ER-Konnektivitätsanbietern finden Sie unter: [ExpressRoute-Partner und -Peeringstandorte](../expressroute/expressroute-locations.md). In den folgenden Artikeln wird ExpressRoute ausführlicher beschrieben:
 
-- [Einführung in ExpressRoute](../expressroute/expressroute-introduction.md)
+- [Einführung in Express Route](../expressroute/expressroute-introduction.md)
 - [Voraussetzungen](../expressroute/expressroute-prerequisites.md)
 - [Workflows](../expressroute/expressroute-workflows.md)
 

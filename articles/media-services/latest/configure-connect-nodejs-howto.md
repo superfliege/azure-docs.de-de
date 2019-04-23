@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: fbea3daec3d9ccac81f246d3dc762fc80cb4b18a
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 40880a2c28ce28a671930ef8837082247e61e24b
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759208"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59495087"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>Verbinden mit der Media Services v3-API – Node.js
 
@@ -122,11 +122,10 @@ node index.js
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[.NET-Referenz](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
+- [Media Services-Konzepte](concepts-overview.md)
+- [NPM-Installation azure-arm-mediaservices](https://www.npmjs.com/package/azure-arm-mediaservices/)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Media Services-Konzepte](concepts-overview.md)
-- [Schnellstart]()
-- [Referenz zu Node.js](https://docs.microsoft.com/javascript/api/azure-arm-mediaservices/?view=azure-node-latest)
-- [NPM-Installation azure-arm-mediaservices](https://www.npmjs.com/package/azure-arm-mediaservices/)<br>
+Machen Sie sich mit der [Node.js-Referenzdokumentation](https://aka.ms/ams-v3-nodejs-ref) für Media Services sowie mit [Beispielen](https://github.com/Azure-Samples/media-services-v3-node-tutorials) vertraut, die die Verwendung der Media Services-API mit Node.js veranschaulichen.
+

@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
 ms.openlocfilehash: 6f856aeae74ea285cd6a0326fd225e454a1cbe43
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59265830"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>Grundlegendes zu Cloudyn-Kostenverwaltungsberichten
@@ -93,7 +93,7 @@ Jeder nummerierte Bereich in der vorherigen Abbildung wird in den folgenden Info
        - Wählen Sie ein, mehrere oder alle Konten aus. In Azure ist dies die GUID des Azure-Abonnements.
      - **Übergeordnetes Konto**
        - Wählen Sie ein, mehrere oder alle übergeordneten Konten aus.
-     - **Dienst**
+     - **Service**
        - Wählen Sie einen, mehrere oder alle Dienste aus.
      - **Anbieter**
        - Der Cloudanbieter, dem Objekte und Ausgaben zugeordnet sind.
@@ -118,7 +118,7 @@ Jeder nummerierte Bereich in der vorherigen Abbildung wird in den folgenden Info
        - Wählen Sie negative, positive oder beide Gebührentypen aus.
      - **Mandant**
        - Gibt an, ob ein Computer als dedizierter Computer ausgeführt wird.
-     - **Nutzungstyp**
+     - **Verwendungstyp**
        - Der Verwendungstyp kann auf einmalige Gebühr oder wiederkehrende Gebühren festgelegt werden.
 
 5. **Filter**

@@ -10,10 +10,10 @@ ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
 ms.openlocfilehash: db26380ef50fd7546f90ceccaec854587e4690c4
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59491057"
 ---
 # <a name="migrate-storage-resources-to-global-azure"></a>Migrieren von Speicherressourcen zu Azure weltweit
@@ -144,10 +144,10 @@ Erfahren Sie mehr über Tools, Techniken und Empfehlungen zum Migrieren von Ress
 - [Netzwerk](./germany-migration-networking.md)
 - [Web](./germany-migration-web.md)
 - [Datenbanken](./germany-migration-databases.md)
-- [Analytics](./germany-migration-analytics.md)
+- [Analyse](./germany-migration-analytics.md)
 - [IoT](./germany-migration-iot.md)
 - [Integration](./germany-migration-integration.md)
-- [Identity](./germany-migration-identity.md)
+- [Identität](./germany-migration-identity.md)
 - [Sicherheit](./germany-migration-security.md)
 - [Verwaltungstools](./germany-migration-management-tools.md)
 - [Medien](./germany-migration-media.md)

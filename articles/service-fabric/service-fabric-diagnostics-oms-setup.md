@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 02/20/2019
 ms.author: srrengar
 ms.openlocfilehash: ba4d25c749a1c1b99559ce4033fe90d671701d66
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59046477"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Einrichten von Azure Monitor-Protokollen für einen Cluster
@@ -132,5 +132,5 @@ Mithilfe von PowerShell können Sie zudem weitere Lösungen hinzufügen oder and
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Stellen Sie den Log Analytics-Agent auf Ihren Knoten bereit](service-fabric-diagnostics-oms-agent.md), um Leistungsindikatoren zu erfassen und Docker-Statistiken und -Protokolle für Ihre Container zu sammeln.
-* Machen Sie sich mit den Funktionen zur [Protokollsuche und -abfrage](../log-analytics/log-analytics-log-searches.md) in Azure Monitor-Protokolle vertraut.
+* Machen Sie sich mit den Features zur [Protokollsuche und -abfrage](../log-analytics/log-analytics-log-searches.md) in Azure Monitor-Protokollen vertraut.
 * [Erstellen benutzerdefinierter Ansichten in Azure Monitor-Protokollen mithilfe des Ansicht-Designers](../azure-monitor/platform/view-designer.md)

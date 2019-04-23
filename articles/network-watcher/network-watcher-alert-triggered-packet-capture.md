@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: c7bfd36bb4e36b10487edbbaa40421f067c9ed3e
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59048757"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Verwenden der Paketerfassung für die proaktive Netzwerküberwachung mit Warnungen und Azure Functions
@@ -81,7 +81,7 @@ Im ersten Schritt wird eine Azure-Funktion zum Verarbeiten der Warnung und Erste
     |**Abonnement**|[Ihr Abonnement] – das Abonnement, für das die Funktions-App erstellt werden soll||
     |**Ressourcengruppe**|PacketCaptureRG|Die Ressourcengruppe, in der sich die Funktions-App befinden soll|
     |**Hostingplan**|Verbrauchstarif| Die Art des Tarifs, der für Ihre Funktions-App verwendet wird. Zur Auswahl stehen „Verbrauchstarif“ und „Azure App Service-Tarif“. |
-    |**Standort**|USA (Mitte)| Die Region, in der Sie die Funktions-App erstellen möchten|
+    |**Location**|USA (Mitte)| Die Region, in der Sie die Funktions-App erstellen möchten|
     |**Speicherkonto**|{automatisch generiert}| Das Speicherkonto, das von Azure Functions für allgemeine Speicherzwecke benötigt wird.|
 
 3. Wählen Sie auf dem Blatt **PacketCaptureExample** der Funktionen-App die Option **Funktionen** > **Benutzerdefinierte Funktion** >**+** aus.
@@ -91,7 +91,7 @@ Im ersten Schritt wird eine Azure-Funktion zum Verarbeiten der Warnung und Erste
     |**Einstellung** | **Wert** | **Details** |
     |---|---|---|
     |**Szenario**|Experimentell|Art des Szenarios|
-    |**Benennen Ihrer Funktion**|AlertPacketCapturePowerShell|Name der Funktion|
+    |**Name Ihrer Funktion**|AlertPacketCapturePowerShell|Name der Funktion|
     |**Autorisierungsstufe**|Funktion|Autorisierungsebene für die Funktion|
 
 ![Funktionsbeispiel][functions1]
@@ -346,8 +346,8 @@ Navigieren Sie zu einem vorhandenen virtuellen Computer, und fügen Sie eine War
 
   |**Einstellung** | **Wert** | **Details** |
   |---|---|---|
-  |**NAME**|TCP_Segments_Sent_Exceeded|Der Name der Warnungsregel.|
-  |**BESCHREIBUNG**|Schwellenwertüberschreitung durch gesendete TCP-Segmente|Die Beschreibung für die Warnungsregel.|
+  |**Name**|TCP_Segments_Sent_Exceeded|Der Name der Warnungsregel.|
+  |**Beschreibung**|Schwellenwertüberschreitung durch gesendete TCP-Segmente|Die Beschreibung für die Warnungsregel.|
   |**Metrik**|Gesendete TCP-Segmente| Die Metrik zur Auslösung der Warnung. |
   |**Bedingung**|Größer als| Die Bedingung, die bei der Auswertung der Metrik verwendet werden soll.|
   |**Schwellenwert**|100| Der Wert der Metrik, die die Warnung auslöst. Dieser Wert sollte auf einen gültigen Wert für Ihre Umgebung festgelegt werden.|

@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/16/2018
 ms.openlocfilehash: fdeae2c6b598feee0abc57c80ea32f2108504330
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59046460"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-python-library"></a>Schnellstart: Erfassen von Daten mit der Azure Data Explorer-Bibliothek für Python
@@ -24,7 +24,7 @@ Dieser Schnellstart ist auch als [Azure-Notebook](https://notebooks.azure.com/Ma
 
 * Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-* [Ein Cluster und eine Datenbank.](create-cluster-database-portal.md)
+* [Ein Cluster und eine Datenbank](create-cluster-database-portal.md)
 
 * [Python](https://www.python.org/downloads/) auf dem Entwicklungscomputer
 

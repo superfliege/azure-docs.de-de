@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
-ms.openlocfilehash: 91d1369b9197f6ef941d981aa9cf7539b4554d0c
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 67a918b227ad3b33a2f63b17f86b94f36fbc9fa3
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065799"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679124"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Installieren des lokalen Datengateways für Azure Logic Apps
 
@@ -435,26 +435,6 @@ Führen Sie die folgenden Schritte aus, um zu den Ereignisprotokollen für das G
 
    ![Anzeigen von Ereignisprotokollen für das Gateway](./media/logic-apps-gateway-install/event-viewer.png)
 
-### <a name="telemetry"></a>Telemetrie
-
-Sie können Telemetriedaten aktivieren und erfassen, um weitere Überwachungs- und Problembehandlungsinformationen zu erhalten. 
-
-1. Navigieren Sie zum Speicherort für den Client des lokalen Datengateways. In der Regel befindet er sich hier: ```C:\Program Files\On-premises data gateway```
-
-   Öffnen Sie zum Ermitteln des Clientspeicherorts andernfalls die Dienstkonsole auf dem gleichen Computer, suchen Sie **On-premises data gateway service** (Dienst „Lokales Datengateway“), und sehen Sie sich die Eigenschaft **Path to executable** (Pfad zur ausführbaren Datei) an.
-
-2. Öffnen Sie die folgende *Konfigurationsdatei*: **Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config**
-
-3. Ändern Sie den Wert **SendTelemetry** in **true**:
-
-   ```html
-   <setting name="SendTelemetry" serializeAs="String">
-      <value>true</value>
-   </setting>
-   ```
-
-4. Speichern Sie Ihre Änderungen, und starten Sie dann den Windows-Dienst neu.
-
 ### <a name="review-slow-query-performance"></a>Überprüfen bei beeinträchtigter Abfrageleistung
 
 Falls Abfragen über das Gateway langsam ausgeführt werden, können Sie zusätzliche Protokolle aktivieren, die Abfragen und ihre Dauer ausgeben. Anhand dieser Protokolle können Sie unter Umständen die Abfragen mit beeinträchtigter Leistung oder langer Ausführungsdauer ermitteln. Um die Abfrageleistung zu verbessern, müssen Sie möglicherweise Ihre Datenquelle ändern und beispielsweise Indizes für SQL Server-Abfragen anpassen.
@@ -526,7 +506,7 @@ Führen Sie die folgenden Schritte aus, um die Dauer einer Abfrage zu ermitteln:
 
 ### <a name="trace-traffic-with-fiddler"></a>Überwachen des Datenverkehrs mit Fiddler
 
-[Fiddler](http://www.telerik.com/fiddler) ist ein kostenloses Tool von Telerik, das HTTP-Datenverkehr überwacht. Sie können diesen Datenverkehr mit dem Power BI-Dienst auf dem Clientcomputer überprüfen. Für den Dienst werden ggf. Fehler und andere zugehörige Informationen angezeigt.
+[Fiddler](https://www.telerik.com/fiddler) ist ein kostenloses Tool von Telerik, das HTTP-Datenverkehr überwacht. Sie können diesen Datenverkehr mit dem Power BI-Dienst auf dem Clientcomputer überprüfen. Für den Dienst werden ggf. Fehler und andere zugehörige Informationen angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
     

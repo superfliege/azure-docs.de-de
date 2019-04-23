@@ -14,12 +14,12 @@ ms.workload: multiple
 ms.date: 01/15/2019
 ms.author: jgao
 ms.custom: include file
-ms.openlocfilehash: 11bcfa1b4719d6def5bfc4a6a189bd2b58896b5b
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 8c5347b412475b86222acabb76b88baaceb7645a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54334317"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59291701"
 ---
 ## <a name="quickstarts-and-tutorials"></a>Schnellstartanleitungen und Tutorials
 
@@ -39,7 +39,6 @@ Verwenden Sie die folgenden Schnellstartanleitungen und Tutorials, um zu erfahre
     |------|-----|
     |[Nutzen der Vorlagenreferenz](../articles/azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md)|Enthält Informationen zur Verwendung der Vorlagenreferenz zum Entwickeln von Vorlagen. Im Tutorial ermitteln Sie das Speicherkontoschema und verwenden die Informationen zum Erstellen eines verschlüsselten Speicherkontos.|
     |[Erstellen mehrerer Instanzen](../articles/azure-resource-manager/resource-manager-tutorial-create-multiple-instances.md)|Enthält Informationen zum Erstellen mehrerer Instanzen von Azure-Ressourcen. Im Tutorial erstellen Sie mehrere Instanzen des Speicherkontos.|
-    |[Verschieben von Ressourcen](../articles/azure-resource-manager/resource-manager-tutorial-move-resources.md)|Verschieben Sie Ressourcen aus einer Ressourcengruppe in eine andere Ressourcengruppe. In diesem Tutorial führen Sie eine vorhandene Vorlage zum Erstellen von zwei Ressourcengruppen und eines Speicherkontos aus, und dann führen Sie ein Azure PowerShell-Cmdlet aus, um das Speicherkonto in eine andere Ressourcengruppe zu verschieben.|
     |[Festlegen der Reihenfolge für die Ressourcenbereitstellung](../articles/azure-resource-manager/resource-manager-tutorial-create-templates-with-dependent-resources.md)|Enthält Informationen zu Ressourcenabhängigkeiten. In diesem Tutorial erstellen Sie ein virtuelles Netzwerk, einen virtuellen Computer und die abhängigen Azure-Ressourcen. Sie erfahren, wie die Abhängigkeiten definiert werden.|
     |[Verwenden von Bedingungen](../articles/azure-resource-manager/resource-manager-tutorial-use-conditions.md)|Enthält Informationen zur Bereitstellung von Ressourcen basierend auf einigen Parameterwerten. In diesem Tutorial definieren Sie eine Vorlage, um ein neues Speicherkonto zu erstellen, oder verwenden ein vorhandenes Speicherkonto basierend auf dem Wert eines Parameters.|
     |[Integrieren von Key Vault](../articles/azure-resource-manager/resource-manager-tutorial-use-key-vault.md)|Enthält Informationen zum Abrufen von Geheimnissen/Kennwörtern aus Azure Key Vault. In diesem Tutorial erstellen Sie einen virtuellen Computer.  Das Administratorkennwort für den virtuellen Computer wird aus einer Key Vault-Instanz abgerufen.|
