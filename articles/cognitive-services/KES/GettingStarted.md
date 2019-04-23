@@ -10,12 +10,12 @@ ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: e2678200e2f8c55111e53ab0a341804fd17623a3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 00c5ed3e3ea5c083f727d06c2ed305fe35ed03db
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994953"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523323"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Erste Schritte mit dem Knowledge Exploration Service
 
@@ -252,7 +252,7 @@ Wenn Sie den Clouddienst erstellt haben, können Sie [`kes.exe deploy_service`](
 
 [Swappen](../../../articles/cloud-services/cloud-services-nodejs-stage-application.md) Sie die Inhalte von Staging- und Produktionsslot, sodass Livedatenverkehr jetzt zum neu bereitgestellten Dienst weitergeleitet wird. Sie können diesen Vorgang wiederholen, wenn Sie eine aktualisierte Version des Diensts mit neuen Daten bereitstellen. Wie bei allen anderen Azure-Clouddiensten können Sie optional das Azure-Portal verwenden, um die [automatische Skalierung](../../../articles/cloud-services/cloud-services-how-to-scale-portal.md) zu konfigurieren.
 
-In diesem Beispiel stellen Sie den *Academic*-Index dem Stagingslot eines vorhandenen Clouddiensts mit *<vm_size >* VMs bereit. Verwenden Sie den folgenden Befehl:
+In diesem Beispiel stellen Sie den *Academic*-Index dem Stagingslot eines vorhandenen Clouddiensts mit *\<vm_size>* VMs bereit. Verwenden Sie den folgenden Befehl:
 
 `kes.exe deploy_service http://<account>.blob.core.windows.net/<container>/Academic.grammar http://<account>.blob.core.windows.net/<container>/Academic.index <serviceName> <vm_size> --slot Staging`
 

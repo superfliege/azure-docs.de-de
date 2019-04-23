@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: d399e83dbd1324827cc395cbf7834672baffa791
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 2110b1ec7d5d6b317341855ff19acf7975733e71
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59275843"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617868"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>Tutorial: Azure Active Directory-Integration mit Percolate
 
@@ -101,7 +101,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD 
 
     ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-4. Wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten, müssen Sie im Abschnitt **Grundlegende SAML-Konfiguration** keine Schritte ausführen, da die App bereits vorab in Azure integriert wurde.
+4. Wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten, müssen Sie im Abschnitt **Grundlegende SAML-Konfiguration** keine Schritte ausführen, da die App bereits vorab in Azure integriert wurde.
 
     ![SSO-Informationen zur Domäne und zu den URLs für Percolate](common/preintegrated.png)
 
@@ -141,7 +141,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD 
 
     b. Fügen Sie in das Textfeld **Entity ID** (Entitäts-ID) den Wert für **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    c. Öffnen Sie im Windows-Editor das Base64-codierte Zertifikat, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt, und fügen Sie ihn anschließend in das Feld  **x509 certificates** (X509-Zertifikate) ein.
+    c. Öffnen Sie im Windows-Editor das Base64-codierte Zertifikat, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt, und fügen Sie ihn anschließend in das Feld **x509 certificates** (X509-Zertifikate) ein.
 
     d. Geben Sie im Textfeld **Email attribute** (E-Mail-Attribut) die Zeichenfolge **emailaddress** ein.
 
@@ -219,9 +219,9 @@ Damit sich Azure AD-Benutzer bei Percolate anmelden können, müssen sie in Per
 
     ![Configure single sign-on](./media/percolate-tutorial/configure04.png)
 
-    a. Geben Sie im Textfeld  **Email** (E-Mail-Adresse) die E-Mail-Adresse des Benutzers ein (beispielsweise brittasimon@contoso.com).
+    a. Geben Sie im Textfeld **Email** (E-Mail-Adresse) die E-Mail-Adresse des Benutzers ein, z.B. brittasimon@contoso.com.
 
-    b. Geben Sie im Textfeld  **Fullname** (Vollständiger Name) den Namen des Benutzers ein (beispielsweise **Brittasimon**).
+    b. Geben Sie im Textfeld **Fullname** (Vollständiger Name) den Namen des Benutzers ein, z. B. **Brittasimon**.
 
     c. Klicken Sie auf **Create users** (Benutzer erstellen).
 

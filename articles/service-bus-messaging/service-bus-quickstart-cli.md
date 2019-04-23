@@ -7,36 +7,32 @@ manager: timlt
 ms.service: service-bus-messaging
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 02/25/2019
+ms.date: 04/10/2019
 ms.author: spelluru
-ms.openlocfilehash: b40cd130039f7d55b69198b4be4af908dedbe8b7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eb19833251fc9ee08a12aaf6ffcef55d59cea5d6
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076886"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500633"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Schnellstart: Erstellen einer Service Bus-Warteschlange mithilfe der Azure CLI
-
-Microsoft Azure Service Bus ist ein Nachrichtenbroker für die Unternehmensintegration, der sicheres Messaging und Zuverlässigkeit bietet. Ein typisches Service Bus-Szenario umfasst normalerweise die Entkopplung von zwei oder mehr Anwendungen (die Anwendungen müssen nicht gleichzeitig online sein), Diensten oder Prozessen, die Übertragung von Zustands- oder Datenänderungen und das Senden von Nachrichten zwischen den Anwendungen. 
-
-Beispielsweise kann es sein, dass ein Einzelhandelsunternehmen seine Point-of-Sale-Daten an ein Backoffice oder regionales Verteilungszentrum sendet, um den Bestand auffüllen bzw. aktualisieren zu lassen. In diesem Fall sendet die Client-App Nachrichten an eine Service Bus-Warteschlange und empfängt Nachrichten von dort:
-
-![queue](./media/service-bus-quickstart-cli/quick-start-queue.png)
-
 In dieser Schnellstartanleitung wird beschrieben, wie Sie Nachrichten mit Service Bus senden und empfangen, indem Sie die Azure CLI und die Service Bus-Java-Bibliothek verwenden. Falls Sie an technischeren Details interessiert sind, können Sie auch die [Beschreibung](#understand-the-sample-code) der wichtigen Elemente des Beispielcodes lesen.
 
+[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+
+## <a name="prerequisites"></a>Voraussetzungen
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][] erstellen, bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
+Wenn Sie zum Starten von Cloud Shell auf die Schaltfläche **Ausprobieren** klicken, melden Sie sich mit Ihren Anmeldeinformationen bei Azure an. 
 
-Klicken Sie im Menü oben rechts im Azure-Portal auf die Schaltfläche „Cloud Shell“, und wählen Sie in der Dropdownliste **Umgebung auswählen** die Option **Bash**. 
+Wenn Sie Cloud Shell in Ihrem Webbrowser entweder direkt oder im Azure-Portal gestartet haben, wechseln Sie zu **Bash**, sofern **PowerShell** links oben in Cloud Shell angezeigt wird. 
 
 ## <a name="use-the-azure-cli-to-create-resources"></a>Verwenden der Azure CLI zum Erstellen von Ressourcen
-
-Führen Sie in Cloud Shell an der Bash-Eingabeaufforderung die folgenden Befehle aus, um Service Bus-Ressourcen bereitzustellen. Achten Sie darauf, dass Sie alle Platzhalter durch die entsprechenden Werte ersetzen: Das Java-Beispielprogramm erwartet, dass der Warteschlangenname „BasicQueue“ lautet. Ändern Sie ihn daher nicht. 
+Führen Sie in Cloud Shell an der Bash-Eingabeaufforderung die folgenden Befehle aus, um Service Bus-Ressourcen bereitzustellen. Achten Sie darauf, dass Sie alle Platzhalter durch die entsprechenden Werte ersetzen: Das Java-Beispielprogramm erwartet, dass der Warteschlangenname „BasicQueue“ lautet. Ändern Sie ihn daher nicht. Sie können Befehle nacheinander kopieren und einfügen, damit Sie die Werte ersetzen können, bevor Sie sie ausführen. 
 
 ```azurecli-interactive
 # Create a resource group
@@ -373,10 +369,10 @@ void registerReceiver(QueueClient queueClient, ExecutorService executorService) 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie einen Service Bus-Namespace und weitere erforderliche Ressourcen zum Senden und Empfangen von Nachrichten für eine Warteschlange erstellt. Weitere Informationen zum Schreiben von Code für das Senden und Empfangen von Nachrichten erhalten Sie im folgenden Tutorial zu Service Bus:
+In diesem Artikel haben Sie einen Service Bus-Namespace und weitere erforderliche Ressourcen zum Senden und Empfangen von Nachrichten für eine Warteschlange erstellt. Weitere Informationen zum Schreiben von Code und Senden und Empfangen von Nachrichten finden Sie in den Tutorials im Abschnitt **Senden und Empfangen von Nachrichten**. 
 
 > [!div class="nextstepaction"]
-> [Tutorial: Aktualisieren des Bestands über die CLI und mit Themen/Abonnements](./service-bus-tutorial-topics-subscriptions-cli.md)
+> [Senden und Empfangen von Nachrichten](service-bus-dotnet-get-started-with-queues.md)
 
 [kostenloses Konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name

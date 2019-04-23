@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: d8e249a788d80108d46a61f316b795ab04e541a2
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: e72c4b0cf8f77a057ff07f8bce7acae4e834e28d
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203516"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59502710"
 ---
 ## <a name="setting-up-your-ios-application"></a>Einrichten Ihrer iOS-Anwendung
 
@@ -61,7 +61,7 @@ Kopieren den nachstehenden Text, und fügen Sie diesen ein. Dieser Befehl ruft A
 carthage update
 ```
 
-> Der oben beschriebene Prozess dient zum Herunterladen und Erstellen der Microsoft Authentication Library (MSAL). MSAL kümmert sich um das Erfassen, Zwischenspeichern und Aktualisieren von Benutzertoken für den Zugriff auf APIs, die von Azure Active Directory v2.0 geschützt werden.
+> Der oben beschriebene Prozess dient zum Herunterladen und Erstellen der Microsoft Authentication Library (MSAL). Die MSAL kümmert sich um das Erfassen, Zwischenspeichern und Aktualisieren von Benutzertoken für den Zugriff auf APIs, die von Microsoft Identity Platform geschützt werden.
 
 ## <a name="add-the-msal-framework-to-your-application"></a>Hinzufügen des MSAL-Frameworks zu Ihrer Anwendung
 

@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/08/2019
+ms.date: 04/15/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 55207e1eb8fe1b88df7f9bfb84a1da505d0e0252
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 89c83ed6d02a60978bd54fb97d37063e34f6c0c7
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332216"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578849"
 ---
 # <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Tutorial: Verwenden von Anwendungen in Azure Blockchain Workbench
 
@@ -40,9 +40,9 @@ Sie lernen Folgendes:
 
 Sie müssen sich als Mitglied der Blockchain Workbench anmelden. Wenn keine Anwendungen aufgelistet sind, sind Sie Mitglied der Blockchain Workbench, aber nicht Mitglied einer Anwendung. Der Administrator der Blockchain Workbench kann den Anwendungen Mitglieder zuordnen.
 
-## <a name="create-new-contract"></a>Erstellen eines neuen Vertrags 
+## <a name="create-new-contract"></a>Erstellen eines neuen Vertrags
 
-Um einen neuen Vertrag zu erstellen, müssen Sie ein Mitglied sein, das als ein **Initiator** des Vertrags angegeben wurde. Informationen zum Definieren der Anwendungsrollen und Initiatoren für den Vertrag finden Sie in der [Übersicht über Workflows in der Konfiguration](configuration.md#workflows). Informationen zum Zuweisen von Mitgliedern zu Anwendungsrollen finden Sie unter [Hinzufügen eines Mitglieds zu einer Anwendung](manage-users.md#add-member-to-application).
+Um einen neuen Vertrag zu erstellen, müssen Sie ein Mitglied sein, das als ein **Initiator** eines Vertrags angegeben wurde. Informationen zum Definieren der Anwendungsrollen und Initiatoren für den Vertrag finden Sie in der [Übersicht über Workflows in der Konfiguration](configuration.md#workflows). Informationen zum Zuweisen von Mitgliedern zu Anwendungsrollen finden Sie unter [Hinzufügen eines Mitglieds zu einer Anwendung](manage-users.md#add-member-to-application).
 
 1. Wählen Sie im Abschnitt der Blockchain Workbench-Anwendung die Anwendungskachel aus, die den zu erstellenden Vertrag enthält. Eine Liste der aktiven Verträge wird angezeigt.
 

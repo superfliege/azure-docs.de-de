@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 9b905a81751ce5f4de4a4efbb9ff4c328269fe34
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 288ad14110bd446955d6cec7439bfa40a750276c
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904847"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521644"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>Tutorial: Bereitstellen von HSMs in einem vorhandenen virtuellen Netzwerk mithilfe von PowerShell
 
@@ -78,12 +78,12 @@ Ein HSM-Gerät wird im virtuellen Netzwerk eines Kunden bereitgestellt. Dies imp
 
 Wenn Sie über die Dateien verfügen, müssen Sie die Parameterdatei bearbeiten, um Ihre bevorzugten Ressourcennamen einzufügen. Dazu müssen Zeilen bearbeitet werden, die Folgendes enthalten: "value":""
 
-- `namingInfix` Präfix für Namen von HSM-Ressourcen
-- `ExistingVirtualNetworkName` Name des für die HSMs verwendeten virtuellen Netzwerks
-- `DedicatedHsmResourceName1` Name der HSM-Ressource im Datencenter 1
-- `DedicatedHsmResourceName2` Name der HSM-Ressource im Datencenter 2
-- `hsmSubnetRange` Subnetz-IP-Adressbereich für HSMs
-- `ERSubnetRange` Subnetz-IP-Adressbereich für das VNET-Gateway
+- `namingInfix`: Präfix für Namen von HSM-Ressourcen
+- `ExistingVirtualNetworkName`: Name des für die HSMs verwendeten virtuellen Netzwerks
+- `DedicatedHsmResourceName1`: Name der HSM-Ressource im Rechenzentrum 1
+- `DedicatedHsmResourceName2`: Name der HSM-Ressource im Rechenzentrum 2
+- `hsmSubnetRange`: Subnetz-IP-Adressbereich für HSMs
+- `ERSubnetRange`: Subnetz-IP-Adressbereich für das VNET-Gateway
 
 Beispiel für diese Änderungen:
 
@@ -217,7 +217,7 @@ Die Verbindung mit dem virtuellen Computer wird mithilfe des ssh-Tools hergestel
 `ssh adminuser@hsmlinuxvm.westus.cloudapp.azure.com`
 
 Als Kennwort muss das Kennwort aus der Parameterdatei verwendet werden.
-Nach der Anmeldung bei dem virtuellen Linux-Computer können Sie sich unter Verwendung der privaten IP-Adresse, die im Portal für die Ressource „<prefix>hsm_vnic“ angegeben ist, beim HSM anmelden.
+Nach der Anmeldung bei dem virtuellen Linux-Computer können Sie sich unter Verwendung der privaten IP-Adresse, die im Portal für die Ressource „\<Präfix>hsm_vnic“ angegeben ist, beim HSM anmelden.
 
 ```powershell
 

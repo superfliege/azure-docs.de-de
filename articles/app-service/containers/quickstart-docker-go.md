@@ -9,17 +9,17 @@ ms.assetid: b97bd4e6-dff0-4976-ac20-d5c109a559a8
 ms.service: app-service
 ms.devlang: go
 ms.topic: quickstart
-ms.date: 01/17/2018
+ms.date: 03/28/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 3335163c15319e39858003032ae7113c9c26a3fd
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 88c9996ce3f2d89ae58881c913f6bd4e549b5814
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438579"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547303"
 ---
-# <a name="deploy-a-dockergo-web-app-in-web-app-for-containers"></a>Bereitstellen einer Docker/Go-Web-App über die Web-App für Container
+# <a name="run-a-custom-linux-container-in-azure-app-service"></a>Ausführen einen benutzerdefinierten Linux-Containers in Azure App Service
 
 Bei [App Service Linux](app-service-linux-intro.md) werden vordefinierte Anwendungsstapel unter Linux mit Unterstützung für verschiedene Sprachen bereitgestellt, z.B. .NET, PHP, Node.js und andere. Sie können auch ein benutzerdefiniertes Docker-Image verwenden, um Ihre Web-App in einem Anwendungsstapel auszuführen, der nicht bereits in Azure definiert ist. In diesem Schnellstart wird erläutert, wie Sie eine Web-App erstellen und ein Go-Image per Docker Hub bereitstellen. Sie erstellen die Web-App mithilfe der [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
 
@@ -75,4 +75,10 @@ http://<app_name>.azurewebsites.net/hello
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Verwenden eines benutzerdefinierten Docker-Images](tutorial-custom-docker-image.md)
+> [Tutorial: Bereitstellen aus privatem Containerrepository](tutorial-custom-docker-image.md)
+
+> [!div class="nextstepaction"]
+> [Konfigurieren eines benutzerdefinierten Containers](configure-custom-container.md)
+
+> [!div class="nextstepaction"]
+> [Tutorial: Wordpress-App mit mehreren Containern](tutorial-multi-container-app.md)

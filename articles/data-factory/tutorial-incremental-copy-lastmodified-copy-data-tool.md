@@ -1,6 +1,6 @@
 ---
-title: Verwenden von Azure Data Factory zum inkrementellen Kopieren neuer und geänderter Dateien nur auf Basis von LastModifiedDate | Microsoft-Dokumentation
-description: Erstellen Sie eine Azure Data Factory, und verwenden Sie dann das Tool zum Kopieren von Daten, um neue Dateien nur auf Basis von LastModifiedDate inkrementell zu laden.
+title: Inkrementelles Kopieren neuer und geänderter Dateien auf Basis von LastModifiedDate und mithilfe des Tools zum Kopieren von Daten | Microsoft-Dokumentation
+description: Erstellen Sie eine Azure Data Factory, und verwenden Sie dann das Tool zum Kopieren von Daten, um neue Dateien auf Basis von „LastModifiedDate“ inkrementell zu laden.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
-ms.openlocfilehash: d79b44d0123d64d6280939767e5df7b5f64a5fcb
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 8308190e0e68365343fb50ca33f9bea75c3e4e66
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445952"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544482"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Inkrementelles Kopieren neuer und geänderter Dateien auf Basis von LastModifiedDate und mithilfe des Tools zum Kopieren von Daten
 
-In diesem Tutorial verwenden Sie das Azure-Portal, um eine Data Factory zu erstellen. Anschließend verwenden Sie das Tool zum Kopieren von Daten, um eine Pipeline zu erstellen, die neue und geänderte Dateien nur auf Basis von LastModifiedDate inkrementell von einem in den anderen Azure-Blobspeicher kopiert. 
+In diesem Tutorial verwenden Sie das Azure-Portal, um eine Data Factory zu erstellen. Anschließend verwenden Sie das Tool zum Kopieren von Daten, um eine Pipeline zu erstellen, die neue und geänderte Dateien nur auf Basis von **LastModifiedDate** inkrementell von einem in den anderen Azure-Blobspeicher kopiert.
 
 > [!NOTE]
 > Falls Sie noch nicht mit Azure Data Factory vertraut sind, ist es ratsam, den Artikel [Einführung in Azure Data Factory](introduction.md) zu lesen.
 
-In diesem Tutorial führen Sie die folgenden Schritte aus:
+In diesem Tutorial führen Sie die folgenden Aufgaben aus:
 
 > [!div class="checklist"]
 > * Erstellen einer Data Factory.
@@ -43,9 +43,9 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 
 Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
 
-1. Erstellen Sie einen Container mit dem Namen **source** (Quelle). Sie können für diese Aufgaben verschiedene Tools verwenden, etwa [Azure Storage-Explorer](https://storageexplorer.com/).
+1. Erstellen Sie einen Container mit dem Namen **source** (Quelle). Sie können für diese Aufgabe verschiedene Tools verwenden, z. B. [Azure Storage-Explorer](https://storageexplorer.com/).
 
-2. Erstellen Sie einen Container mit dem Namen **destination** (Ziel). Sie können für diese Aufgaben verschiedene Tools verwenden, etwa [Azure Storage-Explorer](https://storageexplorer.com/).
+2. Erstellen Sie einen Container mit dem Namen **destination** (Ziel). 
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
@@ -62,30 +62,30 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
    ![Fehlermeldung zu neuer Data Factory](./media/tutorial-copy-data-tool/name-not-available-error.png)
 
    Wenn eine Fehlermeldung zum Namenswert angezeigt wird, geben Sie einen anderen Namen für die Data Factory ein. Verwenden Sie beispielsweise den Namen _**IhrName**_**ADFTutorialDataFactory**. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](naming-rules.md).
-3. Wählen Sie das **Azure-Abonnement** aus, in dem die neue Data Factory erstellt werden soll. 
+3. Wählen Sie das **Azure-Abonnement** aus, in dem Sie die neue Data Factory erstellen werden. 
 4. Führen Sie unter **Ressourcengruppe** einen der folgenden Schritte aus:
      
-    a. Wählen Sie die Option **Use existing**(Vorhandene verwenden) und dann in der Dropdownliste eine vorhandene Ressourcengruppe.
+    * Wählen Sie die Option **Use existing**(Vorhandene verwenden) und dann in der Dropdownliste eine vorhandene Ressourcengruppe.
 
-    b. Wählen Sie **Neu erstellen**, und geben Sie den Namen einer Ressourcengruppe ein. 
+    * Wählen Sie **Neu erstellen**, und geben Sie den Namen einer Ressourcengruppe ein. 
          
     Weitere Informationen zu Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md).
 
-5. Wählen Sie unter **Version** die Option **V2**.
-6. Wählen Sie unter **Standort** den Standort für die Data Factory aus. In der Dropdownliste werden nur unterstützte Standorte angezeigt. Die Datenspeicher (etwa Azure Storage und SQL-Datenbank) und Computeeinheiten (etwa Azure HDInsight), die von der Data Factory genutzt werden, können sich an anderen Standorten und in anderen Regionen befinden.
+5. Wählen Sie unter **Version** die Option **V2** aus.
+6. Wählen Sie unter **Standort** den Standort für die Data Factory aus. In der Dropdownliste werden nur unterstützte Standorte angezeigt. Die Datenspeicher (z. B. Azure Storage und SQL-Datenbank) und Computeeinheiten (z. B. Azure HDInsight), die von der Data Factory genutzt werden, können sich an anderen Standorten und in anderen Regionen befinden.
 7. Wählen Sie die Option **An Dashboard anheften** aus. 
 8. Klicken Sie auf **Erstellen**.
-9. Auf dem Dashboard wird auf der Kachel **Deploying Data Factory** (Data Factory wird bereitgestellt...) der Prozessstatus angezeigt.
+9. Verweisen Sie auf dem Dashboard auf die Kachel **Deploying Data Factory** (Data Factory wird bereitgestellt...), um den Prozessstatus anzuzeigen.
 
     ![Kachel „Deploying Data Factory“ (Data Factory wird bereitgestellt...)](media/tutorial-copy-data-tool/deploying-data-factory.png)
 10. Nach Abschluss der Erstellung wird die Startseite von **Data Factory** angezeigt.
    
     ![Data Factory-Startseite](./media/tutorial-copy-data-tool/data-factory-home-page.png)
-11. Klicken Sie auf die Kachel **Erstellen und überwachen**, um die Azure Data Factory-Benutzeroberfläche (User Interface, UI) auf einer separaten Registerkarte zu starten. 
+11. Klicken Sie auf die Kachel **Erstellen und überwachen**, um die Azure Data Factory-Benutzeroberfläche (User Interface, UI) auf einer separaten Registerkarte zu öffnen. 
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>Erstellen einer Pipeline mithilfe des Tools zum Kopieren von Daten
 
-1. Klicken Sie auf der Seite **Let's get started** (Erste Schritte) auf **Copy Data** (Daten kopieren), um das Tool zum Kopieren von Daten zu starten. 
+1. Klicken Sie auf der Seite **Let's get started** (Erste Schritte) auf **Copy Data** (Daten kopieren), um das Tool zum Kopieren von Daten zu öffnen. 
 
    ![Kachel für das Tool zum Kopieren von Daten](./media/tutorial-copy-data-tool/copy-data-tool-tile.png)
    
@@ -93,7 +93,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
 
     a. Geben Sie unter **Task name** (Aufgabenname) **DeltaCopyFromBlobPipeline** ein.
 
-    b. Wählen Sie unter **Task cadence or Task schedule** (Aufgabenhäufigkeit oder Aufgabenzeitplan) die Option **Run regularly on schedule** (Nach Zeitplan regelmäßig ausführen) aus.
+    b. Wählen Sie unter **Task cadence** (Aufgabenhäufigkeit) oder **Task schedule** (Aufgabenzeitplan) die Option **Run regularly on schedule** (Nach Zeitplan regelmäßig ausführen) aus.
 
     c. Wählen Sie unter **Trigger type** (Triggertyp) die Option **Tumbling Window** (Rollierendes Fenster) aus.
     
@@ -107,25 +107,25 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
     
 3. Führen Sie auf der Seite **Quelldatenspeicher** die folgenden Schritte aus:
 
-    a. Klicken Sie auf **+ Create new connection** (+ Neue Verbindung erstellen), um eine Verbindung hinzuzufügen.
+    a. Wählen Sie **+ Create new connection** (+ Neue Verbindung erstellen) aus, um eine Verbindung hinzuzufügen.
     
     ![Seite „Quelldatenspeicher“](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page.png)
 
-    b. Wählen Sie im Katalog **Azure Blob Storage** aus, und klicken Sie dann auf **Continue** (Weiter).
+    b. Wählen Sie im Katalog **Azure Blob Storage** aus, und klicken Sie dann auf **Fortsetzen**.
     
     ![Seite „Quelldatenspeicher“](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-select-blob.png)
 
-    c. Wählen Sie auf der Seite **New Linked Service** (Neuer verknüpfter Dienst) in der Liste **Storage account name** (Speicherkontoname) Ihr Speicherkonto aus, und klicken Sie dann auf **Finish** (Fertig stellen).
+    c. Wählen Sie auf der Seite **New Linked Service** (Neuer verknüpfter Dienst) in der Liste **Speicherkontoname** Ihr Speicherkonto aus, und klicken Sie auf **Fertig stellen**.
     
     ![Seite „Quelldatenspeicher“](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-linkedservice.png)
     
-    d. Wählen Sie den neu erstellten verknüpften Dienst aus, und klicken Sie dann auf **Next** (Weiter). 
+    d. Wählen Sie den neu erstellten verknüpften Dienst und dann **Next** (Weiter) aus. 
     
    ![Seite „Quelldatenspeicher“](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/source-data-store-page-select-linkedservice.png)
 
 4. Führen Sie auf der Seite **Choose the input file or folder** (Eingabedatei oder -ordner auswählen) die folgenden Schritte aus:
     
-    a. Suchen Sie nach dem Ordner **source** (Quelle), wählen Sie diesen aus, und klicken Sie anschließend auf **Choose** (Auswählen).
+    a. Suchen Sie nach dem Ordner **source**, wählen Sie ihn aus, und klicken Sie anschließend auf **Choose** (Wählen).
     
     ![Auswählen der Eingabedatei bzw. des Eingabeordners](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-input-file-folder.png)
     
@@ -133,17 +133,17 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
     
     ![Auswählen der Eingabedatei bzw. des Eingabeordners](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-loading-behavior.png)
     
-    c. Aktivieren Sie das Kontrollkästchen bei **Binary copy** (Binärkopie), und klicken Sie auf **Next** (Weiter).
+    c. Aktivieren Sie das Kontrollkästchen **Binary copy** (Binärkopie), und wählen Sie **Next** (Weiter) aus.
     
      ![Auswählen der Eingabedatei bzw. des Eingabeordners](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/check-binary-copy.png)
      
-5. Wählen Sie auf der Seite **Destination data store** (Zieldatenspeicher) **AzureBlobStorage** aus, also das gleiche Speicherkonto wie beim Datenquellenspeicher, und klicken Sie anschließend auf **Next** (Weiter).
+5. Wählen Sie auf der Seite **Zieldatenspeicher** die Option **AzureBlobStorage** aus. Dies ist dasselbe Speicherkonto wie der Quelldatenspeicher. Klicken Sie anschließend auf **Weiter**.
 
     ![Seite „Zieldatenspeicher“](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/destination-data-store-page-select-linkedservice.png)
     
 6. Führen Sie auf der Seite **Choose the output file or folder** (Ausgabedatei oder -ordner auswählen) die folgenden Schritte aus:
     
-    a. Suchen Sie nach dem Ordner **destination** (Ziel), wählen Sie diesen aus, und klicken Sie anschließend auf **Choose** (Wählen).
+    a. Suchen Sie nach dem Ordner **destination**, wählen Sie ihn aus, und klicken Sie anschließend auf **Choose** (Wählen).
     
     ![Auswählen der Ausgabedatei oder des Ausgabeordners](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-output-file-folder.png)
     
@@ -163,47 +163,47 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
 
     ![Bereitstellungsseite](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/deployment-page.png)
     
-10. Beachten Sie, dass die Registerkarte **Überwachen** auf der linken Seite automatisch ausgewählt ist. In der Spalte **Aktionen** werden Links zum Anzeigen von Aktivitätsausführungsdetails und zum erneuten Ausführen der Pipeline angezeigt. Wählen Sie **Aktualisieren** aus, um die Liste zu aktualisieren, und klicken Sie auf den Link **View Activity Runs** (Aktivitätsausführungen anzeigen) in der Spalte **Actions** (Aktionen). 
+10. Beachten Sie, dass die Registerkarte **Überwachen** auf der linken Seite automatisch ausgewählt ist. In der Spalte **Aktionen** werden Links zum Anzeigen von Aktivitätsausführungsdetails und zum erneuten Ausführen der Pipeline angezeigt. Wählen Sie **Refresh** (Aktualisieren) aus, um die Liste zu aktualisieren, und klicken Sie in der Spalte **Actions** (Aktionen) auf den Link **View Activity Runs** (Aktivitätsausführungen anzeigen). 
 
-    ![Überwachen der Pipelineausführungen](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs1.png)
+    ![Aktualisieren der Liste und Auswählen von „View Activity Runs“ (Aktivitätsausführungen anzeigen)](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs1.png)
 
 11. Da die Pipeline nur eine Aktivität (Copy-Aktivität) enthält, wird nur ein Eintrag angezeigt. Wenn Sie Details zum Kopiervorgang anzeigen möchten, klicken Sie auf den Link **Details** (Brillensymbol) in der Spalte **Aktionen**. 
 
-    ![Überwachen der Pipelineausführungen](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs2.png)
+    ![Copy-Aktivität befindet sich in der Pipeline](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs2.png)
     
-    Da sich im Quellcontainer (**source**) in Ihrem Blob Storage-Konto keine Datei befindet, wird in Ihrem Blob Storage-Konto keine Datei angezeigt, die in den Zielcontainer (**destination**) kopiert wurde.
+    Da sich im Quellcontainer (**source**) in Ihrem Blobspeicherkonto keine Datei befindet, wird in Ihrem Blobspeicherkonto keine Datei angezeigt, die in den Zielcontainer (**destination**) kopiert wurde.
     
-    ![Überwachen der Pipelineausführungen](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3.png)
+    ![Keine Datei in Quell- oder Zielcontainer](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3.png)
     
-12. Erstellen Sie eine leere Textdatei, und benennen Sie diese „file1.txt“. Laden Sie die Datei „file1.txt“ in den Quellcontainer (**source**) in Ihrem Speicherkonto hoch. Sie können für diese Aufgaben verschiedene Tools verwenden, etwa [Azure Storage-Explorer](https://storageexplorer.com/).   
+12. Erstellen Sie eine leere Textdatei, und nennen Sie sie **file1.txt**. Laden Sie diese Datei in den Quellcontainer (**source**) in Ihrem Speicherkonto hoch. Sie können für diese Aufgaben verschiedene Tools verwenden, etwa [Azure Storage-Explorer](https://storageexplorer.com/).   
 
-    ![Überwachen der Pipelineausführungen](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
+    ![Erstellen von „file1.txt“ und Hochladen in den Quellcontainer](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
     
 13. Wählen Sie **All Pipelines Runs** (Alle Pipelineausführungen) aus, und warten Sie, bis die gleiche Pipeline erneut automatisch ausgelöst wird, um zur Anzeige **Pipeline Runs** (Pipelineausführungen) zurückzugelangen.  
 
-    ![Überwachen der Pipelineausführungen](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs4.png)
+    ![Auswählen aller Pipelineausführungen](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs4.png)
 
-14. Wählen Sie für die zweite Pipelineausführung **View Activity Run** (Aktivitätsausführung anzeigen) aus, wenn Sie diese kommen sehen, und verfahren Sie ebenso, um Details anzuzeigen.  
+14. Wählen Sie **View Activity Run** (Aktivitätsausführung anzeigen) für die zweite Pipelineausführung aus, wenn Sie sie sehen. Überprüfen Sie dann die Details wie bei der ersten Pipelineausführung.  
 
-    ![Überwachen der Pipelineausführungen](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs5.png)
+    ![Auswählen von „View Activity Run“ (Aktivitätsausführung anzeigen) und Überprüfen der Details](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs5.png)
 
-    Sie werden bemerken, dass eine Datei („file1.txt“) aus dem Quellcontainer (**source**) in den Zielcontainer (**destination**) Ihres Speicherkontos kopiert wurde.
+    Sie werden bemerken, dass eine Datei („file1.txt“) aus dem Quellcontainer (**source**) in den Zielcontainer (**destination**) Ihres Blobspeicherkontos kopiert wurde.
     
-    ![Überwachen der Pipelineausführungen](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs6.png)
+    ![File1.txt wurde aus dem Quellcontainer in den Zielcontainer kopiert](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs6.png)
     
-15. Erstellen Sie eine weitere leere Textdatei, und benennen Sie diese „file2.txt“. Laden Sie die Datei „file2.txt“ in den Quellcontainer (**source**) in Ihrem Speicherkonto hoch. Sie können für diese Aufgaben verschiedene Tools verwenden, etwa [Azure Storage-Explorer](https://storageexplorer.com/).  
+15. Erstellen Sie eine weitere leere Textdatei, und benennen Sie diese **file2.txt**. Laden Sie diese Datei in den Quellcontainer (**source**) in Ihrem Blobspeicherkonto hoch.   
     
-16. Gehen Sie wie in Schritt 13 und 14 vor. Sie werden bemerken, dass nur die neue Datei („file2.txt“) bei der nächsten Pipelineausführung vom Quellcontainer (**source**) in den Zielcontainer (**destination**) Ihres Speicherkontos kopiert wurde.  
+16. Wiederholen Sie die Schritte 13 und 14 für diese zweite Textdatei. Sie werden bemerken, dass nur die neue Datei („file2.txt“) bei der nächsten Pipelineausführung vom Quellcontainer (**source**) in den Zielcontainer (**destination**) Ihres Speicherkontos kopiert wurde.  
     
-    ![Überwachen der Pipelineausführungen](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs7.png)
+    ![File2.txt wurde aus dem Quellcontainer in den Zielcontainer kopiert](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs7.png)
 
-    Sie können dies auch bestätigen, indem Sie den Azure Storage-Explorer (https://storageexplorer.com/)) verwenden, um die Dateien zu überprüfen.
+    Sie können dies auch bestätigen, indem Sie den [Azure Storage-Explorer](https://storageexplorer.com/) verwenden, um die Dateien zu überprüfen.
     
-    ![Überwachen der Pipelineausführungen](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs8.png)
+    ![Überprüfen von Dateien mit Azure Storage-Explorer](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs8.png)
 
     
 ## <a name="next-steps"></a>Nächste Schritte
-Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie mithilfe eines Spark-Clusters in Azure Daten transformieren:
+Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie mithilfe eines Apache Spark-Clusters in Azure Daten transformieren:
 
 > [!div class="nextstepaction"]
->[Transform data using Spark cluster in cloud (Transformieren von Daten mit Spark-Cluster in der Cloud)](tutorial-transform-data-spark-portal.md).
+>[Transformieren von Daten in der Cloud mithilfe von Apache Spark-Clustern](tutorial-transform-data-spark-portal.md)

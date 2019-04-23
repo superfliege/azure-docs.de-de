@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 5417c1c008b5abaada158530c7c29c67e0dc1ca0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9083227dd81dca219666e07b70f487069413855d
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119665"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521270"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance"></a>Tutorial: Abrufen von Daten mit genauer Textübereinstimmung aus einer Äußerung
 
@@ -185,5 +185,5 @@ In diesem Tutorial wurden eine neue Absicht erstellt, Beispieläußerungen hinzu
 Fahren Sie mit dieser App fort, mit [Hinzufügen einer Entität vom Typ „Composite“](luis-tutorial-composite-entity.md).
 
 > [!div class="nextstepaction"]
-> [Hinzufügen einer hierarchischen Entität](luis-quickstart-intent-and-hier-entity.md)
+> [Hinzufügen einer vordefinierten Entität mit einer Rolle zur App](tutorial-entity-roles.md)
 

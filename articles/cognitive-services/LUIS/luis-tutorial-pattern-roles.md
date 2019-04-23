@@ -1,7 +1,7 @@
 ---
 title: Musterrollen
 titleSuffix: Azure Cognitive Services
-description: Verwenden Sie ein Muster, um Daten aus einer wohlgeformten Vorlagenäußerung zu extrahieren. Die Vorlagenäußerung verwendet eine einfache Entität und Rollen zum Extrahieren aufeinander bezogener Daten, wie etwa einen Ursprungsort und einen Zielort.
+description: Mithilfe von Mustern können Daten aus einer wohlgeformten Vorlagenäußerung extrahiert werden. Die Vorlagenäußerung verwendet eine einfache Entität und Rollen zum Extrahieren aufeinander bezogener Daten, wie etwa einen Ursprungsort und einen Zielort.
 ms.custom: seodec18
 services: cognitive-services
 author: diberry
@@ -9,18 +9,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: dc1be0d1d00ae64f38690f019580119b03debedf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d6a2c9d92d79bed3f0e9a9976a64f6e11debba88
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106592"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523273"
 ---
 # <a name="tutorial-extract-contextually-related-patterns-using-roles"></a>Tutorial: Extrahieren kontextbezogener Muster mithilfe von Rollen
 
-In diesem Tutorial verwenden Sie ein Muster, um Daten aus einer wohlgeformten Vorlagenäußerung zu extrahieren. Die Vorlagenäußerung verwendet eine einfache Entität und Rollen zum Extrahieren aufeinander bezogener Daten, wie etwa einen Ursprungsort und einen Zielort.  Bei der Verwendung von Mustern sind weniger Beispieläußerungen für die Absicht erforderlich.
+In diesem Tutorial verwenden Sie ein Muster, um Daten aus einer wohlgeformten Vorlagenäußerung zu extrahieren. Die Vorlagenäußerung verwendet eine [einfache Entität](luis-concept-entity-types.md#simple-entity) und [Rollen](luis-concept-roles.md) zum Extrahieren aufeinander bezogener Daten, wie etwa einen Ursprungsort und einen Zielort.  Bei der Verwendung von Mustern sind weniger Beispieläußerungen für die Absicht erforderlich.
 
 
 **In diesem Tutorial lernen Sie Folgendes:**
@@ -373,19 +373,6 @@ Ortsnamen sind wie Namen von Personen schwierig, da sie eine beliebige Kombinati
     ```
 
 Das Absichtsergebnis fällt nun sehr viel höher aus, und die Rollennamen sind Teil der Entitätsantwort.
-
-## <a name="hierarchical-entities-versus-roles"></a>Hierarchische Entitäten im Vergleich zu Rollen
-
-Im [Tutorial: Hinzufügen einer hierarchischen Entität](luis-quickstart-intent-and-hier-entity.md) hat die Absicht **MoveEmployee** erkannt, wann ein bestehender Mitarbeiter von einem Gebäude oder Büro in ein anderes verlegt werden soll. Die Beispieläußerungen wiesen zwar Ursprungs- und Zielorte auf, jedoch keine Rollen. Stattdessen waren Ursprung und Ziel untergeordnete Elemente der hierarchischen Entität. 
-
-In diesem Tutorial erkennt die Personalabteilungs-App Äußerungen zur Verlegung neuer Mitarbeiter von einem Ort in einen anderen. Diese beiden Arten von Äußerungen sind gleich, werden jedoch mit unterschiedlichen LUIS-Funktionen gelöst.
-
-|Tutorial|Beispieläußerung|Ursprungs- und Zielorte|
-|--|--|--|
-|[Tutorial: Hinzufügen einer hierarchischen Entität (ohne Rollen)](luis-quickstart-intent-and-hier-entity.md)|mv Jill Jones from **a-2349** to **b-1298**|a-2349, b-1298|
-|Dieses Tutorial (mit Rollen)|Move Billy Patterson from **Yuma** to **Denver**.|Yuma, Denver|
-
-Weitere Informationen finden Sie unter [Rollen und hierarchische Entitäten](luis-concept-roles.md#roles-versus-hierarchical-entities).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

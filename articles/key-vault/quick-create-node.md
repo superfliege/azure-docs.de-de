@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: c7bf6a22da89f0bf1e3897ec8fc30238b86b7b75
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 9aa7c4a5464230abe9ac7e75854a7422534f40f6
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58882749"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522303"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>Schnellstart: Festlegen und Abrufen eines Geheimnisses aus Azure Key Vault mithilfe einer Node-Web-App 
 
@@ -39,7 +39,7 @@ Stellen Sie vor dem Fortfahren sicher, dass Sie mit den [grundlegenden Konzepten
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * [Node.js](https://nodejs.org/en/)
-* [Git](https://www.git-scm.com/)
+* [Git-Client](https://www.git-scm.com/)
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 2.0.4 oder höher. Für diese Schnellstartanleitung ist es erforderlich, dass Sie die Azure CLI lokal ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zur Installation und Aktualisierung der CLI finden Sie bei Bedarf unter [Installieren von Azure CLI 2.0](https://review.docs.microsoft.com/en-us/cli/azure/install-azure-cli?branch=master&view=azure-cli-latest).
 * Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -150,7 +150,7 @@ Navigieren Sie zu Ihrer neu erstellten Web-App. Ihnen sollte nun eine funktionsf
     ```
     http://<app name>.azurewebsites.net
     ```
-Mit dem obigen Befehl wird auch eine Git-fähige App erstellt, mit der Sie die Bereitstellung in Azure über Ihr lokales Git-Repository durchführen können. Das lokale Git-Repository wurde mit der folgenden URL konfiguriert: „https://<username>@<App-Name>.scm.azurewebsites.net/<App-Name>.git“.
+Mit dem obigen Befehl wird auch eine Git-fähige App erstellt, mit der Sie die Bereitstellung in Azure über Ihr lokales Git-Repository durchführen können. Das lokale Git-Repository ist mit dieser URL konfiguriert: `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`.
 
 Nach Abschluss des vorherigen Befehls können Sie Ihrem lokalen Git-Repository eine Azure-Remoteinstanz hinzufügen. Ersetzen Sie `<url>` durch die URL des Git-Repositorys.
 
@@ -194,7 +194,7 @@ Führen Sie den folgenden Befehl aus, um die App in Azure bereitzustellen:
 git push azure master
 ```
 
-Wenn Sie anschließend zu „https://<App-Name>.azurewebsites.net“ navigieren, wird Ihnen der Geheimniswert angezeigt. Stellen Sie sicher, dass Sie den Namen <YourKeyVaultName> durch Ihren Tresornamen ersetzt haben.
+Wenn Sie anschließend zu `https://<app_name>.azurewebsites.net` navigieren, können Sie den geheimen Wert sehen. Stellen Sie sicher, dass Sie den Namen `<YourKeyVaultName>` durch Ihren Tresornamen ersetzt haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
