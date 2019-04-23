@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/11/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 10e8a7dd256f796160b81b8ec1f566c5ed7e4cad
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 5abc2e673438a1ffa22e8d010bf2ee395cd521ae
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55750204"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149927"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Tutorial: Rendern einer Szene mit Azure Batch 
 
@@ -33,7 +33,7 @@ In diesem Tutorial rendern Sie eine 3ds Max-Szene mit Batch, indem Sie den [Arno
 
 Sie benötigen ein Abonnement mit nutzungsbasierter Bezahlung oder eine andere Azure-Kaufoption, um die Renderinganwendungen in Batch auf nutzungsbasierter Basis zu verwenden. **Nutzungsbasierte Lizenzierung wird nicht unterstützt, wenn Sie ein kostenloses Azure-Angebot verwenden, das mit monetären Gutschriften verbunden ist.**
 
-Die 3ds Max-Beispielszene für dieses Tutorial ist auf [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene) zusammen mit einem Bash-Beispielskript und JSON-Konfigurationsdateien zu finden. Die 3ds Max-Szene stammt aus den [Autodesk 3ds Max-Beispieldateien](http://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe). (Autodesk 3ds Max-Beispieldateien sind unter einer Creative Commons Attribution-NonCommercial-Share Alike-Lizenz verfügbar. Copyright © Autodesk, Inc.)
+Die 3ds Max-Beispielszene für dieses Tutorial ist auf [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene) zusammen mit einem Bash-Beispielskript und JSON-Konfigurationsdateien zu finden. Die 3ds Max-Szene stammt aus den [Autodesk 3ds Max-Beispieldateien](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe). (Autodesk 3ds Max-Beispieldateien sind unter einer Creative Commons Attribution-NonCommercial-Share Alike-Lizenz verfügbar. Copyright © Autodesk, Inc.)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

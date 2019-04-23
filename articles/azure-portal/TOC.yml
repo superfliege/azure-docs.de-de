@@ -1,55 +1,48 @@
-items:
 - name: Dokumentation zum Azure-Portal
   href: index.yml
 - name: Übersicht
   items:
-  - name: Informationen zum Azure-Portal
-    href: azure-portal-overview.md
-  - name: Unterstützte Browser und Geräte
-    href: azure-portal-supported-browsers-devices.md
+    - name: Informationen zum Azure-Portal
+      href: azure-portal-overview.md
+    - name: Unterstützte Browser und Geräte
+      href: azure-portal-supported-browsers-devices.md
 - name: Konzepte
   items:
-  - name: Erstellen und Freigeben von Azure-Dashboards
-    href: azure-portal-dashboards.md
-  - name: Freigeben von Dashboards per rollenbasierter Zugriffssteuerung
-    href: azure-portal-dashboard-share-access.md
-  - name: Programmgesteuertes Erstellen von Azure-Dashboards
-    href: azure-portal-dashboards-create-programmatically.md
+    - name: Erstellen und Freigeben von Azure-Dashboards
+      href: azure-portal-dashboards.md
+    - name: Freigeben von Dashboards per rollenbasierter Zugriffssteuerung
+      href: azure-portal-dashboard-share-access.md
+    - name: Programmgesteuertes Erstellen von Azure-Dashboards
+      href: azure-portal-dashboards-create-programmatically.md
 - name: Anleitungen
   items:
-  - name: Aktivieren des hohen Kontrasts oder Ändern des Designs
-    href: azure-portal-change-theme-high-contrast.md
-  - name: Hinzufügen, Entfernen und Sortieren von Favoriten
-    href: azure-portal-add-remove-sort-favorites.md
-  - name: Verwenden einer benutzerdefinierten Markdown-Kachel
-    href: azure-portal-markdown-tile.md
-  - name: Exportieren oder Löschen von Benutzereinstellungen
-    href: azure-portal-export-delete-settings.md
-  - name: Anleitungsvideos für das Azure-Portal
-    href: https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR
+    - name: Aktivieren des hohen Kontrasts oder Ändern des Designs
+      href: azure-portal-change-theme-high-contrast.md
+    - name: 'Hinzufügen, Entfernen und Sortieren von Favoriten'
+      href: azure-portal-add-remove-sort-favorites.md
+    - name: Verwenden einer benutzerdefinierten Markdown-Kachel
+      href: azure-portal-markdown-tile.md
+    - name: Exportieren oder Löschen von Benutzereinstellungen
+      href: azure-portal-export-delete-settings.md
+    - name: Anleitungsvideos für das Azure-Portal
+      href: 'https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR'
 - name: Verweis
   items:
-  - name: Tastenkombinationen
-    href: azure-portal-keyboard-shortcuts.md
-  - name: Struktur von Azure-Dashboards
-    href: azure-portal-dashboards-structure.md
+    - name: Tastenkombinationen
+      href: azure-portal-keyboard-shortcuts.md
+    - name: Struktur von Azure-Dashboards
+      href: azure-portal-dashboards-structure.md
 - name: Ressourcen
   items:
-  - name: Azure-Roadmap
-    href: https://azure.microsoft.com/updates/
-  - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
-    href: /learn/browse/?products=azure-portal
-  - name: Preisrechner
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: Regionale Verfügbarkeit
-    href: https://azure.microsoft.com/regions/services/
-  - name: Stack Overflow
-    href: https://stackoverflow.com/questions/tagged/azure-management-portal
-  - name: Azure-Videos
-    href: https://azure.microsoft.com/documentation/videos/index/?services=azure-portal&sort=newest
-ms.openlocfilehash: 3846b9198d79be1a9580919a97e568c6a2467b12
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59047984"
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/updates/'
+    - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
+      href: /learn/browse/?products=azure-portal
+    - name: Preisrechner
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Regionale Verfügbarkeit
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-management-portal'
+    - name: Azure-Videos
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-portal&sort=newest'

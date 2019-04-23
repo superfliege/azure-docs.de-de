@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: 7e35aa8120c455b8cc0d0881a9ceb5120c57deff
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: ff2ea89c257a4941c801f3056450e005a9b37039
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969667"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996049"
 ---
 # <a name="available-regions-for-your-storsimple"></a>Verfügbare Regionen für Ihr StorSimple
 
@@ -69,7 +69,7 @@ Wenn Sie ein physisches StorSimple 8100- oder 8600-Gerät verwenden, ist das Ger
 
 | #  | Country        | #  | Country     | #  | Country      | #  | Country              |
 |----|----------------|----|-------------|----|--------------|----|----------------------|
-| 1  | Australien      | 16 | Hongkong   | 31 | Neuseeland  | 46 | Südafrika         |
+| 1  | Australien      | 16 | Hongkong (SAR)| 31 | Neuseeland  | 46 | Südafrika         |
 | 2  | Österreich        | 17 | Ungarn     | 32 | Nigeria      | 47 | Südkorea          |
 | 3  | Bahrain        | 18 | Island     | 33 | Norwegen       | 48 | Spanien                |
 | 4  | Belgien        | 19 | Indien       | 34 | Peru         | 49 | Sri Lanka            |
@@ -80,7 +80,7 @@ Wenn Sie ein physisches StorSimple 8100- oder 8600-Gerät verwenden, ist das Ger
 | 9  | Tschechische Republik | 24 | Japan       | 11,9 | Katar        | 54 | Türkei               |
 | 10 | Dänemark        | 25 | Kenia       | 40 | Rumänien      | 55 | Ukraine              |
 | 11 | Ägypten          | 26 | Kuwait      | 41 | Russland       | 56 | Vereinigte Arabische Emirate |
-| 12 | Finnland        | 27 | Macau (SAR)       | 42 | Saudi-Arabien | 57 | Vereinigtes Königreich       |
+| 12 | Finnland        | 27 | Macau (SAR)   | 42 | Saudi-Arabien | 57 | Vereinigtes Königreich       |
 | 13 | Frankreich         | 28 | Malaysia    | 43 | Singapur    | 58 | USA        |
 | 14 | Deutschland        | 29 | Mexiko      | 44 | Slowakei     | 59 | Vietnam              |
 | 15 | Griechenland         | 30 | Niederlande | 45 | Slowenien     | 60 | Kroatien              |
