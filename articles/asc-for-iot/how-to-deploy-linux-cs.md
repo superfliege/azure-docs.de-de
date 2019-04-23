@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
 ms.openlocfilehash: 4a53bcf77696d3aa53a4a404bfacd6f6d468885b
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862099"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>Bereitstellen des C#-basierten Sicherheits-Agents von Azure Security Center für IoT unter Linux
@@ -52,9 +52,9 @@ Gehen Sie zum Bereitstellen des Sicherheits-Agents wie folgt vor:
 
 1. Extrahieren Sie den Inhalt des Pakets, und navigieren Sie zum Ordner _/Install_.
 
-1. Sie können dem Skript **InstallSecurityAgent** Ausführungsberechtigungen hinzufügen durch Ausführen von `chmod +x InstallSecurityAgent.sh` 
+1. Führen Sie `chmod +x InstallSecurityAgent.sh` aus, um dem Skript **InstallSecurityAgent** Ausführungsberechtigungen hinzuzufügen. 
 
-1. Führen Sie anschließend Folgendes aus: 
+1. Führen Sie als Nächstes Folgendes aus: 
 
    ```
    ./InstallSecurityAgent.sh -i -aui <authentication identity>  -aum <authentication method> -f <file path> -hn <host name>  -di <device id> -cl <certificate location kind>
@@ -118,7 +118,7 @@ Wenn Sie den Agent deinstallieren möchten, führen Sie das Skript mit dem Param
 
    1. Sehen Sie sich die Protokolldatei an, um mehr über den Fehler zu erfahren.  
 
-       Der Speicherort der Protokolldatei lautet: `/var/ASCIoTAgent/IotAgentLog.log`
+       Speicherort der Protokolldatei: `/var/ASCIoTAgent/IotAgentLog.log`
 
        Ändern Sie den Dateipfad gemäß dem Namen, den Sie in Schritt 2 für **logFilePath** gewählt haben. 
 

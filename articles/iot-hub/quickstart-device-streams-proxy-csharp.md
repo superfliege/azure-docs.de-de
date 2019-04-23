@@ -11,10 +11,10 @@ ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: rezas
 ms.openlocfilehash: d36737e6007f247777689e2afa9f47b3ad5bf107
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59006661"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-c-proxy-applications-preview"></a>Schnellstart: SSH/RDP über IoT Hub-Gerätestreams unter Verwendung von C#-Proxyanwendungen (Vorschauversion)
@@ -188,7 +188,7 @@ Im Anschluss sehen Sie die dienstseitige Konsolenausgabe. (Der lokale Dienstprox
 
 Im Anschluss sehen Sie die Konsolenausgabe des lokalen Geräteproxys, der unter `IP_address:22` eine Verbindung mit dem SSH-Daemon herstellt:
 
-]Alternativer Text(./media/quickstart-device-streams-proxy-csharp/device-console-output.png "")Ausgabe des lokalen Geräteproxys")
+]Alternativer Text(./media/quickstart-device-streams-proxy-csharp/device-console-output.png "")Ausgabe des lokalen Geräteproxys
 
 Im Anschluss sehen Sie die Konsolenausgabe des SSH-Clientprogramms. (Der SSH-Client kommuniziert mit dem SSH-Daemon, indem er eine Verbindung mit dem Port 22 herstellt, an dem der lokale Dienstproxy lauscht.)
 
@@ -265,4 +265,4 @@ In dieser Schnellstartanleitung haben Sie einen IoT-Hub eingerichtet, ein Gerät
 Weitere Informationen zu Gerätestreams finden Sie hier:
 
 > [!div class="nextstepaction"]
-> [Übersicht über Gerätestreams](./iot-hub-device-streams-overview.md)
+> [IoT Hub-Gerätestreams (Vorschau)](./iot-hub-device-streams-overview.md)
