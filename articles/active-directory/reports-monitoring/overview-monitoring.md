@@ -1,5 +1,5 @@
 ---
-title: Was ist die Azure Active Directory-Überwachung? (Vorschauversion) | Microsoft-Dokumentation
+title: Was ist die Azure Active Directory-Überwachung? | Microsoft-Dokumentation
 description: Hier finden Sie eine allgemeine Übersicht über die Azure Active Directory-Überwachung.
 services: active-directory
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de416d18505d0258da446318b3dc6a9853ff13e7
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: d63f8440ca527a746f73574bc156037d85fc3599
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58434856"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009030"
 ---
-# <a name="what-is-azure-active-directory-monitoring-preview"></a>Was ist die Azure Active Directory-Überwachung? (Vorschauversion)
+# <a name="what-is-azure-active-directory-monitoring"></a>Was ist die Azure Active Directory-Überwachung?
 
 Mit der Azure AD-Überwachung (Azure Active Directory) können Sie nun Ihre Azure AD-Aktivitätsprotokolle an verschiedene Endpunkte weiterleiten. Diese können dann entweder zur langfristigen Verwendung gespeichert oder in SIEM-Drittanbietertools (Security Information & Event Management) integriert werden, um Einblicke in Ihre Umgebung zu gewinnen.
 

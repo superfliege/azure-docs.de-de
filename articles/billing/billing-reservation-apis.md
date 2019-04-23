@@ -1,7 +1,6 @@
 ---
 title: APIs für die Automatisierung von Azure-Reservierungen | Microsoft-Dokumentation
 description: Erfahren Sie mehr über die Azure-APIs, mit denen Sie programmgesteuert Reservierungsinformationen abrufen können.
-services: billing
 documentationcenter: ''
 author: yashesvi
 manager: yashesvi
@@ -12,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/10/2018
+ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: 7e5697073b9406d915eda99a5e71e3123c48073a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 246278df61d4f13e2634a1cdfc5ff6b635cecbbf
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880216"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008210"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>APIs für die Automatisierung von Azure-Reservierungen
 
@@ -55,7 +54,7 @@ Wenn Sie feststellen, dass die Reservierungen Ihrer Organisation zu wenig genutz
 
 - Vergewissern Sie sich, dass die virtuellen Computer, die für Ihre Organisation erstellt werden, mit der VM-Größe übereinstimmen, die zur Reservierung gehört.
 - Vergewissern Sie sich, dass Instanzgrößenflexibilität aktiviert ist. Weitere Informationen finden Sie unter [Verwalten von Reservierungen – Ändern der Optimierungseinstellung für reservierte VM-Instanzen](billing-manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances).
-- Ändern Sie den Bereich der Reservierung in „Freigegeben“, sodass sie umfassender gilt. Weitere Informationen finden Sie unter [Verwalten von Reservierungen – Ändern des Bereichs für eine Reservierung](billing-manage-reserved-vm-instance.md#change-the-scope-for-a-reservation).
+- Ändern Sie den Bereich der Reservierung in „Freigegeben“, sodass sie umfassender gilt. Weitere Informationen finden Sie unter [Verwalten von Reservierungen – Ändern des Bereichs für eine Reservierung](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
 - Tauschen Sie die nicht verwendete Menge. Weitere Informationen finden Sie unter [Verwalten von Reservierungen – Stornierungen und Umtausch](billing-manage-reserved-vm-instance.md#cancellations-and-exchanges).
 
 ## <a name="give-access-to-reservations"></a>Gewähren von Zugriff auf Reservierungen
@@ -68,7 +67,7 @@ Rufen Sie die Liste alle Reservierungen, auf die ein Benutzer Zugriff hat, über
 
 ## <a name="split-or-merge-reservation"></a>Aufteilen oder Zusammenführen einer Reservierung
 
-Wenn Sie mehrere Ressourceninstanzen innerhalb einer Reservierung erworben haben, können Sie Instanzen innerhalb dieser Reservierung verschiedenen Abonnements zuweisen. Sie können den Reservierungsbereich ändern, sodass er für alle Abonnements im selben Abrechnungskontext gilt. Für Kostenverwaltungs- oder für Budgetierungszwecke können Sie den Bereich (Umfang) jedoch als „Einzelabonnement“ beibehalten und Reservierungsinstanzen einem bestimmten Abonnement zuordnen. 
+Wenn Sie mehrere Ressourceninstanzen innerhalb einer Reservierung erworben haben, können Sie Instanzen innerhalb dieser Reservierung verschiedenen Abonnements zuweisen. Sie können den Reservierungsbereich ändern, sodass er für alle Abonnements im selben Abrechnungskontext gilt. Für Kostenverwaltungs- oder für Budgetierungszwecke können Sie den Bereich (Umfang) jedoch als „Einzelabonnement“ beibehalten und Reservierungsinstanzen einem bestimmten Abonnement zuordnen.
 
 Um eine Reservierung aufzuteilen, verwenden Sie die API [Reservierung – Aufteilen](/rest/api/reserved-vm-instances/reservation/split). Sie können eine Reservierung auch über PowerShell aufteilen. Weitere Informationen finden Sie unter [Verwalten von Reservierungen – Aufteilten einer einzelnen Reservierung in zwei Reservierungen](billing-manage-reserved-vm-instance.md#split-a-single-reservation-into-two-reservations).
 
@@ -76,7 +75,7 @@ Um zwei Reservierungen in eine Reservierung zusammenzuführen, verwenden Sie die
 
 ## <a name="change-scope-for-a-reservation"></a>Ändern des Bereichs für eine Reservierung
 
-Der Bereich einer Reservierung können ein einzelnes Abonnement oder alle Abonnements in Ihrem Abrechnungskontext sein. Wenn Sie den Umfang auf ein Einzelabonnement festlegen, wird die Reservierung mit den ausgeführten Ressourcen im ausgewählten Abonnement abgestimmt. Wenn Sie den Umfang auf „Freigegeben“ festlegen, ordnet Azure die Reservierung Ressourcen zu, die in allen Abonnements innerhalb des Abrechnungskontexts ausgeführt werden. Der Abrechnungskontext ist abhängig von dem Abonnement, das Sie verwendet haben, um die Reservierung zu erwerben. Weitere Informationen finden Sie unter [Verwalten von Reservierungen – Ändern des Bereichs](billing-manage-reserved-vm-instance.md#change-the-scope-for-a-reservation).
+Der Bereich einer Reservierung können ein einzelnes Abonnement oder alle Abonnements in Ihrem Abrechnungskontext sein. Wenn Sie den Umfang auf ein Einzelabonnement festlegen, wird die Reservierung mit den ausgeführten Ressourcen im ausgewählten Abonnement abgestimmt. Wenn Sie den Umfang auf „Freigegeben“ festlegen, ordnet Azure die Reservierung Ressourcen zu, die in allen Abonnements innerhalb des Abrechnungskontexts ausgeführt werden. Der Abrechnungskontext ist abhängig von dem Abonnement, das Sie verwendet haben, um die Reservierung zu erwerben. Weitere Informationen finden Sie unter [Verwalten von Reservierungen – Ändern des Bereichs](billing-manage-reserved-vm-instance.md#change-the-reservation-scope).
 
 Um den Bereich programmgesteuert zu ändern, verwenden Sie die API [Reservierung – Update](/rest/api/reserved-vm-instances/reservation/update).
 

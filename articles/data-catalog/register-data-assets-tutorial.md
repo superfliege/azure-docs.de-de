@@ -1,19 +1,19 @@
 ---
-title: Registrieren von Datenassets in Azure Data Catalog
+title: Registrieren von Datenressourcen in Azure Data Catalog
 description: 'Gewusst wie: Registrieren von Datenassets in Ihrer Azure Data Catalog-Instanz'
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.service: data-catalog
 ms.topic: tutorial
 ms.date: 04/08/2019
-ms.openlocfilehash: e89bd4806e2bb2369c100e948be51dcf32f2e123
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 91f7967915fd19ae47ca207913f979aa56fcd27f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59362747"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011706"
 ---
-# <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>Tutorial: Registrieren von Datenassets in Azure Data Catalog
+# <a name="tutorial-register-data-assets-in-azure-data-catalog"></a>Tutorial: Registrieren von Datenressourcen in Azure Data Catalog
 
 In diesem Tutorial verwenden Sie das Registrierungstool, um Datenassets aus dem Azure SQL-Datenbank-Beispiel im Katalog zu registrieren. Bei der Registrierung werden wichtige strukturelle Metadaten (z.B. Namen, Typen und Speicherorte) aus der Datenquelle und des darin enthaltenen Assets extrahiert und in den Katalog kopiert. Die Datenquellen und ihre Daten bleiben an ihrem Ort, aber die Metadaten werden vom Katalog verwendet, um sie leichter ermittelbar und verständlich zu machen.
 

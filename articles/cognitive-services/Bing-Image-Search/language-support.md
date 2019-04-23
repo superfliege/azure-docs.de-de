@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 92316d3f84f0a8d3cda0e98fd8ae751eb78b7e56
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: a4c315d2696b081a4f2ac646d097e76ff9562380
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337701"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009479"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>Sprach- und Regionsunterstützung für die Bing-Bildersuche-API
 
@@ -47,7 +47,7 @@ Alternativ können Sie das Land/die Region mit dem `cc`-Abfrageparameter angeben
 |Finnland|FI|
 |Frankreich|BV|
 |Deutschland|DE|
-|Hongkong|HK|
+|Hongkong (SAR)|HK|
 |Indien|IN|
 |Indonesien|ID|
 |Italien|IT|
@@ -91,7 +91,7 @@ Alternativ können Sie das Land/die Region mit dem `cc`-Abfrageparameter angeben
 |Finnland|Finnisch|fi-FI|
 |Frankreich|Französisch|fr-FR|
 |Deutschland|Deutsch|de-DE|
-|Hongkong|Chinesisch (traditionell)|zh-HK|
+|Hongkong (SAR)|Chinesisch (traditionell)|zh-HK|
 |Indien|Englisch|en-IN|
 |Indonesien|Englisch|en-ID|
 |Italien|Italienisch|it-IT|

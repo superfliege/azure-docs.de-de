@@ -1,17 +1,17 @@
 ---
 title: Übersicht über VNET-Dienstendpunkte für Azure Database for PostgreSQL-Server
 description: Erfahren Sie, wie VNET-Dienstendpunkte für Azure Database for PostgreSQL-Server funktionieren.
-author: mbolz
+author: bolzmj
 ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.openlocfilehash: 83d16071cbcac4199db9f3757121f9811db49727
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: c6549ad170a0fc3b4387d5bc5163ca0548b92119
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006335"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009190"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql"></a>Verwenden von VNET-Dienstendpunkten und -Regeln für Azure Database for PostgreSQL
 
@@ -92,7 +92,7 @@ Bei der Verwaltung der Dienstendpunkte des virtuellen Netzwerks erfolgt eine Tre
 - **Netzwerkadministrator:** &nbsp;Aktivieren des Endpunkts.
 - **Datenbankadministrator:** &nbsp;Aktualisieren der Zugriffssteuerungsliste, um das angegebene Subnetz dem Azure Database for PostgreSQL-Server hinzuzufügen.
 
-*Alternative zur rollenbasierten Zugriffssteuerung (RBAC):*
+*Alternative zur rollenbasierten Zugriffssteuerung:*
 
 Die Rollen „Netzwerkadministrator“ und „Datenbankadministrator“ haben mehr Zugriffsrechte, als für die Verwaltung von Regeln für ein virtuelles Netzwerk erforderlich ist. Es wird nur eine Teilmenge der Zugriffsrechte benötigt.
 
@@ -142,7 +142,7 @@ Verwenden Sie die Azure CLI oder das Azure-Portal, um das Flag **IgnoreMissingSe
 ## <a name="next-steps"></a>Nächste Schritte
 Hier finden Sie weitere Artikel zum Erstellen von VNET-Regeln:
 - [Erstellen und Verwalten von VNET-Regeln für Azure Database for PostgreSQL über das Azure-Portal](howto-manage-vnet-using-portal.md)
-- [Erstellen und Verwalten von VNET-Regeln für Azure Database for PostgreSQL mithilfe der Azure CLI](howto-manage-vnet-using-cli.md)
+- [Erstellen und Verwalten von VNET-Regeln für Azure Database for PostgreSQL über Azure CLI](howto-manage-vnet-using-cli.md)
 
 
 <!-- Link references, to text, Within this same GitHub repo. -->
