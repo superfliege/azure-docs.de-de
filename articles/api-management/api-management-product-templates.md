@@ -81,8 +81,8 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 |Eigenschaft|Typ|BESCHREIBUNG|  
 |--------------|----------|-----------------|  
 |Paging|Entität [Paging](api-management-template-data-model-reference.md#Paging).|Die Seiteninformationen für die Produktsammlung.|  
-|Filterung|Entität [Filtering](api-management-template-data-model-reference.md#Filtering).|Die Filterinformationen für die Produktlistenseite.|  
-|Produkte|Sammlung von [Product](api-management-template-data-model-reference.md#Product)-Entitäten.|Die für den aktuellen Benutzer sichtbaren Produkte.|  
+|Filtering|Entität [Filtering](api-management-template-data-model-reference.md#Filtering).|Die Filterinformationen für die Produktlistenseite.|  
+|Products|Sammlung von [Product](api-management-template-data-model-reference.md#Product)-Entitäten.|Die für den aktuellen Benutzer sichtbaren Produkte.|  
   
 ### <a name="sample-template-data"></a>Vorlagenbeispieldaten  
   
@@ -205,14 +205,14 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
   
 |Eigenschaft|Typ|BESCHREIBUNG|  
 |--------------|----------|-----------------|  
-|Produkt|[Produkt](api-management-template-data-model-reference.md#Product)|Das angegebene Produkt.|  
+|Product|[Produkt](api-management-template-data-model-reference.md#Product)|Das angegebene Produkt.|  
 |IsDeveloperSubscribed|boolean|Gibt an, ob der aktuelle Benutzer dieses Produkt abonniert hat.|  
 |SubscriptionState|number|Der Status des Abonnements. Mögliche Statusangaben:<br /><br /> -   `0 - suspended`: Das Abonnement ist blockiert, und der Abonnent kann keine APIs des Produkts aufrufen.<br />-   `1 - active`: Das Abonnement ist aktiv.<br />-   `2 - expired`: Das Abonnement hat das Ablaufdatum erreicht und wurde deaktiviert.<br />-   `3 - submitted`: Die Abonnementanforderung wurde vom Entwickler gesendet, aber noch nicht genehmigt oder abgelehnt.<br />-   `4 - rejected`: Die Abonnementanforderung wurde von einem Administrator abgelehnt.<br />-   `5 - cancelled`: Das Abonnement wurde vom Entwickler oder Administrator abgebrochen.|  
-|Einschränkungen|Array|Diese Eigenschaft ist veraltet und sollte nicht verwendet werden.|  
+|Limits|Array|Diese Eigenschaft ist veraltet und sollte nicht verwendet werden.|  
 |DelegatedSubscriptionEnabled|boolean|Gibt an, ob für dieses Abonnement die [Delegierung](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/) aktiviert ist.|  
 |DelegatedSubscriptionUrl|Zeichenfolge|Gibt bei aktivierter Delegierung die URL des delegierten Abonnements an.|  
 |IsAgreed|boolean|Wenn für das Produkt Bedingungen gelten, gibt dieser Wert an, ob der aktuelle Benutzer den Nutzungsbedingungen zugestimmt hat.|  
-|Abonnements|Sammlung von [Subscription summary](api-management-template-data-model-reference.md#SubscriptionSummary)-Entitäten.|Die Abonnements für das Produkt.|  
+|Subscriptions|Sammlung von [Subscription summary](api-management-template-data-model-reference.md#SubscriptionSummary)-Entitäten.|Die Abonnements für das Produkt.|  
 |Apis|Sammlung von [API](api-management-template-data-model-reference.md#API)-Entitäten.|Die APIs in dieses Produkt.|  
 |CannotAddBecauseSubscriptionNumberLimitReached|boolean|Gibt an, ob der aktuelle Benutzer im Hinblick auf das Abonnementlimit zum Abonnieren dieses Produkts berechtigt ist.|  
 |CannotAddBecauseMultipleSubscriptionsNotAllowed|boolean|Gibt an, ob der aktuelle Benutzer zum Abonnieren dieses Produkts berechtigt ist, je nachdem, ob mehrere Abonnements zulässig sind oder nicht.|  
