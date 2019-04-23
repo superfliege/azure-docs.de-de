@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/13/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 07a488556bc899efa80d67ceb984b60f461b9742
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 56a31770c374cdccaec4dbee751925a6da00fa59
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541026"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683952"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
 
@@ -29,13 +29,13 @@ Hier erhalten Sie Antworten auf häufig gestellte Fragen zu VM-Skalierungsgruppe
 
 ## <a name="top-frequently-asked-questions-for-scale-sets"></a>Die am häufigsten gestellten Fragen zu Skalierungsgruppen
 
-**F.** Wie viele virtuelle Computer können in einer Skalierungsgruppe enthalten sein?
+### <a name="how-many-vms-can-i-have-in-a-scale-set"></a>Wie viele virtuelle Computer können in einer Skalierungsgruppe enthalten sein?
 
-**A.** Eine Skalierungsgruppe kann 0 bis 1.000 virtuelle Computer (Plattformimages) bzw. 0 bis 600 virtuelle Computer (benutzerdefinierte Images) enthalten.
+Eine Skalierungsgruppe kann 0 bis 1.000 virtuelle Computer (Plattformimages) bzw. 0 bis 600 virtuelle Computer (benutzerdefinierte Images) enthalten.
 
-**F.** Werden Datenträger in Skalierungsgruppen unterstützt?
+### <a name="are-data-disks-supported-within-scale-sets"></a>Werden Datenträger in Skalierungsgruppen unterstützt?
 
-**A.** Ja. Für eine Skalierungsgruppe kann eine Konfiguration für angefügte Datenträger definiert werden, die für alle virtuellen Computer der Gruppe gilt. Weitere Informationen finden Sie unter [Azure-VM-Skalierungsgruppen und angefügte Datenträger](virtual-machine-scale-sets-attached-disks.md). Beispiele für andere Optionen zum Speichern von Daten:
+Ja. Für eine Skalierungsgruppe kann eine Konfiguration für angefügte Datenträger definiert werden, die für alle virtuellen Computer der Gruppe gilt. Weitere Informationen finden Sie unter [Azure-VM-Skalierungsgruppen und angefügte Datenträger](virtual-machine-scale-sets-attached-disks.md). Beispiele für andere Optionen zum Speichern von Daten:
 
 * Azure-Dateien (SMB-freigegebene Laufwerke)
 * Betriebssystemlaufwerk
@@ -43,33 +43,33 @@ Hier erhalten Sie Antworten auf häufig gestellte Fragen zu VM-Skalierungsgruppe
 * Azure-Datendienst (z.B. Azure-Tabellen, Azure-Blobs)
 * Externer Datendienst (z.B. Remotedatenbank)
 
-**F.** In welchen Azure-Regionen werden Skalierungsgruppen unterstützt?
+### <a name="which-azure-regions-support-scale-sets"></a>In welchen Azure-Regionen werden Skalierungsgruppen unterstützt?
 
-**A.** Alle Regionen unterstützen Skalierungsgruppen.
+Alle Regionen unterstützen Skalierungsgruppen.
 
-**F.** Wie erstelle ich eine Skalierungsgruppe mit einem benutzerdefinierten Image?
+### <a name="how-do-i-create-a-scale-set-by-using-a-custom-image"></a>Wie erstelle ich eine Skalierungsgruppe mit einem benutzerdefinierten Image?
 
-**A.** Erstellen und erfassen Sie ein VM-Image, und verwenden Sie es dann als Quelle für Ihre Skalierungsgruppe. Ein Tutorial zum Erstellen und Verwenden eines benutzerdefinierten VM-Images finden Sie unter [Azure CLI](tutorial-use-custom-image-cli.md) oder [Azure PowerShell](tutorial-use-custom-image-powershell.md).
+Erstellen und erfassen Sie ein VM-Image, und verwenden Sie es dann als Quelle für Ihre Skalierungsgruppe. Ein Tutorial zum Erstellen und Verwenden eines benutzerdefinierten VM-Images finden Sie unter [Azure CLI](tutorial-use-custom-image-cli.md) oder [Azure PowerShell](tutorial-use-custom-image-powershell.md).
 
-**F.** Welche virtuellen Computer werden entfernt, wenn ich meine Kapazität für Skalierungsgruppen von 20 auf 15 verringere?
+### <a name="if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed"></a>Welche virtuellen Computer werden entfernt, wenn ich meine Kapazität für Skalierungsgruppen von 20 auf 15 verringere?
 
-**A.** Die Entfernung der virtuellen Computer aus den Skalierungsgruppen erfolgt gleichmäßig über Update- und Fehlerdomänen hinweg, um die Verfügbarkeit zu maximieren. Die virtuellen Computer mit den höchsten IDs werden zuerst entfernt.
+Die Entfernung der virtuellen Computer aus den Skalierungsgruppen erfolgt gleichmäßig über Update- und Fehlerdomänen hinweg, um die Verfügbarkeit zu maximieren. Die virtuellen Computer mit den höchsten IDs werden zuerst entfernt.
 
-**F.** Was passiert, wenn ich dann die Kapazität von 15 auf 18 erhöhe?
+### <a name="what-if-i-then-increase-the-capacity-from-15-to-18"></a>Was passiert, wenn ich dann die Kapazität von 15 auf 18 erhöhe?
 
-**A.** Wenn Sie die Kapazität auf 18 erhöhen, werden drei neue VMs erstellt. Die VM-Instanz-ID wird jeweils ausgehend vom vorherigen höchsten Wert erhöht (Beispiel: 20, 21, 22). Virtuelle Computer werden über Fehler- und Updatedomänen hinweg gleichmäßig verteilt.
+Wenn Sie die Kapazität auf 18 erhöhen, werden drei neue VMs erstellt. Die VM-Instanz-ID wird jeweils ausgehend vom vorherigen höchsten Wert erhöht (Beispiel: 20, 21, 22). Virtuelle Computer werden über Fehler- und Updatedomänen hinweg gleichmäßig verteilt.
 
-**F.** Kann ich bei Verwendung mehrerer Erweiterungen in einer Skalierungsgruppe eine Ausführungsreihenfolge erzwingen?
+### <a name="when-im-using-multiple-extensions-in-a-scale-set-can-i-enforce-an-execution-sequence"></a>Kann ich bei Verwendung mehrerer Erweiterungen in einer Skalierungsgruppe eine Ausführungsreihenfolge erzwingen?
 
-**A.** Ja, Sie können die [Erweiterungssequenzierung](virtual-machine-scale-sets-extension-sequencing.md) für Skalierungsgruppen verwenden.
+Ja, Sie können die [Erweiterungssequenzierung](virtual-machine-scale-sets-extension-sequencing.md) für Skalierungsgruppen verwenden.
 
-**F.** Funktionieren Skalierungsgruppen mit Azure-Verfügbarkeitsgruppen?
+### <a name="do-scale-sets-work-with-azure-availability-sets"></a>Funktionieren Skalierungsgruppen mit Azure-Verfügbarkeitsgruppen?
 
-**A.** Eine regionale (nicht auf eine Zone beschränkte) Skalierungsgruppe verwendet *Platzierungsgruppen*, die als implizite Verfügbarkeitsgruppe mit fünf Fehlerdomänen und fünf Updatedomänen konfiguriert werden können. Skalierungsgruppen mit mehr als 100 VMs erstrecken sich auf mehrere Platzierungsgruppen. Weitere Informationen zu Platzierungsgruppen finden Sie unter [Verwenden umfangreicher VM-Skalierungsgruppen](virtual-machine-scale-sets-placement-groups.md). Eine Verfügbarkeitsgruppe mit virtuellen Computern kann sich im gleichen virtuellen Netzwerk befinden wie eine Skalierungsgruppe mit virtuellen Computern. Oftmals werden virtuelle Steuerknotencomputer (für die häufig eine eindeutige Konfiguration erforderlich ist) in einer Verfügbarkeitsgruppe und Datenknoten in der Skalierungsgruppe platziert.
+Eine regionale (nicht auf eine Zone beschränkte) Skalierungsgruppe verwendet *Platzierungsgruppen*, die als implizite Verfügbarkeitsgruppe mit fünf Fehlerdomänen und fünf Updatedomänen konfiguriert werden können. Skalierungsgruppen mit mehr als 100 VMs erstrecken sich auf mehrere Platzierungsgruppen. Weitere Informationen zu Platzierungsgruppen finden Sie unter [Verwenden umfangreicher VM-Skalierungsgruppen](virtual-machine-scale-sets-placement-groups.md). Eine Verfügbarkeitsgruppe mit virtuellen Computern kann sich im gleichen virtuellen Netzwerk befinden wie eine Skalierungsgruppe mit virtuellen Computern. Oftmals werden virtuelle Steuerknotencomputer (für die häufig eine eindeutige Konfiguration erforderlich ist) in einer Verfügbarkeitsgruppe und Datenknoten in der Skalierungsgruppe platziert.
 
-**F.** Funktionieren Skalierungsgruppen mit Azure-Verfügbarkeitszonen?
+### <a name="do-scale-sets-work-with-azure-availability-zones"></a>Funktionieren Skalierungsgruppen mit Azure-Verfügbarkeitszonen?
 
-**A.**  Ja. Weitere Informationen hierzu finden Sie in der [Dokumentation zu Skalierungsgruppen über verschiedene Verfügbarkeitszonen hinweg](./virtual-machine-scale-sets-use-availability-zones.md).
+ Ja. Weitere Informationen hierzu finden Sie in der [Dokumentation zu Skalierungsgruppen über verschiedene Verfügbarkeitszonen hinweg](./virtual-machine-scale-sets-use-availability-zones.md).
 
 
 ## <a name="autoscale"></a>Autoscale

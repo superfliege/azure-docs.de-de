@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 9b4bceba53658cb8ac3c73e75e0d19faf3fe3f0b
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: c15242b0c480e2da39897b850ab7b2a2fd05bf11
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259753"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59489282"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Metriken von Azure Storage Analytics (klassisch)
 
@@ -75,7 +75,7 @@ Gehen Sie wie folgt vor, um Metriken im [Azure-Portal](https://portal.azure.com)
 Das [Azure-Portal](https://portal.azure.com) unterstützt zurzeit die Konfiguration von minütlichen Metriken in Ihrem Speicherkonto nicht. Sie müssen minütliche Metriken mithilfe von PowerShell oder programmgesteuert aktivieren.
 
 > [!NOTE]
->  Beachten Sie, dass das Azure-Portal zurzeit die Konfiguration von minütlichen Metriken in Ihrem Speicherkonto nicht unterstützt. Minütliche Metriken müssen mithilfe von PowerShell oder programmgesteuert aktiviert werden.  
+>  Beachten Sie, dass das Azure-Portal zurzeit die Konfiguration von minütlichen Metriken in Ihrem Speicherkonto nicht unterstützt. Minütliche Metriken müssen mithilfe von PowerShell oder programmgesteuert aktiviert werden.
 
 ## <a name="enable-storage-metrics-using-powershell"></a>Aktivieren von Speichermetriken mithilfe von PowerShell  
 Sie können PowerShell auf Ihrem lokalen Computer zum Konfigurieren der Speichermetriken in Ihrem Speicherkonto verwenden, indem Sie das Azure PowerShell-Cmdlet **Get-AzureStorageServiceMetricsProperty** ausführen, um die aktuellen Einstellungen abzurufen. Mithilfe des Cmdlets **Set-AzureStorageServiceMetricsProperty** können Sie die aktuellen Einstellungen ändern.  

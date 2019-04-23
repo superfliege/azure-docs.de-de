@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 0a2e2a3d817140a6ab15dab0093b4025a3bfd76c
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916653"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Allgemeine Starttasks für Clouddienste
@@ -31,7 +31,7 @@ In [diesem Artikel](cloud-services-startup-tasks.md) erfahren Sie etwas über di
 > 
 
 ## <a name="define-environment-variables-before-a-role-starts"></a>Definieren von Umgebungsvariablen vor dem Starten einer Rolle
-Wenn Sie Umgebungsvariablen für einen bestimmten Task benötigen, können Sie das [Environment]-Element innerhalb des [Task]-Elements verwenden.
+Wenn Sie Umgebungsvariablen für einen bestimmten Task benötigen, können Sie das [Umgebung]-Element innerhalb des [Aufgabe]-Elements verwenden.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -131,7 +131,7 @@ Die zweite Firewall kontrolliert Verbindungen zwischen einem virtuellen Computer
 
 Azure erstellt Firewallregeln für die in den Rollen gestarteten Prozesse. Wenn Sie beispielsweise einen Dienst oder ein Programm starten, erstellt Azure automatisch die erforderlichen Firewallregeln, die diesem Dienst das Kommunizieren mit dem Internet ermöglichen. Wenn Sie einen Dienst erstellen, der durch einen Prozess außerhalb Ihrer Rolle gestartet wird (z.B. einen COM+-Dienst oder einen geplanten Windows-Task), müssen Sie manuell eine Firewallregel für den Zugriff auf diesen Dienst erstellen. Diese Firewallregeln können unter Verwendung einer Starttask erstellt werden.
 
-Ein Starttask, der eine Firewallregel erstellt, muss einen [executionContext][Task] mit der Einstellung **elevated** zurückgeben. Fügen Sie folgenden Starttask der Datei [ServiceDefinition.csdef] hinzu.
+Ein Starttask, der eine Firewallregel erstellt, muss einen [executionContext][aufgabe] mit der Einstellung **elevated** zurückgeben. Fügen Sie folgenden Starttask der Datei [ServiceDefinition.csdef] hinzu.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -472,12 +472,12 @@ Beispielausgabe in der Datei **StartupLog.txt**:
 ### <a name="set-executioncontext-appropriately-for-startup-tasks"></a>Legen Sie einen geeigneten ExecutionContext für die Starttasks fest
 Legen Sie geeignete Berechtigungen für den Starttask fest. Manchmal müssen Starttasks mit erhöhten Rechten ausgeführt werden, selbst wenn die Rolle mit normalen Berechtigungen ausgeführt wird.
 
-Das Befehlszeilentool [executionContext][Task] -Attribut legt die Berechtigungsstufe des Starttasks fest. Der Wert `executionContext="limited"` bedeutet, dass der Starttask die gleiche Berechtigungsstufe wie die Rolle aufweist. Der Wert `executionContext="elevated"` bedeutet, dass der Starttask über Administratorrechte verfügt, wodurch der Starttask Administratoraufgaben ausführen kann, ohne dass Sie der Rolle Administratorrechte zuweisen müssen.
+Das Befehlszeilentool [executionContext][aufgabe] -Attribut legt die Berechtigungsstufe des Starttasks fest. Der Wert `executionContext="limited"` bedeutet, dass der Starttask die gleiche Berechtigungsstufe wie die Rolle aufweist. Der Wert `executionContext="elevated"` bedeutet, dass der Starttask über Administratorrechte verfügt, wodurch der Starttask Administratoraufgaben ausführen kann, ohne dass Sie der Rolle Administratorrechte zuweisen müssen.
 
 Ein Beispiel für einen Starttask, der erhöhte Rechte erfordert, ist ein Starttask, der **AppCmd.exe** zum Konfigurieren von IIS verwendet. **AppCmd.exe** erfordert `executionContext="elevated"`.
 
 ### <a name="use-the-appropriate-tasktype"></a>Verwenden Sie einen geeigneten taskType
-Das [taskType][Task]-Attribut bestimmt, wie der Starttask ausgeführt wird. Es gibt drei Werte: **simple**, **background** und **foreground**. Die background- und foreground-Tasks werden asynchron gestartet. Die simple-Tasks werden dann synchron jeweils nacheinander ausgeführt.
+Das [taskType][aufgabe]-Attribut bestimmt, wie der Starttask ausgeführt wird. Es gibt drei Werte: **simple**, **background** und **foreground**. Die background- und foreground-Tasks werden asynchron gestartet. Die simple-Tasks werden dann synchron jeweils nacheinander ausgeführt.
 
 Bei **simple**-Starttasks lässt sich die Reihenfolge, in der die Tasks abgearbeitet werden, durch die Reihenfolge der Tasks in der Datei ServiceDefinition.csdef festlegen. Wenn ein **simple**-Task mit einem von Null abweichenden Exitcode beendet wird, dann wird die Startprozedur beendet, und die Rolle wird nicht gestartet.
 
@@ -510,11 +510,11 @@ Erfahren Sie mehr über die Funktionsweise von [Tasks](cloud-services-startup-ta
 [Aufgabe]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
-[Environment]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
+[Umgebung]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
 [Variable]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-[Endpunkte]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
+[EndPoints]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
 [LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue

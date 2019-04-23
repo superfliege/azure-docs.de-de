@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: crdun
 ms.openlocfilehash: 8f014f1cb40e1a629d1989f00805fc91015a3ae9
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58886011"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Verwenden des verwalteten Clients für Azure Mobile Apps
@@ -96,10 +96,10 @@ Der folgende Abschnitt enthält Informationen zum Suchen und Abrufen von Datens�
 
 * [Erstellen eines Tabellenverweises](#instantiating)
 * [Abfragen von Daten](#querying)
-* [Filtern zurückgegebener Daten](#filtering)
-* [Sortieren zurückgegebener Daten](#sorting)
-* [Seitenweises Zurückgeben von Daten](#paging)
-* [Auswählen bestimmter Spalten](#selecting)
+* [Zurückgegebene Daten filtern](#filtering)
+* [Zurückgegebene Daten sortieren](#sorting)
+* [Daten seitenweise zurückgeben](#paging)
+* [Bestimmte Spalten auswählen](#selecting)
 * [Suchen eines Datensatzes nach ID](#lookingup)
 * [Umgang mit nicht typisierten Abfragen](#untypedqueries)
 * [Einfügen von Daten](#inserting)
@@ -109,7 +109,7 @@ Der folgende Abschnitt enthält Informationen zum Suchen und Abrufen von Datens�
 * [Binden an eine Windows-Benutzeroberfläche](#binding)
 * [Ändern der Seitengröße](#pagesize)
 
-### <a name="instantiating"></a>Gewusst wie: Erstellen eines Tabellenverweises
+### <a name="instantiating"></a>Vorgehensweise: Erstellen eines Tabellenverweises
 Jeglicher Code zum Abrufen oder Ändern von Daten in einer Back-End-Tabelle ruft Funktionen des `MobileServiceTable` -Objekts auf. Rufen Sie einen Verweis auf die Tabelle ab, indem Sie wie folgt die Methode [GetTable] aufrufen:
 
 ```csharp
@@ -128,11 +128,11 @@ Bei nicht typisierten Abfragen müssen Sie die zugrunde liegende OData-Abfrageze
 ### <a name="querying"></a>Vorgehensweise: Abfragen von Daten aus Ihrer mobilen App
 Dieser Abschnitt beschreibt, wie Sie Abfragen an Ihr Mobile App-Back-End stellen können. Dies umfasst folgende Funktionen:
 
-* [Filtern zurückgegebener Daten](#filtering)
-* [Sortieren zurückgegebener Daten](#sorting)
-* [Seitenweises Zurückgeben von Daten](#paging)
-* [Auswählen bestimmter Spalten](#selecting)
-* [Abrufen von Daten nach ID](#lookingup)
+* [Zurückgegebene Daten filtern](#filtering)
+* [Zurückgegebene Daten sortieren](#sorting)
+* [Daten seitenweise zurückgeben](#paging)
+* [Bestimmte Spalten auswählen](#selecting)
+* [Daten nach ID abrufen](#lookingup)
 
 > [!NOTE]
 > Es wird die Verwendung einer servergesteuerten Seitengröße erzwungen, um zu verhindern, dass alle Zeilen zurückgegeben werden.  Durch Paging wird verhindert, dass Standardabfragen für große Datensätze den Dienst negativ beeinflussen.  Verwenden Sie die Methoden `Skip` und `Take`, um mehr als 50 Zeilen zurückzugeben, wie unter [Seitenweises Zurückgeben von Daten](#paging) beschrieben.
@@ -462,7 +462,7 @@ private async Task ResolveConflict(TodoItem localItem, TodoItem serverItem)
 }
 ```
 
-Weitere Informationen finden Sie im Thema [Synchronisieren von Offlinedaten in Azure Mobile Apps] .
+Weitere Informationen finden Sie im Thema [Offlinedatensynchronisierung in Azure Mobile Apps] .
 
 ### <a name="binding"></a>Vorgehensweise: Binden von Mobile Apps-Daten an eine Windows-Benutzeroberfläche
 In diesem Abschnitt wird das Anzeigen zurückgegebener Datenobjekte mithilfe von UI-Elementen in einer Windows-App beschrieben.  Der folgende Beispielcode wird mit einer Abfrage für unvollständige Elemente an die Quelle der Liste gebunden. Die [MobileServiceCollection] erstellt eine Bindungssammlung, die Mobile Apps unterstützt.
@@ -618,20 +618,20 @@ Diese Form ist ein typisierter Methodenaufruf, der erfordert, dass der **MarkAll
 Die InvokeApiAsync()-Methode stellt „/api/“ der API voran, die Sie aufrufen möchten, sofern diese API nicht mit einem Schrägstrich „/“ beginnt.
 Beispiel: 
 
-* `InvokeApiAsync("completeAll",...)` ruft „/api/completeAll“ auf dem Back-End auf.
-* `InvokeApiAsync("/.auth/me",...)` ruft „/.auth/me“ auf dem Back-End auf.
+* `InvokeApiAsync("completeAll",...)` ruft /api/completeAll auf dem Back-End auf.
+* `InvokeApiAsync("/.auth/me",...)` ruft /.auth/me auf dem Back-End auf.
 
 Sie können mit InvokeApiAsync jede WebAPI aufrufen, einschließlich WebAPIs, die nicht in Azure Mobile Apps definiert sind.  Bei Verwendung von InvokeApiAsync() werden die entsprechenden Header, einschließlich der Authentifizierungsheader, mit der Anforderung gesendet.
 
 ## <a name="authentication"></a>Authentifizieren von Benutzern
-Mobile Apps unterstützt die Authentifizierung und Autorisierung von App-Benutzern mithilfe verschiedener externer Identitätsanbieter: Facebook, Google, Microsoft-Konto, Twitter und Azure Active Directory. Sie können Berechtigungen für Tabellen vergeben, um den Zugriff auf bestimmte Operationen auf authentifizierte Benutzer zu beschränken. Außerdem können Sie die Identität authentifizierter Benutzer verwenden, um Autorisierungsregeln in Serverskripts zu implementieren. Weitere Informationen finden Sie im Lernprogramm [Authentifizierung zu Ihrer App hinzufügen].
+Mobile Apps unterstützt die Authentifizierung und Autorisierung von App-Benutzern mithilfe verschiedener externer Identitätsanbieter: Facebook, Google, Microsoft-Konto, Twitter und Azure Active Directory. Sie können Berechtigungen für Tabellen vergeben, um den Zugriff auf bestimmte Operationen auf authentifizierte Benutzer zu beschränken. Außerdem können Sie die Identität authentifizierter Benutzer verwenden, um Autorisierungsregeln in Serverskripts zu implementieren. Weitere Informationen finden Sie im Lernprogramm [Hinzufügen von Authentifizierung zur App].
 
 Zwei Authentifizierungsflüsse werden unterstützt: *vom Client verwalteter* und *vom Server verwalteter* Fluss. Der vom Server verwaltete Fluss bietet die einfachste Authentifizierungsform, da in diesem Fall die Authentifizierungs-Webschnittstelle des Anbieters verwendet wird. Der vom Client verwaltete Fluss ermöglicht eine tiefere Integration mit gerätespezifischen Fähigkeiten, da in diesem Fall anbieterspezifische und gerätespezifische SDKs verwendet werden.
 
 > [!NOTE]
 > In Ihren Produktions-Apps sollten Sie einen vom Client verwalteten Fluss nutzen.
 
-Zum Einrichten der Authentifizierung müssen Sie Ihre App bei mindestens einem Identitätsanbieter registrieren.  Der Identitätsanbieter generiert eine Client-ID und einen geheimen Clientschlüssel für Ihre App.  Diese Werte werden in Ihrem Back-End festgelegt, um die Authentifizierung/Autorisierung über Azure App Service zu aktivieren.  Weitere Informationen finden Sie in den detaillierten Anweisungen im Tutorial [Hinzufügen von Authentifizierung zu Ihrer App].
+Zum Einrichten der Authentifizierung müssen Sie Ihre App bei mindestens einem Identitätsanbieter registrieren.  Der Identitätsanbieter generiert eine Client-ID und einen geheimen Clientschlüssel für Ihre App.  Diese Werte werden in Ihrem Back-End festgelegt, um die Authentifizierung/Autorisierung über Azure App Service zu aktivieren.  Weitere Informationen finden Sie in den detaillierten Anweisungen im Tutorial [Hinzufügen von Authentifizierung zur App].
 
 In diesem Abschnitt werden die folgenden Themen behandelt:
 
@@ -650,7 +650,7 @@ Für die folgenden clientflussbezogenen Authentifizierungsmuster werden Beispiel
 #### <a name="adal"></a>Authentifizieren von Benutzern mit der Active Directory Authentication Library
 Nutzen Sie die Active Directory-Authentifizierungsbibliothek (Active Directory Authentication Library, ADAL), um die Benutzerauthentifizierung auf dem Client mithilfe der Azure Active Directory-Authentifizierung einzuleiten.
 
-1. Konfigurieren Sie Ihr mobiles App-Back-End für die AAD-Anmeldung, indem Sie die im Tutorial [So konfigurieren Sie Ihre App Service-Anwendung zur Verwendung der Azure Active Directory-Anmeldung] beschriebenen Schritte ausführen. Schließen Sie auch den optionalen Schritt zur Registrierung einer nativen Clientanwendung ab.
+1. Konfigurieren Sie Ihr mobiles App-Back-End für die AAD-Anmeldung, indem Sie die im Tutorial [Konfigurieren von App Service für eine Active Directory-Anmeldung] beschriebenen Schritte ausführen. Schließen Sie auch den optionalen Schritt zur Registrierung einer nativen Clientanwendung ab.
 2. Öffnen Sie Ihr Projekt in Visual Studio oder Xamarin Studio, und fügen Sie einen Verweis auf das NuGet-Paket `Microsoft.IdentityModel.Clients.ActiveDirectory` hinzu. Nehmen Sie in die Suche auch Vorabversionen auf.
 3. Fügen Sie je nach verwendeter Plattform den folgenden Code zu Ihrer Anwendung hinzu. Nehmen Sie dabei die folgenden Änderungen vor:
 
@@ -830,7 +830,7 @@ Falls Sie einen anderen Identitätsanbieter als Facebook verwenden, ändern Sie 
 In einem Serverfluss verwaltet Azure App Service den OAuth-Authentifizierungsfluss durch Anzeigen der Anmeldeseite des ausgewählten Anbieters.  Sobald der Identitätsanbieter eine Antwort zurückgibt, generiert Azure App Service ein App Service-Authentifizierungstoken. Die [LoginAsync]-Methode gibt einen [MobileServiceUser] zurück, der sowohl die [UserId] des authentifizierten Benutzers als auch das [MobileServiceAuthenticationToken] in Form eines JSON-Webtokens (JWT) bereitstellt. Dieses Token kann zwischengespeichert und wiederverwendet werden, bis es abläuft. Weitere Informationen finden Sie unter [Zwischenspeichern des Authentifizierungstokens](#caching).
 
 ### <a name="caching"></a>Zwischenspeichern des Authentifizierungstokens
-In einigen Fällen kann der Aufruf der Anmeldemethode nach der ersten erfolgreichen Authentifizierung vermieden werden, indem das Authentifizierungstoken des Anbieters gespeichert wird.  Microsoft Store- und UWP-Apps können nach einer erfolgreichen Anmeldung [PasswordVault] zum Zwischenspeichern des aktuellen Authentifizierungstokens verwenden:
+In einigen Fällen kann der Aufruf der Anmeldemethode nach der ersten erfolgreichen Authentifizierung vermieden werden, indem das Authentifizierungstoken des Anbieters gespeichert wird.  Microsoft Store- und UWP-Apps können nach einer erfolgreichen Anmeldung [Kennworttresor] zum Zwischenspeichern des aktuellen Authentifizierungstokens verwenden:
 
 ```csharp
 await client.LoginAsync(MobileServiceAuthenticationProvider.Facebook);
@@ -885,7 +885,7 @@ Die folgenden Themen behandeln Pushbenachrichtigungen:
 * [Abrufen einer Microsoft Store-Paket-SID](#package-sid)
 * [Registrieren von Pushvorlagen zum Senden plattformübergreifender Benachrichtigungen](#register-xplat)
 
-### <a name="register-for-push"></a>Gewusst wie: Registrieren für Pushbenachrichtigungen
+### <a name="register-for-push"></a>Vorgehensweise: Registrieren für Pushbenachrichtigungen
 Mit dem Mobile Apps-Client können Sie die App für Pushbenachrichtigungen mit Azure Notification Hubs registrieren. Wenn Sie sich registrieren, erhalten Sie ein Handle, das vom plattformspezifischen Pushbenachrichtigungsdienst bezogen wird. Diesen Wert müssen Sie zusammen mit allen übrigen Tags beim Registrieren angeben. Der folgende Code registriert Ihre Windows-App für Pushbenachrichtigungen mit dem Windows-Benachrichtigungsdienst (Windows Notification Service, WNS):
 
 ```csharp
@@ -899,7 +899,7 @@ private async void InitNotificationsAsync()
 }
 ```
 
-Für Pushvorgänge an den WNS MÜSSEN Sie [eine Microsoft Store-Paket-SID abrufen](#package-sid).  Weitere Informationen zu Windows-Apps, z. B. zum Registrieren für Vorlagenregistrierungen, finden Sie unter [Hinzufügen von Pushbenachrichtigungen zu Ihrer App].
+Für Pushvorgänge an den WNS MÜSSEN Sie [eine Microsoft Store-Paket-SID abrufen](#package-sid).  Weitere Informationen zu Windows-Apps, z. B. zum Registrieren für Vorlagenregistrierungen, finden Sie unter [Hinzufügen von Pushbenachrichtigungen zur App].
 
 Die Anforderung von Tags vom Client wird nicht unterstützt.  Tag-Anforderungen werden automatisch aus der Registrierung gelöscht.
 Wenn Sie Ihr Gerät mit Tags registrieren möchten, erstellen Sie eine benutzerdefinierte API, die die Notification Hubs-API verwendet, um die Registrierung in Ihrem Namen auszuführen.  Rufen Sie anstelle der `RegisterNativeAsync()`-Methode die benutzerdefinierte API auf.
@@ -922,7 +922,7 @@ Xamarin-Apps erfordern zusätzlichen Code, um eine App registrieren zu können, 
 * [Xamarin.Android](app-service-mobile-xamarin-android-get-started-push.md#add-push)
 * [Xamarin.iOS](app-service-mobile-xamarin-ios-get-started-push.md#add-push-notifications-to-your-app)
 
-### <a name="register-xplat"></a>Gewusst wie: Registrieren von Pushvorlagen zum Senden plattformübergreifender Benachrichtigungen
+### <a name="register-xplat"></a>Vorgehensweise: Registrieren von Pushvorlagen zum Senden plattformübergreifender Benachrichtigungen
 Verwenden Sie die `RegisterAsync()` -Methode wie folgt, um Vorlagen zu registrieren:
 
 ```csharp
@@ -1040,7 +1040,7 @@ public class MyHandler : DelegatingHandler
 [12]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient(v=azure.10).aspx
 
 [Hinzufügen von Authentifizierung zur App]: app-service-mobile-windows-store-dotnet-get-started-users.md
-[Synchronisierung von Offlinedaten in Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
+[Offlinedatensynchronisierung in Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
 [Hinzufügen von Pushbenachrichtigungen zur App]: app-service-mobile-windows-store-dotnet-get-started-push.md
 [Register your app to use a Microsoft account login]: ../app-service/configure-authentication-provider-microsoft.md
 [Konfigurieren von App Service für eine Active Directory-Anmeldung]: ../app-service/configure-authentication-provider-aad.md
@@ -1064,17 +1064,17 @@ public class MyHandler : DelegatingHandler
 [ReadAsync]: https://msdn.microsoft.com/library/azure/mt691741(v=azure.10).aspx
 [Take]: https://msdn.microsoft.com/library/azure/dn250574(v=azure.10).aspx
 [Select]: https://msdn.microsoft.com/library/azure/dn250569(v=azure.10).aspx
-[Überspringen]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
+[Skip]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
 [UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
 [UserID]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
-[Hierbei gilt:]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
+[Where]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
 [Azure-Portal]: https://portal.azure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
 [Guid.NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
 [ISupportIncrementalLoading]: https://msdn.microsoft.com/library/windows/apps/Hh701916.aspx
 [Windows Dev Center]: https://dev.windows.com/overview
 [DelegatingHandler]: https://msdn.microsoft.com/library/system.net.http.delegatinghandler(v=vs.110).aspx
-[PasswordVault]: https://msdn.microsoft.com/library/windows/apps/windows.security.credentials.passwordvault.aspx
+[Kennworttresor]: https://msdn.microsoft.com/library/windows/apps/windows.security.credentials.passwordvault.aspx
 [ProtectedData]: https://msdn.microsoft.com/library/system.security.cryptography.protecteddata%28VS.95%29.aspx
 [Notification Hubs-APIs]: https://msdn.microsoft.com/library/azure/dn495101.aspx
 [Beispiel für Mobile Apps-Dateien]: https://github.com/Azure-Samples/app-service-mobile-dotnet-todo-list-files

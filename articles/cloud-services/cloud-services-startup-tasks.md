@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 59bfa83ab3432adb7a4df5112367f87014a0b292
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58917616"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Konfigurieren und Ausführen von Startaufgaben für einen Clouddienst
@@ -30,7 +30,7 @@ Mit Startaufgaben können Sie Vorgänge ausführen, bevor eine Rolle gestartet w
 > 
 
 ## <a name="how-startup-tasks-work"></a>Funktionsweise von Startaufgaben
-Startaufgaben sind Aktionen, die ausgeführt werden, bevor die Rollen beginnen. Sie werden in der Datei [ServiceDefinition.csdef] mithilfe des [Task]-Elements im[Start]-Element definiert. Häufig sind Startaufgaben Batchdateien, aber es kann sich auch um Konsolenanwendungen handeln, oder um Batchdateien, die PowerShell-Skripts starten.
+Startaufgaben sind Aktionen, die ausgeführt werden, bevor die Rollen beginnen. Sie werden in der Datei [ServiceDefinition.csdef] mithilfe des [Task]-Elements im[Starten]-Element definiert. Häufig sind Startaufgaben Batchdateien, aber es kann sich auch um Konsolenanwendungen handeln, oder um Batchdateien, die PowerShell-Skripts starten.
 
 Startaufgaben erhalten ihre Informationen aus Umgebungsvariablen, und mit lokalem Speicher können Informationen aus einer Startaufgabe heraus übergeben werden. Eine Umgebungsvariable kann beispielsweise den Pfad zu einem Programm festlegen, das Sie installieren möchten, und Dateien können in den lokalen Speicher geschrieben werden, aus dem sie später von den Rollen gelesen werden können.
 
@@ -99,8 +99,8 @@ Im Folgenden werden die Attribute des **Task** -Elements in der Datei [ServiceDe
 
 **executionContext** – Legt die Berechtigungsstufe für die Startaufgabe fest. Die Berechtigungsstufe kann eingeschränkt oder mit erhöhten Rechten sein:
 
-* **Eingeschränkt**  
-   – Die Startaufgabe wird mit den gleichen Berechtigungen wie die Rolle ausgeführt. Wenn das **executionContext**-Attribut für das [Runtime]-Element ebenfalls **eingeschränkt** ist, werden Benutzerberechtigungen verwendet.
+* **limited**  
+   – Die Startaufgabe wird mit den gleichen Berechtigungen wie die Rolle ausgeführt. Wenn das **executionContext**-Attribut für das [Laufzeit]-Element ebenfalls **eingeschränkt** ist, werden Benutzerberechtigungen verwendet.
 * **elevated**  
    Die Startaufgabe wird mit Administratorrechten ausgeführt. Dadurch können Startaufgaben Programme installieren, IIS-Konfigurationsänderungen oder Registrierungsänderungen durchführen, ohne die Berechtigungsstufe der Rolle selbst zu erhöhen.  
 
@@ -111,7 +111,7 @@ Im Folgenden werden die Attribute des **Task** -Elements in der Datei [ServiceDe
 
 **taskType** – Legt fest, wie eine Startaufgabe ausgeführt wird.
 
-* **Einfach**  
+* **simple**  
   – Die Aufgaben werden synchron und nacheinander in der Reihenfolge ausgeführt, in der sie in der Datei [ServiceDefinition.csdef] aufgeführt werden. Wenn eine **simple**-Startaufgabe mit **errorlevel** Null (0) beendet wird, wird die nächste **simple**-Startaufgabe ausgeführt. Wenn keine weiteren **simple** -Startaufgaben ausgeführt werden sollen, wird die Rolle selbst gestartet.   
   
   > [!NOTE]
@@ -122,13 +122,13 @@ Im Folgenden werden die Attribute des **Task** -Elements in der Datei [ServiceDe
     Um sicherzustellen, dass die Batchdatei mit **errorlevel** Null (0) beendet wird, führen Sie den Befehl `EXIT /B 0` am Ende des Batchdateiprozesses aus.
 * **background**  
   -Aufgaben werden asynchron, parallel zum Start der Rolle ausgeführt.
-* **Vordergrund**  
+* **foreground**  
   -Aufgaben werden asynchron, parallel zum Start der Rolle ausgeführt. Der Hauptunterschied zwischen einer **foreground**- und einer **background**-Aufgabe ist, dass eine **foreground**-Aufgabe verhindert, dass die Rolle zyklisch erneut gestartet oder heruntergefahren wird, bis die Aufgabe beendet wurde. Die **background** -Aufgaben haben diese Einschränkung nicht.
 
 ## <a name="environment-variables"></a>Umgebungsvariablen
 Umgebungsvariablen sind eine Möglichkeit zur Datenübergabe an eine Startaufgabe. Beispielsweise können Sie dort den Pfad auf ein Blob mit einem zu installierenden Programm, die von der Rolle zu verwendenden Portnummern oder Einstellungen zur Steuerung der Startaufgabe festlegen.
 
-Es gibt zwei Arten von Umgebungsvariablen für Startaufgaben: statische Umgebungsvariablen und Umgebungsvariablen basierend auf Mitgliedern der [RoleEnvironment] -Klasse. Beide befinden sich im [Environment]-Abschnitt der Datei [ServiceDefinition.csdef], und beide verwenden das [Variable]-Element und das **name**-Attribut.
+Es gibt zwei Arten von Umgebungsvariablen für Startaufgaben: statische Umgebungsvariablen und Umgebungsvariablen basierend auf Mitgliedern der [RoleEnvironment] -Klasse. Beide befinden sich im [Umgebung]-Abschnitt der Datei [ServiceDefinition.csdef], und beide verwenden das [Variable]-Element und das **name**-Attribut.
 
 Statische Umgebungsvariablen verwenden das **value** -Attribut des [Variable] -Elements. Im obigen Beispiel wird die Umgebungsvariable **MyVersionNumber** erstellt, die den statischen Wert „**1.0.0.0**“ erhält. Ein weiteres Beispiel wäre das Erstellen einer **StagingOrProduction**-Umgebungsvariable, die Sie manuell auf die Werte „**staging**“ oder „**production**“ setzen können, um anhand des Werts der **StagingOrProduction**-Umgebungsvariablen verschiedene Startvorgänge auszuführen.
 
@@ -161,10 +161,10 @@ Erfahren Sie, wie Sie einige [allgemeine Startaufgaben](cloud-services-startup-t
 [Paket](cloud-services-model-and-package.md) des Clouddiensts erstellen.  
 
 [ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
-[Aufgabe]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
+[Task]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Starten]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Laufzeit]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
-[Environment]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
+[Umgebung]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
 [Variable]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx

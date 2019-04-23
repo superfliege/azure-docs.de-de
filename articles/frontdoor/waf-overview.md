@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: kumud;tyao
 ms.openlocfilehash: 17cf6629aca6c73bc96e4cf0c172a2e87a7aafb8
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58909990"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59799166"
 ---
 # <a name="what-is-azure-web-application-firewall-for-azure-front-door-preview"></a>Was ist Azure Web Application Firewall für Azure Front Door?  (Vorschau)
 
@@ -57,7 +57,7 @@ Für die Ausführung der WAF-Richtlinie können die beiden folgenden Modi konfig
 ## <a name="waf-actions"></a>WAF-Aktionen
 
 Für WAF-Kunden stehen die folgenden Aktionen zur Auswahl, die beim Erfüllen einer Regelbedingung durch eine Anforderung ausgeführt werden:
-- **ALLOW:**  Die Anforderung passiert die WAF und wird an das Back-End weitergeleitet. Diese Anforderung kann mit Regeln niedrigerer Priorität nicht mehr gesperrt werden.
+- **Zulassen**:  Die Anforderung passiert die WAF und wird an das Back-End weitergeleitet. Diese Anforderung kann mit Regeln niedrigerer Priorität nicht mehr gesperrt werden.
 - **BLOCK:** Die Anforderung wird gesperrt. WAF sendet eine Antwort an den Client, ohne die Anforderung an das Back-End weiterzuleiten.
 - **LOG:**  Die Anforderung wird in den WAF-Protokollen protokolliert, und WAF setzt den Vorgang mit dem Auswerten von Regeln mit niedriger Priorität fort.
 - **REDIRECT:** WAF leitet die Anforderung an den angegebenen URI weiter. Der URI wird als Einstellung auf Richtlinienebene angegeben. Nach der Konfiguration werden alle Anforderungen, die der Aktion **REDIRECT** entsprechen, an diesen URI gesendet.
@@ -94,7 +94,7 @@ Von Azure verwaltete Regelsätze bieten eine einfache Möglichkeit zum Bereitste
 - Remotebefehlsausführung
 - Remote File Inclusion
 - Session Fixation
-- Schutz vor SQL Injection
+- Schutz vor Einschleusung von SQL-Befehlen
 
 Die Versionsnummer des Standardregelsatzes wird erhöht, wenn dem Regelsatz neue Angriffssignaturen hinzugefügt werden.
 Der Standardregelsatz wird standardmäßig im Erkennungsmodus in den WAF-Richtlinien aktiviert. Sie können einzelne Regeln im Standardregelsatz deaktivieren bzw. aktivieren, um die Anforderungen Ihrer Anwendungen zu erfüllen. Sie können pro Regel auch bestimmte Aktionen (ALLOW/BLOCK/REDIRECT/LOG) festlegen. Standardaktion ist BLOCK. Außerdem können in der gleichen WAF-Richtlinie auch benutzerdefinierte Regeln konfiguriert werden, wenn Sie eine der vorkonfigurierten Regeln im Standardregelsatz umgehen möchten.

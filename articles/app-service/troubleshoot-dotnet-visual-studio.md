@@ -16,10 +16,10 @@ ms.date: 08/29/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 67fba7a921868d0e5720216208cff7c298c926f6
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895012"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Problembehandlung von Apps in Azure App Service mit Visual Studio
@@ -639,8 +639,8 @@ Weitere Informationen zum Debugmodus in Visual Studio finden Sie unter [Debuggen
 Weitere Informationen zum Remotedebuggen für App Service-Apps und WebJobs finden Sie in den folgenden Ressourcen:
 
 * [Introduction to Remote Debugging Azure App Service](https://azure.microsoft.com/blog/2014/05/06/introduction-to-remote-debugging-on-azure-web-sites/) (Einführung in das Remotedebuggen von Azure App Service).
-* [Introduction to Remote Debugging Azure App Service part 2 – Inside Remote debugging (Einführung in das Remotedebuggen von Azure App Service Teil 2 – Einblick in das Remotedebuggen)](https://azure.microsoft.com/blog/2014/05/07/introduction-to-remote-debugging-azure-web-sites-part-2-inside-remote-debugging/)
-* [Introduction to Remote Debugging on Azure App Service part 3 – Multi-Instance environment and GIT (Einführung in das Remotedebuggen von Azure App Service Teil 3 – Mehrinstanzenumgebung und GIT)](https://azure.microsoft.com/blog/2014/05/08/introduction-to-remote-debugging-on-azure-web-sites-part-3-multi-instance-environment-and-git/)
+* [Introduction to Remote Debugging Azure App Service part 2 – Inside Remote debugging](https://azure.microsoft.com/blog/2014/05/07/introduction-to-remote-debugging-azure-web-sites-part-2-inside-remote-debugging/) (Einführung in das Remotedebuggen von Azure App Service Teil 2 – Einblick in das Remotedebuggen)
+* [Introduction to Remote Debugging on Azure App Service part 3 – Multi-Instance environment and GIT](https://azure.microsoft.com/blog/2014/05/08/introduction-to-remote-debugging-on-azure-web-sites-part-3-multi-instance-environment-and-git/) (Einführung in das Remotedebuggen von Azure App Service Teil 3 – Mehrinstanzenumgebung und GIT)
 * [Debuggen von WebJobs (Video)](https://www.youtube.com/watch?v=ncQm9q5ZFZs&list=UU_SjTh-ZltPmTYzAybypB-g&index=1)
 
 Wenn Ihre App eine Azure-Web-API oder ein Mobile Services-Back-End verwendet und Sie diese Komponenten debuggen möchten, finden Sie weitere Informationen unter [Debugging .NET Backend in Visual Studio](https://blogs.msdn.com/b/azuremobile/archive/2014/03/14/debugging-net-backend-in-visual-studio.aspx) (Debuggen des .NET Back-Ends in Visual Studio).

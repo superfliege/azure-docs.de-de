@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: jowargo
-ms.openlocfilehash: 60dbef0f0d6532c9cd30c59902236b7ae4e70b0e
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 642e586371a0ce6abe362f8b10b54bfd8baff678
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524190"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998922"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Pushbenachrichtigungen mit Azure Notification Hubs: Häufig gestellte Fragen
 
@@ -53,17 +53,6 @@ Bei den Notification Hubs-Tarifen „Basic“ und „Standard“ können ordnung
 
 > [!NOTE]
 > Da Pushbenachrichtigungen auf Plattformbenachrichtigungssysteme von Drittanbietern (etwa APNS von Apple oder FCM von Google) angewiesen sind, wird die Übermittlung derartiger Nachrichten nicht per SLA garantiert. Nachdem Notification Hubs die Batches an Plattformbenachrichtigungssysteme gesendet hat (was per SLA garantiert wird), sind die Plattformbenachrichtigungssysteme für die Zustellung der Pushbenachrichtigungen zuständig (nicht per SLA garantiert).
-
-### <a name="which-customers-are-using-notification-hubs"></a>Welche Kunden verwenden Notification Hubs?
-
-Notification Hubs wird von vielen Kunden verwendet. Im Anschluss finden Sie ein paar namhafte Bespiele:
-
-* Sochi 2014: Hunderte Interessengruppen, über drei Millionen Geräte und über 150 Millionen verschickte Benachrichtigungen in zwei Wochen. [Fallstudie: Sochi]
-* Skanska: [Fallstudie: Skanska]
-* Seattle Times: [Fallstudie: Seattle Times]
-* Mural.ly: [Fallstudie: Mural.ly]
-* 7Digital: [Fallstudie: 7Digital]
-* Bing Apps: Mehrere Millionen Geräte senden täglich drei Millionen Benachrichtigungen.
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>Wie stufe ich meinen Hub oder meinen Namespace auf einen anderen Tarif hoch oder herab?
 
@@ -219,11 +208,6 @@ Sie können auch programmgesteuert auf Metriken zugreifen. Weitere Informationen
 [Azure-Portal]: https://portal.azure.com
 [Notification Hubs – Preise]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
-[Fallstudie: Sochi]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=7942
-[Fallstudie: Skanska]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=5847
-[Fallstudie: Seattle Times]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=8354
-[Fallstudie: Mural.ly]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11592
-[Fallstudie: 7Digital]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=3684
 [REST-APIs für Notification Hubs]: https://msdn.microsoft.com/library/azure/dn530746.aspx
 [Einführungstutorials für Notification Hubs]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
 [Erste Schritte mit Notification Hubs für Chrome-Apps]: https://azure.microsoft.com/documentation/articles/notification-hubs-chrome-get-started/

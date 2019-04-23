@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory-Zugriffstokenreferenz | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie mehr über Zugriffstoken, die von den v1.0- und v2.0-Endpunkten von Azure AD ausgegeben werden.
+title: Referenz der Microsoft Identity Platform-Zugriffstoken | Azure
+description: Hier erfahren Sie mehr über Zugriffstoken, die von den Azure AD v1.0- und Microsoft Identity Platform-Endpunkten (v2.0) ausgegeben werden.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -12,30 +12,31 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/15/2019
+ms.date: 04/13/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b94004aa4b4834be80c13a044fcf7eb0023b6f7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 07e140ef9f561625bb89498c6b6591734e8a9b10
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59259863"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59563758"
 ---
-# <a name="azure-active-directory-access-tokens"></a>Azure Active Directory-Zugriffstoken
+# <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity Platform-Zugriffstoken
 
-Zugriffstoken ermöglichen Clients das sichere Aufrufen von APIs, die durch Azure geschützt sind. Azure Active Directory-Zugriffstoken (Azure AD) sind [JSON Web Token](https://tools.ietf.org/html/rfc7519) (JWTs), d. h. von Azure signierte Base64-codierte JSON-Objekte. Clients sollten Zugriffstoken wie nicht transparente Zeichenfolgen behandeln, da der Inhalt des Tokens nur für die Ressource bestimmt ist. Zu Prüfungs- und Debugzwecken können Entwickler JWTs mit einer Website wie [jwt.ms](https://jwt.ms) decodieren. Ihr Client kann ein Zugriffstoken mit einer Vielzahl von Protokollen von den Endpunkten (v1.0 oder v2.0) abrufen.
+Zugriffstoken ermöglichen Clients das sichere Aufrufen von APIs, die durch Azure geschützt sind. Microsoft Identity Platform-Zugriffstoken sind [JSON Web Token](https://tools.ietf.org/html/rfc7519) (JWTs), d. h. von Azure signierte Base64-codierte JSON-Objekte. Clients sollten Zugriffstoken wie nicht transparente Zeichenfolgen behandeln, da der Inhalt des Tokens nur für die Ressource bestimmt ist. Zu Prüfungs- und Debugzwecken können Entwickler JWTs mit einer Website wie [jwt.ms](https://jwt.ms) decodieren. Ihr Client kann ein Zugriffstoken mit einer Vielzahl von Protokollen von den Endpunkten (v1.0 oder v2.0) abrufen.
 
-Wenn Sie ein Zugriffstoken anfordern, gibt Azure AD auch einige Metadaten zum Zugriffstoken zurück, die von Ihrer App genutzt werden können. Diese Informationen umfassen die Ablaufzeit eines Zugriffstokens und die Bereiche, für die es gilt. Die Daten ermöglichen Ihrer App das intelligente Zwischenspeichern von Zugriffstoken, ohne dass dabei das Zugriffstoken selbst analysiert werden muss.
+Wenn Ihr Client ein Zugriffstoken anfordert, gibt Azure AD auch einige Metadaten zum Zugriffstoken zurück, die von Ihrer App genutzt werden können. Diese Informationen umfassen die Ablaufzeit eines Zugriffstokens und die Bereiche, für die es gilt. Die Daten ermöglichen Ihrer App das intelligente Zwischenspeichern von Zugriffstoken, ohne dass dabei das Zugriffstoken selbst analysiert werden muss.
 
-Wenn Ihre Anwendung eine Ressource (Web-API) ist, für die Clients den Zugriff anfordern können, bieten Zugriffstoken hilfreiche Informationen für die Authentifizierung und Autorisierung, beispielsweise den Benutzer, Client und Aussteller, Berechtigungen usw. 
+Wenn Ihre Anwendung eine Ressource (Web-API) ist, für die Clients den Zugriff anfordern können, bieten Zugriffstoken hilfreiche Informationen für die Authentifizierung und Autorisierung, beispielsweise den Benutzer, Client und Aussteller, Berechtigungen usw.
 
 In den folgenden Abschnitten erfahren Sie, wie eine Ressource die Ansprüche innerhalb eines Zugriffstokens überprüfen und verwenden kann.
 
-> [!NOTE]
-> Wenn Sie Ihre Clientanwendung mit einem persönlichen Konto (z. B. „hotmail.com“ oder „outlook.com“) testen, kann es vorkommen, dass das von Ihrem Client empfangene Zugriffstoken eine nicht transparente Zeichenfolge ist. Dies ist darauf zurückzuführen, dass die Ressource, auf die zugegriffen wird, ältere MSA-Tickets (Microsoft-Konto) angefordert hat, die verschlüsselt sind und nicht vom Client verstanden werden können.
+> [!IMPORTANT]
+> Zugriffstoken werden basierend auf der *Zielgruppe* des Tokens erstellt, d. h. der Anwendung, die die Bereiche im Token besitzt.  Auf diese Weise ermöglicht die Ressourceneinstellung `accessTokenAcceptedVersion` im [Anwendungsmanifest](reference-app-manifest.md#manifest-reference) für `2` einem Client, der den v1.0-Endpunkt aufruft, den Empfang eines v2.0-Zugriffstokens.  Aus diesem Grund ändert die Änderung des Zugriffstokens [optionale Ansprüche](active-directory-optional-claims.md) für Ihren Client auch nicht die Zugriffstoken, die beim Anfordern eines Tokens für `user.read` empfangen wurde, das der MS Graph-Ressource gehört.  
+> Wenn Sie Ihre Clientanwendung mit einem persönlichen Konto (z. B. „hotmail.com“ oder „outlook.com“) testen, kann es aus demselben Grund vorkommen, dass das von Ihrem Client empfangene Zugriffstoken eine nicht transparente Zeichenfolge ist. Dies ist darauf zurückzuführen, dass die Ressource, auf die zugegriffen wird, ältere MSA-Tickets (Microsoft-Konto) angefordert hat, die verschlüsselt sind und nicht vom Client verstanden werden können.
 
 ## <a name="sample-tokens"></a>Beispieltoken
 
@@ -94,7 +95,7 @@ Ansprüche sind nur enthalten, wenn ein Wert zum Füllen des Anspruchs vorhanden
 | `exp` | Ganze Zahl, ein UNIX-Zeitstempel | Der Anspruch „exp“ (Ablaufzeit) gibt die Ablaufzeit an, ab oder nach der das JWT NICHT für die Bearbeitung akzeptiert werden darf. Wichtig ist hierbei, dass eine Ressource das Token auch vor diesem Zeitpunkt ablehnen kann (beispielsweise wenn eine Änderung der Authentifizierung erforderlich ist oder ein Tokenwiderruf erkannt wurde). |
 | `acr` | Zeichenfolge, 0 oder 1 | Der Anspruch „Authentication context class“ (Authentifizierungskontextklasse). Der Wert "0" gibt an, dass die Endbenutzerauthentifizierung nicht die ISO/IEC 29115-Anforderungen erfüllt. |
 | `aio` | Nicht transparente Zeichenfolge | Ein interner Anspruch, der von Azure AD verwendet wird, um Daten für die Wiederverwendung von Token aufzuzeichnen. Ressourcen sollten diesen Anspruch nicht verwenden. |
-| `amr` | JSON-Array von Zeichenfolgen | Ist nur in v1.0-Token vorhanden. Gibt an, wie der Antragsteller des Tokens authentifiziert wurde. Weitere Details finden Sie im Abschnitt zum [amr-Anspruch](#the-amr-claim). |
+| `amr` | JSON-Array von Zeichenfolgen | Ist nur in v1.0-Token vorhanden. Gibt an, wie der Antragsteller des Tokens authentifiziert wurde. Weitere Informationen finden Sie im Abschnitt zum [amr-Anspruch](#the-amr-claim). |
 | `appid` | Zeichenfolge, eine GUID | Ist nur in v1.0-Token vorhanden. Die Anwendungs-ID des Clients, der das Token verwendet. Die Anwendung kann als sie selbst oder im Auftrag eines Benutzers agieren. Die Anwendungs-ID stellt in der Regel ein Anwendungsobjekt dar, kann aber auch ein Dienstprinzipalobjekt in Azure AD darstellen. |
 | `appidacr` | 0, 1 oder 2 | Ist nur in v1.0-Token vorhanden. Gibt an, wie der Client authentifiziert wurde. Bei einem öffentlichen Client ist der Wert 0. Wenn die Client-ID und der geheime Clientschlüssel verwendet werden, ist der Wert 1. Wenn ein Clientzertifikat für die Authentifizierung verwendet wurde, lautet der Wert 2. |
 | `azp` | Zeichenfolge, eine GUID | Ist nur in v2.0-Token vorhanden. Die Anwendungs-ID des Clients, der das Token verwendet. Die Anwendung kann als sie selbst oder im Auftrag eines Benutzers agieren. Die Anwendungs-ID stellt in der Regel ein Anwendungsobjekt dar, kann aber auch ein Dienstprinzipalobjekt in Azure AD darstellen. |
@@ -104,11 +105,11 @@ Ansprüche sind nur enthalten, wenn ein Wert zum Füllen des Anspruchs vorhanden
 | `groups:src1` | JSON-Objekt | Für Tokenanforderungen ohne Längenbeschränkung (siehe `hasgroups` oben), die aber dennoch zu groß für das Token sind, ist ein Link zur Liste der vollständigen Gruppen für den Benutzer enthalten. Für JWTs als verteilter Anspruch, für SAML als neuer Anspruch anstelle des Anspruchs `groups`. <br><br>**JWT-Beispielwert**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.windows.net/{tenantID}/users/{userID}/getMemberObjects" }` |
 | `preferred_username` | Zeichenfolge | Der primäre Benutzername, der den Benutzer darstellt. Dabei kann es sich um eine E-Mail-Adresse, eine Telefonnummer oder einen generischen Benutzernamen ohne bestimmtes Format handeln. Der Wert kann geändert werden und sich im Laufe der Zeit ändern. Da er geändert werden kann, darf dieser Wert nicht verwendet werden, um Autorisierungsentscheidungen zu treffen.  Er kann jedoch für Benutzernamenhinweise verwendet werden. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |
 | `name` | Zeichenfolge | Ein lesbarer Wert, der den Antragsteller des Tokens angibt. Der Wert ist nicht zwingend eindeutig, kann geändert werden und dient nur zu Anzeigezwecken. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |
-| `oid` | Zeichenfolge, eine GUID | Der unveränderliche Bezeichner für ein Objekt in der Microsoft Identity Platform (in diesem Fall ein Benutzerkonto). Er kann auch verwendet werden, um Autorisierungsüberprüfungen auf sichere Weise durchzuführen, und er kann als Schlüssel in Datenbanktabellen genutzt werden. Diese ID identifiziert den Benutzer anwendungsübergreifend eindeutig: Zwei verschiedene Anwendungen, die den gleichen Benutzer anmelden, erhalten den gleichen Wert im `oid`-Anspruch. Dies bedeutet, dass `oid` beim Senden von Abfragen an Microsoft-Onlinedienste wie Microsoft Graph verwendet werden kann. Microsoft Graph gibt diese ID als `id`-Eigenschaft für ein bestimmtes Benutzerkonto zurück. Da mit `oid` mehrere Apps Benutzer korrelieren können, ist der `profile`-Bereich erforderlich, um diesen Anspruch zu erhalten. Beachten Sie Folgendes: Wenn ein einzelner Benutzer in mehreren Mandanten vorhanden ist, enthält der Benutzer in jedem Mandanten eine andere Objekt-ID. Sie werden als unterschiedliche Konten betrachtet, obwohl sich der Benutzer bei jedem Konto mit den gleichen Anmeldeinformationen anmeldet. |
+| `oid` | Zeichenfolge, eine GUID | Der unveränderliche Bezeichner für ein Objekt in der Microsoft Identity Platform (in diesem Fall ein Benutzerkonto). Er kann auch verwendet werden, um Autorisierungsüberprüfungen auf sichere Weise durchzuführen, und er kann als Schlüssel in Datenbanktabellen genutzt werden. Diese ID identifiziert den Benutzer anwendungsübergreifend eindeutig: Zwei verschiedene Anwendungen, die den gleichen Benutzer anmelden, erhalten den gleichen Wert im `oid`-Anspruch. Dies bedeutet, dass `oid` beim Senden von Abfragen an Microsoft-Onlinedienste wie Microsoft Graph verwendet werden kann. Microsoft Graph gibt diese ID als `id`-Eigenschaft für ein bestimmtes Benutzerkonto zurück. Da mit `oid` mehrere Apps Benutzer korrelieren können, ist der `profile`-Bereich erforderlich, um diesen Anspruch zu erhalten. Wenn ein einzelner Benutzer in mehreren Mandanten vorhanden ist, enthält der Benutzer in jedem Mandanten eine andere Objekt-ID. Sie werden als unterschiedliche Konten betrachtet, obwohl sich der Benutzer bei jedem Konto mit den gleichen Anmeldeinformationen anmeldet. |
 | `rh` | Nicht transparente Zeichenfolge | Ein interner Anspruch, der von Azure zum erneuten Überprüfen von Token verwendet wird. Ressourcen sollten diesen Anspruch nicht verwenden. |
 | `scp` | Zeichenfolge, eine durch Leerzeichen getrennte Liste von Bereichen | Die von Ihrer Anwendung verfügbar gemachte Gruppe von Bereichen, für die die Clientanwendung eine Einwilligung angefordert (und empfangen) hat. Ihre App sollte überprüfen, ob diese Bereiche gültige, von Ihrer App verfügbar gemachte Bereiche sind, und Autorisierungsentscheidungen basierend auf dem Wert der Bereiche treffen. Wird nur für [Benutzertoken](#user-and-application-tokens) verwendet. |
 | `roles` | Array von Zeichenfolgen, eine Liste der Berechtigungen | Die von Ihrer Anwendung verfügbar gemachte Gruppe von Berechtigungen, für die der anfordernden Anwendung die Berechtigung zum Aufrufen gewährt wurde. Bei [Anwendungstoken](#user-and-application-tokens) wird dieser Anspruch während des Flows für [Clientanmeldeinformationen](v1-oauth2-client-creds-grant-flow.md) anstelle von Benutzerbereichen verwendet.  Bei [Benutzertoken](#user-and-application-tokens) wird dieser Wert mit den Rollen aufgefüllt, die dem Benutzer für die Zielanwendung zugewiesen wurden. |
-| `sub` | Zeichenfolge, eine GUID | Der Prinzipal, für den das Token Informationen zusichert, z. B. der Benutzer einer App. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Er kann für die sichere Durchführung von Autorisierungsüberprüfungen verwendet werden, z.B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Er kann auch als Schlüssel in Datenbanktabellen verwendet werden. Da der Antragsteller immer in den Token vorhanden ist, die Azure AD ausstellt, wird die Nutzung dieses Werts in einem allgemeinen Autorisierungssystem empfohlen. Der Antragsteller ist allerdings ein paarweiser Bezeichner: Er gilt nur für eine bestimmte Anwendungs-ID. Wenn sich ein Benutzer bei zwei verschiedenen Apps mit zwei verschiedenen Client-IDs anmeldet, erhalten diese Apps zwei unterschiedliche Werte für den Antragstelleranspruch. Dies kann abhängig von den Architektur- und Datenschutzanforderungen möglicherweise wünschenswert sein oder nicht. |
+| `sub` | Zeichenfolge, eine GUID | Der Prinzipal, für den das Token Informationen zusichert, z. B. der Benutzer einer App. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Er kann auch für die sichere Durchführung von Autorisierungsüberprüfungen verwendet werden, z. B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Er kann auch als Schlüssel in Datenbanktabellen verwendet werden. Da der Antragsteller immer in den Token vorhanden ist, die Azure AD ausstellt, wird die Nutzung dieses Werts in einem allgemeinen Autorisierungssystem empfohlen. Der Antragsteller ist allerdings ein paarweiser Bezeichner: Er gilt nur für eine bestimmte Anwendungs-ID. Wenn sich ein Benutzer bei zwei verschiedenen Apps mit zwei verschiedenen Client-IDs anmeldet, erhalten diese Apps zwei unterschiedliche Werte für den Antragstelleranspruch. Dies kann abhängig von den Architektur- und Datenschutzanforderungen möglicherweise wünschenswert sein oder nicht. |
 | `tid` | Zeichenfolge, eine GUID | Stellt den Azure AD-Mandanten dar, aus dem der Benutzer stammt. Bei Geschäfts- und Schulkonten ist die GUID die unveränderliche Mandanten-ID der Organisation, zu der der Benutzer gehört. Für persönliche Konten lautet der Wert `9188040d-6c67-4c5b-b112-36a304b66dad`. Der Bereich `profile` ist erforderlich, um diesen Anspruch zu empfangen. |
 | `unique_name` | Zeichenfolge | Ist nur in v1.0-Token vorhanden. Ein lesbarer Wert, der Aufschluss über den Antragsteller des Tokens gibt. Es wird nicht garantiert, dass der Wert innerhalb eines Mandanten eindeutig ist. Er sollte daher nur zu Anzeigezwecken verwendet werden. |
 | `uti` | Nicht transparente Zeichenfolge | Ein interner Anspruch, der von Azure zum erneuten Überprüfen von Token verwendet wird. Ressourcen sollten diesen Anspruch nicht verwenden. |
@@ -124,7 +125,7 @@ Die folgenden Ansprüche werden ggf. in v1.0-Token eingeschlossen, sind standard
 | `onprem_sid`| Zeichenfolge, im [SID-Format](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | In Fällen, in denen der Benutzer über eine lokale Authentifizierung verfügt, gibt dieser Anspruch die SID an. Sie können `onprem_sid` für die Autorisierung in älteren Anwendungen verwenden.|
 | `pwd_exp`| Ganze Zahl, ein UNIX-Zeitstempel | Gibt an, wann das Kennwort des Benutzers abläuft. |
 | `pwd_url`| Zeichenfolge | Eine URL, an die Benutzer zum Zurücksetzen ihres Kennworts weitergeleitet werden können. |
-| `in_corp`|boolean | Signalisiert, ob sich der Client aus dem Unternehmensnetzwerk anmeldet. Andernfalls ist der Anspruch nicht enthalten. |
+| `in_corp`| boolean | Signalisiert, ob sich der Client aus dem Unternehmensnetzwerk anmeldet. Andernfalls ist der Anspruch nicht enthalten. |
 | `nickname`| Zeichenfolge | Ein zusätzlicher Name für den Benutzer, der vom Vor- oder Nachnamen abweicht.|
 | `family_name` | Zeichenfolge | Gibt den Nachnamen des Benutzers entsprechend der Definition im Benutzerobjekt an. |
 | `given_name` | Zeichenfolge | Gibt den Vornamen des Benutzers entsprechend der Definition im Benutzerobjekt an. |
@@ -148,9 +149,9 @@ Microsoft-Identitäten können auf verschiedene Arten authentifiziert werden, di
 
 ## <a name="validating-tokens"></a>Überprüfen von Token
 
-Bei der Überprüfung eines „id_token“ oder eines „access_token“ muss Ihre App sowohl die Signatur des Tokens als auch die Ansprüche überprüfen. Um Zugriffstoken zu überprüfen, sollte Ihre App auch den Aussteller, die Zielgruppe und die signierenden Token validieren. Diese müssen anhand der Werte im OpenID Discovery-Dokument überprüft werden. Die mandantenunabhängige Version des Dokuments finden Sie beispielsweise unter [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration). 
+Bei der Überprüfung eines „id_token“ oder eines „access_token“ muss Ihre App sowohl die Signatur des Tokens als auch die Ansprüche überprüfen. Um Zugriffstoken zu überprüfen, sollte Ihre App auch den Aussteller, die Zielgruppe und die signierenden Token validieren. Diese müssen anhand der Werte im OpenID Discovery-Dokument überprüft werden. Die mandantenunabhängige Version des Dokuments finden Sie beispielsweise unter [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration).
 
-Azure AD-Middleware verfügt über integrierte Funktionen zum Überprüfen von Zugriffstoken. Sie können auch unsere [Beispiele](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples) nach einer gewünschten Programmiersprache durchsuchen. Weitere Informationen zur expliziten Überprüfung von JWT-Token finden Sie im [Beispiel zur manuellen JWT-Überprüfung](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation). 
+Azure AD-Middleware verfügt über integrierte Funktionen zum Überprüfen von Zugriffstoken. Sie können auch unsere [Beispiele](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples) nach einer gewünschten Programmiersprache durchsuchen. Weitere Informationen zur expliziten Überprüfung von JWT-Token finden Sie im [Beispiel zur manuellen JWT-Überprüfung](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation).
 
 Wir bieten Bibliotheken und Codebeispiele, die zeigen, wie Sie die Tokenüberprüfung problemlos ausführen können. Die folgenden Informationen sind für Leser vorgesehen, die den zugrunde liegenden Prozess verstehen möchten. Für die JWT-Überprüfung stehen zudem verschiedene Open Source-Bibliotheken von Drittanbietern zur Verfügung. Für nahezu jede Plattform und Programmiersprache ist mindestens eine Option verfügbar. Weitere Informationen zu Azure AD-Authentifizierungsbibliotheken und Codebeispiele finden Sie unter [v1.0-Authentifizierungsbibliotheken](active-directory-authentication-libraries.md) und [v2.0-Authentifizierungsbibliotheken](reference-v2-libraries.md).
 
@@ -184,7 +185,7 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 
 Dieses Metadatendokument:
 
-* Ist ein JSON-Objekt, das zahlreiche nützliche Informationen enthält, beispielsweise den Speicherort der verschiedenen Endpunkte, die zum Ausführen der OpenID Connect-Authentifizierung erforderlich sind. 
+* Ist ein JSON-Objekt, das zahlreiche nützliche Informationen enthält, beispielsweise den Speicherort der verschiedenen Endpunkte, die zum Ausführen der OpenID Connect-Authentifizierung erforderlich sind.
 * Enthält einen `jwks_uri`, der den Speicherort des Satzes von öffentlichen Schlüsseln zum Signieren von Token angibt. Das JSON-Dokument unter `jwks_uri` enthält alle Informationen zu den zu diesem Zeitpunkt verwendeten öffentlichen Schlüsseln. Ihre App kann mit dem Anspruch `kid` im JWT-Header auswählen, welcher öffentliche Schlüssel in diesem Dokument zum Signieren eines bestimmten Tokens verwendet wurde. Sie kann anschließend die Signaturüberprüfung mithilfe des korrekten öffentlichen Schlüssels und des angegebenen Algorithmus ausführen.
 
 > [!NOTE]
@@ -220,11 +221,11 @@ Aktualisierungstoken können jederzeit aus vielen verschiedenen Gründen ungült
 
 ### <a name="token-timeouts"></a>Tokenzeitüberschreitungen
 
-* MaxInactiveTime: Wenn das Aktualisierungstoken innerhalb des von MaxInactiveTime vorgegebenen Zeitraums nicht verwendet wurde, ist es nicht mehr gültig. 
-* MaxSessionAge: Wenn „MaxAgeSessionMultiFactor“ oder „MaxAgeSessionSingleFactor“ auf einen anderen Wert als die Standardeinstellung (Until-revoked) festgelegt wurden, ist eine erneute Authentifizierung erforderlich, nachdem der in „MaxAgeSession*“ festgelegte Zeitraum abgelaufen ist. 
+* MaxInactiveTime: Wenn das Aktualisierungstoken innerhalb des von MaxInactiveTime vorgegebenen Zeitraums nicht verwendet wurde, ist es nicht mehr gültig.
+* MaxSessionAge: Wenn „MaxAgeSessionMultiFactor“ oder „MaxAgeSessionSingleFactor“ auf einen anderen Wert als die Standardeinstellung (Until-revoked) festgelegt wurden, ist eine erneute Authentifizierung erforderlich, nachdem der in „MaxAgeSession*“ festgelegte Zeitraum abgelaufen ist.
 * Beispiele:
-  * Der MaxInactiveTime-Wert des Mandanten beträgt fünf Tage, und der Benutzer war eine Woche lang im Urlaub. Aus diesem Grund hat AAD sieben Tage lang keine neue Tokenanforderung vom Benutzer erhalten. Bei der nächsten Anforderung eines neuen Tokens durch den Benutzer wurde das Aktualisierungstoken widerrufen, sodass der Benutzer seine Anmeldeinformationen erneut eingeben muss.
-  * Eine sensible Anwendung verfügt über einen MaxAgeSessionSingleFactor-Wert von einem Tag. Wenn sich ein Benutzer am Montag anmeldet, muss er sich am Dienstag (nach Ablauf von 25 Stunden) erneut authentifizieren.
+  * Der MaxInactiveTime-Wert des Mandanten beträgt fünf Tage, und der Benutzer war eine Woche lang im Urlaub. Aus diesem Grund hat Azure AD sieben Tage lang keine neue Tokenanforderung vom Benutzer erhalten. Bei der nächsten Anforderung eines neuen Tokens durch den Benutzer wurde das Aktualisierungstoken widerrufen, sodass der Benutzer seine Anmeldeinformationen erneut eingeben muss.
+  * Eine sensible Anwendung verfügt über einen MaxAgeSessionSingleFactor-Wert von einem Tag. Wenn sich ein Benutzer am Montag anmeldet, muss er sich am Dienstag (nach Ablauf von 25 Stunden) erneut authentifizieren.
 
 ### <a name="revocation"></a>Widerruf
 
@@ -239,7 +240,7 @@ Aktualisierungstoken können jederzeit aus vielen verschiedenen Gründen ungült
 | [Einmaliges Abmelden](v1-protocols-openid-connect-code.md#single-sign-out) im Web | Widerrufen | Bleibt aktiv | Widerrufen | Bleibt aktiv | Bleibt aktiv |
 
 > [!NOTE]
-> Bei einer „Nicht kennwortbasierten“ Anmeldung hat der Benutzer kein Kennwort eingegeben, um sich anzumelden. Beispiele sind die Gesichtserkennung mit Windows Hello, ein FIDO-Schlüssel oder eine PIN. 
+> Bei einer „Nicht kennwortbasierten“ Anmeldung hat der Benutzer kein Kennwort eingegeben, um sich anzumelden. Beispiele sind die Gesichtserkennung mit Windows Hello, ein FIDO-Schlüssel oder eine PIN.
 >
 > Beim primären Aktualisierungstoken in Windows liegt ein bekanntes Problem vor. Wenn das primäre Aktualisierungstoken (Primary Refresh Token, PRT) über ein Kennwort abgerufen wird und der Benutzer sich über Hello anmeldet, ändert sich der Ursprung des PRTs nicht, und es wird widerrufen, wenn der Benutzer sein Kennwort ändert.
 >
