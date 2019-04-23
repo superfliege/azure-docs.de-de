@@ -12,10 +12,10 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.date: 04/02/2019
 ms.openlocfilehash: 10ed3ec8b29048a7ede51a6d98e9f1ebb7f44cf6
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862980"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Schnellstart: Erstellen von automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps – Visual Studio
@@ -40,8 +40,8 @@ Stellen Sie zunächst sicher, dass Sie für diese Schnellstartanleitung über Fo
   In dieser Schnellstartanleitung wird die kostenlose Version Visual Studio Community 2017 verwendet.
 
     > [!IMPORTANT]
-    > Stellen Sie beim Installieren von Visual Studio 2019 oder 2017 sicher, dass Sie die Workload **Azure-Entwicklung** auswählen.
-    > Für Visual Studio 2019 kann Cloud-Explorer den Logik-App-Designer im Azure-Portal öffnen, aber noch nicht den eingebetteten Logik-App-Designer.
+    > Stellen Sie beim Installieren von Visual Studio 2019 oder 2017 sicher, dass Sie die Workload **Azure-Entwicklung** auswählen.
+    > Für Visual Studio 2019 kann Cloud-Explorer den Logik-App-Designer im Azure-Portal öffnen, aber noch nicht den eingebetteten Logik-App-Designer.
 
   * <a href="https://azure.microsoft.com/downloads/" target="_blank">Microsoft Azure SDK für .NET (2.9.1 oder höher)</a>. Weitere Informationen zu <a href="https://docs.microsoft.com/dotnet/azure/dotnet-tools?view=azure-dotnet">Azure SDK für .NET</a>.
 
@@ -49,7 +49,7 @@ Stellen Sie zunächst sicher, dass Sie für diese Schnellstartanleitung über Fo
 
   * Azure Logic Apps-Tools für die gewünschte Visual Studio-Version:
 
-    * <a href="https://aka.ms/download-azure-logic-apps-tools-visual-studio-2019" target="_blank">Visual Studio 2019</a>
+    * <a href="https://aka.ms/download-azure-logic-apps-tools-visual-studio-2019" target="_blank">Visual Studio 2019</a>
     
     * <a href="https://aka.ms/download-azure-logic-apps-tools-visual-studio-2017" target="_blank">Visual Studio 2017</a>
     
@@ -82,7 +82,7 @@ Erstellen Sie zunächst ein [Azure-Ressourcengruppenprojekt](../azure-resource-m
    > [!NOTE]
    > Wenn die Kategorie **Cloud** oder das Projekt **Azure-Ressourcengruppe** nicht vorhanden ist, vergewissern Sie sich, dass Sie das Azure SDK für Visual Studio installiert haben.
 
-   Führen Sie diese Schritte aus, wenn Sie Visual Studio 2019 verwenden:
+   Führen Sie diese Schritte aus, wenn Sie Visual Studio 2019 verwenden:
 
    1. Wählen Sie im Feld **Neues Projekt erstellen** die Projektvorlage **Azure-Ressourcengruppe** für Visual C# oder Visual Basic aus, und wählen Sie **Weiter**.
 
@@ -119,7 +119,7 @@ Führen Sie nach der Erstellung Ihres Azure-Ressourcengruppenobjekts die Erstell
    | Benutzerprofilliste | Contoso <br> jamalhartnett@contoso.com | Standardmäßig das zum Anmelden verwendete Konto |
    | **Abonnement** | Nutzungsbasierte Bezahlung <br> (jamalhartnett@contoso.com) | Name für Ihr Azure-Abonnement und das zugeordnete Konto |
    | **Ressourcengruppe** | MyLogicApp-RG <br> (USA, Westen) | Azure-Ressourcengruppe und Standort zum Speichern und Bereitstellen von Ressourcen für Ihre Logik-App |
-   | **Standort** | MyLogicApp-RG2 <br> (USA, Westen) | Anderer Standort, falls Sie nicht den Ressourcengruppenstandort verwenden möchten |
+   | **Location** | MyLogicApp-RG2 <br> (USA, Westen) | Anderer Standort, falls Sie nicht den Ressourcengruppenstandort verwenden möchten |
    ||||
 
 1. Der Logik-App-Designer wird geöffnet, und es wird eine Seite mit einem Einführungsvideo und häufig verwendeten Triggern angezeigt. 
