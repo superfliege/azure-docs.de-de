@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 86bf408f521e11e1bed4e26ca99299abdc710227
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: f505f922685cd192525814df25cca1a1401d2913
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805634"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281215"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure
 
@@ -35,7 +35,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 
 | Integrierte Rolle | BESCHREIBUNG |
 | --- | --- |
-| [Besitzer](#owner) | Ermöglicht Ihnen das Verwalten aller Komponenten einschließlich des Zugriffs auf Ressourcen. |
+| [Owner (Besitzer)](#owner) | Ermöglicht Ihnen das Verwalten aller Komponenten einschließlich des Zugriffs auf Ressourcen. |
 | [Mitwirkender](#contributor) | Ermöglicht Ihnen das Verwalten aller Komponenten außer des Zugriffs auf Ressourcen. |
 | [Leser](#reader) | Sie können alles anzeigen, aber keine Änderungen vornehmen. |
 | [AcrDelete](#acrdelete) | ACR-Löschvorgang |
@@ -93,7 +93,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 | [Lab-Ersteller](#lab-creator) | Ermöglicht Ihnen das Erstellen, Verwalten und Löschen verwalteter Labs unter Ihren Azure Lab-Konten. |
 | [Log Analytics-Mitwirkender](#log-analytics-contributor) | Ein Log Analytics-Mitwirkender kann alle Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten. Das Bearbeiten von Überwachungseinstellungen schließt folgende Aufgaben ein: Hinzufügen der VM-Erweiterung zu VMs, Lesen von Speicherkontoschlüsseln zum Konfigurieren von Protokollsammlungen aus Azure Storage, Erstellen und Konfigurieren von Automation-Konten, Hinzufügen von Lösungen, Konfigurieren der Azure-Diagnose für alle Azure-Ressourcen. |
 | [Log Analytics-Leser](#log-analytics-reader) | Ein Log Analytics-Leser kann alle Überwachungsdaten anzeigen und durchsuchen sowie Überwachungseinstellungen anzeigen. Hierzu zählt auch die Anzeige der Konfiguration von Azure-Diagnosen für alle Azure-Ressourcen. |
-| [Logik-App-Mitwirkender](#logic-app-contributor) | Ermöglicht Ihnen das Verwalten von Logik-Apps, aber nicht den Zugriff darauf. |
+| [Mitwirkender für Logik-Apps](#logic-app-contributor) | Ermöglicht Ihnen das Verwalten von Logik-Apps, aber nicht den Zugriff darauf. |
 | [Logik-App-Operator](#logic-app-operator) | Ermöglicht Ihnen das Lesen, Aktivieren und Deaktivieren von Logik-Apps. |
 | [Rolle „Bediener für verwaltete Anwendung“](#managed-application-operator-role) | Ermöglicht Ihnen das Lesen und Durchführen von Aktionen für Ressourcen der verwalteten Anwendung. |
 | [Leser für verwaltete Anwendungen](#managed-applications-reader) | Ermöglicht Ihnen, Ressourcen in einer verwalteten App zu lesen und JIT-Zugriff anzufordern. |
@@ -113,7 +113,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 | [Mitwirkender von Suchdienst](#search-service-contributor) | Ermöglicht Ihnen das Verwalten von Search-Diensten, nicht aber den Zugriff darauf. |
 | [Sicherheitsadministrator](#security-admin) | Nur in Security Center: Kann Sicherheitsrichtlinien und -zustände anzeigen, Sicherheitsrichtlinien bearbeiten sowie Warnungen und Empfehlungen anzeigen und verwerfen. |
 | [Sicherheits-Manager (Legacy)](#security-manager-legacy) | Dies ist eine Legacyrolle. Verwenden Sie stattdessen „Sicherheitsadministrator“. |
-| [Benutzer mit Leseberechtigung für Sicherheitsfunktionen](#security-reader) | Nur in Security Center: Kann Empfehlungen und Warnungen sowie Sicherheitsrichtlinien und -zustände anzeigen, aber keine Änderungen vornehmen. |
+| [Sicherheitsleseberechtigter](#security-reader) | Nur in Security Center: Kann Empfehlungen und Warnungen sowie Sicherheitsrichtlinien und -zustände anzeigen, aber keine Änderungen vornehmen. |
 | [Site Recovery-Mitwirkender](#site-recovery-contributor) | Ermöglicht Ihnen die Verwaltung des Site Recovery-Diensts mit Ausnahme der Tresorerstellung und der Rollenzuweisung. |
 | [Site Recovery-Operator](#site-recovery-operator) | Ermöglicht Ihnen ein Failover und ein Failback, aber nicht das Durchführen weiterer Site Recovery-Verwaltungsvorgänge. |
 | [Site Recovery-Leser](#site-recovery-reader) | Ermöglicht Ihnen die Anzeige des Site Recovery-Status, aber nicht die Durchführung weiterer Verwaltungsvorgänge. |
@@ -121,7 +121,6 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 | [Spatial Anchors-Kontobesitzer](#spatial-anchors-account-owner) | Ermöglicht Ihnen das Verwalten von Raumankern in Ihrem Konto, einschließlich der Löschung von Ankern. |
 | [Spatial Anchors-Kontoleser](#spatial-anchors-account-reader) | Ermöglicht Ihnen das Ermitteln und Lesen von Eigenschaften für Raumanker in Ihrem Dokument. |
 | [Mitwirkender von SQL DB](#sql-db-contributor) | Ermöglicht Ihnen das Verwalten von SQL-Datenbanken, nicht aber den Zugriff darauf. Darüber hinaus können Sie deren sicherheitsbezogenen Richtlinien oder übergeordneten SQL-Server nicht verwalten. |
-| [Verwaltete SQL-Instanz: Mitwirkender](#sql-managed-instance-contributor) | Ermöglicht Ihnen das Verwalten verwalteter SQL-Instanzen, jedoch nicht das Erteilen des Zugriffs an andere. |
 | [SQL-Sicherheits-Manager](#sql-security-manager) | Ermöglicht Ihnen das Verwalten von sicherheitsbezogenen Richtlinien von SQL-Server und Datenbanken, jedoch nicht den Zugriff darauf. |
 | [Mitwirkender von SQL Server](#sql-server-contributor) | Ermöglicht Ihnen, SQL-Server und -Datenbanken zu verwalten, gewährt Ihnen jedoch keinen Zugriff darauf und auch nicht auf deren sicherheitsbezogenen Richtlinien. |
 | [Mitwirkender von Speicherkonto](#storage-account-contributor) | Ermöglicht Ihnen das Verwalten von Speicherkonten, nicht aber den Zugriff darauf. |
@@ -147,23 +146,23 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verwalten aller Komponenten einschließlich des Zugriffs auf Ressourcen. |
-> | **Id** | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Verwalten aller Komponenten einschließlich des Zugriffs auf Ressourcen. |
+> | **id** | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
 > | **Aktionen** |  |
 > | * | Erstellen und Verwalten von Ressourcen aller Typen |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="contributor"></a>Mitwirkender
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verwalten aller Komponenten außer des Zugriffs auf Ressourcen. |
-> | **Id** | b24988ac-6180-42a0-ab88-20f7382dd24c |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Verwalten aller Komponenten außer des Zugriffs auf Ressourcen. |
+> | **id** | b24988ac-6180-42a0-ab88-20f7382dd24c |
 > | **Aktionen** |  |
 > | * | Erstellen und Verwalten von Ressourcen aller Typen |
 > | **NotActions** |  |
@@ -173,123 +172,123 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Blueprint/blueprintAssignments/write | Erstellt oder aktualisiert alle Blaupausenartefakte. |
 > | Microsoft.Blueprint/blueprintAssignments/delete | Löscht alle Blaupausenartefakte. |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="reader"></a>Leser
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Sie können alles anzeigen, aber keine Änderungen vornehmen. |
-> | **Id** | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
+> | **BESCHREIBUNG** | Sie können alles anzeigen, aber keine Änderungen vornehmen. |
+> | **id** | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 > | **Aktionen** |  |
 > | */Lesen | Lesen von Ressourcen aller Typen mit Ausnahme geheimer Schlüssel |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="acrdelete"></a>AcrDelete
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | ACR-Löschvorgang |
-> | **Id** | c2f4ef07-c644-48eb-af81-4b1b4947fb11 |
+> | **BESCHREIBUNG** | ACR-Löschvorgang |
+> | **id** | c2f4ef07-c644-48eb-af81-4b1b4947fb11 |
 > | **Aktionen** |  |
 > | Microsoft.ContainerRegistry/registries/artifacts/delete | Löschen von Artefakten aus einer Containerregistrierung. |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="acrimagesigner"></a>AcrImageSigner
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | ACR-Imagesignaturgeber |
-> | **Id** | 6cef56e8-d556-48e5-a04f-b8e64114680f |
+> | **BESCHREIBUNG** | ACR-Imagesignaturgeber |
+> | **id** | 6cef56e8-d556-48e5-a04f-b8e64114680f |
 > | **Aktionen** |  |
 > | Microsoft.ContainerRegistry/registries/sign/write | Pushen/Pullen von Inhaltsvertrauen-Metadaten für eine Containerregistrierung |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="acrpull"></a>AcrPull
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | ACR-Pullvorgang |
-> | **Id** | 7f951dda-4ed3-4680-a7ca-43fe172d538d |
+> | **BESCHREIBUNG** | ACR-Pullvorgang |
+> | **id** | 7f951dda-4ed3-4680-a7ca-43fe172d538d |
 > | **Aktionen** |  |
 > | Microsoft.ContainerRegistry/registries/pull/read | Pullen oder Abrufen von Images aus einer Containerregistrierung |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="acrpush"></a>AcrPush
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | ACR-Pushvorgang |
-> | **Id** | 8311e382-0749-4cb8-b61a-304f252e45ec |
+> | **BESCHREIBUNG** | ACR-Pushvorgang |
+> | **id** | 8311e382-0749-4cb8-b61a-304f252e45ec |
 > | **Aktionen** |  |
 > | Microsoft.ContainerRegistry/registries/pull/read | Pullen oder Abrufen von Images aus einer Containerregistrierung |
 > | Microsoft.ContainerRegistry/registries/push/write | Pushen oder Schreiben von Images in eine Containerregistrierung |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="acrquarantinereader"></a>AcrQuarantineReader
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | ACR-Quarantänedatenleser |
-> | **Id** | cdda3590-29a3-44f6-95f2-9f980659eb04 |
+> | **BESCHREIBUNG** | ACR-Quarantänedatenleser |
+> | **id** | cdda3590-29a3-44f6-95f2-9f980659eb04 |
 > | **Aktionen** |  |
 > | Microsoft.ContainerRegistry/registries/quarantineRead/read | Pullen oder Abrufen von Images in Quarantäne aus einer Containerregistrierung |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="acrquarantinewriter"></a>AcrQuarantineWriter
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | ACR-Quarantänedatenschreiber |
-> | **Id** | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
+> | **BESCHREIBUNG** | ACR-Quarantänedatenschreiber |
+> | **id** | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
 > | **Aktionen** |  |
 > | Microsoft.ContainerRegistry/registries/quarantineRead/read | Pullen oder Abrufen von Images in Quarantäne aus einer Containerregistrierung |
 > | Microsoft.ContainerRegistry/registries/quarantineWrite/write | Schreiben/Ändern des Quarantänezustands von unter Quarantäne gestellten Images |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="api-management-service-contributor"></a>Mitwirkender des API-Verwaltungsdienstes
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Kann Dienst und APIs verwalten. |
-> | **Id** | 312a565d-c81f-4fd8-895a-4e21e48d571c |
+> | **BESCHREIBUNG** | Kann Dienst und APIs verwalten. |
+> | **id** | 312a565d-c81f-4fd8-895a-4e21e48d571c |
 > | **Aktionen** |  |
 > | Microsoft.ApiManagement/service/* | Erstellen und Verwalten des API Management-Diensts |
 > | Microsoft.Authorization/*/read | Lesen von Autorisierungen |
@@ -299,18 +298,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="api-management-service-operator-role"></a>Operatorrolle des API Management-Diensts
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Kann den Dienst, aber nicht die APIs verwalten. |
-> | **Id** | e022efe7-f5ba-4159-bbe4-b44f577e9b61 |
+> | **BESCHREIBUNG** | Kann den Dienst, aber nicht die APIs verwalten. |
+> | **id** | e022efe7-f5ba-4159-bbe4-b44f577e9b61 |
 > | **Aktionen** |  |
 > | Microsoft.ApiManagement/service/*/read | Dient zum Lesen von API Management-Dienstinstanzen. |
 > | Microsoft.ApiManagement/service/backup/action | Dient zum Sichern des API Management-Diensts im angegebenen Container in einem vom Benutzer bereitgestellten Speicherkonto. |
@@ -330,16 +329,16 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **NotActions** |  |
 > | Microsoft.ApiManagement/service/users/keys/read | Dient zum Abrufen einer Liste mit Benutzerschlüsseln. |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="api-management-service-reader-role"></a>Leserrolle des API Management-Diensts
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Schreibgeschützter Zugriff auf Dienst und APIs |
-> | **Id** | 71522526-b88f-4d52-b57f-d31fc3546d0d |
+> | **BESCHREIBUNG** | Schreibgeschützter Zugriff auf Dienst und APIs |
+> | **id** | 71522526-b88f-4d52-b57f-d31fc3546d0d |
 > | **Aktionen** |  |
 > | Microsoft.ApiManagement/service/*/read | Dient zum Lesen von API Management-Dienstinstanzen. |
 > | Microsoft.ApiManagement/service/read | Dient zum Lesen der Metadaten für eine API Management-Dienstinstanz. |
@@ -352,16 +351,16 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **NotActions** |  |
 > | Microsoft.ApiManagement/service/users/keys/read | Dient zum Abrufen einer Liste mit Benutzerschlüsseln. |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="application-insights-component-contributor"></a>Mitwirkender der Application Insights-Komponente
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Kann Application Insights-Komponenten verwalten |
-> | **Id** | ae349356-3a1b-4a5e-921d-050484c6347e |
+> | **BESCHREIBUNG** | Kann Application Insights-Komponenten verwalten |
+> | **id** | ae349356-3a1b-4a5e-921d-050484c6347e |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Warnungsregeln |
@@ -372,18 +371,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="application-insights-snapshot-debugger"></a>Application Insights-Momentaufnahmedebugger
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Gibt dem Benutzer die Berechtigung zum Anzeigen und Herunterladen von Debugmomentaufnahmen, die mit dem Application Insights-Momentaufnahmedebugger erfasst wurden. Beachten Sie, dass diese Berechtigungen in der Rolle [Besitzer](#owner) oder [Mitwirkender](#contributor) nicht enthalten sind. |
-> | **Id** | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
+> | **BESCHREIBUNG** | Gibt dem Benutzer die Berechtigung zum Anzeigen und Herunterladen von Debugmomentaufnahmen, die mit dem Application Insights-Momentaufnahmedebugger erfasst wurden. Beachten Sie, dass diese Berechtigungen in der Rolle [Besitzer](#owner) oder [Mitwirkender](#contributor) nicht enthalten sind. |
+> | **id** | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Insights-Warnungsregeln |
@@ -392,18 +391,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="automation-job-operator"></a>Automation-Auftragsoperator
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Hiermit werden Aufträge mithilfe von Automation-Runbooks erstellt und verwaltet. |
-> | **Id** | 4fe576fe-1146-4730-92eb-48519fa6bf9f |
+> | **BESCHREIBUNG** | Hiermit werden Aufträge mithilfe von Automation-Runbooks erstellt und verwaltet. |
+> | **id** | 4fe576fe-1146-4730-92eb-48519fa6bf9f |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Automation/automationAccounts/hybridRunbookWorkerGroups/read | Liest Hybrid Runbook Worker-Ressourcen. |
@@ -419,18 +418,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="automation-operator"></a>Operator für Automation
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Automatisierungsoperatoren können Aufträge starten, beenden, anhalten und fortsetzen. |
-> | **Id** | d3881f73-407a-4167-8283-e981cbba0404 |
+> | **BESCHREIBUNG** | Automatisierungsoperatoren können Aufträge starten, beenden, anhalten und fortsetzen. |
+> | **id** | d3881f73-407a-4167-8283-e981cbba0404 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Automation/automationAccounts/hybridRunbookWorkerGroups/read | Liest Hybrid Runbook Worker-Ressourcen. |
@@ -454,18 +453,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="automation-runbook-operator"></a>Automation-Runbookoperator
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Runbookeigenschaften lesen: Ermöglicht das Erstellen von Runbookaufträgen. |
-> | **Id** | 5fb5aef8-1081-4b8e-bb16-9d5d0385bab5 |
+> | **BESCHREIBUNG** | Runbookeigenschaften lesen: Ermöglicht das Erstellen von Runbookaufträgen. |
+> | **id** | 5fb5aef8-1081-4b8e-bb16-9d5d0385bab5 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Automation/automationAccounts/runbooks/read | Ruft ein Azure Automation-Runbook ab. |
@@ -474,18 +473,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="avere-contributor"></a>Avere-Mitwirkender
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Kann einen Avere vFXT-Cluster erstellen und verwalten. |
-> | **Id** | 4f8fab4f-1852-4a58-a46a-8eaf358af14a |
+> | **BESCHREIBUNG** | Kann einen Avere vFXT-Cluster erstellen und verwalten. |
+> | **id** | 4f8fab4f-1852-4a58-a46a-8eaf358af14a |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Compute/*/read |  |
@@ -507,20 +506,20 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | Microsoft.Resources/subscriptions/resourceGroups/resources/read | Ruft die Ressourcen für die Ressourcengruppe ab. |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | Gibt das Ergebnis beim Löschen eines Blobs zurück. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Gibt ein Blob oder eine Liste von Blobs zurück. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Gibt das Ergebnis beim Schreiben eines Blobs zurück. |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="avere-operator"></a>Avere-Bediener
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Wird vom Avere vFXT-Cluster zum Verwalten des Clusters verwendet |
-> | **Id** | c025889f-8102-4ebf-b32c-fc0c6f0c6bd9 |
+> | **BESCHREIBUNG** | Wird vom Avere vFXT-Cluster zum Verwalten des Clusters verwendet |
+> | **id** | c025889f-8102-4ebf-b32c-fc0c6f0c6bd9 |
 > | **Aktionen** |  |
 > | Microsoft.Compute/virtualMachines/read | Dient zum Abrufen der Eigenschaften eines virtuellen Computers. |
 > | Microsoft.Network/networkInterfaces/read | Ruft eine Netzwerkschnittstellendefinition ab.  |
@@ -534,67 +533,67 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Storage/storageAccounts/blobServices/containers/read | Hiermit wird eine Liste von Containern zurückgegeben. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/write | Gibt das Ergebnis des PUT-Vorgangs für den Blobcontainer zurück. |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | Gibt das Ergebnis beim Löschen eines Blobs zurück. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Gibt ein Blob oder eine Liste von Blobs zurück. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Gibt das Ergebnis beim Schreiben eines Blobs zurück. |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="azure-kubernetes-service-cluster-admin-role"></a>Administratorrolle für Azure Kubernetes Service-Cluster
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Listet die Aktion für Anmeldeinformationen des Clusteradministrators auf. |
-> | **Id** | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
+> | **BESCHREIBUNG** | Listet die Aktion für Anmeldeinformationen des Clusteradministrators auf. |
+> | **id** | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | **Aktionen** |  |
 > | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | Listet die clusterAdmin-Anmeldeinformationen eines verwalteten Clusters auf. |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="azure-kubernetes-service-cluster-user-role"></a>Benutzerrolle für Azure Kubernetes Service-Cluster
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Listet die Aktion für Anmeldeinformationen des Clusterbenutzer auf. |
-> | **Id** | 4abbcc35-e782-43d8-92c5-2d3f1bd2253f |
+> | **BESCHREIBUNG** | Listet die Aktion für Anmeldeinformationen des Clusterbenutzer auf. |
+> | **id** | 4abbcc35-e782-43d8-92c5-2d3f1bd2253f |
 > | **Aktionen** |  |
 > | Microsoft.ContainerService/managedClusters/listClusterUserCredential/action | Listet die clusterUser-Anmeldeinformationen eines verwalteten Clusters auf. |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="azure-stack-registration-owner"></a>Besitzer der Azure Stack-Registrierung
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen die Verwaltung von Azure Stack-Registrierungen. |
-> | **Id** | 6f12a6df-dd06-4f3e-bcb1-ce8be600526a |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen die Verwaltung von Azure Stack-Registrierungen. |
+> | **id** | 6f12a6df-dd06-4f3e-bcb1-ce8be600526a |
 > | **Aktionen** |  |
 > | Microsoft.AzureStack/registrations/products/listDetails/action | Ruft erweiterte Details für ein Azure Stack-Marketplace-Produkt ab. |
 > | Microsoft.AzureStack/registrations/products/read | Ruft die Eigenschaften eines Azure Stack-Marketplace-Produkts ab. |
 > | Microsoft.AzureStack/registrations/read | Ruft die Eigenschaften einer Azure Stack-Registrierung ab. |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="backup-contributor"></a>Mitwirkender für Sicherungen
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verwalten des Sicherungsdiensts, jedoch nicht das Erstellen von Tresoren und das Erteilen des Zugriffs an andere Benutzer. |
-> | **Id** | 5e467623-bb1f-42f4-a55d-6e525e11384b |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Verwalten des Sicherungsdiensts, jedoch nicht das Erstellen von Tresoren und das Erteilen des Zugriffs an andere Benutzer. |
+> | **id** | 5e467623-bb1f-42f4-a55d-6e525e11384b |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Network/virtualNetworks/read | Dient zum Abrufen der Definition des virtuellen Netzwerks. |
@@ -640,18 +639,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | Listet den gesamten beabsichtigten Sicherungsschutz auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="backup-operator"></a>Sicherungsoperator
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verwalten von Sicherungsdiensten, jedoch nicht das Entfernen der Sicherung, die Tresorerstellung und das Erteilen von Zugriff an andere Benutzer. |
-> | **Id** | 00c29273-979b-4161-815c-10b084fb9324 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Verwalten von Sicherungsdiensten, jedoch nicht das Entfernen der Sicherung, die Tresorerstellung und das Erteilen von Zugriff an andere Benutzer. |
+> | **id** | 00c29273-979b-4161-815c-10b084fb9324 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Network/virtualNetworks/read | Dient zum Abrufen der Definition des virtuellen Netzwerks. |
@@ -712,18 +711,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | Listet den gesamten beabsichtigten Sicherungsschutz auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="backup-reader"></a>Sicherungsleser
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Kann Sicherungsdienste anzeigen, aber keine Änderungen vornehmen. |
-> | **Id** | a795c7a0-d4a2-40c1-ae25-d81f01202912 |
+> | **BESCHREIBUNG** | Kann Sicherungsdienste anzeigen, aber keine Änderungen vornehmen. |
+> | **id** | a795c7a0-d4a2-40c1-ae25-d81f01202912 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.RecoveryServices/locations/allocatedStamp/read | „GetAllocatedStamp“ ist ein interner Vorgang des Diensts. |
@@ -765,18 +764,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | Listet den gesamten beabsichtigten Sicherungsschutz auf. |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Gibt Nutzungsdetails für einen Recovery Services-Tresor zurück. |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="billing-reader"></a>Abrechnungsleser
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Hiermit wird Lesezugriff auf Abrechnungsdaten ermöglicht. |
-> | **Id** | fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64 |
+> | **BESCHREIBUNG** | Hiermit wird Lesezugriff auf Abrechnungsdaten ermöglicht. |
+> | **id** | fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Billing/*/read | Lesen von Abrechnungsinformationen |
@@ -786,18 +785,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.CostManagement/*/read |  |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="biztalk-contributor"></a>Mitwirkender von BizTalk
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verwalten von BizTalk-Diensten, nicht aber den Zugriff darauf. |
-> | **Id** | 5e3c6656-6cfa-4708-81fe-0de47ac73342 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Verwalten von BizTalk-Diensten, nicht aber den Zugriff darauf. |
+> | **id** | 5e3c6656-6cfa-4708-81fe-0de47ac73342 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.BizTalkServices/BizTalk/* | Erstellen und Verwalten von BizTalk-Diensten |
@@ -807,18 +806,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="cdn-endpoint-contributor"></a>Mitwirkender für den CDN-Endpunkt
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Kann CDN-Endpunkte verwalten, aber anderen Benutzern keinen Zugriff erteilen. |
-> | **Id** | 426e0c7f-0c7e-4658-b36f-ff54d6c29b45 |
+> | **BESCHREIBUNG** | Kann CDN-Endpunkte verwalten, aber anderen Benutzern keinen Zugriff erteilen. |
+> | **id** | 426e0c7f-0c7e-4658-b36f-ff54d6c29b45 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Cdn/edgenodes/read |  |
@@ -829,18 +828,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="cdn-endpoint-reader"></a>CDN-Endpunktleser
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Kann CDN-Endpunkte anzeigen, aber keine Änderungen vornehmen. |
-> | **Id** | 871e35f6-b5c1-49cc-a043-bde969a0f2cd |
+> | **BESCHREIBUNG** | Kann CDN-Endpunkte anzeigen, aber keine Änderungen vornehmen. |
+> | **id** | 871e35f6-b5c1-49cc-a043-bde969a0f2cd |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Cdn/edgenodes/read |  |
@@ -851,18 +850,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="cdn-profile-contributor"></a>Mitwirkender für das CDN-Profil
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Kann CDN-Profile und deren Endpunkte verwalten, aber anderen Benutzern keinen Zugriff erteilen. |
-> | **Id** | ec156ff8-a8d1-4d15-830c-5b80698ca432 |
+> | **BESCHREIBUNG** | Kann CDN-Profile und deren Endpunkte verwalten, aber anderen Benutzern keinen Zugriff erteilen. |
+> | **id** | ec156ff8-a8d1-4d15-830c-5b80698ca432 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Cdn/edgenodes/read |  |
@@ -873,18 +872,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="cdn-profile-reader"></a>CDN-Profilleser
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Kann CDN-Profile und deren Endpunkte anzeigen, aber keine Änderungen vornehmen. |
-> | **Id** | 8f96442b-4075-438f-813d-ad51ab4019af |
+> | **BESCHREIBUNG** | Kann CDN-Profile und deren Endpunkte anzeigen, aber keine Änderungen vornehmen. |
+> | **id** | 8f96442b-4075-438f-813d-ad51ab4019af |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Cdn/edgenodes/read |  |
@@ -895,18 +894,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="classic-network-contributor"></a>Mitwirkender von klassischem Netzwerk
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verwalten von klassischen Netzwerken, nicht aber den Zugriff darauf. |
-> | **Id** | b34d265f-36f7-4a0d-a4d4-e158ca92e90f |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Verwalten von klassischen Netzwerken, nicht aber den Zugriff darauf. |
+> | **id** | b34d265f-36f7-4a0d-a4d4-e158ca92e90f |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Autorisierungen |
 > | Microsoft.ClassicNetwork/* | Erstellen und Verwalten von klassischen Netzwerken |
@@ -916,18 +915,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="classic-storage-account-contributor"></a>Mitwirkender von klassischem Speicherkonto
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verwalten klassischer Speicherkonten, nicht aber den Zugriff darauf. |
-> | **Id** | 86e8f5dc-a6e9-4c67-9d15-de283e8eac25 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Verwalten klassischer Speicherkonten, nicht aber den Zugriff darauf. |
+> | **id** | 86e8f5dc-a6e9-4c67-9d15-de283e8eac25 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Autorisierungen |
 > | Microsoft.ClassicStorage/storageAccounts/* | Erstellen und Verwalten von Speicherkonten |
@@ -937,34 +936,34 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="classic-storage-account-key-operator-service-role"></a>Klassische Dienstrolle „Speicherkonto-Schlüsseloperator“
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Klassische Speicherkonto-Schlüsseloperatoren dürfen Schlüssel für klassische Speicherkonten auflisten und neu generieren. |
-> | **Id** | 985d6b00-f706-48f5-a6fe-d0ca12fb668d |
+> | **BESCHREIBUNG** | Klassische Speicherkonto-Schlüsseloperatoren dürfen Schlüssel für klassische Speicherkonten auflisten und neu generieren. |
+> | **id** | 985d6b00-f706-48f5-a6fe-d0ca12fb668d |
 > | **Aktionen** |  |
 > | Microsoft.ClassicStorage/storageAccounts/listkeys/action | Listet die Zugriffsschlüssel für die Speicherkonten auf. |
 > | Microsoft.ClassicStorage/storageAccounts/regeneratekey/action | Generiert die vorhandenen Zugriffsschlüssel für das Speicherkonto neu. |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="classic-virtual-machine-contributor"></a>Mitwirkender von klassischen virtuellen Computern
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verwalten klassischer virtueller Computer, aber weder den Zugriff darauf noch auf die mit ihnen verbundenen virtuellen Netzwerke oder Speicherkonten. |
-> | **Id** | d73bb868-a0df-4d4d-bd69-98a00b01fccb |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Verwalten klassischer virtueller Computer, aber weder den Zugriff darauf noch auf die mit ihnen verbundenen virtuellen Netzwerke oder Speicherkonten. |
+> | **id** | d73bb868-a0df-4d4d-bd69-98a00b01fccb |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Autorisierungen |
 > | Microsoft.ClassicCompute/domainNames/* | Erstellen und Verwalten von klassischen Compute-Domänennamen |
@@ -984,18 +983,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="cognitive-services-contributor"></a>Mitwirkender für Cognitive Services
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Erstellen, Lesen, Aktualisieren, Löschen und Verwalten von Cognitive Services-Schlüsseln. |
-> | **Id** | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Erstellen, Lesen, Aktualisieren, Löschen und Verwalten von Cognitive Services-Schlüsseln. |
+> | **id** | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.CognitiveServices/* |  |
@@ -1015,33 +1014,33 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="cognitive-services-data-reader-preview"></a>Cognitive Services-Datenleser (Vorschau)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht das Lesen von Cognitive Services-Daten. |
-> | **Id** | b59867f0-fa02-499b-be73-45a86b5b3e1c |
+> | **BESCHREIBUNG** | Ermöglicht das Lesen von Cognitive Services-Daten. |
+> | **id** | b59867f0-fa02-499b-be73-45a86b5b3e1c |
 > | **Aktionen** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
 > | Microsoft.CognitiveServices/*/read |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="cognitive-services-user"></a>Cognitive Services-Benutzer
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Lesen und Auflisten von Cognitive Services-Schlüsseln. |
-> | **Id** | a97b65f3-24c7-4388-baec-2e87135dc908 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Lesen und Auflisten von Cognitive Services-Schlüsseln. |
+> | **id** | a97b65f3-24c7-4388-baec-2e87135dc908 |
 > | **Aktionen** |  |
 > | Microsoft.CognitiveServices/*/read |  |
 > | Microsoft.CognitiveServices/accounts/listkeys/action | Dient zum Auflisten von Schlüsseln. |
@@ -1057,18 +1056,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
 > | Microsoft.CognitiveServices/* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="cosmos-db-account-reader-role"></a>Cosmos DB-Rolle „Kontoleser“
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Kann Azure Cosmos DB-Kontodaten lesen. Informationen zum Verwalten von Azure Cosmos DB-Konten finden Sie unter [Mitwirkender von DocumentDB-Konto](#documentdb-account-contributor). |
-> | **Id** | fbdf93bf-df7d-467e-a4d2-9458aa1360c8 |
+> | **BESCHREIBUNG** | Kann Azure Cosmos DB-Kontodaten lesen. Informationen zum Verwalten von Azure Cosmos DB-Konten finden Sie unter [Mitwirkender von DocumentDB-Konto](#documentdb-account-contributor). |
+> | **id** | fbdf93bf-df7d-467e-a4d2-9458aa1360c8 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen, kann die jedem Benutzer erteilten Berechtigungen lesen |
 > | Microsoft.DocumentDB/*/read | Lesen einer beliebigen Sammlung |
@@ -1078,34 +1077,34 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="cosmosbackupoperator"></a>CosmosBackupOperator
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Kann eine Wiederherstellungsanforderung für eine Cosmos DB-Datenbank oder einen Container für ein Konto übermitteln. |
-> | **Id** | db7b14f2-5adf-42da-9f96-f2ee17bab5cb |
+> | **BESCHREIBUNG** | Kann eine Wiederherstellungsanforderung für eine Cosmos DB-Datenbank oder einen Container für ein Konto übermitteln. |
+> | **id** | db7b14f2-5adf-42da-9f96-f2ee17bab5cb |
 > | **Aktionen** |  |
 > | Microsoft.DocumentDB/databaseAccounts/backup/action | Sendet eine Anforderung zum Konfigurieren der Sicherung. |
 > | Microsoft.DocumentDB/databaseAccounts/restore/action | Sendet eine Wiederherstellungsanforderung. |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="cost-management-contributor"></a>Mitwirkender für Cost Management
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Anzeigen der Kosten und das Verwalten der Kostenkonfiguration (z. B. Budgets, Exporte). |
-> | **Id** | 434105ed-43f6-45c7-a02f-909b2ba83430 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Anzeigen der Kosten und das Verwalten der Kostenkonfiguration (z. B. Budgets, Exporte). |
+> | **id** | 434105ed-43f6-45c7-a02f-909b2ba83430 |
 > | **Aktionen** |  |
 > | Microsoft.Consumption/* |  |
 > | Microsoft.CostManagement/* |  |
@@ -1114,18 +1113,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="cost-management-reader"></a>Cost Management-Leser
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Anzeigen der Kostendaten und -konfiguration (z. B. Budgets, Exporte). |
-> | **Id** | 72fafb9e-0641-4937-9268-a91bfd8191a3 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Anzeigen der Kostendaten und -konfiguration (z. B. Budgets, Exporte). |
+> | **id** | 72fafb9e-0641-4937-9268-a91bfd8191a3 |
 > | **Aktionen** |  |
 > | Microsoft.Consumption/*/read |  |
 > | Microsoft.CostManagement/*/read |  |
@@ -1134,18 +1133,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="data-box-contributor"></a>Data Box-Mitwirkender
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verwalten aller Komponenten unter dem Data Box-Dienst, mit Ausnahme der Gewährung des Zugriffs für andere Benutzer. |
-> | **Id** | add466c9-e687-43fc-8d98-dfcf8d720be5 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Verwalten aller Komponenten unter dem Data Box-Dienst, mit Ausnahme der Gewährung des Zugriffs für andere Benutzer. |
+> | **id** | add466c9-e687-43fc-8d98-dfcf8d720be5 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Ruft den Verfügbarkeitsstatus für alle Ressourcen im angegebenen Bereich ab. |
@@ -1154,18 +1153,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | Microsoft.Databox/* |  |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="data-box-reader"></a>Data Box-Leser
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verwalten des Data Box-Diensts, mit Ausnahme der Erstellung von Aufträgen oder der Bearbeitung von Auftragsdetails und der Gewährung des Zugriffs für andere Benutzer. |
-> | **Id** | 028f4ed7-e2a9-465e-a8f4-9c0ffdfdc027 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Verwalten des Data Box-Diensts, mit Ausnahme der Erstellung von Aufträgen oder der Bearbeitung von Auftragsdetails und der Gewährung des Zugriffs für andere Benutzer. |
+> | **id** | 028f4ed7-e2a9-465e-a8f4-9c0ffdfdc027 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Databox/*/read |  |
@@ -1175,18 +1174,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Ruft den Verfügbarkeitsstatus für alle Ressourcen im angegebenen Bereich ab. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="data-factory-contributor"></a>Mitwirkender von Data Factory
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Erstellen und verwalten Sie Data Factorys sowie die darin enthaltenen untergeordneten Ressourcen. |
-> | **Id** | 673868aa-7521-48a0-acc6-0f60742d39f5 |
+> | **BESCHREIBUNG** | Erstellen und verwalten Sie Data Factorys sowie die darin enthaltenen untergeordneten Ressourcen. |
+> | **id** | 673868aa-7521-48a0-acc6-0f60742d39f5 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.DataFactory/dataFactories/* | Erstellt und verwaltet Data Factorys und darin enthaltene untergeordnete Ressourcen. |
@@ -1197,18 +1196,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="data-lake-analytics-developer"></a>Data Lake Analytics-Entwickler
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Übermitteln, Überwachen und Verwalten Ihrer eigenen Aufträge, aber nicht das Erstellen oder Löschen von Data Lake Analytics-Konten. |
-> | **Id** | 47b7735b-770e-4598-a7da-8b91488b4c88 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Übermitteln, Überwachen und Verwalten Ihrer eigenen Aufträge, aber nicht das Erstellen oder Löschen von Data Lake Analytics-Konten. |
+> | **id** | 47b7735b-770e-4598-a7da-8b91488b4c88 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.BigAnalytics/accounts/* |  |
@@ -1234,34 +1233,34 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.DataLakeAnalytics/accounts/computePolicies/Write | Erstellt oder aktualisiert eine Computerichtlinie. |
 > | Microsoft.DataLakeAnalytics/accounts/computePolicies/Delete | Löscht eine Computerichtlinie. |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="data-purger"></a>Datenpurger
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Kann Analysedaten endgültig löschen. |
-> | **Id** | 150f5e0c-0603-4f03-8c7f-cf70034c4e90 |
+> | **BESCHREIBUNG** | Kann Analysedaten endgültig löschen. |
+> | **id** | 150f5e0c-0603-4f03-8c7f-cf70034c4e90 |
 > | **Aktionen** |  |
 > | Microsoft.Insights/components/*/read |  |
 > | Microsoft.Insights/components/purge/action | Daten werden aus Application Insights gelöscht |
 > | Microsoft.OperationalInsights/workspaces/*/read |  |
 > | Microsoft.OperationalInsights/workspaces/purge/action | Löscht die angegebenen Daten aus dem Arbeitsbereich. |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="devtest-labs-user"></a>DevTest Labs-Benutzer
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verbinden, Starten, Neustarten und Herunterfahren Ihrer virtuellen Computer in Ihren Azure DevTest Labs. |
-> | **Id** | 76283e04-6283-4c54-8f91-bcf1374a3c64 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Verbinden, Starten, Neustarten und Herunterfahren Ihrer virtuellen Computer in Ihren Azure DevTest Labs. |
+> | **id** | 76283e04-6283-4c54-8f91-bcf1374a3c64 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Compute/availabilitySets/read | Dient zum Abrufen der Eigenschaften einer Verfügbarkeitsgruppe. |
@@ -1281,7 +1280,7 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.DevTestLab/labs/virtualmachines/listApplicableSchedules/action | Listet die anwendbaren Zeitpläne zum Starten/Beenden auf, sofern vorhanden. |
 > | Microsoft.DevTestLab/labs/virtualMachines/getRdpFileContents/action | Ruft eine Zeichenfolge ab, die den Inhalt der RDP-Datei für den virtuellen Computer darstellt. |
 > | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Verknüpft einen Back-End-Adresspool für den Lastenausgleich. Nicht warnbar. |
-> | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Verknüpft eine eingehende NAT-Regel für den Lastenausgleich. Nicht warnbar. |
+> | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Verknüpft eine NAT-Regel für eingehenden Datenverkehr für den Lastenausgleich. Nicht warnbar. |
 > | Microsoft.Network/networkInterfaces/*/read | Lesen der Eigenschaften einer Netzwerkschnittstelle (z.B. alle Load Balancer, zu denen die Netzwerkschnittstelle gehört) |
 > | Microsoft.Network/networkInterfaces/join/action | Verknüpft einen virtuellen Computer mit einer Netzwerkschnittstelle. Nicht warnbar. |
 > | Microsoft.Network/networkInterfaces/read | Ruft eine Netzwerkschnittstellendefinition ab.  |
@@ -1297,16 +1296,16 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **NotActions** |  |
 > | Microsoft.Compute/virtualMachines/vmSizes/read | Listet die verfügbaren Größen auf, auf die der virtuelle Computer aktualisiert werden kann. |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="dns-zone-contributor"></a>DNS Zone Contributor
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen die Verwaltung von DNS-Zonen und Ressourceneintragssätzen in Azure DNS, aber nicht zu steuern, wer darauf Zugriff hat. |
-> | **Id** | befefa01-2a29-4197-83a8-272ff33ce314 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen die Verwaltung von DNS-Zonen und Ressourceneintragssätzen in Azure DNS, aber nicht zu steuern, wer darauf Zugriff hat. |
+> | **id** | befefa01-2a29-4197-83a8-272ff33ce314 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Warnungsregeln |
@@ -1316,18 +1315,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Supporttickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="documentdb-account-contributor"></a>Mitwirkender von DocumentDB-Konto
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Kann Azure Cosmos DB-Konten verwalten. Azure Cosmos DB wurde früher als DocumentDB bezeichnet. |
-> | **Id** | 5bd9cd88-fe45-4216-938b-f97437e15450 |
+> | **BESCHREIBUNG** | Kann Azure Cosmos DB-Konten verwalten. Azure Cosmos DB wurde früher als DocumentDB bezeichnet. |
+> | **id** | 5bd9cd88-fe45-4216-938b-f97437e15450 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.DocumentDb/databaseAccounts/* | Kann Azure Cosmos DB-Konten erstellen und verwalten |
@@ -1337,18 +1336,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="eventgrid-eventsubscription-contributor"></a>EventGrid EventSubscription-Mitwirkender
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht die Verwaltung von EventGrid-Ereignisabonnementvorgängen. |
-> | **Id** | 428e0ff0-5e57-4d9c-a221-2c70d0e0a443 |
+> | **BESCHREIBUNG** | Ermöglicht die Verwaltung von EventGrid-Ereignisabonnementvorgängen. |
+> | **id** | 428e0ff0-5e57-4d9c-a221-2c70d0e0a443 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.EventGrid/eventSubscriptions/* |  |
@@ -1360,18 +1359,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="eventgrid-eventsubscription-reader"></a>EventGrid EventSubscription-Leser
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht das Lesen von EventGrid-Ereignisabonnements. |
-> | **Id** | 2414bbcf-6497-4faf-8c65-045460748405 |
+> | **BESCHREIBUNG** | Ermöglicht das Lesen von EventGrid-Ereignisabonnements. |
+> | **id** | 2414bbcf-6497-4faf-8c65-045460748405 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.EventGrid/eventSubscriptions/read | Liest eventSubscription. |
@@ -1380,35 +1379,35 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read | Listet regionale Ereignisabonnements nach Thematyp auf. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="hdinsight-domain-services-contributor"></a>Mitwirkender für die HDInsight-Domänendienste
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen, Vorgänge im Zusammenhang mit Domänendiensten, die für das HDInsight Enterprise-Sicherheitspaket erforderlich sind, zu lesen, zu erstellen, zu ändern und zu löschen. |
-> | **Id** | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen, Vorgänge im Zusammenhang mit Domänendiensten, die für das HDInsight Enterprise-Sicherheitspaket erforderlich sind, zu lesen, zu erstellen, zu ändern und zu löschen. |
+> | **id** | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | **Aktionen** |  |
 > | Microsoft.AAD/*/read |  |
 > | Microsoft.AAD/domainServices/*/read |  |
 > | Microsoft.AAD/domainServices/oucontainer/* |  |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="intelligent-systems-account-contributor"></a>Mitwirkender von Intelligent Systems-Konto
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verwalten von Intelligent Systems-Konten, nicht aber den Zugriff darauf. |
-> | **Id** | 03a6d094-3444-4b3d-88af-7477090a9e5e |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Verwalten von Intelligent Systems-Konten, nicht aber den Zugriff darauf. |
+> | **id** | 03a6d094-3444-4b3d-88af-7477090a9e5e |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Warnungsregeln |
@@ -1418,18 +1417,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="key-vault-contributor"></a>Key Vault-Mitwirkender
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen die Verwaltung von Schlüsseltresoren, aber nicht den Zugriff darauf. |
-> | **Id** | f25e0fa2-a7c8-4377-a976-54943a77a395 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen die Verwaltung von Schlüsseltresoren, aber nicht den Zugriff darauf. |
+> | **id** | f25e0fa2-a7c8-4377-a976-54943a77a395 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Insights-Warnungsregeln |
@@ -1441,16 +1440,16 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.KeyVault/locations/deletedVaults/purge/action | Dient zum endgültigen Löschen eines vorläufig gelöschten Schlüsseltresors. |
 > | Microsoft.KeyVault/hsmPools/* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="lab-creator"></a>Lab-Ersteller
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Erstellen, Verwalten und Löschen verwalteter Labs unter Ihren Azure Lab-Konten. |
-> | **Id** | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Erstellen, Verwalten und Löschen verwalteter Labs unter Ihren Azure Lab-Konten. |
+> | **id** | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.LabServices/labAccounts/*/read |  |
@@ -1460,18 +1459,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="log-analytics-contributor"></a>Log Analytics-Mitwirkender
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ein Log Analytics-Mitwirkender kann alle Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten. Das Bearbeiten von Überwachungseinstellungen schließt folgende Aufgaben ein: Hinzufügen der VM-Erweiterung zu VMs, Lesen von Speicherkontoschlüsseln zum Konfigurieren von Protokollsammlungen aus Azure Storage, Erstellen und Konfigurieren von Automation-Konten, Hinzufügen von Lösungen, Konfigurieren der Azure-Diagnose für alle Azure-Ressourcen. |
-> | **Id** | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
+> | **BESCHREIBUNG** | Ein Log Analytics-Mitwirkender kann alle Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten. Das Bearbeiten von Überwachungseinstellungen schließt folgende Aufgaben ein: Hinzufügen der VM-Erweiterung zu VMs, Lesen von Speicherkontoschlüsseln zum Konfigurieren von Protokollsammlungen aus Azure Storage, Erstellen und Konfigurieren von Automation-Konten, Hinzufügen von Lösungen, Konfigurieren der Azure-Diagnose für alle Azure-Ressourcen. |
+> | **id** | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
 > | **Aktionen** |  |
 > | */Lesen | Lesen von Ressourcen aller Typen mit Ausnahme geheimer Schlüssel |
 > | Microsoft.Automation/automationAccounts/* |  |
@@ -1487,18 +1486,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Storage/storageAccounts/listKeys/action | Gibt die Zugriffsschlüssel für das angegebene Speicherkonto zurück. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="log-analytics-reader"></a>Log Analytics-Leser
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ein Log Analytics-Leser kann alle Überwachungsdaten anzeigen und durchsuchen sowie Überwachungseinstellungen anzeigen. Hierzu zählt auch die Anzeige der Konfiguration von Azure-Diagnosen für alle Azure-Ressourcen. |
-> | **Id** | 73c42c96-874c-492b-b04d-ab87d138a893 |
+> | **BESCHREIBUNG** | Ein Log Analytics-Leser kann alle Überwachungsdaten anzeigen und durchsuchen sowie Überwachungseinstellungen anzeigen. Hierzu zählt auch die Anzeige der Konfiguration von Azure-Diagnosen für alle Azure-Ressourcen. |
+> | **id** | 73c42c96-874c-492b-b04d-ab87d138a893 |
 > | **Aktionen** |  |
 > | */Lesen | Lesen von Ressourcen aller Typen mit Ausnahme geheimer Schlüssel |
 > | Microsoft.OperationalInsights/workspaces/analytics/query/action | Führt eine Suche mit der neuen Engine aus. |
@@ -1507,16 +1506,16 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | **NotActions** |  |
 > | Microsoft.OperationalInsights/workspaces/sharedKeys/read | Ruft die gemeinsam verwendeten Schlüssel für den Arbeitsbereich ab. Diese Schlüssel werden verwendet, um Microsoft Operational Insights-Agents mit dem Arbeitsbereich zu verbinden. |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="logic-app-contributor"></a>Mitwirkender für Logik-Apps
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verwalten von Logik-Apps, aber nicht den Zugriff darauf. |
-> | **Id** | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Verwalten von Logik-Apps, aber nicht den Zugriff darauf. |
+> | **id** | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.ClassicStorage/storageAccounts/listKeys/action | Listet die Zugriffsschlüssel für die Speicherkonten auf. |
@@ -1539,18 +1538,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Web/serverFarms/read | Dient zum Abrufen der Eigenschaften für einen App Service-Plan. |
 > | Microsoft.Web/sites/functions/listSecrets/action | Dient zum Auflisten der Geheimnisse für Web-App-Funktionen. |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="logic-app-operator"></a>Logik-App-Operator
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Lesen, Aktivieren und Deaktivieren von Logik-Apps. |
-> | **Id** | 515c2055-d9d4-4321-b1b9-bd0c9a0f79fe |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Lesen, Aktivieren und Deaktivieren von Logik-Apps. |
+> | **id** | 515c2055-d9d4-4321-b1b9-bd0c9a0f79fe |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Insights/alertRules/*/read | Lesen von Insights-Warnungsregeln |
@@ -1569,52 +1568,52 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Web/customApis/*/read | Liest benutzerdefinierte API. |
 > | Microsoft.Web/serverFarms/read | Dient zum Abrufen der Eigenschaften für einen App Service-Plan. |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="managed-application-operator-role"></a>Rolle „Bediener für verwaltete Anwendung“
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Lesen und Durchführen von Aktionen für Ressourcen der verwalteten Anwendung. |
-> | **Id** | c7393b34-138c-406f-901b-d8cf2b17e6ae |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Lesen und Durchführen von Aktionen für Ressourcen der verwalteten Anwendung. |
+> | **id** | c7393b34-138c-406f-901b-d8cf2b17e6ae |
 > | **Aktionen** |  |
 > | */Lesen | Lesen von Ressourcen aller Typen mit Ausnahme geheimer Schlüssel |
 > | Microsoft.Solutions/applications/read | Hiermit wird eine Liste mit Anwendungen abgerufen. |
 > | Microsoft.Solutions/*/action |  |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="managed-applications-reader"></a>Leser für verwaltete Anwendungen
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen, Ressourcen in einer verwalteten App zu lesen und JIT-Zugriff anzufordern. |
-> | **Id** | b9331d33-8a36-4f8c-b097-4f54124fdb44 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen, Ressourcen in einer verwalteten App zu lesen und JIT-Zugriff anzufordern. |
+> | **id** | b9331d33-8a36-4f8c-b097-4f54124fdb44 |
 > | **Aktionen** |  |
 > | */Lesen | Lesen von Ressourcen aller Typen mit Ausnahme geheimer Schlüssel |
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Solutions/jitRequests/* |  |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="managed-identity-contributor"></a>Mitwirkender für verwaltete Identität
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Dem Benutzer zugewiesene Identität erstellen, lesen, aktualisieren und löschen. |
-> | **Id** | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
+> | **BESCHREIBUNG** | Dem Benutzer zugewiesene Identität erstellen, lesen, aktualisieren und löschen. |
+> | **id** | e40ec5ca-96e0-45a2-b4ff-59039f2c2b59 |
 > | **Aktionen** |  |
 > | Microsoft.ManagedIdentity/userAssignedIdentities/*/read |  |
 > | Microsoft.ManagedIdentity/userAssignedIdentities/*/write |  |
@@ -1625,18 +1624,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="managed-identity-operator"></a>Operator für verwaltete Identität
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Dem Benutzer zugewiesene Identität lesen und zuweisen. |
-> | **Id** | f1a07417-d97a-45cb-824c-7a7467783830 |
+> | **BESCHREIBUNG** | Dem Benutzer zugewiesene Identität lesen und zuweisen. |
+> | **id** | f1a07417-d97a-45cb-824c-7a7467783830 |
 > | **Aktionen** |  |
 > | Microsoft.ManagedIdentity/userAssignedIdentities/*/read |  |
 > | Microsoft.ManagedIdentity/userAssignedIdentities/*/assign/action |  |
@@ -1646,18 +1645,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="management-group-contributor"></a>Verwaltungsgruppenmitwirkender
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Rolle „Verwaltungsgruppenmitwirkender“ |
-> | **Id** | 5d58bcaf-24a5-4b20-bdb6-eed9f69fbe4c |
+> | **BESCHREIBUNG** | Rolle „Verwaltungsgruppenmitwirkender“ |
+> | **id** | 5d58bcaf-24a5-4b20-bdb6-eed9f69fbe4c |
 > | **Aktionen** |  |
 > | Microsoft.Management/managementGroups/delete | Löscht eine Verwaltungsgruppe. |
 > | Microsoft.Management/managementGroups/read | Listet die Verwaltungsgruppen für den authentifizierten Benutzer auf. |
@@ -1665,33 +1664,33 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Management/managementGroups/subscriptions/write | Ordnet ein vorhandenes Abonnement der Verwaltungsgruppe zu. |
 > | Microsoft.Management/managementGroups/write | Erstellt oder aktualisiert eine Verwaltungsgruppe. |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="management-group-reader"></a>Verwaltungsgruppenleser
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Rolle „Verwaltungsgruppenleser“ |
-> | **Id** | ac63b705-F282-497d-ac71-919bf39d939d |
+> | **BESCHREIBUNG** | Rolle „Verwaltungsgruppenleser“ |
+> | **id** | ac63b705-F282-497d-ac71-919bf39d939d |
 > | **Aktionen** |  |
 > | Microsoft.Management/managementGroups/read | Listet die Verwaltungsgruppen für den authentifizierten Benutzer auf. |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="monitoring-contributor"></a>Überwachungsmitwirkender
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Kann sämtliche Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten. Siehe auch [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). |
-> | **Id** | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
+> | **BESCHREIBUNG** | Kann sämtliche Überwachungsdaten lesen und Überwachungseinstellungen bearbeiten. Siehe auch [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). |
+> | **id** | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
 > | **Aktionen** |  |
 > | */Lesen | Lesen von Ressourcen aller Typen mit Ausnahme geheimer Schlüssel |
 > | Microsoft.AlertsManagement/alerts/* |  |
@@ -1718,52 +1717,52 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.WorkloadMonitor/monitors/* |  |
 > | Microsoft.WorkloadMonitor/notificationSettings/* |  |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="monitoring-metrics-publisher"></a>Herausgeber von Überwachungsmetriken
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht die Veröffentlichung von Metriken für Azure-Ressourcen. |
-> | **Id** | 3913510d-42f4-4e42-8a64-420c390055eb |
+> | **BESCHREIBUNG** | Ermöglicht die Veröffentlichung von Metriken für Azure-Ressourcen. |
+> | **id** | 3913510d-42f4-4e42-8a64-420c390055eb |
 > | **Aktionen** |  |
 > | Microsoft.Insights/Register/Action | Dient zum Registrieren des Microsoft Insights-Anbieters. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
 > | Microsoft.Insights/Metrics/Write | Hiermit werden Metriken geschrieben. |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="monitoring-reader"></a>Überwachungsleser
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Kann alle Überwachungsdaten (Metriken, Protokolle usw.) lesen. Siehe auch [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). |
-> | **Id** | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
+> | **BESCHREIBUNG** | Kann alle Überwachungsdaten (Metriken, Protokolle usw.) lesen. Siehe auch [Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor](../azure-monitor/platform/roles-permissions-security.md#built-in-monitoring-roles). |
+> | **id** | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
 > | **Aktionen** |  |
 > | */Lesen | Lesen von Ressourcen aller Typen mit Ausnahme geheimer Schlüssel |
 > | Microsoft.OperationalInsights/workspaces/search/action | Führt eine Suchabfrage aus. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="network-contributor"></a>Mitwirkender von virtuellem Netzwerk
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verwalten von Netzwerken, nicht aber den Zugriff darauf. |
-> | **Id** | 4d97b98b-1d4f-4787-a291-c67834d212e7 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Verwalten von Netzwerken, nicht aber den Zugriff darauf. |
+> | **id** | 4d97b98b-1d4f-4787-a291-c67834d212e7 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Warnungsregeln |
@@ -1773,18 +1772,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="new-relic-apm-account-contributor"></a>Mitwirkender von New Relic APM-Konto
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verwalten von New Relic Application Performance Management-Konten und -Anwendungen, nicht aber den Zugriff auf diese. |
-> | **Id** | 5d28c62d-5b37-4476-8438-e587778df237 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Verwalten von New Relic Application Performance Management-Konten und -Anwendungen, nicht aber den Zugriff auf diese. |
+> | **id** | 5d28c62d-5b37-4476-8438-e587778df237 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Insights-Warnungsregeln |
@@ -1794,34 +1793,34 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | NewRelic.APM/accounts/* |  |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="reader-and-data-access"></a>Lese- und Datenzugriff
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Anzeigen sämtlicher Aspekte, jedoch nicht das Löschen oder Erstellen eines Speicherkontos oder einer darin enthaltenen Ressource. Sie können auch Lese-/Schreibzugriff auf alle Daten in einem Speicherkonto durch Zugriff auf Speicherkontoschlüssel gewähren. |
-> | **Id** | c12c1c16-33a1-487b-954d-41c89c60f349 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Anzeigen sämtlicher Aspekte, jedoch nicht das Löschen oder Erstellen eines Speicherkontos oder einer darin enthaltenen Ressource. Sie können auch Lese-/Schreibzugriff auf alle Daten in einem Speicherkonto durch Zugriff auf Speicherkontoschlüssel gewähren. |
+> | **id** | c12c1c16-33a1-487b-954d-41c89c60f349 |
 > | **Aktionen** |  |
 > | Microsoft.Storage/storageAccounts/listKeys/action | Gibt die Zugriffsschlüssel für das angegebene Speicherkonto zurück. |
 > | Microsoft.Storage/storageAccounts/read | Gibt die Liste mit Speicherkonten zurück oder ruft die Eigenschaften für das angegebene Speicherkonto ab. |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="redis-cache-contributor"></a>Mitwirkender von Redis-Cache
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verwalten von Redis Caches, nicht aber den Zugriff darauf. |
-> | **Id** | e0f68234-74aa-48ed-b826-c38b57376e17 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Verwalten von Redis Caches, nicht aber den Zugriff darauf. |
+> | **id** | e0f68234-74aa-48ed-b826-c38b57376e17 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Cache/redis/* | Erstellen und Verwalten von Redis-Caches |
@@ -1831,18 +1830,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="resource-policy-contributor-preview"></a>Mitwirkender an Ressourcenrichtlinien (Vorschau)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | (Vorschau) Über EA abgeglichene Benutzer mit Rechten zum Erstellen/Ändern der Ressourcenrichtlinie, zum Erstellen eines Supporttickets und zum Lesen von Ressourcen/der Hierarchie. |
-> | **Id** | 36243c78-bf99-498c-9df9-86d9f8d28608 |
+> | **BESCHREIBUNG** | (Vorschau) Über EA abgeglichene Benutzer mit Rechten zum Erstellen/Ändern der Ressourcenrichtlinie, zum Erstellen eines Supporttickets und zum Lesen von Ressourcen/der Hierarchie. |
+> | **id** | 36243c78-bf99-498c-9df9-86d9f8d28608 |
 > | **Aktionen** |  |
 > | */Lesen | Lesen von Ressourcen aller Typen mit Ausnahme geheimer Schlüssel |
 > | Microsoft.Authorization/policyassignments/* | Erstellen und Verwalten von Richtlinienzuweisungen |
@@ -1851,18 +1850,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.PolicyInsights/* |  |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="scheduler-job-collections-contributor"></a>Mitwirkender von Zeitplanungsauftragssammlung
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verwalten von Scheduler-Auftragssammlungen, nicht aber den Zugriff darauf. |
-> | **Id** | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Verwalten von Scheduler-Auftragssammlungen, nicht aber den Zugriff darauf. |
+> | **id** | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Warnungsregeln |
@@ -1872,18 +1871,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Scheduler/jobcollections/* | Erstellen und Verwalten von Auftragssammlungen |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="search-service-contributor"></a>Mitwirkender von Suchdienst
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verwalten von Search-Diensten, nicht aber den Zugriff darauf. |
-> | **Id** | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Verwalten von Search-Diensten, nicht aber den Zugriff darauf. |
+> | **id** | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Warnungsregeln |
@@ -1893,18 +1892,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Search/searchServices/* | Erstellen und Verwalten von Suchdiensten |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="security-admin"></a>Sicherheitsadministrator
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Nur in Security Center: Kann Sicherheitsrichtlinien und -zustände anzeigen, Sicherheitsrichtlinien bearbeiten sowie Warnungen und Empfehlungen anzeigen und verwerfen. |
-> | **Id** | fb1c8493-542b-48eb-b624-b4c8fea62acd |
+> | **BESCHREIBUNG** | Nur in Security Center: Kann Sicherheitsrichtlinien und -zustände anzeigen, Sicherheitsrichtlinien bearbeiten sowie Warnungen und Empfehlungen anzeigen und verwerfen. |
+> | **id** | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Authorization/policyAssignments/* | Erstellen und Verwalten von Richtlinienzuweisungen |
@@ -1918,18 +1917,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Security/* |  |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="security-manager-legacy"></a>Sicherheits-Manager (Legacy)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Dies ist eine Legacyrolle. Verwenden Sie stattdessen „Sicherheitsadministrator“. |
-> | **Id** | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
+> | **BESCHREIBUNG** | Dies ist eine Legacyrolle. Verwenden Sie stattdessen „Sicherheitsadministrator“. |
+> | **id** | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.ClassicCompute/*/read | Lesen von Konfigurationsinformationen zu klassischen virtuellen Computern |
@@ -1942,18 +1941,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Security/* | Erstellen und Verwalten von Sicherheitskomponenten und -richtlinien |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
-## <a name="security-reader"></a>Sicherheit lesen
+## <a name="security-reader"></a>Sicherheitsleseberechtigter
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Nur in Security Center: Kann Empfehlungen und Warnungen sowie Sicherheitsrichtlinien und -zustände anzeigen, aber keine Änderungen vornehmen. |
-> | **Id** | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
+> | **BESCHREIBUNG** | Nur in Security Center: Kann Empfehlungen und Warnungen sowie Sicherheitsrichtlinien und -zustände anzeigen, aber keine Änderungen vornehmen. |
+> | **id** | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Warnungsregeln |
@@ -1964,18 +1963,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | Microsoft.Management/managementGroups/read | Listet die Verwaltungsgruppen für den authentifizierten Benutzer auf. |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="site-recovery-contributor"></a>Site Recovery-Mitwirkender
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen die Verwaltung des Site Recovery-Diensts mit Ausnahme der Tresorerstellung und der Rollenzuweisung. |
-> | **Id** | 6670b86e-a3f7-4917-ac9b-5d6ab1be4567 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen die Verwaltung des Site Recovery-Diensts mit Ausnahme der Tresorerstellung und der Rollenzuweisung. |
+> | **id** | 6670b86e-a3f7-4917-ac9b-5d6ab1be4567 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Warnungsregeln |
@@ -2005,18 +2004,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Storage/storageAccounts/read | Gibt die Liste mit Speicherkonten zurück oder ruft die Eigenschaften für das angegebene Speicherkonto ab. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="site-recovery-operator"></a>Site Recovery-Operator
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen ein Failover und ein Failback, aber nicht das Durchführen weiterer Site Recovery-Verwaltungsvorgänge. |
-> | **Id** | 494ae006-db33-4328-bf46-533a6560a3ca |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen ein Failover und ein Failback, aber nicht das Durchführen weiterer Site Recovery-Verwaltungsvorgänge. |
+> | **id** | 494ae006-db33-4328-bf46-533a6560a3ca |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Warnungsregeln |
@@ -2076,18 +2075,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Storage/storageAccounts/read | Gibt die Liste mit Speicherkonten zurück oder ruft die Eigenschaften für das angegebene Speicherkonto ab. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="site-recovery-reader"></a>Site Recovery-Leser
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen die Anzeige des Site Recovery-Status, aber nicht die Durchführung weiterer Verwaltungsvorgänge. |
-> | **Id** | dbaa88c4-0c30-4179-9fb3-46319faa6149 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen die Anzeige des Site Recovery-Status, aber nicht die Durchführung weiterer Verwaltungsvorgänge. |
+> | **id** | dbaa88c4-0c30-4179-9fb3-46319faa6149 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.RecoveryServices/locations/allocatedStamp/read | „GetAllocatedStamp“ ist ein interner Vorgang des Diensts. |
@@ -2121,42 +2120,42 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.RecoveryServices/Vaults/vaultTokens/read | Der Vorgang „Tresortoken“ kann zum Abrufen des Tresortokens für Back-End-Vorgänge auf Tresorebene verwendet werden. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="spatial-anchors-account-contributor"></a>Spatial Anchors-Kontomitwirkender
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verwalten von Raumankern in Ihrem Konto, nicht jedoch das Löschen von Ankern. |
-> | **Id** | 8bbe83f1-e2a6-4df7-8cb4-4e04d4e5c827 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Verwalten von Raumankern in Ihrem Konto, nicht jedoch das Löschen von Ankern. |
+> | **id** | 8bbe83f1-e2a6-4df7-8cb4-4e04d4e5c827 |
 > | **Aktionen** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
 > | Microsoft.MixedReality/SpatialAnchorsAccounts/create/action | Erstellen von Raumankern |
 > | Microsoft.MixedReality/SpatialAnchorsAccounts/discovery/read | Ermitteln von Raumankern in räumlicher Nähe |
 > | Microsoft.MixedReality/SpatialAnchorsAccounts/properties/read | Abrufen der Eigenschaften von Raumankern |
 > | Microsoft.MixedReality/SpatialAnchorsAccounts/query/read | Suchen von Raumankern |
 > | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Übermitteln von Diagnosedaten, um die Qualität des Azure Spatial Anchors-Diensts zu verbessern |
-> | Microsoft.MixedReality/SpatialAnchorsAccounts/write | Aktualisieren der Eigenschaften von Raumankern |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/write | Hiermit aktualisieren Sie die Eigenschaften von Raumankern. |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="spatial-anchors-account-owner"></a>Spatial Anchors-Kontobesitzer
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verwalten von Raumankern in Ihrem Konto, einschließlich der Löschung von Ankern. |
-> | **Id** | 70bbe301-9835-447d-afdd-19eb3167307c |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Verwalten von Raumankern in Ihrem Konto, einschließlich der Löschung von Ankern. |
+> | **id** | 70bbe301-9835-447d-afdd-19eb3167307c |
 > | **Aktionen** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
 > | Microsoft.MixedReality/SpatialAnchorsAccounts/create/action | Erstellen von Raumankern |
 > | Microsoft.MixedReality/SpatialAnchorsAccounts/delete | Löschen von Raumankern |
@@ -2164,34 +2163,34 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.MixedReality/SpatialAnchorsAccounts/properties/read | Abrufen der Eigenschaften von Raumankern |
 > | Microsoft.MixedReality/SpatialAnchorsAccounts/query/read | Suchen von Raumankern |
 > | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Übermitteln von Diagnosedaten, um die Qualität des Azure Spatial Anchors-Diensts zu verbessern |
-> | Microsoft.MixedReality/SpatialAnchorsAccounts/write | Aktualisieren der Eigenschaften von Raumankern |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/write | Hiermit aktualisieren Sie die Eigenschaften von Raumankern. |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="spatial-anchors-account-reader"></a>Spatial Anchors-Kontoleser
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Ermitteln und Lesen von Eigenschaften für Raumanker in Ihrem Dokument. |
-> | **Id** | 5d51204f-eb77-4b1c-b86a-2ec626c49413 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Ermitteln und Lesen von Eigenschaften für Raumanker in Ihrem Dokument. |
+> | **id** | 5d51204f-eb77-4b1c-b86a-2ec626c49413 |
 > | **Aktionen** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
 > | Microsoft.MixedReality/SpatialAnchorsAccounts/discovery/read | Ermitteln von Raumankern in räumlicher Nähe |
 > | Microsoft.MixedReality/SpatialAnchorsAccounts/properties/read | Abrufen der Eigenschaften von Raumankern |
 > | Microsoft.MixedReality/SpatialAnchorsAccounts/query/read | Suchen von Raumankern |
-> | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Übermitteln von Diagnosedaten, um die Qualität des Azure Spatial Anchors-Diensts zu verbessern |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Hiermit übermitteln Sie Diagnosedaten, um die Qualität des Azure Spatial Anchors-Diensts zu verbessern. |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="sql-db-contributor"></a>Mitwirkender von SQL DB
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verwalten von SQL-Datenbanken, nicht aber den Zugriff darauf. Darüber hinaus können Sie deren sicherheitsbezogenen Richtlinien oder übergeordneten SQL-Server nicht verwalten. |
-> | **Id** | 9b7fa17d-e63e-47b0-bb0a-15c516ac86ec |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Verwalten von SQL-Datenbanken, nicht aber den Zugriff darauf. Darüber hinaus können Sie deren sicherheitsbezogenen Richtlinien oder übergeordneten SQL-Server nicht verwalten. |
+> | **id** | 9b7fa17d-e63e-47b0-bb0a-15c516ac86ec |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Warnungsregeln |
@@ -2230,41 +2229,16 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |
 > | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
-
-## <a name="sql-managed-instance-contributor"></a>Verwaltete SQL-Instanz: Mitwirkender
-> [!div class="mx-tableFixed"]
-> | | |
-> | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verwalten verwalteter SQL-Instanzen, jedoch nicht das Erteilen des Zugriffs an andere. |
-> | **Id** | 4939a1f6-9ae0-4e48-a1e0-f2cbe897382d |
-> | **Aktionen** |  |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | Ruft den Verfügbarkeitsstatus für alle Ressourcen im angegebenen Bereich ab. |
-> | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
-> | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
-> | Microsoft.Network/networkSecurityGroups/write | Erstellt eine Netzwerksicherheitsgruppe oder aktualisiert eine vorhandene Netzwerksicherheitsgruppe. |
-> | Microsoft.Network/routeTables/write | Erstellt eine Routingtabelle oder aktualisiert eine vorhandene Routingtabelle. |
-> | Microsoft.Sql/locations/*/read |  |
-> | Microsoft.Sql/managedInstances/* |  |
-> | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
-> | Microsoft.Network/virtualNetworks/subnets/write | Erstellt ein Subnetz für virtuelle Netzwerke oder aktualisiert ein vorhandenes Subnetz für virtuelle Netzwerke. |
-> | Microsoft.Network/virtualNetworks/subnets/join/action | Verknüpft ein virtuelles Netzwerk. Nicht warnbar. |
-> | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
-> | **NotActions** |  |
-> | *keine* |  |
-> | **DataActions** |  |
-> | *keine* |  |
-> | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="sql-security-manager"></a>SQL-Sicherheits-Manager
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verwalten von sicherheitsbezogenen Richtlinien von SQL-Server und Datenbanken, jedoch nicht den Zugriff darauf. |
-> | **Id** | 056cd41c-7e88-42e1-933e-88ba6a50c9c3 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Verwalten von sicherheitsbezogenen Richtlinien von SQL-Server und Datenbanken, jedoch nicht den Zugriff darauf. |
+> | **id** | 056cd41c-7e88-42e1-933e-88ba6a50c9c3 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen der Microsoft-Autorisierung |
 > | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Insights-Warnungsregeln |
@@ -2308,18 +2282,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="sql-server-contributor"></a>Mitwirkender von SQL Server
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen, SQL-Server und -Datenbanken zu verwalten, gewährt Ihnen jedoch keinen Zugriff darauf und auch nicht auf deren sicherheitsbezogenen Richtlinien. |
-> | **Id** | 6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen, SQL-Server und -Datenbanken zu verwalten, gewährt Ihnen jedoch keinen Zugriff darauf und auch nicht auf deren sicherheitsbezogenen Richtlinien. |
+> | **id** | 6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Insights-Warnungsregeln |
@@ -2361,16 +2335,16 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Sql/servers/securityAlertPolicies/* | Richtlinien für Sicherheitswarnungen von SQL Server bearbeiten |
 > | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="storage-account-contributor"></a>Mitwirkender von Speicherkonto
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Erlaubt die Verwaltung von Speicherkonten. Bietet keinen Zugriff auf Daten im Speicherkonto. |
-> | **Id** | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
+> | **BESCHREIBUNG** | Erlaubt die Verwaltung von Speicherkonten. Bietet keinen Zugriff auf Daten im Speicherkonto. |
+> | **id** | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen aller Autorisierungen |
 > | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Insights-Warnungsregeln |
@@ -2382,165 +2356,165 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Storage/storageAccounts/* | Erstellen und Verwalten von Speicherkonten |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="storage-account-key-operator-service-role"></a>Dienstrolle „Speicherkonto-Schlüsseloperator“
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht das Auflisten und erneute Generieren von Zugriffsschlüsseln für Speicherkonten. |
-> | **Id** | 81a9662b-bebf-436f-a333-f67b29880f12 |
+> | **BESCHREIBUNG** | Ermöglicht das Auflisten und erneute Generieren von Zugriffsschlüsseln für Speicherkonten. |
+> | **id** | 81a9662b-bebf-436f-a333-f67b29880f12 |
 > | **Aktionen** |  |
 > | Microsoft.Storage/storageAccounts/listkeys/action | Zurückgeben der Zugriffsschlüssel für das angegebene Speicherkonto. |
 > | Microsoft.Storage/storageAccounts/regeneratekey/action | Neugenerieren der Zugriffsschlüssel für das angegebene Speicherkonto. |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="storage-blob-data-contributor"></a>Mitwirkender an Speicherblobdaten
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Lesen, Schreiben und Löschen von Azure Storage-Containern und -Blobs. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
-> | **Id** | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
+> | **BESCHREIBUNG** | Lesen, Schreiben und Löschen von Azure Storage-Containern und -Blobs. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
+> | **id** | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
 > | **Aktionen** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/delete | Löschen eines Containers. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/read | Zurückgeben eines Containers oder einer Liste von Containern. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/write | Ändern der Metadaten oder Eigenschaften eines Containers. |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | Löschen eines Blobs |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Zurückgeben eines Blob oder einer Liste von Blobs. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Schreiben in ein Blob. |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="storage-blob-data-owner"></a>Besitzer von Speicherblobdaten
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Bietet Vollzugriff auf Azure Storage-Blobcontainer und -daten, einschließlich POSIX-Zugriffssteuerung. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
-> | **Id** | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
+> | **BESCHREIBUNG** | Bietet Vollzugriff auf Azure Storage-Blobcontainer und -daten, einschließlich POSIX-Zugriffssteuerung. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
+> | **id** | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | **Aktionen** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/* | Vollzugriffsberechtigungen für Container.  |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/* | Vollzugriffsberechtigungen für Blobs. |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="storage-blob-data-reader"></a>Leser von Speicherblobdaten
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Lesen und Auflisten von Azure Storage-Containern und -Blobs. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
-> | **Id** | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
+> | **BESCHREIBUNG** | Lesen und Auflisten von Azure Storage-Containern und -Blobs. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
+> | **id** | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | **Aktionen** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/read | Zurückgeben eines Containers oder einer Liste von Containern. |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Zurückgeben eines Blob oder einer Liste von Blobs. |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="storage-queue-data-contributor"></a>Mitwirkender an Storage-Warteschlangendaten
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Lesen, Schreiben und Löschen von Azure Storage-Warteschlangen und -Warteschlangennachrichten. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
-> | **Id** | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
+> | **BESCHREIBUNG** | Lesen, Schreiben und Löschen von Azure Storage-Warteschlangen und -Warteschlangennachrichten. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
+> | **id** | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
 > | **Aktionen** |  |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/delete | Löschen einer Warteschlange. |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/read | Zurückgeben einer Warteschlange oder Liste mit Warteschlangen. |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/write | Ändern der Metadaten oder Eigenschaften einer Warteschlange. |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete | Löschen einer oder mehrerer Nachrichten aus einer Warteschlange. |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Einsehen oder Abrufen einer oder mehrerer Nachrichten aus einer Warteschlange. |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/write | Hinzufügen von Nachrichten zu einer Warteschlange. |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="storage-queue-data-message-processor"></a>Verarbeiter von Speicherwarteschlangen-Datennachrichten
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Einsehen, Abrufen und Löschen von Nachrichten aus Azure Storage-Warteschlangen. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
-> | **Id** | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
+> | **BESCHREIBUNG** | Einsehen, Abrufen und Löschen von Nachrichten aus Azure Storage-Warteschlangen. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
+> | **id** | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
 > | **Aktionen** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Einsehen einer Nachricht. |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action | Abrufen und Löschen einer Nachricht. |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="storage-queue-data-message-sender"></a>Absender der Speicherwarteschlangen-Datennachricht
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Hinzufügen von Nachrichten zu einer Azure Storage-Warteschlange. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
-> | **Id** | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
+> | **BESCHREIBUNG** | Hinzufügen von Nachrichten zu einer Azure Storage-Warteschlange. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
+> | **id** | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
 > | **Aktionen** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action | Hinzufügen von Nachrichten zu einer Warteschlange. |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="storage-queue-data-reader"></a>Storage-Warteschlangendatenleser
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Lesen und Auflisten von Azure Storage-Warteschlangen und -Warteschlangennachrichten. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
-> | **Id** | 19e7f393-937e-4f77-808e-94535e297925 |
+> | **BESCHREIBUNG** | Lesen und Auflisten von Azure Storage-Warteschlangen und -Warteschlangennachrichten. Um zu erfahren, welche Aktionen für einen bestimmten Datenvorgang erforderlich sind, siehe [Berechtigungen für den Aufruf von Datenvorgängen für Blobs und Warteschlangen](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations). |
+> | **id** | 19e7f393-937e-4f77-808e-94535e297925 |
 > | **Aktionen** |  |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/read | Gibt eine Warteschlange oder eine Liste von Warteschlangen zurück. |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Einsehen oder Abrufen einer oder mehrerer Nachrichten aus einer Warteschlange. |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="support-request-contributor"></a>Mitwirkender für Supportanfragen
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen die Erstellung und Verwaltung von Supportanfragen. |
-> | **Id** | cfd33db0-3dd1-45e3-aa9d-cdbdf3b6f24e |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen die Erstellung und Verwaltung von Supportanfragen. |
+> | **id** | cfd33db0-3dd1-45e3-aa9d-cdbdf3b6f24e |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Autorisierungen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="traffic-manager-contributor"></a>Traffic Manager-Mitwirkender
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen die Verwaltung von Traffic Manager-Profilen, aber nicht die Steuerung des Zugriffs darauf. |
-> | **Id** | a4b10055-b0c7-44c2-b00f-c7b5b3550cf7 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen die Verwaltung von Traffic Manager-Profilen, aber nicht die Steuerung des Zugriffs darauf. |
+> | **id** | a4b10055-b0c7-44c2-b00f-c7b5b3550cf7 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Insights-Warnungsregeln |
@@ -2550,35 +2524,35 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="user-access-administrator"></a>Benutzerzugriffsadministrator
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen die Verwaltung von Benutzerzugriffen auf Azure-Ressourcen. |
-> | **Id** | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen die Verwaltung von Benutzerzugriffen auf Azure-Ressourcen. |
+> | **id** | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
 > | **Aktionen** |  |
 > | */Lesen | Lesen von Ressourcen aller Typen mit Ausnahme geheimer Schlüssel |
 > | Microsoft.Authorization/* | Verwalten der Autorisierung |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="virtual-machine-administrator-login"></a>VM-Administratoranmeldung
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Anzeigen von virtuellen Computern im Portal und Anmelden als Administrator |
-> | **Id** | 1c0163c0-47e6-4577-8991-ea5c82e286e4 |
+> | **BESCHREIBUNG** | Anzeigen von virtuellen Computern im Portal und Anmelden als Administrator |
+> | **id** | 1c0163c0-47e6-4577-8991-ea5c82e286e4 |
 > | **Aktionen** |  |
 > | Microsoft.Network/publicIPAddresses/read | Ruft eine Definition für eine öffentliche IP-Adresse ab. |
 > | Microsoft.Network/virtualNetworks/read | Dient zum Abrufen der Definition des virtuellen Netzwerks. |
@@ -2586,19 +2560,19 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Network/networkInterfaces/read | Ruft eine Netzwerkschnittstellendefinition ab.  |
 > | Microsoft.Compute/virtualMachines/*/read |  |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
 > | Microsoft.Compute/virtualMachines/login/action | Hiermit melden Sie sich bei einem virtuellen Computer als normaler Benutzer an. |
 > | Microsoft.Compute/virtualMachines/loginAsAdmin/action | Hiermit melden Sie sich bei einem virtuellen Computer mit Windows-Administrator- oder Linux-Root-Benutzerrechten an. |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="virtual-machine-contributor"></a>Mitwirkender von virtuellen Computern
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verwalten virtueller Computer, aber weder den Zugriff darauf, noch auf deren verbundenen virtuellen Netzwerke oder Speicherkonten. |
-> | **Id** | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Verwalten virtueller Computer, aber weder den Zugriff darauf, noch auf deren verbundenen virtuellen Netzwerke oder Speicherkonten. |
+> | **id** | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Autorisierungen |
 > | Microsoft.Compute/availabilitySets/* | Erstellen und Verwalten von Compute-Verfügbarkeitsgruppen |
@@ -2607,10 +2581,10 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Compute/virtualMachineScaleSets | Erstellen und Verwalten von Skalierungsgruppen für virtuelle Computer |
 > | Microsoft.DevTestLab/schedules/* |  |
 > | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Insights-Warnungsregeln |
-> | Microsoft.Network/applicationGateways/backendAddressPools/join/action | Verknüpft einen Back-End-Adresspool für ein Anwendungsgateway. Nicht warnbar. |
+> | Microsoft.Network/applicationGateways/backendAddressPools/join/action | Verknüpft einen Back-End-Adresspool für ein Application Gateway. Nicht warnbar. |
 > | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Verknüpft einen Back-End-Adresspool für den Lastenausgleich. Nicht warnbar. |
-> | Microsoft.Network/loadBalancers/inboundNatPools/join/action | Verknüpft einen eingehenden NAT-Pool für den Lastenausgleich. Nicht warnbar. |
-> | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Verknüpft eine eingehende NAT-Regel für den Lastenausgleich. Nicht warnbar. |
+> | Microsoft.Network/loadBalancers/inboundNatPools/join/action | Verknüpft einen NAT-Pool für eingehenden Datenverkehr für den Lastenausgleich. Nicht warnbar. |
+> | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Verknüpft eine NAT-Regel für eingehenden Datenverkehr für den Lastenausgleich. Nicht warnbar. |
 > | Microsoft.Network/loadBalancers/probes/join/action | Ermöglicht die Verwendung von Prüfpunkten eines Lastenausgleichs. Beispielsweise kann mit dieser Berechtigung die healthProbe-Eigenschaft einer VM-Skalierungsgruppe auf den Prüfpunkt verweisen. Nicht warnbar. |
 > | Microsoft.Network/loadBalancers/read | Ruft eine Lastenausgleichsdefinition ab. |
 > | Microsoft.Network/locations/* | Erstellen und Verwalten von Netzwerkspeicherorten |
@@ -2639,18 +2613,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Storage/storageAccounts/read | Gibt die Liste mit Speicherkonten zurück oder ruft die Eigenschaften für das angegebene Speicherkonto ab. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="virtual-machine-user-login"></a>VM-Benutzeranmeldung
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Anzeigen von virtuellen Computern im Portal und Anmelden als regulärer Benutzer. |
-> | **Id** | fb879df8-f326-4884-b1cf-06f3ad86be52 |
+> | **BESCHREIBUNG** | Anzeigen von virtuellen Computern im Portal und Anmelden als regulärer Benutzer. |
+> | **id** | fb879df8-f326-4884-b1cf-06f3ad86be52 |
 > | **Aktionen** |  |
 > | Microsoft.Network/publicIPAddresses/read | Ruft eine Definition für eine öffentliche IP-Adresse ab. |
 > | Microsoft.Network/virtualNetworks/read | Dient zum Abrufen der Definition des virtuellen Netzwerks. |
@@ -2658,18 +2632,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Network/networkInterfaces/read | Ruft eine Netzwerkschnittstellendefinition ab.  |
 > | Microsoft.Compute/virtualMachines/*/read |  |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
 > | Microsoft.Compute/virtualMachines/login/action | Hiermit melden Sie sich bei einem virtuellen Computer als normaler Benutzer an. |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="web-plan-contributor"></a>Mitwirkender von Webplan
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verwalten der Webpläne für Websites, nicht aber den Zugriff darauf. |
-> | **Id** | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Verwalten der Webpläne für Websites, nicht aber den Zugriff darauf. |
+> | **id** | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Autorisierungen |
 > | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Insights-Warnungsregeln |
@@ -2680,18 +2654,18 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Web/serverFarms/* | Erstellen und Verwalten von Serverfarmen |
 > | Microsoft.Web/hostingEnvironments/Join/Action | Beitreten zu einer App Service-Umgebung |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="website-contributor"></a>Mitwirkender von Website
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Beschreibung** | Ermöglicht Ihnen das Verwalten von Websites (nicht der Webpläne), nicht aber den Zugriff darauf. |
-> | **Id** | de139f84-1756-47ae-9be6-808fbbe84772 |
+> | **BESCHREIBUNG** | Ermöglicht Ihnen das Verwalten von Websites (nicht der Webpläne), nicht aber den Zugriff darauf. |
+> | **id** | de139f84-1756-47ae-9be6-808fbbe84772 |
 > | **Aktionen** |  |
 > | Microsoft.Authorization/*/read | Lesen von Autorisierungen |
 > | Microsoft.Insights/alertRules/* | Erstellen und Verwalten von Insights-Warnungsregeln |
@@ -2706,11 +2680,11 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | Microsoft.Web/serverFarms/read | Dient zum Abrufen der Eigenschaften für einen App Service-Plan. |
 > | Microsoft.Web/sites/* | Erstellen und Verwalten von Websites (die Erstellung von Websites erfordert auch Schreibberechtigungen für den zugehörigen App Service-Plan) |
 > | **NotActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **DataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 > | **NotDataActions** |  |
-> | *keine* |  |
+> | *none* |  |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 03/21/2019
+ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: af4147de06f9fb7c856dfd93dc186f1a6e83ffff
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 0cb4df099faad8ca482fd15cf0bb50504c1528ab
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58628982"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276387"
 ---
 # <a name="set-up-a-user-profile-share-for-a-host-pool"></a>Einrichten einer Benutzerprofilfreigabe für einen Hostpool
 
@@ -40,12 +40,12 @@ Nachdem Sie den virtuellen Computer erstellt haben, können Sie ihn in die Domä
 
 Hier ist eine allgemeine Anleitung zum Vorbereiten eines virtuellen Computers als Dateifreigabe für Benutzerprofile angegeben:
 
-1. Binden Sie die virtuellen Computer des Sitzungshosts in eine [Active Directory-Sicherheitsgruppe](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups) ein. Diese Sicherheitsgruppe wird zum Authentifizieren der virtuellen Computer des Sitzungshosts gegenüber dem virtuellen Dateifreigabencomputer verwendet, den Sie gerade erstellt haben.
+1. Fügen Sie die Windows Virtual Desktop Active Directory-Benutzer einer [Active Directory-Sicherheitsgruppe](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups) hinzu. Diese Sicherheitsgruppe wird zum Authentifizieren der Windows Virtual Desktop-Benutzer gegenüber dem virtuellen Dateifreigabencomputer verwendet, den Sie gerade erstellt haben.
 2. [Stellen Sie die Verbindung mit dem virtuellen Dateifreigabencomputer her](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine).
 3. Erstellen Sie auf dem virtuellen Dateifreigabencomputer einen Ordner auf **Laufwerk C**, der als Profilfreigabe verwendet wird.
 4. Klicken Sie mit der rechten Maustaste auf den neuen Ordner, und wählen Sie dann nacheinander die Optionen **Eigenschaften**, **Freigabe** und **Erweiterte Freigabe...**.
 5. Wählen Sie **Diesen Ordner freigeben**, **Berechtigungen...** und dann **Hinzufügen...**.
-6. Suchen Sie nach der Sicherheitsgruppe, der Sie die virtuellen Computer des Sitzungshosts hinzugefügt haben, und stellen Sie dann sicher, dass für die Gruppe **Vollzugriff** festgelegt ist.
+6. Suchen Sie nach der Sicherheitsgruppe, der Sie die Windows Virtual Desktop-Benutzer hinzugefügt haben, und stellen Sie dann sicher, dass für die Gruppe **Vollzugriff** festgelegt wurde.
 7. Klicken Sie nach dem Hinzufügen der Sicherheitsgruppe mit der rechten Maustaste auf den Ordner, wählen Sie **Eigenschaften** und **Freigabe**, und kopieren Sie anschließend den **Netzwerkpfad** zur späteren Verwendung.
 
 Weitere Informationen über Berechtigungen finden Sie in der [FSLogix-Dokumentation](https://docs.fslogix.com/display/20170529/Requirements%2B-%2BProfile%2BContainers).
@@ -56,17 +56,16 @@ Führen Sie auf allen Computern, die für den Hostpool registriert sind, Folgend
 
 1. [Stellen Sie eine Verbindung mit dem virtuellen Computer her](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine), indem Sie die Anmeldeinformationen verwenden, die Sie beim Erstellen des virtuellen Computers angegeben haben.
 2. Starten Sie einen Internetbrowser, und verwenden Sie [diesen Link](https://go.microsoft.com/fwlink/?linkid=2084562), um den FSLogix-Agent herunterzuladen. Im Rahmen der öffentlichen Vorschauversion von Windows Virtual Desktop erhalten Sie einen Lizenzschlüssel zum Aktivieren der FSLogix-Software. Der Schlüssel ist die Datei „LicenseKey.txt“, die in der ZIP-Datei des FSLogix-Agents enthalten ist.
-3. Installieren Sie den FSLogix-Agent.
+3. Navigieren Sie in der ZIP-Datei entweder zur \\\\Win32\\-Release oder zur \\\\X64\\-Release, und führen Sie **FSLogixAppsSetup** aus, um den FSLogix-Agent zu installieren.
 4. Navigieren Sie zu **Programme** > **FSLogix** > **Apps**, um zu überprüfen, ob der Agent installiert wurde.
-5. Führen Sie im Startmenü **RegEdit** als Administrator aus. Navigieren Sie zu **Computer\\HKEY_LOCAL_MACHINE\\software\\FSLogix\\Profiles**.
-6. Erstellen Sie die folgenden Werte:
+5. Führen Sie im Startmenü **RegEdit** als Administrator aus. Navigieren Sie zu **Computer\\HKEY_LOCAL_MACHINE\\Software\\FSLogix**.
+6. Erstellen Sie einen Schlüssel mit dem Namen **Profile**.
+7. Erstellen Sie für den Schlüssel „Profile“ die folgenden Werte:
 
 | NAME                | Type               | Daten/Wert                        |
 |---------------------|--------------------|-----------------------------------|
 | Aktiviert             | DWORD              | 1                                 |
-| VHDLocations        | Mehrteiliger Zeichenfolgenwert | „Netzwerkpfad für Dateifreigabe“ |
-| VolumeType          | Zeichenfolge             | VHDX                              |
-| SizeInMBs           | DWORD              | „Ganze Zahl für Größe des Profils“     |
-| IsDynamic           | DWORD              | 1                                 |
-| LockedRetryCount    | DWORD              | 1                                 |
-| LockedRetryInterval | DWORD              | 0                                 |
+| VHDLocations        | Mehrteiliger Zeichenfolgenwert | „Netzwerkpfad für Dateifreigabe“     |
+
+>[!IMPORTANT]
+>Zum Schutz Ihrer Windows Virtual Desktop-Umgebung in Azure empfiehlt es sich, den eingehenden Port 3389 auf Ihren virtuellen Computern nicht zu öffnen. Für Windows Virtual Desktop muss der eingehende Port 3389 nicht geöffnet sein, damit Benutzer auf die virtuellen Computer des Hostpools zugreifen können. Wenn Sie den Port 3389 zur Problembehandlung öffnen müssen, verwenden Sie am besten den [Just-In-Time-Zugriff auf virtuelle Computer](https://docs.microsoft.com/en-us/azure/security-center/security-center-just-in-time).

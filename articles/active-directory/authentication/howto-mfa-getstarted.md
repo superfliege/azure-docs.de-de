@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11846ca2a323da5889f444024767df4803a48a51
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 6c2c5006eb050b70b783ab8199724e0e98766381
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58892210"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358113"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication"></a>Planen einer cloudbasierten Azure Multi-Factor Authentication
 
@@ -60,8 +60,14 @@ Azure Multi-Factor Authentication wird durch Erzwingen von Richtlinien mit bedin
 * Kompatibles Gerät
 * Hybrid in Azure AD eingebundenes Gerät
 * Genehmigte Clientanwendung
+ 
+
+Verwenden Sie die anpassbaren Poster und E-Mail-Vorlagen in [Multi-Factor Authentication-Rollout-Material], um die mehrstufige Authentifizierung in Ihrer Organisation einzuführen. (https://www.microsoft.com/en-us/download/details.aspx?id=57600&WT.mc_id=rss_alldownloads_all)
+
+## <a name="enable-multi-factor-authentication-with-conditional-access"></a>Aktivieren von Multi-Factor Authentication mit bedingtem Zugriff
 
 Richtlinien für bedingten Zugriff erzwingen die Registrierung, sodass nicht registrierte Benutzer die Registrierung beim ersten Anmelden durchführen müssen, ein wichtiger Sicherheitsaspekt.
+
 
 [Azure AD Identity Protection](../identity-protection/howto-configure-risk-policies.md) trägt sowohl eine Registrierungsrichtlinie als auch automatische Risikoerkennungs- und Wartungsrichtlinien zu Azure Multi-Factor Authentication bei. Richtlinien können erstellt werden, um Kennwortänderungen zu erzwingen, wenn eine Bedrohung der kompromittierten Identität besteht, oder MFA erfordern, wenn eine Anmeldung aufgrund folgender [Ereignisse](../reports-monitoring/concept-risk-events.md) als riskant eingestuft wird:
 
@@ -101,6 +107,9 @@ Administratoren können die [Authentifizierungsmethoden](../authentication/conce
 ### <a name="notification-through-mobile-app"></a>Benachrichtigung über mobile App
 
 Eine Pushbenachrichtigung wird an die Microsoft Authenticator-App auf Ihrem Mobilgerät gesendet. Der Benutzer zeigt die Benachrichtigung an und wählt **Genehmigen** aus, um die Überprüfung abzuschließen. Pushbenachrichtigungen über eine mobile App bieten Benutzern die am wenigsten intrusive Option. Sie sind auch die zuverlässigste und sicherste Option, da sie eine Daten- anstelle einer Telefonverbindung verwenden.
+
+> [!NOTE]
+> Wenn es in Ihrer Organisation Mitarbeiter gibt, die in China arbeiten oder nach China reisen, müssen Sie beachten, dass die Methode **Benachrichtigung über mobile App** auf **Android-Geräten** in diesem Land nicht funktioniert. Daher sollten diesen Benutzern alternative Methoden zur Verfügung gestellt werden.
 
 ### <a name="verification-code-from-mobile-app"></a>Überprüfungscode von der mobilen App
 

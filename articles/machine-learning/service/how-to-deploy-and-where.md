@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 04/02/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 1528b5e92e1952bf85799afd71bd5dac16aedcf4
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: a6ef53d56fa293791658b37b16cbaff94aee6ef3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878297"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280892"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst
 
@@ -87,6 +87,8 @@ Bereitgestellte Modelle werden als Image gepackt. Das Image enthält die notwend
 
 Für Bereitstellungen von **Azure Container Instance**, **Azure Kubernetes Service** und **Azure IoT Edge** wird die Klasse [azureml.core.image.ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) verwendet, um eine Imagekonfiguration zu erstellen. Diese Imagekonfiguration wird dann verwendet, um ein neues Docker-Image zu erstellen.
 
+Bei der Erstellung der Imagekonfiguration können Sie entweder ein vom Azure Machine Learning Service bereitgestelltes __Standardmage__ oder ein von Ihnen bereitgestelltes __benutzerdefiniertes Image__ verwenden.
+
 Der folgende Code zeigt, wie eine neue Imagekonfiguration erstellt wird:
 
 ```python
@@ -112,6 +114,36 @@ Die in diesem Beispiel verwendeten wichtigen Parameter werden in der folgenden T
 Ein Beispiel für das Erstellen einer Imagekonfiguration finden Sie unter [Tutorial: Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances](tutorial-deploy-models-with-aml.md).
 
 Weitere Informationen finden Sie in der Referenzdokumentation zur [ContainerImage-Klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py).
+
+### <a id="customimage"></a> Verwenden eines benutzerdefinierten Images
+
+Wenn Sie ein benutzerdefiniertes Image verwenden, muss es die folgenden Anforderungen erfüllen:
+
+* Ubuntu 16.04 oder höher.
+* Conda 4.5.# oder höher.
+* Python 3.5# oder 3.6#.
+
+Legen Sie bei Verwendung eines benutzerdefinierten Images die Eigenschaft `base_image` für die Imagekonfiguration auf die Imageadresse fest. Im folgenden Beispiel wird veranschaulicht, wie Sie ein Image aus einer öffentlichen und einer privaten Azure Container Registry verwenden:
+
+```python
+# use an image available in public Container Registry without authentication
+image_config.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
+
+# or, use an image available in a private Container Registry
+image_config.base_image = "myregistry.azurecr.io/mycustomimage:1.0"
+image_config.base_image_registry.address = "myregistry.azurecr.io"
+image_config.base_image_registry.username = "username"
+image_config.base_image_registry.password = "password"
+```
+
+Weitere Informationen zum Hochladen von Images in eine Azure Container Registry finden Sie unter [Pushübertragung des ersten Images in eine private Docker Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli).
+
+Wenn Ihr Modell in Azure Machine Learning Compute mit __Version 1.0.22 oder höher__ des Azure Machine Learning-SDK trainiert wird, wird während des Trainings ein Image erstellt. Die Verwendung dieses Images wird im folgenden Beispiel veranschaulicht:
+
+```python
+# Use an image built during training with SDK 1.0.22 or greater
+image_config.base_image = run.properties["AzureML.DerivedImageName"]
+```
 
 ### <a id="script"></a> Ausführungsskript
 
@@ -396,7 +428,7 @@ Eine exemplarische Vorgehensweise zur Bereitstellung eines Modells mithilfe von 
 
 ## <a name="define-schema"></a>Definieren des Schemas
 
-Beim Bereitstellen des Webdiensts können benutzerdefinierte Decorator-Elemente für die Erstellung von [OpenAPI](https://swagger.io/docs/specification/about/)-Spezifikationen und die Änderung von Eingabetypen verwendet werden. In der Datei `score.py` wird ein Beispiel der Ein- und/oder Ausgabe im Konstruktor für eines der definierten Typobjekte bereitgestellt. Das Schema wird daraufhin automatisch auf der Grundlage des Typs und des Beispiels generiert. Folgende Typen werden derzeit unterstützt:
+Beim Bereitstellen des Webdiensts können benutzerdefinierte Decorator-Elemente für die Erstellung von [OpenAPI](https://swagger.io/docs/specification/about/)-Spezifikationen und die Änderung von Eingabetypen verwendet werden. In der Datei `score.py` wird ein Beispiel der Ein- und/oder Ausgabe im Konstruktor für eines der definierten Typobjekte bereitgestellt. Daraufhin wird das Schema auf der Grundlage des Typs und des Beispiels automatisch erstellt. Folgende Typen werden derzeit unterstützt:
 
 * `pandas`
 * `numpy`

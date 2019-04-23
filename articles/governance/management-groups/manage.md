@@ -3,15 +3,15 @@ title: Ändern, Löschen oder Verwalten Ihrer Verwaltungsgruppen – Azure Gover
 description: Hier erfahren Sie, wie Sie die Verwaltungsgruppenhierarchie anzeigen, verwalten, aktualisieren und löschen.
 author: rthorn17
 ms.service: azure-resource-manager
-ms.date: 02/20/2019
+ms.date: 04/04/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: f75686d19a468983a6b0ce68eb4a456e00c90eeb
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: e47ce094cd690cba4ef398bc5d5d443f7ed647e9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58881051"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272477"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Verwalten von Ressourcen mit Verwaltungsgruppen
 
@@ -34,6 +34,8 @@ Der Name einer Verwaltungsgruppe kann über das Portal, mithilfe von PowerShell 
 1. Klicken Sie auf **Alle Dienste** > **Verwaltungsgruppen**.
 
 1. Wählen Sie die Verwaltungsgruppe aus, die Sie umbenennen möchten.
+
+1. Wählen Sie **Details** aus.
 
 1. Klicken Sie oben auf der Seite auf die Option **Gruppe umbenennen**.
 
@@ -80,6 +82,8 @@ Um eine Verwaltungsgruppe zu löschen, müssen die folgenden Anforderungen erfü
 1. Klicken Sie auf **Alle Dienste** > **Verwaltungsgruppen**.
 
 1. Wählen Sie die zu löschende Verwaltungsgruppe aus.
+
+1. Wählen Sie **Details** aus.
 
 1. Wählen Sie **Löschen** aus.
 
@@ -303,7 +307,8 @@ Wenn Sie eine übergeordnete Verwaltungsgruppe verschieben, wird die untergeordn
 Verwenden Sie den Befehl „Update-AzureRmManagementGroup“ in PowerShell, um eine Verwaltungsgruppe in eine andere Gruppe zu verschieben.
 
 ```azurepowershell-interactive
-Update-AzManagementGroup -GroupName 'Contoso' -ParentId '/providers/Microsoft.Management/managementGroups/ContosoIT'
+$parentGroup = Get-AzManagementGroup -GroupName ContosoIT
+Update-AzManagementGroup -GroupName 'Contoso' -ParentId $parentGroup.id
 ```  
 
 ### <a name="move-management-groups-in-azure-cli"></a>Verschieben von Verwaltungsgruppen in der Azure CLI
@@ -311,7 +316,7 @@ Update-AzManagementGroup -GroupName 'Contoso' -ParentId '/providers/Microsoft.Ma
 Verwenden Sie den Befehl „update“, um eine Verwaltungsgruppe mit der Azure CLI zu verschieben.
 
 ```azurecli-interactive
-az account management-group update --name 'Contoso' --parent-id '/providers/Microsoft.Management/managementGroups/ContosoIT'
+az account management-group update --name 'Contoso' --parent ContosoIT
 ```
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Überwachen von Verwaltungsgruppen mithilfe von Aktivitätsprotokollen

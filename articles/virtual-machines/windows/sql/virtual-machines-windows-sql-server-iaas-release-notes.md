@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 2/13/2019
-ms.openlocfilehash: c46e2d4e2aa79d1d62d0361763911660349cfbb0
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: 23e072369aa8ac6ca6ada5ec185df1a8d7e03c5b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762315"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282541"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>SQL Server auf Azure-VMs – Versionshinweise
 
@@ -30,8 +30,9 @@ Mit Azure können Sie einen virtuellen Computer (VM) mit einem integrierten SQL 
 
 | Verbesserungen beim Dienst | Details |
 | --- | --- |
-| **Unterstützung von benutzerdefinierten Images** | Sie können jetzt die [SQL-IaaS-Erweiterung](virtual-machines-windows-sql-server-agent-extension.md#installation) für benutzerdefinierte Betriebssystem- und SQL-Images installieren, die die eingeschränkte Funktionalität [flexibler Lizenzierung](virtual-machines-windows-sql-ahb.md) bietet. Geben Sie bei der Registrierung Ihres benutzerdefinierten Images beim SQL-Ressourcenanbieter Ihren Lizenztyp als ‚AHUB‘ an, da es andernfalls zu einem Fehler bei der Registrierung kommt. Die Verwaltung über das Blatt „SQL-Konfiguration“ im Azure-Portal wird für benutzerdefinierte Images nicht unterstützt.   | 
+| **Unterstützung von benutzerdefinierten Images** | Sie können jetzt die [SQL-IaaS-Erweiterung](virtual-machines-windows-sql-server-agent-extension.md#installation) für benutzerdefinierte Betriebssystem- und SQL-Images installieren, die die eingeschränkte Funktionalität [flexibler Lizenzierung](virtual-machines-windows-sql-ahb.md) bietet. Geben Sie bei der Registrierung Ihres benutzerdefinierten Images beim SQL-Ressourcenanbieter Ihren Lizenztyp als ‚AHUB‘ an, da es andernfalls zu einem Fehler bei der Registrierung kommt.  | 
 | **Unterstützung für benannte Instanzen** | Sie können jetzt die [SQL-IaaS-Erweiterung](virtual-machines-windows-sql-server-agent-extension.md#installation) mit einer benannten Instanz verwenden, wenn die Standardinstanz ordnungsgemäß deinstalliert wurde. | 
+| **Portalerweiterung** | Die Azure-Portal-Benutzeroberfläche zur Bereitstellung einer SQL Server-VM wurde überarbeitet, um die Benutzerfreundlichkeit zu verbessern. Weitere Informationen finden Sie im kurzen [Schnellstart](quickstart-sql-vm-create-portal.md) und – ausführlicher – in der [Schrittanleitung](virtual-machines-windows-portal-sql-server-provision.md) zum Bereitstellen einer SQL Server-VM. |
 | &nbsp; | &nbsp; |
 
 ### <a name="documentation-improvements"></a>Verbesserungen bei der Dokumentation
@@ -56,7 +57,7 @@ Keine
 | --- | --- |
 | **Neuer Ressourcenanbieter für SQL-Clustergruppen** | Ein neuer Ressourcenanbieter (Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups), der die Metadaten des Windows-Failoverclusters definiert. Ein Einbinden einer SQL Server-VM in die *SqlVirtualMachineGroups* startet den Windows-Failovercluster-Dienst und verknüpft den virtuellen Computer mit dem Cluster.  |
 |**Automatisieren des Einrichtens einer Verfügbarkeitsgruppenbereitstellung mit Azure-Schnellstartvorlagen** |Es ist jetzt möglich, mit zwei Azure-Schnellstartvorlagen den Windows-Failovercluster zu erstellen, SQL Server-VMs in diesen einzubinden, den Listener zu erstellen und den internen Load Balancer zu konfigurieren. Weitere Informationen finden Sie unter [Verwenden einer Azure-Schnellstartvorlage zum Konfigurieren von Always On-Verfügbarkeitsgruppen für SQL Server auf einem virtuellen Azure-Computer](virtual-machines-windows-sql-availability-group-quickstart-template.md). | 
-| **Automatische Registrierung beim SQL Server-Ressourcenanbieter** | SQL Server-VMs, die nach diesem Monat bereitgestellt werden, werden automatisch beim neuen SQL Server-Ressourcenanbieter registriert. SQL Server-VMs, die vor diesem Monat bereitgestellt wurden, müssen weiterhin manuell registriert werden. Weitere Informationen finden Sie unter [Registrieren vorhandener SQL-VMs mit dem SQL-VM-Ressourcenanbieter](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider).|
+| **Automatische Registrierung beim SQL-VM-Ressourcenanbieter** | SQL Server-VMs, die nach diesem Monat bereitgestellt werden, werden automatisch beim neuen SQL Server-Ressourcenanbieter registriert. SQL Server-VMs, die vor diesem Monat bereitgestellt wurden, müssen weiterhin manuell registriert werden. Weitere Informationen finden Sie unter [Registrieren vorhandener SQL-VMs mit dem SQL-VM-Ressourcenanbieter](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider).|
 | &nbsp; | &nbsp; |
 
 
@@ -75,10 +76,10 @@ Keine
 
 * [Übersicht über SQL Server auf einem virtuellen Windows-Computer](virtual-machines-windows-sql-server-iaas-overview.md)
 * [Bereitstellen eines virtuellen Windows-Computers mit SQL Server](virtual-machines-windows-portal-sql-server-provision.md)
-* [Migrieren einer Datenbank zu SQL Server auf einer Azure-VM](virtual-machines-windows-migrate-sql.md)
+* [Migrieren einer Datenbank zu SQL Server auf einem virtuellen Azure-Computer](virtual-machines-windows-migrate-sql.md)
 * [Hochverfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-high-availability-dr.md)
-* [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure](virtual-machines-windows-sql-performance.md)
-* [Anwendungsmuster und Entwicklungsstrategien für SQL Server auf Azure Virtual Machines](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
+* [Bewährte Methoden zur Leistung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-performance.md)
+* [Anwendungsmuster und Entwicklungsstrategien für SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
 
 **Virtuelle Linux-Computer:**
 

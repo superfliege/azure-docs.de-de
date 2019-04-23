@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 805de614246028bc75268e83991fa7831b990325
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: bb6ab29f02282a394e3f93e41682ceaec5208b75
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58882326"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357621"
 ---
 # <a name="azure-app-service-static-access-restrictions"></a>Azure App Service – Statische Zugriffseinschränkungen #
 
@@ -85,3 +85,9 @@ Die JSON-Syntax für das obige Beispiel lautet:
         "name": "allowed access"
       }
     ],
+
+## <a name="function-app-ip-restrictions"></a>IP-Einschränkungen der Funktionen-App
+
+IP-Einschränkungen stehen für beide Funktionen-Apps mit derselben Funktionalität wie App Service-Pläne zur Verfügung. Beachten Sie, dass durch die Aktivierung von IP-Einschränkungen der Portal-Code-Editor für alle unzulässigen (Disallowed) IPs deaktiviert wird.
+
+[Weitere Informationen](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)

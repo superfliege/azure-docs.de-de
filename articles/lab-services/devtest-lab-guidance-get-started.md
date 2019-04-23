@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit Azure DevTest Labs
+title: Gängige Szenarien für die Verwendung von Azure DevTest Labs
 description: Dieser Artikel enthält die Hauptszenarien zur Verwendung von Azure DevTest Labs und zwei allgemeine Pfade zur Verwendung des Diensts in Ihrer Organisation.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 219697451174811fab7880ba0d5930ba85edf8fb
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 8736ba4c24ac4c8f8d84345028d1cadfdef38697
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803798"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272381"
 ---
-# <a name="get-started-with-using-azure-devtest-labs"></a>Erste Schritte mit Azure DevTest Labs
+# <a name="popular-scenarios-for-using-azure-devtest-labs"></a>Gängige Szenarien für die Verwendung von Azure DevTest Labs
 Basierend auf den jeweiligen Anforderungen eines Unternehmens kann DevTest Labs so konfiguriert werden, dass die unterschiedlichen Bedürfnisse erfüllt werden.  In diesem Artikel werden die gängigen Szenarien beschrieben. In jedem Szenario geht es um die Vorteile, die sich durch die Verwendung von DevTest Labs und der entsprechenden Ressourcen zur Implementierung der Szenarien ergeben.  
 
 - Entwicklerdesktops
@@ -85,5 +85,5 @@ Bei einer **Proof of Concept**-Bereitstellung geht es um einen konzentrierten Ei
 Lesen Sie die folgenden Artikel:
 
 - [DevTest Labs-Konzepte](devtest-lab-concepts.md)
-- [Häufig gestellte Fragen zu DevTest Labs](devtest-lab-faq.md)
+- [DevTest Labs – Häufig gestellte Fragen](devtest-lab-faq.md)
 

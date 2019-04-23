@@ -1,7 +1,6 @@
 ---
 title: Abrufen von Daten zur Richtlinienkonformität
 description: Azure Policy-Auswertungen und -Effekte bestimmen die Konformität. Erfahren Sie, wie Sie Konformitätsinformationen abrufen.
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 02/01/2019
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: da027e492633ba3e4da912c2c45b2432fd217576
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 84ed1632a61ae097bd2e187de4766dfc50f2503f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802952"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263776"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Abrufen von Compliancedaten von Azure-Ressourcen
 
@@ -30,7 +29,7 @@ Bevor wir uns die Methoden zur Berichterstellung zur Konformität ansehen, besch
 > [!WARNING]
 > Wenn der Konformitätszustand als **Nicht registriert** gemeldet wird, sollten Sie überprüfen, ob der **Microsoft.PolicyInsights**-Ressourcenanbieter registriert ist und der Benutzer über die entsprechenden Berechtigungen für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) verfügt. Dies ist unter [Rollenbasierte Zugriffssteuerung in Azure Policy](../overview.md#rbac-permissions-in-azure-policy) beschrieben.
 
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="evaluation-triggers"></a>Auswertungsauslöser
 
@@ -56,8 +55,8 @@ Ein Auswertungsscan für ein Abonnement oder eine Ressourcengruppe kann mit eine
 
 In jedem REST-API-URI gibt es Variablen, die Sie durch Ihre eigenen Werte ersetzen müssen:
 
-- Ersetzen Sie `{YourRG}` durch den Namen Ihrer Ressourcengruppe.
-- Ersetzen Sie `{subscriptionId}` durch Ihre Abonnement-ID.
+- `{YourRG}` – Ersetzen Sie diese Variable durch den Namen Ihrer Ressourcengruppe.
+- `{subscriptionId}` - Ersetzen Sie diese Variable durch Ihre Abonnement-ID.
 
 Der Scan unterstützt die Auswertung von Ressourcen in einem Abonnement oder in einer Ressourcengruppe. Starten Sie einen Scan nach Bereich mit einem REST-API-Befehl **POST** anhand der folgenden URI-Strukturen:
 

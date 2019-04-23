@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: danlep
-ms.openlocfilehash: 89b48175d7707458cd92916f6b26e298163a7416
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: b97db09c477a940ca36129316613f5ceb4eb13b1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58915922"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256191"
 ---
 # <a name="automate-os-and-framework-patching-with-acr-tasks"></a>Automatisieren von Betriebssystem- und Frameworkpatches mit ACR Tasks
 
@@ -97,10 +97,9 @@ Weitere Informationen zu mehrstufigen Aufgaben finden Sie unter [Ausführen von 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die dreiteilige ACR Tasks-Tutorialreihe an, wenn Sie Ihre Containerimages in der Cloud erstellen möchten, um Betriebssystem- und Frameworkpatches zu automatisieren.
+Sehen Sie sich die dreiteilige [ACR Tasks-Tutorialreihe](container-registry-tutorial-quick-task.md) an, wenn Sie Ihre Containerimages in der Cloud erstellen möchten, um Betriebssystem- und Frameworkpatches zu automatisieren.
 
-> [!div class="nextstepaction"]
-> [Erstellen von Containerimages in der Cloud mit Azure Container Registry Tasks](container-registry-tutorial-quick-task.md)
+Installieren Sie optional die [Docker-Erweiterung für Visual Studio Code](https://code.visualstudio.com/docs/azure/docker) und die [Azure-Kontoerweiterung](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) für die Verwendung mit Ihren Azure-Containerregistrierungen. In Visual Studio Code können Sie Pull- und Pushvorgänge für Images in einer Azure-Containerregistrierung oder auch ACR Tasks ausführen.
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/

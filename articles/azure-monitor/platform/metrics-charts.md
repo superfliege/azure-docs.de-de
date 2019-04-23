@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor-Metrik-Explorer
-description: Erfahren Sie mehr über neue Funktionen im Azure Monitor-Metrik-Explorer.
+title: Erweiterte Funktionen von Azure Metrik-Explorer
+description: Erfahren Sie mehr über erweiterte Funktionen von Azure Monitor-Metrik-Explorer.
 author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,51 +8,46 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 08ae74bcd9ee0a7cf5e0fb6d38758b1429c39145
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 67e4281b24a7489cf202d82bdddbe99992aac095
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58916341"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271678"
 ---
-# <a name="azure-monitor-metrics-explorer"></a>Azure Monitor-Metrik-Explorer
+# <a name="advanced-features-of-azure-metrics-explorer"></a>Erweiterte Funktionen von Azure Metrik-Explorer
 
-Der Azure Monitor-Metrik-Explorer ist eine Komponente des Microsoft Azure-Portals, die das Zeichnen von Diagrammen, das visuelle Korrelieren von Trends und das Untersuchen von Spitzen und Tiefen in Metrikwerten ermöglicht. Der Metrik-Explorer ist ein wesentlicher Ausgangspunkt, um verschiedenste Leistungs- und Verfügbarkeitsprobleme bei Ihren in Azure gehosteten oder von Azure Monitor-Diensten überwachten Anwendungen und Infrastrukturen zu untersuchen.
+> [!NOTE]
+> In diesem Artikel wird davon ausgegangen, dass Sie mit grundlegenden Funktionen von Metrik-Explorer vertraut sind. Wenn Sie ein neuer Benutzer sind und erfahren möchten, wie Sie Ihr erstes Metrikdiagramm erstellen können, lesen Sie [Erste Schritte mit Azure Metrik-Explorer](metrics-getting-started.md).
 
 ## <a name="metrics-in-azure"></a>Metriken in Azure
 
 [Metriken in Azure Monitor](data-platform-metrics.md) sind eine Reihe von Messwerten und Zahlen, die im Lauf der Zeit gesammelt und gespeichert werden. Es gibt Standardmetriken (bzw. sogenannte „Plattformmetriken“) und benutzerdefinierte Metriken. Die Standardmetriken werden Ihnen von der Azure-Plattform selbst bereitgestellt. Standardmetriken stellen die Integritäts- und Nutzungsstatistik Ihrer Azure-Ressourcen dar. Benutzerdefinierte Metriken werden hingegen von Ihren Anwendungen mithilfe der [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics), der [Azure-Diagnoseerweiterung (Windows Azure Diagnostics, WAD)](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview) oder durch die [Azure Monitor-REST-API](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api) an Azure gesendet.
 
-## <a name="create-a-new-chart"></a>Erstellen eines neuen Diagramms
+## <a name="create-views-with-multiple-metrics-and-charts"></a>Erstellen von Ansichten mit mehreren Metriken und Diagrammen
 
-1. Öffnen Sie das Azure-Portal.
-2. Navigieren Sie zur neuen Registerkarte **Überwachen**, und wählen Sie dann die Option **Metriken** aus.
+Sie können Diagramme erstellen, in denen mehrere Metrikzeilen grafisch dargestellt oder mehrere Metrikzeilen gleichzeitig angezeigt werden. Diese Funktionalität bietet Ihnen folgende Möglichkeiten:
 
-   ![Abbildung "Metriken"](./media/metrics-charts/00001.png)
+- Korrelieren verwandter Metriken im gleichen Diagramm, um zu sehen, in welcher Beziehung ein Wert zu einem anderen steht
+- Anzeigen von Metriken mit unterschiedlichen Maßeinheiten in unmittelbarer Nähe zueinander
+- Visuelles Aggregieren und Vergleichen von Metriken aus mehreren Ressourcen
 
-3. Der **Metrikselektor** wird automatisch für Sie geöffnet. Wählen Sie eine Ressource aus der Liste aus, um die zugehörigen Metriken anzuzeigen. Nur Ressourcen mit Metriken werden in der Liste angezeigt.
+Wenn Sie beispielsweise über fünf Speicherkonten verfügen und wissen möchten, wie viel Gesamtspeicherplatz diese belegen, können Sie ein (gestapeltes) Flächendiagramm erstellen, das die einzelnen und die Summe aller Werte zu bestimmten Zeitpunkten anzeigt.
 
-   ![Abbildung "Metriken"](./media/metrics-charts/00002.png)
+### <a name="multiple-metrics-on-the-same-chart"></a>Mehrere Metriken in demselben Diagramm
 
-   > [!NOTE]
-   >Wenn Sie mehrere Azure-Abonnements besitzen, ruft der Metrik-Explorer die Ressourcen aller Abonnements ab, die in der Liste unter „Portaleinstellungen“ > „Nach Abonnements filtern“ ausgewählt sind. Um dies zu ändern, klicken Sie oben auf dem Bildschirm unter „Portaleinstellungen“ auf das Zahnradsymbol, und wählen Sie die Abonnements aus, die Sie verwenden möchten.
-
-4. Für einige Ressourcentypen (Speicherkonten und virtuelle Computer) müssen Sie vor der Auswahl einer Metrik einen **Namespace** auswählen. Jeder Namespace ist mit einer eigenen Gruppe von Metriken ausgestattet, die nur für den jeweiligen Namespace und nicht für andere Namespaces relevant sind.
-
-   Beispielsweise weist jede Azure Storage-Instanz Metriken für die Subdienste „Blobs“, „Dateien“, „Warteschlangen“ und „Tabellen“ auf, die alle zum Speicherkonto gehören. Die Metrik „Anzahl der Warteschlangenmeldungen“ gilt jedoch folgerichtig für den Subdienst „Warteschlange“ und nicht für andere Subdienste des Speicherkontos.
-
-   ![Abbildung "Metriken"](./media/metrics-charts/00003.png)
-
-5. Wählen Sie in der Liste eine Metrik aus. Wenn Sie einen Teil des Namens der gewünschten Metrik kennen, können Sie diesen bereits eingeben. Daraufhin wird eine gefilterte Liste der verfügbaren Metriken angezeigt:
-
-   ![Abbildung "Metriken"](./media/metrics-charts/00004.png)
-
-6. Nach der Auswahl einer Metrik wird das Diagramm mit der Standardaggregation für die ausgewählte Metrik gerendert. An dieser Stelle können Sie einfach außerhalb des **Metrikselektors** klicken, um ihn zu schließen. Optional können Sie auch in eine andere Aggregation des Diagramms wechseln. Bei einigen Metriken können Sie beim Wechseln der Aggregation auswählen, welcher Wert im Diagramm angezeigt werden soll. Beispielsweise können Sie zwischen den durchschnittlichen, minimalen und maximalen Werten wechseln. 
-
-7. Durch Klicken auf **Metrik hinzufügen** und Wiederholen der Schritte 3 bis 6 können Sie weitere Metriken in diesem Diagramm hinzufügen.
+Zuerst [erstellen Sie ein neues Diagramm](metrics-getting-started.md#create-your-first-metric-chart). Klicken Sie auf **Metrik hinzufügen**, und wiederholen Sie die Schritte, um eine weitere Metrik im gleichen Diagramm hinzuzufügen.
 
    > [!NOTE]
    > In der Regel wird davon abgeraten, in einem Diagramm Metriken mit unterschiedlichen Maßeinheiten (d.h. „Millisekunden“ und „Kilobytes“) oder deutlich abweichender Skala zu verwenden. In diesem Fall sollten Sie vielmehr verschiedene Diagramme verwenden. Klicken Sie auf die Schaltfläche „Diagramm hinzufügen“, um mehrere Diagramme im Metrik-Explorer zu erstellen.
+
+### <a name="multiple-charts"></a>Mehrere Diagramme
+
+Klicken Sie auf **Diagramm hinzufügen**, und erstellen Sie ein weiteres Diagramm mit einer anderen Metrik.
+
+### <a name="order-or-delete-multiple-charts"></a>Sortieren oder Löschen mehrerer Diagramme
+
+Klicken Sie zum Sortieren oder Löschen mehrerer Diagramme auf die Auslassungszeichen (**...**), um das Diagrammmenü zu öffnen, und wählen Sie das entsprechende Menüelement (**Nach oben**, **Nach unten** oder **Löschen**) aus.
 
 ## <a name="apply-filters-to-charts"></a>Anwenden von Filtern auf Diagramme
 
@@ -76,27 +71,7 @@ Sie können Filter auf Diagramme anwenden, die Metriken mit Dimensionen aufweise
 
 5. Sie können die Schritte 1 bis 4 wiederholen, um mehrere Filter auf dieselben Diagramme anzuwenden.
 
-## <a name="multiple-metrics-and-charts"></a>Mehrere Metriken und Diagramme
 
-Sie können auch Diagramme erstellen, in denen mehrere Metriken grafisch dargestellt oder mehrere Metrikdiagramme gleichzeitig angezeigt werden. Diese Funktionalität bietet Ihnen folgende Möglichkeiten:
-
-- Korrelieren verwandter Metriken im gleichen Diagramm, um zu sehen, in welcher Beziehung ein Wert zu einem anderen steht
-- Anzeigen von Metriken mit unterschiedlichen Maßeinheiten in unmittelbarer Nähe zueinander
-- Visuelles Aggregieren und Vergleichen von Metriken aus mehreren Ressourcen
-
-Wenn Sie beispielsweise über fünf Speicherkonten verfügen und wissen möchten, wie viel Gesamtspeicherplatz diese belegen, können Sie ein (gestapeltes) Flächendiagramm erstellen, das die einzelnen und die Summe aller Werte zu bestimmten Zeitpunkten anzeigt.
-
-### <a name="multiple-metrics-on-a-chart"></a>Mehrere Metriken im gleichen Diagramm
-
-Zuerst [erstellen Sie ein neues Diagramm](#create-a-new-chart). Klicken Sie auf **Metrik hinzufügen**, und wiederholen Sie die Schritte, um eine weitere Metrik im gleichen Diagramm hinzuzufügen.
-
-### <a name="multiple-charts"></a>Mehrere Diagramme
-
-Klicken Sie auf **Diagramm hinzufügen**, und erstellen Sie ein weiteres Diagramm mit einer anderen Metrik.
-
-### <a name="order-or-delete-multiple-charts"></a>Sortieren oder Löschen mehrerer Diagramme
-
-Klicken Sie zum Sortieren oder Löschen mehrerer Diagramme auf die Auslassungszeichen (**...**), um das Diagrammmenü zu öffnen, und wählen Sie das entsprechende Menüelement (**Nach oben**, **Nach unten** oder **Löschen**) aus.
 
 ## <a name="apply-splitting-to-a-chart"></a>Anwenden des Teilens auf ein Diagramm
 

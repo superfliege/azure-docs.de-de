@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 04/07/2019
 ms.author: diberry
-ms.openlocfilehash: 1c3c7e913f2f096918efaebb84384df98bd68be8
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: ba0db22437961a33b0b415ec7cb60ad3df12821c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58895831"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267054"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>Trainieren Ihrer aktiven Version der LUIS-App 
 
@@ -43,6 +43,10 @@ Sie müssen Ihre LUIS-App mindestens zunächst mindestens einmal im [LUIS-Portal
 
 >[!NOTE]
 >Wenn Ihre App mindestens eine Absicht aufweist, die keine Beispieläußerungen enthält, können Sie Ihre App nicht trainieren. Fügen Sie für sämtliche Absichten Äußerungen hinzu. Weitere Informationen finden Sie unter [Add example utterances (Hinzufügen von Beispieläußerungen)](luis-how-to-add-example-utterances.md).
+
+## <a name="training-date-and-time"></a>Datum und Uhrzeit für das Training
+
+Das Datum und die Uhrzeit für das Training ist GMT + 2. 
 
 ## <a name="train-with-all-data"></a>Trainieren mit allen Daten
 

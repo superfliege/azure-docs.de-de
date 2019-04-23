@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: 294695cceaed39a66a57dcd3a165ca276b6801c6
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: f431613d9fa1020f523e03c90cbe31f4d42ccf42
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757967"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426221"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Lösung für die Agent-Integritätsdiagnose in Azure Monitor
 Die Agent-Integritätsdiagnose-Lösung in Azure bietet Ihnen für alle direkt an den Log Analytics-Arbeitsbereich in Azure Monitor oder eine mit Azure Monitor verbundene System Center Operations Manager-Verwaltungsgruppe berichtende Agents, die nicht reagieren und Betriebsdaten übermitteln, Einblicke in die Ursachen.  Außerdem können Sie nachverfolgen, wie viele Agents bereitgestellt werden und wie sie geografisch verteilt sind, und andere Abfragen durchführen, um zu ermitteln, wie Agents, die in Azure, anderen Cloudumgebungen oder lokal bereitgestellt wurden, verteilt sind.    
@@ -76,21 +76,21 @@ Ein Datensatz vom Typ **Heartbeat** wird erstellt.  Die Eigenschaften der Datens
 
 | Eigenschaft | BESCHREIBUNG |
 | --- | --- |
-| Type | *Heartbeat*|
-| Category (Kategorie) | Der Wert lautet *Direct Agent*, *SCOM Agent* oder *SCOM Management Server*.|
-| Computer | Name des Computers|
-| OSType | Windows- oder Linux-Betriebssystem|
-| OSMajorVersion | Hauptversion des Betriebssystems|
-| OSMinorVersion | Nebenversion des Betriebssystems|
-| Version | Log Analytics-Agent- oder Operations Manager-Agent-Version.|
-| SCAgentChannel | Der Wert lautet *Direct* bzw. *SCManagementServer*.|
-| IsGatewayInstalled | Wenn das Log Analytics-Gateway installiert ist, lautet der Wert *true*, andernfalls *false*.|
-| ComputerIP | IP-Adresse des Computers|
-| RemoteIPCountry | Geografischer Standort, an dem der Computer bereitgestellt wird|
-| ManagementGroupName | Name der Operations Manager-Verwaltungsgruppe|
-| SourceComputerId | Eindeutige ID des Computers|
-| RemoteIPLongitude | Längengrad des geografischen Standorts des Computers|
-| RemoteIPLatitude | Breitengrad des geografischen Standorts des Computers|
+| `Type` | *Heartbeat*|
+| `Category` | Der Wert lautet *Direct Agent*, *SCOM Agent* oder *SCOM Management Server*.|
+| `Computer` | Name des Computers|
+| `OSType` | Windows- oder Linux-Betriebssystem|
+| `OSMajorVersion` | Hauptversion des Betriebssystems|
+| `OSMinorVersion` | Nebenversion des Betriebssystems|
+| `Version` | Log Analytics-Agent- oder Operations Manager-Agent-Version.|
+| `SCAgentChannel` | Der Wert lautet *Direct* bzw. *SCManagementServer*.|
+| `IsGatewayInstalled` | Wenn das Log Analytics-Gateway installiert ist, lautet der Wert *true*, andernfalls *false*.|
+| `ComputerIP` | IP-Adresse des Computers|
+| `RemoteIPCountry` | Geografischer Standort, an dem der Computer bereitgestellt wird|
+| `ManagementGroupName` | Name der Operations Manager-Verwaltungsgruppe|
+| `SourceComputerId` | Eindeutige ID des Computers|
+| `RemoteIPLongitude` | Längengrad des geografischen Standorts des Computers|
+| `RemoteIPLatitude` | Breitengrad des geografischen Standorts des Computers|
 
 Jeder Agent, der Daten an einen Operations Manager-Verwaltungsserver meldet, sendet zwei Heartbeats, und der Wert der SCAgentChannel-Eigenschaft kann **Direct** oder **SCManagementServer** lauten. Dies richtet sich danach, welche Datenquellen und Überwachungslösungen Sie in Ihrem Abonnement aktiviert haben. Wie Sie wissen, werden Daten aus Lösungen entweder direkt von einem Operations Manager-Verwaltungsserver oder (aufgrund des Umfangs der Daten, die auf dem Agent gesammelt werden) direkt vom Agent an Azure Monitor gesendet. Für Heartbeat-Ereignisse, die über den Wert **SCManagementServer** verfügen, ist der Wert „ComputerIP“ die IP-Adresse des Verwaltungsservers, da die Daten tatsächlich darüber hochgeladen werden.  Für Heartbeats, für die SCAgentChannel auf **Direkt** festgelegt ist, ist dies die öffentliche IP-Adresse des Agents.  
 

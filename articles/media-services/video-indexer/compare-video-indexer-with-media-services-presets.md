@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 04/07/2019
 ms.author: juliako
-ms.openlocfilehash: 041e76ccecb4dd0fe9c060681609dfb92c03ec5a
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 2c98f6d12f4868e5f90874fe3210fe5368f7ca2d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58893145"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270335"
 ---
 # <a name="compare-azure-media-services-v3-presets-and-video-indexer"></a>Vergleich der Voreinstellungen von Azure Media Services v3 und Video Indexer 
 
@@ -33,9 +33,9 @@ Derzeit gibt es eine Überschneidung bei den Features der [APIs von Video Indexe
 |Medienerkenntnisse|[Verbessert](video-indexer-output-json-v2.md) |[Grundlagen](../latest/intelligence-concept.md)|
 |Erfahrungen|Die vollständige Liste der unterstützten Features finden Sie hier: <br/> [Übersicht](video-indexer-overview.md)|Gibt nur Videoerkenntnisse zurück.|
 |Abrechnung|[Media Services – Preise](https://azure.microsoft.com/pricing/details/media-services/#analytics)|[Media Services – Preise](https://azure.microsoft.com/pricing/details/media-services/#analytics)|
-|Compliance|[Azure – Compliance](https://aka.ms/AzureCompliance)|Media Services ist mit vielen Zertifizierungen konform. Lesen Sie [Azure Compliance Offerings.pdf](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf), und suchen Sie nach „Media Services“, um zu prüfen, ob es mit einem bestimmten Zertifikat konform ist.|
+|Compliance|[ISO 27001](https://www.microsoft.com/TrustCenter/Compliance/ISO-IEC-27001), [ISO 27018](https://www.microsoft.com/trustcenter/Compliance/ISO-IEC-27018), [SOC 1,2,3](https://www.microsoft.com/TrustCenter/Compliance/SOC), [HIPAA](https://www.microsoft.com/trustcenter/compliance/hipaa), [FedRAMP](https://www.microsoft.com/TrustCenter/Compliance/fedramp), [PCI](https://www.microsoft.com/trustcenter/compliance/pci) und [HITRUST](https://www.microsoft.com/TrustCenter/Compliance/hitrust) zertifiziert. Die neuesten Updates finden Sie unter [Status der aktuellen Zertifizierungen von Video Indexer](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942).|Media Services ist mit vielen Zertifizierungen konform. Lesen Sie [Azure Compliance Offerings.pdf](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942/file/178110/23/Microsoft%20Azure%20Compliance%20Offerings.pdf), und suchen Sie nach „Media Services“, um zu prüfen, ob es mit einem bestimmten Zertifikat konform ist.|
 |Kostenlose Testversion|USA (Ost)|Nicht verfügbar|
-|Verfügbarkeit |USA (West), Asien (Osten), Europa (Norden)|Siehe [Azure-Status](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).|
+|Regionale Verfügbarkeit|„USA, Osten 2“, „USA, Süden-Mitte“, „USA, Westen 2“, „Europa, Norden“, „Europa, Westen“, „Asien, Südosten“, „Asien, Osten“ und „Australien, Osten“.  Die neuesten Updates finden Sie auf der Seite [Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services).|Siehe [Azure-Status](https://azure.microsoft.com/global-infrastructure/services/?products=media-services).|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

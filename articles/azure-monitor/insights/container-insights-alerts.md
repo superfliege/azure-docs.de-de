@@ -1,6 +1,6 @@
 ---
 title: Erstellen von Leistungswarnungen mit Azure Monitor für Container | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie benutzerdefinierte Azure-Warnungen basierend auf Protokollabfragen für die Arbeitsspeicher- und CPU-Auslastung von Azure Monitor für Container erstellen können.
+description: In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure Monitor für Container benutzerdefinierte Warnungen basierend auf Protokollabfragen für die Arbeitsspeicher- und CPU-Auslastung erstellen können.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -13,31 +13,31 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: magoedte
-ms.openlocfilehash: 5bb0a727adcfb35b5d840a063b6fdb478d150953
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: ebe2c2b488e3d71597dd24f5504a14dd7ce6671e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58804823"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282286"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Einrichten von Warnungen für Leistungsprobleme in Azure Monitor für Container
-Azure Monitor für Container überwacht die Leistung von Containerworkloads, die entweder in Azure Container Instances oder in Managed Kubernetes-Clustern bereitgestellt sind, die im Azure Kubernetes Service (AKS) gehostet werden. 
+Azure Monitor für Container überwacht die Leistung von Containerworkloads, die in Azure Container Instances oder in Managed Kubernetes-Clustern bereitgestellt sind, die im Azure Kubernetes Service (AKS) gehostet werden.
 
-In diesem Artikel wird beschrieben, wie Sie Warnungen für die folgenden Situationen aktivieren können:
+In diesem Artikel wird beschrieben, wie Sie Warnungen für die folgenden Situationen aktivieren:
 
-* Wenn die CPU- oder Arbeitsspeicherauslastung auf Knoten des Clusters Ihren definierten Schwellenwert überschreitet.
-* Wenn die CPU- oder Arbeitsspeicherauslastung auf einem der Container innerhalb eines Controllers Ihren definierten Schwellenwert im Vergleich zu dem für die entsprechende Ressource festgelegten Grenzwert überschreitet.
-* Knotenanzahl mit Status **NotReady**
-* Podphasenanzahl mit Status **Failed**, **Pending**, **Unknown**, **Running** oder **Succeeded**
+* Wenn die CPU- oder Arbeitsspeicherauslastung auf Clusterknoten einen definierten Schwellenwert überschreitet
+* Wenn die CPU- oder Arbeitsspeicherauslastung auf einem Container innerhalb eines Controllers einen definierten Schwellenwert im Vergleich zu einem für die entsprechende Ressource festgelegten Grenzwert überschreitet
+* Knotenanzahl mit Status *NotReady*
+*  Podphasenanzahl mit Status *Failed*, *Pending*, *Unknown*, *Running* oder *Succeeded*
 
-Zum Ausgeben einer Warnung bei hoher CPU- oder Arbeitsspeicherauslastung auf Knoten des Clusters können Sie entweder eine Metrikwarnung oder eine Warnungsregel vom Typ „Metrische Maßeinheit“ mithilfe der bereitgestellten Protokollabfragen erstellen. Zwar weisen Metrikwarnungen eine geringere Latenz als Protokollwarnungen auf, doch ermöglicht eine Protokollwarnung erweiterte Abfragen und größere Komplexität als eine Metrikwarnung. Bei Protokollwarnungen vergleichen die Abfragen mithilfe des now-Operators einen datetime-Wert mit dem vorhandenen Wert und gehen um eine Stunde zurück. Alle Daten, die von Azure Monitor für Container gespeichert werden, sind im UTC-Format.
+Verwenden Sie zum Auslösen einer Warnung bei hoher CPU- oder Arbeitsspeicherauslastung auf Clusterknoten die bereitgestellten Abfragen, um eine Metrikwarnung oder eine Warnung aufgrund von metrischen Messungen zu erstellen. Bei Metrikwarnungen gibt es eine kürzere Wartezeit als bei Protokollwarnungen. Allerdings ermöglichen Protokollwarnungen erweiterte Abfragen und größere Professionalität. Protokollwarnungsabfragen vergleichen mithilfe des *now*-Operators einen „datetime“-Wert mit dem vorhandenen Wert und gehen um eine Stunde zurück. (Azure Monitor für Container speichert alle Datumsangaben im Format der koordinierten Weltzeit (Coordinated Universal Time, UTC).)
 
-Wenn Sie mit Warnungen in Azure Monitor nicht vertraut sind, sollten Sie zunächst den [Überblick über Warnungen in Microsoft Azure](../platform/alerts-overview.md) lesen. Weitere Informationen zu Warnungen mithilfe von Protokollabfragen finden Sie unter [Protokollwarnungen in Azure Monitor](../platform/alerts-unified-log.md). Weitere Informationen zu Metrikwarnungen finden Sie unter [Metrikwarnungen in Azure Monitor](../platform/alerts-metric-overview.md).
+Wenn Sie mit Azure Monitor-Warnungen nicht vertraut sind, lesen Sie zunächst den [Überblick über Warnungen in Microsoft Azure](../platform/alerts-overview.md). Weitere Informationen zu Warnungen, bei denen Protokollabfragen verwendet werden, finden Sie unter [Protokollwarnungen in Azure Monitor](../platform/alerts-unified-log.md). Weitere Informationen zu Metrikwarnungen finden Sie unter [Metrikwarnungen in Azure Monitor](../platform/alerts-metric-overview.md).
 
 ## <a name="resource-utilization-log-search-queries"></a>Suchabfragen für die Ressourcenverwendung
-Die Abfragen in diesem Abschnitt werden zur Unterstützung der einzelnen Warnungsszenarien bereitgestellt. Die Abfragen sind für Schritt 7 unter dem nachfolgenden Abschnitt [Erstellen einer Warnung](#create-alert-rule) erforderlich.  
+Die Abfragen in diesem Abschnitt unterstützen die einzelnen Warnungsszenarien. Sie werden in Schritt 7 des Abschnitts [Erstellen einer Warnung](#create-an-alert-rule) in diesem Artikel verwendet.
 
-Die folgende Abfrage berechnet die durchschnittliche CPU-Auslastung als Mittelwert der CPU-Auslastung von Memberknoten pro Minute.  
+Die folgende Abfrage berechnet die durchschnittliche CPU-Auslastung als durchschnittliche CPU-Auslastung von Memberknoten pro Minute.  
 
 ```kusto
 let endDateTime = now();
@@ -72,7 +72,7 @@ KubeNodeInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize), ClusterName
 ```
 
-Die folgende Abfrage berechnet die durchschnittliche Speicherauslastung als Mittelwert der Speicherauslastung von Memberknoten pro Minute.
+Die folgende Abfrage berechnet die durchschnittliche Arbeitsspeicherauslastung als durchschnittliche Arbeitsspeicherauslastung von Memberknoten pro Minute.
 
 ```kusto
 let endDateTime = now();
@@ -107,10 +107,9 @@ KubeNodeInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize), ClusterName
 ```
 >[!IMPORTANT]
->Die folgenden Abfragen enthalten Zeichenkettenwerte als Platzhalter für Ihre Cluster- und Controllernamen: <Ihr-Cluster-Name> und <Ihr-Controller-Name>. Ersetzen Sie Platzhalter durch umgebungsspezifische Werte, bevor Sie Warnungen einrichten. 
+>Die folgenden Abfragen verwenden die Platzhalterwerte \<<Ihr-Cluster-Name> und <Ihr-Controller-Name>\< zur Darstellung Ihres Clusters und Controllers. Ersetzen Sie sie durch spezifische Werte für Ihre Umgebung, wenn Sie Warnungen einrichten.
 
-
-Die folgende Abfrage berechnet die durchschnittliche CPU-Auslastung aller Container in einem Controller als Durchschnitt der CPU-Auslastung der einzelnen Containerinstanzen in einem Controller für jede Minute als Prozentsatz des für einen Container eingerichteten Grenzwerts.
+Die folgende Abfrage berechnet die durchschnittliche CPU-Auslastung aller Container in einem Controller als durchschnittliche CPU-Auslastung der einzelnen Containerinstanzen in einem Controller pro Minute. Die Maßeinheit ist ein Prozentsatz des für einen Container eingerichteten Grenzwerts.
 
 ```kusto
 let endDateTime = now();
@@ -150,7 +149,7 @@ KubePodInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize) , ContainerName
 ```
 
-Die folgende Abfrage berechnet die durchschnittliche Arbeitsspeicherauslastung aller Container in einem Controller als Durchschnitt der Arbeitsspeicherauslastung der einzelnen Containerinstanzen in einem Controller für jede Minute als Prozentsatz des für einen Container eingerichteten Grenzwerts.
+Die folgende Abfrage berechnet die durchschnittliche Arbeitsspeicherauslastung aller Container in einem Controller als durchschnittliche Arbeitsspeicherauslastung der einzelnen Containerinstanzen in einem Controller pro Minute. Die Maßeinheit ist ein Prozentsatz des für einen Container eingerichteten Grenzwerts.
 
 ```kusto
 let endDateTime = now();
@@ -190,7 +189,7 @@ KubePodInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize) , ContainerName
 ```
 
-Die folgende Abfrage gibt alle Knoten und deren Anzahl mit dem Status **Ready** und **NotReady** zurück.
+Die folgende Abfrage gibt alle Knoten und deren Anzahl zurück, bei denen der Status *Ready* und *NotReady* lautet.
 
 ```kusto
 let endDateTime = now();
@@ -217,7 +216,7 @@ KubeNodeInventory
             NotReadyCount = todouble(NotReadyCount) / ClusterSnapshotCount
 | order by ClusterName asc, Computer asc, TimeGenerated desc
 ```
-Die folgende Abfrage gibt Podphasenanzahlen basierend auf allen Phasen zurück: **Failed**, **Pending**, **Unknown**, **Running** oder **Succeeded**.  
+Die folgende Abfrage gibt die Podphasenanzahl, basierend auf allen Phasen, zurück: *Failed*, *Pending*, *Unknown*, *Running* oder *Succeeded*.  
 
 ```kusto
 let endDateTime = now();
@@ -254,38 +253,37 @@ let endDateTime = now();
 ```
 
 >[!NOTE]
->Zum Ausgeben von Warnungen für bestimmte Podphasen (z. B. **Pending**, **Failed** oder **Unknown**) müssen Sie die letzte Zeile der Abfrage ändern. Beispiel zum Ausgeben einer Warnung für *FailedCount* `| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`.  
+>Ändern Sie zum Ausgeben von Warnungen bei bestimmten Podphasen (z.B. *Pending*, *Failed* oder *Unknown*) die letzte Zeile der Abfrage. Verwenden Sie beispielsweise zum Ausgeben einer Warnung für *FailedCount*: <br/>`| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`
 
-## <a name="create-alert-rule"></a>Erstellen einer Warnungsregel
+## <a name="create-an-alert-rule"></a>Erstellen einer Warnungsregel
 Führen Sie die folgenden Schritte aus, um eine Protokollwarnung in Azure Monitor mit einer der zuvor angegebenen Regeln für die Protokollsuche zu erstellen.  
 
 >[!NOTE]
->Das folgende Verfahren erfordert, dass Sie wie unter [Wechseln der API-Einstellung für Protokollwarnungen](../platform/alerts-log-api-switch.md) beschrieben zu einer neuen Protokollwarnungs-API wechseln, wenn Sie eine Warnungsregel für die Nutzung von Containerressourcen erstellen. 
+>Das folgende Verfahren zum Erstellen einer Warnungsregel für die Auslastung von Containerressourcen erfordert, dass Sie – wie unter [Wechseln der API-Einstellung für Protokollwarnungen](../platform/alerts-log-api-switch.md) beschrieben – zu einer neuen Protokollwarnungs-API wechseln.
 >
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie im Azure-Portal im linken Bereich die Option **Überwachen** aus. Wählen Sie im Abschnitt **Insights** die Option **Container** aus.    
-3. Wählen Sie auf der Registerkarte **Überwachte Cluster** einen Cluster aus der Liste aus, indem Sie auf den Namen des Clusters klicken.
-4. Wählen Sie im linken Bereich im Abschnitt **Überwachung** die Option **Protokolle** aus, um die Seite mit Azure Monitor-Protokollen zu öffnen, die zum Schreiben und Ausführen von Azure Log Analytics-Abfragen verwendet wird.
-5. Klicken Sie auf der Seite **Protokolle** auf **+ Neue Warnungsregel**.
-6. Klicken Sie im Abschnitt **Bedingung** auf die vordefinierte Protokollbedingung **Immer wenn die benutzerdefinierte Protokollsuche <logic undefined> ist**. Der Signaltyp **benutzerdefinierte Protokollsuche** ist automatisch ausgewählt, da die Erstellung einer Warnungsregel direkt von der Seite mit Azure Monitor-Protokollen initiiert wurde.  
-7. Fügen Sie eine der zuvor bereitgestellten [Abfragen](#resource-utilization-log-search-queries) in das Feld **Suchabfrage** ein. 
+2. Wählen Sie im Bereich auf der linken Seite **Monitor** aus. Wählen Sie unter **Insights** die Option **Container** aus.
+3. Wählen Sie auf der Registerkarte **Überwachte Cluster** den gewünschten Cluster aus der Liste aus.
+4. Wählen Sie im Bereich auf der linken Seite unter **Überwachung** die Option **Protokolle** aus, um die Seite mit Azure Monitor-Protokollen zu öffnen. Über diese Seite können Sie Azure Log Analytics-Abfragen schreiben und ausführen.
+5. Wählen Sie auf der Seite **Protokolle** die Option **+Neue Warnungsregel** aus.
+6. Wählen Sie im Abschnitt **Bedingung** die vordefinierte benutzerdefinierte Protokollbedingung **Immer wenn die benutzerdefinierte Protokollsuche ist \<<Logik nicht definiert>** aus. Der Signaltyp **benutzerdefinierte Protokollsuche** ist automatisch ausgewählt, weil eine Warnungsregel direkt über die Seite mit Azure Monitor-Protokollen erstellt wird.  
+7. Fügen Sie eine der zuvor bereitgestellten [Abfragen](#resource-utilization-log-search-queries) in das Feld **Suchabfrage** ein.
+8. Konfigurieren Sie die Warnung folgendermaßen:
 
-8. Konfigurieren Sie die Warnung mit den folgenden Informationen:
+    1. Wählen Sie in der Dropdownliste **Basierend auf** die Option **Metrische Maßeinheit** aus. Mit „Metrische Maßeinheit“ wird eine Warnung für jedes Objekt in der Abfrage erstellt, dessen Wert über dem angegebenen Schwellenwert liegt.
+    1. Wählen Sie unter **Bedingung** den Eintrag **Größer als** aus, und geben Sie als **Schwellenwert** für die anfängliche Baseline **75** ein. Oder geben Sie einen anderen Wert ein, der Ihren Kriterien entspricht.
+    1. Wählen Sie im Abschnitt **Warnung auslösen basierend auf** die Option **Aufeinanderfolgende Sicherheitsverletzungen** aus. Wählen Sie aus der Dropdown-Liste **Größer als** aus, und geben Sie **2** ein.
+    1. Wenn Sie eine Warnung für die CPU- oder Arbeitsspeicherauslastung des Containers konfigurieren möchten, wählen Sie unter **Aggregieren auf** die Option **ContainerName** aus. 
+    1. Legen Sie im Abschnitt **Auswertung basierend auf** den Wert **Zeitraum** auf **60 Minuten** fest. Die Regel wird alle 5 Minuten ausgeführt und gibt Datensätze zurück, die innerhalb der letzten Stunde aus dem aktuellen Zeitbereich erstellt wurden. Durch Festlegen des Zeitraums auf ein breites Zeitfenster wird eine potenzielle Datenlatenz berücksichtigt. Außerdem wird dadurch sichergestellt, dass die Abfrage Daten zurückgibt, und so ein falsch negatives Ergebnis vermieden, bei dem die Warnung nie ausgelöst wird.
 
-    a. Wählen Sie in der Dropdownliste **Basierend auf** die Option **Metrische Maßeinheit** aus. Mit „Metrische Maßeinheit“ wird eine Warnung für jedes Objekt in der Abfrage mit einem Wert erzeugt, der den angegebenen Schwellenwert überschreitet.  
-    b. Wählen Sie für **Bedingung** die Option **Größer als** aus, und geben Sie **75** als anfänglichen **Schwellenwert** oder einen Wert entsprechend Ihren Kriterien ein.  
-    c. Wählen Sie im Abschnitt **Warnung auslösen basierend auf** die Option **Aufeinanderfolgende Sicherheitsverletzungen** und in der Dropdownliste **Größer als** aus, und geben Sie den Wert **2** ein.  
-    d. Wenn Sie eine Warnung für die CPU- oder Arbeitsspeicherauslastung des Containers konfigurieren, wählen Sie unter **Aggregieren auf** die Option **ContainerName** aus der Dropdownliste aus.  
-    e. Ändern Sie im Abschnitt **Auswertung basierend auf** den Wert **Zeitraum** in 60 Minuten. Die Regel wird alle fünf Minuten ausgeführt und gibt Datensätze zurück, die innerhalb der letzten Stunde erstellt wurden. Durch die Verwendung eines weiter gefassten Zeitfensters wird potenziellen Datenlatenzen Rechnung getragen und sichergestellt, dass die Abfrage Daten zurückgibt, um ein falsch negatives Ergebnis zu vermeiden, bei dem die Warnung nie ausgelöst wird. 
-
-9. Klicken Sie auf **Fertig**, um die Warnungsregel fertig zu stellen.
-10. Geben Sie einen Namen für die Warnung in das Feld **Name der Warnungsregel** ein. Geben Sie eine **Beschreibung** mit Details zu Ihrer Warnung ein, und wählen Sie einen geeigneten Schweregrad aus den bereitgestellten Optionen aus.
-11. Um die Warnungsregel direkt bei der Erstellung zu aktivieren, übernehmen Sie den Standardwert für **Regel beim Erstellen aktivieren**.
-12. Im letzten Schritt wählen Sie eine vorhandene **Aktionsgruppe** aus, oder erstellen Sie eine neue Gruppe. Dadurch wird sichergestellt, dass bei jeder Warnungsauslösung die gleichen Aktionen ausgeführt werden und diese für jede definierte Regel verwendet werden können. Führen Sie die Konfiguration entsprechend der Handhabung von Vorfällen durch IT- oder DevOps-Vorgänge aus. 
-13. Klicken Sie auf **Warnungsregel erstellen**, um die Warnungsregel fertig zu stellen. Die Ausführung beginnt sofort.
+9. Wählen Sie **Fertig** aus, um die Warnungsregel fertig zu stellen.
+10. Geben Sie im Feld **Name der Warnungsregel** einen Namen ein. Geben Sie eine **Beschreibung** mit Details zur Warnung an. Und wählen Sie einen entsprechenden Schweregrad aus den bereitgestellten Optionen aus.
+11. Wenn Sie die Warnungsregel sofort aktivieren möchten, übernehmen Sie den Standardwert für **Regel beim Erstellen aktivieren**.
+12. Wählen Sie eine vorhandene **Aktionsgruppe** aus, oder erstellen Sie eine neue Gruppe. Dadurch wird sichergestellt, dass bei jeder Auslösung einer Warnung die gleichen Aktionen ausgeführt werden. Führen Sie die Konfiguration basierend darauf aus, wie Ihr IT- oder DevOps-Betriebsteam Vorfälle verwaltet.
+13. Wählen Sie **Warnungsregel erstellen** aus, um die Warnungsregel fertig zu stellen. Die Ausführung beginnt sofort.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Sehen Sie sich einige der [Beispiele für Protokollabfragen](container-insights-analyze.md#search-logs-to-analyze-data) an, um mehr über die vordefinierten Abfragen oder Beispiele zum Bewerten und Verwenden oder Anpassen für andere Warnungsszenarien zu erfahren. 
-* Weitere Informationen zur Verwendung von Azure Monitor und zum Überwachen anderer Aspekte Ihres AKS-Clusters finden Sie unter [Anzeigen der Azure Kubernetes Service-Integrität](container-insights-analyze.md).
+* Zeigen Sie [Beispiele für Protokollabfragen](container-insights-analyze.md#search-logs-to-analyze-data) an, um mehr über vordefinierte Abfragen und Beispiele zum Bewerten oder Anpassen bei anderen Warnungsszenarien zu erfahren.
+* Weitere Informationen zu Azure Monitor und zum Überwachen anderer Aspekte Ihres AKS-Clusters finden Sie unter [Anzeigen der Azure Kubernetes Service-Integrität](container-insights-analyze.md).

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 04/04/2019
 ms.author: juliako
-ms.openlocfilehash: 9fad5874a0e595ee2c275f06504665ce143266f6
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 8f8a1434af768180e34afcaacd6e92ab402ad8cd
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759223"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361244"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Verbinden mit der Media Services v3-API – .NET
 
@@ -35,7 +35,7 @@ Dieser Artikel zeigt Ihnen, wie Sie mit der Methode der Dienstprinzipalanmeldung
 1. Klicken Sie im Menü **Datei** auf **Neu** > **Projekt**. 
 1. Erstellen Sie eine **.NET Core**-Konsolenanwendung.
 
-Die Beispiel-App in diesem Thema ist auf `netcoreapp2.0` ausgerichtet. Der Code verwendete 'async main', der ab C# 7.1 verfügbar ist. Weitere Einzelheiten hierzu finden Sie in diesem [Blog](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/).
+Die Beispiel-App in diesem Thema ist auf `netcoreapp2.0` ausgerichtet. Der Code verwendet 'async main', der ab C# 7.1 verfügbar ist. Weitere Einzelheiten hierzu finden Sie in diesem [Blog](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/).
 
 ## <a name="add-required-nuget-packages"></a>Hinzufügen erforderlicher NuGet-Pakete
 
@@ -200,10 +200,6 @@ namespace ConsoleApp1
  
         private static async Task<ServiceClientCredentials> GetCredentialsAsync(ConfigWrapper config)
         {
-            // Use UserTokenProvider.LoginWithPromptAsync or UserTokenProvider.LoginSilentAsync to get a token using user authentication
-            //// ActiveDirectoryClientSettings.UsePromptOnly
-            //// UserTokenProvider.LoginWithPromptAsync
-
             // Use ApplicationTokenProvider.LoginSilentWithCertificateAsync or UserTokenProvider.LoginSilentAsync to get a token using service principal with certificate
             //// ClientAssertionCertificate
             //// ApplicationTokenProvider.LoginSilentWithCertificateAsync
@@ -227,20 +223,20 @@ namespace ConsoleApp1
 }
 ```
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Tutorial: Hochladen, Codieren und Streamen von Videos mithilfe von .NET](stream-files-tutorial-with-api.md) 
-- [Tutorial: Livestreaming mit Media Services v3 unter Verwendung von .NET](stream-live-tutorial-with-api.md)
-- [Tutorial: Analysieren von Videos mit Media Services v3 mithilfe von .NET](analyze-videos-tutorial-with-api.md)
-- [Erstellen einer Auftragseingabe aus einer lokalen Datei](job-input-from-local-file-how-to.md)
-- [Erstellen einer Auftragseingabe aus einer HTTPS-URL](job-input-from-http-how-to.md)
-- [Codieren einer benutzerdefinierten Transformation](customize-encoder-presets-how-to.md)
-- [Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts](protect-with-aes128.md)
-- [Verwenden der dynamischen DRM-Verschlüsselung und des Lizenzbereitstellungsdiensts](protect-with-drm.md)
-- [Abrufen eines Signaturschlüssels aus der vorhandenen Richtlinie](get-content-key-policy-dotnet-howto.md)
-- [Erstellen von Filtern mit dem Media Services .NET SDK](filters-dynamic-manifest-dotnet-howto.md)
+- [Tutorial: Hochladen, Codieren und Streamen von Videos – .NET](stream-files-tutorial-with-api.md) 
+- [Tutorial: Livestreaming mit Media Services v3 – .NET](stream-live-tutorial-with-api.md)
+- [Tutorial: Analysieren von Videos mit Media Services v3 – .NET](analyze-videos-tutorial-with-api.md)
+- [Erstellen einer Auftragseingabe aus einer lokalen Datei – .NET](job-input-from-local-file-how-to.md)
+- [Erstellen einer Auftragseingabe aus einer HTTPS-URL – .NET](job-input-from-http-how-to.md)
+- [Codieren einer benutzerdefinierten Transformation – .NET](customize-encoder-presets-how-to.md)
+- [Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts – .NET](protect-with-aes128.md)
+- [Verwenden der dynamischen DRM-Verschlüsselung und des Lizenzbereitstellungsdiensts – .NET](protect-with-drm.md)
+- [Abrufen eines Signaturschlüssels aus der vorhandenen Richtlinie – .NET](get-content-key-policy-dotnet-howto.md)
+- [Erstellen von Filtern mit Media Services – .NET](filters-dynamic-manifest-dotnet-howto.md)
 - [Erweiterte Video-on-Demand-Beispiele von Azure Functions v2 mit Media Services v3](https://aka.ms/ams3functions)
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="see-also"></a>Weitere Informationen
 
 [.NET-Referenz](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
