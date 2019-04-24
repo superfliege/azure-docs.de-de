@@ -1,21 +1,21 @@
 ---
 title: 'Schnellstart: Python SDK'
 titleSuffix: Azure Cognitive Services
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie das Python SDK für allgemeine Aufgaben verwenden.
+description: In diesem Schnellstart erfahren Sie, wie das Python SDK für allgemeine Aufgaben wie Bildanalyse, Abrufen der Beschreibung, Texterkennung und Generieren von Miniaturansichten verwendet wird.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 04/10/2019
+ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: c9b30eb89080137e17042feb4458f2601bf48a05
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 95705e7b7a372867e33c86826f44e380407dfee1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617970"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999313"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Azure Cognitive Services: SDK für maschinelles Sehen für Python
 

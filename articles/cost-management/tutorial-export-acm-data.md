@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: df893683c387f8d694500ae1ace93a5a146ea352
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 6975bb872e67650b8b5729a4ac66f0825fb9a80f
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59496793"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678138"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Tutorial: Erstellen und Verwalten von exportierten Daten
 
@@ -45,7 +45,13 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com/) beim
 
 ## <a name="create-a-daily-export"></a>Erstellen eines täglichen Exports
 
-Zum Erstellen oder Anzeigen eines Datenexports bzw. Planen eines Exports öffnen Sie den gewünschten Bereich im Azure-Portal, und wählen Sie **Kostenanalyse** im Menü aus. Navigieren Sie beispielsweise zu **Abonnements**, und wählen Sie dann ein Abonnement in der Liste und **Kostenanalyse** im Menü aus. Klicken Sie am oberen Rand der Seite „Kostenanalyse“ auf **Exportieren**, und wählen Sie dann eine Exportoption aus. Klicken Sie beispielsweise auf **Export planen**. Weitere Informationen zu Bereichen finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
+Zum Erstellen oder Anzeigen eines Datenexports bzw. Planen eines Exports öffnen Sie den gewünschten Bereich im Azure-Portal, und wählen Sie **Kostenanalyse** im Menü aus. Navigieren Sie beispielsweise zu **Abonnements**, und wählen Sie dann ein Abonnement in der Liste und **Kostenanalyse** im Menü aus. Klicken Sie am oberen Rand der Seite „Kostenanalyse“ auf **Exportieren**, und wählen Sie dann eine Exportoption aus. Klicken Sie beispielsweise auf **Export planen**.  
+
+> [!NOTE]
+> Neben Abonnements können Sie Exporte von Ressourcengruppen, Konten, Abteilungen und Registrierungen erstellen. Weitere Informationen zu Bereichen finden Sie unter [Verstehen von und Arbeiten mit Bereichen](understand-work-scopes.md).
+> 
+> 
+
 
 Klicken Sie auf **Hinzufügen**, geben Sie einen Namen für den Export ein, und wählen Sie die Option **Täglicher Export der Kosten für bisherigen Kalendermonat** aus. Klicken Sie auf **Weiter**.
 
@@ -63,7 +69,7 @@ Zunächst kann es ein bis zwei Stunden dauern, bis der Export ausgeführt wird. 
 
 ### <a name="export-schedule"></a>Exportzeitplan
 
-Uhrzeit und Wochentag der ersten Erstellung eines Exports wirken sich auf geplante Exporte aus. Wenn Sie einen geplanten Export erstellen, werden alle folgenden Exportvorgänge zur gleichen Tageszeit ausgeführt. Beispiel: Sie erstellen einen täglichen Export um 13:00 Uhr. Der nächste Export wird am folgenden Tag um 13:00 Uhr ausgeführt. Die aktuelle Uhrzeit wirkt sich nach dem gleichen Prinzip auf alle anderen Exporttypen aus: Sie werden immer zur gleichen Tageszeit ausgeführt, zu der Sie den Export anfangs erstellt haben. Ein weiteres Beispiel: Sie erstellen einen wöchentlichen Export am Montag um 16:00 Uhr. Der nächste Export wird am folgenden Montag um 16:00 Uhr ausgeführt. *Exportierte Daten sind innerhalb von vier Stunden ab dem Ausführungszeitpunkt verfügbar.*
+Uhrzeit und Wochentag der ersten Erstellung eines Exports wirken sich auf geplante Exporte aus. Wenn Sie einen geplanten Export erstellen, werden alle folgenden Exportvorgänge zur gleichen Tageszeit ausgeführt. Beispiel: Sie erstellen einen täglichen Export um 13:00 Uhr. Der nächste Export wird am folgenden Tag um 13:00 Uhr ausgeführt. Die aktuelle Uhrzeit wirkt sich nach dem gleichen Prinzip auf alle anderen Exporttypen aus: Sie werden immer zur gleichen Tageszeit ausgeführt, zu der Sie den Export anfangs erstellt haben. Ein weiteres Beispiel: Sie erstellen einen wöchentlichen Export am Montag um 16:00 Uhr. Der nächste Export wird am folgenden Montag um 16:00 Uhr ausgeführt. *Exportierte Daten sind innerhalb von vier Stunden ab der Laufzeit verfügbar.*
 
 Bei jedem Export wird eine neue Datei erstellt, sodass ältere Exporte nicht überschrieben werden.
 
