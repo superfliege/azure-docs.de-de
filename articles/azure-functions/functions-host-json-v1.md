@@ -165,7 +165,7 @@ Konfigurationseinstellungen für [Host Health Monitor](https://github.com/Azure/
 
 |Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------| 
-|Aktiviert|true|Gibt an, ob die Funktion aktiviert ist. | 
+|enabled|true|Gibt an, ob die Funktion aktiviert ist. | 
 |healthCheckInterval|10 Sekunden|Das Zeitintervall zwischen den regelmäßigen Integritätsüberprüfungen im Hintergrund. | 
 |healthCheckWindow|2 Minuten|Ein variables Zeitfenster, das in Zusammenhang mit der `healthCheckThreshold`-Einstellung verwendet wird.| 
 |healthCheckThreshold|6|Maximale Anzahl von fehlerhaften Integritätsüberprüfungen, bevor ein Neustart des Hosts initiiert wird.| 
