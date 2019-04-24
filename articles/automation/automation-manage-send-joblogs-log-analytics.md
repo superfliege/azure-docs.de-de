@@ -98,7 +98,7 @@ Die Diagnose von Azure Automation erstellt zwei Arten von Datensätzen in Azure 
 | JobId_g |Die GUID, bei der es sich um die ID des Runbookauftrags handelt. |
 | ResultType |Der Status des Runbookauftrags. Mögliche Werte:<br>- Neu<br>- Gestartet<br>- Beendet<br>- Ausgesetzt<br>- Fehler<br>- Abgeschlossen |
 | Category (Kategorie) | Klassifizierung des Datentyps. Für Automation lautet der Wert „JobLogs“. |
-| NameVorgang | Gibt den Typ des in Azure ausgeführten Vorgangs an. Für Automation lautet der Wert „Job“. |
+| OperationName | Gibt den Typ des in Azure ausgeführten Vorgangs an. Für Automation lautet der Wert „Job“. |
 | Ressource | Name des Automation-Kontos |
 | SourceSystem | So erfassen Azure Monitor-Protokolle die Daten. Immer *Azure* für Azure-Diagnose. |
 | ResultDescription |Beschreibt den resultierenden Zustand des Runbookauftrags. Mögliche Werte:<br>- Auftrag gestartet<br>- Fehler beim Ausführen des Auftrags<br>- Auftrag abgeschlossen |
@@ -121,7 +121,7 @@ Die Diagnose von Azure Automation erstellt zwei Arten von Datensätzen in Azure 
 | JobId_g |Die GUID, bei der es sich um die ID des Runbookauftrags handelt. |
 | ResultType |Der Status des Runbookauftrags. Mögliche Werte:<br>– In Bearbeitung |
 | Category (Kategorie) | Klassifizierung des Datentyps. Für Automation lautet der Wert „JobStreams“. |
-| NameVorgang | Gibt den Typ des in Azure ausgeführten Vorgangs an. Für Automation lautet der Wert „Job“. |
+| OperationName | Gibt den Typ des in Azure ausgeführten Vorgangs an. Für Automation lautet der Wert „Job“. |
 | Ressource | Name des Automation-Kontos |
 | SourceSystem | So erfassen Azure Monitor-Protokolle die Daten. Immer *Azure* für Azure-Diagnose. |
 | ResultDescription |Enthält den Ausgabedatenstrom des Runbooks. |
