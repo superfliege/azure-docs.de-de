@@ -248,7 +248,7 @@ Automation erstellt zwei Arten von Datensätzen im Log Analytics-Arbeitsbereich:
 
 |Eigenschaft | BESCHREIBUNG|
 |----------|----------|
-|Aufrufer |  Der Benutzer oder das System, von dem der Vorgang initiiert wurde. Mögliche Werte sind entweder eine E-Mail-Adresse oder, bei geplanten Aufträgen, ein System.|
+|Caller |  Der Benutzer oder das System, von dem der Vorgang initiiert wurde. Mögliche Werte sind entweder eine E-Mail-Adresse oder, bei geplanten Aufträgen, ein System.|
 |Category (Kategorie) | Klassifizierung des Datentyps. Für Automation lautet der Wert „JobLogs“.|
 |CorrelationId | Die GUID, bei der es sich um die Korrelations-ID des Runbookauftrags handelt.|
 |JobId | Die GUID, bei der es sich um die ID des Runbookauftrags handelt.|
@@ -263,13 +263,13 @@ Automation erstellt zwei Arten von Datensätzen im Log Analytics-Arbeitsbereich:
 |SourceSystem | Gibt das Quellsystem für die gesendeten Daten an. Für Automation lautet der Wert „OpsManager“.|
 |StreamType | Gibt den Typ des Ereignisses an. Mögliche Werte:<br>- Ausführlich<br>- Ausgabe<br>- Fehler<br>- Warnung|
 |SubscriptionId | Gibt die Abonnement-ID des Auftrags an.
-|Zeit | Ausführungsdatum und -uhrzeit des Runbookauftrags.|
+|Time | Ausführungsdatum und -uhrzeit des Runbookauftrags.|
 
 ### <a name="job-streams"></a>Auftragsdatenströme
 
 |Eigenschaft | BESCHREIBUNG|
 |----------|----------|
-|Aufrufer |  Der Benutzer oder das System, von dem der Vorgang initiiert wurde. Mögliche Werte sind entweder eine E-Mail-Adresse oder, bei geplanten Aufträgen, ein System.|
+|Caller |  Der Benutzer oder das System, von dem der Vorgang initiiert wurde. Mögliche Werte sind entweder eine E-Mail-Adresse oder, bei geplanten Aufträgen, ein System.|
 |Category (Kategorie) | Klassifizierung des Datentyps. Für Automation lautet der Wert „JobStreams“.|
 |JobId | Die GUID, bei der es sich um die ID des Runbookauftrags handelt.|
 |operationName | Gibt den Typ des in Azure ausgeführten Vorgangs an. Für Automation lautet der Wert „Job“.|
@@ -282,7 +282,7 @@ Automation erstellt zwei Arten von Datensätzen im Log Analytics-Arbeitsbereich:
 |RunbookName | Der Name des Runbooks.|
 |SourceSystem | Gibt das Quellsystem für die gesendeten Daten an. Für Automation lautet der Wert „OpsManager“.|
 |StreamType | Der Typ des Auftragsstreams. Mögliche Werte:<br>- Status<br>- Ausgabe<br>- Warnung<br>- Fehler<br>- Debuggen<br>- Ausführlich|
-|Zeit | Ausführungsdatum und -uhrzeit des Runbookauftrags.|
+|Time | Ausführungsdatum und -uhrzeit des Runbookauftrags.|
 
 Wenn Sie Protokollsuchen durchführen, bei denen Kategoriedatensätze für **JobLogs** oder **JobStreams** zurückgegeben werden, können Sie die Ansicht **JobLogs** oder **JobStreams** wählen. Es werden dann mehrere Kacheln angezeigt, mit denen die von der Suche zurückgegebenen Updates zusammengefasst werden.
 
