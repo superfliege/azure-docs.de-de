@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory-Glossar für Entwickler | Microsoft-Dokumentation
-description: Eine Liste mit häufig verwendeten Konzepten und Features für Azure Active Directory-Entwickler.
+title: Microsoft Identity Platform – Glossar für Entwickler | Azure
+description: Eine Liste von Begriffen für häufig verwendete Konzepte und Features für Entwickler von Microsoft Identity Platform.
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/16/2017
+ms.date: 04/13/2019
 ms.author: celested
 ms.custom: aaddev
-ms.reviewer: elisol
+ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma, dadobali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec06b25954d25c27cd7606f2f47aa93ef6d54244
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 968da9212b52c1e7ea09d1472b312671c7a73449
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650392"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565525"
 ---
-# <a name="azure-active-directory-developer-glossary"></a>Azure Active Directory-Glossar für Entwickler
+# <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft Identity Platform – Glossar für Entwickler
 
-Dieser Artikel enthält hilfreiche Definitionen für einige der zentralen Entwicklerkonzepte von Azure Active Directory (AD) im Zusammenhang mit der Anwendungsentwicklung für Azure AD.
+Dieser Artikel enthält Definitionen für einige der zentralen Entwicklerkonzepte sowie Terminologie als Hilfe beim Kennenlernen der Anwendungsentwicklung mithilfe von Microsoft Identity Platform.
 
 ## <a name="access-token"></a>Zugriffstoken
 
@@ -38,11 +38,11 @@ Zugriffstoken werden abhängig von den vorgelegten Anmeldeinformationen gelegent
 * [Autorisierungsgewährung mit Autorisierungscode](#authorization-grant): In diesem Fall wird der Endbenutzer zunächst als Ressourcenbesitzer authentifiziert, und die Autorisierung für den Ressourcenzugriff wird an den Client delegiert. Der Client wird später beim Beziehen des Zugriffstokens authentifiziert. Das Token wird gelegentlich spezifischer als Benutzer- und App-Token bezeichnet, da es sowohl den Benutzer, der die Clientanwendung autorisiert hat, als auch die Anwendung darstellt.
 * [Autorisierungsgewährung mit Clientanmeldeinformationen](#authorization-grant): In diesem Fall stellt der Client die einzige Authentifizierung (ohne Authentifizierung/Autorisierung des Ressourcenbesitzers) bereit, weshalb das Token gelegentlich als App-exklusives Token bezeichnet wird.
 
-Ausführlichere Informationen finden Sie in der [Azure AD-Tokenreferenz][AAD-Tokens-Claims].
+Weitere Details finden Sie unter [Microsoft Identity Platform – Tokenreferenz][AAD-Tokens-Claims].
 
 ## <a name="application-id-client-id"></a>Anwendungs-ID (Client-ID)
 
-Der eindeutige Bezeichner, den Azure AD für eine Anwendungsregistrierung ausgibt, die eine bestimmte Anwendung und die zugehörigen Konfigurationen kennzeichnet. Diese Anwendungs-ID ([Client-ID](https://tools.ietf.org/html/rfc6749#page-15)) wird verwendet, wenn Authentifizierungsanforderungen ausgeführt werden, und wird den Authentifizierungsbibliotheken in der Entwicklungszeit bereitgestellt. Die Anwendungs-ID (Client-ID) ist kein geheimer Schlüssel.
+Der eindeutige Bezeichner, den Azure AD für eine Anwendungsregistrierung ausgibt, die eine bestimmte Anwendung und die zugehörigen Konfigurationen kennzeichnet. Diese Anwendungs-ID ([Client-ID](https://tools.ietf.org/html/rfc6749#page-15)) wird verwendet, wenn Authentifizierungsanforderungen ausgeführt werden. Sie wird den Authentifizierungsbibliotheken in der Entwicklungszeit bereitgestellt. Die Anwendungs-ID (Client-ID) ist kein Geheimnis.
 
 ## <a name="application-manifest"></a>Anwendungsmanifest
 
@@ -59,7 +59,7 @@ Weitere Informationen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobj
 Um einer Anwendung die Integration in Azure AD sowie die Delegierung von Identitäts- und Zugriffsverwaltungsfunktionen an Azure AD zu ermöglichen, muss sie bei einem Azure AD-[Mandanten](#tenant) registriert werden. Wenn Sie Ihre Anwendung bei Azure AD registrieren, stellen Sie eine Identitätskonfiguration für Ihre Anwendung bereit. Dies ermöglicht neben der Integration in Azure AD unter anderem auch die Verwendung folgender Features:
 
 * Stabile Verwaltung von einmaligem Anmelden mit Azure AD-Identitätsverwaltung und [OpenID Connect][OpenIDConnect]-Protokollimplementierung
-* Vermittelter Zugriff auf [geschützte Ressourcen](#resource-server) durch [Clientanwendungen](#client-application) über die [Autorisierungsserver](#authorization-server)-Implementierung (OAuth 2.0) von Azure AD
+* Vermittelter Zugriff auf [geschützte Ressourcen](#resource-server) durch [Clientanwendungen](#client-application) über den OAuth 2.0-[Autorisierungsserver](#authorization-server)
 * [Consent Framework](#consent) zum Verwalten des Clientzugriffs auf geschützte Ressourcen auf der Grundlage der Ressourcenbesitzerautorisierung
 
 Ausführlichere Informationen finden Sie unter [Integrieren von Anwendungen in Azure Active Directory][AAD-Integrating-Apps].
@@ -93,13 +93,13 @@ Anmeldeinformationen, die die [Autorisierung](#authorization) des [Ressourcenbes
 
 Gemäß Definition des [OAuth2-Autorisierungsframeworks][OAuth2-Role-Def] der Server für die Ausstellung von Zugriffstoken für den [Client](#client-application) nach erfolgreicher Authentifizierung des [Ressourcenbesitzers](#resource-owner) und Einholung seiner Autorisierung. Eine [Clientanwendung](#client-application) interagiert mit dem Autorisierungsserver zur Laufzeit über dessen [Autorisierungsendpunkte](#authorization-endpoint) und [Tokenendpunkte](#token-endpoint) (in Einklang mit den durch OAuth2 definierten [Autorisierungsgewährungen](#authorization-grant)).
 
-Im Falle der Azure AD-Anwendungsintegration implementiert Azure AD die Autorisierungsserverrolle für Azure AD-Anwendungen und Microsoft-Dienst-APIs (etwa [Microsoft Graph-APIs][Microsoft-Graph]).
+Bei der Microsoft Identity Platform-Anwendungsintegration implementiert Microsoft Identity Platform die Autorisierungsserverrolle für Azure AD-Anwendungen und Microsoft-Dienst-APIs, z.B. [Microsoft Graph-APIs][Microsoft-Graph].
 
 ## <a name="claim"></a>Anspruch
 
 Ein [Sicherheitstoken](#security-token) enthält Ansprüche, die Assertionen zu einer Entität (beispielsweise zu einer [Clientanwendung](#client-application) oder zu einem [Ressourcenbesitzer](#resource-owner)) für eine andere Entität (beispielsweise für den [Ressourcenserver](#resource-server)) bereitstellen. Ansprüche sind Name-Wert-Paare zur Weitergabe von Informationen über den Tokenantragsteller (beispielsweise der vom [Autorisierungsserver](#authorization-server) authentifizierte Sicherheitsprinzipal). Welche Ansprüche in einem Token enthalten sind, hängt von verschiedenen Variablen ab. Hierzu zählen unter anderem die Art des Tokens, die Art der Anmeldeinformationen für die Authentifizierung des Antragstellers und die Anwendungskonfiguration.
 
-Ausführlichere Informationen finden Sie in der [Azure AD-Tokenreferenz][AAD-Tokens-Claims].
+Weitere Details finden Sie unter [Microsoft Identity Platform – Tokenreferenz][AAD-Tokens-Claims].
 
 ## <a name="client-application"></a>Clientanwendung
 
@@ -117,7 +117,7 @@ Weitere Informationen finden Sie unter [Consent Framework](consent-framework.md)
 
 Ein vom [Autorisierungsendpunkt](#authorization-endpoint) eines [Autorisierungsservers](#authorization-server) bereitgestelltes [OpenID Connect][OpenIDConnect-ID-Token]-[Sicherheitstoken](#security-token) mit [Ansprüchen](#claim) in Verbindung mit der Authentifizierung eines Endbenutzers vom Typ [Ressourcenbesitzer](#resource-owner). ID-Token werden genau wie Zugriffstoken als digital signiertes [JSON Web Token (JWT)][JWT] dargestellt. Im Gegensatz zu einem Zugriffstoken werden die Ansprüche eines ID-Tokens allerdings nicht im Zusammenhang mit dem Zugriff auf Ressourcen und speziell mit der Zugriffssteuerung verwendet.
 
-Ausführlichere Informationen finden Sie in der [Azure AD-Tokenreferenz][AAD-Tokens-Claims].
+Weitere Details finden Sie unter [Microsoft Identity Platform – Tokenreferenz][AAD-Tokens-Claims].
 
 ## <a name="microsoft-identity-platform"></a>Microsoft Identity Platform
 
@@ -220,14 +220,14 @@ Eine Art von [Clientanwendung](#client-application) , die sämtlichen Code auf e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Das [Entwicklerhandbuch zu Azure Active Directory][AAD-Dev-Guide] ist die Einstiegsseite für alle relevanten Themen rund um die Azure AD-Entwicklung und enthält unter anderem eine Übersicht über die [Anwendungsintegration][AAD-How-To-Integrate] sowie grundlegende Informationen zur [Authentifizierung in Azure AD und Authentifizierungsszenarien für Azure AD][AAD-Auth-Scenarios]. Codebeispiele und Tutorials zur schnellen Einrichtung und Ausführung finden Sie auch auf [GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
+Das [Entwicklerhandbuch zu Microsoft Identity Platform][AAD-Dev-Guide] ist die Einstiegsseite für alle relevanten Themen rund um die Microsoft Identity Platform-Entwicklung. Es enthält unter anderem eine Übersicht über die [Anwendungsintegration][AAD-How-To-Integrate] sowie grundlegende Informationen zur [Authentifizierung in Microsoft Identity Platform und zu unterstützten Authentifizierungsszenarien][AAD-Auth-Scenarios]. Codebeispiele und Tutorials zur schnellen Einrichtung und Ausführung finden Sie auch auf [GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
 
 Senden Sie uns im folgenden Abschnitt für Kommentare Ihr Feedback, und unterstützen Sie uns bei der Verbesserung dieser Inhalte. Dabei sind Anregungen für neue Definitionen oder zur Aktualisierung bereits vorhandener Definitionen willkommen.
 
 <!--Image references-->
 
 <!--Reference style links -->
-[AAD-App-Manifest]:reference-azure-ad-app-manifest.md
+[AAD-App-Manifest]:reference-app-manifest.md
 [AAD-App-SP-Objects]:app-objects-and-service-principals.md
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Dev-Guide]:azure-ad-developers-guide.md

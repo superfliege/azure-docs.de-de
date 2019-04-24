@@ -18,10 +18,10 @@ ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a0a40c9ee06751edfb7b218cf15275019c142545
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59491320"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Konsolen-App anhand der Identität der App
@@ -75,14 +75,14 @@ Für diese Schnellstartanleitung ist [.NET Core 2.2](https://www.microsoft.com/
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Schritt 1: Konfigurieren Ihrer Anwendung im Azure-Portal
 > Damit das Codebeispiel für diese Schnellstartanleitung funktioniert, müssen Sie einen geheimen Clientschlüssel erstellen und die Anwendungsberechtigung **User.Read.All** aus der Graph-API hinzufügen.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [Make these changes for me (Diese Änderungen für mich vornehmen)]()
+> > [Make these changes for me]() (Diese Änderungen für mich vornehmen)
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Bereits konfiguriert](media/quickstart-v2-windows-desktop/green-check.png): Ihre Anwendung ist mit diesen Attributen konfiguriert.
 
 #### <a name="step-2-download-your-visual-studio-project"></a>Schritt 2: Herunterladen des Visual Studio-Projekts
 
-[Laden Sie das Visual Studio-Projekt herunter.](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/msal3x.zip)
+[Laden Sie das Visual Studio-Projekt herunter](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/msal3x.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Schritt 3: Konfigurieren des Visual Studio-Projekts
 
@@ -100,9 +100,9 @@ Für diese Schnellstartanleitung ist [.NET Core 2.2](https://www.microsoft.com/
     
     > [!div renderon="docs"]
     >> Hinweis:
-    >> * `Enter_the_Application_Id_Here` - Ist die **Anwendungs-ID (Client)** für die von Ihnen registrierte Anwendung.
-    >> * `Enter_the_Tenant_Id_Here` - Ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen** (z. B. „contoso.microsoft.com“).
-    >> * `Enter_the_Client_Secret_Here` - Ersetzen Sie diesen Wert durch den geheimen Clientschlüssel, den Sie in Schritt 1 erstellt haben.
+    >> * `Enter_the_Application_Id_Here` ist die **Anwendungs-ID (Client)** für die von Ihnen registrierte Anwendung.
+    >> * `Enter_the_Tenant_Id_Here`: Ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen** (z.B. „contoso.microsoft.com“).
+    >> * `Enter_the_Client_Secret_Here`: Ersetzen Sie diesen Wert durch den geheimen Clientschlüssel, den Sie in Schritt 1 erstellt haben.
 
     > [!div renderon="docs"]
     > > [!TIP]
@@ -120,7 +120,7 @@ Wenn Sie zu diesem Zeitpunkt versuchen, die Anwendung auszuführen, wird der Feh
 > [!div renderon="portal" class="sxs-lookup"]
 > Gehen Sie als globaler Administrator wie folgt vor: Navigieren Sie zur Seite **API-Berechtigungen**, und wählen Sie **Administratorzustimmung für <Mandantennamen_hier_eingeben> erteilen**.
 > > [!div id="apipermissionspage"]
-> > [Navigieren Sie zur Seite „API-Berechtigungen“.]()
+> > [Navigieren Sie zur Seite „API-Berechtigungen“]().
 
 ##### <a name="standard-user"></a>Standardbenutzer
 
@@ -132,8 +132,8 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 
 > [!div renderon="docs"]
 >> Hinweis:
->> * `Enter_the_Tenant_Id_Here` - Ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen** (z. B. „contoso.microsoft.com“).
->> * `Enter_the_Application_Id_Here` - Ist die **Anwendungs-ID (Client)** für die von Ihnen registrierte Anwendung.
+>> * `Enter_the_Tenant_Id_Here`: Ersetzen Sie diesen Wert durch die **Mandanten-ID** oder den **Mandantennamen** (z.B. „contoso.microsoft.com“).
+>> * `Enter_the_Application_Id_Here` ist die **Anwendungs-ID (Client)** für die von Ihnen registrierte Anwendung.
 
 > [!NOTE]
 > Unter Umständen wird der Fehler *„AADSTS50011: No reply address is registered for the application“* (AADSTS50011: Für die Anwendung ist keine Antwortadresse registriert.) angezeigt, nachdem über die obige URL die Einwilligung für die App erteilt wurde. Dieser Fehler tritt auf, da diese Anwendung und die URL nicht über einen Umleitungs-URI verfügen.
@@ -230,7 +230,7 @@ Informieren Sie sich über Berechtigungen und die Einwilligung:
 Weitere Informationen zum Authentifizierungsfluss für dieses Szenario finden Sie unter dem OAuth 2.0-Clientanmeldeinformations-Flow:
 
 > [!div class="nextstepaction"]
-> [OAuth 2.0-Clientanmeldeinformations-Flow](v2-oauth2-client-creds-grant-flow.md)
+> [OAuth 2.0-Clientanmeldeinformations-Flow](v2-oauth2-client-creds-grant-flow.md)
 
 > [!div class="nextstepaction"]
-> [Client credential flows in MSAL.NET (Clientanmeldeinformations-Flow in MSAL.NET)](https://aka.ms/msal-net-client-credentials)
+> [Client credential flows in MSAL.NET](https://aka.ms/msal-net-client-credentials) (Clientanmeldeinformations-Flow in MSAL.NET)

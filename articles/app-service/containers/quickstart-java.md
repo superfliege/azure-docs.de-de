@@ -1,6 +1,7 @@
 ---
 title: Erstellen von Java-Web-Apps unter Linux – Azure App Service
 description: In dieser Schnellstartanleitung stellen Sie in wenigen Minuten Ihre erste Java-App „Hallo Welt“ in Azure App Service unter Linux bereit.
+keywords: Azure, App Service, Web-App, Linux, Java, Maven, Schnellstart
 services: app-service\web
 documentationcenter: ''
 author: msangapu
@@ -15,17 +16,20 @@ ms.topic: quickstart
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: af1256b4432e42f91209b622239ca55901929a1b
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: c97d4a373970514b920581aa258b61c1b1cb978c
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544737"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684003"
 ---
 # <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>Schnellstart: Erstellen einer Java-App in App Service unter Linux
 
-[App Service unter Linux](app-service-linux-intro.md) bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching unter dem Linux-Betriebssystem. In dieser Schnellstartanleitung wird gezeigt, wie Sie mit der [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) und dem [Maven-Plug-In für Azure-Web-Apps (Vorschauversion)](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) eine Java-Webarchivdatei (WAR) bereitstellen.
-
+[App Service unter Linux](app-service-linux-intro.md) bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching unter dem Linux-Betriebssystem. In dieser Schnellstartanleitung wird gezeigt, wie Sie mit der [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) und dem [Maven-Plug-In für Azure App Service](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) eine Java-Webarchivdatei (WAR) bereitstellen.
+> [!NOTE]
+>
+> Dazu können auch gängige IDEs wie IntelliJ und Eclipse verwendet werden. Sehen Sie sich unsere ähnlichen Dokumente in den Schnellstarts für [Azure-Toolkit für IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) oder [Azure-Toolkit für Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app) an.
+>
 ![In Azure ausgeführte Beispiel-App](media/quickstart-java/java-hello-world-in-browser.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -58,15 +62,32 @@ Fügen Sie dann die folgende Plug-In-Definition im `<build>`-Element der Datei `
     <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
-        <version>1.5.3</version>
+        <version>1.5.4</version>
         <configuration>
+            <!-- Specify v2 schema -->
+            <schemaVersion>v2</schemaVersion>
             <!-- App information -->
+            <subscriptionId>${SUBSCRIPTION_ID}</subscriptionId>
             <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
             <appName>${WEBAPP_NAME}</appName>
             <region>${REGION}</region>
    
             <!-- Java Runtime Stack for App on Linux-->
-            <linuxRuntime>tomcat 8.5-jre8</linuxRuntime> 
+            <runtime>
+                <os>linux</os>
+                <javaVersion>jre8</javaVersion>
+                <webContainer>tomcat 8.5</webContainer>
+            </runtime> 
+            <deployment>
+                <resources>
+                    <resource>
+                        <directory>${project.basedir}/target</directory>
+                        <includes>
+                            <include>*.war</include>
+                        </includes>
+                    </resource>
+                </resources>
+            </deployment>
         </configuration>
     </plugin>
 </plugins>
@@ -81,6 +102,7 @@ Aktualisieren Sie die folgenden Platzhalter in der Plug-In-Konfiguration:
 
 | Platzhalter | BESCHREIBUNG |
 | ----------- | ----------- |
+| `SUBSCRIPTION_ID` | Die eindeutige ID des Abonnements, in dem Sie Ihre App bereitstellen möchten. Die ID des Standardabonnement finden Sie in der Cloud Shell oder der CLI mithilfe des Befehls `az account show`. Verwenden Sie für alle verfügbaren Abonnements den Befehl `az account list`.|
 | `RESOURCEGROUP_NAME` | Der Name der neuen Ressourcengruppe, in der Ihre App erstellt wird. Indem Sie alle Ressourcen für eine App in einer Gruppe zusammenfassen, können Sie sie zusammen verwalten. Wenn Sie beispielsweise die Ressourcengruppe löschen, werden alle Ressourcen gelöscht, die der App zugeordnet sind. Aktualisieren Sie diesen Wert mit einem neuen eindeutigen Ressourcengruppennamen, z.B. *TestResources*. In einem Abschnitt weiter unten verwenden Sie diesen Ressourcengruppennamen zum Bereinigen aller Azure-Ressourcen. |
 | `WEBAPP_NAME` | Der App-Name wird bei der Bereitstellung in Azure als Teil des Hostnamens für die App (WEBAPP_NAME.azurewebsites.net) verwendet. Aktualisieren Sie diesen Wert mit einem eindeutigen Namen für die neue App Service-App, die Ihre Java-App hostet, z.B. *contoso*. |
 | `REGION` | Eine Azure-Region, in der die App gehostet wird, z.B. `westus2`. Sie können eine Liste von Regionen über die Cloud Shell oder CLI mit dem Befehl `az account list-locations` abrufen. |
@@ -111,3 +133,6 @@ Navigieren Sie nach Abschluss der Bereitstellung zur bereitgestellten Anwendung,
 
 > [!div class="nextstepaction"]
 > [CI/CD mit Jenkins](/azure/jenkins/deploy-jenkins-app-service-plugin)
+
+> [!div class="nextstepaction"]
+> [Weitere Azure-Ressourcen für Java-Entwickler](/java/azure/)

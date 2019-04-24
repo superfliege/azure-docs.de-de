@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/14/2018
 ms.author: tamram
-ms.openlocfilehash: a1a931573967f12eb7abc791bd951dc6e1e9e60b
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 8dff81d3f3594798a1b08184af0098f3bd86c12c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607397"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011043"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit Python
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Python Blockblobs in einem Container in Azure Blob Storage hochladen, herunterladen und auflisten. Bei Blobs handelt es sich lediglich um Objekte, die eine beliebige Menge an Text oder binären Daten (z. B. Bilder, Dokumente, Streamingmedien, Archivdaten usw.) enthalten und die in Azure Storage getrennt von Dateifreigaben, schemalosen Tabellen und Nachrichtenwarteschlangen vorliegen. (Weitere Informationen finden Sie unter [Einführung in Azure Storage](/azure/storage/common/storage-introduction.md).)
+In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Python Blockblobs in einem Container in Azure Blob Storage hochladen, herunterladen und auflisten. Bei Blobs handelt es sich lediglich um Objekte, die eine beliebige Menge an Text oder binären Daten (z. B. Bilder, Dokumente, Streamingmedien, Archivdaten usw.) enthalten und die in Azure Storage getrennt von Dateifreigaben, schemalosen Tabellen und Nachrichtenwarteschlangen vorliegen. (Weitere Informationen finden Sie unter [Einführung in Azure Storage](/azure/storage/common/storage-introduction).)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -45,7 +45,7 @@ Dieser Befehl klont das Repository *Azure-Samples/storage-blobs-python-quickstar
 Geben Sie in der Anwendung Ihren Speicherkontonamen sowie den Kontoschlüssel an, um ein Objekt vom Typ `BlockBlobService` zu erstellen. Öffnen Sie im Projektmappen-Explorer in Ihrer IDE die Datei *example.py*. Ersetzen Sie die Werte `accountname` und `accountkey` durch Ihren Kontonamen und Schlüssel. 
 
 ```python 
-block_blob_service = BlockBlobService(account_name='accountname', account_key='accountkey') 
+block_blob_service = BlockBlobService(account_name = 'accountname', account_key = 'accountkey') 
 ```
 
 ## <a name="run-the-sample"></a>Ausführen des Beispiels
@@ -92,11 +92,11 @@ Wenn Sie über den Cloudblobcontainer verfügen, instanziieren Sie das **CloudBl
 In diesem Abschnitt instanziieren Sie die Objekte, erstellen einen neuen Container und legen dann Berechtigungen für den Container fest, damit die Blobs öffentlich sind. Der Name des Containers lautet **quickstartblobs**. 
 
 ```python 
-# Create the BlockBlockService that is used to call the Blob service for the storage account
-block_blob_service = BlockBlobService(account_name='accountname', account_key='accountkey') 
+# Create the BlockBlockService that is used to call the Blob service for the storage account.
+block_blob_service = BlockBlobService(account_name = 'accountname', account_key = 'accountkey') 
  
 # Create a container called 'quickstartblobs'.
-container_name ='quickstartblobs'
+container_name = 'quickstartblobs'
 block_blob_service.create_container(container_name) 
 
 # Set the permission so the blobs are public.
@@ -106,29 +106,29 @@ block_blob_service.set_container_acl(container_name, public_access=PublicAccess.
 
 Blob Storage unterstützt Block-, Anfüge- und Seitenblobs. Blockblobs werden am häufigsten verwendet und auch in diesem Schnellstart verwendet.  
 
-Um eine Datei in ein Blob hochzuladen, ermitteln Sie den vollständigen Dateipfad, indem Sie den Verzeichnisnamen mit dem Dateinamen auf Ihrem lokalen Laufwerk verknüpfen. Anschließend können Sie die Datei mithilfe der Methode `create\_blob\_from\_path` in den angegebenen Pfad hochladen. 
+Um eine Datei in ein Blob hochzuladen, ermitteln Sie den vollständigen Dateipfad, indem Sie den Verzeichnisnamen mit dem Dateinamen auf Ihrem lokalen Laufwerk verknüpfen. Anschließend können Sie die Datei mithilfe der Methode `create_blob_from_path` in den angegebenen Pfad hochladen. 
 
-Der Beispielcode erstellt eine lokale Datei für den Upload und Download. Dabei wird die hochzuladende Datei als `file\_path\_to\_file` und der Name des Blobs als `local\_file\_name` gespeichert. Im folgenden Beispiel wird die Datei in einen Container mit dem Namen **quickstartblobs** hochgeladen.
+Der Beispielcode erstellt eine lokale Datei für den Upload und Download. Dabei wird die hochzuladende Datei als *Vollständiger_Pfad_zur_Datei* und der Name des Blobs als *Name_der_lokalen_Datei* hochgeladen. Im folgenden Beispiel wird die Datei in einen Container mit dem Namen **quickstartblobs** hochgeladen.
 
 ```python
 # Create a file in Documents to test the upload and download.
-local_path=os.path.expanduser("~\Documents")
-local_file_name ="QuickStart_" + str(uuid.uuid4()) + ".txt"
-full_path_to_file =os.path.join(local_path, local_file_name)
+local_path = os.path.expanduser("~\Documents")
+local_file_name = "QuickStart_" + str(uuid.uuid4()) + ".txt"
+full_path_to_file = os.path.join(local_path, local_file_name)
 
 # Write text to the file.
-file = open(full_path_to_file,  'w')
+file = open(full_path_to_file, 'w')
 file.write("Hello, World!")
 file.close()
 
 print("Temp file = " + full_path_to_file)
 print("\nUploading to Blob storage as blob" + local_file_name)
 
-# Upload the created file, use local_file_name for the blob name
+# Upload the created file, use local_file_name for the blob name.
 block_blob_service.create_blob_from_path(container_name, local_file_name, full_path_to_file)
 ```
 
-Sie können für Blob Storage mehrere Uploadmethoden verwenden. Wenn Sie also beispielsweise über einen Speicherstream verfügen, können Sie anstelle von `create\_blob\_from\_path` die Methode `create\_blob\_from\_stream` verwenden. 
+Sie können für Blob Storage mehrere Uploadmethoden verwenden. Wenn Sie also beispielsweise über einen Speicherstream verfügen, können Sie anstelle von `create_blob_from_path` die Methode `create_blob_from_stream` verwenden. 
 
 Blockblobs können eine Größe von bis zu 4,7 TB haben und alle Arten von Dateien sein, von Excel-Arbeitsblättern bis zu großen Videodateien. Seitenblobs werden in erster Linie für die VHD-Dateien verwendet, die IaaS-VMs zugrunde liegen. Anfügeblobs dienen der Protokollierung und können z.B. verwendet werden, um beim Schreiben in eine Datei zusätzliche Daten hinzuzufügen. Die meisten Objekte, die in Blob Storage gespeichert werden, sind allerdings Blockblobs.
 
@@ -137,7 +137,7 @@ Blockblobs können eine Größe von bis zu 4,7 TB haben und alle Arten von Datei
 Rufen Sie mithilfe der Methode `list_blobs` eine Liste mit den Dateien im Container ab. Diese Methode gibt einen Generator zurück. Der folgende Code ruft die Liste der Blobs ab und durchläuft sie, um die Namen der in einem Container gefundenen Blobs anzuzeigen.  
 
 ```python
-# List the blobs in the container
+# List the blobs in the container.
 print("\nList blobs in the container")
 generator = block_blob_service.list_blobs(container_name)
 for blob in generator:
@@ -146,21 +146,21 @@ for blob in generator:
 
 ### <a name="download-the-blobs"></a>Herunterladen der Blobs
 
-Laden Sie Blobs mithilfe der Methode `the get\_blob\_to\_path` auf Ihren lokalen Datenträger herunter. Durch den folgenden Code wird der in einem vorherigen Abschnitt hochgeladene Blob heruntergeladen. *_DOWNLOADED* wird als Suffix an den Blobnamen angefügt, sodass Sie beide Dateien auf dem lokalen Datenträger sehen können. 
+Laden Sie Blobs mithilfe der Methode `get_blob_to_path` auf Ihren lokalen Datenträger herunter. Durch den folgenden Code wird der in einem vorherigen Abschnitt hochgeladene Blob heruntergeladen. *_DOWNLOADED* wird als Suffix an den Blobnamen angefügt, sodass Sie beide Dateien auf dem lokalen Datenträger sehen können. 
 
 ```python
 # Download the blob(s).
 # Add '_DOWNLOADED' as prefix to '.txt' so you can see both files in Documents.
-full_path_to_file2 = os.path.join(local_path, string.replace(local_file_name ,'.txt', '_DOWNLOADED.txt'))
+full_path_to_file2 = os.path.join(local_path, string.replace(local_file_name, '.txt', '_DOWNLOADED.txt'))
 print("\nDownloading blob to " + full_path_to_file2)
 block_blob_service.get_blob_to_path(container_name, local_file_name, full_path_to_file2)
 ```
 
 ### <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Wenn Sie die in dieser Schnellstartanleitung hochgeladenen Blobs nicht mehr benötigen, können Sie mithilfe der Methode `delete\_container` den gesamten Container löschen. Falls Sie stattdessen einzelne Dateien löschen möchten, verwenden Sie die Methode `delete\_blob`.
+Wenn Sie die in dieser Schnellstartanleitung hochgeladenen Blobs nicht mehr benötigen, können Sie mithilfe der Methode `delete_container` den gesamten Container löschen. Falls Sie stattdessen einzelne Dateien löschen möchten, verwenden Sie die Methode `delete_blob`.
 
 ```python
-# Clean up resources. This includes the container and the temp files
+# Clean up resources. This includes the container and the temp files.
 block_blob_service.delete_container(container_name)
 os.remove(full_path_to_file)
 os.remove(full_path_to_file2)

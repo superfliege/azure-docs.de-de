@@ -644,8 +644,8 @@ Die Web-Domäne bietet eine Absicht für das Navigieren zu einer Website.
 |Beispiele|
 |--|
 |Navigiere zu facebook.com|
-|Gehe zu www.twitter.com|
-|Navigiere zu www.bing.com|
+|Gehe zu www.twitter.com |
+|Navigiere zu www.bing.com |
 
 ### <a name="intents"></a>Absichten
 | Name der Absicht | BESCHREIBUNG | Beispiele |

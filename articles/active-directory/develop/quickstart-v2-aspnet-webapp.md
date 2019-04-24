@@ -16,12 +16,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b83f5e6735f5b2554af2f5e6c74a7c9095d23fd
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 786ace2ef88fc4b94372041cbdd5bc16586b5193
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579477"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682558"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App
 
@@ -74,6 +74,7 @@ Wählen Sie das Menü **Authentifizierung** aus, und legen Sie **ID-Token** unte
 
 1. Extrahieren Sie die ZIP-Datei in einen lokalen Ordner, der sich näher am Stammordner befindet, beispielsweise **C:\Azure-Samples**.
 1. Öffnen Sie die Projektmappe in Visual Studio (AppModelv2-WebApp-OpenIDConnect-DotNet.sln).
+1. Je nach Visual Studio-Version müssen Sie ggf. mit der rechten Maustaste auf das Projekt `AppModelv2-WebApp-OpenIDConnect-DotNet` klicken und **NuGet-Pakete wiederherstellen**.
 1. Bearbeiten Sie **Web.config**, und ersetzen Sie die Parameter `ClientId` und `Tenant` durch Folgendes:
 
     ```xml
@@ -103,7 +104,7 @@ Sie können die Authentifizierungspipeline mit cookiebasierter Authentifizierung
 ```powershell
 Install-Package Microsoft.Owin.Security.OpenIdConnect
 Install-Package Microsoft.Owin.Security.Cookies
-Install-Package Microsoft.Owin.Host.SystemWeb
+Install-Package Microsoft.Owin.Host.SystemWeb  
 ```
 
 ### <a name="owin-startup-class"></a>OWIN-Startklasse

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 14732b02e56d56baa032b8a3728ca892f4ad7d2f
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: af849fa6790dfdb57d8073b17f6d31a3f59a532d
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563583"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999756"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>Tutorial: Azure Active Directory-Integration in ForeSee CX Suite
 
@@ -119,7 +119,7 @@ So konfigurieren Sie das einmalige Anmelden von Azure AD mit ForeSee CX Suite
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL ein: `https://cxsuite.foresee.com/`.
 
-    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: https://www.okta.com/saml2/service-provider/<UniqueID>
+    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: https:\//www.okta.com/saml2/service-provider/<UniqueID>
 
     > [!Note]
     > Falls der Wert **Bezeichner** nicht automatisch aufgefüllt wird, geben Sie den Wert gemäß dem obigen Muster manuell ein. Der ID-Wert ist nicht der tatsächliche Wert. Aktualisieren Sie den Wert mit dem tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam von ForeSee CX Suite](mailto:support@foresee.com), um diesen Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
