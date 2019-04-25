@@ -15,11 +15,20 @@ metadata:
   ms.author: yegu
 abstract:
   description: 'Azure App Configuration ist ein verwalteter Dienst, mit dem Entwickler ihre Anwendungskonfigurationen einfach und sicher zentralisieren können.'
+  aside:
+    image:
+      alt: null
+      height: 110
+      src: media/videos/getting-started.png
+      width: 250
+    title: 'Erste Schritte (14:41)'
+    href: 'https://channel9.msdn.com/Shows/Azure-Friday/Getting-started-with-Azure-App-Configuration'
+    width: 250
 sections:
   - title: Fünfminütige Schnellstarts
     items:
       - type: paragraph
-        text: 'Hier finden Sie Informationen zum Entwickeln Ihrer ersten Webanwendung mithilfe von Azure App Configuration:'
+        text: 'Hier finden Sie Informationen zum Entwickeln Ihrer ersten Anwendung mithilfe von Azure App Configuration:'
       - type: list
         style: icon48
         items:
