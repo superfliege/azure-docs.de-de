@@ -14,11 +14,11 @@ ms.author: celested
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2076aec1585ff8b60ee2b593621b75abfaeaa1ac
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260305"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59791335"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Gewusst wie: Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App in einem Mandanten (Vorschau)
 
@@ -520,4 +520,4 @@ In diesem Beispiel erstellen Sie eine Richtlinie, die einen benutzerdefinierten 
 
 ## <a name="see-also"></a>Weitere Informationen
 
-Weitere Informationen zum Anpassen von im SAML-Token ausgestellten Ansprüchen über das Azure-Portal finden Sie unter [Gewusst wie: Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen](active-directory-saml-claims-customization.md).
+Weitere Informationen dazu, wie Sie über das Azure-Portal die im SAML-Token ausgestellten Ansprüche anpassen, finden Sie unter [Vorgehensweise: Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen](active-directory-saml-claims-customization.md)

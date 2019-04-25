@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
 ms.openlocfilehash: ac21071b958942d7d689f1e9c2c49f02a3599ac4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59257891"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trakstar"></a>Tutorial: Azure Active Directory-Integration mit Trakstar
@@ -107,9 +107,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Traksta
 
     ![SSO-Informationen zur Domäne und zu den URLs für Trakstar](common/sp-identifier.png)
 
-    a. Fügen Sie in das Textfeld **Anmelde-URL** den Wert für **ACS (Consumer) URL** (ACS-URL (Consumer)) (Settings > Authentication & SSO (Einstellungen > Authentifizierung und SSO)) aus Trakstar im folgenden Format ein: `https://app.trakstar.com/auth/saml/callback?namespace=<YOUR_NAMESPACE>`
+    a. Fügen Sie in das Textfeld **Anmelde-URL** den Wert, der in Trakstar in **ACS (Consumer) URL** (Settings > Authentication & SSO) enthalten ist, im folgenden Format ein: `https://app.trakstar.com/auth/saml/callback?namespace=<YOUR_NAMESPACE>`
 
-    b. Übernehmen Sie im Textfeld **Bezeichner (Entitäts-ID)** den Standardwert: `https://app.trakstar.com`
+    b. Übernehmen Sie im Textfeld **Bezeichner (Entitäts-ID)** den Standardwert: `https://app.trakstar.com`.
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Melden Sie sich bei Trakstar als Administrator an, um diese Werte abzurufen.

@@ -7,18 +7,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 02/13/2019
+ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: 8197d091763709282c42379a7ca0ea802e5c6fdf
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 4ccb8665c9880e21897c81ed4b4ff534e52bb6d1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886772"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002271"
 ---
 # <a name="example-how-to-detect-language-with-text-analytics"></a>Beispiel: Sprachenerkennung mithilfe der Textanalyse
 
-Die [Sprachenerkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) wertet Texteingaben aus und gibt für jedes Dokument Sprachen-IDs mit einer Punktzahl zurück, die die Stärke der Analyse angibt. Die Textanalyse erkennt bis zu 120 Sprachen.
+Die [Sprachenerkennungs-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) wertet Texteingaben aus und gibt für jedes Dokument Sprachen-IDs mit einer Punktzahl zurück, die die Stärke der Analyse angibt. Die Textanalyse erkennt bis zu 120 Sprachen.
 
 Diese Funktion ist hilfreich für Inhaltsspeicher, die willkürliche Texte mit unbekannter Sprache sammeln. Sie können die Analyseergebnisse analysieren, um die Sprache des Eingabedokuments zu bestimmen. Die Antwort gibt außerdem eine Punktzahl zwischen 0 und 1 zurück, um die Zuverlässigkeit des Modells anzugeben.
 
@@ -27,7 +27,7 @@ Diese Funktion ist hilfreich für Inhaltsspeicher, die willkürliche Texte mit u
 
 ## <a name="preparation"></a>Vorbereitung
 
-Sie benötigen JSON-Dokumente im folgenden Format: ID, Text.
+Sie benötigen JSON-Dokumente im folgenden Format: ID, Text
 
 Die Dokumentgröße darf 5.120 Zeichen pro Dokument nicht übersteigen, und pro Sammlung sind bis zu 1.000 Elemente (IDs) zulässig. Die Sammlung wird im Hauptteil der Anforderung übermittelt. Das folgende Beispiel zeigt Inhalte, die Sie ggf. für die Sprachenerkennung übermitteln können:
 
@@ -62,16 +62,16 @@ Die Dokumentgröße darf 5.120 Zeichen pro Dokument nicht übersteigen, und pro 
 
 Details zur Anforderungsdefinition finden Sie unter [Aufrufen der Textanalyse-REST-API](text-analytics-how-to-call-api.md). Der Einfachheit halber sind hier noch einmal einige Punkte aufgeführt:
 
-+ Erstellen Sie eine Anforderung vom Typ **POST**. Lesen Sie die API-Dokumentation für diese Anforderung: [Sprachenerkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
++ Erstellen Sie eine Anforderung vom Typ **POST**. Lesen Sie die API-Dokumentation für diese Anforderung: [Sprachenerkennungs-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)
 
-+ Legen Sie den HTTP-Endpunkt für die Spracherkennung entweder mithilfe einer Textanalyseressource in Azure oder mithilfe eines instanziierten [Textanalysecontainers](text-analytics-how-to-install-containers.md) fest. Er muss die Ressource `/languages` enthalten: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`.
++ Legen Sie den HTTP-Endpunkt für die Spracherkennung entweder mithilfe einer Textanalyseressource in Azure oder mithilfe eines instanziierten [Textanalysecontainers](text-analytics-how-to-install-containers.md) fest. Er muss die Ressource `/languages` enthalten: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`.
 
 + Legen Sie einen Anforderungsheader fest, der den Zugriffsschlüssel für Textanalysevorgänge enthält. Weitere Informationen finden Sie unter [Ermitteln von Endpunkten und Zugriffsschlüsseln](text-analytics-how-to-access-key.md).
 
 + Geben Sie im Anforderungstext die JSON-Dokumentsammlung an, die Sie für diese Analyse vorbereitet haben.
 
 > [!Tip]
-> Verwenden Sie [Postman](text-analytics-how-to-call-api.md), oder öffnen Sie die **API-Testkonsole** in der [Dokumentation](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7), um eine Anforderung zu strukturieren und mittels POST an den Dienst zu übermitteln.
+> Verwenden Sie [Postman](text-analytics-how-to-call-api.md), oder öffnen Sie die **API-Testkonsole** in der [Dokumentation](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7), um eine Anforderung zu strukturieren und mittels POST an den Dienst zu übermitteln.
 
 ## <a name="step-2-post-the-request"></a>Schritt 2: Übermitteln der Anforderung
 
@@ -206,7 +206,7 @@ Die resultierende Ausgabe enthält die vorherrschende Sprache mit einer Punktzah
 
 In diesem Artikel haben Sie sich mit Konzepten und mit dem Workflow für die Sprachenerkennung unter Verwendung der Textanalyse in Cognitive Services vertraut gemacht. Im Anschluss finden Sie eine kurze Zusammenfassung der wichtigsten Punkte:
 
-+ Die [Sprachenerkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) steht für 120 Sprachen zur Verfügung.
++ Die [Sprachenerkennungs-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) steht für 120 Sprachen zur Verfügung.
 + JSON-Dokumente im Anforderungstext umfassen eine ID und Text.
 + Die POST-Anforderung wird an einen Endpunkt vom Typ `/languages` gesendet. Dabei werden ein personalisierter [Zugriffsschlüssel und ein Endpunkt](text-analytics-how-to-access-key.md) verwendet, der für Ihr Abonnement gültig ist.
 + Bei der Antwortausgabe handelt es sich um Sprachen-IDs für die jeweilige Dokument-ID. Sie kann an eine beliebige JSON-fähige App gestreamt werden (beispielsweise an Excel oder Power BI).

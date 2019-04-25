@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7239ae1bdad59b87f316d3ee27213420447fcc7e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b9f8cd3e85d4d1497de67509dbbe3ffddb712be0
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57839473"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009089"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-php-in-computer-vision"></a>Schnellstart: Generieren einer Miniaturansicht mit der REST-API und PHP in der Maschinelles Sehen-API
 
@@ -28,7 +28,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 - [PHP](https://secure.php.net/downloads.php) muss installiert sein.
 - [PEAR](https://pear.php.net) muss installiert sein.
-- Sie benötigen einen Abonnementschlüssel für Maschinelles Sehen. Informationen zum Beziehen eines Abonnementschlüssels finden Sie unter [Gewusst wie: Beziehen von Abonnementschlüsseln](../Vision-API-How-to-Topics/HowToSubscribe.md).
+- Sie benötigen einen Abonnementschlüssel für maschinelles Sehen. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) können Sie einen Schlüssel für eine kostenlose Testversion abrufen. Oder gehen Sie wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um „Maschinelles Sehen“ zu abonnieren und Ihren Schlüssel zu erhalten.
 
 ## <a name="create-and-run-the-sample"></a>Erstellen und Ausführen des Beispiels
 
@@ -133,7 +133,7 @@ Wenn Sie die Datei nicht mehr benötigen, löschen Sie sie, und deinstallieren S
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erkunden der Maschinelles Sehen-API zum Analysieren von Bildern, Erkennen von Prominenten und Sehenswürdigkeiten, Erstellen von Miniaturansichten und Extrahieren von gedrucktem und handschriftlichem Text Um schnell mit der Maschinelles Sehen-API zu experimentieren, probieren Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) aus.
+Machen Sie sich mit der Maschinelles Sehen-API vertraut, um ein Bild zu analysieren, Prominente und Sehenswürdigkeiten zu erkennen, eine Miniaturansicht zu erstellen und gedruckten und handschriftlichen Text zu extrahieren. Um schnell mit der Maschinelles Sehen-API zu experimentieren, probieren Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) aus.
 
 > [!div class="nextstepaction"]
 > [Erkunden der Maschinelles Sehen-API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

@@ -11,11 +11,11 @@ ms.topic: landing-page
 ms.date: 02/12/2019
 ms.author: dkshir
 ms.openlocfilehash: d19b6fff3bf2b43ecb692bd8d8e33a202e969570
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57343821"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61216544"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -134,7 +134,7 @@ ms.locfileid: "57343821"
                             <div class="cardText">
                                 <h3>Anpassen einer vorab erstellten IoT-Lösung mithilfe von Azure IoT Solution Accelerators</h3><br>
                                 <p><a href="../iot-accelerators/about-iot-accelerators.md">Was sind Azure IoT Solution Accelerators?</a></p>
-                                <p><a href="../iot-accelerators/quickstart-remote-monitoring-deploy.md">Testen einer Lösung für die Remoteüberwachung</a></p>
+                                <p><a href="../iot-accelerators/quickstart-remote-monitoring-deploy.md">Testen einer Remoteüberwachungslösung</a></p>
                                 <p><a href="../iot-accelerators/quickstart-connected-factory-deploy.md">Testen einer Lösung für verbundene Factorys</a></p>
                                 <p><a href="../iot-accelerators/index.md"><i>Weitere Informationen &gt;</i></a></p>
                             </div>

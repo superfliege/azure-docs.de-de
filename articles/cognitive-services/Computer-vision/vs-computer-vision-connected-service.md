@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
 ms.custom: seodec18
-ms.openlocfilehash: 6a576f2817069d7095ea863198168be083d0c6b5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3e83c1629848083ae4d899ae01ae32c2c946b2b3
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450941"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995063"
 ---
 # <a name="use-connected-services-in-visual-studio-to-connect-to-the-computer-vision-api"></a>Verwenden von verbundenen Diensten in Visual Studio zum Herstellen einer Verbindung mit der Maschinelles Sehen-API
 
@@ -38,15 +38,15 @@ Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Featu
 1. Wählen Sie im **Projektmappen-Explorer** die Option **Hinzufügen** > **Verbundener Dienst** aus.
    Die Seite „Verbundener Dienst“ wird mit den Diensten angezeigt, die Sie dem Projekt hinzufügen können.
 
-   ![Screenshot eines Kontextmenüs in einem Visual Studio-Projekt: Hinzufügen > Verbundener Dienst](../media/vs-common/Connected-Service-Menu.PNG)
+   ![Kontextmenü in einem Visual Studio-Projekt: Hinzufügen > Verbundener Dienst](../media/vs-common/Connected-Service-Menu.PNG)
 
 1. Wählen Sie im Menü der verfügbaren Dienste die Option **Maschinelles Sehen-API von Cognitive Services** aus.
 
-   ![Menü „Verbundene Dienste“ mit Hervorhebung von „Analyze Images with Computer Vision“ (Analysieren von Bildern per maschinellem Sehen)](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
+   ![Menü „Verbundene Dienste“: Hervorhebung von „Analyze Images...“ (Analysieren von Bildern...)](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
 
    Wenn Sie sich bei Visual Studio angemeldet haben und Ihrem Konto ein Azure-Abonnement zugeordnet ist, wird eine Seite mit einer Dropdownliste mit Ihren Abonnements angezeigt.
 
-   ![Visual Studio-Fenster „Maschinelles Sehen-API“ mit Hervorhebung der Dropdownliste „Abonnement“](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
+   ![Fenster „Maschinelles Sehen-API“ mit Hervorhebung der Dropdownliste „Abonnement“](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
 
 1. Wählen Sie das zu verwendende Abonnement aus, und geben Sie einen Namen für die Maschinelles Sehen-API an, oder wählen Sie den Link „Bearbeiten“ aus, um den automatisch generierten Namen zu ändern. Wählen Sie dann die Ressourcengruppe und den Tarif aus.
 
@@ -98,7 +98,7 @@ Dieser Artikel und die Begleitartikel enthalten Details zur Verwendung des Featu
 
 1. Klicken Sie mit der rechten Maustaste auf die Bilddatei, und wählen Sie nacheinander „Eigenschaften“ und **Kopieren, wenn neuer** aus. 
 
-   ![Fenster mit Bildeigenschaften; „In Ausgabeverzeichnis kopieren“ ist auf „Kopieren, wenn neuer“ festgelegt](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
+   ![Fenster mit Bildeigenschaften; „In Ausgabeverzeichnis kopieren“ auf „Kopieren, wenn neuer“ festgelegt](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-5.PNG) 
  
 1. Ersetzen Sie die Configure-Methode durch den folgenden Code, um auf die Maschinelles Sehen-API zuzugreifen und ein Bild zu testen.
 

@@ -1,24 +1,24 @@
 ---
-title: 'Erstellen eines Anwendungsgateways als Host für mehrere Websites: Azure-Portal'
-description: Erfahren Sie, wie Sie über das Azure-Portal ein Anwendungsgateway erstellen, mit dem mehrere Websites gehostet werden.
+title: 'Tutorial: Erstellen eines Anwendungsgateways als Host für mehrere Websites mit dem Azure-Portal'
+description: In diesem Tutorial erfahren Sie, wie Sie über das Azure-Portal ein Anwendungsgateway erstellen, mit dem mehrere Websites gehostet werden.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 2/20/2019
+ms.topic: tutorial
+ms.date: 4/18/2019
 ms.author: victorh
-ms.openlocfilehash: 86be94404e7ab492beeebd6a467d23e68e7bce6b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3e27a79c7a6e3d39679118f532dd464a32463d69
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58080166"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999024"
 ---
-# <a name="create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Erstellen und Konfigurieren eines Anwendungsgateways als Host mehrerer Websites über das Azure-Portal
+# <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Tutorial: Erstellen und Konfigurieren eines Anwendungsgateways als Host mehrerer Websites über das Azure-Portal
 
-Sie können mit dem Azure-Portal das [Hosting mehrerer Websites](multiple-site-overview.md) konfigurieren, wenn Sie ein [Anwendungsgateway](overview.md) erstellen. In diesem Artikel definieren Sie Back-End-Adresspools mithilfe von virtuellen Computern. Anschließend konfigurieren Sie Listener und Regeln basierend auf Domänen in Ihrem Besitz, um sicherzustellen, dass Webdatenverkehr von geeigneten Servern in den Pools empfangen wird. In diesem Artikel wird vorausgesetzt, dass Sie mehrere Domänen besitzen und die Beispiele zu *www.contoso.com* und *www.fabrikam.com* verwenden.
+Sie können mit dem Azure-Portal das [Hosting mehrerer Websites](multiple-site-overview.md) konfigurieren, wenn Sie ein [Anwendungsgateway](overview.md) erstellen. In diesem Tutorial definieren Sie Back-End-Adresspools mithilfe von virtuellen Computern. Anschließend konfigurieren Sie Listener und Regeln basierend auf Domänen in Ihrem Besitz, um sicherzustellen, dass Webdatenverkehr von geeigneten Servern in den Pools empfangen wird. In diesem Tutorial wird vorausgesetzt, dass Sie mehrere Domänen besitzen und die Beispiele zu *www.contoso.com* und *www.fabrikam.com* verwenden.
 
-In diesem Artikel werden folgende Vorgehensweisen behandelt:
+In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen eines Anwendungsgateways
@@ -146,7 +146,7 @@ In diesem Beispiel erstellen Sie zwei virtuelle Computer, die als Back-End-Serve
 
 Regeln werden in der Reihenfolge verarbeitet, in der sie aufgeführt sind, wobei Datenverkehr gemäß der ersten erfüllten Regel unabhängig von der Genauigkeit weitergeleitet wird. Wenn Sie beispielsweise eine Regel mit einem einfachen Listener und eine Regel mit einem Listener für mehrere Standorte auf demselben Port aktiviert haben, muss die Regel mit dem Listener für mehrere Standorte vor der Regel mit dem einfachen Listener aufgeführt sein, damit die Regel für mehrere Standorte wie erwartet funktioniert. 
 
-In diesem Beispiel erstellen Sie zwei neue Regeln und löschen die Standardregel, die während der Erstellung des Anwendungsgateways erstellt wurde. 
+In diesem Beispiel erstellen Sie zwei neue Regeln und löschen die Standardregel, die während der Erstellung des Anwendungsgateways erstellt wurde.
 
 1. Klicken Sie auf **Regeln** und anschließend auf **Basis**.
 2. Geben Sie als Name *contosoRule* ein.
@@ -179,6 +179,18 @@ Nachdem das Anwendungsgateway mit der zugehörigen öffentlichen IP-Adresse erst
 
     ![Testen der Fabrikam-Website im Anwendungsgateway](./media/create-multiple-sites-portal/application-gateway-iistest2.png)
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie die mit dem Anwendungsgateway erstellten Ressourcen nicht mehr benötigen, entfernen Sie die Ressourcengruppe. Beim Entfernen der Ressourcengruppe werden auch das Anwendungsgateway und alle zugehörigen Ressourcen entfernt.
+
+So entfernen Sie die Ressourcengruppe:
+
+1. Wählen Sie im Azure-Portal im Menü auf der linken Seite die Option **Ressourcengruppen** aus.
+2. Suchen Sie auf der Seite **Ressourcengruppen** in der Liste nach **myResourceGroupAG**, und wählen Sie den Eintrag aus.
+3. Wählen Sie auf der Seite für die **Ressourcengruppe** die Option **Ressourcengruppe löschen** aus.
+4. Geben Sie *myResourceGroupAG* für **RESSOURCENGRUPPENNAMEN EINGEBEN** ein, und wählen Sie **Löschen** aus.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Konfigurieren von App Service mit Application Gateway](create-web-app.md)
+> [!div class="nextstepaction"]
+> [Erfahren Sie mehr darüber, welche Möglichkeiten Azure Application Gateway bietet.](application-gateway-introduction.md)

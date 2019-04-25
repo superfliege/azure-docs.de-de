@@ -1,20 +1,14 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 6acffc5056f916f2e05c7a0fd3eb325fd89a9e4b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117050"
 documentType: LandingData
 title: Dokumentation für dediziertes HSM von Azure
 metadata:
   title: 'Dokumentation für dediziertes HSM von Azure: Tutorials, API-Referenz | Microsoft-Dokumentation'
-  meta.description: Learn how to use Azure Dedicated HSM to create and maintain keys that access and encrypt your cloud resources, apps, and solutions. Tutorials, API references, and more.
+  meta.description: 'Learn how to use Azure Dedicated HSM to create and maintain keys that access and encrypt your cloud resources, apps, and solutions. Tutorials, API references, and more.'
   services: dedicated-hsm
   author: barclayn
   manager: barbkess
   layout: LandingPage
-  ms.assetid: 
+  ms.assetid: null
   ms.service: dedicated-hsm
   ms.tgt_pltfrm: na
   ms.devlang: na
@@ -24,42 +18,42 @@ metadata:
 abstract:
   description: Informieren Sie sich über dediziertes HSM und ob es für Ihre Umgebung relevant ist.
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/dedicated-hsm/overview
+            html: '<p>Erfahren Sie, worum es sich beim Azure-Dienst für dediziertes HSM handelt.</p>'
+            image:
+              src: media/index/hsm.svg
+            title: Übersicht über dediziertes HSM von Azure
+          - href: /azure/dedicated-hsm/faq
+            html: <p>Überlegungen zum Entwurf bei der Verwendung von dediziertem HSM</p>
+            image:
+              src: media/index/guide.svg
+            title: Wählen der Bereitstellungsarchitektur
+  - title: Schritt-für-Schritt-Tutorials
     items:
-    - href: /azure/dedicated-hsm/overview
-      html: <p>Erfahren Sie, worum es sich beim Azure-Dienst für dediziertes HSM handelt.</p>
-      image:
-        src: media/index/hsm.svg
-      title: Übersicht über dediziertes HSM von Azure
-    - href: /azure/dedicated-hsm/faq
-      html: <p>Überlegungen zum Entwurf bei der Verwendung von dediziertem HSM</p>
-      image:
-        src: media/index/guide.svg
-      title: Wählen der Bereitstellungsarchitektur
-- title: Schritt-für-Schritt-Tutorials
-  items:
-  - type: paragraph
-    text: ''
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: ''
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/cli.svg
+            text: Azure-Befehlszeilenschnittstelle
+            href: /azure/dedicated-hsm/tutorial-deploy-hsm-cli
+          - image:
+              src: media/index/logo_powershell.svg
+            text: PowerShell
+            href: /azure/dedicated-hsm/tutorial-deploy-hsm-powershell
+  - title: Verweis
     items:
-    - image:
-        src: media/index/cli.svg
-      text: Azure-Befehlszeilenschnittstelle
-      href: /azure/dedicated-hsm/tutorial-deploy-hsm-cli
-    - image:
-        src: media/index/logo_powershell.svg
-      text: PowerShell
-      href: /azure/dedicated-hsm/tutorial-deploy-hsm-powershell
-- title: Verweis
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: Häufig gestellte Fragen
-      html: <p><a href="/azure/dedicated-hsm/faq/">Häufig gestellte Fragen</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Häufig gestellte Fragen
+            html: <p><a href="/azure/dedicated-hsm/faq/">Häufig gestellte Fragen</a></p>

@@ -1,27 +1,27 @@
 ---
 title: Implementieren der benutzerdefinierten Synchronisierung zur Optimierung der Verfügbarkeit und Leistung in Azure Cosmos DB
 description: Hier erfahren Sie, wie Sie zur Optimierung der Verfügbarkeit und Leistung in Azure Cosmos DB die benutzerdefinierte Synchronisierung implementieren.
-author: markjbrown
+author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 2/12/2019
-ms.author: mjbrown
-ms.openlocfilehash: 43cb73784806358bccb9758be2923d3df5e9badd
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.date: 04/15/2019
+ms.author: rimman
+ms.openlocfilehash: d948798f161eb36578cb679b6d96409917424fd4
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414880"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678461"
 ---
 # <a name="how-to-implement-custom-synchronization-to-optimize-for-higher-availability-and-performance"></a>Implementieren der benutzerdefinierten Synchronisierung zur Optimierung der Verfügbarkeit und Leistung
 
-In Azure Cosmos DB stehen fünf klar definierte Konsistenzebenen zur Auswahl, mit denen Sie Konsistenz, Leistung und Verfügbarkeit optimal aufeinander abstimmen können. Eine hohe Konsistenz gewährleistet, dass Daten synchron repliziert und dauerhaft in jeder Region gespeichert werden, in der das Azure Cosmos-Konto verfügbar ist. Diese Konfiguration bietet zwar ein Höchstmaß an Dauerhaftigkeit, dies geht allerdings zulasten der Leistung und der Verfügbarkeit. Wenn die Dauerhaftigkeit von Daten im Einklang mit den Anforderungen der Anwendung gesteuert/gelockert werden soll, ohne die Verfügbarkeit zu beeinträchtigen, kann eine benutzerdefinierte Synchronisierung auf der Anwendungsebene verwendet werden, um das gewünschte Maß an Dauerhaftigkeit zu erreichen.
+In Azure Cosmos DB stehen [fünf klar definierte Konsistenzebenen](consistency-levels.md) zur Auswahl, mit denen Sie Konsistenz, Leistung und Verfügbarkeit optimal aufeinander abstimmen können. Eine hohe Konsistenz gewährleistet, dass Daten synchron repliziert und dauerhaft in jeder Region gespeichert werden, in der das Azure Cosmos-Konto verfügbar ist. Diese Konfiguration bietet zwar ein Höchstmaß an Dauerhaftigkeit, dies geht allerdings zulasten der Leistung und der Verfügbarkeit. Wenn die Dauerhaftigkeit von Daten im Einklang mit den Anforderungen der Anwendung gesteuert/gelockert werden soll, ohne die Verfügbarkeit zu beeinträchtigen, kann eine *benutzerdefinierte Synchronisierung* auf der Anwendungsebene verwendet werden, um das gewünschte Maß an Dauerhaftigkeit zu erreichen.
 
 Das folgende Diagramm veranschaulicht das Modell der benutzerdefinierten Synchronisierung:
 
 ![Benutzerdefinierte Synchronisierung](./media/how-to-custom-synchronization/custom-synchronization.png)
 
-In diesem Szenario wird ein Azure Cosmos-Container global über mehrere Regionen und Kontinente hinweg repliziert. In diesem Fall hat die Verwendung einer hohen Konsistenz für alle Regionen keine negativen Auswirkungen auf die Leistung. Um für die Daten ein höheres Maß an Dauerhaftigkeit zu gewährleisten, ohne die Wartezeit bei Schreibvorgängen zu erhöhen, kann die Anwendung zwei Clients mit dem gleichen Sitzungstoken verwenden.
+In diesem Szenario wird ein Azure Cosmos-Container global über mehrere Regionen und Kontinente hinweg repliziert. In diesem Fall hat die Verwendung einer hohen Konsistenz für alle Regionen keine negativen Auswirkungen auf die Leistung. Um für die Daten ein höheres Maß an Dauerhaftigkeit zu gewährleisten, ohne die Wartezeit bei Schreibvorgängen zu erhöhen, kann die Anwendung zwei Clients mit dem gleichen [Sitzungstoken](how-to-manage-consistency.md#utilize-session-tokens) verwenden.
 
 Der erste Client kann Daten in der lokalen Region (beispielsweise „USA, Westen“) schreiben. Der zweite Client (beispielsweise in der Region „USA, Osten“) ist ein Leseclient und dient zur Gewährleistung der Synchronisierung. Durch die Weitergabe des Sitzungstokens von der Schreibantwort an den nachfolgenden Lesevorgang stellt der Lesevorgang die Synchronisierung von Schreibvorgängen in der Region „USA, Osten“ sicher. Azure Cosmos DB sorgt dafür, dass Schreibvorgänge von mindestens einer Region erkannt werden und im Falle eines regionalen Ausfalls erhalten bleiben, sollte die ursprüngliche Schreibregion nicht mehr verfügbar sein. In diesem Szenario wird jeder Schreibvorgang mit „USA, Osten“ synchronisiert, was die Wartezeit bei der Nutzung von hoher Konsistenz in allen Regionen verringert. In einem Multimasterszenario mit Schreibvorgängen in jeder Region kann dieses Modell durch eine parallele Synchronisierung mit mehreren Regionen erweitert werden.
 
@@ -89,9 +89,6 @@ Dieses Modell kann durch eine parallele Synchronisierung mit mehreren Regionen e
 Lesen Sie die folgenden Artikel, um mehr über die globale Verteilung und Konsistenz in Azure Cosmos DB zu erfahren:
 
 * [Auswählen der richtigen Konsistenzebene](consistency-levels-choosing.md)
-
 * [Kompromisse in Bezug auf Konsistenz, Verfügbarkeit und Leistung](consistency-levels-tradeoffs.md)
-
 * [Verwalten von Konsistenzebenen in Azure Cosmos DB](how-to-manage-consistency.md)
-
 * [Partitionierung und horizontale Skalierung in Azure Cosmos DB](partition-data.md)

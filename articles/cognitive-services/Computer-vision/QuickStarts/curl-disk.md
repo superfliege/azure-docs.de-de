@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: d2591bf4aeb3ec0accf322e5fb77841fb68df3dc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f76b61d3cc39f8ae35e1bf03316e7618b7136380
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57889317"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003784"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-curl-in-computer-vision"></a>Schnellstart: Analysieren eines lokalen Bilds mit der REST-API und cURL in der Maschinelles Sehen-API
 
@@ -27,7 +27,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Sie benötigen [cURL](https://curl.haxx.se/windows).
-- Sie benötigen einen Abonnementschlüssel für Maschinelles Sehen. Informationen zum Beziehen eines Abonnementschlüssels finden Sie unter [Gewusst wie: Beziehen von Abonnementschlüsseln](../Vision-API-How-to-Topics/HowToSubscribe.md).
+- Sie benötigen einen Abonnementschlüssel für maschinelles Sehen. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) können Sie einen Schlüssel für eine kostenlose Testversion abrufen. Oder gehen Sie wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um „Maschinelles Sehen“ zu abonnieren und Ihren Schlüssel zu erhalten.
 
 ## <a name="create-and-run-the-sample-command"></a>Erstellen und Ausführen des Beispielbefehls
 

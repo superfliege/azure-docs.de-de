@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Streamen von Azure Active Directory-Protokollen an einen Azure Event Hub (Vorschauversion) | Microsoft-Dokumentation'
-description: Es wird beschrieben, wie Sie die Azure-Diagnose einrichten, um Azure Active Directory-Protokolle per Pushvorgang in einen Event Hub zu übertragen (Vorschauversion).
+title: 'Tutorial: Streamen von Azure Active Directory-Protokollen an einen Azure Event Hub | Microsoft-Dokumentation'
+description: Hier wird beschrieben, wie Sie die Azure-Diagnose einrichten, um Azure Active Directory-Protokolle per Pushvorgang an einen Event Hub zu übertragen.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,18 +13,18 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e85a3c43054aeb758eb1e0da9ce1086bfa653180
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 906da7ac6b0086e4efca7c38171668a08f687d19
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436930"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995596"
 ---
-# <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub-preview"></a>Tutorial: Streamen von Azure Active Directory-Protokollen an einen Azure Event Hub (Vorschauversion)
+# <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Tutorial: Streamen von Azure Active Directory-Protokollen an einen Azure Event Hub
 
 In diesem Tutorial erfahren Sie, wie Sie Azure Monitor-Diagnoseeinstellungen einrichten, um Azure Active Directory-Protokolle (Azure AD) an einen Azure Event Hub zu streamen. Verwenden Sie diesen Mechanismus, um Ihre Protokolle in Security Information & Event Management-Tools (SIEM) von Drittanbietern zu integrieren, beispielsweise Splunk und QRadar.
 
@@ -89,5 +89,5 @@ Nachdem die Daten im Event Hub angezeigt werden, stehen Ihnen zwei Möglichkeite
 
 * [Integrate Azure AD logs with Splunk by using Azure Monitor](tutorial-integrate-activity-logs-with-splunk.md) (Integrieren von Azure AD-Protokollen in Splunk mithilfe von Azure Monitor)
 * [Integrieren von Azure AD-Protokollen in SumoLogic mit Azure Monitor](howto-integrate-activity-logs-with-sumologic.md)
-* [Interpretieren des Überwachungsprotokollschemas in Azure Monitor](reference-azure-monitor-audit-log-schema.md)
+* [Interpret audit logs schema in Azure Monitor](reference-azure-monitor-audit-log-schema.md) (Interpretieren des Überwachungsprotokollschemas in Azure Monitor)
 * [Interpret sign-in logs schema in Azure Monitor](reference-azure-monitor-sign-ins-log-schema.md) (Interpretieren des Anmeldeprotokollschemas in Azure Monitor)

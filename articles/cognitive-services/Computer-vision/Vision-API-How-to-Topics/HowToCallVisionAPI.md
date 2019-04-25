@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/21/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: e6ebd4ff465565be49d98162cd9ca67c194593a4
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 0e2767660edf2a9dbcb8617b07a6b9f71fedb743
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563369"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011242"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>Beispiel: Aufrufen der Maschinelles Sehen-API
 
@@ -47,8 +47,7 @@ Funktionen werden in folgende Bereiche unterteilt:
 
 Für jeden Aufruf der Maschinelles Sehen-API ist ein Abonnementschlüssel erforderlich. Dieser Schlüssel muss entweder über einen Abfragezeichenfolgen-Parameter übergeben oder im Anforderungsheader angegeben werden.
 
-Wie Sie einen Abonnementschlüssel erhalten, erfahren Sie unter [Abrufen von Abonnementschlüsseln](../Vision-API-How-to-Topics/HowToSubscribe.md
-).
+Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) erhalten Sie einen Schlüssel für eine kostenlose Testversion. Oder gehen Sie wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um „Maschinelles Sehen“ zu abonnieren und Ihren Schlüssel zu erhalten.
 
 1. Informationen zur Übergabe des Abonnementschlüssels über eine Abfragezeichenfolge finden Sie weiter unten als Beispiel für die Maschinelles Sehen-API:
 

@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 6a4e9a0c33b227716227213e94948df430566065
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: c3148adc42cb4f899a87d894909eedff4c798575
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622194"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680237"
 ---
 # <a name="monitor-published-apis"></a>Überwachen von veröffentlichten APIs
 
@@ -213,13 +213,13 @@ API Management bietet derzeit Diagnoseprotokolle (stündlich erfasst) zu einzeln
 | userId | Zeichenfolge | Benutzerentitätsbezeichner für die aktuelle Anforderung | 
 | apimSubscriptionId | Zeichenfolge | Abonnemententitätsbezeichner für die aktuelle Anforderung | 
 | backendId | Zeichenfolge | Back-End-Entitätsbezeichner für die aktuelle Anforderung | 
-| lastError | object | Letzter Anforderungsverarbeitungsfehler | 
+| LastError | object | Letzter Anforderungsverarbeitungsfehler | 
 | elapsed | integer | Anzahl der Millisekunden, die zwischen dem Eingehen der Anforderung beim Gateway und dem Auftreten des Fehlers vergangen sind | 
-| source | Zeichenfolge | Der Fehler wurde durch den Namen der Richtlinie oder die Verarbeitung des internen Handlers verursacht. | 
+| Quelle | Zeichenfolge | Der Fehler wurde durch den Namen der Richtlinie oder die Verarbeitung des internen Handlers verursacht. | 
 | scope | Zeichenfolge | Der Fehler wurde durch den Bereich des Richtliniendokuments verursacht, das die Richtlinie enthält. | 
 | section | Zeichenfolge | Der Fehler wurde durch den Abschnitt des Richtliniendokuments verursacht, der die Richtlinie enthält. | 
 | reason | Zeichenfolge | Fehlerursache | 
-| message | Zeichenfolge | Fehlermeldung | 
+| Message: | Zeichenfolge | Fehlermeldung | 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

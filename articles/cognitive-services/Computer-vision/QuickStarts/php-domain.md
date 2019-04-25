@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Domänenspezifischer Bildinhalt – REST, PHP'
+title: 'Schnellstart: Domänenspezifischer Inhalt – REST, PHP'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung verwenden Sie ein Domänenmodell, um in einem Bild Sehenswürdigkeiten zu identifizieren, indem Sie die Maschinelles Sehen-API und PHP verwenden.
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 2c1801296247ace081a34a137fe3f3bea7a55974
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 902894ccce28ee1ba05430c7e697c3ca47887795
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877019"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011111"
 ---
 # <a name="quickstart-recognize-domain-specific-content-using-the-rest-api-and-php-with-computer-vision"></a>Schnellstart: Erkennen von domänenspezifischen Inhalten unter Verwendung von REST-API und PHP mit der Maschinelles Sehen-API
 
@@ -28,7 +28,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 - [PHP](https://secure.php.net/downloads.php) muss installiert sein.
 - [PEAR](https://pear.php.net) muss installiert sein.
-- Sie benötigen einen Abonnementschlüssel für Maschinelles Sehen. Informationen zum Beziehen eines Abonnementschlüssels finden Sie unter [Gewusst wie: Beziehen von Abonnementschlüsseln](../Vision-API-How-to-Topics/HowToSubscribe.md).
+- Sie benötigen einen Abonnementschlüssel für maschinelles Sehen. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) können Sie einen Schlüssel für eine kostenlose Testversion abrufen. Oder gehen Sie wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um „Maschinelles Sehen“ zu abonnieren und Ihren Schlüssel zu erhalten.
 
 ## <a name="create-and-run-the-sample"></a>Erstellen und Ausführen des Beispiels
 

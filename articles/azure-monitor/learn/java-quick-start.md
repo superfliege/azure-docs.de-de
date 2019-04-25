@@ -6,17 +6,17 @@ keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.reviewer: lagayhar
-ms.date: 07/11/2018
+ms.date: 04/18/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 25335081e594c64b8d8cee02eebec6119e609618
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: e1574b55f9f14daba1831ba7f73b7f9ebde4c7f6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891497"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006895"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Starten der Überwachung Ihrer Java-Webanwendung
 
@@ -38,17 +38,19 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Wenn Sie das Spring-Framework bevorzugen, lesen Sie den Leitfaden zum [Konfigurieren einer Spring Boot Initializer-App für die Verwendung von Application Insights](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights).
 
-## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
+## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="enable-application-insights"></a>Aktivieren von Application Insights
 
 Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen Anwendung erfassen, unabhängig davon, ob die Anwendung lokal oder in der Cloud ausgeführt wird. Geben Sie folgendermaßen vor, um diese Daten anzuzeigen.
 
-1. Klicken Sie auf **Ressource erstellen** > **Überwachung + Verwaltung** > **Application Insights**.
+1. Klicken Sie auf **Ressource erstellen** > **Entwicklertools** > **Application Insights**.
 
-   ![Hinzufügen einer Application Insights-Ressource](./media/java-quick-start/001-j.png)
+   ![Hinzufügen einer Application Insights-Ressource](./media/java-quick-start/1createresourseappinsights.png)
+
+   ![Hinzufügen einer Application Insights-Ressource](./media/java-quick-start/2createjavaapp.png)
 
    Ein Dialogfeld für die Konfiguration wird geöffnet. Füllen Sie die Eingabefelder anhand der Informationen in der folgenden Tabelle aus:
 
@@ -90,21 +92,21 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>Starten der Überwachung im Azure-Portal
 
-1. Sie können jetzt im Azure-Portal erneut die Seite **Übersicht** für Application Insights öffnen, von der Sie den Instrumentierungsschlüssel abgerufen haben, um Details zu Ihrer aktuell ausgeführten Anwendung anzuzeigen.
+1. Sie können jetzt im Azure-Portal erneut die Seite **Übersicht** für Application Insights öffnen, um Details zu Ihrer aktuell ausgeführten Anwendung anzuzeigen.
 
-   ![Application Insights – Menü „Übersicht“](./media/java-quick-start/overview-001.png)
+   ![Application Insights – Menü „Übersicht“](./media/java-quick-start/3overview.png)
 
 2. Klicken Sie auf **Anwendungsübersicht**, um ein visuelles Layout der Abhängigkeitsbeziehungen zwischen den Komponenten Ihrer Anwendung zu erhalten. Jede Komponente zeigt KPIs wie z.B. Last, Leistung, Fehler und Warnungen an.
 
-   ![Anwendungszuordnung](./media/java-quick-start/application-map-001.png)
+   ![Anwendungszuordnung](./media/java-quick-start/4appmap.png)
 
-3. Klicken Sie auf die Schaltfläche für die **App-Analyse** ![Schaltfläche „Anwendungszuordnung“](./media/java-quick-start/006.png). Dadurch wird die **Application Insights-Analyse** geöffnet, die eine erweiterte Abfragesprache zum Analysieren aller Daten bereitstellt, die von Application Insights gesammelt werden. In diesem Fall wird eine Abfrage für Sie generiert, die die Anzahl von Anforderungen als Diagramm darstellt. Sie können selbst Abfragen zum Analysieren anderer Daten schreiben.
+3.  Klicken Sie auf das Symbol für die **App-Analyse**: ![Symbol „Anwendungszuordnung“](./media/java-quick-start/006.png) **In Analytics anzeigen**.  Dadurch wird die **Application Insights-Analyse** geöffnet, die eine erweiterte Abfragesprache zum Analysieren aller Daten bereitstellt, die von Application Insights gesammelt werden. In diesem Fall wird eine Abfrage für Sie generiert, die die Anzahl von Anforderungen als Diagramm darstellt. Sie können selbst Abfragen zum Analysieren anderer Daten schreiben.
 
-   ![Analysediagramm der Benutzeranforderungen in einem bestimmten Zeitraum](./media/java-quick-start/0010-j.png)
+   ![Analysediagramm der Benutzeranforderungen in einem bestimmten Zeitraum](./media/java-quick-start/5analytics.png)
 
-4. Kehren Sie zur Seite **Übersicht** zurück, und untersuchen Sie die KPI-Graphen.  Dieses Dashboard zeigt Statistiken zur Integrität Ihrer Anwendung, einschließlich der Anzahl von eingehenden Anforderungen, der Dauer dieser Anforderungen und aller auftretenden Fehler.
+4. Kehren Sie zur Seite **Übersicht** zurück, und untersuchen Sie die KPI-Graphen. Dieses Dashboard zeigt Statistiken zur Integrität Ihrer Anwendung, einschließlich der Anzahl von eingehenden Anforderungen, der Dauer dieser Anforderungen und aller auftretenden Fehler.
 
-   ![Diagramm der Übersichtszeitachse für die Integrität](./media/java-quick-start/overview-perf.png)
+   ![Diagramm der Übersichtszeitachse für die Integrität](./media/java-quick-start/6kpidashboards.png)
 
    Damit das Diagramm **Ladezeit der Seitenansicht** mit **clientseitigen Telemetriedaten** aufgefüllt werden kann, fügen Sie dieses Skript zu jeder Seite hinzu, die Sie nachverfolgen möchten:
 
@@ -130,13 +132,13 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
 
 5. Klicken Sie auf **Live Stream**. Hier finden Sie Livemetriken in Zusammenhang mit der Leistung Ihrer Java-Web-App. Der **Live Metrics Stream** enthält Daten wie die Anzahl von eingehenden Anforderungen, die Dauer dieser Anforderungen sowie jegliche auftretenden Fehler. Sie können auch kritische Leistungsmetriken wie Prozessor und Arbeitsspeicher in Echtzeit überwachen.
 
-   ![Servermetriken – Diagramm](./media/java-quick-start/livemetricsjava.png)
+   ![Servermetriken – Diagramm](./media/java-quick-start/7livemetrics.png)
 
 Weitere Informationen zum Überwachen von Java finden Sie in der [weiteren Dokumentation zu Application Insights und Java](./../../azure-monitor/app/java-get-started.md).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie planen, die nachfolgenden Schnellstartanleitungen oder Tutorials durchzuarbeiten, sollten Sie die in dieser Schnellstartanleitung erstellten Ressourcen nicht bereinigen. Falls Sie nicht fortfahren möchten, können Sie die folgenden Schritte ausführen, um alle erstellten Ressourcen dieses Schnellstarts im Azure-Portal zu löschen.
+Wenn Sie die Tests abgeschlossen haben, können Sie die Ressourcengruppe und alle dazugehörigen Ressourcen löschen. Gehen Sie dazu wie folgt vor:
 
 1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressourcengruppen** und dann auf **myResourceGroup**.
 2. Klicken Sie auf der Seite mit Ihrer Ressourcengruppe auf **Löschen**, geben Sie im Textfeld **myResourceGroup** ein, und klicken Sie dann auf **Löschen**.
