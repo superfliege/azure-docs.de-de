@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2f0465b954e48822470374abeadb13e90a03fa3a
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408730"
 documentType: LandingData
 title: Dokumentation zur RBAC für Azure-Ressourcen
 metadata:
-  document_id: 
-  title: Dokumentation zur rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen | Microsoft-Dokumentation
-  description: Hier erfahren Sie, wie Sie mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) verwalten, welche Benutzer Zugriff auf Azure-Ressourcen besitzen, welche Aktionen für diese Ressourcen ausgeführt werden können und auf welche Bereiche die Benutzer zugreifen können.
+  document_id: null
+  title: 'Dokumentation zur rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen | Microsoft-Dokumentation'
+  description: 'Hier erfahren Sie, wie Sie mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) verwalten, welche Benutzer Zugriff auf Azure-Ressourcen besitzen, welche Aktionen für diese Ressourcen ausgeführt werden können und auf welche Bereiche die Benutzer zugreifen können.'
   services: active-directory
   author: rolyon
   manager: mtillman
@@ -21,42 +15,42 @@ metadata:
   ms.date: 02/16/2019
   ms.author: rolyon
 abstract:
-  description: Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) ist ein System, das eine präzise Zugriffsverwaltung für Azure-Ressourcen ermöglicht. Mithilfe von RBAC können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen.
+  description: 'Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) ist ein System, das eine präzise Zugriffsverwaltung für Azure-Ressourcen ermöglicht. Mithilfe von RBAC können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen.'
   aside:
     image:
-      alt: 
+      alt: null
       height: 112
       src: media/index/video-thumb-get-started.png
       width: 200
-    title: Sperren des Zugriffs auf Azure (1:16)
-    href: https://www.youtube.com/embed/FKBoWWKRnvI
+    title: 'Sperren des Zugriffs auf Azure (1:16)'
+    href: 'https://www.youtube.com/embed/FKBoWWKRnvI'
     width: 200
 sections:
-- title: Fünfminütige Schnellstarts
-  items:
-  - type: list
-    style: unordered
+  - title: Fünfminütige Schnellstarts
     items:
-    - html: <a href="/azure/role-based-access-control/check-access">Anzeigen des Zugriffs für einen Benutzer</a>
-- title: Schritt-für-Schritt-Tutorials
-  items:
-  - type: list
-    style: unordered
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/role-based-access-control/check-access">Anzeigen des Zugriffs für einen Benutzer</a>
+  - title: Schritt-für-Schritt-Tutorials
     items:
-    - html: '<a href="/azure/role-based-access-control/quickstart-assign-role-user-portal">Gewähren des Zugriffs für einen Benutzer: Portal</a>'
-    - html: '<a href="/azure/role-based-access-control/tutorial-role-assignments-group-powershell">Gewähren des Zugriffs für eine Gruppe: PowerShell</a>'
-    - html: '<a href="/azure/role-based-access-control/tutorial-custom-role-powershell">Erstellen einer benutzerdefinierten Rolle: PowerShell</a>'
-    - html: '<a href="/azure/role-based-access-control/tutorial-custom-role-cli">Erstellen einer benutzerdefinierten Rolle: CLI</a>'
-- title: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="/azure/role-based-access-control/quickstart-assign-role-user-portal">Gewähren des Zugriffs für einen Benutzer: Portal</a>'
+          - html: '<a href="/azure/role-based-access-control/tutorial-role-assignments-group-powershell">Gewähren des Zugriffs für eine Gruppe: PowerShell</a>'
+          - html: '<a href="/azure/role-based-access-control/tutorial-custom-role-powershell">Erstellen einer benutzerdefinierten Rolle: PowerShell</a>'
+          - html: '<a href="/azure/role-based-access-control/tutorial-custom-role-cli">Erstellen einer benutzerdefinierten Rolle: CLI</a>'
+  - title: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
     items:
-    - title: Schützen Ihrer Azure-Ressourcen mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)
-      href: /learn/modules/secure-azure-resources-with-rbac/
-      image:
-        src: /learn/achievements/secure-azure-resources-with-rbac.svg
-        href: /learn/modules/secure-azure-resources-with-rbac/
-  - type: paragraph
-    text: <a href="/learn/browse/?products=azure-active-directory">Mehr interaktives Lernen...</a>
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: 'Schützen Ihrer Azure-Ressourcen mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)'
+            href: /learn/modules/secure-azure-resources-with-rbac/
+            image:
+              src: /learn/achievements/secure-azure-resources-with-rbac.svg
+              href: /learn/modules/secure-azure-resources-with-rbac/
+      - type: paragraph
+        text: <a href="/learn/browse/?products=azure-active-directory">Mehr interaktives Lernen...</a>

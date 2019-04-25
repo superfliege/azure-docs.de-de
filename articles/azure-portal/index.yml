@@ -1,14 +1,8 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 1ed169d248fce28a668c1c93fe2d9796b59547bd
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619219"
 documentType: LandingData
 title: Dokumentation zum Azure-Portal
 metadata:
-  description: Hier erfahren Sie, wie Sie das Azure-Portal verwenden und benutzerdefinierte Dashboards erstellen.
+  description: 'Hier erfahren Sie, wie Sie das Azure-Portal verwenden und benutzerdefinierte Dashboards erstellen.'
   services: azure portal
   documentationcenter: ''
   author: kfollis
@@ -23,29 +17,29 @@ metadata:
   ms.date: 10/08/2018
   ms.author: kfollis
 abstract:
-  description: Das Azure-Portal ist eine webbasierte einheitliche Konsole zum Erstellen, Verwalten und Überwachen aller Komponenten – von einfachen Web-Apps bis hin zu komplexen Cloudanwendungen. Es enthält ein anpassbares Dashboard und Optionen für Barrierefreiheit.
+  description: 'Das Azure-Portal ist eine webbasierte einheitliche Konsole zum Erstellen, Verwalten und Überwachen aller Komponenten – von einfachen Web-Apps bis hin zu komplexen Cloudanwendungen. Es enthält ein anpassbares Dashboard und Optionen für Barrierefreiheit.'
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
-    items:
-    - href: /azure/azure-preview-portal-supported-browsers-devices
-      html: <p>Das Azure-Portal kann auf allen modernen Desktop- und Tabletgeräten und in allen Browsern ausgeführt werden.</p>
-      title: Unterstützte Browser und Geräte
-    - href: /azure/azure-portal/azure-portal-change-theme-high-contrast
-      html: <p>Ändern Sie den Kontrast oder das Farbschema im Azure-Portal.</p>
-      title: Aktivieren von hohem Kontrast
-    - href: /azure/azure-portal/azure-portal-keyboard-shortcuts
-      html: <p>Erfahren Sie mehr über die Tastenkombinationen, die im gesamten Azure-Portal unterstützt werden.</p>
-      title: Tastenkombinationen
-    - href: /azure/azure-portal/azure-portal-dashboards
-      html: <p>Erstellen Sie mehrere Dashboards, und geben Sie sie für andere Benutzer frei, die Zugriff auf Ihre Azure-Abonnements haben.</p>
-      title: Erstellen und Freigeben von Azure-Dashboards
-    - href: /azure/azure-portal/azure-portal-dashboard-share-access
-      html: <p>Veröffentlichen Sie ein Dashboard, und geben Sie es für andere Benutzer in Ihrer Organisation frei.</p>
-      title: Freigeben von Dashboards mithilfe der RBAC
-    - href: /azure/azure-portal/azure-portal-dashboards-create-programmatically
-      html: <p>Programmgesteuertes Erstellen und Veröffentlichen von Dashboards für Ihre Organisation</p>
-      title: Programmgesteuertes Erstellen von Azure-Dashboards
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/azure-preview-portal-supported-browsers-devices
+            html: <p>Das Azure-Portal kann auf allen modernen Desktop- und Tabletgeräten und in allen Browsern ausgeführt werden.</p>
+            title: Unterstützte Browser und Geräte
+          - href: /azure/azure-portal/azure-portal-change-theme-high-contrast
+            html: <p>Ändern Sie den Kontrast oder das Farbschema im Azure-Portal.</p>
+            title: Aktivieren von hohem Kontrast
+          - href: /azure/azure-portal/azure-portal-keyboard-shortcuts
+            html: '<p>Erfahren Sie mehr über die Tastenkombinationen, die im gesamten Azure-Portal unterstützt werden.</p>'
+            title: Tastenkombinationen
+          - href: /azure/azure-portal/azure-portal-dashboards
+            html: '<p>Erstellen Sie mehrere Dashboards, und geben Sie sie für andere Benutzer frei, die Zugriff auf Ihre Azure-Abonnements haben.</p>'
+            title: Erstellen und Freigeben von Azure-Dashboards
+          - href: /azure/azure-portal/azure-portal-dashboard-share-access
+            html: '<p>Veröffentlichen Sie ein Dashboard, und geben Sie es für andere Benutzer in Ihrer Organisation frei.</p>'
+            title: Freigeben von Dashboards mithilfe der RBAC
+          - href: /azure/azure-portal/azure-portal-dashboards-create-programmatically
+            html: <p>Programmgesteuertes Erstellen und Veröffentlichen von Dashboards für Ihre Organisation</p>
+            title: Programmgesteuertes Erstellen von Azure-Dashboards

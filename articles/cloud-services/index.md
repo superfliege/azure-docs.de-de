@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 300762cd98f66af80dd6fd7079005ef17ece2ade
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 80f28d5f42dfacd2fa5d553b545bff5708eb09ca
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "24101881"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60629100"
 ---
 # <a name="cloud-services-documentation"></a>Dokumentation zu Cloud Services
 
@@ -100,22 +100,22 @@ Hier erfahren Sie, wie Sie mithilfe von Cloud Services hochverfügbare und skali
 
 ---
 
-<h2>Referenz</h2>
+<h2>Verweis</h2>
 <ul class="panelContent cardsW">
     <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Sprachen</h3>
+                        <h3>Languages</h3>
                         <p><a href="/azure/cloud-services/schema-csdef-file">CSDEF (XML-Schema)</a></p>
-                        <p><a href="/azure/cloud-services/schema-csdef-loadbalancerprobe">LoadBalancerProbe Schema</a> (LoadBalancerProbe-Schema)</p>
-                        <p><a href="/azure/cloud-services/schema-csdef-webrole">WebRole Schema</a> (WebRole-Schema)</p>
-                        <p><a href="/azure/cloud-services/schema-csdef-workerrole">WorkerRole Schema</a> (WorkerRole-Schema)</p>
-                        <p><a href="/azure/cloud-services/schema-csdef-networktrafficrules">NetworkTrafficRules Schema</a> (NetworkTrafficRules-Schema)</p>
-                        <p><a href="/azure/cloud-services/schema-cscfg-file">.cscfg XML Schema</a> (.cscfg-XML-Schema)</p>
-                        <p><a href="/azure/cloud-services/schema-cscfg-role">Role Schema</a> (Rollenschema)</p>
-                        <p><a href="/azure/cloud-services/schema-cscfg-networkconfiguration">NetworkConfiguration Schema</a> (NetworkConfiguration-Schema)</p>
+                        <p><a href="/azure/cloud-services/schema-csdef-loadbalancerprobe">LoadBalancerProbe-Schema</a></p>
+                        <p><a href="/azure/cloud-services/schema-csdef-webrole">WebRole-Schema</a></p>
+                        <p><a href="/azure/cloud-services/schema-csdef-workerrole">WorkerRole-Schema</a></p>
+                        <p><a href="/azure/cloud-services/schema-csdef-networktrafficrules">NetworkTrafficRules-Schema</a></p>
+                        <p><a href="/azure/cloud-services/schema-cscfg-file">.cscfg-XML-Schema</a></p>
+                        <p><a href="/azure/cloud-services/schema-cscfg-role">Rollenschema</a></p>
+                        <p><a href="/azure/cloud-services/schema-cscfg-networkconfiguration">NetworkConfiguration-Schema</a></p>
                     </div>
                 </div>
             </div>
