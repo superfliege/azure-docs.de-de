@@ -128,7 +128,7 @@ Die Diagnose von Azure Automation erstellt zwei Kategorien von Datensätzen in A
 | Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | TimeGenerated |Datum und Uhrzeit der Durchführung der Konformitätsprüfung. |
-| NameVorgang |DscNodeStatusData |
+| OperationName |DscNodeStatusData |
 | ResultType |Gibt an, ob der Knoten konform ist |
 | NodeName_s |Der Name des verwalteten Knotens. |
 | NodeComplianceStatus_s |Gibt an, ob der Knoten konform ist |
@@ -137,7 +137,7 @@ Die Diagnose von Azure Automation erstellt zwei Kategorien von Datensätzen in A
 | HostName_s | Der Name des verwalteten Knotens. |
 | IPAddress | Die IPv4-Adresse des verwalteten Knotens. |
 | Category (Kategorie) | DscNodeStatus |
-| Ressource | Der Name des Azure Automation-Kontos. |
+| Resource | Der Name des Azure Automation-Kontos. |
 | Tenant_g | GUID, die den Mandanten für den Aufrufer identifiziert. |
 | NodeId_g |Eindeutiger Bezeichner (GUID), der den verwalteten Knoten identifiziert. |
 | DscReportId_g |Eindeutiger Bezeichner (GUID), der den Bericht identifiziert. |
@@ -159,11 +159,11 @@ Die Diagnose von Azure Automation erstellt zwei Kategorien von Datensätzen in A
 | Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | TimeGenerated |Datum und Uhrzeit der Durchführung der Konformitätsprüfung. |
-| NameVorgang |DscResourceStatusData|
+| OperationName |DscResourceStatusData|
 | ResultType |Gibt an, ob die Ressource konform ist. |
 | NodeName_s |Der Name des verwalteten Knotens. |
 | Category (Kategorie) | DscNodeStatus |
-| Ressource | Der Name des Azure Automation-Kontos. |
+| Resource | Der Name des Azure Automation-Kontos. |
 | Tenant_g | GUID, die den Mandanten für den Aufrufer identifiziert. |
 | NodeId_g |Eindeutiger Bezeichner (GUID), der den verwalteten Knoten identifiziert. |
 | DscReportId_g |Eindeutiger Bezeichner (GUID), der den Bericht identifiziert. |
