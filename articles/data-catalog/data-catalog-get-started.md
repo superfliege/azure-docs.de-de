@@ -1,17 +1,17 @@
 ---
 title: Erstellen einer Azure Data Catalog-Instanz
 description: Eine Schnellstartanleitung zum Erstellen einer Azure Data Catalog-Instanz.
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
 ms.date: 04/05/2019
-ms.openlocfilehash: 66d178497f3403579990340b88a1153905b2a2bf
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: f00e9eaf56f3973b357792a8d1923a4b5998e0a2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59271032"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997732"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>Schnellstart: Erstellen einer Azure Data Catalog-Instanz
 
@@ -34,7 +34,7 @@ Um Data Catalog einzurichten, müssen Sie Besitzer oder Mitbesitzer eines Azure-
 
 Sie können nur einen Datenkatalog pro Organisation (Azure Active Directory-Domäne) bereitstellen. Falls der Besitzer oder Mitbesitzer eines Azure-Abonnements, der dieser Azure Active Directory-Domäne angehört, bereits einen Katalog erstellt hat, können Sie nicht erneut einen Katalog erstellen, auch wenn Sie über mehrere Azure-Abonnements verfügen. Um festzustellen, ob von einem Benutzer in Ihrer Azure Active Directory-Domäne ein Datenkatalog erstellt wurde, navigieren Sie zur [Azure Data Catalog-Startseite](http://azuredatacatalog.com) und überprüfen, ob ein Katalog angezeigt wird. Wenn bereits ein Katalog für Sie erstellt wurde, überspringen Sie das folgende Verfahren, und fahren Sie mit dem nächsten Abschnitt fort.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu **Ressource erstellen**, und wählen Sie **Data Catalog** aus.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) >  zu **Ressource erstellen**, und wählen Sie **Data Catalog** aus.
 
     ![Erstellen von Data Catalog](media/data-catalog-get-started/data-catalog-create.png)
 

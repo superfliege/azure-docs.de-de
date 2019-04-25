@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/25/2019
+ms.date: 04/18/2019
 ms.author: mlottner
-ms.openlocfilehash: 59021d09f2af9d430b118acdeb8aa977094e683e
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: cac2f740c1b2ae109f29ce44cd035fc6a83dd148
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862385"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010559"
 ---
 # <a name="quickstart-enable-service-in-iot-hub"></a>Schnellstart: Aktivieren des Diensts in IoT Hub
 
@@ -45,11 +45,11 @@ In diesem Artikel erfahren Sie, wie Sie die Vorschauversion des Diensts „ASC f
 Führen Sie die folgenden Schritte aus, um die Sicherheit in Ihrer IoT Hub-Instanz zu aktivieren: 
 
 1. Öffnen Sie im Azure-Portal Ihre Instanz von **IoT Hub**. 
-2. Öffnen Sie **Sicherheit** über das linke Menü. 
+2. Klicken Sie im Menü **Sicherheit** auf **Übersicht** und dann auf **Vorschauversion starten**. 
 3. Wählen Sie **Enable IoT Security** (IoT-Sicherheit aktivieren) aus. 
 4. Geben Sie die Details Ihres Azure Log Analytics-Arbeitsbereichs an. 
    - Legen Sie die Einstellung für **Rohereignisse** auf **Ein** fest, um zusätzlich zu den gespeicherten Standardinformationen auch **Rohereignisse** zu speichern. 
-   - Legen Sie die Einstellung für **twin collection** (Zwillingserfassung) auf **Ein** fest, um die**** Zwillingserfassung zu aktivieren. 
+   - Legen Sie die Einstellung für **twin collection** (Zwillingserfassung) auf **Ein** fest, um die Zwillingserfassung zu **aktivieren**. 
 5. Klicken Sie auf **OK**. 
 6. Klicken Sie auf **Speichern**. 
 
@@ -60,4 +60,4 @@ Glückwunsch! Sie haben ASC für IoT in Ihrer IoT Hub-Instanz aktiviert.
 Im nächsten Artikel erfahren Sie, wie Sie Ihre Lösung konfigurieren:
 
 > [!div class="nextstepaction"]
-> [Konfigurieren Ihrer Lösung](quickstart-configure-your-solution.md)
+> [Quickstart: Configure your IoT solution](quickstart-configure-your-solution.md) (Schnellstart: Konfigurieren Ihrer IoT-Lösung)
