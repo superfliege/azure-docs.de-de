@@ -9,10 +9,10 @@ ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 2ba48e2a21bdee0c5698bdfa314dd3bf462c1c7e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59267768"
 ---
 # <a name="starter-resource-graph-queries"></a>Einfache Resource Graph-Abfragen
@@ -22,14 +22,14 @@ Der erste Schritt zum Verstehen von Abfragen mit Azure Resource Graph sind Grund
 Wir behandeln die folgenden einfachen Abfragen:
 
 > [!div class="checklist"]
-> - [Zählen der Azure-Ressourcen](#count-resources)
-> - [Auflisten von Ressourcen, sortiert nach Name](#list-resources)
-> - [Anzeigen aller virtuellen Computer nach Name in absteigender Reihenfolge](#show-vms)
-> - [Anzeigen der ersten fünf virtuellen Computer nach Name und Betriebssystemtyp](#show-sorted)
-> - [Zählen von virtuellen Computern nach Betriebssystemtyp](#count-os)
-> - [Anzeigen von Ressourcen mit Speicher](#show-storage)
-> - [Auflisten aller öffentlichen IP-Adressen](#list-publicip)
-> - [Zählen von Ressourcen, für die IP-Adressen konfiguriert sind (nach Abonnement)](#count-resources-by-ip)
+> - [Anzahl der Azure-Ressourcen](#count-resources)
+> - [Auflisten von Ressourcen nach Namen sortiert](#list-resources)
+> - [Anzeigen aller virtuellen Computer in absteigender Folge nach Namen sortiert](#show-vms)
+> - [Anzeigen der ersten fünf virtuellen Computer nach Name und BS-Typ](#show-sorted)
+> - [Anzahl von virtuellen Computern nach Betriebssystemtyp](#count-os)
+> - [Anzeigen von Ressourcen, die Speicher enthalten](#show-storage)
+> - [Liste der öffentlichen IP-Adressen](#list-publicip)
+> - [Anzahl von Ressourcen, für die IP-Adressen konfiguriert sind, nach Abonnement](#count-resources-by-ip)
 > - [Auflisten von Ressourcen mit einem bestimmten Tagwert](#list-tag)
 > - [Auflisten aller Speicherkonten mit einem bestimmten Tagwert](#list-specific-tag)
 
@@ -94,7 +94,7 @@ Search-AzGraph -Query "project name, location, type| where type =~ 'Microsoft.Co
 
 ## <a name="show-sorted"></a>Anzeigen der ersten fünf virtuellen Computer nach Name und BS-Typ
 
-Diese Abfrage verwendet `limit`, um nur fünf übereinstimmende Datensätze abzurufen, die nach Namen sortiert werden. Der Typ der Azure-Ressource ist `Microsoft.Compute/virtualMachines`. `project` teilt Azure Resource Graph mit, welche Eigenschaften einbezogen werden sollen.
+Diese Abfrage verwendet `limit`, um nur fünf übereinstimmende Datensätze abzurufen, die nach Namen sortiert werden. Der Typ der Azure-Ressource ist `Microsoft.Compute/virtualMachines`. `project` teilt Azure Ressource Graph mit, welche Eigenschaften einbezogen werden sollen.
 
 ```Query
 where type =~ 'Microsoft.Compute/virtualMachines'
@@ -167,7 +167,7 @@ Search-AzGraph -Query "where type contains 'storage' | distinct type"
 
 Ähnlich wie bei der vorherigen Abfrage wird jeder Typ mit dem Wort **publicIPAddresses** gefunden.
 Diese Abfrage baut auf diesem Muster auf, um nur Ergebnisse mit **properties.ipAddress**
-`isnotempty` einzuschließen, nur **properties.ipAddress** zurückzugeben und die Ergebnisse zu begrenzen (`limit`) – und zwar auf die obersten
+`isnotempty` einzuschließen, nur die **properties.ipAddress** zurückzugeben und die Ergebnisse auf die obersten zu begrenzen (`limit`).
 100. Je nach Ihrer ausgewählten Shell müssen Sie Anführungszeichen möglicherweise mit Escapezeichen versehen.
 
 ```Query
@@ -251,7 +251,7 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Storage/storageAccounts' | where
 ```
 
 > [!NOTE]
-> Dieses Beispiel verwendet `==` für den Abgleich statt der `=~`-Bedingung. `==` ist eine Übereinstimmung mit entsprechender Groß-/Kleinschreibung.
+> Dieses Beispiel verwendet `==` für den Abgleich statt der `=~`-Bedingung. Bei `==` wird die Groß-/Kleinschreibung bei der Übereinstimmung beachtet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

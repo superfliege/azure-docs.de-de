@@ -11,15 +11,15 @@ ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 0e14131ce45d20b99c1b5d5885cb1eb24c975d03
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269111"
 ---
 # <a name="quickstart-explore-azure-search-rest-apis-using-postman"></a>Schnellstart: Erkunden von Azure Search-REST-APIs mit Postman
 > [!div class="op_single_selector"]
-> * [postman](search-fiddler.md)
+> * [Postman](search-fiddler.md)
 > * [C#](search-create-index-dotnet.md)
 > * [Portal](search-get-started-portal.md)
 > * [PowerShell](search-howto-dotnet-sdk.md)
@@ -39,7 +39,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie zuerst ein [kostenloses Kon
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In dieser Schnellstartanleitung werden die folgenden Dienste und Tools verwendet. 
+In diesem Schnellstart werden die folgenden Dienste und Tools verwendet. 
 
 [Erstellen Sie einen Azure Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Für diesen Schnellstart können Sie einen kostenlosen Dienst verwenden. 
 
@@ -85,7 +85,7 @@ Die URL wird um den Indexnamen `hotel` erweitert.
 Gehen Sie dazu in Postman wie folgt vor:
 
 1. Ändern Sie das Verb in **PUT**.
-2. Kopieren Sie die folgende URL, und fügen Sie sie ein: `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotel?api-version=2017-11-11`
+2. Fügen Sie diese URL ein: `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotel?api-version=2017-11-11`
 3. Geben Sie die (weiter unten gezeigte) Indexdefinition im Text der Anforderung an.
 4. Klicken Sie unten auf der Seite auf **Senden**
 
@@ -129,7 +129,7 @@ Die URL wird um die Sammlungen vom Typ `docs` sowie um den Vorgang `index` erwei
 Gehen Sie dazu in Postman wie folgt vor:
 
 1. Ändern Sie das Verb in **POST**.
-2. Kopieren Sie die folgende URL, und fügen Sie sie ein: `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs/index?api-version=2017-11-11`
+2. Fügen Sie diese URL ein: `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs/index?api-version=2017-11-11`
 3. Geben Sie die (weiter unten gezeigten) JSON-Dokumente im Text der Anforderung an.
 4. Klicken Sie unten auf der Seite auf **Senden**
 
@@ -219,7 +219,7 @@ Die URL wird um eine Abfragezeichenfolge erweitert, die unter Verwendung des Suc
 Gehen Sie dazu in Postman wie folgt vor:
 
 + Ändern Sie das Verb in **GET**.
-+ Kopieren Sie die folgende URL, und fügen Sie sie ein: `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2017-11-11`
++ Fügen Sie diese URL ein: `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2017-11-11`
 + Klicken Sie unten auf der Seite auf **Senden**
 
 Mit dieser Abfrage wird nach dem Wort „motel“ gesucht und die Anzahl von Dokumenten in den Suchergebnissen zurückgegeben. Die Anforderung und die Antwort sollten für Postman in etwa wie im folgenden Screenshot aussehen, nachdem Sie auf **Send** (Senden) geklickt haben. Der Statuscode sollte 200 lauten.
@@ -228,7 +228,7 @@ Mit dieser Abfrage wird nach dem Wort „motel“ gesucht und die Anzahl von Dok
 
 
 ## <a name="get-index-properties"></a>Abfragen von Indexeigenschaften
-Sie können auch Systeminformationen abfragen, um die Anzahl von Dokumenten oder die Speicherauslastung zu erhalten: `https://mydemo.search.windows.net/indexes/hotels/stats?api-version=2017-11-11`
+Sie können Systeminformationen auch abfragen, um die Anzahl von Dokumenten oder die Speicherauslastung zu erhalten: `https://mydemo.search.windows.net/indexes/hotels/stats?api-version=2017-11-11`.
 
 In Postman sollte Ihre Anforderung in etwa wie folgt aussehen, und die Antwort enthält dann eine Anzahl von Dokumenten und den belegten Speicher in Byte.
 

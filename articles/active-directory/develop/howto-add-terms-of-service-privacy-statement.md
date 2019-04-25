@@ -1,5 +1,5 @@
 ---
-title: Nutzungsbedingungen und Datenschutzerklärung für Azure AD-Apps | Microsoft-Dokumentation
+title: Nutzungsbedingungen und Datenschutzbestimmungen für Apps | Azure
 description: Erfahren Sie, wie Sie die Nutzungsbedingungen und die Datenschutzerklärung für Apps konfigurieren können, die zur Verwendung von Azure AD registriert sind.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,14 +17,14 @@ ms.author: celested
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3687d0b50add3301fb8e15b9c70569554b91c04
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 97728fa70f0c5f58510e0e68d27a379b20887703
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193508"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59500296"
 ---
-# <a name="terms-of-service-and-privacy-statement-for-registered-azure-active-directory-apps"></a>Nutzungsbedingungen und Datenschutzerklärung für registrierte Azure Active Directory-Apps
+# <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>Gewusst wie: Konfigurieren von Nutzungsbedingungen und Datenschutzbestimmungen für eine App
 
 Entwickler, die Apps erstellen und verwalten, die in Azure Active Directory (Azure AD) und Microsoft-Konten integriert sind, sollten Links zu den Nutzungsbedingungen und Datenschutzbestimmungen der Apps einfügen. Die Nutzungsbedingungen und Datenschutzbestimmungen werden auf der Oberfläche für die Benutzerzustimmung angezeigt. Auf diese Weise wissen Benutzer, dass sie Ihren Apps vertrauen können. Die Nutzungsbedingungen und Datenschutzbestimmungen sind besonders wichtig für benutzerseitige mehrinstanzenfähige Apps, d.h. Apps, die in mehreren Verzeichnissen verwendet werden oder für alle Microsoft-Konten verfügbar sind.
 
@@ -47,7 +47,7 @@ Bevor Sie Links zu den Dokumenten mit den Nutzungsbedingungen und Datenschutzbes
 | Vorgabe     | BESCHREIBUNG                           |
 |---------------|---------------------------------------|
 | Format        | Gültige URL                             |
-| Gültige Schemas | HTTP und HTTPS</br>Empfohlen wird HTTPS |
+| Gültige Schemas | HTTP und HTTPS<br/>Empfohlen wird HTTPS |
 | Max. Länge    | 2.048 Zeichen                       |
 
 Beispiele: `https://myapp.com/terms-of-service` und `https://myapp.com/privacy-statement`

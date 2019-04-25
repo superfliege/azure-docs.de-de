@@ -1,17 +1,17 @@
 ---
 title: Verwalten der Konsistenz in Azure Cosmos DB
 description: Verwalten der Konsistenz in Azure Cosmos DB
-author: christopheranderson
+author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 10/17/2018
-ms.author: chrande
-ms.openlocfilehash: 7dfc299c32b25ddf939aa3efcb927697307887a2
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.date: 04/17/2019
+ms.author: rimman
+ms.openlocfilehash: a93bf9a9f43a0929aeb5f3d3121092739396c6a8
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904320"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678444"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Verwalten von Konsistenzebenen in Azure Cosmos DB
 
@@ -21,7 +21,7 @@ In diesem Artikel wird beschrieben, wie Sie Konsistenzebenen in Azure Cosmos DB 
 
 ## <a name="configure-the-default-consistency-level"></a>Konfigurieren der Standardkonsistenzebene
 
-Die Standardkonsistenzebene ist die Konsistenzebene, die Clients standardmäßig verwenden. Sie kann von Clients außer Kraft gesetzt werden.
+Die [Standardkonsistenzebene](consistency-levels.md) ist die Konsistenzebene, die Clients standardmäßig verwenden. Sie kann von Clients immer außer Kraft gesetzt werden.
 
 ### <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
 
@@ -35,7 +35,7 @@ az cosmosdb update --name <name of Cosmos DB Account> --resource-group <resource
 
 ### <a name="powershell"></a>PowerShell
 
-In diesem Beispiel wird ein neues Azure Cosmos DB-Konto mit Multimaster-Aktivierung in den Regionen „USA, Osten“ und „USA, Westen“ erstellt. Die Standardrichtlinie für die Konsistenz wird als Sitzung festgelegt.
+In diesem Beispiel wird ein neues Azure Cosmos-Konto mit Aktivierung mehrerer Schreibregionen in den Regionen „USA, Osten“ und „USA, Westen“ erstellt. Die Standardkonsistenzebene ist auf die Konsistenz *Sitzung* festgelegt.
 
 ```azurepowershell-interactive
 $locations = @(@{"locationName"="East US"; "failoverPriority"=0},
@@ -59,15 +59,15 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
   -Properties $CosmosDBProperties
 ```
 
-### <a name="portal"></a>Portal
+### <a name="azure-portal"></a>Azure-Portal
 
-Melden Sie sich zum Anzeigen oder Ändern der Standardkonsistenzebene beim Azure-Portal an. Navigieren Sie zu Ihrem Azure Cosmos DB-Konto, und öffnen Sie den Bereich **Standardkonsistenz**. Wählen Sie die Konsistenzebene aus, die Sie als neue Standardeinstellung verwenden möchten, und wählen Sie anschließend **Speichern**.
+Melden Sie sich zum Anzeigen oder Ändern der Standardkonsistenzebene beim Azure-Portal an. Navigieren Sie zu Ihrem Azure Cosmos-Konto, und öffnen Sie den Bereich **Standardkonsistenz**. Wählen Sie die Konsistenzebene aus, die Sie als neue Standardeinstellung verwenden möchten, und wählen Sie anschließend **Speichern**.
 
 ![Konsistenzmenü im Azure-Portal](./media/how-to-manage-consistency/consistency-settings.png)
 
 ## <a name="override-the-default-consistency-level"></a>Außerkraftsetzen der Standardkonsistenzebene
 
-Clients können die vom Dienst festgelegte Standardkonsistenzebene außer Kraft setzen. Diese Option kann für den gesamten Client oder pro Anforderung festgelegt werden.
+Clients können die vom Dienst festgelegte Standardkonsistenzebene außer Kraft setzen. Die Konsistenzebene kann auf Anforderung festgelegt werden. Dabei wird die auf Kontoebene festgelegte Standardkonsistenzebene überschrieben.
 
 ### <a id="override-default-consistency-dotnet"></a>.NET SDK
 
@@ -131,6 +131,8 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.ac
 ```
 
 ## <a name="utilize-session-tokens"></a>Verwenden von Sitzungstoken
+
+Die Konsistenz *Sitzung* ist eine der Konsistenzebenen in Azure Cosmos DB. Dies ist die Standardebene, die standardmäßig auf Cosmos-Konten angewendet wird. Bei Verwendung der Konsistenz *Sitzung* verwendet der Client intern ein Sitzungstoken für jede Lese-/Abfrageanforderung, um sicherzustellen, dass die festgelegte Konsistenzebene beibehalten wird.
 
 Rufen Sie zum manuellen Verwalten von Sitzungstoken das Sitzungstoken aus der Antwort ab, und legen Sie es jeweils pro Anforderung fest. Wenn Sie Sitzungstoken nicht manuell verwalten müssen, müssen Sie diese Beispiele nicht verwenden. Das SDK verfolgt Sitzungstoken automatisch. Wenn Sie das Sitzungstoken nicht manuell festlegen, nutzt das SDK standardmäßig das zuletzt verwendete Sitzungstoken.
 
@@ -209,15 +211,18 @@ item = client.ReadItem(doc_link, options)
 
 ## <a name="monitor-probabilistically-bounded-staleness-pbs-metric"></a>Überwachen der PBS-Metrik (Probabilistically Bounded Staleness)
 
-Navigieren Sie zum Anzeigen der PBS-Metrik im Azure-Portal zu Ihrem Azure Cosmos DB-Konto. Öffnen Sie den Bereich **Metriken**, und wählen Sie die Registerkarte **Konsistenz**. Sehen Sie sich den Graphen mit dem Namen **Wahrscheinlichkeit stark konsistenter Lesevorgänge basierend auf Ihrer Workload (siehe PBS)** an.
+Wie letztlich ist letztliche Konsistenz? Im Normalfall können wir begrenzte Veraltung im Hinblick auf Versionsverlauf und Zeit anbieten. Die [**PBS-Metrik (Probabilistically Bounded Staleness)**](http://pbs.cs.berkeley.edu/) versucht, die Wahrscheinlichkeit der Veraltung zu bestimmen und zeigt sie als Metrik an. Navigieren Sie zum Anzeigen der PBS-Metrik im Azure-Portal zu Ihrem Azure Cosmos-Konto. Öffnen Sie den Bereich **Metriken**, und wählen Sie die Registerkarte **Konsistenz**. Sehen Sie sich den Graphen mit dem Namen **Wahrscheinlichkeit stark konsistenter Lesevorgänge basierend auf Ihrer Workload (siehe PBS)** an.
 
 ![PBS-Graph im Azure-Portal](./media/how-to-manage-consistency/pbs-metric.png)
 
-Verwenden Sie das Metrikmenü von Azure Cosmos DB, um diese Metrik anzuzeigen. In der Metrikumgebung der Azure-Überwachung wird sie nicht angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informieren Sie sich über das Verwalten von Datenkonflikten, oder fahren Sie mit dem nächsten wichtigen Konzept von Azure Cosmos DB fort. Entsprechende Informationen finden Sie in den folgenden Artikeln:
 
+* [Konsistenzebenen in Azure Cosmos DB](consistency-levels.md)
 * [Behandeln von Konflikten zwischen Regionen](how-to-manage-conflicts.md)
 * [Partitionierung und Datenverteilung](partition-data.md)
+* [Konsistenzkompromisse im Design moderner verteilter Datenbanksysteme](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
+* [Hochverfügbarkeit](high-availability.md)
+* [Azure Cosmos DB-SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

@@ -1,45 +1,38 @@
 ---
 title: 'Tutorial: Erstellen eines Anwendungsgateways mit einer Web Application Firewall – Azure-Portal | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie mithilfe des Azure-Portals ein Anwendungsgateway mit einer Web Application Firewall erstellen.
+description: In diesem Tutorial erfahren Sie, wie Sie mithilfe des Azure-Portals ein Anwendungsgateway mit einer Web Application Firewall erstellen.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
-tags: azure-resource-manager
 ms.service: application-gateway
-ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 03/25/2019
+ms.topic: tutorial
+ms.date: 4/16/2019
 ms.author: victorh
-ms.openlocfilehash: 1284ddec4cd9cea3ea53c20d437550405dd614d9
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 206895768ea48e352e4f7fe90ab597f3756586dd
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905867"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682847"
 ---
-# <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Erstellen eines Anwendungsgateways mit einer Web Application Firewall über das Azure-Portal
+# <a name="tutorial-create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Tutorial: Erstellen eines Anwendungsgateways mit einer Web Application Firewall über das Azure-Portal
 
-> [!div class="op_single_selector"]
->
-> - [Azure-Portal](application-gateway-web-application-firewall-portal.md)
-> - [PowerShell](tutorial-restrict-web-traffic-powershell.md)
-> - [Azure-Befehlszeilenschnittstelle](tutorial-restrict-web-traffic-cli.md)
->
-> 
+In diesem Tutorial erfahren Sie, wie Sie mithilfe des Azure-Portals ein [Anwendungsgateway](application-gateway-introduction.md) mit einer [Web Application Firewall](application-gateway-web-application-firewall-overview.md) (WAF) erstellen. Die WAF verwendet [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project)-Regeln, um Ihre Anwendung zu schützen. Diese Regeln beinhalten den Schutz vor Angriffen z.B. durch Einschleusung von SQL-Befehlen, siteübergreifendes Scripting und Sitzungsübernahmen. Nach der Erstellung wird das Anwendungsgateway getestet, um sicherzustellen, dass es ordnungsgemäß funktioniert. Mit Azure Application Gateway leiten Sie den Webdatenverkehr Ihrer Anwendungen an bestimmte Ressourcen weiter, indem Sie Ports Listener zuweisen, Regeln erstellen und Ressourcen zu einem Back-End-Pool hinzufügen. Der Einfachheit halber wird in diesem Tutorial ein einfaches Setup mit einer öffentlichen Front-End-IP-Adresse, einem grundlegenden Listener zum Hosten einer einzelnen Website auf diesem Anwendungsgateway, zwei virtuellen Computern für den Back-End-Pool und einer Routingregel für grundlegende Anforderungen verwendet.
 
-In diesem Tutorial erfahren Sie, wie Sie mithilfe des Azure-Portals ein [Anwendungsgateway](application-gateway-introduction.md) mit einer [Web Application Firewall](application-gateway-web-application-firewall-overview.md) (WAF) erstellen. Die WAF verwendet [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project)-Regeln, um Ihre Anwendung zu schützen. Diese Regeln beinhalten den Schutz vor Angriffen z.B. durch Einschleusung von SQL-Befehlen, siteübergreifendes Scripting und Sitzungsübernahmen. Nach der Erstellung wird das Anwendungsgateway getestet, um sicherzustellen, dass es ordnungsgemäß funktioniert. Mit Azure Application Gateway leiten Sie den Webdatenverkehr Ihrer Anwendungen an bestimmte Ressourcen weiter, indem Sie Ports Listener zuweisen, Regeln erstellen und Ressourcen zu einem Back-End-Pool hinzufügen. Der Einfachheit halber wird in diesem Artikel ein einfaches Setup mit einer öffentlichen Front-End-IP-Adresse, einem grundlegenden Listener zum Hosten einer einzelnen Website auf diesem Anwendungsgateway, zwei virtuellen Computern für den Back-End-Pool und einer Routingregel für grundlegende Anforderungen verwendet.
-
-In diesem Artikel werden folgende Vorgehensweisen behandelt:
+In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen eines Anwendungsgateways mit aktivierter WAF
 > * Erstellen der virtuellen Computer, die als Back-End-Server verwendet werden
 > * Erstellen eines Speicherkontos und Konfigurieren der Diagnose
+> * Testen des Anwendungsgateways
 
 ![Web Application Firewall – Beispiel](./media/application-gateway-web-application-firewall-portal/scenario-waf.png)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Dieses Tutorial kann auch mit [Azure PowerShell ](tutorial-restrict-web-traffic-powershell.md) oder der [Azure CLI](tutorial-restrict-web-traffic-cli.md) durchgearbeitet werden.
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -47,7 +40,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 ## <a name="create-an-application-gateway"></a>Erstellen eines Anwendungsgateways
 
-Für die Kommunikation in Azure zwischen den von Ihnen erstellten Ressourcen ist ein virtuelles Netzwerk erforderlich. Sie können ein neues virtuelles Netzwerk erstellen oder ein vorhandenes auswählen. In diesem Beispiel erstellen wir ein neues virtuelles Netzwerk. Sie können ein virtuelles Netzwerk zum gleichen Zeitpunkt erstellen wie das Anwendungsgateway. Application Gateway-Instanzen werden in separaten Subnetzen erstellt. In diesem Beispiel erstellen Sie zwei Subnetze: eins für das Anwendungsgateway und eins für die Back-End-Server.
+Azure benötigt ein virtuelles Netzwerk für die Kommunikation zwischen Ressourcen. Sie können ein neues virtuelles Netzwerk erstellen oder ein bereits vorhandenes virtuelles Netzwerk auswählen. In diesem Beispiel erstellen Sie ein neues virtuelles Netzwerk. Sie können ein virtuelles Netzwerk zum gleichen Zeitpunkt erstellen wie das Anwendungsgateway. Application Gateway-Instanzen werden in separaten Subnetzen erstellt. In diesem Beispiel erstellen Sie zwei Subnetze: eins für das Anwendungsgateway und eins für die Back-End-Server.
 
 Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressource erstellen**. Das Fenster **Neu** wird angezeigt.
 
@@ -71,9 +64,9 @@ Klicken Sie auf **Netzwerk**, und wählen Sie dann in der Liste **Ausgewählte**
    - **Subnetzname**: Geben Sie *myAGSubnet* als Subnetznamen ein.<br>Das Subnetz für das Anwendungsgateway kann nur Anwendungsgateways enthalten. Andere Ressourcen sind nicht zulässig.
    - **Subnetzadressbereich:** Geben Sie *10.0.0.0/24* für den Subnetzadressbereich ein.![Virtuelles Netzwerk erstellen](./media/application-gateway-web-application-firewall-portal/application-gateway-vnet.png)
 3. Klicken Sie auf **OK**, um das virtuelle Netzwerk und das Subnetz zu erstellen.
-4. Wählen Sie die **Front-End-IP-Konfiguration** aus. Vergewissern Sie sich unter **Frontend-IP-Konfiguration**, dass **IP-Adresstyp** auf **Öffentlich** festgelegt ist. Vergewissern Sie sich unter **Öffentliche IP-Adresse**, dass **Neue erstellen** ausgewählt ist. <br>Je nach Anwendungsfall können Sie konfigurieren, dass die Front-End-IP-Adresse öffentlich oder privat ist. In diesem Beispiel verwenden wir eine öffentliche Front-End-IP-Adresse. 
-5. Geben Sie *myAGPublicIPAddress* als Namen für die öffentliche IP-Adresse ein. 
-6. Übernehmen Sie die Standardwerte für die anderen Einstellungen, und klicken Sie dann auf **OK**.<br>In diesem Artikel wählen wir der Einfachheit halber Standardwerte aus, Sie können jedoch für die anderen Einstellungen je nach Anwendungsfall auch benutzerdefinierte Werte konfigurieren. 
+4. Wählen Sie die **Front-End-IP-Konfiguration** aus. Vergewissern Sie sich unter **Frontend-IP-Konfiguration**, dass **IP-Adresstyp** auf **Öffentlich** festgelegt ist. Vergewissern Sie sich unter **Öffentliche IP-Adresse**, dass **Neue erstellen** ausgewählt ist. <br>Je nach Anwendungsfall können Sie konfigurieren, dass die Front-End-IP-Adresse öffentlich oder privat ist. Hier wählen Sie eine öffentliche Front-End-IP-Adresse.
+5. Geben Sie *myAGPublicIPAddress* als Namen für die öffentliche IP-Adresse ein.
+6. Übernehmen Sie die Standardwerte für die anderen Einstellungen, und klicken Sie dann auf **OK**.<br>In diesem Tutorial wählen Sie der Einfachheit halber Standardwerte aus, Sie können jedoch für die anderen Einstellungen je nach Anwendungsfall auch benutzerdefinierte Werte konfigurieren.
 
 ### <a name="summary-page"></a>Seite „Zusammenfassung“
 
@@ -81,13 +74,13 @@ Klicken Sie auf **Netzwerk**, und wählen Sie dann in der Liste **Ausgewählte**
 
 ## <a name="add-backend-pool"></a>Hinzufügen eines Back-End-Pools
 
-Der Back-End-Pool wird zum Weiterleiten von Anforderungen an die Back-End-Server verwendet, die die Anforderung verarbeiten. Back-End-Pools können Netzwerkkarten, VM-Skalierungsgruppen, öffentliche IP-Adressen, interne IP-Adressen, vollqualifizierte Domänennamen (Fully Qualified Domain Names, FQDN) und Back-Ends mit mehreren Mandanten wie Azure App Service umfassen. Sie müssen Ihre Back-End-Ziele zu einem Back-End-Pool hinzufügen.
+Der Back-End-Pool wird zum Weiterleiten von Anforderungen an die Back-End-Server verwendet, die die Anforderung verarbeiten. Back-End-Pools können Netzwerkkarten, VM-Skalierungsgruppen, öffentliche IP-Adressen, interne IP-Adressen, vollqualifizierte Domänennamen (Fully Qualified Domain Names, FQDN) und Back-Ends mit mehreren Mandanten wie Azure App Service umfassen. Fügen Sie Ihre Back-End-Ziele einem Back-End-Pool hinzu.
 
-In diesem Beispiel verwenden wir virtuelle Computer als das Ziel-Back-End. Wir können entweder vorhandene virtuelle Computer verwenden oder neue erstellen. In diesem Beispiel erstellen wir zwei virtuelle Computer, die von Azure als Back-End-Server für das Anwendungsgateway verwendet werden. Dazu führen wir die folgenden Schritte aus:
+In diesem Beispiel verwenden Sie virtuelle Computer als Ziel-Back-End. Sie können entweder vorhandene virtuelle Computer verwenden oder neue erstellen. Hier erstellen Sie zwei virtuelle Computer, die von Azure als Back-End-Server für das Anwendungsgateway verwendet werden. Führen Sie dazu die folgenden Schritte aus:
 
 1. Erstellen eines neuen Subnetzes (*myBackendSubnet*), in dem die neuen virtuellen Computer erstellt werden. 
-2. Erstellen von zwei neuen virtuellen Computern (*myVM* und *myVM2*), die als Back-End-Server verwendet werden.
-3. Installieren von IIS auf den virtuellen Computern, um zu überprüfen, ob das Anwendungsgateway erfolgreich erstellt wurde.
+2. Erstellen von zwei neuen virtuellen Computern (*myVM* und *myVM2*) für die Verwendung als Back-End-Server
+3. Installieren von IIS auf den virtuellen Computern, um zu überprüfen, ob die Application Gateway-Instanz erfolgreich erstellt wurde
 4. Fügen Sie die Back-End-Server zum Back-End-Pool hinzu.
 
 ### <a name="add-a-subnet"></a>Hinzufügen eines Subnetzes
@@ -113,14 +106,14 @@ Fügen Sie dem virtuellen Netzwerk, das Sie erstellt haben, wie folgt ein Subnet
    - **Kennwort**: Geben Sie *Azure123456!* als Administratorkennwort ein.
 4. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie auf **Weiter: Datenträger**.  
 5. Übernehmen Sie auf der Registerkarte **Datenträger** die Standardwerte, und klicken Sie auf **Weiter: Netzwerk**.
-6. Vergewissern Sie sich auf der Registerkarte **Netzwerk**, dass **myVNet** für **Virtuelles Netzwerk** ausgewählt und **Subnetz** auf **myBackendSubnet** festgelegt ist. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie auf **Weiter: Verwaltung** aus.<br>Application Gateway kann mit Instanzen außerhalb des eigenen virtuellen Netzwerks kommunizieren, es muss jedoch sichergestellt werden, dass eine IP-Verbindung besteht. 
+6. Vergewissern Sie sich auf der Registerkarte **Netzwerk**, dass **myVNet** für **Virtuelles Netzwerk** ausgewählt und **Subnetz** auf **myBackendSubnet** festgelegt ist. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie auf **Weiter: Verwaltung** aus.<br>Application Gateway kann mit Instanzen außerhalb des eigenen virtuellen Netzwerks kommunizieren, es muss jedoch sichergestellt werden, dass eine IP-Verbindung besteht.
 7. Legen Sie auf der Registerkarte **Verwaltung** die Option **Startdiagnose** auf **Aus** fest. Übernehmen Sie für die anderen Einstellungen die Standardwerte, und klicken Sie auf **Bewerten + erstellen**.
 8. Überprüfen Sie auf der Registerkarte **Bewerten + erstellen** die Einstellungen, beheben Sie alle Validierungsfehler, und wählen Sie dann **Erstellen** aus.
 9. Warten Sie, bis die Erstellung des virtuellen Computers abgeschlossen ist, bevor Sie fortfahren.
 
 ### <a name="install-iis-for-testing"></a>Installieren von IIS für Testzwecke
 
-In diesem Beispiel installieren Sie IIS auf den virtuellen Computern, um zu überprüfen, ob Azure das Anwendungsgateway erfolgreich erstellt hat. 
+In diesem Beispiel installieren Sie IIS auf den virtuellen Computern nur, um zu überprüfen, ob Azure das Anwendungsgateway erfolgreich erstellt hat. 
 
 1. Öffnen Sie [Azure PowerShell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell). Wählen Sie dazu in der oberen Navigationsleiste des Azure-Portals **Cloud Shell** und dann in der Dropdownliste **PowerShell** aus. 
 
@@ -188,7 +181,7 @@ IIS ist für die Erstellung des Anwendungsgateways zwar nicht erforderlich, Sie 
 
 1. Suchen Sie auf der Seite **Übersicht** des Anwendungsgateways nach der öffentlichen IP-Adresse für das Anwendungsgateway.![Notieren der öffentlichen IP-Adresse des Anwendungsgateways](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png)Alternativ können Sie **Alle Ressourcen** auswählen, *myAGPublicIPAddress* in das Suchfeld eingeben und den Eintrag dann in den Suchergebnissen auswählen. Azure zeigt die öffentliche IP-Adresse auf der Seite **Übersicht** an.
 2. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein.
-3. Überprüfen Sie die Antwort. Eine gültige Antwort überprüft, ob das Anwendungsgateway erfolgreich erstellt wurde und erfolgreich eine Verbindung mit dem Back-End herstellen kann.![Testen des Anwendungsgateways](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
+3. Überprüfen Sie die Antwort. Eine gültige Antwort bestätigt, dass das Anwendungsgateway erfolgreich erstellt wurde und eine Verbindung mit dem Back-End herstellen kann.![Testen des Anwendungsgateways](./media/application-gateway-create-gateway-portal/application-gateway-iistest.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -203,11 +196,5 @@ So entfernen Sie die Ressourcengruppe:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie Folgendes gelernt:
-
-> [!div class="checklist"]
-> * Erstellen eines Anwendungsgateways mit aktivierter WAF
-> * Erstellen der virtuellen Computer, die als Back-End-Server verwendet werden
-> * Erstellen eines Speicherkontos und Konfigurieren der Diagnose
-
-Weitere Informationen zu Anwendungsgateways und den zugehörigen Ressourcen finden Sie in den Artikeln mit empfohlenen Vorgehensweisen.
+> [!div class="nextstepaction"]
+> [Erfahren Sie mehr darüber, welche Möglichkeiten Azure Application Gateway bietet.](application-gateway-introduction.md)

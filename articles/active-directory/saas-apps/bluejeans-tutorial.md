@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: dfc634fd-1b55-4ba8-94a8-b8288429b6a9
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b22a7a86862f02c3320b7c14cc1ed878a57bd23d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0d1c10d9df85b04cf7b8ea7e0020bc8e802a0d5d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901949"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698927"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>Tutorial: Azure Active Directory-Integration mit BlueJeans
 
@@ -38,7 +39,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Um die Azure AD-Integration mit BlueJeans konfigurieren zu können, benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
+* Ein Azure AD-Abonnement Sollten Sie über keine Azure AD-Umgebung verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
 * BlueJeans-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
@@ -105,14 +106,16 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei BlueJean
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für BlueJeans](common/sp-signonurl.png)
+    ![SSO-Informationen zur Domäne und zu den URLs für BlueJeans](common/sp-identifier.png)
 
-    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.BlueJeans.com`
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.BlueJeans.com`
+
+    b. Geben Sie im Textfeld **Bezeichner** eine URL ein: `http://samlsp.bluejeans.com`
 
     > [!NOTE]
-    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam für den BlueJeans-Client](https://support.bluejeans.com/contact), um diesen Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Der Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam für den BlueJeans-Client](https://support.bluejeans.com/contact), um diesen Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-4. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
@@ -132,11 +135,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei BlueJean
 
 2. Wechseln Sie zu **ADMIN \> GROUP SETTINGS \> SECURITY** (ADMINISTRATOR > GRUPPENEINSTELLUNGEN > SICHERHEIT).
 
-    ![Admin](./media/bluejeans-tutorial/IC785868.png "Admin")
+    ![Admin](./media/bluejeans-tutorial/ic785868.png "Admin")
 
 3. Führen Sie im Abschnitt **SECURITY** (SICHERHEIT) die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden für SAML](./media/bluejeans-tutorial/IC785869.png "Einmaliges Anmelden für SAML")
+    ![Einmaliges Anmelden für SAML](./media/bluejeans-tutorial/ic785869.png "Einmaliges Anmelden für SAML")
 
     a. Wählen Sie **SAML Single Sign On**aus.
 
@@ -144,7 +147,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei BlueJean
 
 4. Führen Sie die folgenden Schritte aus:
 
-    ![Zertifikatpfad](./media/bluejeans-tutorial/IC785870.png "Zertifikatpfad")
+    ![Zertifikatpfad](./media/bluejeans-tutorial/ic785870.png "Zertifikatpfad")
 
     a. Klicken Sie auf **Choose File** (Datei auswählen), um das Base64-codierte Zertifikat hochzuladen, das Sie über das Azure-Portal heruntergeladen haben.
 
@@ -156,7 +159,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei BlueJean
 
 5. Führen Sie die folgenden Schritte aus:
 
-    ![Änderungen speichern](./media/bluejeans-tutorial/IC785874.png "Änderungen speichern")
+    ![Änderungen speichern](./media/bluejeans-tutorial/ic785874.png "Änderungen speichern")
 
     a. Geben Sie in das Textfeld **Benutzer-ID** `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` ein.
 
@@ -182,8 +185,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
-    Zum Beispiel, BrittaSimon@contoso.com
+    b. Geben Sie im Feld **Benutzername** den Namen `brittasimon\@yourcompanydomain.extension` ein. Beispiel: BrittaSimon@contoso.com.
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
@@ -221,18 +223,18 @@ In diesem Abschnitt wird in BlueJeans eine Benutzerin namens Britta Simon erstel
 
 **Wenn Sie einen Benutzer manuell erstellen möchten, führen Sie die folgenden Schritte aus:**
 
-1. Melden Sie sich bei der **BlueJeans** -Unternehmenswebsite als Administrator an.
+1. Melden Sie sich bei der **BlueJeans**-Unternehmenswebsite als Administrator an.
 
 2. Navigieren Sie zu **ADMIN \> MANAGE USERS \> ADD USER** (ADMINISTRATOR > BENUTZER VERWALTEN > BENUTZER HINZUFÜGEN).
 
-    ![Admin](./media/bluejeans-tutorial/IC785877.png "Admin")
+    ![Admin](./media/bluejeans-tutorial/ic785877.png "Admin")
 
-    >[!IMPORTANT]
-    >Die Registerkarte **ADD USER** (BENUTZER HINZUFÜGEN) ist nur verfügbar, wenn auf der Registerkarte **SECURITY** (SICHERHEIT) die Option **Enable automatic provisioning** (Automatische Bereitstellung aktivieren) deaktiviert ist. 
+    > [!IMPORTANT]
+    > Die Registerkarte **ADD USER** (BENUTZER HINZUFÜGEN) ist nur verfügbar, wenn auf der Registerkarte **SECURITY** (SICHERHEIT) die Option **Enable automatic provisioning** (Automatische Bereitstellung aktivieren) deaktiviert ist.
 
 3. Führen Sie im Abschnitt **ADD USER** (BENUTZER HINZUFÜGEN) die folgenden Schritte aus:
 
-    ![Benutzer hinzufügen](./media/bluejeans-tutorial/IC785886.png "Benutzer hinzufügen")
+    ![Benutzer hinzufügen](./media/bluejeans-tutorial/ic785886.png "Benutzer hinzufügen")
 
     a. Geben Sie im Textfeld **First Name** (Vorname) den Vornamen des Benutzers ein, z.B. **Britta**.
 
@@ -244,7 +246,7 @@ In diesem Abschnitt wird in BlueJeans eine Benutzerin namens Britta Simon erstel
 
     e. Geben Sie im Textfeld **Company** (Unternehmen) Ihr Unternehmen ein.
 
-    f. Geben Sie im Textfeld **E-Mail-Adresse** die E-Mail-Adresse des Benutzers ein, z.B. **brittasimon\@contoso.com**.
+    f. Geben Sie im Textfeld **Email Address** (E-Mail-Adresse) die E-Mail-Adresse des Benutzers ein, z.B. `brittasimon\@contoso.com`.
 
     g. Geben Sie im Textfeld **Create a BlueJeans Meeting I.D** (BlueJeans-Meeting-ID erstellen) Ihre Meeting-ID ein.
 
@@ -252,7 +254,7 @@ In diesem Abschnitt wird in BlueJeans eine Benutzerin namens Britta Simon erstel
 
     i. Klicken Sie auf **CONTINUE** (WEITER).
 
-    ![Benutzer hinzufügen](./media/bluejeans-tutorial/IC785887.png "Benutzer hinzufügen")
+    ![Benutzer hinzufügen](./media/bluejeans-tutorial/ic785887.png "Benutzer hinzufügen")
 
     J. Klicken Sie auf **BENUTZER HINZUFÜGEN**.
 
@@ -272,4 +274,3 @@ Wenn Sie im Zugriffsbereich auf die Kachel „BlueJeans“ klicken, sollten Sie 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

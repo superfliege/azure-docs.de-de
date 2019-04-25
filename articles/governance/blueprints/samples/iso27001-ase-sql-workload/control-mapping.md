@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 7a760bfe70fa2a83c43a0b41b77ba9bf45e809ca
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: b0a2d81d2490ded460f4bbb98ebce0b943ba91df
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59258606"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010908"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>Steuerelementzuordnung des Blaupausenbeispiels „ISO 27001: ASE-/SQL-Workload“
 
@@ -26,6 +26,12 @@ Bei nur einem Azure-Abonnementbesitzer ist keine administrative Redundanz mögli
 
 - [Vorschau]: Audit minimum number of owners for subscription
 - [Vorschau]: Audit maximum number of owners for a subscription
+
+## <a name="a821-classification-of-information"></a>A.8.2.1 Klassifizierung von Informationen
+
+Mithilfe des [SQL-Sicherheitsrisikobewertungsdiensts](https://docs.microsoft.com/azure/sql-database/sql-vulnerability-assessment) von Azure können Sie sensible Daten finden, die in Ihren Datenbanken gespeichert sind, und erhalten Empfehlungen zur Klassifizierung dieser Daten. Diese Blaupause weist eine [Azure Policy](../../../policy/overview.md)-Definition zu, um zu überwachen, dass während der Überprüfung der SQL-Sicherheitsrisikobewertung identifizierte Sicherheitslücken geschlossen werden.
+
+- [Vorschau]: Monitor SQL vulnerability assessment results in Azure Security Center
 
 ## <a name="a912-access-to-networks-and-network-services"></a>A.9.1.2 Zugriff auf Netzwerke und Netzwerkdienste
 
@@ -41,22 +47,17 @@ Durch Kenntnis der Ressourcen, die gegen diese Richtlinien verstoßen, können S
 - Verwendung klassischer VMs überwachen
 - Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden
 
-## <a name="a922-user-access-provisioning"></a>A.9.2.2 Bereitstellung des Benutzerzugriffs
-
-In Azure ist die [rollenbasierte Zugriffssteuerung ](../../../../role-based-access-control/overview.md) (RBAC) zur Verwaltung des Zugriffs auf Azure-Ressourcen implementiert. Mit dieser Blaupause werden drei [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, um die Verwendung der [Azure Active Directory](../../../../active-directory/fundamentals/active-directory-whatis.md)-Authentifizierung für SQL Server-Instanzen und [Service Fabric](../../../../service-fabric/service-fabric-overview.md) zu überwachen. Die Verwendung der Azure Active Directory-Authentifizierung ermöglicht eine vereinfachte Verwaltung von Berechtigungen und eine zentralisierte Identitätsverwaltung von Datenbankbenutzern und anderen Microsoft-Diensten. Mit dieser Blaupause wird zudem eine Azure Policy-Definition zugewiesen, um die Verwendung von benutzerdefinierten RBAC-Regeln zu überwachen. Wenn Sie wissen, wo benutzerdefinierte RBAC-Regeln implementiert sind, können Sie den Bedarf und die ordnungsgemäße Implementierung überprüfen, da benutzerdefinierte RBAC-Regeln fehleranfällig sind.
-
-- Bereitstellung eines Azure Active Directory-Administrators für SQL Server überwachen
-- Verwendung von Azure Active Directory für Clientauthentifizierung in Service Fabric überwachen
-- Verwendung benutzerdefinierter RBAC-Regeln überwachen
-
 ## <a name="a923-management-of-privileged-access-rights"></a>A.9.2.3 Verwaltung von Rechten für den privilegierten Zugriff
 
-Mit dieser Blaupause können Sie Rechte für den privilegierten Zugriff einschränken und steuern, indem vier [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, um externe Konten mit Besitzer- und/oder Schreibberechtigungen und Konten mit Besitzer- und/oder Schreibberechtigungen ohne aktivierte mehrstufige Authentifizierung zu überwachen.
+Mit dieser Blaupause können Sie Rechte für den privilegierten Zugriff einschränken und steuern, indem vier [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, um externe Konten mit Besitzer- und/oder Schreibberechtigungen und Konten mit Besitzer- und/oder Schreibberechtigungen ohne aktivierte mehrstufige Authentifizierung zu überwachen. In Azure ist die rollenbasierte Zugriffssteuerung (RBAC) zur Verwaltung des Zugriffs auf Azure-Ressourcen implementiert. Mit dieser Blaupause werden auch drei Azure Policy-Definitionen zugewiesen, um die Verwendung der Azure Active Directory-Authentifizierung für SQL Server-Instanzen und Service Fabric zu überwachen. Die Verwendung der Azure Active Directory-Authentifizierung ermöglicht eine vereinfachte Verwaltung von Berechtigungen und eine zentralisierte Identitätsverwaltung von Datenbankbenutzern und anderen Microsoft-Diensten. Mit dieser Blaupause wird zudem eine Azure Policy-Definition zugewiesen, um die Verwendung von benutzerdefinierten RBAC-Regeln zu überwachen. Wenn Sie wissen, wo benutzerdefinierte RBAC-Regeln implementiert sind, können Sie den Bedarf und die ordnungsgemäße Implementierung überprüfen, da benutzerdefinierte RBAC-Regeln fehleranfällig sind.
 
 - [Vorschau]: Audit accounts with owner permissions who are not MFA enabled on a subscription
 - [Vorschau]: Audit accounts with write permissions who are not MFA enabled on a subscription
 - [Vorschau]: Audit external accounts with owner permissions on a subscription
 - [Vorschau]: Audit external accounts with write permissions on a subscription
+- Bereitstellung eines Azure Active Directory-Administrators für SQL Server überwachen
+- Verwendung von Azure Active Directory für Clientauthentifizierung in Service Fabric überwachen
+- Verwendung benutzerdefinierter RBAC-Regeln überwachen
 
 ## <a name="a924-management-of-secret-authentication-information-of-users"></a>A.9.2.4 Verwaltung von Informationen von Benutzern zur Authentifizierung über Geheimnisse
 
@@ -83,6 +84,14 @@ In Azure ist die [rollenbasierte Zugriffssteuerung ](../../../../role-based-acce
 
 - [Vorschau]: Audit deprecated accounts on a subscription
 - [Vorschau]: Audit deprecated accounts with owner permissions on a subscription
+
+## <a name="a942-secure-log-on-procedures"></a>A.9.4.2 Sichere Anmeldungsprozeduren
+
+Mit dieser Blaupause werden drei Azure Policy-Definitionen zugewiesen, um Konten ohne aktivierte mehrstufige Authentifizierung zu überwachen. Indem Azure Multi-Factor Authentication eine zweite Form der Authentifizierung verlangt, bietet das Verfahren zusätzliche Sicherheit und eine zuverlässige Authentifizierung. Durch die Überwachung von Konten ohne aktivierte mehrstufige Authentifizierung können Sie die Konten identifizieren, die möglicherweise eher kompromittiert werden.
+
+- [Vorschau]: Audit accounts with owner permissions who are not MFA enabled on a subscription
+- [Vorschau]: Audit accounts with read permissions who are not MFA enabled on a subscription
+- [Vorschau]: Audit accounts with write permissions who are not MFA enabled on a subscription
 
 ## <a name="a943-password-management-system"></a>A.9.4.3 Kennwortverwaltungssystem
 
@@ -121,7 +130,8 @@ Wenn Sie wissen, wo Ihre Azure-Ressourcen möglicherweise nicht optimale kryptog
 
 ## <a name="a1241-event-logging"></a>A.12.4.1 Ereignisprotokollierung
 
-Mit dieser Blaupause können Sie sicherstellen, dass Systemereignisse protokolliert werden, indem Sie sieben [Azure Policy](../../../policy/overview.md)-Definitionen zuweisen, mit denen die Protokolleinstellungen für Azure-Ressourcen überwacht werden. Mit einer zugewiesenen Richtlinie wird zudem überwacht, dass virtuelle Computer keine Protokolle an einen angegebenen Log Analytics-Arbeitsbereich senden.
+Mit dieser Blaupause können Sie sicherstellen, dass Systemereignisse protokolliert werden, indem Sie sieben [Azure Policy](../../../policy/overview.md)-Definitionen zuweisen, mit denen die Protokolleinstellungen für Azure-Ressourcen überwacht werden.
+Diagnoseprotokolle bieten Einblicke in Vorgänge, die in Azure-Ressourcen ausgeführt werden.
 
 - [Vorschau]: Bereitstellung des Dependency-Agents überwachen – VM-Image (Betriebssystem) nicht aufgelistet
 - [Vorschau]: Bereitstellung des Dependency-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
@@ -131,9 +141,39 @@ Mit dieser Blaupause können Sie sicherstellen, dass Systemereignisse protokolli
 - Überwachen der Diagnoseeinstellung
 - Überwachungseinstellungen auf SQL Server-Ebene überwachen
 
-## <a name="a121-management-of-technical-vulnerabilities"></a>A.12.1 Verwaltung von technischen Sicherheitsrisiken
+## <a name="a1243-administrator-and-operator-logs"></a>A.12.4.3 Administrator- und Operatorprotokolle
 
-Mit dieser Blaupause können Sie Sicherheitsrisiken im Informationssystem verwalten, indem fünf [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, die fehlende Systemupdates, Sicherheitsrisiken des Betriebssystems, SQL-Sicherheitsrisiken und Sicherheitsrisiken von virtuellen Computern überwachen. Diese Erkenntnisse bieten Echtzeitinformationen zum Sicherheitsstatus Ihrer bereitgestellten Ressourcen und ermöglichen die Priorisierung von Aktionen zur Problembehebung.
+Mit dieser Blaupause können Sie sicherstellen, dass Systemereignisse protokolliert werden, indem Sie sieben Azure Policy-Definitionen zuweisen, mit denen die Protokolleinstellungen für Azure-Ressourcen überwacht werden. Diagnoseprotokolle bieten Einblicke in Vorgänge, die in Azure-Ressourcen ausgeführt werden.
+
+- [Vorschau]: Bereitstellung des Dependency-Agents überwachen – VM-Image (Betriebssystem) nicht aufgelistet
+- [Vorschau]: Bereitstellung des Dependency-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
+- [Vorschau]: Bereitstellung des Log Analytics-Agents überwachen – VM-Image (Betriebssystem) nicht aufgelistet
+- [Vorschau]: Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
+- [Vorschau]: Monitor unaudited SQL database in Azure Security Center
+- Überwachen der Diagnoseeinstellung
+- Überwachungseinstellungen auf SQL Server-Ebene überwachen
+
+## <a name="a1244-clock-synchronization"></a>A.12.4.4 Uhrsynchronisierung
+
+Mit dieser Blaupause können Sie sicherstellen, dass Systemereignisse protokolliert werden, indem Sie sieben Azure Policy-Definitionen zuweisen, mit denen die Protokolleinstellungen für Azure-Ressourcen überwacht werden. Azure-Protokolle basieren auf synchronisierten internen Uhren, um eine zeitkorrelierte Aufzeichnung von Ereignissen über Ressourcen hinweg zu erstellen.
+
+- [Vorschau]: Bereitstellung des Dependency-Agents überwachen – VM-Image (Betriebssystem) nicht aufgelistet
+- [Vorschau]: Bereitstellung des Dependency-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
+- [Vorschau]: Bereitstellung des Log Analytics-Agents überwachen – VM-Image (Betriebssystem) nicht aufgelistet
+- [Vorschau]: Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen überwachen – VM-Image (Betriebssystem) nicht aufgelistet
+- [Vorschau]: Monitor unaudited SQL database in Azure Security Center
+- Überwachen der Diagnoseeinstellung
+- Überwachungseinstellungen auf SQL Server-Ebene überwachen
+
+## <a name="a1251-installation-of-software-on-operational-systems"></a>A.12.5.1 Installation von Software auf Betriebssystemen
+
+Die adaptive Anwendungssteuerung ist die Lösung von Azure Security Center, mit der Sie steuern können, welche Anwendungen auf Ihren virtuellen Computern in Azure ausgeführt werden können. Mit dieser Blaupause wird eine Azure Policy-Definition zugewiesen, die Änderungen an der Gruppe der zulässigen Anwendungen überwacht. Mit dieser Funktion können Sie die Installation von Software und Anwendungen auf virtuellen Azure-Computern steuern.
+
+- [Vorschau]: Monitor possible app Whitelisting in Azure Security Center
+
+## <a name="a1261-management-of-technical-vulnerabilities"></a>A.12.6.1 Verwaltung von technischen Sicherheitsrisiken
+
+Mit dieser Blaupause können Sie Sicherheitsrisiken im Informationssystem verwalten, indem fünf [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, die fehlende Systemupdates, Sicherheitsrisiken des Betriebssystems, SQL-Sicherheitsrisiken und Sicherheitsrisiken von virtuellen Computern in Azure Security Center überwachen. Azure Security Center umfasst Funktionen zur Berichterstellung, über die Sie in Echtzeit Einblick in den Sicherheitsstatus von bereitgestellten Azure-Ressourcen erhalten.
 
 - [Vorschau]: Monitor missing Endpoint Protection in Azure Security Center
 - [Vorschau]: Monitor missing system updates in Azure Security Center
@@ -149,9 +189,12 @@ Die adaptive Anwendungssteuerung ist die Lösung von Azure Security Center, mit 
 
 ## <a name="a1311-network-controls"></a>A.13.1.1 Netzwerksteuerungen
 
-Mit dieser Blaupause können Sie Netzwerke verwalten und steuern, indem eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen wird, die Netzwerksicherheitsgruppen mit wenig einschränkenden Regeln überwacht. Regeln, die zu wenig einschränkend sind, können einen unbeabsichtigten Netzwerkzugriff ermöglichen und sollten überprüft werden.
+Mit dieser Blaupause können Sie Netzwerke verwalten und steuern, indem eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen wird, die Netzwerksicherheitsgruppen mit wenig einschränkenden Regeln überwacht. Regeln, die zu wenig einschränkend sind, können einen unbeabsichtigten Netzwerkzugriff ermöglichen und sollten überprüft werden. Mit dieser Blaupause werden auch drei Azure Policy-Definitionen zugewiesen, die nicht geschützte Endpunkte, Anwendungen und Speicherkonten überwachen. Endpunkte und Anwendungen, die nicht durch eine Firewall geschützt sind, sowie Speicherkonten mit uneingeschränktem Zugriff können einen unbeabsichtigten Zugriff auf Informationen im Informationssystem ermöglichen.
 
 - [Vorschau]: Monitor permissive network access in Azure Security Center
+- [Vorschau]: Monitor unprotected network endpoints in Azure Security Center
+- [Vorschau]: Monitor unprotected web application in Azure Security Center
+- Nicht eingeschränkten Netzwerkzugriff auf Speicherkonten überwachen
 
 ## <a name="a1321-information-transfer-policies-and-procedures"></a>A.13.2.1 Richtlinien und Verfahren zur Übertragung von Informationen
 
@@ -159,24 +202,6 @@ Mit dieser Blaupause können Sie sicherstellen, dass die Übertragung von Inform
 
 - Ausschließliche Aktivierung sicherer Verbindungen mit Redis Cache überwachen
 - Sichere Übertragung in Speicherkonten überwachen
-
-## <a name="a1413-protecting-application-services-transactions"></a>A.14.1.3 Schützen von Transaktionen von Anwendungsdiensten
-
-Mit dieser Blaupause können Sie Ressourcen im Informationssystem schützen, indem drei [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, die nicht geschützte Endpunkte, Anwendungen und Speicherkonten überwachen. Endpunkte und Anwendungen, die nicht durch eine Firewall geschützt sind, sowie Speicherkonten mit uneingeschränktem Zugriff können einen unbeabsichtigten Zugriff auf Informationen im Informationssystem ermöglichen.
-
-- [Vorschau]: Monitor unprotected network endpoints in Azure Security Center
-- [Vorschau]: Monitor unprotected web application in Azure Security Center
-- Nicht eingeschränkten Netzwerkzugriff auf Speicherkonten überwachen
-
-## <a name="a1613-reporting-information-security-weaknesses"></a>A.16.1.3 Melden von Schwachstellen in der Informationssicherheit
-
-Mit dieser Blaupause erhalten Sie Informationen zu Sicherheitsrisiken im System, indem fünf [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen werden, die Sicherheitsrisiken, den Patchstatus und Schadsoftwarewarnungen in Azure Security Center überwachen. Azure Security Center umfasst Funktionen zur Berichterstellung, über die Sie in Echtzeit Einblick in den Sicherheitsstatus von bereitgestellten Azure-Ressourcen erhalten.
-
-- [Vorschau]: Monitor missing Endpoint Protection in Azure Security Center
-- [Vorschau]: Monitor missing system updates in Azure Security Center
-- [Vorschau]: Monitor OS vulnerabilities in Azure Security Center
-- [Vorschau]: Monitor SQL vulnerability assessment results in Azure Security Center
-- [Vorschau]: Monitor VM Vulnerabilities in Azure Security Center
 
 ## <a name="next-steps"></a>Nächste Schritte
 

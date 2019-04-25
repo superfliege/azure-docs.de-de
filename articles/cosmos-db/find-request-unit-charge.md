@@ -4,20 +4,20 @@ description: Hier erfahren Sie, wie Sie die Gebühr für eine Anforderungseinhei
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 03/21/2019
+ms.date: 04/15/2019
 ms.author: thweiss
-ms.openlocfilehash: e3175ee136057c695ceef3cd1976b447a529c803
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 833f815f0c84584f084e4d4637c0318f7c2daec0
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59053040"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683833"
 ---
 # <a name="find-the-request-unit-ru-charge-in-azure-cosmos-db"></a>Ermitteln der Gebühr für eine Anforderungseinheit (Request Unit, RU) in Azure Cosmos DB
 
 In diesem Artikel werden verschiedene Methoden beschrieben, mit denen Sie den Verbrauch von [Anforderungseinheiten](request-units.md) für einen beliebigen Vorgang ermitteln können, der für einen Azure Cosmos-Container ausgeführt wurde. Der Verbrauch kann aktuell entweder über das Azure-Portal oder mithilfe eines der SDKs anhand der von Azure Cosmos DB zurückgegebenen Antwort ermittelt werden.
 
-## <a name="core-api"></a>Core-API
+## <a name="sql-core-api"></a>SQL-API (Core-API)
 
 ### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
 
@@ -25,7 +25,7 @@ In diesem Artikel werden verschiedene Methoden beschrieben, mit denen Sie den Ve
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. [Erstellen Sie ein neues Azure Cosmos DB-Konto](create-sql-api-dotnet.md#create-account), und fügen Sie ihm Daten hinzu, oder wählen Sie ein vorhandenes Konto aus, das bereits Daten enthält.
+1. [Erstellen Sie ein neues Azure Cosmos-Konto](create-sql-api-dotnet.md#create-account), und fügen Sie ihm Daten hinzu, oder wählen Sie ein vorhandenes Azure Cosmos-Konto aus, das bereits Daten enthält.
 
 1. Öffnen Sie den Bereich **Daten-Explorer**, und wählen Sie den gewünschten Container aus.
 
@@ -147,7 +147,7 @@ request_charge = client.last_response_headers['x-ms-request-charge']
 
 ## <a name="azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB-API für MongoDB
 
-Die Gebühr für die Anforderungseinheit wird durch einen benutzerdefinierten [Datenbankbefehl](https://docs.mongodb.com/manual/reference/command/) namens `getLastRequestStatistics` verfügbar gemacht. Dieser Befehl gibt ein Dokument zurück, das den Namen des letzten ausgeführten Vorgangs sowie dessen Anforderungsgebühr und Dauer enthält.
+Die Gebühr für die Anforderungseinheit wird durch einen benutzerdefinierten [Datenbankbefehl](https://docs.mongodb.com/manual/reference/command/) namens `getLastRequestStatistics.` verfügbar gemacht. Dieser Befehl gibt ein Dokument zurück, das den Namen des letzten ausgeführten Vorgangs sowie dessen Anforderungsgebühr und Dauer enthält.
 
 ### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
 
@@ -155,7 +155,7 @@ Die Gebühr für die Anforderungseinheit wird durch einen benutzerdefinierten [D
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. [Erstellen Sie ein neues Azure Cosmos DB-Konto](create-mongodb-dotnet.md#create-a-database-account), und fügen Sie ihm Daten hinzu, oder wählen Sie ein vorhandenes Konto aus, das bereits Daten enthält.
+1. [Erstellen Sie ein neues Azure Cosmos-Konto](create-mongodb-dotnet.md#create-a-database-account), und fügen Sie ihm Daten hinzu, oder wählen Sie ein vorhandenes Konto aus, das bereits Daten enthält.
 
 1. Öffnen Sie den Bereich **Daten-Explorer**, und wählen Sie die gewünschte Sammlung aus.
 
@@ -195,7 +195,7 @@ Double requestCharge = stats.getDouble("RequestCharge");
 
 ### <a name="use-the-mongodb-nodejs-driver"></a>Verwenden des Node.js-Treibers von MongoDB
 
-Bei Verwendung des [offiziellen Node.js-Treibers von MongoDB](https://mongodb.github.io/node-mongodb-native/) kann die Methode `command` für ein Objekt vom Typ `Db` aufgerufen werden, um Befehle auszuführen. (Informationen zur Verwendung des Treibers finden Sie in [dieser Schnellstartanleitung](create-mongodb-nodejs.md).)
+Bei Verwendung des [offiziellen Node.js-Treibers von MongoDB](https://mongodb.github.io/node-mongodb-native/) kann die Methode `command` für ein Objekt vom Typ `db` aufgerufen werden, um Befehle auszuführen. (Informationen zur Verwendung des Treibers finden Sie in [dieser Schnellstartanleitung](create-mongodb-nodejs.md).)
 
 ```javascript
 db.command({ getLastRequestStatistics: 1 }, function(err, result) {
@@ -267,5 +267,9 @@ if (tableResult.RequestCharge.HasValue) // would be false when using Azure Stora
 
 In den folgenden Artikeln erfahren Sie, wie Sie den Verbrauch von Anforderungseinheiten optimieren:
 
+* [Durchsatz und Anforderungseinheiten in Azure Cosmos DB](request-units.md)
 * [Optimieren der Kosten für bereitgestellten Durchsatz in Azure Cosmos DB](optimize-cost-throughput.md)
 * [Optimieren der Abfragekosten in Azure Cosmos DB](optimize-cost-queries.md)
+* [Globales Skalieren von bereitgestelltem Durchsatz](scaling-throughput.md)
+* [Bereitstellen des Durchsatzes für Container und Datenbanken](set-throughput.md)
+* [Provision throughput for an Azure Cosmos DB container](how-to-provision-container-throughput.md) (Bereitstellen des Durchsatzes für einen Azure Cosmos DB-Container)

@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: jeedes
 ms.openlocfilehash: e94fe3156677a507eab91eee339ed29bf7b4ad2e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59257636"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-fiori"></a>Tutorial: Azure Active Directory-Integration mit SAP Fiori
@@ -175,8 +175,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit SAP Fio
 
     ![SSO-Informationen zur Domäne und zu den URLs für SAP Fiori](common/sp-identifier-reply.png)
 
-    d. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein:
-    `https://<your company instance of SAP Fiori>`
+    d. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<your company instance of SAP Fiori>`
 
     > [!NOTE]
     > Einige Kunden haben einen Fehler im Zusammenhang mit einer falsch konfigurierten Antwort-URL für ihre Instanz gemeldet. Wenn Sie einen derartigen Fehler erhalten, können Sie als Problemumgehung das folgende PowerShell-Skript verwenden, um die richtige Antwort-URL für Ihre Instanz festzulegen:

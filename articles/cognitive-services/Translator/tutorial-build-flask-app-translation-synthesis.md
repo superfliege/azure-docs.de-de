@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: erhopf
 ms.openlocfilehash: 69e6797e91fc645e3bd3e3b300cea6852a662214
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59007404"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Tutorial: Erstellen einer Flask-App mit Azure Cognitive Services
@@ -42,7 +42,7 @@ Flask ist ein Microframework zum Erstellen von Webanwendungen. Dies bedeutet, da
 Hier sind einige hilfreiche Links angegeben, falls Sie sich nach Abschluss dieses Tutorials eingehender informieren möchten:
 
 * [Flask-Dokumentation](http://flask.pocoo.org/)
-* [Flask for Dummies – A Beginner's Guide to Flask (Flask-Leitfaden für Einsteiger)](https://codeburst.io/flask-for-dummies-a-beginners-guide-to-flask-part-uno-53aec6afc5b1)
+* [Flask for Dummies – A Beginner's Guide to Flask](https://codeburst.io/flask-for-dummies-a-beginners-guide-to-flask-part-uno-53aec6afc5b1) (Flask-Leitfaden für Einsteiger)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -667,7 +667,7 @@ In diesem Abschnitt führen Sie einige Schritte aus:
 
 ### <a name="call-the-text-to-speech-api"></a>Aufrufen der Text-to-Speech-API
 
-Wir schreiben nun eine Funktion zum Konvertieren von Text in Sprache. Für diese Funktion werden zwei Argumente verwendet: `input_text` und `voice_font`. Diese Funktion wird jeweils aufgerufen, wenn ein Benutzer in Ihrer App die Schaltfläche zum Konvertieren von Text in Sprache betätigt. `input_text` ist die Übersetzungsausgabe, die vom Aufruf der Textübersetzung zurückgegeben wird, und `voice_font` ist der Wert aus der Voicefont-Auswahl im HTML-Code.
+Wir schreiben nun eine Funktion zum Konvertieren von Text in Sprache. Für diese Funktion werden zwei Argumente verwendet: `input_text` und `voice_font`. Diese Funktion wird jeweils aufgerufen, wenn ein Benutzer in Ihrer App die Schaltfläche zum Konvertieren von Text in Sprache betätigt. `voice_font` ist die Übersetzungsausgabe, die vom Aufruf der Textübersetzung zurückgegeben wird, und `input_text` ist der Wert aus der Voicefont-Auswahl im HTML-Code.
 
 1. Wir erstellen im Stammverzeichnis Ihres Arbeitsverzeichnisses eine Datei mit dem Namen `synthesize.py`.
 
@@ -959,6 +959,6 @@ Der Quellcode für dieses Projekt ist auf [GitHub](https://github.com/MicrosoftT
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Referenz zur Textübersetzungs-API](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
+* [Referenz für die Textübersetzungs-API](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
 * [Referenz zur Textanalyse-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
 * [Referenz zur Text-to-Speech-API](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)

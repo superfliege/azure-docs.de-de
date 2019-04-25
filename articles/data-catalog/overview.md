@@ -1,17 +1,17 @@
 ---
 title: Einführung in Azure Data Catalog
 description: Dieser Artikel enthält eine Übersicht über Microsoft Azure Data Catalog, einschließlich der Features des Diensts und der Probleme, die er beheben soll. Data Catalog ermöglicht Benutzern das Registrieren, Ermitteln, Verstehen und Nutzen von Datenquellen.
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.service: data-catalog
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: cd20fc6ae71a0dd96a0006de8c81050bb0646905
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 87c86ddeaa24693d393d250e1dc699b9a15ea84b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59288979"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010159"
 ---
 # <a name="what-is-azure-data-catalog"></a>Was ist Azure Data Catalog?
 
@@ -61,11 +61,11 @@ Weitere Informationen zu den Funktionen von Data Catalog finden Sie unter:
 * [Registrieren von Datenquellen](data-catalog-how-to-register.md)
 * [Ermitteln von Datenquellen](data-catalog-how-to-discover.md)
 * [Hinzufügen von Anmerkungen zu Datenquellen](data-catalog-how-to-annotate.md)
-* [Dokumentdatenquellen](data-catalog-how-to-documentation.md)
+* [So dokumentieren Sie Datenquellen](data-catalog-how-to-documentation.md)
 * [Herstellen einer Verbindung mit Datenquellen](data-catalog-how-to-connect.md)
 * [Arbeiten mit großen Datenquellen in Azure Data Catalog](data-catalog-how-to-big-data.md)
 * [Verwalten von Datenassets](data-catalog-how-to-manage.md)
-* [Einrichten des Unternehmensglossars für gesteuertes Markieren](data-catalog-how-to-business-glossary.md)
+* [Einrichten des Unternehmensglossars](data-catalog-how-to-business-glossary.md)
 * [Häufig gestellte Fragen](data-catalog-frequently-asked-questions.md)
 
 ## <a name="next-steps"></a>Nächste Schritte

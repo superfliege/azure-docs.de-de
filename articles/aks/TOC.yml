@@ -108,8 +108,6 @@
         - name: Löschen eines AKS-Clusters
           href: '/cli/azure/aks#az-aks-delete'
           maintainContext: true
-        - name: Azure AD-fähige AKS-Instanz
-          href: aad-integration.md
         - name: Erstellen virtueller Knoten (Vorschauversion)
           items:
             - name: Azure-Befehlszeilenschnittstelle
@@ -172,8 +170,18 @@
           href: control-kubeconfig-access.md
         - name: Schützen des Datenverkehrs zwischen Pods mit Netzwerkrichtlinien (Vorschauversion)
           href: use-network-policies.md
+        - name: Verwenden von Podsicherheitsrichtlinien (Vorschauversion)
+          href: use-pod-security-policies.md
         - name: Aktualisieren der Anmeldeinformationen für den Clusterdienstprinzipal
           href: update-credentials.md
+        - name: Aktivieren der Azure Active Directory-Integration
+          items:
+            - name: Verwenden der Azure-CLI
+              href: azure-ad-integration-cli.md
+            - name: Verwenden des Azure-Portals
+              href: azure-ad-integration.md
+        - name: Verwenden der rollenbasierten Zugriffssteuerung von Kubernetes mit Azure AD-Integration
+          href: azure-ad-rbac.md
         - name: Authentifizieren mit ACR
           href: ../container-registry/container-registry-auth-aks.md
           maintainContext: true
