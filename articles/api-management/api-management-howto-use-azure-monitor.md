@@ -213,13 +213,13 @@ API Management bietet derzeit Diagnoseprotokolle (stündlich erfasst) zu einzeln
 | userId | Zeichenfolge | Benutzerentitätsbezeichner für die aktuelle Anforderung | 
 | apimSubscriptionId | Zeichenfolge | Abonnemententitätsbezeichner für die aktuelle Anforderung | 
 | backendId | Zeichenfolge | Back-End-Entitätsbezeichner für die aktuelle Anforderung | 
-| LastError | object | Letzter Anforderungsverarbeitungsfehler | 
+| lastError | object | Letzter Anforderungsverarbeitungsfehler | 
 | elapsed | integer | Anzahl der Millisekunden, die zwischen dem Eingehen der Anforderung beim Gateway und dem Auftreten des Fehlers vergangen sind | 
-| Quelle | Zeichenfolge | Der Fehler wurde durch den Namen der Richtlinie oder die Verarbeitung des internen Handlers verursacht. | 
+| source | Zeichenfolge | Der Fehler wurde durch den Namen der Richtlinie oder die Verarbeitung des internen Handlers verursacht. | 
 | scope | Zeichenfolge | Der Fehler wurde durch den Bereich des Richtliniendokuments verursacht, das die Richtlinie enthält. | 
 | section | Zeichenfolge | Der Fehler wurde durch den Abschnitt des Richtliniendokuments verursacht, der die Richtlinie enthält. | 
 | reason | Zeichenfolge | Fehlerursache | 
-| Message: | Zeichenfolge | Fehlermeldung | 
+| message | Zeichenfolge | Fehlermeldung | 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
