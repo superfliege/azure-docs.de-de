@@ -55,7 +55,7 @@ Folgende Eigenschaften werden für den mit einer Webtabelle verknüpften Dienst 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Web** |JA |
-| URL | URL der Webquelle |JA |
+| url | URL der Webquelle |JA |
 | authenticationType | Zulässiger Wert: **Anonymous** |JA |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Eine selbstgehostete Integrationslaufzeit ist erforderlich, wie unter [Voraussetzungen](#prerequisites) erwähnt wird. |JA |
 
