@@ -27,10 +27,10 @@ Jede API Management-Dienstinstanz weist eine Eigenschaftensammlung von Schlüsse
 
 | Attribut | Type | BESCHREIBUNG |
 | --- | --- | --- |
-| Anzeigename |Zeichenfolge |Alphanumerische Zeichenfolge zum Verweis auf die Eigenschaft in den Richtlinien |
-| Wert |Zeichenfolge |Der Wert der Eigenschaft. Er darf nicht leer sein oder nur aus Leerzeichen bestehen. |
-|Geheimer Schlüssel|boolean|Bestimmt, ob der Wert ein geheimer Schlüssel ist und ob er verschlüsselt werden sollte.|
-| Tags |Array von Zeichenfolgen |Optionale Tags, die zum Filtern der Eigenschaftenliste verwendet werden können, wenn sie bereitgestellt werden. |
+| `Display name` |Zeichenfolge |Alphanumerische Zeichenfolge zum Verweis auf die Eigenschaft in den Richtlinien |
+| `Value` |Zeichenfolge |Der Wert der Eigenschaft. Er darf nicht leer sein oder nur aus Leerzeichen bestehen. |
+| `Secret` |boolean|Bestimmt, ob der Wert ein geheimer Schlüssel ist und ob er verschlüsselt werden sollte.|
+| `Tags` |Array von Zeichenfolgen |Optionale Tags, die zum Filtern der Eigenschaftenliste verwendet werden können, wenn sie bereitgestellt werden. |
 
 ![Benannte Werte](./media/api-management-howto-properties/named-values.png)
 
