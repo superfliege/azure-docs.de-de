@@ -4,15 +4,15 @@ description: Informationen zu Verwaltungsgruppen und ihrer Verwendung sowie zur 
 author: rthorn17
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.service: azure-resource-manager
-ms.date: 04/17/2019
+ms.date: 04/22/2019
 ms.author: rithorn
 ms.topic: overview
-ms.openlocfilehash: 157701e826d6a281a60393e1ec270cf061be8214
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ceb606f2243ef723866e485c6580a6323c1c92ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699380"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60874334"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen
 
@@ -47,9 +47,8 @@ Die Stammverwaltungsgruppe ist in die Hierarchie integriert, sodass ihr alle Ver
 
 ### <a name="important-facts-about-the-root-management-group"></a>Wichtige Fakten zur Stammverwaltungsgruppe
 
-- Der Name und die ID der Stammverwaltungsgruppe werden standardmäßig vergeben. Der Anzeigename kann jederzeit aktualisiert werden, damit er im Azure-Portal entsprechend angezeigt wird. Damit Sie den [Namen ändern](manage.md#change-the-name-of-a-management-group) können, muss Ihrem Konto die Rolle „Besitzer“ oder „Mitwirkender“ für die Stammverwaltungsgruppe zugewiesen sein.
-  - Der Name lautet „Mandantenstammgruppe“.
-  - Die ID ist die Azure Active Directory-ID.
+- Der Anzeigename der Stammverwaltungsgruppe lautet standardmäßig **Mandantenstammgruppe**. Die ID ist die Azure Active Directory-ID.
+- Damit Sie den Anzeigenamen ändern können, muss Ihrem Konto die Rolle „Besitzer“ oder „Mitwirkender“ für die Stammverwaltungsgruppe zugewiesen sein. Die Schritte zum Ändern des Namens finden Sie unter [Verwalten von Ressourcen mit Verwaltungsgruppen](manage.md#change-the-name-of-a-management-group).
 - Die Stammverwaltungsgruppe kann im Gegensatz zu anderen Verwaltungsgruppen nicht verschoben oder gelöscht werden.  
 - Alle Abonnements und Verwaltungsgruppen sind der Stammverwaltungsgruppe im Verzeichnis untergeordnet.
   - Alle Ressourcen im Verzeichnis sind der Stammverwaltungsgruppe für die globale Verwaltung untergeordnet.
