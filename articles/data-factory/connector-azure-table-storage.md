@@ -236,7 +236,7 @@ Legen Sie zum Kopieren von Daten aus der Azure-Tabelle den Quelltyp in der Kopie
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **AzureTableSource** festgelegt werden. |Ja |
-| AzureTableSourceQuery |Verwendet die benutzerdefinierte Table Storage-Abfrage zum Lesen von Daten. Siehe Beispiele im folgenden Abschnitt. |Nein  |
+| azureTableSourceQuery |Verwendet die benutzerdefinierte Table Storage-Abfrage zum Lesen von Daten. Siehe Beispiele im folgenden Abschnitt. |Nein  |
 | azureTableSourceIgnoreTableNotFound |Gibt an, ob es zulässig ist, wenn die Ausnahme der Tabelle nicht vorhanden ist.<br/>Zulässige Werte sind **true** und **false** (Standard). |Nein  |
 
 ### <a name="azuretablesourcequery-examples"></a>Beispiele für azureTableSourceQuery
