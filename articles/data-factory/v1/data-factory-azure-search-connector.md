@@ -59,7 +59,7 @@ Die folgende Tabelle enthält Beschreibungen der JSON-Elemente, die für den mit
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | -------- | ----------- | -------- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureSearch**. | JA |
-| URL | URL für den Azure Search-Dienst. | JA |
+| url | URL für den Azure Search-Dienst. | JA |
 | key | Admin-Schlüssel für den Azure Search-Dienst. | JA |
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
@@ -80,7 +80,7 @@ Wenn bei der Kopieraktivität die Senke den Typ **AzureSearchIndexSink** aufweis
 | Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | -------- | ----------- | -------------- | -------- |
 | WriteBehavior | Gibt an, ob ein Dokument zusammengeführt oder ersetzt werden soll, wenn es bereits im Index vorhanden ist. Siehe [Eigenschaft „WriteBehavior“](#writebehavior-property).| Zusammenführen (Standard)<br/>Hochladen| Nein  |
-| writeBatchSize | Lädt Daten in den Azure Search-Index hoch,wenn die Puffergröße „writeBatchSize“ erreicht. Einzelheiten finden Sie unter [Eigenschaft „WriteBatchSize“](#writebatchsize-property). | 1 bis 1.000. Der Standardwert ist 1000. | Nein  |
+| WriteBatchSize | Lädt Daten in den Azure Search-Index hoch,wenn die Puffergröße „writeBatchSize“ erreicht. Einzelheiten finden Sie unter [Eigenschaft „WriteBatchSize“](#writebatchsize-property). | 1 bis 1.000. Der Standardwert ist 1000. | Nein  |
 
 ### <a name="writebehavior-property"></a>Eigenschaft „WriteBehavior“
 AzureSearchSink fügt Daten ein/aktualisiert beim Schreiben von Daten. Dies bedeutet, dass Azure Search beim Schreiben eines Dokuments das bestehende Dokument aktualisiert, anstatt eine Konfliktausnahme auszulösen, wenn der Dokumentenschlüssel bereits im Azure Search-Index vorhanden ist.
@@ -100,11 +100,11 @@ In der folgenden Tabelle wird angegeben, ob ein Azure Search-Datentyp unterstüt
 
 | Azure Search-Datentyp | In Azure Search-Senke unterstützt |
 | ---------------------- | ------------------------------ |
-| Zeichenfolge | J |
+| String | J |
 | Int32 | J |
 | Int64 | J |
 | Double | J |
-| Boolescher Wert | J |
+| Boolean | J |
 | DataTimeOffset | J |
 | String Array | N |
 | GeographyPoint | N |
