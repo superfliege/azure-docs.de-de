@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 18fc86e8d9b9622f11faad0f11dc57a83124a857
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 7e697329e83b530157e490b04f5155d28d243bb6
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417506"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549487"
 ---
 # <a name="back-up-your-app-in-azure"></a>Sichern einer App in Azure
 Das Feature zum Sichern und Wiederherstellen in [Azure App Service](overview.md) ermöglicht Ihnen, App-Sicherungen einfach manuell oder nach einem Zeitplan zu erstellen. Sie können die App mit einer Momentaufnahme eines früheren Zustands wiederherstellen, indem Sie die vorhandene App überschreiben oder als andere App wiederherstellen. 
@@ -121,6 +121,9 @@ Mitunter möchten Sie nicht alles in Ihrer App sichern. Hier sind einige Beispie
 * Sie möchten die Protokolldateien nicht sichern.
 
 Bei Teilsicherungen können Sie genau auswählen, welche Dateien gesichert werden sollen.
+
+> [!NOTE]
+> Einzelne Datenbanken in der Sicherung können maximal 4 GB groß sein, die maximale Gesamtgröße der Sicherung beträgt aber 10 GB.
 
 ### <a name="exclude-files-from-your-backup"></a>Ausschließen von Dateien aus der Sicherung
 Angenommen, Sie verfügen über eine App mit Protokolldateien und statischen Images, die einmal gesichert wurden und sich nicht ändern werden. In solchen Fällen können Sie diese Ordner und Dateien von der Speicherung in zukünftigen Sicherungen ausschließen. Um Dateien und Ordner von Ihren Sicherungen auszuschließen, erstellen Sie eine `_backup.filter`-Datei im `D:\home\site\wwwroot`-Ordner Ihrer App. Geben Sie die Liste von Dateien und Ordnern an, die Sie in dieser Datei ausschließen möchten. 

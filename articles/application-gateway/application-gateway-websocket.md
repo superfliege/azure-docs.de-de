@@ -1,18 +1,18 @@
 ---
 title: WebSocket-Unterstützung in Azure Application Gateway | Microsoft-Dokumentation
 description: Diese Seite enthält eine Übersicht über die WebSocket-Unterstützung von Application Gateway.
-author: amsriva
+author: vhorne
 ms.author: amsriva
 ms.service: application-gateway
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/18/2019
-ms.openlocfilehash: bae4b3d955076679a5640717ac6f5446e3951fb9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 54c34690e678f07d6309a1877b0ca5d0a0b274f5
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58168118"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59606904"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>Übersicht über die WebSocket-Unterstützung in Application Gateway
 
@@ -32,7 +32,7 @@ Um eine WebSocket-Verbindung einzurichten, wird ein spezifischer HTTP-basierter 
 
 ### <a name="listener-configuration-element"></a>Listenerkonfigurationselement
 
-Zur Unterstützung von WebSocket-Datenverkehr kann ein vorhandener HTTP-Listener verwendet werden. Es folgt ein Codeausschnitt des „httpListeners“-Elements in einer Beispielvorlagendatei. Zur Unterstützung von WebSocket-Datenverkehr benötigen Sie sowohl den HTTP- als auch den HTTPS-Listener. Analog dazu können Sie über das [Portal](application-gateway-create-gateway-portal.md) oder mithilfe von [PowerShell](application-gateway-create-gateway-arm.md) ein Anwendungsgateway mit Listenern für die Ports 80 und 443 erstellen, um WebSocket-Datenverkehr zu unterstützen.
+Zur Unterstützung von WebSocket-Datenverkehr kann ein vorhandener HTTP-Listener verwendet werden. Es folgt ein Codeausschnitt des „httpListeners“-Elements in einer Beispielvorlagendatei. Zur Unterstützung von WebSocket-Datenverkehr benötigen Sie sowohl den HTTP- als auch den HTTPS-Listener. Analog dazu können Sie über das Portal oder mithilfe von Azure PowerShell ein Anwendungsgateway mit Listenern für die Ports 80 und 443 erstellen, um WebSocket-Datenverkehr zu unterstützen.
 
 ```json
 "httpListeners": [
@@ -123,5 +123,4 @@ Ein weiterer Grund: Der Back-End-Integritätstest des Anwendungsgateways unterst
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich im Anschluss an die WebSocket-Unterstützung unter [Erstellen eines Anwendungsgateways](application-gateway-create-gateway.md) über die ersten Schritte mit einer WebSocket-fähigen Webanwendung.
-
+Informieren Sie sich im Anschluss an die WebSocket-Unterstützung unter [Erstellen eines Anwendungsgateways](quick-create-powershell.md) über die ersten Schritte mit einer WebSocket-fähigen Webanwendung.

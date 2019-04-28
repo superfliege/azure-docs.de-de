@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: magattus
-ms.openlocfilehash: 42fd28f2a18ecf81c7846abdc7b3159a275a9cd7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8d4fc5fbdc3185c46f00d94537b197ec03f66755
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013543"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528168"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>HTTP-Variablen für Azure CDN-Regel-Engine
 HTTP-Variablen stellen die Methoden für den Abruf von HTTP-Anforderungs- und -Antwortmetadaten bereit. Diese Metadaten können dann zur dynamischen Änderung einer Anforderung oder Antwort verwendet werden. Die Verwendung von HTTP-Variablen ist auf die folgenden Regel-Engine-Features beschränkt :
@@ -38,7 +38,7 @@ In der folgenden Tabelle sind die unterstützten HTTP-Variablen beschrieben. Ein
 | ---- | -------- | ----------- | ------------ |
 | ASN (Anfordernde Person) | %{geo_asnum} | Gibt die AS-Nummer der anfordernden Person an. <br /><br />**Veraltet:** %{virt_dst_asnum}. <br />Diese Variable wurde zugunsten von „%{geo_asnum}“ als veraltet markiert. Eine Regel mit dieser veralteten Variable funktioniert zwar weiterhin, Sie sollten sie jedoch so aktualisieren, dass die neue Variable verwendet wird. | AS15133 |
 | Ort (Anfordernde Person) | %{geo_city} | Gibt den Ort der anfordernden Person an. | Los Angeles |
-| Kontinent (Anfordernde Person) | %{geo_continent} | Gibt den Kontinent der anfordernden Person über die jeweilige Abkürzung an. <br />Gültige Werte sind: <br />AF: Afrika<br />AS: Asien<br />EU: Europa<br />NA: Nordamerika<br />OC: Ozeanien<br />SA: Südamerika<br /><br />**Veraltet:** %{virt_dst_continent}. <ber />Diese Variable wurde zugunsten von „%{geo_continent}“ als veraltet markiert. <br />Eine Regel mit dieser veralteten Variable funktioniert zwar weiterhin, Sie sollten sie jedoch so aktualisieren, dass die neue Variable verwendet wird.| – |
+| Kontinent (Anfordernde Person) | %{geo_continent} | Gibt den Kontinent der anfordernden Person über die jeweilige Abkürzung an. <br />Gültige Werte sind: <br />AF: Afrika<br />AS: Asien<br />EU: Europa<br />NA: Nordamerika<br />OC: Ozeanien<br />SA: Südamerika<br /><br />**Veraltet:** %{virt_dst_continent}. <br />Diese Variable wurde zugunsten von „%{geo_continent}“ als veraltet markiert. <br />Eine Regel mit dieser veralteten Variable funktioniert zwar weiterhin, Sie sollten sie jedoch so aktualisieren, dass die neue Variable verwendet wird.| – |
 | Cookiewert | %{cookie_Cookie} | Gibt den Wert zurück, der dem durch den Cookieausdruck identifizierten Cookieschlüssel entspricht. | Verwendungsbeispiel: <br />%{cookie__utma}<br /><br />Beispielwert:<br />111662281.2.10.1222100123 |
 | Land (Anfordernde Person) | %{geo_country} | Gibt das Herkunftsland der anfordernden Person über den jeweiligen Ländercode an. <br />**Veraltet:** %{virt_dst_country}. <br /><br />Diese Variable wurde zugunsten von „%{geo_country}“ als veraltet markiert. Eine Regel mit dieser veralteten Variable funktioniert zwar weiterhin, Sie sollten sie jedoch so aktualisieren, dass die neue Variable verwendet wird. | US |
 | Designated Market Area (Anfordernde Person) | %{geo_dma_code} |Gibt den Medienmarkt der anfordernden Person anhand des Regionscodes an. <br /><br />Dieses Feld gilt nur für Anforderungen, die aus den Vereinigten Staaten stammen.| 745 |

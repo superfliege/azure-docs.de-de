@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
 ms.author: magattus
-ms.openlocfilehash: f6efec64b4e6659b822b76e0fd7f9cc71a164094
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 248a51da76cdee06e55438a706c543c70dcf141e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917752"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526180"
 ---
 # <a name="restrict-azure-cdn-content-by-country"></a>Einschränken von Azure-CDN-Inhalten nach Land
 
@@ -47,7 +47,7 @@ Sie können Geofilterung durch Eingabe eines Schrägstrichs (/) auf alle Dateien
 Alle folgenden Verzeichnispfadfilter sind z.B. gültig:   
 */*                                 
 */Photos/*     
-*/Photos/Strasbourg/*     
+*/Photos/Straßburg /*     
 */Photos/Strasbourg/city.png*
 
 ### <a name="define-the-type-of-action"></a>Definieren des Aktionstyps
@@ -59,8 +59,8 @@ Wählen Sie in der Liste **AKTION** die Option **Zulassen** oder **Blockieren** 
 - **Blockieren**: Benutzern aus den angegebenen Ländern wird der von diesem rekursiven Pfad angeforderte Zugriff auf Ressourcen verweigert. Wenn keine anderen Länderfilteroptionen für diesen Standort konfiguriert wurden, wird der Zugriff für alle anderen Benutzer zugelassen.
 
 Eine Geofilterungsregel zum Blockieren des Pfads */Photos/Strasbourg/* filtert z.B. die folgenden Dateien:     
-*http://<endpoint>.azureedge.net/Photos/Strasbourg/1000.jpg*
-*http://<endpoint>.azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg*
+*http:\//\<Endpunkt>.azureedge.net/Photos/Strasbourg/1000.jpg*
+*http:\//\<Endpunkt>.azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg*
 
 ### <a name="define-the-countries"></a>Definieren der Länder
 Wählen Sie in der Liste **LÄNDERCODES** die Länder aus, die Sie für den Pfad zulassen oder blockieren möchten. 

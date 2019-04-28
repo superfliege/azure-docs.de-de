@@ -5,16 +5,16 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/06/2018
+ms.date: 04/11/2019
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 3cffd09a54b09a425f3b7f3519b4ceb7a04a6d08
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: df59342bebae3ac0f6e80e5b58f429fedf3c3336
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855349"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578491"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Aktivieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand für mehrere VMs
 
@@ -71,7 +71,7 @@ Die folgende Tabelle zeigt die unterstützten Zuordnungen:
 |EastUS<sup>1</sup>|EastUS2|
 |JapanEast|JapanEast|
 |SoutheastAsia|SoutheastAsia|
-|WestCentralUS|WestCentralUS|
+|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
 |Europa, Westen|Europa, Westen|
 |UKSouth|UKSouth|
 |USGovVirginia|USGovVirginia|
@@ -79,8 +79,7 @@ Die folgende Tabelle zeigt die unterstützten Zuordnungen:
 
 <sup>1</sup> EastUS2EUAP- und EastUS-Zuordnungen für Log Analytics-Arbeitsbereiche zu Automation-Konten sind keine exakten Region-zu-Region-Zuordnungen, jedoch handelt es sich um die richtige Zuordnung.
 
-> [!NOTE]
-> Aufgrund der Nachfrage ist eine Region möglicherweise nicht verfügbar, wenn Ihr Automation-Konto oder Log Analytics-Arbeitsbereich erstellt wird.  Wenn dies der Fall ist, stellen Sie sicher, dass Sie eine Region aus der voranstehenden Tabelle verwenden, in der Sie Ressourcen erstellen können.
+<sup>2</sup> Aufgrund von Kapazitätseinschränkungen ist die Region nicht verfügbar, wenn neue Ressourcen erstellt werden. Dies umfasst auch Automation-Konten und Log Analytics-Arbeitsbereiche. Allerdings sollten bereits in der Region vorhandene verknüpfte Ressourcen weiterhin funktionieren.
 
 Deaktivieren Sie das Kontrollkästchen neben jedem virtuellen Computern, den Sie nicht aktivieren möchten. Die Auswahl für virtuelle Computer, die nicht aktiviert werden können, ist bereits aufgehoben.
 

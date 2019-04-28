@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/20/2016
 ms.author: jeconnoc
-ms.openlocfilehash: f0724fd6e5f08f3e09bcb147c12d1657235dc704
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: f597bc760a3f3825416912642ee66a53dfb91696
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58916885"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525560"
 ---
 # <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>Verfolgen des Ablaufs einer Cloud Services-Anwendung mit der Azure-Diagnose
 Die Ablaufverfolgung ist eine Möglichkeit, die Ausführung der Anwendung zu überwachen, während sie ausgeführt wird. Sie können die Klassen [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace), [System.Diagnostics.Debug](/dotnet/api/system.diagnostics.debug) und [System.Diagnostics.TraceSource](/dotnet/api/system.diagnostics.tracesource) verwenden, um Informationen zu Fehlern und zur Anwendungsausführung in Protokollen, Textdateien oder auf anderen Geräten zur späteren Analyse aufzuzeichnen. Weitere Informationen zur Ablaufverfolgung finden Sie unter [Ablaufverfolgung und Instrumentation von Anwendungen](/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications).
@@ -69,7 +69,7 @@ Weitere Informationen zu Listenern finden Sie unter [Ablaufverfolgungslistener](
 Nachdem Sie die Schritte zum Hinzufügen des Listeners abgeschlossen haben, können Sie Ihrem Code Ablaufverfolgungsanweisungen hinzufügen.
 
 ### <a name="to-add-trace-statement-to-your-code"></a>So fügen Sie dem Code eine Ablaufverfolgungsanweisung hinzu
-1. Öffnen Sie eine Quelldatei für die Anwendung. Beispielsweise die Datei <RoleName>.cs für die Workerrolle oder die Webrolle.
+1. Öffnen Sie eine Quelldatei für die Anwendung. Beispielsweise die Datei „\<RoleName>.cs“ für die Workerrolle oder die Webrolle.
 2. Fügen Sie die folgende using-Anweisung hinzu, wenn sie noch nicht vorhanden ist:
     ```
         using System.Diagnostics;

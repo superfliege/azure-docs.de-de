@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 manager: jeconnoc
 ms.date: 01/05/2019
 ms.topic: article
-ms.openlocfilehash: 3faa3b0a5cd919752f8b7e4969e3affd668c8077
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 339d4270dc1803879607663e9e2db4a86591ec76
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59360764"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523000"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Erstellen von Schleifen in Azure Logic Apps, die Workflowaktionen wiederholen oder Arrays verarbeiten
 
@@ -195,8 +195,8 @@ Diese beispielhafte Logik-App inkrementiert täglich um 8:00 Uhr eine Variable, 
 
    | Eigenschaft | Wert | BESCHREIBUNG |
    | -------- | ----- | ----------- |
-   | **NAME** | Begrenzung | Name Ihrer Variablen | 
-   | **Type** | Ganze Zahl  | Datentyp Ihrer Variablen | 
+   | **Name** | Begrenzung | Name Ihrer Variablen | 
+   | **Typ** | Ganze Zahl  | Datentyp Ihrer Variablen | 
    | **Wert** | 0 | Startwert Ihrer Variablen | 
    |||| 
 
@@ -236,9 +236,9 @@ Diese beispielhafte Logik-App inkrementiert täglich um 8:00 Uhr eine Variable, 
 
       | Eigenschaft | Wert | BESCHREIBUNG |
       | -------- | ----- | ----------- | 
-      | **To** | *<E-Mail-Adresse\@Domäne>* | Die E-Mail-Adresse des Empfängers. Geben Sie zum Testen Ihre eigene E-Mail-Adresse an. | 
-      | **Antragsteller** | Aktueller Wert für „Limit“ ist **Limit** | Legen Sie den E-Mail-Betreff fest. Stellen Sie in diesem Beispiel sicher, dass Sie die **Limit**-Variable einbeziehen. | 
-      | **Body** | <*E-Mail-Inhalt*> | Geben Sie den Inhalt der E-Mail-Nachricht an, die Sie senden möchten. In diesem Beispiel können Sie beliebigen Text eingeben. | 
+      | **An** | *\<email-address\@domain>* | Die E-Mail-Adresse des Empfängers. Geben Sie zum Testen Ihre eigene E-Mail-Adresse an. | 
+      | **Betreff** | Aktueller Wert für „Limit“ ist **Limit** | Legen Sie den E-Mail-Betreff fest. Stellen Sie in diesem Beispiel sicher, dass Sie die **Limit**-Variable einbeziehen. | 
+      | **Text** | <*E-Mail-Inhalt*> | Geben Sie den Inhalt der E-Mail-Nachricht an, die Sie senden möchten. In diesem Beispiel können Sie beliebigen Text eingeben. | 
       |||| 
 
 1. Speichern Sie Ihre Logik-App. Wählen Sie in der Symbolleiste des Designers die Option **Ausführen**, um Ihre Logik-App manuell zu testen.

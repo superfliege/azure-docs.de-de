@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
-ms.date: 08/08/2018
+ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 234d59f9d625af6d0309b2995cc734fad6028b1e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 60cd2d21167739e824489e30ebd187a5fc0cc12d
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767038"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579273"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Erste Schritte mit Azure Automation State Configuration
 
@@ -27,7 +27,7 @@ Dieser Artikel enthält eine detaillierte Anleitung zur Verwendung von Azure Aut
 Um die Beispiele in diesem Artikel ausführen zu können, ist Folgendes erforderlich:
 
 - Ein Azure Automation-Konto. Informationen zum Erstellen eines ausführenden Azure Automation-Kontos finden Sie unter [Azure Run As Account](automation-sec-configure-azure-runas-account.md)(Ausführendes Azure-Konto).
-- Eine Azure Resource Manager-VM (nicht klassisch) unter Windows Server 2008 R2 oder höher. Eine Anleitung zum Erstellen einer VM finden Sie unter [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
+- Eine Azure Resource Manager-VM (nicht klassisch), die ein [unterstütztes Betriebssystem](automation-dsc-overview.md#operating-system-requirements) ausführt. Eine Anleitung zum Erstellen einer VM finden Sie unter [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
 
 ## <a name="creating-a-dsc-configuration"></a>Erstellen einer DSC-Konfiguration
 
@@ -149,9 +149,9 @@ Mit Azure Automation State Configuration können Sie virtuelle Azure-Computer (m
 1. Klicken Sie auf der Detailseite **Virtueller Computer** auf **+ Verbinden**.
 
    > [!IMPORTANT]
-   > Dies muss eine Azure Resource Manager-VM unter Windows Server 2008 R2 oder höher sein.
+   > Dies muss eine Azure Resource Manager-VM sein, die ein [unterstütztes Betriebssystem](automation-dsc-overview.md#operating-system-requirements) ausführt.
 
-1. Wählen Sie auf der Seite **Registrierung** im Feld **Name der Knotenkonfiguration** den Namen der Knotenkonfiguration aus, die Sie dem virtuellen Computer zuweisen möchten. Das Angeben eines Namens an dieser Stelle ist optional. Sie können die zugewiesene Knotenkonfiguration nach dem Integrieren des Knotens ändern.
+2. Wählen Sie auf der Seite **Registrierung** im Feld **Name der Knotenkonfiguration** den Namen der Knotenkonfiguration aus, die Sie dem virtuellen Computer zuweisen möchten. Das Angeben eines Namens an dieser Stelle ist optional. Sie können die zugewiesene Knotenkonfiguration nach dem Integrieren des Knotens ändern.
    Aktivieren Sie **Starten Sie den Knoten ggf. neu**, und klicken Sie dann auf **OK**.
 
    ![Screenshot des Blatts „Registrierung“](./media/automation-dsc-getting-started/RegisterVM.png)

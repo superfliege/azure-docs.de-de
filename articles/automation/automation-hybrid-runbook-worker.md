@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4c91bf389f5c63b95e5b68784b6657e92b109a46
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 55dff6cf073612e3e5473da3a5f1bf722b2ccdbd
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59265864"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608553"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatisieren von Ressourcen im Datencenter oder in der Cloud mit Hybrid Runbook Worker
 
@@ -27,6 +27,9 @@ Diese Funktionalität wird in der folgenden Abbildung veranschaulicht:
 Jeder Hybrid-Runbook-Worker ist ein Mitglied einer Hybrid-Runbook-Workergruppe, die Sie beim Installieren des Agents angeben. Eine Gruppe kann einen einzelnen Agent umfassen, aber für Hochverfügbarkeit können Sie mehrere Agents installieren.
 
 Wenn Sie ein Runbook auf einen Hybrid Runbook Worker starten, geben Sie die Gruppe an, in der das Runbook ausgeführt werden soll. Jeder Worker in der Gruppe ruft Azure Automation ab, um festzustellen, ob Aufträge verfügbar sind. Wenn ein Auftrag verfügbar ist, übernimmt ihn der erste verfügbare Worker. Die Verarbeitungszeit der Auftragswarteschlange hängt vom Hybrid Worker-Hardwareprofil und der Auslastung ab. Sie können keinen bestimmten Worker angeben. Für Hybrid Runbook Worker gelten viele der Grenzwerte von Azure-Sandboxes nicht. Sie unterliegen nicht den gleichen Beschränkungen für Speicherplatz, Arbeitsspeicher oder Netzwerksockets. Hybrid Runbook Worker werden nur durch die eigenen Ressourcen beschränkt. Auch das 180-minütige Zeitlimit für die [gleichmäßige Verteilung](automation-runbook-execution.md#fair-share), dem Azure-Sandboxes unterliegen, gilt bei Hybrid Runbook Workern nicht. Weitere Informationen zu den Diensteinschränkungen für Azure-Sandboxes und Hybrid Runbook Worker finden Sie auf der [Seite mit auftragsspezifischen Grenzwerten](../azure-subscription-service-limits.md#automation-limits).
+
+> [!NOTE]
+> Hybrid Runbook Worker werden in Azure China nicht unterstützt.
 
 ## <a name="install-a-hybrid-runbook-worker"></a>Installieren eines Hybrid Runbook Workers
 
@@ -126,6 +129,7 @@ Wenn eines Ihrer Automation-Konten für eine bestimmte Region definiert ist, kö
 | Südostasien |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
 | Indien, Mitte |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
 | Japan, Osten |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
+| Australien (Osten) |ae-jobruntimedata-prod-su1.azure-automation.net</br>ae-agentservice-prod-1.azure-automation.net |
 | Australien, Südosten |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
 | UK, Süden | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
 | US Government, Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |

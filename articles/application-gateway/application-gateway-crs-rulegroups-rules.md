@@ -4,22 +4,24 @@ description: Diese Seite enthält Informationen zu CRS-Regelgruppen und -Regeln 
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 4/8/2019
+ms.date: 4/11/2019
 ms.author: victorh
-ms.openlocfilehash: 61ab41eed7703c82c2e5ef2a3b5412a9f56389ba
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 0ad5cc76c0f4631fd60eea7d0a57e4740b6a9db3
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59279702"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523918"
 ---
-# <a name="list-of-web-application-firewall-crs-rule-groups-and-rules-offered"></a>Liste mit CRS-Regelgruppen und -Regeln von Web Application Firewall
+# <a name="web-application-firewall-crs-rule-groups-and-rules"></a>CRS-Regelgruppen und -Regeln der Web Application Firewall
 
-Mit der Application Gateway Web Application Firewall (WAF) werden Webanwendungen vor allgemeinen Sicherheitsrisiken und Exploits geschützt. Hierfür werden Regeln verwendet, die basierend auf den OWASP-Kernregelsätzen 2.2.9 oder 3.0 definiert sind. Diese Regeln können einzeln deaktiviert werden. In diesem Artikel sind die aktuellen Regeln und Regelsätze enthalten.
+Mit der Application Gateway Web Application Firewall (WAF) werden Webanwendungen vor allgemeinen Sicherheitsrisiken und Exploits geschützt. Hierfür werden Regeln verwendet, die basierend auf den OWASP-Kernregelsätzen 3.0 oder 2.2.9 definiert sind. Diese Regeln können einzeln deaktiviert werden. In diesem Artikel sind die aktuellen Regeln und Regelsätze enthalten.
 
-In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei Verwendung von Application Gateway mit Web Application Firewall verfügbar sind.  Jede Tabelle enthält die Regeln einer Regelgruppe für eine bestimmte CRS-Version.
+Die folgenden Regelgruppen und Regeln sind bei Verwendung von Application Gateway mit Web Application Firewall verfügbar.
 
-## <a name="owasp30"></a> OWASP_3.0
+# <a name="owasp-30tabowasp3"></a>[OWASP 3.0](#tab/owasp3)
+
+## <a name="owasp30"></a>-Regelsätze
 
 ### <a name="General"></a> <p x-ms-format-detection="none">Allgemein</p>
 
@@ -50,7 +52,7 @@ In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei 
 |---|---|
 |920100|Ungültige HTTP-Anforderungszeile|
 |920130|Fehler beim Analysieren des Anforderungstexts|
-|920140|Fehler bei strenger Überprüfung des mehrteiligen Anforderungstexts =     PE %@{REQBODY_PROCESSOR_ERROR}     BQ %@{MULTIPART_BOUNDARY_QUOTED}     BW %@{MULTIPART_BOUNDARY_WHITESPACE}     DB %@{MULTIPART_DATA_BEFORE}     DA %@{MULTIPART_DATA_AFTER}     HF %@{MULTIPART_HEADER_FOLDING}     LF %@{MULTIPART_LF_LINE}     SM %@{MULTIPART_SEMICOLON_MISSING}     IQ %@{MULTIPART_INVALID_QUOTING}     IH %@{MULTIPART_INVALID_HEADER_FOLDING}     FLE %@{MULTIPART_FILE_LIMIT_EXCEEDED}|
+|920140|Fehler bei der strengen Überprüfung des mehrteiligen Anforderungstexts|
 |920160|Content-Length-HTTP-Header ist nicht numerisch.|
 |920170|GET- oder HEAD-Anforderung mit Textinhalt|
 |920180|POST-Anforderung mit fehlendem Content-Length-Header|
@@ -216,7 +218,9 @@ In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei 
 |943110|Möglicher Session Fixation-Angriff = SessionID-Parametername mit domänenexternem Verweiser|
 |943120|Möglicher Session Fixation-Angriff = SessionID-Parametername ohne Verweiser|
 
-## <a name="owasp229"></a> OWASP_2.2.9
+# <a name="owasp-229tabowasp2"></a>[OWASP 2.2.9](#tab/owasp2)
+
+## <a name="owasp229"></a>-Regelsätze
 
 ### <a name="crs20"></a> crs_20_protocol_violations
 
@@ -225,7 +229,7 @@ In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei 
 |960911|Ungültige HTTP-Anforderungszeile|
 |981227|Apache-Fehler = Ungültiger URI in Anforderung|
 |960912|Fehler beim Analysieren des Anforderungstexts|
-|960914|Fehler bei strenger Überprüfung des mehrteiligen Anforderungstexts =     PE %@{REQBODY_PROCESSOR_ERROR}     BQ %@{MULTIPART_BOUNDARY_QUOTED}     BW %@{MULTIPART_BOUNDARY_WHITESPACE}     DB %@{MULTIPART_DATA_BEFORE}     DA %@{MULTIPART_DATA_AFTER}     HF %@{MULTIPART_HEADER_FOLDING}     LF %@{MULTIPART_LF_LINE}     SM %@{MULTIPART_SEMICOLON_MISSING}     IQ %@{MULTIPART_INVALID_QUOTING}     IH %@{MULTIPART_INVALID_HEADER_FOLDING}     FLE %@{MULTIPART_FILE_LIMIT_EXCEEDED}|
+|960914|Fehler bei der strengen Überprüfung des mehrteiligen Anforderungstexts|
 |960915|Mehrteiliger Parser hat eine mögliche fehlende Übereinstimmung für eine Grenze erkannt.|
 |960016|Content-Length-HTTP-Header ist nicht numerisch.|
 |960011|GET- oder HEAD-Anforderung mit Textinhalt|
@@ -472,6 +476,8 @@ In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei 
 |950921|Backdoor-Zugriff|
 |950922|Backdoor-Zugriff|
 
+---
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Deaktivieren von WAF-Regeln finden Sie unter: [Anpassen von WAF-Regeln](application-gateway-customize-waf-rules-portal.md)
+Informationen zum Deaktivieren von WAF-Regeln: [Anpassen von WAF-Regeln](application-gateway-customize-waf-rules-portal.md)

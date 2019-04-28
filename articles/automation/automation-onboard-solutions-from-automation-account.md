@@ -5,16 +5,16 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/16/2018
+ms.date: 4/11/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 0f5d36dfbe614e35256231a91a9e15055e2e81cb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 41f0607908cde94ca08a4c4dfce0a47032eefbb3
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57843622"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578440"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand
 
@@ -44,7 +44,7 @@ Die folgende Tabelle zeigt die unterstützten Zuordnungen:
 |EastUS<sup>1</sup>|EastUS2|
 |JapanEast|JapanEast|
 |SoutheastAsia|SoutheastAsia|
-|WestCentralUS|WestCentralUS|
+|WestCentralUS<sup>2</sup>|WestCentralUS<sup>2</sup>|
 |Europa, Westen|Europa, Westen|
 |UKSouth|UKSouth|
 |USGovVirginia|USGovVirginia|
@@ -52,8 +52,7 @@ Die folgende Tabelle zeigt die unterstützten Zuordnungen:
 
 <sup>1</sup> EastUS2EUAP- und EastUS-Zuordnungen für Log Analytics-Arbeitsbereiche zu Automation-Konten sind keine exakten Region-zu-Region-Zuordnungen, jedoch handelt es sich um die richtige Zuordnung.
 
-> [!NOTE]
-> Aufgrund der Nachfrage ist eine Region möglicherweise nicht verfügbar, wenn Ihr Automation-Konto oder Log Analytics-Arbeitsbereich erstellt wird.  Wenn dies der Fall ist, stellen Sie sicher, dass Sie eine Region aus der voranstehenden Tabelle verwenden, in der Sie Ressourcen erstellen können.
+<sup>2</sup> Aufgrund von Kapazitätseinschränkungen ist die Region nicht verfügbar, wenn neue Ressourcen erstellt werden. Dies umfasst auch Automation-Konten und Log Analytics-Arbeitsbereiche. Allerdings sollten bereits in der Region vorhandene verknüpfte Ressourcen weiterhin funktionieren.
 
 Die Lösung für Änderungsnachverfolgung und Bestand bietet die Möglichkeit zum Nachverfolgen von [Änderungen](automation-vm-change-tracking.md) und [Bestand](automation-vm-inventory.md) in Ihren virtuellen Computern. In diesem Schritt aktivieren Sie die Lösung auf einem virtuellen Computer.
 

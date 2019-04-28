@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0445643d3aae0e4e072e7fa8e3a73dc8973e84a5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 38dd4d13aa45b69fc846ef9b6b2e1b56f56de573
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59268499"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544754"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Ausführen von Runbooks in Azure Automation
 
@@ -46,7 +46,7 @@ Runbooks in Azure Automation können entweder in einer Sandbox in Azure oder auf
 |Modul installieren, das Installationsprogramm erfordert|Hybrid Runbook Worker|Module für Sandbox müssen kopiert werden können|
 |Verwenden von Runbooks oder Modulen, die eine andere .NET Framework-Version als 4.7.2 erfordern|Hybrid Runbook Worker|Automation-Sandboxes haben .NET Framework 4.7.2, und es gibt keine Möglichkeit zum Upgraden|
 |Skripts, für die eine Rechteerweiterung erforderlich ist|Hybrid Runbook Worker|Sandboxes lassen keine Rechteerweiterung zu. Verwenden Sie in einem solchen Fall einen Hybrid Runbook Worker. Dann können Sie die Benutzerkontensteuerung deaktivieren und `Invoke-Command` verwenden, wenn Sie den Befehl ausführen, für den eine Rechteerweiterung erforderlich ist.|
-|Skripts, für die Zugriff auf WMI erforderlich ist|Hybrid Runbook Worker|Aufträge, die in Sandboxes in der Cloud ausgeführt werden, [haben keinen Zugriff auf WMI](#device-and-application-characteristics)|
+|Skripts, für die Zugriff auf WMI erforderlich ist|Hybrid Runbook Worker|Aufträge, die in Sandboxes in der Cloud ausgeführt werden, [haben keinen Zugriff auf WMI](#device-and-application-characteristics).|
 
 ## <a name="runbook-behavior"></a>Runbook-Verhalten
 

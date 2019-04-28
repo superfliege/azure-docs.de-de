@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: ef34985e7897aa751275231a28c6031d6c9747b0
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 06872eefd0d500a22214109ad5055dd236b5a6ac
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369963"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59606836"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Ausführen von Aufgaben in Containern mit Neustartrichtlinien
 
@@ -93,98 +93,9 @@ Ausgabe:
 
 Dieses Beispiel zeigt die Ausgabe, die das Skript an STDOUT gesendet hat. Die in Containern ausgeführten Aufgaben schreiben ihre Ausgabe allerdings möglicherweise in permanenten Speicher, um sie später abrufen zu können. Dies kann beispielsweise eine [Azure-Dateifreigabe](container-instances-mounting-azure-files-volume.md) sein.
 
-## <a name="manually-stop-and-start-a-container-group"></a>Manuelles Beenden und Starten einer Containergruppe
-
-Unabhängig von der Neustartrichtlinie, die für eine [Containergruppe](container-instances-container-groups.md) konfiguriert ist, möchten Sie ggf. eine Containergruppe manuell beenden oder starten.
-
-* **Beenden**: Sie können eine ausgeführte Containergruppe jederzeit manuell beenden, z.B. mit dem Befehl [az container stop][az-container-stop]. Für bestimmte Containerworkloads möchten Sie möglicherweise eine Containergruppe nach einem definierten Zeitraum beenden, um Kosten zu sparen. 
-
-  Durch das Beenden einer Containergruppe werden die Container in der Gruppe beendet und wiederverwendet. Der Containerzustand bleibt dabei nicht erhalten. 
-
-* **Starten**: Wenn eine Containergruppe beendet wird (weil die Container einzeln beendet wurden oder weil Sie die Gruppe manuell beendet haben), können Sie die [Containerstart-API](/rest/api/container-instances/containergroups/start) oder das Azure-Portal verwenden, um die Container in der Gruppe manuell zu starten. Wenn das Containerimage für einen Container aktualisiert wird, wird ein neues Image gepullt. 
-
-  Durch das Starten einer Containergruppe beginnt eine neue Bereitstellung mit der gleichen Containerkonfiguration. Diese Aktion kann Ihnen helfen, eine bekannte Containergruppenkonfiguration, die wie erwartet funktioniert, schnell wiederzuverwenden. Sie müssen keine neue Containergruppe erstellen, um die gleiche Workload auszuführen.
-
-* **Neu starten**: Sie können eine Containergruppe neu starten, während sie ausgeführt wird, z.B. mit dem Befehl [az container restart][az-container-restart]. Diese Aktion startet alle Container in der Containergruppe neu. Wenn das Containerimage für einen Container aktualisiert wird, wird ein neues Image gepullt. 
-
-  Der Neustart einer Containergruppe ist hilfreich, wenn Sie ein Bereitstellungsproblem beheben möchten. Wenn beispielsweise eine temporäre Ressourcenbeschränkung die erfolgreiche Ausführung Ihrer Container verhindert, kann ein Neustart der Gruppe das Problem beheben.
-
-Nachdem Sie eine Containergruppe manuell gestartet oder neu gestartet haben, wird die Containergruppe gemäß der konfigurierten Neustartrichtlinie ausgeführt.
-
-## <a name="configure-containers-at-runtime"></a>Konfigurieren von Containern zur Laufzeit
-
-Wenn Sie eine Containerinstanz erstellen, können Sie **Umgebungsvariablen** festlegen sowie eine benutzerdefinierte **Befehlszeile** angeben, die beim Starten des Containers ausgeführt wird. Sie können diese Einstellungen in Batchaufträgen verwenden, um die einzelnen Container mit einer aufgabenspezifischen Konfiguration vorzubereiten.
-
-## <a name="environment-variables"></a>Umgebungsvariablen
-
-Legen Sie Umgebungsvariablen in Ihrem Container fest, um eine dynamische Konfiguration der Anwendung oder des Skripts bereitzustellen, die bzw. das vom Container ausgeführt wird. Dies ist vergleichbar mit dem Befehlszeilenargument `--env` für `docker run`.
-
-Sie können beispielsweise das Verhalten des Skripts im Beispielcontainer ändern, indem Sie beim Erstellen der Containerinstanz die folgenden Umgebungsvariablen angeben:
-
-*NumWords*: Die Anzahl der Wörter, die an STDOUT gesendet wird.
-
-*MinLength*: Die Mindestanzahl von Zeichen in einem Wort, damit es gezählt wird. Bei einem höheren Wert werden häufige Wörter wie „von“ und „das“ ignoriert.
-
-```azurecli-interactive
-az container create \
-    --resource-group myResourceGroup \
-    --name mycontainer2 \
-    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
-    --restart-policy OnFailure \
-    --environment-variables NumWords=5 MinLength=8
-```
-
-Wenn Sie `NumWords=5` und `MinLength=8` als Umgebungsvariablen für den Container angeben, sollten die Containerprotokolle verschiedene Ausgaben anzeigen. Sobald der Containerstatus als *Beendet* angezeigt wird (Sie können den Status mit `az container show` überprüfen), zeigen Sie die Protokolle an, um die neue Ausgabe zu sehen:
-
-```azurecli-interactive
-az container logs --resource-group myResourceGroup --name mycontainer2
-```
-
-Ausgabe:
-
-```bash
-[('CLAUDIUS', 120),
- ('POLONIUS', 113),
- ('GERTRUDE', 82),
- ('ROSENCRANTZ', 69),
- ('GUILDENSTERN', 54)]
-```
-
-
-
-## <a name="command-line-override"></a>Außerkraftsetzung der Befehlszeile
-
-Geben Sie beim Erstellen einer Containerinstanz eine Befehlszeile an, um die im Containerimage integrierte Befehlszeile außer Kraft zu setzen. Dies ist vergleichbar mit dem Befehlszeilenargument `--entrypoint` für `docker run`.
-
-Sie können z.B. den Beispielcontainer einen anderen Text als *Hamlet* analysieren lassen, indem Sie eine andere Befehlszeile angeben. Das vom Container ausgeführte Python-Skript (*wordcount.py*) akzeptiert eine URL als Argument und verarbeitet den Inhalt dieser Seite anstelle des Standardwerts.
-
-So bestimmen Sie z.B. die drei häufigsten Wörter mit fünf Buchstaben in *Romeo und Julia*:
-
-```azurecli-interactive
-az container create \
-    --resource-group myResourceGroup \
-    --name mycontainer3 \
-    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
-    --restart-policy OnFailure \
-    --environment-variables NumWords=3 MinLength=5 \
-    --command-line "python wordcount.py http://shakespeare.mit.edu/romeo_juliet/full.html"
-```
-
-Zeigen Sie auch hier, wenn der Container den Status *Beendet* aufweist, die Ausgabe durch Aufrufen der Containerprotokolle an:
-
-```azurecli-interactive
-az container logs --resource-group myResourceGroup --name mycontainer3
-```
-
-Ausgabe:
-
-```bash
-[('ROMEO', 177), ('JULIET', 134), ('CAPULET', 119)]
-```
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-### <a name="persist-task-output"></a>Dauerhaftes Speichern der Taskausgabe
+Aufgabenbasierte Szenarien, z. B. Batchverarbeitung eines großen Datasets mit mehreren Containern, können von benutzerdefinierten [Umgebungsvariablen](container-instances-environment-variables.md) oder [Befehlszeilen](container-instances-start-command.md) zur Laufzeit profitieren.
 
 Details zum dauerhaften Speichern der Ausgabe von Containern, die bis zum Abschluss ausgeführt werden, finden Sie unter [Einbinden einer Azure-Dateifreigabe in Azure Container Instances](container-instances-mounting-azure-files-volume.md).
 
@@ -194,7 +105,5 @@ Details zum dauerhaften Speichern der Ausgabe von Containern, die bis zum Abschl
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
 [az-container-logs]: /cli/azure/container?view=azure-cli-latest#az-container-logs
-[az-container-restart]: /cli/azure/container?view=azure-cli-latest#az-container-restart
 [az-container-show]: /cli/azure/container?view=azure-cli-latest#az-container-show
-[az-container-stop]: /cli/azure/container?view=azure-cli-latest#az-container-stop
 [azure-cli-install]: /cli/azure/install-azure-cli

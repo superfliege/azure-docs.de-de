@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 1cb353d22e39447d7aeb723b5506ac0209cf74d8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: da796f8eeb6b24dfbbe8418cc728f09b424228cf
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59287101"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528491"
 ---
 ### <a name="premium-performance-block-blob-storage"></a>Blockblobspeicher mit Premium-Leistung
 
@@ -25,10 +25,11 @@ Premiumdateien verwenden ein eindeutiges Speicherkonto namens **FileStorage (Vor
 
 |Bereich  |Ziel  |
 |---------|---------|
-|Max. Größe     |5 TiB (öffentliche Vorschau), 100 TiB (eingeschränkte öffentliche Vorschau)     |
+|Bereitgestellte maximale Größe     |5 TiB (öffentliche Vorschau), 100 TiB (eingeschränkte öffentliche Vorschau)     |
 |Freigaben   |Unbegrenzt  |
 |IOPS     |100.000 (eingeschränkte öffentliche Vorschau)    |
-|Bandbreite|5 GB/s     |
+|Eingehende Daten|4.136 MiB/s     |
+|Ausgehende Daten|6.204 MiB/s |
 
  Weitere Informationen zu Skalierbarkeitsziele für die Freigabe von Premiumdateien finden Sie im Abschnitt [Premium files scale targets (Skalierbarkeitsziele für Premiumdateien)](../articles/storage/common/storage-scalability-targets.md#premium-files-scale-targets).
 

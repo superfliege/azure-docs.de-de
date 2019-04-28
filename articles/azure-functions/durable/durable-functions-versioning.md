@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: azfuncdf
-ms.openlocfilehash: a90a6811b1c59538db98b85d950906dba2969d57
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 33ca6c36cd11d53a3c50a8374181c511fd2f8c3e
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338225"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549083"
 ---
 # <a name="versioning-in-durable-functions-azure-functions"></a>Versionsverwaltung in Durable Functions (Azure Functions)
 
@@ -140,7 +140,7 @@ Alle Azure Storage-Entitäten werden basierend auf dem Konfigurationswert `HubNa
 Es wird empfohlen, die neue Version der Funktionen-App in einem neuen [Bereitstellungsslot](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/) bereitzustellen. Mit Bereitstellungsslots können Sie mehrere Kopien Ihrer Funktionen-App parallel ausführen, wobei nur eine davon als aktiver *Produktionsslot* dient. Wenn alles bereit ist, um die neue Orchestrierungslogik für Ihre vorhandene Infrastruktur verfügbar zu machen, kann dies ein einfacher Vorgang sein, weil ggf. nur die neue Version in den Produktionsslot eingefügt werden muss.
 
 > [!NOTE]
-> Diese Strategie eignet sich am besten, wenn Sie HTTP und Webhooktrigger für Orchestratorfunktionen verwenden. Für andere Trigger als HTTP-Trigger, z.B. Warteschlangen oder Event Hubs, sollte die Triggerdefinition von einer App-Einstellung abgeleitet sein, die im Rahmen des Austauschvorgangs aktualisiert wird.
+> Diese Strategie eignet sich am besten, wenn Sie HTTP und Webhooktrigger für Orchestratorfunktionen verwenden. Für andere Trigger als HTTP-Trigger, z.B. Warteschlangen oder Event Hubs, sollte die Triggerdefinition [von einer App-Einstellung abgeleitet sein](../functions-bindings-expressions-patterns.md#binding-expressions---app-settings), die im Rahmen des Austauschvorgangs aktualisiert wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

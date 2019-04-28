@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 40c749adee08e66319bed88f26c3c898428a41ad
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 1c77d0ea9e67c8d69f3f632cace164d8a0c4d921
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474352"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617596"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Begriffe in Azure Event Grid
 
@@ -40,7 +40,7 @@ Informationen zum Implementieren der unterstützten Event Grid-Quellen finden Si
 
 Das Event Grid-Thema stellt einen Endpunkt bereit, an den die Ereignisquelle Ereignisse sendet. Der Herausgeber erstellt das Thema und legt fest, ob eine Ereignisquelle ein Thema oder mehrere Themen benötigt. Ein Event Grid-Thema wird für eine Sammlung ähnlicher Ereignisse verwendet. Um auf bestimmte Arten von Ereignissen zu reagieren, legen Abonnenten fest, welche Themen sie abonnieren.
 
-Systemthemen sind integrierte Themen, die von Azure-Diensten bereitgestellt werden. Sie können keine Systemthemen in Ihrem Azure-Abonnement ansehen, weil diese dem Herausgeber gehören. Allerdings haben Sie die Möglichkeit, diese zu abonnieren. Dafür stellen Sie Informationen zu der Ressource bereit, deren Ereignisse Sie empfangen möchten. Solange Sie Zugriff auf eine Ressource haben, können Sie auch ihre Ereignisse abonnieren.
+Systemthemen sind integrierte Themen, die von Azure-Diensten bereitgestellt werden. Sie können keine Systemthemen in Ihrem Azure-Abonnement ansehen, weil diese dem Herausgeber gehören. Allerdings haben Sie die Möglichkeit, diese zu abonnieren. Dafür stellen Sie Informationen zu der Ressource bereit, deren Ereignisse Sie empfangen möchten. Solange Sie Zugriff auf die Ressource haben, können Sie auch ihre Ereignisse abonnieren.
 
 Benutzerdefinierte Themen sind Anwendungs- und Drittanbieterthemen. Wenn Sie ein benutzerdefiniertes Thema erstellen oder Zugriff darauf erhalten, wird das benutzerdefinierte Thema in Ihrem Abonnement angezeigt.
 

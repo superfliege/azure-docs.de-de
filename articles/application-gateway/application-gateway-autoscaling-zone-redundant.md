@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/6/2019
 ms.author: victorh
-ms.openlocfilehash: 4410dd9e61fe5b585ca5b245dbf33dbf8c38e701
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 95b14a0028134e522206f3595bc3b9ebf9aaf396
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010225"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548712"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Automatische Skalierung und zonenredundantes Application Gateway (öffentliche Vorschau)
 
@@ -31,7 +31,7 @@ Application Gateway und Web Application Firewall (WAF) sind nun in der öffentli
 ![](./media/application-gateway-autoscaling-zone-redundant/application-gateway-autoscaling-zone-redundant.png)
 
 > [!NOTE]
-> Das automatische skalierende und zonenredundante Anwendungsgateway-SKU unterstützt nun den [standardmäßigen Integritätstest](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe), um die Integrität aller Ressourcen in seinem Back-End-Pool automatisch zu überwachen und alle Ressourcen aus dem Pool zu entfernen, die als fehlerhaft gelten. Der standardmäßige Integritätstest wird automatisch für alle Back-Ends konfiguriert, für die Sie keine benutzerdefinierte Überprüfungskonfiguration eingerichtet haben. Weitere Informationen finden Sie unter [Systemüberwachung des Application Gateways](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview).
+> Die automatisch skalierende und zonenredundante Anwendungsgateway-SKU unterstützt nun den [Standardintegritätstest](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe), um die Integrität aller Ressourcen in seinem Back-End-Pool automatisch zu überwachen und solche Back-End-Elemente zu markieren, die als fehlerhaft gelten. Der standardmäßige Integritätstest wird automatisch für alle Back-Ends konfiguriert, für die Sie keine benutzerdefinierte Überprüfungskonfiguration eingerichtet haben. Weitere Informationen finden Sie unter [Systemüberwachung des Application Gateways](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview).
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Funktionsvergleich zwischen v1 SKU und v2 SKU
 
@@ -79,6 +79,6 @@ Während der Vorschauphase fallen keine Kosten für das Anwendungsgateway an. An
 |NetWatcher-Integration|In der öffentlichen Vorschau nicht unterstützt.|
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Tutorial: Erstellen eines Anwendungsgateways, das den Zugriff auf die Webanwendung verbessert](tutorial-autoscale-ps.md)
+- [Erstellen Sie mit Azure PowerShell ein zonenredundantes Application Gateway mit automatischer Skalierung und einer reservierten virtuellen IP-Adresse.](tutorial-autoscale-ps.md)
 - Erfahren Sie mehr über [Application Gateway](overview.md).
 - Erfahren Sie mehr über [Azure Firewall](../firewall/overview.md).

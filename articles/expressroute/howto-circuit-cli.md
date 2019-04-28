@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: anzaman;cherylmc
-ms.openlocfilehash: 2013b3b96fddd32f01245655c1feb600bc426e2a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 556589aa7a0a577b9b1a010cf4811922ebc6de52
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084140"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524887"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>Erstellen und Ändern einer ExpressRoute-Verbindung mit der CLI
 
@@ -56,7 +56,7 @@ az account set --subscription "<subscription ID>"
 
 ### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. Rufen Sie die Liste der unterstützten Anbieter, Standorte und Bandbreiten ab.
 
-Vor dem Erstellen einer ExpressRoute-Verbindung benötigen Sie die Liste der unterstützten Konnektivitätsanbieter, Standorte und Bandbreitenoptionen. Der CLI-Befehl „az network express-route list-service-providers“ gibt folgende Informationen zurück, die Sie in den späteren Schritten verwenden:
+Vor dem Erstellen einer ExpressRoute-Verbindung benötigen Sie die Liste der unterstützten Konnektivitätsanbieter, Standorte und Bandbreitenoptionen. Der CLI-Befehl `az network express-route list-service-providers` gibt diese Informationen zurück, die Sie in späteren Schritten verwenden werden:
 
 ```azurecli-interactive
 az network express-route list-service-providers
@@ -154,7 +154,7 @@ Die Antwort enthält den Dienstschlüssel.
 
 ### <a name="4-list-all-expressroute-circuits"></a>4. Listen Sie alle ExpressRoute-Verbindungen auf.
 
-Um eine Liste mit allen von Ihnen erstellten ExpressRoute-Verbindungen abzurufen, führen Sie den Befehl „az network express-route list“ aus. Sie können diese Informationen jederzeit mithilfe dieses Befehls abrufen. Um alle Verbindungen aufzulisten, führen Sie den Aufruf ohne Parameter durch.
+Um eine Liste mit allen von Ihnen erstellten ExpressRoute-Verbindungen abzurufen, führen Sie den Befehl `az network express-route list` aus. Sie können diese Informationen jederzeit mithilfe dieses Befehls abrufen. Um alle Verbindungen aufzulisten, führen Sie den Aufruf ohne Parameter durch.
 
 ```azurecli-interactive
 az network express-route list

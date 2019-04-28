@@ -1,7 +1,7 @@
 ---
 title: Indizieren von JSON-Blobs aus Azure Blob-Indexer für die Volltextsuche – Azure Search
 description: Durchforsten Sie Azure JSON-Blobs mithilfe des Azure Search-Blobindexers nach Textinhalten. Indexer automatisieren die Datenerfassung für ausgewählte Datenquellen wie Azure Blob Storage.
-ms.date: 02/28/2019
+ms.date: 04/11/2019
 author: HeidiSteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: f44161586f9f4e121001b9f5e285b0e1e1dcd9d1
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 6db86d3e5aba1a2e43e69e71df8cc516fb14581f
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518744"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527352"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>Indizieren von JSON-Blobs mit dem Azure Search-Blobindexer
 In diesem Artikel wird beschrieben, wie Sie einen Azure Search-[Blobindexer](search-indexer-overview.md) konfigurieren, um strukturierten Inhalt aus JSON-Dokumenten in Azure Blob Storage zu extrahieren und so vorzubereiten, dass er ihn Azure Search durchsucht werden kann. Dieser Workflow erstellt einen Azure Search-Index und lädt ihn mit vorhandenem, aus JSON-Blobs extrahiertem Text. 
@@ -40,14 +40,15 @@ Sie sollten für Azure Search und Azure Storage dasselbe Azure-Abonnement verwen
 
 ### <a name="1---prepare-source-data"></a>1. Vorbereiten von Quelldaten
 
-Sie müssen über ein Azure-Speicherkonto mit einem Blobspeicher und über einen Container mit JSON-Elementen verfügen. Wenn Sie nicht mit diesen Anforderungen vertraut sind, lesen Sie unbedingt den Abschnitt „Einrichten des Azure Blob-Diensts und Laden von Beispieldaten“ unter [Schnellstart: Erstellen einer Pipeline für die kognitive Suche mithilfe von Qualifikationen und Beispieldaten](cognitive-search-quickstart-blob.md#set-up-azure-blob-service-and-load-sample-data).
+1. [Melden Sie sich beim Azure-Portal an](https://portal.azure.com/).
 
-> [!Important]
-> Stellen Sie im Container sicher, dass die **Öffentliche Zugriffsebene** auf „Container (Anonymer Lesezugriff für Container und Blobs)“ festgelegt ist. Azure Storage und Azure Search sollten sich unter demselben Abonnement und möglichst in derselben Region befinden. 
+1. [Erstellen Sie einen Blobcontainer](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) für Ihre Daten. Die öffentliche Zugriffsebene kann auf jeden der gültigen Werte festgelegt werden.
+
+Sie benötigen den Namen des Speicherkontos, den Containernamen und einen Zugriffsschlüssel zum Abrufen Ihrer Daten im **Datenimport**-Assistenten.
 
 ### <a name="2---start-import-data-wizard"></a>2. Starten des Datenimport-Assistenten
 
-Sie können den Assistenten auf der Seite des Azure Search-Diensts [über die Befehlsleiste](search-import-data-portal.md) starten. Alternativ können Sie im Abschnitt **Blob-Dienst**, der sich im linken Navigationsbereich Ihres Speicherkontos befindet, auf **Azure Search hinzufügen** klicken.
+Auf der Seite „Übersicht“ Ihres Azure Search-Diensts können Sie [den Assistenten über die Befehlsleiste starten](search-import-data-portal.md). Alternativ können Sie im Abschnitt **Blob-Dienst**, der sich im linken Navigationsbereich Ihres Speicherkontos befindet, auf **Azure Search hinzufügen** klicken.
 
    ![Befehl „Daten importieren“ im Portal](./media/search-import-data-portal/import-data-cmd2.png "Starten des Datenimport-Assistenten")
 

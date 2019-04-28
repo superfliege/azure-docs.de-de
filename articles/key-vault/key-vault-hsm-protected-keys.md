@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: barclayn
-ms.openlocfilehash: 71931194c88412467252d16c5333d7a77338378c
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 70a33b0ec55705c6fb00671cc801415cd7459558
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630613"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522727"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Gewusst wie: Generieren und Übertragen von HSM-geschützten Schlüsseln für den Azure-Schlüsseltresor
 
@@ -445,7 +445,7 @@ Ersetzen Sie beim Ausführen dieses Befehls *contosokey* durch den gleichen Wert
 
 Sie werden aufgefordert, Ihre Security World-Administratorkarten einzuführen.
 
-Wenn der Befehl abgeschlossen ist, wird **Result: SUCCESS** angezeigt, und die Kopie Ihres Schlüssels mit reduzierten Berechtigungen ist in der Datei „key_xferacId_<contosokey>“ enthalten.
+Wenn der Befehl abgeschlossen ist, wird **Result: SUCCESS** angezeigt, und die Kopie Ihres Schlüssels mit reduzierten Berechtigungen ist in der Datei „key_xferacId_\<contosokey>“ enthalten.
 
 Sie können die ACLs mithilfe der Thales-Hilfsprogramme mit den folgenden Befehlen überprüfen:
 

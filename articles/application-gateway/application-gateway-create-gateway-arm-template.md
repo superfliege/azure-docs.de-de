@@ -1,33 +1,20 @@
 ---
-title: Erstellen einer Azure Application Gateway-Instanz – Vorlagen | Microsoft-Dokumentation
-description: Diese Seite enthält Anweisungen zum Erstellen eines Azure-Anwendungsgateways mit einer Azure Resource Manager-Vorlage.
-documentationcenter: na
+title: Erstellen eines Azure Application Gateways – Vorlagen
+description: Dieser Artikel enthält Anweisungen zum Erstellen eines Azure-Anwendungsgateways mit einer Azure Resource Manager-Vorlage.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/31/2017
+ms.topic: conceptual
+ms.date: 4/15/2019
 ms.author: victorh
-ms.openlocfilehash: 682aac8ec6716ac59c6bdc0710065c916a0c41b6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 113e30ab65f2cd0ff420df1c79807147a62f79f1
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084928"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608454"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Erstellen eines Anwendungsgateways mit der Azure-Ressourcen-Manager-Vorlage
-
-> [!div class="op_single_selector"]
-> * [Azure-Portal](application-gateway-create-gateway-portal.md)
-> * [Azure Resource Manager PowerShell](application-gateway-create-gateway-arm.md)
-> * [Klassische Azure PowerShell](application-gateway-create-gateway.md)
-> * [Azure Resource Manager-Vorlage](application-gateway-create-gateway-arm-template.md)
-> * [Azure-Befehlszeilenschnittstelle](application-gateway-create-gateway-cli.md)
 
 Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwendungsschicht). Es ermöglicht Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung. Application Gateway bietet zahlreiche ADC-Features (Application Delivery Controller) wie HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität, SSL-Auslagerung (Secure Sockets Layer), benutzerdefinierte Integritätstests und Unterstützung mehrerer Standorte. Eine Liste mit allen unterstützten Features finden Sie unter [Übersicht über Application Gateway](application-gateway-introduction.md).
 
@@ -243,4 +230,3 @@ Weitere grundsätzliche Informationen zu Lastenausgleichsoptionen finden Sie unt
 
 * [Azure-Lastenausgleich](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
-

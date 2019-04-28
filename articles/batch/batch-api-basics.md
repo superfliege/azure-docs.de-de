@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/18/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 3839a1a457af1549a82b7607310a619911c78591
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 1107842444ad0ac77ab890f07e65c8b489030461
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761870"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617482"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch
 
@@ -471,7 +471,7 @@ Bei Taskfehlern wird zwischen folgenden Kategorien unterschieden:
 ### <a name="accounting-for-task-failures-or-interruptions"></a>Erläuterung zu Taskfehlern oder Unterbrechungen
 Tasks werden gelegentlich nicht erfolgreich ausgeführt oder unterbrochen. Unter Umständen tritt in der Taskanwendung selbst ein Fehler auf, oder der Knoten, auf dem der Task ausgeführt wird, wird neu gestartet. Außerdem kann der Knoten während einer Änderung der Poolgröße ggf. entfernt werden, wenn die Richtlinie für die Aufhebung der Zuordnung des Knotens so konfiguriert ist, dass der Knoten sofort entfernt wird, ohne auf den Abschluss des Tasks zu warten. In diesen Fällen kann der Task von Batch automatisch wieder der Warteschlange hinzugefügt und auf einem anderen Knoten ausgeführt werden.
 
-Außerdem können zeitweilig Probleme auftreten, die dazu führen, dass eine Aufgabe nicht mehr reagiert oder zu lange dauert. Sie können das maximale Ausführungsintervall für einen Task festlegen. Wenn das maximale Ausführungsintervall überschritten wird, unterbricht der Batch-Dienst die Taskanwendung.
+Außerdem können zeitweilig Probleme auftreten, die dazu führen, dass ein Task nicht mehr reagiert oder zu lange dauert. Sie können das maximale Ausführungsintervall für einen Task festlegen. Wenn das maximale Ausführungsintervall überschritten wird, unterbricht der Batch-Dienst die Taskanwendung.
 
 ### <a name="connecting-to-compute-nodes"></a>Herstellen einer Verbindung mit Computeknoten
 Sie können weitere Debug- und Problembehandlungsmaßnahmen durchführen, indem Sie sich per Remotezugriff an einem Computeknoten anmelden. Sie können das Azure-Portal verwenden, um eine RDP-Datei (Remotedesktopprotokoll) für Windows-Knoten herunterzuladen und Secure Shell (SSH)-Verbindungsinformationen für Linux-Knoten abzurufen. Hierfür können Sie auch die Batch-APIs verwenden – beispielsweise mit [Batch .NET][net_rdpfile] oder [Batch Python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh).

@@ -8,14 +8,14 @@ ms.assetid: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: ca65b6a1691a870054682b36109f2bdc10d4ad98
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: d327146c4a1fa61e55bb904308038c1ce717123d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918704"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543743"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Premium-Plan (Premium-Tarif) für Azure Functions (Vorschau)
 
@@ -42,7 +42,7 @@ Die folgenden Features sind für Funktions-Apps verfügbar, die für einen Premi
 
 Wenn heute keine Ereignisse und Ausführungen im Verbrauchsplan ausgeführt werden, wird Ihre App möglicherweise auf null Instanzen herunterskaliert. Wenn neue Ereignisse eingehen, muss eine neue Instanz zum Ausführen Ihrer App eingerichtet werden.  Das Einrichten einer neuen Instanz kann je nach App einige Zeit dauern.  Diese zusätzliche Wartezeit beim ersten Aufruf wird häufig als App-Kaltstart bezeichnet.
 
-Im Premium-Plan können Sie Ihre App in einem „vorab aufgewärmten“ Zustand für eine angegebene Anzahl von Instanzen vorhalten.  Mit vorab aufgewärmten Instanzen können Sie eine App auch vor hoher Last vorab skalieren. Erfolgt eine Erweiterung für die App, wird die App zunächst in die vorab aufgewärmten Instanzen skaliert. In Vorbereitung auf den nächsten Skalierungsvorgang werden sofort weitere Instanzen gepuffert und aufgewärmt. Dadurch, dass es einen Puffer mit vorab aufgewärmten Instanzen gibt, können Sie Kaltstartwartezeiten effektiv vermeiden.  Vorab aufgewärmte Instanzen ist ein Feature für den Premium-Plan, und Sie müssen während der gesamten Zeit, in der der Plan aktiv ist, mindestens eine Instanz aktiv und verfügbar halten.
+Im Premium-Plan können Sie Ihre App in einem „vorab aufgewärmten“ Zustand für eine angegebene Anzahl von Instanzen vorhalten, bis zur Größe Ihres Mindestplans.  Mit vorab aufgewärmten Instanzen können Sie eine App auch vor hoher Last vorab skalieren. Erfolgt eine Erweiterung für die App, wird die App zunächst in die vorab aufgewärmten Instanzen skaliert. In Vorbereitung auf den nächsten Skalierungsvorgang werden sofort weitere Instanzen gepuffert und aufgewärmt. Dadurch, dass es einen Puffer mit vorab aufgewärmten Instanzen gibt, können Sie Kaltstartwartezeiten effektiv vermeiden.  Vorab aufgewärmte Instanzen ist ein Feature für den Premium-Plan, und Sie müssen während der gesamten Zeit, in der der Plan aktiv ist, mindestens eine Instanz aktiv und verfügbar halten.
 
 Sie können die Anzahl der vorab aufgewärmten Instanzen im Azure-Portal konfigurieren, indem Sie **Horizontal skalieren** auf der Registerkarte **Plattformfeatures** auswählen.
 
@@ -69,6 +69,8 @@ Weitere Compute-Instanzen werden automatisch für Ihre App hinzugefügt. Dazu wi
 ### <a name="unbounded-run-duration"></a>Unbegrenzte Ausführungsdauer
 
 Azure Functions in einem Verbrauchsplan sind auf 10 Minuten für eine einzelne Ausführung beschränkt.  Im Premium-Plan wird die Ausführungsdauer standardmäßig auf 30 Minuten festgelegt, um Endlosausführungen zu verhindern. Sie können jedoch [die host.json-Konfiguration ändern](./functions-host-json.md#functiontimeout), um die Ausführungsdauer für Premium-Plan-Apps auf unbegrenzt festzulegen.
+
+In der Vorschauversion wird die Dauer nicht über 12 Minuten hinaus garantiert, und es besteht die beste Chance, dass die Ausführung länger als 30 Minuten erfolgt, wenn Ihre App nicht über ihre minimale Workeranzahl hinaus skaliert ist.
 
 ## <a name="plan-and-sku-settings"></a>Plan- und SKU-Einstellungen
 
@@ -106,7 +108,6 @@ Nachstehend sind die derzeit unterstützten Regionen für die öffentliche Vorsc
 |Australien (Osten)|
 |Australien, Südosten|
 |Kanada, Mitte|
-|Indien, Mitte|
 |USA (Mitte)|
 |Asien, Osten|
 |USA (Ost) 2|

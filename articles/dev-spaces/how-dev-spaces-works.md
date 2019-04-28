@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: Beschreibt die Prozesse, die zur Funktionsweise von Azure Dev Spaces beitragen, und beschreibt, wie diese in der Konfigurationsdatei „azds.yaml“ konfiguriert werden.
 keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: 0397a52e8cd838aafe44a35508f8a68caba4c94e
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 494dd3774ec47598a95c6e20de6283abc2e4ff94
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59470898"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544922"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Funktionsweise und Konfiguration von Azure Dev Spaces
 
@@ -27,10 +27,10 @@ Für Azure Dev Spaces wird eine Konfigurationsdatei erstellt und verwendet, um K
 
 In diesem Artikel sind die Prozesse beschrieben, die zur Funktionsweise von Azure Dev Spaces beitragen, und ist beschrieben, wie diese Prozesse in der Azure Dev Spaces-Konfigurationsdatei konfiguriert werden. Um Azure Dev Spaces schnell zur Ausführung zu bringen und in der Praxis zu erleben, führen Sie einen der Schnellstarts aus:
 
-* [Java mit Befehlszeilenschnittstelle und Visual Studio Code](quickstart-java.md)
-* [.NET Core mit Befehlszeilenschnittstelle und Visual Studio Code](quickstart-netcore.md)
+* [Java mit CLI and Visual Studio Code](quickstart-java.md)
+* [.NET Core mit CLI and Visual Studio Code](quickstart-netcore.md)
 * [.NET Core mit Visual Studio 2017](quickstart-netcore-visualstudio.md)
-* [Node.js mit Befehlszeilenschnittstelle und Visual Studio Code](quickstart-nodejs.md)
+* [Node.js mit CLI and Visual Studio Code](quickstart-nodejs.md)
 
 ## <a name="how-azure-dev-spaces-works"></a>Funktionsweise von Azure Dev Spaces
 
@@ -94,7 +94,9 @@ Wenn Sie Azure Dev Spaces in Ihrem AKS-Cluster aktivieren, wird der Controller f
 
 * Erstellen oder Bestimmen eines Kubernetes-Namespace, der als Entwicklungsbereich verwendet werden soll
 * Entfernen aller Kubernetes-Namespaces namens *azds* (sofern vorhanden) und Erstellen eines neuen Namespace
-* Bereitstellen eines Kubernetes-Initialisiererobjekts
+* Stellt eine Kubernetes-Webhook-Konfiguration bereit.
+* Stellt einen Webhook-Zulassungsserver bereit.
+    
 
 Außerdem wird derselbe Dienstprinzipal wie in Ihrem AKS-Cluster verwendet, um Dienstaufrufe an andere Azure Dev Spaces-Komponenten durchzuführen.
 
@@ -104,9 +106,9 @@ Damit Azure Dev Spaces verwendet werden kann, muss mindestens ein Entwicklungsbe
 
 Standardmäßig erstellt der Controller einen Entwicklungsbereich namens *default*, indem er den vorhandenen *default*-Kubernetes-Namespace aktualisiert. Sie können die clientseitigen Tools verwenden, um neue Entwicklungsbereiche zu erstellen und vorhandene Entwicklungsbereiche zu entfernen. Aufgrund einer Einschränkung in Kubernetes kann der *default*-Entwicklungsbereich nicht entfernt werden. Der Controller entfernt auch alle vorhandenen Kubernetes-Namespaces namens *azds*, um Konflikte mit dem `azds`-Befehl zu vermeiden, der von den clientseitigen Tools verwendet wird.
 
-Das Kubernetes-Initialisiererobjekt wird verwendet, um Pods mit drei Containern während der Bereitstellung für die Instrumentierung einzufügen: ein devspaces-proxy-init-Container, ein devspaces-proxy-init-Container und ein devspaces-build-Container. **Alle drei Container werden mit Root-Zugriff in Ihrem AKS-Cluster ausgeführt.** Sie verwenden außerdem derselben Dienstprinzipal wie in Ihrem AKS-Cluster, um Dienstaufrufe an andere Azure Dev Spaces-Komponenten durchzuführen.
+Das Kubernetes-Webhook-Zulassungsserver wird verwendet, um Pods mit drei Containern während der Bereitstellung für die Instrumentierung einzufügen: ein devspaces-proxy-init-Container, ein devspaces-proxy-init-Container und ein devspaces-build-Container. **Diese drei Container werden alle mit Root-Zugriff in Ihrem AKS-Cluster ausgeführt.** Sie verwenden außerdem derselben Dienstprinzipal wie in Ihrem AKS-Cluster, um Dienstaufrufe an andere Azure Dev Spaces-Komponenten durchzuführen.
 
-![Kubernetes-Initialisierer für Azure Dev Spaces](media/how-dev-spaces-works/kubernetes-initializer.svg)
+![Azure Dev Spaces Kubernetes-Webhook-Zulassungsserver](media/how-dev-spaces-works/kubernetes-webhook-admission-server.svg)
 
 Der devspaces-proxy-Container ist ein unterstützender Container, in dem der gesamte ein- und ausgehende TCP-Datenverkehr des Anwendungscontainers verarbeitet und das Routing unterstützt wird. Der devspaces-proxy-Container leitet HTTP-Nachrichten um, wenn bestimmte Bereiche verwendet werden. Beispielsweise kann er dabei unterstützen, HTTP-Nachrichten zwischen Anwendungen in über- und untergeordneten Bereichen weiterzuleiten. Jeglicher Nicht-HTTP-Datenverkehr durchläuft den devspaces-proxy-Container ungeändert. Im devspaces-proxy-Container werden auch alle eingehenden und ausgehenden HTTP-Nachrichten protokolliert und als Überwachungen an die clientseitigen Tools gesendet. Der Entwickler kann diese Überwachungen dann anzeigen, um das Verhalten der Anwendung zu untersuchen.
 
@@ -117,7 +119,7 @@ Der devspaces-build-Container ist ein Init-Container, und in ihm sind der Projek
 > [!NOTE]
 > Azure Dev Spaces verwendet denselben Knoten, um den Container Ihrer Anwendung zu erstellen und auszuführen. Daher ist für Azure Dev Spaces keine externe Containerregistrierung erforderlich, um Ihre Anwendung zu erstellen und auszuführen.
 
-Das Kubernetes-Initialisiererobjekt lauscht auf jeden neuen Pod, der im AKS-Cluster erstellt wird. Wird dieser Pod in irgendeinem Namespace mit der Bezeichnung *azds.io/space=true* bereitgestellt, fügt das Objekt diesen Pod mit den zusätzlichen Containern ein. Der devspaces-build-Container wird nur eingefügt, wenn der Container der Anwendung über die clientseitigen Tools ausgeführt wird.
+Der Kubernetes-Webhook-Zulassungsserver lauscht auf jeden neuen Pod, der im AKS-Cluster erstellt wird. Wird dieser Pod in irgendeinem Namespace mit der Bezeichnung *azds.io/space=true* bereitgestellt, fügt das Objekt diesen Pod mit den zusätzlichen Containern ein. Der devspaces-build-Container wird nur eingefügt, wenn der Container der Anwendung über die clientseitigen Tools ausgeführt wird.
 
 Nachdem Sie Ihren AKS-Cluster vorbereitet haben, können Sie die clientseitigen Tools verwenden, um Ihren Code in Ihrem Entwicklungsbereich (Dev Space) vorzubereiten und auszuführen.
 
@@ -221,7 +223,7 @@ In ausführlicherer Beschreibung passiert Folgendes, wenn Sie `azds up` ausführ
 1. Dateien werden vom Computer des Benutzers mit einem Azure-Dateispeicher synchronisiert, der nur für den AKS-Cluster des Benutzers verfügbar ist. Der Quellcode, das Helm-Chart und die Konfigurationsdateien werden hochgeladen. Weitere Informationen zu dem Synchronisierungsprozess enthält der nächste Abschnitt.
 1. Der Controller erstellt eine Anforderung, um eine neue Sitzung zu starten. Diese Anforderung enthält mehrere Eigenschaften, wozu eine eindeutige ID, ein Bereichsname, ein Pfad zum Quellcode und ein Debuggen-Flag gehören.
 1. Der Controller ersetzt den *$(tag)*-Platzhalter im Helm-Chart durch die eindeutige Sitzungs-ID und installiert das Helm-Chart für Ihren Dienst. Dadurch, dass ein Verweis auf die eindeutige Sitzungs-ID zum Helm-Chart hinzugefügt wird, wird es ermöglicht, den Container, der im AKS-Cluster bereitgestellt wird, für diese spezielle Sitzung wieder an die Sitzungsanforderung und die zugehörigen Informationen zu binden.
-1. Während der Installation des Helm-Charts fügt das Kubernetes-Initialisiererobjekt dem Pod Ihrer Anwendung weitere Container für die Instrumentierung und für Zugriff auf den Quellcode Ihres Projekts hinzu. Der devspaces-proxy- und der devspaces-proxy-init-Container werden hinzugefügt, um HTTP-Ablaufverfolgung und -Bereichsrouting bereitzustellen. Der devspaces-build-Container wird hinzugefügt, damit der Pod auf die Docker-Instanz und den Projektquellcode zugreifen kann, um den Container Ihrer Anwendung zu erstellen.
+1. Während der Installation des Helm-Charts fügt der Kubernetes-Webhook-Zulassungsserver dem Pod Ihrer Anwendung weitere Container für die Instrumentierung und für Zugriff auf den Quellcode Ihres Projekts hinzu. Der devspaces-proxy- und der devspaces-proxy-init-Container werden hinzugefügt, um HTTP-Ablaufverfolgung und -Bereichsrouting bereitzustellen. Der devspaces-build-Container wird hinzugefügt, damit der Pod auf die Docker-Instanz und den Projektquellcode zugreifen kann, um den Container Ihrer Anwendung zu erstellen.
 1. Wenn der Pod der Anwendung gestartet wird, werden der devspaces-build-Container und der devspaces-proxy-init-Container verwendet, um den Anwendungscontainer zu erstellen. Anschließend werden der Anwendungscontainer und die devspaces-proxy-Container gestartet.
 1. Nachdem der Anwendungscontainer gestartet wurde, wird auf der Clientseite die *port-forward*-Funktionalität von Kubernetes verwendet, um HTTP-Zugriff auf Ihre Anwendung über http://localhost bereitzustellen. Über diese Portweiterleitung wird Ihr Entwicklungscomputer mit dem Dienst in Ihrem Entwicklungsbereich verbunden.
 1. Wenn alle Container im Pod gestartet sind, wird der Dienst ausgeführt. An diesem Punkt beginnt die clientseitige Funktionalität damit, die HTTP-Ablaufverfolgungen sowie „stdout“ und „stderr“ zu streamen. Diese Informationen werden für den Entwickler durch die clientseitige Funktionalität angezeigt.
@@ -429,14 +431,14 @@ Wird *azureuser* verwendet, werden alle Anforderungen an *serviceA* an die aktua
 
 Informationen zum Einstieg in Azure Dev Spaces finden Sie in den folgenden Schnellstarts:
 
-* [Java mit Befehlszeilenschnittstelle und Visual Studio Code](quickstart-java.md)
-* [.NET Core mit Befehlszeilenschnittstelle und Visual Studio Code](quickstart-netcore.md)
+* [Java mit CLI and Visual Studio Code](quickstart-java.md)
+* [.NET Core mit CLI and Visual Studio Code](quickstart-netcore.md)
 * [.NET Core mit Visual Studio 2017](quickstart-netcore-visualstudio.md)
-* [Node.js mit Befehlszeilenschnittstelle und Visual Studio Code](quickstart-nodejs.md)
+* [Node.js mit CLI and Visual Studio Code](quickstart-nodejs.md)
 
 Informationen zum Einstieg in die Entwicklung im Team finden Sie in der folgenden Anleitungen:
 
-* [Teamentwicklung – Java mit Befehlszeilenschnittstelle und Visual Studio Code](team-development-java.md)
-* [Teamentwicklung – .NET Core mit Befehlszeilenschnittstelle und Visual Studio Code](team-development-netcore.md)
+* [Teamentwicklung – Java mit CLI and Visual Studio Code](team-development-java.md)
+* [Teamentwicklung – .NET Core mit CLI and Visual Studio Code](team-development-netcore.md)
 * [Teamentwicklung – .NET Core mit Visual Studio 2017](team-development-netcore-visualstudio.md)
-* [Teamentwicklung – Node.js mit Befehlszeilenschnittstelle und Visual Studio Code](team-development-nodejs.md)
+* [Teamentwicklung – Node.js mit CLI and Visual Studio Code](team-development-nodejs.md)

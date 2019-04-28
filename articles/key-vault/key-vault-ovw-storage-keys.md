@@ -9,12 +9,12 @@ author: prashanthyv
 ms.author: prashanthyv
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: 5ec5109aa8079b37015f66443b8ebac905ad2fcb
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 99b37a9b12c4b66e9b254156dfe4b59c7ab6594c
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370558"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526271"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Per Azure Key Vault verwaltetes Speicherkonto – CLI
 
@@ -109,7 +109,7 @@ Sie können Key Vault auch zum Generieren von SAS-Token (Shared Access Signature
 Nachdem die oben aufgeführten Schritte erfolgt sind, können Sie die folgenden Befehle ausführen, um Key Vault aufzufordern, SAS-Token für Sie zu generieren. 
 
 Über die nachstehenden Schritte werden die folgenden Aufgaben erledigt:
-- In Ihrem Tresor „<VaultName>“ wird im von KeyVault verwalteten Speicherkonto „<YourStorageAccountName>“ eine SAS-Kontodefinition mit dem Namen „<YourSASDefinitionName>“ festgelegt. 
+- In Ihrem Tresor `<VaultName>` wird im von KeyVault verwalteten Speicherkonto `<YourStorageAccountName>` eine SAS-Kontodefinition mit dem Namen `<YourSASDefinitionName>` festgelegt. 
 - Es wird ein Konto-SAS-Token für den Blob-, Datei-, Tabellen- und Warteschlangendienst und für die Ressourcentypen „Dienst“, „Container“ und Objekt mit allen Berechtigungen über HTTPS und mit dem angegebenen Start- und Enddatum erstellt.
 - Im Tresor wird eine von KeyVault verwaltete Speicher-SAS-Definition festgelegt, und zwar mit dem Vorlagen-URI als oben erstelltem SAS-Token sowie mit dem SAS-Typ „Konto“ und einer Gültigkeit von n Tagen.
 - Das tatsächliche Zugriffstoken wird aus dem KeyVault-Geheimnis abgerufen, das der SAS-Definition entspricht.

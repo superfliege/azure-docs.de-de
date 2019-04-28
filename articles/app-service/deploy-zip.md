@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.author: cephalin;sisirap
 ms.custom: seodec18
-ms.openlocfilehash: ef313ea631a963aa7893bf15e826e591c9d9cfc3
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: a48a72fe36b7925936758e844d959968ea921c65
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619797"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544057"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Bereitstellen der App in Azure App Service mit einer ZIP- oder WAR-Datei
 
@@ -31,7 +31,7 @@ Bei dieser Bereitstellung per ZIP-Datei wird der gleiche Kudu-Dienst verwendet, 
 - Aktivieren des Standarderstellungsprozesses, der die Paketwiederherstellung umfasst
 - [Anpassen der Bereitstellung](https://github.com/projectkudu/kudu/wiki/Configurable-settings#repository-and-deployment-related-settings), einschließlich der Ausführung von Bereitstellungsskripts  
 - Bereitstellungsprotokolle 
-- Eine maximale Dateigröße von 512 MB.
+- Eine maximale Dateigröße von 2048 MB.
 
 Weitere Informationen finden Sie in der [Kudu-Dokumentation](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file).
 
@@ -73,13 +73,23 @@ Vergewissern Sie sich, dass Sie mindestens Version 2.0.21 von Azure CLI verwende
 
 Stellen Sie die hochgeladene ZIP-Datei mit dem Befehl [az webapp deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) für Ihre Web-App bereit.  
 
-Im folgenden Beispiel wird die ZIP-Datei bereitgestellt, die Sie hochgeladen haben. Wenn Sie eine lokale Installation der Azure-Befehlszeilenschnittstelle verwenden, geben Sie den Pfad zu Ihrer lokalen ZIP-Datei als `--src` an.   
+Im folgenden Beispiel wird die ZIP-Datei bereitgestellt, die Sie hochgeladen haben. Wenn Sie eine lokale Installation der Azure-Befehlszeilenschnittstelle verwenden, geben Sie den Pfad zu Ihrer lokalen ZIP-Datei als `--src` an.
 
 ```azurecli-interactive
 az webapp deployment source config-zip --resource-group myResourceGroup --name <app_name> --src clouddrive/<filename>.zip
 ```
 
-Mit diesem Befehl werden die Dateien und Verzeichnisse aus der ZIP-Datei in Ihrem Standardordner der App Service-Anwendung (`\home\site\wwwroot`) bereitgestellt, und die App wird neu gestartet. Falls ein zusätzlicher benutzerdefinierter Buildprozess konfiguriert wurde, wird dieser ebenfalls ausgeführt. Weitere Informationen finden Sie in der [Kudu-Dokumentation](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file).
+Mit diesem Befehl werden die Dateien und Verzeichnisse aus der ZIP-Datei in Ihrem Standardordner der App Service-Anwendung (`\home\site\wwwroot`) bereitgestellt, und die App wird neu gestartet.
+
+Standardmäßig geht die Bereitstellungs-Engine davon aus, dass eine ZIP-Datei ohne weitere Maßnahmen ausführungsfähig ist, und führt deshalb auch keine Buildautomatisierung aus. Um dieselbe Buildautomatisierung wie bei einer [Git-Bereitstellung](deploy-local-git.md) zu aktivieren, legen Sie die App-Einstellung `SCM_DO_BUILD_DURING_DEPLOYMENT` fest, indem Sie in den folgenden Befehl in [Cloud Shell](https://shell.azure.com) ausführen:
+
+```azurecli-interactive
+az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true
+```
+
+
+
+Weitere Informationen finden Sie in der [Kudu-Dokumentation](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url).
 
 [!INCLUDE [app-service-deploy-zip-push-rest](../../includes/app-service-deploy-zip-push-rest.md)]  
 

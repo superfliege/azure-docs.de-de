@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 0e4c308e745cbf2ffbc18f64101043aff3ddde35
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 96656da078b79474dbf6576455a485d17868db49
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471017"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565962"
 ---
 # <a name="monitor-azure-functions"></a>Überwachen von Azure Functions
 
@@ -128,7 +128,7 @@ Die verfügbaren Tabellen werden links auf der Registerkarte **Schema** angezeig
 | ----- | ----------- |
 | **traces** | Protokolle, die von der Laufzeit und durch Funktionscode erstellt wurden. |
 | **requests** | Jeweils eine Anforderung pro Funktionsaufruf. |
-| **Ausnahmen** | Alle Ausnahmen, die von der Laufzeit ausgelöst werden. |
+| **exceptions** | Alle Ausnahmen, die von der Laufzeit ausgelöst werden. |
 | **customMetrics** | Die Anzahl von erfolgreichen und nicht erfolgreichen Aufrufen, Erfolgsrate und Dauer. |
 | **customEvents** | Ereignisse, die von der Runtime verfolgt werden, z. B.: HTTP-Anforderungen, die eine Funktion auslösen. |
 | **performanceCounters** | Informationen zur Leistung der Server, auf denen die Funktionen ausgeführt werden. |
@@ -595,7 +595,9 @@ Mit dem Parameter `tagOverrides` wird die `operation_Id` auf die Aufrufkennung d
 
 ## <a name="dependencies"></a>Abhängigkeiten
 
-Abhängigkeiten der Funktion von anderen Diensten werden nicht automatisch angezeigt. Sie können benutzerdefinierten Code schreiben, um die Abhängigkeiten anzuzeigen. Dies wird beispielsweise im Beispielcode im [Abschnitt zu den benutzerdefinierten C#-Telemetriedaten](#log-custom-telemetry-in-c-functions) veranschaulicht. Der Beispielcode ergibt in Application Insights eine *Anwendungszuordnung*, die wie die folgende Abbildung aussieht:
+Functions v2 erfasst automatisch Abhängigkeiten für HTTP-Anforderungen, Service Bus und SQL.
+
+Sie können benutzerdefinierten Code schreiben, um die Abhängigkeiten anzuzeigen. Dies wird beispielsweise im Beispielcode im [Abschnitt zu den benutzerdefinierten C#-Telemetriedaten](#log-custom-telemetry-in-c-functions) veranschaulicht. Der Beispielcode ergibt in Application Insights eine *Anwendungszuordnung*, die wie die folgende Abbildung aussieht:
 
 ![Anwendungszuordnung](./media/functions-monitoring/app-map.png)
 
