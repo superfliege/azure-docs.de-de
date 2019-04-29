@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73e5b081e85726a1fc78d92996846faa18ce616a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d34bd9d7f80f72b3c6c0821ad48e6be1fd260be9
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897621"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524632"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
 
@@ -50,7 +50,7 @@ Die vom Azure AD-Benutzerbereitstellungsdienst unterstützten Workday-Workflows 
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Für wen ist diese Benutzerbereitstellungslösung am besten geeignet?
 
-Diese Workday-Benutzerbereitstellungslösung ist derzeit als öffentliche Vorschauversion verfügbar und eignet sich ideal für:
+Diese Workday-Benutzerbereitstellungslösung eignet sich ideal für:
 
 * Organisationen, die eine vorgefertigte, cloudbasierte Lösung für die Workday-Benutzerbereitstellung verwenden möchten
 
@@ -460,7 +460,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 
 2. Im Feld **Quellobjektbereich** können Sie die Benutzergruppen in Workday für die Bereitstellung in Active Directory auswählen, indem Sie verschiedene attributbasierte Filter definieren. Die Standardoption ist „Alle Benutzer in Workday“. Beispielfilter:
 
-   * Beispiel: Auswählen der Benutzer mit Mitarbeiter-IDs von 1000000 bis 2000000
+   * Beispiel: Auswählen der Benutzer mit Worker-IDs von 1000000 bis 2000000 (außer 2000000)
 
       * Attribut: WorkerID
 

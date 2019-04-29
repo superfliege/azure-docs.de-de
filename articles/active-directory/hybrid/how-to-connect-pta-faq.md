@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77dadeda8bb270689530a34c3e36d33e439ea9e5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3b00afa3d1001ee7c48997e41fd6042763bcc9aa
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180384"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616593"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory-Passthrough-Authentifizierung: Häufig gestellte Fragen
 
@@ -50,6 +50,10 @@ Ja, die Passthrough-Authentifizierung unterstützt `Alternate ID` als Benutzerna
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Kann die Kennworthashsynchronisierung als Fallback für die Passthrough-Authentifizierung verwendet werden?
 
  Nein. Bei der Passthrough-Authentifizierung wird _kein_ automatisches Failover auf die Kennworthashsynchronisierung ausgeführt. Um Benutzeranmeldefehler zu vermeiden, sollten Sie die Passthrough-Authentifizierung für [Hochverfügbarkeit](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability) konfigurieren.
+
+## <a name="what-happens-when-i-switch-from-password-hash-synchronization-to-pass-through-authentication"></a>Was geschieht, wenn ich von der Kennworthashsynchronisierung auf die Passthrough-Authentifizierung umstelle?
+
+Wenn Sie Azure AD Connect verwenden, um die Anmeldemethode von Kennworthashsynchronisierung in Passthrough-Authentifizierung zu ändern, wird die Passthrough-Authentifizierung die primäre Anmeldemethode für Ihre Benutzer in verwalteten Domänen. Beachten Sie, dass die Kennworthashes aller Benutzer, die zuvor per Kennworthashsynchronisierung synchronisiert wurden, in Azure AD gespeichert bleiben.
 
 ## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Kann ich einen [Azure AD-Anwendungsproxy](../manage-apps/application-proxy.md)-Connector und einen Passthrough-Authentifizierungs-Agent auf demselben Server installieren?
 
