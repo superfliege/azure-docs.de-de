@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 04/15/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48142961e4b6714090441b24e4bd6ca07afaf598
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 82afadef58310f46046c8c3168ed93a34769b316
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622245"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609522"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Berechtigungen der Administratorrolle in Azure Active Directory
 
@@ -71,7 +71,7 @@ Die folgenden Administratorrollen sind verfügbar:
 
   Geben Sie in | Möglich
   ----- | ----------
-  [Microsoft 365 Compliance Center](https://protection.microsoft.com) | Schützen und Verwalten Ihrer Organisationsdaten für Microsoft 365-Dienste<br>Verwalten von Konformitätwarnungen
+  [Microsoft 365 Compliance Center](https://protection.office.com) | Schützen und Verwalten Ihrer Organisationsdaten für Microsoft 365-Dienste<br>Verwalten von Konformitätwarnungen
   [Compliance Manager](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | Nachverfolgen, Zuweisen und Überprüfen der Einhaltung gesetzlicher Vorschriften durch Ihre Organisation
   [Office 365 Security & Compliance Center](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Verwalten der Datengovernance<br>Durchführen von Untersuchung zu rechtlichen Aspekten und von Daten<br>Verwalten von DRS-Anforderungen
   [Intune](https://docs.microsoft.com/intune/role-based-access-control) | Anzeigen aller Intune-Überwachungsdaten
@@ -81,7 +81,7 @@ Die folgenden Administratorrollen sind verfügbar:
 
   In | Can do
   ----- | ----------
-  [Microsoft 365 compliance center](https://protection.microsoft.com) | Monitor compliance-related policies across Microsoft 365 services<br>Manage compliance alerts
+  [Microsoft 365 compliance center](https://protection.office.com) | Monitor compliance-related policies across Microsoft 365 services<br>Manage compliance alerts
   [Compliance Manager](https://docs.microsoft.com/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | Track, assign, and verify your organization's regulatory compliance activities
   [Office 365 Security & Compliance Center](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Manage data governance<br>Perform legal and data investigation<br>Manage Data Subject Request
   [Intune](https://docs.microsoft.com/intune/role-based-access-control) | View all Intune audit data
@@ -96,7 +96,7 @@ Die folgenden Administratorrollen sind verfügbar:
 
 * **[Geräteadministratoren:](#device-administrators)** Diese Rolle kann nur als zusätzlicher lokaler Administrator in den [Geräteeinstellungen](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/) zugewiesen werden. Benutzer mit dieser Rolle werden auf allen Windows 10-Geräten, die in Azure Active Directory eingebunden sind, als Administratoren für den lokalen Computer festgelegt. Sie haben nicht die Möglichkeit zum Verwalten von Geräteobjekten in Azure Active Directory. 
 
-* **[Verzeichnis lesen:](#directory-readers)** Dies ist eine Legacyrolle, die Anwendungen ohne Unterstützung für das [Consent Framework](../develop/quickstart-v1-integrate-apps-with-azure-ad.md) zugewiesen wird. Diese Rolle sollte keinem Benutzer zugewiesen werden.
+* **[Verzeichnis lesen:](#directory-readers)** Diese Rolle sollte nur älteren Anwendungen zugewiesen werden, die das [Consent Framework](../develop/quickstart-v1-integrate-apps-with-azure-ad.md) nicht unterstützen. Weisen Sie sie keinen Benutzern zu.
 
 * **[Konten zur Verzeichnissynchronisierung:](#directory-synchronization-accounts)** Nicht verwenden. Diese Rolle wird automatisch dem Azure AD Connect-Dienst zugewiesen und ist weder für eine andere Verwendung vorgesehen, noch wird eine andere Verwendung unterstützt.
 
@@ -170,9 +170,9 @@ Die folgenden Administratorrollen sind verfügbar:
   
   Geben Sie in | Möglich
   --- | ---
-  [Microsoft 365 Security Center](https://protection.microsoft.com) | Überwachen von sicherheitsrelevanten Richtlinien in Microsoft 365-Diensten<br>Verwalten von Sicherheitsbedrohungen und Warnungen<br>Anzeigen von Berichten
-  Identity Protection Center | Alle Berechtigungen der Rolle „Sicherheit lesen“<br>Darüber hinaus die Möglichkeit, alle Vorgänge im Identity Protection Center außer des Zurücksetzens von Kennwörtern auszuführen
-  [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Alle Berechtigungen der Rolle „Sicherheit lesen“<br>**Kann keine** Azure AD-Rollenzuweisungen oder -Einstellungen verwalten
+  [Microsoft 365 Security Center](https://protection.office.com) | Überwachen von sicherheitsrelevanten Richtlinien in Microsoft 365-Diensten<br>Verwalten von Sicherheitsbedrohungen und Warnungen<br>Anzeigen von Berichten
+  Identity Protection Center | Alle Berechtigungen der Rolle „Sicherheitsleseberechtigter“<br>Darüber hinaus die Möglichkeit, alle Vorgänge im Identity Protection Center außer des Zurücksetzens von Kennwörtern auszuführen
+  [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Alle Berechtigungen der Rolle „Sicherheitsleseberechtigter“<br>**Kann keine** Azure AD-Rollenzuweisungen oder -Einstellungen verwalten
   [Office 365 Security & Compliance Center](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Verwalten von Sicherheitsrichtlinien<br>Anzeigen, Untersuchen und Reagieren auf Sicherheitsbedrohungen<br>Anzeigen von Berichten
   Azure Advanced Threat Protection | Überwachen und Reagieren auf verdächtige Sicherheitsaktivitäten
   Windows Defender ATP und EDR | Zuweisen von Rollen<br>Verwalten von Computergruppen<br>Konfigurieren der Endpunkt-Bedrohungserkennung und der automatisierten Korrektur<br>Anzeigen, Untersuchen und Reagieren auf Warnungen
@@ -185,7 +185,7 @@ Die folgenden Administratorrollen sind verfügbar:
 
   In | Can do
   --- | ---
-  [Microsoft 365 security center](https://protection.microsoft.com) | All permissions of the Security Reader role<br>View, investigate, and respond to security threats alerts
+  [Microsoft 365 security center](https://protection.office.com) | All permissions of the Security Reader role<br>View, investigate, and respond to security threats alerts
   Identity Protection Center | All permissions of the Security Reader role<br>Additionally, the ability to perform all Identity Protection Center operations except for resetting passwords
   [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | All permissions of the Security Reader role
   [Office 365 Security & Compliance Center](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | All permissions of the Security Reader role<br>View, investigate, and respond to security alerts
@@ -194,11 +194,11 @@ Die folgenden Administratorrollen sind verfügbar:
   [Cloud App Security](https://docs.microsoft.com/cloud-app-security/manage-admins) | All permissions of the Security Reader role
   [Office 365 service health](https://docs.microsoft.com/office365/enterprise/view-service-health) | View the health of Office 365 services
 -->
-* **[Benutzer mit Leseberechtigung für Sicherheitsfunktionen:](#security-reader)** Benutzer mit dieser Rolle besitzen globalen schreibgeschützten Zugriff auf sicherheitsbezogene Features, einschließlich alle Informationen in Microsoft 365 Security Center, Azure Active Directory, Identity Protection, und Privileged Identity Management, sowie die Möglichkeit zum Lesen von Azure Active Directory-Anmeldeberichten und Überwachungsprotokollen und für das Office 365 Security & Compliance Center. Weitere Informationen zu Office 365-Berechtigungen finden Sie unter [Berechtigungen im Office 365 Security & Compliance Center](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
+* **[Sicherheitsleseberechtigter:](#security-reader)** Benutzer mit dieser Rolle besitzen globalen schreibgeschützten Zugriff auf sicherheitsbezogene Features, einschließlich alle Informationen in Microsoft 365 Security Center, Azure Active Directory, Identity Protection, und Privileged Identity Management, sowie die Möglichkeit zum Lesen von Azure Active Directory-Anmeldeberichten und Überwachungsprotokollen und für das Office 365 Security & Compliance Center. Weitere Informationen zu Office 365-Berechtigungen finden Sie unter [Berechtigungen im Office 365 Security & Compliance Center](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
   Geben Sie in | Möglich
   --- | ---
-  [Microsoft 365 Security Center](https://protection.microsoft.com) | Anzeigen von sicherheitsrelevanten Richtlinien in Microsoft 365-Diensten<br>Anzeigen von Sicherheitsbedrohungen und Warnungen<br>Anzeigen von Berichten
+  [Microsoft 365 Security Center](https://protection.office.com) | Anzeigen von sicherheitsrelevanten Richtlinien in Microsoft 365-Diensten<br>Anzeigen von Sicherheitsbedrohungen und Warnungen<br>Anzeigen von Berichten
   Identity Protection Center | Lesen von allen Sicherheitsberichten und Einstellungsinformationen für die Sicherheitsfunktionen<br><ul><li>Antispam<li>Verschlüsselung<li>Verhindern von Datenverlusten<li>Antischadsoftware<li>Erweiterter Schutz vor Bedrohungen<li>Antiphishing<li>Nachrichtenflussregeln
   [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | Verfügt über schreibgeschützten Zugriff auf alle eingeblendeten Informationen in Azure AD PIM: Richtlinien und Berichte für Azure AD-Rollenzuweisungen, Sicherheitsüberprüfungen und in Zukunft Lesezugriff auf Richtliniendaten und Berichte für Szenarien zusätzlich zur Azure AD-Rollenzuweisung.<br>**Kann sich nicht** für Azure AD PIM registrieren oder Änderungen durchführen. Im PIM-Portal oder über PowerShell können Personen mit dieser Rolle zusätzliche Rollen (z.B. globaler Administrator oder Administrator für privilegierte Rollen) aktivieren, wenn der Benutzer dafür geeignet ist.
   [Office 365 Security & Compliance Center](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Anzeigen von Sicherheitsrichtlinien<br>Anzeigen und Untersuchen von Sicherheitsbedrohungen<br>Anzeigen von Berichten
@@ -954,7 +954,7 @@ Dieser Administrator kann Sicherheitsinformationen und -berichte lesen und die K
 | microsoft.office365.protectionCenter/allEntities/update | Aktualisieren aller Ressourcen in microsoft.office365.protectionCenter |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
 
-### <a name="security-reader"></a>Sicherheit lesen
+### <a name="security-reader"></a>Sicherheitsleseberechtigter
 Lesen von Sicherheitsinformationen und Berichten in Azure AD und Office 365.
 
   > [!NOTE]
@@ -1159,7 +1159,7 @@ Privilegierter Authentifizierungsadministrator | Privilegierter Authentifizierun
 Administrator für privilegierte Rollen | Administrator für privilegierte Rollen | e8611ab8-c189-46e8-94e1-60213ab1f814
 Meldet Reader | Berichtsleser | 4a5d8f65-41da-4de4-8968-e035b65339cf
 Sicherheitsadministrator | Sicherheitsadministrator | 194ae4cb-b126-40b2-bd5b-6091b380977d
-Sicherheit lesen | Benutzer mit Leseberechtigung für Sicherheitsfunktionen | 5d6b6bb7-de71-4623-b4af-96380a352509
+Sicherheitsleseberechtigter | Sicherheitsleseberechtigter | 5d6b6bb7-de71-4623-b4af-96380a352509
 Dienstunterstützungsadministrator | Dienstadministrator | f023fd81-a637-4b56-95fd-791ac0226033
 SharePoint-Dienstadministrator | SharePoint-Administrator | f28a1f50-f6e7-4571-818b-6a12f2af6b6c
 Teams-Kommunikationsadministrator | Teams-Kommunikationsadministrator | baf37b3a-610e-45da-9e62-d9d1e5e8914b

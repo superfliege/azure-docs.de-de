@@ -76,7 +76,7 @@
           href: ../sql-database/sql-database-control-access.md?toc=/azure/sql-data-warehouse/toc.json
         - name: Firewallregeln
           href: ../sql-database/sql-database-firewall-configure.md?toc=/azure/sql-data-warehouse/toc.json
-        - name: Dienstendpunkte im virtuellen Netzwerk
+        - name: VNET-Dienstendpunkte
           href: ../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/sql-data-warehouse/toc.json
         - name: Authentication
           href: sql-data-warehouse-authentication.md?toc=/azure/sql-data-warehouse/toc.json
@@ -198,7 +198,7 @@
           href: ../sql-database/sql-database-aad-authentication-configure.md?toc=/azure/sql-data-warehouse/toc.json
         - name: Bedingter Zugriff
           href: ../sql-database/sql-database-conditional-access.md?toc=/azure/sql-data-warehouse/toc.json
-        - name: Regeln für virtuelle Netzwerke von PowerShell
+        - name: VNET-Regeln von PowerShell
           href: ../sql-database/sql-database-vnet-service-endpoint-rule-powershell.md?toc=/azure/sql-data-warehouse/toc.json
         - name: Aktivieren der Verschlüsselung – Portal
           href: sql-data-warehouse-encryption-tde.md

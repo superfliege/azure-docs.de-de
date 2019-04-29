@@ -32,7 +32,7 @@ In diesem Artikel werden zwei Szenarios vorgestellt, bei denen mithilfe von Netz
 
 * [ACR Tasks](container-registry-tasks-overview.md)-Vorgänge werden derzeit in einer Containerregistrierung, die in einem virtuellen Netzwerk bereitgestellt wurde, nicht unterstützt.
 
-* Jede Registrierung unterstützt bis zu 100 Regeln für virtuelle Netzwerke.
+* Jede Registrierung unterstützt bis zu 100 VNET-Regeln.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

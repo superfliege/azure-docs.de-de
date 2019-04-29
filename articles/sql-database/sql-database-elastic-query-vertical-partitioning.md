@@ -128,7 +128,7 @@ Das folgende Beispiel zeigt, wie Sie die Liste der externen Tabellen aus der akt
 Die Abfrage für elastische Datenbanken erweitert die vorhandene externe Tabellensyntax zum Definieren von externen Tabellen, die externe Datenquellen vom Typ RDBMS verwenden. Eine externe Tabellendefinition für die vertikale Partitionierung behandelt die folgenden Aspekte: 
 
 * **Schema:** In der DDL für externe Tabellen ist ein Schema definiert, das Ihre Abfragen verwenden können. Das in Ihrer Definition für externe Tabellen angegebene Schema muss mit dem Schema der Tabellen in der Remotedatenbank übereinstimmen, in der die eigentlichen Daten gespeichert werden. 
-* **Remotedatenbankverweis:** Die DDL für externe Tabellen verweist auf eine externe Datenquelle. Die externe Datenquelle gibt den Namen des SQL-Datenbankservers und den Datenbanknamen der Remotedatenbank an, in der die eigentlichen Tabellendaten gespeichert sind. 
+* **Remotedatenbankverweis:** Die DDL für externe Tabellen verweist auf eine externe Datenquelle. Die externe Datenquelle gibt den Namen des SQL-Datenbank-Servers und den Datenbanknamen der Remotedatenbank an, in der die eigentlichen Tabellendaten gespeichert sind. 
 
 Wenn Sie eine externe Datenquelle gemäß der Beschreibung im vorherigen Abschnitt verwenden, lautet die Syntax zum Erstellen externer Tabellen wie folgt: 
 

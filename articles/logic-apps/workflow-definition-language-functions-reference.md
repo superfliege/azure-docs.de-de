@@ -1,27 +1,29 @@
 ---
-title: Funktionsreferenz zur Definitionssprache für Workflows – Azure Logic Apps | Microsoft-Dokumentation
-description: Informationen zu Funktionen der Definitionssprache für Workflows für Azure Logic Apps
+title: Funktionsreferenz zur Definitionssprache für Workflows – Azure Logic Apps und Microsoft Flow
+description: Referenzhandbuch für Funktionen in Ausdrücken, die mit der Definitionssprache für Workflows für Azure Logic Apps und Microsoft Flow erstellt wurden.
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
+ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/15/2018
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: e58d534811fc6d6ed2bb24486c149f217a7a28a3
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: d7ea62c51065cbe85a905b4ff78743fdc11c1e10
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189902"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618208"
 ---
-# <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps
+# <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps und Microsoft Flow
 
-Einige [Ausdrücke](../logic-apps/logic-apps-workflow-definition-language.md#expressions) in [Azure Logic Apps](../logic-apps/logic-apps-overview.md) erhalten ihre Werte von Laufzeitaktionen, die zu Beginn der Ausführung der Logik-App-Workflowdefinition möglicherweise noch nicht vorhanden sind.
-Sie können mithilfe von *Funktionen*, die von der [Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-definition-language.md) bereitgestellt werden, auf diese Werte in Ausdrücken verweisen oder mit diesen Werten arbeiten.
-So können Sie beispielsweise mathematische Funktionen für Berechnungen verwenden, wie z.B. die Funktion [add()](../logic-apps/workflow-definition-language-functions-reference.md#add), welche die Summe aus ganzen Zahlen oder Gleitkommazahlen zurückgibt. Im Folgenden finden Sie einige weitere Beispielaufgaben, die mithilfe von Funktionen ausgeführt werden können:
+Bei Workflowdefinitionen in [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und [Microsoft Flow](https://docs.microsoft.com/flow/getting-started) erhalten einige [Ausdrücke](../logic-apps/logic-apps-workflow-definition-language.md#expressions) ihre Werte von Laufzeitaktionen, die zu Beginn der Ausführung Ihres Workflows möglicherweise noch nicht vorhanden sind. Sie können mithilfe von *Funktionen*, die von der [Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-definition-language.md) bereitgestellt werden, auf diese Werte in diesen Ausdrücken verweisen oder diese Werte in diesen Ausdrücken verarbeiten. 
+
+> [!NOTE]
+> Diese Referenzseite gilt sowohl für Azure Logic Apps als auch für Microsoft Flow, wird aber in der Dokumentation zu Azure Logic Apps angezeigt. Obwohl sich diese Seite speziell auf Logik-Apps bezieht, funktionieren diese Funktionen sowohl mit Flows als auch mit Logik-Apps. Weitere Informationen zu Funktionen und Ausdrücken in Microsoft Flow finden Sie unter [Verwenden von Ausdrücken in Bedingungen](https://docs.microsoft.com/flow/use-expressions-in-conditions).
+
+So können Sie beispielsweise Werte berechnen, indem Sie mathematische Funktionen wie die [add()-Funktion](../logic-apps/workflow-definition-language-functions-reference.md#add) verwenden, wenn Sie die Summe aus ganzen Zahlen oder Gleitkommazahlen erhalten möchten. Im Folgenden finden Sie einige weitere Beispielaufgaben, die mithilfe von Funktionen ausgeführt werden können:
 
 | Aufgabe | Funktionssyntax | Ergebnis |
 | ---- | --------------- | ------ |
@@ -29,8 +31,7 @@ So können Sie beispielsweise mathematische Funktionen für Berechnungen verwend
 | Gibt einen global eindeutigen Bezeichner (Globally Unique Identifier, GUID) zurück. | guid() |"c2ecc88d-88c8-4096-912c-d6f2e2b138ce" |
 ||||
 
-In diesem Artikel sind die Funktionen beschrieben, die Sie beim Erstellen Ihrer Logik-App-Definitionen verwenden können.
-In den nachfolgenden Tabellen sind Funktionen [basierend auf dem allgemeinen Zweck](#ordered-by-purpose) aufgeführt. Ausführliche Informationen zu den einzelnen Funktionen finden Sie unter [Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps](#alphabetical-list).
+In den nachfolgenden Tabellen finden Sie Funktionen [basierend auf dem allgemeinen Zweck](#ordered-by-purpose) aufgeführt. Ausführliche Informationen zu den einzelnen Funktionen finden Sie unter [Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps](#alphabetical-list).
 
 > [!NOTE]
 > In der Syntax für Parameterdefinitionen bedeutet ein Fragezeichen (?), das hinter einem Parameter steht, dass der Parameter optional ist.
@@ -229,7 +230,7 @@ Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktio
 Diese Workflowfunktionen können für folgende Aktionen hilfreich sein:
 
 * Abrufen von Details zu einer Workflowinstanz zur Laufzeit.
-* Arbeiten mit den Eingaben für die Instanziierung von Logik-Apps.
+* Arbeiten mit den Eingaben für die Instanziierung von Logik-Apps oder Flows.
 * Verweisen auf die Ausgaben von Triggern und Aktionen.
 
 Sie können beispielsweise auf die Ausgaben einer Aktion verweisen und die Daten in einer späteren Aktion verwenden.
@@ -248,7 +249,7 @@ Die vollständige Referenz zu den einzelnen Funktionen finden Sie unter [Funktio
 | [items](../logic-apps/workflow-definition-language-functions-reference.md#items) | Gibt in einer „for-each“- oder „do-until“-Schleife das aktuelle Element aus der angegebenen Schleife zurück.|
 | [listCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | Gibt die „Rückruf-URL“ zurück, die einen Trigger oder eine Aktion aufruft. |
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Gibt den Textteil für einen bestimmten Teil einer Aktionsausgabe zurück, die mehrere Teile hat. |
-| [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | Gibt den Wert für einen Parameter zurück, der in der Definition Ihrer Logik-App beschrieben wird. |
+| [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | Gibt den Wert für einen Parameter zurück, der in Ihrer Workflowdefinition beschrieben wird. |
 | [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | Gibt die Ausgabe eines Triggers zur Laufzeit oder aus anderen Name/Wert-Paaren im JSON-Format zurück. Siehe auch [triggerOutputs](#triggerOutputs) und [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). |
 | [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Gibt die `body`-Ausgabe eines Triggers zur Laufzeit zurück. Siehe [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
 | [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | Gibt einen einzelnen Wert zurück, der mit einem Schlüsselnamen in Triggerausgaben vom Typ *form-data* oder *form-encoded* übereinstimmt. |
@@ -1812,7 +1813,7 @@ Dies sind die zurückgegebenen Ergebnisse:
 ### <a name="float"></a>Gleitkommawert
 
 Konvertiert die Zeichenfolgenversion einer Gleitkommazahl in eine tatsächliche Gleitkommazahl.
-Diese Funktion können Sie nur verwenden, wenn Sie einen benutzerdefinierten Parameter an eine App (z. B. eine Logik-App) übergeben.
+Diese Funktion können Sie nur verwenden, wenn Sie benutzerdefinierte Parameter an eine App (z. B. eine Logik-App oder einen Flow) übergeben.
 
 ```
 float('<value>')
@@ -2766,7 +2767,7 @@ multipartBody('<actionName>', <index>)
 Überprüft, ob ein Ausdruck gleich „false“ ist.
 Gibt „true“ zurück, wenn der Ausdruck gleich „false“ ist, oder gibt „false“ zurück, wenn er gleich „true“ ist.
 
-```
+```json
 not(<expression>)
 ```
 
@@ -2784,7 +2785,7 @@ not(<expression>)
 
 In diesen Beispielen wird überprüft, ob die angegebenen Ausdrücke gleich „false“ sind:
 
-```
+```json
 not(false)
 not(true)
 ```
@@ -2798,7 +2799,7 @@ Dies sind die zurückgegebenen Ergebnisse:
 
 In diesen Beispielen wird überprüft, ob die angegebenen Ausdrücke gleich „false“ sind:
 
-```
+```json
 not(equals(1, 2))
 not(equals(1, 1))
 ```
@@ -2833,7 +2834,7 @@ or(<expression1>, <expression2>, ...)
 
 In diesen Beispielen wird überprüft, ob mindestens ein Ausdruck gleich „true“ ist:
 
-```
+```json
 or(true, false)
 or(false, false)
 ```
@@ -2847,7 +2848,7 @@ Dies sind die zurückgegebenen Ergebnisse:
 
 In diesen Beispielen wird überprüft, ob mindestens ein Ausdruck gleich „true“ ist:
 
-```
+```json
 or(equals(1, 1), equals(1, 2))
 or(equals(1, 2), equals(1, 3))
 ```
@@ -2861,7 +2862,7 @@ Dies sind die zurückgegebenen Ergebnisse:
 
 ### <a name="parameters"></a>Parameter
 
-Gibt den Wert für einen Parameter zurück, der in der Definition Ihrer Logik-App beschrieben wird.
+Gibt den Wert für einen Parameter zurück, der in Ihrer Workflowdefinition beschrieben wird.
 
 ```
 parameters('<parameterName>')

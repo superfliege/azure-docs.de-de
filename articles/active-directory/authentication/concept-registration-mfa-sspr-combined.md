@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f3eec1f846f1b74ab3e19bca022d4e009540d1a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 7cf8d5cb13b39d58920555ff9d99a4949e1bfc20
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59280008"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521432"
 ---
 # <a name="combined-security-information-registration-preview"></a>Kombinierte Registrierung von Sicherheitsinformationen (Vorschauversion)
 
@@ -25,6 +25,8 @@ Vor der kombinierten Registrierung registrierten Benutzer Authentifizierungsmeth
 ![Eigenes Profil zeigt registrierte Sicherheitsinformationen für einen Benutzer an](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
 Lesen Sie vor dem Aktivieren der neuen Funktion diese an Administratoren gerichtete Dokumentation und die benutzerorientierte Dokumentation, um sich mit der Funktionalität und den Auswirkungen dieser Funktion vertraut zu machen. Ziehen Sie für Ihre Schulungen die Benutzerdokumentation heran, um Ihre Benutzer auf die neue Oberfläche vorzubereiten und so einen erfolgreichen Rollout sicherzustellen.
+
+Die kombinierte Azure AD-Registrierung von Sicherheitsinformationen ist für nationale Clouds wie Azure US Government, Azure Deutschland oder Azure China 21Vianet derzeit nicht verfügbar.
 
 |     |
 | --- |

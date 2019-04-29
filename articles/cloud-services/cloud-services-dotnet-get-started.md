@@ -155,7 +155,7 @@ Wenn die Anwendung in der Cloud ausgeführt wird, verwendet sie eine cloudbasier
 8. Aktivieren Sie die Option **Azure-Diensten Zugriff auf den Server erlauben**.
 9. Klicken Sie für den neuen Server auf **Auswählen**.
 
-    ![Neuer SQL-Datenbankserver](./media/cloud-services-dotnet-get-started/newdbserver.png)
+    ![Neuer SQL-Datenbank-Server](./media/cloud-services-dotnet-get-started/newdbserver.png)
 10. Klicken Sie auf **Create**.
 
 ### <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos

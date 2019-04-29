@@ -52,8 +52,8 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [New-AzAppServicePlan](/powershell/module/az.websites/new-azappserviceplan) | Erstellt einen App Service-Plan. |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Erstellt eine App Service-App. |
-| [New-AzSQLServer](/powershell/module/az.sql/new-azsqlserver) | Erstellt einen SQL-Datenbankserver. |
-| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Erstellt eine Firewallregel für einen SQL-Datenbankserver. |
+| [New-AzSQLServer](/powershell/module/az.sql/new-azsqlserver) | Erstellt einen SQL-Datenbank-Server. |
+| [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Erstellt eine Firewallregel für einen SQL-Datenbank-Server. |
 | [New-AzSQLDatabase](/powershell/module/az.sql/new-azsqldatabase) | Erstellt eine Datenbank oder eine elastische Datenbank. |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Ändert die Konfiguration einer App Service-App. |
 

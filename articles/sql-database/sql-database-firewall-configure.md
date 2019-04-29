@@ -1,6 +1,6 @@
 ---
 title: IP-Firewallregeln für Azure SQL-Datenbank und Data Warehouse | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie eine Firewall für SQL-Datenbank oder SQL Data Warehouse mit Firewallregeln auf Serverebene zum Verwalten des Zugriffs sowie IP-Firewallregeln für eine Einzeldatenbank oder eine in einem Pool zusammengefasste Datenbank auf Datenbankebene konfigurieren.
+description: Erfahren Sie, wie Sie eine Firewall für SQL-Datenbank oder SQL Data Warehouse mit IP-Firewallregeln auf Serverebene zum Verwalten des Zugriffs sowie IP-Firewallregeln auf Datenbankebene für eine Einzeldatenbank oder eine Pooldatenbank konfigurieren.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,12 +12,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: f2ea9f784064a926a391ba0eadebd9fa5224a36d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 513836257a292069da709ad7a71e480f2b4d069d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57875185"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549728"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-ip-firewall-rules"></a>IP-Firewallregeln für Azure SQL-Datenbank and SQL Data Warehouse
 
@@ -28,9 +28,9 @@ Microsoft Azure [SQL-Datenbank](sql-database-technical-overview.md) und [SQL Dat
 > [!IMPORTANT]
 > Dieser Artikel gilt *nicht* für **verwaltete Azure SQL-Datenbank-Instanzen**. Weitere Informationen über die erforderliche Netzwerkkonfiguration finden Sie im Artikel zum [Herstellen einer Verbindung mit einer verwalteten Instanz](sql-database-managed-instance-connect-app.md).
 
-## <a name="virtual-network-rules-as-alternatives-to-ip-rules"></a>Regeln für virtuelle Netzwerke als Alternative zu IP-Regeln
+## <a name="virtual-network-rules-as-alternatives-to-ip-rules"></a>VNET-Regeln als Alternative zu IP-Regeln
 
-Zusätzlich zu den IP-Regeln verwaltet die Firewall ebenfalls *virtuelle Netzwerkregeln*. Virtuelle Netzwerkregeln basieren auf den Virtual Network-Dienstendpunkten. Virtuelle Netzwerkregeln sollten den IP-Regeln in manchen Fällen vorgezogen werden. Weitere Informationen finden Sie unter [Virtual Network service endpoints and rules for Azure SQL Database (Virtuelle Netzwerkdienstendpunkte und -regeln für Azure SQL)](sql-database-vnet-service-endpoint-rule-overview.md).
+Zusätzlich zu den IP-Regeln verwaltet die Firewall ebenfalls *VNET-Regeln*. VNET-Regeln basieren auf den Virtual Network-Dienstendpunkten. VNET-Regeln sollten den IP-Regeln in manchen Fällen vorgezogen werden. Weitere Informationen finden Sie unter [Virtual Network service endpoints and rules for Azure SQL Database (VNET-Dienstendpunkte und -Regeln für Azure SQL-Datenbank)](sql-database-vnet-service-endpoint-rule-overview.md).
 
 ## <a name="overview"></a>Übersicht
 
@@ -51,11 +51,11 @@ Verbindungsversuche über das Internet und Azure müssen zunächst die Firewall 
 
 - **IP-Firewallregeln auf Datenbankebene:**
 
-  Diese Regeln ermöglichen Clients, auf bestimmte (sichere) Datenbanken innerhalb desselben SQL-Datenbank-Servers zuzugreifen. Sie können diese Regeln für jede Datenbank (einschließlich der Datenbank **master**) erstellen, die in den einzelnen Datenbanken gespeichert werden. IP-Firewallregeln auf Datenbankebene für Master- und Benutzerdatenbanken können nur mithilfe von Transact-SQL-Anweisungen erstellt und verwaltet werden und erst dann, nachdem Sie die erste Firewall auf Serverebene konfiguriert haben. Wenn Sie in der IP-Firewallregel auf Datenbankebene einen IP-Adressbereich angeben, der außerhalb des Bereichs liegt, der in der IP-Firewallregel auf Serverebene angegeben ist, können nur die Clients auf die Datenbank zugreifen, die IP-Adressen in dem auf Datenbankebene angegebenen Bereich aufweisen. Es können maximal 128 IP-Firewallregeln auf Datenbankebene für eine Datenbank verwendet werden. Weitere Informationen zum Konfigurieren von IP-Firewallregeln auf Datenbankebene finden Sie im Beispiel weiter unten in diesem Artikel und unter [sp_set_database_firewall_rule (Azure SQL-Datenbanken)](https://msdn.microsoft.com/library/dn270010.aspx).
+  Diese Regeln ermöglichen Clients, auf bestimmte (sichere) Datenbanken innerhalb desselben SQL-Datenbank-Servers zuzugreifen. Sie können diese Regeln für jede Datenbank (einschließlich der Datenbank **master**) erstellen, die in den einzelnen Datenbanken gespeichert werden. IP-Firewallregeln auf Datenbankebene für Master- und Benutzerdatenbanken können nur mithilfe von Transact-SQL-Anweisungen erstellt und verwaltet werden und erst dann, nachdem Sie die erste Firewall auf Serverebene konfiguriert haben. Wenn Sie in der IP-Firewallregel auf Datenbankebene einen IP-Adressbereich angeben, der außerhalb des Bereichs liegt, der in der IP-Firewallregel auf Serverebene angegeben ist, können nur die Clients auf die Datenbank zugreifen, die IP-Adressen in dem auf Datenbankebene angegebenen Bereich aufweisen. Es können maximal 128 IP-Firewallregeln auf Datenbankebene für eine Datenbank verwendet werden. Weitere Informationen zum Konfigurieren von IP-Firewallregeln auf Datenbankebene finden Sie im Beispiel weiter unten in diesem Artikel und unter [sp_set_database_firewall_rule (Azure SQL-Datenbank)](https://msdn.microsoft.com/library/dn270010.aspx).
 
 ### <a name="recommendation"></a>Empfehlung
 
-Microsoft empfiehlt, nach Möglichkeit IP-Firewallregeln auf Datenbankebene zu verwenden, um die Sicherheit und die Portabilität der Datenbank zu verbessern. Verwenden Sie IP-Firewallregeln auf Serverebene für Administratoren und wenn Sie über viele Datenbanken mit identischen Zugriffsanforderungen verfügen und die Datenbanken nicht einzeln konfigurieren möchten.
+Microsoft empfiehlt, nach Möglichkeit IP-Firewallregeln auf Datenbankebene zu verwenden, um die Sicherheit und die Portabilität der Datenbank zu verbessern. Verwenden Sie IP-Firewallregeln auf Serverebene für Administratoren, und wenn Sie über viele Datenbanken mit identischen Zugriffsanforderungen verfügen und die Datenbanken nicht einzeln konfigurieren möchten.
 
 > [!IMPORTANT]
 > Microsoft Azure SQL-Datenbank unterstützt maximal 128 IP-Firewallregeln.
@@ -75,7 +75,7 @@ Wenn ein Computer versucht, über das Internet eine Verbindung mit dem Datenbank
 
 ### <a name="connecting-from-azure"></a>Herstellen einer Verbindung über Azure
 
-Um Anwendungen von Azure die Verbindung mit dem Azure SQL-Server zu ermöglichen, müssen Azure-Verbindungen aktiviert sein. Wenn eine Azure-Anwendung versucht, eine Verbindung mit dem Datenbankserver herzustellen, prüft die Firewall, ob Azure-Verbindungen zulässig sind. Eine Firewalleinstellung, bei der die Start- und Endadresse den Wert 0.0.0.0 aufweist, gibt an, dass diese Azure-Verbindungen zulässig sind. Ist der Verbindungsversuch nicht zulässig, gelangt die Anforderung nicht zum Azure SQL-Datenbankserver.
+Um Anwendungen von Azure die Verbindung mit dem Azure SQL-Server zu ermöglichen, müssen Azure-Verbindungen aktiviert sein. Wenn eine Azure-Anwendung versucht, eine Verbindung mit dem Datenbankserver herzustellen, prüft die Firewall, ob Azure-Verbindungen zulässig sind. Eine Firewalleinstellung, bei der die Start- und Endadresse den Wert 0.0.0.0 aufweist, gibt an, dass diese Azure-Verbindungen zulässig sind. Ist der Verbindungsversuch nicht zulässig, gelangt die Anforderung nicht zum Azure SQL-Datenbank-Server.
 
 > [!IMPORTANT]
 > Diese Option konfiguriert die Firewall derart, dass alle von Azure ausgehenden Verbindungen zugelassen werden, einschließlich Verbindungen von den Abonnements anderer Kunden. Wenn Sie diese Option auswählen, stellen Sie sicher, dass die Anmelde- und die Benutzerberechtigungen den Zugriff nur auf autorisierte Benutzer beschränken.
@@ -169,7 +169,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 ```
 
 > [!TIP]
-> PowerShell-Beispiele im Kontext eines Schnellstarts finden Sie unter [Erstellen einer Datenbank – PowerShell](sql-database-powershell-samples.md) und [Erstellen einer einzelnen Datenbank und Konfigurieren einer IP-Firewallregel auf SQL-Datenbankserverebene mithilfe von PowerShell](scripts/sql-database-create-and-configure-database-powershell.md).
+> PowerShell-Beispiele im Kontext eines Schnellstarts finden Sie unter [Erstellen einer Datenbank – PowerShell](sql-database-powershell-samples.md) und [Erstellen einer einzelnen Datenbank und Konfigurieren einer IP-Firewallregel auf SQL-Datenbank-Serverebene mithilfe von PowerShell](scripts/sql-database-create-and-configure-database-powershell.md).
 
 ## <a name="manage-server-level-ip-firewall-rules-using-azure-cli"></a>Verwalten von IP-Firewallregeln auf Serverebene mithilfe der Azure CLI
 
@@ -218,11 +218,11 @@ F: Verwalten die Benutzer oder Teams, die die IP-Firewallregeln konfigurieren od
 Diese Entscheidung hängt von Ihren Anforderungen und Ihrer Umgebung ab. IP-Firewallregeln auf Serverebene sind möglicherweise einfacher zu konfigurieren, doch durch Skripterstellung können Sie Regeln auf Datenbankebene konfigurieren. Selbst wenn Sie IP-Firewallregeln auf Serverebene verwenden, müssen Sie möglicherweise IP-Firewallregeln auf Datenbankebene überwachen, um zu prüfen, ob Benutzer mit der `CONTROL`-Berechtigung für die Datenbank IP-Firewallregeln auf Datenbankebene erstellt haben.
 
 F: Kann ich ein Kombination aus IP-Firewallregeln auf Serverebene und IP-Firewallregeln auf Datenbankebene verwenden?
-Ja. Einige Benutzer, z. B. Administratoren, benötigen möglicherweise IP-Firewallregeln auf Serverebene. Andere Benutzer, z.B. Benutzer einer Datenbankanwendung, benötigen möglicherweise IP-Firewallregeln auf Datenbankebene.
+Ja. Einige Benutzer, z. B. Administratoren, benötigen möglicherweise IP-Firewallregeln auf Serverebene. Andere Benutzer, z. B. Benutzer einer Datenbankanwendung, benötigen möglicherweise IP-Firewallregeln auf Datenbankebene.
 
 ## <a name="troubleshooting-the-database-firewall"></a>Problembehandlung der Datenbankfirewall
 
-Wenn der Zugriff auf den Microsoft Azure SQL-Datenbankdienst nicht das erwartete Verhalten aufweist, sind folgende Punkte zu beachten:
+Wenn der Zugriff auf den Microsoft Azure SQL-Datenbank-Dienst nicht das erwartete Verhalten aufweist, sind folgende Punkte zu beachten:
 
 - **Lokale Firewallkonfiguration**:
 
@@ -238,17 +238,18 @@ Wenn der Zugriff auf den Microsoft Azure SQL-Datenbankdienst nicht das erwartete
 
 - **Die Anmeldung ist nicht autorisiert, oder ein falsches Kennwort wurde verwendet**:
 
-  Wenn eine Anmeldung nicht über Berechtigungen für den Azure SQL-Datenbankserver verfügt oder das verwendete Kennwort falsch ist, wird die Verbindung mit dem Azure SQL-Datenbankserver verweigert. Durch das Erstellen einer Firewalleinstellung wird Clients lediglich die Möglichkeit gegeben, eine Verbindung mit dem Server herzustellen. Jeder Client muss die erforderlichen Sicherheitsanmeldeinformationen bereitstellen. Weitere Informationen zum Vorbereiten von Anmeldungen finden Sie unter [Verwalten von Datenbanken, Anmeldungen und Benutzern in der Azure SQL-Datenbank](sql-database-manage-logins.md).
+  Wenn eine Anmeldung nicht über Berechtigungen für den Azure SQL-Datenbank-Server verfügt oder das verwendete Kennwort falsch ist, wird die Verbindung mit dem Azure SQL-Datenbank-Server verweigert. Durch das Erstellen einer Firewalleinstellung wird Clients lediglich die Möglichkeit gegeben, eine Verbindung mit dem Server herzustellen. Jeder Client muss die erforderlichen Sicherheitsanmeldeinformationen bereitstellen. Weitere Informationen zum Vorbereiten von Anmeldungen finden Sie unter [Verwalten von Datenbanken, Anmeldungen und Benutzern in der Azure SQL-Datenbank](sql-database-manage-logins.md).
 
 - **Dynamische IP-Adresse**:
 
   Wenn Sie über eine Internetverbindung mit dynamischer IP-Adressierung verfügen und Probleme beim Passieren der Firewall auftreten, können Sie eine der folgenden Lösungen ausprobieren:
   
-  - Fragen Sie Ihren Internetdienstanbieter (ISP) nach dem IP-Adressbereich, der den Clientcomputern zugewiesen ist, die auf den Azure SQL-Datenbankserver zugreifen, und fügen Sie dann den IP-Adressbereich als IP-Firewallregel hinzu.
+  - Fragen Sie Ihren Internetdienstanbieter (ISP) nach dem IP-Adressbereich, der den Clientcomputern zugewiesen ist, die auf den Azure SQL-Datenbank-Server zugreifen, und fügen Sie dann den IP-Adressbereich als IP-Firewallregel hinzu.
   - Verwenden Sie stattdessen die statische IP-Adressierung für die Clientcomputer, und fügen Sie dann die IP-Adressen als IP-Firewallregeln hinzu.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- Bestätigen Sie, dass die Netzwerkumgebung Ihres Unternehmens die eingehende Kommunikation aus den Compute-IP-Adressbereichen (einschließlich SQL-Bereichen) zulässt, die von den Microsoft Azure-Rechenzentren verwendet werden. Möglicherweise müssen diese IP-Adressen auf die Whitelist gesetzt werden; siehe [IP-Bereiche für Microsoft Azure-Rechenzentren](https://www.microsoft.com/download/details.aspx?id=41653).  
 - Einen Schnellstart zum Erstellen einer IP-Firewallregel auf Serverebene finden Sie unter [Erstellen einer Azure SQL-Datenbank](sql-database-single-database-get-started.md).
 - Hilfe beim Herstellen einer Verbindung mit einer Azure SQL-Datenbank über Open Source-Anwendungen oder Anwendungen von Drittanbietern finden Sie unter [Clientcodebeispiele für die ersten Schritte mit SQL-Datenbank](https://msdn.microsoft.com/library/azure/ee336282.aspx).
 - Informationen zu zusätzlichen Ports, die Sie ggf. öffnen müssen, finden Sie im Abschnitt **SQL-Datenbank: ,Außerhalb‘ im Vergleich zu ,Innerhalb‘** im Artikel [Andere Ports als 1433 für ADO.NET 4.5 und SQL-Datenbank](sql-database-develop-direct-route-ports-adonet-v12.md).

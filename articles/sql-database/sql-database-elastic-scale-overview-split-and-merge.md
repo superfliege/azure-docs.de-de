@@ -136,7 +136,7 @@ Das Split-Merge-Dienstpaket enthält eine Workerrolle und eine Webrolle. Mit der
 
 - **Shard Map**
 
-  Der nächste Abschnitt von Anforderungsparametern enthält Informationen zu der Shardzuordnung und der Datenbank, in der Ihre Shardzuordnung gehostet wird. Sie müssen den Namen des Azure SQL-Datenbankservers und der Datenbank, in der die Shard-Zuordnung gehostet wird, die Anmeldeinformationen zum Herstellen einer Verbindung mit der Shard-Zuordnungsdatenbank und schließlich den Namen der Shard-Zuordnung angeben. Der Vorgang akzeptiert momentan nur einen einzigen Satz von Anmeldeinformationen. Diese Anmeldeinformationen müssen über ausreichende Berechtigungen verfügen, um die Shard-Zuordnung und die Benutzerdaten in den Shards ändern zu können.
+  Der nächste Abschnitt von Anforderungsparametern enthält Informationen zu der Shardzuordnung und der Datenbank, in der Ihre Shardzuordnung gehostet wird. Sie müssen den Namen des Azure SQL-Datenbank-Servers und der Datenbank, in der die Shard-Zuordnung gehostet wird, die Anmeldeinformationen zum Herstellen einer Verbindung mit der Shard-Zuordnungsdatenbank und schließlich den Namen der Shard-Zuordnung angeben. Der Vorgang akzeptiert momentan nur einen einzigen Satz von Anmeldeinformationen. Diese Anmeldeinformationen müssen über ausreichende Berechtigungen verfügen, um die Shard-Zuordnung und die Benutzerdaten in den Shards ändern zu können.
 
 - **Source Range (Split und Merge)**
 
@@ -248,7 +248,7 @@ Die in der obigen Abbildung hervorgehobene Tabelle WADLogsTable enthält die det
 
 ## <a name="performance"></a>Leistung
 
-Im Allgemeinen ist von den höheren, leistungsstärkeren Dienstebenen in Azure SQL-Datenbank eine bessere Leistung zu erwarten. Die vom Split-Merge-Dienst verwendeten Massenkopier- und -löschvorgänge profitieren von höheren E/A-, CPU- und Speicherressourcenzuteilungen für die höheren Dienstebenen. Aus diesem Grund erhöhen Sie die Dienstebene nur für diese Datenbanken für einen definierten, begrenzten Zeitraum.
+Im Allgemeinen ist von den höheren, leistungsstärkeren Dienstebenen in Azure SQL-Datenbank eine bessere Leistung zu erwarten. Die vom Split-Merge-Dienst verwendeten Vorgänge für Massenkopieren und -löschung profitieren von höheren E/A-, CPU- und Speicherressourcenzuteilungen für die höheren Dienstebenen. Aus diesem Grund erhöhen Sie die Dienstebene nur für diese Datenbanken für einen definierten, begrenzten Zeitraum.
 
 Der Dienst führt im Rahmen der normalen Vorgänge auch Überprüfungsabfragen aus. Mit diesen Überprüfungsabfragen wird geprüft, ob Daten unerwartet im Zielbereich vorhanden sind, und sichergestellt, dass alle Split/Merge/Move-Vorgänge in einem konsistenten Zustand gestartet werden. Für diese Abfragen werden Sharding-Schlüsselbereiche verwendet, die durch den Umfang des Vorgangs und die Batchgröße, die als Teil der Anforderungsdefinition angegeben wird, definiert werden. Diese Abfragen funktionieren am besten, wenn ein Index vorhanden ist, in dem der Shardingschlüssel die führende Spalte bildet.
 

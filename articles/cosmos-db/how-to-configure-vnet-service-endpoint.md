@@ -22,11 +22,11 @@ Sie können Azure Cosmos DB-Konten so konfigurieren, dass der Zugriff nur aus ei
 1. Fügen Sie im Azure Cosmos DB-Konto eine Regel hinzu, die dieses Subnetz als Quelle für den Zugriff auf das Konto angibt.
 
 > [!NOTE]
-> Wenn ein Dienstendpunkt für Ihr Azure Cosmos DB-Konto in einem Subnetz aktiviert ist, wechselt die Quelle des in Azure Cosmos DB eingehenden Datenverkehrs von einer öffentlichen IP-Adresse zu einem virtuellen Netzwerk und Subnetz. Der Wechsel des Datenverkehrs gilt für jedes Azure Cosmos DB-Konto, auf das über dieses Subnetz zugegriffen wird. Wenn Ihre Azure Cosmos DB-Konten über eine IP-basierte Firewall verfügen, um dieses Subnetz zuzulassen, entsprechen Anfragen von vom Dienst aktivierten Subnetzen nicht mehr den Regeln der IP-Firewall, und sie werden abgelehnt. 
+> Wenn ein Dienstendpunkt für Ihr Azure Cosmos DB-Konto in einem Subnetz aktiviert ist, wechselt die Quelle des in Azure Cosmos DB eingehenden Datenverkehrs von einer öffentlichen IP-Adresse zu einem virtuellen Netzwerk und Subnetz. Der Wechsel des Datenverkehrs gilt für jedes Azure Cosmos DB-Konto, auf das über dieses Subnetz zugegriffen wird. Wenn Ihre Azure Cosmos DB-Konten über eine IP-basierte Firewall verfügen, um dieses Subnetz zuzulassen, entsprechen Anfragen von vom Dienst aktivierten Subnetzen nicht mehr den IP-Firewallregeln, und sie werden abgelehnt. 
 >
 > Weitere Informationen finden Sie in den Schritten unter [Migrieren einer IP-Firewallregel zur Zugriffssteuerungsliste eines virtuellen Netzwerks](#migrate-from-firewall-to-vnet) in diesem Artikel. 
 
-Die folgenden Abschnitte beschreiben, wie Sie den eine Dienstendpunkt eines virtuellen Netzwerks für ein Azure Cosmos DB-Konto konfigurieren.
+Die folgenden Abschnitte beschreiben, wie Sie den VNET-Dienstendpunkt für ein Azure Cosmos DB-Konto konfigurieren.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -50,7 +50,7 @@ Die folgenden Abschnitte beschreiben, wie Sie den eine Dienstendpunkt eines virt
    ![Erfolgreich konfiguriertes virtuelles Netzwerk und Subnetz](./media/how-to-configure-vnet-service-endpoint/vnet-and-subnet-configured-successfully.png)
 
 > [!NOTE]
-> Um Dienstendpunkte für virtuelle Netzwerke zu aktivieren, benötigen Sie die folgenden Abonnementberechtigungen:
+> Um VNET-Dienstendpunkte zu aktivieren, benötigen Sie die folgenden Abonnementberechtigungen:
 >   * Abonnement mit virtuellem Netzwerk: Netzwerkmitwirkender
 >   * Abonnement mit Azure Cosmos DB-Konto: DocumentDB-Kontomitwirkender
 >   * Wenn sich Ihr virtuelles Netzwerk und Ihr Azure Cosmos DB-Konto in unterschiedlichen Abonnements befinden, stellen Sie sicher, dass für das Abonnement mit dem virtuellen Netzwerk ebenfalls ein `Microsoft.DocumentDB`-Ressourcenanbieter registriert ist. Informationen zum Registrieren eines Ressourcenanbieters finden Sie im Artikel [Azure-Ressourcenanbieter und -typen](../azure-resource-manager/resource-manager-supported-services.md). 
@@ -172,7 +172,7 @@ Führen Sie die folgenden Schritte aus, um über Azure PowerShell einen Diensten
      -Properties $CosmosDBProperties
    ```
 
-1. Führen Sie den folgenden Befehl aus, um zu überprüfen, ob Ihr Azure Cosmos DB-Konto mit dem Virtual Network-Dienstendpunkt aktualisiert wurde, das Sie im vorherigen Schritt konfiguriert haben:
+1. Führen Sie den folgenden Befehl aus, um zu überprüfen, ob Ihr Azure Cosmos DB-Konto mit dem VNET-Dienstendpunkt aktualisiert wurde, den Sie im vorherigen Schritt konfiguriert haben:
 
    ```powershell
    $UpdatedcosmosDBConfiguration = Get-AzResource `

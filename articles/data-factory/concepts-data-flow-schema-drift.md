@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 42fde2804c04b2449068d649e1c660d02e72edb1
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: aadab68185347dc0a12e0802f675efe13ecea545
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729354"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547143"
 ---
 # <a name="mapping-data-flow-schema-drift"></a>Zuordnungsdatenfluss – Schemaabweichung
 
@@ -26,7 +26,7 @@ Zum Schutz gegen Schemaabweichung müssen in einem Datenfluss-Tool Funktionen en
 * Definieren von Transformationsparametern, die anstelle von hartcodierten Feldern und Werten mit Datenmustern arbeiten können
 * Definieren von Ausdrücken, die Muster verstehen, um sie mit Eingangsfeldern abzugleichen, anstatt benannte Felder zu verwenden
 
-Im Datenfluss von Azure Data Factory werden diese Funktionen über diesen Workflow ausgeführt:
+## <a name="how-to-implement-schema-drift"></a>Implementieren von Schemaabweichung
 
 * Wählen Sie „Allow Schema Drift (Schemaabweichung zulassen)“ in Ihrer Quellentransformation aus.
 
@@ -67,3 +67,10 @@ Sie können dies mit dem Azure Data Factory-Datenflussbeispiel „Taxi Demo“ t
 
 <img src="media/data-flow/taxidrift2.png" width="800">
 
+## <a name="access-new-columns-downstream"></a>Zugreifen auf neue Spalten im späteren Verlauf
+
+Wenn Sie neue Spalten mit Spaltenmustern generieren, können Sie später in Ihren Datenflusstransformationen mithilfe der Ausdrucksfunktion „byName“ auf diese neuen Spalten zugreifen.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+In der [Datenfluss-Ausdruckssprache](data-flow-expression-functions.md) finden Sie zusätzliche Funktionen für Spaltenmuster und Schemaabweichung einschließlich „byName“ und „byPosition“.

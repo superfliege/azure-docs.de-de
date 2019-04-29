@@ -205,7 +205,7 @@ Führen Sie diese Schritte aus, um die gleichen Routen manuell zu erstellen:
 
 ## <a name="service-endpoints"></a>Dienstendpunkte ##
 
-Dienstendpunkte ermöglichen Ihnen das Beschränken des Zugriffs auf mehrinstanzenfähige Dienste auf eine Gruppe von virtuellen Azure-Netzwerken und Subnetzen. Weitere Informationen zu Dienstendpunkten finden Sie in der Dokumentation [Dienstendpunkte im virtuellen Netzwerk][serviceendpoints]. 
+Dienstendpunkte ermöglichen Ihnen das Beschränken des Zugriffs auf mehrinstanzenfähige Dienste auf eine Gruppe von virtuellen Azure-Netzwerken und Subnetzen. Weitere Informationen zu Dienstendpunkten finden Sie in der Dokumentation zu [VNET-Dienstendpunkten][serviceendpoints]. 
 
 Wenn Sie die Dienstendpunkte auf einer Ressource aktivieren, werden Routen erstellt, die eine höhere Priorität als alle anderen Routen haben. Bei Verwendung von Dienstendpunkten mit einer ASE mit Tunnelerzwingung wird für den Azure SQL- und Azure Storage-Verwaltungsdatenverkehr kein Tunneling erzwungen. 
 

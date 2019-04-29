@@ -2421,7 +2421,7 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Lake Storage Gen1</h3>
-                                                    <p>Riesiges Repository für Big Data-Analyseworkloads</p>
+                                                    <p>Hyperscalerepository für Big Data-Analyseworkloads</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3605,7 +3605,7 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Lake Storage Gen1</h3>
-                                                    <p>Riesiges Repository für Big Data-Analyseworkloads</p>
+                                                    <p>Hyperscalerepository für Big Data-Analyseworkloads</p>
                                                 </div>
                                             </div>
                                         </div>

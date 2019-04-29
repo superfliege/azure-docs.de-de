@@ -38,7 +38,7 @@ Dieser Abschnitt gilt, wenn die folgenden Bedingungen erfüllt sind:
 
   AND
 
-- Der SQL-Datenbankserver ist *nicht* mit der Endpunktregel des virtuellen Netzwerkdiensts konfiguriert.
+- Der SQL-Datenbank-Server ist *nicht* mit der Regel des VNET-Dienstendpunkts konfiguriert.
 
 ### <a name="solution"></a>Lösung
 
@@ -54,7 +54,7 @@ Dieser Abschnitt gilt, wenn eine der folgenden Bedingungen erfüllt ist:
 
   OR
 
-- Der Azure SQL-Datenbankserver ist mit einer Endpunktregel des virtuellen Netzwerkdiensts konfiguriert.
+- Der Azure SQL-Datenbank-Server ist mit einer Regel des VNET-Dienstendpunkts konfiguriert.
 
   OR
 
@@ -74,7 +74,7 @@ In den folgenden Abschnitten werden diese Schritte ausführlicher beschrieben.
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-- Stellen Sie sicher, dass die Notfallwiederherstellung für den Azure SQL-Datenbankserver aktiviert ist, falls beim Server zum gleichen Zeitpunkt ein Ausfall auftritt. Weitere Informationen finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](../sql-database/sql-database-business-continuity.md).
+- Stellen Sie sicher, dass die Notfallwiederherstellung für den Azure SQL-Datenbank-Server aktiviert ist, falls beim Server zum gleichen Zeitpunkt ein Ausfall auftritt. Weitere Informationen finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](../sql-database/sql-database-business-continuity.md).
 
 - Wenn Sie ein virtuelles Netzwerk in der aktuellen Region verwenden, müssen Sie ein anderes virtuelles Netzwerk in der neuen Region verwenden, um eine Verbindung mit der Azure-SSIS-Integration Runtime herzustellen. Weitere Informationen finden Sie unter [Verknüpfen einer Azure-SSIS-Integration Runtime mit einem virtuellen Netzwerk](join-azure-ssis-integration-runtime-virtual-network.md).
 

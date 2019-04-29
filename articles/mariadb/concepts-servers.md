@@ -50,6 +50,6 @@ Sie können Azure Database for MariaDB-Server mithilfe des Azure-Portals oder de
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Eine Dienstübersicht finden Sie im [Überblick über Azure Database for MariaDB](./overview.md).
-- Informationen zu bestimmten Ressourcenkontingenten und -beschränkungen basierend auf Ihrem **Diensttarif** finden Sie unter [Diensttarife](./concepts-pricing-tiers.md).
+- Informationen zu bestimmten Ressourcenkontingenten und -beschränkungen basierend auf Ihrer **Dienstebene** finden Sie unter [Dienstebenen](./concepts-pricing-tiers.md).
 
 <!-- - For information about connecting to the service, see [Connection libraries for Azure Database for MariaDB](./concepts-connection-libraries.md). -->

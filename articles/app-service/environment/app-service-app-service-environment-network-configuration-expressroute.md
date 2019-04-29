@@ -43,7 +43,7 @@ Eine App Service-Umgebung erfordert für eine ordnungsgemäße Funktionsweise di
 
 * Ausgehende Netzwerkverbindungen mit dem Azure Files-Dienst an Port 445.
 
-* Ausgehende Netzwerkkonnektivität mit Azure SQL-Datenbankendpunkten, die sich in der gleichen Region wie die App Service-Umgebung befinden. SQL-Datenbank-Endpunkte können unter der Domäne database.windows.net aufgelöst werden, für die ein Zugriff auf die Ports 1433, 11000-11999 und 14000-14999 erforderlich ist. Weitere Informationen zur Portverwendung von SQL-Datenbank V12 finden Sie unter [Andere Ports als 1433 für ADO.NET 4.5](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md).
+* Ausgehende Netzwerkkonnektivität mit Azure SQL-Datenbank-Endpunkten, die sich in der gleichen Region wie die App Service-Umgebung befinden. SQL-Datenbank-Endpunkte können unter der Domäne database.windows.net aufgelöst werden, für die ein Zugriff auf die Ports 1433, 11000-11999 und 14000-14999 erforderlich ist. Weitere Informationen zur Portverwendung von SQL-Datenbank V12 finden Sie unter [Andere Ports als 1433 für ADO.NET 4.5](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md).
 
 * Ausgehende Netzwerkkonnektivität zu den Azure-Endpunkten der Verwaltungsebene (klassisches Azure-Bereitstellungsmodell und Azure Resource Manager-Endpunkte). Die Konnektivität zu diesen Endpunkten beinhaltet die Domänen management.core.windows.net und management.azure.com. 
 

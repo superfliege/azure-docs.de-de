@@ -33,7 +33,7 @@ Darüber hinaus bietet Microsoft noch weitere Verschlüsselungsmöglichkeiten f�
 -   Wenn Sie ein Hardwaresicherheitsmodul oder eine zentrale Verwaltung Ihrer Verschlüsselungsschlüsselhierarchie benötigen, können Sie Azure Key Vault mit SQL Server auf einem virtuellen Azure-Computer (Virtual Machine, VM) verwenden.
 -   Always Encrypted (aktuell in der Vorschauversion verfügbar) macht die Verschlüsselung für Anwendungen transparent. Darüber hinaus ermöglicht dieses Feature Clients die Verschlüsselung vertraulicher Daten in Clientanwendungen, ohne die Verschlüsselungsschlüssel für SQL-Datenbank freizugeben.
 
-Mit der Azure SQL-Datenbanküberwachung können Unternehmen Ereignisse in einem Überwachungsprotokoll in Azure Storage erfassen. SQL-Datenbanküberwachung kann auch in Microsoft Power BI integriert werden, um detaillierte Berichte und Analysen leichter zu ermöglichen.
+Mit der Azure SQL-Datenbank-Überwachung können Unternehmen Ereignisse in einem Überwachungsprotokoll in Azure Storage erfassen. SQL-Datenbanküberwachung kann auch in Microsoft Power BI integriert werden, um detaillierte Berichte und Analysen leichter zu ermöglichen.
 
 Azure SQL-Datenbanken können umfassend geschützt werden, um die meisten gesetzlichen oder sicherheitsbezogenen Anforderungen (einschließlich HIPAA, ISO 27001/27002 und PCI-DSS Level 1) zu erfüllen. Eine aktuelle Liste mit Sicherheitszertifizierungen finden Sie im [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/services/).
 
@@ -181,7 +181,7 @@ Es stehen zwei Überwachungsmethoden zur Verfügung:
 
 ### <a name="threat-detection"></a>Bedrohungserkennung
 
-[Advanced Threat Protection für Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-advanced-threat-protection) erkennt verdächtige Aktivitäten, die auf potenzielle Sicherheitsbedrohungen hinweisen. Mit der Bedrohungserkennung können Sie auf verdächtige Ereignisse in der Datenbank (wie die Einschleusung von SQL-Befehlen) reagieren, sobald sie auftreten. Sie bietet Warnungen und ermöglicht die Verwendung der Azure SQL-Datenbanküberwachung zur Untersuchung verdächtiger Ereignisse.
+[Advanced Threat Protection für Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-advanced-threat-protection) erkennt verdächtige Aktivitäten, die auf potenzielle Sicherheitsbedrohungen hinweisen. Mit der Bedrohungserkennung können Sie auf verdächtige Ereignisse in der Datenbank (wie die Einschleusung von SQL-Befehlen) reagieren, sobald sie auftreten. Sie bietet Warnungen und ermöglicht die Verwendung der Azure SQL-Datenbank-Überwachung zur Untersuchung verdächtiger Ereignisse.
 
 ![Bedrohungserkennung für SQL-Datenbank und eine Web-App mit einem externen Angreifer und einem böswilligen Insider](./media/azure-databse-security-overview/azure-database-fig5.jpg)
 

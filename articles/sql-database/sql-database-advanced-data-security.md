@@ -48,7 +48,7 @@ Aktivieren Sie ADS, indem Sie unterhalb der Überschrift **Sicherheit** für Ihr
 ![Aktivieren von ADS](./media/sql-advanced-protection/enable_ads.png) 
 
 > [!NOTE]
-> Die Kosten von ADS orientieren sich am Azure Security Center-Standardtarif pro Knoten, wobei ein Knoten dem gesamten logischen SQL-Server oder der verwalteten Instanz entspricht. Sie bezahlen daher nur einmal, um alle Datenbanken auf dem Server oder der verwalteten Instanz mit ADS zu schützen. Sie können ADS anfänglich mit einer kostenlosen Testversion testen.
+> Die Kosten von ADS orientieren sich am Azure Security Center-Standardtarif pro Knoten, wobei ein Knoten dem gesamten logischen SQL-Datenbank-Server oder der verwalteten Instanz entspricht. Sie bezahlen daher nur einmal, um alle Datenbanken auf dem Server oder der verwalteten Instanz mit ADS zu schützen. Sie können ADS anfänglich mit einer kostenlosen Testversion testen.
 
 ## <a name="2-start-classifying-data-tracking-vulnerabilities-and-investigating-threat-alerts"></a>2. Beginnen mit dem Klassifizieren von Daten, Nachverfolgen von Sicherheitsrisiken und Untersuchen von Bedrohungswarnungen
 

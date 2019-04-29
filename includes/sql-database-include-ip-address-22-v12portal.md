@@ -23,7 +23,7 @@ ms.locfileid: "39117272"
 
 3. Scrollen Sie und wählen Sie **SQL-Server** aus.
 
-    ![Suchen Sie Ihren Azure SQL-Datenbankserver im Portal][b21-FindServerInPortal]
+    ![Suchen Sie Ihren Azure SQL-Datenbank-Server im Portal][b21-FindServerInPortal]
 5. Geben Sie im Filtertextfeld zunächst den Namen des Servers ein. Die Zeile wird angezeigt.
 
 6. Wählen Sie die Zeile für den Server aus. Ein Blatt für den Server wird angezeigt.

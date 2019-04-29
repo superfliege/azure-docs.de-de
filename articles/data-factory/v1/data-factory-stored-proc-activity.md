@@ -115,7 +115,7 @@ Nachdem Sie die Data Factory erstellt haben, können Sie einen mit Azure SQL ver
    ![Neuer Datenspeicher](media/data-factory-stored-proc-activity/new-data-store.png)
 3. Nehmen Sie die folgenden Änderungen am JSON-Skript vor:
 
-   1. Ersetzen Sie `<servername>` durch den Namen des Azure SQL-Datenbankservers.
+   1. Ersetzen Sie `<servername>` durch den Namen des Azure SQL-Datenbank-Servers.
    2. Ersetzen Sie `<databasename>` durch die Datenbank, in der Sie die Tabelle und die gespeicherte Prozedur erstellt haben.
    3. Ersetzen Sie `<username@servername>` durch das Benutzerkonto, das über Zugriff auf die Datenbank verfügt.
    4. Ersetzen Sie `<password>` durch das Kennwort für das Benutzerkonto.

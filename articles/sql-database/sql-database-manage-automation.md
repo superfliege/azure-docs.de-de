@@ -46,7 +46,7 @@ Der [Azure Automation-Runbookkatalog](https://azure.microsoft.com/blog/20../../i
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie sich nun mit den Grundlagen von Azure Automation vertraut gemacht haben, folgen Sie diesen Links, um weitere Informationen zu Azure Automation zu erhalten.
+Nachdem Sie sich nun mit den Grundlagen von Azure Automation und dessen Verwendung zum Verwalten von Azure SQL-Datenbanken vertraut gemacht haben, folgen Sie diesen Links, um weitere Informationen zu Azure Automation zu erhalten.
 
 - [Übersicht über Azure Automation](../automation/automation-intro.md)
 - [Mein erstes Runbook](../automation/automation-first-runbook-graphical.md)

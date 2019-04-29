@@ -146,7 +146,7 @@ Azure Site Recovery stellt die Notfallwiederherstellung bereit, indem die kritis
 ## <a name="protect-citrix-xenapp-and-xendesktop"></a>Schützen von Citrix XenApp und XenDesktop
 Gehen Sie wie folgt vor, um Ihre Bereitstellungen von Citrix XenApp und XenDesktop mithilfe von Site Recovery zu schützen:
 
-* Aktivieren Sie den Schutz der Citrix XenApp- und XenDesktop-Bereitstellung, indem Sie verschiedene Bereitstellungsebenen in Azure replizieren. Zu diesen zählen unter anderem AD-DNS-Server, SQL-Datenbankserver, Citrix Delivery Controller, StoreFront-Server, XenApp Master (VDA) und Citrix XenApp-Lizenzserver.
+* Aktivieren Sie den Schutz der Citrix XenApp- und XenDesktop-Bereitstellung, indem Sie verschiedene Bereitstellungsebenen in Azure replizieren. Zu diesen zählen unter anderem AD-DNS-Server, SQL-Datenbank-Server, Citrix Delivery Controller, StoreFront-Server, XenApp Master (VDA) und Citrix XenApp-Lizenzserver.
 * Vereinfachen Sie die Cloudmigration, indem Sie Ihre Citrix XenApp- und XenDesktop-Bereitstellung mithilfe von Site Recovery zu Azure migrieren.
 * Vereinfachen Sie das Testen von Citrix XenApp/XenDesktop, indem Sie bei Bedarf eine der Produktionsversion ähnliche Kopie zu Test- und Debugzwecken erstellen.
 * Diese Lösung ist nur für virtuelle Desktopcomputer unter dem Windows Server-Betriebssystem relevant und nicht für virtuelle Clientdesktopcomputer, da diese noch nicht für die Lizenzierung in Azure unterstützt werden.

@@ -44,10 +44,10 @@ Verwenden Sie zum Erstellen und Verwalten verwalteter Instanzen mithilfe von Azu
 |[Get-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstance)|Gibt Informationen zur verwalteten Azure SQL-Instanz zurück|
 |[Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)|Legt Eigenschaften für eine verwaltete Azure SQL-Datenbank-Instanz fest|
 |[Remove-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance)|Entfernt eine verwaltete Azure SQL-Datenbank-Instanz|
-|[New-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstancedatabase)|Erstellt eine verwaltete Azure SQL-Datenbank-Instanz-Datenbank|
-|[Get-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabase)|Gibt Informationen zur verwalteten Azure SQL-Instanz-Datenbank zurück|
-|[Remove-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabase)|Entfernt eine verwaltete Azure SQL-Datenbank-Instanz-Datenbank|
-|[Restore-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase)|Stellt eine verwaltete Azure SQL-Datenbank-Instanz-Datenbank wieder her|
+|[New-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstancedatabase)|Erstellt eine Datenbank der verwalteten Azure SQL-Datenbank-Instanz|
+|[Get-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabase)|Gibt Informationen zur Datenbank der verwalteten Azure SQL-Instanz zurück|
+|[Remove-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabase)|Entfernt eine Datenbank der verwalteten Azure SQL-Datenbank-Instanz|
+|[Restore-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase)|Stellt eine Datenbank der verwalteten Azure SQL-Datenbank-Instanz wieder her|
 
 ## <a name="azure-cli-create-and-manage-managed-instances"></a>Azure-Befehlszeilenschnittstelle: Erstellen und Verwalten verwalteter Instanzen
 

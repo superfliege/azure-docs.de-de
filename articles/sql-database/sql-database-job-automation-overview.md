@@ -51,7 +51,7 @@ Zwischen dem SQL-Agent (lokal und als Komponente einer verwalteten SQL-Datenbank
 
 |  |Elastische Aufträge  |SQL-Agent |
 |---------|---------|---------|
-|Bereich     |  Beliebige Anzahl von Azure SQL-Datenbanken und/oder Data Warehouses in der gleichen Azure-Cloud wie der Auftrags-Agent. Ziele können sich auf unterschiedlichen SQL-Datenbankservern, in unterschiedlichen Abonnements und/oder in unterschiedlichen Regionen befinden. <br><br>Zielgruppen können einzelne Datenbanken/Data Warehouses oder alle Datenbanken auf einem Server, in einem Pool oder in einer Shardzuordnung (dynamisch zur Auftragslaufzeit aufgezählt) enthalten. | Beliebige einzelne Datenbank in der gleichen SQL Server-Instanz wie der SQL-Agent. |
+|Bereich     |  Beliebige Anzahl von Azure SQL-Datenbanken und/oder Data Warehouses in der gleichen Azure-Cloud wie der Auftrags-Agent. Ziele können sich auf unterschiedlichen SQL-Datenbank-Servern, in unterschiedlichen Abonnements und/oder in unterschiedlichen Regionen befinden. <br><br>Zielgruppen können einzelne Datenbanken/Data Warehouses oder alle Datenbanken auf einem Server, in einem Pool oder in einer Shardzuordnung (dynamisch zur Auftragslaufzeit aufgezählt) enthalten. | Beliebige einzelne Datenbank in der gleichen SQL Server-Instanz wie der SQL-Agent. |
 |Unterstützte APIs und Tools     |  Portal, PowerShell, T-SQL, Azure Resource Manager      |   T-SQL, SQL Server Management Studio (SSMS)     |
 
 ## <a name="sql-agent-jobs"></a>SQL-Agent-Aufträge

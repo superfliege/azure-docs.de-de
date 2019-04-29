@@ -1890,9 +1890,9 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.DBforMariaDB/servers/securityAlertPolicies/read | Dient zum Abrufen von Details zur Richtlinie für die Serverbedrohungserkennung, die für einen bestimmten Server konfiguriert ist. |
 > | Aktion | Microsoft.DBforMariaDB/servers/securityAlertPolicies/write | Dient zum Ändern der Richtlinie für die Serverbedrohungserkennung für einen bestimmten Server. |
 > | Aktion | Microsoft.DBforMariaDB/servers/updateConfigurations/action | Aktualisiert Konfigurationen für den angegebenen Server. |
-> | Aktion | Microsoft.DBforMariaDB/servers/virtualNetworkRules/delete | Löscht eine vorhandene Regel für virtuelle Netzwerke. |
-> | Aktion | Microsoft.DBforMariaDB/servers/virtualNetworkRules/read | Gibt die Liste der Regeln für virtuelle Netzwerke zurück oder ruft die Eigenschaften für die angegebene Regel für virtuelle Netzwerke ab. |
-> | Aktion | Microsoft.DBforMariaDB/servers/virtualNetworkRules/write | Erstellt eine Regel für virtuelle Netzwerke mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für die angegebene Regel für virtuelle Netzwerke. |
+> | Aktion | Microsoft.DBforMariaDB/servers/virtualNetworkRules/delete | Löscht eine vorhandene VNET-Regel. |
+> | Aktion | Microsoft.DBforMariaDB/servers/virtualNetworkRules/read | Gibt die Liste der VNET-Regeln zurück oder ruft die Eigenschaften für die angegebene VNET-Regel ab. |
+> | Aktion | Microsoft.DBforMariaDB/servers/virtualNetworkRules/write | Erstellt eine VNET-Regel mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für die angegebene VNET-Regel. |
 > | Aktion | Microsoft.DBforMariaDB/servers/write | Erstellt einen Server mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für den angegebenen Server. |
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
@@ -1919,9 +1919,9 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.DBforMySQL/servers/securityAlertPolicies/write | Dient zum Ändern der Richtlinie für die Serverbedrohungserkennung für einen bestimmten Server. |
 > | Aktion | Microsoft.DBforMySQL/servers/topQueryStatistics/read | Gibt die Liste mit der Abfragestatistik für die obersten Abfragen zurück. |
 > | Aktion | Microsoft.DBforMySQL/servers/updateConfigurations/action | Aktualisiert Konfigurationen für den angegebenen Server. |
-> | Aktion | Microsoft.DBforMySQL/servers/virtualNetworkRules/delete | Löscht eine vorhandene Regel für virtuelle Netzwerke. |
-> | Aktion | Microsoft.DBforMySQL/servers/virtualNetworkRules/read | Gibt die Liste der Regeln für virtuelle Netzwerke zurück oder ruft die Eigenschaften für die angegebene Regel für virtuelle Netzwerke ab. |
-> | Aktion | Microsoft.DBforMySQL/servers/virtualNetworkRules/write | Erstellt eine Regel für virtuelle Netzwerke mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für die angegebene Regel für virtuelle Netzwerke. |
+> | Aktion | Microsoft.DBforMySQL/servers/virtualNetworkRules/delete | Löscht eine vorhandene VNET-Regel. |
+> | Aktion | Microsoft.DBforMySQL/servers/virtualNetworkRules/read | Gibt die Liste der VNET-Regeln zurück oder ruft die Eigenschaften für die angegebene VNET-Regel ab. |
+> | Aktion | Microsoft.DBforMySQL/servers/virtualNetworkRules/write | Erstellt eine VNET-Regel mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für die angegebene VNET-Regel. |
 > | Aktion | Microsoft.DBforMySQL/servers/write | Erstellt einen Server mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für den angegebenen Server. |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
@@ -1952,9 +1952,9 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.DBforPostgreSQL/servers/securityAlertPolicies/write | Dient zum Ändern der Richtlinie für die Serverbedrohungserkennung für einen bestimmten Server. |
 > | Aktion | Microsoft.DBforPostgreSQL/servers/topQueryStatistics/read | Gibt die Liste mit der Abfragestatistik für die obersten Abfragen zurück. |
 > | Aktion | Microsoft.DBforPostgreSQL/servers/updateConfigurations/action | Aktualisiert Konfigurationen für den angegebenen Server. |
-> | Aktion | Microsoft.DBforPostgreSQL/servers/virtualNetworkRules/delete | Löscht eine vorhandene Regel für virtuelle Netzwerke. |
-> | Aktion | Microsoft.DBforPostgreSQL/servers/virtualNetworkRules/read | Gibt die Liste der Regeln für virtuelle Netzwerke zurück oder ruft die Eigenschaften für die angegebene Regel für virtuelle Netzwerke ab. |
-> | Aktion | Microsoft.DBforPostgreSQL/servers/virtualNetworkRules/write | Erstellt eine Regel für virtuelle Netzwerke mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für die angegebene Regel für virtuelle Netzwerke. |
+> | Aktion | Microsoft.DBforPostgreSQL/servers/virtualNetworkRules/delete | Löscht eine vorhandene VNET-Regel. |
+> | Aktion | Microsoft.DBforPostgreSQL/servers/virtualNetworkRules/read | Gibt die Liste der VNET-Regeln zurück oder ruft die Eigenschaften für die angegebene VNET-Regel ab. |
+> | Aktion | Microsoft.DBforPostgreSQL/servers/virtualNetworkRules/write | Erstellt eine VNET-Regel mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für die angegebene VNET-Regel. |
 > | Aktion | Microsoft.DBforPostgreSQL/servers/waitStatistics/read | Gibt Wartestatistiken für eine Instanz zurück. |
 > | Aktion | Microsoft.DBforPostgreSQL/servers/write | Erstellt einen Server mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für den angegebenen Server. |
 
@@ -4807,8 +4807,8 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Sql/locations/syncGroupOperationResults/read | Ruft das Ergebnis des Ressourcenvorgangs der Synchronisierungsgruppe ab. |
 > | Aktion | Microsoft.Sql/locations/syncMemberOperationResults/read | Ruft das Ergebnis des Ressourcenvorgangs des Synchronisierungsmitglieds ab. |
 > | Aktion | Microsoft.Sql/locations/usages/read | Ruft eine Collection von Nutzungsmetriken für dieses Abonnement an einem Standort ab. |
-> | Aktion | Microsoft.Sql/locations/virtualNetworkRulesAzureAsyncOperation/read | Gibt die Details des asynchronen Vorgangs in Azure für die Regeln für das angegebene virtuelle Netzwerk zurück.  |
-> | Aktion | Microsoft.Sql/locations/virtualNetworkRulesOperationResults/read | Gibt die Details der Regeln für das angegebene virtuelle Netzwerk zurück.  |
+> | Aktion | Microsoft.Sql/locations/virtualNetworkRulesAzureAsyncOperation/read | Gibt die Details des asynchronen Vorgangs in Azure für die angegebene VNET-Regel zurück.  |
+> | Aktion | Microsoft.Sql/locations/virtualNetworkRulesOperationResults/read | Gibt die Details der VNET-Regeln zurück.  |
 > | Aktion | Microsoft.Sql/managedInstances/administrators/delete | Löscht einen vorhandenen Administrator einer verwalteten Instanz. |
 > | Aktion | Microsoft.Sql/managedInstances/administrators/read | Ruft eine Liste der Administratoren für verwaltete Instanzen ab. |
 > | Aktion | Microsoft.Sql/managedInstances/administrators/write | Erstellt oder aktualisiert den Administrator für verwaltete Instanzen mit den angegebenen Parametern. |
@@ -4995,7 +4995,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Sql/servers/databases/transparentDataEncryption/read | Dient zum Abrufen von Status und Details des Transparent Data Encryption-Sicherheitsfeatures für eine bestimmte Datenbank. |
 > | Aktion | Microsoft.Sql/servers/databases/transparentDataEncryption/write | Ändert den Status von Transparent Data Encryption. |
 > | Aktion | Microsoft.Sql/servers/databases/upgradeDataWarehouse/action | Führt ein Upgrade für die Azure SQL Data Warehouse-Datenbank durch. |
-> | Aktion | Microsoft.Sql/servers/databases/usages/read | Ruft Informationen zur Azure SQL-Datenbanknutzung ab. |
+> | Aktion | Microsoft.Sql/servers/databases/usages/read | Ruft Informationen zur Nutzung von Azure SQL-Datenbank ab. |
 > | Aktion | Microsoft.Sql/servers/databases/vulnerabilityAssessments/delete | Entfernt die Sicherheitsrisikobewertung für eine bestimmte Datenbank. |
 > | Aktion | Microsoft.Sql/servers/databases/vulnerabilityAssessments/read | Ruft die Sicherheitsrisikobewertungs-Richtlinien für eine angegebene Datenbank ab. |
 > | Aktion | Microsoft.Sql/servers/databases/vulnerabilityAssessments/rules/baselines/delete | Entfernt die Baseline für die Regel für die Sicherheitsrisikobewertung für eine bestimmte Datenbank. |
@@ -5078,9 +5078,9 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Sql/servers/syncAgents/write | Erstellt einen Synchronisierungs-Agent mit den angegebenen Parametern oder aktualisiert die Eigenschaften für den angegebenen Synchronisierungs-Agent. |
 > | Aktion | Microsoft.Sql/servers/tdeCertificates/action | Erstellt oder aktualisiert das TDE-Zertifikat. |
 > | Aktion | Microsoft.Sql/servers/usages/read | Dient zum Zurückgeben des Server-DTU-Kontingents und des aktuellen DTU-Verbrauchs durch alle Datenbanken auf dem Server. |
-> | Aktion | Microsoft.Sql/servers/virtualNetworkRules/delete | Löscht eine vorhandene Regel für virtuelle Netzwerke. |
-> | Aktion | Microsoft.Sql/servers/virtualNetworkRules/read | Gibt die Liste der Regeln für virtuelle Netzwerke zurück oder ruft die Eigenschaften für die angegebene Regel für virtuelle Netzwerke ab. |
-> | Aktion | Microsoft.Sql/servers/virtualNetworkRules/write | Erstellt eine Regel für virtuelle Netzwerke mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für die angegebene Regel für virtuelle Netzwerke. |
+> | Aktion | Microsoft.Sql/servers/virtualNetworkRules/delete | Löscht eine vorhandene VNET-Regel. |
+> | Aktion | Microsoft.Sql/servers/virtualNetworkRules/read | Gibt die Liste der VNET-Regeln zurück oder ruft die Eigenschaften für die angegebene VNET-Regel ab. |
+> | Aktion | Microsoft.Sql/servers/virtualNetworkRules/write | Erstellt eine VNET-Regel mit den angegebenen Parametern oder aktualisiert die Eigenschaften oder Markierungen für die angegebene VNET-Regel. |
 > | Aktion | Microsoft.Sql/servers/vulnerabilityAssessments/delete | Entfernt die Sicherheitsrisikobewertung für einen bestimmten Server. |
 > | Aktion | Microsoft.Sql/servers/vulnerabilityAssessments/read | Ruft die Sicherheitsrisikobewertungs-Richtlinien für einen angegebenen Server ab. |
 > | Aktion | Microsoft.Sql/servers/vulnerabilityAssessments/write | Ändert die Sicherheitsrisikobewertung für einen bestimmten Server. |

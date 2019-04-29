@@ -50,7 +50,7 @@ Screenshots zu diesen Dialogfeldern finden Sie unter [Konfigurieren der mehrstuf
 
 ## <a name="configure-your-c-application-in-the-azure-portal"></a>Konfigurieren der C#-Anwendung im Azure-Portal
 
-Zu Beginn wird vorausgesetzt, dass ein [Azure SQL-Datenbankserver](sql-database-get-started-portal.md) erstellt wurde und verfügbar ist.
+Zu Beginn wird vorausgesetzt, dass ein [Azure SQL-Datenbank-Server](sql-database-get-started-portal.md) erstellt wurde und verfügbar ist.
 
 ### <a name="register-your-app-and-set-permissions"></a>Registrieren der App und Festlegen von Berechtigungen
 
@@ -80,7 +80,7 @@ So können Sie sich registrieren und die erforderlichen Berechtigungen für die 
 
     ![Delegieren von Berechtigungen an die API für Azure SQL-Datenbank](media/active-directory-interactive-connect-azure-sql-db/sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
 
-### <a name="set-an-azure-ad-admin-for-your-sql-database-server"></a>Festlegen eines Azure AD-Administrators für den SQL-Datenbankserver
+### <a name="set-an-azure-ad-admin-for-your-sql-database-server"></a>Festlegen eines Azure AD-Administrators für den SQL-Datenbank-Server
 
 Damit Ihr C#-Programm ausgeführt wird, muss dem Azure SQL-Datenbank-Server von einem Azure SQL-Serveradministrator ein Azure AD-Administrator zugewiesen werden. 
 
@@ -90,7 +90,7 @@ Weitere Informationen zu Azure AD-Administratoren und Benutzern für Azure SQL-D
 
 ### <a name="add-a-non-admin-user-to-a-specific-database-optional"></a>Hinzufügen eines Benutzers ohne Administratorrechte zu einer bestimmten Datenbank (optional)
 
-Ein Azure AD-Administrator für einen SQL-Datenbankserver kann das C#-Beispielprogramm ausführen. Ein Azure AD-Benutzer kann das Programm ausführen, wenn er der Datenbank hinzugefügt wurde. Ein Azure AD SQL-Administrator oder Azure AD-Benutzer, der bereits in der Datenbank vorhanden ist und für die Datenbank über die Berechtigung `ALTER ANY USER` verfügt,kann einen Benutzer hinzufügen.
+Ein Azure AD-Administrator für einen SQL-Datenbank-Server kann das C#-Beispielprogramm ausführen. Ein Azure AD-Benutzer kann das Programm ausführen, wenn er der Datenbank hinzugefügt wurde. Ein Azure AD SQL-Administrator oder Azure AD-Benutzer, der bereits in der Datenbank vorhanden ist und für die Datenbank über die Berechtigung `ALTER ANY USER` verfügt,kann einen Benutzer hinzufügen.
 
 Sie können der Datenbank mit dem SQL-Befehl [`Create User`](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql) einen Benutzer hinzufügen. Ein Beispiel ist `CREATE USER [<username>] FROM EXTERNAL PROVIDER`.
 

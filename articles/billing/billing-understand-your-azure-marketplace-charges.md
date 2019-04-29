@@ -50,7 +50,7 @@ Im [Azure-Portal](https://portal.azure.com/) kann eine Liste der externen Dienst
 3. Wählen Sie auf dem Blatt **Abonnements** das anzuzeigende Abonnement aus, und wählen Sie dann **Externe Dienste**.
    
     ![Auswählen eines Abonnements auf dem Blatt „Abrechnung“](./media/billing-understand-your-azure-marketplace-charges/select-sub-external-services.png)
-4. In dieser Anzeige sollten die einzelnen externen Dienste, der Name des Herausgebers, der erworbene Tarif, der von Ihnen zugewiesene Ressourcenname und der aktuelle Bestellstatus angezeigt werden. Wählen Sie einen externen Dienst aus, um die Rechnungen anzuzeigen, die bereits erstellt wurden.
+4. In dieser Anzeige sollten die einzelnen externen Dienste, der Name des Herausgebers, die erworbene Dienstebene, der von Ihnen zugewiesene Ressourcenname und der aktuelle Bestellstatus angezeigt werden. Wählen Sie einen externen Dienst aus, um die Rechnungen anzuzeigen, die bereits erstellt wurden.
    
     ![Auswählen eines externen Diensts](./media/billing-understand-your-azure-marketplace-charges/external-service-blade2.png)
 5. In dieser Ansicht können Sie die Rechnungsbeträge einschließlich Steuern anzeigen.

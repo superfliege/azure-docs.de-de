@@ -321,7 +321,7 @@ In diesem Schritt verknüpfen Sie die lokale SQL Server-Datenbank mit der Data F
         ![Mit SQL Server verknüpfter Dienst – Einstellungen](./media/tutorial-incremental-copy-multiple-tables-portal/sql-server-linked-service-settings.png)
 
 ### <a name="create-the-azure-sql-database-linked-service"></a>Erstellen des mit Azure SQL-Datenbank verknüpften Diensts
-Im letzten Schritt erstellen Sie einen verknüpften Dienst, um Ihre SQL Server-Quelldatenbank mit der Data Factory zu verknüpfen. In diesem Schritt verknüpfen Sie Ihre Azure SQL-Ziel- bzw. -Senkendatenbank mit der Data Factory. 
+Im letzten Schritt erstellen Sie einen verknüpften Dienst, um Ihre SQL Server-Quelldatenbank mit der Data Factory zu verknüpfen. In diesem Schritt verknüpfen Sie Ihre Azure SQL-Zieldatenbank bzw. -Senkendatenbank mit der Data Factory. 
 
 1. Wechseln Sie im Fenster **Verbindungen** von der Registerkarte **Integration Runtimes** zur Registerkarte **Verknüpfte Dienste**, und klicken Sie auf **+ Neu**.
 

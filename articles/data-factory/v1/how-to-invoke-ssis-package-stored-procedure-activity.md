@@ -72,7 +72,7 @@ Der erste Schritt besteht darin, eine Data Factory mit dem Azure-Portal zu erste
 
     ![Data Factory Editor](./media/how-to-invoke-ssis-package-stored-procedure-activity/data-factory-editor.png)
 
-### <a name="create-an-azure-sql-database-linked-service"></a>Erstellen eines verknüpften Azure SQL-Datenbankdiensts
+### <a name="create-an-azure-sql-database-linked-service"></a>Erstellen eines verknüpften Azure SQL-Datenbank-Diensts
 In diesem Schritt erstellen Sie einen verknüpften Dienst, um Ihre Azure SQL-Datenbank, in der der SSIS-Katalog gehostet ist, mit der Data Factory zu verbinden. Die Data Factory verwendet Informationen in diesem verknüpften Dienst zum Herstellen der Verbindung mit der SSISDB-Datenbank und führt eine gespeicherte Prozedur zum Ausführen eines SSIS-Pakets aus. 
 
 1. Klicken Sie im Data Factory-Editor im Menü auf **Neuer Datenspeicher** und dann auf **Azure SQL-Datenbank**. 
@@ -209,7 +209,7 @@ Beachten Sie folgende Punkte:
     ```
 * Damit Sie Data Factory-Instanzen erstellen können, muss das Benutzerkonto, mit dem Sie sich bei Azure anmelden, ein Mitglied der Rolle **Mitwirkender** oder **Besitzer** oder ein **Administrator** des Azure-Abonnements sein.
 
-### <a name="create-an-azure-sql-database-linked-service"></a>Erstellen eines verknüpften Azure SQL-Datenbankdiensts
+### <a name="create-an-azure-sql-database-linked-service"></a>Erstellen eines verknüpften Azure SQL-Datenbank-Diensts
 In diesem Schritt erstellen Sie einen verknüpften Dienst, um Ihre Azure SQL-Datenbank, in der der SSIS-Katalog gehostet ist, mit der Data Factory zu verbinden. Die Data Factory verwendet Informationen in diesem verknüpften Dienst zum Herstellen der Verbindung mit der SSISDB-Datenbank und führt eine gespeicherte Prozedur zum Ausführen eines SSIS-Pakets aus. 
 
 1. Erstellen Sie im Ordner **C:\ADF\RUNSSISPackage** eine JSON-Datei mit dem Namen **AzureSQLDatabaseLinkedService.json** und folgendem Inhalt: 

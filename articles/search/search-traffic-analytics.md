@@ -197,7 +197,7 @@ Im folgenden Screenshot sind die integrierten Berichte und Diagramme für die An
 ## <a name="next-steps"></a>Nächste Schritte
 Instrumentieren Sie Ihre Suchanwendung, um aussagekräftige Daten über Ihren Suchdienst zu erhalten.
 
-Weitere Informationen finden Sie unter [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Besuchen Sie auch die [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/application-insights/), um mehr über die verschiedenen Diensttarife zu erfahren.
+Weitere Informationen finden Sie unter [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Besuchen Sie auch die [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/application-insights/), um mehr über die verschiedenen Dienstebenen zu erfahren.
 
 Erfahren Sie hier mehr über das Erstellen erstaunlicher Berichte. Weitere Informationen finden Sie unter [Erste Schritte mit Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/).
 

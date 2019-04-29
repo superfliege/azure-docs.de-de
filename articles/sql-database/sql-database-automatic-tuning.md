@@ -66,7 +66,7 @@ Im folgenden Video können Sie sich einen Überblick über die Funktionsweise de
 
 In Azure SQL-Datenbank stehen folgende Optionen für die automatische Optimierung zur Verfügung:
 
-| Option für die automatische Optimierung | Unterstützung für einzelne Datenbanken und in einem Pool zusammengefasste Datenbanken | Unterstützung der Instanzdatenbank |
+| Option für die automatische Optimierung | Unterstützung für Einzel- und Pooldatenbanken | Unterstützung der Instanzdatenbank |
 | :----------------------------- | ----- | ----- |
 | **CREATE INDEX:** Identifiziert Indizes, die die Leistung Ihrer Workload verbessern können, erstellt Indizes und überprüft automatisch, ob die Leistung der Abfragen verbessert wurde. | Ja | Nein  | 
 | **DROP INDEX**: Identifiziert täglich redundante und doppelte Indizes (mit Ausnahme von eindeutigen Indizes) sowie Indizes, die über einen langen Zeitraum hinweg (über 90 Tage) nicht verwendet wurden. Beachten Sie, dass die Option zurzeit nicht kompatibel mit Anwendungen ist, die Partitionswechsel und Indexhinweise verwenden. | Ja | Nein  |
@@ -78,7 +78,7 @@ Sie können die Optimierungsempfehlungen entweder manuell über das Portal anwen
 
 Wenn Sie Optimierungsempfehlungen manuell anwenden, sind die Mechanismen für die automatische Leistungsüberprüfung und Umkehrung nicht verfügbar. Darüber hinaus bleiben manuell angewandte Empfehlungen aktiv und werden 24 bis 48 Stunden lang in der Liste der Empfehlungen angezeigt. Danach zieht sie das System automatisch zurück. Wenn Sie eine Empfehlung früher entfernen möchten, können Sie sie manuell verwerfen.
 
-Die Optionen für die automatische Optimierung können unabhängig pro Datenbank aktiviert oder deaktiviert werden. Sie können auch auf SQL-Datenbankservern konfiguriert und auf jede Datenbank angewandt werden, die Einstellungen von diesem Server erbt. SQL-Datenbankserver können Azure-Standardwerte für die Einstellungen für automatische Optimierung erben. In den Azure-Standardwerten sind derzeit FORCE_LAST_GOOD_PLAN und CREATE_INDEX aktiviert und DROP_INDEX deaktiviert.
+Die Optionen für die automatische Optimierung können unabhängig pro Datenbank aktiviert oder deaktiviert werden. Sie können auch auf SQL-Datenbank-Servern konfiguriert und auf jede Datenbank angewandt werden, die Einstellungen von diesem Server erbt. SQL-Datenbank-Server können Azure-Standardwerte für die Einstellungen für automatische Optimierung erben. In den Azure-Standardwerten sind derzeit FORCE_LAST_GOOD_PLAN und CREATE_INDEX aktiviert und DROP_INDEX deaktiviert.
 
 Das Konfigurieren der Optionen für die automatische Optimierung auf dem Server und das Erben von Einstellungen durch die Datenbanken auf dem übergeordneten Server wird für die Konfiguration der automatischen Optimierung empfohlen, da es die Verwaltung der Optionen für die automatische Optimierung bei einer großen Anzahl von Datenbanken vereinfacht.
 

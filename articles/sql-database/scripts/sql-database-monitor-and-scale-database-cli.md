@@ -51,8 +51,8 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | Get-Help | Notizen |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az-sql-server-create) | Erstellt einen SQL-Datenbankserver, der Einzeldatenbanken und Pools für elastische Datenbanken hostet. |
-| [az sql db show-usage](https://docs.microsoft.com/cli/azure/sql#az-sql-show-usage) | Zeigt die Größennutzungsinformationen für eine Einzeldatenbank oder eine in einem Pool zusammengefasste Datenbank an. |
+| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az-sql-server-create) | Erstellt einen SQL-Datenbank-Server, der Einzeldatenbanken und Pools für elastische Datenbanken hostet. |
+| [az sql db show-usage](https://docs.microsoft.com/cli/azure/sql#az-sql-show-usage) | Zeigt die Größennutzungsinformationen für eine Einzel- oder Pooldatenbank an. |
 | [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update) | Aktualisiert Datenbankeigenschaften (z.B. Dienstebene oder Computegröße) oder verschiebt eine Datenbank in, aus oder zwischen Pools für elastische Datenbanken. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 |||

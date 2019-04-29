@@ -19,16 +19,16 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "57853128"
 ---
-# <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>Ressourcenlimits für Pools für elastische Datenbanken, die das V-Kern-basierte Kaufmodell verwenden
+# <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>Ressourcenlimits für Pools für elastische Datenbanken, die das vCore-basierte Kaufmodell verwenden
 
-Dieser Artikel enthält ausführliche Angaben zu Ressourcenlimits für Pools für elastische Datenbanken und in einem Pool zusammengefasste Datenbanken in Azure SQL-Datenbank mit dem auf virtuellen Kernen basierenden Kaufmodell.
+Dieser Artikel enthält ausführliche Angaben zu Ressourcenlimits für Pools für elastische Datenbanken und Pooldatenbanken in Azure SQL-Datenbank mit dem vCore-basierten Kaufmodell.
 
 Informationen zu Einschränkungen bei DTU-basierten Kaufmodellen finden Sie unter [Ressourcenlimits des DTU-basierten Kaufmodells in SQL-Datenbank – Pools für elastische Datenbanken](sql-database-dtu-resource-limits-elastic-pools.md).
 
 > [!IMPORTANT]
 > Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).
 
-Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), mit [PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), [Azure CLI](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases) oder [REST-API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases) Diensttarif, Computegröße und Speichermenge festlegen.
+Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), mit [PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), mit der [Azure CLI](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases) oder der [REST-API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases) Dienstebene, Computegröße und Speichermenge festlegen.
 
 > [!IMPORTANT]
 > Anleitungen und Überlegungen zur Skalierung finden Sie unter [Skalieren eines Pools für elastische Datenbanken](sql-database-elastic-pool-scale.md).
@@ -148,9 +148,9 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 
 \* Den Wert für „Max. gleichzeitige Worker“ (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](sql-database-vcore-resource-limits-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank „2“ beträgt, gilt für die Anzahl von gleichzeitigen Workern der Grenzwert „200“.  Wenn die maximale Anzahl von V-Kernen pro Datenbank „0,5“ beträgt, gilt für die Anzahl von gleichzeitigen Workern der Grenzwert „50“, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden.  Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
 
-## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Diensttarif „Unternehmenskritisch“: Speicher- und Computegrößen
+## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Dienstebene „Unternehmenskritisch“: Speicher- und Computegrößen
 
-### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Diensttarif „Unternehmenskritisch“: Computeplattform der 4. Generation (Teil 1)
+### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Dienstebene „Unternehmenskritisch“: Computeplattform der 4. Generation (Teil 1)
 
 |Computegröße|BC_Gen4_1|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
 |:--- | --: |--: |--: |--: |--: |--: |
@@ -178,7 +178,7 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 
 \* Den Wert für „Max. gleichzeitige Worker“ (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](sql-database-vcore-resource-limits-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank „2“ beträgt, gilt für die Anzahl von gleichzeitigen Workern der Grenzwert „200“.  Wenn die maximale Anzahl von V-Kernen pro Datenbank „0,5“ beträgt, gilt für die Anzahl von gleichzeitigen Workern der Grenzwert „50“, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden.  Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
 
-### <a name="business-critical-service-tier-generation-4-compute-platform-part-2"></a>Diensttarif „Unternehmenskritisch“: Computeplattform der 4. Generation (Teil 2)
+### <a name="business-critical-service-tier-generation-4-compute-platform-part-2"></a>Dienstebene „Unternehmenskritisch“: Computeplattform der 4. Generation (Teil 2)
 
 |Computegröße|BC_Gen4_7|BC_Gen4_8|BC_Gen4_9|BC_Gen4_10|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
@@ -206,7 +206,7 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 
 \* Den Wert für „Max. gleichzeitige Worker“ (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](sql-database-vcore-resource-limits-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank „2“ beträgt, gilt für die Anzahl von gleichzeitigen Workern der Grenzwert „200“.  Wenn die maximale Anzahl von V-Kernen pro Datenbank „0,5“ beträgt, gilt für die Anzahl von gleichzeitigen Workern der Grenzwert „50“, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden.  Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
 
-#### <a name="business-critical-service-tier-generation-5-compute-platform-part-1"></a>Diensttarif „Unternehmenskritisch“: Computeplattform der 5. Generation (Teil 1)
+#### <a name="business-critical-service-tier-generation-5-compute-platform-part-1"></a>Dienstebene „Unternehmenskritisch“: Computeplattform der 5. Generation (Teil 1)
 
 |Computegröße|BC_Gen5_2|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
@@ -234,7 +234,7 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 
 \* Den Wert für „Max. gleichzeitige Worker“ (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](sql-database-vcore-resource-limits-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank „2“ beträgt, gilt für die Anzahl von gleichzeitigen Workern der Grenzwert „200“.  Wenn die maximale Anzahl von V-Kernen pro Datenbank „0,5“ beträgt, gilt für die Anzahl von gleichzeitigen Workern der Grenzwert „50“, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden.  Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
 
-#### <a name="business-critical-service-tier-generation-5-compute-platform-part-2"></a>Diensttarif „Unternehmenskritisch“: Computeplattform der 5. Generation (Teil 2)
+#### <a name="business-critical-service-tier-generation-5-compute-platform-part-2"></a>Dienstebene „Unternehmenskritisch“: Computeplattform der 5. Generation (Teil 2)
 
 |Computegröße|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
@@ -264,20 +264,20 @@ Sie können im [Azure-Portal](sql-database-elastic-pool-manage.md#azure-portal-m
 
 Wenn alle virtuellen Kerne eines Pools für elastische Datenbanken verwendet werden, erhält jede Datenbank im Pool gleich viel Computeressourcen zum Verarbeiten von Abfragen. Der SQL-Datenbank-Dienst bietet eine faire gemeinsame Nutzung von Ressourcen durch Datenbanken, indem gleiche Slices an Computezeit zugesichert werden. Diese faire gemeinsame Nutzung in Pools für elastische Datenbanken ergänzt die Ressourcen, die jeder Datenbank auf andere Weise garantiert werden, wenn die Mindestanzahl von virtuellen Kernen pro Datenbank auf einen Wert ungleich null festgelegt ist.
 
-## <a name="database-properties-for-pooled-databases"></a>Eigenschaften von Datenbanken in einem Pool
+## <a name="database-properties-for-pooled-databases"></a>Eigenschaften von Pooldatenbanken
 
-Die folgende Tabelle beschreibt die Eigenschaften von Datenbanken in einem Pool.
+Die folgende Tabelle beschreibt die Eigenschaften von Pooldatenbanken.
 
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Maximale Anzahl virtueller Kerne pro Datenbank |Die maximale Anzahl von virtuellen Kernen, die jede Datenbank im Pool verwenden kann, sofern basierend auf der Nutzung durch andere Datenbanken im Pool verfügbar. Die maximale Anzahl von virtuellen Kernen pro Datenbank ist keine Ressourcengarantie für eine Datenbank. Dies ist eine globale Einstellung, die für alle Datenbanken im Pool gilt. Legen Sie die maximale Anzahl von virtuellen Kernen pro Datenbank hoch genug fest, sodass Lastspitzen bei der Datenbanknutzung verarbeitet werden können. Sie sollten ein gewisses Maß an Mehrlast einplanen, da für den Pool im Allgemeinen von Nutzungsmustern starker und schwacher Auslastung ausgegangen wird, bei der aber nicht alle Datenbanken gleichzeitig stark ausgelastet sind.|
 | Minimale Anzahl virtueller Kerne pro Datenbank |Die minimale Anzahl von virtuellen Kernen, die für jede Datenbank im Pool garantiert werden. Dies ist eine globale Einstellung, die für alle Datenbanken im Pool gilt. Die Mindestanzahl von virtuellen Kernen pro Datenbank kann auf 0 festgelegt werden. Dies ist auch der Standardwert. Diese Eigenschaft ist auf einen Wert zwischen 0 und der durchschnittlichen Nutzung der virtuellen Kerne pro Datenbank festgelegt. Das Produkt aus der Anzahl von Datenbanken im Pool und der Mindestzahl von virtuellen Kernen pro Datenbank darf die tatsächliche Anzahl der virtuellen Kerne pro Pool nicht übersteigen.|
-| Max. Speicherkapazität pro Datenbank |Die maximale Datenbankgröße, die vom Benutzer für eine Datenbank in einem Pool festgelegt wird. In einem Pool zusammengefasste Datenbanken nutzen den zugeordneten Poolspeicher gemeinsam, daher ist die Größe, die eine Datenbank erreichen kann, auf den jeweils kleineren Wert des verbleibenden Poolspeichers oder der Datenbankgröße beschränkt. Die maximale Datenbankgröße bezieht sich auf die maximale Größe der Datendateien und umfasst nicht den von Protokolldateien belegten Speicherplatz. |
+| Max. Speicherkapazität pro Datenbank |Die maximale Datenbankgröße, die vom Benutzer für eine Datenbank in einem Pool festgelegt wird. Pooldatenbanken nutzen den zugeordneten Poolspeicher gemeinsam, daher ist die Größe, die eine Datenbank erreichen kann, auf den jeweils kleineren Wert des verbleibenden Poolspeichers oder der Datenbankgröße beschränkt. Die maximale Datenbankgröße bezieht sich auf die maximale Größe der Datendateien und umfasst nicht den von Protokolldateien belegten Speicherplatz. |
 |||
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zu V-Kern-Ressourcenlimits bei Singletons finden Sie unter [Ressourcenlimits bei Singletons, die das auf virtuellen Kernen basierende Kaufmodell verwenden](sql-database-vcore-resource-limits-single-databases.md).
+- Informationen zu V-Kern-Ressourcenlimits bei Singletons finden Sie unter [Ressourcenlimits bei Singletons, die das vCore-basierte Kaufmodell verwenden](sql-database-vcore-resource-limits-single-databases.md).
 - Informationen zu DTU-Ressourcenlimits bei Singletons finden Sie unter [Ressourcenlimits bei Singletons, die das DTU-basierte Kaufmodell verwenden](sql-database-dtu-resource-limits-single-databases.md).
 - Informationen zu Ressourcenlimits für Pools für elastische Datenbanken finden Sie unter [Ressourcenlimits für Pools für elastische Datenbanken, die das DTU-basierte Kaufmodell verwenden](sql-database-dtu-resource-limits-elastic-pools.md).
 - Informationen zu den Ressourcenlimits für verwaltete Instanzen finden Sie unter [Ressourcenlimits bei verwalteten Instanzen](sql-database-managed-instance-resource-limits.md).

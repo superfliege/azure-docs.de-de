@@ -37,14 +37,14 @@ Port 1433 ist der einzige Port, der auf dem Desktopcomputer geöffnet sein muss,
 
 ### <a name="inside-client-runs-on-azure"></a>*Innerhalb:* Client wird in Azure ausgeführt.
 
-Wenn der Client innerhalb der Azure-Cloudgrenzen ausgeführt wird, verwendet er die sogenannte *direkte Route* für die Interaktion mit dem Azure SQL-Datenbankserver. Nachdem eine Verbindung hergestellt wurde, ist bei weiteren Interaktionen zwischen dem Client und der Datenbank kein Azure SQL-Datenbank-Gateway beteiligt.
+Wenn der Client innerhalb der Azure-Cloudgrenzen ausgeführt wird, verwendet er die sogenannte *direkte Route* für die Interaktion mit dem Azure SQL-Datenbank-Server. Nachdem eine Verbindung hergestellt wurde, ist bei weiteren Interaktionen zwischen dem Client und der Datenbank kein Azure SQL-Datenbank-Gateway beteiligt.
 
 Der Ablauf ist wie folgt:
 
 1. ADO.NET 4.5 (oder höher) initiiert eine kurze Interaktion mit der Azure-Cloud und empfängt eine dynamisch ermittelte Portnummer.
 
    * Die dynamisch ermittelte Portnummer liegt im Bereich von 11000 bis 11999.
-2. ADO.NET stellt dann eine direkte Verbindung mit dem SQL-Datenbankserver ohne Einbindung von Middleware her.
+2. ADO.NET stellt dann eine direkte Verbindung mit dem SQL-Datenbank-Server ohne Einbindung von Middleware her.
 3. Abfragen werden direkt an die Datenbank gesendet, und Ergebnisse werden direkt an den Client zurückgegeben.
 
 Stellen Sie sicher, dass der Portbereich von 11000 bis 11999 auf Ihrem Azure-Clientcomputer für ADO.NET 4.5-Clientinteraktionen mit SQL-Datenbank verfügbar ist.

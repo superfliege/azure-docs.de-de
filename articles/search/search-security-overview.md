@@ -47,7 +47,7 @@ Die Verschlüsselung erstreckt sich auf die gesamte Indexpipeline – von Verbin
 
 Die Verschlüsselung ist in Azure Search integriert, wobei Zertifikate und Schlüssel intern von Microsoft verwaltet und universell angewendet werden. Sie können die Verschlüsselung nicht aktivieren bzw. deaktivieren, eigene Schlüssel verwalten oder ersetzen oder Verschlüsselungseinstellungen im Portal oder programmgesteuert anzeigen. 
 
-Die Verschlüsselung ruhender Daten wurde am 24. Januar 2018 angekündigt und gilt für alle Diensttarife wie gemeinsame Dienste (Free) in sämtlichen Regionen. Damit die Verschlüsselung vollständig angewendet werden kann, müssen vor diesem Datum erstellte Indizes gelöscht und neu erstellt werden. Anderenfalls werden nur neue Daten, die nach dem 24. Januar hinzugefügt wurden, verschlüsselt.
+Die Verschlüsselung ruhender Daten wurde am 24. Januar 2018 angekündigt und gilt für alle Dienstebenen, einschließlich gemeinsamer Dienste (Free), in sämtlichen Regionen. Damit die Verschlüsselung vollständig angewendet werden kann, müssen vor diesem Datum erstellte Indizes gelöscht und neu erstellt werden. Anderenfalls werden nur neue Daten, die nach dem 24. Januar hinzugefügt wurden, verschlüsselt.
 
 ## <a name="azure-wide-user-access-controls"></a>Azure-weite Benutzerzugriffssteuerungen
 

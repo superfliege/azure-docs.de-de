@@ -24,9 +24,9 @@ Standardmäßig ist ein Azure Cosmos DB-Konto über jede beliebige Quelle zugän
 
 Hier sind einige häufig gestellte Fragen zur Konfiguration des Zugriffs aus virtuellen Netzwerken:
 
-### <a name="can-i-specify-both-virtual-network-service-endpoint-and-ip-access-control-policy-on-an-azure-cosmos-account"></a>Kann ich sowohl den Dienstendpunkt des virtuellen Netzwerks als auch eine IP-Zugriffssteuerungsrichtlinie für ein Azure Cosmos DB-Konto festlegen? 
+### <a name="can-i-specify-both-virtual-network-service-endpoint-and-ip-access-control-policy-on-an-azure-cosmos-account"></a>Kann ich sowohl den VNET-Dienstendpunkt als auch eine IP-Zugriffssteuerungsrichtlinie für ein Azure Cosmos DB-Konto festlegen? 
 
-Sie können sowohl den Dienstendpunkt des virtuellen Netzwerks als auch eine IP-Zugriffssteuerungsrichtlinie (alias Firewall) für Ihr Azure Cosmos DB-Konto aktivieren. Diese beiden Funktionen ergänzen sich und gewährleisten zusammen die Isolation und Sicherheit Ihres Azure Cosmos DB-Kontos. Die Verwendung einer IP-Firewall stellt sicher, dass statische IP-Adressen auf Ihr Konto zugreifen können. 
+Sie können sowohl den VNET-Dienstendpunkt als auch eine IP-Zugriffssteuerungsrichtlinie (alias Firewall) für Ihr Azure Cosmos DB-Konto aktivieren. Diese beiden Funktionen ergänzen sich und gewährleisten zusammen die Isolation und Sicherheit Ihres Azure Cosmos DB-Kontos. Die Verwendung einer IP-Firewall stellt sicher, dass statische IP-Adressen auf Ihr Konto zugreifen können. 
 
 ### <a name="how-do-i-limit-access-to-subnet-within-a-virtual-network"></a>Wie schränke ich den Zugriff auf ein Subnetz innerhalb eines virtuellen Netzwerks ein? 
 

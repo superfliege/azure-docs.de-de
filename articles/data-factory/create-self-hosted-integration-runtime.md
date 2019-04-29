@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 7fd4fd65b48c199527d9172b7cea89010c962f5b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: aaa72d3a29fee28ede336a2be350015bf3cbc9b4
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59261036"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565521"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime
 Bei der Integration Runtime (IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Weitere Informationen zur Integration Runtime finden Sie unter [Integrationslaufzeit in Azure Data Factory](concepts-integration-runtime.md).
@@ -255,7 +255,7 @@ Konfigurieren Sie die selbstgehostete Integration Runtime mit den geeigneten Pro
 
 ![Angeben des Proxys](media/create-self-hosted-integration-runtime/specify-proxy.png)
 
-Die selbstgehostete Integration Runtime verwendet den Proxyserver zum Herstellen der Verbindung mit dem Clouddienst. Wählen Sie während des Anfangssetups **Verknüpfung ändern** aus. Daraufhin wird das Dialogfeld für Proxyeinstellungen angezeigt.
+Wenn die selbstgehostete Integration Runtime konfiguriert ist, verwendet sie den Proxyserver zum Herstellen der Verbindung mit dem Clouddienst, Quelle/Ziel (die das HTTP/HTTPS-Protokoll verwenden). Das heißt: Wählen Sie während des Anfangssetups **Verknüpfung ändern** aus. Daraufhin wird das Dialogfeld für Proxyeinstellungen angezeigt.
 
 ![Festlegen des Proxys](media/create-self-hosted-integration-runtime/set-http-proxy.png)
 

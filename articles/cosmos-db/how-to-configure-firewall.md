@@ -157,7 +157,7 @@ Bei Anforderungen über ein Subnetz in einem virtuellen Netzwerk, für das der D
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Konfigurieren eines Dienstendpunkts eines virtuellen Netzwerks für Ihr Azure Cosmos DB-Konto finden Sie in den folgenden Artikeln:
+Informationen zum Konfigurieren eines VNET-Dienstendpunkts für Ihr Azure Cosmos DB-Konto finden Sie in den folgenden Artikeln:
 
 * [Zugreifen auf Azure Cosmos DB-Ressourcen über virtuelle Netzwerke und Subnetze](vnet-service-endpoint.md)
 * [Konfigurieren des VNET- und subnetzbasierten Zugriffs für Ihr Azure Cosmos DB-Konto](how-to-configure-vnet-service-endpoint.md)

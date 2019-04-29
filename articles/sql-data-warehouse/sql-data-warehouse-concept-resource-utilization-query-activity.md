@@ -7,15 +7,15 @@ manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 03/21/2019
+ms.date: 04/12/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 69b33b9629863702d576eac39fb4097a2bff2e57
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: f80c1817d5c0ce79f2dc53f40a2cc4e00dd5c72b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337568"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545555"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>Überwachen von Ressourcennutzung und Abfrageaktivität in Azure SQL Data Warehouse
 Azure SQL Data Warehouse bietet umfassende Überwachungsfunktionen im Azure-Portal, um Erkenntnisse zu Ihrer Data Warehouse-Workload zu gewinnen. Das Azure-Portal ist das empfohlene Tool zum Überwachen Ihrer Data Warehouse-Instanz, weil es eine konfigurierbare Aufbewahrungsdauer, Warnungen, Empfehlungen und anpassbare Diagramme und Dashboards für Metriken und Protokolle bietet. Das Portal ermöglicht außerdem eine Integration weiterer Azure-Überwachungsdienste – z.B. Operations Management Suite (OMS) und Azure Monitor (Protokolle), um Ihnen eine umfassende und integrierte Überwachungsoberfläche für Data Warehouse sowie für Ihre gesamte Azure-Analyseplattform zu bieten. In dieser Dokumentation wird beschrieben, welche Überwachungsfunktionen zur Verfügung stehen, um Ihre Analyseplattform mit SQL Data Warehouse zu optimieren und zu verwalten. 
@@ -24,7 +24,7 @@ Azure SQL Data Warehouse bietet umfassende Überwachungsfunktionen im Azure-Port
 Im Azure-Portal stehen die folgenden Metriken für SQL Data Warehouse zur Verfügung. Diese Metriken werden über [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics) angegeben.
 
 > [!NOTE]
-> Seit November 2018 befasst sich das Engineeringteam mit einem Problem, bei dem der CPU-Prozentsatz und der Daten-E/A-Prozentsatz zu niedrig ausgewiesen werden. Dies führt dazu, dass „DWU verwendet“ und der Prozentsatz ebenfalls zu niedrig ausgewiesen werden. 
+> Derzeit geben CPU- und E/A-Metriken auf Knotenebene die Data Warehouse-Verwendung nicht ordnungsgemäß wieder. Diese Metriken werden in naher Zukunft entfernt, da das Team die Oberfläche für Überwachung und Problembehandlung bei SQL Data Warehouse verbessert. 
 
 | Metrikname                           | BESCHREIBUNG     | Aggregationstyp |
 | --------------------------------------- | ---------------- | --------------------------------------- |

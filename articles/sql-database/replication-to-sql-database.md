@@ -19,9 +19,9 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "57860702"
 ---
-# <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikation zu SQL-Datenbank-Einzeldatenbanken und in einem Pool zusammengefassten Datenbanken
+# <a name="replication-to-sql-database-single-and-pooled-databases"></a>Replikation zu SQL-Datenbank-Einzeldatenbanken und -Pooldatenbanken
 
-Die SQL Server-Replikation kann für Einzeldatenbanken und in einem Pool zusammengefasste Datenbanken auf einem [SQL Datenbank-Server](sql-database-servers.md) in Azure SQL-Datenbank konfiguriert werden.  
+Die SQL Server-Replikation kann für Einzel- und Pooldatenbanken auf einem [SQL Datenbank-Server](sql-database-servers.md) in Azure SQL-Datenbank konfiguriert werden.  
 
 ## <a name="supported-configurations"></a>**Unterstützte Konfigurationen**:
   
@@ -65,7 +65,7 @@ Die SQL Server-Replikation kann für Einzeldatenbanken und in einem Pool zusamme
 
 1. Erstellen Sie eine Transaktionsreplikationsveröffentlichung in einer lokalen SQL Server-Datenbank-Instanz.  
 2. Erstellen Sie auf der lokalen SQL Server-Instanz mithilfe des **Assistenten für neue Abonnements** oder mithilfe von Transact-SQL-Anweisungen ein Pushabonnement in Azure SQL-Datenbank.  
-3. Bei Verwendung einzelner und poolbasierter Datenbanken in Azure SQL-Datenbank handelt es sich beim ersten Dataset um eine Momentaufnahme, die vom Momentaufnahmen-Agent erstellt und vom Verteilungs-Agent verteilt und angewendet wird. Bei einer Datenbank mit verwalteter Instanz können Sie auch eine Datenbanksicherung für das Seeding der Abonnentendatenbank verwenden.
+3. Bei Verwendung von Einzel- und Pooldatenbanken in Azure SQL-Datenbank handelt es sich beim ersten Dataset um eine Momentaufnahme, die vom Momentaufnahmen-Agent erstellt und vom Verteilungs-Agent verteilt und angewendet wird. Bei einer Datenbank der verwalteten Instanz können Sie auch eine Datenbanksicherung für das Seeding der Abonnentendatenbank verwenden.
 
 ### <a name="data-migration-scenario"></a>Datenmigrationsszenario  
 

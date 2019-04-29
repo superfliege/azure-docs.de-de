@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: cb6ddbab2fd4cb21ef547d116652f7ea9e63607f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: f887fbd4f82e59c02d6a5b69d0d5b43b426a39bc
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59258146"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59606768"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-python-back-end-and-python-device"></a>Erste Schritte mit der Modulidentität und dem Modulzwilling von IoT Hub unter Verwendung eines Python-Back-Ends und eines Python-Geräts
 
@@ -43,7 +43,7 @@ Sie haben nun Ihren IoT-Hub erstellt und verfügen über den Hostnamen und die I
 
 ## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>Erstellen einer Geräteidentität und einer Modulidentität in IoT Hub
 
-In diesem Abschnitt erstellen Sie eine Python-App, mit der eine Geräte- und eine Modulidentität in der Identitätsregistrierung Ihrer IoT Hub-Identität erstellt werden. Ein Gerät oder Modul kann nur eine Verbindung mit IoT Hub herstellen, wenn in der Identitätsregistrierung ein Eintrag für dieses Gerät vorhanden ist. Weitere Informationen finden Sie im [IoT Hub-Entwicklerhandbuch](iot-hub-devguide-identity-registry.md) im Abschnitt zur Identitätsregistrierung. Wenn Sie diese Konsolen-App ausführen, generiert sie eine eindeutige ID und einen eindeutigen Schlüssel für das Gerät und das Modul. Ihr Gerät und Ihr Modul verwenden diese Werte, um sich beim Senden von D2C-Nachrichten an IoT Hub zu identifizieren. Bei den IDs gilt Groß-/Kleinschreibung.
+In diesem Abschnitt erstellen Sie eine Python-App, mit der eine Geräte- und eine Modulidentität in der Identitätsregistrierung Ihrer IoT Hub-Identität erstellt werden. Ein Gerät oder Modul kann nur eine Verbindung mit IoT Hub herstellen, wenn in der Identitätsregistrierung ein Eintrag für dieses Gerät vorhanden ist. Weitere Informationen finden Sie im Abschnitt zur Identitätsregistrierung des [IoT Hub-Entwicklerhandbuchs](iot-hub-devguide-identity-registry.md). Wenn Sie diese Konsolen-App ausführen, generiert sie eine eindeutige ID und einen eindeutigen Schlüssel für das Gerät und das Modul. Ihr Gerät und Ihr Modul verwenden diese Werte, um sich beim Senden von D2C-Nachrichten an IoT Hub zu identifizieren. Bei den IDs gilt Groß-/Kleinschreibung.
 
 Fügen Sie Ihrer Python-Datei den folgenden Code hinzu:
 
@@ -91,7 +91,9 @@ In diesem Abschnitt erstellen Sie auf Ihrem simulierten Gerät eine Python-App, 
 
    ![Moduldetails im Azure-Portal](./media/iot-hub-python-python-module-twin-getstarted/module-detail.png)
 
-2. **Erstellen der App UpdateModuleTwinReportedProperties:** Fügen Sie die folgenden `using`-Anweisungen oben in der Datei **Program.cs** ein:
+2. **Erstellen der App „UpdateModuleTwinReportedProperties“**
+
+   Fügen Sie am Anfang der Datei **Program.cs** die folgenden `using`-Anweisungen hinzu:
 
     ```python
     import sys

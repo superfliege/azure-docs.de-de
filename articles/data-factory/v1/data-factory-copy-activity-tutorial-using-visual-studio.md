@@ -113,7 +113,7 @@ Verknüpfte Dienste verknüpfen Datenspeicher oder Serverdienste mit einer Azure
 3. Ersetzen Sie in der Datei **AzureSqlLinkedService1.json** die Platzhalter `<servername>`, `<databasename>`, `<username@servername>` und `<password>` durch die entsprechenden Angaben für Azure SQL-Server, -Datenbank, -Benutzerkonto und -Kennwort.    
 4. Speichern Sie die Datei **AzureSqlLinkedService1.json** . 
     
-    Weitere Informationen zu diesen JSON-Eigenschaften finden Sie unter [Azure SQL-Datenbankconnector](data-factory-azure-sql-connector.md#linked-service-properties).
+    Weitere Informationen zu diesen JSON-Eigenschaften finden Sie unter [Azure SQL-Datenbank-Connector](data-factory-azure-sql-connector.md#linked-service-properties).
 
 
 ## <a name="create-datasets"></a>Erstellen von Datasets
@@ -289,7 +289,7 @@ Derzeit steuert das Ausgabedataset den Zeitplan. In diesem Tutorial wird ein Aus
      
      Im obigen Beispiel ergeben sich 24 Datenslices, da jede Stunde ein Datenslice erstellt wird.
 
-     Beschreibungen der JSON-Eigenschaften in einer Pipelinedefinition finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Beschreibungen der JSON-Eigenschaften in der Definition einer Kopieraktivität finden Sie unter [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md). Beschreibungen der JSON-Eigenschaften, die von BlobSource unterstützt werden, finden Sie im Artikel [Azure Blob-Connector](data-factory-azure-blob-connector.md). Beschreibungen der JSON-Eigenschaften, die von SqlSink unterstützt werden, finden Sie im Artikel [Azure SQL-Datenbankconnector](data-factory-azure-sql-connector.md).
+     Beschreibungen der JSON-Eigenschaften in einer Pipelinedefinition finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Beschreibungen der JSON-Eigenschaften in der Definition einer Kopieraktivität finden Sie unter [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md). Beschreibungen der JSON-Eigenschaften, die von BlobSource unterstützt werden, finden Sie im Artikel [Azure Blob-Connector](data-factory-azure-blob-connector.md). Beschreibungen der JSON-Eigenschaften, die von SqlSink unterstützt werden, finden Sie im Artikel [Azure SQL-Datenbank-Connector](data-factory-azure-sql-connector.md).
 
 ## <a name="publishdeploy-data-factory-entities"></a>Veröffentlichen/Bereitstellen der Data Factory-Entitäten
 In diesem Schritt veröffentlichen Sie zuvor erstellte Data Factory-Entitäten (verknüpfte Dienste, Datasets und Pipeline). Außerdem geben Sie den Namen der neuen Data Factory an, die für diese Entitäten erstellt wird.  

@@ -1,6 +1,6 @@
 ---
 title: Azure SQL-Datenbank-Dienst – virtueller Kern | Microsoft-Dokumentation
-description: Mit dem V-Kern-basierten Kaufmodell können Sie Compute- und Speicherressourcen einzeln skalieren, eine Leistung wie in Ihrer lokalen Umgebung erzielen und den Preis optimieren.
+description: Mit dem vCore-basierten Kaufmodell können Sie Compute- und Speicherressourcen einzeln skalieren, eine Leistung wie in Ihrer lokalen Umgebung erzielen und den Preis optimieren.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -19,9 +19,9 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357951"
 ---
-# <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>V-Kern-Diensttarife, Azure-Hybridvorteil und Migration
+# <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>V-Kern-Dienstebenen, Azure-Hybridvorteil und Migration
 
-Mit dem V-Kern-basierten Kaufmodell können Sie Compute- und Speicherressourcen einzeln skalieren, eine Leistung wie in Ihrer lokalen Umgebung erzielen und den Preis optimieren. Es ermöglicht Ihnen auch die Wahl der Hardwaregeneration:
+Mit dem vCore-basierten Kaufmodell können Sie Compute- und Speicherressourcen einzeln skalieren, eine Leistung wie in Ihrer lokalen Umgebung erzielen und den Preis optimieren. Es ermöglicht Ihnen auch die Wahl der Hardwaregeneration:
 
 - Gen 4: bis zu 24 logische CPUs basierend auf Intel-Prozessoren vom Typ E5-2673 v3 (Haswell) 2,4 GHz, virtueller Kern = 1 PP (physischer Kern), 7 GB pro Kern, angeschlossene SSD
 - Gen 5: bis zu 80 logische CPUs basierend auf Intel-Prozessoren vom Typ E5-2673 v4 (Broadwell) 2,3 GHz, V-Kern = 1 LP (Hyperthread), 5,1 GB pro Kern, schnelle eNVM-SSD
@@ -29,11 +29,11 @@ Mit dem V-Kern-basierten Kaufmodell können Sie Compute- und Speicherressourcen 
 Gen4-Hardware verfügt über deutlich mehr Arbeitsspeicher pro V-Kern. Bei Gen5-Hardware können die Computeressourcen aber viel stärker zentral hochskaliert werden.
 
 > [!NOTE]
-> Weitere Informationen zu DTU-basierten Diensttarifen finden Sie unter [DTU-basierte Diensttarife](sql-database-service-tiers-dtu.md). Weitere Informationen zu den Unterschieden zwischen DTU-basierten Diensttarifen und V-Kern-basierten Diensttarifen finden Sie unter [Kaufmodelle für Azure SQL-Datenbank und Ressourcen](sql-database-purchase-models.md).
+> Weitere Informationen zu DTU-basierten Dienstebenen finden Sie unter [DTU-basierte Dienstebene](sql-database-service-tiers-dtu.md). Weitere Informationen zu den Unterschieden zwischen DTU-basierten Dienstebenen und V-Kern-basierten Dienstebenen finden Sie unter [Kaufmodelle für Azure SQL-Datenbank und Ressourcen](sql-database-purchase-models.md).
 
 ## <a name="service-tier-characteristics"></a>Merkmale des Diensttarifs
 
-Das Modell mit virtuellem Kern bietet drei Diensttarife: „Universell“, Hyperscale“ und „Unternehmenskritisch“. Diensttarife unterscheiden sich in Bezug auf Computegrößen, Auslegung auf Hochverfügbarkeit, Fehlerisolation, Speichertypen und -größe sowie E/A-Bereich. Sie müssen den erforderlichen Speicher und den Aufbewahrungszeitraum für Sicherungen separat konfigurieren. Navigieren Sie im Azure-Portal zu „Server“ (nicht zu „Datenbank“) > Verwaltete Sicherungen > Richtlinie konfigurieren > Konfiguration der Point-in-Time-Wiederherstellung > 7–35 Tage.
+Das Modell mit virtuellem Kern bietet drei Dienstebenen: „Universell“, Hyperscale“ und „Unternehmenskritisch“. Dienstebenen unterscheiden sich in Bezug auf Computegrößen, Auslegung auf Hochverfügbarkeit, Fehlerisolation, Speichertypen und -größe sowie E/A-Bereich. Sie müssen den erforderlichen Speicher und den Aufbewahrungszeitraum für Sicherungen separat konfigurieren. Navigieren Sie im Azure-Portal zu „Server“ (nicht zu „Datenbank“) > Verwaltete Sicherungen > Richtlinie konfigurieren > Konfiguration der Point-in-Time-Wiederherstellung > 7–35 Tage.
 
 Die folgende Tabelle zeigt die Unterschiede zwischen diesen drei Tarifen:
 
@@ -53,15 +53,15 @@ Die folgende Tabelle zeigt die Unterschiede zwischen diesen drei Tarifen:
 > Sie können eine kostenlose Azure SQL-Datenbank mit dem Diensttarif „Basic“ in Verbindung mit einem kostenlosen Azure-Konto erhalten, um Azure zu erkunden. Weitere Informationen finden Sie unter [Mit dem kostenlosen Azure-Konto eine verwaltete Clouddatenbank erstellen](https://azure.microsoft.com/free/services/sql-database/).
 
 - Weitere Informationen finden Sie unter [V-Kern-Ressourcengrenzwerte in Einzeldatenbank](sql-database-vcore-resource-limits-single-databases.md) und [V-Kern-Ressourcengrenzwerte in einer verwalteten Instanz](sql-database-managed-instance.md#vcore-based-purchasing-model).
-- Weitere Informationen zu den Diensttarifen „Universell“ und „Unternehmenskritisch“ finden Sie unter [Diensttarife „Universell“ und „Unternehmenskritisch“](sql-database-service-tiers-general-purpose-business-critical.md).
-- Ausführliche Informationen zum Diensttarif „Hyperscale“ im V-Kern-basierten Kaufmodell finden Sie unter [Diensttarif „Hyperscale“](sql-database-service-tier-hyperscale.md).  
+- Weitere Informationen zu den Dienstebenen „Universell“ und „Unternehmenskritisch“ finden Sie unter [Dienstebenen „Universell“ und „Unternehmenskritisch“](sql-database-service-tiers-general-purpose-business-critical.md).
+- Ausführliche Informationen zur Dienstebene „Hyperscale“ im vCore-basierten Kaufmodell finden Sie unter [Dienstebene „Hyperscale“](sql-database-service-tier-hyperscale.md).  
 
 > [!IMPORTANT]
 > Verwenden Sie das DTU-basierte Kaufmodell, wenn Sie weniger als einen V-Kern mit Computekapazität benötigen.
 
 ## <a name="azure-hybrid-benefit"></a>Azure-Hybridvorteil
 
-Beim V-Kern-basierten Kaufmodell können Sie Ihre vorhandenen Lizenzen gegen Rabattpreise für SQL-Datenbank tauschen, indem Sie den [Azure-Hybridvorteil für SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) verwenden. Bei diesem Azure-Vorteil können Sie Ihre lokalen SQL Server-Lizenzen nutzen, um für SQL-Datenbank bis zu 30% zu sparen, indem Sie Software Assurance für die lokalen SQL Server-Lizenzen verwenden.
+Beim vCore-basierten Kaufmodell können Sie Ihre vorhandenen Lizenzen gegen Rabattpreise für SQL-Datenbank tauschen, indem Sie den [Azure-Hybridvorteil für SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) verwenden. Bei diesem Azure-Vorteil können Sie Ihre lokalen SQL Server-Lizenzen nutzen, um bei Azure SQL-Datenbank bis zu 30 Prozent zu sparen, indem Sie Software Assurance für die lokalen SQL Server-Lizenzen verwenden.
 
 ![Preise](./media/sql-database-service-tiers/pricing.png)
 
@@ -92,7 +92,7 @@ Mit dem Azure-Hybridvorteil bezahlen Sie wahlweise nur die zugrunde liegende Azu
 
 ### <a name="migration-of-a-database"></a>Migrieren einer Datenbank
 
-Die Migration einer Datenbank vom DTU-basierten Kaufmodell zum V-Kern-basierten Kaufmodell ist vergleichbar mit einem Up- oder Downgrade zwischen den Datenbankebenen „Standard“ und „Premium“ im DTU-basierten Kaufmodell.
+Die Migration einer Datenbank vom DTU-basierten Kaufmodell zum vCore-basierten Kaufmodell ist vergleichbar mit einem Up- oder Downgrade zwischen den Datenbankebenen „Standard“ und „Premium“ im DTU-basierten Kaufmodell.
 
 ### <a name="migration-of-databases-with-geo-replication-links"></a>Migrieren von Datenbanken mit Georeplikationsverknüpfungen
 
@@ -102,7 +102,7 @@ Bei Verwendung der Georeplikation zwischen zwei Pools für elastische Datenbanke
 
 Die folgende Tabelle enthält eine Anleitung für die jeweiligen Migrationsszenarien:
 
-|Aktueller Diensttarif|Zieldiensttarif|Migrationstyp|Benutzeraktionen|
+|Aktuelle Dienstebene|Zieldienstebene|Migrationstyp|Benutzeraktionen|
 |---|---|---|---|
 |Standard|Allgemeiner Zweck|Seitwärts|Die Migration ist in einer beliebigen Reihenfolge möglich, aber Sie müssen für eine geeignete V-Kern-Größe sorgen*|
 |Premium|Unternehmenskritisch|Seitwärts|Die Migration ist in einer beliebigen Reihenfolge möglich, aber Sie müssen für eine geeignete V-Kern-Größe sorgen*|
@@ -122,7 +122,7 @@ Für die Migration von Failovergruppen mit mehreren Datenbanken ist eine individ
 
 ### <a name="creation-of-a-geo-replication-secondary"></a>Erstellung einer sekundären Einheit für die Georeplikation
 
-Sie können eine sekundäre Einheit für die Georeplikation nur mit demselben Diensttarif wie für die primäre Einheit erstellen. Für eine Datenbank mit einer hohen Protokollgenerierungsrate ist es ratsam, die sekundäre Einheit mit der gleichen Computegröße wie für die primäre Einheit zu erstellen. Wenn Sie eine sekundäre Einheit für die Georeplikation im Pool für elastische Datenbanken für eine einzelne primäre Datenbank erstellen, wird empfohlen, dass die Einstellung `maxVCore` für den Pool mit der Computegröße der primären Datenbank übereinstimmt. Bei der Erstellung einer sekundären Einheit für die Georeplikation im Pool für elastische Datenbanken einer primären Einheit in einem anderen Pool für elastische Datenbanken wird empfohlen, dass die Pools über die gleichen `maxVCore`-Einstellungen verfügen.
+Sie können eine sekundäre Einheit für die Georeplikation nur mit derselben Dienstebene wie für die primäre Einheit erstellen. Für eine Datenbank mit einer hohen Protokollgenerierungsrate ist es ratsam, die sekundäre Einheit mit der gleichen Computegröße wie für die primäre Einheit zu erstellen. Wenn Sie eine sekundäre Einheit für die Georeplikation im Pool für elastische Datenbanken für eine einzelne primäre Datenbank erstellen, wird empfohlen, dass die Einstellung `maxVCore` für den Pool mit der Computegröße der primären Datenbank übereinstimmt. Bei der Erstellung einer sekundären Einheit für die Georeplikation im Pool für elastische Datenbanken einer primären Einheit in einem anderen Pool für elastische Datenbanken wird empfohlen, dass die Pools über die gleichen `maxVCore`-Einstellungen verfügen.
 
 ### <a name="using-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Verwenden einer Datenbankkopie zum Konvertieren einer DTU-basierten Datenbank in eine V-Kern-basierte Datenbank
 

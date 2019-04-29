@@ -74,7 +74,7 @@ SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 ```
 
 
-Das Ergebnis **0** bedeutet, dass In-Memory nicht unterstützt wird. **1** bedeutet Unterstützung. Stellen Sie für die Problemdiagnose sicher, dass die Datenbank dem Premium-Tarif unterliegt.
+Das Ergebnis **0** bedeutet, dass In-Memory nicht unterstützt wird. **1** bedeutet Unterstützung. Stellen Sie für die Problemdiagnose sicher, dass für die Datenbank die Dienstebene „Premium“ gilt.
 
 
 #### <a name="about-the-created-memory-optimized-items"></a>Informationen zu speicheroptimierten Elementen
@@ -278,7 +278,7 @@ Für Echtzeitanalysen einer OLTP-Workload empfiehlt es sich häufig, einen nicht
 
 1. Erstellen Sie im Azure-Portal anhand des Beispiels eine neue AdventureWorksLT-Datenbank.
    - Verwenden Sie denselben Namen.
-   - Wählen Sie den Tarif „Premium“.
+   - Wählen Sie die Dienstebene „Premium“ aus.
 
 2. Kopieren Sie [sql_in-memory_analytics_sample](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_analytics_sample.sql) in die Zwischenablage.
    - Das T-SQL-Skript erstellt die erforderlichen In-Memory-Objekte in der in Schritt 1 erstellten Beispieldatenbank „AdventureWorksLT“.

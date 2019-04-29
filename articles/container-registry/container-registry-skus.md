@@ -28,11 +28,11 @@ Azure Container Registry (ACR) steht in verschiedenen Dienstebenen, sogenannten 
 > [!IMPORTANT]
 > Die SKU „Klassisch“ wird **eingestellt** und ist nach **April 2019** nicht mehr verfügbar. Es wird empfohlen, für alle neuen Registrierungen die SKUs „Basic“, „Standard“ oder „Premium“ zu verwenden. Für alle vorhandenen klassischen Registrierungen muss vor April 2019 ein Upgrade durchgeführt werden. Informationen zum Upgrade finden Sie unter [Durchführen eines Upgrades für eine klassische Registrierung][container-registry-upgrade].
 
-Die SKUs „Basic“, „Standard“ und „Premium“ (zusammen als *verwaltete Registrierungen* bezeichnet) bieten alle dieselben programmgesteuerten Funktionen. Sie alle profitieren auch von [Imagespeicher][container-registry-storage], der vollständig von Azure verwaltet wird. Wenn Sie sich für eine SKU auf höherer Ebene entscheiden, können Sie von einer höheren Leistung und Skalierung profitieren. Wenn mehrere Dienstebenen vorhanden sind, können Sie mit Basic beginnen und dann bei zunehmender Registrierungsnutzung in Standard und Premium konvertieren.
+Die SKUs „Basic“, „Standard“ und „Premium“ (zusammen als *verwaltete Registrierungen* bezeichnet) bieten alle dieselben programmgesteuerten Funktionen. Sie alle profitieren auch von [Imagespeicher][container-registry-storage], der vollständig von Azure verwaltet wird. Wenn Sie sich für eine SKU auf höherer Ebene entscheiden, können Sie von einer höheren Leistung und Skalierung profitieren. Wenn mehrere Dienstebenen vorhanden sind, können Sie mit „Basic“ beginnen und dann bei zunehmender Registrierungsnutzung in „Standard“ und „Premium“ konvertieren.
 
 ## <a name="sku-feature-matrix"></a>SKU-Featurematrix
 
-In der folgenden Tabelle werden die Features und Grenzwerte der Dienstebenen Basic, Standard und Premium dargestellt.
+In der folgenden Tabelle werden die Features und Grenzwerte der Dienstebenen „Basic“, „Standard“ und „Premium“ dargestellt.
 
 [!INCLUDE [container-instances-limits](../../includes/container-registry-limits.md)]
 

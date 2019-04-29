@@ -41,7 +41,7 @@ So lesen Sie die Daten aus der Azure SQL-Tabelle:
 2. Geben Sie im Komponentensuchfeld „import“ ein.
 3. Fügen Sie aus der Ergebnisliste ein Modul *Import Data* im Experimentbereich hinzu.
 4. Verbinden Sie die Ausgabe des Moduls *Import Data* mit der Eingabe des Moduls *Clean Missing Data*.
-5. Wählen Sie im Bereich „Properties“ **Azure SQL Database** in the **Data Source** aus.
+5. Wählen Sie im Bereich „Eigenschaften“ in der Dropdownliste **Datenquelle** die Option **Azure SQL-Datenbank** aus.
 6. Geben Sie in den Feldern **Database server name**, **Database name**, **User name** und **Password** die entsprechenden Informationen für Ihre Datenbank ein.
 7. Geben Sie im Abfragefeld „Database“ die folgende Abfrage ein.
 
@@ -72,7 +72,7 @@ Als Nächstes richten Sie das Vorhersageexperiment ein, über das Sie Ihren Webd
 3. Geben Sie im Komponentensuchfeld „export“ ein.
 4. Fügen Sie aus der Ergebnisliste ein Modul *Export Data* im Experimentbereich hinzu.
 5. Verbinden Sie die Ausgabe des Moduls *Score Model* mit der Eingabe des Moduls *Export Data*.
-6. Wählen Sie im Bereich „Properties“ **Azure SQL Database** in der Datenziel-Dropdownliste aus.
+6. Wählen Sie im Bereich „Eigenschaften“ in der Dropdownliste „Datenziel“ die Option **Azure SQL-Datenbank** aus.
 7. Geben Sie in den Feldern **Database server name**, **Database name**, **Server user account name** und **Server user account password** die entsprechenden Informationen für Ihre Datenbank ein.
 8. Geben Sie in das Feld **Comma separated list of columns to be saved** „Scored Labels“ ein.
 9. Geben Sie in das Feld **Data table name**„dbo.ScoredLabels“ ein. Wenn die Tabelle nicht vorhanden ist, wird sie erstellt, wenn das Experiment ausgeführt oder der Webdienst aufgerufen wird.

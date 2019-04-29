@@ -37,10 +37,10 @@ In den folgenden Schritten wird das Herstellen einer Verbindung mit einer Azure 
 
 ## <a name="connection-policy"></a>Verbindungsrichtlinie
 
-Die Azure SQL-Datenbank unterstützt diese drei Optionen zum Festlegen der Verbindungsrichtlinie für einen SQL-Datenbankserver:
+Die Azure SQL-Datenbank unterstützt diese drei Optionen zum Festlegen der Verbindungsrichtlinie für einen SQL-Datenbank-Server:
 
 - **Umleiten (empfohlen):** Clients stellen Verbindungen direkt mit dem Knoten her, der die Datenbank hostet. Zum Aktivieren der Konnektivität müssen die Clients ausgehende Firewallregeln für alle Azure-IP-Adressen in der Region mithilfe von Netzwerksicherheitsgruppen (NSG) mit [Diensttags](../virtual-network/security-overview.md#service-tags) für Ports 11000 bis 11999 zulassen – nicht nur für IP-Adressen des Azure SQL-Datenbankgateways an Port 1433. Da Pakete direkt an die Datenbank gesendet werden, haben Latenz und Durchsatz die Leistung verbessert.
-- **Proxy:** In diesem Modus werden alle Verbindungen über die Azure SQL-Datenbankgateways hergestellt. Zum Aktivieren der Konnektivität müssen Clients über ausgehende Firewallregeln verfügen, die nur die IP-Adressen des Azure SQL-Datenbankgateways zulassen (i.d.R. zwei IP-Adressen pro Region). Dieser Modus kann je nach Workload höhere Latenzen und geringeren Durchsatz verursachen. Es wird empfohlen, die Verbindungsrichtlinie `Redirect` statt der Verbindungsrichtlinie `Proxy` zu verwenden, um die niedrigste Latenz und den höchsten Durchsatz zu erzielen.
+- **Proxy:** In diesem Modus werden alle Verbindungen über die Azure SQL-Datenbank-Gateways hergestellt. Zum Aktivieren der Konnektivität müssen Clients über ausgehende Firewallregeln verfügen, die nur die IP-Adressen des Azure SQL-Datenbank-Gateways zulassen (i. d. R. zwei IP-Adressen pro Region). Dieser Modus kann je nach Workload höhere Latenzen und geringeren Durchsatz verursachen. Es wird empfohlen, die Verbindungsrichtlinie `Redirect` statt der Verbindungsrichtlinie `Proxy` zu verwenden, um die niedrigste Latenz und den höchsten Durchsatz zu erzielen.
 - **Standard:** Diese Verbindungsrichtlinie ist nach dem Erstellen auf allen Servern aktiv, es sei denn, Sie ändern sie explizit in `Proxy` oder `Redirect`. Die effektive Richtlinie hängt davon ab, ob Verbindungen innerhalb von Azure (`Redirect`) oder außerhalb von Azure (`Proxy`) hergestellt werden.
 
 ## <a name="connectivity-from-within-azure"></a>Verbindung aus Azure
@@ -102,7 +102,7 @@ Die folgende Tabelle enthält die primäre und sekundäre IP-Adressen des Gatewa
 
 ## <a name="change-azure-sql-database-connection-policy"></a>Ändern der Verbindungsrichtlinie von Azure SQL-Datenbank
 
-Um die Verbindungsrichtlinie von Azure SQL-Datenbank für einen Azure SQL-Datenbankserver zu ändern, verwenden Sie die [conn-policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy).
+Um die Verbindungsrichtlinie von Azure SQL-Datenbank für einen Azure SQL-Datenbank-Server zu ändern, verwenden Sie die [conn-policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy).
 
 - Wenn Ihre Verbindungsrichtlinie auf `Proxy` festgelegt ist, fließen alle Netzwerkpakete über das Gateway von Azure SQL-Datenbank. Um dies einzustellen, lassen Sie ausgehenden Datenverkehr nur für Gateway-IPs von Azure SQL-Datenbank zu. Die Einstellung `Proxy` hat längere Wartezeiten als die Einstellung `Redirect`.
 - Wenn die Einstellung der Verbindungsrichtlinie `Redirect` ist, fließen alle Netzwerkpakete direkt an den Datenbankcluster. Um dies einzustellen, lassen Sie ausgehenden Datenverkehr an mehrere IP-Adressen zu.
@@ -155,6 +155,6 @@ az resource update --ids $id --set properties.connectionType=Proxy
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zum Ändern der Verbindungsrichtlinie von Azure SQL-Datenbank für einen Azure SQL-Datenbankserver finden Sie unter [conn-policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy).
+- Informationen zum Ändern der Verbindungsrichtlinie von Azure SQL-Datenbank für einen Azure SQL-Datenbank-Server finden Sie unter [conn-policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy).
 - Weitere Informationen zum Verbindungsverhalten von Azure SQL-Datenbank für Kunden, die ADO.NET 4.5 oder höher verwenden, finden Sie unter [Andere Ports als 1433 für ADO.NET 4.5](sql-database-develop-direct-route-ports-adonet-v12.md).
 - Einen allgemeinen Überblick über die Anwendungsentwicklung finden Sie unter [SQL-Datenbankanwendungsentwicklung – Übersicht](sql-database-develop-overview.md).

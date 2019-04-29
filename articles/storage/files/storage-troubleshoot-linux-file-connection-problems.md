@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: ca7e89f4b7f976633d5f097b7e335fe9b7631985
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 09898ac7dd4a6f3ee9cf0ea26ded607a8673b9f6
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477742"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526859"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Behandeln von Azure Files-Problemen unter Linux
 
@@ -49,7 +49,7 @@ Stellen Sie sicher, dass virtuelle Netzwerk- und Firewallregeln für das Speiche
 
 Unter Linux erhalten Sie eine Fehlermeldung, die wie folgt aussieht:
 
-**<filename>[Zugriff verweigert] Datenträgerkontingent überschritten**
+**\<Dateiname> [Zugriff verweigert] Datenträgerkontingent überschritten**
 
 ### <a name="cause"></a>Ursache
 

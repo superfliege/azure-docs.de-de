@@ -26,4 +26,4 @@ Weitere Informationen zu Verbesserungen und Fehlerbehebungen in MariaDB 10.2.17 
 Das Patchen von Updates zu Nebenversionen wird vom Dienst automatisch verwaltet.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zu bestimmten Ressourcenkontingenten und -beschränkungen basierend auf Ihrem **Diensttarif** finden Sie unter [Diensttarife](./concepts-pricing-tiers.md).
+Informationen zu bestimmten Ressourcenkontingenten und -beschränkungen basierend auf Ihrer **Dienstebene** finden Sie unter [Dienstebenen](./concepts-pricing-tiers.md).

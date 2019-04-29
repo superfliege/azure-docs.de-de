@@ -48,8 +48,8 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | Get-Help | Notizen |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Erstellt einen SQL-Datenbankserver, der eine Einzeldatenbank oder einen Pool für elastische Datenbanken hostet. |
-| [az sql server firewall create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | Erstellt eine Firewallregel, die den Zugriff auf alle Einzeldatenbanken und Pools für elastische Datenbanken auf dem SQL-Datenbankserver über den eingegebenen IP-Adressbereich zulässt. |
+| [az sql server create](/cli/azure/sql/server#az-sql-server-create) | Erstellt einen SQL-Datenbank-Server, der eine Einzeldatenbank oder einen Pool für elastische Datenbanken hostet. |
+| [az sql server firewall create](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | Erstellt eine Firewallregel, die den Zugriff auf alle Einzeldatenbanken und Pools für elastische Datenbanken auf dem SQL-Datenbank-Server über den eingegebenen IP-Adressbereich zulässt. |
 | [az sql db create](/cli/azure/sql/db#az-sql-db-create) | Erstellt eine Einzeldatenbank oder einen Pool für elastische Datenbanken. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 

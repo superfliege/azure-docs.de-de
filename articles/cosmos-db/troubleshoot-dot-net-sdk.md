@@ -69,7 +69,7 @@ Wenn Ihre App auf einem virtuellen Azure-Computer ohne öffentliche IP-Adresse b
 
  Azure SNAT-Ports werden nur verwendet, wenn Ihr virtueller Computer eine private IP-Adresse besitzt und ein Prozess auf dem virtuellen Computer versucht, eine Verbindung mit einer öffentlichen IP-Adresse herzustellen. Es gibt zwei Problemumgehungen, um die Einschränkung durch Azure SNAT zu vermeiden:
 
-* Fügen Sie Ihren Azure Cosmos DB-Dienstendpunkt dem Subnetz Ihres virtuellen Netzwerks von Azure Virtual Machines hinzu. Weitere Informationen finden Sie unter [Dienstendpunkte im virtuellen Netzwerk](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). 
+* Fügen Sie Ihren Azure Cosmos DB-Dienstendpunkt dem Subnetz Ihres virtuellen Netzwerks von Azure Virtual Machines hinzu. Weitere Informationen finden Sie unter [Azure Virtual Network-Dienstendpunkte](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). 
 
     Wenn der Dienstendpunkt aktiviert ist, werden die Anforderungen nicht mehr von einer öffentlichen IP-Adresse an Azure Cosmos DB gesendet. Stattdessen wird die Identität des virtuellen Netzwerks und des Subnetzes gesendet. Diese Änderung kann zu Firewallproblemen führen, wenn nur öffentliche IP-Adressen zulässig sind. Wenn Sie eine Firewall verwenden und den Dienstendpunkt aktivieren, fügen Sie der Firewall mithilfe von [VNET-ACLs](https://docs.microsoft.com/azure/virtual-network/virtual-networks-acl) ein Subnetz hinzu.
 * Weisen Sie Ihrem virtuellen Azure-Computer eine öffentliche IP-Adresse zu.

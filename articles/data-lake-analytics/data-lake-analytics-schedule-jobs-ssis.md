@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: 5393e202c7b5005552f164c9c6f55da92fc82572
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6894486118f69e682353142be04821e1d28440e5
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104436"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523170"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>Planen von U-SQL-Aufträgen mit SQL Server Integration Services (SSIS)
 
@@ -93,7 +93,7 @@ Fügen Sie in der SSIS-Paketentwurfsansicht den **Task „Azure Data Lake Store 
     
     So erstellen Sie diese Dateiverbindung
 
-   1. Wählen Sie **<New Connection...>** in der Einstellung „FileConnection“ aus.
+   1. Wählen Sie in der Einstellung „FileConnection“ die Option **\<Neue Verbindung... >** aus.
    2. Legen Sie **Verwendungstyp** auf **Vorhandene Datei** und **Datei** auf den Pfad einer vorhandenen Datei fest.
 
        ![Konfigurieren des Foreach-Schleifencontainers](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)

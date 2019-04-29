@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 09/28/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 5eb3c08792b760bf66e443f79762d91210706c92
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: cda08d44cba9e59af853b1705f538ec199ec4d3a
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435111"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59630496"
 ---
 Im ersten Szenario fügen Sie dem vorhandenen Gerätetyp **Chiller** (Kältemaschine) von Contoso einen neuen Telemetrietyp hinzu.
 
 Im zweiten Szenario möchte Contoso das neue intelligente Gerät "Lightbulb" (Leuchtmittel) testen. Zum Ausführen der Tests erstellen Sie ein neues simuliertes Gerät mit den folgenden Merkmalen:
 
-*Eigenschaften*
+*Properties*
 
 | NAME                     | Werte                      |
 | ------------------------ | --------------------------- |
@@ -98,13 +98,11 @@ Laden Sie den [Microservice "Gerätesimulation"](https://github.com/Azure/device
 
 Öffnen Sie den Ordner **remote-monitoring-services-dotnet-master\storage-adapter** in Visual Studio Code. Klicken Sie auf eine der **Wiederherstellen**-Schaltflächen, um nicht aufgelöste Abhängigkeiten zu beheben.
 
-Öffnen Sie die Datei **.vscode/launch.json**, und weisen Sie Ihre Cosmos DB-Verbindungszeichenfolge der Umgebungsvariablen **PCS_STORAGEADAPTER_DOCUMENTDB_CONNSTRING** zu.
-
-<!-- Open the **WebService/appsettings.ini** file and assign your Cosmos DB connection string to the **documentdb_connstring** configuration setting.-->
+Öffnen Sie die Datei **storage-adapter/WebService/appsettings.ini**, und weisen Sie Ihre Cosmos DB-Verbindungszeichenfolge der Variablen **documentDBConnectionString** zu.
 
 Um den Microservice lokal auszuführen, klicken Sie auf **Debuggen > Debuggen starten**.
 
-Das Fenster **Terminal** in Visual Studio Code zeigt die Ausgabe aus dem laufenden Microservice, einschließlich einer URL für die Webdienst-Integritätsprüfung: [http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status). Wenn Sie zu dieser Adresse navigieren, sollte der Status "OK: aktiv und gut" lauten.
+Das Fenster **Terminal** in Visual Studio Code zeigt die Ausgabe aus dem laufenden Microservice, einschließlich einer URL für die Webdienst-Integritätsprüfung: [http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status). Wenn Sie zu dieser Adresse navigieren, sollte der Status „OK: aktiv und gut“ lauten.
 
 Lassen Sie den Microservice "Speicheradapter" weiterhin in dieser Instanz von Visual Studio Code ausführen, während Sie die nächsten Schritte erledigen.
 
@@ -417,11 +415,7 @@ In diesem Abschnitt testen Sie die in den vorherigen Abschnitten erstellten Ger�
 
 Öffnen Sie den von GitHub heruntergeladenen Ordner **device-simulation-dotnet-master** in einer neuen Instanz von Visual Studio Code. Klicken Sie auf eine der **Wiederherstellen**-Schaltflächen, um nicht aufgelöste Abhängigkeiten zu beheben.
 
-Öffnen Sie die Datei **.vscode/launch.json**, und weisen Sie Ihre IoT Hub-Verbindungszeichenfolge der Umgebungsvariablen **PCS_IOTHUB_CONNSTRING** zu. Fügen Sie in derselben Datei die Umgebungsvariable **PCS_STORAGEADAPTER_DOCUMENTDB_CONNSTRING** hinzu, und weisen Sie die Verbindungszeichenfolge für Ihre Cosmos DB-Datenbank zu.
-
-Öffnen Sie die Datei **WebService/Properties/launchSettings.json**, und weisen Sie Ihre IoT Hub-Verbindungszeichenfolge der Umgebungsvariablen **PCS_IOTHUB_CONNSTRING** zu.
-
-Öffnen Sie die Datei **WebService/appsettings.ini**, und ändern Sie die Einstellungen wie folgt:
+Öffnen Sie die Datei **WebService/appsettings.ini**, und weisen Sie Ihre Cosmos DB-Verbindungszeichenfolge der Variablen **documentdb_connstring** zu. Ändern Sie außerdem die Einstellungen wie folgt:
 
 ```ini
 device_models_folder = C:\temp\devicemodels\

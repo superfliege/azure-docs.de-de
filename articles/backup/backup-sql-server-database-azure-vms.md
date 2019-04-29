@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 1a596462eb42231a356ddc4fa67b6468b63cd97c
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 5e4bd3647b557b260e65e3fb1ce297892f5d7d78
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58849309"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578823"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern
 
@@ -113,7 +113,7 @@ Ermitteln Sie auf dem virtuellen Computer ausgeführte Datenbanken.
     - Azure Backup erstellt das Dienstkonto **NT Service\AzureWLBackupPluginSvc** auf dem virtuellen Computer.
       - Für alle Sicherungs- und Wiederherstellungsvorgänge wird das Dienstkonto verwendet.
       - **NT Service\AzureWLBackupPluginSvc** erfordert SQL-Systemadministratorberechtigungen. Die Erweiterung **SqlIaaSExtension** ist auf allen in Azure Marketplace erstellten SQL Server-VMs vorinstalliert. Die Erweiterung **AzureBackupWindowsWorkload** verwendet **SQLIaaSExtension**, um erforderliche Berechtigungen automatisch abzurufen.
-    - Wenn Sie den virtuellen Computer nicht im Marketplace erstellt haben, ist die Erweiterung **SqlIaaSExtension** nicht auf dem virtuellen Computer installiert, und der Ermittlungsvorgang schlägt mit der Fehlermeldung **UserErrorSQLNoSysAdminMembership** fehl. Befolgen Sie die Anweisungen in [#fix-sql-sysadmin-permissions], um dieses Problem zu beheben.
+    - Wenn Sie den virtuellen Computer nicht im Marketplace erstellt haben, ist die Erweiterung **SqlIaaSExtension** nicht auf dem virtuellen Computer installiert, und der Ermittlungsvorgang schlägt mit der Fehlermeldung **UserErrorSQLNoSysAdminMembership** fehl. Führen Sie die [Anleitungen](backup-azure-sql-database.md#fix-sql-sysadmin-permissions) aus, um dieses Problem zu beheben.
 
         ![Auswählen der VM und der Datenbank](./media/backup-azure-sql-database/registration-errors.png)
 

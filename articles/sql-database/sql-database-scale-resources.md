@@ -33,15 +33,15 @@ Sie müssen sich nicht mit dem Kauf von Hardware und der Änderung der zugrunde 
 
 ![Skalieren der Datenbankleistung](media/sql-database-scalability/scale-performance.svg)
 
-Azure SQL-Datenbank bietet das [DTU-basierte Erwerbsmodell](sql-database-service-tiers-dtu.md) sowie das [V-Kern-basierte Erwerbsmodell](sql-database-service-tiers-vcore.md).
+Azure SQL-Datenbank bietet das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md) sowie das [vCore-basierte Kaufmodell](sql-database-service-tiers-vcore.md).
 
 - Das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md) bietet zur Unterstützung von einfachen bis hin zu komplexen Datenbankworkloads eine Mischung aus Compute-, Arbeitsspeicher- und E/A-Ressourcen auf drei Dienstebenen: Basic, Standard und Premium. Leistungsstufen auf den einzelnen Ebenen bieten unterschiedliche Ressourcenzusammenstellungen, durch zusätzliche Speicherressourcen ergänzt werden können.
-- Beim [V-Kern-basierten Kaufmodell](sql-database-service-tiers-vcore.md) können Sie die Anzahl virtueller Kerne, die Arbeitsspeichermenge sowie Menge und Geschwindigkeit des Speichers auswählen. Dieses Kaufmodell bietet drei Diensttarife: „Universell“, „Unternehmenskritisch“ und „Hyperscale“ (Vorschau).
+- Beim [vCore-basierten Kaufmodell](sql-database-service-tiers-vcore.md) können Sie die Anzahl virtueller Kerne, die Arbeitsspeichermenge sowie Menge und Geschwindigkeit des Speichers auswählen. Dieses Kaufmodell bietet drei Dienstebenen: „Universell“, „Unternehmenskritisch“ und „Hyperscale“ (Vorschau).
 
-Sie können zu einer geringen monatlichen Gebühr Ihre erste App in einer kleinen Einzeldatenbank in den Diensttarifen „Basic“, „Standard“ oder „Universell“ erstellen und diesen dann jederzeit manuell oder programmgesteuert in die Tarife „Premium“ oder „Unternehmenskritisch“ ändern, um die Anforderungen Ihrer Lösung zu erfüllen. Die Leistungsanpassung ist möglich, ohne dass es für die App oder für Ihre Kunden zu Ausfallzeiten kommt. Dank der dynamischen Skalierbarkeit kann Ihre Datenbank in transparenter Form auf sich schnell ändernde Ressourcenanforderungen reagieren, und Sie zahlen nur für die Ressourcen, die Sie jeweils benötigen.
+Sie können zu einer geringen monatlichen Gebühr Ihre erste App in einer kleinen Einzeldatenbank in den Dienstebenen „Basic“, „Standard“ oder „Universell“ erstellen und diese dann jederzeit manuell oder programmgesteuert in die Dienstebenen „Premium“ oder „Unternehmenskritisch“ ändern, um die Anforderungen Ihrer Lösung zu erfüllen. Die Leistungsanpassung ist möglich, ohne dass es für die App oder für Ihre Kunden zu Ausfallzeiten kommt. Dank der dynamischen Skalierbarkeit kann Ihre Datenbank in transparenter Form auf sich schnell ändernde Ressourcenanforderungen reagieren, und Sie zahlen nur für die Ressourcen, die Sie jeweils benötigen.
 
 > [!IMPORTANT]
-> Der Diensttarif Hyperscale befindet sich derzeit in der öffentlichen Vorschau und ist nur in einigen Azure-Regionen verfügbar. Sie können Hyperscale-Datenbanken nicht auf andere Diensttarife aktualisieren. Für Testzwecke wird empfohlen, eine Kopie der aktuellen Datenbank zu erstellen und die Kopie auf den Diensttarif Hyperscale zu aktualisieren.
+> Die Dienstebene „Hyperscale“ befindet sich derzeit in der öffentlichen Vorschau und ist nur in einigen Azure-Regionen verfügbar. Sie können Hyperscale-Datenbanken nicht auf andere Dienstebenen aktualisieren. Für Testzwecke wird empfohlen, eine Kopie der aktuellen Datenbank zu erstellen und die Kopie auf die Dienstebene „Hyperscale“ zu aktualisieren.
 > [!NOTE]
 > Dynamische Skalierbarkeit ist nicht dasselbe wie automatische Skalierung. Bei der automatischen Skalierung wird ein Dienst automatisch auf der Grundlage von Kriterien skaliert. Die dynamische Skalierbarkeit ermöglicht dagegen eine manuelle Skalierung ohne Ausfallzeiten.
 
@@ -60,7 +60,7 @@ Alle drei Arten von Azure SQL-Datenbank verfügen über Funktionen zum dynamisch
 
 ## <a name="alternative-scale-methods"></a>Alternative Skalierungsmethoden
 
-Die Skalierung von Ressourcen ist die einfachste und effektivste Möglichkeit, die Leistung Ihrer Datenbank zu verbessern, ohne entweder den Datenbank- oder Anwendungscode zu ändern. In einigen Fällen kann es sein, dass auch die höchsten Diensttarife, Computegrößen und Leistungsoptimierungen nicht zu einer erfolgreichen und kostengünstigen Verarbeitung Ihrer Workload führen. In diesen Fällen haben Sie weitere Möglichkeiten zum Skalieren Ihrer Datenbank:
+Die Skalierung von Ressourcen ist die einfachste und effektivste Möglichkeit, die Leistung Ihrer Datenbank zu verbessern, ohne entweder den Datenbank- oder Anwendungscode zu ändern. In einigen Fällen kann es sein, dass auch die höchsten Dienstebenen, Computegrößen und Leistungsoptimierungen nicht zu einer erfolgreichen und kostengünstigen Verarbeitung Ihrer Workload führen. In diesen Fällen haben Sie weitere Möglichkeiten zum Skalieren Ihrer Datenbank:
 
 - Die [horizontale Leseskalierung](sql-database-read-scale-out.md) ist ein verfügbares Feature, bei dem Sie ein schreibgeschütztes Replikat Ihrer Daten erhalten, über das Sie anspruchsvolle schreibgeschützte Abfragen, z.B. Berichte, ausführen können. Mit dem schreibgeschützten Replikat wird Ihre schreibgeschützte Workload verarbeitet, ohne dass sich Auswirkungen auf die Ressourcenverwendung in Ihrer primären Datenbank ergeben.
 - Das [Datenbank-Sharding](sql-database-elastic-scale-introduction.md) umfasst eine Reihe von Verfahren, mit denen Sie Ihre Daten in mehrere Datenbanken aufteilen und unabhängig voneinander skalieren können.

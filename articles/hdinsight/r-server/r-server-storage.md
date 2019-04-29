@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 888cc9d894861c7d7b808500cd60bbed9faa05d7
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: ffde6f3e94cab94fca5a815db28478790a2a4221
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309116"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523391"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure Storage-Lösungen für ML Services in Azure HDInsight
 
@@ -95,7 +95,7 @@ Legen Sie den Namensknotenverweis im R-Code auf das Speicherkonto **storage2** f
 
 Alle Verzeichnis- und Dateiverweise zeigen jetzt auf das Speicherkonto `wasb://container2@storage2.blob.core.windows.net`. Dies ist der **Namensknoten**, den Sie angegeben haben.
 
-Sie müssen das Verzeichnis „/user/RevoShare/<SSH username>“ unter **storage2** wie folgt konfigurieren:
+Sie müssen das Verzeichnis `/user/RevoShare/<SSH username>` unter **storage2** wie folgt konfigurieren:
 
 
     hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user

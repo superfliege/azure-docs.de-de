@@ -55,7 +55,7 @@ Nehmen Sie beispielsweise an, Sie führen einen Pool für elastische Gen5-Datenb
     |Bereich       |Der Umfang der Reservierung virtueller Kerne kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen: <br/><br/>**Einzelabonnement:** Der Rabatt auf die Reservierung virtueller Kerne wird auf SQL-Datenbank-Instanzen in diesem Abonnement angewandt. <br/><br/>**Gemeinsames Abonnement:** Der Rabatt auf die Reservierung virtueller Kerne wird auf SQL-Datenbank-Instanzen angewandt, die in einem beliebigen Abonnement innerhalb des Abrechnungskontexts ausgeführt werden. Für Enterprise-Kunden stellt der freigegebene Bereich die Registrierung dar und umfasst alle Abonnements in der Registrierung. Für Kunden mit nutzungsbasierter Zahlung stellt der freigegebene Bereich alle Abonnements mit nutzungsbasierter Zahlung dar, die vom Kontoadministrator erstellt wurden.|
     |Region      |Die Azure-Region, die durch die Reservierung von SQL-Datenbank-Kapazitäten abgedeckt wird.|
     |Bereitstellungstyp|Der SQL-Ressourcentyp, für den Sie die Reservierung erwerben möchten.|
-    |Leistungsstufe|Der Diensttarif für die SQL-Datenbank-Instanzen.
+    |Leistungsstufe|Die Dienstebene für die SQL-Datenbank-Instanzen.
     |Begriff        |Ein Jahr oder drei Jahre|
     |Menge    |Die Anzahl von Instanzen, die innerhalb der Reservierung von SQL-Datenbank-Kapazitäten erworben werden. Die Menge ist die Anzahl der ausgeführten SQL-Datenbank-Instanzen, auf die der Abrechnungsrabatt angewendet werden kann. Beispiel: Wenn Sie zehn SQL-Datenbank-Instanzen in der Region „USA, Osten“ ausführen, geben Sie als Menge 10 an, um den Vorteil für alle ausgeführten Computer zu maximieren. |
     |||

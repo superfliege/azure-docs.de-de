@@ -1,6 +1,6 @@
 ---
-title: 'Gewusst wie: Verbessern der Leistung von Azure SQL-Datenbankanwendungen mithilfe von Batchverarbeitung'
-description: Dieses Thema belegt, dass die Verwendung der Batchverarbeitung bei Datenbankvorgängen erheblich zur Verbesserung der Geschwindigkeit und Skalierbarkeit Ihrer Azure SQL-Datenbankanwendungen beiträgt. Die Batchverarbeitungstechniken können zwar für jede beliebige SQL Server-Datenbank verwendet werden, der Artikel konzentriert sich jedoch auf Azure.
+title: 'Gewusst wie: Verbessern der Leistung von Azure SQL-Datenbank-Anwendungen mithilfe von Batchverarbeitung'
+description: Dieses Thema belegt, dass die Verwendung der Batchverarbeitung bei Datenbankvorgängen erheblich zur Verbesserung der Geschwindigkeit und Skalierbarkeit Ihrer Azure SQL-Datenbank-Anwendungen beiträgt. Die Batchverarbeitungstechniken können zwar für jede beliebige SQL Server-Datenbank verwendet werden, der Artikel konzentriert sich jedoch auf Azure.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development

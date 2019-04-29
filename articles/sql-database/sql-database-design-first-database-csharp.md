@@ -92,13 +92,13 @@ Der SQL-Datenbank-Dienst erstellt eine IP-Firewall auf Serverebene. Diese Firewa
 
    ![Servername](./media/sql-database-design-first-database/server-name.png)
 
-3. Klicken Sie auf der Symbolleiste auf **Serverfirewall festlegen**. Die Seite **Firewalleinstellungen** für den SQL-Datenbankserver wird geöffnet.
+3. Klicken Sie auf der Symbolleiste auf **Serverfirewall festlegen**. Die Seite **Firewalleinstellungen** für den SQL-Datenbank-Server wird geöffnet.
 
    ![IP-Firewallregel auf Serverebene](./media/sql-database-design-first-database/server-firewall-rule.png)
 
 4. Klicken Sie auf der Symbolleiste auf **Client-IP-Adresse hinzufügen**, um Ihre aktuelle IP-Adresse einer neuen IP-Firewallregel hinzuzufügen. Eine IP-Firewallregel kann Port 1433 für eine einzelne IP-Adresse oder einen Bereich von IP-Adressen öffnen.
 
-5. Klicken Sie auf **Speichern**. Für Ihre aktuelle IP-Adresse wird eine IP-Firewallregel auf Serverebene erstellt, und auf dem SQL-Datenbankserver wird der Port 1433 geöffnet.
+5. Klicken Sie auf **Speichern**. Für Ihre aktuelle IP-Adresse wird eine IP-Firewallregel auf Serverebene erstellt, und auf dem SQL-Datenbank-Server wird der Port 1433 geöffnet.
 
 6. Klicken Sie auf **OK**, und schließen Sie anschließend die Seite **Firewalleinstellungen**.
 

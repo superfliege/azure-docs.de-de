@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: e21058d47f554ca4a057ab90433895800fb17dd9
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 85a1dad9feb15550cf27cf032802af5055fdf155
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886722"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525635"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Änderungsfeed in Azure Cosmos DB – Übersicht
 
@@ -58,7 +58,7 @@ Wenn eine TTL-Eigenschaft (Time to Live, Gültigkeitsdauer) für ein Element auf
 
 ### <a name="change-feed-and-etag-lsn-or-ts"></a>Änderungsfeed und „_etag“, „_lsn“ oder „_ts“
 
-Das _etag-Format ist intern, und Sie sollten nicht darauf aufbauen, da es jederzeit geändert werden kann. „_ts“ ist ein Änderungs- oder Erstellungszeitstempel. Sie können „_ts“ für chronologische Vergleiche verwenden. „_lsn“ ist eine Batch-ID, die nur für den Änderungsfeed hinzugefügt wird, sie stellt die Transaktions-ID dar. Viele Elemente können die gleiche „_lsn“ aufweisen. „ETag“ in der FeedResponse unterscheidet sich von dem „_etag“, das für das Element angezeigt wird. „_etag“ ist ein interner Bezeichner und wird zur Gleichzeitigkeitssteuerung verwendet, er gibt die Version des Elements an. „ETag“ wird dagegen für die Sequenzierung des Feeds verwendet.
+Das _etag-Format ist intern, und Sie sollten nicht darauf aufbauen, da es jederzeit geändert werden kann. „_ts“ ist ein Änderungs- oder Erstellungszeitstempel. Sie können „_ts“ für chronologische Vergleiche verwenden. „_lsn“ ist eine Batch-ID, die nur für den Änderungsfeed hinzugefügt wird. Sie stellt die Transaktions-ID dar. Viele Elemente können die gleiche „_lsn“ aufweisen. „ETag“ in der FeedResponse unterscheidet sich von dem „_etag“, das für das Element angezeigt wird. „_etag“ ist ein interner Bezeichner und wird zur Gleichzeitigkeitssteuerung verwendet, er gibt die Version des Elements an. „ETag“ wird dagegen für die Sequenzierung des Feeds verwendet.
 
 ## <a name="change-feed-use-cases-and-scenarios"></a>Anwendungsfälle und Szenarien für den Änderungsfeed
 
@@ -84,7 +84,7 @@ Mit einem Änderungsfeed können Sie beispielsweise die folgenden Aufgaben effiz
 
 Im Folgenden sind einige Szenarien aufgeführt, die Sie mit einem Änderungsfeed ganz einfach implementieren können:
 
-* In Ihren [serverlosen](https://azure.microsoft.com/en-us/solutions/serverless/) Web- oder mobilen Apps können Sie Ereignisse wie z.B. alle Änderungen am Profil, an den Voreinstellungen oder am Standort des Kunden nachverfolgen, um bestimmte Aktionen auszulösen, z.B. das Senden von Pushbenachrichtigungen an die Geräte des Kunden mit [Azure Functions](change-feed-functions.md).
+* In Ihren [serverlosen](https://azure.microsoft.com/solutions/serverless/) Web- oder mobilen Apps können Sie Ereignisse wie z.B. alle Änderungen am Profil, an den Voreinstellungen oder am Standort des Kunden nachverfolgen, um bestimmte Aktionen auszulösen, z.B. das Senden von Pushbenachrichtigungen an die Geräte des Kunden mit [Azure Functions](change-feed-functions.md).
 
 * Wenn Sie Azure Cosmos DB zum Erstellen eines Spiels verwenden, können Sie den Änderungsfeed beispielsweise verwenden, um in Echtzeit Bestenlisten anhand der Ergebnisse von abgeschlossenen Spiele zu implementieren.
 

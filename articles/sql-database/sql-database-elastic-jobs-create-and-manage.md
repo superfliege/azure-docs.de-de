@@ -1,5 +1,5 @@
 ---
-title: Verwalten von Gruppen mit Azure SQL-Datenbanken | Microsoft-Dokumentation
+title: Verwalten von Gruppen mit Azure SQL-Datenbanken | Microsoft-Dokumentation
 description: Führen Sie die Schritte zur Erstellung und Verwaltung eines elastischen Auftrags aus.
 services: sql-database
 ms.service: sql-database

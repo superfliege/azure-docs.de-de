@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: article
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 743b078eac783365ae83e540a7dc05aba0ae8754
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 646119f223067fac5ee36574fb10273819251cce
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517594"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547055"
 ---
 # <a name="how-to-investigate-risky-users-and-sign-ins"></a>Anleitung: Überprüfen riskanter Benutzer und Anmeldungen 
 
@@ -151,7 +151,7 @@ Für den Filter **Zustand** können Sie eine der folgenden Optionen auswählen:
 
 ### <a name="download-risky-users-data"></a>Herunterladen von Daten zu riskanten Benutzern
 
-Sie können die Daten zu riskanten Benutzern herunterladen, wenn Sie sie außerhalb des Azure-Portals verwenden möchten. Wenn Sie auf „Herunterladen“ klicken, wird eine CSV-Datei mit den letzten 5.000 Datensätzen erstellt. 
+Sie können die Daten zu riskanten Benutzern herunterladen, wenn Sie außerhalb des Azure-Portals damit arbeiten möchten. Wenn Sie auf „Herunterladen“ klicken, wird eine CSV-Datei mit den neuesten 2.500 Datensätzen erstellt. 
 
 ![Bericht „Riskante Benutzer“](./media/howto-investigate-risky-users-signins/07.png)
 
@@ -320,7 +320,7 @@ Mögliche Werte:
 
 ### <a name="download-risky-sign-ins-data"></a>Herunterladen von Daten zu riskanten Anmeldungen
 
-Sie können die Daten zu riskanten Anmeldungen herunterladen, wenn Sie sie außerhalb des Azure-Portals verwenden möchten. Wenn Sie auf „Herunterladen“ klicken, wird eine CSV-Datei mit den letzten 5.000 Datensätzen erstellt. 
+Sie können die Daten zu riskanten Anmeldungen herunterladen, wenn Sie außerhalb des Azure-Portals damit arbeiten möchten. Wenn Sie auf „Herunterladen“ klicken, wird eine CSV-Datei mit den neuesten 2.500 Datensätzen erstellt. 
 
 ![Bericht „Riskante Benutzer“](./media/howto-investigate-risky-users-signins/15.png)
 

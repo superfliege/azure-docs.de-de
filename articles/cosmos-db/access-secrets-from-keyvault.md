@@ -92,4 +92,4 @@ Auf ähnliche Weise können Sie einen Benutzer für den Zugriff auf den Key Vaul
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zum Konfigurieren einer Firewall für Azure Cosmos DB finden Sie im Artikel [Firewallunterstützung](firewall-support.md).
-* Weitere Informationen zum Konfigurieren eines Dienstendpunkts für ein virtuelles Netzwerk, finden Sie im Artikel [Sicherer Zugriff auf ein Azure Cosmos DB-Konto durch Verwenden eines Azure Virtual Network-Dienstendpunkts](vnet-service-endpoint.md).
+* Weitere Informationen zum Konfigurieren eines VNET-Dienstendpunkts finden Sie im Artikel [Sicherer Zugriff auf ein Azure Cosmos DB-Konto durch Verwenden eines Azure Virtual Network-Dienstendpunkts](vnet-service-endpoint.md).

@@ -29,14 +29,14 @@ Dieser Artikel bietet ein PowerShell-Skript, das veranschaulicht, wie Sie einen 
 
 Die im Codebeispiel verwendeten Cmdlets lauten wie folgt:
 
-- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): Erstellt einen neuen DNS-Alias im Dienstsystem von Azure SQL-Datenbank. Der Alias verweist auf Azure SQL-Datenbankserver 1.
+- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): Erstellt einen neuen DNS-Alias im Dienstsystem von Azure SQL-Datenbank. Der Alias verweist auf Azure SQL-Datenbank-Server 1.
 - [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): Ruft alle DNS-Aliase auf, die Server 1 von SQL-Datenbank zugewiesen sind, und listet diese auf.
 - [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): Ändert den Servernamen, für dessen Referenzierung der Alias konfiguriert ist, aus Server 1 in SQL-Datenbankserver 2.
 - [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): Entfernt den DNS-Alias aus SQL-Datenbankserver 2 anhand des Aliasnamens.
 
 ## <a name="dns-alias-in-connection-string"></a>DNS-Alias in der Verbindungszeichenfolge
 
-Um eine Verbindung mit einem bestimmten Azure SQL-Datenbankserver herzustellen, kann ein Client wie SQL Server Management Studio (SSMS) anstelle des echten Servernamens den DNS-Aliasnamen angeben. In der folgenden Beispielserverzeichenfolge ersetzt der Alias *any-unique-alias-name* den ersten durch Punkte getrennten Knoten in der Serverzeichenfolge mit vier Knoten:
+Um eine Verbindung mit einem bestimmten Azure SQL-Datenbank-Server herzustellen, kann ein Client wie SQL Server Management Studio (SSMS) anstelle des echten Servernamens den DNS-Aliasnamen angeben. In der folgenden Beispielserverzeichenfolge ersetzt der Alias *any-unique-alias-name* den ersten durch Punkte getrennten Knoten in der Serverzeichenfolge mit vier Knoten:
 
 - Beispielserverzeichenfolge: `any-unique-alias-name.database.windows.net`.
 
@@ -48,7 +48,7 @@ Wenn Sie das in diesem Artikel angegebene PowerShell-Demoskript ausführen möch
 - Azure PowerShell-Modul mit dem Cmdlet **New-AzSqlServerDNSAlias**.
   - Informationen zum Installieren oder Durchführen eines Upgrades finden Sie unter [Installieren und Konfigurieren von Azure PowerShell][install-Az-ps-84p].
   - Führen Sie `Get-Module -ListAvailable Az;` in der Datei „powershell\_ise.exe“ aus, um die entsprechende Version zu ermitteln.
-- Zwei Azure SQL-Datenbankserver
+- Zwei Azure SQL-Datenbank-Server
 
 ## <a name="code-example"></a>Codebeispiel
 

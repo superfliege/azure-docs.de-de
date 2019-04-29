@@ -194,7 +194,7 @@ Ja. Ausführliche Informationen finden Sie unter [Integration virtueller Netzwer
 
 ### <a name="which-azure-paas-resources-can-i-restrict-access-to-from-a-vnet"></a>Für welche Azure-PaaS-Ressourcen kann ich den Zugriff über ein VNET beschränken?
 
-Über manche Azure-PaaS-Dienste (etwa Azure Storage und Azure SQL-Datenbank) bereitgestellte Ressourcen können durch die Verwendung von Dienstendpunkten im virtuellen Netzwerk den Netzwerkzugriff ausschließlich auf Ressourcen in einem VNET beschränken. Weitere Informationen finden Sie unter [Dienstendpunkte im virtuellen Netzwerk](virtual-network-service-endpoints-overview.md).
+Über manche Azure-PaaS-Dienste (etwa Azure Storage und Azure SQL-Datenbank) bereitgestellte Ressourcen können durch die Verwendung von VNET-Dienstendpunkten den Netzwerkzugriff ausschließlich auf Ressourcen in einem VNET beschränken. Weitere Informationen finden Sie in der Übersicht über [VNET-Dienstendpunkte](virtual-network-service-endpoints-overview.md).
 
 ### <a name="can-i-move-my-services-in-and-out-of-vnets"></a>Können Dienste in und aus VNets verschoben werden?
 Nein. Sie können Dienste nicht in oder aus VNets verschieben. Wenn Sie eine Ressource in ein anderes VNET verschieben möchten, müssen Sie die Ressource löschen und neu bereitstellen.
@@ -304,7 +304,7 @@ Der TAP für virtuelle Netzwerke befindet sich in der Vorschau. Während der Vor
 
 Sie haben die Möglichkeit, eine TAP-Konfiguration an einer Netzwerkschnittstelle hinzuzufügen, die einem virtuellen Computer angefügt ist, für den beschleunigter Netzwerkbetrieb aktiviert ist. Die Leistung und Latenz auf dem virtuellen Computer werden durch das Hinzufügen einer TAP-Konfiguration jedoch beeinträchtigt, da die Auslagerung für Spiegelungsdatenverkehr vom beschleunigten Netzwerkbetrieb in Azure derzeit nicht unterstützt wird.
 
-## <a name="virtual-network-service-endpoints"></a>Dienstendpunkte im virtuellen Netzwerk
+## <a name="virtual-network-service-endpoints"></a>VNET-Dienstendpunkte
 
 ### <a name="what-is-the-right-sequence-of-operations-to-set-up-service-endpoints-to-an-azure-service"></a>Was ist die richtige Reihenfolge der Vorgänge zum Einrichten von Endpunkten für einen Azure-Dienst?
 Das Absichern einer Azure-Dienstressource über Dienstendpunkte erfolgt in zwei Schritten:
@@ -367,7 +367,7 @@ Das Löschen von VNETs und von Subnetzen sind unabhängige Vorgänge, die auch d
 Das Löschen eines Azure-Dienstkontos ist ein unabhängiger Vorgang, der auch dann unterstützt wird, wenn der Dienstendpunkt auf der Netzwerkseite aktiviert und VNET-ACLs auf der Azure-Dienstseite eingerichtet sind. 
 
 ### <a name="what-happens-to-the-source-ip-address-of-a-resource-like-a-vm-in-a-subnet-that-has-vnet-service-endpoint-enabled"></a>Was passiert mit der IP-Quelladresse einer Ressource (z.B. eines virtuellen Computers in einem Subnetz), für die ein VNET-Dienstendpunkt aktiviert ist?
-Wenn Dienstendpunkte für virtuelle Netzwerke aktiviert sind, verwenden die IP-Quelladressen der Ressourcen im Subnetz des virtuellen Netzwerks keine öffentlichen IPv4-Adressen mehr, sondern private IP-Adressen des virtuellen Azure-Netzwerks, um Datenverkehr an den Azure-Dienst zu leiten. Beachten Sie, dass dies zu Fehlern bei bestimmten IP-Firewalls, die zuvor in den Azure-Diensten für öffentliche IPv4-Adressen festgelegt wurden, führen kann. 
+Wenn VNET-Dienstendpunkte aktiviert sind, verwenden die IP-Quelladressen der Ressourcen im Subnetz des virtuellen Netzwerks keine öffentlichen IPv4-Adressen mehr, sondern private IP-Adressen des virtuellen Azure-Netzwerks, um Datenverkehr an den Azure-Dienst zu leiten. Beachten Sie, dass dies zu Fehlern bei bestimmten IP-Firewalls, die zuvor in den Azure-Diensten für öffentliche IPv4-Adressen festgelegt wurden, führen kann. 
 
 ### <a name="does-service-endpoint-route-always-take-precedence"></a>Haben Dienstendpunkt-Routen immer Vorrang?
 Dienstendpunkte fügen eine Systemroute hinzu, die Vorrang vor BGP-Routen hat und eine optimale Weiterleitung für den Dienstendpunkt-Datenverkehr ermöglicht. Dienstendpunkte leiten den Datenverkehr der Dienste immer direkt aus Ihrem virtuellen Netzwerk an den Dienst im Microsoft Azure-Backbonenetzwerk weiter. Weitere Informationen zum Auswählen einer Route durch Azure finden Sie unter [Datenverkehrsrouting für virtuelle Azure-Netzwerke](virtual-networks-udr-overview.md).

@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 6c01232c9bdb685fbc54e5ebe1e1f9fa83073dc2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6978b83e66f58e468d9f98394904861c8a4d8bd0
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58107796"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618140"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Beitreten einer Azure-SSIS-Integrationslaufzeit zu einem virtuellen Netzwerk
 Verknüpfen Sie in folgenden Szenarien Ihre Azure SSIS-Integration Runtime (IR) mit einem virtuellen Azure-Netzwerk: 
@@ -135,11 +135,11 @@ Ein Beispiel finden Sie in [diesem PowerShell-Skript](https://gallery.technet.mi
 
 ### <a name="resource-group"></a> Anforderungen an die Ressourcengruppe
 -   Die Azure SSIS-IR muss bestimmte Netzwerkressourcen unter der gleichen Ressourcengruppe erstellen wie das virtuelle Netzwerk. Dazu gehören folgende Ressourcen:
-    -   Ein Azure-Lastenausgleich mit dem Namen *<Guid>-azurebatch-cloudserviceloadbalancer*.
-    -   Eine öffentliche Azure-IP-Adresse mit dem Namen *<Guid>-azurebatch-cloudservicepublicip*.
-    -   Eine Netzwerksicherheitsgruppe mit dem Namen *<Guid>-azurebatch-cloudservicenetworksecuritygroup*. 
+    -   Ein Azure-Lastenausgleich mit dem Namen *\<GUID>-azurebatch-cloudserviceloadbalancer*.
+    -   Eine öffentliche Azure-IP-Adresse mit dem Namen *\<GUID>-azurebatch-cloudservicepublicip*.
+    -   Eine Netzwerksicherheitsgruppe mit dem Namen *\<GUID>-azurebatch-cloudservicenetworksecuritygroup*. 
 
--   Stellen Sie sicher, dass für die Ressourcengruppe oder das Abonnement, zu der bzw. dem das virtuelle Netzwerk gehört, keine Ressourcensperre besteht. Wenn Sie entweder eine Schreibschutzsperre oder eine Löschsperre konfigurieren, kann beim Starten und Beenden der Integration Runtime ein Fehler auftreten oder der Prozess hängen bleiben. 
+-   Stellen Sie sicher, dass für die Ressourcengruppe oder das Abonnement, zu der bzw. dem das virtuelle Netzwerk gehört, keine Ressourcensperre besteht. Wenn Sie entweder eine Schreibschutzsperre oder eine Löschsperre konfigurieren, kann beim Starten und Beenden der Integration Runtime ein Fehler auftreten oder der Prozess nicht mehr reagieren. 
 
 -   Stellen Sie sicher, dass Sie nicht über eine Azure-Richtlinie verfügen, die verhindert, dass die folgenden Ressourcen unter der Ressourcengruppe oder dem Abonnement erstellt werden, zu der bzw. dem das virtuelle Netzwerk gehört: 
     -   Microsoft.Network/LoadBalancers 

@@ -97,12 +97,12 @@ Die für diesen Beispielaufruf angegebenen Parameter können nach Ihren Wünsche
 
 <tr>
     <td>SqlServerAdministratorUserName</td>
-    <td>Gibt den Namen des Administratorbenutzers für den neu erstellten Azure SQL-Datenbankserver an. Wenn die Angabe nicht erfolgt, wird ein PowerShell-Anmeldeinformationsfenster geöffnet und fordert zur Eingabe der Anmeldeinformationen auf.</td>
+    <td>Gibt den Namen des Administratorbenutzers für den neu erstellten Azure SQL-Datenbank-Server an. Wenn die Angabe nicht erfolgt, wird ein PowerShell-Anmeldeinformationsfenster geöffnet und fordert zur Eingabe der Anmeldeinformationen auf.</td>
 </tr>
 
 <tr>
     <td>SqlServerAdministratorPassword</td>
-    <td>Gibt das Administratorkennwort für den neu erstellten Azure SQL-Datenbankserver an. Wenn keine Angabe erfolgt, wird ein PowerShell-Anmeldeinformationsfenster geöffnet und fordert zur Eingabe der Anmeldeinformationen auf.</td>
+    <td>Gibt das Administratorkennwort für den neu erstellten Azure SQL-Datenbank-Server an. Wenn keine Angabe erfolgt, wird ein PowerShell-Anmeldeinformationsfenster geöffnet und fordert zur Eingabe der Anmeldeinformationen auf.</td>
 </tr>
 </table>
 

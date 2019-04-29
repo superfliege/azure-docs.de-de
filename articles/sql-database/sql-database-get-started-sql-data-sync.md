@@ -81,7 +81,7 @@ Im Abschnitt **Mitgliedsdatenbank** können Sie eine Azure SQL-Datenbank optiona
   | ----------------------------- | ------------------------------------------------- |
   | **Name des Synchronisierungsmitglieds** | Geben Sie einen Namen für das neue Synchronisierungsmitglied an. Dieser Name unterscheidet sich vom Namen der Datenbank. |
   | **Abonnement** | Wählen Sie das verknüpfte Azure-Abonnement für die Abrechnung aus. |
-  | **Azure SQL Server** | Wählen Sie den vorhandenen SQL-Datenbankserver aus. |
+  | **Azure SQL Server** | Wählen Sie den vorhandenen SQL-Datenbank-Server aus. |
   | **Azure SQL-Datenbank** | Wählen Sie die vorhandene SQL-Datenbank aus. |
   | **Synchronisierungsrichtungen** | Wählen Sie **Bidirektionale Synchronisierung**, **Zum Hub** oder **Vom Hub** aus. |
   | **Benutzername** und **Kennwort** | Geben Sie die vorhandenen Anmeldeinformationen für den SQL-Datenbank-Server ein, auf dem sich die Mitgliedsdatenbank befindet. Geben Sie in diesem Abschnitt *keine* neuen Anmeldeinformationen ein. |
@@ -120,7 +120,7 @@ Im Abschnitt **Mitgliedsdatenbank** können Sie optional einen lokalen SQL-Serve
 
     1. Klicken Sie in der Synchronisierungs-Agent-Anwendung auf **Submit Agent Key** (Agent-Schlüssel übermitteln). Das Dialogfeld **Sync Metadata Database Configuration** (Konfiguration der Datenbank für Synchronisierungsmetadaten) wird geöffnet.
 
-    1. Fügen Sie im Dialogfeld **Konfiguration der Datenbank für Synchronisierungsmetadaten** den Agent-Schlüssel ein, den Sie aus dem Azure-Portal kopiert haben. Geben Sie auch die vorhandenen Anmeldeinformationen für den Azure SQL-Datenbankserver ein, auf dem sich die Metadatendatenbank befindet. (Wenn Sie eine Datenbank für Metadaten erstellt haben, befindet sich diese Datenbank auf dem gleichen Server wie die Hub-Datenbank.) Klicken Sie auf **OK**, und warten Sie, bis die Konfiguration abgeschlossen ist.
+    1. Fügen Sie im Dialogfeld **Konfiguration der Datenbank für Synchronisierungsmetadaten** den Agent-Schlüssel ein, den Sie aus dem Azure-Portal kopiert haben. Geben Sie auch die vorhandenen Anmeldeinformationen für den Azure SQL-Datenbank-Server ein, auf dem sich die Metadatendatenbank befindet. (Wenn Sie eine Datenbank für Metadaten erstellt haben, befindet sich diese Datenbank auf dem gleichen Server wie die Hub-Datenbank.) Klicken Sie auf **OK**, und warten Sie, bis die Konfiguration abgeschlossen ist.
 
         ![Eingabe des Agent-Schlüssels und der Anmeldeinformationen des Servers](media/sql-database-get-started-sql-data-sync/datasync-preview-agent-enterkey.png)
 

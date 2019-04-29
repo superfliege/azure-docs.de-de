@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center und Azure SQL-Datenbankdienst | Microsoft Docs
+title: Azure Security Center und Azure SQL-Datenbank-Dienst | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe von Security Center Ihre Datenbanken in Azure SQL-Datenbank schützen können.
 services: sql-database
 documentationcenter: na
@@ -21,7 +21,7 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 02/12/2019
 ms.locfileid: "56114086"
 ---
-# <a name="azure-security-center-and-azure-sql-database-service"></a>Azure Security Center und Azure SQL-Datenbankdienst
+# <a name="azure-security-center-and-azure-sql-database-service"></a>Azure Security Center und Azure SQL-Datenbank-Dienst
 Mit [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/) können Sie Bedrohungen verhindern, erkennen und bekämpfen. Es bietet integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements, hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum an Sicherheitslösungen verwendet werden.
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Security Center Ihre Datenbanken in Azure SQL-Datenbank schützen können.
@@ -69,7 +69,7 @@ Nach Einstellung einer Sicherheitsrichtlinie analysiert Security Center den Sich
 
 | Empfehlung | BESCHREIBUNG |
 | --- | --- |
-| [Aktivieren der Überwachung und Bedrohungserkennung auf SQL-Servern](security-center-enable-auditing-on-sql-servers.md) |Empfiehlt die Überwachung und Bedrohungserkennung für SQL-Datenbankserver zu aktivieren. (Nur SQL-Datenbank-Dienst. Bezieht sich nicht auf Microsoft SQL Server auf virtuellen Computern.) |
+| [Aktivieren der Überwachung und Bedrohungserkennung auf SQL-Servern](security-center-enable-auditing-on-sql-servers.md) |Empfiehlt die Überwachung und Bedrohungserkennung für SQL-Datenbank-Server zu aktivieren. (Nur SQL-Datenbank-Dienst. Bezieht sich nicht auf Microsoft SQL Server auf virtuellen Computern.) |
 | [Aktivieren der Überwachung und Bedrohungserkennung auf SQL-Datenbanken](security-center-enable-auditing-on-sql-databases.md) |Empfiehlt, die Überwachung und Bedrohungserkennung für SQL-Datenbank Datenbanken zu aktivieren. (Nur SQL-Datenbank-Dienst. Bezieht sich nicht auf Microsoft SQL Server auf virtuellen Computern.) |
 | [Aktivieren von Transparent Data Encryption](security-center-enable-transparent-data-encryption.md) |Empfiehlt die Verschlüsselung für SQL-Datenbanken zu aktivieren. (Nur SQL-Datenbank-Dienst.) |
 

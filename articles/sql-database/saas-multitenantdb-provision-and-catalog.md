@@ -61,7 +61,7 @@ Die Verwendung eines Katalogs ermöglicht es, den Namen oder Speicherort einer M
 #### <a name="tenant-metadata-beyond-location"></a>Mandantenmetadaten nach Speicherort
 
 Darüber hinaus kann der Katalog angeben, ob ein Mandant offline ist (beispielsweise zur Wartung). Zudem kann der Katalog erweitert werden, um zusätzliche Mandanten- oder Datenbankmetadaten wie etwa folgende Elemente zu speichern:
-- Den Diensttarif oder die Edition einer Datenbank
+- Die Dienstebene oder die Edition einer Datenbank
 - Die Version des Datenbankschemas
 - Den Namen des Mandanten und seiner SLA (Vereinbarung zum Servicelevel)
 - Informationen zu Anwendungsverwaltung, Kundensupport oder DevOps-Prozessen  
@@ -86,7 +86,7 @@ Wenn Sie einen neuen Mandanten in einer vorhandenen gemeinsam genutzten Datenban
 - Enthält die Datenbank Tabellen mit den erforderlichen Verweisdaten für den neuen Mandanten, oder können die Daten hinzugefügt werden?
 - Weist sie die entsprechende Version des Basisschemas für den neuen Mandanten auf?
 - Befindet sie sich am entsprechenden geografischen Standort in der Nähe des neuen Mandanten?
-- Weist sie den richtigen Diensttarif für den neuen Mandanten auf?
+- Weist sie die richtige Dienstebene für den neuen Mandanten auf?
 
 Wenn der neue Mandant in der eigenen Datenbank isoliert werden soll, können Sie eine entsprechende Datenbank gemäß den Spezifikation des Mandanten erstellen.
 

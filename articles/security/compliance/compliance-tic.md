@@ -184,9 +184,9 @@ Durch das Einfügen in ein virtuelles Netzwerk können Kunden dedizierte Instanz
 
 ![Übersicht über das Einfügen in virtuelle Netzwerke](media/tic-diagram-f.png)
 
-#### <a name="option-b-use-virtual-network-service-endpoints-service-tunnel"></a>Option B: Verwenden von Dienstendpunkten des virtuellen Netzwerks (Diensttunnel)
+#### <a name="option-b-use-virtual-network-service-endpoints-service-tunnel"></a>Option B: Verwenden von VNET-Dienstendpunkten (Diensttunnel)
 
-Eine zunehmende Anzahl von mehrinstanzfähigen Azure-Diensten bietet „Dienstendpunkte“. Dienstendpunkte sind eine alternative Methode für die Integration in virtuelle Azure-Netzwerke. Mit Dienstendpunkten von virtuellen Netzwerken wird der IP-Adressraum Ihres virtuellen Netzwerks und die Identität Ihres virtuellen Netzwerks über eine direkte Verbindung auf den Dienst erweitert. Der Datenverkehr vom virtuellen Netzwerk zum Azure-Dienst bleibt dabei immer innerhalb des Azure-Backbonenetzwerks. 
+Eine zunehmende Anzahl von mehrinstanzfähigen Azure-Diensten bietet „Dienstendpunkte“. Dienstendpunkte sind eine alternative Methode für die Integration in virtuelle Azure-Netzwerke. Mit VNET-Dienstendpunkten wird der IP-Adressraum Ihres virtuellen Netzwerks und die Identität Ihres virtuellen Netzwerks über eine direkte Verbindung auf den Dienst erweitert. Der Datenverkehr vom virtuellen Netzwerk zum Azure-Dienst bleibt dabei immer innerhalb des Azure-Backbonenetzwerks. 
 
 Nachdem Sie einen Dienstendpunkt für einen Dienst aktiviert haben, verwenden Sie Richtlinien, die vom Dienst verfügbar gemacht werden, um Verbindungen für den Dienst auf dieses virtuelle Netzwerk zu beschränken. Zugriffsüberprüfungen werden vom Azure-Dienst auf der Plattform erzwungen. Zugriff auf eine gesperrte Ressource wird nur gewährt, wenn die Anforderung aus dem zulässigen virtuellen Netzwerk oder Subnetz oder von den beiden IP-Adressen stammt, die verwendet werden, um den lokalen Datenverkehr zu identifizieren, falls Sie ExpressRoute verwenden. Nutzen Sie diese Methode, um effektiv zu verhindern, dass eingehender/ausgehender Datenverkehr den PaaS-Dienst direkt verlässt.
 

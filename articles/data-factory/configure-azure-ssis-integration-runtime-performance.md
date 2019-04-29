@@ -57,7 +57,7 @@ $SSISDBPricingTier = "<pricing tier of your Azure SQL server. Examples: Basic, S
 ```
 
 ## <a name="azuressislocation"></a>AzureSSISLocation
-**AzureSSISLocation** ist der Ort, an dem sich der Integration Runtime-Workerknoten befindet. Der Workerknoten gewährleistet eine konstante Verbindung mit der SSIS-Katalogdatenbank (SSIS Catalog Database, SSISDB) in einer Azure SQL-Datenbank. Legen Sie **AzureSSISLocation** auf den Ort fest, an dem sich auch der SQL-Datenbankserver befindet, der die SSISDB hostet, um die bestmögliche Integration Runtime-Effizienz zu erzielen.
+**AzureSSISLocation** ist der Ort, an dem sich der Integration Runtime-Workerknoten befindet. Der Workerknoten gewährleistet eine konstante Verbindung mit der SSIS-Katalogdatenbank (SSIS Catalog Database, SSISDB) in einer Azure SQL-Datenbank. Legen Sie **AzureSSISLocation** auf den Ort fest, an dem sich auch der SQL-Datenbank-Server befindet, der die SSISDB hostet, um die bestmögliche Integration Runtime-Effizienz zu erzielen.
 
 ## <a name="azuressisnodesize"></a>AzureSSISNodeSize
 Data Factory, das auch die Azure SSIS-IR enthält, unterstützt folgende Optionen:

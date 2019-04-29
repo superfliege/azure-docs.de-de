@@ -220,7 +220,7 @@ In diesem Schritt verknüpfen Sie die Azure SQL-Datenbank mit Ihrer Data Factory
     ProvisioningState : Succeeded
     ```
 
-   Vergewissern Sie sich, dass die Einstellung **Zugriff auf Azure-Dienste erlauben** für Ihren SQL-Datenbankserver aktiviert ist. Führen Sie zum Prüfen und Aktivieren die folgenden Schritte aus:
+   Vergewissern Sie sich, dass die Einstellung **Zugriff auf Azure-Dienste erlauben** für Ihren SQL-Datenbank-Server aktiviert ist. Führen Sie zum Prüfen und Aktivieren die folgenden Schritte aus:
 
     1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)
     1. Klicken Sie links auf **Weitere Dienste >** und in der Kategorie **DATENBANKEN** dann auf **SQL Server**.
@@ -435,7 +435,7 @@ Derzeit steuert das Ausgabedataset den Zeitplan. In diesem Tutorial wird ein Aus
      
      Im obigen Beispiel ergeben sich 24 Datenslices, da jede Stunde ein Datenslice erstellt wird.
 
-     Beschreibungen der JSON-Eigenschaften in einer Pipelinedefinition finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Beschreibungen der JSON-Eigenschaften in der Definition einer Kopieraktivität finden Sie unter [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md). Beschreibungen der JSON-Eigenschaften, die von BlobSource unterstützt werden, finden Sie im Artikel [Azure Blob-Connector](data-factory-azure-blob-connector.md). Beschreibungen der JSON-Eigenschaften, die von SqlSink unterstützt werden, finden Sie im Artikel [Azure SQL-Datenbankconnector](data-factory-azure-sql-connector.md).
+     Beschreibungen der JSON-Eigenschaften in einer Pipelinedefinition finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Beschreibungen der JSON-Eigenschaften in der Definition einer Kopieraktivität finden Sie unter [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md). Beschreibungen der JSON-Eigenschaften, die von BlobSource unterstützt werden, finden Sie im Artikel [Azure Blob-Connector](data-factory-azure-blob-connector.md). Beschreibungen der JSON-Eigenschaften, die von SqlSink unterstützt werden, finden Sie im Artikel [Azure SQL-Datenbank-Connector](data-factory-azure-sql-connector.md).
 1. Führen Sie den folgenden Befehl aus, um die Data Factory-Tabelle zu erstellen:
 
     ```powershell   

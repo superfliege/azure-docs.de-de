@@ -61,4 +61,4 @@ Analytics | [Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-netwo
 
 ## <a name="service-endpoints-for-azure-services"></a>Dienstendpunkte für Azure-Dienste
 
-Einige Azure-Dienste können nicht in virtuellen Netzwerken bereitgestellt werden. Sie können ggf. den Zugriff auf einige der Dienstressourcen auf bestimmte Subnetze des virtuellen Netzwerks beschränken, indem Sie einen virtuellen Netzwerkdienstendpunkt aktivieren.  Erfahren Sie mehr über [Dienstendpunkte von virtuellen Netzwerken](virtual-network-service-endpoints-overview.md) und die Dienste, für die Dienstendpunkte aktiviert werden können.
+Einige Azure-Dienste können nicht in virtuellen Netzwerken bereitgestellt werden. Sie können ggf. den Zugriff auf einige der Dienstressourcen auf bestimmte Subnetze des virtuellen Netzwerks beschränken, indem Sie einen VNET-Dienstendpunkt aktivieren.  Erfahren Sie mehr über [VNET-Dienstendpunkte](virtual-network-service-endpoints-overview.md) und die Dienste, für die Endpunkte aktiviert werden können.

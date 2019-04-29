@@ -54,7 +54,7 @@ Weitere Informationen finden Sie unter [Bestimmen, ob eine Tabelle oder eine ges
 ## <a name="step-3-create-a-comparable-test-database"></a>Schritt 3: Erstellen einer vergleichbaren Testdatenbank
 Nehmen Sie an, der Bericht zeigt, dass die Datenbank über eine Tabelle verfügt, für die eine Umwandlung in eine speicheroptimierte Tabelle von Vorteil wäre. Sie sollten diese Angabe zunächst zur Bestätigung testen.
 
-Sie benötigen eine Testkopie der Produktionsdatenbank. Die Testdatenbank muss sich auf der gleichen Seviceebene befinden wie die Produktionsdatenbank.
+Sie benötigen eine Testkopie der Produktionsdatenbank. Die Testdatenbank muss sich auf der gleichen Dienstebene befinden wie die Produktionsdatenbank.
 
 Um das Testen zu erleichtern, optimieren Sie die Testdatenbank wie folgt:
 

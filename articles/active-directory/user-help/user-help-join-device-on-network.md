@@ -13,12 +13,12 @@ ms.date: 08/03/2018
 ms.author: lizross
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2ba6b2d33c3fb5d9fda6821718ac61513a958b7
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: dfd38e775ba418fbe31cafa8df5f37b45c3b0643
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369138"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524366"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation
 Binden Sie Ihr unternehmenseigenes Windows 10-Gerät in das Netzwerk Ihrer Organisation ein, sodass Sie auf möglicherweise eingeschränkte Ressourcen zugreifen können.
@@ -62,7 +62,7 @@ Um sicherzustellen, dass Sie eingebunden wurden, können Sie Ihre Einstellungen 
 
     ![Konten auf dem Bildschirm „Einstellungen“](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Wählen Sie **Auf Arbeits- oder Schulkonto zugreifen** aus, und stellen Sie sicher, dass ungefähr Folgendes angezeigt wird: **Verbunden mit *<Ihre_Organisation>* Azure AD**.
+2. Wählen Sie **Auf Arbeits- oder Schulkonto zugreifen** aus, und stellen Sie sicher, dass ungefähr Folgendes angezeigt wird: **Verbunden mit *\<Ihre_Organisation>* Azure AD**.
 
     ![Bildschirm „Auf Arbeits- oder Schulkonto zugreifen“ mit verbundenem Contoso-Konto](./media/user-help-join-device-on-network/join-device-oobe-verify.png)
 
@@ -107,7 +107,7 @@ Um sicherzustellen, dass Sie eingebunden wurden, können Sie Ihre Einstellungen 
 
     ![Konten auf dem Bildschirm „Einstellungen“](./media/user-help-join-device-on-network/join-device-settings-accounts.png)
 
-2. Wählen Sie **Auf Arbeits- oder Schulkonto zugreifen** aus, und stellen Sie sicher, dass ungefähr Folgendes angezeigt wird: **Verbunden mit *<Ihre_Organisation>* Azure AD**.
+2. Wählen Sie **Auf Arbeits- oder Schulkonto zugreifen** aus, und stellen Sie sicher, dass ungefähr Folgendes angezeigt wird: **Verbunden mit *\<Ihre_Organisation>* Azure AD**.
 
     ![Bildschirm „Auf Arbeits- oder Schulkonto zugreifen“ mit verbundenem Contoso-Konto](./media/user-help-join-device-on-network/join-device-setup-verify.png)
 

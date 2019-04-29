@@ -129,7 +129,7 @@ Die folgenden Grenzwerte gelten bei Verwendung des Azure Resource Manager und vo
 [!INCLUDE [container-instances-limits](../includes/container-instances-limits.md)]
 
 ### <a name="container-registry-limits"></a>Grenzwerte für die Containerregistrierung
-In der folgenden Tabelle werden die Features und Grenzwerte der [Dienstebenen](./container-registry/container-registry-skus.md) Basic, Standard und Premium dargestellt.
+In der folgenden Tabelle werden die Features und Grenzwerte der [Dienstebenen](./container-registry/container-registry-skus.md) „Basic“, „Standard“ und „Premium“ dargestellt.
 
 [!INCLUDE [container-registry-limits](../includes/container-registry-limits.md)]
 
@@ -344,7 +344,7 @@ Detailliertere Informationen zu Grenzwerten wie etwa für Dokumentgröße, Abfra
 [!INCLUDE [role-based-access-control-limits](../includes/role-based-access-control-limits.md)]
 
 ### <a name="sql-database-limits"></a>Grenzwerte für SQL-Datenbanken
-Weitere Informationen zu Grenzwerten für SQL-Datenbank finden Sie unter [SQL Database resource limits for single databases](sql-database/sql-database-vcore-resource-limits-single-databases.md) (Ressourcengrenzwerte für SQL-Datenbank für Singletons), [SQL Database resource limits for elastic pools and pooled databases](sql-database/sql-database-vcore-resource-limits-elastic-pools.md) (Ressourcengrenzwerte für SQL-Datenbank für Pools für elastische Datenbanken und Pooldatenbanken) und [SQL Database resource limits for managed instances](sql-database/sql-database-managed-instance-resource-limits.md) (Ressourcengrenzwerte für SQL-Datenbank für verwaltete Instanzen).
+Weitere Informationen zu Grenzwerten für SQL-Datenbank finden Sie unter [SQL Database resource limits for single databases](sql-database/sql-database-vcore-resource-limits-single-databases.md) (Ressourcengrenzwerte für SQL-Datenbank für Einzeldatenbanken), [SQL Database resource limits for elastic pools and pooled databases](sql-database/sql-database-vcore-resource-limits-elastic-pools.md) (Ressourcengrenzwerte für SQL-Datenbank für Pools für elastische Datenbanken und Pooldatenbanken) und [SQL Database resource limits for managed instances](sql-database/sql-database-managed-instance-resource-limits.md) (Ressourcengrenzwerte für SQL-Datenbank für verwaltete Instanzen).
 
 ### <a name="sql-data-warehouse-limits"></a>Einschränkungen zu SQL Data Warehouse
 Informationen zu Grenzwerten für SQL Data Warehouse finden Sie unter [SQL Data Warehouse resource limits](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md) (Ressourcengrenzwerte für SQL Data Warehouse).

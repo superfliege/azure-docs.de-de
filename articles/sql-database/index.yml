@@ -39,7 +39,7 @@ sections:
               src: media/index/i_managed.svg
             title: Vollständige Verwaltung
           - href: /azure/sql-database/sql-database-service-tiers
-            html: '<p>Passen Sie das Preis-Leistungs-Verhältnis mit flexiblen Diensttarifen, die von kostengünstigen 5 USD pro Monat bis zu leistungsstarken 80-Kern-Datenbanken reichen, an Ihre Bedürfnisse an.</p>'
+            html: '<p>Passen Sie das Preis-Leistungs-Verhältnis mit flexiblen Dienstebenen, die von kostengünstigen 5 USD pro Monat bis zu leistungsstarken 80-Kern-Datenbanken reichen, an Ihre Bedürfnisse an.</p>'
             image:
               src: media/index/i_perftier.svg
             title: Preise/Dienstebenen
@@ -49,7 +49,7 @@ sections:
               src: media/index/i_scale.svg
             title: Skalierbarkeit
           - href: /azure/sql-database/sql-database-single-index
-            html: '<p>Verwenden Sie die von einem SQL-Datenbankserver verwaltete Einzeldatenbank für Ihre SaaS-Anwendungen und -Microservices, die eine Einzeldatenbank mit vorhersagbarer Leistung erfordern.</p>'
+            html: '<p>Verwenden Sie die von einem SQL-Datenbank-Server verwaltete Einzeldatenbank für Ihre SaaS-Anwendungen und -Microservices, die eine Einzeldatenbank mit vorhersagbarer Leistung erfordern.</p>'
             image:
               src: media/index/i_db.svg
             title: Einzeldatenbank

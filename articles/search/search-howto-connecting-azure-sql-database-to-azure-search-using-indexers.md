@@ -21,7 +21,7 @@ ms.locfileid: "57315213"
 
 Bevor Sie einen [Azure Search-Index](search-what-is-an-index.md) abfragen können, müssen Sie ihn mit Daten auffüllen. Wenn sich die Daten in einer Azure SQL-Datenbank befinden, können Sie mit dem neuen Feature **Azure Search-Indexer für Azure SQL-Datenbank** (oder kurz **Azure SQL-Indexer**) den Indizierungsprozess automatisieren. Sie müssen also weniger Code schreiben und sich weniger Gedanken über die Infrastruktur machen.
 
-In diesem Artikel wird die Verwendung von [Indexern](search-indexer-overview.md) behandelt, es werden aber auch Features beschrieben, die nur bei Azure SQL-Datenbanken verfügbar sind (z.B. die integrierte Änderungsnachverfolgung). 
+In diesem Artikel wird die Verwendung von [Indexern](search-indexer-overview.md) behandelt, es werden aber auch Features beschrieben, die nur bei Azure SQL-Datenbanken verfügbar sind (z. B. die integrierte Änderungsnachverfolgung). 
 
 Zusätzlich zu Azure SQL-Datenbanken bietet Azure Search Indexer für [Azure Cosmos DB](search-howto-index-cosmosdb.md), [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) und [Azure Table Storage](search-howto-indexing-azure-tables.md). Um Unterstützung für andere Datenquellen anzufordern, geben Sie im [Forum für Feedback zu Azure Search](https://feedback.azure.com/forums/263029-azure-search/) Feedback.
 

@@ -247,12 +247,12 @@ Für diesen Vorgang benötigen Sie den Servernamen Ihrer SQL-Datenbank. Führen 
    sudo apt-get --assume-yes install freetds-dev freetds-bin
    ```
 
-6. Stellen Sie nach Abschluss der Installation mithilfe des folgenden Befehls eine Verbindung mit dem SQL-Datenbankserver her.
+6. Stellen Sie nach Abschluss der Installation mithilfe des folgenden Befehls eine Verbindung mit dem SQL-Datenbank-Server her.
 
    ```bash
    TDSVER=8.0 tsql -H '<server-name>.database.windows.net' -U '<admin-login>' -p 1433 -D '<database-name>'
     ```
-   * Ersetzen Sie den Platzhalter `<server-name>` durch den Namen des SQL-Datenbankservers.
+   * Ersetzen Sie den Platzhalter `<server-name>` durch den Namen des SQL-Datenbank-Servers.
 
    * Ersetzen Sie den Platzhalter `<admin-login>` durch den Administratoranmeldenamen für SQL-Datenbank.
 

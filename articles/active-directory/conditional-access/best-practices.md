@@ -18,12 +18,12 @@ ms.date: 01/25/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eafc379a65fda1ed64c6afee1427e704558b1ee6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 11d4d319fa31dd2493810dc7293d415554f79d94
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59261533"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571119"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Best Practices für den bedingten Zugriff in Azure Active Directory
 
@@ -50,7 +50,7 @@ Damit Ihre Richtlinie funktioniert, müssen Sie Folgendes konfigurieren:
 | :--            | :--                                  | :-- |
 | **Cloud-Apps** |Wählen Sie mindestens eine App aus.  | Ziel einer Richtlinie für den bedingten Zugriff ist es, Ihnen die Steuerung des Zugriffs autorisierter Benutzer auf Cloud-Apps zu ermöglichen.|
 | **Benutzer und Gruppen** | Wählen Sie mindestens einen Benutzer oder eine Gruppe aus, der bzw. die dazu autorisiert ist, auf die von Ihnen ausgewählten Cloud-Apps zuzugreifen. | Eine Richtlinie für den bedingten Zugriff, der keine Benutzer und Gruppen zugewiesen sind, wird niemals angewendet. |
-| **Zugriffssteuerung** | Wählen Sie mindestens eine Zugriffssteuerung aus. | Ihr Richtlinienprozessor muss wissen, was zu tun ist, wenn die Bedingungen erfüllt sind. |
+| **Steuerelemente** | Wählen Sie mindestens eine Zugriffssteuerung aus. | Ihr Richtlinienprozessor muss wissen, was zu tun ist, wenn die Bedingungen erfüllt sind. |
 
 
 
@@ -109,7 +109,7 @@ Bei jeder Anmeldung werden von Azure Active Directory alle Richtlinien ausgewert
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>Funktioniert der bedingte Zugriff mit Exchange ActiveSync?
 
-Ja, Sie können Exchange ActiveSync in einer Richtlinie für den bedingten Zugriff verwenden.
+Ja, Sie können Exchange ActiveSync mit einigen [Einschränkungen](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/conditional-access-for-exo-and-spo#exchange-activesync) in einer Richtlinie für bedingten Zugriff verwenden. 
 
 ### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Wie sollten Sie den bedingten Zugriff für Office 365-Apps konfigurieren?
 
@@ -130,7 +130,7 @@ Das Framework für bedingten Zugriff bietet Ihnen mehr Flexibilität bei der Kon
 Vermeiden Sie in Ihrer Umgebung die folgenden Konfigurationen:
 
 
-**Für alle Benutzer und alle Cloud-Apps:**
+**Für alle Benutzer, alle Cloud-Apps:**
 
 - **Zugriff blockieren:** Diese Konfiguration blockiert Ihre gesamte Organisation, was in keinem Fall wünschenswert ist.
 
@@ -140,7 +140,7 @@ Vermeiden Sie in Ihrer Umgebung die folgenden Konfigurationen:
 
 - **App-Schutzrichtlinie erforderlich**: Diese Richtlinie zum Blockieren des Zugriffs kann potenziell auch den Zugriff für alle Benutzer in Ihrer Organisation blockieren, wenn Sie nicht über eine Intune-Richtlinie verfügen. Wenn Sie als Administrator nicht über eine Clientanwendung mit einer Intune-App-Schutzrichtlinie verfügen, verhindert diese Richtlinie, dass Sie wieder in Portale wie Intune und Azure gelangen.
 
-**Für alle Benutzer, alle Cloud-Apps und alle Geräteplattformen:**
+**Für alle Benutzer, alle Cloud-Apps, alle Geräteplattformen:**
 
 - **Zugriff blockieren:** Diese Konfiguration blockiert Ihre gesamte Organisation, was in keinem Fall wünschenswert ist.
 

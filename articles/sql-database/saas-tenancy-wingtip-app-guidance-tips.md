@@ -21,7 +21,7 @@ ms.locfileid: "57900504"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Allgemeine Anweisungen zum Arbeiten mit den Wingtip-Tickets-Beispielanwendungen für SaaS
 
-Dieser Artikel enthält allgemeine Anweisungen zum Ausführen der Wingtip-Tickets-SaaS-Beispielanwendungen, die Azure SQL Database verwenden. 
+Dieser Artikel enthält allgemeine Anweisungen zum Ausführen der Wingtip-Tickets-SaaS-Beispielanwendungen, die Azure SQL-Datenbank verwenden. 
 
 ## <a name="download-and-unblock-the-wingtip-tickets-saas-scripts"></a>Herunterladen und Entsperren der Wingtip-Tickets-SaaS-Skripts
 
@@ -77,7 +77,7 @@ Tipps zum Prüfen und schrittweisen Ausführen der PowerShell-Skripts:
 
 Verwenden Sie [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms), um eine Verbindung mit den Anwendungsservern und -datenbanken herzustellen und diese zu durchsuchen.
 
-Die Bereitstellung verfügt anfänglich über Mandanten und SQL-Katalogdatenbankserver, mit denen sie Verbindungen herstellen kann. Die Benennung der Server hängt vom Mandantenmuster der Datenbank ab (Einzelheiten nachfolgend). 
+Die Bereitstellung verfügt anfänglich über Mandanten und SQL-Datenbank-Katalogserver, mit denen sie Verbindungen herstellen kann. Die Benennung der Server hängt vom Mandantenmuster der Datenbank ab (Einzelheiten nachfolgend). 
 
    - **Eigenständige Anwendung:** Server für jeden Mandanten (Beispiel: *contosoconcerthall-&lt;Benutzer&gt;*-Server) und *catalog-sa-&lt;Benutzer&gt;*
    - **Datenbank pro Mandant:** *tenants1-dpt-&lt;Benutzer&gt;* und *catalog-dpt-&lt;Benutzer&gt;*-Server

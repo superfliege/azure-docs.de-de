@@ -1,29 +1,28 @@
 ---
-title: Schemareferenz zur Definitionssprache für Workflows – Azure Logic Apps | Microsoft-Dokumentation
-description: Schreiben benutzerdefinierter Workflowdefinitionen für Azure Logic Apps mit der Definitionssprache für Workflows
+title: Schemareferenz zur Definitionssprache für Workflows – Azure Logic Apps
+description: Referenzhandbuch zum Schema der Definitionssprache für Workflows in Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
+ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 04/30/2018
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: d2de2a25d67da230d539156c851cca34335a01c2
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: d80ffa862546f56e93a338a7a1db031e2cb55990
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620835"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616797"
 ---
 # <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Schemareferenz zur Definitionssprache für Workflows in Azure Logic Apps
 
-Beim Erstellen eines Logic-App-Workflows mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) beschreibt die Ihrem Workflow zugrunde liegende Definition die eigentliche Logik, die für Ihre Logik-App ausgeführt wird. Diese Beschreibung folgt einer Struktur, die vom Schema der Definitionssprache für Workflows definiert und überprüft wird und [JavaScript Object Notation (JSON)](https://www.json.org/) verwendet.
+Beim Erstellen einer Logik-App in [Azure Logic Apps](../logic-apps/logic-apps-overview.md) verfügt Ihre Logik-App über eine zugrunde liegende Workflowdefinition, die die eigentliche Logik beschreibt, die in Ihrer Logik-App ausgeführt wird. Diese Workflowdefinition verwendet [JSON](https://www.json.org/) und folgt einer Struktur, die vom WDL-Schema (Workflow Definition Language, Workflowdefinitionssprache) validiert wird. Diese Referenz enthält eine Übersicht über diese Struktur und wie das Schema Elemente in Ihrer Workflowdefinition definiert.
 
 ## <a name="workflow-definition-structure"></a>Struktur der Workflowdefinition
 
-Eine Workflowdefinition verfügt über mindestens einen Trigger, der Ihre Logik-App instanziiert, sowie über mindestens eine Aktion, die Ihre Logik-App ausführt.
+Eine Workflowdefinition enthält immer einen Trigger zum Instanziieren Ihrer Logik-App sowie mindestens eine weitere Aktion, die nach der Auslösung des Triggers ausgeführt wird.
 
 So sieht die allgemeine Struktur einer Workflowdefinition aus:
 
@@ -51,7 +50,7 @@ So sieht die allgemeine Struktur einer Workflowdefinition aus:
 
 ## <a name="parameters"></a>Parameter
 
-Im Abschnitt `parameters` werden alle Workflowparameter definiert, die Ihre Logik-App bei der Bereitstellung zur Annahme von Eingaben verwendet. Bei der Bereitstellung sind sowohl Parameterdeklarationen als auch Parameterwerte erforderlich. Bevor Sie diese Parameter in anderen Workflowabschnitten verwenden können, müssen Sie sicherstellen, dass Sie alle Parameter in diesen Abschnitten deklarieren. 
+Im Abschnitt `parameters` werden alle Workflowparameter definiert, die Ihre Workflowdefinition bei der Bereitstellung zur Annahme von Eingaben verwendet. Bei der Bereitstellung sind sowohl Parameterdeklarationen als auch Parameterwerte erforderlich. Bevor Sie diese Parameter in anderen Workflowabschnitten verwenden können, müssen Sie sicherstellen, dass Sie alle Parameter in diesen Abschnitten deklarieren. 
 
 So sieht die allgemeine Struktur einer Parameterdefinition aus:
 
@@ -75,7 +74,7 @@ So sieht die allgemeine Struktur einer Parameterdefinition aus:
 | type | Ja | int, float, string, securestring, bool, array, JSON-Objekt, secureobject <p><p>**Hinweis**: Verwenden Sie für sämtliche Kennwörter, Schlüssel und geheimen Schlüssel die Typen `securestring` und `secureobject`, da diese Typen beim `GET`-Vorgang nicht zurückgegeben werden. Weitere Informationen zum Sichern von Parametern finden Sie unter [Sichern Ihrer Logik-App](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | Der Typ des Parameters |
 | defaultValue | Ja | Identisch mit `type` | Der Standardparameterwert, wenn bei der Instanziierung des Workflows kein Wert angegeben wird |
 | allowedValues | Nein  | Identisch mit `type` | Ein Array mit Werten, die vom Parameter akzeptiert werden können |
-| metadata | Nein  | JSON-Objekt | Alle anderen von Visual Studio oder anderen Tools verwendeten Parameterdetails, wie z.B. der Name, eine lesbare Beschreibung Ihrer Logik-App oder Entwurfszeitdaten |
+| metadata | Nein  | JSON-Objekt | Alle anderen von Visual Studio oder anderen Tools verwendeten Parameterdetails, wie z.B. der Name, eine lesbare Beschreibung Ihrer Logik-App oder Ihres Flows oder die Entwurfszeitdaten |
 ||||
 
 ## <a name="triggers-and-actions"></a>Trigger und Aktionen
@@ -107,7 +106,7 @@ So sieht die allgemeine Struktur einer Ausgabedefinition aus:
 | value | Ja | Identisch mit `type` | Der Rückgabewert der Ausgabe |
 |||||
 
-Zum Abrufen der Ausgabe aus einer Workflowausführung müssen Sie im Azure-Portal den Ausführungsverlauf der Logik-App sowie Details überprüfen oder die [REST-API des Workflows](https://docs.microsoft.com/rest/api/logic/workflows) verwenden. Sie können die Ausgabe auch an externe Systeme übergeben, z.B. Power BI, um Dashboards erstellen zu können.
+Zum Abrufen der Ausgabe aus einer Workflowausführung müssen Sie im Azure-Portal den Ausführungsverlauf Ihrer Logik-App sowie Details überprüfen oder die [REST-API des Workflows](https://docs.microsoft.com/rest/api/logic/workflows) verwenden. Sie können die Ausgabe auch an externe Systeme übergeben, z.B. Power BI, um Dashboards erstellen zu können.
 
 <a name="expressions"></a>
 
@@ -216,7 +215,7 @@ In [Ausdrücken](#expressions) und [Funktionen](#functions) führen Operatoren b
 
 ## <a name="functions"></a>Functions
 
-Einige Ausdrücke erhalten ihre Werte von Laufzeitaktionen, die zu Beginn der Ausführung einer Logik-App möglicherweise noch nicht vorhanden sind. Sie können mithilfe von [*Funktionen*](../logic-apps/workflow-definition-language-functions-reference.md), die von der Definitionssprache für Workflows bereitgestellt werden, auf diese Werte in Ausdrücken verweisen oder mit diesen Werten arbeiten.
+Einige Ausdrücke erhalten ihre Werte von Laufzeitaktionen, die zu Beginn der Ausführung Ihrer Workflowdefinition möglicherweise noch nicht vorhanden sind. Sie können mithilfe von [*Funktionen*](../logic-apps/workflow-definition-language-functions-reference.md), die von der Definitionssprache für Workflows bereitgestellt werden, auf diese Werte in Ausdrücken verweisen oder mit diesen Werten arbeiten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

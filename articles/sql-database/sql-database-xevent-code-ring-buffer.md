@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: f47c6b63ce5f18aa896b086ec884b9a3020cadd2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bb493fc0a9d3a9173ef4faf17b3cdd4e3781a557
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993280"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526162"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Code des Ringpufferziels für erweiterte Ereignisse in SQL-Datenbank
 
@@ -223,7 +223,7 @@ Um die Ergebnisse anzuzeigen, haben wir auf die Zelle unterhalb der Spaltenüber
 
 Anschließend haben wir im Ergebnisbereich auf die Zelle unterhalb der Spaltenüberschrift **target_data_XML** geklickt. Mit diesem Klicken wurde in „ssms.exe“ eine weitere Dateiregisterkarte erstellt, auf welcher der Inhalt der Ergebniszelle angezeigt wurde (als XML).
 
-Der folgende Block zeigt die Ausgabe. Wenngleich die Ausgabe lang erscheint, umfasst sie lediglich zwei **<event>** -Elemente.
+Der folgende Block zeigt die Ausgabe. Obwohl die Ausgabe lang erscheint, umfasst sie lediglich zwei **\<Ereignis>**-Elemente.
 
 &nbsp;
 

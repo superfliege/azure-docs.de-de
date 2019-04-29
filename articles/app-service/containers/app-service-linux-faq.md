@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: 223486ec2dc184e6bbe02e1f6862b9d79d773a2c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: e3b6eed6f70eb2803ef4fa4e6b5d32fb0a4d843a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339545"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525125"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux
 
@@ -163,7 +163,7 @@ Um ACR mit mehreren Containern zu verwenden, müssen **alle Containerimages** au
 Erstellen Sie die folgenden Anwendungseinstellungen:
 
 - DOCKER_REGISTRY_SERVER_USERNAME
-- DOCKER_REGISTRY_SERVER_URL (vollständige URL, Beispiel: https://<server-name>.azurecr.io)
+- DOCKER_REGISTRY_SERVER_URL (vollständige URL, Bsp.: `https://<server-name>.azurecr.io`)
 - DOCKER_REGISTRY_SERVER_PASSWORD (Aktivieren des Administratorzugriffs in den ACR-Einstellungen)
 
 Verweisen Sie in der Konfigurationsdatei auf Ihr ACR-Image, wie im folgenden Beispiel:

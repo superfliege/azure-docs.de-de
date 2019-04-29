@@ -124,7 +124,7 @@ Konfigurieren Sie den neuen App Service-Plan im Dialogfeld **App Service-Plan ko
 
 ### <a name="create-a-sql-server-instance"></a>Erstellen einer SQL Server-Instanz
 
-Bevor Sie eine Datenbank erstellen, benötigen Sie einen [logischen Azure SQL-Datenbankserver](../sql-database/sql-database-features.md). Ein logischer Server enthält eine Gruppe von Datenbanken, die als Gruppe verwaltet werden.
+Bevor Sie eine Datenbank erstellen, benötigen Sie einen [logischen Azure SQL-Datenbank-Server](../sql-database/sql-database-features.md). Ein logischer Server enthält eine Gruppe von Datenbanken, die als Gruppe verwaltet werden.
 
 Klicken Sie auf **SQL-Datenbank erstellen**.
 

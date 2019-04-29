@@ -100,7 +100,7 @@ Integrierte Rollen für Azure-Ressourcen wie „Mitwirkender von SQL DB“ und �
 So zeigen Sie die aktuellen DWU-Einstellungen an:
 
 1. Öffnen Sie den Objekt-Explorer von SQL Server in Visual Studio.
-2. Stellen Sie eine Verbindung mit der Masterdatenbank mit dem logischen SQL-Datenbankserver her.
+2. Stellen Sie eine Verbindung mit der Masterdatenbank mit dem logischen SQL-Datenbank-Server her.
 3. Treffen Sie eine Auswahl aus der dynamischen Verwaltungssicht „sys.database_service_objectives“. Beispiel:  
 
 ```sql
@@ -140,7 +140,7 @@ Mit T-SQL können Sie die aktuellen DWU- oder cDWU-Einstellungen anzeigen, die E
 
 So ändern Sie DWUs oder cDWUs:
 
-1. Stellen Sie eine Verbindung mit der Masterdatenbank mit Ihrem logischen SQL-Datenbankserver her.
+1. Stellen Sie eine Verbindung mit der Masterdatenbank her, die Ihrem logischen SQL-Datenbank-Server zugeordnet ist.
 2. Verwenden Sie die TSQL-Anweisung [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql) . Im folgenden Beispiel wird das Servicelevelziel für die Datenbank „MySQLDW“ auf „DW1000“ gesetzt. 
 
 ```Sql
@@ -176,7 +176,7 @@ Der Zustand der Datenbank für horizontale Hochskalierungsvorgänge kann nicht m
 
 So überprüfen Sie den Zustand von DWU-Änderungen:
 
-1. Stellen Sie eine Verbindung mit der Masterdatenbank mit Ihrem logischen SQL-Datenbankserver her.
+1. Stellen Sie eine Verbindung mit der Masterdatenbank her, die Ihrem logischen SQL-Datenbank-Server zugeordnet ist.
 2. Übermitteln Sie die folgende Abfrage, um den Datenbankzustand zu überprüfen.
 
 

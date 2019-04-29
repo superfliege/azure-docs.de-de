@@ -65,7 +65,7 @@ Azure fügt zusätzliche Standardsystemrouten für unterschiedliche Azure-Funkti
 
 - **VNET-Peering**: Wenn Sie ein VNET-Peering zwischen zwei virtuellen Netzwerken erstellen, wird eine Route für jeden Adressbereich innerhalb des Adressraums der einzelnen virtuellen Netzwerke hinzugefügt, für die ein Peering erstellt wird. Weitere Informationen hierzu finden Sie unter [Peering virtueller Netzwerke](virtual-network-peering-overview.md).  
 - **Gateway für virtuelle Netzwerke**: Mindestens eine Route mit Angabe von *Gateway für virtuelle Netzwerke* als Typ des nächsten Hops wird hinzugefügt, wenn ein Gateway für virtuelle Netzwerke einem virtuellen Netzwerk hinzugefügt wird. Die Quelle ist ebenfalls das *Gateway für virtuelle Netzwerke*, da das Gateway die Routen dem Subnetz hinzufügt. Wenn Ihr Gateway des lokalen Netzwerks BGP-Routen ([Border Gateway Protocol](#border-gateway-protocol)) mit einem Gateway des virtuellen Azure-Netzwerks austauscht, wird eine Route für jede Route hinzugefügt, die vom Gateway des lokalen Netzwerks weiterverteilt wird. Es wird empfohlen, lokale Routen unter den größtmöglichen Adressbereichen zusammenzufassen, damit die geringste Anzahl von Routen an ein Gateway des virtuellen Azure-Netzwerks weiterverteilt wird. Es gelten Einschränkungen dafür, wie viele Routen Sie an ein Gateway des virtuellen Azure-Netzwerks weiterverteilen können. Ausführliche Informationen finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
-- **VirtualNetworkServiceEndpoint**: Die öffentlichen IP-Adressen für bestimmte Dienste werden der Routentabelle von Azure hinzugefügt, wenn Sie einen Dienstendpunkt für den Dienst aktivieren. Dienstendpunkte werden für einzelne Subnetze in einem virtuellen Netzwerk aktiviert, sodass die Route nur der Routentabelle eines Subnetzes hinzugefügt wird, für das ein Dienstendpunkt aktiviert ist. Die öffentlichen IP-Adressen von Azure-Diensten ändern sich regelmäßig. Azure verwaltet die Adressen in der Routentabelle automatisch, wenn sich die Adressen ändern. Erfahren Sie mehr zu [Dienstendpunkten von virtuellen Netzwerken](virtual-network-service-endpoints-overview.md) und zu den Diensten, für die Sie Dienstendpunkte erstellen können. 
+- **VirtualNetworkServiceEndpoint**: Die öffentlichen IP-Adressen für bestimmte Dienste werden der Routentabelle von Azure hinzugefügt, wenn Sie einen Dienstendpunkt für den Dienst aktivieren. Dienstendpunkte werden für einzelne Subnetze in einem virtuellen Netzwerk aktiviert, sodass die Route nur der Routentabelle eines Subnetzes hinzugefügt wird, für das ein Dienstendpunkt aktiviert ist. Die öffentlichen IP-Adressen von Azure-Diensten ändern sich regelmäßig. Azure verwaltet die Adressen in der Routentabelle automatisch, wenn sich die Adressen ändern. Erfahren Sie mehr zu [VNET-Dienstendpunkten](virtual-network-service-endpoints-overview.md) und zu den Diensten, für die Sie Dienstendpunkte erstellen können. 
 
 > [!NOTE]
 > Die Typen **VNet-Peering** und **VirtualNetworkServiceEndpoint** des nächsten Hops werden nur Routentabellen von Subnetzen in virtuellen Netzwerken hinzugefügt, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Die Typen des nächsten Hops werden dagegen nicht Routentabellen hinzugefügt, die Subnetzen von virtuellen Netzwerken zugeordnet sind, wenn diese mit dem klassischen Bereitstellungsmodell erstellt wurden. Erfahren Sie mehr über Azure-[Bereitstellungsmodelle](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
@@ -110,7 +110,7 @@ Der Name, der für Typen des nächsten Hops angezeigt und referenziert wird, unt
 |Virtuelles Gerät               |VirtualAppliance                                |VirtualAppliance|
 |Keine                            |Keine                                            |NULL (im ASM-Modus in der klassischen CLI nicht verfügbar)|
 |Peering in virtuellen Netzwerken         |VNet-Peering                                    |Nicht zutreffend|
-|Dienstendpunkt des virtuellen Netzwerks|VirtualNetworkServiceEndpoint                   |Nicht zutreffend|
+|VNET-Dienstendpunkt|VirtualNetworkServiceEndpoint                   |Nicht zutreffend|
 
 ### <a name="border-gateway-protocol"></a>Border Gateway Protocol
 
@@ -134,7 +134,7 @@ Wenn mehrere Routen das gleiche Präfix enthalten, wählt Azure den Routentyp na
 3. Systemroute
 
 > [!NOTE]
-> Systemrouten für Datenverkehr im Zusammenhang mit virtuellen Netzwerken, virtuellen Netzwerken über Peerings oder Dienstendpunkte im virtuellen Netzwerk sind die bevorzugten Routen, auch wenn BGP-Routen spezifischer sind.
+> Systemrouten für Datenverkehr im Zusammenhang mit virtuellen Netzwerken, virtuellen Netzwerken über Peerings oder VNET-Dienstendpunkten sind die bevorzugten Routen, auch wenn BGP-Routen spezifischer sind.
 
 Eine Routentabelle enthält beispielsweise die folgenden Routen:
 

@@ -131,7 +131,7 @@ ORDER BY end_time DESC;
 
 Wenn das E/A-Limit erreicht ist, haben Sie zwei Möglichkeiten:
 
-- Option 1: Upgrade der Computegröße oder des Diensttarifs
+- Option 1: Upgrade der Computegröße oder Dienstebene
 - Option 2: Identifizieren und Optimieren der Abfragen, die die meisten E/A-Ressourcen verbrauchen
 
 #### <a name="view-buffer-related-io-using-the-query-store"></a>Anzeigen von pufferbezogenen E/A-Vorgängen, die den Abfragespeicher verwenden
@@ -536,7 +536,7 @@ Beispiele für andere Abfragen finden Sie unter [sys.dm_db_resource_stats](https
 
 ### <a name="sysresourcestats"></a>sys.resource_stats
 
-Die Ansicht [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) in der **master**-Datenbank enthält zusätzliche Informationen, die zur Überwachung der Leistung Ihrer SQL-Datenbank innerhalb des jeweiligen Diensttarifs und der Computegröße hilfreich sind. Die Daten werden alle fünf Minuten gesammelt und c.a. 14 Tage lang aufbewahrt. Diese Sicht ist für eine längere Verlaufsanalyse der Ressourcennutzung Ihrer SQL-Datenbank hilfreich.
+Die Ansicht [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) in der **master**-Datenbank enthält zusätzliche Informationen, die zur Überwachung der Leistung Ihrer SQL-Datenbank innerhalb der jeweiligen Dienstebene und Computegröße hilfreich sind. Die Daten werden alle fünf Minuten gesammelt und c.a. 14 Tage lang aufbewahrt. Diese Sicht ist für eine längere Verlaufsanalyse der Ressourcennutzung Ihrer SQL-Datenbank hilfreich.
 
 Der folgende Graph zeigt die CPU-Ressourcennutzung für eine Premium-Datenbank mit der Computegröße P2 für jede Stunde einer Woche. Dieser Graph beginnt mit einem Montag und zeigt fünf Arbeitstage und dann das Wochenende, an dem die Anwendung deutlich weniger gefragt ist.
 
@@ -546,7 +546,7 @@ Die Daten verdeutlichen, dass diese Datenbank derzeit über eine CPU-Spitzenlast
 
 Andere Anwendungstypen können denselben Graphen unter Umständen anders interpretieren. Wenn eine Anwendung beispielsweise jeden Tag versucht, Gehaltsabrechnungsdaten zu verarbeiten, und dasselbe Diagramm gilt, wird diese Art von „Batchauftrag“-Modell bei der Computegröße P1 wahrscheinlich zufriedenstellend ausgeführt. Computegröße P1 verfügt über 100 DTUs im Vergleich zu 200 DTUs bei Computegröße P2. Computegröße P1 stellt gegenüber Computegröße P2 die halbe Leistungsfähigkeit bereit. Eine Nutzung von 50 Prozent CPU-Auslastung bei P2 entspricht also 100 Prozent CPU-Auslastung bei P1. Wenn die Anwendung nicht über Timeouts verfügt, spielt es unter Umständen keine Rolle, ob ein Auftrag 2 oder 2,5 Stunden dauert, solange er noch am selben Tag abgeschlossen wird. Für eine Anwendung in dieser Kategorie reicht wahrscheinlich die Computegröße P1 aus. Sie können die Tatsache nutzen, dass es am Tag Zeiten gibt, in denen die Ressourcennutzung niedriger ist. Dies bedeutet, dass „Spitzen“ ggf. in einen der Zeiträume später am Tag verlagert werden können. Die Computegröße P1 ist für diese Art von Anwendung ggf. gut geeignet (und spart Kosten), solange die Aufträge jeden Tag pünktlich abgeschlossen werden können.
 
-Azure SQL-Datenbank macht die verbrauchten Ressourceninformationen für jede aktive Datenbank in der Sicht **sys.resource_stats** der **master**-Datenbank jedes Servers verfügbar. Die Daten in der Tabelle werden zu Intervallen von fünf Minuten zusammengefasst. Bei den Dienstebenen Basic, Standard und Premium kann es länger als fünf Minuten dauern, bis sie in der Tabelle angezeigt werden. Diese Daten sind also besser für Verlaufsanalysen als für Analysen nahezu in Echtzeit geeignet. Fragen Sie die Sicht **sys.resource_stats** ab, um den kürzlichen Verlauf einer Datenbank anzuzeigen und zu überprüfen, ob die gewählte Reservierung zur gewünschten Leistung zur richtigen Zeit geführt hat.
+Azure SQL-Datenbank macht die verbrauchten Ressourceninformationen für jede aktive Datenbank in der Sicht **sys.resource_stats** der **master**-Datenbank jedes Servers verfügbar. Die Daten in der Tabelle werden zu Intervallen von fünf Minuten zusammengefasst. Bei den Dienstebenen „Basic“, „Standard“ und „Premium“ kann es länger als fünf Minuten dauern, bis sie in der Tabelle angezeigt werden. Diese Daten sind also besser für Verlaufsanalysen als für Analysen nahezu in Echtzeit geeignet. Fragen Sie die Sicht **sys.resource_stats** ab, um den kürzlichen Verlauf einer Datenbank anzuzeigen und zu überprüfen, ob die gewählte Reservierung zur gewünschten Leistung zur richtigen Zeit geführt hat.
 
 > [!NOTE]
 > Sie benötigen eine Verbindung mit der **master**-Datenbank Ihres SQL-Datenbank-Servers, um **sys.resource_stats** in den folgenden Beispielen abzufragen.
@@ -592,7 +592,7 @@ Das nächste Beispiel enthält unterschiedliche Möglichkeiten zum Einsatz der *
     WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
     ```
 
-3. Mit diesen Informationen zu den Durchschnitts- und Höchstwerten der einzelnen Ressourcenmetriken können Sie bewerten, wie gut Ihre Workload zur ausgewählten Computegröße passt. Normalerweise erhalten Sie mit den Durchschnittswerten aus **sys.resource_stats** eine gute Grundlage gegenüber der Zielgröße. Dies sollte Ihre primäre Messlatte sein. Beispielsweise können Sie den Standarddiensttarif mit der Computegröße S2 verwenden. Die durchschnittlichen Nutzungsprozentsätze für Lese- und -Schreibvorgänge für CPU und E/A liegen unter 40 Prozent, die durchschnittliche Anzahl von Workern unter 50 und die durchschnittliche Sitzungsanzahl unter 200. Für diese Workload ist unter Umständen die Computegröße S1 geeignet. Es ist leicht zu erkennen, ob Ihre Datenbank die Grenzen für Worker und Sitzungen einhält. Um zu ermitteln, ob sich für eine Datenbank in Bezug auf CPU, Lesevorgänge und Schreibvorgänge eine niedrigere Computegröße eignet, dividieren Sie die DTU-Anzahl der niedrigeren Computegröße durch die DTU-Anzahl der aktuellen Computegröße, und multiplizieren Sie dann das Ergebnis mit 100:
+3. Mit diesen Informationen zu den Durchschnitts- und Höchstwerten der einzelnen Ressourcenmetriken können Sie bewerten, wie gut Ihre Workload zur ausgewählten Computegröße passt. Normalerweise erhalten Sie mit den Durchschnittswerten aus **sys.resource_stats** eine gute Grundlage gegenüber der Zielgröße. Dies sollte Ihre primäre Messlatte sein. Beispielsweise können Sie die Standard-Dienstebene mit der Computegröße S2 verwenden. Die durchschnittlichen Nutzungsprozentsätze für Lese- und -Schreibvorgänge für CPU und E/A liegen unter 40 Prozent, die durchschnittliche Anzahl von Workern unter 50 und die durchschnittliche Sitzungsanzahl unter 200. Für diese Workload ist unter Umständen die Computegröße S1 geeignet. Es ist leicht zu erkennen, ob Ihre Datenbank die Grenzen für Worker und Sitzungen einhält. Um zu ermitteln, ob sich für eine Datenbank in Bezug auf CPU, Lesevorgänge und Schreibvorgänge eine niedrigere Computegröße eignet, dividieren Sie die DTU-Anzahl der niedrigeren Computegröße durch die DTU-Anzahl der aktuellen Computegröße, und multiplizieren Sie dann das Ergebnis mit 100:
 
     ```S1 DTU / S2 DTU * 100 = 20 / 50 * 100 = 40```
 
@@ -607,7 +607,7 @@ Das nächste Beispiel enthält unterschiedliche Möglichkeiten zum Einsatz der *
     WHERE database_name = 'userdb1' AND start_time > DATEADD(day, -7, GETDATE());
     ```
 
-    Auf Basis Ihres Diensttarifs für die Datenbank können Sie entscheiden, ob für Ihre Workload die niedrigere Computegröße geeignet ist. Wenn das Ziel für die Datenbankworkload 99,9 Prozent beträgt und die obige Abfrage höhere Werte als 99,9 Prozent für alle drei Ressourcendimensionen zurückgibt, ist die Wahrscheinlichkeit hoch, dass sich die niedrigere Computegröße für Ihre Workload eignet.
+    Auf Basis Ihrer Dienstebene für die Datenbank können Sie entscheiden, ob für Ihre Workload die niedrigere Computegröße geeignet ist. Wenn das Ziel für die Datenbankworkload 99,9 Prozent beträgt und die obige Abfrage höhere Werte als 99,9 Prozent für alle drei Ressourcendimensionen zurückgibt, ist die Wahrscheinlichkeit hoch, dass sich die niedrigere Computegröße für Ihre Workload eignet.
 
     Wenn Sie sich den Prozentsatz für die Eignung ansehen, erhalten Sie auch Informationen dazu, ob Sie zur nächsthöheren Computegröße wechseln müssen, um das Ziel zu erreichen. „userdb1“ weist beispielsweise die folgende CPU-Auslastung für die letzte Woche auf:
 

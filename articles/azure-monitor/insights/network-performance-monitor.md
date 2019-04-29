@@ -3,7 +3,7 @@ title: Netzwerkleistungsmonitor-Lösung in Azure | Microsoft-Dokumentation
 description: Mit dem Netzwerkleistungsmonitor in Azure können Sie die Leistung Ihrer Netzwerke nahezu in Echtzeit überwachen, um Leistungsengpässe im Netzwerk zu erkennen und zu lokalisieren.
 services: log-analytics
 documentationcenter: ''
-author: abshamsft
+author: vinynigam
 manager: carmonm
 editor: ''
 ms.assetid: 5b9c9c83-3435-488c-b4f6-7653003ae18a
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
-ms.author: abshamsft
-ms.openlocfilehash: 1c80395880c556138313ebfd9af1610ace946c8a
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.author: vinigam
+ms.openlocfilehash: 29826f7f842f8dfbd7cd2a754c919f06542a161c
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006768"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59615981"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netzwerkleistungsmonitor-Lösung in Azure
 
@@ -33,7 +33,7 @@ Der Netzwerkleistungsmonitor bietet drei allgemeine Funktionen:
 
 * [Systemmonitor](network-performance-monitor-performance-monitor.md): Sie können die Netzwerkkonnektivität für Cloudbereitstellungen und lokale Standorte, für mehrere Rechenzentren und Zweigstellen sowie für unternehmenswichtige Microservices/Anwendungen mit mehreren Ebenen überwachen. Mithilfe des Systemmonitors können Sie Netzwerkprobleme erkennen, bevor sie Ihre Benutzer beinträchtigen.
 
-* [Dienstkonnektivitätsmonitor](network-performance-monitor-service-endpoint.md): Sie können die Benutzerkonnektivität mit Diensten überwachen, die für Sie interessant sind, die Infrastruktur bestimmen, durch die der Pfad führt, und Netzwerkengpässe lokalisieren. Sie wissen noch vor Ihren Benutzern über Ausfälle Bescheid und können genau sehen, wo in Ihrem Netzwerkpfad Probleme vorliegen. 
+* [Dienstkonnektivitätsmonitor](network-performance-monitor-service-connectivity.md): Sie können die Benutzerkonnektivität mit Diensten überwachen, die für Sie interessant sind, die Infrastruktur bestimmen, durch die der Pfad führt, und Netzwerkengpässe lokalisieren. Sie wissen noch vor Ihren Benutzern über Ausfälle Bescheid und können genau sehen, wo in Ihrem Netzwerkpfad Probleme vorliegen. 
 
     Mit dieser Funktion können Sie Tests auf Basis von HTTP, HTTPS, TCP und ICMP ausführen, um die Verfügbarkeit und Antwortzeit Ihres Diensts in nahezu Echtzeit oder historisch zu überwachen. Sie können auch den Beitrag des Netzwerks bei Paketverlusten und Latenz überwachen. Mit einer Netzwerktopologiekarte können Sie Geschwindigkeitsverluste des Netzwerks eingrenzen. Sie können Problemstellen, die entlang des Netzwerkpfads vom Knoten zum Dienst auftreten, mit Latenzdaten für jeden Hop identifizieren. Mithilfe integrierter Tests können Sie ganz ohne Vorkonfiguration die Konnektivität mit Office 365 und Dynamics CRM überwachen. Mit dieser Funktion können Sie die Netzwerkkonnektivität mit einem beliebigen TCP-fähigen Endpunkt überwachen (z.B. Websites, SaaS-Anwendungen, PaaS-Anwendungen und SQL-Datenbanken).
 
@@ -83,7 +83,7 @@ Der Netzwerkleistungsmonitor verwendet synthetische Transaktionen, um die Netzwe
     > Das Skript konfiguriert nur die lokale Windows-Firewall. Bei Verwendung einer Netzwerkfirewall müssen Sie sicherstellen, dass diese den Datenverkehr zum TCP-Port erlaubt, der vom Netzwerkleistungsmonitor verwendet wird.
 
     >[!NOTE]
-    > Für den Dienstendpunktmonitor muss das PowerShell-Skript [EnableRules.ps1](https://aka.ms/npmpowershellscript ) nicht ausgeführt werden.
+    > Für den Dienstkonnektivitätsmonitor muss das PowerShell-Skript [EnableRules.ps1](https://aka.ms/npmpowershellscript ) nicht ausgeführt werden.
 
     
 
@@ -115,7 +115,7 @@ Der Netzwerkleistungsmonitor verwendet synthetische Transaktionen, um die Netzwe
     
    **Dienstkonnektivitätsmonitor**: Diese Funktion bietet integrierte, vorkonfigurierte Tests zur Überwachung der Netzwerkkonnektivität mit Office 365 und Dynamics 365 über Ihre Agents. Wählen Sie die Office 365- und Dynamics 365-Dienste aus, die Sie überwachen möchten, indem Sie die Kontrollkästchen neben ihnen aktivieren. Wählen Sie **Agents hinzufügen** aus, um die gewünschten Agents für die Überwachung auszuwählen. Wenn Sie diese Funktion nicht verwenden oder später einrichten möchten, nehmen Sie keine Auswahl vor, und wählen Sie dann **Speichern und fortfahren** aus.
 
-   ![Ansicht „Dienstendpunktmonitor“](media/network-performance-monitor/npm-service-endpoint-monitor.png)
+   ![Ansicht „Dienstkonnektivitätsmonitor“](media/network-performance-monitor/npm-service-endpoint-monitor.png)
 
    **ExpressRoute-Monitor**: Wählen Sie **Jetzt ermitteln** aus, um alle privaten ExpressRoute-Peerings zu ermitteln, die mit den virtuellen Netzwerken in dem mit diesem Log Analytics-Arbeitsbereich verknüpften Azure-Abonnement verbunden sind. 
 
@@ -152,7 +152,7 @@ Alle Knoten, auf denen ein Agent installiert ist, werden auf der Registerkarte *
 Konfigurieren Sie die gewünschten Funktionen:
 
 - [Systemmonitor](network-performance-monitor-performance-monitor.md#configuration)
-- [Dienstendpunktmonitor](network-performance-monitor-performance-monitor.md#configuration)
+- [Dienstkonnektivitätsmonitor](network-performance-monitor-performance-monitor.md#configuration)
 - [ExpressRoute-Monitor](network-performance-monitor-expressroute.md#configuration)
 
  
@@ -251,7 +251,7 @@ Der Netzwerkleistungsmonitor verwendet die Warnfunktionen von [Azure Monitor](ht
 
 Das bedeutet, dass alle Benachrichtigungen mithilfe von [Aktionsgruppen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview) verwaltet werden.  
 
-Gehen Sie als NPM-Benutzer wie folgt vor, um eine Warnung über Azure Monitor zu erstellen: 
+Gehen Sie als NPM-Benutzer wie folgt vor, um eine Warnung über Log Analytics zu erstellen: 
 1. Es wird ein Link angezeigt, der Sie zum Azure-Portal umleitet. Klicken Sie darauf, um das Portal aufzurufen.
 2. Klicken Sie auf die Kachel für die Netzwerkleistungsmonitor-Lösung. 
 3. Navigieren Sie zu „Konfigurieren“.  

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: e734ebb2032a5354e8701129b6a8ad913837bb52
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 8e8b3e647d6ef91d69a7b81ca6fdf36fc9d0f9c8
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010616"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523952"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Häufig gestellte Fragen zu unterschiedlichen APIs in Azure Cosmos DB
 
@@ -266,8 +266,8 @@ Bei der REST-API werden einige Endpunkte/Abfrageoptionen von der Tabellen-API vo
 | REST-Methode | REST-Endpunkt/-Abfrageoption | Dokumentations-URLs | Erklärung |
 | ------------| ------------- | ---------- | ----------- |
 | GET, PUT | /?restype=service@comp=properties| [Set Table Service Properties](https://docs.microsoft.com/rest/api/storageservices/set-table-service-properties) (Festlegen von Tabellendiensteigenschaften) und [Get Table Service Properties](https://docs.microsoft.com/rest/api/storageservices/get-table-service-properties) (Abrufen von Tabellendiensteigenschaften) | Dieser Endpunkt dient zum Festlegen von CORS-Regeln, Storage Analytics-Konfiguration und Protokollierungseinstellungen. CORS wird derzeit nicht unterstützt. Analyse und Protokollierung werden in Azure Cosmos DB anders behandelt als in Azure Storage-Tabellen. |
-| OPTIONS | /<Tabellenressourcenname> | [Pre-flight CORS table request (Preflight-CORS-Tabellenanforderung)](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request) | Dies ist Teil von CORS und wird daher derzeit von Azure Cosmos DB nicht unterstützt. |
-| GET | /?restype=service@comp=stats | [Get Table Service Stats (Abrufen der Tabellendienststatistik)](https://docs.microsoft.com/rest/api/storageservices/get-table-service-stats) | Gibt Aufschluss über die Replikationsgeschwindigkeit von Daten zwischen primärer Datenbank und sekundären Datenbanken. Wird in Cosmos DB nicht benötigt, da hier die Replikation Teil der Schreibvorgänge ist. |
+| OPTIONS | /\<Name_der_Tabellenressource> | [Pre-flight CORS table request](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request) (Preflight-CORS-Tabellenanforderung) | Dies ist Teil von CORS und wird daher derzeit von Azure Cosmos DB nicht unterstützt. |
+| GET | /?restype=service@comp=stats | [Get Table Service Stats](https://docs.microsoft.com/rest/api/storageservices/get-table-service-stats) (Abrufen der Tabellendienststatistik) | Gibt Aufschluss über die Replikationsgeschwindigkeit von Daten zwischen primärer Datenbank und sekundären Datenbanken. Wird in Cosmos DB nicht benötigt, da hier die Replikation Teil der Schreibvorgänge ist. |
 | GET, PUT | /mytable?comp=acl | [Get Table ACL](https://docs.microsoft.com/rest/api/storageservices/get-table-acl) (Tabellen-ACL abrufen) und [Set Table ACL](https://docs.microsoft.com/rest/api/storageservices/set-table-acl) (Tabellen-ACL festlegen) | Dient zum Abrufen und Festlegen der gespeicherten Zugriffsrichtlinien, die für die Verwaltung von Shared Access Signatures (SAS) verwendet werden. SAS werden zwar unterstützt, aber unterschiedlich festgelegt und verwaltet. |
 
 Darüber hinaus unterstützt die Table-API von Azure Cosmos DB nur das JSON-Format und nicht das ATOM-Format.

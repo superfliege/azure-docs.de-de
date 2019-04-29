@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: ramkris
-ms.openlocfilehash: 5a25d0cb8fe1dffbc0a12f6ef88e2adc037a2393
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 60afd8128224050d456699e798d814a259e106ae
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56982979"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543820"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Beschleunigen von Big Data-Analysen mit dem Apache Spark-Connector für Azure Cosmos DB
 
 Sie können [Spark](https://spark.apache.org/)-Aufträge mit in Azure Cosmos DB gespeicherten Daten mithilfe des Cosmos DB-Spark-Connectors ausführen. Sie können Cosmos für die Batch- und Streamverarbeitung und als Bereitstellungsebene für Zugriff mit geringer Latenz verwenden.
 
-Sie können den Connector mit [Azure Databricks](https://azure.microsoft.com/services/databricks) oder Azure HDInsight verwenden, die beide verwaltete Spark-Cluster in Azure bieten. Die folgende Tabelle zeigt die unterstützten Spark-Versionen.
+Sie können den Connector mit [Azure Databricks](https://azure.microsoft.com/services/databricks) oder [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) verwenden, die beide verwaltete Spark-Cluster in Azure bieten. Die folgende Tabelle zeigt die unterstützten Spark-Versionen.
 
 | Komponente | Version |
 |---------|-------|
@@ -129,7 +129,7 @@ Sie können den Connector über eine Quelle auf GitHub erstellen oder die Uber-J
 
 ### <a name="using-databricks-notebooks"></a>Verwenden von Azure Databricks-Notebooks
 
-Befolgen Sie die Anweisungen im Azure Databricks-Leitfaden im Abschnitt [Use the Azure Cosmos DB Spark connector (Verwenden des Azure Cosmos DB-Connectors)](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/cosmosdb-connector.html), um eine Bibliothek in Ihrem Databricks-Arbeitsbereich zu erstellen.
+Befolgen Sie die Anweisungen im Azure Databricks-Leitfaden im Abschnitt [Use the Azure Cosmos DB Spark connector (Verwenden des Azure Cosmos DB-Connectors)](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/cosmosdb-connector.html), um eine Bibliothek mithilfe Ihres Databricks-Arbeitsbereichs zu erstellen.
 
 > [!NOTE]
 > Beachten Sie, dass die Seite **Use the Azure Cosmos DB Spark connector (Verwenden des Azure Cosmos DB-Connectors)** aktuell nicht auf dem neuesten Stand ist. Statt die sechs JAR-Dateien in sechs verschiedene Bibliotheken zu laden, können Sie einfach die Uber-JAR-Datei von Maven unter https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.3.5/jar) herunterladen und diese eine JAR-Datei/Bibliothek installieren.

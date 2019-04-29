@@ -1,5 +1,5 @@
 ---
-title: 'Azure SQL-Datenbank: Verwalten von einzelnen und in einem Pool zusammengefassten Datenbanken nach der Migration | Microsoft-Dokumentation'
+title: 'Azure SQL-Datenbank: Verwalten von Einzel- und Pooldatenbanken nach der Migration | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Ihre Datenbank nach der Migration zu Azure SQL-Datenbank verwalten.
 services: sql-database
 ms.service: sql-database
@@ -19,15 +19,15 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59358414"
 ---
-# <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Neuer DBA in der Cloud: Verwalten Ihrer einzelnen und in einem Pool zusammengefassten Datenbanken in Azure SQL-Datenbank
+# <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Neuer DBA in der Cloud: Verwalten Ihrer Einzel- und Pooldatenbanken in Azure SQL-Datenbank
 
-Der Umstieg von der herkömmlichen, selbstverwalteten, automatisch gesteuerten Umgebung auf eine PaaS-Umgebung kann anfangs eine Herausforderung darstellen. Als App-Entwickler oder DBA möchten Sie wissen, welche Plattformfunktionen in erster Linie dafür sorgen, dass Ihre Anwendung verfügbar, leistungsfähig, sicher und zuverlässig ist – und zwar zu jeder Zeit. Dieser Artikel soll Aufklärung leisten. Hier werden die Ressourcen kurz zusammengefasst, und Sie erhalten hilfreiche Informationen zur optimalen Verwendung der wichtigsten Funktionen von SQL-Datenbank mit einzelnen und in einem Pool zusammengefassten Datenbanken. So können Sie Ihre Anwendung effizient verwalten und ausführen, um optimale Ergebnisse in der Cloud zu erzielen. Die typische Zielgruppe für diesen Artikel sind Nutzer, die
+Der Umstieg von der herkömmlichen, selbstverwalteten, automatisch gesteuerten Umgebung auf eine PaaS-Umgebung kann anfangs eine Herausforderung darstellen. Als App-Entwickler oder DBA möchten Sie wissen, welche Plattformfunktionen in erster Linie dafür sorgen, dass Ihre Anwendung verfügbar, leistungsfähig, sicher und zuverlässig ist – und zwar zu jeder Zeit. Dieser Artikel soll Aufklärung leisten. Hier werden die Ressourcen kurz zusammengefasst, und Sie erhalten hilfreiche Informationen zur optimalen Verwendung der wichtigsten Funktionen von SQL-Datenbank mit Einzel- und Pooldatenbanken. So können Sie Ihre Anwendung effizient verwalten und ausführen, um optimale Ergebnisse in der Cloud zu erzielen. Die typische Zielgruppe für diesen Artikel sind Nutzer, die
 
 - die Migration ihrer Anwendung(en) zu Azure SQL-Datenbank evaluieren – Modernisierung der Anwendung(en)
 - ihre Anwendung(en) gerade migrieren – Szenario für laufende Migration
 - die Migration zu Azure SQL DB gerade abgeschlossen haben – Neuer DBA in der Cloud
 
-Dieser Artikel behandelt einige der Hauptmerkmale von Azure SQL-Datenbank als Plattform, die bei der Arbeit mit einzelnen und in Pools für elastische Datenbanken zusammengefasste Datenbanken optimale Unterstützung bietet. darunter:
+Dieser Artikel behandelt einige der Hauptmerkmale von Azure SQL-Datenbank als Plattform, die bei der Arbeit mit Einzel- und Pooldatenbanken in Pools für elastische Datenbanken optimale Unterstützung bietet. darunter:
 
 - Geschäftskontinuität und Notfallwiederherstellung (Business Continuity Disaster Recovery, BCDR)
 - Sicherheit und Compliance
@@ -86,7 +86,7 @@ SQL-Datenbank bietet [zwei Authentifizierungsmethoden](sql-database-control-acce
 - [Azure Active Directory-Authentifizierung](sql-database-aad-authentication.md)
 - SQL-Authentifizierung
 
-Die herkömmliche Windows-Authentifizierung wird nicht unterstützt. Azure Active Directory (AD) ist ein Dienst für die zentrale Identitäts- und Zugriffsverwaltung. Er ermöglicht sämtlichen Mitarbeitern Ihrer Organisation den bequemen Zugriff per einmaliger Anmeldung (SSO, Single Sign-On). Dies vereinfacht die Authentifizierung, da die Anmeldeinformationen für alle Azure-Dienste gemeinsam genutzt werden. AAD unterstützt [MFA (Multi-Factor Authentication)](sql-database-ssms-mfa-authentication.md) und lässt sich mit [wenigen Klicks](../active-directory/hybrid/how-to-connect-install-express.md) in Windows Server Active Directory integrieren. Die SQL-Authentifizierung funktioniert genau so, wie Sie es aus der Vergangenheit gewohnt sind. Benutzer können sich mit ihrem Benutzernamen und Kennwort bei beliebigen Datenbanken auf einem bestimmten SQL-Datenbankserver authentifizieren. Dadurch können SQL-Datenbank und SQL Data Warehouse außerdem eine mehrstufige Authentifizierung und Benutzerkonten für Gäste innerhalb einer Azure AD-Domäne anbieten. Wenn Sie bereits über eine lokale Active Directory verfügen, können Sie dieses Verzeichnis mit Azure Active Directory verbinden und es auf Azure erweitern.
+Die herkömmliche Windows-Authentifizierung wird nicht unterstützt. Azure Active Directory (AD) ist ein Dienst für die zentrale Identitäts- und Zugriffsverwaltung. Er ermöglicht sämtlichen Mitarbeitern Ihrer Organisation den bequemen Zugriff per einmaliger Anmeldung (SSO, Single Sign-On). Dies vereinfacht die Authentifizierung, da die Anmeldeinformationen für alle Azure-Dienste gemeinsam genutzt werden. AAD unterstützt [MFA (Multi-Factor Authentication)](sql-database-ssms-mfa-authentication.md) und lässt sich mit [wenigen Klicks](../active-directory/hybrid/how-to-connect-install-express.md) in Windows Server Active Directory integrieren. Die SQL-Authentifizierung funktioniert genau so, wie Sie es aus der Vergangenheit gewohnt sind. Benutzer können sich mit ihrem Benutzernamen und Kennwort bei beliebigen Datenbanken auf einem bestimmten SQL-Datenbank-Server authentifizieren. Dadurch können SQL-Datenbank und SQL Data Warehouse außerdem eine mehrstufige Authentifizierung und Benutzerkonten für Gäste innerhalb einer Azure AD-Domäne anbieten. Wenn Sie bereits über eine lokale Active Directory verfügen, können Sie dieses Verzeichnis mit Azure Active Directory verbinden und es auf Azure erweitern.
 
 |**Wenn Sie...**|**SQL-Datenbank/SQL Data Warehouse**|
 |---|---|
@@ -109,7 +109,7 @@ Es gibt mehrere Methoden, um Verbindungszugriffe für Ihre Anwendung optimal zu 
 
 #### <a name="firewall"></a>Firewall
 
-Eine Firewall verhindert externe Zugriffe auf Ihren Server, indem nur bestimmten Entitäten Zugang zu Ihrem SQL-Datenbankserver gewährt wird. Standardmäßig sind alle Verbindungen mit dem SQL-Datenbankserver und darauf enthaltenen Datenbanken unzulässig – es sei denn, es handelt sich um Verbindungen von anderen Azure-Diensten. Mit einer Firewallregel können Sie den Serverzugriff auf bestimmte Entitäten beschränken (z. B. auf einen Entwicklercomputer), indem Sie zulassen, dass der Computer mit der jeweiligen IP-Adresse die Firewall passieren darf. Zudem können Sie einen Bereich von IP-Adressen angeben, über die Sie den Zugriff auf den SQL-Datenbankserver gewähren möchten. Beispielsweise können Sie die IP-Adressen aller Entwicklercomputer in Ihrer Organisation in einem Schritt hinzufügen, indem Sie auf der Seite für Firewalleinstellungen einen Bereich angeben.
+Eine Firewall verhindert externe Zugriffe auf Ihren Server, indem nur bestimmten Entitäten Zugang zu Ihrem SQL-Datenbank-Server gewährt wird. Standardmäßig sind alle Verbindungen mit dem SQL-Datenbank-Server und darauf enthaltenen Datenbanken unzulässig – es sei denn, es handelt sich um Verbindungen von anderen Azure-Diensten. Mit einer Firewallregel können Sie den Serverzugriff auf bestimmte Entitäten beschränken (z. B. auf einen Entwicklercomputer), indem Sie zulassen, dass der Computer mit der jeweiligen IP-Adresse die Firewall passieren darf. Zudem können Sie einen Bereich von IP-Adressen angeben, über die Sie den Zugriff auf den SQL-Datenbank-Server gewähren möchten. Beispielsweise können Sie die IP-Adressen aller Entwicklercomputer in Ihrer Organisation in einem Schritt hinzufügen, indem Sie auf der Seite für Firewalleinstellungen einen Bereich angeben.
 
 Firewallregeln können auf Server- oder auf Datenbankebene erstellt werden. IP-Firewallregeln auf Serverebene können mithilfe des Azure-Portals oder mit SSMS erstellt werden. Weitere Informationen zum Festlegen von Firewallregeln auf Server- und Datenbankebene finden Sie unter: [Erstellen von IP-Firewallregeln in SQL-Datenbank](sql-database-security-tutorial.md#create-firewall-rules).
 

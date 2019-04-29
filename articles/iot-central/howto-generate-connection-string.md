@@ -8,29 +8,29 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 3a5e8d15d9a705892fe54c50e9b79e6d42af78d9
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: f302cbfa7152ae30be434f560c0c39056d40f9f4
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426657"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59615760"
 ---
 # <a name="generate-a-device-connection-string-to-connect-to-an-azure-iot-central-application"></a>Generieren einer Geräte-Verbindungszeichenfolge für die Verbindung mit einer Azure IoT Central-Anwendung
 
-Dieser Artikel beschreibt, wie ein Entwickler eine Verbindungszeichenfolge für ein Gerät generieren kann, das eine Verbindung mit einer IoT Central-Anwendung herstellen muss. Die in diesem Artikel beschriebene Vorgehensweise zeigt, wie eine Verbindung für ein einzelnes Gerät über eine Shared Access Signature (SAS) schnell hergestellt wird. Dieser Ansatz ist nützlich, wenn Sie mit IoT Central experimentieren oder Geräte testen. Alternative Ansätze für die Verwendung in einer Produktionsumgebung finden Sie unter [Gerätekonnektivität in Azure IoT Central](concepts-connectivity.md).
+Dieser Artikel beschreibt, wie ein Entwickler eine Verbindungszeichenfolge für ein Gerät generieren kann, das eine Verbindung mit einer IoT Central-Anwendung herstellen muss. Die in diesem Artikel beschriebene Vorgehensweise zeigt Ihnen, wie eine Verbindung für ein einzelnes Gerät über eine Shared Access Signature (SAS) schnell hergestellt wird. Dieser Ansatz ist nützlich, wenn Sie mit IoT Central experimentieren oder Geräte testen. Alternative Ansätze für die Verwendung in einer Produktionsumgebung finden Sie unter [Gerätekonnektivität in Azure IoT Central](concepts-connectivity.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
 
-1. Eine Azure IoT Central-Anwendung. Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Anwendung](quick-deploy-iot-central.md).
-1. Einen Entwicklungscomputer mit installierter [Node.js](https://nodejs.org/)-Version 8.0.0 oder höher. Sie können `node --version` in der Befehlszeile ausführen, um Ihre Version zu überprüfen. Node.js ist für eine Vielzahl von Betriebssystemen verfügbar.
+- Eine Azure IoT Central-Anwendung. Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Anwendung](quick-deploy-iot-central.md).
+- Einen Entwicklungscomputer mit installierter [Node.js](https://nodejs.org/)-Version 8.0.0 oder höher. Sie können `node --version` in der Befehlszeile ausführen, um Ihre Version zu überprüfen. Node.js ist für eine Vielzahl von Betriebssystemen verfügbar.
 
 ## <a name="get-connection-information"></a>Abrufen von Verbindungsinformationen
 
 In den folgenden Schritten wird beschrieben, wie Sie die Informationen zum Generieren einer SAS-Verbindungszeichenfolge für ein Gerät abrufen:
 
-1. Suchen Sie im **Explorer** das echte Gerät, das eine Verbindung mit Ihrer Anwendung herstellen soll:
+1. Suchen Sie im **Device Explorer** das echte Gerät, das eine Verbindung mit Ihrer Anwendung herstellen soll:
 
     ![Auswählen eines echten Geräts](media/howto-generate-connection-string/real-devices.png)
 

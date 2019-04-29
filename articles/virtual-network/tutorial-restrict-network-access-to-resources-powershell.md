@@ -1,6 +1,6 @@
 ---
 title: 'Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen: Azure PowerShell | Microsoft-Dokumentation'
-description: In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure PowerShell den Netzwerkzugriff auf Azure-Ressourcen wie Azure Storage und Azure SQL-Datenbank mit virtuellen Netzwerkdienstendpunkten einschränken können.
+description: In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure PowerShell den Netzwerkzugriff auf Azure-Ressourcen wie Azure Storage und Azure SQL-Datenbank mit VNET-Dienstendpunkten einschränken können.
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
@@ -24,11 +24,11 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59795133"
 ---
-# <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen mit virtuellen Netzwerkdienstendpunkten mithilfe von PowerShell
+# <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen mit VNET-Dienstendpunkten mithilfe von PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Virtuelle Netzwerkdienstendpunkte ermöglichen es Ihnen, den Netzwerkzugriff auf einige Azure-Dienstressourcen auf ein Subnetz eines virtuellen Netzwerks einzuschränken. Sie können auch den Internetzugriff auf die Ressourcen entfernen. Dienstendpunkte ermöglichen eine direkte Verbindung zwischen Ihrem virtuellen Netzwerk und unterstützten Azure-Diensten, sodass Sie mithilfe des privaten Adressraums Ihres virtuellen Netzwerks auf die Azure-Dienste zugreifen können. Datenverkehr, der über Dienstendpunkte für Azure-Ressourcen bestimmt ist, verbleibt immer im Microsoft Azure-Backbonenetzwerk. In diesem Artikel werden folgende Vorgehensweisen behandelt:
+VNET-Dienstendpunkte ermöglichen es Ihnen, den Netzwerkzugriff auf einige Azure-Dienstressourcen auf ein Subnetz eines virtuellen Netzwerks einzuschränken. Sie können auch den Internetzugriff auf die Ressourcen entfernen. Dienstendpunkte ermöglichen eine direkte Verbindung zwischen Ihrem virtuellen Netzwerk und unterstützten Azure-Diensten, sodass Sie mithilfe des privaten Adressraums Ihres virtuellen Netzwerks auf die Azure-Dienste zugreifen können. Datenverkehr, der über Dienstendpunkte für Azure-Ressourcen bestimmt ist, verbleibt immer im Microsoft Azure-Backbonenetzwerk. In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 * Erstellen eines virtuellen Netzwerks mit einem Subnetz
 * Hinzufügen eines Subnetzes und Aktivieren eines Dienstendpunkts

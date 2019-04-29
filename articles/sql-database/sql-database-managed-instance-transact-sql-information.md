@@ -4,28 +4,24 @@ description: In diesem Artikel werden die T-SQL-Unterschiede zwischen einer verw
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
-ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: carlrab, bonova
+ms.reviewer: sstein, carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: 8654899e0a6dfce8f25855eba6c5f4a88af78665
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.custom: seoapril2019
+ms.openlocfilehash: 5f476aa571ba2827cbe6f4e4f258545b5e9d3ba1
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57903129"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579307"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server
 
-Die Bereitstellungsoption „Verwaltete Instanz“ bietet umfassende Kompatibilität mit einer lokalen SQL Server-Datenbank-Engine. Die meisten Features der SQL Server-Datenbank-Engine werden in verwalteten Instanzen unterstützt.
-
-![Migration](./media/sql-database-managed-instance/migration.png)
-
-Es bestehen dennoch einige Unterschiede in der Syntax und im Verhalten. Diese Unterschiede werden in diesem Artikel zusammengefasst und erläutert. <a name="Differences"></a>
+In diesem Artikel werden die Unterschiede in der Syntax und dem Verhalten zwischen einer verwalteten Azure SQL-Datenbank-Instanz und einer lokalen SQL Server-Datenbank-Engine zusammengefasst und erläutert. <a name="Differences"></a>
 
 - [Verfügbarkeit](#availability), einschließlich der Unterschiede bei [Always On](#always-on-availability) und [Sicherungen](#backup)
 - [Sicherheit](#security), einschließlich der Unterschiede bei [Überwachung](#auditing), [Zertifikaten](#certificates), [Anmeldeinformationen](#credential), [Kryptografieanbietern](#cryptographic-providers), [Anmeldungen/Benutzern](#logins--users), [Dienstschlüssel und Diensthauptschlüssel](#service-key-and-service-master-key)
@@ -33,6 +29,10 @@ Es bestehen dennoch einige Unterschiede in der Syntax und im Verhalten. Diese Un
 - [Funktionen](#functionalities), einschließlich [BULK INSERT/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [verteilter Transaktionen](#distributed-transactions), [erweiterter Ereignisse](#extended-events), [externer Bibliotheken](#external-libraries), [Filestream und Filetable](#filestream-and-filetable), [semantischer Volltextsuche](#full-text-semantic-search), [Verbindungsserver](#linked-servers), [PolyBase](#polybase), [Replikation](#replication), [RESTORE](#restore-statement), [Service Broker](#service-broker), [gespeicherter Prozeduren, Funktionen und Trigger](#stored-procedures-functions-triggers)
 - [Features mit abweichendem Verhalten in verwalteten Instanzen](#Changes)
 - [Temporäre Einschränkungen und bekannte Probleme](#Issues)
+
+Die Bereitstellungsoption „Verwaltete Instanz“ bietet umfassende Kompatibilität mit einer lokalen SQL Server-Datenbank-Engine. Die meisten Features der SQL Server-Datenbank-Engine werden in verwalteten Instanzen unterstützt.
+
+![Migration](./media/sql-database-managed-instance/migration.png)
 
 ## <a name="availability"></a>Verfügbarkeit
 
@@ -59,7 +59,7 @@ In verwalteten Instanzen werden automatische Sicherungen durchgeführt, sodass B
   - Bandoptionen: `REWIND`, `NOREWIND`, `UNLOAD` und `NOUNLOAD` werden nicht unterstützt.
   - Protokollspezifische Optionen: `NORECOVERY`, `STANDBY` und `NO_TRUNCATE` werden nicht unterstützt.
 
- Einschränkungen:  
+Einschränkungen:  
 
 - Mit einer verwalteten Instanz können Sie eine Instanzdatenbank in einer Sicherung mit bis zu 32 Stripes sichern. Dies ist ausreichend für Datenbanken mit bis zu 4 TB, wenn die Sicherungskomprimierung verwendet wird.
 - Die maximale Stripegröße für Sicherungen mit dem Befehl `BACKUP` in einer verwalteten Instanz ist 195 GB (maximale Blobgröße). Erhöhen Sie die Anzahl der Stripes im Sicherungsbefehl, um die einzelne Stripegröße zu verringern und diese Einschränkung einzuhalten.
@@ -216,8 +216,8 @@ Weitere Informationen finden Sie unter [ALTER DATABASE SET PARTNER und SET WITNE
 ### <a name="database-options"></a>Datenbankoptionen
 
 - Mehrere Protokolldateien werden nicht unterstützt.
-- In-Memory-Objekte werden im Diensttarif „Universell“ nicht unterstützt.  
-- Es gilt eine Einschränkung von 280 Dateien pro Instanz, d.h. maximal 280 Dateien pro Datenbank. Für diese Einschränkung werden Datendateien und Protokolldateien berücksichtigt.  
+- In-Memory-Objekte werden in der Dienstebene „Universell“ nicht unterstützt.  
+- Es gilt eine Einschränkung von 280 Dateien pro universelle Instanz, d.h. maximal 280 Dateien pro Datenbank. Für diese Einschränkung werden im Tarif „Universell“ Datendateien und Protokolldateien berücksichtigt. [Der Tarif „Unternehmenskritisch“ unterstützt 32.767 Dateien pro Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics).
 - Eine Datenbank darf keine Dateigruppen mit Filestreamdaten enthalten.  Bei der Wiederherstellung treten Fehler auf, wenn die BAK-Datei `FILESTREAM`-Daten enthält.  
 - Jede Datei wird in Azure Blob Storage gespeichert. E/A und Durchsatz pro Datei hängen von der Größe der jeweiligen Datei ab.  
 
@@ -288,10 +288,9 @@ Weitere Informationen finden Sie unter [ALTER DATABASE](https://docs.microsoft.c
     - Der Warteschlangenleser wird nicht unterstützt.  
     - Die Befehlsshell wird noch nicht unterstützt.
   - Verwaltete Instanzen können nicht auf externe Ressourcen zugreifen (z.B. Netzwerkfreigaben über Robocopy).  
-  - PowerShell wird noch nicht unterstützt.
   - Analysis Services werden nicht unterstützt.
 - Benachrichtigungen werden teilweise unterstützt.
-- Die E-Mail-Benachrichtigung wird unterstützt. Dazu muss ein Datenbank-E-Mail-Profil konfiguriert werden. Es kann nur ein Datenbank-E-Mail-Profil festgelegt werden, für das in der Public Preview-Phase der Name `AzureManagedInstance_dbmail_profile` angegeben werden muss (temporäre Einschränkung).  
+- Die E-Mail-Benachrichtigung wird unterstützt. Dazu muss ein Datenbank-E-Mail-Profil konfiguriert werden. SQL Agent kann nur ein Datenbank-E-Mail-Profil verwenden, für das der Name `AzureManagedInstance_dbmail_profile` angegeben werden muss.  
   - Pager wird nicht unterstützt.  
   - NetSend wird nicht unterstützt.
   - Warnungen werden noch nicht unterstützt.
@@ -427,15 +426,12 @@ Die folgenden Datenbankoptionen werden festgelegt oder überschrieben und könne
 - Alle vorhandenen arbeitsspeicheroptimierten Dateigruppen werden in XTP umbenannt.  
 - Die Optionen `SINGLE_USER` und `RESTRICTED_USER` werden in `MULTI_USER` konvertiert.
 
- Einschränkungen:  
+Einschränkungen:  
 
 - `.BAK`-Dateien mit mehreren Sicherungssätzen können nicht wiederhergestellt werden.
 - `.BAK`-Dateien mit mehreren Protokolldateien können nicht wiederhergestellt werden.
 - Bei der Wiederherstellung treten Fehler auf, wenn die BAK-Datei `FILESTREAM`-Daten enthält.
-- Sicherungen, die Datenbanken mit aktiven In-Memory-Objekten enthalten, können derzeit nicht wiederhergestellt werden.  
-- Sicherungen, die Datenbanken enthalten, in denen zu einem bestimmten Zeitpunkt In-Memory-Objekte vorhanden waren, können derzeit nicht wiederhergestellt werden.
-- Sicherungen, die Datenbanken im schreibgeschützten Modus enthalten, können derzeit nicht wiederhergestellt werden. Diese Einschränkung wird in Kürze aufgehoben.
-
+- Sicherungen, die Datenbanken mit aktiven In-Memory-Objekten enthalten, können in einer universellen Instanz nicht wiederhergestellt werden.  
 Weitere Informationen zu Restore-Anweisungen finden Sie unter [RESTORE-Anweisungen](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
 
 ### <a name="service-broker"></a>Service Broker
@@ -471,13 +467,12 @@ Die folgenden Variablen, Funktionen und Sichten geben abweichende Ergebnisse zur
 - `@@SERVICENAME` gibt NULL zurück, da das für SQL Server bestehende Konzept des Diensts nicht für eine verwaltete Instanz gilt. Siehe [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).
 - `SUSER_ID` wird unterstützt. Gibt NULL zurück, wenn die Azure AD-Anmeldung in „sys.syslogins“ nicht vorhanden ist. Siehe [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql).  
 - `SUSER_SID` wird nicht unterstützt. Gibt falsche Daten zurück (temporäres bekanntes Problem). Siehe [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql).
-- `GETDATE()` und andere integrierte Datum/Uhrzeit-Funktionen geben die Zeit immer in der UTC-Zeitzone zurück. Siehe [GETDATE](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql).
 
 ## <a name="Issues"></a> Bekannte Probleme und Einschränkungen
 
 ### <a name="tempdb-size"></a>TEMPDB-Größe
 
-Die maximale Dateigröße von `tempdb` darf im Tarif „Universell“ nicht größer als 24 GB/Kern sein. Die maximale Größe von `tempdb` ist im Tarif „Unternehmenskritisch“ auf die Speichergröße der Instanz begrenzt. `tempdb` wird immer in 12 Datendateien unterteilt. Diese maximale Größe pro Datei kann nicht geändert werden. Neue Dateien können `tempdb` hinzugefügt werden. Einige Abfragen geben möglicherweise einen Fehler zurück, wenn für sie mehr als 24 GB/Kern in `tempdb` erforderlich sind.
+Die maximale Dateigröße von `tempdb` darf im Tarif „Universell“ nicht größer als 24GB/Kern sein. Die maximale Größe von `tempdb` ist im Tarif „Unternehmenskritisch“ auf die Speichergröße der Instanz begrenzt. `tempdb` wird immer in 12 Datendateien unterteilt. Diese maximale Größe pro Datei kann nicht geändert werden. Neue Dateien können `tempdb` hinzugefügt werden. Einige Abfragen geben möglicherweise einen Fehler zurück, wenn für sie mehr als 24 GB/Kern in `tempdb` erforderlich sind.
 
 ### <a name="cannot-restore-contained-database"></a>Eigenständige Datenbank kann nicht wiederhergestellt werden
 
@@ -485,9 +480,11 @@ Die verwaltete Instanz kann [eigenständige Datenbanken](https://docs.microsoft.
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Überschreiten des Speicherplatzes mit kleinen Datenbankdateien
 
-Jede verwaltete Instanz verfügt über bis zu 35 TB Speicher für Azure Premium-Datenträger, und jede Datenbankdatei wird auf einem separaten physischen Datenträger abgelegt. Mögliche Datenträgergrößen sind 128 GB, 256 GB, 512 GB, 1 TB oder 4 TB. Nicht verwendeter Speicherplatz auf dem Datenträger wird nicht berechnet, aber die Gesamtgröße der Azure Premium-Datenträger darf 35 TB nicht überschreiten. In einigen Fällen kann eine verwaltete Instanz, die nicht insgesamt 8 TB benötigt, aufgrund interner Fragmentierung das Azure-Limit von 35 TB überschreiten.
+`CREATE DATABASE`-, `ALTER DATABASE ADD FILE`- und `RESTORE DATABASE`-Anweisungen schlagen möglicherweise fehl, weil die Instanz das Azure-Speicherlimit erreichen kann.
 
-Eine verwaltete Instanz könnte beispielsweise über eine Datei mit einer Größe von 1,2 TB verfügen, die auf einem 4-TB-Datenträger gespeichert ist, und über 248 Dateien mit einer Größe von jeweils 1 GB, die auf separaten 128-GB-Datenträgern gespeichert sind. In diesem Beispiel:
+Jede universelle verwaltete Instanz verfügt über bis zu 35TB Speicher für Azure Premium-Datenträger, und jede Datenbankdatei wird auf einem separaten physischen Datenträger abgelegt. Mögliche Datenträgergrößen sind 128 GB, 256 GB, 512 GB, 1 TB oder 4 TB. Nicht verwendeter Speicherplatz auf dem Datenträger wird nicht berechnet, aber die Gesamtgröße der Azure Premium-Datenträger darf 35 TB nicht überschreiten. In einigen Fällen kann eine verwaltete Instanz, die nicht insgesamt 8 TB benötigt, aufgrund interner Fragmentierung das Azure-Limit von 35 TB überschreiten.
+
+Eine universelle verwaltete Instanz könnte beispielsweise über eine Datei mit einer Größe von 1,2TB verfügen, die auf einem 4-TB-Datenträger gespeichert ist, und über 248 Dateien mit einer Größe von jeweils 1GB, die auf separaten 128-GB-Datenträgern gespeichert sind. In diesem Beispiel:
 
 - Die Gesamtgröße des zugewiesenen Datenträgerspeichers beträgt 1 x 4 TB + 248 x 128 GB = 35 TB.
 - Der reservierte Gesamtspeicherplatz für Datenbanken in der Instanz beträgt 1 x 1,2 TB + 248 x 1 GB = 1,4 TB.
@@ -495,6 +492,8 @@ Eine verwaltete Instanz könnte beispielsweise über eine Datei mit einer Größ
 Dies verdeutlicht, dass eine verwaltete Instanz unter bestimmten Umständen aufgrund einer spezifischen Verteilung von Dateien das Azure Premium-Datenträgerlimit in Höhe von 35 TB erreichen kann, wo Sie dies möglicherweise nicht erwarten.
 
 In diesem Beispiel funktionieren vorhandene Datenbanken weiterhin und können ohne Probleme weiter wachsen, solange keine neuen Dateien hinzugefügt werden. Es könnten jedoch keine neuen Datenbanken erstellt oder wiederhergestellt werden, da für neue Plattenlaufwerke nicht genügend Speicherplatz vorhanden ist, selbst nicht dann, wenn die Gesamtgröße aller Datenbanken das Größenlimit der Instanz nicht überschreitet. Der Fehler, der in diesem Fall zurückgegeben wird, ist nicht klar.
+
+Sie können mithilfe von Systemansichten [die Anzahl der verbleibenden Dateien identifizieren](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1). Wenn Sie dieses Limit erreichen, versuchen Sie, [einige der kleineren Dateien mithilfe der DBCC SHRINKFILE-Anweisung zu leeren und zu löschen](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file), oder ziehen Sie [Merkmale des Diensttarifs](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics) zu Rate.
 
 ### <a name="incorrect-configuration-of-sas-key-during-database-restore"></a>Falsche Konfiguration des SAS-Schlüssels bei der Datenbankwiederherstellung
 
@@ -512,9 +511,13 @@ In SQL Server Management Studio (SSMS) und SQL Server Data Tools (SSDT) kommt es
 
 Mehrere Systemansichten, Leistungsindikatoren, Fehlermeldungen, XEvents und Fehlerprotokolleinträge zeigen GUID-Datenbankbezeichner anstelle der eigentlichen Datenbanknamen an. Verlassen Sie sich nicht auf diese GUID-Bezeichner, da sie in Zukunft durch tatsächliche Datenbanknamen ersetzt werden.
 
+### <a name="database-mail"></a>Datenbank-E-Mail
+
+`@query`-Parameter im Verfahren [sp_send_db_mail](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) funktionieren nicht.
+
 ### <a name="database-mail-profile"></a>Datenbank-E-Mail-Profil
 
-Das vom SQL-Agent verwendete E-Mail-Profil der Datenbank muss `AzureManagedInstance_dbmail_profile` lauten.
+Das vom SQL-Agent verwendete E-Mail-Profil der Datenbank muss `AzureManagedInstance_dbmail_profile` lauten. Es gibt keine Einschränkungen im Hinblick auf andere Namen für Datenbank-E-Mail-Profile.
 
 ### <a name="error-logs-are-not-persisted"></a>Fehlerprotokolle sind nicht persistent
 
@@ -563,11 +566,11 @@ CLR-Module, die in einer verwalteten Instanz bereitgestellt werden, und Verbindu
 
 **Problemumgehung**: Verwenden Sie Kontextverbindungen nach Möglichkeit im CLR-Modul.
 
-### <a name="tde-encrypted-databases-dont-support-user-initiated-backups"></a>Für Datenbanken mit TDE-Verschlüsselung werden keine vom Benutzer initiierten Sicherungen unterstützt.
+### <a name="tde-encrypted-databases-with-service-managed-key-dont-support-user-initiated-backups"></a>Bei TDE-verschlüsselten Datenbanken mit vom Dienst verwaltetem Schlüssel werden keine vom Benutzer initiierten Sicherungen unterstützt.
 
-Sie können `BACKUP DATABASE ... WITH COPY_ONLY` nicht für eine Datenbank ausführen, die mit Transparent Data Encryption (TDE) verschlüsselt ist. Bei TDE wird erzwungen, dass Sicherungen mit internen TDE-Schlüsseln verschlüsselt werden. Da der Schlüssel nicht exportiert werden kann, können Sie die Sicherung nicht wiederherstellen.
+Sie können `BACKUP DATABASE ... WITH COPY_ONLY` nicht bei einer Datenbank ausführen, die mit vom Dienst verwalteter Transparent Data Encryption (TDE) verschlüsselt ist. Bei vom Dienst verwalteter TDE wird erzwungen, dass Sicherungen mit einem internen TDE-Schlüssel verschlüsselt werden. Da der Schlüssel nicht exportiert werden kann, können Sie die Sicherung nicht wiederherstellen.
 
-**Problemumgehung**: Verwenden Sie automatische Sicherungen und die Point-in-Time-Wiederherstellung, oder deaktivieren Sie die Verschlüsselung für die Datenbank.
+**Problemumgehung**: Verwenden Sie automatische Sicherungen und die Point-in-Time-Wiederherstellung, oder verwenden Sie stattdessen [vom Kunden verwaltetes (BYOK) TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#customer-managed-transparent-data-encryption---bring-your-own-key), oder aber deaktivieren Sie die Verschlüsselung für die Datenbank.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 9112d50384aba288038343ff9a14ed55542fb722
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0cf5a80e3eedbe7efb8463162b5b3ed489ac08c8
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121348"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577897"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Leitfaden für personenbezogene Daten, die in Log Analytics und Application Insights gespeichert sind
 
@@ -86,6 +86,9 @@ Wie bereits weiter oben im Abschnitt [Strategie für den Umgang mit personenbezo
 ### <a name="view-and-export"></a>Anzeigen und Exportieren
 
 Sowohl für das Anzeigen als auch für das Exportieren von Datenanforderungen sollte die [Log Analytics-Abfrage-API](https://dev.loganalytics.io/) oder die [Application Insights-Abfrage-API](https://dev.applicationinsights.io/quickstart) verwendet werden. Die Logik, mit der die Daten in eine geeignete Form konvertiert werden, um sie für Ihre Benutzer bereitzustellen, muss von Ihnen selbst implementiert werden. [Azure Functions](https://azure.microsoft.com/services/functions/) eignet sich hervorragend zum Hosten einer solchen Logik.
+
+> [!IMPORTANT]
+>  Obwohl die Mehrzahl der Bereinigungsvorgänge wesentlich schneller als die SLA ausgeführt werden kann, ist – aufgrund der starken Auswirkung auf die verwendete Datenplattform – **die formelle SLA für die Ausführung von Bereinigungsvorgängen auf 30 Tage festgelegt**. Dies ist ein automatisierter Prozess; es gibt keine Möglichkeit anzufordern, dass ein Vorgang schneller verarbeitet werden soll.
 
 ### <a name="delete"></a>Löschen
 

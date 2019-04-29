@@ -99,7 +99,7 @@ Wenn Sie eine Optimierungsoption auf „ON“ festlegen, werden ggf. geerbte Ein
 > Im Fall einer [aktiven Georeplikation](sql-database-auto-failover-group.md) muss die automatische Optimierung nur für die primäre Datenbank konfiguriert werden. Automatisch angewandte Aktionen zur Optimierung (z.B. das Erstellen oder Löschen des Index) werden automatisch in die schreibgeschützte sekundäre Datenbank repliziert. Der Versuch, die automatischen Optimierung in der sekundären schreibgeschützten Datenbank über T-SQL zu aktivieren, führt zu einem Fehler, da für die schreibgeschützte sekundäre Datenbank keine abweichende Optimierungskonfiguration unterstützt wird.
 >
 
-Informationen zu den T-SQL-Optionen für die Konfiguration der automatischen Optimierung finden Sie unter [ALTER DATABASE SET-Optionen (Transact-SQL) für SQL-Datenbankserver](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current).
+Informationen zu den T-SQL-Optionen für die Konfiguration der automatischen Optimierung finden Sie unter [ALTER DATABASE SET-Optionen (Transact-SQL) für SQL-Datenbank-Server](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current).
 
 ## <a name="disabled-by-the-system"></a>Vom System deaktiviert
 

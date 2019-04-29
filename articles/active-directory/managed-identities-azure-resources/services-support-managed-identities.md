@@ -4,18 +4,18 @@ description: Liste der Dienste, die verwaltete Identitäten für Azure-Ressource
 services: active-directory
 author: MarkusVi
 ms.author: priyamo
-ms.date: 11/28/2018
+ms.date: 04/15/2019
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d524f5f58e7381dd89f36c5d2821e6911ed9ec15
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 79c3f8ae183c78b19f7f520f8154bf9484a1f795
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59045456"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607992"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen
 
@@ -81,8 +81,8 @@ Konfigurieren Sie die verwaltete Identität für Azure App Service anhand der fo
 
 Verwenden Sie die folgende Liste, um eine verwaltete Identität mit [Azure Blueprints](../../governance/blueprints/overview.md) zu nutzen:
 
-- [Azure-Portal – Blaupausenzuweisung](../../governance/blueprints/create-blueprint-portal.md#assign-a-blueprint)
-- [REST-API – Blaupausenzuweisung](../../governance/blueprints/create-blueprint-rest-api.md#assign-a-blueprint)
+- [Azure-Portal: Blaupausenzuweisung](../../governance/blueprints/create-blueprint-portal.md#assign-a-blueprint)
+- [REST-API: Blaupausenzuweisung](../../governance/blueprints/create-blueprint-rest-api.md#assign-a-blueprint)
 
 ### <a name="azure-functions"></a>Azure-Funktionen
 
@@ -156,10 +156,10 @@ Die folgenden Dienste unterstützen die Azure AD-Authentifizierung und wurden mi
 
 Konfigurieren Sie den Zugriff auf Azure Resource Manager anhand der folgenden Liste:
 
-- [Zuweisen des Zugriffs über das Azure-Portal](howto-assign-access-portal.md)
+- [Zuweisen des Zugriffs im Azure-Portal](howto-assign-access-portal.md)
 - [Zuweisen des Zugriffs mithilfe von PowerShell](howto-assign-access-powershell.md)
-- [Zuweisen des Zugriffs mithilfe der Azure-Befehlszeilenschnittstelle](howto-assign-access-CLI.md)
-- [Zuweisen des Zugriffs mithilfe der Azure Resource Manager-Vorlage](../../role-based-access-control/role-assignments-template.md)
+- [Zuweisen des Zugriffs mithilfe der Azure CLI](howto-assign-access-CLI.md)
+- [Zuweisen des Zugriffs mit Azure Resource Manager-Vorlagen](../../role-based-access-control/role-assignments-template.md)
 
 | Cloud | Ressourcen-ID | Status |
 |--------|------------|--------|
@@ -213,7 +213,7 @@ Konfigurieren Sie den Zugriff auf Azure Resource Manager anhand der folgenden Li
 | Azure Deutschland |   | Nicht verfügbar. |
 | Azure China 21Vianet |  | Nicht verfügbar. |
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage-blobs-and-queues"></a>Azure Storage-Blobs und -Warteschlangen
 
 | Cloud | Ressourcen-ID | Status |
 |--------|------------|--------|

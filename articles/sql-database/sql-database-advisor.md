@@ -75,7 +75,7 @@ Empfehlungen zum **Beheben von Schemaproblemen** werden angezeigt, wenn der SQL-
 
 „Schemaprobleme“ sind eine Klasse von Syntaxfehlern in SQL Server. Sie treten auf, wenn die Definition der SQL-Abfrage und die Definition des Datenbankschemas nicht übereinstimmen. Dies kann z.B. der Fall sein, wenn eine der von der Abfrage erwarteten Spalten in der Zieltabelle fehlt oder umgekehrt. 
 
-Die Empfehlung zum Beheben von Schemaproblemen wird angezeigt, wenn der Azure SQL-Datenbankdienst eine Anomalie in der Anzahl von schemabezogenen SQL-Fehlern erkennt, die in Ihrer SQL-Datenbank auftreten. Die folgende Tabelle zeigt die möglichen Fehler in Bezug auf Schemaprobleme:
+Die Empfehlung zum Beheben von Schemaproblemen wird angezeigt, wenn der Azure SQL-Datenbank-Dienst eine Anomalie in der Anzahl von schemabezogenen SQL-Fehlern erkennt, die in Ihrer SQL-Datenbank auftreten. Die folgende Tabelle zeigt die möglichen Fehler in Bezug auf Schemaprobleme:
 
 | SQL-Fehlercode | Message |
 | --- | --- |

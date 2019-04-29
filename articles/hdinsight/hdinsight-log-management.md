@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: ac1c1c4ae21ebd184b833fe4d23084f7cf324d2c
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 7ff89e12a1011c0a16644324584eb1610302b1b3
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500473"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544275"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Verwalten von Protokollen für einen HDInsight-Cluster
 
@@ -176,5 +176,5 @@ Zum Sammeln der Protokolle von allen Knoten an einem zentralen Speicherort könn
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Monitoring and Logging Practice for HDInsight](https://msdn.microsoft.com/library/dn749790.aspx) (Vorgehensweise zur Überwachung und Protokollierung für HDInsight)
-* [Zugreifen auf die Apache Hadoop YARN-Anwendungsanmeldung unter Linux-basiertem HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
+* [Zugreifen auf Apache Hadoop YARN-Anwendungsprotokolle in Linux-basiertem HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [How to control size of log files for various HDP components (Steuern der Größe von Protokolldateien für verschiedene HDP-Komponenten)](https://community.hortonworks.com/articles/8882/how-to-control-size-of-log-files-for-various-hdp-c.html)

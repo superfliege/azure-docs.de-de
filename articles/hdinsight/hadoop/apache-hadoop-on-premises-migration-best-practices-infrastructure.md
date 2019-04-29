@@ -177,7 +177,7 @@ HDInsight unterstützt [Virtual Network-Dienstendpunkte](../../virtual-network/v
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Dienstendpunkte im virtuellen Netzwerk](../../virtual-network/virtual-network-service-endpoints-overview.md)
+- [VNET-Dienstendpunkte](../../virtual-network/virtual-network-service-endpoints-overview.md)
 - [Enhance HDInsight security with service endpoints (Erhöhen der Sicherheit von HDInsight mit Dienstendpunkten)](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)
 
 ## <a name="connect-hdinsight-to-the-on-premises-network"></a>Verbinden von HDInsight mit einem lokalen Netzwerk

@@ -176,7 +176,7 @@ Das SAS-Token, das Sie für Ihren Azure Storage-Container generieren, muss **rwl
 
 ## <a name="performance-considerations"></a>Überlegungen zur Leistung
 
-Es gibt Szenarien, in denen durch die intensive Nutzung erweiterter Ereignisse mehr aktiver Arbeitsspeicher kumuliert wird, als für das System vorteilhaft ist. Deshalb sorgt das Azure SQL-Datenbanksystem für eine dynamische Festlegung und Anpassung von Grenzwerten für die Menge an aktivem Arbeitsspeicher, die von einer Ereignissitzung kumuliert werden kann. Viele Faktoren fließen in die dynamische Berechnung ein.
+Es gibt Szenarien, in denen durch die intensive Nutzung erweiterter Ereignisse mehr aktiver Arbeitsspeicher kumuliert wird, als für das System vorteilhaft ist. Deshalb sorgt das Azure SQL-Datenbank-System für eine dynamische Festlegung und Anpassung von Grenzwerten für die Menge an aktivem Arbeitsspeicher, die von einer Ereignissitzung kumuliert werden kann. Viele Faktoren fließen in die dynamische Berechnung ein.
 
 Wenn Sie eine Fehlermeldung erhalten, die besagt, dass ein Arbeitsspeichermaximum erzwungen wurde, können Sie z. B. die folgenden Maßnahmen ergreifen:
 

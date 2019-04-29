@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 5186c11259a03717f83db675cbfe7c90f3ecb7cc
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d216a26dc01ae3a6946c57138bb124b41f50a151
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734554"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546237"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Netzwerkleistungsmonitor-Lösung: häufig gestellte Fragen
 
@@ -25,7 +25,7 @@ ms.locfileid: "55734554"
 
 Dieser Artikel umfasst die häufig gestellten Fragen (FAQs) zum Netzwerkleistungsmonitor (NPM) in Azure.
 
-Der [Netzwerkleistungsmonitor](/azure/networking/network-monitoring-overview) ist eine cloudbasierte [hybride Netzwerküberwachungslösung](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md), mit der Sie die Netzwerkleistung zwischen verschiedenen Punkten in Ihrer Netzwerkinfrastruktur überwachen können. Zudem können Sie die Netzwerkkonnektivität mit [Dienst- und Anwendungsendpunkten](../../azure-monitor/insights/network-performance-monitor-service-endpoint.md) und [die Leistung von Azure ExpressRoute](../../azure-monitor/insights/network-performance-monitor-expressroute.md) überwachen. 
+Der [Netzwerkleistungsmonitor](/azure/networking/network-monitoring-overview) ist eine cloudbasierte [hybride Netzwerküberwachungslösung](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md), mit der Sie die Netzwerkleistung zwischen verschiedenen Punkten in Ihrer Netzwerkinfrastruktur überwachen können. Zudem können Sie die Netzwerkkonnektivität mit [Dienst- und Anwendungsendpunkten](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md) und [die Leistung von Azure ExpressRoute](../../azure-monitor/insights/network-performance-monitor-expressroute.md) überwachen. 
 
 Der Netzwerkleistungsmonitor erkennt Netzwerkprobleme wie ins Nichts führenden Datenverkehr (Blackholing), Routingfehler und Probleme, die mit herkömmlichen Netzwerküberwachungsmethoden nicht erkannt werden können. Die Lösung generiert Warnungen und benachrichtigt Sie, sobald ein Schwellenwert für eine Netzwerkverbindung überschritten wird. Sie gewährleistet außerdem das rechtzeitige Erkennen von Leistungsproblemen im Netzwerk und ordnet die Ursache des Problems einem bestimmten Netzwerksegment oder Gerät zu. 
 
@@ -40,7 +40,7 @@ Nachfolgend sind die Plattformanforderungen für die verschiedenen Funktionen de
 - Die Funktion „ExpressRoute-Monitor“ des Netzwerkleistungsmonitors unterstützt nur das Windows Server-Betriebssystem (2008 SP1 oder höher).
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>Kann ich Linux-Computer als Überwachungsknoten im Netzwerkleistungsmonitor verwenden?
-Die Funktion zum Überwachen von Netzwerken mithilfe von Linux-basierten Knoten befindet sich derzeit in der privaten Vorschau. Wenden Sie sich an Ihren Account Manager, um mehr zu erfahren. Nachdem Sie die Arbeitsbereichs-ID angegeben haben, aktivieren wir die Funktion. Linux-Agents bieten die Überwachungsfunktion nur für die Funktion „Systemmonitor“ des Netzwerkleistungsmonitors und sind für die Funktionen „Dienstkonnektivitätsmonitor“ und „ExpressRoute-Monitor“ nicht verfügbar.
+Die Funktion zum Überwachen von Netzwerken mithilfe von Linux-basierten Knoten befindet sich derzeit in der Vorschau. Wenden Sie sich an Ihren Account Manager, um mehr zu erfahren. Nachdem Sie die Arbeitsbereichs-ID angegeben haben, aktivieren wir die Funktion. Linux-Agents bieten die Überwachungsfunktion nur für die Funktion „Systemmonitor“ des Netzwerkleistungsmonitors und sind für die Funktionen „Dienstkonnektivitätsmonitor“ und „ExpressRoute-Monitor“ nicht verfügbar.
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>Welche Größenanforderungen gelten für die vom Netzwerkleistungsmonitor zur Überwachung verwendeten Knoten?
 Zur Ausführung der Netzwerkleistungsmonitor-Lösung auf virtuellen Knotencomputern zum Überwachen von Netzwerken müssen die Knoten mindestens einen Speicher von 500 MB und einen Kern aufweisen. Zum Ausführen des Netzwerkleistungsmonitors müssen Sie keine separaten Knoten verwenden. Die Lösung kann auf Knoten ausgeführt werden, auf denen andere Workloads ausgeführt werden. Die Lösung bietet die Möglichkeit, den Überwachungsprozess zu beenden, falls mehr als 5 % der CPU-Ressourcen genutzt werden.

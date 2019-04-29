@@ -86,7 +86,7 @@ Gehen Sie folgendermaßen vor, um das Beispiel herunterzuladen und auszuführen:
 
 2. Um ein Projekt zu erstellen, öffnen Sie die Projektmappe *ElasticScaleStarterKit.sln* im Verzeichnis *C#*.
 
-3. Öffnen Sie in der Projektmappe für das Beispielprojekt der Datei *app.config*. Folgen Sie dann den Anweisungen in der Datei, um den Namen des Azure SQL-Datenbankservers und Ihre Anmeldeinformationen (Benutzername und Kennwort) hinzuzufügen.
+3. Öffnen Sie in der Projektmappe für das Beispielprojekt der Datei *app.config*. Folgen Sie dann den Anweisungen in der Datei, um den Namen des Azure SQL-Datenbank-Servers und Ihre Anmeldeinformationen (Benutzername und Kennwort) hinzuzufügen.
 
 4. Erstellen Sie die Anwendung, und führen Sie sie aus. Wenn Sie dazu aufgefordert werden, lassen Sie die NuGet-Pakete der Projektmappe von Visual Studio wiederherstellen. Dadurch wird die aktuelle Version der Clientbibliothek für elastische Datenbanken von NuGet heruntergeladen.
 

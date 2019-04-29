@@ -58,10 +58,10 @@ Rufen Sie die Verbindungsinformationen ab, die Sie zum Herstellen einer Verbindu
 
 ## <a name="connect-to-your-database"></a>Verbinden mit der Datenbank
 
-Stellen Sie in SMSS eine Verbindung mit Ihrer Azure SQL-Datenbankserverinstanz her.
+Stellen Sie in SMSS eine Verbindung mit Ihrer Azure SQL-Datenbank-Serverinstanz her.
 
 > [!IMPORTANT]
-> Ein Azure SQL-Datenbankserver lauscht am Port 1433. Um hinter einer Unternehmensfirewall eine Verbindung mit einem SQL-Datenbankserver herzustellen, muss dieser Port in der Firewall geöffnet sein.
+> Ein Azure SQL-Datenbank-Server lauscht an Port 1433. Um von hinter einer Unternehmensfirewall eine Verbindung mit einem SQL-Datenbank-Server herzustellen, muss dieser Port der Firewall geöffnet sein.
 >
 
 1. Öffnen Sie SSMS. Das Dialogfeld **Mit Server verbinden** wird angezeigt.

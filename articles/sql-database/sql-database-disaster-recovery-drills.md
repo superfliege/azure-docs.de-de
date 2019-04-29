@@ -69,6 +69,6 @@ Schließen Sie das Verfahren ab, indem Sie die Anwendungsintegrität nach der Wi
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen über Szenarien für die Geschäftskontinuität finden Sie unter [Szenarien für die Geschäftskontinuität](sql-database-business-continuity.md).
-* Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md)
+* Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [automatisierter SQL-Datenbanksicherungen](sql-database-automated-backups.md)
 * Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](sql-database-recovery-using-backups.md).
 * Informationen zu schnelleren Wiederherstellungsoptionen finden Sie unter [Aktive Georeplikation](sql-database-active-geo-replication.md) und [Autofailover-Gruppen](sql-database-auto-failover-group.md).

@@ -172,7 +172,7 @@ Die Zeichenfolge für Verbindungen mit SQL-Datenbank unterscheidet sich etwas vo
 
 ### <a name="connection-ip-address"></a>Verbindung: IP-Adresse
 
-Der SQL-Datenbankserver muss so konfiguriert werden, dass er Verbindungen von der IP-Adresse des Computers akzeptiert, auf dem Ihr Clientprogramm gehostet wird. Um diese Konfiguration vorzunehmen, bearbeiten Sie die Firewalleinstellungen über das [Azure-Portal](https://portal.azure.com/).
+Der SQL-Datenbank-Server muss so konfiguriert werden, dass er Verbindungen von der IP-Adresse des Computers akzeptiert, auf dem Ihr Clientprogramm gehostet wird. Um diese Konfiguration vorzunehmen, bearbeiten Sie die Firewalleinstellungen über das [Azure-Portal](https://portal.azure.com/).
 
 Wenn Sie die IP-Adresse nicht konfigurieren, tritt bei Ihrem Programm ein Fehler auf, und in einer Fehlermeldung wird die erforderliche IP-Adresse angezeigt.
 
@@ -241,7 +241,7 @@ Unter Linux können die folgenden Hilfsprogramme nützlich sein:
 - `netstat -nap`
 - `nmap -sS -O 127.0.0.1`: Ändern Sie den Beispielwert in Ihre IP-Adresse.
 
-Unter Windows kann das Hilfsprogramm [PortQry.exe](https://www.microsoft.com/download/details.aspx?id=17148) nützliche Informationen liefern. Nachfolgend eine Beispielabfrage für die Portinformationen eines SQL-Datenbankservers, die auf einem Laptop ausgeführt wurde:
+Unter Windows kann das Hilfsprogramm [PortQry.exe](https://www.microsoft.com/download/details.aspx?id=17148) nützliche Informationen liefern. Nachfolgend eine Beispielabfrage für die Portinformationen eines SQL-Datenbank-Servers, die auf einem Laptop ausgeführt wurde:
 
 ```cmd
 [C:\Users\johndoe\]

@@ -67,7 +67,7 @@ Verwenden Sie das Navigationsmenü im linken Bereich des Portals, um die Option 
 
   Wenn Sie diese Seite zum ersten Mal besuchen, muss das Optionsfeld **Alle Netzwerke** ausgewählt sein. Dies bewirkt, dass für den Event Hubs-Namespace alle eingehenden Verbindungen zugelassen werden.
 
-## <a name="add-virtual-network-service-endpoint"></a>Hinzufügen eines Dienstendpunkts des virtuellen Netzwerks
+## <a name="add-virtual-network-service-endpoint"></a>Hinzufügen eines VNET-Dienstendpunkts
 
 Zum Beschränken des Zugriffs müssen Sie den Dienstendpunkt des virtuellen Netzwerks (VNET-Dienstendpunkt) für diesen Event Hubs-Namespace integrieren.
 

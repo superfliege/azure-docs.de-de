@@ -498,7 +498,7 @@ Sie können jetzt die Datenfunktionen von Excel verwenden. Verwenden Sie die Ver
 
 ### <a name="cost"></a>Kosten
 
-Es gibt keine zusätzlichen Gebühren für die Verwendung der Abfragefunktion für elastische Datenbanken. Derzeit ist dieses Feature nur für Datenbanken vom Typ „Premium“ und „Unternehmenskritisch“ und Pools für elastische Datenbanken als Endpunkt verfügbar, aber die Shards können einen beliebigen Diensttarif aufweisen.
+Es gibt keine zusätzlichen Gebühren für die Verwendung der Abfragefunktion für elastische Datenbanken. Derzeit ist dieses Feature nur für Datenbanken vom Typ „Premium“ und „Unternehmenskritisch“ und Pools für elastische Datenbanken als Endpunkt verfügbar, aber die Shards können eine beliebige Dienstebene aufweisen.
 
 Preisinformationen finden Sie in der [SQL-Datenbank – Preisdetails](https://azure.microsoft.com/pricing/details/sql-database/).
 

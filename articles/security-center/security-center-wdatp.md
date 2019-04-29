@@ -55,7 +55,7 @@ Sie können die Warnung weiter untersuchen, indem Sie sie in Windows Defender AT
 
 Dieses Feature unterstützt die Erkennung unter Windows Server 2012 R2 und Windows Server 2016.
 
-Nur die Server in Abonnements für die Standarddienstebene werden unterstützt.
+Nur die Server in Abonnements für die Standard-Dienstebene werden unterstützt.
 
 ## <a name="onboarding-servers-to-security-center"></a>Integrieren von Servern in Azure Security Center 
 

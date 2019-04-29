@@ -129,7 +129,7 @@
           href: event-hubs-messaging-exceptions.md
     - name: Verwenden von Firewalls
       href: event-hubs-ip-filtering.md
-    - name: Verwenden von Dienstendpunkten im virtuellen Netzwerk
+    - name: Verwenden von VNET-Dienstendpunkten
       href: event-hubs-service-endpoints.md
     - name: Automatisches Skalieren von Durchsatzeinheiten
       href: event-hubs-auto-inflate.md

@@ -164,7 +164,7 @@ Eine Punkt-zu-Standort-VPN-Verbindung ist sicherer als direkte RDP- oder SSH-Ver
 - Dedizierte WAN-Verbindungen sind in der Regel stabiler und leistungsfähiger.
 
 ## <a name="secure-your-critical-azure-service-resources-to-only-your-virtual-networks"></a>Beschränken und Schützen Ihrer kritischen Ressourcen von Azure-Diensten auf Ihre virtuellen Netzwerke
-Mit Dienstendpunkten von virtuellen Netzwerken werden der private Adressenbereich Ihres virtuellen Netzwerks und die Identität Ihres virtuellen Netzwerks über eine direkte Verbindung auf die Azure-Dienste erweitert. Endpunkte ermöglichen es Ihnen, Ihre kritischen Ressourcen von Azure-Diensten auf Ihre virtuellen Netzwerke zu beschränken und so zu schützen. Der Datenverkehr aus Ihrem virtuellen Netzwerk an den Azure-Dienst verbleibt immer im Backbone-Netzwerk von Microsoft Azure.
+Mit VNET-Dienstendpunkten werden der private Adressbereich Ihres virtuellen Netzwerks und die Identität Ihres virtuellen Netzwerks über eine direkte Verbindung auf die Azure-Dienste erweitert. Endpunkte ermöglichen es Ihnen, Ihre kritischen Ressourcen von Azure-Diensten auf Ihre virtuellen Netzwerke zu beschränken und so zu schützen. Der Datenverkehr aus Ihrem virtuellen Netzwerk an den Azure-Dienst verbleibt immer im Backbone-Netzwerk von Microsoft Azure.
 
 Dienstendpunkte bieten folgende Vorteile:
 
@@ -175,7 +175,7 @@ Dienstendpunkte bieten folgende Vorteile:
 
 - **Einfache Einrichtung mit weniger Verwaltungsaufwand**: Sie benötigen in Ihren virtuellen Netzwerken keine reservierten öffentlichen IP-Adressen mehr, um Azure-Ressourcen über eine IP-Firewall zu schützen. Es sind keine NAT- oder Gatewaygeräte erforderlich, um die Dienstendpunkte einzurichten. Dienstendpunkte werden einfach per Klick in einem Subnetz konfiguriert. Es entsteht kein zusätzlicher Aufwand für die Verwaltung der Endpunkte.
 
-Weitere Informationen zu Dienstendpunkten und den Azure-Diensten und Regionen, für die Dienstendpunkte verfügbar sind, finden Sie in [Dienstendpunkte im virtuellen Netzwerk](../virtual-network/virtual-network-service-endpoints-overview.md).
+Weitere Informationen zu Dienstendpunkten und den Azure-Diensten und Regionen, für die Dienstendpunkte verfügbar sind, finden Sie unter [VNET-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md).
 
 ## <a name="next-step"></a>Nächster Schritt
 Weitere bewährte Methoden für die Sicherheit, die Sie beim Entwerfen, Bereitstellen und Verwalten Ihrer Cloudlösungen mithilfe von Azure verwenden können, finden Sie unter [Sicherheit in Azure: bewährte Methoden und Muster](security-best-practices-and-patterns.md).

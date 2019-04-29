@@ -183,7 +183,7 @@ Beim Erstellen des Clusters:
     
 
 ## <a name="allow-your-application-running-in-azure-to-access-the-sql-db"></a>Zulassen des Zugriffs auf die SQL-Datenbank durch die in Azure ausgeführte Anwendung
-Sie haben zuvor eine SQL-Firewallregel erstellt, um Ihrer lokal ausgeführten Anwendung den Zugriff zu gewähren.  Als Nächstes müssen Sie der in Azure ausgeführten Anwendung den Zugriff auf die SQL-Datenbank erteilen.  Erstellen Sie einen [Dienstendpunkt eines virtuellen Netzwerks](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) für den Service Fabric-Cluster und anschließend eine Regel, um diesem Endpunkt den Zugriff auf die SQL-Datenbank zu gewähren. Geben Sie unbedingt die Variable der Clusterressourcengruppe an, die Sie beim Erstellen des Clusters notiert haben. 
+Sie haben zuvor eine SQL-Firewallregel erstellt, um Ihrer lokal ausgeführten Anwendung den Zugriff zu gewähren.  Als Nächstes müssen Sie der in Azure ausgeführten Anwendung den Zugriff auf die SQL-Datenbank erteilen.  Erstellen Sie einen [VNET-Dienstendpunkt](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) für den Service Fabric-Cluster und anschließend eine Regel, um diesem Endpunkt den Zugriff auf die SQL-Datenbank zu gewähren. Geben Sie unbedingt die Variable der Clusterressourcengruppe an, die Sie beim Erstellen des Clusters notiert haben. 
 
 ```powershell
 # Create a virtual network service endpoint

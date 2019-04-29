@@ -19,4 +19,4 @@ ms.locfileid: "55105050"
 
 |  |  |
 |---------|---------|
-| [Überwachen von Tresoren auf Instanzen ohne Endpunkte im virtuellen Netzwerk](../articles/governance/policy/samples/keyvault-no-vnet-rules.md) | Key Vault-Tresore werden überwacht, um Instanzen ohne Dienstendpunkte im virtuellen Netzwerk zu ermitteln. |
+| [Überwachen von Tresoren auf Instanzen ohne Endpunkte im virtuellen Netzwerk](../articles/governance/policy/samples/keyvault-no-vnet-rules.md) | Key Vault-Tresore werden überwacht, um Instanzen ohne VNET-Dienstendpunkte zu ermitteln. |

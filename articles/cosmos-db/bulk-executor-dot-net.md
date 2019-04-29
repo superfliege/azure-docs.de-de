@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: ba6a352d965f3f90a122f5277ad23ec5f92907eb
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: cfb90dc31635001291b1661f31ec2ee1fc378404
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258461"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523340"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Verwenden der BulkExecutor-.NET-Bibliothek zum Ausführen von Massenvorgängen in Azure Cosmos DB
 
@@ -115,7 +115,7 @@ Die Anwendung BulkImportSample generiert zufällig Dokumente und importiert sie 
    |NumberOfDocumentsImported (long)   |  Die Gesamtanzahl von Dokumenten, die von allen an den Massenimport-API-Aufruf gesendeten Dokumenten erfolgreich importiert wurden.       |
    |TotalRequestUnitsConsumed (double)   |   Die Gesamtanzahl von Anforderungseinheiten, die vom Massenimport-API-Aufruf verbraucht wurden.      |
    |TotalTimeTaken (TimeSpan)    |   Die Gesamtzeit, die der Massenimport-API-Aufruf benötigt, um die Ausführung abzuschließen.      |
-   |BadInputDocuments (List<object>)   |     Die Liste der Dokumente mit ungültigem Format, die im Massenimport-API-Aufruf nicht erfolgreich importiert wurden. Benutzer sollten die zurückgegebenen Dokumente korrigieren und den Import wiederholen. Zu Dokumenten mit ungültigem Format gehören auch Dokumente, deren ID-Wert keine Zeichenfolge ist (NULL-Werte oder andere Datentypen werden als ungültig betrachtet).    |
+   |BadInputDocuments (List\<Objekt>)   |     Die Liste der Dokumente mit ungültigem Format, die im Massenimport-API-Aufruf nicht erfolgreich importiert wurden. Benutzer sollten die zurückgegebenen Dokumente korrigieren und den Import wiederholen. Zu Dokumenten mit ungültigem Format gehören auch Dokumente, deren ID-Wert keine Zeichenfolge ist (NULL-Werte oder andere Datentypen werden als ungültig betrachtet).    |
 
 ## <a name="bulk-update-data-in-azure-cosmos-db"></a>Massenaktualisierung von Daten in Azure Cosmos DB
 

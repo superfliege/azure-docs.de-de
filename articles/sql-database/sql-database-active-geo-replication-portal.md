@@ -1,6 +1,6 @@
 ---
 title: 'Azure-Portal: SQL-Datenbank – Georeplikation | Microsoft-Dokumentation'
-description: Konfigurieren der Georeplikation für eine einzelne Datenbank oder in einem Pool zusammengefasste Datenbanken in Azure SQL-Datenbank über das Azure-Portal und Initiieren eines Failovers
+description: Konfigurieren der Georeplikation für eine Einzel- oder Pooldatenbank in Azure SQL-Datenbank über das Azure-Portal und Initiieren eines Failovers
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -12,18 +12,18 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: 2e63c44db2391f63078f0945caa69a43c0c464cf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8bada96c648881a9943176c45115627a829fcc58
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001365"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608604"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurieren der aktiven Georeplikation für Azure SQL-Datenbank im Azure-Portal und Initiieren eines Failovers
 
-In diesem Artikel erfahren Sie, wie Sie die [aktive Georeplikation für Einzeldatenbanken und in einem Pool zusammengefasste Datenbanken](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities) in Azure SQL-Datenbank mithilfe des [Azure-Portals](https://portal.azure.com) konfigurieren und ein Failover initiieren.
+In diesem Artikel erfahren Sie, wie Sie die [aktive Georeplikation für Einzel- und Pooldatenbanken](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities) in Azure SQL-Datenbank mithilfe des [Azure-Portals](https://portal.azure.com) konfigurieren und ein Failover initiieren.
 
-Weitere Informationen zu Autofailover-Gruppen mit einer einzelnen Datenbank oder in einem Pool zusammengefassten Datenbanken finden Sie unter [Bewährte Methoden der Verwendung von Failovergruppen für eine einzelne Datenbank und in einem Pool zusammengefasste Datenbanken](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). Weitere Informationen zu Autofailover-Gruppen mit verwalteten Instanzen (Vorschau) finden Sie unter [Bewährte Methoden der Verwendung von Failovergruppen mit verwalteten Instanzen](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances).
+Weitere Informationen zu Autofailover-Gruppen mit Einzel- oder Pooldatenbanken finden Sie unter [Bewährte Methoden der Verwendung von Failovergruppen für Einzel- und Pooldatenbanken](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). Weitere Informationen zu Autofailover-Gruppen mit verwalteten Instanzen (Vorschau) finden Sie unter [Bewährte Methoden der Verwendung von Failovergruppen mit verwalteten Instanzen](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -40,7 +40,7 @@ Mit den folgenden Schritten wird eine neue sekundäre Datenbank in einer Partner
 
 Zum Hinzufügen einer sekundären Datenbank müssen Sie der Besitzer oder Mitbesitzer des Abonnements sein.
 
-Die sekundäre Datenbank hat den gleichen Namen wie die primäre Datenbank und standardmäßig auch den gleichen Diensttarif und die gleiche Computegröße. Die sekundäre Datenbank kann eine Einzeldatenbank oder eine in einem Pool zusammengefasste Datenbank sein. Weitere Informationen finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und [Auf virtuellen Kernen basierendes Einkaufsmodell](sql-database-service-tiers-vcore.md).
+Die sekundäre Datenbank hat den gleichen Namen wie die primäre Datenbank und standardmäßig auch die gleiche Dienstebene und Computegröße. Die sekundäre Datenbank kann eine Einzel- oder Pooldatenbank sein. Weitere Informationen finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und [vCore-basiertes Kaufmodell](sql-database-service-tiers-vcore.md).
 Nachdem die sekundäre Datenbank erstellt und das Seeding ausgeführt wurde, beginnt die Replikation der Daten von der primären Datenbank in die neue sekundäre Datenbank.
 
 > [!NOTE]
@@ -73,7 +73,7 @@ Für die sekundäre Datenbank kann ein Wechsel durchgeführt werden, bei dem sie
     ![Failover](./media/sql-database-geo-replication-failover-portal/secondaries.png)
 4. Klicken Sie auf **Ja** , um das Failover zu beginnen.
 
-Durch den Befehl wird die sekundäre Datenbank sofort in die primäre Rolle geändert.
+Durch den Befehl wird die sekundäre Datenbank sofort in die primäre Rolle geändert. Dieser Vorgang sollte normalerweise innerhalb von 30 Sekunden oder weniger abgeschlossen sein.
 
 Es gibt einen kurzer Zeitraum, in dem beide Datenbanken während des Rollenwechsels (ca. 0 bis 25 Sekunden) nicht verfügbar sind. Wenn die primäre Datenbank über mehrere sekundäre Datenbanken verfügt, werden die anderen sekundären Datenbanken durch den Befehl automatisch neu konfiguriert, sodass sie eine Verbindung mit der neuen primären Datenbank herstellen. Unter normalen Umständen dauert der gesamte Vorgang nicht länger als 1 Minute.
 

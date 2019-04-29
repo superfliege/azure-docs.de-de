@@ -37,7 +37,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>Erstellen einer Containerregistrierung
 
-In dieser Schnellstartanleitung erstellen Sie eine Registrierung vom Typ *Basic*. Dabei handelt es sich um eine kostenoptimierte Option für Entwickler, die sich mit Azure Container Registry vertraut machen. Ausführliche Informationen zu verfügbaren Diensttarifen finden Sie unter [Azure Container Registry-SKUs][container-registry-skus].
+In dieser Schnellstartanleitung erstellen Sie eine Registrierung vom Typ *Basic*. Dabei handelt es sich um eine kostenoptimierte Option für Entwickler, die sich mit Azure Container Registry vertraut machen. Ausführliche Informationen zu verfügbaren Dienstebenen finden Sie unter [Azure Container Registry-SKUs][container-registry-skus].
 
 Erstellen Sie mithilfe des Befehls [az acr create][az-acr-create] eine ACR-Instanz. Der Registrierungsname muss innerhalb von Azure eindeutig sein und zwischen 5 und 50 alphanumerische Zeichen enthalten. Im folgenden Beispiel wird der Name *myContainerRegistry007* verwendet. Ersetzen Sie diesen Namen durch einen eindeutigen Wert.
 

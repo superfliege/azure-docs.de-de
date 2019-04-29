@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 1f55e03d9a925bf939d627f376d29edf27461e74
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8fcab1ead4ab6135e715dc173829178e43f8af2a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001118"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522709"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Datenquellen für Windows-Ereignisprotokolle in Azure Monitor
 Windows-Ereignisprotokolle sind eine der häufigsten [Datenquellen](agent-data-sources.md) zum Sammeln von Daten mithilfe von Windows-Agents, da viele Anwendungen Daten in das Windows-Ereignisprotokoll schreiben.  Sie können Ereignisse aus Standardprotokollen wie beispielsweise dem System- und dem Anwendungsprotokoll sammeln und darüber hinaus benutzerdefinierte Protokolle angeben, die von den zu überwachenden Anwendungen erstellt werden.
@@ -54,10 +54,10 @@ Windows-Ereignisdatensätze weisen den Typ **Event** auf und besitzen die in der
 | EventLevelName |Schweregrad des Ereignisses in Textform. |
 | EventLog |Name des Ereignisprotokolls, aus dem das Ereignis gesammelt wurde. |
 | ParameterXml |Ereignisparameterwerte in XML-Format. |
-| ManagementGroupName |Name der Verwaltungsgruppe für System Center Operations Manager-Agents.  Bei anderen Agents lautet dieser Wert „AOI-<workspace ID>“. |
+| ManagementGroupName |Name der Verwaltungsgruppe für System Center Operations Manager-Agents.  Bei anderen Agents lautet dieser Wert „`AOI-<workspace ID>`“. |
 | RenderedDescription |Ereignisbeschreibung mit Parameterwerten. |
 | Quelle |Quelle des Ereignisses. |
-| SourceSystem |Typ des Agents, auf dem das Ereignis gesammelt wurde. <br> OpsManager: Windows-Agent (entweder Direktverbindung oder von Operations Manager verwaltet) <br>  Linux: Alle Linux-Agents  <br>  AzureStorage – Azure-Diagnose |
+| SourceSystem |Typ des Agents, auf dem das Ereignis gesammelt wurde. <br> OpsManager: Windows-Agent (entweder Direktverbindung oder von Operations Manager verwaltet) <br> Linux: Alle Linux-Agents  <br> AzureStorage – Azure-Diagnose |
 | TimeGenerated |Datum und Uhrzeit, zu der das Ereignis in Windows erstellt wurde. |
 | UserName |Benutzername des Kontos, in dem das Ereignis protokolliert wurde. |
 

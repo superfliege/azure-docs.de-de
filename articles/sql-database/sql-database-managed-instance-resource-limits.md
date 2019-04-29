@@ -24,11 +24,11 @@ ms.locfileid: "58223817"
 Dieser Artikel bietet eine Übersicht über die Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen und erläutert, wie Sie eine Anforderung zur Erhöhung der standardmäßigen regionalen Grenzwerte für Abonnements erstellen.
 
 > [!NOTE]
-> Informationen zu weiteren Einschränkungen für verwaltete Instanzen finden Sie unter [Auf virtuellen Kernen basierendes Erwerbsmodell](sql-database-managed-instance.md#vcore-based-purchasing-model) und [Dienstebenen für eine verwaltete Instanz](sql-database-managed-instance.md#managed-instance-service-tiers). Unterschiede bei den unterstützten Funktionen und T-SQL-Anweisungen sind unter [Funktionsunterschiede](sql-database-features.md) und [Unterstützung von T-SQL-Anweisungen](sql-database-managed-instance-transact-sql-information.md) zu finden.
+> Informationen zu weiteren Einschränkungen für verwaltete Instanzen finden Sie unter [vCore-basiertes Kaufmodell](sql-database-managed-instance.md#vcore-based-purchasing-model) und [Dienstebenen für eine verwaltete Instanz](sql-database-managed-instance.md#managed-instance-service-tiers). Unterschiede bei den unterstützten Funktionen und T-SQL-Anweisungen sind unter [Funktionsunterschiede](sql-database-features.md) und [Unterstützung von T-SQL-Anweisungen](sql-database-managed-instance-transact-sql-information.md) zu finden.
 
 ## <a name="instance-level-resource-limits"></a>Ressourceneinschränkungen auf Instanzebene
 
-Eine verwaltete Instanz weist Merkmale und Ressourceneinschränkungen auf, die von der zugrunde liegende Infrastruktur und Architektur abhängen. Die Grenzwerte hängen von der Hardwaregeneration und dem Diensttarif ab.
+Eine verwaltete Instanz weist Merkmale und Ressourceneinschränkungen auf, die von der zugrunde liegende Infrastruktur und Architektur abhängen. Die Grenzwerte hängen von der Hardwaregeneration und der Dienstebene ab.
 
 ### <a name="hardware-generation-characteristics"></a>Merkmale der Hardwaregeneration
 
@@ -45,7 +45,7 @@ Eine verwaltete Azure SQL-Datenbank-Instanz kann auf zwei Hardwaregenerationen (
 
 ### <a name="service-tier-characteristics"></a>Merkmale des Diensttarifs
 
-Eine verwaltete Instanz verfügt über zwei Diensttarife: „Universell“und „Unternehmenskritisch“. Diese Tarife bieten verschiedene Funktionen, die in der folgenden Tabelle beschrieben sind.
+Eine verwaltete Instanz verfügt über zwei Dienstebenen: „Universell“und „Unternehmenskritisch“. Diese Tarife bieten verschiedene Funktionen, die in der folgenden Tabelle beschrieben sind.
 
 | **Feature** | **Allgemeiner Zweck** | **Unternehmenskritisch** |
 | --- | --- | --- |
@@ -105,7 +105,7 @@ In der folgenden Tabelle sind regionale Standardlimits für unterstützte Abonne
 
 \* Sie können entweder 1 unternehmenskritische oder 4 universelle Instanzen in einem Subnetz bereitstellen, sodass die Gesamtanzahl von „Instanzeinheiten“ im Subnetz niemals höher als 4 ist.
 
-** Die maximale Anzahl von Instanzen in einem Diensttarif trifft dann zu, wenn keine Instanzen in einem anderen Diensttarif vorhanden sind. Falls Sie beabsichtigen, universelle und unternehmenskritische Instanzen im selben Subnetz zu kombinieren, verwenden Sie den folgenden Abschnitt als Referenz für zulässige Kombinationen. Als einfache Faustregel gilt: Die Gesamtanzahl von Subnetzen darf nicht höher als 3 und die Gesamtanzahl von Instanzeinheiten nicht höher als 12 sein.
+** Die maximale Anzahl von Instanzen in einer Dienstebene trifft dann zu, wenn keine Instanzen in einer anderen Dienstebene vorhanden sind. Falls Sie beabsichtigen, universelle und unternehmenskritische Instanzen im selben Subnetz zu kombinieren, verwenden Sie den folgenden Abschnitt als Referenz für zulässige Kombinationen. Als einfache Faustregel gilt: Die Gesamtanzahl von Subnetzen darf nicht höher als 3 und die Gesamtanzahl von Instanzeinheiten nicht höher als 12 sein.
 
 
 
@@ -119,7 +119,7 @@ Abonnements vom Typ [Enterprise Agreement (EA)](https://azure.microsoft.com/pric
 > [!Note]
 > Bei Abonnements vom Typ [Nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) und [Clouddienstanbieter (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources) können entweder eine unternehmenskritische oder bis zu vier universelle Instanzen vorhanden sein.
 
-Bei den folgenden Beispielen handelt es sich um Bereitstellungsfälle mit nicht leeren Subnetzen und einer Kombination der Diensttarife „Universell“ und „Unternehmenskritisch“.
+Bei den folgenden Beispielen handelt es sich um Bereitstellungsfälle mit nicht leeren Subnetzen und einer Kombination der Dienstebenen „Universell“ und „Unternehmenskritisch“.
 
 |Anzahl von Subnetzen|Subnetz 1|Subnetz 2|Subnetz 3|
 |:---|:---|:---|:---|
@@ -157,8 +157,8 @@ Leiten Sie den Prozess zum Abrufen eines größeren Kontingents auf folgende Wei
      > [!IMPORTANT]
      > Eine gültige Anforderung sollte Folgendes enthalten:
      > - Region, in der der Grenzwert für Abonnements erhöht werden muss
-     > - Erforderliche Anzahl von Instanzen pro Diensttarif in vorhandenen Subnetzen nach Erhöhung des Kontingents (wenn eines der vorhandenen Subnetze erweitert werden muss)
-     > - Erforderliche Anzahl neuer Subnetze und Gesamtanzahl der Instanzen pro Diensttarif in den neuen Subnetzen (wenn Sie verwaltete Instanzen in neuen Subnetzen bereitstellen müssen)
+     > - Erforderliche Anzahl von Instanzen pro Dienstebene in vorhandenen Subnetzen nach Erhöhung des Kontingents (wenn eines der vorhandenen Subnetze erweitert werden muss)
+     > - Erforderliche Anzahl neuer Subnetze und Gesamtanzahl der Instanzen pro Dienstebene in den neuen Subnetzen (wenn Sie verwaltete Instanzen in neuen Subnetzen bereitstellen müssen)
 
 5. Klicken Sie auf **Weiter**.
 6. Geben Sie auf der Registerkarte „Kontaktinformationen“ für die neue Supportanfrage Ihre bevorzugte Kontaktmethode (E-Mail oder Telefon) und die Kontaktdetails ein.

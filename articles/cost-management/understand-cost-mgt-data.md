@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/08/2019
+ms.date: 04/11/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 1fc04ee953ea53f96adfd1e85c9a616c62268ade
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 5c8f70ff76da458fcc1433226a51012fb7ccd18e
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59282983"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544635"
 ---
 # <a name="understand-cost-management-data"></a>Grundlegendes zu Cost Management-Daten
 
@@ -33,9 +33,9 @@ Die folgenden Informationen zeigen die derzeit unterstützten [Microsoft Azure-A
 | **Enterprise Agreement (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P |
 | **Microsoft-Kundenvereinbarung** | [Microsoft Azure-Plan](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | – |
 | **Microsoft-Kundenvereinbarung** | [Microsoft Azure-Plan für Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148g)  | MSDNDevTest_2014-09-01 | – |
-| **Microsoft Developer Network (MSDN)** | [MSDN Platforms](https://azure.microsoft.com/offers/ms-azr-0062p) | MSDN_2014-09-01 | MS-AZR-0062P |
+| **Microsoft Developer Network (MSDN)** | [MSDN-Plattformen](https://azure.microsoft.com/offers/ms-azr-0062p) | MSDN_2014-09-01 | MS-AZR-0062P |
 | **Nutzungsbasierte Bezahlung** | [Nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p)                       | PayAsYouGo_2014-09-01 | MS-AZR-0003P |
-| **Nutzungsbasierte Bezahlung** | [Dev/Test Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0023p)              | MSDNDevTest_2014-09-01 | MS-AZR-0023P |
+| **Nutzungsbasierte Bezahlung** | [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p)              | MSDNDevTest_2014-09-01 | MS-AZR-0023P |
 | **Nutzungsbasierte Bezahlung** | [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p)           | MPN_2014-09-01 | MS-AZR-0025P |
 | **Nutzungsbasierte Bezahlung** | [Kostenlose Testversion](https://azure.microsoft.com/offers/ms-azr-0044p)                          | FreeTrial_2014-09-01 | MS-AZR-0044P |
 | **Nutzungsbasierte Bezahlung** | [Azure in Open](https://azure.microsoft.com/offers/ms-azr-0111p)                       | AzureInOpen_2014-09-01 | MS-AZR-0111P |
@@ -123,6 +123,25 @@ Die Verfügbarkeit Ihrer anfallenden Nutzungsdaten in Cost Management hängt von
 - Die Zeit, die für die Verarbeitung der Nutzungsdaten durch die Rating-Engine und die Cost Management-Pipelines benötigt wird.
 
 Einige Dienste geben die Nutzung häufiger als andere ab. Daher können Sie für einige Dienste Daten in Cost Management früher sehen als für andere Dienste, die seltener Daten ausgeben. In der Regel dauert es ach bis 24 Stunden bis die Nutzung von Diensten in Cost Management angezeigt wird. Beachten Sie, dass die Daten für einen offenen Monat aktualisiert werden, wenn Sie den Dienst häufiger nutzen, da Aktualisierungen kumulativ sind.
+
+## <a name="historical-data-might-not-match-invoice"></a>Verlaufsdaten stimmen möglicherweise nicht mit Rechnung überein
+
+Verlaufsdaten für Angebote, die auf Guthaben oder Vorauszahlung basieren, stimmen möglicherweise nicht mit Ihrer Rechnung überein. Bei einigen Azure-Angeboten der Kategorie „Nutzungsbasierte Zahlung“, „MSDN“ und „Visual Studio“ können Azure-Guthaben und Vorauszahlungen auf die Rechnung angewendet werden. Die in Cost Management angezeigten Verlaufsdaten basieren allerdings nur auf den geschätzten Nutzungsgebühren. Cost Management-Verlaufsdaten enthalten keine Zahlungen und Guthaben. Daher stimmen die Verlaufsdaten, die für die folgenden Angebote angezeigt werden, möglicherweise nicht genau mit Ihrer Rechnung überein.
+
+-   MS-AZR-0029P
+-   MS-AZR-0064P
+-   MS-AZR-0170P
+-   MS-AZR-0062P
+-   MS-AZR-0123P
+-   MS-AZR-0129P
+-   MS-AZR-0044P
+-   MS-AZR-0128P
+-   MS-AZR-0120P
+-   MS-AZR-0125P
+-   MS-AZR-0059P
+-   MS-AZR-0063P
+-   MS-AZR-0060P
+-   MS-AZR-0111P
 
 ## <a name="see-also"></a>Weitere Informationen
 

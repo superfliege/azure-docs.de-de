@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 03/18/2019
+ms.date: 04/12/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: e2360b5587d204ec87fe82c029391c7252d27914
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: ff1f613dfdfb5c43b727bcc9c7f7a1f0afca0975
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189545"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546895"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Überwachen Ihrer Workload mit dynamischen Verwaltungssichten
 In diesem Artikel wird beschrieben, wie Sie dynamische Verwaltungssichten (DMVs) verwenden, um Ihre Workload zu überwachen. Dazu gehört auch die Untersuchung der Abfrageausführung in Azure SQL Data Warehouse.
@@ -170,33 +170,10 @@ ORDER BY waits.object_name, waits.object_type, waits.state;
 Wenn die Abfrage aktiv auf Ressourcen einer anderen Abfrage wartet, lautet der Status **AcquireResources**.  Wenn die Abfrage über alle erforderlichen Ressourcen verfügt, ist der Status **Granted**.
 
 ## <a name="monitor-tempdb"></a>Überwachen von tempdb
-Eine hohe tempdb-Auslastung kann die Hauptursache für Probleme in Verbindung mit geringer Leistung und unzureichendem Arbeitsspeicher sein. Ziehen Sie die Skalierung Ihres Data Warehouse in Betracht, wenn Sie feststellen, dass tempdb beim Ausführen der Abfrage vollständig ausgelastet ist. Im Folgenden wird beschrieben, wie zu jedem Knoten die tempdb-Auslastung pro Abfrage ermittelt wird. 
+tempdb wird zum Speichern von Zwischenergebnissen während der Abfrageausführung verwendet. Eine hohe Auslastung der tempdb-Datenbank kann zu einer schwachen Abfrageleistung führen. Jeder Knoten in Azure SQL Data Warehouse bietet ungefähr 1TB unformatierten Speicherplatz für tempdb. Nachstehend finden Sie Tipps zur Überwachung der tempdb-Auslastung und zur Verringerung der tempdb-Auslastung in Ihren Abfragen. 
 
-Erstellen Sie die folgende Ansicht, um die entsprechende Knoten-ID für „sys.dm_pdw_sql_requests“ zuzuordnen. Mit der Knoten-ID können Sie andere Pass-Through-DMVs nutzen und diese Tabellen mit „sys.dm_pdw_sql_requests“ verknüpfen.
-
-```sql
--- sys.dm_pdw_sql_requests with the correct node id
-CREATE VIEW sql_requests AS
-(SELECT
-       sr.request_id,
-       sr.step_index,
-       (CASE 
-              WHEN (sr.distribution_id = -1 ) THEN 
-              (SELECT pdw_node_id FROM sys.dm_pdw_nodes WHERE type = 'CONTROL') 
-              ELSE d.pdw_node_id END) AS pdw_node_id,
-       sr.distribution_id,
-       sr.status,
-       sr.error_id,
-       sr.start_time,
-       sr.end_time,
-       sr.total_elapsed_time,
-       sr.row_count,
-       sr.spid,
-       sr.command
-FROM sys.pdw_distributions AS d
-RIGHT JOIN sys.dm_pdw_sql_requests AS sr ON d.distribution_id = sr.distribution_id)
-```
-Zum Überwachen von tempdb führen Sie die folgende Abfrage aus:
+### <a name="monitoring-tempdb-with-views"></a>Überwachen von tempdb mit Ansichten
+Wenn Sie die tempdb-Auslastung überwachen möchten, installieren Sie zuerst die Ansicht [microsoft.vw_sql_requests](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/solutions/monitoring/scripts/views/microsoft.vw_sql_requests.sql) aus dem [Microsoft-Toolkit für SQL Data Warehouse](https://github.com/Microsoft/sql-data-warehouse-samples/tree/master/solutions/monitoring). Anschließend können Sie die folgende Abfrage ausführen, um die tempdb-Auslastung pro Knoten für alle ausgeführten Abfragen anzuzeigen:
 
 ```sql
 -- Monitor tempdb
@@ -221,12 +198,17 @@ SELECT
 FROM sys.dm_pdw_nodes_db_session_space_usage AS ssu
     INNER JOIN sys.dm_pdw_nodes_exec_sessions AS es ON ssu.session_id = es.session_id AND ssu.pdw_node_id = es.pdw_node_id
     INNER JOIN sys.dm_pdw_nodes_exec_connections AS er ON ssu.session_id = er.session_id AND ssu.pdw_node_id = er.pdw_node_id
-    INNER JOIN sql_requests AS sr ON ssu.session_id = sr.spid AND ssu.pdw_node_id = sr.pdw_node_id
+    INNER JOIN microsoft.vw_sql_requests AS sr ON ssu.session_id = sr.spid AND ssu.pdw_node_id = sr.pdw_node_id
 WHERE DB_NAME(ssu.database_id) = 'tempdb'
     AND es.session_id <> @@SPID
     AND es.login_name <> 'sa' 
 ORDER BY sr.request_id;
 ```
+
+Wenn Sie eine Abfrage haben, die eine große Menge an Arbeitsspeicher verbraucht, oder wenn eine Fehlermeldung im Zusammenhang mit der Zuordnung von tempdb angezeigt wird, beruht dies oft auf der Ausführung einer sehr umfangreichen [CREATE TABLE AS SELECT (CTAS)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)- oder [INSERT SELECT](https://docs.microsoft.com/sql/t-sql/statements/insert-transact-sql)-Anweisung, bei der im letzten Datenverschiebungsvorgang ein Fehler aufgetreten ist. Dies kann im Plan für verteilte Abfragen normalerweise als „ShuffleMove“-Vorgang direkt vor der letzten INSERT SELECT-Anweisung identifiziert werden.
+
+Die häufigste Minderung besteht darin, Ihre CTAS- oder INSERT SELECT-Anweisung in mehrere Load-Anweisungen aufzuteilen, damit das Datenvolumen das tempdb-Limit von 1TB pro Knoten nicht überschreitet. Sie können auch Ihren Cluster auf eine größere Größe skalieren. Dadurch wird die tempdb-Größe über mehrere Knoten verteilt und so die tempdb auf jedem einzelnen Knoten verkleinert. 
+
 ## <a name="monitor-memory"></a>Überwachen des Arbeitsspeichers
 
 Der Arbeitsspeicher kann die Hauptursache für Probleme in Verbindung mit geringer Leistung und unzureichendem Arbeitsspeicher sein. Ziehen Sie die Skalierung Ihres Data Warehouse in Betracht, wenn Sie feststellen, dass die Speicherauslastung von SQL Server beim Ausführen der Abfrage die Grenzwerte erreicht.

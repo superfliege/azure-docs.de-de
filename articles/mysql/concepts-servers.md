@@ -53,5 +53,5 @@ Sie können Azure-Datenbank für MySQL-Server mithilfe des Azure-Portals oder de
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Einen Überblick über den Dienst finden Sie unter [Azure-Datenbank für MySQL – Überblick](./overview.md).
-- Informationen zu bestimmten Ressourcenkontingenten und -beschränkungen basierend auf Ihrem **Diensttarif** finden Sie unter [Diensttarife](./concepts-service-tiers.md).
+- Informationen zu bestimmten Ressourcenkontingenten und -beschränkungen basierend auf Ihrer **Dienstebene** finden Sie unter [Dienstebenen](./concepts-service-tiers.md).
 - Informationen zum Herstellen einer Verbindung mit dem Dienst finden Sie unter [Datenverbindungsbibliotheken für Azure-Datenbank für MySQL](./concepts-connection-libraries.md).

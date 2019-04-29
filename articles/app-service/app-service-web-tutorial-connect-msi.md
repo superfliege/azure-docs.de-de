@@ -21,7 +21,7 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/26/2019
 ms.locfileid: "58482522"
 ---
-# <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Tutorial: Schützen der Azure SQL-Datenbankverbindung von App Service mittels einer verwalteten Identität
+# <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Tutorial: Schützen der Azure SQL-Datenbank-Verbindung von App Service mittels einer verwalteten Identität
 
 [App Service](overview.md) bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching in Azure. Außerdem steht eine [verwaltete Identität](overview-managed-identity.md) für Ihre App zur Verfügung. Hierbei handelt es sich um eine vorgefertigte Lösung zum Schutz des Zugriffs auf [Azure SQL-Datenbank](/azure/sql-database/) und andere Azure-Dienste. Verwaltete Identitäten in App Service machen Ihre App frei von Geheimnissen (wie etwa Anmeldeinformationen in Verbindungszeichenfolgen) und verbessern so die Sicherheit Ihrer App. In diesem Tutorial fügen Sie der ASP.NET-Beispiel-Web-App eine verwaltete Identität hinzu, die Sie hier erstellt: [Tutorial: Erstellen einer ASP.NET-App in Azure mit SQL-Datenbank](app-service-web-tutorial-dotnet-sqldatabase.md). Danach stellt Ihre Beispiel-App ganz ohne Benutzername und Kennwort eine sichere Verbindung mit SQL-Datenbank her.
 
@@ -155,7 +155,7 @@ Die Aufgabenliste sollte sich nun wie gewohnt bearbeiten lassen.
 
 ## <a name="grant-minimal-privileges-to-identity"></a>Gewähren minimaler Berechtigungen für die Identität
 
-In den obigen Schritten ist Ihnen vielleicht aufgefallen, dass Ihre verwaltete Identität mit SQL Server als Azure AD-Administrator verbunden ist. Um die minimale Berechtigungen für Ihre verwaltete Identität zu gewähren, müssen Sie sich bei Ihrem Azure SQL-Datenbankserver als Azure AD-Administrator anmelden, und dann eine Azure Active Directory-Gruppe hinzufügen, die die verwaltete Identität enthält. 
+In den obigen Schritten ist Ihnen vielleicht aufgefallen, dass Ihre verwaltete Identität mit SQL Server als Azure AD-Administrator verbunden ist. Um die minimale Berechtigungen für Ihre verwaltete Identität zu gewähren, müssen Sie sich bei Ihrem Azure SQL-Datenbank-Server als Azure AD-Administrator anmelden, und dann eine Azure Active Directory-Gruppe hinzufügen, die die verwaltete Identität enthält. 
 
 ### <a name="add-managed-identity-to-an-azure-active-directory-group"></a>Hinzufügen der verwalteten Identität zu einer Azure Active Directory-Gruppe
 

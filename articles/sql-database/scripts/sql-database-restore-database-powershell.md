@@ -48,12 +48,12 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | Get-Help | Notizen |
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Erstellt einen SQL-Datenbankserver, der eine Einzeldatenbank oder einen Pool für elastische Datenbanken hostet. |
-| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Erstellt eine Datenbank auf einem SQL-Datenbankserver als eigenständige oder in einem Pool zusammengefasste Datenbank. |
-[Get-AzSqlDatabaseGeoBackup](/powershell/module/az.sql/get-azsqldatabasegeobackup) | Ruft eine georedundante Sicherung einer eigenständigen oder in einem Pool zusammengefassten Datenbank ab. |
-| [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase) | Stellt eine eigenständige oder in einem Pool zusammengefasste SQL-Datenbank wieder her. |
-|[Remove-AzSqlDatabase](/powershell/module/az.sql/remove-azsqldatabase) | Entfernt eine eigenständige oder in einem Pool zusammengefasste Azure SQL-Datenbank. |
-| [Get-AzSqlDeletedDatabaseBackup](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) | Ruft eine gelöschte eigenständige oder in einem Pool zusammengefasste Datenbank ab, die Sie wiederherstellen können. |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Erstellt einen SQL-Datenbank-Server, der eine Einzeldatenbank oder einen Pool für elastische Datenbanken hostet. |
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Erstellt eine Datenbank auf einem logischen SQL-Datenbank-Server als eigenständige Datenbank oder Pooldatenbank. |
+[Get-AzSqlDatabaseGeoBackup](/powershell/module/az.sql/get-azsqldatabasegeobackup) | Ruft eine georedundante Sicherung einer eigenständigen Datenbank oder Pooldatenbank ab. |
+| [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase) | Stellt eine eigenständige SQL-Datenbank oder eine SQL-Pooldatenbank wieder her. |
+|[Remove-AzSqlDatabase](/powershell/module/az.sql/remove-azsqldatabase) | Entfernt eine eigenständige Azure SQL-Datenbank oder eine Azure SQL-Pooldatenbank. |
+| [Get-AzSqlDeletedDatabaseBackup](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) | Ruft eine gelöschte eigenständige Datenbank oder Pooldatenbank ab, die Sie wiederherstellen können. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte

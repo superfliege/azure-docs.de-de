@@ -1,6 +1,6 @@
 ---
 title: Azure SQL-Datenbank – „Universell“ und „Unternehmenskritisch“ | Microsoft-Dokumentation
-description: In diesem Artikel werden die Diensttarife „Universell“ und „Unternehmenskritisch“ im V-Kern-Kaufmodell erläutert.
+description: In diesem Artikel werden die Dienstebenen „Universell“ und „Unternehmenskritisch“ im vCore-basierten Kaufmodell erläutert.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -27,10 +27,10 @@ Azure SQL-Datenbank basiert auf der an die Cloudumgebung angepasste Architektur 
 - [Unternehmenskritisch](sql-database-service-tier-business-critical.md): ist für Workloads mit geringer Latenz mit einem lesbaren Replikat konzipiert.
 - [Hochgradig skalierbaren](sql-database-service-tier-hyperscale.md): ist für sehr große Datenbanken (bis zu 100 TB) mit mehreren lesbaren Replikaten konzipiert.
 
-Dieser Artikel beschreibt die Speicher- und Sicherungsüberlegungen für die Diensttarife „Universell“ und „Unternehmenskritisch“ im V-Kern-basierten Kaufmodell.
+Dieser Artikel beschreibt die Speicher- und Sicherungsüberlegungen für die Dienstebenen „Universell“ und „Unternehmenskritisch“ im vCore-basierten Kaufmodell.
 
 > [!NOTE]
-> Ausführliche Informationen zum Diensttarif „Hyperscale“ im V-Kern-basierten Kaufmodell finden Sie unter [Diensttarif „Hyperscale“](sql-database-service-tier-hyperscale.md). Einen Vergleich zwischen V-Kern-basiertem Kaufmodell und DTU-basiertem Kaufmodell finden Sie unter [Kaufmodelle für Azure SQL-Datenbank und Ressourcen](sql-database-purchase-models.md).
+> Ausführliche Informationen zur Dienstebene „Hyperscale“ im vCore-basierten Kaufmodell finden Sie unter [Dienstebene „Hyperscale“](sql-database-service-tier-hyperscale.md). Einen Vergleich zwischen vCore-basierten Kaufmodell und DTU-basiertem Kaufmodell finden Sie unter [Kaufmodelle für Azure SQL-Datenbank und Ressourcen](sql-database-purchase-models.md).
 
 ## <a name="data-and-log-storage"></a>Daten- und Protokollspeicher
 
@@ -41,10 +41,10 @@ Beachten Sie Folgendes:
 - Wenn Sie die erforderliche Einzeldatenbankgröße (MDF-Größe) konfigurieren, werden automatisch 30 Prozent zusätzlicher Speicher hinzugefügt, um LDF zu unterstützen.
 - Die Speichergröße in einer verwalteten Azure SQL-Datenbank-Instanz muss als Vielfaches von 32 GB angegeben werden.
 - Sie können eine beliebige Einzeldatenbankgröße zwischen 10 GB und dem unterstützten Maximum auswählen.
-  - In den Diensttarifen „Standard“ oder „Universell“ erhöhen oder verringern Sie die Speichergröße in Schritten von 10 GB.
-  - In den Diensttarifen „Premium“ oder „Unternehmenskritisch“ erhöhen oder verringern Sie die Speichergröße in Schritten von 250 GB
-- Im Diensttarif „Universell“ wird für `tempdb` eine angefügte SSD verwendet, und diese Speicherkosten sind im V-Kern-Preis enthalten.
-- Im Diensttarif „Unternehmenskritisch“ wird für `tempdb` die angefügte SSD für MDF- und LDF-Dateien gemeinsam genutzt, und die tempDB-Speicherkosten sind im V-Kern-Preis enthalten.
+  - In den Dienstebenen „Standard“ oder „Universell“ erhöhen oder verringern Sie die Speichergröße in Schritten von 10 GB.
+  - In den Dienstebenen „Premium“ oder „Unternehmenskritisch“ erhöhen oder verringern Sie die Speichergröße in Schritten von 250 GB
+- In der Dienstebene „Universell“ wird für `tempdb` eine angefügte SSD verwendet, und diese Speicherkosten sind im V-Kern-Preis enthalten.
+- In der Dienstebene „Unternehmenskritisch“ wird für `tempdb` die angefügte SSD für MDF- und LDF-Dateien gemeinsam genutzt, und die tempDB-Speicherkosten sind im V-Kern-Preis enthalten.
 
 > [!IMPORTANT]
 > Ihnen wird der gesamte Speicher berechnet, der für MDF und LDF zugeordnet ist.
@@ -63,5 +63,5 @@ Der Speicher für Datenbanksicherungen wird zugeordnet, um die Funktionen „Poi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Ausführliche Informationen zu bestimmten Computegrößen und Speichergrößen für Einzeldatenbanken in den Diensttarifen „Universell“ und „Unternehmenskritisch“ finden Sie unter [Ressourcenlimits des auf virtuellen Kernen basierenden Kaufmodells für Einzeldatenbanken](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).
-- Ausführliche Informationen zu bestimmten Computegrößen und Speichergrößen für Pools für elastische Datenbanken in den Diensttarifen „Universell“ und „Unternehmenskritisch“ finden Sie unter [Ressourcenlimits des auf virtuellen Kernen basierenden Kaufmodells für Pools für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).
+- Ausführliche Informationen zu bestimmten Computegrößen und Speichergrößen für Einzeldatenbanken in den Dienstebenen „Universell“ und „Unternehmenskritisch“ finden Sie unter [Ressourcenlimits des vCore-basierten Kaufmodells für Einzeldatenbanken](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).
+- Ausführliche Informationen zu bestimmten Computegrößen und Speichergrößen für Pools für elastische Datenbanken in den Dienstebenen „Universell“ und „Unternehmenskritisch“ finden Sie unter [Ressourcenlimits des vCore-basierten Kaufmodells für Pools für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).

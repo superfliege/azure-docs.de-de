@@ -1,6 +1,6 @@
 ---
 title: 'PowerShell-Beispiel: Aktive Georeplikation für in Pool zusammengefasste Azure SQL-Datenbank | Microsoft-Dokumentation'
-description: Azure PowerShell-Beispielskript zum Einrichten der aktiven Georeplikation für eine in einem Pool zusammengefasste Datenbank in Azure SQL-Datenbank und Ausführen eines Failovers.
+description: Azure PowerShell-Beispielskript zum Einrichten der aktiven Georeplikation für eine Pooldatenbank in Azure SQL-Datenbank und Ausführen eines Failovers.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -19,9 +19,9 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59360394"
 ---
-# <a name="use-powershell-to-configure-active-geo-replication-for-a-pooled-database-in-azure-sql-database"></a>Verwenden von PowerShell zum Konfigurieren der aktiven Georeplikation für eine in einem Pool zusammengefasste Datenbank in Azure SQL-Datenbank
+# <a name="use-powershell-to-configure-active-geo-replication-for-a-pooled-database-in-azure-sql-database"></a>Verwenden von PowerShell zum Konfigurieren der aktiven Georeplikation für eine Pooldatenbank in Azure SQL-Datenbank
 
-Dieses PowerShell-Beispielskript konfiguriert die aktive Georeplikation für eine in einem Pool zusammengefasste Datenbank in Azure SQL-Datenbank und führt ein Failover zum sekundären Replikat der Datenbank aus.
+Dieses PowerShell-Beispielskript konfiguriert die aktive Georeplikation für eine Pooldatenbank in Azure SQL-Datenbank und führt ein Failover zum sekundären Replikat der Datenbank aus.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -49,9 +49,9 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | Get-Help | Notizen |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Erstellt einen SQL-Datenbankserver, der Einzeldatenbanken und Pools für elastische Datenbanken hostet. |
+| [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Erstellt einen SQL-Datenbank-Server, der Einzeldatenbanken und Pools für elastische Datenbanken hostet. |
 | [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) | Erstellt einen Pool für elastische Datenbanken. |
-| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Erstellt eine Einzeldatenbank oder in einem Pool zusammengefasste Datenbank. |
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Erstellt eine Einzel- oder Pooldatenbank. |
 | [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) | Aktualisiert Datenbankeigenschaften oder verschiebt eine Datenbank in Pools für elastische Datenbanken, daraus hinaus oder zwischen ihnen. |
 | [New-AzSqlDatabaseSecondary](/powershell/module/az.sql/new-azsqldatabasesecondary)| Erstellt eine sekundäre Datenbank für eine vorhandene Datenbank und startet die Datenreplikation. |
 | [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase)| Ruft mindestens eine Datenbank ab. |

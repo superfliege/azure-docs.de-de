@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/10/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 67f87729dbfb792b88f28a772f15e233f0fa60dc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 928c6316ea964472faadc82213c4c1ff81c3e038
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452112"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608241"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: Regionale Verfügbarkeit und Datenresidenz
 Regionale Verfügbarkeit und Datenresidenz sind zwei sehr unterschiedliche Konzepte, die in Azure AD B2C anders als in den restlichen Komponenten von Azure angewendet werden. In diesem Artikel werden die Unterschiede zwischen diesen beiden Konzepten erläutert und ihre Anwendung in Azure und Azure AD B2C miteinander verglichen.

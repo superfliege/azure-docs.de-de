@@ -32,7 +32,7 @@ Einen Überblick über die praktische Verwendung der Azure SQL-Analyse und über
 
 ## <a name="connected-sources"></a>Verbundene Quellen
 
-Azure SQL-Analyse ist eine Cloudüberwachungslösung, die das Streaming von Diagnosetelemetriedaten für Azure SQL-Datenbanken unterstützt: Einzeldatenbanken, Datenbanken im Pool und verwaltete Instanzen. Da die Lösung keine Agents für die Verbindung mit Azure Monitor verwendet, wird die Überwachung von lokal oder auf virtuellen Computern gehosteten SQL Server-Instanzen nicht unterstützt. Entsprechende Informationen finden Sie in der folgenden Kompatibilitätstabelle.
+Azure SQL-Analyse ist eine Cloudüberwachungslösung, die das Streaming von Diagnosetelemetriedaten für Azure SQL-Datenbanken unterstützt: Einzeldatenbanken, Pooldatenbanken und Datenbanken der verwalteten Instanzen. Da die Lösung keine Agents für die Verbindung mit Azure Monitor verwendet, wird die Überwachung von lokal oder auf virtuellen Computern gehosteten SQL Server-Instanzen nicht unterstützt. Entsprechende Informationen finden Sie in der folgenden Kompatibilitätstabelle.
 
 | Verbundene Quelle | Unterstützt | BESCHREIBUNG |
 | --- | --- | --- |
@@ -63,9 +63,9 @@ Nach dem Laden zeigt die Kachel die Anzahl von Azure SQL-Datenbanken, Pools für
 
 ![Kachel „Azure SQL Analytics“](./media/azure-sql/azure-sql-sol-tile-02.png)
 
-Die Lösung bietet zwei separate Ansichten: eine für die Überwachung von Azure SQL-Datenbanken und Pools für elastische Datenbanken, und eine weitere für die Überwachung der verwalteten Instanz und Datenbanken in verwalteten Instanzen.
+Die Lösung bietet zwei separate Ansichten: eine für die Überwachung von Azure SQL-Datenbanken und Pools für elastische Datenbanken und eine andere für die Überwachung der verwalteten Instanz und Datenbanken in verwalteten Instanzen.
 
-Zum Anzeigen des Überwachungsdashboards der Azure SQL-Analyse für Azure SQL-Datenbanken und Pool für elastische Datenbanken klicken Sie in den oberen Bereich der Kachel. Zum Anzeigen des Überwachungsdashboards der Azure SQL-Analyse für Azure SQL-Datenbanken und Pool für elastische Datenbanken klicken Sie in den oberen Bereich der Kachel.
+Zum Anzeigen des Überwachungsdashboards der Azure SQL-Analyse für Azure SQL-Datenbanken und Pools für elastische Datenbanken klicken Sie in den oberen Bereich der Kachel. Zum Anzeigen des Überwachungsdashboards der Azure SQL-Analyse für Azure SQL-Datenbanken und Pool für elastische Datenbanken klicken Sie in den oberen Bereich der Kachel.
 
 ### <a name="viewing-azure-sql-analytics-data"></a>Anzeigen von Azure SQL Analytics-Daten
 

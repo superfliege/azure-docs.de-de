@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: b5c7050ac006ea2500854f8f41b134895e5e0061
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 3b31e796b07bea8c11bccb3f2bb306a4279f2ca3
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541212"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523714"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Implementieren der Facettennavigation in Azure Search
 Bei der Facettennavigation handelt es sich um einen Filtermechanismus für die selbstständige Drilldownnavigation in Suchanwendungen. Der Begriff „Facettennavigation“ ist Ihnen zwar möglicherweise nicht bekannt, aber Sie haben diese wahrscheinlich bereits verwendet. Die Facettennavigation ist im Prinzip nichts weiter als die Kategorien, die zum Filtern der Ergebnisse verwendet werden.
@@ -321,7 +321,7 @@ Unter bestimmten Umständen kann es vorkommen, dass die Facettenanzahl nicht den
 
 Die Abweichung der Facettenanzahl kann auf die Sharding-Architektur zurückzuführen sein. Jeder Suchindex besitzt mehrere Shards, von denen jeweils die x relevantesten Facetten (auf der Grundlage der Dokumentanzahl) zurückgegeben werden. Diese werden dann zu einem einzelnen Ergebnis zusammengefasst. Falls nun für einige Shards viele und für andere Shards weniger Werte vorhanden sind, kann es vorkommen, dass einige Facettenwerte fehlen oder in den Ergebnissen nicht korrekt erfasst wurden.
 
-Dieses Verhalten kann sich zwar jederzeit ändern, wenn Sie jedoch aktuell davon betroffen sind, können Sie das Problem umgehen, indem Sie „count:<number>“ künstlich auf eine große Zahl erhöhen, um vollständige Berichte aus jeder Shard zu erzwingen. Wenn der Wert von „count:“ größer oder gleich der Anzahl eindeutiger Werte im Feld ist, erhalten Sie garantiert exakte Ergebnisse. Bei einer hohen Anzahl von Dokumenten ist jedoch mit Leistungseinbußen zu rechnen. Verwenden Sie die Option daher mit Bedacht.
+Dieses Verhalten kann sich zwar jederzeit ändern, wenn Sie jedoch aktuell davon betroffen sind, können Sie das Problem umgehen, indem Sie „count:\<number>“ künstlich auf eine große Zahl erhöhen, um vollständige Berichte aus jeder Shard zu erzwingen. Wenn der Wert von „count:“ größer oder gleich der Anzahl eindeutiger Werte im Feld ist, erhalten Sie garantiert exakte Ergebnisse. Bei einer hohen Anzahl von Dokumenten ist jedoch mit Leistungseinbußen zu rechnen. Verwenden Sie die Option daher mit Bedacht.
 
 ### <a name="user-interface-tips"></a>Benutzeroberflächentipps
 **Hinzufügen von Beschriftungen für die einzelnen Felder in der Facettennavigation**

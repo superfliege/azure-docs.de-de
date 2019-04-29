@@ -1,6 +1,6 @@
 ---
-title: Azure SQL-Datenbank-Diensttarife – DTU-basiertes Kaufmodell | Microsoft-Dokumentation
-description: Erfahren Sie etwas über die Diensttarife für Singletons und für in einem Pool zusammengefasste Datenbanken im DTU-basierten Kaufmodell, um verschiedene Compute- und Speichergrößen bereitzustellen.
+title: Azure SQL-Datenbank-Dienstebenen – DTU-basiertes Kaufmodell | Microsoft-Dokumentation
+description: Erfahren Sie etwas über die Dienstebenen für Einzel- und Pooldatenbanken im DTU-basierten Kaufmodell, um verschiedene Compute- und Speichergrößen bereitzustellen.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -21,14 +21,14 @@ ms.locfileid: "60004005"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Diensttarife beim DTU-basierten Kaufmodell
 
-Diensttarife beim DTU-basierten Kaufmodell unterscheiden sich durch eine Reihe von Computegrößen mit einer festen Menge an integriertem Speicher, einem festen Aufbewahrungszeitraum für Sicherungen und einem festen Preis. Alle Diensttarife im DTU-basierten Kaufmodell ermöglichen das flexible Wechseln von Computegrößen ohne Ausfallzeiten. Einzeldatenbanken und Pools für elastische Datenbanken werden nach Diensttarif und Computegröße auf Stundenbasis abgerechnet.
+Dienstebenen beim DTU-basierten Kaufmodell unterscheiden sich durch eine Reihe von Computegrößen mit einer festen Menge an integriertem Speicher, einem festen Aufbewahrungszeitraum für Sicherungen und einem festen Preis. Alle Dienstebenen im DTU-basierten Kaufmodell ermöglichen das flexible Wechseln von Computegrößen ohne Ausfallzeiten. Einzeldatenbanken und Pools für elastische Datenbanken werden nach Dienstebene und Computegröße auf Stundenbasis abgerechnet.
 
 > [!IMPORTANT]
 > Für die verwaltete SQL-Datenbank-Instanz wird das DTU-basierte Kaufmodell nicht unterstützt. Weitere Informationen finden Sie unter [Verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md).
 > [!NOTE]
-> Weitere Informationen zu den V-Kern-basierten Diensttarifen finden Sie unter [Auswählen eines V-Kern-Diensttarifs und von Compute-, Arbeitsspeicher-, Speicher- und E/A-Ressourcen](sql-database-service-tiers-vcore.md). Weitere Informationen zu den Unterschieden zwischen DTU-basierten Diensttarifen und V-Kern-basierten Diensttarifen finden Sie unter [Kaufmodelle für Azure SQL-Datenbank und Ressourcen](sql-database-purchase-models.md).
+> Weitere Informationen zu den V-Kern-basierten Dienstebenen finden Sie unter [Auswählen einer V-Kern-Dienstebene und von Compute-, Arbeitsspeicher-, Speicher- und E/A-Ressourcen](sql-database-service-tiers-vcore.md). Weitere Informationen zu den Unterschieden zwischen DTU-basierten Dienstebenen und V-Kern-basierten Dienstebenen finden Sie unter [Kaufmodelle für Azure SQL-Datenbank und Ressourcen](sql-database-purchase-models.md).
 
-## <a name="compare-the-dtu-based-service-tiers"></a>Vergleich der DTU-basierten Diensttarife
+## <a name="compare-the-dtu-based-service-tiers"></a>Vergleich der DTU-basierten Dienstebenen
 
 Die Auswahl einer Dienstebene hängt in erster Linie von den Anforderungen an Geschäftskontinuität, Speicher und Leistung ab.
 
@@ -60,7 +60,7 @@ Computegrößen werden für Einzeldatenbanken als Datenbanktransaktionseinheiten
 > [!IMPORTANT]
 > Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](sql-database-file-space-management.md).
 
-## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Begrenzungen für eDTUs in Pools für elastische Datenbanken, Speicher und in einem Pool zusammengefasste Datenbanken
+## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Begrenzungen für eDTUs in Pools für elastische Datenbanken, Speicher und Pooldatenbanken
 
 | | **Basic** | **Standard** | **Premium** |
 | :-- | --: | --: | --: |

@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s '
-ms.openlocfilehash: 5dd77d85e06a821d8dd359174bb5de6bca8b4d61
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 4617e878f2af446608ede4e0aed644848564a074
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669775"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609074"
 ---
 # <a name="troubleshooting-guide"></a>Handbuch zur Problembehandlung
 
@@ -325,3 +325,57 @@ Der Knoten, auf dem der Pod mit der Node.js-Anwendung ausgeführt wird, der Sie 
 
 ### <a name="try"></a>Testen
 Als vorübergehende Problemumgehung können Sie den Wert für *fs.inotify.max_user_watches* auf jedem Knoten im Cluster erhöhen und den Knoten neu starten, damit die Änderungen wirksam werden.
+
+## <a name="new-pods-are-not-starting"></a>Neue Pods werden nicht gestartet.
+
+### <a name="reason"></a>Grund
+
+Der Kubernetes-Initialisierer kann die PodSpec wegen Änderungen an der rollenbasierten Zugriffssteuerung (RBAC) bei der Rolle *cluster-admin* (Clusteradministrator) im Cluster nicht auf neue Pods anwenden. Der neue Pod kann auch eventuell eine ungültige PodSpec besitzen, z. B. dass das dem Pod zugeordnete Dienstkonto nicht mehr vorhanden ist. Um die Pods anzuzeigen, die sich aufgrund eines Initialisiererproblems im Zustand *Ausstehend* befinden, verwenden Sie den Befehl `kubectl get pods`:
+
+```bash
+kubectl get pods --all-namespaces --include-uninitialized
+```
+
+Dieses Problem kann sich auf Pods in *allen Namespaces* im Cluster auswirken, einschließlich Namespaces, in denen Azure Dev Spaces nicht aktiviert sind.
+
+### <a name="try"></a>Testen
+
+[Aktualisieren der Dev Spaces-CLI auf die neueste Version](./how-to/upgrade-tools.md#update-the-dev-spaces-cli-extension-and-command-line-tools) und anschließendes Löschen der *Azds-Initialisiererkonfiguration* aus dem Azure Dev Spaces-Controller:
+
+```bash
+az aks get-credentials --resource-group <resource group name> --name <cluster name>
+kubectl delete InitializerConfiguration azds
+```
+
+Sobald Sie die *Azds-Initialisiererkonfiguration* aus dem Azure Dev Spaces-Controller entfernt haben, verwenden Sie `kubectl delete`, um alle Pods im Zustand *Ausstehend* zu entfernen. Nachdem alle ausstehenden Pods entfernt wurden, stellen Sie Ihre Pods erneut bereit.
+
+Wenn auch neue Pods nach einer erneuten Bereitstellung weiterhin im Zustand *Ausstehend* verharren, verwenden Sie `kubectl delete`, um alle Pods im Zustand *Ausstehend* zu entfernen. Nachdem alle ausstehenden Pods entfernt wurden, löschen Sie den Controller aus dem Cluster, und installieren Sie ihn erneut:
+
+```bash
+azds remove -g <resource group name> -n <cluster name>
+azds controller create --name <cluster name> -g <resource group name> -tn <cluster name>
+```
+
+Nachdem Ihr Controller neu installiert wurde, stellen Sie Ihre Pods erneut bereit.
+
+## <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>Fehlerhafte RBAC-Berechtigungen zum Aufrufen von Dev Spaces-Controller und -APIs
+
+### <a name="reason"></a>Grund
+Der Benutzer, der auf den Azure Dev Spaces-Controller zugreift, benötigt Lesezugriff auf die Administrator-*kubeconfig* im AKS-Cluster. Diese Berechtigung ist zum Beispiel in der [integrierten Administratorrolle für Azure Kubernetes Service-Cluster](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions) verfügbar. Der Benutzer, der auf den Azure Dev Spaces-Controller zugreift muss außerdem die RBAC-Rolle die *Mitwirkender* oder *Besitzer* für den Controller besitzen.
+
+### <a name="try"></a>Testen
+Weitere Informationen zum Aktualisieren der Berechtigungen eines Benutzers für einen AKS-Cluster finden Sie [hier](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user).
+
+So aktualisieren Sie die RBAC-Rolle des Benutzers für den Controller
+
+1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
+1. Navigieren Sie zu der Ressourcengruppe, die den Controller enthält, die in der Regel mit Ihrem AKS-Cluster identisch ist.
+1. Aktivieren Sie das Kontrollkästchen *Ausgeblendete Typen anzeigen*.
+1. Klicken Sie auf den Controller.
+1. Öffnen Sie den Bereich *Zugriffssteuerung (IAM)*.
+1. Klicken Sie auf die Registerkarte *Rollenzuweisungen*.
+1. Klicken Sie auf *Hinzufügen* und dann auf  *Rollenzuweisung hinzufügen*.
+    * Wählen Sie für *Rolle* entweder *Mitwirkender* oder *Besitzer* aus.
+    * Wählen Sie für *Zugriff zuweisen zu* die Option *Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal* aus.
+    * Suchen Sie für *Auswählen* nach dem Benutzer, dem Sie Berechtigungen erteilen möchten.
+1. Klicken Sie auf *Speichern*.

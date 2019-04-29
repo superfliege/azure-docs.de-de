@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5f937a86e4e063ad1e8346dc629a917ae7ce8b65
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cbc96f7f7c5f8020472708caaead3faff7a26673
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077206"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609216"
 ---
 # <a name="localization-string-ids"></a>Lokalisierungszeichenfolgen-IDs
 

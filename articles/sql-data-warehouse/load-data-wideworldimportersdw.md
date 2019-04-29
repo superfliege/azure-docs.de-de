@@ -81,7 +81,7 @@ Führen Sie die folgenden Schritte aus, um eine leere SQL Data Warehouse-Instanz
 
 6. Klicken Sie auf **Leistungsstufe**, um anzugeben, ob das Data Warehouse für Elastizität oder Compute optimiert wird, und um die Anzahl von Data Warehouse-Einheiten festzulegen. 
 
-7. Wählen Sie für dieses Tutorial die Leistungsstufe **Optimiert für Elastizität** aus. Der Schieberegler ist standardmäßig auf **DW400** gesetzt.  Schieben Sie ihn nach oben und unten, um sich mit der Funktionsweise vertraut zu machen. 
+7. Wählen Sie für dieses Tutorial die Dienstebene **Optimiert für Elastizität** aus. Der Schieberegler ist standardmäßig auf **DW400** gesetzt.  Schieben Sie ihn nach oben und unten, um sich mit der Funktionsweise vertraut zu machen. 
 
     ![Konfigurieren der Leistung](media/load-data-wideworldimportersdw/configure-performance.png)
 
@@ -101,7 +101,7 @@ Führen Sie die folgenden Schritte aus, um eine leere SQL Data Warehouse-Instanz
 Der SQL Data Warehouse-Dienst erstellt eine Firewall auf Serverebene, um zu verhindern, dass externe Anwendungen und Tools eine Verbindung mit dem Server oder Datenbanken auf dem Server herstellen. Zum Herstellen von Konnektivität können Sie Firewallregeln hinzufügen, mit denen Konnektivität für bestimmte IP-Adressen ermöglicht wird.  Führen Sie die folgenden Schritte aus, um eine [Firewallregel auf Serverebene](../sql-database/sql-database-firewall-configure.md) für die IP-Adresse Ihres Clients zu erstellen. 
 
 > [!NOTE]
-> SQL Data Warehouse kommuniziert über Port 1433. Wenn Sie versuchen, eine Verbindung über ein Unternehmensnetzwerk herzustellen, wird ausgehender Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Azure SQL-Datenbankserver herstellen, wenn Ihre IT-Abteilung Port 1433 öffnet.
+> SQL Data Warehouse kommuniziert über Port 1433. Wenn Sie versuchen, eine Verbindung über ein Unternehmensnetzwerk herzustellen, wird ausgehender Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Azure SQL-Datenbank-Server herstellen, wenn Ihre IT-Abteilung Port 1433 öffnet.
 >
 
 1. Klicken Sie nach Abschluss der Bereitstellung im Menü auf der linken Seite auf **SQL-Datenbanken**, und klicken Sie dann auf der Seite **SQL-Datenbanken** auf **SampleDW**. Die Übersichtsseite für Ihre Datenbank wird geöffnet, die den vollqualifizierten Servernamen (z.B. **sample-svr.database.windows.net**) und Optionen für die weitere Konfiguration enthält. 
@@ -114,7 +114,7 @@ Der SQL Data Warehouse-Dienst erstellt eine Firewall auf Serverebene, um zu verh
 
     ![Servereinstellungen](media/load-data-wideworldimportersdw/server-settings.png) 
 
-5. Klicken Sie auf **Firewalleinstellungen anzeigen**. Die Seite **Firewalleinstellungen** für den SQL-Datenbankserver wird geöffnet. 
+5. Klicken Sie auf **Firewalleinstellungen anzeigen**. Die Seite **Firewalleinstellungen** für den SQL-Datenbank-Server wird geöffnet. 
 
     ![Serverfirewallregel](media/load-data-wideworldimportersdw/server-firewall-rule.png) 
 

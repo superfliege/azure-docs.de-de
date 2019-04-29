@@ -37,7 +37,7 @@ Geben Sie Werte für **Registrierungsname** und **Ressourcengruppe** ein. Der Re
 
 ![Erstellen einer Containerregistrierung im Azure-Portal][qs-portal-03]
 
-In dieser Schnellstartanleitung erstellen Sie eine Registrierung vom Typ *Basic*. Dabei handelt es sich um eine kostenoptimierte Option für Entwickler, die sich mit Azure Container Registry vertraut machen. Ausführliche Informationen zu verfügbaren Diensttarifen finden Sie unter [Azure Container Registry-SKUs][container-registry-skus].
+In dieser Schnellstartanleitung erstellen Sie eine Registrierung vom Typ *Basic*. Dabei handelt es sich um eine kostenoptimierte Option für Entwickler, die sich mit Azure Container Registry vertraut machen. Ausführliche Informationen zu verfügbaren Dienstebenen finden Sie unter [Azure Container Registry-SKUs][container-registry-skus].
 
 Wenn die Meldung **Bereitstellung erfolgreich** erscheint, wählen Sie die Containerregistrierung im Portal aus. 
 

@@ -1,5 +1,5 @@
 ---
-title: VNET-Dienstendpunkte – Azure Event Hubs | Microsoft-Dokumentation
+title: 'Virtual Network-Dienstendpunkte: Azure Event Hubs | Microsoft-Dokumentation'
 description: In diesem Artikel werden Informationen zum Hinzufügen eines Microsoft.EventHub-Dienstendpunkts zu einem virtuellen Netzwerk beschrieben.
 services: event-hubs
 documentationcenter: ''
@@ -18,7 +18,7 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "57887594"
 ---
-# <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Verwenden von VNET-Dienstendpunkten mit Azure Event Hubs
+# <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Verwenden von Virtual Network-Dienstendpunkten mit Azure Event Hubs
 
 Die Integration von Event Hubs mit [VNET-Dienstendpunkten][vnet-sep] ermöglicht den sicheren Zugriff auf Messagingfunktionen für Workloads, z.B. an virtuelle Netzwerke (VNETs) gebundene virtuelle Computer, wobei der Pfad für den Netzwerkdatenverkehr an beiden Enden geschützt ist.
 
@@ -59,11 +59,11 @@ Dies bedeutet, dass Ihre sicherheitsrelevanten Cloudlösungen nicht nur Zugriff 
 
 *VNET-Regeln* sind ein Feature für die Firewallsicherheit, mit dem gesteuert wird, ob Ihr Azure Event Hubs-Namespace Verbindungen eines bestimmten VNET-Subnetzes akzeptiert.
 
-Das Binden eines Event Hubs-Namespace an ein virtuelles Netzwerk ist ein Prozess mit zwei Schritten. Zuerst müssen Sie einen **Dienstendpunkt des virtuellen Netzwerks** in einem Subnetz eines virtuellen Netzwerks erstellen und für „Microsoft.EventHub“ aktivieren, wie in der [Übersicht über Dienstendpunkte][vnet-sep] beschrieben. Nachdem Sie den Dienstendpunkt hinzugefügt haben, binden Sie den Event Hubs-Namespace mit einer *Regel für virtuelle Netzwerke* daran.
+Das Binden eines Event Hubs-Namespace an ein virtuelles Netzwerk ist ein Prozess mit zwei Schritten. Zuerst müssen Sie einen **VNET-Dienstendpunkt** in einem Subnetz eines virtuellen Netzwerks erstellen und für „Microsoft.EventHub“ aktivieren, wie in der [Übersicht über Dienstendpunkte][vnet-sep] beschrieben. Nachdem Sie den Dienstendpunkt hinzugefügt haben, binden Sie den Event Hubs-Namespace mit einer *VNET-Regel* daran.
 
-Die Regel für virtuelle Netzwerke ist eine Zuordnung des Event Hubs-Namespace zu einem Subnetz eines virtuellen Netzwerks. Während die Regel vorhanden ist, wird allen Workloads, die an das Subnetz gebunden sind, Zugriff auf den Event Hubs-Namespace gewährt. Event Hubs stellt selbst niemals ausgehende Verbindungen her, muss keinen Zugriff erhalten und erhält daher niemals die Gewährung des Zugriffs auf Ihr Subnetz, indem diese Regel aktiviert wird.
+Die VNET-Regel ist eine Zuordnung des Event Hubs-Namespace zu einem Subnetz eines virtuellen Netzwerks. Während die Regel vorhanden ist, wird allen Workloads, die an das Subnetz gebunden sind, Zugriff auf den Event Hubs-Namespace gewährt. Event Hubs stellt selbst niemals ausgehende Verbindungen her, muss keinen Zugriff erhalten und erhält daher niemals die Gewährung des Zugriffs auf Ihr Subnetz, indem diese Regel aktiviert wird.
 
-### <a name="create-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Erstellen einer Regel für virtuelle Netzwerke mit Azure Resource Manager-Vorlagen
+### <a name="create-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Erstellen einer VNET-Regel mit Azure Resource Manager-Vorlagen
 
 Mithilfe der folgenden Resource Manager-Vorlage können Sie einem vorhandenen Event Hubs-Namespace eine VNET-Regel hinzufügen.
 

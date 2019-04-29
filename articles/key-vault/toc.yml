@@ -74,7 +74,7 @@
       href: key-vault-ovw-soft-delete.md
     - name: Drosselung
       href: key-vault-ovw-throttling.md
-    - name: Dienstendpunkte im virtuellen Netzwerk
+    - name: VNET-Dienstendpunkte
       href: key-vault-overview-vnet-service-endpoints.md
     - name: 'Authentifizierung, Anforderungen und Antworten'
       href: authentication-requests-and-responses.md

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 65023fbf96dc3e1276413f8c40ecb262d60c1454
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b6a5712c617ab1e16b5341d9727b840fe8ea2213
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863354"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524020"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Verwenden der BulkExecutor-Java-Bibliothek zum Ausführen von Massenvorgängen in Azure Cosmos DB
 
@@ -118,8 +118,8 @@ Das geklonte Repository enthält zwei Beispiele „bulkimport“ und „bulkupda
    |int getNumberOfDocumentsImported()  |   Die Gesamtanzahl von Dokumenten, die von allen an den Massenimport-API-Aufruf gesendeten Dokumenten erfolgreich importiert wurden.      |
    |double getTotalRequestUnitsConsumed()   |  Die Gesamtanzahl von Anforderungseinheiten, die vom Massenimport-API-Aufruf verbraucht wurden.       |
    |Duration getTotalTimeTaken()   |    Die Gesamtzeit, die der Massenimport-API-Aufruf benötigt, um die Ausführung abzuschließen.     |
-   |List<Exception> getErrors() |  Ruft die Liste der Fehler ab, wenn einige der im Batch an den Massenimport-API-Aufruf übermittelten Dokumente nicht eingefügt werden konnten.       |
-   |List<Object> getBadInputDocuments()  |    Die Liste der Dokumente mit ungültigem Format, die im Massenimport-API-Aufruf nicht erfolgreich importiert wurden. Benutzer sollten die zurückgegebenen Dokumente korrigieren und den Import wiederholen. Zu Dokumenten mit ungültigem Format gehören auch Dokumente, deren ID-Wert keine Zeichenfolge ist (NULL-Werte oder andere Datentypen werden als ungültig betrachtet).     |
+   |List\<Ausnahme> getErrors() |  Ruft die Liste der Fehler ab, wenn einige der im Batch an den Massenimport-API-Aufruf übermittelten Dokumente nicht eingefügt werden konnten.       |
+   |List\<Objekt> getBadInputDocuments()  |    Die Liste der Dokumente mit ungültigem Format, die im Massenimport-API-Aufruf nicht erfolgreich importiert wurden. Benutzer sollten die zurückgegebenen Dokumente korrigieren und den Import wiederholen. Zu Dokumenten mit ungültigem Format gehören auch Dokumente, deren ID-Wert keine Zeichenfolge ist (NULL-Werte oder andere Datentypen werden als ungültig betrachtet).     |
 
 5. Wenn die Massenimportanwendung fertig ist, erstellen Sie das Befehlszeilenprogramm aus der Quelle, indem Sie den Befehl „mvn clean package“ ausführen. Dieser Befehl generiert eine JAR-Datei im Zielordner:  
 
@@ -182,7 +182,7 @@ Sie können vorhandene Dokumente mithilfe der BulkUpdateAsync-API aktualisieren.
    |int getNumberOfDocumentsUpdated()  |   Die Gesamtanzahl von Dokumenten, die von allen an den Massenaktualisierungs-API-Aufruf gesendeten Dokumenten erfolgreich aktualisiert wurden.      |
    |double getTotalRequestUnitsConsumed() |  Die Gesamtanzahl von Anforderungseinheiten, die vom Massenaktualisierungs-API-Aufruf verbraucht wurden.       |
    |Duration getTotalTimeTaken()  |   Die Gesamtzeit, die der Massenaktualisierungs-API-Aufruf benötigt, um die Ausführung abzuschließen.      |
-   |List<Exception> getErrors()   |     Ruft die Liste der Fehler ab, wenn einige der im Batch an den Massenaktualisierungs-API-Aufruf übermittelten Dokumente nicht eingefügt werden konnten.      |
+   |List\<Ausnahme> getErrors()   |    Ruft die Liste der Fehler ab, wenn einige der im Batch an den Massenaktualisierungs-API-Aufruf übermittelten Dokumente nicht eingefügt werden konnten.      |
 
 3. Wenn die Massenaktualisierungsanwendung fertig ist, erstellen Sie das Befehlszeilenprogramm aus der Quelle, indem Sie den Befehl „mvn clean package“ ausführen. Dieser Befehl generiert eine JAR-Datei im Zielordner:  
 

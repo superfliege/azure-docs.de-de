@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: kasinh
-ms.openlocfilehash: a0960cba58817a6d340998933fe315d6fca887e4
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: d1fb3434f0d3954a07980963866bcd7cce004379
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488443"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528100"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Wiederherstellen von Daten von Azure Backup Server
 Mit Azure Backup Server können Sie die Daten wiederherstellen, die Sie in einem Recovery Services-Tresor gesichert haben. Der entsprechende Prozess ist in der Azure Backup Server-Verwaltungskonsole integriert und ähnelt dem Wiederherstellungsworkflow für andere Azure Backup-Komponenten.
@@ -80,12 +80,12 @@ So stellen Sie Daten von einer Azure Backup Server-Instanz wieder her:
     ![Löschen des externen DPM](./media/backup-azure-alternate-dpm-server/clear-external-dpm.png)
 
 ## <a name="troubleshooting-error-messages"></a>Problembehandlung bei Fehlermeldungen
-|  Nein. | Fehlermeldung | Schritte zur Problembehandlung |
+| Nein. | Fehlermeldung | Schritte zur Problembehandlung |
 |:---:|:--- |:--- |
 | 1. |Dieser Server ist nicht bei dem Tresor registriert, der durch die Tresoranmeldeinformationen angegeben ist. |**Ursache:** Dieser Fehler wird angezeigt, wenn die ausgewählte Datei mit den Tresoranmeldeinformationen nicht zu dem Recovery Services-Tresor gehört, dem die Azure Backup Server-Instanz zugeordnet ist, auf der die Wiederherstellung versucht wird. <br> **Lösung:** Laden Sie die Anmeldeinformationsdatei für den Tresor aus dem Recovery Services-Tresor herunter, bei dem die Azure Backup Server-Instanz registriert ist. |
 | 2. |Die wiederherzustellenden Daten sind nicht verfügbar, oder der ausgewählte Server ist kein DPM-Server. |**Ursache:** Es sind keine anderen Azure Backup Server-Instanzen bei dem Recovery Services-Tresor registriert, oder die Instanzen haben ihre Metadaten noch nicht hochgeladen, oder der ausgewählte Server ist keine Azure Backup Server-Instanz (also kein Windows-Server oder Windows-Client). <br> **Lösung:** Wenn noch andere Azure Backup Server-Instanzen bei dem Recovery Services-Tresor registriert sind, müssen Sie sicherstellen, dass der neueste Azure Backup-Agent installiert ist. <br>Sind noch andere Azure Backup Server-Instanzen bei dem Recovery Services-Tresor registriert, warten Sie nach der Installation einen Tag, um den Wiederherstellungsprozess zu starten. Während der Nacht werden die Metadaten für geschützte Sicherungen in die Cloud hochgeladen. Die Daten sind dann für die Wiederherstellung verfügbar. |
 | 3. |Es sind keine anderen DPM-Server bei diesem Tresor registriert. |**Ursache:** Bei dem Tresor, von dem aus die Wiederherstellung versucht wird, sind keine weiteren Server von Azure Backup Server registriert.<br>**Lösung:** Wenn noch andere Azure Backup Server-Instanzen bei dem Recovery Services-Tresor registriert sind, müssen Sie sicherstellen, dass der neueste Azure Backup-Agent installiert ist.<br>Sind noch andere Azure Backup Server-Instanzen bei dem Recovery Services-Tresor registriert, warten Sie nach der Installation einen Tag, um den Wiederherstellungsprozess zu starten. Während der Nacht werden die Metadaten für alle geschützten Sicherungen in die Cloud hochgeladen. Die Daten sind dann für die Wiederherstellung verfügbar. |
-| 4. |Die angegebene Verschlüsselungspassphrase stimmt nicht mit der Passphrase überein, die dem folgenden Server zugeordnet ist: **<server name>** |**Ursache:** Die beim Verschlüsseln der wiederherzustellenden Daten auf dem Server von Azure Backup Server verwendete Verschlüsselungspassphrase stimmt nicht mit der angegebenen Verschlüsselungspassphrase überein. Der Agent kann die Daten nicht entschlüsseln. Daher schlägt die Wiederherstellung fehl.<br>**Lösung:** Geben Sie genau dieselbe Verschlüsselungspassphrase an, die dem Server von Azure Backup Server zugeordnet ist, dessen Daten wiederhergestellt werden sollen. |
+| 4. |Die angegebene Verschlüsselungspassphrase stimmt mit der dem folgenden Server zugeordneten Passphrase nicht überein: **\<Servername>**. |**Ursache:** Die beim Verschlüsseln der wiederherzustellenden Daten auf dem Server von Azure Backup Server verwendete Verschlüsselungspassphrase stimmt nicht mit der angegebenen Verschlüsselungspassphrase überein. Der Agent kann die Daten nicht entschlüsseln. Daher schlägt die Wiederherstellung fehl.<br>**Lösung:** Geben Sie genau dieselbe Verschlüsselungspassphrase an, die dem Server von Azure Backup Server zugeordnet ist, dessen Daten wiederhergestellt werden sollen. |
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 

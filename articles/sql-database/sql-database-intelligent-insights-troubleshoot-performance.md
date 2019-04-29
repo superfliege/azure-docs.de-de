@@ -29,7 +29,7 @@ Diese Seite bietet Informationen zu Problemen mit der Leistung von Azure SQL-Dat
 
 ## <a name="detectable-database-performance-patterns"></a>Erkennbare Muster bei der Datenbankleistung
 
-Intelligent Insights erkennt automatisch auf Grundlage von Wartezeiten bei der Abfrageausführung, Fehlern oder Timeouts Probleme mit der Leistung von SQL-Datenbank und verwalteten Datenbank-Instanzen. Erkannte Leistungsmuster werden in das Diagnoseprotokoll ausgegeben. Erkennbare Leistungsmuster sind in der folgenden Tabelle zusammengefasst.
+Intelligent Insights erkennt automatisch auf Grundlage von Wartezeiten bei der Abfrageausführung, Fehlern oder Timeouts Probleme mit der Leistung von SQL-Datenbank und Datenbanken der verwalteten Instanz. Erkannte Leistungsmuster werden in das Diagnoseprotokoll ausgegeben. Erkennbare Leistungsmuster sind in der folgenden Tabelle zusammengefasst.
 
 | Erkennbare Leistungsmuster | Beschreibung für Azure SQL-Datenbank und Pools für elastische Datenbanken | Beschreibung für Datenbanken in einer verwalteten Instanz |
 | :------------------- | ------------------- | ------------------- |

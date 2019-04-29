@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Verwenden von Azure Database Migration Service für die Offlinemigration von SQL Server zu einer Einzel-/Pooldatenbank in Azure SQL-Datenbank | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie mit Azure Database Migration Service eine Offlinemigration von einer lokalen SQL Server-Instanz zu einer Einzeldatenbank oder einer in einem Pool zusammengefassten Datenbank in Azure SQL-Datenbank durchführen.
+description: Hier erfahren Sie, wie Sie mit Azure Database Migration Service eine Offlinemigration von einer lokalen SQL Server-Instanz zu einer Einzel- oder Pooldatenbank in Azure SQL-Datenbank durchführen.
 services: dms
 author: HJToland3
 ms.author: jtoland
@@ -34,7 +34,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
-In diesem Artikel wird eine Offlinemigration von SQL Server zu einer Einzeldatenbank oder einer in einem Pool zusammengefassten Datenbank in Azure SQL-Datenbank beschrieben. Informationen zur Onlinemigration finden Sie unter [Onlinemigration von SQL Server zu Azure SQL-Datenbank mit DMS](tutorial-sql-server-azure-sql-online.md).
+In diesem Artikel wird eine Offlinemigration von SQL Server zu einer Einzel- oder Pooldatenbank in Azure SQL-Datenbank beschrieben. Informationen zur Onlinemigration finden Sie unter [Onlinemigration von SQL Server zu Azure SQL-Datenbank mit DMS](tutorial-sql-server-azure-sql-online.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -63,7 +63,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 - Öffnen Sie Ihre Windows-Firewall, damit Azure Database Migration Service auf die SQL Server-Quellinstanz zugreifen kann (standardmäßig TCP-Port 1433).
 - Bei der Ausführung mehrerer benannter SQL Server-Instanzen mit dynamischen Ports empfiehlt es sich, den SQL-Browser-Dienst zu aktivieren und den Zugriff auf den UDP-Port 1434 durch Ihre Firewalls zuzulassen, sodass Azure Database Migration Service eine Verbindung mit einer benannten Instanz auf Ihrem Quellserver herstellen kann.
 - Wenn Sie eine Firewall-Appliance vor Ihren Quelldatenbanken verwenden, müssen Sie möglicherweise Firewallregeln hinzufügen, damit Azure Database Migration Service auf die Quelldatenbanken für die Migration zugreifen kann.
-- Erstellen Sie für den Azure SQL-Datenbankserver eine [IP-Firewallregel](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) auf Serverebene, um Azure Database Migration Service den Zugriff auf die Zieldatenbanken zu ermöglichen. Geben Sie den Subnetzbereich des für Azure Database Migration Service verwendeten VNET an.
+- Erstellen Sie für den Azure SQL-Datenbank-Server eine [IP-Firewallregel](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) auf Serverebene, um Azure Database Migration Service den Zugriff auf die Zieldatenbanken zu ermöglichen. Geben Sie den Subnetzbereich des für Azure Database Migration Service verwendeten VNET an.
 - Stellen Sie sicher, dass die für die Verbindung mit der SQL Server-Quellinstanz verwendeten Anmeldeinformationen über [CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql)-Berechtigungen verfügen.
 - Stellen Sie sicher, dass die für die Verbindung mit der Azure SQL-Zieldatenbankinstanz verwendeten Anmeldeinformationen die Berechtigung CONTROL DATABASE für die Azure SQL-Zieldatenbanken besitzen.
 
@@ -224,7 +224,7 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
 
 ## <a name="specify-target-details"></a>Angeben von Zieldetails
 
-1. Klicken Sie auf **Speichern**, und geben Sie dann auf dem Bildschirm **Zieldetails für die Migration** die Verbindungsdetails für den gewünschten Azure SQL-Datenbankserver an. Dabei handelt es sich um die zuvor bereitgestellte Azure SQL-Datenbank, für die das **AdventureWorks2012**-Schema über den Datenmigrations-Assistenten bereitgestellt wurde.
+1. Klicken Sie auf **Speichern**, und geben Sie dann auf dem Bildschirm **Zieldetails für die Migration** die Verbindungsdetails für den gewünschten Azure SQL-Datenbank-Server an. Dabei handelt es sich um die zuvor bereitgestellte Azure SQL-Datenbank, für die das **AdventureWorks2012**-Schema über den Datenmigrations-Assistenten bereitgestellt wurde.
 
     ![Auswählen des Ziels](media/tutorial-sql-server-to-azure-sql/dms-select-target2.png)
 
@@ -236,7 +236,7 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
 
 3. Wählen Sie **Save** (Speichern) im Bildschirm **Select tables** (Tabellen auswählen) aus, erweitern Sie die Tabellenauflistung, und prüfen Sie die Liste betroffener Felder.
 
-    Beachten Sie, dass Azure Database Migration Service automatisch alle leeren Quelltabellen auswählt, die auf der gewünschten Azure SQL-Datenbankinstanz vorhanden sind. Wenn Sie Tabellen, die bereits Daten enthalten, erneut migrieren möchten, müssen Sie die Tabellen auf diesem Blatt explizit auswählen.
+    Beachten Sie, dass Azure Database Migration Service automatisch alle leeren Quelltabellen auswählt, die in der gewünschten Azure SQL-Datenbankinstanz vorhanden sind. Wenn Sie Tabellen, die bereits Daten enthalten, erneut migrieren möchten, müssen Sie die Tabellen auf diesem Blatt explizit auswählen.
 
     ![Auswählen von Tabellen](media/tutorial-sql-server-to-azure-sql/dms-configure-setting-activity2.png)
 

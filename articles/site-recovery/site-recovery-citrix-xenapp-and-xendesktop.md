@@ -43,7 +43,7 @@ Eine Citrix XenApp- und XenDesktop-Farm weist in der Regel das folgende Bereitst
 
 **Bereitstellungsmuster**
 
-Citrix XenApp- und XenDesktop-Bereitstellung mit AD DNS-Server, SQL-Datenbankserver, Citrix Delivery Controller, StoreFront-Server, XenApp Master (VDA), Citrix XenApp License Server
+Citrix XenApp- und XenDesktop-Bereitstellung mit AD DNS-Server, SQL-Datenbank-Server, Citrix Delivery Controller, StoreFront-Server, XenApp Master (VDA), Citrix XenApp License Server
 
 ![Bereitstellungsmuster 1](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-deployment.png)
 
@@ -81,7 +81,7 @@ Sie müssen diese Klone mithilfe der Azure RM-Bereitstellung über den Delivery 
 Die folgenden Komponenten der Citrix XenApp-Bereitstellung müssen geschützt werden, um Replikation und Wiederherstellung zu aktivieren.
 
 * Schutz des AD DNS-Servers
-* Schutz des SQL-Datenbankservers
+* Schutz des SQL-Datenbank-Servers
 * Schutz von Citrix Delivery Controller
 * Schutz des StoreFront-Servers
 * Schutz von XenApp Master (VDA)

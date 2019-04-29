@@ -228,7 +228,7 @@ Die Administratoren von Contoso stellen eine MySQL-Datenbankinstanz in „USA, O
 
     ![MySQL](./media/contoso-migration-rehost-linux-vm-mysql/mysql-3.png)
 
-5. Nach dem Hinzufügen des Subnetzes erstellen sie eine virtuelle Netzwerkregel, die Zugriff vom Datenbanksubnetz im Produktionsnetzwerk zulässt.
+5. Nach dem Hinzufügen des Subnetzes erstellen sie eine VNET-Regel, die Zugriff vom Datenbanksubnetz im Produktionsnetzwerk zulässt.
 
     ![MySQL](./media/contoso-migration-rehost-linux-vm-mysql/mysql-4.png)
 

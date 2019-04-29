@@ -87,7 +87,7 @@ In jedem dieser Fälle bietet App Service eine Möglichkeit zur Herstellung sich
 
 Wenn Ihre App eine Verbindung mit Azure-Ressourcen (etwa mit [SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) und [Azure Storage](/azure/storage/)) herstellt, bleibt die Verbindung innerhalb von Azure und überschreitet keine Netzwerkgrenzen. Die Verbindung durchläuft jedoch die gemeinsam genutzten Netzwerke in Azure. Stellen Sie daher sicher, dass Ihre Verbindung verschlüsselt ist. 
 
-Wenn Ihre App in einer [App Service-Umgebung](environment/intro.md) gehostet wird, sollten Sie [über unterstützte Dienstendpunkte im virtuellen Netzwerk eine Verbindung mit Azure-Diensten herstellen](../virtual-network/virtual-network-service-endpoints-overview.md).
+Wenn Ihre App in einer [App Service-Umgebung](environment/intro.md) gehostet wird, sollten Sie [über Virtual Network-Dienstendpunkte eine Verbindung mit unterstützten Azure-Diensten herstellen](../virtual-network/virtual-network-service-endpoints-overview.md).
 
 ### <a name="resources-inside-an-azure-virtual-network"></a>Ressourcen in einer Azure Virtual Network-Instanz
 

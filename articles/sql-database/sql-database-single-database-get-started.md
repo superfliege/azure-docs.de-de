@@ -29,7 +29,7 @@ Melden Sie sich zum Durchführen aller Schritte in diesem Schnellstart beim [Azu
 
 ## <a name="create-a-single-database"></a>Erstellen einer Einzeldatenbank
 
-Eine Einzeldatenbank enthält einen definierten Satz von Compute-, Arbeitsspeicher-, EA- und Speicherressourcen und verwendet eins von zwei möglichen [Erwerbsmodellen](sql-database-purchase-models.md). Wenn Sie eine Einzeldatenbank erstellen, legen Sie auch einen [SQL-Datenbankserver](sql-database-servers.md) für ihre Verwaltung fest und platzieren ihn in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) in einer bestimmten Region.
+Eine Einzeldatenbank enthält einen definierten Satz von Compute-, Arbeitsspeicher-, EA- und Speicherressourcen und verwendet eins von zwei möglichen [Kaufmodellen](sql-database-purchase-models.md). Wenn Sie eine Einzeldatenbank erstellen, legen Sie auch einen [SQL-Datenbank-Server](sql-database-servers.md) für ihre Verwaltung fest und platzieren ihn in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) in einer bestimmten Region.
 
 So erstellen Sie eine Einzeldatenbank mit den AdventureWorksLT-Beispieldaten:
 
@@ -69,7 +69,7 @@ So erstellen Sie eine Einzeldatenbank mit den AdventureWorksLT-Beispieldaten:
 
 
       > [!NOTE]
-      > In diesem Schnellstart wird das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md) verwendet, das [V-Kern-basierte Kaufmodell](sql-database-service-tiers-vcore.md) ist jedoch ebenfalls verfügbar.
+      > In diesem Schnellstart wird das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md) verwendet, das [vCore-basierte Kaufmodell](sql-database-service-tiers-vcore.md) ist jedoch ebenfalls verfügbar.
       > [!IMPORTANT]
       > In allen Regionen außer den folgenden ist im Premium-Tarif derzeit mehr als 1 TB Speicher verfügbar: Regionen „China, Osten“, „China, Norden“, „Deutschland, Mitte“, „Deutschland, Nordosten“, „USA, Westen-Mitte“, „US DoD“ und „US Government, Mitte“. In diesen Regionen ist der Speicher im Tarif „Premium“ auf 1 TB begrenzt.  Weitere Informationen finden Sie unter [Einschränkungen von P11 und P15](sql-database-single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb).  
 

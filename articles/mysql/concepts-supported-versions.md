@@ -42,4 +42,4 @@ Zurzeit werden Upgrades von Neben- und Hauptversionen nicht unterstützt. Ein Up
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zu bestimmten Ressourcenkontingenten und -beschränkungen basierend auf Ihrem **Diensttarif** finden Sie unter [Diensttarife](./concepts-pricing-tiers.md).
+Informationen zu bestimmten Ressourcenkontingenten und -beschränkungen basierend auf Ihrer **Dienstebene** finden Sie unter [Dienstebenen](./concepts-pricing-tiers.md).

@@ -56,7 +56,7 @@ Zusätzlich zu Transact-SQL-Anweisungen, die sich auf die nicht unterstützen Fe
 - Hochverfügbarkeit: Syntax im Zusammenhang mit Hochverfügbarkeit, die über Ihr Microsoft Azure-Konto verwaltet wird. Dies schließt die Syntax für die Sicherung, Wiederherstellung, für Always On, die Datenbankspiegelung, den Protokollversand und Wiederherstellungsmodi ein.
 - Protokollleser: Syntax, die vom Protokollleser abhängig ist, der nicht in der SQL-Datenbank-Instanz verfügbar ist: Pushreplikation, Erfassung geänderter Daten. Die SQL-Datenbank kann ein Abonnent eines Pushreplikationsartikels sein.
 - Funktionen: `fn_get_sql`, `fn_virtualfilestats`, `fn_virtualservernodes`
-- Hardware: Syntax im Zusammenhang mit hardwarebezogenen Servereinstellungen: Arbeitsspeicher, Worker-Threads, CPU-Affinität, Ablaufverfolgungskennzeichen usw. Verwenden Sie stattdessen Diensttarife und Computegrößen.
+- Hardware: Syntax im Zusammenhang mit hardwarebezogenen Servereinstellungen: Arbeitsspeicher, Worker-Threads, CPU-Affinität, Ablaufverfolgungskennzeichen usw. Verwenden Sie stattdessen Dienstebenen und Computegrößen.
 - `KILL STATS JOB`
 - `OPENQUERY`, `OPENROWSET`, `OPENDATASOURCE` und vierteilige Namen
 - .NET Framework: CLR-Integration in SQL Server

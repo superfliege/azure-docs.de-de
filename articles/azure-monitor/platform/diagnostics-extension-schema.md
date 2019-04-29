@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 92ae1e31a739486871ebff69740f31a495c7b780
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 1230a9bcea01ef394a6299c50b8d5537850cfee5
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54471649"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526338"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Azure-Diagnoseerweiterung – Versionen und Verlauf des Konfigurationsschemas
 Diese Seite enthält einen Index für die Schemaversionen der Azure-Diagnoseerweiterung, die zusammen mit dem Microsoft Azure SDK bereitgestellt werden.  
@@ -29,7 +29,7 @@ Diese Seite enthält einen Index für die Schemaversionen der Azure-Diagnoseerwe
 >
 > Diese Seite ist nur relevant, wenn Sie einen dieser Dienste verwenden.
 
-Die Azure-Diagnoseerweiterung wird zusammen mit anderen Microsoft-Diagnoseprodukten wie Azure Monitor, Application Insights und Log Analytics verwendet. Weitere Informationen finden Sie unter [Überwachen von Azure-Anwendungen und -Ressourcen](../../azure-monitor/overview.md).
+Die Azure-Diagnoseerweiterung wird zusammen mit anderen Microsoft-Diagnoseprodukten wie Azure Monitor verwendet, in dem Application Insights und Log Analytics enthalten sind. Weitere Informationen finden Sie unter [Überwachen von Azure-Anwendungen und -Ressourcen](../../azure-monitor/overview.md).
 
 ## <a name="azure-sdk-and-diagnostics-versions-shipping-chart"></a>Azure SDK- und -Diagnoseversionen – Bereitstellungsdiagramm  
 
@@ -187,7 +187,7 @@ Es gibt einige wichtige Unterschiede zwischen der Funktion der Verbindungszeiche
 
 * Bis Azure SDK 2.4 wurde die Verbindungszeichenfolge vom Diagnose-Plug-In zur Laufzeit verwendet, um Informationen zum Speicherkonto für die Übertragung der Diagnoseprotokolle abzurufen.
 * Ab Azure SDK 2.6 wird die Diagnoseverbindungszeichenfolge von Visual Studio während der Veröffentlichung zum Konfigurieren der Diagnoseerweiterung mit den entsprechenden Speicherkontoinformationen verwendet. Mit der Verbindungszeichenfolge können Sie die verschiedenen Speicherkonten für verschiedene Dienstkonfigurationen definieren, die Visual Studio beim Veröffentlichen verwendet. Da das Diagnose-Plug-In (nach Azure SDK 2.5) nicht mehr verfügbar ist, kann jedoch die CSCFG-Datei allein die Diagnoseerweiterung nicht aktivieren. Sie müssen die Erweiterung mithilfe von Tools wie Visual Studio oder PowerShell separat aktivieren.
-* Um die Konfiguration der Diagnoseerweiterung mit PowerShell zu vereinfachen, enthält die Paketausgabe von Visual Studio auch die öffentliche Konfigurations-XML für die Diagnoseerweiterung jeder Rolle. Visual Studio verwendet die Diagnoseverbindungszeichenfolge zum Ausfüllen der Speicherkontoinformationen, die in der öffentlichen Konfiguration vorhanden sind. Die öffentlichen Konfigurationsdateien werden im Extensions-Ordner erstellt und haben das folgende Namensgebungsmuster: "PaaSDiagnostics<RoleName>. PubConfig.xml". Dieses Muster kann von allen PowerShell-basierten Bereitstellungen verwendet werden, um die einzelnen Konfigurationen einer Rolle zuzuordnen.
+* Um die Konfiguration der Diagnoseerweiterung mit PowerShell zu vereinfachen, enthält die Paketausgabe von Visual Studio auch die öffentliche Konfigurations-XML für die Diagnoseerweiterung jeder Rolle. Visual Studio verwendet die Diagnoseverbindungszeichenfolge zum Ausfüllen der Speicherkontoinformationen, die in der öffentlichen Konfiguration vorhanden sind. Die öffentlichen Konfigurationsdateien werden im Ordner „Extensions“ erstellt und haben das folgende Namensgebungsmuster: `PaaSDiagnostics.<RoleName>.PubConfig.xml`. Dieses Muster kann von allen PowerShell-basierten Bereitstellungen verwendet werden, um die einzelnen Konfigurationen einer Rolle zuzuordnen.
 * Die Verbindungszeichenfolge in der CSCFG-Datei wird auch im Azure-Portal verwendet, um auf die Diagnosedaten zuzugreifen, sodass sie in der Registerkarte **Überwachung** angezeigt werden kann. Die Verbindungszeichenfolge ist erforderlich, um den Dienst so zu konfigurieren, dass ausführliche Überwachungsdaten im Portal angezeigt werden.
 
 #### <a name="migrating-projects-to-azure-sdk-26-and-later"></a>Migrieren von Projekten zu Azure SDK 2.6 und höher

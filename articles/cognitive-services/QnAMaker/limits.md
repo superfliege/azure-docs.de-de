@@ -69,7 +69,7 @@ Dabei handelt es sich um die Grenzwerte für die einzelnen Aktualisierungsaktion
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wann und wie Diensttarife geändert werden:
+Erfahren Sie, wann und wie Dienstebenen geändert werden:
 
 * [QnA Maker](how-to/upgrade-qnamaker-service.md#upgrade-qna-maker-management-sku): Wenn Sie in Ihrer Wissensdatenbank weitere Quelldateien oder größere Dokumente benötigen, die über Ihren aktuellen Tarif hinausgehen, upgraden Sie den Tarif Ihres QnA Maker-Diensts.
 * [App Service](how-to/upgrade-qnamaker-service.md#upgrade-app-service): Wenn Ihre Wissensdatenbank mehr Anforderungen von Ihrer Client-App verarbeiten muss, upgraden Sie den Tarif Ihres App-Diensts.

@@ -48,8 +48,8 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Erstellt einen App Service-Plan. |
 | [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Erstellt eine App Service-App. |
-| [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) | Erstellt einen SQL-Datenbankserver.  |
-| [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create) | Erstellt eine neue Datenbank mit dem SQL-Datenbankserver. |
+| [`az sql server create`](/cli/azure/sql/server?view=azure-cli-latest#az-sql-server-create) | Erstellt einen SQL-Datenbank-Server.  |
+| [`az sql db create`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-create) | Erstellt eine neue Datenbank mit dem SQL-Datenbank-Server. |
 | [`az sql db show-connection-string`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-show-connection-string) | Generiert eine Verbindungszeichenfolge für eine Datenbank. |
 | [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Erstellt oder aktualisiert eine App-Einstellung für eine App Service-App. App-Einstellungen werden als Umgebungsvariablen für Ihre App verfügbar gemacht. |
 

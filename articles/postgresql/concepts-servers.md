@@ -64,6 +64,6 @@ Da es sich um einen verwalteten Dienst für Postgres handelt, stellen die konfig
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Eine Übersicht über den Dienst finden Sie unter  [Azure Database for PostgreSQL – Übersicht](overview.md).
-- Informationen zu bestimmten Ressourcenkontingenten und -beschränkungen basierend auf Ihrem  **Diensttarif** finden Sie unter  [Diensttarife](concepts-pricing-tiers.md).
+- Informationen zu bestimmten Ressourcenkontingenten und -beschränkungen basierend auf Ihrer  **Dienstebene** finden Sie unter  [Dienstebenen](concepts-pricing-tiers.md).
 - Informationen zum Herstellen einer Verbindung mit dem Dienst finden Sie unter  [Datenverbindungsbibliotheken für Azure Database for PostgreSQL](concepts-connection-libraries.md).
 - Sie können Serverparameter über das [Azure-Portal](howto-configure-server-parameters-using-portal.md) oder die [Azure CLI](howto-configure-server-parameters-using-cli.md) anzeigen und bearbeiten.

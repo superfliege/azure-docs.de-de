@@ -115,7 +115,7 @@ Sie können Speicherkonten so konfigurieren, dass nur über bestimmte VNETs zuge
 
 Aktivieren Sie einen [Dienstendpunkt](/azure/virtual-network/virtual-network-service-endpoints-overview) für Azure Storage innerhalb des VNETs. Dieser Endpunkt sorgt für eine optimale Datenverkehrsroute zum Azure Storage-Dienst. Mit jeder Anforderung wird zudem die Identität des virtuellen Netzwerks und des Subnetzes übertragen. Administratoren können anschließend Netzwerkregeln für das Speicherkonto konfigurieren, die den Empfang von Anforderungen aus bestimmten Subnetzen im VNET zulassen. Clients, denen über diese Netzwerkregeln Zugriff gewährt wird, müssen weiterhin die Autorisierungsanforderungen des Speicherkontos erfüllen, um auf die Daten zugreifen zu können.
 
-Jedes Speicherkonto unterstützt bis zu 100 Regeln für virtuelle Netzwerke, die mit [IP-Netzwerkregeln](#grant-access-from-an-internet-ip-range) kombiniert werden können.
+Jedes Speicherkonto unterstützt bis zu 100 VNET-Regeln, die mit [IP-Netzwerkregeln](#grant-access-from-an-internet-ip-range) kombiniert werden können.
 
 ### <a name="available-virtual-network-regions"></a>Verfügbare Regionen für virtuelle Netzwerke
 
@@ -128,13 +128,13 @@ Wenn Sie die Notfallwiederherstellung für einen regionalen Ausfall planen, soll
 
 ### <a name="required-permissions"></a>Erforderliche Berechtigungen
 
-Wenn Sie eine Regel für virtuelle Netzwerke auf ein Speicherkonto anwenden möchten, muss der Benutzer über geeignete Berechtigungen für die hinzuzufügenden Subnetze verfügen. Die dazu erforderliche Berechtigung *Dienst mit einem Subnetz verknüpfen* ist Teil der integrierten Rolle *Speicherkontomitwirkender*. Sie kann aber auch benutzerdefinierten Rollendefinitionen hinzugefügt werden.
+Wenn Sie eine VNET-Regel auf ein Speicherkonto anwenden möchten, muss der Benutzer über geeignete Berechtigungen für die hinzuzufügenden Subnetze verfügen. Die dazu erforderliche Berechtigung *Dienst mit einem Subnetz verknüpfen* ist Teil der integrierten Rolle *Speicherkontomitwirkender*. Sie kann aber auch benutzerdefinierten Rollendefinitionen hinzugefügt werden.
 
 Das Speicherkonto und die virtuellen Netzwerke, denen Zugriff gewährt wurde, können sich in unterschiedlichen Abonnements befinden, diese müssen jedoch zum gleichen Azure AD-Mandanten gehören.
 
-### <a name="managing-virtual-network-rules"></a>Verwalten von Regeln für virtuelle Netzwerke
+### <a name="managing-virtual-network-rules"></a>Verwalten von VNET-Regeln
 
-Regeln für virtuelle Netzwerke für Speicherkonten können über das Azure-Portal, über PowerShell oder per CLI v2 verwaltet werden.
+VNET-Regeln für Speicherkonten können über das Azure-Portal, über PowerShell oder per CLI v2 verwaltet werden.
 
 #### <a name="azure-portal"></a>Azure-Portal
 
@@ -157,7 +157,7 @@ Regeln für virtuelle Netzwerke für Speicherkonten können über das Azure-Port
 
 1. Installieren Sie [Azure PowerShell](/powershell/azure/install-Az-ps), und [melden Sie sich an](/powershell/azure/authenticate-azureps).
 
-1. Listen Sie die Regeln für virtuelle Netzwerke auf.
+1. Listen Sie die VNET-Regeln auf.
 
     ```powershell
     (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount").VirtualNetworkRules
@@ -190,7 +190,7 @@ Regeln für virtuelle Netzwerke für Speicherkonten können über das Azure-Port
 
 1. Installieren Sie die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli), und [melden Sie sich an](/cli/azure/authenticate-azure-cli).
 
-1. Listen Sie die Regeln für virtuelle Netzwerke auf.
+1. Listen Sie die VNET-Regeln auf.
 
     ```azurecli
     az storage account network-rule list --resource-group "myresourcegroup" --account-name "mystorageaccount" --query virtualNetworkRules
@@ -231,11 +231,11 @@ Geben Sie zulässige Internetadressbereiche in [CIDR-Notation](https://tools.iet
 IP-Netzwerkregeln sind nur für **öffentliche Internet**-IP-Adressen zulässig. Für private Netzwerke reservierte IP-Adressbereiche (wie in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) definiert) sind in IP-Adressregeln nicht zulässig. Private Netzwerke enthalten Adressen, die mit _10.*_, _172.16.*_ - _172.31.*_ und _192.168.*_ beginnen.
 
    > [!NOTE]
-   > IP-Netzwerkregeln haben keine Auswirkungen auf Anforderungen, die aus der Azure-Region stammen, in der sich auch das Speicherkonto befindet. Verwenden Sie [Regeln für virtuelle Netzwerke](#grant-access-from-a-virtual-network), um Anforderungen aus der gleichen Region zuzulassen.
+   > IP-Netzwerkregeln haben keine Auswirkungen auf Anforderungen, die aus der Azure-Region stammen, in der sich auch das Speicherkonto befindet. Verwenden Sie [VNET-Regeln](#grant-access-from-a-virtual-network), um Anforderungen aus der gleichen Region zuzulassen.
 
 Derzeit werden nur IPv4-Adressen unterstützt.
 
-Jedes Speicherkonto unterstützt bis zu 100 IP-Netzwerkregeln, die mit [Regeln für virtuelle Netzwerke](#grant-access-from-a-virtual-network) kombiniert werden können.
+Jedes Speicherkonto unterstützt bis zu 100 IP-Netzwerkregeln, die mit [VNET-Regeln](#grant-access-from-a-virtual-network) kombiniert werden können.
 
 ### <a name="configuring-access-from-on-premises-networks"></a>Konfigurieren des Zugriffs aus lokalen Netzwerken
 

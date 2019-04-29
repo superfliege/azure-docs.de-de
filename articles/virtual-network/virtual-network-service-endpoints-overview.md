@@ -1,5 +1,5 @@
 ---
-title: Azure Virtual Network-Dienstendpunkte
+title: Azure-VNET-Dienstendpunkte
 titlesuffix: Azure Virtual Network
 description: Es wird beschrieben, wie Sie den direkten Zugriff auf Azure-Ressourcen aus einem virtuellen Netzwerk über Dienstendpunkte ermöglichen.
 services: virtual-network
@@ -20,7 +20,7 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 04/16/2019
 ms.locfileid: "59618157"
 ---
-# <a name="virtual-network-service-endpoints"></a>Dienstendpunkte im virtuellen Netzwerk
+# <a name="virtual-network-service-endpoints"></a>VNET-Dienstendpunkte
 
 Mit Dienstendpunkten von virtuellen Netzwerken (VNETs) werden der Bereich privater Adressen Ihres virtuellen Netzwerks und die Identität Ihres VNET über eine direkte Verbindung auf die Azure-Dienste erweitert. Endpunkte ermöglichen es Ihnen, Ihre kritischen Ressourcen von Azure-Diensten auf Ihre virtuellen Netzwerke zu beschränken und so zu schützen. Der Datenverkehr aus Ihrem VNET an den Azure-Dienst verbleibt immer im Backbone-Netzwerk von Microsoft Azure.
 
@@ -50,7 +50,7 @@ Aktuelle Benachrichtigungen finden Sie auf der Seite [Azure Virtual Network-Upda
 
 Dienstendpunkte bieten folgende Vorteile:
 
-- **Verbesserte Sicherheit für Ihre Azure-Dienstressourcen**: Der private VNET-Adressraum kann sich überschneiden und daher nicht zur eindeutigen Identifizierung von Datenverkehr aus Ihrem VNET verwendet werden. Dienstendpunkte ermöglichen es, Azure-Dienstressourcen für Ihr virtuelles Netzwerk zu schützen, indem die VNET-Identität auf den Dienst erweitert wird. Nachdem Dienstendpunkte in Ihrem virtuellen Netzwerk aktiviert wurden, können Sie Ressourcen von Azure-Diensten auf Ihr virtuelles Netzwerk beschränken und auf diese Weise schützen, indem Sie den Ressourcen eine Regel für das virtuelle Netzwerk hinzufügen. Auf diese Weise erhöhen Sie die Sicherheit, da der Ressourcenzugriff über das öffentliche Internet vollständig verhindert und nur Datenverkehr aus Ihrem virtuellen Netzwerk zugelassen wird.
+- **Verbesserte Sicherheit für Ihre Azure-Dienstressourcen**: Der private VNET-Adressraum kann sich überschneiden und daher nicht zur eindeutigen Identifizierung von Datenverkehr aus Ihrem VNET verwendet werden. Dienstendpunkte ermöglichen es, Azure-Dienstressourcen für Ihr virtuelles Netzwerk zu schützen, indem die VNET-Identität auf den Dienst erweitert wird. Nachdem Dienstendpunkte in Ihrem virtuellen Netzwerk aktiviert wurden, können Sie Ressourcen von Azure-Diensten auf Ihr virtuelles Netzwerk beschränken und auf diese Weise schützen, indem Sie den Ressourcen eine VNET-Regel hinzufügen. Auf diese Weise erhöhen Sie die Sicherheit, da der Ressourcenzugriff über das öffentliche Internet vollständig verhindert und nur Datenverkehr aus Ihrem virtuellen Netzwerk zugelassen wird.
 - **Optimale Weiterleitung des Datenverkehrs für Azure-Dienste aus Ihrem virtuellen Netzwerk**: Heutzutage wird für alle Routen Ihres virtuellen Netzwerks, die für Internet-Datenverkehr den Weg über Ihre lokalen bzw. virtuellen Geräte erzwingen (als Tunnelerzwingung bezeichnet), auch für den Datenverkehr von Azure-Diensten die gleiche Route wie für den Internet-Datenverkehr erzwungen. Dienstendpunkte ermöglichen eine optimale Weiterleitung für Azure-Datenverkehr. 
 
   Endpunkte leiten den Datenverkehr der Dienste direkt aus Ihrem virtuellen Netzwerk an den Dienst im Microsoft Azure-Backbone-Netzwerk. Die Verwaltung von Datenverkehr im Azure-Backbonenetzwerk ermöglicht Ihnen weiterhin die Überwachung und Überprüfung von ausgehendem Internet-Datenverkehr aus Ihren virtuellen Netzwerken durch die Tunnelerzwingung, ohne dass sich dies auf den Datenverkehr der Dienste auswirkt. Informieren Sie sich über [benutzerdefinierte Routen und die Tunnelerzwingung](virtual-networks-udr-overview.md).
@@ -65,7 +65,7 @@ Dienstendpunkte bieten folgende Vorteile:
 
 ## <a name="securing-azure-services-to-virtual-networks"></a>Schützen von Azure-Diensten in virtuellen Netzwerken
 
-- Der Dienstendpunkt eines virtuellen Netzwerk stellt die Identität Ihres virtuellen Netzwerks für den Azure-Dienst bereit. Nachdem Dienstendpunkte in Ihrem virtuellen Netzwerk aktiviert wurden, können Sie Ressourcen von Azure-Diensten auf Ihr virtuelles Netzwerk beschränken und auf diese Weise schützen, indem Sie den Ressourcen eine Regel für das virtuelle Netzwerk hinzufügen.
+- Der VNET-Dienstendpunkt stellt die Identität Ihres virtuellen Netzwerks für den Azure-Dienst bereit. Nachdem Dienstendpunkte in Ihrem virtuellen Netzwerk aktiviert wurden, können Sie Ressourcen von Azure-Diensten auf Ihr virtuelles Netzwerk beschränken und auf diese Weise schützen, indem Sie den Ressourcen eine VNET-Regel hinzufügen.
 - Heutzutage werden für Datenverkehr von Azure-Diensten aus einem virtuellen Netzwerk öffentliche IP-Adressen als Quell-IP-Adressen verwendet. Bei Verwendung von Dienstendpunkten wird für den Dienstdatenverkehr zu privaten virtuellen Netzwerk-Adressen als Quell-IP-Adressen gewechselt, wenn aus einem virtuellen Netzwerk auf den Azure-Dienst zugegriffen wird. Dieser Wechsel ermöglicht Ihnen den Zugriff auf die Dienste, ohne dass reservierte öffentliche IP-Adressen in IP-Firewalls verwendet werden müssen.
 
 >[!NOTE]
@@ -134,9 +134,9 @@ Für die Gesamtzahl von Dienstendpunkten in einem virtuellen Netzwerk gilt keine
 
 Bestimmte Azure-Dienste, wie etwa Azure-Speicherkonten, erzwingen möglicherweise Beschränkungen der Anzahl der zum Schützen der Ressource verwendeten Subnetze. Ausführliche Informationen finden Sie in der Dokumentation zu den verschiedenen Diensten unter [Nächste Schritte](#next-steps).
 
-## <a name="virtual-network-service-endpoint-policies"></a>Richtlinien für Dienstendpunkte in virtuellen Netzwerken 
+## <a name="virtual-network-service-endpoint-policies"></a>Richtlinien für VNET-Dienstendpunkte 
 
-Richtlinien für Dienstendpunkte in virtuellen Netzwerken ermöglichen es Ihnen, virtuellen Netzwerkdatenverkehr über Dienstendpunkte zu Azure-Diensten zu filtern, sodass nur bestimmte Azure-Dienstressourcen zugelassen werden. Dienstendpunkt-Richtlinien bieten eine differenzierte Zugriffssteuerung für virtuellen Netzwerkdatenverkehr zu Azure-Diensten. Weitere Informationen: [Richtlinien für Dienstendpunkte in virtuellen Netzwerken](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
+Richtlinien für Virtual Network-Dienstendpunkte ermöglichen es Ihnen, virtuellen Netzwerkdatenverkehr über Dienstendpunkte zu Azure-Diensten zu filtern, sodass nur bestimmte Azure-Dienstressourcen zugelassen werden. Dienstendpunkt-Richtlinien bieten eine differenzierte Zugriffssteuerung für virtuellen Netzwerkdatenverkehr zu Azure-Diensten. Weitere Informationen: [Richtlinien für Dienstendpunkte in virtuellen Netzwerken](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
 
 ## <a name="faqs"></a>Häufig gestellte Fragen
 
@@ -144,11 +144,11 @@ Häufig gestellte Fragen finden Sie unter [Azure Virtual Network – häufig ges
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informieren Sie sich über das [Konfigurieren der Dienstendpunkte von virtuellen Netzwerken](tutorial-restrict-network-access-to-resources.md).
+- Informieren Sie sich über das [Konfigurieren der VNET-Dienstendpunkte](tutorial-restrict-network-access-to-resources.md).
 - Informieren Sie sich über das [Sichern eines Azure Storage-Konto in einem virtuellen Netzwerk](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Informieren Sie sich über das [Sichern einer Azure SQL-Datenbank in einem virtuellen Netzwerk](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Informieren Sie sich über das [Sichern eines Azure SQL Data Warehouse in einem virtuellen Netzwerk](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json).
 - Informieren Sie sich über die [Azure-Dienstintegration in virtuelle Netzwerke](virtual-network-for-azure-services.md).
-- Informieren Sie sich über [Richtlinien für Dienstendpunkte in virtuellen Netzwerken (Vorschau)](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview).
+- Informieren Sie sich über [Richtlinien für VNET-Dienstendpunkte (Vorschau)](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview).
 -  Schnellstart: [Azure Resource Manager-Vorlage](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration) zum Einrichten eines Dienstendpunkts für das Subnetz eines VNET und zum Sichern eines Azure Storage-Kontos in diesem Subnetz.
 

@@ -1,6 +1,6 @@
 ---
 title: Verteilte Transaktionen über Clouddatenbanken
-description: Übersicht über elastische Datenbanktransaktionen mit Azure SQL-Datenbank
+description: Übersicht über Transaktionen für elastische Datenbanken mit Azure SQL-Datenbank
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out

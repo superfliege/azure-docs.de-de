@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 1e550002948fc1320b8645bf1af635536d524fe6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: f61c7a939902ee5d02b2e9ba896c7555968f9d0d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59282388"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547984"
 ---
 # <a name="add-a-shape-to-a-map"></a>Hinzufügen einer Form zu einer Karte
 
@@ -24,9 +24,9 @@ In diesem Artikel erfahren Sie, wie Sie Geometrien auf der Karte mit Linien- und
 
 ## <a name="add-lines-to-the-map"></a>Hinzufügen von Linien zur Karte
 
-`LineString` und `MultiLineString`-Features werden verwendet, um Pfade und Konturen auf der Karte darzustellen.
+`LineString`- und `MultiLineString`-Features werden verwendet, um Pfade und Konturen auf der Karte darzustellen.
 
-## <a name="use-a-line"></a>Verwenden einer Linie
+### <a name="add-a-line"></a>Hinzufügen einer Linie
 
 <iframe height='500' scrolling='no' title='Hinzufügen einer Linie zu einer Karte' src='//codepen.io/azuremaps/embed/qomaKv/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/qomaKv/'>Add a line to a map</a> (Hinzufügen einer Linie zu einer Karte) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -53,7 +53,7 @@ Zusätzlich zur Möglichkeit, eine einzelne Strichfarbe auf eine Linie anzuwende
 
 <br/>
 
-<iframe height="265" style="width: 100%;" scrolling="no" title="Linie mit Strichverlauf" src="//codepen.io/azuremaps/embed/wZwWJZ/?height=265&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="Linie mit Strichverlauf" src="//codepen.io/azuremaps/embed/wZwWJZ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/wZwWJZ/'>Line with Stroke Gradient</a> (Linie mit Strichverlauf) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
@@ -70,7 +70,7 @@ Die Linienebene verfügt über mehrere Formatierungsoptionen. Hier ist ein Tool,
 
 ## <a name="add-a-polygon-to-the-map"></a>Hinzufügen eines Polygons zur Karte
 
-`Polygon` und `MultiPolygon`-Features werden häufig verwendet, um einen Bereich auf einer Karte darzustellen. 
+`Polygon`- und `MultiPolygon`-Features werden häufig verwendet, um einen Bereich auf einer Karte darzustellen. 
 
 ### <a name="use-a-polygon-layer"></a>Verwenden einer Polygonebene 
 
@@ -156,7 +156,7 @@ Ein [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/
 ## <a name="make-a-geometry-easy-to-update"></a>Vereinfachen der Aktualisierung einer Geometrie
 
 Eine `Shape`-Klasse umschließt ein [Geometry](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest)- oder [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)-Objekt und vereinfacht seine Aktualisierung und Verwaltung.
-`new Shape(data: Feature<data.Geometry, any>)` erstellt ein Shape-Objekt und initialisiert es mit dem angegebenen Feature.
+`new Shape(data: Feature<data.Geometry, any>)` erstellt ein Shape-Objekt und initialisiert es mit der angegebenen Funktion.
 
 <br/>
 

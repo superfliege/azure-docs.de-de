@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 5293c44a3e4494593e069ab45fbc38806c6999ee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1d1c9ef5ba355f1944a362bf0e6f5d7ba91a700a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57976775"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523935"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory – Funktionen und Systemvariablen
 > [!NOTE]
@@ -59,7 +59,7 @@ Sie können Funktionen in Data Factory zusammen mit Systemvariablen für folgend
 
 1. Angeben von Abfragen zur Datenauswahl (siehe die Artikel zu Connectors, auf die im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) verwiesen wird).
    
-   Die Syntax zum Aufrufen einer Data Factory-Funktion ist **$$<function>** für Abfragen zur Datenauswahl und andere Eigenschaften in der Aktivität und den Datasets.  
+   Die Syntax zum Aufrufen einer Data Factory-Funktion ist **$$\<function>** für Abfragen zur Datenauswahl und andere Eigenschaften in der Aktivität und den Datasets.  
 2. Angeben von Eingabeabhängigkeiten mit Data Factory-Funktionen in der Sammlung der Aktivitätseingaben.
    
     $$ ist nicht erforderlich, um Eingabeabhängigkeitsausdrücke anzugeben.     

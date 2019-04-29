@@ -79,7 +79,7 @@ Eine Synchronisierungsgruppe hat die folgenden Eigenschaften:
 | | Datensynchronisierung | Transaktionsreplikation |
 |---|---|---|
 | Vorteile | – Aktiv/Aktiv-Unterstützung<br/>– Bidirektional zwischen lokaler und Azure SQL-Datenbank | – Niedrigere Latenzzeiten<br/>– Transaktionskonsistenz<br/>– Wiederverwendung vorhandener Topologie nach der Migration |
-| Nachteile | – Latenzzeiten von 5 Minuten und mehr<br/>– Keine Transaktionskonsistenz<br/>– Größere Auswirkung auf die Leistung | – Keine Veröffentlichung über eine Azure SQL-Datenbank-Einzeldatenbank oder im Pool zusammengefasste Datenbanken<br/>– Hohe Wartungskosten |
+| Nachteile | – Latenzzeiten von 5 Minuten und mehr<br/>– Keine Transaktionskonsistenz<br/>– Größere Auswirkung auf die Leistung | – Keine Veröffentlichung über eine Einzel- oder Pooldatenbank in Azure SQL-Datenbank<br/>– Hohe Wartungskosten |
 | | | |
 
 ## <a name="get-started-with-sql-data-sync"></a>Erste Schritte mit der SQL-Datensynchronisierung
@@ -110,7 +110,7 @@ Die Transaktionskonsistenz ist nicht garantiert, da die Datensynchronisierung au
 
 #### <a name="performance-impact"></a>Auswirkungen auf die Leistung
 
-Für die Datensynchronisierung werden Auslöser für Einfügen, Aktualisieren und Löschen verwendet, um Änderungen nachzuverfolgen. In der Benutzerdatenbank werden Nebentabellen für die Änderungsnachverfolgung erstellt. Diese Aktivitäten zur Änderungsnachverfolgung haben Auswirkungen auf Ihre Datenbankworkload. Bewerten Sie Ihren Tarif, und aktualisieren Sie ihn bei Bedarf.
+Für die Datensynchronisierung werden Auslöser für Einfügen, Aktualisieren und Löschen verwendet, um Änderungen nachzuverfolgen. In der Benutzerdatenbank werden Nebentabellen für die Änderungsnachverfolgung erstellt. Diese Aktivitäten zur Änderungsnachverfolgung haben Auswirkungen auf Ihre Datenbankworkload. Bewerten Sie Ihre Dienstebene, und aktualisieren Sie sie bei Bedarf.
 
 Das Bereitstellen und Aufheben der Bereitstellung während der Erstellung, Aktualisierung oder Löschung von Synchronisierungsgruppen kann sich ebenfalls nachteilig auf die Datenbankleistung auswirken. 
 

@@ -171,7 +171,7 @@ Die Azure-SSIS-Integrationslaufzeit ist ein vollständig verwalteter Cluster mit
 | CatalogServerEndpoint | Der Endpunkt Ihres vorhandenen Servers für die Azure SQL-Datenbank/verwaltete Instanz zum Hosten der SSISDB. |
 | CatalogAdminUserName | Der Benutzername des Administrators Ihres vorhandenen Servers für die Azure SQL-Datenbank/verwaltete Instanz. Der Data Factory-Dienst verwendet diese Informationen zum Vorbereiten und Verwalten der SSISDB in Ihrem Namen. |
 | CatalogAdminPassword | Das Kennwort des Administrators Ihres vorhandenen Servers für die Azure SQL-Datenbank/verwaltete Instanz. |
-| CatalogPricingTier | Der Tarif für die SSISDB, die von Ihrem vorhandenen Azure SQL-Datenbankserver gehostet wird.  Gilt nicht für die verwaltete Azure SQL-Datenbank-Instanz, die die SSISDB hostet. |
+| CatalogPricingTier | Der Tarif für die SSISDB, die von Ihrem vorhandenen Azure SQL-Datenbank-Server gehostet wird.  Gilt nicht für die verwaltete Azure SQL-Datenbank-Instanz, die die SSISDB hostet. |
 | VNetId | Die Ressourcen-ID des virtuellen Netzwerks zum Beitreten Ihrer Azure-SSIS-Integrationslaufzeit. |
 | Subnetz | Der Subnetzname zum Beitreten Ihrer Azure-SSIS-Integrationslaufzeit. |
 | ID | Die Ressourcen-ID Ihrer Azure-SSIS-Integrationslaufzeit. |

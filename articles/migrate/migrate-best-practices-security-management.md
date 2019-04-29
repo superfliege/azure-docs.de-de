@@ -419,7 +419,7 @@ Azure SQL-Datenbank ist eine vollständig verwaltete PaaS-Datenbank-Engine. Sie 
 - SQL-Datenbank führt automatisch jede Woche vollständige Datenbanksicherungen und alle 12 Stunden differenzielle Sicherungen durch. Transaktionsprotokollsicherungen werden alle fünf bis zehn Minuten ausgeführt, um die Datenbank vor Datenverlust zu schützen.
 - Sicherungen sind transparent und verursachen keine zusätzlichen Kosten.
 - Sicherungen werden in georedundantem Speicher mit Lesezugriff (RA-GRS) gespeichert, um für Georedundanz zu sorgen, und in die gekoppelte geografische Region repliziert.
-- Die Aufbewahrung der Sicherung richtet sich nach dem Kaufmodell. DTU-basierte Fristen reichen von sieben Tagen im Basic-Tarif bis zu 35 Tagen in anderen Tarifen.
+- Die Aufbewahrung der Sicherung richtet sich nach dem Kaufmodell. DTU-basierte Dienstebenen reichen von sieben Tagen in der Basic-Ebene bis zu 35 Tagen in anderen Ebenen.
 - Sie können eine Datenbank innerhalb der Aufbewahrungsdauer auf einen Zeitpunkt wiederherstellen. Sie können auch eine gelöschte Datenbank wiederherstellen oder eine Wiederherstellung in eine andere geografische Region oder aus einer langfristigen Sicherung durchführen, wenn die Datenbank über eine Richtlinie für die Langzeitaufbewahrung (Long-Term Retention, LTR) verfügt.
 
 

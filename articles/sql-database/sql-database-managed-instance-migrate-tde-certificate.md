@@ -19,7 +19,7 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 03/19/2019
 ms.locfileid: "57833912"
 ---
-# <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>Migrieren des Zertifikats einer durch TDE geschützten Datenbank zu einer verwalteten Azure SQL-Instanz
+# <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>Migrieren des Zertifikats einer durch TDE geschützten Datenbank zu einer verwalteten Azure SQL-Datenbank-Instanz
 
 Beim Migrieren einer durch die [Transparente Datenverschlüsselung (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) geschützten Datenbank zu einer verwalteten Azure SQL-Datenbank-Instanz mithilfe der nativen Wiederherstellungsoption muss das entsprechende Zertifikat aus dem lokalen oder IaaS-SQL-Server vor der Wiederherstellung der Datenbank migriert werden. Dieser Artikel stellt Ihnen schrittweise den Vorgang der manuellen Migration des Zertifikats zu einer verwalteten Azure SQL-Datenbank-Instanz vor:
 
@@ -144,6 +144,6 @@ Das Zertifikat ist nun für die angegebene verwaltete Instanz verfügbar, und di
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie das Zertifikat, das den Verschlüsselungsschlüssel der Datenbank mit TDE (transparente Datenverschlüsselung) schützt, aus dem lokalen oder IaaS-SQL-Server zu einer verwalteten Azure SQL-Instanz migriert wird.
+In diesem Artikel haben Sie erfahren, wie das Zertifikat, das den Verschlüsselungsschlüssel der Datenbank mit TDE (transparente Datenverschlüsselung) schützt, aus der lokalen Instanz oder IaaS-Instanz von SQL Server zu einer verwalteten Azure SQL-Datenbank-Instanz migriert wird.
 
 Lesen Sie [Wiederherstellen einer Datenbanksicherung in einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-get-started-restore.md), um zu erfahren, wie Sie eine Datenbanksicherung in einer verwalteten Azure SQL-Datenbank-Instanz wiederherstellen können.

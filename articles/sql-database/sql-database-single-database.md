@@ -1,5 +1,5 @@
 ---
-title: Was ist eine Azure SQL-Einzeldatenbank? | Microsoft-Dokumentation
+title: Was ist eine Einzeldatenbank in Azure SQL-Datebank? | Microsoft-Dokumentation
 description: Erfahren Sie mehr über die Einzeldatenbank in Azure SQL-Datenbank
 services: sql-database
 ms.service: sql-database
@@ -21,7 +21,7 @@ ms.locfileid: "59799098"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Einzeldatenbank in Azure SQL-Datenbank?
 
-Die Bereitstellungsoption für Singletons erstellt eine Datenbank in Azure SQL-Datenbank mit einem eigenen Satz von Ressourcen und wird über einen SQL-Datenbank-Server verwaltet. Bei einer Einzeldatenbank ist jede Datenbank isoliert und somit portabel, außerdem besitzt jede Datenbank eine eigene Dienstebene im [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md) oder [V-Kern-basierten Kaufmodell](sql-database-service-tiers-vcore.md) mit einer garantierten Computegröße.
+Die Bereitstellungsoption für Singletons erstellt eine Datenbank in Azure SQL-Datenbank mit einem eigenen Satz von Ressourcen und wird über einen SQL-Datenbank-Server verwaltet. Bei einer Einzeldatenbank ist jede Datenbank isoliert und somit portabel, außerdem besitzt jede Datenbank eine eigene Dienstebene im [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md) oder [vCore-basierten Kaufmodell](sql-database-service-tiers-vcore.md) mit einer garantierten Computegröße.
 
 > [!IMPORTANT]
 > Einzeldatenbank ist eine der drei Bereitstellungsoptionen für Azure SQL-Datenbank. Die anderen zwei sind [Pools für elastische Datenbanken](sql-database-elastic-pool.md) und [verwaltete Instanz](sql-database-managed-instance.md).
@@ -30,7 +30,7 @@ Die Bereitstellungsoption für Singletons erstellt eine Datenbank in Azure SQL-D
 
 ## <a name="dynamic-scalability"></a>Dynamische Skalierbarkeit
 
-Sie können für eine geringe monatliche Gebühr Ihre erste App in einer kleinen Einzeldatenbank in einem Diensttarif mit geringem Preis und geringer Leistung erstellen und [diesen dann jederzeit manuell oder programmgesteuert](sql-database-single-database-scale.md) in einen Tarif mit höherem Preis und besserer Leistung ändern, um die Anforderungen Ihrer Lösung zu erfüllen. Die Leistungsanpassung ist möglich, ohne dass es für die App oder für Ihre Kunden zu Ausfallzeiten kommt. Dank der dynamischen Skalierbarkeit kann Ihre Datenbank in transparenter Form auf sich schnell ändernde Ressourcenanforderungen reagieren, und Sie zahlen nur für die Ressourcen, die Sie jeweils benötigen.
+Sie können für eine geringe monatliche Gebühr Ihre erste App in einer kleinen Einzeldatenbank in einer Dienstebene mit geringem Preis und geringer Leistung erstellen und [diesen dann jederzeit manuell oder programmgesteuert](sql-database-single-database-scale.md) in eine Dienstebene mit höherem Preis und besserer Leistung ändern, um die Anforderungen Ihrer Lösung zu erfüllen. Die Leistungsanpassung ist möglich, ohne dass es für die App oder für Ihre Kunden zu Ausfallzeiten kommt. Dank der dynamischen Skalierbarkeit kann Ihre Datenbank in transparenter Form auf sich schnell ändernde Ressourcenanforderungen reagieren, und Sie zahlen nur für die Ressourcen, die Sie jeweils benötigen.
 
 ## <a name="single-databases-and-elastic-pools"></a>Einzeldatenbanken und Pools für elastische Datenbanken
 

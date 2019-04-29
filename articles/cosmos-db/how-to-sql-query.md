@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: mjbrown
-ms.openlocfilehash: 8e5c281a8a8b6c0b48f18bf247b451bf61a7e9dc
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 04a88558e3aea33c6d99bd0e4f1354c4316f5529
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263042"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579214"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>SQL-Abfragebeispiele für Azure Cosmos DB
 
@@ -168,7 +168,7 @@ Die Beispiele oben zeigen verschiedene Aspekte der Cosmos DB-Abfragesprache:
 
 * Ein Cosmos DB-Container ist eine schemalose Sammlung von JSON-Elementen. Die Beziehungen innerhalb und zwischen Containerelementen werden implizit nach Eigenständigkeit erfasst, nicht nach Beziehungen von primären Schlüsseln und Fremdschlüsseln. Dieses Feature ist für die elementinternen Verknüpfungen wichtig, die später in diesem Artikel erläutert werden.
 
-## <a id="SelectClause"></a>SELECT-Klausel
+## <a id="SelectClause"></a>Die SELECT-Klausel
 
 Jede Abfrage besteht aus einer SELECT-Klausel und optionalen FROM- und WHERE-Klauseln nach ANSI SQL-Standards. Normalerweise wird die Quelle in der FROM-Klausel aufgelistet, und die WHERE-Klausel wendet einen Filter auf die Quelle an, um eine Teilmenge der JSON-Elemente abzurufen. Dann projiziert die SELECT-Klausel die angeforderten JSON-Werte in die ausgewählte Liste. Weitere Informationen zur Syntax finden Sie unter [SELECT-Anweisung](sql-api-query-reference.md#select-query).
 
@@ -193,7 +193,7 @@ Die Ergebnisse sind wie folgt:
 ```
 
 ## <a id="EscapingReservedKeywords"></a>Eigenschaftenaccessor in Anführungszeichen
-Sie können auf Eigenschaften zugreifen, indem Sie den Anführungszeichenoperator [] für Eigenschaften verwenden. Beispielsweise sind `SELECT c.grade` und `SELECT c["grade"]` gleichwertig. Diese Syntax ist hilfreich, um eine Eigenschaft mit Escapezeichen zu versehen, die Leerzeichen oder Sonderzeichen enthält oder den gleichen Namen wie ein SQL-Schlüsselwort oder ein reserviertes Wort hat.
+Sie können auf Eigenschaften zugreifen, indem Sie den Anführungszeichenoperator [] für Eigenschaften verwenden. `SELECT c.grade` and `SELECT c["grade"]` gleichwertig. Diese Syntax ist hilfreich, um eine Eigenschaft mit Escapezeichen zu versehen, die Leerzeichen oder Sonderzeichen enthält oder den gleichen Namen wie ein SQL-Schlüsselwort oder ein reserviertes Wort hat.
 
 ```sql
     SELECT f["lastName"]
@@ -342,7 +342,7 @@ Die Ergebnisse sind wie folgt:
     }]
 ```
 
-## <a id="FromClause"></a>FROM-Klausel
+## <a id="FromClause"></a>Die FROM-Klausel
 
 Die FROM-Klausel (`FROM <from_specification>`) ist optional, es sei denn, die Quelle wird später in der Abfrage gefiltert oder projiziert. Weitere Informationen zur Syntax finden Sie unter [FROM-Syntax](sql-api-query-reference.md#bk_from_clause). Eine Abfrage wie `SELECT * FROM Families` erstellt eine Auflistung für den gesamten `Families`-Container. Sie können auch den Sonderbezeichner „ROOT“ für den Container anstelle des Containernamens verwenden.
 
@@ -484,15 +484,15 @@ Sie können auch Eigenschaftsverweise in Abfragen verwenden. Beispielsweise gibt
 
 Die folgende Tabelle zeigt die Ergebnisse für Gleichheitsvergleiche in der SQL-API zwischen den einzelnen JSON-Typen.
 
-| **Op** | **Undefined** | **Null** | **Boolescher Wert** | **Number** | **Zeichenfolge** | **Objekt** | **Array** |
+| **Op** | **Undefiniert** | **NULL** | **Boolescher Wert** | **Number** | **String** | **Object** | **Array** |
 |---|---|---|---|---|---|---|---|
-| **Undefined** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined |
-| **Null** | Undefined | **OK,** | Undefined | Undefined | Undefined | Undefined | Undefined |
-| **Boolescher Wert** | Undefined | Undefined | **OK,** | Undefined | Undefined | Undefined | Undefined |
-| **Number** | Undefined | Undefined | Undefined | **OK,** | Undefined | Undefined | Undefined |
-| **Zeichenfolge** | Undefined | Undefined | Undefined | Undefined | **OK,** | Undefined | Undefined |
-| **Objekt** | Undefined | Undefined | Undefined | Undefined | Undefined | **OK,** | Undefined |
-| **Array** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **OK,** |
+| **Undefiniert** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined |
+| **NULL** | Undefined | **OK** | Undefined | Undefined | Undefined | Undefined | Undefined |
+| **Boolescher Wert** | Undefined | Undefined | **OK** | Undefined | Undefined | Undefined | Undefined |
+| **Number** | Undefined | Undefined | Undefined | **OK** | Undefined | Undefined | Undefined |
+| **String** | Undefined | Undefined | Undefined | Undefined | **OK** | Undefined | Undefined |
+| **Object** | Undefined | Undefined | Undefined | Undefined | Undefined | **OK** | Undefined |
+| **Array** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **OK** |
 
 Bei Vergleichsoperatoren wie `>`, `>=`, `!=`, `<` und `<=` ergeben Vergleiche unterschiedlicher Typen oder zwischen zwei Objekten oder Arrays den Wert `Undefined`.  
 
@@ -1168,7 +1168,7 @@ Die SQL-API unterstützt die folgenden Aggregatfunktionen. SUM und AVG werden f�
 | SUM   | Gibt die Summe aller Werte im Ausdruck zurück. |
 | MIN   | Gibt den Mindestwert im Ausdruck zurück. |
 | MAX   | Gibt den maximalen Wert im Ausdruck zurück. |
-| AVG   | Gibt den Durchschnitt aller Werte im Ausdruck zurück. |
+| DURCHSCHN.   | Gibt den Durchschnitt aller Werte im Ausdruck zurück. |
 
 Sie können auch die Ergebnisse einer Array-Iteration aggregieren. Weitere Informationen finden Sie im Abschnitt [Iteration](#Iteration).
 
@@ -1238,7 +1238,7 @@ Es wird folgendes Ergebnis ausgegeben:
 
 Mit den Funktionen für die Typprüfung können Sie den Typ eines Ausdrucks in einer SQL-Abfrage prüfen. Anhand von Typprüfungsfunktionen können Sie während der Ausführung die Typen von Eigenschaften innerhalb von Elementen ermitteln, wenn diese variabel oder unbekannt sind. Es folgt eine Tabelle der unterstützten integrierten Typprüfungsfunktionen:
 
-| **Verwendung** | **BESCHREIBUNG** |
+| **Verwendung** | **Beschreibung** |
 |-----------|------------|
 | [IS_ARRAY (expr)](sql-api-query-reference.md#bk_is_array) | Gibt einen booleschen Wert zurück, der angibt, ob der Wert vom Typ "Array" ist. |
 | [IS_BOOL (expr)](sql-api-query-reference.md#bk_is_bool) | Gibt einen booleschen Wert zurück, der angibt, ob der Wert vom Typ "boolesch" ist. |
@@ -1714,7 +1714,7 @@ Das nächste Beispiel zeigt Verknüpfungen mithilfe von LINQ `SelectMany`.
 
 Der .NET-Client durchläuft automatisch alle Seiten der Abfrageergebnisse in den `foreach`-Blöcken wie im vorherigen Beispiel gezeigt. Die im Abschnitt zur [REST-API](#RestAPI) vorgestellten Abfrageoptionen sind auch im .NET SDK über die Klassen `FeedOptions` and `FeedResponse` in der `CreateDocumentQuery`-Methode verfügbar. Sie können die Anzahl der Seiten über die `MaxItemCount`-Einstellung steuern.
 
-Sie können die Seitenaufteilung steuern, indem Sie mithilfe des `IQueryable`-Objekts ein `IDocumentQueryable`-Element erstellen, die ` ResponseContinuationToken`-Werte lesen und sie anschließend als `RequestContinuationToken` in `FeedOptions` zurückgeben. Sie können `EnableScanInQuery` festlegen, um Suchvorgänge zu ermöglichen, wenn die Abfrage nicht von der konfigurierten Indizierungsrichtlinie unterstützt wird. Für partitionierte Container können Sie `PartitionKey` verwenden, um die Abfrage für eine einzelne Partition auszuführen, auch wenn Azure Cosmos DB dies automatisch aus dem Abfragetext extrahieren kann. Mit `EnableCrossPartitionQuery` können Sie Abfragen für mehrere Partitionen ausführen.
+Sie können die Seitenaufteilung steuern, indem Sie mithilfe des `IQueryable`-Objekts ein `IDocumentQueryable`-Element erstellen, die `ResponseContinuationToken`-Werte lesen und sie anschließend als `RequestContinuationToken` in `FeedOptions` zurückgeben. Sie können `EnableScanInQuery` festlegen, um Suchvorgänge zu ermöglichen, wenn die Abfrage nicht von der konfigurierten Indizierungsrichtlinie unterstützt wird. Für partitionierte Container können Sie `PartitionKey` verwenden, um die Abfrage für eine einzelne Partition auszuführen, auch wenn Azure Cosmos DB dies automatisch aus dem Abfragetext extrahieren kann. Mit `EnableCrossPartitionQuery` können Sie Abfragen für mehrere Partitionen ausführen.
 
 Weitere Beispiele für .NET mit Abfragen finden Sie unter den [Azure Cosmos DB-.NET-Beispielen](https://github.com/Azure/azure-cosmosdb-dotnet) in GitHub.
 
@@ -1756,7 +1756,7 @@ Das folgende Beispiel zeigt, wie Sie mithilfe von `queryDocuments` in der server
     }
 ```
 
-## <a id="Linq"></a>LINQ zu SQL-API
+## <a id="Linq"></a>LINQ to SQL-API
 
 LINQ ist ein .NET-Programmiermodell, das Berechnungen als Abfragen auf Objektstreams darstellt. Cosmos DB bietet eine clientseitige Bibliothek als Schnittstelle zu LINQ und vereinfacht die Konvertierung zwischen JSON- und .NET-Objekten sowie die Zuordnung einer Teilmenge von LINQ-Abfragen zu Cosmos DB-Abfragen.
 

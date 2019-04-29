@@ -123,7 +123,7 @@ SQL-Datenbank ist ein relationaler verwalteter Datenbankdienst in Microsoft Azur
 
 Azure SQL-Datenbank in dieser Vorlage
 
-In der SQL-Datenbankinstanz werden die folgenden Datenbanksicherheitsmaßnahmen verwendet:
+In der Azure SQL-Datenbankinstanz werden die folgenden Datenbanksicherheitsmaßnahmen verwendet:
 
 - [Firewallregeln auf Server- oder Datenbankebene](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) oder über [Dienstendpunkte im virtuellen Netzwerk](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) mit [Regeln für virtuelle Netzwerke](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview).
 - [Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) trägt zum Schutz von Azure SQL-Datenbank und Azure Data Warehouse vor der Bedrohung durch schädliche Aktivitäten bei. TDE ver- und entschlüsselt die Datenbank, die zugehörigen Sicherungen und die Transaktionsprotokolldateien im Ruhezustand in Echtzeit, ohne dass Änderungen an der Anwendung erforderlich sind.
@@ -149,7 +149,7 @@ In dieser Vorlage werden die folgenden Azure Storage-Komponenten genutzt:
 
 Bei der [Speicherdienstverschlüsselung](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) werden sämtliche in Azure Storage geschriebenen Daten per 256-Bit-AES-Verschlüsselung verschlüsselt. Dies ist eines der sichersten verfügbaren Blockverschlüsselungsverfahren. Mit SSE können von Microsoft verwaltete oder [eigene Verschlüsselungsschlüssel](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys) verwendet werden.
 
-Speicherkonten können mit [Dienstendpunkten im virtuellen Netzwerk](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) geschützt werden, indem [Regeln für virtuelle Netzwerke](https://docs.microsoft.com/azure/storage/common/storage-network-security) verwendet werden.
+Speicherkonten können mit [VNET-Dienstendpunkten](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) geschützt werden, indem [VNET-Regeln](https://docs.microsoft.com/azure/storage/common/storage-network-security) verwendet werden.
 
 Ausführliche Informationen zum Schützen von Azure Storage finden Sie im [Sicherheitsleitfaden](https://docs.microsoft.com/azure/storage/common/storage-security-guide).
 

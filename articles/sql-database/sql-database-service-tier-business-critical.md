@@ -1,5 +1,5 @@
 ---
-title: Tarif „Unternehmenskritisch“ – Azure SQL-Datenbankdienst | Microsoft-Dokumentation
+title: Tarif „Unternehmenskritisch“ – Azure SQL-Datenbank-Dienst | Microsoft-Dokumentation
 description: Informationen zum Tarif „Unternehmenskritisch“ für Azure SQL-Datenbank
 services: sql-database
 ms.service: sql-database
@@ -22,18 +22,18 @@ ms.locfileid: "59784055"
 # <a name="business-critical-tier---azure-sql-database"></a>Tarif „Unternehmenskritisch“ – Azure SQL-Datenbank
 
 > [!NOTE]
-> Der Tarif „Unternehmenskritisch“ hat im DTU-Kaufmodell den Namen „Premium“. Einen Vergleich zwischen V-Kern-basiertem Kaufmodell und DTU-basiertem Kaufmodell finden Sie unter [Kaufmodelle für Azure SQL-Datenbank und Ressourcen](sql-database-purchase-models.md).
+> Der Tarif „Unternehmenskritisch“ hat im DTU-Kaufmodell den Namen „Premium“. Einen Vergleich zwischen vCore-basierten Kaufmodell und DTU-basiertem Kaufmodell finden Sie unter [Kaufmodelle für Azure SQL-Datenbank und Ressourcen](sql-database-purchase-models.md).
 
 Azure SQL-Datenbank basiert auf der an die Cloudumgebung angepasste Architektur der SQL Server-Datenbank-Engine, um die Verfügbarkeit von 99,99 % selbst bei Infrastrukturausfällen sicherzustellen. In Azure SQL-Datenbank werden drei Architekturmodelle verwendet:
 - Universell/Standard 
 - Unternehmenskritisch/Premium
 - Hyperscale
 
-Das Diensttarifmodell des Typs „Premium/Unternehmenskritisch“ basiert auf einem Cluster von Datenbank-Engine-Prozessen. Dieses Architekturmodell beruht darauf, dass immer ein Quorum von verfügbaren Datenbank-Engine-Knoten vorhanden ist, und weist selbst während Wartungsaktivitäten eine minimale Leistungsbeeinträchtigung der Workload auf.
+Das Dienstebenenmodell des Typs „Premium/Unternehmenskritisch“ basiert auf einem Cluster von Datenbank-Engine-Prozessen. Dieses Architekturmodell beruht darauf, dass immer ein Quorum von verfügbaren Datenbank-Engine-Knoten vorhanden ist, und weist selbst während Wartungsaktivitäten eine minimale Leistungsbeeinträchtigung der Workload auf.
 
 In Azure werden das zugrunde liegende Betriebssystem, Treiber und die SQL Server-Datenbank-Engine transparent mit minimaler Ausfallzeit für Endbenutzer aktualisiert und gepatcht. 
 
-Die Premium-Verfügbarkeit wird in den Diensttarifen „Premium“ und „Unternehmenskritisch“ von Azure SQL-Datenbank aktiviert und ist für hohe Workloads vorgesehen, bei denen keine Leistungsbeeinträchtigung aufgrund laufender Wartungsvorgänge toleriert werden kann.
+Die Premium-Verfügbarkeit wird in den Dienstebenen „Premium“ und „Unternehmenskritisch“ von Azure SQL-Datenbank aktiviert und ist für hohe Workloads vorgesehen, bei denen keine Leistungsbeeinträchtigung aufgrund laufender Wartungsvorgänge toleriert werden kann.
 
 Im Premium-Modell werden in Azure SQL-Datenbank der Compute- und Speicherbereich auf dem einzelnen Knoten integriert. Die Hochverfügbarkeit in diesem Architekturmodell wird durch die Replikation auf Compute- (SQL Server-Datenbank-Engine-Prozess) und Speicherebene (lokal angefügte SSD) erreicht, die in einem Cluster mit vier Knoten anhand einer ähnlichen Technologie wie [AlwaysOn-Verfügbarkeitsgruppen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server) in SQL Server bereitgestellt werden.
 
@@ -43,9 +43,9 @@ Der SQL-Datenbank-Engine-Prozess sowie die zugrunde liegenden MDF- und LDF-Datei
 
 Darüber hinaus umfasst der Cluster des Typs „Unternehmenskritisch“ eine integrierte Funktion [Horizontale Leseskalierung](sql-database-read-scale-out.md), die einen gebührenfreien, integrierten und schreibgeschützten Knoten bereitstellt, der zum Ausführen von schreibgeschützten Abfragen (z.B. Berichten) verwendet werden kann, die die Leistung der primären Workload nicht beeinträchtigen sollen.
 
-## <a name="when-to-choose-this-service-tier"></a>Wann sollte dieser Diensttarif gewählt werden?
+## <a name="when-to-choose-this-service-tier"></a>Wann sollte diese Dienstebene gewählt werden?
 
-Der Diensttarif „Unternehmenskritisch“ ist für die Anwendungen gedacht, die Antworten mit geringer Latenz vom zugrunde liegenden SSD-Speicher (durchschnittlich 1 – 2 ms), schnelle Wiederherstellung bei einem Fehler der zugrunde liegenden Infrastruktur oder das Auslagern von Berichten, Analysen und schreibgeschützten Abfragen an das kostenlose lesbare sekundäre Replikat der primären Datenbank erfordern.
+Die Dienstebene „Unternehmenskritisch“ ist für die Anwendungen gedacht, die Antworten mit geringer Latenz vom zugrunde liegenden SSD-Speicher (durchschnittlich 1 – 2 ms), schnelle Wiederherstellung bei einem Fehler der zugrunde liegenden Infrastruktur oder das Auslagern von Berichten, Analysen und schreibgeschützten Abfragen an das kostenlose lesbare sekundäre Replikat der primären Datenbank erfordern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -19,7 +19,7 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59797208"
 ---
-# <a name="azure-sql-database-threat-detection-for-single-or-pooled-databases"></a>Warnungen der Bedrohungserkennung von Azure SQL-Datenbank für Singletons oder in einem Pool zusammengefasste Datenbanken
+# <a name="azure-sql-database-threat-detection-for-single-or-pooled-databases"></a>Warnungen der Bedrohungserkennung von Azure SQL-Datenbank für Einzel- oder Pooldatenbanken
 
 Die [Bedrohungserkennung](sql-database-threat-detection-overview.md) für Singletons und in einem Pool zusammengefasste Datenbanken identifiziert anomale Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Datenbanken zuzugreifen oder diese missbräuchlich zu verwenden. Mithilfe der Bedrohungserkennung können folgende Aktivitäten identifiziert werden: **potenzielle SQL-Einschleusung**, **Zugriff von einem ungewöhnlichen Standort oder Rechenzentrum**, **Zugriff über einen unbekannten Prinzipal oder eine potenziell schädliche Anwendung** und **Brute-Force-SQL-Anmeldeinformationen**. Weitere Informationen finden Sie im Abschnitt zu den [Warnungen der Bedrohungserkennung](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts).
 

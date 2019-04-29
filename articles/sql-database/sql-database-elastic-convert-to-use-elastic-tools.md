@@ -20,7 +20,7 @@ ms.lasthandoff: 03/19/2019
 ms.locfileid: "58008664"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Migrieren von vorhandenen Datenbanken für die horizontale Hochskalierung
-Verwalten Sie Ihre vorhandenen horizontal skalierten Sharddatenbanken mithilfe von Azure SQL-Datenbanktools (wie z.B. der [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md)). Konvertieren Sie zunächst eine vorhandene Gruppe von Datenbanken für die Verwendung des [Shardzuordnungs-Managers](sql-database-elastic-scale-shard-map-management.md). 
+Verwalten Sie Ihre vorhandenen horizontal skalierten Sharddatenbanken mithilfe von Azure SQL-Datenbanktools (wie z. B. der [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md)). Konvertieren Sie zunächst eine vorhandene Gruppe von Datenbanken für die Verwendung des [Shardzuordnungs-Managers](sql-database-elastic-scale-shard-map-management.md). 
 
 ## <a name="overview"></a>Übersicht
 So migrieren Sie eine vorhandene Sharddatenbank: 

@@ -93,7 +93,7 @@ Legen Sie den Sprachmodus in Visual Studio Code auf **SQL** fest, um die Verwend
 
 ## <a name="connect-to-your-database"></a>Verbinden mit der Datenbank
 
-Verwenden Sie Visual Studio Code, um eine Verbindung mit Ihrem Azure SQL-Datenbankserver herzustellen.
+Verwenden Sie Visual Studio Code, um eine Verbindung mit Ihrem Azure SQL-Datenbank-Server herzustellen.
 
 > [!IMPORTANT]
 > Stellen Sie vor dem Fortfahren sicher, dass Sie über alle Informationen zu Server und Anmeldung verfügen. Wenn Sie mit dem Eingeben der Informationen für das Verbindungsprofil begonnen haben und zu Visual Studio Code wechseln, müssen Sie mit dem Erstellen des Profils neu beginnen.

@@ -97,7 +97,7 @@ Bevor Sie den Wiederherstellungsprozess starten, sollten Sie den normalen ordnun
 
 3. Überprüfen und öffnen Sie im [Azure-Portal](https://portal.azure.com) die Ressourcengruppe, in der Sie die App bereitgestellt haben.
 
-   Beachten Sie die Ressourcen und die Region, in der die Dienstkomponenten der App und die SQL-Datenbankserver bereitgestellt werden.
+   Beachten Sie die Ressourcen und die Region, in der die Dienstkomponenten der App und die SQL-Datenbank-Server bereitgestellt werden.
 
 ## <a name="sync-the-tenant-configuration-into-the-catalog"></a>Synchronisieren der Mandantenkonfiguration in den Katalog
 

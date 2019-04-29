@@ -10,19 +10,19 @@ ms.subservice: workload management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: e53a6fcefb0f5370f6e24cc50fad2ad4ad4c64e3
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: 12e7d9bc22eff14bbf302aed50080412d04a40d3
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57876225"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616627"
 ---
 # <a name="sql-data-warehouse-workload-importance-preview"></a>Workloadpriorität (Vorschauversion) für SQL Data Warehouse
 
 In diesem Artikel wird erläutert, wie sich die Workloadpriorität auf die Ausführungsreihenfolge von SQL Data Warehouse-Anforderungen auswirkt.
 
 > [!Note]
-> Die Workloadpriorität ist für SQL Data Warehouse Gen2 verfügbar.
+> Die Klassifizierung von Workloads ist unter SQL Data Warehouse Gen2 als Vorschauversion verfügbar. Die Vorschauversion der Klassifizierung und Bedeutung der Workloadverwaltung ist für Builds mit dem Veröffentlichungsdatum 9. April 2019 oder später verfügbar.  Benutzer sollten es vermeiden, für Tests der Workloadverwaltung Builds zu verwenden, deren Veröffentlichungsdatum vor diesem Datum liegt.  Um festzustellen, ob Ihr Build für die Workloadverwaltung geeignet ist, führen Sie „select @@version“ aus, wenn Sie mit Ihrer SQL Data Warehouse-Instanz verbunden sind.
 
 ## <a name="importance"></a>Wichtigkeit
 

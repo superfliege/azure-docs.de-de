@@ -96,7 +96,7 @@ Azure SQL-Datenbank unterstützt zwei Arten von räumlichen Daten: geometrische 
 - Der geometrische Datentyp stellt Daten in einem euklidischen (flachen) Koordinatensystem dar.
 - Der geografische Datentyp stellt Daten in einem Erdkugel-Koordinatensystem dar.
 
-Es gibt eine Reihe von räumlichen Objekten, die in Azure SQL-Datenbanken verwendet werden können, z.B. [Point](https://docs.microsoft.com/sql/relational-databases/spatial/point), [LineString](https://docs.microsoft.com/sql/relational-databases/spatial/linestring), [Polygon](https://docs.microsoft.com/sql/relational-databases/spatial/polygon) usw.
+Es gibt eine Reihe von räumlichen Objekten, die in Azure SQL-Datenbanken verwendet werden können, z. B. [Point](https://docs.microsoft.com/sql/relational-databases/spatial/point), [LineString](https://docs.microsoft.com/sql/relational-databases/spatial/linestring), [Polygon](https://docs.microsoft.com/sql/relational-databases/spatial/polygon) usw.
 
 Azure SQL-Datenbank stellt auch spezielle [räumliche Indizes](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-indexes-overview) bereit, mit denen Sie die Leistung Ihrer räumlichen Abfragen verbessern können.
 

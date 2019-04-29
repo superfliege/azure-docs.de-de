@@ -12,12 +12,12 @@ ms.date: 03/12/2019
 ms.author: celested
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0357b7f421da753f102d2f05eaf8021cfc74aa2c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 75aa0f4755fe3d124094ace3c3e6b8e6ea3b65e0
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59261614"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618174"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Einmaliges Anmelden bei Anwendungen in Azure Active Directory
 
@@ -42,11 +42,11 @@ In der folgenden Tabelle werden die Methoden für einmaliges Anmelden zusammenge
 
 | Methode für einmaliges Anmelden | Anwendungstypen | Einsatzgebiete |
 | :------ | :------- | :----- |
-| [OpenID Connect und OAuth 2.0](#openid-connect-and-oauth) | Nur Cloud | Verwenden Sie OpenID Connect und OAuth, wenn Sie eine neue Anwendung entwickeln. Dieses Protokoll vereinfacht die Anwendungskonfiguration, verfügt über leicht zu verwendende SDKs und ermöglicht für Ihre Anwendung die Nutzung von MS Graph.
+| [OpenID Connect und OAuth](#openid-connect-and-oauth) | Nur Cloud | Verwenden Sie OpenID Connect und OAuth, wenn Sie eine neue Anwendung entwickeln. Dieses Protokoll vereinfacht die Anwendungskonfiguration, verfügt über leicht zu verwendende SDKs und ermöglicht für Ihre Anwendung die Nutzung von MS Graph.
 | [SAML](#saml-sso) | Cloud und lokal | Wählen Sie SAML nach Möglichkeit immer für vorhandene Anwendungen, für die nicht OpenID Connect oder OAuth genutzt wird. SAML funktioniert für Anwendungen, bei denen die Authentifizierung mit einem der SAML-Protokolle durchgeführt wird.|
 | [Kennwortbasiert](#password-based-sso) | Cloud und lokal | Wählen Sie die kennwortbasierte Methode, wenn die Anwendung die Authentifizierung mit Benutzername und Kennwort vornimmt. Das kennwortbasierte einmalige Anmelden ermöglicht die sichere Speicherung des Anwendungskennworts und dessen Wiedergabe mit einer Webbrowsererweiterung oder einer mobilen App. Mit dieser Methode wird der von der Anwendung bereitgestellte vorhandene Anmeldevorgang genutzt, die Kennwortverwaltung kann jedoch der Administrator übernehmen. |
 | [Verknüpft](#linked-sso) | Cloud und lokal | Wählen Sie das verknüpfte einmalige Anmelden, wenn die Anwendung für einmaliges Anmelden bei einem anderen Identitätsanbieterdienst konfiguriert ist. Mit dieser Option wird der Anwendung kein einmaliges Anmelden hinzugefügt. Die Anwendung kann das einmalige Anmelden jedoch möglicherweise bereits über einen anderen Dienst implementiert haben, z.B. Active Directory-Verbunddienste.|
-| [Deaktiviert](#disabled-sso) | Cloud und lokal | Wählen Sie das deaktivierte einmalige Anmelden, wenn die App nicht für einmaliges Anmelden konfiguriert werden kann. Benutzer müssen bei jedem Start dieser Anwendung ihren Benutzernamen und ihr Kennwort eingeben.|
+| [Disabled](#disabled-sso) | Cloud und lokal | Wählen Sie das deaktivierte einmalige Anmelden, wenn die App nicht für einmaliges Anmelden konfiguriert werden kann. Benutzer müssen bei jedem Start dieser Anwendung ihren Benutzernamen und ihr Kennwort eingeben.|
 | [Integrierte Windows-Authentifizierung (IWA)](#integrated-windows-authentication-iwa-sso) | Nur lokal | Wählen Sie einmaliges Anmelden vom Typ IWA für Anwendungen, die die [integrierte Windows-Authentifizierung (IWA)](/aspnet/web-api/overview/security/integrated-windows-authentication) verwenden oder Ansprüche unterstützen. Bei IWA verwenden die Anwendungsproxyconnectors die eingeschränkte Kerberos-Delegierung (Kerberos Constrained Delegation, KCD), um Benutzer für die Anwendung zu authentifizieren. | 
 | [Headerbasiert](#header-based-sso) | Nur lokal | Verwenden Sie das headerbasierte einmalige Anmelden, wenn die Anwendung für die Authentifizierung Header verwendet. Headerbasiertes einmaliges Anmelden erfordert PingAccess für Azure AD. Der Anwendungsproxy verwendet Azure AD, um den Benutzer zu authentifizieren, und leitet Datenverkehr dann über den Connectordienst weiter.  | 
 
@@ -55,7 +55,7 @@ Verwenden Sie beim Entwickeln neuer Anwendungen moderne Protokolle wie OpenID Co
 
 Weitere Informationen finden Sie unter
 
-- [OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md)
+- [OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md)
 - [OpenID Connect 1.0](../develop/v2-protocols-oidc.md)
 - [Entwicklerhandbuch zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
 
@@ -70,9 +70,11 @@ SAML-basiertes einmaliges Anmelden wird für Anwendungen unterstützt, die eines
 - SAML 2.0
 - WS-Federation-
 
-Informationen zum Konfigurieren einer Anwendung für SAML-basiertes einmaliges Anmelden finden Sie unter [Konfigurieren des SAML-basierten einmaligen Anmeldens](configure-single-sign-on-portal.md). Viele SaaS-Anwendungen (Software-as-a-Service) verfügen auch über ein [anwendungsspezifisches Tutorial](../saas-apps/tutorial-list.md), in dem die Konfiguration des SAML-basierten einmaligen Anmeldens Schritt für Schritt beschrieben wird.
+Informationen zum Konfigurieren einer SaaS-Anwendung für SAML-basiertes einmaliges Anmelden finden Sie unter [Konfigurieren des SAML-basierten einmaligen Anmeldens](configure-single-sign-on-portal.md). Viele SaaS-Anwendungen (Software-as-a-Service) verfügen auch über ein [anwendungsspezifisches Tutorial](../saas-apps/tutorial-list.md), in dem die Konfiguration des SAML-basierten einmaligen Anmeldens Schritt für Schritt beschrieben wird.
 
 Um eine Anwendung für den WS-Verbund zu konfigurieren, führen Sie die gleichen Anweisungen wie zum Konfigurieren der Anwendung für SAML-basiertes einmaliges Anmelden aus, wie unter [Tutorial: Konfigurieren des SAML-basierten einmaligen Anmeldens für eine Anwendung mit Azure Active Directory](configure-single-sign-on-portal.md) beschrieben. Im Schritt zum Konfigurieren der Anwendung für die Verwendung von Azure AD müssen Sie die Azure AD-Anmelde-URL für den WS-Verbund-Endpunkt `https://login.microsoftonline.com/<tenant-ID>/wsfed` ersetzen.
+
+Informationen zum Konfigurieren einer lokalen Anwendung für SAML-basiertes einmaliges Anmelden finden Sie unter [SAML-SSO (einmaliges Anmelden) für lokale Anwendungen mit dem Anwendungsproxy](application-proxy-configure-single-sign-on-on-premises-apps.md).
 
 Weitere Informationen zum SAML-Protokoll finden Sie unter [SAML-Protokoll für einmaliges Anmelden](../develop/single-sign-on-saml-protocol.md).
 
@@ -188,8 +190,8 @@ Weitere Informationen finden Sie unter [Azure Active Directory-Editionen](../fun
 
 ## <a name="related-articles"></a>Verwandte Artikel
 * [Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](../saas-apps/tutorial-list.md)
-* [Tutorial: Konfigurieren des SAML-basierten einmaligen Anmeldens für eine Anwendung mit Azure Active Directory](configure-single-sign-on-portal.md)
-* [Verwalten des Zugriffs auf Apps](what-is-access-management.md)
+* [Tutorial zum Konfigurieren des einmaligen Anmeldens](configure-single-sign-on-portal.md)
+* [Einführung in die Verwaltung des Zugriffs auf Anwendungen](what-is-access-management.md)
 * Downloadlink: [Single sign-on deployment plan](https://aka.ms/SSODeploymentPlan) (Bereitstellungsplan für einmaliges Anmelden)
 
 

@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: jrasnik
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 0a9472dec9b76dfbde1690e11f13836746b0dfaa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 983a090942a77c2f40e0136b00acdc0a3d49c571
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57862895"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528338"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Code des Ereignisdateiziels für erweiterte Ereignisse in SQL-Datenbank
 
@@ -39,7 +39,7 @@ In diesem Thema wird ein Codebeispiel in zwei Phasen vorgestellt:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Das PowerShell Azure Resource Manager-Modul wird von der Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und in den AzureRm-Modulen sind im Wesentlichen identisch.
+> Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und in den AzureRm-Modulen sind im Wesentlichen identisch.
 
 * Ein Azure-Konto und ein Azure-Abonnement. Sie können sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)registrieren.
 * Jede Datenbank, in der eine Tabelle erstellt werden kann.
@@ -463,9 +463,9 @@ GO
 
 ## <a name="output"></a>Output
 
-Klicken Sie auf eine Zelle unter der Spaltenüberschrift **event_data_XML**, nachdem das Transact-SQL-Skript abgeschlossen ist. Es wird ein **<event>** -Element mit einer UPDATE-Anweisung angezeigt.
+Klicken Sie auf eine Zelle unter der Spaltenüberschrift **event_data_XML**, nachdem das Transact-SQL-Skript abgeschlossen ist. Es wird ein einziges **\<Ereignis>**-Element mit einer einzigen UPDATE-Anweisung angezeigt.
 
-Hier sehen Sie ein **<event>** -Element, das beim Testen generiert wurde:
+Hier sehen Sie ein **\<Ereignis>**-Element, das beim Testen generiert wurde:
 
 
 ```xml
