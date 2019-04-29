@@ -79,13 +79,13 @@ Der Richtlinienabschnitt `on-error` kann in jedem Bereich verwendet werden. Zude
   
 | NAME     | Typ   | BESCHREIBUNG                                                                                               | Erforderlich |
 |----------|--------|-----------------------------------------------------------------------------------------------------------|----------|
-| `Source`   | Zeichenfolge | Benennt das Element, in dem der Fehler aufgetreten ist. Kann entweder der Schrittname einer Richtlinie oder einer integrierten Pipeline sein.     | Ja      |
-| `Reason`   | Zeichenfolge | Computerfreundlicher Fehlercode, der bei der Fehlerbehandlung verwendet werden kann.                                       | Nein        |
-| `Message`  | Zeichenfolge | Für Menschen lesbare Fehlerbeschreibung.                                                                         | Ja      |
-| `Scope`    | Zeichenfolge | Name des Bereichs, in dem der Fehler aufgetreten ist. Kann einer der Werte „global“, „product“, „api“ oder „operation“ sein. | Nein        |
+| Quelle   | Zeichenfolge | Benennt das Element, in dem der Fehler aufgetreten ist. Kann entweder der Schrittname einer Richtlinie oder einer integrierten Pipeline sein.     | Ja      |
+| Grund   | Zeichenfolge | Computerfreundlicher Fehlercode, der bei der Fehlerbehandlung verwendet werden kann.                                       | Nein        |
+| Message  | Zeichenfolge | Für Menschen lesbare Fehlerbeschreibung.                                                                         | Ja      |
+| Umfang    | Zeichenfolge | Name des Bereichs, in dem der Fehler aufgetreten ist. Kann einer der Werte „global“, „product“, „api“ oder „operation“ sein. | Nein        |
 | `Section`  | Zeichenfolge | Name des Abschnitts, in dem der Fehler aufgetreten ist. Mögliche Werte: „inbound“, „backend“, „outbound“ oder „on-error“.       | Nein        |
 | `Path`     | Zeichenfolge | Gibt geschachtelte Richtlinien an, z.B. „choose[3]/when[2]“.                                                        | Nein        |
-| `PolicyId` | Zeichenfolge | Sofern vom Kunden festgelegt, der Wert des Attributs `id` in der Richtlinie, in der der Fehler aufgetreten ist.             | Nein        |
+|  `PolicyId` | Zeichenfolge | Sofern vom Kunden festgelegt, der Wert des Attributs `id` in der Richtlinie, in der der Fehler aufgetreten ist.             | Nein        |
 
 > [!TIP]
 > Über „context.Response.StatusCode“ können Sie auf den Statuscode zugreifen.  

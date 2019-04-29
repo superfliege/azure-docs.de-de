@@ -89,7 +89,7 @@ Mit <a id="key-vault-access-policies"></a>Schlüsseltresor-Zugriffsrichtlinien k
 > Key Vault-Zugriffsrichtlinien gelten auf Tresorebene. Wenn einem Benutzer die Berechtigung zum Erstellen und Löschen von Schlüsseln gewährt wird, kann er diese Vorgänge für alle Schlüssel in diesem Schlüsseltresor ausführen.
 >
 
-Sie können den Datenebenenzugriff über [Dienstendpunkte virtueller Netzwerke für den Azure Key Vault](key-vault-overview-vnet-service-endpoints.md) einschränken. Konfigurieren Sie [Firewallregeln und Regeln für virtuelle Netzwerke](key-vault-network-security.md), um eine zusätzliche Sicherheitsebene zu erstellen.
+Sie können den Datenebenenzugriff über [VNET-Dienstendpunkte für Azure Key Vault](key-vault-overview-vnet-service-endpoints.md) einschränken. Konfigurieren Sie [Firewallregeln und VNET-Regeln](key-vault-network-security.md), um eine zusätzliche Sicherheitsebene zu erstellen.
 
 ## <a name="example"></a>Beispiel
 

@@ -29,14 +29,14 @@ Jede API Management-Dienstinstanz weist eine Eigenschaftensammlung von Schlüsse
 | --- | --- | --- |
 | `Display name` |Zeichenfolge |Alphanumerische Zeichenfolge zum Verweis auf die Eigenschaft in den Richtlinien |
 | `Value` |Zeichenfolge |Der Wert der Eigenschaft. Er darf nicht leer sein oder nur aus Leerzeichen bestehen. |
-| `Secret` |boolean|Bestimmt, ob der Wert ein geheimer Schlüssel ist und ob er verschlüsselt werden sollte.|
+|`Secret`|boolean|Bestimmt, ob der Wert ein geheimer Schlüssel ist und ob er verschlüsselt werden sollte.|
 | `Tags` |Array von Zeichenfolgen |Optionale Tags, die zum Filtern der Eigenschaftenliste verwendet werden können, wenn sie bereitgestellt werden. |
 
 ![Benannte Werte](./media/api-management-howto-properties/named-values.png)
 
 Eigenschaftswerte können Literalzeichenfolgen und [Richtlinienausdrücke](/azure/api-management/api-management-policy-expressions)enthalten. Der Wert von `ExpressionProperty` ist beispielsweise ein Richtlinienausdruck, der eine Zeichenfolge zurückgibt, die das aktuelle Datum und die Uhrzeit enthält. Die Eigenschaft `ContosoHeaderValue` ist als geheimer Schlüssel markiert, sodass ihr Wert nicht angezeigt wird.
 
-| NAME | Wert | Geheimer Schlüssel | Tags |
+| NAME | Wert | `Secret` | `Tags` |
 | --- | --- | --- | --- |
 | ContosoHeader |TrackingId |False |Contoso |
 | ContosoHeaderValue |•••••••••••••••••••••• |True |Contoso |

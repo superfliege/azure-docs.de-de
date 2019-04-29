@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 55258dc0c99a918a6314be8317f19c03576a95f5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b49c6733fd148fc6fb8b9fe535ac839f5b7402f9
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58851181"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60150165"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 
@@ -506,10 +506,10 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |---|---|---|---|---|---|
 |JobEndedSuccess|Erfolgreiche Vorgänge|Count|Gesamt|Die Anzahl der erfolgreichen Vorgänge|Keine Dimensionen|
 |JobEndedFailure|Fehlgeschlagene Vorgänge|Count|Gesamt|Die Anzahl der fehlgeschlagenen Vorgänge|Keine Dimensionen|
-|JobEndedCancelled|Abgebrochene Vorgänge|Count|Gesamt|Die Anzahl der abgebrochenen Vorgänge|Keine Dimensionen|
+|JobEndedCanceled|Abgebrochene Aufträge|Count|Gesamt|Die Anzahl der abgebrochenen Aufträge.|Keine Dimensionen|
 |JobAUEndedSuccess|Erfolgreiche AU-Zeit|Sekunden|Gesamt|Die Gesamt-AU-Zeit für erfolgreiche Vorgänge|Keine Dimensionen|
 |JobAUEndedFailure|Fehlgeschlagene AU-Zeit|Sekunden|Gesamt|Die Gesamt-AU-Zeit für fehlgeschlagene Vorgänge|Keine Dimensionen|
-|JobAUEndedCancelled|Abgebrochene AU-Zeit|Sekunden|Gesamt|Die Gesamt-AU-Zeit für abgebrochene Vorgänge|Keine Dimensionen|
+|JobAUEndedCanceled|Abgebrochene AU-Zeit|Sekunden|Gesamt|AU-Gesamtzeit für abgebrochene Aufträge.|Keine Dimensionen|
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.DataLakeStore/accounts
 
@@ -876,7 +876,7 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |RunsCompleted|Abgeschlossene Ausführungen|Count|Gesamt|Anzahl abgeschlossener Workflowausführungen.|Keine Dimensionen|
 |RunsSucceeded|Erfolgreiche Ausführungen|Count|Gesamt|Anzahl erfolgreicher Workflowausführungen.|Keine Dimensionen|
 |RunsFailed|Ausführungsfehler|Count|Gesamt|Anzahl fehlerhafter Workflowausführungen.|Keine Dimensionen|
-|RunsCancelled|Abgebrochene Ausführungen|Count|Gesamt|Anzahl abgebrochener Workflowausführungen.|Keine Dimensionen|
+|RunsCanceled|Abgebrochene Ausführungen|Count|Gesamt|Anzahl abgebrochener Workflowausführungen.|Keine Dimensionen|
 |RunLatency|Ausführungslatenz|Sekunden|Durchschnitt|Latenz abgeschlossener Workflowausführungen.|Keine Dimensionen|
 |RunSuccessLatency|Latenz erfolgreicher Ausführungen|Sekunden|Durchschnitt|Latenz erfolgreicher Workflowausführungen.|Keine Dimensionen|
 |RunThrottledEvents|Ereignisse zu gedrosselten Ausführungen|Count|Gesamt|Anzahl von Ereignissen zu gedrosselten Workflowaktionen oder Triggern.|Keine Dimensionen|
@@ -1513,7 +1513,7 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |Http5xx|HTTP-Serverfehler|Count|Gesamt|HTTP-Serverfehler|Instanz|
 |MemoryWorkingSet|Arbeitssatz für Arbeitsspeicher|Byte|Durchschnitt|Arbeitssatz für Arbeitsspeicher|Instanz|
 |AverageMemoryWorkingSet|Durchschnittlicher Arbeitssatz für Arbeitsspeicher|Byte|Durchschnitt|Durchschnittlicher Arbeitssatz für Arbeitsspeicher|Instanz|
-|FunctionExecutionUnits|Ausführungseinheiten für Funktion|Count|Gesamt|Ausführungseinheiten für Funktion|Instanz|
+|FunctionExecutionUnits|Ausführungseinheiten für Funktion|MB/Millisekunden|Gesamt|[Ausführungseinheiten für Funktion](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ#how-can-i-view-graphs-of-execution-count-and-gb-seconds)|Instanz|
 |FunctionExecutionCount|Ausführungsanzahl für Funktion|Count|Gesamt|Ausführungsanzahl für Funktion|Instanz|
 |PrivateBytes|Private Bytes|Byte|Durchschnitt|Private Bytes|Instanz|
 |IoReadBytesPerSecond|E/A: Gelesene Bytes pro Sekunde|Bytes pro Sekunde|Gesamt|E/A: Gelesene Bytes pro Sekunde|Instanz|

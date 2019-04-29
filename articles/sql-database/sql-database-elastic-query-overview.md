@@ -31,7 +31,7 @@ Die Abfrage über Azure SQL-Datenbanken hinweg erfolgt vollständig in T-SQL. Di
 
 ### <a name="available-on-standard-tier"></a>Im Standard-Tarif verfügbar
 
-Elastische Abfragen werden in den Diensttarifen „Standard“ und „Premium“ unterstützt. Informationen zu Leistungseinschränkungen bei niedrigeren Diensttarifen finden Sie nachstehend im Abschnitt „Einschränkungen der Vorschau“.
+Elastische Abfragen werden in den Dienstebenen „Standard“ und „Premium“ unterstützt. Informationen zu Leistungseinschränkungen bei niedrigeren Dienstebenen finden Sie nachstehend im Abschnitt „Einschränkungen der Vorschau“.
 
 ### <a name="push-parameters-to-remote-databases"></a>Übertragen von Parametern mithilfe von Push an Remotedatenbanken
 
@@ -104,7 +104,7 @@ Das Verwenden einer elastischen Abfrage für Berichtsaufgaben auf einer Datenebe
 
 > [!NOTE]
 > Die elastische Abfragedatenbank (Hauptknoten) kann eine separate Datenbank oder aber die gleiche Datenbank sein, die als Host für die Shardzuordnung fungiert.
-> Stellen Sie unabhängig von der ausgewählten Konfiguration sicher, dass Diensttarif und Computegröße der Datenbank hoch genug sind, um das voraussichtliche Aufkommen an Anmelde- und Abfrageanforderungen zu bewältigen.
+> Stellen Sie unabhängig von der ausgewählten Konfiguration sicher, dass Dienstebene und Computegröße der Datenbank hoch genug sind, um das voraussichtliche Aufkommen an Anmelde- und Abfrageanforderungen zu bewältigen.
 
 Die folgenden Schritte dienen zum Konfigurieren elastischer Datenbankabfragen für Szenarios mit horizontaler Partitionierung, die Zugriff auf eine Gruppe von Tabellen in (üblicherweise) mehreren Remoteinstanzen von SQL-Datenbank erfordern:
 
@@ -136,7 +136,7 @@ Elastische Abfragen sind in den Kosten für Azure SQL-Datenbanken enthalten. Bea
 
 ## <a name="preview-limitations"></a>Einschränkungen der Vorschau
 
-* Beim Diensttarif „Standard“ kann das Ausführen Ihrer ersten elastischen Abfrage einige Minuten dauern. Dieser Zeitraum wird für das Laden der elastischen Abfragefunktionalität benötigt: je höher der Diensttarif und die Computegröße, desto besser die Ladeleistung.
+* Bei der Dienstebene „Standard“ kann das Ausführen Ihrer ersten elastischen Abfrage einige Minuten dauern. Dieser Zeitraum wird für das Laden der elastischen Abfragefunktionalität benötigt: je höher die Dienstebene und Computegröße, desto besser die Ladeleistung.
 * Das Erstellen von Skripts für externe Datenquellen oder externe Tabellen in SSMS oder SSDT wird noch nicht unterstützt.
 * Import/Export für SQLDB unterstützt noch keine externen Datenquellen und externen Tabellen. Wenn Sie Import/Export verwenden müssen, löschen Sie diese Objekte vor dem Exportieren, und erstellen Sie sie nach dem Importieren neu.
 * Elastische Abfragen unterstützen derzeit nur den schreibgeschützten Zugriff auf externe Tabellen. Sie können jedoch die vollständige T-SQL-Funktionalität für die Datenbank nutzen, in der die externe Tabelle definiert ist. Dies kann beispielsweise hilfreich sein, um temporäre Ergebnisse z.B. mithilfe von „SELECT <column_list> INTO <local_table>“ dauerhaft zu speichern, oder um gespeicherte Prozeduren für die elastische Abfragedatenbank zu definieren, die auf externe Tabellen verweisen.

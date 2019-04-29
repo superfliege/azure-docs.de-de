@@ -38,7 +38,7 @@ Pools für elastische Datenbanken lösen dieses Problem, indem sie sicherstellen
 > [!IMPORTANT]
 > Für Pools für elastische Datenbanken erfolgt keine Abrechnung pro Datenbank. Die Abrechnung erfolgt für jede Stunde, in der ein Pool auf der höchsten eDTU- oder V-Kern-Ebene existiert. Dies gilt unabhängig davon, ob der Pool genutzt wurde oder ob er weniger als eine Stunde aktiv war.
 
-Mit Pools für elastische Datenbanken können Entwickler Ressourcen für einen Pool erwerben, der von mehreren Datenbanken genutzt wird, um unvorhersehbare Auslastungszeiten von einzelnen Datenbanken abzufedern. Sie können Ressourcen für den Pool entweder basierend auf dem [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md) oder dem [V-Kern-basierten Kaufmodell](sql-database-service-tiers-vcore.md) konfigurieren. Die Ressourcenanforderungen eines Pools werden anhand der zusammengefassten Auslastung der hierin befindlichen Datenbanken ermittelt. Die Anzahl der für den Pool verfügbaren Ressourcen wird vom Budget des Entwicklers gesteuert. Der Entwickler fügt dem Pool einfach Datenbanken hinzu, legt die minimalen und maximalen Ressourcen für die Datenbanken fest (je nach ausgewähltem Ressourcenmodell die minimale und maximale Anzahl von DTUs oder virtuellen Kernen), und legt dann basierend auf dem Budget die Ressourcen des Pools fest. Mithilfe von Pools können Entwickler ihre Dienste problemlos und kontinuierlich ausbauen, von schlanken Startups bis hin zu etablierten Unternehmen.
+Mit Pools für elastische Datenbanken können Entwickler Ressourcen für einen Pool erwerben, der von mehreren Datenbanken genutzt wird, um unvorhersehbare Auslastungszeiten von einzelnen Datenbanken abzufedern. Sie können Ressourcen für den Pool entweder basierend auf dem [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md) oder dem [vCore-basierten Kaufmodell](sql-database-service-tiers-vcore.md) konfigurieren. Die Ressourcenanforderungen eines Pools werden anhand der zusammengefassten Auslastung der hierin befindlichen Datenbanken ermittelt. Die Anzahl der für den Pool verfügbaren Ressourcen wird vom Budget des Entwicklers gesteuert. Der Entwickler fügt dem Pool einfach Datenbanken hinzu, legt die minimalen und maximalen Ressourcen für die Datenbanken fest (je nach ausgewähltem Ressourcenmodell die minimale und maximale Anzahl von DTUs oder virtuellen Kernen), und legt dann basierend auf dem Budget die Ressourcen des Pools fest. Mithilfe von Pools können Entwickler ihre Dienste problemlos und kontinuierlich ausbauen, von schlanken Startups bis hin zu etablierten Unternehmen.
 
 Im Pool können einzelne Datenbanken die automatische Skalierung innerhalb der angegebenen Parameter flexibel automatisch skalieren. Bei hoher Auslastung kann eine Datenbank mehr Ressourcen nutzen, um die Anforderungen zu erfüllen. Datenbanken verbrauchen bei geringerer Auslastung weniger Ressourcen und ohne Auslastung gar keine Ressourcen. Durch die Bereitstellung von Ressourcen für den gesamten Pool und nicht nur für einzelne Datenbanken vereinfachen Sie Ihre Verwaltungsaufgaben. Außerdem verfügen Sie über ein vorhersagbares Budget für den Pool. Einem vorhandenen Pool können zusätzliche Ressourcen hinzugefügt werden, ohne dass es zu Datenbankausfällen kommt. Es gilt jedoch die Ausnahme, dass die Datenbanken unter Umständen verschoben werden müssen, um die zusätzlichen Computeressourcen für die neue eDTU-Reservierung bereitzustellen. Ebenso können zusätzliche Ressourcen, die nicht mehr benötigt werden, zu jedem beliebigen Zeitpunkt aus einem vorhandenen Pool entfernt werden. Und Sie können dem Pool Datenbanken hinzufügen oder Datenbanken aus dem Pool entfernen. Wenn die Ressourcen für eine Datenbank voraussichtlich nicht ausgeschöpft werden, sollten Sie sie entfernen.
 
@@ -63,7 +63,7 @@ Im dargestellten Zeitraum von fünf Minuten schnellt DB1 auf bis zu 90 DTUs. Die
 
 Mit einem Pool können diese ungenutzten DTUs auf mehrere Datenbanken verteilt werden, wodurch sich die erforderlichen DTUs und damit auch die Gesamtkosten verringern.
 
-Ausgehend vom vorherigen Beispiel nehmen wir einmal an, dass es weitere Datenbanken mit ähnlichen Auslastungsmustern wie DB1 gibt. In den beiden folgenden Abbildungen wird die Auslastung von einmal vier, und von weiteren 20 Datenbanken in jeweils einem Graphen dargestellt. Dies soll anhand des DTU-basierten Kaufmodells veranschaulichen, dass sich die Auslastung der Datenbanken zeitlich nicht überlappt:
+Ausgehend vom vorherigen Beispiel nehmen wir einmal an, dass es weitere Datenbanken mit ähnlichen Auslastungsmustern wie DB1 gibt. In den beiden folgenden Abbildungen wird die Auslastung von vier und von weiteren 20 Datenbanken in jeweils einem Graphen dargestellt. Dies soll anhand des DTU-basierten Kaufmodells veranschaulichen, dass sich die Auslastung der Datenbanken zeitlich nicht überlappt:
 
    ![vier Datenbanken mit einem für einen Pool geeigneten Auslastungsmuster](./media/sql-database-elastic-pool/four-databases.png)
 
@@ -111,7 +111,7 @@ Die optimale Größe eines Pools hängt von den zusammengefassten Ressourcen ab,
 - Maximale Ressourcen, die von allen Datenbanken im Pool (je nach ausgewähltem Ressourcenmodell die maximale Anzahl von DTUs oder virtuellen Kernen) verwendet werden.
 - Maximale Speicherbytes, die von allen Datenbanken im Pool verwendet werden.
 
-Verfügbare Dienstebenen für jedes Ressourcenmodell finden Sie im [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md) oder im [V-Kern-basierten Kaufmodell](sql-database-service-tiers-vcore.md).
+Verfügbare Dienstebenen für jedes Ressourcenmodell finden Sie im [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md) oder im [vCore-basierten Kaufmodell](sql-database-service-tiers-vcore.md).
 
 Wenn Sie keine Tools verwenden können, kann Ihnen die folgende Anleitung dabei helfen, einzuschätzen, ob ein Pool kostengünstiger als eine einzelne Datenbank ist:
 
@@ -126,7 +126,7 @@ Wenn Sie keine Tools verwenden können, kann Ihnen die folgende Anleitung dabei 
 2. Schätzen Sie den für den Pool benötigten Speicherplatz, indem Sie die Menge der für alle Datenbanken im Pool benötigten Bytes addieren. Ermitteln Sie dann die eDTU-Poolgröße, die diese Menge an Speicher bietet.
 3. Verwenden Sie für das DTU-basierte Kaufmodell die größere der eDTU-Schätzungen aus Schritt 1 und Schritt 2. Verwenden Sie für das V-Kern-basierte Kaufmodell die V-Kern-Schätzung aus Schritt 1.
 4. Auf der [SQL-Datenbank Preisseite](https://azure.microsoft.com/pricing/details/sql-database/) finden Sie die kleinste Poolgröße, die größer ist als die Schätzung aus Schritt 3.
-5. Vergleichen Sie den Poolpreis aus Schritt 5 mit dem Preis der geeigneten Computegrößen für einzelne Datenbanken.
+5. Vergleichen Sie den Poolpreis aus Schritt 5 mit dem Preis der geeigneten Computegrößen für Einzeldatenbanken.
 
 ## <a name="using-other-sql-database-features-with-elastic-pools"></a>Verwenden anderer SQL Datenbank-Funktionen mit Pools für elastische Datenbanken
 
