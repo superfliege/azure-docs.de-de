@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: raynew
-ms.openlocfilehash: ae84313cd750e3d6c7eb9443ec59095dec9c632e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 1b03cf648ad65960cce4ffc874cf32ad91ef7dc1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59265248"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59490636"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Ermitteln und Bewerten einer umfangreichen VMware-Umgebung
 
@@ -39,20 +39,11 @@ Azure Migrate benötigt Zugriff auf VMware-Server, um automatisch virtuelle Comp
 - Details: Der Benutzer wird auf Datencenterebene zugewiesen und hat Zugriff auf alle Objekte im Datencenter.
 - Um den Zugriff einzuschränken, weisen Sie den untergeordneten Objekten (vSphere-Hosts, Datenspeicher, VMs und Netzwerke) die Rolle „No access“ (Kein Zugriff) mit „Propagate to child object“ (An untergeordnetes Objekt weitergeben) zu.
 
-Wenn Sie die Bereitstellung in einer Mandantenumgebung ausführen, finden Sie hier eine Möglichkeit zur Einrichtung:
+Wenn Sie in einer Umgebung mit mehreren Mandanten bereitstellen und den Bereich für einen einzelnen Mandanten anhand des Ordners der VMs festlegen möchten, können Sie beim Festlegen des Bereichs einer Sammlung in Azure Migrate nicht direkt den VM-Ordner auswählen. Es folgen Anweisungen zum Festlegen des Ermittlungsbereichs anhand des VM-Ordners:
 
-1. Erstellen Sie einen Benutzer pro Mandant, und weisen Sie mit [RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) Nur-Lese-Berechtigungen auf alle VMs zu, die einem bestimmten Mandanten angehören. Verwenden Sie diese Anmeldeinformationen dann für die Ermittlung. Durch die rollenbasierte Zugriffssteuerung wird sichergestellt, dass der entsprechende vCenter-Benutzer nur Zugriff auf die mandantenspezifischen VMs hat.
-2. Sie können RBAC für Benutzer verschiedener Mandanten einrichten, wie im folgenden Beispiel für die Benutzer 1 und 2 beschrieben wird:
-
-    - Geben Sie unter **Benutzername** und **Kennwort** die Anmeldeinformationen für das schreibgeschützte Konto an, mit dem der Collector VMs in
-    - Datacenter1 – erteilen Sie Benutzer 1 und Benutzer 2 Nur-Lese Berechtigungen. Geben Sie diese Berechtigungen nicht an alle untergeordneten Objekte weiter, da Sie Berechtigungen für die einzelnen virtuellen Computer festlegen.
-
-      - VM1 (Mandant 1) (Nur-Lese-Berechtigung für Benutzer 1)
-      - VM2 (Mandant 1) (Nur-Lese-Berechtigung für Benutzer 1)
-      - VM3 (Mandant 2) (Nur-Lese-Berechtigung für Benutzer 2)
-      - VM4 (Mandant 2) (Nur-Lese-Berechtigung für Benutzer 2)
-
-   - Wenn Sie die Ermittlung mit den Anmeldeinformationen von Benutzer 1 ausführen, werden nur VM1 und VM2 ermittelt.
+1. Erstellen Sie pro Mandant einen Benutzer, und weisen Sie allen VMs, die zu einem bestimmten Mandanten gehören, schreibgeschützte Zugriffsberechtigungen zu. 
+2. Erteilen Sie diesem Benutzer schreibgeschützten Zugriff auf alle übergeordneten Objekte, in denen VMs gehostet sind. Alle übergeordneten Objekte – Host, Hostordner, Cluster, Clusterordner – in der Hierarchie bis hinauf zum Rechenzentrum müssen eingeschlossen werden. Sie brauchen die Berechtigungen nicht an alle untergeordneten Objekte weiterzugeben.
+3. Verwenden Sie die Anmeldeinformationen für die Ermittlung, und wählen Sie das Rechenzentrum als *Sammlungsbereich* aus. Durch die eingerichtete rollenbasierte Zugriffssteuerung wird sichergestellt, dass der entsprechende vCenter-Benutzer nur Zugriff auf die mandantenspezifischen VMs hat.
 
 ## <a name="plan-your-migration-projects-and-discoveries"></a>Planen von Migrationsprojekten und Ermittlungen
 
@@ -97,7 +88,7 @@ Wenn Sie mehrere vCenter Server-Instanzen mit weniger als 1.500 virtuellen Compu
 
 ### <a name="more-than-1500-machines-in-a-single-vcenter-server"></a>Bei mehr als 1500 Computern in einer einzigen vCenter Server-Instanz
 
-Wenn Sie mehr als 1500 virtuelle Computer in einer einzelnen vCenter Server-Instanz haben, müssen Sie die Ermittlungen auf mehrere Migrationsprojekte aufteilen. Zum Aufteilen der Ermittlungen können Sie in der Appliance das Feld „Bereich“ nutzen und die folgenden zu ermittelnden Daten angeben: Host, Cluster, Ordner oder Rechenzentrum. Angenommen, Sie haben zwei Ordner in der vCenter Server-Instanz – einen mit 1.000 VMs (Ordner1) und einen anderen mit 800 VMs (Ordner2). In diesem Fall können Sie mit dem Feld „Bereich“ die Ermittlung zwischen diesen Ordnern aufteilen.
+Wenn Sie mehr als 1500 virtuelle Computer in einer einzelnen vCenter Server-Instanz haben, müssen Sie die Ermittlungen auf mehrere Migrationsprojekte aufteilen. Zum Aufteilen der Ermittlungen können Sie in der Appliance das Feld „Bereich“ nutzen und die folgenden zu ermittelnden Daten angeben: Host, Cluster, Hostordner, Clusterordner oder Rechenzentrum. Angenommen, Sie haben zwei Ordner in der vCenter Server-Instanz – einen mit 1.000 VMs (Ordner1) und einen anderen mit 800 VMs (Ordner2). In diesem Fall können Sie mit dem Feld „Bereich“ die Ermittlung zwischen diesen Ordnern aufteilen.
 
 **Kontinuierliche Ermittlung**: In diesem Fall müssen Sie zwei Collectorappliances erstellen. Geben Sie dann für den ersten Collector den Bereich als „Ordner1“ an, und verbinden Sie ihn mit dem ersten Migrationsprojekt. Parallel dazu können Sie die Ermittlung von Ordner2 mithilfe der zweiten Collectorappliance starten und sie mit dem zweiten Migrationsprojekt verbinden.
 
@@ -287,7 +278,7 @@ Die Collectorappliance ermittelt die folgenden Konfigurationsdaten zu den ausgew
 
 Die Collectorappliance sammelt die folgenden Leistungsindikatoren für jede VM vom ESXi-Host in einem Intervall von 20 Sekunden. Diese Leistungsindikatoren sind vCenter-Leistungsindikatoren und obwohl die Terminologie von Durchschnitt spricht, handelt es sich bei den 20-Sekunden-Stichproben um Echtzeit-Leistungsindikatoren. Die Appliance führt dann ein Rollup der 20-Sekunden-Stichprobe durch, um einen einzelnen Datenpunkt für je 15 Minuten in Form des Spitzenwerts der 20-Sekunden-Stichprobe zu erstellen, und sendet diesen an Azure. Die Leistungsdaten für die virtuellen Computer stehen im Portal zwei Stunden nach dem Starten der Ermittlung zur Verfügung. Bei leistungsbasierten Bewertungen wird dringend empfohlen, mindestens einen Tag mit deren Erstellung zu warten, um korrekte Größenempfehlungen zu erhalten. Wenn Sie sofortige Ergebnisse wünschen, können Sie Bewertungen erstellen, bei denen das Größenkriterium auf *Wie lokal* festgelegt ist, wodurch die Leistungsdaten für die korrekte Größenanpassung nicht berücksichtigt werden.
 
-**Indikator** |  **Auswirkung auf die Bewertung**
+**Leistungsindikator** |  **Auswirkung auf die Bewertung**
 --- | ---
 cpu.usage.average | Empfohlene VM-Größe und -Kosten  
 mem.usage.average | Empfohlene VM-Größe und -Kosten  

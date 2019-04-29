@@ -20,7 +20,7 @@ ms.lasthandoff: 01/31/2019
 ms.locfileid: "55463020"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Horizontales Hochskalieren mit Azure SQL-Datenbank
-Mithilfe der Tools für **elastische Datenbanken** können Sie Azure SQL-Datenbanken problemlos horizontal hochskalieren. Mit diesen Tools und Features können Sie Datenbankressourcen von **Azure SQL-Datenbank** zum Erstellen von Lösungen für transaktionale Workloads und insbesondere SaaS-Anwendungen (Software-as-a-Service) verwenden. Die Features für elastische Datenbanken umfassen folgende:
+Mithilfe der Tools für **elastische Datenbanken** können Sie Azure SQL-Datenbanken problemlos erweitern. Mit diesen Tools und Features können Sie Datenbankressourcen von **Azure SQL-Datenbank** zum Erstellen von Lösungen für transaktionale Workloads und insbesondere SaaS-Anwendungen (Software-as-a-Service) verwenden. Die Features für elastische Datenbanken umfassen folgende:
 
 * [Clientbibliothek für elastische Datenbanken](sql-database-elastic-database-client-library.md): Die Clientbibliothek ist ein Feature, mit dem Sie Sharddatenbanken erstellen und verwalten können.  Weitere Informationen finden Sie unter [Erste Schritte mit Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md).
 * [Split-Merge-Tool für elastische Datenbanken:](sql-database-elastic-scale-overview-split-and-merge.md)Zum Verschieben von Daten zwischen Sharddatenbanken. Dieses Tool ist nützlich zum Verschieben von Daten aus einer mehrinstanzenfähigen Datenbank in eine Datenbank mit einzelnem Mandanten (oder umgekehrt). Siehe [Tutorial zum Split-Merge-Tool für elastische Datenbanken](sql-database-elastic-scale-configure-deploy-split-and-merge.md).

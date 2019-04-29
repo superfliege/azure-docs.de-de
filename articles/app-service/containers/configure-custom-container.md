@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 7f850cdfe99fce81c9be045b4882dc42bf2aa5f0
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 1e5faa8d356b891d825586414c0a1a1b9fa47090
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551030"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001880"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Konfigurieren eines benutzerdefinierten Linux-Containers für Azure App Service
 
@@ -121,7 +121,9 @@ Aktivieren Sie den beständigen Speicher, indem Sie die App-Einstellung `WEBSITE
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
 ```
 
-Ordnen Sie in Ihrer Datei *docker-compose.yml* die `volumes`-Option zu `${WEBAPP_STORAGE_HOME}` zu. `WEBAPP_STORAGE_HOME` ist eine Umgebungsvariable in App Service, die dem beständigen Speicher für Ihre App zugeordnet wird. Beispiel: 
+Ordnen Sie in Ihrer Datei *docker-compose.yml* die `volumes`-Option zu `${WEBAPP_STORAGE_HOME}` zu. 
+
+`WEBAPP_STORAGE_HOME` ist eine Umgebungsvariable in App Service, die dem beständigen Speicher für Ihre App zugeordnet wird. Beispiel: 
 
 ```yaml
 wordpress:
@@ -130,6 +132,19 @@ wordpress:
   - ${WEBAPP_STORAGE_HOME}/site/wwwroot:/var/www/html
   - ${WEBAPP_STORAGE_HOME}/phpmyadmin:/var/www/phpmyadmin
   - ${WEBAPP_STORAGE_HOME}/LogFiles:/var/log
+```
+
+### <a name="use-custom-storage-in-docker-compose"></a>Verwenden von benutzerdefiniertem Speicher in Docker Compose
+
+Azure-Speicher (Azure Files oder Azure-Blob) kann mithilfe der benutzerdefinierten ID mit Apps mit mehreren Containern eingebunden werden. Führen Sie [`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list) aus, um den Namen der benutzerdefinierten ID anzuzeigen.
+
+Ordnen Sie in Ihrer Datei *docker-compose.yml* die `volumes`-Option zu `custom-id` zu. Beispiel: 
+
+```yaml
+wordpress:
+  image: wordpress:latest
+  volumes:
+  - <custom-id>:<path_in_container>
 ```
 
 ### <a name="preview-limitations"></a>Einschränkungen der Vorschau

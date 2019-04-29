@@ -21,7 +21,7 @@ ms.locfileid: "58417954"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Konfigurieren der Replikation in einer verwalteten Azure SQL-Datenbank-Instanzdatenbank
 
-Die Transaktionsreplikation ermöglicht es Ihnen, Daten aus einer SQL Server-Datenbank oder einer anderen Instanzdatenbank in eine verwaltete Azure SQL-Datenbank-Instanzdatenbank zu replizieren. Sie können mithilfe der Transaktionsreplikation auch Änderungen, die in einer Instanzdatenbank einer verwalteten Azure SQL-Datenbank-Instanz vorgenommen wurden, in eine SQL Server-Datenbank, eine einzelne Datenbank in Azure SQL-Datenbank oder in eine in einem Pool zusammengefasste Datenbank eines Pools für elastische Azure SQL-Datenbanken pushen. Die Transaktionsreplikation steht als Public Preview in der [verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md) zur Verfügung. Eine verwaltete Instanz kann Verleger-, Verteiler- und Abonnentendatenbanken hosten. Unter [Konfigurationen für die Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md#common-configurations) finden Sie die verfügbaren Konfigurationen.
+Die Transaktionsreplikation ermöglicht es Ihnen, Daten aus einer SQL Server-Datenbank oder einer anderen Instanzdatenbank in eine verwaltete Azure SQL-Datenbank-Instanzdatenbank zu replizieren. Sie können mithilfe der Transaktionsreplikation auch Änderungen, die in einer Instanzdatenbank einer verwalteten Azure SQL-Datenbank-Instanz vorgenommen wurden, in eine SQL Server-Datenbank, eine Einzeldatenbank in Azure SQL-Datenbank oder in eine Pooldatenbank eines Pools für elastische Azure SQL-Datenbanken pushen. Die Transaktionsreplikation steht als Public Preview in der [verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md) zur Verfügung. Eine verwaltete Instanz kann Verleger-, Verteiler- und Abonnentendatenbanken hosten. Unter [Konfigurationen für die Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md#common-configurations) finden Sie die verfügbaren Konfigurationen.
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
@@ -30,7 +30,7 @@ Zum Konfigurieren einer verwalteten Instanz, die als Verleger oder Verteiler fun
 - Die verwaltete Instanz ist derzeit nicht an einer Georeplikationsbeziehung beteiligt.
 
    >[!NOTE]
-   >Einzelne Datenbanken und in einem Pool zusammengefasste Datenbanken in Azure SQL-Datenbank können nur Abonnenten sein.
+   >Einzel- und Pooldatenbanken in Azure SQL-Datenbank können nur Abonnenten sein.
 
 - Alle verwalteten Instanzen müssen sich in demselben VNET befinden.
 

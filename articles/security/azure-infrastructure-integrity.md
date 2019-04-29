@@ -34,7 +34,7 @@ Builds von Azure-Softwarekomponenten (einschließlich Betriebssystem) müssen ei
 ## <a name="closed-and-locked-environment"></a>Geschlossene und gesperrte Umgebung
 Standardmäßig werden auf Knoten und Gast-VMs in der Azure-Infrastruktur keine Benutzerkonten erstellt. Zudem sind auch standardmäßige Windows-Administratorkonten deaktiviert. Administratoren des Azure Live Support können sich – bei ordnungsgemäßer Authentifizierung – an diesen Computern anmelden und das Azure-Produktionsnetzwerk für Notfallreparaturen verwalten.
 
-## <a name="azure-sql-database-authentication"></a>Azure SQL-Datenbankauthentifizierung
+## <a name="azure-sql-database-authentication"></a>Azure SQL-Datenbank-Authentifizierung
 Wie bei jeder Implementierung von SQL Server muss die Verwaltung von Benutzerkonten streng kontrolliert werden. Azure SQL-Datenbank unterstützt nur SQL Server-Authentifizierung. Als Ergänzung zum Datensicherheitsmodell des Kunden sollten zudem Benutzerkonten verwendet werden, die sichere Kennwörter haben und mit spezifischen Rechten konfiguriert sind.
 
 ## <a name="acls-and-firewalls-between-the-microsoft-corporate-network-and-an-azure-cluster"></a>ACLs und Firewalls zwischen dem Microsoft-Unternehmensnetzwerk und einem Azure-Cluster

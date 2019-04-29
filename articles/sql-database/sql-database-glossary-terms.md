@@ -31,22 +31,22 @@ ms.locfileid: "55990069"
 ||Server einer verwalteten SQL-Datenbank-Instanz, Server für verwaltete Instanz oder Instanzserver|[Verwaltete Instanz](sql-database-managed-instance.md)|
 Datenbankobjekte|Azure SQL-Datenbank|Beliebige Datenbank in Azure SQL-Datenbank|
 ||Einzeldatenbank|Eine mit der Bereitstellungsoption für Singletons erstellte Datenbank|
-||In einem Pool zusammengefasste Datenbank|Eine in einem Pool für elastische Datenbanken erstellte oder dorthin verschobene Datenbank|
+||Pooldatenbank|Eine in einem Pool für elastische Datenbanken erstellte oder dorthin verschobene Datenbank|
 ||Instanzdatenbank|Eine in einer verwalteten Instanz erstellte Datenbank|
-||Basic-Datenbank|Eine im Diensttarif „Basic“ des DTU-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
-||Standard-Datenbank|Eine im Diensttarif „Standard“ des DTU-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
-||Premium-Datenbank|Eine im Diensttarif „Premium“ des DTU-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
-||Universelle Datenbank|Eine im Diensttarif „Universell“ des V-Kern-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
-||Hyperscaledatenbank|Eine im Diensttarif „Hyperscale“ des V-Kern-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
-||Unternehmenskritische Datenbank|Eine im Diensttarif „Unternehmenskritisch“ des V-Kern-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
+||Basic-Datenbank|Eine in der Dienstebene „Basic“ des DTU-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
+||Standard-Datenbank|Eine in der Dienstebene „Standard“ des DTU-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
+||Premium-Datenbank|Eine in der Dienstebene „Premium“ des DTU-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
+||Universelle Datenbank|Eine in der Dienstebene „Universell“ des vCore-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
+||Hyperscaledatenbank|Eine in der Dienstebene „Hyperscale“ des vCore-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
+||Unternehmenskritische Datenbank|Eine in der Dienstebene „Unternehmenskritisch“ des vCore-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
 |[Kaufmodelle und -ressourcen](sql-database-purchase-models.md)|DTU-basiertes Kaufmodell|[DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md)|
-||Auf virtuellen Kernen basierendes Erwerbsmodell|[Auf virtuellen Kernen basierendes Kaufmodell](sql-database-service-tiers-vcore.md)|
+||vCore-basiertes Kaufmodell|[Auf virtuellen Kernen basierendes Kaufmodell](sql-database-service-tiers-vcore.md)|
 ||Virtueller Kern|Ein Kern, der vom Hypervisor für das Gastbetriebssystem bereitgestellt wird.|
 ||Dienstebene|Eine Dienstebene in einem Kaufmodell|
-||Computegröße|Die Anzahl der Computeressourcen für eine Einzeldatenbank, einen Pool für elastische Datenbanken oder eine verwaltete Instanz innerhalb eines Diensttarifs|
+||Computegröße|Die Anzahl der Computeressourcen für eine Einzeldatenbank, einen Pool für elastische Datenbanken oder eine verwaltete Instanz innerhalb einer Dienstebene|
 ||Speichermenge|Die verfügbare Speichermenge für eine Einzeldatenbank, einen Pool für elastische Datenbanken oder eine verwaltete Instanz|
-||Computegeneration|Die Generation des Prozessors innerhalb eines Diensttarifs|
-|Firewallregeln für Datenbankserver-IPs|IP-Firewallregeln|[IP-Firewallregeln](sql-database-firewall-configure.md)|
+||Computegeneration|Die Generation des Prozessors innerhalb einer Dienstebene|
+|IP-Firewallregeln für Datenbankserver|IP-Firewallregeln|[IP-Firewallregeln](sql-database-firewall-configure.md)|
 ||IP-Firewallregeln auf Serverebene|[IP-Firewallregeln auf Serverebene](sql-database-firewall-configure.md#overview)|
 || Firewallregeln auf Datenbankebene|[Firewallregeln auf Datenbankebene](sql-database-firewall-configure.md#overview)|
 ||Endpunkte und Regeln virtueller Netzwerke|[Verwenden von Dienstendpunkten und Regeln eines virtuellen Netzwerks für Azure SQL-Datenbank und SQL Data Warehouse](sql-database-vnet-service-endpoint-rule-overview.md)|

@@ -89,7 +89,7 @@ Durch Senden mehrerer **MonitorRequests** können mehrere Orchestratorinstanzen 
 
 ## <a name="strongly-typed-data-transfer-net-only"></a>Stark typisierte Datenübertragung (nur .NET)
 
-Der Orchestrator erfordert eine Vielzahl von Daten, daher werden [freigegebene POCO-Objekte](../functions-reference-csharp.md#reusing-csx-code) für eine stark typisierte Datenübertragung in C# und C#-Skripts verwendet:  [!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
+Der Orchestrator erfordert eine Vielzahl von Daten, daher werden [freigegebene POCO-Objekte](../functions-reference-csharp.md#reusing-csx-code) für eine stark typisierte Datenübertragung in C# und C#-Skripts verwendet: [!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/Location.csx)]
 

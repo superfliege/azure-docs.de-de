@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/01/2019
+ms.date: 04/17/2019
 ms.author: magoedte
-ms.openlocfilehash: ebe2c2b488e3d71597dd24f5504a14dd7ce6671e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: bbd7c733c7c089328d2fbe016426fe9de3a6b5ce
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59282286"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998650"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Einrichten von Warnungen für Leistungsprobleme in Azure Monitor für Container
 Azure Monitor für Container überwacht die Leistung von Containerworkloads, die in Azure Container Instances oder in Managed Kubernetes-Clustern bereitgestellt sind, die im Azure Kubernetes Service (AKS) gehostet werden.
@@ -285,5 +285,5 @@ Führen Sie die folgenden Schritte aus, um eine Protokollwarnung in Azure Monito
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Zeigen Sie [Beispiele für Protokollabfragen](container-insights-analyze.md#search-logs-to-analyze-data) an, um mehr über vordefinierte Abfragen und Beispiele zum Bewerten oder Anpassen bei anderen Warnungsszenarien zu erfahren.
-* Weitere Informationen zu Azure Monitor und zum Überwachen anderer Aspekte Ihres AKS-Clusters finden Sie unter [Anzeigen der Azure Kubernetes Service-Integrität](container-insights-analyze.md).
+- Sehen Sie sich die [Beispiele zu Protokollabfragen](container-insights-log-search.md#search-logs-to-analyze-data) an, die auch vordefinierte Abfragen enthalten. Mit diesen Materialien können Sie Auswertungen von bzw. Anpassungen für Warnungen, Visualisierungen und Analysen von Clustern vornehmen.
+- Weitere Informationen zu Azure Monitor und zum Überwachen anderer Aspekte Ihres AKS-Clusters finden Sie unter [Anzeigen der Azure Kubernetes Service-Integrität](container-insights-analyze.md).

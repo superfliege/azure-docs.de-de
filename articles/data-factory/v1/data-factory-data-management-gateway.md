@@ -159,7 +159,7 @@ Auf Ebene der Windows-Firewall sind diese ausgehenden Ports normalerweise aktivi
 #### <a name="copy-data-from-a-source-data-store-to-a-sink-data-store"></a>Kopieren von Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher
 Stellen Sie sicher, dass die Firewallregeln für die Unternehmensfirewall, die Windows-Firewall auf dem Gatewaycomputer und den Datenspeicher selbst richtig aktiviert sind. Indem Sie diese Regeln aktivieren, kann das Gateway sowohl mit der Quelle als auch mit der Senke erfolgreich eine Verbindung herstellen. Aktivieren Sie die Regeln für jeden Datenspeicher, der am Kopiervorgang beteiligt ist.
 
-Führen Sie die folgenden Schritte aus, um z. B. Daten aus **einem lokalen Datenspeicher in eine Azure SQL-Datenbanksenke oder eine Azure SQL Data Warehouse-Senke** zu kopieren:
+Führen Sie die folgenden Schritte aus, um z. B. Daten aus **einem lokalen Datenspeicher in eine Azure SQL-Datenbank-Senke oder eine Azure SQL Data Warehouse-Senke** zu kopieren:
 
 * Lassen Sie ausgehende **TCP**-Kommunikation an Port **1433** sowohl für die Windows-Firewall als auch die Unternehmensfirewall zu.
 * Konfigurieren Sie die Firewall der Azure SQL Server-Instanz, um die IP-Adresse des Gatewaycomputers zur Liste der zulässigen IP-Adressen hinzuzufügen.

@@ -146,7 +146,7 @@ Vergleichen Sie zum Messen der Verzögerung in Bezug auf Änderungen in der prim
 
 Wie bereits zuvor erwähnt, kann die aktive Georeplikation auch programmgesteuert mit Azure PowerShell und der REST-API verwaltet werden. Die folgenden Tabellen beschreiben den verfügbaren Satz von Befehlen. Die aktive Georeplikation umfasst eine Reihe von Azure Resource Manager-APIs für die Verwaltung. Hierzu zählen unter anderem die [Azure SQL-Datenbank-REST-API](https://docs.microsoft.com/rest/api/sql/) und [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure/overview). Diese APIs erfordern die Verwendung von Ressourcengruppen und unterstützen rollenbasierte Sicherheit (RBAC). Weitere Informationen zur Implementierung von Zugriffsrollen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../role-based-access-control/overview.md).
 
-### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL: Verwalten des Failovers von Einzeldatenbanken und in einem Pool zusammengefassten Datenbanken
+### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL: Verwalten des Failovers von Einzel- und Pooldatenbanken
 
 > [!IMPORTANT]
 > Diese Transact-SQL-Befehle gelten nur für die aktive Georeplikation und nicht für Failovergruppen. Daher gelten sie auch nicht für verwaltete Instanzen, da diese nur Failovergruppen unterstützen.
@@ -162,7 +162,7 @@ Wie bereits zuvor erwähnt, kann die aktive Georeplikation auch programmgesteuer
 | [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |Bewirkt, dass die Anwendung wartet, bis alle Transaktionen mit erfolgtem Commit repliziert und von der aktiven sekundären Datenbank bestätigt wurden. |
 |  | |
 
-### <a name="powershell-manage-failover-of-single-and-pooled-databases"></a>PowerShell: Verwalten des Failovers von Einzeldatenbanken und in einem Pool zusammengefassten Datenbanken
+### <a name="powershell-manage-failover-of-single-and-pooled-databases"></a>PowerShell: Verwalten des Failovers von Einzel- und Pooldatenbanken
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
@@ -180,7 +180,7 @@ Wie bereits zuvor erwähnt, kann die aktive Georeplikation auch programmgesteuer
 > [!IMPORTANT]
 > Beispielskripts finden Sie unter [Verwenden von PowerShell zum Konfigurieren der aktiven Georeplikation für eine einzelne Azure SQL-Datenbank](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) und [Verwenden von PowerShell zum Konfigurieren der aktiven Georeplikation für eine in einem Pool enthaltene Azure SQL-Datenbank](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md).
 
-### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST-API: Verwalten des Failovers von Einzeldatenbanken und in einem Pool zusammengefassten Datenbanken
+### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>REST-API: Verwalten des Failovers von Einzel- und Pooldatenbanken
 
 | API | BESCHREIBUNG |
 | --- | --- |
@@ -200,6 +200,6 @@ Wie bereits zuvor erwähnt, kann die aktive Georeplikation auch programmgesteuer
   - [Configure and failover a pooled database using active geo-replication](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md) (Konfiguration und Failover einer gepoolten Datenbank mithilfe von aktiver Georeplikation)
 - SQL-Datenbank unterstützt auch Autofailover-Gruppen. Weitere Informationen finden Sie unter [Autofailover-Gruppen](sql-database-auto-failover-group.md).
 - Eine Übersicht und verschiedene Szenarien zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
-- Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Übersicht: Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
+- Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md).
 - Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](sql-database-recovery-using-backups.md).
 - Weitere Informationen zu Authentifizierungsanforderungen für einen neuen primären Server und die Datenbank finden Sie unter [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](sql-database-geo-replication-security-config.md).

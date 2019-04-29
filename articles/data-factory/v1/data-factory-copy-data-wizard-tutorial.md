@@ -121,7 +121,7 @@ In diesem Schritt erstellen Sie im Azure-Portal eine Azure Data Factory namens *
    5. Geben Sie **Benutzername** und **Kennwort** ein.
    6. Klicken Sie auf **Weiter**.  
       
-      ![Copy Tool - specify Azure SQL database](./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png)
+      ![Kopiertool: Angeben der Azure SQL-Datenbank](./media/data-factory-copy-data-wizard-tutorial/specify-azure-sql-database.png)
 10. Wählen Sie auf der Seite **Tabellenzuordnung** für das Feld **Ziel** in der Dropdownliste die Option **emp** aus, und klicken Sie auf den **Pfeil nach unten** (optional), um das Schema und eine Vorschau der Daten anzuzeigen.
     
      ![Kopiertool – Tabellenzuordnung](./media/data-factory-copy-data-wizard-tutorial/copy-tool-table-mapping-page.png) 

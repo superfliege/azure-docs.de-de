@@ -35,7 +35,7 @@ Verbindungsprobleme können folgende Ursachen haben:
 * Firewalleinstellungen
 * Verbindungstimeout
 * Falsche Anmeldeinformationen
-* Einige Azure SQL-Datenbankressourcen haben ihr maximales Limit erreicht
+* Einige Azure SQL-Datenbank-Ressourcen haben ihr maximales Limit erreicht
 
 Im Allgemeinen können Verbindungsprobleme mit der Azure SQL-Datenbank wie folgt klassifiziert werden:
 

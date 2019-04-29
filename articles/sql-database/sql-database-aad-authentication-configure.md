@@ -237,7 +237,7 @@ Im folgenden Beispiel wird ein Azure AD-Administrator entfernt:
 Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server"
 ```
 
-Sie können auch einen Azure Active Directory-Administrator mithilfe der REST-APIs bereitstellen. Weitere Informationen finden Sie unter [Referenz zur REST-API der Dienstverwaltung und Vorgänge für Azure SQL-Datenbanken](https://docs.microsoft.com/rest/api/sql/).
+Sie können auch einen Azure Active Directory-Administrator mithilfe der REST-APIs bereitstellen. Weitere Informationen finden Sie unter [Referenz zur REST-API der Dienstverwaltung und Vorgänge für Azure SQL-Datenbank](https://docs.microsoft.com/rest/api/sql/).
 
 ### <a name="cli"></a>Befehlszeilenschnittstelle (CLI)  
 

@@ -1,5 +1,5 @@
 ---
-title: Untersuchen der von der v2-API erstellten Video Indexer-Ausgabe
+title: Untersuchen der von der v2-API erstellten Video Indexer-Ausgabe von Azure Media Services
 titlesuffix: Azure Media Services
 description: In diesem Thema wird die Video Indexer-Ausgabe untersucht, die von der v2-API erstellt wird.
 services: media-services
@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/07/2019
 ms.author: juliako
-ms.openlocfilehash: 552c3fa81a213d0be32c5498cde5a50fb44291d0
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: d55e246e6fc3a5eeb182a49d1e159887f66d6872
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58892574"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011318"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Untersuchen der von der API erstellten Video Indexer-Ausgabe
 
@@ -37,7 +37,7 @@ In diesem Artikel wird der JSON-Inhalt untersucht, der von der API zum Abrufen d
 |accountId|Die VI-Konto-ID der Wiedergabeliste.|
 |id|Die ID der Wiedergabeliste.|
 |name|Der Name der Wiedergabeliste.|
-|Beschreibung|Die Beschreibung der Wiedergabeliste.|
+|description|Die Beschreibung der Wiedergabeliste.|
 |userName|Der Name des Benutzers, der die Wiedergabeliste erstellt hat.|
 |created|Die Erstellungszeit der Wiedergabeliste.|
 |privacyMode|Der Datenschutzmodus der Wiedergabeliste (privat/öffentlich).|
@@ -79,7 +79,7 @@ In diesem Abschnitt wird die Zusammenfassung der Erkenntnisse angezeigt.
 |privacyMode|Für Ihre Aufschlüsselung kann einer der folgenden Modi verwendet werden: **Private** oder **Public**. **Public**: Das Video ist für alle Benutzer Ihres Kontos und alle Personen sichtbar, die über einen Link zum Video verfügen. **Private**: Das Video ist für alle Benutzer Ihres Kontos sichtbar.|
 |duration|Enthält eine Dauer, mit der der Zeitbereich beschrieben wird, in dem eine Erkenntnis gewonnen wurde. Die Dauer wird in Sekunden angegeben.|
 |thumbnailVideoId|Die ID des Videos, aus dem die Miniaturansicht entnommen wurde.
-|thumbnailId|Die Miniaturansicht-ID des Videos. Rufen Sie „Get-Thumbnail“ (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail)) auf, und übergeben Sie „thumbnailVideoId“ und „thumbnailId.To“, um die eigentliche Miniaturansicht zu erhalten.|
+|thumbnailId|Die Miniaturansicht-ID des Videos. Rufen Sie [Get-Thumbnail](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) auf, und übergeben Sie „thumbnailVideoId“ und „thumbnailId“, um die eigentliche Miniaturansicht zu erhalten.|
 |faces|Kann null oder mehr Gesichter enthalten. Ausführlichere Informationen finden Sie unter [faces](#faces).|
 |keywords|Kann null oder mehr Schlüsselwörter enthalten. Ausführlichere Informationen finden Sie unter [keywords](#keywords).|
 |sentiments|Kann null oder mehr Stimmungen enthalten. Ausführlichere Informationen finden Sie unter [sentiments](#sentiments).|
@@ -106,7 +106,7 @@ In diesem Abschnitt wird die Zusammenfassung der Erkenntnisse angezeigt.
 |metadata|Die externen Metadaten des Videos (falls vom Benutzer angegeben).|
 |isAdult|Gibt an, ob das Video manuell geprüft und als nur für Erwachsene geeignetes Video eingestuft wurde.|
 |insights|Das insights-Objekt. Weitere Informationen finden Sie unter [insights](#insights).|
-|thumbnailId|Die Miniaturansicht-ID des Videos. Rufen Sie „Get-Thumbnail“ (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail)) auf, und übergeben Sie die Video-ID und „thumbnailId“, um die eigentliche Miniaturansicht zu erhalten.|
+|thumbnailId|Die Miniaturansicht-ID des Videos. Rufen Sie [Get-Thumbnail](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) auf, und übergeben Sie die Video-ID und „thumbnailId“, um die eigentliche Miniaturansicht zu erhalten.|
 |publishedUrl|Eine URL zum Streamen des Videos.|
 |publishedUrlProxy|Eine URL, über die das Video gestreamt werden kann (für Apple-Geräte).|
 |viewToken|Ein kurzlebiges Anzeigetoken für das Streamen des Videos.|
@@ -279,40 +279,24 @@ Beispiel:
 |instances|Eine Liste der Zeitbereiche, in denen dieses Stichwort angezeigt wurde (ein Stichwort kann mehrfach vorkommen).|
 
 ```json
-"keywords": [
 {
-    "id": 0,
-    "text": "office",
-    "confidence": 1.6666666666666667,
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:00.5100000",
-        "end": "00:00:02.7200000"
+    id: 0,
+    text: "technology",
+    confidence: 1,
+    language: "en-US",
+    instances: [{
+            adjustedStart: "0:05:15.782",
+            adjustedEnd: "0:05:16.249",
+            start: "0:05:15.782",
+            end: "0:05:16.249"
     },
     {
-        "start": "00:00:03.9600000",
-        "end": "00:00:12.2700000"
-    }
-    ]
-},
-{
-    "id": 1,
-    "text": "icons",
-    "confidence": 1.4,
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:03.9600000",
-        "end": "00:00:12.2700000"
-    },
-    {
-        "start": "00:00:13.9900000",
-        "end": "00:00:15.6100000"
-    }
-    ]
+            adjustedStart: "0:04:54.761",
+            adjustedEnd: "0:04:55.228",
+            start: "0:04:54.761",
+            end: "0:04:55.228"
+    }]
 }
-] 
 ```
 
 #### <a name="faces"></a>faces
@@ -322,7 +306,7 @@ Beispiel:
 |id|Die Gesichts-ID.|
 |name|Der Name des Gesichts. Möglich sind „Unknown #0“, ein identifizierter Prominenter oder eine vom Kunden trainierte Person.|
 |confidence|Die Zuverlässigkeit der Gesichtsidentifikation.|
-|Beschreibung|Eine Beschreibung des Prominenten. |
+|description|Eine Beschreibung des Prominenten. |
 |thumbnailId|Die ID der Miniaturansicht dieses Gesichts.|
 |knownPersonId|Bei einer bekannten Person die interne ID.|
 |referenceId|Bei einem Bing-Prominenten die Bing-ID.|
@@ -510,7 +494,7 @@ Markennamen von Unternehmen oder Produkten, die im Transkript der Spracherkennun
 |name|Der Name der Marke.|
 |referenceId | Das Suffix der Wikipedia-URL für die Marke. Beispielsweise ist „Target_Corporation“ das Suffix von [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |referenceUrl | Die Wikipedia-URL der Marke, falls vorhanden. Beispiel: [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation)
-|Beschreibung|Die Beschreibung der Marke.|
+|description|Die Beschreibung der Marke.|
 |tags|Eine Liste mit vordefinierten Tags, die dieser Marke zugeordnet wurden.|
 |confidence|Der Zuverlässigkeitswert der Video Indexer-Markenerkennung (0 - 1).|
 |instances|Eine Liste mit Zeitbereichen dieser Marke. Jede Instanz verfügt über ein brandType-Element, mit dem angegeben wird, ob diese Marke im Transkript oder in den OCR-Daten angezeigt wird.|

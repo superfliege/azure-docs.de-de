@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: anroth
 ms.openlocfilehash: 1ee6edbf49bbcd2014afcf29ed3b737168a3b5bc
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59046069"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Verwenden des Modells mit der Vorhersage-API
@@ -138,6 +138,6 @@ In dieser Anleitung haben Sie erfahren, wie Sie Bilder an Ihren benutzerdefinier
 
 * [Schnellstart: .NET SDK](csharp-tutorial.md)
 * [Schnellstart: Python SDK](python-tutorial.md)
-* [Schnellstart: Java-SDK](java-tutorial.md)
+* [Schnellstart: Java SDK](java-tutorial.md)
 * [Schnellstart: Node SDK](node-tutorial.md)
 * [Schnellstart: Go SDK](go-tutorial.md)

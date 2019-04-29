@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f8483eb0ce8f5ea890e453828d36afda61ef86f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 06566ab81b6af847a7eb174731105b7f43a7197f
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59256888"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680898"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Schnellstart
 
@@ -93,7 +93,7 @@ Befolgen Sie diese Anweisungen, um zu überprüfen, ob die nahtlose SSO ordnungs
 ![Azure-Portal: Bereich „Azure AD Connect“](./media/how-to-connect-sso-quick-start/sso10.png)
 
 >[!IMPORTANT]
-> Für das nahtlose einmalige Anmelden wird das Computerkonto `AZUREADSSOACC` in jeder AD-Gesamtstruktur in Ihrem lokalen Active Directory (AD) erstellt. Das Computerkonto `AZUREADSSOACC` muss aus Sicherheitsgründen stark geschützt werden. Nur Domänen-Admins sollten das Computerkonto verwalten können. Stellen Sie sicher, dass die Kerberos-Delegierung für das Computerkonto deaktiviert ist. Speichern Sie das Computerkonto in einer Organisationseinheit, in der es vor versehentlichem Löschen geschützt ist und auf die nur Domänenadministratoren zugreifen können.
+> Für das nahtlose einmalige Anmelden wird das Computerkonto `AZUREADSSOACC` in jeder AD-Gesamtstruktur in Ihrem lokalen Active Directory (AD) erstellt. Das Computerkonto `AZUREADSSOACC` muss aus Sicherheitsgründen stark geschützt werden. Nur Domänen-Admins sollten das Computerkonto verwalten können. Stellen Sie sicher, dass Kerberos-Delegierung für das Computerkonto deaktiviert ist und dass kein anderes Konto in Active Directory über Delegierungsberechtigungen für das `AZUREADSSOACC`-Computerkonto verfügt. Speichern Sie das Computerkonto in einer Organisationseinheit, in der es vor versehentlichem Löschen geschützt ist und auf die nur Domänenadministratoren zugreifen können.
 
 >[!NOTE]
 > Wenn Sie Pass-the-Hash- und Credential Theft Mitigation-Architekturen in Ihrer lokalen Umgebung verwenden, nehmen Sie entsprechende Änderungen vor, um sicherzustellen, dass das Computerkonto `AZUREADSSOACC` nicht im Quarantänecontainer landet. 

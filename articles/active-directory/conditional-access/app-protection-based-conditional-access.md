@@ -19,10 +19,10 @@ ms.author: joflore
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2250449c0ef342332945b80cb10cb9a02885b259
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496929"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>Erzwingen der App-Schutzrichtlinie für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs (Vorschauversion)
@@ -312,7 +312,7 @@ Für die Richtlinie zum bedingten Zugriff in diesem Schritt konfigurieren Sie fo
 
    - **App-Schutzrichtlinie erforderlich (Vorschau)**
 
-   - **Anfordern aller ausgewählten Kontrollen**   
+   - **Alle ausgewählten Kontrollen anfordern**   
  
      ![Bedingter Zugriff](./media/app-protection-based-conditional-access/13.png)
 
@@ -344,7 +344,7 @@ Für die Richtlinie zum bedingten Zugriff in diesem Schritt konfigurieren Sie fo
 
    - **App-Schutzrichtlinie erforderlich (Vorschau)**
 
-   - **Anfordern aller ausgewählten Kontrollen**   
+   - **Alle ausgewählten Kontrollen anfordern**   
  
      ![Bedingter Zugriff](./media/app-protection-based-conditional-access/13.png)
 

@@ -55,7 +55,7 @@ Im Rahmen des Verbindungsprozesses werden Verbindungen von virtuellen Azure-Comp
 Weitere Informationen zu Firewallregeln in SQL-Datenbank finden Sie unter [Übersicht über Firewallregeln für Azure SQL-Datenbank](../sql-database/sql-database-firewall-configure.md).
 
 > [!Note]
-> Zusätzlich zu den IP-Regeln verwaltet die Firewall virtuelle Netzwerkregeln. Virtuelle Netzwerkregeln basieren auf den Dienstendpunkten des virtuellen Netzwerks. Virtuelle Netzwerkregeln sollten den IP-Regeln in manchen Fällen vorgezogen werden. Weitere Informationen finden Sie unter [Virtual Network service endpoints and rules for Azure SQL Database (Dienstendpunkte und Regeln virtueller Netzwerke für Azure SQL)](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md).
+> Zusätzlich zu den IP-Regeln verwaltet die Firewall VNET-Regeln. VNET-Regeln basieren auf den VNET-Dienstendpunkten. VNET-Regeln sollten den IP-Regeln in manchen Fällen vorgezogen werden. Weitere Informationen finden Sie unter [Virtual Network service endpoints and rules for Azure SQL Database](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md) (VNET-Dienstendpunkte und -Regeln für Azure SQL-Datenbank).
 
 ## <a name="enable-database-authentication"></a>Aktivieren der Datenbankauthentifizierung
 SQL-Datenbank unterstützt zwei Authentifizierungsarten: die SQL Server-Authentifizierung und die Azure AD-Authentifizierung.
@@ -101,7 +101,7 @@ Die Konfigurationsschritte schließen die folgenden Verfahren zum Konfigurieren 
 
 - Erstellen und Auffüllen von Azure AD
 - Optional: Ordnen Sie die Active Directory-Instanz zu oder ändern Sie diejenige, die derzeit Ihrem Azure-Abonnement zugeordnet ist.
-- Erstellen Sie einen Azure Active Directory-Administrators für Azure SQL Server oder [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/).
+- Erstellen Sie einen Azure Active Directory-Administrators für Azure SQL-Datenbank oder [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/).
 - Konfigurieren der Clientcomputer
 - Erstellen eigenständiger Datenbankbenutzer in der Datenbank, die Azure AD-Identitäten zugeordnet sind
 - Herstellen einer Verbindung mit Ihrer Datenbank unter Verwendung von Azure AD-Identitäten

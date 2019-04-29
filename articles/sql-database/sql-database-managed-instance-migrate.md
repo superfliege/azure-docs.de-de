@@ -21,7 +21,7 @@ ms.locfileid: "56098356"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migration einer SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz
 
-Dieser Artikel enthält Informationen zu den Methoden, mit denen eine SQL Server 2005-Instanz (oder eine höhere Version) zu einer [verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md) migriert wird. Informationen zum Migrieren zu einem Singleton oder einem Pool für elastische Datenbanken finden Sie unter [Migrieren zu einem Singleton oder einer in einem Pool zusammengefassten Datenbank](sql-database-cloud-migrate.md). Weitere Informationen zum Migrieren von anderen Plattformen finden Sie im [Leitfaden zur Azure-Datenbankmigration](https://datamigration.microsoft.com/).
+Dieser Artikel enthält Informationen zu den Methoden, mit denen eine SQL Server 2005-Instanz (oder eine höhere Version) zu einer [verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md) migriert wird. Informationen zum Migrieren zu einer Einzel- oder Pooldatenbank finden Sie unter [Migrieren zu einer Einzel- oder Pooldatenbank](sql-database-cloud-migrate.md). Weitere Informationen zum Migrieren von anderen Plattformen finden Sie im [Leitfaden zur Azure-Datenbankmigration](https://datamigration.microsoft.com/).
 
 Die Datenbankmigration sieht im Allgemeinen folgendermaßen aus:
 
@@ -51,7 +51,7 @@ Wenn gemeldete Blockierungsprobleme vorliegen, die in der Bereitstellungsoption 
 
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>Bereitstellen für eine verwaltete Instanz mit optimaler Größe
 
-Verwaltete Instanzen sind auf lokale Workloads zugeschnitten, die zum Verschieben in die Cloud vorgesehen sind. Sie führen ein [neues Kaufmodell](sql-database-service-tiers-vcore.md) ein, das eine größere Flexibilität bei der Auswahl der richtigen Ressourcen für Ihre Workloads bietet. In der lokalen Umgebung sind Sie wahrscheinlich daran gewöhnt, diese Workloads mit physischen Kernen und E/A-Bandbreite zu dimensionieren. Das Erwerbsmodell für verwaltete Instanzen basiert auf virtuellen Kernen oder „V-Kernen“, wobei zusätzlicher Speicher und EA separat erhältlich sind. Das V-Kern-Modell ist eine einfachere Methode, um die Computeanforderungen in der Cloud mit dem, was Sie heute lokal verwenden, zu vergleichen. Mit diesem neuen Modell können Sie die Größe Ihrer Zielumgebung in der Cloud anpassen.
+Verwaltete Instanzen sind auf lokale Workloads zugeschnitten, die zum Verschieben in die Cloud vorgesehen sind. Sie führen ein [neues Kaufmodell](sql-database-service-tiers-vcore.md) ein, das eine größere Flexibilität bei der Auswahl der richtigen Ressourcen für Ihre Workloads bietet. In der lokalen Umgebung sind Sie wahrscheinlich daran gewöhnt, diese Workloads mit physischen Kernen und E/A-Bandbreite zu dimensionieren. Das Kaufmodell für verwaltete Instanzen basiert auf virtuellen Kernen oder „V-Kernen“, wobei zusätzlicher Speicher und EA separat erhältlich sind. Das V-Kern-Modell ist eine einfachere Methode, um die Computeanforderungen in der Cloud mit dem, was Sie heute lokal verwenden, zu vergleichen. Mit diesem neuen Modell können Sie die Größe Ihrer Zielumgebung in der Cloud anpassen.
 
 Im [Azure-Portal](sql-database-scale-resources.md) haben Sie die Möglichkeit, Compute- und Speicherressourcen zum Zeitpunkt der Bereitstellung auszuwählen und anschließend zu ändern, ohne dass es zu Downtime für Ihre Anwendung kommt:
 

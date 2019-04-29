@@ -5,29 +5,29 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 04/08/2019
 ms.author: iainfou
-ms.openlocfilehash: a20dfcd9e2ef12252235b74455964d115d9aef9b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 29180d6c1bb5f0991a4f33c3b7c9418f84d8260c
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181485"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59785902"
 ---
 # <a name="preview---secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Vorschauversion: Sicherer Datenverkehr zwischen Pods durch Netzwerkrichtlinien in Azure Kubernetes Service (AKS)
 
 Wenn Sie moderne, auf Microservices basierende Anwendungen in Kubernetes ausführen, können Sie steuern, welche Komponenten miteinander kommunizieren können. Bei der Festlegung, wie Datenverkehr zwischen Pods in einem AKS-Cluster (Azure Kubernetes Service) übermittelt werden kann, sollte das Prinzip der geringsten Rechte angewendet werden. Angenommen, Sie möchten den direkten Datenverkehr zu Back-End-Anwendungen blockieren. Mit dem Feature *Netzwerkrichtlinie* in Kubernetes können Sie die Regeln für eingehenden und ausgehenden Datenverkehr zwischen Pods in einem Cluster definieren.
 
-Calico, eine Open Source-Lösung für Netzwerke und Netzwerksicherheit von Tigera, verfügt über ein Modul für Netzwerkrichtlinien, mit dem Regeln für Kubernetes-Netzwerkrichtlinien implementiert werden können. In diesem Artikel wird veranschaulicht, wie Sie das Calico-Modul für Netzwerkrichtlinien installieren und Kubernetes-Netzwerkrichtlinien erstellen, um den Datenverkehrsfluss zwischen Pods in AKS zu steuern.
+In diesem Artikel wird veranschaulicht, wie Sie das Modul für Netzwerkrichtlinien installieren und Kubernetes-Netzwerkrichtlinien erstellen, um den Datenverkehrsfluss zwischen Pods in AKS zu steuern. Diese Funktion steht derzeit als Vorschau zur Verfügung.
 
 > [!IMPORTANT]
-> AKS-Previewfunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Vorschauversionen werden zum Sammeln von Feedback und Fehlern mithilfe unserer Community bereitgestellt. Allerdings werden sie vom technischen Support von Azure nicht unterstützt. Wenn Sie einen Cluster erstellen oder diese Features bereits vorhandenen Clustern hinzufügen, wird dieser Cluster erst dann unterstützt, wenn das Feature nicht mehr in der Vorschauphase ist und die allgemeine Verfügbarkeit erreicht ist.
+> AKS-Previewfunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Vorschauversionen werden zum Sammeln von Feedback und Fehlern mithilfe unserer Community bereitgestellt. Allerdings werden sie vom technischen Support von Azure nicht unterstützt. Wenn Sie einen Cluster erstellen oder diese Features zu einem vorhandenen Cluster hinzufügen, wird der entsprechende Cluster erst dann unterstützt, wenn das Feature sich nicht mehr in der Vorschau befindet und in die allgemeine Verfügbarkeit übergegangen ist.
 >
-> Wenn Sie Probleme mit Preview-Funktionen haben, öffnen Sie [ein Problemticket im GitHub-Repository von AKS ][aks-github] mit dem Namen der Preview-Funktion im Fehlertitel.
+> Wenn Sie Probleme mit Vorschaufunktionen haben, [eröffnen Sie ein Ticket im GitHub-Repository von AKS ][aks-github], und geben Sie den Namen des Vorschaufeatures im Fehlertitel an.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Es muss die Azure CLI-Version 2.0.56 oder höher installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
+Azure CLI-Version 2.0.61 oder höher muss installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
 
 Um einen AKS-Cluster zu erstellen, für den Netzwerkrichtlinien verwendet werden können, aktivieren Sie zuerst ein Featureflag für Ihr Abonnement. Um das Featureflag *EnableNetworkPolicy* zu registrieren, verwenden Sie den Befehl [az feature register][az-feature-register] wie im folgenden Beispiel gezeigt:
 
@@ -51,7 +51,35 @@ az provider register --namespace Microsoft.ContainerService
 
 Standardmäßig können alle Pods in einem AKS-Cluster Datenverkehr ohne Einschränkungen senden und empfangen. Zur Verbesserung der Sicherheit können Sie Regeln definieren, die den Datenverkehrsfluss steuern. Back-End-Anwendungen werden häufig nur für erforderliche Front-End-Dienste verfügbar gemacht. Oder Datenbankkomponenten sind nur für die Anwendungsebenen zugänglich, die eine Verbindung damit herstellen.
 
-Netzwerkrichtlinien sind eine Kubernetes-Ressource, mit der Sie den Datenverkehrsfluss zwischen Pods steuern können. Anhand von Einstellungen wie zugewiesene Bezeichnungen, Namespace oder Port für den Datenverkehr können Sie Datenverkehr zulassen oder ablehnen. Netzwerkrichtlinien werden als YAML-Manifeste definiert. Diese Richtlinien können Teil eines umfassenderen Manifests sein, mit dem auch eine Bereitstellung oder ein Dienst erstellt wird.
+Netzwerkrichtlinie ist eine Kubernetes-Spezifikation, die Zugriffsrichtlinien für die Kommunikation zwischen Pods definiert. Mithilfe von Netzwerkrichtlinien definieren Sie eine geordnete Menge an Regeln zum Senden und Empfangen von Datenverkehr und wenden sie auf eine Sammlung von Pods an, die einem oder mehreren Bezeichnungsselektoren entsprechen.
+
+Diese Regeln der Netzwerkrichtlinien sind als YAML-Manifeste definiert. Netzwerkrichtlinien können Teil eines umfassenderen Manifests sein, mit dem auch eine Bereitstellung oder ein Dienst erstellt wird.
+
+### <a name="network-policy-options-in-aks"></a>Optionen für Netzwerkrichtlinien in AKS
+
+Azure stellt zwei Verfahren zum Implementieren von Netzwerkrichtlinien bereit. Sie wählen eine Netzwerkrichtlinienoption beim Erstellen eines AKS-Clusters aus. Die Richtlinienoption kann nach dem Erstellen des Clusters nicht geändert werden:
+
+* Die eigene Richtlinienimplementierung von Azure, die als *Azure-Netzwerkrichtlinien* bezeichnet wird.
+* *Calico-Netzwerkrichtlinien*, eine von [Tigera][tigera] gegründete Open-Source-Netzwerk- und -Netzwerkrichtlinienlösung.
+
+Beide Implementierungen verwenden Linux *IPTables*, um die angegebenen Richtlinien durchzusetzen. Richtlinien werden in Mengen von zulässigen und unzulässigen IP-Paaren übersetzt. Diese Paare werden anschließend als IPTable-Filterregeln programmiert.
+
+Netzwerkrichtlinien funktionieren nur mit der Option (erweitert) von Azure CNI. Implementierung unterscheidet sich für die zwei Optionen:
+
+* *Azure Netzwerkrichtlinien*: Das Azure CNI richtet eine Bridge im VM-Host für knoteninterne Netzwerke ein. Die Filterregeln werden angewendet, wenn die Pakete über die Bridge übergeben werden.
+* *Calico-Netzwerkrichtlinien*: Das Azure CNI richtet lokale Kernelrouten für den knoteninternen Datenverkehr ein. Die Richtlinien werden auf die Netzwerkschnittstelle des Pods angewendet.
+
+### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Unterschiede zwischen Azure- und Calico-Richtlinien und ihre Funktionen
+
+| Funktion                               | Azure                      | Calico                      |
+|------------------------------------------|----------------------------|-----------------------------|
+| Unterstützte Plattformen                      | Linux                      | Linux                       |
+| Unterstützte Netzwerkoptionen             | Azure CNI                  | Azure CNI                   |
+| Compliance mit Kubernetes-Spezifikation | Alle Richtlinientypen werden unterstützt |  Alle Richtlinientypen werden unterstützt |
+| Zusätzliche Funktionen                      | Keine                       | Erweitertes Richtlinienmodell, das aus globaler Netzwerkrichtlinie, globalem Netzwerksatz und Hostendpunkt besteht. Weitere Informationen zur Verwendung der `calicoctl` CLI zum Verwalten dieser erweiterten Funktionen finden Sie in der [calicoctl-Benutzerreferenz][calicoctl]. |
+| Support                                  | Unterstützt durch das Azure-Support- und Engineering-Team | Calico-Communitysupport. Weitere Informationen über zusätzlichen kostenpflichtigen Support finden Sie unter [Project Calico support options][calico-support] (Supportoptionen für Projekt „Calico“). |
+
+## <a name="create-an-aks-cluster-and-enable-network-policy"></a>Erstellen eines AKS-Clusters und Aktivieren der Netzwerkrichtlinie
 
 Um Netzwerkrichtlinien in Aktion zu sehen, erstellen Sie eine Richtlinie, die Datenverkehr definiert, und erweitern sie dann:
 
@@ -59,9 +87,7 @@ Um Netzwerkrichtlinien in Aktion zu sehen, erstellen Sie eine Richtlinie, die Da
 * Lassen Sie Datenverkehr basierend auf Podbezeichnungen zu.
 * Lassen Sie Datenverkehr basierend auf dem Namespace zu.
 
-## <a name="create-an-aks-cluster-and-enable-network-policy"></a>Erstellen eines AKS-Clusters und Aktivieren der Netzwerkrichtlinie
-
-Die Netzwerkrichtlinie kann nur aktiviert werden, wenn der Cluster erstellt wird. Ohne einen vorhandenen AKS-Cluster können Sie keine Netzwerkrichtlinie aktivieren. 
+Erstellen wir zunächst einen AKS-Cluster, der Netzwerkrichtlinie unterstützt. Die Netzwerkrichtlinienfunktion kann nur aktiviert werden, wenn der Cluster erstellt wird. Ohne einen vorhandenen AKS-Cluster können Sie keine Netzwerkrichtlinie aktivieren.
 
 Um eine Netzwerkrichtlinie mit einem AKS-Cluster zu verwenden, müssen Sie das [Azure CNI-Plug-In][azure-cni] verwenden und eigene virtuelle Netzwerke und Subnetze definieren. Detaillierte Informationen zur Planung der erforderlichen Subnetzadressbereiche finden Sie unter [Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service (AKS)][use-advanced-networking].
 
@@ -71,6 +97,7 @@ Das folgende Beispielskript:
 * Erstellt einen Azure AD-Dienstprinzipal (Azure Active Directory) für die Verwendung mit dem AKS-Cluster.
 * Weist dem Dienstprinzipal des AKS-Clusters in einen virtuellen Netzwerk *Mitwirkender*-Berechtigungen zu.
 * Erstellt einen AKS-Cluster im definierten virtuellen Netzwerk und aktiviert die Netzwerkrichtlinie.
+    * Die *Azure*-Netzwerkrichtlinienoption wird verwendet. Um stattdessen Calico als Netzwerkrichtlinienoption zu verwenden, verwenden Sie den Parameter `--network-policy calico`.
 
 Geben Sie Ihr eigenes sicheres *SP_PASSWORD* ein. Sie können die Variablen *RESOURCE_GROUP_NAME* und *CLUSTER_NAME* ersetzen:
 
@@ -122,7 +149,7 @@ az aks create \
     --vnet-subnet-id $SUBNET_ID \
     --service-principal $SP_ID \
     --client-secret $SP_PASSWORD \
-    --network-policy calico
+    --network-policy azure
 ```
 
 Die Erstellung des Clusters dauert einige Minuten. Wenn der Cluster bereit ist, können Sie `kubectl` mit dem Befehl [az aks get-credentials][az-aks-get-credentials] konfigurieren, um die Verbindung mit Ihrem Kubernetes-Cluster herzustellen. Mit diesem Befehl werden die Anmeldeinformationen heruntergeladen, und die Kubernetes-Befehlszeilenschnittstelle wird für deren Verwendung konfiguriert:
@@ -454,6 +481,9 @@ Weitere Informationen zur Verwendung von Richtlinien finden Sie unter [Network P
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [policy-rules]: https://kubernetes.io/docs/concepts/services-networking/network-policies/#behavior-of-to-and-from-selectors
 [aks-github]: https://github.com/azure/aks/issues]
+[tigera]: https://www.tigera.io/
+[calicoctl]: https://docs.projectcalico.org/v3.5/reference/calicoctl/
+[calico-support]: https://www.projectcalico.org/support
 
 <!-- LINKS - internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli

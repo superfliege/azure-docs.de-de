@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tulasim
 ms.openlocfilehash: 85b0004288a06a834b61f6e3d50017d35d66ce86
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59263875"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>Tutorial: Erstellen eines QnA-Bots mit Azure Bot Service v4
@@ -87,7 +87,7 @@ Erstellen Sie einen Bot als Clientanwendung für die Wissensdatenbank.
 ## <a name="related-to-qna-maker-bots"></a>In Bezug auf QnA Maker-Bots
 
 * QnA Maker-Hilfebot, der im QnA Maker-Portal verwendet wird, ist als [Bot-Beispel](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-support-bot) verfügbar.
-    ![Das Symbol des QnA Maker-Hilfebots ist ein roter Roboter](../media/qnamaker-tutorials-create-bot/answer-bot-icon.PNG)
+    ![QnA Maker-Hilfebotsymbol ist ein roter Roboter](../media/qnamaker-tutorials-create-bot/answer-bot-icon.PNG)
 * [Bots für das Gesundheitswesen](https://docs.microsoft.com/HealthBot/qna_model_howto) verwenden QnA Maker als eines ihrer [Sprachmodelle](https://docs.microsoft.com/HealthBot/qna_model_howto).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
@@ -111,5 +111,5 @@ Wenn Sie keine neue Ressourcengruppe erstellt haben, müssen Sie die dem Bot zug
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Verwalten Ihrer Wissensdatenbank](https://qnamaker.ai)
+- [Verwalten Ihrer Knowledge Base](https://qnamaker.ai)
 - [Aktivieren Ihres Bots in verschiedenen Kanälen](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels)

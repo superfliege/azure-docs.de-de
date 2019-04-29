@@ -1,6 +1,6 @@
 ---
 title: 'Azure SQL-Datenbank: Funktionsvergleich | Microsoft-Dokumentation'
-description: Dieser Artikel vergleicht die Features von SQL Server, die in verschiedenen Varianten der Azure SQL Datenbank verfügbar sind.
+description: Dieser Artikel vergleicht die Features von SQL Server, die in verschiedenen Varianten von Azure SQL-Datenbank verfügbar sind.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -146,7 +146,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 |Bedrohungserkennung|  [Ja](sql-database-threat-detection.md)|[Ja](sql-database-managed-instance-threat-detection.md)|
 | [Ablaufverfolgungsflags](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | Nein  | Nein  |
 | [Variables](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | Ja | Ja |
-| [Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | Ja, nur die Diensttarife „Universell“ und „Unternehmenskritisch“| [Ja](transparent-data-encryption-azure-sql.md) |
+| [Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | Ja, nur die Dienstebenen „Universell“ und „Unternehmenskritisch“| [Ja](transparent-data-encryption-azure-sql.md) |
 [VNet](../virtual-network/virtual-networks-overview.md) | Teilweise – siehe [VNET-Endpunkte](sql-database-vnet-service-endpoint-rule-overview.md) | Ja, nur Resource Manager-Modell |
 | [Windows Server-Failoverclustering](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) | [Hochverfügbarkeit](sql-database-high-availability.md) ist in jeder Datenbank enthalten. Informationen zur Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md). | [Hochverfügbarkeit](sql-database-high-availability.md) ist in jeder Datenbank enthalten. Informationen zur Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md). |
 | [XML-Indizes](https://docs.microsoft.com/sql/t-sql/statements/create-xml-index-transact-sql) | Ja | Ja |

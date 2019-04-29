@@ -1,5 +1,5 @@
 ---
-title: Schützen der Anwendung für OPC UA-Clients und OPC UA-Server per OPC UA-Zertifikatverwaltung von Azure IoT | Microsoft-Dokumentation
+title: Schützen der Anwendung für OPC UA-Clients und OPC UA-Server mithilfe von OPC Vault – Azure | Microsoft-Dokumentation
 description: Schützen Sie die Anwendung für OPC UA-Clients und OPC UA-Server mit einem neuen Schlüsselpaar und Zertifikat über OPC Vault.
 author: dominicbetts
 ms.author: dobett
@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: bfa6bdf6a54cb5e54087055988e9682565667105
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 5ba2dba02585598b3797dd1b490976ebe34b489e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759203"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59495293"
 ---
 # <a name="secure-opc-ua-client-and-opc-ua-server-application"></a>Schützen der Anwendung für OPC UA-Clients und OPC UA-Server 
-Die OPC UA-Zertifikatverwaltung von Azure IoT, auch als OPC Vault bezeichnet, ist ein Microservice, mit dem der Zertifikatlebenszyklus für OPC UA-Server- und -Clientanwendungen in der Cloud konfiguriert, registriert und verwaltet werden kann. In diesem Artikel erfahren Sie, wie Sie die Anwendung für OPC UA-Clients und OPC UA-Server mit einem neuen Schlüsselpaar und Zertifikat über OPC Vault schützen.
+OPC Vault ist ein Microservice, mit dem der Zertifikatlebenszyklus für OPC UA-Server- und -Clientanwendungen in der Cloud konfiguriert, registriert und verwaltet werden kann. In diesem Artikel erfahren Sie, wie Sie eine Anwendung für OPC UA-Clients und OPC UA-Server mit einem neuen Schlüsselpaar und Zertifikat über OPC Vault schützen.
 
 Während des folgenden Einrichtungsvorgangs testet OPC Client die Konnektivität mit OPC PLC. Standardmäßig ist die Konnektivität nicht möglich, da beide Komponenten noch nicht mit den richtigen Zertifikaten bereitgestellt wurden. In diesem Workflow werden die selbstsignierten Zertifikate der OPC UA-Komponenten nicht verwendet und über OPC Vault signiert. Weitere Informationen finden Sie im vorherigen [Testbed](howto-opc-vault-deploy-existing-client-plc-communication.md). Stattdessen stellt dieses Testbed die Komponenten mit einem neuen Zertifikat sowie mit einem neuen privaten Schlüssel bereit, die beide von OPC Vault generiert werden. Einige Hintergrundinformationen zur OPC UA-Sicherheit finden Sie in diesem [Whitepaper](https://opcfoundation.org/wp-content/uploads/2014/05/OPC-UA_Security_Model_for_Administrators_V1.00.pdf). Die vollständigen Informationen finden Sie in der OPC UA-Spezifikation.
 
@@ -118,7 +118,7 @@ opcplc-123456 | [13:40:09 INF] Activating the new application certificate with t
 
 Das Anwendungszertifikat und der private Schlüssel werden jetzt im Anwendungszertifikatsspeicher installiert und von der OPC UA-Anwendung verwendet.
 
-Vergewissern Sie sich, dass die Verbindung zwischen OPC-Client und OPC PLC erfolgreich hergestellt werden kann und der OPC-Client erfolgreich Daten aus OPC PLC lesen kann. Die folgende Ausgabe sollte in der Protokollausgabe des OPC-Clients angezeigt werden:
+Vergewissern Sie sich, dass die Verbindung zwischen dem OPC-Client und OPC PLC erfolgreich hergestellt werden kann und der OPC-Client erfolgreich Daten aus OPC PLC lesen kann. Die folgende Ausgabe sollte in der Protokollausgabe des OPC-Clients angezeigt werden:
 ```
 opcclient-123456 | [13:40:12 INF] Create secured session for endpoint URI 'opc.tcp://opcplc-123456:50000/' with timeout of 10000 ms.
 opcclient-123456 | [13:40:12 INF] Session successfully created with Id ns=3;i=941910499.
@@ -132,7 +132,7 @@ opcclient-123456 | [13:40:12 INF] Execute 'OpcClient.OpcTestAction' action on no
 opcclient-123456 | [13:40:12 INF] Action (ActionId: 000 ActionType: 'OpcTestAction', Endpoint: 'opc.tcp://opcplc-123456:50000/' Node 'i=2258') completed successfully
 opcclient-123456 | [13:40:12 INF] Value (ActionId: 000 ActionType: 'OpcTestAction', Endpoint: 'opc.tcp://opcplc-123456:50000/' Node 'i=2258'): 10/21/2018 13:40:12
 ```
-Wenn diese Ausgabe angezeigt wird, ist dies ein Hinweis darauf, dass OPC Client von OPC PLC jetzt als vertrauenswürdig angesehen wird (und umgekehrt). Beide verfügen jetzt über Zertifikate, die von einer Zertifizierungsstelle signiert wurden, und beide sehen die von der Zertifizierungsstelle signierten Zertifikate als vertrauenswürdig an.
+Wenn diese Ausgabe angezeigt wird, ist dies ein Hinweis darauf, dass der OPC Client von OPC PLC jetzt als vertrauenswürdig angesehen wird (und umgekehrt). Beide verfügen jetzt über Zertifikate, die von einer Zertifizierungsstelle signiert wurden, und beide sehen die von der Zertifizierungsstelle signierten Zertifikate als vertrauenswürdig an.
 
 ### <a name="a-testbed-for-opc-publisher"></a>Testbed für OPC Publisher ###
 
@@ -145,7 +145,7 @@ docker-compose -f testbed.yml up
 
 **Überprüfung**
 - Vergewissern Sie sich, dass Daten an den IoTHub gesendet werden, den Sie durch Festlegen von `_HUB_CS` mit [Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) oder [iothub-explorer](https://github.com/Azure/iothub-explorer) konfiguriert haben.
-- OPC Test-Client verwendet direkte IoTHub-Methodenaufrufe und OPC-Methodenaufrufe, um OPC Publisher so zu konfigurieren, dass Knoten von OPC Testserver aus veröffentlicht bzw. deinstalliert werden.
+- OPC Test-Client verwendet direkte IoTHub-Methodenaufrufe und OPC-Methodenaufrufe, um OPC Publisher so zu konfigurieren, dass Knoten vom OPC Testserver aus veröffentlicht bzw. deinstalliert werden.
 - Beobachten Sie die Ausgabe auf Fehlermeldungen.
 
 ## <a name="next-steps"></a>Nächste Schritte

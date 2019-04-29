@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a5548e7a5f60d9882fdfb4fb6eb777ab993e121
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: bede53ef2bc05750be21f831fc0cb790a001c6c5
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58916000"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549336"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Erweiterte Optionen für die Zertifikatsignatur im SAML-Token für Katalog-Apps in Azure Active Directory
 
@@ -49,7 +49,7 @@ Azure AD unterstützt zwei Signaturalgorithmen bzw. sichere Hashalgorithmen (SHA
 
 * **SHA-1**: Dieser Algorithmus ist älter und gilt als weniger sicher als SH-256. Wenn eine Anwendung nur diesen Signaturalgorithmus unterstützt, können Sie diese Option in der Dropdownliste **Signaturalgorithmus** auswählen. Azure AD signiert die SAML-Antwort dann mit dem SHA-1-Algorithmus.
 
-## <a name="change-the-certificate-signing-options-and-certificate-signing-algorithm"></a>Ändern der Zertifikatsignaturoptionen und des Zertifikatsignaturalgorithmus
+## <a name="change-certificate-signing-options-and-signing-algorithm"></a>Ändern der Zertifikatsignaturoptionen und des -signaturalgorithmus
 
 Wählen Sie die gewünschte Anwendung aus, um ihre SAML-Zertifikatsignaturoptionen und den Zertifikatsignaturalgorithmus zu ändern:
 

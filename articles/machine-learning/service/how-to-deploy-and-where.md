@@ -12,10 +12,10 @@ ms.reviewer: larryfr
 ms.date: 04/02/2019
 ms.custom: seoapril2019
 ms.openlocfilehash: a6ef53d56fa293791658b37b16cbaff94aee6ef3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59280892"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst
@@ -32,7 +32,7 @@ Verwenden Sie das Azure Machine Learning SDK, um Ihr trainiertes Modell an den f
 | [Azure Machine Learning Compute (amlcompute)](#azuremlcompute) | Batchrückschluss | Führen Sie eine Batchvorhersage für serverloses Computing aus. Unterstützt virtuelle Computer mit normaler und niedriger Priorität. |
 | [Azure Container Instances (ACI)](#aci) | Testen | Gut geeignet für Entwicklungs- und Testzwecke. **Nicht geeignet für Produktionsworkloads.** |
 | [Azure IoT Edge](#iotedge) | (Vorschauversion) IoT-Modul | Stellen Sie Modelle auf IoT-Geräten bereit. Rückschlüsse erfolgen auf dem Gerät. |
-| [Field-Programmable Gate Array (FPGA)](#fpga) | (Vorschauversion) Webdienst | Extrem geringe Wartezeit für die Interferenzierung in Echtzeit. |
+| [Field Programmable Gate Array (FPGA)](#fpga) | (Vorschauversion) Webdienst | Extrem geringe Wartezeit für die Interferenzierung in Echtzeit. |
 
 ## <a name="deployment-workflow"></a>Bereitstellungsworkflow
 
@@ -252,7 +252,7 @@ Je nach dem Computeziel, auf dem Sie die Bereitstellung vornehmen, unterscheidet
 | [Azure ML Compute](#azuremlcompute) | Webdienst (Batchrückschluss)| Führen Sie eine Batchvorhersage für serverloses Computing aus. Unterstützt virtuelle Computer mit normaler und niedriger Priorität. |
 | [Azure Container Instances (ACI)](#aci) | Webdienst (Entwicklung/Test)| Gut geeignet für Entwicklungs- und Testzwecke. **Nicht geeignet für Produktionsworkloads.** |
 | [Azure IoT Edge](#iotedge) | (Vorschauversion) IoT-Modul | Stellen Sie Modelle auf IoT-Geräten bereit. Rückschlüsse erfolgen auf dem Gerät. |
-| [Field-Programmable Gate Array (FPGA)](#fpga) | (Vorschauversion) Webdienst | Extrem geringe Wartezeit für die Interferenzierung in Echtzeit. |
+| [Field Programmable Gate Array (FPGA)](#fpga) | (Vorschauversion) Webdienst | Extrem geringe Wartezeit für die Interferenzierung in Echtzeit. |
 
 > [!IMPORTANT]
 > Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS) wird zurzeit beim Bereitstellen eines Modells als Webdienst nicht unterstützt.
@@ -385,8 +385,8 @@ aks_target.wait_for_completion(True)
 
 Weitere Informationen zum Erstellen eines AKS-Clusters außerhalb des Azure Machine Learning SDK finden Sie in den folgenden Artikeln:
 
-* [Erstellen eines AKS-Clusters](https://docs.microsoft.com/cli/azure/aks?toc=%2Fen-us%2Fazure%2Faks%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
-* [Erstellen eines AKS-Clusters (Portal)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
+* [az aks create](https://docs.microsoft.com/cli/azure/aks?toc=%2Fen-us%2Fazure%2Faks%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
+* [Schnellstart: Bereitstellen eines AKS-Clusters (Azure Kubernetes Service) über das Azure-Portal](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
 
 #### <a name="deploy-the-image"></a>Bereitstellen des Image
 
@@ -643,10 +643,10 @@ Weitere Informationen finden Sie in der Referenzdokumentation zu [WebService.del
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Problembehandlung für Bereitstellungen](how-to-troubleshoot-deployment.md)
-* [Sichere Azure Machine Learning-Webdienste mit SSL](how-to-secure-web-service.md)
-* [Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells](how-to-consume-web-service.md)
-* [Ausführen von Batchvorhersagen](how-to-run-batch-predictions.md)
+* [Problembehandlung von Bereitstellungen von Azure Machine Learning Service mit AKS und ACI](how-to-troubleshoot-deployment.md)
+* [Secure Azure Machine Learning web services with SSL (Sichere Azure Machine Learning-Webdienste mit SSL)](how-to-secure-web-service.md)
+* [Consume a ML Model deployed as a web service (Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells)](how-to-consume-web-service.md).
+* [How to run batch predictions (Ausführen von Batchvorhersagen)](how-to-run-batch-predictions.md)
 * [Überwachen Ihrer Azure Machine Learning-Modelle mit Application Insights](how-to-enable-app-insights.md)
 * [Sammeln von Daten für Modelle in der Produktion](how-to-enable-data-collection.md)
 * [SDK für Azure Machine Learning Service](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)

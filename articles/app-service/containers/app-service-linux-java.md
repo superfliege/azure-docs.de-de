@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 71632b3846a5dac39d7827c874367bd9802574f8
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 5c9f70650f518c72a75d9a7826e7cbc30a95a00c
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803524"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680875"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Java-Entwicklerleitfaden für App Service unter Linux
 
@@ -28,9 +28,9 @@ Dieser Leitfaden enthält die wichtigsten Konzepte und Anweisungen für Java-Ent
 
 ## <a name="deploying-your-app"></a>Bereitstellen Ihrer App
 
-Sie können das Maven-Plug-In zum Bereitstellen von JAR- und WAR-Dateien verwenden. Weitere Informationen zum Maven-Plug-In finden Sie in [dieser Dokumentation](https://docs.microsoft.com/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme?view=azure-java-stable).
+Sie können das [Maven-Plug-In für Azure App Service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) zum Bereitstellen von JAR- und WAR-Dateien verwenden. Die Bereitstellung mit beliebten IDEs wird außerdem mit [Azure Toolkit für IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij) oder [Azure Toolkit für Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse) unterstützt.
 
-Wenn Sie nicht Maven verwenden, hängt Ihre Bereitstellungsmethode von Ihrem Archivtyp ab:
+In allen anderen Fällen hängt Ihre Bereitstellungsmethode von Ihrem Archivtyp ab:
 
 - Um WAR-Dateien in Tomcat bereitzustellen, verwenden Sie den `/api/wardeploy/`-Endpunkt, um Ihre Archivdatei mit POST zu veröffentlichen. Weitere Informationen zu dieser API finden Sie in [dieser Dokumentation](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file).
 - Um JAR-Dateien in den Java SE-Images bereitzustellen, verwenden Sie den `/api/zipdeploy/`-Endpunkt der Kudu-Website. Weitere Informationen zu dieser API finden Sie in [dieser Dokumentation](https://docs.microsoft.com/azure/app-service/deploy-zip#rest).
@@ -69,43 +69,50 @@ Weitere Informationen finden Sie unter [Streaming mit der Azure-Befehlszeilensch
 
 ### <a name="app-logging"></a>App-Protokollierung
 
-Aktivieren Sie die [Anwendungsprotokollierung](/azure/app-service/troubleshoot-diagnostic-logs#enablediag) über das Azure-Portal oder die [Azure-Befehlszeilenschnittstelle](/cli/azure/webapp/log#az-webapp-log-config), um App Service so zu konfigurieren, dass die Streams mit der Standardkonsolenausgabe und den Standardkonsolenfehlern Ihrer Anwendung in das lokale Dateisystem oder Azure Blob Storage geschrieben werden. Die Protokollierung in der lokalen App Service-Dateisysteminstanz wird 12 Stunden nach der Konfiguration deaktiviert. Wenn Sie eine längere Beibehaltung benötigen, konfigurieren Sie die Anwendung für die Ausgabe in einen Blob Storage-Container.
+Aktivieren Sie die [Anwendungsprotokollierung](/azure/app-service/troubleshoot-diagnostic-logs#enablediag) über das Azure-Portal oder die [Azure-Befehlszeilenschnittstelle](/cli/azure/webapp/log#az-webapp-log-config), um App Service so zu konfigurieren, dass die Streams mit der Standardkonsolenausgabe und den Standardkonsolenfehlern Ihrer Anwendung in das lokale Dateisystem oder Azure Blob Storage geschrieben werden. Die Protokollierung in der lokalen App Service-Dateisysteminstanz wird 12 Stunden nach der Konfiguration deaktiviert. Wenn Sie eine längere Beibehaltung benötigen, konfigurieren Sie die Anwendung für die Ausgabe in einen Blob Storage-Container. Ihre Java- und Tomcat-App-Protokolle befinden sich im Verzeichnis `/home/LogFiles/Application/`.
 
 Wenn Ihre Anwendung [Logback](https://logback.qos.ch/) oder [Log4j](https://logging.apache.org/log4j) für die Ablaufverfolgung verwendet, können Sie diese Ablaufverfolgungen mithilfe der Konfigurationsanweisungen für das Protokollierungsframework unter [Untersuchen von Java-Ablaufverfolgungsprotokollen in Application Insights](/azure/application-insights/app-insights-java-trace-logs) zur Überprüfung an Azure Application Insights weiterleiten.
 
+### <a name="troubleshooting-tools"></a>Problembehandlungstools
+
+Die integrierten Java-Images basieren auf dem [Alpine Linux](https://alpine-linux.readthedocs.io/en/latest/getting_started.html)-Betriebssystem. Verwenden Sie den `apk`-Paket-Manager zur Installation von Tools oder Befehlen zur Problembehandlung.
+
 ## <a name="customization-and-tuning"></a>Anpassung und Optimierung
 
-Azure App Service für Linux unterstützt eine sofort durchführbare Optimierung und Anpassung über das Azure-Portal und die CLI. Lesen Sie die folgenden Artikel zur nicht Java-spezifischen Web-App-Konfiguration:
+Azure App Service für Linux unterstützt eine sofort verfügbare Optimierung und Anpassung über das Azure-Portal und die CLI. Lesen Sie die folgenden Artikel zur nicht Java-spezifischen Web-App-Konfiguration:
 
 - [Konfigurieren von App Service-Einstellungen](/azure/app-service/web-sites-configure?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [Einrichten einer benutzerdefinierten Domäne](/azure/app-service/app-service-web-tutorial-custom-domain?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [Aktivieren von SSL](/azure/app-service/app-service-web-tutorial-custom-ssl?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [Hinzufügen eines CDN](/azure/cdn/cdn-add-to-web-app?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [Konfigurieren der Kudu-Website](https://github.com/projectkudu/kudu/wiki/Configurable-settings#linux-on-app-service-settings)
 
 ### <a name="set-java-runtime-options"></a>Festlegen von Java-Runtimeoptionen
 
-Um reservierten Arbeitsspeicher oder andere JVM-Runtimeoptionen in den Tomcat- und Java SE-Umgebungen einzustellen, legen Sie die JAVA_OPTS wie unten gezeigt als [Anwendungseinstellung](/azure/app-service/web-sites-configure#app-settings) fest. App Service für Linux übergibt diese Einstellung beim Start als Umgebungsvariable an die Java-Runtime.
+Um reservierten Arbeitsspeicher oder andere JVM-Runtimeoptionen in den Tomcat- und Java SE-Umgebungen einzustellen, erstellen Sie mit den Optionen eine [Anwendungseinstellung](/azure/app-service/web-sites-configure#app-settings) mit dem Namen `JAVA_OPTS`. App Service für Linux übergibt diese Einstellung beim Start als Umgebungsvariable an die Java-Runtime.
 
-Erstellen Sie im Azure-Portal unter **Anwendungseinstellungen** für die Web-App eine neue App-Einstellung namens `JAVA_OPTS`, welche die zusätzlichen Einstellungen enthält, z.B. `$JAVA_OPTS -Xms512m -Xmx1204m`.
+Erstellen Sie im Azure-Portal unter **Anwendungseinstellungen** für die Web-App eine neue App-Einstellung namens `JAVA_OPTS`, welche die zusätzlichen Einstellungen enthält, z.B. `-Xms512m -Xmx1204m`.
 
-Um die App-Einstellung über das Azure App Service-Linux-Maven-Plug-In zu konfigurieren, fügen Sie Einstellungs-/Werttags im Azure-Plug-In-Abschnitt hinzu. Im folgenden Beispiel werden bestimmte Mindest- und Höchstwerte für die Java-Heapgröße festgelegt:
+Um die App-Einstellung über das Maven-Plug-In zu konfigurieren, fügen Sie Einstellungs-/Werttags im Azure-Plug-In-Abschnitt hinzu. Im folgenden Beispiel werden bestimmte Mindest- und Höchstwerte für die Java-Heapgröße festgelegt:
 
 ```xml
 <appSettings>
     <property>
         <name>JAVA_OPTS</name>
-        <value>$JAVA_OPTS -Xms512m -Xmx1204m</value>
+        <value>-Xms512m -Xmx1204m</value>
     </property>
 </appSettings>
 ```
 
 Entwickler, die eine einzige Anwendung mit einem Bereitstellungsslot in ihrem App Service-Plan ausführen, können die folgenden Optionen verwenden:
 
-- B1- und S1-Instanzen: -Xms1024m -Xmx1024m
-- B2- und S2-Instanzen: -Xms3072m -Xmx3072m
-- B3- und S3-Instanzen: -Xms6144m -Xmx6144m
+- B1- und S1-Instanzen: `-Xms1024m -Xmx1024m`
+- B2- und S2-Instanzen: `-Xms3072m -Xmx3072m`
+- B3- und S3-Instanzen: `-Xms6144m -Xmx6144m`
 
 Überprüfen Sie beim Optimieren Ihrer Anwendungsheapeinstellungen Ihre App Service-Plandetails, und berücksichtigen Sie mehrere Anwendungs- und Bereitstellungsslotanforderungen, um die optimale Zuordnung von Arbeitsspeicher zu ermitteln.
+
+Wenn Sie eine JAR-Anwendung bereitstellen, sollte sie den Namen `app.jar` tragen, damit das integrierte Image Ihre App ordnungsgemäß identifizieren kann. (Das Maven-Plug-In nimmt diese Umbenennung automatisch vor.) Wenn Sie Ihre JAR-Datei nicht in `app.jar` umbenennen möchten, können Sie ein Shellskript mit dem Befehl zum Ausführen Ihrer JAR-Datei hochladen. Fügen Sie anschließend den vollständigen Pfad zu diesem Skript in das Textfeld [Startdatei](https://docs.microsoft.com/en-us/azure/app-service/containers/app-service-linux-faq#startup-file) im Abschnitt „Konfiguration“ des Portals ein.
 
 ### <a name="turn-on-web-sockets"></a>Aktivieren von Websockets
 
@@ -126,7 +133,7 @@ az webapp start -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME}
 
 ### <a name="set-default-character-encoding"></a>Festlegen der Standardzeichencodierung
 
-Erstellen Sie im Azure-Portal unter **Anwendungseinstellungen** für die Web-App eine neue App-Einstellung namens `JAVA_OPTS` mit dem Wert `$JAVA_OPTS -Dfile.encoding=UTF-8`.
+Erstellen Sie im Azure-Portal unter **Anwendungseinstellungen** für die Web-App eine neue App-Einstellung namens `JAVA_OPTS` mit dem Wert `-Dfile.encoding=UTF-8`.
 
 Alternativ können Sie die App-Einstellung mit dem App Service-Maven-Plug-In konfigurieren. Fügen Sie die name- und value-Tags der Einstellung in der Plug-In-Konfiguration hinzu:
 
@@ -134,10 +141,14 @@ Alternativ können Sie die App-Einstellung mit dem App Service-Maven-Plug-In kon
 <appSettings>
     <property>
         <name>JAVA_OPTS</name>
-        <value>$JAVA_OPTS -Dfile.encoding=UTF-8</value>
+        <value>-Dfile.encoding=UTF-8</value>
     </property>
 </appSettings>
 ```
+
+### <a name="adjust-startup-timeout"></a>Anpassen des Timeoutwerts für den Start
+
+Wenn Ihre Java-Anwendung besonders groß ist, sollten Sie das Zeitlimit für den Start heraufsetzen. Erstellen Sie zu diesem Zweck eine Anwendungseinstellung `WEBSITES_CONTAINER_START_TIME_LIMIT`, und legen Sie sie auf die Anzahl Sekunden fest, die App Service vor dem Timeout warten soll. Der Maximalwert beträgt `1800` Sekunden.
 
 ## <a name="secure-applications"></a>Sichere Anwendungen
 

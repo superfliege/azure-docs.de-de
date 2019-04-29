@@ -1,6 +1,6 @@
 ---
-title: Definitionen des allgemeinen Warnungsschemas für Webhooks/Logic Apps/Azure Functions
-description: Grundlegendes zu den Definitionen des allgemeinen Warnungsschemas für Webhooks/Logic Apps/Azure Functions
+title: Definitionen des allgemeinen Warnungsschemas für Webhooks/Logic Apps/Azure Functions/Automation Runbooks
+description: Grundlagen der Definitionen des allgemeinen Warnungsschemas für Webhooks/Logic Apps/Azure Functions/Automation Runbooks
 author: anantr
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: 0ca9d63f62de6a0b2385b3fb9651c34379b846d7
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: e29a1f5d1e258ab66540010dc12f9326b8fd57a2
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010395"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149409"
 ---
 # <a name="common-alert-schema-definitions"></a>Definitionen des allgemeinen Warnungsschemas
 
-In diesem Artikel werden [Definitionen des allgemeinen Warnungsschemas](https://aka.ms/commonAlertSchemaDocs) für Webhooks/Logic Apps/Azure Functions beschrieben. 
+In diesem Artikel werden die [Definitionen des allgemeinen Warnungsschemas](https://aka.ms/commonAlertSchemaDocs) für Webhooks/Logic Apps/Azure Functions/Automation Runbooks beschrieben. 
 
 ## <a name="overview"></a>Übersicht
 
@@ -88,7 +88,7 @@ Mit jeder Warnungsinstanz werden **die betroffene Ressource** und **die Ursache 
 | originAlertId | ID der Warnungsinstanz, wie sie vom überwachenden Dienst generiert wird, der sie generiert. |
 | firedDateTime | Datum/Uhrzeit der Auslösung der Warnungsinstanz in UTC |
 | resolvedDateTime | Datum/Uhrzeit der Festlegung der Überwachungsbedingung für die Warnungsinstanz auf „Behoben“ in UTC. Gilt derzeit nur für Metrikwarnungen.|
-| Beschreibung | Die Beschreibung entsprechend der Definition in der Warnungsregel |
+| description | Die Beschreibung entsprechend der Definition in der Warnungsregel |
 |essentialsVersion| Versionsnummer für den Abschnitt „essentials“|
 |alertContextVersion | Versionsnummer für den Abschnitt „alertContext“ |
 
