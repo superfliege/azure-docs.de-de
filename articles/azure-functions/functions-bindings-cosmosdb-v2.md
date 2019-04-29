@@ -2345,7 +2345,7 @@ In diesem Abschnitt werden die verfügbaren globalen Konfigurationseinstellungen
 |Eigenschaft  |Standard | BESCHREIBUNG |
 |---------|---------|---------| 
 |GatewayMode|Gateway|Der von der Funktion zum Herstellen von Verbindungen mit dem Azure Cosmos DB-Dienst verwendete Verbindungsmodus. Die Optionen sind `Direct` und `Gateway`.|
-|Protokoll|HTTPS|Das von der Funktion zum Herstellen von Verbindungen mit dem Azure Cosmos DB-Dienst verwendete Verbindungsprotokoll.  Hier finden Sie [eine Erläuterung der beiden Modi](../cosmos-db/performance-tips.md#networking)| 
+|Protocol|HTTPS|Das von der Funktion zum Herstellen von Verbindungen mit dem Azure Cosmos DB-Dienst verwendete Verbindungsprotokoll.  Hier finden Sie [eine Erläuterung der beiden Modi](../cosmos-db/performance-tips.md#networking)| 
 |leasePrefix|–|Lease-Präfix, das durchgängig für alle Funktionen in einer App verwendet wird.| 
 
 ## <a name="next-steps"></a>Nächste Schritte
