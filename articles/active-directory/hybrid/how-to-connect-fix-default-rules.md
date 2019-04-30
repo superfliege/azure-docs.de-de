@@ -13,12 +13,12 @@ ms.date: 03/21/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f524e8cef3878816cec53575217bdb6d0fd9be7b
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 761f3e6e72319a2e63d6b66f2893130ec5a82ebf
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500932"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698161"
 ---
 # <a name="fix-modified-default-rules-in-azure-ad-connect"></a>Korrigieren von geänderten Standardregeln in Azure AD Connect
 
@@ -68,7 +68,7 @@ Es gibt 3 verschiedene Szenarien für den Attributfluss. Betrachten wir, wie Sie
 ### <a name="adding-new-attribute"></a>Hinzufügen eines neuen Attributs:
 Wenn Sie feststellen, dass ein Attribut nicht aus dem Quellverzeichnis in das Zielverzeichnis fließt, können Sie [Azure AD Connect-Synchronisierung: Verzeichniserweiterungen](how-to-connect-sync-feature-directory-extensions.md) verwenden, um die neuen Attribute zu übergeben.
 
-Beachten Sie, dass Sie immer zuerst [Azure AD Connect-Synchronisierung: Verzeichniserweiterungen](how-to-connect-sync-feature-directory-extensions.md) verwenden sollten, ein von Azure AD Connect bereitgestelltes Standardfeature. Wenn dieses Feature für Sie jedoch nicht funktioniert, führen Sie die folgenden Schritte aus, um ein Attribut zu übergeben, ohne die bestehende standardmäßige Standardssynchronisierungsregel zu ändern. Dazu fügen Sie zwei neue Synchronisierungsregeln hinzu.
+Beachten Sie, dass Sie zunächst [Azure AD Connect-Synchronisierung: Verzeichniserweiterungen](how-to-connect-sync-feature-directory-extensions.md) verwenden sollten, ein sofort einsetzbares Feature von Azure AD Connect. Wenn dieses Feature für Sie jedoch nicht funktioniert, führen Sie die folgenden Schritte aus, um ein Attribut zu übergeben, ohne die bestehende standardmäßige Standardssynchronisierungsregel zu ändern. Dazu fügen Sie zwei neue Synchronisierungsregeln hinzu.
 
 
 #### <a name="add-an-inbound-sync-rule"></a>Hinzufügen einer Synchronisierungsregel für eingehenden Datenverkehr:
@@ -76,12 +76,12 @@ Eine Synchronisierungsregel für eingehenden Datenverkehr bedeutet, dass die Que
 
  ![Standardregeln](media/how-to-connect-fix-default-rules/default3a.png)
 
-Folgen Sie bei der Benennung der Regel Ihrer eigenen Namenskonvention. Hier haben wir **Benutzerdefiniert eingehend von AD – Benutzer** verwendet. Das bedeutet, dass die Regel eine benutzerdefinierte Eingangsregel vom AD-Connectorbereich zur Metaverse ist. 
+Folgen Sie bei der Benennung der Regel Ihrer eigenen Namenskonvention. Hier haben wir **Benutzerdefiniert eingehend von AD – Benutzer** verwendet. Das bedeutet, dass die Regel eine benutzerdefinierte Eingangsregel vom AD-Connectorbereich zur Metaverse ist.   
 
  ![Standardregeln](media/how-to-connect-fix-default-rules/default3b.png)
 
 Geben Sie Ihre eigene Beschreibung für die Regel ein, um die zukünftige Wartung der Regel zu erleichtern. Geben Sie z.B. an, was das Ziel dieser Regel ist und warum sie benötigt wurde.
-Ausgewähltes verbundenes System (die Gesamtstruktur) ist die Quelle des Attributs. Dann „Objekttyp des verbundenen Systems“ und „Metaverse-Objekttyp“.
+Wählen Sie ein verbundenes System (die Gesamtstruktur) aus – die Quelle des Attributs. Wählen Sie dann den „Objekttyp des verbundenen Systems“ und den „Metaverse-Objekttyp“ aus.
 
 Geben Sie den Rangfolgenwert zwischen 0 und 99 an (je niedriger die Zahl, desto höher die Rangfolge). Übernehmen Sie für andere Felder wie „Tag“, „Kennwortsynchronisierung aktivieren“ und „Deaktiviert“ die Standardeinstellungen.
 
@@ -157,7 +157,7 @@ Sie können die neu hinzugefügte Synchronisierungsregel mit der Previewfunktion
 
 ![Standardregeln](media/how-to-connect-fix-default-rules/default10.png)
 
-Klicken Sie auf **Metaverse Search**, wählen Sie als Bereichsobjekt **Person** und dann **Klausel hinzufügen** aus, und nennen Sie Ihre Suchkriterien. Klicken Sie auf die Schaltfläche **Suchen**, und doppelklicken Sie auf das Objekt in den **Suchergebnissen**. Beachten Sie dass der Import und die Synchronisierung für die Gesamtstruktur ausgeführt wird, bevor Sie diesen Schritt ausführen, um sicherzustellen, dass die Daten in Azure AD Connect für dieses Objekt auf dem neuesten Stand sind.
+Klicken Sie auf **Metaverse Search**, wählen Sie als Bereichsobjekt **Person** und dann **Klausel hinzufügen** aus, und nennen Sie Ihre Suchkriterien. Klicken Sie auf die Schaltfläche **Suche** und Doppelklicken Sie auf das Objekt in den **Suchergebnissen**. Beachten Sie dass der Import und die Synchronisierung für die Gesamtstruktur ausgeführt wird, bevor Sie diesen Schritt ausführen, um sicherzustellen, dass die Daten in Azure AD Connect für dieses Objekt auf dem neuesten Stand sind.
 
 ![Standardregeln](media/how-to-connect-fix-default-rules/default11.png)
 

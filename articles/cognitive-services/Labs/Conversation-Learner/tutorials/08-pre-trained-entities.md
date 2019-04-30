@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: f5b3234c45a9ee80bc5a2c2afe67046896270802
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dade442cb04f79ef75e65d6eb29128b105e72b40
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58163785"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565409"
 ---
 # <a name="how-to-add-pre-trained-entities"></a>Hinzufügen vortrainierter Entitäten
 In diesem Tutorial erfahren Sie, wie Sie Ihrem Conversation Learner-Modell vortrainierte Entitäten hinzufügen.

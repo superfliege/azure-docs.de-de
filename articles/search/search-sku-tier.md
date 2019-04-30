@@ -7,15 +7,15 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 04/15/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: da8c8adacfead598a8dec6280cf3518fb7b31f49
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: b50d0c0ca9a4000cc0c725453a3ef04b4bed9275
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59270950"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681564"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Auswählen eines Tarifs für Azure Search
 
@@ -64,35 +64,36 @@ Bei Azure Search können auf drei verschiedene Weisen Kosten anfallen, und es gi
 
 ### <a name="1-core-service-costs-fixed-and-variable"></a>1. Basiskosten für den Dienst (fest und variabel)
 
-Die Mindestgebühr für den Dienst selbst ist die erste Sucheinheit (1 Replikat x 1 Partition). Dieser Betrag bleibt für die gesamte Lebensdauer des Diensts konstant, da der Dienst nicht mit weniger als dieser Konfiguration ausgeführt werden kann. 
+Die Mindestgebühr für den Dienst selbst ist die erste Sucheinheit (1 Replikat x 1 Partition). Dieser Betrag ist für die gesamte Lebensdauer des Diensts festgelegt, da der Dienst nicht mit weniger als dieser Konfiguration ausgeführt werden kann. 
 
-Im folgenden Screenshot wird der Preis pro Einheit für die Tarife Free, Basic und S1 dargestellt (S2, S3, L1 und L2 sind nicht enthalten). Wenn Sie einen Dienst mit dem Tarif **Basic**, **Standard** oder **Speicheroptimiert** erstellt haben, belaufen sich Ihre monatlichen Kosten im Durchschnitt auf den Wert, der für *price-1* bzw. für *price-2* angegeben ist. Die Kosten pro Einheit steigen mit jedem Tarif, da sich bei den höheren Tarifen jeweils die Rechenleistung und die Speicherkapazität erhöhen.
+Über diese Mindestanforderung hinaus können Sie Replikate und Partitionen eigenständig hinzufügen. Beispielsweise können Sie nur Replikate oder nur Partitionen hinzufügen. Inkrementelle Kapazitätserweiterungen durch Replikate und Partitionen bilden die variable Kostenkomponente. 
+
+Die Abrechnung basiert auf einer [Formel (Replikate x Partitionen x Preis)](#search-units). Der abgerechnete Preis hängt vom ausgewählten Tarif ab.
+
+Im folgenden Screenshot wird der Preis pro Einheit für die Tarife Free, Basic und S1 dargestellt (S2, S3, L1 und L2 sind nicht enthalten). Wenn Sie einen Dienst mit dem Tarif **Basic**, **Standard** oder **Speicheroptimiert** erstellt haben, belaufen sich Ihre monatlichen Kosten im Durchschnitt auf den Wert, der für *price-1* bzw. für *price-2* angegeben ist. Die Kosten pro Einheit steigen mit jedem Tarif, da sich bei den höheren Tarifen jeweils die Rechenleistung und die Speicherkapazität erhöhen. Die Preise für Azure Search sind auf der Seite [Azure Search – Preise](https://azure.microsoft.com/pricing/details/search/) veröffentlicht.
 
 ![Preise pro Einheit](./media/search-sku-tier/per-unit-pricing.png "Preise pro Einheit")
 
-Für zusätzliche Replikate und Partitionen fallen zusätzliche Kosten zu den Basiskosten an. Ein Suchdienst benötigt ein Replikat und eine Partition, weshalb die Konfiguration aus mindestens einem Replikat und einer Partition bestehen muss. Über diese Mindestanforderung hinaus können Sie Replikate und Partitionen eigenständig hinzufügen. Beispielsweise könnten Sie nur Replikate oder nur Partitionen hinzufügen. 
+Bei der Kalkulation einer Suchlösung ist zu beachten, dass Preis und Kapazität nicht linear sind (die Verdoppelung der Kapazität führt zu mehr als verdoppelten Kosten). Ein Beispiel zur Funktionsweise der Formel finden Sie unter [Zuordnen von Replikaten und Partitionen](search-capacity-planning.md#how-to-allocate-replicas-and-partitions).
 
-Zusätzliche Replikate und Partitionen werden auf Grundlage einer [Formel](#search-units) abgerechnet. Die Kosten sind nicht linear (bei einer Verdopplung der Kapazität fallen mehr als doppelt so hohe Kosten an). Ein Beispiel zur Funktionsweise der Formel finden Sie unter [Zuordnen von Replikaten und Partitionen](search-capacity-planning.md#how-to-allocate-replicas-and-partitions).
 
 ### <a name="2-data-egress-charges-during-indexing"></a>2. Gebühren für ausgehende Daten während der Indizierung
 
-Die Verwendung von [Azure Search Indexer](search-indexer-overview.md) kann je nach Position der Dienste zu Auswirkungen auf die Abrechnung führen. Sie können die Gebühren für ausgehende Daten vollständig vermeiden, wenn Sie den Azure Search-Dienst in derselben Region wie Ihre Daten erstellen.
+Die Verwendung von [Azure Search Indexer](search-indexer-overview.md) kann je nach Position der Dienste zu Auswirkungen auf die Abrechnung führen. Sie können die Gebühren für ausgehende Daten vollständig vermeiden, wenn Sie den Azure Search-Dienst in derselben Region wie Ihre Daten erstellen. Die folgenden Punkte stammen von der Seite [Preisübersicht Bandbreite](https://azure.microsoft.com/pricing/details/bandwidth/).
 
-+ Keine Gebühren für eingehende Daten zu beliebigen Diensten von Azure.
++ Microsoft berechnet keine Gebühren für eingehende Daten in alle Dienste in Azure oder für ausgehende Daten aus Azure Search.
 
-+ Keine Gebühren für ausgehende Daten von Azure Search.
++ In Lösungen mit mehreren Diensten fallen keine Gebühren für Datenübertragungen an, wenn sich alle Dienste in derselben Region befinden.
 
-+ Keine Gebühren für Daten oder Dateien, die von SQL DB, Cosmos, Blob Storage (eingehend zu Azure Search) ausgehen, solange sich alle Dienste in derselben Region befinden.
-
-+ Für ausgehende Daten oder Dateien fallen Gebühren an, wenn sich Speicherung und Azure Search in verschiedenen Regionen befinden.
-
-Wenn Daten über Azure-Regionen geleitet werden, werden in der Rechnung für diese Ressourcen Kosten für die Bandbreite angezeigt. Diese Gebühren sind nicht Teil Ihrer Azure Search-Rechnung, aber sie werden hier erwähnt, denn wenn Sie Indexer verwenden, um Daten oder Dateien mithilfe von Pull zu übertragen, wird diese Gebühr in Ihrer Gesamtrechnung angezeigt.
-
-Wenn Sie keine Indexer verwenden, fallen keine Bandbreitengebühren an. 
+Für ausgehende Daten fallen Gebühren an, wenn sich die Dienste in verschiedenen Regionen befinden. Diese Gebühren sind nicht Teil Ihrer Azure Search-Rechnung, sie werden hier jedoch erwähnt, denn wenn Sie Daten oder um KI erweiterte Indexer verwenden, um Daten aus verschiedenen Regionen mithilfe von Pull zu übertragen, sind diese Kosten in Ihrer Gesamtrechnung aufgeführt. 
 
 ### <a name="3-ai-enriched-indexing-using-cognitive-services"></a>3. Um KI erweiterte Indizierung unter Verwendung von Cognitive Services
 
-Nur bei der [KI-Indizierung mit Cognitive Services](cognitive-search-concept-intro.md) wird das Extrahieren von Bildern während der Dokumentaufschlüsselung basierend auf der Anzahl der aus Ihren Dokumenten extrahierten Bilder in Rechnung gestellt. Das Extrahieren von Text ist derzeit kostenlos. Andere auf [integrierten kognitiven Fähigkeiten](cognitive-search-predefined-skills.md) basierende Erweiterungen, wie die Verarbeitung natürlicher Sprache, werden für eine Cognitive Services-Ressource in Rechnung gestellt. Anreicherungen werden mit der gleichen Gebühr abgerechnet, als ob Sie die Aufgabe direkt mithilfe von Cognitive Services ausgeführt hätten.
+Für die [KI-Indizierung mit Cognitive Services](cognitive-search-concept-intro.md) sollten Sie die Anfügung einer abrechenbaren Cognitive Services-Ressource zum S0-Tarif für die nutzungsbasierte Bezahlung der Verarbeitung einplanen. Mit dem Anfügen von Cognitive Services sind keine „festen Kosten“ verbunden. Sie bezahlen nur für die benötigte Verarbeitung.
+
+Für die Bildextraktion während der Dokumententschlüsselung fällt eine Azure Search-Gebühr an, die basierend auf der Anzahl der aus den Dokumenten extrahierten Bildern abgerechnet wird. Das Extrahieren von Text ist derzeit kostenlos. 
+
+Andere auf [integrierten kognitiven Fähigkeiten](cognitive-search-predefined-skills.md) basierende Erweiterungen, z. B. die Verarbeitung natürlicher Sprache, werden für eine Cognitive Services-Ressource zu dem Preis abgerechnet, der bei direkter Ausführung der Aufgabe mithilfe von Cognitive Services anfällt. Weitere Informationen finden Sie unter [Anfügen einer Cognitive Services-Ressource an eine Qualifikationsgruppe](cognitive-search-attach-cognitive-services.md).
 
 <a name="search-units"></a>
 

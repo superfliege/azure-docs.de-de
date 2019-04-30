@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 04/17/2019
 ms.author: magoedte
-ms.openlocfilehash: 81005c2c95c9cccb32796d1afca4208f5ff8b919
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: b0b221a9fe6c6482e8759664c297dbd25d0ee776
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437338"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699269"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Verbinden von Computern ohne Internetzugriff über das Log Analytics-Gateway in Azure Monitor
 
@@ -124,9 +124,9 @@ oder
 1. Klicken Sie in Ihrem Arbeitsbereichblatt unter **Einstellungen** auf **Erweiterte Einstellungen**.
 1. Navigieren Sie zu **Verbundene Quellen** > **Windows-Server**, und wählen Sie **Log Analytics-Gateway herunterladen** aus.
 
-## <a name="install-the-log-analytics-gateway"></a>Installieren des Log Analytics-Gateways
+## <a name="install-log-analytics-gateway-using-setup-wizard"></a>Installieren des Log Analytics-Gateways mit dem Setup-Assistenten
 
-Führen Sie zum Installieren des Gateways die folgenden Schritte aus.  (Falls eine ältere Version (als „Log Analytics Forwarder“ bezeichnet) installiert ist, wird ein Upgrade auf die aktuelle Version ausgeführt.)
+Führen Sie zum Installieren des Gateways mit dem Setup-Assistenten die folgenden Schritte aus. 
 
 1. Doppelklicken Sie im Zielordner auf **Log Analytics gateway.msi**.
 1. Wählen Sie auf der Seite **Willkommen** die Option **Weiter** aus.
@@ -152,6 +152,40 @@ Führen Sie zum Installieren des Gateways die folgenden Schritte aus.  (Falls ei
 
    ![Screenshot der lokalen Dienste, der zeigt, dass das OMS-Gateway ausgeführt wird](./media/gateway/gateway-service.png)
 
+## <a name="install-the-log-analytics-gateway-using-the-command-line"></a>Installieren des Log Analytics-Gateways über die Befehlszeile
+Die heruntergeladene Datei für das Gateway ist ein Windows Installer-Paket, mit dem die automatische Installation über die Befehlszeile oder mit einer anderen automatisierten Methode unterstützt wird. Wenn Sie nicht mit den standardmäßigen Befehlszeilenoptionen für Windows Installer vertraut sind, finden Sie entsprechende Informationen unter [Command-line options](https://docs.microsoft.com/windows/desktop/Msi/command-line-options) (Befehlszeilenoptionen).   
+
+In der folgenden Tabelle sind die beim Setup unterstützten Parameter aufgeführt.
+
+|Parameter| Notizen|
+|----------|------| 
+|PORTNUMBER | Nummer des TCP-Ports für das Gateway, an dem gelauscht werden soll |
+|PROXY | IP-Adresse des Proxyservers |
+|INSTALLDIR | Vollqualifizierter Pfad zum Angeben des Installationsverzeichnisses für Dateien der Gatewaysoftware |
+|USERNAME | Benutzer-ID für die Authentifizierung beim Proxyserver |
+|PASSWORD | Kennwort für die Benutzer-ID für die Authentifizierung beim Proxy |
+|LicenseAccepted | Geben Sie den Wert **1** an, um zu überprüfen, ob Sie dem Lizenzvertrag zugestimmt haben. |
+|HASAUTH | Geben Sie den Wert **1** an, wenn die Parameter USERNAME und PASSWORD angegeben sind. |
+|HASPROXY | Geben Sie bei der Angabe einer IP-Adresse für den Parameter **PROXY** den Wert **1** an. |
+
+Geben Sie Folgendes ein, um das Gateway automatisch zu installieren und mit einer spezifischen Proxyadresse und einer spezifischen Portnummer zu konfigurieren:
+
+```dos
+Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 LicenseAccepted=1 
+```
+
+Mit der Befehlszeilenoption „/qn“ wird das Setup bei der automatischen Installation ausgeblendet, mit der Befehlszeilenoption „/qb“ wird das Setup angezeigt.  
+
+Wenn Sie für die Authentifizierung beim Proxy Anmeldeinformationen angeben müssen, geben Sie Folgendes ein:
+
+```dos
+Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 HASAUTH=1 USERNAME=”<username>” PASSWORD=”<password>” LicenseAccepted=1 
+```
+
+Nach der Installation können Sie mit den folgenden PowerShell-Cmdlets bestätigen, dass die Einstellungen akzeptiert werden (mit Ausnahme des Benutzernamens und Kennworts):
+
+- **Get-OMSGatewayConfig:** gibt den TCP-Port zurück, für den das Gateway zum Lauschen konfiguriert ist.
+- **Get-OMSGatewayRelayProxy:** gibt die IP-Adresse des Proxyservers zurück, den Sie für die Kommunikation mit dem Gateway konfiguriert haben.
 
 ## <a name="configure-network-load-balancing"></a>Konfigurieren des Netzwerklastenausgleichs 
 Für Hochverfügbarkeit können Sie das Gateway mit Netzwerklastenausgleich (Network Load Balancing, NLB) konfigurieren. Hierzu können Sie entweder den [Netzwerklastenausgleich (NLB)](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing) von Microsoft, [Azure Load Balancer](../../load-balancer/load-balancer-overview.md) oder einen hardwarebasierten Lastenausgleich verwenden. Beim Lastenausgleich werden die angeforderten Verbindungen von Log Analytics-Agents oder Operations Manager-Verwaltungsservern zur Verwaltung des Datenverkehrs für alle Knoten umgeleitet. Wenn ein Gatewayserver ausfällt, wird der Datenverkehr zu anderen Knoten umgeleitet.

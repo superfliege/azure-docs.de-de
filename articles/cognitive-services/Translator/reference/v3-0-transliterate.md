@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 97a2318b7aa3591193108a8a061a15ec5692fac5
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 4811e40f87962ecde75c7b2bb14e1d033e82ad44
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918619"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577836"
 ---
 # <a name="translator-text-api-30-transliterate"></a>Text체bersetzungs-API 3.0: Transliterate
 
@@ -60,8 +60,8 @@ Anforderungsheader enthalten Folgendes:
   <th width="20%">Header</th>
   <th>BESCHREIBUNG</th>
   <tr>
-    <td>_Eine Autorisierung_<br/>_Header_</td>
-    <td>*Erforderlicher Anforderungsheader*.<br/>Weitere Informationen finden Sie in den [verf체gbaren Optionen f체r die Authentifizierung](./v3-0-reference.md#authentication).</td>
+    <td>Authentifizierungsheader</td>
+    <td><em>Erforderlicher Anforderungsheader</em>.<br/>Weitere Informationen finden Sie in den <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">verf체gbaren Optionen f체r die Authentifizierung</a>.</td>
   </tr>
   <tr>
     <td>Content-Typ</td>
@@ -165,7 +165,7 @@ Wenn ein Fehler auftritt, gibt die Anforderung auch eine JSON-Fehlerantwort zur�
 
 Das folgende Beispiel zeigt, wie Sie zwei japanische Zeichenfolgen in lateinische Buchstaben konvertieren.
 
-# [<a name="curl"></a>curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 Die JSON-Nutzlast f체r die Anforderung in diesem Beispiel:
 

@@ -1,7 +1,7 @@
 ---
 title: Extrahieren von Daten
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: Erfahren Sie, welche Art von Daten von LUIS (Language Understanding Intelligent Service) extrahiert werden können.
+description: Extrahieren Sie Daten aus dem Äußerungstext mit Absichten und Entitäten. Erfahren Sie, welche Art von Daten von LUIS (Language Understanding Intelligent Service) extrahiert werden können.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 76f8fed8d185598d62eef5a412fda2c3fd1317bd
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 35f1521884de3a4a0971b6e1c00f92a9094a8550
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58893978"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526288"
 ---
-# <a name="data-extraction-from-intents-and-entities"></a>Extrahieren von Daten aus Absichten und Entitäten
+# <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Extrahieren von Daten aus dem Äußerungstext mit Absichten und Entitäten
 LUIS bietet Ihnen die Möglichkeit, Informationen aus Benutzeräußerungen in natürlicher Sprache zu erfassen. Die Informationen werden so extrahiert, dass sie von einem Programm, einer Anwendung oder einem Chatbot verwendet werden können. In den folgenden Abschnitten erfahren Sie anhand von JSON-Beispielen, welche Daten von Absichten und Entitäten zurückgegeben werden.
 
 Am schwierigsten sind Daten zu extrahieren, die maschinell gelernt wurden, da es sich nicht um genaue Textübereinstimmungen handelt. Das Extrahieren von Daten aus maschinell erlernten [Entitäten](luis-concept-entity-types.md) muss im Rahmen des [Erstellungszyklus](luis-concept-app-iteration.md) erfolgen, bis Sie sicher sind, dass Sie die erwarteten Daten erhalten.
@@ -170,9 +170,11 @@ Die vom Endpunkt zurückgegebenen Daten enthalten den Namen der Entität, den in
 
 |Datenobjekt|Name der Entität|Wert|
 |--|--|--|
-|Entität vom Typ „Simple“|"Customer"|"bob jones"|
+|Entität vom Typ „Simple“|`Customer`|`bob jones`|
 
 ## <a name="hierarchical-entity-data"></a>Daten hierarchischer Entitäten
+
+**Hierarchische Einheiten werden möglicherweise veraltet sein. Verwenden Sie [Entitätsrollen](luis-concept-roles.md) zum Ermitteln von Entitätsuntertypen, anstatt hierarchische Entitäten zu verwenden.**
 
 [Hierarchische](luis-concept-entity-types.md) Entitäten sind maschinell erlernt und können ein Wort oder einen Ausdruck enthalten. Untergeordnete Entitäten werden anhand des Kontexts identifiziert. Wenn Sie eine Klassifizierung mit über- und untergeordneten Entitäten und genauer Textübereinstimmung suchen, verwenden Sie eine [Listenentität](#list-entity-data).
 
@@ -432,13 +434,18 @@ Das Abrufen von Namen aus einer Äußerung ist schwierig, da es sich bei einem N
 Die Entitäten [PersonName](luis-reference-prebuilt-person.md) und [GeographyV2](luis-reference-prebuilt-geographyV2.md) sind in einigen [Sprachkulturen](luis-reference-prebuilt-entities.md) verfügbar. 
 
 ### <a name="names-of-people"></a>Namen von Personen
-Für Namen von Personen gelten je nach Sprache und Kultur nur wenige Formatvorgaben. Verwenden Sie entweder eine hierarchische Entität mit Vor- und Nachnamen als untergeordnete Entitäten oder eine einfache Entität mit den Vor- und Nachnamen als Rollen. Geben Sie unbedingt Beispiele an, bei denen die Vor- und Nachnamen an unterschiedlichen Positionen in der Äußerung, in Äußerungen von verschiedener Länge und in Äußerungen aller Absichten (einschließlich der Absicht „None“) verwendet werden. [Überprüfen](luis-how-to-review-endpoint-utterances.md) Sie die Endpunktäußerungen regelmäßig, um alle Namen zu bezeichnen, die nicht richtig vorhergesagt wurden.
+
+Für Namen von Personen gelten je nach Sprache und Kultur nur wenige Formatvorgaben. Verwenden Sie entweder eine vordefinierte **[personName](luis-reference-prebuilt-person.md)**-Entität oder eine **[einfache Entität](luis-concept-entity-types.md#simple-entity)** mit [Rollen](luis-concept-roles.md) für Vor- und Nachname. 
+
+Wenn Sie die einfache Entität verwenden, geben Sie unbedingt Beispiele an, bei denen die Vor- und Nachnamen an unterschiedlichen Positionen in der Äußerung, in Äußerungen von verschiedener Länge und in Äußerungen aller Absichten (einschließlich der Absicht „None“) verwendet werden. [Überprüfen](luis-how-to-review-endoint-utt.md) Sie die Endpunktäußerungen regelmäßig, um alle Namen zu bezeichnen, die nicht richtig vorhergesagt wurden.
 
 ### <a name="names-of-places"></a>Namen von Orten
-Namen von Orten sind feststehend und bekannt. Sie umfassen z.B. Städte, Landkreise, Bundesländer, Provinzen und Länder. Wenn Ihre App einen bekannten Satz von Standorten verwendet, sollten Sie eine Listenentität in Erwägung ziehen. Wenn Sie alle Ortsnamen finden müssen, erstellen Sie eine einfache Entität, und geben Sie verschiedene Beispiele an. Fügen Sie eine Ausdrucksliste mit Ortsnamen hinzu, um anzugeben, wie Ortsnamen in Ihrer App vorkommen. [Überprüfen](luis-how-to-review-endpoint-utterances.md) Sie die Endpunktäußerungen regelmäßig, um alle Namen zu bezeichnen, die nicht richtig vorhergesagt wurden.
+
+Namen von Orten sind feststehend und bekannt. Sie umfassen z.B. Städte, Landkreise, Bundesländer, Provinzen und Länder. Verwenden Sie die vordefinierte Entität **[geographieV2](luis-reference-prebuilt-geographyv2.md)**, um Standortinformationen zu extrahieren.
 
 ### <a name="new-and-emerging-names"></a>Neue und sich entwickelnde Namen
-Einige Apps müssen in der Lage sein, neue oder sich entwickelnde Namen, z.B. von Produkten oder Unternehmen, finden zu können. Solche Namen sind besonders schwer zu extrahieren. Beginnen Sie mit einer einfachen Entität, und fügen Sie eine Ausdrucksliste hinzu. [Überprüfen](luis-how-to-review-endpoint-utterances.md) Sie die Endpunktäußerungen regelmäßig, um alle Namen zu bezeichnen, die nicht richtig vorhergesagt wurden.
+
+Einige Apps müssen in der Lage sein, neue oder sich entwickelnde Namen, z.B. von Produkten oder Unternehmen, finden zu können. Solche Namen sind am schwersten zu extrahieren. Beginnen Sie mit einer **[einfachen Entität](luis-concept-entity-types.md#simple-entity)**, und fügen Sie eine [Ausdrucksliste](luis-concept-feature.md) hinzu. [Überprüfen](luis-how-to-review-endoint-utt.md) Sie die Endpunktäußerungen regelmäßig, um alle Namen zu bezeichnen, die nicht richtig vorhergesagt wurden.
 
 ## <a name="pattern-roles-data"></a>Daten von Musterrollen
 Rollen sind kontextabhängige Unterschiede von Entitäten.

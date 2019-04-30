@@ -1,29 +1,31 @@
 ---
-title: 'Maschinelles Lernen in der Cloud: Begriffe und Architektur'
+title: Architektur und wichtige Konzepte
 titleSuffix: Azure Machine Learning service
-description: Enthält Informationen zu Architektur, Terminologie und Konzepten des Azure Machine Learning-Diensts. Außerdem erhalten Sie Informationen zum allgemeinen Workflow für die Nutzung des Diensts und zu den Azure-Diensten, die von Azure Machine Learning Service verwendet werden.
+description: Enthält Informationen zu Architektur, Terminologie, Konzepten und Workflows des Azure Machine Learning Service.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 12/04/2018
+ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9e910fb3bc75c285986871627d875296f1a2a746
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 83ca4d2bf767d338943c396330b36f3f8180e170
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577321"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59489946"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>So funktioniert Azure Machine Learning Service: Architektur und Konzepte
 
-In diesem Artikel werden die Architektur und die Konzepte für Azure Machine Learning Service beschrieben. Die wichtigsten Komponenten des Diensts und der allgemeine Workflow für seine Nutzung sind im folgenden Diagramm dargestellt:
+Enthält Informationen zu Architektur, Konzepten und Workflows des Azure Machine Learning-Diensts. Die wichtigsten Komponenten des Diensts und der allgemeine Workflow für seine Nutzung sind im folgenden Diagramm dargestellt:
 
 [![Azure Machine Learning Service – Architektur und Workflow](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
 
-Für den Workflow werden in der Regel diese Schritte ausgeführt:
+## <a name="workflow"></a>Workflow
+
+Für den Workflow für maschinelles Lernen werden in der Regel diese Schritte ausgeführt:
 
 1. Entwickeln von Machine Learning-Trainingsskripts in **Python**
 1. Erstellen und Konfigurieren eines **Computeziels**
@@ -80,7 +82,7 @@ Im einfachsten Fall ist ein Modell ein Codeabschnitt, für den eine Eingabe verw
 
 Ein Modell wird erzeugt, indem in Azure Machine Learning eine Ausführung erfolgt. Sie können auch ein Modell verwenden, das außerhalb von Azure Machine Learning trainiert wurde. Sie können ein Modell in einem Azure Machine Learning Service-Arbeitsbereich registrieren.
 
-Azure Machine Learning Service ist frameworkunabhängig. Beim Erstellen eines Modells können Sie ein beliebiges gängiges Machine Learning-Framework verwenden, z.B. Scikit-learn, XGBoost, PyTorch, TensorFlow, Chainer und das Microsoft Cognitive Toolkit (ehemals CNTK).
+Azure Machine Learning Service ist frameworkunabhängig. Wenn Sie ein Modell erstellen, können Sie alle gängigen Frameworks für maschinelles Lernen verwenden, wie Scikit-learn, XGBoost, PyTorch, TensorFlow und Chainer.
 
 Ein Beispiel zum Trainieren eines Modells finden Sie im Dokument [Tutorial: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning Service](tutorial-train-models-with-aml.md).
 
@@ -185,6 +187,10 @@ Azure Machine Learning kann zwei Arten von Images erstellen:
 
 * **FPGA-Image**: Wird beim Bereitstellen eines FPGA (Field-Programmable Gate Array) in Azure verwendet.
 * **Docker-Image**: Wird beim Bereitstellen auf anderen Computezielen als FPGA verwendet. Beispiele hierfür sind Azure Container Instances und Azure Kubernetes Service.
+
+Der Azure Machine Learning Service bietet ein Basisimage, das standardmäßig verwendet wird. Sie können auch Ihre eigenen benutzerdefinierten Images angeben.
+
+Weitere Informationen finden Sie im Abschnitt „Konfigurieren und Registrieren eines Image“ von [Bereitstellen von Modellen](how-to-deploy-and-where.md#configureimage).
 
 Ein Beispiel für die Erstellung eines Images finden Sie unter [Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances](tutorial-deploy-models-with-aml.md).
 

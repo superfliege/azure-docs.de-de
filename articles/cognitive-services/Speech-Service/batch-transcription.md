@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 3b403eb80bae01efe730b69b7e6a5ddaea81355a
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: b389d86fe4d23e3f4ee1c66e4270a74351098129
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447649"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579358"
 ---
 # <a name="why-use-batch-transcription"></a>Gründe für die Verwendung von Batch-Transkriptionen
 
@@ -88,6 +88,16 @@ Die Konfigurationsparameter werden als JSON angegeben:
 | `PunctuationMode` | Gibt den Umgang mit Satzzeichen in Erkennungsergebnissen an. Gültige Werte sind `none` (deaktiviert Satzzeichen), `dictated` (explizite Satzzeichen), `automatic` (der Decoder verwaltet die Satzzeichen), `dictatedandautomatic` (vorgeschriebene Satzzeichen) oder „automatic“. | Optional |
  | `AddWordLevelTimestamps` | Gibt an, ob der Ausgabe Zeitstempel auf Wortebene hinzugefügt werden sollen. Gültige Werte sind `true` zum Aktivieren und `false` zum Deaktivieren von Zeitstempeln auf Wortebene. | Optional |
 
+### <a name="storage"></a>Storage
+
+Die Batchtranskription unterstützt [Azure Blob-Speicher](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) zum Lesen von Audio und zum Schreiben von Transkriptionen in den Speicher.
+
+## <a name="webhooks"></a>Webhooks 
+
+Die Abfrage des Transkriptionsstatus ist möglicherweise nicht die leistungsstärkste Option oder bietet nicht die bestmögliche Benutzererfahrung. Zur Abfrage des Status können Sie Rückrufe registrieren, die den Client benachrichtigen, wenn zeitintensive Transkriptionsaufgaben abgeschlossen sind.
+
+Weitere Informationen finden Sie unter [Webhooks](webhooks.md).
+
 ## <a name="sample-code"></a>Beispielcode
 
 Das vollständige Beispiel steht im [GitHub-Beispielrepository](https://aka.ms/csspeech/samples) innerhalb des Unterverzeichnisses `samples/batch` zur Verfügung.
@@ -108,10 +118,6 @@ Im aktuellen Beispielcode ist kein benutzerdefiniertes Modell angegeben. Der Die
 
 > [!NOTE]
 > Für Basistranskriptionen müssen Sie die ID der Basismodelle nicht deklarieren. Wenn Sie nur eine Sprachmodell-ID (und keine Akustikmodell-ID) angeben, wird automatisch ein entsprechendes Akustikmodell ausgewählt. Wenn Sie nur eine Akustikmodell-ID angeben, wird automatisch ein entsprechendes Sprachmodell ausgewählt.
-
-### <a name="supported-storage"></a>Unterstützter Speicher
-
-Derzeit wird nur Azure-Blobspeicher unterstützt.
 
 ## <a name="download-the-sample"></a>Herunterladen des Beispiels
 

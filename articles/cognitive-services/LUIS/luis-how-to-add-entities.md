@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 784fe19d1ae40a7cdff3cc853726d4c62265e0f1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0044cbc9e6142989a57e79de5fd1e78e999bb5e1
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106932"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522349"
 ---
 # <a name="create-entities-without-utterances"></a>Erstellen von Entitäten ohne Äußerungen
 
@@ -135,7 +135,7 @@ In der Äußerung `Where is Request relocation from employee new to the company 
 
 ## <a name="add-a-role-to-distinguish-different-contexts"></a>Hinzufügen einer Rolle zum Unterscheiden verschiedener Kontexte
 
-Eine Rolle ist ein benannter Untertyp einer Entität, basierend auf dem Kontext. Dies ist vergleichbar mit einer [hierarchischen](#add-hierarchical-entities) Entität, aber Rollen werden nur in [Mustern](luis-how-to-model-intent-pattern.md) verwendet. 
+Eine Rolle ist ein benannter Untertyp, der auf Kontext basiert. Er ist in allen Entitäten verfügbar, einschließlich vorkonfigurierter und nicht durch maschinelles Lernen erworbener Entitäten. 
 
 Wenn dasselbe Beispiel wie bei der hierarchischen Entität mit Ausgangs- und Zielorten verwendet wird, besteht der Unterschied darin, dass eine Rolle als Ausgangsort (origin) und nicht als hierarchisches untergeordnetes Element bezeichnet wird. 
 

@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: tamram
-ms.openlocfilehash: fa0edaaa3ee785f89faceb51419d360752bb9825
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4f59f68c1598f737ea7cb3a0e8046fc0779ed9d3
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58051993"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60118585"
 ---
 Der Azure-Dateisynchronisierungs-Agent wird regelmäßig aktualisiert, um neue Funktionalität hinzuzufügen und Probleme zu beheben. Es wird empfohlen, Microsoft Update zu konfigurieren, um Updates für den Azure-Dateisynchronisierungs-Agent zu erhalten, wenn diese verfügbar sind.
 
@@ -25,11 +25,16 @@ Es gibt vier bewährte und getestete Wege, um die Updates des Azure-Dateisynchro
     Die AfsUpdater.exe befindet sich im Installationsverzeichnis für den Agent. Doppelklicken Sie auf die ausführbare Datei, um Agent-Updates herunterzuladen und zu installieren. 
 3. **Patchen Sie einen vorhandenen Azure-Dateisynchronisierungs-Agent mithilfe einer Microsoft Update-Patchdatei oder einer ausführbaren MSP-Datei. Das neueste Updatepaket für die Azure-Dateisynchronisierung kann aus dem [Microsoft Update-Katalog](https://www.catalog.update.microsoft.com/Search.aspx?q=Azure%20File%20Sync) heruntergeladen werden.**  
     Wenn Sie eine ausführbare MSP-Datei verwenden, wird Ihre Installation der Azure-Dateisynchronisierung mit der gleichen Methode aktualisiert, die auch von Microsoft Update automatisch im vorherigen Upgradepfad verwendet wird. Das Anwenden eines Microsoft Update-Patches führt ein direktes Upgrade einer Azure-Dateisynchronisierungsinstallation aus.
-4. **Laden Sie den neuesten Azure-Dateisynchronisierungs-Agent aus dem [Microsoft Download Center](https://go.microsoft.com/fwlink/?linkid=858257) herunter. Als Download steht ein Microsoft-Installer-Paket oder eine ausführbare MSI-Datei zur Verfügung.**  
+4. **Laden Sie den neuesten Azure-Dateisynchronisierungs-Agent aus dem [Microsoft Download Center](https://go.microsoft.com/fwlink/?linkid=858257) herunter.**  
     Um eine bestehende Installation des Azure-Dateisynchronisierungs-Agents zu aktualisieren, deinstallieren Sie die ältere Version und installieren Sie dann die neueste Version mit dem heruntergeladenen Installationsprogramm. Die Serverregistrierung, Synchronisierungsgruppen und alle anderen Einstellungen werden vom Installationsprogramm für die Azure-Dateisynchronisierung beibehalten.
 
+#### <a name="automatic-agent-lifecycle-management"></a>Automatische Agent-Lebenszyklusverwaltung
+Mit Agent-Version 6 wurde vom Team für die Dateisynchronisierung eine Funktion für automatische Upgrades für den Agent eingeführt. Sie können einen von zwei Modi auswählen und ein Wartungsfenster angeben, in dem das Upgrade auf dem Server durchgeführt werden soll. Diese Funktion soll Sie bei der Agent-Lebenszyklusverwaltung unterstützen, indem entweder verhindert wird, dass der Agent abläuft, oder eine problemlose aktuelle Einstellung ermöglicht wird.
+1. Mit der **Standardeinstellung** wird versucht zu verhindern, dass der Agent abläuft. Innerhalb von 21 Tagen vor dem angegebenen Ablaufdatum des Agents versucht der Agent, ein Selbstupgrade durchzuführen. Er versucht, das Upgrade einmal pro Woche innerhalb von 21 Tagen vor dem Ablauf und im ausgewählten Wartungsfenster durchzuführen. **Unabhängig von dieser Option müssen weiterhin reguläre Microsoft Update-Patches durchgeführt werden.**
+2. Optional können Sie auswählen, dass der Agent automatisch ein Selbstupgrade durchführt, wenn eine neue Agent-Version verfügbar ist. Dies erfolgt auch während des ausgewählten Wartungsfensters, sodass neue Funktionen und Verbesserungen auf dem Server genutzt werden können, sobald sie allgemein verfügbar sind. Dies ist die empfohlene Einstellung, über die Agent-Hauptversionen sowie reguläre Updatepatches auf dem Server bereitgestellt werden.
+
 #### <a name="agent-lifecycle-and-change-management-guarantees"></a>Garantien zu Agent-Lebenszyklus und Änderungsverwaltung
-Die Azure-Dateisynchronisierung ist ein Clouddienst, der die kontinuierliche Einführung neuer Features und Funktionen ermöglicht. Dies bedeutet, dass eine bestimmte Version des Azure-Dateisynchronisierungs-Agents nur für eine begrenzte Zeit unterstützt werden kann. Für eine einfachere Bereitstellung gelten die folgenden Regeln, damit sichergestellt ist, dass Sie genügend Zeit haben und benachrichtigt werden, um Updates/Upgrades von Agents in Ihrem Änderungsverwaltungsprozess zu berücksichtigen:
+Die Azure-Dateisynchronisierung ist ein Clouddienst, über den neue Funktionen und Verbesserungen kontinuierlich eingeführt werden. Dies bedeutet, dass eine bestimmte Version des Azure-Dateisynchronisierungs-Agents nur für eine begrenzte Zeit unterstützt werden kann. Für eine einfachere Bereitstellung gelten die folgenden Regeln, damit sichergestellt ist, dass Sie genügend Zeit haben und benachrichtigt werden, um Updates und Upgrades von Agents in Ihrem Änderungsverwaltungsprozess zu berücksichtigen:
 
 - Die Hauptversionen des Agents werden für mindestens sechs Monate ab dem Datum der Erstveröffentlichung unterstützt.
 - Eine Überlappung von mindestens drei Monaten bei der Unterstützung der Agent-Hauptversionen wird garantiert. 

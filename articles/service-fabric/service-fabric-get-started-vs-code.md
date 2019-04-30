@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: a0405e6c699192839f72b290d0466ab5062ac584
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f977a48338f784562ec84355aabb212e5a3dade4
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670127"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543667"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric für Visual Studio Code
 
@@ -120,7 +120,7 @@ Der Befehl **Service Fabric: Anwendung entfernen** entfernt eine Service Fabric-
 2.  Zeigen Sie den lokalen Cluster mit Service Fabric Explorer an, um zu bestätigen, dass die Anwendung entfernt wurde. Dies kann einige Zeit dauern. Haben Sie daher etwas Geduld.
 
 ### <a name="service-fabric-build-application"></a>Service Fabric: Anwendung erstellen
-Der Befehl **Service Fabric: Service Fabric: Anwendung erstellen** kann einen Java- oder C#-Service Fabric-Anwendungsbuild erstellen. 
+Der Befehl **Service Fabric: Anwendung erstellen** kann Java- oder C#-Service Fabric-Anwendungen erstellen. 
 
 1.  Stellen Sie sicher, dass Sie sich im Anwendungsstammordner befinden, wenn Sie den Befehl ausführen. Der Befehl weist den Typ der Anwendung (C#- oder Java) aus und erstellt Ihren Anwendungsbuild entsprechend.
 2.  Wählen Sie den Befehl **Service Fabric: Anwendung erstellen**, und wählen Sie ihn aus.

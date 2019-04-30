@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 04/19/2019
 ms.author: jingwang
-ms.openlocfilehash: c2257dac60ed92859e3df3360ce55558b176de91
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b97d21503e8dcd75906581faf1851533bcd69fa6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010209"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009343"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure SQL Data Warehouse mithilfe von Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -136,21 +136,21 @@ Um die Azure AD-Anwendungstokenauthentifizierung basierend auf dem Dienstprinzip
     - Anwendungsschlüssel
     - Mandanten-ID
 
-1. **[Geben Sie einen Azure Active Directory-Administrator](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)** für Ihre Azure SQL Server-Instanz im Azure-Portal an, falls dies noch nicht geschehen ist. Der Azure AD-Administrator kann ein Azure AD-Benutzer oder eine Azure AD-Gruppe sein. Wenn Sie der Gruppe mit der verwalteten Identität eine Administratorrolle zuweisen möchten, überspringen Sie die Schritte 3 und 4. Der Administrator erhält Vollzugriff auf die Datenbank.
+2. **[Geben Sie einen Azure Active Directory-Administrator](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)** für Ihre Azure SQL Server-Instanz im Azure-Portal an, falls dies noch nicht geschehen ist. Der Azure AD-Administrator kann ein Azure AD-Benutzer oder eine Azure AD-Gruppe sein. Wenn Sie der Gruppe mit der verwalteten Identität eine Administratorrolle zuweisen möchten, überspringen Sie die Schritte 3 und 4. Der Administrator erhält Vollzugriff auf die Datenbank.
 
-1. **[Erstellen Sie eigenständige Datenbankbenutzer](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)** für den Dienstprinzipal. Stellen Sie eine Verbindung mit dem Data Warehouse her, aus dem bzw. in das Sie Daten mithilfe von Tools wie SSMS kopieren möchten. Verwenden Sie dazu eine Azure AD-Identität, die mindestens die Berechtigung ALTER ANY USER aufweist. Führen Sie den folgenden T-SQL-Befehl aus:
+3. **[Erstellen Sie eigenständige Datenbankbenutzer](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)** für den Dienstprinzipal. Stellen Sie eine Verbindung mit dem Data Warehouse her, aus dem bzw. in das Sie Daten mithilfe von Tools wie SSMS kopieren möchten. Verwenden Sie dazu eine Azure AD-Identität, die mindestens die Berechtigung ALTER ANY USER aufweist. Führen Sie den folgenden T-SQL-Befehl aus:
     
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-1. **Gewähren Sie dem Dienstprinzipal die notwendigen Berechtigungen**, wie bei SQL- oder anderen Benutzern üblich. Führen Sie den folgenden Code aus:
+4. **Gewähren Sie dem Dienstprinzipal die notwendigen Berechtigungen**, wie bei SQL- oder anderen Benutzern üblich. Führen Sie den folgenden Code aus, oder machen Sie sich mit [weiteren Optionen](https://docs.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017) vertraut.
 
     ```sql
     EXEC sp_addrolemember [role name], [your application name];
     ```
 
-1. **Konfigurieren Sie einen mit Azure SQL Data Warehouse verknüpften Dienst** in Azure Data Factory.
+5. **Konfigurieren Sie einen mit Azure SQL Data Warehouse verknüpften Dienst** in Azure Data Factory.
 
 
 #### <a name="linked-service-example-that-uses-service-principal-authentication"></a>Beispiel eines verknüpften Diensts mit Dienstprinzipalauthentifizierung
@@ -184,36 +184,23 @@ Um die Azure AD-Anwendungstokenauthentifizierung basierend auf dem Dienstprinzip
 
 Eine Data Factory kann einer [verwalteten Identität für Azure-Ressourcen](data-factory-service-identity.md) zugeordnet werden, die diese spezielle Factory darstellt. Sie können diese verwaltete Identität für die Azure SQL Data Warehouse-Authentifizierung verwenden. Die angegebene Factory kann mithilfe dieser Identität auf Daten in Ihrem Data Warehouse zugreifen und diese kopieren.
 
-> [!IMPORTANT]
-> Beachten Sie, dass PolyBase für die Authentifizierung mit einer verwalteten Identität derzeit nicht unterstützt wird.
-
 Führen Sie die folgenden Schritte aus, um die Authentifizierung mit einer verwalteten Identität zu verwenden:
 
-1. **Erstellen Sie eine Gruppe in Azure AD.** Fügen Sie die verwaltete Identität der Gruppe als Mitglied hinzu.
+1. **[Geben Sie einen Azure Active Directory-Administrator](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)** für Ihre Azure SQL Server-Instanz im Azure-Portal an, falls dies noch nicht geschehen ist. Der Azure AD-Administrator kann ein Azure AD-Benutzer oder eine Azure AD-Gruppe sein. Wenn Sie der Gruppe mit der verwalteten Identität eine Administratorrolle zuweisen möchten, überspringen Sie die Schritte 3 und 4. Der Administrator erhält Vollzugriff auf die Datenbank.
 
-   1. Suchen Sie die verwaltete Identität von Data Factory im Azure-Portal. Wechseln Sie zu den **Eigenschaften** Ihrer Data Factory. Kopieren Sie die DIENSTIDENTITÄTS-ID.
-
-   1. Installieren Sie das [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2)-Modul. Melden Sie sich mit dem Befehl `Connect-AzureAD` an. Führen Sie die folgenden Befehle aus, um eine Gruppe zu erstellen und dieser die verwaltete Identität als Mitglied hinzuzufügen.
-      ```powershell
-      $Group = New-AzureADGroup -DisplayName "<your group name>" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
-      Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory managed identity object ID>"
-      ```
-
-1. **[Geben Sie einen Azure Active Directory-Administrator](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)** für Ihre Azure SQL Server-Instanz im Azure-Portal an, falls dies noch nicht geschehen ist.
-
-1. **[Erstellen Sie eigenständige Datenbankbenutzer](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)** für die Azure AD-Gruppe. Stellen Sie eine Verbindung mit dem Data Warehouse her, aus dem bzw. in das Sie Daten mithilfe von Tools wie SSMS kopieren möchten. Verwenden Sie dazu eine Azure AD-Identität, die mindestens die Berechtigung ALTER ANY USER aufweist. Führen Sie den folgenden T-SQL-Befehl aus. 
+2. **[Erstellen Sie für eine eigenständige Datenbank Benutzer](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)** für die verwaltete Data Factory-Identität. Stellen Sie eine Verbindung mit dem Data Warehouse her, aus dem bzw. in das Sie Daten mithilfe von Tools wie SSMS kopieren möchten. Verwenden Sie dazu eine Azure AD-Identität, die mindestens die Berechtigung ALTER ANY USER aufweist. Führen Sie den folgenden T-SQL-Befehl aus. 
     
     ```sql
-    CREATE USER [your Azure AD group name] FROM EXTERNAL PROVIDER;
+    CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
     ```
 
-1. **Gewähren Sie der Azure AD-Gruppe die notwendigen Berechtigungen**, wie bei SQL- und anderen Benutzern üblich. Führen Sie beispielsweise den folgenden Code aus.
+3. **Gewähren Sie der verwalteten Data Factory-Identität die notwendigen Berechtigungen**, und gehen Sie dabei so vor wie für SQL-Benutzer und andere Benutzer. Führen Sie den folgenden Code aus, oder machen Sie sich mit [weiteren Optionen](https://docs.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017) vertraut.
 
     ```sql
-    EXEC sp_addrolemember [role name], [your Azure AD group name];
+    EXEC sp_addrolemember [role name], [your Data Factory name];
     ```
 
-1. **Konfigurieren Sie einen mit Azure SQL Data Warehouse verknüpften Dienst** in Azure Data Factory.
+5. **Konfigurieren Sie einen mit Azure SQL Data Warehouse verknüpften Dienst** in Azure Data Factory.
 
 **Beispiel:**
 
@@ -277,7 +264,7 @@ Legen Sie zum Kopieren von Daten aus Azure SQL Data Warehouse die **type**-Eigen
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf **SqlDWSource** festgelegt sein. | Ja |
-| SqlReaderQuery | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `select * from MyTable`. | Nein  |
+| sqlReaderQuery | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `select * from MyTable`. | Nein  |
 | sqlReaderStoredProcedureName | Name der gespeicherten Prozedur, die Daten aus der Quelltabelle liest. Die letzte SQL-Anweisung muss eine SELECT-Anweisung in der gespeicherten Prozedur sein. | Nein  |
 | storedProcedureParameters | Parameter für die gespeicherte Prozedur.<br/>Zulässige Werte sind Namen oder Name-Wert-Paare. Die Namen und die Groß-/Kleinschreibung von Parametern müssen denen der Parameter der gespeicherten Prozedur entsprechen. | Nein  |
 
@@ -412,25 +399,29 @@ Im nächsten Abschnitt erfahren Sie mehr über das effiziente Laden in SQL Data 
 
 Mit [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) lassen sich große Datenmengen effizient und mit hohem Durchsatz in Azure SQL Data Warehouse laden. Wenn Sie PolyBase anstelle des standardmäßigen BULKINSERT-Mechanismus verwenden, wird der Durchsatz erheblich gesteigert. Einen ausführlichen Vergleich finden Sie unter [Leistungsreferenz](copy-activity-performance.md#performance-reference). Eine exemplarische Vorgehensweise mit einem Anwendungsfall finden Sie unter [Laden von 1 TB in Azure SQL Data Warehouse](https://docs.microsoft.com/azure/data-factory/v1/data-factory-load-sql-data-warehouse).
 
-* Wenn sich die Quelldaten in Azure Blob Storage oder Azure Data Lake Store befinden und ihr Format mit PolyBase kompatibel ist, können Sie sie mithilfe von PolyBase direkt nach Azure SQL Data Warehouse kopieren. Details finden Sie unter **[Direktes Kopieren mithilfe von PolyBase](#direct-copy-by-using-polybase)**.
+* Wenn sich Ihre Quelldaten in **Azure Blob, Azure Data Lake Storage Gen1 oder Azure Data Lake Storage Gen2** befinden und das **Format PolyBase-kompatibel ist**, können Sie mithilfe der Copy-Aktivität PolyBase direkt aufrufen, damit Azure SQL Data Warehouse die Daten aus der Quelle abrufen kann. Details finden Sie unter **[Direktes Kopieren mithilfe von PolyBase](#direct-copy-by-using-polybase)**.
 * Wenn der Speicher und das Format der Quelldaten von PolyBase ursprünglich nicht unterstützt werden, können Sie stattdessen das Feature **[Gestaffeltes Kopieren mit PolyBase](#staged-copy-by-using-polybase)** verwenden. Das gestaffelte Kopieren bietet auch einen höheren Durchsatz. Dabei werden die Daten automatisch in ein PolyBase-kompatibles Format konvertiert. Außerdem werden die Daten in Azure Blob Storage gespeichert. Anschließend werden die Daten in SQL Data Warehouse geladen.
-
-> [!IMPORTANT]
-> Beachten Sie, dass PolyBase derzeit nicht für die MSI-basierte Azure AD-Anwendungstokenauthentifizierung unterstützt wird.
 
 ### <a name="direct-copy-by-using-polybase"></a>Direktes Kopieren mithilfe von PolyBase
 
-Für SQL Data Warehouse unterstützt PolyBase Azure Blob Storage und Azure Data Lake Store direkt. Es verwendet den Dienstprinzipal als Quelle und setzt bestimmte Dateiformate voraus. Wenn Ihre Daten die in diesem Abschnitt beschriebenen Kriterien erfüllen, können Sie mithilfe von PolyBase direkt aus dem Quelldatenspeicher in Azure SQL Data Warehouse kopieren. Andernfalls können Sie das [gestaffelte Kopieren mit PolyBase](#staged-copy-by-using-polybase) verwenden.
+Für SQL Data Warehouse unterstützt PolyBase Azure Blob, Azure Data Lake Storage Gen1 und Azure Data Lake Storage Gen2 direkt. Wenn Ihre Daten die in diesem Abschnitt beschriebenen Kriterien erfüllen, können Sie mithilfe von PolyBase direkt aus dem Quelldatenspeicher in Azure SQL Data Warehouse kopieren. Andernfalls können Sie das [gestaffelte Kopieren mit PolyBase](#staged-copy-by-using-polybase) verwenden.
 
 > [!TIP]
-> Weitere Informationen zum effizienten Kopieren von Daten aus Data Lake Store nach SQL Data Warehouse finden Sie unter [Azure Data Factory makes it even easier and convenient to uncover insights from data when using Data Lake Store with SQL Data Warehouse](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/) (Wenn Data Lake Store mit SQL Data Warehouse verwendet wird, lassen sich mit Azure Data Factory noch einfacher Erkenntnisse aus Daten gewinnen).
+> Weitere Informationen zum effizienten Kopieren von Daten nach SQL Data Warehouse finden Sie unter [Wenn Data Lake Store mit SQL Data Warehouse verwendet wird, lassen sich mit Azure Data Factory noch einfacher Erkenntnisse aus Daten gewinnen](https://blogs.msdn.microsoft.com/azuredatalake/2017/04/08/azure-data-factory-makes-it-even-easier-and-convenient-to-uncover-insights-from-data-when-using-data-lake-store-with-sql-data-warehouse/).
 
 Falls die Anforderungen nicht erfüllt werden, überprüft Azure Data Factory die Einstellungen und greift bei der Datenverschiebung automatisch auf den BULKINSERT-Mechanismus zurück.
 
-1. Der Typ des **mit der verknüpften Diensts** ist Azure Blob-Speicher (**AzureBLobStorage**/**AzureStorage**) mit Kontoschlüsselauthentifizierung oder Azure Data Lake Storage Gen1 (**AzureDataLakeStore**) mit Dienstprinzipalauthentifizierung.
-2. Das **Eingabedataset** weist einen der Typen **AzureBlob** oder **AzureDataLakeStoreFile** auf. Der Formattyp unter den `type`-Eigenschaften lautet **OrcFormat**, **ParquetFormat** oder **TextFormat** mit folgenden Konfigurationen:
+1. Der **mit der Quelle verknüpfte Dienst** verfügt über die folgenden Typen und Authentifizierungsmethoden:
 
-   1. `fileName` enthält keinen Platzhalterfilter.
+    | Unterstützter Quelldatenspeichertyp | Unterstützter Quellauthentifizierungstyp |
+    |:--- |:--- |
+    | [Azure-Blob](connector-azure-blob-storage.md) | Kontoschlüsselauthentifizierung |
+    | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | Dienstprinzipalauthentifizierung |
+    | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Kontoschlüsselauthentifizierung |
+
+2. Das **Format des Quelldatasets** ist **ParquetFormat**, **OrcFormat** oder **TextFormat** mit folgenden Konfigurationen:
+
+   1. `folderPath` und `fileName` enthalten keinen Platzhalterfilter.
    2. `rowDelimiter` muss **\n** sein.
    3. `nullValue` ist entweder auf **eine leere Zeichenfolge** („“) festgelegt, oder der Standardwert wird übernommen und `treatEmptyAsNull` wird als Standardwert übernommen oder auf „true“ festgelegt.
    4. `encodingName` ist auf **utf-8** festgelegt. (Dies ist der Standardwert.)
@@ -439,7 +430,7 @@ Falls die Anforderungen nicht erfüllt werden, überprüft Azure Data Factory di
 
       ```json
       "typeProperties": {
-        "folderPath": "<blobpath>",
+        "folderPath": "<path>",
         "format": {
             "type": "TextFormat",
             "columnDelimiter": "<any delimiter>",
@@ -447,10 +438,6 @@ Falls die Anforderungen nicht erfüllt werden, überprüft Azure Data Factory di
             "nullValue": "",
             "encodingName": "utf-8",
             "firstRowAsHeader": <any>
-        },
-        "compression": {
-            "type": "GZip",
-            "level": "Optimal"
         }
       },
       ```
@@ -583,9 +570,9 @@ Beim Kopieren von Daten aus bzw. nach Azure SQL Data Warehouse werden die folgen
 | binary | Byte[] |
 | bit | Boolean |
 | char | String, Char[] |
-| date | DateTime |
-| Datetime | DateTime |
-| datetime2 | DateTime |
+| date | Datetime |
+| Datetime | Datetime |
+| datetime2 | Datetime |
 | Datetimeoffset | DateTimeOffset |
 | Decimal | Decimal |
 | FILESTREAM attribute (varbinary(max)) | Byte[] |
@@ -599,7 +586,7 @@ Beim Kopieren von Daten aus bzw. nach Azure SQL Data Warehouse werden die folgen
 | nvarchar | String, Char[] |
 | real | Single |
 | rowversion | Byte[] |
-| smalldatetime | DateTime |
+| smalldatetime | Datetime |
 | smallint | Int16 |
 | smallmoney | Decimal |
 | sql_variant | Object |
@@ -610,7 +597,7 @@ Beim Kopieren von Daten aus bzw. nach Azure SQL Data Warehouse werden die folgen
 | uniqueidentifier | Guid |
 | varbinary | Byte[] |
 | varchar | String, Char[] |
-| xml | Xml |
+| Xml | Xml |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher und -formate](copy-activity-overview.md##supported-data-stores-and-formats).

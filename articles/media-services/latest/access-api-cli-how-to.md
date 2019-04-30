@@ -10,23 +10,25 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: mvc
-ms.date: 01/28/2019
+ms.date: 04/15/2019
 ms.author: juliako
-ms.openlocfilehash: 257fe51cae245708816cd9a7bb0c33b6edf5aa05
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 8374e4c49012a2c49de41001be0fdb30f9151332
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756001"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617834"
 ---
 # <a name="access-azure-media-services-api-with-the-azure-cli"></a>Zugriff auf Azure Media Services API mit Azure CLI
  
-Verwenden Sie die Authentifizierung per Azure AD-Dienstprinzipal, um eine Verbindung mit der Azure Media Services-API herzustellen. Ihre Anwendung muss ein Azure AD-Token anfordern, das folgende Parameter aufweist:
+Zum Herstellen einer Verbindung mit der Azure Media Services-API mithilfe der Azure AD-Dienstprinzipalauthentifizierung muss Ihre Anwendung ein Azure AD-Token anfordern, das die folgenden Parameter aufweist:
 
 * Azure AD-Mandantenendpunkt
 * Media Services-Ressourcen-URI
 * Ressourcen-URI für REST Media Services
 * Werte der Azure AD-Anwendung: Client-ID und Clientgeheimnis
+
+Ausführliche Erläuterungen finden Sie unter [Zugreifen auf Media Services v3-APIs](media-services-apis-overview.md#accessing-the-azure-media-services-api).
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure CLI eine Azure AD-Anwendung und einen Dienstprinzipal erstellen und die Werte abrufen, die für den Zugriff auf Azure Media Services-Ressourcen erforderlich sind.
 

@@ -12,25 +12,31 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 32b566056de76d4e73b88c7ce37e148b4ecc3fd7
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 6159609f894f967e8ee372a0ee316eb900537aba
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587870"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59500837"
 ---
 # <a name="how-to-use-service-bus-queues-with-nodejs"></a>Verwenden von Service Bus-Warteschlangen mit Node.js
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-In diesem Artikel wird beschrieben, wie Sie Service Bus-Warteschlangen mit Node.js verwenden. Die Beispiele sind in JavaScript geschrieben und verwenden das Azure-Modul Node.js. Die Szenarios behandeln die Themen **Erstellen von Warteschlangen**, **Senden und Empfangen von Nachrichten** und **Löschen von Warteschlangen**. Weitere Informationen zu Warteschlangen finden Sie im Abschnitt [Nächste Schritte](#next-steps).
+In diesem Tutorial erfahren Sie, wie Sie Node.js-Anwendungen erstellen, um Nachrichten an eine Service Bus-Warteschlange zu senden und Antworten zu empfangen. Die Beispiele sind in JavaScript geschrieben und verwenden das Azure-Modul Node.js. 
 
-[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+## <a name="prerequisites"></a>Voraussetzungen
+1. Ein Azure-Abonnement. Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Sie können Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF) registrieren.
+2. Wenn Sie über keine Warteschlange verfügen, führen Sie die Schritte im Artikel [Schnellstart: Erstellen einer Service Bus-Warteschlange mithilfe des Azure-Portals](service-bus-quickstart-portal.md) aus, um eine Warteschlange zu erstellen.
+    1. Lesen Sie die kurze **Übersicht** über Service Bus-**Warteschlangen**. 
+    2. Erstellen Sie einen Service Bus-**Namespace**. 
+    3. Rufen Sie die **Verbindungszeichenfolge** ab. 
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-
+        > [!NOTE]
+        > In diesem Tutorial erstellen Sie eine **Warteschlange** im Service Bus-Namespace mithilfe von Node.js. 
+ 
 
 ## <a name="create-a-nodejs-application"></a>Erstellen einer Node.js-Anwendung
 Erstellen Sie eine leere Node.js-Anwendung. Anweisungen zum Erstellen von Node.js-Anwendungen finden Sie unter [Erstellen und Bereitstellen einer Node.js-Anwendung auf einer Azure-Website][Create and deploy a Node.js application to an Azure Website] und [Node.js-Clouddienst][Node.js Cloud Service] (mithilfe von Windows PowerShell).
@@ -114,7 +120,7 @@ Nachdem die Vorverarbeitung der Anforderungsoptionen abgeschlossen ist, muss die
 function (returnObject, finalCallback, next)
 ```
 
-Nach der Verarbeitung von `returnObject` (die Antwort auf die an den Server gesendete Anforderung) muss der Rückruf entweder `next` aufrufen (sofern vorhanden), um weitere Filter zu verarbeiten, oder er muss einfach `finalCallback` aufrufen, um den Dienstaufruf zu beenden.
+Nach der Verarbeitung von `returnObject` (die Antwort auf die an den Server gesendete Anforderung) muss der Rückruf entweder `next` aufrufen (sofern vorhanden), um weitere Filter zu verarbeiten, oder er muss `finalCallback` aufrufen, um den Dienstaufruf zu beenden.
 
 Das Azure SDK für Node.js enthält zwei Filter zur Implementierung von Wiederholungslogik: `ExponentialRetryPolicyFilter` und `LinearRetryPolicyFilter`. Der folgende Code erstellt ein Objekt vom Typ `ServiceBusService`, das `ExponentialRetryPolicyFilter` verwendet:
 
@@ -173,7 +179,7 @@ serviceBusService.receiveQueueMessage('myqueue', { isPeekLock: true }, function(
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Behandeln von Anwendungsabstürzen und nicht lesbaren Nachrichten
 Service Bus stellt Funktionen zur Verfügung, die Sie bei der ordnungsgemäßen Behandlung von Fehlern in der Anwendung oder bei Problemen beim Verarbeiten einer Nachricht unterstützen. Wenn eine Empfängeranwendung die Nachricht aus einem bestimmten Grund nicht verarbeiten kann, kann sie die Methode `unlockMessage` für das Objekt **ServiceBusService** aufrufen. Dies führt dazu, dass Service Bus die Nachricht innerhalb der Warteschlange entsperrt und verfügbar macht, damit sie erneut empfangen werden kann, und zwar entweder durch dieselbe verarbeitende Anwendung oder durch eine andere verarbeitende Anwendung.
 
-Zudem wird einer in der Warteschlange gesperrten Anwendung ein Zeitlimit zugeordnet. Wenn die Anwendung die Nachricht vor Ablauf des Sperrzeitlimits nicht verarbeiten kann (zum Beispiel, wenn die Anwendung abstürzt), entsperrt Service Bus die Nachricht automatisch und macht sie verfügbar, um erneut empfangen zu werden.
+Zudem wird einer in der Warteschlange gesperrten Anwendung ein Zeitlimit zugeordnet. Wenn die Anwendung die Nachricht vor Ablauf des Sperrzeitlimits nicht verarbeiten kann (zum Beispiel wenn die Anwendung abstürzt), entsperrt Service Bus die Nachricht automatisch und macht sie verfügbar, um erneut empfangen zu werden.
 
 Falls die Anwendung nach der Verarbeitung der Nachricht, aber vor dem Aufruf der Methode `deleteMessage` abstürzt, wird die Nachricht wieder an die Anwendung zugestellt, wenn diese neu gestartet wird. Dies wird häufig als *At Least Once Processing* bezeichnet und bedeutet, dass jede Nachricht mindestens einmal verarbeitet wird, wobei dieselbe Nachricht in bestimmten Situationen möglicherweise erneut zugestellt wird. Wenn eine doppelte Verarbeitung im betreffenden Szenario nicht geeignet ist, sollten Anwendungsentwickler ihrer Anwendung zusätzliche Logik für den Umgang mit der Übermittlung doppelter Nachrichten hinzufügen. Dies wird häufig durch die Verwendung der **MessageId**-Eigenschaft der Nachricht erzielt, die über mehrere Zustellungsversuche hinweg konstant bleibt.
 

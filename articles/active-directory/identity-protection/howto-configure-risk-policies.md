@@ -17,12 +17,12 @@ ms.date: 02/07/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbc2a1bd8b751ab1b88e54876227892ea3c257a3
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: cdacdf604ab7a4ded7ddf302a217084630f60b31
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517537"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699030"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>Anleitung: Konfigurieren von Risikorichtlinien in Azure Active Directory Identity Protection (aktualisiert)
 
@@ -41,7 +41,8 @@ Azure AD analysiert jede Anmeldung eines Benutzers. Das Ziel der Analyse besteht
 
 Die Richtlinie zum Anmelderisiko ist eine automatisierte Antwort, die Sie für eine bestimmte Risikostufe der Anmeldung konfigurieren können. In Ihrer Antwort können Sie den Zugriff auf Ihre Ressourcen blockieren oder die Durchführung einer mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) zur Bedingung machen, bevor der Zugriff gewährt wird.
 
-   
+Wenn ein Benutzer eine MFA-Eingabeaufforderung, die durch die Anmelderisiko-Richtlinie ausgelöst wird, erfolgreich abschließt, gibt er Identity Protection eine Rückmeldung, dass die Anmeldung vom legitimen Benutzer stammt. Somit wird das Anmelde-Risikoereignis, das die MFA-Anfrage ausgelöst hat, automatisch geschlossen, und Identity Protection verhindert, dass dieses Ereignis zur Erhöhung des Benutzerrisikos beiträgt. Die Aktivierung der Anmelderisiko-Richtlinie kann überflüssigen Code in der Ansicht mit den risikoreichen Anmeldungen reduzieren, indem sie es den Benutzern ermöglicht, bei Aufforderung zur MFA selbstständig zu korrigieren und anschließend automatisch die zugehörige risikoreiche Anmeldung zu schließen.
+
 ## <a name="how-do-i-access-the-sign-in-risk-policy"></a>Wie greife ich auf die Richtlinie zum Anmelderisiko zu?
    
 Die Richtlinie zum Anmelderisiko befindet sich auf der [Azure AD Identity Protection-Seite](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy) im Abschnitt **Konfigurieren**.

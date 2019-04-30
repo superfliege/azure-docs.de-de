@@ -12,44 +12,30 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: a8b9c4c6cf9671e114da6ef9fc1f2ad0a730fb61
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0771656358503afc91bab7523d0c835e0050c2bc
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57872618"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607873"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>Verwenden von Service Bus-Themen und -Abonnements mit Java
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-Diese Schnellstartanleitung umfasst folgende Schritte: 
-
-- Erstellen eines Themas über das Azure-Portal
-- Erstellen von drei Abonnements für das Thema über das Azure-Portal
-- Schreiben von Java-Code zum Senden von Nachrichten an das Thema
-- Schreiben von Java-Code zum Empfangen von Nachrichten aus Abonnements
+In dieser Schnellstartanleitung erstellen Sie Java-Code, um Nachrichten an ein Service Bus-Thema zu senden, und empfangen dann Nachrichten von Abonnements für dieses Thema. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free), bevor Sie beginnen.
-- [Azure SDK für Java][Azure SDK for Java]. 
-
-## <a name="what-are-service-bus-topics-and-subscriptions"></a>Was sind Service Bus-Themen und -Abonnements?
-Service Bus-Themen und -Abonnements unterstützen ein Modell der Messagingkommunikation über das *Veröffentlichen/Abonnieren* . Bei der Verwendung von Themen und Abonnements kommunizieren die Komponenten einer verteilten Anwendung nicht direkt miteinander, sondern tauschen Nachrichten über ein Thema aus, das als Zwischenstufe fungiert.
-
-![TopicConcepts](./media/service-bus-java-how-to-use-topics-subscriptions/sb-topics-01.png)
-
-Anders als bei Service Bus-Warteschlangen, bei denen jede Nachricht von einem einzelnen Consumer verarbeitet wird, bieten Themen und Abonnements eine 1:n-Kommunikationsform mit einem Veröffentlichungs- und Abonnementmuster. Es ist möglich, mehrere Abonnements zu einem Thema anzumelden. Wenn eine Nachricht an ein Thema gesendet wird, steht sie in jedem Abonnement zur Verfügung, wo sie unabhängig von den anderen Abonnements verarbeitet wird. Ein Themenabonnement ähnelt einer virtuellen Warteschlange, die Kopien der Nachrichten enthält, die an das Thema gesendet wurden. Sie können optional auch Filterregeln für einzelne Abonnements eines Themas anmelden. Auf diese Weise können Sie filtern oder einschränken, welche Nachrichten an ein Thema von welchen Themenabonnements empfangen werden.
-
-Mit Service Bus-Themen und -Abonnements können Sie viele Nachrichten an eine große Anzahl von Benutzern und Anwendungen verarbeiten.
-
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-
-[!INCLUDE [service-bus-create-topics-three-subscriptions-portal](../../includes/service-bus-create-topics-three-subscriptions-portal.md)]
-
+1. Ein Azure-Abonnement. Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Sie können [Ihre Visual Studio-oder MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) oder [sich für ein kostenloses Konto anmelden](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Befolgen Sie die Schritte im [Schnellstart: Erstellen eines Service Bus-Themas und eines oder mehrerer Abonnements dieses Themas im Azure-Portal](service-bus-quickstart-topics-subscriptions-portal.md), um folgende Aufgaben durchzuführen:
+    1. Erstellen Sie einen Service Bus-**Namespace**.
+    2. Rufen Sie die **Verbindungszeichenfolge** ab.
+    3. Erstellen Sie ein **Thema** im Namespace.
+    4. Erstellen Sie **drei Abonnements** für das Thema im Namespace.
+3. [Azure SDK für Java][Azure SDK for Java].
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurieren Ihrer Anwendung für die Verwendung von Service Bus
 Stellen Sie vor dem Erstellen dieses Beispiels sicher, dass Sie das [Azure SDK für Java][Azure SDK for Java] installiert haben. Wenn Sie Eclipse verwenden, können Sie das [Azure Toolkit für Eclipse][Azure Toolkit for Eclipse] installieren, das das Azure SDK für Java enthält. Sie können dann Ihrem Projekt die **Microsoft Azure-Bibliotheken für Java** hinzufügen:

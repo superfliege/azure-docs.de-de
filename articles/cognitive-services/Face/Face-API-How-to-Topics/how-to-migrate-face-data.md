@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: lewlu
-ms.openlocfilehash: 95b339e8d7f2c5c63c30e002411152b50cece2a5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 30ceb0e396597530071c70c4448761d914acb4ac
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448780"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548403"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Migrieren Ihrer Gesichtserkennungsdaten in ein anderes Abonnement für die Gesichtserkennung
 
@@ -79,7 +79,7 @@ var takeSnapshotResult = await FaceClientEastAsia.Snapshot.TakeAsync(
 ```
 
 > [!NOTE]
-> Durch das Erstellen und Anwenden von Momentaufnahmen werden reguläre Aufrufe von **PersonGroup** (oder **FaceList**) in Quelle oder Ziel nicht unterbrochen. Es wird jedoch nicht empfohlen, gleichzeitig Aufrufe zur Quellobjektänderung durchzuführen (z.B. [Aufrufe zum Verwalten von Gesichtserkennungslisten](https://docs.microsoft.com/rest/api/cognitiveservices/face/facelist) oder Aufrufe zum [Trainieren von Personengruppen](https://docs.microsoft.com/rest/api/cognitiveservices/face/persongroup/train)), da der Momentaufnahmevorgang vor oder nach diesen Vorgängen ausgeführt werden oder zu Fehlern führen kann. 
+> Durch das Erstellen und Anwenden von Momentaufnahmen werden reguläre Aufrufe von **PersonGroup** (oder **FaceList**) in Quelle oder Ziel nicht unterbrochen. Es wird jedoch nicht empfohlen, gleichzeitig Aufrufe zur Quellobjektänderung durchzuführen (z. B. [Aufrufe zum Verwalten von Gesichtserkennungslisten](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations?view=azure-dotnet) oder Aufrufe zum [Trainieren von Personengruppen](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet)), da der Momentaufnahmevorgang vor oder nach diesen Vorgängen ausgeführt werden oder zu Fehlern führen kann.
 
 ## <a name="retrieve-the-snapshot-id"></a>Abrufen der Momentaufnahme-ID
 

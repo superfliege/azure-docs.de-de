@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 1dac87ae07fac6a997cfd8e83c1e47ff39a91a83
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0d3123b1e0238a1907b5ad3d487b92a7919ff181
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096689"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524258"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>Hinzufügen einer Entität zu Beispieläußerungen 
 
@@ -91,6 +91,8 @@ Bei der Äußerung `Does John Smith work in Seattle?` kann eine zusammengesetzte
 
 ## <a name="add-hierarchical-entity"></a>Hinzufügen einer Entität vom Typ „Hierarchisch“
 
+**Hierarchische Einheiten werden möglicherweise veraltet sein. Verwenden Sie [Entitätsrollen](luis-concept-roles.md) zum Ermitteln von Entitätsuntertypen, anstatt hierarchische Entitäten zu verwenden.**
+
 Eine hierarchische Entität ist eine Kategorie von im Kontext erlernten und konzeptionell verwandten Entitäten. Die Entität im folgenden Beispiel enthält Abflug- und Zielorte. 
 
 In der Äußerung `Move John Smith from Seattle to Cairo` ist Seattle der Abflug- und Kairo der Zielort. Die Orte unterscheiden sich durch den Kontext und werden aufgrund der Wortstellung und Wortwahl in der Äußerung erlernt.
@@ -105,6 +107,12 @@ In der Äußerung `Move John Smith from Seattle to Cairo` ist Seattle der Abflug
 
     >[!CAUTION]
     >Die Namen untergeordneter Entitäten müssen für alle Entitäten einer einzelnen App eindeutig sein. Zwei unterschiedliche hierarchische Entitäten dürfen keine untergeordneten Elemente mit dem gleichen Namen enthalten. 
+
+## <a name="add-entitys-role-to-utterance"></a>Hinzufügen der Rolle der Entität zur Äußerung
+
+Eine Rolle ist ein benannter Untertyp einer Entität, der durch den Kontext der Äußerung bestimmt wird. Sie können eine Entität innerhalb einer Äußerung als Entität markieren oder eine Rolle innerhalb dieser Entität auswählen. Jede Entität kann Rollen aufweisen, einschließlich benutzerdefinierter Entitäten, die durch maschinelles Lernen erworben werden (einfache Entitäten und zusammengesetzte Entitäten), die nicht durch maschinelles Lernen erworben werden (vorkonfigurierte Entitäten, Entitäten mit regulären Ausdrücken, Listenentitäten). 
+
+Informationen zum [Markieren einer Äußerung mit Entitätsrollen](tutorial-entity-roles.md) erhalten Sie ein einem praxisorientierten Tutorial. 
 
 ## <a name="entity-status-predictions"></a>Vorhersagen zum Entitätsstatus
 
@@ -151,11 +159,11 @@ Um eine durch maschinelles Lernen erworbene Entität aus einer Äußerung zu ent
 
 ### <a name="add-prebuilt-entity-label"></a>Hinzufügen von vordefinierten Entitätsbeschriftungen
 
-Wenn Sie Ihrer LUIS-App die vordefinierten Entitäten hinzufügen, müssen Sie die Äußerungen nicht mit diesen Entitäten markieren. Weitere Informationen zu vordefinierten Entitäten und wie Sie sie hinzufügen finden Sie unter [Hinzufügen von Entitäten](luis-how-to-add-entities.md#add-prebuilt-entity).
+Wenn Sie Ihrer LUIS-App die vordefinierten Entitäten hinzufügen, müssen Sie die Äußerungen nicht mit diesen Entitäten markieren. Weitere Informationen zu vordefinierten Entitäten und wie Sie sie hinzufügen finden Sie unter [Hinzufügen von Entitäten](luis-how-to-add-entities.md#add-a-prebuilt-entity-to-your-app).
 
 ### <a name="add-regular-expression-entity-label"></a>Hinzufügen einer Entitätsbeschriftung vom Typ „Regulärer Ausdruck“
 
-Wenn Sie Ihrer LUIS-App die Entitäten vom Typ „Regulärer Ausdruck“ hinzufügen, müssen Sie die Äußerungen nicht mit diesen Entitäten markieren. Weitere Informationen zu Entitäten vom Typ „Regulärer Ausdruck“ und wie Sie sie hinzufügen finden Sie unter [Hinzufügen von Entitäten](luis-how-to-add-entities.md#add-regular-expression-entities).
+Wenn Sie Ihrer LUIS-App die Entitäten vom Typ „Regulärer Ausdruck“ hinzufügen, müssen Sie die Äußerungen nicht mit diesen Entitäten markieren. Weitere Informationen zu Entitäten vom Typ „Regulärer Ausdruck“ und wie Sie sie hinzufügen finden Sie unter [Hinzufügen von Entitäten](luis-how-to-add-entities.md#add-regular-expression-entities-for-highly-structured-concepts).
 
 
 ### <a name="create-a-pattern-from-an-utterance"></a>Erstellen eines Musters aus einer Äußerung

@@ -1,76 +1,109 @@
 ---
 title: Indizierungsrichtlinien für Azure Cosmos DB
-description: Erhalten Sie Informationen zur Funktionsweise der Indizierung in Azure Cosmos DB. In diesem Artikel wird das Konfigurieren und Ändern der Indizierungsrichtlinie zur automatischen Indizierung und zur Steigerung der Leistung erläutert.
-author: rimman
+description: In diesem Artikel werden das Konfigurieren und Ändern der Standardindizierungsrichtlinie zur automatischen Indizierung und zur Steigerung der Leistung in Azure Cosmos DB erläutert.
+author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.author: rimman
-ms.openlocfilehash: 6998db1679e67f8ac4bf7c81ea9373c66a9618ee
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.author: thweiss
+ms.openlocfilehash: 67bc3076be91ade140b39b7dd8037299902546a9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59278563"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005093"
 ---
-# <a name="index-policy-in-azure-cosmos-db"></a>Indizierungsrichtlinie in Azure Cosmos DB
+# <a name="indexing-policies-in-azure-cosmos-db"></a>Indizierungsrichtlinien in Azure Cosmos DB
 
-Sie können die standardmäßige Indizierungsrichtlinie für einen Azure Cosmos-Container überschreiben, indem Sie die folgenden Parameter konfigurieren:
+In Azure Cosmos DB verfügt jeder Container über eine Indizierungsrichtlinie, die bestimmt, wie die Elemente eines Containers indiziert werden. Die standardmäßige Indizierungsrichtlinie für neu erstellte Container indiziert sämtliche Eigenschaften jedes Elements und erzwingt Bereichsindizes für jede Zeichenfolge oder Zahl und räumliche Indizes für jedes GeoJSON-Objekt vom Typ „Punkt“. Dadurch erzielen Sie eine hohe Abfrageleistung, ohne sich im Vorfeld Gedanken über die Indizierung und Indexverwaltung machen zu müssen.
 
-* **Ein- oder Ausschließen von Elementen und Pfaden im Index:** Sie können bestimmte Elemente aus dem Index ausschließen oder im Index einschließen, wenn Sie die Elemente in einem Container einfügen oder ersetzen. Sie können auch bestimmte Pfade/Eigenschaften, die über Container hinweg indiziert werden sollen, ein- oder ausschließen. Pfade können Platzhaltermuster enthalten, z.B. *.
+In einigen Fällen ist eventuell sinnvoll, dieses automatische Verhalten besser an Ihre Anforderungen anzupassen. Sie können die Indizierungsrichtlinie eines Containers anpassen, indem Sie seinen *Indizierungsmodus* festlegen und *Eigenschaftenpfade* ein- oder ausschließen.
 
-* **Konfigurieren von Indextypen:** Zusätzlich zu den bereichsindizierten Pfaden können Sie weitere Indextypen hinzufügen, z. B. den räumlichen Index.
+## <a name="indexing-mode"></a>Indizierungsmodus
 
-* **Konfigurieren von Indizierungsmodi:** Durch die Verwendung der Indizierungsrichtlinie für einen Container können Sie verschiedene Indizierungsmodi wie *Konsistent* oder *Kein* konfigurieren.
+Azure Cosmos DB unterstützt zwei Indizierungsmodi:
 
-## <a name="indexing-modes"></a>Indizierungsmodi
+- **Konsistent:** Wenn die Indizierungsrichtlinie eines Containers auf „Konsistent“ festgelegt ist, wird der Index synchron aktualisiert, wenn Sie Elemente erstellen, aktualisieren oder löschen. Damit entspricht die Konsistenz Ihrer Leseabfragen der [für das Konto konfigurierten Konsistenz](consistency-levels.md).
 
-Azure Cosmos DB unterstützt zwei Indizierungsmodi, die Sie in einem Azure Cosmos-Container über eine Indizierungsrichtlinie konfigurieren können:
+- **Keine:** Wenn die Indizierungsrichtlinie eines Containers auf „Keine“ festgelegt wird, ist die Indizierung für diesen Container praktisch deaktiviert. Dies wird häufig verwendet, wenn ein Container als reiner Schlüssel-Wert-Speicher verwendet wird, für den keine sekundären Indizes erforderlich sind. Dies kann auch Masseneinfügevorgänge beschleunigen.
 
-* **Konsistent:** Wenn die Richtlinie eines Azure Cosmos-Containers auf *Konsistent* festgelegt ist, gilt für die Abfragen für einen bestimmten Container die gleiche Konsistenzebene wie die für Punktlesevorgänge angegebene Ebene (z. B. „stark“, „begrenzte Veraltung“, „Sitzung“ oder „letztlich“). 
+## <a name="including-and-excluding-property-paths"></a>Ein- und Ausschließen von Eigenschaftenpfaden
 
-  Der Index wird synchron aktualisiert, wenn Sie die Elemente aktualisieren. Beispielsweise führen Einfüge-, Ersetzungs-, Aktualisierungs- und Löschvorgänge an einem Element zum Aktualisieren des Index. Die konsistente Indizierung unterstützt konsistente Abfragen auf Kosten einer möglichen Verringerung des Schreibdurchsatzes. Die Reduzierung des Schreibdurchsatzes hängt von den „Pfaden im Index“ und der „Konsistenzebene“ ab. Der konsistente Indizierungsmodus dient dazu, den Index mit allen Updates aktuell zu halten und Abfragen direkt zu verarbeiten.
+Mit einer benutzerdefinierten Indizierungsrichtlinie können Eigenschaftenpfade angegeben werden, die explizit in die Indizierung eingeschlossen oder von ihr ausgeschlossen werden. Durch das Optimieren der Anzahl der Pfade, die indiziert werden, können Sie das Speichervolumen, das von Ihrem Container verwendet wird, und die Latenz von Schreibvorgängen verringern. Diese Pfade werden anhand [der Methode, die im Übersichtsabschnitt zur Indizierung beschrieben wird](index-overview.md#from-trees-to-property-paths), definiert. Dabei gelten die folgenden Ergänzungen:
 
-* **Keine:** Einem Container mit dem Indizierungsmodus „Kein“ ist kein Index zugeordnet. Diese Option wird häufig verwendet, wenn Azure Cosmos DB als Schlüssel-Wert-Speicher genutzt wird und auf Elemente nur nach ihrer ID-Eigenschaft zugegriffen wird.
+- Ein Pfad zu einem Skalarwert (Zeichenfolge oder Zahl) endet auf `/?`.
+- Elemente aus einem Array werden über die `/[]`-Notation (anstelle von `/0`, `/1` usw.) adressiert.
+- Der Platzhalter `/*` kann verwendet werden, um alle Elemente unter einem Knoten einzufügen.
 
-  > [!NOTE]
-  > Das Konfigurieren des Indizierungsmodus als *Keine* hat die Nebenwirkung, dass alle vorhandenen Indizes gelöscht werden. Verwenden Sie diese Option, wenn Ihre Zugriffsmuster nur „ID“ oder „Self-Link“ erfordern.
+Betrachten wir dasselbe Beispiel erneut:
 
-Konsistenzebenen für Abfragen werden ähnlich wie reguläre Lesevorgänge verwaltet. Azure Cosmos DB gibt einen Fehler zurück, wenn Sie den Container mit dem Indizierungsmodus *Keine* abfragen. Sie können Abfragen als Scans über den expliziten Header **x-ms-documentdb-enable-scan** in der REST-API oder über die Anforderungsoption **EnableScanInQuery** mithilfe des .NET SDK ausführen. Einige Abfragefunktionen, wie ORDER BY, werden derzeit von **EnableScanInQuery** nicht unterstützt, da sie einen entsprechenden Index erfordern.
+    {
+        "locations": [
+            { "country": "Germany", "city": "Berlin" },
+            { "country": "France", "city": "Paris" }
+        ],
+        "headquarters": { "country": "Belgium", "employees": 250 }
+        "exports": [
+            { "city": "Moscow" },
+            { "city": "Athens" }
+        ]
+    }
+
+- Der `employees`-Pfad von `headquarters` lautet `/headquarters/employees/?`.
+- Der `country`-Pfad von `locations` lautet `/locations/[]/country/?`.
+- Der Pfad zu allen Elementen unter `headquarters` lautet `/headquarters/*`.
+
+Wenn ein Pfad explizit in eine Indizierungsrichtlinie eingeschlossen wird, muss diese auch definieren, welche Indextypen auf diesen Pfad angewandt werden. Außerdem muss für jeden Index angegeben werden, für welchen Datentyp dieser Index gilt:
+
+| Indextyp | Zulässige Zieldatentypen |
+| --- | --- |
+| Range | Zeichenfolge oder Zahl |
+| Spatial | Point, LineString oder Polygon |
+
+Wir könnten beispielsweise den Pfad `/headquarters/employees/?` einschließen und angeben, dass ein `Range`-Index auf diesen Pfad für die beiden Werte `String` und `Number` angewandt werden soll.
+
+### <a name="includeexclude-strategy"></a>Strategie für das Ein- und Ausschließen
+
+Jede Indizierungsrichtlinie muss den Stammpfad `/*` entweder als eingeschlossenen oder als ausgeschlossenen Pfad enthalten.
+
+- Schließen Sie den Stammpfad ein, um einzelne Pfade auszuschließen, die nicht indiziert werden müssen. Dies ist die empfohlene Vorgehensweise, da dabei Azure Cosmos DB proaktiv jede neue Eigenschaft indiziert, die dem Modell hinzugefügt wird.
+- Schließen Sie den Stammpfad aus, um einzelne Pfade einzuschließen, die indiziert werden müssen.
+
+In [diesem Abschnitt](how-to-manage-indexing-policy.md#indexing-policy-examples) finden Sie Beispiele für Indizierungsrichtlinien.
 
 ## <a name="modifying-the-indexing-policy"></a>Ändern der Indizierungsrichtlinie
 
-In Azure Cosmos DB können Sie die Indizierungsrichtlinie eines Containers jederzeit aktualisieren. Eine Änderung der Indizierungsrichtlinie im Azure Cosmos-Container kann zu einer Änderung der Form des Index führen. Diese Änderung wirkt sich auf die indizierbaren Pfade, deren Genauigkeit und auf das Konsistenzmodell des Index aus. Eine Änderung der Indizierungsrichtlinie erfordert effektiv eine Transformation des alten Index in einen neuen Index.
+Die Indizierungsrichtlinie eines Containers kann jederzeit [im Azure-Portal oder mit einem der unterstützten SDKs](how-to-manage-indexing-policy.md) aktualisiert werden. Die Aktualisierung einer Indizierungsrichtlinie löst eine Transformation vom alten Index auf den neuen aus. Dies erfolgt online und direkt (sodass während des Vorgangs kein zusätzlicher Speicherplatz verbraucht wird). Der Index der alten Richtlinie wird effizient anhand der neuen Richtlinie transformiert, ohne die Schreibverfügbarkeit oder den Durchsatz, der für den Container bereitgestellt wird, zu beeinträchtigen. Die Indextransformation ist ein asynchroner Vorgang. Der erforderliche Zeitaufwand hängt vom bereitgestellten Durchsatz, der Anzahl der Elemente und ihrer Größe ab. 
 
-### <a name="index-transformations"></a>Indextransformationen
+> [!NOTE]
+> Während der Neuindizierung geben Abfragen möglicherweise nicht alle übereinstimmenden Ergebnisse zurück und geben dabei keinen Fehler zurück. Dies bedeutet, dass die Abfrageergebnisse möglicherweise bis zum Abschluss der Transformation nicht konsistent sind. Es ist möglich, den Fortschritt der Indextransformation [mit einem der SDKs](how-to-manage-indexing-policy.md) zu verfolgen.
 
-Alle Indextransformationen erfolgen online. Die nach der alten Richtlinie indizierten Elemente werden effizient anhand der neuen Richtlinie transformiert, ohne die Schreibverfügbarkeit oder den Durchsatz, der für den Container bereitgestellt wird, zu beeinträchtigen. Die Indextransformation hat keine Auswirkungen auf die Konsistenz der Lese- und Schreibvorgänge, die mithilfe der REST-API, SDKs oder gespeicherter Prozeduren und Trigger erfolgen.
+Wenn der Modus der neuen Indizierungsrichtlinie auf „Konsistent“ festgelegt wurde, kann während der Ausführung der Indextransformation keine andere Änderung an der Indizierungsrichtlinie angewandt werden. Sie können eine aktuell ausgeführte Indextransformation abbrechen, indem Sie den Modus der Indizierungsrichtlinie auf „Keine“ festlegen (der Index wird direkt gelöscht).
 
-Das Ändern der Indizierungsrichtlinie ist ein asynchroner Vorgang, und die Zeit, die für die Durchführung des Vorgangs benötigt wird, hängt von der Anzahl von Elementen, dem bereitgestellten Durchsatz und der Größe der Elemente ab. Während die Neuindizierung durchgeführt wird, gibt Ihre Abfrage ggf. nicht alle übereinstimmenden Ergebnisse zurück, wenn die Abfrage den Index verwendet, der gerade geändert wird. Bei Abfragen werden dann keine Fehler bzw. Ausfälle zurückgegeben. Während der Neuindizierung werden Abfragen unabhängig von der Indizierungsmoduskonfiguration letztendlich konsistent durchgeführt. Nachdem die Indextransformation abgeschlossen ist, werden weiterhin konsistente Ergebnisse angezeigt. Dies gilt für Abfragen, die von den Schnittstellen ausgegeben werden – z.B. REST-API, SDKs oder gespeicherte Prozeduren und Trigger. Die Indextransformation wird asynchron im Hintergrund auf den Replikaten mithilfe der freien Ressourcen ausgeführt, die für ein bestimmtes Replikat verfügbar sind.
+## <a name="indexing-policies-and-ttl"></a>Indizierungsrichtlinien und Gültigkeitsdauer
 
-Alle Indextransformationen werden direkt vorgenommen. Azure Cosmos DB behält nicht zwei Kopien des Index bei. Dies bedeutet, dass beim Ausführen von Indextransformationen in Ihren Containern kein zusätzlicher Speicherplatz erforderlich ist oder belegt wird.
+Für die Funktion [Gültigkeitsdauer](time-to-live.md) (Time-to-Live, TTL) muss die Indizierung für den Container aktiviert sein. Dies bedeutet Folgendes:
 
-Wenn Sie die Indizierungsrichtlinie ändern, werden die Änderungen aus dem alten Index in erster Linie auf der Grundlage der Konfigurationen des Indizierungsmodus in den neuen Index übernommen. Konfigurationen des Indizierungsmodus spielen eine große Rolle im Vergleich zu anderen Eigenschaften wie eingeschlossenen/ausgeschlossenen Pfaden, Indexarten und Genauigkeit.
+- Es ist nicht möglich, die Gültigkeitsdauer (TTL) für einen Container zu aktivieren, wenn dessen Indizierungsmodus auf „Keine“ festgelegt ist.
+- Es ist nicht möglich, den Indizierungsmodus für einen Container, in dem die Gültigkeitsdauer (TTL) aktiviert ist, auf „Keine“ festzulegen.
 
-Wenn sowohl die alten als auch die neuen Richtlinien **konsistente** Indizierung verwenden, führt Azure Cosmos DB eine Onlineindextransformation durch. Während der Ausführung der Transformation können Sie keine weitere Änderung an der Indizierungsrichtlinie vornehmen, die den Indizierungsmodus „Konsistent“ aufweist. Wenn Sie zum Indizierungsmodus „Keine“ wechseln, wird der Index sofort gelöscht. Der Wechseln zu „Keine“ ist nützlich, wenn Sie eine laufende Transformation abbrechen und mit einer anderen Indizierungsrichtlinie neu beginnen möchten.
+Für Szenarien, in denen kein Eigenschaftenpfad indiziert werden muss, aber die Gültigkeitsdauer (TTL) erforderlich ist, können Sie eine Indizierungsrichtlinie mit Folgendem verwenden:
 
-## <a name="modifying-the-indexing-policy---examples"></a>Ändern der Indizierungsrichtlinie – Beispiele
+- Der Indizierungsmodus ist auf „Konsistent“ festgelegt.
+- Es wurde kein Pfad eingeschlossenen.
+- `/*` ist der einzige ausgeschlossene Pfad.
 
-Im Folgenden finden Sie die häufigsten Anwendungsfälle, in denen Sie eine Indizierungsrichtlinie aktualisieren:
+## <a name="obsolete-attributes"></a>Veraltete Attribute
 
-* Wenn Sie im Normalbetrieb konsistente Ergebnisse erzielen möchten, aber bei Massendatenimporten den Indizierungsmodus **Keine** nutzen möchten.
+Bei der Arbeit mit Indizierungsrichtlinien stoßen Sie möglicherweise auf die folgenden Attribute, die mittlerweile veraltet sind:
 
-* Wenn Sie mit der Verwendung von Indizierungsfunktionen für Ihre aktuellen Azure Cosmos-Container beginnen möchten. Sie können z. B. räumliche Abfragen verwenden, die die Indexart „Spatial“ erfordern, oder ORDER BY-/Zeichenfolgenbereich-Abfragen, die die Indexart „Range“ für Zeichenfolgen erfordern.
-
-* Wenn Sie die zu indizierenden Eigenschaften manuell auswählen und im Laufe der Zeit ändern möchten, um sie an Ihre Workloads anzupassen.
-
-* Wenn Sie die Indizierungsgenauigkeit optimieren möchten, um die Abfrageleistung zu verbessern oder den verbrauchten Speicherplatz zu reduzieren.
+- `automatic` ist ein boolescher Wert, der im Stamm einer Indizierungsrichtlinie definiert wird. Er wird nun ignoriert und kann auf `true` festgelegt werden, wenn das von Ihnen verwendete Tool dies erfordert.
+- `precision` ist eine Zahl, die auf der Indexebene für eingeschlossene Pfade definiert wird. Sie wird nun ignoriert und kann auf `-1` festgelegt werden, wenn das von Ihnen verwendete Tool dies erfordert.
+- `hash` ist ein Indextyp, der durch den Range-Typ ersetzt wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zur Indizierung erhalten Sie in den folgenden Artikeln:
 
-* [Übersicht über die Indizierung](index-overview.md)
-* [Indextypen](index-types.md)
-* [Indexpfade](index-paths.md)
-* [Verwalten von Indizierungsrichtlinien](how-to-manage-indexing-policy.md)
+- [Übersicht über die Indizierung](index-overview.md)
+- [Gewusst wie: Verwalten der Indizierungsrichtlinie](how-to-manage-indexing-policy.md)

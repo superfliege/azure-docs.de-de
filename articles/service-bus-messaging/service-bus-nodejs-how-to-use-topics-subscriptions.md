@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: c2a6acc1ce48a8671af20df6daa89498a81fdb4c
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: d3f71382a3f2b15ec0f9764b9913a95c0d32b21d
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587156"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608872"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Verwenden von Service Bus-Themen und -Abonnements mit Node.js
 
@@ -35,9 +35,12 @@ In diesem Leitfaden erfahren Sie, wie Sie Service Bus-Themen und -Abonnements ü
 
 Weitere Informationen zu Themen und Abonnements finden Sie im Abschnitt [Nächste Schritte](#next-steps).
 
-[!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
+## <a name="prerequisites"></a>Voraussetzungen
+1. Ein Azure-Abonnement. Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Sie können [Ihre Visual Studio-oder MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) oder [sich für ein kostenloses Konto anmelden](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
+2. Befolgen Sie die Schritte im [Schnellstart: Verwenden Sie das Azure-Portal, um ein Service Bus-Thema und -Abonnements für das Thema](service-bus-quickstart-topics-subscriptions-portal.md) zu erstellen, um einen Service Bus-**Namespace** zu erstellen und die **Verbindungszeichenfolge** abzurufen.
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+    > [!NOTE]
+    > Sie erstellen ein **Thema** und ein **Abonnement** für das Thema, indem Sie **Node.js** in dieser Schnellstartanleitung verwenden. 
 
 ## <a name="create-a-nodejs-application"></a>Erstellen einer Node.js-Anwendung
 Erstellen Sie eine leere Node.js-Anwendung. Anweisungen zum Erstellen von Node.js-Anwendungen finden Sie unter [Erstellen und Bereitstellen einer Node.js-Anwendung auf einer Azure-Website] zur Verwendung des [Node.js-Clouddiensts][Node.js Cloud Service] mit Windows PowerShell oder einer Website mit WebMatrix.

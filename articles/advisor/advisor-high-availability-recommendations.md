@@ -8,12 +8,12 @@ ms.author: kasparks
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 42627649145b568b2b25411d182e5a36cdb025b0
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 793c881d08e8feb038cc6e7ac82b7e95384e1b55
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58881187"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699303"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Verbessern der Verfügbarkeit Ihrer Anwendung mit Azure Advisor
 
@@ -65,6 +65,10 @@ Aktivieren Sie [vorläufiges Löschen](https://docs.microsoft.com/azure/storage/
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>Konfigurieren des VPN-Gateway zu aktiv-aktiv für Verbindungsresilienz
 
 In der Aktiv-Aktiv-Konfiguration richten beide Instanzen eines VPN-Gateways S2S-VPN-Tunnel zu Ihrem lokalen VPN-Gerät ein. Wenn ein geplantes Wartungsereignis oder ein ungeplantes Ereignis mit einer Gateway-Instanz eintritt, wird der Datenverkehr automatisch auf den anderen aktiven IPsec-Tunnel umgeschaltet. Azure Advisor identifiziert VPN-Gateways, die nicht als aktiv-aktiv konfiguriert sind, und schlägt vor, dass Sie sie für Hochverfügbarkeit konfigurieren.
+
+## <a name="use-production-vpn-gateways-to-run-your-production-workloads"></a>Verwenden Sie zum Ausführen Ihrer Produktionsworkloads Produktions-VPN-Gateways.
+
+Azure Advisor überprüft alle VPN-Gateways, die eine Basic-SKU sind, und empfiehlt, stattdessen eine Produktions-SKU zu verwenden. Die Basic-SKU kann zu Entwicklungs- und Testzwecken eingesetzt werden. Produktions-SKUs bieten eine höhere Anzahl von Tunneln, BGP-Unterstützung, Aktiv-Aktiv-Konfigurationsoptionen, kundenspezifische Ipsec-/IKE-Richtlinien sowie höhere Stabilität und Verfügbarkeit.
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Zugreifen auf Advisor-Empfehlungen zu Hochverfügbarkeit
 

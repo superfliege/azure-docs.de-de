@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/09/2019
+ms.date: 04/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 39e8c06228381143a6f4975e4d6415799ce16d43
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: f49b8ef3717675ae6d93d07218a00f2c22890de0
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426488"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149698"
 ---
 # <a name="update-management-solution-in-azure"></a>Lösung für die Updateverwaltung in Azure
 
@@ -208,9 +208,9 @@ Um eine Protokollsuche auszuführen, die Informationen zum Computer, zu Updates 
 
 ## <a name="install-updates"></a>Installieren von Updates
 
-Nachdem die Updates für alle Linux- und Windows-Computer des Arbeitsbereichs bewertet wurden, können Sie die erforderlichen Updates installieren, indem Sie eine *Updatebereitstellung* erstellen. Eine Updatebereitstellung ist eine geplante Installation von erforderlichen Updates für mindestens einen Computer. Sie geben das Datum und die Uhrzeit für die Bereitstellung und einen Computer bzw. eine Gruppe von Computern an, die in den Umfang der Bereitstellung einbezogen werden sollen. Weitere Informationen zu Computergruppen finden Sie unter [Computergruppen in Azure Monitor-Protokollabfragen](../azure-monitor/platform/computer-groups.md).
+Nachdem die Updates für alle Linux- und Windows-Computer des Arbeitsbereichs bewertet wurden, können Sie die erforderlichen Updates installieren, indem Sie eine *Updatebereitstellung* erstellen. Um eine Updatebereitstellung zu erstellen, benötigen Sie Schreibzugriff auf das Automation-Konto und auf alle virtuellen Azure-Computer, die in der Bereitstellung als Ziel angegeben sind. Eine Updatebereitstellung ist eine geplante Installation von erforderlichen Updates für mindestens einen Computer. Sie geben das Datum und die Uhrzeit für die Bereitstellung und einen Computer bzw. eine Gruppe von Computern an, die in den Umfang der Bereitstellung einbezogen werden sollen. Weitere Informationen zu Computergruppen finden Sie unter [Computergruppen in Azure Monitor-Protokollabfragen](../azure-monitor/platform/computer-groups.md).
 
- Wenn Sie Computergruppen in Ihre Updatebereitstellung einbinden, wird die Gruppenmitgliedschaft nur ein Mal beim Erstellen des Zeitplans ausgewertet. Nachfolgende Änderungen einer Gruppe werden nicht widergespiegelt. Um diese Art der Verwendung von [dynamischen Gruppen](#using-dynamic-groups) zu umgehen, werden diese Gruppen zum Zeitpunkt der Bereitstellung aufgelöst und durch eine Abfrage definiert.
+Wenn Sie Computergruppen in Ihre Updatebereitstellung einbinden, wird die Gruppenmitgliedschaft nur ein Mal beim Erstellen des Zeitplans ausgewertet. Nachfolgende Änderungen einer Gruppe werden nicht widergespiegelt. Um diese Art der Verwendung von [dynamischen Gruppen](#using-dynamic-groups) zu umgehen, werden diese Gruppen zum Zeitpunkt der Bereitstellung aufgelöst und für virtuelle Azure-Computer durch eine Abfrage oder für Azure-fremde virtuelle Computer durch eine gespeicherte Suche definiert.
 
 > [!NOTE]
 > Über Azure Marketplace bereitgestellte virtuelle Windows-Computer sind standardmäßig so konfiguriert, dass sie automatisch Updates von Windows Update Service erhalten. Dieses Verhalten ändert sich nicht, wenn Sie diese Lösung hinzufügen oder Ihrem Arbeitsbereich virtuelle Windows-Computer hinzufügen. Wenn Sie Updates mithilfe dieser Lösung nicht aktiv verwalten, gilt das Standardverhalten (Updates werden automatisch angewendet).
@@ -219,13 +219,13 @@ Damit unter Ubuntu keine Updates außerhalb der Wartungsfenster angewendet werde
 
 Virtuelle Computer, die auf der Grundlage der über Azure Marketplace erhältlichen On-Demand-RHEL-Images (Red Hat Enterprise Linux) erstellt werden, werden für den Zugriff auf die in Azure bereitgestellte [Red Hat-Updateinfrastruktur (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) registriert. Alle anderen Linux-Distributionen müssen über das Onlinedateirepository der Distributionen gemäß den unterstützten Methoden der jeweiligen Distribution aktualisiert werden.
 
-Wählen Sie zum Erstellen einer neuen Updatebereitstellung **Updatebereitstellung planen** aus. Der Bereich **Neue Updatebereitstellung** wird geöffnet. Geben Sie Werte für die Eigenschaften ein, die in der folgenden Tabelle beschrieben werden, und klicken Sie auf **Erstellen**:
+Wählen Sie zum Erstellen einer neuen Updatebereitstellung **Updatebereitstellung planen** aus. Die Seite **Neue Updatebereitstellung** wird geöffnet. Geben Sie Werte für die Eigenschaften ein, die in der folgenden Tabelle beschrieben werden, und klicken Sie auf **Erstellen**:
 
 | Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | NAME |Eindeutiger Name zum Identifizieren der Updatebereitstellung |
 |Betriebssystem| Linux oder Windows|
-| Zu aktualisierende Gruppen (Vorschau)|Definieren Sie eine Abfrage basierend auf einer Kombination aus Abonnement, Ressourcengruppen, Standorten und Tags, um eine dynamische Gruppe von Azure-VMs zu erstellen, die in Ihre Bereitstellung eingeschlossen werden sollen. Weitere Informationen finden Sie unter [Dynamische Gruppen](automation-update-management.md#using-dynamic-groups).|
+| Zu aktualisierende Gruppen |Definieren Sie für Azure-Computer eine Abfrage basierend auf einer Kombination aus Abonnement, Ressourcengruppen, Standorten und Tags, um eine dynamische Gruppe von virtuellen Azure-Computern zu erstellen, die in die Bereitstellung eingeschlossen werden sollen. </br></br>Wählen Sie für Azure-fremde Computer eine vorhandene gespeicherte Suche aus, um eine Gruppe von Azure-fremden Computern auszuwählen, die in die Bereitstellung eingeschlossen werden sollen. </br></br>Weitere Informationen finden Sie unter [Dynamische Gruppen](automation-update-management.md#using-dynamic-groups).|
 | Zu aktualisierende Computer |Wählen Sie eine gespeicherte Suche oder eine importierte Gruppe aus, oder wählen Sie im Dropdownmenü „Computer“ und dann einzelne Computer aus. Bei Auswahl von **Computer** wird die Bereitschaft des Computers in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS** angezeigt.</br> Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Azure Monitor-Protokollen finden Sie unter [Computergruppen in Azure Monitor-Protokollen](../azure-monitor/platform/computer-groups.md). |
 |Updateklassifizierungen|Wählen Sie alle benötigten Updateklassifizierungen aus|
 |Einschließen/Ausschließen von Updates|Daraufhin wird die Seite **Einschließen/ausschließen** geöffnet. Updates, die eingeschlossen oder ausgeschlossen werden sollen, befinden sich auf verschiedenen Registerkarten. Weitere Informationen zur Vorgehensweise beim Einschließen finden Sie unter [Verhalten beim Einschließen](automation-update-management.md#inclusion-behavior). |
@@ -333,8 +333,8 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 ## <a name="third-party"></a> Drittanbieterpatches unter Windows
 
-Die Updateverwaltung verwendet WSUS oder Windows Update, um unterstützte Windows-Systeme zu patchen. Mit Tools wie [System Center Updates Publisher](/sccm/sum/tools/updates-publisher
-) (Updates Publisher) können Sie benutzerdefinierte Updates in WSUS veröffentlichen. Dadurch kann die Updateverwaltung Computer, die WSUS als Updaterepository nutzen, mit Software von Drittanbietern patchen. Informationen zum Konfigurieren von Updates Publisher finden Sie unter [Installieren von Updates Publisher](/sccm/sum/tools/install-updates-publisher).
+In der Updateverwaltung wird das lokal konfigurierte Updaterepository verwendet, um unterstützte Windows-Systeme zu patchen. Dabei handelt es sich entweder um WSUS oder um Windows Update. Mit Tools wie [System Center Updates Publisher](/sccm/sum/tools/updates-publisher
+) (Updates Publisher) können Sie benutzerdefinierte Updates in WSUS veröffentlichen. Dadurch kann die Updateverwaltung Computer, auf denen System Center Configuration Manager als Updaterepository verwendet wird, mit Software von Drittanbietern patchen. Informationen zum Konfigurieren von Updates Publisher finden Sie unter [Installieren von Updates Publisher](/sccm/sum/tools/install-updates-publisher).
 
 ## <a name="ports"></a>Netzwerkplanung
 
@@ -351,7 +351,7 @@ Weitere Informationen zu Ports, die für den Hybrid Runbook Worker erforderlich 
 
 Es wird empfohlen, beim Definieren von Ausnahmen die aufgeführten Adressen zu verwenden. Für IP-Adressen können Sie die [IP-Bereiche des Microsoft Azure-Rechenzentrums](https://www.microsoft.com/download/details.aspx?id=41653) herunterladen. Diese Datei mit den jeweils aktuellen bereitgestellten Bereichen und allen anstehenden Änderungen an den IP-Adressbereichen wird wöchentlich veröffentlicht.
 
-## <a name="search-logs"></a>Protokollsuche
+## <a name="search-logs"></a>Suchprotokolle
 
 Zusätzlich zu den Details, die im Azure-Portal bereitgestellt werden, können Sie auch die Protokolle durchsuchen. Wählen Sie auf den Lösungsseiten **Log Analytics** aus. Der Bereich **Protokollsuche** wird geöffnet.
 
@@ -567,7 +567,14 @@ Update
 
 ## <a name="using-dynamic-groups"></a>Mithilfe von dynamischen Gruppen
 
-Die Updateverwaltung bietet die Möglichkeit, eine dynamische Gruppe von virtuellen Azure-Computern als Ziel für Updatebereitstellungen zu verwenden. Diese Gruppen werden durch eine Abfrage definiert. Wenn eine Updatebereitstellung beginnt, werden die Mitglieder dieser Gruppe ausgewertet. Dynamische Gruppen funktionieren nicht mit klassischen VMs. Wenn Sie Ihre Abfrage definieren, können die folgenden Elemente zusammen verwendet werden, um die dynamische Gruppe aufzufüllen
+Die Updateverwaltung bietet die Möglichkeit, eine dynamische Gruppe von virtuellen Azure-Computern oder Azure-fremden virtuellen Computern als Ziel für Updatebereitstellungen zu verwenden. Diese Gruppen werden zum Zeitpunkt der Bereitstellung ausgewertet, sodass Sie die Bereitstellung nicht bearbeiten müssen, um Computer hinzuzufügen.
+
+> [!NOTE]
+> Zum Erstellen einer Updatebereitstellung benötigen Sie die entsprechenden Berechtigungen. Weitere Informationen finden Sie unter [Installieren von Updates](#install-updates).
+
+### <a name="azure-machines"></a>Azure-Computer
+
+Diese Gruppen werden durch eine Abfrage definiert. Wenn eine Updatebereitstellung beginnt, werden die Mitglieder dieser Gruppe ausgewertet. Dynamische Gruppen funktionieren nicht mit klassischen VMs. Wenn Sie Ihre Abfrage definieren, können die folgenden Elemente zusammen verwendet werden, um die dynamische Gruppe aufzufüllen
 
 * Abonnement
 * Ressourcengruppen
@@ -579,6 +586,12 @@ Die Updateverwaltung bietet die Möglichkeit, eine dynamische Gruppe von virtuel
 Um eine Vorschau der Ergebnisse einer dynamischen Gruppe anzuzeigen, klicken Sie auf die Schaltfläche **Vorschau**. Diese Vorschau zeigt die Gruppenmitgliedschaft zu diesem Zeitpunkt an. In diesem Beispiel suchen wir nach Computern, bei denen das Tag **Role** den Wert **BackendServer** aufweist. Wenn dieses Tag weiteren Computern hinzugefügt wird, werden sie bei zukünftigen Bereitstellungen dieser Gruppe hinzugefügt.
 
 ![Anzeigen einer Vorschau von Gruppen](./media/automation-update-management/preview-groups.png)
+
+### <a name="non-azure-machines"></a>Azure-fremde Computer
+
+Bei Azure-fremden Computern wird die dynamische Gruppe mithilfe von gespeicherten Suchen (auch als Computergruppen bezeichnet) erstellt. Informationen zum Erstellen einer gespeicherten Suche finden Sie unter [Erstellen einer Computergruppe](../azure-monitor/platform/computer-groups.md#creating-a-computer-group). Nachdem die Gruppe erstellt wurde, können Sie sie in der Liste der gespeicherten Suchen auswählen. Klicken Sie auf **Vorschau**, um die Vorschau der Computer in der gespeicherten Suche anzuzeigen.
+
+![Auswählen von Gruppen](./media/automation-update-management/select-groups-2.png)
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>Integrieren in System Center Configuration Manager
 

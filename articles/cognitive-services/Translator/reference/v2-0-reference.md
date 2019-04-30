@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: v-jansko
-ms.openlocfilehash: b65182cac91f6ed3dc653d6d9e77f80e99346bb7
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 961dd277034db7e5406e671233f26b4fd8fe5f26
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918007"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527284"
 ---
 # <a name="translator-text-api-v20"></a>Microsoft Translator-Text-API Version 2.0
 
@@ -45,8 +45,8 @@ Wenn Sie keine Obszönitäten in der Übersetzung wünschen, auch wenn diese im 
 |ProfanityAction    |Aktion |Beispielquelle (Japanisch)  |Beispielübersetzung (Deutsch)  |
 |:--|:--|:--|:--|
 |NoAction   |Standard. Entspricht dem Fall, in dem die Option nicht festgelegt wird. Die Obszönitäten werden von der Ausgangs- in die Zielsprache übergeben.        |彼はジャッカスです。     |Er ist ein Trottel.   |
-|Markiert     |Obszöne Begriffe werden von den XML-Tags <profanity> und </profanity> umschlossen.     |彼はジャッカスです。 |Er ist ein <profanity>Trottel</profanity>.    |
-|Deleted (Gelöscht)    |Obszöne Begriffe werden aus der Ausgabe entfernt, und es wird kein Ersatzbegriff gestellt.     |彼はジャッカスです。 |Er ist ein.   |
+|Marked     |Obszöne Wörter werden von den XML-Tags \<profanity> und \</profanity> umschlossen.       |彼はジャッカスです。 |Er ist ein \<profanity>Trottel\</profanity>.  |
+|Deleted    |Obszöne Begriffe werden aus der Ausgabe entfernt, und es wird kein Ersatzbegriff gestellt.     |彼はジャッカスです。 |Er ist ein.   |
 
     
 ## <a name="excluding-content-from-translation"></a>Ausschließen von Inhalt aus der Übersetzung
@@ -596,7 +596,7 @@ Der Anforderungstext enthält das optional TranslationOptions-Objekt, das folgen
 Das `TranslateOptions`-Objekt enthält die unten aufgeführten Werte. Diese sind alle optional und sind Standardwerte für die häufigsten Einstellungen. Angegebene Element müssen in alphabetischer Reihenfolge aufgelistet werden.
 
 * `Category`: Eine Zeichenfolge, die die Kategorie (Domäne) der Übersetzung enthält. Der Standardwert lautet „general“.
-* `ContentType`: Es wird nur der Wert „text/plain“ unterstützt, dies ist auch der Standardwert.
+* `ContentType`: „text/plain“ ist die einzige unterstützte bzw. die Standardversion.
 * `IncludeMultipleMTAlternatives`: boolesches Flag zur Bestimmung, ob mehr als eine Alternative von der MT-Engine zurückgegeben werden soll. Gültige Werte sind „true“ und „false“ (mit Berücksichtigung der Groß- und Kleinschreibung). Der Standardwert ist „false“ und enthält nur eine Alternative. Wenn Sie das Flag auf „true“ festlegen, ist die Erstellung künstlicher Alternativen in der Übersetzung möglich, die vollständig in das Framework für kollaborative Übersetzungen (Collaborative Translations Framework, CTF) integriert sind. Das Feature lässt zu, dass Alternativen für Sätze zurückgegeben werden dürfen, die keine Alternativen im CTF besitzen. Dies geschieht durch Hinzufügen künstlicher Alternativen aus der N-besten Liste des Decoders.
     - Bewertungen: Die Bewertungen werden wie folgt angewendet: 1) Die beste automatische Übersetzung hat eine Bewertung von 5. 2) Die Alternativen von CTF spiegeln die Autorität des Reviewers von –10 bis +10 wieder. 3) Die automatisch generierten (N-beste) Übersetzungsalternativen verfügen über eine Bewertung von 0 und einen Übereinstimmungsgrad von 100.
     - Anzahl der Alternativen: Die Anzahl zurückgegebener Alternativen geht bis zu „maxTranslations“, es kann aber auch weniger sein.
@@ -753,7 +753,7 @@ Jedes `GetTranslationsResponse`-Element enthält die folgenden Werte:
 * `From`: Wenn die Methode keine `From`-Sprache angegeben hat, ist dies das Ergebnis der automatischen Spracherkennung. Andernfalls wird die Ausgangssprache angegebenen.
 * `State`: Benutzerstatus, mit dem Anforderung und Antwort korreliert werden können. Enthält den gleichen Wert, der auch im `TranslateOptions`-Parameter angegeben ist.
 
-`TranslationMatch` -Objekte bestehen aus Folgendem:
+`TranslationMatch`-Objekte bestehen aus Folgendem:
 * `Error`: Wenn ein Fehler für eine bestimmte Eingabezeichenfolge aufgetreten ist, wird der Fehlercode gespeichert. Andernfalls bleibt das Feld leer.
 * `MatchDegree`: Das System gleicht eingegebene Sätze (einschließlich ungenauer Übereinstimmungen) mit dem Speicher ab.  `MatchDegree` gibt an, wie nah der eingegebene Text mit dem Originaltext übereinstimmt, der im Speicher gefunden wurde. Der Wert gibt eine Spanne von 0 bis 100 zurück, wobei 0 keine Ähnlichkeit aufweist und 100 eine Übereinstimmung mit der Schreibweise ist.
 * `MatchedOriginalText`: Originaltext, der für dieses Ergebnis übereinstimmte. Er wird nur zurückgegeben, wenn der übereinstimmende Originaltext sich vom Eingabetext unterschieden hat. Wird verwendet, um den Quelltext einer Fuzzyübereinstimmung zurückzugeben. Wir nicht für Microsoft Translator-Ergebnisse zurückgegeben.
@@ -787,7 +787,7 @@ Anforderungsinhaltstyp: application/xml
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Migrieren zu v3 – Textübersetzungs-API](../migrate-to-v3.md)
+> [Referenz für Version 3 der Textübersetzungs-API](../migrate-to-v3.md)
 
 
 

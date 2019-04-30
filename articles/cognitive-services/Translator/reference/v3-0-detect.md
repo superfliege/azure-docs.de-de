@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: a552fece120d7978825a685960bf4faf65aba783
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: fa618c5c623a631e7a88f8235a0b7b16fcb2bc88
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58916658"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578656"
 ---
 # <a name="translator-text-api-30-detect"></a>Text체bersetzungs-API 3.0: Detect
 
@@ -48,8 +48,8 @@ Anforderungsheader enthalten Folgendes:
   <th width="20%">Header</th>
   <th>BESCHREIBUNG</th>
   <tr>
-    <td>_Eine Autorisierung_<br/>_Header_</td>
-    <td>*Erforderlicher Anforderungsheader*.<br/>Weitere Informationen finden Sie in den [verf체gbaren Optionen f체r die Authentifizierung](./v3-0-reference.md#authentication).</td>
+    <td>Authentifizierungsheader</td>
+    <td><em>Erforderlicher Anforderungsheader</em>.<br/>Weitere Informationen finden Sie in den <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">verf체gbaren Optionen f체r die Authentifizierung</a>.</td>
   </tr>
   <tr>
     <td>Content-Typ</td>
@@ -176,7 +176,7 @@ Wenn ein Fehler auftritt, gibt die Anforderung auch eine JSON-Fehlerantwort zur�
 
 Im folgenden Beispiel wird dargestellt, wie Sprachen abgerufen werden, die f체r die Text체bersetzung unterst체tzt werden.
 
-# [<a name="curl"></a>curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/detect?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'What language is this text written in?'}]"

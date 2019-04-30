@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.openlocfilehash: e1b584d38c4583e37b7c47535c836d1fa7d428f1
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: c4f94dd2730dd302951b4476a292b006041b7ee8
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59357246"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680858"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisches Trainieren eines Modells für die Zeitreihenprognose
 
@@ -34,27 +34,27 @@ In diesem Artikel erfahren Sie, wie Sie im Azure Machine Learning-Dienst ein Reg
 
 Der wichtigste Unterschied zwischen einem Regressionsaufgabentyp für die Vorhersage und einem regulären Regressionsaufgabentyp innerhalb des automatisierten maschinellen Lernens liegt in der Einbeziehung eines Features in Ihre Daten, das eine gültige Zeitreihe darstellt. Eine reguläre Zeitreihe besitzt ein klar definiertes und konsistentes Intervall sowie einen Wert an jedem Stichprobenpunkt in einem ununterbrochenen Zeitraum. Betrachten Sie die folgende Momentaufnahme der Datei `sample.csv`:
 
-    week_starting,store,sales_quantity,week_of_year
+    day_datetime,store,sales_quantity,week_of_year
     9/3/2018,A,2000,36
     9/3/2018,B,600,36
-    9/10/2018,A,2300,37
-    9/10/2018,B,550,37
-    9/17/2018,A,2100,38
-    9/17/2018,B,650,38
-    9/24/2018,A,2400,39
-    9/24/2018,B,700,39
-    10/1/2018,A,2450,40
-    10/1/2018,B,650,40
+    9/4/2018,A,2300,36
+    9/4/2018,B,550,36
+    9/5/2018,A,2100,36
+    9/5/2018,B,650,36
+    9/6/2018,A,2400,36
+    9/6/2018,B,700,36
+    9/7/2018,A,2450,36
+    9/7/2018,B,650,36
 
-Dieses Dataset ist ein einfaches Beispiel für die wöchentlichen Verkaufsdaten eines Unternehmens mit zwei Filialen: A und B. Darüber hinaus ist ein Feature für `week_of_year` vorhanden, das dem Modell die Erkennung der wöchentlichen Saisonalität ermöglicht. Das Feld `week_starting` stellt eine bereinigte Zeitreihe mit wöchentlichem Intervall dar. Das Feld `sales_quantity` ist die Zielspalte für laufende Vorhersagen. Lesen Sie die Daten in einen Pandas-Datenrahmen ein, und verwenden Sie anschließend die Funktion `to_datetime`, um sicherzustellen, dass eine Zeitreihe vom Typ `datetime` verwendet wird.
+Dieses Dataset ist ein einfaches Beispiel für die täglichen Verkaufsdaten eines Unternehmens mit zwei Filialen: A und B. Darüber hinaus ist ein Feature für `week_of_year` vorhanden, das dem Modell die Erkennung der wöchentlichen Saisonalität ermöglicht. Das Feld `day_datetime` stellt eine bereinigte Zeitreihe mit täglichem Intervall dar. Das Feld `sales_quantity` ist die Zielspalte für laufende Vorhersagen. Lesen Sie die Daten in einen Pandas-Datenrahmen ein, und verwenden Sie anschließend die Funktion `to_datetime`, um sicherzustellen, dass eine Zeitreihe vom Typ `datetime` verwendet wird.
 
 ```python
 import pandas as pd
 data = pd.read_csv("sample.csv")
-data["week_starting"] = pd.to_datetime(data["week_starting"])
+data["day_datetime"] = pd.to_datetime(data["day_datetime"])
 ```
 
-In diesem Fall sind die Daten bereits aufsteigend nach dem Zeitfeld `week_starting` sortiert. Bei der Einrichtung eines Experiments muss jedoch darauf geachtet werden, dass die gewünschte Zeitspalte in aufsteigender Reihenfolge sortiert wird, um eine gültige Zeitreihe zu erstellen. Nehmen Sie an, die Daten umfassen 1.000 Datensätze, und teilen Sie die Daten deterministisch auf, um Trainings- und Testdatasets zu erstellen. Teilen Sie dann das Zielfeld `sales_quantity` auf, um das Trainings- und das Testdataset für die Vorhersage zu erstellen.
+In diesem Fall sind die Daten bereits aufsteigend nach dem Zeitfeld `day_datetime` sortiert. Bei der Einrichtung eines Experiments muss jedoch darauf geachtet werden, dass die gewünschte Zeitspalte in aufsteigender Reihenfolge sortiert wird, um eine gültige Zeitreihe zu erstellen. Nehmen Sie an, die Daten umfassen 1.000 Datensätze, und teilen Sie die Daten deterministisch auf, um Trainings- und Testdatasets zu erstellen. Teilen Sie dann das Zielfeld `sales_quantity` auf, um das Trainings- und das Testdataset für die Vorhersage zu erstellen.
 
 ```python
 X_train = data.iloc[:950]
@@ -84,14 +84,18 @@ Das Objekt `AutoMLConfig` definiert die erforderlichen Einstellungen und Daten f
 |`time_column_name`|Dient zum Angeben der Datetime-Spalte in den Eingabedaten, die zum Erstellen der Zeitreihe sowie zum Ableiten des Intervalls verwendet wird.|✓|
 |`grain_column_names`|Namen zum Definieren individueller Reihengruppen in den Eingabedaten. Ohne definierte Granularität wird bei dem Dataset von einer einzelnen Zeitreihe ausgegangen.||
 |`max_horizon`|Maximaler gewünschter Vorhersagehorizont in Einheiten des Zeitreihenintervalls.|✓|
+|`target_lags`|*n* Zeiträume zum Weiterleiten von Verzögerungszielwerten vor dem Trainieren des Modells.||
+|`target_rolling_window_size`|*n* Historische Zeiträume zum Generieren der vorhergesagten Werte, < = Größe Trainingsmenge. Wenn nicht angegeben, ist *n* die vollständige Trainingsmenge.||
 
-Erstellen Sie die Zeitreiheneinstellungen als Wörterbuchobjekt. Legen Sie `time_column_name` auf das Feld `week_starting` im Dataset fest. Definieren Sie den Parameter `grain_column_names`, um sicherzustellen, dass für die Daten **zwei separate Zeitreihengruppen** erstellt werden (jeweils eine für die Filialen A und B). Legen Sie abschließend `max_horizon` auf „50“ fest, um Vorhersagen für den gesamten Testsatz zu generieren.
+Erstellen Sie die Zeitreiheneinstellungen als Wörterbuchobjekt. Legen Sie `time_column_name` auf das Feld `day_datetime` im Dataset fest. Definieren Sie den Parameter `grain_column_names`, um sicherzustellen, dass für die Daten **zwei separate Zeitreihengruppen** erstellt werden (jeweils eine für die Filialen A und B). Legen Sie abschließend `max_horizon` auf „50“ fest, um Vorhersagen für den gesamten Testsatz zu generieren. Legen Sie ein Vorhersagefenster auf 10 Zeiträume mit `target_rolling_window_size` fest, und verzögern Sie die Zielwerte 2 Zeiträume vorwärts mit dem `target_lags`-Parameter.
 
 ```python
 time_series_settings = {
-    "time_column_name": "week_starting",
+    "time_column_name": "day_datetime",
     "grain_column_names": ["store"],
-    "max_horizon": 50
+    "max_horizon": 50,
+    "target_lags": 2,
+    "target_rolling_window_size": 10
 }
 ```
 
@@ -141,11 +145,11 @@ rmse = sqrt(mean_squared_error(y_actual, y_predict))
 rmse
 ```
 
-Nach der Ermittlung der allgemeinen Modellgenauigkeit besteht der nächste Schritt in der Regel darin, mithilfe des Modells unbekannte zukünftige Werte vorherzusagen. Stellen Sie einfach ein Dataset im gleichen Format wie das Testdataset `X_test`, aber mit zukünftigen Datums-/Uhrzeitwerten bereit, um einen Vorhersagesatz mit Vorhersagewerten für die einzelnen Zeitreihenschritte zu erhalten. Angenommen, die letzten Zeitreihendatensätze im Dataset waren für die Woche ab dem 31.12.2018. Wenn Sie die Nachfrage für die Folgewoche (oder für beliebig viele Vorhersagezeiträume < = `max_horizon`) vorhersagen möchten, erstellen Sie für jede Filiale einen einzelnen Zeitreihendatensatz für die Woche ab dem 07.01.2019.
+Nach der Ermittlung der allgemeinen Modellgenauigkeit besteht der nächste Schritt in der Regel darin, mithilfe des Modells unbekannte zukünftige Werte vorherzusagen. Stellen Sie einfach ein Dataset im gleichen Format wie das Testdataset `X_test`, aber mit zukünftigen Datums-/Uhrzeitwerten bereit, um einen Vorhersagesatz mit Vorhersagewerten für die einzelnen Zeitreihenschritte zu erhalten. Angenommen, die letzten Zeitreihendatensätze im Dataset waren für den 31.12.2018. Wenn Sie die Nachfrage für den Folgetag (oder für beliebig viele Vorhersagezeiträume < = `max_horizon`) vorhersagen möchten, erstellen Sie für jede Filiale einen einzelnen Zeitreihendatensatz für den 01.01.2019.
 
-    week_starting,store,week_of_year
-    01/07/2019,A,2
-    01/07/2019,A,2
+    day_datetime,store,week_of_year
+    01/01/2019,A,1
+    01/01/2019,A,1
 
 Wiederholen Sie die erforderlichen Schritte, um diese zukünftigen Daten in einen Datenrahmen zu laden, und führen Sie anschließend `best_run.predict(X_test)` aus, um zukünftige Werte vorherzusagen.
 

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: 47516f06f212dd0541da5f177401d479eb760cc0
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: e4dd7299907168bb50ac8ebdf90b381c0bac01f2
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758257"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527369"
 ---
 # <a name="create-video-reviews-using-net"></a>Erstellen von Videoüberprüfungen per .NET
 
@@ -166,7 +166,7 @@ Erstellen Sie mit **ContentModeratorClient.Reviews.CreateVideoReviews** eine Vid
 **CreateVideoReviews** verfügt über die folgenden erforderlichen Parameter:
 1. Eine Zeichenfolge, die einen MIME-Typ enthält. Dieser sollte „application/json“ lauten. 
 1. Ihr Content Moderator-Teamname.
-1. Ein **IList<CreateVideoReviewsBodyItem>**-Objekt. Jedes **CreateVideoReviewsBodyItem**-Objekt stellt eine Videoüberprüfung dar. In dieser Schnellstartanleitung wird jeweils nur eine Überprüfung erstellt.
+1. Ein **IList\<CreateVideoReviewsBodyItem>**-Objekt. Jedes **CreateVideoReviewsBodyItem**-Objekt stellt eine Videoüberprüfung dar. In dieser Schnellstartanleitung wird jeweils nur eine Überprüfung erstellt.
 
 **CreateVideoReviewsBodyItem** verfügt über mehrere Eigenschaften. Sie legen mindestens die folgenden Eigenschaften fest:
 - **Content**: Die URL des zu überprüfenden Videos.
@@ -224,18 +224,18 @@ Sie fügen einer Videoüberprüfung Videoframes mit **ContentModeratorClient.Rev
 1. Eine Zeichenfolge, die einen MIME-Typ enthält. Dieser sollte „application/json“ lauten.
 1. Ihr Content Moderator-Teamname.
 1. Die von **CreateVideoReviews** zurückgegebene ID für die Videoüberprüfung.
-1. Ein **IList<VideoFrameBodyItem>**-Objekt. Jedes **VideoFrameBodyItem**-Objekt steht für einen Videoframe.
+1. Ein **IList\<VideoFrameBodyItem>**-Objekt. Jedes **VideoFrameBodyItem**-Objekt steht für einen Videoframe.
 
 **VideoFrameBodyItem** verfügt über die folgenden Eigenschaften:
 - **Timestamp**: Eine Zeichenfolge, die den Zeitpunkt des Videos (in Sekunden) enthält, ab dem der Videoframe beginnt.
 - **FrameImage**: Die URL des Videoframes.
-- **Metadata**. Ein „IList<VideoFrameBodyItemMetadataItem>“-Element: **VideoFrameBodyItemMetadataItem** ist ein einfaches Schlüssel-Wert-Paar. Gültige Schlüssel sind:
+- **Metadata**. Ein IList\<VideoFrameBodyItemMetadataItem>. **VideoFrameBodyItemMetadataItem** ist ein einfaches Schlüssel-Wert-Paar. Gültige Schlüssel sind:
 - **reviewRecommended**: Ist „true“, wenn eine menschliche Prüfung des Videoframes empfohlen wird.
 - **adultScore**: Ein Wert zwischen 0 und 1, mit dem der Schweregrad des für Erwachsene bestimmten Inhalts im Videoframe angegeben wird.
 - **a**: „true“, wenn das Video nicht jugendfreien Inhalt enthält.
 - **racyScore**: Ein Wert zwischen 0 und 1, mit dem der Schweregrad von anzüglichem Inhalt im Videoframe angegeben wird.
 - **r**: „true“, wenn der Videoframe anzüglichen Inhalt enthält.
-- **ReviewerResultTags**: Ein „IList<VideoFrameBodyItemReviewerResultTagsItem>“-Element: **VideoFrameBodyItemReviewerResultTagsItem** ist ein einfaches Schlüssel-Wert-Paar. Eine Anwendung kann diese Tags zum Organisieren von Videoframes nutzen.
+- **ReviewerResultTags**: Ein IList\<VideoFrameBodyItemReviewerResultTagsItem>. **VideoFrameBodyItemReviewerResultTagsItem** ist ein einfaches Schlüssel-Wert-Paar. Eine Anwendung kann diese Tags zum Organisieren von Videoframes nutzen.
 
 > [!NOTE]
 > In dieser Schnellstartanleitung werden Zufallswerte für die Eigenschaften **adultScore** und **racyScore** generiert. In einer Produktionsanwendung erhalten Sie diese Werte über den [Videomoderationsdienst](video-moderation-api.md), der unter Azure Media Services bereitgestellt wird.

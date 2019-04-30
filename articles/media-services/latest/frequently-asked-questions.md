@@ -9,20 +9,24 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/10/2019
 ms.author: juliako
-ms.openlocfilehash: e543f6e69632da67900e3b49a9c77e125df5f852
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: d6e5142bec29f58671c553b7b32bb72202cae263
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316914"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544176"
 ---
 # <a name="azure-media-services-v3-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Media Services v3
 
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Media Services (AMS) v3.
 
 ## <a name="v3-apis"></a>v3-APIs
+
+### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Welche Azure-Rollen können Aktionen mit den Ressourcen von Azure Media Services durchführen? 
+
+Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung (RBAC) für Media Services-Konten](rbac-overview.md).
 
 ### <a name="how-do-i-configure-media-reserved-units"></a>Wie lassen sich reservierte Einheiten für Medien konfigurieren?
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ca7f749a04b569d183589fba8c788ce48f29358b
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: a26388de85ff6293985fe23adac8ca4d04d0de61
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295554"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525788"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>Verschlüsseln von Inhalten mit der Speicherverschlüsselung 
 
@@ -111,7 +111,7 @@ Im Folgenden finden Sie allgemeine Schritte zum Generieren von Inhaltsschlüssel
 
     Eigenschaft im Anforderungstext    | BESCHREIBUNG
     ---|---
-    id | Die ContentKey-ID wird in folgendem Format generiert: „nb:kid:UUID:<NEW GUID>“.
+    id | Die ContentKey-ID wird in folgendem Format generiert: „nb:kid:UUID:\<NEW GUID“.
     ContentKeyType | Der Inhaltsschlüsseltyp ist eine Ganzzahl, die den Schlüssel definiert. Für das Speicherverschlüsselungsformat ist der Wert 1.
     EncryptedContentKey | Wir erstellen einen neuen Inhaltsschlüsselwert mit einer Länge von 256 Bits (32 Bytes). Der Schlüssel wird mithilfe des X.509-Speicherverschlüsselungszertifikats verschlüsselt, das wir von Microsoft Azure Media Services abrufen, indem wir eine HTTP-GET-Anforderung für die Methoden „GetProtectionKeyId“ und „GetProtectionKey“ ausführen. Folgender .NET-Code dient als Beispiel: die **EncryptSymmetricKeyData**-Methode, die [hier](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)definiert ist.
     ProtectionKeyId | Dies ist die Schutzschlüssel-ID für das X.509-Speicherverschlüsselungszertifikat, das zur Verschlüsselung des Inhaltsschlüssels verwendet wurde.

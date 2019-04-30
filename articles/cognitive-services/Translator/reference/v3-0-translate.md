@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 8533a5b2a974af3bd426e9b70ba298534b0365f7
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: f69fd7af23c360edc208561f915bd351c3fd373c
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917514"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608434"
 ---
 # <a name="translator-text-api-30-translate"></a>Textübersetzungs-API 3.0: Translate
 
@@ -97,8 +97,8 @@ Anforderungsheader enthalten Folgendes:
   <th width="20%">Header</th>
   <th>BESCHREIBUNG</th>
   <tr>
-    <td>_Eine Autorisierung_<br/>_Header_</td>
-    <td><em>Erforderlicher Anforderungsheader</em>.<br/>Weitere Informationen finden Sie in den [verfügbaren Optionen für die Authentifizierung](./v3-0-reference.md#authentication).</td>
+    <td>Authentifizierungsheader</td>
+    <td><em>Erforderlicher Anforderungsheader</em>.<br/>Weitere Informationen finden Sie in den <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">verfügbaren Optionen für die Authentifizierung</a>.</td>
   </tr>
   <tr>
     <td>Content-Typ</td>
@@ -165,7 +165,7 @@ Eine erfolgreiche Antwort ist ein JSON-Array mit einem Ergebnis für jede Zeiche
 
     Satzgrenzen sind nur enthalten, wenn der Anforderungsparameter `includeSentenceLength` `true` ist.
 
-  * `sourceText`: Ein Objekt mit einer einzelnen Zeichenfolgeneigenschaft namens `text`, das den Eingabetext im Standardskript der Quellsprache bereitstellt. `sourceText` Eigenschaft ist nur vorhanden, wenn die Eingabe in einem Skript ausgedrückt wird, das nicht das übliche Skript für die Sprache ist. Wenn die Eingabe z.B. ein arabischer Text ist, der im lateinischen Skript verfasst wurde, würde `sourceText.text` diesen arabischen Text in das arabische Skript konvertieren.
+  * `sourceText`: Ein Objekt mit einer einzelnen Zeichenfolgeneigenschaft namens `text`, das den Eingabetext im Standardskript der Quellsprache bereitstellt. Die Eigenschaft `sourceText` ist nur vorhanden, wenn die Eingabe in einem Skript ausgedrückt wird, das nicht das übliche Skript für die Sprache ist. Wenn die Eingabe z.B. ein arabischer Text ist, der im lateinischen Skript verfasst wurde, würde `sourceText.text` diesen arabischen Text in das arabische Skript konvertieren.
 
 Beispiele für JSON-Antworten finden Sie im Abschnitt [Beispiele](#examples).
 
@@ -233,7 +233,7 @@ Wenn ein Fehler auftritt, gibt die Anforderung auch eine JSON-Fehlerantwort zur�
 
 Dieses Beispiel zeigt, wie ein einzelner Satz aus dem Englischen ins Chinesische (vereinfacht) übersetzt wird.
 
-# [<a name="curl"></a>curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -259,7 +259,7 @@ Das `translations` Array enthält ein Element, das die Übersetzung des einzelne
 
 Dieses Beispiel zeigt, wie ein einzelner Satz aus dem Englischen ins Chinesische (vereinfacht) übersetzt wird. Die Anforderung gibt keine Eingabesprache an. Es wird stattdessen die automatische Erkennung der Quellsprache verwendet.
 
-# [<a name="curl"></a>curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -285,7 +285,7 @@ Die Antwort ähnelt der Antwort aus dem vorherigen Beispiel. Da die automatische
 
 Das vorherige Beispiel wird jetzt durch Hinzufügen einer Transliteration erweitert. Die folgende Anforderung beinhaltet eine chinesische Übersetzung, die in einem lateinischen Skript verfasst wurde.
 
-# [<a name="curl"></a>curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans&toScript=Latn" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -316,7 +316,7 @@ Das Übersetzungsergebnis beinhaltet nun eine `transliteration`-Eigenschaft, die
 
 Um mehrere Strings gleichzeitig zu übersetzen, muss lediglich ein Array von Zeichenfolgen im Anforderungstext angegeben werden.
 
-# [<a name="curl"></a>curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
@@ -345,7 +345,7 @@ Der Antworttext lautet:
 
 Dieses Beispiel zeigt, wie in einer Anforderung ein- und dieselbe Eingabe in mehrere Sprachen übersetzt wird.
 
-# [<a name="curl"></a>curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -403,10 +403,10 @@ Bei Verwendung von <code>ProfanityMarker=Tag</code> werden obszöne Wörter von 
 
 Beispiel: 
 
-# [<a name="curl"></a>curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a fucking good idea.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a freaking good idea.'}]"
 ```
 
 ---
@@ -425,10 +425,10 @@ Gibt Folgendes zurück:
 
 Verglichen mit:
 
-# [<a name="curl"></a>curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
-curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a fucking good idea.'}]"
+curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a freaking good idea.'}]"
 ```
 
 ---
@@ -456,7 +456,7 @@ Häufig werden Inhalte übersetzt, die Markups enthalten, wie z.B. Inhalte von e
 
 Zur Veranschaulichung finden Sie Folgenden ein Beispiel einer Anforderung.
 
-# [<a name="curl"></a>curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&textType=html" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'<div class=\"notranslate\">This will not be translated.</div><div>This will be translated.</div>'}]"
@@ -480,7 +480,7 @@ Die Antwort lautet:
 
 Um Informationen über die Ausrichtung zu erhalten, geben Sie `includeAlignment=true` in der Abfragezeichenfolge ein.
 
-# [<a name="curl"></a>curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeAlignment=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation.'}]"
@@ -518,7 +518,7 @@ Beachten Sie folgende Einschränkungen:
 
 Um Informationen über die Satzlänge im Quell- und im übersetzten Text zu erhalten, geben Sie `includeSentenceLength=true` in der Abfragezeichenfolge an.
 
-# [<a name="curl"></a>curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeSentenceLength=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation. The best machine translation technology cannot always provide translations tailored to a site or users like a human. Simply copy and paste a code snippet anywhere.'}]"

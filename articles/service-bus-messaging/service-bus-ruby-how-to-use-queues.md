@@ -12,26 +12,31 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 074976ea1f889893b5daa21cea5c186ec77145c4
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 6c42fbffd0b4569a9b04dede94061e716c48ecf1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588346"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59786044"
 ---
 # <a name="how-to-use-service-bus-queues-with-ruby"></a>Verwenden von Service Bus-Warteschlangen mit Ruby
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-In diesem Leitfaden wird beschrieben, wie Sie Service Bus-Warteschlangen verwenden. Die Beispiele sind in Ruby geschrieben und verwenden das Azure-Gem. Die Szenarios behandeln die Themen **Erstellen von Warteschlangen, Senden und Empfangen von Nachrichten** und **Löschen von Warteschlangen**. Weitere Informationen zu Service Bus-Warteschlangen finden Sie im Abschnitt [Nächste Schritte](#next-steps).
+In diesem Tutorial erfahren Sie, wie Sie Ruby-Anwendungen erstellen, um Nachrichten an eine Service Bus-Warteschlange zu senden und Antworten zu empfangen. Die Beispiele sind in Ruby geschrieben und verwenden das Azure-Gem.
 
-[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+## <a name="prerequisites"></a>Voraussetzungen
+1. Ein Azure-Abonnement. Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Sie können Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF) registrieren.
+2. Führen Sie die Schritte im Artikel [Schnellstart: Erstellen einer Service Bus-Warteschlange mithilfe des Azure-Portals](service-bus-quickstart-portal.md) aus.
+    1. Lesen Sie die kurze **Übersicht** über Service Bus-**Warteschlangen**. 
+    2. Erstellen Sie einen Service Bus-**Namespace**. 
+    3. Rufen Sie die **Verbindungszeichenfolge** ab. 
 
-## <a name="create-a-service-bus-namespace"></a>Erstellen eines Service Bus-Namespace
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-   
+        > [!NOTE]
+        > In diesem Tutorial erstellen Sie eine **Warteschlange** im Service Bus-Namespace mithilfe von Ruby. 
+
 [!INCLUDE [service-bus-ruby-setup](../../includes/service-bus-ruby-setup.md)]
 
 ## <a name="how-to-create-a-queue"></a>Erstellen von Warteschlangen

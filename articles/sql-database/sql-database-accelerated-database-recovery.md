@@ -11,12 +11,12 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 6d962a40fe0e1a7658c0d5ac30c7fd04bfb7fb0f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bb88da48f8961969176fd67bf6e5fa346655aeac
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475447"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59677815"
 ---
 # <a name="accelerated-database-recovery-preview"></a>Schnellere Datenbankwiederherstellung (Vorschauversion)
 
@@ -42,11 +42,11 @@ Die Datenbankwiederherstellung in SQL Server basiert auf dem [ARIES](https://peo
 
 - **Analysephase**
 
-  Vorwärts-Scan des Transaktionsprotokolls ab dem Beginn des letzten erfolgreichen Prüfpunkts (oder der ältesten Seiten-LSN) bis zum Ende, um den Zustand jeder Transaktion zum Beendigungszeitpunkt von SQL Server zu ermitteln.
+  Vorwärts-Scan des Transaktionsprotokolls ab dem Beginn des letzten erfolgreichen Prüfpunkts (oder der ältesten modifizierten Seiten-LSN) bis zum Ende, um den Zustand jeder Transaktion zum Beendigungszeitpunkt von SQL Server zu ermitteln.
 
 - **Wiederholungsphase**
 
-  Vorwärts-Scan des Transaktionsprotokolls von der ältesten Transaktion ohne Commit bis zum Ende, um die Datenbank in den Zustand zum Zeitpunkt des Absturzes zu versetzen, indem alle Vorgänge erneut durchgeführt werden.
+  Vorwärts-Scan des Transaktionsprotokolls von der ältesten Transaktion ohne Commit bis zum Ende, um die Datenbank in den Zustand zum Zeitpunkt des Absturzes zu versetzen, indem alle Commit-Vorgänge erneut durchgeführt werden.
 
 - **Phase des Rückgängigmachens**
 
@@ -56,7 +56,7 @@ Basierend auf diesem Entwurf ist die Zeit, die das SQL-Datenbankmodul für die W
 
 Auch das Abbrechen bzw. Durchführen eines Rollbacks für eine Transaktion kann bei diesem Entwurf sehr lange dauern, da die gleiche Rückgängig/Wiederherstellen-Phase wie oben beschrieben genutzt wird.
 
-Darüber hinaus kann das SQL-Datenbankmodul das Transaktionsprotokoll nicht kürzen, wenn Transaktionen mit langer Ausführungsdauer vorhanden sind, da die entsprechenden Protokolldatensätze für die Wiederherstellungs- und Rollbackprozesse benötigt werden. Aufgrund dieses Entwurfs des SQL-Datenbankmoduls haben einige Kunden das Problem, dass das Transaktionsprotokoll sehr groß wird und sehr viel Protokollspeicher belegt.
+Darüber hinaus kann das SQL-Datenbankmodul das Transaktionsprotokoll nicht kürzen, wenn Transaktionen mit langer Ausführungsdauer vorhanden sind, da die entsprechenden Protokolldatensätze für die Wiederherstellungs- und Rollbackprozesse benötigt werden. Aufgrund dieses Entwurfs des SQL-Datenbankmoduls haben einige Kunden das Problem, dass das Transaktionsprotokoll sehr groß wird und sehr viel Festplattenspeicher belegt.
 
 ## <a name="the-accelerated-database-recovery-process"></a>Prozess für die schnellere Datenbankwiederherstellung
 
@@ -74,15 +74,18 @@ Der ADR-Wiederherstellungsprozess verfügt über die gleichen drei Phasen wie de
 - **Analysephase**
 
   Der Prozess bleibt quasi unverändert, aber es werden die sLog-Wiederherstellung und das Kopieren von Protokolldatensätzen für Vorgänge ohne Versionsangabe hinzugefügt.
+  
 - **Wiederholungsphase**
 
   Aufgeteilt in zwei Phasen (P)
   - Phase 1
 
       Wiederholung über sLog (älteste Transaktion ohne Commit bis zum letzten Prüfpunkt). Die Wiederholung ist ein schneller Vorgang, weil nur einige Datensätze aus dem sLog verarbeitet werden müssen.
+      
   - Phase 2
 
      Die Wiederholung über das Transaktionsprotokoll beginnt ab dem letzten Prüfpunkt (anstatt ab der ältesten Transaktion ohne Commit).
+     
 - **Phase des Rückgängigmachens**
 
    Die Phase „Rückgängig“ mit ADR wird nahezu sofort durchgeführt, indem sLog genutzt wird, um Vorgänge ohne Versionsangabe und persistenten Versionsspeicher mit logischer Wiederherstellung rückgängig zu machen. Auf diese Weise erfolgt das versionsbasierte Rückgängigmachen auf Zeilenebene.

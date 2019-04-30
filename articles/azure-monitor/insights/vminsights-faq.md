@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: magoedte
-ms.openlocfilehash: 32f2833b4c1ba77564d5388bc080a7cb32d90201
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: ade12225a470b64278b9d27676ceab768f64d904
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243772"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698271"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor für VMs (Vorschauversion)
 Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Azure Monitor für VMs. Wenn Sie weitere Fragen zur Lösung haben, besuchen Sie das [Diskussionsforum](https://feedback.azure.com/forums/34192--general-feedback), und stellen Sie Ihre Fragen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
@@ -100,7 +100,7 @@ Das Zuordnungsfeature von Azure Monitor for VMs basiert auf der Dienstzuordnung,
 * Überwachte VMs sind jetzt im Clientgruppenknoten enthalten, und das Ringdiagramm zeigt den Anteil der überwachten und nicht überwachten VMs in der Gruppe an.  Sie können außerdem bei ausgeklappter Gruppe zum Filtern der Liste der Computer verwendet werden.
 * Überwachte VMs sind jetzt in den Serverport-Gruppenknoten enthalten, und das Ringdiagramm zeigt den Anteil der überwachten und nicht überwachten Computer in der Gruppe an.  Sie können außerdem bei ausgeklappter Gruppe zum Filtern der Liste der Computer verwendet werden.
 * Das Format der Zuordnung wurde aktualisiert, um eine bessere Konsistenz mit der App-Übersicht aus Application Insights zu erreichen.
-* Die Seitenleisten wurden aktualisiert, weisen aber noch nicht den gesamten Integrationssatz auf, der in der Dienstzuordnung unterstützt wurde – Updateverwaltung, Änderungsnachverfolgung, Sicherheit und Service Desk. 
+* Die Seitenleisten wurden aktualisiert und weisen nicht den gesamten Integrationssatz auf, der in der Dienstzuordnung unterstützt wurde – Updateverwaltung, Änderungsnachverfolgung, Sicherheit und Service Desk. 
 * Die Option zum Auswählen von Gruppen und Computern für die Zuordnung wurde aktualisiert und unterstützt jetzt Abonnements, Ressourcengruppen Skalierungsgruppen von Azure-VMs und Clouddienste.
 * Sie können im Zuordnungsfeature von Azure Monitor for VMs keine neuen Computergruppen der Dienstzuordnung erstellen.  
 
@@ -125,6 +125,12 @@ Zwar haben wir Verbesserungen an der Zuordnung bei der Behandlung großer und ko
 ## <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>Warum sieht das Netzwerkdiagramm auf der Registerkarte „Leistung“ anders aus als das Netzwerkdiagramm auf der Azure-VM-Übersichtsseite?
 
 Die Übersichtsseite für eine Azure-VM zeigt Diagramme auf der Grundlage der vom Host gemessenen Aktivität in der Gast-VM an.  Für das Netzwerkdiagramm in der Azure-VM-Übersicht wird nur Netzwerkdatenverkehr angezeigt, der in Rechnung gestellt wird.  Dies schließt Datenverkehr zwischen Vnets nicht ein.  Die für Azure Monitor for VMs angezeigten Daten und Diagramme basieren auf Daten aus der Gast-VM, und das Netzwerkdiagramm zeigt den gesamten eingehenden und ausgehenden TCP/IP-Verkehr für die VM an, einschließlich des Datenverkehrs zwischen Vnets.
+
+## <a name="how-is-response-time-measured-for-data-stored-in-vmconnection-and-displayed-in-the-connection-panel-and-workbooks"></a>Wie wird die Antwortzeit für Daten gemessen, die in VMConnection gespeichert und im Verbindungsbereich und in den Arbeitsmappen angezeigt werden?
+
+Die Antwortzeit ist eine Schätzung. Da wir den Code der Anwendung nicht instrumentieren, wissen wir nicht genau, wann eine Anforderung beginnt und wann die Antwort empfangen wird. Stattdessen beobachten wir Daten, die über eine Verbindung gesendet werden und dann Daten, die über diese Verbindung zurückkommen. Unser Agent verfolgt diese Sende- und Empfangsvorgänge und versucht, sie zu koppeln: eine Folge von Sendevorgängen, gefolgt von einer Folge von Empfangsvorgängen, wird als Anforderung/Antwort-Paar interpretiert. Die Zeit zwischen diesen Vorgängen ist die Antwortzeit. Sie umfasst die Netzwerklatenz und die Serververarbeitungszeit.
+
+Diese Schätzung funktioniert gut für Protokolle, die auf Anforderung/Antwort basieren: Eine einzelne Anforderung wird über die Verbindung gesendet, und eine einzelne Antwort wird empfangen. Dies ist der Fall bei HTTP(S) (ohne Pipelining), wird aber bei anderen Protokollen nicht erfüllt.
 
 ## <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>Gibt es im Free-Tarif von Log Analytics Einschränkungen?
 Wenn Sie Azure Monitor über den *Free*-Tarif mit einem Log Analytics-Arbeitsbereich konfiguriert haben, unterstützt das Azure Monitor for VMs-Zuordnungsfeature nur fünf Computer, die mit dem Arbeitsbereich verbunden sind. Wenn fünf VMs mit einem kostenlosen Arbeitsbereich verbunden sind und Sie eine der VMs trennen und später mit einer neuen VM verbinden, wird die neue VM nicht überwacht oder auf der Seite „Zuordnen“ angezeigt.  

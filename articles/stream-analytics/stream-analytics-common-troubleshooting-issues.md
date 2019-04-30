@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: a2c7ceae342124f06fcfe8dc18b1a69f7176f4e1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0191c56e1140870b1710b48c4fa1189fd92a337b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090974"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521474"
 ---
 # <a name="common-issues-in-stream-analytics-and-steps-to-troubleshoot"></a>Häufig auftretende Probleme bei Stream Analytics und Schritten zur Problembehandlung
 
@@ -26,7 +26,7 @@ ms.locfileid: "53090974"
 
 ![Kachel „Eingaben“ im Azure Stream Analytics-Dashboard](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
-Weitere Informationen können Sie sehen, wenn Sie die Diagnoseprotokolle aktivieren, um Details zur Warnung anzuzeigen. Bei falsch formatierten Eingabeereignissen enthalten die Ausführungsprotokolle einen Eintrag mit der Meldung, die etwa wie folgt aussieht: „Meldung: Die Eingabeereignisse aus Ressource ’<blob URI>’ konnten nicht als JSON deserialisiert werden.“ 
+Weitere Informationen können Sie sehen, wenn Sie die Diagnoseprotokolle aktivieren, um Details zur Warnung anzuzeigen. Bei falsch formatierten Eingabeereignissen enthalten die Ausführungsprotokolle einen Eintrag mit der Meldung, die etwa wie folgt aussieht: „Meldung: Die Eingabeereignisse aus Ressource \<blob URI> konnten nicht als JSON deserialisiert werden.“ 
 
 ### <a name="troubleshooting-steps"></a>Schritte zur Problembehandlung
 

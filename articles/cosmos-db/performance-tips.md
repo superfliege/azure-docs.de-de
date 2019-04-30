@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: cf90f7231362d147914e22419c9008d2628a483f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 81adf643541b5a4486694026acec49129ef8e5a6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861892"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000622"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Leistungstipps für Azure Cosmos DB und .NET
 
@@ -85,6 +85,11 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
 4. **Erhöhen der Anzahl von Threads/Aufgaben**
 
     Da Azure Cosmos DB-Aufrufe über das Netzwerk abgewickelt werden, müssen Sie ggf. den Parallelitätsgrad Ihrer Anforderungen variieren, um die Wartezeit für die Clientanwendung zwischen Anforderungen auf ein Minimum zu reduzieren. Erstellen Sie beispielsweise bei Verwendung der [Task Parallel Library](https://msdn.microsoft.com//library/dd460717.aspx) von .NET mehrere hundert Aufgaben für Lese- und Schreibvorgänge in Azure Cosmos DB.
+
+5. **Aktivieren des beschleunigten Netzwerkbetriebs**
+
+   Um Latenzzeiten und CPU-Jitter zu reduzieren, empfehlen wir, dass auf die virtuellen Clientcomputern der beschleunigte Netzwerkbetrieb aktiviert ist. Informationen zum Aktivieren des beschleunigten Netzwerkbetrieb finden Sie in den Artikeln [Erstellen eines virtuellen Windows-Computers mit beschleunigtem Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-powershell.md) oder [Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md).
+
 
 ## <a name="sdk-usage"></a>SDK-Verwendung
 1. **Installieren des neuesten SDKs**

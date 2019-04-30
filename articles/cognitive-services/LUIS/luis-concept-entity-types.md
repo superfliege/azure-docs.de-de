@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 6e37466145af58a52a86a08a2a873e406c99b9e5
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 59a05e7a20f6b229b37977a75d22611c0d5c31d9
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58895544"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528032"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>Entitätstypen und ihr Zweck in LUIS
 
@@ -24,7 +24,15 @@ Entitäten extrahieren Daten aus der Äußerung. Entitätstypen ermöglichen ein
 
 ## <a name="entity-compared-to-intent"></a>Entität im Vergleich zu Absichten
 
-Die Entität stellt ein Wort oder einen Ausdruck innerhalb der Äußerung dar, die extrahiert werden soll. Eine Äußerung kann viele Entitäten oder auch überhaupt keine enthalten. Eine Entität stellt eine Klasse dar, einschließlich einer Sammlung ähnlicher Objekte (Orte, Dinge, Personen, Ereignisse oder Konzepte). Entitäten beschreiben Informationen mit Bezug zur Absicht. Manchmal sind sie auch für die Ausführung der Aufgabe Ihrer App wichtig. Eine App zur News-Suche kann beispielsweise Entitäten wie „Thema“, „Quelle“, „Schlüsselwort“ und „Veröffentlichungsdatum“ enthalten, die besonders wichtig für die Suche nach Nachrichten sind. In einer Reisebuchungs-App sind „Ort“, „Datum“, „Airline“, „Reiseklasse“ und „Tickets“ Schlüsselinformationen für die Flugbuchung (relevant für die Absicht „Flug buchen“).
+Die Entität stellt ein Wort oder einen Ausdruck innerhalb der Äußerung dar, die extrahiert werden soll. Eine Äußerung kann viele Entitäten oder auch überhaupt keine enthalten. Eine Clientanwendung kann es erforderlich machen, dass die Entität ihre Aufgabe erfüllt, oder sie kann sie als Richtlinie für mehrere Auswahlmöglichkeiten verwenden, die dem Benutzer präsentiert werden. 
+
+Eine Entität:
+
+* Stellt eine Klasse dar, einschließlich einer Sammlung ähnlicher Objekte (Orte, Dinge, Personen, Ereignisse oder Konzepte). 
+* Beschreibt Informationen, die für die Absicht relevant sind
+
+
+Eine App zur News-Suche kann beispielsweise Entitäten wie „Thema“, „Quelle“, „Schlüsselwort“ und „Veröffentlichungsdatum“ enthalten, die besonders wichtig für die Suche nach Nachrichten sind. In einer Reisebuchungs-App sind „Ort“, „Datum“, „Airline“, „Reiseklasse“ und „Tickets“ Schlüsselinformationen für die Flugbuchung (relevant für die Absicht „Flug buchen“).
 
 Im Vergleich dazu stellt die Absicht die Vorhersage der gesamten Äußerung dar. 
 
@@ -88,15 +96,15 @@ Nachdem die Entität extrahiert wurde, können die Entitätsdaten als einzelne I
 
 |Durch maschinelles Lernen erworben|Kennzeichnung möglich|Tutorial|Beispiel<br>response|Entitätstyp|Zweck|
 |--|--|--|--|--|--|
-|✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**Composite**](#composite-entity)|Gruppierung von Entitäten, unabhängig vom Entitätstyp.|
-|✔|✔|[✔](luis-quickstart-intent-and-hier-entity.md)|[✔](luis-concept-data-extraction.md#hierarchical-entity-data)|[**Hierarchical**](#hierarchical-entity)|Gruppierung von einfachen Entitäten.|
-|||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**Auflisten**](#list-entity)|Liste mit Elementen und den zugehörigen Synonymen, die per genauer Textübereinstimmung extrahiert werden.|
+|✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**Zusammengesetzt**](#composite-entity)|Gruppierung von Entitäten, unabhängig vom Entitätstyp.|
+|✔|✔|-|[✔](luis-concept-data-extraction.md#hierarchical-entity-data)|[**Hierarchisch**](#hierarchical-entity)|Gruppierung von einfachen Entitäten.|
+|||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**Liste**](#list-entity)|Liste mit Elementen und den zugehörigen Synonymen, die per genauer Textübereinstimmung extrahiert werden.|
 |Gemischt||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Pattern.any**](#patternany-entity)|Entität, bei der das Entitätsende schwierig zu ermitteln ist.|
 |||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**Vordefiniert**](#prebuilt-entity)|Bereits trainiert, um verschiedene Arten von Daten zu extrahieren.|
 |||[✔](luis-quickstart-intents-regex-entity.md)|[✔](luis-concept-data-extraction.md#regular-expression-entity-data)|[**Regulärer Ausdruck**](#regular-expression-entity)|Verwendet einen regulären Ausdruck zum Abgleichen von Text.|
 |✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**Einfach**](#simple-entity)|Enthält ein einzelnes Konzept in einem Wort oder Ausdruck.|
 
-Nur Entitäten, die durch maschinelles Lernen erworben wurden, müssen in den Beispieläußerungen für jede Absicht gekennzeichnet werden. Durch maschinelles Lernen erworbene Entitäten funktionieren am besten, wenn sie mithilfe von [Endpunktabfragen](luis-concept-test.md#endpoint-testing) und durch das [Überprüfen der Endpunktäußerungen](luis-how-to-review-endpoint-utterances.md) getestet werden. 
+Nur Entitäten, die durch maschinelles Lernen erworben wurden, müssen in den Beispieläußerungen gekennzeichnet werden. Durch maschinelles Lernen erworbene Entitäten funktionieren am besten, wenn sie mithilfe von [Endpunktabfragen](luis-concept-test.md#endpoint-testing) und durch das [Überprüfen der Endpunktäußerungen](luis-how-to-review-endoint-utt.md) getestet werden. 
 
 Pattern.any-Entitäten müssen in [Pattern](luis-how-to-model-intent-pattern.md)-Vorlagenbeispielen gekennzeichnet werden, nicht in den Absichtsbenutzerbeispielen. 
 
@@ -121,29 +129,15 @@ Diese Entität ist gut geeignet, wenn für die Daten Folgendes gilt:
 
 ## <a name="hierarchical-entity"></a>Entität vom Typ „Hierarchical“
 
+**Hierarchische Einheiten werden möglicherweise veraltet sein. Verwenden Sie [Entitätsrollen](luis-concept-roles.md) zum Ermitteln von Entitätsuntertypen, anstatt hierarchische Entitäten zu verwenden.**
+
 Eine hierarchische Entität ist eine Kategorie von kontextbezogen erlernten einfachen Entitäten, die als untergeordnete Elemente bezeichnet werden.
-
-Diese Entität ist gut geeignet, wenn für die Daten Folgendes gilt:
-
-* Es sind einfache Entitäten.
-* Sie sind im Kontext der Äußerung miteinander verknüpft.
-* Es werden bestimmte Wörter verwendet, um die einzelnen untergeordneten Entitäten anzugeben. Beispiele für diese Wörter sind: von/nach, Verlassen/Ziel.
-* Untergeordnete Elemente sind häufig Teil der gleichen Äußerung. 
-* Müssen gruppiert und von einer Client-App als eine Informationseinheit verarbeitet werden.
-
-Sie sollte in folgenden Fällen nicht verwendet werden:
-
-* Sie benötigen eine Entität, die unabhängig vom Kontext Übereinstimmungen für untergeordnete Elemente enthält. Verwenden Sie stattdessen eine [Entität vom Typ „Liste“](#list-entity). 
-* Sie benötigen eine Entität für die Beziehung „Übergeordnetes/Untergeordnetes Element“ mit anderen Entitätstypen. Verwenden Sie die [Entität vom Typ „Zusammengesetzt“](#composite-entity).
 
 ![Entität vom Typ „Hierarchical“](./media/luis-concept-entities/hierarchical-entity.png)
 
-[Tutorial](luis-quickstart-intent-and-hier-entity.md)<br>
-[JSON-Beispielantwort für Entität](luis-concept-data-extraction.md#hierarchical-entity-data)<br>
-
 ### <a name="roles-versus-hierarchical-entities"></a>Rollen und hierarchische Entitäten
 
-Mit den [Rollen](luis-concept-roles.md#roles-versus-hierarchical-entities) eines Musters wird das gleiche Problem wie mit hierarchischen Entitäten gelöst, aber der Vorgang gilt für alle Entitätstypen. Rollen sind derzeit nur in Mustern verfügbar. In Beispieläußerungen von Absichten sind Rollen nicht verfügbar.  
+Mit den [Rollen](luis-concept-roles.md) wird das gleiche Problem wie mit hierarchischen Entitäten gelöst, aber der Vorgang gilt für alle Entitätstypen.  
 
 ## <a name="list-entity"></a>Entität vom Typ „List“
 
@@ -262,24 +256,15 @@ Diese Entität ist gut geeignet, wenn Folgendes gilt:
 
 Informieren Sie sich über die [Grenzwerte](luis-boundaries.md#model-boundaries), um zu erfahren, wie viele Entitäten jedes Typs Sie einem Modell hinzufügen können.
 
-## <a name="composite-vs-hierarchical-entities"></a>Hierarchische und zusammengesetzte Entitäten
-
-Zusammengesetzte Entitäten und hierarchische Entitäten verfügen jeweils über eine Über- und Unterordnungsbeziehung, und sie wurden durch maschinelles Lernen erworben. Durch maschinelles Lernen kann LUIS die Entitäten basierend auf unterschiedlichen Kontexten (Anordnung von Wörtern) verstehen. Zusammengesetzte Entitäten sind flexibler, da sie unterschiedliche Entitätstypen als untergeordnete Elemente zulassen. Bei einer hierarchischen Entität sind die untergeordneten Entitäten immer einfache Entitäten. 
-
-|Type|Zweck|Beispiel|
-|--|--|--|
-|Hierarchical|Über-/untergeordnete Entität einfacher Entitäten|Location.Origin=New York<br>Location.Destination=London|
-|Composite|Über-/untergeordnete Entitäten: vordefinierte, Listen-, einfache, hierarchische Entitäten| number=3<br>list=first class<br>prebuilt.datetimeV2=March 5|
-
 ## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>Wenn mehr als die maximale Anzahl von Entitäten erforderlich ist 
 
-Möglicherweise müssen Sie hierarchische und zusammengesetzte Entitäten verwenden. Hierarchische Entitäten spiegeln die Beziehung zwischen Entitäten wider, die gemeinsame Merkmale aufweisen oder derselben Kategorie angehören. Die untergeordneten Entitäten sind alle Mitglieder der Kategorie der übergeordneten Entität. Beispielsweise kann die hierarchische Entität PlaneTicketClass die untergeordneten Entitäten EconomyClass und FirstClass enthalten. Die Hierarchie umfasst nur eine untergeordnete Ebene.  
+Möglicherweise müssen Sie gemischte Entitäten in Kombination mit Entitätsrollen verwenden.
 
-Zusammengesetzte Entitäten stellen Teile eines Ganzen dar. Die zusammengesetzte Entität PlaneTicketOrder könnte z.B. die untergeordneten Entitäten Airline, Destination, DepartureCity, DepartureDate und PlaneTicketClass enthalten. Sie erstellen eine zusammengesetzte Entität aus bereits vorhandenen einfachen Entitäten, untergeordnete Entitäten von hierarchischen Entitäten oder vordefinierten Entitäten.  
+Zusammengesetzte Entitäten stellen Teile eines Ganzen dar. Die zusammengesetzte Entität PlaneTicketOrder könnte z.B. die untergeordneten Entitäten Airline, Destination, DepartureCity, DepartureDate und PlaneTicketClass enthalten.
 
 LUIS verfügt auch über den Listenentitätstyp, der nicht per maschinellem Lernen erworben wird, sondern es Ihrer LUIS-App ermöglicht, eine feste Liste mit Werten anzugeben. In der Referenz zu [LUIS-Grenzen](luis-boundaries.md) finden Sie Informationen zu den Grenzwerten des Listenentitätstyps. 
 
-Wenn Sie bereits hierarchische, zusammengesetzte und Listenentitäten berücksichtigt haben und trotzdem mehr als den Grenzwert benötigen, wenden Sie sich an den Support. Sammeln Sie dazu ausführliche Informationen über Ihr System, navigieren Sie zur [LUIS](luis-reference-regions.md#luis-website)-Website, und wählen Sie dann **Support** aus. Wenn Ihr Azure-Abonnement Supportdienste umfasst, wenden Sie sich an den [technischen Support von Azure](https://azure.microsoft.com/support/options/). 
+Wenn Sie diese Entitäten berücksichtigt haben und trotzdem mehr als den Grenzwert benötigen, wenden Sie sich an den Support. Sammeln Sie dazu ausführliche Informationen über Ihr System, navigieren Sie zur [LUIS](luis-reference-regions.md#luis-website)-Website, und wählen Sie dann **Support** aus. Wenn Ihr Azure-Abonnement Supportdienste umfasst, wenden Sie sich an den [technischen Support von Azure](https://azure.microsoft.com/support/options/). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

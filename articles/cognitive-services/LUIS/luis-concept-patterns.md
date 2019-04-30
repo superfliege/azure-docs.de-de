@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/05/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 42ac75b6ed0d4489ccae014b9cfe3b08269c1218
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2a160ab7447304dc6eb14f76a723df4e8a4d9f46
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547417"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523102"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Verbessern der Vorhersagegenauigkeit mit Mustern
 Muster werden entworfen, um die Genauigkeit zu erhöhen, wenn mehrere Äußerungen sehr ähnlich sind.  Ein Muster ermöglicht es Ihnen, größere Genauigkeit für eine Absicht zu erreichen, ohne viele weitere Äußerungen anzugeben. 
@@ -41,7 +41,7 @@ Muster lösen Probleme in den folgenden Situationen:
 ## <a name="patterns-are-not-a-guarantee-of-intent"></a>Muster stellen eine Garantie für Absicht dar
 Muster verwenden eine Kombination von Vorhersagetechnologien. Das Festlegen einer Absicht für eine Vorlagenäußerung in einem Muster stellt keine Garantie für die Absichtsvorhersage dar, liefert aber ein starkes Signal. 
 
-<a name="patterns-do-not-improve-entity-detection"/>
+<a name="patterns-do-not-improve-entity-detection"/></a>
 
 ## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>Muster verbessern nicht die Erkennung von Entitäten, die mit Machine Learning trainiert wurden
 
@@ -50,7 +50,7 @@ Ein Muster ist in erster Linie zur Unterstützung der Vorhersage bei Absichten u
 Erwarten Sie keine verbesserte Vorhersage von Entitäten, wenn Sie mehrere Äußerungen in einem einzelnen Muster zusammenfassen. Damit einfache Entitäten ausgelöst werden, müssen Sie Äußerungen hinzufügen oder Listenentitäten verwenden, da Ihr Muster andernfalls nicht ausgelöst wird.
 
 ## <a name="patterns-use-entity-roles"></a>Muster verwenden Entitätsrollen
-Wenn zwei oder mehr Entitäten in einem Muster kontextverwandt sind, setzen Muster [Entitätsrollen](luis-concept-roles.md) ein, um Kontextinformationen zu den Entitäten zu extrahieren. Dies ist hierarchisch gleichbedeutend mit untergeordneten Entitäten, steht aber **nur** in Mustern zur Verfügung. 
+Wenn zwei oder mehr Entitäten in einem Muster kontextverwandt sind, setzen Muster [Entitätsrollen](luis-concept-roles.md) ein, um Kontextinformationen zu den Entitäten zu extrahieren.  
 
 ## <a name="prediction-scores-with-and-without-patterns"></a>Vorhersagebewertungen mit und ohne Muster
 Eine ausreichende Anzahl von Beispieläußerungen vorausgesetzt, wäre LUIS imstande, die Vorhersagezuverlässigkeit ohne Muster zu steigern. Mithilfe von Mustern lässt sich die Zuverlässigkeitsbewertung steigern, ohne so viele Äußerungen zur Verfügung stellen zu müssen.  
@@ -83,7 +83,7 @@ Die **optionale** Syntax mit eckigen Klammern kann in zwei Ebenen geschachtelt w
 |is a new form (ist ein neues Formular)|stimmt mit dem äußeren optionalen Wort und nicht optionalen Wörtern im Muster überein|
 |a new form (ein neues Formular)|stimmt nur mit den erforderlichen Wörtern überein|
 
-Die **Gruppierungssyntax** mit Klammern kann in zwei Ebenen geschachtelt werden. Beispiel: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`. Dadurch kann jede der drei Entitäten übereinstimmen. 
+Die **Gruppierungssyntax** mit Klammern kann in zwei Ebenen geschachtelt werden. Beispiel: `(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`. Durch dieses Feature kann jede der drei Entitäten verglichen werden. 
 
 Wenn es sich bei „Entity1“ um einen Standort mit Rollen wie „origin“ (Ursprung, Seattle) und „destination“ (Ziel, Kairo) und bei „Entity2“ um einen bekannten Gebäudenamen aus einer Listenentität (RedWest-C) handelt, stimmen die folgenden Äußerungen mit diesem Muster überein:
 
@@ -170,7 +170,7 @@ Kennzeichnen Sie optionalen Text in der Äußerung mithilfe der Syntax für ecki
 |Muster mit optionalem Text|Bedeutung|
 |--|--|
 |`[find] email about {subject} [from {person}]`|`find` und `from {person}` sind optional.|
-|`Can you help me[?] (Können Sie mir weiterhelfen[?])|Das Satzzeichen ist optional|
+|`Können Sie mir weiterhelfen[?]|Das Satzzeichen ist optional|
 
 Satzzeichen (`?`, `!`, `.`) sollten ignoriert werden. Dies erreichen Sie, indem Sie die Syntax mit eckigen Klammern in Mustern verwenden. 
 

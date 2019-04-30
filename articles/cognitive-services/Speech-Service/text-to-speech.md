@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 597932ae9ad4dba76428fa6a4882c50f6ff98754
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 2c5c2bc2b8dd1930efef9833bd442fcad5566e2a
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263110"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578780"
 ---
 # <a name="what-is-text-to-speech"></a>Was ist Text-zu-Sprache?
 
@@ -53,10 +53,7 @@ Die folgende Tabelle enthält die wichtigen Features für Text-zu-Sprache:
 | Erstellen und Verwalten von Voicefont-Tests. | Nein  | Ja\* |
 | Verwalten von Abonnements. | Nein  | Ja\* |
 
-\* *Diese Dienste sind über den Endpunkt cris.ai verfügbar. Weitere Informationen finden Sie in der [Swagger-Referenz](https://westus.cris.ai/swagger/ui/index).*
-
-> [!NOTE]
-> Der Text-zu-Sprache-Endpunkt implementiert Drosselung, durch die Anforderungen auf 25 Anforderungen pro 5 Sekunden eingeschränkt werden. Wenn Drosselung auftritt, werden Sie über Nachrichtenheader benachrichtigt.
+\* *Diese Dienste sind über den Endpunkt cris.ai verfügbar. Weitere Informationen finden Sie in der [Swagger-Referenz](https://westus.cris.ai/swagger/ui/index). Diese benutzerdefinierten Stimmtrainings- und Management-APIs implementieren eine Drosselung, die die Anforderungen auf 25 pro 5 Sekunden begrenzt, während die Sprachsynthese-API selbst eine Drosselung implementiert, die 200 Anforderungen pro Sekunde als Höchstwert zulässt. Wenn Drosselung auftritt, werden Sie über Nachrichtenheader benachrichtigt.*
 
 ## <a name="get-started-with-text-to-speech"></a>Erste Schritte mit der Sprachsynthese
 
@@ -66,17 +63,17 @@ Wir bieten Schnellstarts an, die so konzipiert sind, dass Sie in weniger als 10 
 
 | Schnellstart (SDK) | Plattform | API-Referenz |
 |------------|----------|---------------|
-| [C#, .NET Framework](quickstart-text-to-speech-dotnet-windows.md) | Windows | [Durchsuchen](https://aka.ms/csspeech/csharpref) |
-| [C++](quickstart-text-to-speech-cpp-windows.md) | Windows | [Durchsuchen](https://aka.ms/csspeech/cppref) |
-| [C++](quickstart-text-to-speech-cpp-linux.md) | Linux | [Durchsuchen](https://aka.ms/csspeech/cppref) |
+| [C#, .NET Framework](quickstart-text-to-speech-dotnet-windows.md) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
+| [C++](quickstart-text-to-speech-cpp-windows.md) | Windows | [Browse](https://aka.ms/csspeech/cppref) |
+| [C++](quickstart-text-to-speech-cpp-linux.md) | Linux | [Browse](https://aka.ms/csspeech/cppref) |
 
 ### <a name="rest-quickstarts"></a>REST-Schnellstarts
 
 | Schnellstart (REST) | Plattform | API-Referenz |
 |------------|----------|---------------|
-| [C#, .NET Core](quickstart-dotnet-text-to-speech.md) | Windows, macOS, Linux | [Durchsuchen](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Node.js](quickstart-nodejs-text-to-speech.md) | Window, macOS, Linux | [Durchsuchen](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Python](quickstart-python-text-to-speech.md) | Window, macOS, Linux | [Durchsuchen](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [C#, .NET Core](quickstart-dotnet-text-to-speech.md) | Windows, macOS, Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Node.js](quickstart-nodejs-text-to-speech.md) | Window, macOS, Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Python](quickstart-python-text-to-speech.md) | Window, macOS, Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 
 ## <a name="sample-code"></a>Beispielcode
 
@@ -87,10 +84,10 @@ Beispielcode für Text-zu-Sprache finden Sie auf GitHub. Diese Beispiele umfasse
 
 ## <a name="reference-docs"></a>Referenz
 
-* [Sprach-SDK](speech-sdk-reference.md)
+* [Speech SDK](speech-sdk-reference.md)
 * [Speech-Geräte-SDK](speech-devices-sdk.md)
 * [REST-API: Spracherkennung](rest-speech-to-text.md)
-* [REST-API: Text-zu-Sprache](rest-text-to-speech.md)
+* [REST-API: Sprachsynthese](rest-text-to-speech.md)
 * [REST-API: Batchtranskription und Anpassung](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>Nächste Schritte

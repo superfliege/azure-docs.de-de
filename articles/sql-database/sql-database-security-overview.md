@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
-ms.date: 04/08/2019
-ms.openlocfilehash: f9387d68139119c13d57ebb135e0c0f5b7bba8ec
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.date: 04/11/2019
+ms.openlocfilehash: cb4ff203a69e04aeaff6d446d6ce3719f4158305
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59359056"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001081"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Eine Übersicht über die Sicherheitsfunktionen von Azure SQL-Datenbank
 
@@ -88,9 +88,9 @@ Zum Schutz der Kundendaten stellt SQL-Datenbank Funktionen für die Überwachung
 
 Bei der Überwachung von SQL-Datenbank werden Datenbankaktivitäten nachverfolgt, und Sie erhalten Unterstützung bei der Einhaltung von Sicherheitsstandards, indem Datenbankereignisse in einem Überwachungsprotokoll in einem Azure Storage-Konto des Kunden aufgezeichnet werden. Dank der Überwachung können Benutzer die fortlaufenden Datenbankaktivitäten überwachen und die Verlaufsaktivität analysieren und untersuchen, um potenzielle Bedrohungen oder vermutete Missbrauchsfälle und Sicherheitsverletzungen zu identifizieren. Weitere Informationen finden Sie in den ersten Schritten unter [Überwachung von SQL-Datenbank](sql-database-auditing.md).  
 
-### <a name="threat-detection"></a>Bedrohungserkennung
+### <a name="advanced-threat-protection"></a>Erweiterter Schutz vor Bedrohungen
 
-Die Bedrohungserkennung ergänzt die Überwachung durch Analysieren der Überwachungsprotokolle auf ungewöhnliches Verhalten und potenziell schädliche Zugriffs- oder Offenlegungsversuche bei Datenbanken. Warnungen werden für verdächtige Aktivitäten oder ungewöhnliche Zugriffsmuster wie Angriffe durch Einschleusung von SQL-Befehlen, potenzielle Dateneinfügungen und Brute-Force-Kennwortangriffe erstellt. Sie können die Warnungen der Bedrohungserkennung im [Azure Security Center](https://azure.microsoft.com/services/security-center/) anzeigen. Dort finden Sie Details zu verdächtigen Aktivitäten und Empfehlungen für weitere Untersuchungen sowie zu Aktionen, mit denen das Risiko minimiert werden kann. Die Bedrohungserkennung kostet im Monat 15 USD pro Server. Die ersten 60 Tage sind kostenlos. Weitere Informationen finden Sie unter [Erste Schritte mit der Bedrohungserkennung von SQL-Datenbank](sql-database-threat-detection.md).
+Advanced Threat Protection analysiert Ihre SQL Server-Protokolle auf ungewöhnliches Verhalten und potenziell schädliche Zugriffs- oder Offenlegungsversuche bei Datenbanken. Warnungen werden für verdächtige Aktivitäten wie SQL-Injektion, potenzielle Dateninfiltration und Brute-Force-Angriffe oder für Anomalien in den Zugriffsmustern erstellt, um Berechtigungserweiterungen und die Verwendung gefährdeter Anmeldeinformationen zu erfassen. Sie können die Warnungen im [Azure Security Center](https://azure.microsoft.com/services/security-center/) anzeigen. Dort finden Sie Details zu verdächtigen Aktivitäten und Empfehlungen für weitere Untersuchungen sowie zu Aktionen, mit denen das Risiko minimiert werden kann. Advanced Threat Protection kann pro Server für eine zusätzliche Gebühr aktiviert werden. Weitere Informationen finden Sie unter [Erste Schritte mit Advanced Threat Protection von SQL-Datenbank](sql-database-threat-detection.md).
 
 ![azure-database-td.jpg](media/sql-database-security-overview/azure-database-td.jpg)
 
@@ -107,7 +107,7 @@ Als bewährte Methode empfehlen wir, dass Sie in der Verbindungszeichenfolge Ihr
 Wenn Sie beispielsweise den ADO.NET-Treiber verwenden, geschieht dies über **Encrypt=True** und **TrustServerCertificate=False**. Wenn Sie Ihre Verbindungszeichenfolge aus dem Azure-Portal abrufen, werden die richtigen Einstellungen verwendet.
 
 > [!IMPORTANT]
-> Beachten Sie, dass einige Nicht-Microsoft-Treiber TLS möglicherweise nicht standardmäßig verwenden oder sich auf eine ältere Version von TLS (niedriger als 2.0) verlassen, um zu funktionieren. In diesem Fall erlaubt SQL Server Ihnen weiterhin, eine Verbindung mit Ihrer Datenbank herzustellen. Wir empfehlen Ihnen jedoch, die Sicherheitsrisiken auszuwerten, die damit verbunden sind, wenn Sie solchen Treibern und Anwendungen eine Verbindung mit der SQL-Datenbank ermöglichen, insbesondere wenn Sie vertrauliche Daten speichern. 
+> Beachten Sie, dass einige Nicht-Microsoft-Treiber TLS möglicherweise nicht standardmäßig verwenden oder sich auf eine ältere Version von TLS (niedriger als 1.2) verlassen, um zu funktionieren. In diesem Fall erlaubt SQL Server Ihnen weiterhin, eine Verbindung mit Ihrer Datenbank herzustellen. Wir empfehlen Ihnen jedoch, die Sicherheitsrisiken auszuwerten, die damit verbunden sind, wenn Sie solchen Treibern und Anwendungen eine Verbindung mit der SQL-Datenbank ermöglichen, insbesondere wenn Sie vertrauliche Daten speichern. 
 >
 > Weitere Informationen zu TLS und zur Konnektivität finden Sie unter [Überlegungen zu TLS](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity).
 

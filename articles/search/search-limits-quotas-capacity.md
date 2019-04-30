@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 04/17/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c52ac6128ad00d9bb772816d6130f3aedc480138
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: ff2b843e00ffdf005d952cf62eab6b93c9434913
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59273395"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699165"
 ---
 # <a name="service-limits-in-azure-search"></a>Grenzwerte für den Azure Search-Dienst
 Die Grenzwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und anderen Objekten hängen davon ab, ob die [Bereitstellung von Azure Search](search-create-service-portal.md) im Tarif **Free**, **Basic**, **Standard** oder **Storage Optimized** erfolgt.
@@ -55,7 +55,7 @@ Die Grenzwerte für Speicher, Workloads und Mengen von Indizes, Dokumenten und a
 | Maximale Anzahl von [Bewertungsprofilen](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) pro Index |100 |100 |100 |100 |100 |100 |100 |100 |
 | Maximale Anzahl von Funktionen pro Profil |8 |8 |8 |8 |8 |8 |8 |8 |
 
-<sup>1</sup> Bei Diensten mit dem Tarif „Basic“, die nach Ende 2017 erstellt wurden, wurde das Limit auf 15 Indizes, Datenquellen und Indexer erhöht. Für zuvor erstellte Dienste gilt eine Begrenzung auf 5. Der Basic-Tarif ist die einzige SKU mit einem unteren Grenzwert von 100 Feldern pro Index.
+<sup>1</sup> Basic-Dienste, die vor Dezember 2017 erstellt wurden, haben niedrigere Grenzwerte (5 statt 15) für Indizes. Der Basic-Tarif ist die einzige SKU mit einem unteren Grenzwert von 100 Feldern pro Index.
 
 <a name="document-limits"></a>
 
@@ -81,7 +81,7 @@ Für Dienste, die Dokumentgrenzwerten unterliegen, gelten die folgenden Obergren
 
 |  Kostenlos | Basic | S1 | S2 | S3 | S3&nbsp;HD |
 |-------|-------|----|----|----|-------|
-|  10.000 |1 Mio. |15 Millionen pro Partition oder 180 Millionen pro Dienst |60 Millionen pro Partition oder 720 Millionen pro Dienst |120 Millionen pro Partition oder 1,4 Milliarden pro Dienst |1 Millionen pro Index oder 200 Millionen pro Partition |
+|  10.000 |1&nbsp;Millionen |15 Millionen pro Partition oder 180 Millionen pro Dienst |60 Millionen pro Partition oder 720 Millionen pro Dienst |120 Millionen pro Partition oder 1,4 Milliarden pro Dienst |1 Millionen pro Index oder 200 Millionen pro Partition |
 
 Sollten für den Dienst Einschränkungen gelten, die Sie behindern, erstellen Sie einen neuen Dienst, und veröffentlichen Sie anschließend sämtliche Inhalte erneut für diesen Dienst. Es gibt keinen Mechanismus, mit dem Sie Ihren Dienst nahtlos im Hintergrund auf neuer Hardware bereitstellen können.
 
@@ -99,9 +99,8 @@ Um die Dokumentgröße niedrig zu halten, achten Sie darauf, nicht abfragbare Da
 
 ## <a name="indexer-limits"></a>Indexergrenzwerte
 
-Bei Diensten mit dem Tarif „Basic“, die ab Ende 2017 erstellt wurden, wurde das Limit auf 15 Indizes, Datenquellen, Qualifikationsgruppen und Indexer erhöht.
+Es gibt eine maximale Ausführungsdauer, um den Dienst als Ganzes ausgewogen und stabil zu gestalten, aber größere Datensätze benötigen möglicherweise mehr Indizierungszeit, als das Maximum zulässt. Wenn ein Indizierungsauftrag nicht innerhalb der maximal zulässigen Zeit abgeschlossen werden kann, versuchen Sie, den Auftrag nach einem Zeitplan auszuführen. Der Planer verfolgt den Indizierungsstatus. Wenn ein geplanter Indizierungsauftrag aus irgendeinem Grund unterbrochen wird, kann der Indexer den Auftrag bei der nächsten geplanten Ausführung an der Stelle fortsetzen, an der er unterbrochen wurde.
 
-Ressourcenintensive Vorgänge wie Bildanalysen in der Azure-BLOB-Indizierung oder die Verarbeitung natürlicher Sprache in der kognitiven Suche weisen eine kürzere maximale Ausführungsdauer auf, sodass weitere Indizierungsaufträge bewältigt werden können. Wenn ein Indizierungsauftrag nicht innerhalb der maximal zulässigen Zeit abgeschlossen werden kann, versuchen Sie, den Auftrag nach einem Zeitplan auszuführen. Der Planer verfolgt den Indizierungsstatus. Wenn ein geplanter Indizierungsauftrag aus irgendeinem Grund unterbrochen wird, kann der Indexer den Auftrag bei der nächsten geplanten Ausführung an der Stelle fortsetzen, an der er unterbrochen wurde.
 
 | Ressource | Free&nbsp;<sup>1</sup> | Basic&nbsp;<sup>2</sup>| S1 | S2 | S3 | S3&nbsp;HD&nbsp;<sup>3</sup>|L1 |L2 |
 | -------- | ----------------- | ----------------- | --- | --- | --- | --- | --- | --- |
@@ -109,14 +108,15 @@ Ressourcenintensive Vorgänge wie Bildanalysen in der Azure-BLOB-Indizierung ode
 | Maximale Datenquellen |3 |5 oder 15 |50 |200 |200 |– |10 |10 |
 | Maximale Qualifikationsgruppen <sup>4</sup> |3 |5 oder 15 |50 |200 |200 |– |10 |10 |
 | Maximale Indizierungslast pro Aufruf |10.000 Dokumente |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |Nur durch maximale Dokumentanzahl beschränkt |– |Keine Begrenzung |Keine Begrenzung |
+| Minimaler Zeitplan | 5 Minuten |5 Minuten |5 Minuten |5 Minuten |5 Minuten |5 Minuten |5 Minuten | 5 Minuten |
 | Maximale Ausführungsdauer <sup>5</sup> | 1–3 Minuten |24 Stunden |24 Stunden |24 Stunden |24 Stunden |–  |24 Stunden |24 Stunden |
 | Maximale Ausführungsdauer für Qualifikationsgruppen der kognitiven Suche oder für die BLOB-Indizierung bei Bildanalysen <sup>5</sup> | 3 bis 10 Minuten |2 Stunden |2 Stunden |2 Stunden |2 Stunden |–  |2 Stunden |2 Stunden |
 | Blobindexer: maximale Blobgröße, MB |16 |16 |128 |256 |256 |–  |256 |256 |
-| Blobindexer: maximale Anzahl der Zeichen des aus einem Blob extrahierten Inhalts |32.000 |64.000 |4 Millionen |4 Millionen |4 Millionen |– |4 Millionen |4 Millionen |
+| Blobindexer: maximale Anzahl der Zeichen des aus einem Blob extrahierten Inhalts |32.000 |64.000 |4&nbsp;Millionen |4&nbsp;Millionen |4&nbsp;Millionen |– |4&nbsp;Millionen |4&nbsp;Millionen |
 
 <sup>1</sup> Die maximale Indexerausführungszeit bei Diensten im Free-Tarif beträgt drei Minuten für Blobquellen und eine Minute für alle anderen Datenquellen. Für eine KI-Indizierung, die Aufrufe in Cognitive Services ausführt, gilt bei den kostenlosen Diensten ein Limit von 20 kostenlosen Transaktionen pro Tag. Dabei ist eine Transaktion als ein Dokument definiert, das die Anreicherungspipeline erfolgreich durchläuft.
 
-<sup>2</sup> Bei Diensten mit dem Tarif „Basic“, die nach Ende 2017 erstellt wurden, wurde das Limit auf 15 Indizes, Datenquellen und Indexer erhöht. Für zuvor erstellte Dienste gilt eine Begrenzung auf 5.
+<sup>2</sup> Basic-Dienste, die vor Dezember 2017 erstellt wurden, haben niedrigere Grenzwerte (5 statt 15) für Indexer, Datenquellen und Qualifikationsgruppen.
 
 <sup>3</sup> S3 HD-Dienste beinhalten keine Indexerunterstützung.
 

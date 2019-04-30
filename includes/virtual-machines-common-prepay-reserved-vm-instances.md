@@ -3,13 +3,13 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 03/22/2019
-ms.openlocfilehash: 32d5d0d25c843be1cba1916e7679faa930e8e645
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.date: 04/13/2019
+ms.openlocfilehash: d9b9aae8bea323e5aac74a2e317b82d4cb43568f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58671829"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60118587"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Vorauszahlen für virtuelle Computer mit Azure Reserved VM Instances
 
@@ -35,6 +35,12 @@ Sie können Reservierungsempfehlungen verwenden, um zu ermitteln, welche Reservi
 - Azure Advisor bietet Kaufempfehlungen für einzelne Abonnements.  
 - Sie können die APIs verwenden, um Kaufempfehlungen für den Bereich „Freigegeben“ und den Bereich „Einzelabonnement“ abzurufen. Weitere Informationen finden Sie unter [Reserved instance purchase recommendation APIs for enterprise customers (Kaufempfehlungs-APIs zu reservierten Instanzen für Enterprise-Kunden)](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
 - Für EA-Kunden sind Kaufempfehlungen zu den Bereich „Freigegeben“ und „Einzelabonnement“ im Rahmen des [Azure Consumption Insights Power BI-Inhaltspakets](/power-bi/service-connect-to-azure-consumption-insights) verfügbar.
+
+### <a name="classic-vms-and-cloud-services"></a>Klassische VMs und Clouddienste
+
+Reservierte VM-Instanzen gelten automatisch sowohl für klassische virtuelle Computer als auch für Clouddienste, wenn Instanzgrößenflexibilität aktiviert ist. Es gibt keine speziellen SKUs für klassische VMs oder Clouddienste. Für sie werden die gleichen VM-SKUs angewendet.
+
+So können Sie beispielsweise Ihre klassischen VMs oder Clouddienste in Azure Resource Manager-basierte VMs konvertieren. In diesem Beispiel gilt der Reservierungsrabatt automatisch für übereinstimmende VMs. Eine bestehende reservierte Instanz muss nicht *ausgetauscht* werden – sie wird automatisch angewendet.
 
 ### <a name="analyze-your-usage-information"></a>Analysieren Ihrer Nutzungsinformationen
 Sie sollten Ihre Nutzungsinformationen analysieren, um besser bestimmen zu können, welche Reservierungen Sie erwerben sollten.
@@ -74,14 +80,8 @@ Reservierte VM-Instanzen sind bis auf wenige Ausnahmen für die meisten VM-Grö�
     |Optimiert für     |Mithilfe der Option für Flexibilität bei der VM-Instanzgröße wird der Rabatt für Reservierungen auf weitere VMs in derselben [VM-Größengruppe](https://aka.ms/RIVMGroups) angewendet. Die Option „Kapazitätspriorität“ priorisiert Rechenzentrumskapazität für Ihre Bereitstellungen. So erhalten Sie zusätzliche Sicherheit, dass die VM-Instanzen gestartet werden können, wenn sie benötigt werden. Die Kapazitätspriorität ist nur für den Reservierungsumfang „Einzelabonnement“ verfügbar. |
     |Begriff        |Ein Jahr oder drei Jahre|
     |Menge    |Die Anzahl von Instanzen, die innerhalb der Reservierung erworben werden. Die Menge ist die Anzahl der ausgeführten VM-Instanzen, auf die der Abrechnungsrabatt angewendet werden kann. Beispiel: Wenn Sie zehn virtuelle Computer vom Typ „10 Standard_D2“ in der Region „USA, Osten“ ausführen, geben Sie als Menge 10 an, um den Vorteil für alle ausgeführten Computer zu maximieren. |
-5. Sie können die Kosten für die Reservierung anzeigen, indem Sie auf **Kosten berechnen** klicken.
 
-    ![Screenshot vor dem Tätigen des Reservierungskaufs](./media/virtual-machines-buy-compute-reservations/virtualmachines-reservedvminstance-purchase.png)
-
-6. Wählen Sie die Option **Kaufen**.
-7. Klicken Sie auf **Diese Reservierung anzeigen**, um den Status des Einkaufs anzuzeigen.
-
-    ![Screenshot nach dem Tätigen des Reservierungskaufs](./media/virtual-machines-buy-compute-reservations/virtualmachines-reservedvmInstance-submit.png)
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2PjmT]
 
 ## <a name="change-a-reservation-after-purchase"></a>Ändern einer Reservierung nach dem Kauf
 

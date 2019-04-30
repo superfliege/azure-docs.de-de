@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: fde556c60f823f4bd287ca5672503158c7292f51
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: e92378cca445191f42708bd6348b1c75b29da1a1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918925"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009836"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen OAuth2-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C bietet Unterstützung für Identitätsanbieter mit dem OAuth2-Protokoll. Dies ist das primäre Protokoll für die Autorisierung und die delegierte Authentifizierung. Weitere Informationen finden Sie unter [RFC 6749: The OAuth 2.0 Authorization Framework](https://tools.ietf.org/html/rfc6749) (Das OAuth 2.0-Autorisierungsframework). Mit dem technischen OAuth2-Profil können Sie einen Verbund mit einem OAuth2-basierten Identitätsanbieter, z.B. Facebook oder Live.com, erstellen und es damit Benutzern ermöglichen, sich mit ihren vorhandenen Anmeldungen in sozialen Netzen oder mit Unternehmensidentitäten anzumelden.
+Azure Active Directory (Azure AD) B2C bietet Unterstützung für Identitätsanbieter mit dem OAuth2-Protokoll. OAuth2 ist das primäre Protokoll für die Autorisierung und die delegierte Authentifizierung. Weitere Informationen finden Sie unter [RFC 6749: The OAuth 2.0 Authorization Framework](https://tools.ietf.org/html/rfc6749) (Das OAuth 2.0-Autorisierungsframework). Mit einem technischen OAuth2-Profil können Sie einen Verbund mit einem OAuth2-basierten Identitätsanbieter wie Facebook erstellen. Über einen Verbund mit einem Identitätsanbieter können sich Benutzer mit ihren vorhandenen Identitäten aus sozialen Netzwerken oder Unternehmen anmelden.
 
 ## <a name="protocol"></a>Protokoll
 
@@ -54,7 +54,7 @@ Das folgende Beispiel zeigt die Ansprüche, die vom Identitätsanbieter Facebook
 
 - Der Anspruch **first_name** wird dem Anspruch **givenName** zugeordnet.
 - Der Anspruch **last_name** wird dem Anspruch **surname** zugeordnet.
-- Der Anspruch **displayName** erhält keine Zuordnung.
+- Der Anspruch **displayName** erhält keine Namenszuordnung.
 - Dem Anspruch **email** wird kein Name zugeordnet.
 
 Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter nicht zurückgegeben werden: 
@@ -64,7 +64,7 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 
 ```xml
 <OutputClaims>
-  <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="id" />
+  <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="id" />
   <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="first_name" />
   <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="last_name" />
   <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
@@ -90,7 +90,7 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 | ClaimsEndpointFormat | Nein  | Der Wert des der Formatparameters für die Abfragezeichenfolge. Sie können im LinkedIn-Anspruchsendpunkt `https://api.linkedin.com/v1/people/~?format=json` beispielsweise als Wert `json` festlegen. | 
 | ProviderName | Nein  | Der Name des Identitätsanbieters. |
 | response_mode | Nein  | Die Methode, die der Identitätsanbieter verwendet, um das Ergebnis zurück an Azure AD B2C zu senden. Mögliche Werte: `query`, `form_post` (Standard) oder `fragment`. |
-| scope | Nein  | Der Bereich für die Zugriffsanforderung gemäß der Spezifikation des OAuth2-Identitätsanbieters. Beispiele: `openid`, `profile` und `email`. |
+| scope | Nein  | Der Bereich für die Anforderung gemäß der Spezifikation des OAuth2-Identitätsanbieters. Beispiele: `openid`, `profile` und `email`. |
 | HttpBinding | Nein  | Die erwartete HTTP-Bindung an die Endpunkte für Zugriffs- und Anspruchstoken. Mögliche Werte: `GET` oder `POST`.  |
 | ResponseErrorCodeParamName | Nein  | Der Name des Parameters mit der Fehlermeldung, die über HTTP 200 (OK) zurückgegeben wurde. |
 | ExtraParamsInAccessTokenEndpointResponse | Nein  | Enthält die zusätzlichen Parameter, die in der Antwort auf **AccessTokenEndpoint** von einigen Identitätsanbietern zurückgegeben werden können. Beispielsweise enthält die Antwort von **AccessTokenEndpoint** einen zusätzlichen Parameter wie `openid`, der neben access_token in der Abfragezeichenfolge einer **ClaimsEndpoint**-Anforderung ein erforderlicher Parameter ist. Mehrere Parameternamen sollten mit einem Escapezeichen versehen und durch ein Komma (,) voneinander getrennt werden. |
@@ -102,7 +102,7 @@ Das **CryptographicKeys**-Element enthält das folgende Attribut:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| client_secret | Ja | Der geheime Clientschlüssel der Anwendung des Identitätsanbieters. Der kryptografische Schlüssel ist nur erforderlich, wenn die **response_type**-Metadaten auf `code` festgelegt sind. Azure AD B2C führt in diesem Fall einen weiteren Aufruf zum Austauschen des Autorisierungscode gegen ein Zugriffstoken durch. Wenn die Metadaten auf `id_token` festgelegt wurden, können Sie den kryptografischen Schlüssel weglassen.  |  
+| client_secret | Ja | Der geheime Clientschlüssel der Anwendung des Identitätsanbieters. Der kryptografische Schlüssel ist nur erforderlich, wenn die **response_type**-Metadaten auf `code` festgelegt sind. Azure AD B2C führt in diesem Fall einen weiteren Aufruf zum Austauschen des Autorisierungscode gegen ein Zugriffstoken durch. Wenn die Metadaten auf `id_token` festgelegt wurden, können Sie den kryptografischen Schlüssel weglassen. |  
 
 ## <a name="redirect-uri"></a>Umleitungs-URI
 

@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/23/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 9229a583dac526d09d7c5046c4bb81d30c9d4c3f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 34ae47723762215fdea99362419c3875dc2e5942
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873562"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522744"
 ---
 # <a name="collaborating-with-other-authors"></a>Zusammenarbeiten mit anderen Autoren
 
-LUIS ermöglicht die Zusammenarbeit einer Gruppe von Personen beim Erstellen einer App.
+LUIS-Apps erfordern einen einzigen Besitzer. Sie erlauben jedoch optionale Projektmitarbeiter, sodass mehrere Personen an einer App zusammenarbeiten können.
 
 ## <a name="luis-account"></a>LUIS-Konto
 Ein LUIS-Konto ist einem einzelnen [Microsoft Live](https://login.live.com/)-Konto zugeordnet. Jedes LUIS-Konto erhält einen kostenlosen [Erstellungsschlüssel](luis-concept-keys.md#authoring-key) zum Erstellen sämtlicher LUIS-Apps, auf die das Konto Zugriff hat. 
@@ -30,7 +30,8 @@ Ein LUIS-Konto kann über viele LUIS-Apps verfügen.
 Unter [Azure Active Directory-Mandantenbenutzer](luis-how-to-collaborate.md#azure-active-directory-tenant-user) finden Sie weitere Informationen zu Active Directory-Benutzerkonten. 
 
 ## <a name="luis-app-owner"></a>LUIS-App-Besitzer
-Das Konto, das eine App erstellt, ist der Besitzer. Jede App weist genau einen Besitzer auf. Der Besitzer wird in den **[Einstellungen](luis-how-to-collaborate.md)** der App aufgeführt. Dies ist das Konto, das die App löschen kann. Dies ist auch das Konto, das eine E-Mail empfängt, wenn das Endpunktkontingent 75 % des monatliches Limits erreicht. 
+
+Das Konto, mit dem eine App erstellt wird, ist der Besitzer und jede App hat einen einzelnen Besitzer. Der Besitzer wird auf der Seite **[Einstellungen](luis-how-to-collaborate.md)** der App aufgeführt. Der Besitzer kann die E-Mail für den Erhalt der App löschen, wenn das Endpunktkontingent 75 % des monatlichen Limits erreicht. 
 
 ## <a name="authorization-roles"></a>Autorisierungsrollen
 LUIS unterstützt mit einer Ausnahme keine unterschiedlichen Rollen für Besitzer und Projektmitarbeiter. Der Besitzer ist das einzige Konto, das die App löschen kann.
@@ -61,6 +62,10 @@ Diese Methode erlaubt eine aktive Version, eine Stagingversion und eine veröffe
 [Exportieren](luis-how-to-manage-versions.md#export-version) Sie die Basisversion. Jeder Ersteller importiert die Version. Die Person, die die App importiert, ist auch der Besitzer dieser Version. Wenn sie das Bearbeiten der App abgeschlossen hat, exportiert sie ihre Version. 
 
 Die exportierten Apps sind JSON-formatierte Dateien, die mit dem Basisexport auf Änderungen verglichen werden können. Kombinieren Sie die Dateien, um eine einzelne JSON-Datei der neuen Version zu erstellen. Ändern Sie die **versionId**-Eigenschaft in der JSON-Datei, um die neue zusammengeführte Version zu kennzeichnen. Importieren Sie diese Version in die ursprüngliche App.
+
+## <a name="collaborator-roles-vs-entity-roles"></a>Projektmitarbeiterrollen im Vergleich zu Entitätsrollen
+
+[Entitätsrollen](luis-concept-roles.md) gelten für das Datenmodell der LUIS-App. Projektmitarbeiter-Rollen gelten für die Ebenen des Erstellungszugriffs. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

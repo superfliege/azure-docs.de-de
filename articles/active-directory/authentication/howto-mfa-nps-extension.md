@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 04/12/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87a416b6ff73fd658158276a02796aaae946bc20
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: a945316df27460fef48a8bb4d43e46d412d2ae81
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59470354"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009706"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrieren Ihrer vorhandenen NPS-Infrastruktur in Azure Multi-Factor Authentication
 
@@ -59,8 +59,8 @@ Windows Server 2008 R2 SP1 oder höher
 
 Diese Bibliotheken werden automatisch mit der Erweiterung installiert.
 
-- [Visual C++ Redistributable Packages für Visual Studio 2013 (x64)](https://www.microsoft.com/download/details.aspx?id=40784)
-- [Microsoft Azure Active Directory-Modul für Windows PowerShell, Version 1.1.166.0](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
+- [Visual C++ Redistributable Packages für Visual Studio 2013 (x64)](https://www.microsoft.com/download/details.aspx?id=40784)
+- [Microsoft Azure Active Directory-Modul für Windows PowerShell, Version 1.1.166.0](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
 
 Das Microsoft Azure Active Directory-Modul für Windows PowerShell wird, sofern es nicht bereits vorhanden ist, über ein Konfigurationsskript installiert, das Sie als Teil des Installationsvorgangs ausführen. Es ist nicht erforderlich, dieses Modul vorab zu installieren, wenn es nicht bereits installiert ist.
 
@@ -76,8 +76,14 @@ Wenn Sie die Erweiterung installieren, benötigen Sie die Verzeichnis-ID und die
 
 Der NPS-Server muss über die Ports 80 und 443 mit den folgenden URLs kommunizieren können.
 
-* https://adnotifications.windowsazure.com  
-* https://login.microsoftonline.com
+* https:\//adnotifications.windowsazure.com  
+* https:\//login.microsoftonline.com
+
+Darüber hinaus ist eine Verbindung zu den folgenden URLs erforderlich, um die [Einrichtung des Adapters mit dem bereitgestellten PowerShell-Skript](#run-the-powershell-script) abzuschließen.
+
+- https:\//login.microsoftonline.com
+- https:\//provisioningapi.microsoftonline.com
+- https:\//aadcdn.msauth.net
 
 ## <a name="prepare-your-environment"></a>Vorbereiten der Umgebung
 
@@ -142,6 +148,14 @@ Ihre Benutzer müssen auch diese Schritte zum Registrieren befolgen, bevor sie s
 1. [Laden Sie die NPS-Erweiterung aus dem Microsoft Download Center herunter](https://aka.ms/npsmfa).
 2. Kopieren Sie die Binärdatei auf den Netzwerkrichtlinienserver, der konfiguriert werden soll.
 3. Führen Sie *setup.exe* aus, und folgen Sie den Installationsanweisungen. Wenn Fehler auftreten, überprüfen Sie, ob die beiden Bibliotheken im Abschnitt „Voraussetzungen“ installiert wurden.
+
+#### <a name="upgrade-the-nps-extension"></a>Aktualisieren der NPS-Erweiterung
+
+Wenn Sie eine bestehende NPS-Erweiterung aktualisieren, führen Sie die folgenden Schritte aus, um einen Neustart des zugrunde liegenden Servers zu vermeiden:
+
+1. Deinstallieren der vorhandenen Version
+1. Ausführen des neuen Installers
+1. Starten des Network Policy Server (IAS)-Diensts
 
 ### <a name="run-the-powershell-script"></a>Ausführen des PowerShell-Skripts
 

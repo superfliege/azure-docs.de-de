@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen des OPC UA-Geräteverwaltungsmoduls von Azure IoT von Grund auf | Microsoft-Dokumentation
+title: Bereitstellen des OPC Twin-Moduls für Azure von Grund auf | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie OPC Twin von Grund auf neu bereitstellen.
 author: dominicbetts
 ms.author: dobett
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: fe1b141ecacbd1d96c217322e69709828a3bf36c
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: f470beb79e69b5a4a3febeb6a433c48490b96cf7
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759198"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59491355"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>Bereitstellen des OPC Twin-Moduls und der Abhängigkeiten von Grund auf
 
-Das OPC Device Twin-Modul wird auf IoT Edge ausgeführt und stellt mehrere Edge-Dienste für die OPC Device Twin- und Registry-Dienste (Gerätezwilling und Registrierung) zur Verfügung. 
+Das OPCTwin-Modul wird auf IoT Edge ausgeführt und stellt mehrere Edge-Dienste für die OPC Device Twin- und Registry-Dienste (Gerätezwilling und Registrierung) zur Verfügung. 
 
 Es gibt mehrere Optionen zum Bereitstellen von Modulen für Ihr [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) Gateway, z. B.:
 
@@ -109,7 +109,7 @@ Die einfachste Möglichkeit zum Bereitstellen der Module auf einem Azure IoT Edg
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-1. Stellen Sie die [Abhängigkeiten](howto-opc-twin-deploy-dependencies.md) der OPC UA-Geräteverwaltung bereit, und beschaffen Sie die sich ergebende `.env`-Datei. Notieren Sie sich den bereitgestellten `hub name` der Variablen `PCS_IOTHUBREACT_HUB_NAME` in der sich ergebenden `.env`-Datei.
+1. Stellen Sie die OPC Twin-[Abhängigkeiten](howto-opc-twin-deploy-dependencies.md) bereit, und beschaffen Sie die sich ergebende `.env`-Datei. Notieren Sie sich den bereitgestellten `hub name` der Variablen `PCS_IOTHUBREACT_HUB_NAME` in der sich ergebenden `.env`-Datei.
 
 2. Registrieren und starten Sie ein [Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)- oder [Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows)-IoT Edge-Gateway, und notieren Sie sich dessen `device id`.
 
@@ -205,7 +205,7 @@ Für die Problembehandlung und das Debuggen ist es nützlich, die Edgemodule lok
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-1. Stellen Sie die [Abhängigkeiten](howto-opc-twin-deploy-dependencies.md) für die OPC UA-Geräteverwaltung bereit.
+1. Stellen Sie die OPC Twin-[Abhängigkeiten](howto-opc-twin-deploy-dependencies.md) bereit.
 
 2. Installieren Sie [Docker CE (18.02.0+)](https://www.docker.com/community-edition) unter [Windows](https://docs.docker.com/docker-for-windows/install/), [macOS](https://docs.docker.com/docker-for-mac/install/) oder [Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce).
 

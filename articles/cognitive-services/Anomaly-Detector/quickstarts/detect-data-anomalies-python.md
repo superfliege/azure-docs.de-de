@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 60307d51439b4474c8be4f040792c03a6f83b0fd
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 6b4ddcadfe63f74d115c155354a276e45c6b53f9
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58473089"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544499"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>Schnellstart: Erkennen von Anomalien in Zeitreihendaten mithilfe der Anomalieerkennungs-REST-API und Python
 
@@ -65,7 +65,7 @@ Dieser Schnellstart unterstützt Sie bei den ersten Schritten in den zwei Erkenn
     data_location = "[PATH_TO_TIME_SERIES_DATA]"
     ```
 
-3. Lesen Sie in der JSON-Datendatei, indem Sie sie öffnen und `json.load()` verwenden. 
+3. Lesen Sie in der JSON-Datendatei, indem Sie sie öffnen und `json.load()` verwenden.
 
     ```python
     file_handler = open(data_location)
@@ -78,28 +78,24 @@ Dieser Schnellstart unterstützt Sie bei den ersten Schritten in den zwei Erkenn
 
 2. Erstellen Sie ein Wörterbuch für die Anforderungsheader. Setzen Sie `Content-Type` auf `application/json`, und fügen Sie dem Header `Ocp-Apim-Subscription-Key` Ihren Abonnementschlüssel hinzu.
 
-3. Senden Sie die Anforderung mit `requests.post()`. Kombinieren Sie den Endpunkt und die Anomalieerkennungs-URL zu einer vollständigen Anforderungs-URL, und schließen Sie die Header und JSON-Anforderungsdaten ein. 
+3. Senden Sie die Anforderung mit `requests.post()`. Kombinieren Sie den Endpunkt und die Anomalieerkennungs-URL zu einer vollständigen Anforderungs-URL, und schließen Sie die Header und JSON-Anforderungsdaten ein. Und geben Sie dann die Antwort zurück.
 
-4. Wenn die Anforderung erfolgreich ist, geben Sie die Antwort zurück.  
-    
-    ```python
-    def send_request(endpoint, url, subscription_key, request_data):
-        headers = {'Content-Type': 'application/json', 'Ocp-Apim-Subscription-Key': subscription_key}
-        response = requests.post(endpoint+url, data=json.dumps(request_data), headers=headers)
-        if response.status_code == 200:
-            return json.loads(response.content.decode("utf-8"))
-        else:
-            print(response.status_code)
-            raise Exception(response.text)
-    ```
+```python
+def send_request(endpoint, url, subscription_key, request_data):
+    headers = {'Content-Type': 'application/json', 'Ocp-Apim-Subscription-Key': subscription_key}
+    response = requests.post(endpoint+url, data=json.dumps(request_data), headers=headers)
+    return json.loads(response.content.decode("utf-8"))
+```
 
 ## <a name="detect-anomalies-as-a-batch"></a>Erkennen von Anomalien als Batch
 
-1. Erstellen Sie eine Methode namens `detect_batch()`, um Anomalien in allen Daten als Batch zu erkennen. Rufen Sie die oben erstellte Methode `send_request()` mit dem Endpunkt, der URL, dem Abonnementschlüssel und den JSON-Daten auf. 
+1. Erstellen Sie eine Methode namens `detect_batch()`, um Anomalien in allen Daten als Batch zu erkennen. Rufen Sie die oben erstellte Methode `send_request()` mit dem Endpunkt, der URL, dem Abonnementschlüssel und den JSON-Daten auf.
 
 2. Rufen Sie für das Ergebnis `json.dumps()` auf, um es zu formatieren, und geben Sie es in der Konsole aus.
 
-3. Suchen Sie nach den Positionen der Anomalien im Dataset. Das Feld `isAnomaly` der Antwort enthält einen booleschen Wert, der angibt, ob es sich bei einem bestimmten Datenpunkt um eine Anomalie handelt. Gehen Sie die Liste durch, und geben Sie den Index aller `True`-Werte aus. Diese Werte stimmen mit dem Index der anomalen Datenpunkte überein, sofern welche gefunden wurden.
+3. Wenn die Antwort das Feld `code` enthält, geben Sie den Fehlercode und die Fehlermeldung aus.
+
+4. Andernfalls suchen Sie nach den Positionen der Anomalien im Dataset. Das Feld `isAnomaly` der Antwort enthält einen booleschen Wert, der angibt, ob es sich bei einem bestimmten Datenpunkt um eine Anomalie handelt. Gehen Sie die Liste durch, und geben Sie den Index aller `True`-Werte aus. Diese Werte stimmen mit dem Index der anomalen Datenpunkte überein, sofern welche gefunden wurden.
 
 ```python
 def detect_batch(request_data):
@@ -107,12 +103,15 @@ def detect_batch(request_data):
     result = send_request(endpoint, batch_detection_url, subscription_key, request_data)
     print(json.dumps(result, indent=4))
 
-    # Find and display the positions of anomalies in the data set
-    anomalies = result["isAnomaly"]
-    print("Anomalies detected in the following data positions:")
-    for x in range(len(anomalies)):
-        if anomalies[x] == True:
-            print (x)
+    if result.get('code') != None:
+        print("Detection failed. ErrorCode:{}, ErrorMessage:{}".format(result['code'], result['message']))
+    else:
+        # Find and display the positions of anomalies in the data set
+        anomalies = result["isAnomaly"]
+        print("Anomalies detected in the following data positions:")
+        for x in range(len(anomalies)):
+            if anomalies[x] == True:
+                print (x)
 ```
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>Erkennen des Anomaliestatus des letzten Datenpunkts
@@ -132,14 +131,14 @@ def detect_latest(request_data):
 ## <a name="load-your-time-series-data-and-send-the-request"></a>Laden der Zeitreihendaten und Senden der Anforderung
 
 1. Laden Sie die JSON-Zeitreihendaten in einem Dateihandler, und wenden Sie `json.load()` darauf an. Rufen Sie dann die oben erstellte Methode zur Anomalieerkennung auf.
-    
-    ```python
-    file_handler = open (data_location)
-    json_data = json.load(file_handler)
-    
-    detect_batch(json_data)
-    detect_latest(json_data)
-    ```
+
+```python
+file_handler = open(data_location)
+json_data = json.load(file_handler)
+
+detect_batch(json_data)
+detect_latest(json_data)
+```
 
 ### <a name="example-response"></a>Beispielantwort
 

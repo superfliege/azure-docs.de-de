@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/11/2018
+ms.date: 04/10/2019
 ms.author: aljo
-ms.openlocfilehash: 4b4ddd765996d8bb936d2abda4015f37d6df9098
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 46c9b37e9bb8613b34dea6705320f5689eeb51d8
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361540"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526536"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassen von Service Fabric-Clustereinstellungen
 Dieser Artikel beschreibt die verschiedenen Fabric-Einstellungen, die Sie für Ihren Service Fabric-Cluster anpassen können. Für in Azure gehostete Cluster können Sie Einstellungen über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage anpassen. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines Azure-Clusters](service-fabric-cluster-config-upgrade-azure.md). Für eigenständige Cluster passen Sie die Einstellungen durch Aktualisieren der Datei *ClusterConfig.json* und ein Konfigurationsupgrade in Ihrem Cluster an. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines eigenständigen Clusters](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -87,7 +87,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 |MaxDataMigrationTimeout |Zeit in Sekunden, Standardwert 600 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das maximale Zeitlimit für Wiederherstellungsvorgänge nach der Datenmigration nach einer Fabric-Aktualisierung. |
 |MaxOperationRetryDelay |Zeit in Sekunden, Standardwert 5|Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Die maximale Verzögerung für interne Wiederholungen, wenn Fehler gefunden werden. |
 |MaxOperationTimeout |Zeit in Sekunden, Standardwert MaxValue |Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Das maximale globale Zeitlimit für die interne Verarbeitung von Vorgängen für ClusterManager. |
-|MaxTimeoutRetryBuffer | Zeit in Sekunden, Standardwert 600 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das maximale Vorgangszeitlimit für die interne Wiederholung aufgrund von Zeitlimits ist <Original Time out> + <MaxTimeoutRetryBuffer>. Ein zusätzliches Zeitlimit wird in Schritten von MinOperationTimeout hinzugefügt. |
+|MaxTimeoutRetryBuffer | Zeit in Sekunden, Standardwert 600 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das maximale Vorgangszeitlimit für die interne Wiederholung aufgrund von Zeitlimits ist `<Original Time out> + <MaxTimeoutRetryBuffer>`. Ein zusätzliches Zeitlimit wird in Schritten von MinOperationTimeout hinzugefügt. |
 |MinOperationTimeout | Zeit in Sekunden, Standardwert 60 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das minimale globale Zeitlimit für die interne Verarbeitung von Vorgängen für ClusterManager. |
 |MinReplicaSetSize |Ganze Zahl, Standardwert 3 |Nicht zulässig|MinReplicaSetSize für ClusterManager. |
 |PlacementConstraints | string, Standardwert "" |Nicht zulässig|PlacementConstraints für ClusterManager. |
@@ -403,10 +403,11 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
+|AutomaticUnprovisionInterval|TimeSpan, Standardwert Common::TimeSpan::FromMinutes(5)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das zulässige Bereinigungsintervall zum Aufheben der Registrierung des Anwendungstyps während der automatischen Bereinigung des Anwendungstyps.|
 |AzureStorageMaxConnections | Ganze Zahl, Standardwert 5000 |Dynamisch|Die maximale Anzahl gleichzeitiger Verbindungen mit Azure Storage. |
 |AzureStorageMaxWorkerThreads | Ganze Zahl, Standardwert 25 |Dynamisch|Die maximale Anzahl von parallelen Workerthreads. |
 |AzureStorageOperationTimeout | Zeit in Sekunden, Standardwert 6000 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Timeout für den Abschluss des xstore-Vorgangs. |
-|CleanupApplicationPackageOnProvisionSuccess|Boolesch, Standardwert FALSE |Dynamisch|Diese Konfiguration aktiviert oder deaktiviert die automatische Bereinigung von Anwendungspaketen nach der erfolgreichen Bereitstellung. |
+|CleanupApplicationPackageOnProvisionSuccess|Boolesch, Standardwert FALSE |Dynamisch|Aktiviert oder deaktiviert die automatische Bereinigung von Anwendungspaketen nach der erfolgreichen Bereitstellung. |
 |CleanupUnusedApplicationTypes|Boolesch, Standardwert ist „false“ |Dynamisch|Wenn diese Konfiguration aktiviert wird, ermöglicht sie das automatische Aufheben der Registrierung nicht genutzter Versionen von Anwendungstypen, wobei die letzten drei nicht genutzten Versionen übersprungen werden. Damit wird der vom Imagespeicher verbrauchte Speicherplatz auf dem Datenträger reduziert. Die automatische Bereinigung wird am Ende der erfolgreichen Bereitstellung für den spezifischen Anwendungstyp ausgelöst und auch regelmäßig einmal pro Tag für alle Anwendungstypen ausgeführt. Die Anzahl nicht verwendeter Versionen, die übersprungen werden sollen, kann über den Parameter MaxUnusedAppTypeVersionsToKeep konfiguriert werden. |
 |DisableChecksumValidation | Boolesch, Standardwert „false“ |statischen| Diese Konfiguration ermöglicht es, die Prüfsummenüberprüfung während der Anwendungsbereitstellung zu aktivieren oder zu deaktivieren. |
 |DisableServerSideCopy | Boolesch, Standardwert „false“ |statischen|Diese Konfiguration aktiviert oder deaktiviert serverseitiges Kopieren des Anwendungspakets in ImageStore während der Anwendungsbereitstellung. |

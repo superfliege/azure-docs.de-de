@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/09/2018
 ms.author: mikhegn
-ms.openlocfilehash: 0ab6e3f189d4a2e7e8f3bc96108d7979c99fffa8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3d03ca5cec2cef67862c2678b3b0a8f17b413787
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102668"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524513"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Parametrisieren von Konfigurationsdateien in Service Fabric
 
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie eine Konfigurationsdatei in Service Fabr
 
 In diesem Beispiel überschreiben Sie einen Konfigurationswert, indem Sie Parameter in der Anwendungsbereitstellung verwenden.
 
-1. Öffnen Sie die Datei *<MyService>\PackageRoot\Config\Settings.xml* in Ihrem Dienstprojekt.
+1. Öffnen Sie die Datei *\<MyService>\PackageRoot\Config\Settings.xml* in Ihrem Dienstprojekt.
 1. Legen Sie den Namen und den Wert eines Konfigurationsparameters fest, z.B. Cachegröße 25, indem Sie den folgenden XML-Code hinzufügen:
 
    ```xml
@@ -37,7 +37,7 @@ In diesem Beispiel überschreiben Sie einen Konfigurationswert, indem Sie Parame
    ```
 
 1. Speichern und schließen Sie die Datei.
-1. Öffnen Sie die Datei *<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml*.
+1. Öffnen Sie die Datei *\<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml*.
 1. Deklarieren Sie in der Datei „ApplicationManifest.xml“ einen Parameter und Standardwert im `Parameters`-Element.  Es wird empfohlen, dass der Name des Parameters den Namen des Diensts enthält (z.B. „MyService“).
 
    ```xml

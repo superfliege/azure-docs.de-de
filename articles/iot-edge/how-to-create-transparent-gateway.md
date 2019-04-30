@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 9d67a87b182758e37c9e379a8f96a6540797ce3e
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 95ee0a4d5d150741e59c0c2d20abebe9609e179f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482945"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699012"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurieren eines IoT Edge-Geräts als transparentes Gateway
 
@@ -260,6 +260,18 @@ Mit dem Befehl `iotedge list` können Sie überprüfen, welche Module auf einem 
    ```
 
 6. Wählen Sie auf der Seite **Vorlage überprüfen** die Option **Senden** aus.
+
+## <a name="open-ports-on-gateway-device"></a>Öffnen von Ports auf dem Gatewaygerät
+
+Standard IoT Edge-Geräte benötigen keine eingehende Verbindung, um zu funktionieren, da die gesamte Kommunikation mit dem IoT Hub über ausgehende Verbindungen erfolgt. Gatewaygeräte unterscheiden sich jedoch dadurch, dass sie in der Lage sein müssen, Nachrichten von ihren nachgeschalteten Geräten zu empfangen.
+
+Damit ein Gatewayszenario funktioniert, muss mindestens eines der unterstützten Protokolle des IoT Edge-Hubs für den eingehenden Datenverkehr von nachgeschalteten Geräten offen sein. Die unterstützten Protokolle sind MQTT, AMQP und HTTPS.
+
+| Port | Protokoll |
+| ---- | -------- |
+| 8883 | MQTT |
+| 5671 | AMQP |
+| 443 | HTTPS <br> MQTT+WS <br> AMQP+WS | 
 
 ## <a name="route-messages-from-downstream-devices"></a>Weiterleiten von Nachrichten von nachgeschalteten Geräten
 Die IoT Edge-Runtime kann Nachrichten für nachgeschaltete Geräte genau wie Nachrichten von Modulen weiterleiten. Dadurch können Sie die Analyse in einem auf dem Gateway ausgeführten Modul durchführen, bevor Daten an die Cloud gesendet werden. 
