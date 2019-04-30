@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: c4bdeb4e00a59d6ba2b415801c0689d77ed9a825
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 720f984feb5675281510962d4ebee63f638d696d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577559"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548885"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurieren einer Entwicklungsumgebung für Azure Machine Learning
 
@@ -36,16 +36,19 @@ In diesem Artikel werden in erster Linie die folgenden Umgebungen und Tools beha
 
 * [Azure Databricks](#aml-databricks): Eine beliebte Datenanalyseplattform, die auf Apache Spark basiert. Erfahren Sie, wie Sie das Azure Machine Learning SDK in Ihren Cluster einbinden, um Modelle bereitzustellen.
 
+* [Azure Notebooks](#aznotebooks): Ein in der Azure-Cloud gehosteter Jupyter Notebooks-Dienst. Außerdem eine einfache Methode für den Einstieg, da das Azure Machine Learning SDK bereits installiert ist.  
+
 Wenn Sie bereits über eine Python 3-Umgebung verfügen oder nur die grundlegenden Schritte zum Installieren des SDK erhalten möchten, finden Sie weitere Informationen im Abschnitt [Lokaler Computer](#local).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure Machine Learning-Dienstbereich. Informationen zum Erstellen des Arbeitsbereichs finden Sie unter [Erstellen eines Azure Machine Learning Service-Arbeitsbereichs](setup-create-workspace.md).
 
-- Den Paket-Manger [Anaconda](https://www.anaconda.com/download/) oder [Miniconda](https://conda.io/miniconda.html).
+Ein Arbeitsbereich ist alles, was Sie zum Einstieg in Ihre [Azure Notebooks](#aznotebooks), in eine [DSVM](#dsvm) oder in [Azure Databricks](#aml-databricks) benötigen.
 
-    > [!IMPORTANT]
-    > Anaconda und Miniconda sind bei Verwendung von Azure Notebooks nicht erforderlich.
+Um die SDK-Umgebung für Ihren [lokalen Computer](#local), Ihren [Jupyter Notebook-Server](#jupyter) oder Ihr [Visual Studio Code](#vscode) zu installieren, benötigen Sie außerdem:
+
+- Den Paket-Manger [Anaconda](https://www.anaconda.com/download/) oder [Miniconda](https://conda.io/miniconda.html).
 
 - Unter Linux oder macOS benötigen Sie die Bash-Shell.
 
@@ -56,14 +59,15 @@ Wenn Sie bereits über eine Python 3-Umgebung verfügen oder nur die grundlegend
 
 ## <a id="aznotebooks"></a>Azure Notebooks
 
-[Azure Notebooks](https://notebooks.azure.com) (Vorschauversion) ist eine interaktive Umgebung in der Azure-Cloud. Dies ist die einfachste Methode für den Einstieg in die Azure Machine Learning-Entwicklung.
+[Azure Notebooks](https://notebooks.azure.com) (Vorschauversion) ist eine interaktive Umgebung in der Azure-Cloud. Dies ist eine einfache Methode für den Einstieg in die Azure Machine Learning-Entwicklung.
 
 * Das Azure Machine Learning SDK ist bereits installiert.
 * Nachdem Sie im Azure-Portal einen Arbeitsbereich für den Azure Machine Learning Service erstellt haben, können Sie über eine Schaltfläche Ihre Azure Notebook-Umgebung automatisch für die Arbeit mit dem Arbeitsbereich konfigurieren.
 
-Informationen zum Einstieg in die Entwicklung mit Azure Notebooks finden Sie unter [Erste Schritte mit Azure Machine Learning](quickstart-run-cloud-notebook.md).
+Verwenden Sie das [Azure-Portal](https://portal.azure.com), um das Arbeiten mit Azure Notebooks zu beginnen.  Öffnen Sie Ihren Arbeitsbereich, und wählen Sie im Abschnitt **Übersicht** die Option **Erste Schritte in Azure Notebooks** aus.
 
-Standardmäßig verwendet Azure Notebooks einen kostenlosen Diensttarif, der auf 4GB Arbeitsspeicher und 1GB Daten beschränkt ist. Sie können diese Grenzwerte allerdings entfernen, indem Sie dem Azure Notebooks-Projekt eine Data Science Virtual Machine-Instanz anfügen. Weitere Informationen finden Sie unter [Verwalten und Konfigurieren von Projekten – Compute-Tarif](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).
+Standardmäßig verwendet Azure Notebooks einen kostenlosen Diensttarif, der auf 4GB Arbeitsspeicher und 1GB Daten beschränkt ist. Sie können diese Grenzwerte allerdings entfernen, indem Sie dem Azure Notebooks-Projekt eine Data Science Virtual Machine-Instanz anfügen. Weitere Informationen finden Sie unter [Verwalten und Konfigurieren von Projekten – Compute-Tarif](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier).    
+
 
 ## <a id="dsvm"></a>Data Science Virtual Machine
 
@@ -316,8 +320,8 @@ Erstellen Sie nach der Ausführung des Clusters [eine Bibliothek](https://docs.d
       
    Berücksichtigen Sie außerdem Folgendes:
    + In der Automl-Konfiguration fügen Sie bei der Verwendung von Azure Databricks die folgenden Parameter hinzu:
-    1. ```max_concurrent_iterations``` basierend auf der Anzahl der Workerknoten in Ihrem Cluster. 
-    2. ```spark_context=sc``` #databricks/spark – Spark-Standardkontext. 
+        1. ```max_concurrent_iterations``` basiert auf der Anzahl der Workerknoten in Ihrem Cluster. 
+        2. ```spark_context=sc``` basiert auf dem standardmäßigen Spark-Kontext. 
    + Wenn Sie alternativ dazu eine alte SDK-Version nutzen, deaktivieren Sie diese in den installierten Bibliotheken des Clusters, und verschieben Sie sie in den Papierkorb. Installieren Sie die neue SDK-Version, und starten Sie den Cluster neu. Wenn danach ein Problem vorliegt, trennen Sie Ihren Cluster, und fügen Sie ihn wieder an.
 
 Wenn die Installation erfolgreich war, sollte die importierte Bibliothek wie auf einem der folgenden Screenshots gezeigt aussehen:
@@ -346,7 +350,7 @@ Die Arbeitsbereichs-Konfigurationsdatei ist eine JSON-Datei, die das SDK zur Kom
 }
 ```
 
-Diese JSON-Datei muss sich in der Verzeichnisstruktur befinden, die Ihre Python-Skripts oder Jupyter Notebooks enthält. Sie kann sich im selben Verzeichnis, in einem Unterverzeichnis mit dem Namen *aml_config* oder in einem übergeordneten Verzeichnis befinden.
+Diese JSON-Datei muss sich in der Verzeichnisstruktur befinden, die Ihre Python-Skripts oder Jupyter Notebooks enthält. Sie kann sich im selben Verzeichnis, in einem Unterverzeichnis namens *.azureml* oder in einem übergeordneten Verzeichnis befinden.
 
 Um in Ihrem Code auf diese Datei zuzugreifen, verwenden Sie `ws=Workspace.from_config()`. Dieser Code lädt die Informationen aus der Datei und stellt eine Verbindung mit Ihrem Arbeitsbereich her.
 
@@ -375,7 +379,8 @@ Sie können die Konfigurationsdatei auf drei Arten erstellen:
         print('Workspace not found')
     ```
 
-    Dieser Code schreibt die Konfigurationsdatei in die Datei *aml_config/config.json*.
+    Dieser Code schreibt die Konfigurationsdatei in die Datei *.azureml/config.json*.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

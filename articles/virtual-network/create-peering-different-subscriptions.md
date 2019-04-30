@@ -4,20 +4,20 @@ titlesuffix: Azure Virtual Network
 description: Erfahren Sie, wie Sie ein Peering zwischen virtuellen Netzwerken erstellen, die mithilfe von Ressourcen-Manager in unterschiedlichen Azure-Abonnements erstellt wurden.
 services: virtual-network
 documentationcenter: ''
-author: jimdial
+author: anavinahar
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
-ms.author: jdial;anavin
-ms.openlocfilehash: 2965f72a1f0532cd9e13d5fa03750cf4ed8bab99
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.date: 04/09/2019
+ms.author: anavin
+ms.openlocfilehash: 3294eda4d9330332bf23c3a8f1804f067373bf7a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403460"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528255"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Erstellen eines Peerings virtueller Netzwerke gemäß dem Ressourcen-Manager-Modell in verschiedenen Abonnements
 
@@ -39,7 +39,9 @@ Ein Peering in Netzwerken lässt sich mithilfe des [Azure-Portals](#portal), mit
 
 ## <a name="portal"></a>Erstellen eines Peerings: Azure-Portal
 
-Befolgen Sie die Schritte im Abschnitt zur CLI und zu PowerShell in diesem Artikel, wenn sich die virtuellen Netzwerke, für die Sie das Peering herstellen möchten, in Abonnements befinden, die verschiedenen Azure Active Directory-Mandanten zugeordnet sind. Das Portal verfügt nicht über die Unterstützung für das Peering von virtuellen Netzwerken, die zu Abonnements aus unterschiedlichen Active Directory-Mandanten gehören.
+Befolgen Sie die Schritte im Abschnitt zur CLI und zu PowerShell in diesem Artikel, wenn sich die virtuellen Netzwerke, für die Sie das Peering herstellen möchten, in Abonnements befinden, die verschiedenen Azure Active Directory-Mandanten zugeordnet sind. Das Portal verfügt nicht über die Unterstützung für das Peering von virtuellen Netzwerken, die zu Abonnements aus unterschiedlichen Active Directory-Mandanten gehören. 
+
+Beachten Sie, dass es in Cloud Shell Einschränkungen hinsichtlich des Wechselns von Abonnements und Mandanten gibt, wegen denen VNet-Peering oder globales VNet-Peering zwischen virtuellen Netzwerken, die zu Abonnements in verschiedenen Azure Active Directory-Mandanten gehören, nicht funktioniert. Verwenden Sie PowerShell oder die CLI.
 
 In den folgenden Schritten werden für jedes Abonnement unterschiedliche Konten genutzt. Wenn Sie ein Konto verwenden, das über Berechtigungen für beide Abonnements verfügt, können Sie dasselbe Konto für alle Schritte verwenden. Überspringen Sie die Schritte zum Abmelden vom Portal und zum Zuweisen weiterer Benutzerberechtigungen für die virtuellen Netzwerke.
 
@@ -59,7 +61,7 @@ In den folgenden Schritten werden für jedes Abonnement unterschiedliche Konten 
 7. Wählen Sie im Feld **Rolle** die Option **Netzwerkmitwirkender** aus.
 8. Wählen Sie im Feld **Auswählen** die Option *UserB* aus, oder geben Sie die E-Mail-Adresse von UserB ein, um ihn zu suchen.
 9. Wählen Sie **Speichern** aus.
-10. Klicken Sie unter **myVnetA – Zugriffssteuerung (IAM)** in der vertikalen Liste der Optionen auf der linken Seite auf **Eigenschaften**. Kopieren Sie die **Ressourcen-ID**, die in einem späteren Schritt verwendet wird. Die Ressourcen-ID lautet ähnlich wie im folgenden Beispiel: /subscriptions/<Subscription Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/virtualNetworks/myVnetA.
+10. Klicken Sie unter **myVnetA – Zugriffssteuerung (IAM)** in der vertikalen Liste der Optionen auf der linken Seite auf **Eigenschaften**. Kopieren Sie die **Ressourcen-ID**, die in einem späteren Schritt verwendet wird. Die Ressourcen-ID Ausgabe sieht in etwa wie das folgende Beispiel aus: `/subscriptions/<Subscription Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/virtualNetworks/myVnetA`.
 11. Melden Sie sich als UserA vom Portal ab, und melden Sie sich als UserB an.
 12. Führen Sie die Schritte 2-3 erneut aus, und geben Sie bei Schritt 3 die folgenden Werte an:
 
@@ -72,7 +74,7 @@ In den folgenden Schritten werden für jedes Abonnement unterschiedliche Konten 
     - **Standort:** *USA, Osten*
 
 13. Geben Sie im oben im Portal *myVnetB* im Feld **Ressourcen suchen** ein. Klicken Sie auf **myVnetB**, wenn es in den Suchergebnissen angezeigt wird.
-14. Klicken Sie unter **myVnetB** in der vertikalen Liste der Optionen auf der linken Seite auf **Eigenschaften**. Kopieren Sie die **Ressourcen-ID**, die in einem späteren Schritt verwendet wird. Die Ressourcen-ID lautet ähnlich wie im folgenden Beispiel: /subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB.
+14. Klicken Sie unter **myVnetB** in der vertikalen Liste der Optionen auf der linken Seite auf **Eigenschaften**. Kopieren Sie die **Ressourcen-ID**, die in einem späteren Schritt verwendet wird. Die Ressourcen-ID Ausgabe sieht in etwa wie das folgende Beispiel aus: `/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB`.
 15. Klicken Sie unter **myVnetB** auf **Zugriffssteuerung (IAM)**, und führen Sie dann die Schritte 5 bis 10 für myVnetB aus. Geben Sie dabei in Schritt 8 **UserA** ein.
 16. Melden Sie sich als UserB vom Portal ab, und melden Sie sich als UserA an.
 17. Geben Sie im oben im Portal *myVnetA* im Feld **Ressourcen suchen** ein. Klicken Sie auf **myVnetA**, wenn es in den Suchergebnissen angezeigt wird.
@@ -109,7 +111,7 @@ Für das Skript gilt Folgendes:
 Anstatt die CLI und ihre Abhängigkeiten zu installieren, können Sie die Azure Cloud Shell verwenden. Azure Cloud Shell ist eine kostenlose Bash-Shell, die Sie direkt im Azure-Portal ausführen können. Die Azure CLI ist vorinstalliert und für die Verwendung mit Ihrem Konto konfiguriert. Klicken Sie im folgenden Skript auf die Schaltfläche **Ausprobieren**, um eine Cloud Shell-Instanz aufzurufen, über die Sie sich bei Ihrem Azure-Konto anmelden können.
 
 1. Starten Sie eine CLI-Sitzung, und melden Sie sich mit dem Befehl `azure login` als UserA bei Azure an. Das Konto, mit dem Sie sich anmelden, muss über die Berechtigungen verfügen, die zum Erstellen eines Peerings virtueller Netzwerke erforderlich sind. Eine Liste der Berechtigungen finden Sie im Abschnitt „Berechtigungen“ unter [Erstellen, Ändern oder Löschen eines Peerings virtueller Netzwerke](virtual-network-manage-peering.md#permissions).
-2. Kopieren Sie das folgende Skript in einen Texteditor auf Ihrem PC. Ersetzen Sie `<SubscriptionA-Id>` durch die ID von „SubscriptionA“. Kopieren Sie das geänderte Skript, fügen Sie es in die CLI-Sitzung ein, und drücken Sie `Enter`. Wenn Sie Ihre Abonnement-ID nicht kennen, geben Sie den Befehl „az account show“ ein. Der Wert für **id** in der Ausgabe ist Ihre Abonnement-ID.
+2. Kopieren Sie das folgende Skript in einen Texteditor auf Ihrem PC. Ersetzen Sie `<SubscriptionA-Id>` durch die ID von „SubscriptionA“. Kopieren Sie das geänderte Skript, fügen Sie es in die CLI-Sitzung ein, und drücken Sie `Enter`. Wenn Sie Ihre Abonnement-ID nicht kennen, geben Sie den Befehl `az account show` ein. Der Wert für **id** in der Ausgabe ist Ihre Abonnement-ID.
 
     ```azurecli-interactive
     # Create a resource group.

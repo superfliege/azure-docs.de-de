@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: 6b109f347ee7a917b57acfc56ab4418755295bc5
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 78a8b5e7a1c5512f81315519210bc7759dd15342
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58896701"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578474"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>Installieren von TmaxSoft OpenFrame in Azure
 
@@ -114,7 +114,7 @@ Führen Sie folgende Schritte aus, bevor Sie beginnen:
 
 Sie können die OpenFrame-Umgebung über verschiedene Bereitstellungsmuster einrichten, aber das folgende Verfahren zeigt Ihnen, wie Sie den OpenFrame-Anwendungsserver und die Tibero-Datenbank auf einem virtuellen Computer bereitstellen. In größeren Umgebungen und für veränderbare Workloads hat es sich bewährt, die Datenbank separat auf einem eigenen virtuellen Computer bereitzustellen, um eine bessere Leistung zu erzielen.
 
-**So erstellen Sie eine VM**
+**So erstellen Sie einen virtuellen Computer**
 
 1. Navigieren Sie unter <http://portal.azure.com> zum Azure-Portal, und melden Sie sich bei Ihrem Konto an.
 
@@ -945,7 +945,7 @@ ProSort ist ein Hilfsprogramm, das in Batchtransaktionen zum Sortieren von Daten
      export PATH
      ```
 
-6. Um das Bashprofil auszuführen, geben Sie an der Eingabeaufforderung Folgendes ein: ` . .bash_profile`
+6. Um das Bashprofil auszuführen, geben Sie an der Eingabeaufforderung Folgendes ein: `. .bash_profile`
 
 7. Erstellen Sie die Konfigurationsdatei. Beispiel: 
 
@@ -1055,7 +1055,7 @@ OFCOBOL ist der OpenFrame-Compiler, der die COBOL-Programme des Mainframes über
      0 NonFatalErrors 
      0 FatalError
      ```
-10. Verwenden Sie den `ofcob --version `-Befehl, und überprüfen Sie die Versionsnummer, um die Installation zu überprüfen. Beispiel: 
+10. Verwenden Sie den `ofcob --version`-Befehl, und überprüfen Sie die Versionsnummer, um die Installation zu überprüfen. Beispiel: 
 
      ```
      [oframe7@ofdemo ~]$ ofcob --version 
@@ -1342,7 +1342,7 @@ Installieren Sie vor JEUS das Apache Ant-Paket, das die zum Installieren von JEU
      [oframe7\@ofdemo setup]\$ vi domain-config-template.properties
      ```
 
-7. Ändern Sie `jeus.password=jeusadmin nodename=Tmaxsoft` in . `jeus.password=tmax1234 nodename=ofdemo`
+7. Ändern Sie `jeus.password=jeusadmin nodename=Tmaxsoft` in `jeus.password=tmax1234 nodename=ofdemo`.
 
 8. Führen Sie den `ant install`-Befehl aus, um JEUS zu erstellen.
 9.  Aktualisieren Sie die .bash\_profile-Datei wie gezeigt mit den JEUS-Variablen:
@@ -1478,4 +1478,4 @@ Wenn Sie eine Mainframemigration in Betracht ziehen, steht Ihnen unser expandier
 
 -   [Erste Schritte mit Azure](https://docs.microsoft.com/azure/)
 -   [Dokumentation zu Host Integration Server (HIS)](https://docs.microsoft.com/host-integration-server/)
--   [Virtuelles Azure-Rechenzentrum: Lift and Shift-Leitfaden](https://blogs.msdn.microsoft.com/azurecat/2018/03/12/new-whitepaper-azure-virtual-datacenter-lift-and-shift-guide/)
+-   [Virtuelles Azure-Rechenzentrum: Lift-and-Shift-Leitfaden](https://blogs.msdn.microsoft.com/azurecat/2018/03/12/new-whitepaper-azure-virtual-datacenter-lift-and-shift-guide/)

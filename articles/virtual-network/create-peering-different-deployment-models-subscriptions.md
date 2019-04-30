@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: c9247b37e1e475892a1561c5667dc25275f67327
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1a066e6b75d527dcdf1b211c0ebb76a2d4520eb7
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104113"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528205"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Erstellen eines Peerings virtueller Netzwerke mithilfe verschiedener Bereitstellungsmodelle und Abonnements
 
@@ -71,7 +71,7 @@ In diesem Tutorial werden unterschiedliche Konten für jedes Abonnement verwende
     - **Standort:** *USA, Osten*
 
 14. Geben Sie im oben im Portal *myVnetB* im Feld **Ressourcen suchen** ein. Klicken Sie auf **myVnetB**, wenn es in den Suchergebnissen angezeigt wird. Für das virtuelle Netzwerk **myVnetB** wird ein Blatt angezeigt.
-15. Klicken Sie auf dem eingeblendeten Blatt **myVnetB** links in der vertikalen Liste der Optionen auf **Eigenschaften**. Kopieren Sie die **Ressourcen-ID**, die in einem späteren Schritt verwendet wird. Die Ressourcen-ID lautet ähnlich wie im folgenden Beispiel: /subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB
+15. Klicken Sie auf dem eingeblendeten Blatt **myVnetB** links in der vertikalen Liste der Optionen auf **Eigenschaften**. Kopieren Sie die **Ressourcen-ID**, die in einem späteren Schritt verwendet wird. Die Ressourcen-ID Ausgabe sieht in etwa wie das folgende Beispiel aus: `/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB`
 16. Führen Sie die Schritte 5-9 für myVnetB aus, und geben Sie in Schritt 8 **UserA** ein.
 17. Melden Sie sich als UserB vom Portal ab, und melden Sie sich als UserA an.
 18. Geben Sie im oben im Portal *myVnetA* im Feld **Ressourcen suchen** ein. Klicken Sie auf **myVnetA**, sobald es in den Suchergebnissen angezeigt wird. Für das virtuelle Netzwerk **myVnet** wird ein Blatt angezeigt.

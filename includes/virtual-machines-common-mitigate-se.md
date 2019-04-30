@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 08/14/2018
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: 130cc66831b25621cb022eb19005c624fcd71b9e
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 4c5b4c5eacd4be751004af551e3753a61873c7a7
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "40105505"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59551644"
 ---
-**Letzte Aktualisierung des Dokuments**: 14. August 2018 10:00 AM PST.
+**Letzte Aktualisierung des Dokuments**: 14. August 2018 10:00 UTC-8
 
 Eine öffentlich gemachte [neue Art von CPU-Sicherheitsrisiken](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002), die als „Seitenkanalangriffe mit spekulativer Ausführung“ bezeichnet wird, hatte Fragen von Kunden zur Folge, die sich mehr Klarheit wünschen.  
 
 Microsoft hat Maßnahmen zur Minderung dieser Risiken für alle Clouddienste bereitgestellt. Die Infrastruktur, in der Azure ausgeführt und Kundenworkloads voneinander isoliert werden, ist geschützt. Dies bedeutet, dass ein potenzieller Angreifer, der dieselbe Infrastruktur nutzt, Ihre Anwendung über diese Sicherheitsrisiken nicht angreifen kann.
 
-In Azure wird nach Möglichkeit die [Wartung mit Speicherbeibehaltung](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#memory-preserving-maintenance) genutzt, um die Auswirkungen für Kunden möglichst gering zu halten und auf Neustarts verzichten zu können. In Azure werden diese Methoden eingesetzt, wenn systemweite Updates am Host vorgenommen werden, um unsere Kunden zu schützen.
+In Azure wird nach Möglichkeit die [Wartung mit Speicherbeibehaltung](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#maintenance-not-requiring-a-reboot) genutzt, um die Auswirkungen für Kunden möglichst gering zu halten und auf Neustarts verzichten zu können. In Azure werden diese Methoden eingesetzt, wenn systemweite Updates am Host vorgenommen werden, um unsere Kunden zu schützen.
 
 Weitere Informationen dazu, wie die Sicherheit in alle Bereiche von Azure integriert ist, finden Sie auf der Website mit der [Dokumentation zur Azure-Sicherheit](https://docs.microsoft.com/azure/security/). 
 
@@ -70,17 +70,17 @@ Sie können auf Ihrer VM oder in Ihrem Clouddienst zusätzliche Sicherheitsfunkt
 
 Ihr Zielbetriebssystem muss aktuell sein, damit Sie diese zusätzlichen Sicherheitsfunktionen aktivieren können. Für „Seitenkanalangriffe mit spekulativer Ausführung“ sind standardmäßig mehrere Maßnahmen zur Risikominderung aktiviert, aber die hier beschriebenen zusätzlichen Features müssen manuell aktiviert werden und können sich auf die Leistung auswirken. 
 
-**Schritt 1**: [Wenden Sie sich an den Azure-Support](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical), um aktualisierte Firmware (Microcode) auf Ihren virtuellen Computern verfügbar zu machen. 
+**Schritt 1:** [Wenden Sie sich an den Azure-Support](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical), um aktualisierte Firmware (Microcode) auf Ihren virtuellen Computern verfügbar zu machen. 
 
-**Schritt 2**: Aktivieren Sie Kernel Virtual Address Shadowing (KVAS) und Branch Target Injection (BTI) zur Unterstützung des Betriebssystems. Befolgen Sie die Anleitung unter [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution), um den Schutz über die `Session Manager`-Registrierungsschlüssel zu aktivieren. Es ist ein Neustart erforderlich. 
+**Schritt 2:** Aktivieren Sie Kernel Virtual Address Shadowing (KVAS) und Branch Target Injection (BTI) zur Unterstützung des Betriebssystems. Befolgen Sie die Anleitung unter [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution), um den Schutz über die `Session Manager`-Registrierungsschlüssel zu aktivieren. Es ist ein Neustart erforderlich. 
 
-**Schritt 3**: Für Bereitstellungen mit Verwendung von [geschachtelter Virtualisierung](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization) (nur D3 und E3): Diese Anleitung gilt auf der VM, die Sie als Hyper-V-Host verwenden. 
+**Schritt 3:** Für Bereitstellungen, in denen [geschachtelte Virtualisierung](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization) verwendet wird (nur D3 und E3): Diese Anweisungen gelten für den virtuellen Computer, den Sie als Hyper-V-Host verwenden. 
 
 1. Befolgen Sie die Anleitung unter [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution), um den Schutz über die `MinVmVersionForCpuBasedMitigations`-Registrierungsschlüssel zu aktivieren.  
  
 1. Legen Sie den Typ für den Hypervisorplaner auf **Core** fest, indem Sie die [hier](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types) angegebene Anleitung befolgen. 
 
-**Schritt 4**: Befolgen Sie die Anleitung unter [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution), um mit dem [SpeculationControl](https://aka.ms/SpeculationControlPS)-PowerShell-Modul sicherzustellen, dass der Schutz aktiviert ist. 
+**Schritt 4:** Befolgen Sie die Anleitung in [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution), um mit dem [SpeculationControl](https://aka.ms/SpeculationControlPS)-PowerShell-Modul sicherzustellen, dass der Schutz aktiviert ist. 
 
 > [!NOTE]
 > Wenn Sie dieses Modul bereits zu einem früheren Zeitpunkt heruntergeladen haben, müssen Sie die neueste Version installieren.
@@ -101,11 +101,11 @@ L1TFWindowsSupportEnabled: True
 
 <a name="linux"></a>Für die Aktivierung der internen zusätzlichen Sicherheitsfunktionen ist es erforderlich, dass das Zielbetriebssystem auf dem aktuellsten Stand ist. Einige Maßnahmen zur Risikominderung sind standardmäßig aktiviert. Im folgenden Abschnitt werden die Funktionen beschrieben, die standardmäßig deaktiviert sind bzw. für die eine Hardwareunterstützung (Microcode) benötigt wird. Die Aktivierung dieser Funktionen kann zu einer Beeinträchtigung der Leistung führen. Weitere Informationen finden Sie in der Dokumentation des Anbieters Ihres Betriebssystems.
  
-**Schritt 1**: [Wenden Sie sich an den Azure-Support](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical), um aktualisierte Firmware (Microcode) auf Ihren virtuellen Computern verfügbar zu machen.
+**Schritt 1:** [Wenden Sie sich an den Azure-Support](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical), um aktualisierte Firmware (Microcode) auf Ihren virtuellen Computern verfügbar zu machen.
  
-**Schritt 2**: Aktivieren Sie Branch Target Injection (BTI) zur Unterstützung des Betriebssystems, um CVE-2017-5715 (Spectre-Variante 2) zu begegnen, indem Sie die Anweisungen in der Dokumentation des Anbieters Ihres Betriebssystems befolgen. 
+**Schritt 2:** Aktivieren Sie Branch Target Injection (BTI) zur Unterstützung des Betriebssystems, um CVE-2017-5715 (Spectre-Variante 2) zu begegnen, indem Sie die Anweisungen in der Dokumentation des Anbieters Ihres Betriebssystems befolgen. 
  
-**Schritt 3**: Aktivieren Sie Kernel Page Table Isolation (KPTI), um CVE-2017-5754 (Meltdown-Variante 3) zu begegnen, indem Sie die Anweisungen in der Dokumentation des Anbieters Ihres Betriebssystems befolgen. 
+**Schritt 3:** Aktivieren Sie Kernel Page Table Isolation (KPTI), um CVE-2017-5754 (Meltdown-Variante 3) zu begegnen, indem Sie die Anweisungen in der Dokumentation des Anbieters Ihres Betriebssystems befolgen. 
  
 Weitere Informationen erhalten Sie beim Anbieter Ihres Betriebssystems:  
  

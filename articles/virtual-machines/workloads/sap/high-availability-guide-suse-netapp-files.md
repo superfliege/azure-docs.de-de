@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/015/2019
 ms.author: radeltch
-ms.openlocfilehash: 02a97852a8dc659071c3484126b921d6f7106562
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 18bbeef833e1c82999e87451d279c0d3464af509
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662369"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617766"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs unter SUSE Linux Enterprise Server mit Azure NetApp Files für SAP-Anwendungen
 
@@ -166,14 +166,11 @@ Wenn Sie Azure NetApp Files für die Hochverfügbarkeitsarchitektur von SAP NetW
 
 - Die Mindestgröße eines Kapazitätspools beträgt 4 TiB. Die Größe des Kapazitätspools muss ein Vielfaches von 4 TiB sein.
 - Das kleinste Volume ist 100 GiB groß.
-- Azure NetApp Files und alle virtuellen Computer, auf denen Azure NetApp Files-Volumes eingebunden werden sollen, müssen sich im selben virtuellen Azure-Netzwerk befinden. Das [Peering virtueller Netzwerke](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview) wird in Azure NetApp Files noch nicht unterstützt.
+- Azure NetApp Files und alle virtuellen Computer, auf denen Azure NetApp Files-Volumes eingebunden werden sollen, müssen sich im selben virtuellen Azure-Netzwerk oder in [über Peering gekoppelten virtuellen Netzwerken](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview) in derselben Region befinden. Azure NetApp Files-Zugriff über VNET-Peering in derselben Region wird jetzt unterstützt. Azure NetApp-Zugriff über globales Peering wird noch nicht unterstützt.
 - Das ausgewählte virtuelle Netzwerk muss über ein an Azure NetApp Files delegiertes Subnetz verfügen.
 - Derzeit unterstützt Azure NetApp Files nur NFSv3. 
 - Azure NetApp Files bietet [Exportrichtlinien](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): Sie können die zulässigen Clients und den Zugriffstyp (Lesen und Schreiben, schreibgeschützt usw.) steuern. 
 - Azure NetApp Files wertet derzeit noch keine Zonen aus. Das Azure NetApp Files-Feature wird bisher nicht in allen Verfügbarkeitszonen in einer Azure-Region bereitgestellt. Achten Sie auf mögliche Latenzauswirkungen in einigen Azure-Regionen. 
-
-   > [!NOTE]
-   > Achten Sie darauf, dass Azure NetApp Files noch kein Peering virtueller Netzwerke unterstützt. Stellen Sie die virtuellen Computer und die Azure NetApp Files-Volumes im selben virtuellen Netzwerk bereit.
 
 ## <a name="deploy-linux-vms-manually-via-azure-portal"></a>Manuelles Bereitstellen von Linux-VMs über das Azure-Portal
 
@@ -574,6 +571,8 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 
 9. **[1]** Erstellen Sie die SAP-Clusterressourcen.
 
+Wenn Sie mit ENSA1 (Enqueue-Server 1-Architektur) arbeiten, definieren Sie die Ressourcen wie folgt:
+
    <pre><code>sudo crm configure property maintenance-mode="true"
    
    sudo crm configure primitive rsc_sap_<b>QAS</b>_ASCS<b>00</b> SAPInstance \
@@ -599,6 +598,35 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    sudo crm node online <b>anftstsapcl1</b>
    sudo crm configure property maintenance-mode="false"
    </code></pre>
+
+   SAP hat Unterstützung für ENSA2 (Enqueue-Server 2), einschließlich Replikation, mit SAP NW 7.52 eingeführt. Ab der ABAP-Plattform 1809 wird Enqueue-Server 2 standardmäßig installiert. Informationen zur Unterstützung von Enqueue-Server 2 finden Sie im SAP Hinweis [2630416](https://launchpad.support.sap.com/#/notes/2630416).
+Wenn Sie mit [ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html) (Enqueue-Server 2-Architektur) arbeiten, definieren Sie die Ressourcen wie folgt:
+
+   <pre><code>sudo crm configure property maintenance-mode="true"
+   
+   sudo crm configure primitive rsc_sap_<b>QAS</b>_ASCS<b>00</b> SAPInstance \
+    operations \$id=rsc_sap_<b>QAS</b>_ASCS<b>00</b>-operations \
+    op monitor interval=11 timeout=60 on_fail=restart \
+    params InstanceName=<b>QAS</b>_ASCS<b>00</b>_<b>anftstsapvh</b> START_PROFILE="/sapmnt/<b>QAS</b>/profile/<b>QAS</b>_ASCS<b>00</b>_<b>anftstsapvh</b>" \
+    AUTOMATIC_RECOVER=false \
+    meta resource-stickiness=5000
+   
+   sudo crm configure primitive rsc_sap_<b>QAS</b>_ERS<b>01</b> SAPInstance \
+    operations \$id=rsc_sap_<b>QAS</b>_ERS<b>01</b>-operations \
+    op monitor interval=11 timeout=60 on_fail=restart \
+    params InstanceName=<b>QAS</b>_ERS<b>01</b>_<b>anftstsapers</b> START_PROFILE="/sapmnt/<b>QAS</b>/profile/<b>QAS</b>_ERS<b>01</b>_<b>anftstsapers</b>" AUTOMATIC_RECOVER=false IS_ERS=true
+   
+   sudo crm configure modgroup g-<b>QAS</b>_ASCS add rsc_sap_<b>QAS</b>_ASCS<b>00</b>
+   sudo crm configure modgroup g-<b>QAS</b>_ERS add rsc_sap_<b>QAS</b>_ERS<b>01</b>
+   
+   sudo crm configure colocation col_sap_<b>QAS</b>_no_both -5000: g-<b>QAS</b>_ERS g-<b>QAS</b>_ASCS
+   sudo crm configure order ord_sap_<b>QAS</b>_first_start_ascs Optional: rsc_sap_<b>QAS</b>_ASCS<b>00</b>:start rsc_sap_<b>QAS</b>_ERS<b>01</b>:stop symmetrical=false
+   
+   sudo crm node online <b>anftstsapcl1</b>
+   sudo crm configure property maintenance-mode="false"
+   </code></pre>
+
+   Wenn Sie ein Upgrade von einer älteren Version durchführen und zu Enqueue-Server 2 wechseln, lesen Sie den SAP-Hinweis [2641019](https://launchpad.support.sap.com/#/notes/2641019). 
 
    Stellen Sie sicher, dass der Clusterstatus gültig ist und alle Ressourcen gestartet sind. Es ist nicht wichtig, auf welchem Knoten die Ressourcen ausgeführt werden.
 
@@ -1051,7 +1079,7 @@ Die folgenden Tests sind eine Kopie der Testfälle in den [Best Practices von SU
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
 
-   Erstellen Sie eine Sperre für das Einreihen in die Warteschlange, indem Sie z.B. einen Benutzer in der Transaktion su01 bearbeiten. Führen Sie die folgenden Befehle als „<sapsid\>adm“ auf dem Knoten aus, auf dem die ASCS-Instanz ausgeführt wird. Die Befehle beenden die ASCS-Instanz und starten sie erneut. Die Sperre für das Einreihen in die Warteschlange sollte bei diesem Test aufgehoben werden.
+   Erstellen Sie eine Sperre für das Einreihen in die Warteschlange, indem Sie z.B. einen Benutzer in der Transaktion su01 bearbeiten. Führen Sie die folgenden Befehle als „<sapsid\>adm“ auf dem Knoten aus, auf dem die ASCS-Instanz ausgeführt wird. Die Befehle beenden die ASCS-Instanz und starten sie erneut. Wird die Enqueue-Server 1-Architektur verwendet, wird erwartet, dass die Sperre für das Einreihen in die Warteschlange in diesem Test verloren geht. Wird die Enqueue-Server 2-Architektur verwendet, wird das Einreihen in die Warteschlange beibehalten. 
 
    <pre><code>anftstsapcl2:qasadm 51> sapcontrol -nr 00 -function StopWait 600 2
    </code></pre>
@@ -1066,7 +1094,7 @@ Die folgenden Tests sind eine Kopie der Testfälle in den [Best Practices von SU
    <pre><code>anftstsapcl2:qasadm 52> sapcontrol -nr 00 -function StartWait 600 2
    </code></pre>
 
-   Die Sperre für das Einreihen in die Warteschlange der Transaktion su01 sollte aufgehoben und das Back-End sollte zurückgesetzt worden sein. Zustand der Ressource nach dem Test:
+   Die Sperre für das Einreihen in die Warteschlange der Transaktion „su01“ sollte, wenn Enqueue-Server-Replikation 1-Architektur verwendet wird, aufgehoben und das Back-End sollte zurückgesetzt worden sein. Zustand der Ressource nach dem Test:
 
    <pre><code>
     Resource Group: g-QAS_ASCS

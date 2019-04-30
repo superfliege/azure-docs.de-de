@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 48bea302f2f8e878275e6a7c222d703e0f31f239
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: ca4d5912d75dd7b33737f61737a209284b7a5a47
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44492833"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616151"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Failoverprozedur für die Notfallwiederherstellung
 
@@ -87,7 +87,7 @@ Die nächsten Schritte dienen zur Wiederherstellung der SAP HANA-Produktionsinst
 1. Ändern Sie mithilfe von SAP HANA Studio das Sicherungsverzeichnis in **/hana/logbackups**.
    ![Ändern des Sicherungsspeicherorts für die Notfallwiederherstellung](./media/hana-overview-high-availability-disaster-recovery/change_backup_location_dr1.png)
 
-1. SAP HANA überprüft alle Sicherungsdateispeicherorte und schlägt für die Wiederherstellung die neueste Transaktionsprotokollsicherung vor. Die Überprüfung kann einige Minuten dauern. Danach wird ein Bildschirm wie der folgende angezeigt: ![Liste mit Transaktionsprotokollsicherungen für die Notfallwiederherstellung](./media/hana-overview-high-availability-disaster-recovery/backup_list_dr2.PNG).
+1. SAP HANA überprüft alle Sicherungsdateispeicherorte und schlägt für die Wiederherstellung die neueste Transaktionsprotokollsicherung vor. Die Überprüfung kann einige Minuten dauern. Danach wird ein Bildschirm wie der folgende angezeigt: ![Liste mit Transaktionsprotokollsicherungen für die Notfallwiederherstellung](./media/hana-overview-high-availability-disaster-recovery/backup_list_dr2.PNG)
 
 1. Passen Sie einige Standardeinstellungen an:
 
@@ -104,7 +104,7 @@ Daraufhin sollte ein Statusfenster wie das folgende erscheinen. Beachten Sie, da
 
 ![Status der Wiederherstellung](./media/hana-overview-high-availability-disaster-recovery/restore_progress_dr5.PNG)
 
-Falls die Wiederherstellung auf dem Bildschirm **Fertig stellen** anscheinend nicht fortgesetzt und der Statusbildschirm nicht angezeigt wird, sollten Sie überprüfen, ob alle SAP HANA-Instanzen auf den Workerknoten ausgeführt werden. Starten Sie die SAP HANA-Instanzen bei Bedarf manuell.
+Falls es auf dem Bildschirm **Fertig stellen** so scheint, als würde die Wiederherstellung nicht mehr reagieren, und wenn der Statusbildschirm nicht angezeigt wird, sollten Sie überprüfen, ob alle SAP HANA-Instanzen auf den Workerknoten ausgeführt werden. Starten Sie die SAP HANA-Instanzen bei Bedarf manuell.
 
 
 ## <a name="failback-from-a-dr-to-a-production-site"></a>Failback von einem Standort für die Notfallwiederherstellung auf den Produktionsstandort

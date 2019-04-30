@@ -1,7 +1,7 @@
 ---
 title: Protokollieren von Metriken während Trainingsausführungen
 titleSuffix: Azure Machine Learning service
-description: Sie können Ihre Experimente verfolgen und Metriken überwachen, um den Prozess der Modellerstellung zu verbessern. Erfahren Sie, wie Sie die Protokollierung zu Ihrem Trainingsskript hinzufügen, wie Sie das Experiment übermitteln, wie Sie den Fortschritt eines laufenden Auftrags überprüfen und wie Sie die Ergebnisse eines Durchlaufs anzeigen.
+description: Erfahren Sie, wie Sie die Protokollierung zu Ihrem Trainingsskript hinzufügen, wie Sie das Experiment übermitteln, wie Sie den Fortschritt eines laufenden Auftrags überprüfen und wie Sie die Ergebnisse eines Durchlaufs anzeigen. Sie können Ihre Experimente verfolgen und Metriken überwachen, um den Prozess der Modellerstellung zu verbessern.
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7ef3cfe1df792721db3fe3657c08f58ca82e3c91
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 59a801fd149a0f647298d94522f9eefc1ea6eb9f
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652313"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609466"
 ---
 # <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>Protokollieren von Metriken während Trainingsausführungen in Azure Machine Learning
 
-Mit dem Azure Machine Learning-Dienst können Sie Ihre Experimente verfolgen und Metriken überwachen, um den Prozess der Modellerstellung zu verbessern. In diesem Artikel erfahren Sie, wie Sie Protokollierung zu Ihrem Trainingsskript hinzufügen, eine Experimentausführung übermitteln, die Ausführung überwachen und die Ergebnisse einer Ausführung anzeigen können.
+In diesem Artikel erfahren Sie, wie Sie in Azure Machine Learning Service Protokollierung zu Ihrem Trainingsskript hinzufügen, eine Experimentausführung übermitteln, die Ausführung überwachen und die Ergebnisse einer Ausführung anzeigen können. Verbessern Sie den Modellerstellungsvorgang, indem Sie Ihre Experimente verfolgen und Metriken überwachen. 
 
 ## <a name="list-of-training-metrics"></a>Liste der Trainingsmetriken 
 
@@ -217,37 +217,9 @@ Dieses Beispiel erweitert das grundlegende sklearn Ridge-Modell von oben. Es fü
    run = experiment.submit(src)
    ```
 
-## <a name="cancel-a-run"></a>Abbrechen einer Ausführung
+## <a name="manage-a-run"></a>Verwalten einer Ausführung
 
-Nachdem eine Ausführung übermittelt wurde, können Sie sie abbrechen, auch wenn Sie die Objektreferenz verloren haben, sofern Sie den Experimentnamen und die Ausführungs-ID kennen. 
-
-
-```python
-from azureml.core import Experiment
-exp = Experiment(ws, "my-experiment-name")
-
-# if you don't know the run id, you can list all runs under an experiment
-for r in exp.get_runs():  
-    print(r.id, r.get_status())
-
-# if you know the run id, you can "rehydrate" the run
-from azureml.core import get_run
-r = get_run(experiment=exp, run_id="my_run_id", rehydrate=True)
-  
-# check the returned run type and status
-print(type(r), r.get_status())
-
-# you can cancel a run if it hasn't completed or failed
-if r.get_status() not in ['Complete', 'Failed']:
-    r.cancel()
-```
-Aktuell unterstützen nur die Typen „ScriptRun“ und „PipelineRun“ den Abbruchvorgang.
-
-Darüber hinaus können Sie eine Ausführung über die Befehlszeilenschnittstelle mithilfe des folgenden Befehls abbrechen:
-```shell
-az ml run cancel -r <run_id> -p <project_path>
-```
-
+Im Artikel [Starten, Überwachen und Abbrechen von Trainingsausführungen in Python](how-to-manage-runs.md) sind die speziellen Azure Machine Learning-Workflows beschrieben, in denen Sie Experimente verwalten.
 
 ## <a name="view-run-details"></a>Anzeigen von Ausführungsdetails
 

@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/21/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 66973ce78004d0f29d08264869f166202aaaf109
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3ef1656a7e8a66092de3050a8f14c5b38e0e2e6c
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011850"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525465"
 ---
 # <a name="high-availability-set-up-in-suse-using-the-stonith"></a>Hochverfügbarkeitskonfiguration unter SUSE mit STONITH
 Dieses Dokument enthält detaillierte Schritt-für-Schritt-Anweisungen zur Konfiguration der Hochverfügbarkeit unter dem Betriebssystem SUSE mit dem STONITH-Gerät.
@@ -258,7 +258,7 @@ Führen Sie den Befehl *crm_mon* aus, um sicherzustellen, dass **beide** Knoten 
 ```
 crm_mon
 ```
-![crm-mon.png](media/HowToHLI/HASetupWithStonith/crm-mon.png) Sie können sich auch bei hawk anmelden, um den Clusterstatus *https://<node IP>:7630* zu überprüfen. Der Standardbenutzer lautet „hacluster“ und das Kennwort „linux“. Bei Bedarf können Sie das Kennwort mit dem Befehl *passwd* ändern.
+![crm-mon.png](media/HowToHLI/HASetupWithStonith/crm-mon.png) Sie können sich auch bei hawk anmelden, um den Clusterstatus *https://\<Knoten-IP>:7630* zu überprüfen. Der Standardbenutzer lautet „hacluster“ und das Kennwort „linux“. Bei Bedarf können Sie das Kennwort mit dem Befehl *passwd* ändern.
 
 ## <a name="7-configure-cluster-properties-and-resources"></a>7. Konfigurieren von Clustereigenschaften und -ressourcen 
 In diesem Abschnitt werden die Schritte zum Konfigurieren von Clusterressourcen beschrieben.
@@ -323,7 +323,7 @@ crm configure load update crm-vip.txt
 Beim Ausführen des Befehls *crm_mon* werden die zwei Ressourcen dort angezeigt.
 ![crm_mon_command.png](media/HowToHLI/HASetupWithStonith/crm_mon_command.png)
 
-Darüber hinaus können Sie den Status unter *https://<node IP address>:7630/cib/live/state* sehen.
+Darüber hinaus können Sie den Status unter *https://\<IP-Adresse des Knotens:7630/cib/live/state* sehen.
 
 ![hawlk-status-page.png](media/HowToHLI/HASetupWithStonith/hawlk-status-page.png)
 

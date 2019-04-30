@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: fdc7aec703fdb5b6bb9744fad226b51769e73385
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 547b6a629677830b6f37883a4be835c12a62e599
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650477"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524045"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure AI-Leitfaden für Predictive Maintenance-Lösungen
 
@@ -227,7 +227,7 @@ Technische Spezifikationen der Ausrüstung, z.B. Herstellungsdatum, Modellnummer
 
 Die bisher beschriebenen Schritte zur Datenaufbereitung sollten ergeben, dass die Daten wie unten dargestellt organisiert werden. Trainings-, Test- und Validierungsdaten sollten über dieses logische Schema verfügen (in diesem Beispiel wird die Zeiteinheit „Tage“ verwendet).
 
-| Asset-ID | Zeit | <Feature Columns> | Bezeichnung |
+| Asset-ID | Zeit | \<Featurespalten> | Bezeichnung |
 | ---- | ---- | --- | --- |
 | A123 |Tag 1 | . . . | . |
 | A123 |Tag 2 | . . . | . |

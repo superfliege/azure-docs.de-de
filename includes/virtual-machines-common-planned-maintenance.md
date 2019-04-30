@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/14/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: 34723a6ee37e54ea2d81e6d1143672e3ccb30d1e
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: c26c037455b6d14a906894ec39bf46630826950b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53805731"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59551635"
 ---
 Azure aktualisiert die Plattform regelmäßig, um die Zuverlässigkeit, Leistung und Sicherheit der Hostinfrastruktur für virtuelle Computer zu verbessern. Diese Updates reichen von Patches für Softwarekomponenten in der Hostumgebung über Upgrades für Netzwerkkomponenten bis hin zur Außerbetriebsetzung von Hardware. Die meisten dieser Updates haben keine Auswirkungen auf die gehosteten virtuellen Computer. Allerdings gibt es Fälle, in denen Updates Auswirkungen haben und in denen Azure das Verfahren mit den geringsten Auswirkungen für Updates wählt:
 
@@ -27,9 +27,9 @@ Mithilfe der geplanten Ereignisse für [Windows](../articles/virtual-machines/wi
 
 Weitere Informationen zum Verwalten der geplanten Wartung finden Sie unter „Behandlung von Benachrichtigungen der geplanten Wartung“ für [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) oder [Windows](../articles/virtual-machines/windows/maintenance-notifications.md).
 
-## <a name="memory-preserving-maintenance"></a>Wartung mit Speicherbeibehaltung
+## <a name="maintenance-not-requiring-a-reboot"></a>Wartungsmaßnahmen, die keinen Neustart erfordern
 
-Das Ziel für die meisten Updates ohne Neustart besteht in weniger als 10 Sekunden Pause für die VM. In bestimmten Fällen werden arbeitsspeicherschonende Wartungsmechanismen verwendet, bei denen die VM für bis zu 30 Sekunden angehalten und der Arbeitsspeicher im RAM beibehalten wird. Danach wird die Ausführung des virtuellen Computers fortgesetzt, und die Uhr des virtuellen Computers wird automatisch synchronisiert. Azure verwendet in zunehmendem Maß Technologien zur Livemigration und bessere Mechanismen zur Erhaltung des Arbeitsspeichers, um die Anhaltedauer zu verringern.
+Das Ziel für die meisten Wartungsmaßnahmen, die keinen Neustart erfordern, ist eine Pause von weniger als 10 Sekunden für den virtuellen Computer. In bestimmten Fällen werden arbeitsspeicherschonende Wartungsmechanismen verwendet, bei denen die VM für bis zu 30 Sekunden angehalten und der Arbeitsspeicher im RAM beibehalten wird. Danach wird die Ausführung des virtuellen Computers fortgesetzt, und die Uhr des virtuellen Computers wird automatisch synchronisiert. Azure verwendet in zunehmendem Maß Technologien zur Livemigration und bessere Mechanismen zur Erhaltung des Arbeitsspeichers, um die Anhaltedauer zu verringern.
 
 Diese Wartungsvorgänge ohne Neustart werden einzeln für jede Fehlerdomäne angewendet, und das Fortschreiten wird beendet, wenn Warnsignale zur Integrität empfangen werden. 
 

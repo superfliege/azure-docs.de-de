@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 24956dd51ef4c2544ce28005fa3bff31113e5959
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 29f2aeee53e07adfeafb8017c489c0b830f24b36
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57848924"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521593"
 ---
 # <a name="transition-to-a-public-ca-gateway-certificate-for-p2s"></a>Übergang von einem Gatewayzertifikat einer öffentlichen Zertifizierungsstelle für P2S
 
@@ -56,7 +56,7 @@ Von dieser Änderung sind nur ältere Gateways betroffen. Wenn Ihr Gatewayzertif
 
 ### <a name="classic"></a>Klassisch
 
-1. Navigieren Sie auf einem Clientcomputer zum Pfad „%appdata%/Microsoft/Network/Connections/Cm/“<gatewayID>. Im Ordner für die Gateway-ID können Sie das Zertifikat anzeigen.
+1. Navigieren Sie auf einem Clientcomputer zum Pfad `%appdata%/Microsoft/Network/Connections/Cm/<gatewayID>`. Im Ordner für die Gateway-ID können Sie das Zertifikat anzeigen.
 2. Stellen Sie auf der Registerkarte „Allgemein“ für das Zertifikat sicher, dass „DigiCert Global Root CA“ die ausstellende Zertifizierungsstelle ist. Wenn eine andere als diese ausstellende Zertifizierungsstelle angezeigt wird, ist Ihr Gatewayzertifikat Teil des Updates und wird umgestellt.
 
 ## <a name="2-check-certificate-transition-schedule"></a>2. Überprüfen des Zeitplans für die Zertifikatsumstellung

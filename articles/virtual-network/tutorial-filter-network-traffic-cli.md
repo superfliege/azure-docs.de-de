@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 630eddc8494b32d93035913bcb2b55f00153b1be
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 2c24634a42fd420eae204437418b82479869bbe5
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755508"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525542"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>Filtern von Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe über die Azure-Befehlszeilenschnittstelle
 
@@ -196,7 +196,7 @@ Die Erstellung des virtuellen Computers dauert einige Minuten. Nachdem der virtu
 
 ## <a name="test-traffic-filters"></a>Testen von Datenverkehrsfiltern
 
-Erstellen Sie mit dem folgenden Befehl eine SSH-Sitzung mit dem virtuellen Computer *myVmMgmt*. Ersetzen Sie *<publicIpAddress>* durch die öffentliche IP-Adresse der VM. Im Beispiel oben lautet die IP-Adresse *13.90.242.231*.
+Erstellen Sie mit dem folgenden Befehl eine SSH-Sitzung mit dem virtuellen Computer *myVmMgmt*. Ersetzen Sie *\<publicIpAddress>* durch die öffentliche IP-Adresse Ihrer VM. Im Beispiel oben lautet die IP-Adresse *13.90.242.231*.
 
 ```bash 
 ssh azureuser@<publicIpAddress>

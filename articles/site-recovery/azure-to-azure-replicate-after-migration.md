@@ -1,18 +1,18 @@
 ---
-title: Einrichten der Notfallwiederherstellung für virtuelle Azure-Computer nach Migration in Azure mit Azure Site Recovery | Microsoft-Dokumentation
+title: Einrichten der Notfallwiederherstellung für Azure-VMs nach Migration in Azure mit Azure Site Recovery | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt das Vorbereiten von VMs für die Einrichtung der Notfallwiederherstellung zwischen Azure-Regionen nach der Migration in Azure mithilfe von Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 04/16/2019
 ms.author: raynew
-ms.openlocfilehash: 76119c912ac6ad1447bfcff1f4c98e60f34b072f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 019c6ec776277a9102cb95cd685bbae0fc660d66
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317128"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59615913"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Einrichten der Notfallwiederherstellung für Azure-VMs nach der Migration in Azure 
 
@@ -68,7 +68,7 @@ Installieren Sie den [Azure-Linux-VM](../virtual-machines/extensions/agent-linux
     - Für andere Distributionen: **service waagent start**
 
 
-## <a name="uninstall-the-mobility-service"></a>Deinstallieren des Mobility-Diensts
+## <a name="uninstall-the-mobility-service"></a>Deinstallieren von Mobility Service
 
 1. Deinstallieren Sie den Mobility-Dienst manuell auf dem virtuellen Azure-Computer mit einer der folgenden Methoden. 
     - Unter Windows deinstallieren Sie in „Systemsteuerung“ > **Software**  den Eintrag **Microsoft Azure Site Recovery Mobility Service/Masterzielserver**. Führen Sie an einer Eingabeaufforderung mit erhöhten Rechten Folgendes aus:
@@ -77,7 +77,7 @@ Installieren Sie den [Azure-Linux-VM](../virtual-machines/extensions/agent-linux
         ```
     - Melden Sie sich unter Linux als Root-Benutzer an. Wechseln Sie in einem Terminal zu **/user/local/ASR**, und führen Sie den folgenden Befehl aus:
         ```
-        uninstall.sh -Y
+        ./uninstall.sh -Y
         ```
 2. Bevor Sie die Replikation konfigurieren, starten Sie die VM neu.
 

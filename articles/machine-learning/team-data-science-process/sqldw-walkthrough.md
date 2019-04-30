@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: adbf3e4fbc0f9d49458dadaebcdd2a090030654e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e27c4462e7137145917d1284bfb6f8838e8a090b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838883"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523595"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Der Team Data Science-Prozess in Aktion: Verwenden von SQL Data Warehouse
 In diesem Tutorial führen wir Sie durch die Erstellung und Bereitstellung eines Machine Learning-Modells mit SQL Data Warehouse (SQL DW) für ein öffentlich zugängliches Dataset: das Dataset [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/). Das erstellte binäre Klassifizierungsmodell sagt voraus, ob ein Trinkgeld für eine Fahrt bezahlt wird. Zudem werden Modelle für Multiklassenklassifizierung und Regression behandelt, die die Verteilung der gezahlten Trinkgeldbeträge vorhersagen.
@@ -77,7 +77,7 @@ Zum Einrichten Ihrer Azure Data Science-Umgebung führen Sie die folgenden Schri
 **Stellen Sie Ihre Azure SQL Data Warehouse-Instanz bereit.**
 Befolgen Sie die Dokumentation unter [Erstellen eines SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md) , um eine SQL Data Warehouse-Instanz bereitzustellen. Notieren Sie sich unbedingt die folgenden Anmeldeinformationen für SQL Data Warehouse, die in späteren Schritten verwendet werden.
 
-* **Servername**: <server Name>.database.windows.net
+* **Servername**: \<Servername>.database.windows.net
 * **SQLDW-Name (Datenbank)**
 * **Benutzername**
 * **Kennwort**

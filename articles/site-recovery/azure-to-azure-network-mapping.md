@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: ecaabe0cf2e9e55bf02f8e12244d55fc2bef830b
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: d08715b1b3e0db4dfcf31bb4c020ab44ed3916e1
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59359809"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549025"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Einrichten der Netzwerkzuordnung und IP-Adressierung für VNETs
 
@@ -86,7 +86,7 @@ Unterschiedlicher Adressraum<br/><br/> Die nächste verfügbare IP-Adresse im Zi
 **Zielnetzwerk** | **Details**
 --- | ---
 Das Zielnetzwerk ist das Failover-VNET. | – Die Ziel-IP-Adresse ist statisch, aber nicht die gleiche IP-Adresse, die für das Failover reserviert wurde.<br/><br/>  – Die zugewiesene IP-Adresse ist die nächste verfügbare IP-Adresse vom Ende des Subnetzbereichs.<br/><br/> Beispiel:  Wenn die Quell-IP-Adresse 10.0.0.19 lautet und das Failovernetzwerk den Bereich 10.0.0.0/24 verwendet, lautet die nächste IP-Adresse, die der Ziel-VM zugewiesen wird, 10.0.0.254.
-Das Zielnetzwerk ist nicht das Failover-VNET. | – Die Ziel-IP-Adresse ist statisch und die gleiche IP-Adresse, die für das Failover reserviert wurde.<br/><br/>  – Wenn die gleiche IP-Adresse bereits zugewiesen wurde, ist die IP-Adresse die nächste verfügbare IP-Adresse des jeweiligen Subnetzbereichs.<br/><br/> Beispiel:  Wenn die statische Quell-IP-Adresse 10.0.0.19 lautet und ein Failover in einem Netzwerk ausgeführt wird, das nicht das Failovernetzwerk mit dem Bereich 10.0.0.0/24 darstellt, lautet die statische IP-Zieladresse 10.0.0.0.19, falls verfügbar, und andernfalls 10.0.0.254.
+Das Zielnetzwerk ist nicht das Failover-VNET. | – Die Ziel-IP-Adresse ist statisch und die gleiche IP-Adresse, die für das Failover reserviert wurde.<br/><br/>  – Wenn dieselbe IP-Adresse bereits zugewiesen wurde, ist die IP-Adresse die nächste verfügbare IP-Adresse am Ende des Subnetzbereichs.<br/><br/> Beispiel:  Wenn die statische Quell-IP-Adresse 10.0.0.19 lautet und ein Failover in einem Netzwerk ausgeführt wird, das nicht das Failovernetzwerk mit dem Bereich 10.0.0.0/24 darstellt, lautet die statische IP-Zieladresse 10.0.0.0.19, falls verfügbar, und andernfalls 10.0.0.254.
 
 - Das Failover-VNET ist das Zielnetzwerk, das Sie beim Einrichten der Notfallwiederherstellung auswählen.
 - Es wird empfohlen, immer ein Netzwerk für das Testfailover zu verwenden, das nicht für die Produktion bestimmt ist.

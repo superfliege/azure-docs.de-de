@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 9809584a3abe1d0cdde2cd6ccf90b48432d27c11
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 90ec7cf4964440d39b3f69eb9ae9708eaafe3748
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007848"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579035"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs auf dem SUSE Linux Enterprise Server for SAP Applications
 
@@ -95,7 +95,8 @@ Der NFS-Server, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS und die
   * Mit primären Netzwerkschnittstellen von allen virtuellen Computern verbunden, die Teil des (A)SCS/ERS-Clusters sein sollen
 * Testport
   * Port 620<strong>&lt;Nr.&gt;</strong>
-* Lastenausgleichsregeln
+* Lasten 
+* ausgleichsregeln
   * 32<strong>&lt;Nr.&gt;</strong> TCP
   * 36<strong>&lt;Nr.&gt;</strong> TCP
   * 39<strong>&lt;Nr.&gt;</strong> TCP
@@ -132,7 +133,8 @@ Der Azure Marketplace enthält ein Image für den SUSE Linux Enterprise Server f
 
 Sie können eine der Schnellstartvorlagen auf GitHub verwenden, um alle erforderlichen Ressourcen bereitzustellen. Die Vorlage stellt die virtuellen Computer, den Load Balancer, die Verfügbarkeitsgruppe etc. bereit. Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
 
-1. Öffnen Sie die [ASCS/SCS-Multi-SID-Vorlage][template-multisid-xscs] oder die [konvergierte Vorlage][template-converged] im Azure-Portal. Die ASCS/SCS-Vorlage erstellt nur die Regeln des Lastenausgleichs für die SAP NetWeaver ASCS/SCS- und ERS-Instanz (nur Linux), während die konvergierte Vorlage auch die Regeln des Lastenausgleichs für eine Datenbank (z.B. Microsoft SQL Server oder SAP HANA) erstellt. Wenn Sie ein SAP NetWeaver-basiertes System installieren und auch die Datenbank auf denselben Computern installieren möchten, verwenden Sie die [konvergierte Vorlage][template-converged].
+1. Öffnen Sie die [ASCS/SCS-Multi-SID-Vorlage][template-multisid-xscs] oder die [konvergierte Vorlage][template-converged] im Azure-Portal. 
+   Die ASCS/SCS-Vorlage erstellt nur die Regeln des Lastenausgleichs für die SAP NetWeaver ASCS/SCS- und ERS-Instanz (nur Linux), während die konvergierte Vorlage auch die Regeln des Lastenausgleichs für eine Datenbank (z.B. Microsoft SQL Server oder SAP HANA) erstellt. Wenn Sie ein SAP NetWeaver-basiertes System installieren und auch die Datenbank auf denselben Computern installieren möchten, verwenden Sie die [konvergierte Vorlage][template-converged].
 1. Legen Sie die folgenden Parameter fest:
    1. Ressourcenpräfix (nur ASCS/SCS-Multi-SID-Vorlage)  
       Geben Sie das Präfix ein, das verwendet werden soll. Der Wert wird als Präfix für die Ressourcen verwendet, die bereitgestellt werden.
@@ -144,7 +146,7 @@ Sie können eine der Schnellstartvorlagen auf GitHub verwenden, um alle erforder
       Wählen Sie eine der Linux-Distributionen aus. Wählen Sie für dieses Beispiel die Option „SLES 12 BYOS“.
    6. DB-Typ  
       Wählen Sie „HANA“.
-   7. SAP-Systemgröße  
+   7. SAP-Systemgröße.  
       Die Anzahl der vom neuen System bereitgestellten SAPS. Wenn Sie nicht sicher sind, welche SAPS-Zahl für das System benötigt wird, können Sie sich an den SAP-Technologiepartner oder -Systemintegrator wenden.
    8. Systemverfügbarkeit  
       Wählen Sie „HA“ (hohe Verfügbarkeit).
@@ -530,6 +532,8 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 
 1. **[1]** Erstellen Sie die SAP-Clusterressourcen.
 
+Wenn Sie mit ENSA1 (Enqueue-Server 1-Architektur) arbeiten, definieren Sie die Ressourcen wie folgt:
+
    <pre><code>sudo crm configure property maintenance-mode="true"
    
    sudo crm configure primitive rsc_sap_<b>NW1</b>_ASCS<b>00</b> SAPInstance \
@@ -556,7 +560,37 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    sudo crm configure property maintenance-mode="false"
    </code></pre>
 
+  SAP hat Unterstützung für ENSA2 (Enqueue-Server 2), einschließlich Replikation, mit SAP NW 7.52 eingeführt. Ab der ABAP-Plattform 1809 wird Enqueue-Server 2 standardmäßig installiert. Informationen zur Unterstützung von Enqueue-Server 2 finden Sie im SAP Hinweis [2630416](https://launchpad.support.sap.com/#/notes/2630416).
+Wenn Sie mit [ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html) (Enqueue-Server 2-Architektur) arbeiten, definieren Sie die Ressourcen wie folgt:
+
+<pre><code>sudo crm configure property maintenance-mode="true"
+   
+   sudo crm configure primitive rsc_sap_<b>NW1</b>_ASCS<b>00</b> SAPInstance \
+    operations \$id=rsc_sap_<b>NW1</b>_ASCS<b>00</b>-operations \
+    op monitor interval=11 timeout=60 on_fail=restart \
+    params InstanceName=<b>NW1</b>_ASCS<b>00</b>_<b>nw1-ascs</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ASCS<b>00</b>_<b>nw1-ascs</b>" \
+    AUTOMATIC_RECOVER=false \
+    meta resource-stickiness=5000
+   
+   sudo crm configure primitive rsc_sap_<b>NW1</b>_ERS<b>02</b> SAPInstance \
+    operations \$id=rsc_sap_<b>NW1</b>_ERS<b>02</b>-operations \
+    op monitor interval=11 timeout=60 on_fail=restart \
+    params InstanceName=<b>NW1</b>_ERS<b>02</b>_<b>nw1-aers</b> START_PROFILE="/sapmnt/<b>NW1</b>/profile/<b>NW1</b>_ERS<b>02</b>_<b>nw1-aers</b>" AUTOMATIC_RECOVER=false IS_ERS=true 
+   
+   sudo crm configure modgroup g-<b>NW1</b>_ASCS add rsc_sap_<b>NW1</b>_ASCS<b>00</b>
+   sudo crm configure modgroup g-<b>NW1</b>_ERS add rsc_sap_<b>NW1</b>_ERS<b>02</b>
+   
+   sudo crm configure colocation col_sap_<b>NW1</b>_no_both -5000: g-<b>NW1</b>_ERS g-<b>NW1</b>_ASCS
+   sudo crm configure order ord_sap_<b>NW1</b>_first_start_ascs Optional: rsc_sap_<b>NW1</b>_ASCS<b>00</b>:start rsc_sap_<b>NW1</b>_ERS<b>02</b>:stop symmetrical=false
+   
+   sudo crm node online <b>nw1-cl-0</b>
+   sudo crm configure property maintenance-mode="false"
+   </code></pre>
+
+  Wenn Sie ein Upgrade von einer älteren Version durchführen und zu Enqueue-Server 2 wechseln, lesen Sie den SAP-Hinweis [2641019](https://launchpad.support.sap.com/#/notes/2641019). 
+
    Stellen Sie sicher, dass der Clusterstatus gültig ist und alle Ressourcen gestartet sind. Es ist nicht wichtig, auf welchem Knoten die Ressourcen ausgeführt werden.
+
 
    <pre><code>sudo crm_mon -r
    
@@ -958,7 +992,7 @@ Die folgenden Tests sind eine Kopie der Testfälle in den Best Practices von SUS
         rsc_sap_NW1_ERS02  (ocf::heartbeat:SAPInstance):   Started nw1-cl-0
    </code></pre>
 
-   Erstellen Sie eine Sperre für das Einreihen in die Warteschlange, indem Sie z.B. einen Benutzer in der Transaktion su01 bearbeiten. Führen Sie die folgenden Befehle als „\<SAPS-ID>adm“ auf dem Knoten aus, auf dem die ASCS-Instanz ausgeführt wird. Die Befehle beenden die ASCS-Instanz und starten sie erneut. Die Sperre für das Einreihen in die Warteschlange sollte bei diesem Test aufgehoben werden.
+   Erstellen Sie eine Sperre für das Einreihen in die Warteschlange, indem Sie z.B. einen Benutzer in der Transaktion su01 bearbeiten. Führen Sie die folgenden Befehle als „\<SAPS-ID>adm“ auf dem Knoten aus, auf dem die ASCS-Instanz ausgeführt wird. Die Befehle beenden die ASCS-Instanz und starten sie erneut. Wird die Enqueue-Server 1-Architektur verwendet, wird erwartet, dass die Sperre für das Einreihen in die Warteschlange in diesem Test verloren geht. Wird die Enqueue-Server 2-Architektur verwendet, wird das Einreihen in die Warteschlange beibehalten. 
 
    <pre><code>nw1-cl-1:nw1adm 54> sapcontrol -nr 00 -function StopWait 600 2
    </code></pre>

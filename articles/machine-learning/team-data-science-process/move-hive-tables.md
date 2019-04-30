@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d67bd26dcb2ac0b3bf909e1ef3d5ca75a0882eb3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 28e399eaf62731d7c38cea5f5a8cb8ebf876e686
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57840646"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522502"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Erstellen von Hive-Tabellen und Laden von Daten aus Azure Blob Storage
 
@@ -112,7 +112,7 @@ Wenn Sie den Standardcontainer des Hadoop-Clusters mit Tools wie Azure Storage-E
 ![Azure Storage-Explorer zeigt die Ausgabe der Hive-Abfrage an](./media/move-hive-tables/output-hive-results-3.png)
 
 ### <a name="hive-editor"></a> 2. Übermitteln von Hive-Abfragen mit dem Hive-Editor
-Sie können auch die Abfragekonsole (Hive-Editor) verwenden, indem Sie in einem Webbrowser eine URL im Format *https://<Hadoop cluster name>.azurehdinsight.net/Home/HiveEditor* eingeben. Sie müssen angemeldet sein, um diese Konsole anzeigen zu können, weshalb hier Ihre Hadoop-Clusteranmeldeinformationen erforderlich sind.
+Sie können auch die Abfrage-Konsole (Hive-Editor) nutzen, indem Sie eine URL im Format *https:\//\<Hadoop-Clustername>.azurehdinsight.net/Home/HiveEditor* in einen Webbrowser eingeben. Sie müssen angemeldet sein, um diese Konsole anzeigen zu können, weshalb hier Ihre Hadoop-Clusteranmeldeinformationen erforderlich sind.
 
 ### <a name="ps"></a> 3. Übermitteln von Hive-Abfragen mit Azure PowerShell-Befehlen
 Sie können zum Übermitteln von Hive-Abfragen auch PowerShell verwenden. Eine Anleitung hierzu finden Sie unter [Übermitteln von Hive-Aufträgen mit PowerShell](../../hdinsight/hadoop/apache-hadoop-use-hive-powershell.md).
@@ -149,7 +149,7 @@ Mit dieser Hive-Abfrage laden Sie Daten eine Hive-Tabelle.
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* **\<Pfad zu Blobdaten:\>** Wenn sich die in die Hive-Tabelle hochzuladende Blobdatei im Standardcontainer des HDInsight Hadoop-Clusters befindet, muss der *\<Pfad zu Blobdaten\>* das Format *wasb:///<directory in this container>/<blob file name>* aufweisen. Die Blobdatei kann sich auch in einem zusätzlichen Container des HDInsight Hadoop-Clusters befinden. In diesem Fall muss *\<Pfad zu Blobdaten\>* das Format *wasb://<container name><storage account name>.blob.core.windows.net/<blob file name>* aufweisen.
+* **\<Pfad zu Blobdaten:\>** Wenn sich die in die Hive-Tabelle hochzuladende Blobdatei im Standardcontainer des HDInsight Hadoop-Clusters befindet, sollte *\<Pfad zu Blobdaten\>* das Format *'wasb://\<Verzeichnis in diesem Container>/\<Blobdateiname>'* haben. Die Blobdatei kann sich auch in einem zusätzlichen Container des HDInsight Hadoop-Clusters befinden. In diesem Fall muss *\<Pfad zu Blobdaten\>* das Format *'wasb://\<Containername>\<Speicherkontoname>.blob.core.windows.net/\<Blobdateiname>'* haben.
 
   > [!NOTE]
   > Die Blobdaten, die in die Hive-Tabelle hochgeladen werden sollen, müssen sich im Standard- oder einem zusätzlichen Container des Speicherkontos für den Hadoop-Cluster befinden. Andernfalls misslingt die Abfrage *LOAD DATA* , weil sie keinen Zugriff auf die Daten hat.

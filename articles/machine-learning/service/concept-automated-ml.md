@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 12/12/2018
 ms.custom: seodec18
-ms.openlocfilehash: bf010e33a5ef77fcfde2506bfef9760a09667a9d
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 620dbd22613df37fdc3c20e34906684446b2251f
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867251"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546002"
 ---
 # <a name="what-is-automated-machine-learning"></a>Was ist automatisiertes maschinelles Lernen?
 
@@ -51,27 +51,14 @@ Während des Trainings erstellt der Azure Machine Learning-Dienst eine Reihe von
 
 Sie können die protokollierten Ausführungsinformationen prüfen, die während der Ausführung erfasste Metriken enthalten. Bei der Trainingsausführung wird auch ein serialisiertes Python-Objekt (`.pkl`-Datei) generiert, das die Vorabverarbeitung des Modells und der Daten enthält.
 
-## <a name="model-explainability"></a>Modellerklärung
-
-Eine häufige Falle des automatisierten maschinellen Lernens ist die Unfähigkeit, den End-to-End-Prozess sehen zu können. Azure Machine Learning ermöglicht es Ihnen, detaillierte Informationen zu den Modellen anzuzeigen, um die Transparenz der Vorgänge zu erhöhen, die auf dem Back-End ausgeführt werden. Einige Modelle (wie die lineare Regression) gelten als ziemlich einfach und daher leicht verständlich. Aber wenn wir mehr Funktionen hinzufügen und kompliziertere maschinelle Lernmodelle verwenden, wird das Verständnis immer schwieriger. Es gibt zwei wesentliche Aspekte der Transparenz beim maschinellen Lernen:
-
-1. Kenntnis der Machine Learning-Pipeline und aller damit verbundenen Schritte, einschließlich Datenvorverarbeitung/Featurisierung und Hyperparameterwerte.
-1. Verständnis des Zusammenhangs zwischen Eingangsvariablen (auch als „Features“ bezeichnet) und der Modellausgabe.  Wenn Sie sowohl das Ausmaß als auch die Richtung der Auswirkungen der einzelnen Features auf den vorhergesagten Wert kennen, können Sie das Modell besser verstehen und erklären. Dies wird als „Featurgewichtung“ bezeichnet.
-
-Sie können bedarfsgesteuert globale Featuregewichtung nach dem Training für die Pipeline Ihrer Wahl oder für alle Pipelines im Rahmen eines automatisierten Machine Learning-Trainings aktivieren. In stark regulierten Branchen wie dem Gesundheitswesen und dem Bankwesen ist dies entscheidend, um Vorschriften und bewährte Methoden einzuhalten.  Zur Veranschaulichung finden Sie hier einige Szenarien aus der Praxis:
-
-1. Ein produzierendes Unternehmen, das maschinelles Lernen einsetzt, um zukünftige Instrumentenausfälle vorherzusagen, damit es proaktiv Wartungsarbeiten durchführen kann. Wenn Sie nun wissen, dass ein Instrument kurz vor einem Ausfall steht, was dann die wahrscheinlichste Ursache dafür? Damit können Sie so schnell wie möglich eine vorbeugende Wartung durchführen.
-1. Ein Finanzinstitut, das maschinelles Lernen für die Verarbeitung von um Kredit- oder Kreditkartenanwendungen verwendet. Wie wissen Sie, ob das Modell das Richtige tut? Und wenn ein Kunde nach mehr Details fragt, warum sein Antrag abgelehnt wurde, was können Sie ihm antworten?
-1. Ein Onlinehändler oder ein unabhängiger Softwareanbieter, der maschinelles Lernen einsetzt, um Kundenabwanderungen vorherzusagen. Was sind die Hauptursachen für Kundenabwanderungen, und wie können Sie verhindern, dass Kunden abwandern?
-
-Dies ist eine Previewfunktion. Wir bemühen uns, weiterhin umfangreiche Informationen bereitzustellen, um Ihnen zu helfen, Ihre Machine Learning-Modelle besser zu verstehen. Verwenden Sie dieses [Beispiel-Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/model-explanation/auto-ml-model-explanation.ipynb) zum Experimentieren mit Modellerklärungen in Azure Machine Learning.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie Modelle mithilfe des automatisierten maschinellen Lernens erstellt werden, und sehen Sie sich Beispiele dazu an:
-+ [Beispiele: Verwenden von Jupyter-Notebooks zum Erkunden von Azure Machine Learning Service](samples-notebooks.md#automated-ml-setup)
 
 + [Tutorial: Automatisches Trainieren eines Klassifizierungsmodells mithilfe von Azure Automated Machine Learning](tutorial-auto-train-models.md)
+
++ [Notebook-Beispiele](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)
 
 + [Verwenden von automatischem Training für eine Remoteressource](how-to-auto-train-remote.md)
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 08189522f4f73e996ed98f3996f87da8d93b5d2a
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: e3106a792f486a62986734e562c96b41dd8a75dc
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895634"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524122"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Weiterleiten von Netzwerkdatenverkehr mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -208,7 +208,7 @@ Notieren Sie sich **publicIpAddress**. Über diese Adresse wird in einem später
 
 ## <a name="route-traffic-through-an-nva"></a>Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät
 
-Erstellen Sie mit dem folgenden Befehl eine SSH-Sitzung mit der *myVmPrivate*-VM. Ersetzen Sie *<publicIpAddress>* durch die öffentliche IP-Adresse der VM. Im Beispiel oben lautet die IP-Adresse *13.90.242.231*.
+Erstellen Sie mit dem folgenden Befehl eine SSH-Sitzung mit der *myVmPrivate*-VM. Ersetzen Sie *\<publicIpAddress>* durch die öffentliche IP-Adresse Ihrer VM. Im Beispiel oben lautet die IP-Adresse *13.90.242.231*.
 
 ```bash 
 ssh azureuser@<publicIpAddress>

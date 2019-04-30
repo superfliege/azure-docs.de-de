@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c78a54d5002972339994d9590c0a3e23b5c69bd9
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: a029477dfd8046863ebfe34cd839562a0b1f3d87
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48806311"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607793"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>Preise für VM-Angebote
 ==================================
@@ -149,7 +149,7 @@ Die folgende Tabelle zeigt die verschiedenen Regionen, die Sie für angepasste K
 | LI         | Liechtenstein        | CHF               |
 | LT         | Litauen            | EUR               |
 | LU         | Luxemburg           | EUR               |
-| MK         | Nordmazedonien       | MKD               |
+| MK         | Nordmazedonien      | MKD               |
 | MY         | Malaysia             | MYR               |
 | MT         | Malta                | EUR               |
 | MX         | Mexiko               | MXN               |

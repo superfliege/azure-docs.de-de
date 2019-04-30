@@ -5,161 +5,89 @@ services: virtual-machines-windows, virtual-machines-linux
 author: cynthn
 ms.service: multiple
 ms.topic: include
-ms.date: 07/06/2018
+ms.date: 04/11/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: c16483f4b8ef160c78ff95582faf54c9a9d24a04
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d0802cfcf05874044b6e116ba194c16a79f9d309
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57964163"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59550137"
 ---
-Dieser Artikel enthält Informationen zu den vorherigen Generationen von VM-Größen. Diese Größen können weiterhin verwendet werden, es sind jedoch neuere Generationen verfügbar.
+Dieser Abschnitt enthält Informationen zu den vorherigen Generationen von VM-Größen. Diese Größen können weiterhin verwendet werden, es sind jedoch neuere Generationen verfügbar. 
 
+## <a name="f-series"></a>F-Serie
 
-## <a name="ds-series"></a>DS-Serie
+Die F-Serie basiert auf dem Intel Xeon® E5-2673 v3-Prozessor (Haswell) mit 2,4 GHz, der mit der Intel Turbo Boost Technology 2.0 Taktfrequenzen von 3,1 GHz erreichen kann. Dies ist die gleiche CPU-Leistung wie bei virtuellen Computern (VMs) der Dv2-Serie.  
 
-ACU: 160-250 <sup>1</sup>
+Virtuelle Computer der F-Serie sind eine hervorragende Wahl für Workloads, die schnellere CPUs erfordern, aber nicht so viel Arbeitsspeicher oder temporären Speicher pro vCPU benötigen.  Bei Arbeitslasten wie Analysen, Gamingservern, Webservern und Batchverarbeitung kommen die Vorteile und der Nutzen der F-Serie besonders gut zum Tragen.
+
+ACU: 210–250
+
+Storage Premium  Nicht unterstützt
+
+Storage Premium-Zwischenspeicherung:  Nicht unterstützt
+
+| Größe         | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/MBit/s Lesen/MBps Schreiben | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) |
+|--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
+| Standard_F1  | 1         | 2           | 16             | 3000/46/23                                           | 4/4 x 500                         | 2/750                 |
+| Standard_F2  | 2         | 4           | 32             | 6000/93/46                                           | 8/8 x 500                         | 2/1500                     |
+| Standard_F4  | 4         | 8           | 64             | 12000/187/93                                         | 16/16 x 500                         | 4/3000                     |
+| Standard_F8  | 8         | 16          | 128            | 24000/375/187                                        | 32/32 x 500                       | 8/6000                     |
+| Standard_F16 | 16        | 32          | 256            | 48000/750/375                                        | 64/64 x 500                       | 8 / 12000           |
+
+## <a name="fs-series-sup1sup"></a>Fs-Serie <sup>1</sup>
+
+Die Fs-Serie verfügt zusätzlich zum Premium-Speicher über alle Vorteile der F-Serie.
+
+ACU: 210–250
 
 Storage Premium  Unterstützt
 
 Storage Premium-Zwischenspeicherung:  Unterstützt
 
-| Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
+| Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBps (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBps | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS1 |1 |3,5 |7 |4 |4.000/32 (43) |3.200/32 |2/500 |
-| Standard_DS2 |2 |7 |14 |8 |8.000/64 (86) |6.400/64 |2/1000 |
-| Standard_DS3 |4 |14 |28 |16 |16.000/128 (172) |12.800/128 |4/2000 |
-| Standard_DS4 |8 |28 |56 |32 |32.000/256 (344) |25.600/256 |8/4000 |
+| Standard_F1s |1 |2 |4 |4 |4.000/32 (12) |3.200/48 |2/750 |
+| Standard_F2s |2 |4 |8 |8 |8.000/64 (24) |6.400/96 |2/1500 |
+| Standard_F4s |4 |8 |16 |16 |16.000/128 (48) |12.800/192 |4/3000 |
+| Standard_F8s |8 |16 |32 |32 |32.000/256 (96) |25.600/384 |8/6000 |
+| Standard_F16s |16 |32 |64 |64 |64.000/512 (192) |51.200/768 |8 / 12000 |
 
-<sup>1</sup> Die VM-Familie kann auf einer der folgenden CPUs ausgeführt werden: Intel Xeon® E5-2660 v2 mit 2,2 GHz, Intel Xeon® E5-2673 v3 mit 2,4 GHz (Haswell) oder Intel XEON® E5-2673 v4 mit 2,3 GHz (Broadwell)
-<br>
+MB/s = 10^6 Bytes pro Sekunde und GB = 1.024^3 Bytes.
 
-## <a name="ds-series---memory-optimized"></a>DS-Serie – arbeitsspeicheroptimiert
+<sup>1</sup> Der mit einer VM der Fs-Serie maximal mögliche Datenträgerdurchsatz (IOPS oder MB/s) kann durch Anzahl, Größe und Striping der angefügten Datenträger beschränkt werden.  Details finden Sie unter [Entwerfen für hohe Leistung](../articles/virtual-machines/windows/premium-storage-performance.md).  
 
-ACU: 160-250 <sup>1,2</sup>
+## <a name="ls-series"></a>Ls-Serie
+
+Die Ls-Reihe bietet bis zu 32 vCPUs aus der [Intel® Xeon® E5 v3-Prozessorfamilie](http://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html). Die Ls-Serie erreicht die gleiche CPU-Leistung wie die G/GS-Serie und bietet 8 GiB Arbeitsspeicher pro vCPU.
+
+Die Ls-Serie unterstützt nicht die Erstellung eines lokalen Caches, um die von dauerhaften Datenträgern erreichbaren IOPS zu erhöhen. Dank des hohen Durchsatzes und der IOPS des lokalen Datenträgers eignen sich VMs der Ls-Reihe ideal für NoSQL-Speicher wie Apache Cassandra und MongoDB, die Daten über mehrere virtuelle Computer replizieren, um Persistenz im Falle eines Ausfalls eines einzelnen virtuellen Computers zu erzielen.
+
+ACU: 180–240
 
 Storage Premium  Unterstützt
 
-Storage Premium-Zwischenspeicherung:  Unterstützt
-
-| Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS11 |2 |14 |28 |8 |8.000/64 (72) |6.400/64 |2/1000 |
-| Standard_DS12 |4 |28 |56 |16 |16.000/128 (144) |12.800/128 |4/2000 |
-| Standard_DS13 |8 |56 |112 |32 |32.000/256 (288) |25.600/256 |8/4000 |
-| Standard_DS14 |16 |112 |224 |64 |64.000/512 (576) |51.200/512 |8 / 8000 |
-
-<sup>1</sup> Der mit einer VM der DS-Serie maximal mögliche Datenträgerdurchsatz (IOPS oder MB/s) kann durch Anzahl, Größe und Striping der angefügten Datenträger beschränkt werden.  Details finden Sie unter [Entwerfen für hohe Leistung](../articles/virtual-machines/windows/premium-storage-performance.md).
-
-<sup>2</sup> Die VM-Familie kann auf einer der folgenden CPUs ausgeführt werden: Intel Xeon® E5-2660 v2 mit 2,2 GHz, Intel Xeon® E5-2673 v3 mit 2,4 GHz (Haswell) oder Intel XEON® E5-2673 v4 mit 2,3 GHz (Broadwell)
-
-## <a name="d-series"></a>D-Serie 
-
-ACU: 160-250 <sup>1</sup>
-
-Storage Premium  Nicht unterstützt
-
 Storage Premium-Zwischenspeicherung:  Nicht unterstützt
+ 
+| Größe          | vCPU | Arbeitsspeicher (GiB) | Temporärer Speicher (GiB) | Max. Anzahl Datenträger | Maximaler Durchsatz temporärer Speicher (IOPS/MB/s) | Maximaler Datenträgerdurchsatz ohne Cache: (IOPS/MB/s) | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) | 
+|----------------|-----------|-------------|--------------------------|----------------|-------------------------------------------------------------|-------------------------------------------|------------------------------| 
+| Standard_L4s   | 4  | 32  | 678   | 16 | 20,000 / 200 | 5.000 / 125  | 2 / 4,000  | 
+| Standard_L8s   | 8  | 64  | 1.388 | 32 | 40,000 / 400 | 10.000/250 | 4 / 8,000  | 
+| Standard_L16s  | 16 | 128 | 2.807 | 64 | 80.000/800 | 20.000/500 | 8 / 16.000 | 
+| Standard_L32s&nbsp;<sup>1</sup> | 32   | 256  | 5.630 | 64   | 160,000 / 1,600   | 40.000/1.000     | 8 / 20,000 | 
 
-| Größe         | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/MBit/s Lesen/MBit/s Schreiben | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
-|--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_D1  | 1         | 3,5         | 50             | 3000/46/23                                           | 4/4 x 500                         | 2/500                 |
-| Standard_D2  | 2         | 7           | 100            | 6000/93/46                                           | 8/8 x 500                         | 2/1000                     |
-| Standard_D3  | 4         | 14          | 200            | 12000/187/93                                         | 16/16 x 500                         | 4/2000                     |
-| Standard_D4  | 8         | 28          | 400            | 24000/375/187                                        | 32/32 x 500                       | 8/4000                     |
+Der mit einem virtuellen Computer der Ls-Serie maximal mögliche Datenträgerdurchsatz kann durch Anzahl, Größe und Striping angefügter Datenträger beschränkt sein. Details finden Sie unter [Entwerfen für hohe Leistung](../articles/virtual-machines/windows/premium-storage-performance.md).
 
-<sup>1</sup> Die VM-Familie kann auf einer der folgenden CPUs ausgeführt werden: Intel Xeon® E5-2660 v2 mit 2,2 GHz, Intel Xeon® E5-2673 v3 mit 2,4 GHz (Haswell) oder Intel XEON® E5-2673 v4 mit 2,3 GHz (Broadwell)
-<br>
-
-## <a name="d-series---memory-optimized"></a>D-Serie – arbeitsspeicheroptimiert
-
-ACU: 160-250 <sup>1</sup>
-
-Storage Premium  Nicht unterstützt
-
-Storage Premium-Zwischenspeicherung:  Nicht unterstützt
-
-| Größe         | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Maximaler Durchsatz (temporärer Speicher): IOPS/MBit/s Lesen/MBit/s Schreiben | Max. Datenträger/Durchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
-|--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_D11 | 2         | 14          | 100            | 6000/93/46                                           | 8/8 x 500                         | 2/1000                     |
-| Standard_D12 | 4         | 28          | 200            | 12000/187/93                                         | 16/16 x 500                         | 4/2000                     |
-| Standard_D13 | 8         | 56          | 400            | 24000/375/187                                        | 32/32 x 500                       | 8/4000                     |
-| Standard_D14 | 16        | 112         | 800            | 48000/750/375                                        | 64/64 x 500                       | 8 / 8000                |
-
-<sup>1</sup> Die VM-Familie kann auf einer der folgenden CPUs ausgeführt werden: Intel Xeon® E5-2660 v2 mit 2,2 GHz, Intel Xeon® E5-2673 v3 mit 2,4 GHz (Haswell) oder Intel XEON® E5-2673 v4 mit 2,3 GHz (Broadwell)
-<br>
-
-## <a name="a-series---compute-intensive-instances"></a>A-Serie: Rechenintensive Instanzen
-
-ACU: 225
-
-Storage Premium  Nicht unterstützt
-
-Storage Premium-Zwischenspeicherung:  Nicht unterstützt
-
-Die Größen A8 bis A11 und die Größen der H-Reihe werden auch als *rechenintensive Instanzen* bezeichnet. Die Hardware, auf der diese Größen ausgeführt werden, wurde für rechenintensive Anwendungen mit hoher Netzwerkauslastung konzipiert und optimiert. Hierzu zählen beispielsweise HPC-Clusteranwendungen (High Performance Computing), Modellierung und Simulationen. Die Reihen A8 bis A11 nutzen Intel Xeon E5-2670 mit 2,6 GHZ und die H-Reihe Intel Xeon E5-2667 v3 mit 3,2 GHz.  
-
-| Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (HDD): GiB | Max. Anzahl Datenträger | Max. Datenträgerdurchsatz: IOPS | Maximale Anzahl NICs|
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_A8 <sup>1</sup> |8 |56 |382 |32 |32 x 500 |2 |
-| Standard_A9 <sup>1</sup> |16 |112 |382 |64 |64 x 500 |4 |
-| Standard_A10 |8 |56 |382 |32 |32 x 500 |2  |
-| Standard_A11 |16 |112 |382 |64 |64 x 500 |4 |
-
-<sup>1</sup> Für MPI-Anwendungen ist ein dediziertes RDMA-Back-End-Netzwerk durch ein FDR InfiniBand-Netzwerk aktiviert, das eine äußerst geringe Latenz und eine hohe Bandbreite ermöglicht.
-
-<br>
-
-## <a name="a-series"></a>A-Serie
-
-ACU: 50–100
-
-Storage Premium  Nicht unterstützt
-
-Storage Premium-Zwischenspeicherung:  Nicht unterstützt
-
-| Größe | vCPU | Arbeitsspeicher: GiB | Temporärer Speicher (HDD): GiB | Max. Anzahl Datenträger | Max. Datenträgerdurchsatz: IOPS | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s)  |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_A0 <sup>1</sup> |1 |0,768 |20 |1 |1 x 500 |2/100 |
-| Standard_A1 |1 |1,75 |70 |2 |2 x 500 |2/500  |
-| Standard_A2 |2 |3,5 |135 |4 |4 x 500 |2/500 |
-| Standard_A3 |4 |7 |285 |8 |8 x 500 |2/1000 |
-| Standard_A4 |8 |14 |605 |16 |16 x 500 |4/2000 |
-| Standard_A5 |2 |14 |135 |4 |4 x 500 |2/500 |
-| Standard_A6 |4 |28 |285 |8 |8 x 500 |2/1000 |
-| Standard_A7 |8 |56 |605 |16 |16 x 500 |4/2000 |
-
-<br>
-
-<sup>1</sup> Die Größe „A0“ ist auf der physischen Hardware „überzeichnet“. Nur für diese spezielle Größe kann es dazu kommen, dass sich andere Kundenbereitstellungen negativ auf die Leistung Ihrer aktiven Workload auswirken. Die relative Leistung ist unten als erwartete Baseline beschrieben und unterliegt einer ungefähren Variabilität von 15 Prozent.
+<sup>1</sup> Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
 
 ### <a name="standard-a0---a4-using-cli-and-powershell"></a>Standard_A0 – A4 mit Befehlszeilenschnittstelle (CLI) und PowerShell
 
 Im klassischen Bereitstellungsmodell unterscheiden sich einige VM-Größennamen in der Befehlszeilenschnittstelle und in PowerShell:
 
-* Standard_A0 ist „Sehr klein“ 
+* Standard_A0 ist „Sehr klein“
 * Standard_A1 ist „Klein“
 * Standard_A2 ist „Mittel“
 * Standard_A3 ist „Groß“
 * Standard_A4 ist „Extragroß“
-
-## <a name="basic-a"></a>Basic A
-
-Storage Premium  Nicht unterstützt
-
-Storage Premium-Zwischenspeicherung:  Nicht unterstützt
-
-Die Größen des Basic-Tarifs sind hauptsächlich für Entwicklungsworkloads und andere Anwendungen bestimmt, für die kein Lastenausgleich, keine automatische Skalierung und keine speicherintensiven virtuellen Computer erforderlich sind.
-
-|Größe – Größe\Name | vCPU |Arbeitsspeicher|Netzwerkkarten (max.)|Max. Größe der temporären Datenträger |Maximal Datenträger (jeweils 1023 GB)|Maximal IOPS (300 pro Datenträger)|
-|---|---|---|---|---|---|---|
-|A0\Basic_A0|1|768 MB|2| 20 GB|1|1 x 300|
-|A1\Basic_A1|1|1,75 GB|2| 40 GB |2|2 x 300|
-|A2\Basic_A2|2|3,5 GB|2| 60 GB|4|4 x 300|
-|A3\Basic_A3|4|7 GB|2| 120 GB |8|4 x 300|
-|A4\Basic_A4|8|14 GB|2| 240 GB |16|16 x 300|
- 
-
-

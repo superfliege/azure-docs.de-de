@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
-ms.date: 02/21/2019
+ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: b41098907f801f7dae839a470249834b02c8d519
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 78db7d21774750892c831ac220244c54594b78f3
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338551"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548353"
 ---
 # <a name="train-tensorflow-and-keras-models-with-azure-machine-learning-service"></a>Trainieren von TensorFlow- und Keras-Modellen mit Azure Machine Learning Service
 
@@ -48,7 +48,7 @@ Hier geben Sie für den TensorFlow-Konstruktor die folgenden Parameter an:
 Parameter | BESCHREIBUNG
 --|--
 `source_directory` | Lokales Verzeichnis, das den gesamten für den Trainingsauftrag erforderlichen Code enthält. Dieser Ordner wird von Ihrem lokalen Computer auf das Remotecomputeziel kopiert.
-`script_params` | Wörterbuch, in dem die Befehlszeilenargumente für Ihr Trainingsskript `entry_script` in Wertpaaren der Form <Befehlszeilenargument, Wert> festgelegt sind
+`script_params` | Wörterbuch, in dem die Befehlszeilenargumente für Ihr Trainingsskript `entry_script` in Wertpaaren der Form <Befehlszeilenargument, Wert> festgelegt sind.  Um ein ausführliches Flag in `script_params` anzugeben, verwenden Sie `<command-line argument, "">`.
 `compute_target` | Remotecomputeziel, auf dem Ihr Trainingsskript ausgeführt wird, in diesem Fall ein Azure Machine Learning Compute-Cluster ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)).
 `entry_script` | Dateipfad des Trainingsskripts (relativ zu `source_directory`), das auf dem Remotecomputeziel ausgeführt werden soll. Diese Datei und alle von ihr abhängigen Dateien sollten sich in diesem Ordner befinden.
 `conda_packages` | Liste der Python-Pakete, die über conda installiert werden und für Ihr Trainingsskript erforderlich sind. In diesem Fall greift das Trainingsskript zum Laden der Daten auf `sklearn` zurück. Legen Sie daher fest, dass dieses Paket installiert wird.  Im Konstruktor kann zusätzlich der Parameter `pip_packages` für alle erforderlichen pip-Pakete angegeben werden.
