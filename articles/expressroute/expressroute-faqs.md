@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 04/16/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: f3f013f2e3090b54846ebba94ef54506275d6311
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 3c8a068e2f68dcd53ad7ee6cdf3a1f39524c0fa4
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59282864"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680484"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -116,6 +116,14 @@ Ja. Jede ExpressRoute-Verbindung verfügt über ein redundantes Paar von Querver
 ### <a name="will-i-lose-connectivity-if-one-of-my-expressroute-links-fail"></a>Geht die Konnektivität verloren, wenn einer meiner ExpressRoute-Links ausfällt?
 
 Wenn eine der Querverbindungen ausfällt, bleibt die Konnektivität bestehen. Es steht eine redundante Verbindung zur Verfügung, um die Last des Netzwerks zu bewältigen und die Hochverfügbarkeit Ihrer ExpressRoute-Verbindung zu gewährleisten. Sie können zudem eine Verbindung an einem anderen Peeringstandort erstellen, um Resilienz auf der Verbindungsebene zu erreichen.
+
+### <a name="how-do-i-implement-redundancy-on-private-peering"></a>Wie implementiere ich Redundanz für privates Peering?
+
+Mehrere ExpressRoute-Verbindungen von verschiedenen Peeringstandorten können mit demselben virtuellen Netzwerk verbunden werden, um eine hohe Verfügbarkeit für den Fall zu gewährleisten, dass eine einzelne Verbindung nicht mehr verfügbar ist. Sie können der lokaler Verbindung eine [höhere Gewichtung zuweisen](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection), um eine spezifische Verbindung zu bevorzugen. Es wird dringend empfohlen, dass Kunden mindestens zwei ExpressRoute-Verbindungen einrichten, um Single Points of Failure zu vermeiden. 
+
+### <a name="how-i-do-implement-redundancy-on-microsoft-peering"></a>Wie implementiere ich Redundanz für Microsoft-Peering?
+
+Es wird dringend empfohlen, dass Kunden, die Microsoft-Peering für den Zugriff auf öffentliche Azure-Dienste wie Azure Storage oder Azure SQL verwenden, sowie Kunden, die Microsoft-Peering für Office 365 verwenden, mehrere Verbindungen an verschiedenen Peeringstandorten implementieren, um einen Single Point of Faiure zu vermeiden. Kunden können entweder das gleiche Präfix auf beiden Verbindungen ankündigen und [AS PATH vorangestellt](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending) verwenden, oder verschiedene Präfixe ankündigen, um den Pfad von lokalen Standorten aus zu bestimmen.
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Wie stelle ich Hochverfügbarkeit in einem mit ExpressRoute verbundenen virtuellen Netzwerk sicher?
 
