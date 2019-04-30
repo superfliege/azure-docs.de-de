@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: normesta
-ms.openlocfilehash: 89cfdbdaa034bae5ca736ccb9164255b833ed75d
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: d56fb411eb032e5e6227d68cd8abe02c0e30850b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194707"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006861"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekannte Probleme mit Azure Data Lake Storage Gen2
 
@@ -47,7 +47,7 @@ Nicht verwaltete VM-Datenträger hängen von den deaktivierten Blob Storage-APIs
 
 Blob Storage-APIs und Azure Data Lake Storage Gen2-APIs sind nicht interoperabel.
 
-Wenn Sie über Tools, Anwendungen, Dienste oder Skripts verfügen, die Blob-APIs verwenden, und sie für alle Inhalte einsetzen möchten, die Sie auf Ihr Konto hochladen, aktivieren Sie so lange keinen hierarchischen Namespace für Ihr Blob-Speicherkonto, bis die Interoperabiliät von Blob-APIs mit Azure Data Lake Gen2-APIs sichergestellt ist. Die Verwendung eines Speicherkontos ohne einen hierarchischen Namespace bedeutet, dass Sie keinen Zugriff auf Data Lake Storage Gen2-spezifische Features wie z.B. Zugriffssteuerungslisten (ACLs) für Verzeichnis- und Dateisystem haben.
+Wenn Sie über Tools, Anwendungen, Dienste oder Skripts verfügen, die Blob-APIs verwenden, und sie für alle Inhalte einsetzen möchten, die Sie auf Ihr Konto hochladen, aktivieren Sie so lange keinen hierarchischen Namespace für Ihr Blob-Speicherkonto, bis die Interoperabiliät von Blob-APIs mit Azure Data Lake Gen2-APIs sichergestellt ist. Die Verwendung eines Speicherkontos ohne einen hierarchischen Namespace bedeutet, dass Sie keinen Zugriff auf Data Lake Storage Gen2-spezifische Features wie Zugriffssteuerungslisten (ACLs) für das Verzeichnis- und Dateisystem haben.
 
 ## <a name="azure-storage-explorer"></a>Azure Storage-Explorer
 

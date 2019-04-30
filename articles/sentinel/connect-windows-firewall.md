@@ -1,6 +1,6 @@
 ---
-title: Sammeln von Windows-Firewalldaten in Azure Sentinel Preview | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Windows-Firewalldaten in Azure Sentinel sammeln.
+title: Verknüpfen von Windows-Firewalldaten mit der Vorschauversion von Azure Sentinel | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Windows-Firewalldaten mit Azure Sentinel verknüpfen.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3839d81f70b8bc6dcb1da3c4dd77f52443294707
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 27a82545f77fe15541ac598abadbfc8ffb6d3405
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574839"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59790959"
 ---
 # <a name="connect-windows-firewall"></a>Herstellen einer Verbindung mit der Windows-Firewall
 
@@ -31,12 +31,11 @@ Der Windows-Firewall-Connector ermöglicht es Ihnen, einfach eine Verbindung mit
 
 
 > [!NOTE]
-> 
-> - Daten werden am geografischen Standort des Arbeitsbereichs gespeichert, in dem Sie Azure Sentinel ausführen.
+> Daten werden am geografischen Standort des Arbeitsbereichs gespeichert, in dem Sie Azure Sentinel ausführen.
 
 ## <a name="enable-the-connector"></a>Aktivieren des Connectors 
 
-1. Wählen Sie im Azure Sentinel-Portal die Option **Datensammlung** aus, und klicken Sie dann auf die **Windows-Firewall**-Kachel. 
+1. Klicken Sie im Azure Sentinel-Portal auf **Data connectors** (Datenconnectors) und anschließend auf die Kachel **Windows-Firewall**. 
 1. Wählen Sie die Datentypen aus, die Sie streamen möchten.
 1. Klicken Sie auf **Installieren**.
 6. Um das relevante Schema für die Windows-Firewall in Log Analytics zu verwenden, suchen Sie nach **SecurityEvent**.
@@ -49,6 +48,6 @@ Es kann bis zu 20 Minuten dauern, bis Ihre Protokolle in Log Analytics angezeig
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument haben Sie erfahren, wie Sie die Windows-Firewall mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
-- Erfahren Sie, wie Sie [ Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
+- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
 - Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats.md).
 

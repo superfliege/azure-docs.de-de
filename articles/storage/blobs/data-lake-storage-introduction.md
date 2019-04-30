@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: b25a47e929ef540ad3a74a86d431962d37cde434
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8777a7504c48b22d0e670dd9f0d28016ac8918db
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58009431"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009462"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Einführung in Azure Data Lake Storage Gen2
 
@@ -43,7 +43,7 @@ In der Vergangenheit mussten bei cloudbasierten Analysen Kompromisse in puncto L
 
 -   **Kosteneffizienz**: Data Lake Storage Gen2 bietet kostengünstige Speicherkapazität und -transaktionen. Während Daten ihren gesamten Lebenszyklus durchlaufen, ändern sich Abrechnungstarife, wodurch die Kosten durch integrierte Funktionen wie [Azure Blob Storage-Lebenszyklus](storage-lifecycle-management-concepts.md) auf ein Minimum reduziert werden.
 
--   **Optimierter Treiber**: Der ABFS-Treiber ist für Big Data-Analysen [speziell optimiert](data-lake-storage-abfs-driver.md). Die entsprechenden REST-APIs werden über den DFS-Endpunkt (dfs.core.windows.net) bereitgestellt.
+-   **Optimierter Treiber:** Der ABFS-Treiber ist speziell für Big Data-Analysen [optimiert](data-lake-storage-abfs-driver.md). Die entsprechenden REST-APIs werden über den Endpunkt `dfs.core.windows.net` bereitgestellt.
 
 ### <a name="scalability"></a>Skalierbarkeit
 

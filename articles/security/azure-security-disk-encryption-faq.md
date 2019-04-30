@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 04/05/2019
+ms.date: 04/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 413ed4a56afad5ced221ba957af9ddb007622b6a
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 2a5fb822a84792cec059aa6c78b66b3a628f25af
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59470048"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679277"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Azure Disk Encryption für virtuelle IaaS-Computer – FAQ
 
@@ -37,14 +37,15 @@ Azure Disk Encryption ist in VMs mit Standardtarifen einschließlich IaaS-VMs de
 
 ## <a name="bkmk_LinuxOSSupport"></a> Welche Linux-Distributionen werden von Azure Disk Encryption unterstützt?
 
-Azure Disk Encryption wird von einer Teilmenge von [Azure zugelassenen Linux-Distributionen](../virtual-machines/linux/endorsed-distros.md) unterstützt, die selbst eine Teilmenge aller möglichen Distributionen ist.
+Azure Disk Encryption wird von einer Teilmenge der [Azure zugelassenen Linux-Distributionen](../virtual-machines/linux/endorsed-distros.md) unterstützt, die selbst eine Teilmenge aller möglichen Linux-Serverdistributionen ist.
 
  ![Venn-Diagramm zu den Linux-Serverdistributionen, die Azure Disk Encryption unterstützen.](./media/azure-security-disk-encryption-faq/ade-supported-distros.png)
 
-Nicht von Azure zugelassene Distributionen unterstützen Azure Disk Encryption nicht. Von den zugelassenen Distributionen unterstützen nur die folgenden Linux-Serverdistributionen und -Versionen Azure Disk Encryption:
+Nicht von Azure zugelassene Linux-Serverdistributionen unterstützen Azure Disk Encryption nicht. Von den zugelassenen Distributionen unterstützen nur die folgenden Distributionen und Versionen Azure Disk Encryption:
 
 | Linux-Distribution | Version | Für die Verschlüsselung unterstützter Volumetyp|
 | --- | --- |--- |
+| Ubuntu | 18,04| Betriebssystem- und andere Datenträger |
 | Ubuntu | 16.04| Betriebssystem- und andere Datenträger |
 | Ubuntu | 14.04.5</br>[für Azure optimierter Kernel aktualisiert auf 4.15 oder eine höhere Version](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | Betriebssystem- und andere Datenträger |
 | RHEL | 7.6 | Betriebssystem- und andere Datenträger* |

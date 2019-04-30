@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/17/2019
 ms.author: monhaber
 ms.openlocfilehash: 27acda2496adea39321e498868aebcc2f824df3c
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58905289"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Upgrade auf den Standard-Tarif von Azure Security Center für erhöhte Sicherheit
@@ -46,7 +46,7 @@ So erhalten Sie den Standard-Tarif:
 4. Wählen Sie **Standard** aus, um das Upgrade durchzuführen.
 5. Klicken Sie auf **Speichern**.
 
-(Die Preise in der Abbildung dienen nur als Beispiel.) ![Security Center – Preise](./media/security-center-pricing/get-standard.png)
+(Die Preise in der Abbildung dienen nur als Beispiel.) ![Security Center-Tarife](./media/security-center-pricing/get-standard.png)
 
 > [!NOTE]
 > Wenn Sie alle Security Center-Features aktivieren möchten, müssen Sie den Standard-Tarif auf das Abonnement mit den entsprechenden virtuellen Computern anwenden. Durch das Konfigurieren von Preisen für einen Arbeitsbereich werden Just-in-Time-VM-Zugriff, adaptive Anwendungssteuerungen und Netzwerkerkennungen für Azure-Ressourcen nicht aktiviert.

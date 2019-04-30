@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 08/23/2018
 tags: connectors
 ms.openlocfilehash: 7785d1788e8d5e9b432a8189345f293ebf05ef7c
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878399"
 ---
 # <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>Verwalten von Ressourcen mit IBM DB2-REST-APIs und Azure Logic Apps
@@ -85,11 +85,11 @@ Um die Verbindung einzurichten, geben Sie diese Verbindungsdetails ein, wenn Sie
 
 | Eigenschaft | Erforderlich | BESCHREIBUNG |
 |----------|----------|-------------|
-| **Über lokales Datengateway verbinden** | Nein  | Gilt nur für lokale Verbindungen. |
+| **Connect via on-premises gateway** (Über lokales Datengateway verbinden) | Nein  | Gilt nur für lokale Verbindungen. |
 | **Verbindungsname** | Ja | Der Name Ihrer Verbindung, z.B. „MyLogicApp-DB2-connection“ |
 | **Server** | Ja | Die Adresse oder Aliasportnummer für Ihren DB2-Server, z.B. „myDB2server.cloudapp.net:50000“ <p><p>**Hinweis**: Dieser Wert ist eine Zeichenfolge im IPv4- oder IPv6-Format, die für eine TCP/IP-Adresse oder einen Alias steht, gefolgt von einem Doppelpunkt und einer TCP/IP-Portnummer. |
 | **Datenbank** | Ja | Der Name Ihrer Datenbank <p><p>**Hinweis**: Dieser Wert ist eine Zeichenfolge, die einen DRDA-Namen einer relationalen Datenbank (RDBNAM) darstellt: <p>- DB2 für z/OS akzeptiert eine 16-Byte-Zeichenfolge, wobei die Datenbank ein Speicherort vom Typ „IBM DB2 für z/OS“ ist. <br>- DB2 für i akzeptiert eine 18-Byte-Zeichenfolge, wobei die Datenbank eine relationale Datenbank vom Typ „IBM DB2 für i“ ist. <br>- DB2 für LUW akzeptiert eine 8-Byte-Zeichenfolge. |
-| **Username** | Ja | Ihr Benutzername für die Datenbank <p><p>**Hinweis**: Dieser Wert ist eine Zeichenfolge, deren Länge auf der betreffenden Datenbank basiert: <p><p>- DB2 für z/OS akzeptiert eine 8-Byte-Zeichenfolge. <br>- DB2 für i akzeptiert eine 10-Byte-Zeichenfolge. <br>- DB2 für Linux oder UNIX akzeptiert eine 8-Byte-Zeichenfolge. <br>- DB2 für Windows akzeptiert eine 30-Byte-Zeichenfolge. |
+| **Benutzername** | Ja | Ihr Benutzername für die Datenbank <p><p>**Hinweis**: Dieser Wert ist eine Zeichenfolge, deren Länge auf der betreffenden Datenbank basiert: <p><p>- DB2 für z/OS akzeptiert eine 8-Byte-Zeichenfolge. <br>- DB2 für i akzeptiert eine 10-Byte-Zeichenfolge. <br>- DB2 für Linux oder UNIX akzeptiert eine 8-Byte-Zeichenfolge. <br>- DB2 für Windows akzeptiert eine 30-Byte-Zeichenfolge. |
 | **Kennwort** | Ja | Ihr Kennwort für die Datenbank |
 ||||
 
@@ -105,12 +105,12 @@ Vor dem Herstellen einer Verbindung muss Ihr lokales Datengateway bereits instal
 
 | Eigenschaft | Erforderlich | BESCHREIBUNG |
 |----------|----------|-------------|
-| **Über lokales Datengateway verbinden** | Ja | Gilt, wenn Sie eine lokale Verbindung herstellen möchten, und zeigt die lokale Verbindungseigenschaften an. |
+| **Connect via on-premises gateway** (Über lokales Datengateway verbinden) | Ja | Gilt, wenn Sie eine lokale Verbindung herstellen möchten, und zeigt die lokale Verbindungseigenschaften an. |
 | **Verbindungsname** | Ja | Der Name Ihrer Verbindung, z.B. „MyLogicApp-DB2-connection“ | 
 | **Server** | Ja | Die Adresse oder Aliasportnummer für Ihren DB2-Server, z.B. „myDB2server:50000“ <p><p>**Hinweis**: Dieser Wert ist eine Zeichenfolge im IPv4- oder IPv6-Format, die für eine TCP/IP-Adresse oder einen Alias steht, gefolgt von einem Doppelpunkt und einer TCP/IP-Portnummer. |
 | **Datenbank** | Ja | Der Name Ihrer Datenbank <p><p>**Hinweis**: Dieser Wert ist eine Zeichenfolge, die einen DRDA-Namen einer relationalen Datenbank (RDBNAM) darstellt: <p>- DB2 für z/OS akzeptiert eine 16-Byte-Zeichenfolge, wobei die Datenbank ein Speicherort vom Typ „IBM DB2 für z/OS“ ist. <br>- DB2 für i akzeptiert eine 18-Byte-Zeichenfolge, wobei die Datenbank eine relationale Datenbank vom Typ „IBM DB2 für i“ ist. <br>- DB2 für LUW akzeptiert eine 8-Byte-Zeichenfolge. |
-| **Authentication** | Ja | Der Authentifizierungstyp für Ihre Verbindung, z.B. „Basic“ <p><p>**Hinweis**: Wählen Sie diesen Wert aus der Liste, die „Basic“ oder „Windows“ (Kerberos) enthält. |
-| **Username** | Ja | Ihr Benutzername für die Datenbank <p><p>**Hinweis**: Dieser Wert ist eine Zeichenfolge, deren Länge auf der betreffenden Datenbank basiert: <p><p>- DB2 für z/OS akzeptiert eine 8-Byte-Zeichenfolge. <br>- DB2 für i akzeptiert eine 10-Byte-Zeichenfolge. <br>- DB2 für Linux oder UNIX akzeptiert eine 8-Byte-Zeichenfolge. <br>- DB2 für Windows akzeptiert eine 30-Byte-Zeichenfolge. |
+| **Authentifizierung** | Ja | Der Authentifizierungstyp für Ihre Verbindung, z.B. „Basic“ <p><p>**Hinweis**: Wählen Sie diesen Wert aus der Liste, die „Basic“ oder „Windows“ (Kerberos) enthält. |
+| **Benutzername** | Ja | Ihr Benutzername für die Datenbank <p><p>**Hinweis**: Dieser Wert ist eine Zeichenfolge, deren Länge auf der betreffenden Datenbank basiert: <p><p>- DB2 für z/OS akzeptiert eine 8-Byte-Zeichenfolge. <br>- DB2 für i akzeptiert eine 10-Byte-Zeichenfolge. <br>- DB2 für Linux oder UNIX akzeptiert eine 8-Byte-Zeichenfolge. <br>- DB2 für Windows akzeptiert eine 30-Byte-Zeichenfolge. |
 | **Kennwort** | Ja | Ihr Kennwort für die Datenbank |
 | **Gateway** | Ja | Der Name Ihres installierten lokalen Datengateways <p><p>**Hinweis**: Wählen Sie diesen Wert aus der Liste, die alle installierten Datengateways in Ihrem Azure-Abonnement und der Ressourcengruppe enthält. |
 ||||

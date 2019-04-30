@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 3a9d3364f9e55611c94797b71b058128ce7c6696
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 8ae9062a5e154f457f86dd7f3fbed7bda8580c88
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697926"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002107"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Verwenden der seriellen Konsole für SysRq- und NMI-Aufrufe
 
@@ -112,7 +112,7 @@ Bei Linux-Systemen, die sysctl zum Konfigurieren von Kernelparametern unterstüt
 1. Neustarten oder Aktualisieren von sysctl durch Ausführen von <br>
     `sysctl -p`
 
-Weitere Informationen zu Linux-Kernelkonfigurationen, einschließlich `unknown_nmi_panic`, `panic_on_io_nmi` und `panic_on_unrecovered_nmi`, finden Sie unter  [Documentation for /proc/sys/kernel/*](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Eine distributionsspezifische Dokumentation zu NMI und eine Beschreibung der Schritte, mit denen Sie Linux so konfigurieren, dass beim Empfangen eines NMI ein Absturzabbild erstellt wird, finden Sie unter folgenden Links:
+Weitere Informationen zu Linux-Kernelkonfigurationen, einschließlich `unknown_nmi_panic`, `panic_on_io_nmi` und `panic_on_unrecovered_nmi` finden Sie unter: [Documentation for /proc/sys/kernel/* (Dokumentation zu /proc/sys/kernel/*)](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Eine distributionsspezifische Dokumentation zu NMI und eine Beschreibung der Schritte, mit denen Sie Linux so konfigurieren, dass beim Empfangen eines NMI ein Absturzabbild erstellt wird, finden Sie unter folgenden Links:
  
 ### <a name="ubuntu"></a>Ubuntu 
  - [Kernel-Absturzabbild](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)

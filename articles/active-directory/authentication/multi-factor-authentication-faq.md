@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 707e0aecdaf2a579d086e012519182078c1a6303
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: e0277180f0d768bbcc83a0d8d05fbc4b8b25301e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313225"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006028"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Häufig gestellte Fragen zu Azure Multi-Factor Authentication
 
@@ -142,7 +142,7 @@ Wenn Ihre Organisation keine Legacyclients verwendet, sollten Sie die Erstellung
 > [!NOTE]
 > Moderne Authentifizierung für Office 2013-Clients
 >
-> App-Kennwörter werden nur für Apps benötigt, die keine moderne Authentifizierung unterstützen. Office 2013-Clients unterstützen moderne Authentifizierungsprotokolle, müssen aber konfiguriert werden. Neuere Office-Clients unterstützen automatisch moderne Authentifizierungsprotokolle. Weitere Informationen finden Sie unter [Office 2013 modern authentication public preview announced](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/)(Öffentliche Preview für moderne Authentifizierung in Office 2013).
+> App-Kennwörter werden nur für Apps benötigt, die keine moderne Authentifizierung unterstützen. Office 2013-Clients unterstützen moderne Authentifizierungsprotokolle, müssen aber konfiguriert werden. Die moderne Authentifizierung steht nun für alle Kunden zur Verfügung, die das Office 2013-Update vom März 2015 oder höher verwenden. Weitere Informationen finden Sie unter [Office 2013 modern authentication public preview announced (Ankündigung der Public Preview für moderne Authentifizierung in Office 2013)](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
 
 **F: Meine Benutzer erhalten manchmal keine SMS, oder es tritt ein Timeout auf, nachdem sie auf eine bidirektionale SMS geantwortet haben.**
 

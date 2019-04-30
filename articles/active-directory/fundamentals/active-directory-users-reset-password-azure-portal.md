@@ -14,14 +14,15 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce76fa7fecb8a82f76d40827bfa868061a0ed584
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4db6554e86cef61f2fc8e7a466919d2ce723f0e5
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204898"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59492701"
 ---
 # <a name="reset-a-users-password-using-azure-active-directory"></a>Zurücksetzen eines Benutzerkennworts mit Azure Active Directory
+
 Als Administrator können Sie das Kennwort eines Benutzers zurücksetzen, wenn er das Kennwort vergessen hat, auf einem Gerät gesperrt wurde oder das Kennwort nie erhalten hat.
 
 >[!Note]
@@ -32,7 +33,7 @@ Als Administrator können Sie das Kennwort eines Benutzers zurücksetzen, wenn e
 
 ## <a name="to-reset-a-password"></a>Zurücksetzen eines Kennworts
 
-1. Melden Sie sich als globaler Administrator, Benutzeradministrator oder Kennwortadministrator im [Azure-Portal](https://portal.azure.com/) an. Weitere Informationen zu den verfügbaren Rollen finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md#available-roles).
+1. Melden Sie sich als Benutzeradministrator oder Kennwortadministrator beim [Azure-Portal](https://portal.azure.com/) an. Weitere Informationen zu den verfügbaren Rollen finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md#available-roles).
 
 2. Wählen Sie **Azure Active Directory**, **Benutzer**, den Benutzer, für den Sie das Kennwort zurücksetzen möchten, und dann **Kennwort zurücksetzen** aus.
 
@@ -50,6 +51,7 @@ Als Administrator können Sie das Kennwort eines Benutzers zurücksetzen, wenn e
     >Das temporäre Kennwort läuft nie ab. Wenn sich der Benutzer das nächste Mal anmeldet, ist das Kennwort immer noch gültig, unabhängig davon, wie lange das Generieren des temporären Kennworts zurückliegt.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Wenn Sie das Kennwort Ihres Benutzers zurückgesetzt haben, können Sie die folgenden grundlegenden Prozesse ausführen:
 
 - [Hinzufügen oder Löschen von Benutzern](add-users-azure-active-directory.md)

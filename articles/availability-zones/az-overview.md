@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/02/2019
+ms.date: 04/18/2019
 ms.author: cynthn
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: 557757fc4d99fe57ad545e9d2eebcce61ddb3a8f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: d6e53c055f3c15c585aeb806c0c243eabdc0f00d
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59268720"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000826"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>Was sind Verfügbarkeitszonen in Azure?
 Verfügbarkeitszonen sind ein Hochverfügbarkeitsangebot, das Anwendungen und Daten vor Ausfällen von Rechenzentren schützt. Verfügbarkeitszonen sind eindeutige physische Standorte in einer Azure-Region. Jede Zone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Zur Gewährleistung der Resilienz sind in allen aktivierten Regionen mindestens drei separate Zonen vorhanden. Die physische Trennung von Verfügbarkeitszonen innerhalb einer Region schützt Anwendungen und Daten vor Ausfällen von Rechenzentren. Zonenredundante Dienste replizieren Ihre Anwendungen und Daten zum Schutz vor einzelnen Fehlerquellen über Verfügbarkeitszonen hinweg. Mit Verfügbarkeitszonen bietet Azure die branchenweit beste Betriebszeit-SLA von 99,99 % für VMs. Die vollständige [Azure-SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) erläutert die garantierte Verfügbarkeit von Azure insgesamt.
@@ -37,36 +37,34 @@ Um eine umfassende Geschäftskontinuität in Azure zu erreichen, erstellen Sie d
  
 ![Konzeptionelle Ansicht einer Zone, die in einer Region ausfällt](./media/az-overview/az-graphic-two.png)
 
-## <a name="regions-that-support-availability-zones"></a>Regionen, die Verfügbarkeitszonen unterstützen
+## <a name="services-support-by-region"></a>Unterstützung der Dienste nach Region
 
-- USA (Mitte)
-- USA (Ost)
-- USA (Ost) 2
-- Frankreich, Mitte
-- Nordeuropa
-- Asien, Südosten 
-- Vereinigtes Königreich, Süden &#42;
-- Europa, Westen
-- USA, Westen 2
+Die folgenden Kombinationen von Azure-Diensten und -Regionen unterstützen Verfügbarkeitszonen:
 
 
+|                                 |Amerika |              |           |           | Europa |              |          |              | Asien-Pazifik |                 |
+|----------------------------|----------|----------|---------|---------|--------------|------------|--------|----------|----------|-------------|
+|          |USA (Mitte)|USA (Ost)|USA (Ost) 2|USA, Westen 2|Frankreich, Mitte|Nordeuropa|UK, Süden|Europa, Westen|Japan, Osten|Asien, Südosten|
+| **Compute**                         |            |              |           |           |                |              |          |             |            |                |
+| Virtuelle Linux-Computer          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
+| Virtuelle Windows-Computer        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
+| Virtual Machine Scale Sets      | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
+| **Speicher**   |            |              |           |           |                |              |          |             |            |                |
+| Managed Disks                   | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
+| Zonenredundanter Speicher          | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    | &#10003;   | &#10003;       |
+| **Netzwerk**                     |            |              |           |           |                |              |          |             |            |                |
+| Standard-IP-Adresse        | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; &#42;| &#10003;    | &#10003;   | &#10003;       |
+| Load Balancer Standard     | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; &#42;| &#10003;    | &#10003;   | &#10003;       |
+| VPN Gateway                     | &#10003;   |              | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    |            | &#10003;       |
+| ExpressRoute                    | &#10003;   |              | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    |            | &#10003;       |
+| Application Gateway (Vorschau)   | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    |            | &#10003;       |
+| **Datenbanken**                     |            |              |           |           |                |              |          |             |            |                |
+| SQL-Datenbank                    | &#10003;   | &#10003;     | &#10003;  | &#10003;  | &#10003;       | &#10003;     | &#10003; | &#10003;    |            | &#10003;       |
+| **Analyse**                       |            |              |           |           |                |              |          |             |            |                |
+| Event Hubs                      | &#10003;   |              | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    |            | &#10003;       |
+| **Integration**                     |            |              |           |           |                |              |          |             |            |                |
+| Service Bus (nur Premium-Tarif) | &#10003;   |              | &#10003;  | &#10003;  | &#10003;       | &#10003;     |          | &#10003;    |            | &#10003;       |
 
-## <a name="services-that-support-availability-zones"></a>Dienste, die Verfügbarkeitszonen unterstützen
-Die folgenden Azure Dienste unterstützen Verfügbarkeitszonen:
-
-- Virtuelle Linux-Computer
-- Virtuelle Windows-Computer
-- Virtual Machine Scale Sets
-- Managed Disks
-- Load Balancer Standard &#42;
-- Öffentliche Standard-IP-Adresse &#42;
-- Zonenredundanter Speicher
-- SQL-Datenbank
-- Event Hubs
-- Service Bus (nur Premium-Tarif)
-- VPN Gateway
-- ExpressRoute
-- Application Gateway (Vorschau)
 
 &#42; Ressourcen, die im Vereinigten Königreich, Süden vor dem 25. März 2019 erstellt wurden, werden bald in zonenredundante Ressourcen konvertiert. Ressourcen, die nach dem 25. März 2019 erstellt werden, sind sofort zonenredundant.
 
@@ -79,10 +77,10 @@ Es fallen keine zusätzlichen Kosten für virtuelle Computer an, die in einer Ve
 
 ## <a name="get-started-with-availability-zones"></a>Erste Schritte mit Verfügbarkeitszonen
 - [Erstellen eines virtuellen Computers](../virtual-machines/windows/create-portal-availability-zone.md)
-- [Hinzufügen eines verwalteten Datenträgers mithilfe von PowerShell](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
+- [Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 - [Erstellen einer zonenredundanten VM-Skalierungsgruppe](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [Lastenausgleich für VMs über alle Verfügbarkeitszonen hinweg mithilfe von Load Balancer Standard mit einem zonenredundanten Front-End](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
-- [Lastenausgleich für VMs innerhalb einer Zone mithilfe von Load Balancer Standard mit einem Zonen-Front-End](../load-balancer/load-balancer-standard-public-zonal-cli.md)
+- [Zonenübergreifender Lastenausgleich für virtuelle Computer mithilfe eines Standardlastenausgleichs mit einem zonenredundanten Front-End](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
+- [Lastenausgleich für virtuelle Computer innerhalb einer Zone mithilfe eines Standardlastenausgleichs mit einem zonalen Front-End](../load-balancer/load-balancer-standard-public-zonal-cli.md)
 - [Zonenredundanter Speicher](../storage/common/storage-redundancy-zrs.md)
 - [SQL-Datenbank](../sql-database/sql-database-high-availability.md#zone-redundant-configuration)
 - [Georedundante Notfallwiederherstellung in Event Hubs](../event-hubs/event-hubs-geo-dr.md#availability-zones)

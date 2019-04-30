@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 04/16/2019
 ms.author: tulasim
-ms.openlocfilehash: d14e2897183a97da5e84a76b699def529f1d167e
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: c18ededc428b215720f8a6a6857a2eabd93bff8b
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579409"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683587"
 ---
 # <a name="get-a-knowledge-answer-with-the-generateanswer-api-and-metadata"></a>Abrufen einer wissensbasierten Antwort mit der GenerateAnswer-API und Metadaten
 
@@ -46,7 +46,7 @@ Sie verwenden die GenerateAnswer-API in Ihrem Bot oder Ihrer Anwendung, um die K
 Nachdem Sie Ihre Knowledge Base im [QnA Maker-Portal](https://www.qnamaker.ai) oder mithilfe der [API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) veröffentlicht haben, können Sie die Details von Ihrem GenerateAnswer-Endpunkt abrufen.
 
 So rufen Sie Endpunktdetails ab
-1. Melden Sie sich unter [https://www.qnamaker.ai](https://www.qnamaker.ai) an.
+1. Melden Sie sich bei [https://www.qnamaker.ai](https://www.qnamaker.ai) an.
 1. Klicken Sie in **My knowledge bases** (Meine Knowledge Bases) für Ihre Knowledge Base auf **Code anzeigen**.
     ![My Knowledge Bases (Meine Knowledge Bases)](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
 1. Rufen Sie Ihre GenerateAnswer-Endpunktdetails ab.
@@ -64,7 +64,7 @@ Sie rufen GenerateAnswer über eine HTTP POST-Anforderung auf. Beispielcode, der
 Die **Anforderungs-URL** weist das folgende Format auf: 
 
 ```
-https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer?isTest=true
+https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
 |HTTP-Anforderungseigenschaft|NAME|Type|Zweck|
@@ -84,7 +84,7 @@ Der JSON-Text verfügt über mehrere Einstellungen:
 |`top`|optional|integer|Anzahl der priorisierten Ergebnisse für die Ausgabe Der Standardwert ist 1.|
 |`userId`|optional|Zeichenfolge|Eindeutige ID zur Identifizierung des Benutzers. Diese ID wird in den Chatprotokollen aufgezeichnet.|
 |`isTest`|optional|boolean|Wenn auf TRUE festgelegt, werden Ergebnisse aus dem `testkb`-Suchindex anstatt aus dem veröffentlichten Index zurückgegeben.|
-|`strictFilters`|optional|Zeichenfolge|Weist (sofern angegeben) QnA Maker an, nur Antworten mit den angegebenen Metadaten zurückzugeben.|
+|`strictFilters`|optional|Zeichenfolge|Weist (sofern angegeben) QnA Maker an, nur Antworten mit den angegebenen Metadaten zurückzugeben. Verwenden Sie `none`, um festzulegen, dass die Antwort keine Metadatenfilter enthalten soll. |
 
 Ein JSON-Beispieltext sieht folgendermaßen aus:
 

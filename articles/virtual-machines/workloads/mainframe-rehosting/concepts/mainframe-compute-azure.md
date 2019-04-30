@@ -7,10 +7,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: 8aea4a74ba84855f011dada70ea75ec0d5fb64fe
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58896703"
 ---
 # <a name="move-mainframe-compute-to-azure"></a>Verschieben von Mainframe-Computing zu Azure
@@ -96,7 +96,7 @@ Einer der Vorteile einer Azure-basierten Lösung ist die Möglichkeit der horizo
 
 - **Lastenausgleich im gesamten Cluster.** In diesem Szenario kann eine Anwendung mit einem [Load Balancer](/azure/load-balancer/load-balancer-overview) oder Ressourcenmanager die Workload auf mehrere VMs in einem Cluster verteilen. Wenn Sie mehr Computingkapazität benötigt wird, werden zusätzliche VMs zum Cluster hinzugefügt.
 
-- **Skalierungsgruppen für virtuelle Computer** In diesem Burst-Szenario kann eine Anwendung auf zusätzliche [Computingressourcen](/azure/virtual-machine-scale-sets/overview) basierend auf der VM-Nutzung skaliert werden. Wenn der Bedarf sinkt, kann auch die Anzahl der VMs in einer Skalierungsgruppe sinken, was eine effiziente Nutzung der Computingleistung gewährleistet.
+- **VM-Skalierungsgruppen.** In diesem Burst-Szenario kann eine Anwendung auf zusätzliche [Computingressourcen](/azure/virtual-machine-scale-sets/overview) basierend auf der VM-Nutzung skaliert werden. Wenn der Bedarf sinkt, kann auch die Anzahl der VMs in einer Skalierungsgruppe sinken, was eine effiziente Nutzung der Computingleistung gewährleistet.
 
 - **PaaS-Skalierung.** Azure PaaS ermöglicht das Skalieren von Computingressourcen. So weist beispielsweise [Azure Service Fabric](/azure/service-fabric/service-fabric-overview) Computingressourcen zu, um den Anstieg des Anfragevolumens zu bewältigen.
 
@@ -120,20 +120,20 @@ Jede Ebene kann auch entsprechende Dienste für die Notfallwiederherstellung ber
 
 ### <a name="ibm-resources"></a>IBM-Ressourcen
 
-- [Parallel Sysplex on IBM Z](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources)
-- [IBM CICS and the Coupling Facility: Beyond the Basics](http://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
-- [Creating required users for a Db2 pureScale Feature installation](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
-- [Db2icrt - Create instance command](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
-- [Db2 pureScale Clustered Database Solution](http://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
+- [Parallel Sysplex on IBM Z (Parallel Sysplex auf IBM Z)](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources)
+- [IBM CICS and the Coupling Facility: Beyond the Basics (IBM CICS und die Coupling Facility: Fortgeschrittene Themen)](http://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
+- [Erstellen der erforderlichen Benutzer für eine Installation von Db2 pureScale Feature](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
+- [db2icrt-Instanz erstellen (Befehl)](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
+- [Db2 pureScale Clustered Database Solution (Clusterdatenbank-Lösung mit Db2 pureScale)](http://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
 - [IBM Data Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
 
 ### <a name="azure-government"></a>Azure Government
 
-- [Microsoft Azure Government-Cloud für Mainframeanwendungen](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
+- [Microsoft Azure Government cloud for mainframe applications (Microsoft Azure Government-Cloud für Mainframeanwendungen)](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
 - [Microsoft und FedRAMP](https://www.microsoft.com/TrustCenter/Compliance/FedRAMP)
 
 ### <a name="more-migration-resources"></a>Weitere Migrationsressourcen
 
-- [Platform Modernization Alliance: DB2 unter Azure](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
+- [Platform Modernization Alliance: IBM Db2 on Azure (Platform Modernization Alliance: IBM Db2 unter Azure)](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
 - [Virtuelles Azure-Rechenzentrum: Lift and Shift-Leitfaden](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
 - [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

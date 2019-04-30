@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: cdca2823962c442c9142fa439795269f419aa489
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: fa4487b07f130947ac5da2a5dbae6776b06acbe7
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189681"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009899"
 ---
 # <a name="input-metadata"></a>Eingeben von Metadaten 
 
@@ -179,7 +179,7 @@ Ein XML-Beispiel finden Sie am Ende dieses Artikels: [XML-Beispiel](media-servic
 | **Lyrics**<br /><br /> Erforderlich |**xs:int** |Legen Sie dieses Attribut auf 1 fest, um anzugeben, dass diese Spur Songtexte enthält. |
 | **Karaoke**<br /><br /> Erforderlich |**xs:int** |Legen Sie dieses Attribut auf 1 fest, um anzugeben, dass dies die Karaoke-Spur ist (Hintergrundmusik ohne Gesang). |
 | **Forced**<br /><br /> Erforderlich |**xs:int** |Legen Sie dieses Attribut auf 1 fest, um anzugeben, dass dies die erzwungene Darstellung ist. |
-| **HearingImpaired**<br /><br /> Erforderlich |**xs:int** |Legen Sie dieses Attribut auf 1 fest, um anzugeben, dass diese Spur für Personen mit Hörbehinderung bestimmt ist. |
+| **HearingImpaired**<br /><br /> Erforderlich |**xs:int** |Legen Sie dieses Attribut auf 1 fest, um anzugeben, dass diese Spur für Schwerhörige bestimmt ist. |
 | **VisualImpaired**<br /><br /> Erforderlich |**xs:int** |Legen Sie dieses Attribut auf 1 fest, um anzugeben, dass diese Spur für Personen mit Sehbehinderung bestimmt ist. |
 | **CleanEffects**<br /><br /> Erforderlich |**xs: int** |Legen Sie dieses Attribut auf 1 fest, um anzugeben, dass diese Spur für Bereinigungseffekte bestimmt ist. |
 | **AttachedPic**<br /><br /> Erforderlich |**xs: int** |Legen Sie dieses Attribut auf 1 fest, um anzugeben, dass diese Spur über Bilder verfügt. |

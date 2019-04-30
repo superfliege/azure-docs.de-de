@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: e93a81f2c081daa58a37b1e2823d7bf0cc5a6361
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: e05998f74223ead6bb4e94b86469e51791e0263f
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58883112"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678563"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Konfigurieren von Docker-Containern für Language Understanding 
 
@@ -42,11 +42,11 @@ Dieser Container hat die folgenden Konfigurationseinstellungen:
 
 ## <a name="apikey-setting"></a>ApiKey-Einstellung
 
-Die `ApiKey`-Einstellung gibt den Schlüssel der Azure-Ressourcen an, mit dem die Abrechnungsinformationen für den Container verfolgt werden. Sie müssen einen Wert für ApiKey angeben, und bei dem Wert muss es sich um einen gültigen Schlüssel für die _Language Understanding_-Ressource handeln, die für die Konfigurationseinstellung [`Billing`](#billing-setting) angegeben wurde.
+Die `ApiKey`-Einstellung gibt den Schlüssel der Azure-Ressourcen an, mit dem die Abrechnungsinformationen für den Container verfolgt werden. Sie müssen einen Wert für ApiKey angeben. Bei diesem Wert muss es sich um einen gültigen Schlüssel für die Ressource vom Typ _Cognitive Services_ handeln, die für die Konfigurationseinstellung [`Billing`](#billing-setting) angegeben wurde.
 
 Diese Einstellung finden Sie hier:
 
-* Azure-Portal: Ressourcenverwaltung von **Language Understanding** unter **Schlüssel**
+* Azure-Portal: Ressourcenverwaltung von **Cognitive Services** (unter **Schlüssel**)
 * LUIS-Portal: Seite mit den Einstellungen für **Schlüssel und Endpunkt**. 
 
 Verwenden Sie nicht den Starter- oder Erstellungsschlüssel. 
@@ -57,12 +57,15 @@ Verwenden Sie nicht den Starter- oder Erstellungsschlüssel.
 
 ## <a name="billing-setting"></a>Billing-Einstellung
 
-Die `Billing`-Einstellung gibt den Endpunkt-URI der _Language Understanding_-Ressource in Azure an, der zum Messen der Abrechnungsinformationen für den Container verwendet wird. Sie müssen einen Wert für diese Konfigurationseinstellung angeben, und bei dem Wert muss es sich um einen gültigen Endpunkt-URI für eine _Language Understanding_-Ressource in Azure handeln. Der Container meldet die Nutzung etwa alle 10 bis 15 Minuten.
+Die `Billing`-Einstellung gibt den Endpunkt-URI der _Cognitive Services_-Ressource in Azure an, der zum Messen der Abrechnungsinformationen für den Container verwendet wird. Sie müssen einen Wert für diese Konfigurationseinstellung angeben, und bei dem Wert muss es sich um einen gültigen URI-Endpunkt für eine _Cognitive Services_-Ressource in Azure handeln. Der Container meldet die Nutzung etwa alle 10 bis 15 Minuten.
 
 Diese Einstellung finden Sie hier:
 
-* Azure-Portal: Übersicht von **Language Understanding** mit der Bezeichnung `Endpoint`
+* Azure-Portal: Übersicht über **Cognitive Services**, mit der Bezeichnung `Endpoint`
 * LUIS-Portal: Einstellungsseite für **Schlüssel und Endpunkt** als Teil des Endpunkt-URI.
+
+Denken Sie daran, die `luis/v2.0`-Weiterleitung wie in der folgenden Tabelle dargestellt in die URL einzubeziehen:
+
 
 |Erforderlich| NAME | Datentyp | BESCHREIBUNG |
 |--|------|-----------|-------------|
@@ -109,16 +112,18 @@ Die folgenden Beispiele verwenden die Konfigurationseinstellungen, um zu veransc
 * **Zeilenfortsetzungszeichen:** In den Docker-Befehlen in den folgenden Abschnitten wird der umgekehrte Schrägstrich (`\`) als Zeilenfortsetzungszeichen verwendet. Ersetzen oder entfernen Sie diesen je nach den Anforderungen des Hostbetriebssystems. 
 * **Argumentreihenfolge:** Ändern Sie die Reihenfolge der Argumente nur, wenn Sie mit Docker-Containern sehr gut vertraut sind.
 
+Denken Sie daran, die `luis/v2.0`-Weiterleitung wie in der folgenden Tabelle dargestellt in die URL einzubeziehen.
+
 Ersetzen Sie {_argument_name_} durch Ihre eigenen Werte:
 
 | Platzhalter | Wert | Format oder Beispiel |
 |-------------|-------|---|
 |{ENDPOINT_KEY} | Der Endpunktschlüssel der trainierten LUIS-Anwendung. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT} | Den Wert für den Abrechnungsendpunkt finden Sie im Azure-Portal auf der Übersichtsseite von Language Understanding.|https://westus.api.cognitive.microsoft.com/luis/v2.0|
+|{BILLING_ENDPOINT} | Den Wert des Abrechnungsendpunkts finden Sie auf der Übersichtsseite von Azure `Cognitive Services`. |https://westus.api.cognitive.microsoft.com/luis/v2.0|
 
 > [!IMPORTANT]
 > Die Optionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container auszuführen, andernfalls wird der Container nicht gestartet.  Weitere Informationen finden Sie unter [Abrechnung](luis-container-howto.md#billing).
-> Der Wert ApiKey ist der **Schlüssel** von der Seite „Schlüssel und Endpunkte“ im LUIS-Portal. Er ist auch auf der Seite mit den Schlüsseln der Azure Language Understanding-Ressourcen verfügbar. 
+> Der Wert ApiKey ist der **Schlüssel** von der Seite „Schlüssel und Endpunkte“ im LUIS-Portal. Er ist auch auf der Seite mit den Schlüsseln der Azure `Cognitive Services`-Ressourcen verfügbar. 
 
 ### <a name="basic-example"></a>Einfaches Beispiel
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 609e774c36ab685d017f311a74c8680dbb9750c9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: e2b2621ac8ee5b9ee84aaa978e8b915c98c5b702
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59283017"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998456"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 
@@ -92,34 +92,36 @@ Azure Files bietet zwei Leistungsstufen: Standard und Premium.
 |Nordeuropa  | Nein  |
 |Europa, Westen   | Ja|
 |Südostasien       | Ja|
+|Asien, Osten     | Nein  |
 |Japan, Osten    | Nein  |
+|Japan, Westen    | Nein  |
 |Korea, Mitte | Nein  |
 |Australien (Osten)| Nein  |
 
 ### <a name="provisioned-shares"></a>Bereitgestellte Freigaben
 
-Premium-Dateifreigaben (Vorschau) werden basierend auf einem festen Verhältnis aus GiB/IOPS/Durchsatz bereitgestellt. Für jedes bereitgestellte GiB erhält die Freigabe 1 IOPS und einen Durchsatz von 0,1 MiB/s bis zum maximalen Grenzwert pro Freigabe. Die kleinste zulässige Bereitstellung beträgt 100 GiB mit den minimalen Werten für IOPS/Durchsatz. Die Größe der Dateifreigabe kann jederzeit erhöht oder verringert werden, sie kann jedoch nur einmal alle 24 Stunden seit der letzten Erhöhung verringert werden.
+Premium-Dateifreigaben (Vorschau) werden basierend auf einem festen Verhältnis aus GiB/IOPS/Durchsatz bereitgestellt. Für jedes bereitgestellte GiB erhält die Freigabe 1 IOPS und einen Durchsatz von 0,1 MiB/s bis zum maximalen Grenzwert pro Freigabe. Die kleinste zulässige Bereitstellung beträgt 100 GiB mit den minimalen Werten für IOPS/Durchsatz.
 
 Auf einer Best-Effort-Basis können alle Freigaben für 60 Minuten oder länger (je nach Größe der Freigabe) auf bis zu 3 IOPS pro GiB an bereitgestelltem Speicher erhöht werden (Burst). Neue Freigaben beginnen mit dem vollständigen Burstguthaben, basierend auf der bereitgestellten Kapazität.
 
-Alle Freigaben können Burstübertragungen bis zu mindestens 100IOPS und einem Zieldurchsatz von 100MiB/s durchführen. Freigaben müssen in Schritten von 1GiB bereitgestellt werden. Die minimale Größe beträgt 100GiB, die nächste Größe ist 101GIB usw.
+Freigaben müssen in Schritten von 1GiB bereitgestellt werden. Die minimale Größe beträgt 100GiB, die nächste Größe ist 101GIB usw.
 
 > [!TIP]
-> IOPS-Grundwert = 100 + 1 * bereitgestellte GiB. (Bis zu 100.000 IOPS).
+> IOPS-Grundwert = 1 + 1 * bereitgestellte GiB. (Bis zu 100.000 IOPS).
 >
 > Burstgrenzwert = 3 * IOPS-Grundwert. (Bis zu 100.000 IOPS).
 >
-> Ausgangsrate = 60MiB/s + 0,06 bereitgestellte GiB (bis zu 6GiB/s)
+> Ausgangsrate = 60MiB/s + 0,06 * bereitgestellte GiB
 >
-> Eingangsrate = 40MiB/s + 0,04 bereitgestellte GiB (bis zu 4GiB/s)
+> Eingangsrate = 40MiB/s + 0,04 * bereitgestellte GiB
 
-Die Größe der Dateifreigabe kann jederzeit erhöht oder verringert werden, sie kann jedoch nur einmal alle 24 Stunden seit der letzten Erhöhung verringert werden. Änderungen von IOPS/Durchsatz werden innerhalb von 24 Stunden nach der Größenänderung wirksam.
+Die Größe der Dateifreigabe kann jederzeit heraufgesetzt, jedoch erst 24 Stunden nach der letzten Heraufsetzung herabgesetzt werden. Wenn nach 24-stündigem Warten keine Heraufsetzung aufgetreten ist, können Sie die Größe der Dateifreigabe beliebig oft herabsetzen, bis Sie sie erneut heraufsetzen. Änderungen von IOPS/Durchsatz werden innerhalb weniger Minuten nach der Größenänderung wirksam.
 
 Die folgende Tabelle zeigt einige Beispiele dieser Formeln für die bereitgestellten Freigabengrößen:
 
 (durch ein * gekennzeichnete Größen sind in der begrenzten Public Preview)
 
-|Kapazität (GiB) | IOPS-Grundwert | Burstgrenzwert | Ausgehend (MiB/s) | Eingehend (MiB/s) |
+|Kapazität (GiB) | IOPS-Grundwert | Burst-IOPS | Ausgehend (MiB/s) | Eingehend (MiB/s) |
 |---------|---------|---------|---------|---------|
 |100         | 100     | Bis zu 300     | 66   | 44   |
 |500         | 500     | Bis zu 1.500   | 90   | 60   |
@@ -128,18 +130,18 @@ Die folgende Tabelle zeigt einige Beispiele dieser Formeln für die bereitgestel
 |10.240 *     | 10.240  | Bis zu 30.720  | 675 | 450   |
 |33.792 *     | 33.792  | Bis zu 100.000 | 2.088 | 1.392   |
 |51.200 *     | 51.200  | Bis zu 100.000 | 3.132 | 2.088   |
-|100.000 *    | 100.000 | Bis zu 100.000 | 6.204 | 4.136   |
+|102.400 *    | 100.000 | Bis zu 100.000 | 6.204 | 4.136   |
 
-Aktuell sind Freigabegrößen bis zu 5TiB in der Public Preview, während Größen bis zu 102TiB in begrenzter Public Preview sind. Um Zugriff auf die begrenzte Public Preview anzufordern, füllen Sie [diesen Fragebogen](https://aka.ms/azurefilesatscalesurvey) aus.
+Aktuell sind Freigabegrößen bis zu 5TiB in der Public Preview, während Größen bis zu 100TiB in begrenzter Public Preview sind. Um Zugriff auf die begrenzte Public Preview anzufordern, füllen Sie [diesen Fragebogen](https://aka.ms/azurefilesatscalesurvey) aus.
 
 ### <a name="bursting"></a>Bursting
 
 Premium-Dateifreigaben können ihren IOPS-Wert bis zu Faktor drei erhöhen. Bursting wird automatisiert und funktioniert auf Basis eines Guthabensystems. Die Burstübertragung funktioniert auf Best-Effort-Basis, und der Burstgrenzwert ist keine Garantie; bei Dateifreigaben ist eine Burstübertragung *bis zum* Grenzwert möglich.
 
-Guthaben sammeln sich in einem Burstbucket an, wenn Datenverkehr für Ihre Dateifreigaben unterhalb des IOPS-Grundwerts liegt. Beispielsweise hat eine 100GiB-Freigabe 100 IOPS-Grundwerte. Wenn der eigentliche Datenverkehr auf der Freigabe 40IOPS für ein bestimmtes 1-Sekunden-Intervall betrug, werden die 60 nicht verwendeten IOPS einem Burstbucket gutgeschrieben. Diese Guthaben werden dann später verwendet, wenn Vorgänge die IOPS-Grundwerte überschreiten.
+Guthaben sammeln sich in einem Burstbucket an, wenn Datenverkehr für Ihre Dateifreigabe unterhalb des IOPS-Grundwerts liegt. Beispielsweise hat eine 100GiB-Freigabe 100 IOPS-Grundwerte. Wenn der eigentliche Datenverkehr auf der Freigabe 40IOPS für ein bestimmtes 1-Sekunden-Intervall betrug, werden die 60 nicht verwendeten IOPS einem Burstbucket gutgeschrieben. Diese Guthaben werden dann später verwendet, wenn Vorgänge die IOPS-Grundwerte überschreiten.
 
 > [!TIP]
-> Größe des Burstgrenzwertbuckets = IOPS-Grundwert * 2 * 3600.
+> Größe des Burstbuckets = IOPS-Grundwert * 2 * 3.600.
 
 Wenn eine Freigabe den IOPS-Grundwert überschreitet und Guthaben in einem Burstbucket hat, führt sie Burstübertragungen durch. Freigaben können solange Burstübertragungen durchführen, wie Guthaben übrig sind, aber Freigaben, die kleiner sind als 50TiB, bleiben nur bis zu einer Stunde auf dem Burstgrenzwert. Freigaben, die größer sind als 50TiB, können dieses einstündige Limit technisch überschreiten, bis zu zwei Stunden, aber dies basiert auf der Anzahl der gesammelten Burstguthaben. Jede EA über dem IOPS-Grundwert verbraucht ein Guthaben, und wenn alle Guthaben verbraucht sind, kehrt die Freigabe zum IOPS-Grundwert zurück.
 
@@ -147,9 +149,9 @@ Freigabeguthaben können drei Zustände aufweisen:
 
 - Anwachsend, wenn die Dateifreigabe weniger als den IOPS-Grundwert verwendet.
 - Sinkend, wenn die Dateifreigabe Burstübertragungen durchführt.
-- Bei null (0) verbleibend, wenn entweder keine Guthaben vorhanden sind oder der IOPS-Grundwert verwendet wird.
+- Konstant verbleibend, wenn entweder keine Guthaben vorhanden sind oder der IOPS-Grundwert verwendet wird.
 
-Neue Dateifreigaben beginnen mit der vollen Anzahl von Guthaben im Burstbucket.
+Neue Dateifreigaben beginnen mit der vollen Anzahl von Guthaben im Burstbucket. Burstguthaben werden nicht angesammelt, wenn der Freigabe-IOPS aufgrund einer Einschränkung durch den Server unter den IOPS-Grundwert fällt.
 
 ## <a name="file-share-redundancy"></a>Dateifreigaberedundanz
 

@@ -1,6 +1,6 @@
 ---
-title: Sammeln von Windows-Sicherheitsereignisdaten in der Vorschauversion von Azure Sentinel | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Daten zu Windows-Sicherheitsereignissen in Azure Sentinel sammeln.
+title: Verknüpfen von Windows-Sicherheitsereignisdaten mit Azure Sentinel Preview | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Windows-Sicherheitsereignisdaten mit Azure Sentinel verknüpfen.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 90bff4cd98046a42fa31d98ff00e76d7fc9ac307
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: d131d39a9d9770046fa3f9368250204e4d0b0162
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576087"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59794481"
 ---
 # <a name="connect-windows-security-events"></a>Herstellen einer Verbindung mit Windows-Sicherheitsereignissen 
 
@@ -42,7 +42,7 @@ Sie können alle Sicherheitsereignisse von den mit dem Azure Sentinel-Arbeitsber
 
 So integrieren Sie Ihre Windows-Sicherheitsereignisse vollständig in Azure Sentinel
 
-1. Wählen Sie im Azure Sentinel-Portal die Option **Datensammlung** aus, und klicken Sie dann auf die Kachel **Windows-Sicherheitsereignisse**. 
+1. Wählen Sie im Azure Sentinel-Portal die Option **Data connectors** (Datenconnectors) aus, und klicken Sie dann auf die Kachel **Windows-Sicherheitsereignisse**. 
 1. Wählen Sie die Datentypen aus, die Sie streamen möchten.
 1. Klicken Sie auf **Aktualisieren**.
 6. Um das relevante Schema für die Windows-Sicherheitsereignisse in Log Analytics zu verwenden, suchen Sie nach **SecurityEvent**.
@@ -55,6 +55,6 @@ Es kann etwa 20 Minuten dauern, bis Ihre Protokolle in Log Analytics angezeigt 
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument haben Sie erfahren, wie Sie Windows-Sicherheitsereignisse mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
-- Erfahren Sie, wie Sie [ Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
+- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
 - Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats.md).
 

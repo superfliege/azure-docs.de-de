@@ -9,14 +9,17 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
-ms.openlocfilehash: b5ad1a790f79b11b978c32c5751a6b9333f24c85
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: abb2a89f41340e8e2e26fa36cc20b790341618d0
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994924"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003699"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Twitter-Standpunktanalyse in Echtzeit in Azure Stream Analytics
+
+> [!IMPORTANT] 
+> Eine Twitter-Anwendung kann nicht mehr über [apps.twitter.com](https://apps.twitter.com/) erstellt werden. Dieses Tutorial wird gerade aktualisiert und mit Informationen zur neuen Twitter-API ergänzt.
 
 Erfahren Sie, wie Sie eine Lösung für Standpunktanalysen zur Analyse sozialer Medien durch die Einbindung von Twitter-Echtzeitereignissen in Azure Event Hubs erstellen können. Sie können dann eine Azure Stream Analytics-Abfrage schreiben, um die Daten zu analysieren, und die Ergebnisse zur späteren Durchsicht speichern oder ein Dashboard und [Power BI](https://powerbi.com/) verwenden, um Einblicke in Echtzeit zu ermöglichen.
 

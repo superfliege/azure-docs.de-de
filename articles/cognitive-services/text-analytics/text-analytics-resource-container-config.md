@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: 3cb6f4563cf45b9ccd377dec3db4ebab095c8a09
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 1333aefc145e95223624f42a28ec0bb31ab70065
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58885433"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011757"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Konfigurieren von Docker-Containern für die Textanalyse
 
@@ -31,11 +31,11 @@ Die Textanalyse stellt für jeden Container ein allgemeines Konfigurationsframew
 
 ## <a name="apikey-configuration-setting"></a>Konfigurationseinstellung „ApiKey“
 
-Die `ApiKey`-Einstellung gibt den Schlüssel der Azure-Ressourcen an, mit dem die Abrechnungsinformationen für den Container verfolgt werden. Sie müssen einen Wert für „ApiKey“ angeben. Bei diesem Wert muss es sich um einen gültigen Schlüssel für die Ressource vom Typ _Textanalyse_ handeln, die für die Konfigurationseinstellung [`Billing`](#billing-configuration-setting) angegeben wurde.
+Die `ApiKey`-Einstellung gibt den Schlüssel der Azure-Ressourcen an, mit dem die Abrechnungsinformationen für den Container verfolgt werden. Sie müssen einen Wert für ApiKey angeben. Bei diesem Wert muss es sich um einen gültigen Schlüssel für die Ressource vom Typ _Cognitive Services_ handeln, die für die Konfigurationseinstellung [`Billing`](#billing-configuration-setting) angegeben wurde.
 
 Diese Einstellung finden Sie hier:
 
-* Azure-Portal: Ressourcenverwaltung der **Textanalyse** (unter **Schlüssel**)
+* Azure-Portal: Ressourcenverwaltung von **Cognitive Services** (unter **Schlüssel**)
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights-Einstellung
 
@@ -43,15 +43,17 @@ Diese Einstellung finden Sie hier:
 
 ## <a name="billing-configuration-setting"></a>Konfigurationseinstellung „Billing“
 
-Die Einstellung `Billing` gibt den Endpunkt-URI der Ressource vom Typ _Textanalyse_ in Azure an, der zum Erfassen von Abrechnungsinformationen für den Container verwendet wird. Sie müssen einen Wert für diese Konfigurationseinstellung angeben. Bei diesem Wert muss es sich um einen gültigen URI-Endpunkt für eine Ressource vom Typ _Textanalyse_ in Azure handeln. Der Container meldet die Nutzung etwa alle 10 bis 15 Minuten.
+Die `Billing`-Einstellung gibt den Endpunkt-URI der _Cognitive Services_-Ressource in Azure an, der zum Messen der Abrechnungsinformationen für den Container verwendet wird. Sie müssen einen Wert für diese Konfigurationseinstellung angeben, und bei dem Wert muss es sich um einen gültigen URI-Endpunkt für eine _Cognitive Services_-Ressource in Azure handeln. Der Container meldet die Nutzung etwa alle 10 bis 15 Minuten.
 
 Diese Einstellung finden Sie hier:
 
-* Azure-Portal: Übersicht über die **Textanalyse** mit der Bezeichnung `Endpoint`
+* Azure-Portal: Übersicht über **Cognitive Services**, mit der Bezeichnung `Endpoint`
+
+Sie müssen, wie im folgenden Beispiel BILLING_ENDPOINT_URI dargestellt, dem Endpunkt-URI das `text/analytics/v2.0`-Routing hinzufügen.
 
 |Erforderlich| NAME | Datentyp | BESCHREIBUNG |
 |--|------|-----------|-------------|
-|Ja| `Billing` | Zeichenfolge | URI des Abrechnungsendpunkts<br><br>Beispiel:<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.0` |
+|Ja| `Billing` | Zeichenfolge | URI des Abrechnungsendpunkts<br><br>Beispiel:<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.1` |
 
 ## <a name="eula-setting"></a>Eula-Einstellung
 
@@ -89,18 +91,20 @@ Die folgenden Beispiele verwenden die Konfigurationseinstellungen, um zu veransc
 * **Zeilenfortsetzungszeichen:** In den Docker-Befehlen in den folgenden Abschnitten wird der umgekehrte Schrägstrich (`\`) als Zeilenfortsetzungszeichen verwendet. Ersetzen oder entfernen Sie diesen je nach den Anforderungen des Hostbetriebssystems. 
 * **Argumentreihenfolge:** Ändern Sie die Reihenfolge der Argumente nur, wenn Sie mit Docker-Containern sehr gut vertraut sind.
 
+Sie müssen, wie im folgenden Beispiel BILLING_ENDPOINT_URI dargestellt, dem Endpunkt-URI das `text/analytics/v2.0`-Routing hinzufügen.
+
 Ersetzen Sie {_argument_name_} durch Ihre eigenen Werte:
 
 | Platzhalter | Wert | Format oder Beispiel |
 |-------------|-------|---|
-|{BILLING_KEY} | Der Endpunktschlüssel der Textanalyseressource, der im Azure-Portal auf der Schlüsselseite der Textanalyse zur Verfügung steht. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT_URI} | Den Wert für den Abrechnungsendpunkt finden Sie im Azure-Portal auf der Übersichtsseite der Textanalyse.|`https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
+|{BILLING_KEY} | Der Endpunktschlüssel der `Cognitive Services`-Ressource, die auf der Azure `Cognitive Services`-Schlüsselseite verfügbar ist. |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|{BILLING_ENDPOINT_URI} | Den Wert des Abrechnungsendpunkts finden Sie auf der Übersichtsseite von Azure `Cognitive Services`.|`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
 > [!IMPORTANT]
 > Die Optionen `Eula`, `Billing` und `ApiKey` müssen angegeben werden, um den Container auszuführen, andernfalls wird der Container nicht gestartet.  Weitere Informationen finden Sie unter [Abrechnung](how-tos/text-analytics-how-to-install-containers.md#billing).
-> Der ApiKey-Wert ist der **Schlüssel** von der Schlüsselseite der Azure-Textanalyseressource. 
+> Der ApiKey-Wert ist der **Schlüssel** von der Schlüsselseite der Azure `Cognitive Services`-Ressource. 
 
-## <a name="keyphrase-extraction-container-docker-examples"></a>Docker-Beispiele für Schlüsselbegriffserkennungs-Container
+## <a name="key-phrase-extraction-container-docker-examples"></a>Docker-Beispiele für Schlüsselbegriffserkennungs-Container
 
 Im Anschluss finden Sie Docker-Beispiele für den Schlüsselbegriffserkennungs-Container. 
 

@@ -1,5 +1,5 @@
 ---
-title: Sammeln von Threat Intelligence-Daten in der Vorschauversion von Azure Sentinel | Microsoft-Dokumentation
+title: Verknüpfen von Threat Intelligence-Daten mit der Vorschauversion von Azure Sentinel | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Threat Intelligence-Daten mit Azure Sentinel verknüpfen.
 documentationcenter: na
 author: rkarlin
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/20/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: bc8a644f99d9a84e1f2c177a87e2668ae9a57868
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: a33b00e4e553824f1f719be2c8518487241f0a11
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400626"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59786183"
 ---
-# <a name="collect-data-from-threat-intelligence-providers"></a>Erfassen von Daten von Threat Intelligence-Anbietern 
+# <a name="connect-data-from-threat-intelligence-providers"></a>Verknüpfen von Daten von Threat Intelligence-Anbietern 
 
 > [!IMPORTANT]
 > Azure Sentinel ist derzeit als öffentliche Vorschauversion (Public Preview) verfügbar.
@@ -44,7 +44,7 @@ Sie können Protokolle von Threat Intelligence-Anbietern mit einem einzigen Klic
 
 1. Wenn Sie bereits einen Threat Intelligence-Anbieter (TIP) verwenden, sollten Sie zu Ihrer TIP-Anwendung navigieren und dieser die Berechtigung erteilen, Indikatoren an Microsoft zu senden, und den Dienst als Azure Sentinel spezifizieren.  
 
-2. Wählen Sie in Azure Sentinel **Datenerfassung** aus, und klicken Sie dann auf die Kachel **Threat Intelligence**.
+2. Klicken Sie in Azure Sentinel auf **Data connectors** (Datenconnectors) und anschließend auf die Kachel **Threat Intelligence**.
 
 3. Klicken Sie auf **Verbinden**. 
 

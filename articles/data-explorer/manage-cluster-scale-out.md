@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.openlocfilehash: 24bbddd28943adc929fbaea456eeae8165db290c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59261597"
 ---
 # <a name="manage-cluster-scale-out-to-accommodate-changing-demand"></a>Verwalten der Clusterskalierung bei sich änderndem Bedarf
@@ -57,7 +57,7 @@ Die folgende Grafik zeigt die Abfolge der nächsten Schritte. Weitere Details fi
     | Einstellung | Beschreibung und Wert |
     | --- | --- |
     | **Vorgang** | Wählen Sie die entsprechende Option zum horizontalen Hoch- oder Herunterskalieren aus. |
-    | **Anzahl von Instanzen** | Wählen Sie die Anzahl von Knoten oder Instanzen aus, die hinzugefügt oder entfernt werden sollen, wenn eine Metrikbedingung erfüllt ist. |
+    | **Anzahl der Instanzen** | Wählen Sie die Anzahl von Knoten oder Instanzen aus, die hinzugefügt oder entfernt werden sollen, wenn eine Metrikbedingung erfüllt ist. |
     | **Abkühlen (Minuten)** | Wählen Sie ein geeignetes Intervall für die Zeit zwischen den einzelnen Skalierungsvorgängen. Beginnen Sie mit dem Standardwert von 5 Minuten. |
     |  |  |
 
@@ -67,7 +67,7 @@ Die folgende Grafik zeigt die Abfolge der nächsten Schritte. Weitere Details fi
 
     | Einstellung | Beschreibung und Wert |
     | --- | --- |
-    | **Minimum** | Die Anzahl der Instanzen, unter die Ihr Cluster unabhängig von der Auslastung nicht herunterskaliert wird. |
+    | **Mindestanforderungen** | Die Anzahl der Instanzen, unter die Ihr Cluster unabhängig von der Auslastung nicht herunterskaliert wird. |
     | **Maximum** | Die Anzahl der Instanzen, über die Ihr Cluster unabhängig von der Auslastung nicht hochskaliert wird. |
     | **Standard** | Die Standardanzahl von Instanzen. Diese Einstellung wird verwendet, wenn Probleme beim Lesen der Ressourcenmetriken auftreten. |
     |  |  |
@@ -82,4 +82,4 @@ Wenn Sie Hilfe bei Clusterskalierungsproblemen benötigen, erstellen Sie im [Azu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Überwachen der Azure Data Explorer-Leistung, -Integrität und -Nutzung mit Metriken](using-metrics.md)
+[Überwachen der Azure Data Explorer-Leistung, -Integrität und -Auslastung mit Metriken](using-metrics.md)

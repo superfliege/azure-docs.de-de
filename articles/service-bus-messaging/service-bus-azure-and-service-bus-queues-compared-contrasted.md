@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 74525b42445d87923b0bad7a522456257e651d00
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2086813b01de6cd06f3714477e56864b36196382
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57856021"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699046"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage-Warteschlangen und Service Bus-Warteschlangen – Vergleich und Gegenüberstellung
 In diesem Artikel werden die Unterschiede und Ähnlichkeiten zwischen den beiden Warteschlangentypen untersucht, die derzeit in Microsoft Azure angeboten werden: Storage-Warteschlangen und Service Bus-Warteschlangen. Mithilfe dieser Informationen können Sie die beiden Technologien vergleichen und abgrenzen und sind in der Lage, besser informierte Entscheidungen darüber zu treffen, welche Lösung Ihre Anforderungen am besten erfüllt.
@@ -84,7 +84,7 @@ In diesem Abschnitt werden einige der grundlegenden Warteschlangenfunktionen ver
 * Das garantierte FIFO-Prinzip in Service Bus-Warteschlangen erfordert die Verwendung von Messagingsitzungen. Wenn die Anwendung bei der Verarbeitung einer im **Peek & Lock**-Modus empfangenen Nachricht abstürzt, startet die Anwendung, sobald ein Warteschlangenempfänger das nächste Mal eine Messagingsitzung akzeptiert, mit der Fehlernachricht, nachdem die zugehörige Gültigkeitsdauer (TTL) abgelaufen ist.
 * Storage-Warteschlangen unterstützen Standardwarteschlangenszenarios, z.B. das Abkoppeln von Anwendungskomponenten zur Erhöhung von Skalierbarkeit und Fehlertoleranz, Lastenausgleich und das Erstellen von Prozessworkflows.
 * Service Bus-Warteschlangen unterstützen die *At-Least-Once*-Zustellungsgarantie. 
-* Inkonsistenzen in Bezug auf die Nachrichtenbehandlung im Kontext von Service Bus-Sitzungen können vermieden werden, indem der Sitzungszustand verwendet wird, um den Zustand der Anwendung im Verhältnis zum Fortschritt bei der Behandlung der Nachrichtensequenz der Sitzung zu speichern, und indem Transaktionen zum Klären empfangener Nachrichten und zum Aktualisieren des Sitzungszustands verwendet werden. Diese Art von Konsistenzfunktion wird in Produkten anderer Anbieter manchmal als *Exactly-Once Processing* (genau einmalige Verarbeitung) bezeichnet, aber Transaktionsfehler führen offensichtlich dazu, dass Nachrichten erneut zugestellt werden. Daher ist der Begriff nicht genau zutreffend.
+* Inkonsistenzen in Bezug auf die Nachrichtenbehandlung im Kontext von Service Bus-Sitzungen können vermieden werden, indem der Sitzungszustand verwendet wird, um den Zustand der Anwendung im Verhältnis zum Fortschritt bei der Behandlung der Nachrichtensequenz der Sitzung zu speichern, und indem Transaktionen zum Klären empfangener Nachrichten und zum Aktualisieren des Sitzungszustands verwendet werden. Diese Art von Konsistenzfeature wird in Produkten anderer Anbieter manchmal als *Exactly-Once Processing* (genau einmalige Verarbeitung) bezeichnet, aber Transaktionsfehler führen offensichtlich dazu, dass Nachrichten erneut zugestellt werden. Daher ist der Begriff nicht genau zutreffend.
 * Storage-Warteschlangen bieten ein einheitliches und konsistentes Programmiermodell für Warteschlangen, Tabellen und Blobs – für Entwickler und für Betriebsteams.
 * Service Bus-Warteschlangen unterstützen lokale Transaktionen im Kontext einer einzelnen Warteschlange.
 * Der von Service Bus unterstützte **Receive & Delete**-Modus bietet die Möglichkeit, die Anzahl von Übermittlungsvorgängen (und damit verbundenen Gebühren) auf Kosten einer verminderten Zustellungssicherheit zu reduzieren.

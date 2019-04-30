@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 94465e95dbf5f2eb381c124349bf8fda6622a6c2
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: be2f5fdebc5ae4f779fe6e3da74ad7ea583226ef
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650290"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995658"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Überwachen der Abonnementaktivität per Azure-Aktivitätsprotokoll
 
@@ -66,6 +66,9 @@ Hier sind einige Verwendungsmöglichkeiten für das Aktivitätsprotokoll aufgef�
 
 ## <a name="query-the-activity-log-in-the-azure-portal"></a>Abfragen des Aktivitätsprotokolls im Azure-Portal
 
+> [!NOTE] 
+> Im Aktivitätsprotokoll werden die Protokolle 90 Tage lang im Back-End gespeichert. Wenn Sie Daten länger beibehalten möchten, konfigurieren Sie wie im Folgenden beschrieben ein **Protokollprofil**. 
+
 Im Azure-Portal können Sie Ihr Aktivitätsprotokoll an mehreren Stellen anzeigen:
 * Das **Aktivitätsprotokoll**, auf das Sie zugreifen können, indem Sie im Navigationsbereich auf der linken Seite unter **Alle Dienste** nach dem Aktivitätsprotokoll suchen.
 * **Monitor** wird standardmäßig im linken Navigationsbereich angezeigt. Das Aktivitätsprotokoll ist ein Abschnitt von Azure Monitor.
@@ -95,19 +98,11 @@ Mit einem **Protokollprofil** wird gesteuert, wie das Aktivitätsprotokoll expor
 * Welche Ereigniskategorien gesendet werden sollen („Write“, „Delete“, „Action“) *„Kategorie“ hat in Protokollprofilen und Aktivitätsprotokollen eine unterschiedliche Bedeutung. Im Protokollprofil ist „Kategorie“ der Vorgangstyp („Write“, „Delete“, „Action“). In einem Aktivitätsprotokoll stellt die Eigenschaft „Kategorie“ die Quelle oder den Typ des Ereignisses dar (z.B. „Administration“, „ServiceHealth“, „Alert“ usw.).*
 * Welche Regionen (Standorte) exportiert werden sollen. Stellen Sie sicher, dass Sie „global“ einbeziehen, da viele Ereignisse im Aktivitätsprotokoll globale Ereignisse sind.
 * Wie lange das Aktivitätsprotokoll in einem Speicherkonto beibehalten werden soll.
-    - Wenn für die Beibehaltungsdauer 0 Tage festgelegt sind, bedeutet dies, dass Protokolle unbegrenzt beibehalten werden. Andernfalls kann als Wert die Anzahl von Tagen (1 bis 2.147.483.647) festgelegt werden.
+    - Wenn für die Beibehaltungsdauer 0 Tage festgelegt sind, bedeutet dies, dass Protokolle unbegrenzt beibehalten werden. Andernfalls kann als Wert die Anzahl von Tagen (1 bis 365) festgelegt werden.
     - Wenn Aufbewahrungsrichtlinien festgelegt wurden, aber das Speichern von Protokollen in einem Speicherkonto deaktiviert ist (etwa, wenn nur die Optionen „Event Hubs“ oder „Log Analytics“ ausgewählt sind), werden die Aufbewahrungsrichtlinien ignoriert.
     - Aufbewahrungsrichtlinien werden pro Tag angewendet, sodass Protokolle am Ende eines Tages (UTC) ab dem Tag, der nun außerhalb der Aufbewahrungsrichtlinie liegt, gelöscht werden. Beispiel: Wenn Sie eine Aufbewahrungsrichtlinie für einen Tag verwenden, werden heute am Anfang des Tages die Protokolle von vorgestern gelöscht. Der Löschvorgang beginnt um Mitternacht (UTC), jedoch kann es bis zu 24 Stunden dauern, bis die Protokolle aus Ihrem Speicherkonto gelöscht werden.
 
 Sie können ein Speicherkonto oder Event Hub-Namespace verwenden, das sich nicht im gleichen Abonnement befindet wie das, das Protokolle angibt. Der Benutzer, der die Einstellung konfiguriert, benötigt den entsprechenden RBAC-Zugriff auf beide Abonnements.
-
-> [!NOTE]
->  Sie können derzeit keine Daten in einem Speicherkonto archivieren, das sich hinter einem geschützten virtuellen Netzwerk befindet.
-
-> [!WARNING]
-> Das Format der Protokolldaten im Speicherkonto wurde am 1. November 2018 in JSON Lines geändert. [Dieser Artikel enthält eine Beschreibung der Auswirkungen und der Aktualisierung Ihrer Tools zur Verarbeitung des neuen Formats.](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md)
->
->
 
 Diese Einstellungen können über die Option „Exportieren“ auf dem Blatt „Aktivitätsprotokoll“ im Portal konfiguriert werden. Sie können auch [mithilfe der Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931927.aspx), über PowerShell-Cmdlets oder über die Befehlszeilenschnittstelle programmgesteuert konfiguriert werden. Ein Abonnement kann nur über ein Protokollprofil verfügen.
 
@@ -151,7 +146,7 @@ Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resour
 | Name |Ja |Name des Protokollprofils. |
 | StorageAccountId |Nein  |Ressourcen-ID des Speicherkontos, in dem das Aktivitätsprotokoll gespeichert werden soll. |
 | serviceBusRuleId |Nein  |Service Bus-Regel-ID für den Service Bus-Namespace, unter dem Event Hubs erstellt werden sollen. Dies ist eine Zeichenfolge mit dem folgenden Format: `{service bus resource ID}/authorizationrules/{key name}`. |
-| Location |Ja |Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. |
+| Standort |Ja |Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. |
 | RetentionInDays |Ja |Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von 0 werden die Protokolle dauerhaft (d.h. für immer) gespeichert. |
 | Category (Kategorie) |Nein  |Kommagetrennte Liste mit den Ereigniskategorien, die erfasst werden sollen. Mögliche Werte sind „Write“, „Delete“ und „Action“. |
 

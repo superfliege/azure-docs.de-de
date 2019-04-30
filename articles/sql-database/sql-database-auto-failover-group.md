@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: cf163b2b01b4205a4a3d2123263988998130c42a
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.date: 04/19/2019
+ms.openlocfilehash: f382cc547640969f934b94405b635c9e84f10791
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58848387"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009071"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 
@@ -77,11 +77,11 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
 
   - **DNS CNAME-Eintrag des SQL-Datenbank-Servers für Lese-/Schreib-Listener**
 
-     Auf einem SQL-Datenbank-Server hat der DNS CNAME-Eintrag für die Failovergruppe, die auf die URL der aktuellen primären Datenbank verweist, die Form `failover-group-name.database.windows.net`.
+     Auf einem SQL-Datenbank-Server hat der DNS CNAME-Eintrag für die Failovergruppe, die auf die URL der aktuellen primären Datenbank verweist, die Form `<fog-name>.database.windows.net`.
 
   - **DNS CNAME-Eintrag der verwalteten Instanz für Lese-/Schreib-Listener**
 
-     In einer verwalteten Instanz hat der DNS CNAME-Eintrag für die Failovergruppe, die auf die URL der aktuellen primären Datenbank verweist, die Form `failover-group-name.zone_id.database.windows.net`.
+     In einer verwalteten Instanz hat der DNS CNAME-Eintrag für die Failovergruppe, die auf die URL der aktuellen primären Datenbank verweist, die Form `<fog-name>.zone_id.database.windows.net`.
 
 - **Nur-Lese-Failovergruppenlistener**
 
@@ -89,11 +89,11 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
 
   - **DNS CNAME-Eintrag des SQL-Datenbank-Servers für schreibgeschützte Listener**
 
-     Auf einem SQL-Datenbank-Server hat der DNS CNAME-Eintrag für den schreibgeschützten Listener, der auf die URL der sekundären Datenbank verweist, die Form `failover-group-name.secondary.database.windows.net`.
+     Auf einem SQL-Datenbank-Server hat der DNS CNAME-Eintrag für den schreibgeschützten Listener, der auf die URL der sekundären Datenbank verweist, die Form `'.secondary.database.windows.net`.
 
   - **DNS CNAME-Eintrag der verwalteten Instanz für Nur-Lese-Listener**
 
-     In einer verwalteten Instanz hat der DNS CNAME-Eintrag für den Nur-Lese-Listener, der auf die URL der aktuellen sekundären Datenbank verweist, die Form `failover-group-name.zone_id.database.windows.net`.
+     In einer verwalteten Instanz hat der DNS CNAME-Eintrag für den Nur-Lese-Listener, der auf die URL der aktuellen sekundären Datenbank verweist, die Form `<fog-name>.zone_id.database.windows.net`.
 
 - **Richtlinie für automatisches Failover**
 
@@ -156,11 +156,11 @@ Beim Entwerfen eines Diensts, der die Geschäftskontinuität aufrechterhalten so
 
 - **Lese-/Schreib-Listener für OLTP-Workload verwenden**
 
-  Verwenden Sie beim Durchführen von OLTP-Vorgängen `failover-group-name.database.windows.net` als Server-URL, damit die Verbindungen automatisch an die primäre Datenbank weitergeleitet werden. Diese URL wird nach dem Failover nicht geändert. Beachten Sie, dass das Failover die Aktualisierung von DNS-Einträgen einschließt, damit die Clientverbindungen erst dann an die neue primäre Datenbank weitergeleitet werden, wenn der Client-DNS-Cache aktualisiert wurde.
+  Verwenden Sie beim Durchführen von OLTP-Vorgängen `<fog-name>.database.windows.net` als Server-URL, damit die Verbindungen automatisch an die primäre Datenbank weitergeleitet werden. Diese URL wird nach dem Failover nicht geändert. Beachten Sie, dass das Failover die Aktualisierung von DNS-Einträgen einschließt, damit die Clientverbindungen erst dann an die neue primäre Datenbank weitergeleitet werden, wenn der Client-DNS-Cache aktualisiert wurde.
 
 - **Nur-Lese-Listener für schreibgeschützte Workload verwenden**
 
-  Wenn Sie über eine logisch isolierte schreibgeschützte Workload verfügen, die gegenüber einer bestimmten Veraltung tolerant ist, können Sie die sekundäre Datenbank in der Anwendung verwenden. Verwenden Sie für schreibgeschützte Sitzungen `failover-group-name.secondary.database.windows.net` als Server-URL, damit die Verbindung automatisch an die sekundäre Datenbank weitergeleitet wird. Es wird außerdem empfohlen, in der Verbindungszeichenfolge die Leseabsicht anzugeben. Verwenden Sie dazu **ApplicationIntent=ReadOnly**.
+  Wenn Sie über eine logisch isolierte schreibgeschützte Workload verfügen, die gegenüber einer bestimmten Veraltung tolerant ist, können Sie die sekundäre Datenbank in der Anwendung verwenden. Verwenden Sie für schreibgeschützte Sitzungen `<fog-name>.secondary.database.windows.net` als Server-URL, damit die Verbindung automatisch an die sekundäre Datenbank weitergeleitet wird. Es wird außerdem empfohlen, in der Verbindungszeichenfolge die Leseabsicht anzugeben. Verwenden Sie dazu **ApplicationIntent=ReadOnly**.
 
 - **Vorbereitung auf die Beeinträchtigung der Leistung**
 
@@ -206,7 +206,7 @@ Wenn Ihre Anwendung die verwaltete Instanz als Datenebene verwendet, beachten Si
 
 - **Lese-/Schreib-Listener für OLTP-Workload verwenden**
 
-  Verwenden Sie beim Durchführen von OLTP-Vorgängen `failover-group-name.zone_id.database.windows.net` als Server-URL, damit die Verbindungen automatisch an die primäre Datenbank weitergeleitet werden. Diese URL wird nach dem Failover nicht geändert. Das Failover umfasst die Aktualisierung von DNS-Einträgen, damit die Clientverbindungen erst dann an die neue primäre Datenbank weitergeleitet werden, wenn der Client-DNS-Cache aktualisiert wurde. Da die sekundäre Instanz die gleiche DNS-Zone wie die primäre Instanz verwendet, kann die Clientanwendung mit dem gleichen SAN-Zertifikat erneut eine Verbindung herstellen.
+  Verwenden Sie beim Durchführen von OLTP-Vorgängen `<fog-name>.zone_id.database.windows.net` als Server-URL, damit die Verbindungen automatisch an die primäre Datenbank weitergeleitet werden. Diese URL wird nach dem Failover nicht geändert. Das Failover umfasst die Aktualisierung von DNS-Einträgen, damit die Clientverbindungen erst dann an die neue primäre Datenbank weitergeleitet werden, wenn der Client-DNS-Cache aktualisiert wurde. Da die sekundäre Instanz die gleiche DNS-Zone wie die primäre Instanz verwendet, kann die Clientanwendung mit dem gleichen SAN-Zertifikat erneut eine Verbindung herstellen.
 
 - **Direktes Verbinden mit der georeplizierten sekundären Datenbank für schreibgeschützte Abfragen**
 
@@ -214,8 +214,8 @@ Wenn Ihre Anwendung die verwaltete Instanz als Datenebene verwendet, beachten Si
 
   > [!NOTE]
   > Bei bestimmten Dienstebenen unterstützt Azure SQL-Datenbank die Verwendung von [schreibgeschützten Replikaten](sql-database-read-scale-out.md) für den Lastenausgleich schreibgeschützter Abfrageworkloads, wobei die Kapazität eines schreibgeschützten Replikats und der Parameter `ApplicationIntent=ReadOnly` in der Verbindungszeichenfolge verwendet werden. Wenn Sie eine georeplizierte sekundäre Datenbank konfiguriert haben, können Sie mit dieser Funktion eine Verbindung entweder mit einem schreibgeschützten Replikat am primären Standort oder am geografisch replizierten Standort herstellen.
-  > - Zum Herstellen einer Verbindung mit einem schreibgeschützten Replikat am primären Standort verwenden Sie `failover-group-name.zone_id.database.windows.net`.
-  > - Zum Herstellen einer Verbindung mit einem schreibgeschützten Replikat am sekundären Standort verwenden Sie `failover-group-name.secondary.zone_id.database.windows.net`.
+  > - Zum Herstellen einer Verbindung mit einem schreibgeschützten Replikat am primären Standort verwenden Sie `<fog-name>.zone_id.database.windows.net`.
+  > - Zum Herstellen einer Verbindung mit einem schreibgeschützten Replikat am sekundären Standort verwenden Sie `<fog-name>.secondary.zone_id.database.windows.net`.
 
 - **Vorbereitung auf die Beeinträchtigung der Leistung**
 

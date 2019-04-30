@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.author: sgilley
 author: sdgilley
-ms.date: 03/21/2019
-ms.openlocfilehash: f417aef1fd1cc48a37399ff7a157a0e658bbbb02
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.date: 04/19/2019
+ms.openlocfilehash: cc6c93420e939e90e12b989def491199fd2c6b15
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58879283"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006997"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace"></a>Erstellen eines Azure Machine Learning Service-Arbeitsbereichs
 
@@ -27,12 +27,14 @@ In diesem Artikel erfahren Sie, wie Sie einen Arbeitsbereich mit einer der folge
 * über eine Azure Resource Manager-Vorlage
 * über die [Azure Machine Learning-CLI](#cli)
 
-Der Arbeitsbereich, den Sie mithilfe der Schritte in diesem Artikel befolgen, kann als Ausgangspunkt für andere Tutorials und exemplarische Vorgehensweisen verwendet werden. 
+Der Arbeitsbereich, den Sie mithilfe der Schritte in diesem Artikel befolgen, kann als Ausgangspunkt für andere Tutorials und exemplarische Vorgehensweisen verwendet werden.
+
+Wenn Sie ein Skript zum Einrichten von automatisiertem, maschinellem Lernen in einer lokalen Python-Umgebung verwenden möchten, finden Sie Anweisungen dazu im [GitHub-Repository Azure/MachineLearningNotebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning).  
 
 Wenn Sie einen Arbeitsbereich erstellen, werden folgende Azure-Ressourcen automatisch hinzugefügt, sofern sie regional verfügbar sind:
  
 - [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)
-- [Azure Storage](https://azure.microsoft.com/services/storage/)
+- [Azure Storage (in englischer Sprache)](https://azure.microsoft.com/services/storage/)
 - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
@@ -160,7 +162,7 @@ Erstellen Sie mit dem Python SDK Ihren Arbeitsbereich in einer Jupyter Notebook-
 
 ### <a name="write-a-configuration-file"></a>Schreiben einer Konfigurationsdatei
 
-Speichern Sie die Details Ihres Arbeitsbereichs in einer Konfigurationsdatei im aktuellen Verzeichnis. Diese Datei hat den Namen *aml_config\config.json*.  
+Speichern Sie die Details Ihres Arbeitsbereichs in einer Konfigurationsdatei im aktuellen Verzeichnis. Der Name dieser Datei lautet *.azureml/config.json*.  
 
 Diese Konfigurationsdatei für den Arbeitsbereich erleichtert das spätere Laden desselben Arbeitsbereichs. Sie können ihn mit anderen Notebooks und Skripts im gleichen Verzeichnis oder in einem Unterverzeichnis laden, indem Sie den Code `ws=Workspace.from_config()` ausführen. 
 
@@ -177,13 +179,14 @@ Mit dem API-Aufruf `write_config()` wird die Konfigurationsdatei im aktuellen Ve
 ```
 
 > [!TIP]
-> Wenn Sie Ihren Arbeitsbereich in Python-Skripts oder Jupyter-Notebooks verwenden möchten, die sich in anderen Verzeichnissen befinden, kopieren Sie diese Datei in das entsprechende Verzeichnis. Die Datei kann sich im selben Verzeichnis, in einem Unterverzeichnis mit dem Namen *aml_config* oder in einem übergeordneten Verzeichnis befinden.
+> Wenn Sie Ihren Arbeitsbereich in Python-Skripts oder Jupyter-Notebooks verwenden möchten, die sich in anderen Verzeichnissen befinden, kopieren Sie diese Datei in das entsprechende Verzeichnis. Die Datei kann sich im selben Verzeichnis, in einem Unterverzeichnis namens *.azureml* oder in einem übergeordneten Verzeichnis befinden.
 
 ## <a name="resource-manager-template"></a>Resource Manager-Vorlage
 
 Weitere Informationen zum Erstellen eines Arbeitsbereichs mithilfe einer Vorlage finden Sie unter [Erstellen eines Azure Machine Learning Service-Arbeitsbereichs mithilfe einer Vorlage](how-to-create-workspace-template.md).
 
-## <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
+<a name="cli"></a>
+## <a name="command-line-interface"></a>Befehlszeilenschnittstelle
 
 Weitere Informationen zum Erstellen eines Arbeitsbereichs mit der CLI finden Sie unter [Verwenden der CLI-Erweiterung für Azure Machine Learning Service](reference-azure-machine-learning-cli.md).
 

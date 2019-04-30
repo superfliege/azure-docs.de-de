@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: b56cbfbc9dfde8b1a7d43d55ee85c34fde385902
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 5eba650ac2a052f264d82260e9fc07bf195235da
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58846384"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148933"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Zugreifen auf Blob- oder Warteschlangendaten über das Azure-Portal
 
@@ -47,7 +47,7 @@ Die Zuweisung der Rolle **Leser** oder einer anderen Azure Resource Manager-Roll
 
 Es folgen die integrierten Rollen, die den Zugriff auf Ihre Blob- oder Warteschlangendaten unterstützen:
 
-- [Besitzer von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner): Dient zur Steuerung des POSIX-Zugriffs für Azure Data Lake Storage Gen2 (Vorschauversion).
+- [Besitzer von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner): Dient zur Steuerung des POSIX-Zugriffs für Azure Data Lake Storage Gen2.
 - [Mitwirkender an Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor): Weist Lese-, Schreib- und Löschberechtigungen für Blobs zu.
 - [Leser von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader): Weist ausschließlich Leseberechtigungen für Blobs zu.
 - [Mitwirkender an Storage-Warteschlangendaten](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor): Weist Lese-, Schreib- und Löschberechtigungen für Warteschlangen zu.

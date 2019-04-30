@@ -13,10 +13,10 @@ ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 123a24eb13de584d8e3b70d0d8b1173f583867c1
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58881425"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse"></a>Erstellen der ersten Funktion mit Java und Eclipse 
@@ -49,8 +49,8 @@ Es wird dringend empfohlen, auch [Version 2 der Azure Functions Core Tools](func
 1. Wählen Sie **Add Archetype** (Archetyp hinzufügen) aus, und fügen Sie die Einträge für [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) hinzu.
     - Archetypgruppen-ID: com.microsoft.azure
     - Archetypartefakt-ID: azure-functions-archetype
-    - Version: Verwenden der neusten Version des [zentralen Repositorys](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    ![In Eclipse/Maven erstellen](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
+    - Version: Verwenden Sie die neuste Version aus dem [zentralen Repository.](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    ![Erstellung eines Maven-Projekts in Eclipse](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
 1. Klicken Sie auf **OK**, und geben Sie die Details zum aktuellen Projekt an. Klicken Sie anschließend auf **Finish** (Fertig stellen).
 
 Maven erstellt die Projektdateien in einem neuen Ordner mit dem Namen _artifactId_. Bei dem generierten Code im Projekt handelt es sich um eine einfache [durch HTTP ausgelöste](/azure/azure-functions/functions-bindings-http-webhook) Funktion, die den Körper der über HTTP ausgelösten Anforderung wiederholt.

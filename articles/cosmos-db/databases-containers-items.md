@@ -4,15 +4,15 @@ description: In diesem Artikel wird die Erstellung und Verwendung von Azure Cosm
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/31/2019
+ms.date: 04/17/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: f3bec1b279c07e62e246ebfa933b3942e38406de
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: 8eaca83b7ea89737a63fe56a18505c8df7e93fdc
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762904"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678793"
 ---
 # <a name="work-with-databases-containers-and-items"></a>Arbeiten mit Datenbanken, Containern und Elementen
 
@@ -61,7 +61,7 @@ Sie können die [Gültigkeitsdauer (TTL)](time-to-live.md) für ausgewählte Ele
 
 Durch Verwenden des [Änderungsfeeds](change-feed.md) können Sie das Vorgangsprotokoll abonnieren, das für jede logische Partition des Containers verwaltet wird. Der Änderungsfeed enthält das Protokoll aller Aktualisierungen, die für den Container durchgeführt wurden, sowie die Vorher- und Nachher-Images der Elemente. Siehe [Erstellen von reaktiven Anwendungen mit dem Änderungsfeed](serverless-computing-database.md). Sie können auch die Aufbewahrungsdauer für den Änderungsfeed konfigurieren, indem Sie die Änderungsfeedrichtlinie für den Container verwenden. 
 
-Sie können [gespeicherte Prozeduren, Trigger, benutzerdefinierte Funktionen (UDFs)](stored-procedures-triggers-udfs.md) und [Mergeprozeduren](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy-with-a-stored-procedure) beim Azure Cosmos-Container registrieren. 
+Sie können [gespeicherte Prozeduren, Trigger, benutzerdefinierte Funktionen (UDFs)](stored-procedures-triggers-udfs.md) und [Mergeprozeduren](how-to-manage-conflicts.md) beim Azure Cosmos-Container registrieren. 
 
 Sie können eine [eindeutige Schlüsseleinschränkung](unique-keys.md) für den Azure Cosmos-Container angeben. Durch Erstellen einer Richtlinie für eindeutige Schlüssel wird die Eindeutigkeit von einem oder mehreren Werten pro logischem Partitionsschlüssel sichergestellt. Nachdem ein Container mit einer Richtlinie für eindeutige Schlüssel erstellt wurde, ist keine Erstellung neuer oder aktualisierter Elemente mit Werten möglich, die die durch die Einschränkung für eindeutige Schlüssel festgelegten Werte duplizieren. Weitere Informationen finden Sie unter [Einschränkungen für eindeutige Schlüssel](unique-keys.md).
 

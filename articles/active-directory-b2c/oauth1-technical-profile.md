@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 86de73394d96d1122abce44504d2b0fd99a01841
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 3fe839de8cbaa0b321b0b0602b000b7575224dde
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58915781"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010057"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen OAuth1-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C bietet Unterstützung für Identitätsanbieter mit dem [OAuth 1.0-Protokoll](https://tools.ietf.org/html/rfc5849). Dieser Artikel beschreibt die Einzelheiten eines technischen Profils für die Interaktion mit einem Anspruchsanbieter, der dieses standardisierte Protokoll unterstützt. Mit dem technischen OAuth1-Profil können Sie einen Verbund mit einem OAuth1-basierten Identitätsanbieter, z.B. Twitter, erstellen und es damit Benutzern ermöglichen, sich mit ihren vorhandenen Anmeldungen in sozialen Netzen oder mit Unternehmensidentitäten anzumelden.
+Azure Active Directory (Azure AD) B2C bietet Unterstützung für Identitätsanbieter mit dem [OAuth 1.0-Protokoll](https://tools.ietf.org/html/rfc5849). In diesem Artikel werden die Einzelheiten eines technischen Profils für die Interaktion mit einem Anspruchsanbieter thematisiert, der dieses standardisierte Protokoll unterstützt. Mit einem technischen OAuth1-Profil können Sie einen Verbund mit einem OAuth1-basierten Identitätsanbieter wie Twitter erstellen. Über einen Verbund mit dem Identitätsanbieter können sich Benutzer mit ihren vorhandenen Identitäten aus sozialen Netzwerken oder Unternehmen anmelden.
 
 ## <a name="protocol"></a>Protokoll
 
@@ -46,7 +46,7 @@ Das **OutputClaimsTransformations**-Element darf eine Sammlung von **OutputClaim
 
 Das folgende Beispiel zeigt die Ansprüche, die vom Identitätsanbieter Twitter zurückgegeben wurden:
 
-- Der Anspruch **user_id** wird dem Anspruch **socialIdpUserId** zugeordnet.
+- Der Anspruch **user_id** wird dem Anspruch **issuerUserId** zugeordnet.
 - Der Anspruch **screen_name** wird dem Anspruch **displayName** zugeordnet.
 - Dem Anspruch **email** wird kein Name zugeordnet.
 
@@ -57,7 +57,7 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 
 ```xml
 <OutputClaims>
-  <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="user_id" />
+  <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="user_id" />
   <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="screen_name" />
   <OutputClaim ClaimTypeReferenceId="email" />
   <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="twitter.com" />
@@ -87,7 +87,7 @@ Das **CryptographicKeys**-Element enthält das folgende Attribut:
 
 ## <a name="redirect-uri"></a>Umleitungs-URI
 
-Wenn Sie die Umleitungs-URL Ihres Identitätsanbieters konfigurieren, geben Sie `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp` an. Ersetzen Sie **tenant** durch den Namen Ihres Mandanten (z.B. contosob2c.onmicrosoft.com) und **policyId** durch Ihre Richtlinien-ID (z.B. b2c_1_policy). Der Umleitungs-URI muss klein geschrieben sein. Sie sollten einen Umleitungs-URI für alle Richtlinien hinzufügen, die die Anmeldung des Identitätsanbieters verwenden. 
+Wenn Sie die Umleitungs-URL Ihres Identitätsanbieters konfigurieren, geben Sie `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp` an. Ersetzen Sie **tenant** durch den Namen Ihres Mandanten (z.B. contosob2c.onmicrosoft.com) und **policyId** durch Ihre Richtlinien-ID (z.B. b2c_1_policy). Der Umleitungs-URI muss klein geschrieben sein. Fügen Sie eine Umleitungs-URL für alle Richtlinien hinzu, die die Anmeldung des Identitätsanbieters verwenden. 
 
 Achten Sie bei Verwendung der Domäne **b2clogin.com** anstelle von **login.microsoftonline.com** darauf, b2clogin.com anstelle von login.microsoftonline.com zu verwenden.
 

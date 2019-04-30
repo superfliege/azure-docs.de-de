@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: danlep
 ms.openlocfilehash: b2398e7db7ed91dee8d85c0c50058bb15b9f4c7e
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58894131"
 ---
 # <a name="acr-tasks-reference-yaml"></a>Referenz zu ACR Tasks: YAML
@@ -404,8 +404,8 @@ az acr run -f when-parallel-dependent.yaml https://github.com/Azure-Samples/acr-
 
 Die `when`-Eigenschaft gibt die Abhängigkeit eines Schritts von anderen Schritten innerhalb der Aufgabe an. Sie unterstützt zwei Parameterwerte:
 
-* `when: ["-"]` – Gibt an, dass keine Abhängigkeit von anderen Schritten besteht. Ein Schritt mit `when: ["-"]` wird sofort ausgeführt und ermöglicht die gleichzeitige Ausführung von Schritten.
-* `when: ["id1", "id2"]` – Gibt an, dass der Schritt von den Schritten mit `id` „id1“ und `id` „id2“ abhängig ist. Dieser Schritt wird erst ausgeführt, nachdem die Schritte „id1“ und „id2“ abgeschlossen wurden.
+* `when: ["-"]`: Gibt an, dass keine Abhängigkeit von anderen Schritten besteht. Ein Schritt mit `when: ["-"]` wird sofort ausgeführt und ermöglicht die gleichzeitige Ausführung von Schritten.
+* `when: ["id1", "id2"]`: Gibt an, dass der Schritt von den Schritten mit `id` „id1“ und `id` „id2“ abhängig ist. Dieser Schritt wird erst ausgeführt, nachdem die Schritte „id1“ und „id2“ abgeschlossen wurden.
 
 Wenn `when` nicht in einem Schritt angegeben ist, ist dieser Schritt vom Abschluss des vorangehenden Schritts in der Datei `acr-task.yaml` abhängig.
 

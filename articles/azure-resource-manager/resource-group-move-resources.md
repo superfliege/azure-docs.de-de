@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/04/2019
+ms.date: 04/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: f5ff43102c42823891f2035c3f577e7def87fcb7
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: dfe2a103005cc48860c7bbeb3036afe94ff3a559
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528236"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004056"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -63,7 +63,7 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * Azure Database for MariaDB
 * Azure Database for MySQL
 * Azure Database for PostgreSQL
-* Azure DevOps – Azure DevOps-Unternehmen mit erworbenen Erweiterungen, die nicht von Microsoft stammen, müssen ihre [Käufe stornieren](https://go.microsoft.com/fwlink/?linkid=871160), bevor sie das Konto zwischen Abonnements verschieben können.
+* Azure DevOps: Führen Sie die Schritte unter [Ändern des zur Abrechnung verwendeten Azure-Abonnements](/azure/devops/organizations/billing/change-azure-subscription?view=azure-devops) aus.
 * Azure Maps
 * Azure Monitor-Protokolle
 * Azure Relay
@@ -74,7 +74,7 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * CDN
 * Cloud Services – siehe [Einschränkungen bei der klassischen Bereitstellung](#classic-deployment-limitations)
 * Cognitive Services
-* Container Registry – eine Container Registry-Instanz kann nicht verschoben werden, wenn die geografische Replikation aktiviert ist.
+* Containerregistrierung
 * Content Moderator
 * Cost Management
 * Customer Insights

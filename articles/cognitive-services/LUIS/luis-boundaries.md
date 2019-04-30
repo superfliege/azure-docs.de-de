@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 04/18/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 51f5355e365d0dcf7a103deab3356f015e75641e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 58f6d6cf8bf16f7c35bab35a69cfcdf8759f66ae
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897511"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006827"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Grenzen für das LUIS-Modell und die Schlüssel
 Für LUIS gelten verschiedene Einschränkungsbereiche. Der erste umfasst die [Modelleinschränkung](#model-boundaries), mit der Absichten, Entitäten und Features in LUIS gesteuert werden. Der zweite Bereich sind [Kontingentlimits](#key-limits), die auf dem Schlüsseltyp basieren. Ein dritter Bereich umfasst die [Tastenkombinationen](#keyboard-controls) zum Steuern der LUIS-Website. Ein vierter Bereich bezieht sich auf die [Zuordnung der Regionen weltweit](luis-reference-regions.md) zwischen der LUIS-Erstellungswebsite und den LUIS-[Endpunkt](luis-glossary.md#endpoint)-APIs. 
@@ -47,16 +47,16 @@ Wenn Ihre App die LUIS-Modellgrenzwerte und -grenzen überschreitet, sollten Sie
 
 * Das Standardzeichenlimit beträgt 50 Zeichen. 
 
-## <a name="intent-and-entity-naming"></a>Namen von Absichten und Entitäten
-Verwenden Sie die folgenden Zeichen nicht in Namen von Absichten und Entitäten:
+<a name="intent-and-entity-naming"></a>
 
-|Zeichen|NAME|
+## <a name="object-naming"></a>Benennung der Objekte
+
+Verwenden Sie die folgenden Zeichen in den folgenden Namen.
+
+|Object|Zeichen ausschließen|
 |--|--|
-|`{`|Linke geschweifte Klammer|
-|`}`|Rechte geschweifte Klammer|
-|`[`|Linke eckige Klammer|
-|`]`|Rechte eckige Klammer|
-|`\`|Umgekehrter Schrägstrich|
+|Absicht, Entität und Rollennamen|`:`<br>`$`|
+|Versionsname|`\`<br> `/`<br> `:`<br> `?`<br> `&`<br> `=`<br> `*`<br> `+`<br> `(`<br> `)`<br> `%`<br> `@`<br> `$`<br> `~`<br> `!`<br> `#`|
 
 ## <a name="key-usage"></a>Schlüsselverwendung
 

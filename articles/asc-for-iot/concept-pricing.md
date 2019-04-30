@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
 ms.openlocfilehash: 41b2d012ef2f6dd1ca5f57e04da43eb1a06dafde
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862708"
 ---
 # <a name="pricing-and-associated-costs"></a>Preise und anfallende Kosten
@@ -75,7 +75,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der anfallenden Kosten und Au
   
 | Deaktivierung | Auswirkungen |
 | --- | --- |
-| _Twin metadata collection (Sammlung mit Gerätezwilling-Metadaten)_ | [Benutzerdefinierte Benachrichtigungen](quickstart-create-custom-alerts.md) sind deaktiviert |
+| _Twin metadata collection (Sammlung von Gerätezwillingsmetadaten)_ | [Benutzerdefinierte Benachrichtigungen](quickstart-create-custom-alerts.md) sind deaktiviert |
 | | Empfehlungen zum IoT Edge-Manifest sind deaktiviert |
 | | Empfehlungen und Warnungen basierend auf Geräteidentität sind deaktiviert |
 | _Store raw device security events (Sicherheitsrohereignisse für Geräte speichern)_ | Details zu grundlegenden Empfehlungen zum Gerätebetriebssystem sind nicht verfügbar |

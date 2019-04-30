@@ -2,16 +2,17 @@
 title: 'Business Continuity & Disaster Recovery (BCDR): Azure-Regionspaare | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Azure-Regionspaare sicherstellen, dass Anwendungen auch bei Rechenzentrumsausfällen stabil ausgeführt werden.
 author: rayne-wiselman
+manager: carmon
 ms.service: multiple
 ms.topic: article
-ms.date: 12/23/2018
+ms.date: 04/17/2019
 ms.author: raynew
-ms.openlocfilehash: d27db03977b84002b59d58327af7d14fbdc713c2
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: ecbe73e02631e3c3601bd929282d467cb05b41e4
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792318"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678869"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Business Continuity & Disaster Recovery (BCDR): Azure-Regionspaare
 
@@ -37,6 +38,7 @@ Abbildung 1: Azure-Regionspaare
 | Europa |Nordeuropa |Europa, Westen |
 | Frankreich |Frankreich, Mitte|Frankreich, Süden|
 | Deutschland |Deutschland, Mitte |Deutschland, Nordosten |
+| Deutschland |Deutschland, Norden | Deutschland, Westen-Mitte
 | Indien |Indien, Mitte |Indien (Süden) |
 | Indien |Indien, Westen |Indien (Süden) |
 | Japan |Japan, Osten |Japan, Westen |
@@ -45,7 +47,14 @@ Abbildung 1: Azure-Regionspaare
 | Nordamerika |USA (Ost) 2 |USA (Mitte) |
 | Nordamerika |USA Nord Mitte |USA Süd Mitte |
 | Nordamerika |USA, Westen 2 |USA, Westen-Mitte 
+| Nordamerika |USA, Westen 3 |USA (Ost)
+| Norwegen |Norwegen, Osten |Norwegen, Westen
+| Südafrika | Südafrika, Norden | Südafrika, Westen
+| Schweden |Schweden, Mitte |Schweden, Süden
+| Schweiz | Schweiz, Norden | Schweiz, Westen
 | UK |UK, Westen |UK, Süden |
+| UK |Vereinigtes Königreich, Norden |Vereinigtes Königreich, Süden 2
+| Vereinigte Arabische Emirate | Vereinigte Arabische Emirate, Norden | Vereinigte Arabische Emirate, Mitte
 | US-Verteidigungsministerium |US DoD, Osten |US DoD, Mitte |
 | US Government |US Gov Arizona |US Gov Texas |
 | US Government |US Gov Iowa |US Government, Virginia |
@@ -53,10 +62,11 @@ Abbildung 1: Azure-Regionspaare
 
 Tabelle 1: Übersicht über Azure-Regionspaare
 
-- „Indien (Westen)“ ist anders, weil es mit einer anderen Region nur in eine Richtung ein Paar bildet. Die sekundäre Region von Indien (Westen) ist Indien (Süden), aber die sekundäre Region für Indien (Süden) ist Indien (Mitte).
-- „Brasilien (Süden)“ ist einzigartig, da diese Region ein Paar mit einer Region außerhalb der eigenen Geografie bildet. „USA, Süden-Mitte“ fungiert als sekundäre Region von „Brasilien, Süden“, „Brasilien, Süden“ aber nicht als sekundäre Region von „USA, Süden-Mitte“.
-- Die sekundäre Region von „US Gov Iowa“ ist „US Gov Virginia“, die sekundäre Region von „US Gov Virginia“ ist jedoch nicht „US Gov Iowa“.
-- Die sekundäre Region von „US Gov Virginia“ ist „US Gov Texas“, die sekundäre Region von „US Gov Texas“ ist jedoch nicht „US Gov Virginia“.
+- „Indien, Westen“ wird nur in einer Richtung zugeordnet. Die sekundäre Region von Indien (Westen) ist Indien (Süden), aber die sekundäre Region für Indien (Süden) ist Indien (Mitte).
+- „Brasilien (Süden)“ ist einzigartig, da diese Region ein Paar mit einer Region außerhalb der eigenen Geografie bildet. Die sekundäre Region von „Brasilien, Süden“ ist „USA, Süden-Mitte“. Die sekundäre Region von „USA, Süden-Mitte“ ist nicht „Brasilien, Süden“.
+- Die sekundäre Region von „USA Gov Iowa“ ist „USA Gov Virginia“.
+- Die sekundäre Region von „USA Gov Virginia“ ist „USA Gov Texas“.
+- Die sekundäre Region von „USA Gov Texas“ ist „USA Gov Arizona“.
 
 
 Wir empfehlen das Konfigurieren von Business Continuity Disaster Recovery (BCDR) zwischen Regionalpaaren, um von Richtlinien für Isolierung und Verfügbarkeit von Azure zu profitieren. Bei Anwendungen, die mehrere aktive Regionen unterstützen, empfehlen wir nach Möglichkeit die Verwendung beider Regionen in einem Regionspaar. Dadurch wird eine optimale Verfügbarkeit für Anwendungen und eine minimierte Wiederherstellungszeit in einem Notfall sichergestellt. 

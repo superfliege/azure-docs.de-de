@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: b78fb7d697f8a72b3c2f99c4509ea6ac5c5e5566
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59281181"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Herunterladen oder Anzeigen Ihrer Azure-Rechnungen und täglichen Nutzungsdaten
@@ -196,9 +196,9 @@ Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Support
 Lesen Sie die folgenden Artikel, um mehr über Ihre Rechnung und Gebühren zu erfahren:
 
 - [Informationen zu Ihrer Rechnung für Microsoft Azure](billing-understand-your-bill.md)
-- [Grundlegendes über Benennungen in Ihrer Azure-Rechnung](billing-understand-your-invoice.md)
+- [Grundlegendes zu den Benennungen in Ihrer Azure-Rechnung](billing-understand-your-invoice.md)
 - [Grundlegendes über Benennungen zu den Gebühren in der Datei mit ausführlichen Nutzungsdaten zu Microsoft Azure](billing-understand-your-usage.md)
-- [Anzeigen der Azure-Preise für Ihre Organisation](billing-ea-pricing.md)
+- [Anzeigen der Azure Enterprise Agreement-Preise für Ihre Organisation](billing-ea-pricing.md)
 
 Wenn Sie eine Microsoft-Kundenvereinbarung abgeschlossen haben, lesen Sie die folgenden Artikel:
 
@@ -206,4 +206,4 @@ Wenn Sie eine Microsoft-Kundenvereinbarung abgeschlossen haben, lesen Sie die fo
 - [Grundlegendes zu den Benennungen auf der Rechnung für Ihr Abrechnungsprofil](billing-mca-understand-your-invoice.md)
 - [Grundlegendes zur CSV-Datei für die Azure-Nutzung und -Gebühren für Ihr Abrechnungsprofil](billing-mca-understand-your-usage.md)
 - [Anzeigen und Herunterladen von Steuerdokumenten für Ihr Abrechnungsprofil](billing-mca-download-tax-document.md)
-- [Anzeigen der Azure-Preise für Ihre Organisation](billing-ea-pricing.md)
+- [Anzeigen der Azure Enterprise Agreement-Preise für Ihre Organisation](billing-ea-pricing.md)

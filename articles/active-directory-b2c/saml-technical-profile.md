@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/21/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d5120b7569acbe9735ea1a70fcb609d322d60793
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b0d1722df2bfe5116de2676dfc930d6050731bbd
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154370"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005025"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen SAML-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -81,21 +81,6 @@ Im folgenden Beispiel wird der Verschlüsselungsbereich der Metadaten des techni
   </KeyInfo>
 </KeyDescriptor>
 ```
-
-## <a name="identity-provider-initiated-flow"></a>Vom Identitätsanbieter initiierter Flow
-
-Bei einer vom ausstellenden Verteilungspunkt initiierten einmaligen Anmeldung (nicht angeforderte Anforderung) wird eine nicht angeforderte SAML-Antwort an den Dienstanbieter gesendet. In diesem Fall handelt es sich um ein technisches Azure AD B2C-Profil. In diesem Flow passiert der Benutzer nicht zuerst die Webanwendung, sondern wird an den Identitätsanbieter weitergeleitet. Wenn die Anforderung gesendet wird, wird dem Benutzer vom Identitätsanbieter eine Authentifizierungsseite bereitgestellt. Wenn der Benutzer die Anmeldung abschließt, wird die Anforderung mit einer SAML-Antwort, die die Assertionsanweisungen enthält, an Azure AD B2C gesendet. Azure AD B2C liest die Assertionsanweisungen und gibt ein neues SAML-Token aus. Anschließend wird der Benutzer zurück zur anspruchsbasierten Anwendung geleitet. Die Umleitungen werden von der **Location**-Eigenschaft des **AssertionConsumerService**-Elements durchgeführt.
-
-
-![SAML: vom ausstellenden Verteilungspunkt initiiert](media/saml-technical-profile/technical-profile-idp-saml-idp-initiated.png) 
-
-Beachten Sie die folgenden Richtlinienanforderungen beim Erstellen eines vom Identitätsanbieter initiierten Flows:
-
-- Im ersten Schritt der Orchestrierung muss ein einfacher Anspruchsaustausch ausgeführt werden, der auf ein technisches SAML-Profil hindeutet.
-- Das technische Profil muss ein Metadatenelement mit dem Namen **IdpInitiatedProfileEnabled** aufweisen und auf `true` festgelegt sein.
-- Die Richtlinie der vertrauenden Seite muss sich auf eine vertrauende SAML-Seite beziehen.
-- Die Richtlinie der vertrauenden Seite muss ein Metadatenelement mit dem Namen **IdpInitiatedProfileEnabled** aufweisen und auf `true` festgelegt sein.
-- Eine nicht angeforderte Antwort muss an den `/your-tenant/your-policy/samlp/sso/assertionconsumer`-Endpunkt gesendet werden. Jeder Relayzustand, der in der Antwort enthalten ist, wird an die vertrauende Seite weitergeleitet. Ersetzen Sie die folgenden Werte: **your-tenant** durch Ihren Mandantennamen. **your-policy** durch den Namen der Richtlinie für die vertrauende Seite.
     
 ## <a name="protocol"></a>Protokoll
 
@@ -111,7 +96,7 @@ Das **OutputClaimsTransformations**-Element darf eine Sammlung von **OutputClaim
  
 Das folgende Beispiel zeigt die Ansprüche, die vom Identitätsanbieter Facebook zurückgegeben wurden:
 
-- Der Anspruch **socialIdpUserId** wird dem Anspruch **assertionSubjectName** zugeordnet.
+- Der Anspruch **issuerUserId** wird dem Anspruch **assertionSubjectName** zugeordnet.
 - Der Anspruch **first_name** wird dem Anspruch **givenName** zugeordnet.
 - Der Anspruch **last_name** wird dem Anspruch **surname** zugeordnet.
 - Der Anspruch **displayName** erhält keine Namenszuordnung.
@@ -124,7 +109,7 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
  
 ```xml
 <OutputClaims>
-  <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="assertionSubjectName" />
+  <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="assertionSubjectName" />
   <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="first_name" />
   <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="last_name" />
   <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
@@ -138,8 +123,8 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| PartnerEntity | JA | URL zu den Metadaten des SAML-Identitätsanbieters. Kopieren Sie die Metadaten des Identitätsanbieters, und fügen Sie diese in das CDATA-Element `<![CDATA[Your IDP metadata]]>` ein. |
-| WantsSignedRequests | Nein  | Gibt an, ob das technische Profil verlangt, dass alle ausgehenden Authentifizierungsanforderungen signiert werden. Mögliche Werte: `true` oder `false`. Standardwert: `true`. Wenn der Wert auf `true` festgelegt ist, muss der kryptografische **SamlMessageSigning**-Schlüssel angegeben sein, und alle ausgehenden Authentifizierungsanforderungen werden signiert. Wenn der Wert auf `false` festgelegt ist, werden die Parameter **SigAlg** und **Signature** (Abfragezeichenfolgen- oder POST-Paramater) in der Anforderung ausgelassen. Diese Metadaten steuern auch das Metadatenattribut **AuthnRequestsSigned**, das in den Metadaten des technischen Azure AD B2C-Profils ausgegeben wird, das für den Identitätsanbieter freigegeben wird. Azure AD B2C signiert die Anforderung nicht, wenn in den Metadaten des technischen Profils **WantsSignedRequests** auf `false` und in den Metadaten des Identitätsanbieters **WantAuthnRequestsSigned** auf `false` festgelegt ist oder nicht angegeben wurde. |
+| PartnerEntity | Ja | URL zu den Metadaten des SAML-Identitätsanbieters. Kopieren Sie die Metadaten des Identitätsanbieters, und fügen Sie diese in das CDATA-Element `<![CDATA[Your IDP metadata]]>` ein. |
+| WantsSignedRequests | Nein  | Gibt an, ob das technische Profil verlangt, dass alle ausgehenden Authentifizierungsanforderungen signiert werden. Mögliche Werte: `true` oder `false`. Standardwert: `true`. Wenn der Wert auf `true` festgelegt ist, muss der kryptografische **SamlMessageSigning**-Schlüssel angegeben sein, und alle ausgehenden Authentifizierungsanforderungen werden signiert. Wenn der Wert auf `false` festgelegt ist, werden die Parameter **SigAlg** und **Signature** (Abfragezeichenfolgen- oder POST-Paramater) in der Anforderung ausgelassen. Diese Metadaten steuern auch das Metadatenattribut **AuthnRequestsSigned**, das in den Metadaten des technischen Azure AD B2C-Profils ausgegeben wird, das für den Identitätsanbieter freigegeben wird. Azure AD B2C signiert die Anforderung nicht, wenn der Wert von **WantsSignedRequests** in den Metadaten des technischen Profils auf `false` und in den Metadaten des Identitätsanbieters **WantAuthnRequestsSigned** auf `false` festgelegt ist oder nicht angegeben wurde. |
 | XmlSignatureAlgorithm | Nein  | Die Methode, die Azure AD B2C zur Signierung der SAML-Anforderung verwendet. Diese Metadaten steuern den Wert des **SigAlg**-Parameters (Abfragezeichenfolgen- oder POST-Parameter) in der SAML-Anforderung. Mögliche Werte: `Sha256`, `Sha384`, `Sha512` oder `Sha1`. Vergewissern Sie sich, dass Sie den Signaturalgorithmus auf beiden Seiten mit demselben Wert konfigurieren. Verwenden Sie nur den Algorithmus, den Ihr Zertifikat unterstützt. | 
 | WantsSignedAssertions | Nein  | Gibt an, ob das technische Profil verlangt, dass alle eingehenden Assertionsanweisungen signiert werden. Mögliche Werte: `true` oder `false`. Standardwert: `true`. Wenn der Wert auf `true` festgelegt ist, müssen alle Assertionsbereiche für `saml:Assertion` signiert werden, die vom Identitätsanbieter an Azure AD B2C gesendet werden. Wenn der Wert auf `false` festgelegt ist, sollte der Identitätsanbieter die Assertionsanweisungen nicht signieren. Wenn er dies allerdings doch tut, überprüft Azure AD B2C die Signatur nicht. Diese Metadaten steuern außerdem das Metadatenflag **WantsAssertionsSigned**, das in den Metadaten des technischen Azure AD B2C-Profils ausgegeben wird, das für den Identitätsanbieter freigegeben wird. Wenn Sie die Assertionsvalidierung deaktivieren, sollten Sie auch die Validierung der Antwortsignatur deaktivieren (weitere Informationen finden Sie unter **ResponsesSigned**). |
 | ResponsesSigned | Nein  | Mögliche Werte: `true` oder `false`. Standardwert: `true`. Wenn der Wert auf `false` festgelegt ist, sollte der Identitätsanbieter die SAML-Antwort nicht signieren. Wenn er dies allerdings doch tut, überprüft Azure AD B2C die Signatur nicht. Wenn der Wert auf `true` festgelegt ist, wird die vom Identitätsanbieter an Azure AD B2C gesendete SAML-Antwort signiert und muss überprüft werden. Wenn Sie die Validierung der SAML-Antwort deaktivieren, sollten Sie auch die Validierung der Assertionssignatur deaktivieren (weitere Informationen finden Sie unter **WantsSignedAssertions**). |
@@ -157,8 +142,8 @@ Das **CryptographicKeys**-Element enthält die folgenden Attribute:
 
 | Attribut |Erforderlich | BESCHREIBUNG |
 | --------- | ----------- | ----------- |
-| SamlMessageSigning |JA | Das X509-Zertifikat (RSA-Schlüssel) zum Signieren der SAML-Nachrichten. Azure AD B2C verwendet diesen Schlüssel, um die Anforderungen zu signieren und an den Identitätsanbieter zu senden. |
-| SamlAssertionDecryption |JA | Das X509-Zertifikat (RSA-Schlüssel) zum Entschlüsseln der SAML-Nachrichten. Das Zertifikat sollte vom Identitätsanbieter bereitgestellt werden. Azure AD B2C verwendet das Zertifikat, um die vom Identitätsanbieter gesendeten Daten zu senden. |
+| SamlMessageSigning |Ja | Das X509-Zertifikat (RSA-Schlüssel) zum Signieren der SAML-Nachrichten. Azure AD B2C verwendet diesen Schlüssel, um die Anforderungen zu signieren und an den Identitätsanbieter zu senden. |
+| SamlAssertionDecryption |Ja | Das X509-Zertifikat (RSA-Schlüssel) zum Entschlüsseln der SAML-Nachrichten. Das Zertifikat sollte vom Identitätsanbieter bereitgestellt werden. Azure AD B2C verwendet das Zertifikat, um die vom Identitätsanbieter gesendeten Daten zu senden. |
 | MetadataSigning |Nein  | Das X509-Zertifikat (RSA-Schlüssel) zum Signieren der SAML-Metadaten. Azure AD B2C verwendet diesen Schlüssel zum Signieren der Metadaten.  |
 
 ## <a name="examples"></a>Beispiele

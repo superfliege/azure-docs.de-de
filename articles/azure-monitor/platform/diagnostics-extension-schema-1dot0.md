@@ -9,19 +9,19 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 36b9e6c97a10f7608a4faaef005ca4eeb1fc09c6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: ac2b79d670b803573a359dfc9f8738f972f2d9b5
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811527"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59492718"
 ---
 # <a name="azure-diagnostics-10-configuration-schema"></a>Konfigurationsschema für die Azure-Diagnose 1.0
 > [!NOTE]
 > Azure-Diagnose ist die Komponente, die zum Erfassen von Leistungsindikatoren und anderen Statistiken aus Azure Virtual Machines, VM-Skalierungsgruppen, Service Fabric und Cloud Services verwendet wird.  Diese Seite ist nur relevant, wenn Sie einen dieser Dienste verwenden.
 >
 
-Azure-Diagnose wird zusammen mit anderen Microsoft-Diagnoseprodukten wie Azure Monitor, Application Insights und Log Analytics verwendet.
+Die Azure-Diagnose wird zusammen mit anderen Microsoft-Diagnoseprodukten wie der Plattform Azure Monitor verwendet, die Application Insights und Log Analytics einschließt.
 
 Die Azure-Diagnosekonfigurationsdatei definiert Werte, die verwendet werden, um den Diagnosemonitor zu initialisieren. Diese Datei wird verwendet, um beim Start des Diagnosemonitors Diagnosekonfigurationseinstellungen zu initialisieren.  
 

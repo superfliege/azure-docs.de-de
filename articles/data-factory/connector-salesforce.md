@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/28/2019
+ms.date: 04/19/2019
 ms.author: jingwang
-ms.openlocfilehash: 601ae4a896c4e52d8a1f4022c92a22988465369c
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 6056df9aa9079887bfb06ca20ad564eb52baff38
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578474"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008697"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopieren von Daten aus und nach Salesforce mit Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -35,7 +35,7 @@ Dieser Salesforce-Connector unterstützt insbesondere Folgendes:
 - Salesforce Developer, Professional, Enterprise oder Unlimited Edition.
 - Datenkopiervorgänge aus der und in die Produktionsumgebung, den Sandkasten und die benutzerdefinierte Domäne von Salesforce.
 
-Der Salesforce-Connector basiert auf der Salesforce-REST-API, wobei [v39](https://developer.salesforce.com/docs/atlas.en-us.206.0.api_rest.meta/api_rest/resources_list.htm) für das Kopieren von Daten in ausgehender Richtung und [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) für das Kopieren in eingehender Richtung genutzt wird.
+Der Salesforce-Connector basiert auf der Salesforce-REST-API und -Bulk-API, wobei [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) für das Kopieren ausgehender Daten und [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) für das Kopieren eingehender Daten genutzt wird.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -316,10 +316,10 @@ Beim Kopieren von Daten aus Salesforce werden die folgenden Zuordnungen von Sale
 | Salesforce-Datentyp | Data Factory-Zwischendatentyp |
 |:--- |:--- |
 | Auto Number |Zeichenfolge |
-| Kontrollkästchen |Boolescher Wert |
+| Kontrollkästchen |Boolean |
 | Currency |Decimal |
-| Datum |DateTime |
-| Datum/Uhrzeit |DateTime |
+| Datum |Datetime |
+| Datum/Uhrzeit |Datetime |
 | E-Mail |Zeichenfolge |
 | id |Zeichenfolge |
 | Lookup Relationship |Zeichenfolge |

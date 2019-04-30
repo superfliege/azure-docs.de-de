@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 6c9cb7282ba9d99ea643bbd023d876b8fbe3904c
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 891d2acc42f8d6f03976f0553e2e3127bc6d16f7
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59045593"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011253"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Datenerfassung im Azure-Daten-Explorer
 
@@ -52,7 +52,7 @@ Azure Data Explorer unterstützt derzeit Folgendes:
 
 ### <a name="ingestion-using-integration-services"></a>Erfassung mit Integrationsdiensten
 
-* Azure Data Factory (ADF) ist ein vollständig verwalteter Datenintegrationsdienst für Analyseworkloads in Azure, mit dem mithilfe [unterstützter Datenspeicher und -formate](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) Daten in und aus Azure Data Explorer kopiert werden können. Weitere Informationen finden Sie unter [Kopieren von Daten in oder aus Azure Data Explorer mithilfe von Azure Data Factory](/azure/data-factory/connector-azure-data-explorer).
+* Azure Data Factory (ADF) ist ein vollständig verwalteter Datenintegrationsdienst für Analyseworkloads in Azure, mit dem mithilfe [unterstützter Datenspeicher und -formate](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats) Daten in und aus Azure Data Explorer kopiert werden können. Weitere Informationen finden Sie unter [Copy data to Azure Data Explorer using Azure Data Factory (Kopieren von Daten aus Azure Data Factory in Azure Data Explorer)](/azure/data-explorer/data-factory-load-data).
 
 ### <a name="programmatic-ingestion"></a>Programmgesteuerte Erfassung
 
@@ -66,7 +66,7 @@ Kusto bietet Client SDKs, die zum Erfassen und Abfragen von Daten mit folgenden 
 
 * [.NET SDK](/azure/kusto/api/netfx/about-the-sdk)
 
-* [Java-SDK](/azure/kusto/api/java/kusto-java-client-library)
+* [Java SDK](/azure/kusto/api/java/kusto-java-client-library)
 
 * [Node SDK](/azure/kusto/api/node/kusto-node-client-library)
 
@@ -91,9 +91,9 @@ Kusto bietet Client SDKs, die zum Erfassen und Abfragen von Daten mit folgenden 
 | Methode | Latency |
 | --- | --- |
 | **Inline-Erfassung** | Unmittelbar |
-| **Erfassung aus der Abfrage** | Abfragezeit + Verarbeitungszeit |
+| **Erfassen aus der Abfrage** | Abfragezeit + Verarbeitungszeit |
 | **Erfassung aus dem Speicher** | Downloadzeit + Verarbeitungszeit |
-| **Erfassung aus der Warteschlange** | Batchverarbeitungszeit + Verarbeitungszeit |
+| **Erfassen aus der Warteschlange** | Batchverarbeitungszeit + Verarbeitungszeit |
 | |
 
 Verarbeitungszeit hängt von der Größe der Daten ab – weniger als einige Sekunden. Die Batchverarbeitungszeit beträgt standardmäßig fünf Minuten.
@@ -144,7 +144,7 @@ Die Schemazuordnung hilft dabei, Quelldatenfelder an Spalten der Zieltabelle zu 
 > [Erfassen von Daten aus Event Hub in Azure Data Explorer](ingest-data-event-hub.md)
 
 > [!div class="nextstepaction"]
-> [Erfassen von Blobs in Azure Data Explorer durch das Abonnieren von Event Grid-Benachrichtigungen](ingest-data-event-grid.md)
+> [Erfassen von Azure-Blobs in Azure Data Explorer durch Abonnieren von Event Grid-Benachrichtigungen](ingest-data-event-grid.md)
 
 > [!div class="nextstepaction"]
 > [Erfassen von Daten aus Kafka in Azure Data Explorer](ingest-data-kafka.md)

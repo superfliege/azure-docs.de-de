@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 7574cc7c-e5a1-4b7c-97f6-0cffb1a5d536
 ms.date: 10/15/2017
-ms.openlocfilehash: bbb10bf0174b6e06e28d171510345ed92b6642d9
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 21603ff213bc8babb4145209a76aee0b4150cc12
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59357100"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997613"
 ---
 # <a name="deploy-logic-apps-with-azure-resource-manager-templates"></a>Bereitstellen von Logik-Apps mit Azure Resource Manager-Vorlagen
 
@@ -24,8 +24,8 @@ Nachdem Sie eine Azure Resource Manager-Vorlage für die Bereitstellung Ihrer Lo
 * [Azure-Portal](#portal)
 * [Azure PowerShell](#powershell)
 * [Azure-Befehlszeilenschnittstelle](#cli)
-* [Azure Resource Manager-REST-API](../azure-resource-manager/resource-group-template-deploy-rest.md)
-* [Azure DevOps Azure Pipelines](#azure-pipelines)
+* [Azure-Ressourcen-Manager-REST-API](../azure-resource-manager/resource-group-template-deploy-rest.md)
+* [Azure DevOps mit Azure Pipelines](#azure-pipelines)
 
 <a name="portal"></a>
 
@@ -33,7 +33,7 @@ Nachdem Sie eine Azure Resource Manager-Vorlage für die Bereitstellung Ihrer Lo
 
 Um eine Logik-App-Vorlage automatisch in Azure bereitzustellen, können Sie die folgende Schaltfläche **In Azure bereitstellen** auswählen. Darüber werden Sie im Azure-Portal angemeldet und zur Eingabe von Informationen zu Ihrer Logik-App aufgefordert. Sie können dann alle notwendigen Änderungen an der Logik-App-Vorlage oder den Parametern vornehmen.
 
-[![D[In Azure bereitstellen](./media/logic-apps-create-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
+[![In Azure bereitstellen](./media/logic-apps-create-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
 Sie werden beispielsweise nach der Anmeldung beim Azure-Portal zur Eingabe dieser Informationen aufgefordert:
 
@@ -67,7 +67,7 @@ New-AzDeployment -Location <location> -TemplateUri https://raw.githubusercontent
 ```
 
 * [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
-* [`New-AzResourceGroupDeployment`](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment)
+* [`New-AzResourceGroupDeployment`](/powershell/module/az.resources/new-azresourcegroupdeployment)
 * [`New-AzDeployment`](/powershell/module/az.resources/new-azdeployment)
 
 <a name="cli"></a>

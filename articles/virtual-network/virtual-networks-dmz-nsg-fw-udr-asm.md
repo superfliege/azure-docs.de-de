@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
 ms.openlocfilehash: 668862714b416bd89d3b5f82caf8b0305fccae54
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426527"
 ---
 # <a name="example-3-build-a-perimeter-network-to-protect-networks-with-a-firewall-udr-and-nsgs"></a>Beispiel 3: Erstellen eines Umkreisnetzwerks zum Schutz von Netzwerken mit einer Firewall, UDR und NSGs
@@ -27,7 +27,7 @@ ms.locfileid: "59426527"
 
 In diesem Beispiel erstellen Sie ein Umkreisnetzwerk (auch als DMZ, demilitarisierte Zone, und überwachtes Subnetz bezeichnet). In diesem Beispiel werden eine Firewall, vier Windows-Server, benutzerdefiniertes Routing (User Defined Routing, UDR), IP-Weiterleitung und Netzwerksicherheitsgruppen (NSGs) implementiert. In diesem Artikel wird jeder der relevanten Befehle genau erläutert, um ein besseres Verständnis jedes einzelnen Schritts zu ermöglichen. Im Abschnitt „Datenverkehrsszenarien“ ist außerdem ausführlich beschrieben, wie Datenverkehr die Sicherheitsstufen im Umkreisnetzwerk durchläuft. Der Abschnitt „Referenzen“ schließlich enthält den gesamten Code sowie Anweisungen zum Aufbau dieser Umgebung, sodass Sie verschiedene Szenarien testen und ausprobieren können.
 
-![Bidirektionale Umkreisnetzwerk-Verbindungen mit NSG, NVA und UDR][1]
+![Bidirektionale Umkreisnetzwerkverbindungen mit NVA, NSG und UDR][1]
 
 ## <a name="environment-setup"></a>Einrichten der Umgebung
 
@@ -416,7 +416,7 @@ Nachfolgend sind die Einzelheiten zu allen Regeln aufgeführt, die zum Vervollst
 
 * **Regel zum Ablehnen jeglichen Datenverkehrs**: Diese Regel sollte immer die letzte Regel hinsichtlich der Priorität sein. Wenn der Datenverkehrsfluss zu keiner der vorherigen Regeln passt, bewirkt diese Regel, dass er verworfen wird. Diese Regel ist normalerweise standardmäßig aktiviert, sodass keine Änderungen erforderlich sind.
   
-    ![Firewallregel "Alle ablehnen"][17]
+    ![Firewallablehnungsregel][17]
 
 > [!IMPORTANT]
 > Nachdem alle oben aufgeführten Regeln erstellt sind, sollten Sie die Priorität jeder Regel prüfen, um sicherzustellen, dass der Datenverkehr wie gewünscht zugelassen oder abgelehnt wird. In diesem Beispiel sind die Regeln in der Reihenfolge aufgeführt, in der sie im Barracuda-Verwaltungsclient in dessen Hauptraster für Weiterleitungsregeln angezeigt werden sollten.

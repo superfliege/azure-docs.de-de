@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: absha
-ms.openlocfilehash: 40c5444a54f4e483a9dcacb958c18f66da45019a
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 4b8e04babfffaf49d3719d8a7e90af16598814f4
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58906122"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998905"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway – Konfigurationsübersicht
 
@@ -148,7 +148,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 #### <a name="websocket-support"></a>WebSocket-Unterstützung
 
-Die WebSocket-Unterstützung ist standardmäßig aktiviert. Sie kann von Benutzern nicht aktiviert oder deaktiviert werden. Sie können WebSockets sowohl mit HTTP- als auch mit HTTPS-Listenern verwenden.
+Die WebSocket-Unterstützung ist standardmäßig aktiviert. Sie kann von Benutzern nicht aktiviert oder deaktiviert werden. Sie können das WebSocket-Protokoll sowohl mit HTTP- als auch mit HTTPS-Listenern verwenden.
 
 ### <a name="custom-error-pages"></a>Benutzerdefinierte Fehlerseiten
 
@@ -306,7 +306,7 @@ Diese Einstellung ordnet einen [benutzerdefinierten Test](https://docs.microsoft
 > [!NOTE]
 > Der benutzerdefinierte Test überwacht die Integrität des Back-End-Pools nicht, sofern die entsprechende HTTP-Einstellung nicht explizit einem Listener zugeordnet ist.
 
-### <a id="pick"/></a>Hostnamen aus Back-End-Adresse auswählen
+### <a id="pick"/></a>Auswählen eines Hostnamens aus der Back-End-Adresse
 
 Diese Funktion legt den *Host*-Header in der Anforderung dynamisch auf den Hostnamen des Back-End-Pools fest. Sie verwendet dazu eine IP-Adresse oder einen vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN ).
 
@@ -344,6 +344,6 @@ Ein Application Gateway überwacht standardmäßig die Integrität aller Ressour
 
 Nachdem Sie sich nun über Application Gateway-Komponenten informiert haben, können Sie folgende Aktionen ausführen:
 
-- [Erstellen eines Anwendungsgateways im Azure-Portal](quick-create-portal.md)
-- [Erstellen eines Anwendungsgateways mit PowerShell](quick-create-powershell.md)
-- [Erstellen eines Anwendungsgateways mithilfe der Azure-CLI](quick-create-cli.md)
+- [Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway – Azure-Portal](quick-create-portal.md)
+- [Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway – Azure PowerShell](quick-create-powershell.md)
+- [Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway: Azure CLI](quick-create-cli.md)

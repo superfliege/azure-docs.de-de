@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: atsenthi
-ms.openlocfilehash: adbe101455bc200bc6be439920736b756f08b695
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: dfe08152f986ccac3dabe7b3bb21e7653ee812a4
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667989"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011179"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Sie möchten sich über Service Fabric informieren?
 Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht.  Service Fabric bietet allerdings eine große Oberfläche, und es gibt viel darüber zu erfahren.  Dieser Artikel enthält eine Zusammenfassung von Service Fabric und beschreibt die grundlegenden Konzepte, Programmiermodelle, Cluster, den Anwendungslebenszyklus und die Systemüberwachung. Eine Einführung und eine Anleitung zum Erstellen von Microservices mit Service Fabric finden Sie unter [Übersicht](service-fabric-overview.md) und [Was sind Microservices?](service-fabric-overview-microservices.md). Dieser Artikel enthält keine umfassende Liste der Inhalte, aber Links zu Artikeln zur Übersicht und zu den ersten Schritten für die einzelnen Bereiche von Service Fabric. 
@@ -165,7 +165,7 @@ Die Berichterstellung kann von folgenden Orten aus erfolgen:
 * Von internen Watchdogs, die auf den Service Fabric-Knoten ausgeführt werden, jedoch nicht als Service Fabric-Dienste implementiert werden.
 * Von externen Watchdogs, die die Ressource von außerhalb des Service Fabric-Clusters überwachen (etwa ein Überwachungsdienst wie Gomez).
 
-Für Service Fabric-Komponenten werden für alle Entitäten im Cluster standardmäßig Integritätsberichte erstellt. Die [Systemintegritätsberichte](service-fabric-understand-and-troubleshoot-with-system-health-reports.md) sorgen für Transparenz in Bezug auf die Cluster- und Anwendungsfunktionen und weisen auf Probleme mit der Integrität hin. Für Anwendungen und Dienste wird mit den Systemintegritätsberichten überprüft, ob Entitäten implementiert sind und sich aus Sicht der Service Fabric-Runtime richtig verhalten. Die Berichte umfassen keine Integritätsüberwachung der Geschäftslogik des Diensts und keine Erkennung von hängenden Prozessen. [Implementieren Sie benutzerdefinierte Integritätsberichte](service-fabric-report-health.md) in Ihre Dienste, um für Ihre Dienstlogik spezifische Integritätsinformationen hinzuzufügen.
+Für Service Fabric-Komponenten werden für alle Entitäten im Cluster standardmäßig Integritätsberichte erstellt. Die [Systemintegritätsberichte](service-fabric-understand-and-troubleshoot-with-system-health-reports.md) sorgen für Transparenz in Bezug auf die Cluster- und Anwendungsfunktionen und weisen auf Probleme mit der Integrität hin. Für Anwendungen und Dienste wird mit den Systemintegritätsberichten überprüft, ob Entitäten implementiert sind und sich aus Sicht der Service Fabric-Runtime richtig verhalten. Die Berichte umfassen keine Integritätsüberwachung der Geschäftslogik des Diensts und keine Erkennung von Prozessen, die nicht mehr reagieren. [Implementieren Sie benutzerdefinierte Integritätsberichte](service-fabric-report-health.md) in Ihre Dienste, um für Ihre Dienstlogik spezifische Integritätsinformationen hinzuzufügen.
 
 Service Fabric bietet mehrere Möglichkeiten, um [Integritätsberichte anzuzeigen](service-fabric-view-entities-aggregated-health.md), die im Integritätsspeicher aggregiert werden:
 * [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) oder andere Visualisierungstools.

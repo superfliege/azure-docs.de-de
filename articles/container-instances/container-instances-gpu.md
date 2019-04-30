@@ -6,20 +6,20 @@ author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 11/29/2018
+ms.date: 04/17/2019
 ms.author: danlep
-ms.openlocfilehash: cc47ca07a843daf5cc35d23b838761166d39bdcc
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 5073b68f6ef3de330671e3ea25056e0cae976360
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351370"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000656"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Bereitstellen von Containerinstanzen, die GPU-Ressourcen verwenden
 
 Zum Ausführen bestimmter rechenintensiver Workloads auf Azure Container Instances stellen Sie Ihre [Containergruppen](container-instances-container-groups.md) mit *GPU-Ressourcen* bereit. Die Containerinstanzen in der Gruppe können auf eine oder mehrere NVIDIA-Tesla-GPUs zugreifen, während Containerworkloads wie CUDA und Deep Learning-Anwendungen ausgeführt werden.
 
-Wie aus diesem Artikel hervorgeht, können Sie beim Bereitstellen einer Containergruppe GPU-Ressourcen hinzufügen, indem Sie eine [YAML-Datei](container-instances-multi-container-yaml.md) oder eine [Resource Manager-Vorlage](container-instances-multi-container-group.md) verwenden.
+In diesem Artikel wird veranschaulicht, wie Sie beim Bereitstellen einer Containergruppe GPU-Ressourcen mithilfe einer [YAML-Datei](container-instances-multi-container-yaml.md) oder [Resource Manager-Vorlage](container-instances-multi-container-group.md) hinzufügen. Sie können außerdem GPU-Ressourcen angeben, wenn Sie eine Containerinstanz über das Azure-Portal bereitstellen.
 
 > [!IMPORTANT]
 > Dieses Feature befindet sich derzeit in der Vorschauphase. Es gelten einige [Einschränkungen](#preview-limitations). Wenn Sie Vorschauversionen nutzen möchten, müssen Sie die [zusätzlichen Nutzungsbedingungen][terms-of-use] akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert.
@@ -61,7 +61,7 @@ Wenn Sie GPU-Ressourcen bereitstellen, legen Sie die für die Workload geeignete
 
 * **Preise**: Ähnlich wie bei Containergruppen ohne GPU-Ressourcen berechnet Azure die Ressourcen, die über die *Dauer* einer Containergruppe mit GPU-Ressourcen verbraucht wurden. Die Dauer wird ab dem Zeitpunkt, an dem das erste Image Ihres Containers abgerufen wird, bis zu dem Zeitpunkt berechnet, an dem die Containergruppe beendet wird. Die Zeit bis zum Bereitstellen der Containergruppe ist nicht enthalten.
 
-  Die Preise für Containergruppen mit GPU-Ressourcen sind höher als für Containergruppen ohne GPU-Ressourcen. Preisdetails finden Sie [hier](https://azure.microsoft.com/pricing/details/container-instances/).
+  Preisdetails finden Sie [hier](https://azure.microsoft.com/pricing/details/container-instances/).
 
 * **CUDA-Treiber**: Containerinstanzen mit GPU-Ressourcen werden vorab mit NVIDIA-CUDA-Treibern und Containerlaufzeiten bereitgestellt, damit Sie die für CUDA-Workloads entwickelten Containerimages verwenden können.
 

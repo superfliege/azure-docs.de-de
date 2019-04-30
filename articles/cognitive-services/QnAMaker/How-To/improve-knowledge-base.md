@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: diberry
-ms.openlocfilehash: dbdd0165e276e5c82f8d4c15ef70d3a541d76bc0
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: f59f281b1bf7fa2851ab7759a0167b5d39ef44c1
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522195"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678988"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Nutzen des aktiven Lernens zum Verbessern Ihrer Wissensdatenbank
 
@@ -156,7 +156,7 @@ Die Clientanwendung zeigt alle Fragen an und gibt dem Benutzer die Möglichkeit,
 
 Sobald der Benutzer eine der vorhandenen Fragen ausgewählt hat, sendet die Clientanwendung die Auswahl des Benutzers als Feedback mithilfe der Trainings-API von QnA Maker. Dieses Feedback vervollständigt die Feedbackschleifen des Features für aktives Lernen. 
 
-Verwenden Sie das [C#-Beispiel für Azure Bot](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-activelearning-bot), um aktives Lernen in einem End-to-End-Szenario zu verfolgen.
+Verwenden Sie das [Beispiel für Azure Bot](https://aka.ms/activelearningsamplebot), um aktives Lernen in einem End-to-End-Szenario zu verfolgen.
 
 ## <a name="train-api"></a>Trainings-API
 

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
-ms.date: 04/02/2019
+ms.date: 04/10/2019
 ms.author: mimart
 author: msmimart
 manager: celested
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98f81edcfa2a9daf5162ff1c7e23025b405092b8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: d361a40e2efa80a677255c02c7e9cf155af09ffb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260390"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59496300"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit
 
@@ -54,7 +54,7 @@ Ja. Gastobjekte sind in der globalen Adressliste (GAL) Ihrer Organisation standa
 Absolut. Weitere Informationen finden Sie unter [Zuweisen einer Rolle für Gastbenutzer](add-guest-to-role.md).
 
 ### <a name="does-azure-ad-b2b-collaboration-allow-b2b-users-to-access-the-azure-portal"></a>Erlaubt die Azure AD B2B-Zusammenarbeit B2B-Benutzern den Zugriff auf das Azure-Portal?
-B2B-Zusammenarbeitsbenutzer benötigen keinen Zugriff auf das Azure-Portal, sofern ihnen nicht eine Administratorrolle mit eingeschränkten Berechtigungen oder eine globale Administratorrolle zugewiesen wurde. Allerdings können B2B-Zusammenarbeitsbenutzer, denen eine Administratorrolle mit eingeschränkten Berechtigungen oder eine globale Administratorrolle zugewiesen ist, auf das Portal zugreifen. Auch wenn ein Gastbenutzer, dem keine dieser Administratorrollen zugewiesen ist, auf das Portal zugreift, kann der Benutzer möglicherweise auf bestimmte Funktionen zugreifen. Die Rolle des Gastbenutzers ist mit einigen Berechtigungen im Verzeichnis versehen.
+B2B Collaboration-Benutzer benötigen keinen Zugriff auf das Azure-Portal, falls ihnen nicht die Rolle eines eingeschränkten Administrators zugewiesen ist. Wenn ihnen diese Rolle jedoch zugewiesen ist, können sie auf das Portal zugreifen. Auch wenn ein Gastbenutzer, dem keine dieser Administratorrollen zugewiesen ist, auf das Portal zugreift, kann der Benutzer möglicherweise auf bestimmte Funktionen zugreifen. Die Rolle des Gastbenutzers ist mit einigen Berechtigungen im Verzeichnis versehen.
 
 ### <a name="can-i-block-access-to-the-azure-portal-for-guest-users"></a>Kann ich den Zugriff auf das Azure-Portal für Gastbenutzer sperren?
  Ja. Gehen Sie beim Konfigurieren dieser Richtlinie umsichtig vor, um zu vermeiden, dass versehentlich der Zugriff für Mitglieder und Administratoren gesperrt wird.
@@ -62,7 +62,7 @@ Um den Zugriff eines Gastbenutzers auf das [Azure-Portal](https://portal.azure.c
 1. Ändern Sie die Gruppe **Alle Benutzer**, sodass sie nur Mitglieder enthält.
    ![Screenshot der Gruppe „Alle Benutzer“, deren „UserType“ nicht gleich „Gast“ ist](media/faq/modify-all-users-group.png)
 2. Erstellen Sie eine dynamische Gruppe mit Gastbenutzern.
-   ![Screenshot einer neuen Gruppe „Alle Gastbenutzer“](media/faq/group-with-guest-users.png)
+   ![Screenshot mit einer neuen Gruppe „Alle Gastbenutzer“](media/faq/group-with-guest-users.png)
 3. Richten Sie eine Richtlinie für bedingten Zugriff ein, um den Zugriff auf das Portal durch Gastbenutzer zu blockieren, wie im folgenden Video gezeigt wird:
   
    > [!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user/Player] 
@@ -121,5 +121,5 @@ Informationen darüber, welche Lizenzen Ihre Organisation für die Verwendung vo
 
 ### <a name="next-steps"></a>Nächste Schritte
 
-- [Was ist die Azure AD B2B-Zusammenarbeit?](what-is-b2b.md)
+- [Was ist die Azure AD B2B-Zusammenarbeit?](what-is-b2b.md)
 

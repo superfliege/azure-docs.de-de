@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: ellacroi
-ms.openlocfilehash: 852d0874a91418bf28e674b02087aeb7edbdd833
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 5fb8d4420c4d46bc8a4ffe80743578cea338dd8e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730510"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798894"
 ---
 # <a name="support-for-appsource"></a>Support für AppSource  
 Die Supportoptionen für AppSource  

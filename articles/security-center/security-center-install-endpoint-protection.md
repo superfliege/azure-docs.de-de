@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 4ed0be3178f9d5d014e9e50c11d555b586ced765
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 882d4e0592b74e8af30ff5bf110a41e403c3bf7d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579324"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59789650"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Behandeln von Endpoint Protection-Problemen mit Azure Security Center
 Azure Security Center überwacht den Status des Antischadsoftware-Schutzes und meldet diesen auf dem Blatt „Endpoint protection issues“ (Endpoint Protection-Probleme). Security Center hebt Probleme wie erkannte Bedrohungen und unzureichenden Schutz hervor, die Ihre virtuellen Computer (VMs) und physischen Computer anfällig für Antischadsoftwarebedrohungen machen können. Mithilfe der Informationen unter **Endpoint protection issues** (Endpoint Protection-Probleme) können Sie die Behandlung der erkannten Probleme planen.
@@ -47,7 +47,7 @@ In diesem Beispiel verwenden wir **Compute**.  Sie erfahren, wie Sie Antischadso
 
 ## <a name="install-antimalware-on-azure-vms"></a>Installieren von Antischadsoftware auf virtuellen Azure-Computern
 
-1. Klicken Sie im Hauptmenü von Security Center oder unter **Übersicht** auf **Compute**.
+1. Klicken Sie im Hauptmenü von Security Center oder unter **Übersicht** auf **Compute und Apps**.
 
    ![Auswählen von „Compute“][1]
 

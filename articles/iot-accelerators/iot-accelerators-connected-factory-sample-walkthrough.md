@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: be9bde90684b46adef509532eb7b0cc236c5efb1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 950d248d2525f053981c8642ee2d39021b9a0494
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58180601"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59490358"
 ---
 # <a name="connected-factory-solution-accelerator-walkthrough"></a>Exemplarische Vorgehensweise zum Connected Factory-Solution Accelerator
 
@@ -73,7 +73,7 @@ Das OPC Publisher-Modul stellt eine Verbindung mit den OPC UA-Servern der Statio
 
 1. Konvertieren der Knotendaten ins JSON-Format
 1. Verschlüsseln des JSON-Codes
-1. Senden des JSON-Codes als OPC UA-Nachrichten für Veröffentlichung/Abonnement an IoT Hub
+1. Senden des JSON-Codes als OPC UA-PubSub-Nachrichten an IoT Hub
 
 Für das OPC Publisher-Modul ist nur ein ausgehender HTTPS-Port (443) erforderlich, und es kann mit der vorhandenen Unternehmensinfrastruktur verwendet werden.
 

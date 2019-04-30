@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: bf1ff4391e65fea68ac019be8fde8709fb4422b2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bababa723e70cdc5268fb04f1104cca9e254984d
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181349"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678787"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)
 
@@ -196,6 +196,9 @@ Der DaemonSet-Controller kann Pods auf Knoten zu einem frühen Zeitpunkt im Clus
 Ähnlich wie StatefulSets wird auch ein DaemonSet mit `kind: DaemonSet` als Teil einer YAML-Definition definiert.
 
 Weitere Informationen finden Sie unter [Kubernetes DaemonSets][kubernetes-daemonset].
+
+> [!NOTE]
+> Wenn Sie das [Add-On für virtuelle Knoten](virtual-nodes-cli.md#enable-virtual-nodes-addon) verwenden, erstellen DaemonSets keine Pods auf dem virtuellen Knoten.
 
 ## <a name="namespaces"></a>Namespaces
 

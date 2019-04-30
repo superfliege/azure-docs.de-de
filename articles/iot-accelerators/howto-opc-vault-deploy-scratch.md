@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen des OPC UA-Zertifikatverwaltungsmoduls von Azure IoT von Grund auf | Microsoft-Dokumentation
+title: Bereitstellen des OPC Vault-Moduls in Azure ohne vorhandenes Projekt | Microsoft-Dokumentation
 description: Bereitstellen eines OPC-Tresors von Grund auf
 author: dominicbetts
 ms.author: dobett
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: a3a9d21b70f16482f05d27aa0df8d8865459aeb4
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: dedba42d7e4b8d603d97522cf0173f41efd20b3a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759204"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59496895"
 ---
 # <a name="deploy-opc-vault-from-scratch"></a>Bereitstellen eines OPC-Tresors von Grund auf
 
-Die OPC UA-Zertifikatverwaltung von Azure IoT, auch als OPC Vault bezeichnet, ist ein Microservice, mit dem der Zertifikatlebenszyklus für OPC UA-Server- und -Clientanwendungen in der Cloud konfiguriert, registriert und verwaltet werden kann. In diesem Artikel erfahren Sie, wie Sie OPC Vault von Grund auf bereitstellen.
+OPC Vault ist ein Microservice, mit dem der Zertifikatlebenszyklus für OPC UA-Server- und -Clientanwendungen in der Cloud konfiguriert, registriert und verwaltet werden kann. In diesem Artikel erfahren Sie, wie Sie OPC Vault von Grund auf bereitstellen.
 
 ## <a name="configuration-and-environment-variables"></a>Konfiguration und Umgebungsvariablen
 

@@ -7,36 +7,35 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 04/14/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: d5fdae09055f922fe9783f6eb074457af12c60df
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 09695f764ff71b274e125e90835f5314eb25c980
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880414"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683969"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Anfügen einer Cognitive Services-Ressource an eine Qualifikationsgruppe in Azure Search 
 
-KI-Algorithmen steuern die [Pipelines für die kognitive Suche](cognitive-search-concept-intro.md), die zum Verarbeiten unstrukturierter Daten in einem Azure Search-Indizierungsvorgang verwendet werden. Diese Algorithmen basieren auf [Cognitive Services-Ressourcen](https://azure.microsoft.com/services/cognitive-services/), einschließlich [Maschinelles Sehen](https://azure.microsoft.com/services/cognitive-services/computer-vision/) für Bildanalyse und optische Zeichenerkennung (OCR) und [Textanalyse](https://azure.microsoft.com/services/cognitive-services/text-analytics/) für Entitätserkennung, Schlüsselbegriffserkennung und andere Anreicherungen.
+KI-Algorithmen steuern die [Pipelines für die kognitive Indizierung](cognitive-search-concept-intro.md), die zum Verarbeiten unstrukturierter Daten in Azure Search verwendet werden. Diese Algorithmen basieren auf [Cognitive Services-Ressourcen](https://azure.microsoft.com/services/cognitive-services/), einschließlich [Maschinelles Sehen](https://azure.microsoft.com/services/cognitive-services/computer-vision/) für Bildanalyse und optische Zeichenerkennung (OCR) und [Textanalyse](https://azure.microsoft.com/services/cognitive-services/text-analytics/) für Entitätserkennung, Schlüsselbegriffserkennung und andere Anreicherungen.
 
 Sie können eine begrenzte Anzahl von Dokumenten kostenlos anreichern oder eine abrechenbare Cognitive Services-Ressource für größere und häufigere Workloads anfügen. In diesem Artikel erfahren Sie, wie Sie Ihrer kognitiven Qualifikationsgruppe eine Cognitive Services-Ressource zuordnen, um Daten während der [Azure Search-Indizierung](search-what-is-an-index.md) anzureichern.
 
 Wenn Ihre Pipeline aus Qualifikationen besteht, die nicht mit Cognitive Services-APIs in Beziehung stehen, sollten Sie dennoch eine Cognitive Services-Ressource anfügen. Dadurch wird die **kostenlose** Ressource überschrieben, mit der die Anreicherungen pro Tag auf eine kleine Menge beschränkt sind. Für Qualifikationen, die nicht an Cognitive Services-APIs gebunden sind, fallen keine Gebühren an. Zu diesen Qualifikationen gehören z.B. [benutzerdefinierte Qualifikationen](cognitive-search-create-custom-skill-example.md), [Textzusammenführung](cognitive-search-skill-textmerger.md), [Textteilung](cognitive-search-skill-textsplit.md) und [Shaper](cognitive-search-skill-shaper.md).
 
 > [!NOTE]
-> Seit dem 21. Dezember 2018 können Sie einer Azure Search-Qualifikationsgruppe eine Cognitive Services-Ressource zuordnen. Dadurch können wir für die Ausführung von Qualifikationsgruppen Gebühren verlangen. Ab diesem Datum haben wir außerdem damit begonnen, die Bildextraktion als Teil der Aufschlüsselung von Dokumenten zu berechnen. Die Textextraktion aus Dokumenten wird weiterhin ohne Zusatzkosten angeboten.
+> Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie eine kostenpflichtige Cognitive Services-Ressource verwenden. Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumentaufschlüsselungsphase in Azure Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
 >
-> Die Ausführung [integrierter kognitiver Qualifikationen](cognitive-search-predefined-skills.md) wird nach dem [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services) berechnet, und zwar zu demselben Tarif wie beim direkten Ausführen der Aufgabe. Für die Extraktion von Bildern fällt eine Azure Search-Gebühr an, die derzeit Vorschaupreisen entspricht. Ausführlichere Informationen finden Sie auf der [Seite „Azure Search – Preise“](https://go.microsoft.com/fwlink/?linkid=2042400) oder unter [Funktionsweise der Abrechnung](search-sku-tier.md#how-billing-works).
+> Die Ausführung [integrierter kognitiver Qualifikationen](cognitive-search-predefined-skills.md) wird nach dem [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services) berechnet, und zwar zu demselben Tarif wie beim direkten Ausführen der Aufgabe. Für Bildextraktion wird auf der Seite [Azure Search – Preise](https://go.microsoft.com/fwlink/?linkid=2042400) eine Azure Search-Gebühr aufgeführt.
 
 
 ## <a name="use-free-resources"></a>Verwenden kostenloser Ressourcen
 
 Sie können eine eingeschränkte, kostenlose Verarbeitungsoption verwenden, um das Cognitive Search-Tutorial und die Schnellstartübungen abzuschließen. 
 
-> [!Important]
-> Ab dem 1. Februar 2019 ist **Free (begrenzte Anreicherung)** auf 20 Dokumente pro Tag begrenzt. 
+**Free (begrenzte Anreicherung)** ist auf 20 Dokumente pro Tag pro Abonnement begrenzt.
 
 1. Öffnen Sie den Assistenten **Daten importieren**.
 
@@ -56,15 +55,21 @@ Für Workloads, die sich täglich auf mehr als 20 Anreicherungen belaufen, müss
 
 Ihnen werden nur Qualifikationen in Rechnung gestellt, mit denen die Cognitive Services-APIs aufgerufen werden. Qualifikationen, die nicht auf APIs basieren, z.B. [benutzerdefinierte Qualifikationen](cognitive-search-create-custom-skill-example.md), [Textzusammenführung](cognitive-search-skill-textmerger.md), [Textteilung](cognitive-search-skill-textsplit.md) und [Shaper](cognitive-search-skill-shaper.md), werden nicht in Rechnung gestellt.
 
-1. Wählen Sie im Assistenten **Daten importieren** unter **Cognitive Services-Instanz anfügen** eine vorhandene Ressource aus, oder klicken Sie auf **Neue Cognitive Services-Ressource erstellen**.
+1. Öffnen Sie den **Daten importieren**-Assistenten, wählen Sie eine Datenquelle aus, und fahren Sie mit **Kognitive Suche hinzufügen (Optional)** fort. 
 
-1. Wenn Sie **Neue Cognitive Services-Ressource erstellen** ausgewählt haben, wird eine neue Registerkarte geöffnet, auf der Sie die Ressource erstellen können. Geben Sie der Ressource einen eindeutigen Namen.
+1. Erweitern Sie **Cognitive Services-Instanz anfügen**, und wählen Sie dann **Neue Cognitive Services-Ressource erstellen** aus. Eine neue Registerkarte wird geöffnet, sodass Sie die Ressource erstellen können. 
 
-1. Wenn Sie eine neue Cognitive Services-Ressource erstellen, **wählen Sie dieselbe Region** wie Ihre Azure Search-Ressource aus.
+   ![Erstellen einer Cognitive Services-Ressource](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "Erstellen einer Cognitive Services-Ressource")
 
-1. Wählen Sie den All-in-One-Tarif **S0** aus. Dieser Tarif bietet die Funktionen für Sehen und Sprache, die die vordefinierten Qualifikationen in der kognitiven Suche unterstützen.
+1. Wählen Sie in „Speicherort“ die gleiche Region wie Azure Search aus, um Kosten für Regionen übergreifende ausgehende Bandbreite zu vermeiden.
 
-    ![Erstellen einer neuen Cognitive Services-Ressource](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "Erstellen einer neuen Cognitive Services-Ressource")
+1. Wählen Sie in „Tarif“ **S0** aus, um die gesamte Sammlung der Cognitive Services-Features einschließlich der Seh- und Sprachfeatures zu erhalten, die die von Azure Search verwendeten vordefinierten Fertigkeiten unterstützen. 
+
+   Für den Tarif „S0“ finden Sie Sätze für bestimmte Arbeitsauslastungen auf der Seite [Cognitive Services – Preise](https://azure.microsoft.com/pricing/details/cognitive-services/).
+  
+   + Stellen Sie sicher, dass unter **Wählen Sie ein Angebot aus:** die Option *Cognitive Services* ausgewählt ist.
+   + Die Preise für die *Standardtextanalyse* unter den Sprachfeatures gelten für die KI-Indizierung. 
+   + Die Preise für *Maschinelles Sehen S1* sind unter den Sehfeatures aufgeführt.
 
 1. Klicken Sie auf **Erstellen**, um die neue Cognitive Services-Ressource bereitzustellen. 
 

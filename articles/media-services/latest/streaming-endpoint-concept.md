@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 04/16/2019
 ms.author: juliako
-ms.openlocfilehash: 2e715e5280794172451a333624a954340a1a60fe
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 4a29da2b070133f87ca5fdab0be607368c83790f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58881017"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999449"
 ---
 # <a name="streaming-endpoints"></a>Streamingendpunkte
 
@@ -52,7 +52,6 @@ Feature|Standard|Premium
 ---|---|---
 Erste 15 Tage kostenlos| Ja |Nein 
 Throughput |Bis zu 600 Mbit/s, wenn Azure CDN nicht verwendet wird. Wird mit CDN skaliert.|200 Mbit/s pro Streamingeinheit. Wird mit CDN skaliert.
-SLA | 99,9|99,9 (200 Mbit/s pro Streamingeinheit).
 CDN|Azure CDN, CDN eines Drittanbieters oder kein CDN.|Azure CDN, CDN eines Drittanbieters oder kein CDN.
 Die Abrechnung erfolgt anteilsmäßig| Täglich|Täglich
 Dynamische Verschlüsselung|Ja|Ja
@@ -68,8 +67,8 @@ Empfohlene Verwendung |Für den Großteil der Streamingszenarien empfohlen.|Prof
 
 Dieser Abschnitt enthält detaillierte Informationen zu einigen Streamingendpunkt-Eigenschaften. Beispiele zum Erstellen eines neuen Streamingendpunkts und Beschreibungen aller Eigenschaften finden Sie unter [Streamingendpunkte](https://docs.microsoft.com/rest/api/media/streamingendpoints/create). 
 
-- `accessControl` – wird zum Konfigurieren der folgenden Sicherheitseinstellungen für den Streamingendpunkt verwendet: Authentifizierungsschlüssel und IP-Adressen im Signaturheader von Akamai, über die eine Verbindung mit dem Endpunkt zulässig ist.<br />Diese Eigenschaft kann nur festgelegt werden, wenn `cdnEnabled` auf FALSE festgelegt ist.
-- `cdnEnabled` – gibt an, ob die Azure CDN-Integration für den Streamingendpunkt aktiviert oder deaktiviert ist (standardmäßig deaktiviert). Wenn Sie `cdnEnabled` auf TRUE festlegen, werden die folgenden Konfigurationen deaktiviert: `customHostNames` und `accessControl`.
+- `accessControl` – Wird zum Konfigurieren der folgenden Sicherheitseinstellungen für den Streamingendpunkt verwendet: Authentifizierungsschlüssel und IP-Adressen im Signaturheader von Akamai, über die eine Verbindung mit dem Endpunkt zulässig ist.<br />Diese Eigenschaft kann nur festgelegt werden, wenn `cdnEnabled` auf FALSE festgelegt ist.
+- `cdnEnabled` – Gibt an, ob die Azure CDN-Integration für den Streamingendpunkt aktiviert oder deaktiviert ist (standardmäßig deaktiviert). Wenn Sie `cdnEnabled` auf TRUE festlegen, werden die folgenden Konfigurationen deaktiviert: `customHostNames` und `accessControl`.
   
     Nicht alle Rechenzentren unterstützen die Azure CDN-Integration. Gehen Sie wie folgt vor, um zu überprüfen, ob die Azure CDN-Integration in Ihrem Rechenzentrum zur Verfügung steht:
  
@@ -79,14 +78,14 @@ Dieser Abschnitt enthält detaillierte Informationen zu einigen Streamingendpunk
     Wenn dieser Fehler angezeigt wird, wird das CDN im Rechenzentrum nicht unterstützt. Versuchen Sie es mit einem anderen Rechenzentrum.
 - `cdnProfile` – Wenn `cdnEnabled` auf TRUE festgelegt ist, können Sie auch `cdnProfile`-Werte übergeben. `cdnProfile` ist der Name des CDN-Profils, in dem der CDN-Endpunkt erstellt wird. Sie können eine vorhandene cdnProfile-Eigenschaft angeben oder eine neue verwenden. Wenn der Wert NULL ist und `cdnEnabled` auf TRUE festgelegt ist, wird der Standardwert „AzureMediaStreamingPlatformCdnProfile“ verwendet. Wenn die angegebene `cdnProfile`-Eigenschaft bereits vorhanden ist, wird ein Endpunkt unter dieser Eigenschaft erstellt. Wenn das Profil nicht vorhanden ist, wird automatisch ein neues Profil erstellt.
 - `cdnProvider` – Wenn das CDN aktiviert ist, können Sie auch `cdnProvider`-Werte übergeben. `cdnProvider` steuert, welcher Anbieter verwendet wird. Derzeit werden drei Werte unterstützt: „StandardVerizon“, „PremiumVerizon“ und „StandardAkamai“. Wenn kein Wert angegeben wird und `cdnEnabled` auf TRUE festgelegt ist, wird „StandardVerizon“ verwendet (d. h. der Standardwert).
-- `crossSiteAccessPolicies` – wird zum Angeben von websiteübergreifenden Zugriffsrichtlinien für verschiedene Clients verwendet. Weitere Informationen finden Sie unter [Cross-domain policy file specification](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) (Dateispezifikation für domänenübergreifende Richtlinien) und [Making a Service Available Across Domain Boundaries](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx) (Verfügbarmachen eines Diensts über Netzwerkgrenzen hinweg).<br/>Die Einstellungen gelten nur für Smooth Streaming.
-- `customHostNames` – wird verwendet, um einen Streamingendpunkt so zu konfigurieren, dass an einen benutzerdefinierten Hostnamen gerichteter Datenverkehr akzeptiert wird.  Diese Eigenschaft gilt für Standard- und Premium-Streamingendpunkte und kann festgelegt werden, wenn `cdnEnabled` FALSE ist.
+- `crossSiteAccessPolicies` – Wird zum Angeben von websiteübergreifenden Zugriffsrichtlinien für verschiedene Clients verwendet. Weitere Informationen finden Sie unter [Cross-domain policy file specification](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) (Dateispezifikation für domänenübergreifende Richtlinien) und [Making a Service Available Across Domain Boundaries](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx) (Verfügbarmachen eines Diensts über Netzwerkgrenzen hinweg).<br/>Die Einstellungen gelten nur für Smooth Streaming.
+- `customHostNames` – Wird verwendet, um einen Streamingendpunkt so zu konfigurieren, dass an einen benutzerdefinierten Hostnamen gerichteter Datenverkehr akzeptiert wird.  Diese Eigenschaft gilt für Standard- und Premium-Streamingendpunkte und kann festgelegt werden, wenn `cdnEnabled` FALSE ist.
     
     Der Besitz des Domänennamens muss in Media Services bestätigt werden. In Media Services wird der Besitz des Domänennamens durch Anfordern eines `CName`-Eintrags überprüft, der die Media Services-Konto-ID als Komponente enthält, die der verwendeten Domäne hinzuzufügen ist. Beispiel: Damit „sports.contoso.com“ als benutzerdefinierter Hostname für den Streamingendpunkt verwendet wird, muss ein Eintrag für `<accountId>.contoso.com` so konfiguriert werden, dass er auf einen der Media Services-Überprüfungshostnamen verweist. Der Überprüfungshostname setzt sich aus „verifydns.\<mediaservices-dns-zone>“ zusammen. 
 
     Im Folgenden sind die erwarteten DNS-Zonen aufgeführt, die im Überprüfungseintrag für verschiedene Azure-Regionen zu verwenden sind.
   
-  - Nordamerika, Europa, Singapur, Hongkong, Japan:
+  - Nordamerika, Europa, Singapur, Hongkong (SAR), Japan:
       
     - `media.azure.net`
     - `verifydns.media.azure.net`
@@ -107,7 +106,7 @@ Dieser Abschnitt enthält detaillierte Informationen zu einigen Streamingendpunk
 
     Media Services unterstützt derzeit SSL mit benutzerdefinierten Domänen nicht. 
     
-- `maxCacheAge` – überschreibt den standardmäßigen Max-Age-HTTP-Cache Control Header, der vom Streamingendpunkt für Medienfragmente und On-Demand-Manifeste festgelegt wird. Der Wert wird in Sekunden festgelegt.
+- `maxCacheAge` – Überschreibt den standardmäßigen Max-Age-HTTP-Cache Control Header, der vom Streamingendpunkt für Medienfragmente und On-Demand-Manifeste festgelegt wird. Der Wert wird in Sekunden festgelegt.
 - `resourceState` -
 
     - Beendet – Der ursprüngliche Status eines Streamingendpunkts nach der Erstellung.
@@ -117,7 +116,7 @@ Dieser Abschnitt enthält detaillierte Informationen zu einigen Streamingendpunk
     - Wird beendet – Der Streamingendpunkt geht über in den Status „Beendet“.
     - Wird gelöscht – Der Streamingendpunkt wird gelöscht.
     
-- `scaleUnits` – stellen eine dedizierte Ausgangskapazität bereit, die in Schritten von jeweils 200 MBit/s erworben werden kann. Wenn Sie zum **Premium**-Type wechseln möchten, passen Sie `scaleUnits` an.
+- `scaleUnits` – Stellen eine dedizierte Ausgangskapazität bereit, die in Schritten von jeweils 200 MBit/s erworben werden kann. Wenn Sie zum **Premium**-Type wechseln möchten, passen Sie `scaleUnits` an.
 
 ## <a name="working-with-cdn"></a>Arbeiten mit dem CDN
 

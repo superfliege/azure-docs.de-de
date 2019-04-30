@@ -14,15 +14,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 04/16/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6d8baa5f10aeba179ef141cfea86fded8cf44dfc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d9af3b1b9c267bc09b370717913722a6c53ad5a1
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57878209"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678818"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto
 
@@ -30,7 +30,7 @@ ms.locfileid: "57878209"
 
 > [!IMPORTANT]
 > 
-> Wenn Sie ein Abonnement auf einen neuen Azure AD-Mandanten übertragen, werden alle Rollenzuweisungen in der [rollenbasierten Zugriffssteuerung (RBAC)](../role-based-access-control/overview.md) dauerhaft aus dem Quellmandanten gelöscht und nicht zum Zielmandanten migriert.
+> Wenn Sie ein Abonnement auf einen neuen Azure AD-Mandanten übertragen, werden alle Rollenzuweisungen in der [rollenbasierten Zugriffssteuerung (RBAC)](../role-based-access-control/overview.md) dauerhaft aus dem Quellmandanten gelöscht und nicht zum Zielmandanten migriert. Sie müssen verwaltete Identitäten für Azure-Ressourcen außerdem manuell neu erstellen. Weitere Informationen finden Sie unter [Häufig gestellte Fragen und bekannte Probleme mit verwalteten Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/known-issues.md).
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>Übertragen des Besitzes eines Azure-Abonnements
 
@@ -52,7 +52,7 @@ ms.locfileid: "57878209"
 
    > [!IMPORTANT]
    > 
-   > Wenn Sie ein Abonnement auf einen neuen Azure AD-Mandanten übertragen, werden alle Rollenzuweisungen in der [rollenbasierten Zugriffssteuerung (RBAC)](../role-based-access-control/overview.md) dauerhaft aus dem Quellmandanten gelöscht und nicht zum Zielmandanten migriert.
+   > Wenn Sie ein Abonnement auf einen neuen Azure AD-Mandanten übertragen, werden alle Rollenzuweisungen in der [rollenbasierten Zugriffssteuerung (RBAC)](../role-based-access-control/overview.md) dauerhaft aus dem Quellmandanten gelöscht und nicht zum Zielmandanten migriert. Sie müssen verwaltete Identitäten für Azure-Ressourcen außerdem manuell neu erstellen. Weitere Informationen finden Sie unter [Häufig gestellte Fragen und bekannte Probleme mit verwalteten Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/known-issues.md).
 
    ![Dialogfeld „Abonnement übertragen“](./media/billing-subscription-transfer/image2.PNG)
 

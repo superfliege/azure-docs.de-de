@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 1a575a172e4ff567cc20442c7a9779e1d52dbbba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 635b45fe7f0108795c34f51081fa374c604036b2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58099983"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996123"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Sicherheitsüberlegungen für Datenverschiebung in Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -137,9 +137,9 @@ In der folgenden Tabelle sind die Empfehlungen für die Konfiguration von Netzwe
 
 | Quelle      | Ziel                              | Netzwerkkonfiguration                    | Setup der Integrationslaufzeit                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| Lokal | Virtuelle Computer und Clouddienste, die in virtuellen Netzwerken bereitgestellt werden | IPSec-VPN (Punkt-zu-Standort oder Standort-zu-Standort) | Die selbstgehostete Integration Runtime kann entweder lokal oder auf einem virtuellen Azure-Computer in einem virtuellen Netzwerk installiert sein. |
-| Lokal | Virtuelle Computer und Clouddienste, die in virtuellen Netzwerken bereitgestellt werden | ExpressRoute (privates Peering)           | Die selbstgehostete Integration Runtime kann entweder lokal oder auf einem virtuellen Azure-Computer in einem virtuellen Netzwerk installiert sein. |
-| Lokal | Azure-basierte Dienste, die einen öffentlichen Endpunkt haben | ExpressRoute (öffentliches Peering)            | Die selbstgehostete Integration Runtime muss lokal installiert sein. |
+| Lokal | Virtuelle Computer und Clouddienste, die in virtuellen Netzwerken bereitgestellt werden | IPSec-VPN (Punkt-zu-Standort oder Standort-zu-Standort) | Die selbstgehostete Integration Runtime sollte auf einer Azure-VM im virtuellen Netzwerk installiert sein.  |
+| Lokal | Virtuelle Computer und Clouddienste, die in virtuellen Netzwerken bereitgestellt werden | ExpressRoute (privates Peering)           | Die selbstgehostete Integration Runtime sollte auf einer Azure-VM im virtuellen Netzwerk installiert sein.  |
+| Lokal | Azure-basierte Dienste, die einen öffentlichen Endpunkt haben | ExpressRoute (Microsoft-Peering)            | Die selbstgehostete Integrationslaufzeit kann lokal oder auf einer Azure-VM installiert sein. |
 
 Die folgenden Abbildungen veranschaulichen die Verwendung der selbstgehosteten Integration Runtime zum Verschieben von Daten zwischen einer lokalen Datenbank und Azure-Diensten über ExpressRoute und IPSec-VPN (mit Azure Virtual Network):
 
@@ -174,7 +174,7 @@ Die folgende Tabelle enthält die Anforderungen für eingehende Ports für die W
 
 | Eingehende Ports | BESCHREIBUNG                              |
 | ------------- | ---------------------------------------- |
-| 8050 (TCP)    | Vom PowerShell-Cmdlet für die Verschlüsselung erforderlich, wie in [Verschlüsseln von Anmeldeinformationen für lokale Datenspeicher in Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md) und für die Anwendung zur Anmeldeinformationsverwaltung beschrieben, um Anmeldeinformationen für die lokalen Datenspeicher auf der selbstgehosteten Integration Runtime sicher festzulegen. |
+| 8060 (TCP)    | Vom PowerShell-Cmdlet für die Verschlüsselung erforderlich, wie in [Verschlüsseln von Anmeldeinformationen für lokale Datenspeicher in Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md) und für die Anwendung zur Anmeldeinformationsverwaltung beschrieben, um Anmeldeinformationen für die lokalen Datenspeicher auf der selbstgehosteten Integration Runtime sicher festzulegen. |
 
 ![Gatewayportanforderungen](media/data-movement-security-considerations/gateway-port-requirements.png) 
 
@@ -193,7 +193,7 @@ Die folgenden Clouddatenspeicher erfordern, dass die IP-Adresse des Computers de
 
 **Kann die selbstgehostete Integration Runtime für unterschiedliche Data Factorys gemeinsam genutzt werden?**
 
-Dieses Feature wird noch nicht unterstützt. Wir arbeiten mit Hochdruck daran.
+Ja. Ausführlichere Informationen finden Sie [hier](https://azure.microsoft.com/blog/sharing-a-self-hosted-integration-runtime-infrastructure-with-multiple-data-factories/).
 
 **Welche Portanforderungen sind erforderlich, damit die selbstgehostete Integration Runtime funktioniert?**
 

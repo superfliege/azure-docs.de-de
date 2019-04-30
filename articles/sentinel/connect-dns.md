@@ -1,6 +1,6 @@
 ---
-title: Sammeln von DNS-Daten in Azure Sentinel Preview | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie DNS-Daten in Azure Sentinel sammeln.
+title: Verknüpfen von DNS-Daten mit Azure Sentinel Preview | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie DNS-Daten mit Azure Sentinel verknüpfen.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: a7f075b74876ec807d790f3ffbea5dad14163535
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e34db2bdc78eb846cf4885b1ef083fd3b21e21b5
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530415"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59792050"
 ---
 # <a name="connect-your-domain-name-server"></a>Verbinden eines Domänennamenservers
 
@@ -29,7 +29,7 @@ ms.locfileid: "57530415"
 
 Sie können jeden Domänennamenserver (DNS), der unter Windows ausgeführt wird, mit Azure Sentinel verbinden. Dies erfolgt durch Installieren eines Agents auf dem DNS-Computer. Mithilfe von DNS-Protokollen können Sie sicherheits-, leistungs- und vorgangsbezogene Einblicke in die DNS-Infrastruktur Ihrer Organisation gewinnen, indem Sie Analyse- und Überwachungsprotokolle und andere zugehörige Daten von den DNS-Servern sammeln.
 
-Das Aktivieren von DNS-Protokollsammlung ermöglicht Ihnen Folgendes:
+Das Aktivieren der DNS-Protokollverbindung ermöglicht Ihnen Folgendes:
 - Identifizieren von Clients, die versuchen, schädliche Domänennamen aufzulösen
 - Identifizieren von veralteten Ressourceneinträgen
 - Identifizieren von häufig abgefragten Domänennamen und DNS-Clients mit hoher Aktivität
@@ -38,11 +38,11 @@ Das Aktivieren von DNS-Protokollsammlung ermöglicht Ihnen Folgendes:
 
 ## <a name="how-it-works"></a>So funktioniert's
 
-DNS-Sammlung wird umgesetzt, indem ein Agent auf dem DNS-Computer installiert wird. Der Agent ruft Ereignisse vom DNS-Computer ab und übergibt sie an Log Analytics (Protokollanalyse).
+Die DNS-Verbindung wird umgesetzt, indem ein Agent auf dem DNS-Computer installiert wird. Der Agent ruft Ereignisse vom DNS-Computer ab und übergibt sie an Log Analytics (Protokollanalyse).
 
 ## <a name="connect-your-dns-appliance"></a>Verbinden Ihrer DNS-Appliance
 
-1. Wählen Sie im Azure Sentinel-Portal die Option **Datensammlung** aus, und wählen Sie die **DNS**-Kachel aus.
+1. Wählen Sie im Azure Sentinel-Portal die Option **Data connectors** (Datenconnectors) aus, und klicken Sie auf die **DNS**-Kachel.
 1. Wenn sich Ihre DNS-Computer in Azure befinden:
     1. Klicken Sie auf **Download & install agent for Windows virtual machines** (Agent für virtuelle Windows-Computer herunterladen und installieren).
     1. Wählen Sie in der Liste **Virtual Machines** den DNS-Computer aus, für den Sie an Azure Sentinel streamen möchten. Stellen Sie sicher, dass dies ein virtueller Windows-Computer ist.
@@ -62,5 +62,5 @@ Suchen Sie in Log Analytics nach dem Schema **DnsEvents**, und stellen Sie siche
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie gelernt, wie Sie lokale DNS-Appliances mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
-- Erfahren Sie, wie Sie [ Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
+- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
 - Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats.md).

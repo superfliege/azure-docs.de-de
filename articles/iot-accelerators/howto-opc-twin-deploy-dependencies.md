@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen von Cloudabhängigkeiten der Azure IoT OPC UA-Geräteverwaltung | Microsoft-Dokumentation
+title: Bereitstellen der OPC Twin-Cloudabhängigkeiten in Azure | Microsoft-Dokumentation
 description: Informationen zum Bereitstellen von Azure OPC Twin-Abhängigkeiten.
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: cdd89293328da47c8e338bb6fca8c7b93dd84f97
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: ae9f2b05bfc6ea6315022d04c8d267d916cf282e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759219"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59491985"
 ---
 # <a name="deploying-dependencies-for-local-development"></a>Bereitstellen von Abhängigkeiten für die lokale Entwicklung
 
@@ -52,7 +52,7 @@ Verwenden Sie einen kurzen und einfachen Namen für die Ressourcengruppe.  Der N
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Dienste zur OPC-Geräteverwaltung erfolgreich in einem vorhandenen Projekt bereitgestellt haben, empfiehlt sich nun folgender nächster Schritt:
+Nachdem Sie OPC Twin-Dienste erfolgreich in einem vorhandenen Projekt bereitgestellt haben, empfiehlt sich nun folgender Schritt:
 
 > [!div class="nextstepaction"]
-> [Weitere Informationen zum Bereitstellen von Modulen zur OPC-Geräteverwaltung](howto-opc-twin-deploy-modules.md)
+> [Bereitstellen von OPC Twin-Modulen](howto-opc-twin-deploy-modules.md)

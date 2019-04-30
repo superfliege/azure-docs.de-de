@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 4c4c03fffa5786bf3a50f4d2c03511f0a2de0f48
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9ee4a9fb5c63061eed32389b5672652aad01208a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250950"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59994939"
 ---
 # <a name="api-management-authentication-policies"></a>API Management-Authentifizierungsrichtlinien
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -29,6 +29,8 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 -   [Standardauthentifizierung](api-management-authentication-policies.md#Basic) – Authentifizierung mit einem Back-End-Dienst unter Verwendung der Standardauthentifizierung.  
   
 -   [Authentifizierung mit Clientzertifikat](api-management-authentication-policies.md#ClientCertificate) – Authentifizierung mit einem Back-End-Dienst unter Verwendung von Clientzertifikaten.  
+
+-   [Authentifizierung mit verwalteter Identität](api-management-authentication-policies.md#ManagedIdentity) – Authentifizierung für den API Management-Dienst mit der [verwalteten Identität](../active-directory/managed-identities-azure-resources/overview.md).  
   
 ##  <a name="Basic"></a> Standardauthentifizierung  
  Verwenden Sie die Richtlinie `authentication-basic` für die Authentifizierung mit einem Back-End-Dienst unter Verwendung der Standardauthentifizierung. Diese Richtlinie legt letztlich den HTTP-Autorisierungsheader auf den Wert fest, der den Anmeldeinformationen in der Richtlinie entspricht.  
@@ -49,19 +51,19 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 |NAME|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
-|authentication-basic|Stammelement|JA|  
+|authentication-basic|Stammelement|Ja|  
   
 ### <a name="attributes"></a>Attribute  
   
 |NAME|BESCHREIBUNG|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
-|username|Gibt den Benutzernamen für die Standardanmeldeinformationen an.|JA|N/V|  
-|password|Gibt das Kennwort für die Standardanmeldeinformationen an.|JA|N/V|  
+|username|Gibt den Benutzernamen für die Standardanmeldeinformationen an.|Ja|–|  
+|password|Gibt das Kennwort für die Standardanmeldeinformationen an.|Ja|–|  
   
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
--   **Richtlinienabschnitte:** eingehend  
+-   **Richtlinienabschnitte**: inbound  
   
 -   **Richtlinienbereiche:** API  
   
@@ -84,21 +86,56 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 |NAME|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
-|authentication-certificate|Stammelement|JA|  
+|authentication-certificate|Stammelement|Ja|  
   
 ### <a name="attributes"></a>Attribute  
   
 |NAME|BESCHREIBUNG|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
-|thumbprint|Der Fingerabdruck für das Clientzertifikat.|JA|N/V|  
+|thumbprint|Der Fingerabdruck für das Clientzertifikat.|Ja|–|  
   
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
--   **Richtlinienabschnitte:** eingehend  
+-   **Richtlinienabschnitte**: inbound  
   
 -   **Richtlinienbereiche:** API  
+
+##  <a name="ManagedIdentity"></a> Authentifizierung mit verwalteter Identität  
+ Verwenden Sie die `authentication-managed-identity`-Richtlinie, um sich mit der verwalteten Identität des API Management-Diensts bei einem Back-End-Dienst zu authentifizieren. Diese Richtlinie verwendet die verwaltete Identität, um aus Azure Active Directory ein Zugriffstoken für den Zugriff auf die angegebene Ressource abzurufen. 
   
+### <a name="policy-statement"></a>Richtlinienanweisung  
+  
+```xml  
+<authentication-managed-identity resource="resource" output-token-variable-name="token-variable" ignore-error="true|false"/>  
+```  
+  
+### <a name="example"></a>Beispiel  
+  
+```xml  
+<authentication-managed-identity resource="https://graph.windows.net" output-token-variable-name="test-access-token" ignore-error="true" /> 
+```  
+  
+### <a name="elements"></a>Elemente  
+  
+|NAME|BESCHREIBUNG|Erforderlich|  
+|----------|-----------------|--------------|  
+|authentication-managed-identity |Stammelement|Ja|  
+  
+### <a name="attributes"></a>Attribute  
+  
+|NAME|BESCHREIBUNG|Erforderlich|Standard|  
+|----------|-----------------|--------------|-------------|  
+|resource|Eine Zeichenfolge. Der App-ID-URI der Ziel-Web-API (geschützte Ressource) in Azure Active Directory.|Ja|–|  
+|output-token-variable-name|Eine Zeichenfolge. Name der Kontextvariablen, die den Tokenwert als Objekttyp erhält `string`.|Nein |–|  
+|ignore-error|Boolesch. Bei Festlegung auf `true` wird die Richtlinienpipeline auch dann weiter ausgeführt, wenn kein Zugriffstoken abgerufen wird.|Nein |false|  
+  
+### <a name="usage"></a>Verwendung  
+ Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
+  
+-   **Richtlinienabschnitte**: inbound  
+  
+-   **Richtlinienbereiche**: global, Produkt, API, Vorgang  
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Verwendung von Richtlinien finden Sie unter:

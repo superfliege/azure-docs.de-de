@@ -1,5 +1,5 @@
 ---
-title: Erkennen von gedrucktem und handschriftlichem Text – maschinelles Sehen
+title: Erkennen von gedrucktem/handschriftlichem Text – maschinelles Sehen
 titleSuffix: Azure Cognitive Services
 description: Konzepte zur Erkennung von gedrucktem und handschriftlichem Text in Bildern mithilfe der Maschinelles Sehen-API.
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 9bb574fcb9782aad41ea0fd276b8addee19caf01
-ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
+ms.openlocfilehash: f7fd13b0b6df0b07543216e3c612520e528c1176
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57588974"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998235"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>Erkennen von gedrucktem und handschriftlichem Text
 
@@ -45,13 +45,11 @@ Wenn Sie ein kostenloses Abonnement nutzen, verarbeitet die Lese-API nur die ers
 
 ## <a name="ocr-optical-character-recognition-api"></a>OCR-API (Optical Character Recognition, optische Zeichenerkennung)
 
-Die OCR-API (optische Zeichenerkennung) von Maschinelles Sehen ähnelt der Lese-API, wird allerdings synchron ausgeführt und wurde nicht für große Dokumente optimiert. Sie verwendet ein früheres Erkennungsmodell, funktioniert jedoch mit mehreren Sprachen.
-
-OCR unterstützt 25 Sprachen: Arabisch, Chinesisch (traditionell), Chinesisch (vereinfacht), Dänisch, Deutsch, Englisch, Finnisch, Französisch, Griechisch, Italienisch, Japanisch, Koreanisch, Niederländisch, Norwegisch, Polnisch, Portugiesisch, Rumänisch, Russisch, Schwedisch, Serbisch (kyrillisch und lateinisch), Slowakisch, Spanisch, Tschechisch, Türkisch und Ungarisch. Die Sprache des Texts wird von OCR automatisch erkannt.
+Die OCR-API (optische Zeichenerkennung) von Maschinelles Sehen ähnelt der Lese-API, wird allerdings synchron ausgeführt und wurde nicht für große Dokumente optimiert. Sie verwendet ein früheres Erkennungsmodell, funktioniert aber mit mehr Sprachen; unter [Sprachunterstützung](language-support.md#text-recognition) finden Sie eine vollständige Liste der unterstützten Sprachen.
 
 Bei Bedarf korrigiert die OCR die Drehung des erkannten Textes, indem sie den Drehversatz in Grad um die horizontale Bildachse dreht. OCR stellt außerdem, wie in der folgenden Abbildung gezeigt, die Framekoordinaten jedes Worts bereit.
 
-![Diagramm, das zeigt, wie ein Bild gedreht und der darauf befindliche Text gelesen und eingegrenzt wird](./Images/vision-overview-ocr.png)
+![Ein Bild wird gedreht und der darauf befindliche Text gelesen und beschrieben](./Images/vision-overview-ocr.png)
 
 Weitere Informationen finden Sie in der [OCR-Referenzdokumentation](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc).
 

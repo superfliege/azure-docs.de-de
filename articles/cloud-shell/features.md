@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: damaerte
 ms.openlocfilehash: 46c9350dd2a33d0d25fe193b2ae50c954f2d1f95
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59500616"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Features und Tools für Azure Cloud Shell
@@ -80,7 +80,7 @@ Cloud Shell enthält eine vorkonfigurierte Authentifizierung für Open Source-To
 |Python     |2.7 und 3.5 (Standard)|
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Schnellstart für Bash in Azure Cloud Shell](quickstart.md) <br>
+[Bash in Cloud Shell – Schnellstart](quickstart.md) <br>
 [Schnellstart für PowerShell in Cloud Shell](quickstart-powershell.md) <br>
 [Erfahren Sie mehr über die Azure CLI](https://docs.microsoft.com/cli/azure/) <br>
 [Informationen zu Azure PowerShell](https://docs.microsoft.com/powershell/azure/) <br>

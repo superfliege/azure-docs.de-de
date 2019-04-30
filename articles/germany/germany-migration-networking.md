@@ -9,16 +9,18 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: a4a412330a1cfab9e4091ff775a25a062033bb7e
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 2d6814653967fa76ad22bcefcc94df42d60d67b1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448224"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59496224"
 ---
 # <a name="migrate-network-resources-to-global-azure"></a>Migrieren von Netzwerkressourcen zu Azure weltweit
 
 Die meisten Netzwerkdienste unterstützen keine Migration von Azure Deutschland zu Azure weltweit. Allerdings können Sie Ihre Netzwerke in beiden Cloudumgebungen über ein Site-to-Site-VPN verbinden. 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Die Schritte zum Einrichten eines Site-to-Site-VPNs zwischen Clouds sind mit den Schritten vergleichbar, die Sie zum Bereitstellen eines Site-to-Site-VPN zwischen Ihrem lokalen Netzwerk und Azure ausführen. Definieren Sie ein Gateway in beiden Clouds, und geben Sie dann an, wie die VPNs miteinander kommunizieren sollen. Im Artikel [Erstellen einer Site-to-Site-Verbindung im Azure-Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) werden die Schritte beschrieben, die Sie zum Bereitstellen eines Site-to-Site-VPNs ausführen müssen. Zusammenfassung der Schritte:
 
@@ -59,8 +61,8 @@ Die Migration von Netzwerksicherheitsgruppen von Azure Deutschland zu Azure welt
 Die aktuelle Konfiguration einer beliebigen Netzwerksicherheitsgruppe können Sie über das Portal oder mit den folgenden PowerShell-Befehlen abrufen:
 
 ```powershell
-$nsg=Get-AzureRmNetworkSecurityGroup -ResourceName <nsg-name> -ResourceGroupName <resourcegroupname>
-Get-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg
+$nsg=Get-AzNetworkSecurityGroup -ResourceName <nsg-name> -ResourceGroupName <resourcegroupname>
+Get-AzNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg
 ```
 
 Weitere Informationen finden Sie unter:
@@ -84,7 +86,7 @@ Weitere Informationen finden Sie unter:
 
 Das Migrieren einer Azure VPN Gateway-Instanz von Azure Deutschland zu Azure weltweit wird derzeit nicht unterstützt. Es wird empfohlen, in Azure weltweit eine neue VPN Gateway-Instanz zu erstellen und zu konfigurieren.
 
-Informationen zu Ihrer aktuellen VPN Gateway-Konfiguration können Sie über das Portal oder mit PowerShell abrufen. Verwenden Sie in PowerShell einen Satz von Cmdlets, die mit `Get-AzureRmVirtualNetworkGateway*` beginnen.
+Informationen zu Ihrer aktuellen VPN Gateway-Konfiguration können Sie über das Portal oder mit PowerShell abrufen. Verwenden Sie in PowerShell einen Satz von Cmdlets, die mit `Get-AzVirtualNetworkGateway*` beginnen.
 
 Stellen Sie sicher, dass Sie Ihre lokale Konfiguration aktualisieren. Löschen Sie auch alle vorhandenen Regeln für die alten IP-Adressbereiche, nachdem Sie Ihre Azure-Netzwerkumgebung aktualisiert haben.
 
@@ -92,20 +94,20 @@ Weitere Informationen finden Sie unter:
 
 - Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/#step-by-step-tutorials) durcharbeiten.
 - Im Artikel [Herstellen einer Site-to-Site-Verbindung](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) finden Sie weitere Informationen zu diesem Thema.
-- Lesen Sie auch den Artikel über die PowerShell-Cmdlets [Get-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/get-azurermvirtualnetworkgateway).
+- Lesen Sie auch den Artikel über die PowerShell-Cmdlets [Get-AzVirtualNetworkGateway](/powershell/module/az.network/get-azvirtualnetworkgateway).
 - Lesen Sie den Blogbeitrag [Herstellen einer Site-to-Site-Verbindung](https://blogs.technet.microsoft.com/ralfwi/2017/02/02/connecting-clouds/).
  
 ## <a name="application-gateway"></a>Application Gateway
 
 Das Migrieren einer Azure Application Gateway-Instanz von Azure Deutschland zu Azure weltweit wird derzeit nicht unterstützt. Es wird empfohlen, in Azure weltweit ein neues Gateway zu erstellen und zu konfigurieren.
 
-Informationen zu Ihrer aktuellen Gatewaykonfiguration können Sie über das Portal oder mit PowerShell abrufen. Verwenden Sie in PowerShell einen Satz von Cmdlets, die mit `Get-AzureRmApplicationGateway*` beginnen.
+Informationen zu Ihrer aktuellen Gatewaykonfiguration können Sie über das Portal oder mit PowerShell abrufen. Verwenden Sie in PowerShell einen Satz von Cmdlets, die mit `Get-AzApplicationGateway*` beginnen.
 
 Weitere Informationen finden Sie unter:
 
 - Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Application Gateway](https://docs.microsoft.com/azure/application-gateway/#step-by-step-tutorials) durcharbeiten.
 - Im Artikel [Erstellen eines Application Gateways](../application-gateway/quick-create-portal.md) finden Sie weitere Informationen zu diesem Thema.
-- Lesen Sie auch den Artikel über die PowerShell-Cmdlets [Get-AzureRmApplicationGateway](/powershell/module/azurerm.network/get-azurermapplicationgateway).
+- Lesen Sie auch den Artikel über die PowerShell-Cmdlets [Get-AzApplicationGateway](/powershell/module/az.network/get-azapplicationgateway).
 
 ## <a name="dns"></a>DNS
 

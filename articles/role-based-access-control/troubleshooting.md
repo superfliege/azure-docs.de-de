@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/24/2019
+ms.date: 04/16/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: d85c49cc8533b88382de81f8f12fde7116afb69a
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: c6f947ad6f2f8dba2df17132243eb6d918539c14
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407588"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678427"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Problembehandlung von RBAC für Azure-Ressourcen
 
@@ -42,7 +42,7 @@ In diesem Artikel werden häufig gestellte Fragen über die rollenbasierten Zugr
 ## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>Wiederherstellen von RBAC beim übergreifenden Verschieben von Abonnements auf Mandanten
 
 - Schritte zum Übertragen eines Abonnements auf einen anderen Azure AD-Mandanten finden Sie unter [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](../billing/billing-subscription-transfer.md).
-- Wenn Sie ein Abonnement auf einen anderen Azure AD-Mandanten übertragen, werden alle Rollenzuweisungen dauerhaft aus dem Azure AD-Quellmandanten gelöscht und nicht zum Azure AD-Zielmandanten migriert. Sie müssen Ihre Rollenzuweisungen auf dem Zielmandanten neu erstellen.
+- Wenn Sie ein Abonnement auf einen anderen Azure AD-Mandanten übertragen, werden alle Rollenzuweisungen dauerhaft aus dem Azure AD-Quellmandanten gelöscht und nicht zum Azure AD-Zielmandanten migriert. Sie müssen Ihre Rollenzuweisungen auf dem Zielmandanten neu erstellen. Sie müssen verwaltete Identitäten für Azure-Ressourcen außerdem manuell neu erstellen. Weitere Informationen finden Sie unter [Häufig gestellte Fragen und bekannte Probleme mit verwalteten Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/known-issues.md).
 - Globale Azure AD-Administratoren ohne Zugriff auf ein Abonnement können, nachdem dieses zwischen Mandanten verschoben wurde, mithilfe der **Zugriffsverwaltung für Azure-Ressourcen** vorübergehend ihren [Zugriff erhöhen](elevate-access-global-admin.md), um Zugriff auf das Abonnement zu erhalten.
 
 ## <a name="issues-with-service-admins-or-co-admins"></a>Probleme mit Dienstadministratoren oder Co-Administratoren

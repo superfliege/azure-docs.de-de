@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 3bb829e7cc99ee0d6e2d02f7ed3880d6c0226123
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: a758cce85645e72bfd9434a69393133d3da6b57d
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486317"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011366"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurieren der SQL Server-Failoverclusterinstanz auf Azure Virtual Machines
 
@@ -399,7 +399,7 @@ So erstellen Sie den Lastenausgleich
 
    - **Name**: Ein Name für den Integritätstest.
    - **Protokoll:** TCP.
-   - **Port:** Legen Sie diese Option auf einen verfügbaren TCP-Port fest. Für diesen Port ist ein geöffneter Firewallport erforderlich. Verwenden Sie [denselben Port](#ports), den Sie für den Integritätstest in der Firewall festgelegt haben.
+   - **Port:** Legen Sie den Port fest, den Sie [in diesem Schritt](#ports) in der Firewall für den Integritätstest erstellt haben. Im Beispiel dieses Artikels wird der TCP-Port `59999` verwendet.
    - **Intervall**: 5 Sekunden.
    - **Fehlerschwellenwert**: Zwei aufeinanderfolgende Fehler.
 
@@ -421,7 +421,7 @@ So erstellen Sie den Lastenausgleich
    - **Integritätstest**: Verwenden Sie den Integritätstest, den Sie zuvor konfiguriert haben.
    - **Sitzungspersistenz**: None (Keine):
    - **Leerlaufzeitüberschreitung (Minuten)**: 4.
-   - **Floating IP (Direct Server Return)**: Aktiviert
+   - **Floating IP (Direct Server Return)**: Enabled
 
 1. Klicken Sie auf **OK**.
 

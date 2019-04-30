@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/05/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: ce2d39f3941030059cef329aa60e804a44d73a98
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: ad4b40d649d4e4cbc17d6aec5d8bc7308012b927
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263093"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59677424"
 ---
 # <a name="quickstart-get-answer-from-knowledge-base-using-curl"></a>Schnellstart: Abrufen einer Antwort aus einer Wissensdatenbank mit cURL
 
@@ -34,7 +34,7 @@ Wenn Sie bereit sind, eine Antwort auf eine Frage aus Ihrer Wissensdatenbank zu 
 
 Wenn Ihre Wissensdatenbank veröffentlicht wird, werden auf der Seite **Veröffentlichen** die HTTP-Anforderungseinstellungen zum Generieren einer Antwort angezeigt. Die Registerkarte **CURL** zeigt die Einstellungen, die zum Generieren einer Antwort über das Befehlszeilentool [cURL](https://www.getpostman.com) erforderlich sind.
 
-[![Publish results (Ergebnisse veröffentlichen)](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png)](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png#lightbox)
+[![Veröffentlichen der Ergebnisse](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png)](../media/qnamaker-use-to-generate-answer/curl-command-on-publish-page.png#lightbox)
 
 Um eine Antwort mit cURL zu generieren, führen Sie die folgenden Schritte aus:
 
@@ -69,13 +69,15 @@ Um eine Antwort mit cURL zu generieren, führen Sie die folgenden Schritte aus:
 
 ## <a name="use-staging-endpoint-with-curl"></a>Verwenden des Stagingendpunkts mit cURL
 
-Wenn Sie eine Antwort vom Stagingendpunkt erhalten möchten, verwenden Sie den booleschen Abfragezeichenfolgen-Parameter `isTest` mit dem Wert `true`.
+Wenn Sie eine Antwort vom Stagingendpunkt erhalten möchten, verwenden Sie die `isTest`-Texteigenschaft.
 
-`isTest=true`
+```json
+isTest:true
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Die Veröffentlichungsseite enthält auch Informationen zum [Generieren einer Antwort](get-answer-from-kb-using-postman.md) mit Postman. 
 
 > [!div class="nextstepaction"]
-> [Abrufen einer wissensbasierten Antwort mit der GenerateAnswer-API und Metadaten](../How-to/metadata-generateanswer-usage.md)
+> [Verwenden von Metadaten beim Generieren einer Antwort](../How-to/metadata-generateanswer-usage.md)

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: dba2582b29d1fc81a39387f5297852245233b708
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 3c07f7ac2b6407a3edf53fd5d3a4b402714fefbb
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731088"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678903"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Kommerzielle Transaktionen ‎in Azure Marketplace: Möglichkeiten und Überlegungen
 
@@ -44,7 +44,7 @@ Zusätzlich zu den Veröffentlichungsoptionen „Listung“ und „Testversion�
 
 ## <a name="transact-general-overview"></a>Allgemeine Übersicht über die Veröffentlichungsoption „Transaktion“
 
-Bei Verwenden der Veröffentlichungsoption für „Transaktion“ ermöglicht Microsoft den Verkauf und die Bereitstellung von Software von Drittanbietern im Rahmen des Azure-Abonnements des Kunden. Der Herausgeber muss bei der Auswahl eines Abrechnungsmodells und Angebotstyps in Azure Marketplace die Abrechnung der Azure-Infrastrukturgebühren und der eigenen Softwarelizenzgebühren des Herausgebers berücksichtigen. 
+Bei Verwendung der Veröffentlichungsoption „Transaktion“ ermöglicht Microsoft den Verkauf von Software von Drittanbietern und die Bereitstellung einiger Angebotstypen für das Azure-Abonnement des Kunden. Der Herausgeber muss bei der Auswahl eines Abrechnungsmodells und Angebotstyps in Azure Marketplace die Abrechnung der Azure-Infrastrukturgebühren und der eigenen Softwarelizenzgebühren des Herausgebers berücksichtigen.
 
 Die Veröffentlichungsoption „Transaktion“ im Azure Marketplace wird derzeit für die folgenden Angebotstypen unterstützt: virtuelle Computer, Azure-Anwendungen oder SaaS-Apps.
 
@@ -58,7 +58,7 @@ Für virtuelle Computer und Azure-Anwendungen werden die Nutzungsgebühren für 
 
 **Für SaaS-Apps**
 
-Bei SaaS-Apps muss der Herausgeber die Nutzungsgebühren für Azure-Infrastruktur und Softwarelizenzgebühren als einen Kostenposten verrechnen.  Sie werden dem Kunden als monatliche Pauschalgebühr ausgewiesen. Die Nutzung der Azure-Infrastruktur wird verwaltet und dem Partner direkt in Rechnung gestellt.  Tatsächliche Nutzungsgebühren für die Infrastruktur werden dem Kunden nicht angezeigt.  Herausgeber entscheiden sich in der Regel dafür, die Nutzungsgebühren für Azure-Infrastruktur in ihren Softwarelizenzpreis einfließen zu lassen.  Softwarelizenzgebühren werden nicht gemessen oder nutzungsabhängig berechnet.
+Bei SaaS-Apps muss der Herausgeber die Nutzungsgebühren für Azure-Infrastruktur und Softwarelizenzgebühren als einen Kostenposten verrechnen.  Diese werden dem Kunden als Pauschalgebühr angegeben. Die Nutzung der Azure-Infrastruktur wird verwaltet und dem Partner direkt in Rechnung gestellt.  Tatsächliche Nutzungsgebühren für die Infrastruktur werden dem Kunden nicht angezeigt.  Herausgeber entscheiden sich in der Regel dafür, die Nutzungsgebühren für Azure-Infrastruktur in ihren Softwarelizenzpreis einfließen zu lassen.  Softwarelizenzgebühren werden nicht gemessen oder nutzungsabhängig berechnet.
 
 ## <a name="transact-billing-models"></a>Abrechnungsmodelle für die Veröffentlichungsoption „Transaktion“
 

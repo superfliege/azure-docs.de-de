@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 6be897cc1ae11b8d3032e3ffc669eac05dafe5b2
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 8cbc02f80244b02b397162309fa5ae047f3f460a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522314"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995998"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Herstellen einer Verbindung mit virtuellen Azure-Netzwerken in Azure Logic Apps mithilfe einer Integrationsdienstumgebung
 
@@ -67,30 +67,31 @@ Weitere Informationen zu Integrationsdienstumgebungen finden Sie unter [Zugriff 
 
 Damit Ihre Integrationsdienstumgebung ordnungsgemäß funktioniert und der Zugriff darauf gewährleistet ist, müssen bestimmte Ports in Ihrem virtuellen Netzwerk verfügbar sein. Wenn einer dieser Ports nicht verfügbar sein sollte, verlieren Sie möglicherweise den Zugriff auf Ihre Integrationsdienstumgebung, was zu Funktionsstörungen führen kann. Wenn Sie eine Integrationsdienstumgebung in einem virtuellen Netzwerk verwenden, ist ein häufiges Einrichtungsproblem, dass ein oder mehrere Ports blockiert sind. Für Verbindungen zwischen Ihrer Integrationsdienstumgebung und dem Zielsystem kann der von Ihnen verwendete Connector auch eigene Portanforderungen aufweisen. Wenn Sie beispielsweise über den FTP-Connector mit einem FTP-System kommunizieren, stellen Sie sicher, dass der Port, den Sie auf diesem FTP-System verwenden, wie z.B. Port 21 zum Senden von Befehlen, verfügbar ist.
 
-Sie können [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md) für diese Subnetze einrichten, [indem Sie den Datenverkehr in Subnetzen filtern](../virtual-network/tutorial-filter-network-traffic.md), um den Datenverkehr in den Subnetzen des virtuellen Netzwerks zu steuern, in denen Sie Ihre Integrationsdienstumgebung bereitstellen. In diesen Tabellen werden die Ports in Ihrem virtuellen Netzwerk beschrieben, die Ihre Integrationsdienstumgebung verwendet, und wo diese Ports verwendet werden. Ein [Diensttag](../virtual-network/security-overview.md#service-tags) steht für eine Gruppe von IP-Adresspräfixen, deren Aufgabe es ist, die Komplexität bei der Erstellung von Sicherheitsregeln zu verringern.
+Sie können [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md) für diese Subnetze einrichten, [indem Sie den Datenverkehr in Subnetzen filtern](../virtual-network/tutorial-filter-network-traffic.md), um den Datenverkehr in den Subnetzen des virtuellen Netzwerks zu steuern, in denen Sie Ihre Integrationsdienstumgebung bereitstellen. In diesen Tabellen werden die Ports in Ihrem virtuellen Netzwerk beschrieben, die Ihre Integrationsdienstumgebung verwendet, und wo diese Ports verwendet werden. Die [Resource Manager-Diensttags](../virtual-network/security-overview.md#service-tags) stellen eine Gruppe von IP-Adresspräfixen dar, deren Aufgabe es ist, die Komplexität bei der Erstellung von Sicherheitsregeln zu verringern.
 
 > [!IMPORTANT]
 > Für die interne Kommunikation in Ihren Subnetzen ist es für die ISE erforderlich, dass Sie alle Ports in diesen Subnetzen öffnen.
 
-| Zweck | Richtung | Ports | Quelldiensttag | Zieldiensttag | Notizen |
+| Zweck | Direction | Ports | Quelldiensttag | Zieldiensttag | Notizen |
 |---------|-----------|-------|--------------------|-------------------------|-------|
-| Datenverkehr aus Azure Logic Apps | Ausgehend | 80 und 443 | VIRTUAL_NETWORK | INTERNET | Der Port hängt vom externen Dienste ab, mit dem der Logic Apps-Dienst kommuniziert. |
-| Azure Active Directory | Ausgehend | 80 und 443 | VIRTUAL_NETWORK | AzureActiveDirectory | |
-| Azure Storage-Abhängigkeit | Ausgehend | 80 und 443 | VIRTUAL_NETWORK | Storage | |
-| Kommunikation zwischen Subnetzen | Ein- und ausgehend | 80 und 443 | VIRTUAL_NETWORK | VIRTUAL_NETWORK | Für die Kommunikation zwischen Subnetzen |
-| Datenverkehr zu Azure Logic Apps | Eingehend | 443 | INTERNET  | VIRTUAL_NETWORK | Die IP-Adresse des Computers oder Diensts, der einen Anforderungstrigger oder Webhook aufruft, der in Ihrer Logik-App vorhanden ist. Wenn Sie diesen Port schließen oder blockieren, werden HTTP-Aufrufe Ihrer Logik-Apps mit Anforderungstriggern verhindert.  |
-| Ausführungsverlauf einer Logik-App | Eingehend | 443 | INTERNET  | VIRTUAL_NETWORK | Die IP-Adresse des Computers, über den Sie den Ausführungsverlauf der Logik-App anzeigen. Wenn Sie diesen Port schließen oder blockieren, können Sie den Ausführungsverlauf zwar anzeigen, aber Sie können weder Ein- noch Ausgaben für die Schritte im Ausführungsverlauf anzeigen. |
-| Verbindungsverwaltung | Ausgehend | 443 | VIRTUAL_NETWORK  | INTERNET | |
-| Veröffentlichen von Diagnoseprotokollen und Metriken | Ausgehend | 443 | VIRTUAL_NETWORK  | AzureMonitor | |
-| Logic Apps-Designer: dynamische Eigenschaften | Eingehend | 454 | INTERNET  | VIRTUAL_NETWORK | Anforderungen werden von den [eingehenden IP-Adressen des Logic Apps-Zugriffsendpunkts in dieser Region gesendet](../logic-apps/logic-apps-limits-and-config.md#inbound). |
-| Abhängigkeit von der App Service-Verwaltung | Eingehend | 454 und 455 | AppServiceManagement | VIRTUAL_NETWORK | |
-| Bereitstellen von Connectors | Eingehend | 454 und 3443 | INTERNET  | VIRTUAL_NETWORK | Zum Bereitstellen und Aktualisieren von Connectors erforderlich. Wenn Sie diesen Port schließen oder blockieren, führt dies zu Fehlern bei ISE-Bereitstellungen, und es können keine Connectorupdates oder -fixes durchgeführt werden. |
-| Azure SQL-Abhängigkeiten | Ausgehend | 1433 | VIRTUAL_NETWORK | SQL |
-| Azure Resource Health | Ausgehend | 1886 | VIRTUAL_NETWORK | INTERNET | Zum Veröffentlichen des Integritätsstatus in Resource Health |
-| API Management: Verwaltungsendpunkt | Eingehend | 3443 | APIManagement  | VIRTUAL_NETWORK | |
-| Abhängigkeit von Richtlinie zum Anmelden bei Event Hub und Überwachungs-Agent | Ausgehend | 5672 | VIRTUAL_NETWORK  | EventHub | |
-| Zugriff auf Azure Cache for Redis-Instanzen zwischen Rolleninstanzen | Eingehend <br>Ausgehend | 6379 – 6383 | VIRTUAL_NETWORK  | VIRTUAL_NETWORK | Damit die ISE mit Azure Cache for Redis funktioniert, müssen Sie die [Ports für ausgehenden und eingehenden Datenverkehr öffnen, die in den häufig gestellten Fragen zu Azure Cache for Redis beschrieben werden](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
-| Azure Load Balancer | Eingehend | * | AZURE_LOAD_BALANCER | VIRTUAL_NETWORK |  |
+| Datenverkehr aus Azure Logic Apps | Ausgehend | 80 und 443 | VirtualNetwork | Internet | Der Port hängt vom externen Dienste ab, mit dem der Logic Apps-Dienst kommuniziert. |
+| Azure Active Directory | Ausgehend | 80 und 443 | VirtualNetwork | AzureActiveDirectory | |
+| Azure Storage-Abhängigkeit | Ausgehend | 80 und 443 | VirtualNetwork | Storage | |
+| Kommunikation zwischen Subnetzen | Ein- und ausgehend | 80 und 443 | VirtualNetwork | VirtualNetwork | Für die Kommunikation zwischen Subnetzen |
+| Datenverkehr zu Azure Logic Apps | Eingehend | 443 | Internet  | VirtualNetwork | Die IP-Adresse des Computers oder Diensts, der einen Anforderungstrigger oder Webhook aufruft, der in Ihrer Logik-App vorhanden ist. Wenn Sie diesen Port schließen oder blockieren, werden HTTP-Aufrufe Ihrer Logik-Apps mit Anforderungstriggern verhindert.  |
+| Ausführungsverlauf einer Logik-App | Eingehend | 443 | Internet  | VirtualNetwork | Die IP-Adresse des Computers, über den Sie den Ausführungsverlauf der Logik-App anzeigen. Wenn Sie diesen Port schließen oder blockieren, können Sie den Ausführungsverlauf zwar anzeigen, aber Sie können weder Ein- noch Ausgaben für die Schritte im Ausführungsverlauf anzeigen. |
+| Verbindungsverwaltung | Ausgehend | 443 | VirtualNetwork  | Internet | |
+| Veröffentlichen von Diagnoseprotokollen und Metriken | Ausgehend | 443 | VirtualNetwork  | AzureMonitor | |
+| Kommunikation über Azure Traffic Manager | Eingehend | 443 | AzureTrafficManager | VirtualNetwork | |
+| Logic Apps-Designer: dynamische Eigenschaften | Eingehend | 454 | Internet  | VirtualNetwork | Anforderungen werden von den [eingehenden IP-Adressen des Logic Apps-Zugriffsendpunkts in dieser Region gesendet](../logic-apps/logic-apps-limits-and-config.md#inbound). |
+| Abhängigkeit von der App Service-Verwaltung | Eingehend | 454 und 455 | AppServiceManagement | VirtualNetwork | |
+| Bereitstellen von Connectors | Eingehend | 454 und 3443 | Internet  | VirtualNetwork | Zum Bereitstellen und Aktualisieren von Connectors erforderlich. Wenn Sie diesen Port schließen oder blockieren, führt dies zu Fehlern bei ISE-Bereitstellungen, und es können keine Connectorupdates oder -fixes durchgeführt werden. |
+| Azure SQL-Abhängigkeiten | Ausgehend | 1433 | VirtualNetwork | SQL |
+| Azure Resource Health | Ausgehend | 1886 | VirtualNetwork | Internet | Zum Veröffentlichen des Integritätsstatus in Resource Health |
+| API Management: Verwaltungsendpunkt | Eingehend | 3443 | APIManagement  | VirtualNetwork | |
+| Abhängigkeit von Richtlinie zum Anmelden bei Event Hub und Überwachungs-Agent | Ausgehend | 5672 | VirtualNetwork  | EventHub | |
+| Zugriff auf Azure Cache for Redis-Instanzen zwischen Rolleninstanzen | Eingehend <br>Ausgehend | 6379 – 6383 | VirtualNetwork  | VirtualNetwork | Damit die ISE mit Azure Cache for Redis funktioniert, müssen Sie die [Ports für ausgehenden und eingehenden Datenverkehr öffnen, die in den häufig gestellten Fragen zu Azure Cache for Redis beschrieben werden](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
+| Azure Load Balancer | Eingehend | * | AzureLoadBalancer | VirtualNetwork |  |
 ||||||
 
 <a name="create-environment"></a>

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/24/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 24201cfd657d4f23eb962b7407ed20262d780cf7
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: ebea55f769ca16bfa344d0a100fe16cec6d784d0
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407418"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684224"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>Konflikttypen und Konfliktauflösungsrichtlinien
 
@@ -37,11 +37,11 @@ Azure Cosmos DB bietet einen flexiblen, richtlinienbasierten Mechanismus zum Auf
   > [!NOTE]
   > „Letzter Schreibvorgang gewinnt“ (Last Write Wins, LWW) ist der standardmäßige Konfliktauflösungsmodus. Er ist für die folgenden APIs verfügbar: SQL, MongoDB, Cassandra, Gremlin und Tabellen.
 
-  Weitere Informationen finden Sie unter [Anwendungsbeispiele für LWW-Konfliktauflösungsrichtlinien](how-to-manage-conflicts.md#create-a-last-writer-wins-conflict-resolution-policy).
+  Weitere Informationen finden Sie unter [Anwendungsbeispiele für LWW-Konfliktauflösungsrichtlinien](how-to-manage-conflicts.md).
 
 - **Benutzerdefiniert**: Diese Auflösungsrichtlinie ist für eine anwendungsdefinierte Semantik zum Beilegen von Konflikten konzipiert. Beim Festlegen dieser Richtlinie für Ihren Azure Cosmos-Container müssen Sie auch eine *gespeicherte Mergeprozedur* registrieren. Diese Prozedur wird automatisch aufgerufen, wenn Konflikte bei einer Datenbanktransaktion auf dem Server erkannt werden. Das System garantiert genau eine Ausführung der Mergeprozedur im Rahmen des Commitprotokolls.  
 
-  Wenn Sie Ihren Container mit der Option für die benutzerdefinierte Auflösung konfigurieren und keine Mergeprozedur im Container registrieren oder die Mergeprozedur zur Laufzeit eine Ausnahme auslöst, werden die Konflikte in den *Konfliktfeed* geschrieben. Ihre Anwendung muss die Konflikte im Konfliktfeed dann manuell auflösen. Weitere Informationen finden Sie unter [Anwendungsbeispiele für benutzerdefinierte Auflösungsrichtlinien und den Konfliktfeed](how-to-manage-conflicts.md#create-a-last-writer-wins-conflict-resolution-policy).
+  Wenn Sie Ihren Container mit der Option für die benutzerdefinierte Auflösung konfigurieren und keine Mergeprozedur im Container registrieren oder die Mergeprozedur zur Laufzeit eine Ausnahme auslöst, werden die Konflikte in den *Konfliktfeed* geschrieben. Ihre Anwendung muss die Konflikte im Konfliktfeed dann manuell auflösen. Weitere Informationen finden Sie unter [Anwendungsbeispiele für benutzerdefinierte Auflösungsrichtlinien und den Konfliktfeed](how-to-manage-conflicts.md).
 
   > [!NOTE]
   > Die benutzerdefinierte Konfliktauflösungsrichtlinie ist nur für SQL-API-Konten verfügbar.
@@ -51,6 +51,5 @@ Azure Cosmos DB bietet einen flexiblen, richtlinienbasierten Mechanismus zum Auf
 Erfahren Sie, wie Sie Richtlinien für die Konfliktauflösung konfigurieren:
 
 * [Konfigurieren von Multimaster in Ihren Anwendungen](how-to-multi-master.md)
-* [Verwenden der LWW-Konfliktauflösungsrichtlinie](how-to-manage-conflicts.md#create-a-last-writer-wins-conflict-resolution-policy)
-* [Verwenden der benutzerdefinierten Konfliktauflösungsrichtlinie](how-to-manage-conflicts.md#create-a-last-writer-wins-conflict-resolution-policy)
+* [Verwalten von Richtlinien für die Konfliktlösung](how-to-manage-conflicts.md)
 * [Lesen aus dem Konfliktfeed](how-to-manage-conflicts.md#read-from-conflict-feed)

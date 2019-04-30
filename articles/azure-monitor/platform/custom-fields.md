@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: bwren
-ms.openlocfilehash: eebf3709657382eb403041e6637e32e5f5d43b15
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: 974a3391c592a1caf7bdcc6d9e01032f0c73aaa6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793344"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002866"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>Erstellen von benutzerdefinierten Feldern in einem Log Analytics-Arbeitsbereich in Azure Monitor
 
@@ -81,7 +81,7 @@ Sie können im Azure-Portal über das Menü **Erweiterte Einstellungen** des Log
 Benutzerdefinierte Felder können auf zwei Arten entfernt werden:  Sie können in der weiter oben beschriebenen Liste für jedes Feld die Option **Entfernen** verwenden.  Alternativ können Sie einen Datensatz abrufen und auf die Schaltfläche links neben dem Feld klicken.  Das Menü enthält eine Option zum Entfernen des benutzerdefinierten Felds.
 
 ## <a name="sample-walkthrough"></a>Exemplarische Vorgehensweise
-Der folgende Abschnitt enthält ein vollständiges Beispiel für die Erstellung eines benutzerdefinierten Felds.  In diesem Beispiel wird in Windows-Ereignissen, die auf eine Zustandsänderung bei einem Dienst hindeuten, der Dienstname extrahiert.  Als Grundlage dienen Ereignisse, die auf Windows-Computern vom Dienststeuerungs-Manager in der Systemanmeldung erstellt werden.  Wenn Sie dieses Beispiel nachvollziehen möchten, müssen Sie [Informationsereignisse für das Systemprotokoll sammeln](data-sources-windows-events.md).
+Der folgende Abschnitt enthält ein vollständiges Beispiel für die Erstellung eines benutzerdefinierten Felds.  In diesem Beispiel wird in Windows-Ereignissen, die auf eine Zustandsänderung bei einem Dienst hindeuten, der Dienstname extrahiert.  Als Grundlage dienen Ereignisse, die auf Windows-Computern beim Start des Systems vom Dienststeuerungs-Manager erstellt werden.  Wenn Sie dieses Beispiel nachvollziehen möchten, müssen Sie [Informationsereignisse für das Systemprotokoll sammeln](data-sources-windows-events.md).
 
 Wir geben die folgende Abfrage ein, die alle Ereignisse des Dienststeuerungs-Managers mit der Ereignis-ID 7036 zurückgibt. (Dieses Ereignis gibt an, dass ein Dienst gestartet oder beendet wird.)
 

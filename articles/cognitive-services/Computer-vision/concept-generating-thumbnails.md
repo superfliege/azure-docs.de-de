@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: cea8522a9f3eb8fa98821c1cb08d92a9524d5ce4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8bbc86f5c6fe0f30968a1ba5bd5fa28160ef6963
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57876798"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002441"
 ---
 # <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>Generieren intelligent zugeschnittener Miniaturbilder mit maschinellem Sehen
 
@@ -38,15 +38,15 @@ Sie können die Koordinaten des unbearbeiteten umgebenden Felds dieses *relevant
 
 Das generierte Miniaturbild kann je nach den Angaben für Höhe, Breite und intelligenter Zuschneidefunktion stark variieren, wie im folgenden Bild dargestellt.
 
-![Miniaturbilder](./Images/thumbnail-demo.png)
+![Ein Bild eines Bergs neben verschiedenen Zuschnittkonfigurationen](./Images/thumbnail-demo.png)
 
 In der folgenden Tabelle sind typische Miniaturbilder dargestellt, die vom maschinellen Sehen für die Beispielbilder generiert wurden. Die Miniaturbilder wurden für eine bestimmte Zielhöhe und -breite von 50 Pixel generiert, wobei die intelligente Zuschneidefunktion aktiviert ist.
 
 | Image | Miniaturansicht |
 |-------|-----------|
-|![Eine Person, die bei Sonnenuntergang auf einem Gebirgsfelsen steht](./Images/mountain_vista.png) | ![Miniaturbild: Outdoor Mountain](./Images/mountain_vista_thumbnail.png) |
+|![Berg bei Sonnenuntergang mit Silhouette einer Person](./Images/mountain_vista.png) | ![Miniaturansicht eines Bergs bei Sonnenuntergang mit Silhouette einer Person](./Images/mountain_vista_thumbnail.png) |
 |![Eine weiße Blume vor einem grünen Hintergrund](./Images/flower.png) | ![Bildanalyse: Miniaturbild Flower](./Images/flower_thumbnail.png) |
-|![Eine Frau auf dem Dach eines Wohnblocks](./Images/woman_roof.png) | ![Miniaturbild: Woman Roof](./Images/woman_roof_thumbnail.png) |
+|![Eine Frau auf dem Dach eines Wohnblocks](./Images/woman_roof.png) | ![Miniaturansicht einer Frau auf dem Dach eines Wohnhauses](./Images/woman_roof_thumbnail.png) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

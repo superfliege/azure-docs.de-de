@@ -13,24 +13,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 04/17/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd3d5a19e861bd738f3c618610aadb77da30b384
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: abd1049551d7dbc4823636dfdc00f64afab72cdf
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520342"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008595"
 ---
 # <a name="how-to-configure-the-multi-factor-authentication-registration-policy"></a>Anleitung: Konfigurieren der Multi-Factor Authentication-Registrierungsrichtlinie
 
-Azure AD Identity Protection unterstützt Sie beim Verwalten des Rollouts der Registrierung für die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA), indem eine Richtlinie konfiguriert wird. In diesem Artikel wird beschrieben, wofür die Richtlinie verwendet werden kann und wie sie konfiguriert wird.
+Azure AD Identity Protection unterstützt Sie beim Verwalten des Rollouts der Registrierung für die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA), indem eine Richtlinie zur Anforderung der MFA-Registrierung konfiguriert wird. In diesem Artikel wird beschrieben, wofür die Richtlinie verwendet werden kann und wie sie konfiguriert wird.
 
 ## <a name="what-is-the-multi-factor-authentication-registration-policy"></a>Was ist die Registrierungsrichtlinie für die mehrstufige Authentifizierung?
 
-Azure Multi-Factor Authentication ist eine Methode zur Identitätsüberprüfung, bei der mehr als nur ein Benutzername und ein Kennwort benötigt wird. Sie bietet eine zweite Sicherheitsebene für Benutzeranmeldungen und -transaktionen.  
+Azure Multi-Factor Authentication ist eine Methode zur Identitätsüberprüfung, bei der mehr als nur ein Benutzername und ein Kennwort benötigt wird. Sie bietet eine zweite Sicherheitsebene für Benutzeranmeldungen und -transaktionen. Damit Benutzer auf MFA-Aufforderungen reagieren können, müssen sie sich zuerst für MFA registrieren. 
 
 Die Erzwingung von Azure Multi-Factor Authentication für Benutzeranmeldungen empfiehlt sich aus folgenden Gründen:
 
@@ -39,7 +39,7 @@ Die Erzwingung von Azure Multi-Factor Authentication für Benutzeranmeldungen em
 - Sie spielt eine wichtige Rolle bei der Vorbereitung Ihres Unternehmens zum Schutz und der Wiederherstellung von kompromittierten Konten.
 
 
-Weitere Informationen finden Sie unter [Was ist Azure Multi-Factor Authentication?](../authentication/multi-factor-authentication.md)
+Weitere Informationen zu MFA finden Sie unter [Was ist Azure Multi-Factor Authentication?](../authentication/multi-factor-authentication.md)
 
 
 ## <a name="how-do-i-access-the-mfa-registration-policy"></a>Wie greife ich auf die Registrierungsrichtlinie für die mehrstufige Authentifizierung zu?
@@ -53,13 +53,13 @@ Die Registrierungsrichtlinie für die mehrstufige Authentifizierung befindet sic
 
 ## <a name="policy-settings"></a>Richtlinieneinstellungen
 
-Sie müssen Folgendes festlegen, wenn Sie die Richtlinie zum Anmelderisiko konfigurieren:
+Sie müssen Folgendes festlegen, wenn Sie die MFA-Registrierungsrichtlinie konfigurieren:
 
 - Die Benutzer und Gruppen, für die die Richtlinie gilt:
 
     ![Benutzer und Gruppen](./media/howto-mfa-policy/11.png)
 
-- Die Art des Zugriffs, die erzwungen werden soll:  
+- Die Steuerung, die Sie erzwingen möchten – Anforderung der MFA-Registrierung:  
 
     ![Access](./media/howto-mfa-policy/12.png)
 

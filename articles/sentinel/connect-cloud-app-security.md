@@ -1,6 +1,6 @@
 ---
-title: Sammeln von Cloud App Security-Daten in der Vorschauversion von Azure Sentinel | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Cloud App Security-Daten in Azure Sentinel sammeln.
+title: Verknüpfen von Cloud App Security-Daten mit Azure Sentinel Preview | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Cloud App Security-Daten mit Azure Sentinel verknüpfen.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: b0033f5f8636053f88825541b8b2cfcbf2fc9f8b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 5a7dfeed7b52453b38720c21c7d213679b8d2854
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245487"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59789448"
 ---
-# <a name="collect-data-from-microsoft-cloud-app-security"></a>Sammeln von Microsoft Cloud App Security-Daten 
+# <a name="connect-data-from-microsoft-cloud-app-security"></a>Verknüpfen von Microsoft Cloud App Security-Daten 
 
 > [!IMPORTANT]
-> Azure Sentinel ist aktuell als Public Preview verfügbar.
+> Azure Sentinel ist derzeit als öffentliche Vorschauversion (Public Preview) verfügbar.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Sie können Protokolle von [Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) mit einem einzigen Klick in Azure Sentinel streamen. Durch diese Verbindung könen Sie die Warnungen von Cloud App Security in Azure Sentinel streamen. 
@@ -39,7 +39,7 @@ Wenn Sie Cloud App Security bereits haben, vergewissern Sie sich, dass es [in Ih
 Wenn Cloud App Security bereitgestellt ist und Daten erhält, können die Warnungsdaten problemlos an Azure Sentinel gestreamt werden.
 
 
-1. Wählen Sie in Azure Sentinel **Datenerfassung** aus, und klicken Sie dann auf die Kachel **Cloud App Security**.
+1. Wählen Sie in Azure Sentinel die Option **Data connectors** (Datenconnectors) aus, und klicken Sie dann auf die Kachel **Cloud App Security**.
 
 2. Klicken Sie auf **Verbinden**.
 
@@ -48,5 +48,5 @@ Wenn Cloud App Security bereitgestellt ist und Daten erhält, können die Warnun
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument wurde erläutert, wie Sie Microsoft Cloud App Security mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
-- Erfahren Sie, wie Sie [ Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
+- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
 - Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats.md).

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumeet.mittal
-ms.openlocfilehash: 2d65d51ae8148e2e55d57d39e306ded0f75da687
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: b39f365c8b66f7cab074a20bc574803e12f93422
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652585"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59494168"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>Richtlinien für Dienstendpunkte in virtuellen Netzwerken (Vorschau)
 
@@ -24,7 +24,7 @@ Richtlinien für Dienstendpunkte in virtuellen Azure-Netzwerken (VNET, Virtual N
 
 Dieses Feature ist für die folgenden Azure-Dienste und -Regionen als __Vorschauversion__ verfügbar:
 
-__Azure Storage__: WestCentralUS, WestUS2.
+__Azure Storage__: USA, Westen-Mitte; USA, Westen 2; USA, Norden-Mitte; USA, Süden-Mitte; USA, Mitte; USA, Osten 2.
 
 Aktuelle Hinweise zur Vorschauversion finden Sie auf der Seite [Azure-Updates](https://azure.microsoft.com/updates/?product=virtual-network).
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/20/2019
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: e6f4f1feb5c1c78e78ff5d71b08a0e8a40537d13
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 2de194e501c05ba0bdb9971ca6045e67a42b0fd9
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803257"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681725"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Verwalten des Azure Blob Storage-Lebenszyklus
 
@@ -45,7 +45,7 @@ Die Funktion zur Lebenszyklusverwaltung ist in allen öffentlichen Azure-Regione
 Sie können eine Richtlinie über das Azure-Portal, [Azure PowerShell](https://github.com/Azure/azure-powershell/releases), die Azure-Befehlszeilenschnittstelle, [REST-APIs](https://docs.microsoft.com/en-us/rest/api/storagerp/managementpolicies) oder ein Clienttool hinzufügen, bearbeiten oder entfernen. In diesem Artikel wird die Verwaltung einer Richtlinie über das Portal und über PowerShell erläutert.  
 
 > [!NOTE]
-> Wenn Sie Firewallregeln für Ihr Speicherkonto aktivieren, werden Anforderungen für die Lebenszyklusverwaltung möglicherweise blockiert. Sie können die Sperre dieser Anforderungen durch Bereitstellen von Ausnahmen aufheben. Weitere Informationen finden Sie im Abschnitt „Ausnahmen“ unter [Konfigurieren von Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
+> Wenn Sie Firewallregeln für Ihr Speicherkonto aktivieren, werden Anforderungen für die Lebenszyklusverwaltung möglicherweise blockiert. Sie können die Sperre dieser Anforderungen durch Bereitstellen von Ausnahmen aufheben. Folgende Umgehungsparameter sind erforderlich: `Logging,  Metrics,  AzureServices`. Weitere Informationen finden Sie im Abschnitt „Ausnahmen“ unter [Konfigurieren von Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 
 ### <a name="azure-portal"></a>Azure-Portal
 
@@ -116,7 +116,7 @@ Jede Regel in der Richtlinie umfasst mehrere Parameter:
 | Parametername | Parametertyp | Notizen | Erforderlich |
 |----------------|----------------|-------|----------|
 | name           | Zeichenfolge |Ein Regelname kann bis zu 256 alphanumerische Zeichen enthalten. Bei Regelnamen wird die Groß-/Kleinschreibung unterschieden.  Er muss innerhalb einer Richtlinie eindeutig sein. | True |
-| Aktiviert | Boolescher Wert | Ein optionaler boolescher Wert, über den eine Regel temporär deaktiviert werden kann. Der Standardwert ist TRUE, wenn dieser Wert nicht festgelegt ist. | False | 
+| Aktiviert | Boolean | Ein optionaler boolescher Wert, über den eine Regel temporär deaktiviert werden kann. Der Standardwert ist TRUE, wenn dieser Wert nicht festgelegt ist. | False | 
 | type           | Ein Enumerationswert | Aktuell ist `Lifecycle` der gültige Typ. | True |
 | Definition     | Ein Objekt, das die Lebenszyklusregel definiert | Jede Definition beinhaltet einen Filtersatz und einen Aktionssatz. | True |
 

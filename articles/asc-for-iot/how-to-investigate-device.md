@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/27/2019
+ms.date: 04/18/2019
 ms.author: mlottner
-ms.openlocfilehash: 56378e94bf448da4c3047c30be3ae25887f113b5
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: 6182662cb0da7fa5bcd3f329ada9ca5851490724
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862623"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007881"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>Untersuchen eines verdächtigen IoT-Geräts
 
@@ -43,7 +43,7 @@ Standardmäßig werden Ihre Sicherheitswarnungen und Empfehlungen von ASC für I
 Ermitteln Sie Ihren Log Analytics-Arbeitsbereich für die Datenspeicherung wie folgt:
 
 1. Öffnen Sie Ihren IoT-Hub. 
-1. Klicken Sie auf **Sicherheit**, und wählen Sie anschließend **Einstellungen**.
+1. Klicken Sie unter **Sicherheit** auf **Übersicht** und anschließend auf **Einstellungen**.
 1. Ändern Sie die Konfigurationsdetails für Ihren Log Analytics-Arbeitsbereich. 
 1. Klicken Sie auf **Speichern**. 
 
@@ -188,4 +188,5 @@ Verwenden Sie die folgende KQL-Abfrage, um zu ermitteln, ob die Prozessliste den
   3. Haben Ausführungen über die Befehlszeile die richtigen und erwarteten Argumente enthalten?
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Nachdem Sie ein Gerät untersucht und ein besseres Verständnis der Risiken entwickelt haben, können Sie das [Konfigurieren von benutzerdefinierten Warnungen](quickstart-create-custom-alerts.md) erwägen, um den Sicherheitsstatus Ihrer IoT-Lösung zu verbessern. Falls Sie nicht bereits über einen Geräte-Agent verfügen, können Sie [einen Sicherheits-Agent bereitstellen](how-to-deploy-agent.md) oder [die Konfiguration eines vorhandenen Geräte-Agents ändern](how-to-agent-configuration.md), um Ihre Ergebnisse zu verbessern. 

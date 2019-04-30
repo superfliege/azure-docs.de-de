@@ -1,6 +1,6 @@
 ---
-title: Sammeln von Azure Information Protection-Daten in Azure Sentinel Preview | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Azure Information Protection-Daten in Azure Sentinel sammeln.
+title: Verknüpfen von Azure Information Protection-Daten mit Azure Sentinel Preview | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Azure Information Protection-Daten mit Azure Sentinel verknüpfen.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7c5866d3096823f91a70b28c7c5dd1790e1b3bf8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2f970910e19b3c1ed9d262d356c49848f4248b09
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537166"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59790840"
 ---
-# <a name="collect-data-from-azure-information-protection"></a>Sammeln von Daten aus Azure Information Protection
+# <a name="connect-data-from-azure-information-protection"></a>Verknüpfen von Daten aus Azure Information Protection
 
 > [!IMPORTANT]
-> Azure Sentinel ist aktuell als Public Preview verfügbar.
+> Azure Sentinel ist derzeit als öffentliche Vorschauversion (Public Preview) verfügbar.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Sie können Protokolle aus [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/reports-aip) mit einem einzigen Klick nach Azure Sentinel streamen. Azure Information Protection schützt Ihre Daten, unabhängig davon, ob sie in der Cloud oder in lokalen Infrastrukturen gespeichert sind, und kontrolliert und schützt E-Mails, Dokumente und sensible Daten, die Sie außerhalb Ihres Unternehmens teilen. Von der einfachen Klassifizierung bis hin zu eingebetteten Bezeichnungen und Berechtigungen: Sie können den Schutz der Daten jederzeit mit Azure Information Protection erweitern. Wenn Sie Azure Information Protection mit Azure Sentinel verbinden, streamen Sie alle Warnungen von Azure Information Protection an Azure Sentinel.
@@ -41,7 +41,7 @@ Wenn Sie Azure Information Protection bereits haben, vergewissern Sie sich, dass
 Wenn Azure Information Protection bereitgestellt ist und Daten erhält, können die Warnungsdaten problemlos an Azure Sentinel gestreamt werden.
 
 
-1. Wählen Sie in Azure Sentinel die Option **Datenerfassung** aus, und klicken Sie dann auf die Kachel **Azure Information Protection**.
+1. Wählen Sie in Azure Sentinel die Option **Data connectors** (Datenconnectors) aus, und klicken Sie dann auf die Kachel **Azure Information Protection**.
 
 2. Navigieren Sie zum [Azure Information Protection-Portal](https://portal.azure.com/?ScannerConfiguration=true&EndpointDiscovery=true#blade/Microsoft_Azure_InformationProtection/DataClassGroupEditBlade/quickstartBlade). 
 
@@ -58,5 +58,5 @@ Wenn Azure Information Protection bereitgestellt ist und Daten erhält, können 
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument haben Sie erfahren, wie Sie Azure Information Protection mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
-- Erfahren Sie, wie Sie [ Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
+- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
 - Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats.md).

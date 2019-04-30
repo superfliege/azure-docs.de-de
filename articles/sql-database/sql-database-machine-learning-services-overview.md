@@ -1,6 +1,6 @@
 ---
 title: Machine Learning Services (mit R) in Azure SQL-Datenbank (Vorschauversion) – Übersicht
-description: In diesem Thema werden die Machine Learning Services (mit R) in Azure SQL-Datenbank und ihre Funktionsweise erläutert.
+description: In diesem Artikel werden die Machine Learning Services (mit R) in Azure SQL-Datenbank und ihre Funktionsweise erläutert.
 services: sql-database
 ms.service: sql-database
 ms.custom: ''
@@ -11,12 +11,12 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 03/01/2019
-ms.openlocfilehash: e6d6250da4df6ab267ef28f8f15a73c8cbc68618
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 172bf201e2327f5ae8db0ac3c82f2f07e3f0ffc9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762058"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997477"
 ---
 # <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>Machine Learning Services (mit R) in Azure SQL-Datenbank (Vorschauversion)
 
@@ -35,7 +35,7 @@ Machine Learning Services ist eine Funktion von Azure SQL-Datenbank zum Ausführ
 
 ## <a name="what-you-can-do-with-r"></a>Einsatzmöglichkeiten für R
 
-Nutzen Sie die Leistung der Sprache R für erweiterte Analysen und maschinelles Lernen in der Datenbank. Diese Fähigkeit ermöglicht Berechnungen und die Verarbeitung an dem Ort, an dem sich die Daten befinden, sodass diese nicht mehr über das Netzwerk gepullt werden müssen. Nutzen Sie die Leistungsfähigkeit der R-Pakete für Unternehmen außerdem, um erweiterte Analysen in einem großen Maßstab durchzuführen.
+Nutzen Sie die Leistung der Sprache R für erweiterte Analysen und maschinelles Lernen in der Datenbank. Diese Fähigkeit ermöglicht Berechnungen und die Verarbeitung an dem Ort, an dem sich die Daten befinden, sodass diese nicht mehr über das Netzwerk gepullt werden müssen. Außerdem können Sie die Leistungsfähigkeit der R-Pakete für Unternehmen nutzen, um erweiterte Analysen in einem großen Maßstab durchzuführen.
 
 Machine Learning Services umfasst eine Basisdistribution von R zusammen mit R-Paketen für Unternehmen von Microsoft. Die R-Funktionen und -Algorithmen von Microsoft sind auf Skalierbarkeit und Anwendbarkeit ausgelegt. Sie ermöglichen Predictive Analytics, statistische Modellierung, Datenvisualisierungen und leistungsstarke Algorithmen für maschinelles Lernen.
 
@@ -49,7 +49,9 @@ Die am häufigsten verwendeten Open-Source-R-Pakete sind bei Machine Learning Se
 | [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler) | RevoScaleR ist die primäre Bibliothek für skalierbares R. Die Funktionen in dieser Bibliothek gehören zu den am häufigsten verwendeten. Datentransformationen und -manipulationen, statistische Zusammenfassung, Visualisierung und viele Formen der Modellierung und Analyse sind in diesen Bibliotheken enthalten. Darüber hinaus verteilen die Funktionen in diesen Bibliotheken die Workloads automatisch auf die verfügbaren Kerne, um die Verarbeitung zu parallelisieren, und sie bieten die Möglichkeit, die Daten in Blöcken zu verarbeiten, die von der Berechnungs-Engine koordiniert und verwaltet werden. |
 | [MicrosoftML (R)](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-microsoftml) | MicrosoftML fügt Algorithmen für maschinelles Lernen hinzu, mit denen Sie benutzerdefinierte Modelle für die Text-, Bild- und Standpunktanalyse erstellen können. |
 
-Zusätzlich zu den vorinstallierten Paketen können Sie außerdem [weitere Pakete installieren](sql-database-connect-query-r.md#add-package).
+<!-- Add this back when the new package-related article is written
+In addition to the pre-installed packages, you can [install additional packages](sql-database-quickstart-r-create-script.md#add-a-package).
+-->
 
 <a name="signup"></a>
 

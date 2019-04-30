@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/05/2019
+ms.date: 04/16/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 4acecb9d15f820ba092f36d8fa3ea204658d2dba
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 3f78b8a2566137d596f4ab3f083e1d14289365c3
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59276778"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684020"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>Lebenszyklus einer Wissensdatenbank in QnA Maker
 QnA Maker lernt am besten in einem iterativen Zyklus aus Modelländerungen, Ausdrucksbeispielen, Veröffentlichungen und dem Sammeln von Daten aus Endpunktabfragen. 
@@ -35,14 +35,23 @@ Die Knowledge Base ist bereit für das Testen, nachdem sie mit manuell bearbeite
 
 Diese nahe Abfolge von Tests und Updates wird so lange fortgesetzt, bis Sie mit den Ergebnissen zufrieden sind. Erfahren Sie mehr über das [Testen Ihrer Knowledge Base](../How-To/test-knowledge-base.md).
 
-Verwenden Sie für große KBs automatisiertes Testen mit der [generateAnswer-API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) und dem Abfragezeichenfolgenparameter `isTest=true`, der die `test`-Wissensdatenbank anstelle der veröffentlichten Wissensdatenbank abfragt. 
+Verwenden Sie für große Wissensdatenbanken automatisierte Tests mit der [generateAnswer-API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) und der Texteigenschaft `isTest`, die die `test`-Wissensdatenbank anstelle der veröffentlichten Wissensdatenbank abfragt. 
+
+```json
+{
+  "question": "example question",
+  "top": 3,
+  "userId": "Default",
+  "isTest": true
+}
+```
 
 ## <a name="publish-the-knowledge-base"></a>Veröffentlichen der Knowledge Base
 Nachdem Sie die Tests der Knowledge Base abgeschlossen haben, können Sie diese veröffentlichen. Beim Veröffentlichen wird die neueste Version der getesteten Knowledge Base in einen dedizierten Azure Search-Index gepusht, der die **veröffentlichte** Knowledge Base darstellt. Außerdem wird ein Endpunkt erstellt, der in Ihrer Anwendung oder Ihrem Chatbot aufgerufen werden kann.
 
 Auf diese Weise haben Änderungen an der Testversion der Knowledge Base keine Auswirkungen auf die veröffentlichte Version, die möglicherweise in einer aktiven Produktionsanwendung verwendet wird.
 
-Jede dieser Knowledge Bases kann zu Testzwecken separat angesprochen werden. Mithilfe der APIs können Sie mit dem `isTest=true`-Flag im GenerateAnswer-Aufruf die Testversion der Knowledge Base als Ziel verwenden.
+Jede dieser Knowledge Bases kann zu Testzwecken separat angesprochen werden. Mithilfe der APIs und der `isTest`-Texteigenschaft im generateAnswer-Aufruf können Sie die Testversion der Wissensdatenbank als Ziel verwenden.
 
 Erfahren Sie mehr über das [Veröffentlichen Ihrer Knowledge Base](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base).
 

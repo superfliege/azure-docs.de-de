@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/13/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 547e0b08b2a57b4b9192f11907f77160142d4466
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 36c4757feb367fd39ae94640cb8e8a0f1714a0d3
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192124"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59737099"
 ---
 ## <a name="launch-azure-cloud-shell"></a>Starten von Azure Cloud Shell
 
@@ -66,7 +66,7 @@ az sig image-definition create \
 
 ## <a name="create-an-image-version"></a>Erstellen einer Imageversion 
  
-Erstellen Sie nach Bedarf Versionen des Images mittels [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create). Sie müssen die ID des verwalteten Images, das als Grundlage zum Erstellen der Imageversion verwendet werden soll, als Eingabe übergeben. Sie können [az image list](/cli/azure/image?view#az-image-list) verwenden, um Informationen zu Images abzurufen, die sich in einer Ressourcengruppe befinden. In diesem Beispiel ist die Version Ihres Images *1.0.0*, und wir erstellen 5 Replikate in den Regionen *USA, Westen Mitte*, *USA, Süden-Mitte* und „USA, Osten 2*“.
+Erstellen Sie nach Bedarf Versionen des Images mittels [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create). Sie müssen die ID des verwalteten Images, das als Grundlage zum Erstellen der Imageversion verwendet werden soll, als Eingabe übergeben. Sie können [az image list](/cli/azure/image?view#az-image-list) verwenden, um Informationen zu Images abzurufen, die sich in einer Ressourcengruppe befinden. In diesem Beispiel wird ein Image der Version *1.0.0* verwendet, und es werden fünf Replikate in der Region *USA, Westen-Mitte*, ein Replikat in der Region *USA, Süden-Mitte* und ein Replikat in der Region *USA, Osten 2* erstellt.
 
 ```azurecli-interactive 
 az sig image-version create \

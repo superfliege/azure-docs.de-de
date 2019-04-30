@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 7/19/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 9cbb44fed8a9cc9e30e70e58f33fb943ee43b412
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 630ad1e0558fc089d79eee50175e497b771a0a8a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59269162"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59494968"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele für Azure Files
 
@@ -76,9 +76,9 @@ Wenn Sie die Bereitstellung für jede der Phasen planen, sehen Sie sich im Folge
 
 | Erste einmalige Bereitstellung  |  |
 |-|-|
-| Anzahl der Objekte | 10 Millionen Objekte |
-| Datasetgröße| Ca. 4 TiB |
-| Durchschnittliche Dateigröße | Ca. 500 KiB (größte Datei: 100 GiB) |
+| Anzahl der Objekte | 25 Millionen Objekte |
+| Datasetgröße| ca. 4,7 TiB |
+| Durchschnittliche Dateigröße | ca. 200 KiB (größte Datei: 100 GiB) |
 | Uploaddurchsatz | 20 Objekte pro Sekunde |
 | Durchsatz beim Download von Namespaces* | 400 Objekte pro Sekunde |
 

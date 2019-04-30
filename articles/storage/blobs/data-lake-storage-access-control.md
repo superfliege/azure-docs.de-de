@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 4ba8977180e33256bfdc6652811495a02a9ef19c
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: e8d7d77128acd4bdb81a99ac6756a5e28b4a408f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802954"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001591"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Zugriffssteuerung in Azure Data Lake Storage Gen2
 
@@ -126,7 +126,7 @@ Der Benutzer, der das Element erstellt hat, ist automatisch der zuständige Benu
 
 ### <a name="the-owning-group"></a>Die zuständige Gruppe
 
-In den POSIX-Zugriffssteuerungslisten ist jeder Benutzer einer *primären Gruppe* zugeordnet. So kann beispielsweise die Benutzerin „Alice“ der Gruppe „finance“ angehören. Alice kann außerdem mehreren Gruppen angehören, aber eine Gruppe wird immer als ihre primäre Gruppe festgelegt. In POSIX gilt: Wenn Alice eine Datei erstellt, wird die zuständige Gruppe der Datei auf ihre primäre Gruppe festgelegt (in diesem Fall „finance“). Andernfalls verhält sich die zuständige Gruppe ähnlich wie zugewiesene Berechtigungen für andere Benutzer oder Gruppen.
+In den POSIX-Zugriffssteuerungslisten ist jeder Benutzer einer *primären Gruppe* zugeordnet. So kann beispielsweise der Benutzer „Alice“ der Gruppe „finance“ angehören. Alice kann außerdem mehreren Gruppen angehören, aber eine Gruppe wird immer als ihre primäre Gruppe festgelegt. In POSIX gilt: Wenn Alice eine Datei erstellt, wird die zuständige Gruppe der Datei auf ihre primäre Gruppe festgelegt (in diesem Fall „finance“). Andernfalls verhält sich die zuständige Gruppe ähnlich wie zugewiesene Berechtigungen für andere Benutzer oder Gruppen.
 
 #### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>Zuweisen der zuständigen Gruppe für eine neue Datei oder ein neues Verzeichnis
 
@@ -285,7 +285,7 @@ Eine GUID wird angezeigt, wenn der Eintrag einen Benutzer darstellt, der in Azur
 
 Beim Definieren von ACLs für Dienstprinzipale ist es wichtig, die Objekt-ID (OID) des *Dienstprinzipals* für die von Ihnen erstellte App-Registrierung zu verwenden. Sie müssen beachten, dass registrierte Apps über einen separaten Dienstprinzipal im jeweiligen Azure AD-Mandanten verfügen. Registrierte Apps haben eine OID, die im Azure-Portal angezeigt wird, doch hat der *Dienstprinzipal* eine andere (davon abweichende) OID.
 
-Mit dem Befehl `az ad sp show` können Sie die OID für den Dienstprinzipal abrufen, der einer App-Registrierung entspricht. Geben Sie die Anwendungs-ID als Parameter an. Es folgt ein Beispiel für das Abrufen der OID für den Dienstprinzipal, der einer App-Registrierung mit der App-ID 18218b12-1895-43e9-ad80-6e8fc1ea88ce entspricht. Führen Sie in der Azure CLI den folgenden Befehl aus:
+Mit dem Befehl `az ad sp show` können Sie die OID für den Dienstprinzipal abrufen, der einer App-Registrierung entspricht. Geben Sie die Anwendungs-ID als Parameter an. Es folgt ein Beispiel für das Abrufen der OID für den Dienstprinzipal, der einer App-Registrierung mit der App-ID „18218b12-1895-43e9-ad80-6e8fc1ea88ce“ entspricht. Führen Sie in der Azure CLI den folgenden Befehl aus:
 
 `az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
 <<OID will be displayed>>`

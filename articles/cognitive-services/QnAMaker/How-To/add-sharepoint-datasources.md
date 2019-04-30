@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: tulasim
 ms.openlocfilehash: 671d76b6c0a5a2cdac5797668fb0e5651b5823e0
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59281742"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Hinzufügen einer geschützten SharePoint-Datenquelle zu Ihrer Wissensdatenbank
@@ -103,11 +103,11 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
 1. Suchen Sie nach `QnAMakerPortalSharepoint`, und wählen Sie dann die QnA Maker-App aus. 
 
-    [![SSuchen Sie nach QnAMakerPortalSharepoint in der Liste der Unternehmensanwendungen(../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
+    [![Suchen Sie nach QnAMakerPortalSharepoint in der Liste der Unternehmensanwendungen](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
 
 1. Wechseln Sie unter **Sicherheit** zu **Berechtigungen**. Wählen Sie **Administratoreinwilligung für Organisation gewähren** aus. 
 
-    [![SWählen Sie den authentifizierten Benutzer für Active Directory Admin aus(../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png)](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png#lightbox)
+    [![Wählen Sie den authentifizierten Benutzer für Active Directory Admin aus](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png)](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png#lightbox)
 
 1. Wählen Sie ein Anmeldekonto mit Berechtigungen, um Berechtigungen für Active Directory zu gewähren. 
 

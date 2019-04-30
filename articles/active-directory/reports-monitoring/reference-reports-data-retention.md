@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 126eee1664d810850f63e702abe78b241649d665
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: f1423fddc13a6912e90b6a239921cf2a4d2662ec
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438817"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683732"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Aufbewahrungsrichtlinien für Azure Active Directory-Berichte
 
@@ -68,8 +68,8 @@ Die Erfassung von Sicherheitssignalen beginnt, wenn Sie sich für die Verwendung
 
 | Bericht                 | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--                    | :--           | :--            | :--                 | :--                 |
-| Verzeichnisprüfbericht        | 7 Tage        |  7 Tage        | 30 Tage             | 30 Tage             |
-| Benutzeranmeldeaktivität       | –           |  –           | 30 Tage             | 30 Tage             |
+| Überwachungsprotokolle             | 7 Tage        |  7 Tage        | 30 Tage             | 30 Tage             |
+| Anmeldungen               | –           |  –           | 30 Tage             | 30 Tage             |
 | Azure MFA-Nutzung        | 30 Tage       |  30 Tage       | 30 Tage             | 30 Tage             |
 
 Sie können die Aktivitätsdaten zu Überwachung und Anmeldung länger als den oben beschriebenen Standardaufbewahrungszeitraum speichern, indem Sie sie mit Azure Monitor an ein Azure Storage-Konto weiterleiten. Weitere Informationen finden Sie unter [Archivieren von Azure AD-Protokollen in einem Azure Storage-Konto](quickstart-azure-monitor-route-logs-to-storage-account.md).

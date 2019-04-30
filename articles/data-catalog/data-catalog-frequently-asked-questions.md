@@ -2,18 +2,18 @@
 title: Häufig gestellte Fragen zu Azure Data Catalog
 description: Häufig gestellte Fragen zu Azure Data Catalog, einschließlich Funktionen für die Ermittlung von Datenquellen, Anmerkungen und Verwaltung.
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: 5c7e209a-458c-4bb4-96bb-7ed178f9528a
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: f08825c17c1ba61fc09edc1d8f2c226af8d4266f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7c5241b9df23bb0334a39f2c684fd1bdff40b4c2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231463"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998452"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Data Catalog
 Dieser Artikel bietet Antworten auf häufig gestellte Fragen im Zusammenhang mit dem Azure Data Catalog-Dienst.
@@ -27,7 +27,7 @@ Mit Data Catalog werden Probleme bei der Ermittlung von Datenquellen und „obsk
 ## <a name="what-are-its-target-audiences"></a>Was sind die Zielgruppen?
 Data Catalog ist für technische und nicht technische Benutzer gedacht, z.B.:
 
-* Datenentwickler, BI- und Analyseexperten: Mitarbeiter, die für die Produktion von Daten- und Analyseinhalten zuständig sind, die von anderen Benutzern verwendet werden.
+* Datenentwickler, BI- und Analyseexperten: Personen, die für die Produktion von Daten- und Analyseinhalten zur Verwendung durch andere Benutzer verantwortlich sind.
 * Data Stewards: Mitarbeiter, die über die Kenntnisse zu den Daten verfügen, ihre Bedeutung kennen und über die beabsichtigte Nutzung Bescheid wissen.
 * Datennutzer: Mitarbeiter, die Daten leicht ermitteln und verstehen und Verbindungen damit herstellen müssen, um ihre Aufgaben mit dem Tool ihrer Wahl zu erledigen.
 * Zentrale IT-Abteilung: Mitarbeite, die Hunderte von Datenquellen für die Ermittlung durch Sachbearbeiter bereitstellen und überwachen müssen, wie und von wem Daten verwendet werden.

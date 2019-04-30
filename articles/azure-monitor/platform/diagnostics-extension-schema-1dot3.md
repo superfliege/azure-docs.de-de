@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: cd458ba08f12e9553233a1dd3d7caf03acda56c6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: fa03017c35c76d986139eeee00eea8a9b4a00e62
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463506"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59497082"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Konfigurationsschema für Azure-Diagnose 1.3 und höher
 > [!NOTE]
@@ -31,7 +31,7 @@ Diese Seite bezieht sich auf Version 1.3 und höher (Azure SDK 2.4 und höher). 
 
 Die hier beschriebene Konfigurationsdatei wird verwendet, um beim Start des Diagnosemonitors Diagnosekonfigurationseinstellungen festzulegen.  
 
-Die Erweiterung wird zusammen mit anderen Microsoft-Diagnoseprodukten wie Azure Monitor, Application Insights und Log Analytics verwendet.
+Die Erweiterung wird zusammen mit anderen Microsoft-Diagnoseprodukten wie der Plattform Azure Monitor verwendet, die Application Insights und Log Analytics einschließt.
 
 
 
@@ -610,7 +610,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Definiert die Pufferkonfiguration für grundlegende Azure-Protokolle.  
 
-|Attribut|Typ|BESCHREIBUNG|  
+|Attribut|Type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|Optional. Gibt die Höchstmenge des Dateisystemspeichers an, der für die angegebenen Daten verfügbar ist.<br /><br /> Der Standardwert ist 0.|  
 |**scheduledTransferLogLevelFilter**|**string**|Optional. Gibt den minimalen Schweregrad für Protokolleinträge an, die übertragen werden. Der Standardwert ist **Undefined**, der alle Protokolle überträgt. Weitere mögliche Werte (meiste Informationen bis wenigste Informationen) sind **Verbose**, **Information**, **Warning**, **Error** und **Critical**.|  
@@ -642,11 +642,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Definiert die Standorte, an die die Diagnosedaten gesendet werden sollen. Beispiel: der Application Insights-Dienst.  
 
-|Attribut|Typ|BESCHREIBUNG|  
+|Attribut|Type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**name**|Zeichenfolge|Eine Zeichenfolge für den Senkennamen.|  
 
-|Element|Typ|BESCHREIBUNG|  
+|Element|Type|BESCHREIBUNG|  
 |-------------|----------|-----------------|  
 |**Application Insights**|Zeichenfolge|Wird nur beim Senden von Daten an Application Insights verwendet. Enthält den Instrumentationsschlüssel für ein aktives Application Insights-Konto, für das Sie Zugriff besitzen.|  
 |**Kanäle**|Zeichenfolge|Einer für jeden zusätzlichen Filter, den Sie streamen|  
@@ -658,7 +658,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Definiert die Filter für Datenströme von Protokolldaten, die durch eine Senke übergeben werden.  
 
-|Element|Typ|BESCHREIBUNG|  
+|Element|Type|BESCHREIBUNG|  
 |-------------|----------|-----------------|  
 |**Channel**|Zeichenfolge|Siehe Beschreibung an anderer Stelle auf dieser Seite.|  
 
@@ -669,7 +669,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  Definiert die Standorte, an die die Diagnosedaten gesendet werden sollen. Beispiel: der Application Insights-Dienst.  
 
-|Attribute|Typ|BESCHREIBUNG|  
+|Attribute|Type|BESCHREIBUNG|  
 |----------------|----------|-----------------|  
 |**logLevel**|**string**|Gibt den minimalen Schweregrad für Protokolleinträge an, die übertragen werden. Der Standardwert ist **Undefined**, der alle Protokolle überträgt. Weitere mögliche Werte (meiste Informationen bis wenigste Informationen) sind **Verbose**, **Information**, **Warning**, **Error** und **Critical**.|  
 |**name**|**string**|Ein eindeutiger Name des Kanals, auf den verwiesen wird|  

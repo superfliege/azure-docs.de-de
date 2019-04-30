@@ -1,7 +1,6 @@
 ---
 title: Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie für Azure-Reservierungen einen Umtausch durchführen oder Rückerstattungen erhalten können.
-services: billing
 documentationcenter: ''
 author: yashesvi
 manager: yashesvi
@@ -11,20 +10,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/5/2019
+ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: aa1a218fbf0bc7eacac65b50e4ee1f86791e2b3b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 54578746ea8029a760663edc456660f98358abc5
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59281980"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009309"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen
 
 Mit Azure-Reservierungen können Sie Ihre sich ändernden Anforderungen flexibel erfüllen. Sie können eine Reservierung gegen eine andere Reservierung des gleichen Typs umtauschen. Sie können auch eine Rückerstattung für eine Reservierung erhalten, wenn Sie sie nicht mehr benötigen (bis zu 50.000 US-Dollar pro Jahr).
 
 Die Self-Service-Umtausch- und Stornierungsfunktion steht für US Government Enterprise Agreement-Kunden nicht zur Verfügung. Andere US Government-Abonnementtypen, einschließlich nutzungsbasierter Bezahlung und CSP, werden unterstützt.
+
+Sie benötigen Besitzerzugriff auf den Reservierungsauftrag, um eine vorhandene Reservierung umzutauschen oder zurückzuerstatten.
 
 ## <a name="exchange-an-existing-reserved-instance"></a>Umtauschen einer vorhandenen reservierten Instanz
 
@@ -39,7 +40,7 @@ Sie können Ihre Reservierung mit drei schnellen Schritten im [Azure-Portal](htt
 
 Navigieren Sie zum Erhalten einer Erstattung für eine Reservierung zu **Reservierungsdetails**, und klicken Sie auf **Erstattung**.
 
-## <a name="how-return-and-exchange-transactions-are-processed"></a>Verarbeiten von Transaktionen für Rückgabe und Umtausch
+## <a name="how-transactions-are-processed"></a>Verarbeitung von Transaktionen
 
 Zunächst storniert Microsoft die vorhandene Reservierung und erstattet den entsprechenden anteiligen Betrag. Bei einem Umtausch wird der neue Kauf verarbeitet. Microsoft nutzt für die Verarbeitung von Erstattungen eine der folgenden Methoden. Dies richtet sich nach Ihrem Kontotyp und der Zahlungsmethode:
 
@@ -49,7 +50,7 @@ Ein Geldbetrag wird der finanziellen Verpflichtung für Umtausch und Rückerstat
 
 Falls der ursprüngliche Kauf als Überschreitung durchgeführt wurde, stellt Microsoft eine Gutschrift aus.
 
-### <a name="pay-as-you-go-invoice-payment-customers-and-cloud-solution-provider-program"></a>Kunden mit nutzungsbasierter Bezahlung von Rechnungen und Cloud Solution Provider-Programm
+### <a name="pay-as-you-go-invoice-payments-and-csp-program"></a>Nutzungsbasierte Bezahlung und das CSP-Programm
 
 Die ursprüngliche Rechnung für den Kauf der Reservierung wird storniert, und anschließend wird eine neue Rechnung für die Erstattung erstellt. Bei einem Umtausch werden für die neue Rechnung die Erstattung und der neue Kauf angezeigt. Der Erstattungsbetrag wird anhand des Kaufbetrags angepasst. Falls Sie nur eine Erstattung für eine Reservierung durchgeführt haben, verbleibt der anteilige Betrag bei Microsoft, und die Anpassung wird bei einem zukünftigen Kauf einer Reservierung vorgenommen.
 
@@ -74,7 +75,7 @@ Die ursprüngliche Rechnung wird storniert, und eine neue Rechnung wird erstellt
 - Nur Besitzer von Reservierungen können eine Erstattung verarbeiten. [Informieren Sie sich über das Hinzufügen oder Ändern von Benutzern, die eine Reservierung verwalten können](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
 - Microsoft behält sich das Recht vor, für alle Rückgaben eine Strafzahlung in Höhe von 12 % zu berechnen. Derzeit wird diese Strafzahlung aber nicht angewendet.
 
-## <a name="exchange-a-non-premium-storage-vm-reservation-for-a-premium-storage-reservation"></a>Umtauschen einer VM-Reservierung ohne Storage Premium gegen eine Reservierung mit Storage Premium
+## <a name="exchange-non-premium-storage-for-premium-storage"></a>Umtauschen einer Reservierung ohne Storage Premium gegen eine Reservierung mit Storage Premium
 
 Sie können eine erworbene Reservierung für eine VM-Größe, für die Storage Premium nicht unterstützt wird, gegen eine entsprechende VM-Größe umtauschen, für die diese Unterstützung vorhanden ist. Beispiel: _F1_ gegen _F1s_. Navigieren Sie zum Durchführen des Umtauschs zu „Reservierungsdetails“, und klicken Sie auf **Umtausch**. Beim Umtausch wird der Zeitraum der reservierten Instanz nicht zurückgesetzt und auch keine neue Transaktion erstellt.
 
@@ -87,9 +88,9 @@ Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Support
 - Informationen zum Verwalten einer Reservierung finden Sie unter [Verwalten von Azure-Reservierungen](billing-manage-reserved-vm-instance.md).
 - Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artikeln:
     - [Was sind Azure-Reservierungen?](billing-save-compute-costs-reservations.md)
-    - [Verwalten von Reservierungen in Azure](billing-manage-reserved-vm-instance.md)
-    - [Grundlegendes zur Anwendung des Rabatts für Reservierungen](billing-understand-vm-reservation-charges.md)
+    - [Verwalten von Reservierungen für Ressourcen in Azure](billing-manage-reserved-vm-instance.md)
+    - [Grundlegendes zur Anwendung des Rabatts für Azure-Reservierungen auf virtuelle Computer](billing-understand-vm-reservation-charges.md)
     - [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](billing-understand-reserved-instance-usage.md)
     - [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](billing-understand-reserved-instance-usage-ea.md)
-    - [Nicht in Reservierungen enthaltene Windows-Softwarekosten](billing-reserved-instance-windows-software-costs.md)
-    - [Azure-Reservierungen im Partner Center Cloud Solution Provider-Programm (CSP)](/partner-center/azure-reservations)
+    - [Nicht in Azure-Reservierungen enthaltene Windows-Softwarekosten](billing-reserved-instance-windows-software-costs.md)
+    - [Verkaufen Microsoft Azure Reserved Instances](/partner-center/azure-reservations)

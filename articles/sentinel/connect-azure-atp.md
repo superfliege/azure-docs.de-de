@@ -1,6 +1,6 @@
 ---
-title: Sammeln von Azure ATP-Daten in Azure Sentinel Preview | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Azure ATP-Daten in Azure Sentinel sammeln.
+title: Verknüpfen von Azure ATP-Daten mit der Vorschauversion von Azure Sentinel | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Azure ATP-Daten mit Azure Sentinel verknüpfen.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/26/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5254e60b9b7c38e5f4534e90f8aabe938aef99b2
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 153b6cb44cbcf5ecca9a4941c6bef7a8721dc56c
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574942"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59789287"
 ---
-# <a name="collect-data-from-azure-advanced-threat-protection-atp"></a>Sammeln von Daten aus Azure Advanced Threat Protection (ATP)
+# <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>Verknüpfen von Daten aus Azure Advanced Threat Protection (ATP)
 
 > [!IMPORTANT]
-> Azure Sentinel ist aktuell als Public Preview verfügbar.
+> Azure Sentinel ist derzeit als öffentliche Vorschauversion (Public Preview) verfügbar.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
@@ -42,7 +42,7 @@ Wenn Azure ATP bereitgestellt ist und Daten erfasst, können die verdächtigen W
 
 
 
-1. Wählen Sie in Azure Sentinel die Option **Datenerfassung** aus, und klicken Sie dann auf die Kachel **Azure ATP**.
+1. Klicken Sie in Azure Sentinel auf **Data connectors** (Datenconnectors) und anschließend auf die Kachel **Azure ATP**.
 
 2. Klicken Sie auf **Verbinden**.
 
@@ -50,6 +50,6 @@ Wenn Azure ATP bereitgestellt ist und Daten erfasst, können die verdächtigen W
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument haben Sie erfahren, wie Sie Azure Advanced Threat Protection mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
-- Erfahren Sie, wie Sie [ Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
+- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
 - Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats.md).
 

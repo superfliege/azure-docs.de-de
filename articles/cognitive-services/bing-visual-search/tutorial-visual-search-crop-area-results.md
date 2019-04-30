@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: rosh
 ms.openlocfilehash: a6a98d9ddf76e86feb35c6d3d71f7777b0edd51d
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471765"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59491133"
 ---
 # <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>Tutorial: Zuschneiden eines Bilds mithilfe des Bing Visual Search SDK für C#
 
@@ -110,7 +110,7 @@ Zum Abrufen der eigentlichen Bild-URLs ist eine Umwandlung erforderlich, bei der
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]
-> [Erstellen einer Single-Page-Web-App für die visuelle Suche](tutorial-bing-visual-search-single-page-app.md)
+> [Erstellen einer Single-Page-Web-App für die Visuelle Suche](tutorial-bing-visual-search-single-page-app.md)
 
 ## <a name="see-also"></a>Weitere Informationen
-> [Was ist die API für die visuelle Bing-Suche?](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview)
+> [Was ist die API für die Visuelle Bing-Suche?](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview)

@@ -9,10 +9,10 @@ ms.date: 03/25/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 72dec14dde47580313e57bb3b8d7315604929277
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59287551"
 ---
 # <a name="how-to-create-an-azure-premium-file-share"></a>Erstellen einer Azure Premium-Dateifreigabe
@@ -156,7 +156,7 @@ az login
 
 Sie müssen Ihrer Shell eine Erweiterung hinzufügen, um über die Befehlszeilenschnittstelle mit Premium-Dateien interagieren zu können.
 
-Geben Sie dazu über die Cloud Shell oder eine lokale Shell den folgenden Befehl ein: `az extension add --name storage-preview`
+Geben Sie dazu über Cloud Shell oder eine lokale Shell den folgenden Befehl ein: `az extension add --name storage-preview`
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 

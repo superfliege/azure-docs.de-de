@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 30f853bd65c83b922faf008fbb5279c28f197f68
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 772401c286a50774d201703cefcbbc12f0fcf88f
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339005"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678886"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Metrikwarnungen mit dynamischen Schwellenwerten in Azure Monitor (Public Preview)
 
@@ -40,6 +40,9 @@ Warnungen mit dynamischen Schwellenwerten können über Metrikwarnungen in Azure
 Dynamische Schwellenwerte erfassen fortlaufend Daten der Metrikreihe und versuchen, sie mit einem Satz von Algorithmen und Methoden zu modellieren. Sie erkennen Muster in den Daten, z.B. die Saisonalität (stündlich/täglich/wöchentlich), und können überflüssige Metriken (z.B. Geräte-CPU oder Arbeitsspeicher) sowie Metriken mit geringer Genauigkeit (z.B. die Verfügbarkeit und Fehler) verarbeiten.
 
 Die Schwellenwerte werden so ausgewählt, dass eine Abweichung von diesen Schwellenwerten eine Anomalie im Metrikverhalten ergibt.
+
+> [!NOTE]
+> Saisonale Mustererkennung ist auf ein Stunden-, Tage- oder Wochenintervall festgelegt. Dies bedeutet, dass andere Muster wie zweistündige oder halbwöchentliche möglicherweise nicht erkannt werden.
 
 ## <a name="what-does-sensitivity-setting-in-dynamic-thresholds-mean"></a>Was bedeutet die „Sensitivity“-Einstellung in dynamischen Schwellenwerten?
 
@@ -73,13 +76,23 @@ Mit den folgenden Einstellungen wird eine Warnung ausgelöst, wenn ein dynamisch
 
 **Vor dem folgenden Datum liegende Daten ignorieren** – Benutzer können optional auch ein Startdatum definieren, ab dem das System mit der Berechnung der Schwellenwerte beginnen soll. Ein typischer Anwendungsfall kann auftreten, wenn eine Ressource in einem Testmodus ausgeführt wurde und nun höher gestuft wird, um eine Produktionsworkload zu verarbeiten. Dann sollte das Verhalten jeder beliebigen Metrik während der Testphase ignoriert werden.
 
+## <a name="how-do-you-find-out-why-a-dynamic-thresholds-alert-was-triggered"></a>Wie finden Sie heraus, warum eine „Dynamische Schwellenwerte“-Warnung ausgelöst wurde?
+
+Um ausgelöste Warnungsinstanzen in der Warnungsansicht zu untersuchen, klicken Sie auf den Link in E-Mail, SMS oder Browser, um die Warnungsansicht im Azure-Portal anzuzeigen. Erfahren Sie mehr über die [Warnungsansicht](alerts-overview.md#alerts-experience).
+
+Die Warnungsansicht zeigt Folgendes an:
+
+- Alle Metrikendetails für den Zeitpunkt, zu dem die „Dynamische Schwellenwerte“-Warnung ausgelöst wurde.
+- Ein Diagramm des Zeitraums, in dem die Warnung ausgelöst wurde, inklusive der zu diesem Zeitpunkt verwendeten dynamischen Schwellenwerte.
+- Die Möglichkeit, Feedback zur „Dynamische Schwellenwerte“-Warnung und der Warnungsansicht-Benutzeroberfläche zu geben, um ggf. zukünftige Erkennungen zu verbessern.
+
 ## <a name="will-slow-behavior-change-in-the-metric-trigger-an-alert"></a>Wird bei einer langsamen Veränderungsveränderung der Metrik eine Warnung ausgelöst?
 
 Wahrscheinlich nicht. Dynamische Schwellenwerte eignen sich besser für die Erkennung erheblicher Abweichungen und weniger für Probleme, die sich langsam entwickeln.
 
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Wie viele Daten werden für die Vorschau und die anschließende Berechnung der Schwellenwerte verwendet?
 
-Die Schwellenwerte, die im Diagramm angezeigt werden, bevor eine Warnungsregel für die Metrik erstellt wird, werden basierend auf genügend historischen Daten berechnet, um Stunden- oder tägliche saisonale Muster (10 Tage) zu berechnen. Wenn Sie auf „Wöchentliches Muster anzeigen“ klicken, werden genügend historische Daten erfasst, um die wöchentlichen saisonalen Muster (28 Tage) zu berechnen. Sobald eine Warnungsregel erstellt wurde, verwenden die dynamischen Schwellenwerte alle benötigten historischen Daten, die verfügbar sind, und lernen und passen sich kontinuierlich basierend auf neuen Daten an, um die Schwellenwerte genauer zu gestalten.
+Die Schwellenwerte, die im Diagramm angezeigt werden, bevor eine Warnungsregel für die Metrik erstellt wird, werden basierend auf genügend historischen Daten berechnet, um Stunden- oder tägliche saisonale Muster (10 Tage) zu berechnen. Sobald eine Warnungsregel erstellt wurde, verwenden die dynamischen Schwellenwerte alle benötigten historischen Daten, die verfügbar sind, und lernen und passen sich kontinuierlich basierend auf neuen Daten an, um die Schwellenwerte genauer zu gestalten. Dies bedeutet, dass nach diesem Berechnungsdiagramm auch wöchentliche Muster angezeigt werden.
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Wie viele Daten sind zum Auslösen einer Warnung erforderlich?
 

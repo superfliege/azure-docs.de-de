@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: c332b20650bef2e341a935dacae835403dc56c9b
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: a9a6c7c47a6ea81f682f453a85ee6f8e214a09a7
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630664"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678087"
 ---
 # <a name="use-an-app-service-environment"></a>Verwenden einer App Service-Umgebung #
 
@@ -137,7 +137,7 @@ Mit einer externen ASE weisen alle diese Veröffentlichungsoptionen das gleiche 
 
 Der wesentliche Unterschied bei der Veröffentlichung betrifft die ILB-ASE. In einer ILB-ASE sind die Veröffentlichungsendpunkte nur über die ILB verfügbar. Die ILB liegt in einer privaten IP-Adresse im ASE-Subnetz im virtuellen Netzwerk. Wenn Sie keinen Netzwerkzugriff auf die ILB haben, können Sie in der betreffenden ASE keine Apps veröffentlichen. Wie in [Erstellen und Verwenden einer ILB-ASE][MakeILBASE] erwähnt, müssen Sie für die Apps im System ein DNS konfigurieren. Dazu gehört der SCM-Endpunkt. Wenn sie nicht ordnungsgemäß definiert sind, ist keine Veröffentlichung möglich. Darüber hinaus müssen Ihre IDEs über Netzwerkzugriff auf den ILB verfügen, um direkt an ihn veröffentlichen zu können.
 
-Internetbasierte CI-Systeme wie GitHub oder Azure DevOps können nicht mit einer ILB-ASE verwendet werden, da der Veröffentlichungsendpunkt nicht über das Internet erreichbar ist. Stattdessen müssen Sie ein CI-System wie Dropbox verwenden, das ein Pull-Modell verwendet.
+Internetbasierte CI-Systeme wie GitHub oder Azure DevOps können nicht standardmäßig mit einer ILB-ASE verwendet werden, da der Veröffentlichungsendpunkt nicht über das Internet erreichbar ist. Für Azure DevOps können Sie dieses Problem durch Installation eines selbst gehosteten Release-Agent in Ihrem internen Netzwerk umgehen, wo Zugriff auf den internen Lastenausgleich möglich ist. Alternativ können Sie auch ein CI-System wie Dropbox verwenden, das ein Pullmodell verwendet.
 
 Die Veröffentlichungsendpunkte für die Apps in einer ILB-ASE verwenden die Domäne, mit der die ILB-ASE erstellt wurde. Dies wird im Veröffentlichungsprofil und auf dem Portalblatt der App angezeigt (in **Übersicht** > **Zusammenfassung** sowie in den **Eigenschaften**). 
 

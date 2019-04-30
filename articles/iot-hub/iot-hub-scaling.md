@@ -8,23 +8,25 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: wesmc
-ms.openlocfilehash: 0d40bfa3a4215b671fcd01402a2cbceaea0cd75d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8be2e59898ea5fcca1dbf1710974d0420941973e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536282"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002135"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Wählen des richtigen IoT Hub-Tarifs für Ihre Lösung
 
-Jede IoT-Lösung ist unterschiedlich, und jeder Azure IoT Hub verfügt in Bezug auf den Preis und die Skalierung über mehrere Optionen. Dieser Artikel soll Ihnen als Hilfe beim Evaluieren Ihrer IoT Hub-Anforderungen dienen. Preisinformationen zu IoT Hub-Tarifen finden Sie unter [IoT Hub – Preise](https://azure.microsoft.com/pricing/details/iot-hub). 
+Jede IoT-Lösung ist unterschiedlich, und jeder Azure IoT Hub verfügt in Bezug auf den Preis und die Skalierung über mehrere Optionen. Dieser Artikel soll Ihnen als Hilfe beim Evaluieren Ihrer IoT Hub-Anforderungen dienen. Preisinformationen zu IoT Hub-Tarifen finden Sie unter [IoT Hub – Preise](https://azure.microsoft.com/pricing/details/iot-hub).
 
 Beantworten Sie für sich die folgenden Fragen, um zu entscheiden, welcher IoT Hub-Tarif für Ihre Lösung geeignet ist:
 
 **Welche Features sollen verwendet werden?**
+
 Azure IoT Hub verfügt über zwei Tarife (Basic und Standard), die sich anhand der unterstützten Features unterscheiden. Wenn Ihre IoT-Lösung auf dem Sammeln der Daten von Geräten und dem zentralen Analysieren basiert, eignet sich für Sie wahrscheinlich der Tarif „Basic“ am besten. Falls Sie anspruchsvollere Konfigurationen verwenden möchten, um IoT-Geräte per Remotezugriff zu steuern oder einen Teil der Workloads auf die Geräte selbst zu verteilen, sollten Sie die Nutzung des Tarifs „Standard“ erwägen. Eine ausführliche Aufschlüsselung der Features des jeweiligen Tarifs finden Sie unter [Basic- und Standard-Tarif](#basic-and-standard-tiers).
 
 **Wie viele Daten sollen täglich verschoben werden?**
+
 Jeder IoT Hub-Tarif ist in drei Größen verfügbar. Die Größe richtet sich danach, welcher Datendurchsatz an einem Tag verarbeitet werden kann. Diese Größen werden mit den Zahlen 1, 2 und 3 bezeichnet. Jede Einheit einer IoT Hub-Instanz der Ebene 1 kann pro Tag 400.000 Nachrichten verarbeiten, während mit einer Einheit der Ebene 3 pro Tag 300 Millionen Nachrichten verarbeitet werden können. Ausführliche Informationen zu den Datenrichtlinien finden Sie unter [Nachrichtendurchsatz](#message-throughput).
 
 ## <a name="basic-and-standard-tiers"></a>Basic- und Standard-Tarif
@@ -46,15 +48,13 @@ Pro IoT Hub-Instanz kann nur ein [Editionstyp](https://azure.microsoft.com/prici
 | [Gerätestreams (Vorschau)](iot-hub-device-streams-overview.md) |   | Ja |
 | [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Ja |
 
-Es gibt auch einen kostenlosen Tarif (Free-Tarif) für IoT Hub, der für Tests und Evaluierungen bestimmt ist. Er verfügt über alle Funktionen des Standard-Tarifs, aber das Messaging ist eingeschränkt. Ein Upgrade aus dem Free-Tarif in den Basic- oder Standard-Tarif ist nicht möglich. 
-
+Es gibt auch einen kostenlosen Tarif (Free-Tarif) für IoT Hub, der für Tests und Evaluierungen bestimmt ist. Er verfügt über alle Funktionen des Standard-Tarifs, aber das Messaging ist eingeschränkt. Ein Upgrade aus dem Free-Tarif in den Basic- oder Standard-Tarif ist nicht möglich.
 
 ## <a name="partitions"></a>Partitionen
 
-Azure IoT Hubs enthalten viele Kernkomponenten von [Azure Event Hubs](../event-hubs/event-hubs-features.md), z.B. [Partitionen](../event-hubs/event-hubs-features.md#partitions). Ereignisdatenströme für IoT Hubs werden normalerweise mit eingehenden Telemetriedaten gefüllt, die von den unterschiedlichen IoT-Geräten gemeldet werden. Die Partitionierung des Ereignisdatenstroms wird genutzt, um die Anzahl von Konflikten zu verringern, die beim gleichzeitigen Lesen von und Schreiben in Ereignisdatenströme auftreten. 
+Azure IoT Hubs enthalten viele Kernkomponenten von [Azure Event Hubs](../event-hubs/event-hubs-features.md), z.B. [Partitionen](../event-hubs/event-hubs-features.md#partitions). Ereignisdatenströme für IoT Hubs werden normalerweise mit eingehenden Telemetriedaten gefüllt, die von den unterschiedlichen IoT-Geräten gemeldet werden. Die Partitionierung des Ereignisdatenstroms wird genutzt, um die Anzahl von Konflikten zu verringern, die beim gleichzeitigen Lesen von und Schreiben in Ereignisdatenströme auftreten.
 
 Der Partitionsgrenzwert wird bei der Erstellung von IoT Hub ausgewählt und kann nicht geändert werden. Die Partitionsobergrenze für IoT Hub im Basic-Tarif und im Standardtarif ist 32. Die meisten IoT Hub-Instanzen benötigen nur vier Partitionen. Weitere Informationen zum Ermitteln der Partitionen finden Sie in den häufig gestellten Fragen zu Event Hubs: [Wie viele Partitionen benötige ich?](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)
-
 
 ## <a name="tier-upgrade"></a>Upgrade des Tarifs
 
@@ -62,10 +62,9 @@ Nachdem Sie Ihre IoT Hub-Instanz erstellt haben, können Sie ein Upgrade vom Bas
 
 Die Partitionskonfiguration ändert sich nicht, wenn Sie vom Tarif „Basic“ zum Tarif „Standard“ migrieren.
 
-
 ## <a name="iot-hub-rest-apis"></a>REST-APIs für IoT Hub
 
-Der Unterschied zwischen den unterstützten Funktionen zwischen dem Basic- und dem Standard-Tarif für IoT Hub bedeutet, dass einige API-Aufrufe für Hubs des Basic-Tarifs nicht funktionieren. In der folgenden Tabelle ist angegeben, welche APIs verfügbar sind: 
+Der Unterschied zwischen den unterstützten Funktionen zwischen dem Basic- und dem Standard-Tarif für IoT Hub bedeutet, dass einige API-Aufrufe für Hubs des Basic-Tarifs nicht funktionieren. In der folgenden Tabelle ist angegeben, welche APIs verfügbar sind:
 
 | API | Basic-Tarif | Tarif Free und Standard |
 | --- | ---------- | ------------- |
@@ -84,7 +83,7 @@ Der Unterschied zwischen den unterstützten Funktionen zwischen dem Basic- und d
 | [Geräteereignis senden](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | Ja | Ja |
 | Modulereignis senden | Ja | Ja |
 | [Dateiuploadstatus aktualisieren](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | Ja | Ja |
-| [Massenvorgang für Geräte](/rest/api/iot-dps/runbulkenrollmentoperation/runbulkenrollmentoperation) | Ja, mit Ausnahme von IoT Edge-Funktionen | Ja | 
+| [Massenvorgang für Geräte](/rest/api/iot-dps/runbulkenrollmentoperation/runbulkenrollmentgroupoperation) | Ja, mit Ausnahme von IoT Edge-Funktionen | Ja | 
 | [Befehlswarteschlange bereinigen](https://docs.microsoft.com/rest/api/iothub/service/purgecommandqueue) |   | Ja |
 | [Gerätezwilling abrufen](https://docs.microsoft.com/rest/api/iothub/service/gettwin) |   | Ja |
 | Modulzwilling abrufen |   | Ja |
@@ -116,26 +115,24 @@ Als Beispiel für die Datenverkehrsfunktionen der einzelnen Tarife sind hier die
 | B2, S2 |Bis zu 16 MB/Minute pro Einheit<br/>(22,8 GB/Tag/Einheit) |Durchschnittlich 4.167 Nachrichten/Minute pro Einheit<br/>(6 Millionen Nachrichten/Tag pro Einheit) |
 | B3, S3 |Bis zu 814 MB/Minute pro Einheit<br/>(1.144,4 GB/Tag/Einheit) |Durchschnittlich 208.333 Nachrichten/Minute pro Einheit<br/>(300 Millionen Nachrichten/Tag pro Einheit) |
 
-Sehen Sie sich zusätzlich zu diesen Durchsatzinformationen auch [IoT Hub-Kontingente und -Drosselungen][IoT Hub quotas and throttles] an, und entwerfen Sie Ihre Lösung entsprechend.
+Sehen Sie sich zusätzlich zu diesen Durchsatzinformationen auch [IoT Hub-Kontingente und -Drosselungen](iot-hub-devguide-quotas-throttling.md) an und entwerfen Sie Ihre Lösung entsprechend.
 
 ### <a name="identity-registry-operation-throughput"></a>Durchsatz von Identitätsregistrierungsvorgängen
+
 IoT Hub-Identitätsregistrierungsvorgänge sollten keine Laufzeitvorgänge sein, da sie sich größtenteils auf die Gerätebereitstellung beziehen.
 
-Genaue Zahlen zur Burstleistung finden Sie unter [IoT Hub-Kontingente und -Drosselungen][IoT Hub quotas and throttles].
+Genaue Zahlen zur Burst-Leistung finden Sie unter [IoT Hub-Kontingente und -Drosselungen](iot-hub-devguide-quotas-throttling.md).
 
 ## <a name="auto-scale"></a>Automatische Skalierung
+
 Wenn Sie sich dem zulässigen Nachrichtenlimit der IoT Hub-Instanz nähern, können Sie eine IoT Hub-Einheit in demselben IoT Hub-Tarif mithilfe [dieser Anweisungen automatisch zentral hochskalieren](https://azure.microsoft.com/resources/samples/iot-hub-dotnet-autoscale/).
 
 ## <a name="sharding"></a>Sharding (Horizontales Partitionieren)
+
 Eine einzelne IoT Hub-Einheit kann zwar auf Millionen von Geräten skaliert werden, aber es kann sein, dass Ihre Lösung bestimmte Leistungsmerkmale benötigt, die von einer einzelnen IoT Hub-Einheit nicht gewährleistet werden können. In diesem Fall können Sie Ihre Geräte auf mehreren IoT Hubs partitionieren. Mehrere IoT Hubs glätten Datenverkehrsbursts und erzielen den erforderlichen Durchsatz oder die erforderlichen Vorgangsraten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu Funktionen und Leistungsdetails von IoT Hub finden Sie unter [IoT Hub – Preise][lnk-pricing] oder [IoT Hub-Kontingente und -Drosselung][IoT Hub quotas and throttles].
+* Weitere Informationen zu den Funktionen und Leistungsdetails von IoT Hub finden Sie unter [Azure IoT Hub – Preise](https://azure.microsoft.com/pricing/details/iot-hub) oder [Referenz: IoT Hub-Kontingente und -Drosselung](iot-hub-devguide-quotas-throttling.md).
+
 * Führen Sie die Schritte unter [Upgrade your IoT hub](iot-hub-upgrade.md) (Durchführen eines Upgrades für Ihren IoT Hub) aus, um Ihren IoT Hub-Tarif zu ändern.
-
-[lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub
-[IoT Hub quotas and throttles]: iot-hub-devguide-quotas-throttling.md
-
-[lnk-devguide]: iot-hub-devguide.md
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md

@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen des Moduls zur Azure IoT OPC UA-Geräteverwaltung in einem vorhandenen Projekt| Microsoft-Dokumentation
+title: Wie Sie ein OPC Twin-Modul einem vorhandenen Azure-Projekt bereitstellen | Microsoft-Dokumentation
 description: Bereitstellen von OPC Twin in einem vorhandenen Projekt
 author: dominicbetts
 ms.author: dobett
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: dcf6acca344fe2a34fdc48fe89c5a1ee62b10b23
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 6bdfeefc366734aa10dbaccec69bac8e0b41103f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59255885"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59493245"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>Bereitstellen von OPC Twin in einem vorhandenen Projekt
 
-Das OPC Device Twin-Modul wird auf IoT Edge ausgeführt und stellt mehrere Edge-Dienste für die OPC Device Twin- und Registry-Dienste zur Verfügung. 
+Das OPC Twin-Modul wird auf IoT Edge ausgeführt und stellt mehrere Edge-Dienste für die OPC Twin- und Registry-Dienste (Gerätezwilling und Registrierung) zur Verfügung. 
 
-Der OPC Device Twin-Microservice ermöglicht die Kommunikation zwischen Bedienern und OPC UA-Servergeräten im Fertigungsbereich über ein OPC Twin IoT Edge-Modul. Der Microservice stellt OPC UA-Dienste („Durchsuchen“, „Lesen“, „Schreiben“ und „Ausführen“) über seine REST-API zur Verfügung. 
+Der OPC Twin-Microservice ermöglicht die Kommunikation zwischen Bedienern und OPC UA-Servergeräten im Fertigungsbereich über ein OPC Twin IoT Edge-Modul. Der Microservice stellt OPC UA-Dienste („Durchsuchen“, „Lesen“, „Schreiben“ und „Ausführen“) über seine REST-API zur Verfügung. 
 
-Der Mikroservice der OPC UA-Geräteregistrierung ermöglicht den Zugriff auf registrierte OPC UA-Anwendungen und deren Endpunkte. Bediener und Administratoren können neue OPC UA-Anwendungen registrieren und deren Registrierung aufheben sowie die vorhandenen OPC UA-Anwendungen einschließlich ihrer Endpunkte durchsuchen. Zusätzlich zur Verwaltung von Anwendungen und Endpunkten katalogisiert der Registrierungsdienst auch registrierte OPC Device Twin IoT Edge-Module. Die Dienst-API ermöglicht die Steuerung der Funktionalität des Edge-Moduls, z. B. das Starten oder Beenden der Servererkennung (Überprüfungsdienste) oder das Aktivieren neuer Endpunktzwillinge, auf die über den OPC Twin-Microservice zugegriffen werden kann.
+Der Mikroservice der OPC UA-Geräteregistrierung ermöglicht den Zugriff auf registrierte OPC UA-Anwendungen und deren Endpunkte. Bediener und Administratoren können neue OPC UA-Anwendungen registrieren und deren Registrierung aufheben sowie die vorhandenen OPC UA-Anwendungen einschließlich ihrer Endpunkte durchsuchen. Zusätzlich zur Verwaltung von Anwendungen und Endpunkten katalogisiert der Registrierungsdienst auch registrierte OPC Twin IoT Edge-Module. Die Dienst-API ermöglicht die Steuerung der Funktionalität des Edge-Moduls, z. B. das Starten oder Beenden der Servererkennung (Überprüfungsdienste) oder das Aktivieren neuer Endpunktzwillinge, auf die über den OPC Twin-Microservice zugegriffen werden kann.
 
 Der Modulkern ist die Supervisoridentität. Der Supervisor verwaltet den Endpunktzwilling, der den OPC UA-Serverendpunkten entspricht, die über die entsprechende API der OPC UA-Registrierung aktiviert werden. Diese Endpunktzwillinge übersetzen OPC UA JSON, das vom OPC Twin-Microservice in der Cloud empfangen wurde, in binäre OPC UA-Nachrichten, die über einen zustandsbehafteten sicheren Kanal an den verwalteten Endpunkt gesendet werden. Der Supervisor stellt auch Erkennungsdienste bereit, die Geräteerkennungsereignisse zur Verarbeitung an den OPC UA Device Onboarding-Dienst senden, wenn diese Ereignisse zu Aktualisierungen der OPC UA-Registrierung führen.  In diesem Artikel erfahren Sie, wie Sie das OPC Twin-Modul in einem bestehenden Projekt bereitstellen können. 
 
@@ -71,7 +71,7 @@ Es ist möglich, dass der Name der Website bereits verwendet wird.  Wenn dieser 
 2. Alternativ können Sie einen privaten AAD-Mandanten in einem anderen Abonnement bereitstellen, das Skript neu starten und diesen Mandanten verwenden.
 
 > [!WARNING]
-> Fahren Sie NIE ohne Authentifizierung fort.  Wenn Sie dies zulassen, kann jeder ohne Authentifizierung über das Internet auf Ihre OPC Device Management-Endpunkte zugreifen.   Sie können jederzeit die [„lokale“ Bereitstellungsoption ](howto-opc-twin-deploy-dependencies.md) auswählen, um dies sorgfältig zu prüfen.
+> Fahren Sie NIE ohne Authentifizierung fort.  Wenn Sie dies zulassen, kann jeder ohne Authentifizierung über das Internet auf Ihre OPC Twin-Endpunkte zugreifen.   Sie können jederzeit die [„lokale“ Bereitstellungsoption ](howto-opc-twin-deploy-dependencies.md) auswählen, um dies sorgfältig zu prüfen.
 
 ## <a name="deploy-an-all-in-one-industrial-iot-services-demo"></a>Bereitstellen einer All-in-One-Demo für industrielle IoT-Dienste
 

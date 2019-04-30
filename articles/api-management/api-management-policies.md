@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: f617abc164761b4839b188822585eaa4eb0aacd6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 7f1352b018fe9ea46b0f0824ba53ee0204c7dc7c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936894"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005518"
 ---
 # <a name="api-management-policies"></a>Richtlinien für die API-Verwaltung
 Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](api-management-howto-policies.md).  
@@ -35,7 +35,7 @@ Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtl
     -   [Limit call rate (Aufrufrate nach Schlüssel begrenzen)](api-management-access-restriction-policies.md#LimitCallRateByKey) – verhindert API-Lastspitzen, indem die Aufrufrate jeweils pro Schlüssel beschränkt wird.  
     -   [Beschränkung für Aufrufer-IP](api-management-access-restriction-policies.md#RestrictCallerIPs) – Filtert (erlaubt/blockiert) Aufrufe von bestimmten IP-Adressen und/oder Adressbereichen.  
     -   [Set usage quota by subscription (Nutzungskontingent nach Abonnement festlegen)](api-management-access-restriction-policies.md#SetUsageQuota) – ermöglicht die Durchsetzung eines erneuerbaren oder für die Lebensdauer gültigen Kontingents für Aufrufe und/oder Bandbreite auf Grundlage des Abonnements.  
-    -   [Set usage quota by key (Nutzungskontingent nach Schlüssel festlegen)](api-management-access-restriction-policies.md#SetUsageQuotaByKey) – Ermöglicht die Durchsetzung eines erneuerbaren oder für die Lebensdauer gültigen Kontingents für Aufrufe und/oder Bandbreite auf Grundlage des Schlüssels.  
+    -   [Set usage quota by key (Nutzungskontingent nach Schlüssel festlegen)](api-management-access-restriction-policies.md#SetUsageQuotaByKey) – ermöglicht die Durchsetzung eines erneuerbaren oder für die Lebensdauer gültigen Kontingents für Aufrufe und/oder Bandbreite auf Grundlage des Schlüssels.  
     -   [JWT überprüfen](api-management-access-restriction-policies.md#ValidateJWT) – Erzwingt das Vorhandensein und die Gültigkeit eines JWT, das entweder aus einem angegebenen HTTP-Header oder aus einem angegebenen Abfrageparameter extrahiert wurde.  
 -   [Erweiterte Richtlinien](api-management-advanced-policies.md#AdvancedPolicies)  
     -   [Ablaufsteuerung](api-management-advanced-policies.md#choose) – bedingte Anwendung von Richtlinienanweisungen basierend auf der Auswertung von booleschen Ausdrücken.  
@@ -53,6 +53,7 @@ Dieser Abschnitt enthält eine Referenz für die folgenden API Management-Richtl
 -   [Authentifizierungsrichtlinien](api-management-authentication-policies.md#AuthenticationPolicies)  
     -   [Standardauthentifizierung](api-management-authentication-policies.md#Basic) – Authentifizierung mit einem Back-End-Dienst unter Verwendung der Standardauthentifizierung.  
     -   [Authentifizierung mit Clientzertifikat](api-management-authentication-policies.md#ClientCertificate) – Authentifizierung mit einem Back-End-Dienst unter Verwendung von Clientzertifikaten.  
+    -   [Authentifizierung mit Clientzertifikat:](api-management-authentication-policies.md#ManagedIdentity) Authentifizierung mit einem Back-End-Dienst unter Verwendung von Clientzertifikaten.  
 -   [Cachingrichtlinien](api-management-caching-policies.md#CachingPolicies)  
     -   [Aus Cache abrufen](api-management-caching-policies.md#GetFromCache) – Führt eine Cachesuche aus und gibt ggf. eine gültige Antwort aus dem Cache zurück.  
     -   [In Cache ablegen](api-management-caching-policies.md#StoreToCache) – Cacheantwort gemäß der angegebenen Konfiguration für die Cachesteuerung.  

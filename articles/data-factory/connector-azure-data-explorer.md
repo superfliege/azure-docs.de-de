@@ -1,5 +1,5 @@
 ---
-title: Kopieren von Daten in oder aus Azure Data Explorer mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten in oder aus Azure Data Explorer mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Daten mithilfe einer Kopieraktivität in einer Azure Data Factory-Pipeline in oder aus Azure Data Explorer kopiert werden.
 services: data-factory
 documentationcenter: ''
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/06/2019
-ms.author: orspod
-ms.openlocfilehash: 6138fadd060051c1b4264cd844ca2a4b8c28116a
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.date: 04/16/2019
+ms.author: orspodek
+ms.openlocfilehash: f501257903f3b7c621512f06d1c8c7109e22db1e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58880031"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009360"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Kopieren von Daten in oder aus Azure Data Explorer mithilfe von Azure Data Factory
 
@@ -38,6 +38,9 @@ Mit dem Azure Data Explorer-Connector ist Folgendes möglich:
 * Als Senke: Anfügen von Daten an eine Zieltabelle
 
 ## <a name="getting-started"></a>Erste Schritte
+
+>[!TIP]
+>Eine exemplarische Vorgehensweise zur Verwendung des Azure Data Explorer-Connectors finden Sie unter [Copy data to Azure Data Explorer using Azure Data Factory (Kopieren von Daten aus Azure Data Factory in Azure Data Explorer)](../data-explorer/data-factory-load-data.md).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -68,11 +71,11 @@ Folgende Eigenschaften werden für den mit Azure Data Explorer verknüpften Dien
 | type | Die **type**-Eigenschaft muss auf **AzureDataExplorer** festgelegt werden. | Ja |
 | endpoint | Endpunkt-URL des Azure Data Explorer-Clusters im Format `https://<clusterName>.<regionName>.kusto.windows.net` | Ja |
 | database | Name der Datenbank | Ja |
-| Mandant | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Dies ist, was Sie normalerweise als **Autoritäts-ID** in der [Kusto-Verbindungszeichenfolge](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties) kennen. Diese können Sie abrufen, indem Sie auf den rechten oberen Bereich im Azure-Portal zeigen. | Ja |
+| tenant | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Dies ist, was Sie normalerweise als **Autoritäts-ID** in der [Kusto-Verbindungszeichenfolge](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties) kennen. Diese können Sie abrufen, indem Sie auf den rechten oberen Bereich im Azure-Portal zeigen. | Ja |
 | servicePrincipalId | Geben Sie die Client-ID der Anwendung an. Dies ist, was Sie normalerweise als **AAD-Anwendungsclient-ID** in der [Kusto-Verbindungszeichenfolge](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties) kennen. | Ja |
 | servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. Dies ist, was Sie normalerweise als **AAD-Anwendungsschlüssel** in der [Kusto-Verbindungszeichenfolge](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties) kennen. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 
-**Beispiel für Eigenschaften des verknüpften Diensts:**
+**Beispiel für Eigenschaften des verknüpften Diensts**
 
 ```json
 {
@@ -216,4 +219,7 @@ Legen Sie zum Kopieren von Daten in Azure Data Explorer die type-Eigenschaft in 
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+
+* Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+
+* Weitere Informationen finden Sie unter [Copy data to Azure Data Explorer using Azure Data Factory (Kopieren von Daten aus Azure Data Factory in Azure Data Explorer)](/azure/data-explorer/data-factory-load-data).

@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory-Aktivitätsprotokolle in Azure Monitor (Vorschauversion) | Microsoft-Dokumentation
-description: Einführung in Azure Active Directory-Aktivitätsprotokolle in Azure Monitor (Vorschauversion)
+title: Azure Active Directory-Aktivitätsprotokolle in Azure Monitor | Microsoft-Dokumentation
+description: Einführung in Azure Active Directory-Aktivitätsprotokolle in Azure Monitor
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,20 +13,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0469f69f026c578de9598401e69262279669d19f
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 7fbb90e95c07c66f45d49076f0570ac028c37244
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436301"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011400"
 ---
-# <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Azure AD-Aktivitätsprotokolle in Azure Monitor (Vorschauversion)
+# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD-Aktivitätsprotokolle in Azure Monitor
 
-Sie können Azure AD-Aktivitätsprotokolle (Azure Active Directory) jetzt zur langfristigen Aufbewahrung und Gewinnung von Erkenntnissen zu Daten an mehrere Endpunkte weiterleiten. Die öffentliche Vorschauversion von Azure AD-Protokollen in Azure Monitor ermöglicht Ihnen Folgendes:
+Sie können Azure AD-Aktivitätsprotokolle (Azure Active Directory) zur langfristigen Aufbewahrung und Gewinnung von Erkenntnissen zu Daten an mehrere Endpunkte weiterleiten. Dieses Feature ermöglicht Folgendes:
 
 * Archivieren von Azure AD-Aktivitätsprotokollen in einem Azure-Speicherkonto, um die Daten für längere Zeit aufzubewahren
 * Streamen von Azure AD-Aktivitätsprotokollen zum Analysieren an einen Azure Event Hub mithilfe von beliebten SIEM-Tools (Security Information & Event Management) wie Splunk und QRadar
@@ -86,7 +86,7 @@ Die folgende Tabelle enthält eine Schätzung der Kosten in Abhängigkeit von de
 
 Ereignisse werden zu Batchintervallen mit einer Länge von ca. fünf Minuten zusammengefasst und als einzelne Nachricht gesendet, die alle Ereignisse innerhalb dieses Zeitraums enthält. Eine Nachricht im Event Hub hat eine maximale Größe von 256 KB. Wenn die Gesamtgröße aller Nachrichten innerhalb des Zeitraums diese Menge übersteigt, werden mehrere Nachrichten gesendet. 
 
-Für einen großen Mandanten mit mehr als 100.000 Benutzern treten pro Sekunde beispielsweise im Schnitt 18 Ereignisse auf. Dies entspricht einer Rate von 5.400 Ereignissen alle fünf Minuten. Da Überwachungsprotokolle ca. 2 KB pro Ereignis umfassen, entspricht dies 10,8 MB an Daten. Daher werden im Intervall von fünf Minuten 43 Nachrichten an den Event Hub gesendet. 
+Für einen großen Mandanten mit mehr als 100.000 Benutzern treten pro Sekunde beispielsweise im Schnitt 18 Ereignisse auf. Dies entspricht einer Rate von 5.400 Ereignissen alle fünf Minuten. Da Überwachungsprotokolle ca. 2 KB pro Ereignis umfassen, entspricht dies 10,8 MB an Daten. Daher werden im Intervall von fünf Minuten 43 Nachrichten an den Event Hub gesendet. 
 
 Die folgende Tabelle enthält die ungefähren monatlichen Kosten für einen einfachen Event Hub in „USA, Westen“ in Abhängigkeit der Ereignisdatenmenge. Verwenden Sie den [Event Hubs-Preisrechner](https://azure.microsoft.com/pricing/details/event-hubs/), um eine genaue Schätzung für die Datenmenge zu berechnen, die für Ihre Anwendung zu erwarten ist.
 

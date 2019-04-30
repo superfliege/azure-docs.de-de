@@ -15,10 +15,10 @@ ms.date: 02/26/2018
 ms.author: zhiweiw
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3ffd783ec41b1b0c4a11ee426648c1e36fbbbf75
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883699"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>Warnung „Die Daten des Integritätsdiensts sind nicht aktuell“
@@ -59,7 +59,7 @@ Dieser Abschnitt enthält die erforderlichen Schritte zum Diagnostizieren des Pr
 
 * Vergewissern Sie sich, dass jeweils die neueste Version des Agents installiert ist. Den Versionsverlauf finden Sie [hier](reference-connect-health-version-history.md). 
 * Vergewissern Sie sich, dass die Agent-Dienste von Azure AD Connect Health auf dem Computer den Status **Wird ausgeführt** haben. Beispiel: Connect Health für AD FS sollte über drei Dienste verfügen.
-  ![Überprüfen von Azure AD Connect Health](./media/how-to-connect-health-agent-install/install5.png)
+  ![Überprüfen von Azure AD Connect Health](./media/how-to-connect-health-agent-install/install5.png)
 
 * Lesen Sie unbedingt den [Abschnitt „Anforderungen“](how-to-connect-health-agent-install.md#requirements), und stellen Sie sicher, dass Sie die Anforderungen erfüllen.
 * Verwenden Sie das [Tool zum Testen der Konnektivität](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service), um Konnektivitätsprobleme zu ermitteln.

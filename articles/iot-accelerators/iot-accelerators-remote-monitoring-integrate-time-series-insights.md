@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 850d8bbb525763e0e7d0c0441173180b7c469dd8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4cc9b0051eaa12eee07f067352126ad159107a83
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085149"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007473"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrieren von Azure Time Series Insights mit Remoteüberwachung
 
@@ -236,6 +236,9 @@ Konfigurieren Sie die Umgebung für die Bereitstellung vom Typ `basic` für die 
 1. Navigieren Sie zum **ASA-Manager-Dienst**, und bearbeiten Sie die Docker Compose-Datei, indem Sie `PCS_TELEMETRY_STORAGE_TYPE` hinzufügen.
 
 1. Starten Sie die Docker-Container mit `sudo ./start.sh` auf dem virtuellen Computer neu.
+
+> [!NOTE]
+> Die obige Konfiguration von Umgebungsvariablen gilt für Versionen der Remoteüberwachung vor Version 1.0.2.
 
 ### <a name="standard-deployments"></a>Standard-Bereitstellungen
 

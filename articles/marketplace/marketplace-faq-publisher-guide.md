@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: ellacroi
-ms.openlocfilehash: 2eabe0c234df6165b78e2dc55dcdc73067aabaa6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 34b9fadc976d3f37612f59a7fc8520c48b178f5c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59273225"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009028"
 ---
 # <a name="marketplace-faqs"></a>Häufig gestellte Fragen zum Marketplace
 
@@ -161,7 +161,7 @@ Dies sind die gängigsten Optionen pro Angebotstyp:
 
 Die „Kostenlose Testversion“ eines Abonnementangebots ist unbefristet kostenlos.  Eine „Kostenlose Software-Testversion“ („Jetzt testen“) bei einem Angebot ist ein kostenpflichtiges Angebot, das aber für einen begrenzten Testzeitraum kostenlos ist.
 
-**Benötige ich ein registriertes Zahlungsinstrument (z.B. eine Kreditkarte), um Angebote im Tarif „Free“ oder als BYOL-Version (Bring Your Own License) bereitzustellen?**
+**Benötige ich ein registriertes Zahlungsinstrument (z. B. eine Kreditkarte), um Angebote im Tarif „Free“ oder als BYOL-Version (Bring Your Own License) bereitzustellen?**
 
  Nein. Zur Bereitstellung von Angeboten im Free-Tarif oder als BYOL-Version ist kein Zahlungsinstrument erforderlich. Für kostenlose Testangebote ist hingegen ein Zahlungsinstrument erforderlich. Listings, die die Schaltflächen **Jetzt anfordern** oder **Kostenlose Testversion** enthalten, werden in dem ausgewählten Azure-Abonnement bereitgestellt.  Diese Listings werden über die registrierte Zahlungsmethode des ausgewählten Kontos abgerechnet. Azure-Nutzungsgebühren werden getrennt von den Softwarelizenzgebühren abgerechnet.
 
@@ -438,7 +438,7 @@ Ja, der neue Preis wird sofort berechnet.  Preisänderungen treten auf, wenn ein
 
 Der Azure Marketplace unterstützt derzeit keine knotenbasierte Abrechnung für virtuelle Computer. Herausgeber können jedoch eine knotenbasierte Abrechnungsrate basierend auf den Microsoft-VM-Abrechnungsraten bestimmen.  Die Berechnung erfolgt, indem die Anzahl von virtuellen Computern, die Anzahl von Nutzungsstunden sowie die Rate pro Stunde berechnet wird.
 
-**An wen wende ich mich, wenn ich Fragen zur Abrechnung oder Angebotsverwaltung habe?**
+**An wen wende ich mich, wenn ich Fragen zur Abrechnung oder zur Angebotsverwaltung habe?**
 
 Tragen Sie ein Ticket beim [Microsoft-Support](https://support.microsoft.com/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfName=productselection&prid=15635) ein.
 
@@ -454,7 +454,7 @@ Wenden Sie sich bei Problemen mit der Abrechnung und dem Abonnement Ihres Azure 
 
 Besuchen Sie das [Azure Marketplace-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket).
 
-**An wen wende ich mich, wenn ich Fragen zur Veröffentlichung oder Angebotsverwaltung habe?**
+**An wen wende ich mich, wenn ich Fragen zur Veröffentlichung oder zur Angebotsverwaltung habe?**
 
 Im [Azure Marketplace-Herausgeberleitfaden](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) finden Sie aktuelle Ressourcen und Informationen zu häufig gestellten Fragen. Darüber hinaus können Sie im [Cloud-Partnerportal ein Ticket für den Microsoft-Support](https://support.microsoft.com/en-us/getsupport?oaspworkflow=start_1.0.0.0&wf=0&wfname=productselection&prid=16230&forceorigin=esmc&ccsid=636694515623707953) eintragen.
 
@@ -488,7 +488,7 @@ Abhängigkeiten werden für Azure Marketplace-Angebote nicht automatisch verwalt
 
 Der Azure Marketplace ist in den folgenden Ländern für Microsoft Azure-Kunden verfügbar:
 
-Algerien, Argentinien, Australien, Österreich, Bahrain, Belarus, Belgien, Brasilien, Bulgarien, Kanada, Chile, Kolumbien, Costa Rica, Kroatien, Zypern, Tschechische Republik, Dänemark, Dominikanische Republik, Ecuador, Ägypten, El Salvador, Estland, Finnland, Frankreich, Deutschland, Griechenland, Guatemala, Hongkong, Ungarn, Island, Indien, Indonesien, Irland, Israel, Italien, Japan, Jordanien, Kasachstan, Kenia, Kuwait, Lettland, Liechtenstein, Litauen, Luxemburg, Nordmazedonien, Malaysia, Malta, Mexiko, Montenegro, Marokko, Niederlande, Neuseeland, Nigeria, Norwegen, Oman, Pakistan, Panama, Paraguay, Peru, Philippinen, Polen, Portugal, Puerto Rico, Katar, Rumänien, Russland, Saudi-Arabien, Serbien, Singapur, Slowakei, Slowenien, Südafrika, Südkorea, Spanien, Sri Lanka, Schweden, Schweiz, Taiwan, Thailand, Trinidad und Tobago, Tunesien, Türkei, Ukraine, Vereinigte Arabische Emirate, Vereinigtes Königreich, USA, Uruguay, Venezuela.
+Algerien, Argentinien, Australien, Österreich, Bahrain, Belarus, Belgien, Brasilien, Bulgarien, Kanada, Chile, Kolumbien, Costa Rica, Kroatien, Zypern, Tschechische Republik, Dänemark, Dominikanische Republik, Ecuador, Ägypten, El Salvador, Estland, Finnland, Frankreich, Deutschland, Griechenland, Guatemala, Hongkong, Ungarn, Island, Indien, Indonesien, Irland, Israel, Italien, Japan, Jordanien, Kasachstan, Kenia, Kuwait, Lettland, Liechtenstein, Litauen, Luxemburg, Nordmazedonien (ehemalige jugoslawische Republik), Malaysia, Malta, Mexiko, Montenegro, Marokko, Niederlande, Neuseeland, Nigeria, Norwegen, Oman, Pakistan, Panama, Paraguay, Peru, Philippinen, Polen, Portugal, Puerto Rico, Katar, Rumänien, Russland, Saudi-Arabien, Serbien, Singapur, Slowakei, Slowenien, Südafrika, Südkorea, Spanien, Sri Lanka, Schweden, Schweiz, Taiwan, Thailand, Trinidad und Tobago, Tunesien, Türkei, Ukraine, Vereinigte Arabische Emirate, Vereinigtes Königreich, USA, Uruguay, Venezuela.
 
 **Wie definiere ich meine geografische Verfügbarkeit, um den Verkauf in verschiedenen Ländern zu aktivieren?**
 
@@ -554,7 +554,7 @@ Die Preisdetails finden Sie auf der Detailseite der Lösung unter [https://azure
 
 Ein Abonnement im Free-Tarif ist unbefristet kostenlos.  Ein Angebot als „Kostenlose Software-Testversion“ („Jetzt testen“) ist ein kostenpflichtiges Abonnement, das nur für einen begrenzten Zeitraum kostenlos ist.
 
-**Benötige ich ein registriertes Zahlungsinstrument (z.B. eine Kreditkarte), um Angebote im Tarif „Free“ oder als BYOL-Version (Bring Your Own License) bereitzustellen?**
+**Benötige ich ein registriertes Zahlungsinstrument (z. B. eine Kreditkarte), um Angebote im Tarif „Free“ oder als BYOL-Version (Bring Your Own License) bereitzustellen?**
 
  Nein. Zur Bereitstellung von Angeboten im Free-Tarif oder als BYOL-Version ist kein Zahlungsinstrument erforderlich. Für kostenlose Testangebote ist hingegen ein Zahlungsinstrument erforderlich.
 

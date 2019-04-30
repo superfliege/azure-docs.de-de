@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: 98aabf5330589bf80f1653bb2882c015a4bc133c
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: 16770ea0a320b3d9f081cc21a102ab050a6467f6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862112"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009751"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>Überwachung von Metriken und Protokollen in Azure Front Door Service
 
@@ -65,7 +65,7 @@ Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Azure-Ressourcen
 
 So konfigurieren Sie Diagnoseprotokolle für Ihre Front Door Service-Instanz:
 
-1. Wählen Sie Ihren Azure API Management-Dienst aus.
+1. Wählen Sie Ihre Azure Front Door Service-Instanz aus.
 
 2. Wählen Sie **Azure-Diagnoseeinstellungen** aus.
 
@@ -92,5 +92,5 @@ Front Door Service stellt derzeit Diagnoseprotokolle bereit (stündlicher Batch)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen eines Front Door-Profils](quickstart-create-front-door.md)
-- [Funktionsweise von Azure Front Door Service](front-door-routing-architecture.md)
+- [Schnellstart: Erstellen einer Front Door-Instanz](quickstart-create-front-door.md)
+- [Übersicht über die Routingarchitektur](front-door-routing-architecture.md)

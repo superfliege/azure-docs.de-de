@@ -3,16 +3,16 @@ title: Ermitteln der Ursachen für Nichtkonformität
 description: Wenn eine Ressource nicht konform ist, kann das viele mögliche Ursachen haben. Erfahren Sie, wie Sie die Ursache für die Nichtkonformität ermitteln können.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/26/2019
+ms.date: 03/30/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 8a593e92d7f24885c35043b874528e881d2e021e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 0af3fd8596bf558f9d5cc97c95be773aa40954cc
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59276098"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995004"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Ermitteln der Ursachen für Nichtkonformität
 
@@ -124,6 +124,8 @@ Im Rahmen einer neuen **öffentlichen Vorschau** sind die letzten 14 Tage des Ä
    ![Visual Diff des Richtlinien-Änderungsverlaufs auf der Seite „Änderungsverlauf“](../media/determine-non-compliance/change-history-visual-diff.png)
 
 Die _Visual Diff_ hilft, Änderungen an einer Ressource zu identifizieren. Die erkannten Änderungen müssen nicht zwangsläufig mit dem geänderten Konformitätsstatus der Ressource zusammenhängen.
+
+Die Verlaufsdaten zu Änderungen werden von [Azure Resource Graph](../../resource-graph/overview.md) bereitgestellt. Wie Sie diese Informationen außerhalb des Azure-Portals abfragen, erfahren Sie unter [Get resource changes (Abrufen von Ressourcenänderungen)](../../resource-graph/how-to/get-resource-changes.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 839f77df88314c95df1056b60c3612de27421ca0
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: d4798f8c3e262129135a6677ccf90dc0fb3be7f2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886130"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999534"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver
 
@@ -569,7 +569,7 @@ Zu diesem Zweck wurden viele Änderungen eingeführt. Die beiden wichtigsten sin
 * Verwendung von SSD-Laufwerken in Azure Storage-Knoten
 * Ein neuer Lesecache, der durch die lokale SSD eines Azure-Serverknotens unterstützt wird
 
-Im Gegensatz zum Standardspeicher, bei dem sich Funktionen nicht abhängig von der Größe der Festplatte (oder der VHD) geändert haben, verfügt Storage Premium derzeit über drei unterschiedliche Datenträgerkategorien, die in diesem Artikel beschrieben werden: <https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/>
+Im Gegensatz zum Standardspeicher, bei dem sich Funktionen nicht abhängig von der Größe der Festplatte (oder der VHD) geändert haben, verfügt Storage Premium derzeit über drei unterschiedliche Datenträgerkategorien, die Sie in diesem Artikel: <https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/>
 
 Sie sehen, dass IOPS- und Datenträgerdurchsatz von der Größenkategorie der Datenträger abhängen.
 
@@ -692,7 +692,7 @@ Punkt-zu-Standort-VPN erfordert, dass jeder Clientcomputer eine Verbindung mit d
 
 Weitere Informationen finden Sie hier:
 * [Konfigurieren einer Point-to-Site-Verbindung mit einem VNet über das Azure-Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal)
-* [Konfigurieren einer Point-to-Site-VPN-Verbindung (P2S) mit einem VNet mithilfe von PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
+* [Konfigurieren einer Point-to-Site-Verbindung mit einem VNet mithilfe von PowerShell](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps)
 
 #### <a name="multi-site-vpn"></a>VPN mit mehreren Standorten
 
@@ -722,8 +722,7 @@ Express Route ermöglicht mehrere Azure-Abonnements über eine ExpressRoute-Verb
 #### <a name="forced-tunneling-in-case-of-cross-premises"></a>Tunnelerzwingung in standortübergreifenden Szenarien
 Für virtuelle Computer, die lokalen Domänen über Standort-zu-Standort-, Punkt-zu-Standort- oder ExpressRoute-Verbindungen beitreten, müssen Sie sicherstellen, dass auch die Internetproxyeinstellungen für alle Benutzer auf diesen virtuellen Computern bereitgestellt werden. Standardmäßig würde Software, die auf diesen virtuellen Computer ausgeführt wird, und würden Benutzer, die mit einem Browser auf das Internet zugreifen, nicht durch den Unternehmensproxy geleitet, sondern über Azure eine direkte Verbindung mit dem Internet herstellen. Aber auch die Proxyeinstellung ist keine hundertprozentige Lösung, um den Datenverkehr über den Unternehmensproxy zu leiten, da es in der Verantwortung der Software und der Dienste liegt, den Proxy zu suchen. Wenn die auf dem virtuellen Computer ausgeführte Software dies nicht leistet oder wenn ein Administrator die Einstellungen ändert, kann der Datenverkehr ins Internet wieder direkt durch Azure ins Internet umgeleitet werden.
 
-Um eine derartige direkte Internetkonnektivität zu vermeiden, können Sie erzwungenes Tunneling mit Standort-zu-Standort-Konnektivität zwischen lokalen Standorten und Azure konfigurieren. Eine ausführliche Beschreibung zum erzwungenen Tunneling finden Sie hier.
-<https://azure.microsoft.com/documentation/articles/vpn-gateway-forced-tunneling-rm/>
+Um eine derartige direkte Internetkonnektivität zu vermeiden, können Sie erzwungenes Tunneling mit Standort-zu-Standort-Konnektivität zwischen lokalen Standorten und Azure konfigurieren. Eine ausführliche Beschreibung zum erzwungenen Tunneling finden Sie hier: <https://azure.microsoft.com/documentation/articles/vpn-gateway-forced-tunneling-rm/>
 
 Erzwungenes Tunneling mit ExpressRoute wird von Kunden aktiviert, die eine Standardroute über die ExpressRoute-BGP-Peeringsitzungen anfordern.
 
@@ -754,8 +753,7 @@ Nachfolgende Entscheidungsstruktur hilft Ihnen zu ermitteln, ob sich Ihr vorhand
 
 **Schritt 1:** Ermitteln Sie zunächst die SAPS-Anforderungen für ein bestimmtes SAP-System. Die SAPS-Anforderungen müssen in eine DBMS-Komponente und eine SAP-Anwendungskomponente unterteilt werden, selbst wenn das SAP-System bereits lokal in einer 2-Tier-Konfiguration bereitgestellt ist. Bei vorhandenen Systemen können die mit der derzeitigen Hardware verwendeten SAPS meist mithilfe vorhandener SAP-Benchmarks bestimmt bzw. geschätzt werden. Anweisungen dazu finden Sie hier: <https://sap.com/about/benchmark.html>.
 Für neu bereitgestellte SAP-Systeme sollten Sie Dimensionierungstests durchführen, durch die Sie die SAPS-Anforderungen des Systems bestimmen.
-In diesem Blog und im angehängten Dokument finden Sie Informationen zu SAP-Größen in Azure:
-<https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
+In diesem Blog und im angehängten Dokument finden Sie Informationen zu SAP-Größen in Azure: <https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
 
 **Schritt 2:** Bei vorhandenen Systemen sollten das E/A-Volumen sowie die E/A-Vorgänge pro Sekunde auf dem DBMS-Server gemessen werden. Bei neu geplanten Systemen sollten die Dimensionierungstests für das neue System auch grob Aufschluss über die E/A-Anforderungen auf DBMS-Seite geben. Falls Sie sich unsicher sind, sollten Sie eventuell eine Machbarkeitsstudie durchführen.
 
@@ -779,8 +777,6 @@ Das Azure-Portal ist eine von drei Schnittstellen für die Verwaltung von Azure-
 
 ![Übersicht der virtuellen Computer im Microsoft Azure-Portal][planning-guide-figure-800]
 
-[comment]: <> (MSSedusch * <https://azure.microsoft.com/documentation/articles/virtual-networks-create-vnet-arm-pportal/>)
-[comment]: <> (MSSedusch * <https://azure.microsoft.com/documentation/articles/virtual-machines-windows-tutorial/>)
 
 Die Verwaltung und Konfiguration einer VM-Instanz können im Azure-Portal erfolgen.
 
@@ -791,9 +787,6 @@ Das Azure-Portal bietet grundlegende Funktionen für die Bereitstellung und Konf
 * Hochladen von VHDs in Azure
 * Kopieren von VMs
 
-[comment]: <> (MShermannd TODO what about automation service for SAP VMs ? )
-[comment]: <> (MSSedusch deployment of multiple VMs os meanwhile possible)
-[comment]: <> (MSSedusch Also any type of automation regarding deployment is not possible with the Azure portal. Aufgaben wie die geskriptete Bereitstellung mehrerer VMs stehen über das Azure-Portal nicht zu Verfügung.)
 
 ### <a name="management-via-microsoft-azure-powershell-cmdlets"></a>Verwaltung mit Microsoft Azure PowerShell-Cmdlets
 
@@ -805,12 +798,10 @@ Ausführlichere Schritte zum Installieren, Aktualisieren und Konfigurieren der A
 
 Bisherige Erfahrungen der Kunden zeigen PowerShell (PS) mit Sicherheit als das leistungsstärkere Tool für die Bereitstellung von VMs und die Erstellung benutzerdefinierter Schritte innerhalb der Bereitstellung von VMs. Alle Kunden, die SAP-Instanzen in Azure ausführen, verwenden PS-Cmdlets zur Ergänzung Ihrer Verwaltungsaufgaben im Azure-Portal bzw. sogar ausschließlich zur Verwaltung ihrer Bereitstellungen in Azure. Da für die Azure-spezifischen Cmdlets dieselben Namenskonventionen gelten wie für die mehr als 2000 Windows-spezifischen Cmdlets, fällt Windows-Administratoren die Übernahme dieser Cmdlets nicht schwer.
 
-Ein Beispiel finden Sie hier:
-<https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
+Ein Beispiel finden Sie hier: <https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
 
-[comment]: <> (MShermannd TODO describe new CLI command when tested )
-Die Bereitstellung der Azure Monitoring Extension for SAP (siehe Kapitel [Azure-Überwachungslösung für SAP][planning-guide-9.1] in diesem Dokument) ist nur über PowerShell oder die Befehlszeilenschnittstelle möglich. Daher muss PowerShell oder die Befehlszeilenschnittstelle bei der Bereitstellung oder Verwaltung eines SAP NetWeaver-Systems in Azure installiert und konfiguriert werden.
-  
+
+Die Bereitstellung der Azure Monitoring Extension for SAP (siehe Kapitel [Azure-Überwachungslösung für SAP][planning-guide-9.1] in diesem Dokument) ist nur über PowerShell oder die Befehlszeilenschnittstelle möglich. Daher muss PowerShell oder die Befehlszeilenschnittstelle bei der Bereitstellung oder Verwaltung eines SAP NetWeaver-Systems in Azure installiert und konfiguriert werden.  
 
 Da Azure eine erweiterte Funktionalität bietet, werden neue PS-Cmdlets hinzugefügt, weshalb ein Update der Cmdlets erforderlich ist. Daher ist es sinnvoll, mindestens einmal im Monat die Azure-Downloadwebsite (<https://azure.microsoft.com/downloads/>) auf neue Cmdlet-Versionen zu prüfen. Die neue Version wird zusätzlich zur älteren Version installiert.
 
@@ -955,12 +946,12 @@ In diesem Fall möchten wir eine VHD mit oder ohne Betriebssystem hochladen und 
 **PowerShell**
 
 * Melden Sie sich mit *Connect-AzAccount* bei Ihrem Abonnement an.
-* Legen Sie das Abonnement Ihres Kontexts mit *Set-AzContext* und dem Parameter SubscriptionId oder SubscriptionName fest – siehe <https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext>
-* Laden Sie die VHD mit *Add-AzVhd* in ein Azure Storage-Konto hoch – siehe <https://docs.microsoft.com/powershell/module/az.compute/add-Azvhd>
-* (Optional) Erstellen Sie mit *New-AzDisk* einen verwalteten Datenträger aus der VHD – siehe <https://docs.microsoft.com/powershell/module/az.compute/new-Azdisk>
-* Legen Sie mit *Set-AzVMOSDisk* den Betriebssystem-Datenträger der neuen VM-Konfiguration auf die VHD oder den verwalteten Datenträger fest – siehe <https://docs.microsoft.com/powershell/module/az.compute/set-Azvmosdisk>
-* Erstellen Sie mit *New-AzVM* einen neuen virtuellen Computer aus der VM-Konfiguration – siehe <https://docs.microsoft.com/powershell/module/az.compute/new-Azvm>
-* Fügen Sie einem neuen virtuellen Computer mit *Add-AzVMDataDisk* einen Datenträger hinzu – siehe <https://docs.microsoft.com/powershell/module/az.compute/add-Azvmdatadisk>
+* Legen Sie das Abonnement Ihres Kontexts mit *Set-AzContext* und dem Parameter SubscriptionId oder SubscriptionName fest – siehe <https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext>.
+* Laden Sie die VHD mit *Add-AzVhd* in ein Azure Storage-Konto hoch – siehe <https://docs.microsoft.com/powershell/module/az.compute/add-Azvhd>.
+* (Optional) Erstellen Sie mit *New-AzDisk* einen verwalteten Datenträger aus der VHD – siehe <https://docs.microsoft.com/powershell/module/az.compute/new-Azdisk>.
+* Legen Sie mit *Set-AzVMOSDisk* den Betriebssystem-Datenträger der neuen VM-Konfiguration auf die VHD oder den verwalteten Datenträger fest – siehe <https://docs.microsoft.com/powershell/module/az.compute/set-Azvmosdisk>.
+* Erstellen Sie mit *New-AzVM* einen neuen virtuellen Computer aus der VM-Konfiguration – siehe <https://docs.microsoft.com/powershell/module/az.compute/new-Azvm>.
+* Fügen Sie einem neuen virtuellen Computer mit *Add-AzVMDataDisk* einen Datenträger hinzu – siehe <https://docs.microsoft.com/powershell/module/az.compute/add-Azvmdatadisk>.
 
 **Azure-Befehlszeilenschnittstelle**
 
@@ -982,13 +973,13 @@ Eine vorhandene VM oder VHD, die Sie aus dem lokalen Netzwerk hochladen möchten
 
 * Verwenden Sie *sysprep* (unter Windows) bzw. *waagent -deprovision* (unter Linux), um die VM zu generalisieren (siehe [Technische Referenz zu Sysprep](https://technet.microsoft.com/library/cc766049.aspx) für Windows bzw. [Erfassen eines virtuellen Linux-Computers zur Verwendung als Resource Manager-Vorlage][capture-image-linux-step-2-create-vm-image] für Linux).
 * Melden Sie sich mit *Connect-AzAccount* bei Ihrem Abonnement an.
-* Legen Sie das Abonnement Ihres Kontexts mit *Set-AzContext* und dem Parameter SubscriptionId oder SubscriptionName fest – siehe <https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext>
-* Laden Sie die VHD mit *Add-AzVhd* in ein Azure Storage-Konto hoch – siehe <https://docs.microsoft.com/powershell/module/az.compute/add-Azvhd>
-* (Optional) Erstellen Sie mit *New-AzImage* einen verwalteten Datenträger aus der VHD – siehe <https://docs.microsoft.com/powershell/module/az.compute/new-Azimage>
+* Legen Sie das Abonnement Ihres Kontexts mit *Set-AzContext* und dem Parameter SubscriptionId oder SubscriptionName fest – siehe <https://docs.microsoft.com/powershell/module/az.accounts/set-Azcontext>.
+* Laden Sie die VHD mit *Add-AzVhd* in ein Azure Storage-Konto hoch – siehe <https://docs.microsoft.com/powershell/module/az.compute/add-Azvhd>.
+* (Optional) Erstellen Sie mit *New-AzImage* einen verwalteten Datenträger aus der VHD – siehe <https://docs.microsoft.com/powershell/module/az.compute/new-Azimage>.
 * Legen Sie den Betriebssystem-Datenträger der neuen VM-Konfiguration auf
-  * VHD mit *Set-AzVMOSDisk -SourceImageUri -CreateOption fromImage* – siehe <https://docs.microsoft.com/powershell/module/az.compute/set-Azvmosdisk>
-  * Image für einen verwalteten Datenträger *Set-AzVMSourceImage* – siehe <https://docs.microsoft.com/powershell/module/az.compute/set-Azvmsourceimage>
-* Erstellen Sie mit *New-AzVM* einen neuen virtuellen Computer aus der VM-Konfiguration – siehe <https://docs.microsoft.com/powershell/module/az.compute/new-Azvm>
+  * VHD mit *Set-AzVMOSDisk -SourceImageUri -CreateOption fromImage* – siehe <https://docs.microsoft.com/powershell/module/az.compute/set-Azvmosdisk>.
+  * Image für einen verwalteten Datenträger *Set-AzVMSourceImage* – siehe <https://docs.microsoft.com/powershell/module/az.compute/set-Azvmsourceimage>.
+* Erstellen Sie mit *New-AzVM* einen neuen virtuellen Computer aus der VM-Konfiguration – siehe <https://docs.microsoft.com/powershell/module/az.compute/new-Azvm>.
 
 **Azure-Befehlszeilenschnittstelle**
 
@@ -1150,8 +1141,8 @@ Sie können VHDs auch von einem Abonnement ins andere kopieren. Weitere Informat
 
 Die grundlegende Abfolge der Logik des PS-Cmdlets sieht wie folgt aus:
 
-* Erstellen Sie mit *New-AzStorageContext* einen Speicherkontokontext für das **Quellspeicherkonto** – siehe <https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontext>
-* Erstellen Sie mit *New-AzStorageContext* einen Speicherkontokontext für das **Zielspeicherkonto** – siehe <https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontext>
+* Erstellen Sie mit *New-AzStorageContext* einen Speicherkontokontext für das **Quellspeicherkonto** – siehe <https://docs.microsoft.com/powershell/module/az.storage/new-AzStoragecontext>.
+* Erstellen Sie mit *New-AzStorageContext* einen Speicherkontokontext für das **Zielspeicherkonto** – siehe <https://docs.microsoft.com/powershell/module/az.storage/new-AzStoragecontext>.
 * Starten Sie die Kopie mit:
 
 ```powershell
@@ -1240,7 +1231,7 @@ Aus den letzten zwei Jahren der SAP-Bereitstellung ziehen wir einige Rückschlü
 >
 > * [Konfigurieren von Software-RAID unter Linux][virtual-machines-linux-configure-raid]
 > * [Konfigurieren von LVM auf einem virtuellen Linux-Computer in Azure][virtual-machines-linux-configure-lvm]
-> * [Geheimnisse für Azure Storage und E/A-Optimierungen unter Linux](https://blogs.msdn.com/b/igorpag/archive/2014/10/23/azure-storage-secrets-and-linux-i-o-optimizations.aspx)
+> * [Geheime Schlüssel für Azure Storage und E/A-Optimierungen unter Linux](https://blogs.msdn.com/b/igorpag/archive/2014/10/23/azure-storage-secrets-and-linux-i-o-optimizations.aspx)
 >
 >
 
@@ -1332,8 +1323,7 @@ Die Architekturunterschiede zwischen dem klassischen Modell und ARM werden in [d
 
 #### <a name="configuration-of-the-sap-system-and-sap-gui-connectivity-over-the-internet"></a>Konfiguration des SAP-Systems und der SAP-GUI-Konnektivität über das Internet
 
-In diesem Artikel finden Sie ausführliche Informationen zu diesem Thema:
-<https://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
+In diesem Artikel finden Sie ausführliche Informationen zu diesem Thema: <https://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
 
 #### <a name="changing-firewall-settings-within-vm"></a>Ändern der Firewalleinstellungen in der VM
 
@@ -1589,9 +1579,9 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 
 Sie können die Beispielvorlagen aus dem GitHub-Repository „azure-quickstart-templates“ verwenden.
 
-* [Einfache Linux-VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
-* [Einfache Windows-VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
-* [VM aus Image](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
+* [Simple Linux VM (Einfache Linux-VM)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
+* [Simple Windows VM (Einfache Windows-VM)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
+* [VM from image (VM aus Image)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
 
 ### <a name="implement-a-set-of-vms-that-communicate-within-azure"></a>Implementieren mehrerer VMs, die innerhalb von Azure miteinander kommunizieren
 
@@ -1632,13 +1622,13 @@ Das standortübergreifende oder Hybridszenario kann in etwa wie in der folgenden
 
 ![Site-to-Site-Verbindung zwischen lokale und Azure-Ressourcen][planning-guide-figure-2100]
 
-Die oben dargestellte Grafik beschreibt ein Szenario, in dem das lokale AD/OpenLDAP und DNS auf Azure erweitert wurden. Auf der lokalen Seite ist pro Azure-Abonnement ein bestimmter IP-Adressbereich reserviert. Der IP-Adressbereich wird auf der Seite von Azure einem Azure Virtual Network zugewiesen.
-
-#### <a name="security-considerations"></a>Sicherheitshinweise
+Die oben dargestellte Grafik beschreibt ein Szenario, in dem das lokale
 
 Als Mindestanforderung ist die Verwendung von sicheren Kommunikationsprotokollen wie SSL/TLS für den Browserzugriff oder von VPN-basierten Verbindungen für den Systemzugriff auf die Azure-Dienste erforderlich. Es wird davon ausgegangen, dass Unternehmen die VPN-Verbindung zwischen ihrem Unternehmensnetzwerk und Azure unterschiedlich verwalten. Einige Unternehmen öffnen möglicherweise einfach alle Ports. Einige andere Unternehmen möchten möglicherweise genauer spezifizieren, welche Ports geöffnet werden müssen usw.
 
 In der nachfolgenden Tabelle sind typische SAP-Kommunikationsports aufgeführt. Im Grunde reicht es aus, den SAP-Gatewayport zu öffnen.
+
+<!-- sapms is prefix of a SAP service name and not a spelling error -->
 
 | Dienst | Portname | Beispiel: `<nn`> = 01 | Standardbereich (min.–max.) | Comment |
 | --- | --- | --- | --- | --- |
@@ -1834,7 +1824,7 @@ Bei standortübergreifenden Szenarios ähnelt das Einrichten eines SAP-Portals a
 
 In einem speziellen Bereitstellungsszenario einiger Kunden wird das SAP Enterprise Portal direkt über das Internet verfügbar gemacht, während der Host des virtuellen Computers über einen Site-to-Site-VPN-Tunnel oder ExpressRoute mit dem Unternehmensnetzwerk verbunden ist. Bei einem solchen Szenario ist sicherzustellen, dass bestimmte Ports geöffnet und nicht durch eine Firewall oder eine Netzwerksicherheitsgruppe blockiert sind. 
 
-Der anfängliche Portal-URI ist http(s):`<Portalserver`>: 5XX00/Irj. Der Port wird dabei gebildet durch 50000 + (Systemnummer ?? 100). Der Standard-Portal-URI des SAP-Systems 00 ist `<dns name`>.`<azure region`>.Cloudapp.azure.com:PublicPort/irj. Weitere Informationen finden Sie hier: <https://help.sap.com/saphelp_nw70ehp1/helpdata/de/a2/f9d7fed2adc340ab462ae159d19509/frameset.htm>.
+Der anfängliche Portal-URI ist „http(s):`<Portalserver`>:5XX00/irj“. Der Port wird dabei wie von SAP in <https://help.sap.com/saphelp_nw70ehp1/helpdata/de/a2/f9d7fed2adc340ab462ae159d19509/frameset.htm> dokumentiert gebildet.
 
 ![Endpunktkonfiguration][planning-guide-figure-2800]
 
@@ -2012,8 +2002,8 @@ In das Startprofil der SAP ABAP- und/oder Java-Instanz.
 Weitere Informationen zur Autostartfunktion für SAP-Instanzen finden Sie hier:
 
 * [Start/Stop SAP along with your Unix Server Start/Stop (Starten/Beenden von SAP zusammen mit Ihrem Unix-Server)](https://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop)
-* [Starting and Stopping SAP NetWeaver Management Agents (Starten und Beenden von SAP NetWeaver-Verwaltungs-Agents)](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)
-* [Aktivieren des automatischen Starts der HANA-Datenbank](http://www.freehanatutorials.com/2012/10/how-to-enable-auto-start-of-hana.html)
+* [Starting and Stopping SAP NetWeaver Management Agents (Starten und Beenden von SAP NetWeaver-Verwaltungsagents)](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)
+* [How to enable auto Start of HANA Database (Aktivieren des automatischen Starts der HANA-Datenbank)](http://www.freehanatutorials.com/2012/10/how-to-enable-auto-start-of-hana.html)
 
 ### <a name="larger-3-tier-sap-systems"></a>Größere SAP-Systeme mit drei Ebenen
 Die Aspekte der hohen Verfügbarkeit von SAP-Konfigurationen mit 3 Ebenen wurden bereits in früheren Abschnitten erläutert. Was ist jedoch mit Systemen, auf denen die Anforderungen der DBMS-Server zu groß sind, um die in Azure zu platzieren, während die SAP-Anwendungsebene in Azure bereitgestellt werden könnte?
@@ -2027,12 +2017,10 @@ Rechenzentrumspartner haben jedoch im vergangenen Jahr weitere Standorte (Koloka
 Je nach SAP-Konfiguration (2 oder 3 Ebenen) ist möglicherweise eine Sicherung erforderlich. Dabei sollte der Inhalt des virtuellen Computers an sich sowie die Datenbank gesichert werden. Die DBMS-bezogene Sicherungen sollten mit Datenbankmethoden durchgeführt werden. Eine ausführliche Beschreibung der unterschiedlichen Datenbanken finden Sie im [DBMS-Handbuch][dbms-guide]. Andererseits können SAP-Daten (einschließlich des Datenbankinhalts) auch wie in diesem Abschnitt beschrieben offline gesichert werden. Die Online-Sicherung wird im nächsten Abschnitt erläutert.
 
 Für die Offline-Sicherung muss der virtuelle Computer im Grunde über das Azure-Portal heruntergefahren werden. Anschließend sollte ein Kopie des VM-Basisdatenträgers einschließlich aller mit dem virtuellen Computer verbundenen Datenträger erstellt werden. Dadurch wird ein Image des virtuellen Computers und des damit verbundenen Datenträgers zu einem bestimmten Zeitpunkt erstellt. Es wird empfohlen, die Sicherungen in ein anderes Azure Storage-Konto zu kopieren. Gehen Sie hierfür wie im Kapitel [Kopieren von Datenträgern zwischen Azure Storage-Konten][planning-guide-5.4.2] dieses Dokuments vor.
-Das Herunterfahren kann nicht nur über das Azure-Portal, sondern auch über PowerShell oder die Befehlszeilenschnittstelle erfolgen. Weitere Informationen finden Sie hier:
-<https://azure.microsoft.com/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/>
+Das Herunterfahren kann nicht nur über das Azure-Portal, sondern auch über Powershell oder die Befehlszeilenschnittstelle erfolgen. Weitere Informationen finden Sie hier: <https://azure.microsoft.com/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/>
 
 Bei einer Wiederherstellung dieses Zustands werden sowohl der virtuelle Basiscomputer als auch dessen Originaldatenträger sowie die hinzugefügten Datenträger gelöscht. Die gespeicherten Datenträger werden in das ursprüngliche Storage-Konto oder in die Ressourcengruppe für verwaltete Datenträger zurück kopiert. Anschließend wird das System erneut bereitgestellt.
-Im folgenden Artikel wird anhand eines Beispiels veranschaulicht, wie dieser Prozess in PowerShell geschrieben wird:
-<http://www.westerndevs.com/azure-snapshots/>
+Im folgenden Artikel wird anhand eines Beispiels veranschaulicht, wie dieser Prozess in PowerShell geschrieben wird: <http://www.westerndevs.com/azure-snapshots/>
 
 Wichtig ist, dass Sie eine neue SAP-Lizenz installieren, da beim Wiederherstellen einer VM-Sicherung wie oben beschrieben ein neuer Hardwareschlüssel erstellt wird.
 
@@ -2056,8 +2044,7 @@ Andere virtuelle Computer im SAP-System können mit der Sicherungsfunktion für 
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Es gibt unter Linux keine Entsprechung zu Windows VSS. Daher sind nur dateikonsistente Sicherungen aber keine anwendungskonsistenten Sicherungen möglich. Die SAP-DBMS-Sicherung sollte mit DBMS-Funktionen erfolgen. Das Dateisystem mit den SAP-bezogenen Daten kann beispielsweise mit „tar“ gespeichert werden. Informationen dazu finden Sie hier:
-> <https://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
+> Es gibt unter Linux keine Entsprechung zu Windows VSS. Daher sind nur dateikonsistente Sicherungen aber keine anwendungskonsistenten Sicherungen möglich. Die SAP-DBMS-Sicherung sollte mit DBMS-Funktionen erfolgen. Das Dateisystem mit den SAP-bezogenen Daten kann beispielsweise mit „tar“ gespeichert werden. Informationen dazu finden Sie hier <https://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
 >
 >
 
@@ -2086,6 +2073,6 @@ Hier die wichtigsten Punkte der Hochverfügbarkeit für SAP-Systeme in Azure:
 Lesen Sie die folgenden Artikel:
 
 - [Azure Virtual Machines – Bereitstellung für SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)
-- [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
+- [Überlegungen zur Azure Virtual Machines-DBMS-Bereitstellung für SAP-Workloads](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
 - [SAP HANA-Infrastrukturkonfigurationen und -Vorgänge in Azure](https://docs.microsoft.com/
 - azure/virtual-machines/workloads/sap/hana-vm-operations)

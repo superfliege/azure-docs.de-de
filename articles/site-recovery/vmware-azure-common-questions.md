@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 04/08/2019
+ms.date: 04/18/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 2ab29c6e41204104320f4c2f583a24e53786bf3c
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: d0e39f9e24b3c486eccd71eb1c19823cfd33391a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59360551"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004770"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Allgemeine Fragen – VMware-zu-Azure-Replikation
 
@@ -111,7 +111,7 @@ Die Replikation von neuen virtuellen Computern in einem Speicherkonto ist nur ü
 
 ### <a name="can-i-change-the-managed-disk-type-after-machine-is-protected"></a>Kann ich den Typ der verwalteten Datenträger ändern, nachdem der Computer geschützt wird?
 
-Ja, Sie können [den Typ des verwalteten Datenträgers mühelos ändern](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage). Warten Sie nach dem Ändern des Typs des verwalteten Datenträgers jedoch, bis neue Wiederherstellungspunkte generiert wurden, wenn Sie ein Testfailover oder ein Failover nach der Änderung durchführen möchten.
+Ja, Sie können [den Typ des verwalteten Datenträgers mühelos ändern](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage). Bevor Sie den Typ ändern, stellen Sie sicher, dass Sie die SAS-URL für den Datenträger widerrufen, indem Sie im Azure-Portal zur Managed Disk-Ressource navigieren. Brechen Sie fortlaufenden Export ggf. im Übersichtsblatt ab. Nachdem Sie die SAS-URL widerrufen haben, ändern Sie den Typ des Datenträgers innerhalb der nächsten paar Minuten. Wenn Sie den Typ des verwalteten Datenträgers ändern, warten Sie jedoch, bis Azure Site Recovery neue Wiederherstellungspunkte generiert hat. Verwenden Sie die neuen Wiederherstellungspunkte für zukünftige Testfailover oder Failover.
 
 ### <a name="can-i-switch-replication-from-managed-disks-to-unmanaged-disks"></a>Kann ich die Replikation von verwalteten Datenträgern in nicht verwaltete Datenträger ändern?
 

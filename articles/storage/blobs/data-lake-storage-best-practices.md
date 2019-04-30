@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: sachins
-ms.openlocfilehash: ad77204f0c5d916b4006ffa68a9608429f93f87a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e371ac848eff0e66390fe17bc23934725fca35f9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246057"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000605"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Bewährte Methoden zur Verwendung von Azure Data Lake Storage Gen2
 
@@ -35,7 +35,7 @@ Wenn Sie oder Ihre Benutzer Zugriff auf Daten in einem Speicherkonto mit aktivie
 
 ### <a name="security-for-service-principals"></a>Sicherheit für Dienstprinzipale
 
-Azure Active Directory-Dienstprinzipale werden normalerweise von Diensten wie Azure Databricks verwendet, um in Data Lake Storage Gen2 auf Daten zuzugreifen. Für viele Kunden kann ein einzelner Azure Active Directory-Dienstprinzipal ausreichen, der für den Stammordner des Data Lake Storage Gen2-Dateisystems über vollständige Berechtigungen verfügt. Andere Kunden benötigen ggf. mehrere Cluster mit unterschiedlichen Dienstprinzipalen, wobei ein Cluster über Vollzugriff auf die Daten und ein anderer Cluster nur über Lesezugriff verfügt. 
+Azure Active Directory-Dienstprinzipale werden normalerweise von Diensten wie Azure Databricks verwendet, um in Data Lake Storage Gen2 auf Daten zuzugreifen. Für viele Kunden kann ein einzelner Azure Active Directory-Dienstprinzipal ausreichen, der über vollständige Berechtigungen für den Stammordner des Data Lake Storage Gen2-Dateisystems verfügt. Andere Kunden benötigen ggf. mehrere Cluster mit unterschiedlichen Dienstprinzipalen, wobei ein Cluster über Vollzugriff auf die Daten und ein anderer Cluster nur über Lesezugriff verfügt. 
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>Aktivieren der Data Lake Storage Gen2-Firewall beim Zugriff auf Azure-Dienste
 

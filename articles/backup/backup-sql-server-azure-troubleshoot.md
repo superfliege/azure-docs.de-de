@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/13/2019
 ms.author: anuragm
 ms.openlocfilehash: db204c0e881200f667484daf4348c336f94a0ce7
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916683"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Problembehandlung zum Sichern von SQL Server in Azure
@@ -169,8 +169,7 @@ Zu diesen Symptomen kann es aufgrund von einer oder mehreren der folgenden Ursac
   * VM wurde für längere Zeit heruntergefahren, da die Erweiterungskonfiguration dafür abgelaufen ist
   * VM wurde gelöscht, und eine andere VM wurde mit dem gleichen Namen und in derselben Ressourcengruppe wie die gelöschte VM erstellt
   * Einer der Knoten der Verfügbarkeitsgruppe hat nicht die vollständige Sicherungskonfiguration erhalten. Dies kann entweder bei der Registrierung der Verfügbarkeitsgruppe im Tresor oder beim Hinzufügen eines neuen Knotens passieren.  <br>
-   
-Für die vorstehenden Szenarien wird empfohlen, auf der VM den Vorgang für die erneute Registrierung auszulösen. Diese Option ist nur über PowerShell verfügbar. Sie wird in Kürze auch im Azure-Portal verfügbar sein.
+    Für die obigen Szenarien wird empfohlen, auf der VM den Vorgang für die erneute Registrierung auszulösen. Diese Option ist nur über PowerShell verfügbar. Sie wird in Kürze auch im Azure-Portal verfügbar sein.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

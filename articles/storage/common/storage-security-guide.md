@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 329782a436924355dbdfbb5db260e88795394697
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 74be21629a884313e74a824bb34fb5b66f5db61d
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650120"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005997"
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage-Sicherheitsleitfaden
 
@@ -302,7 +302,7 @@ Für die Verschlüsselung selbst können Sie Ihre eigenen Verschlüsselungsschl�
   Dieser Artikel bietet eine Erklärung der clientseitigen Verschlüsselung und enthält Beispiele für die Verwendung von Speicherclientbibliotheken zum Verschlüsseln und Entschlüsseln von Ressourcen aus den vier Speicherdiensten. Er behandelt auch Azure Key Vault.
 
 ### <a name="using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines"></a>Verwenden von Azure Disk Encryption zum Verschlüsseln von Datenträgern, die Ihre virtuellen Computer verwenden
-Azure Disk Encryption ist ein neues Feature. Mit diesem Feature können Sie die Betriebssystemdatenträger und andere Datenträger verschlüsseln, die von einem virtuellen IaaS-Computer verwendet werden. Unter Windows werden Laufwerke mit branchenüblicher BitLocker-Verschlüsselung verschlüsselt. Unter Linux werden Datenträger mit der DM-Crypt-Technologie verschlüsselt. Diese ist in Azure Key Vault integriert, damit Sie die Datenträger-Verschlüsselungsschlüssel steuern und verwalten können.
+Mit Azure Disk Encryption können Sie die von einem virtuellen IaaS-Computer verwendeten Betriebssystemdatenträger und andere Datenträger verschlüsseln. Unter Windows werden Laufwerke mit branchenüblicher BitLocker-Verschlüsselung verschlüsselt. Unter Linux werden Datenträger mit der DM-Crypt-Technologie verschlüsselt. Diese ist in Azure Key Vault integriert, damit Sie die Datenträger-Verschlüsselungsschlüssel steuern und verwalten können.
 
 Die Lösung unterstützt die folgenden Szenarien für virtuelle IaaS-Computer, wenn sie in Microsoft Azure aktiviert sind:
 

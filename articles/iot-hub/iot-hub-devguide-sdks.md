@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.openlocfilehash: e51313bbed21459de9f717edd123887caed18f4b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59279351"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Verstehen und Verwenden von Azure IoT Hub SDKs
@@ -59,7 +59,7 @@ Azure IoT Hub-Geräte-SDK für C (ANSI C – C99):
 * [Modulreferenz](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h)
 * [Portieren des C-SDK für andere Plattformen](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md)
 * [Entwicklerdokumentation](https://github.com/Azure/azure-iot-sdk-c/tree/master/doc) für Informationen zu Cross-Kompilierung, erste Schritte auf verschiedenen Plattformen etc.
-* [Informationen zum Ressourcenverbrauch beim Azure IoT Hub C-SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md)
+* [Informationen zum Ressourcenverbrauch beim Azure IoT Hub C SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md)
 
 Azure IoT Hub Device SDK für Java: 
 
@@ -177,5 +177,5 @@ Weitere Referenzthemen in diesem IoT Hub-Entwicklungsleitfaden:
 * [IoT Hub-Endpunkte](iot-hub-devguide-endpoints.md)
 * [IoT Hub-Abfragesprache für Gerätezwillinge, Aufträge und Nachrichtenrouting](iot-hub-devguide-query-language.md)
 * [Kontingente und Drosselung](iot-hub-devguide-quotas-throttling.md)
-* [IoT Hub MQTT-Unterstützung](iot-hub-mqtt-support.md)
+* [IoT Hub-MQTT-Unterstützung](iot-hub-mqtt-support.md)
 * [REST-API-Referenz zu IoT Hub](/rest/api/iothub/)

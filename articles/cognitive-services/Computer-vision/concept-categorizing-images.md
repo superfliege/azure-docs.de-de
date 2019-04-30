@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 07fdaa22532f48cc39b6c524d85fdfe625f8b80c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 257da397e11843ee96e93f7b3e9bc5ada29822cf
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337130"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995573"
 ---
-# <a name="categorize-images"></a>Kategorisieren von Bildern
+# <a name="categorize-images-by-subject-matter"></a>Kategorisieren von Bildern nach Schlüsselinhalt
 
 Zusätzlich zu Tags und Beschreibungen gibt maschinelles Sehen auf der Taxonomie basierende Kategorien zurück, die in einem Bild erkannt wurden. Im Gegensatz zu Tags sind Kategorien in einer Vererbungshierarchie mit über- und untergeordneten Elementen organisiert. Außerdem gibt es weniger davon (86, im Gegensatz zu Tausenden von Tags). Alle Kategorienamen sind in Englisch. Die Kategorisierung kann eigenständig oder parallel zum neueren Tagmodell erfolgen.
 

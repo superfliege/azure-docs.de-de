@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 03/29/2019
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 66d57677b216130316c6a3ddd9a6cff993540808
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 52a5022b49bac990321c3cf8661aa2a04e93b39a
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649882"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149732"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Häufig gestellte Fragen sind: Azure-zu-Azure-Replikation
 
@@ -67,7 +67,7 @@ Mit Site Recovery können Sie VMs zwischen zwei beliebigen Regionen im gleichen 
 
 Nein, für Site Recovery ist keine Internetverbindung erforderlich. Benötigt wird jedoch ein Zugriff auf die URLs und IP-Adressbereiche von Site Recovery, wie [in diesem Artikel](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges) erwähnt.
 
-### <a name="can-i-replicate-the-application-having-separate-resource-group-for-separate-tiers"></a>Kann ich die Anwendung mit einer separaten Ressourcengruppe für verschiedene Ebenen replizieren? 
+### <a name="can-i-replicate-the-application-having-separate-resource-group-for-separate-tiers"></a>Kann ich die Anwendung mit einer separaten Ressourcengruppe für verschiedene Ebenen replizieren?
 Ja, Sie können die Anwendung replizieren und die Notfallwiederherstellungskonfiguration auch in einer separaten Ressourcengruppe speichern.
 Angenommen, Sie verwenden eine Anwendung, bei der die App-, DB- und Web-Ebenen sich jeweils in einer separaten Ressourcengruppe befinden. Dann müssen Sie dreimal auf den [Replikations-Assistenten](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) klicken, um alle Ebenen zu schützen. ASR repliziert diese drei Ebenen in drei verschiedenen Ressourcengruppen.
 
@@ -89,11 +89,12 @@ Heutzutage können die meisten Anwendungen aus absturzkonsistenten Momentaufnahm
 ### <a name="what-is-the-frequency-of-crash-consistent-recovery-point-generation"></a>Mit welcher Häufigkeit wird ein absturzkonsistenter Wiederherstellungspunkt generiert?
 Site Recovery erstellt alle 5 Minuten einen absturzkonsistenten Wiederherstellungspunkt.
 
-### <a name="what-is-an-application-consistent-recovery-point"></a>Was ist ein anwendungskonsistenter Wiederherstellungspunkt? 
-Anwendungskonsistente Wiederherstellungspunkte werden aus anwendungskonsistenten Momentaufnahmen erstellt. Anwendungskonsistente Wiederherstellungspunkte erfassen dieselben Daten wie absturzkonsistente Momentaufnahmen. Zudem werden alle Daten im Arbeitsspeicher und alle laufenden Transaktionen erfasst. Durch diesen zusätzlichen Inhalt sind anwendungskonsistente Momentaufnahmen am stärksten involviert, und ihre Ausführung dauert am längsten. Anwendungskonsistente Wiederherstellungspunkte werden für Betriebssysteme mit Datenbank und Anwendungen wie SQL Server empfohlen.
+### <a name="what-is-an-application-consistent-recovery-point"></a>Was ist ein anwendungskonsistenter Wiederherstellungspunkt?
+Anwendungskonsistente Wiederherstellungspunkte werden aus anwendungskonsistenten Momentaufnahmen erstellt. Anwendungskonsistente Wiederherstellungspunkte erfassen dieselben Daten wie absturzkonsistente Momentaufnahmen. Zudem werden alle Daten im Arbeitsspeicher und alle laufenden Transaktionen erfasst.
+Durch diesen zusätzlichen Inhalt sind anwendungskonsistente Momentaufnahmen am stärksten involviert, und ihre Ausführung dauert am längsten. Anwendungskonsistente Wiederherstellungspunkte werden für Betriebssysteme mit Datenbank und Anwendungen wie SQL Server empfohlen.
 
 ### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>Welche Auswirkungen haben anwendungskonsistente Wiederherstellungspunkte auf die Anwendungsleistung?
-In Anbetracht der Tatsache, dass anwendungskonsistente Wiederherstellungspunkte alle Daten im Arbeitsspeicher und bei der Verarbeitung erfassen, muss das Framework (z.B. VSS auf Windows) die Anwendung stilllegen. Dies kann bei sehr häufiger Ausführung zu Leistungseinbußen führen, wenn die Auslastung bereits sehr hoch ist. Es wird in der Regel empfohlen, keine niedrige Frequenz für anwendungskonsistente Wiederherstellungspunkte für Nicht-Datenbank-Workloads zu verwenden, und selbst für Datenbankworkloads genügt eine Stunde. 
+In Anbetracht der Tatsache, dass anwendungskonsistente Wiederherstellungspunkte alle Daten im Arbeitsspeicher und bei der Verarbeitung erfassen, muss das Framework (z.B. VSS auf Windows) die Anwendung stilllegen. Dies kann bei sehr häufiger Ausführung zu Leistungseinbußen führen, wenn die Auslastung bereits sehr hoch ist. Es wird in der Regel empfohlen, keine niedrige Frequenz für anwendungskonsistente Wiederherstellungspunkte für Nicht-Datenbank-Workloads zu verwenden, und selbst für Datenbankworkloads genügt eine Stunde.
 
 ### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>Mit welcher Mindesthäufigkeit wird ein anwendungskonsistenter Wiederherstellungspunkt generiert?
 Site Recovery kann einen anwendungskonsistenten Wiederherstellungspunkt mit einer Mindesthäufigkeit von 1 pro Stunde erstellen.
@@ -215,8 +216,12 @@ Dies hängt von der Situation ab. Wenn zum Beispiel der virtuelle Computer der Q
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>Wie lange dauert ein Failback?
 Nach dem erneuten Schützen ist die Zeitspanne für das Failback in der Regel mit der Zeit für das Failover von der primären Region in eine sekundäre Region vergleichbar.
 
-## <a name="capacity"></a>Capacity
-### <a name="does-site-recovery-work-with-reserved-instance"></a>Kann Site Recovery mit reservierten Instanzen verwendet werden?
+## <a name="capacity"></a>Kapazität
+
+### <a name="how-is-capacity-assured-in-target-region-for-azure-vms"></a>Wie wird die Kapazität in der Zielregion für Azure VMs garantiert?
+Das Azure Site Recovery-Team (ASR) arbeitet mit dem Kapazitätsverwaltungsteam von Azure zusammen, um eine ausreichende Infrastrukturkapazität zu planen und sicherzustellen, dass die durch ASR zur Notfallwiederherstellung geschützten VMs erfolgreich in der Notfallwiederherstellungsregion (DR) bereitgestellt werden, wann immer ASR-Failovervorgänge initiiert werden.
+
+### <a name="does-site-recovery-work-with-reserved-instances"></a>Kann Site Recovery mit reservierten Instanzen verwendet werden?
 Ja, Sie können [reservierte Instanzen](https://azure.microsoft.com/pricing/reserved-vm-instances/) in der DR-Region erwerben, diese werden von ASR-Failovervorgängen verwendet. </br> Es ist keine zusätzliche Konfiguration seitens der Kunden erforderlich.
 
 

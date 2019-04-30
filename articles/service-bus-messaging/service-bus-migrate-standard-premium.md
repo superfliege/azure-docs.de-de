@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/18/2019
 ms.author: aschhab
 ms.openlocfilehash: 7b153c36e10f1d4e2be2a0cf42f998c31cb6473a
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58896723"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-premium-tier"></a>Migrieren von vorhandenen Azure Service Bus-Standardnamespaces zum Premium-Tarif
@@ -115,31 +115,31 @@ Informationen zur Migration Ihres Service Bus-Standardnamespace zu Premium mit d
 Die Migration über das Azure-Portal hat den gleichen logischen Ablauf wie die Migration über die Befehle. Lesen Sie die folgende Anleitung für den schrittweisen Ablauf der Migration über das Portal.
 
 1. Wählen Sie die Menüoption **Zu Premium migrieren** im Navigationsmenü auf der linken Seite. Klicken Sie auf die Schaltfläche **Erste Schritte**, um zur nächsten Seite zu gelangen.
-    ![Landing Page der Migration][]
+    ![Landing Page für Migration][]
 
 2. Schließen Sie das **Setup** ab.
    ![Setup für Namespace][]
    1. Erstellen Sie den Premiumnamespace, zu dem der vorhandene Standardnamespace migriert werden soll, und weisen Sie ihn zu.
-        ![Setup des Namespace: erstellen des Premiumnamespace][]
+        ![Setup für Namespace: Erstellen des Premiumnamespace][]
    2. Wählen Sie **Name nach der Migration**, um nach Abschluss der Migration auf den Standardnamespace zuzugreifen.
-        ![Setup des Namespace: Auswahl des Namens nach der Migration][]
+        ![Setup für Namespace: Auswahl des Namens nach der Migration][]
    3. Klicken Sie zum Fortfahren auf **Weiter**.
 3. **Synchronisieren** Sie die Entitäten zwischen dem Standard- und dem Premiumnamespace.
-    ![Setup des Namespace - Synchronisieren von-Entitäten – Start][]
+    ![Setup für Namespace: Synchronisieren von Entitäten – Start][]
 
    1. Klicken Sie auf **Synchronisierung starten**, um mit dem Synchronisieren von Entitäten zu beginnen.
    2. Klicken Sie auf **Ja** im Popupfenster, um zu bestätigen, dass die Synchronisierung gestartet werden kann.
    3. Warten Sie, bis die **Synchronisierung** abgeschlossen ist. Der Status wird in der Statusleiste angezeigt.
-        ![Setup des Namespace - Synchronisieren von-Entitäten – Fortschritt][]
+        ![Setup für Namespace: Synchronisieren von Entitäten – Fortschritt][]
         >[!IMPORTANT]
         > Wenn Sie den Vorgang aus irgendeinem Grund **abbrechen** müssen, lesen Sie bitte die entsprechende Anleitung im Abschnitt „FAQ“ in diesem Dokument.
    4. Sobald die Synchronisierung abgeschlossen ist, klicken Sie auf die Schaltfläche **Weiter** unten auf der Seite.
 
 4. Überprüfen Sie die Änderungen auf der Seite „Zusammenfassung“.
-    ![Namespace wechseln – Switch-Menü][]
+    ![Wechseln des Namespace: Menü zum Wechseln][]
 
 5. Klicken Sie auf **Migration abschließen**, um den Namespace zu wechseln und die Migration abzuschließen.
-    ![Namespace wechseln – Erfolg][]
+    ![Wechseln des Namespace: Erfolg][]
 
 ## <a name="faqs"></a>Häufig gestellte Fragen
 
@@ -185,8 +185,8 @@ Die Migration kann entweder mit dem Befehl „Abbrechen“ oder über das Azure-
 
 #### <a name="azure-portal"></a>Azure-Portal
 
-![Abbruchablauf – Synchronisierung abbrechen][]
-![Abbruchablauf – Abbruch abgeschlossen][]
+![Abbruchablauf: Synchronisierung abbrechen][]
+![Abbruchablauf: Abbruch abgeschlossen][]
 
 Wenn der Migrationsprozess abgebrochen wird, wird der Kopiervorgang der Entitäten (Themen, Abonnements und Filter) vom Standard- in den Premiumnamespace ab- und die Kopplung unterbrochen.
 
@@ -220,14 +220,14 @@ Wenn Sie jedoch während eines geplanten Wartungs-/Housekeeptingfensters migrier
 * Erfahren Sie mehr über die [Unterschiede zwischen Standard- und Premiummessaging](./service-bus-premium-messaging.md).
 * [Hier](service-bus-outages-disasters.md#protecting-against-outages-and-disasters---service-bus-premium) erfahren Sie mehr über Aspekte der Hochverfügbarkeit und Geo-Notfallwiederhierstellung für Service Bus Premium.
 
-[Landing Page der Migration]: ./media/service-bus-standard-premium-migration/1.png
+[Landing Page für Migration]: ./media/service-bus-standard-premium-migration/1.png
 [Setup für Namespace]: ./media/service-bus-standard-premium-migration/2.png
-[Setup des Namespace: erstellen des Premiumnamespace]: ./media/service-bus-standard-premium-migration/3.png
-[Setup des Namespace: Auswahl des Namens nach der Migration]: ./media/service-bus-standard-premium-migration/4.png
-[Setup des Namespace – Synchronisieren von-Entitäten – Start]: ./media/service-bus-standard-premium-migration/5.png
-[Setup des Namespace – Synchronisieren von-Entitäten – Fortschritt]: ./media/service-bus-standard-premium-migration/8.png
-[Namespace wechseln – Switch-Menü]: ./media/service-bus-standard-premium-migration/9.png
-[Namespace wechseln – Erfolg]: ./media/service-bus-standard-premium-migration/12.png
+[Setup für Namespace: Erstellen des Premiumnamespace]: ./media/service-bus-standard-premium-migration/3.png
+[Setup für Namespace: Auswahl des Namens nach der Migration]: ./media/service-bus-standard-premium-migration/4.png
+[Setup für Namespace: Synchronisieren von Entitäten – Start]: ./media/service-bus-standard-premium-migration/5.png
+[Setup für Namespace: Synchronisieren von Entitäten – Fortschritt]: ./media/service-bus-standard-premium-migration/8.png
+[Wechseln des Namespace: Menü zum Wechseln]: ./media/service-bus-standard-premium-migration/9.png
+[Wechseln des Namespace: Erfolg]: ./media/service-bus-standard-premium-migration/12.png
 
-[Abbruchablauf – Synchronisierung abbrechen]: ./media/service-bus-standard-premium-migration/abort1.png
-[Abbruchablauf – Abbruch abgeschlossen]: ./media/service-bus-standard-premium-migration/abort3.png
+[Abbruchablauf: Synchronisierung abbrechen]: ./media/service-bus-standard-premium-migration/abort1.png
+[Abbruchablauf: Abbruch abgeschlossen]: ./media/service-bus-standard-premium-migration/abort3.png

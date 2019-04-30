@@ -2,23 +2,21 @@
 title: Von Azure Data Catalog unterstützte Datenquellen
 description: In diesem Artikel sind die derzeit unterstützten Datenquellen aufgeführt.
 services: data-catalog
-author: markingmyname
-ms.author: maghan
-ms.assetid: fd4345ca-2ed8-4c5e-9c4b-f954be2fc9f9
+author: JasonWHowell
+ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 56fa449bd665457ab1b98b67bb42ec52e0742c5f
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.date: 04/15/2019
+ms.openlocfilehash: 8b584e06697f9f4212fe0d1d59c29e4670a87eda
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410186"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008612"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Von Azure Data Catalog unterstützte Datenquellen
 
 Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine öffentliche API nutzen, ein ClickOnce-Registrierungstool verwenden oder die Informationen direkt in das Azure Data Catalog-Webportal eingeben. In der folgenden Tabelle sind alle derzeit vom Katalog unterstützten Datenquellen zusammengefasst. Außerdem werden die jeweiligen Veröffentlichungsmöglichkeiten genannt. Ferner sind die externen Datentools aufgelistet, in denen die jeweiligen Datenquelle direkt im Portal geöffnet werden kann. Die zweite Tabelle enthält weitere technische Angaben zu den Verbindungseigenschaften der einzelnen Datenquellen.
-
 
 ## <a name="list-of-supported-data-sources"></a>Liste der unterstützten Datenquellen
 
@@ -32,7 +30,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
        <td><b>Hinweise</b></td>
     </tr>
     <tr>
-      <td>Azure Data Lake Store-Verzeichnis</td>
+      <td>Azure Data Lake Storage-Verzeichnis (nur Gen 1)</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -40,7 +38,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td></td>
     </tr>
     <tr>
-      <td>Azure Data Lake Store-Datei</td>
+      <td>Azure Data Lake Storage-Datei (nur Gen 1)</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>

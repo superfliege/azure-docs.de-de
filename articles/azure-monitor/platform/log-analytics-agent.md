@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 04/10/2019
 ms.author: magoedte
-ms.openlocfilehash: e9df83ef81c2656bf94002feb79d7e4d99ed7954
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5f9a225e8a256dd55feadf97f0a7b9f922487a6f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57841105"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59492803"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Sammeln von Protokolldaten mit dem Azure Log Analytics-Agent
 
@@ -41,7 +41,8 @@ Der Agent für Linux und Windows dient nicht zur Verbindungsherstellung mit Log 
 ## <a name="supported-windows-operating-systems"></a>Unterstützte Windows-Betriebssysteme
 Die folgenden Versionen des Windows-Betriebssystems werden für den Windows-Agent offiziell unterstützt:
 
-* Windows Server 2008 R2 oder höher
+* Windows Server 2019
+* Windows Server 2008 R2, 2012, 2012 R2, 2016, Version 1709 und 1803
 * Windows 7 SP1 und höher
 
 ## <a name="supported-linux-operating-systems"></a>Unterstützte Linux-Betriebssysteme
@@ -76,7 +77,7 @@ Um die Sicherheit von Daten bei der Übertragung an Log Analytics sicherzustelle
 ## <a name="network-firewall-requirements"></a>Netzwerkfirewallanforderungen
 Die Aufstellung unten enthält die Proxy- und Firewall-Konfigurationsinformationen, die der Linux- und Windows-Agent benötigt, um mit Log Analytics zu kommunizieren.  
 
-|Agent-Ressource|Ports |Richtung |Umgehung der HTTPS-Überprüfung|
+|Agent-Ressource|Ports |Direction |Umgehung der HTTPS-Überprüfung|
 |------|---------|--------|--------|   
 |*.ods.opinsights.azure.com |Port 443 |Ausgehend|Ja |  
 |*.oms.opinsights.azure.com |Port 443 |Ausgehend|Ja |  

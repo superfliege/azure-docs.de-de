@@ -8,10 +8,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: f7a14e975a5ca3aee5588f55f43b28081c100074
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59358139"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Bewährte Methoden zum Verwenden des Suchdiensts von Azure Maps
@@ -45,7 +45,7 @@ Weitere Informationen zu den Geocodierungsfunktionen von Azure Maps nach Länder
    > [!Note]
    > Nicht alle Such-APIs unterstützen die unten aufgeführten Parameter vollständig.
 
-   **Geografisch gelenkte Suchergebnisse**
+   **Einschränken von Suchergebnissen auf geografische Räume**
 
    Um Ihre Ergebnisse in den für Ihren Benutzer relevanten geografischen Raum zu lenken, sollten Sie immer die maximal mögliche Detailstufe für die Standorteingabe hinzufügen. Sie können die Suchergebnisse einschränken, indem Sie die folgenden Eingabetypen hinzufügen:
 
@@ -62,12 +62,12 @@ Weitere Informationen zu den Geocodierungsfunktionen von Azure Maps nach Länder
 
    2. Sie können auch den genauen Satz der zurückzugebenden Ergebnistypen angeben, indem Sie den Parameter `idxSet` verwenden. Zu diesem Zweck können Sie eine durch Komma getrennte Liste von Indizes übermitteln, wobei die Reihenfolge der Elemente unerheblich ist. Nachfolgend sind die unterstützten Indizes aufgeführt:
 
-       * `Addr` - **Adressbereiche**: Für einige Straßen gibt es Adresspunkte, die über Anfang und Ende der Straße interpoliert und als Adressbereiche dargestellt werden.
-       * `Geo` - **Geografische Regionen**: Bereiche auf einer Karte, die die Verwaltungseinheiten eines Landes darstellen, d. h. Land, Bundesland, Stadt.
-       * `PAD` - **Punktadresse**:  Punkte auf einer Karte, an denen eine bestimmte Adresse mit Straßenname und Nummer in einem Index zu finden ist, z. B. Soquel Dr 2501. Dies ist die höchste verfügbare Genauigkeit für Adressen.  
-       * `POI` - **Points of Interest (POI)**: Punkte auf einer Karte, die beachtenswert sind und interessant sein können.  [Suchadresse abrufen](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) gibt keine POIs zurück.  
-       * `Str` - **Straßen**: Darstellung von Straßen auf der Karte.
-       * `XStr` - **Querstraßen/Kreuzungen**:  Darstellung von Kreuzungen, d. h. Orte, an denen sich zwei Straßen kreuzen.
+       * `Addr` - **Adressbereiche:** Für einige Straßen gibt es Adresspunkte, die über Anfang und Ende der Straße interpoliert und als Adressbereiche dargestellt werden.
+       * `Geo` - **Geografische Regionen:** Bereiche auf einer Karte, die die Verwaltungseinheiten eines Landes darstellen, d. h. Land, Bundesland, Stadt.
+       * `PAD` - **Punktadresse:**  Punkte auf einer Karte, an denen eine bestimmte Adresse mit Straßenname und Nummer in einem Index zu finden ist, z. B. Soquel Dr 2501. Dies ist die höchste verfügbare Genauigkeit für Adressen.  
+       * `POI` - **Points of Interest:** Punkte auf einer Karte, die beachtenswert sind und interessant sein können.  [Suchadresse abrufen](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) gibt keine POIs zurück.  
+       * `Str` - **Straßen:** Darstellung von Straßen auf der Karte.
+       * `XStr` - **Querstraßen/Kreuzungen:**  Darstellung von Kreuzungen, d. h. Orte, an denen sich zwei Straßen kreuzen.
 
 
        **Anwendungsbeispiele**:

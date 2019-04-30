@@ -1,10 +1,10 @@
 ---
-title: Leistungsindikatoren für den Shardzuordnungs-Manager
+title: Erstellen von Leistungsindikatoren zum Nachverfolgen der Leistung des Shardzuordnungs-Managers
 description: ShardMapManager-Klasse und datenabhängiges Routing – Leistungsindikatoren
 services: sql-database
 ms.service: sql-database
 ms.subservice: scale-out
-ms.custom: ''
+ms.custom: seoapril2019
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
@@ -12,18 +12,19 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 2823f997a38e280bdbf19beb3a478a73ef1ae842
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 5c6c923c86ea0c5968079188c87ec3988ec30142
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895175"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59494917"
 ---
-# <a name="performance-counters-for-shard-map-manager"></a>Leistungsindikatoren für den Shardzuordnungs-Manager
+# <a name="create-performance-counters-to-track-performance-of-shard-map-manager"></a>Erstellen von Leistungsindikatoren zum Nachverfolgen der Leistung des Shardzuordnungs-Managers
+
+Mit Leistungsindikatoren wird die Leistung der Vorgänge bei [datenabhängigem Routing](sql-database-elastic-scale-data-dependent-routing.md) nachverfolgt. Auf diese Leistungsindikatoren kann im Systemmonitor in der Kategorie „Elastic Database: Shard Management“ (Elastische Datenbank: Shardverwaltung) zugegriffen werden.
 
 Sie können die Leistung eines [Shardzuordnungs-Managers](sql-database-elastic-scale-shard-map-management.md) insbesondere bei der Verwendung des [datenabhängigen Routings](sql-database-elastic-scale-data-dependent-routing.md) erfassen. Leistungsindikatoren werden mit Methoden der Klasse „Microsoft.Azure.SqlDatabase.ElasticScale.Client“ erstellt.  
 
-Mit Leistungsindikatoren wird die Leistung der Vorgänge bei [datenabhängigem Routing](sql-database-elastic-scale-data-dependent-routing.md) nachverfolgt. Auf diese Leistungsindikatoren kann im Systemmonitor in der Kategorie „Elastic Database: Shard Management“ (Elastische Datenbank: Shardverwaltung) zugegriffen werden.
 
 **Aktuelle Version:** Besuchen Sie [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/). Siehe auch [Upgrade einer App auf die neueste Clientbibliothek für elastische Datenbanken](sql-database-elastic-scale-upgrade-client-library.md).
 

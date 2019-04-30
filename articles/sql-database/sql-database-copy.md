@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: CarlRabeler
-ms.author: carlrab
+ms.author: sahsan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 2aeb756bda50597bf3e43c0c84391e0750bd8acb
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.date: 04/11/2019
+ms.openlocfilehash: 363803e9276a8356b52438f251391378c54f1655
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486817"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678937"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Kopieren einer transaktionskonsistenten Kopie einer Azure SQL-Datenbank-Instanz
 
@@ -25,7 +25,7 @@ Azure SQL-Datenbank bietet mehrere Methoden, eine hinsichtlich Transaktionen kon
 
 ## <a name="overview"></a>Übersicht
 
-Eine Datenbankkopie ist eine Momentaufnahme der Quelldatenbank zum Zeitpunkt der Kopieranforderung. Sie können denselben Server oder einen anderen Server, dessen Diensttarif und Computegröße oder eine andere Computegröße innerhalb desselben Diensttarifs (Edition) auswählen. Nachdem der Kopiervorgang abgeschlossen ist, wird die Kopie zu einer voll funktionsfähigen, unabhängigen Datenbank. Zu diesem Zeitpunkt können Sie ein Upgrade oder Downgrade auf jede beliebige Edition durchführen. Anmeldungen, Benutzer und Berechtigungen können unabhängig verwaltet werden.  
+Eine Datenbankkopie ist eine Momentaufnahme der Quelldatenbank zum Zeitpunkt der Kopieranforderung. Sie können denselben Server oder einen anderen auswählen. Sie können auch wahlweise Dienstebene und Computegröße des Servers beibehalten oder eine andere Computegröße innerhalb derselben Dienstebene (Edition) verwenden. Nachdem der Kopiervorgang abgeschlossen ist, wird die Kopie zu einer voll funktionsfähigen, unabhängigen Datenbank. Zu diesem Zeitpunkt können Sie ein Upgrade oder Downgrade auf jede beliebige Edition durchführen. Anmeldungen, Benutzer und Berechtigungen können unabhängig verwaltet werden.  
 
 > [!NOTE]
 > [Automatische Datenbanksicherungen](sql-database-automated-backups.md) werden verwendet, wenn Sie eine Datenbankkopie erstellen.
@@ -90,10 +90,16 @@ Mit diesem Befehl wird Database1 auf server1 in eine neue Datenbank mit dem Name
     -- Execute on the master database of the target server (server2)
     -- Start copying from Server1 to Server2
     CREATE DATABASE Database2 AS COPY OF server1.Database1;
+    
+> [!IMPORTANT]
+> Die Firewalls beider Server müssen so konfiguriert werden, dass sie eingehende Verbindungen über die IP-Adresse des Clients zulassen, der den T-SQL-COPY-Befehl ausgibt.
 
-## <a name="to-move-a-database-between-subscriptions"></a>So verschieben Sie eine Datenbank zwischen Abonnements
+### <a name="copy-a-sql-database-to-a-different-subscription"></a>Kopieren einer SQL-Datenbank in ein anderes Abonnement
 
-Klicken Sie im [Azure-Portal](https://portal.azure.com)auf **SQL-Server**, und wählen Sie in der Liste den Server aus, der die Datenbank hostet. Klicken Sie auf **Verschieben**, und wählen Sie die zu verschiebenden Ressourcen und das Abonnement aus, in das dieser Vorgang erfolgen soll.
+Sie können mit den im vorherigen Abschnitt beschriebenen Schritten Ihre Datenbank in eine SQL-Datenbank-Serverinstanz in einem anderen Abonnement kopieren. Verwenden Sie unbedingt eine Anmeldung, bei der Name und Kennwort mit denen des Datenbankbesitzers der Quelldatenbank identisch sind, und die ein Mitglied der DBManager-Rolle oder die Prinzipalanmeldung auf Serverebene ist. 
+
+> [!NOTE]
+> Das [Azure-Portal](https://portal.azure.com) unterstützt das Kopieren in ein anderes Abonnement nicht, da das Portal die ARM-API aufruft, und es verwendet die Abonnementzertifikate, um auf beide an der Georeplikation beteiligten Server zuzugreifen.  
 
 ### <a name="monitor-the-progress-of-the-copying-operation"></a>Überwachen des Fortschritts des Kopiervorgangs
 

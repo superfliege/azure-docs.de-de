@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/26/2019
-ms.openlocfilehash: 5247183f50301554a986fde474b27a9bfc67d91d
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 7261a25251e93035c31004c9255612a0e3b45a2f
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540668"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680899"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>FAQs zu Azure SQL-Datenbank Hyperscale
 
@@ -216,7 +216,7 @@ Nein. Eine Hyperscale-Datenbank kann in der öffentlichen Vorschau nicht zu eine
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>Müssen bei der Migration zum Diensttarif „Hyperscale“ Einbußen hinsichtlich des Funktionsumfangs in Kauf genommen werden?
 
-Ja. Einige der Features von Azure SQL-Datenbank werden in Hyperscale in der öffentlichen Vorschau nicht unterstützt, wie u. a. Sicherungen zur Langzeitaufbewahrung. Nach der Migration Ihrer Datenbanken zu Hyperscale funktionieren diese Features nicht mehr.
+Ja. Sicherungen für die Langzeitaufbewahrung in Azure SQL-Datenbank werden in Hyperscale nicht in der öffentlichen Vorschauversion unterstützt. Nach der Migration Ihrer Datenbanken zu Hyperscale funktioniert dieses Feature nicht mehr.
 
 ### <a name="can-i-move-my--on-premises-sql-server-database-or-my-sql-server-virtual-machine-database-to-hyperscale"></a>Können lokale SQL Server-Datenbanken oder virtuelle Computer mit SQL Server-Datenbank zu Hyperscale migriert werden?
 
@@ -295,7 +295,7 @@ Nein. Das Speicherformat für Hyperscale-Datenbanken unterscheidet sich vom konv
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>Müssen bei der Migration zum Diensttarif „Hyperscale“ Einbußen hinsichtlich des Funktionsumfangs in Kauf genommen werden?
 
-Ja. Einige der Features von Azure SQL-Datenbank werden in Hyperscale in der öffentlichen Vorschau nicht unterstützt, wie u.a. TDE und Sicherungen zur Langzeitaufbewahrung. Nach der Migration Ihrer Datenbanken zu Hyperscale funktionieren diese Features nicht mehr.
+Ja. Sicherungen für die Langzeitaufbewahrung in Azure SQL-Datenbank werden in Hyperscale nicht in der öffentlichen Vorschauversion unterstützt. Nach der Migration Ihrer Datenbanken zu Hyperscale funktioniert dieses Feature nicht mehr.
 
 ### <a name="will-polybase-work-with-sql-database-hyperscale"></a>Funktioniert PolyBase mit SQL-Datenbank Hyperscale?
 

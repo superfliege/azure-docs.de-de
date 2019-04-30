@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 04/18/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 33d8f2e7c65a786d1ecb389574fe186efb6fb705
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: b17978da3195b364f868d33ab7ad9faa1544e9ec
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630786"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006793"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics-workspace-in-azure-monitor"></a>Streamen von Azure-Diagnoseprotokollen an einen Log Analytics-Arbeitsbereich in Azure Monitor
 
@@ -124,7 +124,7 @@ Azure Data Factory ist aufgrund eines sehr detaillierten Protokollsatzes eine Re
 - *Für eine Aktivität in Ihrer Pipeline definierte Benutzerparameter*: Für jeden eindeutig benannten Benutzerparameter wird für jede Aktivität eine neue Spalte erstellt. 
 - *Aktivitätseingaben und -ausgaben*: Diese variieren von Aktivität zu Aktivität und generieren aufgrund ihrer ausführlichen Natur eine große Anzahl von Spalten. 
  
-Wie bei den weiter unten aufgeführten allgemeineren Vorschlägen zur Problemumgehung wird empfohlen, ADF-Protokolle in einem eigenen Arbeitsbereich zu isolieren, um die Wahrscheinlichkeit zu minimieren, dass diese Protokolle Auswirkungen auf andere Protokolltypen haben, die in Ihren Arbeitsbereichen erfasst werden. Mit der Bereitstellung entsprechender Protokolle für Azure Data Factory wird Mitte April 2019 gerechnet.
+Wie bei den weiter unten aufgeführten allgemeineren Vorschlägen zur Problemumgehung wird empfohlen, ADF-Protokolle in einem eigenen Arbeitsbereich zu isolieren, um die Wahrscheinlichkeit zu minimieren, dass diese Protokolle Auswirkungen auf andere Protokolltypen haben, die in Ihren Arbeitsbereichen erfasst werden. Kuratierte Protokolle für Azure Data Factory sind bald verfügbar.
  
 #### <a name="workarounds"></a>Problemumgehungen
 Kurzfristig, d. h. bis zur Neudefinition der Obergrenze von 500 Spalten, wird empfohlen, ausführliche Datentypen an separate Arbeitsbereiche zu senden, um die Wahrscheinlichkeit zu verringern, dass die Obergrenze erreicht wird.

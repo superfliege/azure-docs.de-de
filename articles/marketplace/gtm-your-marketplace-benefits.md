@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: ellacroi
-ms.openlocfilehash: 3fa4fb9fb7accfbe4517e2bf917a3df31ea10fa7
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 896e5a3f3b5c9f7d217340c396707718adf93dbb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887249"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59788594"
 ---
 # <a name="your-marketplace-benefits"></a>Ihre Marketplace-Vorteile
 
@@ -73,7 +73,7 @@ In der folgenden Tabelle sind die Berechtigungsvoraussetzungen zusammengefasst:
 
 \* Erfordert Silber- oder Gold-Kompetenz. <br>
 \*\* Erfordert Gold-Kompetenz. <br>
-\*\*\* Erfordert Gold-Kompetenz und eine Co-Selling-Listung im OCP-Katalog. <br>
+\*\*\* Erfordert Gold-Kompetenz und eine Co-Selling-Listung in der Partnerliste. <br>
 ^ nur Transaktionen im Azure Marketplace.
 
 ## <a name="next-steps"></a>Nächste Schritte

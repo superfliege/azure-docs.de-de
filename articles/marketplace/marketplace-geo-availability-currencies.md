@@ -9,12 +9,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: ellacroi
-ms.openlocfilehash: 96ec1f3ecdca6437e1d25eca433d385573f6c659
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 5a07ea4d1d27dcc054d64cb4ce8893a13adc4aad
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57220778"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007660"
 ---
 # <a name="geographic-availability-and-currency-support"></a>Geografische Verfügbarkeit und Unterstützung von Währungen
 
@@ -42,7 +42,7 @@ Azure Marketplace-Angebote können in 141 geografischen Regionen gemäß der Rec
 | Bolivien                             | BO        | USD          |
 | Bosnien und Herzegowina              | BA        | USD          |
 | Botsuana                            | BW        | USD          |
-| Brasilien                              | BR        | BRL          |
+| Brasilien                              | BR        | BRL\*        |
 | Brunei                              | BN        | USD          |
 | Bulgarien                            | BG        | EUR          |
 | Kamerun                            | CM        | USD          |
@@ -98,7 +98,7 @@ Azure Marketplace-Angebote können in 141 geografischen Regionen gemäß der Rec
 | Litauen                           | LT        | EUR          |
 | Luxemburg                          | LU        | EUR          |
 | Macau (SAR)                           | MO        | USD          |
-| Mazedonien (ehem. jugoslawische Republik Mazedonien)                      | MK        | USD          |
+| Nordmazedonien                     | MK        | USD          |
 | Malaysia                            | MY        | USD          |
 | Malta                               | MT        | EUR          |
 | Mauritius                           | MU        | USD          |
@@ -164,3 +164,5 @@ Azure Marketplace-Angebote können in 141 geografischen Regionen gemäß der Rec
 | Sambia                              | ZM        | USD          |
 | Simbabwe                            | ZW        | USD          |
 |   |   |   |
+
+\* Für Kunden in Brasilien wird im Marketplace über Cloud Solution Provider (CSP) die Währung USD verwendet.

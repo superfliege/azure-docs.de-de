@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: spelluru
 ms.openlocfilehash: deb5595ac6a8b0d189e5594fda8e4b60480d038c
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357395"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Integrieren von Umgebungen in Ihre Azure DevOps-CI/CD-Pipelines
@@ -62,7 +62,7 @@ In der nächsten Bereitstellungsphase wird die Umgebung erstellt, die zu Entwick
 4. Wählen Sie unter **Vorlagenname** den Namen der Umgebung aus, den Sie in Ihrem Quellcoderepository gespeichert haben.* 
 5. **Labname**, **Repositoryname** und **Vorlagenname** sind benutzerfreundliche Darstellungen der Azure-Ressourcen-IDs. Wählen Sie diese Angaben mithilfe der Dropdownlisten aus. Bei manueller Eingabe des Anzeigenamens tritt ein Fehler auf.
 6. Geben Sie unter **Umgebungsname** einen Namen ein, der die Umgebungsinstanz innerhalb des Labs eindeutig identifiziert.  Dieser Wert muss innerhalb des Labs eindeutig sein.
-7. Mithilfe der **Parameterdatei** und der **Parameter** können benutzerdefinierte Parameter an die Umgebung übergeben werden. Die Parameterwerte können mithilfe einer der beiden Optionen oder mithilfe beider Optionen festgelegt werden. In diesem Beispiel wird der Parameterabschnitt verwendet. Verwenden Sie die Namen der Variablen, die Sie in der Umgebung definiert haben, beispielsweise: `-administratorLogin “$(administratorLogin)” -administratorLoginPassword “$(administratorLoginPassword)” -databaseName “$(databaseName)” -cacheSKUCapacity 1`
+7. Mithilfe der **Parameterdatei** und der **Parameter** können benutzerdefinierte Parameter an die Umgebung übergeben werden. Die Parameterwerte können mithilfe einer der beiden Optionen oder mithilfe beider Optionen festgelegt werden. In diesem Beispiel wird der Parameterabschnitt verwendet. Verwenden Sie die Namen der Variablen, die Sie in der Umgebung definiert haben, z. B.: `-administratorLogin “$(administratorLogin)” -administratorLoginPassword “$(administratorLoginPassword)” -databaseName “$(databaseName)” -cacheSKUCapacity 1`
 8. Informationen in der Umgebungsvorlage können im Ausgabeabschnitt der Vorlage übergeben werden. Aktivieren Sie das Kontrollkästchen **Create output variables based on the environment template output** (Ausgabevariablen auf der Grundlage der Ausgabe der Umgebungsvorlage erstellen), damit die Daten von anderen Aufgaben genutzt werden können. `$(Reference name.Output Name)` ist das zu verwendende Muster. Wenn der Verweisname also beispielsweise „DTL“ und der Ausgabename in der Vorlage „location“ lautet, ergibt sich folgende Variable: `$(DTL.location)`.
 
 ## <a name="delete-the-environment"></a>Löschen der Umgebung
@@ -80,5 +80,5 @@ Wählen Sie in der Releasedefinition **Aufgaben hinzufügen** aus, und fügen Si
 Entsprechende Informationen finden Sie in den folgenden Artikeln: 
 - [Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen](devtest-lab-create-environment-from-arm.md)
 - Resource Manager-Schnellstartvorlagen für die DevTest Labs-Automatisierung aus dem [GitHub-Repository für DevTest Labs](https://github.com/Azure/azure-quickstart-templates)
-- [Problembehandlungsseite für VSTS](/azure/devops/pipelines/troubleshooting)
+- [VSTS Troubleshooting page (Seite zur Problembehandlung bei VSTS)](/azure/devops/pipelines/troubleshooting)
 

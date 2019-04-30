@@ -29,10 +29,10 @@ ms.author:
 - btalb
 - prachank
 ms.openlocfilehash: 1e8605a41cbe610c971b891309b2149d221b8b27
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426442"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Optimierung der TCP/IP-Leistung für Azure-VMs
@@ -140,7 +140,7 @@ Die Netzwerklatenz wird durch die Lichtgeschwindigkeit über ein Glasfasernetz b
 
 | | | | |
 |-|-|-|-|
-|**Weiterleiten**|**Distance**|**Unidirektionale Zeit**|**RTT**|
+|**Route**|**Entfernung**|**Zeit (unidirektional)**|**RTT**|
 |New York nach San Francisco|4.148 km|21 ms|42 ms|
 |New York nach London|5.585 km|28 ms|56 ms|
 |New York nach Sydney|15.993 km|80 ms|160 ms|
@@ -177,7 +177,7 @@ In dieser Tabelle ist der maximale Durchsatz einer einzelnen TCP-Verbindung in M
 
 | | | | |
 |-|-|-|-|
-|**TCP Window Size (Bytes)**|**RTT-Latenz (ms)**|**Maximaler Durchsatz in MB/s**|**Maximaler Durchsatz in MBit/s**|
+|**TCP-Fenstergröße (Bytes)**|**RTT-Latenz (ms)**|**Maximaler Durchsatz in MB/s**|**Maximaler Durchsatz in MBit/s**|
 |65.535|1|65,54|524,29|
 |65.535|30|2,18|17,48|
 |65.535|60|1,09|8,74|
@@ -194,7 +194,7 @@ In der folgenden Tabelle sind diese Beziehungen veranschaulicht:
 
 | | | | |
 |-|-|-|-|
-|**TCP Window Size (Bytes)**|**RTT-Latenz (ms)**|**Maximaler Durchsatz in MB/s**|**Maximaler Durchsatz in MBit/s**|
+|**TCP-Fenstergröße (Bytes)**|**RTT-Latenz (ms)**|**Maximaler Durchsatz in MB/s**|**Maximaler Durchsatz in MBit/s**|
 |65.535|30|2,18|17,48|
 |131.070|30|4.37|34,95|
 |262.140|30|8,74|69,91|
@@ -236,7 +236,7 @@ Dies sind die wirksamen TCP-Einstellungen für `AutoTuningLevel`:
 
 | | | | |
 |-|-|-|-|
-|**AutoTuningLevel**|**Skalierungsfaktor**|**Skalierungsmultiplikator**|**Formel zum<br/>Berechnen der maximalen Fenstergröße**|
+|**AutoTuningLevel**|**Skalierungsfaktor**|**Skalierungsmultiplikator**|**Formel zur <br/>Berechnung der maximalen Fenstergröße**|
 |Deaktiviert|Keine|Keine|Fenstergröße|
 |Eingeschränkt|4|2^4|Fenstergröße * (2^4)|
 |Stark eingeschränkt|2|2^2|Fenstergröße * (2^2)|
@@ -364,7 +364,7 @@ Die TCP-Leistung hängt stark von RTT und Paketverlust ab. Das in Windows und Li
 
 NTttcp ist ein Tool zum Testen der TCP-Leistung einer Linux- oder Windows-VM. Sie können verschiedene TCP-Einstellungen ändern und dann die Vorteile testen, indem Sie NTttcp verwenden. Weitere Informationen finden Sie in den folgenden Ressourcen:
 
-- [Testen der Bandbreite/des Durchsatzes (NTTTCP)](https://aka.ms/TestNetworkThroughput)
+- [Testen der Bandbreite/des Durchsatzes (NTttcp)](https://aka.ms/TestNetworkThroughput)
 
 - [NTttcp-Hilfsprogramm](https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769)
 

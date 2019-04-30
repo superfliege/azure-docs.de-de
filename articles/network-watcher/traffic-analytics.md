@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: f00c816f34978ee2f14f16ee9882860750d0e658
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 2f283421a851914822f5b0c9d05ed6bc929d28c4
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051885"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60150012"
 ---
 # <a name="traffic-analytics"></a>Traffic Analytics
 
@@ -131,14 +131,6 @@ Informationen zum Überprüfen von Benutzerzugriffsberechtigungen finden Sie unt
 
 Um Datenverkehr analysieren zu können, benötigen Sie eine Instanz von Network Watcher, oder Sie [aktivieren eine Network Watcher-Instanz](network-watcher-create.md) in jeder Region mit Netzwerksicherheitsgruppen, deren Datenverkehr Sie analysieren möchten. Die Datenverkehrsanalyse kann für Netzwerksicherheitsgruppen aktiviert werden, die in einer der [unterstützten Regionen](#supported-regions) gehostet werden.
 
-### <a name="re-register-the-network-resource-provider"></a>Erneutes Registrieren des Netzwerkressourcenanbieters
-
-Bevor Sie die Datenverkehrsanalyse verwenden können, müssen Sie Ihren Netzwerkressourcenanbieter erneut registrieren. Klicken Sie im folgenden Codefeld auf **Ausprobieren**, um die Azure Cloud Shell zu öffnen. Die Cloud Shell meldet Sie automatisch bei Ihrem Azure-Abonnement an. Nachdem die Cloud Shell geöffnet ist, geben Sie den folgenden Befehl ein, um den Netzwerkressourcenanbieter erneut zu registrieren:
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace "Microsoft.Network"
-```
-
 ### <a name="select-a-network-security-group"></a>Auswählen einer Netzwerksicherheitsgruppe
 
 Vor der Aktivierung der NSG-Flussprotokollierung benötigen Sie eine Netzwerksicherheitsgruppe, deren Datenflüsse Sie protokollieren möchten. Falls Sie noch nicht über eine Netzwerksicherheitsgruppe verfügen, erstellen Sie eine anhand der Informationen in [Erstellen von Netzwerksicherheitsgruppen](../virtual-network/manage-network-security-group.md#create-a-network-security-group).
@@ -173,15 +165,16 @@ New-AzStorageAccount `
 Wählen Sie die folgenden Optionen aus, wie in der Abbildung dargestellt:
 
 1. Wählen Sie *Ein* als **Status** aus.
-2. Wählen Sie ein vorhandenes Speicherkonto zum Speichern der Flussprotokolle aus. Wenn Sie die Daten dauerhaft speichern möchten, legen Sie den Wert auf *0* fest. Ihnen werden die Azure Storage-Gebühren für das Speicherkonto berechnet.
-3. Legen Sie **Vermerkdauer** auf die Anzahl der Tage fest, die die Daten gespeichert werden sollen.
-4. Wählen Sie *Ein* als **Traffic Analytics-Status** aus.
-5. Wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich aus, oder klicken Sie auf **Neuen Arbeitsbereich erstellen**, um einen neuen Arbeitsbereich zu erstellen. Traffic Analytics verwendet einen Log Analytics-Arbeitsbereich, um die aggregierten und indizierten Daten zu speichern, die dann zum Generieren der Analyse verwendet werden. Wenn Sie einen vorhandenen Arbeitsbereich auswählen, muss sich dieser in einer unterstützten Region befinden und auf die neue Abfragesprache aktualisiert worden sein. Wenn Sie einen vorhandenen Arbeitsbereich nicht aktualisieren möchten oder über keinen Arbeitsbereich in einer unterstützten Region verfügen, erstellen Sie einen neuen. Weitere Informationen über Abfragesprachen finden Sie unter [Upgrade von Azure Monitor-Protokollen auf die neue Protokollsuche](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+2. Wählen Sie *Version 2* für **Datenflussprotokollversion** aus. Version 2 enthält Statistiken zur Flowsitzung (Bytes und Pakete).
+3. Wählen Sie ein vorhandenes Speicherkonto zum Speichern der Flussprotokolle aus. Wenn Sie die Daten dauerhaft speichern möchten, legen Sie den Wert auf *0* fest. Ihnen werden die Azure Storage-Gebühren für das Speicherkonto berechnet.
+4. Legen Sie **Vermerkdauer** auf die Anzahl der Tage fest, die die Daten gespeichert werden sollen.
+5. Wählen Sie *Ein* als **Traffic Analytics-Status** aus.
+6. Wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich (OMS) aus, oder wählen Sie **Neuen Arbeitsbereich erstellen** aus, und erstellen Sie dann einen neuen Arbeitsbereich. Traffic Analytics verwendet einen Log Analytics-Arbeitsbereich, um die aggregierten und indizierten Daten zu speichern, die dann zum Generieren der Analyse verwendet werden. Wenn Sie einen vorhandenen Arbeitsbereich auswählen, muss sich dieser in einer [unterstützten Region](#supported-regions) befinden und auf die neue Abfragesprache aktualisiert worden sein. Wenn Sie einen vorhandenen Arbeitsbereich nicht aktualisieren möchten oder über keinen Arbeitsbereich in einer unterstützten Region verfügen, erstellen Sie einen neuen. Weitere Informationen über Abfragesprachen finden Sie unter [Upgrade von Azure Log Analytics auf die neue Protokollsuche](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
     Der Log Analytics-Arbeitsbereich, der die Lösung für die Datenverkehrsanalyse hostet, und die Netzwerksicherheitsgruppen (NSGs) müssen sich nicht in derselben Region befinden. Sie können die Datenverkehrsanalyse beispielsweise in einem Arbeitsbereich in der Region „Europa, Westen“ mit Netzwerksicherheitsgruppen in den Regionen „USA, Osten“ und „USA, Westen“ verwenden. Es können mehrere NSGs im selben Arbeitsbereich konfiguriert werden.
-6. Wählen Sie **Speichern** aus.
+7. Wählen Sie **Speichern** aus.
 
-    ![Auswählen von Speicherkonto, Log Analytics-Arbeitsbereich und Traffic Analytics-Aktivierung](./media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement.png)
+    ![Auswählen von Speicherkonto, Log Analytics-Arbeitsbereich und Traffic Analytics-Aktivierung](./media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement-nsg-flowlogs-v2.png)
 
 Wiederholen Sie die oben angegebenen Schritte für alle weiteren NSGs, für die Sie die Datenverkehrsanalyse aktivieren möchten. Die Daten aus den Flussprotokollen werden an den Arbeitsbereich gesendet, daher müssen Sie sicherstellen, dass die vor Ort geltenden Gesetze und Vorschriften in Ihrem Land eine Datenspeicherung in der Region, in der sich der Arbeitsbereich befindet, erlauben.
 
@@ -300,7 +293,7 @@ Einige der Erkenntnisse, die Sie nach der vollständigen Konfiguration von Traff
     ![Dashboard mit VNET-Verteilung](./media/traffic-analytics/dashboard-showcasing-virtual-network-distribution.png)
 
 - Sie können in der Topologie des virtuellen Netzwerks auf dem oberen Menüband Parameter auswählen, z.B. für ein virtuelles Netzwerk (Verbindungen zwischen virtuellen Netzwerken/aktiv/inaktiv), externe Verbindungen, aktive Datenflüsse und bösartige Datenflüsse im virtuellen Netzwerk.
-- Sie können die Topologie des virtuellen Netzwerks nach Abonnements, Arbeitsbereichen, Ressourcengruppen und Zeitintervall filtern. Weitere Filter, die zum besseren Verständnis des Datenflusses beitragen, sind: Datenflusstyp (InterVNet, IntraVNET usw.), Datenflussrichtung (eingehend, ausgehend), Datenflussstatus (erlaubt, blockiert), VNETs (Ziel-VNET und verbundenes VNET), Verbindungstyp (Peering oder Gateway – P2S und S2S) und NSG. Mithilfe dieser Filter können Sie sich auf VNets konzentrieren, die Sie genauer untersuchen möchten.
+- Sie können die Topologie des virtuellen Netzwerks nach Abonnements, Arbeitsbereichen, Ressourcengruppen und Zeitintervall filtern. Weitere Filter, die zum besseren Verständnis des Datenflusses beitragen, sind: Datenflusstyp (InterVNet, IntraVNET usw.), Datenflussrichtung (eingehend, ausgehend), Datenflussstatus (erlaubt, blockiert), VNETs (Ziel-VNET und verbundenes VNET), Verbindungstyp (Peering oder Gateway – P2S und S2S) und Netzwerksicherheitsgruppe. Mithilfe dieser Filter können Sie sich auf VNets konzentrieren, die Sie genauer untersuchen möchten.
 - In der Topologie des virtuellen Netzwerks wird die Verteilung des Datenverkehrs in einem virtuellen Netzwerk im Hinblick auf die Datenflüsse (erlaubt/blockiert/eingehend/ausgehend/gutartig/bösartig), das Anwendungsprotokoll und die Netzwerksicherheitsgruppen dargestellt. Beispiel:
 
     ![Topologie eines virtuellen Netzwerks mit der Verteilung des Datenverkehr und Details zum Datenfluss](./media/traffic-analytics/virtual-network-topology-showcasing-traffic-distribution-and-flow-details.png)
@@ -368,3 +361,8 @@ Tritt in Ihrer Umgebung bösartiger Datenverkehr auf? Wo stammt dieser her? Wohi
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
 Antworten auf häufig gestellte Fragen finden Sie unter [Häufig gestellte Fragen zu Traffic Analytics](traffic-analytics-faq.md).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- Wie Sie Datenflussprotokolle aktivieren, erfahren Sie unter [Tutorial: Verwalten von Datenflussprotokollen für Netzwerksicherheitsgruppen über das Azure-Portal](network-watcher-nsg-flow-logging-portal.md).
+- Informationen zum Schema und der Verarbeitung von Informationen von Traffic Analytics finden Sie unter [Schema und Datenaggregation in Traffic Analytics](traffic-analytics-schema.md).

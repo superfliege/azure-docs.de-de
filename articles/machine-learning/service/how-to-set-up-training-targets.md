@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: d75deaca7ce052d40274f1f57a8f6603a3ecdfd2
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 9c97f23c2dfc2b1c0ff794aa20ffb58cd8b8741a
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046154"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683901"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Einrichten von Computezielen für das Modelltraining
 
@@ -40,7 +40,7 @@ Azure Machine Learning Service bietet unterschiedliche Unterstützung für die v
 
 |Computeziel für das Training| GPU-Beschleunigung | Automatisiert<br/> Hyperparameteroptimierung | Automatisiert</br> Machine Learning | Azure Machine Learning-Pipelines |
 |----|:----:|:----:|:----:|:----:|
-|[Lokalem Computer](#local)| Vielleicht | &nbsp; | ✓ | &nbsp; |
+|[Lokaler Computer](#local)| Vielleicht | &nbsp; | ✓ | &nbsp; |
 |[Azure Machine Learning Compute](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
 |[Remote-VM](#vm) | ✓ | ✓ | ✓ | ✓ |
 |[Azure Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | &nbsp; | ✓ | ✓ |
@@ -89,7 +89,7 @@ Der folgende Code ist ein Beispiel für die Trainingsausführungen für eine vom
 
 Konfigurieren Sie die Computeziele anhand der folgenden Abschnitte:
 
-* [Lokalem Computer](#local)
+* [Lokaler Computer](#local)
 * [Azure Machine Learning Compute](#amlcompute)
 * [Virtuelle Remotecomputer](#vm)
 * [Azure HDInsight](#hdinsight)
@@ -377,7 +377,6 @@ Sie können auf die mit Ihrem Arbeitsbereich verknüpften Computeziele mit der [
 
 Weitere Informationen finden Sie unter [Ressourcenverwaltung](reference-azure-machine-learning-cli.md#resource-management).
 
-
 ## <a id="submit"></a>Übermitteln einer Trainingsausführung
 
 Nachdem Sie eine Laufzeitkonfiguration erstellt haben, verwenden Sie sie zum Ausführen Ihres Experiments.  Das Codemuster für die Übermittlung einer Trainingsausführung ist für alle Arten von Computezielen gleich:
@@ -385,6 +384,13 @@ Nachdem Sie eine Laufzeitkonfiguration erstellt haben, verwenden Sie sie zum Aus
 1. Erstellen eines Experiments zum Ausführen
 1. Übermitteln Sie die Ausführung.
 1. Warten Sie, bis die Ausführung abgeschlossen ist.
+
+> [!IMPORTANT]
+> Wenn Sie eine Trainingsausführung übermitteln, wird eine Momentaufnahme des Verzeichnisses, das Ihre Trainingsskripts enthält, erstellt und an das Computeziel gesendet. Sie wird auch als Teil des Experiments in Ihrem Arbeitsbereich gespeichert. Wenn Sie Dateien ändern und die Ausführung erneut übermitteln, werden nur die geänderten Dateien hochgeladen.
+>
+> Wenn Sie verhindern möchten, dass Dateien von der Momentaufnahme erfasst werden, müssen Sie eine [GITIGNORE](https://git-scm.com/docs/gitignore)- oder `.amlignore`-Datei im Verzeichnis erstellen und diesem die Dateien hinzufügen. Für die `.amlignore`-Datei werden die gleiche Syntax und die gleichen Muster wie für die [GITIGNORE](https://git-scm.com/docs/gitignore)-Datei verwendet. Wenn beide Dateien vorhanden sind, hat die `.amlignore`-Datei Vorrang.
+> 
+> Weitere Informationen finden Sie unter [Momentaufnahmen](concept-azure-machine-learning-architecture.md#snapshot).
 
 ### <a name="create-an-experiment"></a>Erstellen eines Experiments
 
@@ -399,8 +405,6 @@ Erstellen Sie zunächst ein Experiment in Ihrem Arbeitsbereich.
 * **source_directory**: Das Quellverzeichnis mit Ihrem Trainingsskript
 * **script**: Bestimmen des Trainingsskripts
 * **run_config**: Die Laufzeitkonfiguration, die wiederum definiert, wo das Training erfolgt.
-
-Wenn Sie eine Trainingsausführung übermitteln, wird eine Momentaufnahme des Verzeichnisses, das Ihre Trainingsskripts enthält, erstellt und an das Computeziel gesendet. Weitere Informationen finden Sie unter [Momentaufnahmen](concept-azure-machine-learning-architecture.md#snapshot).
 
 Verwenden Sie beispielsweise die Konfiguration [lokales Ziel](#local):
 

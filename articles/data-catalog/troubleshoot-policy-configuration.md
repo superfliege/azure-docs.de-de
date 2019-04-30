@@ -1,17 +1,17 @@
 ---
 title: Konfigurieren der Azure Active Directory-Richtlinie für Azure Data Catalog
 description: Es kann vorkommen, dass Sie sich beim Azure Data Catalog-Portal anmelden können, jedoch eine Fehlermeldung erhalten, wenn Sie versuchen, sich beim Tool zum Registrieren von Datenquellen anzumelden.
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 04/06/2019
-ms.openlocfilehash: 558f8845f5469bf157188e20f1ec65a07ff8355f
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: e69a7e3bd104d0fb82b248b6560d4fd082c88426
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59362881"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996440"
 ---
 # <a name="azure-active-directory-policy-configuration"></a>Azure Active Directory-Richtlinienkonfiguration
 
@@ -29,4 +29,4 @@ Weitere Informationen finden Sie unter [Konfigurieren von Authentifizierungsrich
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erstellen einer Azure Data Catalog-Instanz](data-catalog-get-started.md)
+* [Schnellstart: Erstellen einer Azure Data Catalog-Instanz](data-catalog-get-started.md)

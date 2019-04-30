@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 11/18/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bf777917bc2e09f08cbfaac6334bf9bda198f01
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: a8fefc2eb2e642b5c7ac93b8a1cfc25a54c3b646
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439385"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996168"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Fehlercodes des Berichts mit den Anmeldeaktivitäten 
 
@@ -174,9 +174,11 @@ Sie können auch programmgesteuert mithilfe der [Berichterstellungs-API](concept
 |81012|Dies ist keine Fehlerbedingung. Es wird darauf hingewiesen, dass der Benutzer, der versucht, sich an Azure AD anzumelden, sich von dem Benutzer, der am Gerät angemeldet ist, unterscheidet. Sie können diesen Code in den Protokollen ignorieren.|
 |90010|Die Anforderung wird aus verschiedenen Gründen nicht unterstützt. Die Anforderung wird z.B. mit einer nicht unterstützten Anforderungsmethode ausgeführt (nur die POST-Methode wird unterstützt), oder der Tokensignaturalgorithmus, der angefordert wurde, wird nicht unterstützt. Wenden Sie sich an den Anwendungsentwickler.|
 |90014| Ein Pflichtfeld für eine Protokollmeldung fehlt. Wenden Sie sich an den Besitzer der Anwendung. Wenn Sie der Besitzer der Anwendung sind, stellen Sie sicher, dass Sie über alle erforderlichen Parameter für die Anmeldeanforderung verfügen. |
+|90051| Invalid Delegation Token. Invalid national Cloud ID ({cloudId}) is specified. (Das Delegierungstoken ist ungültig. Eine ungültige nationale Cloud-ID ({cloudId}) wurde angegeben.)|
 |90072| Das Konto muss zunächst als externer Benutzer im Mandanten hinzugefügt werden. Melden Sie sich ab, und melden Sie sich mit einem anderen Azure AD-Konto erneut an.|
 |90094| Für die Gewährung sind Administratorberechtigungen erforderlich. Bitten Sie den Mandantenadministrator, Zustimmung für diese Anwendung bereitzustellen.|
 |500133| Die Assertion befindet sich nicht im gültigen Zeitbereich. Überprüfen Sie, ob das Zugriffstoken abgelaufen ist, bevor Sie es für die Benutzerassertion verwenden oder ein neues Token anfordern.|
+|530021|Application does not meet the conditional access approved app requirements. (Die Anwendung erfüllt nicht die Anforderungen für den bedingten Zugriff.)|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

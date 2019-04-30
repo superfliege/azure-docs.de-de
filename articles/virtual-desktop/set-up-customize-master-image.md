@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: d22fffcb792227b4d0805abd005d8c050cb97248
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: aff96931f95442c67d08521e72952dd79dad44e2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006198"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999874"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Vorbereiten und Anpassen eines VHD-Masterimages
 
@@ -158,21 +158,20 @@ reg add HKLM\SOFTWARE\Policies\Microsoft\office\16.0\common\officeupdate /v hide
 reg add HKLM\SOFTWARE\Policies\Microsoft\office\16.0\common\officeupdate /v hideenabledisableupdates /t REG_DWORD /d 1 /f
 ```
 
-Sie können automatische Updates manuell deaktivieren.
+### <a name="disable-automatic-updates"></a>Deaktivieren automatischer Updates
 
-Deaktivieren Sie automatische Updates wie folgt:
+So deaktivieren Sie „Automatische Updates“ über lokale Gruppenrichtlinien:
 
-1. Installieren Sie Office 365, indem Sie die Anleitung unter [Software: Vorbereitung und Installation](set-up-customize-master-image.md#software-preparation-and-installation) befolgen.
-2. Installieren Sie alle weiteren Anwendungen, indem Sie die Anleitungen unter [Einrichten des Benutzerprofilcontainers (FSLogix)](set-up-customize-master-image.md#set-up-user-profile-container-fslogix), [Konfigurieren von Windows Defender](set-up-customize-master-image.md#configure-windows-defender) und [Andere Anwendungen und Registrierungskonfiguration](set-up-customize-master-image.md#other-applications-and-registry-configuration) befolgen.
-3. Deaktivieren Sie den Windows-Dienst für automatische Updates auf der lokalen VM.
-4. Öffnen Sie **Editor für lokale Gruppenrichtlinien\\Administrative Vorlagen\\Windows-Komponenten\\Windows Update**.
-5. Klicken Sie mit der rechten Maustaste auf **Automatische Updates konfigurieren**, und legen Sie die Option auf **Deaktiviert** fest.
+1. Öffnen Sie **Editor für lokale Gruppenrichtlinien\\Administrative Vorlagen\\Windows-Komponenten\\Windows Update**.
+2. Klicken Sie mit der rechten Maustaste auf **Automatische Updates konfigurieren**, und legen Sie die Option auf **Deaktiviert** fest.
 
 Sie können auch den folgenden Befehl an einer Eingabeaufforderung ausführen, um automatische Updates zu deaktivieren.
 
 ```batch
 reg add HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v NoAutoUpdate /t REG_DWORD /d 1 /f
 ```
+
+### <a name="specify-start-layout-for-windows-10-pcs-optional"></a>Festlegen des Startlayouts für Windows 10-PCs (optional)
 
 Führen Sie diesen Befehl aus, um ein Startlayout für Windows 10-PCs anzugeben.
 
@@ -188,7 +187,7 @@ Hier ist beschrieben, wie Sie OneDrive im Modus „Pro Computer“ installieren:
 
 1. Erstellen Sie zunächst einen Speicherort zum Bereitstellen des OneDrive-Installationsprogramms. Hierfür ist ein lokaler Datenträgerordner oder ein Speicherort vom Typ [\\\\unc](file://unc) geeignet.
 
-2. Laden Sie die Datei „OneDriveSetup.exe“ mit diesem Link an Ihren bereitgestellten Speicherort herunter: <https://aka.ms/OneDriveWVD-Installer>
+2. Laden Sie die Datei „OneDriveSetup.exe“ mit diesem Link an Ihren bereitgestellten Speicherort herunter: <https://aka.ms/OneDriveWVD-Installer>.
 
 3. Wenn Sie Office mit OneDrive installiert und **\<ExcludeApp ID="OneDrive" /\>** weggelassen haben, sollten Sie alle vorhandenen OneDrive-Installationen im Modus „Pro Benutzer“ entfernen, indem Sie an einer Eingabeaufforderung mit erhöhten Rechten den folgenden Befehl ausführen:
     
@@ -205,7 +204,7 @@ Hier ist beschrieben, wie Sie OneDrive im Modus „Pro Computer“ installieren:
 5. Führen Sie diesen Befehl aus, um OneDrive im Modus „Pro Computer“ zu installieren:
 
     ```batch
-    Run "[staged location]\OneDriveSetup.exe /allusers"
+    Run "[staged location]\OneDriveSetup.exe" /allusers
     ```
 
 6. Führen Sie diesen Befehl aus, um OneDrive mit der Anmeldung für alle Benutzer zu starten:
@@ -275,7 +274,7 @@ Führen Sie die Umleitung für Zeitzonen wie folgt durch:
 1. Öffnen Sie auf dem Active Directory-Server die **Gruppenrichtlinien-Verwaltungskonsole**.
 2. Erweitern Sie Ihre Domäne und die Gruppenrichtlinienobjekte.
 3. Klicken Sie mit der rechten Maustaste auf das **Gruppenrichtlinienobjekt**, das Sie für die Gruppenrichtlinieneinstellungen erstellt haben, und wählen Sie **Bearbeiten**.
-4. Navigieren Sie im **Gruppenrichtlinienverwaltungs-Editor** zu **Computerkonfiguration** > **Richtlinien** > **Administrative Vorlagen** > **Windows-Komponenten** > **Horizon View RDSH Services (Horizon-Ansicht: RDSH-Dienste)** > **Remotedesktop-Sitzungshost** > **Geräte- und Ressourcenumleitung**.
+4. Navigieren Sie im **Gruppenrichtlinienverwaltungs-Editor** zu **Computerkonfiguration** > **Richtlinien** > **Administrative Vorlagen** > **Windows-Komponenten** > **Remotedesktopdienste** > **Remotedesktop-Sitzungshost** > **Geräte- und Ressourcenumleitung**.
 5. Aktivieren Sie die Einstellung **Zeitzonenumleitung zulassen**.
 
 Sie können diesen Befehl auch auf dem Masterimage ausführen, um Zeitzonen umzuleiten:
@@ -300,9 +299,9 @@ reg add HKCU\Software\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\S
 
 In diesem Artikel wird nicht beschrieben, wie Sie die Unterstützung von Sprachen und Regionen konfigurieren. Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Add languages to Windows images (Hinzufügen von Sprachen zu Windows-Images)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/add-language-packs-to-windows)
-- [Features on demand (On-Demand-Features)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities)
-- [Language and region Features on Demand (FOD) (Sprachen und Regionen: On-Demand-Features)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-language-fod)
+- [Add languages to Windows images](https://docs.microsoft.com/windows-hardware/manufacture/desktop/add-language-packs-to-windows) (Hinzufügen von Sprachen zu Windows-Images)
+- [Features on demand](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-v2--capabilities) (On-Demand-Features)
+- [Language and region Features on Demand (FOD)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/features-on-demand-language-fod) (Sprachen und Regionen: On-Demand-Features)
 
 ### <a name="other-applications-and-registry-configuration"></a>Konfiguration anderer Anwendungen und der Registrierung
 
@@ -314,7 +313,7 @@ In diesem Abschnitt wird die Konfiguration der Anwendungen und Betriebssysteme b
 Führen Sie diesen Befehl aus, um unter Windows 10 Enterprise (mehrere Sitzungen) über den Feedback-Hub Telemetriedaten zu erfassen:
 
 ```batch
-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection "AllowTelemetry"=dword:00000003
+reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection "AllowTelemetry"=dword:00000003
 reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection /v AllowTelemetry /d 3
 ```
 
