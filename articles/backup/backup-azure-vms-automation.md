@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: f0959ff8b8ea5ce8d5516d25fdf0faf29dbcd994
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 62ad2e2b294a0589c9d52ddbce1339b8d55062e4
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629597"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149035"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Sichern und Wiederherstellen von virtuellen Azure-Computern mit PowerShell
 
@@ -31,7 +31,6 @@ In diesem Artikel wird Folgendes behandelt:
 - [Lesen Sie weitere Informationen](backup-azure-recovery-services-vault-overview.md) zu Recovery Services-Tresoren.
 - [Überprüfen Sie](backup-architecture.md#architecture-direct-backup-of-azure-vms) die Architektur für die Azure-VM-Sicherung, [erfahren Sie mehr über](backup-azure-vms-introduction.md) den Sicherungsvorgang, und [überprüfen Sie](backup-support-matrix-iaas.md) die Unterstützung, Einschränkungen und Voraussetzungen.
 - Sehen Sie sich die PowerShell-Objekthierarchie für Recovery Services an.
-
 
 ## <a name="recovery-services-object-hierarchy"></a>Recovery Services-Objekthierarchie
 
@@ -54,7 +53,7 @@ Vorbereitung:
     ```powershell
     Get-Command *azrecoveryservices*
     ```
- 
+
     Die Aliase und Cmdlets für Azure Backup, Azure Site Recovery und den Recovery Services-Tresor werden angezeigt. Die folgende Abbildung ist ein Beispiel für die angezeigten Elemente. Dies ist nicht die vollständige Liste mit den Cmdlets.
 
     ![Recovery Services-Liste](./media/backup-azure-vms-automation/list-of-recoveryservices-ps.png)
@@ -77,9 +76,11 @@ Vorbereitung:
     ```
 
 6. Mithilfe der folgenden Befehle können Sie überprüfen, ob die Anbieter erfolgreich registriert wurden:
+
     ```powershell
     Get-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
+
     In der Befehlsausgabe sollte sich der **RegistrationState**-Wert in **Registriert** ändern. Ist dies nicht der Fall, führen Sie einfach das Cmdlet **[Register-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/register-azresourceprovider)** erneut aus.
 
 
@@ -241,9 +242,49 @@ Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGro
 > Wenn Sie die Azure Government-Cloud verwenden, verwenden Sie im Cmdlet [Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) den Wert ff281ffe-705c-4f53-9f37-a40e6f2c68f3 für den Parameter ServicePrincipalName.
 >
 
+## <a name="monitoring-a-backup-job"></a>Überwachen eines Sicherungsauftrags
+
+Sie können Vorgänge mit langer Ausführungsdauer, z.B. Sicherungsaufträge, ohne das Azure-Portal überwachen. Mit dem Cmdlet [Get-AzRecoveryservicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) können Sie den Status eines Auftrags abrufen, der sich in Bearbeitung befindet. Dieses Cmdlet ruft die Sicherungsaufträge für einen bestimmten Tresor ab. Dieser Tresor ist im Tresorkontext angegeben. Im folgenden Beispiel wird der Status eines laufenden Auftrags als Array abgerufen und in der Variable „$joblist“ gespeichert.
+
+```powershell
+$joblist = Get-AzRecoveryservicesBackupJob –Status "InProgress"
+$joblist[0]
+```
+
+Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
+
+```
+WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+------------     ---------            ------               ---------                 -------                   ----------
+V2VM             Backup               InProgress            4/23/2016                5:00:30 PM                cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
+```
+
+Anstatt die Fertigstellung dieser Aufträge abzufragen (und dafür unnötigen zusätzlichen Code zu schreiben), verwenden Sie das Cmdlet [Wait-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/wait-azrecoveryservicesbackupjob). Dieses Cmdlet hält die Ausführung an, bis entweder der Auftrag abgeschlossen oder der angegebene Timeoutwert erreicht ist.
+
+```powershell
+Wait-AzRecoveryServicesBackupJob -Job $joblist[0] -Timeout 43200
+```
+
+## <a name="manage-azure-vm-backups"></a>Verwalten von Azure-VM-Sicherungen
+
 ### <a name="modify-a-protection-policy"></a>Ändern einer Schutzrichtlinie
 
 Verwenden Sie [Set-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy) zum Bearbeiten der Schutzrichtlinie, um die Objekte SchedulePolicy oder RetentionPolicy zu ändern.
+
+#### <a name="modifying-scheduled-time"></a>Ändern der geplanten Zeit
+
+Beim Erstellen einer Schutzrichtlinie wird ihr standardmäßig eine Startzeit zugewiesen. In den folgenden Beispielen wird gezeigt, wie Sie die Startzeit einer Schutzrichtlinie ändern.
+
+````powershell
+$SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
+$UtcTime = Get-Date -Date "2019-03-20 01:00:00Z" (This is the time that the customer wants to start the backup)
+$UtcTime = $UtcTime.ToUniversalTime()
+$SchPol.ScheduleRunTimes[0] = $UtcTime
+$pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy"
+Set-AzRecoveryServicesBackupProtectionPolicy -Policy $pol  -SchedulePolicy $SchPol
+````
+
+#### <a name="modifying-retention"></a>Ändern der Aufbewahrungsdauer
 
 Im folgenden Beispiel wird der Aufbewahrungswert von Wiederherstellungspunkten in 365 Tage geändert.
 
@@ -267,14 +308,15 @@ PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 
 Der Standardwert ist „2“. Der Benutzer kann den Wert auf mindestens „1“ und maximal „5“ festlegen. Bei Richtlinien zu wöchentlichen Sicherungen wird der Zeitraum auf „5“ festgelegt und kann nicht geändert werden.
 
-## <a name="trigger-a-backup"></a>Auslösen einer Sicherung
+### <a name="trigger-a-backup"></a>Auslösen einer Sicherung
 
-Verwenden Sie [Backup-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem), um einen Sicherungsauftrag auszulösen. Wenn es die erste Sicherung ist, handelt es sich um eine vollständige Sicherung. Nachfolgende Sicherungen erstellen inkrementelle Kopien. Verwenden Sie vor dem Auslösen eines Sicherungsauftrags **[Set-AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext)**, um den Tresorkontext festzulegen. Im folgenden Beispiel wird davon ausgegangen, dass der Tresorkontext bereits festgelegt wurde.
+Verwenden Sie [Backup-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem), um einen Sicherungsauftrag auszulösen. Wenn es die erste Sicherung ist, handelt es sich um eine vollständige Sicherung. Nachfolgende Sicherungen erstellen inkrementelle Kopien. Im folgenden Beispiel wird eine VM-Sicherung 60 Tage lang aufbewahrt:
 
 ```powershell
 $namedContainer = Get-AzRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM"
 $item = Get-AzRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM"
-$job = Backup-AzRecoveryServicesBackupItem -Item $item
+$endDate = (Get-Date).AddDays(60).ToUniversalTime()
+$job = Backup-AzRecoveryServicesBackupItem -Item $item -VaultId $targetVault.ID -ExpiryDateTimeUTC $endDate
 ```
 
 Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
@@ -290,28 +332,42 @@ V2VM              Backup              InProgress          4/23/2016             
 >
 >
 
-## <a name="monitoring-a-backup-job"></a>Überwachen eines Sicherungsauftrags
+### <a name="change-policy-for-backup-items"></a>Ändern der Richtlinie für Sicherungselemente
 
-Sie können Vorgänge mit langer Ausführungsdauer, z.B. Sicherungsaufträge, ohne das Azure-Portal überwachen. Mit dem Cmdlet [Get-AzRecoveryservicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) können Sie den Status eines Auftrags abrufen, der sich in Bearbeitung befindet. Dieses Cmdlet ruft die Sicherungsaufträge für einen bestimmten Tresor ab. Dieser Tresor ist im Tresorkontext angegeben. Im folgenden Beispiel wird der Status eines laufenden Auftrags als Array abgerufen und in der Variable „$joblist“ gespeichert.
+Der Benutzer kann entweder die vorhandene Richtlinie bearbeiten oder die Richtlinie des gesicherten Elements von Richtlinie 1 in Richtlinie 2 ändern. Zum Wechseln der Richtlinien für ein gesichertes Element rufen Sie einfach die entsprechende Richtlinie und das Sicherungselement ab, und verwenden Sie den Befehl [Enable-AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) mit dem Sicherungselement als Parameter.
+
+````powershell
+$TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>
+$anotherBkpItem = Get-AzRecoveryServicesBackupItem -WorkloadType AzureVM -BackupManagementType AzureVM -Name "<BackupItemName>"
+Enable-AzRecoveryServicesBackupProtection -Item $anotherBkpItem -Policy $TargetPol1
+````
+
+Der Befehl wartet, bis die Sicherungskonfiguration abgeschlossen ist, und gibt die folgende Ausgabe zurück:
 
 ```powershell
-$joblist = Get-AzRecoveryservicesBackupJob –Status "InProgress"
-$joblist[0]
-```
-
-Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
-
-```
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
-------------     ---------            ------               ---------                 -------                   ----------
-V2VM             Backup               InProgress            4/23/2016                5:00:30 PM                cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
+------------     ---------            ------               ---------                 -------                   -----
+TestVM           ConfigureBackup      Completed            3/18/2019 8:00:21 PM      3/18/2019 8:02:16 PM      654e8aa2-4096-402b-b5a9-e5e71a496c4e
 ```
 
-Anstatt die Fertigstellung dieser Aufträge abzufragen (und dafür unnötigen zusätzlichen Code zu schreiben), verwenden Sie das Cmdlet [Wait-AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/wait-azrecoveryservicesbackupjob). Dieses Cmdlet hält die Ausführung an, bis entweder der Auftrag abgeschlossen oder der angegebene Timeoutwert erreicht ist.
+### <a name="stop-protection"></a>Schutz beenden
 
-```powershell
-Wait-AzRecoveryServicesBackupJob -Job $joblist[0] -Timeout 43200
-```
+#### <a name="retain-data"></a>Beibehalten von Daten
+
+Wenn der Benutzer den Schutz beenden möchte, kann er dazu das PS-Cmdlet [Disable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) verwenden. Dadurch werden die geplanten Sicherungen beendet, doch werden die bis zu diesem Zeitpunkt gesicherten Daten dauerhaft beibehalten.
+
+````powershell
+$bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -Name "<backup item name>" -VaultId $targetVault.ID
+Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID
+````
+
+#### <a name="delete-backup-data"></a>Löschen von Sicherungsdaten
+
+Um die gespeicherten Sicherungsdaten im Tresor vollständig zu entfernen, fügen Sie einfach das Flag/den Switch „-RemoveRecoveryPoints“ zum [Befehl „Disable“](#retain-data) hinzu.
+
+````powershell
+Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID -RemoveRecoveryPoints
+````
 
 ## <a name="restore-an-azure-vm"></a>Wiederherstellen eines virtuellen Azure-Computers
 

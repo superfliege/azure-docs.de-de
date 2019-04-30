@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/28/2018
+ms.date: 04/11/2018
 ms.author: genli
-ms.openlocfilehash: 7990a98e0e2d688456db054e3cdfa447e1ed1043
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 174bc4895bbad4546392581c2c769aac762d6106
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630465"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59492378"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Troubleshooting: Azure Point-to-Site-Verbindungsprobleme
 
@@ -57,6 +57,35 @@ Weitere Informationen zum Installieren des Clientzertifikats finden Sie unter [G
 
 > [!NOTE]
 > Wenn Sie das Clientzertifikat importieren, wählen Sie nicht die Option **Verstärkte Sicherheit für den privaten Schlüssel aktivieren** aus.
+
+## <a name="the-network-connection-between-your-computer-and-the-vpn-server-could-not-be-established-because-the-remote-server-is-not-responding"></a>Die Netzwerkverbindung zwischen Ihrem Computer und dem VPN-Server konnte nicht hergestellt werden, weil der Remoteserver nicht antwortet.
+
+### <a name="symptom"></a>Symptom
+
+Wenn Sie versuchen, unter Windows mithilfe von IKEv2 eine Verbindung mit einem Gateway für virtuelle Azure-Netzwerke herzustellen, erhalten Sie die folgende Fehlermeldung:
+
+**Die Netzwerkverbindung zwischen Ihrem Computer und dem VPN-Server konnte nicht hergestellt werden, weil der Remoteserver nicht antwortet.**
+
+### <a name="cause"></a>Ursache
+ 
+ Das Problem tritt auf, wenn die Version von Windows die IKE-Fragmentierung nicht unterstützt.
+ 
+### <a name="solution"></a>Lösung
+
+IKEv2 wird unter Windows 10 und Server 2016 unterstützt. Zur Verwendung von IKEv2 müssen Sie jedoch Updates installieren und lokal einen Registrierungsschlüsselwert festlegen. Betriebssystemversionen vor Windows 10 werden nicht unterstützt und können nur SSTP verwenden.
+
+Vorbereitung von Windows 10 oder Server 2016 für IKEv2:
+
+1. Installieren Sie das Update.
+
+   | Betriebssystemversion | Datum | Anzahl/Link |
+   |---|---|---|---|
+   | Windows Server 2016<br>Windows 10, Version 1607 | 17. Januar 2018 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
+   | Windows 10, Version 1703 | 17. Januar 2018 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
+   | Windows 10, Version 1709 | 22. März 2018 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
+   |  |  |  |  |
+
+2. Legen Sie den Registrierungsschlüsselwert fest. Erstellen Sie den REG_DWORD-Schlüssel „HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload“, oder legen Sie ihn in der Registrierung auf 1 fest.
 
 ## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>VPN-Clientfehler: Das Format der empfangenen Nachricht war unerwartet oder fehlerhaft.
 

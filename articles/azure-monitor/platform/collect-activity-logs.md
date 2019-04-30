@@ -11,20 +11,20 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/26/2018
+ms.date: 04/11/2019
 ms.author: magoedte
-ms.openlocfilehash: 48fb09b73a6169da392443f5fbf4f005e9640c3e
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 4476bb0a5a343fd43ce5ed70cf0e493d0ccae0e9
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905986"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59505633"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Erfassen und Analysieren von Azure-Aktivitätsprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor
 
 ![Symbol „Azure-Aktivitätsprotokolle“](./media/collect-activity-logs/activity-log-analytics.png)
 
-Mithilfe der Lösung der Aktivitätsprotokollanalyse können Sie das [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/activity-logs-overview.md) in all Ihren Azure-Abonnements analysieren und suchen. Das Azure-Aktivitätsprotokoll bietet Einblicke in Vorgänge, die für Ressourcen in Ihren Abonnements durchgeführt wurden. Das Aktivitätsprotokoll wurde bisher als *Überwachungsprotokoll* oder *Betriebsprotokoll* bezeichnet, da es Ereignisse für Ihre Abonnements enthält.
+Mithilfe der Lösung der Aktivitätsprotokollanalyse können Sie das [Azure-Aktivitätsprotokoll](activity-logs-overview.md) in all Ihren Azure-Abonnements analysieren und suchen. Das Azure-Aktivitätsprotokoll bietet Einblicke in Vorgänge, die für Ressourcen in Ihren Abonnements durchgeführt wurden. Das Aktivitätsprotokoll wurde bisher als *Überwachungsprotokoll* oder *Betriebsprotokoll* bezeichnet, da es Ereignisse für Ihre Abonnements enthält.
 
 Mit dem Aktivitätsprotokoll können Sie die Antworten auf die Fragen *Was*, *Wer* und *Wann* für alle Schreibvorgänge (PUT, POST, DELETE) ermitteln, die für die Ressourcen Ihres Abonnements durchgeführt wurden. Sie können auch den Status der Vorgänge und andere relevante Eigenschaften ermitteln. Das Aktivitätsprotokoll umfasst keine Lesevorgänge (GET) oder Vorgänge für Ressourcen, die das klassische Bereitstellungsmodell verwenden.
 
@@ -52,28 +52,39 @@ Im Gegensatz zu den meisten anderen Azure Monitor-Lösungen werden die Daten fü
 
 | Verbundene Quelle | Unterstützt | BESCHREIBUNG |
 | --- | --- | --- |
-| [Windows-Agents](../../azure-monitor/platform/agent-windows.md) | Nein  | Die Lösung erfasst keine Informationen von Windows-Agents. |
-| [Linux-Agents](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nein  | Die Lösung erfasst keine Informationen von Linux-Agents. |
-| [SCOM-Verwaltungsgruppe](../../azure-monitor/platform/om-agents.md) | Nein  | Die Lösung erfasst keine Informationen von Agents in einer verbundenen SCOM-Verwaltungsgruppe. |
+| [Windows-Agents](agent-windows.md) | Nein  | Die Lösung erfasst keine Informationen von Windows-Agents. |
+| [Linux-Agents](../learn/quick-collect-linux-computer.md) | Nein  | Die Lösung erfasst keine Informationen von Linux-Agents. |
+| [System Center Operations Manager-Verwaltungsgruppe](om-agents.md) | Nein  | Die Lösung erfasst keine Informationen von Agents, die ihre Daten an eine Operations Manager-Verwaltungsgruppe melden. |
 | [Azure-Speicherkonto](collect-azure-metrics-logs.md) | Nein  | Die Lösung erfasst keine Informationen von Azure Storage. |
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Für den Zugriff auf die Informationen von Azure-Aktivitätsprotokollen müssen Sie über ein Azure-Abonnement verfügen.
+Für den Zugriff auf die Informationen von Azure-Aktivitätsprotokollen müssen Sie über ein Azure-Abonnement verfügen.
+
+Die Lösung setzt außerdem voraus, dass die beiden folgenden Ressourcenanbieter in Ihrem Abonnement registriert sind:
+
+1. Microsoft.OperationalInsights
+2. Microsoft.OperationsManagement
+
+Weitere Informationen dazu, wie Sie sie registrieren bzw. überprüfen, ob sie registriert wurden, finden Sie unter [Azure-Ressourcenanbieter und -typen](../../azure-resource-manager/resource-manager-supported-services.md).
 
 ## <a name="configuration"></a>Konfiguration
 
 Führen Sie die folgenden Schritte aus, um die Log Analytics-Lösung für Aktivitätsprotokolle für Ihre Arbeitsbereiche zu konfigurieren.
 
-1. Aktivieren Sie die Log Analytics-Lösung für Aktivitätsprotokolle in [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) oder entsprechend den unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](../../azure-monitor/insights/solutions.md) beschriebenen Schritten.
+1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
+
+2. Aktivieren Sie die Log Analytics-Lösung für Aktivitätsprotokolle in [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) oder entsprechend den unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](../insights/solutions.md) beschriebenen Schritten.
+
 2. Konfigurieren Sie Aktivitätsprotokolle so, dass sie in Ihrem Log Analytics-Arbeitsbereich gespeichert werden.
     1. Wählen Sie im Azure-Portal Ihren Arbeitsbereich aus, und klicken Sie dann auf **Azure-Aktivitätsprotokoll**.
     2. Klicken Sie für jedes Abonnement auf den entsprechenden Namen.  
+        
         ![Abonnement hinzufügen](./media/collect-activity-logs/add-subscription.png)
+    
     3. Klicken Sie auf dem Blatt *SubscriptionName* auf **Verbinden**.  
+    
         ![Abonnement verbinden](./media/collect-activity-logs/subscription-connect.png)
-
-Melden Sie sich beim Azure-Portal an, um ein Azure-Abonnement mit Ihrem Arbeitsbereich zu verbinden.  
 
 ## <a name="using-the-solution"></a>Verwenden der Lösung
 
@@ -98,5 +109,5 @@ Die Aktivitätsprotokolldaten werden nur angezeigt, *nachdem* Sie die Aktivität
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erstellen einer [Warnung](../../azure-monitor/platform/alerts-metric.md) für eine bestimmte Aktivität
-- Verwenden der [Protokollsuche](../../azure-monitor/log-query/log-query-overview.md) zum Anzeigen ausführlicher Informationen aus den Aktivitätsprotokollen
+- Erstellen einer [Warnung](../platform/alerts-metric.md) für eine bestimmte Aktivität
+- Verwenden der [Protokollsuche](../log-query/log-query-overview.md) zum Anzeigen ausführlicher Informationen aus den Aktivitätsprotokollen

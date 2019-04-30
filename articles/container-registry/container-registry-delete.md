@@ -5,20 +5,20 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 04/04/2019
 ms.author: danlep
-ms.openlocfilehash: f3206da25a3c0727e3f9fe12190580a6c28c81a3
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 1e496002c869c5d2c072773d37ed5fd5d4a5841e
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983250"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683459"
 ---
 # <a name="delete-container-images-in-azure-container-registry"></a>Löschen von Containerimages in Azure Container Registry
 
 Damit Ihre Azure-Containerregistrierung nicht zu groß wird, sollten Sie regelmäßig veraltete Imagedaten löschen. Während einige Containerimages, die in der Produktion bereitgestellt werden, eine längerfristige Speicherung erfordern, können andere in der Regel schneller gelöscht werden. In einem automatisierten Build- und Testszenario kann sich Ihre Registrierung beispielsweise schnell mit Images füllen, die möglicherweise nie bereitgestellt werden und kurz nach Abschluss der Build- und Test-Phase gelöscht werden können.
 
-Da Sie Imagedaten auf verschiedenen Wegen löschen können, müssen Sie wissen, wie sich jeder Löschvorgang auf die Speicherauslastung auswirkt. In diesem Artikel lernen Sie die Komponenten einer Docker-Registrierung und von Containerimages sowie anschließend mehrere Methoden zum Löschen von Imagedaten kennen.
+Da Sie Imagedaten auf verschiedenen Wegen löschen können, müssen Sie wissen, wie sich jeder Löschvorgang auf die Speicherauslastung auswirkt. In diesem Artikel lernen Sie die Komponenten einer Docker-Registrierung und von Containerimages sowie anschließend mehrere Methoden zum Löschen von Imagedaten kennen. Zum Automatisieren von Löschvorgängen sind Beispielskripts verfügbar.
 
 ## <a name="registry"></a>Registrierung
 
@@ -50,11 +50,11 @@ Ein Containerimage in einer Registrierung wird einem oder mehreren Tags zugeordn
 
 ### <a name="tag"></a>Tag
 
-Ein *Tag* eines Images gibt dessen Version an. Ein einzelnes Image in einem Repository kann einem oder mehreren Tags zugewiesen werden, und Tags können auch entfernt werden. Sie können also alle Tags von einem Image löschen, während die Imagedaten (die Ebenen) in der Registrierung verbleiben.
+Ein *Tag* eines Images gibt dessen Version an. Ein einzelnes Image in einem Repository kann einem oder mehreren Tags zugewiesen werden, und Tags können auch entfernt werden. Sie können also alle Tags aus einem Image löschen, während die Daten des Images (die Ebenen) in der Registrierung verbleiben.
 
 Das Repository (oder Repository und Namespace) plus ein Tag definieren den Namen eines Images. Sie können Push- und Pull-Vorgänge für Images ausführen, indem Sie deren Namen im Push- oder Pull-Vorgang festlegen.
 
-In einer privaten Registrierung wie Azure Container Registry enthält der Imagename auch den vollqualifizierten Namen des Registrierungshosts. Der Registrierungshost für Images in ACR weist das Format *acrname.azurecr.io* auf. Beispielsweise würde der vollständige Name des ersten Bilds im Namespace „marketing“ im vorherigen Abschnitt folgendermaßen lauten:
+In einer privaten Registrierung wie Azure Container Registry enthält der Imagename auch den vollqualifizierten Namen des Registrierungshosts. Der Registrierungshost für Images in ACR (Azure Container Registry) weist das Format *acrname.azurecr.io* (nur Kleinbuchstaben) auf. Beispielsweise würde der vollständige Name des ersten Images im Namespace „marketing“ im vorherigen Abschnitt wie folgt lauten:
 
 ```
 myregistry.azurecr.io/marketing/campaign10-18/web:v2
@@ -158,7 +158,7 @@ Are you sure you want to continue? (y/n): y
 ```
 
 > [!TIP]
-> Das Löschen *nach Tag* darf nicht mit dem Löschen (Aufheben) eines Tags verwechselt werden. Sie können ein Tag mit dem Azure-CLI-Befehl [az acr repository untag][az-acr-repository-untag] löschen. Beim Aufheben von Tags wird kein Speicherplatz freigegeben, da [Manifest](#manifest)- und Ebenendaten in der Registrierung verbleiben. Nur der Tag-Verweis wird gelöscht.
+> Das Löschen *nach Tag* darf nicht mit dem Löschen (Aufheben) eines Tags verwechselt werden. Sie können ein Tag mit dem Azure-CLI-Befehl [az acr repository untag][az-acr-repository-untag] löschen. Beim Aufheben von Tags wird kein Speicherplatz freigegeben, da die zugehörigen [Manifest](#manifest)- und Ebenendaten in der Registrierung verbleiben. Nur der Tag-Verweis wird gelöscht.
 
 ## <a name="delete-by-manifest-digest"></a>Löschen nach Manifest-Digest
 
@@ -201,7 +201,56 @@ This operation will delete the manifest 'sha256:3168a21b98836dda7eb7a846b3d73528
 Are you sure you want to continue? (y/n): y
 ```
 
-Das Image „acr-helloworld:v2“ wird aus der Registrierung gelöscht, ebenso alle eindeutigen Ebenendaten dieses Images. Wenn ein Manifest mehreren Tags zugeordnet ist, werden alle zugeordneten Tags ebenfalls gelöscht.
+Das Image `acr-helloworld:v2` und alle eindeutigen Ebenendaten dieses Images werden aus der Registrierung gelöscht. Wenn ein Manifest mehreren Tags zugeordnet ist, werden alle zugeordneten Tags ebenfalls gelöscht.
+
+### <a name="list-digests-by-timestamp"></a>Auflisten von Hashes nach Zeitstempel
+
+Zum Verwalten der Größe eines Repositorys oder der Registrierung müssen Sie ggf. in regelmäßigen Abständen Manifesthashes löschen, die älter sind als ein bestimmtes Datum.
+
+Der folgende Azure CLI-Befehl listet alle Manifesthashes in einem Repository, die älter als ein angegebener Zeitstempel sind, in aufsteigender Reihenfolge auf. Ersetzen Sie `<acrName>` und `<repositoryName>` durch entsprechende Werte für Ihre Umgebung. Bei dem Zeitstempel kann es sich um einen vollständigen Datums-/Uhrzeitausdruck oder wie im folgenden Beispiel um ein Datum handeln.
+
+```azurecli
+az acr repository show-manifests --name <acrName> --repository <repositoryName> \
+--orderby time_asc -o tsv --query "[?timestamp < '2019-04-05'].[digest, timestamp]"
+```
+
+### <a name="delete-digests-by-timestamp"></a>Löschen von Hashes nach Zeitstempel
+
+Nachdem Sie die veralteten Manifesthashes identifiziert haben, können Sie das folgende Bash-Skript ausführen, um Manifesthashes zu löschen, die älter als ein angegebener Zeitstempel sind. Dieses Skript erfordert die Azure CLI und **xargs**. Standardmäßig führt das Skript nicht keine Löschen aus. Ändern Sie den `ENABLE_DELETE`-Wert in `true`, um das Löschen von Images zu gestatten.
+
+> [!WARNING]
+> Verwenden Sie die folgenden Beispielskripts mit Vorsicht: Gelöschte Imagedaten sind NICHT WIEDERHERSTELLBAR. Wenn Sie Systeme haben, die Images nach dem Manifesthash pullen (und nicht nach dem Imagenamen), sollten Sie diese Skripts nicht ausführen. Wenn Sie Manifesthashes löschen, können diese Systeme die Images nicht aus Ihrer Registrierung pullen. Erwägen Sie statt des Pullens nach Manifest die Einführung eines *eindeutigen Tagging*-Schemas. Dies ist eine [bewährte Methode][tagging-best-practices]. 
+
+```bash
+#!/bin/bash
+
+# WARNING! This script deletes data!
+# Run only if you do not have systems
+# that pull images via manifest digest.
+
+# Change to 'true' to enable image delete
+ENABLE_DELETE=false
+
+# Modify for your environment
+# TIMESTAMP can be a date-time string such as 2019-03-15T17:55:00.
+REGISTRY=myregistry
+REPOSITORY=myrepository
+TIMESTAMP=2019-04-05  
+
+# Delete all images older than specified timestamp.
+
+if [ "$ENABLE_DELETE" = true ]
+then
+    az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY \
+    --orderby time_asc --query "[?timestamp < '$TIMESTAMP'].digest" -o tsv \
+    | xargs -I% az acr repository delete --name $REGISTRY --image $REPOSITORY@% --yes
+else
+    echo "No data deleted."
+    echo "Set ENABLE_DELETE=true to enable deletion of these images in $REPOSITORY:"
+    az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY \
+   --orderby time_asc --query "[?timestamp < '$TIMESTAMP'].[digest, timestamp]" -o tsv
+fi
+```
 
 ## <a name="delete-untagged-images"></a>Löschen von Images ohne Tags
 
@@ -257,14 +306,12 @@ az acr repository show-manifests --name <acrName> --repository <repositoryName> 
 
 ### <a name="delete-all-untagged-images"></a>Löschen aller Images ohne Tags
 
-Verwenden Sie die folgenden Beispielskripts mit Vorsicht – gelöschte Imagedaten sind NICHT WIEDERHERSTELLBAR.
+> [!WARNING]
+> Verwenden Sie die folgenden Beispielskripts mit Vorsicht – gelöschte Imagedaten sind NICHT WIEDERHERSTELLBAR. Wenn Sie Systeme haben, die Images nach dem Manifesthash pullen (und nicht nach dem Imagenamen), sollten Sie diese Skripts nicht ausführen. Wenn Sie Images ohne Tags löschen, hindern Sie diese Systeme daran, die Images aus Ihrer Registrierung zu löschen. Erwägen Sie statt des Pullens nach Manifest die Einführung eines *eindeutigen Tagging*-Schemas. Dies ist eine [bewährte Methode][tagging-best-practices].
 
 **Azure CLI in Bash**
 
 Mit dem folgenden Bash-Skript werden alle Images ohne Tag aus einem Repository gelöscht. Dieses Skript erfordert die Azure CLI und **xargs**. Standardmäßig führt das Skript nicht keine Löschen aus. Ändern Sie den `ENABLE_DELETE`-Wert in `true`, um das Löschen von Images zu gestatten.
-
-> [!WARNING]
-> Wenn Sie über Systeme verfügen, die zum Pullen von Images Manifest-Digest (statt Imagename) verwenden, sollten Sie dieses Skript nicht ausführen. Wenn Sie Images ohne Tags löschen, hindern Sie diese Systeme daran, die Images aus Ihrer Registrierung zu löschen. Erwägen Sie statt des Pullens nach Manifest die Einführung eines *eindeutigen Tagging*-Schemas. Dies ist eine [bewährte Methode][tagging-best-practices].
 
 ```bash
 #!/bin/bash
@@ -293,9 +340,6 @@ fi
 **Azure CLI in PowerShell**
 
 Mit dem folgenden PowerShell-Skript werden alle Images ohne Tags aus einem Repository gelöscht. Dazu sind PowerShell und die Azure CLI erforderlich. Standardmäßig führt das Skript nicht keine Löschen aus. Ändern Sie den `$enableDelete`-Wert in `$TRUE`, um das Löschen von Images zu gestatten.
-
-> [!WARNING]
-> Wenn Sie über Systeme verfügen, die zum Pullen von Images Manifest-Digest (statt Imagename) verwenden, sollten Sie dieses Skript nicht ausführen. Wenn Sie Images ohne Tags löschen, hindern Sie diese Systeme daran, die Images aus Ihrer Registrierung zu löschen. Erwägen Sie statt des Pullens nach Manifest die Einführung eines *eindeutigen Tagging*-Schemas. Dies ist eine [bewährte Methode][tagging-best-practices].
 
 ```powershell
 # WARNING! This script deletes data!

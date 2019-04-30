@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/22/2019
 ms.author: raynew
-ms.openlocfilehash: f0540ff1fc1844c133e238267770b971992f61e6
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: c64148fbc0432bd25c5b02fb20b3e44134c1d9d5
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905000"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149944"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>Unterstützungsmatrix für die Replikation von Azure-VMs von einer Region in eine andere
 
@@ -22,12 +22,12 @@ In diesem Artikel sind unterstützte Konfigurationen und Komponenten zusammengef
 
 ## <a name="deployment-method-support"></a>Unterstützung für die Bereitstellungsmethode
 
-**Bereitstellung** |  **Support**
+**Bereitstellung** |  **Unterstützung**
 --- | ---
 **Azure-Portal** |  Unterstützt.
 **PowerShell** |  Unterstützt. [Weitere Informationen](azure-to-azure-powershell.md)
 **REST-API** |  Unterstützt.
-**Befehlszeilenschnittstelle (CLI)** | Derzeit nicht unterstützt
+**BEFEHLSZEILENSCHNITTSTELLE (CLI)** | Derzeit nicht unterstützt
 
 
 ## <a name="resource-support"></a>Ressourcenunterstützung
@@ -69,7 +69,7 @@ China | China, Osten; China, Norden; China, Norden 2; China, Osten 2
 
 In dieser Tabelle ist die Unterstützung für das Cachespeicherkonto zusammengefasst, das von Site Recovery während der Replikation verwendet wird.
 
-**Einstellung** | **Support** | **Details**
+**Einstellung** | **Unterstützung** | **Details**
 --- | --- | ---
 Allgemeine V2-Speicherkonten (heiße und kalte Ebene) | Nicht unterstützt. | Die Einschränkung ist für den Cachespeicher vorhanden, da die Transaktionskosten für V2 erheblich höher als für V1-Speicherkonten sind.
 Azure Storage-Firewalls für virtuelle Netzwerke  | Unterstützt | Wenn Sie ein Cache- oder Zielspeicherkonto mit aktivierter Firewall verwenden, müssen Sie [vertrauenswürdigen Microsoft-Diensten den Zugriff erlauben](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions), indem Sie die entsprechende Option auswählen.
@@ -95,11 +95,11 @@ Windows Server 2008 R2 | Mit SP1 oder höher
 --- | ---
 Red Hat Enterprise Linux | 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6  
 CentOS | 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6
-Ubuntu 14.04 LTS Server | [Unterstützte Kernelversionen](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
-Ubuntu 16.04 LTS Server | [Unterstützte Kernelversion](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Bei Ubuntu-Servern mit kennwortbasierter Authentifizierung und Anmeldung und mit dem Paket „cloud-init“ zum Konfigurieren von Cloud-VMs kann bei einem Failover die kennwortbasierte Anmeldung deaktiviert sein (je nach cloud-init-Konfiguration). Die kennwortbasierte Anmeldung kann auf der VM wieder aktiviert werden, indem (für die VM, für die das Failover ausgeführt wurde) das Kennwort im Azure-Portal unter „Support“ > „Problembehandlung“ im Menü „Einstellungen“ zurückgesetzt wird.
-Debian 7 | [Unterstützte Kernelversionen](#supported-debian-kernel-versions-for-azure-virtual-machines)
-Debian 8 | [Unterstützte Kernelversionen](#supported-debian-kernel-versions-for-azure-virtual-machines)
-SUSE Linux Enterprise Server 12 | SP1, SP2, SP3. [(Unterstützte Kernelversionen)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
+Ubuntu 14.04 LTS Server | [Unterstützte Kernel-Versionen](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
+Ubuntu 16.04 LTS Server | [Unterstützte Kernel-Version](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Bei Ubuntu-Servern mit kennwortbasierter Authentifizierung und Anmeldung und mit dem Paket „cloud-init“ zum Konfigurieren von Cloud-VMs kann bei einem Failover die kennwortbasierte Anmeldung deaktiviert sein (je nach cloud-init-Konfiguration). Die kennwortbasierte Anmeldung kann auf der VM wieder aktiviert werden, indem (für die VM, für die das Failover ausgeführt wurde) das Kennwort im Azure-Portal unter „Support“ > „Problembehandlung“ im Menü „Einstellungen“ zurückgesetzt wird.
+Debian 7 | [Unterstützte Kernel-Versionen](#supported-debian-kernel-versions-for-azure-virtual-machines)
+Debian 8 | [Unterstützte Kernel-Versionen](#supported-debian-kernel-versions-for-azure-virtual-machines)
+SUSE Linux Enterprise Server 12 | SP1, SP2, SP3, SP4. [(Unterstützte Kernel-Versionen)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | SP3<br/><br/> Ein Upgrade von replizierenden Computern von SP3 auf SP4 wird nicht unterstützt. Wenn ein replizierter Computer aktualisiert wurde, müssen Sie die Replikation deaktivieren und nach dem Upgrade dann wieder aktivieren.
 SUSE Linux Enterprise Server 11 | SP4
 Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 <br/><br/> Ausführung des Red Hat-kompatiblen Kernels oder von UEK3 (Unbreakable Enterprise Kernel Release 3).
@@ -109,34 +109,32 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 
 
 **Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
+14.04 LTS | 9.24 | 3.13.0-24-generic bis 3.13.0-167-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-143-generic,<br/>4.15.0-1023-azure bis 4.15.0-1040-azure |
 14.04 LTS | 9.23 | 3.13.0-24-generic bis 3.13.0-165-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-142-generic,<br/>4.15.0-1023-azure bis 4.15.0-1037-azure |
 14.04 LTS | 9.22 | 3.13.0-24-generic bis 3.13.0-164-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-140-generic,<br/>4.15.0-1023-azure bis 4.15.0-1036-azure |
 14.04 LTS | 9.21 | 3.13.0-24-generic bis 3.13.0-163-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-140-generic,<br/>4.15.0-1023-azure bis 4.15.0-1035-azure |
-14.04 LTS | 9.20 | 3.13.0-24-generic bis 3.13.0-161-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-138-generic,<br/>4.15.0-1023-azure bis 4.15.0-1030-azure |
 |||
+16.04 LTS | 9.24 | 4.4.0-21-generic bis 4.4.0-143-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-46-generic<br/>4.11.0-1009-azure bis 4.11.0-1018-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1040-azure|
 16.04 LTS | 9.23 | 4.4.0-21-generic bis 4.4.0-142-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-45-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1037-azure|
 16.04 LTS | 9.22 | 4.4.0-21-generic bis 4.4.0-140-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-43-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1036-azure|
 16.04 LTS | 9.21 | 4.4.0-21-generic bis 4.4.0-140-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-42-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1035-azure|
-16.04 LTS | 9.20 | 4.4.0-21-generic bis 4.4.0-138-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic,<br/>4.11.0-13-generic bis 4.11.0-14-generic,<br/>4.13.0-16-generic bis 4.13.0-45-generic,<br/>4.15.0-13-generic bis 4.15.0-38-generic<br/>4.11.0-1009-azure bis 4.11.0-1016-azure,<br/>4.13.0-1005-azure bis 4.13.0-1018-azure <br/>4.15.0-1012-azure bis 4.15.0-1030-azure|
 
 #### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Unterstützte Debian-Kernelversionen für virtuelle Azure-Computer
 
 **Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
-Debian 7 | 9.19, 9.20, 9.21, 9.22, 9.23 | 3.2.0-4-amd64 bis 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.21, 9.22, 9.23, 9.24 | 3.2.0-4-amd64 bis 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
 |||
-Debian 8 | 9.20, 9.21, 9.22, 9.23 | 3.16.0-4-amd64 bis 3.16.0-7-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.8-amd64 |
-Debian 8 | 9.19 | 3.16.0-4-amd64 bis 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.7-amd64 |
+Debian 8 | 9.21, 9.22, 9.23, 9.24 | 3.16.0-4-amd64 bis 3.16.0-7-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.8-amd64 |
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Unterstützte SUSE Linux Enterprise Server 12-Kernelversionen für Azure-VMs
 
 **Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3) | 9.23 | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.101-default</br></br>SP3 4.4.73-5-default bis 4.4.162-94.79-default |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9.24 | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.101-default</br></br>SP3 4.4.73-5-default bis 4.4.175-94.79-default</br></br>SP4 4.12.14-94.41-default bis 4.12.14-95.6-default |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9.23 | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.101-default</br></br>SP3 4.4.73-5-default bis 4.4.162-94.69-default</br></br>SP4 4.12.14-94.41-default bis 4.12.14-95.6-default |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3) | 9.22 | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default bis 4.4.162-94.72-default |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3) | 9.21 | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default bis 4.4.162-94.72-default |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3) | 9.20 | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default bis 4.4.162-94.69-default |
-
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Replizierte Computer – Linux-Dateisystem/Gastspeicher
 
@@ -147,7 +145,7 @@ SUSE Linux Enterprise Server 12 (SP1, SP2, SP3) | 9.20 | SP1 3.12.49-11-default 
 
 ## <a name="replicated-machines---compute-settings"></a>Replizierte Computer – Compute-Einstellungen
 
-**Einstellung** | **Support** | **Details**
+**Einstellung** | **Unterstützung** | **Details**
 --- | --- | ---
 Größe | Jede Größe von virtuellen Azure-Computern mit mindestens 2 CPU-Kernen und 1 GB RAM | Überprüfen Sie die [Größen der virtuellen Azure-Computer](../virtual-machines/windows/sizes.md).
 Verfügbarkeitsgruppen | Unterstützt | Wenn Sie die Replikation für eine Azure-VM mit den Standardoptionen aktivieren, wird basierend auf den Einstellungen der Quellregion automatisch eine Verfügbarkeitsgruppe erstellt. Sie können diese Einstellungen ändern.
@@ -175,7 +173,7 @@ In dieser Tabelle ist die Unterstützung für den Betriebssystemdatenträger, Da
 - Wenn Sie für die Bereitstellung die Standardeinstellungen verwenden, erstellt Site Recovery Datenträger und Speicherkonten automatisch basierend auf den Einstellungen für die Datenquelle.
 - Achten Sie darauf, dass Sie die Richtlinien befolgen, wenn Sie Anpassungen vornehmen möchten.
 
-**Komponente** | **Support** | **Details**
+**Komponente** | **Unterstützung** | **Details**
 --- | --- | ---
 Maximale Größe des Betriebssystemdatenträgers | 2.048 GB | [Erfahren Sie mehr](../virtual-machines/windows/managed-disks-overview.md) zu VM-Datenträgern.
 Temporärer Datenträger | Nicht unterstützt | Der temporäre Datenträger ist immer von der Replikation ausgeschlossen.<br/><br/> Speichern Sie auf dem temporären Datenträger keine persistenten Daten. [Weitere Informationen](../virtual-machines/windows/managed-disks-overview.md)
@@ -225,10 +223,11 @@ Premium-Datenträger – P10 oder P15 | 16 KB | 4 MB/s |  336 GB pro Datenträge
 Premium-Datenträger – P10 oder P15 | 32 KB oder höher | 8 MB/s | 672 GB pro Datenträger
 Premium-Datenträger – P20, P30, P40 oder P50 | 8 KB    | 5 MB/s | 421 GB pro Datenträger
 Premium-Datenträger – P20, P30, P40 oder P50 | 16 KB oder höher |20 MB/s | 1.684 GB pro Datenträger
+
 ## <a name="replicated-machines---networking"></a>Replizierte Computer – Netzwerk
-**Einstellung** | **Support** | **Details**
+**Einstellung** | **Unterstützung** | **Details**
 --- | --- | ---
-NIC | Unterstützte maximale Anzahl für eine bestimmte Azure-VM-Größe | Netzwerkkarten werden erstellt, wenn die VM während des Failovers erstellt wird.<br/><br/> Die Anzahl von Netzwerkkarten auf dem virtuellen Failovercomputer ist abhängig von der Anzahl von Netzwerkkarten, die auf dem virtuellen Quellcomputer vorhanden waren, als die Replikation aktiviert wurde. Falls Sie eine Netzwerkkarte nach dem Aktivieren der Replikation hinzufügen oder entfernen, wirkt sich dies nicht auf die Anzahl von Netzwerkkarten auf der replizierten VM nach dem Failover aus.
+NIC | Unterstützte maximale Anzahl für eine bestimmte Azure-VM-Größe | Netzwerkkarten werden erstellt, wenn die VM während des Failovers erstellt wird.<br/><br/> Die Anzahl von Netzwerkkarten auf dem virtuellen Failovercomputer ist abhängig von der Anzahl von Netzwerkkarten, die auf dem virtuellen Quellcomputer vorhanden waren, als die Replikation aktiviert wurde. Falls Sie eine Netzwerkkarte nach dem Aktivieren der Replikation hinzufügen oder entfernen, wirkt sich dies nicht auf die Anzahl von Netzwerkkarten auf der replizierten VM nach dem Failover aus. Beachten Sie außerdem, dass nach einem Failover die Reihenfolge der Netzwerkadapter unter Umständen nicht mehr der ursprünglichen Reihenfolge entspricht.
 Internetlastenausgleich | Unterstützt | Ordnen Sie den vorkonfigurierten Lastenausgleich mit einem Azure-Automatisierungsskript in einem Wiederherstellungsplan zu.
 Interner Lastenausgleich | Unterstützt | Ordnen Sie den vorkonfigurierten Lastenausgleich mit einem Azure-Automatisierungsskript in einem Wiederherstellungsplan zu.
 Öffentliche IP-Adresse | Unterstützt | Ordnen Sie der Netzwerkkarte eine vorhandene öffentliche IP-Adresse zu. Oder erstellen Sie eine öffentliche IP-Adresse, und ordnen Sie diese der Netzwerkkarte zu, indem Sie ein Azure-Automatisierungsskript in einem Wiederherstellungsplan verwenden.
@@ -236,6 +235,7 @@ NSG auf Netzwerkkarte | Unterstützt | Ordnen Sie die NSG der Netzwerkkarte zu, 
 NSG im Subnetz | Unterstützt | Ordnen Sie die NSG dem Subnetz zu, indem Sie ein Azure-Automatisierungsskript in einem Wiederherstellungsplan verwenden.
 Reservierte (statische) IP-Adresse | Unterstützt | Wenn die Netzwerkkarte auf dem virtuellen Quellcomputer über eine statische IP-Adresse verfügt und für das Zielsubnetz die gleiche IP-Adresse verfügbar ist, wird sie der VM zugewiesen, für die das Failover ausgeführt wurde.<br/><br/> Falls das Zielsubnetz nicht über die gleiche IP-Adresse verfügt, wird eine der verfügbaren IP-Adressen im Subnetz für den virtuellen Computer reserviert.<br/><br/> Sie können eine feste IP-Adresse und ein Subnetz auch unter **Replizierte Elemente** > **Einstellungen** > **Compute und Netzwerk** > **Netzwerkschnittstellen** angeben.
 Dynamische IP-Adresse | Unterstützt | Wenn die Netzwerkkarte auf der Quelle über eine dynamische IP-Adressierung verfügt, ist die Netzwerkkarte auf dem virtuellen Computer, für den das Failover ausgeführt wurde, standardmäßig ebenfalls dynamisch.<br/><br/> Sie können dies in eine feste IP-Adresse ändern, falls es erforderlich ist.
+Mehrere IP-Adressen | Nicht unterstützt | Wenn Sie ein Failover für einen virtuellen Computer mit einem Netzwerkadapter mit mehreren IP-Adressen ausführen, wird nur die primäre IP-Adresse des Netzwerkadapters in der Quellregion beibehalten. Wenn Sie mehrere IP-Adressen zuweisen möchten, können Sie virtuelle Computer zu einem [Wiederherstellungsplan](recovery-plan-overview.md) hinzufügen und ein Skript anfügen, um dem Plan zusätzliche IP-Adressen zuzuweisen. Alternativ können Sie die Änderung nach dem Failover manuell oder mithilfe eines Skripts vornehmen. 
 Traffic Manager     | Unterstützt | Sie können Traffic Manager so vorkonfigurieren, dass Datenverkehr in regelmäßigen Abständen an den Endpunkt in der Quellregion und bei einem Failover an den Endpunkt in der Zielregion weitergeleitet wird.
 Azure DNS | Unterstützt |
 Benutzerdefinierter DNS  | Unterstützt |

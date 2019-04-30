@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a13ca362bf08b86297641061992f0820f0b624c5
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: e8bfa5a3e60efe860b5e7197d96ebe5ce3a86030
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58916766"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001404"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen OpenId Connect-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C bietet Unterstützung für Identitätsanbieter mit dem [OpenId Connect](https://openid.net/2015/04/17/openid-connect-certification-program/)-Protokoll. OpenId Connect 1.0 definiert eine Identitätsebene über OAuth 2.0 und stellt den Stand der Technik bei modernen Authentifizierungsprotokollen dar.  Mit dem technischen OpenId Connect-Profil können Sie einen Verbund mit einem OpenId Connect-basierten Identitätsanbieter, z.B. Azure AD, erstellen und es damit Benutzern ermöglichen, sich mit ihren vorhandenen Anmeldungen in sozialen Netzen oder mit Unternehmensidentitäten anzumelden.
+Azure Active Directory (Azure AD) B2C bietet Unterstützung für Identitätsanbieter mit dem [OpenId Connect](https://openid.net/2015/04/17/openid-connect-certification-program/)-Protokoll. OpenId Connect 1.0 definiert eine Identitätsebene über OAuth 2.0 und stellt den Stand der Technik bei modernen Authentifizierungsprotokollen dar. Mit einem technischen OpenId Connect-Profil können Sie einen Verbund mit einem OpenId Connect-basierten Identitätsanbieter wie Azure AD erstellen. Über einen Verbund mit einem Identitätsanbieter können sich Benutzer mit ihren vorhandenen Identitäten aus sozialen Netzwerken oder Unternehmen anmelden.
 
 ## <a name="protocol"></a>Protokoll
 
@@ -52,7 +52,7 @@ Das **OutputClaimsTransformations**-Element darf eine Sammlung von **OutputClaim
 
 Das folgende Beispiel zeigt die Ansprüche, die vom Identitätsanbieter Microsoft-Konto zurückgegeben wurden:
 
-- Der Anspruch **sub** wird dem Anspruch **socialIdpUserId** zugeordnet.
+- Der Anspruch **sub** wird dem Anspruch **issuerUserId** zugeordnet.
 - Der Anspruch **name** wird dem Anspruch **displayName** zugeordnet.
 - Dem Anspruch **email** wird kein Name zugeordnet.
 
@@ -65,7 +65,7 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 <OutputClaims>
   <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="live.com" />
   <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
-  <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="sub" />
+  <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="sub" />
   <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
   <OutputClaim ClaimTypeReferenceId="email" />
 </OutputClaims>
@@ -81,7 +81,7 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 | ProviderName | Nein  | Der Name des Identitätsanbieters. |
 | response_types | Nein  | Der Antworttyp gemäß der OpenId Connect Core 1.0-Spezifikation. Mögliche Werte: `id_token`, `code` oder `token`. |
 | response_mode | Nein  | Die Methode, die der Identitätsanbieter verwendet, um das Ergebnis zurück an Azure AD B2C zu senden. Mögliche Werte: `query`, `form_post` (Standard) oder `fragment`. |
-| scope | Nein  | Der Bereich für die Zugriffsanforderung gemäß der OpenId Connect Core 1.0-Spezifikation. Beispiele: `openid`, `profile` und `email`. |
+| scope | Nein  | Der Bereich für die Anforderung gemäß der OpenId Connect Core 1.0-Spezifikation. Beispiele: `openid`, `profile` und `email`. |
 | HttpBinding | Nein  | Die erwartete HTTP-Bindung an die Endpunkte für Zugriffs- und Anspruchstoken. Mögliche Werte: `GET` oder `POST`.  |
 | ValidTokenIssuerPrefixes | Nein  | Ein Schlüssel, der für die Anmeldung bei den einzelnen Mandanten verwendet werden kann, wenn ein mehrinstanzenfähiger Identitätsanbieter wie Azure Active Directory verwendet wird. |
 | UsePolicyInRedirectUri | Nein  | Gibt an, ob beim Erstellen des Umleitungs-URI eine Richtlinie verwendet werden soll. Wenn Sie Ihre Anwendung im Identitätsanbieter konfigurieren, müssen Sie den Umleitungs-URI angeben. Der Umleitungs-URI verweist auf Azure AD B2C, `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` („login.microsoftonline.com“ kann sich gemäß Ihr-Mandantenname.b2clogin.com ändern).  Bei Angabe von `false` müssen Sie einen Umleitungs-URI für jede verwendete Richtlinie hinzufügen. Beispiel: `https://login.microsoftonline.com/te/{tenant}/{policy}/oauth2/authresp`. |
@@ -98,7 +98,7 @@ Das **CryptographicKeys**-Element enthält das folgende Attribut:
 
 ## <a name="redirect-uri"></a>Umleitungs-URI
  
-Wenn Sie den Umleitungs-URI Ihres Identitätsanbieters konfigurieren, geben Sie `https://login.microsoftonline.com/te/tenant/oauth2/authresp` an. Ersetzen Sie **tenant** durch den Namen Ihres Mandanten (z.B. contosob2c.onmicrosoft.com) oder die Mandanten-ID. Der Umleitungs-URI muss klein geschrieben sein.
+Wenn Sie den Umleitungs-URI Ihres Identitätsanbieters konfigurieren, geben Sie `https://login.microsoftonline.com/te/tenant/oauth2/authresp` an. Ersetzen Sie **tenant** durch den Namen Ihres Mandanten (z. B. contosob2c.onmicrosoft.com) oder die Mandanten-ID. Der Umleitungs-URI muss klein geschrieben sein.
 
 Achten Sie bei Verwendung der Domäne **b2clogin.com** anstelle von **login.microsoftonline.com** darauf, b2clogin.com anstelle von login.microsoftonline.com zu verwenden.
 
@@ -106,7 +106,7 @@ Beispiele:
 
 - [Hinzufügen des Microsoft-Kontos (Microsoft Account, MSA) als Identitätsanbieter mithilfe benutzerdefinierter Richtlinien](active-directory-b2c-custom-setup-msa-idp.md)
 - [Anmelden mithilfe von Azure AD-Konten](active-directory-b2c-setup-aad-custom.md)
-- [Benutzern mithilfe von benutzerdefinierten Richtlinien die Anmeldung bei einem mehrinstanzenfähigen Azure AD-Identitätsanbieter ermöglichen](active-directory-b2c-setup-commonaad-custom.md)
+- [Zulassen, dass Benutzer sich mithilfe von benutzerdefinierten Richtlinien bei einem mehrinstanzenfähigen Azure AD-Identitätsanbieter anmelden](active-directory-b2c-setup-commonaad-custom.md)
 
  
 

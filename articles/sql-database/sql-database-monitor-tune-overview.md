@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: ac87ce2198296b82ef5655d7d75443a0bd49df3c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0c93888af16ed7f7162f38c73be5f6330c886c65
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57875137"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001574"
 ---
 # <a name="monitoring-and-performance-tuning"></a>Überwachen und Optimieren der Datenbankleistung
 
@@ -85,9 +85,9 @@ Wenn Sie feststellen, dass ein Problem in Zusammenhang mit der Ausführung vorli
 > [!IMPORTANT]
 > Unter [Ermitteln von Problemen mit der CPU-Auslastung](sql-database-monitoring-with-dmvs.md#identify-cpu-performance-issues) finden Sie eine Reihe von T-SQL-Abfragen, bei denen diese DMVs zum Beheben von Problemen mit der CPU-Auslastung verwendet werden.
 
-### <a name="troubleshoot-queries-with-parameter-sensitive-query-execution-plan-issues"></a>Behandeln von Problemen bei Abfragen mit parameterempfindlichem Ausführungsplan
+### <a name="ParamSniffing"></a> Behandeln von Problemen bei Abfragen mit parameterempfindlichem Ausführungsplan
 
-Das Problem eines parameterempfindlichen Plans bezieht sich auf ein Szenario, in dem der Abfrageoptimierer einen Abfrageausführungsplan generiert, der nur für einen bestimmten Parameterwert (oder eine Gruppe von Werten) optimal ist, und der zwischengespeicherte Plan dann nicht optimal für die in aufeinanderfolgenden Ausführungen verwendeten Parameterwerte ist. Nicht optimale Pläne können dann zu Problemen der Abfrageleistung und einer allgemeinen Verschlechterung des Workloaddurchsatzes führen.
+Das Problem eines parameterempfindlichen Plans bezieht sich auf ein Szenario, in dem der Abfrageoptimierer einen Abfrageausführungsplan generiert, der nur für einen bestimmten Parameterwert (oder eine Gruppe von Werten) optimal ist, und der zwischengespeicherte Plan dann nicht optimal für die in aufeinanderfolgenden Ausführungen verwendeten Parameterwerte ist. Nicht optimale Pläne können dann zu Problemen der Abfrageleistung und einer allgemeinen Verschlechterung des Workloaddurchsatzes führen. Weitere Informationen zur Parameterermittlung und Abfrageverarbeitung finden Sie im [Handbuch zur Architektur der Abfrageverarbeitung](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide.md7#ParamSniffing).
 
 Es gibt mehrere Lösungen zur Umgehung von Problemen, die jeweils ihre Schwächen und Nachteile haben:
 
@@ -102,18 +102,17 @@ Es gibt mehrere Lösungen zur Umgehung von Problemen, die jeweils ihre Schwäche
 
 Weitere Informationen zur Behebung dieser Arten von Problemen finden in folgenden Blogbeiträgen:
 
-- Blogbeitrag zum [Ermitteln eines Parameters](https://blogs.msdn.microsoft.com/queryoptteam/20../../i-smell-a-parameter/)
-- Blogbeitrag zu [Problemen und Lösungen für die Parameterermittlung](https://blogs.msdn.microsoft.com/turgays/20../../parameter-sniffing-problem-and-possible-workarounds/)
-- Blogbeitrag zur [Parameterermittlung anhand des Beispiels von Elefant und Maus](https://www.brentozar.com/archive/2013/06/the-elephant-and-the-mouse-or-parameter-sniffing-in-sql-server/)
-- Blogbeitrag zu [dynamischem SQL im Vergleich zur Qualität des Abfrageplans für parametrisierte Abfragen](https://blogs.msdn.microsoft.com/conor_cunningham_msft/20../../conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/)
+- Blogbeitrag zum [Ermitteln eines Parameters](https://blogs.msdn.microsoft.com/queryoptteam/2006/03/31/i-smell-a-parameter/)
+- Blogbeitrag zu [dynamischem SQL im Vergleich zur Qualität des Abfrageplans für parametrisierte Abfragen](https://blogs.msdn.microsoft.com/conor_cunningham_msft/2009/06/03/conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/)
+- Blogbeitrag zu [Techniken zur SQL-Abfrageoptimierung in SQL Server: Parameterermittlung](https://www.sqlshack.com/query-optimization-techniques-in-sql-server-parameter-sniffing/)
 
 ### <a name="troubleshooting-compile-activity-due-to-improper-parameterization"></a>Behandeln von Problemen der Kompilierungsaktivität aufgrund falscher Parametrisierung
 
 Wenn eine Abfrage Literale enthält, wählt entweder die Datenbank-Engine eine automatische Parametrisierung der Anweisung aus, oder ein Benutzer kann die Anweisung explizit parametrisieren, um die Anzahl von Kompilierungen zu verringern. Eine große Anzahl von Kompilierungen einer Abfrage anhand des gleichen Musters, jedoch mit unterschiedlichen Literalwerten, kann zu einer hohen CPU-Auslastung führen. Auch wenn Sie eine Abfrage nur teilweise parametrisieren und diese dann weiterhin Literale enthält, wird sie von der Datenbank-Engine nicht weiter parametrisiert.  Nachfolgend sehen Sie ein Beispiel einer teilweise parametrisierten Abfrage:
 
 ```sql
-select * from t1 join t2 on t1.c1=t2.c1
-where t1.c1=@p1 and t2.c2='961C3970-0E54-4E8E-82B6-5545BE897F8F'
+SELECT * FROM t1 JOIN t2 ON t1.c1 = t2.c1
+WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F'
 ```
 
 Im vorherigen Beispiel nimmt `t1.c1` die Form `@p1` an, aber `t2.c2` verwendet weiterhin die GUID als Literal. Wenn Sie in diesem Fall den Wert für `c2` ändern, wird die Abfrage als eine andere Abfrage behandelt, und eine neue Kompilierung findet statt. Damit im vorherigen Beispiel die Anzahl von Kompilierungen reduziert wird, muss auch die GUID parametrisiert werden.
@@ -121,24 +120,24 @@ Im vorherigen Beispiel nimmt `t1.c1` die Form `@p1` an, aber `t2.c2` verwendet w
 Die folgende Abfrage zeigt die Anzahl von Abfragen nach Abfragehash, um festzustellen, ob eine Abfrage richtig parametrisiert ist:
 
 ```sql
-   SELECT  TOP 10  
-      q.query_hash
-      , count (distinct p.query_id ) AS number_of_distinct_query_ids
-      , min(qt.query_sql_text) AS sampled_query_text
-   FROM sys.query_store_query_text AS qt
-      JOIN sys.query_store_query AS q
-         ON qt.query_text_id = q.query_text_id
-      JOIN sys.query_store_plan AS p 
-         ON q.query_id = p.query_id
-      JOIN sys.query_store_runtime_stats AS rs 
-         ON rs.plan_id = p.plan_id
-      JOIN sys.query_store_runtime_stats_interval AS rsi
-         ON rsi.runtime_stats_interval_id = rs.runtime_stats_interval_id
-   WHERE
-      rsi.start_time >= DATEADD(hour, -2, GETUTCDATE())
-      AND query_parameterization_type_desc IN ('User', 'None')
-   GROUP BY q.query_hash
-   ORDER BY count (distinct p.query_id) DESC
+SELECT  TOP 10  
+  q.query_hash
+  , count (distinct p.query_id ) AS number_of_distinct_query_ids
+  , min(qt.query_sql_text) AS sampled_query_text
+FROM sys.query_store_query_text AS qt
+  JOIN sys.query_store_query AS q
+     ON qt.query_text_id = q.query_text_id
+  JOIN sys.query_store_plan AS p 
+     ON q.query_id = p.query_id
+  JOIN sys.query_store_runtime_stats AS rs 
+     ON rs.plan_id = p.plan_id
+  JOIN sys.query_store_runtime_stats_interval AS rsi
+     ON rsi.runtime_stats_interval_id = rs.runtime_stats_interval_id
+WHERE
+  rsi.start_time >= DATEADD(hour, -2, GETUTCDATE())
+  AND query_parameterization_type_desc IN ('User', 'None')
+GROUP BY q.query_hash
+ORDER BY count (distinct p.query_id) DESC
 ```
 
 ### <a name="resolve-problem-queries-or-provide-more-resources"></a>Lösen von Abfrageproblemen oder Bereitstellen weiterer Ressourcen
@@ -184,7 +183,7 @@ In Szenarien mit hoher CPU-Auslastung spiegeln Abfragespeicher und Wartestatisti
 - Abfragen mit hoher CPU-Auslastung werden möglicherweise immer noch ausgeführt und sind nicht beendet.
 - Die Abfragen mit hoher CPU-Auslastung wurden ausgeführt, als ein Failover auftrat.
 
-Dynamische Verwaltungssichten, in denen Abfragespeicher und Wartestatistik nachgeführt werden, zeigen nur Ergebnisse für erfolgreich abgeschlossene Abfragen und Abfragen mit Zeitüberschreitung, aber keine Daten für derzeit ausgeführte Anweisungen (bis zu deren Abschluss).  Die dynamische Verwaltungssicht [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) ermöglicht Ihnen das Nachverfolgen derzeit ausgeführter Abfragen und der Zeit des zugeordneten Workers.
+Dynamische Verwaltungssichten, in denen Abfragespeicher und Wartestatistik nachgeführt werden, zeigen nur Ergebnisse für erfolgreich abgeschlossene Abfragen und Abfragen mit Zeitüberschreitung, aber keine Daten für derzeit ausgeführte Anweisungen (bis zu deren Abschluss). Die dynamische Verwaltungssicht [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) ermöglicht Ihnen das Nachverfolgen derzeit ausgeführter Abfragen und der Zeit des zugeordneten Workers.
 
 Wie im vorherigen Diagramm dargestellt, sind die am häufigsten Wartetypen:
 
@@ -199,6 +198,8 @@ Wie im vorherigen Diagramm dargestellt, sind die am häufigsten Wartetypen:
 > - [Identifizieren von Problemen mit der E/A-Leistung](sql-database-monitoring-with-dmvs.md#identify-io-performance-issues)
 > - [Identifizieren von Leistungsproblemen mit ](sql-database-monitoring-with-dmvs.md#identify-io-performance-issues)`tempdb`
 > - [Identifizieren von Problemen mit Wartevorgängen aufgrund von Speicherzuweisungen](sql-database-monitoring-with-dmvs.md#identify-memory-grant-wait-performance-issues)
+> - [TigerToolbox - Waits and Latches](https://github.com/Microsoft/tigertoolbox/tree/master/Waits-and-Latches) (TigerToolbox: Wartevorgänge und Latches)
+> - [TigerToolbox - usp_whatsup](https://github.com/Microsoft/tigertoolbox/tree/master/usp_WhatsUp)
 
 ## <a name="improving-database-performance-with-more-resources"></a>Verbesserung der Datenbankleistung mit mehr Ressourcen
 

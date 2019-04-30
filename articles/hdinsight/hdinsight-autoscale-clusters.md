@@ -1,20 +1,19 @@
 ---
 title: Automatisches Skalieren von Azure HDInsight-Clustern (Vorschau)
 description: Verwenden des HDInsight-Features „Autoskalierung“ für die automatische Skalierung von Clustern
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 04/11/2019
 ms.author: hrasheed
-ms.openlocfilehash: 28f04f5ab3cf8310a6ee3828405910d34b31591b
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 11828b3b056519d0ebe3233f078c6b3f6fc2ea1c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58229330"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997494"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatisches Skalieren von Azure HDInsight-Clustern (Vorschau)
 
@@ -62,8 +61,10 @@ Um einen HDInsight-Cluster mit einer Azure Resource Manager-Vorlage zu erstellen
     "name": "workernode",
     "targetInstanceCount": 4,
     "autoscale": {
-        "minInstanceCount": 2,
-        "maxInstanceCount": 10
+        "capacity": {
+            "minInstanceCount": 2,
+            "maxInstanceCount": 10
+        }        
     },
     "hardwareProfile": {
         "vmSize": "Standard_D13_V2"
@@ -83,7 +84,7 @@ Weitere Informationen zum Erstellen von Clustern mit Resource Manager-Vorlagen f
 
 ### <a name="enable-and-disable-autoscale-for-a-running-cluster"></a>Aktivieren und Deaktivieren der Autoskalierung für einen aktuell ausgeführten Cluster
 
-Sie können die automatische Skalierung für nach dem 1. Januar 2019 erstellte HDInsight-Cluster über das Azure-Portal aktivieren oder deaktivieren.
+Sie können die Autoskalierung nur für neue HDInsight-Cluster aktivieren oder deaktivieren.
 
 ## <a name="monitoring"></a>Überwachung
 
@@ -108,8 +109,8 @@ Die oben aufgeführten Metriken werden alle 60 Sekunden überprüft. Die automat
 
 Wenn die folgenden Bedingungen erkannt werden, fordert die automatische Skalierung ein zentrales Hochskalieren an:
 
-* „CPU insgesamt für ausstehende“ ist länger als eine Minute größer als die Anzahl der insgesamt freien CPUs.
-* „Arbeitsspeicher insgesamt für ausstehende“ ist länger als 1 Minute größer als der insgesamt freie Arbeitsspeicher.
+* „CPU insgesamt für ausstehende“ ist länger als drei Minuten größer als die Anzahl der insgesamt freien CPUs.
+* „Arbeitsspeicher insgesamt für ausstehende“ ist länger als drei Minuten größer als der insgesamt freie Arbeitsspeicher.
 
 Wir berechnen, dass eine bestimmte Anzahl neuer Workerknoten benötigt wird, um die aktuellen CPU- und Speicheranforderungen zu erfüllen, und geben dann eine zentrale Hochskalierungsanforderung aus, die diese Anzahl neuer Workerknoten hinzufügt.
 
@@ -120,7 +121,7 @@ Wenn die folgenden Bedingungen erkannt werden, fordert die automatische Skalieru
 * „CPU insgesamt für ausstehende“ ist länger als 10 Minuten kleiner als die Anzahl der insgesamt freien CPUs.
 * „Arbeitsspeicher insgesamt für ausstehende“ ist länger als 10 Minuten kleiner als der insgesamt freie Arbeitsspeicher.
 
-Basierend auf der Anzahl der AM-Container pro Knoten und der aktuellen CPU- und Arbeitsspeicheranforderungen gibt die Autoskalierung eine Anforderung zum Entfernen einer bestimmten Anzahl von Knoten aus, wobei angegeben wird, welche Knoten potenzielle Kandidaten zum Entfernen sind. Standardmäßig werden zwei Knoten in einem Zyklus entfernt.
+Basierend auf der Anzahl der AM-Container pro Knoten und der aktuellen CPU- und Arbeitsspeicheranforderungen gibt die Autoskalierung eine Anforderung zum Entfernen einer bestimmten Anzahl von Knoten aus, wobei angegeben wird, welche Knoten potenzielle Kandidaten zum Entfernen sind. Beim zentralen Herunterskalieren wird die Außerbetriebsetzung der Knoten ausgelöst, und diese werden entfernt, nachdem sie vollständig außer Betrieb gesetzt wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

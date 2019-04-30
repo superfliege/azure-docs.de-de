@@ -1,6 +1,6 @@
 ---
-title: Schützen der Kommunikation von OPC Client und OPC PLC per OPC UA-Zertifikatverwaltung von Azure IoT | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie die Kommunikation von OPC Client und OPC PLC schützen, indem Sie die zugehörigen Zertifikate per OPC Vault-Zertifizierungsstelle signieren.
+title: 'Schützen der Kommunikation von OPC-Client und OPC PLC mit OPC Vault: Azure | Microsoft-Dokumentation'
+description: Hier wird beschrieben, wie Sie die Kommunikation von OPC Client und OPC PLC schützen, indem Sie die zugehörigen Zertifikate per OPC Vault-Zertifizierungsstelle signieren.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: c437f6db21956d1be5e4f6d3512f325f37ca7308
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 30eedd982fa0536ce45506c159de6d04132e9a14
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759222"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59493996"
 ---
-# <a name="secure-the-communication-of-opc-client-and-opc-plc"></a>Schützen der Kommunikation von OPC Client und OPC PLC
+# <a name="secure-the-communication-of-opc-client-and-opc-plc"></a>Schützen der Kommunikation von OPC-Client und OPC PLC
 
-Die OPC UA-Zertifikatverwaltung von Azure IoT, auch als OPC Vault bezeichnet, ist ein Microservice, mit dem der Zertifikatlebenszyklus für OPC UA-Server- und -Clientanwendungen in der Cloud konfiguriert, registriert und verwaltet werden kann. In diesem Artikel wird veranschaulicht, wie Sie die Kommunikation von OPC Client und OPC PLC schützen, indem Sie die zugehörigen Zertifikate per OPC Vault-Zertifizierungsstelle signieren.
+OPC Vault ist ein Microservice, mit dem der Zertifikatlebenszyklus für OPC UA-Serveranwendungen und -Clientanwendungen in der Cloud konfiguriert, registriert und verwaltet werden kann. In diesem Artikel wird veranschaulicht, wie Sie die Kommunikation von OPC-Client und OPC PLC schützen, indem Sie die zugehörigen Zertifikate per OPC Vault-Zertifizierungsstelle signieren.
 
-Während des folgenden Einrichtungsvorgangs testet OPC Client die Konnektivität mit OPC PLC. Standardmäßig ist die Konnektivität nicht möglich, da beide Komponenten nicht mit den richtigen Zertifikaten bereitgestellt wurden. Wenn eine OPC UA-Komponente noch nicht mit einem Zertifikat bereitgestellt wurde, wird beim Starten ein selbstsigniertes Zertifikat generiert. Das Zertifikat kann aber von einer Zertifizierungsstelle signiert und auf der OPC UA-Komponente installiert werden. Nachdem dies für OPC Client und OPC PLC durchgeführt wurde, wird die Konnektivität aktiviert. Im folgenden Workflow ist der Prozess beschrieben. Einige Hintergrundinformationen zur OPC UA-Sicherheit finden Sie in [diesem Whitepaper](https://opcfoundation.org/wp-content/uploads/2014/05/OPC-UA_Security_Model_for_Administrators_V1.00.pdf). Die vollständigen Informationen finden Sie in der OPC UA-Spezifikation.
+Während des folgenden Einrichtungsvorgangs testet der OPC-Client die Konnektivität mit OPC PLC. Standardmäßig ist die Konnektivität nicht möglich, da beide Komponenten nicht mit den richtigen Zertifikaten bereitgestellt wurden. Wenn eine OPC UA-Komponente noch nicht mit einem Zertifikat bereitgestellt wurde, wird beim Starten ein selbstsigniertes Zertifikat generiert. Das Zertifikat kann aber von einer Zertifizierungsstelle signiert und auf der OPC UA-Komponente installiert werden. Nachdem dies für den OPC-Client und OPC PLC durchgeführt wurde, wird die Konnektivität aktiviert. Im folgenden Workflow ist der Prozess beschrieben. Einige Hintergrundinformationen zur OPC UA-Sicherheit finden Sie in [diesem Whitepaper](https://opcfoundation.org/wp-content/uploads/2014/05/OPC-UA_Security_Model_for_Administrators_V1.00.pdf). Die vollständigen Informationen finden Sie in der OPC UA-Spezifikation.
 
 Testbed: Die folgende Umgebung ist für das Testen konfiguriert.
 
 OPC Vault-Skripts:
-- Schützen der Kommunikation von OPC Client und OPC PLC, indem die zugehörigen Zertifikate per OPC Vault-Zertifizierungsstelle signiert werden.
+- Schützen der Kommunikation von OPC-Client und OPC PLC, indem die zugehörigen Zertifikate per OPC Vault-Zertifizierungsstelle signiert werden.
 
 > [!NOTE]
 > Weitere Informationen finden Sie im [GitHub-Repository](https://github.com/Azure-Samples/iot-edge-industrial-configs#testbeds).
@@ -49,7 +49,7 @@ docker-compose -f connecttest.yml up
 
 **Überprüfung**
 
-Stellen Sie im Protokoll sicher, dass beim ersten Start keine Zertifikate installiert werden. Hier ist die Protokollausgabe von OPC PLC angegeben (ähnliche Ausgabe für OPC Client):
+Stellen Sie im Protokoll sicher, dass beim ersten Start keine Zertifikate installiert werden. Hier ist die Protokollausgabe von OPC PLC angegeben (ähnliche Ausgabe für den OPC-Client):...
 ```
 opcplc-123456 | [20:51:32 INF] Trusted issuer store contains 0 certs
 opcplc-123456 | [20:51:32 INF] Trusted issuer store has 0 CRLs.
@@ -59,7 +59,7 @@ opcplc-123456 | [20:51:32 INF] Rejected certificate store contains 0 certs
 ```
 Führen Sie die obigen Vorbereitungsschritte aus, und löschen Sie die Docker-Volumes, wenn Sie sehen, dass Zertifikate gemeldet werden.
 
-Vergewissern Sie sich, dass für die Verbindung mit OPC PLC ein Fehler aufgetreten ist. Die OPC Client-Protokollausgabe sollte Folgendes enthalten:
+Vergewissern Sie sich, dass für die Verbindung mit OPC PLC ein Fehler aufgetreten ist. Die folgende Ausgabe sollte in der Protokollausgabe des OPC-Clients angezeigt werden:
 
 ```
 opcclient-123456 | [20:51:35 INF] Create secured session for endpoint URI 'opc.tcp://opcplc-123456:50000/' with timeout of 10000 ms.
@@ -71,7 +71,7 @@ Der Grund für den Fehler ist, dass das Zertifikat nicht vertrauenswürdig ist. 
 ## <a name="sign-and-install-certificates-in-opc-ua-components"></a>Signieren und Installieren von Zertifikaten in OPC UA-Komponenten
 
 **Vorbereitung**
-1. Sehen Sie sich die Protokollausgabe von Schritt 1 an, und rufen Sie die „CreateSigningRequest-Informationen“ für OPC PLC und OPC Client ab. Hier ist nur die Ausgabe für OPC PLC angegeben:
+1. Sehen Sie sich die Protokollausgabe von Schritt 1 an, und rufen Sie die „CreateSigningRequest-Informationen“ für OPC PLC und den OPC-Client ab. Hier ist nur die Ausgabe für OPC PLC angegeben:
 
     ```
     opcplc-123456 | [20:51:32 INF] ----------------------- CreateSigningRequest information ------------------
@@ -109,9 +109,9 @@ Der Grund für den Fehler ist, dass das Zertifikat nicht vertrauenswürdig ist. 
 1. Auf dieser Seite:  
     - Wählen Sie unter `Download as Base64` die Option `Certificate`, kopieren Sie die Textzeichenfolge im Feld `EncodedBase64`, und speichern Sie sie zur späteren Verwendung. Wir verwenden hierfür später die Bezeichnung `<applicationcertbase64-string>`. Wählen Sie `Back` aus.
 
-    - Wählen Sie unter `Download as Base64` die Option `Issuer`, kopieren Sie die Textzeichenfolge im Feld `EncodedBase64`, und speichern Sie sie zur späteren Verwendung. Wir verwenden hierfür später die Bezeichnung `<addissuercertbase64-string>`. Wählen Sie `Back` aus.
+    - Wählen Sie unter `Download as Base64` die Option `Issuer` aus, kopieren Sie die Textzeichenfolge im Feld `EncodedBase64`, und speichern Sie sie zur späteren Verwendung. Wir verwenden hierfür später die Bezeichnung `<addissuercertbase64-string>`. Wählen Sie `Back` aus.
 
-    - Wählen Sie unter `Download as Base64` die Option `Crl`, kopieren Sie die Textzeichenfolge im Feld `EncodedBase64`, und speichern Sie sie zur späteren Verwendung. Wir verwenden hierfür später die Bezeichnung `<updatecrlbase64-string>`. Wählen Sie `Back` aus.
+    - Wählen Sie unter `Download as Base64` die Option `Crl` aus, kopieren Sie die Textzeichenfolge im Feld `EncodedBase64`, und speichern Sie sie zur späteren Verwendung. Wir verwenden hierfür später die Bezeichnung `<updatecrlbase64-string>`. Wählen Sie `Back` aus.
 
 1. Legen Sie in PowerShell jetzt eine Variable mit dem Namen `$env:_PLC_OPT` fest:
 
@@ -121,10 +121,10 @@ Der Grund für den Fehler ist, dass das Zertifikat nicht vertrauenswürdig ist. 
     > [!NOTE] 
     > Ersetzen Sie die als Optionswerte übergebenen Zeichenfolgen durch Base64-Zeichenfolgen, die Sie von der Website abgerufen haben.
 
-Wiederholen Sie den gesamten Prozess, indem Sie mit `Register New` (Schritt 3 oben) für OPC Client beginnen. Beachten Sie hierbei lediglich die folgenden Unterschiede:
+Wiederholen Sie den gesamten Prozess, indem Sie mit `Register New` (Schritt 3 oben) für den OPC-Client beginnen. Beachten Sie hierbei lediglich die folgenden Unterschiede:
 
 - Verwenden Sie die Protokollausgabe aus `opcclient`.
-- Wählen Sie während der Registrierung unter „ApplicationType“ die Option `Client`.
+- Wählen Sie während der Registrierung unter „ApplicationType“ die Option `Client` aus.
 - Verwenden Sie `$env:_CLIENT_OPT` als Name für die PowerShell-Variable.
 
 > [!NOTE]
@@ -160,7 +160,7 @@ opcplc-123456 | [20:54:39 INF] Application certificate is for ApplicationUri 'ur
  ```
 Das Anwendungszertifikat ist vorhanden und von einer Zertifizierungsstelle signiert.
 
-Vergewissern Sie sich im Protokoll, dass nun Zertifikate installiert sind. Unten ist die Protokollausgabe von OPC PLC angegeben, und OPC Client verfügt über eine ähnliche Ausgabe.
+Vergewissern Sie sich im Protokoll, dass nun Zertifikate installiert sind. Unten ist die Protokollausgabe von OPC PLC angegeben, und der OPC-Client verfügt über eine ähnliche Ausgabe.
 ```
 opcplc-123456 | [20:54:39 INF] Trusted issuer store contains 1 certs
 opcplc-123456 | [20:54:39 INF] 01: Subject 'CN=Azure IoT OPC Vault CA, O=Microsoft Corp.' (thumbprint: BC78F1DDC3BB5D2D8795F3D4FF0C430AD7D68E83)
@@ -175,7 +175,7 @@ opcplc-123456 | [20:54:39 INF] Rejected certificate store contains 0 certs
 Der Aussteller des Anwendungszertifikats ist die Zertifizierungsstelle `CN=Azure IoT OPC Vault CA, O=Microsoft Corp.`, und OPC PLC vertraut auch allen Zertifikaten, die von dieser Zertifizierungsstelle signiert wurden.
 
 
-Vergewissern Sie sich, dass die Verbindung mit OPC PLC erfolgreich hergestellt wurde und dass OPC Client Daten von OPC PLC lesen kann. Die OPC Client-Protokollausgabe sollte Folgendes enthalten:
+Vergewissern Sie sich, dass die Verbindung mit OPC PLC erfolgreich hergestellt wurde und dass der OPC-Client Daten von OPC PLC lesen kann. Die folgende Ausgabe sollte in der Protokollausgabe des OPC-Clients angezeigt werden:
 ```
 opcclient-123456 | [20:54:42 INF] Create secured session for endpoint URI 'opc.tcp://opcplc-123456:50000/' with timeout of 10000 ms.
 opcclient-123456 | [20:54:42 INF] Session successfully created with Id ns=3;i=1085867946.
@@ -189,10 +189,10 @@ opcclient-123456 | [20:54:42 INF] Execute 'OpcClient.OpcTestAction' action on no
 opcclient-123456 | [20:54:42 INF] Action (ActionId: 000 ActionType: 'OpcTestAction', Endpoint: 'opc.tcp://opcplc-123456:50000/' Node 'i=2258') completed successfully
 opcclient-123456 | [20:54:42 INF] Value (ActionId: 000 ActionType: 'OpcTestAction', Endpoint: 'opc.tcp://opcplc-123456:50000/' Node 'i=2258'): 10/20/2018 20:54:42
 ```
-Wenn diese Ausgabe angezeigt wird, ist dies ein Hinweis darauf, dass OPC Client von OPC PLC jetzt als vertrauenswürdig angesehen wird (und umgekehrt). Beide verfügen jetzt über Zertifikate, die von einer Zertifizierungsstelle signiert wurden, und beide sehen die von der Zertifizierungsstelle signierten Zertifikate als vertrauenswürdig an.
+Wenn diese Ausgabe angezeigt wird, ist dies ein Hinweis darauf, dass der OPC-Client von OPC PLC jetzt als vertrauenswürdig angesehen wird (und umgekehrt). Beide verfügen jetzt über Zertifikate, die von einer Zertifizierungsstelle signiert wurden, und beide sehen die von der Zertifizierungsstelle signierten Zertifikate als vertrauenswürdig an.
 
 > [!NOTE] 
-> Die ersten beiden Überprüfungsschritte wurden hier zwar nur für OPC PLC angegeben, aber sie müssen auch für OPC Client ausgeführt werden.
+> Die ersten beiden Überprüfungsschritte wurden hier zwar nur für OPC PLC angegeben, aber sie müssen auch für den OPC-Client ausgeführt werden.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -200,4 +200,4 @@ Wenn diese Ausgabe angezeigt wird, ist dies ein Hinweis darauf, dass OPC Client
 Nachdem Sie nun erfahren haben, wie Sie OPC Vault für ein vorhandenes Projekt bereitstellen, lautet unser Vorschlag für den nächsten Schritt:
 
 > [!div class="nextstepaction"]
-> [Deploy OPC Twin to an existing project](howto-opc-twin-deploy-existing.md) (Bereitstellen von OPC Twin in einem vorhandenen Projekt)
+> [Bereitstellen von OPC Twin in einem vorhandenen Projekt](howto-opc-twin-deploy-existing.md)

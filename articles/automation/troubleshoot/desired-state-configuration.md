@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: ''
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/19/2018
+ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c8afa671a323e37a99be8b5a43d0a4823fe1877a
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 63bb5c6338cf230c2bb47cb0a2c03810053f970a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58800875"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002577"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Behandeln von Problemen mit Konfiguration des gewünschten Zustands (Desired State Configuration, DSC)
 
@@ -29,7 +29,7 @@ Dieser Artikel enthält Informationen zur Behandlung von Problemen mit der Konfi
 Beim Versuch, eine DSC-Konfiguration aus dem Portal zu löschen, wird der folgende Fehler angezeigt:
 
 ```error
-An error occured while deleteing the DSC configuration '<name>'.  Error-details: The arguement configurationName with the value <name> is not valid.  Valid configuration names can contain only letters,  numbers, and underscores.  The name must start with a letter.  The length of the name must be between 1 and 64 characters.
+An error occurred while deleting the DSC configuration '<name>'.  Error-details: The argument configurationName with the value <name> is not valid.  Valid configuration names can contain only letters,  numbers, and underscores.  The name must start with a letter.  The length of the name must be between 1 and 64 characters.
 ```
 
 #### <a name="cause"></a>Ursache
@@ -41,6 +41,31 @@ Der Fehler ist ein vorübergehendes Problem, das gelöst werden soll.
 * Verwenden Sie das Azure-Cmdlet „Remove-AzAutomationDscConfiguration“, um die Konfiguration zu löschen.
 * Die Dokumentation für dieses Cmdlet wurde noch nicht aktualisiert.  Nutzen Sie bis dahin bitte die Dokumentation für das AzureRM-Modul.
   * [Remove-AzureRmAutomationDSCConfiguration](/powershell/module/azurerm.automation/Remove-AzureRmAutomationDscConfiguration)
+
+### <a name="failed-to-register-agent"></a>Szenario: Fehler beim Registrieren des DSC-Agents
+
+#### <a name="issue"></a>Problem
+
+Bei der Ausführung von `Set-DscLocalConfigurationManager` oder eines anderen DSC-Cmdlets tritt der folgende Fehler auf:
+
+```error
+Registration of the Dsc Agent with the server
+https://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000 failed. The
+underlying error is: Failed to register Dsc Agent with AgentId 00000000-0000-0000-0000-000000000000 with the server htt
+ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000/Nodes(AgentId='00000000-0000-0000-0000-000000000000'). .
+    + CategoryInfo          : InvalidResult: (root/Microsoft/...gurationManager:String) [], CimException
+    + FullyQualifiedErrorId : RegisterDscAgentCommandFailed,Microsoft.PowerShell.DesiredStateConfiguration.Commands.Re
+   gisterDscAgentCommand
+    + PSComputerName        : <computerName>
+```
+
+#### <a name="cause"></a>Ursache
+
+Dieser Fehler wird normalerweise durch eine Firewall, durch einen Computer hinter einem Proxyserver oder durch andere Netzwerkfehler verursacht.
+
+#### <a name="resolution"></a>Lösung
+
+Stellen Sie sicher, dass Ihr Computer Zugriff auf die richtigen Endpunkte für Azure Automation DSC hat, und wiederholen Sie den Vorgang. Eine Liste der erforderlichen Ports und Adressen finden Sie unter [Übersicht über Azure Automation State Configuration](../automation-dsc-overview.md#network-planning).
 
 ### <a name="failed-not-found"></a>Szenario: Knoten hat den Fehlerstatus „Nicht gefunden“
 

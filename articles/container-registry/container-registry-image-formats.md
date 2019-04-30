@@ -6,14 +6,14 @@ author: dlepow
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 04/18/2019
 ms.author: danlep
-ms.openlocfilehash: e7155604339bc634078fd022e05ede5f902bc0d8
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: fe129847e685c7151a9b7ad7ea65abbd38530733
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634825"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997069"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>In Azure Container Registry unterstützte Inhaltsformate
 
@@ -21,16 +21,19 @@ Verwenden Sie ein privates Repository in Azure Container Registry, um eines der 
 
 ## <a name="docker-compatible-container-images"></a>Docker-kompatible Containerimages
 
+Die folgenden Formate für Docker-Containerimages werden unterstützt:
+
 * [Docker Image Manifest V2, Schema 1](https://docs.docker.com/registry/spec/manifest-v2-1/)
 
 * [Docker Image Manifest V2, Schema 2](https://docs.docker.com/registry/spec/manifest-v2-2/) – enthält Manifestlisten, die es Registrys ermöglichen, Images von mehreren Plattformen unter einem einzigen Verweis „image:tag“ zu speichern
 
-* [Spezifikation für das Imageformat Open Container Initiative (OCI)](https://github.com/opencontainers/image-spec/blob/master/spec.md) 
+## <a name="oci-images"></a>OCI-Images
 
+Azure Container Registry unterstützt darüber hinaus Images, die der [Spezifikation für das Imageformat der Open Container Initiative (OCI)](https://github.com/opencontainers/image-spec/blob/master/spec.md) entsprechen. Zu Verpackungsformaten zählt das Format [Singularity Image Format (SIF)](https://www.sylabs.io/2018/03/sif-containing-your-containers/).
 
 ## <a name="helm-charts"></a>Helm-Diagramme
 
-Azure Container Registry kann auch Repositorys für [Helm-Diagramme](https://helm.sh/) hosten, ein Paketformat, das zur schnellen Verwaltung und Bereitstellung von Anwendungen für Kubernetes verwendet wird. [Helm Client](https://docs.helm.sh/using_helm/#installing-helm) Version 2.11.0 oder höher wird unterstützt.
+Azure Container Registry kann Repositorys für [Helm-Diagramme](https://helm.sh/) hosten, ein Paketformat, das zur schnellen Verwaltung und Bereitstellung von Anwendungen für Kubernetes verwendet wird. [Helm Client](https://docs.helm.sh/using_helm/#installing-helm) Version 2.11.0 oder höher wird unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

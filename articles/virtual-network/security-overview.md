@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop;kumud
-ms.openlocfilehash: efce606f9c48668f569b0fb4fc45745adc6652c4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 73664359b206a9e149ebac6859df24a1263cd313
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59262141"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996780"
 ---
 # <a name="security-groups"></a>Sicherheitsgruppen
 <a name="network-security-groups"></a>
@@ -36,7 +36,7 @@ Eine Netzwerksicherheitsgruppe kann – innerhalb der [Grenzwerte](../azure-subs
 |Priorität | Eine Zahl zwischen 100 und 4.096. Regeln werden in der Reihenfolge ihrer Priorität verarbeitet. Regeln mit niedrigeren Zahlen werden vor Regeln mit höheren Zahlen verarbeitet, weil die Priorität für niedrigere Zahlen höher ist. Nachdem sich für den Datenverkehr eine Übereinstimmung mit einer Regel ergibt, wird die Verarbeitung angehalten. Daher werden alle Regeln mit niedrigerer Priorität (höherer Zahl), die über die gleichen Attribute wie Regeln mit höheren Prioritäten verfügen, nicht verarbeitet.|
 |Quelle oder Ziel| Beliebiges Element oder eine einzelne IP-Adresse, ein CIDR-Block (klassenloses domänenübergreifendes Routing, z.B. 10.0.0.0/24), ein [Diensttag](#service-tags) oder eine [Anwendungssicherheitsgruppe](#application-security-groups). Wenn Sie eine Adresse für eine Azure-Ressource angeben, geben Sie die private IP-Adresse an, die der Ressource zugewiesen ist. Netzwerksicherheitsgruppen werden verarbeitet, nachdem Azure eine öffentliche IP-Adresse in eine private IP-Adresse für eingehenden Datenverkehr übersetzt hat und bevor Azure eine private IP-Adresse in eine öffentliche IP-Adresse für ausgehenden Datenverkehr übersetzt. Erfahren Sie mehr über Azure-[IP-Adressen](virtual-network-ip-addresses-overview-arm.md). Durch das Angeben eines Bereichs, eines Diensttags oder einer Anwendungssicherheitsgruppe haben Sie die Möglichkeit, weniger Sicherheitsregeln zu erstellen. Die Option zum Angeben mehrerer einzelner IP-Adressen und Bereiche (die Angabe mehrerer Diensttags oder Anwendungsgruppen ist nicht zulässig) in einer Regel wird als [Ergänzte Sicherheitsregeln](#augmented-security-rules) bezeichnet. Ergänzte Sicherheitsregeln können nur in Netzwerksicherheitsgruppen erstellt werden, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden. Es ist nicht möglich, mehrere IP-Adressen und IP-Adressbereiche in Netzwerksicherheitsgruppen anzugeben, die mit dem klassischen Bereitstellungsmodell erstellt wurden. Erfahren Sie mehr über [Azure-Bereitstellungsmodelle](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
 |Protokoll     | TCP, UDP oder „Any“ (Alle), also (aber nicht nur) z.B. TCP, UDP und ICMP. Das Angeben von ICMP allein ist unzulässig. Wenn Sie ICMP benötigen, müssen Sie also „Any“ (Alle) verwenden. |
-|Richtung| Gibt an, ob die Regel für ein- oder ausgehenden Datenverkehr gilt.|
+|Direction| Gibt an, ob die Regel für ein- oder ausgehenden Datenverkehr gilt.|
 |Portbereich     |Sie können einen einzelnen Port oder einen Bereich mit Ports angeben. Mögliche Angaben sind beispielsweise „80“ oder „10.000 - 10.005“. Das Angeben von Bereichen ermöglicht Ihnen die Erstellung von weniger Sicherheitsregeln. Ergänzte Sicherheitsregeln können nur in Netzwerksicherheitsgruppen erstellt werden, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden. In Netzwerksicherheitsgruppen, die mit dem klassischen Bereitstellungsmodell erstellt wurden, können Sie in derselben Sicherheitsregel nicht mehrere Ports oder Portbereiche angeben.   |
 |Aktion     | Zulassen oder Verweigern        |
 
@@ -57,7 +57,7 @@ Mit ergänzten Sicherheitsregeln wird die Sicherheitsdefinition für virtuelle N
 
  Die folgenden Diensttags können zum Definieren von Sicherheitsregeln verwendet werden. Ihre Namen unterscheiden sich je nach [Azure-Bereitstellungsmodell](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) leicht.
 
-* **VirtualNetwork** (Resource Manager) (**VIRTUAL_NETWORK** für das klassische Bereitstellungsmodell): Dieses Tag enthält den VM-Adressraum (alle für das virtuelle Netzwerk definierten CIDR-Bereiche), alle verbundenen lokalen Adressräume und [per Peering verknüpfte](virtual-network-peering-overview.md) virtuelle Netzwerke oder virtuelle Netzwerke, die mit einem [Gateway des virtuellen Netzwerks](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) verbunden sind.
+* **VirtualNetwork** (Resource Manager) (**VIRTUAL_NETWORK** für das klassische Bereitstellungsmodell): Dieses Tag enthält den VM-Adressraum (alle für das virtuelle Netzwerk definierten CIDR-Bereiche), alle verbundenen lokalen Adressräume und [per Peering verknüpfte](virtual-network-peering-overview.md) virtuelle Netzwerke oder virtuelle Netzwerke, die mit einem [Gateway des virtuellen Netzwerks](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und Adresspräfixen verbunden sind, die für [benutzerdefinierte Routen](virtual-networks-udr-overview.md) verwendet werden.
 * **AzureLoadBalancer** (Resource Manager) (**AZURE_LOADBALANCER** für das klassische Bereitstellungsmodell): Dieses Tag gibt den Lastenausgleich der Azure-Infrastruktur an. Das Tag wird in eine [virtuelle IP-Adresse des Hosts](security-overview.md#azure-platform-considerations) (168.63.129.16) umgewandelt, die als Ausgangspunkt für die Integritätstests von Azure fungiert. Sie können diese Regel außer Kraft setzen, wenn Sie den Lastenausgleich von Azure nicht verwenden.
 * **Internet** (Resource Manager) (**INTERNET** für das klassische Bereitstellungsmodell): Dieses Tag gibt den IP-Adressraum an, der außerhalb des virtuellen Netzwerks liegt und über das öffentliche Internet erreichbar ist. Der Adressbereich schließt den [Azure-eigenen öffentlichen IP-Adressraum](https://www.microsoft.com/download/details.aspx?id=41653) ein.
 * **AzureCloud** (nur Resource Manager): Dieses Tag gibt den IP-Adressraum für Azure an, einschließlich aller [öffentlichen IP-Adressen für das Datencenter](https://www.microsoft.com/download/details.aspx?id=41653). Wenn Sie *AzureCloud* als Wert angeben, wird der Datenverkehr für öffentliche Azure-IP-Adressen zugelassen oder verweigert. Falls Sie den Zugriff auf AzureCloud nur für eine bestimmte [Region](https://azure.microsoft.com/regions) zulassen möchten, können Sie die Region angeben. Falls Sie den Zugriff auf AzureCloud von Azure beispielsweise nur für die Region „USA, Osten“ zulassen möchten, können Sie *AzureCloud.EastUS* als Diensttag angeben. 
@@ -80,6 +80,7 @@ Mit ergänzten Sicherheitsregeln wird die Sicherheitsdefinition für virtuelle N
 * **AzureMonitor** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des AzureMonitor-Diensts an. Wenn Sie *AzureMonitor* als Wert angeben, wird der Datenverkehr für AzureMonitor zugelassen oder verweigert. 
 * **ServiceFabric** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des ServiceFabric-Diensts an. Wenn Sie *ServiceFabric* als Wert angeben, wird der Datenverkehr für ServiceFabric zugelassen oder verweigert. 
 * **AzureMachineLearning** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des AzureMachineLearning-Diensts an. Wenn Sie *AzureMachineLearning* als Wert angeben, wird der Datenverkehr für AzureMachineLearning zugelassen oder verweigert. 
+* **BatchNodeManagement** (nur Resource Manager): Dieses Tag gibt die Adresspräfixe des Azure-BatchNodeManagement-Diensts an. Wenn Sie als Wert *BatchNodeManagement* angeben, wird Datenverkehr vom Batch-Dienst zu den Computeknoten zugelassen oder verweigert.
 
 > [!NOTE]
 > Mit Diensttags von Azure-Diensten werden die Adresspräfixe der spezifischen verwendeten Cloud angegeben. 

@@ -1,7 +1,7 @@
 ---
 title: Interpretierbarkeit von Modellen
 titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie mithilfe des Azure Machine Learning Interpretability SDK erklären können, warum Ihr Modell Vorhersagen trifft. Es kann während des Trainings und der Herleitung von Rückschlüssen verwendet werden, um zu verstehen, wie Ihr Modell Vorhersagen trifft.
+description: Hier erfahren Sie, wie Sie mithilfe des Azure Machine Learning Interpretability SDK erklären können, warum Ihr Modell Vorhersagen trifft. Es kann während des Trainings und der Herleitung von Rückschlüssen verwendet werden, um zu verstehen, wie Ihr Modell Vorhersagen trifft.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,14 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 04/09/2019
-ms.openlocfilehash: fbcafb61ecd69f58bb3c14d1b15f36f1b21f2833
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 668551603dfa2a9c42f4538fd9a66ee646e1feb7
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59494439"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682456"
 ---
-# <a name="azure-machine-learning-interpretability-sdk"></a>Azure Machine Learning Interpretability SDK
+# <a name="model-interpretability-with-azure-machine-learning-service"></a>Modellinterpretierbarkeit mit Azure Machine Learning Service
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe des Azure Machine Learning Interpretability SDK erklären können, warum Ihr Modell genau die getroffenen Vorhersagen getroffen hat. Die Erklärung des Modells ist aus folgenden Gründen wichtig:
 
@@ -25,9 +25,10 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe des Azure Machine Learning Inte
 * Als Data Scientist möchten Sie verstehen, **wie Sie das Modell abfragen können, um Erkenntnisse zu gewinnen**. Sie benötigen auch Tools, um fundierte Entscheidungen darüber zu treffen, **wie Sie Ihr Modell verbessern können**.
 * Als Unternehmen müssen Sie **das Verhalten des Modells mit unterschiedlichen Eingabeverteilungen** und **das Verhalten des Modells bei Analyse spezifischer Eingaben** verstehen.
 
-Interpretierbarkeit beim maschinellem Lernen ist in zwei Phasen von des zugehörigen Entwicklungszyklus wichtig: **Training** und **Herleitung von Rückschlüssen**:
+Interpretierbarkeit beim maschinellem Lernen ist in zwei Phasen des zugehörigen Entwicklungszyklus wichtig: 
 
 * Beim **Training**: Zuständige für den Entwurf und die Auswertung von Modellen benötigen Interpretationstools, um den beteiligten Akteuren die Ergebnisse eines Modells zu erklären und Vertrauen aufzubauen. Sie benötigen auch Einblicke in das Modell, damit sie das Modell debuggen und Entscheidungen darüber treffen können, ob das Verhalten ihren Zielen entspricht. Schließlich müssen sie sicherstellen, dass das Modell nicht voreingenommen ist.
+
 * Beim **Herleiten von Rückschlüssen**: Vorhersagen müssen den Personen, die Ihr Modell verwenden, verständlich sein. Warum hat das Modell beispielsweise ein Hypothekendarlehen abgelehnt oder vorhergesagt, dass ein Anlageportfolio mit einem höheren Risiko behaftet ist?
 
 Das Azure Machine Learning Interpretability SDK enthält von Microsoft entwickelte Technologien und bewährte Bibliotheken von Drittanbietern (z. B. SHAP und LIME). Das SDK erstellt eine gemeinsame API für die integrierten Bibliotheken und integriert Azure Machine Learning Services. Mit diesem SDK können Sie Machine Learning-Modelle **global für alle Daten** oder **lokal für einen bestimmten Datenpunkt** mithilfe modernster Technologien auf einfache und skalierbare Weise erklären.
@@ -48,7 +49,7 @@ Azure Machine Learning Interpretability gibt eine Reihe von Informationen darüb
 Das Azure Machine Learning Interpretability SDK besteht aus zwei Python-Paketen:
 
 * [azureml.explain.model](https://docs.microsoft.com/python/api/azureml-explain-model/?view=azure-ml-py): das Hauptpaket, das die Funktionen enthält, die von Microsoft unterstützt werden.
-* `azureml.contrib.explain.model` : Vorschau- und experimentelle Funktionen, die Sie ausprobieren können.
+* `azureml.contrib.explain.model`: Vorschau- und experimentelle Funktionen, die Sie ausprobieren können.
 
     > [!IMPORTANT]
     > Der Inhalt von „azureml.contrib.explain.model“ wird nicht vollständig unterstützt. Sobald die experimentellen Funktionen ausgereift sind, werden sie schrittweise in das Hauptpaket verlagert.
@@ -80,7 +81,7 @@ Derzeit verwendet `TabularExplainer` die folgende Logik, um die direkten Explain
 
 1. Wenn es sich um eine baumstrukturbasiertes Modell handelt, `TreeExplainer` anwenden, andernfalls
 2. Wenn es sich um eine DNN-Modell handelt, `DeepExplainer` anwenden, andernfalls
-3. Als Blackbox-Modell behandeln und Folgendes anwenden `KernelExplainer`
+3. Als Blackbox-Modell behandeln und `KernelExplainer` anwenden
 
 Die in `TabularExplainer` integrierte Intelligenz wird ausgefeilter werden, da mehr Bibliotheken in das SDK integriert werden und wir mehr über die Vor- und Nachteile der einzelnen Explainer erfahren.
 
@@ -91,7 +92,7 @@ Die in `TabularExplainer` integrierte Intelligenz wird ausgefeilter werden, da m
 
 Das folgende Diagramm zeigt die Beziehung zwischen den beiden Gruppen von direkten und Meta-Explainern.
 
-[![MArchitektur von Machine Learning Interpretability](./media/machine-learning-interpretability-explainability/interpretability-architecture.png)](./media/machine-learning-interpretability-explainability/interpretability-architecture.png#lightbox)
+[![Architektur von Machine Learning Interpretability](./media/machine-learning-interpretability-explainability/interpretability-architecture.png)](./media/machine-learning-interpretability-explainability/interpretability-architecture.png#lightbox)
 
 ### <a name="models-supported"></a>Unterstützte Modelle
 

@@ -5,15 +5,15 @@ services: storage
 author: xyh1
 ms.service: storage
 ms.topic: article
-ms.date: 03/26/2019
+ms.date: 04/18/2019
 ms.author: hux
 ms.subservice: blobs
-ms.openlocfilehash: 32328b89e8a220269f0d07c3700566db5b899d5b
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 7fd9992db79b2517256d85ca3fd8f3bf409afa48
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445688"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996028"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>Speichern unternehmenskritischer Daten in Azure-Blobspeicher
 
@@ -41,7 +41,7 @@ Für unveränderlichen Speicher wird Folgendes unterstützt:
 
 - **Konfiguration auf Containerebene**: Benutzer können zeitbasierte Aufbewahrungsrichtlinien und Tags für gesetzliche Aufbewahrungspflichten auf Containerebene konfigurieren. Mit den Einstellungen auf Containerebene können Benutzer zeitbasierte Aufbewahrungsrichtlinien erstellen und sperren, Aufbewahrungszeiträume verlängern, Zeiträume für gesetzliche Aufbewahrungspflichten festlegen und aufheben usw. Diese Richtlinien gelten für alle Blobs im Container (vorhandene und neue).
 
-- **Unterstützung der Überwachungsprotokollierung**: Jeder Container enthält ein Überwachungsprotokoll. Darin werden bis zu fünf zeitbasierte Aufbewahrungsbefehle für gesperrte zeitbasierte Aufbewahrungsrichtlinien mit maximal drei Protokollen zur Verlängerung von Aufbewahrungszeiträumen angezeigt. Für die zeitbasierte Aufbewahrung enthält das Protokoll Benutzer-ID, Befehlstyp, Zeitstempel und Aufbewahrungszeitraum. Für Zeiträume zur gesetzlichen Aufbewahrungspflicht enthält das Protokoll Benutzer-ID, Befehlstyp, Zeitstempel und die entsprechenden Tags. Dieses Protokoll wird für die Lebensdauer des Containers gemäß den SEC 17a-4(f)-Bestimmungsrichtlinien aufbewahrt. Im [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/activity-logs-overview.md) werden umfassendere Protokolldaten mit allen Aktivitäten auf Steuerungsebene angezeigt. Wenn Sie [Azure-Diagnoseprotokolle](../../azure-monitor/platform/diagnostic-logs-overview.md) aktivieren, werden dagegen nur Vorgänge auf Datenebene aufbewahrt und angezeigt. Der Benutzer ist für die dauerhafte Speicherung dieser Protokolle verantwortlich, die aus gesetzlichen oder anderen Gründen ggf. erforderlich ist.
+- **Unterstützung der Überwachungsprotokollierung**: Jeder Container enthält ein Richtlinien-Überwachungsprotokoll. Es enthält bis zu sieben zeitbasierte Aufbewahrungsbefehle für gesperrte zeitbasierte Aufbewahrungsrichtlinien sowie die Benutzer-ID, den Befehlstyp, Zeitstempel und den Aufbewahrungszeitraum. Für Zeiträume zur gesetzlichen Aufbewahrungspflicht enthält das Protokoll Benutzer-ID, Befehlstyp, Zeitstempel und die entsprechenden Tags. Dieses Protokoll wird für die Lebensdauer der Richtlinie gemäß den SEC 17a-4(f)-Bestimmungsrichtlinien aufbewahrt. Im [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/activity-logs-overview.md) werden umfassendere Protokolldaten mit allen Aktivitäten auf Steuerungsebene angezeigt. Wenn Sie [Azure-Diagnoseprotokolle](../../azure-monitor/platform/diagnostic-logs-overview.md) aktivieren, werden dagegen nur Vorgänge auf Datenebene aufbewahrt und angezeigt. Der Benutzer ist für die dauerhafte Speicherung dieser Protokolle verantwortlich, die aus gesetzlichen oder anderen Gründen ggf. erforderlich ist.
 
 ## <a name="how-it-works"></a>So funktioniert's
 
@@ -82,15 +82,28 @@ In der folgenden Tabelle sind die Arten von Blobvorgängen angegeben, die für d
 
 <sup>1</sup> Die Anwendung lässt diese Vorgänge zu, um einmalig ein neues Blob zu erstellen. Alle nachfolgenden Überschreibungsvorgänge in einem vorhandenen Blobpfad eines unveränderlichen Containers sind nicht zulässig.
 
+## <a name="supported-values"></a>Unterstützte Werte
+
+### <a name="time-based-retention"></a>Zeitbasierte Aufbewahrung
+- Ein Speicherkonto kann über maximal 1.000 Container mit gesperrten zeitbasierten Unveränderlichkeitsrichtlinien verfügen.
+- Der Mindestwert für den Aufbewahrungszeitraum beträgt einen Tag. Der Höchstwert beträgt 146.000 Tage (400 Jahre).
+- Für einen Container sind höchstens fünf Bearbeitungen zur Verlängerung eines Aufbewahrungszeitraums gesperrte zeitbasierte unveränderliche Richtlinien möglich.
+- Für einen Container werden höchstens sieben Überwachungsprotokolle für die zeitbasierte Aufbewahrungsrichtlinie für die Dauer der Richtlinie aufbewahrt.
+
+### <a name="legal-hold"></a>Gesetzliche Aufbewahrungspflicht
+- Ein Speicherkonto kann über maximal 1.000 Container mit einer Einstellung der gesetzlichen Aufbewahrungspflicht verfügen.
+- Ein Container kann über maximal 10 Tags für die gesetzliche Aufbewahrungspflicht verfügen.
+- Die Mindestlänge eines Tags für die gesetzliche Aufbewahrungspflicht beträgt drei alphanumerische Zeichen. Die Höchstlänge beträgt 23 alphanumerische Zeichen.
+- Für einen Container werden höchstens zehn Richtlinien-Überwachungsprotokolle für die gesetzliche Aufbewahrungspflicht für die Dauer der Richtlinie aufbewahrt.
+
 ## <a name="pricing"></a>Preise
 
 Für die Nutzung dieses Features fallen keine zusätzlichen Gebühren an. Unveränderliche Daten werden auf die gleiche Weise wie reguläre, änderbare Daten abgerechnet. Ausführliche Informationen zu Preisen von Azure Blob Storage finden Sie auf der [Seite mit den Preisen für Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="getting-started"></a>Erste Schritte
-Unveränderlicher Speicher steht nur für Universell v2-Konten und Blobspeicherkonten zur Verfügung. Dieses Konto muss über den [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) verwaltet werden. Informationen zum Aktualisieren eines vorhandenen Kontos vom Typ „Universell v1“ finden Sie unter [Aktualisieren eines Speicherkontos](../common/storage-account-upgrade.md).
+Unveränderlicher Speicher steht nur für Universell v2-Konten und Blobspeicherkonten zur Verfügung. Diese Konten müssen über [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) verwaltet werden. Informationen zum Aktualisieren eines vorhandenen Kontos vom Typ „Universell v1“ finden Sie unter [Aktualisieren eines Speicherkontos](../common/storage-account-upgrade.md).
 
 Die aktuellen Releases von [Azure-Portal](https://portal.azure.com), [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) und [Azure PowerShell](https://github.com/Azure/azure-powershell/releases) unterstützen unveränderlichen Speicher für Azure-Blobspeicher. [Unterstützung für Clientbibliotheken](#client-libraries) ist ebenfalls vorhanden.
-
 
 ### <a name="azure-portal"></a>Azure-Portal
 
@@ -152,16 +165,6 @@ Die folgenden Clientbibliotheken unterstützen unveränderlichen Speicher für A
 - [Python-Clientbibliothek Version 2.0.0 Release Candidate 2 und höher](https://pypi.org/project/azure-mgmt-storage/2.0.0rc2/)
 - [Java-Clientbibliothek](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/storage/resource-manager/Microsoft.Storage/preview/2018-03-01-preview)
 
-## <a name="supported-values"></a>Unterstützte Werte
-
-- Der Mindestwert für den Aufbewahrungszeitraum beträgt einen Tag. Der Höchstwert beträgt 146.000 Tage (400 Jahre).
-- Ein Speicherkonto kann über maximal 1.000 Container mit gesperrten Unveränderlichkeitsrichtlinien verfügen.
-- Ein Speicherkonto kann über maximal 1.000 Container mit einer Einstellung der gesetzlichen Aufbewahrungspflicht verfügen.
-- Ein Container kann über maximal 10 Tags für die gesetzliche Aufbewahrungspflicht verfügen.
-- Die Höchstlänge eines Tags für die gesetzliche Aufbewahrungspflicht beträgt 23 alphanumerische Zeichen. Die Mindestlänge 3 Zeichen.
-- Ein Container kann über maximal drei zulässige Verlängerungen des Aufbewahrungszeitraums für gesperrte Unveränderlichkeitsrichtlinien verfügen.
-- Ein Container mit einer gesperrten Unveränderlichkeitsrichtlinie kann über maximal fünf Protokolle für zeitbasierte Aufbewahrungsrichtlinien verfügen, und maximal 10 Protokolle für Richtlinien zur gesetzlichen Aufbewahrungspflicht werden für die Lebensdauer des Containers aufbewahrt.
-
 ## <a name="faq"></a>Häufig gestellte Fragen
 
 **Kann Dokumentation zum Thema WORM-Konformität bereitgestellt werden?**
@@ -178,7 +181,7 @@ Nein. Sie können unveränderlichen Speicher mit allen vorhandenen oder neu erst
 
 **Kann ich sowohl eine Richtlinie für eine gesetzliche Aufbewahrungspflicht als auch eine Richtlinie für die zeitbasierte Aufbewahrung anwenden?**
 
-Für einen Container können gleichzeitig eine gesetzliche Aufbewahrungspflicht und eine zeitbasierte Aufbewahrungsrichtlinie gelten. Alle Blobs in diesem Container verbleiben so lange im unveränderlichen Zustand, bis alle gesetzlichen Aufbewahrungspflichten aufgehoben wurden. Dies gilt auch, wenn die effektive Aufbewahrungsdauer bereits abgelaufen ist. Dagegen verbleibt ein Blob auch dann so lange im unveränderlichen Zustand, bis der effektive Aufbewahrungszeitraum abgelaufen ist, wenn alle Zeiträume für die gesetzliche Aufbewahrungspflicht aufgehoben wurden.
+Ja, für einen Container können gleichzeitig eine gesetzliche Aufbewahrungspflicht und eine zeitbasierte Aufbewahrungsrichtlinie gelten. Alle Blobs in diesem Container verbleiben so lange im unveränderlichen Zustand, bis alle gesetzlichen Aufbewahrungspflichten aufgehoben wurden. Dies gilt auch, wenn die effektive Aufbewahrungsdauer bereits abgelaufen ist. Dagegen verbleibt ein Blob auch dann so lange im unveränderlichen Zustand, bis der effektive Aufbewahrungszeitraum abgelaufen ist, wenn alle Zeiträume für die gesetzliche Aufbewahrungspflicht aufgehoben wurden.
 
 **Gelten Richtlinien für die gesetzliche Aufbewahrungspflicht nur für rechtliche Abläufe, oder gibt es auch andere Nutzungsszenarien?**
 
@@ -208,7 +211,7 @@ Ja. Wenn eine zeitbasierte Aufbewahrungsrichtlinie erstellt wird, befindet sie s
 
 Ja. Das [vorläufige Löschen für Azure-Blobspeicher](storage-blob-soft-delete.md) gilt für alle Container eines Speicherkontos, unabhängig von einer Richtlinie für die gesetzliche Aufbewahrungspflicht oder eine zeitbasierte Aufbewahrungsrichtlinie. Wir empfehlen Ihnen, das vorläufige Löschen als zusätzlichen Schutz zu verwenden, bevor Richtlinien für den unveränderlichen WORM-Zustand angewendet und bestätigt werden. 
 
-**Ist die Funktion auch für nationale und behördliche Cloudumgebungen verfügbar?**
+**Wo ist die Funktion verfügbar?**
 
 Unveränderliche Speicher sind in den Regionen Azure Public, China und Behörden verfügbar. Wenn unveränderlicher Speicher in Ihrer Region nicht verfügbar ist, können Sie sich an den Support wenden und die E-Mail-Adresse azurestoragefeedback@microsoft.com nutzen.
 

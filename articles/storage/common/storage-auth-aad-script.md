@@ -1,29 +1,29 @@
 ---
-title: Ausführen von Azure CLI- oder PowerShell-Befehlen unter einer Azure AD-Identität für den Zugriff auf Blob- und Warteschlangendaten | Microsoft-Dokumentation
-description: Die Azure-Befehlszeilenschnittstelle und PowerShell unterstützen die Anmeldung mit einer Azure AD-Identität zum Ausführen von Befehlen für Azure Storage-Blobs und -Warteschlangen und die enthaltenen Daten. Ein Zugriffstoken wird jeweils für die Sitzung bereitgestellt und zum Autorisieren von Aufrufvorgängen verwendet. Die Berechtigungen hängen von der RBAC-Rolle ab, die der Azure AD-Identität zugewiesen ist.
+title: Ausführen von Azure CLI- oder PowerShell-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Blob- oder Warteschlangendaten | Microsoft-Dokumentation
+description: Die Azure-Befehlszeilenschnittstelle (Azure CLI) und PowerShell unterstützen die Anmeldung mit Azure AD-Anmeldeinformationen zum Ausführen von Befehlen für Daten in Azure Storage-Blobs und -Warteschlangen. Ein Zugriffstoken wird jeweils für die Sitzung bereitgestellt und zum Autorisieren von Aufrufvorgängen verwendet. Die Berechtigungen hängen von der RBAC-Rolle (Role-Based Access Control = rollenbasierte Zugriffssteuerung) ab, die dem Azure AD-Sicherheitsprinzipal zugewiesen ist.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/26/2019
+ms.date: 04/19/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: a0972beff48e07b6ce8afdcec10581300f59ed41
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 96be1e600c8d5895cc0eb5b058ce17f7265fa0a9
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803577"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149647"
 ---
-# <a name="use-an-azure-ad-identity-to-access-blob-and-queue-data-with-cli-or-powershell"></a>Verwenden einer Azure AD-Identität für den Zugriff auf Blob- und Warteschlangendaten über die Befehlszeilenschnittstelle oder PowerShell
+# <a name="run-azure-cli-or-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Ausführen von Azure CLI- oder PowerShell-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Blob- oder Warteschlangendaten
 
-Azure Storage umfasst Erweiterungen für die Azure-Befehlszeilenschnittstelle und PowerShell, mit denen Sie sich anmelden und Skriptbefehle unter einer Azure Active Directory-Identität (Azure AD) ausführen können. Eine Azure AD-Identität kann ein Benutzer, eine Gruppe, ein Anwendungsdienstprinzipal oder eine [verwaltete Identität für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md) sein. Sie können der Azure AD-Identität über die rollenbasierte Zugriffssteuerung (RBAC) Berechtigungen für den Zugriff auf Blob- und Warteschlangendaten zuweisen. Weitere Informationen zu RBAC-Rollen in Azure Storage finden Sie unter [Verwalten der Zugriffsrechte für Azure Storage-Daten mit RBAC](storage-auth-aad-rbac.md).
+Azure Storage bietet Erweiterungen für die Azure-Befehlszeilenschnittstelle und PowerShell, mit deren Hilfe Sie sich mit Azure Active Directory-Anmeldeinformationen (Azure AD) anmelden und Skriptbefehle ausführen können. Wenn Sie sich mit Azure AD-Anmeldeinformationen bei der Azure-Befehlszeilenschnittstelle oder PowerShell anmelden, wird ein OAuth 2.0-Zugriffstoken zurückgegeben. Dieses Token wird dann automatisch von der Befehlszeilenschnittstelle bzw. PowerShell verwendet, um nachfolgende Datenvorgänge für Blob oder Queue Storage zu autorisieren. Für unterstützte Vorgänge müssen Sie mit dem Befehl keinen Kontoschlüssel und kein SAS-Token mehr übergeben.
 
-Wenn Sie sich bei der Azure-Befehlszeilenschnittstelle oder PowerShell mit einer Azure AD-Identität anmelden, wird ein Zugriffstoken für den Zugriff auf Azure Storage mit dieser Identität zurückgegeben. Dieses Token wird dann automatisch von der Befehlszeilenschnittstelle oder PowerShell verwendet, um Vorgänge in Azure Storage zu autorisieren. Für unterstützte Vorgänge müssen Sie mit dem Befehl keinen Kontoschlüssel und kein SAS-Token mehr übergeben.
+Sie können einem Azure AD-Sicherheitsprinzipal über die rollenbasierte Zugriffssteuerung (RBAC) Berechtigungen für Blob- und Warteschlangendaten zuweisen. Weitere Informationen zu RBAC-Rollen in Azure Storage finden Sie unter [Verwalten der Zugriffsrechte für Azure Storage-Daten mit RBAC](storage-auth-aad-rbac.md).
 
 ## <a name="supported-operations"></a>Unterstützte Vorgänge
 
-Die Erweiterungen werden für Vorgänge in Containern und Warteschlangen unterstützt. Welche Vorgänge Sie aufrufen können, hängt von den Berechtigungen der Azure AD-Identität ab, mit der Sie sich bei der Azure-Befehlszeilenschnittstelle oder PowerShell anmelden. Die Berechtigungen für Azure Storage-Container oder -Warteschlangen werden über die rollenbasierte Zugriffssteuerung (RBAC) zugewiesen. Wenn der Identität z.B. die Rolle „Datenleser“ zugewiesen wird, können Sie Skriptbefehle ausführen, die Daten aus einem Container oder einer Warteschlange lesen. Wenn der Identität die Rolle „Mitwirkender an Daten“ zugewiesen wird, können Sie Skriptbefehle ausführen, die einen Container oder eine Warteschlange oder die darin enthaltenen Daten lesen, schreiben oder löschen. 
+Die Erweiterungen werden für Vorgänge in Containern und Warteschlangen unterstützt. Welche Vorgänge Sie aufrufen können, hängt von den Berechtigungen des Azure AD-Sicherheitsprinzipals ab, mit dem Sie sich bei der Azure-Befehlszeilenschnittstelle oder PowerShell anmelden. Die Berechtigungen für Azure Storage-Container oder -Warteschlangen werden über die rollenbasierte Zugriffssteuerung (RBAC) zugewiesen. Wenn Sie beispielsweise die Rolle **Blobdatenleser** zugewiesen haben, können Sie Skriptbefehle ausführen, die Daten aus einem Container oder einer Warteschlange lesen. Haben Sie die Rolle **Mitwirkender an Blobdaten** zugewiesen, können Sie Skriptbefehle ausführen, die einen Container oder eine Warteschlange bzw. die darin enthaltenen Daten lesen, schreiben oder löschen. 
 
 Einzelheiten zu den Berechtigungen, die für die einzelnen Azure Storage-Vorgänge in einem Container oder einer Warteschlange erforderlich sind, finden Sie unter [Berechtigungen für das Aufrufen von REST-Vorgängen](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations).  
 
@@ -129,5 +129,5 @@ Im folgenden Beispiel sehen Sie, wie in einem neuen Speicherkonto mithilfe Ihrer
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu RBAC-Rollen für Azure Storage finden Sie unter [Verwalten der Zugriffsrechte für Speicherdaten mit RBAC](storage-auth-aad-rbac.md).
-- Informationen zur Verwendung verwalteter Identitäten für Azure-Ressourcen mit Azure Storage finden Sie unter [Authentifizieren des Zugriffs auf Blobs und Warteschlangen mit verwalteten Azure-Identitäten für Azure-Ressourcen](storage-auth-aad-msi.md).
+- Informationen zur Verwendung verwalteter Identitäten für Azure-Ressourcen mit Azure Storage finden Sie unter [Authentifizieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory und verwalteten Identitäten für Azure-Ressourcen](storage-auth-aad-msi.md).
 - Informationen zum Autorisieren des Zugriffs auf Container und Warteschlangen aus Ihren Speicheranwendungen finden Sie unter [Verwenden von Azure AD mit Speicheranwendungen](storage-auth-aad-app.md).

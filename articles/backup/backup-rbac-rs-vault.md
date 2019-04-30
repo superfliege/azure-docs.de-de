@@ -3,17 +3,17 @@ title: Verwalten von Sicherungen mit der rollenbasierten Zugriffssteuerung in Az
 description: Verwenden Sie die rollenbasierte Zugriffssteuerung zum Verwalten des Zugriffs auf Vorgänge der Sicherungsverwaltung im Recovery Services-Tresor.
 services: backup
 author: trinadhk
-manager: shreeshd
+manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 12/09/2018
+ms.date: 04/17/2019
 ms.author: trinadhk
-ms.openlocfilehash: e86595ceb940ebcfa702823e9c9b8ad3ef50bb45
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: ed3797183e13a00d2c5381fa6449c111c3bc9ab9
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674632"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682524"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten von Azure Backup-Wiederherstellungspunkten
 Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure. Mithilfe von RBAC können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen.
@@ -60,7 +60,24 @@ In der folgenden Tabelle sind die Aktionen der Sicherungsverwaltung und die ents
 | Löschen der registrierten lokalen Instanz von Windows Server/Client/SCDPM oder Azure Backup Server | Mitwirkender für Sicherungen | Wiederherstellungstresorressource |
 
 > [!IMPORTANT]
-> Wenn Sie als Teil der VM-Einstellungen den VM-Mitwirkenden in einem VM-Ressourcenbereich angeben und auf „Sicherung“ klicken, öffnet sich der Bildschirm „Sicherung aktivieren“, obwohl die VM bereits gesichert ist, da der Aufruf zur Überprüfung des Sicherungsstatus nur auf Abonnementebene funktioniert. Um dies zu vermeiden, navigieren Sie entweder zum Tresor und öffnen die Sicherungselementansicht der VM, oder geben Sie die Rolle „VM-Mitwirkender“ auf Abonnementebene an. 
+> Wenn Sie als Teil der VM-Einstellungen den VM-Mitwirkenden in einem VM-Ressourcenbereich angeben und auf „Sicherung“ klicken, öffnet sich der Bildschirm „Sicherung aktivieren“, obwohl die VM bereits gesichert ist, da der Aufruf zur Überprüfung des Sicherungsstatus nur auf Abonnementebene funktioniert. Um dies zu vermeiden, navigieren Sie entweder zum Tresor und öffnen die Sicherungselementansicht der VM, oder geben Sie die Rolle „VM-Mitwirkender“ auf Abonnementebene an.
+
+## <a name="minimum-role-requirements-for-the-azure-file-share-backup"></a>Mindestanforderungen an Rollen für die Sicherung von Azure-Dateifreigaben
+In der folgenden Tabelle sind die Aktionen der Sicherungsverwaltung und die entsprechende Rolle aufgeführt, die zum Ausführen des Vorgangs für die Azure-Dateifreigabe erforderlich ist.
+
+| Verwaltungsvorgang | Erforderliche Rolle | Ressourcen |
+| --- | --- | --- |
+| Aktivieren der Sicherung von Azure-Dateifreigaben | Mitwirkender für Sicherungen | Recovery Services-Tresor |
+| | Speicherkonto | Speicherkontoressource „Mitwirkender“ |
+| Bedarfsgesteuerte Sicherung eines virtuellen Computers | Sicherungsoperator | Recovery Services-Tresor |
+| Wiederherstellen einer Azure-Dateifreigabe | Sicherungsoperator | Recovery Services-Tresor |
+| | Mitwirkender von Speicherkonto | Speicherkontoressourcen, in dem Wiederherstellungs-Quelldateifreigaben und -Zieldateifreigaben vorhanden sind |
+| Wiederherstellen einzelner Dateien | Sicherungsoperator | Recovery Services-Tresor |
+| | Mitwirkender von Speicherkonto |   Speicherkontoressourcen, in dem Wiederherstellungs-Quelldateifreigaben und -Zieldateifreigaben vorhanden sind |
+| Schutz beenden | Mitwirkender für Sicherungen | Recovery Services-Tresor |      
+| Aufheben der Registrierung eines Speicherkontos im Tresor |   Mitwirkender für Sicherungen | Recovery Services-Tresor |
+| | Mitwirkender von Speicherkonto | Speicherkontoressource|
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Rollenbasierte Zugriffssteuerung](../role-based-access-control/role-assignments-portal.md): Erste Schritte mit RBAC im Azure-Portal

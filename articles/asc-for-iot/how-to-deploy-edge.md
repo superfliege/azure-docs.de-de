@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/1/2019
 ms.author: mlottner
-ms.openlocfilehash: 40f771e97b61c28229b0eff29191247ef2fef695
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: d72980d6e27600cb844d5477d3b9a61d9e1573e4
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862844"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59505616"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Bereitstellen eines Sicherheitsmoduls auf Ihrem IoT Edge-Gerät
 
@@ -75,8 +75,25 @@ Zum Erstellen einer IoT Edge-Bereitstellung für Azure Security Center für IoT
 1. Klicken Sie auf der Registerkarte **Module hinzufügen** im Bereich **Bereitstellungsmodule** auf **AzureSecurityCenterforIoT**. 
    
 1. Ändern Sie den **Namen** in **azureiotsecurity**.
-1. Ändern Sie den Wert von **Image-URI** in **mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.1**
-      
+1. Ändern Sie den **Image-URI** in **mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.3**.
+1. Überprüfen Sie, ob für **Optionen für Containererstellung** der folgende Wert festgelegt ist:      
+    ``` json
+    {
+        "NetworkingConfig": {
+            "EndpointsConfig": {
+                "host": {}
+            }
+        },
+        "HostConfig": {
+            "Privileged": true,
+            "NetworkMode": "host",
+            "PidMode": "host",
+            "Binds": [
+                "/:/host"
+            ]
+        }
+    }    
+    ```
 1. Vergewissern Sie sich, dass **Gewünschte Eigenschaften für Modulzwilling festlegen** aktiviert ist, und ändern Sie das Konfigurationsobjekt wie folgt:
       
     ``` json
@@ -89,12 +106,16 @@ Zum Erstellen einer IoT Edge-Bereitstellung für Azure Security Center für IoT
 1. Klicken Sie auf **Speichern**.
 1. Scrollen Sie zum unteren Rand der Registerkarte, und wählen Sie **Erweiterte Einstellungen für die Edge-Laufzeit konfigurieren** aus.
    
-  >[!Note]
-  > Deaktivieren Sie **nicht** die AMQP-Kommunikation (Advance Message Queueing Protocol) für den IoT Edge-Hub.
-  > Das Azure Security Center für IoT-Modul erfordert die AMQP-Kommunikation mit dem IoT Edge-Hub.
+   >[!Note]
+   > Deaktivieren Sie **nicht** die AMQP-Kommunikation (Advance Message Queueing Protocol) für den IoT Edge-Hub.
+   > Das Azure Security Center für IoT-Modul erfordert die AMQP-Kommunikation mit dem IoT Edge-Hub.
    
-1. Ändern Sie das **Image** unter **Edge Hub** in **mcr.microsoft.com/ascforiot/edgehub:1.05-preview**.
-      
+1. Ändern Sie das **Image** unter **Edge Hub** in **mcr.microsoft.com/ascforiot/edgehub:1.0.9-preview**.
+
+   >[!Note]
+   > Für das Modul „Azure Security Center für IoT“ ist eine Fork-Version von IoT Edge Hub erforderlich, die auf SDK-Version 1.20 basiert.
+   > Durch die Änderung des IoT Edge Hub-Images weisen Sie Ihr IoT Edge-Gerät an, das letzte stabile Release durch die Fork-Version von IoT Edge Hub zu ersetzen. Diese Version wird vom IoT Edge-Dienst nicht offiziell unterstützt.
+
 1. Stellen Sie sicher, dass **Erstellungsoptionen** wie folgt festgelegt ist: 
          
     ``` json
@@ -137,8 +158,8 @@ Falls ein Problem auftritt, sind Containerprotokolle die beste Möglichkeit, um 
    
    | NAME | IMAGE |
    | --- | --- |
-   | azureIoTSecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.1 |
-   | edgeHub | asotcontainerregistry.azurecr.io/edgehub:1.04-preview |
+   | azureIoTSecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.3 |
+   | edgeHub | mcr.microsoft.com/ascforiot/edgehub:1.0.9-preview |
    | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0 |
    
    Falls die mindestens erforderlichen Container nicht vorhanden sind, überprüfen Sie, ob Ihr IoT Edge-Bereitstellungsmanifest den empfohlenen Einstellungen entspricht. Weitere Informationen finden Sie unter [Deploy IoT Edge module](#deployment-using-azure-portal) (Bereitstellen eines IoT Edge-Moduls).
