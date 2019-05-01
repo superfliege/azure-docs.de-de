@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 89e73a4578134493a25ec3cbd2385433a2b36156
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 58abe3a3973986ab489456be7958361ad8ab06f4
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003497"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922823"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Übersicht über die Azure-Überwachungs-Agents 
 Microsoft Azure bietet mehrere Möglichkeiten zum Erfassen unterschiedlicher Datentypen von virtuellen Computern unter Microsoft Windows und Linux, die in Azure, in Ihrem Rechenzentrum oder von anderen Cloudanbietern gehostet werden. Folgende drei Agent-Typen stehen zum Überwachen eines virtuellen Computers zur Verfügung:
@@ -66,7 +66,7 @@ Zuvor wurden mehrere Azure-Dienste in der *Operations Management Suite* zusammen
 
 * [Azure Automation-Updateverwaltung](../../automation/automation-update-management.md) von Betriebssystemupdates.
 * [Azure Automation Desired State Configuration](../../automation/automation-dsc-overview.md) zur Beibehaltung eines konsistenten Konfigurationsstatus.
-* Nachverfolgen von Konfigurationsänderungen mit [Azure Automation-Änderungsnachverfolgung und Bestand](../../automation/automation-change-tracking.md).
+* Nachverfolgen von Konfigurationsänderungen mit [Azure Automation-Änderungsnachverfolgung und Bestand](../../automation/change-tracking.md).
 * Azure-Dienste, z.B. [Application Insights](https://docs.microsoft.com/azure/application-insights/) und [Azure Security Center](https://docs.microsoft.com/azure/security-center/), die ihre Daten nativ direkt in Log Analytics speichern.  
 
 ## <a name="dependency-agent"></a>Abhängigkeits-Agent

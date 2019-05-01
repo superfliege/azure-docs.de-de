@@ -3,19 +3,19 @@ title: Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre User Journe
 description: Integrieren Sie REST-API-Anspruchsaustauschvorgänge in Ihre Azure AD B2C-User Journey zum Validieren der Benutzereingabe.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/30/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: bc2e41fd5da4737ea1efe329b70964535daff54a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e44bb1ed6a7a090b4b1213ca14be2b42642475e4
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58105963"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717290"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre Azure AD B2C-User Journey als Validierung der Benutzereingabe
 

@@ -36,6 +36,8 @@
       href: relay-authentication-and-authorization.md
     - name: Hybridverbindungsprotokoll
       href: relay-hybrid-connections-protocol.md
+    - name: Allgemeine Azure-Sicherheitsattribute
+      href: service-bus-relay-security-attributes.md
 - name: Anleitung
   items:
     - name: Planen und Entwerfen

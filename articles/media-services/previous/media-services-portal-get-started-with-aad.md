@@ -13,14 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 37c5a97d5f7a872e916f223f2cdfc98bcdec3cad
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: b7962f42b4244121a67b88ef3bf789ce40f7b1e5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258427"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719619"
 ---
 # <a name="get-started-with-azure-ad-authentication-by-using-the-azure-portal"></a>Erste Schritte mit der Azure AD-Authentifizierung mithilfe des Azure-Portals
+
+> [!NOTE]
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 Erfahren Sie, wie Sie das Azure-Portal für den Zugriff auf die Azure Active Directory (Azure AD)-Authentifizierung verwenden, um auf die Azure Media Services-API zuzugreifen.
 

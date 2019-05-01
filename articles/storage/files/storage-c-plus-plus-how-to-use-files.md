@@ -2,18 +2,18 @@
 title: Entwickeln für Azure Files mit C++ | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie C++-Anwendungen und -Dienste entwickeln, die Azure Files zum Speichern von Dateidaten verwenden.
 services: storage
-author: renashahmsft
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 09/19/2017
-ms.author: renashahmsft
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3432794c6b6d2323392f0b56b364400d05b10afc
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 424db4435c569475f9463894b5364fc22190689a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649698"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717922"
 ---
 # <a name="develop-for-azure-files-with-c"></a>Entwickeln für Azure Files mit C++
 

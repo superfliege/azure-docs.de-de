@@ -3,8 +3,8 @@ title: Erstellen, Ändern oder Löschen einer öffentlichen Azure-IP-Adresse | M
 description: Erfahren Sie, wie Sie eine öffentliche IP-Adresse erstellen, ändern oder löschen können.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: bb71abaf-b2d9-4147-b607-38067a10caf6
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: jdial
-ms.openlocfilehash: 2e6f3ce0c01674913dcb1f1980264d205eb4fcd3
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.author: kumud
+ms.openlocfilehash: e1e82d7f7b6b8bf9bfef56b569db2db097b914ab
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652780"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728735"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Erstellen, Ändern oder Löschen einer öffentlichen IP-Adresse
 
@@ -63,7 +63,7 @@ Für öffentliche IP-Adressen fällt eine Schutzgebühr an. Informationen zu den
    |IP-Adresszuweisung – wird nur angezeigt, wenn Sie das Kontrollkästchen **IPv6-Adresse erstellen** (bzw. „IPv4-Adresse erstellen“) aktiviert haben|Ja, wenn Sie das Kontrollkästchen **IPv6-Adresse erstellen** (bzw. „IPv4-Adresse erstellen“) aktivieren.|Wenn das Kontrollkästchen **IPv4-Adresse erstellen** aktiviert ist, können Sie eine Zuweisungsmethode auswählen. Wenn das Kontrollkästchen **IPv6-Adresse erstellen** aktiviert ist, können Sie keine Zuweisungsmethode auswählen, da die Methode **Dynamisch** lauten muss.|
    |Abonnement|Ja|Muss im selben [Abonnement](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) wie die Ressource vorhanden sein, der Sie die öffentliche IP-Adresse zuordnen möchten|
    |Ressourcengruppe|Ja|Kann in derselben oder in einer anderen [Ressourcengruppe](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) wie die Ressource vorhanden sein, der Sie die öffentliche IP-Adresse zuordnen möchten|
-   |Standort|Ja|Muss am selben [Standort](https://azure.microsoft.com/regions), auch als Region bezeichnet, wie die Ressource vorhanden sein, der Sie die öffentliche IP-Adresse zuordnen möchten.|
+   |Location|Ja|Muss am selben [Standort](https://azure.microsoft.com/regions), auch als Region bezeichnet, wie die Ressource vorhanden sein, der Sie die öffentliche IP-Adresse zuordnen möchten.|
    |Verfügbarkeitszone| Nein  | Diese Einstellung wird nur angezeigt, wenn Sie einen unterstützten Standort auswählen. Eine Liste der unterstützten Standorte finden Sie unter [Übersicht über Verfügbarkeitszonen](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Wenn Sie die **Basic**-SKU ausgewählt haben, wird automatisch *Keine* ausgewählt. Wenn Sie es vorziehen, eine bestimmte Zone zu gewährleisten, können Sie eine bestimmte Zone auswählen. Keine der beiden Optionen ist zonenredundant. Bei Auswahl der **Standard**-SKU: Es wird automatisch die zonenredundante Option ausgewählt, und der Datenpfad wird gegen Zonenausfall stabilisiert. Wenn Sie es vorziehen, eine bestimmte Zone zu gewährleisten, die nicht gegen Zonenausfall stabilisiert ist, können Sie eine bestimmte Zone auswählen.
 
 **Befehle**

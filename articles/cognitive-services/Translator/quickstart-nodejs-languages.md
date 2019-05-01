@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 013902927e0b59e5c1723868f7a3b3d553412000
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: df637ee16d2116696af42fa1b162e1c77a880c19
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183066"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922181"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-with-nodejs"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Abrufen einer Liste mit unterstützten Sprachen per Node.js
 
@@ -89,7 +89,7 @@ node get-languages.js
 
 ## <a name="sample-response"></a>Beispiel für eine Antwort
 
-Die Landesabkürzung finden Sie in [dieser Liste der Sprachen](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support).
+Die Landesabkürzung finden Sie in [dieser Liste der Sprachen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 Dieses Beispiel wurde gekürzt, um nur einen Ausschnitt des Ergebnisses anzuzeigen:
 

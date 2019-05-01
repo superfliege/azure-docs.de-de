@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0d520a9dc8d60a386d25694d441931fbc3ed38e4
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: dec40f7ec21a4a059c6e4a7c75f6378f9757a479
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58352067"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916849"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Erste Schritte mit dem SDK für sprachaktivierte Geräte
 
@@ -28,7 +28,7 @@ Der Quellcode für die Beispielanwendung liegt dem Speech-Geräte-SDK bei. Es is
 
 Bevor Sie mit der Entwicklung mit dem Speech-Geräte-SDK beginnen, sammeln Sie die Informationen und Software, die Sie benötigen:
 
-* Beziehen Sie das [Development Kit von ROOBO](http://ddk.roobo.com/). Die Kits sind mit linearen oder kreisförmigen Mikrofonarraykonfigurationen erhältlich. Wählen Sie die richtige Konfiguration für Ihre Anforderungen aus.
+* Beziehen Sie das [Development Kit von ROOBO](https://ddk.roobo.com/). Die Kits sind mit linearen oder kreisförmigen Mikrofonarraykonfigurationen erhältlich. Wählen Sie die richtige Konfiguration für Ihre Anforderungen aus.
 
     |Development Kit-Konfiguration|Sprecherstandort|
     |-----------------------------|------------|
@@ -199,4 +199,4 @@ Wenn bei der Verwendung des Speech-Diensts Zertifikatfehler auftreten, stellen S
 
 ### <a name="audio"></a>Audio
 
-ROOBO bietet ein Tool, das sämtliche Audiosignale im Flashspeicher erfasst. Es kann Ihnen beim Beheben von Audioproblemen helfen. Für jede Development Kit-Konfiguration wird eine Version des Tools bereitgestellt. Wählen Sie Ihr Gerät auf der [ROOBO-Website](http://ddk.roobo.com/) aus, und wählen Sie dann unten auf der Seite den Link **ROOBO-Tools** aus.
+ROOBO bietet ein Tool, das sämtliche Audiosignale im Flashspeicher erfasst. Es kann Ihnen beim Beheben von Audioproblemen helfen. Für jede Development Kit-Konfiguration wird eine Version des Tools bereitgestellt. Wählen Sie Ihr Gerät auf der [ROOBO-Website](https://ddk.roobo.com/) aus, und wählen Sie dann unten auf der Seite den Link **ROOBO-Tools** aus.

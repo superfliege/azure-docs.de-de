@@ -1,7 +1,6 @@
 ---
 title: Autorisieren von Benutzern für Ambari-Ansichten – Azure HDInsight
 description: Erfahren Sie, wie Sie Benutzer- und Gruppenberechtigungen in Ambari für HDInsight-Cluster verwalten, bei denen das ESP aktiviert ist.
-services: hdinsight
 author: maxluk
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: cf001d86356f4dd5fd3735803f0e329aa1e0940d
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 69ae1bd05b64912b3d53ca88b468a72a90ff5a74
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224021"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64718317"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Autorisieren von Benutzern für Apache Ambari-Ansichten
 

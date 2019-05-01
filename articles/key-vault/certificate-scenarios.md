@@ -2,23 +2,19 @@
 title: Erste Schritte mit Key Vault-Zertifikaten
 description: Die folgenden Szenarien stellen verschiedene der primären Verwendungen des Key Vault-Zertifikatverwaltungdiensts dar. Dazu gehören auch die zusätzlichen Schritte, die zum Erstellen Ihres ersten Zertifikats in Ihrem Schlüsseltresor erforderlich sind.
 services: key-vault
-documentationcenter: ''
 author: msmbaldwin
 manager: barbkess
 tags: azure-resource-manager
-ms.assetid: a788b958-3acb-4bb6-9c94-4776852aeea1
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 20c05bddddce4c7748e29551fe78d3e5609b2fa5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: a0ff97eb17dcf2625e1bb75dabf3e4a9686b5b85
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59275894"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64725715"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Erste Schritte mit Key Vault-Zertifikaten
 Die folgenden Szenarien stellen verschiedene der primären Verwendungen des Key Vault-Zertifikatverwaltungdiensts dar. Dazu gehören auch die zusätzlichen Schritte, die zum Erstellen Ihres ersten Zertifikats in Ihrem Schlüsseltresor erforderlich sind.
@@ -82,7 +78,7 @@ Hinweis: Dieser Prozess bis Schritt 3.1 ist ein einmaliger Vorgang.
       -   Erneuerungsinformationen - > Beispiel: 90 Tage vor Ablauf  
 
   - Ein Zertifikaterstellungsprozess ist normalerweise ein asynchroner Prozess und umfasst das Abrufen des Status der Zertifikaterstellung von Ihrem Schlüsseltresor.  
-[Get certificate operation (Abrufen des Zertifikatvorgangs)](/rest/api/keyvault/getcertificateoperation/getcertificateoperation)  
+[Zertifikatabrufvorgang](/rest/api/keyvault/getcertificateoperation/getcertificateoperation)  
       -   Status: abgeschlossen, Fehler mit Fehlerinformationen oder abgebrochen  
       -   Aufgrund einer Verzögerung bei der Erstellung kann ein Abbruchvorgang initiiert werden. Der Abbruchvorgang ist aber möglicherweise nicht wirksam.  
 

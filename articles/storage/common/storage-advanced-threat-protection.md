@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: monhaber
 ms.manager: shaik
-ms.openlocfilehash: 78338ece1bc70d8410bd71183a34aaf1a52f2d1b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c42867ff7aea2210f20a2cd2adb5c067b8f36c80
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904116"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926504"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Advanced Threat Protection für Azure Storage
 
@@ -23,7 +23,7 @@ Bei Anomalien im Rahmen von Aktivitäten werden Sicherheitswarnungen ausgelöst.
 
 > [!NOTE]
 > * Advanced Threat Protection für Azure Storage ist derzeit nur für Blob Storage verfügbar.
-> * Preisdetails, einschließlich einer kostenlosen 30-Tage-Testversion, finden Sie auf der [Seite mit der Preisübersicht zu Azure Security Center]( https://azure.microsoft.com/en-us/pricing/details/security-center/).
+> * Preisdetails, einschließlich einer kostenlosen 30-Tage-Testversion, finden Sie auf der [Seite mit der Preisübersicht zu Azure Security Center]( https://azure.microsoft.com/pricing/details/security-center/).
 > * ATP für Azure Storage ist derzeit in Azure Government- und Sovereign Cloud-Regionen nicht verfügbar.
 
 Bei Advanced Threat Protection für Azure Storage werden Diagnoseprotokolle von an Blob Storage gesendeten Lese-, Schreib- und Löschanforderungen erfasst, um Bedrohungen zu erkennen. Wenn Sie die Warnungen von Advanced Threat Protection untersuchen möchten, können Sie mithilfe von Storage Analytics Logging entsprechende Speicheraktivitäten anzeigen. Weitere Informationen finden Sie unter [Konfigurieren der Protokollierung](storage-monitor-storage-account.md#configure-logging).

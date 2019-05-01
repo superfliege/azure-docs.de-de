@@ -6,18 +6,16 @@ author: mumian
 manager: dougeby
 tags: azure-resource-manager
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/04/2019
 ms.author: jgao
-ms.openlocfilehash: 4b774e5b0a5c64a9af9a5a54ba264c6226558a24
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b1b50858286e3a174de254ae16c64b04abc00936
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880024"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64716001"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Schnellstart: Festlegen und Abrufen eines Geheimnisses aus Azure Key Vault per Resource Manager-Vorlage
 
@@ -61,7 +59,7 @@ Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit 
     Verwenden Sie den Standardwert, um den Schlüsseltresor und ein Geheimnis zu erstellen, sofern kein anderer Wert angegeben ist.
 
     * **Abonnement**: Wählen Sie ein Azure-Abonnement aus.
-    * **Ressourcengruppe**: Wählen Sie die Option **Neu erstellen**, geben Sie einen eindeutigen Namen für die Ressourcengruppe ein, und klicken Sie dann auf **OK**. 
+    * **Ressourcengruppe**: Wählen Sie die Option **Neu erstellen** aus, geben Sie einen eindeutigen Namen für die Ressourcengruppe ein, und klicken Sie dann auf **OK**. 
     * **Standort**: Wählen Sie einen Standort aus.  Beispiel: **USA, Mitte**.
     * **Schlüsseltresorname**: Geben Sie einen eindeutigen Namen für den Schlüsseltresor ein.  
     * **Mandanten-ID**: Die Vorlagenfunktion ruft automatisch Ihre Mandanten-ID ab.  Lassen Sie den Standardwert unverändert.

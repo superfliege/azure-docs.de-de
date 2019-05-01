@@ -3,8 +3,8 @@ title: Suchen und Löschen von nicht angefügten verwalteten und nicht verwaltet
 description: Informationen zum Suchen und Löschen von nicht angefügten verwalteten und nicht verwalteten Azure-Datenträgern (VHDs/Seitenblobs) über die Azure-Befehlszeilenschnittstelle
 services: virtual-machines-linux
 documentationcenter: ''
-author: ramankumarlive
-manager: jeconnoc
+author: roygara
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2018
-ms.author: ramankum
+ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 034d2433b2251351d54c2c5f41f78b5d45ab80e1
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 21c15a943974b80469eb9bd71cbaf11a7bc34b4a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470755"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64721837"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Suchen und Löschen von nicht angefügten verwalteten und nicht verwalteten Azure-Datenträgern
 Beim Löschen eines virtuellen Computers (VM) in Azure werden standardmäßig Datenträger, die an den virtuellen Computer angefügt sind, nicht gelöscht. Dieses Feature verhindert Datenverluste aufgrund der versehentlich Löschung von virtuellen Computern. Nach dem Löschen eines virtuellen Computers bezahlen Sie nicht angefügte Datenträger weiterhin. In diesem Artikel erfahren Sie, wie Sie nicht angefügte Datenträger suchen und löschen, um unnötige Kosten zu verringern. 
@@ -73,7 +73,7 @@ Nicht verwaltete Datenträger sind VHD-Dateien, die als [Seitenblobs](/rest/api/
    
 # Set deleteUnattachedVHDs=1 if you want to delete unattached VHDs
 # Set deleteUnattachedVHDs=0 if you want to see the details of the unattached VHDs
-deleteUnattachedVHDs=1
+deleteUnattachedVHDs=0
 
 storageAccountIds=$(az storage account list --query [].[id] -o tsv)
 

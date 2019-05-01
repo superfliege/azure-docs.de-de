@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: f69fd7af23c360edc208561f915bd351c3fd373c
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 593cd83dab6e0cd93cdd1aedac278f4d94a27cc5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608434"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64722430"
 ---
 # <a name="translator-text-api-30-translate"></a>Textübersetzungs-API 3.0: Translate
 
@@ -42,11 +42,11 @@ Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben
   </tr>
   <tr>
     <td>from</td>
-    <td><em>Optionaler Parameter</em>.<br/>Gibt die Sprache des Eingabetexts an. Finden Sie heraus, aus welchen Sprachen Sie übersetzen können, indem Sie die [unterstützten Sprachen](./v3-0-languages.md) mithilfe des<code>translation</code>-Bereichs. Wenn kein <code>from</code>-Parameter angegeben wird, wird die automatische Sprachenerkennung zum Bestimmen der Quellsprache verwendet.</td>
+    <td><em>Optionaler Parameter</em>.<br/>Gibt die Sprache des Eingabetexts an. Finden Sie heraus, aus welchen Sprachen Sie übersetzen können, indem Sie die <a href="./v3-0-languages.md">unterstützten Sprachen</a> mithilfe des<code>translation</code>-Bereichs. Wenn kein <code>from</code>-Parameter angegeben wird, wird die automatische Sprachenerkennung zum Bestimmen der Quellsprache verwendet.</td>
   </tr>
   <tr>
     <td>zu</td>
-    <td><em>Erforderlicher Parameter</em>.<br/>Gibt die Sprache des Ausgabetexts an. Sie müssen eine der zum <code>translation</code>-Bereich hinzugefügten [unterstützten Sprachen](./v3-0-languages.md) als Zielsprache auswählen. Verwenden Sie z.B. <code>to=de</code> für die Übersetzung ins Deutsche.<br/>Durch Wiederholen des Parameters in der Abfragezeichenfolge ist es möglich, in mehrere Sprachen gleichzeitig zu übersetzen. Verwenden Sie z.B. <code>to=de&to=it</code> für die Übersetzung ins Deutsche und Italienische.</td>
+    <td><em>Erforderlicher Parameter</em>.<br/>Gibt die Sprache des Ausgabetexts an. Sie müssen eine der zum <code>translation</code>-Bereich hinzugefügten <a href="./v3-0-languages.md">unterstützten Sprachen</a> als Zielsprache auswählen. Verwenden Sie z.B. <code>to=de</code> für die Übersetzung ins Deutsche.<br/>Durch Wiederholen des Parameters in der Abfragezeichenfolge ist es möglich, in mehrere Sprachen gleichzeitig zu übersetzen. Verwenden Sie z.B. <code>to=de&to=it</code> für die Übersetzung ins Deutsche und Italienische.</td>
   </tr>
   <tr>
     <td>textType</td>
@@ -54,15 +54,15 @@ Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben
   </tr>
   <tr>
     <td>category</td>
-    <td><em>Optionaler Parameter</em>.<br/>Eine Zeichenfolge, die die Kategorie (Domäne) der Übersetzung angibt. Dieser Parameter wird verwendet, um Übersetzungen von einem benutzerdefinierten System zu erhalten, das mit [Custom Translator](../customization.md) erstellt wurde. Fügen Sie diesem Parameter die Kategorie-ID Ihres „Benutzerdefinierter Translator“-Projekts hinzu, um Ihr bereitgestelltes angepasstes System zu verwenden. Der Standardwert ist <code>general</code>.</td>
+    <td><em>Optionaler Parameter</em>.<br/>Eine Zeichenfolge, die die Kategorie (Domäne) der Übersetzung angibt. Dieser Parameter wird verwendet, um Übersetzungen von einem benutzerdefinierten System zu erhalten, das mit <a href="../customization.md">Custom Translator</a> erstellt wurde. Fügen Sie diesem Parameter die Kategorie-ID Ihres „Benutzerdefinierter Translator“-Projekts hinzu, um Ihr bereitgestelltes angepasstes System zu verwenden. Der Standardwert ist <code>general</code>.</td>
   </tr>
   <tr>
     <td>profanityAction</td>
-    <td><em>Optionaler Parameter</em>.<br/>Gibt an, wie Obszönitäten in Übersetzungen behandelt werden. Mögliche Werte sind: <code>NoAction</code> (Standard), <code>Marked</code> oder <code>Deleted</code>. Nähere Informationen zur Handhabung von Obszönitäten finden Sie unter [Behandlung von Obszönitäten](#handle-profanity).</td>
+    <td><em>Optionaler Parameter</em>.<br/>Gibt an, wie Obszönitäten in Übersetzungen behandelt werden. Mögliche Werte sind: <code>NoAction</code> (Standard), <code>Marked</code> oder <code>Deleted</code>. Nähere Informationen zur Handhabung von Obszönitäten finden Sie unter <a href="#handle-profanity">Behandlung von Obszönitäten</a>.</td>
   </tr>
   <tr>
     <td>profanityMarker</td>
-    <td><em>Optionaler Parameter</em>.<br/>Gibt an, wie Obszönitäten in Übersetzungen markiert werden. Mögliche Werte sind: <code>Asterisk</code> (Standard) oder <code>Tag</code>. Nähere Informationen zur Handhabung von Obszönitäten finden Sie unter [Behandlung von Obszönitäten](#handle-profanity).</td>
+    <td><em>Optionaler Parameter</em>.<br/>Gibt an, wie Obszönitäten in Übersetzungen markiert werden. Mögliche Werte sind: <code>Asterisk</code> (Standard) oder <code>Tag</code>. Nähere Informationen zur Handhabung von Obszönitäten finden Sie unter <a href="#handle-profanity">Behandlung von Obszönitäten</a>.</td>
   </tr>
   <tr>
     <td>includeAlignment</td>

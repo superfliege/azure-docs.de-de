@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c4959d6abd1b33c81f731ad0479bd59d271c7797
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 979019da60c1129c6c6ef0bec42d9f9096735c1b
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149162"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926037"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues"></a>Authentifizieren mit Azure Active Directory aus einer Anwendung für den Zugriff auf Blobs und Warteschlangen
 
@@ -37,7 +37,7 @@ Der erste Schritt bei der Verwendung von Azure AD zum Authentifizieren des Zugri
 
 Wenn Sie Ihre Anwendung registrieren, liefern Sie Azure AD Informationen über Ihre Anwendung. Azure AD stellt dann eine Client-ID (auch als *Anwendungs-ID* bezeichnet) bereit, mit der Sie Ihre Anwendung zur Laufzeit Azure AD zuordnen. Weitere Informationen zur Client-ID finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory (Azure AD)](../../active-directory/develop/app-objects-and-service-principals.md).
 
-Führen Sie die Schritte im Abschnitt [Hinzufügen einer Anwendung](../../active-directory/develop/quickstart-v1-add-azure-ad-app.md) des Artikels [Integrieren von Anwendungen in Azure Active Directory](../../active-directory/active-directory-integrating-applications.md) aus, um Ihre Azure Storage-Anwendung zu registrieren. Wenn Sie Ihre Anwendung als native Anwendung registrieren, können Sie jeden gültigen URI als **Umleitungs-URI** angeben. Der Wert muss kein echter Endpunkt sein.
+Führen Sie die Schritte im Abschnitt [Hinzufügen einer Anwendung](../../active-directory/develop/quickstart-register-app.md) des Artikels [Integrieren von Anwendungen in Azure Active Directory](../../active-directory/active-directory-integrating-applications.md) aus, um Ihre Azure Storage-Anwendung zu registrieren. Wenn Sie Ihre Anwendung als native Anwendung registrieren, können Sie jeden gültigen URI als **Umleitungs-URI** angeben. Der Wert muss kein echter Endpunkt sein.
 
 ![Screenshot, der das Registrieren Ihrer Speicheranwendung bei Azure AD zeigt](./media/storage-auth-aad-app/app-registration.png)
 

@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/05/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 5c393916bc977f4e0bc51913bdb2dfbbd6677c97
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: c26c9021637b1b6ec2b3808db1307de9955bb660
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727613"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922393"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint-using-resource-manager-template"></a>Schnellstart: Erstellen eines Azure CDN-Profils und -Endpunkts mithilfe von Resource Manager-Vorlagen
 
@@ -51,7 +51,7 @@ az group create --name cdn --location eastus
 
 In diesem Schritt erstellen Sie eine Vorlagendatei, mit der die Ressourcen bereitgestellt werden.
 
-In diesem Beispiel wird ein Szenario zur allgemeinen Beschleunigung der Website beschrieben, es können jedoch viele weitere Einstellungen konfiguriert werden. Diese Einstellungen stehen in der Referenz zu Azure Resource Manager-Vorlagen zur Verfügung. Entsprechende Informationen finden Sie in den Referenzen zum [CDN-Profil](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles) und [CDN-Profilendpunkt](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints).
+In diesem Beispiel wird ein Szenario zur allgemeinen Beschleunigung der Website beschrieben, es können jedoch viele weitere Einstellungen konfiguriert werden. Diese Einstellungen stehen in der Referenz zu Azure Resource Manager-Vorlagen zur Verfügung. Entsprechende Informationen finden Sie in den Referenzen zum [CDN-Profil](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles) und [CDN-Profilendpunkt](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints).
 
 Beachten Sie, dass die Liste der Inhaltstypen in Microsoft CDN nicht geändert werden kann.
 
@@ -224,8 +224,8 @@ az group delete --name cdn
 
 ## <a name="references"></a>Referenzen
 
-* CDN-Profil: [Referenz zu Azure Resource Manager-Vorlagen](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles)
-* CDN-Endpunkt: [Referenzdokumentation zu Azure Resource Manager-Vorlagen](https://docs.microsoft.com/en-us/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)
+* CDN-Profil: [Referenz zu Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles)
+* CDN-Endpunkt: [Referenzdokumentation zu Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

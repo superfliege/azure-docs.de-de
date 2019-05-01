@@ -1,7 +1,6 @@
 ---
 title: Massenladen in Apache Phoenix mit psql – Azure HDInsight
 description: Es wird beschrieben, wie Sie das Tool psql verwenden, um das Massenladen von Daten in Phoenix-Tabellen durchzuführen.
-services: hdinsight
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ashishth
-ms.openlocfilehash: 5faea45a55d69cece56137d70862d80dfe335971
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: fe6705dc3dedd521357f924dd433c7eacf88ba84
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342455"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64718632"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>Massenladen von Daten in Apache Phoenix mithilfe von psql
 

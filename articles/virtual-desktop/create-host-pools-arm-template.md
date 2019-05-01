@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: ba98328002cafbcede855b1187881d39f1de8fc5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b1c7d1fe561ebc11f88644a5bf2fd8bda1c9a6c6
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796425"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924990"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Erstellen eines Hostpools mit einer Azure Resource Manager-Vorlage
 
@@ -77,4 +77,4 @@ Der UPN des Benutzers muss der Identität des Benutzers in Azure Active Director
 Nach Abschluss dieser Schritte können sich Benutzer, die der Desktopanwendungsgruppe hinzugefügt wurden, mit unterstützten Remotedesktopclients bei Windows Virtual Desktop anmelden und eine Ressource für einen Sitzungsdesktop anzeigen.
 
 >[!IMPORTANT]
->Um Ihre Windows Virtual Desktop-Umgebung in Azure zu schützen, empfiehlt es sich, dass Sie den eingehenden Port 3389 auf Ihren virtuellen Computern nicht öffnen. Für Windows Virtual Desktop muss der eingehende Port 3389 nicht geöffnet sein, damit Benutzer auf die virtuellen Computer des Hostpools zugreifen können. Wenn Sie Port 3389 aus Gründen der Problembehandlung öffnen müssen, sollten Sie [Just-In-Time-Zugriff auf virtuelle Computer](https://docs.microsoft.com/en-us/azure/security-center/security-center-just-in-time) verwenden.
+>Um Ihre Windows Virtual Desktop-Umgebung in Azure zu schützen, empfiehlt es sich, dass Sie den eingehenden Port 3389 auf Ihren virtuellen Computern nicht öffnen. Für Windows Virtual Desktop muss der eingehende Port 3389 nicht geöffnet sein, damit Benutzer auf die virtuellen Computer des Hostpools zugreifen können. Wenn Sie den Port 3389 zur Problembehandlung öffnen müssen, verwenden Sie am besten den [Just-In-Time-Zugriff auf virtuelle Computer](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).

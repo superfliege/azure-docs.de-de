@@ -2,23 +2,19 @@
 title: Sicheres Speichern von Geheimnis-Anwendungseinstellungen für eine Webanwendung – Azure Key Vault | Microsoft-Dokumentation
 description: Informationen zum sicheren Speichern von Geheimnis-Anwendungseinstellungen, wie etwa Azure-Anmeldeinformationen oder API-Schlüsseln von Drittanbietern, mithilfe des Key Vault-Anbieters von ASP.NET Core, User Secret oder der .NET 4.7.1-Konfigurationsbuilder
 services: visualstudio
-documentationcenter: ''
 author: cawaMS
 manager: paulyuk
 editor: ''
-ms.assetid: ''
 ms.service: key-vault
-ms.workload: web, azure
-ms.tgt_pltfrm: vs-getting-started
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: cawa
-ms.openlocfilehash: 79b1c740bca56982243ddc130d8747fdc955247f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6b60e03c8888ad2c9726116f1f3b2e49d9a4e1e8
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124115"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64722739"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Sicheres Speichern von Geheimnis-Anwendungseinstellungen für eine Webanwendung
 

@@ -3,19 +3,19 @@ title: Konfigurieren der Kennwortänderung mithilfe benutzerdefinierter Richtlin
 description: Erfahren Sie, wie Sie Benutzern das Ändern ihres Kennworts mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C ermöglichen.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a9e58139d248daed19f4fe35c7d33ede9dfe64b0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1d05a5c4fa13b83abd26ee06123028f75a725582
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195969"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64729471"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurieren der Kennwortänderung mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 

@@ -1,7 +1,6 @@
 ---
 title: Verwenden von Hadoop Oozie-Workflows in Linux-basiertem Azure HDInsight
 description: Verwenden von Hadoop Oozie in Linux-basiertem HDInsight Erfahren Sie, wie Sie einen Oozie-Workflow definieren und einen Oozie-Auftrag übermitteln können.
-services: hdinsight
 ms.service: hdinsight
 ms.custom: hdinsightactive
 author: omidm1
@@ -9,12 +8,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: daee7ddd0a09d43132bbcf0f4553601846d31433
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 97e1836952020723c1043617d74a96471ae07aad
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448236"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64724169"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Verwenden von Apache Oozie mit Apache Hadoop zum Definieren und Ausführen eines Workflows in Linux-basiertem Azure HDInsight
 
@@ -309,9 +308,9 @@ Die Auftragsdefinition beschreibt, wo sich die workflow.xml-Datei befindet. Sie 
     |---|---|
     |wasbs://mycontainer\@mystorageaccount.blob.core.windows.net| Wert aus Schritt 1|
     |admin| Ihr Anmeldename für den HDInsight-Cluster, falls Sie kein Administrator sind.|
-    |serverName| Name des Azure SQL-Datenbank-Servers|
-    |sqlLogin| Anmeldung des Azure SQL-Datenbank-Servers|
-    |sqlPassword| Anmeldekennwort des Azure SQL-Datenbank-Servers|
+    |serverName| Servername der Azure SQL-Datenbank|
+    |sqlLogin| Anmeldung des Azure SQL-Datenbankservers|
+    |sqlPassword| Anmeldekennwort des Azure SQL-Datenbankservers|
 
     ```xml
     <?xml version="1.0" encoding="UTF-8"?>

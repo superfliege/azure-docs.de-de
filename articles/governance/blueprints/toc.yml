@@ -97,6 +97,8 @@
       href: 'https://www.powershellgallery.com/packages/Az.Blueprint'
     - name: PSGallery (community-Modul)
       href: 'https://www.powershellgallery.com/packages/Manage-AzureRMBlueprint'
+    - name: Blaupausenfunktionen
+      href: ./reference/blueprint-functions.md
 - name: Ressourcen
   items:
     - name: 'GitHub: Azure Blueprints-Beispiele'

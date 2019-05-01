@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: c6ac3d9dbbb16caed51243fea852adea541b9f04
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a71a0cd5888cec5c3af0e2853edf5a7f014939b4
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790041"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919928"
 ---
 # <a name="azure-iot-edge-security-module"></a>Azure IoT Edge-Sicherheitsmodul
 
@@ -27,7 +27,7 @@ ms.locfileid: "59790041"
 > Azure Security Center für IoT befindet sich derzeit in der öffentlichen Vorschauphase.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-[Azure IoT Edge](https://docs.microsoft.com/en-us/azure/iot-edge/) umfasst leistungsstarke Funktionen zum Verwalten und Ausführen von Geschäftsworkflows am Edge.
+[Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) umfasst leistungsstarke Funktionen zum Verwalten und Ausführen von Geschäftsworkflows am Edge.
 Seine Schlüsselrolle in IoT-Umgebungen macht IoT Edge zu einem besonders attraktiven Ziel für böswillige Akteure.
 
 Das Azure Security Center (ASC) für IoT-Sicherheitsmodul bietet eine umfassende Sicherheitslösung für Ihre IoT Edge-Geräte.
@@ -44,7 +44,7 @@ Das ASC für IoT-Sicherheitsmodul für IoT Edge umfasst die folgenden Funktionen
 
 - Analyse von IoT Edge-Bereitstellungsmanifesten
 
-- Aggregieren von Sicherheitsrohereignissen in Meldungen, die über [IoT Edge-Hub](https://docs.microsoft.com/en-us/azure/iot-edge/iot-edge-runtime#iot-edge-hub) gesendet werden.
+- Aggregieren von Sicherheitsrohereignissen in Meldungen, die über [IoT Edge-Hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub) gesendet werden.
 
 - Entfernen der Konfiguration über den Sicherheitsmodulzwilling
 

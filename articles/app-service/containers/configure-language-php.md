@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 11d0648ee5090f02cb96c2d42a8d90cc3ea0ed28
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: dc6d3fd2239624e6fccecfbd565eb815b372ed3d
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551062"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920429"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Konfigurieren einer PHP-App für Azure App Service
 
@@ -141,7 +141,7 @@ Gängige Webframeworks ermöglichen den Zugriff auf die Information `X-Forwarded
 
 ## <a name="customize-phpini-settings"></a>Anpassen der „php.ini“-Einstellungen
 
-Wenn Sie Änderungen an Ihrer PHP-Installation vornehmen müssen, können Sie jede der [php.ini-Anweisungen](http://www.php.net/manual/ini.list.php) mit folgenden Schritten ändern.
+Wenn Sie Änderungen an Ihrer PHP-Installation vornehmen müssen, können Sie jede der [php.ini-Anweisungen](https://www.php.net/manual/ini.list.php) mit folgenden Schritten ändern.
 
 > [!NOTE]
 > Die beste Möglichkeit zum Anzeigen der PHP-Version und der aktuellen *php.ini*-Konfiguration besteht darin, [phpinfo()](https://php.net/manual/function.phpinfo.php) in Ihrer App aufzurufen.
@@ -149,7 +149,7 @@ Wenn Sie Änderungen an Ihrer PHP-Installation vornehmen müssen, können Sie je
 
 ### <a name="customize-non-phpinisystem-directives"></a>Anpassen von Nicht-PHP_INI_SYSTEM-Anweisungen
 
-Zum Anpassen der Anweisungen PHP_INI_USER PHP_INI_PERDIR und PHP_INI_ALL (siehe [php.ini-Anweisungen](http://www.php.net/manual/ini.list.php)), fügen Sie im Stammverzeichnis Ihrer App eine *.htaccess*-Datei hinzu.
+Zum Anpassen der Anweisungen PHP_INI_USER PHP_INI_PERDIR und PHP_INI_ALL (siehe [php.ini-Anweisungen](https://www.php.net/manual/ini.list.php)), fügen Sie im Stammverzeichnis Ihrer App eine *.htaccess*-Datei hinzu.
 
 Fügen Sie in der *.htaccess*-Datei die Anweisungen hinzu, indem Sie die `php_value <directive-name> <value>`-Syntax verwenden. Beispiel: 
 
@@ -165,11 +165,11 @@ php_value upload_max_filesize 10M
 
 Stellen Sie Ihre App mit den Änderungen erneut bereit, und starten Sie sie neu. Wenn Sie sie mit Kudu bereitstellen (z. B. [Git](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)), wird sie automatisch nach der Bereitstellung neu gestartet.
 
-Als Alternative zur Verwendung von *.htaccess* können Sie [ini_set()](http://www.php.net/manual/function.ini-set.php) in Ihrer App verwenden, um diese Nicht-PHP_INI_SYSTEM-Anweisungen anzupassen.
+Als Alternative zur Verwendung von *.htaccess* können Sie [ini_set()](https://www.php.net/manual/function.ini-set.php) in Ihrer App verwenden, um diese Nicht-PHP_INI_SYSTEM-Anweisungen anzupassen.
 
 ### <a name="customize-phpinisystem-directives"></a>Anpassen von PHP_INI_SYSTEM-Anweisungen
 
-Zum Anpassen von PHP_INI_SYSTEM-Anweisungen (siehe [php.ini-Anweisungen](http://www.php.net/manual/ini.list.php)) können Sie nicht den Ansatz mit *.htaccess* verwenden. App Service bietet einen separaten Mechanismus, der die App-Einstellung `PHP_INI_SCAN_DIR` verwendet.
+Zum Anpassen von PHP_INI_SYSTEM-Anweisungen (siehe [php.ini-Anweisungen](https://www.php.net/manual/ini.list.php)) können Sie nicht den Ansatz mit *.htaccess* verwenden. App Service bietet einen separaten Mechanismus, der die App-Einstellung `PHP_INI_SCAN_DIR` verwendet.
 
 Führen Sie als Erstes den folgenden Befehl in der [Cloud Shell](https://shell.azure.com) aus, um eine App-Einstellung namens `PHP_INI_SCAN_DIR` hinzuzufügen:
 
@@ -237,7 +237,7 @@ Wenn sich eine funktionierende PHP-App in App Service anders verhält oder Fehle
     - Abhängig von Ihrer *composer.json* können verschiedene Pakete für den Produktionsmodus installiert sein (`require` oder `require-dev`).
     - Bestimmte Webframeworks können statische Dateien im Produktionsmodus unterschiedlich bereitstellen.
     - Bestimmte Webframeworks können benutzerdefinierte Startskripts verwenden, wenn sie im Produktionsmodus ausgeführt werden.
-- Führen Sie Ihre App in App Service im Debugmodus aus. Z. B. können Sie in [Laravel](http://meanjs.org/) Ihre App so konfigurieren, dass sie in der Produktion Debugmeldungen ausgibt, indem Sie [die App-Einstellung `APP_DEBUG` auf `true`](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) festlegen.
+- Führen Sie Ihre App in App Service im Debugmodus aus. Z. B. können Sie in [Laravel](https://meanjs.org/) Ihre App so konfigurieren, dass sie in der Produktion Debugmeldungen ausgibt, indem Sie [die App-Einstellung `APP_DEBUG` auf `true`](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) festlegen.
 
 ### <a name="robots933456"></a>robots933456
 

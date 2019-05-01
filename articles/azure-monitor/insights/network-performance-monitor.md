@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: vinigam
-ms.openlocfilehash: 29826f7f842f8dfbd7cd2a754c919f06542a161c
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: a5d5a9e07c28ab3059872f4d187c96586456a200
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59615981"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916760"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netzwerkleistungsmonitor-Lösung in Azure
 
@@ -263,8 +263,8 @@ Gehen Sie als NPM-Benutzer wie folgt vor, um eine Warnung über das Azure-Portal
 3. Wenn Sie sich für Aktionsgruppen entscheiden, müssen Sie eine zuvor erstellte Aktionsgruppe auswählen. [Hier](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal) erfahren Sie, wie Sie eine Aktionsgruppe erstellen. 
 4. Nachdem die Warnung erfolgreich erstellt wurde, können Sie über den Link „Warnungen verwalten“ Ihre Warnungen verwalten. 
 
-Wenn Sie eine Warnung erstellen, erstellt NPM eine abfragebasierte Warnungsregel in Azure Monitor. Diese Abfrage wird standardmäßig alle 5 Minuten ausgelöst. Die ersten 250 Protokollwarnungsregeln von Azure Monitor sind kostenlos. Jede weitere Protokollwarnungsregel wird gemäß den [Warnungspreisen auf der Seite mit den Azure Monitor-Preisen](https://azure.microsoft.com/en-us/pricing/details/monitor/) abgerechnet.
-Benachrichtigungen werden separat abgerechnet (siehe [Benachrichtigungspreise auf der Seite mit den Azure Monitor-Preisen](https://azure.microsoft.com/en-us/pricing/details/monitor/)).
+Wenn Sie eine Warnung erstellen, erstellt NPM eine abfragebasierte Warnungsregel in Azure Monitor. Diese Abfrage wird standardmäßig alle 5 Minuten ausgelöst. Die ersten 250 Protokollwarnungsregeln von Azure Monitor sind kostenlos. Jede weitere Protokollwarnungsregel wird gemäß den [Warnungspreisen auf der Seite mit den Azure Monitor-Preisen](https://azure.microsoft.com/pricing/details/monitor/) abgerechnet.
+Benachrichtigungen werden separat abgerechnet (siehe [Benachrichtigungspreise auf der Seite mit den Azure Monitor-Preisen](https://azure.microsoft.com/pricing/details/monitor/)).
 
 
 ## <a name="pricing"></a>Preise

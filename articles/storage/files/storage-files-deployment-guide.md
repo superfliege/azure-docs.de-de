@@ -2,18 +2,18 @@
 title: Bereitstellen von Azure Files | Microsoft-Dokumentation
 description: Informationen über sämtliche Schritte zum Bereitstellen von Azure Files.
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 05/22/2018
-ms.author: wgries
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f0b6ed366f35368c70f3d2224f430f400ee9656c
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 6afe54d269d273c6a93e6431e9f1c1af7b18cc0e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481177"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64720922"
 ---
 # <a name="how-to-deploy-azure-files"></a>Bereitstellen von Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll SMB zugegriffen werden kann. In diesem Artikel erfahren Sie, wie Sie Azure Files praktisch in Ihrer Organisation bereitstellen.

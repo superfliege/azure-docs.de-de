@@ -2,7 +2,6 @@
 title: Apache Sqoop mit Apache Hadoop – Azure HDInsight
 description: Erfahren Sie mehr darüber, wie Sie mithilfe von Apache Sqoop Daten zwischen Apache Hadoop unter HDInsight und einer Azure SQL-Datenbank importieren und exportieren.
 keywords: Hadoop Sqoop, Sqoop
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -10,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 75a77843bd7634e8a3fe7a6b46177efe54878682
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 6dcb6853daf34fede590011d165c0ba9001cbac6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60148882"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64721640"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Importieren und Exportieren von Daten zwischen Apache Hadoop unter HDInsight und einer SQL-Datenbank mithilfe von Apache Sqoop
 

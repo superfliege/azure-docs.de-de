@@ -3,19 +3,19 @@ title: Definieren eines technischen Azure Active Directory-Profils in einer benu
 description: Erfahren Sie, wie Sie ein technisches Azure Active Directory-Profil in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C definieren.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: b8dac47d1aa91eb8a8ee1ef9515809607b267437
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 433307791201e3799b3bc9e54aec765d9fbeb4af
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190700"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64718707"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Azure Active Directory-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -23,7 +23,7 @@ ms.locfileid: "55190700"
 
 Azure Active Directory (Azure AD) B2C bietet Unterstützung für die Benutzerverwaltung von Azure Active Directory. In diesem Artikel werden die Einzelheiten eines technischen Profils für die Interaktion mit einem Anspruchsanbieter thematisiert, der dieses standardisierte Protokoll unterstützt.
 
-## <a name="protocol"></a>Protokoll
+## <a name="protocol"></a>Protocol
 
 Das **Name**-Attribut des **Protocol**-Elements muss auf `Proprietary` festgelegt werden. Das **handler**-Attribut muss den vollqualifizierten Namen der Protokollhandlerassembly `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null` enthalten.
 
@@ -254,7 +254,7 @@ Das folgende technische Profil löscht ein Social Media-Benutzerkonto mit **alte
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| Vorgang | JA | Der Vorgang, der ausgeführt werden soll. Mögliche Werte: `Read`, `Write`, `DeleteClaims` oder `DeleteClaimsPrincipal`. | 
+| Vorgang | Ja | Der Vorgang, der ausgeführt werden soll. Mögliche Werte: `Read`, `Write`, `DeleteClaims` oder `DeleteClaimsPrincipal`. | 
 | RaiseErrorIfClaimsPrincipalDoesNotExist | Nein  | Es wird ein Fehler ausgelöst, wenn das Benutzerobjekt im Verzeichnis nicht vorhanden ist. Mögliche Werte: `true` oder `false`. | 
 | UserMessageIfClaimsPrincipalDoesNotExist | Nein  | Wenn ein Fehler ausgelöst werden soll (siehe Beschreibung zum RaiseErrorIfClaimsPrincipalDoesNotExist-Attribut), geben Sie die Meldung an, die dem Benutzer angezeigt werden soll, wenn das Benutzerobjekt nicht vorhanden ist. Der Wert kann [lokalisiert](localization.md) sein.| 
 | RaiseErrorIfClaimsPrincipalAlreadyExists | Nein  | Es wird ein Fehler ausgelöst, wenn das Benutzerobjekt bereits vorhanden ist. Mögliche Werte: `true` oder `false`.| 

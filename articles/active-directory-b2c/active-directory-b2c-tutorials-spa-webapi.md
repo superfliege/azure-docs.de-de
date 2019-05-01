@@ -3,19 +3,19 @@ title: 'Tutorial: Gewähren des Zugriffs auf eine ASP.NET Core-Web-API über ein
 description: In diesem Tutorial erfahren Sie, wie Sie mit Active Directory B2C eine .NET Core-Web-API schützen und sie über eine einseitige App aufrufen.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.author: davidmu
 ms.date: 02/04/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 13cbf1e81e0d203c181efb0881ec2a437cbaef24
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 13fedae2798311a59a5cee2805ce9e09b1bd5a0f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752176"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64724670"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>Tutorial: Gewähren des Zugriffs auf eine ASP.NET Core-Web-API über eine Single-Page-Webanwendung mithilfe von Azure Active Directory B2C
 
@@ -68,7 +68,7 @@ Wenn Sie über eine Anwendung eine geschützte Web-API aufrufen möchten, müsse
 
 1. Wählen Sie **Anwendungen** und dann *webapp1* aus.
 2. Wählen Sie **API-Zugriff** und dann **Hinzufügen** aus.
-3. Wählen Sie in der Dropdownliste **API auswählen** und dann *webapi1* aus.
+3. Wählen Sie in der Dropdownliste **API auswählen** die Web-API *webapi1* aus.
 4. Wählen Sie in der Dropdownliste **Bereiche auswählen** die Bereiche **Hello.Read** und **Hello.Write** aus, die Sie zuvor festgelegt haben.
 5. Klicken Sie auf **OK**.
 

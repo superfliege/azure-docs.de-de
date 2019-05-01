@@ -2,26 +2,25 @@
 title: Erstellen von .NET-Anwendungen für die nicht interaktive Authentifizierung in Azure HDInsight
 description: Erfahren Sie, wie Sie Microsoft .NET-Anwendungen für die nicht interaktive Authentifizierung in Azure HDInsight erstellen.
 ms.reviewer: jasonh
-services: hdinsight
 author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 899adc8d4fb26ac64cd3fbd7096a8b8387900517
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: b07a932ef048aa894af990baa57b87529d9da3aa
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722291"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717396"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Erstellen einer .NET HDInsight-Anwendung für die nicht interaktive Authentifizierung
 Sie können Ihre Microsoft .NET Azure HDInsight-Anwendung entweder unter der eigenen Identität der Anwendung (nicht interaktiv) oder unter der Identität des angemeldeten Benutzers der Anwendung (interaktiv) ausführen. In diesem Artikel erfahren Sie, wie Sie eine .NET-Anwendung für die nicht interaktive Authentifizierung erstellen, um eine Verbindung mit Azure herzustellen und HDInsight zu verwalten. Ein Beispiel für die interaktive Anwendung finden Sie unter [Verbinden mit Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight). 
 
 Für die nicht interaktive .NET-Anwendung benötigen Sie Folgendes:
 
-* Mandanten-ID Ihres Azure-Abonnements (auch *Verzeichnis-ID*). Siehe [Abrufen der Mandanten-ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
+* Mandanten-ID Ihres Azure-Abonnements auch *Verzeichnis-ID*). Siehe [Abrufen der Mandanten-ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id).
 * Client-ID der Azure Active Directory-Anwendung (Azure AD). Weitere Informationen finden Sie unter [Erstellen einer Azure Active Directory-Anwendung](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) und [Abrufen der Anwendungs-ID](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key).
 * Geheimer Schlüssel der Azure AD-Anwendung. Siehe [Abrufen des Anwendungsauthentifizierungsschlüssels](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key).
 

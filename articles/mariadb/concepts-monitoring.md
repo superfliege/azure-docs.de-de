@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/10/2018
-ms.openlocfilehash: f34e32b9bda83ac1185d0c7b7dcaaaa7b47161a1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/29/2019
+ms.openlocfilehash: babe2ac55953940370daa0731463ed6ed8988502
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58082482"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925915"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Überwachung in Azure Database for MariaDB
 Die Überwachung der Daten zu Ihren Servern unterstützt Sie bei der Problembehandlung und der Optimierung Ihrer Workloads. Azure Database for MariaDB bietet verschiedene Metriken, die Einblicke in das Verhalten Ihres Servers ermöglichen.
@@ -41,7 +41,7 @@ Für Azure Database for MariaDB sind folgende Metriken verfügbar:
 |network_bytes_ingress|Netzwerk eingehend|Byte|Eingehender Netzwerkdatenverkehr über aktive Verbindungen.|
 
 ## <a name="server-logs"></a>Serverprotokolle
-Sie können die Protokollierung von langsamen Abfragen auf Ihrem Server aktivieren. Weitere Informationen zur Protokollierung finden Sie auf der Seite [Serverprotokolle](concepts-server-logs.md).
+Sie können die Protokollierung von langsamen Abfragen auf Ihrem Server aktivieren. Diese Protokolle sind ebenfalls durch Azure-Diagnoseprotokolle in Azure Monitor-Protokolle, Event Hubs und im Speicherkonto verfügbar. Weitere Informationen zur Protokollierung finden Sie auf der Seite  [Serverprotokolle](concepts-server-logs.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen dazu, wie Sie mit dem Azure-Portal, der REST-API oder der CLI auf Metriken zugreifen bzw. diese exportieren, finden Sie unter [Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).

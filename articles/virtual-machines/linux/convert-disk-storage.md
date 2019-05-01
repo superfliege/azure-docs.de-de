@@ -3,8 +3,8 @@ title: Konvertieren zwischen Storage Standard und Storage Premium für verwaltet
 description: Konvertieren verwalteter Azure-Datenträger zwischen Storage Standard und Storage Premium mithilfe der Azure-Befehlszeilenschnittstelle
 services: virtual-machines-linux
 documentationcenter: ''
-author: cynthn
-manager: jeconnoc
+author: roygara
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
-ms.author: cynthn
+ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 18730f662f36000e1efc826c35bebde79dbf0e79
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2e7eb455a53abbe2df6ff72f091a599665732429
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013615"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64724899"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>Konvertieren verwalteter Azure-Datenträger zwischen Storage Standard und Storage Premium
 
@@ -37,7 +37,7 @@ In diesem Artikel wird das Konvertieren verwalteter Datenträger zwischen Storag
 
 ## <a name="switch-all-managed-disks-of-a-vm-between-premium-and-standard"></a>Wechseln aller verwalteten Datenträger eines virtuellen Computers zwischen Premium und Standard
 
-Dieses Beispiel zeigt, wie alle Datenträger einer VM zwischen Storage Standard und Storage Premium konvertiert werden. Zur Verwendung von verwalteten Premium-Datenträgern muss Ihre VM eine [VM-Größe](sizes.md) verwenden, die Premium Storage unterstützt. In diesem Beispiel erfolgt auch ein Wechsel zu einer Größe, die Storage Premium unterstützt.
+Dieses Beispiel zeigt, wie Sie alle Datenträger eines virtuellen Computers von Storage Standard in Storage Premium konvertieren (oder umgekehrt). Zur Verwendung von verwalteten Premium-Datenträgern muss Ihre VM eine [VM-Größe](sizes.md) verwenden, die Premium Storage unterstützt. In diesem Beispiel erfolgt auch ein Wechsel zu einer Größe, die Storage Premium unterstützt.
 
  ```azurecli
 
@@ -74,7 +74,7 @@ az vm start --name $vmName --resource-group $rgName
 ```
 ## <a name="switch-individual-managed-disks-between-standard-and-premium"></a>Wechseln einzelner verwalteter Datenträger zwischen Standard und Premium
 
-Für Ihre Entwicklungs-/Testworkload sollten Sie eine Kombination aus Standard- und Premium-Datenträgern verwenden, um Ihre Kosten zu senken. Sie können auch nur die Datenträger aktualisieren, die eine höhere Leistung benötigen. Dieses Beispiel zeigt, wie ein VM-Datenträger zwischen Storage Standard und Storage Premium konvertiert wird. Zur Verwendung von verwalteten Premium-Datenträgern muss Ihre VM eine [VM-Größe](sizes.md) verwenden, die Premium Storage unterstützt. In diesem Beispiel erfolgt auch ein Wechsel zu einer Größe, die Storage Premium unterstützt.
+Für Ihre Entwicklungs-/Testworkload sollten Sie eine Kombination aus Standard- und Premium-Datenträgern verwenden, um Ihre Kosten zu senken. Sie können auch nur die Datenträger aktualisieren, die eine höhere Leistung benötigen. Dieses Beispiel zeigt, wie Sie einen einzelnen VM-Datenträger von Storage Standard in Storage Premium konvertieren (oder umgekehrt). Zur Verwendung von verwalteten Premium-Datenträgern muss Ihre VM eine [VM-Größe](sizes.md) verwenden, die Premium Storage unterstützt. In diesem Beispiel erfolgt auch ein Wechsel zu einer Größe, die Storage Premium unterstützt.
 
  ```azurecli
 

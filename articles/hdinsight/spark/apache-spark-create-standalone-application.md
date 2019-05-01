@@ -1,7 +1,6 @@
 ---
 title: 'Tutorial: Erstellen einer Scala Maven-Anwendung für Spark in Azure HDInsight mithilfe von IntelliJ'
 description: Erstellen Sie eine Spark-Anwendung, die in Scala mit Apache Maven als Buildsystem mit einem vorhandenen von IntelliJ IDEA bereitgestellten Maven-Archetyp für Scala geschrieben ist.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 01/30/2019
-ms.openlocfilehash: a969c026d702c423bee4871651c8b4fa26b3d37a
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 2d431659e46465bf16f6e597f3a49f7008432bb5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700943"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64722859"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Tutorial: Erstellen einer Scala Maven-Anwendung für Apache Spark in HDInsight mithilfe von IntelliJ
 
@@ -76,7 +75,7 @@ Führen Sie die folgenden Schritte aus, um das Scala-Plug-In zu installieren:
 
 6. Geben Sie im Fenster **New Project** (Neues Projekt) die folgenden Informationen an:  
 
-  	|  Eigenschaft   | Beschreibung   |  
+  	|  Eigenschaft   | BESCHREIBUNG   |  
   	| ----- | ----- |  
   	|Projektname| Geben Sie einen Namen ein.|  
   	|Project&nbsp;location (Projektspeicherort)| Geben Sie den gewünschten Speicherort für Ihr Projekt ein.|

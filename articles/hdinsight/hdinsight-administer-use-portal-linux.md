@@ -1,7 +1,6 @@
 ---
 title: Verwalten von Apache Hadoop-Clustern in HDInsight mit dem Azure-Portal
 description: Hier erhalten Sie Informationen zum Erstellen und Verwalten von HDInsight-Clustern mithilfe des Azure-Portals.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 80c27d588bb8b4c60ae8432fbd3a2ac3d2db1394
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 003aeadba1f4683af40f390d40dd3bbe32e02a83
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58802659"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64721924"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Verwalten von Apache Hadoop-Clustern in HDInsight mit dem Azure-Portal
 
@@ -55,7 +54,7 @@ Wählen Sie auf der Seite [**HDInsight-Cluster**](#showClusters) den Namen Ihres
     |Übersicht|Gibt allgemeine Informationen zu Ihrem Cluster an.|
     |Aktivitätsprotokoll|Dient zum Anzeigen und Abfragen von Aktivitätsprotokollen.|
     |Zugriffssteuerung (IAM)|Verwenden Sie Rollenzuweisungen.  Weitere Informationen finden Sie unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../role-based-access-control/role-assignments-portal.md).|
-    |Tags|Dient zum Festlegen von Schlüssel-Wert-Paaren, um eine benutzerdefinierte Taxonomie für Ihre Clouddienste zu definieren. Sie können z. B. einen Schlüssel mit dem Namen **Projekt** erstellen und dann einen gemeinsamen Wert für alle mit einem bestimmten Projekt verknüpften Dienste verwenden.|
+    |`Tags`|Dient zum Festlegen von Schlüssel-Wert-Paaren, um eine benutzerdefinierte Taxonomie für Ihre Clouddienste zu definieren. Sie können z. B. einen Schlüssel mit dem Namen **Projekt** erstellen und dann einen gemeinsamen Wert für alle mit einem bestimmten Projekt verknüpften Dienste verwenden.|
     |Diagnose und Problembehandlung|Dient zum Anzeigen von Informationen zur Problembehandlung.|
     |Schnellstart|Zeigt hilfreiche Informationen für die ersten Schritte mit HDInsight an.|
     |Tools|Hilfeinformationen für HDInsight-bezogene Tools.|

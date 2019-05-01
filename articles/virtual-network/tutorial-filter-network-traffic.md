@@ -4,7 +4,7 @@ titlesuffix: Azure Virtual Network
 description: In diesem Tutorial erfahren Sie, wie Sie an ein Subnetz gerichteten Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe unter Verwendung des Azure-Portals filtern.
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
+author: KumudD
 tags: azure-resource-manager
 Customer intent: I want to filter network traffic to virtual machines that perform similar functions, such as web servers.
 ms.service: virtual-network
@@ -13,13 +13,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
-ms.author: jdial
-ms.openlocfilehash: caf9b91d5b98d028d7c9e971df30ad1f6ec448ad
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.author: kumud
+ms.openlocfilehash: ad34c6a876ca21bc7ef32cce638240e0d23b3177
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019026"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64723904"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>Tutorial: Filtern von Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe über das Azure-Portal
 
@@ -51,7 +51,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
     | Adressraum           | 10.0.0.0/16                                        |
     | Abonnement            | Wählen Sie Ihr Abonnement aus.                          |
     | Ressourcengruppe          | Klicken Sie auf **Neu erstellen**, und geben Sie *myResourceGroup* ein. |
-    | Standort                | Wählen Sie **USA, Osten** aus.                                |
+    | Location                | Wählen Sie **USA, Osten** aus.                                |
     | Subnetzname            | mySubnet                                           |
     | Subnetzadressbereich  | 10.0.0.0/24                                        |
 
@@ -68,7 +68,7 @@ Mithilfe einer Anwendungssicherheitsgruppe können Sie Server mit ähnlichen Fun
     | NAME           | myAsgWebServers                                               |
     | Abonnement   | Wählen Sie Ihr Abonnement aus.                                     |
     | Ressourcengruppe | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus. |
-    | Standort       | USA (Ost)                                                       |
+    | Location       | USA (Ost)                                                       |
 
 4. Führen Sie Schritt 3 erneut aus, und geben Sie dabei die folgenden Werte an:
 
@@ -77,7 +77,7 @@ Mithilfe einer Anwendungssicherheitsgruppe können Sie Server mit ähnlichen Fun
     | NAME           | myAsgMgmtServers                                              |
     | Abonnement   | Wählen Sie Ihr Abonnement aus.                                     |
     | Ressourcengruppe | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus. |
-    | Standort       | USA (Ost)                                                       |
+    | Location       | USA (Ost)                                                       |
 
 ## <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
 
@@ -90,7 +90,7 @@ Mithilfe einer Anwendungssicherheitsgruppe können Sie Server mit ähnlichen Fun
     |NAME|myNsg|
     |Abonnement| Wählen Sie Ihr Abonnement aus.|
     |Ressourcengruppe | Wählen Sie **Vorhandene verwenden** und dann *myResourceGroup*.|
-    |Standort|USA (Ost)|
+    |Location|USA (Ost)|
 
 ## <a name="associate-network-security-group-to-subnet"></a>Zuordnen einer Netzwerksicherheitsgruppe zu einem Subnetz
 
@@ -113,7 +113,7 @@ Mithilfe einer Anwendungssicherheitsgruppe können Sie Server mit ähnlichen Fun
     | ---------               | ---------                                                                                                       |
     | Ziel             | Wählen Sie zunächst **Anwendungssicherheitsgruppe** und anschließend für **Anwendungssicherheitsgruppe** den Namen **myAsgWebServers** aus.  |
     | Zielportbereiche | Geben Sie 80,443 ein.                                                                                                    |
-    | Protokoll                | Wählen Sie TCP aus.                                                                                                      |
+    | Protocol                | Wählen Sie TCP aus.                                                                                                      |
     | NAME                    | Allow-Web-All                                                                                                   |
 
 3. Führen Sie Schritt 2 erneut aus, und verwenden Sie dabei die folgenden Werte:
@@ -122,7 +122,7 @@ Mithilfe einer Anwendungssicherheitsgruppe können Sie Server mit ähnlichen Fun
     | ---------               | ---------                                                                                                       |
     | Ziel             | Wählen Sie zunächst **Anwendungssicherheitsgruppe** und anschließend für **Anwendungssicherheitsgruppe** den Namen **myAsgMgmtServers** aus. |
     | Zielportbereiche | Geben Sie 3389 ein.                                                                                                      |
-    | Protokoll                | Wählen Sie TCP aus.                                                                                                      |
+    | Protocol                | Wählen Sie TCP aus.                                                                                                      |
     | Priorität                | Geben Sie 110 ein.                                                                                                       |
     | NAME                    | Allow-RDP-All                                                                                                   |
 
@@ -149,7 +149,7 @@ Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk.
     |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
     |Abonnement| Wählen Sie Ihr Abonnement aus.|
     |Ressourcengruppe| Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus.|
-    |Standort| Wählen Sie **USA, Osten** aus.|
+    |Location| Wählen Sie **USA, Osten** aus.|
 
 4. Wählen Sie eine Größe für den virtuellen Computer aus, und klicken Sie dann auf **Auswählen**.
 5. Wählen Sie unter **Einstellungen** die folgenden Werte aus, übernehmen Sie die restlichen Standardeinstellungen, und wählen Sie dann **OK** aus:

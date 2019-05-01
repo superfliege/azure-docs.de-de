@@ -2,18 +2,19 @@
 title: Leitfaden für die Optimierung der Leistung von Azure Data Lake Storage Gen2 für MapReduce | Microsoft-Dokumentation
 description: Leitfaden für die Optimierung der Leistung von Azure Data Lake Storage Gen2 für MapReduce
 services: storage
-author: swums
+author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.author: stewu
-ms.openlocfilehash: 1df7765f4f006d3d79f867fbf23929f6b9b0cf08
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.author: normesta
+ms.reviewer: stewu
+ms.openlocfilehash: 7d20f1b398c50a3b98ee862332338dbf3aaece59
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884391"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939381"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Anleitung für die Leistungsoptimierung für MapReduce in HDInsight und Azure Data Lake Storage Gen2
 

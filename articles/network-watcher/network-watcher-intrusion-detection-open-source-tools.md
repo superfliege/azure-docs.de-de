@@ -3,8 +3,8 @@ title: Durchführen der Erkennung von Netzwerkangriffen mit Azure Network Watche
 description: In diesem Artikel wird beschrieben, wie Sie Azure Network Watcher und Open Source-Tools zum Durchführen der Erkennung von Netzwerkangriffen verwenden.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: 0f043f08-19e1-4125-98b0-3e335ba69681
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: jdial
-ms.openlocfilehash: 41b039c6598334d49b9ddb0608d7ad2ae045b223
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: kumud
+ms.openlocfilehash: e1b0e49dcc69a7458c22b859df1a4721342f0728
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901269"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64730146"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Durchführen der Erkennung von Netzwerkangriffen mit Network Watcher und Open Source-Tools
 

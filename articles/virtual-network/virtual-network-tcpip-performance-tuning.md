@@ -28,12 +28,12 @@ ms.author:
 - minale
 - btalb
 - prachank
-ms.openlocfilehash: 1e8605a41cbe610c971b891309b2149d221b8b27
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 31ca0ee666ff37afa37fb9636860c557d92a52c7
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59426442"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924791"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Optimierung der TCP/IP-Leistung für Azure-VMs
 
@@ -304,7 +304,7 @@ Der beschleunigte Netzwerkbetrieb ist dazu ausgelegt, die Netzwerkleistung, eins
 
 Jedem virtuellen Azure-Computer ist mindestens eine Netzwerkschnittstelle zugeordnet. Es können aber auch mehrere zugeordnet sein. Die einem virtuellen Computer zugeordnete Bandbreite ist die Summe des gesamten ausgehenden Datenverkehrs über alle Netzwerkschnittstellen, die dem Computer zugeordnet sind. Mit anderen Worten, die Bandbreite wird pro virtuellem Computer zugeordnet, unabhängig davon, wie viele Netzwerkschnittstellen dem Computer zugeordnet sind.
 
-Der erwartete ausgehende Durchsatz und die Anzahl der Netzwerkschnittstellen, die von der jeweiligen Größe eines virtuellen Computers unterstützt werden, sind unter [Größen für virtuelle Windows-Computer in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) ausführlich beschrieben. Um den maximalen Durchsatz zu sehen, wählen Sie einen Typ aus, etwa **Allgemeiner Zweck**, und suchen Sie dann auf der angezeigten Seite nach dem Abschnitt über die Größenserie (z. B. „Dv2-Serie“). Für jede Serie gibt es eine Tabelle, in der in der letzten Spalte, die mit „Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBit/s)“ überschrieben ist, Netzwerkspezifikationen enthalten sind.
+Der erwartete ausgehende Durchsatz und die Anzahl der Netzwerkschnittstellen, die von der jeweiligen Größe eines virtuellen Computers unterstützt werden, sind unter [Größen für virtuelle Windows-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) ausführlich beschrieben. Um den maximalen Durchsatz zu sehen, wählen Sie einen Typ aus, etwa **Allgemeiner Zweck**, und suchen Sie dann auf der angezeigten Seite nach dem Abschnitt über die Größenserie (z. B. „Dv2-Serie“). Für jede Serie gibt es eine Tabelle, in der in der letzten Spalte, die mit „Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBit/s)“ überschrieben ist, Netzwerkspezifikationen enthalten sind.
 
 Die Durchsatzbegrenzung gilt für den virtuellen Computer. Die folgenden Faktoren wirken sich nicht auf den Durchsatz aus:
 
@@ -388,4 +388,4 @@ Trotzdem sind diese Pakettypen weiterhin Hinweise darauf, dass der TCP-Durchsatz
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun erfahren haben, wie sich die TCP/IP-Leistung für virtuelle Azure-Computer optimieren lässt, möchten Sie wahrscheinlich mehr über andere Aspekte des [Planens von virtuellen Netzwerken](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-vnet-plan-design-arm) oder [über Verbinden und Konfigurieren von virtuellen Netzwerken](https://docs.microsoft.com/en-us/azure/virtual-network/) erfahren.
+Nachdem Sie nun erfahren haben, wie sich die TCP/IP-Leistung für virtuelle Azure-Computer optimieren lässt, möchten Sie wahrscheinlich mehr über andere Aspekte des [Planens von virtuellen Netzwerken](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm) oder [über Verbinden und Konfigurieren von virtuellen Netzwerken](https://docs.microsoft.com/azure/virtual-network/) erfahren.

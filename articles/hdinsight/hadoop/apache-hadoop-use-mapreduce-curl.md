@@ -1,7 +1,6 @@
 ---
 title: Verwenden von MapReduce und Curl mit Hadoop in HDInsight – Azure
 description: Erfahren Sie, wie Sie MapReduce-Aufträge mit Apache Hadoop in HDInsight mithilfe von Curl remote ausführen.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: b422074c33f52a6819d2a05144a85768a2e484a0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e4968310459097fc6a00f7c453846fe61726c3d5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011913"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64716116"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Ausführen von MapReduce-Aufträgen mit Apache Hadoop in HDInsight mithilfe von REST
 

@@ -1,7 +1,6 @@
 ---
 title: 'Tutorial: Ausführen von ETL-Vorgängen (Extrahieren, Transformieren, Laden) unter Verwendung von Hive in HDInsight: Azure '
 description: Hier erfahren Sie, wie Sie Daten aus einem unformatierten CSV-Dataset extrahieren, mithilfe von Hive in HDInsight transformieren und die transformierten Daten mithilfe von Apache Sqoop in eine Azure SQL-Datenbank laden.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,mvc
-ms.openlocfilehash: b8a45f3014b3fd5d0f5592b3f9bd408fc37b387b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eb86dc8c5c3b215a2c90380b4009efd00d2a243c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999955"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64723146"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-apache-hive-on-azure-hdinsight"></a>Tutorial: Extrahieren, Transformieren und Laden von Daten mithilfe von Apache Hive in Azure HDInsight
 
@@ -320,8 +319,8 @@ Weitere Informationen zum Arbeiten mit Daten in HDInsight finden Sie in den folg
 * [Verwenden von Apache Hive mit HDInsight][hdinsight-use-hive]
 * [Verwenden von Apache Pig mit HDInsight][hdinsight-use-pig]
 * [Entwickeln von Java MapReduce-Programmen für Apache Hadoop in HDInsight][hdinsight-develop-mapreduce]
-* [Entwickeln von Streaming-MapReduce-Programmen für HDInsight mit Python][hdinsight-develop-streaming]
-* [Verwenden von Apache Oozie mit HDInsight][hdinsight-use-oozie]
+
+* [Verwenden von Oozie mit Hadoop zum Definieren und Ausführen eines Workflows in Linux-basiertem Azure HDInsight][hdinsight-use-oozie]
 * [Importieren und Exportieren von Daten zwischen Apache Hadoop unter HDInsight und einer SQL-Datenbank mithilfe von Apache Sqoop][hdinsight-use-sqoop]
 
 
@@ -342,7 +341,7 @@ Weitere Informationen zum Arbeiten mit Daten in HDInsight finden Sie in den folg
 [hdinsight-get-started]: hadoop/apache-hadoop-linux-tutorial-get-started.md
 [hdinsight-use-sqoop]:hadoop/apache-hadoop-use-sqoop-mac-linux.md
 [hdinsight-use-pig]:hadoop/hdinsight-use-pig.md
-[hdinsight-develop-streaming]:hadoop/apache-hadoop-streaming-python.md
+
 [hdinsight-develop-mapreduce]:hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
 
 [hadoop-hiveql]: https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL

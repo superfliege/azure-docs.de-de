@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: ae89ab811015fca9bcb50fcc149534754533c25f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 826a38dd80db7cd0e6e500949d2c259c3808c0a9
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59491513"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64914943"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -121,9 +121,9 @@ Bei Ihrem zuletzt ausgeführten Sicherungsauftrag ist ein Fehler aufgetreten, we
 3. Klicken Sie im Tresordashboard-Menü auf **Sicherungsaufträge**, um alle Sicherungsaufträge anzuzeigen.
 
     * Falls gerade ein Sicherungsauftrag ausgeführt wird, müssen Sie auf den Abschluss warten oder den Auftrag abbrechen.
-        * Klicken Sie zum Abbrechen des Sicherungsauftrags mit der rechten Maustaste darauf, und klicken Sie dann auf **Abbrechen**, oder verwenden Sie [PowerShell](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
+        * Klicken Sie zum Abbrechen des Sicherungsauftrags mit der rechten Maustaste darauf, und klicken Sie dann auf **Abbrechen**, oder verwenden Sie [PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
     * Wenn Sie die Sicherung in einem anderen Tresor neu konfiguriert haben, sollten Sie sicherstellen, dass im alten Tresor keine Sicherungsaufträge ausgeführt werden. Wenn ein Sicherungsauftrag vorhanden ist, brechen Sie ihn ab.
-        * Klicken Sie zum Abbrechen des Sicherungsauftrags mit der rechten Maustaste darauf, und klicken Sie dann auf **Abbrechen**, oder verwenden Sie [PowerShell](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
+        * Klicken Sie zum Abbrechen des Sicherungsauftrags mit der rechten Maustaste darauf, und klicken Sie dann auf **Abbrechen**, oder verwenden Sie [PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
 4. Führen Sie den Sicherungsvorgang erneut durch.
 
 Wenn der geplante Sicherungsvorgang länger mit der nächsten Sicherungskonfiguration in Konflikt steht, lesen Sie [Bewährte Methoden](backup-azure-vms-introduction.md#best-practices), [Backupleistung](backup-azure-vms-introduction.md#backup-performance) und [Aspekte bei der Wiederherstellung](backup-azure-vms-introduction.md#backup-and-restore-considerations).

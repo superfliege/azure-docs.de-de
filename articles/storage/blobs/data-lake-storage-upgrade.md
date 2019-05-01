@@ -8,12 +8,12 @@ ms.author: normesta
 ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 1a9d26736a444efb83f9040b51676202b1ea4450
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 84e3aff9c1c8cb3e7fe399c861c2c7d58c278fed
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006113"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64730539"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>Upgrade von Big Data-Analyselösungen von Azure Data Lake Storage Gen1 auf Azure Data Lake Storage Gen2
 
@@ -249,7 +249,7 @@ Die Hauptaufgabe besteht hier darin, URIs mit dem Präfix `adl://` in URIs mit d
 
 Das URI-Schema für Data Lake Storage Gen1 wird [hier](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-store) genauer erläutert, aber im Allgemeinen ist es *adl://mydatalakestore.azuredatalakestore.net/\<file_path\>.*
 
-Das URI-Schema für den Zugriff auf Data Lake Storage Gen2-Dateien wird [hier](https://docs.microsoft.com/azure/storage/data-lake-storage/use-hdi-cluster) genauer erläutert, im Allgemeinen ist es jedoch `abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.widows.net/<PATH>`.
+Das URI-Schema für den Zugriff auf Data Lake Storage Gen2-Dateien wird [hier](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md) genauer erläutert, im Allgemeinen ist es jedoch `abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.widows.net/<PATH>`.
 
 Sie müssen Ihre vorhandenen Anwendungen durchlaufen und sicherstellen, dass Sie die URIs entsprechend geändert haben, sodass auf die URIs von Data Lake Storage Gen2 verwiesen wird. Sie müssen ebenso die entsprechenden Anmeldeinformationen hinzufügen. Zuletzt ist die Art und Weise, wie Sie die ursprünglichen Anwendungen außer Betrieb nehmen und durch die neue Anwendung ersetzen, eng mit Ihrer allgemeinen Upgradestrategie verbunden.
 

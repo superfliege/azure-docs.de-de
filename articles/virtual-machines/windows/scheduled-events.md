@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 2ed92486b55aa4fd7dce32f54f0b6567c7bb3cf2
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: ab0aefd5650aada9c301115813a80747ddd1f2ac
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486732"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926317"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Instance Metadata Service: Scheduled Events für Windows-VMs
 
@@ -48,7 +48,7 @@ Geplante Ereignisse umfasst Ereignisse in den folgenden Anwendungsfällen:
 - Plattforminitiierte Wartung (z.B. Update des Hostbetriebssystems)
 - Heruntergestufte Hardware
 - Benutzerinitiierte Wartung (z.B. Neustart oder erneute Bereitstellung eines virtuellen Computers durch den Benutzer)
-- [Entfernung von VMs mit niedriger Priorität](https://azure.microsoft.com/en-us/blog/low-priority-scale-sets) in Skalierungsgruppen
+- [Entfernung von VMs mit niedriger Priorität](https://azure.microsoft.com/blog/low-priority-scale-sets) in Skalierungsgruppen
 
 ## <a name="the-basics"></a>Die Grundlagen  
 

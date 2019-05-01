@@ -1,7 +1,6 @@
 ---
 title: Analysieren von Websiteprotokollen mit Python-Bibliotheken in Spark – Azure
 description: Dieses Notebook veranschaulicht das Analysieren von Protokolldaten unter Verwendung einer benutzerdefinierten Bibliothek mit Spark unter Azure HDInsight.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: f8b479f55ea5ee22ae2510fad6279cac0aaa9c0d
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: bef71f210e015dc10cd6f5c0c655d0d3beee3655
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608799"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728924"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Analysieren von Websiteprotokollen mithilfe einer benutzerdefinierten Python-Bibliothek mit Apache Spark-Cluster unter HDInsight
 

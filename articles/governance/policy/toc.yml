@@ -52,7 +52,7 @@
             - name: Tagübereinstimmungsmuster erfordern
               displayName: 'deny, all'
               href: samples/enforce-tag-match-pattern.md
-        - name: Tags
+        - name: '`Tags`'
           items:
             - name: Anwenden von Tags und den zugehörigen Standardwerten
               displayName: 'append, builtin, concat'
@@ -292,6 +292,12 @@
           href: '/powershell/module/az.policyinsights#policy_insights'
         - name: Gastkonfiguration
           href: 'https://www.powershellgallery.com/packages/Az.GuestConfiguration'
+    - name: Azure SDK für .NET
+      items:
+        - name: Arbeitsaufträge
+          href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
+        - name: Richtliniendefinitionen
+          href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
     - name: REST
       items:
         - name: Ereignisse

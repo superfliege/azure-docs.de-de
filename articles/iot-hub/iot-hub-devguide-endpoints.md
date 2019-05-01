@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: 5015068f9b165190bef3b0cb97ddb194e173303e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fe913f057d00fd18b1b163f124d9dd0b83abf0de
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045916"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925898"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Referenz: IoT Hub-Endpunkte
 
@@ -82,7 +82,7 @@ IoT Hub unterstützt derzeit folgende Azure-Dienste als zusätzliche Endpunkte:
 
 Informationen zur Beschränkung der Anzahl von Endpunkten, die Sie hinzufügen können, finden Sie unter [Kontingente und Drosselung](iot-hub-devguide-quotas-throttling.md).
 
-Sie können die REST-API [Get Endpoint Health](https://docs.microsoft.com/de-de/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) (Endpunktintegrität abrufen) verwenden, um den Integritätsstatus der Endpunkte abzurufen. Es empfiehlt sich, die [IoT Hub-Metriken](iot-hub-metrics.md), die sich auf die Routinglatenz von Nachrichten beziehen, zu verwenden, um Fehler bei beschädigter Endpunktintegrität zu erkennen und zu beheben.
+Sie können die REST-API [Get Endpoint Health](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) (Endpunktintegrität abrufen) verwenden, um den Integritätsstatus der Endpunkte abzurufen. Es empfiehlt sich, die [IoT Hub-Metriken](iot-hub-metrics.md), die sich auf die Routinglatenz von Nachrichten beziehen, zu verwenden, um Fehler bei beschädigter Endpunktintegrität zu erkennen und zu beheben.
 
 |Integritätsstatus|BESCHREIBUNG|
 |---|---|

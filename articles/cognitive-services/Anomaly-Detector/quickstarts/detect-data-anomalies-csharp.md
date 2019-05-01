@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 772f15f54819f31d92411df747fc10d54b3e96cd
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: ffa42eb2247d163dd6a146ffb26c1f8cc5cf6d82
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544111"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922520"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>Schnellstart: Erkennen von Anomalien in Zeitreihendaten mithilfe der Anomalieerkennungs-REST-API und C# 
 
@@ -35,7 +35,7 @@ Dieser Schnellstart unterstützt Sie bei den ersten Schritten in den zwei Erkenn
         1. Klicken Sie im **Projektmappen-Manager** mit der rechten Maustaste.
         2. Klicken Sie auf **Manage NuGet Packages**
         3. Suchen Sie nach `Newtonsoft.Json`, und installieren Sie das Paket.
-- Unter Linux/MacOS kann diese Anwendung mit [Mono](http://www.mono-project.com/) ausgeführt werden.
+- Unter Linux/MacOS kann diese Anwendung mit [Mono](https://www.mono-project.com/) ausgeführt werden.
 
 - Eine JSON-Datei mit Datenpunkten auf einer Zeitreihe. Die Beispieldaten für diesen Schnellstart finden Sie auf [GitHub](https://github.com/Azure-Samples/anomalydetector/blob/master/example-data/request-data.json).
 

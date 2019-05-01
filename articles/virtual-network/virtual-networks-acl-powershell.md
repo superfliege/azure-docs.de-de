@@ -3,9 +3,7 @@ title: Verwalten von Azure-Endpunkt-Zugriffssteuerungslisten | PowerShell | klas
 description: Hier erfahren Sie, wie Sie ACLs mit PowerShell verwalten.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: carmonm
-editor: tysonn
+author: genlin
 ms.assetid: c84e40af-f351-4572-b3f0-d572d46bafe7
 ms.service: virtual-network
 ms.devlang: na
@@ -13,13 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
-ms.author: jdial
-ms.openlocfilehash: 1f6c14c15d4930902ced642bd02d1d1833e0b361
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.author: genli
+ms.openlocfilehash: c43dacaf7bb5ab17fe740dd429e4a40dbc11bb6e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54154809"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64726930"
 ---
 # <a name="manage-endpoint-access-control-lists-using-powershell-in-the-classic-deployment-model"></a>Verwalten von Endpunkt-Zugriffssteuerungslisten mit PowerShell im klassischen Bereitstellungsmodell
 Sie können mit Azure PowerShell oder im Verwaltungsportal Netzwerk-Zugriffssteuerungslisten (Access Control Lists, ACLs) für Endpunkte erstellen und verwalten. In diesem Thema finden Sie Verfahren für häufige Aufgaben in Zusammenhang mit ACLs, die Sie mit PowerShell durchführen können. Die Liste der Azure PowerShell-Cmdlets, finden Sie unter [Azure-Verwaltungs-Cmdlets](https://go.microsoft.com/fwlink/?LinkId=317721). Weitere Informationen zu ACLs finden Sie unter [Was ist eine Netzwerk-Zugriffssteuerungsliste (ACL)?](virtual-networks-acl.md). Informationen zum Verwalten der ACLs mithilfe des Verwaltungsportals finden Sie unter [Einrichten von Endpunkten für einen virtuelle Computer](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).

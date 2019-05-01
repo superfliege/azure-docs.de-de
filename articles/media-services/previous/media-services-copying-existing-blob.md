@@ -13,25 +13,27 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 36bfd1787e9f35ac4eaa8b8418df1e592386e8f4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 15d2f16b2c4133e40c7f77390e83504397c47980
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182029"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868157"
 ---
 # <a name="copying-existing-blobs-into-a-media-services-asset"></a>Kopieren vorhandener Blobs in ein Media Services-Medienobjekt
+
+> [!NOTE]
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+
 In diesem Artikel wird erläutert, wie Blobs mithilfe von [Azure Media Services .NET SDK-Erweiterungen](https://github.com/Azure/azure-sdk-for-media-services-extensions/) aus einem Speicherkonto in ein neues Azure Media Services-Medienobjekt (AMS) kopiert werden.
+
+Sie sollten nicht versuchen, den Inhalt von BLOB-Containern, die mit Media Services generiert wurden, ohne die Verwendung von Media Service-APIs zu ändern.
 
 Die Erweiterungsmethoden können mit Folgendem verwendet werden:
 
 - Normalen Medienobjekten
 - Livearchivobjekten (FragBlob-Format).
 - Quell- und Zielmedienobjekten, die zu unterschiedlichen Media Services-Konten (sogar in verschiedenen Rechenzentren) gehören Allerdings fallen dabei möglicherweise Kosten an. Die Preisübersicht und weitere Informationen finden Sie unter [Azure-Preise](https://azure.microsoft.com/pricing/#header-11).
-
-> [!NOTE]
-> Sie sollten nicht versuchen, den Inhalt von BLOB-Containern, die mit Media Services generiert wurden, ohne die Verwendung von Media Service-APIs zu ändern.
-> 
 
 In diesem Artikel werden zwei Codebeispiele gezeigt:
 

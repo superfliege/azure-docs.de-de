@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 6337477b55addefb7579d6f328473428ba72ba24
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: aacb4521f4c6e8699be357cf396a01b7eb54b552
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446130"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924374"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Scheduled Events für Linux-VMs
 
@@ -49,13 +49,13 @@ Geplante Ereignisse umfasst Ereignisse in den folgenden Anwendungsfällen:
 - Von der Plattform ausgelöste Wartungsaktionen (z.B. Update des Hostbetriebssystems)
 - Heruntergestufte Hardware
 - Benutzerinitiierte Wartung (z.B. Neustart oder erneute Bereitstellung eines virtuellen Computers durch den Benutzer)
-- [Entfernung von VMs mit niedriger Priorität](https://azure.microsoft.com/en-us/blog/low-priority-scale-sets) in Skalierungsgruppen
+- [Entfernung von VMs mit niedriger Priorität](https://azure.microsoft.com/blog/low-priority-scale-sets) in Skalierungsgruppen
 
 ## <a name="the-basics"></a>Die Grundlagen  
 
   Der Metadatendienst macht Informationen zu ausgeführten virtuellen Computern mithilfe eines innerhalb einer VM zugänglichen REST-Endpunkts verfügbar. Die Informationen stehen über eine nicht routingfähige IP-Adresse bereit, die außerhalb der VM nicht verfügbar gemacht wird.
 
-### <a name="scope"></a>Bereich
+### <a name="scope"></a>`Scope`
 Geplante Ereignisse werden übermittelt an:
 
 - Alle VMs in einem Clouddienst

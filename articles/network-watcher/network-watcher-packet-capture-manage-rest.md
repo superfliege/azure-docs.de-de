@@ -3,8 +3,8 @@ title: Verwalten von Paketerfassungen mit Azure Network Watcher – REST-API | M
 description: Auf dieser Seite wird erläutert, wie das Network Watcher-Feature zur Paketerfassung mithilfe der Azure-REST-API verwaltet wird.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: 53fe0324-835f-4005-afc8-145eeb314aeb
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: jdial
-ms.openlocfilehash: 614c3e1831680fff50058cd5192449f8e6e28179
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.author: kumud
+ms.openlocfilehash: d2e87ac1b425e92a624cc2f664a6673a05fbfb44
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59049795"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64727679"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>Verwalten von Paketerfassungen mit Azure Network Watcher mithilfe der Azure-REST-API
 
@@ -35,7 +35,7 @@ Dieser Artikel führt Sie durch die verschiedenen Verwaltungsaufgaben, die derze
 
 - [**Abrufen einer Paketerfassung**](#get-a-packet-capture)
 - [**Auflisten aller Paketerfassungen**](#list-all-packet-captures)
-- [**Status einer Paketerfassung abfragen**](#query-packet-capture-status)
+- [**Abfragen des Status einer Paketerfassung**](#query-packet-capture-status)
 - [**Starten einer Paketerfassung**](#start-packet-capture)
 - [**Beenden einer Paketerfassung**](#stop-packet-capture)
 - [**Löschen einer Paketerfassung**](#delete-packet-capture)

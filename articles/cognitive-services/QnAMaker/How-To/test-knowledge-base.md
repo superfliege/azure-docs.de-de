@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/17/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 20ebcb502e03f2d817fe18624d8c790e920c667f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ea2381287729579e10d457912c4147f59716bcc4
+ms.sourcegitcommit: 2c09af866f6cc3b2169e84100daea0aac9fc7fd0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861237"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64875714"
 ---
 # <a name="test-your-knowledge-base-interactively-in-qna-maker"></a>Interaktives Testen Ihrer Wissensdatenbank in QnA Maker
 
@@ -24,8 +24,8 @@ Das Testen Ihrer QnA Maker-Wissensdatenbank ist ein wichtiger Teil eines iterati
 
 ## <a name="test-answer-matching"></a>Testen der Übereinstimmung von Antworten
 
-1.  Greifen Sie auf Ihre Wissensdatenbank zu, indem Sie ihren Namen auf der Seite  **Meine Wissensdatenbanken** auswählen.
-2.  Um auf den Einblendbereich „Test“ zuzugreifen, wählen Sie im oberen Bereich Ihrer Anwendung  **Test** aus.
+1.  Greifen Sie auf Ihre Wissensdatenbank zu, indem Sie den Namen auf der Seite **Meine Wissensdatenbanken** auswählen.
+2.  Um auf den einblendbaren Bereich „Test“ zuzugreifen, wählen Sie im oberen Bereich Ihrer Anwendung **Test** aus.
 
     ![Zugreifen auf den Testbereich](../media/qnamaker-how-to-test-kb/access-test.png)
 
@@ -33,19 +33,19 @@ Das Testen Ihrer QnA Maker-Wissensdatenbank ist ein wichtiger Teil eines iterati
 
 4.  Die am besten passende Antwort aus der Wissensdatenbank wird als Antwort zurückgegeben.
 
-## <a name="clear-test-panel"></a>Leeren des Testbereichs
+## <a name="clear-test-panel"></a>Löschen des Bereichs „Test“
 
-Um alle eingegebenen Testabfragen und ihre Ergebnisse aus der Testkonsole zu löschen, wählen Sie in der linken oberen Ecke des Bereichs „Test“ die Option  **Neu beginnen** aus.
+Um alle eingegebenen Testabfragen und ihre Ergebnisse aus der Testkonsole zu löschen, wählen Sie in der linken oberen Ecke des Bereichs „Test“ die Option **Neu beginnen** aus.
 
-## <a name="close-test-panel"></a>Schließen des Testbereichs
+## <a name="close-test-panel"></a>Schließen des Bereichs „Test“
 
-Um den Bereich „Test“ zu schließen, wählen Sie erneut die Schaltfläche  **Test** aus. Während der Bereich „Test“ geöffnet ist, können Sie den Inhalt der Wissensdatenbank nicht bearbeiten.
+Um den Bereich „Test“ zu schließen, wählen Sie erneut die Schaltfläche **Test** aus. Während der Bereich „Test“ geöffnet ist, können Sie den Inhalt der Wissensdatenbank nicht bearbeiten.
 
 ## <a name="inspect-score"></a>Überprüfen der Bewertung
 
 Sie überprüfen die Details des Testergebnisses im Bereich „Überprüfen“.
 
-1.  Wählen Sie bei geöffnetem Bereich „Test“ die Option  **Überprüfen** aus, um weitere Details zu dieser Antwort zu erhalten.
+1.  Wählen Sie bei geöffnetem Bereich „Test“ die Option **Überprüfen** aus, um weitere Details zu dieser Antwort zu erhalten.
 
     ![Überprüfen von Antworten](../media/qnamaker-how-to-test-kb/inspect.png)
 

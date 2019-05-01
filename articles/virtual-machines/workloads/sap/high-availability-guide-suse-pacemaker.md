@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 62356ee35631373b5a5d38ed356bbb2fb489807b
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 0758105c7e2a18e976bc0c210eaf4e55e418a22d
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59577794"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925726"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>Einrichten von Pacemaker unter SUSE Linux Enterprise Server in Azure
 
@@ -578,7 +578,7 @@ sudo crm configure primitive <b>stonith-sbd</b> stonith:external/sbd \
 
 ## <a name="pacemaker-configuration-for-azure-scheduled-events"></a>Pacemaker-Konfiguration für geplante Azure-Ereignisse
 
-Azure verfügt über [geplante Ereignisse](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/scheduled-events). Geplante Ereignisse werden per Metadatendienst bereitgestellt und sorgen dafür, dass für die Anwendung ausreichend Zeit für die Vorbereitung auf Ereignisse wie das Herunterfahren von VMs, das erneute Bereitstellen von VMs usw. vorhanden ist. Mit dem Ressourcen-Agent **[azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161)** wird eine Überwachung auf geplante Azure-Ereignisse durchgeführt. Wenn Ereignisse erkannt werden, versucht der Agent, alle Ressourcen auf der betroffenen VM zu beenden und auf einen anderen Knoten im Cluster zu verschieben. Hierfür müssen zusätzliche Pacemaker-Ressourcen konfiguriert werden. 
+Azure verfügt über [geplante Ereignisse](https://docs.microsoft.com/azure/virtual-machines/linux/scheduled-events). Geplante Ereignisse werden per Metadatendienst bereitgestellt und sorgen dafür, dass für die Anwendung ausreichend Zeit für die Vorbereitung auf Ereignisse wie das Herunterfahren von VMs, das erneute Bereitstellen von VMs usw. vorhanden ist. Mit dem Ressourcen-Agent **[azure-events](https://github.com/ClusterLabs/resource-agents/pull/1161)** wird eine Überwachung auf geplante Azure-Ereignisse durchgeführt. Wenn Ereignisse erkannt werden, versucht der Agent, alle Ressourcen auf der betroffenen VM zu beenden und auf einen anderen Knoten im Cluster zu verschieben. Hierfür müssen zusätzliche Pacemaker-Ressourcen konfiguriert werden. 
 
 1. **[A]** Installieren Sie den **azure-events**-Agent. 
 

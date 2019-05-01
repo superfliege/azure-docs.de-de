@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: byvinyal
-ms.openlocfilehash: b09de67cddcec26a1083bb64d13b9bbc47c3d5e5
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: ae6547b7940ee4007c747847e6cec7b0c67a9d3c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998480"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64717442"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 In diesem Dokument sind einige der gängigsten Einschränkungen in Microsoft Azure aufgeführt, die bisweilen auch als „Kontingente“ bezeichnet werden. Dieses Dokument behandelt derzeit nicht alle Azure-Dienste. Mit der Zeit wird diese Liste erweitert, um mehr Dienste abzudecken.
@@ -77,6 +77,7 @@ In der folgenden Liste mit Grenzwerten zeigt eine neue Tabelle die abweichenden 
 * [IoT Hub](#iot-hub-limits)
 * [IoT Hub Device Provisioning-Dienst](#iot-hub-device-provisioning-service-limits)
 * [Schlüsseltresor](#key-vault-limits)
+* [Load Balancer](#load-balancer)
 * [Log Analytics](#log-analytics-limits)
 * [Media Services](#media-services-limits)
 * [Mobile Services](#mobile-services-limits)
@@ -84,6 +85,7 @@ In der folgenden Liste mit Grenzwerten zeigt eine neue Tabelle die abweichenden 
 * [Netzwerk](#networking-limits)
 * [Network Watcher](#network-watcher-limits)
 * [Notification Hubs](#notification-hubs-limits)
+* [Öffentliche IP-Adresse](#publicip-address)
 * [Ressourcengruppe](#resource-group-limits)
 * [Rollenbasierte Zugriffssteuerung](#role-based-access-control-limits)
 * [Scheduler](#scheduler-limits)
@@ -137,10 +139,10 @@ In der folgenden Tabelle werden die Features und Grenzwerte der [Dienstebenen](.
 [!INCLUDE [container-service-limits](../includes/container-service-limits.md)]
 
 ### <a name="networking-limits"></a>Grenzwerte für Netzwerke
-[!INCLUDE [expressroute-limits](../includes/expressroute-limits.md)]
-
-#### <a name="networking-limits"></a>Grenzwerte für Netzwerke
 [!INCLUDE [azure-virtual-network-limits](../includes/azure-virtual-network-limits.md)]
+
+#### <a name="expressroute-limits"></a>Einschränkungen für ExpressRoute
+[!INCLUDE [expressroute-limits](../includes/expressroute-limits.md)]
 
 #### <a name="application-gateway-limits"></a>Application Gateway-Grenzwerte
 
@@ -344,7 +346,7 @@ Detailliertere Informationen zu Grenzwerten wie etwa für Dokumentgröße, Abfra
 [!INCLUDE [role-based-access-control-limits](../includes/role-based-access-control-limits.md)]
 
 ### <a name="sql-database-limits"></a>Grenzwerte für SQL-Datenbanken
-Weitere Informationen zu Grenzwerten für SQL-Datenbank finden Sie unter [SQL Database resource limits for single databases](sql-database/sql-database-vcore-resource-limits-single-databases.md) (Ressourcengrenzwerte für SQL-Datenbank für Einzeldatenbanken), [SQL Database resource limits for elastic pools and pooled databases](sql-database/sql-database-vcore-resource-limits-elastic-pools.md) (Ressourcengrenzwerte für SQL-Datenbank für Pools für elastische Datenbanken und Pooldatenbanken) und [SQL Database resource limits for managed instances](sql-database/sql-database-managed-instance-resource-limits.md) (Ressourcengrenzwerte für SQL-Datenbank für verwaltete Instanzen).
+Weitere Informationen zu Grenzwerten für SQL-Datenbank finden Sie unter [SQL Database resource limits for single databases](sql-database/sql-database-vcore-resource-limits-single-databases.md) (Ressourcengrenzwerte für SQL-Datenbank für Singletons), [SQL Database resource limits for elastic pools and pooled databases](sql-database/sql-database-vcore-resource-limits-elastic-pools.md) (Ressourcengrenzwerte für SQL-Datenbank für Pools für elastische Datenbanken und Pooldatenbanken) und [SQL Database resource limits for managed instances](sql-database/sql-database-managed-instance-resource-limits.md) (Ressourcengrenzwerte für SQL-Datenbank für verwaltete Instanzen).
 
 ### <a name="sql-data-warehouse-limits"></a>Einschränkungen zu SQL Data Warehouse
 Informationen zu Grenzwerten für SQL Data Warehouse finden Sie unter [SQL Data Warehouse resource limits](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md) (Ressourcengrenzwerte für SQL Data Warehouse).

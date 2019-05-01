@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 738dd451ca44801c799d793e6501c547655bd0e0
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 7db40de921c0eb8826a2fee832c1a51c57796f6d
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524142"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919836"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Verwenden von Azure API Management mit einem internen virtuellen Netzwerk
 Mit virtuellen Azure-Netzwerken kann API Management APIs verwalten, auf die nicht über das Internet zugegriffen werden kann. Für die Verbindungsherstellung stehen verschiedene VPN-Technologien zur Verfügung. API Management kann in einem virtuellen Netzwerk in zwei Hauptmodi bereitgestellt werden:
@@ -48,7 +48,7 @@ Zum Ausführen der in diesem Artikel beschriebenen Schritte benötigen Sie Folge
 + Wenn ein API Management-Dienst in einem virtuellen Netzwerk bereitgestellt ist, wird eine [Liste von Ports](./api-management-using-with-vnet.md#required-ports) verwendet, die geöffnet werden müssen. 
 
 ## <a name="enable-vpn"> </a>Einrichten von API Management in einem internen virtuellen Netzwerk
-Der API Management-Dienst in einem internen virtuellen Netzwerk wird hinter einem [internen Lastenausgleich (klassisch)](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud) gehostet. Dies ist die einzige verfügbare Option und kann nicht geändert werden.
+Der API Management-Dienst in einem internen virtuellen Netzwerk wird hinter einem [internen Lastenausgleich (klassisch)](https://docs.microsoft.com/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud) gehostet. Dies ist die einzige verfügbare Option und kann nicht geändert werden.
 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Aktivieren einer Verbindung mit einem virtuellen Netzwerk über das Azure-Portal
 

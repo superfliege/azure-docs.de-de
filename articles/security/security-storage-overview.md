@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2019
+ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: ec0e8ae1bf657cda59f3d133db23106436e184e3
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 262ccc311b2b7ec634183eb4f914902048ba2c3b
+ms.sourcegitcommit: 8a681ba0aaba07965a2adba84a8407282b5762b2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326755"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64872037"
 ---
 # <a name="azure-storage-security-overview"></a>Übersicht über die Sicherheit von Azure Storage
 
-Azure Storage ist eine Cloudspeicherlösung für moderne Anwendungen, die eine Kombination aus Dauerhaftigkeit, Verfügbarkeit und Skalierbarkeit benötigen, um die Anforderungen ihrer Kunden zu erfüllen. Azure Storage bietet einen umfassenden Satz von Sicherheitsfunktionen. Ihre Möglichkeiten:
+Dieser Artikel bietet eine Übersicht über die Sicherheitsfunktionen von Azure, die mit Azure Storage verwendet werden können. Azure Storage ist eine Cloudspeicherlösung für moderne Anwendungen, die eine Kombination aus Dauerhaftigkeit, Verfügbarkeit und Skalierbarkeit benötigen, um die Anforderungen ihrer Kunden zu erfüllen. Azure Storage bietet einen umfassenden Satz von Sicherheitsfunktionen. Ihre Möglichkeiten:
 
 * Schützen Sie das Speicherkonto mit rollenbasierter Zugriffssteuerung (RBAC) und Azure Active Directory.
 * Schützen Sie Daten während der Übertragung zwischen einer Anwendung und Azure mit clientseitiger Verschlüsselung, HTTPS oder SMB 3.0.
@@ -33,9 +33,6 @@ Azure Storage ist eine Cloudspeicherlösung für moderne Anwendungen, die eine K
 * Verwenden Sie Analysen zum Verfolgen der Authentifizierungsmethode, die ein Benutzer beim Zugriff auf Storage verwendet.
 
 Eine ausführlichere Betrachtung der Sicherheit in Azure Storage finden Sie im [Azure Storage-Sicherheitsleitfaden](../storage/common/storage-security-guide.md). Dieser Leitfaden enthält fundierte Informationen zu den Sicherheitsfeatures von Azure Storage. Zu diesen Features gehören Speicherkontoschlüssel, Datenverschlüsselung während der Übertragung und Speicherung sowie Speicheranalysen.
-
-
-Dieser Artikel bietet eine Übersicht über die Sicherheitsfunktionen von Azure, die mit Azure Storage verwendet werden können. Links zu Artikeln bieten weitere Informationen zu den einzelnen Features.
 
 ## <a name="role-based-access-control"></a>Rollenbasierte Access Control
 

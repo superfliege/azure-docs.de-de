@@ -59,7 +59,7 @@
     - name: Change Tracking
       items:
         - name: Übersicht über die Änderungsnachverfolgung
-          href: automation-change-tracking.md
+          href: change-tracking.md
           displayName: 'wildcard, recursion, environment variables, registry'
         - name: Anzeigen der Inhalte von nachverfolgten Dateien
           href: change-tracking-file-contents.md

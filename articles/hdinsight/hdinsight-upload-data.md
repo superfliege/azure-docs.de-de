@@ -2,7 +2,6 @@
 title: Hochladen von Daten für Apache Hadoop-Aufträge in HDInsight
 description: Erfahren Sie, wie Sie Daten für Apache Hadoop-Aufträge in HDInsight mit der klassischen Azure-Befehlszeilenschnittstelle, Azure Storage-Explorer, Azure PowerShell, der Hadoop-Befehlszeile oder Sqoop hochladen und abrufen können.
 keywords: ETL Hadoop, Importieren von Daten in Hadoop, Laden von Daten in Hadoop
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.author: hrasheed
@@ -10,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/08/2019
-ms.openlocfilehash: a56f2546eec12d04dcc64665e60a9874b8e991b6
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 3283c885956c5b43171c6287dc00efa9a82db28e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59684139"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64722796"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>Hochladen von Daten für Apache Hadoop-Aufträge in HDInsight
 

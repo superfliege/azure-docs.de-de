@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 0b2d242519e7e8981a905d6adb1f3c0f091afe38
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5850b683189136eac70451075933b0c57ecc37cd
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698944"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920447"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Verbessern der Leistung von Azure-Anwendungen mit Azure Advisor
 
@@ -88,11 +88,11 @@ Eine sehr hohe CPU-Auslastung über einen längeren Zeitraum kann die Abfragelei
 Eine niedrige Cachetrefferquote kann die Abfrageleistung beeinträchtigen und zu erhöhtem IOPS führen. Dies kann auf einen ungültigen Abfrageplan oder die Ausführung einer speicherintensiven Workload zurückzuführen sein. Durch Korrigieren des Abfrageplans oder  [Vergrößern des Speichers](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers) des Azure Database for PostgreSQL-Datenbankservers, Azure MySQL-Datenbankservers oder Azure MariaDB-Servers kann die Ausführung der Datenbankworkload optimiert werden. Azure Advisor identifiziert Server, die durch diese hohe Änderungsrate des Pufferpools betroffen sind, und empfiehlt entweder die Korrektur des Abfrageplans, den Wechsel zu einer höheren SKU mit mehr Speicher oder die Vergrößerung des Speichers, um mehr IOPS zu erhalten.
 
 ### <a name="use-a-azure-mysql-or-azure-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Verwenden eines MySQL- oder Azure PostgreSQL-Lesereplikats zum horizontalen Skalieren von Lesevorgängen für leseintensive Workloads
-Azure Advisor nutzt workloadbasierte Heuristik, z. B. das Verhältnis von Lese-zu Schreibvorgängen auf dem Server in den letzten sieben Tagen, um leseintensive Workloads zu identifizieren. Eine Azure Database for PostgreSQL-Ressource oder Azure Database for MySQL-Ressource mit einem sehr hohen Verhältnis von Lese- zu Schreibvorgängen kann zu CPU- und/oder Speicherkonflikten führen, durch die die Abfrageleistung beeinträchtigt wird. Durch Hinzufügen eines  [Replikats](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) können Schreibvorgänge horizontal auf den Replikatserver skaliert werden, sodass CPU- und oder Speicherkonflikte auf dem primären Server verhindert werden. Advisor identifiziert Server mit diesen leseintensiven Workloads und empfiehlt, dass ein [Lesereplikat](https://docs.microsoft.com/en-us/azure/postgresql/concepts-read-replicas) hinzugefügt wird, um einige der Leseworkloads auszulagern.
+Azure Advisor nutzt workloadbasierte Heuristik, z. B. das Verhältnis von Lese-zu Schreibvorgängen auf dem Server in den letzten sieben Tagen, um leseintensive Workloads zu identifizieren. Eine Azure Database for PostgreSQL-Ressource oder Azure Database for MySQL-Ressource mit einem sehr hohen Verhältnis von Lese- zu Schreibvorgängen kann zu CPU- und/oder Speicherkonflikten führen, durch die die Abfrageleistung beeinträchtigt wird. Durch Hinzufügen eines  [Replikats](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) können Schreibvorgänge horizontal auf den Replikatserver skaliert werden, sodass CPU- und oder Speicherkonflikte auf dem primären Server verhindert werden. Advisor identifiziert Server mit diesen leseintensiven Workloads und empfiehlt, dass ein [Lesereplikat](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) hinzugefügt wird, um einige der Leseworkloads auszulagern.
 
 
 ### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Skalieren des Azure MySQL-, Azure PostgreSQL- oder Azure MariaDB-Servers auf eine höhere SKU zur Verhinderung von Verbindungseinschränkungen
-Jede neue Verbindung mit dem Datenbankserver belegt Speicher. Die Leistung des Datenbankservers verschlechtert sich, wenn aufgrund einer [Obergrenze](https://docs.microsoft.com/en-us/azure/postgresql/concepts-limits) des Speichers Fehler bei Verbindungen mit dem Server auftreten. Azure Advisor identifiziert Server, bei denen viele Verbindungsfehler auftreten, und empfiehlt die Aktualisierung der Verbindungslimits des Servers durch zentrales Hochskalieren der Computegröße oder Verwendung von arbeitsspeicheroptimierten SKUs, die über eine höhere Computegröße pro Kern verfügen, um auf dem Server mehr Speicher bereitzustellen.
+Jede neue Verbindung mit dem Datenbankserver belegt Speicher. Die Leistung des Datenbankservers verschlechtert sich, wenn aufgrund einer [Obergrenze](https://docs.microsoft.com/azure/postgresql/concepts-limits) des Speichers Fehler bei Verbindungen mit dem Server auftreten. Azure Advisor identifiziert Server, bei denen viele Verbindungsfehler auftreten, und empfiehlt die Aktualisierung der Verbindungslimits des Servers durch zentrales Hochskalieren der Computegröße oder Verwendung von arbeitsspeicheroptimierten SKUs, die über eine höhere Computegröße pro Kern verfügen, um auf dem Server mehr Speicher bereitzustellen.
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Zugreifen auf Advisor-Empfehlungen zur Leistung
 

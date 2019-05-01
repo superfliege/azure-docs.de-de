@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: eb398ad621167ad9f9b245fb8aa98c6942b87668
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 344f3a8b1bdfb789251479baffeb4df15bbf2842
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557426"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64718364"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Strukturieren von Ereignissen in Azure Time Series Insights Preview
 
@@ -110,7 +110,7 @@ Im folgenden Beispiel wird eine einzelne IoT Hub-Nachricht verwendet, bei der da
 
 Time Series Insights Preview verknüpft eine Tabelle (nach deren Vereinfachung) während der Abfragezeit. Die Tabelle enthält zusätzliche Spalten, z. B. **Typ**. Im folgenden Beispiel wird veranschaulicht, wie Sie Ihre Telemetriedaten [strukturieren](./time-series-insights-send-events.md#json) können:
 
-| deviceId  | Typ | L1 | L2 | timestamp | series.Flow Rate ft3/s | series.Engine Oil Pressure psi |
+| deviceId  | Type | L1 | L2 | timestamp | series.Flow Rate ft3/s | series.Engine Oil Pressure psi |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | `FXXX` | Default_Type | REVOLT SIMULATOR | Battery System | 2018-01-17T01:17:00Z |    1.0172575712203979 |    34.7 |
 | `FXXX` | LINE_DATA    REVOLT | SIMULATOR |    Battery System |    2018-01-17T01:17:00Z | 2.445906400680542 |  49.2 |
@@ -129,6 +129,6 @@ Beachten Sie im vorangehenden Beispiel die folgenden Punkte:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Umsetzen dieser Richtlinien finden Sie unter [Azure Time Series Insights Preview-Abfragesyntax](./time-series-insights-query-data-csharp.md). Dort erfahren Sie mehr über die Abfragesyntax der REST-API für den Datenzugriff in Time Series Insights Preview.
+- Informationen zum Umsetzen dieser Richtlinien finden Sie unter [Azure Time Series Insights Preview-Abfragesyntax](./time-series-insights-query-data-csharp.md). Dort erfahren Sie mehr über die Abfragesyntax der REST-API für den Datenzugriff in Time Series Insights Preview.
 
-Informationen zu unterstützten JSON-Formen finden Sie unter [Unterstützte JSON-Formen](./time-series-insights-send-events.md#json).
+- Informationen zu unterstützten JSON-Formen finden Sie unter [Unterstützte JSON-Formen](./time-series-insights-send-events.md#json).

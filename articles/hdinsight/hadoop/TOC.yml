@@ -136,8 +136,6 @@
         - name: Verwenden leerer Edgeknoten
           href: ../hdinsight-apps-use-edge-node.md
           maintainContext: true
-        - name: Entwickeln von Python-Streamingprogrammen
-          href: apache-hadoop-streaming-python.md
         - name: Verarbeiten und Analysieren von JSON-Dokumenten
           href: using-json-in-hive.md
         - name: 'Verwenden von benutzerdefinierten C#-Funktionen'

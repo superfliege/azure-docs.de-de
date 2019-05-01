@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bc4118e54b2049f7e5d6cf4ed3b92bfc5e41ae7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 011991a3951adde9a0d062b40584caa74d172023
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57904949"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918736"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-domo"></a>Tutorial: Azure Active Directory-Integration mit Domo
 
@@ -174,7 +174,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Domo die
 
 ### <a name="configure-domo-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Domo
 
-Um einmaliges Anmelden für **Domo** zu konfigurieren, navigieren Sie zum Wissensdatenbankartikel von Domo [unter diesem Link](http://knowledge.domo.com?cid=azuread), und befolgen Sie die Anweisungen.
+Um einmaliges Anmelden für **Domo** zu konfigurieren, navigieren Sie zum Wissensdatenbankartikel von Domo [unter diesem Link](https://knowledge.domo.com?cid=azuread), und befolgen Sie die Anweisungen.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 

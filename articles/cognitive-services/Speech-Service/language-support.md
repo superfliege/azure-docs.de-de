@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0a82c2ba8bdf3d01041aa06f55eaaecab29817b2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3d14200faa06bc30df45a2100635ed7dc697a339
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58803102"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868609"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Sprach- und Regionsunterstützung für den Spracherkennungsdienst
 
@@ -29,7 +29,7 @@ Die Microsoft-Spracherkennungs-API unterstützt die folgenden Sprachen. Es sind 
   Code | Sprache | [Anpassung der Akustik](how-to-customize-acoustic-models.md) | [Anpassung der Sprache](how-to-customize-language-model.md) | [Anpassung der Aussprache](how-to-customize-pronunciation.md)
  ------|----------|---------------------|---------------------|-------------------------
  ar-EG | Arabisch (Ägypten), modernes Hocharabisch | Nein  | Ja | Nein 
- ca-ES | Katalanisch (Spanien) | Nein  | Nein  | Nein 
+ ca-ES | Katalanisch | Nein  | Nein  | Nein 
  da-DK | Dänisch (Dänemark) | Nein  | Nein  | Nein 
  de-DE | Deutsch (Deutschland) | Ja | Ja | Nein 
  en-AU | Englisch (Australien) | Nein  | Ja | Ja
@@ -98,7 +98,7 @@ Gebietsschema | Sprache | Geschlecht | Dienstnamenzuordnung
 ar-EG\* | Arabisch (Ägypten) | Female | Microsoft Server Speech Text to Speech Voice (ar-EG, Hoda)
 ar-SA | Arabisch (Saudi-Arabien) | Male | Microsoft Server Speech Text to Speech Voice (ar-SA, Naayf)
 bg-BG | Bulgarisch | Male | Microsoft Server Speech Text to Speech Voice (bg-BG, Ivan)
-ca-ES | Katalanisch (Spanien) | Female | Microsoft Server Speech Text to Speech Voice (ca-ES, HerenaRUS)
+ca-ES | Katalanisch | Female | Microsoft Server Speech Text to Speech Voice (ca-ES, HerenaRUS)
 cs-CZ | Tschechisch | Male | Microsoft Server Speech Text to Speech Voice (cs-CZ, Jakub)
 da-DK | Dänisch | Female | Microsoft Server Speech Text to Speech Voice (da-DK, HelleRUS)
 de-AT | Deutsch (Österreich) | Male | Microsoft Server Speech Text to Speech Voice (de-AT, Michael)
