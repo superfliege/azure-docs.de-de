@@ -2,19 +2,18 @@
 title: Übermitteln von Apache Hadoop-Aufträgen in HDInsight
 description: Hier erfahren Sie, wie Sie Apache Hadoop-Aufträge in Azure HDInsight übermitteln.
 ms.reviewer: jasonh
-services: hdinsight
 ms.author: hrasheed
 author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 419f34d6240df9b4df160c6ff9665b32aef1e3ca
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 48365d8fcb5e95fc9b9fa605321baf28e07eee66
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653865"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64720807"
 ---
 # <a name="submit-apache-hadoop-jobs-in-hdinsight"></a>Übermitteln von Apache Hadoop-Aufträgen in HDInsight
 

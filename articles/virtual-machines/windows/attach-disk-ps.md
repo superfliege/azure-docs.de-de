@@ -3,8 +3,8 @@ title: Anfügen eines Datenträgers an einen virtuellen Windows-Computer in Azur
 description: Hier erhalten Sie Informationen zum Anfügen eines neuen oder vorhandenen Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell und dem Resource Manager-Bereitstellungsmodell.
 services: virtual-machines-windows
 documentationcenter: ''
-author: cynthn
-manager: jeconnoc
+author: roygara
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2018
-ms.author: cynthn
+ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: a42fec94a23db82192cf05a47080d982a0857056
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 1abc3fc18de3e9c1751c01c984e15ae44f25d5af
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729041"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64713132"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell
 
@@ -32,7 +32,7 @@ Lesen Sie zunächst diese Tipps:
 * Die Größe des virtuellen Computers bestimmt, wie viele Datenträger Sie anfügen können. Weitere Informationen finden Sie unter [Größen für virtuelle Computer](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Für die Verwendung von SSD Premium-Datenträgern benötigen Sie einen [virtuellen Computer mit einem für Storage Premium geeigneten Typ](sizes-memory.md), z. B. die DS- oder GS-Serie.
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 

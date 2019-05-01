@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/015/2019
 ms.author: radeltch
-ms.openlocfilehash: 18bbeef833e1c82999e87451d279c0d3464af509
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: cd2479aed1e348a27c5cba56c6d809ffb24e4fc0
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617766"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925772"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs unter SUSE Linux Enterprise Server mit Azure NetApp Files für SAP-Anwendungen
 
@@ -29,9 +29,9 @@ ms.locfileid: "59617766"
 [deployment-guide]:deployment-guide.md
 [planning-guide]:planning-guide.md
 
-[anf-azure-doc]:https://docs.microsoft.com/en-gb/azure/azure-netapp-files/
-[anf-avail-matrix]:https://azure.microsoft.com/en-us/global-infrastructure/services/?products=storage&regions=all
-[anf-register]:https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-register
+[anf-azure-doc]:https://docs.microsoft.com/azure/azure-netapp-files/
+[anf-avail-matrix]:https://azure.microsoft.com/global-infrastructure/services/?products=storage&regions=all
+[anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
 [2205917]:https://launchpad.support.sap.com/#/notes/2205917
@@ -58,7 +58,7 @@ ms.locfileid: "59617766"
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
-In diesem Artikel werden das Bereitstellen und Konfigurieren der virtuellen Computer, das Installieren des Clusterframeworks und das Installieren eines hochverfügbaren SAP NetWeaver 7.50-Systems mithilfe von [Azure NetApp Files (öffentliche Vorschau)](https://docs.microsoft.com/en-us/azure/azure-netapp-files/azure-netapp-files-introduction/) beschrieben.
+In diesem Artikel werden das Bereitstellen und Konfigurieren der virtuellen Computer, das Installieren des Clusterframeworks und das Installieren eines hochverfügbaren SAP NetWeaver 7.50-Systems mithilfe von [Azure NetApp Files (öffentliche Vorschau)](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/) beschrieben.
 In den Beispielkonfigurationen, Installationsbefehlen usw. trägt die ASCS-Instanz die Nummer 00, die ERS-Instanz die Nummer 01, die primäre Anwendungsinstanz (PAS) die Nummer 02 und die Anwendungsinstanz (AAS) die Nummer 03. Es wird SAP-System-ID-QAS verwendet. 
 
 In diesem Artikel wird erläutert, wie Sie Hochverfügbarkeit für SAP NetWeaver-Anwendung mit Azure NetApp Files erreichen. Die Datenbankschicht wird in diesem Artikel nicht ausführlich behandelt.
@@ -92,12 +92,12 @@ Lesen Sie zuerst die folgenden SAP-Hinweise und -Dokumente:
 Hochverfügbarkeit (HA) für zentrale Dienste von SAP NetWeaver erfordert freigegebenen Speicher.
 Um dies unter SUSE Linux zu erreichen, mussten bisher separate hochverfügbare NFS-Cluster erstellt werden. 
 
-Jetzt ist es möglich, Hochverfügbarkeit für SAP NetWeaver mithilfe von freigegebenem Speicher zu erreichen, der auf Azure NetApp Files bereitgestellt wird. Durch die Verwendung von Azure NetApp Files für den freigegebenen Speicher entfällt die Notwendigkeit zusätzlicher [NFS-Cluster](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs). Pacemaker ist weiterhin für die Hochverfügbarkeit der zentralen Dienste (ASCS/SCS) von SAP NetWeaver erforderlich.
+Jetzt ist es möglich, Hochverfügbarkeit für SAP NetWeaver mithilfe von freigegebenem Speicher zu erreichen, der auf Azure NetApp Files bereitgestellt wird. Durch die Verwendung von Azure NetApp Files für den freigegebenen Speicher entfällt die Notwendigkeit zusätzlicher [NFS-Cluster](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs). Pacemaker ist weiterhin für die Hochverfügbarkeit der zentralen Dienste (ASCS/SCS) von SAP NetWeaver erforderlich.
 
 
 ![Hochverfügbarkeit von SAP NetWeaver – Übersicht](./media/high-availability-guide-suse-anf/high-availability-guide-suse-anf.PNG)
 
-SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS und die SAP HANA-Datenbank verwenden einen virtuellen Hostnamen und virtuelle IP-Adressen. Für die Verwendung einer virtuellen IP-Adresse ist in Azure ein [Lastenausgleich](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview) erforderlich. Die folgende Liste zeigt die Konfiguration des A(SCS)- und ERS-Lastenausgleichs.
+SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS und die SAP HANA-Datenbank verwenden einen virtuellen Hostnamen und virtuelle IP-Adressen. Für die Verwendung einer virtuellen IP-Adresse ist in Azure ein [Lastenausgleich](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) erforderlich. Die folgende Liste zeigt die Konfiguration des A(SCS)- und ERS-Lastenausgleichs.
 
 ### <a name="ascs"></a>(A)SCS
 
@@ -138,17 +138,17 @@ Das Feature Azure NetApp Files befindet sich in verschiedenen Azure-Regionen in 
 
 ### <a name="deploy-azure-netapp-files-resources"></a>Bereitstellen von Azure NetApp Files-Ressourcen  
 
-In diesen Schritten wird davon ausgegangen, dass Sie bereits [Azure Virtual Network](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview) bereitgestellt haben. Denken Sie daran, dass die Azure NetApp Files-Ressourcen und die virtuellen Computer, auf denen die Azure NetApp Files-Ressourcen eingebunden werden, im selben virtuellen Azure-Netzwerk bereitgestellt werden müssen.  
+In diesen Schritten wird davon ausgegangen, dass Sie bereits [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) bereitgestellt haben. Denken Sie daran, dass die Azure NetApp Files-Ressourcen und die virtuellen Computer, auf denen die Azure NetApp Files-Ressourcen eingebunden werden, im selben virtuellen Azure-Netzwerk bereitgestellt werden müssen.  
 
-1. Falls noch nicht geschehen, fordern Sie eine [Registrierung bei der Vorschauversion von Azure NetApp](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-register) an.  
+1. Falls noch nicht geschehen, fordern Sie eine [Registrierung bei der Vorschauversion von Azure NetApp](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register) an.  
 
-2. Erstellen Sie das NetApp-Konto entsprechend den [Anweisungen zum Erstellen eines NetApp-Kontos](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-create-netapp-account) in der ausgewählten Azure-Region.  
-3. Richten Sie entsprechend den [Anweisungen zum Einrichten eines Azure NetApp Files-Kapazitätspools](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool) einen Azure NetApp Files-Kapazitätspool ein.  
+2. Erstellen Sie das NetApp-Konto entsprechend den [Anweisungen zum Erstellen eines NetApp-Kontos](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account) in der ausgewählten Azure-Region.  
+3. Richten Sie entsprechend den [Anweisungen zum Einrichten eines Azure NetApp Files-Kapazitätspools](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool) einen Azure NetApp Files-Kapazitätspool ein.  
 Die in diesem Artikel vorgestellte SAP NetWeaver-Architektur verwendet einen einzigen Azure NetApp Files-Kapazitätspool mit der Premium-SKU. Wir empfehlen die Premium-SKU von Azure NetApp Files für SAP NetWeaver-Anwendungsworkloads in Azure.  
 
-4. Delegieren Sie ein Subnetz für Azure NetApp Files, wie in den [Anweisungen zum Delegieren eines Subnetzes für Azure NetApp Files](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-delegate-subnet) beschrieben.  
+4. Delegieren Sie ein Subnetz für Azure NetApp Files, wie in den [Anweisungen zum Delegieren eines Subnetzes für Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet) beschrieben.  
 
-5. Stellen Sie Azure NetApp Files-Volumes entsprechend den [Anweisungen zum Erstellen eines Azure NetApp Files-Volumes](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-create-volumes) bereit. Stellen Sie die Volumes im festgelegten [Subnetz](https://docs.microsoft.com/en-us/rest/api/virtualnetwork/subnets) für Azure NetApp Files bereit. Denken Sie daran, dass sich die Azure NetApp Files-Ressourcen und die Azure-VMs im selben virtuellen Azure-Netzwerk befinden müssen. Beispielsweise sind „sapmnt<b>QAS</b>“, „usrsap<b>QAS</b>“ usw. die Volumenamen, und „sapmnt<b>qas</b>“, „usrsap<b>qas</b>“ usw. die Datenpfade für die Azure NetApp Files-Volumes.  
+5. Stellen Sie Azure NetApp Files-Volumes entsprechend den [Anweisungen zum Erstellen eines Azure NetApp Files-Volumes](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes) bereit. Stellen Sie die Volumes im festgelegten [Subnetz](https://docs.microsoft.com/rest/api/virtualnetwork/subnets) für Azure NetApp Files bereit. Denken Sie daran, dass sich die Azure NetApp Files-Ressourcen und die Azure-VMs im selben virtuellen Azure-Netzwerk befinden müssen. Beispielsweise sind „sapmnt<b>QAS</b>“, „usrsap<b>QAS</b>“ usw. die Volumenamen, und „sapmnt<b>qas</b>“, „usrsap<b>qas</b>“ usw. die Datenpfade für die Azure NetApp Files-Volumes.  
 
    1. Volume sapmnt<b>QAS</b> (nfs://10.1.0.4/sapmnt<b>qas</b>)
    2. Volume usrsap<b>QAS</b> (nfs://10.1.0.4/usrsap<b>qas</b>)
@@ -158,7 +158,7 @@ Die in diesem Artikel vorgestellte SAP NetWeaver-Architektur verwendet einen ein
    6. Volume usrsap<b>QAS</b>pas (nfs://10.1.0.5/usrsap<b>qas</b>pas)
    7. Volume usrsap<b>QAS</b>aas (nfs://10.1.0.4/usrsap<b>qas</b>aas)
    
-In diesem Beispiel haben wir Azure NetApp Files für alle SAP NetWeaver-Dateisysteme verwendet, um die Verwendung von Azure NetApp Files zu veranschaulichen. Die SAP-Dateisysteme, die nicht über NFS eingebunden werden müssen, können auch als [Azure Disk Storage](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/disks-types#premium-ssd) bereitgestellt werden. In diesem Beispiel müssen <b>a-e</b> als Azure NetApp Files bereitgestellt werden, und <b>f-g</b> (d. h. „/usr/sap/<b>QAS</b>/D<b>02</b>“ und „/usr/sap/<b>QAS</b>/D<b>03</b>“) können als Azure Disk Storage bereitgestellt werden. 
+In diesem Beispiel haben wir Azure NetApp Files für alle SAP NetWeaver-Dateisysteme verwendet, um die Verwendung von Azure NetApp Files zu veranschaulichen. Die SAP-Dateisysteme, die nicht über NFS eingebunden werden müssen, können auch als [Azure Disk Storage](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) bereitgestellt werden. In diesem Beispiel müssen <b>a-e</b> als Azure NetApp Files bereitgestellt werden, und <b>f-g</b> (d. h. „/usr/sap/<b>QAS</b>/D<b>02</b>“ und „/usr/sap/<b>QAS</b>/D<b>03</b>“) können als Azure Disk Storage bereitgestellt werden. 
 
 ### <a name="important-considerations"></a>Wichtige Hinweise
 
@@ -166,10 +166,10 @@ Wenn Sie Azure NetApp Files für die Hochverfügbarkeitsarchitektur von SAP NetW
 
 - Die Mindestgröße eines Kapazitätspools beträgt 4 TiB. Die Größe des Kapazitätspools muss ein Vielfaches von 4 TiB sein.
 - Das kleinste Volume ist 100 GiB groß.
-- Azure NetApp Files und alle virtuellen Computer, auf denen Azure NetApp Files-Volumes eingebunden werden sollen, müssen sich im selben virtuellen Azure-Netzwerk oder in [über Peering gekoppelten virtuellen Netzwerken](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview) in derselben Region befinden. Azure NetApp Files-Zugriff über VNET-Peering in derselben Region wird jetzt unterstützt. Azure NetApp-Zugriff über globales Peering wird noch nicht unterstützt.
+- Azure NetApp Files und alle virtuellen Computer, auf denen Azure NetApp Files-Volumes eingebunden werden sollen, müssen sich im selben virtuellen Azure-Netzwerk oder in [über Peering gekoppelten virtuellen Netzwerken](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) in derselben Region befinden. Azure NetApp Files-Zugriff über VNET-Peering in derselben Region wird jetzt unterstützt. Azure NetApp-Zugriff über globales Peering wird noch nicht unterstützt.
 - Das ausgewählte virtuelle Netzwerk muss über ein an Azure NetApp Files delegiertes Subnetz verfügen.
 - Derzeit unterstützt Azure NetApp Files nur NFSv3. 
-- Azure NetApp Files bietet [Exportrichtlinien](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): Sie können die zulässigen Clients und den Zugriffstyp (Lesen und Schreiben, schreibgeschützt usw.) steuern. 
+- Azure NetApp Files bietet [Exportrichtlinien](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): Sie können die zulässigen Clients und den Zugriffstyp (Lesen und Schreiben, schreibgeschützt usw.) steuern. 
 - Azure NetApp Files wertet derzeit noch keine Zonen aus. Das Azure NetApp Files-Feature wird bisher nicht in allen Verfügbarkeitszonen in einer Azure-Region bereitgestellt. Achten Sie auf mögliche Latenzauswirkungen in einigen Azure-Regionen. 
 
 ## <a name="deploy-linux-vms-manually-via-azure-portal"></a>Manuelles Bereitstellen von Linux-VMs über das Azure-Portal
@@ -243,7 +243,7 @@ Zuerst müssen Sie die Azure NetApp Files-Volumes erstellen. Stellen Sie die VMs
          * Wiederholen Sie die oben unter „d“ angegebenen Schritte für die Ports 33**01**, 5**01**13, 5**01**14, 5**01**16 und „TCP“ für ASCS ERS.
 
 > [!IMPORTANT]
-> Aktivieren Sie keine TCP-Zeitstempel auf Azure-VMs hinter Azure Load Balancer. Das Aktivieren von TCP-Zeitstempeln bewirkt, dass bei Integritätstests Fehler auftreten. Legen Sie den Parameter **net.ipv4.tcp_timestamps** auf **0** fest. Ausführliche Informationen finden Sie unter [Lastenausgleichs-Integritätstests](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview).
+> Aktivieren Sie keine TCP-Zeitstempel auf Azure-VMs hinter Azure Load Balancer. Das Aktivieren von TCP-Zeitstempeln bewirkt, dass bei Integritätstests Fehler auftreten. Legen Sie den Parameter **net.ipv4.tcp_timestamps** auf **0** fest. Ausführliche Informationen finden Sie unter [Lastenausgleichs-Integritätstests](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
 
 ### <a name="create-pacemaker-cluster"></a>Erstellen des Pacemaker-Clusters
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: f7a14e975a5ca3aee5588f55f43b28081c100074
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e60b202a32745062d2078d9721dfeba7aba69bda
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59358139"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64713893"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Bewährte Methoden zum Verwenden des Suchdiensts von Azure Maps
 
@@ -132,9 +132,9 @@ Mit dem Parameter `language` können Sie festlegen, in welcher Sprache Suchergeb
 
 ### <a name="predictive-mode-auto-suggest"></a>Vorhersagemodus (Vorschlagssuche)
 
-Der Parameter `typeHead` sollte auf „true“ festgelegt werden, um weitere Übereinstimmungen für Teilabfragen zu finden. Die Abfrage wird als Teileingabe interpretiert und die Suche wechselt in den Vorhersagemodus. Andernfalls geht der Dienst davon aus, dass alle relevanten Informationen übermittelt wurden.
+Der Parameter `typeahead` sollte auf „true“ festgelegt werden, um weitere Übereinstimmungen für Teilabfragen zu finden. Die Abfrage wird als Teileingabe interpretiert und die Suche wechselt in den Vorhersagemodus. Andernfalls geht der Dienst davon aus, dass alle relevanten Informationen übermittelt wurden.
 
-In der folgenden Beispielabfrage können Sie sehen, dass der Suchadressdienst nach „Microso“ abgefragt wird, wobei der Parameter `typehead` auf **true** festgelegt ist. Sie können anhand der Antwort sehen, dass der Suchdienst die Abfrage als Teilabfrage interpretiert hat und die Antwort Ergebnisse für die automatisch vorgeschlagene Abfrage enthält.
+In der folgenden Beispielabfrage können Sie sehen, dass der Suchadressdienst nach „Microso“ abgefragt wird, wobei der Parameter `typeahead` auf **true** festgelegt ist. Sie können anhand der Antwort sehen, dass der Suchdienst die Abfrage als Teilabfrage interpretiert hat und die Antwort Ergebnisse für die automatisch vorgeschlagene Abfrage enthält.
 
 **Beispielabfrage:**
 

@@ -3,19 +3,19 @@ title: Beispiele für die Transformation von Integer-Ansprüchen für das Schema
 description: Hier finden Sie Beispiele für die Transformation von Integer-Ansprüchen für das Schema des Frameworks für die Identitätsfunktion von Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 358ee07b8fd32edded084d406e490cae9f557fdd
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 20c109f188acfe37292aa31dfe057ced8b73199b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55159505"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64694749"
 ---
 # <a name="integer-claims-transformations"></a>Transformationen von Integer-Ansprüchen
 

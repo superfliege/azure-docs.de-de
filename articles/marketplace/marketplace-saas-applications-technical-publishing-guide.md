@@ -2,24 +2,17 @@
 title: Technischer Leitfaden für die Veröffentlichung von Azure Marketplace-SaaS-Anwendungen
 description: Schrittanleitung und Prüflisten für die Veröffentlichung von SaaS-Anwendungen im Azure Marketplace
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
-documentationcenter: ''
 author: keithcharlie
-manager: nunoc
-editor: keithcharlie
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: keithcharlie
-ms.openlocfilehash: b653b0276cedea1e3b45adf7a9dc390b24f0d03f
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 5106b22500b73b650742e7fe0f881c2a4c984eff
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213618"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937712"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS-Anwendungen: Leitfaden für die Veröffentlichung von Angeboten
 

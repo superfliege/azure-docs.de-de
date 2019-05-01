@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef180fb444e32e8b055837fd418e21162ff58339
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: aa4b68d48ec3f4fbb61c7144a133d9c42938c723
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191468"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917285"
 ---
 # <a name="application-types-in-v10"></a>Anwendungstypen in v1.0
 
@@ -63,7 +63,7 @@ Jede Anwendung, deren Authentifizierung an Azure AD ausgelagert wird, muss in e
   * **Schlüssel**: Der Schlüssel, der bei der Authentifizierung zusammen mit einer Anwendungs-ID an Azure AD gesendet wird, um eine Web-API aufzurufen.
 * Azure AD muss überprüfen, ob die Anwendung unter anderem die erforderlichen Berechtigungen für den Zugriff auf Verzeichnisdaten und auf andere Anwendungen in Ihrer Organisation besitzt.
 
-Erfahren Sie, wie Sie [eine App mit dem Azure AD v1.0-Endpunkt registrieren](quickstart-v1-add-azure-ad-app.md).
+Nähere Informationen finden Sie im Artikel zum [Registrieren einer App](quickstart-register-app.md).
 
 ## <a name="single-tenant-and-multi-tenant-apps"></a>Apps mit nur einem Mandanten und mit mehreren Mandanten
 

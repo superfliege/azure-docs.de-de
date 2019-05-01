@@ -1,25 +1,18 @@
 ---
-title: Veröffentlichungsleitfaden für Azure Marketplace und AppSource | Azure
+title: Veröffentlichungsleitfaden für Azure Marketplace und AppSource
 description: Übersicht über die Funktion von Azure Marketplace und Microsoft AppSource für App- und den Dienstherausgeber
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: ellacroi
-manager: nunoc
-editor: ''
-ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 5c53545a6a5421bd20622fd132bb5c0b2c0940d9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: a3d75f09ac21fcdb4862cf8eefff0b5c05fd3369
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731139"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937598"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Veröffentlichungsleitfaden für Azure Marketplace und AppSource
 

@@ -1,7 +1,6 @@
 ---
 title: 'Verwenden von Spark zum Lesen und Schreiben von HBase-Daten: Azure HDInsight'
 description: Verwenden Sie den Spark HBase-Connector, um Daten aus einem Spark-Cluster zu lesen und in einen HBase-Cluster zu schreiben.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: 200691f7af16e82d554d0e1e019b6a4e5c75949f
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: e3f5cb726dddbdbfbd1b1f48c800ac681e7a174c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58260127"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64696550"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Verwenden von Apache Spark zum Lesen und Schreiben von Apache HBase-Daten
 

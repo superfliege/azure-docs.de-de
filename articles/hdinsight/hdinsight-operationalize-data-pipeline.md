@@ -1,7 +1,6 @@
 ---
 title: Operationalisieren einer Datenanalysepipeline – Azure
 description: Einrichten und Ausführen einer Beispieldatenpipeline, die durch neue Daten ausgelöst wird und präzise Ergebnisse liefert.
-services: hdinsight
 ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: b5e7864eae56a6f066590191373d35cb57693f37
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 524386c046534b0ef0050e15d326118b84822822
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311678"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64718045"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>Operationalisieren einer Datenanalysepipeline
 

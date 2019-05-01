@@ -1,7 +1,6 @@
 ---
 title: Computekontextoptionen für ML Services in HDInsight – Azure
 description: Informieren Sie sich über die verschiedenen Computekontextoptionen, die Benutzern mit ML Services in HDInsight zur Verfügung stehen.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 1e01a3db2c0ca1f9024afb3faecf677ac4e3131b
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 9dac7aa19e428c964bd10c3ef62df949393e8d1f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52494466"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64681783"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Computekontextoptionen für ML Services in HDInsight
 

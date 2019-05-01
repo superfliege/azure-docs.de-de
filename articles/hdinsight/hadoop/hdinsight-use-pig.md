@@ -1,7 +1,6 @@
 ---
 title: Verwenden von Apache Pig – Azure HDInsight
 description: Erfahren Sie, wie Sie Pig mit Apache Hadoop in HDInsight verwenden.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 2b0f3a4394267a808b6e6e0a73abfaf1e698ff1c
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: c39c332055943f915471d0da18526f793d4d7a4a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445024"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64705029"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>Verwenden von Apache Pig mit Apache Hadoop in HDInsight
 

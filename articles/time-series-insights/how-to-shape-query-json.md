@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/24/2018
 ms.author: anshan
 ms.custom: seodec18
-ms.openlocfilehash: c076d425a7740bd0eb6398e6b8720fa873f2fc30
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 2d42b7ebdee291e7c71351fa2c3a5583a121b79e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201260"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712778"
 ---
 # <a name="how-to-shape-json-to-maximize-query-performance"></a>Strukturieren von JSON zum Maximieren der Abfrageleistung 
 
@@ -200,4 +200,4 @@ Wenn Sie über eine Eigenschaft mit einer großen Anzahl möglicher Werte verfü
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Um diese Richtlinien umzusetzen und mehr über die Abfragesyntax der REST-API für den TSI-Datenzugriff zu erfahren, lesen Sie den Artikel [Azure Time Series Insights-Abfragesyntax](/rest/api/time-series-insights/ga-query-syntax).
+- Um diese Richtlinien umzusetzen und mehr über die Abfragesyntax der REST-API für den TSI-Datenzugriff zu erfahren, lesen Sie den Artikel [Azure Time Series Insights-Abfragesyntax](/rest/api/time-series-insights/ga-query-syntax).

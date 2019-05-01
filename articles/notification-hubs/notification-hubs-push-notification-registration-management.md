@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.author: jowargo
 ms.date: 04/08/2019
-ms.openlocfilehash: 64c2cd0ed1572fdaaa42f4731519ba6d5c320f1c
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 5a70eec15003a1f75a80740f269f6df3523012a8
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149128"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64685393"
 ---
 # <a name="registration-management"></a>Registrierungsverwaltung
 
@@ -40,7 +40,7 @@ Bei einer Registrierung wird das PNS-Handle (Platform Notification Service) für
 
 ### <a name="installations"></a>Installationen
 
-Eine Installation ist eine erweiterte Registrierung, die einen Behälter von Eigenschaften umfasst, die sich auf Pushvorgänge beziehen. Dies ist der neueste und beste Ansatz zum Registrieren Ihrer Geräte. Bisher wird er jedoch noch nicht vom clientseitigen .NET SDK ([Notification Hub-SDK für Back-End-Vorgänge](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) unterstützt.  Wenn Sie die Registrierung über das Client-Gerät selbst durchführen, müssen Sie daher die [Notification Hubs-REST-API](https://docs.microsoft.com/en-us/rest/api/notificationhubs/create-overwrite-installation) zur Unterstützung von Installationen verwenden. Wenn Sie einen Back-End-Dienst verwenden, sollten Sie auch das [Notification Hub-SDK für Back-End-Vorgänge](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)verwenden können.
+Eine Installation ist eine erweiterte Registrierung, die einen Behälter von Eigenschaften umfasst, die sich auf Pushvorgänge beziehen. Dies ist der neueste und beste Ansatz zum Registrieren Ihrer Geräte. Bisher wird er jedoch noch nicht vom clientseitigen .NET SDK ([Notification Hub-SDK für Back-End-Vorgänge](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)) unterstützt.  Wenn Sie die Registrierung über das Client-Gerät selbst durchführen, müssen Sie daher die [Notification Hubs-REST-API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) zur Unterstützung von Installationen verwenden. Wenn Sie einen Back-End-Dienst verwenden, sollten Sie auch das [Notification Hub-SDK für Back-End-Vorgänge](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/)verwenden können.
 
 Im Folgenden sind die wichtigsten Vorteile bei der Verwendung von Installationen beschrieben:
 
@@ -48,7 +48,7 @@ Im Folgenden sind die wichtigsten Vorteile bei der Verwendung von Installationen
 - Das Installationsmodell unterstützt ein spezielles Tagformat (`$InstallationId:{INSTALLATION_ID}`), das das direkte Senden von Benachrichtigungen an das spezifische Gerät ermöglicht. Wenn der Code der App beispielsweise eine Installations-ID von `joe93developer` für dieses spezifische Gerät zulässt, kann ein Entwickler dieses Gerät als Ziel zum Senden einer Benachrichtigung an das `$InstallationId:{joe93developer}`-Tag verwenden. So können Sie ein spezifisches Gerät als Ziel verwenden, ohne zusätzlichen Code schreiben zu müssen.
 - Mithilfe von Installationen können Sie zudem Registrierungsteilupdates durchführen. Das Teilupdate einer Installation wird mit einer PATCH-Methode unter Verwendung des [JSON-Patch-Standards](https://tools.ietf.org/html/rfc6902)angefordert. Dies ist nützlich, wenn Sie Tags für die Registrierung aktualisieren möchten. Sie müssen nicht die gesamte Registrierung auflösen und dann alle vorherigen Tags erneut senden.
 
-Eine Installation kann folgende Eigenschaften enthalten. Eine vollständige Liste der Installationseigenschaften finden Sie unter [Erstellen oder Überschreiben einer Installation mit der REST-API](https://docs.microsoft.com/en-us/rest/api/notificationhubs/create-overwrite-installation) oder [Installationseigenschaften](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx).
+Eine Installation kann folgende Eigenschaften enthalten. Eine vollständige Liste der Installationseigenschaften finden Sie unter [Erstellen oder Überschreiben einer Installation mit der REST-API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) oder [Installationseigenschaften](https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.installation).
 
 ```json
 // Example installation format to show some supported properties
@@ -95,7 +95,7 @@ Registrierungen und Installationen müssen ein gültiges PNS-Handle für jedes G
 
 Wenn Sie [Vorlagen](notification-hubs-templates-cross-platform-push-messages.md)verwenden möchten, sollte die Geräteinstallation auch alle Vorlagen, die dem jeweiligen Gerät zugeordnet sind, in einem JSON-Format enthalten (siehe Beispiel oben). Mithilfe der Vorlagennamen können unterschiedliche Vorlagen problemlos auf dasselbe Gerät abzielen.
 
-Jeder Vorlagenname ist einem Vorlagentext und einer optionalen Gruppe von Tags zugeordnet. Darüber hinaus kann jede Plattform zusätzliche Vorlageneigenschaften aufweisen. Für den Windows Store (mit WNS) und Windows Phone 8 (mit MPNS) kann die Vorlage einen zusätzlichen Satz von Headern enthalten. Bei APNs können Sie eine Ablaufeigenschaft auf eine Konstante oder auf einen Vorlagenausdruck festlegen. Eine vollständige Liste der Installationseigenschaften finden Sie im Thema [Erstellen oder Überschreiben einer Installation mit REST](https://msdn.microsoft.com/library/azure/mt621153.aspx) .
+Jeder Vorlagenname ist einem Vorlagentext und einer optionalen Gruppe von Tags zugeordnet. Darüber hinaus kann jede Plattform zusätzliche Vorlageneigenschaften aufweisen. Für den Windows Store (mit WNS) und Windows Phone 8 (mit MPNS) kann die Vorlage einen zusätzlichen Satz von Headern enthalten. Bei APNs können Sie eine Ablaufeigenschaft auf eine Konstante oder auf einen Vorlagenausdruck festlegen. Eine vollständige Liste der Installationseigenschaften finden Sie im Thema [Erstellen oder Überschreiben einer Installation mit REST](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation) .
 
 ### <a name="secondary-tiles-for-windows-store-apps"></a>Sekundäre Kacheln für Windows Store-Apps
 
@@ -120,7 +120,7 @@ Die Registrierung über das Gerät ist die einfachste Methode, birgt aber auch N
 
 ### <a name="example-code-to-register-with-a-notification-hub-from-a-device-using-an-installation"></a>Beispielcode zur Registrierung bei einem Notification Hub über ein Gerät mithilfe einer Installation
 
-Momentan wird dieser Vorgang nur bei Verwendung der [Notification Hubs-REST-API](https://msdn.microsoft.com/library/mt621153.aspx)unterstützt.
+Momentan wird dieser Vorgang nur bei Verwendung der [Notification Hubs-REST-API](https://docs.microsoft.com/rest/api/notificationhubs/create-overwrite-installation)unterstützt.
 
 Die Installation kann auch mit der PATCH-Methode unter Verwendung des [JSON-Patch-Standards](https://tools.ietf.org/html/rfc6902) aktualisiert werden.
 

@@ -1,19 +1,18 @@
 ---
 title: Problembehandlung für Hadoop Distributed File System in Azure HDInsight
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zum Arbeiten mit HDFS und Azure HDInsight.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: fca763d04cc8cbf22d1578b18d504ec3ce9656d9
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 0a310eaeb9baf6ed2438b9f824cd6ad7eb492915
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993024"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714201"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Problembehandlung für Apache Hadoop HDFS mit Azure HDInsight
 

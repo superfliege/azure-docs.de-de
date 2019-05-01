@@ -3,8 +3,8 @@ title: Protokollieren des Netzwerkdatenverkehrs zu und von einem virtuellen Comp
 description: Erfahren Sie, wie Sie den Netzwerkdatenverkehr zu und von einem virtuellen Computer mithilfe der Funktion für NSG-Flussprotokolle von Network Watcher protokollieren können.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to log the network traffic to and from a VM so I can analyze it for anomalies.
@@ -15,14 +15,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2018
-ms.author: jdial
+ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: bfe4abe4a83a6b22d05942f91f4152d5c0e62be9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 550755b1215dd25045845d78ab3d6248ef840062
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124080"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64705950"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Tutorial: Protokollieren des Netzwerkdatenverkehrs zu und von einem virtuellen Computer über das Azure-Portal
 
@@ -50,7 +50,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
     |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
     |Abonnement| Wählen Sie Ihr Abonnement aus.|
     |Ressourcengruppe| Klicken Sie auf **Neu erstellen**, und geben Sie **myResourceGroup** ein.|
-    |Standort| Wählen Sie **USA, Osten** aus.|
+    |Location| Wählen Sie **USA, Osten** aus.|
 
 4. Wählen Sie eine Größe für den virtuellen Computer aus, und klicken Sie dann auf **Auswählen**.
 5. Übernehmen Sie unter **Einstellungen** alle Standardwerte, und klicken Sie auf **OK**.
@@ -89,7 +89,7 @@ Für die NSG-Datenflussprotokollierung ist der **Microsoft.Insights**-Anbieter e
     | Einstellung        | Wert                                                        |
     | ---            | ---   |
     | NAME           | Länge von 3 bis 24 Zeichen, darf nur Kleinbuchstaben und Ziffern enthalten und muss für alle Azure Storage-Konten eindeutig sein.                                                               |
-    | Standort       | Wählen Sie **USA, Osten** aus.                                           |
+    | Location       | Wählen Sie **USA, Osten** aus.                                           |
     | Ressourcengruppe | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus. |
 
     Das Erstellen des Speicherkontos kann etwa eine Minute dauern. Fahren Sie erst dann mit den weiteren Schritten fort, wenn das Speicherkonto erstellt wurde. Wenn Sie kein Speicherkonto erstellen, sondern ein vorhandenes Konto verwenden, vergewissern Sie sich, dass Sie ein Speicherkonto auswählen, für das **Alle Netzwerke** (Standard) unter **Firewalls und virtuelle Netzwerken** in **EINSTELLUNGEN** ausgewählt ist.
@@ -204,8 +204,8 @@ Bei dem Wert für **mac** in der vorherigen Ausgabe handelt es sich um die MAC-A
 | 13.67.143.118     | IP-Zieladresse | Die Ziel-IP-Adresse, für die der Datenfluss bestimmt war.                                                                                  |
 | 44931        | Quellport            | Der Quellport, von dem der Datenfluss stammte.                                           |
 | 443         | Zielport       | Der Zielport, für den der Datenfluss bestimmt war. Da der Datenverkehr für Port 443 bestimmt war, wurde der Flow anhand der Regel namens **UserRule_default-allow-rdp** in der Protokolldatei verarbeitet.                                                |
-| T            | Protokoll               | Gibt an, ob das Protokoll des Datenflusses TCP (T) oder UDP (U) war.                                  |
-| O            | Richtung              | Gibt an, ob es sich um eingehenden (I) oder ausgehenden (O) Datenverkehr handelte.                                     |
+| T            | Protocol               | Gibt an, ob das Protokoll des Datenflusses TCP (T) oder UDP (U) war.                                  |
+| O            | Direction              | Gibt an, ob es sich um eingehenden (I) oder ausgehenden (O) Datenverkehr handelte.                                     |
 | Eine Datei            | Aktion                 | Gibt an, ob es sich um zulässigen (A) oder verweigerten (D) Datenverkehr handelte.  
 | C            | Flowstatus (**nur Version 2**) | Erfasst den Flowstatus. Mögliche Statusangaben: **B** („Begin“/Anfang): Erstellung eines Flows. Statistiken werden nicht bereitgestellt. **C**: („Continue“/Fortsetzung): Ein laufender Flow wird weiter fortgesetzt. Statistiken werden in Intervallen von 5 Minuten bereitgestellt. **E**: („End“/Beendigung): Beendigung eines Flows. Statistiken werden bereitgestellt. |
 | 30 | Gesendete Pakete – Quelle zu Ziel (**nur Version 2**) | Die Gesamtanzahl von TCP- oder UDP-Paketen, die seit dem letzten Update von der Quelle zum Ziel gesendet wurden. |

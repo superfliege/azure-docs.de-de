@@ -2,17 +2,17 @@
 title: Übersicht zur Azure Active Directory-Authentifizierung über SMB für Azure Files (Vorschau) – Azure Storage
 description: Azure Files unterstützt identitätsbasierte Authentifizierung über SMB (Server Message Block) (Vorschau) über Azure Active Directory (Azure AD) Domain Services. Ihre in die Domäne eingebundenen virtuellen Windows-Computer (VMs) können dann mit Azure AD-Anmeldeinformationen auf Azure-Dateifreigaben zugreifen.
 services: storage
-author: tamram
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 09/19/2018
-ms.author: tamram
-ms.openlocfilehash: 1962a3237fb54409d17fefa314605bafa91c3e9c
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.author: rogarana
+ms.openlocfilehash: 7010425ba8acff4ed223e2a402d7a927a91c06b6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427636"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687141"
 ---
 # <a name="overview-of-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Übersicht zur Azure Active Directory-Authentifizierung über SMB für Azure Files (Vorschau)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]

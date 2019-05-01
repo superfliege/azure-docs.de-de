@@ -1,7 +1,6 @@
 ---
 title: Anmerkungen zu dieser Version von Azure HDInsight
 description: Die neuesten Versionshinweise für Azure HDInsight. Rufen Sie Tipps zur Entwicklung und Details für Hadoop, Spark, R Server, Hive und mehr ab.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 9ca3635e93c8d66d23c74c3774ccee2c563d85b4
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 95a530ea57237453a3b0d7d8dd42963f4b9c3dde
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59618225"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64713044"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Anmerkungen zu dieser Version von Azure HDInsight
 
@@ -39,7 +38,7 @@ Die neuen Updates und Funktionen fallen in die folgenden Kategorien:
 
 *  ***Unterstützung für Azure Data Lake Storage Gen2***: HDInsight unterstützt die Preview-Version von Azure Data Lake Storage Gen2. In den verfügbaren Regionen können Kunden ein ADLS Gen2-Konto als primären oder sekundären Speicher für ihre HDInsight-Cluster auswählen.
 
-*  ***Updates für HDInsight-Enterprise-Sicherheitspaket (Vorschauversion):*** (Vorschauversion) [Dienstendpunkte virtueller Netzwerke](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) unterstützen Azure Blob Storage, ADLS Gen1, Cosmos DB und Azure DB.
+*  ***Updates für HDInsight-Enterprise-Sicherheitspaket (Vorschauversion):*** (Vorschauversion) [VNET-Dienstendpunkte](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) unterstützen Azure Blob Storage, ADLS Gen1, Cosmos DB und Azure DB.
 
 ## <a name="component-versions"></a>Komponentenversionen
 

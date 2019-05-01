@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: a2fdeeab2e8027dc3b548f7004912906d4574ccc
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 4c77477e31e7513cb806dda968a68fc1ac5030ed
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007428"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64694974"
 ---
 # <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>Schnellstart: Verwenden von Node.js zum Aufrufen der Textanalyse von Cognitive Services  
 <a name="HOLTop"></a>
@@ -156,7 +156,7 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 
 ## <a name="analyze-sentiment"></a>Analysieren von Stimmungen
 
-Die Standpunktanalyse-API erkennt die Stimmung in einer Gruppe von Textdatensätzen mithilfe der [Sentiment-Methode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2-1/operations/56f30ceeeda5650db055a3c9). Mithilfe der Standpunktanalyse können Sie ermitteln, was die Kunden von Ihrer Marke oder von Ihrem Thema halten, indem Sie reinen Text auf Hinweise für positive oder negative Standpunkte analysieren. Im folgenden Beispiel werden Bewertungen für zwei Dokumente bereitgestellt, ein englisches und ein spanisches.
+Die Standpunktanalyse-API erkennt die Stimmung in einer Gruppe von Textdatensätzen mithilfe der [Sentiment-Methode](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9). Mithilfe der Standpunktanalyse können Sie ermitteln, was die Kunden von Ihrer Marke oder von Ihrem Thema halten, indem Sie reinen Text auf Hinweise für positive oder negative Standpunkte analysieren. Im folgenden Beispiel werden Bewertungen für zwei Dokumente bereitgestellt, ein englisches und ein spanisches.
 
 1. Erstellen Sie in Ihrer bevorzugten IDE oder einem Ordner auf Ihrem Desktop ein neues Node.js-Projekt.
 2. Fügen Sie den unten stehenden Code einer neuen `.js`-Datei hinzu.
@@ -252,7 +252,7 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 
 ## <a name="extract-key-phrases"></a>Extrahieren von Schlüsselbegriffen
 
-Die API zur Schlüsselbegriffserkennung extrahiert Schlüsselbegriffe aus einem Textdokument mithilfe der [Schlüsselbegriffsmethode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2-1/operations/56f30ceeeda5650db055a3c6). Schlüsselbegriffserkennung wird verwendet, um die wichtigsten Punkte eines Dokuments oder Texts schnell zu identifizieren. Im folgenden Beispiel werden Schlüsselbegriffe sowohl für englische als auch für spanische Dokumente extrahiert.
+Die API zur Schlüsselbegriffserkennung extrahiert Schlüsselbegriffe aus einem Textdokument mithilfe der [Schlüsselbegriffsmethode](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). Schlüsselbegriffserkennung wird verwendet, um die wichtigsten Punkte eines Dokuments oder Texts schnell zu identifizieren. Im folgenden Beispiel werden Schlüsselbegriffe sowohl für englische als auch für spanische Dokumente extrahiert.
 
 1. Erstellen Sie in Ihrer bevorzugten IDE oder einem Ordner auf Ihrem Desktop ein neues Node.js-Projekt.
 2. Fügen Sie den unten stehenden Code einer neuen `.js`-Datei hinzu.

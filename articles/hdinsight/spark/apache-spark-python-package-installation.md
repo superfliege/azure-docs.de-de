@@ -1,20 +1,18 @@
 ---
 title: 'Skriptaktion: Installieren von Python-Paketen mit Jupyter in Azure HDInsight'
 description: Eine Schritt-für-Schritt-Anleitung zum Verwenden einer Skriptaktion für die Konfiguration von Jupyter Notebooks die mit Spark-Clustern in HDInsight verfügbar sind, sodass sie externe Python-Pakete verwenden.
-services: hdinsight
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/20/2019
-ms.author: hrasheed
-ms.openlocfilehash: 8bc44949d804349de37796a2695edbdc64693edf
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.date: 04/22/2019
+ms.openlocfilehash: c07326cc3a4334f1873eef2dc23da05156a93577
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518676"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574659"
 ---
 # <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Installieren externer Python-Pakete für Jupyter Notebooks in Apache Spark-Clustern unter HDInsight mithilfe von Skriptaktionen
 > [!div class="op_single_selector"]
@@ -76,10 +74,10 @@ Es gibt zwei Arten von Open-Source-Komponenten, die im HDInsight-Dienst verfügb
 
     ```bash
     #!/usr/bin/env bash
-    /usr/bin/anaconda/bin/conda install -c conda-forge tensorflow
+    /usr/bin/anaconda/bin/conda install --yes tensorflow
     ```
 
-5. Klicken Sie auf **Erstellen**.  Informationen zum Verwenden benutzerdefinierter Skriptaktionen finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
+5. Klicken Sie auf **Erstellen**.  Informationen zum Verwenden benutzerdefinierter Skriptaktionen finden Sie in der [Dokumentation](../hdinsight-hadoop-customize-cluster-linux.md).
 
 6. Warten Sie, bis das Skript abgeschlossen ist.  Im Bereich **Skriptaktionen** wird **Neue Skriptaktionen können übermittelt werden, nachdem der aktuelle Clustervorgang abgeschlossen wurde** angezeigt, während das Skript ausgeführt wird.  Eine Statusanzeige wird im Ambari UI-Fenster **Hintergrundvorgänge** angezeigt.
 

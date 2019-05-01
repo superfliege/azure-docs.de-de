@@ -11,15 +11,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/17/2019
-ms.openlocfilehash: d5ada9b992afe98241162749b1c45723b89a6b77
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 03/19/2019
+ms.openlocfilehash: aa9217251965b35dd90e09c619607c9421a9f6f4
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699354"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572654"
 ---
-# <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Einschränkungen des vCore-basierten Kaufmodells für eine Einzeldatenbank in Azure SQL-Datenbank
+# <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Limits des vCore-basierten Kaufmodells für eine Einzeldatenbank in Azure SQL-Datenbank
 
 Dieser Artikel enthält ausführliche Angaben zu Ressourcenlimits für Einzeldatenbanken in Azure SQL-Datenbank, die das vCore-basierte Kaufmodell verwenden.
 
@@ -96,7 +96,7 @@ Sie können mit dem [Azure-Portal](sql-database-single-databases-manage.md#manag
 |Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
 |E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
 |Ziel-IOPS (64 KB)|500|1000|1500|2000|2500|3000|3500|
-|Grenzwerte für die Protokollrate (MB/s)|2.5|5.6|7,5|10|12,5|15|17,5|
+|Grenzwerte für die Protokollrate (MB/s)|2.5|56|7,5|10|12,5|15|17,5|
 |Max. gleichzeitige Worker (Anforderungen)|200|400|600|800|1000|1200|1400|
 |Maximal zulässige Sitzungen|30000|30000|30000|30000|30000|30000|30000|
 |Anzahl von Replikaten|1|1|1|1|1|1|1|

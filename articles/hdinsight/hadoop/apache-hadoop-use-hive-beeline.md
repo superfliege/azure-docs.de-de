@@ -1,19 +1,18 @@
 ---
 title: 'Verwenden von Apache Beeline mit Apache Hive: Azure HDInsight'
 description: Erfahren Sie, wie Sie den Beeline-Client verwenden, um Hive-Abfragen mit Hadoop in HDInsight auszuführen. Beeline ist ein Dienstprogramm zum Arbeiten mit HiveServer2 über JDBC.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: hrasheed
-ms.openlocfilehash: 89303e5c827fc24540d345a9a2b9a0743e453a4d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: dcfcd4b55f848e1725e286e6ef2a87a2c36e5a71
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257126"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64684930"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Verwenden des Apache Beeline-Clients mit Apache Hive
 
@@ -180,17 +179,17 @@ Dieses Beispiel basiert auf der Verwendung des Beeline-Clients über eine SSH-Ve
 
     Diese Anweisungen führen die folgenden Aktionen aus:
 
-    * `DROP TABLE` – Wenn die Tabelle vorhanden ist, wird sie gelöscht.
+    * `DROP TABLE`: Wenn die Tabelle vorhanden ist, wird sie gelöscht.
 
-    * `CREATE EXTERNAL TABLE` – erstellt eine **externe** Tabelle in Hive. Externe Tabellen speichern nur die Tabellendefinition in Hive. Die Daten verbleiben an ihrem ursprünglichen Speicherort.
+    * `CREATE EXTERNAL TABLE`: Erstellt eine **externe** Tabelle in Hive. Externe Tabellen speichern nur die Tabellendefinition in Hive. Die Daten verbleiben an ihrem ursprünglichen Speicherort.
 
-    * `ROW FORMAT` – gibt an, wie die Daten formatiert werden. In diesem Fall werden die Felder in den einzelnen Protokollen durch Leerzeichen getrennt.
+    * `ROW FORMAT`: Gibt an, wie die Daten formatiert werden. In diesem Fall werden die Felder in den einzelnen Protokollen durch Leerzeichen getrennt.
 
-    * `STORED AS TEXTFILE LOCATION` – gibt an, wo und in welchem Dateiformat die Daten gespeichert werden.
+    * `STORED AS TEXTFILE LOCATION`: Wo die Daten gespeichert werden und in welchem Dateiformat.
 
-    * `SELECT` – wählt die Anzahl aller Zeilen aus, bei denen die Spalte **t4** den Wert **[ERROR]** enthält. Diese Abfrage gibt den Wert **3** zurück, da dieser Wert in drei Zeilen enthalten ist.
+    * `SELECT`: Wählt die Anzahl aller Zeilen aus, bei denen die Spalte **t4** den Wert **[ERROR]** enthält. Diese Abfrage gibt den Wert **3** zurück, da dieser Wert in drei Zeilen enthalten ist.
 
-    * `INPUT__FILE__NAME LIKE '%.log'` – Hive versucht, das Schema auf alle Dateien im Verzeichnis anzuwenden. In diesem Fall enthält das Verzeichnis Dateien, die dem Schema nicht entsprechen. Um überflüssige Daten in den Ergebnissen zu vermeiden, weist diese Anweisung Hive an, nur Daten aus Dateien zurückzugeben, die auf „.log“ enden.
+    * `INPUT__FILE__NAME LIKE '%.log'`: Hive versucht, das Schema auf alle Dateien im Verzeichnis anzuwenden. In diesem Fall enthält das Verzeichnis Dateien, die dem Schema nicht entsprechen. Um überflüssige Daten in den Ergebnissen zu vermeiden, weist diese Anweisung Hive an, nur Daten aus Dateien zurückzugeben, die auf „.log“ enden.
 
    > [!NOTE]  
    > Externe Tabellen sollten Sie verwenden, wenn Sie erwarten, dass die zugrunde liegenden Daten aus einer externen Quelle aktualisiert werden. Das könnte z.B. ein automatisierter Datenupload oder ein MapReduce-Vorgang sein.

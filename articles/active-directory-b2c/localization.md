@@ -3,19 +3,19 @@ title: Lokalisierung – Azure Active Directory B2C | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie das Localization-Element einer benutzerdefinierten Richtlinie in Azure Active Directory B2C angeben.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 8f252b536c80ad997f3c0eb10b10d5cb8c330fc6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2291bdd270a15c4932d79b124616400d2667c891
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187554"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64705850"
 ---
 # <a name="localization"></a>Lokalisierung
 
@@ -41,7 +41,7 @@ Das **Localization**-Element enthält die folgenden Attribute:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| Aktiviert | Nein  | Mögliche Werte: `true` oder `false`. |
+| Enabled | Nein  | Mögliche Werte: `true` oder `false`. |
 
 Das **Localization**-Element enthält die folgenden XML-Elemente:
 
@@ -56,7 +56,7 @@ Das **SupportedLanguages**-Element enthält die folgenden Attribute:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| DefaultLanguage | JA | Die Sprache, die standardmäßig für lokalisierte Ressourcen verwendet werden soll |
+| DefaultLanguage | Ja | Die Sprache, die standardmäßig für lokalisierte Ressourcen verwendet werden soll |
 | MergeBehavior | Nein  | Enumerationswerte von Werten, die mit jedem Anspruchstyp in übergeordneten Richtlinien mit dem gleichen Bezeichner zusammengeführt werden. Verwenden Sie dieses Attribut, wenn Sie einen Anspruch, der in der Basisrichtlinie angegeben ist, überschreiben. Mögliche Werte: `Append`, `Prepend` oder `ReplaceAll`. Der Wert `Append` gibt an, dass die Sammlung von Daten an das Ende der Sammlung, die in der übergeordneten Richtlinie angegebenen ist, angefügt werden soll. Der Wert `Prepend` gibt an, dass die Sammlung von Daten vor der Sammlung, die in der übergeordneten Richtlinie angegebenen ist, eingefügt werden soll. Der Wert `ReplaceAll` gibt an, dass die Sammlung von Daten, die in der übergeordneten Richtlinie definiert sind, ignoriert werden soll und stattdessen die in der aktuellen Richtlinie definierten Daten verwendet werden sollen. |
 
 ### <a name="supportedlanguages"></a>SupportedLanguages
@@ -73,7 +73,7 @@ Das **LocalizedResources**-Element enthält die folgenden Attribute:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| id | JA | Ein Bezeichner, der zur eindeutigen Identifizierung von lokalisierten Ressourcen verwendet wird. |
+| id | Ja | Ein Bezeichner, der zur eindeutigen Identifizierung von lokalisierten Ressourcen verwendet wird. |
 
 Das **LocalizedResources**-Element enthält die folgenden Elemente:
 
@@ -96,9 +96,9 @@ Das **LocalizedCollection**-Element enthält die folgenden Attribute:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| ElementType | JA | Verweist auf ein ClaimType-Element oder ein Element der Benutzeroberfläche in der Richtliniendatei. |
-| ElementId | JA | Eine Zeichenfolge mit einem Verweis auf einen Anspruchstyp, der bereits in dem ClaimsSchema-Abschnitt, der bei Festlegung von **ElementType** auf einen Anspruchstyp verwendet wird, definiert wurde. |
-| TargetCollection | JA | Die Zielsammlung. |
+| ElementType | Ja | Verweist auf ein ClaimType-Element oder ein Element der Benutzeroberfläche in der Richtliniendatei. |
+| ElementId | Ja | Eine Zeichenfolge mit einem Verweis auf einen Anspruchstyp, der bereits in dem ClaimsSchema-Abschnitt, der bei Festlegung von **ElementType** auf einen Anspruchstyp verwendet wird, definiert wurde. |
+| TargetCollection | Ja | Die Zielsammlung. |
 
 Das **LocalizedCollection**-Element enthält die folgenden Elemente:
 
@@ -110,8 +110,8 @@ Das **Item**-Element enthält die folgenden Attribute:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| Text | JA | Die benutzerfreundliche Anzeigezeichenfolge, die dem Benutzer auf der Benutzeroberfläche für diese Option angezeigt werden soll. |
-| Wert | JA | Der Wert des Zeichenfolgenanspruchs, der der Auswahl dieser Option zugeordnet ist. |
+| Text | Ja | Die benutzerfreundliche Anzeigezeichenfolge, die dem Benutzer auf der Benutzeroberfläche für diese Option angezeigt werden soll. |
+| Wert | Ja | Der Wert des Zeichenfolgenanspruchs, der der Auswahl dieser Option zugeordnet ist. |
 
 Das folgende Beispiel zeigt die Verwendung des **LocalizedCollections**-Elements. Es enthält zwei **LocalizedCollection**-Elemente, eines für Englisch und ein anderes für Spanisch. Beide legen die **Restriction**-Sammlung des Anspruchs `Gender` auf eine Liste von Elementen für Englisch und Spanisch fest.
 
@@ -146,9 +146,9 @@ Das **LocalizedString**-Element enthält die folgenden Attribute:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| ElementType | JA | Ein Verweis auf ein ClaimType-Element oder ein Element der Benutzeroberfläche in der Richtlinie. Mögliche Werte: `ClaimType`, `UxElement`, `ErrorMessage` oder `Predicate`. Der Wert `ClaimType` wird verwendet, um eines der Anspruchsattribute gemäß der StringId zu lokalisieren. Der Wert `UxElement` wird verwendet, um eines der Elemente der Benutzeroberfläche gemäß der StringId zu lokalisieren. Der Wert `ErrorMessage` wird verwendet, um eine der Systemfehlermeldungen gemäß der StringId zu lokalisieren. Der Wert `Predicate` wird verwendet, um eine der [Predicate](predicates.md)-Fehlermeldungen gemäß der StringId zu lokalisieren. Der Wert `InputValidation` wird verwendet, um eine der Fehlermeldungen der [PredicateValidation](predicates.md)-Gruppe gemäß der StringId zu lokalisieren. |
-| ElementId | JA | Wenn **ElementType** auf `ClaimType`, `Predicate` oder `InputValidation` festgelegt wurde, enthält dieses Element einen Verweis auf einen Anspruchstyp, der bereits im ClaimsSchema-Abschnitt definiert wurde. | 
-| StringId | JA | Wenn **ElementType** auf `ClaimType` festgelegt ist, enthält dieses Element einen Verweis auf ein Attribut eines Anspruchstyps. Mögliche Werte: `DisplayName`, `AdminHelpText` oder `PatternHelpText`. Der Wert `DisplayName` wird verwendet, um den Anzeigenamen des Anspruchs festzulegen. Der Wert `AdminHelpText` wird verwendet, um den Namen des Hilfetexts des Anspruchsbenutzers festzulegen. Der Wert `PatternHelpText` wird verwendet, um den Hilfetext des Anspruchsmusters festzulegen. Wenn **ElementType** auf `UxElement` festgelegt ist, enthält dieses Element einen Verweis auf ein Attribut eines Elements der Benutzeroberfläche. Wenn **ElementType** auf `ErrorMessage` festgelegt ist, gibt dieses Element die ID einer Fehlermeldung an. Unter [Lokalisierungszeichenfolgen-IDs](localization-string-ids.md) finden Sie eine vollständige Liste der `UxElement`-Bezeichner.|
+| ElementType | Ja | Ein Verweis auf ein ClaimType-Element oder ein Element der Benutzeroberfläche in der Richtlinie. Mögliche Werte: `ClaimType`, `UxElement`, `ErrorMessage` oder `Predicate`. Der Wert `ClaimType` wird verwendet, um eines der Anspruchsattribute gemäß der StringId zu lokalisieren. Der Wert `UxElement` wird verwendet, um eines der Elemente der Benutzeroberfläche gemäß der StringId zu lokalisieren. Der Wert `ErrorMessage` wird verwendet, um eine der Systemfehlermeldungen gemäß der StringId zu lokalisieren. Der Wert `Predicate` wird verwendet, um eine der [Predicate](predicates.md)-Fehlermeldungen gemäß der StringId zu lokalisieren. Der Wert `InputValidation` wird verwendet, um eine der Fehlermeldungen der [PredicateValidation](predicates.md)-Gruppe gemäß der StringId zu lokalisieren. |
+| ElementId | Ja | Wenn **ElementType** auf `ClaimType`, `Predicate` oder `InputValidation` festgelegt wurde, enthält dieses Element einen Verweis auf einen Anspruchstyp, der bereits im ClaimsSchema-Abschnitt definiert wurde. | 
+| StringId | Ja | Wenn **ElementType** auf `ClaimType` festgelegt ist, enthält dieses Element einen Verweis auf ein Attribut eines Anspruchstyps. Mögliche Werte: `DisplayName`, `AdminHelpText` oder `PatternHelpText`. Der Wert `DisplayName` wird verwendet, um den Anzeigenamen des Anspruchs festzulegen. Der Wert `AdminHelpText` wird verwendet, um den Namen des Hilfetexts des Anspruchsbenutzers festzulegen. Der Wert `PatternHelpText` wird verwendet, um den Hilfetext des Anspruchsmusters festzulegen. Wenn **ElementType** auf `UxElement` festgelegt ist, enthält dieses Element einen Verweis auf ein Attribut eines Elements der Benutzeroberfläche. Wenn **ElementType** auf `ErrorMessage` festgelegt ist, gibt dieses Element die ID einer Fehlermeldung an. Unter [Lokalisierungszeichenfolgen-IDs](localization-string-ids.md) finden Sie eine vollständige Liste der `UxElement`-Bezeichner.|
 
 
 Das folgende Beispiel zeigt eine lokalisierte Anmeldeseite. Die ersten drei **LocalizedString**-Werte legen das Anspruchsattribut fest. Der dritte ändert den Wert der Schaltfläche „Weiter“. Der letzte ändert die Fehlermeldung.

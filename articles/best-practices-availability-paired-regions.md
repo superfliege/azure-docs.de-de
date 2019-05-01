@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmon
 ms.service: multiple
 ms.topic: article
-ms.date: 04/17/2019
+ms.date: 04/28/2019
 ms.author: raynew
-ms.openlocfilehash: ecbe73e02631e3c3601bd929282d467cb05b41e4
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: e23b5ff9917eda7272e378aa70d6e2dd79f4b9f1
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678869"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918967"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Business Continuity & Disaster Recovery (BCDR): Azure-Regionspaare
 
@@ -38,7 +38,6 @@ Abbildung 1: Azure-Regionspaare
 | Europa |Nordeuropa |Europa, Westen |
 | Frankreich |Frankreich, Mitte|Frankreich, Süden|
 | Deutschland |Deutschland, Mitte |Deutschland, Nordosten |
-| Deutschland |Deutschland, Norden | Deutschland, Westen-Mitte
 | Indien |Indien, Mitte |Indien (Süden) |
 | Indien |Indien, Westen |Indien (Süden) |
 | Japan |Japan, Osten |Japan, Westen |
@@ -47,13 +46,8 @@ Abbildung 1: Azure-Regionspaare
 | Nordamerika |USA (Ost) 2 |USA (Mitte) |
 | Nordamerika |USA Nord Mitte |USA Süd Mitte |
 | Nordamerika |USA, Westen 2 |USA, Westen-Mitte 
-| Nordamerika |USA, Westen 3 |USA (Ost)
-| Norwegen |Norwegen, Osten |Norwegen, Westen
 | Südafrika | Südafrika, Norden | Südafrika, Westen
-| Schweden |Schweden, Mitte |Schweden, Süden
-| Schweiz | Schweiz, Norden | Schweiz, Westen
 | UK |UK, Westen |UK, Süden |
-| UK |Vereinigtes Königreich, Norden |Vereinigtes Königreich, Süden 2
 | Vereinigte Arabische Emirate | Vereinigte Arabische Emirate, Norden | Vereinigte Arabische Emirate, Mitte
 | US-Verteidigungsministerium |US DoD, Osten |US DoD, Mitte |
 | US Government |US Gov Arizona |US Gov Texas |

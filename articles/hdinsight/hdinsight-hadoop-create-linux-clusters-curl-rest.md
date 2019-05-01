@@ -1,7 +1,6 @@
 ---
 title: Erstellen von Apache Hadoop-Clustern mithilfe der Azure-REST-API – Azure
 description: Erfahren Sie, wie Sie HDInsight-Cluster erstellen, indem Sie Azure Resource Manager-Vorlagen an die Azure-REST-API senden.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: hrasheed
-ms.openlocfilehash: fec87bf3af7f215b69a891c2d75cdd979a7b5a52
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: acf121c2954b3f324682578dd3ab2b4d8b1f63f2
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789210"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707342"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Erstellen von Apache Hadoop-Clustern mithilfe der Azure-REST-API
 

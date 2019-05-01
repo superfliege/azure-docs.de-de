@@ -3,19 +3,19 @@ title: REST-API-Anspruchsaustauschvorgänge zur Validierung in Azure Active Dire
 description: Ein Thema zu benutzerdefinierten Azure Active Directory B2C-Richtlinien.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/24/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: b08c5e6f2bc7d7970c47e14db84f4172e92eb820
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 090b0ef4d4f5f3d883ba1255e6f30d2bb0566274
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203656"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64681250"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre Azure AD B2C-User Journey als Validierung der Benutzereingabe
 

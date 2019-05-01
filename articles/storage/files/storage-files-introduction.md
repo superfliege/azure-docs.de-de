@@ -2,18 +2,18 @@
 title: Einführung in Azure Files | Microsoft-Dokumentation
 description: Übersicht über Azure Files – ein Dienst zum Erstellen und Verwenden von Netzwerkdateifreigaben in der Cloud mit dem SMP-Protokoll nach Branchenstandard.
 services: storage
-author: RenaShahMSFT
+author: roygara
 ms.service: storage
 ms.topic: overview
 ms.date: 07/19/2018
-ms.author: renash
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 647b1723136edd23f3e58f1c225c9226714d4d97
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6e8e2843ad8e00b1fe334200b9b1a5c8a7c2c5df
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466889"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64706956"
 ---
 # <a name="what-is-azure-files"></a>Was ist Azure Files?
 Azure Files bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das branchenübliche Protokoll [Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) zugegriffen werden kann. Azure-Dateifreigaben können gleichzeitig durch die Cloud oder lokale Bereitstellungen von Windows, Linux und macOS eingebunden werden. Außerdem können Azure-Dateifreigaben auf Windows-Servern mit der Azure-Dateisynchronisierung zwischengespeichert werden, um einen schnellen Zugriff in der Nähe des Datennutzungsorts zu gewährleisten.

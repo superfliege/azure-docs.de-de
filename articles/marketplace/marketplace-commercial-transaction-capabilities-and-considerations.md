@@ -2,24 +2,18 @@
 title: 'Kommerzielle Transaktionen ‎im Marketplace: Möglichkeiten und Überlegungen | Azure'
 description: In diesem Artikel werden Überlegungen zur Preisfindung, Abrechnung, Rechnungsstellung und Auszahlung für einen Angebotstyp für die Veröffentlichungsoption „Transaktion“ beschrieben.
 services: Azure, Marketplace, Compute, Storage, Networking, Transact Offer Type
-documentationcenter: ''
 author: yijenj
 manager: nuno costa
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: 3c07f7ac2b6407a3edf53fd5d3a4b402714fefbb
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: bf0c6a5234846499d7b8a49f427dba7af36edc15
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678903"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937970"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Kommerzielle Transaktionen ‎in Azure Marketplace: Möglichkeiten und Überlegungen
 

@@ -18,12 +18,12 @@ ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf5821bdfc9dfc284334b2b8b4950c3a54fb73b2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 4ecac4122e8c7e016790cd816e4a858ffff47eb1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60010743"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64709095"
 ---
 # <a name="azure-active-directory-v20-authentication-libraries"></a>Azure Active Directory v2.0-Authentifizierungsbibliotheken
 
@@ -69,7 +69,7 @@ Middlewarebibliotheken werden verwendet, um Webanwendungen und Web-APIs zu schü
 
 | Plattform | Bibliothek | Download | Quellcode | Beispiel | Verweis
 | --- | --- | --- | --- | --- | --- |
-| ![.NET](media/sample-v2-code/logo_NET.png) ![.NET Core](media/sample-v2-code/logo_NETcore.png) | ASP.NET Security |[NuGet](https://www.nuget.org/packages/Microsoft.AspNet.Mvc/) |[ASP.NET Security (GitHub)](https://github.com/aspnet/Security) |[MVC-App](quickstart-v2-aspnet-webapp.md) |[ASP.NET API-Referenz](https://docs.microsoft.com/dotnet/api/?view=aspnetcore-2.0) |
+| ![.NET](media/sample-v2-code/logo_NET.png) ![.NET Core](media/sample-v2-code/logo_NETcore.png) | ASP.NET Security |[NuGet](https://www.nuget.org/packages/Microsoft.AspNet.Mvc/) |[GitHub](https://github.com/aspnet/AspNetCore) |[MVC-App](quickstart-v2-aspnet-webapp.md) |[ASP.NET API-Referenz](https://docs.microsoft.com/dotnet/api/?view=aspnetcore-2.0) |
 | ![.NET](media/sample-v2-code/logo_NET.png)| IdentityModel-Erweiterungen für .NET| |[GitHub](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet) | [MVC-App](quickstart-v2-aspnet-webapp.md) |[Referenz](https://docs.microsoft.com/dotnet/api/overview/azure/activedirectory/client?view=azure-dotnet) |
 | ![Node.js](media/sample-v2-code/logo_nodejs.png) | Azure AD Passport |[NPM](https://www.npmjs.com/package/passport-azure-ad) |[GitHub](https://github.com/AzureAD/passport-azure-ad) | [Web-App](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs) | |
 

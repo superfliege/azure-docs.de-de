@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: spelluru
-ms.openlocfilehash: c26418d36271b4d2d39a43eda7e8b23585d69f4a
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 91c598bde0912cffb8aa1dd7ba022c86a9084faa
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149426"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64713003"
 ---
 # <a name="azure-devtest-labs-faq"></a>Häufig gestellte Fragen zu Azure DevTest Labs
 Im Folgenden werden einige der am häufigsten gestellten Fragen zu Azure DevTest Labs beantwortet.
@@ -350,7 +350,7 @@ Für andere Continuous Integration(CI)/Continuous Delivery(CD)-Toolketten könne
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>Wann sollte ich ein neues virtuelles Netzwerk für meine DevTest Labs-Umgebung erstellen und wann ein vorhandenes virtuelles Netzwerk nutzen?
 Wenn Ihre VMs mit vorhandener Infrastruktur interagieren müssen, erwägen Sie die Verwendung eines vorhandenen virtuellen Netzwerks innerhalb Ihrer DevTest Labs-Umgebung. Wenn Sie ExpressRoute verwenden, kann es sinnvoll sein, die Menge der VNets/Subnetze zu minimieren, um die Fragmentierung Ihres IP-Adressraums zu vermeiden, der für die Verwendung in den Abonnements zugewiesen wird. 
 
-Sie sollten hier auch die Verwendung des VNet-Peeringmusters ([Nabe-Speiche-Modell](/architecture/reference-architectures/hybrid-networking/hub-spoke)) in Erwägung ziehen. Dieser Ansatz ermöglicht die abonnementübergreifende VNet/Subnetz-Kommunikation. Andernfalls kann jede DevTest Labs-Umgebung über ein eigenen virtuelles Netzwerk verfügen. 
+Sie sollten hier auch die Verwendung des VNet-Peeringmusters ([Nabe-Speiche-Modell](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)) in Erwägung ziehen. Dieser Ansatz ermöglicht die abonnementübergreifende VNet/Subnetz-Kommunikation. Andernfalls kann jede DevTest Labs-Umgebung über ein eigenen virtuelles Netzwerk verfügen. 
 
 Die Anzahl der virtuellen Netzwerke pro Abonnement ist [begrenzt](../azure-subscription-service-limits.md). Standardmäßig sind 50 möglich, dieser Grenzwert kann jedoch auf 100 heraufgesetzt werden.
 

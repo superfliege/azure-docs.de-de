@@ -3,8 +3,8 @@ title: Migrieren von Azure-VMs zu Azure Managed Disks | Microsoft-Dokumentation
 description: Migrieren Sie virtuelle Azure-Computer, die in Speicherkonten mit nicht verwalteten Datenträgern erstellt wurden, zu Managed Disks.
 services: virtual-machines-windows
 documentationcenter: ''
-author: cynthn
-manager: jeconnoc
+author: roygara
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2018
-ms.author: cynthn
+ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f1f786ea4fbf9cea5afbbd2ff038b2b3f8bc3eaf
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 12cd1caa4cb96dbd5862776589d4a34aeb294ca1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56803582"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64689722"
 ---
 # <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>Migrieren von Azure-VMs zu Managed Disks in Azure
 

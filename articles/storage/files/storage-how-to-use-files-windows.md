@@ -2,18 +2,18 @@
 title: Verwenden einer Azure-Dateifreigabe mit Windows | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie eine Azure-Dateifreigabe mit Windows und Windows Server verwenden.
 services: storage
-author: RenaShahMSFT
+author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 06/07/2018
-ms.author: renash
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 315bad5c4ffc3d5e8909c86cb8de703e9cb941b0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 899bf4bbf201ae785a4f49c7f278de75fb48945e
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59048842"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926270"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Verwenden einer Azure-Dateifreigabe mit Windows
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Windows und Windows Server nahtlos verwendet werden. In diesem Artikel werden die Überlegungen zur Verwendung einer Azure-Dateifreigabe mit Windows und Windows Server behandelt.
@@ -48,7 +48,7 @@ Sie können Azure-Dateifreigaben in einer Windows-Installation verwenden, die en
 
 * **Speicherkontoschlüssel**: Zum Einbinden einer Azure-Dateifreigabe benötigen Sie den primären (oder sekundären) Speicherschlüssel. SAS-Schlüssel können derzeit nicht zum Einbinden verwendet werden.
 
-* **Stellen Sie sicher, Port 445 geöffnet ist**: Das SMB-Protokoll erfordert dass TCP-Port 445 geöffnet ist. Wenn Port 445 gesperrt ist, sind keine Verbindungen möglich. Mithilfe des Cmdlets `Test-NetConnection` können Sie überprüfen, ob Ihre Firewall Port 445 blockiert. Informationen zu verschiedenen Möglichkeiten, den blockierten Port 445 zu umgehen, finden Sie [hier](https://docs.microsoft.com/en-us/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked).
+* **Stellen Sie sicher, Port 445 geöffnet ist**: Das SMB-Protokoll erfordert dass TCP-Port 445 geöffnet ist. Wenn Port 445 gesperrt ist, sind keine Verbindungen möglich. Mithilfe des Cmdlets `Test-NetConnection` können Sie überprüfen, ob Ihre Firewall Port 445 blockiert. Informationen zu verschiedenen Möglichkeiten, den blockierten Port 445 zu umgehen, finden Sie [hier](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked).
 
     Für den folgenden PowerShell-Code wird vorausgesetzt, dass Sie das Azure PowerShell-Modul installiert haben. Weitere Informationen finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps). Denken Sie daran, `<your-storage-account-name>` und `<your-resource-group-name>` durch die entsprechenden Namen für Ihr Speicherkonto zu ersetzen.
 

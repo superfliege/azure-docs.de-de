@@ -1,7 +1,6 @@
 ---
 title: Verwenden von Zeppelin Notebooks mit Apache Spark-Cluster unter Azure HDInsight
 description: Enthält eine Schritt-für-Schritt-Anleitung zur Verwendung von Zeppelin Notebooks mit Apache Spark-Clustern unter Azure HDInsight.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/04/2019
-ms.openlocfilehash: 18660b41f4413d3ae1cd820cd645ddb540397906
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9fc18b11b24791c1e154d89d757408da4ab20539
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095897"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64709550"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Verwenden von Apache Zeppelin Notebooks mit Apache Spark-Cluster in Azure HDInsight
 

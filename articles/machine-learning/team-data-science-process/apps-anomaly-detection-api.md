@@ -11,17 +11,17 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: b67028562a2c377e1dd99635bdf04cad14782341
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 16f13cd4ad580ea2f163fe87b5924c1462890972
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793134"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926188"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning Anomaly Detection-API
 
 > [!NOTE]
-> Dieses Element wird zurzeit gewartet. Wir empfehlen Ihnen, den [API-Dienst zur Anomalieerkennung](https://azure.microsoft.com/en-us/services/cognitive-services/anomaly-detector/) zu verwenden, der von einem Katalog von Machine Learning-Algorithmen unter Azure Cognitive Services unterstützt wird, um Anomalien in Unternehmens-, operative und IoT-Metriken zu erkennen.
+> Dieses Element wird zurzeit gewartet. Wir empfehlen Ihnen, den [API-Dienst zur Anomalieerkennung](https://azure.microsoft.com/services/cognitive-services/anomaly-detector/) zu verwenden, der von einem Katalog von Machine Learning-Algorithmen unter Azure Cognitive Services unterstützt wird, um Anomalien in Unternehmens-, operative und IoT-Metriken zu erkennen.
 
 ## <a name="overview"></a>Übersicht
 Die [Anomaly Detection-API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) ist ein mit Azure Machine Learning erstelltes Beispiel, das Anomalien in Zeitreihendaten erkennt, wenn die numerischen Daten zeitlich gleich verteilt sind.
@@ -136,7 +136,7 @@ Die API führt alle Erkennungsmodule für Ihre Zeitreihendaten aus und gibt für
 
 | Ausgaben | BESCHREIBUNG |
 | --- | --- |
-| Zeit |Zeitstempel aus Rohdaten oder aggregierte (und/oder) zugeordnete Daten, wenn Aggregation (und/oder) die Zuordnung fehlender Daten angewendet wird |
+| Time |Zeitstempel aus Rohdaten oder aggregierte (und/oder) zugeordnete Daten, wenn Aggregation (und/oder) die Zuordnung fehlender Daten angewendet wird |
 | Daten |Werte aus Rohdaten, oder aggregierte (und/oder) zugeordnete Daten, wenn Aggregation (und/oder) die Zuordnung fehlender Daten angewendet wird |
 | TSpike |Binärer Indikator, um anzugeben, ob eine Spitze vom TSpike-Erkennungsmodul erkannt wird |
 | ZSpike |Binärer Indikator, um anzugeben, ob eine Spitze vom ZSpike-Erkennungsmodul erkannt wird |
@@ -179,7 +179,7 @@ Die API führt alle Erkennungsmodule für Ihre Zeitreihendaten aus und gibt für
 
 | Ausgaben | BESCHREIBUNG |
 | --- | --- |
-| Zeit |Zeitstempel aus Rohdaten oder aggregierte (und/oder) zugeordnete Daten, wenn Aggregation (und/oder) die Zuordnung fehlender Daten angewendet wird |
+| Time |Zeitstempel aus Rohdaten oder aggregierte (und/oder) zugeordnete Daten, wenn Aggregation (und/oder) die Zuordnung fehlender Daten angewendet wird |
 | OriginalData |Werte aus Rohdaten, oder aggregierte (und/oder) zugeordnete Daten, wenn Aggregation (und/oder) die Zuordnung fehlender Daten angewendet wird |
 | ProcessedData |Eine der folgenden Möglichkeiten:  <ul><li>Saisonabhängig angepasste Zeitreihen, wenn eine signifikante Saisonabhängigkeit erkannt und die Option „deseason“ gewählt wurde.</li><li>Saisonabhängig angepasste und trendbereinigte Zeitreihen, wenn eine signifikante Saisonabhängigkeit erkannt und die Option „deseasontrend“ gewählt wurde</li><li>Andernfalls identisch mit „OriginalData“</li> |
 | TSpike |Binärer Indikator, um anzugeben, ob eine Spitze vom TSpike-Erkennungsmodul erkannt wird |

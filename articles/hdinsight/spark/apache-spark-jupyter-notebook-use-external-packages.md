@@ -1,7 +1,6 @@
 ---
 title: Verwenden benutzerdefinierter Maven-Pakete mit Jupyter in Spark in Azure HDInsight
 description: Eine Schritt-für-Schritt-Anleitung zum Konfigurieren von Jupyter-Notebooks, die mit Spark-Clustern in HDInsight verfügbar sind, sodass sie benutzerdefinierte Maven-Pakete verwenden.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: hrasheed
-ms.openlocfilehash: c0394025fef15b987f0777d157c465e83d860601
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 6af25b95aa3a38c4a2e9f3bd8147604dccae0abb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652131"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64715148"
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>Verwenden externer Pakete mit Jupyter Notebooks in Apache Spark-Clustern unter HDInsight
 > [!div class="op_single_selector"]

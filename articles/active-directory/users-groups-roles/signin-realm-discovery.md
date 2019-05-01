@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b6846c5f907c41db16e99883be7041a68357586
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: e9f21b592f31790daa9cc4eeb217ea6e2987fc38
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608774"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920513"
 ---
 # <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Verhalten bei der Startbereichsermittlung für Azure Active Directory-Anmeldeseiten
 
@@ -49,7 +49,7 @@ Ein weiterer Vorteil dieses Verhaltens sind bessere Fehlermeldungen. Es folgen e
     ![Kennwort bei richtigem Benutzernamen falsch eingegeben](./media/signin-realm-discovery/incorrect-password.png)
   
 > [!IMPORTANT]
-> Dieses Feature könnte sich auf Verbunddomänen auswirken, die sich auf die alte Startbereichsermittlung auf Domänenebene verlassen, um den Verbund zu erzwingen. Informationen zu Updates beim Hinzufügen von Unterstützung für Verbunddomänen finden Sie unter [Startbereichsermittlung während der Anmeldung für Microsoft 365-Dienste](https://azure.microsoft.com/en-us/updates/signin-hrd/). Mittlerweile haben einige Organisationen ihre Mitarbeiter geschult, sich mit einem Benutzernamen anzumelden, der in Azure Active Directory nicht vorhanden ist, aber den richtigen Domänennamen enthält, weil Benutzer derzeit über die Domänennamen zum Domänenendpunkt ihrer Organisation geleitet werden. Das neue Anmeldeverhalten lässt dies nicht zu. Der Benutzer wird aufgefordert, den Benutzernamen zu korrigieren, und darf sich nicht mit einem Benutzernamen anmelden, der nicht in Azure Active Directory vorhanden ist.
+> Dieses Feature könnte sich auf Verbunddomänen auswirken, die sich auf die alte Startbereichsermittlung auf Domänenebene verlassen, um den Verbund zu erzwingen. Informationen zu Updates beim Hinzufügen von Unterstützung für Verbunddomänen finden Sie unter [Startbereichsermittlung während der Anmeldung für Microsoft 365-Dienste](https://azure.microsoft.com/updates/signin-hrd/). Mittlerweile haben einige Organisationen ihre Mitarbeiter geschult, sich mit einem Benutzernamen anzumelden, der in Azure Active Directory nicht vorhanden ist, aber den richtigen Domänennamen enthält, weil Benutzer derzeit über die Domänennamen zum Domänenendpunkt ihrer Organisation geleitet werden. Das neue Anmeldeverhalten lässt dies nicht zu. Der Benutzer wird aufgefordert, den Benutzernamen zu korrigieren, und darf sich nicht mit einem Benutzernamen anmelden, der nicht in Azure Active Directory vorhanden ist.
 >
 > Wenn Sie oder Ihre Organisation Verfahren nutzen, die das alte Verhalten erfordern, sollten Organisationsadministratoren unbedingt die Dokumentation zu Anmeldung und Authentifizierung für Ihre Mitarbeiter anpassen und Schulungen für die Anmeldung mit ihrem Azure Active Directory-Benutzernamen durchführen.
   

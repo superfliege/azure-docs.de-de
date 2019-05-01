@@ -3,19 +3,19 @@ title: Verwalten von Bedrohungen für Ressourcen in Azure Active Directory B2C |
 description: Informieren Sie sich über Verfahren zur Erkennung und Abwehr von Denial-of-Service- und Kennwortangriffen in Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 65c74b7451c5a605ca8c2e866296c87c0320b730
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8e4c145409579e2e3a833494008656d4d0e8e49e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55162921"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64703779"
 ---
 # <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>Verwalten von Bedrohungen für Ressourcen in Azure Active Directory B2C
 

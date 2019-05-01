@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: d3459f7bcfc0e2e61cb55b38a05b7b6a21ea3e9e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d84a7060fadcb3f3d80b7fbbff9d91f8812388b2
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59283510"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920609"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>Tutorial: Azure Active Directory-Integration mit T&E Express
 
@@ -110,7 +110,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit T&E Exp
     b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<domain>.tyeexpress.com/authorize/samlConsume.aspx`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Hier empfehlen wir Ihnen, den eindeutigen Wert der Zeichenfolge im Bezeichner zu verwenden. Diese Werte erhalten Sie vom [Supportteam für den T&E Express-Client](http://www.tyeexpress.com/contacto.aspx). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Hier empfehlen wir Ihnen, den eindeutigen Wert der Zeichenfolge im Bezeichner zu verwenden. Diese Werte erhalten Sie vom [Supportteam für den T&E Express-Client](https://www.tyeexpress.com/contacto.aspx). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 

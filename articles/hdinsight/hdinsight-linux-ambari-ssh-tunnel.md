@@ -1,7 +1,6 @@
 ---
 title: Verwenden von SSH-Tunneln für den Zugriff auf Azure HDInsight
 description: Erfahren Sie, wie Sie einen SSH-Tunnel verwenden, um auf Webressourcen auf Ihren Linux-basierten HDInsight-Knoten zuzugreifen.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/15/2018
 ms.author: hrasheed
-ms.openlocfilehash: 03c86aa069300f88b61752ebd3223e424f6e9c96
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 0361539cefbacb8fc0473a1f863cf2ae4638b444
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382607"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682537"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-web-uis"></a>Verwenden von SSH-Tunneling zum Zugriff auf die Apache Ambari-Webbenutzeroberfläche, JobHistory, NameNode, Apache Oozie und andere Webbenutzeroberflächen
 

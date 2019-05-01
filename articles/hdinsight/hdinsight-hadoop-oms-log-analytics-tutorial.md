@@ -1,7 +1,6 @@
 ---
 title: Verwenden von Azure Monitor-Protokollen zum Überwachen von Azure HDInsight-Clustern
 description: Erfahren Sie, wie Sie Azure Monitor-Protokolle zum Überwachen von Aufträgen verwenden, die in einem HDInsight-Cluster ausgeführt werden.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: hrasheed
-ms.openlocfilehash: 399a6bcb6e0bfd0edaddca471ba2c8e0802d3394
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0c37ff3c62817d238a94d5bbeae90c67663a6029
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904779"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64689843"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Verwenden von Azure Monitor-Protokollen zum Überwachen von HDInsight-Clustern
 

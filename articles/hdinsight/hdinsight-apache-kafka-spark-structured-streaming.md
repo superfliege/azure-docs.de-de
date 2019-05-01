@@ -1,7 +1,6 @@
 ---
 title: 'Tutorial: Strukturiertes Apache Spark-Streaming mit Apache Kafka: Azure HDInsight'
 description: Erfahren Sie, wie Sie Apache Spark-Streaming verwenden, um Daten in oder aus Apache Kafka zu streamen. In diesem Tutorial streamen Sie Daten mithilfe eines Jupyter Notebooks aus Spark in HDInsight.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: e470f9d6f33e8b534be22132881f4806bed85f5d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 388ce607cf75a12705c9a32fe19086dbf9f15e71
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078362"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707990"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Tutorial: Verwenden von strukturiertem Apache Spark-Streaming mit Apache Kafka in HDInsight
 
@@ -144,7 +143,7 @@ Führen Sie zum Erstellen eines virtuellen Azure-Netzwerks und zum anschließend
     | --- | --- |
     | Abonnement | Ihr Azure-Abonnement |
     | Ressourcengruppe | Die Ressourcengruppe mit den Ressourcen. |
-    | Standort | Die Azure-Region, in der die Ressourcen erstellt werden. |
+    | Location | Die Azure-Region, in der die Ressourcen erstellt werden. |
     | Spark Cluster Name (Spark-Clustername) | Der Name des Spark-Clusters. Die ersten sechs Zeichen müssen sich vom Kafka-Clusternamen unterscheiden. |
     | Kafka Cluster Name (Kafka-Clustername) | Der Name des Kafka-Clusters. Die ersten sechs Zeichen müssen sich vom Spark-Clusternamen unterscheiden. |
     | Benutzername für Clusteranmeldung | Der Administratorbenutzername für die Cluster. |

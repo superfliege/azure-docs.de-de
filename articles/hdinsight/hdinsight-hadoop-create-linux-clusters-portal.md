@@ -1,7 +1,6 @@
 ---
 title: Erstellen von Apache Hadoop-Clustern mit einem Webbrowser – Azure HDInsight
 description: Es wird beschrieben, wie Sie mit einem Webbrowser und dem Azure-Vorschauportal Apache Hadoop-, Apache HBase-, Apache Storm- und Apache Spark-Cluster unter Linux für HDInsight erstellen.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/28/2018
 ms.author: hrasheed
-ms.openlocfilehash: 13d053c14b083390bfdd28fdad616caf13e7e4e0
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 9da9c6c438aac2c160a9ec7bc658e5d7b4ea207e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911556"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64715190"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Erstellen von Linux-basierten Clustern in HDInsight mit dem Azure-Portal
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]

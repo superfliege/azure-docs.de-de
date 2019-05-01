@@ -2,18 +2,18 @@
 title: Skalierbarkeits- und Leistungsziele für Azure Files | Microsoft-Dokumentation
 description: Informationen zu den Skalierbarkeits- und Leistungszielen für Azure Files, einschließlich Kapazität, Anforderungsrate sowie Grenzwerte für ein- und ausgehende Bandbreite.
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 7/19/2018
-ms.author: wgries
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 630ad1e0558fc089d79eee50175e497b771a0a8a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bd60d6453b71387578b880ad580fb1741e6e512b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59494968"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64697901"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele für Azure Files
 

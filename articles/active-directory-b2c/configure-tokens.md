@@ -3,19 +3,19 @@ title: Konfigurieren von Token – Azure Active Directory B2C | Microsoft-Doku
 description: Erfahren Sie, wie Sie die Lebensdauer der Token und die Kompatibilitätseinstellungen in Azure Active Directory B2C konfigurieren.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 2455b8c12ed042af3a06a158a4e5c60a0aee748b
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 69a6284ea7b8905bb5efdb1f4c9f26027bd6f9d9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59686136"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64689605"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Konfigurieren von Token in Azure Active Directory B2C
 

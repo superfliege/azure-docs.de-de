@@ -15,12 +15,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: ce98502113e75aea8deef7dbc7363662827634f3
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: e572a9e19da144be61faefacc370cf512f5079ac
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682235"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64725412"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core"></a>Senden von Ereignissen an oder Empfangen von Ereignissen aus Event Hubs mithilfe von .NET Core
 Event Hubs ist ein Dienst, der große Mengen von Ereignisdaten (Telemetriedaten) von verbundenen Geräten und Anwendungen verarbeiten kann. Nach dem Sammeln von Daten auf Ereignis-Hubs können die Daten mithilfe eines Speicherclusters gespeichert oder mit einem Echtzeitanalyse-Anbieter transformiert werden. Diese umfangreiche Ereignissammlung und -verarbeitung ist eine wichtige Komponente moderner Anwendungsarchitekturen. Hierzu zählt auch das Internet der Dinge (Internet of Things, IoT). Eine ausführliche Übersicht über Event Hubs finden Sie unter [Was ist Azure Event Hubs?](event-hubs-about.md) und [Event Hubs-Features im Überblick](event-hubs-features.md).
@@ -195,8 +195,7 @@ Führen Sie die folgenden Schritte aus, um Ihrem Projekt das NuGet-Paket der [`M
 6. Führen Sie das Programm aus, und stellen Sie sicher, dass keine Fehler auftreten.
 
 ## <a name="receive-events"></a>Empfangen von Ereignissen
-In diesem Abschnitt erfahren Sie, wie Sie eine .NET Core-Konsolenanwendung schreiben, die unter Verwendung des [Ereignisprozessorhosts](event-hubs-event-processor-host.md) Nachrichten von einem Event Hub empfängt. Der [Ereignisprozessorhost](event-hubs-event-processor-host.md) ist eine .NET-Klasse, die das Empfangen von Ereignissen von Event Hubs durch die Verwaltung von permanenten Prüfpunkten und parallelen Empfangsvorgängen von diesen Event Hubs vereinfacht. Mit dem Ereignisprozessorhost können Sie Ereignisse selbst dann auf mehrere Empfänger aufteilen, wenn sie in verschiedenen Knoten gehostet werden. Dieses Beispiel zeigt, wie der Ereignisprozessorhost für einen einzelnen Empfänger verwendet wird. Das Beispiel [Skalieren der Ereignisverarbeitung](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3) veranschaulicht, wie der Ereignisprozessorhost mit mehreren Empfängern verwendet wird.
-
+In diesem Abschnitt erfahren Sie, wie Sie eine .NET Core-Konsolenanwendung schreiben, die unter Verwendung des [Ereignisprozessorhosts](event-hubs-event-processor-host.md) Nachrichten von einem Event Hub empfängt. Der [Ereignisprozessorhost](event-hubs-event-processor-host.md) ist eine .NET-Klasse, die das Empfangen von Ereignissen von Event Hubs durch die Verwaltung von permanenten Prüfpunkten und parallelen Empfangsvorgängen von diesen Event Hubs vereinfacht. Mit dem Ereignisprozessorhost können Sie Ereignisse selbst dann auf mehrere Empfänger aufteilen, wenn sie in verschiedenen Knoten gehostet werden. Dieses Beispiel zeigt, wie der Ereignisprozessorhost für einen einzelnen Empfänger verwendet wird.
 > [!NOTE]
 > Sie können diese Schnellstartvorlage als Beispiel aus [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) herunterladen, die Zeichenfolgen `EventHubConnectionString`, `EventHubName`, `StorageAccountName`, `StorageAccountKey` und `StorageContainerName` durch die Werte für Ihren Event Hub ersetzen, und das Beispiel dann ausführen. Alternativ können Sie auch die Schritte in diesem Tutorial ausführen, um eine eigene Vorlage zu erstellen.
 

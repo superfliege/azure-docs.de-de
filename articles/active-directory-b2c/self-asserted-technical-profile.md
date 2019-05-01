@@ -3,19 +3,19 @@ title: Definieren eines selbstbestätigten technischen Profils in einer benutzer
 description: Definieren Sie ein selbstbestätigtes technisches Profil in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: dcc94daeb19174b85fface05222f8842e9544adf
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 41305cc5825344a61ff15ddb5deb629cd0f1c679
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188863"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691025"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines selbstbestätigten technischen Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -23,7 +23,7 @@ ms.locfileid: "55188863"
 
 Alle Interaktionen in Azure Active Directory (Azure AD) B2C, bei denen vom Benutzer eine Eingabe erwartet wird, sind selbstbestätigte technische Profile. Beispiele: Registrierungsseite, Anmeldeseite oder Seite für die Kennwortzurücksetzung.
 
-## <a name="protocol"></a>Protokoll
+## <a name="protocol"></a>Protocol
 
 Das **Name**-Attribut des **Protocol**-Elements muss auf `Proprietary` festgelegt werden. Das **handler**-Attribut muss den vollqualifizierten Namen der Protokollhandlerassembly als selbstbestätigt enthalten, die von Azure AD B2C verwendet wird: `Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`.
 
@@ -132,7 +132,7 @@ Mit Ihrer Geschäftslogik können Sie durch eine weitere Integration in die Bran
 | setting.showContinueButton | Nein  | Zeigt die Schaltfläche „Weiter“ an. Mögliche Werte: `true` (Standard) oder `false` |
 | setting.showCancelButton | Nein  | Zeigt die Schaltfläche „Abbrechen“ an. Mögliche Werte: `true` (Standard) oder `false` |
 | setting.operatingMode | Nein  | Bei einer Anmeldeseite steuert diese Eigenschaft das Verhalten des Benutzernamensfelds also z.B. die Eingabeüberprüfung und Fehlermeldungen. Erwartete Werte: `Username` oder `Email`. |
-| ContentDefinitionReferenceId | JA | Der Bezeichner der [Inhaltsdefinition](contentdefinitions.md), die diesem technischen Profil zugeordnet ist. |
+| ContentDefinitionReferenceId | Ja | Der Bezeichner der [Inhaltsdefinition](contentdefinitions.md), die diesem technischen Profil zugeordnet ist. |
 | EnforceEmailVerification | Nein  | Für die Registrierungs- oder Profilbearbeitung, erzwingt eine E-Mail-Überprüfung. Mögliche Werte: `true` (Standard) oder `false`. | 
 | setting.showSignupLink | Nein  | Zeigt die Schaltfläche „Registrieren“ an. Mögliche Werte: `true` (Standard) oder `false` |
 | setting.retryLimit | Nein  | Legt fest, wie oft ein Benutzer die Daten eingeben kann, die anhand des technischen Validierungsprofils überprüft werden. Beispiel: Ein Benutzer versucht, ein Konto zu registrieren, das bereits vorhanden ist, und wiederholt den Vorgang, bis der Grenzwert erreicht ist.

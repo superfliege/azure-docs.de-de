@@ -3,19 +3,19 @@ title: 'Tutorial: Hinzufügen von Identitätsanbietern zu Ihren Anwendungen – 
 description: Erfahren Sie, wie Sie Ihren Anwendungen in Azure Active Directory B2C mithilfe des Azure-Portals Identitätsanbieter hinzufügen.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 02/01/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: ef264622be1e66c98f8c7f17cf3e04b3239e8553
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: c1bd78442f6a7218dde3710236766117816c42fe
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338274"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64710133"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Tutorial: Hinzufügen von Identitätsanbietern zu Ihren Anwendungen in Azure Active Directory B2C
 

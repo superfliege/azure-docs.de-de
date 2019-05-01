@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 03871c3f3627e85cc2af2f05a5fba38bd8069a15
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: f9663fb502d9eda4810c54a89a94481b7d00cd43
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609488"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926058"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Grundlegendes zu den Ausgaben von Azure Stream Analytics
 In diesem Artikel werden die Arten von Ausgaben beschrieben, die für einen Azure Stream Analytics-Auftrag verfügbar sind. Mit Ausgaben können Sie die Ergebnisse des Stream Analytics-Auftrags aufbewahren und speichern. Indem Sie die Ausgabedaten verwenden, können Sie weitere Geschäftsanalysen und Data Warehousing-Vorgänge für Ihre Daten durchführen.
@@ -82,7 +82,7 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 | --- | --- |
 | Ausgabealias |Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diese Datenbank weiterzuleiten. |
 | Datenbank | Der Name der Datenbank, an die Sie die Ausgabe senden. |
-| Servername | Der Servername der SQL-Datenbank. |
+| Servername | Der Name des SQL-Datenbank-Servers |
 | Username | Der Benutzername, der Schreibzugriff auf die Datenbank hat. Stream Analytics unterstützt nur die SQL-Authentifizierung. |
 | Kennwort | Das Kennwort zum Herstellen einer Verbindung mit der Datenbank |
 | Table | Der Name der Tabelle, in die die Ausgabe geschrieben wird. Beim Tabellennamen wird die Groß- und Kleinschreibung beachtet. Das Schema dieser Tabelle sollte genau der Anzahl der Felder und deren Typen entsprechen, die Ihre Auftragsausgabe generiert. |
@@ -182,13 +182,13 @@ Power BI verwendet die FIFO-Aufbewahrungsrichtlinie (First In, First Out). Daten
 ### <a name="convert-a-data-type-from-stream-analytics-to-power-bi"></a>Konvertieren eines Datentyps aus Stream Analytics in Power BI
 Azure Stream Analytics aktualisiert das Datenmodell dynamisch zur Laufzeit, wenn sich das Ausgabeschema ändert. Nachverfolgt werden Änderungen an Spaltennamen und -typen sowie das Hinzufügen/Entfernen von Spalten.
 
-Die folgende Tabelle enthält die Datentypkonvertierungen von [Stream Analytics-Datentypen](https://msdn.microsoft.com/library/azure/dn835065.aspx) in [EDM-Typen (Entity Data Model)](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/entity-data-model) von Power BI für den Fall, dass noch kein Power BI-Dataset und noch keine Tabelle vorhanden sind.
+Die folgende Tabelle enthält die Datentypkonvertierungen von [Stream Analytics-Datentypen](https://msdn.microsoft.com/library/azure/dn835065.aspx) in [EDM-Typen (Entity Data Model)](https://docs.microsoft.com/dotnet/framework/data/adonet/entity-data-model) von Power BI für den Fall, dass noch kein Power BI-Dataset und noch keine Tabelle vorhanden sind.
 
 Quelle: Stream Analytics | Ziel: Power BI
 -----|-----
 bigint | Int64
 nvarchar(max) | Zeichenfolge
-Datetime | DateTime
+datetime | Datetime
 Gleitkommawert | Double
 Datensatzarray | Zeichenfolgentyp, Konstantenwert „IRecord“ oder „IArray“
 
@@ -203,7 +203,7 @@ Vorher/Aktuell | Int64 | Zeichenfolge | DateTime | Double
 Int64 | Int64 | Zeichenfolge | Zeichenfolge | Double
 Double | Double | Zeichenfolge | Zeichenfolge | Double
 Zeichenfolge | Zeichenfolge | Zeichenfolge | Zeichenfolge | Zeichenfolge 
-DateTime | Zeichenfolge | Zeichenfolge |  DateTime | Zeichenfolge
+Datetime | Zeichenfolge | Zeichenfolge |  Datetime | Zeichenfolge
 
 
 ### <a name="renew-power-bi-authorization"></a>Erneuern der Power BI-Autorisierung

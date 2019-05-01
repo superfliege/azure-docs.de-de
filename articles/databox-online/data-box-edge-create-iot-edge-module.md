@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 522dddde4994bb019e6547fcd18465b201f048d8
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: c2803ba598895834bb197f4a06ff0635354fcaca
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401726"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64680894"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Entwickeln eines C#-IoT Edge-Moduls zum Verschieben von Dateien in Data Box Edge
 
@@ -36,7 +36,7 @@ Auf dem Data Box Edge-Gerät können IoT Edge-Module bereitgestellt und ausgefü
 2. Der Dateiereignisgenerator erstellt ein Dateiereignis für jede in die lokale Freigabe geschriebene Datei. Die Dateiereignisse werden auch generiert, wenn eine Datei geändert wird. Die Dateiereignisse werden dann an den IoT Edge-Hub gesendet (in der IoT Edge-Runtime).
 3. Das benutzerdefinierte IoT Edge-Modul verarbeitet das Dateiereignis und erstellt ein Dateiereignisobjekt, das auch einen relativen Pfad für die Datei enthält. Das Modul generiert anhand des relativen Dateipfads einen absoluten Pfad und kopiert die Datei von der lokalen Freigabe in die Cloudfreigabe. Das Modul löscht dann die Datei aus der lokalen Freigabe.
 
-![Funktionsweise des Azure IoT Edge-Moduls in Data Box Edge](./media/data-box-edge-create-iot-edge-module/how-module-works.png)
+![Funktionsweise des Azure IoT Edge-Moduls in Data Box Edge](./media/data-box-edge-create-iot-edge-module/how-module-works-1.png)
 
 Sobald sich die Datei in der Cloudfreigabe befindet, wird sie automatisch in Ihr Azure Storage-Konto hochgeladen.
 

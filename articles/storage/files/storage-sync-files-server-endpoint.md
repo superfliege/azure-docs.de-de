@@ -2,18 +2,18 @@
 title: Hinzufügen/Entfernen eines Serverendpunkts für die Azure-Dateisynchronisierung | Microsoft-Dokumentation
 description: Erfahren Sie, was Sie beim Planen einer Azure Files-Bereitstellung berücksichtigen müssen.
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 07/19/2018
-ms.author: wgries
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: aa5f8aaef21967a23505c785eb8ef811cf5767cc
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 31bb71f016dd7f9dd37c766ece25caf8f300754b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486444"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64686951"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Hinzufügen/Entfernen eines Azure-Dateisynchronisierungsserver-Endpunkts
 Mit der Azure-Dateisynchronisierung können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.

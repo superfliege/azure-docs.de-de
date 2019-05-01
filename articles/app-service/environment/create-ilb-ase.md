@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 01d982d91d772ccfd468ccdac6391f971be4f43b
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 7e4364a06a3d20edc7aafd54a4dcd86dfd039043
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546541"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573569"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung #
 
@@ -56,7 +56,7 @@ Es gibt einige Dinge, die Sie mit einer ILB-ASE nicht machen können:
 
 So erstellen Sie eine ILB-ASE:
 
-1. Wählen Sie im Azure-Portal  **Ressource erstellen** > **Web** > **App Service-Umgebung** aus.
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Web** > **App Service-Umgebung**.
 
 2. Wählen Sie Ihr Abonnement aus.
 
@@ -66,7 +66,7 @@ So erstellen Sie eine ILB-ASE:
 
 5. Wenn Sie ein vorhandenes VNET auswählen, müssen Sie ein Subnetz erstellen, das die ASE beinhaltet. Die Größe des Subnetzes sollte auf einen ausreichend großen Wert festgelegt werden, um das zukünftige Wachstum Ihrer ASE abzudecken. Empfohlen wird eine Größe von `/24` mit 256 Adressen, die eine ASE in maximaler Größe und alle Skalierungsanforderungen verarbeiten kann. 
 
-6. Wählen Sie  **Virtuelles Netzwerk/Speicherort** > **Konfiguration des virtuellen Netzwerks** aus. Legen Sie den **VIP-Typ** auf **Intern** fest.
+6. Wählen Sie **Virtuelles Netzwerk/Speicherort** > **Konfigurationen virtueller Netzwerke**. Legen Sie den **VIP-Typ** auf **Intern** fest.
 
 7. Geben Sie einen Domänennamen ein. Diese Domäne wird für Apps verwendet, die in dieser ASE erstellt werden. Es gelten einige Einschränkungen. Der Domänenname darf nicht folgendermaßen lauten:
 
@@ -96,14 +96,14 @@ Auf dem Blatt **Virtuelles Netzwerk** befindet sich die Option **Konfiguration v
 
 Wenn Sie **Intern** auswählen, wird die Option zum Hinzuzufügen weiterer IP-Adressen zu Ihrer ASE ausgeblendet. Stattdessen müssen Sie die Domäne der ASE angeben. In einer ASE mit einer externen VIP-Adresse wird der Name der ASE in der Domäne für Apps verwendet, die in dieser ASE erstellt werden.
 
-Wenn Sie **VIP-Typ** auf **Intern** festlegen, wird der ASE-Name nicht in der Domäne für die ASE verwendet. Sie geben die Domäne explizit an. Wenn Ihre Domäne *contoso.corp.net* heißt und Sie in dieser ASE eine App mit dem Namen  *timereporting* erstellen, lautet die URL für diese App „timereporting.contoso.corp.net“.
+Wenn Sie **VIP-Typ** auf **Intern** festlegen, wird der ASE-Name nicht in der Domäne für die ASE verwendet. Sie geben die Domäne explizit an. Wenn Ihre Domäne *contoso.corp.net* heißt und Sie in dieser ASE eine App mit dem Namen *timereporting* erstellen, lautet die URL für diese App „timereporting.contoso.corp.net“.
 
 
 ## <a name="create-an-app-in-an-ilb-ase"></a>Erstellen einer App in einer ILB-ASE ##
 
 Sie erstellen eine App in einer ILB-ASE auf dieselbe Weise, wie Sie eine App normalerweise in einer ASE erstellen würden.
 
-1. Wählen Sie im Azure-Portal **Ressource erstellen** > **Web + Mobil** > **Web-App** aus.
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Web + Mobil** > **Web-App**.
 
 1. Geben Sie den Namen der App ein.
 
@@ -117,7 +117,7 @@ Sie erstellen eine App in einer ILB-ASE auf dieselbe Weise, wie Sie eine App nor
 
 1. Wählen Sie einen App Service-Plan aus, oder erstellen Sie einen. Wenn Sie einen neuen App Service-Plan erstellen möchten, wählen Sie Ihre ASE als Speicherort aus. Wählen Sie den Workerpool aus, in dem Ihr App Service-Plan erstellt werden soll. Wählen Sie beim Erstellen des App Service-Plans die ASE als Speicherort und den Workerpool aus. Wenn Sie den Namen der App angeben, wird die Domäne unter Ihrem App-Namen durch die Domäne für Ihre ASE ersetzt.
 
-1. Klicken Sie auf **Erstellen**. Wenn die App auf dem Dashboard angezeigt werden soll, aktivieren Sie das Kontrollkästchen **An Dashboard anheften** .
+1. Klicken Sie auf **Erstellen**. Wenn die App auf dem Dashboard angezeigt werden soll, aktivieren Sie das Kontrollkästchen **An Dashboard anheften**.
 
     ![Erstellung eines App Service-Plans][2]
 
@@ -127,7 +127,7 @@ Sie erstellen eine App in einer ILB-ASE auf dieselbe Weise, wie Sie eine App nor
 
 Eine ILB-ASE unterscheidet sich etwas von einer Nicht-ILB-ASE. Wie bereits erwähnt müssen Sie Ihr eigenes DNS verwalten. Zudem müssen Sie Ihr eigenes Zertifikat für HTTPS-Verbindungen angeben.
 
-Nachdem Sie Ihre ASE erstellt haben, wird der Domänenname entsprechend der von Ihnen angegebenen Domäne angezeigt. Im Menü **Einstellung** wird ein neues Element namens **ILB-Zertifikat** angezeigt. Die ASE wird mit einem Zertifikat erstellt, das nicht die ILB-ASE-Domäne angibt. Verwenden Sie die ASE mit diesem Zertifikat, teilt Ihnen Ihr Browser mit, dass das Zertifikat ungültig ist. Dieses Zertifikat ermöglicht ein einfacheres Testen von HTTPS, allerdings müssen Sie Ihr eigenes Zertifikat hochladen, das an Ihre ILB-ASE-Domäne gekoppelt ist. Dieser Schritt ist erforderlich, ganz gleich, ob das Zertifikat selbstsigniert ist oder von einer Zertifizierungsstelle bezogen wurde.
+Nachdem Sie Ihre ASE erstellt haben, wird der Domänenname entsprechend der von Ihnen angegebenen Domäne angezeigt. Im Menü **Einstellung** wird ein neues Element namens **ILB-Zertifikat** angezeigt. Die ASE wird mit einem Zertifikat erstellt, das nicht die ILB-ASE-Domäne angibt. Verwenden Sie die ASE mit diesem Zertifikat, teilt Ihnen Ihr Browser mit, dass das Zertifikat ungültig ist. Dieses Zertifikat ermöglicht ein einfacheres Testen von HTTPS, allerdings müssen Sie Ihr eigenes Zertifikat hochladen, das an Ihre ILB-ASE-Domäne gekoppelt ist. Dieser Schritt ist erforderlich, ganz gleich, ob das Zertifikat selbstsigniert ist oder von einer Zertifizierungsstelle bezogen wurde.
 
 ![ILB-ASE-Domänenname][3]
 
@@ -154,7 +154,7 @@ Das mit diesen PowerShell-Befehlen generierte Zertifikat wird durch Browser geke
 
 So laden Sie eigene Zertifikate hoch und prüfen den Zugriff:
 
-1. Wechseln Sie nach der Erstellung der ASE zur ASE-Benutzeroberfläche. Wählen Sie **ASE** > **Einstellungen** > **ILB-Zertifikat**.
+1. Wechseln Sie nach der Erstellung der ASE zur ASE-Benutzeroberfläche. Wählen Sie **ASE** > **Einstellungen** > **ILB-Zertifikat**.
 
 1. Legen Sie das ILB-Zertifikat durch Auswahl der Zertifikat-PFX-Datei und Eingabe des Kennworts fest. Dieser Schritt kann eine Weile dauern. Es wird eine Meldung angezeigt, die besagt, dass ein Uploadvorgang ausgeführt wird.
 

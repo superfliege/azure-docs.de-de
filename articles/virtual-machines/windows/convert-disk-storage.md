@@ -3,8 +3,8 @@ title: Konvertieren verwalteter Azure-Datenträger von Storage Standard in Stora
 description: Hier erfahren Sie, wie Sie verwaltete Azure-Datenträger mithilfe von Azure PowerShell von Storage Standard in Storage Premium konvertieren (oder umgekehrt).
 services: virtual-machines-windows
 documentationcenter: ''
-author: ramankumarlive
-manager: kavithag
+author: roygara
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2019
-ms.author: ramankum
+ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: f97140ffeed9115a0308215ea082baee611501fb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: abd893c68f2e9cac713e09dd0bdafb7f277ae889
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58009876"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707530"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Aktualisieren des Speichertyps eines verwalteten Datenträgers
 
 Für verwaltete Azure-Datenträger stehen vier Optionen zur Verfügung: Azure Ultra Disk Storage, SSD Premium, SSD Standard und HDD Standard. Zwischen diesen Speichertypen kann mit minimaler Downtime gewechselt werden, um Ihrem Leistungsbedarf gerecht zu werden. Diese Funktion wird für nicht verwaltete Datenträger nicht unterstützt. Sie können jedoch problemlos [nicht verwaltete Datenträger in verwaltete Datenträger konvertieren](convert-unmanaged-to-managed-disks.md), um zwischen den Datenträgertypen wechseln zu können.
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

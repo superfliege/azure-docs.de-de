@@ -2,7 +2,6 @@
 title: 'Azure HDInsight Tools: Verwenden von Visual Studio Code für Hive, LLAP oder PySpark | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie mithilfe von Azure HDInsight Tools for Visual Studio Code Abfragen und Skripts erstellen und übermitteln.
 Keywords: Visual Studio Code, Azure HDInsight-Tools, Hive, Python, PySpark, Spark, HDInsight, Hadoop, LLAP, Interactive Hive, Interactive Query
-services: HDInsight
 documentationcenter: ''
 author: hrasheed-msft
 ms.author: hrasheed
@@ -10,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/04/2019
-ms.openlocfilehash: 71e12e661c704af028ac4dc48f255bdee980619c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 04e607517bc806b60d7e76e5076f9d3518e530eb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100325"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64681765"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Verwenden von Azure HDInsight Tools for Visual Studio Code
 
@@ -307,7 +306,7 @@ Methode 2
     **POST /batches**   
     Anforderungstext
 
-    | name | Beschreibung | type | 
+    | name | description | type | 
     | :- | :- | :- | 
     | file | Die Datei, die die auszuführende Anwendung enthält. | Pfad (erforderlich) | 
     | proxyUser | Der Benutzer, dessen Identität bei Auftragsausführung gewechselt wird. | Zeichenfolge | 
@@ -329,7 +328,7 @@ Methode 2
     Antworttext   
     Das erstellte Batchobjekt
 
-    | name | Beschreibung | type | 
+    | name | description | type | 
     | :- | :- | :- | 
     | id | Die Sitzungs-ID | int | 
     | appId | Die Anwendungs-ID dieser Sitzung |  Zeichenfolge |

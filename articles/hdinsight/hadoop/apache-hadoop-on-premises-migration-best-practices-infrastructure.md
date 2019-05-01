@@ -1,7 +1,6 @@
 ---
 title: Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – Best Practices für Infrastruktur
 description: Erfahren Sie mehr zu Best Practices für die Infrastruktur bei der Migration von lokalen Hadoop-Clustern zu Azure HDInsight.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonwhowell
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4fe47feff6ac3a58ba4db8c700a3e34b2cdc0df9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 1bd06507bd8a20cf504c1ff4cd9fe7e3b9196a3c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59274688"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687764"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – Best Practices für Infrastruktur
 
@@ -168,7 +167,7 @@ HDInsight kann entweder zu einem neuen oder vorhandenen Azure Virtual Network hi
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Was ist Azure Virtual Network?](../../virtual-network/virtual-networks-overview.md)
+- [Azure Virtual Networks – Übersicht](../../virtual-network/virtual-networks-overview.md)
 - [Erweitern von Azure HDInsight per Azure Virtual Network](../hdinsight-extend-hadoop-virtual-network.md)
 
 ## <a name="securely-connect-to-azure-services-with-azure-virtual-network-service-endpoints"></a>Herstellen einer sicheren Verbindung mit Azure-Diensten unter Verwendung von Azure Virtual Network-Dienstendpunkten
@@ -178,7 +177,7 @@ HDInsight unterstützt [Virtual Network-Dienstendpunkte](../../virtual-network/v
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
 - [VNET-Dienstendpunkte](../../virtual-network/virtual-network-service-endpoints-overview.md)
-- [Enhance HDInsight security with service endpoints (Erhöhen der Sicherheit von HDInsight mit Dienstendpunkten)](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)
+- [Erhöhen der Sicherheit von HDInsight mit Dienstendpunkten](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)
 
 ## <a name="connect-hdinsight-to-the-on-premises-network"></a>Verbinden von HDInsight mit einem lokalen Netzwerk
 

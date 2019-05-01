@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/27/2019
 ms.author: juliako
-ms.openlocfilehash: 70e28377b19b682f2191e0a8fb95792101fa8ec7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6ae094ddf1bfc55ce793995f60f1694be6eb19c1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045673"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64686796"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Hinweise zur Migration von Media Services v2 zu v3
 
@@ -114,6 +114,10 @@ Die folgende Tabelle zeigt die Codeunterschiede zwischen v2 und v3 für gängige
 
 > [!NOTE]
 > Diese Seite wird laufend aktualisiert, da das Media Services-Team die v3-APIs weiterhin verbessert und die Diskrepanz zwischen den Versionen behebt.
+
+## <a name="provide-feedback"></a>Feedback geben
+
+Im Artikel [Azure Media Services-Community](media-services-community.md) finden Sie verschiedene Möglichkeiten, Fragen zu stellen, Feedback zu geben und Updates zu Media Services zu bekommen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,19 +3,19 @@ title: Beispiele für die Transformation von Zeichenfolgen-Ansprüchen für das 
 description: Beispiele für die Transformation von Zeichenfolgen-Ansprüchen für das Schema des Frameworks für die Identitätsfunktion von Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 32acee78b1aadbe5a461de6ea4475cf28503c325
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6c6b90cb2b24f6a87504a3a0dbd47f998b67ebc1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113026"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707467"
 ---
 # <a name="string-claims-transformations"></a>Transformationen von Zeichenfolgen-Ansprüchen
 

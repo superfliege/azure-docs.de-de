@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a72b2c44550c0e481f7be4e37152e3bbe3a22f3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 08de78e598ef7fa751c5474a248f8d901c694ea8
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57889861"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918373"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-datahug"></a>Tutorial: Azure Active Directory-Integration mit Datahug
 
@@ -116,7 +116,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Datahug 
     Geben Sie im Textfeld **Anmelde-URL** eine URL ein: `https://apps.datahug.com/`.
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Supportteam von Datahug](http://datahug.com/about/contact-us/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Supportteam von Datahug](https://datahug.com/about/contact-us/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -146,7 +146,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Datahug 
 
 ### <a name="configure-datahug-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Datahug
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Datahug** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Datahug](http://datahug.com/about/contact-us/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Datahug** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Datahug](https://datahug.com/about/contact-us/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 

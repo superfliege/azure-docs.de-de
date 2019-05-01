@@ -3,19 +3,19 @@ title: Einrichten der Anmeldung mit einem Google-Konto mithilfe benutzerdefinier
 description: Einrichten der Anmeldung mit einem Google-Konto mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 30f3301fd404f23705e8ba04dc750cb82eed89b7
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 94b71dc8a355b818af6789022eb297100b569e73
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009258"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712022"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung mit einem Google-Konto mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 
@@ -48,7 +48,7 @@ Um das einmalige Anmelden für Benutzer mit einem Google-Konto zu aktivieren, m�
 Sie müssen den geheimen Clientschlüssel speichern, den Sie zuvor in Ihrem Azure AD B2C-Mandanten notiert haben.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Klicken Sie im oberen Menü auf **Directory and subscription filter** (Verzeichnis- und Abonnementfilter), und wählen Sie das Verzeichnis aus, das Ihren Mandanten enthält.
+2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Klicken Sie im oberen Menü auf **Verzeichnis- und Abonnementfilter**, und wählen Sie das Verzeichnis aus, das Ihren Mandanten enthält.
 3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
 4. Wählen Sie auf der Seite „Übersicht“ die Option **Identity Experience Framework – PREVIEW** (Framework für die Identitätsfunktion – VORSCHAU) aus.
 5. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
@@ -162,7 +162,7 @@ Nachdem Sie eine Schaltfläche implementiert haben, müssen Sie sie mit einer Ak
 Die Kommunikation mit Azure AD B2C erfolgt über eine Anwendung, die Sie in Ihrem Mandanten erstellen. In diesem Abschnitt werden optionale Schritte aufgeführt, die Sie ausführen können, um eine Testanwendung zu erstellen, falls Sie dies noch nicht getan haben.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Klicken Sie im oberen Menü auf **Directory and subscription filter** (Verzeichnis- und Abonnementfilter), und wählen Sie das Verzeichnis aus, das Ihren Mandanten enthält.
+2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Klicken Sie im oberen Menü auf **Verzeichnis- und Abonnementfilter**, und wählen Sie das Verzeichnis aus, das Ihren Mandanten enthält.
 3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
 4. Wählen Sie **Anwendungen** und dann **Hinzufügen** aus.
 5. Geben Sie einen Namen für die Anwendung ein, z.B. *testapp1*.

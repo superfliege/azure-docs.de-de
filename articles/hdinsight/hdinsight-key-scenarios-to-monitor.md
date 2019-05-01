@@ -1,7 +1,6 @@
 ---
 title: Überwachen der Clusterleistung – Azure HDInsight
 description: Es wird beschrieben, wie Sie die Kapazität und Leistung eines HDInsight-Clusters überwachen.
-services: hdinsight
 author: maxluk
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: arindamc
-ms.openlocfilehash: 83cbb2a54ed712f8aa5084408ab852432470b73c
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 22484885663a4f9a908ae988882b87612129251a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742472"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64693224"
 ---
 # <a name="monitor-cluster-performance"></a>Überwachen der Clusterleistung
 
@@ -63,13 +62,13 @@ Auf der Seite „YARN Queue Manager“ wird links eine Liste mit Ihren Warteschl
 
 ![Seite mit Details zum YARN Queue Manager](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager-details.png)
 
-Einen ausführlicheren Überblick über Ihre Warteschlangen erhalten Sie, indem Sie im Ambari-Dashboard in der Liste auf der linken Seite den Dienst **YARN** auswählen. Wählen Sie anschließend im Dropdownmenü **Quick Links** (Quicklinks) unter Ihrem aktiven Knoten die Option **Resource Manager UI** (Resource Manager-Benutzeroberfläche) aus.
+Einen ausführlicheren Überblick über Ihre Warteschlangen erhalten Sie, indem Sie im Ambari-Dashboard in der Liste auf der linken Seite den Dienst **YARN** auswählen. Wählen Sie anschließend im Dropdownmenü **Quick Links** (Quicklinks) unter Ihrem aktiven Knoten die Option **Resource Manager UI** (Benutzeroberfläche des Ressourcen-Managers) aus.
 
-![Menülink für die Resource Manager-Benutzeroberfläche](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
+![Menülink für die Benutzeroberfläche des Ressourcen-Managers](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
 
-Wählen Sie auf der Resource Manager-Benutzeroberfläche im Menü auf der linken Seite die Option **Scheduler** aus. Unter *Application Queues* (Anwendungswarteschlangen) wird eine Liste mit Ihren Warteschlangen angezeigt. Hier sind die verwendete Kapazität für die einzelnen Warteschlangen, der Grad der Verteilung auf die Warteschlangen und etwaige Ressourceneinschränkungen für Aufträge angegeben.
+Wählen Sie auf der Benutzeroberfläche des Ressourcen-Managers im Menü auf der linken Seite die Option **Scheduler** aus. Unter *Application Queues* (Anwendungswarteschlangen) wird eine Liste mit Ihren Warteschlangen angezeigt. Hier sind die verwendete Kapazität für die einzelnen Warteschlangen, der Grad der Verteilung auf die Warteschlangen und etwaige Ressourceneinschränkungen für Aufträge angegeben.
 
-![Menülink für die Resource Manager-Benutzeroberfläche](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui.png)
+![Menülink für die Benutzeroberfläche des Ressourcen-Managers](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui.png)
 
 ## <a name="storage-throttling"></a>Speicherdrosselung
 

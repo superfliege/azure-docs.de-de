@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7c45b0581a03e280c7dbd6d998059f1e4bff5345
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: d88bf309d2afeb4e6fdd09ff1317bec3fec2fe75
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556049"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64695852"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Konfigurieren der Vermerkdauer in Time Series Insights
 In diesem Artikel wird beschrieben, wie Sie die **Datenaufbewahrungsdauer** und das **Verhalten bei Überschreitung des Speicherlimits** in Azure Time Series Insights konfigurieren.
@@ -46,4 +46,5 @@ Ausführliche Informationen zu einem besseren Verständnis dieser Einstellungen 
 7. Wählen Sie zum Konfigurieren der Änderungen **Speichern** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie unter [Grundlegendes zur Vermerkdauer in Time Series Insights](time-series-insights-concepts-retention.md).
+
+- Weitere Informationen finden Sie unter [Grundlegendes zur Vermerkdauer in Time Series Insights](time-series-insights-concepts-retention.md).

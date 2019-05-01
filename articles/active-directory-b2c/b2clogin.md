@@ -3,19 +3,19 @@ title: Festlegen von Umleitungs-URLs zu b2clogin.com – Azure Active Directory 
 description: Erfahren Sie mehr über das Verwenden von b2clogin.com in Umleitungs-URLs für Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 8188e36278bad9c93f709a5d7d9f831d1c19e6b4
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 5f706a086c3dfe24f22e63cfe84f330d866eca70
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486846"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64703073"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Festlegen von Umleitungs-URLs zu b2clogin.com für Azure Active Directory B2C
 

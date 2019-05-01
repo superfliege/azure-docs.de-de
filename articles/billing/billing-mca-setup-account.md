@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: 90f832319fa2343003af58bd99eb64c0cbd94dd8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 284480ab8b9973c02f365dbf3ebfd3a103ef4b42
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894545"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919148"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Einrichten Ihres Abrechnungskontos für eine Microsoft-Kundenvereinbarung
 
@@ -108,7 +108,7 @@ Bei Unterzeichnung der Microsoft-Kundenvereinbarung wird ein Azure Active Direct
 
 Ihr neues Konto unterstützt nur Benutzer des Mandanten, der beim Unterzeichnen der Microsoft-Kundenvereinbarung ausgewählt wurde. Wenn Benutzer mit Administratorberechtigungen für Ihr Enterprise Agreement Teil des Mandanten sind, erhalten sie während der Einrichtung Zugriff auf das neue Abrechnungskonto. Wenn sie nicht Teil des Mandanten sind, können sie nur auf das neue Abrechnungskonto zugreifen, wenn sie von Ihnen eingeladen werden.
 
-Beim Einladen von Benutzern werden diese dem Mandanten als Gastbenutzer hinzugefügt und erhalten Zugriff auf das Abrechnungskonto. Zum Einladen der Benutzer muss der Gastzugriff für den Mandanten aktiviert sein. Weitere Informationen finden Sie unter [Steuern des Gastzugriffs in Azure Active Directory](https://docs.microsoft.com/en-us/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory). Wenn der Gastzugriff deaktiviert ist, wenden Sie sich an die globalen Administratoren Ihres Mandanten, um ihn aktivieren zu lassen. <!-- Todo - How can they find their global administrator -->
+Beim Einladen von Benutzern werden diese dem Mandanten als Gastbenutzer hinzugefügt und erhalten Zugriff auf das Abrechnungskonto. Zum Einladen der Benutzer muss der Gastzugriff für den Mandanten aktiviert sein. Weitere Informationen finden Sie unter [Steuern des Gastzugriffs in Azure Active Directory](https://docs.microsoft.com/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory). Wenn der Gastzugriff deaktiviert ist, wenden Sie sich an die globalen Administratoren Ihres Mandanten, um ihn aktivieren zu lassen. <!-- Todo - How can they find their global administrator -->
 
 ## <a name="view-features-replaced-by-the-new-billing-account"></a>Informationen zu Funktionen, die durch das neue Abrechnungskonto ersetzt werden
 

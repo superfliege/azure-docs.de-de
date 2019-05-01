@@ -1,20 +1,19 @@
 ---
-ms.assetid: ''
 title: Per Azure Key Vault verwaltetes Speicherkonto – CLI
 description: Speicherkontoschlüssel bieten eine nahtlose Integration zwischen Azure Key Vault und dem schlüsselbasierten Zugriff auf das Azure Storage-Konto.
 ms.topic: conceptual
 services: key-vault
 ms.service: key-vault
-author: prashanthyv
-ms.author: prashanthyv
+author: mbaldwin
+ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: 99b37a9b12c4b66e9b254156dfe4b59c7ab6594c
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: eefdb4d644c97bb55342e21c9a2fcf0a122a6ec5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526271"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64724779"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Per Azure Key Vault verwaltetes Speicherkonto – CLI
 

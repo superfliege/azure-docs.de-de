@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a945316df27460fef48a8bb4d43e46d412d2ae81
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 080a37a88e46117a9963f07c14d64f00c6bae6d5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009706"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570477"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrieren Ihrer vorhandenen NPS-Infrastruktur in Azure Multi-Factor Authentication
 
@@ -183,6 +183,8 @@ Außer wenn Sie Ihre eigenen Zertifikate nutzen möchten (anstelle der selbstsig
 6. PowerShell zeigt eine Erfolgsmeldung an, wenn die Skriptausführung abgeschlossen wurde.  
 
 Wiederholen Sie diese Schritte für alle zusätzlichen NPS-Server, die Sie für den Lastenausgleich einrichten möchten.
+
+Wenn das vorherige Computerzertifikat abgelaufen ist und ein neues Zertifikat generiert wurde, sollten Sie alle abgelaufenen Zertifikate löschen. Bei abgelaufenen Zertifikaten können beim Start der NPS-Erweiterung Probleme auftreten.
 
 > [!NOTE]
 > Wenn Sie Ihre eigenen Zertifikate verwenden, statt diese mit dem PowerShell-Skript zu generieren, stellen Sie sicher, dass sie den NPS-Namenskonventionen entsprechen. Der Antragstellernamen muss **CN=\<Mandanten-ID\>,OU=Microsoft NPS Extension** sein. 

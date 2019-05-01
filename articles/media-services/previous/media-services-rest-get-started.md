@@ -14,16 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: fea9bae9fadc20622a6ca3d2e08db9cd3a92c800
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 76eae5fa049ed1fbf7195277613867aca63c1082
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523986"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64867636"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mithilfe von REST  
 
-[!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]
+> [!NOTE]
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 Dieser Schnellstart führt Sie durch die Schritte zum Implementieren einer Anwendung zur Video-on-Demand (VoD)-Inhaltsübermittlung mit Azure Media Services (AMS)-REST-APIs.
 

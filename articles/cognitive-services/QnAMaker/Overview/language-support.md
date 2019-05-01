@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: a6304a93b1409cff871ed1c4c1d7e66d6c8c6f53
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 496f7c75e6633089d4ca88a9e3cd7c76ee415780
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497685"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922407"
 ---
 # <a name="language-support-for-qna-maker"></a>Sprachunterstützung für QnA Maker
 
@@ -41,7 +41,7 @@ Wenn der Benutzer plant, mehrere Sprachen zu unterstützen, muss er für jede Sp
 
 Überprüfen Sie die primäre Sprache mit den folgenden Schritten:
 
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.  
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.  
 1. Suchen und wählen Sie die Azure Search-Ressource, die als Teil Ihrer QnA Maker-Ressource erstellt wurde. Der Name der Azure Search-Ressource beginnt mit demselben Namen wie die QnA Maker-Ressource und hat den Typ **Suchdienst**. 
 1. Wählen Sie auf der Seite **Übersicht** der Azure Search-Ressource die Option **Indizes** aus. 
 1. Wählen Sie den Index **testkb** aus.

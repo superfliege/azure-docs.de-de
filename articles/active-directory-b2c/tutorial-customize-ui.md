@@ -3,19 +3,19 @@ title: 'Tutorial: Anpassen der Benutzeroberfläche – Azure Active Directory B2
 description: Erfahren Sie, wie Sie die Benutzeroberfläche Ihrer Anwendungen in Azure Active Directory B2C mithilfe des Azure-Portals anpassen.
 services: B2C
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: f3bc1789d0b521b0d91ca42ebe472fed0225d87b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: c2a84bf72ab68937224ac93bd9ffd035e32c603d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752380"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702548"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Tutorial: Anpassen der Benutzeroberfläche in Azure Active Directory B2C
 

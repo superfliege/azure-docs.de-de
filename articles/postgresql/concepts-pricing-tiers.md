@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: a8dbb2c06d3622dcde19f298ee12fa49afb4cd4b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 4109679c03b13303c16cef8edd92ecddb6ca5e5f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532047"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712367"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL – Tarife
 
@@ -41,31 +41,25 @@ Nach der Servererstellung können Sie die Anzahl von virtuellen Kernen, die Hard
 
 Computeressourcen werden in Form von virtuellen Kernen bereitgestellt und repräsentieren die logische CPU der zugrunde liegenden Hardware. Derzeit können Sie aus zwei Computegenerationen wählen – Gen 4 und Gen 5. Logische CPUs der Generation 4 basieren auf Intel-Prozessoren vom Typ E5-2673 v3 (Haswell) 2,4 GHz. Logische CPUs der Generation 5 basieren auf Intel-Prozessoren vom Typ E5-2673 v4 (Broadwell) 2,3 GHz. Gen 4 und 5 Gen stehen in den folgenden Regionen zur Verfügung („X“ steht für verfügbar). 
 
-> [!IMPORTANT]
-> Ab dem 12. Dezember 2018 können Neukunden keine Computeserver der vierten Generation mehr in den Regionen Brasilien (Süden), Kanada (Mitte), Kanada (Osten), Asien (Osten), USA (Osten 2), Indien (Mitte), Indien (Westen), Japan (Westen), USA (Norden-Mitte) und USA (Westen) bereitstellen. Zuvor erstellte Computeserver der vierten Generation werden ab dem 1. Februar 2019 in diesen Regionen zu Servern der fünften Generation migriert.
->
-> [!IMPORTANT]
-> Ab dem 19. Februar 2019 können neue Kunden nicht mehr Computeserver der vierten Generation in „USA (Mitte)“, „USA, Osten“, „Japan, Osten“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“ und „Europa, Westen“ bereitstellen. Zuvor erstellte Computeserver der vierten Generation werden ab dem 1. April 2019 in dieser Region zu Servern der fünften Generation migriert.
-
 | **Azure-Region** | **Gen 4** | **Gen 5** |
 |:---|:----------:|:--------------------:|
 | USA (Mitte) |  | X |
 | USA (Ost) |  | X |
 | USA (Ost) 2 |  | X |
 | USA Nord Mitte |  | X |
-| USA Süd Mitte | X | X |
+| USA Süd Mitte |  | X |
 | USA (Westen) |  | X |
 | USA, Westen 2 |  | X |
 | Brasilien Süd |  | X |
 | Kanada, Mitte |  | X |
 | Kanada, Osten |  | X |
-| Nordeuropa | X | X |
+| Nordeuropa |  | X |
 | Europa, Westen |  | X |
 | Frankreich, Mitte |  | X |
 | UK, Süden |  | X |
 | UK, Westen |  | X |
 | Asien, Osten |  | X |
-| Asien, Südosten | X | X |
+| Asien, Südosten |  | X |
 | Australien (Osten) |  | X |
 | Australien, Mitte |  | X |
 | Australien, Mitte 2 |  | X |
@@ -73,7 +67,7 @@ Computeressourcen werden in Form von virtuellen Kernen bereitgestellt und reprä
 | Indien, Mitte |  | X |
 | Indien (Süden) |  | X |
 | Indien, Westen |  | X |
-| Japan, Osten | X | X |
+| Japan, Osten |  | X |
 | Japan, Westen |  | X |
 | Korea, Mitte |  | X |
 | Korea, Süden |  | X |

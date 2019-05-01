@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 35b6a55a3f5cad27045694231fc5ce79ed7aeadf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: afd6192969243572134b7a7bb965ad80ff9eb39e
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58173939"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922202"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-with-nodejs"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Ermitteln der Textsprache mit Node.js
 
@@ -119,7 +119,7 @@ node detect.js
 
 ## <a name="sample-response"></a>Beispiel für eine Antwort
 
-Die Landesabkürzung finden Sie in [dieser Liste der Sprachen](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support).
+Die Landesabkürzung finden Sie in [dieser Liste der Sprachen](https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
 
 ```json
 [

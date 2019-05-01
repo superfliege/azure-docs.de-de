@@ -2,24 +2,18 @@
 title: Vergleich zwischen AppSource und Azure Marketplace | Azure
 description: Dieser Artikel beschreibt die Storefronts in Microsoft AppSource und im Azure Marketplace.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: jm-aditi-ms
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: f204f01fae0bd01f9f2f0e242c63ec2070d6d195
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 905901c2a21c59bab9f48bf4229333663bc39131
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678048"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938647"
 ---
 # <a name="comparing-appsource-and-the-azure-marketplace"></a>Vergleich zwischen AppSource und Azure Marketplace
 Storefronts im [Azure Marketplace](https://azuremarketplace.microsoft.com) und in [Microsoft AppSource](https://appsource.microsoft.com) dienen eindeutigen Kundenanforderungen. Verwenden Sie Storefronts, um Kunden gemäß ihrer Rollen zu erreichen. Sie können Ihren Kunden die Lösungen oder Dienste anbieten, die genau für sie richtig sind.

@@ -8,12 +8,12 @@ ms.date: 04/20/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: f4618e945db443e8d7cf9fdcc49e20e5a09ebd39
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 0ae85b45dfcd80056316ed5f2099aab4057d24c8
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60012941"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64720343"
 ---
 # <a name="get-resource-changes"></a>Abrufen von Ressourcenänderungen
 
@@ -39,7 +39,7 @@ In diesem Artikel wird erläutert, wie diese Informationen über das Resource Gr
 
 ## <a name="find-when-changes-were-detected"></a>Ermitteln, wann Änderungen festgestellt wurden
 
-Der erste Schritt beim Ermitteln, was sich in einer Ressource geändert hat, besteht darin, die Änderungsereignisse in dieser Ressource innerhalb eines Zeitfensters zu suchen. Dieser Schritt erfolgt über den REST-Endpunkt [resourceChanges](/rest/api/azureresourcegraph/resourceChanges).
+Der erste Schritt beim Ermitteln, was sich in einer Ressource geändert hat, besteht darin, die Änderungsereignisse in dieser Ressource innerhalb eines Zeitfensters zu suchen. Dieser Schritt erfolgt über den REST-Endpunkt **resourceChanges**.
 
 Der Endpunkt **resourceChanges** erfordert zwei Parameter im Anforderungstext:
 
@@ -95,7 +95,7 @@ Das Änderungsereignis ist zu einem bestimmten Zeitpunkt in diesem Zeitfenster e
 
 ## <a name="see-what-properties-changed"></a>Anzeigen der geänderten Eigenschaften
 
-Mit der **changeId** des Endpunkts **resourceChanges** werden dann anhand des REST-Endpunkts [resourceChangeDetails](/rest/api/azureresourcegraph/resourceChangeDetails) Einzelheiten des Änderungsereignisses abgerufen.
+Mit der **changeId** des Endpunkts **resourceChanges** werden dann anhand des REST-Endpunkts **resourceChangeDetails** Einzelheiten des Änderungsereignisses abgerufen.
 
 Der Endpunkt **resourceChangeDetails** erfordert zwei Parameter im Anforderungstext:
 
@@ -108,7 +108,6 @@ Beispiel für Anforderungstext:
 {
     "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/MyResourceGroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount",
     "changeId": "53dc0515-b86b-4bc2-979b-e4694ab4a556"
-    }
 }
 ```
 

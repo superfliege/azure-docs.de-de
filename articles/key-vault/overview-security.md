@@ -2,23 +2,20 @@
 title: Azure Key Vault – Sicherheit | Microsoft-Dokumentation
 description: Verwalten Sie Zugriffsberechtigungen für den Azure Key Vault, Schlüssel und Geheimnisse. In diesem Artikel wird das Authentifizierungs- und Autorisierungsmodell für Key Vault und das Schützen eines Schlüsseltresors behandelt.
 services: key-vault
-documentationcenter: ''
 author: barclayn
 manager: barbkess
 tags: azure-resource-manager
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: barclayn
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: 43847b53fbf84fe42be3efdbd647767904a05fb8
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 5b32e4897e718e0e411caf9ba76b036f1352bde0
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013005"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64715273"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault – Sicherheit
 
@@ -69,11 +66,11 @@ Mit Schlüsseltresor-Zugriffsrichtlinien können separate Berechtigungen für Sc
 
 Zum Festlegen von Zugriffsrichtlinien für einen Schlüsseltresor können Sie das [Azure-Portal](https://portal.azure.com/), die [Azure CLI](../cli-install-nodejs.md), [Azure PowerShell](/powershell/azureps-cmdlets-docs) oder die [REST-APIs für die Schlüsseltresorverwaltung](https://msdn.microsoft.com/library/azure/mt620024.aspx) verwenden.
 
-Sie können den Datenebenenzugriff über [Dienstendpunkte virtueller Netzwerke für den Azure Key Vault](key-vault-overview-vnet-service-endpoints.md) einschränken. Konfigurieren Sie [Firewallregeln und Regeln für virtuelle Netzwerke](key-vault-network-security.md), um eine zusätzliche Sicherheitsebene zu erstellen.
+Sie können den Datenebenenzugriff über [VNET-Dienstendpunkte für Azure Key Vault](key-vault-overview-vnet-service-endpoints.md) einschränken. Konfigurieren Sie [Firewallregeln und VNET-Regeln](key-vault-network-security.md), um eine zusätzliche Sicherheitsebene zu erstellen.
 
 ## <a name="network-access"></a>Netzwerkzugriff
 
-Sie können die Angriffsfläche Ihrer Tresore reduzieren, indem Sie angeben, welche IP-Adressen Zugriff darauf haben. Die Dienstendpunkte virtueller Netzwerke für Azure Key Vault ermöglichen Ihnen, den Zugriff auf angegebene virtuelle Netzwerke zu beschränken. Die Endpunkte ermöglichen Ihnen außerdem, den Zugriff auf eine Liste von IPv4-Adressbereichen (Internet Protocol, Version 4) zu beschränken. Allen Benutzern, die außerhalb dieser Quellen eine Verbindung mit Ihrem Schlüsseltresor herstellen, wird der Zugriff verweigert.
+Sie können die Angriffsfläche Ihrer Tresore reduzieren, indem Sie angeben, welche IP-Adressen Zugriff darauf haben. Die VNET-Dienstendpunkte für Azure Key Vault ermöglichen Ihnen, den Zugriff auf angegebene virtuelle Netzwerke zu beschränken. Die Endpunkte ermöglichen Ihnen außerdem, den Zugriff auf eine Liste von IPv4-Adressbereichen (Internet Protocol, Version 4) zu beschränken. Allen Benutzern, die außerhalb dieser Quellen eine Verbindung mit Ihrem Schlüsseltresor herstellen, wird der Zugriff verweigert.
 
 Wenn Firewallregeln in Kraft sind, können Benutzer nur Daten aus Key Vault lesen, wenn ihre Anforderungen aus zulässigen virtuellen Netzwerken oder IPv4-Adressbereichen stammen. Dies gilt auch für den Zugriff auf den Schlüsseltresor aus dem Azure-Portal. Obwohl Benutzer im Azure-Portal zu einem Schlüsseltresor navigieren können, können sie möglicherweise keine Schlüssel, Geheimnisse oder Zertifikate auflisten, wenn ihr Clientcomputer nicht in der Zulassungsliste enthalten ist. Dies wirkt sich auch auf die Key Vault-Auswahl anderer Azure-Dienste aus. Benutzer können möglicherweise eine Liste von Schlüsseltresoren einsehen, aber keine Schlüssel auflisten, wenn Firewallregeln ihren Clientcomputer blockieren.
 

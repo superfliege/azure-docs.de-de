@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 249ed7b1be2731fc8165ca7f205ba1d94066818e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 68d16a7e25e6f9a294dee1f077d53aa4551cda5e
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088042"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64924812"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Anmerkungen zu dieser Version vom Microsoft Azure Storage-Explorer
 
@@ -38,7 +38,7 @@ Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-sto
 ### <a name="new"></a>Neu
 
 * Sie können nun den Besitzer und die besitzende Gruppe bei der Zugriffsverwaltung eines ADLS Gen2-Containers, einer ADLS Gen2-Datei oder eines ADLS Gen2-Ordners ändern.
-* Die Aktualisierung des Storage-Explorers innerhalb des Produkts ist unter Windows jetzt eine inkrementelle Installation. Dies sollte Aktualisierungsvorgänge insgesamt verkürzen. Wenn Sie eine Neuinstallation vorziehen, können Sie den [Installer](https://azure.microsoft.com/en-us/features/storage-explorer/) selbst herunterladen und dann manuell installieren. #1089
+* Die Aktualisierung des Storage-Explorers innerhalb des Produkts ist unter Windows jetzt eine inkrementelle Installation. Dies sollte Aktualisierungsvorgänge insgesamt verkürzen. Wenn Sie eine Neuinstallation vorziehen, können Sie den [Installer](https://azure.microsoft.com/features/storage-explorer/) selbst herunterladen und dann manuell installieren. #1089
 
 ### <a name="preview-features"></a>Previewfunktionen
 
@@ -59,7 +59,7 @@ Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-sto
 
 ### <a name="known-issues"></a>Bekannte Probleme
 
-* Bei der Verwendung der RBAC erfordert der Storage-Explorer mehrere Berechtigungen auf Verwaltungsebene, damit er auf Ihre Speicherressourcen zugreifen kann. Weitere Informationen finden Sie im [Azure Storage-Explorer – Leitfaden zur Problembehandlung](https://docs.microsoft.com/en-us/azure/storage/common/storage-explorer-troubleshooting).
+* Bei der Verwendung der RBAC erfordert der Storage-Explorer mehrere Berechtigungen auf Verwaltungsebene, damit er auf Ihre Speicherressourcen zugreifen kann. Weitere Informationen finden Sie im [Azure Storage-Explorer – Leitfaden zur Problembehandlung](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting).
 * Der Versuch, auf ADLS Gen2-Blobs zuzugreifen, wenn man sich hinter einem Proxy befindet, schlägt möglicherweise fehl.
 * Das Trennen einer über einen SAS-URI angefügten Ressource, z.B. eines Blobcontainers, kann zu einem Fehler führen, durch den andere Anlagen nicht ordnungsgemäß angezeigt werden. Aktualisieren Sie zur Umgehung dieses Problems den Gruppenknoten. Siehe #537 für weitere Informationen.
 * Das Trennen einer über einen SAS-URI angefügten Ressource, z.B. eines Blobcontainers, kann zu einem Fehler führen, durch den andere Anlagen nicht ordnungsgemäß angezeigt werden. Aktualisieren Sie zur Umgehung dieses Problems den Gruppenknoten. Weitere Informationen finden Sie unter #537.

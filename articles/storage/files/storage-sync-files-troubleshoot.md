@@ -2,18 +2,18 @@
 title: Problembehandlung bei der Azure-Dateisynchronisierung | Microsoft-Dokumentation
 description: Beheben von häufigen Problemen bei der Azure-Dateisynchronisierung
 services: storage
-author: jeffpatt24
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 01/31/2019
-ms.author: jeffpatt
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 328edac78624c192ee139c40fe0ed1853423c639
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 53297a16889190383e0455c484339adc049c1cb1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051367"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64700379"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.

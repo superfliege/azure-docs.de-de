@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: dc5bfe6b431659b7b99140eb29a0e64922a42275
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: fddea12d4c6b7d09d87174d29c645ef6da54af6f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576335"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917426"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Verwenden des IoT Hub-Nachrichtenroutings zum Senden von D2C-Nachrichten an verschiedene Endpunkte
 
@@ -119,7 +119,7 @@ In den meisten Fällen beträgt der durchschnittliche Latenzanstieg weniger als 
 
 IoT Hub bietet mehrere Metriken in Bezug auf Routing und Endpunkte, um Ihnen einen Überblick über die Integrität Ihres Hubs und der gesendeten Nachrichten zu verschaffen. Sie können Informationen aus mehreren Metriken kombinieren, um die Grundursache eines Problems zu ermitteln. Verwenden Sie z. B. die Metriken **Routing: verworfene Telemetrienachrichten** oder **d2c.telemetry.egress.dropped**, um herauszufinden, wie viele Nachrichten verworfen wurden, weil sie keiner Abfrage in einer der Routen entsprachen und die Fallbackroute deaktiviert war. Unter [IoT Hub-Metriken](iot-hub-metrics.md) werden alle Metriken aufgeführt, die standardmäßig für Ihren IoT Hub aktiviert sind.
 
-Sie können die REST-API [Get Endpoint Health](https://docs.microsoft.com/de-de/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) (Endpunktintegrität abrufen) verwenden, um den [Integritätsstatus](iot-hub-devguide-endpoints.md#custom-endpoints) der Endpunkte abzurufen. Es empfiehlt sich, die [IoT Hub-Metriken](iot-hub-metrics.md), die sich auf die Routinglatenz von Nachrichten beziehen, zu verwenden, um Fehler bei beschädigter Endpunktintegrität zu erkennen und zu beheben. Sie können z. B. für Endpunkttyp-Event Hubs **d2c.endpoints.latency.eventHubs** überwachen. Der Status eines fehlerhaften Endpunkts wird zu fehlerfrei aktualisiert, wenn IoT Hub einen möglicherweise konsistenten Integritätsstatus erreicht hat.
+Sie können die REST-API [Get Endpoint Health](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) (Endpunktintegrität abrufen) verwenden, um den [Integritätsstatus](iot-hub-devguide-endpoints.md#custom-endpoints) der Endpunkte abzurufen. Es empfiehlt sich, die [IoT Hub-Metriken](iot-hub-metrics.md), die sich auf die Routinglatenz von Nachrichten beziehen, zu verwenden, um Fehler bei beschädigter Endpunktintegrität zu erkennen und zu beheben. Sie können z. B. für Endpunkttyp-Event Hubs **d2c.endpoints.latency.eventHubs** überwachen. Der Status eines fehlerhaften Endpunkts wird zu fehlerfrei aktualisiert, wenn IoT Hub einen möglicherweise konsistenten Integritätsstatus erreicht hat.
 
 Mithilfe der Diagnoseprotokolle für **Routen** in den Azure Monitor-[Diagnoseeinstellungen](../iot-hub/iot-hub-monitor-resource-health.md) können Sie Fehler bei der Auswertung einer Routingabfrage und der Endpunktintegrität nachverfolgen, die von IoT Hub registriert werden, wenn beispielsweise ein Endpunkt nicht erreichbar ist. Diese Diagnoseprotokolle können zur benutzerdefinierten Verarbeitung an Azure Monitor-Protokolle, Event Hubs oder Azure Storage gesendet werden.
 

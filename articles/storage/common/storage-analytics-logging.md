@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 09a5a6d823240b724e6ec88de38df068a58982d9
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 3daea17a491af8950b38f1e3183583fef63751e2
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652058"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926486"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics-Protokollierung
 
@@ -76,7 +76,7 @@ Mit den meisten Tools zum Durchsuchen des Speichers können Sie die Metadaten vo
  }  
  ```  
 
-Informationen zum programmgesteuerten Auflisten von Blobs finden Sie unter [Auflisten von Blobressourcen](http://msdn.microsoft.com/library/azure/hh452233.aspx) und [Festlegen und Abrufen von Eigenschaften und Metadaten für Blobressourcen](http://msdn.microsoft.com/library/azure/dd179404.aspx).  
+Informationen zum programmgesteuerten Auflisten von Blobs finden Sie unter [Auflisten von Blobressourcen](https://msdn.microsoft.com/library/azure/hh452233.aspx) und [Festlegen und Abrufen von Eigenschaften und Metadaten für Blobressourcen](https://msdn.microsoft.com/library/azure/dd179404.aspx).  
 
 ### <a name="log-naming-conventions"></a>Benennungskonventionen für Protokolle
 

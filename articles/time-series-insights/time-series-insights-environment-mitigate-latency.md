@@ -12,14 +12,15 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/27/2017
 ms.custom: seodec18
-ms.openlocfilehash: 3a42570b51811cfbdd4329f196b98d75c8cd53f7
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 6b5cdf8aebdf584216afef9f1d1421eea8c4ba4e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556746"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64685148"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Überwachen und Mindern der Drosselung zur Verhinderung von Latenz in Azure Time Series Insights
+
 Wenn die Menge der eingehenden Daten die Konfiguration Ihrer Umgebung übersteigt, kann dies zu Latenz oder Drosselung in Azure Time Series Insights führen.
 
 Sie können Latenz und Drosselung vermeiden, indem Sie die Umgebung korrekt für die Menge der zu analysierenden Daten konfigurieren.
@@ -31,7 +32,7 @@ Am wahrscheinlichsten treten Latenz und Drosselung in folgenden Fällen auf:
 - Sie übertragen große Mengen an Verlaufsereignissen in eine Ereignisquelle, was zu einer Verzögerung führt. (Time Series Insights muss auf den neuesten Stand gebracht werden.)
 - Sie verknüpfen Verweisdaten mit Telemetriedaten, was zu einer umfangreicheren Ereignisgröße führt.  In Bezug auf die Drosselung wird ein eingehendes Datenpaket mit einer Paketgröße von 32 KB als 32 Ereignisse mit jeweils einer Größe von 1 KB behandelt. Die maximal zulässige Ereignisgröße ist 32 KB. Datenpakete mit einer Größe von über 32 KB werden abgeschnitten.
 
-## <a name="video"></a>Video: 
+## <a name="video"></a>Video
 
 ### <a name="in-this-video-we-cover-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>In diesem Video erfahren Sie mehr über das Time Series Insights-Dateneingangsverhalten und dessen Planung.</br>
 
@@ -61,7 +62,6 @@ Hier können Sie Warnungen mithilfe der folgenden Metriken konfigurieren:
 |**Ingress Received Message Time Lag** (Eingang Zeitverzögerung für empfangene Nachrichten)    |  Der Unterschied in Sekunden zwischen dem Zeitpunkt, zu dem die Nachricht in der Ereignisquelle in die Warteschlange eingereiht wird, und dem Zeitpunkt der Verarbeitung im Eingang.      |
 |**Ingress Received Message Count Lag** (Eingang Verzögerung aufgrund der Anzahl empfangener Nachrichten)    |  Dies ist der Unterschied zwischen der Sequenznummer der Nachricht, die auf der Ereignisquelle zuletzt in die Warteschlange eingereiht wurde, und der Sequenznummer der im Eingang verarbeiteten Nachricht.      |
 
-
 ![Latency](media/environment-mitigate-latency/latency.png)
 
 Bei einer Drosselung wird ein Wert für *Eingang Zeitverzögerung für empfangene Nachrichten* angezeigt, um sie zu informieren, wie viele Sekunden TSI hinter dem tatsächlichen Zeitpunkt zurückliegt, zu dem die Nachricht auf der Ereignisquelle eintrifft (ohne Indizierungszeitraum von ca. 30 bis 60 Sekunden).  *Eingang Verzögerung aufgrund der Anzahl empfangener Nachrichten* sollte ebenfalls über einen Wert verfügen, sodass Sie bestimmen können, um wie viele Nachrichten Sie zurückliegen.  Die einfachste Möglichkeit zum Aufholen des Rückstands besteht darin, die Kapazität Ihrer Umgebung auf eine Einstellung zu erhöhen, die Ihnen das Wettmachen des Unterschieds ermöglicht.  
@@ -74,11 +74,14 @@ Wenn Sie beispielsweise drei S1-Einheiten (oder eine Eingangskapazität von 2.10
 
 Auch wenn Sie vermuten, dass eine Drosselung vorliegt, können Sie die Warnung vom Typ **Ingress Received Messages** (Eingang empfangene Nachrichten) mit den ausgehenden Nachrichten der Ereignisquelle vergleichen.  Wenn der Eingang in den Event Hub größer ist als der Wert für **Ingress Received Messages** (Eingang empfangene Nachrichten), wird der Time Series Insights-Dienst wahrscheinlich gedrosselt.
 
-## <a name="improving-performance"></a>Verbessern der Leistung 
+## <a name="improving-performance"></a>Verbessern der Leistung
+
 Um die Drosselung oder Latenz zu reduzieren, empfiehlt es sich, dies durch Erhöhen der Kapazität der Umgebung zu beheben. 
 
 Sie können Latenz und Drosselung vermeiden, indem Sie die Umgebung korrekt für die Menge der zu analysierenden Daten konfigurieren. Weitere Informationen zum Hinzufügen von Kapazität zu Ihrer Umgebung finden Sie unter [Skalieren Ihrer Umgebung](time-series-insights-how-to-scale-your-environment.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - Weitere Schritte zur Problembehandlung finden Sie unter [Diagnostizieren und Beheben von Problemen in der Time Series Insights-Umgebung](time-series-insights-diagnose-and-solve-problems.md).
+
 - Zusätzliche Unterstützung erhalten Sie im [MSDN-Forum](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) oder bei [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights). Zudem können Sie sich an den [Azure-Support](https://azure.microsoft.com/support/options/) wenden, um Supportunterstützung zu erhalten.

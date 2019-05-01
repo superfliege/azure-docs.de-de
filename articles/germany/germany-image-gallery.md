@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.openlocfilehash: 61da6ce2e00a6b62d13d5e3be3c6bcdb83459ae0
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 34c45418f47e6e5238cfab5946a7f9b6ae61bdad
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2018
-ms.locfileid: "27993962"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60780793"
 ---
 # <a name="azure-germany-images"></a>Azure Deutschland-Images
 ## <a name="overview"></a>Übersicht

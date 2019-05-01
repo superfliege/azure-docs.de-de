@@ -3,8 +3,8 @@ title: Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen – Tutorial – A
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe des Azure-Portals den Netzwerkzugriff auf Azure-Ressourcen wie Azure Storage und Azure SQL-Datenbank mit VNET-Dienstendpunkten einschränken können.
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
@@ -15,13 +15,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 08/23/2018
-ms.author: jdial
-ms.openlocfilehash: b951386fbeca883ae61a7f8040893e55467c8e5d
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.author: kumud
+ms.openlocfilehash: 4d3fd152782c65c7f63e459a1c35dee6ae764361
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42810083"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64708845"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Tutorial: Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen mit VNET-Dienstendpunkten mithilfe des Azure-Portals
 
@@ -55,7 +55,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
    |Adressraum| 10.0.0.0/16|
    |Abonnement| Wählen Sie Ihr Abonnement aus.|
    |Ressourcengruppe | Klicken Sie auf **Neu erstellen**, und geben Sie *myResourceGroup* ein.|
-   |Standort| Wählen Sie **USA, Osten** aus. |
+   |Location| Wählen Sie **USA, Osten** aus. |
    |Subnetzname| Öffentlich|
    |Subnetzadressbereich| 10.0.0.0/24|
    |Dienstendpunkte| Deaktiviert|
@@ -95,7 +95,7 @@ Standardmäßig können alle virtuellen Computer in einem Subnetz mit allen Ress
     |NAME| myNsgPrivate |
     |Abonnement| Wählen Sie Ihr Abonnement aus.|
     |Ressourcengruppe | Wählen Sie **Vorhandene verwenden** und dann *myResourceGroup* aus.|
-    |Standort| Wählen Sie **USA, Osten** aus. |
+    |Location| Wählen Sie **USA, Osten** aus. |
 
 4. Nachdem die Sicherheitsgruppe erstellt wurde geben Sie im Feld **Ressourcen, Dienste und Dokumente durchsuchen** oben im Portal *myNsgPrivate* ein. Wenn **myNsgPrivate** in den Suchergebnissen angezeigt wird, wählen Sie diese Angabe aus.
 5. Wählen Sie unter **EINSTELLUNGEN** **Ausgangssicherheitsregeln** aus.
@@ -104,12 +104,12 @@ Standardmäßig können alle virtuellen Computer in einem Subnetz mit allen Ress
 
     |Einstellung|Wert|
     |----|----|
-    |Quelle| Wählen Sie **VirtualNetwork** aus. |
+    |`Source`| Wählen Sie **VirtualNetwork** aus. |
     |Quellportbereiche| * |
     |Ziel | Wählen Sie **Diensttag** aus.|
     |Zieldiensttag | Wählen Sie **Storage** aus.|
     |Zielportbereiche| * |
-    |Protokoll|Beliebig|
+    |Protocol|Beliebig|
     |Aktion|ZULASSEN|
     |Priorität|100|
     |NAME|Allow-Storage-All|
@@ -118,12 +118,12 @@ Standardmäßig können alle virtuellen Computer in einem Subnetz mit allen Ress
 
     |Einstellung|Wert|
     |----|----|
-    |Quelle| Wählen Sie **VirtualNetwork** aus. |
+    |`Source`| Wählen Sie **VirtualNetwork** aus. |
     |Quellportbereiche| * |
     |Ziel | Wählen Sie **Diensttag** aus.|
     |Zieldiensttag| Wählen Sie **Internet** aus.|
     |Zielportbereiche| * |
-    |Protokoll|Beliebig|
+    |Protocol|Beliebig|
     |Aktion|Verweigern|
     |Priorität|110|
     |NAME|Deny-Internet-All|
@@ -134,11 +134,11 @@ Standardmäßig können alle virtuellen Computer in einem Subnetz mit allen Ress
 
     |Einstellung|Wert|
     |----|----|
-    |Quelle| Beliebig |
+    |`Source`| Beliebig |
     |Quellportbereiche| * |
     |Ziel | Wählen Sie **VirtualNetwork** aus.|
     |Zielportbereiche| 3389 |
-    |Protokoll|Beliebig|
+    |Protocol|Beliebig|
     |Aktion|ZULASSEN|
     |Priorität|120|
     |NAME|Allow-RDP-All|
@@ -162,7 +162,7 @@ Die Schritte, die erforderlich sind, um den Netzwerkzugriff auf Ressourcen einzu
     |----|----|
     |NAME| Geben Sie einen Namen ein, der an allen Azure-Standorten eindeutig, zwischen 3 und 24 Zeichen lang ist und nur aus Ziffern und Kleinbuchstaben besteht.|
     |Kontoart|StorageV2 (allgemein, Version 2)|
-    |Standort| Wählen Sie **USA, Osten** aus. |
+    |Location| Wählen Sie **USA, Osten** aus. |
     |Replikation| Lokal redundanter Speicher (LRS)|
     |Abonnement| Wählen Sie Ihr Abonnement aus.|
     |Ressourcengruppe | Wählen Sie **Vorhandene verwenden** und dann *myResourceGroup* aus.|
@@ -195,7 +195,7 @@ Standardmäßig akzeptieren Speicherkonten Netzwerkverbindungen von Clients in a
 
     ![Firewalls und virtuelle Netzwerke](./media/tutorial-restrict-network-access-to-resources/storage-firewalls-and-virtual-networks.png)
 
-5. Wählen Sie **Speichern**aus.
+5. Wählen Sie **Speichern** aus.
 6. Schließen Sie das Feld **Firewalls und virtuelle Netzwerke**.
 7. Wählen Sie unter **EINSTELLUNGEN** für das Speicherkonto **Zugriffsschlüssel** aus, wie in der folgenden Abbildung dargestellt:
 
@@ -217,10 +217,10 @@ Zum Testen des Netzwerkzugriffs auf ein Speicherkonto stellen Sie einen virtuell
    |----|----|
    |NAME| myVmPublic|
    |Benutzername|Geben Sie den gewünschten Benutzernamen ein.|
-   |Password| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
+   |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
    |Abonnement| Wählen Sie Ihr Abonnement aus.|
    |Ressourcengruppe| Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus.|
-   |Standort| Wählen Sie **USA, Osten** aus.|
+   |Location| Wählen Sie **USA, Osten** aus.|
 
    ![Eingeben von grundlegenden Informationen zu einem virtuellen Computer](./media/tutorial-restrict-network-access-to-resources/virtual-machine-basics.png)
 4. Wählen Sie eine Größe für den virtuellen Computer aus, und wählen Sie dann **Auswählen** aus.

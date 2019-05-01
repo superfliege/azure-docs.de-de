@@ -3,8 +3,8 @@ title: Diagnostizieren der lokalen Konnektivität über VPN Gateway mit Azure Ne
 description: Dieser Artikel beschreibt die Durchführung einer Diagnose der lokalen Konnektivität über VPN-Gateways mithilfe der Azure Network Watcher-Ressource zur Problembehandlung.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: aeffbf3d-fd19-4d61-831d-a7114f7534f9
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: jdial
-ms.openlocfilehash: 323e5d63b5f8566d570dfd47323fcf12f7c6b28b
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.author: kumud
+ms.openlocfilehash: 95c6e1f015e519bd1e753fce9a2c6f064a854456
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051579"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64713767"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnostizieren der lokalen Konnektivität über VPN-Gateways
 
@@ -45,7 +45,7 @@ Ein wichtiger Konfigurationsschritt ist die Konfiguration der IPsec-Kommunikatio
 
 ### <a name="ike-phase-1-setup"></a>IKE Phase 1-Einrichtung
 
-| **Eigenschaft** | **PolicyBased** | **RouteBased und Standard- oder Hochleistungs-VPN-Gateway** |
+| **Eigenschaft** | **PolicyBased** | **Routenbasiertes und Standard- oder Hochleistungs-VPN-Gateway** |
 | --- | --- | --- |
 | IKE-Version |IKEv1 |IKEv2 |
 | Diffie-Hellman-Gruppe |Gruppe 2 (1024 Bit) |Gruppe 2 (1024 Bit) |
@@ -81,7 +81,7 @@ Das Azure Network Watcher-Feature zur Problembehandlung ermöglicht es Ihnen, Pr
 
 ### <a name="gateway"></a>Gateway
 
-| Fehlertyp | Grund | Protokoll|
+| Fehlertyp | `Reason` | Protokoll|
 |---|---|---|
 | NoFault | Es wurde kein Fehler erkannt. |Ja|
 | GatewayNotFound | Das Gateway wurde nicht gefunden oder nicht bereitgestellt. |Nein |
@@ -96,7 +96,7 @@ Das Azure Network Watcher-Feature zur Problembehandlung ermöglicht es Ihnen, Pr
 
 ### <a name="connection"></a>Verbindung
 
-| Fehlertyp | Grund | Protokoll|
+| Fehlertyp | `Reason` | Protokoll|
 |---|---|---|
 | NoFault | Es wurde kein Fehler erkannt. |Ja|
 | GatewayNotFound | Das Gateway wurde nicht gefunden oder nicht bereitgestellt. |Nein |

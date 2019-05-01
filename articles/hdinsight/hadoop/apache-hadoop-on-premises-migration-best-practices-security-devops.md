@@ -1,7 +1,6 @@
 ---
 title: Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – bewährte Methoden für Sicherheit und DevOps
 description: Erfahren Sie mehr über bewährte Methoden für Sicherheit und DevOps bei der Migration von lokalen Hadoop-Clustern zu Azure HDInsight.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: ashishth
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 7cfb327a3eb6cbf2ae90c9d258a470797732acaa
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 1d13b52d253562a24946e6df2fc069f41b485fef
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53437502"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707893"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – bewährte Methoden für Sicherheit und DevOps
 
@@ -109,13 +108,13 @@ Führen Sie regelmäßige Upgrades auf die neueste Version von HDInsight durch, 
 1. Importieren Sie alle vorübergehenden Daten, die gesichert wurden.
 1. Starten Sie Aufträge/Verarbeiten Sie weiterhin mithilfe des neuen Clusters.
 
-Weitere Informationen finden Sie im Artikel [Aktualisieren eines HDInsight-Clusters auf eine neue Version](../hdinsight-upgrade-cluster.md).
+Weitere Informationen finden Sie im Artikel: [Aktualisieren eines HDInsight-Clusters auf eine neue Version](../hdinsight-upgrade-cluster.md).
 
 ## <a name="patch-cluster-operating-systems"></a>Patchen von Clusterbetriebssystemen
 
 Als verwalteter Hadoop-Dienst erledigt HDInsight das Patchen des Betriebssystems für die virtuellen Computer, die von HDInsight-Clustern verwendet werden.
 
-Weitere Informationen finden Sie im Artikel [Patchen des Betriebssystems für HDInsight](../hdinsight-os-patching.md).
+Weitere Informationen finden Sie im Artikel: [Patchen des Betriebssystems für HDInsight](../hdinsight-os-patching.md).
 
 ## <a name="post-migration"></a>Aufgaben nach der Migration
 

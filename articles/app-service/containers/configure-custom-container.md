@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 1e5faa8d356b891d825586414c0a1a1b9fa47090
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: feeb9ae4472fb3439ecc5d6505860cc407f9e4d3
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001880"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919739"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>Konfigurieren eines benutzerdefinierten Linux-Containers für Azure App Service
 
@@ -109,7 +109,6 @@ SSH ermöglicht die sichere Kommunikation zwischen einem Container und einem Cli
 - [Verwenden von beständigem Speicher in Docker Compose](#use-persistent-storage-in-docker-compose)
 - [Einschränkungen der Vorschau](#preview-limitations)
 - [Optionen von Docker Compose](#docker-compose-options)
-- [Kubernetes-Konfigurationsoptionen](#kubernetes-configuration-options)
 
 ### <a name="use-persistent-storage-in-docker-compose"></a>Verwenden von beständigem Speicher in Docker Compose
 
@@ -132,19 +131,6 @@ wordpress:
   - ${WEBAPP_STORAGE_HOME}/site/wwwroot:/var/www/html
   - ${WEBAPP_STORAGE_HOME}/phpmyadmin:/var/www/phpmyadmin
   - ${WEBAPP_STORAGE_HOME}/LogFiles:/var/log
-```
-
-### <a name="use-custom-storage-in-docker-compose"></a>Verwenden von benutzerdefiniertem Speicher in Docker Compose
-
-Azure-Speicher (Azure Files oder Azure-Blob) kann mithilfe der benutzerdefinierten ID mit Apps mit mehreren Containern eingebunden werden. Führen Sie [`az webapp config storage-account list --name <app_name> --resource-group <resource_group>`](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list) aus, um den Namen der benutzerdefinierten ID anzuzeigen.
-
-Ordnen Sie in Ihrer Datei *docker-compose.yml* die `volumes`-Option zu `custom-id` zu. Beispiel: 
-
-```yaml
-wordpress:
-  image: wordpress:latest
-  volumes:
-  - <custom-id>:<path_in_container>
 ```
 
 ### <a name="preview-limitations"></a>Einschränkungen der Vorschau
@@ -179,22 +165,6 @@ In den folgenden Listen werden unterstützte und nicht unterstützte Docker Comp
 
 > [!NOTE]
 > Alle weiteren Optionen, die nicht ausdrücklich aufgeführt sind, werden in der Public Preview ignoriert.
-
-### <a name="kubernetes-configuration-options"></a>Kubernetes-Konfigurationsoptionen
-
-Die folgenden Konfigurationsoptionen werden für Kubernetes unterstützt:
-
-- args
-- command
-- containers
-- image
-- name
-- ports
-- spec
-
-> [!NOTE]
-> Alle weiteren Optionen, die nicht ausdrücklich aufgeführt sind, werden in der Public Preview nicht unterstützt.
->
 
 ## <a name="next-steps"></a>Nächste Schritte
 

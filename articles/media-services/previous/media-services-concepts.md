@@ -13,14 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 3b7b821227478d8c6b5859f24c50407f9eb213fe
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 2b28dde812dcce120c951730c27809f7f024e122
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312341"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64681558"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services-Konzepte 
+
+> [!NOTE]
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 Dieses Thema bietet eine Übersicht über die wichtigsten Konzepte von Media Services.
 

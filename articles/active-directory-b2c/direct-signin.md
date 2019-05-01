@@ -3,19 +3,19 @@ title: Einrichten einer direkten Anmeldung mit Azure Active Directory B2C | Micr
 description: Erfahren Sie, wie der Anmeldename aufgefüllt oder direkt zu einem sozialen Netzwerk als Identitätsanbieter umgeleitet wird.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: c66fc9ecb608d211c839bab720e8f3f37b96fd5d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 308fb8ea7f3429ce61b0872da9b1c10648b3f44b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169228"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64695316"
 ---
 # <a name="set-up-direct-sign-in-using-azure-active-directory-b2c"></a>Einrichten einer direkten Anmeldung mit Azure Active Directory B2C
 

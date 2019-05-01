@@ -1,3 +1,11 @@
+---
+ms.openlocfilehash: 7987e8a7a9db06608f663b6ae414788ba8330f65
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60328444"
+---
 ## <a name="publish-or-revert"></a>Veröffentlichen oder zurücksetzen
 An einer benutzerdefinierten Suchinstanz vorgenommene Änderungen erfolgen auf der Registerkarte **Konfiguration**, damit Sie Ihre Änderungen überprüfen können. Wenn Sie alle gewünschten Änderungen vorgenommen haben und das Ergebnis veröffentlichen möchten, klicken Sie auf **Veröffentlichen**. Änderungen werden erst nach der Veröffentlichung für Ihre Produktionsendpunkte angezeigt.
 

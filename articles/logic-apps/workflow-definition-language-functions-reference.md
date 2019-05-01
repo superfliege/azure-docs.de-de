@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/15/2018
-ms.openlocfilehash: d7ea62c51065cbe85a905b4ff78743fdc11c1e10
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: e69d43b8bec7945c5aa1b394ce7402338f6fbbfb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59618208"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64693259"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Funktionsreferenz zur Definitionssprache für Workflows in Azure Logic Apps und Microsoft Flow
 
@@ -641,14 +641,14 @@ addProperty(<object>, '<property>', <value>)
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*object*> | Ja | Objekt | Das JSON-Objekt, zu dem Sie eine Eigenschaft hinzufügen möchten |
+| <*object*> | Ja | Object | Das JSON-Objekt, zu dem Sie eine Eigenschaft hinzufügen möchten |
 | <*property*> | Ja | Zeichenfolge | Der Name der zu Eigenschaft, die hinzugefügt werden soll |
 | <*value*> | Ja | Beliebig | Der Wert für die Eigenschaft |
 |||||
 
 | Rückgabewert | Type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*updated-object*> | Objekt | Das aktualisierte JSON-Objekt mit der angegebenen Eigenschaft |
+| <*updated-object*> | Object | Das aktualisierte JSON-Objekt mit der angegebenen Eigenschaft |
 ||||
 
 *Beispiel*
@@ -759,12 +759,12 @@ and(<expression1>, <expression2>, ...)
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*expression1*>, <*expression2*>, ... | Ja | Boolescher Wert | Die Ausdrücke, die überprüft werden sollen |
+| <*expression1*>, <*expression2*>, ... | Ja | Boolean | Die Ausdrücke, die überprüft werden sollen |
 |||||
 
 | Rückgabewert | Type | BESCHREIBUNG |
 | ------------ | -----| ----------- |
-| "true" oder "false" | Boolescher Wert | Gibt „true“ zurück, wenn alle Ausdrücke gleich „true“ sind. Gibt „false“ zurück, wenn mindestens ein Ausdruck gleich „false“ ist. |
+| "true" oder "false" | Boolean | Gibt „true“ zurück, wenn alle Ausdrücke gleich „true“ sind. Gibt „false“ zurück, wenn mindestens ein Ausdruck gleich „false“ ist. |
 ||||
 
 *Beispiel 1*
@@ -1020,7 +1020,7 @@ bool(<value>)
 
 | Rückgabewert | Type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| "true" oder "false" | Boolescher Wert | Die booleschen Version des angegebenen Werts |
+| "true" oder "false" | Boolean | Die booleschen Version des angegebenen Werts |
 ||||
 
 *Beispiel*
@@ -1131,7 +1131,7 @@ Diese Funktion ist insbesondere für diese Sammlungstypen vorgesehen:
 
 | Rückgabewert | Type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| "true" oder "false" | Boolescher Wert | Gibt „true“, wenn das Element gefunden wurde. Gibt „false“ zurück, wenn sie nicht gefunden wurde. |
+| "true" oder "false" | Boolean | Gibt „true“, wenn das Element gefunden wurde. Gibt „false“ zurück, wenn sie nicht gefunden wurde. |
 ||||
 
 *Beispiel 1*
@@ -1344,7 +1344,7 @@ Dies ist das zurückgegebene Ergebnis: `"data:text/plain;charset=utf-8;base64,aG
 
 Gibt die binäre Version eines Daten-URIs (Uniform Resource Identifier) zurück.
 Verwenden Sie diese Funktion anstelle von [decodeDataUri()](#decodeDataUri).
-Obwohl beide Funktionen in gleicher Weise funktionieren, wird `decodeDataUri()` bevorzugt.
+Obwohl beide Funktionen in gleicher Weise funktionieren, wird `dataUriBinary()` bevorzugt.
 
 ```
 dataUriToBinary('<value>')
@@ -1678,7 +1678,7 @@ empty([<collection>])
 
 | Rückgabewert | Type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| "true" oder "false" | Boolescher Wert | Gibt „true“ zurück, wenn die Sammlung leer ist. Gibt „false“ zurück, wenn sie nicht leer ist. |
+| "true" oder "false" | Boolean | Gibt „true“ zurück, wenn die Sammlung leer ist. Gibt „false“ zurück, wenn sie nicht leer ist. |
 ||||
 
 *Beispiel*
@@ -1715,7 +1715,7 @@ endsWith('<text>', '<searchText>')
 
 | Rückgabewert | Type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| "true" oder "false"  | Boolescher Wert | Gibt „true“ zurück, wenn die beendende Teilzeichenfolge gefunden wurde. Gibt „false“ zurück, wenn sie nicht gefunden wurde. |
+| "true" oder "false"  | Boolean | Gibt „true“ zurück, wenn die beendende Teilzeichenfolge gefunden wurde. Gibt „false“ zurück, wenn sie nicht gefunden wurde. |
 ||||
 
 *Beispiel 1*
@@ -1756,7 +1756,7 @@ equals('<object1>', '<object2>')
 
 | Rückgabewert | Type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| "true" oder "false" | Boolescher Wert | Gibt „true“ zurück, wenn beide gleichwertig sind. Gibt „false“ zurück, wenn sie nicht gleichwertig sind. |
+| "true" oder "false" | Boolean | Gibt „true“ zurück, wenn beide gleichwertig sind. Gibt „false“ zurück, wenn sie nicht gleichwertig sind. |
 ||||
 
 *Beispiel*
@@ -2041,7 +2041,7 @@ greater('<value>', '<compareTo>')
 
 | Rückgabewert | Type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| "true" oder "false" | Boolescher Wert | Gibt „true“ zurück, wenn der erste Wert größer ist als der zweite Wert. Gibt „false“ zurück, wenn der erste Wert kleiner gleich dem zweiten Wert ist. |
+| "true" oder "false" | Boolean | Gibt „true“ zurück, wenn der erste Wert größer ist als der zweite Wert. Gibt „false“ zurück, wenn der erste Wert kleiner gleich dem zweiten Wert ist. |
 ||||
 
 *Beispiel*
@@ -2078,7 +2078,7 @@ greaterOrEquals('<value>', '<compareTo>')
 
 | Rückgabewert | Type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| "true" oder "false" | Boolescher Wert | Gibt „true“ zurück, wenn der erste Wert größer gleich dem zweiten Wert ist. Gibt „false“ zurück, wenn der erste Wert kleiner ist als der zweite Wert. |
+| "true" oder "false" | Boolean | Gibt „true“ zurück, wenn der erste Wert größer gleich dem zweiten Wert ist. Gibt „false“ zurück, wenn der erste Wert kleiner ist als der zweite Wert. |
 ||||
 
 *Beispiel*
@@ -2144,7 +2144,7 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*expression*> | Ja | Boolescher Wert | Der zu überprüfende Ausdruck |
+| <*expression*> | Ja | Boolean | Der zu überprüfende Ausdruck |
 | <*valueIfTrue*> | Ja | Beliebig | Der Wert, der zurückgegeben werden soll, wenn der Ausdruck gleich „true“ ist |
 | <*valueIfFalse*> | Ja | Beliebig | Der Wert, der zurückgegeben werden soll, wenn der Ausdruck gleich „false“ ist |
 |||||
@@ -2530,7 +2530,7 @@ less('<value>', '<compareTo>')
 
 | Rückgabewert | Type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| "true" oder "false" | Boolescher Wert | Gibt „true“ zurück, wenn der erste Wert kleiner ist als der zweite Wert. Gibt „false“ zurück, wenn der erste Wert größer gleich dem zweiten Wert ist. |
+| "true" oder "false" | Boolean | Gibt „true“ zurück, wenn der erste Wert kleiner ist als der zweite Wert. Gibt „false“ zurück, wenn der erste Wert größer gleich dem zweiten Wert ist. |
 ||||
 
 *Beispiel*
@@ -2567,7 +2567,7 @@ lessOrEquals('<value>', '<compareTo>')
 
 | Rückgabewert | Type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| "true" oder "false"  | Boolescher Wert | Gibt „true“ zurück, wenn der erste Wert kleiner gleich dem zweiten Wert ist. Gibt „false“ zurück, wenn der erste Wert größer ist als der zweite Wert. |
+| "true" oder "false"  | Boolean | Gibt „true“ zurück, wenn der erste Wert kleiner gleich dem zweiten Wert ist. Gibt „false“ zurück, wenn der erste Wert größer ist als der zweite Wert. |
 ||||
 
 *Beispiel*
@@ -2773,12 +2773,12 @@ not(<expression>)
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*expression*> | Ja | Boolescher Wert | Der zu überprüfende Ausdruck |
+| <*expression*> | Ja | Boolean | Der zu überprüfende Ausdruck |
 |||||
 
 | Rückgabewert | Type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| "true" oder "false" | Boolescher Wert | Gibt „true“ zurück, wenn der Ausdruck gleich „false“ ist. Gibt „false“ zurück, wenn der Ausdruck gleich „true“ ist. |
+| "true" oder "false" | Boolean | Gibt „true“ zurück, wenn der Ausdruck gleich „false“ ist. Gibt „false“ zurück, wenn der Ausdruck gleich „true“ ist. |
 ||||
 
 *Beispiel 1*
@@ -2822,12 +2822,12 @@ or(<expression1>, <expression2>, ...)
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*expression1*>, <*expression2*>, ... | Ja | Boolescher Wert | Die Ausdrücke, die überprüft werden sollen |
+| <*expression1*>, <*expression2*>, ... | Ja | Boolean | Die Ausdrücke, die überprüft werden sollen |
 |||||
 
 | Rückgabewert | Type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| "true" oder "false" | Boolescher Wert | Gibt „true“ zurück, wenn mindestens ein Ausdruck gleich „true“ ist. Gibt „false“ zurück, wenn alle Ausdrücke gleich „false“ sind. |
+| "true" oder "false" | Boolean | Gibt „true“ zurück, wenn mindestens ein Ausdruck gleich „true“ ist. Gibt „false“ zurück, wenn alle Ausdrücke gleich „false“ sind. |
 ||||
 
 *Beispiel 1*
@@ -2860,7 +2860,7 @@ Dies sind die zurückgegebenen Ergebnisse:
 
 <a name="parameters"></a>
 
-### <a name="parameters"></a>Parameter
+### <a name="parameters"></a>parameters
 
 Gibt den Wert für einen Parameter zurück, der in Ihrer Workflowdefinition beschrieben wird.
 
@@ -3002,13 +3002,13 @@ removeProperty(<object>, '<property>')
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*object*> | Ja | Objekt | Das JSON-Objekt, aus dem Sie eine Eigenschaft entfernen möchten |
+| <*object*> | Ja | Object | Das JSON-Objekt, aus dem Sie eine Eigenschaft entfernen möchten |
 | <*property*> | Ja | Zeichenfolge | Der Name der zu Eigenschaft, die entfernt werden soll |
 |||||
 
 | Rückgabewert | Type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*updated-object*> | Objekt | Das aktualisierte JSON-Objekt ohne die angegebene Eigenschaft |
+| <*updated-object*> | Object | Das aktualisierte JSON-Objekt ohne die angegebene Eigenschaft |
 ||||
 
 *Beispiel*
@@ -3032,14 +3032,14 @@ setProperty(<object>, '<property>', <value>)
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*object*> | Ja | Objekt | Das JSON-Objekt, dessen Eigenschaft Sie festlegen möchten |
+| <*object*> | Ja | Object | Das JSON-Objekt, dessen Eigenschaft Sie festlegen möchten |
 | <*property*> | Ja | Zeichenfolge | Der Name der vorhandenen oder neuen Eigenschaft, die festgelegt werden soll |
 | <*value*> | Ja | Beliebig | Der Wert, auf den die angegebene Eigenschaft festgelegt werden soll |
 |||||
 
 | Rückgabewert | Type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*updated-object*> | Objekt | Das aktualisierte JSON-Objekt, dessen Eigenschaft Sie festlegen |
+| <*updated-object*> | Object | Das aktualisierte JSON-Objekt, dessen Eigenschaft Sie festlegen |
 ||||
 
 *Beispiel*
@@ -3226,7 +3226,7 @@ startsWith('<text>', '<searchText>')
 
 | Rückgabewert | Type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| "true" oder "false"  | Boolescher Wert | Gibt „true“ zurück, wenn die beginnende Teilzeichenfolge gefunden wurde. Gibt „false“ zurück, wenn sie nicht gefunden wurde. |
+| "true" oder "false"  | Boolean | Gibt „true“ zurück, wenn die beginnende Teilzeichenfolge gefunden wurde. Gibt „false“ zurück, wenn sie nicht gefunden wurde. |
 ||||
 
 *Beispiel 1*
@@ -4091,7 +4091,7 @@ workflow().run.name
 
 <a name="xml"></a>
 
-### <a name="xml"></a>xml
+### <a name="xml"></a>Xml
 
 Gibt die XML-Version einer Zeichenfolge zurück, die ein JSON-Objekt enthält.
 
@@ -4106,7 +4106,7 @@ xml('<value>')
 
 | Rückgabewert | Type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*xml-version*> | Objekt | Das codierte XML-Objekt für die angegebene Zeichenfolge oder das angegebene JSON-Objekt |
+| <*xml-version*> | Object | Das codierte XML-Objekt für die angegebene Zeichenfolge oder das angegebene JSON-Objekt |
 ||||
 
 *Beispiel 1*

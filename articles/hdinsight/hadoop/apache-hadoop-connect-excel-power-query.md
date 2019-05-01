@@ -1,7 +1,6 @@
 ---
 title: 'Verbinden von Excel mit Apache Hadoop mithilfe von Power Query: Azure HDInsight'
 description: Erfahren Sie, wie Sie Business Intelligence-Komponenten nutzen und wie Sie mithilfe von Power Query für Excel auf Daten in Hadoop in HDInsight zugreifen können.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 687a9884c861b4cf72e51f9179e6c0b43968801d
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: df7bb39120dfe4c45a4749065f77649bc51d0356
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202903"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64700672"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Verbinden von Excel mit Apache Hadoop mithilfe von Power Query
 Eine der wichtigsten Features der Big Data-Lösung von Microsoft ist die Integration von Microsoft BI-Komponenten (Business Intelligence) in Apache Hadoop-Cluster in Azure HDInsight. Ein gutes Beispiel ist die Möglichkeit, Excel mithilfe von Microsoft Power Query für Excel-Add-Ins mit dem Azure Storage-Konto zu verbinden, das die dem Hadoop-Cluster zugeordneten Daten enthält. Dieser Artikel beschreibt die Einrichtung und Verwendung von Power Query für die Abfrage von Daten aus einem mit HDInsight verwalteten Hadoop-Cluster.

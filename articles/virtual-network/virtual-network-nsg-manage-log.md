@@ -4,20 +4,21 @@ titlesuffix: Azure Virtual Network
 description: In diesem Artikel erfahren Sie, wie Diagnoseprotokolle für Ereignis- und Regelzähler für eine Azure-Netzwerksicherheitsgruppe aktiviert werden.
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
+manager: twooley
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
-ms.author: jdial
-ms.openlocfilehash: f718e57e257a79a18ad4d0b6b47c10f855b6db60
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.author: kumud
+ms.openlocfilehash: b3225d8d2f9eb7ccd0f4087d93cd9c1d940783d9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006999"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714675"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>Diagnoseprotokollierung für eine Netzwerksicherheitsgruppe
 
@@ -201,12 +202,12 @@ Lesen Sie den Artikel [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Re
 - **Azure Monitor-Protokolle:** Mit der [Analyselösung für Netzwerksicherheitsgruppen](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-azure-monitor
 ) können Sie bessere Erkenntnisse erzielen. Die Lösung bietet Visualisierungen für NSG-Regeln, die Datenverkehr mittels der MAC-Adresse der Netzwerkschnittstelle auf einem virtuellen Computer zulassen oder ablehnen.
 - **Azure Storage-Konto**: Daten werden in eine Datei namens „PT1H.json“ geschrieben. Folgende Informationen finden Sie in den angegebenen Speicherorten:
-  - Das Ereignisprotokoll finden Sie unter folgendem Pfad: `insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
-  - Das Regelzählerprotokoll finden Sie unter folgendem Pfad: `insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
+  - Ereignisprotokoll unter folgendem Pfad: `insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
+  - Regelzählerprotokoll unter folgendem Pfad: `insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die [Aktivitätsprotokollierung](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), vormals bekannt als Überwachungs- oder Betriebsprotokolle bezeichnet wurden. Die Aktivitätsprotokollierung ist für alle NSGs standardmäßig aktiviert, unabhängig davon, in welchem Azure-Bereitstellungsmodell sie erstellt wurden. Um zu bestimmen, welche Vorgänge für Netzwerksicherheitsgruppen im Aktivitätsprotokoll abgeschlossen wurden, suchen Sie nach Einträgen, die die folgenden Ressourcentypen enthalten:
+- Erfahren Sie mehr über die [Aktivitätsprotokollierung](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), vormals bekannt als Überwachungs- oder Betriebsprotokolle. Die Aktivitätsprotokollierung ist für alle NSGs standardmäßig aktiviert, unabhängig davon, in welchem Azure-Bereitstellungsmodell sie erstellt wurden. Um zu bestimmen, welche Vorgänge für Netzwerksicherheitsgruppen im Aktivitätsprotokoll abgeschlossen wurden, suchen Sie nach Einträgen, die die folgenden Ressourcentypen enthalten:
   - Microsoft.ClassicNetwork/networkSecurityGroups
   - Microsoft.ClassicNetwork/networkSecurityGroups/securityRules
   - Microsoft.Network/networkSecurityGroups

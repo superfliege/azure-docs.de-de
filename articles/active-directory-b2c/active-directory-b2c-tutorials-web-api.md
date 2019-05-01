@@ -3,19 +3,19 @@ title: 'Tutorial: Gewähren des Zugriffs auf eine ASP.NET-Web-API – Azure Acti
 description: In diesem Tutorial erfahren Sie, wie Sie mit Active Directory B2C eine ASP.NET-Web-API schützen und sie über eine ASP.NET-Webanwendung aufrufen.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.author: davidmu
 ms.date: 02/04/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: cc4db0f2fe8f5db41f6e8332a398029bd105f3af
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 77e3eaeffba862c727e021427e5f27967fcf35bd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756341"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687997"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>Tutorial: Gewähren des Zugriffs auf eine ASP.NET-Web-API unter Verwendung von Azure Active Directory B2C
 
@@ -68,7 +68,7 @@ Wenn Sie über eine Anwendung eine geschützte Web-API aufrufen möchten, müsse
 
 1. Wählen Sie **Anwendungen** und dann *webapp1* aus.
 2. Wählen Sie **API-Zugriff** und dann **Hinzufügen** aus.
-3. Wählen Sie in der Dropdownliste **API auswählen** und dann *webapi1* aus.
+3. Wählen Sie in der Dropdownliste **API auswählen** die Web-API *webapi1* aus.
 4. Wählen Sie in der Dropdownliste **Bereiche auswählen** die Bereiche **Hello.Read** und **Hello.Write** aus, die Sie zuvor festgelegt haben.
 5. Klicken Sie auf **OK**.
 

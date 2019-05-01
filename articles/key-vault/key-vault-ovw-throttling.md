@@ -2,22 +2,19 @@
 title: Anleitung zur Drosselung von Azure Key Vault
 description: Die Key Vault-Drosselung schränkt die Anzahl gleichzeitiger Aufrufe ein, um eine übermäßige Nutzung von Ressourcen zu verhindern.
 services: key-vault
-documentationcenter: ''
 author: msmbaldwin
 manager: barbkess
 tags: ''
-ms.assetid: 9b7d065e-1979-4397-8298-eeba3aec4792
 ms.service: key-vault
-ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 0f8aafce4c4feeed742504db84664e4dfd472ca6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 06b96ac6ea0202b74638b9331d754c0e0cc28ad0
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787548"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64695243"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Anleitung zur Drosselung von Azure Key Vault
 

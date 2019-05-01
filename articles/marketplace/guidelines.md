@@ -2,24 +2,18 @@
 title: Azure Marketplace- und AppSource-Richtlinien für Herausgeber | Azure
 description: Azure Marketplace und AppSource-Richtlinien für Herausgeber von Apps und Diensten
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: jm-aditi-ms
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: a0ab88b1375f5178ca6f41689de8d2f30f8d7808
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 05bb531a88677125318ddc23563cd08a3901aa4e
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728130"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937930"
 ---
 # <a name="guidelines"></a>Richtlinien  
 

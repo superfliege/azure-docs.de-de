@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f4a7f2a4fe0e1ca455b1140e83f31f6b30a7511
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: bfac577d7582caa5b538f05273a02e4c3baf71ff
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523459"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918460"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity Platform und das OpenID Connect-Protokoll
 
@@ -32,7 +32,7 @@ OpenID Connect ist ein Authentifizierungsprotokoll auf Grundlage von OAuth 2.0, 
 > [!NOTE]
 > Der Microsoft Identity Platform-Endpunkt unterstützt nicht alle Azure Active Directory-Szenarien und -Features (Azure AD). Informieren Sie sich über die [Einschränkungen von Microsoft Identity Platform](active-directory-v2-limitations.md), um zu bestimmen, ob Sie den Microsoft Identity Platform-Endpunkt verwenden sollten.
 
-[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) erweitert das OAuth 2.0-*Autorisierungsprotokoll*, das als *Authentifizierungsprotokoll* verwendet werden soll, sodass das einmalige Anmelden mithilfe von OAuth funktioniert. OpenID Connect führt das Konzept eines *ID-Tokens* ein. Hierbei handelt es sich um ein Sicherheitstoken, mit dem der Client die Identität des Benutzers überprüfen kann. Ferner ruft das ID-Token auch Basisprofilinformationen über den Benutzer ab. Da OpenID Connect das OAuth 2.0-Protokoll erweitert, können Apps auf sichere Weise *Zugriffstoken* abrufen, die für den Zugriff auf Ressourcen verwendet werden können, welche mithilfe eines [Autorisierungsservers](active-directory-v2-protocols.md#the-basics) geschützt werden. Der Microsoft Identity Platform-Endpunkt lässt auch zu, dass bei Azure AD registrierte Drittanbieter-Apps Zugriffstoken für geschützte Ressourcen wie Web-APIs ausstellen. Weitere Informationen zum Einrichten einer Anwendung zum Ausstellen von Zugriffstoken finden Sie unter [Registrieren einer App mit dem Microsoft Identity Platform-Endpunkt](quickstart-v2-register-an-app.md). OpenID Connect wird für das Erstellen von [Webanwendungen](v2-app-types.md#web-apps) empfohlen, die auf einem Server gehostet werden und auf die über einen Browser zugegriffen wird.
+[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) erweitert das OAuth 2.0-*Autorisierungsprotokoll*, das als *Authentifizierungsprotokoll* verwendet werden soll, sodass das einmalige Anmelden mithilfe von OAuth funktioniert. OpenID Connect führt das Konzept eines *ID-Tokens* ein. Hierbei handelt es sich um ein Sicherheitstoken, mit dem der Client die Identität des Benutzers überprüfen kann. Ferner ruft das ID-Token auch Basisprofilinformationen über den Benutzer ab. Da OpenID Connect das OAuth 2.0-Protokoll erweitert, können Apps auf sichere Weise *Zugriffstoken* abrufen, die für den Zugriff auf Ressourcen verwendet werden können, welche mithilfe eines [Autorisierungsservers](active-directory-v2-protocols.md#the-basics) geschützt werden. Der Microsoft Identity Platform-Endpunkt lässt auch zu, dass bei Azure AD registrierte Drittanbieter-Apps Zugriffstoken für geschützte Ressourcen wie Web-APIs ausstellen. Weitere Informationen zum Einrichten einer Anwendung zum Ausstellen von Zugriffstoken finden Sie unter [Registrieren einer App mit dem Microsoft Identity Platform-Endpunkt](quickstart-register-app.md). OpenID Connect wird für das Erstellen von [Webanwendungen](v2-app-types.md#web-apps) empfohlen, die auf einem Server gehostet werden und auf die über einen Browser zugegriffen wird.
 
 ## <a name="protocol-diagram-sign-in"></a>Protokolldiagramm: Anmeldung
 

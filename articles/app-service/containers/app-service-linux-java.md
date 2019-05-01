@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 5c9f70650f518c72a75d9a7826e7cbc30a95a00c
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: f19d193bef718bd4ad3d98f2112a7e705051b729
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680875"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920080"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Java-Entwicklerleitfaden für App Service unter Linux
 
@@ -112,7 +112,7 @@ Entwickler, die eine einzige Anwendung mit einem Bereitstellungsslot in ihrem Ap
 
 Überprüfen Sie beim Optimieren Ihrer Anwendungsheapeinstellungen Ihre App Service-Plandetails, und berücksichtigen Sie mehrere Anwendungs- und Bereitstellungsslotanforderungen, um die optimale Zuordnung von Arbeitsspeicher zu ermitteln.
 
-Wenn Sie eine JAR-Anwendung bereitstellen, sollte sie den Namen `app.jar` tragen, damit das integrierte Image Ihre App ordnungsgemäß identifizieren kann. (Das Maven-Plug-In nimmt diese Umbenennung automatisch vor.) Wenn Sie Ihre JAR-Datei nicht in `app.jar` umbenennen möchten, können Sie ein Shellskript mit dem Befehl zum Ausführen Ihrer JAR-Datei hochladen. Fügen Sie anschließend den vollständigen Pfad zu diesem Skript in das Textfeld [Startdatei](https://docs.microsoft.com/en-us/azure/app-service/containers/app-service-linux-faq#startup-file) im Abschnitt „Konfiguration“ des Portals ein.
+Wenn Sie eine JAR-Anwendung bereitstellen, sollte sie den Namen `app.jar` tragen, damit das integrierte Image Ihre App ordnungsgemäß identifizieren kann. (Das Maven-Plug-In nimmt diese Umbenennung automatisch vor.) Wenn Sie Ihre JAR-Datei nicht in `app.jar` umbenennen möchten, können Sie ein Shellskript mit dem Befehl zum Ausführen Ihrer JAR-Datei hochladen. Fügen Sie anschließend den vollständigen Pfad zu diesem Skript in das Textfeld [Startdatei](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#startup-file) im Abschnitt „Konfiguration“ des Portals ein.
 
 ### <a name="turn-on-web-sockets"></a>Aktivieren von Websockets
 

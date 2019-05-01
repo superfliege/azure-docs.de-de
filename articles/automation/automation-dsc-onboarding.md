@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: b81dccf3c71fbaff7b0cbb9ba00f13b458156e73
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: f9f15c558e507742a641239ed25ba136dca0671a
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588261"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919994"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Onboarding von Computern zur Verwaltung durch Azure Automation DSC
 
@@ -62,8 +62,8 @@ Geben Sie unter **Registrierung**die Werte des [lokalen Konfigurations-Managers 
 
 ### <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen
 
-Azure-VMs können über Azure Resource Manager-Vorlagen in Azure Automation DSC bereitgestellt und integriert werden. Unter [Vom DSC-Dienst verwalteter Server](https://azure.microsoft.com/en-us/resources/templates/101-automation-configuration/) finden Sie eine Beispielvorlage zum Integrieren eines vorhandenen virtuellen Computers in Azure Automation DSC.
-Wenn Sie eine VM-Skalierungsgruppe verwalten, finden Sie Informationen in der Beispielvorlage [Von Azure Automation verwaltete VM-Skalierungsgruppenkonfiguration](https://azure.microsoft.com/en-us/resources/templates/201-vmss-automation-dsc/).
+Azure-VMs können über Azure Resource Manager-Vorlagen in Azure Automation DSC bereitgestellt und integriert werden. Unter [Vom DSC-Dienst verwalteter Server](https://azure.microsoft.com/resources/templates/101-automation-configuration/) finden Sie eine Beispielvorlage zum Integrieren eines vorhandenen virtuellen Computers in Azure Automation DSC.
+Wenn Sie eine VM-Skalierungsgruppe verwalten, finden Sie Informationen in der Beispielvorlage [Von Azure Automation verwaltete VM-Skalierungsgruppenkonfiguration](https://azure.microsoft.com/resources/templates/201-vmss-automation-dsc/).
 
 ### <a name="powershell"></a>PowerShell
 
@@ -72,7 +72,7 @@ Mit dem Cmdlet [Register-AzureRmAutomationDscNode](/powershell/module/azurerm.au
 ### <a name="registering-virtual-machines-across-azure-subscriptions"></a>Registrieren von virtuellen Computern über Azure-Abonnements hinweg
 
 Die beste Methode zum Registrieren virtueller Computer aus anderen Azure-Abonnements ist die Verwendung der DSC-Erweiterung in einer Azure Resource Manager-Bereitstellungsvorlage.
-Beispiele finden Sie in [Erweiterung zum Konfigurieren des gewünschten Zustands mit Azure Resource Manager-Vorlagen](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/dsc-template).
+Beispiele finden Sie in [Erweiterung zum Konfigurieren des gewünschten Zustands mit Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template).
 Informationen zum Suchen von Registrierungsschlüssel und Registrierungs-URL, die als Parameter in der Vorlage verwendet werden, finden Sie im Abschnitt [**Sichere Registrierung**](#secure-registration) weiter unten.
 
 ## <a name="azure-virtual-machines-classic"></a>Virtuelle Azure-Computer (klassisch)

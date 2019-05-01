@@ -1,25 +1,18 @@
 ---
-title: Angebote für Azure Marketplace und Microsoft AppSource | Microsoft-Dokumentation
+title: Angebote für Azure Marketplace und Microsoft AppSource
 description: Erstellen und Verwalten von Angeboten für Azure Marketplace und Microsoft AppSource
 services: Azure, AppSource, Marketplace, Cloud Partner Portal,
-documentationcenter: ''
 author: v-miclar
-manager: Patrick.Butler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.author: pbutlerm
-ms.openlocfilehash: f537a43f5d4d0431e1659daa258e0c1453f2295b
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.author: pabutler
+ms.openlocfilehash: 2d440adc5111db11486d1fc606abbda0ffae9595
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010580"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64942529"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Angebote für Azure Marketplace und Microsoft AppSource
 
@@ -29,7 +22,7 @@ Das folgende Video stellt die verschiedenen Funktionen und Angebotstypen in Azur
 
 > [!VIDEO https://channel9.msdn.com/Events/Build/2018/BRK2513/player]
 
-**Build 2018: Erstellen von Apps und Diensten für Azure Marketplace und AppSource**
+**Erstellen von Apps und Beratungsdiensten für Azure Marketplace und AppSource – Build 2018**
 
 Weitere Informationen zu diesen Marketplaces finden Sie unter [Veröffentlichungsleitfaden für Azure Marketplace und AppSource](../marketplace-publishers-guide.md).
 

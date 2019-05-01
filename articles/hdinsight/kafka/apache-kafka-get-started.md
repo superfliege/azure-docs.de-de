@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 04/01/2019
-ms.openlocfilehash: 4099d6ea12774fec2b24895b42d8e780bd36e2a4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 8600e9c9d8566d3b9f6cd0fbca60d7db904a6265
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58917344"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687168"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Schnellstart: Erstellen eines Apache Kafka-Clusters in HDInsight
 
@@ -73,7 +73,7 @@ Gehen Sie wie folgt vor, um einen Apache Kafka-Cluster in HDInsight zu erstellen
     | Kennwort für Clusteranmeldung | Das Anmeldekennwort für den Zugriff auf Webdienste oder REST-APIs, die im Cluster gehostet werden. |
     | SSH-Benutzername (Secure Shell) | Die für den Clusterzugriff über SSH verwendete Anmeldung. Das Kennwort ist standardmäßig mit dem Kennwort für die Clusteranmeldung identisch. |
     | Ressourcengruppe | Die Ressourcengruppe, in der der Cluster erstellt wird. |
-    | Standort | Die Azure-Region, in der der Cluster erstellt werden soll. |
+    | Location | Die Azure-Region, in der der Cluster erstellt werden soll. |
 
     > [!TIP]  
     > Jede Azure-Region (Standort) verfügt über _Fehlerdomänen_. Eine Fehlerdomäne ist eine logische Gruppierung von zugrundeliegender Hardware in einem Azure-Rechenzentrum. Jede Fehlerdomäne verwendet eine Stromquelle und einen Netzwerkswitch gemeinsam. Die virtuellen Computer und verwalteten Datenträger, die die Knoten innerhalb eines HDInsight-Clusters implementieren, werden auf diese Fehlerdomänen verteilt. Diese Architektur schränkt die potenziellen Auswirkungen physischer Hardwarefehler ein.

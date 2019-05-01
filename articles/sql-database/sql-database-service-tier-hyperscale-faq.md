@@ -1,6 +1,6 @@
 ---
 title: Azure SQL-Datenbank Hyperscale – FAQs | Microsoft-Dokumentation
-description: In diesem Artikel werden häufig gestellte Fragen beantwortet, die Kunden zu Azure SQL-Datenbank im Diensttarif „Hyperscale“ haben (allgemein als Hyperscale-Datenbank bezeichnet).
+description: In diesem Artikel werden häufig gestellte Fragen beantwortet, die Kunden zu Azure SQL-Datenbank in der Dienstebene „Hyperscale“ haben (allgemein als Hyperscale-Datenbank bezeichnet).
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -12,37 +12,37 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/26/2019
-ms.openlocfilehash: 7261a25251e93035c31004c9255612a0e3b45a2f
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 679de1d5accbd0f4f955bf5af95bc8dcc97e3b78
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680899"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574274"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>FAQs zu Azure SQL-Datenbank Hyperscale
 
-Dieser Artikel enthält Antworten auf häufig gestellte Fragen für Kunden, die in Erwägung ziehen, eine Datenbank in Azure SQL-Datenbank mit dem Diensttarif „Hyperscale“ zu verwenden. Diese wird häufig als Hyperscale-Datenbank (zurzeit in der öffentlichen Vorschau) bezeichnet. In diesem Artikel werden die Szenarien beschrieben, die Hyperscale unterstützt. Die Dienste mit den verschiedenen Features sind in der Regel mit SQL-Datenbank im Tarif „Hyperscale“ kompatibel.
+Dieser Artikel enthält Antworten auf häufig gestellte Fragen für Kunden, die in Erwägung ziehen, eine Datenbank in Azure SQL-Datenbank mit der Dienstebene „Hyperscale“ zu verwenden. Diese wird häufig als Hyperscale-Datenbank (zurzeit in der öffentlichen Vorschau) bezeichnet. In diesem Artikel werden die Szenarien beschrieben, die Hyperscale unterstützt. Die Dienste mit den verschiedenen Features sind in der Regel mit SQL-Datenbank im Tarif „Hyperscale“ kompatibel.
 
-- Diese FAQs richten sich an Leser, die einen allgemeinen Überblick über den Diensttarif „Hyperscale“ besitzen und auf der Suche nach Antworten auf ihre Fragen und Probleme sind.
+- Diese FAQs richten sich an Leser, die einen allgemeinen Überblick über die Dienstebene „Hyperscale“ besitzen und auf der Suche nach Antworten auf ihre Fragen und Probleme sind.
 - Diese FAQs sind nicht als Handbuch zu verstehen oder beantworten Fragen zur Verwendung von SQL-Datenbank Hyperscale. Für diese Zwecke wird stattdessen die Dokumentation [Hyperscale-Diensttarif (Vorschau) für bis zu 100 TB](sql-database-service-tier-hyperscale.md) empfohlen.
 
 ## <a name="general-questions"></a>Allgemeine Fragen
 
 ### <a name="what-is-a-hyperscale-database"></a>Was ist eine Hyperscale-Datenbank?
 
-Eine Hyperscale-Datenbank ist eine Azure SQL-Datenbank-Instanz mit dem Diensttarif „Hyperscale“, die durch die Hyperscaletechnologie zur horizontalen Skalierung unterstützt wird. Eine Hyperscale-Datenbank unterstützt bis zu 100 TB Daten, zeichnet sich durch einen hohen Durchsatz sowie eine hohe Leistung aus und bietet eine schnelle Skalierung, um sich rasch an die Workloadanforderungen anzupassen. Eine Skalierung ist für die Anwendung transparent, d.h., die Konnektivität, die Abfrageverarbeitung etc. funktionieren wie bei jeder anderen SQL-­Datenbank-Instanz.
+Eine Hyperscale-Datenbank ist eine Azure SQL-Datenbank mit der Dienstebene „Hyperscale“, die durch die Hyperscaletechnologie zur horizontalen Skalierung unterstützt wird. Eine Hyperscale-Datenbank unterstützt bis zu 100 TB Daten, zeichnet sich durch einen hohen Durchsatz sowie eine hohe Leistung aus und bietet eine schnelle Skalierung, um sich rasch an die Workloadanforderungen anzupassen. Eine Skalierung ist für die Anwendung transparent, d.h., die Konnektivität, die Abfrageverarbeitung etc. funktionieren wie bei jeder anderen SQL-­Datenbank-Instanz.
 
 ### <a name="what-resource-types-and-purchasing-models-support-hyperscale"></a>Welche Ressourcentypen und Kaufmodelle unterstützt Hyperscale?
 
-Der Diensttarif „Hyperscale“ ist nur für Einzeldatenbanken verfügbar, bei denen das auf virtuellen Kernen basierende Kaufmodell in Azure SQL-Datenbank zum Einsatz kommt.  
+Die Dienstebene „Hyperscale“ ist nur für Einzeldatenbanken verfügbar, bei denen das vCore-basierte Kaufmodell in Azure SQL-Datenbank zum Einsatz kommt.  
 
-### <a name="how-does-the-hyperscale-service-tier-differ-from-the-general-purpose-and-business-critical-service-tiers"></a>Inwiefern unterscheidet sich der Diensttarif „Hyperscale“ von den Diensttarifen „Universell“ und „Unternehmenskritisch“?
+### <a name="how-does-the-hyperscale-service-tier-differ-from-the-general-purpose-and-business-critical-service-tiers"></a>Inwiefern unterscheidet sich die Dienstebene „Hyperscale“ von den Dienstebenen „Universell“ und „Unternehmenskritisch“?
 
-Die auf virtuellen Kernen basierenden Diensttarife unterscheiden sich in erster Linie im Hinblick auf Verfügbarkeit, Speichertyp und IOPS.
+Die auf virtuellen Kernen basierenden Dienstebenen unterscheiden sich in erster Linie im Hinblick auf Verfügbarkeit, Speichertyp und IOPS.
 
-- Der Diensttarif „Universell“ eignet sich für die meisten Geschäftsworkloads und bietet eine ausgewogene Kombination aus Compute- und Speicheroptionen, wobei Latenzen bei E/A-Vorgängen oder Failoverzeiten eine untergeordnete Rolle spielen.
-- Der Diensttarif „Hyperscale“ ist für sehr große Datenbankworkloads optimiert.
-- Der Diensttarif „Unternehmenskritisch“ eignet sich für Geschäftsworkloads, bei denen Latenzen bei E/A-Vorgängen im Vordergrund stehen.
+- Die Dienstebene „Universell“ eignet sich für die meisten Geschäftsworkloads und bietet eine ausgewogene Kombination aus Compute- und Speicheroptionen, wobei Latenzen bei E/A-Vorgängen oder Failoverzeiten eine untergeordnete Rolle spielen.
+- Die Dienstebene „Hyperscale“ ist für sehr große Datenbankworkloads optimiert.
+- Die Dienstebene „Unternehmenskritisch“ eignet sich für Geschäftsworkloads, bei denen Latenzen bei E/A-Vorgängen im Vordergrund stehen.
 
 | | Ressourcentyp | Allgemeiner Zweck |  Hyperscale | Unternehmenskritisch |
 |:---|:---:|:---:|:---:|:---:|
@@ -58,11 +58,11 @@ Die auf virtuellen Kernen basierenden Diensttarife unterscheiden sich in erster 
 |**Verfügbarkeit**|Alle|1 Replikat, keine Replikate mit Leseskalierung, kein lokaler Cache | Mehrere Replikate, bis zu 15 Replikate mit Leseskalierung, teilweise lokaler Cache | 3 Replikate, 1 Replikat mit Leseskalierung, zonenredundante Hochverfügbarkeit, vollständiger lokaler Cache |
 |**Sicherungen**|Alle|RA-GRS, 7 - 35 Tage (standardmäßig 7 Tage)| RA-GRS, 7-35 Tage (standardmäßig 7 Tage), konstante Zeitpunktwiederherstellung (Point-in-Time Recovery, PiTR) | RA-GRS, 7 - 35 Tage (standardmäßig 7 Tage) |
 
-\* Pools für elastische Datenbanken werden im Diensttarif „Hyperscale“ nicht unterstützt.
+\* Pools für elastische Datenbanken werden in der Dienstebene „Hyperscale“ nicht unterstützt.
 
-### <a name="who-should-use-the-hyperscale-service-tier"></a>Wer sollte den Diensttarif „Hyperscale“ verwenden?
+### <a name="who-should-use-the-hyperscale-service-tier"></a>Wer sollte die Dienstebene „Hyperscale“ verwenden?
 
-Der Diensttarif „Hyperscale“ ist hauptsächlich für Kunden konzipiert, die große lokale SQL Server-Datenbanken verwenden und ihre Anwendungen durch eine Migration in die Cloud modernisieren möchten, oder für Kunden, die bereits Azure SQL-Datenbank verwenden und das Potenzial zum Datenbankwachstum im umfassenden Maß ausschöpfen möchten. Außerdem eignet sich Hyperscale für Kunden, die eine hohe Leistung und Skalierbarkeit wünschen. Mit Hyperscale erhalten Sie Folgendes:
+Die Dienstebene „Hyperscale“ ist hauptsächlich für Kunden konzipiert, die große lokale SQL Server-Datenbanken verwenden und ihre Anwendungen durch eine Migration in die Cloud modernisieren möchten, oder für Kunden, die bereits Azure SQL-Datenbank verwenden und das Potenzial zum Datenbankwachstum im umfassenden Maß ausschöpfen möchten. Außerdem eignet sich Hyperscale für Kunden, die eine hohe Leistung und Skalierbarkeit wünschen. Mit Hyperscale erhalten Sie Folgendes:
 
 - Unterstützung für eine Datenbankgröße von bis zu 100 TB
 - Schnelle Datenbanksicherungen unabhängig von der Datenbankgröße (Sicherungen basieren auf Dateimomentaufnahmen)
@@ -75,9 +75,9 @@ Der Diensttarif „Hyperscale“ ist hauptsächlich für Kunden konzipiert, die 
 
 Hyperscale steht derzeit für Einzeldatenbanken in den folgenden Regionen zur Verfügung:  „USA, Westen 1“, „USA, Westen 2“, „USA, Osten 1“, „USA, Mitte“, „Europa, Westen“, „Europa, Norden“, „Asien, Südosten“, „Japan, Osten“, „Südkorea, Mitte“, „Australien, Südosten“ und „Australien, Osten“.
 
-### <a name="can-i-create-multiple-hyperscale-databases-per-sql-database-server"></a>Können mehrere Hyperscale-Datenbanken pro SQL-Datenbankserver erstellt werden?
+### <a name="can-i-create-multiple-hyperscale-databases-per-sql-database-server"></a>Können mehrere Hyperscale-Datenbanken pro SQL-Datenbank-Server erstellt werden?
 
-Ja. Weitere Informationen und Beschränkungen hinsichtlich der Anzahl von Hyperscale-Datenbanken pro SQL-Datenbankserver finden Sie unter [Ressourceneinschränkungen in SQL-Datenbank für Einzeldatenbanken und in einem Pool zusammengefasste Datenbanken auf einem SQL-Datenbankserver](sql-database-resource-limits-database-server.md).
+Ja. Weitere Informationen und Beschränkungen hinsichtlich der Anzahl von Hyperscale-Datenbanken pro SQL-Datenbankserver finden Sie unter [Ressourceneinschränkungen in SQL-Datenbank für Einzel- und Pooldatenbanken auf einem SQL-Datenbankserver](sql-database-resource-limits-database-server.md).
 
 ### <a name="what-are-the-performance-characteristic-of-a-hyperscale-database"></a>Welche Leistungsmerkmale weist eine Hyperscale-Datenbank auf?
 
@@ -98,7 +98,7 @@ SQL-Datenbank Hyperscale bietet schnelle Skalierbarkeit basierend auf Ihrem Work
 
 ## <a name="deep-dive-questions"></a>Vertiefende Fragen
 
-### <a name="can-i-mix-hyperscale-and-single-databases-a-my-sql-database-server"></a>Können Hyperscale und Einzeldatenbanken mit einem SQL-Datenbankserver kombiniert werden?
+### <a name="can-i-mix-hyperscale-and-single-databases-a-my-sql-database-server"></a>Können Hyperscale und Einzeldatenbanken mit einem SQL-Datenbank-Server kombiniert werden?
 
 Ja, das ist möglich.
 
@@ -132,7 +132,7 @@ Nein.
 
 ### <a name="can-i-provision-a-compute-with-extra-ram-for-my-memory-intensive-workload"></a>Kann ich Computeressourcen mit zusätzlichem RAM für speicherintensive Workloads bereitstellen?
 
-Nein. Um mehr RAM zu erhalten, müssen Sie ein Upgrade auf eine höhere Computegröße durchführen. Gen4-Hardware bieten mehr RAM im Vergleich zu Gen5-Hardware. Weitere Informationen finden Sie unter [Diensttarif „Hyperscale“ (Vorschau)](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-preview).
+Nein. Um mehr RAM zu erhalten, müssen Sie ein Upgrade auf eine höhere Computegröße durchführen. Gen4-Hardware bieten mehr RAM im Vergleich zu Gen5-Hardware. Weitere Informationen finden Sie unter [Dienstebene „Hyperscale“ (Vorschau)](sql-database-vcore-resource-limits-single-databases.md).
 
 ### <a name="can-i-provision-multiple-compute-nodes-of-different-sizes"></a>Kann ich mehrere Computeknoten unterschiedlicher Größe bereitstellen?
 
@@ -206,15 +206,15 @@ Ja. Die Datenseiten einer bestimmten Tabelle können auf mehrere Datendateien, d
 
 ## <a name="data-migration-questions"></a>Fragen zur Datenmigration
 
-### <a name="can-i-move-my-existing-azure-sql-databases-to-the-hyperscale-service-tier"></a>Können vorhandene Azure SQL-Datenbank-Instanzen zum Diensttarif „Hyperscale“ migriert werden?
+### <a name="can-i-move-my-existing-azure-sql-databases-to-the-hyperscale-service-tier"></a>Können vorhandene Azure SQL-Datenbanken zur Dienstebene „Hyperscale“ migriert werden?
 
-Ja. Sie können Ihre vorhandenen Azure SQL-Datenbank-Instanzen zu Hyperscale migrieren. In der öffentlichen Vorschau erfolgt dies im Rahmen einer unidirektionalen Migration. Datenbanken können nicht von Hyperscale zu einem anderen Diensttarif migriert werden. Es wird empfohlen, eine Kopie Ihrer Produktionsdatenbanken zu erstellen und für Proof of Concepts (POCs) eine Migration zu Hyperscale durchzuführen.
+Ja. Sie können Ihre vorhandenen Azure SQL-Datenbank-Instanzen zu Hyperscale migrieren. In der öffentlichen Vorschau erfolgt dies im Rahmen einer unidirektionalen Migration. Datenbanken können nicht von Hyperscale zu einer anderen Dienstebene migriert werden. Es wird empfohlen, eine Kopie Ihrer Produktionsdatenbanken zu erstellen und für Proof of Concepts (POCs) eine Migration zu Hyperscale durchzuführen.
   
 ### <a name="can-i-move-my-hyperscale-databases-to-other-editions"></a>Können Hyperscale-Datenbanken zu anderen Versionen migriert werden?
 
-Nein. Eine Hyperscale-Datenbank kann in der öffentlichen Vorschau nicht zu einem anderen Diensttarif migriert werden.
+Nein. Eine Hyperscale-Datenbank kann in der öffentlichen Vorschau nicht zu einer anderen Dienstebene migriert werden.
 
-### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>Müssen bei der Migration zum Diensttarif „Hyperscale“ Einbußen hinsichtlich des Funktionsumfangs in Kauf genommen werden?
+### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>Müssen bei der Migration zur Dienstebene „Hyperscale“ Einbußen hinsichtlich des Funktionsumfangs in Kauf genommen werden?
 
 Ja. Sicherungen für die Langzeitaufbewahrung in Azure SQL-Datenbank werden in Hyperscale nicht in der öffentlichen Vorschauversion unterstützt. Nach der Migration Ihrer Datenbanken zu Hyperscale funktioniert dieses Feature nicht mehr.
 
@@ -243,7 +243,7 @@ Nein. Bei SQL-Datenbank Hyperscale handelt es sich um eine SMP-Architektur, nich
 
 ### <a name="what-is-the-oldest-sql-server-version-will-sql-database-hyperscale-support-migration-from"></a>Von welcher ältesten SQL Server-Version aus unterstützt SQL-Datenbank Hyperscale Migrationen?
 
-SQL Server 2005. Weitere Informationen finden Sie unter [Migrieren zu einer Einzeldatenbank oder in einem Pool zusammengefassten Datenbank](sql-database-single-database-migrate.md#migrate-to-a-single-database-or-a-pooled-database). Informationen zu Kompatibilitätsproblemen finden Sie unter [Beheben von Kompatibilitätsproblemen mit der Datenbankmigration](sql-database-single-database-migrate.md#resolving-database-migration-compatibility-issues).
+SQL Server 2005. Weitere Informationen finden Sie unter [Migrieren zu einer Einzeldatenbank oder Pooldatenbank](sql-database-single-database-migrate.md#migrate-to-a-single-database-or-a-pooled-database). Informationen zu Kompatibilitätsproblemen finden Sie unter [Beheben von Kompatibilitätsproblemen mit der Datenbankmigration](sql-database-single-database-migrate.md#resolving-database-migration-compatibility-issues).
 
 ### <a name="does-sql-database-hyperscale-support-migration-from-other-data-sources-such-as-aurora-mysql-oracle-db2-and-other-database-platforms"></a>Unterstützt SQL-Datenbank Hyperscale die Migration aus anderen Datenquellen wie Aurora, MySQL, Oracle, DB2 und anderen Datenbankplattformen?
 
@@ -293,7 +293,7 @@ Nein. Das Speicherformat für Hyperscale-Datenbanken unterscheidet sich vom konv
 
 ## <a name="cross-feature-questions"></a>Fragen zu verschiedenen Features
 
-### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>Müssen bei der Migration zum Diensttarif „Hyperscale“ Einbußen hinsichtlich des Funktionsumfangs in Kauf genommen werden?
+### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>Müssen bei der Migration zur Dienstebene „Hyperscale“ Einbußen hinsichtlich des Funktionsumfangs in Kauf genommen werden?
 
 Ja. Sicherungen für die Langzeitaufbewahrung in Azure SQL-Datenbank werden in Hyperscale nicht in der öffentlichen Vorschauversion unterstützt. Nach der Migration Ihrer Datenbanken zu Hyperscale funktioniert dieses Feature nicht mehr.
 
@@ -389,4 +389,4 @@ Ab dem Zeitpunkt, an dem ein Commit für eine Transaktion auf dem primären Knot
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Diensttarif „Hyperscale“ finden Sie unter [Diensttarif „Hyperscale“ (Vorschau)](sql-database-service-tier-hyperscale.md).
+Weitere Informationen zur Dienstebene „Hyperscale“ finden Sie unter [Dienstebene „Hyperscale“ (Vorschau)](sql-database-service-tier-hyperscale.md).

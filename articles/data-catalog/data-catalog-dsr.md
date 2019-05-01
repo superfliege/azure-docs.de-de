@@ -7,12 +7,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 8b584e06697f9f4212fe0d1d59c29e4670a87eda
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: f97f84ebf1dc4406bd924817bfd4aa3267559751
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60008612"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64694334"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Von Azure Data Catalog unterstützte Datenquellen
 
@@ -67,10 +67,8 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
       <td>✓</td>
       <td>✓</td>
       <td>
-        <font size="2">
       </td>
       <td>
-        <font size="2">
       </td>
     </tr>
     <tr>

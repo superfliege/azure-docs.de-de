@@ -3,19 +3,19 @@ title: ContentDefinitions – Azure Active Directory B2C | Microsoft-Dokumentati
 description: Erfahren Sie, wie Sie das ContentDefinitions-Element einer benutzerdefinierten Richtlinie in Azure Active Directory B2C angeben.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e36eb3816d6f465552c4db740508d5e7f5fa1331
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6807ae8d9c8b8458b9ac4552a90119a8f709d330
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161663"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64693358"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -63,7 +63,7 @@ Das **ContentDefinition**-Element enthält das folgende Attribut:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| id | JA | Ein Bezeichner für eine Inhaltsdefinition. Der Wert wird im Abschnitt **ID für Inhaltsdefinitionen** weiter unten auf dieser Seite beschrieben. |
+| id | Ja | Ein Bezeichner für eine Inhaltsdefinition. Der Wert wird im Abschnitt **ID für Inhaltsdefinitionen** weiter unten auf dieser Seite beschrieben. |
 
 Das **ContentDefinition**-Element enthält die folgenden Elemente:
 
@@ -101,8 +101,8 @@ Das **LocalizedResourcesReferences**-Element enthält die folgenden Attribute:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| Sprache | JA | Eine Zeichenfolge mit einer unterstützten Sprache für die Richtlinie gemäß „RFC 5646 – Tags for Identifying Languages“ (Tags für das Angeben von Sprachen). |
-| LocalizedResourcesReferenceId | JA | Der Bezeichner des **LocalizedResources**-Elements. |
+| Sprache | Ja | Eine Zeichenfolge mit einer unterstützten Sprache für die Richtlinie gemäß „RFC 5646 – Tags for Identifying Languages“ (Tags für das Angeben von Sprachen). |
+| LocalizedResourcesReferenceId | Ja | Der Bezeichner des **LocalizedResources**-Elements. |
 
 Das folgende Beispiel zeigt eine Inhaltsdefinition für die Registrierung oder Anmeldung:
 

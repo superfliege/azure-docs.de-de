@@ -3,8 +3,8 @@ title: Netzwerkdurchsatz virtueller Azure-Computer | Microsoft-Dokumentation
 description: Informationen zum Netzwerkdurchsatz virtueller Azure-Computer.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
-ms.author: jdial
-ms.openlocfilehash: f22b6f361f0c5bea547721309bb0f75b62f18d92
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.author: kumud
+ms.openlocfilehash: 182b3b7dad828e67d006391e00986406729c959d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2018
-ms.locfileid: "27778954"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64689253"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Netzwerkdurchsatz virtueller Computer
 
@@ -42,7 +42,7 @@ Die Durchsatzbegrenzung gilt für den virtuellen Computer. Der Durchsatz wird du
 - **Anzahl der Netzwerkschnittstellen**: Der Bandbreitengrenzwert ist ein kumulativer Wert des gesamten ausgehenden Datenverkehrs vom virtuellen Computer.
 - **Beschleunigter Netzwerkbetrieb**: Obwohl das Feature beim Erreichen des veröffentlichten Grenzwerts hilfreich sein kann, ändert sich dadurch der Grenzwert nicht.
 - **Datenverkehrsziel**: Alle Ziele werden auf den Grenzwert für ausgehenden Datenverkehr angerechnet.
-- **Protokoll**: Der gesamte ausgehende Datenverkehr über alle Protokolle wird auf den Grenzwert angerechnet.
+- **Protokoll:** Der gesamte ausgehende Datenverkehr über alle Protokolle wird auf den Grenzwert angerechnet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

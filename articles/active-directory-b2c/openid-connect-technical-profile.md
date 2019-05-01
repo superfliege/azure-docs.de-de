@@ -3,19 +3,19 @@ title: Definieren eines technischen OpenId Connect-Profils in einer benutzerdefi
 description: Erfahren Sie, wie Sie ein technisches OpenId Connect-Profil in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C definieren.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e8bfa5a3e60efe860b5e7197d96ebe5ce3a86030
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 9ec323d4596c866da33c4a8ff5499bf2ad92a8bd
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001404"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64710309"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen OpenId Connect-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -23,7 +23,7 @@ ms.locfileid: "60001404"
 
 Azure Active Directory (Azure AD) B2C bietet Unterstützung für Identitätsanbieter mit dem [OpenId Connect](https://openid.net/2015/04/17/openid-connect-certification-program/)-Protokoll. OpenId Connect 1.0 definiert eine Identitätsebene über OAuth 2.0 und stellt den Stand der Technik bei modernen Authentifizierungsprotokollen dar. Mit einem technischen OpenId Connect-Profil können Sie einen Verbund mit einem OpenId Connect-basierten Identitätsanbieter wie Azure AD erstellen. Über einen Verbund mit einem Identitätsanbieter können sich Benutzer mit ihren vorhandenen Identitäten aus sozialen Netzwerken oder Unternehmen anmelden.
 
-## <a name="protocol"></a>Protokoll
+## <a name="protocol"></a>Protocol
 
 Das **Name**-Attribut des **Protocol**-Elements muss auf `OpenIdConnect` festgelegt werden. Das Protokoll für das technische Profil **MSA-OIDC** ist z.B. `OpenIdConnect`:
 

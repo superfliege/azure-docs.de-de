@@ -1,7 +1,6 @@
 ---
 title: Optimieren von Hive-Abfragen in Azure HDInsight
 description: In diesem Artikel wird beschrieben, wie Sie Ihre Hive-Abfragen für Apache Hadoop in HDInsight optimieren.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
-ms.openlocfilehash: 63def1464c3c219b5181a31bf19cc80a1e487025
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 1610678b0ae1d94c3f3b8f91913beceb211d08d6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521736"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64701696"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optimieren von Apache Hive-Abfragen in Azure HDInsight
 

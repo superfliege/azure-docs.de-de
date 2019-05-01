@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 044c0355b6ec9f064cae74ffd5259d457cb49147
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 2cce7203d23d5de77200fdf75ab31042d9608352
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672388"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64866371"
 ---
 # <a name="supported-languages"></a>Unterstützte Sprachen
 
@@ -29,7 +29,7 @@ Die Microsoft-Spracherkennungs-API unterstützt in den Modi `interactive` und `d
 |Code | Sprache | Code | Sprache |
 |-----|-----|-----|-----|
 | ar-EG | Arabisch (Ägypten), modernes Hocharabisch | hi-IN | Hindi (Indien) |
-| ca-ES | Katalanisch (Spanien) | it-IT | Italienisch (Italien)  |
+| ca-ES | Katalanisch | it-IT | Italienisch (Italien)  |
 | da-DK | Dänisch (Dänemark) | ja-JP | Japanisch (Japan) |
 | de-DE | Deutsch (Deutschland) |ko-KR | Koreanisch (Korea) |
 | en-AU | Englisch (Australien) |nb-NO | Norwegisch, Bokmål (Norwegen)  |

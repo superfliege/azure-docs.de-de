@@ -1,19 +1,18 @@
 ---
 title: Bring Your Own Key für Apache Kafka in Azure HDInsight (Vorschauversion)
 description: In diesem Artikel wird beschrieben, wie Sie mit Ihrem eigenen Schlüssel aus Azure Key Vault Daten verschlüsseln, die in Apache Kafka in Azure HDInsight gespeichert sind.
-services: hdinsight
 ms.service: hdinsight
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: cb18f0e1b682434c5069c2a02524a6f16551e9e2
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: ce9df58e9640cab2e6ba50fce772f1e30739dc5a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545976"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714841"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Bring Your Own Key für Apache Kafka in Azure HDInsight
 

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 manager: craigg
 ms.date: 02/23/2019
-ms.openlocfilehash: 067ea8eee297eb8572bd37e240b8d13afe458ca7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e2230bc8adf13825692f93b1e2bc33a4b79076e2
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59785118"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574374"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Dienstebenen für Azure SQL-Datenbank
 
@@ -25,12 +25,12 @@ Azure SQL-Datenbank basiert auf der an die Cloudumgebung angepasste Architektur 
 
 - [Universell](sql-database-service-tier-general-purpose.md): ist für die meisten generischen Workloads konzipiert.
 - [Unternehmenskritisch](sql-database-service-tier-business-critical.md): ist für Workloads mit geringer Latenz mit einem lesbaren Replikat konzipiert.
-- [Hochgradig skalierbaren](sql-database-service-tier-hyperscale.md): ist für sehr große Datenbanken (bis zu 100 TB) mit mehreren lesbaren Replikaten konzipiert.
+- [Hyperscale](sql-database-service-tier-hyperscale.md): Ist für sehr große Datenbanken (bis zu 100 TB) mit mehreren lesbaren Replikaten konzipiert.
 
 Dieser Artikel beschreibt die Speicher- und Sicherungsüberlegungen für die Dienstebenen „Universell“ und „Unternehmenskritisch“ im vCore-basierten Kaufmodell.
 
 > [!NOTE]
-> Ausführliche Informationen zur Dienstebene „Hyperscale“ im vCore-basierten Kaufmodell finden Sie unter [Dienstebene „Hyperscale“](sql-database-service-tier-hyperscale.md). Einen Vergleich zwischen vCore-basierten Kaufmodell und DTU-basiertem Kaufmodell finden Sie unter [Kaufmodelle für Azure SQL-Datenbank und Ressourcen](sql-database-purchase-models.md).
+> Ausführliche Informationen zur Dienstebene „Hyperscale“ im vCore-basierten Kaufmodell finden Sie unter [Dienstebene „Hyperscale“](sql-database-service-tier-hyperscale.md). Einen Vergleich zwischen vCore-basiertem Kaufmodell und DTU-basiertem Kaufmodell finden Sie unter [Kaufmodelle für Azure SQL-Datenbank und Ressourcen](sql-database-purchase-models.md).
 
 ## <a name="data-and-log-storage"></a>Daten- und Protokollspeicher
 
@@ -63,5 +63,5 @@ Der Speicher für Datenbanksicherungen wird zugeordnet, um die Funktionen „Poi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Ausführliche Informationen zu bestimmten Computegrößen und Speichergrößen für Einzeldatenbanken in den Dienstebenen „Universell“ und „Unternehmenskritisch“ finden Sie unter [Ressourcenlimits des vCore-basierten Kaufmodells für Einzeldatenbanken](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).
-- Ausführliche Informationen zu bestimmten Computegrößen und Speichergrößen für Pools für elastische Datenbanken in den Dienstebenen „Universell“ und „Unternehmenskritisch“ finden Sie unter [Ressourcenlimits des vCore-basierten Kaufmodells für Pools für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes).
+- Ausführliche Informationen zu bestimmten Computegrößen und Speichergrößen für Einzeldatenbanken in den Dienstebenen „Universell“ und „Unternehmenskritisch“ finden Sie unter [Ressourcenlimits des vCore-basierten Kaufmodells für Einzeldatenbanken](sql-database-vcore-resource-limits-single-databases.md).
+- Ausführliche Informationen zu bestimmten Computegrößen und Speichergrößen für Pools für elastische Datenbanken in den Dienstebenen „Universell“ und „Unternehmenskritisch“ finden Sie unter [Ressourcenlimits des vCore-basierten Kaufmodells für Pools für elastische Datenbanken](sql-database-vcore-resource-limits-elastic-pools.md).

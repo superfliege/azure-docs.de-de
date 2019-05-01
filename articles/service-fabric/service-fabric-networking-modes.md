@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: aljo, subramar
-ms.openlocfilehash: 6f14b3184cabd1dfd84f04260f6b8c831037cbcf
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: ecb7ac4d3359142d3aef247e4b918f517e10c3bb
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668125"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926126"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Netzwerkmodi für Service Fabric-Container
 
@@ -30,7 +30,7 @@ Wenn in Ihrem Dienstmanifest ein Containerdienst mit einem statischen Endpunkt e
 Wenn ein Containerdienst neu gestartet oder im Cluster auf einen anderen Knoten verschoben wird, ändert sich die IP-Adresse. Aus diesem Grund wird nicht empfohlen, die dynamisch zugewiesene IP-Adresse zum Ermitteln von Containerdiensten zu verwenden. Für die Dienstermittlung sollte nur der „Service Fabric Naming Service“ oder der „DNS-Dienst“ genutzt werden. 
 
 >[!WARNING]
->In Azure sind maximal 65.356 IPs pro virtuellem Netzwerk zulässig. Die Summe aus Knotenanzahl und Anzahl von Containerdienstinstanzen (mit Verwendung des Modus „Open“) darf in einem virtuellen Netzwerk 65.356 IPs nicht übersteigen. Für Szenarien mit hoher Dichte ist es ratsam, den Netzwerkmodus „nat“ zu verwenden. Darüber hinaus sind für andere Abhängigkeiten wie z.B. den Lastenausgleich andere [Einschränkungen](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits) zu beachten. Zurzeit wurden bis zu 50 IPs pro Knoten getestet und für stabil befunden. 
+>In Azure sind maximal 65.356 IPs pro virtuellem Netzwerk zulässig. Die Summe aus Knotenanzahl und Anzahl von Containerdienstinstanzen (mit Verwendung des Modus „Open“) darf in einem virtuellen Netzwerk 65.356 IPs nicht übersteigen. Für Szenarien mit hoher Dichte ist es ratsam, den Netzwerkmodus „nat“ zu verwenden. Darüber hinaus sind für andere Abhängigkeiten wie z.B. den Lastenausgleich andere [Einschränkungen](https://docs.microsoft.com/azure/azure-subscription-service-limits) zu beachten. Zurzeit wurden bis zu 50 IPs pro Knoten getestet und für stabil befunden. 
 >
 
 ## <a name="set-up-open-networking-mode"></a>Einrichten des Netzwerkmodus „Open“
@@ -204,7 +204,7 @@ Wenn ein Containerdienst neu gestartet oder im Cluster auf einen anderen Knoten 
    | --- | --- | --- |
    |Priorität |2000 | |
    |NAME |Custom_Dns  | |
-   |Quelle |VirtualNetwork | |
+   |`Source` |VirtualNetwork | |
    |Ziel | VirtualNetwork | |
    |Dienst | DNS (UDP/53) | |
    |Aktion | ZULASSEN  | |

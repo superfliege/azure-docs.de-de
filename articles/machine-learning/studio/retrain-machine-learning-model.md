@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: 903f2700ad127c9bcc69e69ee125ba62fccf52e0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 395a231fcf43378a51e22427254abb196a46081e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59051630"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64709019"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Erneutes Trainieren und Bereitstellen eines Machine Learning-Modells
 
@@ -132,7 +132,7 @@ Speichern Sie die Werte für *BaseLocation*, *RelativeLocation* und *SasBlobToke
 
 ### <a name="sign-in-to-azure-resource-manager"></a>Anmelden bei Azure Resource Manager
 
-Melden Sie sich innerhalb Ihrer PowerShell-Umgebung zunächst mithilfe des Cmdlets [Connect-AzAccount](/powershell/module/az.profile/connect-azaccount) bei Ihrem Azure-Konto an.
+Melden Sie sich innerhalb Ihrer PowerShell-Umgebung zunächst mithilfe des Cmdlets [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) bei Ihrem Azure-Konto an.
 
 ### <a name="get-the-web-service-definition-object"></a>Abrufen des Webdienstdefinition-Objekts
 

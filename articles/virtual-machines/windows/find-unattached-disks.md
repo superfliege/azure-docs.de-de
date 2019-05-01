@@ -3,7 +3,7 @@ title: Suchen und Löschen von nicht angefügten verwalteten und nicht verwaltet
 description: Informationen zum Suchen und Löschen von nicht angefügten verwalteten und nicht verwalteten Azure-Datenträgern (VHDs/Seitenblobs) über Azure PowerShell
 services: virtual-machines-windows
 documentationcenter: ''
-author: ramankumarlive
+author: roygara
 manager: twooley
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2019
-ms.author: ramankum
+ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: cb52956afe085c076f0a9a7c2d6810f3def32e3f
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: f4cd419e06ba44b16d24f36e937002dce5196622
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57568956"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64726058"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Suchen und Löschen von nicht angefügten verwalteten und nicht verwalteten Azure-Datenträgern
 

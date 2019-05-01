@@ -3,19 +3,19 @@ title: Informationen zur Anpassung der Benutzeroberfläche (UI) in Azure Active 
 description: Erfahren Sie, wie Sie die Benutzeroberfläche Ihrer Anwendungen anpassen, die Azure Active Directory B2C verwenden.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 767e64d4d53702ede7b55edc747366ab3d32ae4d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 26dea1b636fce9e7f5defddd5cf4bc4c7d78d5da
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55996098"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682019"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Informationen zur Anpassung der Benutzeroberfläche (UI) in Azure Active Directory B2C
 

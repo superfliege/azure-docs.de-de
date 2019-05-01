@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: 933d411f67655b49b4aef7bf413dfe5f87e4ff08
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: ee52cde6feeb69f9140df497a9abee300c93fd71
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556729"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64692103"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>Hinzufügen einer IoT Hub-Ereignisquelle zu einer Time Series Insights-Umgebung
 
@@ -107,7 +107,9 @@ So fügen Sie Ihrem IoT-Hub eine neue Consumergruppe hinzu
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Definieren von Datenzugriffsrichtlinien](time-series-insights-data-access.md) zum Schützen der Daten
+
 * [Senden von Ereignissen](time-series-insights-send-events.md) an die Ereignisquelle
+
 * Zugreifen auf Ihre Umgebung über den [Time Series Insights-Explorer](https://insights.timeseries.azure.com)
 
 <!-- Images -->

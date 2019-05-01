@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.openlocfilehash: 1084b330a15764117ec123fb0c3c674941e29455
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 579e5138d5bfe93fcdc1f53f28c442125b8a69b3
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22647085"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60685562"
 ---
 # <a name="azure-germany-compute-services"></a>Computedienste von Microsoft Azure Deutschland
 ## <a name="virtual-machines"></a>Virtual Machines

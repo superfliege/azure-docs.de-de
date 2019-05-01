@@ -14,14 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 36ef27dfb4a5d77ec2e595013a82f55cdf240c0b
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 3b4c3bac1a2d62246fa5a7ff3a348c6cb2652ea1
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312460"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64868168"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Verwenden von Azure-Webhooks zum Überwachen von Media Services-Auftragsbenachrichtigungen mit .NET 
+
+> [!NOTE]
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 Beim Ausführen von Aufträgen ist es nützlich, deren Fortschritt verfolgen zu können. Sie können Media Services-Auftragsbenachrichtigungen mit Azure-Webhooks oder [Azure Queue Storage](media-services-dotnet-check-job-progress-with-queues.md) überwachen. In diesem Artikel wird die Verwendung von Webhooks veranschaulicht.
 
@@ -31,7 +34,7 @@ In diesem Artikel werden die folgenden Schritte erläutert:
     
     In diesem Fall wird der Webhook von Media Services ausgelöst, wenn sich bei Ihrem Verschlüsselungsauftrag der Status ändert. Die Funktion lauscht auf den Webhookrückruf von Media Services-Benachrichtigungen und veröffentlicht das Ausgabemedienobjekt, sobald der Auftrag beendet wurde. 
     
-    >[!NOTE]
+    >[!TIP]
     >Bevor Sie fortfahren, stellen Sie sicher, dass Sie die Funktionsweise von [HTTP- und Webhookbindungen in Azure Functions](../../azure-functions/functions-bindings-http-webhook.md) verstehen.
     >
     

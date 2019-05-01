@@ -3,17 +3,17 @@ title: Erste Schritte mit Microsoft Power BI-Arbeitsbereichssammlungen
 description: Bei Power BI-Arbeitsbereichssammlungen handelt es sich um einen Azure-Dienst, mit dem Anwendungsentwickler eigenen Anwendungen interaktive Power BI-Berichte hinzufügen können.
 services: power-bi-workspace-collections
 ms.service: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
+author: rkarlin
+ms.author: rkarlin
 ms.topic: conceptual
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.openlocfilehash: 751d69cd9b52cf88bb54900e67283fdff3d90579
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: d1011a8fd8f181233be8e1fa27c3bfaea3d86141
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520478"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64685170"
 ---
 # <a name="get-started-with-microsoft-power-bi-workspace-collections"></a>Erste Schritte mit Microsoft Power BI-Arbeitsbereichssammlungen
 

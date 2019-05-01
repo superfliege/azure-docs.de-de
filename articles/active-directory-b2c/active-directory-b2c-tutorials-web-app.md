@@ -3,19 +3,19 @@ title: 'Tutorial: Aktivieren der Authentifizierung in einer Webanwendung – Azu
 description: Tutorial zur Verwendung von Azure Active Directory B2C zum Bereitstellen einer Benutzeranmeldung für eine ASP.NET-Webanwendung.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.author: davidmu
 ms.date: 02/04/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: ced74cc5af829c3677a12aaf4bffdf9a518f6053
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 243df4457263a3653c501c7a409d2c3a77ee07e1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755627"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64690170"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Tutorial: Aktivieren der Authentifizierung in einer Webanwendung mit Azure Active Directory B2C
 
@@ -48,7 +48,7 @@ In dem Tutorial, das Sie zur Vorbereitung absolviert haben, wurde eine Webanwend
 7. Notieren Sie sich auf der Eigenschaftenseite die Anwendungs-ID, die Sie beim Konfigurieren der Webanwendung verwenden.
 8. Wählen Sie **Schlüssel** > **Schlüssel generieren** > **Speichern** aus. Notieren Sie sich den Schlüssel. Er wird beim Konfigurieren der Webanwendung verwendet.
 
-## <a name="configure-the-sample"></a>Konfigurieren des Beispiels
+## <a name="configure-the-sample"></a>Das Beispiel konfigurieren
 
 In diesem Tutorial konfigurieren Sie ein Beispiel, das Sie von GitHub herunterladen können. In dem Beispiel wird mithilfe von ASP.NET eine einfache Aufgabenliste bereitgestellt. Das Beispiel verwendet [Microsoft OWIN-Middleware-Komponenten](https://docs.microsoft.com/aspnet/aspnet/overview/owin-and-katana/). [Laden Sie eine ZIP-Datei herunter](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip), oder klonen Sie das Beispiel aus GitHub. Extrahieren Sie die Beispieldatei unbedingt in einem Ordner, dessen Pfad insgesamt maximal 259 Zeichen lang ist.
 

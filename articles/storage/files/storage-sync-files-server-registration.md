@@ -2,18 +2,18 @@
 title: Verwalten registrierter Server mit der Azure-Dateisynchronisierung | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie einen Windows Server bei einem Azure-Dateisynchronisierungsdienst oder Speichersynchronisierungsdienst registrieren bzw. die Registrierung aufheben.
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 07/19/2018
-ms.author: wgries
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0f18467bfefdb27f2cb9c2c3f56942f679673c16
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9f1195927acee143a34ec6c74f3ad301194fbc84
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59048443"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64722974"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Verwalten registrierter Server mit der Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.

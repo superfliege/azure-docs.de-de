@@ -3,19 +3,19 @@ title: 'Einrichten der Registrierung und Anmeldung mit einem GitHub-Konto: Azure
 description: Bereitstellen von Registrierung und Anmeldung für Kunden mit GitHub-Konten in Ihren Anwendungen mithilfe von Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: f1c1ac91c08fe27445f4b9631500543d1d0287bd
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 686ba9662084b2a8013d3b514f6d2301d8cbc988
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56427274"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64703166"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem GitHub-Konto mithilfe von Azure Active Directory B2C
 

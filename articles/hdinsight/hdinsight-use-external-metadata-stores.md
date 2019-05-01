@@ -1,7 +1,6 @@
 ---
 title: Verwenden von externen Metadatenspeichern – Azure HDInsight
 description: Verwenden von externen Metadatenspeichern für HDInsight-Cluster
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 3daa71c91d1e49a497a979b9b5b89df1fcb9418c
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 0a6bcb3fb94df56caf4d095097572dd8a704f856
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889680"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64701195"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Verwenden von externen Metadatenspeichern in Azure HDInsight
 

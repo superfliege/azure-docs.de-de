@@ -1,19 +1,18 @@
 ---
 title: Streaming im großen Maßstab in Azure HDInsight
 description: Hier erfahren Sie, wie Sie das Datenstreaming mit skalierbaren HDInsight-Clustern verwenden.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: fd2614c258aff146397e24e688eae18d84d3cfa6
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: e2b6cbabc9a0c727c9eb0232bd55048493b29128
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201159"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64696922"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Bedarfsorientiertes Streaming in HDInsight
 

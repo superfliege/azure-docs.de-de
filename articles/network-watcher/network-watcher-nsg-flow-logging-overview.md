@@ -3,8 +3,8 @@ title: Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgrup
 description: In diesem Artikel wird erläutert, wie das NSG-Datenflussprotokolle-Feature von Azure Network Watcher verwendet wird.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: 47d91341-16f1-45ac-85a5-e5a640f5d59e
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: jdial
-ms.openlocfilehash: 6e15149dec9fdbb7413745d36b3f6a158113b586
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.author: kumud
+ms.openlocfilehash: 1ec7fd4116aa848a9c431df386997cb23f405f1b
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547021"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925417"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen
 
@@ -91,7 +91,7 @@ Der folgende Text ist ein Beispiel für ein Datenflussprotokoll. Wie Sie sehen k
 
 **Aktivieren der NSG-Datenflussprotokollierung für alle Netzwerksicherheitsgruppen (NSGs), die einer Ressource angefügt sind**: Datenflussprotokollierung in Azure wird für die einzelne NSG-Ressource konfiguriert. Ein Flow wird nur einer einzigen NSG-Regel zugeordnet. In Szenarien, in denen mehrere NSGs verwendet werden, empfehlen wir, dass die NSG-Datenflussprotokollierung für alle auf das Subnetz oder die Netzwerkschnittstelle einer Ressource angewendeten Netzwerksicherheitsgruppen aktiviert wird, um sicherzustellen, dass der gesamte Datenverkehr aufgezeichnet wird. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Gewusst wie: Bewertung von Datenverkehr](../virtual-network/security-overview.md#how-traffic-is-evaluated). 
 
-**Kosten der Datenflussprotokollierung**: Die NSG-Datenflussprotokollierung wird über die Menge der erzeugten Protokolle abgerechnet. Hohe Datenverkehrsvolumen können zu großen Datenflussprotokollvolumen und den damit verbundenen Kosten führen. Preise für NSG-Datenflussprotokolle enthalten nicht die zugrunde liegenden Kosten der Speicherung. Wenn Sie die Aufbewahrungsrichtlinienfunktion mit der NSG-Datenflussprotokollierung verwenden, kann dies zu einem hohen Volumen von Speichervorgängen und den damit verbundenen Kosten führen. Wenn Sie die Aufbewahrungsrichtlinienfunktion nicht benötigen, empfehlen wir, dass Sie diesen Wert auf 0 festlegen. Zusätzliche Details finden Sie unter [Network Watcher – Preise](https://azure.microsoft.com/en-us/pricing/details/network-watcher/) und [Preise für Azure Storage](https://azure.microsoft.com/en-us/pricing/details/storage/).
+**Kosten der Datenflussprotokollierung**: Die NSG-Datenflussprotokollierung wird über die Menge der erzeugten Protokolle abgerechnet. Hohe Datenverkehrsvolumen können zu großen Datenflussprotokollvolumen und den damit verbundenen Kosten führen. Preise für NSG-Datenflussprotokolle enthalten nicht die zugrunde liegenden Kosten der Speicherung. Wenn Sie die Aufbewahrungsrichtlinienfunktion mit der NSG-Datenflussprotokollierung verwenden, kann dies zu einem hohen Volumen von Speichervorgängen und den damit verbundenen Kosten führen. Wenn Sie die Aufbewahrungsrichtlinienfunktion nicht benötigen, empfehlen wir, dass Sie diesen Wert auf 0 festlegen. Zusätzliche Details finden Sie unter [Network Watcher – Preise](https://azure.microsoft.com/pricing/details/network-watcher/) und [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
 **Aus Internet-IP-Adressen protokollierte eingehende Datenflüsse an virtuelle Computer ohne öffentliche IP-Adressen**: Für virtuelle Computer, denen keine öffentliche IP-Adresse über eine öffentliche IP-Adresse zugewiesen wurde, die der Netzwerkkarte als öffentliche IP-Adresse auf Instanzebene zugeordnet ist, oder die zu einem Basis-Back-End-Pool für Lastenausgleich gehören, werden [standardmäßiges SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) und eine IP-Adresse verwendet, die von Azure zugewiesen wurde, um ausgehende Verbindung zu unterstützen. Daher sehen Sie möglicherweise Datenflussprotokolleinträge für Datenflüsse von Internet-IP-Adressen, wenn der jeweilige Datenfluss für einen Port im Bereich der Ports bestimmt war, die für SNAT zugewiesen sind. Obwohl Azure diese Datenflüsse zu dem virtuellen Computer nicht zulässt, wird der Versuch protokolliert und konzeptbedingt im NSG-Datenflussprotokoll von Network Watcher aufgeführt. Es empfiehlt sich, unerwünschten eingehenden Internet-Datenverkehr explizit mit NSG zu blockieren.
 

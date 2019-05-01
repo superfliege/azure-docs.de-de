@@ -8,12 +8,12 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: f8af19056a343abdbafcd4ead8b072330cb41fd9
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: c6fcb345b49ce6354a24408ebe163fb928990252
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192071"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925693"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Festlegen einer Application Developers Controlled Distribution (ADCD) in IBM zD&T v1
 
@@ -33,9 +33,9 @@ Wie zD&T sind ADCDs nur für IBM-Kunden und -Partner verfügbar und ausschließl
 
 - Einen [Lizenzierungsserver](https://www.ibm.com/support/knowledgecenter/en/SSTQBD_12.0.0/com.ibm.zsys.rdt.tools.user.guide.doc/topics/zdt_ee.html). Dies ist zum Ausführen von IBM zD&T erforderlich. Wie Sie die Umgebung erstellen, hängt davon ab, wie Sie die Software von IBM lizenzieren:
 
-  - Ein **hardwarebasierter Lizenzierungsserver** erfordert ein USB-Hardwaregerät, das die zum Zugriff auf alle Teile der Software erforderlichen Rational Tokens enthält. Dies müssen Sie bei IBM anfordern.
+  - Für einen **hardwarebasierten Lizenzierungsserver** ist ein USB-Hardwaregerät erforderlich, das die zum Zugriff auf alle Teile der Software erforderlichen Rational Tokens enthält. Dieses müssen Sie bei IBM anfordern.
 
-  - Ein **softwarebasierter Lizenzierungsserver** erfordert, dass Sie einen zentralen Server für die Verwaltung der Lizenzierungsschlüssel einrichten. Diese Methode wird bevorzugt und erfordert, dass Sie die Schlüssel einrichten, die Sie von IBM im Verwaltungsserver erhalten.
+  - Für einen **softwarebasierten Lizenzierungsserver** müssen Sie einen zentralen Server für die Verwaltung der Lizenzschlüssel einrichten. Diese Methode wird bevorzugt und erfordert, dass Sie die Schlüssel einrichten, die Sie von IBM im Verwaltungsserver erhalten.
 
 ## <a name="download-the-installation-packages-from-passport-advantage"></a>Herunterladen der Installationspakete von Passport Advantage
 
@@ -187,7 +187,7 @@ Glückwunsch! Sie führen jetzt eine IBM-Mainframeumgebung in Azure aus.
 - [Mainframe: Mythen und Fakten](https://docs.microsoft.com/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/myths-and-facts)
 - [IBM DB2 pureScale in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ibm-db2-purescale-azure)
 - [Problembehandlung](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
-- [Enträtselung der Migration vom Mainframe zu Azure](https://azure.microsoft.com/en-us/resources/demystifying-mainframe-to-azure-migration/)
+- [Demystifying mainframe to Azure migration](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/) (Beseitigen von Irrtümern in Bezug auf die Migration von Mainframesystemen zu Azure)
 
 <!-- INTERNAL LINKS -->
 [microfocus-get-started]: /microfocus/get-started.md

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/30/2019
+ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: 00dab8381c26a6331dd325eacd4a550892bd3411
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a36ca880387ee1a3c5f749dbd6b9d7dcb9e6d79d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59495172"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64708985"
 ---
 # <a name="live-events-and-live-outputs"></a>Liveereignisse und Liveausgaben
 
@@ -143,6 +143,10 @@ Das **Liveausgabe**-Objekt verhält sich wie ein Tonbandgerät, das den Livestre
 Wenn Sie das **Medienobjekt** der **Liveausgabe** mit einem **Streaminglocator** veröffentlicht haben, ist das **Liveereignis** (bis zur DVR-Fensterlänge) weiterhin bis zum Ablauf oder der Löschung des Streaminglocators sichtbar, je nachdem, was zuerst eintritt.
 
 Weitere Informationen finden Sie unter [Verwenden eines Cloud-DVR](live-event-cloud-dvr.md).
+
+## <a name="provide-feedback"></a>Feedback geben
+
+Im Artikel [Azure Media Services-Community](media-services-community.md) finden Sie verschiedene Möglichkeiten, Fragen zu stellen, Feedback zu geben und Updates zu Media Services zu bekommen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

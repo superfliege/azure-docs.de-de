@@ -3,19 +3,19 @@ title: Beispiele und Definitionen für Überwachungsprotokolle in Azure Active D
 description: Leitfaden und Beispiele für den Zugriff auf die Azure AD B2C-Überwachungsprotokolle
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 117d58f6f56fe1b24539c7bfe950f1a23d6de51a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fdc3578fe78e60086a148e4204019a8293030b83
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003598"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688751"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Zugriff auf Active Directory B2C-Überwachungsprotokolle
 
@@ -33,7 +33,7 @@ Die **B2C**-Kategorie in Überwachungsprotokollen umfasst die folgenden Aktivit�
 |Verzeichnis |Aktivitäten im Zusammenhang mit Verzeichnisattributen, die abgerufen werden, wenn sich ein Administrator über das Azure-Portal anmeldet. |
 |Anwendung | CRUD-Vorgänge für B2C-Anwendungen |
 |Schlüssel |CRUD-Vorgänge für im B2C-Schlüsselcontainer gespeicherte Schlüssel |
-|Ressource |CRUD-Vorgänge für B2C-Ressourcen (z.B. Richtlinien und Identitätsanbieter)
+|Resource |CRUD-Vorgänge für B2C-Ressourcen (z.B. Richtlinien und Identitätsanbieter)
 |Authentication |Überprüfung der Anmeldeinformationen des Benutzers und Tokenausstellung|
 
 > [!NOTE]

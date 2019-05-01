@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
+ms.date: 04/22/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fbb90e95c07c66f45d49076f0570ac028c37244
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 4b924746c00a438ec4ac81dacc02905565adf30e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011400"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682114"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure AD-Aktivitätsprotokolle in Azure Monitor
 
@@ -72,14 +72,24 @@ Falls Sie bereits über eine Azure AD-Lizenz verfügen, benötigen Sie ein Azure
 
 Für jedes Überwachungsprotokollereignis werden ca. 2 KB an Datenspeicher verbraucht. Für einen Mandanten mit 100.000 Benutzern, für den pro Tag ca. 1,5 Millionen Ereignisse anfallen, benötigen Sie also ungefähr 3 GB an Datenspeicher pro Tag. Da Schreibvorgänge in etwa 5-Minuten-Batches erfolgen, können Sie mit ca. 9.000 Schreibvorgängen pro Monat rechnen. 
 
-Die folgende Tabelle enthält eine Schätzung der Kosten in Abhängigkeit von der Mandantengröße für ein universelles Speicherkonto (v2) in der Region „USA, Westen“ und einer Aufbewahrungsdauer von mindestens einem Jahr. Verwenden Sie den [Azure Storage-Preisrechner](https://azure.microsoft.com/pricing/details/storage/blobs/), um eine genauere Schätzung für die Datenmenge zu erstellen, mit der Sie für Ihre Anwendung rechnen. 
+
+Die folgende Tabelle enthält eine Schätzung der Kosten in Abhängigkeit von der Mandantengröße für ein universelles Speicherkonto (v2) in der Region „USA, Westen“ und einer Aufbewahrungsdauer von mindestens einem Jahr. Verwenden Sie den [Azure Storage-Preisrechner](https://azure.microsoft.com/pricing/details/storage/blobs/), um eine genauere Schätzung für die Datenmenge zu erstellen, mit der Sie für Ihre Anwendung rechnen.
+
 
 | Protokollkategorie | Anzahl an Benutzern | Ereignisse pro Tag | Datenmenge pro Monat (Schätzung) | Kosten pro Monat (Schätzung) | Kosten pro Jahr (Schätzung) |
 |--------------|-----------------|----------------------|--------------------------------------|----------------------------|---------------------------|
 | Audit | 100.000 | 1,5&nbsp;Millionen | 90 GB | 1,93 $ | 23,12 $ |
 | Audit | 1.000 | 15.000 | 900 MB | 0,02 $ | 0,24 $ |
 | Anmeldungen | 1.000 | 34.800 | 4 GB | 0,13 $ | 1,56 $ |
-| Anmeldungen | 100.000 | 15&nbsp;Millionen | 1,7 TB | 35,41 $ | 424,92 $ | 
+| Anmeldungen | 100.000 | 15&nbsp;Millionen | 1,7 TB | 35,41 $ | 424,92 $ |
+ 
+
+
+
+
+
+
+
 
 
 ### <a name="event-hub-messages-for-activity-logs"></a>Event Hub-Nachrichten für Aktivitätsprotokolle

@@ -2,24 +2,18 @@
 title: Azure IoT Edge-Module
 description: Das Angebot für IoT Edge-Module im Azure Marketplace für Herausgeber von Apps und Diensten.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, IoT Edge module offer
-documentationcenter: ''
 author: qianw211
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: qianw211
-ms.openlocfilehash: f13d3f780e24d71babb1bda48a9b85d1208e3c4c
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 9f4ad704de83e5971b5bc10083aefeec5d28374b
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074596"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937851"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge-Module
 

@@ -3,19 +3,19 @@ title: Beispiele für die Transformation von Social Media-Kontoansprüchen für 
 description: Hier finden Sie Beispiele für die Transformation von Social Media-Kontoansprüchen für das Schema des Frameworks für die Identitätsfunktion von Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 53608654392d7efb73b6dadac14f01a94bb035a7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f6da199beb292f193d97eee309ca40dd74f81f8e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58893519"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64697725"
 ---
 # <a name="social-accounts-claims-transformations"></a>Anspruchstransformationen für Social Media-Konten
 

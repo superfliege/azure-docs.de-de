@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.openlocfilehash: 0ff73e342a668fef6d405783c130cf216f8003b4
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149967"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60395569"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Verbinden von ITSM-Produkten/-Diensten mit dem ITSM-Connector
 Dieser Artikel bietet Informationen dazu, wie Sie die Verbindung zwischen Ihrem ITSM-Produkt bzw. -Dienst und dem ITSM-Connector (ITSMC) in Log Analytics konfigurieren, um Arbeitselemente zentral zu verwalten. Weitere Informationen zu ITSMC finden Sie in der [Übersicht](../../azure-monitor/platform/itsmc-overview.md).
@@ -103,7 +103,7 @@ Führen Sie das Skript nach Bereitstellung der folgenden erforderlichen Details 
 
 - Details zum Azure-Abonnement
 - Ressourcengruppenname
-- Standort
+- Location
 - Details zum Service Manager-Server (Servername, Domäne, Benutzername und Kennwort)
 - Präfix des Namens der Website für Ihre Web-App
 - Service Bus-Namespace.

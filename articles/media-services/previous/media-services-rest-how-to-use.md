@@ -14,15 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako;johndeu
-ms.openlocfilehash: 549554521570d1d2f27b2da2b36ca1dfde25562f
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: fbdd9325f50e1bcb271b7ca47b9ccd3361d0d27e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293613"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687060"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Übersicht über die Media Services Operations-REST-API 
-[!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
+
+> [!NOTE]
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 Die **Media Services Operations-REST-API** wird zum Erstellen von Aufträgen, Medienobjekten, Livekanälen und anderen Ressourcen in einem Media Services-Konto verwendet. Weitere Informationen finden Sie in der [Referenz zur Media Services Operations-REST-API](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
 

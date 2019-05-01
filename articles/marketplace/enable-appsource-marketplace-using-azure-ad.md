@@ -2,24 +2,18 @@
 title: Aktivieren eines Microsoft AppSource- und Azure Marketplace-Eintrags mithilfe von Azure Active Directory | Azure
 description: Aktivieren des Listingtyps mithilfe von Azure Active Directory im Azure Marketplace und in AppSource für Herausgeber von Apps und Diensten.
 services: Azure, AppSource, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: qianw211
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: qianw211
-ms.openlocfilehash: 247a45a38d732ace0455c6ca2ebbd5c44c384004
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 981d9427dc8407c7300f01c941e39ba9723d53a8
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732327"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938086"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Aktivieren eines AppSource- und Marketplace-Eintrags mithilfe von Azure Active Directory
 

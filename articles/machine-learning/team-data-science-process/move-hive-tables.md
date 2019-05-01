@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 28e399eaf62731d7c38cea5f5a8cb8ebf876e686
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 404335ce0cd05085c79cbeea29ad95f79008289c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522502"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64681951"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Erstellen von Hive-Tabellen und Laden von Daten aus Azure Blob Storage
 
@@ -47,7 +47,7 @@ Hive-Abfragen können folgendermaßen übermittelt werden:
 2. [Übermitteln von Hive-Abfragen mit dem Hive-Editor](#hive-editor)
 3. [Übermitteln von Hive-Abfragen mit Azure PowerShell-Befehlen](#ps)
 
-Hive-Abfragen sind ähnlich wie SQL-Abfragen. Als mit SQL vertrauter Benutzer finden Sie möglicherweise die Informationen im [Cheat Sheet „Hive for SQL Users“](http://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf) (Spickzettel zu Hive für SQL-Benutzer) nützlich.
+Hive-Abfragen sind ähnlich wie SQL-Abfragen. Als mit SQL vertrauter Benutzer finden Sie möglicherweise die Informationen im [Cheat Sheet „Hive for SQL Users“](https://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf) (Spickzettel zu Hive für SQL-Benutzer) nützlich.
 
 Beim Übermitteln von Hive-Abfragen können Sie auch das Ziel der Ausgabe der Hive-Abfragen steuern. Diese kann auf den Bildschirm, in eine lokale Datei auf dem Hauptknoten oder in ein Azure-Blob erfolgen.
 

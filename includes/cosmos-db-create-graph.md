@@ -2,19 +2,21 @@
 title: Includedatei
 description: Includedatei
 services: cosmos-db
-author: SnehaGunda
+author: rockboyfor
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 04/13/2018
-ms.author: sngun
+origin.date: 04/13/2018
+ms.date: 03/18/2019
+ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: b656001c8a7d1bed21c208bc643018c5f751e09c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 9800848b24523a0eb5992e64ce1580cc53b0e3a0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38733816"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60891454"
 ---
+<!--Verify sucessfully-->
 Sie können nun mithilfe des Daten-Explorer-Tools im Azure-Portal eine Diagrammdatenbank erstellen. 
 
 1. Klicken Sie auf **Daten-Explorer** > **New Graph** (Neuer Graph).
@@ -33,3 +35,7 @@ Sie können nun mithilfe des Daten-Explorer-Tools im Azure-Portal eine Diagrammd
     Throughput|400 RUs|Ändern Sie den Durchsatz in 400 Anforderungseinheiten pro Sekunde (RU/s). Sie können den Durchsatz später zentral hochskalieren, wenn Sie Wartezeiten reduzieren möchten.
 
 3. Wenn das Formular ausgefüllt ist, klicken Sie auf **OK**.
+
+<!--Verify sucessfully-->
+<!--Update_Description: new articles on  -->
+<!--ms.date: 03/18/2019-->

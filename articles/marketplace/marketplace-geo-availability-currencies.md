@@ -2,19 +2,17 @@
 title: Geografische Verfügbarkeit und Unterstützung von Währungen | Azure
 description: Geografische Verfügbarkeit in Azure Marketplace und AppSource
 services: Azure, Marketplace, Compute, Storage, Networking
-documentationcenter: ''
 author: qianw211
-manager: Patrick.Butler
 ms.service: marketplace
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: ellacroi
-ms.openlocfilehash: 5a07ea4d1d27dcc054d64cb4ce8893a13adc4aad
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 215a15da2868a4543ba1108899981f40f7bf4e07
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007660"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64938254"
 ---
 # <a name="geographic-availability-and-currency-support"></a>Geografische Verfügbarkeit und Unterstützung von Währungen
 
@@ -117,7 +115,7 @@ Azure Marketplace-Angebote können in 141 geografischen Regionen gemäß der Rec
 | Norwegen                              | NO        | NOK          |
 | Oman                                | OM        | USD          |
 | Pakistan                            | PK        | USD          |
-| Palästina                           | PS        | USD          |
+| Palästinensische Autonomiegebiete               | PS        | USD          |
 | Panama                              | PA        | USD          |
 | Paraguay                            | PY        | USD          |
 | Peru                                | PE        | USD          |

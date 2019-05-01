@@ -3,19 +3,19 @@ title: 'Einrichten der Registrierung und Anmeldung mit einem Facebook-Konto: Azu
 description: Bereitstellen von Registrierung und Anmeldung für Kunden mit Facebook-Konten in Ihren Anwendungen mithilfe von Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 56534589c89fefb38f206f1c57da7996ae43e81d
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: b4182eae848fdb862b770e9707e9de31bcdb4e0a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428498"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64703518"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Facebook-Konto mithilfe von Azure Active Directory B2C
 

@@ -3,19 +3,19 @@ title: Hinzufügen des Microsoft-Kontos (Microsoft Account, MSA) als Identitäts
 description: Beispiel mit Verwendung von Microsoft als Identitätsanbieter mithilfe des OpenID Connect-Protokolls (OIDC).
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 842d9497333d02a9f7918d86cd7d76e84b504063
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 983b90af4aafe158bf32290b1e4a2092acc47b17
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002112"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64706476"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung mit einem Microsoft-Konto mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 
@@ -44,7 +44,7 @@ Um ein Microsoft-Konto als Identitätsanbieter in Azure AD B2C verwenden zu kön
 Sie müssen das Kennwort speichern, das Sie generiert und zuvor in Ihrem Azure AD B2C-Mandanten aufgezeichnet haben.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Klicken Sie im oberen Menü auf **Directory and subscription filter** (Verzeichnis- und Abonnementfilter), und wählen Sie das Verzeichnis aus, das Ihren Mandanten enthält.
+2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Klicken Sie im oberen Menü auf **Verzeichnis- und Abonnementfilter**, und wählen Sie das Verzeichnis aus, das Ihren Mandanten enthält.
 3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
 4. Wählen Sie auf der Seite „Übersicht“ die Option **Identity Experience Framework – PREVIEW** (Framework für die Identitätsfunktion – VORSCHAU) aus.
 5. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
@@ -156,7 +156,7 @@ Nachdem Sie eine Schaltfläche implementiert haben, müssen Sie sie mit einer Ak
 Die Kommunikation mit Azure AD B2C erfolgt über eine Anwendung, die Sie in Ihrem Mandanten erstellen. In diesem Abschnitt werden optionale Schritte aufgeführt, die Sie ausführen können, um eine Testanwendung zu erstellen, falls Sie dies noch nicht getan haben.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Klicken Sie im oberen Menü auf **Directory and subscription filter** (Verzeichnis- und Abonnementfilter), und wählen Sie das Verzeichnis aus, das Ihren Mandanten enthält.
+2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Klicken Sie im oberen Menü auf **Verzeichnis- und Abonnementfilter**, und wählen Sie das Verzeichnis aus, das Ihren Mandanten enthält.
 3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
 4. Wählen Sie **Anwendungen** und dann **Hinzufügen** aus.
 5. Geben Sie einen Namen für die Anwendung ein, z.B. *testapp1*.

@@ -3,19 +3,19 @@ title: Konfigurieren des Flows für Kennwortanmeldeinformationen von Ressourcenb
 description: Erfahren Sie, wie Sie den Flow für Kennwortanmeldeinformationen von Ressourcenbesitzern in Azure Active Directory B2C konfigurieren.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 265f1405a8779cdca101f18cf37b64f1933c2ff3
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: d86caf5e5c6df29e00f17462f6a06602ff1245d8
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400760"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688861"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurieren des Flows für Kennwortanmeldeinformationen von Ressourcenbesitzern in Azure Active Directory B2C mithilfe einer benutzerdefinierten Richtlinie
 

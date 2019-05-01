@@ -3,19 +3,19 @@ title: Hinzufügen von AD FS als SAML-Identitätsanbieter mithilfe benutzerdefin
 description: Einrichten von AD FS 2016 mit dem SAML-Protokoll und benutzerdefinierten Richtlinien in Azure Active Directory B2C
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 85a339d2638e2223815a4ae539f37c439a4eac91
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 91db42a003bdbb7614faba2122c30826b62ee20f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000113"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64698661"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Hinzufügen von AD FS als SAML-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 
@@ -33,7 +33,7 @@ In diesem Artikel erfahren Sie, wie Sie die Anmeldung für ein AD FS-Benutzerkon
 Sie müssen Ihr Zertifikat in Ihrem Azure AD B2C-Mandanten speichern.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Klicken Sie im oberen Menü auf **Directory and subscription filter** (Verzeichnis- und Abonnementfilter), und wählen Sie das Verzeichnis aus, das Ihren Mandanten enthält.
+2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Klicken Sie im oberen Menü auf **Verzeichnis- und Abonnementfilter**, und wählen Sie das Verzeichnis aus, das Ihren Mandanten enthält.
 3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
 4. Wählen Sie auf der Seite „Übersicht“ die Option **Identity Experience Framework – PREVIEW** (Framework für die Identitätsfunktion – VORSCHAU) aus.
 5. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.

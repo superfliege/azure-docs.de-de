@@ -14,15 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 47db5ba826b94422672dd46b191556da43b70b02
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 51fffbd170daecfec6fcea95caa0526e6d881407
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57873824"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64724121"
 ---
 # <a name="media-services-development-with-net"></a>Media Services-Entwicklung mit .NET 
-[!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
+
+> [!NOTE]
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
 
 In diesem Artikel wird das Entwickeln von Media Services-Anwendungen mit .NET erläutert.
 

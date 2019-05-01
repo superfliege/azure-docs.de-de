@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
-ms.openlocfilehash: e5cf89b7fe01946de9944a7026ec448cd55dd6dc
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 26ddb0cdd2728f9dff5d45494a14841cdc1a20cd
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630665"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922882"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Herstellen einer Verbindung zwischen Configuration Manager und Azure Monitor
 Sie können Ihre System Center Configuration Manager-Umgebung mit Azure Monitor verbinden, um die Daten der Gerätesammlung zu synchronisieren und in Azure Monitor und Azure Automation auf diese Sammlungen zu verweisen.  
@@ -67,7 +67,7 @@ Zum Hinzufügen einer Log Analytics-Verbindung muss für die Configuration Manag
    
 2. Auf dem Bildschirm **Allgemein** vergewissern Sie sich, dass Sie die folgenden Aktionen durchgeführt haben und dass Sie für jedes Element Detailinformationen haben, und wählen Sie anschließend **Weiter** aus.
 
-   1. Im Azure-Portal haben Sie Configuration Manager als Webanwendung und/oder Web API-App registriert, und Sie haben die [Client-ID von der Registrierung](../../active-directory/develop/quickstart-v1-add-azure-ad-app.md) vorliegen.
+   1. Im Azure-Portal haben Sie Configuration Manager als Webanwendung und/oder Web API-App registriert, und Sie haben die [Client-ID von der Registrierung](../../active-directory/develop/quickstart-register-app.md) vorliegen.
    2. Im Azure-Portal haben Sie einen geheimen App-Schlüssel für die registrierte Anwendung in Azure Active Directory erstellt.  
    3. Im Azure-Portal haben Sie der registrierten Web-App eine Zugriffsberechtigung für den Log Analytics-Arbeitsbereich in Azure Monitor erteilt.  
       ![Verbindung mit Log Analytics: Seite „Allgemein“ des Assistenten](./media/collect-sccm/sccm-console-general01.png)

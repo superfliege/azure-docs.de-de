@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: suchiagicha
-ms.openlocfilehash: e4c698dc5aa8a07d09835adeac39db6ee35f720c
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 01430c40ec9fcf1af3a463f8f86d646d15b6dd49
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666153"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925940"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnose und Leistungsüberwachung für Reliable ServiceRemoting
 Die Reliable ServiceRemoting-Runtime gibt [Leistungsindikatoren](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx) aus. Diese bieten einen Einblick in die Funktion von ServiceRemoting und unterstützen bei der Problembehandlung und Leistungsüberwachung.
@@ -100,5 +100,5 @@ Wenn ein Client eine Methode über ein Dienst-Proxy-Objekt aufruft, wird eine An
 | Service Fabric-Dienst |Durchschnittliche Anzahl von Millisekunden für die Anwortserialisierung |Zeit (in Millisekunden), die erforderlich war, um die Dienstantwortnachricht vor dem Senden an den Client beim Dienst zu serialisieren |
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Beispielcode](https://azure.microsoft.com/en-us/resources/samples/?service=service-fabric&sort=0)
+* [Beispielcode](https://azure.microsoft.com/resources/samples/?service=service-fabric&sort=0)
 * [EventSource-Anbieter in PerfView](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)

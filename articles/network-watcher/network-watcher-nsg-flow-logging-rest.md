@@ -3,8 +3,8 @@ title: Verwalten von Flowprotokollen für Netzwerksicherheitsgruppen mit Azure N
 description: Auf dieser Seite wird erläutert, wie Flowprotokolle für Netzwerksicherheitsgruppen in Azure Network Watcher mit der REST-API verwaltet werden.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: timlt
+author: KumudD
+manager: twooley
 editor: ''
 ms.assetid: 2ab25379-0fd3-4bfe-9d82-425dfc7ad6bb
 ms.service: network-watcher
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: jdial
-ms.openlocfilehash: 4569ea0ff43993c4605c55c529dbcb951ef502ca
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.author: kumud
+ms.openlocfilehash: ab4b283449ec6c0174f380b0231dd2e78dea419d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485016"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688045"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Konfigurieren von Flowprotokollen für Netzwerksicherheitsgruppen mit der REST-API
 

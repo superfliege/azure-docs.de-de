@@ -1,5 +1,4 @@
 ---
-ms.assetid: ''
 title: 'Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken: Azure Key Vault'
 description: Schrittweise Anweisungen zum Konfigurieren von Key Vault-Firewalls und virtuellen Netzwerken
 services: key-vault
@@ -7,15 +6,14 @@ author: amitbapat
 manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
-ms.workload: identity
 ms.date: 01/02/2019
 ms.author: ambapat
-ms.openlocfilehash: c54b78a24068758fabb0918cfeb7d6516fd1bce5
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: a6f2e899e8be39abdefaf9d4f524eae457673c1a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487235"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64694402"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken
 
@@ -121,5 +119,5 @@ Im Folgenden finden Sie Anweisungen zum Konfigurieren von Key Vault-Firewalls un
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Dienstendpunkte virtueller Netzwerke für Key Vault](key-vault-overview-vnet-service-endpoints.md)
+* [VNET-Dienstendpunkte für Key Vault](key-vault-overview-vnet-service-endpoints.md)
 * [Schützen Ihrer Key Vault-Instanz](key-vault-secure-your-key-vault.md)

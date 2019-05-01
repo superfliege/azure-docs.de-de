@@ -3,19 +3,19 @@ title: Definieren eines technischen OAuth1-Profils in einer benutzerdefinierten 
 description: Erfahren Sie, wie Sie ein technisches OAuth1-Profil in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C definieren.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 3fe839de8cbaa0b321b0b0602b000b7575224dde
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 7b3d579e9d4ceb92ee961778ba6083292461c144
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60010057"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64699829"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen OAuth1-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -23,7 +23,7 @@ ms.locfileid: "60010057"
 
 Azure Active Directory (Azure AD) B2C bietet Unterstützung für Identitätsanbieter mit dem [OAuth 1.0-Protokoll](https://tools.ietf.org/html/rfc5849). In diesem Artikel werden die Einzelheiten eines technischen Profils für die Interaktion mit einem Anspruchsanbieter thematisiert, der dieses standardisierte Protokoll unterstützt. Mit einem technischen OAuth1-Profil können Sie einen Verbund mit einem OAuth1-basierten Identitätsanbieter wie Twitter erstellen. Über einen Verbund mit dem Identitätsanbieter können sich Benutzer mit ihren vorhandenen Identitäten aus sozialen Netzwerken oder Unternehmen anmelden.
 
-## <a name="protocol"></a>Protokoll
+## <a name="protocol"></a>Protocol
 
 Das **Name**-Attribut des **Protocol**-Elements muss auf `OAuth1` festgelegt werden. Das Protokoll für das technische Profil **Twitter-OAUTH1** ist z.B. `OAuth1`.
 

@@ -9,19 +9,20 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: sstein
+ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: ec9bd3ee106571484c513c2d005a374a90c1d17e
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.date: 04/26/2019
+ms.openlocfilehash: 74a52df4eab8a3e471e541889cde74846af00fb8
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59359727"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574193"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Vorauszahlen von SQL-Datenbank-Computeressourcen mit reservierter Azure SQL-Datenbank-Kapazität
 
 Sparen Sie mit Azure SQL-Datenbank Geld im Vergleich zur nutzungsbasierten Bezahlung, indem Sie Computeressourcen im Voraus bezahlen. Mit reservierten Azure SQL-Datenbank-Kapazitäten leisten Sie eine Vorauszahlung für SQL-Datenbank für einen Zeitraum von einem oder drei Jahren und profitieren dafür von einem immensen Rabatt auf Computekosten. Um reservierte SQL-Datenbank-Kapazität zu erwerben, müssen Sie die Azure-Region, den Bereitstellungstyp, die Leistungsstufe und die Laufzeit angeben.
+
 
 Sie müssen die Reservierung keinen bestimmten SQL-Datenbank-Instanzen (Singletons, Pools für elastische Datenbanken oder verwaltete Instanzen) zuweisen. Betreffende SQL-Datenbank-Instanzen, die bereits ausgeführt oder neu bereitgestellt werden, profitieren automatisch von dem Vorteil. Beim Kauf einer Reservierung bezahlen Sie im Voraus die Computekosten für einen Zeitraum von einem oder drei Jahren. Sobald Sie eine Reservierung gekauft haben, werden die SQL-Datenbank-Computegebühren, die den Reservierungsattributen entsprechen, nicht mehr zu den Preisen der nutzungsbasierten Bezahlung abgerechnet. Eine Reservierung deckt nicht die Software-, Netzwerk- oder Speichergebühren für die SQL-Datenbank-Instanz ab. Nach Ablauf der Reservierungslaufzeit erlischt der Abrechnungsvorteil, und die SQL-Datenbank-Instanzen werden mit den Preisen für die nutzungsbasierte Bezahlung in Rechnung gestellt. Reservierungen werden nicht automatisch verlängert. Weitere Informationen zu den Preisen finden Sie unter [Azure SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/managed/).
 
@@ -52,7 +53,7 @@ Nehmen Sie beispielsweise an, Sie führen einen Pool für elastische Gen5-Datenb
     |:------------|:--------------|
     |NAME        |Der Name dieser Reservierung|
     |Abonnement|Das Abonnement, das für die Zahlung der Reservierung von SQL-Datenbank-Kapazitäten verwendet wird. Die Zahlungsmethode für das Abonnement wird mit Vorauszahlungen für die Reservierung von SQL-Datenbank-Kapazitäten belastet. Der Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P) oder „Nutzungsbasierte Zahlung“ (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P) sein. Bei einem Enterprise-Abonnement werden die Gebühren vom Verpflichtungsguthaben der Reservierung abgezogen oder als Überschreitung belastet. Bei einem Abonnement mit nutzungsbasierter Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für die Zahlung auf Rechnung in Rechnung gestellt.|
-    |Bereich       |Der Umfang der Reservierung virtueller Kerne kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen: <br/><br/>**Einzelabonnement:** Der Rabatt auf die Reservierung virtueller Kerne wird auf SQL-Datenbank-Instanzen in diesem Abonnement angewandt. <br/><br/>**Gemeinsames Abonnement:** Der Rabatt auf die Reservierung virtueller Kerne wird auf SQL-Datenbank-Instanzen angewandt, die in einem beliebigen Abonnement innerhalb des Abrechnungskontexts ausgeführt werden. Für Enterprise-Kunden stellt der freigegebene Bereich die Registrierung dar und umfasst alle Abonnements in der Registrierung. Für Kunden mit nutzungsbasierter Zahlung stellt der freigegebene Bereich alle Abonnements mit nutzungsbasierter Zahlung dar, die vom Kontoadministrator erstellt wurden.|
+    |`Scope`       |Der Umfang der Reservierung virtueller Kerne kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen: <br/><br/>**Einzelabonnement:** Der Rabatt auf die Reservierung virtueller Kerne wird auf SQL-Datenbank-Instanzen in diesem Abonnement angewandt. <br/><br/>**Gemeinsames Abonnement:** Der Rabatt auf die Reservierung virtueller Kerne wird auf SQL-Datenbank-Instanzen angewandt, die in einem beliebigen Abonnement innerhalb des Abrechnungskontexts ausgeführt werden. Für Enterprise-Kunden stellt der freigegebene Bereich die Registrierung dar und umfasst alle Abonnements in der Registrierung. Für Kunden mit nutzungsbasierter Zahlung stellt der freigegebene Bereich alle Abonnements mit nutzungsbasierter Zahlung dar, die vom Kontoadministrator erstellt wurden.|
     |Region      |Die Azure-Region, die durch die Reservierung von SQL-Datenbank-Kapazitäten abgedeckt wird.|
     |Bereitstellungstyp|Der SQL-Ressourcentyp, für den Sie die Reservierung erwerben möchten.|
     |Leistungsstufe|Die Dienstebene für die SQL-Datenbank-Instanzen.
@@ -89,7 +90,7 @@ Weitere Informationen zu Azure-Reservierungen finden Sie in den folgenden Artike
 - [Grundlegendes zum Rabatt für Azure-Reservierungen](../billing/billing-understand-reservation-charges.md)
 - [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](../billing/billing-understand-reserved-instance-usage.md)
 - [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](../billing/billing-understand-reserved-instance-usage-ea.md)
-- [Azure Reservations in Partner Center Cloud Solution Provider (CSP) program (Azure-Reservierungen im Azure Cloud Solution Provider-Programm im Partner Center)](https://docs.microsoft.com/partner-center/azure-reservations)
+- [Verkaufen Microsoft Azure Reserved Instances](https://docs.microsoft.com/partner-center/azure-reservations)
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
 

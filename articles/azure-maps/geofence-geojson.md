@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 6f76eea365311cd6c10dd39054187bf3a07bd595
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: d4b6c8289ae7c22521fc433c928f2b25a56c87ef
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57568990"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64723573"
 ---
 # <a name="geofencing-geojson-data"></a>Geofencing von GeoJSON-Daten
 
-Die Azure Maps-APIs [GET Geofence](https://docs.microsoft.com/rest/api/maps/spatial/getgeofencepreview) und [POST Geofence](https://docs.microsoft.com/rest/api/maps/spatial/postgeofencepreview) ermöglichen Ihnen das Abrufen der Nähe einer Koordinate bezogen auf einen bereitgestellten Geofence oder eine Reihe von Geofences. In diesem Artikel wird detailliert beschrieben, wie die Geofencedaten, die in der Azure Maps GET- und POST-API verwendet werden können, vorbereitet werden.
+Die Azure Maps-APIs [GET Geofence](/rest/api/maps/spatial/getgeofence) und [POST Geofence](/rest/api/maps/spatial/postgeofence) ermöglichen Ihnen das Abrufen der Nähe einer Koordinate bezogen auf einen bereitgestellten Geofence oder eine Reihe von Geofences. In diesem Artikel wird detailliert beschrieben, wie die Geofencedaten, die in der Azure Maps GET- und POST-API verwendet werden können, vorbereitet werden.
 
 Die Daten für einen Geofence oder eine Reihe von Geofences werden durch das `Feature`-Objekt und das `FeatureCollection`-Objekt im `GeoJSON`-Format dargestellt, das in [RFC7946](https://tools.ietf.org/html/rfc7946) beschrieben ist. Weitere Merkmale:
 
@@ -32,9 +32,9 @@ Die Daten für einen Geofence oder eine Reihe von Geofences werden durch das `Fe
 
 | NAME | Type | Erforderlich  | BESCHREIBUNG |
 | :------------ |:------------: |:---------------:| :-----|
-| startTime | DateTime  | true | Das Anfangsdatum und die Anfangsuhrzeit der Gültigkeitsdauer. |
-| endTime   | DateTime  | true |  Das Enddatum und die Enduhrzeit der Gültigkeitsdauer. |
-| recurrenceType | string | false |   Der Wiederholungstyp des Zeitraums. Der Wert kann `Daily`, `Weekly`, `Monthly` oder `Yearly` lauten. Der Standardwert ist `Daily`.|
+| startTime | Datetime  | true | Das Anfangsdatum und die Anfangsuhrzeit der Gültigkeitsdauer. |
+| endTime   | Datetime  | true |  Das Enddatum und die Enduhrzeit der Gültigkeitsdauer. |
+| recurrenceType | Zeichenfolge | false |   Der Wiederholungstyp des Zeitraums. Der Wert kann `Daily`, `Weekly`, `Monthly` oder `Yearly` lauten. Der Standardwert ist `Daily`.|
 | businessDayOnly | Boolean | false |  Gibt an, ob die Daten nur an Werktagen gültig sind. Der Standardwert ist `false`.|
 
 

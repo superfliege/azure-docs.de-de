@@ -1,7 +1,6 @@
 ---
 title: Verwenden von Apache Hive mit PowerShell in HDInsight – Azure
 description: Ausführen von Hive-Abfragen mit Apache Hadoop in HDInsight mithilfe von PowerShell
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 77d2d0b5b9f994668abdd02640a9c6d5f463e137
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 108a3e7d899eef4ca78ae7507bf4852b861e74d5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360757"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64722171"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>Ausführen von Apache Hive-Abfragen mit PowerShell
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]

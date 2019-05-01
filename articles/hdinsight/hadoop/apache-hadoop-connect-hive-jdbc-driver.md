@@ -1,7 +1,6 @@
 ---
 title: Abfragen von Apache Hive über den JDBC-Treiber – Azure HDInsight
 description: Erfahren Sie, wie Sie den JDBC-Treiber aus einer Java-Anwendung heraus verwenden, um Apache Hive-Abfragen an Hadoop in HDInsight zu übermitteln. Stellen Sie programmgesteuert vom SQuirrel SQL-Client eine Verbindung her.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: hrasheed
-ms.openlocfilehash: dc088d3a6baa4198a1d5cb566b968c631ae5f2c4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: aaf54907ca0cf218b126fc9fc74080c02ef6cf6c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113816"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64721593"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Abfragen von Apache Hive über den JDBC-Treiber in HDInsight
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: a41bdda303c9e636929fba00a2fe4279002e42b3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6c3a7a8644e0e391f8817a7ae3a4cb9b8af5dab7
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280756"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920376"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wingspan-etmf"></a>Tutorial: Azure Active Directory-Integration mit Wingspan eTMF
 
@@ -112,7 +112,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Wingspan
     c. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<customer name>.<instance name>.mywingspan.com/`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL, den tatsächlichen Bezeichner und die tatsächliche Antwort-URL. Wenden Sie sich an das [Supportteam von Wingspan eTMF](http://www.wingspan.com/contact-us/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL, den tatsächlichen Bezeichner und die tatsächliche Antwort-URL. Wenden Sie sich an das [Supportteam von Wingspan eTMF](https://www.wingspan.com/contact-us/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -130,7 +130,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Wingspan
 
 ### <a name="configure-wingspan-etmf-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Wingspan eTMF
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Wingspan eTMF** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Wingspan eTMF](http://www.wingspan.com/contact-us/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Wingspan eTMF** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Wingspan eTMF](https://www.wingspan.com/contact-us/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
@@ -184,7 +184,7 @@ In diesem Abschnitt ermöglichen Sie „Britta Simon“ die Verwendung des einma
 
 ### <a name="create-wingspan-etmf-test-user"></a>Erstellen eines Wingspan eTMF-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Wingspan eTMF einen Benutzer namens „Britta Simon“. Wenden Sie sich an das  [Wingspan eTMF-Supportteam](http://www.wingspan.com/contact-us/), um die Benutzer auf der Wingspan eTMF-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Wingspan eTMF einen Benutzer namens „Britta Simon“. Wenden Sie sich an das  [Wingspan eTMF-Supportteam](https://www.wingspan.com/contact-us/), um die Benutzer auf der Wingspan eTMF-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 

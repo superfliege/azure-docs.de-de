@@ -3,19 +3,19 @@ title: Beispiele für die Transformation allgemeiner Ansprüche für das Schema 
 description: Hier finden Sie Beispiele für die Transformation allgemeiner Ansprüche für das Schema des Frameworks für die Identitätsfunktion von Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 6a9a819e75e487999a2b50ae758b8d9c6c716a4f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 831ecf2924ab6c321f69bb50c4a95a4156482585
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084894"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683956"
 ---
 # <a name="general-claims-transformations"></a>Transformationen allgemeiner Ansprüche
 

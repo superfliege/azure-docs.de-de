@@ -3,19 +3,19 @@ title: Kennwortkomplexität – Azure Active Directory B2C | Microsoft-Dokumenta
 description: Konfigurieren der Komplexitätsanforderungen für Kennwörter, die von Kunden in Azure Active Directory B2C bereitgestellt werden
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 1d7874d7c8d04e3d3565cdfe2e52e49c538b3091
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5c47a22883de4a3b28a42b390ef78368277e22be
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795813"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64703743"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Konfigurieren der Komplexitätsanforderungen für Kennwörter in Azure Active Directory B2C
 

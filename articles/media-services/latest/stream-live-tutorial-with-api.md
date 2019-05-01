@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/01/2019
+ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: 410955936e07b79128e1892d72644eaeb18ee036
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 74be798106ef5d028f3ad497a6e726439e86ad51
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863762"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64714742"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-net"></a>Tutorial: Livestreaming mit Media Services v3 unter Verwendung von .NET
 
@@ -182,6 +182,10 @@ az group delete --name amsResourceGroup
 
 > [!IMPORTANT]
 > Wenn Sie das Liveereignis nicht beenden, fallen weiter Kosten dafür an. Falls das Projekt/Programm abstürzt oder aus einem anderen Grund geschlossen wird, bleibt das Liveereignis unter Umständen aktiv und verursacht weitere Kosten.
+
+## <a name="provide-feedback"></a>Feedback geben
+
+Im Artikel [Azure Media Services-Community](media-services-community.md) finden Sie verschiedene Möglichkeiten, Fragen zu stellen, Feedback zu geben und Updates zu Media Services zu bekommen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

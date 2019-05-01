@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b141de4c22ba1ba1325982d8e027fa46e0909fbb
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 06b6fdf7a3d21a6b7dc84c4347824d4eaeac046f
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009853"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918415"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten
 
@@ -31,7 +31,7 @@ Alle Ihre Benutzer verfügen über ein einzelnes *Basisverzeichnis* für die Aut
 > [!Important]
 > Wenn Sie ein Abonnement einem anderen Verzeichnis zuordnen, verlieren Benutzer, denen Rollen mit der [rollenbasierten Zugriffssteuerung (RBAC)](../../role-based-access-control/role-assignments-portal.md) zugewiesen wurden, ihren Zugriff. Klassische Abonnementadministratoren (Dienstadministrator und Co-Admin) verlieren ebenfalls ihren Zugriff.
 > 
-> Darüber hinaus führt das Verschieben Ihres Azure Kubernetes Service-Clusters (AKS-Clusters) in ein anderes Abonnement oder das Verschieben des Abonnements, das den Cluster besitzt, in einen neuen Mandanten dazu, dass der Cluster seine Funktionalität aufgrund des Verlusts von Rollenzuweisungen und Dienstprinzipalrechten verliert. Weitere Informationen zu AKS finden Sie unter [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/en-us/azure/aks/).
+> Darüber hinaus führt das Verschieben Ihres Azure Kubernetes Service-Clusters (AKS-Clusters) in ein anderes Abonnement oder das Verschieben des Abonnements, das den Cluster besitzt, in einen neuen Mandanten dazu, dass der Cluster seine Funktionalität aufgrund des Verlusts von Rollenzuweisungen und Dienstprinzipalrechten verliert. Weitere Informationen zu AKS finden Sie unter [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 

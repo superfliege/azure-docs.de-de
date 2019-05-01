@@ -8,25 +8,25 @@ ms.topic: include
 ms.date: 1/10/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 42c1856f30484532e1ace2e84187bcaaacdf4c72
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6d06ac6efd08c14f77fd963ddf2c67de54260959
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553517"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64733765"
 ---
 Azure Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardgrenzwerten, die sicherstellen sollen, dass Kundenabonnements vor anderen Workloads geschützt sind. Wenden Sie sich an den Support, um die Grenzwerte bis zum Höchstwert für Ihr Abonnement zu erhöhen.
 
 ### <a name="version-2"></a>Version 2
 
-| Ressource | Standardlimit | Maximales Limit |
+| Resource | Standardlimit | Maximales Limit |
 | -------- | ------------- | ------------- |
 | Data Factorys in einem Azure-Abonnement | 50 | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Gesamtanzahl von Entitäten (z. B. Pipeline, Datasets, Trigger, verknüpfte Dienste, Integration Runtimes) in einer Data Factory | 5.000 | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Gesamtanzahl CPU-Kerne für Azure-SSIS Integration Runtimes unter einem Abonnement | 256 | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Gleichzeitige Pipelineausführungen pro Data Factory (von allen Pipelines der Factory gemeinsam genutzt) | 10.000  | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Maximale Aktivitäten pro Pipeline, einschließlich interner Aktivitäten für Container | 40 | 40 |
-| Maximale Anzahl verknüpfter Integration Runtimes, die für eine einzelne selbstgehostete Integration Runtime erstellt werden kann | 20 | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Maximale Anzahl verknüpfter Integration Runtimes, die für eine einzelne selbstgehostete Integration Runtime erstellt werden kann | 100 | [Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Maximale Parameter pro Pipeline | 50 | 50 |
 | ForEach-Elemente | 100.000 | 100.000 |
 | ForEach-Parallelität | 20 | 50 |

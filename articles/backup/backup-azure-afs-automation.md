@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: pullabhk
-ms.openlocfilehash: 83fe8d17699c19d442fd734d71d828eb9fd9d6ed
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 46719d3f72c57a44fb48489891e2348bb418da1e
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258359"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64918951"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>Sichern und Wiederherstellen von Azure Files-Dateifreigaben mithilfe von PowerShell
 
@@ -85,7 +85,7 @@ Richten Sie PowerShell wie folgt ein:
     ```powershell
     Get-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
-7. Vergewissern Sie sich in der Befehlsausgabe, dass sich der Wert **RegistrationState** (Registrierungszustand) in **Registered** (Registriert) ändert. Ist dies nicht der Fall, führen Sie das Cmdlet **Register-AzResourceProvider** erneut aus.
+7. Vergewissern Sie sich in der Befehlsausgabe, dass sich der Wert für **RegistrationState** in **Registered** ändert. Ist dies nicht der Fall, führen Sie das Cmdlet **Register-AzResourceProvider** erneut aus.
 
 
 
@@ -95,7 +95,7 @@ Führen Sie die nachstehenden Schritte aus, um einen Recovery Services-Tresors z
 
 - Der Recovery Services-Tresor ist eine Resource Manager-Ressource. Deshalb müssen Sie ihn in eine Ressourcengruppe einfügen. Sie können eine vorhandene Ressourcengruppe verwenden oder eine Ressourcengruppe mit dem Cmdlet **New-AzResourceGroup** erstellen. Wenn Sie eine Ressourcengruppe erstellen, geben Sie den Namen und den Speicherort dafür an. 
 
-1. Ein Tresor wird in einer Ressourcengruppe platziert. Erstellen Sie mit [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-1.4.0) eine neue Ressourcengruppe, wenn noch keine vorhanden ist. Im diesem Beispiel wird eine neue Ressourcengruppe in der Region „USA, Westen“ erstellt.
+1. Ein Tresor wird in einer Ressourcengruppe platziert. Erstellen Sie mit [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-1.4.0) eine neue Ressourcengruppe, wenn noch keine vorhanden ist. In diesem Beispiel wird eine neue Ressourcengruppe in der Region „USA, Westen“ erstellt.
 
    ```powershell
    New-AzResourceGroup -Name "test-rg" -Location "West US"
@@ -317,7 +317,7 @@ Nachdem der entsprechende Wiederherstellungspunkt ausgewählt wurde, stellen Sie
 
 ### <a name="restore-an-azure-file-share-to-an-alternate-location"></a>Wiederherstellen einer Azure-Dateifreigabe an einem alternativen Speicherort
 
-Verwenden Sie [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0), um den ausgewählten Wiederherstellungspunkt wiederherzustellen. Geben Sie die folgenden Parameter an, um den alternativen Speicherort festzulegen: 
+Verwenden Sie [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0), um den ausgewählten Wiederherstellungspunkt wiederherzustellen. Geben Sie die folgenden Parameter an, um den alternativen Speicherort festzulegen: 
 
 - **TargetStorageAccountName**: Das Speicherkonto, in dem der gesicherte Inhalt wiederhergestellt wird. Das Zielspeicherkonto muss sich am gleichen Speicherort wie der Tresor befinden.
 - **TargetFileShareName**: Die Dateifreigaben in dem Zielspeicherkonto, in dem der gesicherte Inhalt wiederhergestellt wird.
@@ -340,7 +340,7 @@ testAzureFS        Restore              InProgress           12/10/2018 9:56:38 
 
 ### <a name="restore-an-azure-file-to-an-alternate-location"></a>Wiederherstellen einer Azure-Datei an einem alternativen Speicherort
 
-Verwenden Sie [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0), um den ausgewählten Wiederherstellungspunkt wiederherzustellen. Geben Sie die folgenden Parameter an, um den alternativen Speicherort und die wiederherzustellende Datei eindeutig festzulegen:
+Verwenden Sie [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0), um den ausgewählten Wiederherstellungspunkt wiederherzustellen. Geben Sie die folgenden Parameter an, um den alternativen Speicherort und die wiederherzustellende Datei eindeutig festzulegen:
 
 * **TargetStorageAccountName**: Das Speicherkonto, in dem der gesicherte Inhalt wiederhergestellt wird. Das Zielspeicherkonto muss sich am gleichen Speicherort wie der Tresor befinden.
 * **TargetFileShareName**: Die Dateifreigaben in dem Zielspeicherkonto, in dem der gesicherte Inhalt wiederhergestellt wird.

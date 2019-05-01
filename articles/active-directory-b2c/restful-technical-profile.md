@@ -3,19 +3,19 @@ title: Definieren eines technischen RESTful-Profils in einer benutzerdefinierten
 description: Erfahren Sie, wie Sie ein technisches RESTful-Profil in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C definieren.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 7ff14af756a55ccc6bbf40dd39d49c5168f4af1f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0726c22e436658d51419b9e32d73f48db99ba805
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076325"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64705305"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen RESTful-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -33,7 +33,7 @@ Die Richtlinie kann Eingabeansprüche an Ihre REST-API senden. Die REST-API kann
 - **Technisches Validierungsprofil:** ruft den RESTful-Dienst auf. Mit dem technischen Validierungsprofil werden die vom Benutzer bereitgestellten Daten überprüft, bevor die User Journey fortgesetzt wird. Mit dem technischen Validierungsprofil wird eine Fehlermeldung auf einer Seite mit Selbstbestätigung angezeigt und in Ausgabeansprüche zurückgegeben.
 - **Anspruchsaustausch:** Aufrufe an den RESTful-Dienst erfolgen über einen Orchestrierungsschritt. In diesem Szenario gibt es keine Benutzeroberfläche zum Darstellen der Fehlermeldung. Wenn Ihre REST-API einen Fehler zurückgibt, wird der Benutzer zusammen mit der Fehlermeldung zurück zur Anwendung der vertrauenden Seite umgeleitet.
 
-## <a name="protocol"></a>Protokoll
+## <a name="protocol"></a>Protocol
 
 Das **Name**-Attribut des **Protocol**-Elements muss auf `Proprietary` festgelegt werden. Das **handler**-Attribut muss den vollqualifizierten Namen der Protokollhandlerassembly, die von Azure AD B2C verwendet wird, enthalten: `Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`.
 

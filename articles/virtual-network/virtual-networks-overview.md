@@ -3,7 +3,8 @@ title: Virtuelles Azure-Netzwerk | Microsoft-Dokumentation
 description: Enthält Informationen zu den Konzepten und Features des virtuellen Azure-Netzwerks (Azure Virtual Network).
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
+manager: twooley
 tags: azure-resource-manager
 Customer intent: As someone with a basic network background that is new to Azure, I want to understand the capabilities of Azure Virtual Network, so that my Azure resources such as VMs, can securely communicate with each other, the internet, and my on-premises resources.
 ms.service: virtual-network
@@ -12,13 +13,13 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/12/2018
-ms.author: jdial
-ms.openlocfilehash: 9fb6aa0c2bf585862f61d7c78bd09b340ff8a3ce
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.author: kumud
+ms.openlocfilehash: 44094a38fff17908fd5ea851209130f89a49c988
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015898"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707027"
 ---
 # <a name="what-is-azure-virtual-network"></a>Was ist Azure Virtual Network?
 
@@ -45,7 +46,7 @@ Alle Ressourcen in einem virtuellen Netzwerk können standardmäßig in ausgehen
 Azure-Ressourcen können auf eine der folgenden Arten sicher miteinander kommunizieren:
 
 - **Über ein virtuelles Netzwerk**: Sie können virtuelle Computer und verschiedene andere Arten von Azure-Ressourcen in einem virtuellen Netzwerk bereitstellen, wie beispielsweise Azure App Service-Umgebungen, den Azure Kubernetes Service (AKS) und Azure Virtual Machine Scale Sets. Eine vollständige Liste mit Azure-Ressourcen, die Sie in einem virtuellen Netzwerk bereitstellen können, finden Sie unter [Integration virtueller Netzwerke für Azure-Dienste](virtual-network-for-azure-services.md). 
-- **Über einen Dienstendpunkt des virtuellen Netzwerks**: Erweitern Sie den Bereich privater Adressen und die Identität Ihres virtuellen Netzwerks über eine direkte Verbindung auf Azure-Dienstressourcen wie Azure Storage-Konten und Azure SQL-Datenbank-Instanzen. Mithilfe von Dienstendpunkten können Sie Ihre kritischen Azure-Dienstressourcen auf ein virtuelles Netzwerk beschränken und so schützen. Weitere Informationen finden Sie in der Übersicht über [VNET-Dienstendpunkte](virtual-network-service-endpoints-overview.md).
+- **Über einen VNET-Dienstendpunkt**: Erweitern Sie den Bereich privater Adressen und die Identität Ihres virtuellen Netzwerks über eine direkte Verbindung auf Azure-Dienstressourcen wie Azure Storage-Konten und Azure SQL-Datenbank-Instanzen. Mithilfe von Dienstendpunkten können Sie Ihre kritischen Azure-Dienstressourcen auf ein virtuelles Netzwerk beschränken und so schützen. Weitere Informationen finden Sie in der Übersicht über [VNET-Dienstendpunkte](virtual-network-service-endpoints-overview.md).
  
 ## <a name="communicate-with-on-premises-resources"></a>Kommunikation mit lokalen Ressourcen
 

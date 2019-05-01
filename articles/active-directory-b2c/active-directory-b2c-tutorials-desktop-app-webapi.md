@@ -3,19 +3,19 @@ title: 'Tutorial: Gewähren des Zugriffs auf eine Node.js-Web-API über eine Des
 description: In diesem Tutorial erfahren Sie, wie Sie mit Active Directory B2C eine Node.js-Web-API schützen und sie über eine .NET-Desktop-App aufrufen.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.author: davidmu
 ms.date: 02/04/2019
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 90a6a88ff0dc5aab1163e471b24cd1d00e548a1b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: ef48c0f78083217581594b481b15a74a49fef4f9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755117"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64715846"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Tutorial: Gewähren des Zugriffs auf eine Node.js-Web-API über eine Desktop-App unter Verwendung von Azure Active Directory B2C
 
@@ -68,7 +68,7 @@ Wenn Sie über eine Anwendung eine geschützte Web-API aufrufen möchten, müsse
 
 1. Wählen Sie **Anwendungen** und dann *nativeapp1* aus.
 2. Wählen Sie **API-Zugriff** und dann **Hinzufügen** aus.
-3. Wählen Sie in der Dropdownliste **API auswählen** und dann *webapi1* aus.
+3. Wählen Sie in der Dropdownliste **API auswählen** die Web-API *webapi1* aus.
 4. Wählen Sie in der Dropdownliste **Bereiche auswählen** die Bereiche **Hello.Read** und **Hello.Write** aus, die Sie zuvor festgelegt haben.
 5. Klicken Sie auf **OK**.
 

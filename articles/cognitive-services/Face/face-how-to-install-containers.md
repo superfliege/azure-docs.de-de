@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: 5028a05fe74f1d19ed5e43ac797df87bbe3382e8
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: a3087718a3eece1e19f05757ace64ba00aa0dc58
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680722"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682686"
 ---
 # <a name="install-and-run-face-containers"></a>Installieren und Ausführen von Containern für die Gesichtserkennung
 
@@ -32,12 +32,11 @@ Zur Verwendung des Containers für die Gesichtserkennungs-API müssen die folgen
 |--|--|
 |Docker-Engine| Die Docker-Engine muss auf einem [Hostcomputer](#the-host-computer) installiert sein. Für die Docker-Umgebung stehen Konfigurationspakete für [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) und [Linux](https://docs.docker.com/engine/installation/#supported-platforms) zur Verfügung. Eine Einführung in Docker und Container finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/docker-overview/).<br><br> Docker muss so konfiguriert werden, dass die Container eine Verbindung mit Azure herstellen und Abrechnungsdaten an Azure senden können. <br><br> **Unter Windows** muss Docker auch für die Unterstützung von Linux-Containern konfiguriert werden.<br><br>|
 |Kenntnisse zu Docker | Sie sollten über Grundkenntnisse der Konzepte von Docker, einschließlich Registrierungen, Repositorys, Container und Containerimages, verfügen und die grundlegenden `docker`-Befehle kennen.| 
-|Azure `Cognitive Services`-Ressource |Um den Container zu verwenden, benötigen Sie Folgendes:<br><br>eine Azure _Cognitive Services_-Ressource, den zugehörigen Abrechnungsschlüssel und den URI des Abrechnungsendpunkts. Beide Werte stehen auf der Übersichts- und auf der Schlüsselseite der Ressource zur Verfügung und werden zum Starten des Containers benötigt. Sie müssen, wie im folgenden Beispiel BILLING_ENDPOINT_URI dargestellt, dem Endpunkt-URI das `face/v1.0`-Routing hinzufügen. <br><br>**{BILLING_KEY}**: Der Ressourcenschlüssel.<br><br>**{BILLING_ENDPOINT_URI}**: Der Endpunkt-URI. Beispiel: `https://westus.api.cognitive.microsoft.com/face/v1.0`|
-
+|Azure `Cognitive Services`-Ressource |Um den Container zu verwenden, benötigen Sie Folgendes:<br><br>Eine Azure _Cognitive Services_-Ressource, den zugehörigen Abrechnungsschlüssel und den URI des Abrechnungsendpunkts. Beide Werte stehen auf der Übersichts- und auf der Schlüsselseite der Ressource zur Verfügung und werden zum Starten des Containers benötigt. Sie müssen, wie im folgenden Beispiel BILLING_ENDPOINT_URI dargestellt, dem Endpunkt-URI das `face/v1.0`-Routing hinzufügen. <br><br>**{BILLING_KEY}**: Der Ressourcenschlüssel.<br><br>**{BILLING_ENDPOINT_URI}**: Der Endpunkt-URI. Beispiel: `https://westus.api.cognitive.microsoft.com/face/v1.0`|
 
 ## <a name="request-access-to-the-private-container-registry"></a>Anfordern des Zugriffs auf die private Containerregistrierung
 
-[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-request-access.md)]
+[!INCLUDE [Request access to private container registry](../../../includes/cognitive-services-containers-request-access.md)]
 
 ### <a name="the-host-computer"></a>Der Hostcomputer
 
@@ -162,5 +161,4 @@ In diesem Artikel haben Sie die Konzepte und den Workflow zum Herunterladen, Ins
 * Konfigurationseinstellungen finden Sie unter [Konfigurieren von Containern](face-resource-container-config.md).
 * In der [Übersicht über die Gesichtserkennung](Overview.md) finden Sie weitere Informationen zum Erkennen und Identifizieren von Gesichtern.  
 * Details zu den vom Container unterstützten Methoden finden Sie unter [Gesichtserkennungs-API](//westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
-* Unter [Häufig gestellte Fragen (FAQ)](FAQ.md) finden Sie Informationen zum Beheben von Problemen im Zusammenhang mit der Funktionalität der Gesichtserkennung.
-* Weitere [Cognitive Services-Container](../cognitive-services-container-support.md) verwenden
+* Verwenden weiterer [Cognitive Services-Container](../cognitive-services-container-support.md)

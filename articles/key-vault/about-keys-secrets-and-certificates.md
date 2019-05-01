@@ -2,23 +2,19 @@
 title: Informationen zu Schlüsseln, Geheimnissen und Zertifikaten im Azure Key Vault
 description: Hier finden Sie eine Übersicht über die Azure Key Vault-REST-Schnittstelle sowie Informationen für Entwickler zu Schlüsseln, Geheimnissen und Zertifikaten.
 services: key-vault
-documentationcenter: ''
 author: msmbaldwin
 manager: barbkess
 tags: azure-resource-manager
-ms.assetid: abd1b743-1d58-413f-afc1-d08ebf93828a
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 01d9f763983da2415aba0f9bae81414017bc2f02
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b50f98c4abaeda3ac1805b73aa18fe6c29596426
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842565"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64708686"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informationen zu Schlüsseln, Geheimnissen und Zertifikaten
 
@@ -334,7 +330,7 @@ Es gibt zusätzliche schreibgeschützte Attribute, die in die Antwort einbezogen
 > [!Note] 
 > Wenn ein Key Vault-Zertifikat abläuft, sind sein adressierbarer Schlüssel und sein Geheimnis nicht mehr funktionsfähig.  
 
-#### <a name="tags"></a>Tags
+#### <a name="tags"></a>`Tags`
 
  Vom Client angegebenes Wörterbuch von Schlüssel-Wert-Paaren, die Tags in Schlüsseln und Geheimnissen ähneln.  
 

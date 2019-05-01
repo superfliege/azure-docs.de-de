@@ -1,7 +1,6 @@
 ---
 title: Übermittlung von Aufträgen an einen Spark-Cluster in Azure HDInsight mithilfe von Livy Spark
 description: Erfahren Sie, wie Sie die Apache Spark-REST-API verwenden, um Spark-Aufträge remote an einen Azure HDInsight-Cluster übermitteln.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 62056b27669f334f1d8007d5284979ac4701f9d9
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: c8504c6bf25b186a4bc87c4e7565444dd3e57209
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53650506"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570488"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Übermitteln von Remoteaufträgen an einen HDInsight Spark-Cluster mithilfe der Apache Spark-REST-API
 
@@ -31,13 +30,13 @@ Mit Livy können Sie interaktive Spark-Shells ausführen oder Batchaufträge zur
 ## <a name="submit-an-apache-livy-spark-batch-job"></a>Übermitteln eines Apache Livy Spark-Batchvorgangs
 Vor dem Übermitteln eines Batchauftrags muss die JAR-Anwendungsdatei an den Clusterspeicher hochgeladen werden, der dem Cluster zugeordnet ist. Hierzu können Sie das Befehlszeilenprogramm [**AzCopy**](../../storage/common/storage-use-azcopy.md) verwenden. Die Daten können aber auch mit verschiedenen anderen Clients hochgeladen werden. Weitere Informationen finden Sie unter [Hochladen von Daten für Hadoop-Aufträge in HDInsight](../hdinsight-upload-data.md).
 
-    curl -k --user "<hdinsight user>:<user password>" -v -H <content-type> -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches' -H "X-Requested-By: admin"
+    curl -k --user "<hdinsight user>:<user password>" -v -H "Content-Type: application/json" -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches' -H "X-Requested-By: admin"
 
 **Beispiele**:
 
 * In diesem Beispiel befindet sich die JAR-Datei im Clusterspeicher (WASB):
   
-        curl -k --user "admin:mypassword1!" -v -H 'Content-Type: application/json' -X POST -d '{ "file":"wasb://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
+        curl -k --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST -d '{ "file":"wasb://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
 * In diesem Beispiel möchten Sie den Namen der JAR-Datei und den Klassennamen als Teil der Eingabedatei „input.txt“ übergeben:
   
         curl -k  --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
@@ -165,16 +164,6 @@ HDInsight-Cluster mit Version 3.5 und höheren Versionen deaktivieren standardm�
 ## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>Übermitteln von Livy-Aufträgen für einen Cluster in einem virtuellen Azure-Netzwerk
 
 Wenn Sie aus einer Azure Virtual Network-Instanz eine Verbindung mit einem HDInsight Spark-Cluster herstellen, können Sie direkt eine Verbindung mit Livy im Cluster herstellen. In diesem Fall lautet die URL für den Livy-Endpunkt `http://<IP address of the headnode>:8998/batches`. **8998** ist der Port, an dem Livy im Clusterhauptknoten ausgeführt wird. Weitere Informationen zum Zugreifen auf Dienste über nicht öffentliche Ports finden Sie unter [Ports für Apache Hadoop-Dienste in HDInsight](../hdinsight-hadoop-port-settings-for-services.md).
-
-## <a name="troubleshooting"></a>Problembehandlung
-
-Im Folgenden finden Sie einige Probleme, die bei der Verwendung von Livy für die Remoteauftragsübermittlung an Spark-Cluster auftreten können.
-
-### <a name="using-an-external-jar-from-the-additional-storage-is-not-supported"></a>Keine Unterstützung für die Verwendung einer externen JAR-Datei aus zusätzlichem Speicher
-
-**Problem:** Wenn Ihr Livy Spark-Auftrag auf eine externe JAR-Datei aus dem zusätzlichen, dem Cluster zugeordneten Speicherkonto verweist, tritt ein Fehler auf.
-
-**Lösung:** Stellen Sie sicher, dass die JAR-Datei, die Sie verwenden möchten, im Standardspeicher verfügbar ist, der dem HDInsight-Cluster zugeordnet ist.
 
 
 

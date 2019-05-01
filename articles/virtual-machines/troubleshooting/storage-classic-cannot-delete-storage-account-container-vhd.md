@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 673101ad7f55969c216adf7e970402a2109f8254
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 35f8a766c6d260e23ff854284d5b8ee047e64b42
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078158"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926230"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Behebung von Problemen beim Löschen klassischer Speicherressourcen
 Dieser Artikel enthält Informationen zur Problembehandlung, wenn beim Versuch, ein klassisches Azure Storage-Konto, einen Azure-Container oder eine Seitenblobdatei (*.vhd) zu löschen, einer der folgenden Fehler auftritt. 
@@ -37,7 +37,7 @@ Eine „Datenträgerressource“ wird verwendet, um eine Seitenblobdatei (*.vhd)
 3. Nachdem die Datenträgerlease unterbrochen wurde, kann das eigentliche Seitenblob gelöscht werden. Ein Speicherkonto oder Container kann gelöscht werden, nachdem alle darin enthaltenen Datenträgerressourcen gelöscht wurden.
 
 >[!NOTE] 
->Wenn ein Benutzer den virtuellen Computer löscht, jedoch nicht die VHD, fallen weiterhin Speichergebühren für die VHD-Datei des Seitenblobs an. Die Gebühren richten sich nach dem Typ des Speicherkontos. Weitere Details finden Sie auf der [Seite mit den Preisen](https://azure.microsoft.com/en-us/pricing/details/storage/). Wenn der Benutzer eine VHD nicht mehr verwenden möchte, löschen Sie sie, um weitere Gebühren zu vermeiden. 
+>Wenn ein Benutzer den virtuellen Computer löscht, jedoch nicht die VHD, fallen weiterhin Speichergebühren für die VHD-Datei des Seitenblobs an. Die Gebühren richten sich nach dem Typ des Speicherkontos. Weitere Details finden Sie auf der [Seite mit den Preisen](https://azure.microsoft.com/pricing/details/storage/). Wenn der Benutzer eine VHD nicht mehr verwenden möchte, löschen Sie sie, um weitere Gebühren zu vermeiden. 
 
 ## <a name="unable-to-delete-storage-account"></a>Speicherkonto kann nicht gelöscht werden. 
 

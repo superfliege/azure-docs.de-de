@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fcf2ef10cbc8f6f54a65e596ea003a98f410a7b
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 78889cb3c04b9854a4cebb27c35488d5142ad3a7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313293"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64694832"
 ---
 # <a name="what-is-password-writeback"></a>Was ist Kennwortrückschreiben?
 
@@ -85,9 +85,6 @@ Wenn Verbundbenutzer oder Benutzer mit Kennworthashsynchronisierung versuchen, i
    * Für die Verknüpfung zwischen dem Active Directory-Connectorobjekt und dem MV-Objekt muss die Synchronisierungsregel `Microsoft.InfromADUserAccountEnabled.xxx` festgelegt sein.
    
    Sobald der Aufruf aus der Cloud eingetroffen ist, verwendet das Synchronisierungsmodul das **cloudAnchor**-Attribut, um das Azure Active Directory-Connectorbereichsobjekt nachzuschlagen. Es folgt dann dem Link zurück zum MV-Objekt und folgt anschließend dem Link zurück zum Active Directory-Objekt. Da mehrere Active Directory-Objekte (Multi-Gesamtstruktur) für denselben Benutzer vorliegen können, verwendet das Synchronisierungsmodul die `Microsoft.InfromADUserAccountEnabled.xxx`-Verbindung, um das richtige Objekt auszuwählen.
-
-   > [!Note]
-   > Als Ergebnis dieser Logik muss Azure AD Connect mit dem PDC-Emulator (primärer Domänencontroller) kommunizieren können, damit das Kennwortrückschreiben funktioniert. Wenn Sie dies manuell aktivieren müssen, können Sie Azure AD Connect mit dem PDC-Emulator verbinden. Klicken Sie mit der rechten Maustaste auf die Eigenschaften (**properties**) des Active Directory-Synchronisierungsconnectors, und wählen Sie dann **configure directory partitions** aus. Suchen Sie nun nach dem Abschnitt **domain controller connection settings**, und aktivieren Sie das Kontrollkästchen **only use preferred domain controllers**. Auch wenn der bevorzugte Domänencontroller kein PDC-Emulator ist, versucht Azure AD Connect für das Kennwortrückschreiben eine Verbindung mit dem PDC herzustellen.
 
 1. Nachdem das Benutzerkonto ermittelt ist, wird versucht, das Kennwort direkt in der geeigneten Active Directory-Gesamtstruktur zurückzusetzen.
 1. Wenn dieser Vorgang erfolgreich war, wird der Benutzer darüber informiert, dass das Kennwort geändert wurde.

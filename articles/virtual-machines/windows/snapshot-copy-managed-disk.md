@@ -2,8 +2,8 @@
 title: Erstellen einer Momentaufnahme einer VHD in Azure | Microsoft-Dokumentation
 description: Erfahren Sie, wie eine Kopie eines virtuellen Azure-Computers als Sicherung oder für die Behandlung von Problemen erstellen.
 documentationcenter: ''
-author: cynthn
-manager: jeconnoc
+author: roygara
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 15eb778e-fc07-45ef-bdc8-9090193a6d20
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
-ms.author: cynthn
+ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: dea8547905cb558cb0be7dc23f89099773e84ff0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b3b9095cd7ee3fa12523b14f59cc06820b9e4382
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58074777"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64692213"
 ---
 # <a name="create-a-snapshot"></a>Erstellen einer Momentaufnahme
 
@@ -44,7 +44,7 @@ Wenn Sie mit der Momentaufnahme einen neuen virtuellen Computer erstellen möcht
 
 In den folgenden Schritten wird das Kopieren des VHD-Datenträgers, das Erstellen der Momentaufnahmekonfiguration und das Erstellen einer Momentaufnahme des Datenträgers mithilfe des Cmdlets [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) beschrieben. 
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 1. Legen Sie einige Parameter fest: 
 

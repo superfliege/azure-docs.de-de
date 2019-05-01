@@ -3,19 +3,19 @@ title: Beispiele für die Transformation von Datumsansprüchen für das Schema d
 description: Beispiele für die Transformation von Datumsansprüchen für das Schema des Frameworks für die Identitätsfunktion von Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d36abb669490b3d3f6818c018b3844a82ecd0617
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 22484adcc709c1d2726d8086ac75300f189bcc41
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564787"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64710440"
 ---
 # <a name="date-claims-transformations"></a>Transformationen von Datumsansprüchen
 

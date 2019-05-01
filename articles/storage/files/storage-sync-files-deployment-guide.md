@@ -2,18 +2,18 @@
 title: Bereitstellen der Azure-Dateisynchronisierung | Microsoft-Dokumentation
 description: Informationen über sämtliche Schritte zum Bereitstellen der Azure-Dateisynchronisierung.
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 07/19/2018
-ms.author: wgries
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: a5d6f7757b5a4a5a2048c9822c4f52bee6d19bfe
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2213cf30384f7069b3862ddd61aceae1bd46d82d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58905119"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707208"
 ---
 # <a name="deploy-azure-file-sync"></a>Bereitstellen der Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.

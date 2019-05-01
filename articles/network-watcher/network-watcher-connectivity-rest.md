@@ -3,8 +3,8 @@ title: Problembehandlung für Verbindungen mit Azure Network Watcher – Azure-R
 description: Hier erfahren Sie, wie Sie mithilfe der Azure-REST-API die Funktion zur Problembehandlung für Verbindungen von Azure Network Watcher nutzen.
 services: network-watcher
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 ms.service: network-watcher
 ms.devlang: na
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
-ms.author: jdial
-ms.openlocfilehash: 45fbdac3c099b44f8f12a54f5bde147524f10458
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.author: kumud
+ms.openlocfilehash: 7fbe36d9ee15ffbdaa2ba978aabf3cc4f5db3889
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482639"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64694077"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>Problembehandlung für Verbindungen mit Azure Network Watcher und der Azure-REST-API
 

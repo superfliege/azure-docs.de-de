@@ -10,12 +10,12 @@ ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: c68c278b2a7afa8287845c452e3bec5380cf05c0
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 03f330f429be583d3a400eb1ee00875f7c305e74
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629979"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64923011"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse (Vorschauversion)
 
@@ -32,7 +32,7 @@ Einen Überblick über die praktische Verwendung der Azure SQL-Analyse und über
 
 ## <a name="connected-sources"></a>Verbundene Quellen
 
-Azure SQL-Analyse ist eine Cloudüberwachungslösung, die das Streaming von Diagnosetelemetriedaten für Azure SQL-Datenbanken unterstützt: Einzeldatenbanken, Pooldatenbanken und Datenbanken der verwalteten Instanzen. Da die Lösung keine Agents für die Verbindung mit Azure Monitor verwendet, wird die Überwachung von lokal oder auf virtuellen Computern gehosteten SQL Server-Instanzen nicht unterstützt. Entsprechende Informationen finden Sie in der folgenden Kompatibilitätstabelle.
+Azure SQL-Analyse ist eine Cloudüberwachungslösung, die das Streaming von Diagnosetelemetriedaten für Azure SQL-Datenbanken unterstützt: Einzeldatenbanken, Pooldatenbanken und Datenbanken der verwalteten Instanz. Da die Lösung keine Agents für die Verbindung mit Azure Monitor verwendet, wird die Überwachung von lokal oder auf virtuellen Computern gehosteten SQL Server-Instanzen nicht unterstützt. Entsprechende Informationen finden Sie in der folgenden Kompatibilitätstabelle.
 
 | Verbundene Quelle | Unterstützt | BESCHREIBUNG |
 | --- | --- | --- |
@@ -287,7 +287,7 @@ AzureDiagnostics
 
 ### <a name="pricing"></a>Preise
 
-Obwohl die Lösung kostenlos verwendet werden kann, fallen für die Nutzung von Diagnosetelemetriedaten über die kostenlosen Einheiten hinaus, die für die Datenerfassung jeden Monat zugeteilt werden, Gebühren an. Weitere Informationen finden Sie unter [Log Analytics – Preise](https://azure.microsoft.com/en-us/pricing/details/monitor). Die kostenlosen Einheiten der bereitgestellten Datenerfassung ermöglichen die kostenlose Überwachung von mehreren Datenbanken pro Monat. Beachten Sie, dass bei einer größeren Anzahl aktiver Datenbanken mit umfangreicheren Workloads mehr Daten als bei Datenbanken im Leerlauf erfasst werden. Sie können problemlos Ihre Datenerfassungsnutzung in der Lösung überwachen, indem Sie den OMS-Arbeitsbereich im Navigationsmenü der Azure SQL-Analyse auswählen und dann „Nutzungs- und geschätzte Kosten“ auswählen.
+Obwohl die Lösung kostenlos verwendet werden kann, fallen für die Nutzung von Diagnosetelemetriedaten über die kostenlosen Einheiten hinaus, die für die Datenerfassung jeden Monat zugeteilt werden, Gebühren an. Weitere Informationen finden Sie unter [Log Analytics – Preise](https://azure.microsoft.com/pricing/details/monitor). Die kostenlosen Einheiten der bereitgestellten Datenerfassung ermöglichen die kostenlose Überwachung von mehreren Datenbanken pro Monat. Beachten Sie, dass bei einer größeren Anzahl aktiver Datenbanken mit umfangreicheren Workloads mehr Daten als bei Datenbanken im Leerlauf erfasst werden. Sie können problemlos Ihre Datenerfassungsnutzung in der Lösung überwachen, indem Sie den OMS-Arbeitsbereich im Navigationsmenü der Azure SQL-Analyse auswählen und dann „Nutzungs- und geschätzte Kosten“ auswählen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,7 +1,6 @@
 ---
 title: Analysieren von Application Insight-Protokollen mit Spark – Azure HDInsight
 description: Erfahren Sie, wie Sie Application Insights-Protokolle in Blobspeicher exportieren und die Protokolle anschließend mit Spark in HDInsight analysieren.
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.openlocfilehash: 806e5b6f764797d2e038cc7ed58ec1d04f678e2b
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 45cbb26eb74dd78bf46a6b148a32a7762bb31fbc
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120375"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64696880"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Analysieren von Application Insights-Telemetrieprotokollen mit Apache Spark in HDInsight
 

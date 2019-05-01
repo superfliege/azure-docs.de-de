@@ -3,19 +3,19 @@ title: Beispiele für die Transformation von JSON-Ansprüchen für das Schema de
 description: Hier finden Sie Beispiele für die Transformation von JSON-Ansprüchen für das Schema des Frameworks für die Identitätsfunktion von Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 88d447f86dd54fc9479a6d7d2006b9a8639ad09e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7574327f8acbd2215080e43a57b0b9c7cdd8b423
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089232"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64710237"
 ---
 # <a name="json-claims-transformations"></a>Transformationen von JSON-Ansprüchen
 
@@ -191,7 +191,7 @@ Konvertieren von XML-Daten ins JSON-Format.
 
 | Item | TransformationClaimType | Datentyp | Notizen |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | xml | Zeichenfolge | Die Anspruchstypen, die von der Anspruchstransformation verwendet werden, um das Datenelement von XML ins JSON-Format zu konvertieren. |
+| InputClaim | Xml | Zeichenfolge | Die Anspruchstypen, die von der Anspruchstransformation verwendet werden, um das Datenelement von XML ins JSON-Format zu konvertieren. |
 | OutputClaim | json | Zeichenfolge | Der Anspruchstyp, der erstellt wird, nachdem diese Anspruchstransformation aufgerufen wurde. Es handelt sich hierbei um die Daten im JSON-Format. |
 
 ```XML

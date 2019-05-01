@@ -1,7 +1,6 @@
 ---
 title: Skalieren von Clustergrößen – Azure HDInsight
 description: Skalieren Sie einen HDInsight-Cluster gemäß Ihrer Workload.
-services: hdinsight
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: ashish
-ms.openlocfilehash: d2eaab80abed6615f46ef190bae56b8a70db2888
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: a172024e4662e647b39fe999f1be3cfcef04b5ce
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59050678"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64698246"
 ---
 # <a name="scale-hdinsight-clusters"></a>Skalieren von HDInsight-Clustern
 
@@ -34,7 +33,7 @@ Microsoft bietet die folgenden Hilfsprogramme für das Skalieren von Clustern:
 |[PowerShell Az](https://docs.microsoft.com/powershell/azure)|[Set-AzHDInsightClusterSize](https://docs.microsoft.com/powershell/module/az.hdinsight/set-azhdinsightclustersize) -ClusterName \<Clustername> -TargetInstanceCount \<NeueGröße>|
 |[PowerShell AzureRM](https://docs.microsoft.com/powershell/azure/azurerm) |[Set-AzureRmHDInsightClusterSize](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/set-azurermhdinsightclustersize) -ClusterName \<Clustername> -TargetInstanceCount \<NeueGröße>|
 |[Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)|[az hdinsight resize](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-resize) --resource-group \<Ressourcengruppe> --name \<Clustername> --target-instance-count \<NeueGröße>|
-|[Die klassische Azure CLI](hdinsight-administer-use-command-line.md)|azure hdinsight cluster resize \<Clustername> \<Zielinstanzgröße>|
+|[Klassische Azure-Befehlszeilenschnittstelle](hdinsight-administer-use-command-line.md)|azure hdinsight cluster resize \<Clustername> \<Zielinstanzgröße>|
 |[Azure-Portal](https://portal.azure.com)|Öffnen Sie Ihren HDInsight-Clusterbereich, wählen Sie im linken Menü **Clustergröße** aus, geben Sie dann im Bereich „Clustergröße“ die Anzahl der Workerknoten ein, und wählen Sie „Speichern“ aus.|  
 
 ![Skalieren von Clustern](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)

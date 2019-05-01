@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/18/2019
+ms.date: 03/22/2019
 ms.author: juliako
-ms.openlocfilehash: 82d8a8085ca285c95a550678cdc534e586a4faa7
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 53f69b6b8eb6cbbb8082ea0777af9dbceb7bdba1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415963"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64699693"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-using-net"></a>Tutorial: Hochladen, Codieren und Streamen von Videos mithilfe von .NET
 
@@ -197,6 +197,10 @@ az group delete --name amsResourceGroup
 ## <a name="multithreading"></a>Multithreading
 
 Die Azure Media Services v3 SDKs sind nicht threadsicher. Beim Entwickeln einer Multithreadanwendung sollten Sie ein neues AzureMediaServicesClient-Objekt pro Thread generieren und verwenden.
+
+## <a name="provide-feedback"></a>Feedback geben
+
+Im Artikel [Azure Media Services-Community](media-services-community.md) finden Sie verschiedene Möglichkeiten, Fragen zu stellen, Feedback zu geben und Updates zu Media Services zu bekommen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

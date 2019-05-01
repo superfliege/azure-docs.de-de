@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 36879ad070848f1779804d4eb3958058b9b86689
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 7feea92d48a826000fd8aa878b95658b79d6d908
+ms.sourcegitcommit: e7d4881105ef17e6f10e8e11043a31262cfcf3b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996576"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64869993"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps-Renderabdeckung
 
@@ -45,7 +45,6 @@ Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informatione
 | Zentralafrikanische Republik         | ✓ | Ø |
 | Tschad                             | ✓ | Ø |
 | Komoren                          | ✓ | Ø |
-| Kongo (Demokratische Republik)                            | ✓ | ✓ |
 | Demokratische Republik Kongo | ✓ | ✓ |
 | Côte d'Ivoire                    | ✓ | Ø |
 | Dschibuti                         | ✓ | Ø |
@@ -109,7 +108,6 @@ Maps bietet allerdings nicht für alle Regionen das gleiche Maß an Informatione
 | Kanada                    | ✓ | ✓ |
 | Kaimaninseln            | ✓ | ✓ |
 | Chile                     | ✓ | ✓ |
-| Clippertoninsel         | ✓ | ✓ |
 | Kolumbien                  | ✓ | ✓ |
 | Costa Rica                | ✓ | ✓ |
 | Kuba                      | ✓ | ✓ |

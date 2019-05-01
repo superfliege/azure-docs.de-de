@@ -2,18 +2,18 @@
 title: Migrieren von Daten in die Azure-Dateisynchronisierung mithilfe von Azure Data Box und anderen Methoden
 description: Informationen zum Migrieren von Massendaten auf mit der Azure-Dateisynchronisierung kompatible Weise.
 services: storage
-author: fauhse
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 02/12/2019
-ms.author: fauhse
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 04b13c1e511f54c1fcf7b632d3a368fde16bf319
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: d1ec5168b898d0aa75c12e6eb435e20c09de1929
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549014"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64700271"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync"></a>Migrieren von Massendaten in die Azure-Dateisynchronisierung
 Zum Migrieren von Massendaten in die Azure-Dateisynchronisierung gibt es zwei Möglichkeiten:

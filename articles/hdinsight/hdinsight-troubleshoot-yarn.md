@@ -1,18 +1,17 @@
 ---
 title: Problembehandlung für YARN in Azure HDInsight
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zum Arbeiten mit Apache Hadoop YARN und Azure HDInsight.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: d5582038c35ba3b599be89b7b7939e644d55ea78
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 4ca3dddb2b5ea4897ff82f1d91e88dc656305453
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408829"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64721579"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Problembehandlung für Apache Hadoop YARN mit Azure HDInsight
 
@@ -25,8 +24,9 @@ Lernen Sie die wichtigsten Probleme und ihre Lösungen bei der Arbeit mit Apache
 Erstellen Sie mit den folgenden Schritten in Ambari eine neue YARN-Warteschlange, und teilen Sie die Kapazitätszuordnung dann gleichmäßig auf alle Warteschlangen auf. 
 
 In diesem Beispiel wird die Kapazität zweier vorhandener Warteschlangen (**default** und **thriftsvr**) von 50% in 25% geändert, sodass die neue Warteschlange (spark) 50% Kapazität bekommt.
+
 | Warteschlange | Capacity | Maximale Kapazität |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | die Standardeinstellung | 25% | 50% |
 | thrftsvr | 25% | 50% |
 | spark | 50% | 50% |

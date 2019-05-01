@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: cb0e079eee78f865d472b55b162fb65b5eadaf44
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9a1dadc29006a365f7e614db5722fa0e92e0129d
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57900487"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922503"
 ---
 # <a name="about-the-speech-devices-sdk-preview"></a>Informationen zum Speech-Geräte-SDK (Vorschau)
 
@@ -39,7 +39,7 @@ Derzeit stehen diese umfassenden Referenzentwürfe für End-to-End-Systeme zur V
 
 |||
 |-|-|
-|[![ROOBO-Logo](media/speech-devices-sdk/roobo-logo.png)](http://ddk.roobo.com/)|ROOBO bietet vollständige Lösungen für KI-Systeme (künstliche Intelligenz) für elektrische Haushaltsgeräte, Fahrzeuge, Roboter, Spielzeug und andere Branchen. Über die Integration in Azure Speech Services verkürzen die Referenzentwürfe von ROOBO die Time-to-Market erheblich. [Besuchen Sie ROOBO](http://ddk.roobo.com/).|
+|[![ROOBO-Logo](media/speech-devices-sdk/roobo-logo.png)](https://ddk.roobo.com/)|ROOBO bietet vollständige Lösungen für KI-Systeme (künstliche Intelligenz) für elektrische Haushaltsgeräte, Fahrzeuge, Roboter, Spielzeug und andere Branchen. Über die Integration in Azure Speech Services verkürzen die Referenzentwürfe von ROOBO die Time-to-Market erheblich. [Besuchen Sie ROOBO](https://ddk.roobo.com/).|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

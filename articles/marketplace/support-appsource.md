@@ -2,24 +2,18 @@
 title: Support für AppSource | Azure
 description: Supportinformationen und Links für AppSource
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: ellacroi
 manager: nunoc
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: ellacroi
-ms.openlocfilehash: 5fb8d4420c4d46bc8a4ffe80743578cea338dd8e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 788a50b85b47b104f12c22ea3d4c39627c412cc2
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798894"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64937544"
 ---
 # <a name="support-for-appsource"></a>Support für AppSource  
 Die Supportoptionen für AppSource  

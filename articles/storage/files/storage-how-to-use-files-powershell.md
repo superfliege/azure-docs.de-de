@@ -2,18 +2,18 @@
 title: 'Schnellstart: Verwalten von Azure-Dateifreigaben mit Azure PowerShell'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Azure-Dateifreigaben mit Azure PowerShell verwalten.
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 10/26/2018
-ms.author: wgries
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f353c9952d9ccec0f279d6bd98bf5db215758559
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 439a1c60942b1540328bf9972d74d7dd4d573a65
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524543"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64700646"
 ---
 # <a name="quickstart-create-and-manage-an-azure-file-share-with-azure-powershell"></a>Schnellstart: Erstellen und Verwalten einer Azure-Dateifreigabe mit Azure PowerShell 
 In dieser Anleitung werden Schritt für Schritt die Grundlagen der Verwendung von [Azure-Dateifreigaben](storage-files-introduction.md) mit PowerShell beschrieben. Azure-Dateifreigaben sind genau wie andere Dateifreigaben, werden jedoch in der Cloud gespeichert und von der Azure-Plattform unterstützt. Azure-Dateifreigaben unterstützen das SMB-Protokoll nach Industriestandard und ermöglichen es, Dateien für mehrere Computer, Anwendungen und Instanzen freizugeben. 

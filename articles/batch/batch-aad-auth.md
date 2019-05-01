@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/18/2018
 ms.author: lahugh
-ms.openlocfilehash: 4ecee0e4f01da329e44c0f65b2c204520f2da87f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0ca22cfe99e77cd2ed3c5a966fb2412444103d71
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548335"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64922441"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Authentifizieren von Lösungen des Azure Batch-Diensts mit Active Directory
 
@@ -68,7 +68,7 @@ Der erste Schritt bei der Verwendung von Azure AD zum Authentifizieren ist die R
 
 Wenn Sie Ihre Anwendung registrieren, liefern Sie Azure AD Informationen über Ihre Anwendung. Azure AD stellt dann eine Anwendungs-ID (auch als *Client-ID* bezeichnet) bereit, mit der Sie Ihre Anwendung zur Laufzeit Azure AD zuordnen. Weitere Informationen zur Anwendungs-ID finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 
-Führen Sie die Schritte im Abschnitt [Adding an Application](../active-directory/develop/quickstart-v1-add-azure-ad-app.md) (Hinzufügen einer Anwendung) des Artikels [Integrating applications with Azure Active Directory][aad_integrate] (Integrieren von Anwendungen in Azure Active Directory) aus, um Ihre Batch-Anwendung zu registrieren. Wenn Sie Ihre Anwendung als native Anwendung registrieren, können Sie jeden gültigen URI als **Umleitungs-URI** angeben. Es muss sich nicht um einen echten Endpunkt handeln.
+Führen Sie die Schritte im Abschnitt [Adding an Application](../active-directory/develop/quickstart-register-app.md) (Hinzufügen einer Anwendung) des Artikels [Integrating applications with Azure Active Directory][aad_integrate] (Integrieren von Anwendungen in Azure Active Directory) aus, um Ihre Batch-Anwendung zu registrieren. Wenn Sie Ihre Anwendung als native Anwendung registrieren, können Sie jeden gültigen URI als **Umleitungs-URI** angeben. Es muss sich nicht um einen echten Endpunkt handeln.
 
 Nachdem Sie Ihre Anwendung registriert haben, wird die Anwendungs-ID angezeigt:
 

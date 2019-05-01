@@ -3,19 +3,19 @@ title: Anpassen der UI einer User Journey mit benutzerdefinierten Richtlinien | 
 description: Erfahren Sie mehr über benutzerdefinierte Azure Active Directory B2C-Richtlinien.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 88abd3d17218f1168119a66701f1474d27244acf
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 1cd3fa11df9bd9c87b84985f7acad6ba0a5e8838
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438256"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64695770"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Anpassen der UI einer User Journey mit benutzerdefinierten Richtlinien
 

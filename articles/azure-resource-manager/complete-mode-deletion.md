@@ -4,14 +4,14 @@ description: Zeigt, wie die Ressourcentypen die Löschung des vollständigen Mod
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 02/13/2019
+ms.date: 04/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: fded37fee844a01f4d51518f2ca56dcf575704b2
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 21b3972a96c1601b15c403275474d58873753b08
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60150148"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712996"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Löschen von Azure-Ressourcen für Bereitstellungen im vollständigen Modus
 Dieser Artikel beschreibt, wie Ressourcentypen das Löschen handhaben, wenn sie sich nicht in einer Vorlage befinden, die im vollständigen Modus bereitgestellt wird.
@@ -368,7 +368,7 @@ Um die gleichen Daten als Datei mit durch Trennzeichen getrennten Werten abzuruf
 | ReservationRecommendations | Nein  | 
 | ReservationSummaries | Nein  | 
 | ReservationTransactions | Nein  | 
-| Tags | Nein  | 
+| `Tags` | Nein  | 
 | Begriffe | Nein  | 
 | UsageDetails | Nein  | 
 
@@ -633,7 +633,7 @@ Um die gleichen Daten als Datei mit durch Trennzeichen getrennten Werten abzuruf
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 | Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
-| clusters | Nein  | 
+| clusters | Ja | 
 | clusters/applications | Nein  | 
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport

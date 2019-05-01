@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 984c5d6b5e6e2010489533a3889501c5b524a6bd
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 40e7ebcddb5cc215e071f1a34dfa8f3f4ea95141
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311321"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64684567"
 ---
 # <a name="content-protection-with-dynamic-encryption"></a>Inhaltsschutz mit dynamischer Verschlüsselung
 
@@ -128,7 +128,7 @@ Das MPEG-DASH-Protokoll unterstützt folgende Containerformate und Verschlüssel
 
 Das Smooth Streaming-Protokoll unterstützt folgende Containerformate und Verschlüsselungsschemas.
 
-|Protokoll|Containerformat|Verschlüsselungsschema|
+|Protocol|Containerformat|Verschlüsselungsschema|
 |---|---|---|
 |fMP4|AES||
 |fMP4 | CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(encryption=cenc)`|
@@ -206,6 +206,9 @@ Wenn der Fehler `MPE_ENC_ENCRYPTION_NOT_SET_IN_DELIVERY_POLICY` angezeigt wird, 
 
 Bei Fehlern, die auf `_NOT_SPECIFIED_IN_URL` enden, sollten Sie sicherstellen, dass Sie das Verschlüsselungsformat in der URL angeben. Beispiel: `…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`. Weitere Informationen finden Sie unter [Streamingprotokolle und Verschlüsselungstypen](#streaming-protocols-and-encryption-types).
 
+## <a name="provide-feedback"></a>Feedback geben
+
+Im Artikel [Azure Media Services-Community](media-services-community.md) finden Sie verschiedene Möglichkeiten, Fragen zu stellen, Feedback zu geben und Updates zu Media Services zu bekommen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

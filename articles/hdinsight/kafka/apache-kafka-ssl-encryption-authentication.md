@@ -1,7 +1,6 @@
 ---
 title: Einrichten von SSL-Verschlüsselung und -Authentifizierung für Apache Kafka in Azure HDInsight
 description: Einrichten von SSL-Verschlüsselung für die Kommunikation zwischen Kafka-Clients und Kafka-Brokern sowie zwischen Kafka-Brokern. Einrichten von SSL-Authentifizierung von Clients.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: cd850808f656b211bf1fdbfd2fe7c5799150b030
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9d8d5e57d0dd7d7022e65a061360c8450848fb4b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57839660"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682914"
 ---
 # <a name="setup-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Einrichten von Secure Sockets Layer-Verschlüsselung (SSL) und -Authentifizierung für Apache Kafka in Azure HDInsight
 

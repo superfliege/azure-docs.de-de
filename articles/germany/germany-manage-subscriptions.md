@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.openlocfilehash: 034a5d6ebf144b60a64dc1a105b91092ea404008
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5b39a9b69afea2efa1ab37c2cce059da3211b70a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22647074"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60780908"
 ---
 # <a name="manage-and-connect-to-your-subscription-in-azure-germany"></a>Verwalten Ihres Abonnements und Herstellen einer Verbindung mit Ihrem Abonnement in Azure Deutschland
 Azure Deutschland verfügt über eindeutige URLs und Endpunkte für die Verwaltung Ihrer Umgebung. Es ist wichtig, dass die richtigen Verbindungen zum Verwalten der Umgebung über das Azure-Portal oder PowerShell verwendet werden. Nach dem Herstellen der Verbindung mit der Azure Deutschland-Umgebung können die normalen Vorgänge zum Verwalten der Dienste durchgeführt werden, sofern die Komponente bereitgestellt wurde.

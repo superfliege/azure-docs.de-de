@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 23f0110b3418e2df0434438247340f88678268ad
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 2a2df8b47b60f29d8ecd3c040e8ef979ee23afa8
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000928"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575401"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Geocodierungsabdeckung in Azure Maps
 
@@ -44,7 +44,6 @@ Die Möglichkeit der Geocodierung in einem Land hängt von der Abdeckung der Str
 | Kanada                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Kaimaninseln                                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Chile                                               |       ✓         |        ✓       |       ✓      |      ✓     |          ✓         |
-| Clippertoninsel                                   |                 |                |              |      ✓     |                    |
 | Kolumbien                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Costa Rica                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Kuba                                                |                 |                |       ✓      |      ✓     |          ✓         |
@@ -98,12 +97,12 @@ Die Möglichkeit der Geocodierung in einem Land hängt von der Abdeckung der Str
 | Britisches Territorium im Indischen Ozean                      |                 |                |              |      ✓     |          ✓         |
 | Brunei                                              |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Kambodscha                                            |                 |                |              |      ✓     |          ✓         |
-| China                                               |        ✓        |        ✓       |              |      ✓     |          ✓         |
+| China                                               |                 |                |              |      ✓     |          ✓         |
 | Weihnachtsinsel                                    |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Kokosinseln                             |                 |                |              |      ✓     |          ✓         |
 | Komoren                                             |                 |                |              |      ✓     |          ✓         |
 | Cookinseln                                        |                 |                |              |      ✓     |          ✓         |
-| Fidschi                                                |                  |                |              |      ✓     |          ✓         |
+| Fidschi                                                |                  |                |              |      ✓     |          ✓        |
 | Französisch-Polynesien                                    |                 |                |              |      ✓     |          ✓         |
 | Heard und McDonaldinseln                   |                 |                |              |      ✓     |          ✓         |
 | Hongkong (SAR)                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |

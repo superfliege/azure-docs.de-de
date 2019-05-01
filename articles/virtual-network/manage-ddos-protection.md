@@ -4,8 +4,8 @@ titlesuffix: Azure Virtual Network
 description: Erfahren Sie, wie Sie Azure DDoS Protection Standard-Telemetrie in Azure Monitor verwenden, um einen Angriff zu entschärfen.
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -15,13 +15,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
-ms.author: jdial
-ms.openlocfilehash: 32c4516c7dc68b04826b362d34841160936d682d
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.author: kumud
+ms.openlocfilehash: 6b1d62f4cedb7add843a5ddae24125019130d58f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244518"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64728348"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Verwalten von Azure DDoS Protection Standard mithilfe des Azure-Portals
 
@@ -47,7 +47,7 @@ Die Erstellung von mehr als einem Plan ist für die meisten Organisationen nicht
     |NAME           | myDdosProtectionPlan                              |
     |Abonnement   | Wählen Sie Ihr Abonnement aus.                         |
     |Ressourcengruppe | Klicken Sie auf **Neue erstellen**, und geben Sie *myResourceGroup* ein. |
-    |Standort       | USA (Ost)                                           |
+    |Location       | USA (Ost)                                           |
 
 ## <a name="enable-ddos-for-a-new-virtual-network"></a>Aktivieren von DDoS für ein neues virtuelles Netzwerk
 
@@ -60,7 +60,7 @@ Die Erstellung von mehr als einem Plan ist für die meisten Organisationen nicht
     | NAME            | myVirtualNetwork                                             |
     | Abonnement    | Wählen Sie Ihr Abonnement aus.                                    |
     | Ressourcengruppe  | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus. |
-    | Standort        | USA (Ost)                                                      |
+    | Location        | USA (Ost)                                                      |
     | DDoS-Schutz | Wählen Sie **Standard** und dann unter **DDoS-Schutz** die Option **myDdosProtectionPlan** aus. Der von Ihnen ausgewählte Plan kann sich im selben oder in einem anderen Abonnement als das virtuelle Netzwerk befinden. Beide Abonnements müssen jedoch dem gleichen Azure Active Directory-Mandanten zugeordnet sein.|
 
 Ein virtuelles Netzwerk kann nicht in eine andere Ressourcengruppe oder ein anderes Abonnement verschoben werden, wenn der DDoS-Standard für das virtuelle Netzwerk aktiviert ist. Wenn Sie ein virtuelles Netzwerks mit aktiviertem DDoS-Standard verschieben müssen, deaktivieren Sie zuerst den DDoS-Standard, verschieben Sie das virtuelle Netzwerk, und aktivieren Sie dann den DDoS-Standard. Nach der Verschiebung werden die automatisch optimierten Schwellenwerte der Richtlinie für alle geschützten, öffentlichen IP-Adressen im virtuellen Netzwerk zurückgesetzt.
@@ -101,7 +101,7 @@ Mithilfe der Warnungskonfiguration von Azure Monitor können Sie jede der verfü
     |NAME                     | myDdosAlert                                                                                        |
     |Abonnement             | Wählen Sie das Abonnement aus, das die öffentliche IP-Adresse enthält, für die Sie Warnungen erhalten möchten.        |
     |Ressourcengruppe           | Wählen Sie die Ressourcengruppe aus, die die öffentliche IP-Adresse enthält, für die Sie Warnungen erhalten möchten.      |
-    |Ressource                 | Wählen Sie die öffentliche IP-Adresse aus, die die öffentliche IP-Adresse enthält, für die Sie Warnungen erhalten möchten. DDoS überwacht öffentliche IP-Adressen, die Ressourcen in einem virtuellen Netzwerk zugewiesen sind. Wenn Sie keine Ressourcen mit öffentlichen IP-Adressen im virtuellen Netzwerk besitzen, müssen Sie zunächst eine Ressource mit einer öffentlichen IP-Adresse erstellen. Sie können die öffentliche IP-Adresse aller unter [virtuelles Netzwerk für Azure-Dienste](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) aufgeführter Ressourcen überwachen, die über den Resource Manager (nicht klassisch), ausgenommen Azure App Service-Umgebungen und Azure VPN Gateway. Um mit diesem Tutorial fortzufahren, können Sie schnell einen virtuellen [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- oder [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Computer erstellen.                   |
+    |Resource                 | Wählen Sie die öffentliche IP-Adresse aus, die die öffentliche IP-Adresse enthält, für die Sie Warnungen erhalten möchten. DDoS überwacht öffentliche IP-Adressen, die Ressourcen in einem virtuellen Netzwerk zugewiesen sind. Wenn Sie keine Ressourcen mit öffentlichen IP-Adressen im virtuellen Netzwerk besitzen, müssen Sie zunächst eine Ressource mit einer öffentlichen IP-Adresse erstellen. Sie können die öffentliche IP-Adresse aller unter [virtuelles Netzwerk für Azure-Dienste](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) aufgeführter Ressourcen überwachen, die über den Resource Manager (nicht klassisch), ausgenommen Azure App Service-Umgebungen und Azure VPN Gateway. Um mit diesem Tutorial fortzufahren, können Sie schnell einen virtuellen [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- oder [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Computer erstellen.                   |
     |Metrik                   | Unter DDoS-Angriff oder nicht                                                                            |
     |Schwellenwert                | 1 – **1** bedeutet, dass Sie angegriffen werden. **0** bedeutet, dass Sie nicht angegriffen werden.                         |
     |Zeitraum                   | Wählen Sie einen beliebigen Wert aus.                                                                   |

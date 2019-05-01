@@ -2,18 +2,18 @@
 title: Erstellen einer Azure-Dateifreigabe | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie über das Azure-Portal, mithilfe von PowerShell oder mit der Azure-Befehlszeilenschnittstelle eine Azure-Dateifreigabe in Azure Files erstellen.
 services: storage
-author: RenaShahMSFT
+author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 09/19/2017
-ms.author: renash
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1620683f4bc02d607afd8e0371e8d4a5461612b3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 6440e5c2cf534ea431387bcdfed8b218919bf627
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772329"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64701533"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Erstellen einer Dateifreigabe in Azure Files
 Sie können Azure-Dateifreigaben mit dem  [Azure-Portal](https://portal.azure.com/), den Azure Storage-PowerShell-Cmdlets, den Azure Storage-Clientbibliotheken oder der Azure Storage-REST-API erstellen. In diesem Tutorial lernen Sie Folgendes:

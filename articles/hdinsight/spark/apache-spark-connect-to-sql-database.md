@@ -1,7 +1,6 @@
 ---
 title: Verwenden von Apache Spark zum Lesen und Schreiben von Daten in Azure SQL-Datenbank
 description: Informationen zum Einrichten einer Verbindung zwischen einem HDInsight Spark-Cluster und einer Azure SQL-Datenbank zum Lesen, Schreiben und Streamen von Daten in einer SQL-Datenbank
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/15/2018
-ms.openlocfilehash: 2b818350c19d1d9ff34bcdac0e438def0f859e40
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 84946083146517146ad9aeb48693230aaaaf7943
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54381901"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64701177"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Verwenden eines HDInsight Spark-Clusters zum Lesen und Schreiben von Daten in einer Azure SQL-Datenbank
 

@@ -3,19 +3,19 @@ title: Definieren eines technischen Profils für einen JWT-Tokenaussteller in ei
 description: Erfahren Sie, wie Sie ein technisches Profil für einen JWT-Tokenaussteller in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C definieren.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 10/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 247ebdc8156453062eefe6738c5c281d393a9923
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 33dce27b69d080c57b925562ba83db0046b77ca9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436053"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683779"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Profils für einen JWT-Tokenaussteller in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -23,7 +23,7 @@ ms.locfileid: "58436053"
 
 Azure Active Directory (Azure AD) B2C stellt bei der Verarbeitung der einzelnen Authentifizierungsabläufe verschiedene Arten von Sicherheitstoken aus. Ein technisches Profil für einen JWT-Tokenaussteller gibt ein JWT-Token aus, das an die Anwendung der vertrauenden Seite zurückgegeben wird. Dieses technische Profil ist in der Regel der letzte Orchestrierungsschritt in der User Journey.
 
-## <a name="protocol"></a>Protokoll
+## <a name="protocol"></a>Protocol
 
 Das **Name**-Attribut des **Protocol**-Elements muss auf `None` festgelegt werden. Legen Sie das **OutputTokenFormat**-Element auf `JWT` fest.
 

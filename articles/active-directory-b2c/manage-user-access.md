@@ -3,19 +3,19 @@ title: Verwalten des Benutzerzugriffs in Azure Active Directory B2C | Microsoft-
 description: Es wird beschrieben, wie Sie Minderjährige identifizieren, das Geburtsdatum und das Land erfassen und in Ihrer Anwendung per Azure AD B2C die Zustimmung zu den Nutzungsbedingungen einholen.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 2fb9de7781fae51792e2802002a3cf68974dec83
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: cddaf59a1202c9c19018427c06639686e905bb64
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59783734"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64691103"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Verwalten des Benutzerzugriffs in Azure Active Directory B2C
 

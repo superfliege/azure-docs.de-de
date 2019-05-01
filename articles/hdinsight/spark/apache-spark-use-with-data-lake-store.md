@@ -1,7 +1,6 @@
 ---
 title: Verwenden von Apache Spark zum Analysieren von Daten in Azure Data Lake Storage Gen1
 description: Ausführen von Spark-Aufträgen zum Analysieren von in Azure Data Lake Storage Gen1 gespeicherten Daten
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: 97a9d688eaa607df9677b6e1e2e3759cbe53bd5c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 688b87fcc0ec18e0bf5924470d521c44229ae421
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122536"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682885"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>Verwenden des HDInsight Spark-Clusters zum Analysieren von Daten in Data Lake Storage Gen1
 

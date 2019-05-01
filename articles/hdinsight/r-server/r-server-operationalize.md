@@ -1,7 +1,6 @@
 ---
 title: Operationalisieren von ML Services in HDInsight – Azure
 description: Informationen zum Operationalisieren von ML Services in Azure HDInsight.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: d0cae4210fa313c5d6e1f33987422e7b0d53e76a
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 916c4fae8eed9451080f92e97743876e89bd25ea
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579956"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64719748"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Operationalisieren eines ML Services-Clusters in Azure HDInsight
 
@@ -22,9 +21,9 @@ Nachdem Sie mit dem ML Services-Cluster Ihre Datenmodellierung in HDInsight vorg
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Ein ML Services-Cluster in HDInsight**: Anweisungen finden Sie unter [Erste Schritte mit ML Services in HDInsight](r-server-get-started.md).
+* **Ein ML Services-Cluster in HDInsight:** Anweisungen finden Sie unter [Erste Schritte mit ML Services in HDInsight](r-server-get-started.md).
 
-* **Ein SSH-Client (Secure Shell)**: Ein SSH-Client wird verwendet, um Remoteverbindungen mit dem HDInsight-Cluster herzustellen und Befehle direkt im Cluster auszuführen. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* **Ein SSH-Client (Secure Shell):** Ein SSH-Client wird verwendet, um Remoteverbindungen mit dem HDInsight-Cluster herzustellen und Befehle direkt im Cluster auszuführen. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>Operationalisieren des ML Services-Clusters mit der Konfiguration mit einem einzelnen Computer
 

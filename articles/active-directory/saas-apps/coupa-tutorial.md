@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4156ef264069b5f926f28f766a201dceb29a512b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 29ca16e149852d044fdd6f6ea0baf0b11ccb75cf
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834794"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64709577"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Tutorial: Azure Active Directory-Integration mit Coupa
 
@@ -114,16 +114,16 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Coupa d
 
     | Environment  | URL |
     |:-------------|----|
-    | Sandbox | `devsso35.coupahost.com`|
-    | Bereitstellung | `prdsso40.coupahost.com`|
+    | Sandbox | `sso-stg1.coupahost.com`|
+    | Bereitstellung | `sso-prd1.coupahost.com`|
     | | |
 
     c. Geben Sie im Textfeld **Antwort-URL** eine URL ein:
 
     | Environment | URL |
     |------------- |----|
-    | Sandbox | `https://devsso35.coupahost.com/sp/ACS.saml2`|
-    | Bereitstellung | `https://prdsso40.coupahost.com/sp/ACS.saml2`|
+    | Sandbox | `https://sso-stg1.coupahost.com/sp/ACS.saml2`|
+    | Bereitstellung | `https://sso-prd1.coupahost.com/sp/ACS.saml2`|
     | | |
 
 4. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.

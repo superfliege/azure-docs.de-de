@@ -3,19 +3,19 @@ title: TechnicalProfiles | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie das TechnicalProfiles-Element einer benutzerdefinierten Richtlinie in Azure Active Directory B2C angeben.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 86f2a8fa11becdf24c0a10c0325893946a033c3d
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: da769093794a559e4b856f7ae4f211c3900632c6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568174"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64711050"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -85,7 +85,7 @@ Das **TechnicalProfile**-Element enthält die folgenden Attribute:
 | Domäne | 0:1 | Der Domänenname für das technische Profil. Wenn das technische Profil z.B. als Identitätsanbieter Facebook angibt, lautet der Domänenname „Facebook.com“. |
 | DisplayName | 0:1 | Der Name des technischen Profils, der Benutzern angezeigt werden kann. |
 | BESCHREIBUNG | 0:1 | Die Beschreibung des technischen Profils, die Benutzern angezeigt werden kann. |
-| Protokoll | 0:1 | Das Protokoll, das für die Kommunikation mit der anderen Seite verwendet wird. |
+| Protocol | 0:1 | Das Protokoll, das für die Kommunikation mit der anderen Seite verwendet wird. |
 | Metadaten | 0:1 | Eine Sammlung von Schlüssel-Wert-Paaren, die vom Protokoll im Verlauf einer Transaktion für die Kommunikation mit dem Endpunkt verwendet werden. |
 | InputTokenFormat | 0:1 | Das Format des Eingabetokens. Mögliche Werte: `JSON`, `JWT`, `SAML11` oder `SAML2`. Der Wert `JWT` stellt ein JSON-Webtoken gemäß IETF-Spezifikation dar. Der Wert `SAML11` stellt ein SAML 1.1-Sicherheitstoken gemäß OASIS-Spezifikation dar.  Der Wert `SAML2` stellt ein SAML 2.0-Sicherheitstoken gemäß OASIS-Spezifikation dar. |
 | OutputTokenFormat | 0:1 | Das Format des Ausgabetokens. Mögliche Werte: `JSON`, `JWT`, `SAML11` oder `SAML2`. |
@@ -102,7 +102,7 @@ Das **TechnicalProfile**-Element enthält die folgenden Attribute:
 | UseTechnicalProfileForSessionManagement | 0:1 | Ein anderes technische Profil, das für die Sitzungsverwaltung verwendet werden soll. |
 |EnabledForUserJourneys| 0:1 |Steuert, ob das technische Profil in einer User Journey ausgeführt wird.  |
 
-### <a name="protocol"></a>Protokoll
+### <a name="protocol"></a>Protocol
 
 Das **Protocol**-Element enthält die folgenden Attribute:
 

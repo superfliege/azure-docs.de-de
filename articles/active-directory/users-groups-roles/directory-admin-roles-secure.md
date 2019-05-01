@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81d09978c3333a5b76c09f8c7dac85998d342f03
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: f4b61b661d9da0748bc354b8defa4e6d67a047a2
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287229"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64920482"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD
 
@@ -261,7 +261,7 @@ Wenn Sie bereits Azure AD Privileged Identity Management verwenden, passen Sie Z
 
 #### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>Ermitteln der Gefährdung durch kennwortbasierte Anmeldeprotokolle (bei Verwendung von Exchange Online)
 
-In der Vergangenheit setzten Protokolle voraus, dass Benutzername/Kennwort-Kombinationen in Geräten, E-Mail-Konten, Telefonen usw. eingebettet waren. Doch bei den heutigen Risiken von Cyberangriffen in der Cloud sollten Sie jeden Benutzer identifizieren, der der Organisation potenziell schweren Schaden zufügen könnte, wenn seine Anmeldeinformationen gefährdet wären, und ihm durch Implementieren von sicheren Authentifizierungsanforderungen und bedingtem Zugriff die Möglichkeit verwehren, sich mit Benutzername/Kennwort bei seiner E-Mail-Adresse anzumelden. Sie können [ältere Authentifizierungsmethoden mit dem bedingten Zugriff](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/block-legacy-authentication) blockieren. Überprüfen Sie die Details zum [Blockieren der Standardauthentifizierung](https://docs.microsoft.com/en-us/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) über Exchange Online. 
+In der Vergangenheit setzten Protokolle voraus, dass Benutzername/Kennwort-Kombinationen in Geräten, E-Mail-Konten, Telefonen usw. eingebettet waren. Doch bei den heutigen Risiken von Cyberangriffen in der Cloud sollten Sie jeden Benutzer identifizieren, der der Organisation potenziell schweren Schaden zufügen könnte, wenn seine Anmeldeinformationen gefährdet wären, und ihm durch Implementieren von sicheren Authentifizierungsanforderungen und bedingtem Zugriff die Möglichkeit verwehren, sich mit Benutzername/Kennwort bei seiner E-Mail-Adresse anzumelden. Sie können [ältere Authentifizierungsmethoden mit dem bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication) blockieren. Überprüfen Sie die Details zum [Blockieren der Standardauthentifizierung](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online) über Exchange Online. 
 
 #### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>Durchführen einer Rollenbewertung für Office 365-Rollen (bei Verwendung von Office 365)
 

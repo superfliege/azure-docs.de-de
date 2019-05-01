@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 95705e7b7a372867e33c86826f44e380407dfee1
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: ce7e8788ec807c8ceccb49a7d435041b34e75348
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999313"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64917076"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Azure Cognitive Services: SDK für maschinelles Sehen für Python
 
@@ -216,7 +216,7 @@ for caption in analysis.captions:
 
 ### <a name="get-text-from-image"></a>Extrahieren von Text aus einem Bild
 
-Sie können handschriftlichen oder gedruckten Text aus einem Bild extrahieren. Dazu sind zwei SDK-Aufrufe erforderlich: [`batch_read_file`](https://docs.microsoft.com/en-us/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python#batch-read-file-url--mode--custom-headers-none--raw-false----operation-config-) und [`get_read_operation_result`](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python#get-read-operation-result-operation-id--custom-headers-none--raw-false----operation-config-). Der Aufruf von `batch_read_file` ist asynchron. In den Ergebnissen des Aufrufs von `get_read_operation_result` müssen Sie anhand von [`TextOperationStatusCodes`][ref_computervision_model_textoperationstatuscodes] überprüfen, ob der erste Aufruf abgeschlossen wurde, bevor Sie die Textdaten extrahieren. Die Ergebnisse enthalten den Text sowie die Koordinaten des umgebenden Rechtecks für den Text.
+Sie können handschriftlichen oder gedruckten Text aus einem Bild extrahieren. Dazu sind zwei SDK-Aufrufe erforderlich: [`batch_read_file`](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python#batch-read-file-url--mode--custom-headers-none--raw-false----operation-config-) und [`get_read_operation_result`](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python#get-read-operation-result-operation-id--custom-headers-none--raw-false----operation-config-). Der Aufruf von `batch_read_file` ist asynchron. In den Ergebnissen des Aufrufs von `get_read_operation_result` müssen Sie anhand von [`TextOperationStatusCodes`][ref_computervision_model_textoperationstatuscodes] überprüfen, ob der erste Aufruf abgeschlossen wurde, bevor Sie die Textdaten extrahieren. Die Ergebnisse enthalten den Text sowie die Koordinaten des umgebenden Rechtecks für den Text.
 
 ```Python
 # import models

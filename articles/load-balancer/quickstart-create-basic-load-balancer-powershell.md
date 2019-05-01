@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: kumud
 ms:custom: seodec18
-ms.openlocfilehash: 0bdad2d59528775d23d882831cfdbdc09471e12e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 31795b0dfb5a9815113ab232a266d9f7f8955068
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109796"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688377"
 ---
 # <a name="get-started"></a>Schnellstart: Erstellen eines öffentlichen Lastenausgleichs mit Azure PowerShell
 
@@ -335,7 +335,7 @@ Geben Sie die öffentliche IP-Adresse in einem Webbrowser ein. Die Website wird 
 
 ![Testen des Load Balancers](media/quickstart-create-basic-load-balancer-powershell/load-balancer-test.png)
 
-Sie können eine erzwungene Aktualisierung Ihres Webbrowsers durchführen, um zu verfolgen, wie der Load Balancer den Datenverkehr auf beide virtuellen Computer verteilt, auf denen Ihre App ausgeführt wird.
+Sie können eine erzwungene Aktualisierung Ihres Webbrowsers durchführen, um zu verfolgen, wie der Load Balancer den Datenverkehr auf die beiden virtuellen Computer verteilt, auf denen Ihre App ausgeführt wird.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

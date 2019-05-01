@@ -3,19 +3,19 @@ title: Definieren eines technischen OAuth2-Profils in einer benutzerdefinierten 
 description: Erfahren Sie, wie Sie ein technisches OAuth2-Profil in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C definieren.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e92378cca445191f42708bd6348b1c75b29da1a1
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 65634cb6573a0f163f7a0ca07bf26af9512e240b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60009836"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683891"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen OAuth2-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -23,7 +23,7 @@ ms.locfileid: "60009836"
 
 Azure Active Directory (Azure AD) B2C bietet Unterstützung für Identitätsanbieter mit dem OAuth2-Protokoll. OAuth2 ist das primäre Protokoll für die Autorisierung und die delegierte Authentifizierung. Weitere Informationen finden Sie unter [RFC 6749: The OAuth 2.0 Authorization Framework](https://tools.ietf.org/html/rfc6749) (Das OAuth 2.0-Autorisierungsframework). Mit einem technischen OAuth2-Profil können Sie einen Verbund mit einem OAuth2-basierten Identitätsanbieter wie Facebook erstellen. Über einen Verbund mit einem Identitätsanbieter können sich Benutzer mit ihren vorhandenen Identitäten aus sozialen Netzwerken oder Unternehmen anmelden.
 
-## <a name="protocol"></a>Protokoll
+## <a name="protocol"></a>Protocol
 
 Das **Name**-Attribut des **Protocol**-Elements muss auf `OAuth2` festgelegt werden. Das Protokoll für das technische Profil **Facebook-OAUTH** ist z.B. `OAuth2`:
 

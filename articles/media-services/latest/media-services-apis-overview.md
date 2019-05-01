@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 04/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 5ae7563892cb4792f5c329b2850d7b88d37c0e7d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a336f7faae24517aa4e29c991886107c6a82d2b5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698265"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64692557"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Entwickeln mit Media Services v3-APIs
 
@@ -87,6 +87,10 @@ Media Services verfügt über die folgenden zeitintensiven Vorgänge:
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Filterung, Sortierung und Paginierung von Media Services-Entitäten
 
 Informationen finden Sie unter [Filterung, Sortierung, Paginierung von Azure Media Services-Entitäten](entities-overview.md).
+
+## <a name="provide-feedback"></a>Feedback geben
+
+Im Artikel [Azure Media Services-Community](media-services-community.md) finden Sie verschiedene Möglichkeiten, Fragen zu stellen, Feedback zu geben und Updates zu Media Services zu bekommen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

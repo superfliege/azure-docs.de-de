@@ -1,7 +1,6 @@
 ---
 title: 'Schnellstart: Erstellen eines Spark-Clusters in HDInsight mithilfe von Azure PowerShell'
 description: Dieses Schnellstarttutorial zeigt, wie Sie Azure PowerShell verwenden, um einen Apache Spark-Cluster in Azure HDInsight zu erstellen, und wie Sie eine einfache Spark-SQL-Abfrage ausführen.
-services: azure-hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: hrasheed
 ms.custom: mvc
-ms.openlocfilehash: f56595abf354d1124a40729ce93f97ab2acdeeeb
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 41311dce20237a300ae57f21bcc969c91da617b1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361556"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64708391"
 ---
 # <a name="quickstart-create-an-apache-spark-cluster-in-hdinsight-using-powershell"></a>Schnellstart: Erstellen eines Apache Spark-Clusters in HDInsight mithilfe von PowerShell
 Hier erfahren Sie, wie Sie einen [Apache Spark](https://spark.apache.org/)-Cluster in Azure HDInsight erstellen und Spark-SQL-Abfragen für [Apache Hive](https://hive.apache.org/)-Tabellen ausführen. Apache Spark ermöglicht schnelle Datenanalysen und Clustercomputing mit In-Memory-Verarbeitung. Informationen zu Spark in HDInsight finden Sie unter [Übersicht: Apache Spark in Azure HDInsight](apache-spark-overview.md).
@@ -41,7 +40,7 @@ Sie verwenden ein PowerShell-Skript, um die Ressourcen zu erstellen.  Wenn Sie d
 |Parameter|Wert|
 |------|------|
 |Azure-Ressourcengruppenname | Geben Sie einen eindeutigen Namen für die Ressourcengruppe an.|
-|Standort| Geben Sie die Azure-Region an, z.B. „USA, Mitte“. |
+|Location| Geben Sie die Azure-Region an, z.B. „USA, Mitte“. |
 |Name des Standard-Speicherkontos | Geben Sie einen eindeutigen Namen für das Speicherkonto an. |
 |Clustername | Geben Sie einen eindeutigen Namen für den HDInsight-Spark-Cluster an.|
 |Clusteranmeldeinformation | Sie verwenden dieses Konto später in diesem Schnellstarttutorial, um eine Verbindung zum Clusterdashboard herzustellen.|

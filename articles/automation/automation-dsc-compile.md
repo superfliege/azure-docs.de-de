@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f2c6f45081b78d330033570ff322f90cd06e50dd
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 847c928681451b4fef93198e2f2272d5bb04b1b8
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594269"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919801"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilieren von DSC-Konfigurationen in Azure Automation DSC
 
@@ -287,11 +287,11 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -A
 
 ## <a name="partial-configuration"></a>Teilkonfiguration
 
-Azure Automation DSC unterstützt die Verwendung von [Teilkonfigurationen](https://docs.microsoft.com/en-us/powershell/dsc/pull-server/partialconfigs).
+Azure Automation DSC unterstützt die Verwendung von [Teilkonfigurationen](https://docs.microsoft.com/powershell/dsc/pull-server/partialconfigs).
 In diesem Szenario ist DSC so konfiguriert, dass mehrere Konfigurationen unabhängig voneinander verwaltet werden können, wobei jede Konfiguration von Azure Automation abgerufen wird.
 Einem Knoten kann aber nur eine Konfiguration mittels Automation-Konto zugewiesen werden.
 Dies bedeutet, dass Sie bei Verwendung von zwei Konfigurationen für einen Knoten zwei Automation-Kontos benötigen.
-Weitere Informationen dazu, wie Teams zusammenarbeiten können, um Server gemeinsam mithilfe von Konfiguration als Code zu verwalten, finden Sie unter [Grundlegendes zu DSCs Rolle in einer CI/CD-Pipeline](https://docs.microsoft.com/en-us/powershell/dsc/overview/authoringadvanced).
+Weitere Informationen dazu, wie Teams zusammenarbeiten können, um Server gemeinsam mithilfe von Konfiguration als Code zu verwalten, finden Sie unter [Grundlegendes zu DSCs Rolle in einer CI/CD-Pipeline](https://docs.microsoft.com/powershell/dsc/overview/authoringadvanced).
 
 ## <a name="importing-node-configurations"></a>Importieren von Knotenkonfigurationen
 

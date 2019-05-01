@@ -4,20 +4,21 @@ titlesuffix: Azure Virtual Network
 description: Erfahren Sie, was Netzwerkschnittstellen sind und wie Sie sie erstellen, ihre Einstellungen ändern und sie löschen.
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
+manager: twooley
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
-ms.author: jdial
-ms.openlocfilehash: 8840944f6757813b10b01c8e512b1ef64c05a85f
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.author: kumud
+ms.openlocfilehash: a3cb6e1b20e405cedddae8684a4b91fcb8a5514a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888286"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64695343"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Erstellen, Ändern oder Löschen von Netzwerkschnittstellen
 
@@ -57,7 +58,7 @@ Wenn Sie im Azure-Portal eine VM erstellen, generiert das Portal für Sie eine N
     |Private IP-Adresse (IPv6)|Nein | Wenn Sie dieses Kontrollkästchen aktivieren, wird der Netzwerkschnittstelle zusätzlich zu der IPv4-Adresse der Netzwerkschnittstelle eine IPv6-Adresse zugewiesen. Im IPv6-Abschnitt dieses Artikels finden Sie wichtige Informationen zur Verwendung von IPv6 bei Netzwerkschnittstellen. Eine Auswahl der Zuweisungsmethode für die IPv6-Adresse ist nicht möglich. Wenn Sie eine IPv6-Adresse zuweisen, erfolgt die Zuordnung mit der dynamischen Methode.
     |IPv6-Name (wird nur angezeigt, wenn das Kontrollkästchen **Private IP-Adresse (IPv6)** aktiviert ist) |Ja, wenn das Kontrollkästchen **Private IP-Adresse (IPv6)** aktiviert ist.| Dieser Name wird einer sekundären IP-Konfiguration für die Netzwerkschnittstelle zugewiesen. Weitere Informationen zu IP-Konfigurationen finden Sie unter [Anzeigen der Einstellungen von Netzwerkschnittstellen](#view-network-interface-settings).|
     |Ressourcengruppe|Ja|Wählen Sie eine vorhandene [Ressourcengruppe](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) aus, oder erstellen Sie eine. Eine Netzwerkschnittstelle kann sich in der gleichen (oder in einer anderen) Ressourcengruppe befinden wie der virtuelle Computer, an den Sie sie anfügen, oder wie das virtuelle Netzwerk, mit dem Sie eine Verbindung herstellen.|
-    |Standort|Ja|Der virtuelle Computer, an den Sie eine Netzwerkschnittstelle anfügen, und das virtuelle Netzwerk, mit dem Sie eine Verbindung herstellen, müssen sich an demselben [Standort](https://azure.microsoft.com/regions) befinden. Dieser wird auch als Region bezeichnet.|
+    |Location|Ja|Der virtuelle Computer, an den Sie eine Netzwerkschnittstelle anfügen, und das virtuelle Netzwerk, mit dem Sie eine Verbindung herstellen, müssen sich an demselben [Standort](https://azure.microsoft.com/regions) befinden. Dieser wird auch als Region bezeichnet.|
 
 Das Portal stellt keine Option bereit, mit der Sie der Netzwerkschnittstelle beim Erstellen eine öffentliche IP-Adresse zuweisen können. Sie können allerdings im Portal eine öffentliche IP-Adresse erstellen und diese einer Netzwerkschnittstelle zuweisen, wenn Sie im Portal einen virtuellen Computer erstellen. Informationen zum Hinzufügen einer öffentlichen IP-Adresse zur Netzwerkschnittstelle nach deren Erstellung finden Sie unter [Verwalten von IP-Adressen](virtual-network-network-interface-addresses.md). Wenn Sie eine Netzwerkschnittstelle mit einer öffentlichen IP-Adresse erstellen möchten, müssen Sie zum Erstellen der Netzwerkschnittstelle die Befehlszeilenschnittstelle oder PowerShell verwenden.
 

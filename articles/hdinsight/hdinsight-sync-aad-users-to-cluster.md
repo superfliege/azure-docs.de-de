@@ -1,7 +1,6 @@
 ---
 title: Synchronisieren von Azure Active Directory-Benutzern in einen Cluster – Azure HDInsight
 description: Synchronisieren Sie authentifizierte Benutzer von Azure Active Directory in einen Cluster.
-services: hdinsight
 ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
@@ -9,12 +8,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: ebb1e3614309f92fc21442100a13c53291b3acbb
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 2be67c604bebbe9b4c4356e241d1480ca0778d4a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407286"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688549"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Synchronisieren von Azure Active Directory-Benutzern in einen HDInsight-Cluster
 

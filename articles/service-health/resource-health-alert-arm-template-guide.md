@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: afa89fc90552c7ccba1fcea0945ee223d0096be4
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 71856f9de3d67590d524fa8bb1119a384d156d2e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59047516"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64700161"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Konfigurieren von Ressourcenintegritätswarnungen mithilfe von Resource Manager-Vorlagen
 
@@ -164,7 +164,7 @@ Für einen Bereich auf Ressourcenebene sieht der Abschnitt „scopes“ etwa wie
 ],
 ```
 
-Beispiel:  `"/subscriptions/d37urb3e-ed41-4670-9c19-02a1d2808ff9/resourcegroups/myRG/providers/microsoft.compute/virtualmachines/myVm"`
+Beispiel: `"/subscriptions/d37urb3e-ed41-4670-9c19-02a1d2808ff9/resourcegroups/myRG/providers/microsoft.compute/virtualmachines/myVm"`
 
 > Diese Zeichenfolge erhalten Sie, indem Sie Ihre Azure-Ressource im Azure-Portal anzeigen und sich die URL ansehen.
 
@@ -216,9 +216,13 @@ Sie möchten möglicherweise nur benachrichtigt werden, wenn eine Ressource fehl
                     "field": "status",
                     "equals": "InProgress"
                 },
-                        {
+                {
                     "field": "status",
                     "equals": "Resolved"
+                },
+                {
+                    "field": "status",
+                    "equals": "Updated"
                 }
             ]
         }
@@ -404,6 +408,11 @@ Die folgende Vorlage wird empfohlen:
                                 {
                                     "field": "status",
                                     "equals": "InProgress",
+                                    "containsAny": null
+                                },
+                                {
+                                    "field": "status",
+                                    "equals": "Updated",
                                     "containsAny": null
                                 }
                             ]

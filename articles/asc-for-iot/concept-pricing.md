@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 41b2d012ef2f6dd1ca5f57e04da43eb1a06dafde
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 00666e27c9251248aa6ecff75d88908baabf71f3
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58862708"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64919704"
 ---
 # <a name="pricing-and-associated-costs"></a>Preise und anfallende Kosten
 
@@ -40,7 +40,7 @@ Das Preismodell von ASC für IoT besteht aus zwei Teilen. Die Abrechnung erfolgt
   >[!Note]
   > Für Sicherheitsmeldungen fällt außerdem die Kontingentnutzung in IoT Hub an.
 
-Weitere Informationen finden Sie unter [Security Center – Preise](https://azure.microsoft.com/en-us/pricing/details/security-center/).
+Weitere Informationen finden Sie unter [Security Center – Preise](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="associated-costs"></a>Anfallende Kosten
 
@@ -65,7 +65,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der anfallenden Kosten und Au
 |     | Verwendung | Comment |
 | --- | --- | --- |
 | **Nutzung des IoT Hub-Kontingents** |  |
-| Auftrag zum [Exportieren von Geräten](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) (Export von Gerätezwillingen) | einmal täglich | Deaktivieren von _Twin metadata collection_ (Sammlung mit Gerätezwilling-Metadaten) |
+| Auftrag zum [Exportieren von Geräten](https://docs.microsoft.com/azure/iot-hub/iot-hub-bulk-identity-mgmt#export-devices) (Export von Gerätezwillingen) | einmal täglich | Deaktivieren von _Twin metadata collection_ (Sammlung mit Gerätezwilling-Metadaten) |
 | **Log Analytics-Speicher** |  |
 | Geräteempfehlungen und -warnungen| Vom Dienst generierte Sicherheitsempfehlungen und -warnungen | Nicht optional |
 | Sicherheitsrohdaten| Sicherheitsrohdaten von IoT-Geräten, erfasst von Sicherheits-Agents | Deaktivieren von _Store raw device security events_ (Sicherheitsrohereignisse für Geräte speichern) |

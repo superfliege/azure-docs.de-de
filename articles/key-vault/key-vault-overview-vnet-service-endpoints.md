@@ -1,5 +1,4 @@
 ---
-ms.assetid: ''
 title: 'VNET-Dienstendpunkte für Azure Key Vault: Azure Key Vault | Microsoft-Dokumentation'
 description: Übersicht über VNET-Dienstendpunkte für Key Vault
 services: key-vault
@@ -8,14 +7,13 @@ ms.author: ambapat
 manager: barbkess
 ms.date: 01/02/2019
 ms.service: key-vault
-ms.workload: identity
 ms.topic: conceptual
-ms.openlocfilehash: bb5770f4e09c0ed764d17998936c0fe97bdaebfb
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: d003e851dcfa77b18a67450946a71e4a13ce495c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370634"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64700974"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>VNET-Dienstendpunkte für Azure Key Vault
 

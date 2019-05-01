@@ -3,17 +3,17 @@ title: Einbetten von Berichten in Azure Power BI-Arbeitsbereichssammlungen | Mic
 description: Erfahren Sie, wie Sie einen in Power BI-Arbeitsbereichssammlungen befindlichen Bericht in Ihre Anwendung einbetten.
 services: power-bi-workspace-collections
 ms.service: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
+author: rkarlin
+ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: bdfaaf3ecd5beb7cea56f017006921a86ecfb3f6
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: a7d6ccc2360d63b888dc46badc742f2618a08dac
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519257"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64724614"
 ---
 # <a name="embed-a-report-in-power-bi-workspace-collections"></a>Einbetten von Berichten in Power BI-Arbeitsbereichssammlungen
 

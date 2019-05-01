@@ -2,18 +2,19 @@
 title: 'Tutorial: Zugreifen auf Azure-Daten vom Typ „Data Lake Storage Gen2“ mit Azure Databricks unter Verwendung von Spark | Microsoft-Dokumentation'
 description: In diesem Tutorial erfahren Sie, wie Sie Spark-Abfragen in einem Azure Databricks-Cluster ausführen, um auf Daten in einem Azure-Speicherkonto vom Typ „Data Lake Storage Gen2“ zuzugreifen.
 services: storage
-author: dineshmurthy
+author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
 ms.date: 03/11/2019
-ms.author: dineshm
-ms.openlocfilehash: 7f712bcf3e82005480d4960484cb0ea3ad51fbff
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.author: normesta
+ms.reviewer: dineshm
+ms.openlocfilehash: 02cff1be85f4489a9529383d90694581f2599cba
+ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226758"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64939175"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Tutorial: Zugreifen auf Daten vom Typ „Data Lake Storage Gen2“ mit Azure Databricks unter Verwendung von Spark
 

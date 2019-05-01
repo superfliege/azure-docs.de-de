@@ -1,7 +1,6 @@
 ---
 title: Erstellen von HBase-Clustern in einem virtuellen Netzwerk – Azure
 description: Erste Schritte mit HBase in Azure HDInsight. Erfahren Sie, wie Sie HDInsight HBase-Cluster in Azure Virtual Network erstellen können.
-services: hdinsight,virtual-network
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 73ac2072a087f0931b6c9c776d3ad0bfedb4320b
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 85eaa81a0cfd7ccfe8ad3ae818f89966280d279e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199527"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64730364"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Erstellen von Apache HBase-Clustern in HDInsight in Azure Virtual Network
 Hier erfahren Sie, wie Sie Apache HBase-Cluster in Azure HDInsight in einem [virtuellen Azure-Netzwerk][1] erstellen.

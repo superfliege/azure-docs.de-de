@@ -5,20 +5,16 @@ services: key-vault
 author: msmbaldwin
 manager: barbkess
 editor: bryanla
-ms.assetid: 1cccf21b-5be9-4a49-8145-483b695124ba
 ms.service: key-vault
-ms.devlang: CSharp
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: identity
 ms.date: 05/02/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 3d2543ea2b2ee6261b04396f92d5f3583a89ffb0
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: f9dd8a48da08f00cea1219f72940dd84dd3a97ac
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57406904"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64725512"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2.0 – Versionshinweise und Migrationshandbuch
 Die folgenden Informationen unterstützen Sie beim Migrieren zur Version 2.0 der Azure Key Vault-Bibliothek für C# und .NET.  Für ältere Versionen geschriebene Apps müssen aktualisiert werden, um die neueste Version zu unterstützen.  Diese Änderungen sind zur uneingeschränkten Unterstützung neuer und verbesserter Features (beispielsweise **Key Vault-Zertifikate**) erforderlich.

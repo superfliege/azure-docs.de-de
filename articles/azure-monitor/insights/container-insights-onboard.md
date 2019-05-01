@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: 22c063cb4eade00db1e400787aa7e46000bb03d3
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: b5ba9a0abe8ec0f72cfaf42c747616e733fb3f32
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995335"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64702850"
 ---
 # <a name="how-to-onboard-azure-monitor-for-containers"></a>Onboardingmethoden für Azure Monitor für Container  
 
@@ -36,7 +36,7 @@ Stellen Sie zunächst sicher, dass Sie über Folgendes verfügen:
 
 - **Einen Log Analytics-Arbeitsbereich.** Sie können ihn beim Aktivieren der Überwachung des neuen AKS-Clusters erstellen oder beim Onboarding einen Standardarbeitsbereich in der Standardressourcengruppe des AKS-Clusterabonnements erstellen lassen. Wenn Sie ihn selbst erstellen möchten, können Sie dies über den [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) oder das [Azure-Portal](../../azure-monitor/learn/quick-create-workspace.md) erledigen.
 - Sie müssen der **Rolle „Log Analytics-Mitwirkender“ angehören**, um die Containerüberwachung aktivieren zu können. Weitere Informationen zur Zugriffssteuerung auf einen Log Analytics-Arbeitsbereich finden Sie unter [Verwalten von Arbeitsbereichen](../../azure-monitor/platform/manage-access.md).
-- Sie sind ein Mitglied der **[Besitzer](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-role.md#owner)**-Rolle für die AKS-Clusterressource. 
+- Sie sind ein Mitglied der **[Besitzer](../../role-based-access-control/built-in-roles.md#owner)**-Rolle für die AKS-Clusterressource. 
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 

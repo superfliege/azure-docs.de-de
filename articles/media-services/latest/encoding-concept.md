@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 04/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 532701eb2c5e92e5443f69c464b561d6fa242598
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: ed798995807f4037f0127b08e25e04bdd0340d42
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617630"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64724307"
 ---
 # <a name="encoding-with-media-services"></a>Codierung mit Media Services
 
@@ -90,6 +90,10 @@ Media Services unterstützt die vollständige Anpassung aller Werte in Voreinste
 ## <a name="scaling-encoding-in-v3"></a>Skalieren der Codierung in v3
 
 Informationen zum Skalieren der Medienverarbeitung finden Sie unter [Skalieren mit CLI](media-reserved-units-cli-how-to.md).
+
+## <a name="provide-feedback"></a>Feedback geben
+
+Im Artikel [Azure Media Services-Community](media-services-community.md) finden Sie verschiedene Möglichkeiten, Fragen zu stellen, Feedback zu geben und Updates zu Media Services zu bekommen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

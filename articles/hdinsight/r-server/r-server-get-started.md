@@ -1,7 +1,6 @@
 ---
 title: Erste Schritte mit ML Services in HDInsight – Azure
 description: Hier erfahren Sie, wie Sie einen Cluster mit Apache Spark in HDInsight erstellen, der über ML Services verfügt, und ein R-Skript für den Cluster übermitteln.
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 474048bc9f31e4630110ea099f3e0b375ad74e51
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 465b53e1c5f56c5c05c860ebd69a825141f7e703
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087583"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64706064"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Erste Schritte mit ML Services in Azure HDInsight
 

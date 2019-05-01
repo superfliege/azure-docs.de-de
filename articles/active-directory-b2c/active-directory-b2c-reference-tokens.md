@@ -3,19 +3,19 @@ title: Übersicht über Token – Azure Active Directory B2C | Microsoft-Dokum
 description: Hier finden Sie Informationen zu den in Azure Active Directory B2C verwendeten Token.
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 11361bc6ab75e873e1b4081dcfc6492abc093b54
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: ac3c2132fc28d9813a9322898f79c7cdfffa12d7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680263"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64681892"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Übersicht über Token in Azure Active Directory B2C
 
@@ -50,7 +50,7 @@ Die Ansprüche in ID-Token werden in keiner bestimmten Reihenfolge zurückgegebe
 
 Die folgende Tabelle enthält die Ansprüche, die in von Azure AD B2C ausgestellten ID-Token und Zugriffstoken zu erwarten sind:
 
-| Name | Anspruch | Beispielwert | Beschreibung |
+| NAME | Anspruch | Beispielwert | BESCHREIBUNG |
 | ---- | ----- | ------------- | ----------- |
 | Zielgruppe | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | Identifiziert den vorgesehenen Empfänger des Tokens. Für Azure AD B2C ist die Zielgruppe die Anwendungs-ID. Ihre Anwendung muss diesen Wert überprüfen und das Token ablehnen, wenn er nicht übereinstimmt. Die Zielgruppe ist synonym mit der Ressource. |
 | Issuer (Aussteller) | `iss` |`https://{tenant}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | Identifiziert den Sicherheitstokendienst (Security Token Service, STS), der das Token erstellt und zurückgibt. Er identifiziert auch das Verzeichnis, in dem der Benutzer authentifiziert wurde. Ihre Anwendung muss den Ausstelleranspruch überprüfen, um sicherzustellen, dass das Token vom passenden Endpunkt stammt. |
@@ -61,18 +61,18 @@ Die folgende Tabelle enthält die Ansprüche, die in von Azure AD B2C ausgeste
 | Codehash | `c_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Ein Codehash ist nur in einem ID-Token enthalten, wenn das Token zusammen mit einem OAuth 2.0-Autorisierungscode ausgestellt wird. Mithilfe eines Codehashs kann die Authentizität eines Autorisierungscodes überprüft werden. Weitere Informationen zum Ausführen dieser Validierung finden Sie in der [OpenID Connect-Spezifikation](https://openid.net/specs/openid-connect-core-1_0.html).  |
 | Zugriffstokenhash | `at_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | Ein Zugriffstokenhash ist nur in einem ID-Token enthalten, wenn das Token zusammen mit einem OAuth 2.0-Zugriffstoken ausgestellt wird. Mithilfe des Zugriffstokenhashs kann die Authentizität eines Zugriffstokens überprüft werden. Weitere Informationen zum Ausführen dieser Validierung finden Sie in der [OpenID Connect-Spezifikation](https://openid.net/specs/openid-connect-core-1_0.html).  |
 | Nonce | `nonce` | `12345` | Eine Nonce ist eine Strategie zum Abwehren von Tokenwiedergabeangriffe. Ihre Anwendung kann eine Nonce in einer Autorisierungsanforderung mithilfe des Abfrageparameters `nonce` angeben. Der in der Anforderung angegebene Wert wird nur im Anspruch `nonce` eines ID-Tokens unverändert ausgegeben. Mithilfe dieses Anspruchs kann Ihre Anwendung den Wert anhand des in der Anforderung angegebenen Werts überprüfen. Ihre Anwendung muss diese Überprüfung im Rahmen der ID-Tokenüberprüfung durchführen. |
-| Antragsteller | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | Der Prinzipal, für den das Token Informationen bestätigt (beispielsweise der Benutzer einer Anwendung). Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Er kann für die sichere Durchführung von Autorisierungsüberprüfungen verwendet werden, z.B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Der Anspruch „Antragsteller“ wird standardmäßig mit der Objekt-ID des Benutzers im Verzeichnis aufgefüllt. |
+| Subject | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | Der Prinzipal, für den das Token Informationen bestätigt (beispielsweise der Benutzer einer Anwendung). Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Er kann für die sichere Durchführung von Autorisierungsüberprüfungen verwendet werden, z.B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Der Anspruch „Antragsteller“ wird standardmäßig mit der Objekt-ID des Benutzers im Verzeichnis aufgefüllt. |
 | Klassenreferenz des Anwendungskontexts | `acr` | Nicht zutreffend | Wird nur mit älteren Richtlinien verwendet. |
 | Framework-Vertrauensrichtlinie | `tfp` | `b2c_1_signupsignin1` | Der Name der Richtlinie, die zum Abrufen des ID-Tokens verwendet wurde. |
 | Authentifizierungszeit | `auth_time` | `1438535543` | Die Zeit, zu der ein Benutzer seine Anmeldeinformationen zuletzt eingegeben hat (dargestellt als Epochenzeit). |
-| Bereich | `scp` | `Read`| Die Berechtigungen, die der Ressource für ein Zugriffstoken gewährt werden. Mehrere gewährte Berechtigungen werden jeweils durch ein Leerzeichen voneinander getrennt. |
+| `Scope` | `scp` | `Read`| Die Berechtigungen, die der Ressource für ein Zugriffstoken gewährt werden. Mehrere gewährte Berechtigungen werden jeweils durch ein Leerzeichen voneinander getrennt. |
 | Autorisierte Partei | `azp` | `975251ed-e4f5-4efd-abcb-5f1a8f566ab7` | Die **Anwendungs-ID** der Clientanwendung, die die Anforderung initiiert hat. |
 
 ## <a name="configuration"></a>Konfiguration
 
 Die folgenden Eigenschaften werden zum [Verwalten der Gültigkeitsdauer von Sicherheitstoken](configure-tokens.md) verwendet, die von Azure AD B2C ausgegeben werden:
 
-- **Lebensdauer von Zugriffs- und ID-Token (Minuten):** Die Gültigkeitsdauer des OAuth 2.0-Bearertokens, das für den Zugriff auf eine geschützte Ressource verwendet wird Der Standardwert ist 60 Minuten. Der Mindestwert ist fünf Minuten (einschließlich). Der Höchstwert ist 1.440 Minuten (einschließlich).
+- **Lebensdauer von Zugriffs- und ID-Token (Minuten)**: Die Gültigkeitsdauer des OAuth 2.0-Bearertokens, das für den Zugriff auf eine geschützte Ressource verwendet wird Der Standardwert ist 60 Minuten. Der Mindestwert ist fünf Minuten (einschließlich). Der Höchstwert ist 1.440 Minuten (einschließlich).
 
 - **Lebensdauer des Aktualisierungstokens (Tage):** Die maximale Dauer, während der ein Aktualisierungstoken zum Anfordern eines neuen Zugriffs- oder ID-Tokens verwendet werden kann. Der Zeitraum deckt auch das Abrufen eines neuen Aktualisierungstokens ab, falls Ihrer Anwendung der Bereich `offline_access` gewährt wurde. Der Standardwert ist 14 Tage. Der Mindestwert ist ein Tag (einschließlich). Der Höchstwert ist 90 Tage (einschließlich).
 

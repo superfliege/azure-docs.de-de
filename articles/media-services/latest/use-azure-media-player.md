@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: juliako
-ms.openlocfilehash: 6de626323c82689d0ead4f5aaad2a2e43187ebd0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fd5bf9f7bca9c667191d0d3f83be6e29a96c8dbe
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57896992"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64926529"
 ---
 # <a name="azure-media-player-overview"></a>Übersicht über Azure Media Player
 
@@ -24,7 +24,7 @@ Azure Media Player ist ein Webvideoplayer für die Wiedergabe von Medieninhalten
 
 Mit Microsoft Azure Media Services können Inhalte in den Streamingformaten HLS, DASH und Smooth Streaming wiedergegeben werden. Der Azure Media Player erkennt diese unterschiedlichen Formate und übernimmt automatisch die beste Verknüpfung basierend auf den Funktionen von Plattform und Browser. Media Services ermöglicht auch die dynamische Verschlüsselung von Medienobjekten mit PlayReady-Verschlüsselung oder AES-128-Bit-Umschlagverschlüsselung. Der Azure Media Player ermöglicht bei entsprechender Konfiguration die Entschlüsselung von PlayReady- und AES-128-Bit-verschlüsselten Inhalten. 
 
-[Mit kostenloser Testversion starten](https://azure.microsoft.com/en-us/pricing/free-trial/)
+[Mit kostenloser Testversion starten](https://azure.microsoft.com/pricing/free-trial/)
 
 ## <a name="use-azure-media-player-demo-page"></a>Verwenden der Azure Media Player-Demoseite
 

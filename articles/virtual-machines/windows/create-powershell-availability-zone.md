@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/27/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 74f23881ae6aca479c976adfbdbb6a46b23e42af
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 3cd1026c7a90a4cdaa4fcf3e4c6e9e31ea4ab321
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60007643"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64713931"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>Erstellen eines virtuellen Windows-Computers in einer Verfügbarkeitszone mit PowerShell
 
@@ -29,7 +29,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure PowerShell einen virt
 
 Um eine Verfügbarkeitszone verwenden zu können, muss der virtuelle Computer in einer [unterstützten Azure-Region](../../availability-zones/az-overview.md#services-support-by-region) erstellt werden.
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 

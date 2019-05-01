@@ -3,17 +3,17 @@ title: Speichern von Berichten in Power BI-Arbeitsbereichssammlungen | Microsoft
 description: Erfahren Sie, wie Sie Berichte in Power BI-Arbeitsbereichssammlungen speichern. Um dies erfolgreich durchzuführen, benötigen Sie die entsprechenden Berechtigungen.
 services: power-bi-workspace-collections
 ms.service: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
+author: rkarlin
+ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: bc3c9f71900abcbba440db259d92df53a4c7a586
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: b61abee3382697d50b9a18de763c8a4d01e1ccba
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58516449"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64701836"
 ---
 # <a name="save-reports-in-power-bi-workspace-collections"></a>Speichern von Berichten in Power BI-Arbeitsbereichssammlungen
 

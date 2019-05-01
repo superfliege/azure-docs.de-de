@@ -1,7 +1,6 @@
 ---
 title: Microsoft Cognitive Toolkit mit Azure HDInsight Spark für intensives Lernen
 description: Erfahren Sie, wie ein trainiertes Microsoft Cognitive Toolkit-Modell für intensives Lernen mithilfe der Spark Python-API in einem Azure HDInsight Spark-Cluster auf ein Dataset angewendet werden kann.
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: 093685ff2fa48799f0a91ee25727f5124dec6292
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 3462255311eaa6e418f97de5da598eb985b2a935
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225789"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64695057"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>Verwenden des Microsoft Cognitive Toolkit-Modells für intensives Lernen mit einem Azure HDInsight Spark-Cluster
 
