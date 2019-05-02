@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.openlocfilehash: 8947d235894ffc021243a64244b4904c5ca7f128
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b353e3c0ed14c7ae42e6b1f2c8a92904bf0befd7
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990427"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64916289"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Häufig gestellte Fragen zum Übergang vom OMS-Portal zum Azure-Portal für Log Analytics-Benutzer
 Log Analytics verwendete zunächst ein eigenes Portal, das OMS-Portal, um die Konfiguration zu verwalten und gesammelte Daten zu analysieren.  Alle Funktionen dieses Portals wurden in das Azure-Portal übernommen, wo sie weiter entwickelt werden.
@@ -97,9 +97,9 @@ Verwalten Sie die meisten Einstellungen von „Daten“ im Menü **Erweiterte Ei
 | Benutzerdefinierte Protokolle                  | Menü **Erweiterte Einstellungen** für den Arbeitsbereich |
 | syslog                       | Menü **Erweiterte Einstellungen** für den Arbeitsbereich |
 | Application Insights         | Diese Lösung ist veraltet, da Log Analytics und Application Insights nun die gleiche Daten-Engine nutzen.  |
-| Nachverfolgung von Windows-Dateien        | Menü **Änderungsnachverfolgung** in Azure Automation Einzelheiten finden Sie unter [Nachverfolgen von Änderungen in Ihrer Umgebung mit der Lösung für die Änderungsnachverfolgung](../../automation/automation-change-tracking.md). |
-| Nachverfolgung für Windows-Registrierung        | Menü **Änderungsnachverfolgung** in Azure Automation Einzelheiten finden Sie unter [Nachverfolgen von Änderungen in Ihrer Umgebung mit der Lösung für die Änderungsnachverfolgung](../../automation/automation-change-tracking.md). |
-| Nachverfolgung von Linux-Dateien          | Menü **Änderungsnachverfolgung** in Azure Automation Einzelheiten finden Sie unter [Nachverfolgen von Änderungen in Ihrer Umgebung mit der Lösung für die Änderungsnachverfolgung](../../automation/automation-change-tracking.md). |
+| Nachverfolgung von Windows-Dateien        | Menü **Änderungsnachverfolgung** in Azure Automation Einzelheiten finden Sie unter [Nachverfolgen von Änderungen in Ihrer Umgebung mit der Lösung für die Änderungsnachverfolgung](../../automation/change-tracking.md). |
+| Nachverfolgung für Windows-Registrierung        | Menü **Änderungsnachverfolgung** in Azure Automation Einzelheiten finden Sie unter [Nachverfolgen von Änderungen in Ihrer Umgebung mit der Lösung für die Änderungsnachverfolgung](../../automation/change-tracking.md). |
+| Nachverfolgung von Linux-Dateien          | Menü **Änderungsnachverfolgung** in Azure Automation Einzelheiten finden Sie unter [Nachverfolgen von Änderungen in Ihrer Umgebung mit der Lösung für die Änderungsnachverfolgung](../../automation/change-tracking.md). |
 
 ### <a name="solutions"></a>Lösungen
 Verwalten Sie Lösungen über das Menü **Lösungen** für den Arbeitsbereich. 

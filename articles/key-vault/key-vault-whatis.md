@@ -2,23 +2,19 @@
 title: Was ist der Azure-Schlüsseltresor? | Microsoft-Dokumentation
 description: Erfahren Sie, wie der Azure Key Vault kryptografische Schlüssel und Geheimnisse schützt, die von Cloudanwendungen und -diensten verwendet werden.
 services: key-vault
-documentationcenter: ''
 author: barclayn
 manager: barbkess
 tags: azure-resource-manager
-ms.assetid: e759df6f-0638-43b1-98ed-30b3913f9b82
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: barclayn
-ms.openlocfilehash: 48ac0c3efe74723099e87a77871aa1a78834efbd
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 43794b8ef4e0272362c7695eda75f5af36a77d1e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958531"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683456"
 ---
 # <a name="what-is-azure-key-vault"></a>Was ist der Azure-Schlüsseltresor?
 

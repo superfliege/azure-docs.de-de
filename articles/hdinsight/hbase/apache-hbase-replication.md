@@ -1,7 +1,6 @@
 ---
 title: Einrichten der HBase-Clusterreplikation in virtuellen Azure-Netzwerken – Azure HDInsight
 description: Erfahren Sie, wie Sie die HBase-Replikation zwischen HDInsight-Versionen für Lastenausgleich, Hochverfügbarkeit, Migration und Updates ohne Ausfallzeit und Notfallwiederherstellung einrichten.
-services: hdinsight,virtual-network
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: d50c3f4452dd00b5656b6cde5e671caebcb4bb7c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 95a1055df283765b24322f6f8efe3efcb9b19022
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58112533"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64707975"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Einrichten der Apache HBase-Clusterreplikation in virtuellen Azure-Netzwerken
 
@@ -69,7 +68,7 @@ Im Folgenden werden einige der hartcodierten Werte in der Vorlage aufgeführt:
 
 | Eigenschaft | Wert |
 |----------|-------|
-| Standort | USA (Westen) |
+| Location | USA (Westen) |
 | VNet-Name | &lt;ClusterNamePrevix>-vnet1 |
 | Adressraumpräfix | 10.1.0.0/16 |
 | Subnetzname | Subnetz 1 |
@@ -86,7 +85,7 @@ Im Folgenden werden einige der hartcodierten Werte in der Vorlage aufgeführt:
 
 | Eigenschaft | Wert |
 |----------|-------|
-| Standort | USA (Ost) |
+| Location | USA (Ost) |
 | VNet-Name | &lt;ClusterNamePrevix>-vnet2 |
 | Adressraumpräfix | 10.2.0.0/16 |
 | Subnetzname | Subnetz 1 |

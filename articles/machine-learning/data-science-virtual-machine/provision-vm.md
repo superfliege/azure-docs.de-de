@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: gokuma
-ms.openlocfilehash: 0b8349c6c59ac64be15c75b28c083a4483f2f68a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1f9ee5cf28de8fdb824bebf222e5e8d80e22c34f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57896261"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64712434"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Bereitstellen einer Data Science Virtual Machine für Windows in Azure
 
@@ -116,7 +116,7 @@ Sie können Microsoft Enterprise Library für skalierbares R oder Python für Ih
 
 Machine Learning Server unterstützt verschiedene Aufgaben für Big Data-Statistiken, Vorhersagemodellierung und Machine Learning. Die gesamte Bandbreite der Analytik wird unterstützt: Durchsuchen, Analyse, Visualisierung und Modellierung. Durch die Verwendung und Erweiterung der Open-Source-Sprachen R und Python ist Machine Learning Server kompatibel mit R- und Python-Skripts und -Funktionen. Darüber hinaus ist es auch mit CRAN-, Pip- und Conda-Paketen kompatibel, um Daten auf Unternehmensebene zu analysieren.
 
-Mit der Möglichkeit, Daten parallel und in großen Stücken verarbeiten zu können, hebt Machine Learning Server die Speicherbeschränkungen der Open-Source-Sprache R auf. Somit können Sie Analysen von Daten, deren Größe die des Hauptspeichers bei weitem überschreitet, ausführen. Das auf dem virtuellen Computer befindliche Visual Studio Community Sie enthält die R-Tools für Visual Studio und die Python-Tools für die Visual Studio-Erweiterung (PTVS), die eine vollständige IDE für das Arbeiten mit R oder Python bieten. Auf der VM werden außerdem andere IDEs bereitgestellt, z. B. [RStudio](http://www.rstudio.com) und die [PyCharm Community Edition](https://www.jetbrains.com/pycharm/).
+Mit der Möglichkeit, Daten parallel und in großen Stücken verarbeiten zu können, hebt Machine Learning Server die Speicherbeschränkungen der Open-Source-Sprache R auf. Somit können Sie Analysen von Daten, deren Größe die des Hauptspeichers bei weitem überschreitet, ausführen. Das auf dem virtuellen Computer befindliche Visual Studio Community Sie enthält die R-Tools für Visual Studio und die Python-Tools für die Visual Studio-Erweiterung (PTVS), die eine vollständige IDE für das Arbeiten mit R oder Python bieten. Auf der VM werden außerdem andere IDEs bereitgestellt, z. B. [RStudio](https://www.rstudio.com) und die [PyCharm Community Edition](https://www.jetbrains.com/pycharm/).
 
 ### <a name="python"></a>Python
 

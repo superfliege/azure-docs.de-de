@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c81b0926b88ad2f1dbb3af7c1a2c51e8a79430f9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ee721558e0e643a4b5fdcfa4cf0fe9c2195fa479
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59737104"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64736970"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Storage Premium: Entwurf für hohe Leistung
 
@@ -299,7 +299,7 @@ Als Beispiel können Sie diese Leitlinien auf SQL Server in Storage Premium anwe
 1. Konfigurieren Sie die Cacheeinstellung „None“ für Storage Premium-Datenträger, die Protokolldateien hosten.  
    a.  Protokolldateien zeichnen sich hauptsächlich durch schreibintensive Vorgänge aus. Aus diesem Grund profitieren sie nicht vom „ReadOnly“-Cache.
 
-### <a name="optimize-performance-on-linux-vms"></a>Optimieren der Leistung auf Linux-VMs
+## <a name="optimize-performance-on-linux-vms"></a>Optimieren der Leistung auf Linux-VMs
 
 Für alle Premium SSDs oder Ultra Disks mit der Cacheeinstellung **ReadOnly** oder **None** müssen Sie beim Bereitstellen des Dateisystems „Barriers“ (Sperren) deaktivieren. Sie benötigen keine Sperren für dieses Szenario, da die Schreibvorgänge auf Storage Premium-Datenträgern für diese Cacheeinstellungen beständig sind. Wenn die Schreibanforderung erfolgreich abgeschlossen wurde, wurden Daten in den permanenten Speicher geschrieben. Verwenden Sie zum Deaktivieren von Sperren eines der folgenden Verfahren. Wählen Sie das richtige Verfahren für Ihr Dateisystem:
   
@@ -328,7 +328,7 @@ Für einige Versionen sind die neuesten Linux-Integrationsdienste (LIS v4.0) fü
 | Oracle | 7.0-7.1 | &nbsp; | UEK4 oder RHCK mit [LIS 4.1+](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
 | Oracle | 6.4-6.7 | &nbsp; | UEK4 oder RHCK mit [LIS 4.1+](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
 
-## <a name="lis-drivers-for-openlogic-centos"></a>LIS-Treiber für OpenLogic CentOS
+### <a name="lis-drivers-for-openlogic-centos"></a>LIS-Treiber für OpenLogic CentOS
 
 Wenn Sie virtuelle OpenLogic CentOS-Computer ausführen, sollten Sie den folgenden Befehl zum Installieren der neuesten Treiber verwenden:
 

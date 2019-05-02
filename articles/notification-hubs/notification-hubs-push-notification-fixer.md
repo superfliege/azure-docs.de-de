@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 4fc4175c03baa4ddb81507dd4001fcdbe7c7058b
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: eebf9ef63a8622c4cc431322b786fdf30f6352fe
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149545"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64925818"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Diagnostizieren verworfener Benachrichtigungen in Azure Notification Hubs
 
@@ -123,7 +123,7 @@ Hier finden Sie Möglichkeiten, die Ursache von verworfenen Benachrichtigungen i
 
 #### <a name="push-notification-service-developer-portal"></a>Entwicklerportal für den Pushbenachrichtigungsdienst ####
 
-Überprüfen Sie die Anmeldeinformationen im Entwicklerportal des jeweiligen Pushbenachrichtigungsdiensts (APNs, FCM, Windows-Benachrichtigungsdienst usw.). Weitere Informationen finden Sie unter [Tutorial: Senden von Benachrichtigungen an Apps für die universelle Windows-Plattform mit Azure Notification Hubs](https://docs.microsoft.com/en-us/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification) erstellt haben.
+Überprüfen Sie die Anmeldeinformationen im Entwicklerportal des jeweiligen Pushbenachrichtigungsdiensts (APNs, FCM, Windows-Benachrichtigungsdienst usw.). Weitere Informationen finden Sie unter [Tutorial: Senden von Benachrichtigungen an Apps für die universelle Windows-Plattform mit Azure Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification) erstellt haben.
 
 #### <a name="azure-portal"></a>Azure-Portal ####
 
@@ -180,7 +180,7 @@ Sie können Testbenachrichtigungen auch aus Visual Studio senden.
 
 Weitere Informationen zur Verwendung von Notification Hubs mit Visual Studio-Server-Explorer finden Sie in diesen Artikeln:
 
-* [Anzeigen von Geräteregistrierungen für Notification Hubs](https://docs.microsoft.com/en-us/previous-versions/windows/apps/dn792122(v=win.10))
+* [Anzeigen von Geräteregistrierungen für Notification Hubs](https://docs.microsoft.com/previous-versions/windows/apps/dn792122(v=win.10))
 * [Ausführliche Betrachtung: Visual Studio 2013 Update 2 RC und Azure SDK 2.3]
 * [Announcing release of Visual Studio 2013 Update 3 and Azure SDK 2.4] (Ankündigung der Releases Visual Studio 2013 Update 3 und Azure SDK 2.4)
 
@@ -261,7 +261,7 @@ Das Portal bietet Ihnen einen schnellen Überblick über alle Aktivitäten in Ih
 
 #### <a name="programmatic-access"></a>Programmgesteuerter Zugriff ####
 
-Weitere Informationen zum programmgesteuerten Zugriff finden Sie unter [Programmgesteuerter Zugriff](https://docs.microsoft.com/en-us/previous-versions/azure/azure-services/dn458823(v=azure.100)).
+Weitere Informationen zum programmgesteuerten Zugriff finden Sie unter [Programmgesteuerter Zugriff](https://docs.microsoft.com/previous-versions/azure/azure-services/dn458823(v=azure.100)).
 
 > [!NOTE]
 > Verschiedene telemetriebezogene Features wie z.B. der Export und Import von Registrierungen und der Telemetriezugriff über APIs sind nur auf der Dienstebene „Standard“ verfügbar. Wenn Sie versuchen, diese Funktionen auf der Dienstebene „Free“ oder „Basic“ zu nutzen, wird bei Verwenden des SDK eine Ausnahmemeldung ausgegeben. Ein Fehler des Typs „HTTP 403 (Verboten)“ wird ausgegeben, wenn Sie die Funktionen direkt aus den REST-APIs aufrufen.

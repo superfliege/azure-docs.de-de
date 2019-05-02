@@ -8,12 +8,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: 3e2c6a550a9358656fd0870c7e785d131c5b6380
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9799914cdabf1f64fccfd6bfd891f9498b860e39
+ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894392"
+ms.lasthandoff: 04/30/2019
+ms.locfileid: "64923004"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Supportmatrix für die Sicherung mit dem Microsoft Azure Recovery Services (MARS)-Agent
 
@@ -24,14 +24,14 @@ Mit dem [Azure Backup-Dienst](backup-overview.md) können Sie lokale Computer un
 Der MARS-Agent wird von Azure Backup verwendet, um Daten von lokalen Computern und Azure-VMs in einem Backup Recovery Services-Tresor in Azure zu sichern. Mit dem MARS-Agent haben Sie folgende Möglichkeiten:
 - Sie können den Agent auf lokalen Windows-Computern ausführen, sodass diese direkt in einem Backup Recovery Services-Tresor in Azure gesichert werden können.
 - Sie können den Agent auf Windows-VMs ausführen, sodass diese direkt in einem Tresor gesichert werden können.
-- Sie können den Agent auf einem MABS-Server (Microsoft Azure Backup Server) oder System Center DPM-Server (Data Protection Manager) ausführen. In diesem Szenario werden Computer und Workloads auf einem MABS- oder DPM-Server gesichert. Anschließend wird dieser Server vom MARS-Agent in einem Tresor in Azure gesichert. 
+- Sie können den Agent auf einem MABS-Server (Microsoft Azure Backup Server) oder System Center DPM-Server (Data Protection Manager) ausführen. In diesem Szenario werden Computer und Workloads auf einem MABS- oder DPM-Server gesichert. Anschließend wird dieser Server vom MARS-Agent in einem Tresor in Azure gesichert.
 
 Welche Möglichkeiten zur Sicherung bestehen, hängt davon ab, welcher Agent installiert ist. Weitere Informationen finden Sie unter [Architektur: Direkte Sicherung von lokalen Windows Server-Computern oder Azure-VM-Dateien oder -Ordnern](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders). Informationen zur Architektur für die Sicherung mit MABS und DPM finden Sie unter [Architektur: Sicherung mit DPM/MABS](backup-architecture.md#architecture-back-up-to-dpmmabs). Weitere Informationen zur Sicherungsarchitektur finden Sie auch unter den [Anforderungen](backup-support-matrix-mabs-dpm.md).
 
 **Installation** | **Details**
 --- | ---
 Aktuellen MARS-Agent herunterladen | Sie können die neueste Version des Agenten aus dem Tresor herunterladen oder [direkt herunterladen](https://aka.ms/azurebackup_agent).
-Direkt auf dem Computer installieren | Sie können den MARS-Agent direkt auf einem lokalen Windows-Server oder einem virtuellen Windows-Computer installieren, auf dem eines der [unterstützten Betriebssysteme](https://docs.microsoft.com/en-us/azure/backup/backup-support-matrix-mabs-dpm#supported-mabs-and-dpm-operating-systems) ausgeführt wird.
+Direkt auf dem Computer installieren | Sie können den MARS-Agent direkt auf einem lokalen Windows-Server oder einem virtuellen Windows-Computer installieren, auf dem eines der [unterstützten Betriebssysteme](https://docs.microsoft.com/azure/backup/backup-support-matrix-mabs-dpm#supported-mabs-and-dpm-operating-systems) ausgeführt wird.
 Auf einem Sicherungsserver installieren | Wenn Sie DPM oder MABS für die Sicherung auf Azure einrichten, laden Sie den MARS-Agent herunter und installieren ihn auf dem Server. Sie können den Agent gemäß den [unterstützten Betriebssystemen](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems) in der Supportmatrix des Sicherungsservers installieren.
 
 > [!NOTE]
@@ -45,8 +45,8 @@ Wenn Sie Daten mit dem MARS-Agent sichern, wird eine Momentaufnahme der Daten er
 
 **Cache** | **Details**
 --- | ---
-Größe |  Der freie Speicherplatz im Cacheordner muss mindestens 5 bis 10 Prozent der Gesamtgröße Ihrer Sicherungsdaten betragen. 
-Standort | Der Cacheordner muss lokal auf dem Computer gespeichert werden, der gesichert wird, und er muss online sein. Der Cacheordner darf sich nicht in einer Netzwerkfreigabe, auf Wechselmedien oder in einem Offline-Volume befinden. 
+Größe |  Der freie Speicherplatz im Cacheordner muss mindestens 5 bis 10 Prozent der Gesamtgröße Ihrer Sicherungsdaten betragen.
+Location | Der Cacheordner muss lokal auf dem Computer gespeichert werden, der gesichert wird, und er muss online sein. Der Cacheordner darf sich nicht in einer Netzwerkfreigabe, auf Wechselmedien oder in einem Offline-Volume befinden.
 Ordner | Der Cacheordner muss verschlüsselt sein und sich auf einem deduplizierten Volume oder in einem Ordner befinden, der komprimiert ist, eine geringe Dichte aufweist oder einen Analysepunkt hat.
 Andere Speicherorte | Sie können den Cachespeicherort ändern, indem Sie die Sicherungs-Engine beenden (`net stop bengine`) und den Cacheordner in ein neues Laufwerk kopieren. (Stellen Sie sicher, dass genügend Platz vorhanden ist.) Dann aktualisieren Sie zwei Registrierungseinträge unter **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** (**Config/ScratchLocation** und **Config/CloudBackupProvider/ScratchLocation**) auf den neuen Speicherort und starten die Engine neu.
 
@@ -103,9 +103,9 @@ Windows 7   | 1.700 GB
 
 ## <a name="supported-file-types-for-backup"></a>Unterstützte Dateitypen für die Sicherung
 
-**Typ** | **Unterstützung** 
---- | --- 
-Verschlüsselt   |  Unterstützt. 
+**Typ** | **Unterstützung**
+--- | ---
+Verschlüsselt   |  Unterstützt.
 Komprimiert |  Unterstützt.
 Platzsparend |  Unterstützt.
 Komprimiert und geringe Dichte |  Unterstützt.
@@ -114,7 +114,7 @@ Analysepunkt   | Nicht unterstützt. Übersprungen.
 Verschlüsselt und geringe Dichte |  Nicht unterstützt. Übersprungen.
 Komprimierter Stream   | Nicht unterstützt. Übersprungen.
 Platzsparender Stream   | Nicht unterstützt. Übersprungen.
-OneDrive (synchronisierte Dateien sind Streams mit geringer Dichte)  | Nicht unterstützt. 
+OneDrive (synchronisierte Dateien sind Streams mit geringer Dichte)  | Nicht unterstützt.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Unterstützte Laufwerke oder Volumes für die Sicherung
 

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/24/2019
+ms.date: 04/23/2019
 ms.author: raynew
-ms.openlocfilehash: aacfe725310b3c8e4785e24b80728f0e60694814
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: eaad582dc6484cb62d0bebf1af447ff61301a3bb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496094"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64685927"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 Mit dem [Azure Backup-Dienst](backup-overview.md) können Sie lokale Computer und Workloads sowie virtuelle Azure-Computer (VMs) sichern. Dieser Artikel enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Sicherung von Azure-VMs mit Azure Backup.
@@ -168,7 +168,7 @@ Hinzufügen eines Datenträgers zu geschütztem virtuellen Computer |  Unterstü
 Freigegebener Speicher| Das Sichern von VMs mit Cluster Shared Volume (CSV) oder Dateiservern mit horizontaler Skalierung wird nicht empfohlen. Bei CSV-Schreibern treten während der Sicherung voraussichtlich Fehler auf. Bei der Wiederherstellung werden Datenträger, die CSV-Volumes enthalten, möglicherweise nicht hochgefahren.
 
 > [!NOTE]
-> Azure Backup unterstützt keine Stripesetdatenträger. Ein Ändern der Datenträgergröße wird von Azure Backup nicht empfohlen.
+> Ein Ändern der Datenträgergröße wird von Azure Backup nicht empfohlen.
 
 
 ## <a name="vm-network-support"></a>Netzwerkunterstützung bei virtuellen Computern
@@ -187,7 +187,7 @@ Azure Traffic Manager   |  Unterstützt.<br/><br/>Wenn sich die gesicherte VM in
 Azure DNS |  Unterstützt.
 Benutzerdefinierter DNS |     Unterstützt.
 Ausgehende Verbindungen über HTTP-Proxy |  Unterstützt.<br/><br/> Ein authentifizierter Proxy wird nicht unterstützt.
-Dienstendpunkte im virtuellen Netzwerk   |  Unterstützt.<br/><br/> In den Speicherkontoeinstellungen für die Firewall und das virtuelle Netzwerk muss der Zugriff über alle Netzwerke zugelassen werden.
+VNET-Dienstendpunkte   |  Unterstützt.<br/><br/> In den Speicherkontoeinstellungen für die Firewall und das virtuelle Netzwerk muss der Zugriff über alle Netzwerke zugelassen werden.
 
 
 
