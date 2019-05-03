@@ -1,7 +1,7 @@
 ---
 title: Feldzuordnungen für die automatisierte Indizierung mithilfe von Indexern – Azure Search
 description: Konfigurieren Sie Feldzuordnungen im Azure Search-Indexer zum Ausgleichen von Unterschieden in Feldnamen und Datendarstellungen.
-ms.date: 03/01/2019
+ms.date: 05/02/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 9bb8a168f54658ea14b174d19a1795e575646304
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: d3e0d876550b0c3baf89f3f13e0458fc97e11351
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310385"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025217"
 ---
 # <a name="field-mappings-in-azure-search-indexers"></a>Feldzuordnungen in Azure Search-Indexern
 Bei Verwendung des Azure Search-Indexers gibt es gelegentlich Situationen, in denen die Eingabedaten nicht ganz dem Schema des Zielindexes entsprechen. In diesen Fällen können Sie Ihre Daten mithilfe von **Feldzuordnungen** in das gewünschte Format umwandeln.

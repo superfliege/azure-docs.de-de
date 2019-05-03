@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 2/20/2019
 ms.author: erhopf
-ms.openlocfilehash: b5a24d83faef5a895317f162178f8bd588a1466d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: af61d975b540787b9b54d9fdea66773c10aeb6ac
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60620069"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020787"
 ---
 1. Starten Sie Visual Studio 2017.
 
@@ -42,7 +42,7 @@ ms.locfileid: "60620069"
     ![Screenshot des Dialogfelds „Pakete für Projektmappe verwalten“](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-04-nuget-install-1.0.0.png)
 
     > [!NOTE]
-    > Die aktuelle Version des Cognitive Services Speech SDK ist `1.4.0`.
+    > Die aktuelle Version des Cognitive Services Speech SDK ist `1.5.0`.
 
 1. Akzeptieren Sie die angezeigten Lizenzbedingungen, um die Installation des NuGet-Pakets zu starten.
 

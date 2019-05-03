@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 05/02/2019
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: b527b759eb9c76ab6289e909001c5f7820f34ef4
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 81987115ba0406e704f2198061c6ee3cae8a72df
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652415"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024687"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>Behandeln von häufigen Problemen mit Indexern in Azure Search
 
@@ -57,7 +57,7 @@ Azure Search steht in impliziter Abhängigkeit zur Indizierung von Cosmos DB. We
 Der Blobindexer [ dokumentiert, welche Dokumentformate explizit unterstützt werden](search-howto-indexing-azure-blob-storage.md#supported-document-formats). Gelegentlich enthält ein Blobspeichercontainer nicht unterstützte Dokumente. Manchmal sind die Dokumente fehlerhaft. Sie können verhindern, dass Ihr Indexer für diese Dokumente beendet wird, indem Sie die [Konfigurationsoptionen](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) ändern:
 
 ```
-PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
 Content-Type: application/json
 api-key: [admin key]
 
@@ -75,7 +75,7 @@ Der Blobindexer [ findet und extrahiert Text aus Blobs in einem Container](searc
 * Der Blobindexer ist so konfiguriert, dass er nur Metadaten indiziert. Zum Extrahieren von Inhalten muss der Blobindexer so konfiguriert sein, dass er [sowohl Inhalte als auch Metadaten extrahiert](search-howto-indexing-azure-blob-storage.md#controlling-which-parts-of-the-blob-are-indexed):
 
 ```
-PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2017-11-11
+PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2019-05-06
 Content-Type: application/json
 api-key: [admin key]
 

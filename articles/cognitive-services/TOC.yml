@@ -27,6 +27,8 @@
       href: 'https://azure.microsoft.com/resources/videos/index/?services=cognitive-services'
     - name: Dienstupdates
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
+    - name: Abgeben von Produktfeedback
+      href: 'https://cognitive.uservoice.com/'
     - name: Verhaltenskodex
       href: 'https://go.microsoft.com/fwlink/?LinkId=698895'
     - name: Wissensdatenbank

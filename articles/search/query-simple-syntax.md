@@ -4,7 +4,7 @@ description: Referenz für die einfache Abfragesyntax, die für Volltextsuchanfr
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 05/02/2019
 author: brjohnstmsft
 ms.author: brjohnst
 ms.manager: cgronlun
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 99729141e5e1478f45ad385cf671c44a8e08f21a
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 75e2d7c493b535c984b0ef61dd9a9fae53aee80a
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437491"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024198"
 ---
 # <a name="simple-query-syntax-in-azure-search"></a>Einfache Abfragesyntax in Azure Search
 Azure Search implementiert zwei Lucene-basierte Abfragesprachen: [Einfacher Abfrageparser](https://lucene.apache.org/core/4_7_0/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) und der [Lucene-Abfrageparser](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). In Azure Search schließt die einfache Abfragesyntax die Fuzzy-/Slop-Optionen aus.  

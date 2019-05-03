@@ -7,15 +7,15 @@ tags: Simple query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9b7147971bd320a11606a93ab4d988e924cf93b2
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 0c47212e51725e7d4a173c441709dca739d4e357
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439114"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024532"
 ---
 # <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>Abfragebeispiele mit „einfacher“ Suchsyntax in Azure Search
 
@@ -50,7 +50,7 @@ Die URL-Komposition umfasst die folgenden Elemente:
 + **`https://azs-playground.search.windows.net/`** ist ein Sandbox-Suchdienst, der vom Entwicklungsteam von Azure Search gewartet wird. 
 + **`indexes/nycjobs/`** ist der Index „NYC Jobs“ in der Indexsammlung dieses Diensts. Sowohl der Dienstname als auch der Index sind für die Anforderung erforderlich.
 + **`docs`** ist die Dokumentsammlung, die den gesamten durchsuchbaren Inhalt enthält. Der im Anforderungsheader angegebene Abfrage-API-Schlüssel funktioniert nur für Lesevorgänge, die die Dokumentsammlung betreffen.
-+ **`api-version=2017-11-11`** legt die API-Version fest. Dies ist für alle Anforderungen ein erforderlicher Parameter.
++ **`api-version=2019-05-06`** legt die API-Version fest. Dies ist für alle Anforderungen ein erforderlicher Parameter.
 + **`search=*`** ist die Abfragezeichenfolge, die in der ersten Abfrage null ist und (standardmäßig) die ersten 50 Ergebnisse zurückgibt.
 
 ## <a name="send-your-first-query"></a>Senden Ihrer ersten Abfrage
@@ -60,7 +60,7 @@ Fügen Sie als Überprüfungsschritt die folgende Anforderung in GET ein, und kl
 Fügen Sie diese URL in einen REST-Client als Überprüfungsschritt und zum Anzeigen der Dokumentstruktur ein.
 
   ```http
-  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=*
+  https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=*
   ```
 
 Die Abfragezeichenfolge **`search=*`** entspricht einer Suche ohne Angaben, die einer NULL-Suche oder leeren Suche gleicht. Dies hat keinen besonderen Nutzen, aber es ist die einfachste Suche, die Sie durchführen können.
@@ -92,7 +92,7 @@ search=*&searchFields=business_title, posting_type&$select=business_title, posti
 ### <a name="full-url"></a>Vollständige URL
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=business_title&$select=business_title&search=*
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchFields=business_title&$select=business_title&search=*
 ```
 
 Die Antwort auf diese Abfrage sollte etwa wie im folgenden Screenshot aussehen.
@@ -108,13 +108,13 @@ Dieses Beispiel ist etwas ungewöhnlich. Beim Auswerten des Suchverhaltens ist e
 Alle Dokumente verfügen über einen eindeutigen Bezeichner. Beim Ausprobieren der Syntax für eine Suchabfrage können Sie zuerst eine Liste mit Dokument-IDs zurückgeben, um eine geeignete ID auszuwählen. Für „NYC Jobs“ sind diese Bezeichner im Feld `id` gespeichert.
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=id&$select=id&search=*
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchFields=id&$select=id&search=*
 ```
 
 Das nächste Beispiel ist eine Suchabfrage, bei der ein bestimmtes Dokument basierend auf `id` „9E1E3AF9-0660-4E00-AF51-9B654925A2D5“ ausgegeben wird, das zuerst in der vorherigen Antwort enthalten war. Mit der folgenden Abfrage wird das gesamte Dokument zurückgegeben, nicht nur die ausgewählten Felder. 
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E00-AF51-9B654925A2D5?api-version=2017-11-11&$count=true&search=*
+https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E00-AF51-9B654925A2D5?api-version=2019-05-06&$count=true&search=*
 ```
 
 ## <a name="example-3-filter-queries"></a>Beispiel 3: Filterabfragen
@@ -122,7 +122,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E0
 Die [Filtersyntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples) ist ein OData-Ausdruck, den Sie mit **search** oder allein verwenden können. Ein eigenständiger Filter ohne Suchparameter ist nützlich, wenn der Filterausdruck Dokumente von Interesse vollständig qualifizieren kann. Ohne Abfragezeichenfolge wird keine lexikalische oder linguistische Analyse, Bewertung („1“ für alle Bewertungen) und Rangzuweisung durchgeführt. Beachten Sie, dass die Suchzeichenfolge leer ist.
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+POST /indexes/nycjobs/docs/search?api-version=2019-05-06
     {
       "search": "",
       "filter": "salary_frequency eq 'Annual' and salary_range_from gt 90000",
@@ -138,13 +138,13 @@ Wenn sie zusammen verwendet werden, wird der Filter zuerst auf den gesamten Inde
 Wenn Sie dies mithilfe von GET in Postman testen möchten, können Sie die folgende Zeichenfolge einfügen:
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,business_title,agency,salary_range_from&search=&$filter=salary_frequency eq 'Annual' and salary_range_from gt 90000
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency,salary_range_from&search=&$filter=salary_frequency eq 'Annual' and salary_range_from gt 90000
 ```
 
 Eine andere leistungsstarke Möglichkeit zum Kombinieren von Filter und Suche ist die Verwendung von **`search.ismatch*()`** in einem Filterausdruck, wobei Sie eine Suchabfrage innerhalb des Filters durchführen können. Bei diesem Filterausdruck wird ein Platzhalter für *plan* (um „term plan“, „planner“, „planning“ usw. einzuschließen) verwendet, um „business_title“ auszuwählen.
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
 ```
 
 Weitere Informationen zu dieser Funktion finden Sie unter [„search.ismatch“ unter „Filterbeispiele“](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples).
@@ -158,7 +158,7 @@ Datentypen sind bei Bereichsfiltern wichtig und funktionieren am besten bei nume
 Die folgenden Beispiele weisen zur besseren Lesbarkeit das POST-Format (numerischer Bereich gefolgt vom Textbereich) auf:
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+POST /indexes/nycjobs/docs/search?api-version=2019-05-06
     {
       "search": "",
       "filter": "num_of_positions ge 5 and num_of_positions lt 10",
@@ -171,7 +171,7 @@ POST /indexes/nycjobs/docs/search?api-version=2017-11-11
 
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+POST /indexes/nycjobs/docs/search?api-version=2019-05-06
     {
       "search": "",
       "filter": "business_title ge 'A*' and business_title lt 'C*'",
@@ -186,11 +186,11 @@ POST /indexes/nycjobs/docs/search?api-version=2017-11-11
 Dies können Sie mithilfe von GET auch in Postman testen:
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&search=&$filter=num_of_positions ge 5 and num_of_positions lt 10&$select=job_id, business_title, num_of_positions, agency&$orderby=agency&$count=true
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&search=&$filter=num_of_positions ge 5 and num_of_positions lt 10&$select=job_id, business_title, num_of_positions, agency&$orderby=agency&$count=true
 ```
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&search=&$filter=business_title ge 'A*' and business_title lt 'C*'&$select=job_id, business_title, agency&$orderby=business_title&$count=true
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&search=&$filter=business_title ge 'A*' and business_title lt 'C*'&$select=job_id, business_title, agency&$orderby=business_title&$count=true
 ```
 
 > [!NOTE]
@@ -203,7 +203,7 @@ Der Beispielindex enthält das Feld „geo_location“ mit Breiten- und Längeng
 Im folgenden Beispiel wird zur besseren Lesbarkeit das POST-Format verwendet:
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+POST /indexes/nycjobs/docs/search?api-version=2019-05-06
     {
       "search": "",
       "filter": "geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4",
@@ -216,7 +216,7 @@ Zur besseren Übersichtlichkeit enthalten die Suchergebnisse eine Stellenkennung
 Dies können Sie mithilfe von GET auch in Postman testen:
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=&$select=job_id, business_title, work_location&$filter=geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=&$select=job_id, business_title, work_location&$filter=geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4
 ```
 
 ## <a name="example-6-search-precision"></a>Beispiel 6: Suchgenauigkeit
@@ -226,19 +226,19 @@ Begriffsabfragen sind einzelne Begriffe (ggf. in größerer Zahl), die unabhäng
 Beispiel 1: **`&search=fire`** gibt 150 Ergebnisse zurück, wobei alle Übereinstimmungen das Wort „fire“ an einer Stelle im Dokument enthalten.
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=fire
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=fire
 ```
 
 Beispiel 2: **`&search=fire department`** gibt 2.002 Ergebnisse zurück. Übereinstimmungen werden für Dokumente zurückgegeben, die entweder den Begriff „fire“ oder „department“ enthalten.
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search=fire department
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search=fire department
 ```
 
 Beispiel 3: **`&search="fire department"`** gibt 82 Ergebnisse zurück. Wenn die Zeichenfolge in Anführungszeichen gesetzt wird, wird für beide Begriffe eine „wörtliche“ Suche durchgeführt, und es werden Übereinstimmungen für tokenisierte Begriffe im Index gefunden, die aus einer Kombination der Begriffe bestehen. Dies ist der Grund dafür, warum die Suche nach **`search=+fire +department`** hiermit nicht gleichwertig ist. Beide Begriffe sind erforderlich, aber es wird unabhängig danach gesucht. 
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&search="fire department"
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&search="fire department"
 ```
 
 ## <a name="example-7-booleans-with-searchmode"></a>Beispiel 7: Boolesche Werte mit „searchMode“
@@ -248,7 +248,7 @@ Bei der einfachen Syntax werden boolesche Operatoren in Form von Zeichen (`+, -,
 Bei Verwendung der Standardeinstellung für „searchMode“ (any) werden 2.800 Dokumente zurückgegeben: Dokumente, die den mehrteiligen Begriff „fire department“ enthalten, sowie alle Dokumente, die den Begriff „Metrotech Center“ nicht enthalten.
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchMode=any&search="fire department"  -"Metrotech Center"
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchMode=any&search="fire department"  -"Metrotech Center"
 ```
 
   ![Suchmodus „any“](media/search-query-simple-examples/searchmodeany.png)
@@ -256,7 +256,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 Wenn Sie searchMode in `all` ändern, kommt es für die Kriterien zu einem kumulativen Effekt, und es wird ein kleineres Resultset mit nur 21 Dokumenten zurückgegeben. Dies sind Dokumente, die den gesamten Begriff „fire department“ enthalten, abzüglich der Jobs unter der Metrotech Center-Adresse.
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchMode=all&search="fire department"  -"Metrotech Center"
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&searchMode=all&search="fire department"  -"Metrotech Center"
 ```
   ![Suchmodus „all“](media/search-query-simple-examples/searchmodeall.png)
 
@@ -265,24 +265,24 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 Mit mehreren Parametern wird gesteuert, welche Felder in den Suchergebnissen enthalten sind, wie viele Dokumente in jedem Batch zurückgegeben werden und welche Sortierreihenfolge verwendet wird. In diesem Beispiel wird auf einige der vorherigen Beispiele zurückgegriffen, indem Ergebnisse mit der **$select**-Anweisung auf bestimmte Felder beschränkt und „wörtliche“ Suchkriterien verwendet werden. Es werden 82 Übereinstimmungen zurückgegeben. 
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"
 ```
 Basierend auf dem vorherigen Beispiel können Sie nach der Bezeichnung sortieren. Diese Sortierung funktioniert, weil „civil_service_title“ im Index *sortierbar* ist.
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title
 ```
 
 Die Auslagerungsergebnisse werden mit dem Parameter **$top** implementiert, und in diesem Fall werden die obersten fünf Dokumente zurückgegeben:
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=0
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=0
 ```
 
 Überspringen Sie den ersten Batch, um die nächsten fünf Dokumente zu erhalten:
 
 ```http
-https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=5
+https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2019-05-06&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=5
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

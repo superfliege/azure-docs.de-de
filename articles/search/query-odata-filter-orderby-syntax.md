@@ -1,7 +1,7 @@
 ---
 title: 'OData-Ausdruckssyntax für Filter und Sortierklauseln: Azure Search'
 description: OData-Syntax für Filter- und Sortierausdrücke für Azure Search-Abfragen.
-ms.date: 03/27/2019
+ms.date: 05/02/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: ab98c3be75fb59603be66ee84e0d288de56cdc91
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: b1f77a9e0a3308098e5f6c699f2fc79e5c437f17
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648502"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024260"
 ---
 # <a name="odata-expression-syntax-for-filters-and-order-by-clauses-in-azure-search"></a>OData-Ausdruckssyntax für Filter und Sortierklauseln in Azure Search
 
@@ -36,7 +36,7 @@ Ein **$filter**-Ausdruck kann eigenständig als vollständig ausgedrückte Abfra
 
 
 ```POST
-POST /indexes/hotels/docs/search?api-version=2017-11-11
+POST /indexes/hotels/docs/search?api-version=2019-05-06
     {
       "filter": "(baseRate ge 60 and baseRate lt 300) or hotelName eq 'Fancy Stay'"
     }
@@ -45,7 +45,7 @@ POST /indexes/hotels/docs/search?api-version=2017-11-11
 Ein weiterer häufiger Anwendungsfall ist die Kombination von Filtern mit Faceting. Dabei reduziert der Filter die Oberfläche der Abfrage auf Grundlage einer benutzergesteuerten Facettennavigationsauswahl:
 
 ```POST
-POST /indexes/hotels/docs/search?api-version=2017-11-11
+POST /indexes/hotels/docs/search?api-version=2019-05-06
     {
       "search": "test",
       "facets": [ "tags", "baseRate,values:80|150|220" ],

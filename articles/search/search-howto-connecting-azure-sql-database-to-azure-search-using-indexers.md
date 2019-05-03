@@ -1,7 +1,7 @@
 ---
 title: Verbinden und Indizieren von Azure SQL-Datenbankinhalten unter Verwendung von Indexern – Azure Search
 description: Erfahren Sie, wie Sie Daten in Azure SQL-Datenbank mithilfe von Indexern für die Volltextsuche in Azure Search durchforsten. Dieser Artikel behandelt Verbindungen, Indexerkonfiguration und Datenerfassung.
-ms.date: 03/01/2019
+ms.date: 05/02/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 5453bcdd371c0639cb1d3568f05a1768e6204d3d
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: c23933e7f379a438d436fd99c5fea7899c5891ef
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315213"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025357"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Verbinden und Indizieren von Azure SQL-Datenbankinhalten unter Verwendung von Azure Search-Indexern
 
@@ -63,7 +63,7 @@ Abhängig von verschiedenen Faktoren, die mit den Daten zusammenhängen, kann di
 1. Erstellen Sie die Datenquelle:
 
    ```
-    POST https://myservice.search.windows.net/datasources?api-version=2017-11-11
+    POST https://myservice.search.windows.net/datasources?api-version=2019-05-06
     Content-Type: application/json
     api-key: admin-key
 
@@ -82,7 +82,7 @@ Abhängig von verschiedenen Faktoren, die mit den Daten zusammenhängen, kann di
 3. Erstellen Sie den Indexer, indem Sie ihm einen Namen geben und einen Verweis auf die Datenquelle und den Zielindex hinzufügen:
 
     ```
-    POST https://myservice.search.windows.net/indexers?api-version=2017-11-11
+    POST https://myservice.search.windows.net/indexers?api-version=2019-05-06
     Content-Type: application/json
     api-key: admin-key
 
@@ -95,7 +95,7 @@ Abhängig von verschiedenen Faktoren, die mit den Daten zusammenhängen, kann di
 
 Ein auf diese Weise erstellter Indexer verfügt über keinen Zeitplan. Er wird automatisch einmal ausgeführt, wenn er erstellt wird. Sie können ihn jederzeit mithilfe der Anforderung **run indexer** erneut ausführen:
 
-    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2017-11-11
+    POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2019-05-06
     api-key: admin-key
 
 Sie können einige Aspekte des Indexerverhaltens anpassen, z.B. die Batchgröße, und wie viele Dokumente übersprungen werden können, bevor bei einer Indexerausführung ein Fehler auftritt. Weitere Informationen finden Sie unter [Create Indexer API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer) (API zum Erstellen eines Indexers).
@@ -104,7 +104,7 @@ Möglicherweise müssen Sie Azure Services erlauben, eine Verbindung mit der Dat
 
 Verwenden Sie zum Überwachen des Indexerstatus und Ausführungsverlaufs (Anzahl der indizierten Elemente, Fehler usw.) die Anforderung **indexer status** :
 
-    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2017-11-11
+    GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2019-05-06
     api-key: admin-key
 
 Die Antwort sollte etwa wie folgt aussehen:
@@ -146,7 +146,7 @@ Weitere Informationen zur Antwort finden Sie unter [Abrufen des Indexerstatus](h
 ## <a name="run-indexers-on-a-schedule"></a>Ausführen von Indexern nach einem Zeitplan
 Sie können den Indexer auch so konfigurieren, dass er regelmäßig nach einem Zeitplan ausgeführt wird. Dazu fügen Sie die **schedule**-Eigenschaft beim Erstellen oder Aktualisieren des Indexers hinzu. Das folgende Beispiel zeigt eine PUT-Anforderung den Indexer, um den zu aktualisieren:
 
-    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2017-11-11
+    PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2019-05-06
     Content-Type: application/json
     api-key: admin-key
 

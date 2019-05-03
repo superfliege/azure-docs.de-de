@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 7d95ae1f750c59c121e998c6f51f9439b1b0339a
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 83ca0c11ab0065929d939b7345cbd15869740bb3
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287093"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024357"
 ---
 # <a name="data-import-overview---azure-search"></a>Übersicht über den Datenimport – Azure Search
 
@@ -63,9 +63,9 @@ So importieren Sie Daten mit dem .NET SDK (upload, merge, delete und mergeOrUplo
 ### <a name="formulate-your-query"></a>Formulieren der Abfrage
 Es gibt zwei Möglichkeiten, um [den Index mithilfe der REST-API zu durchsuchen](https://docs.microsoft.com/rest/api/searchservice/Search-Documents). Eine Möglichkeit besteht darin, eine HTTP POST-Anforderung auszugeben, wobei die Abfrageparameter in ein JSON-Objekt im Anforderungstext definiert werden. Die andere Möglichkeit besteht darin, eine HTTP GET-Anforderung auszugeben, wobei die Abfrageparameter in der Anforderungs-URL definiert werden. Die Beschränkungen in Bezug auf die Größe der Abfrageparameter sind bei POST [geringer](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) als bei GET. Aus diesem Grund empfehlen wir die Verwendung von POST, sofern GET nicht aufgrund bestimmter Umstände praktischer wäre.
 
-Sowohl für POST als auch für GET müssen Sie in der Anforderungs-URL Ihren *Dienstnamen*, den *Indexnamen* sowie die entsprechende *API-Version* (die aktuelle Version der API zum Zeitpunkt der Veröffentlichung dieses Dokuments ist `2017-11-11`) bereitstellen. Für GET befindet sich die *Abfragezeichenfolge* am Ende der URL, wo Sie die Abfrageparameter angeben. Das URL-Format finden Sie weiter unten:
+Sowohl für POST als auch für GET müssen Sie in der Anforderungs-URL Ihren *Dienstnamen*, den *Indexnamen* sowie die entsprechende *API-Version* (die aktuelle Version der API zum Zeitpunkt der Veröffentlichung dieses Dokuments ist `2019-05-06`) bereitstellen. Für GET befindet sich die *Abfragezeichenfolge* am Ende der URL, wo Sie die Abfrageparameter angeben. Das URL-Format finden Sie weiter unten:
 
-    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2017-11-11
+    https://[service name].search.windows.net/indexes/[index name]/docs?[query string]&api-version=2019-05-06
 
 Das Format für POST ist das Gleiche, allerdings mit der API-Version in den Parametern für die Abfragezeichenfolge.
 

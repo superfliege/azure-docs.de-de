@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/02/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: b485b6b7f6ddbdb45d3ca6170c29a9af3c5b63dc
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 87e35573eea836fc8a88c7515409c070ec63aa3b
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57407985"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024893"
 ---
 # <a name="indexers-in-azure-search"></a>Indexer in Azure Search
 
@@ -79,7 +79,7 @@ Die Indexerdefinition ist ein Konstrukt, das alle Elemente im Zusammenhang mit d
 
 Während es üblich ist, eine Indizierung zu planen, kann ein Indexer auch bei Bedarf mit dem [Befehl „Ausführen“](https://docs.microsoft.com/rest/api/searchservice/run-indexer) aufgerufen werden:
 
-    POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2017-11-11
+    POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2019-05-06
     api-key: [Search service admin key]
 
 > [!NOTE]
@@ -94,7 +94,7 @@ Sie können den Indexerstatus im Portal oder über die API zum Abrufen des Index
 Sie können den Status und Ausführungsverlauf eines Indexers über den [Befehl „Indexer-Status abrufen“](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) abrufen:
 
 
-    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2017-11-11
+    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2019-05-06
     api-key: [Search service admin key]
 
 Die Antwort enthält den Gesamtstatus des Indexers, den letzten (oder laufenden) Aufruf des Indexers sowie den Verlauf der letzten Indexeraufrufe.

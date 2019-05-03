@@ -4,7 +4,7 @@ description: Referenz für die vollständige Lucene-Syntax, die mit Azure Search
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 04/25/2019
 author: brjohnstmsft
 ms.author: brjohnst
 ms.manager: cgronlun
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 64a688df3b6ed8602bb440d72e7f061c5f5893d1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b37961f96aca95c0aeaec511411a309d40e990f5
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885603"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024206"
 ---
 # <a name="lucene-query-syntax-in-azure-search"></a>Lucene-Abfragesyntax in Azure Search
 Sie können für Azure Search basierend auf der umfassenden Syntax des [Lucene-Abfrageparsers](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) spezielle Abfragen schreiben: Platzhaltersuche, Fuzzysuche, NEAR-Suche und Suche mit regulären Ausdrücken sind einige Beispiele hierfür. Der Großteil der Syntax des Lucene-Abfrageparsers wird [in Azure Search unverändert implementiert](search-lucene-query-architecture.md). Die einzige Ausnahme sind *Bereichssuchen*, die in Azure Search mit `$filter`-Ausdrücken erstellt werden. 
@@ -42,13 +42,13 @@ Im folgenden Beispiel wird mithilfe der Lucene-Abfragesyntax (dies wird im Param
 Der Parameter `searchMode=all` ist in diesem Beispiel wichtig. Bei Abfragen mit Operatoren sollten Sie generell `searchMode=all` festlegen, um sicherzustellen, dass *alle* Kriterien abgeglichen werden.
 
 ```
-GET /indexes/hotels/docs?search=category:budget AND \"recently renovated\"^3&searchMode=all&api-version=2015-02-28&querytype=full
+GET /indexes/hotels/docs?search=category:budget AND \"recently renovated\"^3&searchMode=all&api-version=2019-05-06&querytype=full
 ```
 
  Alternativ können Sie POST verwenden:  
 
 ```
-POST /indexes/hotels/docs/search?api-version=2015-02-28
+POST /indexes/hotels/docs/search?api-version=2019-05-06
 {
   "search": "category:budget AND \"recently renovated\"^3",
   "queryType": "full",

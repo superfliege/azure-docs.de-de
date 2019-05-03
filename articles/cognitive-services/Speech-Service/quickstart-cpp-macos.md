@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/03/2019
 ms.author: wolfma
-ms.openlocfilehash: be4c5d6187e6367ba04ce7debcc0701937e87ae9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b602a26c83be1ffd4bd55a8eff9ff8d83aac5919
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59012348"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020812"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-macos-by-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in C++ unter macOS mit dem Speech SDK
 
@@ -31,7 +31,7 @@ Für diese Schnellstartanleitung benötigen Sie einen Abonnementschlüssel für 
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Die aktuelle Version des Cognitive Services Speech SDK ist `1.4.0`.
+Die aktuelle Version des Cognitive Services Speech SDK ist `1.5.0`.
 
 Das Speech SDK für macOS kann als gezipptes Frameworkpaket unter https://aka.ms/csspeech/macosbinary heruntergeladen werden.
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/03/2019
 ms.author: chlandsi
-ms.openlocfilehash: 55fc671d926880375b0420e0eafb6dc63f170ba6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f25c3801553b0ac0c725170cda95f5c1eacc3637
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59012324"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020741"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-macos-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in Objective-C unter macOS mit dem Speech SDK
 
@@ -34,7 +34,7 @@ Folgendes wird vorausgesetzt:
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Die aktuelle Version des Cognitive Services Speech SDK ist `1.4.0`.
+Die aktuelle Version des Cognitive Services Speech SDK ist `1.5.0`.
 
 Das Cognitive Services Speech SDK für Mac wird als Frameworkpaket bereitgestellt.
 Es kann in Xcode-Projekten als [CocoaPod](https://cocoapods.org/) verwendet oder von https://aka.ms/csspeech/macosbinary heruntergeladen und manuell verknüpft werden. In dieser Anleitung wird ein CocoaPod verwendet.
@@ -71,7 +71,7 @@ Treffen Sie in den nachfolgenden Dialogfeldern die folgende Auswahl:
     ```
     target 'helloworld' do
         platform :osx, '10.13'
-        pod 'MicrosoftCognitiveServicesSpeech-macOS', '~> 1.4.0'
+        pod 'MicrosoftCognitiveServicesSpeech-macOS', '~> 1.5.0'
     end
     ```
 1. Navigieren Sie in einem Terminal zum Verzeichnis `helloworld`, und führen Sie den Befehl `pod install` aus. Dadurch wird ein Xcode-Arbeitsbereich `helloworld.xcworkspace` generiert, der die Beispiel-App und das Speech SDK als Abhängigkeit enthält. Dieser Arbeitsbereich wird im Folgenden verwendet.

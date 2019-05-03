@@ -6,15 +6,15 @@ manager: jlembicz
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 05/02/2019
 ms.author: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: a198fa7fe5e1ed81e30987990359f9ecedbe225b
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: cc9f271c1c79f34ba62fa22d6ce4fd6bf16738f1
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631548"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025272"
 ---
 # <a name="create-an-index-for-documents-in-multiple-languages-in-azure-search"></a>Erstellen eines Index für Dokumente in mehreren Sprachen in Azure Search
 > [!div class="op_single_selector"]
@@ -64,7 +64,7 @@ Viele webbasierte und mobile Anwendungen werden von Benutzern auf der ganzen Wel
 
 Wenn die Sprache des Agents, der eine Abfrage ausgibt, bekannt ist, kann eine Suchabfrage mit dem **SearchFields** -Abfrageparameter auf ein bestimmtes Feld beschränkt werden. Die folgende Abfrage wird nur für die Beschreibung in polnischer Sprache ausgegeben:
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=description_pl&api-version=2017-11-11`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=description_pl&api-version=2019-05-06`
 
 Sie können im Portal im **Suchexplorer** Ihren Index abfragen, um eine Abfrage einzufügen, die der oben gezeigten ähnlich ist. Der Suchexplorer ist auf dem Blatt des Diensts auf der Befehlsleiste verfügbar. Ausführliche Informationen finden Sie unter [Abfragen des Azure Search-Indexes im Portal](search-explorer.md) .
 
@@ -79,7 +79,7 @@ Manchmal ist die Sprache des Agents, der eine Abfrage ausgibt, nicht bekannt. In
       }
     ]
 
-`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2017-11-11`
+`https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2019-05-06`
 
 Wenn Sie .NET-Entwickler sind, können Sie Sprachanalysen mit dem [Azure Search .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Search)konfigurieren. Die neueste Version unterstützt auch die Microsoft-Sprachanalysen.
 
