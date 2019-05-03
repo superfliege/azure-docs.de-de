@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/24/2018
-ms.openlocfilehash: 05331c710817e575deb7729189c9b2d8ccbafd7d
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 57fd69542a5d92b9afd1e003d8b94c1ebb64953e
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54489561"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65031775"
 ---
 1. Melden Sie sich mit den Anmeldeinformationen, die Sie für das Azure-Abonnement verwenden, beim [Azure-Portal](https://portal.azure.com/) an. 
 
@@ -26,7 +26,7 @@ ms.locfileid: "54489561"
 
 1. Geben Sie in der Suchleiste **Machine Learning** ein. Wählen Sie das Suchergebnis **Machine Learning-Dienstarbeitsbereich** aus.
 
-   ![Suchen nach einem Arbeitsbereich](./media/aml-create-in-portal/allservices-search.PNG)
+   ![Suchen nach einem Arbeitsbereich](./media/aml-create-in-portal/allservices-search.png)
 
 1. Scrollen Sie im Bereich **ML-Dienstarbeitsbereich** nach unten, und wählen Sie **Erstellen** aus, um zu beginnen.
 
@@ -39,7 +39,7 @@ ms.locfileid: "54489561"
    Arbeitsbereichname |Geben Sie einen eindeutigen Namen ein, der Ihren Arbeitsbereich identifiziert. In diesem Beispiel verwenden wir **docs-ws**. Namen müssen in der Ressourcengruppe eindeutig sein. Verwenden Sie einen Namen, der leicht zu merken ist und sich von den von anderen Benutzern erstellten Arbeitsbereichen unterscheidet.  
    Abonnement |Wählen Sie das gewünschte Azure-Abonnement aus.
    Ressourcengruppe | Verwenden Sie eine vorhandene Ressourcengruppe in Ihrem Abonnement, oder geben Sie einen Namen ein, um eine neue Ressourcengruppe zu erstellen. Eine Ressourcengruppe ist ein Container, der verwandte Ressourcen für eine Azure-Lösung enthält. In diesem Beispiel verwenden wir **docs-aml**. 
-   Standort | Wählen Sie den Standort aus, der Ihren Benutzern und den Datenressourcen am nächsten ist. Dort wird der Arbeitsbereich erstellt.
+   Location | Wählen Sie den Standort aus, der Ihren Benutzern und den Datenressourcen am nächsten ist. Dort wird der Arbeitsbereich erstellt.
 
    ![Arbeitsbereich erstellen](./media/aml-create-in-portal/workspace-create.png)
 
