@@ -2,14 +2,14 @@
   href: index.yml
 - name: Übersicht
   items:
-    - name: Einführung in Azure NetApp Files
+    - name: Was ist Azure NetApp Files?
       href: azure-netapp-files-introduction.md
     - name: Grundlegendes zur Speicherhierarchie
       href: azure-netapp-files-understand-storage-hierarchy.md
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Einrichten von Azure NetApp Files und Erstellen eines Volumes
+    - name: Einrichten von Azure NetApp Files und Erstellen eines NFS-Volumes
       href: azure-netapp-files-quickstart-set-up-account-create-volumes.md
 - name: Konzepte
   items:
@@ -19,8 +19,8 @@
       href: azure-netapp-files-resource-limits.md
     - name: Metriken für Azure NetApp Files
       href: azure-netapp-files-metrics.md
-    - name: Beheben von Fehlern mit Azure NetApp Files-Ressourcenanbietern
-      href: azure-netapp-files-troubleshoot-resource-provider-errors.md
+    - name: Leistungsbenchmarks für Azure NetApp Files
+      href: azure-netapp-files-performance-benchmarks.md
 - name: Anleitungen
   items:
     - name: Registrieren für Azure NetApp Files
@@ -47,6 +47,8 @@
       items:
         - name: REST
           href: azure-netapp-files-develop-with-rest-api.md
+        - name: Beheben von Fehlern mit Azure NetApp Files-Ressourcenanbietern
+          href: azure-netapp-files-troubleshoot-resource-provider-errors.md
 - name: Verweis
   items:
     - name: REST

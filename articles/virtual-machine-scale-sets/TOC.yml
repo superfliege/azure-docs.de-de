@@ -152,6 +152,8 @@
         - name: vCPU-Kontingente
           href: ../virtual-machines/windows/quotas.md
           maintainContext: true
+    - name: Häufig gestellte Fragen (FAQ) zu Skalierungsgruppen
+      href: virtual-machine-scale-sets-faq.md
 - name: Anleitung
   items:
     - name: Planen und Entwerfen
@@ -183,6 +185,9 @@
               href: virtual-machine-scale-sets-autoscale-portal.md
             - name: Erweiterte automatische Skalierung
               href: ../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md
+              maintainContext: true
+            - name: Problembehandlung bei der automatischen Skalierung
+              href: virtual-machine-scale-sets-troubleshoot.md
         - name: Anwendungen in Skalierungsgruppen
           href: virtual-machine-scale-sets-deploy-app.md
         - name: Erweiterungen in Skalierungsgruppen
@@ -199,6 +204,9 @@
               href: virtual-machine-scale-sets-encrypt-disks-ps.md
             - name: Verwenden der Azure-CLI
               href: virtual-machine-scale-sets-encrypt-disks-cli.md
+            - name: Datenträgerverschlüsselung mit Erweiterungssequenzierung
+              href: ../security/azure-security-disk-encryption-extension-sequencing.md
+              maintainContext: true
         - name: Verwenden umfangreicher Skalierungsgruppen
           href: virtual-machine-scale-sets-placement-groups.md
         - name: Konvertieren einer Skalierungsgruppenvorlage für die Verwendung verwalteter Datenträger
@@ -247,14 +255,6 @@
         - name: Automatisches Skalieren einer Skalierungsgruppe
           href: /azure/ansible/ansible-auto-scale-vmss
           maintainContext: true
-    - name: Problembehandlung
-      items:
-        - name: Autoscale
-          href: virtual-machine-scale-sets-troubleshoot.md
-    - name: Häufig gestellte Fragen
-      items:
-        - name: Häufig gestellte Fragen (FAQ) zu Skalierungsgruppen
-          href: virtual-machine-scale-sets-faq.md
 - name: Verweis
   items:
     - name: Azure PowerShell

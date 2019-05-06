@@ -25,7 +25,7 @@
       href: tutorial-custom-images.md
     - name: '5: Hoch verfügbare virtuelle Computer'
       href: tutorial-availability-sets.md
-    - name: '6: Erstellen einer VM-Skalierungsgruppe'
+    - name: '6: Erstellen einer Skalierungsgruppe'
       href: tutorial-create-vmss.md
     - name: '7: Lastenausgleich für virtuelle Computer'
       href: tutorial-load-balancer.md
@@ -259,6 +259,8 @@
               href: shared-image-galleries.md
             - name: Erstellen freigegebener Images mithilfe der CLI
               href: shared-images.md
+            - name: Portal
+              href: shared-images-portal.md
             - name: Problembehandlung für freigegebene Images
               href: troubleshooting-shared-images.md
         - name: Suchen und Verwenden von Images

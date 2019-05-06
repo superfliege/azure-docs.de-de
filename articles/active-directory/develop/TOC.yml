@@ -14,20 +14,14 @@
         - name: Konfigurieren einer Anwendung
           items:
             - name: Registrieren einer App
-              href: quickstart-v1-add-azure-ad-app.md
-            - name: Aktualisieren einer App
-              href: quickstart-v1-update-azure-ad-app.md
-            - name: Entfernen einer App
-              href: quickstart-v1-remove-azure-ad-app.md
-            - name: Registrieren einer App (Vorschau)
               href: quickstart-register-app.md
-            - name: Konfigurieren der App für den Zugriff auf Web-APIs (Vorschau)
+            - name: Konfigurieren der App für den Zugriff auf Web-APIs
               href: quickstart-configure-app-access-web-apis.md
-            - name: Konfigurieren der App für das Bereitstellen von Web-APIs (Vorschau)
+            - name: Konfigurieren der App für das Verfügbarmachen von Web-APIs
               href: quickstart-configure-app-expose-web-apis.md
-            - name: Ändern der von einer App unterstützten Konten (Vorschau)
+            - name: Ändern der von einer App unterstützten Konten
               href: quickstart-modify-supported-accounts.md
-            - name: Entfernen einer App (Vorschau)
+            - name: Entfernen einer App
               href: quickstart-remove-app.md
         - name: Einseitige Apps
           items:
@@ -243,20 +237,14 @@
         - name: Konfigurieren einer Anwendung
           items:
             - name: Registrieren einer App
-              href: quickstart-v2-register-an-app.md
-            - name: Aktualisieren einer App
-              href: quickstart-v1-update-azure-ad-app.md
-            - name: Entfernen einer App
-              href: quickstart-v1-remove-azure-ad-app.md
-            - name: Registrieren einer App (Vorschau)
               href: quickstart-register-app.md
-            - name: Konfigurieren der App für den Zugriff auf Web-APIs (Vorschau)
+            - name: Konfigurieren der App für den Zugriff auf Web-APIs
               href: quickstart-configure-app-access-web-apis.md
-            - name: Konfigurieren der App für das Bereitstellen von Web-APIs (Vorschau)
+            - name: Konfigurieren der App für das Verfügbarmachen von Web-APIs
               href: quickstart-configure-app-expose-web-apis.md
-            - name: Ändern der von einer App unterstützten Konten (Vorschau)
+            - name: Ändern der von einer App unterstützten Konten
               href: quickstart-modify-supported-accounts.md
-            - name: Entfernen einer App (Vorschau)
+            - name: Entfernen einer App
               href: quickstart-remove-app.md
         - name: Einseitige Apps
           items:
@@ -350,6 +338,8 @@
               href: active-directory-certificate-credentials.md
         - name: Anwendungskonfiguration
           items:
+            - name: Trainingshandbuch für App-Registrierungen
+              href: app-registrations-training-guide.md
             - name: Anwendungen und Dienstprinzipale
               href: app-objects-and-service-principals.md
             - name: Apps mit einem Mandanten und mit mehreren Mandanten

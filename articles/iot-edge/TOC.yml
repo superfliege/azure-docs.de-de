@@ -13,28 +13,44 @@
       href: quickstart.md
 - name: Lernprogramme
   items:
-    - name: Filtern von Daten mit Azure Functions
-      href: tutorial-deploy-function.md
-    - name: Ermitteln von Mittelwerten mit ASA
-      href: tutorial-deploy-stream-analytics.md
-    - name: Bewerten von Daten mit Azure Machine Learning Service
-      href: tutorial-deploy-machine-learning.md
-    - name: Klassifizieren von Bildern mit Custom Vision
-      href: tutorial-deploy-custom-vision.md
-    - name: Lokales Speichern von Daten mit SQL
-      href: tutorial-store-data-sql-server.md
-    - name: Entwickeln von benutzerdefinierten Codemodulen
+    - name: 1. Einrichten der Entwicklungsumgebung
       items:
+        - name: Entwickeln für Linux-Geräte
+          href: tutorial-develop-for-linux.md
+        - name: Entwickeln für Windows-Geräte
+          href: tutorial-develop-for-windows.md
+    - name: 2. Entwickeln von benutzerdefinierten Codemodulen
+      items:
+        - name: C
+          items:
+            - name: C-Module für Linux-Geräte
+              href: tutorial-c-module.md
+            - name: C-Module für Windows-Geräte
+              href: tutorial-c-module-windows.md
         - name: 'C#'
-          href: tutorial-csharp-module.md
-        - name: Python
-          href: tutorial-python-module.md
-        - name: Node.js
-          href: tutorial-node-module.md
+          items:
+            - name: 'C#-Module für Linux-Geräte'
+              href: tutorial-csharp-module.md
+            - name: 'C#-Module für Windows-Geräte'
+              href: tutorial-csharp-module-windows.md
         - name: Java
           href: tutorial-java-module.md
-        - name: C
-          href: tutorial-c-module.md
+        - name: Node.js
+          href: tutorial-node-module.md
+        - name: Python
+          href: tutorial-python-module.md
+    - name: 3. Bereitstellen von Azure-Diensten als Module
+      items:
+        - name: Filtern von Daten mit Azure Functions
+          href: tutorial-deploy-function.md
+        - name: Ermitteln von Mittelwerten mit ASA
+          href: tutorial-deploy-stream-analytics.md
+        - name: Bewerten von Daten mit Azure Machine Learning Service
+          href: tutorial-deploy-machine-learning.md
+        - name: Klassifizieren von Bildern mit Custom Vision
+          href: tutorial-deploy-custom-vision.md
+        - name: Lokales Speichern von Daten mit SQL
+          href: tutorial-store-data-sql-server.md
 - name: Konzepte
   items:
     - name: IoT Edge-Laufzeit

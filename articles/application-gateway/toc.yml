@@ -45,6 +45,8 @@
           href: application-gateway-components.md
         - name: Konfigurationsübersicht
           href: configuration-overview.md
+    - name: SKU für automatische Skalierung v2
+      href: application-gateway-autoscaling-zone-redundant.md
     - name: Routing
       items:
         - name: Hosten mehrerer Websites
@@ -77,8 +79,6 @@
           href: application-gateway-probe-overview.md
         - name: Diagnose
           href: application-gateway-diagnostics.md
-    - name: Automatische Skalierung und Zonenredundanz
-      href: application-gateway-autoscaling-zone-redundant.md
     - name: App Service-Web-App und Unterstützung mehrerer Mandanten
       href: application-gateway-web-app-overview.md
     - name: WebSocket-Unterstützung
@@ -183,6 +183,8 @@
           href: rewrite-http-headers-portal.md
         - name: Azure PowerShell
           href: add-http-header-rewrite-rule-powershell.md
+        - name: Erstellen und erneutes Generieren von HTTP-Headern
+          href: tutorial-http-header-rewrite-powershell.md
     - name: Konfigurieren von App Service-Web-Apps und mehrinstanzenfähigen Diensten
       items:
         - name: Portal

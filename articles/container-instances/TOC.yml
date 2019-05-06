@@ -45,6 +45,8 @@
       href: container-instances-region-availability.md
     - name: Beziehung zu Orchestratoren
       href: container-instances-orchestrator-relationship.md
+    - name: Sicherheitshinweise
+      href: container-instances-image-security.md
 - name: Anleitungen
   items:
     - name: Bereitstellen
@@ -69,11 +71,13 @@
           href: container-instances-managed-identity.md
         - name: Verwenden von GPU-Ressourcen (Vorschauversion)
           href: container-instances-gpu.md
+        - name: Aktivieren eines SSL-Endpunkts
+          href: container-instances-container-group-ssl.md
     - name: Einbinden von Datenvolumes
       items:
         - name: Azure-Dateifreigabe
           href: container-instances-volume-azure-files.md
-        - name: Geheimer Schlüssel
+        - name: '`Secret`'
           href: container-instances-volume-secret.md
         - name: Leeres Verzeichnis
           href: container-instances-volume-emptydir.md
