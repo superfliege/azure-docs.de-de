@@ -11,17 +11,17 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: c49090a5563a6d63c90b29cc7442c1e4ed9886e0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a5cedec4937da276a4848498ad29a723f6e41ba3
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091578"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65073704"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>Tutorial: Gruppieren und Extrahieren zugehöriger Daten
 In diesem Tutorial fügen Sie eine zusammengesetzte Entität hinzu, um extrahierte Daten verschiedenen Typs in einer einzelnen enthaltenden Entität zu bündeln. Durch Bündeln der Daten kann die Clientanwendung aufeinander bezogene Daten verschiedener Datentypen leicht extrahieren.
 
-Zusammengesetzte Entitäten dienen dazu, verknüpfte Entitäten in einer Entität der übergeordneten Kategorie zu gruppieren. Die Informationen sind vor dem Erstellen einer zusammengesetzten Entität jeweils separate Entitäten. Sie ähnelt einer hierarchischen Entität, kann aber verschiedene Arten von Entitäten enthalten. 
+Zusammengesetzte Entitäten dienen dazu, verknüpfte Entitäten in einer Entität der übergeordneten Kategorie zu gruppieren. Die Informationen sind vor dem Erstellen einer zusammengesetzten Entität jeweils separate Entitäten. 
 
 Die zusammengesetzte Entität ist eine gute Wahl für diese Art von Daten, da für die Daten Folgendes gilt:
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: c64db6b35aa2f1daa4484f137c8505b1415c5a0b
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 80bf4718b63496c0b220aa79dcdd27f2711b70ce
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521753"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148100"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Vorbereiten der Bereitstellung einer IoT Edge-Lösung für die Produktion
 
@@ -186,7 +186,11 @@ Wenn Ihre Geräte in einem Netzwerk bereitgestellt werden, das einen Proxyserver
 
 ### <a name="set-up-logs-and-diagnostics"></a>Einrichten von Protokollen und Diagnosen
 
-Unter Linux verwendet der IoT Edge-Daemon Journale als Standardprotokolltreiber. Sie können das Befehlszeilentool `journalctl` verwenden, um die Daemonprotokolle abzufragen. Unter Windows verwendet der IoT Edge-Daemon die PowerShell-Diagnose. Verwenden Sie `Get-WinEvent`, um Protokolle vom Daemon abzufragen. IoT Edge-Module verwenden zum Protokollieren den JSON-Treiber, der die Standardoption darstellt.  
+Unter Linux verwendet der IoT Edge-Daemon Journale als Standardprotokolltreiber. Sie können das Befehlszeilentool `journalctl` verwenden, um die Daemonprotokolle abzufragen. Unter Windows verwendet der IoT Edge-Daemon die PowerShell-Diagnose. Verwenden Sie `Get-IoTEdgeLog`, um Protokolle vom Daemon abzufragen. IoT Edge-Module verwenden zum Protokollieren den JSON-Treiber, der die Standardoption darstellt.  
+
+```powershell
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
+```
 
 Wenn Sie eine IoT Edge-Bereitstellung testen, können Sie in der Regel auf Ihre Geräte zugreifen, um Protokolle abzurufen und Fehler zu beheben. In einem Bereitstellungsszenario haben Sie diese Option möglicherweise nicht. Überlegen Sie, wie Sie Informationen über Ihre Geräte in der Produktion sammeln können. Eine Möglichkeit besteht darin, ein Protokollierungsmodul zu verwenden, das Informationen von anderen Modulen erfasst und in die Cloud sendet. Ein Beispiel für ein Protokollierungsmodul ist [logspout-loganalytics](https://github.com/veyalla/logspout-loganalytics). Sie haben auch die Möglichkeit, Ihr eigenes Modul zu erstellen. 
 
@@ -208,7 +212,7 @@ Sie können die Größe aller Containerprotokolldateien in den Protokolloptionen
 
 Fügen Sie diese Informationen zu einer Datei namens `daemon.json` hinzu (oder fügen Sie sie an), und platzieren Sie die Datei am richtigen Speicherort für Ihre Geräteplattform.
 
-| Plattform | Standort |
+| Plattform | Location |
 | -------- | -------- |
 | Linux | `/etc/docker/` |
 | Windows | `C:\ProgramData\iotedge-moby-data\config\` |

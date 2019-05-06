@@ -8,13 +8,14 @@ ms.topic: article
 ms.devlang: dotnet
 ms.date: 05/15/2017
 ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 5dcb9f16b589b8332d5fcf35c9d8b4cd914460f2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: de035517383f066ed847f06b7bc4ff650ec496f3
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012551"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148384"
 ---
 # <a name="shared-access-signatures-part-2-create-and-use-a-sas-with-blob-storage"></a>Shared Access Signatures, Teil 2: Erstellen und Verwenden einer SAS mit Blob Storage
 

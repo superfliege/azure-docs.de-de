@@ -2,18 +2,19 @@
 title: Erstellen von hochverfügbaren Azure Storage-Anwendungen für zonenredundante Speicher (ZRS) | Microsoft-Dokumentation
 description: Zonenredundante Speicher (ZRS) bieten eine einfache Möglichkeit zum Erstellen von hochverfügbaren Anwendungen. ZRS schützen vor Hardwareausfällen im Rechenzentrum und vor regionalen Notfällen.
 services: storage
-author: tolandmike
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 10/24/2018
-ms.author: jeking
+ms.author: tamram
+ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: ab3984b29b3bdfac7599c68c14bd6cc5b671cdf4
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 9fd594fb264ff0467cc315f59927cd157068d522
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447264"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65146171"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>Zonenredundanter Speicher (ZRS): Hochverfügbare Azure Storage-Anwendungen
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]

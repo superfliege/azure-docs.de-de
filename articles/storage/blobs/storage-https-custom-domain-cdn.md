@@ -2,18 +2,19 @@
 title: Verwenden von Azure CDN zum Zugreifen auf Blobs mit benutzerdefinierten Domänen über HTTPS
 description: In diesem Artikel wird erläutert, wie Azure CDN in Blobspeicher integriert werden kann, um mit benutzerdefinierten Domänen über HTTPS auf Blobs zugreifen zu können.
 services: storage
-author: michaelhauss
+author: normesta
 ms.service: storage
 ms.topic: article
 ms.date: 06/26/2018
-ms.author: mihauss
+ms.author: normesta
+ms.reviewer: seguler
 ms.subservice: blobs
-ms.openlocfilehash: 90ddb58f3499180e17df559a98ac8a46b53fb824
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: da3a6dcb0d125ac4666bc375e843c57cf12fb2fc
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579011"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65148407"
 ---
 # <a name="use-azure-cdn-to-access-blobs-with-custom-domains-over-https"></a>Verwenden von Azure CDN zum Zugreifen auf Blobs mit benutzerdefinierten Domänen über HTTPS
 

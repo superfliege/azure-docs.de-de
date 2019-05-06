@@ -2,18 +2,19 @@
 title: Übersicht über Azure-Seitenblobs | Microsoft-Dokumentation
 description: Eine Übersicht über Azure-Seitenblobs und deren Vorteile sowie Anwendungsfälle mit Beispielskripts.
 services: storage
-author: anasouma
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 01/03/2019
-ms.author: wielriac
+ms.author: tamram
+ms.reviewer: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: b03da04c97475dcb9ce15f2ed69d7ca333d6f431
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a0fc9a8356f4a322ae81a668515a6a60c6001011
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456209"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141237"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Übersicht über Azure-Seitenblobs
 

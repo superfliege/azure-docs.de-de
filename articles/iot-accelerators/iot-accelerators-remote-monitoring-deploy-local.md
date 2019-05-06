@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: fdb9b6c09e81ce29d2587fb0faca1aa80d28ea38
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: a5754fc2f7e0fc36a6708bfd4d2d1d3d6f016b27
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309978"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150968"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio"></a>Lokales Bereitstellen des Solution Accelerators für die Remoteüberwachung – Visual Studio
 
@@ -83,7 +83,7 @@ Für jeden Webdienst werden eine Eingabeaufforderung und ein Webbrowserfenster g
 Führen Sie folgende Schritte aus, um den Stream Analytics-Auftrag zu starten:
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
-1. Navigieren Sie zu der für Ihre Projektmappe erstellten **Ressourcengruppe**. Der Name der Ressourcengruppe ist der Name der Projektmappe, den Sie beim Ausführen des Skripts **start.cmd** ausgewählt haben**.
+1. Navigieren Sie zu der für Ihre Projektmappe erstellten **Ressourcengruppe**. Der Name der Ressourcengruppe ist der Name der Projektmappe, den Sie beim Ausführen des Skripts **start.cmd** ausgewählt haben.
 1. Klicken Sie in der Liste der Ressourcen auf den **Stream Analytics-Auftrag**.
 1. Klicken Sie auf der Seite **Übersicht** des Stream Analytics-Auftrags auf die Schaltfläche **Starten**. Klicken Sie dann auf **Starten**, um den Auftrag direkt zu starten.
 

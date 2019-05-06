@@ -7,13 +7,14 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: f14c6625a36356a6882e1596db13c1749a9a292a
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: e850b915cd01b6bacd70d6df7752eeb83f7101d0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449831"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153856"
 ---
 # <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-using-powershell"></a>Gewähren von Zugriff auf Azure-Blob- und -Warteschlangendaten mit RBAC über PowerShell
 
@@ -55,17 +56,17 @@ Storage Queue Data Reader                 Allows for read access to Azure Storag
 
 ## <a name="assign-an-rbac-role-to-a-user"></a>Zuweisen einer RBAC-Rolle zu einem Benutzer
 
-Verwenden Sie den Befehl [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment), um einem Benutzer eine RBAC-Rolle zuzuweisen. Das Format des Befehls kann je nach Bereich der Zuweisung unterschiedlich sein. Die folgenden Beispiele zeigen, wie Sie einem Benutzer eine Rolle in verschiedenem Umfang zuweisen können.
+Verwenden Sie den Befehl [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment), um einem Benutzer eine RBAC-Rolle zuzuweisen. Das Format des Befehls kann je nach Bereich der Zuweisung unterschiedlich sein. In den folgenden Beispielen wird veranschaulicht, wie Sie einem Benutzer eine Rolle in verschiedenen Bereichen zuweisen können.
 
-### <a name="container-scope"></a>Containerumfang
+### <a name="container-scope"></a>Containerbereich
 
-Zum Zuweisen einer auf einen Container begrenzten Rolle geben Sie für den Parameter `--scope` eine Zeichenfolge an, die den Containerbereich enthält. Der Bereich für einen Container weist die folgende Form auf:
+Geben Sie zum Zuweisen einer auf einen Container begrenzten Rolle für den Parameter `--scope` eine Zeichenfolge an, die den Containerbereich enthält. Der Bereich für einen Container weist folgendes Format auf:
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container-name>
 ```
 
-Im folgenden Beispiel wird die Rolle **Mitwirkender an Storage-Blobdaten** einem Benutzer zugewiesen und auf einen Container mit dem Namen *sample-container* begrenzt. Stellen Sie sicher, dass Sie die Beispielwerte und die Platzhalterwerte in Klammern durch Ihre eigenen Werte ersetzen: 
+Im folgenden Beispiel wird die Rolle **Mitwirkender an Storage-Blobdaten** einem Benutzer zugewiesen und auf einen Container mit dem Namen *sample-container* begrenzt. Ersetzen Sie die Beispielwerte und die Platzhalterwerte in Klammern durch Ihre eigenen Werte: 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `
@@ -73,15 +74,15 @@ New-AzRoleAssignment -SignInName <email> `
     -Scope  "/subscriptions/<subscription>/resourceGroups/sample-resource-group/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/sample-container"
 ```
 
-### <a name="queue-scope"></a>Warteschlangenumfang
+### <a name="queue-scope"></a>Warteschlangenbereich
 
-Zum Zuweisen einer auf eine Warteschlange begrenzten Rolle, geben Sie für den Parameter `--scope` eine Zeichenfolge an, die den Warteschlangenbereich enthält. Der Bereich für eine Warteschlange weist die folgende Form auf:
+Geben Sie zum Zuweisen einer auf eine Warteschlange begrenzten Rolle für den Parameter `--scope` eine Zeichenfolge an, die den Warteschlangenbereich enthält. Der Bereich für eine Warteschlange weist folgendes Format auf:
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/<queue-name>
 ```
 
-Im folgenden Beispiel wird die Rolle **Mitwirkender an Storage-Warteschlangendaten** einem Benutzer zugewiesen und auf eine Warteschlange mit dem Namen *sample-queue* begrenzt. Stellen Sie sicher, dass Sie die Beispielwerte und die Platzhalterwerte in Klammern durch Ihre eigenen Werte ersetzen: 
+Im folgenden Beispiel wird die Rolle **Mitwirkender an Storage-Warteschlangendaten** einem Benutzer zugewiesen und auf eine Warteschlange mit dem Namen *sample-queue* begrenzt. Ersetzen Sie die Beispielwerte und die Platzhalterwerte in Klammern durch Ihre eigenen Werte: 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `
@@ -89,9 +90,9 @@ New-AzRoleAssignment -SignInName <email> `
     -Scope  "/subscriptions/<subscription>/resourceGroups/sample-resource-group/providers/Microsoft.Storage/storageAccounts/<storage-account>/queueServices/default/queues/sample-queue"
 ```
 
-### <a name="storage-account-scope"></a>Speicherkontoumfang
+### <a name="storage-account-scope"></a>Speicherkontobereich
 
-Zum Zuweisen einer auf eine Warteschlange begrenzten Rolle, geben Sie für den Parameter `--scope` den Bereich der Speicherkontoressource an. Der Bereich für ein Speicherkonto weist die folgende Form auf:
+Geben Sie zum Zuweisen einer auf eine Warteschlange begrenzten Rolle für den Parameter `--scope` den Bereich der Speicherkontoressource an. Der Bereich für ein Speicherkonto weist die folgende Form auf:
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
@@ -105,9 +106,9 @@ New-AzRoleAssignment -SignInName <email> `
     -Scope  "/subscriptions/<subscription>/resourceGroups/sample-resource-group/providers/Microsoft.Storage/storageAccounts/<storage-account>"
 ```
 
-### <a name="resource-group-scope"></a>Ressourcengruppenumfang
+### <a name="resource-group-scope"></a>Ressourcengruppenbereich
 
-Zum Zuweisen einer auf eine Ressourcengruppe begrenzten Rolle, geben Sie für den Parameter `--resource-group` den Namen oder die ID der Ressourcengruppe an. Im folgenden Beispiel wird die Rolle **Storage-Warteschlangendatenleser** einem Benutzer auf Ebene der Ressourcengruppe zugewiesen. Stellen Sie sicher, dass Sie die Beispielwerte und Platzhalterwerte in Klammern durch Ihre eigenen Werte ersetzen: 
+Geben Sie zum Zuweisen einer auf eine Ressourcengruppe begrenzten Rolle für den Parameter `--resource-group` den Namen oder die ID der Ressourcengruppe an. Im folgenden Beispiel wird die Rolle **Storage-Warteschlangendatenleser** einem Benutzer auf Ressourcengruppenebene zugewiesen. Ersetzen Sie die Beispielwerte und Platzhalterwerte in Klammern durch Ihre eigenen Werte: 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `
@@ -115,15 +116,15 @@ New-AzRoleAssignment -SignInName <email> `
     -ResourceGroupName "sample-resource-group"
 ```
 
-### <a name="subscription-scope"></a>Abonnementumfang
+### <a name="subscription-scope"></a>Abonnementbereich
 
-Zum Zuweisen einer auf das Abonnement begrenzten Rolle, geben Sie für den Parameter `--scope` den Bereich für das Abonnement an. Der Bereich für ein Abonnement weist die folgende Form auf:
+Geben Sie zum Zuweisen einer auf das Abonnement begrenzten Rolle für den Parameter `--scope` den Bereich für das Abonnement an. Der Bereich für ein Abonnement weist folgendes Format auf:
 
 ```
 /subscriptions/<subscription>
 ```
 
-Das folgende Beispiel zeigt, wie die Rolle **Storage-Blobdatenleser** einem Benutzer auf Ebene des Speicherkontos zugewiesen wird. Stellen Sie sicher, dass Sie die Beispielwerte durch Ihre eigenen Werte ersetzen: 
+Im folgenden Beispiel wird veranschaulicht, wie die Rolle **Storage-Blobdatenleser** einem Benutzer auf Speicherkontoebene zugewiesen wird. Ersetzen Sie die Beispielwerte durch Ihre eigenen Werte: 
 
 ```powershell
 New-AzRoleAssignment -SignInName <email> `

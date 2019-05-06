@@ -2,18 +2,19 @@
 title: 'Azure-Schnellstart: Erstellen eines Blobs im Objektspeicher mithilfe der Azure CLI | Microsoft-Dokumentation'
 description: In dieser Schnellstartanleitung verwenden Sie die Azure CLI im Objektspeicher (Blob). Anschließend verwenden Sie die CLI, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten.
 services: storage
-author: roygara
+author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.author: rogarana
-ms.openlocfilehash: 11bd639d86c6ad9a9f373ac26dc271817bc46b08
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.author: tamram
+ms.reviewer: seguler
+ms.openlocfilehash: 0b74876d153a775993678ad50ed311c524480f76
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773085"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149598"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-the-azure-cli"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs über die Azure CLI
 

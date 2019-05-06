@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/28/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 869d2105ccf635a46a21e9b7f382ddbef713d68b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: f66a2699b6d29f10633b4853801240f0590ff918
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327009"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147639"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Entscheidung zwischen Azure-Blobs, Azure Files und Azure-Datenträger
 Microsoft Azure bietet verschiedenen Funktionen in Azure Storage zum Speichern und Zugreifen auf Ihre Daten in der Cloud. Dieser Artikel befasst sich mit Azure Files, Blobs und Datenträger und soll Sie bei der Entscheidung zwischen diesen Funktionen unterstützen.
@@ -53,7 +53,7 @@ In der folgenden Tabelle wird Azure Files mit Azure-Datenträger verglichen.
 ||||  
 |-|-|-|  
 |**Attribut**|**Azure-Datenträger**|**Azure Files**|  
-|Bereich|Nur für einen einzelnen virtuellen Computer|Freigegebener Zugriff für mehrere virtuelle Computer|  
+|`Scope`|Nur für einen einzelnen virtuellen Computer|Freigegebener Zugriff für mehrere virtuelle Computer|  
 |Momentaufnahmen und Kopieren|Ja|Ja|  
 |Konfiguration|Verbindung beim Start des virtuellen Computers|Verbindung nach dem Start des virtuellen Computers|  
 |Authentication|Integriert|Wird mit „net use“ eingerichtet|  

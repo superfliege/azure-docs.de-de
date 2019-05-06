@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/19/2019
 ms.author: alkohli
-ms.openlocfilehash: d107a9dae29f18b90ba7c23198c0cc1f97d83c70
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: b46e9ee8fc3e14981a01cc2425a8ce55d06c5a9a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003087"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150735"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>Migrieren von Daten aus der StorSimple-Serie 5000/7000 zur Azure-Dateisynchronisierung
 
@@ -87,7 +87,7 @@ Führen Sie die folgenden Schritte aus, um die auf StorSimple-Volumes konfigurie
     Überspringen Sie diesen Schritt, und fahren Sie mit dem nächsten Schritt fort, wenn Sie einen anderen Windows Server-Host verwenden. Wenn Sie den gleichen Windows-Dateiserver für AFS verwenden, treten jetzt einige Minuten Ausfallzeit auf. 
     - **Ausfallzeit beginnt**: Löschen Sie den Serverendpunkt, den Sie in *Schritt 1F* erstellt haben. 
     - Erstellen Sie einen neuen Serverendpunkt mit dem Pfad, in den die zu speichernden Daten geleitet werden sollen.
-    - Sobald der Serverendpunkt als „Fehlerfrei“ angezeigt wird (dies kann einige Minuten dauern), sehen Sie die Daten an diesem neuen Speicherort. Sie können jetzt Ihren Windows Server-Host dazu konfigurieren, von diesem neuen Standort aus Dateien bereitzustellen. -**Ausfallzeit endet**.
+    - Sobald der Serverendpunkt als „Fehlerfrei“ angezeigt wird (dies kann einige Minuten dauern), sehen Sie die Daten an diesem neuen Speicherort. Sie können jetzt Ihren Windows Server-Host dazu konfigurieren, von diesem neuen Standort aus Dateien bereitzustellen. - **Ausfallzeit endet**.
 5.  Wenn Sie einen anderen Windows-Dateiserver zur Azure-Dateisynchronisierung verwenden, treten keine Ausfallzeiten auf. 
     - Fügen Sie einen anderen Serverendpunkt mit dem Pfad des lokalen Speichers hinzu, den Sie für die Verwendung als Cache statt des StorSimple-Geräts vorbereitet haben. 
     - In einigen Minuten werden die Dateien auf dem neuen Server angezeigt. Sie können den Wechsel von Ihrem StorSimple-Gerät zu diesem neuen Speicherort auf dem Host zu einem beliebigen Zeitpunkt durchführen.

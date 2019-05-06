@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/19/2018
+ms.date: 04/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f13dd1282a6384a0acca4c6936fe7900a051795f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b35977061b7e5806d15f4b7b0087fcafa4f291ef
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58896022"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65141158"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Herstellen einer Verbindung mit lokalen Datenquellen über ein lokales Datengateway
 Das lokale Datengateway sorgt für eine sichere Datenübertragung zwischen lokalen Datenquellen und den Azure Analysis Services-Servern in der Cloud. Zusätzlich zur Verwendung von mehreren Azure Analysis Services-Servern in derselben Region funktioniert die neueste Version des Gateways auch mit Azure Logic Apps, Power BI, Power Apps und Microsoft Flow. Sie können einem einzelnen Gateway mehrere Dienste im gleichen Abonnement und in derselben Region zuordnen. 
@@ -176,30 +176,9 @@ Protokolldateien sind eine wichtige Ressource bei der Problembehandlung.
 
 `C:\Users\<username>\AppData\Local\Microsoft\On-premises data gateway\GatewayConfigurator.log`
 
-
 #### <a name="event-logs"></a>Ereignisprotokolle
 
 Sie finden das Datenverwaltungsgateway- und PowerBIGateway-Protokoll unter **Anwendungs- und Dienstprotokolle**.
-
-
-## <a name="telemetry"></a>Telemetrie
-Telemetrie kann zur Überwachung und Problembehandlung verwendet werden. Standardeinstellung
-
-**So aktivieren Sie Telemetrie**
-
-1.  Überprüfen Sie das Verzeichnis des lokalen Datengateway-Clients auf dem Computer. Es lautet in der Regel **%systemdrive%\Programme\On-premises data gateway**. Sie können auch die Konsole „Dienste“ öffnen und den Pfad zur ausführbaren Datei überprüfen: Eine Eigenschaft des lokalen Datengatewaydiensts.
-2.  In der Datei „Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config“ im Clientverzeichnis. Ändern Sie die Einstellung „SendTelemetry“ in „true“.
-        
-    ```
-        <setting name="SendTelemetry" serializeAs="String">
-                    <value>true</value>
-        </setting>
-    ```
-
-3.  Speichern Sie Ihre Änderungen, und starten Sie den Windows-Dienst neu: Lokaler Datengatewaydienst.
-
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Installieren und Konfigurieren eines lokalen Datengateways](analysis-services-gateway-install.md)   

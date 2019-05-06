@@ -2,18 +2,19 @@
 title: Azure Storage-Metriken in Azure Monitor | Microsoft-Dokumentation
 description: Hier erhalten Sie Informationen zu den neuen Metriken von Azure Monitor.
 services: storage
-author: fhryo-msft
+author: normesta
 ms.service: storage
 ms.topic: article
 ms.date: 09/05/2017
-ms.author: fryu
+ms.author: normesta
+ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 244d7fc3caa96173e408a193e13acd656d4a7f77
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d776c67aad9f42184d8cf9ba0a437fbcf9d2c46c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698774"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154243"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Storage-Metriken in Azure Monitor
 

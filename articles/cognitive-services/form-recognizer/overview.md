@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: overview
 ms.date: 04/08/2019
 ms.author: pafarley
-ms.openlocfilehash: df3db534550e709e40cc94d5f951056d93a1003e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 2a120a59a58eb8d7a017cce0dd85c21038bdcf51
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025429"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143217"
 ---
 # <a name="what-is-form-recognizer"></a>Was ist die Formularerkennung?
 
@@ -73,13 +73,7 @@ Lesen Sie das [REST-API-Referenzdokument](https://aka.ms/form-recognizer/api).
 
 ## <a name="data-privacy-and-security"></a>Datenschutz und Sicherheit
 
-Der Dienst wird als [Vorschau](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) eines Azure-Diensts unter den [Nutzungsbedingungen für Onlineservice](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) bereitgestellt. Sie behalten das Eigentum an Ihren Daten, und die Daten werden nur für die Bereitstellung der Onlinedienste verwendet, wie in Ihrer Vereinbarung erläutert:
-
-### <a name="processing-of-customer-data-ownership"></a>Verarbeitung von Kundendaten, Eigentümerschaft
-
-Kundendaten werden nur verwendet oder verarbeitet, um den Onlinedienst für Kunden bereitzustellen; dies umfasst auch Zwecke, die mit der Bereitstellung dieser Dienste einhergehen. Microsoft verwendet oder verarbeitet keine Kundendaten oder daraus abgeleitete Informationen zu Werbe- oder anderen kommerziellen Zwecken. Zwischen den Parteien wird vereinbart, dass alle Rechte, Titel und Ansprüche an den Kundendaten beim Kunden verbleiben. Microsoft erwirbt keine Rechte an den Kundendaten, mit Ausnahme der Rechte, die der Kunde Microsoft einräumt, um dem Kunden die Onlinedienste bereitzustellen.
-
-Wie bei allen Cognitive Services-Diensten müssen Entwickler, die den Formularerkennungsdienst nutzen, die Microsoft-Richtlinien zu Kundendaten beachten. Weitere Informationen finden Sie im Microsoft Trust Center auf der [Seite zu Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices).
+Der Dienst wird als [Vorschau](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) eines Azure-Diensts unter den [Nutzungsbedingungen für Onlineservice](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) bereitgestellt. Wie bei allen Cognitive Services-Diensten müssen Entwickler, die den Formularerkennungsdienst nutzen, die Microsoft-Richtlinien zu Kundendaten beachten. Weitere Informationen finden Sie im Microsoft Trust Center auf der [Seite zu Cognitive Services](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

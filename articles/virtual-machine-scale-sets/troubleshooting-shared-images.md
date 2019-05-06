@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 09/20/2018
+ms.date: 04/25/2019
 ms.author: akjosh; cynthn
 ms.custom: ''
-ms.openlocfilehash: 8c8c3052496241d359461c68ae4d81cbf01e9c02
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: ea8758934f5209228e9c6697b5f0497e68baf62e
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47046455"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149645"
 ---
 # <a name="troubleshoot-shared-image-galleries"></a>Problembehandlung für Kataloge mit freigegebenen Images
 

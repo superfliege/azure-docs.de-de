@@ -7,13 +7,14 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/11/2019
 ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: fd8eecbd20446bfde8d3a7467e2982398c3b8c19
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 94a385b7e41dd4a7664dc40418456b304ebef509
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59044962"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150019"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>Initiieren eines Speicherkontofailovers (Vorschau)
 
@@ -106,6 +107,6 @@ az storage account failover \ --name accountName
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Notfallwiederherstellung und Speicherkontofailover (Vorschau) in Azure Storage](storage-disaster-recovery-guidance.md)
+- [Notfallwiederherstellung und Kontofailover (Vorschau) in Azure Storage](storage-disaster-recovery-guidance.md)
 - [Entwerfen hochverfügbarer Anwendungen mithilfe von RA-GRS](storage-designing-ha-apps-with-ragrs.md)
-- [Tutorial: Erstellen einer hochverfügbaren Anwendung mit Blobspeicher](../blobs/storage-create-geo-redundant-storage.md) 
+- [Tutorial: Erstellen einer hochverfügbaren Anwendung mit Blob Storage](../blobs/storage-create-geo-redundant-storage.md) 

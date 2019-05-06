@@ -7,13 +7,14 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: tamram
+ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e9e78d3226f90ef780a1ed2114ba256c293463dc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 25c562e144b635cb66c5df9b5b7bd6237ce3122c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001587"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65154430"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Verwenden von Shared Access Signatures (SAS)
 
@@ -114,10 +115,10 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&s
 | Version des Speicherdienstes |`sv=2015-04-05` |Für Speicherdienste der Version 2012-02-12 und später gibt dieser Parameter die zu verwendende Version an. |
 | Startzeit |`st=2015-04-29T22%3A18%3A26Z` |Angegeben im UTC-Zeitformat. Lassen Sie diesen Parameter aus, wenn die SAS sofort gültig sein soll. |
 | Ablaufzeit |`se=2015-04-30T02%3A23%3A26Z` |Angegeben im UTC-Zeitformat. |
-| Ressource |`sr=b` |Die Ressource ist ein Blob. |
+| Resource |`sr=b` |Die Ressource ist ein Blob. |
 | Berechtigungen |`sp=rw` |Die SAS verleiht die Berechtigungen zum Lesen (r) und Schreiben (w). |
 | IP-Bereich |`sip=168.1.5.60-168.1.5.70` |Der Bereich der IP-Adressen, von denen eine Anforderung akzeptiert wird. |
-| Protokoll |`spr=https` |Nur Anforderungen per HTTPS sind zulässig. |
+| Protocol |`spr=https` |Nur Anforderungen per HTTPS sind zulässig. |
 | Signatur |`sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D` |Wird verwendet, um den Zugriff auf das Blob zu autorisieren. Die Signatur ist ein HMAC, der mithilfe des SHA256-Algorithmus über StringToSign-Zeichenfolge und Schlüssel erstellt und anschließend mit Base64 codiert wird. |
 
 ### <a name="account-sas-uri-example"></a>Beispiel für Konto-SAS-URI
