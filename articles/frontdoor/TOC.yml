@@ -72,7 +72,9 @@
           href: waf-front-door-custom-rules-powershell.md
         - name: Konfigurieren von benutzerdefiniertem Antwortcode
           href: waf-front-door-configure-custom-response-code.md
-        - name: 'Konfigurieren eines WAF-Ratenlimits: Azure PowerShell'
+        - name: Konfigurieren von IP-Einschränkungen
+          href: waf-front-door-configure-ip-restriction.md
+        - name: 'Konfigurieren eines Ratenlimits: Azure PowerShell'
           href: waf-front-door-rate-limit-powershell.md
 - name: Häufig gestellte Fragen
   items:

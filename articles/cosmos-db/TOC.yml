@@ -143,17 +143,6 @@
             - name: Indizierungsrichtlinien
               displayName: 'consistent, none'
               href: index-policy.md
-        - name: Änderungsfeed
-          items:
-            - name: Übersicht
-              href: change-feed.md
-            - name: Lesen des Änderungsfeeds
-              href: read-change-feed.md
-            - name: Change Feed Processor
-              href: change-feed-processor.md
-            - name: Auslösen von Azure Functions
-              displayName: change feed
-              href: change-feed-functions.md
         - name: Gültigkeitsdauer
           displayName: 'delete, delete data, ttl'
           href: time-to-live.md
@@ -498,6 +487,9 @@
           href: data-explorer.md
         - name: Verwalten von Indizierungsrichtlinien
           href: how-to-manage-indexing-policy.md
+        - name: Beispiele für SQL-Unterabfragen
+          displayName: 'subquery, exists'
+          href: how-to-sql-subquery.md
     - name: Änderungsfeed
       items:
         - name: Mehrere Azure Cosmos DB-Trigger

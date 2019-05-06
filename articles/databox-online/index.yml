@@ -2,8 +2,8 @@
 documentType: LandingData
 title: 'Azure Data Box-Dokumentation: Onlineübertragung'
 metadata:
-  title: 'Azure Data Box-Dokumentation: Onlineübertragung'
-  description: 'Verwenden Sie die Data Box-Geräte für schnelle, kostengünstige und zuverlässige Hochleistungsdatenübertragungen über das Netzwerk an Azure.'
+  title: Data Box Gateway- und Data Box Edge-Dokumentation für Datenübertragung über das Netzwerk an Azure
+  description: 'Verwenden Sie Data Box Edge und Data Box Gateway für schnelle, kostengünstige und zuverlässige Hochleistungsdatenübertragungen über das Netzwerk an Azure.'
   services: databox
   author: alkohli
   manager: twooley
@@ -13,7 +13,7 @@ metadata:
   ms.date: 03/25/2019
   ms.author: alkohli
 abstract:
-  description: 'Mit der Azure Data Box-Familie können Sie schnell, kostengünstig und zuverlässig Hunderte von Terabyte an Daten in Azure übertragen. Nutzen Sie die Data Box-Geräte für Hochleistungs-Datenübertragungen über das Netzwerk.<p>Wählen Sie Data Box Gateway, um Daten für die Archivierung in der Cloud zu senden, die Notfallwiederherstellung durchzuführen oder Daten für die Cloud zu verarbeiten.  Verwenden Sie Data Box Edge, um Ihre Daten auf dem Weg in Azure zu filtern, zu analysieren und zu transformieren.</p><p>In unseren Tutorials wird beschrieben, wie Sie Data Box Gateway und Data Box Edge für die netzwerkbasierte Übertragung nutzen.</p>'
+  description: 'Mit der Azure Data Box-Familie können Sie schnell, kostengünstig und zuverlässig Hunderte von Terabyte an Daten in Azure übertragen. Nutzen Sie Data Box Edge und Data Box Gateway für Hochleistungs-Datenübertragungen über das Netzwerk.<p>Wählen Sie Data Box Gateway, um Daten für die Archivierung in der Cloud zu senden, die Notfallwiederherstellung durchzuführen oder Daten für die Cloud zu verarbeiten.  Verwenden Sie Data Box Edge, um Ihre Daten auf dem Weg in Azure zu filtern, zu analysieren und zu transformieren.</p><p>In unseren Tutorials wird beschrieben, wie Sie Data Box Gateway und Data Box Edge für die netzwerkbasierte Übertragung nutzen.</p>'
 sections:
   - title: Lernprogramme
     items:

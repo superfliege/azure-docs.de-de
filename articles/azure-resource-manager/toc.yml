@@ -68,6 +68,8 @@
       href: resource-group-delete.md
     - name: Resource Manager-Bereitstellung und klassische Bereitstellung
       href: resource-manager-deployment-model.md
+    - name: Allgemeine Azure-Sicherheitsattribute
+      href: azure-resource-manager-security-attributes.md
 - name: Anleitung
   items:
     - name: Erstellen von Vorlagen
@@ -225,6 +227,8 @@
           href: move-support-resources.md
         - name: Tagunterstützung
           href: tag-support.md
+    - name: Ressourcenanbieter nach Dienst
+      href: azure-services-resource-providers.md
     - name: 'REST: Resource Manager'
       href: /rest/api/resources/
     - name: 'REST: Bereitstellungs-Manager'

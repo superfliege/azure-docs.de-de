@@ -120,7 +120,9 @@
   items:
     - name: Pipelines und Aktivitäten
       href: concepts-pipelines-activities.md
-    - name: Datasets und verknüpfte Dienste
+    - name: Verknüpfte Dienste
+      href: concepts-linked-services.md
+    - name: Datasets
       href: concepts-datasets-linked-services.md
     - name: Pipelineausführung und -trigger
       href: concepts-pipeline-execution-triggers.md
@@ -130,8 +132,6 @@
       items:
         - name: Zuordnen der Datenflusskonzepte
           href: concepts-data-flow-overview.md
-        - name: Datenflussdatasets
-          href: concepts-data-flow-datasets.md
         - name: Debugmodus
           href: concepts-data-flow-debug-mode.md
         - name: Schemaabweichung
@@ -216,6 +216,8 @@
           href: connector-couchbase.md
         - name: DB2
           href: connector-db2.md
+        - name: Textformat mit Trennzeichen
+          href: format-delimited-text.md
         - name: Drill
           href: connector-drill.md
         - name: Dynamics 365
@@ -283,6 +285,8 @@
           href: connector-oracle-responsys.md
         - name: Oracle Service Cloud
           href: connector-oracle-service-cloud.md
+        - name: Parquet-Format
+          href: format-parquet.md
         - name: Paypal
           href: connector-paypal.md
         - name: Phoenix
@@ -460,7 +464,7 @@
           href: data-flow-sink.md
         - name: Sortieren
           href: data-flow-sort.md
-        - name: Quelle
+        - name: '`Source`'
           href: data-flow-source.md
         - name: Ersatzschlüssel
           href: data-flow-surrogate-key.md
@@ -582,6 +586,8 @@
       href: 'https://feedback.azure.com/forums/270578-azure-data-factory'
     - name: Häufig gestellte Fragen
       href: frequently-asked-questions.md
+    - name: Whitepaper
+      href: whitepapers.md
     - name: Roadmap
       href: 'https://azure.microsoft.com/roadmap/?tag=data-factory'
     - name: Preise

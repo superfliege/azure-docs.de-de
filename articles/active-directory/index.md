@@ -8,15 +8,15 @@ author: barbkess
 manager: daveba
 ms.service: active-directory
 ms.topic: landing-page
-ms.date: 01/24/2019
+ms.date: 04/18/2019
 ms.author: barbkess
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 352050f4bd53188a420f75607677d88ebc081505
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f067d2d83c97d22dee26050d31e08e47252310ee
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60381763"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682988"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -253,11 +253,11 @@ ms.locfileid: "60381763"
                                                             <a href="hybrid/index.yml"><i>Weitere Informationen &gt;</i></a>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="governance/index.yml">Identitätsgovernance</a></h3>
+                                                        <h3><a href="governance/index.yml">Identity Governance</a></h3>
                                                         <p>
-                                                            <a href="governance/create-access-review.md">Erstellen einer Zugriffsüberprüfung</a><br>
-                                                            <a href="governance/perform-access-review.md">Starten einer Zugriffsüberprüfung</a><br>
-                                                            <a href="conditional-access/terms-of-use.md">Verwenden der Nutzungsbedingungen</a><br>
+                                                            <a href="governance/entitlement-management-overview.md">Was ist Berechtigungsverwaltung?</a><br>
+                                                            <a href="governance/access-reviews-overview.md">Was sind Zugriffsüberprüfungen?</a><br>
+                                                            <a href="conditional-access/terms-of-use.md">Vorschreiben der Verwendung von Nutzungsbedingungen</a><br>
                                                             <a href="governance/index.yml"><i>Weitere Informationen &gt;</i></a>
                                                         </p>
                                                         <br><br>

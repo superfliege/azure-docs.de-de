@@ -113,6 +113,8 @@
           href: howto-personalize-dashboard.md
         - name: Verwalten Ihrer Einstellungen
           href: howto-manage-preferences.md
+        - name: Livechat ein-/ausschalten
+          href: howto-show-hide-chat.md
 - name: Verwandte Themen
   items:
     - name: Lösungen

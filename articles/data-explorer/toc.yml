@@ -60,16 +60,22 @@
     - name: Übersicht über die Datenerfassung
       displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
       href: ingest-data-overview.md
-    - name: Zeitreihenanalyse
-      href: time-series-analysis.md
 - name: Anleitungen
   items:
     - name: Erste Schritte
       items:
-        - name: Schreiben von Abfragen
-          href: write-queries.md
         - name: Erfassen von Beispieldaten
           href: ingest-sample-data.md
+    - name: Abfragen von Daten
+      items:
+        - name: Schreiben von Abfragen
+          href: write-queries.md
+        - name: Zeitreihenanalyse
+          href: time-series-analysis.md
+        - name: Anomalieerkennung und -vorhersage
+          href: anomaly-detection.md
+        - name: Machine Learning
+          href: machine-learning-clustering.md
     - name: Verwalten
       items:
         - name: Verwalten von Datenbankberechtigungen
@@ -90,6 +96,8 @@
           href: using-metrics.md
     - name: Verwenden von anderen Tools
       items:
+        - name: Apache Spark-Connector
+          href: spark-connector.md
         - name: Herstellen einer Databricks-Verbindung unter Verwendung von Python
           href: connect-from-databricks.md
         - name: Analysieren von Daten in Jupyter Notebooks und Kqlmagic

@@ -19,6 +19,8 @@
       href: functions-create-first-java-maven.md
     - name: Erstellen von Funktionen – Python
       href: functions-create-first-function-python.md
+    - name: Erstellen von Funktionen – PowerShell
+      href: functions-create-first-function-powershell.md
     - name: Erstellen von Funktionen – Azure-CLI
       href: functions-create-first-azure-function-azure-cli.md
     - name: Erstellen von Funktionen – Portal
@@ -39,7 +41,9 @@
       items:
         - name: Azure Cosmos DB
           href: functions-integrate-store-unstructured-data-cosmosdb.md
-        - name: Storage
+        - name: Speicher – Python
+          href: functions-add-output-binding-storage-queue-python.md
+        - name: Speicher – Portal
           href: functions-integrate-storage-queue-output-binding.md
 - name: Lernprogramme
   items:
@@ -100,6 +104,8 @@
           href: functions-reference-node.md
         - name: Java
           href: functions-reference-java.md
+        - name: PowerShell
+          href: functions-reference-powershell.md
         - name: Python
           href: functions-reference-python.md
     - name: Diagnose
@@ -134,6 +140,8 @@
           href: functions-create-maven-eclipse.md
         - name: Erstellen einer Linux-Funktions-App
           href: create-function-app-linux-app-service-plan.md
+        - name: Debuggen lokaler PowerShell-Funktionen
+          href: functions-debug-powershell-local.md
         - name: Verwalten von Verbindungen
           href: manage-connections.md
         - name: Fehlerbehandlung
@@ -148,6 +156,8 @@
       items:
         - name: Kontinuierliche Bereitstellung
           href: functions-continuous-deployment.md
+        - name: Erstellen und Bereitstellen mithilfe von Azure Pipelines
+          href: functions-how-to-azure-devops.md
         - name: ZIP-Bereitstellung
           href: deployment-zip-push.md
         - name: Ausführen über ein Paket

@@ -49,6 +49,8 @@
       href: batch-pool-vm-sizes.md
     - name: Hochverfügbarkeit und Notfallwiederherstellung
       href: high-availability-disaster-recovery.md
+    - name: Umgebungsvariablen der Aufgabenlaufzeit
+      href: batch-compute-node-environment-variables.md
 - name: Anleitungen
   items:
     - name: Verwalten von Batch-Konten
@@ -199,8 +201,6 @@
           href: batch-task-complete-event.md
         - name: Taskfehlerereignis
           href: batch-task-fail-event.md
-    - name: Umgebungsvariablen für Batch-Computeknoten
-      href: batch-compute-node-environment-variables.md
 - name: Ressourcen
   items:
     - name: Azure-Roadmap

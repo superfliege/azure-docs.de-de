@@ -4,7 +4,7 @@ title: Dokumentation zur Hybrid-Identität
 metadata:
   document_id: 44409b3f-ab8c-053d-cdf4-5d7e823a275e
   title: Dokumentation zur Hybrid-Identität
-  meta.description: 'Azure AD Connect will integrate your on-premises directories with Azure Active Directory. This allows you to provide a common identity for your users for Office 365, Azure, and SaaS applications integrated with Azure AD.'
+  description: 'Azure AD Connect integriert Ihre lokalen Verzeichnisse in Azure Active Directory. Dadurch können Sie für Ihre Benutzer eine einzige Identität für in Azure AD integrierte in Office 365-, Azure- und SaaS-Anwendungen bereitstellen.'
   services: active-directory
   author: billmath
   manager: daveba
@@ -18,7 +18,7 @@ abstract:
   description: 'Die Identitätslösungen von Microsoft decken sowohl lokale als auch cloudbasierte Funktionen ab, und es wird eine einzelne Benutzeridentität für die standortunabhängige Authentifizierung und Autorisierung gegenüber allen Ressourcen erstellt. Wir bezeichnen dies als Hybrididentität.</br></br></br>Azure AD Connect integriert Ihre lokalen Verzeichnisse in Azure Active Directory. Dadurch können Sie für Ihre Benutzer eine einzige Identität für in Azure AD integrierte in Office 365-, Azure- und SaaS-Anwendungen bereitstellen. Dieses Thema beschreibt die Planung, Bereitstellung und den Betrieb. Es umfasst Links zu Themen, die mit diesem Bereich zusammenhängen.'
   aside:
     image:
-      alt: null
+      alt: Channel 9-Video
       height: 110
       src: media/index/video2.png
       width: 250
@@ -36,16 +36,19 @@ sections:
           - href: /azure/active-directory/hybrid/tutorial-password-hash-sync
             html: '<p>Hier erfahren Sie, wie Sie die ersten Schritte zum Erweitern Ihrer Identitäten auf die Cloud unter Verwendung der Kennworthashsynchronisierung ausführen.</p>'
             image:
+              alt: Kennworthashsynchronisierung
               src: media/index/azuread2.png
             title: 'Integrieren einer einzelnen AD-Gesamtstruktur mit Kennworthashsynchronisierung (Password Hash Sync, PHS)'
           - href: /azure/active-directory/hybrid/tutorial-passthrough-authentication
             html: '<p>Hier erfahren Sie, wie Sie die ersten Schritte zum Erweitern Ihrer Identitäten auf die Cloud unter Verwendung der Passthrough-Authentifizierung ausführen.</p>'
             image:
+              alt: Passthrough-Authentifizierung
               src: media/index/manage2.png
             title: Integrieren einer AD-Gesamtstruktur mithilfe der Pass-Through-Authentifizierung (PTA)
           - href: /azure/active-directory/hybrid/tutorial-federation
             html: '<p>Hier erfahren Sie, wie Sie einen Verbund von Azure Active Directory (Azure AD) Connect und lokalen Active Directory-Verbunddiensten (AD FS) sowie Azure AD einrichten.</p>'
             image:
+              alt: Verbund-
               src: media/index/federate2.png
             title: Integrieren einer einzelnen AD-Gesamtstruktur mithilfe eines Verbunds
   - title: Anleitungen

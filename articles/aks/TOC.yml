@@ -7,10 +7,15 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Erstellen eines AKS-Clusters – CLI
-      href: kubernetes-walkthrough.md
-    - name: Erstellen eines AKS-Clusters – Portal
-      href: kubernetes-walkthrough-portal.md
+    - name: Erstellen eines AKS-Clusters
+      expanded: true
+      items:
+        - name: Verwenden der Azure-CLI
+          href: kubernetes-walkthrough.md
+        - name: Verwenden des Azure-Portals
+          href: kubernetes-walkthrough-portal.md
+        - name: Verwenden einer Resource Manager-Vorlage
+          href: kubernetes-walkthrough-rm-template.md
     - name: Entwickeln von Anwendungen
       expanded: true
       items:
@@ -87,7 +92,7 @@
             - name: Podsicherheit
               href: developer-best-practices-pod-security.md
     - name: Kontingente und regionale Grenzwerte
-      href: container-service-quotas.md
+      href: quotas-skus-regions.md
     - name: Migrieren von ACS zu AKS
       href: acs-aks-migration.md
     - name: Unterstützte Kubernetes-Version
