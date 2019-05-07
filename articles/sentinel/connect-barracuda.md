@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie Barracuda-Daten mit Azure Sentinel verknüpfe
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 3b33b4aa-7286-4d79-b461-8e1812edc2e1
 ms.service: sentinel
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: d8e92fd3918230b48449926dcbb7528d919fd96f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6b0285903537dafb004b5aca033b50560247c605
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798229"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204456"
 ---
 # <a name="connect-your-barracuda-appliance"></a>Verbinden Ihrer Barracuda-Appliance 
 

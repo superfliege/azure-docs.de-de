@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: eaf490979167ea5cbfe5846e62444526310452f8
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 360674514aff79908dcab8c8b93095ca2feb5d51
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36269543"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65199090"
 ---
 Einige Datenbankworkloads wie SQL Server oder Oracle erfordern hohe Werte für Arbeitsspeicher, Speicherplatz und E/A-Bandbreite, aber keine hohe Anzahl von Kernen. Viele Datenbankworkloads sind nicht CPU-intensiv. Azure bietet bestimmte VM-Größen an, bei denen Sie die Anzahl der VM vCPUs einschränken können, um die Kosten für die Softwarelizenzierung zu reduzieren, während Arbeitsspeicher, Speicherplatz und E/A-Bandbreite gleich bleiben.
 
@@ -41,7 +41,7 @@ Die Lizenzgebühren für SQL Server oder Oracle sind auf die neue vCPU-Anzahl be
 | Standard_E8-2s_v3   | 2    | Identisch mit E8s_v3  |
 | Standard_E16-8s_v3  | 8    | Identisch mit E16s_v3 |
 | Standard_E16-4s_v3  | 4    | Identisch mit E16s_v3 |
-| Standard_E32-16_v3  | 16   | Identisch mit E32s_v3 |
+| Standard_E32-16s_v3 | 16   | Identisch mit E32s_v3 |
 | Standard_E32-8s_v3  | 8    | Identisch mit E32s_v3 |
 | Standard_E64-32s_v3 | 32   | Identisch mit E64s_v3 |
 | Standard_E64-16s_v3 | 16   | Identisch mit E64s_v3 |

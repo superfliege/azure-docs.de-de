@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 768179f8569eac14166bcbb0a888e1cdbe41d497
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: b97fe5d638b5967f533e489a67d4235bbc5a3db1
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369699"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65198573"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrieren Ihrer App in ein Azure Virtual Network
 In diesem Dokument wird die Azure App Service-Funktion für die Integration in ein Virtual Network beschrieben und veranschaulicht, wie Sie diese mit Apps in [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)einrichten. Mit [Azure Virtual Networks][VNETOverview] (VNETs) können Sie viele Ihrer Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann. Diese Netzwerke können dann durch VPN-Technologien mit Ihren lokalen Netzwerken verbunden werden. 
@@ -271,9 +271,9 @@ Die neue Version befindet sich in der Vorschau und weist folgende Merkmale auf.
 * Sie können ohne zusätzliche Konfiguration bis auf die Integration mit dem mit ExpressRoute verbundenen VNET über ExpressRoute-Verbindungen auf Ressourcen zugreifen.
 * Die App und das VNET müssen sich in der gleichen Region befinden.
 * Das neue Feature erfordert ein nicht verwendetes Subnetz im Resource Manager-VNET.
+* Ihre App muss sich in einer Azure App Service-Bereitstellung befinden, die auf PremiumV2 skaliert werden kann.
 * Ihr App Service-Plan muss einem der Tarife Standard, Premium oder PremiumV2 entsprechen.
 * Produktionsworkloads werden für das neue Feature, während es sich in der Vorschauphase befindet, nicht unterstützt.
-* Ihre App muss sich in einer Azure App Service-Bereitstellung befinden, die auf PremiumV2 skaliert werden kann.
 * Das neue Feature für VNET-Integration funktioniert nicht für Apps in einer App Service-Umgebung.
 * Ein VNET mit einer integrierten App kann nicht gelöscht werden.  
 * Routingtabellen und globales Peering sind mit der neuen VNET-Integration noch nicht verfügbar.  

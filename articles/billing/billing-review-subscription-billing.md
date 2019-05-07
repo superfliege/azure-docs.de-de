@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: erikre
-ms.openlocfilehash: 15725989ef786f94421eddf647f101e3e73633fb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0a73462b7fdbaf6386a3051a72da755f31ff8dd2
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890762"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192128"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>Überprüfen der Abonnementabrechnung mit REST-APIs
 
@@ -39,7 +39,7 @@ Authorization: Bearer
 
 Der Parameter `{subscriptionID}` ist erforderlich und identifiziert das Zielabonnement.
 
-Der Parameter `{billingPeriod}` ist erforderlich und gibt einen aktuellen [Abrechnungszeitraum](https://docs.microsoft.com/rest/api/billing/billingperiods/get#billingperiod) an.
+Der Parameter `{billingPeriod}` ist erforderlich und gibt einen aktuellen [Abrechnungszeitraum](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) an.
 
 Die Parameter `${startDate}` und `${endDate}` sind für dieses Beispiel erforderlich, aber für den Endpunkt optional. Sie geben den Datumsbereich als Zeichenfolgen im Format JJJJ-MM-TT an (Beispiele: `'20180501'` und `'20180615'`).
 

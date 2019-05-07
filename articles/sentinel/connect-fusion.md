@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie Fusion in Azure Sentinel aktivieren.
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 82becf50-6628-47e4-b3d7-18d7d72d505f
 ms.service: sentinel
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 55d569d4a993a725137d7bfab37c113147fe81ef
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: bf9a78006d13614a73a3fccfc57f28ce850456d9
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242461"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204470"
 ---
 # <a name="enable-fusion"></a>Aktivieren von Fusion
 
@@ -59,6 +59,6 @@ Führen Sie die gleichen Schritte wie oben und dann den folgenden Befehl aus:
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Dokument wurde beschrieben, wie Sie Fusion in Azure Sentinel aktivieren. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
-- Erfahren Sie, wie Sie [ Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
+- Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
 - Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats.md).
 

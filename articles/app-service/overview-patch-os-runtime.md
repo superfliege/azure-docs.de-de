@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 576627c96b19dd3563ab21a5d478b779e4a3ed64
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 086f5773a8ae4085a8e5bc0637bdebe5f2df4fb0
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53730557"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203333"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Patchen von Betriebssystem und Runtime in Azure App Service
 
@@ -37,7 +37,7 @@ Aus Sicherheitsgründen werden bestimmte Einzelheiten von Sicherheitsinformation
 
 Azure verwaltet Betriebssystempatches auf zwei Ebenen, den physischen Servern und den virtuellen Gastcomputern (VMs), die die App Service-Ressourcen ausführen. Beide werden monatlich aktualisiert, was dem monatlichen [Patch-Dienstag](https://technet.microsoft.com/security/bulletins.aspx)-Zeitplan entspricht. Diese Updates werden automatisch auf eine Weise angewendet, die die Hochverfügbarkeits-SLA der Azure-Dienste erfüllt. 
 
-Ausführliche Informationen zur Anwendung von Updates finden Sie unter [Demystifying the magic behind App Service OS updates](https://blogs.msdn.microsoft.com/appserviceteam/2018/01/18/demystifying-the-magic-behind-app-service-os-updates/) (Entmystifizierung des hinter App Service-Betriebssystemupdates steckenden Zaubers).
+Ausführliche Informationen zur Anwendung von Updates finden Sie unter [Demystifying the magic behind App Service OS updates](https://azure.github.io/AppService/2018/01/18/Demystifying-the-magic-behind-App-Service-OS-updates.html) (Entmystifizierung des hinter App Service-Betriebssystemupdates steckenden Zaubers).
 
 ## <a name="how-does-azure-deal-with-significant-vulnerabilities"></a>Wie geht Azure mit erheblichen Sicherheitsrisiken um?
 

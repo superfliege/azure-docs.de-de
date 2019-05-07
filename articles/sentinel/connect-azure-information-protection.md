@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie Azure Information Protection-Daten mit Azure 
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: bfa2eca4-abdc-49ce-b11a-0ee229770cdd
 ms.service: sentinel
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2f970910e19b3c1ed9d262d356c49848f4248b09
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4b73edd10521b23fb4befbe4fe7d9f0c7b496de3
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790840"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204300"
 ---
 # <a name="connect-data-from-azure-information-protection"></a>Verknüpfen von Daten aus Azure Information Protection
 

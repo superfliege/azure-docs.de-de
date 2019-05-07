@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3e113639dbe4220b943d49dc610ee22b6416e12a
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: b561091eedb43e1c77f3c97951beeb92bfcf4751
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216576"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65202921"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Kaufen und Konfigurieren eines SSL-Zertifikats für Azure App Service
 
 In diesem Tutorial erfahren Sie, wie Sie Ihre [App Service-App](https://docs.microsoft.com/azure/app-service/) oder [Funktions-App](https://docs.microsoft.com/azure/azure-functions/) schützen, indem Sie ein App Service-Zertifikat in [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) erstellen (kaufen) und es dann an eine App Service-App binden.
 
 > [!TIP]
-> App Service-Zertifikate können für alle Dienste – ob von Azure oder nicht – verwendet werden und sind nicht auf App Services beschränkt. Hierzu müssen Sie eine lokale PFX-Kopie eines App Service-Zertifikats erstellen, sodass Sie es beliebig verwenden können. Weitere Informationen finden Sie unter [Create a local PFX copy of App Service Certificate](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/) (Erstellen einer lokalen PFX-Kopie eines App Service-Zertifikats).
+> App Service-Zertifikate können für alle Dienste – ob von Azure oder nicht – verwendet werden und sind nicht auf App Services beschränkt. Hierzu müssen Sie eine lokale PFX-Kopie eines App Service-Zertifikats erstellen, sodass Sie es beliebig verwenden können. Weitere Informationen finden Sie unter [Create a local PFX copy of App Service Certificate](https://blogs.msdn.microsoft.com/benjaminperkins/2017/04/12/export-an-azure-app-service-certificate-pfx-powershell/) (Erstellen einer lokalen PFX-Kopie eines App Service-Zertifikats).
 >
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -72,7 +72,7 @@ Klicken Sie auf der Seite **Key Vault-Status** auf **Key Vault-Repository**, um 
 |-|-|
 | NAME | Ein eindeutiger Name aus alphanumerischen Zeichen und Bindestrichen. |
 | Ressourcengruppe | Es wird empfohlen, die gleiche Ressourcengruppe wie bei Ihrem App Service-Zertifikat auszuwählen. |
-| Standort | Wählen Sie denselben Speicherort wie bei Ihrer App Service-App aus. |
+| Location | Wählen Sie denselben Speicherort wie bei Ihrer App Service-App aus. |
 | Tarif | Weitere Informationen finden Sie unter [Key Vault – Preise](https://azure.microsoft.com/pricing/details/key-vault/). |
 | Zugriffsrichtlinien| Definiert die Anwendungen und den zulässigen Zugriff auf die Tresorressourcen. Sie können dies später konfigurieren, indem Sie die Schritte unter [Erteilen von Zugriff für mehrere Anwendungen auf einen Schlüsseltresor](../key-vault/key-vault-group-permissions-for-apps.md) durchführen. |
 | Zugriff über virtuelles Netzwerk | Beschränkt den Tresorzugriff auf bestimmte virtuelle Azure-Netzwerke. Sie können dies später konfigurieren, indem Sie die Schritte unter [Konfigurieren von Azure Key Vault-Firewalls und virtuellen Netzwerken](../key-vault/key-vault-network-security.md) durchführen. |

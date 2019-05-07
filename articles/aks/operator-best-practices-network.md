@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: iainfou
-ms.openlocfilehash: aaa16245fada7fbccdd0865d973de2fa19970989
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b26af87de8a09f987d69f0441a817638e626b4af
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58176581"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192230"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Best Practices für Netzwerkkonnektivität und Sicherheit in Azure Kubernetes Service (AKS)
 
@@ -124,7 +124,7 @@ Load Balancer oder Eingangsressourcen werden in Ihrem AKS-Cluster weiterhin ausg
 
 **Best Practice-Anleitung**: Verwenden Sie Netzwerkrichtlinien, um Datenverkehr zu den Pods zuzulassen oder zu verweigern. Standardmäßig ist der gesamte Datenverkehr zwischen den Pods in einem Cluster zulässig. Aus Sicherheitsgründen sollten Sie Regeln definieren, um die Kommunikation zwischen den Pods einzuschränken.
 
-Netzwerkrichtlinien (aktuell in AKS in der Vorschauversion) sind ein Kubernetes-Feature, mit dem Sie den Datenverkehrsfluss zwischen Pods steuern können. Anhand von Einstellungen wie zugewiesene Bezeichnungen, Namespace oder Port für den Datenverkehr können Sie Datenverkehr zulassen oder verweigern. Die Verwendung von Netzwerkrichtlinien ist eine cloudnative Möglichkeit, den Datenverkehrsfluss zu steuern. Wenn Pods in einem AKS-Cluster dynamisch erstellt werden, können automatisch die erforderlichen Netzwerkrichtlinien angewendet werden. Verwenden Sie zum Steuern der Kommunikation zwischen den Pods keine Azure-Netzwerksicherheitsgruppen, sondern Netzwerkrichtlinien.
+Netzwerkrichtlinien sind ein Kubernetes-Feature, mit dem Sie den Datenverkehrsfluss zwischen Pods steuern können. Anhand von Einstellungen wie zugewiesene Bezeichnungen, Namespace oder Port für den Datenverkehr können Sie Datenverkehr zulassen oder verweigern. Die Verwendung von Netzwerkrichtlinien ist eine cloudnative Möglichkeit, den Datenverkehrsfluss zu steuern. Wenn Pods in einem AKS-Cluster dynamisch erstellt werden, können automatisch die erforderlichen Netzwerkrichtlinien angewendet werden. Verwenden Sie zum Steuern der Kommunikation zwischen den Pods keine Azure-Netzwerksicherheitsgruppen, sondern Netzwerkrichtlinien.
 
 Um Netzwerkrichtlinien verwenden zu können, muss das Feature beim Erstellen eines AKS-Clusters aktiviert werden. Ohne einen vorhandenen AKS-Cluster können Sie keine Netzwerkrichtlinie aktivieren. Planen Sie im Voraus, und stellen Sie sicher, dass Sie in den Clustern Netzwerkrichtlinien aktivieren und diese bei Bedarf verwenden können.
 
