@@ -8,85 +8,103 @@ ms.subservice: core
 ms.topic: quickstart
 author: sdgilley
 ms.author: sgilley
-ms.date: 03/21/2019
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0672d90a25bc4c879d28512ab212f98f29efbf3b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 3d4127226037bf28ba677a49f6444ca987118cb9
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59358222"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023927"
 ---
 # <a name="quickstart-use-a-cloud-based-notebook-server-to-get-started-with-azure-machine-learning"></a>Schnellstart: Verwenden eines cloudbasierten Notebook-Servers für die ersten Schritte mit Azure Machine Learning
 
-In diesem Artikel verwenden Sie Azure Notebooks zum Ausführen von Code, der im [Arbeitsbereich](concept-azure-machine-learning-architecture.md) von Azure Machine Learning Service protokolliert wird. Ihr Arbeitsbereich bildet die Grundlage in der Cloud zum Experimentieren, Trainieren und Bereitstellen von Machine Learning-Modellen mit Machine Learning. 
+Erstellen Sie einen cloudbasierten Notebook-Server, und verwenden Sie ihn anschließend.  In diesem Schnellstart führen Sie Python-Code aus, der Werte im [Arbeitsbereich von Azure Machine Learning Service](concept-azure-machine-learning-architecture.md) protokolliert. Der Arbeitsbereich bildet die Grundlage in der Cloud zum Experimentieren, Trainieren und Bereitstellen von Machine Learning-Modellen mit Machine Learning. 
 
-In dieser Schnellstartanleitung werden Cloudressourcen genutzt, und es ist keine Installation erforderlich. Wenn Sie stattdessen Ihre eigene Umgebung verwenden möchten, lesen Sie die Informationen unter [Schnellstart: Verwenden Ihres eigenen Notebook-Servers für die ersten Schritte mit Azure Machine Learning](quickstart-run-local-notebook.md).  
+Dieser Schnellstart zeigt, wie Sie eine Cloudressource in Ihrem Azure Machine Learning-Arbeitsbereich erstellen, die mit der für die Ausführung von Azure Machine Learning erforderlichen Python-Umgebung konfiguriert ist. Wenn Sie stattdessen Ihre eigene Umgebung verwenden möchten, lesen Sie die Informationen unter [Schnellstart: Verwenden Ihres eigenen Notebook-Servers für die ersten Schritte mit Azure Machine Learning](quickstart-run-local-notebook.md).  
  
 Diese Schnellstartanleitung umfasst folgende Aktionen:
 
-* Stellen Sie mithilfe von Python in einem Jupyter Notebook eine Verbindung mit Ihrem Arbeitsbereich her. Das Notebook enthält Code zum Schätzen des Pi-Werts und protokolliert Fehler bei jeder Iteration. 
-* Anzeigen der protokollierten Fehlerwerte in Ihrem Arbeitsbereich
+* Erstellen eines neuen cloudbasierten Notebook-Servers in Ihrem Arbeitsbereich
+* Starten der Jupyter-Weboberfläche
+* Öffnen eines Notebooks, das Code zum Schätzen des Pi-Werts enthält und Fehler bei jeder Iteration protokolliert.
+* Ausführen des Notebooks.
+* Anzeigen der protokollierten Fehlerwerte in Ihrem Arbeitsbereich  Dieses Beispiel zeigt, wie der Arbeitsbereich Sie bei der Nachverfolgung der in einem Skript generierten Informationen unterstützt. 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie noch heute die [kostenlose oder kostenpflichtige Version von Azure Machine Learning Service](https://aka.ms/AMLFree) aus.
 
-## <a name="prerequisite"></a>Voraussetzung
+## <a name="prerequisites"></a>Voraussetzungen
 
-1. [Erstellen Sie einen Azure Machine Learning-Arbeitsbereich](setup-create-workspace.md#portal), sofern Sie noch keinen besitzen.
+- Ein Azure Machine Learning-Arbeitsbereich.  [Erstellen Sie Ihren Arbeitsbereich](setup-create-workspace.md#portal) jetzt, wenn noch kein Arbeitsbereich vorhanden ist.
 
-1. Öffnen Sie Ihren Arbeitsbereich im [Azure-Portal](https://portal.azure.com/).  [Hier](how-to-manage-workspace.md#view) erfahren Sie, wie Sie Ihren Arbeitsbereich finden.
+## <a name="create-a-cloud-based-notebook-server"></a>Erstellen eines cloudbasierten Notebook-Servers
 
-## <a name="use-your-workspace"></a>Verwenden Ihrer Arbeitsbereichs
+ Erstellen Sie in Ihrem Arbeitsbereich eine Cloudressource, um erste Schritte mit Jupyter-Notebooks auszuführen. Diese Ressource bietet Ihnen eine cloudbasierte Plattform, die mit allen Funktionen vorkonfiguriert ist, die Sie für die Ausführung von Azure Machine Learning Service benötigen.
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2F9Ad]
+1. Öffnen Sie Ihren Arbeitsbereich im [Azure-Portal](https://portal.azure.com/).  Wenn Sie sich nicht sicher sind, wie Sie Ihren Arbeitsbereich im Portal finden können, lesen Sie [Suchen nach Ihren Arbeitsbereich](how-to-manage-workspace.md#view).
 
+1. Wählen Sie auf der Arbeitsbereichseite im Azure-Portal links **Notebook-VMs** aus.
 
+1. Wählen Sie **+Neu** aus, um eine Notebook-VM zu erstellen.
 
-Sehen Sie sich an, wie ein Arbeitsbereich beim Verwalten Ihrer Machine Learning-Skripts hilft. In diesem Abschnitt führen Sie die folgenden Schritte aus:
+     ![Auswählen der neuen VM](./media/quickstart-run-cloud-notebook/add-workstation.png)
 
-* Öffnen eines Notebooks in Azure Notebooks
-* Ausführen von Code zum Generieren von protokollierten Werten
-* Anzeigen der protokollierten Werte in Ihrem Arbeitsbereich
+1. Geben Sie einen Namen für Ihre VM an. Klicken Sie anschließend auf **Erstellen**. 
 
-Dieses Beispiel zeigt, wie der Arbeitsbereich Sie bei der Nachverfolgung der in einem Skript generierten Informationen unterstützt. 
+    ![Erstellen eines neuen virtuellen Computers](media/quickstart-run-cloud-notebook/create-new-workstation.png)
 
-### <a name="open-a-notebook"></a>Öffnen eines Notebooks 
+1. Warten Sie ungefähr 4 bis 5 Minuten, und wählen Sie dann **Aktualisieren** aus.  Aktualisieren Sie etwa alle 30 Sekunden, bis der Status **Running** (Wird ausgeführt) anzeigt wird.
 
-[Azure Notebooks](https://notebooks.azure.com) bietet eine kostenlose Cloudplattform für Jupyter Notebooks, die mit allem vorkonfiguriert ist, was Sie für die Ausführung von Machine Learning benötigen. Über Ihren Arbeitsbereich können Sie diese Plattform starten, um Ihren Azure Machine Learning Service-Arbeitsbereich zu verwenden.
+    ![Aktualisieren](media/quickstart-run-cloud-notebook/refresh.png)
 
-1. Wählen Sie auf der Übersichtsseite des Arbeitsbereichs **Erste Schritte in Azure Notebooks** aus, um Ihr erstes Experiment in Azure Notebooks durchzuführen.  Azure Notebooks ist ein separater Dienst, mit dem Sie Jupyter Notebooks kostenlos in der Cloud ausführen können.  Wenn Sie diesen Link zum Dienst verwenden, werden der von Ihnen in Azure Notebooks erstellten Bibliothek Informationen zum Herstellen einer Verbindung mit Ihrem Arbeitsbereich hinzugefügt.
+## <a name="launch-jupyter-web-interface"></a>Starten der Jupyter-Webbenutzeroberfläche
 
-   ![Erkunden des Arbeitsbereichs](./media/quickstart-run-cloud-notebook/explore-aml.png)
+Nachdem Ihre VM ausgeführt wird, verwenden Sie den Abschnitt **Notebook-VMs**, um die Jupyter-Webbenutzeroberfläche zu starten.
 
-1. Melden Sie sich bei Azure Notebooks an.  Melden Sie sich unbedingt mit demselben Konto an, mit dem Sie sich auch beim Azure-Portal angemeldet haben. Unter Umständen müssen Sie in Ihrer Organisation zunächst die [Zustimmung des Administrators](https://notebooks.azure.com/help/signing-up/work-or-school-account/admin-consent) einholen, um sich anmelden zu können.
+1. Wählen Sie **Jupyter** in der Spalte **URI** für Ihre VM aus.  
 
-1. Nach Ihrer Anmeldung wird eine neue Registerkarte geöffnet und die Eingabeaufforderung `Clone Library` angezeigt. Beim Klonen dieser Bibliothek werde verschiedene Notebooks und andere Dateien in Ihrem Azure Notebooks-Konto geladen.  Mithilfe dieser Dateien können Sie die Funktionen von Azure Machine Learning Studio erkunden.
+    ![Starten des Jupyter Notebook-Servers](./media/quickstart-run-cloud-notebook/start-server.png)
 
-1. Deaktivieren Sie **Öffentlich**, damit Ihre Arbeitsbereichsinformationen nicht für andere Benutzer freigegeben werden.
+    Der Link startet Ihren Notebook-Server und öffnet die Jupyter Notebook-Webseite im Browser auf einer neuen Registerkarte.  Dieser Link funktioniert nur für die Person, die die VM erstellt.
 
-1. Wählen Sie **Klonen** aus.
+1. Wählen Sie auf der Jupyter Notebook-Webseite den Ordner **samples/quickstart** aus, um das Schnellstart-Notebook anzuzeigen.
 
-   ![Klonen einer Bibliothek](./media/quickstart-run-cloud-notebook/clone.png)
+## <a name="run-the-notebook"></a>Ausführen des Notebooks
 
-1. Wenn der Projektstatus „Beendet“ lautet, klicken Sie auf **Run on Free Computer** (Auf kostenlosem Computer ausführen), um den kostenlosen Notebook-Server zu verwenden.
-
-    ![Ausführen eines Projekts auf kostenlosem Computer](./media/quickstart-run-cloud-notebook/run-project.png)
-
-### <a name="run-the-notebook"></a>Ausführen des Notebooks
-
-Die Liste der Dateien für dieses Projekt enthält eine Datei vom Typ `config.json`. Diese Konfigurationsdatei enthält Informationen zu dem Arbeitsbereich, den Sie im Azure-Portal erstellt haben.  Mithilfe dieser Datei kann Ihr Code eine Verbindung mit Ihrem Arbeitsbereich herstellen und ihm Informationen hinzufügen.
+Führen Sie ein Notebook aus, das den Wert von Pi schätzt und den Fehler in Ihrem Arbeitsbereich protokolliert.
 
 1. Wählen Sie **01.run-experiment.ipynb**, um das Notebook zu öffnen.
 
-1. Im Statusbereich werden Sie angewiesen, zu warten, bis der Kernel gestartet wurde.  Die Meldung wird nicht mehr angezeigt, wenn der Kernel bereit ist.
+1. Möglicherweise wird eine Meldung angezeigt, die besagt, dass der Kernel nicht festgelegt wurde.  Wählen Sie **Python 3.6 - AzureML** aus, und wählen Sie dann **Set Kernel** (Kernel festlegen) aus.
+
+   ![Festlegen des Kernels](./media/quickstart-run-cloud-notebook/set-kernel.png)
+
+1. Im Statusbereich werden Sie angewiesen, zu warten, bis der Kernel gestartet wurde. Die Meldung wird nicht mehr angezeigt, wenn der Kernel bereit ist.
 
     ![Warten, bis der Kernel gestartet wird](./media/quickstart-run-cloud-notebook/wait-for-kernel.png)
 
-1. Führen Sie die Zellen jeweils nacheinander mit **UMSCHALT+EINGABE** aus, nachdem der Kernel gestartet wurde. Sie können aber auch **Zellen** > **Alle ausführen** wählen, um das gesamte Notebook auszuführen. Wenn neben einer Zelle ein Sternchen (__*__) angezeigt wird, wird diese Zelle noch ausgeführt. Nach Abschluss der Codeausführung für die Zelle wird eine Zahl angezeigt. 
+1.  Klicken Sie in der ersten Codezelle ein, und wählen Sie **Run** (Ausführen) aus.
 
-1. Befolgen Sie die Anweisungen im Notebook, um Ihr Azure-Abonnement zu authentifizieren.
+    > [!NOTE]
+    > Codezellen sind eckige Klammern vorangestellt. Wenn die eckigen Klammern leer sind (__[  ]__), wurde der Code nicht ausgeführt. Während der Code ausgeführt wird, sehen Sie ein Sternchen (__[*]__). Nachdem der Code abgeschlossen wurde, wird eine Zahl **[1]** angezeigt.  Die Zahl informiert Sie über die Reihenfolge, in der die Zellen ausgeführt wurden.
+    >
+    > Verwenden Sie **UMSCHALT+EINGABETASTE** als Tastenkombination zum Ausführen einer Zelle.
 
-Nachdem Sie die Ausführung aller Zellen im Notebook abgeschlossen haben, können Sie die protokollierten Werte in Ihrem Arbeitsbereich anzeigen.
+    ![Ausführen der ersten Codezelle](media/quickstart-run-cloud-notebook/cell1.png)
+
+1. Führen Sie die zweite Codezelle aus. Wenn Anweisungen zur Authentifizierung angezeigt werden, kopieren Sie den Code, und folgen Sie dem Link, um sich anzumelden. Nachdem Sie sich anmeldet haben, speichert Ihr Browser diese Einstellung.  
+
+    > [!TIP]
+    > Achten Sie darauf, dass Sie das Leerzeichen hinter dem Code nicht kopieren.  
+
+    ![Authentifizieren](media/quickstart-run-cloud-notebook/authenticate.png)
+
+1. Wenn Sie fertig sind, wird die Zellennummer __[2]__ angezeigt.  Wenn Sie sich anmelden mussten, wird eine Statusmeldung zur erfolgreichen Authentifizierung angezeigt.   Wenn Sie sich nicht anmelden mussten, wird keine Ausgabe für diese Zelle angezeigt. Es wird nur die Zellennummer angezeigt, um anzugeben, dass die Zelle erfolgreich ausgeführt wurde.
+
+    ![Erfolgsmeldung](media/quickstart-run-cloud-notebook/success.png)
+
+1. Führen Sie die restlichen Codezellen aus.  Nach der Ausführung jeder Zelle wird ihre Zellennummer angezeigt. Nur die letzte Zelle zeigt eine andere Ausgabe an.  In der größten Codezelle sehen Sie an mehreren Stellen `run.log`. Jedes `run.log` fügt Ihrem Arbeitsbereich seinen Wert hinzu.
+
 
 ## <a name="view-logged-values"></a>Anzeigen protokollierter Werte
 
@@ -104,13 +122,35 @@ Da der Code für die Pi-Annäherung willkürliche Werte verwendet, enthalten Ihr
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen 
 
+### <a name="stop-the-notebook-vm"></a>Beenden der Notebook-VM
+
+Beenden Sie die Notebook-VM, wenn Sie sie nicht mehr verwenden, um Kosten zu sparen.  
+
+1. Wählen Sie in Ihrem Arbeitsbereich **Notebook-VMs** aus.
+
+   ![Beenden des VM-Servers](./media/quickstart-run-cloud-notebook/stop-server.png)
+
+1. Wählen Sie den virtuellen Computer in der Liste aus.
+
+1. Wählen Sie **Stop** (Beenden) aus.
+
+1. Wenn Sie erneut bereit sind, den Server zu verwenden, wählen Sie **Start** aus.
+
+### <a name="delete-everything"></a>Alles löschen
+
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
 Sie können die Ressourcengruppe auch behalten und einen einzelnen Arbeitsbereich löschen. Zeigen Sie die Eigenschaften des Arbeitsbereichs an, und klicken Sie auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie haben die Ressourcen erstellt, die zum Experimentieren und zum Bereitstellen von Modellen benötigt werden. Sie haben Code in einem Notebook ausgeführt. Und Sie haben den Ausführungsverlauf dieses Codes in Ihrem Arbeitsbereich in der Cloud untersucht.
+In dieser Schnellstart haben Sie die folgenden Aufgaben erledigt:
+
+* Erstellen einer Notebook-VM
+* Starten eines Jupyter Notebook-Servers auf Ihrer Notebook-VM
+* Öffnen eines Notebooks, das Code zum Schätzen des Pi-Werts enthält und Fehler bei jeder Iteration protokolliert.
+* Ausführen des Notebooks.
+* Anzeigen der protokollierten Fehlerwerte in Ihrem Arbeitsbereich  Dieses Beispiel zeigt, wie der Arbeitsbereich Sie bei der Nachverfolgung der in einem Skript generierten Informationen unterstützt. 
 
 Führen Sie Machine Learning-Tutorials zum Trainieren und Bereitstellen eines Modells aus, um sich ausführlicher mit dem Workflow zu beschäftigen:  
 
