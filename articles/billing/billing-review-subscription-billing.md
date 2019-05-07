@@ -47,8 +47,8 @@ Die folgenden Header sind erforderlich:
 
 |Anforderungsheader|BESCHREIBUNG|
 |--------------------|-----------------|
-|*Inhaltstyp*:|Erforderlich. Legen Sie diese Option auf `application/json` fest.|
-|*Autorisierung*:|Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer` [Zugriffstoken](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients) fest. |
+|*Content-Type:*|Erforderlich. Legen Sie diese Option auf `application/json` fest.|
+|*Authorization:*|Erforderlich. Legen Sie diese Option auf ein gültiges `Bearer` [Zugriffstoken](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients) fest. |
 
 ## <a name="response"></a>response
 
