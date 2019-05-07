@@ -2,18 +2,19 @@
 title: Überwachung, Diagnose und Problembehandlung in Azure Storage | Microsoft Docs
 description: Verwenden Sie Features wie Speicheranalyse, clientseitige Protokollierung und andere Tools von Drittanbietern, um Probleme im Zusammenhang mit Azure Storage zu erkennen, zu diagnostizieren und zu beheben.
 services: storage
-author: fhryo-msft
+author: normesta
 ms.service: storage
 ms.topic: article
 ms.date: 05/11/2017
-ms.author: fhryo-msft
+ms.author: normesta
+ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 6edb1abae91a675a3fe47b417a112f0951886aaf
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: b929d9d1acc217c291c5aa645ee2d8952f401cd1
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351914"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65192167"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure-Speicher: Überwachung, Diagnose und Problembehandlung
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -425,7 +426,7 @@ Wenn die Metrik **PercentThrottlingError** einen Anstieg des Prozentsatzes der A
 Ein Anstieg bei **PercentThrottlingError** erfolgt oft gleichzeitig mit einem Anstieg der Anzahl an Speicheranfragen oder tritt auf, wenn Sie Ihre Anwendung zu Beginn Lasttests unterziehen. Dies kann sich auch im Client als HTTP-Status-Meldungen "503 Server Busy" oder "500 Operation Timeout" bei Speicheroperationen äußern.
 
 #### <a name="transient-increase-in-PercentThrottlingError"></a>Vorübergehender Anstieg bei PercentThrottlingError
-Im Fall der Übereinstimmung der Wertespitzen von **PercentThrottlingError** mit Zeiträumen hoher Aktivität für die Anwendung implementieren Sie eine exponentielle (nicht lineare) Backoff-Strategie für Wiederholungen in Ihrem Client. Backoff-Wiederholungen reduzieren die sofortige Auslastung auf der Partition und unterstützen Ihre Anwendung beim Ausgleich von Lastspitzen. Weitere Informationen zur Implementierung von Wiederholungsrichtlinien unter Verwendung der Speicher-Clientbibliothek finden Sie unter [Microsoft.WindowsAzure.Storage.RetryPolicies-Namespace](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.retrypolicies.aspx).
+Im Fall der Übereinstimmung der Wertespitzen von **PercentThrottlingError** mit Zeiträumen hoher Aktivität für die Anwendung implementieren Sie eine exponentielle (nicht lineare) Backoff-Strategie für Wiederholungen in Ihrem Client. Backoff-Wiederholungen reduzieren die sofortige Auslastung auf der Partition und unterstützen Ihre Anwendung beim Ausgleich von Lastspitzen. Weitere Informationen zur Implementierung von Wiederholungsrichtlinien unter Verwendung der Speicher-Clientbibliothek finden Sie unter [Microsoft.WindowsAzure.Storage.RetryPolicies-Namespace](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.retrypolicy).
 
 > [!NOTE]
 > Es können auch Spitzen in den Werten von **PercentThrottlingError** auftreten, die nicht mit Zeiträumen hoher Aktivität für die Anwendung übereinstimmen. Die wahrscheinlichste Ursache ist hier die Verschiebung von Partitionen durch den Speicherdienst zur Verbesserung des Lastausgleichs.
@@ -466,7 +467,7 @@ Die häufigste Ursache für diesen Fehler ist eine Trennung der Client-Verbindun
 ### <a name="the-client-is-receiving-403-messages"></a>Der Client empfängt HTTP 403 (Verboten)-Meldungen
 Wenn Ihre Clientanwendung einen HTTP 403 (Verboten)-Fehler ausgibt, ist eine wahrscheinliche Ursache, dass der Client eine abgelaufene Shared Access Signature (SAS) verwendet, wenn er eine Speicheranfrage versendet. (Weitere mögliche Ursachen sind Zeitverzögerung, ungültige Schlüssel und leere Header). Wenn ein abgelaufener Schlüssel die Ursache ist, werden Sie keine Einträge in den serverseitigen Speicherprotokollierungsdaten finden. Die folgende Tabelle zeigt ein Beispiel für eine von der Speicher-Clientbibliothek generierte Clientprotokollierung, die folgende Problemstellung veranschaulicht:
 
-| Quelle | Ausführlichkeit | Ausführlichkeit | Clientanfrage-ID | Operation Text |
+| `Source` | Ausführlichkeit | Ausführlichkeit | Clientanfrage-ID | Operation Text |
 | --- | --- | --- | --- | --- |
 | Microsoft.WindowsAzure.Storage |Information |3 |85d077ab-… |Vorgang mit Primärspeicherort pro Speicherortmodus PrimaryOnly starten. |
 | Microsoft.WindowsAzure.Storage |Information |3 |85d077ab-… |Synchrone Anforderung starten an <https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&sr=c&si=mypolicy&sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&api-version=2014-02-14> |
