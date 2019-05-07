@@ -210,17 +210,17 @@ Beim Kopieren von Daten aus Amazon Redshift werden die folgenden Zuordnungen von
 | Amazon Redshift-Datentyp | Data Factory-Zwischendatentyp |
 |:--- |:--- |
 | BIGINT |Int64 |
-| BOOLEAN |Zeichenfolge |
-| CHAR |Zeichenfolge |
+| BOOLEAN |String |
+| CHAR |String |
 | DATE |DateTime |
 | DECIMAL |Decimal |
 | DOUBLE PRECISION |Double |
 | INTEGER |Int32 |
 | REAL |Single |
 | SMALLINT |Int16 |
-| TEXT |Zeichenfolge |
+| TEXT |String |
 | TIMESTAMP |DateTime |
-| VARCHAR |Zeichenfolge |
+| VARCHAR |String |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md##supported-data-stores-and-formats).
