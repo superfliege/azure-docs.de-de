@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 4fea787e7fe20d60de91761811e1b69bebf3a010
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: dc78f87d9b47745119da91b8ed1f8f6c8572968c
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58896689"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190442"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>Verschieben von Mainframespeicher zu Azure
 
@@ -113,10 +113,10 @@ Blob-Speicher bietet das größte Speichervolumen auf Azure. Neben der Speicherg
 ### <a name="ibm-resources"></a>IBM-Ressourcen
 
 - [Parallel Sysplex on IBM Z (Parallel Sysplex auf IBM Z)](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources)
-- [IBM CICS and the Coupling Facility: Beyond the Basics (IBM CICS und die Coupling Facility: Fortgeschrittene Themen)](http://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
+- [IBM CICS and the Coupling Facility: Beyond the Basics (IBM CICS und die Coupling Facility: Fortgeschrittene Themen)](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
 - [Erstellen der erforderlichen Benutzer für eine Installation von Db2 pureScale Feature](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
 - [db2icrt-Instanz erstellen (Befehl)](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
-- [Db2 pureScale Clustered Database Solution (Clusterdatenbank-Lösung mit Db2 pureScale)](http://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
+- [Db2 pureScale Clustered Database Solution (Clusterdatenbank-Lösung mit Db2 pureScale)](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
 - [IBM Data Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
 
 ### <a name="azure-government"></a>Azure Government

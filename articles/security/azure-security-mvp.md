@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/11/2019
 ms.author: barclayn
-ms.openlocfilehash: d6da4dbe9322ab38591a84ff5b075992d9495f1b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: b75a6ef341483201dc9cb2a30f68b4854332cbce
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111253"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190416"
 ---
 # <a name="azure-security-mvp-program"></a>Azure-Sicherheits-MVP-Programm
 
@@ -36,5 +36,3 @@ Es gibt keinen festen Maßstab dafür, sich als MVP zu qualifizieren. Dies liegt
 - Konferenzen und Benutzergruppen
 - Podcasts, Websites, Blogs und soziale Medien
 - Artikel und Bücher.
-
-Sind Sie Experte für Azure-Sicherheit? Kennen Sie eine Person, auf die dies zutrifft? Dann [nominieren Sie sich selbst oder eine andere Person](https://mvp.microsoft.com/Nomination/nominate-an-mvp) heute als Azure-Sicherheits-MVP!

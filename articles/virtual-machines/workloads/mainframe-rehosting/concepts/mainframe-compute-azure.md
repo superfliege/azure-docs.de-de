@@ -6,12 +6,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 8aea4a74ba84855f011dada70ea75ec0d5fb64fe
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 335a056a34412a7ed148613bfff59ecb30053e09
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58896703"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190317"
 ---
 # <a name="move-mainframe-compute-to-azure"></a>Verschieben von Mainframe-Computing zu Azure
 
@@ -47,7 +47,7 @@ IBM-Mainframes bieten die Möglichkeit, bis zu 240 Kerne zu skalieren (die aktue
 
 Ein CF ermöglicht es den Computingclustern, Daten mit direktem Zugriff gemeinsam zu nutzen. Er dient zum Sperren von Informationen, Zwischenspeichern von Information und zum Erstellen der Liste der freigegebenen Datenressourcen. Ein Parallel-Sysplex mit einem oder mehreren CFs kann als ein Scale-Out-Computeclusterzum Freigeben aller Komponenten betrachtet werden. Weitere Informationen zu diesen Funktionen finden Sie unter [Parallel Sysplex on IBM Z](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources) auf der IBM-Website.
 
-Anwendungen können diese Funktionen nutzen, um sowohl horizontale Skalierungsleistung als auch Hochverfügbarkeit zu bieten. Um mehr darüber zu erfahren, wie CICS Parallel Sysplex mit CF verwenden kann, laden Sie das Redbook [IBM CICS and the Coupling Facility: Beyond the Basics](http://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf) herunter.
+Anwendungen können diese Funktionen nutzen, um sowohl horizontale Skalierungsleistung als auch Hochverfügbarkeit zu bieten. Um mehr darüber zu erfahren, wie CICS Parallel Sysplex mit CF verwenden kann, laden Sie das Redbook [IBM CICS and the Coupling Facility: Beyond the Basics](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf) herunter.
 
 ## <a name="azure-compute-at-a-glance"></a>Azure-Computing auf einen Blick
 
@@ -121,10 +121,10 @@ Jede Ebene kann auch entsprechende Dienste für die Notfallwiederherstellung ber
 ### <a name="ibm-resources"></a>IBM-Ressourcen
 
 - [Parallel Sysplex on IBM Z (Parallel Sysplex auf IBM Z)](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources)
-- [IBM CICS and the Coupling Facility: Beyond the Basics (IBM CICS und die Coupling Facility: Fortgeschrittene Themen)](http://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
+- [IBM CICS and the Coupling Facility: Beyond the Basics (IBM CICS und die Coupling Facility: Fortgeschrittene Themen)](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
 - [Erstellen der erforderlichen Benutzer für eine Installation von Db2 pureScale Feature](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
 - [db2icrt-Instanz erstellen (Befehl)](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
-- [Db2 pureScale Clustered Database Solution (Clusterdatenbank-Lösung mit Db2 pureScale)](http://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
+- [Db2 pureScale Clustered Database Solution (Clusterdatenbank-Lösung mit Db2 pureScale)](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
 - [IBM Data Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
 
 ### <a name="azure-government"></a>Azure Government

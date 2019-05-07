@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 15bb64917fa58ba2d13c6f372640957508ab29c1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 94fde7714f3efe0a460983966923071bce1afcc6
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59494558"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190506"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>Überwachen im gewünschten Umfang mithilfe von Azure Monitor
 
@@ -109,7 +109,7 @@ Der wichtigste Aspekt ist die Bedingung, unter der die Warnung ausgelöst wird. 
 
 ![LAAzureBackupAlertCondition](media/backup-azure-monitoring-laworkspace/la-azurebackup-alertlogic.png)
 
-Bearbeiten Sie die Kusto-Abfrage, wählen Sie bei Bedarf den richtigen Schwellenwert (der bestimmt, wann die Warnung ausgelöst wird), den richtigen Zeitraum (Zeitfenster, in dem die Abfrage ausgeführt wird) und die Häufigkeit. Zum Beispiel: Wenn der Schwellenwert größer als 0 ist, der Zeitraum 5 Minuten und die Häufigkeit 5 Minuten beträgt, dann wird die Regel mit „Die Abfrage alle 5 Minuten für die letzten 5 Minuten ausführen und wenn die Anzahl der Ergebnisse größer als 0 ist, mich über die ausgewählte Aktionsgruppe benachrichtigen“ übersetzt.
+Bearbeiten Sie die Kusto-Abfrage, wählen Sie bei Bedarf den richtigen Schwellenwert (der bestimmt, wann die Warnung ausgelöst wird), den richtigen Zeitraum (Zeitfenster, in dem die Abfrage ausgeführt wird) und die Häufigkeit. Beispiel:  Wenn der Schwellenwert größer als 0 ist, der Zeitraum 5 Minuten und die Häufigkeit 5 Minuten beträgt, dann wird die Regel mit „Die Abfrage alle 5 Minuten für die letzten 5 Minuten ausführen und wenn die Anzahl der Ergebnisse größer als 0 ist, mich über die ausgewählte Aktionsgruppe benachrichtigen“ übersetzt.
 
 #### <a name="action-group-integration"></a>Integration der Aktionsgruppe
 
