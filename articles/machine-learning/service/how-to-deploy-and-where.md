@@ -6,341 +6,302 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: aashishb
-author: aashishb
+ms.author: jordane
+author: jpe316
 ms.reviewer: larryfr
-ms.date: 04/02/2019
+ms.date: 05/02/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 60e4d29e5d0750e50d99e954f48ee5181255533a
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 1da232c2a81c9989cc78eccf1be97b5d75a48666
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64914905"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024487"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst
 
-In diesem Dokument erfahren Sie, wie Sie Ihr Modell als Webdienst in der Azure-Cloud oder auf IoT Edge-Geräten bereitstellen. 
-
-## <a name="compute-targets-for-deployment"></a>Computeziele für die Bereitstellung
-
-Verwenden Sie das Azure Machine Learning SDK, um Ihr trainiertes Modell an den folgenden Speicherorten bereitzustellen:
+Erfahren Sie, wie Sie Ihr Machine Learning-Modell als Webdienst in der Azure-Cloud oder auf IoT Edge-Geräten bereitstellen. Die Informationen in diesem Dokument zeigen Ihnen, wie Sie die Bereitstellung auf den folgenden Computezielen durchführen können:
 
 | Computeziel | Bereitstellungstyp | BESCHREIBUNG |
 | ----- | ----- | ----- |
+| [Lokaler Webdienst](#local) | Testen/Debuggen | Geeignet für eingeschränkte Tests und Problembehandlung.
 | [Azure Kubernetes Service (AKS)](#aks) | Echtzeitrückschluss | Geeignet für hochgradig skalierbare Produktionsbereitstellungen. Bietet automatische Skalierung und schnelle Reaktionszeiten. |
-| [Azure Machine Learning Compute (amlcompute)](#azuremlcompute) | Batchrückschluss | Führen Sie eine Batchvorhersage für serverloses Computing aus. Unterstützt virtuelle Computer mit normaler und niedriger Priorität. |
-| [Azure Container Instances (ACI)](#aci) | Testen | Gut geeignet für Entwicklungs- und Testzwecke. **Nicht geeignet für Produktionsworkloads.** |
-| [Azure IoT Edge](#iotedge) | (Vorschauversion) IoT-Modul | Stellen Sie Modelle auf IoT-Geräten bereit. Rückschlüsse erfolgen auf dem Gerät. |
-| [Field Programmable Gate Array (FPGA)](#fpga) | (Vorschauversion) Webdienst | Extrem geringe Wartezeit für die Interferenzierung in Echtzeit. |
+| [Azure Container Instances (ACI)](#aci) | Testen | Ideal für CPU-basierte Workloads mit geringer Skalierung. |
+| [Azure Machine Learning Compute](how-to-run-batch-predictions.md) | (Vorschau) Batchrückschluss | Ausführen von Batchbewertungen auf serverlosen Computezielen. Unterstützt virtuelle Computer mit normaler und niedriger Priorität. |
+| [Azure IoT Edge](#iotedge) | (Vorschauversion) IoT-Modul | Bereitstellen und Verarbeiten von ML-Modellen auf IoT-Geräten. |
 
 ## <a name="deployment-workflow"></a>Bereitstellungsworkflow
 
 Der Prozess zur Bereitstellung eines Modells ist für alle Computeziele ähnlich:
 
-1. Trainieren und Registrieren eines Modells.
-1. Konfigurieren und Registrieren eines Images, das das Modell verwendet.
-1. Bereitstellen des Image für ein Computeziel.
-1. Testen der Bereitstellung
-
-Das folgende Video zeigt die Bereitstellung in Azure Container Instances:
-
-> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Kwk3]
-
+1. Modell(e) registrieren.
+1. Modell(e) bereitstellen.
+1. Modell(e) testen.
 
 Weitere Informationen zu den am Bereitstellungsworkflow beteiligten Konzepten finden Sie unter [Verwalten, Bereitstellen und Überwachen von Modellen mit dem Azure Machine Learning-Dienst](concept-model-management-and-deployment.md).
 
 ## <a name="prerequisites-for-deployment"></a>Voraussetzungen für die Bereitstellung
 
-[!INCLUDE [aml-prereq](../../../includes/aml-prereq.md)]
+- Ein Modell. Wenn Sie über kein trainiertes Modell verfügen, können Sie die Modell- und Abhängigkeitsdateien verwenden, die in [diesem Tutorial](http://aka.ms/azml-deploy-cloud) bereitgestellt werden.
 
-- Ein trainiertes Modell. Wenn Sie nicht über ein trainiertes Modell verfügen, verwenden Sie die Schritte im Tutorial [Train models (Trainieren von Modellen)](tutorial-train-models-with-aml.md), um ein Modell zu trainieren und beim Azure Machine Learning Service zu registrieren.
+- Die [Azure CLI-Erweiterung für Machine Learning Service](reference-azure-machine-learning-cli.md) oder das [Azure Machine Learning Python SDK](https://aka.ms/aml-sdk).
 
-    > [!NOTE]
-    > Azure Machine Learning Service ist mit jedem generischen Modell kompatibel, das in Python 3 geladen werden kann. Die Beispiele in diesem Dokument zeigen die Verwendung eines im Python-Pickle-Format gespeicherten Modells.
-    >
-    > Weitere Informationen zur Verwendung von ONNX-Modellen finden Sie im Dokument [ONNX und Azure Machine Learning (ONNX und Azure Machine Learning)](how-to-build-deploy-onnx.md).
+## <a id="registermodel"></a> Registrieren eines Machine Learning-Modells
 
-## <a id="registermodel"></a> Registrieren eines trainierten Modells
+Die Modellregistrierung ist eine Möglichkeit zum Speichern und Organisieren Ihrer trainierten Modelle in der Azure-Cloud. Modelle werden in Ihrem Azure Machine Learning Service-Arbeitsbereich registriert. Das Modell kann mit Azure Machine Learning trainiert oder aus einem anderweitig trainierten Modell importiert werden. Die folgenden Beispiele veranschaulichen das Registrieren eines Modells aus einer Datei.
 
-Die Modellregistrierung ist eine Möglichkeit zum Speichern und Organisieren Ihrer trainierten Modelle in der Azure-Cloud. Modelle werden in Ihrem Azure Machine Learning Service-Arbeitsbereich registriert. Das Modell kann mit Azure Machine Learning oder einem anderen Dienst trainiert werden. Der folgende Code veranschaulicht das Registrieren eines Modells aus einer Datei sowie das Festlegen von Name, Tags und Beschreibung:
+### <a name="register-a-model-from-an-experiment-run"></a>Registrieren eines Modells aus einer Experimentausführung
 
+**Scikit-Learn-Beispiel mit der CLI**
+```azurecli-interactive
+az ml model register -n sklearn_mnist  --asset-path outputs/sklearn_mnist_model.pkl  --experiment-name myexperiment
+```
+**Verwenden des SDK**
 ```python
-from azureml.core.model import Model
+model = run.register_model(model_name='sklearn_mnist', model_path='outputs/sklearn_mnist_model.pkl')
+print(model.name, model.id, model.version, sep='\t')
+```
 
-model = Model.register(model_path = "outputs/sklearn_mnist_model.pkl",
-                       model_name = "sklearn_mnist",
-                       tags = {"key": "0.1"},
-                       description = "test",
-                       workspace = ws)
+### <a name="register-an-externally-created-model"></a>Registrieren eines extern erstellten Modells
+Sie können ein extern erstelltes Modell registrieren, indem Sie einen **lokalen Pfad** für das Modell bereitstellen. Sie können einen Ordner oder eine einzelne Datei angeben.
+
+**ONNX-Beispiel mit dem Python SDK:**
+```python
+onnx_model_url = "https://www.cntk.ai/OnnxModels/mnist/opset_7/mnist.tar.gz"
+urllib.request.urlretrieve(onnx_model_url, filename="mnist.tar.gz")
+!tar xvzf mnist.tar.gz
+
+model = Model.register(workspace = ws,
+                       model_path ="mnist/model.onnx",
+                       model_name = "onnx_mnist",
+                       tags = {"onnx": "demo"},
+                       description = "MNIST image classification CNN from ONNX Model Zoo",)
+```
+
+**Verwenden der CLI**
+```azurecli-interactive
+az ml model register -n onnx_mnist -p mnist/model.onnx
 ```
 
 **Geschätzter Zeitaufwand**: Ungefähr 10 Sekunden.
-
-Ein Beispiel für das Registrieren eines Modells finden Sie unter [Tutorial: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning Service](tutorial-train-models-with-aml.md).
 
 Weitere Informationen finden Sie in der Referenzdokumentation zur [Modellklasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py).
 
-## <a id="configureimage"></a> Erstellen und Registrieren eines Images
+## <a name="how-to-deploy"></a>Vorgehensweise bei der Bereitstellung
 
-Bereitgestellte Modelle werden als Image gepackt. Das Image enthält die notwendigen Abhängigkeiten zum Ausführen des Modells.
+Um die Bereitstellung als Webdienst durchzuführen, müssen Sie eine Rückschlusskonfiguration (`InferenceConfig`) und eine Bereitstellungskonfiguration erstellen. In der Rückschlusskonfiguration geben Sie die Skripts und Abhängigkeiten an, die für die Verarbeitung Ihres Modells erforderlich sind. In der Bereitstellungskonfiguration geben Sie Details zur Verarbeitung des Modells auf dem Computeziel an.
 
-Für Bereitstellungen von **Azure Container Instance**, **Azure Kubernetes Service** und **Azure IoT Edge** wird die Klasse [azureml.core.image.ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) verwendet, um eine Imagekonfiguration zu erstellen. Diese Imagekonfiguration wird dann verwendet, um ein neues Docker-Image zu erstellen.
 
-Bei der Erstellung der Imagekonfiguration können Sie entweder ein vom Azure Machine Learning Service bereitgestelltes __Standardmage__ oder ein von Ihnen bereitgestelltes __benutzerdefiniertes Image__ verwenden.
+### <a id="script"></a> 1. Definieren des Eingangsskripts und der Abhängigkeiten
 
-Der folgende Code zeigt, wie eine neue Imagekonfiguration erstellt wird:
-
-```python
-from azureml.core.image import ContainerImage
-
-# Image configuration
-image_config = ContainerImage.image_configuration(execution_script = "score.py",
-                                                 runtime = "python",
-                                                 conda_file = "myenv.yml"}
-                                                 )
-```
-
-**Geschätzter Zeitaufwand**: Ungefähr 10 Sekunden.
-
-Die in diesem Beispiel verwendeten wichtigen Parameter werden in der folgenden Tabelle beschrieben:
-
-| Parameter | BESCHREIBUNG |
-| ----- | ----- |
-| `execution_script` | Gibt ein Python-Skript an, das zum Empfangen von an den Dienst übermittelten Anforderungen verwendet wird. In diesem Beispiel befindet sich das Skript in der Datei `score.py`. Weitere Informationen finden Sie im Abschnitt [Ausführungsskript](#script). |
-| `runtime` | Zeigt an, dass das Image Python verwendet. Die andere Option ist `spark-py`, die Python mit Apache Spark verwendet. |
-| `conda_file` | Wird verwendet, um eine Conda-Umgebungsdatei bereitzustellen. Diese Datei definiert die Conda-Umgebung für das bereitgestellte Modell. Weitere Informationen zum Erstellen dieser Datei finden Sie unter [Create an environment file (myenv.yml) (Erstellen einer Umgebungsdatei (myenv.yml))](tutorial-deploy-models-with-aml.md#create-environment-file). |
-
-Ein Beispiel für das Erstellen einer Imagekonfiguration finden Sie unter [Tutorial: Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances](tutorial-deploy-models-with-aml.md).
-
-Weitere Informationen finden Sie in der Referenzdokumentation zur [ContainerImage-Klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py).
-
-### <a id="customimage"></a> Verwenden eines benutzerdefinierten Images
-
-Wenn Sie ein benutzerdefiniertes Image verwenden, muss es die folgenden Anforderungen erfüllen:
-
-* Ubuntu 16.04 oder höher.
-* Conda 4.5.# oder höher.
-* Python 3.5# oder 3.6#.
-
-Legen Sie bei Verwendung eines benutzerdefinierten Images die Eigenschaft `base_image` für die Imagekonfiguration auf die Imageadresse fest. Im folgenden Beispiel wird veranschaulicht, wie Sie ein Image aus einer öffentlichen und einer privaten Azure Container Registry verwenden:
-
-```python
-# use an image available in public Container Registry without authentication
-image_config.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
-
-# or, use an image available in a private Container Registry
-image_config.base_image = "myregistry.azurecr.io/mycustomimage:1.0"
-image_config.base_image_registry.address = "myregistry.azurecr.io"
-image_config.base_image_registry.username = "username"
-image_config.base_image_registry.password = "password"
-```
-
-Weitere Informationen zum Hochladen von Images in eine Azure Container Registry finden Sie unter [Pushübertragung des ersten Images in eine private Docker Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli).
-
-Wenn Ihr Modell in Azure Machine Learning Compute mit __Version 1.0.22 oder höher__ des Azure Machine Learning-SDK trainiert wird, wird während des Trainings ein Image erstellt. Die Verwendung dieses Images wird im folgenden Beispiel veranschaulicht:
-
-```python
-# Use an image built during training with SDK 1.0.22 or greater
-image_config.base_image = run.properties["AzureML.DerivedImageName"]
-```
-
-### <a id="script"></a> Ausführungsskript
-
-Das Ausführungsskript empfängt an ein bereitgestelltes Image übermittelte Daten und übergibt sie an das Modell. Anschließend nimmt es die vom Modell zurückgegebene Antwort entgegen und gibt diese an den Client zurück. **Das Skript ist modellspezifisch.** Es muss die vom Modell erwarteten und zurückgegebenen Daten verstehen. Ein Beispielskript mit einem Bildklassifizierungsmodell finden Sie unter [Tutorial: Bereitstellen eines Bildklassifizierungsmodells in Azure Container Instances](tutorial-deploy-models-with-aml.md).
+Das Eingangsskript empfängt an einen bereitgestellten Webdienst übermittelte Daten und übergibt sie an das Modell. Anschließend nimmt es die vom Modell zurückgegebene Antwort entgegen und gibt diese an den Client zurück. **Das Skript ist modellspezifisch.** Es muss die vom Modell erwarteten und zurückgegebenen Daten verstehen.
 
 Das Skript enthält zwei Funktionen zum Laden und Ausführen des Modells:
 
-* `init()`: Diese Funktion lädt üblicherweise das Modell in ein globales Objekt. Diese Funktion wird nur dann ausgeführt, wenn der Docker-Container gestartet wird.
+* `init()`: Diese Funktion lädt üblicherweise das Modell in ein globales Objekt. Diese Funktion wird nur ein Mal ausgeführt, wenn der Docker-Container für Ihren Webdienst gestartet wird.
 
 * `run(input_data)`: Diese Funktion verwendet das Modell zur Vorhersage eines Werts, der auf den Eingabedaten basiert. Ein- und Ausgaben an die/von der Ausführung verwenden in der Regel JSON für die Serialisierung und Deserialisierung. Sie können auch mit binären Rohdaten arbeiten. Sie können die Daten vor dem Senden an das Modell oder vor der Rückgabe an den Client transformieren.
 
-#### <a name="working-with-json-data"></a>Arbeiten mit JSON-Daten
+#### <a name="optional-automatic-swagger-schema-generation"></a>(Optional) Automatische Generierung des Swagger-Schemas
 
-Das folgende Beispielskript akzeptiert JSON-Daten und gibt diese zurück. Die `run`-Funktion transformiert die Daten aus JSON in ein Format, das das Modell erwartet, und transformiert die Antwort dann vor der Rückgabe in JSON:
+Um automatisch ein Schema für Ihren Webdienst zu generieren, stellen Sie ein Beispiel der Eingabe und/oder Ausgabe im Konstruktor für eines der definierten Typobjekte bereit, und der Typ und das Beispiel werden zur automatischen Erstellung des Schemas verwendet. Azure Machine Learning Service erstellt dann während der Bereitstellung eine [OpenAPI](https://swagger.io/docs/specification/about/)-Spezifikation (Swagger) für den Webdienst.
 
+Folgende Typen werden derzeit unterstützt:
+
+* `pandas`
+* `numpy`
+* `pyspark`
+* Python-Standardobjekt
+
+Um Schemagenerierung zu verwenden, schließen Sie das `inference-schema`-Paket in Ihre Conda-Umgebungsdatei ein. Das folgende Beispiel verwendet `[numpy-support]`, da das Eingangsskript einen NumPy-Parametertyp verwendet: 
+
+#### <a name="example-dependencies-file"></a>Beispieldatei für Abhängigkeiten
+Das folgende Beispiel zeigt eine Conda-Abhängigkeitsdatei für den Rückschluss.
 ```python
-%%writefile score.py
+name: project_environment
+dependencies:
+  - python=3.6.2
+  - pip:
+    - azureml-defaults
+    - scikit-learn
+    - inference-schema[numpy-support]
+```
+
+Wenn Sie automatische Schemagenerierung verwenden möchten, **muss** Ihr Eingangsskript die `inference-schema`-Pakete importieren. 
+
+Definieren Sie in den Variablen `input_sample` und `output_sample` das Format für das Ein- und Ausgabebeispiel. (Die Variablen stellen das Anforderungs- und das Antwortformat für den Webdienst dar.) Verwenden Sie diese Beispiele in den Decorator-Elementen der Ein- und Ausgabefunktion für die Funktion `run()`. Das Scikit-learn-Beispiel unten verwendet Schemagenerierung.
+
+> [!TIP]
+> Verwenden Sie nach der Bereitstellung des Diensts die Eigenschaft `swagger_uri`, um das JSON-Schemadokument abzurufen.
+
+#### <a name="example-entry-script"></a>Beispiel für ein Eingangsskript
+
+Das folgende Beispiel zeigt, wie JSON-Daten akzeptiert und zurückgegeben werden:
+
+**Scikit-learn-Beispiel mit Swagger-Generierung:**
+```python
 import json
 import numpy as np
-import os
-import pickle
 from sklearn.externals import joblib
-from sklearn.linear_model import LogisticRegression
+from sklearn.linear_model import Ridge
 from azureml.core.model import Model
 
-# load the model
+from inference_schema.schema_decorators import input_schema, output_schema
+from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
+
 def init():
     global model
-    # retrieve the path to the model file using the model name
-    model_path = Model.get_model_path('sklearn_mnist')
+    # note here "sklearn_regression_model.pkl" is the name of the model registered under
+    # this is a different behavior than before when the code is run locally, even though the code is the same.
+    model_path = Model.get_model_path('sklearn_regression_model.pkl')
+    # deserialize the model file back into a sklearn model
     model = joblib.load(model_path)
 
-# Passes data to the model and returns the prediction
-def run(raw_data):
-    data = np.array(json.loads(raw_data)['data'])
-    # make prediction
-    y_hat = model.predict(data)
-    return json.dumps(y_hat.tolist())
+input_sample = np.array([[10,9,8,7,6,5,4,3,2,1]])
+output_sample = np.array([3726.995])
+
+@input_schema('data', NumpyParameterType(input_sample))
+@output_schema(NumpyParameterType(output_sample))
+def run(data):
+    try:
+        result = model.predict(data)
+        # you can return any datatype as long as it is JSON-serializable
+        return result.tolist()
+    except Exception as e:
+        error = str(e)
+        return error
 ```
 
-#### <a name="working-with-binary-data"></a>Arbeiten mit Binärdaten
+Weitere Beispielskripts finden Sie in den folgenden Beispielen:
 
-Wenn Ihr Modell __Binärdaten__ akzeptiert, verwenden Sie `AMLRequest`, `AMLResponse` und `rawhttp`. Das folgende Beispielskript akzeptiert Binärdaten und gibt die umgekehrten Bytes für POST-Anforderungen zurück. Für GET-Anforderungen wird die vollständige URL im Antworttext zurückgegeben:
+* PyTorch: [https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-pytorch)
+* TensorFlow: [https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-tensorflow)
+* Keras: [https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras)
+* ONNX: [https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx/)
+* Bewertung anhand von Binärdaten: [Nutzen eines Webdiensts](how-to-consume-web-service.md)
+
+### <a name="2-define-your-inferenceconfig"></a>2. Definieren der Rückschlusskonfiguration
+
+Die Rückschlusskonfiguration beschreibt, wie das Modell zum Treffen von Vorhersagen konfiguriert wird. Im folgenden Beispiel wird veranschaulicht, wie eine Rückschlusskonfiguration erstellt wird:
 
 ```python
-from azureml.contrib.services.aml_request  import AMLRequest, rawhttp
-from azureml.contrib.services.aml_response import AMLResponse
-
-def init():
-    print("This is init()")
-
-# Accept and return binary data
-@rawhttp
-def run(request):
-    print("This is run()")
-    print("Request: [{0}]".format(request))
-    # handle GET requests
-    if request.method == 'GET':
-        respBody = str.encode(request.full_path)
-        return AMLResponse(respBody, 200)
-    # handle POST requests
-    elif request.method == 'POST':
-        reqBody = request.get_data(False)
-        respBody = bytearray(reqBody)
-        respBody.reverse()
-        respBody = bytes(respBody)
-        return AMLResponse(respBody, 200)
-    else:
-        return AMLResponse("bad request", 500)
+inference_config = InferenceConfig(source_directory="C:/abc",
+                                   runtime= "python",
+                                   entry_script="x/y/score.py",
+                                   conda_file="env/myenv.yml")
 ```
 
-> [!IMPORTANT]
-> Der Namespace `azureml.contrib` ändert sich häufig, während wir daran arbeiten, den Dienst zu verbessern. Daher sollte alles in diesem Namespace als Vorschau und als von Microsoft nicht vollständig unterstützt betrachtet werden.
->
-> Wenn Sie dies in Ihrer lokalen Entwicklungsumgebung testen müssen, können Sie die Komponenten im Namespace `contrib` mit dem folgenden Befehl installieren:
-> ```shell
-> pip install azureml-contrib-services
-> ```
+In diesem Beispiel enthält die Konfiguration die folgenden Elemente:
 
-### <a id="createimage"></a> Registrieren des Images
+* Ein Verzeichnis, das Ressourcen enthält, die zum Ausführen von Rückschlüssen erforderlich sind.
+* Die Angabe, dass für dieses Modell Python erforderlich ist.
+* Das [Eingangsskript](#script), das zum Verarbeiten von an den bereitgestellten Dienst gesendeten Webanforderungen verwendet wird.
+* Die Conda-Datei, die die Python-Pakete beschreibt, die zum Ausführen von Rückschlüssen erforderlich sind.
 
-Nachdem Sie die Imagekonfiguration erstellt haben, können Sie diese verwenden, um ein Image zu registrieren. Dieses Image wird in der Containerregistrierung für Ihren Arbeitsbereich gespeichert. Nach der Erstellung können Sie dasselbe Image für mehrere Dienste bereitstellen.
+Weitere Informationen zu InferenceConfig-Funktionen finden Sie im Abschnitt [Erweiterte Konfiguration](#advanced-config).
 
-```python
-# Register the image from the image configuration
-image = ContainerImage.create(name = "myimage",
-                              models = [model], #this is the model object
-                              image_config = image_config,
-                              workspace = ws
-                              )
-```
+### <a name="3-define-your-deployment-configuration"></a>3. Definieren der Bereitstellungskonfiguration
 
-**Geschätzter Zeitaufwand**: Ca. 3 Minuten.
+Bevor Sie die Bereitstellung ausführen, müssen Sie die Bereitstellungskonfiguration definieren. Die Bereitstellungskonfiguration ist spezifisch für das Computeziel, das den Webdienst hosten wird. Beispielsweise müssen Sie bei einer lokalen Bereitstellung den Port angeben, an dem der Dienst Anforderungen akzeptiert.
 
-Images werden automatisch mit einer Versionsangabe versehen, wenn Sie mehrere Images mit dem gleichen Namen registrieren. Dem ersten Bild beispielsweise, das als `myimage` registriert ist, wird die ID `myimage:1` zugewiesen. Wenn Sie das nächste Mal ein Bild als `myimage` registrieren, lautet die ID des neuen Image `myimage:2`.
+Möglicherweise müssen Sie die Computeressourcen auch erstellen. Dies ist beispielsweise der Fall, wenn Sie noch keinen Azure Kubernetes Service für Ihren Arbeitsbereich eingerichtet haben.
 
-Weitere Informationen finden Sie in der Referenzdokumentation zur [ContainerImage-Klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py).
+Die folgende Tabelle enthält ein Beispiel für das Erstellen einer Bereitstellungskonfiguration für jedes Computeziel:
 
-## <a id="deploy"></a> Bereitstellen als Webdienst
+| Computeziel | Beispiel für eine Bereitstellungskonfiguration |
+| ----- | ----- |
+| Lokal | `deployment_config = LocalWebservice.deploy_configuration(port=8890)` |
+| Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
+| Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
-Je nach dem Computeziel, auf dem Sie die Bereitstellung vornehmen, unterscheidet sich der Bereitstellungsprozess etwas. Anhand der Informationen in den folgenden Abschnitten erfahren Sie mehr zur Bereitstellung auf folgenden Zielen:
+Die folgenden Abschnitte zeigen, wie Sie die Bereitstellungskonfiguration erstellen und sie dann zum Bereitstellen des Webdiensts verwenden.
 
-| Computeziel | Bereitstellungstyp | BESCHREIBUNG |
-| ----- | ----- | ----- |
-| [Azure Kubernetes Service (AKS)](#aks) | Webdienst (Echtzeitrückschluss)| Geeignet für hochgradig skalierbare Produktionsbereitstellungen. Bietet automatische Skalierung und schnelle Reaktionszeiten. |
-| [Azure ML Compute](#azuremlcompute) | Webdienst (Batchrückschluss)| Führen Sie eine Batchvorhersage für serverloses Computing aus. Unterstützt virtuelle Computer mit normaler und niedriger Priorität. |
-| [Azure Container Instances (ACI)](#aci) | Webdienst (Entwicklung/Test)| Gut geeignet für Entwicklungs- und Testzwecke. **Nicht geeignet für Produktionsworkloads.** |
-| [Azure IoT Edge](#iotedge) | (Vorschauversion) IoT-Modul | Stellen Sie Modelle auf IoT-Geräten bereit. Rückschlüsse erfolgen auf dem Gerät. |
-| [Field Programmable Gate Array (FPGA)](#fpga) | (Vorschauversion) Webdienst | Extrem geringe Wartezeit für die Interferenzierung in Echtzeit. |
+## <a name="where-to-deploy"></a>Bereitstellungsort
 
-> [!IMPORTANT]
-> Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS) wird zurzeit beim Bereitstellen eines Modells als Webdienst nicht unterstützt.
+### <a id="local"></a> Lokale Bereitstellung
 
 In den Beispielen dieses Abschnitts wird [deploy_from_image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-) verwendet. Modell und Image müssen daher vor der Bereitstellung registriert werden. Weitere Informationen zu anderen Bereitstellungsmethoden finden Sie unter [deploy](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-) sowie unter [deploy_from_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-).
+
+**Um eine lokale Bereitstellung durchzuführen, müssen Sie Docker auf Ihrem lokalen Computer installiert haben.**
+
+**Verwenden des SDK**
+
+```python
+deployment_config = LocalWebservice.deploy_configuration(port=8890)
+service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
+service.wait_for_deployment(show_output = True)
+print(service.state)
+```
+
+**Verwenden der CLI**
+
+```azurecli-interactive
+az ml model deploy -m sklearn_mnist:1 -ic inferenceconfig.json -dc deploymentconfig.json
+```
 
 ### <a id="aci"></a> Bereitstellen in Azure Container Instances (DEVTEST)
 
 Verwenden Sie Azure Container Instances für die Bereitstellung Ihrer Modelle als Webdienst, wenn mindestens eine der folgenden Bedingungen zutrifft:
+- Sie müssen Ihr Modell schnell bereitstellen und überprüfen.
+- Sie testen ein Modell in der Entwicklungsphase. 
 
-- Sie müssen Ihr Modell schnell bereitstellen und überprüfen. Eine ACI-Bereitstellung ist in weniger als 5 Minuten abgeschlossen.
-- Sie testen ein Modell in der Entwicklungsphase. Um Kontingente und die Regionsverfügbarkeit für ACI anzuzeigen, beachten Sie das Dokument [Kontingente und Regionsverfügbarkeit für Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-quotas).
+Um Kontingente und die Regionsverfügbarkeit für ACI anzuzeigen, lesen Sie den Artikel [Kontingente und Regionsverfügbarkeit für Azure Container Instances](https://docs.microsoft.com/azure/container-instances/container-instances-quotas).
 
-Verwenden Sie die folgenden Schritte für Bereitstellungen in Azure Container Instances:
+**Verwenden des SDK**
 
-1. Definieren Sie die Bereitstellungskonfiguration. Diese Konfiguration hängt von den Anforderungen Ihres Modells ab. Das folgende Beispiel definiert eine Konfiguration, die einen CPU-Kern und 1 GB Speicher verwendet:
+```python
+deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)
+service = Model.deploy(ws, "aciservice", [model], inference_config, deployment_config)
+service.wait_for_deployment(show_output = True)
+print(service.state)
+```
 
-    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-deploy-to-aci/how-to-deploy-to-aci.py?name=configAci)]
+**Verwenden der CLI**
 
-2. Um das Image bereitzustellen, das im Abschnitt [Erstellen des Image](#createimage) dieses Dokuments erstellt wurde, verwenden Sie den folgenden Code:
-
-    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-deploy-to-aci/how-to-deploy-to-aci.py?name=option3Deploy)]
-
-    **Geschätzter Zeitaufwand**: Ca. fünf Minuten.
+```azurecli-interactive
+az ml model deploy -m sklearn_mnist:1 -n aciservice -ic inferenceconfig.json -dc deploymentconfig.json
+```
 
 Weitere Informationen finden Sie in der Referenzdokumentation für die Klassen [AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) und [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py).
 
 ### <a id="aks"></a> Bereitstellen in Azure Kubernetes Service (PRODUKTION)
 
-Um Ihr Modell als hochgradig skalierbaren Produktionswebdienst bereitzustellen, verwenden Sie Azure Kubernetes Service (AKS). Sie können einen vorhandenen AKS-Cluster verwenden oder mithilfe des Azure Machine Learning-SDK, der CLI oder des Azure-Portals einen neuen erstellen.
+Sie können einen vorhandenen AKS-Cluster verwenden oder mithilfe des Azure Machine Learning-SDK, der CLI oder des Azure-Portals einen neuen erstellen.
 
-Das Erstellen eines AKS-Clusters ist ein für Ihren Arbeitsbereich einmaliger Prozess. Sie können diesen Cluster für mehrere Bereitstellungen wiederverwenden.
 
 > [!IMPORTANT]
-> Wenn Sie den Cluster löschen, müssen Sie bei der nächsten Bereitstellung einen neuen Cluster erstellen.
+> Das Erstellen eines AKS-Clusters ist ein für Ihren Arbeitsbereich einmaliger Prozess. Sie können diesen Cluster für mehrere Bereitstellungen wiederverwenden.
+> Wenn Sie KEINEN AKS-Cluster erstellt oder angefügt haben, finden Sie <a href="#create-attach-aks">hier</a> weitere Informationen.
 
-Azure Kubernetes Service bietet die folgenden Funktionen:
+#### Bereitstellen für AKS <a id="deploy-aks"></a>
 
-* Automatische Skalierung
-* Protokollierung
-* Modelldatensammlung
-* Schnelle Reaktionszeiten für Ihre Webdienste
-* TLS-Terminierung
-* Authentication
-
-#### <a name="autoscaling"></a>Automatische Skalierung
-
-Die automatische Skalierung kann durch Festlegen von `autoscale_target_utilization`, `autoscale_min_replicas` und `autoscale_max_replicas` für den AKS-Webdienst gesteuert werden. Die Aktivierung der automatischen Skalierung wird im folgenden Beispiel veranschaulicht:
-
-```python
-aks_config = AksWebservice.deploy_configuration(autoscale_enabled=True,
-                                                autoscale_target_utilization=30,
-                                                autoscale_min_replicas=1,
-                                                autoscale_max_replicas=4)
+Sie können die Bereitstellung in AKS mit der Azure ML CLI durchführen:
+```azurecli-interactive
+az ml model deploy -ct myaks -m mymodel:1 -n aksservice -ic inferenceconfig.json -dc deploymentconfig.json
 ```
 
-Skalierungsentscheidungen werden auf der Grundlage der Auslastung der aktuellen Containerreplikate getroffen. Zur Ermittlung der aktuellen Auslastung wird die Anzahl ausgelasteter Replikate (Replikate, die eine Anforderung verarbeiten) durch die Gesamtanzahl aktueller Replikate geteilt. Übersteigt dieser Wert die Zielauslastung, werden weitere Replikate erstellt. Ist der Wert niedriger, wird die Replikatanzahl verringert. Die Zielauslastung ist standardmäßig auf 70 Prozent festgelegt.
-
-Die Entscheidung, Replikate hinzuzufügen, wird sekundenschnell getroffen und umgesetzt. Die Entscheidung, Replikate zu entfernen, dauert länger (etwa eine Minute). Dadurch bleiben Replikate im Leerlauf etwa eine Minute lang erhalten und können ggf. neu hinzukommende Anforderungen verarbeiten.
-
-Die erforderlichen Replikate können mithilfe des folgenden Codes berechnet werden:
-
+Sie können auch das Python SDK verwenden:
 ```python
-from math import ceil
-# target requests per second
-targetRps = 20
-# time to process the request (in seconds)
-reqTime = 10
-# Maximum requests per container
-maxReqPerContainer = 1
-# target_utilization. 70% in this example
-targetUtilization = .7
-
-concurrentRequests = targetRps * reqTime / targetUtilization
-
-# Number of container replicas
-replicas = ceil(concurrentRequests / maxReqPerContainer)
+aks_target = AksCompute(ws,"myaks")
+deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)
+service = Model.deploy(ws, "aksservice", [model], inference_config, deployment_config, aks_target)
+service.wait_for_deployment(show_output = True)
+print(service.state)
+print(service.get_logs())
 ```
 
+Weitere Informationen zur Konfiguration Ihrer AKS-Bereitstellung (einschließlich der automatischen Skalierung) finden Sie in der Referenz zu [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice).
+
+**Geschätzter Zeitaufwand:** Ca. fünf Minuten.
+
+#### Erstellen oder Anfügen eines AKS-Clusters <a id="create-attach-aks"></a>
+Das Erstellen oder Anfügen eines AKS-Clusters ist ein für Ihren Arbeitsbereich **einmaliger Vorgang**. Nachdem der Cluster Ihrem Arbeitsbereich zugeordnet wurde, können Sie ihn für mehrere Bereitstellungen verwenden. 
+
+Wenn Sie den Cluster oder die Ressourcengruppe löschen, die ihn enthält, müssen Sie bei der nächsten Bereitstellung einen neuen Cluster erstellen.
+
+##### <a name="create-a-new-aks-cluster"></a>Erstellen eines neuen AKS-Clusters
 Weitere Informationen zum Festlegen von `autoscale_target_utilization`, `autoscale_max_replicas` und `autoscale_min_replicas` finden Sie in der Referenz zu [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none-).
-
-#### <a name="create-a-new-cluster"></a>Erstellen eines neuen Clusters
-
-Verwenden Sie zum Erstellen eines neuen Azure Kubernetes Service-Clusters den folgenden Code:
-
-> [!IMPORTANT]
-> Das Erstellen des AKS-Clusters ist ein für Ihren Arbeitsbereich einmaliger Prozess. Nach der Erstellung können Sie diesen Cluster für mehrere Bereitstellungen wiederverwenden. Wenn Sie den Cluster oder die Ressourcengruppe, die ihn enthält, löschen, müssen Sie bei der nächsten Bereitstellung einen neuen Cluster erstellen.
-> Wenn Sie für [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py) benutzerdefinierte Werte für agent_count und vm_size auswählen, müssen Sie sicherstellen, dass agent_count multipliziert mit vm_size mindestens 12 virtuellen CPUs entspricht. Wenn Sie beispielsweise für vm_size „Standard_D3_v2“ verwenden, das 4 virtuelle CPUs hat, müssen Sie für agent_count einen Wert von mindestens 3 wählen.
+Das folgende Beispiel zeigt, wie ein neuer Azure Kubernetes Service-Cluster erstellt wird:
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -348,7 +309,7 @@ from azureml.core.compute import AksCompute, ComputeTarget
 # Use the default configuration (you can also provide parameters to customize this)
 prov_config = AksCompute.provisioning_configuration()
 
-aks_name = 'aml-aks-1'
+aks_name = 'myaks'
 # Create the cluster
 aks_target = ComputeTarget.create(workspace = ws,
                                     name = aks_name,
@@ -356,13 +317,19 @@ aks_target = ComputeTarget.create(workspace = ws,
 
 # Wait for the create process to complete
 aks_target.wait_for_completion(show_output = True)
-print(aks_target.provisioning_state)
-print(aks_target.provisioning_errors)
 ```
+
+Weitere Informationen zum Erstellen eines AKS-Clusters außerhalb des Azure Machine Learning SDK finden Sie in den folgenden Artikeln:
+* [az aks create](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
+* [Schnellstart: Bereitstellen eines AKS-Clusters (Azure Kubernetes Service) über das Azure-Portal](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
+
+
+> [!IMPORTANT]
+> Wenn Sie für [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py) benutzerdefinierte Werte für agent_count und vm_size auswählen, müssen Sie sicherstellen, dass agent_count multipliziert mit vm_size mindestens 12 virtuellen CPUs entspricht. Wenn Sie beispielsweise für vm_size „Standard_D3_v2“ verwenden, das 4 virtuelle CPUs hat, müssen Sie für agent_count einen Wert von mindestens 3 wählen.
 
 **Geschätzter Zeitaufwand**: Ca. 20 Minuten.
 
-#### <a name="use-an-existing-cluster"></a>Verwenden eines vorhandenen Clusters
+##### <a name="attach-an-existing-aks-cluster"></a>Anfügen eines vorhandenen AKS-Clusters
 
 Wenn Sie in Ihrem Azure-Abonnement bereits über einen AKS-Cluster mit der Version 1.12.## und mindestens 12 virtuellen CPUs verfügen, können Sie diesen für die Bereitstellung Ihres Images verwenden. Der folgende Code veranschaulicht das Anfügen eines vorhandenen AKS-Clusters der Version 1.12.## an Ihren Arbeitsbereich:
 
@@ -376,280 +343,126 @@ cluster_name = 'mycluster'
 attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                          cluster_name = cluster_name)
 aks_target = ComputeTarget.attach(ws, 'mycompute', attach_config)
-
-# Wait for the operation to complete
-aks_target.wait_for_completion(True)
 ```
 
-**Geschätzter Zeitaufwand**: Ca. 3 Minuten.
+## <a name="consume-web-services"></a>Nutzen von Webdiensten
+Jeder bereitgestellte Webdienst stellt eine REST-API zur Verfügung, sodass Sie Clientanwendungen in einer Reihe verschiedener Programmiersprachen erstellen können. Wenn Sie die Authentifizierung für Ihren Dienst aktiviert haben, müssen Sie einen Dienstschlüssel als Token in Ihrem Anforderungsheader angeben.
 
-Weitere Informationen zum Erstellen eines AKS-Clusters außerhalb des Azure Machine Learning SDK finden Sie in den folgenden Artikeln:
-
-* [az aks create](https://docs.microsoft.com/cli/azure/aks?toc=%2Fen-us%2Fazure%2Faks%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
-* [Schnellstart: Bereitstellen eines AKS-Clusters (Azure Kubernetes Service) über das Azure-Portal](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
-
-#### <a name="deploy-the-image"></a>Bereitstellen des Image
-
-Um das im Abschnitt [Erstellen des Images](#createimage) dieses Dokuments erstellte Image dem Azure Kubernetes Server-Cluster bereitzustellen, verwenden Sie den folgenden Code:
-
+Dies ist ein Beispiel, wie Sie Ihren Dienst in Python aufrufen können:
 ```python
-from azureml.core.webservice import Webservice, AksWebservice
-
-# Set configuration and service name
-aks_config = AksWebservice.deploy_configuration()
-aks_service_name ='aks-service-1'
-# Deploy from image
-service = Webservice.deploy_from_image(workspace = ws,
-                                            name = aks_service_name,
-                                            image = image,
-                                            deployment_config = aks_config,
-                                            deployment_target = aks_target)
-# Wait for the deployment to complete
-service.wait_for_deployment(show_output = True)
-print(service.state)
-```
-
-**Geschätzter Zeitaufwand**: Ca. 3 Minuten.
-
-Weitere Informationen finden Sie in der Referenzdokumentation für die Klassen [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) und [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py).
-
-### <a id="azuremlcompute"></a> Rückschluss mit Azure ML Compute
-
-Azure ML-Computeziele werden von Azure Machine Learning Service erstellt und verwaltet. Sie können für Batchvorhersagen über Azure ML-Pipelines verwendet werden.
-
-Eine exemplarische Vorgehensweise für Batchrückschlüsse mit Azure ML Compute finden Sie unter [Ausführen von Batchvorhersagen für große Datasets mit Azure Machine Learning Service](how-to-run-batch-predictions.md).
-
-
-### <a id="fpga"> Bereitstellen auf Field Programmable Gate Arrays (FPGAs)</a>
-
-Mit Project Brainwave kann eine extrem kurze Wartezeit für Echtzeit-Inferenzierungsanforderungen erzielt werden. Project Brainwave beschleunigt tiefe neuronale Netzwerke (Deep Neural Networks, DNNS), die auf Field-Programmable Gate Arrays in der Azure-Cloud bereitgestellt sind. Häufig verwendete DNNs sind als Featurizer für das Lernen durch Transfer verfügbar oder können mit Gewichtungen angepasst werden, die mit Ihren eigenen Daten trainiert sind.
-
-Eine exemplarische Vorgehensweise zur Bereitstellung eines Modells mithilfe von Project Brainwave finden Sie im Dokument [Deploy to a FPGA (Bereitstellen in einem FPGA)](how-to-deploy-fpga-web-service.md).
-
-## <a name="define-schema"></a>Definieren des Schemas
-
-Beim Bereitstellen des Webdiensts können benutzerdefinierte Decorator-Elemente für die Erstellung von [OpenAPI](https://swagger.io/docs/specification/about/)-Spezifikationen und die Änderung von Eingabetypen verwendet werden. In der Datei `score.py` wird ein Beispiel der Ein- und/oder Ausgabe im Konstruktor für eines der definierten Typobjekte bereitgestellt. Daraufhin wird das Schema auf der Grundlage des Typs und des Beispiels automatisch erstellt. Folgende Typen werden derzeit unterstützt:
-
-* `pandas`
-* `numpy`
-* `pyspark`
-* Python (Standard)
-
-Vergewissern Sie sich zunächst, dass die erforderlichen Abhängigkeiten für das Paket `inference-schema` in Ihrer Conda-Umgebungsdatei `env.yml` enthalten sind. Da in diesem Beispiel der Parametertyp `numpy` für das Schema verwendet wird, wird auch der pip-Zusatz `[numpy-support]` installiert.
-
-```python
-%%writefile myenv.yml
-name: project_environment
-dependencies:
-  - python=3.6.2
-  - pip:
-    - azureml-defaults
-    - scikit-learn
-    - inference-schema[numpy-support]
-```
-
-Ändern Sie als Nächstes die Datei `score.py`, um die Pakete vom Typ `inference-schema` zu importieren. Definieren Sie in den Variablen `input_sample` und `output_sample` das Format für das Ein- und Ausgabebeispiel. (Die Variablen stellen das Anforderungs- und das Antwortformat für den Webdienst dar.) Verwenden Sie diese Beispiele in den Decorator-Elementen der Ein- und Ausgabefunktion für die Funktion `run()`.
-
-```python
-%%writefile score.py
-import json
-import numpy as np
-import os
-import pickle
-from sklearn.externals import joblib
-from sklearn.linear_model import LogisticRegression
-from azureml.core.model import Model
-
-from inference_schema.schema_decorators import input_schema, output_schema
-from inference_schema.parameter_types.numpy_parameter_type import NumpyParameterType
-
-
-def init():
-    global model
-    model_path = Model.get_model_path('sklearn_mnist')
-    model = joblib.load(model_path)
-
-
-input_sample = np.array([[1.8]])
-output_sample = np.array([43638.88])
-
-@input_schema('data', NumpyParameterType(input_sample))
-@output_schema(NumpyParameterType(output_sample))
-def run(raw_data):
-    data = np.array(json.loads(raw_data)['data'])
-    y_hat = model.predict(data)
-    return json.dumps(y_hat.tolist())
-```
-
-Rufen Sie den Swagger-URI aus dem Dienst ab, nachdem Sie die normale Imageregistrierung und die Webdienstbereitstellung mit der aktualisierten Datei `score.py` durchlaufen haben. Wenn Sie diesen URI anfordern, wird die Datei `swagger.json` zurückgegeben.
-
-```python
-service.wait_for_deployment(show_output=True)
-print(service.swagger_uri)
-```
-
-
-
-Wenn Sie ein neues Image erstellen, müssen Sie jeden Dienst, der das neue Image verwenden soll, manuell aktualisieren. Verwenden Sie die Methode `update`, um den Webdienst zu aktualisieren. Der folgende Code veranschaulicht, wie Sie den Webdienst so aktualisieren, dass er ein neues Image verwendet:
-
-```python
-from azureml.core.webservice import Webservice
-from azureml.core.image import Image
-
-service_name = 'aci-mnist-3'
-# Retrieve existing service
-service = Webservice(name = service_name, workspace = ws)
-
-# point to a different image
-new_image = Image(workspace = ws, id="myimage2:1")
-
-# Update the image used by the service
-service.update(image = new_image)
-print(service.state)
-```
-
-Weitere Informationen finden Sie in der Referenzdokumentation zur [Webdienst](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)-Klasse.
-
-## <a name="test-web-service-deployments"></a>Testen der Webdienstbereitstellungen
-
-Um eine Webdienstbereitstellung zu testen, können Sie die Methode `run` des Webdienstobjekts verwenden. Im folgenden Beispiel wird ein JSON-Dokument auf einen Webdienst festgelegt und das Ergebnis angezeigt. Die gesendeten Daten müssen mit dem übereinstimmen, was das Modell erwartet. In diesem Beispiel entspricht das Format der Daten der Eingabe, die vom Diabetes-Modell erwartet wird.
-
-```python
+import requests
 import json
 
+headers = {'Content-Type':'application/json'}
+
+if service.auth_enabled:
+    headers['Authorization'] = 'Bearer '+service.get_keys()[0]
+
+print(headers)
+    
 test_sample = json.dumps({'data': [
-    [1,2,3,4,5,6,7,8,9,10],
+    [1,2,3,4,5,6,7,8,9,10], 
     [10,9,8,7,6,5,4,3,2,1]
 ]})
-test_sample = bytes(test_sample,encoding = 'utf8')
 
-prediction = service.run(input_data = test_sample)
-print(prediction)
+response = requests.post(service.scoring_uri, data=test_sample, headers=headers)
+print(response.status_code)
+print(response.elapsed)
+print(response.json())
 ```
 
-Der Webdienst ist eine REST-API, sodass Sie Clientanwendungen in einer Reihe verschiedener Programmiersprachen erstellen können. Weitere Informationen finden Sie unter [Erstellen von Clientanwendungen zur Nutzung von Webdiensten](how-to-consume-web-service.md).
+Weitere Informationen finden Sie unter [Erstellen von Clientanwendungen zur Nutzung von Webdiensten](how-to-consume-web-service.md).
 
 ## <a id="update"></a> Aktualisieren des Webdiensts
 
-Wenn Sie ein neues Image erstellen, müssen Sie jeden Dienst, der das neue Image verwenden soll, manuell aktualisieren. Verwenden Sie die Methode `update`, um den Webdienst zu aktualisieren. Der folgende Code veranschaulicht, wie Sie den Webdienst so aktualisieren, dass er ein neues Image verwendet:
+Wenn Sie ein neues Modell erstellen, müssen Sie jeden Dienst, der das neue Modell verwenden soll, manuell aktualisieren. Verwenden Sie die Methode `update`, um den Webdienst zu aktualisieren. Der folgende Code veranschaulicht, wie Sie den Webdienst so aktualisieren, dass er ein neues Modell verwendet:
 
 ```python
 from azureml.core.webservice import Webservice
-from azureml.core.image import Image
+from azureml.core.model import Model
 
-service_name = 'aci-mnist-3'
+# register new model
+new_model = Model.register(model_path = "outputs/sklearn_mnist_model.pkl",
+                       model_name = "sklearn_mnist",
+                       tags = {"key": "0.1"},
+                       description = "test",
+                       workspace = ws)
+
+service_name = 'myservice'
 # Retrieve existing service
 service = Webservice(name = service_name, workspace = ws)
 
-# point to a different image
-new_image = Image(workspace = ws, id="myimage2:1")
-
-# Update the image used by the service
-service.update(image = new_image)
+# Update to new model(s)
+service.update(models = [new_model])
 print(service.state)
+print(service.get_logs())
 ```
 
-Weitere Informationen finden Sie in der Referenzdokumentation zur [Webdienst](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)-Klasse.
-
-## <a id="iotedge"></a> Bereitstellen für Azure IoT Edge
-
-Ein Azure IoT Edge-Gerät ist ein Linux- oder Windows-basiertes Gerät, das die Azure IoT Edge-Runtime ausführt. Mithilfe von Azure IoT Hub können Sie Machine Learning-Modelle für diese Geräte als IoT Edge-Module bereitstellen. Das Bereitstellen eines Modells auf einem IoT Edge-Gerät ermöglicht es dem Gerät, das Modell direkt zu verwenden, anstatt die Daten für die Verarbeitung an die Cloud zu senden. So können Sie die Antwortzeiten verkürzen und die Datenübertragung reduzieren.
-
-Azure IoT Edge-Module werden aus einer Containerregistrierung auf Ihrem Gerät bereitgestellt. Wenn Sie ein Image aus Ihrem Modell erstellen, wird es in der Containerregistrierung für Ihren Arbeitsbereich gespeichert.
-
-> [!IMPORTANT]
-> Bei den Informationen in diesem Abschnitt wird davon ausgegangen, dass Sie bereits mit Azure IoT Hub und Azure IoT Edge-Modulen vertraut sind. Einige der Informationen in diesem Abschnitt beziehen sich zwar speziell auf Azure Machine Learning Service, der Großteil der Bereitstellung für ein Edgegerät findet jedoch im Azure IoT-Dienst statt.
->
-> Sollten Sie noch nicht mit Azure IoT vertraut sein, können Sie sich in der [Dokumentation zu Azure IoT (Internet der Dinge)](https://docs.microsoft.com/azure/iot-fundamentals/) sowie unter [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) einen allgemeinen Überblick verschaffen. Verwenden Sie anschließend die anderen Links in diesem Abschnitt, um sich ausführlicher mit bestimmten Vorgängen zu beschäftigen.
-
-### <a name="set-up-your-environment"></a>Einrichten der Umgebung
-
-* Eine Entwicklungsumgebung. Weitere Informationen finden Sie in der Dokumentation [Konfigurieren einer Entwicklungsumgebung](how-to-configure-environment.md).
-
-* Ein [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md) in Ihrem Azure-Abonnement.
-
-* Ein trainiertes Modell. Ein Beispiel zum Trainieren eines Modells finden Sie in der Dokumentation [Train an image classification model with Azure Machine Learning (Trainieren eines Bildklassifizierungsmodells mit Azure Machine Learning)](tutorial-train-models-with-aml.md). Ein vortrainiertes Modell steht im [AI-Toolkit für Azure IoT Edge-GitHub-Repository](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial) zur Verfügung.
-
-### <a id="getcontainer"></a> Abrufen der Anmeldeinformationen für die Containerregistrierung
-
-Um ein IoT Edge-Modul auf Ihrem Gerät bereitzustellen, benötigt Azure IoT die Anmeldeinformationen für die Containerregistrierung, in der der Azure Machine Learning Service Docker-Images speichert.
-
-Die Anmeldeinformationen können auf zwei Arten abgerufen werden:
-
-+ **Im Azure-Portal**:
-
-  1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/signin/index) an.
-
-  1. Wechseln Sie zum Arbeitsbereich Ihres Azure Machine Learning-Diensts, und klicken Sie auf __Übersicht__. Klicken Sie auf den Link __Registrierung__, um zu den Einstellungen der Containerregistrierung zu wechseln.
-
-     ![Ein Bild des Containerregistrierungseintrags](./media/how-to-deploy-and-where/findregisteredcontainer.png)
-
-  1. Klicken Sie in der Containerregistrierung auf **Zugriffsschlüssel**, und aktivieren Sie dann den Administratorbenutzer.
-
-     ![Ein Bild des Bildschirms „Zugriffsschlüssel“](./media/how-to-deploy-and-where/findaccesskey.png)
-
-  1. Speichern Sie die Werte für **Anmeldeserver**, **Benutzername** und **Kennwort**.
-
-+ **Mit einem Python-Skript**:
-
-  1. Verwenden Sie das folgende Python-Skript nach dem Code, den Sie oben zum Erstellen eines Containers ausgeführt haben:
-
-     ```python
-     # Getting your container details
-     container_reg = ws.get_details()["containerRegistry"]
-     reg_name=container_reg.split("/")[-1]
-     container_url = "\"" + image.image_location + "\","
-     subscription_id = ws.subscription_id
-     from azure.mgmt.containerregistry import ContainerRegistryManagementClient
-     from azure.mgmt import containerregistry
-     client = ContainerRegistryManagementClient(ws._auth,subscription_id)
-     result= client.registries.list_credentials(resource_group_name, reg_name, custom_headers=None, raw=False)
-     username = result.username
-     password = result.passwords[0].value
-     print('ContainerURL{}'.format(image.image_location))
-     print('Servername: {}'.format(reg_name))
-     print('Username: {}'.format(username))
-     print('Password: {}'.format(password))
-     ```
-  1. Speichern Sie die Werte für ContainerURL, Servername, Benutzername und Kennwort.
-
-     Diese Anmeldeinformationen sind erforderlich, um dem IoT Edge-Gerät Zugriff auf Images in Ihrer privaten Containerregistrierung zu gewähren.
-
-### <a name="prepare-the-iot-device"></a>Vorbereiten des IoT-Geräts
-
-Registrieren Sie Ihr Gerät bei Azure IoT Hub, und installieren Sie anschließend die IoT Edge-Runtime auf dem Gerät. Weitere Informationen zu diesem Prozess finden Sie bei Bedarf unter [Schnellstart: Bereitstellen Ihres ersten IoT Edge-Moduls auf einem Linux-Gerät](../../iot-edge/quickstart-linux.md).
-
-Geräte können auch mit folgenden Methoden registriert werden:
-
-* [Azure-Portal](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)
-* [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-cli)
-* [Visual Studio Code](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-vscode)
-
-### <a name="deploy-the-model-to-the-device"></a>Bereitstellen des Modells für das Gerät
-
-Verwenden Sie die im Abschnitt [Abrufen von Anmeldeinformationen für die Containerregistrierung](#getcontainer) erfassten Registrierungsinformationen mit den Modulbereitstellungsschritten für IoT Edge-Module, um das Modell für das Gerät bereitzustellen. Wenn Sie also beispielsweise [Azure IoT Edge-Module über das Azure-Portal bereitstellen](../../iot-edge/how-to-deploy-modules-portal.md), müssen Sie die __Registrierungseinstellungen__ für das Gerät konfigurieren. Verwenden Sie __Anmeldeserver__, __Benutzername__, und __Kennwort__ für Ihre Arbeitsbereich-Containerregistrierung.
-
-Die Bereitstellung kann auch über die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli) sowie mit [Visual Studio Code](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-vscode) ausgeführt werden.
-
 ## <a name="clean-up"></a>Bereinigen
-
 Verwenden Sie zum Löschen eines bereitgestellten Webdiensts `service.delete()`.
-
-Verwenden Sie zum Löschen eines Image `image.delete()`.
-
 Verwenden Sie zum Löschen eines registrierten Modells `model.delete()`.
 
-Weitere Informationen finden Sie in der Referenzdokumentation zu [WebService.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--), [Image.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#delete--) und [Model.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
+Weitere Informationen finden Sie in der Referenzdokumentation zu [WebService.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) und [Model.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
+
+## Erweiterte Konfigurationseinstellungen <a id="advanced-config"></a>
+
+### <a id="customimage"></a> Verwenden eines benutzerdefinierten Basisimages
+
+Intern erstellt InferenceConfig ein Docker-Image, das das Modell und andere für den Dienst benötigte Ressourcen enthält. Wenn keine Angabe erfolgt, wird ein Basisstandardimage verwendet.
+
+Wenn Sie ein Image erstellen, das mit Ihrer Rückschlusskonfiguration verwendet werden soll, muss das Image die folgenden Anforderungen erfüllen:
+
+* Ubuntu 16.04 oder höher.
+* Conda 4.5.# oder höher.
+* Python 3.5# oder 3.6#.
+
+Legen Sie bei Verwendung eines benutzerdefinierten Images die Eigenschaft `base_image` für die Rückschlusskonfiguration auf die Adresse des Images fest. Im folgenden Beispiel wird veranschaulicht, wie Sie ein Image aus einer öffentlichen und einer privaten Azure Container Registry verwenden:
+
+```python
+# use an image available in public Container Registry without authentication
+inference_config.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
+
+# or, use an image available in a private Container Registry
+inference_config.base_image = "myregistry.azurecr.io/mycustomimage:1.0"
+inference_config.base_image_registry.address = "myregistry.azurecr.io"
+inference_config.base_image_registry.username = "username"
+inference_config.base_image_registry.password = "password"
+```
+
+Die folgenden Image-URIs beziehen sich auf von Microsoft bereitgestellte Images und können ohne Angabe eines Benutzernamens oder Kennwortwerts verwendet werden:
+
+* `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda`
+* `mcr.microsoft.com/azureml/onnxruntime:v0.4.0`
+* `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-cuda10.0-cudnn7`
+* `mcr.microsoft.com/azureml/onnxruntime:v0.4.0-tensorrt19.03`
+
+Um diese Images zu verwenden, legen Sie das `base_image` auf den URI aus der Liste oben fest. Legen Sie `base_image_registry.address` auf `mcr.microsoft.com` fest.
+
+> [!IMPORTANT]
+> Microsoft-Images, die CUDA oder TensorRT verwenden, dürfen nur für Microsoft Azure-Dienste verwendet werden.
+
+Weitere Informationen zum Hochladen eines eigenen Images in eine Azure Container Registry finden Sie unter [Pushen des ersten Images in eine private Docker-Containerregistrierung](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli).
+
+Wenn Ihr Modell in Azure Machine Learning Compute mit __Version 1.0.22 oder höher__ des Azure Machine Learning-SDK trainiert wird, wird während des Trainings ein Image erstellt. Die Verwendung dieses Images wird im folgenden Beispiel veranschaulicht:
+
+```python
+# Use an image built during training with SDK 1.0.22 or greater
+image_config.base_image = run.properties["AzureML.DerivedImageName"]
+```
+
+## <a name="other-inference-options"></a>Andere Rückschlussoptionen
+
+### <a id="azuremlcompute"></a> Batchrückschluss
+Azure Machine Learning Compute-Ziele werden von Azure Machine Learning Service erstellt und verwaltet. Sie können für Batchvorhersagen über Azure Machine Learning-Pipelines verwendet werden.
+
+Eine exemplarische Vorgehensweise zu Batchrückschlüssen mit Azure Machine Learning Compute finden Sie im Artikel [Ausführen von Batchvorhersagen](how-to-run-batch-predictions.md).
+
+## <a id="iotedge"></a> Rückschluss auf IoT Edge
+Unterstützung für die Bereitstellung auf Edge-Geräten befindet sich in der Vorschauphase. Weitere Informationen finden Sie im Artikel [Bereitstellen von Azure Machine Learning als IoT Edge-Modul](https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-deploy-machine-learning).
 
 ## <a name="next-steps"></a>Nächste Schritte
-
 * [Problembehandlung von Bereitstellungen von Azure Machine Learning Service mit AKS und ACI](how-to-troubleshoot-deployment.md)
 * [Secure Azure Machine Learning web services with SSL (Sichere Azure Machine Learning-Webdienste mit SSL)](how-to-secure-web-service.md)
 * [Consume a ML Model deployed as a web service (Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells)](how-to-consume-web-service.md).
-* [How to run batch predictions (Ausführen von Batchvorhersagen)](how-to-run-batch-predictions.md)
 * [Überwachen Ihrer Azure Machine Learning-Modelle mit Application Insights](how-to-enable-app-insights.md)
 * [Sammeln von Daten für Modelle in der Produktion](how-to-enable-data-collection.md)
-* [SDK für Azure Machine Learning Service](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
-* [Verwenden von Azure Machine Learning Service mit Azure Virtual Networks](how-to-enable-virtual-network.md)
-* [Bewährte Methoden für das Erstellen von Empfehlungssystemen](https://github.com/Microsoft/Recommenders)
-* [Erstellen einer Echtzeitempfehlungs-API in Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)
