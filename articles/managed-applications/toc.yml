@@ -17,6 +17,8 @@
       href: publish-service-catalog-app.md
     - name: Veröffentlichen der Marketplace-Anwendung
       href: publish-marketplace-app.md
+    - name: Erstellen eines benutzerdefinierten Ressourcenanbieters
+      href: create-custom-provider.md
 - name: Beispiele
   items:
     - name: Azure-Befehlszeilenschnittstelle
@@ -25,6 +27,10 @@
       href: powershell-samples.md
     - name: Verwaltete Anwendungslösungen
       href: sample-projects.md
+- name: Konzepte
+  items:
+    - name: Benutzerdefinierte Anbieter
+      href: custom-providers-overview.md
 - name: Anleitungen
   items:
     - name: Herausgeber
@@ -68,7 +74,7 @@
               href: microsoft-common-optionsgroup.md
             - name: PasswordBox
               href: microsoft-common-passwordbox.md
-            - name: Abschnitt
+            - name: '`Section`'
               href: microsoft-common-section.md
             - name: TextBlock
               href: microsoft-common-textblock.md

@@ -555,6 +555,8 @@
                   href: app/usage-workbooks.md
             - name: Web-App-Analyselösung
               href: insights/azure-web-apps-analytics.md
+            - name: In Kubernetes gehostete Apps
+              href: app/kubernetes.md
         - name: Überwachen von Containern
           items:
             - name: Azure Monitor für Container
@@ -563,13 +565,19 @@
                   href: insights/container-insights-overview.md
                 - name: Häufig gestellte Fragen
                   href: insights/container-insights-faq.md
-                - name: Integrieren
-                  href: insights/container-insights-onboard.md
+                - name: Aktivieren der Überwachung
+                  items:
+                    - name: 'Aktivieren der Überwachung: Übersicht'
+                      href: insights/container-insights-onboard.md
+                    - name: Aktivieren für einen neuen Cluster
+                      href: insights/container-insights-enable-new-cluster.md
+                    - name: Aktivieren für einen vorhandenen Cluster
+                      href: insights/container-insights-enable-existing-clusters.md
                 - name: Analysieren
                   href: insights/container-insights-analyze.md
                 - name: Deaktivieren der Überwachung
                   href: insights/container-insights-optout.md
-                - name: Anzeigen von Containerliveprotokollen
+                - name: Anzeigen von Liveprotokollen
                   href: insights/container-insights-live-logs.md
                 - name: Analysieren von Daten mit Protokollabfragen
                   href: insights/container-insights-log-search.md
@@ -585,8 +593,6 @@
               href: insights/containers.md
             - name: Überwachen von Docker-Anwendungen
               href: app/docker.md
-            - name: Application Insights für Kubernetes
-              href: app/kubernetes.md
         - name: Überwachen von Ressourcengruppen
           href: insights/resource-group-insights.md
         - name: Überwachen von Datenbanken

@@ -16,6 +16,8 @@
   items:
     - name: Standorte und Partner
       href: virtual-wan-locations-partners.md
+    - name: Globale Architektur für die Netzwerkübertragung
+      href: virtual-wan-global-transit-architecture.md
     - name: Office 365-Steuerebene in Virtual WAN
       href: virtual-wan-office365-overview.md
 - name: Anleitungen

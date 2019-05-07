@@ -167,6 +167,8 @@
               href: azure-to-azure-how-to-enable-replication-ade-vms.md
             - name: Ermöglichen der Replikation von Azure zu Azure für virtuelle S2D-Computer
               href: azure-to-azure-how-to-enable-replication-s2d-vms.md
+            - name: Aktivieren der Replikation für einen hinzugefügten Datenträger
+              href: azure-to-azure-enable-replication-added-disk.md
             - name: Ausschließen von Datenträgern
               href: azure-to-azure-exclude-disks.md
             - name: Erneutes Schützen virtueller Azure-Computer nach einem Failover

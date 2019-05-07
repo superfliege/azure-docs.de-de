@@ -129,6 +129,8 @@
         - name: Storage Premium-Leistung
           href: ../virtual-machines/windows/premium-storage-performance.md
           maintainContext: true
+        - name: Kurzlebige Betriebssystemdatenträger
+          href: ephemeral-os-disks.md
         - name: Skalierbarkeitsziele für Datenträger
           href: ../virtual-machines/windows/disk-scalability-targets.md
           maintainContext: true
@@ -204,7 +206,7 @@
               href: virtual-machine-scale-sets-encrypt-disks-ps.md
             - name: Verwenden der Azure-CLI
               href: virtual-machine-scale-sets-encrypt-disks-cli.md
-            - name: Datenträgerverschlüsselung mit Erweiterungssequenzierung
+            - name: Erweiterungssequenzierung
               href: ../security/azure-security-disk-encryption-extension-sequencing.md
               maintainContext: true
         - name: Verwenden umfangreicher Skalierungsgruppen
@@ -221,13 +223,16 @@
               href: virtual-machine-scale-sets-manage-cli.md
             - name: Mithilfe von Azure PowerShell
               href: virtual-machine-scale-sets-manage-powershell.md
-        - name: Kataloge mit freigegebenen Images (Vorschau)
-          href: shared-image-galleries.md
+        - name: Kataloge mit freigegebenen Images
           items:
+            - name: Übersicht
+              href: shared-image-galleries.md
             - name: Befehlszeilenschnittstelle (CLI)
               href: shared-images-cli.md
             - name: PowerShell
               href: shared-images-powershell.md
+            - name: Mandantenübergreifende Freigabe von Images
+              href: share-images-across-tenants.md
             - name: Problembehandlung für freigegebene Images
               href: troubleshooting-shared-images.md
         - name: Vertikale Skalierung in einer Skalierungsgruppe

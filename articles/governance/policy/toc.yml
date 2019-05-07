@@ -118,7 +118,7 @@
           href: samples/enforce-data-lake-store-encryption.md
     - name: Gastkonfiguration
       items:
-        - name: Überwachen von installierten Anwendungen unter Linux
+        - name: 'Überwachen von Anwendungen, die nicht unter Linux installiert sind'
           displayName: 'audit, vm'
           href: samples/guest-configuration-applications-installed-linux.md
     - name: Schlüsseltresore

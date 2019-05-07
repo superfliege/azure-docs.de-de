@@ -9,9 +9,9 @@ metadata:
   ms.author: raagyema
   ms.service: postgresql
   ms.topic: landing-page
-  ms.date: 02/25/2019
+  ms.date: 04/26/2019
 abstract:
-  description: 'Azure Database for PostgreSQL ist ein relationaler Datenbankdienst, der auf der Open-Source-Postgres-Datenbank-Engine basiert.  Das vollständig verwaltete Database-as-a-Service-Angebot kann geschäftskritische Workloads mit vorhersagbarer Leistung, Sicherheit, Hochverfügbarkeit und dynamischer Skalierung verarbeiten.  Beim Entwickeln von Anwendungen mit Azure Database for PostgreSQL können Sie die Open-Source-Tools und die Plattform Ihrer Wahl verwenden.  Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie die Azure-Datenbank für PostgreSQL verwenden.'
+  description: 'Azure Database for PostgreSQL ist ein relationaler Datenbankdienst, der auf der Open-Source-Postgres-Datenbank-Engine basiert.  Das vollständig verwaltete Database-as-a-Service-Angebot kann geschäftskritische Workloads mit vorhersagbarer Leistung, Sicherheit, Hochverfügbarkeit und dynamischer Skalierung verarbeiten. Es gibt zwei Bereitstellungsoptionen: Einzelserver und Hyperscale (Citus) (Vorschauversion). Bei der Hyperscale (Citus)-Option werden Abfragen mithilfe von Sharding horizontal über mehrere Computer hinweg skaliert. Sie eignet sich für Anwendungen, für die eine umfangreichere Skalierbarkeit und eine höhere Leistung erforderlich sind. Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie die Azure-Datenbank für PostgreSQL verwenden.'
 sections:
   - title: Fünfminütige Schnellstarts
     items:
@@ -22,22 +22,33 @@ sections:
         items:
           - image:
               src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
-            text: Azure-Portal
+            text: 'Einzelserver: Azure-Portal'
             href: /azure/postgresql/quickstart-create-server-database-portal
           - image:
               src: 'https://docs.microsoft.com/azure/sql-database/media/index/cli.svg'
-            text: Azure-Befehlszeilenschnittstelle
+            text: 'Einzelserver: Azure CLI'
             href: /azure/postgresql/quickstart-create-server-database-azure-cli
+          - image:
+              src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
+            text: 'Hyperscale (Citus): Azure-Portal'
+            href: /azure/postgresql/quickstart-create-hyperscale-portal
   - title: Schritt-für-Schritt-Tutorials
     items:
       - type: paragraph
-        text: 'In diesem Artikel werden folgende Themen erläutert:'
+        text: 'Für Einzelserver:'
       - type: list
         style: ordered
         items:
           - html: 'Erstellen einer Datenbank&#58; <a href="/azure/postgresql/tutorial-design-database-using-azure-portal">Azure-Portal</a> | <a href="/azure/postgresql/tutorial-design-database-using-azure-cli">Azure CLI</a>'
           - html: <a href="/azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json">Erstellen einer Web-App mit Python und der CLI</a>
           - html: <a href="/azure/postgresql/tutorial-monitor-and-tune">Überwachen und Optimieren des Diensts</a>
+      - type: paragraph
+        text: 'Für Hyperscale (Citus) (Vorschauversion):'
+      - type: list
+        style: ordered
+        items:
+          - html: '<a href="/azure/postgresql/tutorial-design-database-hyperscale-multi-tenant">Tutorial: design a multi-tenant database by using Azure Database for PostgreSQL – Hyperscale (Citus) (preview)</a> (Tutorial: Entwerfen einer mehrinstanzenfähigen Datenbank mithilfe von Azure Database for PostgreSQL – Hyperscale (Citus) (Vorschauversion))'
+          - html: '<a href="/azure/postgresql/tutorial-design-database-hyperscale-realtime">Tutorial: Design a real-time analytics dashboard by using Azure Database for PostgreSQL – Hyperscale (Citus) (preview)</a> (Tutorial: Entwerfen eines Echtzeitanalysedashboards mithilfe von Azure Database for PostgreSQL – Hyperscale (Citus) (Vorschauversion))'
   - title: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
     items:
       - type: list

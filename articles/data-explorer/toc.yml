@@ -66,6 +66,10 @@
       items:
         - name: Erfassen von Beispieldaten
           href: ingest-sample-data.md
+    - name: Bereitstellen
+      items:
+        - name: DevOps-Aufgabe
+          href: devops.md
     - name: Abfragen von Daten
       items:
         - name: Schreiben von Abfragen

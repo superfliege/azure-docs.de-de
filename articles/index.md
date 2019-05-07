@@ -6,12 +6,12 @@ description: Erfahren Sie, wie Sie mit Microsoft Azure Cloud Services leistungss
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 73dda32c3f5f89a8b3e7465fbfdde28cb0ad2d6f
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 1e1fdc43caf01ea33ce7587c1612ad416aed6d3d
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020822"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074295"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -2094,7 +2094,7 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                                     </div>
                                 </a>
                             </li>
-<li>
+                            <li>
                                 <a href="/azure/vmware-cloudsimple/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -2107,6 +2107,25 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                                                 <div class="cardText">
                                                     <h3>Azure-VMware-Lösung von CloudSimple</h3>
                                                     <p>Ausführen der VMware-Plattform in Azure</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/openshift/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/openshift.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Red Hat OpenShift</h3>
+                                                    <p>Vollständig verwalteter OpenShift-Dienst, der gemeinsam mit Red Hat betrieben wird</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3063,6 +3082,25 @@ Automatisieren von Azure-Aufgaben mithilfe von Skripts über PowerShell </a>
                                                 <div class="cardText">
                                                     <h3>Azure Dev Spaces</h3>
                                                     <p>Schnelle Kubernetes-Entwicklung mit Containern und Microservices</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/openshift/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/openshift.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Red Hat OpenShift</h3>
+                                                    <p>Vollständig verwalteter OpenShift-Dienst, der gemeinsam mit Red Hat betrieben wird</p>
                                                 </div>
                                             </div>
                                         </div>

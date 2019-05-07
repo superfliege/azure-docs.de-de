@@ -112,6 +112,8 @@
           href: disk-scalability-targets.md
         - name: Sicherung und Notfallwiederherstellung für Datenträger
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: Kurzlebige Betriebssystemdatenträger
+          href: ephemeral-os-disks.md
     - name: Netzwerk
       href: network-overview.md
     - name: Automatisch skalierende Anwendungen
@@ -253,16 +255,32 @@
           href: reserved-vm-instance-size-flexibility.md
     - name: Verwenden von Images
       items:
-        - name: Kataloge mit freigegebenen Images (Vorschau)
+        - name: Kataloge mit freigegebenen Images
           items:
             - name: Übersicht
               href: shared-image-galleries.md
-            - name: Erstellen freigegebener Images mithilfe der CLI
+            - name: Befehlszeilenschnittstelle (CLI)
               href: shared-images.md
             - name: Portal
               href: shared-images-portal.md
+            - name: Mandantenübergreifende Freigabe von Images
+              href: share-images-across-tenants.md
             - name: Problembehandlung für freigegebene Images
               href: troubleshooting-shared-images.md
+        - name: Image Builder (Vorschau)
+          items:
+            - name: Übersicht
+              href: image-builder-overview.md
+            - name: Verwenden der CLI 2.0
+              href: image-builder.md
+            - name: Vorlagenreferenz
+              href: image-builder-json.md
+            - name: Verwenden mit Katalogen
+              href: image-builder-gallery.md
+            - name: Aktualisieren einer Imageversion
+              href: image-builder-gallery-update-image-version.md
+            - name: Problembehandlung
+              href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
         - name: Suchen und Verwenden von Images
           href: cli-ps-findimage.md
         - name: Erstellen eines benutzerdefinierten Image
