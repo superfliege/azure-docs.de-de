@@ -10,18 +10,21 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 12/04/2018
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 92f04d80ea956f3036d7778a5d6de62e53b969ad
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d8644c2c0d4ee5b6ee4dcf16e470e4f2fa478237
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014647"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023719"
 ---
-# <a name="write-and-configure-data-using-azure-machine-learning"></a>Schreiben und Konfigurieren von Daten mithilfe von Azure Machine Learning
+# <a name="write-and-configure-data--with-the-azure-machine-learning-data-prep-sdk"></a>Schreiben und Konfigurieren von Daten mit dem Azure Machine Learning Data Prep SDK
 
 In diesem Artikel lernen Sie verschiedene Methoden zum Schreiben von Daten mithilfe des [Azure Machine Learning-Data Prep SDK für Python](https://aka.ms/data-prep-sdk) und Konfigurieren dieser Daten für Experimente mit dem [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) kennen.  Ausgabedaten können an jeder Stelle in einen Datenfluss geschrieben werden. Schreibvorgänge werden dem Ergebnisdatenfluss als Schritte hinzugefügt, und diese Schritte werden bei jedem Ausführen des Datenflusses ausgeführt. Daten werden in mehrere Partitionsdateien geschrieben, um parallele Schreibvorgänge zuzulassen.
+
+> [!Important]
+> Wenn Sie eine neue Lösung erstellen, probieren Sie die [Azure Machine Learning Datasets](how-to-explore-prepare-data.md) (Vorschau) aus, um Ihre Daten zu transformieren, Momentaufnahmen von Daten zu erstellen und mit einer Versionsangabe versehene Datasetdefinitionen zu speichern. Datasets ist die nächste Version des Datenaufbereitungs-SDK und bietet erweiterte Funktionen zum Verwalten von Datasets in KI-Lösungen.
 
 Da es keine Einschränkungen für die Anzahl von Schreibschritten in einer Pipeline gibt, können Sie problemlos zusätzliche Schreibschritte hinzufügen, um Zwischenergebnisse bei der Problembehandlung oder für andere Pipelines abzurufen.
 

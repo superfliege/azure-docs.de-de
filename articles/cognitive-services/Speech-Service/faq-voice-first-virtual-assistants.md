@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: travisw
-ms.openlocfilehash: 16e4bcbb1514cfd5bbddc22b663d636292095231
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 8427417c9b579c7dfa21f834ce1ca77099159eb2
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025692"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65072617"
 ---
 # <a name="voice-first-virtual-assistants-preview-frequently-asked-questions"></a>Virtuelle Voice-First-Assistenten (Vorschauversion): Häufig gestellte Fragen
 
@@ -29,7 +29,7 @@ Wenn Sie in diesem Dokument keine Antworten auf Ihre Fragen finden, sehen Sie si
 
 **F: Wie fange ich an?**
 
-**A:** Wenn Sie einen virtuellen Voice-First-Assistenten erstellen möchten, empfiehlt es sich, zum Einstieg einen [einfachen Bot Framework-Bot zu erstellen](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0). Verbinden Sie als Nächstes Ihren Bot mit dem [Direct Line Speech-Kanal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech.md).
+**A:** Wenn Sie einen virtuellen Voice-First-Assistenten erstellen möchten, empfiehlt es sich, zum Einstieg einen [einfachen Bot Framework-Bot zu erstellen](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0). Verbinden Sie als Nächstes Ihren Bot mit dem [Direct Line Speech-Kanal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
 ## <a name="debugging"></a>Debuggen
 
@@ -41,7 +41,7 @@ Wenn Sie in diesem Dokument keine Antworten auf Ihre Fragen finden, sehen Sie si
 
 **F: Ich erhalte erkannten Text von Direct Line Speech, es wird aber ein Fehler vom Typ 1011 angezeigt, und mein Bot reagiert nicht. Warum?**
 
-**A:** Dieser Fehler weist auf ein Kommunikationsproblem zwischen dem Bot und Direct Line Speech hin. Stellen Sie sicher, dass Sie eine [Verbindung mit dem Direct Line Speech-Kanal hergestellt](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech.md) und Ihrem Bot [Unterstützung für das Streaming-Protokoll hinzugefügt](https://aka.ms/botframework/addstreamingprotocolsupport) haben (mit der entsprechenden Websocketunterstützung). Überprüfen Sie dann, ob Ihr Bot auf eingehende Anforderungen vom Kanal reagiert.
+**A:** Dieser Fehler weist auf ein Kommunikationsproblem zwischen dem Bot und Direct Line Speech hin. Stellen Sie sicher, dass Sie eine [Verbindung mit dem Direct Line Speech-Kanal hergestellt](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) und Ihrem Bot [Unterstützung für das Streaming-Protokoll hinzugefügt](https://aka.ms/botframework/addstreamingprotocolsupport) haben (mit der entsprechenden Websocketunterstützung). Überprüfen Sie dann, ob Ihr Bot auf eingehende Anforderungen vom Kanal reagiert.
 
 **F: Es funktioniert trotzdem nicht, und/oder ich erhalte bei der Verwendung eines SpeechBotConnector einen anderen Fehler, aber keine Informationen zum Beheben des Problems. Was *soll* ich tun?**
 

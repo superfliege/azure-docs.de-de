@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 9ae7795381f036bb819ce24554d8cea94ceb5552
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 02463ba47a48f5e86055b9ecb4e0edbdf9608769
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548544"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024572"
 ---
 # <a name="train-pytorch-models-with-azure-machine-learning-service"></a>Trainieren von PyTorch-Modellen mit Azure Machine Learning Service
 
@@ -102,6 +102,10 @@ Am Ende übermitteln Sie Ihre verteilten PyTorch-Auftrag:
 ```Python
 run = exp.submit(pt_est)
 ```
+
+## <a name="export-to-onnx"></a>Exportieren nach ONNX
+
+Um optimierte Rückschlüsse mit der [ONNX-Runtime](concept-onnx.md) zu erzielen, können Sie Ihr trainiertes PyTorch-Modul ins ONNX-Format konvertieren. Ein Beispiel finden Sie im [Tutorial](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb).
 
 ## <a name="examples"></a>Beispiele
 

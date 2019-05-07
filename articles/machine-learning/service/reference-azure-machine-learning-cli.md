@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
-ms.date: 12/04/2018
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2504ca9cb785529a9eab321c2521db46390632b7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9cc6ad4f7b33de4d132efe63ff11c34f10b614af
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789172"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023383"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>Verwenden der CLI-Erweiterung für Azure Machine Learning Service
 
-Der Azure Machine Learning-CLI ist eine Erweiterung der [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), eine plattformübergreifende Befehlszeilenschnittstelle für die Azure-Plattform. Diese Erweiterung unterstützt Befehle für die Arbeit mit dem Azure Machine Learning-Dienst über die Befehlszeile. Zudem können Sie Skripts erstellen, die Ihre Machine Learning-Workflows automatisieren. Beispielsweise können Sie Skripts erstellen, die die folgenden Aktionen ausführen:
+Der Azure Machine Learning-CLI ist eine Erweiterung der [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), eine plattformübergreifende Befehlszeilenschnittstelle für die Azure-Plattform. Diese Erweiterung unterstützt Befehle für die Arbeit mit dem Azure Machine Learning-Dienst über die Befehlszeile. Sie ermöglicht Ihnen, Ihre Machine Learning-Workflows zu automatisieren. Sie können beispielsweise die folgenden Aktionen ausführen:
 
 + Ausführen von Experimenten zum Erstellen von Machine Learning-Modellen
 
@@ -28,20 +28,9 @@ Der Azure Machine Learning-CLI ist eine Erweiterung der [Azure CLI](https://docs
 
 + Paketieren, Bereitstellen und Nachverfolgen des Lebenszyklus Ihrer Machine Learning-Modelle
 
-Die CLI ist kein Ersatz für das Azure Machine Learning SDK. Sie stellt ein ergänzende Tool dar, das für die Verarbeitung hochgradig parametrisierter Aufgaben optimiert ist:
-
-* Erstellen von Computeressourcen
-
-* Übermittlung parametrisierter Experimente
-
-* Modellregistrierung
-
-* Erstellung von Images
-
-* Dienstbereitstellung
+Die CLI ist kein Ersatz für das Azure Machine Learning SDK. Sie stellt ein ergänzendes Tool dar, das für die Verarbeitung hochgradig parametrisierter Aufgaben optimiert ist.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-
 
 * Für die Verwendung der CLI benötigen Sie ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie heute die [kostenlose oder kostenpflichtige Version des Azure Machine Learning Service](https://aka.ms/AMLFree) aus.
 
@@ -52,8 +41,11 @@ Die CLI ist kein Ersatz für das Azure Machine Learning SDK. Sie stellt ein erg�
 Um die Machine Learning-CLI-Erweiterung zu installieren, verwenden Sie den folgenden Befehl:
 
 ```azurecli-interactive
-az extension add -s https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1/azure_cli_ml-1.0.10-py2.py3-none-any.whl --pip-extra-index-urls  https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
+az extension add -n azure-cli-ml
 ```
+
+> [!TIP]
+> Beispieldateien, die Sie mit den [hier](http://aka.ms/azml-deploy-cloud) aufgeführten Befehlen verwenden können.
 
 Klicken Sie bei Aufforderung auf `y`, um die Erweiterung zu installieren.
 
@@ -62,9 +54,6 @@ Um sicherzustellen, dass die Erweiterung installiert wurde, verwenden Sie den fo
 ```azurecli-interactive
 az ml -h
 ```
-
-> [!TIP]
-> Um die Erweiterung zu aktualisieren, müssen Sie sie __entfernen__ und dann __installieren__. So wird die aktuelle Version installiert.
 
 ## <a name="remove-the-extension"></a>Entfernen der Erweiterung
 
@@ -78,197 +67,61 @@ az extension remove -n azure-cli-ml
 
 Die folgenden Befehle veranschaulichen, wie Sie mit der CLI Ressourcen verwalten, die von Azure Machine Learning verwendet werden.
 
++ Erstellen Sie eine Ressourcengruppe, wenn noch keine vorhanden ist:
+
+    ```azurecli-interactive
+    az group create -n myresourcegroup -l westus2
+    ```
 
 + Hiermit erstellen Sie einen Azure Machine Learning-Dienstarbeitsbereich:
 
     ```azurecli-interactive
-    az ml workspace create -n myworkspace -g myresourcegroup
+    az ml workspace create -w myworkspace -g myresourcegroup
     ```
 
-+ Hiermit legen Sie einen Standardarbeitsbereich fest:
++ Fügen Sie eine Arbeitsbereichskonfiguration einem Ordner hinzu, um CLI-Kontextfähigkeit zu aktivieren.
+    ```azurecli-interactive
+    az ml folder attach -w myworkspace -g myresourcegroup
+    ```
+
++ Fügen Sie einen Azure-Blobcontainer als Datenspeicher an.
 
     ```azurecli-interactive
-    az configure --defaults aml_workspace=myworkspace group=myresourcegroup
+    az ml datastore attach-blob  -n datastorename -a accountname -c containername
     ```
     
-+ Anfügen eines AKS-Clusters
++ Fügen Sie einen AKS-Cluster als Computeziel an.
 
     ```azurecli-interactive
     az ml computetarget attach aks -n myaks -i myaksresourceid -g myrg -w myworkspace
     ```
 
-## <a name="experiments"></a>Experimente
+## <a id="experiments"></a>Ausführen von Experimenten
 
-Die folgenden Befehle veranschaulichen, wie Sie die CLI zum Arbeiten mit Experimenten verwenden:
-
-* Hiermit fügen Sie vor dem Absenden eines Experiments ein Projekt an (Laufzeitkonfiguration):
+* Starten Sie eine Ausführung Ihres Experiments. Wenn Sie diesen Befehl verwenden, geben Sie den Namen der Runconfig-Datei (den Text vor „\*.runconfig“, wenn Sie auf Ihr Dateisystem schauen) für den -c-Parameter an.
 
     ```azurecli-interactive
-    az ml project attach --experiment-name myhistory
+    az ml run submit-script -c local -e testexperiment train.py
     ```
 
-* Starten Sie eine Ausführung Ihres Experiments. Geben Sie bei Verwendung dieses Befehls den Namen der runconfig-Datei an, die die Laufzeitkonfiguration enthält. Das Computeziel verwendet die Ausführungskonfiguration, um die Trainingsumgebung für das Modell zu erstellen. In diesem Beispiel wird die Ausführungskonfiguration aus der Datei `./aml_config/myrunconfig.runconfig` geladen.
+* Zeigen Sie eine Liste der Experimente an:
 
     ```azurecli-interactive
-    az ml run submit -c myrunconfig train.py
+    az ml experiment list
     ```
 
-    Weitere Informationen zur runconfig-Datei finden Sie im Abschnitt [RunConfig](#runconfig).
-
-* Hiermit zeigen Sie eine Liste der übermittelten Experimente an:
-
-    ```azurecli-interactive
-    az ml history list
-    ```
-
-## <a name="model-registration-image-creation--deployment"></a>Modellregistrierung, Imageerstellung und Bereitstellung
+## <a name="model-registration-profiling--deployment"></a>Registrierung von Modellen, Profilerstellung und Bereitstellung
 
 Die folgenden Befehle veranschaulichen, wie ein trainiertes Modell registriert und dann als Produktionsdienst bereitgestellt wird:
 
 + Hiermit registrieren Sie ein Modell bei Azure Machine Learning:
 
   ```azurecli-interactive
-  az ml model register -n mymodel -m sklearn_regression_model.pkl
+  az ml model register -n mymodel -p sklearn_regression_model.pkl
   ```
 
-+ Hiermit erstellen Sie ein Image, das Ihr Machine Learning-Modell und die zugehörigen Abhängigkeiten enthält: 
++ Bereitstellen Ihrer Modelldatei für AKS
 
   ```azurecli-interactive
-  az ml image create container -n myimage -r python -m mymodel:1 -f score.py -c myenv.yml
+  az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json
   ```
-
-+ Hiermit stellen Sie ein Image für ein Computeziel bereit:
-
-  ```azurecli-interactive
-  az ml service create aci -n myaciservice --image-id myimage:1
-  ```
-
-## <a id="runconfig"></a> runconfig-Datei
-
-Eine Laufzeitkonfiguration wird verwendet, um die Trainingsumgebung zu konfigurieren, die zum Trainieren Ihres Modells genutzt wird. Diese Konfiguration kann speicherintern (in-memory) erstellt werden, indem das SDK verwendet wird, oder sie kann aus einer runconfig-Datei geladen werden.
-
-Die runconfig-Datei ist ein Textdokument, in dem die Konfiguration für die Trainingsumgebung beschrieben wird. Darin sind beispielsweise der Name des Trainingsskripts und die Datei aufgeführt, die die erforderlichen Conda-Abhängigkeiten zum Trainieren des Modells enthält.
-
-Die Azure Machine Learning-CLI erstellt zwei `.runconfig`-Standarddateien mit den Namen `docker.runconfig` und `local.runconfig`, wenn Sie ein Projekt mit dem Befehl `az ml project attach` anfügen. 
-
-Wenn Sie über Code verfügen, mit dem eine Laufzeitkonfiguration mit der [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py)-Klasse erstellt wird, können Sie die `save()`-Methode verwenden, um diese in einer `.runconfig`-Datei zu speichern.
-
-Hier ist ein Beispiel für den Inhalt einer `.runconfig`-Datei angegeben:
-
-```text
-# The script to run.
-script: train.py
-# The arguments to the script file.
-arguments: []
-# The name of the compute target to use for this run.
-target: local
-# Framework to execute inside. Allowed values are "Python" ,  "PySpark", "CNTK",  "TensorFlow", and "PyTorch".
-framework: PySpark
-# Communicator for the given framework. Allowed values are "None" ,  "ParameterServer", "OpenMpi", and "IntelMpi".
-communicator: None
-# Automatically prepare the run environment as part of the run itself.
-autoPrepareEnvironment: true
-# Maximum allowed duration for the run.
-maxRunDurationSeconds:
-# Number of nodes to use for running job.
-nodeCount: 1
-# Environment details.
-environment:
-# Environment variables set for the run.
-  environmentVariables:
-    EXAMPLE_ENV_VAR: EXAMPLE_VALUE
-# Python details
-  python:
-# user_managed_dependencies=True indicates that the environmentwill be user managed. False indicates that AzureML willmanage the user environment.
-    userManagedDependencies: false
-# The python interpreter path
-    interpreterPath: python
-# Path to the conda dependencies file to use for this run. If a project
-# contains multiple programs with different sets of dependencies, it may be
-# convenient to manage those environments with separate files.
-    condaDependenciesFile: aml_config/conda_dependencies.yml
-# Docker details
-  docker:
-# Set True to perform this run inside a Docker container.
-    enabled: true
-# Base image used for Docker-based runs.
-    baseImage: mcr.microsoft.com/azureml/base:0.2.4
-# Set False if necessary to work around shared volume bugs.
-    sharedVolumes: true
-# Run with NVidia Docker extension to support GPUs.
-    gpuSupport: false
-# Extra arguments to the Docker run command.
-    arguments: []
-# Image registry that contains the base image.
-    baseImageRegistry:
-# DNS name or IP address of azure container registry(ACR)
-      address:
-# The username for ACR
-      username:
-# The password for ACR
-      password:
-# Spark details
-  spark:
-# List of spark repositories.
-    repositories:
-    - https://mmlspark.azureedge.net/maven
-    packages:
-    - group: com.microsoft.ml.spark
-      artifact: mmlspark_2.11
-      version: '0.12'
-    precachePackages: true
-# Databricks details
-  databricks:
-# List of maven libraries.
-    mavenLibraries: []
-# List of PyPi libraries
-    pypiLibraries: []
-# List of RCran libraries
-    rcranLibraries: []
-# List of JAR libraries
-    jarLibraries: []
-# List of Egg libraries
-    eggLibraries: []
-# History details.
-history:
-# Enable history tracking -- this allows status, logs, metrics, and outputs
-# to be collected for a run.
-  outputCollection: true
-# whether to take snapshots for history.
-  snapshotProject: true
-# Spark configuration details.
-spark:
-  configuration:
-    spark.app.name: Azure ML Experiment
-    spark.yarn.maxAppAttempts: 1
-# HDI details.
-hdi:
-# Yarn deploy mode. Options are cluster and client.
-  yarnDeployMode: cluster
-# Tensorflow details.
-tensorflow:
-# The number of worker tasks.
-  workerCount: 1
-# The number of parameter server tasks.
-  parameterServerCount: 1
-# Mpi details.
-mpi:
-# When using MPI, number of processes per node.
-  processCountPerNode: 1
-# data reference configuration details
-dataReferences: {}
-# Project share datastore reference.
-sourceDirectoryDataStore:
-# AmlCompute details.
-amlcompute:
-# VM size of the Cluster to be created.Allowed values are Azure vm sizes. The list of vm sizes is available in 'https://docs.microsoft.com/azure/cloud-services/cloud-services-sizes-specs
-  vmSize:
-# VM priority of the Cluster to be created.Allowed values are "dedicated" , "lowpriority".
-  vmPriority:
-# A bool that indicates if the cluster has to be retained after job completion.
-  retainCluster: false
-# Name of the cluster to be created. If not specified, runId will be used as cluster name.
-  name:
-# Maximum number of nodes in the AmlCompute cluster to be created. Minimum number of nodes will always be set to 0.
-  clusterMaxNodeCount: 1
-```
