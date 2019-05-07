@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: 78a8b5e7a1c5512f81315519210bc7759dd15342
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: c7e6e7e2023c333207a3a17c3b6711d92de7d044
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578474"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65187785"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>Installieren von TmaxSoft OpenFrame in Azure
 
@@ -102,7 +102,7 @@ Planen Sie einige Tage ein, um die gesamte erforderliche Software zusammenzustel
 
 Führen Sie folgende Schritte aus, bevor Sie beginnen:
 
-- Beschaffen Sie die OpenFrame-Installationsmedien bei TmaxSoft. Wenn Sie TmaxSoft-Bestandskunde sind, bitten Sie Ihren Ansprechpartner bei TmaxSoft um eine lizenzierte Kopie. Fordern Sie andernfalls eine Testversion bei [TmaxSoft](http://www.tmaxsoft.com/contact/) an.
+- Beschaffen Sie die OpenFrame-Installationsmedien bei TmaxSoft. Wenn Sie TmaxSoft-Bestandskunde sind, bitten Sie Ihren Ansprechpartner bei TmaxSoft um eine lizenzierte Kopie. Fordern Sie andernfalls eine Testversion bei [TmaxSoft](https://www.tmaxsoft.com/contact/) an.
 
 - Fordern Sie die OpenFrame-Dokumentation an, indem Sie eine E-Mail an <support@tmaxsoft.com> senden.
 
