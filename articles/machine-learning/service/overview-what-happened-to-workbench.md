@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 217eecfe8f380718361c2f1b56965e4af85d54c9
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 61c5d60f0c2fab3786aa6adfa194c0716e621ea3
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526706"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023650"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Was ist mit der Azure Machine Learning Workbench geschehen?
 
@@ -87,7 +87,7 @@ run = exp.submit(source_directory = script_folder, script = 'train.py', run_conf
 
 Die Modelle, die Sie in Ihrer alten Modellregistrierung registriert haben, müssen zu Ihrem neuen Arbeitsbereich migriert werden, wenn Sie sie weiterhin verwenden möchten. Um Ihre Modelle zu migrieren, laden Sie die Modelle herunter, und registrieren Sie sie erneut in Ihrem neuen Arbeitsbereich. 
 
-Die Images, die Sie in Ihrer alten Imageregistrierung erstellt haben, müssen im neuen Arbeitsbereich neu erstellt werden, um weiterhin verwendet werden zu können. Sie können diese Images neu erstellen, indem Sie Vorgehensweisen in den Abschnitten zum [Konfigurieren und Erstellen eines Images](how-to-deploy-and-where.md#configureimage) befolgen. 
+Die Images, die Sie in Ihrer alten Imageregistrierung erstellt haben, können nicht direkt in den neuen Arbeitsbereich migriert werden. In den meisten Fällen kann das Modell bereitgestellt werden, ohne ein Image zu erstellen. Bei Bedarf können Sie ein Image für das Modell im neuen Arbeitsbereich erstellen. Weitere Informationen finden Sie unter [Verwalten, Bereitstellen und Überwachen von Modellen mit Azure Machine Learning Services](concept-model-management-and-deployment.md).
 
 ## <a name="what-about-deployed-web-services"></a>Was ist mit bereitgestellten Webdiensten?
 

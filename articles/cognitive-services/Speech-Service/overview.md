@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
-ms.date: 04/03/2019
+ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 61f22568aa6e6cf04963b40ad7c47163e87b9800
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 2e82e033e56af10bd8e676570e9409941753eb38
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59010191"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020985"
 ---
 # <a name="what-are-the-speech-services"></a>Was sind Speech-Dienste?
 
-Azure Speech-Dienste dienen zur Vereinheitlichung von Spracherkennung, Sprachsynthese und Sprachübersetzung in einem einzelnen Azure-Abonnement. Über das [Speech SDK](speech-sdk-reference.md), das [Speech Devices SDK](speech-devices-sdk-qsg.md) oder [REST-APIs](rest-apis.md) können Sie Ihren Anwendungen, Tools und Geräten komfortabel mit Sprachfunktionen ausstatten.
+Azure Speech-Dienste dienen zur Vereinheitlichung von Spracherkennung, Sprachsynthese und Sprachübersetzung in einem einzelnen Azure-Abonnement. Über das [Speech SDK](speech-sdk-reference.md), das [Speech Devices SDK](https://aka.ms/sdsdk-quickstart) oder [REST-APIs](rest-apis.md) können Sie Ihren Anwendungen, Tools und Geräten komfortabel mit Sprachfunktionen ausstatten.
 
 > [!IMPORTANT]
 > Speech-Dienste haben die Bing-Spracheingabe-API sowie Sprachübersetzung und Custom Speech abgelöst. Eine Migrationsanleitung finden Sie unter *Anleitungen > Migration*.
@@ -30,6 +30,7 @@ Die Azure Speech-Dienste umfassen folgende Features. Verwenden Sie die Links in
 |---------|---------|-------------|-----|------|
 | [Spracherkennung](speech-to-text.md) | Spracherkennung | Die Spracherkennung wandelt Audiodatenströme in Echtzeit in Text um, der von Ihren Anwendungen, Tools oder Geräten genutzt oder angezeigt werden kann. In Kombination mit [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/) können Sie Benutzerabsichten aus transkribierter Sprache ableiten und auf Sprachbefehle reagieren. | [Ja](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Ja](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Batch-Transkription](batch-transcription.md) | Die Batch-Transkription ermöglicht eine asynchrone Spracherkennung/Transkription großer Datenmengen. Dieser REST-basierte Dienst verwendet den gleichen Endpunkt wie die Anpassung und Modellverwaltung. | Nein  | [Ja](https://westus.cris.ai/swagger/ui/index) |
+| | [Dienst für Unterhaltungstranskription](conversation-transcription-service.md) | Dieser Dienst ermöglicht Spracherkennung, Sprecheridentifikation und Diarisierung in Echtzeit. Er eignet sich optimal für das Transkribieren persönlicher Besprechungen, wobei zwischen Sprechern unterschieden werden kann. | Ja | Nein  |
 | | [Anpassung](#customize-your-speech-experience) | Wenn Sie die Spracherkennung für die Erkennung und Transkription in einer individuellen Umgebung verwenden, können Sie benutzerdefinierte Akustik-, Sprach- und Aussprachemodelle erstellen, um Umgebungsgeräusche zu kompensieren oder branchenspezifisches Vokabular zu berücksichtigen. | Nein  | [Ja](https://westus.cris.ai/swagger/ui/index) |
 | [Text-zu-Sprache](text-to-speech.md) | Text-zu-Sprache | Die Sprachsynthese konvertiert Eingabetext in menschenähnliche synthetische Sprache. Sie haben die Wahl zwischen Standardstimmen und neuronalen Stimmen. (Weitere Informationen finden Sie unter [Sprach- und Regionsunterstützung für die API für den Spracherkennungsdienst](language-support.md).) | [Ja](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [Ja](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [Anpassung](#customize-your-speech-experience) | Erstellen Sie spezielle benutzerdefinierte Voicefonts für Ihre Marke oder Ihr Produkt. | Nein  | [Ja](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
@@ -39,7 +40,8 @@ Die Azure Speech-Dienste umfassen folgende Features. Verwenden Sie die Links in
 
 Hier finden Sie Neuigkeiten im Zusammenhang mit den Azure Speech-Diensten.
 
-* April 2019: Das Speech SDK 1.4.0 mit Unterstützung von Sprachsynthese (Beta) für C++, C# und Java unter Windows und Linux wurde veröffentlicht. Darüber hinaus unterstützt das SDK nun die Audioformate MP3 und Opus/Ogg für C++ und C# unter Linux. Eine vollständige Liste der Aktualisierungen, Verbesserungen und bekannten Probleme finden Sie in den [Versionshinweisen](releasenotes.md). 
+* Mai 2019: Das Speech SDK 1.5.0 wird veröffentlicht. Eine vollständige Liste der Aktualisierungen, Verbesserungen und bekannten Probleme finden Sie in den [Versionshinweisen](releasenotes.md).
+* April 2019: Das Speech SDK 1.4.0 mit Unterstützung von Sprachsynthese (Beta) für C++, C# und Java unter Windows und Linux wurde veröffentlicht. Darüber hinaus unterstützt das SDK nun die Audioformate MP3 und Opus/Ogg für C++ und C# unter Linux. Eine vollständige Liste der Aktualisierungen, Verbesserungen und bekannten Probleme finden Sie in den [Versionshinweisen](releasenotes.md).
 * März 2019: Ein neuer Endpunkt für die Sprachsynthese (Text-to-Speech, TTS) steht nun zur Verfügung, der eine vollständige Liste mit den in einer bestimmten Region verfügbaren Stimmen zurückgibt. Darüber hinaus werden jetzt neue Regionen für TTS unterstützt. Weitere Informationen finden Sie unter [Text-to-speech REST API](rest-text-to-speech.md) (Text-to-Speech-REST-API).
 * Februar 2019: Das Speech SDK 1.3.0 mit Unterstützung von [Unity (Beta)](quickstart-csharp-unity.md) wurde veröffentlicht. Unterstützung für die Klasse `AudioInput` wurde hinzugefügt, um die Wahl der Audiostreamingquelle zu ermöglichen. Eine vollständige Liste der Verbesserungen und bekannten Probleme finden Sie in den [Versionshinweisen](releasenotes.md).
 * Dezember 2018: Das Speech SDK 1.2.0 mit Unterstützung von [Python](quickstart-python.md), [Node.js](quickstart-js-node.md) und Ubuntu 18.04 LTS wurde veröffentlicht. Weitere Informationen finden Sie in den [Versionshinweisen](releasenotes.md).

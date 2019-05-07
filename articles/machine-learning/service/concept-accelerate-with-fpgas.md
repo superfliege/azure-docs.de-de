@@ -1,5 +1,5 @@
 ---
-title: Was sind FPGAs, und was ist Project Brainwave?
+title: Was sind Field Programmable Gate Arrays (FPGA)?
 titleSuffix: Azure Machine Learning service
 description: Hier erfahren Sie, wie Sie Modelle und Deep Neural Networks mit FPGAs in Azure beschleunigen. Dieser Artikel enthält eine Einführung in FPGAs (Field-Programmable Gate Arrays) und erläutert, wie Azure Machine Learning Service bei der Bereitstellung Ihres Modells in einem Azure-FPGA künstliche Intelligenz in Echtzeit bietet.
 services: machine-learning
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.author: tedway
 author: tedway
 ms.reviewer: jmartens
-ms.date: 1/10/2019
+ms.date: 04/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 716de6d491be753c5c32c0a2774404140010f72c
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 648dc462477570a692eff588c558a18a3121e4e7
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823313"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025250"
 ---
-# <a name="what-are-fpgas-and-project-brainwave"></a>Was sind FPGAs, und was ist Project Brainwave?
+# <a name="what-are-field-programmable-gate-arrays-fpga"></a>Was sind Field Programmable Gate Arrays (FPGA)?
 
 Dieser Artikel enthält eine Einführung in FPGAs (Field-Programmable Gate Arrays) und erläutert, wie Azure Machine Learning Service bei der Bereitstellung Ihres Modells in einem Azure-FPGA künstliche Intelligenz in Echtzeit bietet.
 
@@ -37,31 +37,28 @@ Der folgende Abbildung und die Tabelle zeigen FPGAs im Vergleich zu anderen Proz
 |Grafikprozessoren|GPUs|Eine beliebte Wahl für KI-Berechnungen. GPUs bieten Funktionen zur Parallelverarbeitung und sind beim Grafikrendering schneller als CPUs.|
 |Zentralprozessoren|CPUs|CPUs sind Allzweckprozessoren, deren Leistung für die Grafik- und Videoverarbeitung nicht optimal ist.|
 
-## <a name="project-brainwave-on-azure"></a>Project Brainwave für Azure
+FPGAs in Azure basieren auf den FPGA-Geräten von Intel, die Data Scientists und Entwickler verwenden, um KI-Echtzeitberechnungen zu beschleunigen. Diese FPGA-fähige Architektur bietet Leistung, Flexibilität und Skalierbarkeit und ist in Azure verfügbar.
 
-[Project Brainwave](https://www.microsoft.com/en-us/research/project/project-brainwave/) ist eine Hardwarearchitektur von Microsoft. Sie basiert auf FPGA-Geräten von Intel, die Data Scientists und Entwickler zu verwenden, um KI-Echtzeitberechnungen zu beschleunigen. Diese FPGA-fähige Architektur bietet Leistung, Flexibilität und Skalierbarkeit und ist in Azure verfügbar.
-
-FPGAs ermöglichen eine geringe Latenzzeit für Echtzeit-Inferenzanforderungen. Asynchrone Anforderungen (Batchverarbeitung) sind nicht erforderlich. Die Batchverarbeitung kann zu Wartezeiten führen, weil mehr Daten verarbeitet werden müssen. Bei Project Brainwave-Implementierungen von neuronalen Prozessoren ist keine Batchverarbeitung erforderlich. Daher kann die Wartezeit im Vergleich zu CPU- und GPU-Prozessoren um ein Vielfaches geringer ausfallen.
+FPGAs ermöglichen eine geringe Latenzzeit für Echtzeit-Inferenzanforderungen. Asynchrone Anforderungen (Batchverarbeitung) sind nicht erforderlich. Die Batchverarbeitung kann zu Wartezeiten führen, weil mehr Daten verarbeitet werden müssen. Bei Implementierungen von neuronalen Prozessoren ist keine Batchverarbeitung erforderlich. Daher kann die Wartezeit im Vergleich zu CPU- und GPU-Prozessoren um ein Vielfaches geringer ausfallen.
 
 ### <a name="reconfigurable-power"></a>Neu konfigurierbare Leistung
 Sie können FPGAs für verschiedene Arten von Machine Learning-Modellen neu konfigurieren. Durch diese Flexibilität ist es einfacher, die Anwendungen auf der Grundlage der optimalen numerischen Genauigkeit und des verwendeten Speichermodells zu beschleunigen. Da FPGAs neu konfigurierbar sind, können Sie mit den Anforderungen der sich schnell ändernden KI-Algorithmen Schritt halten.
 
 ### <a name="whats-supported-on-azure"></a>In Azure unterstützte Funktionen
-Microsoft Azure ist die weltweit größte Cloudinvestition in FPGAs. Sie können Project Brainwave unter der Skalierungsinfrastruktur von Azure ausführen.
+Microsoft Azure ist die weltweit größte Cloudinvestition in FPGAs. FPGAs in Azure unterstützen:
 
-In Project Brainwave wird zurzeit Folgendes unterstützt:
 + Szenarien zur Bildklassifizierung und -erkennung
 + TensorFlow-Bereitstellung
 + DNNs: ResNet 50, ResNet 152, VGG-16, SSD-VGG und DenseNet-121
 + Intel FPGA-Hardware 
 
-Mit dieser FPGA-fähigen Hardwarearchitektur werden trainierte neuronale Netze schnell und mit geringerer Wartezeit ausgeführt. Project Brainwave kann vortrainierte DNNs (Deep Neural Networks) FPGA-übergreifend parallelisieren, um Ihren Dienst horizontal hochzuskalieren. Die DNNs können als Deep Featurizer zum Transferlernen vortrainiert oder durch aktualisierte Gewichtungen optimiert werden.
+Mit dieser FPGA-fähigen Hardwarearchitektur werden trainierte neuronale Netze schnell und mit geringerer Wartezeit ausgeführt. Azure kann vortrainierte DNNs (Deep Neural Networks) FPGA-übergreifend parallelisieren, um Ihren Dienst horizontal hochzuskalieren. Die DNNs können als Deep Featurizer zum Transferlernen vortrainiert oder durch aktualisierte Gewichtungen optimiert werden.
 
 ### <a name="scenarios-and-applications"></a>Szenarien und Anwendungen
 
-Project Brainwave ist in Azure Machine Learning integriert. Microsoft verwendet FPGAs für die DNN-Auswertung, die Rangfolge bei der Bing-Suche und die Beschleunigung von Software Defined Networking (SDN), um die Latenz zu verringern und gleichzeitig CPUs für andere Aufgaben freizugeben.
+Azure-FPGAs sind in Azure Machine Learning integriert. Microsoft verwendet FPGAs für die DNN-Auswertung, die Rangfolge bei der Bing-Suche und die Beschleunigung von Software Defined Networking (SDN), um die Latenz zu verringern und gleichzeitig CPUs für andere Aufgaben freizugeben.
 
-Die folgenden Szenarien verwenden FPGA unter der Project Brainwave-Architektur:
+In den folgenden Szenarien werden FPGAs verwendet:
 + [Automatisiertes optisches Untersuchungssystem](https://blogs.microsoft.com/ai/build-2018-project-brainwave/)
 
 + [Landnutzungskartierung](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/)
@@ -70,7 +67,7 @@ Die folgenden Szenarien verwenden FPGA unter der Project Brainwave-Architektur:
 
 Um einen Bilderkennungsdienst in Azure zu erstellen, können Sie unterstützte DNNs als Featurizer für die Bereitstellung in Azure-FPGAs verwenden:
 
-1. Verwenden Sie das [Azure Machine Learning SDK für Python](https://aka.ms/aml-sdk), um eine Dienstdefinition zu erstellen. Eine Dienstdefinition ist eine Datei, die eine Pipeline mit auf TensorFlow basierenden Diagrammen (Eingabe, Featurizer und Klassifizierung) beschreibt. Durch den Bereitstellungsbefehl werden die Definition und die Diagramme automatisch in einer ZIP-Datei komprimiert, die dann in Azure Blob Storage hochgeladen wird. Das DNN wurde in Project Brainwave bereits zur Ausführung im FPGA bereitgestellt.
+1. Verwenden Sie das [Azure Machine Learning SDK für Python](https://aka.ms/aml-sdk), um eine Dienstdefinition zu erstellen. Eine Dienstdefinition ist eine Datei, die eine Pipeline mit auf TensorFlow basierenden Diagrammen (Eingabe, Featurizer und Klassifizierung) beschreibt. Durch den Bereitstellungsbefehl werden die Definition und die Diagramme automatisch in einer ZIP-Datei komprimiert, die dann in Azure Blob Storage hochgeladen wird. Das DNN wurde bereits zur Ausführung im FPGA bereitgestellt.
 
 1. Registrieren Sie das Modell über das SDK anhand der ZIP-Datei in Azure Blob Storage.
 

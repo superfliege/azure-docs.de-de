@@ -11,16 +11,33 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: db0eccb542cb4253e6e891fa9fa51e60fb7951a1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 242b7cb45e9a73e78ae9f9b62e83311e110e07ee
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58892737"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021108"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Bekannte Probleme und Problembehandlung für Azure Machine Learning Service
 
 Dieser Artikel hilft Ihnen, Fehler oder Ausfälle zu ermitteln und zu beheben, die beim Verwenden von Azure Machine Learning Service auftreten können.
+
+## <a name="visual-interface-issues"></a>Probleme mit der grafischen Benutzeroberfläche
+
+Probleme mit der grafischen Benutzeroberfläche für Machine Learning Service
+
+### <a name="long-compute-preparation-time"></a>Lange Compute-Vorbereitungszeit
+
+Das Erstellen eines neuen Computevorgangs oder das Beenden eines Computevorgangs nimmt einige Minuten oder sogar länger in Anspruch. Das Team arbeitet an der Optimierung.
+
+
+### <a name="cannot-run-an-experiment-only-contains-dataset"></a>Ein Experiment, das nur ein Dataset enthält, kann nicht ausgeführt werden 
+
+Möglicherweise möchten Sie ein Experiment ausführen, das nur ein Dataset enthält, um das Dataset zu visualisieren. Derzeit ist das Ausführen eines Experiments, das nur ein Dataset enthält, jedoch nicht zulässig. Wir arbeiten aktiv an der Behebung dieses Problems.
+ 
+Als Zwischenlösung können Sie das Dataset mit einem beliebigen Datentransformationsmodul verbinden (Auswählen von Spalten im Dataset, Bearbeiten von Metadaten, Teilen von Daten usw.) und das Experiment ausführen. Anschließend können Sie das Dataset visualisieren. 
+
+Die folgende Abbildung zeigt die Vorgehensweise: ![visulize-data](./media/resource-known-issues/aml-visualize-data.png)
 
 ## <a name="sdk-installation-issues"></a>SDK-Installationsprobleme
 

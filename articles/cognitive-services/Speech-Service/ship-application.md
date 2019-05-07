@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/18/2018
+ms.date: 05/02/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: f3522f065d22ce276174fbd165c37df3914e32b9
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 1232cdd156dd473850fde6e7c4f3ce0554155764
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56962025"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020410"
 ---
 # <a name="ship-an-application"></a>Ausliefern einer Anwendung
 
@@ -49,19 +49,26 @@ Die erforderlichen Speech SDK-Dateien können im gleichen Verzeichnis wie die An
 
 ## <a name="linux"></a>Linux
 
-Das Speech SDK unterstützt derzeit die Distributionen Ubuntu 16.04 und 18.04.
+Das Speech SDK unterstützt derzeit die Distributionen Ubuntu 16.04, 18.04 und Debian 9.
 Für eine native Anwendung müssen Sie die Speech SDK-Bibliothek `libMicrosoft.CognitiveServices.Speech.core.so` ausliefern.
 Stellen Sie sicher, dass Sie die der Anwendung entsprechende Version (x86, x64) auswählen. Je nach verwendeter Linux-Version müssen Sie möglicherweise auch die folgenden Abhängigkeiten einbinden:
 
 * Freigegebene Bibliotheken der GNU C-Bibliothek (einschließlich der POSIX Threads Programming-Bibliothek `libpthreads`)
-* OpenSSL-Bibliothek (`libssl.so.1.0.0`)
+* OpenSSL-Bibliothek (`libssl.so.1.0.0` oder `libssl.so.1.0.2`)
 * Freigegebene Bibliothek für ALSA-Anwendungen (`libasound.so.2`)
 
 Unter Ubuntu sollten die GNU C-Bibliotheken bereits standardmäßig installiert sein. Die letzten drei Bibliotheken können mit folgenden Befehlen installiert werden:
 
 ```sh
 sudo apt-get update
-sudo apt-get install libssl1.0.0 libasound2 wget
+sudo apt-get install libssl1.0.0 libasound2
+```
+
+Installieren Sie unter Debian 9 die folgenden Pakete:
+
+```sh
+sudo apt-get update
+sudo apt-get install libssl1.0.2 libasound2
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

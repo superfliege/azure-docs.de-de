@@ -1,0 +1,63 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentation zur Formularerkennung
+metadata:
+  title: 'API-Dokumentation: Formularerkennung: Azure Cognitive Services | Microsoft-Dokumentation'
+  description: 'Erfahren Sie, wie Sie mit der Formularerkennung auf intelligente Weise Schlüssel-Wert-Daten aus Ihren Formularen extrahieren.'
+  services: cognitive-services
+  author: PatrickFarley
+  manager: cgronlun
+  ms.service: cognitive-services
+  ms.subservice: form-recognizer
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 04/16/2019
+  ms.author: pafarley
+ms.custom: seodec18
+abstract:
+  description: 'Die Azure-Formularerkennung ist ein kognitiver Dienst, der mithilfe von Machine Learning-Technologie Schlüssel-Wert-Paare und Tabellendaten aus Formulardokumenten identifiziert und extrahiert. Anschließend werden strukturierte Daten ausgegeben, die die Beziehungen in der Originaldatei enthalten. Nicht überwachtes Lernen ermöglicht es dem Modell, das Layout und die Beziehungen zwischen Feldern und Einträgen zu verstehen, und zwar ohne manuelle Datenbeschriftungen oder intensive Codierung und Verwaltung.'
+sections:
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/form-recognizer/overview
+            html: <p>Erfahren Sie mehr über die Formularerkennung.</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: Was ist die Formularerkennung?
+          - href: /azure/cognitive-services/form-recognizer/form-recognizer-container-howto
+            html: '<p>Erfahren Sie, wie Sie den Container für die Formularerkennung verwenden, um Formular- und Tabellendaten zu analysieren.</p>'
+            image:
+              src: ../media/index/i_get-started.svg
+            title: Installieren und Ausführen von Containern
+  - title: Fünfminütige Schnellstarts
+    items:
+      - type: paragraph
+        text: 'Trainieren eines Formularerkennungsmodells und Extrahieren von Daten aus Formularen mithilfe von:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: ./media/logos/logo-curl.svg
+            text: cURL
+            href: quickstarts/curl-train-extract.md
+          - image:
+              src: ./media/logos/logo-python.svg
+            text: Python
+            href: quickstarts/python-train-extract.md
+  - title: Verweis
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: APIs
+            html: '<p><a href="https://aka.ms/form-recognizer/api">Formularerkennungs-API</a></p>'
+          - title: PowerShell
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: Befehlszeilenschnittstelle (CLI)
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list">Azure-Befehlszeilenschnittstelle</a></p>'

@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 78db7d21774750892c831ac220244c54594b78f3
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: cedd45d4142633e48d0d9dd41870f57c16d860c8
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548353"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023842"
 ---
 # <a name="train-tensorflow-and-keras-models-with-azure-machine-learning-service"></a>Trainieren von TensorFlow- und Keras-Modellen mit Azure Machine Learning Service
 
@@ -185,6 +185,10 @@ Nachdem Sie das Trainingsskript und das TensorFlow-Objekt erstellt haben, könne
 ```Python
 run = exp.submit(tf_est)
 ```
+
+## <a name="export-to-onnx"></a>Nach ONNX exportieren
+
+Um optimierte Rückschlüsse mit der [ONNX-Runtime](concept-onnx.md) zu erzielen, können Sie Ihr trainiertes TensorFlow-Modul ins ONNX-Format konvertieren. Ein entsprechendes Beispiel finden Sie [hier](https://github.com/onnx/tensorflow-onnx/blob/master/examples/call_coverter_via_python.py).
 
 ## <a name="examples"></a>Beispiele
 

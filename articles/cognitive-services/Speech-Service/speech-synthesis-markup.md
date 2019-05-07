@@ -11,25 +11,51 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 57fc7e699d88dbe777750e3acdb7f96794b66fc0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9871e0106ee6caf11c5a1e24459fbd2044f5f3d7
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57837151"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021440"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Speech Synthesis Markup Language (SSML)
 
-Die Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML) ist eine XML-basierte Markupsprache, die eine Möglichkeit zum Steuern der Aussprache und des *Satzrhythmus* von Text-zu-Sprache bietet. Satzrhythmus bezieht sich auf den Rhythmus und die Tonhöhe der Sprache – sozusagen ihren „musikalischen“ Aspekt. Sie können Wörter phonetisch angeben, Hinweise zum Interpretieren von Zahlen bereitstellen, Pausen einfügen, die Tonhöhe, Lautstärke und Rate steuern und vieles mehr. Weitere Informationen finden Sie unter [Speech Synthesis Markup Language (SSML) Version 1.0](https://www.w3.org/TR/2009/REC-speech-synthesis-20090303/).
+Die Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML) ist eine XML-basierte Markupsprache, die eine Möglichkeit zum Steuern der Aussprache und des *Satzrhythmus* von Text-zu-Sprache bietet. Satzrhythmus bezieht sich auf den Rhythmus und die Tonhöhe der Sprache – sozusagen ihren „musikalischen“ Aspekt. Sie können Wörter phonetisch angeben, Hinweise zum Interpretieren von Zahlen bereitstellen, Pausen einfügen, die Tonhöhe, Lautstärke und Rate steuern und vieles mehr. Weitere Informationen finden Sie unter [Speech Synthesis Markup Language (SSML) Version 1.0](https://www.w3.org/TR/2009/REC-speech-synthesis-20090303/). 
 
 Eine vollständige Liste der unterstützten Sprachen, Gebietsschemas und Stimmen (neuronal und Standard) finden Sie unter [Sprachunterstützung](language-support.md#text-to-speech).
 
 Die folgenden Abschnitte enthalten Beispiele für allgemeine Sprachsyntheseaufgaben.
 
+## <a name="adjust-speaking-style-for-neural-voices"></a>Anpassen der Sprechweise für neuronale Stimmen
+
+Sie können SSML verwenden, um die Sprechweise bei Verwendung einer der neuronalen Stimmen anzupassen.
+
+Standardmäßig synthetisiert die Sprachsynthese Text in einem neutralen Stil. Die neuronalen Stimmen erweitern SSML um das Element `<mstts:express-as>`, das Text in synthetisierte Sprache in verschiedene Sprechweisen umwandelt. Die Stiltags werden derzeit nur mit diesen Stimmen unterstützt:
+
+* `en-US-JessaNeural` 
+* `zh-CN-XiaoxiaoNeural`.
+
+Änderungen der Sprechweise können auf Satzebene vorgenommen werden. Die Sprechweisen variieren je nach Stimme. Wenn ein Sprechweisentyp nicht unterstützt wird, gibt der Dienst die synthetisierte Sprache als neutrale Standardsprechweise zurück.
+
+| Sprache | Style | BESCHREIBUNG | 
+|-----------|-----------------|----------|
+| `en-US-JessaNeural` | type=`cheerful` | Drückt eine positive und glückliche Emotion aus |
+| | type=`empathy` | Drückt ein Gefühl von Anteilnahme und Verständnis aus |
+| `zh-CN-XiaoxiaoNeural` | type=`newscast` | Drückt einen formalen Ton ähnlich wie bei Nachrichtensendungen aus |
+| | type=`sentiment ` | Vermittelt eine anrührende Botschaft oder Geschichte |
+
+```xml
+<speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">
+<voice name='en-US-JessaNeural'>
+<mstts:express-as type="cheerful"> 
+    That'd be just amazing! 
+</mstts:express-as></voice></speak>
+```
+
 ## <a name="add-a-break"></a>Hinzufügen einer Pause
 ```xml
 <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
-<voice  name='Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)'>
+<voice  name='en-US-Jessa24kRUS'>
     Welcome to Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.
 </voice> </speak>
 ```
@@ -40,7 +66,7 @@ Die Sprechgeschwindigkeit kann auf Standardstimmen auf Wort- oder Satzebene ange
 
 ```xml
 <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
-<voice  name='Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)'>
+<voice  name='en-US-Guy24kRUS'>
 <prosody rate="+30.00%">
     Welcome to Microsoft Cognitive Services Text-to-Speech API.
 </prosody></voice> </speak>
@@ -49,7 +75,7 @@ Die Sprechgeschwindigkeit kann auf Standardstimmen auf Wort- oder Satzebene ange
 ## <a name="pronunciation"></a>Aussprache
 ```xml
 <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
-<voice  name='Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)'>
+<voice  name='en-US-Jessa24kRUS'>
     <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme>
 </voice> </speak>
 ```
@@ -60,7 +86,7 @@ Die Sprechgeschwindigkeit kann auf Standardstimmen auf Wort- oder Satzebene ange
 
 ```xml
 <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
-<voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>
+<voice  name='en-US-Jessa24kRUS'>
 <prosody volume="+20.00%">
     Welcome to Microsoft Cognitive Services Text-to-Speech API.
 </prosody></voice> </speak>
@@ -72,7 +98,7 @@ Die Sprechgeschwindigkeit kann auf Standardstimmen auf Wort- oder Satzebene ange
 
 ```xml
 <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
-    <voice  name='Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)'>
+    <voice  name='en-US-Guy24kRUS'>
     Welcome to <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody>
 </voice> </speak>
 ```
@@ -84,7 +110,7 @@ Die Sprechgeschwindigkeit kann auf Standardstimmen auf Wort- oder Satzebene ange
 
 ```xml
 <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
-<voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>
+<voice  name='en-US-Jessa24kRUS'>
 <prosody contour="(80%,+20%) (90%,+30%)" >
     Good morning.
 </prosody></voice> </speak>
@@ -93,10 +119,10 @@ Die Sprechgeschwindigkeit kann auf Standardstimmen auf Wort- oder Satzebene ange
 ## <a name="use-multiple-voices"></a>Verwenden mehrerer Stimmen
 ```xml
 <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
-<voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>
+<voice  name='en-US-Jessa24kRUS'>
     Good morning!
 </voice>
-<voice  name='Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)'>
+<voice  name='en-US-Guy24kRUS'>
     Good morning to you too Jessa!
 </voice> </speak>
 ```

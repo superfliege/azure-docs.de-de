@@ -63,7 +63,7 @@ sections:
           - html: <a href="/azure/app-service/containers/tutorial-multi-container-app">Erstellen einer App mit mehreren Containern in Web-App für Container</a>
           - html: <a href="/azure/container-registry/container-registry-tutorial-quick-task">Erstellen und Bereitstellen von Containerimages mit Azure Container Registry Tasks</a>
           - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Erstellen und Bereitstellen eines Containers in Azure Container Instances</a>
-          - html: <a href="/azure/openshift/tutorial-create-cluster">Erstellen eines Red Hat OpenShift-Clusters in Azure</a>
+          - html: <a href="/azure/openshift/tutorial-create-cluster">Erstellen eines Azure Red Hat OpenShift-Clusters</a>
   - title: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
     items:
       - type: list

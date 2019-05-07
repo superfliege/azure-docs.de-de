@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: ph-com
 ms.author: pahusban
-ms.date: 09/24/2018
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3f40606d5fae3b3784ac7f1fdcf4977b7fd9eb1f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3b55282adf56bedb0724eca578b8eaea00c26074
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251774"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023975"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Exportieren oder Löschen Ihrer Arbeitsbereichsdaten im Machine Learning-Dienst 
 
@@ -231,3 +231,29 @@ Vorlagen können folgendermaßen abgerufen werden:
 Datenquellen können folgendermaßen abgerufen werden:
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/DataSources/{id}
+
+## <a name="delete-visual-interface-assets"></a>Löschen von Objekten der grafischen Benutzeroberfläche
+
+Löschen Sie auf der grafischen Benutzeroberfläche, auf der Sie Ihr Experiment erstellt haben, einzelne Objekte:
+
+1. Wählen Sie auf der linken Seite den Typ der Ressource aus, die Sie löschen möchten.
+
+    ![Löschen von Assets](media/how-to-export-delete-data.md/delete-experiment.png)
+
+1. Wählen Sie in der Liste die zu löschenden Objekte einzeln aus.
+
+1. Wählen Sie unten die Option **Löschen** aus.
+
+## <a name="export-visual-interface-data"></a>Exportieren von Daten der grafischen Benutzeroberfläche
+
+Exportieren Sie auf der grafischen Benutzeroberfläche, auf der Sie Ihr Experiment erstellt haben, von Ihnen hinzugefügte Daten:
+
+1. Wählen Sie links die Option **Daten** aus.
+
+1. Wählen Sie oben die Option **Meine Datasets** oder **Beispiele** aus, um die Daten zu suchen, die Sie exportieren möchten.
+
+    ![Herunterladen der Daten](media/how-to-export-delete-data.md/download-data.png)
+
+1. Wählen Sie in der Liste die zu exportierenden Datasets einzeln aus.
+
+1. Wählen Sie unten die Option **Herunterladen** aus.

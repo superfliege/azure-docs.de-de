@@ -9,13 +9,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
-ms.date: 03/19/2019
-ms.openlocfilehash: c4f94dd2730dd302951b4476a292b006041b7ee8
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.date: 05/02/2019
+ms.openlocfilehash: 4386420a56b3543ac6c5f5934f963e56bc674873
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680858"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024988"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisches Trainieren eines Modells für die Zeitreihenprognose
 
@@ -24,6 +24,8 @@ In diesem Artikel erfahren Sie, wie Sie im Azure Machine Learning-Dienst ein Reg
 * Vorbereiten von Daten für die Zeitreihenmodellierung
 * Konfigurieren spezifischer Zeitreihenparameter in einem Objekt vom Typ [`AutoMLConfig`](/python/api/azureml-train-automl/azureml.train.automl.automlconfig)
 * Ausführen von Vorhersagen mit Zeitreihendaten
+
+> [!VIDEO https://www.youtube.com/embed/mGr_c2UnOUI]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -67,7 +69,7 @@ y_test = X_test.pop("sales_quantity").values
 > [!NOTE]
 > Stellen Sie beim Trainieren eines Modells für die Vorhersage zukünftiger Werte sicher, dass alle während des Trainings verwendeten Features beim Ausführen von Vorhersagen für Ihren gewünschten Vorhersagehorizont verwendet werden können. Wenn Sie also beispielsweise eine Nachfrageprognose erstellen, lässt sich die Trainingsgenauigkeit durch die Einbeziehung eines Features für den aktuellen Aktienkurs erheblich verbessern. Wenn Sie bei Ihrer Vorhersage allerdings einen Vorhersagehorizont verwenden, der weit in der Zukunft liegt, lassen sich zukünftige Aktienkurse für zukünftige Zeitreihenpunkte ggf. nicht präzise vorhersagen, was sich nachteilig auf die Modellgenauigkeit auswirken kann.
 
-## <a name="configure-experiment"></a>Konfigurieren des Experiments
+## <a name="configure-and-run-experiment"></a>Konfigurieren und Ausführen des Experiments
 
 Bei Vorhersageaufgaben nutzt das automatisierte maschinelle Lernen spezifische Vorverarbeitungs- und Schätzschritte für Zeitreihendaten. Folgende Vorverarbeitungsschritte werden ausgeführt:
 
@@ -126,6 +128,20 @@ best_run, fitted_model = local_run.get_output()
 > [!NOTE]
 > Für die Kreuzvalidierung (Cross-Validation, CV) können Zeitreihendaten den grundlegenden statistischen Annahmen der kanonischen k-fachen Kreuzvalidierungsstrategie widersprechen. Das automatisierte maschinelle Lernen implementiert daher eine parallele Ursprungsvalidierung, um Teilmengen für die Kreuzvalidierung von Zeitreihendaten zu erstellen. Geben Sie im Objekt `AutoMLConfig` den Parameter `n_cross_validations` an, um dieses Verfahren zu verwenden. Sie können die Validierung umgehen und mit den Parametern `X_valid` und `y_valid` Ihre eigenen Validierungssätze verwenden.
 
+### <a name="view-feature-engineering-summary"></a>Anzeigen der Zusammenfassung der Featureentwicklung
+
+Für Aufgabentypen mit Zeitreihen beim automatisierten maschinellen Lernen können Sie Details aus dem Featureentwicklungsprozess anzeigen. Der folgende Code zeigt jedes Rohfeature sowie die folgenden Attribute:
+
+* Name des Rohfeatures
+* Anzahl der entwickelten Features, die aus diesem Rohfeature gebildet wurden
+* Erkannter Typ
+* Ob das Feature gelöscht wurde
+* Liste der Featuretransformationen für dieses Rohfeature
+
+```python
+fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
+```
+
 ## <a name="forecasting-with-best-model"></a>Vorhersagen mit dem besten Modell
 
 Verwenden Sie die beste Modelliteration, um Werte für das Testdataset vorherzusagen.
@@ -133,6 +149,16 @@ Verwenden Sie die beste Modelliteration, um Werte für das Testdataset vorherzus
 ```python
 y_predict = fitted_model.predict(X_test)
 y_actual = y_test.flatten()
+```
+
+Alternativ können Sie anstelle von `predict()` die Funktion `forecast()` verwenden, die die Festlegung ermöglicht, wann Vorhersagen beginnen sollen. Im folgenden Beispiel ersetzen Sie zunächst alle Werte in `y_pred` durch `NaN`. Der Ursprung der Vorhersage liegt in diesem Fall am Ende der Trainingsdaten, wie es normalerweise bei der Verwendung von `predict()` der Fall wäre. Wenn Sie jedoch nur die zweite Hälfte von `y_pred` durch `NaN` ersetzen, lässt die Funktion die numerischen Werte in der ersten Hälfte unverändert, sagt aber die `NaN`-Werte in der zweiten Hälfte voraus. Die Funktion gibt sowohl die vorhergesagten Werte als auch die angepassten Features zurück.
+
+Sie können den Parameter `forecast_destination` in der Funktion `forecast()` auch verwenden, um Werte bis zu einem bestimmten Datum vorherzusagen.
+
+```python
+y_query = y_test.copy().astype(np.float)
+y_query.fill(np.nan)
+y_fcst, X_trans = fitted_pipeline.forecast(X_test, y_query, forecast_destination=pd.Timestamp(2019, 1, 8))
 ```
 
 Berechnen Sie den RMSE-Wert (Root Mean Squared Error) zwischen den tatsächlichen Werten (`y_test`) und den vorhergesagten Werten (`y_pred`).

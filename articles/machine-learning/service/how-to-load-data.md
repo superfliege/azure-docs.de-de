@@ -10,22 +10,24 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: jmartens
-ms.date: 2/22/2019
+ms.date: 02/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 34dd20826928d1ab2ba1fc7980c7d47b796ea663
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 7dc07ba7f1d62b49232b1cd892070804099fab8c
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311015"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024002"
 ---
-# <a name="load-and-read-data-with-azure-machine-learning"></a>Laden und Lesen von Daten mit Azure Machine Learning
-
+# <a name="load-and-read-data-with-the-azure-machine-learning-data-prep-sdk"></a>Laden und Lesen von Daten mit dem Azure Machine Learning Data Prep SDK
 In diesem Artikel lernen Sie verschiedene Methoden zum Laden von Daten mit dem Azure Machine Learning Data Prep SDK kennen. Eine Referenzdokumentation für das SDK finden Sie in der [Übersicht](https://aka.ms/data-prep-sdk). Das SDK unterstützt mehrere Datenerfassungsfeatures, z. B.:
 
 * Laden von Daten aus einer Vielzahl von Dateitypen mit Analyseparameter-Rückschluss (Codierung, Trennzeichen, Header)
 * Typkonvertierung unter Verwendung der Ermittlung beim Laden der Datei
 * Verbindungsunterstützung für MS SQL Server und Azure Data Lake Storage
+
+> [!Important]
+> Probieren Sie beim Erstellen einer neuen Projektmappe die [Azure Machine Learning-Datasets](how-to-explore-prepare-data.md) (Vorschauversion) für die Datenuntersuchung und -vorbereitung aus. Datasets ist die nächste Version des SDK für die Datenvorbereitung und bietet erweiterte Funktionen zum Verwalten von Datasets in KI-Lösungen.
 
 Die folgende Tabelle zeigt eine Auswahl von Funktionen, die zum Laden von Daten aus gängigen Dateitypen verwendet werden.
 

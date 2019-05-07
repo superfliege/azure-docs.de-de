@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 2c5c2bc2b8dd1930efef9833bd442fcad5566e2a
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: cbabdde2dd5df2ca40ee45fe0f7b0437f095673b
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578780"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020382"
 ---
 # <a name="what-is-text-to-speech"></a>Was ist Text-zu-Sprache?
 
@@ -32,7 +32,9 @@ Standardstimmen werden mithilfe von Techniken für statistische parametrische Sp
 
 Neuronale Stimmen verwenden Deep Neural Networks, um die Beschränkungen herkömmlicher Sprachsynthesesysteme beim Abgleich der Muster für Betonung und Intonation bei gesprochener Sprache zu überwinden und die Spracheinheiten in eine Computerstimme zu synthetisieren. Die Standardsprachsynthese untergliedert den Satzrhythmus in separate linguistische Analyse- und akustische Vorhersageschritte, die von unabhängigen Modellen gesteuert werden. Dies kann zu einer dumpfen, dröhnenden Sprachsynthese führen. Unsere neuronalen Funktionen führen die Vorhersage der Satzgliederung und die Stimmensynthese gleichzeitig aus, sodass eine flüssigere und natürlicher klingende Sprache entsteht.
 
-Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und virtuellen Helfern noch natürlicher und einladender, wandeln Sie digitale Texte wie E-Books in Audiobooks um, und verpassen Sie Ihrem Navigationssystem im Auto ein Upgrade. Durch natürliche, menschenähnliche Intonation und klare Aussprache von Wörtern können neuronale Stimmen die Hörermüdung bei der Interaktion mit KI-Systemen erheblich verringern. Weitere Informationen zu unterstützten neuronalen Stimmen finden Sie unter [Sprachunterstützung](language-support.md#text-to-speech).
+Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und virtuellen Helfern noch natürlicher und einladender, wandeln Sie digitale Texte wie E-Books in Audiobooks um, und verpassen Sie Ihrem Navigationssystem im Auto ein Upgrade. Durch natürliche, menschenähnliche Intonation und klare Aussprache von Wörtern können neuronale Stimmen die Hörermüdung bei der Interaktion mit KI-Systemen erheblich verringern. 
+
+Neuronale Stimmen unterstützen verschiedene Stile – etwa neutral oder fröhlich. Die Stimme „Jessa“ (en-US) ist beispielsweise gut gelaunt und eignet sich somit optimal für eine herzliche, fröhliche Konversation. Sie können die [Speech Synthesis Markup Language](speech-synthesis-markup.md) verwenden, um Aspekte der Sprachausgabe wie Klangfarbe, Tonhöhe und Sprechgeschwindigkeit anzupassen. Eine vollständige Liste der verfügbaren Stimmen finden Sie unter [Unterstützte Sprachen](language-support.md#text-to-speech).
 
 Weitere Informationen zu den Vorteilen neuronaler Stimmen finden Sie unter [Microsoft’s new neural text-to-speech service helps machines speak like people](https://azure.microsoft.com/blog/microsoft-s-new-neural-text-to-speech-service-helps-machines-speak-like-people/) (Der neue neuronale Text-zu-Sprache-Dienst von Microsoft lässt Computer wie Menschen sprechen).
 

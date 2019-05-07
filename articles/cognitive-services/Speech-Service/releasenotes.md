@@ -8,29 +8,56 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 4/5/2019
+ms.date: 05/02/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: e40d9a2ac0e95ae72aed927f8a527eb1e092079d
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 1310ecd15498c4c319febc87cbc3b18e0a7ca524
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549404"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020335"
 ---
 # <a name="release-notes"></a>Versionshinweise
+
+## <a name="speech-sdk-150-2019-may-release"></a>Speech SDK 1.5.0: Release von Mai 2019
+
+**Neue Features**
+
+* Die Funktionalität für die Stichworterkennung (Keyword Spotting Functionality, KWS) ist für Windows und Linux verfügbar. Die KWS-Funktionalität kann u. U. mit jedem Mikrofontyp verwendet werden, offiziell wird KWS derzeit jedoch nur für die Mikrofonarrays in der Azure Kinect DK-Hardware oder im Speech Devices SDK unterstützt.
+* Begriffshinweisfunktionalität ist über das SDK verfügbar. Weitere Informationen finden Sie [hier](how-to-phrase-lists.md).
+* Unterhaltungstranskriptionsfunktionalität ist über das SDK verfügbar. Klicken Sie [hier](conversation-transcription-service.md).
+* Unterstützung für virtuelle Voice-First-Assistenten über den Direct Line Speech-Kanal wurde hinzugefügt.
+
+**Beispiele**
+
+* Beispiele für neue Funktionen oder neue Dienste, die vom SDK unterstützt werden, wurden hinzugefügt.
+
+**Verbesserungen/Änderungen**
+
+* Verschiedene Erkennungseigenschaften wurden hinzugefügt, um das Dienstverhalten oder Dienstergebnisse anzupassen (z. B. Maskieren von Obszönitäten).
+* Sie können die Erkennung jetzt über die Standardkonfigurationseigenschaften konfigurieren, auch wenn Sie den Erkenner `FromEndpoint` erstellt haben.
+* Objective-C: „SPXSpeechConfiguration“ wurde durch die `OutputFormat`-Eigenschaft ergänzt.
+* Das SDK unterstützt jetzt Debian 9 als Linux-Distribution.
+
+**Fehlerbehebungen**
+
+* Es wurde ein Problem behoben, bei dem die Sprecherressource in der Sprachsynthese zu früh zerstört wurde.
+## <a name="speech-sdk-142"></a>Speech SDK 1.4.2
+
+Dies ist ein Fehlerbehebungsrelease und betrifft nur das native/verwaltete SDK. Es betrifft nicht die JavaScript-Version des SDK.
 
 ## <a name="speech-sdk-141"></a>Speech SDK 1.4.1
 
 Dieses Release gilt nur für JavaScript. Es wurden keine Features hinzugefügt. Die folgenden Fehler wurden behoben:
 
-* Verhindern Sie das Laden von https-proxy-agent durch Webpack.
+* Verhindern Sie das Laden von „https-proxy-agent“ durch Webpack.
 
 ## <a name="speech-sdk-140-2019-april-release"></a>Speech SDK 1.4.0: Release von April 2019
 
 **Neue Features** 
 
-* Das SDK unterstützt jetzt den Text-Sprach-Dienst als Betaversion. Dies wird unter Windows- und Linux-Desktops für C++ und C# unterstützt. Weitere Informationen finden in der [Übersicht über die Sprachsynthese](text-to-speech.md#get-started-with-text-to-speech).
+* Das SDK unterstützt jetzt den Text-Sprach-Dienst als Betaversion. Dies wird unter Windows- und Linux-Desktops für C++ und C# unterstützt. Weitere Informationen finden Sie in der [Übersicht über die Sprachsynthese](text-to-speech.md#get-started-with-text-to-speech).
 * Das SDK unterstützt jetzt MP3- und Opus/Ogg-Audiodateien als Streameingabedateien an. Dieses Feature steht nur unter Linux mit C++ und C# zur Verfügung und befindet sich derzeit in der Betaversion (weitere Details finden Sie [hier](how-to-use-compressed-audio-input-streams.md)).
 * Das Speech SDK für Java, .NET Core, C++ und Objective-C unterstützt nun auch macOS. Die Objective-C-Unterstützung für macOS befindet sich derzeit in der Betaphase.
 * iOS: Das Speech SDK für iOS (Objective-C) wird jetzt auch als ein CocoaPod veröffentlicht.
@@ -66,8 +93,8 @@ Dies ist ein Fehlerbehebungsrelease und betrifft nur das native/verwaltete SDK. 
 
 **Neue Features**
 
-* Das Speech SDK unterstützt die Auswahl des Eingangsmikrofons über die AudioConfig-Klasse. Dadurch können Sie Audiodaten über ein anderes als das Standardmikrofon an den Speech-Dienst streamen. Weitere Informationen finden Sie in der Dokumentation, in der die [Auswahl eines Audioeingabegeräts](how-to-select-audio-input-devices.md) beschrieben wird. Für JavaScript ist diese Option noch nicht verfügbar.
-* Das Speech SDK unterstützt jetzt Unity in einer Betaversion. Senden Sie uns Feedback über den Abschnitt für Issues im [GitHub-Beispielrepository](https://aka.ms/csspeech/samples). Dieses Release unterstützt Unity unter Windows x86 und x64 (Desktopanwendungen oder Anwendungen der universellen Windows-Plattform) und unter Android (ARM32/64, x86). Weitere Informationen finden Sie in unserem [Unity-Schnellstart](quickstart-csharp-unity.md).
+* Das Speech SDK unterstützt die Auswahl des Eingangsmikrofons über die AudioConfig-Klasse. Dadurch können Sie Audiodaten über ein anderes als das Standardmikrofon an den Speech-Dienst streamen. Weitere Informationen finden Sie in der Dokumentation, in der die [Auswahl eines Audioeingabegeräts](how-to-select-audio-input-devices.md) beschrieben wird. Für JavaScript ist diese Funktion noch nicht verfügbar.
+* Das Speech SDK unterstützt jetzt Unity in einer Betaversion. Senden Sie uns Feedback über den Abschnitt „Issue“ im [GitHub-Beispielrepository](https://aka.ms/csspeech/samples). Dieses Release unterstützt Unity unter Windows x86 und x64 (Desktopanwendungen oder Anwendungen der universellen Windows-Plattform) und unter Android (ARM32/64, x86). Weitere Informationen finden Sie in unserem [Unity-Schnellstart](quickstart-csharp-unity.md).
 * Die Datei `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (im Lieferumfang von früheren Releases enthalten) ist nicht mehr erforderlich. Die Funktion ist jetzt in das Core-SDK integriert.
 
 
@@ -105,7 +132,7 @@ Die folgenden neuen Inhalte stehen in unserem [Beispielrepository](https://aka.m
 * Leere Angaben für Proxybenutzername und Proxykennwort wurden nicht ordnungsgemäß behandelt. Wenn Sie in diesem Release den Proxybenutzernamen und das Proxykennwort auf eine leere Zeichenfolge festlegen, werden diese bei der Verbindungsherstellung mit dem Proxy nicht übermittelt.
 * Vom SDK erstellte SessionId-Angaben wurden&nbsp;für einige Sprachen/Umgebungen nicht immer wirklich zufällig gewählt. Es wurde eine Initialisierung des Zufallsgenerators hinzugefügt, um dieses Problem zu beheben.
 * Verbesserte Verarbeitung des Autorisierungstokens. Wenn Sie ein Autorisierungstoken verwenden möchten, geben Sie es in SpeechConfig an, und lassen Sie den Abonnementschlüssel leer. Erstellen Sie die Erkennung dann wie gewohnt.
-* In einigen Fällen wurde das Verbindungsobjekt nicht ordnungsgemäß freigegeben. Dies wurde korrigiert.
+* In einigen Fällen wurde das Verbindungsobjekt nicht ordnungsgemäß freigegeben. Dieses Problem wurde behoben.
 * Das JavaScript-Beispiel wurde korrigiert, um die Audioausgabe für die Übersetzungssynthese auch in Safari zu unterstützen.
 
 ## <a name="speech-sdk-121"></a>Speech SDK 1.2.1
@@ -130,7 +157,7 @@ Dieses Release gilt nur für JavaScript. Es wurden keine Features hinzugefügt. 
   * Die Längenbeschränkung für Audiositzungen wurde entfernt. Die Verbindungswiederherstellung erfolgt automatisch im Hintergrund.
 * Verbindungsobjekt
   * Über die Erkennung können Sie auf ein Verbindungsobjekt zugreifen. Mit diesem Objekt können Sie die Dienstverbindung explizit initiieren und Verbindungsherstellungs- und Verbindungstrennungsereignisse abonnieren.
-    (Für JavaScript und Python noch nicht verfügbar.)
+    (Für JavaScript und Python ist diese Funktion noch nicht verfügbar.)
 * Unterstützung von Ubuntu 18.04
 * Android
   * ProGuard-Unterstützung während der APK-Generierung aktiviert

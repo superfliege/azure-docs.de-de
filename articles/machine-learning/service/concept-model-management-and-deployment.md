@@ -1,7 +1,7 @@
 ---
-title: Verwalten, registrieren, bereitstellen und überwachen von ML-Modellen
+title: 'MLOps: Verwalten, Bereitstellen und Überwachen von ML-Modellen'
 titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie mit Azure Machine Learning Services Ihre Modelle bereitstellen, verwalten und überwachen, um sie kontinuierlich zu verbessern. Sie können die Modelle, die Sie mit Azure Machine Learning Services trainiert haben, auf Ihrem lokalen Computer oder aus anderen Quellen bereitstellen.
+description: Erfahren Sie, wie Sie mit Azure Machine Learning Services für MLOps Ihre Modelle bereitstellen, verwalten und überwachen, um sie kontinuierlich zu verbessern. Sie können die Modelle, die Sie mit Azure Machine Learning Services trainiert haben, auf Ihrem lokalen Computer oder aus anderen Quellen bereitstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,101 +9,85 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: chris-lauren
 ms.author: clauren
-ms.date: 1/23/2019
+ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2cd2d328d33744854bc525e5ecf1dfa3b6e4bcc8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 18a80af8422e30ce3e87395449fca7b5f6a73762
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59275441"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025010"
 ---
-# <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Verwalten, Bereitstellen und Überwachen von Modellen mit Azure Machine Learning Services
+# <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>MLOps: Verwalten, Bereitstellen und Überwachen von Modellen mit Azure Machine Learning Services
 
 In diesem Artikel lernen Sie, wie Sie mit Azure Machine Learning Services Ihre Modelle bereitstellen, verwalten und überwachen, um sie kontinuierlich zu verbessern. Sie können die Modelle, die Sie mit Azure Machine Learning trainiert haben, auf Ihrem lokalen Computer oder aus anderen Quellen bereitstellen. 
 
 Das folgende Diagramm veranschaulicht den vollständigen Bereitstellungsworkflow: [ ![Bereitstellungsworkflow für Azure Machine Learning](media/concept-model-management-and-deployment/deployment-pipeline.png)](media/concept-model-management-and-deployment/deployment-pipeline.png#lightbox)
 
-Der Bereitstellungsworkflow umfasst die folgenden Schritte:
+Der MLOps-/Bereitstellungsworkflow umfasst die folgenden Schritte:
 1. **Registrieren des Modells** in einer Registrierung, die in Ihrem Azure Machine Learning Services-Arbeitsbereich gehostet wird
-1. **Registrieren eines Images**, das ein Modell mit einem Bewertungsskript und Abhängigkeiten in einem portablen Container verbindet 
-1. **Bereitstellen des Images** als Webdienst in der Cloud oder auf Edgegeräten
+1. **Verwenden** Sie das Modell in einem Webdienst in der Cloud, auf einem IoT-Gerät oder für Analysen mit Power BI.
 1. **Überwachen und Sammeln von Daten**
 1. **Aktualisieren** Sie eine Bereitstellung für die Verwendung eines neuen Image.
 
-Jeder Schritt kann alleine oder als Teil eines einzelnen Bereitstellungsbefehls ausgeführt werden. Darüber hinaus können Sie die Bereitstellung in einen **CI/CD-Workflow** integrieren, wie in dieser Grafik dargestellt.
+Jeder Schritt kann eigenständig oder als Teil eines einzelnen Befehls ausgeführt werden. Darüber hinaus können Sie einen **CI/CD-Workflow** erstellen, wie in dieser Grafik dargestellt.
 
-[!['Zyklus von Continuous Integration und Continuous Deployment für Azure Machine Learning(media/concept-model-management-and-deployment/model-ci-cd.png)](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
+[ ![ ‚Zyklus: Continuous Integration/Continuous Deployment (CI/CD) für Azure Machine Learning‘](media/concept-model-management-and-deployment/model-ci-cd.png)](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
+
+> [!VIDEO https://www.youtube.com/embed/0MaHb070H_8]
 
 ## <a name="step-1-register-model"></a>Schritt 1: Registrieren des Modells
 
 Die Modellregistrierung ermöglicht es Ihnen, Ihre Modelle in der Azure-Cloud in Ihrem Arbeitsbereich zu speichern und zu versionieren. Die Modellregistrierung erleichtert das Organisieren und Verwalten von trainierten Modellen.
  
-Registrierte Modelle werden anhand des Namens und der Version identifiziert. Jedes Mal, wenn Sie ein Modell mit dem gleichen Namen wie ein bereits vorhandenes Modell registrieren, erhöht die Registrierung die Versionsnummer. Sie können beim Registrieren auch zusätzliche Metadatentags bereitstellen, die bei der Suche nach Modellen verwendet werden können. Der Azure Machine Learning Service unterstützt Modelle, die mit Python 3 geladen werden können. 
+Registrierte Modelle werden anhand des Namens und der Version identifiziert. Jedes Mal, wenn Sie ein Modell mit dem gleichen Namen wie ein bereits vorhandenes Modell registrieren, erhöht die Registrierung die Versionsnummer. Sie können beim Registrieren auch zusätzliche Metadatentags bereitstellen, die bei der Suche nach Modellen verwendet werden können. Azure Machine Learning Service unterstützt Modelle, die mit Python 3.5.2 oder höher geladen werden können.
 
-Sie können keine Modelle löschen, die von einem Image verwendet werden.
+Sie können keine Modelle löschen, die in einer aktiven Bereitstellung verwendet werden.
 
 Weitere Informationen finden Sie im Abschnitt „Registrieren eines Modells“ von [Bereitstellen von Modellen](how-to-deploy-and-where.md#registermodel).
 
 Ein Beispiel für das Registrieren eines im Pickle-Format gespeicherten Modells, finden Sie unter [Tutorial: Trainieren eines Imageklassifizierungsmodells](tutorial-deploy-models-with-aml.md).
 
-Informationen zur Verwendung von ONNX-Modellen finden Sie im Dokument [ONNX und Azure Machine Learning](how-to-build-deploy-onnx.md).
+## <a name="step-2-use-the-model"></a>Schritt 2: Verwenden des Modells
 
-## <a name="step-2-register-image"></a>Schritt 2: Registrieren eines Images
+Machine Learning-Modelle können als Webdienst, auf IoT Edge-Geräten oder für die Analyse in Diensten wie Power BI verwendet werden.
 
-Images ermöglichen eine zuverlässige Modellimplementierung, die alle Komponenten umfasst, die zum Verwenden des Modells erforderlich sind. Ein Image enthält die folgenden Elemente:
+### <a name="web-service"></a>Webdienst
 
-* Das Modell
-* Die Bewertungs-Engine
-* Die Bewertungsdatei oder -anwendung
-* Alle Abhängigkeiten, die zum Bewerten des Modells erforderlich sind
-
-Das Image kann auch SDK-Komponenten zum Protokollieren und Überwachen beinhalten. Die SDK-Protokolldaten können für die Feinabstimmung oder das erneute Training Ihres Modells verwendet werden, einschließlich zur Ein- und Ausgabe des Modells.
-
-Azure Machine Learning unterstützt die gängigsten Frameworks – generell wird jedes Framework unterstützt, das mit „pip“ installiert werden kann.
-
-Wenn Ihr Arbeitsbereich erstellt wurde, wurden auch andere Azure-Ressourcen erstellt, die von diesem Arbeitsbereich verwendet werden.
-Alle Objekte, die zum Erstellen des Standardimages verwendet werden, werden im Azure-Speicherkonto in Ihrem Arbeitsbereich gespeichert. Beim Erstellen des Images können Sie weitere Metadatentags bereitstellen. Metadatentags werden auch von der Imageregistrierung gespeichert und können abgefragt werden, um nach Ihrem Image zu suchen.
-
-Sie können auch benutzerdefinierte Images verwenden, die in Azure Container Registry hochgeladen und von Azure Machine Learning Service verwendet werden können.
-
-Weitere Informationen finden Sie im Abschnitt „Konfigurieren und Registrieren eines Image“ von [Bereitstellen von Modellen](how-to-deploy-and-where.md#configureimage).
-
-## <a name="step-3-deploy-image"></a>Schritt 3: Bereitstellen des Images
-
-Sie können registrierte Images in der Cloud und auf Edgegeräten bereitstellen. Der Bereitstellungsprozess erstellt alle Ressourcen, mit denen Sie das Modell überwachen und automatisch skalieren sowie dafür einen Lastenausgleich vornehmen können. Der Zugriff auf die bereitgestellten Dienste kann durch eine zertifikatsbasierte Authentifizierung gesichert werden, indem die Sicherheitsressourcen beim Bereitstellen verfügbar gemacht werden. Sie können auch eine vorhandene Bereitstellung aktualisieren, um ein neueres Image zu verwenden.
-
-Webdienstbereitstellungen sind auch durchsuchbar. So können Sie beispielsweise nach allen Bereitstellungen eines bestimmten Modells oder Images suchen.
-
-[![IRückschlussziele(media/concept-model-management-and-deployment/inferencing-targets.png)](media/concept-model-management-and-deployment/inferencing-targets.png#lightbox)
-
-Für Ihre Images sind die folgenden Bereitstellungsziele in der Cloud verfügbar:
+Sie können Ihre Modelle in **Webdiensten** mit den folgenden Computezielen verwenden:
 
 * Azure Container Instances
 * Azure Kubernetes Service
-* Azure-FPGA-Computer
-* Azure IoT Edge-Geräte
 
-Beim Bereitstellen Ihres Dienstes wird für die Rückschlussanforderung automatisch ein Lastenausgleich vorgenommen und der Cluster skaliert, um bei Bedarf Spitzen zu verarbeiten. [Telemetriedaten zu Ihrem Dienst](how-to-enable-app-insights.md) können im Azure Application Insights-Dienst erfasst werden, der mit Ihrem Arbeitsbereich verknüpft ist.
+Um das Modell als Webdienst bereitzustellen, müssen Sie Folgendes angeben:
 
-Weitere Informationen finden Sie im Abschnitt „Bereitstellen“ von [Bereitstellen von Modellen](how-to-deploy-and-where.md#deploy).
+* Das Modell oder ein Ensemble von Modellen.
+* Abhängigkeiten, die zur Nutzung des Modells erforderlich sind. Beispielsweise ein Skript, das Anforderungen akzeptiert und das Modell aufruft, Conda-Abhängigkeiten, usw.
+* Eine Bereitstellungskonfiguration, die beschreibt, wie und wo das Modell bereitgestellt werden soll.
 
-## <a name="step-4-monitor-models-and-collect-data"></a>Schritt 4: Überwachen des Modells und Sammeln von Daten
+Weitere Informationen finden Sie unter [Bereitstellen von Modellen](how-to-deploy-and-where.md).
 
-Ein SDK für die Modellprotokollierung und Datenerfassung ist verfügbar, sodass Sie Eingabe-, Ausgabe- und andere relevante Daten Ihres Modells überwachen können. Die Daten werden als Blob im Azure-Speicherkonto für Ihren Arbeitsbereich gespeichert.
+### <a name="iot-edge-devices"></a>IoT Edge-Geräte
 
-Um das SDK mit Ihrem Modell zu verwenden, importieren Sie das SDK in Ihr Bewertungsskript oder Ihre Anwendung. Dann können Sie mit dem SDK Daten protokollieren, z.B. Parameter, Ergebnisse und Eingabedetails.
+Sie können Modelle mit IoT-Geräten über **Azure IoT Edge-Module** verwenden. IoT Edge-Module werden auf Hardwaregeräten bereitgestellt, wodurch Rückschlüsse auf dem Gerät ermöglicht werden.
 
-Wenn Sie das Sammeln von Modelldaten aktivieren, werden bei jeder Bereitstellung des Images die zum Erfassen der Daten erforderlichen Details automatisch bereitgestellt, z.B. Anmeldeinformationen für Ihren persönlichen Blobspeicher.
+Weitere Informationen finden Sie unter [Bereitstellen von Modellen](how-to-deploy-and-where.md).
 
-> [!Important]
-> Microsoft sieht Ihre gesammelten Modelldaten nicht. Die Daten werden direkt an das Azure-Speicherkonto für Ihren Arbeitsbereich gesendet.
+### <a name="analytics"></a>Analytics
+
+Microsoft Power BI unterstützt die Verwendung von Machine Learning-Modellen für Datenanalysen. Weitere Informationen finden Sie unter [Integration von Azure Machine Learning in Power BI (Vorschau)](https://docs.microsoft.com/power-bi/service-machine-learning-integration).
+
+## <a name="step-3-monitor-models-and-collect-data"></a>Schritt 3: Überwachen des Modells und Sammeln von Daten
+
+Die Überwachung ermöglicht Ihnen zu verstehen, welche Daten an Ihr Modell gesendet werden und welche Vorhersagen es zurückgibt.
+
+Diese Informationen helfen Ihnen zu verstehen, wie Ihr Modell genutzt wird. Die gesammelten Eingabedaten können auch zum Trainieren künftiger Versionen des Modells nützlich sein.
 
 Weitere Informationen finden Sie unter [Gewusst wie: Aktivieren der Modelldatensammlung](how-to-enable-data-collection.md).
 
-## <a name="step-5-update-the-deployment"></a>Schritt 5: Aktualisieren der Bereitstellung
+## <a name="step-4-update-the-deployment"></a>Schritt 4: Aktualisieren der Bereitstellung
 
-Aktualisierungen für das Modell werden nicht automatisch registriert. Ebenso wird durch die Registrierung eines neuen Images nicht automatisch die Bereitstellung aktualisiert, die aus einer früheren Version des Images erstellt wurde. Stattdessen müssen Sie das Modell manuell registrieren, das Image registrieren und dann das Modell aktualisieren. Weitere Informationen finden Sie im Abschnitt „Aktualisieren“ von [Bereitstellen von Modellen](how-to-deploy-and-where.md#update).
+Bereitstellungen müssen explizit aktualisiert werden. Weitere Informationen finden Sie im Abschnitt „Aktualisieren“ von [Bereitstellen von Modellen](how-to-deploy-and-where.md#update).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

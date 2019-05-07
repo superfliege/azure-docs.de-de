@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: fmegen
-ms.openlocfilehash: a418966ce72876d58d39b939ecb7dd5a05e41b9b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bda38825cd65f1d44b497de1445ead5689428917
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59008985"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020728"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in JavaScript in einem Browser mit dem Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Dieser Artikel enthält Informationen zur Erstellung einer Website mithilfe der JavaScript-Bindung des Cognitive Services Speech SDK zum Umwandeln von Sprache in Text.
-Die Anwendung basiert auf dem Speech SDK für JavaScript. Die Version 1.4.0 können Sie [hier](https://aka.ms/csspeech/jsbrowserpackage) herunterladen.
+Die Anwendung basiert auf dem Speech SDK für JavaScript. Die Version 1.5.0 können Sie [hier](https://aka.ms/csspeech/jsbrowserpackage) herunterladen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

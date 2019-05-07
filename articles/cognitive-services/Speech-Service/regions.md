@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: eb3697eefb5835305b2ec80ca1e77ccade19e44f
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 83cea56cecf9792c829e062965fe39b63201af3e
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578187"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65020663"
 ---
 # <a name="speech-service-supported-regions"></a>Vom Speech-Dienst unterstützte Regionen
 
@@ -28,9 +28,9 @@ Stellen Sie sicher, dass Sie den Endpunkt verwenden, der mit der Region für Ihr
 
 Im [Speech SDK](speech-sdk.md) werden Regionen als Zeichenfolge angegeben (z.B. als Parameter für `SpeechConfig.FromSubscription` im Speech SDK für C#).
 
-### <a name="speech-recognition-and-translation"></a>Spracherkennung und Übersetzung
+### <a name="speech-to-text-text-to-speech-and-translation"></a>Spracherkennung, Sprachsynthese und Übersetzung
 
-Das Speech SDK ist in den folgenden Regionen für **Spracherkennung** und **Übersetzung** verfügbar:
+Das Speech SDK ist in den folgenden Regionen für **Spracherkennung**, **Sprachsynthese** und **Übersetzung** verfügbar:
 
   Region | Speech SDK-Parameter | Speech-Anpassungsportal
  ------|-------|--------
