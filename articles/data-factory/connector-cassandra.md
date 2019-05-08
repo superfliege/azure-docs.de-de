@@ -173,20 +173,20 @@ Beim Kopieren von Daten aus Cassandra werden die folgenden Zuordnungen von Cassa
 
 | Cassandra-Datentyp | Data Factory-Zwischendatentyp |
 |:--- |:--- |
-| ASCII |Zeichenfolge |
+| ASCII |String |
 | BIGINT |Int64 |
 | BLOB |Byte[] |
-| BOOLEAN |BOOLEAN |
+| BOOLEAN |Boolean |
 | DECIMAL |Decimal |
-| DOUBLE |DOUBLE |
+| DOUBLE |Double |
 | FLOAT |Single |
-| INET |Zeichenfolge |
+| INET |String |
 | INT |Int32 |
-| TEXT |Zeichenfolge |
+| TEXT |String |
 | TIMESTAMP |DateTime |
 | TIMEUUID |Guid |
 | UUID |Guid |
-| VARCHAR |Zeichenfolge |
+| VARCHAR |String |
 | VARINT |Decimal |
 
 > [!NOTE]
