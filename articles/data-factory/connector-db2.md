@@ -174,31 +174,31 @@ Beim Kopieren von Daten aus DB2 werden die folgenden Zuordnungen von DB2-Datenty
 | Typ "DB2-Datenbank" | Data Factory-Zwischendatentyp |
 |:--- |:--- |
 | BigInt |Int64 |
-| Binär |Byte[] |
+| Binary |Byte[] |
 | Blob |Byte[] |
-| Char |Zeichenfolge |
-| Clob |Zeichenfolge |
-| Datum |DateTime |
-| DB2DynArray |Zeichenfolge |
-| DbClob |Zeichenfolge |
-| DECIMAL |DECIMAL |
-| DecimalFloat |DECIMAL |
+| Char |String |
+| Clob |String |
+| Date |Datetime |
+| DB2DynArray |String |
+| DbClob |String |
+| Decimal |Decimal |
+| DecimalFloat |Decimal |
 | Double |Double |
 | Float |Double |
-| Graphic |Zeichenfolge |
-| Ganze Zahl  |Int32 |
+| Graphic |String |
+| Integer |Int32 |
 | LongVarBinary |Byte[] |
-| LongVarChar |Zeichenfolge |
-| LongVarGraphic |Zeichenfolge |
-| Numeric |DECIMAL |
+| LongVarChar |String |
+| LongVarGraphic |String |
+| Numeric |Decimal |
 | Real |Single |
 | SmallInt |Int16 |
-| Zeit |Zeitraum |
-| Timestamp |Datetime |
+| Time |TimeSpan |
+| Timestamp |DateTime |
 | VarBinary |Byte[] |
-| VarChar |Zeichenfolge |
-| VarGraphic |Zeichenfolge |
-| xml |Byte[] |
+| VarChar |String |
+| VarGraphic |String |
+| Xml |Byte[] |
 
 
 ## <a name="next-steps"></a>Nächste Schritte
