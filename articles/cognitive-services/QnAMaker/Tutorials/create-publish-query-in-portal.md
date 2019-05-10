@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 299dd61055503f0b5a11cbe97e137e4760edadda
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 85f8643a0936209c8f280498df92555a7b40c533
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59266952"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149938"
 ---
 # <a name="tutorial-from-qna-maker-portal-create-a-knowledge-base"></a>Tutorial: Erstellen einer Wissensdatenbank über das QnA Maker-Portal
 
@@ -68,7 +68,7 @@ Für dieses Tutorial muss ein [QnA Maker-Dienst](../How-To/set-up-qnamaker-servi
     |--|--|--|
     |URL|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs` |Die Inhalte der häufig gestellten Fragen unter dieser URL sind jeweils als Frage-Antwort-Paar formatiert. QnA Maker kann dieses Format interpretieren, um Fragen und die dazugehörigen Antworten zu extrahieren.|
     |Datei |_In diesem Tutorial nicht verwendet_|Dient zum Hochladen von Dateien für Fragen und Antworten. |
-    |„Chit-chat personality“ (Smalltalk-Persönlichkeit)|Der Freund|Dadurch erhalten Sie eine freundliche und lockere Persönlichkeit für allgemeine Fragen und Antworten. Die Fragen und Antworten können später bearbeitet werden. |
+    |„Chit-chat personality“ (Smalltalk-Persönlichkeit)|Freundlich|Dadurch erhalten Sie eine freundliche und lockere Persönlichkeit für allgemeine Fragen und Antworten. Die Fragen und Antworten können später bearbeitet werden. |
 
     ![Schritt 4 des Erstellungsprozesses für die Wissensdatenbank](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)
 
@@ -84,9 +84,9 @@ Für dieses Tutorial muss ein [QnA Maker-Dienst](../How-To/set-up-qnamaker-servi
 
 1. Wählen Sie die letzte Seite mit Fragen und Antworten vom Ende der Tabelle aus. Auf der Seite werden Fragen und Antworten der Smalltalk-Persönlichkeit angezeigt. 
 
-1. Wählen Sie auf der Symbolleiste über der Liste mit Fragen und Antworten das Metadatensymbol aus. Daraufhin werden die Metadatentags für die einzelnen Fragen und Antworten angezeigt. Für Fragen im Plauderton ist bereits das Metadatentag **editorial: chit-chat** festgelegt. Dieses Metadatentag wird zusammen mit der ausgewählten Antwort an die Clientanwendung zurückgegeben. Anhand dieser gefilterten Metadaten kann die Clientanwendung (beispielsweise ein Chatbot) zusätzliche Verarbeitungsschritte oder Interaktionen mit dem Benutzer bestimmen.
+1. Wählen Sie auf der Symbolleiste über der Liste mit Fragen und Antworten das Symbol **Ansichtsoptionen** und dann **Metadaten anzeigen** aus. Daraufhin werden die Metadatentags für die einzelnen Fragen und Antworten angezeigt. Für Fragen im Plauderton ist bereits das Metadatentag **editorial: chit-chat** festgelegt. Dieses Metadatentag wird zusammen mit der ausgewählten Antwort an die Clientanwendung zurückgegeben. Anhand dieser gefilterten Metadaten kann die Clientanwendung (beispielsweise ein Chatbot) zusätzliche Verarbeitungsschritte oder Interaktionen mit dem Benutzer bestimmen.
 
-    ![Anzeigen der Metadatentags](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)
+    ![![View Metadata tags](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png)](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb-chit-chat.png#lightbox)
 
 1. Wählen Sie auf der oberen Menüleiste die Option **Save and train** (Speichern und trainieren) aus.
 

@@ -6,21 +6,19 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 04/29/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 96e3c0b761a9ed4c5f84d8ece1ba504bd5aacf6f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 95e4e3f3acc52c230405f0c0cc4a05b03b21a386
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797566"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65153788"
 ---
 # <a name="fail-over-and-reprotect-azure-vms-between-regions"></a>Ausführen eines Failovers und erneutes Schützen von Azure-VMs zwischen Regionen
 
-Der Dienst [Azure Site Recovery](site-recovery-overview.md) unterstützt Ihre Strategie zur Notfallwiederherstellung, indem Replikation, Failover und Failback von lokalen Computern und virtuellen Azure-Computern (Virtual Machines, VMs) verwaltet und orchestriert werden.
-
-In diesem Tutorial wird beschrieben, wie Sie für einen einzelnen virtuellen Azure-Computer ein Failover zu einer sekundären Azure-Region ausführen. Nach dem Failover schützen Sie den virtuellen Computer erneut. In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial wird beschrieben, wie ein Failover eines virtuellen Azure-Computers (VM) zu einer sekundären Azure-Region mithilfe des [Azure Site Recovery](site-recovery-overview.md)-Diensts ausgeführt wird. Nach dem Failover schützen Sie den virtuellen Computer erneut. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Ausführen eines Failovers der Azure-VM
@@ -29,8 +27,10 @@ In diesem Tutorial wird beschrieben, wie Sie für einen einzelnen virtuellen Azu
 > [!NOTE]
 > In diesem Tutorial wird die einfachste Vorgehensweise mit Standardeinstellungen und minimaler Anpassung erläutert. Lesen Sie für komplexere Szenarien die Artikel unter „Anleitungen“ für virtuelle Azure-Computer.
 
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
+- Bevor Sie beginnen, lesen Sie die [häufig gestellten Fragen](site-recovery-faq.md#failover) zu Failover.
 - Führen Sie unbedingt ein [Notfallwiederherstellungsverfahren](azure-to-azure-tutorial-dr-drill.md) durch, um zu überprüfen, ob alles wie erwartet funktioniert.
 - Überprüfen Sie die VM-Eigenschaften, bevor Sie das Testfailover ausführen. Die VM muss den [Azure-Anforderungen](azure-to-azure-support-matrix.md#replicated-machine-operating-systems) entsprechen.
 
@@ -54,6 +54,11 @@ In diesem Tutorial wird beschrieben, wie Sie für einen einzelnen virtuellen Azu
 
 6. Nachdem Sie mit dem virtuellen Computer, für den das Failover durchgeführt wurde, zufrieden sind, können Sie für das Failover die Option **Commit** wählen.
    Dadurch werden alle mit dem Dienst verfügbaren Wiederherstellungspunkte gelöscht. Sie können den Wiederherstellungspunkt nun nicht mehr ändern.
+
+> [!NOTE]
+> Beim Failover einer VM, der Sie einen Datenträger hinzugefügt haben, nachdem Sie für die VM Replikation aktiviert haben, zeigen die Replikationspunkte die Datenträger an, die zur Wiederherstellung zur Verfügung stehen. Wenn beispielsweise eine VM über einen einzelnen Datenträger verfügt und Sie einen neuen hinzufügen, zeigen Replikationspunkte, die vor dem Hinzufügen des Datenträgers erstellt wurden, an, dass der Replikationspunkt aus „1 von 2 Datenträgern“ besteht.
+
+![Failover mit einem hinzugefügten Datenträger](./media/azure-to-azure-tutorial-failover-failback/failover-added.png)
 
 ## <a name="reprotect-the-secondary-vm"></a>Erneutes Schützen der sekundären VM
 

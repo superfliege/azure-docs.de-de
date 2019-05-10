@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 4/9/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: cd7797ae3b79fb874bafc89437943b084020d800
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9d7b9673101ed3b6ff85a9981ba061bc870762b1
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492310"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65405687"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall über das Azure-Portal
 
@@ -143,7 +143,7 @@ Stellen Sie die Firewall im VNET bereit.
    |Abonnement     |\<Ihr Abonnement\>|
    |Ressourcengruppe     |**Test-FW-RG** |
    |NAME     |**Test-FW01**|
-   |Standort     |Wählen Sie den gleichen Standort aus wie zuvor.|
+   |Location     |Wählen Sie den gleichen Standort aus wie zuvor.|
    |Virtuelles Netzwerk auswählen     |**Vorhandene verwenden**: **Test-FW-VN**|
    |Öffentliche IP-Adresse     |**Neu erstellen**. Die öffentliche IP-Adresse muss vom Standard-SKU-Typ sein.|
 
@@ -236,12 +236,12 @@ Testen Sie nun die Firewall, um sicherzustellen, dass sie wie erwartet funktioni
 1. Überprüfen Sie im Azure-Portal die Netzwerkeinstellungen für den virtuellen Computer **Srv-Work**, und notieren Sie sich die private IP-Adresse.
 2. Verbinden Sie einen Remotedesktop mit der VM **Srv-Jump**, und melden Sie sich an. Öffnen Sie auf der VM eine Remotedesktopverbindung mit der privaten IP-Adresse von **Srv-Work**.
 
-3. Navigieren Sie in Internet Explorer zu http://www.google.com.
+3. Navigieren Sie in Internet Explorer zu https://www.google.com.
 4. Klicken Sie in den Sicherheitswarnungen von Internet Explorer auf **OK** > **Schließen**.
 
    Die Google-Startseite sollte nun angezeigt werden.
 
-5. Navigieren Sie zu http://www.microsoft.com.
+5. Navigieren Sie zu https://www.microsoft.com.
 
    Sie sollten durch die Firewall blockiert werden.
 

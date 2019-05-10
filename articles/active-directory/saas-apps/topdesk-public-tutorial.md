@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: jeedes
-ms.openlocfilehash: c4052dd3b4c8f49b19193109eb5e8d2306646960
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: d5ecfcd249dd07dc94b3b17ea0a7a7de3559c681
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65192559"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407939"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>Tutorial: Azure Active Directory-Integration mit TOPdesk – Public
 
@@ -159,7 +159,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit TOPdesk 
    
     ![Technische Einstellungen](./media/topdesk-public-tutorial/ic790601.png "Technische Einstellungen")
    
-    a. Klicken Sie auf **Herunterladen**, um die öffentliche Metadatendatei herunterzuladen und sie dann lokal auf Ihrem Computer zu speichern.
+    a. Klicken Sie auf **Herunterladen** , um die  öffentliche Metadatendatei herunterzuladen und sie dann lokal auf Ihrem Computer zu speichern.
    
     b. Öffnen Sie die heruntergeladene Metadatendatei, und suchen Sie den Knoten **AssertionConsumerService**.
 
@@ -193,7 +193,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit TOPdesk 
 
     c. Klicken Sie zum Hochladen der Logodatei, die Sie vom TOPdesk-Supportteam erhalten haben, unter **Logosymbol** auf **Durchsuchen**.
 
-    d. Geben Sie `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` in das Textfeld **Benutzernamenattribut** ein.
+    d. Geben Sie `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` in das Textfeld **Benutzernamenattribut** ein.
 
     e. Geben Sie in das Textfeld **Anzeigenname** einen Namen für die Konfiguration ein.
 

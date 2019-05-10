@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: d7865d394dfc955a7b24115e747dd77352d89e3d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7fc945a00360e4eea4a5cf1e3962da2390d3bfeb
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901915"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65506850"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Verteilte Transaktionen über Clouddatenbanken
 
@@ -99,7 +99,7 @@ Elastische Datenbanktransaktionen für SQL-DB unterstützen auch die Koordinieru
 
 ## <a name="net-installation-for-azure-cloud-services"></a>Installation von .NET für Azure Cloud Services
 
-Azure stellt verschiedene Angebote zum Hosten von .NET-Anwendungen bereit. Einen Vergleich der verschiedenen Angebote finden Sie unter [Azure App Service, Cloud Services und Virtual Machines im Vergleich](../app-service/overview-compare.md). Wenn das Gastbetriebssystem des Angebots älter als .NET 4.6.1 ist (das für elastische Transaktionen erforderlich ist), müssen Sie das Gastbetriebssystem auf 4.6.1 aktualisieren. 
+Azure stellt verschiedene Angebote zum Hosten von .NET-Anwendungen bereit. Einen Vergleich der verschiedenen Angebote finden Sie unter [Azure App Service, Cloud Services und Virtual Machines im Vergleich](/azure/architecture/guide/technology-choices/compute-decision-tree). Wenn das Gastbetriebssystem des Angebots älter als .NET 4.6.1 ist (das für elastische Transaktionen erforderlich ist), müssen Sie das Gastbetriebssystem auf 4.6.1 aktualisieren. 
 
 Für Azure App Services werden Upgrades des Gastbetriebssystems derzeit nicht unterstützt. Melden Sie sich für Azure Virtual Machines einfach auf dem virtuellen Computer an, und führen Sie das Installationsprogramm für das neueste .NET Framework aus. Für Azure Cloud Services müssen Sie die Installation einer neueren Version von .NET in die Startaufgaben der Bereitstellung einschließen. Informationen zu den Konzepten und Schritten finden Sie unter [Installieren von .NET in einer Clouddienstrolle](../cloud-services/cloud-services-dotnet-install-dotnet.md).  
 

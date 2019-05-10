@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 04/05/2019
+ms.date: 05/06/2019
 ms.author: helohr
-ms.openlocfilehash: e550111e04ea77e35a4554bcc6e3bffaf4d543d2
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 165980da2b78e7514ea1938bdbeb6fda82dd123d
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924961"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236659"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Erstellen eines Hostpools mit PowerShell
 
@@ -100,20 +100,9 @@ Führen Sie auf jedem virtuellen Computer die folgenden Schritte aus, um die Win
    - Führen Sie den Download des [Bootloaders für Windows Virtual Desktop-Agents](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWrxrH) durch.
    - Klicken Sie mit der rechten Maustaste auf das heruntergeladene Installationsprogramm, und wählen Sie **Eigenschaften**, **Blockierung aufheben** und dann **OK**. So wird festgelegt, dass Ihr System dem Installationsprogramm vertraut.
    - Führen Sie das Installationsprogramm aus.
-4. Installieren bzw. aktivieren Sie den parallelen Stapel für Windows Virtual Desktop. Die Schritte unterscheiden sich je nach der Betriebssystemversion, die auf dem virtuellen Computer verwendet wird.
-   - Bei Verwendung des Betriebssystems Windows Server 2016 auf dem virtuellen Computer:
-     - Laden Sie den [parallelen Stapel für Windows Virtual Desktop](https://go.microsoft.com/fwlink/?linkid=2084270) herunter.
-     - Klicken Sie mit der rechten Maustaste auf das heruntergeladene Installationsprogramm, und wählen Sie **Eigenschaften**, **Blockierung aufheben** und dann **OK**. So wird festgelegt, dass Ihr System dem Installationsprogramm vertraut.
-     - Führen Sie das Installationsprogramm aus.
-   - Bei Verwendung von Windows 10 1809 oder höher bzw. Windows Server 2019 oder höher als Betriebssystem des virtuellen Computers:
-     - Laden Sie das [Skript](https://go.microsoft.com/fwlink/?linkid=2084268) herunter, um den parallelen Stapel zu aktivieren.
-     - Klicken Sie mit der rechten Maustaste auf das heruntergeladene Skript, und wählen Sie **Eigenschaften**, **Blockierung aufheben** und dann **OK**. So wird festgelegt, dass Ihr System dem Skript vertraut.
-     - Suchen Sie im Menü **Start** nach „Windows PowerShell ISE“, klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Als Administrator ausführen**.
-     - Wählen Sie **Datei** und dann **Öffnen…**. Suchen Sie in den heruntergeladenen Dateien nach dem PowerShell-Skript, und öffnen Sie es.
-     - Wählen Sie die grüne Wiedergabeschaltfläche aus, um das Skript auszuführen.
 
 >[!IMPORTANT]
->Sie sollten den eingehenden Port 3389 auf Ihren virtuellen Computern nicht öffnen, um Ihre Windows Virtual Desktop-Umgebung in Azure zu schützen. Für Windows Virtual Desktop muss der eingehende Port 3389 nicht geöffnet sein, damit Benutzer auf die virtuellen Computer des Hostpools zugreifen können. Wenn Sie den Port 3389 zur Problembehandlung öffnen müssen, verwenden Sie am besten den [Just-In-Time-Zugriff auf virtuelle Computer](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
+>Zum Schutz Ihrer Windows Virtual Desktop-Umgebung in Azure empfiehlt es sich, den eingehenden Port 3389 auf Ihren virtuellen Computern nicht zu öffnen. Für Windows Virtual Desktop muss der eingehende Port 3389 nicht geöffnet sein, damit Benutzer auf die virtuellen Computer des Hostpools zugreifen können. Wenn Sie den Port 3389 zur Problembehandlung öffnen müssen, verwenden Sie am besten den [Just-In-Time-Zugriff auf virtuelle Computer](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

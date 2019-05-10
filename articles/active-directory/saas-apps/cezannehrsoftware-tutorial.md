@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 949b5b1aaab60e5b1d160963ac3f024dbbfbe552
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fc4d96b900090cd217b4b49b1af2f09762c0da84
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834957"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407020"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>Tutorial: Azure Active Directory-Integration mit Cezanne HR Software
 
@@ -156,7 +156,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Cezanne 
 
     d. Fügen Sie in das Textfeld **Security Token Service Endpoint** (Sicherheitstoken-Dienstendpunkt) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    e. Geben Sie im Textfeld „Benutzer-ID-Attributname“ `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` ein.
+    e. Geben Sie im Textfeld „Benutzer-ID-Attributname“ `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` ein.
 
     f. Klicken Sie auf das Symbol **Hochladen**, um das heruntergeladene Zertifikat aus dem Azure-Portal hochzuladen.
 
