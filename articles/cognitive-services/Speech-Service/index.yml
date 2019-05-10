@@ -18,7 +18,19 @@ metadata:
   ms.author: erhopf
   ms.custom: seodec18
 abstract:
-  description: 'Erfahren Sie, wie Sie mit Speech-Diensten und dem Speech SDK Ihren Apps sprachaktivierte Features hinzufügen. Sie können mit dem Sprach-SDK Ihren Apps Funktionen für <i>Sprache-zu-Text</i> (Spracherkennung (Speech Recognition, SR)), <i>Absicht</i>, <i>Übersetzung</i> und <i>Sprachsynthese</i> (Text-to-Speech, TTS) hinzufügen. Die Speech-Dienste verfügen auch über REST-APIs, die mit jeder Programmiersprache kompatibel sind, bei der HTTP-Anforderungen verwendet werden können.'
+  description: |
+    Hier erfahren Sie, wie Sie mit Speech-Diensten und REST-APIs oder unserem Speech SDK Ihren Apps sprachaktivierte Features hinzufügen. Mit dem Speech SDK können Sie Ihren Apps die folgenden Funktionen (und vieles mehr) hinzufügen&colon; 
+    <div class="row" style="font-size:16px"><div class="column"><ul>
+    <li><b><a href="speech-to-text.md">Spracherkennung</a></b> (speech-recognition/SR)</li>
+    <li><b><a href="speech-devices-sdk-create-kws.md">Benutzerdefiniertes Aktivierungswort</a></b> (keyword-spotter/KWS)</li>
+    <li><b><a href="how-to-recognize-intents-from-speech-csharp.md">Absicht</a></b></li>
+    <li><b><a href="speech-translation.md">Übersetzung</a></b></li>
+    <li><b><a href="speech-container-howto.md">Lokale Container</a></b></li></ul></div><div class="column"><ul>
+    <li><b><a href="text-to-speech.md">Sprachsynthese</a></b> (TTS)</li>
+    <li><b><a href="conversation-transcription-service.md">Unterhaltungstranskription</a></b> (CTS)</li>
+    <li><b><a href="how-to-phrase-lists.md">Personalisierung von Begriffslisten</a>/<a href="how-to-custom-speech.md">Anpassung von Custom Speech</a></b></li>
+    <li><b><a href="voice-first-virtual-assistants.md">Virtueller Voice-First-Assistent</a></b></li>
+    <li><b><a href="call-center-transcription.md">Callcentertranskription</a></b></li></ul></div></div>
 sections:
   - items:
       - type: list
@@ -44,7 +56,7 @@ sections:
   - title: Fünfminütige Schnellstarts
     items:
       - type: paragraph
-        text: 'Klicken Sie auf den gewünschten Pfeil, um Informationen zum Herunterladen, Installieren und Verwenden des SDK zu erhalten <img src="media/index/link.jpg" height="15" width="15"></img>.'
+        text: 'Klicken Sie auf den gewünschten Pfeil, um Informationen zum Herunterladen, Installieren und Verwenden des SDK zu erhalten <img src="media/index/link.jpg" height="15" width="15"></img>.<br/><br/>Alle Pfeile <img src="media/index/link.jpg" height="15" width="15"></img> führen standardmäßig zu einer Schnellstartanleitung für die Spracherkennung. Dort können Sie weitere Schnellstartanleitungen (<a href="scenario-availability.md">sofern verfügbar</a>) auswählen, etwa zur Sprachsynthese oder zum virtuellen Voice-First-Assistenten.'
       - type: table
         style: dataMatrix
         columns:

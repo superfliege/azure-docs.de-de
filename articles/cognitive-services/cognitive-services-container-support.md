@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 61d958ae4e53b5f2b123f3fa3660ef62a6cdcabe
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 241bda5c684197a43cc5564e950e924fed668b89
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021510"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147566"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Containerunterstützung in Azure Cognitive Services
 
@@ -26,6 +26,7 @@ Dank der Containerunterstützung in Azure Cognitive Services können Entwickler 
 * [Gesichtserkennung](Face/Overview.md)
 * [Formularerkennung](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409)
 * [Language Understanding](LUIS/luis-container-howto.md) (LUIS)
+* [Personalisierung](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409)
 * [Spracherkennungsdienst-API](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409)
 * [Textanalyse](text-analytics/overview.md)
 
@@ -56,6 +57,7 @@ Azure Cognitive Services-Container bieten den folgenden Satz von Docker-Containe
 |[Gesichtserkennung](Face/face-how-to-install-containers.md) |F0, S0|**Gesichtserkennung** |Erkennt menschliche Gesichter in Bildern und identifiziert zugehörige Attribute wie Gesichtsmerkmale (z.B. Nasen und Augen), Geschlecht, Alter und andere vom Computer vorhergesagte Gesichtsmerkmale. Zusätzlich zur Erkennung kann die Gesichtserkennung über eine Zuverlässigkeitsbewertung überprüfen, ob zwei Gesichter in einem oder verschiedenen Bildern identisch sind, oder Gesichter mit einer Datenbank vergleichen, um festzustellen, ob ein ähnliches oder identisches Gesicht bereits vorhanden ist. Sie kann auch ähnliche Gesichter in Gruppen mit gemeinsamen Gesichtsmerkmalen organisieren.<br>[Zugriff anfordern](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
 |[Formularerkennung](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) |F0, S0|**Formularerkennung** |Die Formularerkennung wendet Technologien des maschinellen Lernens an, um Schlüssel-Wert-Paare und Tabellen in Formularen zu identifizieren und aus diesen zu extrahieren.<br>[Zugriff anfordern](https://aka.ms/FormRecognizerContainerRequestAccess)|
 |[LUIS](LUIS/luis-container-howto.md) |F0, S0|**LUIS** ([Image](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409))|Lädt Ihr trainiertes oder veröffentlichtes Language Understanding-Modell (auch als LUIS-App bezeichnet) in einen Docker-Container und ermöglicht den Zugriff auf die Abfragevorhersagen von den API-Endpunkten des Containers. Sie können Abfrageprotokolle vom Container erfassen und wieder in das [LUIS-Portal](https://www.luis.ai) hochladen, um die Vorhersagegenauigkeit der App zu verbessern.|
+|[Personalisierung](https://go.microsoft.com/fwlink/?linkid=2083923&clcid=0x409) |F0, S0|**Personalisierung** ([Image](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409))|Die Azure-Personalisierung ist ein cloudbasierter API-Dienst, mit dem Sie die beste Benutzeroberfläche für Ihre Benutzer auswählen und dabei in Echtzeit von deren Verhalten lernen können.|
 |[Spracherkennungsdienst-API](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409) |F0, S0|**Spracherkennung** |Wandelt fortlaufende Sprache in Echtzeit in Text um.<br>[Zugriff anfordern](https://aka.ms/speechcontainerspreview/)|
 |[Spracherkennungsdienst-API](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409) |F0, S0|**Sprachsynthese** |Konvertiert Text in natürlich klingende Sprache.<br>[Zugriff anfordern](https://aka.ms/speechcontainerspreview/)|
 |[Textanalyse](text-analytics/how-tos/text-analytics-how-to-install-containers.md) |F0, S|**Schlüsselbegriffserkennung** ([Bild](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) |Extrahiert die Schlüsselbegriffe, um die wichtigsten Punkte zu ermitteln. Wenn der eingegebene Text beispielsweise „Das Essen war köstlich, und es gab hervorragendes Personal“ lautet, gibt die API die Kernpunkte „Essen“ und „hervorragendes Personal“ zurück. |
@@ -103,5 +105,6 @@ Installieren und erkunden Sie die Funktionalität der Container in Azure Cogniti
 * [Container für die Gesichtserkennung](Face/face-how-to-install-containers.md)
 * [Container für die Formularerkennung](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409)
 * [Container für Language Understanding (LUIS)](LUIS/luis-container-howto.md)
+* [Personalisierungscontainer](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409)
 * [Container für die Speech Services-API](https://go.microsoft.com/fwlink/?linkid=2083926&clcid=0x409)
 * [Container für die Textanalyse](text-analytics/how-tos/text-analytics-how-to-install-containers.md)

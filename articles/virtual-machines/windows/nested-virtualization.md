@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: f90ca51349eef92bd25095f5a2a10d7d181fdb2c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: acb44a34eae84d8a5718ebcc0003d3cf50b9d43a
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766528"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510063"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Aktivieren der geschachtelten Virtualisierung auf einer Azure-VM
 
@@ -80,7 +80,7 @@ Erstellen Sie einen neuen virtuellen Netzwerkadapter für die Gast-VM, und konfi
 2. Erstellen Sie einen internen Switch.
 
     ```powershell
-    New-VMSwitch -Name "InternalNATSwitch" -SwitchType Internal
+    New-VMSwitch -Name "InternalNAT" -SwitchType Internal
     ```
 
 3. Zeigen Sie die Eigenschaften des Switchs an, und notieren Sie sich den ifIndex-Wert für den neuen Adapter.

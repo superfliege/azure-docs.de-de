@@ -59,7 +59,7 @@ sections:
       - type: paragraph
         text: 'Diese Beispielprogramme veranschaulichen, wie sich die Freihanderkennungs-API in Ihre Anwendungen integrieren lässt:'
       - type: paragraph
-        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089502">C# und universelle Windows-Plattform (UWP)</a>'
+        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089503">C# und universelle Windows-Plattform (UWP)</a>'
       - type: paragraph
         text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089804">C# und Windows Presentation Foundation (WPF)</a>'
       - type: paragraph

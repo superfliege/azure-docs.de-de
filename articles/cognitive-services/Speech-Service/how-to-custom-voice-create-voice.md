@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: erhopf
-ms.openlocfilehash: fad69c4108d747c44eccf37b81adf2c7c615cb58
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6189ea2866d1c16f994179df0179e29353e6c47d
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65156827"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410716"
 ---
 # <a name="create-a-custom-voice"></a>Erstellen einer benutzerdefinierten Stimme
 
-Im Artikel [Prepare data to create a custom voice](how-to-custom-voice-prepare-data.md) (Vorbereiten von Daten zum Erstellen einer benutzerdefinierten Stimme) wurden die verschiedenen Datentypen, die Sie zum Trainieren einer benutzerdefinierten Stimme verwenden können, sowie die verschiedenen Formatanforderungen beschrieben. Nachdem Sie Ihre Daten vorbereitet haben, können Sie sie über das [Custom Voice Portal](http://aka.ms/custom-voice-portal) oder über die Custom Voice-Trainings-API hochladen. Hier erfahren Sie Schritt für Schritt, wie Sie eine benutzerdefinierte Stimme über das Portal trainieren.
+Im Artikel [Prepare data to create a custom voice](how-to-custom-voice-prepare-data.md) (Vorbereiten von Daten zum Erstellen einer benutzerdefinierten Stimme) wurden die verschiedenen Datentypen, die Sie zum Trainieren einer benutzerdefinierten Stimme verwenden können, sowie die verschiedenen Formatanforderungen beschrieben. Nachdem Sie Ihre Daten vorbereitet haben, können Sie sie über das [Custom Voice Portal](https://aka.ms/custom-voice-portal) oder über die Custom Voice-Trainings-API hochladen. Hier erfahren Sie Schritt für Schritt, wie Sie eine benutzerdefinierte Stimme über das Portal trainieren.
 
 > [!NOTE]
 > Auf dieser Seite wird davon ausgegangen, dass Sie die Artikel [Get started with Custom Voice](how-to-custom-voice.md) (Erste Schritte mit Custom Voice) und [Prepare data to create a custom voice](how-to-custom-voice-prepare-data.md) (Vorbereiten von Daten zum Erstellen einer benutzerdefinierten Stimme) gelesen und ein Custom Voice-Projekt erstellt haben.
@@ -28,7 +28,7 @@ Im Artikel [Prepare data to create a custom voice](how-to-custom-voice-prepare-d
 
 ## <a name="upload-your-datasets"></a>Hochladen von Datasets
 
-Wenn Sie zum Hochladen Ihrer Daten bereit sind, navigieren Sie zum [Custom Voice-Portal](http://aka.ms/custom-voice-portal). Erstellen Sie ein Custom Voice-Projekt, oder wählen Sie ein bereits vorhandenes Projekt aus. Das Projekt muss die gleiche Sprache/das gleiche Gebietsschema und die gleichen Geschlechtseigenschaften besitzen wie die Daten, die Sie für Ihr Stimmtraining verwenden möchten. Wählen Sie beispielsweise `en-GB` aus, wenn Ihre Audioaufnahmen in englischer Sprache mit UK-Akzent vorliegen.
+Wenn Sie zum Hochladen Ihrer Daten bereit sind, navigieren Sie zum [Custom Voice-Portal](https://aka.ms/custom-voice-portal). Erstellen Sie ein Custom Voice-Projekt, oder wählen Sie ein bereits vorhandenes Projekt aus. Das Projekt muss die gleiche Sprache/das gleiche Gebietsschema und die gleichen Geschlechtseigenschaften besitzen wie die Daten, die Sie für Ihr Stimmtraining verwenden möchten. Wählen Sie beispielsweise `en-GB` aus, wenn Ihre Audioaufnahmen in englischer Sprache mit UK-Akzent vorliegen.
 
 Navigieren Sie zur Registerkarte **Daten**, und klicken Sie auf **Daten hochladen**. Wählen Sie im Assistenten den passenden Datentyp für Ihre vorbereiteten Daten aus.
 
@@ -89,7 +89,7 @@ Der angezeigte Status gibt Aufschluss über die Konvertierung Ihres Datasets in 
 | Zustand | Bedeutung |
 | ----- | ------- |
 | Verarbeitung | Ihr Stimmmodell wird erstellt. |
-| Erfolgreich | Ihr Stimmmodell wurde erstellt und kann bereitgestellt werden. |
+| Succeeded | Ihr Stimmmodell wurde erstellt und kann bereitgestellt werden. |
 | Fehler | Beim Trainieren Ihres Stimmmodells ist ein Fehler aufgetreten. Dies kann verschiedene Ursachen haben (beispielsweise ein unvorhergesehenes Datenproblem oder ein Netzwerkproblem). |
 
 Die Trainingszeit variiert je nach Umfang der verarbeiteten Audiodaten. In der Regel liegt diese zwischen 30 Minuten bei mehreren Hundert Äußerungen und maximal 40 Stunden im Fall von 20.000 Äußerungen. Nach erfolgreichem Abschluss Ihres Modelltrainings können Sie das Modell testen.
@@ -115,7 +115,7 @@ Nach der erfolgreichen Erstellung des Voicefonts können Sie ihn vor der Bereits
     > [!NOTE]
     > Die Textsprache muss mit der Sprache des Voicefonts übereinstimmen. Nur erfolgreich trainierte Modelle können getestet werden. In diesem Schritt wird ausschließlich Nur-Text unterstützt.
 
-5.  Klicken Sie auf **Erstellen**.
+5.  Klicken Sie auf **Create**.
 
 Nach Übermittlung Ihrer Testanforderung wird wieder die Testseite angezeigt. In der Tabelle befindet sich nun ein Eintrag für die neue Anforderung und die Statusspalte. Die Sprachsynthese kann einige Minuten in Anspruch nehmen. Wenn in der Statusspalte **Erfolgreich** angezeigt wird, können Sie das Audio wiedergeben oder die Texteingabe (TXT-Datei) und die Audioausgabe (WAV-Datei) herunterladen und die Qualität der WAV-Datei genauer überprüfen.
 

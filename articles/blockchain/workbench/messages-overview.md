@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 02/21/2019
+ms.date: 05/09/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 860c00b876427af7395e3c04e0626131c27aca67
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 8f63c62cd23fef5565628793379afd8bcc9f447b
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878080"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510160"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Integration von Nachrichten in Azure Blockchain Workbench
 
@@ -118,7 +118,7 @@ Für die Anforderung sind folgende Felder erforderlich:
 | applicationName      | Name der Anwendung |
 | Version              | Die Version der Anwendung. Erforderlich, falls Sie mehrere Versionen der Anwendung aktiviert haben. Andernfalls ist die Version optional. Weitere Informationen zur Versionsverwaltung von Anwendungen finden Sie unter [Versionsverwaltung für die Azure Blockchain Workbench-Anwendung](version-app.md). |
 | workflowName         | Name des Workflows |
-| Parameter           | Parametereingabe für die Vertragserstellung |
+| parameters           | Parametereingabe für die Vertragserstellung |
 | connectionId         | Eindeutiger Bezeichner für die Blockchainverbindung |
 | messageSchemaVersion | Version des Messagingschemas |
 | messageName          | **CreateContractRequest** |
@@ -222,7 +222,7 @@ Für die Anforderung sind folgende Felder erforderlich:
 | contractLedgerIdentifier | Adresse des Vertrags im Ledger |
 | Version                  | Die Version der Anwendung. Erforderlich, falls Sie mehrere Versionen der Anwendung aktiviert haben. Andernfalls ist die Version optional. Weitere Informationen zur Versionsverwaltung von Anwendungen finden Sie unter [Versionsverwaltung für die Azure Blockchain Workbench-Anwendung](version-app.md). |
 | workflowFunctionName     | Name der Workflowfunktion |
-| Parameter               | Parametereingabe für die Vertragserstellung |
+| parameters               | Parametereingabe für die Vertragserstellung |
 | connectionId             | Eindeutiger Bezeichner für die Blockchainverbindung |
 | messageSchemaVersion     | Version des Messagingschemas |
 | messageName              | **CreateContractActionRequest** |
@@ -567,7 +567,7 @@ Enthält Informationen, wenn eine Vertragsfunktion aufgerufen wird. Hierzu zähl
 | contractId                  | Eindeutiger Bezeichner für den Vertrag innerhalb von Azure Blockchain Workbench. |
 | contractLedgerIdentifier    | Eindeutiger Bezeichner für den Vertrag im Ledger |
 | functionName                | Name der Funktion |
-| Parameter                  | [Parameterinformationen](#parameter-information) |
+| parameters                  | [Parameterinformationen](#parameter-information) |
 | transaction                 | Transaktionsinformationen |
 | inTransactionSequenceNumber | Die Sequenznummer der Transaktion im Block |
 | connectionId                | Eindeutiger Bezeichner für die Verbindung |
@@ -680,7 +680,7 @@ Enthält Informationen, wenn eine Anwendung in Workbench hochgeladen wird – et
 | displayName | Anzeigename des Anwendungsworkflows |
 | functions | Sammlung von [Funktionen für den Anwendungsworkflow](#workflow-function-information)|
 | states | Sammlung von [Zuständen für den Anwendungsworkflow](#workflow-state-information) |
-| Eigenschaften | [Informationen zu Workfloweigenschaften](#workflow-property-information) für die Anwendung |
+| properties | [Informationen zu Workfloweigenschaften](#workflow-property-information) für die Anwendung |
 
 ##### <a name="workflow-function-information"></a>Workflowfunktionsinformationen
 
@@ -688,7 +688,7 @@ Enthält Informationen, wenn eine Anwendung in Workbench hochgeladen wird – et
 |------|-------------|
 | id | Eindeutiger Bezeichner für die Anwendungsworkflowfunktion innerhalb von Azure Blockchain Workbench |
 | name | Funktionsname |
-| Parameter | Parameter für die Funktion |
+| parameters | Parameter für die Funktion |
 
 ##### <a name="workflow-state-information"></a>Informationen zum Workflowstatus
 

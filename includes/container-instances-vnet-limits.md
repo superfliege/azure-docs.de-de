@@ -2,19 +2,20 @@
 author: dlepow
 ms.service: container-instances
 ms.topic: include
-ms.date: 03/01/2019
+ms.date: 04/26/2019
 ms.author: danlep
-ms.openlocfilehash: 1ab95ae5d77ce26ee7b6cd2f8e6644013b25741b
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 974126b27f65da674b93878074a453e117615366
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58542387"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65070985"
 ---
 ### <a name="regions-and-resource-availability"></a>Regionen und Ressourcenverfügbarkeit
 
-| Standort | Betriebssystem | CPU | Arbeitsspeicher (GB) |
+| Location | Betriebssystem | CPU | Arbeitsspeicher (GB) |
 | -------- | :---: | :---: | :-----------: |
+| „Europa, Norden“, „Asien, Südosten“, „USA, Mitte“, „USA, Osten 2“, „USA, Westen 2“, „Japan, Osten“ | Linux | 4 | 16 |
 | Europa, Westen | Linux | 4 | 14 |
 | USA, Osten; USA, Westen | Linux | 2 | 3,5 |
-| Australien, Osten; Europa, Norden | Linux | 1 | 1.5 |
+| Australien (Osten) | Linux | 1 | 1.5 |

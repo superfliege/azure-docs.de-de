@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 03/08/2019
+ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 98c2ad15d836162608affbfbc89908a15e274cee
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: a0ab928ef3b8551e3e20ff3c4b16533c80ee4b7d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528760"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149293"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Tutorial: Extrahieren von Daten mit ähnlichem Kontext aus einer Äußerung
 
 In diesem Tutorial wird das kontextbasierte Finden aufeinander bezogener Teildaten behandelt. Ein Beispiel wären etwa Ursprungs- und Zielorte bei der Versetzung in eine andere Stadt. Beide Teilinformationen können erforderlich sein und stehen miteinander in Verbindung.  
 
-Dieses Tutorial wurde zuvor in Bezug auf hierarchische Entitäten verfasst. Die Entität vom Typ „Hierarchical“ wurde durch Entitätsrollen ersetzt. Eine Rolle kann mit allen vordefinierten oder benutzerdefinierten Entitätstypen und sowohl in Beispieläußerungen als auch in Mustern verwendet werden. 
+Eine Rolle kann mit allen vordefinierten oder benutzerdefinierten Entitätstypen und sowohl in Beispieläußerungen als auch in Mustern verwendet werden. 
 
 **In diesem Tutorial lernen Sie Folgendes:**
 
@@ -93,12 +93,8 @@ Mit der vordefinierten Entität „geographyV2“ werden Standortinformationen e
     ![Hinzufügen von Rollen zur vordefinierten Entität](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 1. Wählen Sie im Navigationsbereich auf der linken Seite die Option **Absichten** und dann die Absicht **MoveEmployeeToCity** aus. Beachten Sie, dass die Städtenamen mit der vordefinierten Entität **geographyV2** bezeichnet sind.
 1. Wählen Sie in der ersten Äußerung der Liste den Standort des Ursprungs aus. Ein Dropdownmenü wird angezeigt. Wählen Sie in der Liste den Eintrag **geographyV2** aus, und wählen Sie dann im angezeigten Menü die Option **Ursprung**.
-
-    [![Screenshot: Kennzeichnen der Stadt als Ursprungsstandort](media/tutorial-entity-roles/tag-origin-city-with-role.png "Screenshot: Kennzeichnen der Stadt als Ursprungsstandort")](media/tutorial-entity-roles/tag-origin-city-with-role.png#lightbox)
-
 1. Verwenden Sie die Methode aus dem vorherigen Schritt, um alle Rollen der Standorte in allen Äußerungen zu kennzeichnen. 
 
-    [![Screenshot: In Äußerungen gekennzeichnete Entität „Locations“ (Standorte)](media/tutorial-entity-roles/all-locations-marked-with-roles.png "Screenshot: In Äußerungen gekennzeichnete Entität „Locations“ (Standorte)")](media/tutorial-entity-roles/all-locations-marked-with-roles.png#lightbox)
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Hinzufügen von Beispieläußerungen zur Absicht „None“ 
 
@@ -117,7 +113,7 @@ Mit der vordefinierten Entität „geographyV2“ werden Standortinformationen e
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 
-1. Geben Sie in der Adressleiste am Ende der URL `Please move Carl Chamerlin from Tampa to Portland` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test und sollte die Absicht `MoveEmployee` mit der extrahierten hierarchischen Entität zurückgeben.
+1. Geben Sie in der Adressleiste am Ende der URL `Please move Carl Chamerlin from Tampa to Portland` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). Diese Äußerung entspricht keiner der bezeichneten Äußerungen. Sie ist daher ein guter Test, und es sollte die `MoveEmployee`-Absicht mit extrahierter Entität zurückgegeben werden.
 
     ```json
     {

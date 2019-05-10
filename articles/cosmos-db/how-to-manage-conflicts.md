@@ -4,14 +4,14 @@ description: Behandeln von Konflikten in Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 04/16/2019
+ms.date: 05/06/2019
 ms.author: mjbrown
-ms.openlocfilehash: fb9850548f0bfb71b797830eb0d5fdfddbc32306
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: a6e57dc5b4bcfa3f02e323253e24d68381c3535d
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997018"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65068735"
 ---
 # <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Verwalten von Konfliktauflösungsrichtlinien in Azure Cosmos DB
 
@@ -19,7 +19,7 @@ Bei Schreibvorgängen in mehreren Regionen können Konflikte auftreten, wenn meh
 
 ## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Erstellen einer Konfliktlösungsrichtlinie vom Typ „Letzter Schreiber gewinnt“
 
-Die folgenden Beispiele zeigen, wie Sie einen Container mit einer Konfliktlösungsrichtlinie vom Typ „Letzter Schreiber gewinnt“ einrichten. Der Standardpfad für „Letzter Schreiber gewinnt“ ist das Zeitstempelfeld oder die `_ts`-Eigenschaft. Er kann auch auf einen benutzerdefinierten Pfad für einen numerischen Typ festgelegt werden. Bei einem Konflikt gewinnt der höchste Wert. Sollte der Pfad nicht festgelegt oder ungültig sein, wird standardmäßig `_ts` verwendet. Mit dieser Richtlinie gelöste Konflikte werden im Konfliktfeed nicht angezeigt. Diese Richtlinie kann von allen APIs verwendet werden.
+Die folgenden Beispiele zeigen, wie Sie einen Container mit einer Konfliktlösungsrichtlinie vom Typ „Letzter Schreiber gewinnt“ einrichten. Der Standardpfad für „Letzter Schreiber gewinnt“ ist das Zeitstempelfeld oder die `_ts`-Eigenschaft. Er kann auch auf einen benutzerdefinierten Pfad für einen numerischen Typ festgelegt werden. Bei einem Konflikt ist der höchste Wert der Sieger. Sollte der Pfad nicht festgelegt oder ungültig sein, wird standardmäßig `_ts` verwendet. Mit dieser Richtlinie gelöste Konflikte werden im Konfliktfeed nicht angezeigt. Diese Richtlinie kann von allen APIs verwendet werden.
 
 ### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK
 
@@ -86,16 +86,16 @@ udp_collection = self.try_create_document_collection(create_client, database, ud
 
 ## <a name="create-a-custom-conflict-resolution-policy-using-a-stored-procedure"></a>Erstellen einer benutzerdefinierten Konfliktlösungsrichtlinie mit einer gespeicherten Prozedur
 
-Die folgenden Beispiele zeigen, wie Sie einen Container mit einer benutzerdefinierten Konfliktlösungsrichtlinie und einer gespeicherten Prozedur für die Konfliktlösung einrichten. Diese Konflikte werden nicht im Konfliktfeed angezeigt, es sei denn, die gespeicherte Prozedur enthält einen Fehler. Nachdem die Richtlinie mit dem Container erstellt wurde, müssen Sie die gespeicherte Prozedur erstellen. Das .NET SDK-Beispiel unten zeigt ein Beispiel dafür. Diese Richtlinie wird nur an der Haupt-API (SQL) unterstützt.
+Die folgenden Beispiele zeigen, wie Sie einen Container mit einer benutzerdefinierten Konfliktlösungsrichtlinie und einer gespeicherten Prozedur für die Konfliktlösung einrichten. Diese Konflikte werden nicht im Konfliktfeed angezeigt, es sei denn, die gespeicherte Prozedur enthält einen Fehler. Nachdem die Richtlinie für den Container erstellt wurde, müssen Sie die gespeicherte Prozedur erstellen. Das .NET SDK-Beispiel unten zeigt ein Beispiel. Diese Richtlinie wird nur an der Haupt-API (SQL) unterstützt.
 
 ### <a name="sample-custom-conflict-resolution-stored-procedure"></a>Beispiel für eine benutzerdefinierte gespeicherte Prozedur zur Konfliktlösung
 
 Gespeicherte Prozeduren zur Konfliktlösung müssen mithilfe der folgenden Funktionssignatur implementiert werden. Der Funktionsname muss nicht mit dem Namen übereinstimmen, der bei der Registrierung der gespeicherten Prozedur beim Container verwendet wurde, die Namensgebung wird dadurch jedoch vereinfacht. Hier ist eine Beschreibung der Parameter, die für diese gespeicherte Prozedur implementiert werden müssen.
 
 - **incomingItem**: Das Element in den Commit eingefügte oder im Commit aktualisierte Element, das die Konflikte verursacht. Für Löschvorgänge ist es NULL.
-- **existingItem**: Das Element, für das gerade ein Commit ausgeführt wird. Bei einem UPDATE-Vorgang ist dieser Wert nicht NULL, bei einem INSERT- oder DELETE-Vorgang ist er NULL.
+- **existingItem**: Das Element, für das gerade ein Commit ausgeführt wird. Dieser Wert ist ungleich null bei einem Update und null bei einer Einfügung oder Löschung.
 - **isTombstone**: Boolescher Wert, der angibt, ob das IncomingItem-Element einen Konflikt mit einem zuvor gelöschten Element verursacht. Ist dies der Fall, ist „existingItem“ ebenfalls NULL.
-- **conflictingItems**: Array der Version aller Elemente im Container, für die ein Commit ausgeführt wurde, die einen Konflikt mit „incomingItem“ bei „id“ oder anderen eindeutigen Indexeigenschaften verursacht.
+- **conflictingItems**: Array der comitteten Version aller Elemente im Container, die im Konflikt mit incomingItem für eine ID oder mit anderen eindeutigen Indexeigenschaften stehen.
 
 > [!IMPORTANT]
 > Wie bei jeder gespeicherten Prozedur kann eine benutzerdefinierte Konfliktlösungsprozedur auf alle Daten mit dem gleichen Partitionsschlüssel zugreifen und beliebige INSERT-, UPDATE- oder DELETE-Vorgänge durchführen, um Konflikte zu lösen.
@@ -361,7 +361,7 @@ Erfahren Sie mehr über die folgenden Azure Cosmos DB-Konzepte:
 
 * [Globale Verteilung: Hintergrundinformationen](global-dist-under-the-hood.md)
 * [Konfigurieren von Multimaster in Ihren Anwendungen](how-to-multi-master.md)
-* [Konfigurieren von Clients für Multihoming](how-to-manage-database-account.md#configure-clients-for-multi-homing)
+* [Konfigurieren von Clients für Multihoming](how-to-manage-database-account.md#configure-multiple-write-regions)
 * [Hinzufügen/Entfernen von Regionen in Ihrem Azure Cosmos DB-Konto](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [How to configure multi-master in your applications that use Azure Cosmos DB](how-to-multi-master.md) (Konfigurieren von Multimaster-Features in Anwendungen, die Azure Cosmos DB verwenden)
 * [Partitionierung und Datenverteilung](partition-data.md)

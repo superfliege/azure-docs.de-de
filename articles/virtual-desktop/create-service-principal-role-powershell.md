@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 1bbe89484d72a21c4432d452d4ddae83ea2d2553
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 93725fc9d77552d779378d0c14294a5bbb11c926
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400024"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65146142"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-with-powershell"></a>Tutorial: Erstellen von Dienstprinzipalen und Rollenzuweisungen mit PowerShell
 
@@ -111,5 +111,5 @@ Hier sind die drei Anmeldeinformationen, die Sie sich notieren sollten, und die 
 
 In diesem Tutorial wurde beschrieben, wie Sie einen Dienstprinzipal erstellen und ihn für die Anmeldung an Windows Virtual Desktop verwenden. Fahren Sie mit den Anleitungsartikeln zur Verbindungsherstellung mit Windows Virtual Desktop fort, um mehr zur Anmeldung an Windows Virtual Desktop zu erfahren.
 
-- [Connect to the Remote Desktop client on Windows 7 and Windows 10](connect-windows-7-and-10.md) (Herstellen einer Verbindung mit dem Remotedesktopclient unter Windows 7 und Windows 10)
-- [Connect to the Windows Virtual Desktop Preview web client](connect-web.md) (Herstellen einer Verbindung mit dem Webclient von Windows Virtual Desktop (Vorschauversion))
+- [Herstellen einer Verbindung über Windows 10 oder Windows 7](connect-windows-7-and-10.md)
+- [Herstellen einer Verbindung über einen Webbrowser](connect-web.md)

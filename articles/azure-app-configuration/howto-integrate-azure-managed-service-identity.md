@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 84dddf5ed9c31e8585480319af189d31e39163e5
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: ff098ebd23d2ce5a8c9c39f154375be1dae6a262
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59998990"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65408901"
 ---
-# <a name="tutorial-integrate-with-azure-managed-identities"></a>Tutorial: Integrieren mit verwalteten Azure-Identitäten
+# <a name="integrate-with-azure-managed-identities"></a>Integrieren mit verwalteten Azure-Identitäten
 
 Mit [verwalteten Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) von Azure Active Directory wird die Verwaltung von Geheimnissen für Ihre Cloudanwendung vereinfacht. Mit einer verwalteten Identität können Sie Ihren Code für die Nutzung des Dienstprinzipals einrichten, der für den Azure-Computedienst erstellt wurde, auf dem die Ausführung erfolgt. Eine verwaltete Identität wird anstelle von separaten Anmeldeinformationen verwendet, die in Azure Key Vault oder in einer lokalen Verbindungszeichenfolge gespeichert sind. 
 

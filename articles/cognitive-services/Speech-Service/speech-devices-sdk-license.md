@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 43f783617c36d30aa1fd65cce580bb5e666afed1
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 5973cfc955cfce0ec1b073ac96bd68f07f093087
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65021476"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65409110"
 ---
 # <a name="speech-devices-sdk-license-agreement"></a>Lizenzbedingungen für das SDK für sprachaktivierte Geräte
 
@@ -32,7 +32,7 @@ Die vorliegenden Lizenzbedingungen stellen eine Vereinbarung zwischen Ihnen und 
 
     a) Allgemein. Sie dürfen eine beliebige Anzahl von Kopien der Software installieren und verwenden, um Ihre Anwendungen zu entwickeln und zu testen, und zwar ausschließlich für den oben genannten Zweck und ansonsten für Ihre internen Geschäftszwecke.
 
-    b) Drittanbietersoftware. Die Software umfasst möglicherweise Drittanbieteranwendungen, für die Ihnen im Rahmen dieser Vereinbarung oder unter den eigenen Bedingungen des Drittanbieters eine Lizenz erteilt wird. Auf Lizenzbedingungen, Hinweise und ggf. Bestätigungen für die Drittanbieteranwendungen kann online unter http://aka.ms/thirdpartynotices oder in einer zugehörigen Hinweisdatei zugegriffen werden. Auch wenn solche Anwendungen anderen Vereinbarungen unterliegen, treffen der Gewährleistungsausschluss sowie die Beschränkung und der Ausschluss von Schadensersatz, die weiter unten genannt sind, im zulässigen Rahmen des geltenden Rechts zu.
+    b) Drittanbietersoftware. Die Software umfasst möglicherweise Drittanbieteranwendungen, für die Ihnen im Rahmen dieser Vereinbarung oder unter den eigenen Bedingungen des Drittanbieters eine Lizenz erteilt wird. Auf Lizenzbedingungen, Hinweise und ggf. Bestätigungen für die Drittanbieteranwendungen kann online unter https://aka.ms/thirdpartynotices oder in einer zugehörigen Hinweisdatei zugegriffen werden. Auch wenn solche Anwendungen anderen Vereinbarungen unterliegen, treffen der Gewährleistungsausschluss sowie die Beschränkung und der Ausschluss von Schadensersatz, die weiter unten genannt sind, im zulässigen Rahmen des geltenden Rechts zu.
 
     c) Wettbewerbsbenchmarking. Wenn Sie ein direkter Mitbewerber sind und zum Wettbewerbsbenchmarking, zur Analyse oder zur Datensammlung auf die Software zugreifen oder diese verwenden, verzichten Sie gegenüber Microsoft, seinen Tochtergesellschaften und verbundenen Unternehmen (u.a. prospektiv) auf eine wettbewerbsgemäße Verwendung, einen derartigen Zugriff und Einschränkungen in den für Ihre Software geltenden Bedingungen im Zuge von Benchmarkingtests, sofern Ihre Nutzungsbedingungen restriktiver sind als die Bedingungen von Microsoft. Wenn Sie nicht auf solche vorgeblichen Einschränkungen in den für Ihre Software geltenden Bedingungen verzichten, ist es Ihnen untersagt, auf diese Software zuzugreifen oder diese zu verwenden, und Sie verpflichten sich, dies zu unterlassen.
 
@@ -74,13 +74,13 @@ Die vorliegenden Lizenzbedingungen stellen eine Vereinbarung zwischen Ihnen und 
 
     e) Weitergeben, Veröffentlichen, Verbreiten oder Verleihen der Software (ausgenommen der den oben genannten Bedingungen unterliegenden verteilbaren Codes), Bereitstellen der Software als eigenständige gehostete Lösung zur Verwendung durch Dritte oder Übertragen der Software oder Abtretung dieser Vereinbarung an Dritte.
 
-1. EXPORTBESCHRÄNKUNGEN. Sie sind verpflichtet, alle nationalen und internationalen Exportgesetze und -bestimmungen einzuhalten, die für die Software gelten, u.a. Einschränkungen im Hinblick auf Bestimmungsorte, Endbenutzer und Endverwendung. Weitere Informationen zu Exporteinschränkungen finden Sie unter http://aka.ms/exporting.
+1. EXPORTBESCHRÄNKUNGEN. Sie sind verpflichtet, alle nationalen und internationalen Exportgesetze und -bestimmungen einzuhalten, die für die Software gelten, u.a. Einschränkungen im Hinblick auf Bestimmungsorte, Endbenutzer und Endverwendung. Weitere Informationen zu Exporteinschränkungen finden Sie unter https://aka.ms/exporting.
 
 1. SUPPORTLEISTUNGEN. Microsoft ist gemäß dieser Vereinbarung nicht verpflichtet, Supportleistungen für die Software bereitzustellen. Supportleistungen werden „wie besehen“, „mit allen möglichen Mängeln“ und ohne jegliche Gewährleistung bereitgestellt.
 
 1. UPDATES. Die Software kann in regelmäßigen Abständen nach Updates suchen und diese für Sie herunterladen und installieren. Sie dürfen nur Updates von Microsoft oder autorisierten Quellen beziehen. Microsoft muss Ihr System für die Bereitstellung von Updates eventuell aktualisieren. Sie erklären sich mit dem Empfang derartiger automatischer Updates ohne zusätzliche Benachrichtigung einverstanden. Updates beinhalten bzw. unterstützen möglicherweise nicht alle vorhandenen Softwarefunktionen, Dienste oder Peripheriegeräte.
 
-1. VERBINDLICHE SCHIEDSKLAUSEL UND VERZICHT AUF SAMMELKLAGEN. Dieser Abschnitt gilt für den Fall, dass sich Ihr Wohnsitz (oder bei einem Unternehmen der Hauptsitz) in den USA befindet.  Besteht zwischen Ihnen und Microsoft eine Streitigkeit, stimmen Sie und Microsoft zu, sich für einen Zeitraum von 60 Tagen um eine informelle Beilegung zu bemühen. Sollte Ihnen und Microsoft dies nicht gelingen, erklären Sie und Microsoft sich mit der verbindlichen als Einzelverfahren durchgeführten Schlichtung vor der US-amerikanischen Schiedsinstitution, der American Arbitration Association, gemäß der Schiedsordnung Federal Arbitration Act („FAA“) einverstanden, und stimmen zu, nicht vor einem Gericht oder einer Jury zu klagen. In diesem Fall wird stattdessen ein neutraler Mediator entscheiden. Sammelklagen, Schlichtungen im Rahmen von Sammelverfahren, allgemeine Verfahren mit Wahlverteidigern und sonstige Gerichtsverfahren, in denen eine Person in Vertretung eines Antragsstellers handelt, sind nicht zulässig; dies gilt auch für Einzelverfahren ohne Zustimmung aller Parteien. Die vollständige Schiedsvereinbarung, die weitere Bedingungen enthält, finden Sie unter http://aka.ms/arb-agreement-1. Sie und Microsoft erklären sich mit diesen Bedingungen einverstanden.
+1. VERBINDLICHE SCHIEDSKLAUSEL UND VERZICHT AUF SAMMELKLAGEN. Dieser Abschnitt gilt für den Fall, dass sich Ihr Wohnsitz (oder bei einem Unternehmen der Hauptsitz) in den USA befindet.  Besteht zwischen Ihnen und Microsoft eine Streitigkeit, stimmen Sie und Microsoft zu, sich für einen Zeitraum von 60 Tagen um eine informelle Beilegung zu bemühen. Sollte Ihnen und Microsoft dies nicht gelingen, erklären Sie und Microsoft sich mit der verbindlichen als Einzelverfahren durchgeführten Schlichtung vor der US-amerikanischen Schiedsinstitution, der American Arbitration Association, gemäß der Schiedsordnung Federal Arbitration Act („FAA“) einverstanden, und stimmen zu, nicht vor einem Gericht oder einer Jury zu klagen. In diesem Fall wird stattdessen ein neutraler Mediator entscheiden. Sammelklagen, Schlichtungen im Rahmen von Sammelverfahren, allgemeine Verfahren mit Wahlverteidigern und sonstige Gerichtsverfahren, in denen eine Person in Vertretung eines Antragsstellers handelt, sind nicht zulässig; dies gilt auch für Einzelverfahren ohne Zustimmung aller Parteien. Die vollständige Schiedsvereinbarung, die weitere Bedingungen enthält, finden Sie unter https://aka.ms/arb-agreement-1. Sie und Microsoft erklären sich mit diesen Bedingungen einverstanden.
 
 1. KÜNDIGUNG. Unbeschadet sonstiger Rechte kann Microsoft diese Vereinbarung kündigen, wenn Sie eine der Bedingungen nicht einhalten. In diesem Fall müssen Sie alle Kopien der Software und aller ihrer Komponenten vernichten.
 

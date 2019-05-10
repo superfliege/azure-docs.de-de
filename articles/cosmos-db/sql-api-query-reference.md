@@ -5,15 +5,15 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 03/31/2019
+ms.date: 05/06/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 22b03417495625ef70650a015530d6f56b32fd4f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1d874b9c8f14b1489ab5e5b8bbdddaff0669165e
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59283646"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145192"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>SQL-Sprachreferenz für Azure Cosmos DB 
 
@@ -31,7 +31,8 @@ Jede Abfrage besteht aus einer SELECT-Klausel und optionalen FROM- und WHERE-Kla
 SELECT <select_specification>   
     [ FROM <from_specification>]   
     [ WHERE <filter_condition> ]  
-    [ ORDER BY <sort_specification> ]  
+    [ ORDER BY <sort_specification> ] 
+    [ OFFSET <offset_amount> LIMIT <limit_amount>]
 ```  
   
  **Anmerkungen**  
@@ -42,6 +43,8 @@ SELECT <select_specification>
 -   [FROM-Klausel](#bk_from_clause)    
 -   [WHERE-Klausel](#bk_where_clause)    
 -   [ORDER BY-Klausel](#bk_orderby_clause)  
+-   [OFFSET LIMIT-Klausel](#bk_offsetlimit_clause)
+
   
 Die Klauseln in der SELECT-Anweisung müssen wie oben gezeigt sortiert werden. Jede der optionalen Klauseln kann ausgelassen werden. Aber wenn optionale Klauseln verwendet werden, müssen sie in der richtigen Reihenfolge stehen.  
   
@@ -52,7 +55,8 @@ Die Klauseln werden in folgender Reihenfolge verarbeitet:
 1.  [FROM-Klausel](#bk_from_clause)  
 2.  [WHERE-Klausel](#bk_where_clause)  
 3.  [ORDER BY-Klausel](#bk_orderby_clause)  
-4.  [SELECT-Klausel](#bk_select_query)  
+4.  [SELECT-Klausel](#bk_select_query)
+5.  [OFFSET LIMIT-Klausel](#bk_offsetlimit_clause)
 
 Beachten Sie, dass sich dies von der Reihenfolge unterscheidet, in der sie in der Syntax auftreten. Die Reihenfolge ist, dass alle von einer verarbeiteten Klausel eingeführten neuen Symbole sichtbar sind und in Klauseln verwendet werden können, die zu einem späteren Zeitpunkt verarbeitet werden. So können z.B. WHERE- und SELECT-Klauseln auf Aliase zugreifen, die in einer FROM-Klausel deklariert werden.  
 
@@ -76,8 +80,8 @@ SELECT <select_specification>
 
 <select_specification> ::=   
       '*'   
-      | <object_property_list>   
-      | VALUE <scalar_expression> [[ AS ] value_alias]  
+      | [DISTINCT] <object_property_list>   
+      | [DISTINCT] VALUE <scalar_expression> [[ AS ] value_alias]  
   
 <object_property_list> ::=   
 { <scalar_expression> [ [ AS ] property_alias ] } [ ,...n ]  
@@ -101,7 +105,11 @@ SELECT <select_specification>
 - `VALUE`  
 
   Gibt an, dass der JSON-Wert anstelle des vollständigen JSON-Objekts abgerufen werden sollte. Hiermit wird im Gegensatz zu `<property_list>` der projizierte Wert nicht in ein Objekt gehüllt.  
+ 
+- `DISTINCT`
   
+  Hiermit wird festgelegt, dass Duplikate von voraussichtlichen Eigenschaften entfernt werden sollen.  
+
 - `<scalar_expression>`  
 
   Ausdruck, der den zu berechnenden Wert darstellt. Weitere Informationen finden Sie im Abschnitt [Skalarausdrücke](#bk_scalar_expressions).  
@@ -341,23 +349,23 @@ WHERE <filter_condition>
 ```sql  
 ORDER BY <sort_specification>  
 <sort_specification> ::= <sort_expression> [, <sort_expression>]  
-<sort_expression> ::= <scalar_expression> [ASC | DESC]  
+<sort_expression> ::= {<scalar_expression> [ASC | DESC]} [ ,...n ]  
   
 ```  
-  
+
  **Argumente**  
   
 - `<sort_specification>`  
   
-   Gibt eine Eigenschaft oder einen Ausdruck an, wonach das Resultset der Abfrage sortiert werden soll. Eine Sortierspalte kann als Name oder Spaltenalias angegeben werden.  
+   Gibt eine Eigenschaft oder einen Ausdruck an, wonach das Resultset der Abfrage sortiert werden soll. Eine Sortierspalte kann als Name oder Eigenschaftenalias angegeben werden.  
   
-   Es können mehrere Sortierspalten angegeben werden. Spaltennamen müssen eindeutig sein. Die Sequenz der Sortierspalten in der ORDER BY-Klausel definiert die Anordnung des sortierten Resultsets. Dies bedeutet: Das Resultset wird nach der ersten Eigenschaft sortiert, und dann wird diese sortierte Liste nach der zweiten Eigenschaft sortiert usw.  
+   Mehrere Eigenschaften können angegeben werden. Namen von Eigenschaften müssen eindeutig sein. Die Sequenz der Sortiereigenschaften in der ORDER BY-Klausel definiert die Anordnung des sortierten Resultsets. Dies bedeutet: Das Resultset wird nach der ersten Eigenschaft sortiert, und dann wird diese sortierte Liste nach der zweiten Eigenschaft sortiert usw.  
   
-   Die Spaltennamen, auf die in der ORDER BY-Klausel verwiesen wird, müssen entweder einer Spalte in der Auswahlliste oder einer Spalte entsprechen, die in einer Tabelle definiert ist, die in der FROM-Klausel eindeutig angegeben ist.  
+   Die Eigenschaftennamen, auf die in der ORDER BY-Klausel verwiesen wird, müssen entweder einer Eigenschaft in der Auswahlliste oder einer Eigenschaft entsprechen, die in der Sammlung definiert ist, die in der FROM-Klausel eindeutig angegeben ist.  
   
 - `<sort_expression>`  
   
-   Gibt eine einzelne Eigenschaft oder einen Ausdruck an, wonach das Resultset der Abfrage sortiert werden soll.  
+   Hiermit wird mindestens eine Eigenschaft oder ein Ausdruck festgelegt, nach dem die Abfrageergebnisse sortiert werden.  
   
 - `<scalar_expression>`  
   
@@ -369,8 +377,34 @@ ORDER BY <sort_specification>
   
   **Anmerkungen**  
   
-  Die Abfragegrammatik unterstützt mehrere „ORDER BY“-Eigenschaften, die Cosmos DB-Abfragelaufzeit hingegen nur die Sortierung für eine einzelne Eigenschaft und für Eigenschaftennamen, d.h. nicht für berechnete Eigenschaften. Das Sortieren erfordert auch, dass die Indizierungsrichtlinie einen Bereichsindex für die Eigenschaft und den angegebenen Typ mit der maximalen Genauigkeit enthält. Weitere Informationen finden Sie in der Dokumentation zur Indizierungsrichtlinie.  
+   Die ORDER BY-Klausel erfordert, dass die Indizierungsrichtlinie einen Index für die Felder enthält, die sortiert werden. Die Abfragelaufzeit von Azure Cosmos DB unterstützt die Sortierung für einen Eigenschaftennamen und nicht für berechnete Eigenschaften. Azure Cosmos DB unterstützt mehrere ORDER BY-Eigenschaften. Zum Ausführen einer Abfrage mit mehreren ORDER BY-Eigenschaften sollten Sie einen [zusammengesetzten Index](index-policy.md#composite-indexes) für die Felder definieren, die sortiert werden.
+
+
+##  <a name=bk_offsetlimit_clause></a> OFFSET LIMIT-Klausel
+
+Mit dieser Klausel wird die Anzahl der übersprungenen und der zurückgegebenen Elemente festgelegt. Beispiele finden Sie unter [Beispiele für die OFFSET LIMIT-Klausel](how-to-sql-query.md#OffsetLimitClause).
   
+ **Syntax**  
+  
+```sql  
+OFFSET <offset_amount> LIMIT <limit_amount>
+```  
+  
+ **Argumente**  
+ 
+- `<offset_amount>`
+
+   Mit diesem Argument wird die ganzzahlige Anzahl von Elementen festgelegt, die die Abfrageergebnisse überspringen sollen.
+
+
+- `<limit_amount>`
+  
+   Mit diesem Argument wird die ganzzahlige Anzahl von Elementen festgelegt, die die Abfrageergebnisse enthalten sollen.
+
+  **Anmerkungen**  
+  
+  In der OFFSET LIMIT-Klausel müssen sowohl für OFFSET als auch für LIMIT Werte angegeben werden. Wenn eine optionale `ORDER BY`-Klausel verwendet wird, wird das Resultset durch Überspringen der sortierten Werte erzeugt. Andernfalls gibt die Abfrage eine feste Reihenfolge der Werte zurück.
+
 ##  <a name="bk_scalar_expressions"></a> Skalarausdrücke  
  Ein skalarer Ausdruck ist eine Kombination aus Symbolen und Operatoren, die ausgewertet werden können, um einen einzelnen Wert zu erhalten. Einfache Ausdrücke können Konstanten, Eigenschaftenverweise, Arrayelementverweise, Aliasverweise oder Funktionsaufrufe sein. Einfache Ausdrücke können mit Operatoren in komplexen Ausdrücken kombiniert werden. Beispiele finden Sie unter [Beispiele für skalare Ausdrücke](how-to-sql-query.md#scalar-expressions).
   
@@ -681,7 +715,8 @@ ORDER BY <sort_specification>
 |[Mathematische Funktionen](#bk_mathematical_functions)|Jede mathematische Funktion führt eine Berechnung durch, üblicherweise basierend auf Eingabewerten, die als Argument bereitgestellt werden, und gibt einen numerischen Wert zurück.|  
 |[Funktionen für die Typüberprüfung](#bk_type_checking_functions)|Mit den Funktionen für die Typprüfung können Sie den Typ eines Ausdrucks in SQL-Abfragen prüfen.|  
 |[Zeichenfolgenfunktionen](#bk_string_functions)|Die folgenden Stringfunktionen führen einen Vorgang für einen Zeichenfolgen-Eingabewert durch und geben eine Zeichenfolge, einen numerischen Wert oder einen booleschen Wert zurück.|  
-|[Arrayfunktionen](#bk_array_functions)|Die Arrayfunktionen führen einen Vorgang für einen Arrayeingabewert aus und geben einen numerischen Wert, booleschen Wert oder Arraywert zurück.|  
+|[Arrayfunktionen](#bk_array_functions)|Die Arrayfunktionen führen einen Vorgang für einen Arrayeingabewert aus und geben einen numerischen Wert, booleschen Wert oder Arraywert zurück.|
+|[Datums- und Uhrzeitfunktionen](#bk_date_and_time_functions)|Mit den Datums- und Uhrzeitfunktionen können Sie die aktuellen UTC-Datums-/Uhrzeitwerte in zwei Formaten abrufen: als numerischer Zeitstempel, dessen Wert der Unix-Epochenzeit in Millisekunden entspricht, oder als Zeichenfolge gemäß dem ISO 8601-Format.|
 |[Räumliche Funktionen](#bk_spatial_functions)|Die räumlichen Funktionen führen einen Vorgang für den Eingabewert eines räumlichen Objekts aus und geben einen numerischen oder booleschen Wert zurück.|  
   
 ###  <a name="bk_mathematical_functions"></a> Mathematische Funktionen  
@@ -2363,13 +2398,13 @@ SELECT
     StringToArray('[1,2,3, "[4,5,6]",[7,8]]') AS a5
 ```
 
- Hier ist das Resultset.
+Hier ist das Resultset.
 
 ```
 [{"a1": [], "a2": [1,2,3], "a3": ["str",2,3], "a4": [["5","6","7"],["8"],["9"]], "a5": [1,2,3,"[4,5,6]",[7,8]]}]
 ```
 
- Das folgende Beispiel zeigt eine ungültige Eingabe. 
+Das folgende Beispiel zeigt eine ungültige Eingabe. 
    
  Einfache Anführungszeichen innerhalb des Arrays sind kein gültiger JSON-Code.
 Sie sind zwar innerhalb einer Abfrage gültig, werden jedoch nicht als gültige Arrays interpretiert. Zeichenfolgen innerhalb der Arrayzeichenfolge müssen mit Escapezeichen versehen werden: "[\\"\\"]". Alternativ kann die Arrayzeichenfolge in einfache Anführungszeichen eingeschlossen werden: '[""]'.
@@ -2379,13 +2414,13 @@ SELECT
     StringToArray("['5','6','7']")
 ```
 
- Hier ist das Resultset.
+Hier ist das Resultset.
 
 ```
 [{}]
 ```
 
- Die folgenden Beispiele zeigen eine ungültige Eingabe.
+Die folgenden Beispiele zeigen eine ungültige Eingabe.
    
  Der übergebene Ausdruck wird als JSON-Array analysiert. Folgendes wird nicht als Arraytyp ausgewertet und gibt daher „undefined“ zurück:
    
@@ -2398,7 +2433,7 @@ SELECT
     StringToArray(undefined)
 ```
 
- Hier ist das Resultset.
+Hier ist das Resultset.
 
 ```
 [{}]
@@ -2429,7 +2464,7 @@ StringToBoolean(<expr>)
  
  Die folgenden Beispiele zeigen eine gültige Eingabe.
 
- Leerzeichen sind ausschließlich vor oder nach „true“/„false“ zulässig.
+Leerzeichen sind ausschließlich vor oder nach „true“/„false“ zulässig.
 
 ```  
 SELECT 
@@ -2444,8 +2479,8 @@ SELECT
 [{"b1": true, "b2": false, "b3": false}]
 ```  
 
- Die folgenden Beispiele zeigen eine ungültige Eingabe.
- 
+Die folgenden Beispiele zeigen eine ungültige Eingabe.
+
  Bei booleschen Werten muss die Groß-/Kleinschreibung beachtet werden. „true“ und „false“ dürfen daher nur Kleinbuchstaben enthalten.
 
 ```  
@@ -2454,15 +2489,15 @@ SELECT
     StringToBoolean("False")
 ```  
 
- Hier ist das Resultset.  
+Hier ist das Resultset.  
   
 ```  
 [{}]
 ``` 
 
- Der übergebene Ausdruck wird als boolescher Ausdruck analysiert. Die folgenden Eingaben werden nicht als boolescher Typ ausgewertet und geben daher „undefined“ zurück:
+Der übergebene Ausdruck wird als boolescher Ausdruck analysiert. Die folgenden Eingaben werden nicht als boolescher Typ ausgewertet und geben daher „undefined“ zurück:
 
- ```  
+```  
 SELECT 
     StringToBoolean("null"),
     StringToBoolean(undefined),
@@ -2471,7 +2506,7 @@ SELECT
     StringToBoolean(true)
 ```  
 
- Hier ist das Resultset.  
+Hier ist das Resultset.  
   
 ```  
 [{}]
@@ -2500,8 +2535,8 @@ StringToNull(<expr>)
   
   Im folgenden Beispiel wird das typübergreifende Verhalten von StringToNull gezeigt. 
 
- Die folgenden Beispiele zeigen eine gültige Eingabe.
- 
+Die folgenden Beispiele zeigen eine gültige Eingabe.
+
  Leerzeichen sind ausschließlich vor oder nach „null“ zulässig.
 
 ```  
@@ -2517,9 +2552,9 @@ SELECT
 [{"n1": null, "n2": null, "n3": true}]
 ```  
 
- Die folgenden Beispiele zeigen eine ungültige Eingabe.
+Die folgenden Beispiele zeigen eine ungültige Eingabe.
 
- „null“ darf nur Kleinbuchstaben enthalten.
+„null“ darf nur Kleinbuchstaben enthalten.
 
 ```  
 SELECT    
@@ -2533,7 +2568,7 @@ SELECT
 [{}]
 ```  
 
- Der übergebene Ausdruck wird als NULL-Ausdruck analysiert. Die folgenden Eingaben werden nicht als NULL-Typ ausgewertet und geben daher „undefined“ zurück:
+Der übergebene Ausdruck wird als NULL-Ausdruck analysiert. Die folgenden Eingaben werden nicht als NULL-Typ ausgewertet und geben daher „undefined“ zurück:
 
 ```  
 SELECT    
@@ -2572,8 +2607,8 @@ StringToNumber(<expr>)
   
   Im folgenden Beispiel wird das typübergreifende Verhalten von StringToNumber gezeigt. 
 
- Leerzeichen sind ausschließlich vor oder nach der Zahl zulässig.
- 
+Leerzeichen sind ausschließlich vor oder nach der Zahl zulässig.
+
 ```  
 SELECT 
     StringToNumber("1.000000") AS num1, 
@@ -2588,8 +2623,8 @@ SELECT
 {{"num1": 1, "num2": 3.14, "num3": 60, "num4": -1.79769e+308}}
 ```  
 
- In JSON muss eine gültige Zahl entweder eine ganze Zahl oder eine Gleitkommazahl sein.
- 
+In JSON muss eine gültige Zahl entweder eine ganze Zahl oder eine Gleitkommazahl sein.
+
 ```  
 SELECT   
     StringToNumber("0xF")
@@ -2601,7 +2636,7 @@ SELECT
 {{}}
 ```  
 
- Der übergebene Ausdruck wird als Zahlenausdruck analysiert. Die folgenden Eingaben werden nicht als Zahlentyp ausgewertet und geben daher „undefined“ zurück: 
+Der übergebene Ausdruck wird als Zahlenausdruck analysiert. Die folgenden Eingaben werden nicht als Zahlentyp ausgewertet und geben daher „undefined“ zurück: 
 
 ```  
 SELECT 
@@ -2643,7 +2678,7 @@ StringToObject(<expr>)
   Im folgenden Beispiel wird das typübergreifende Verhalten von StringToObject gezeigt. 
   
  Die folgenden Beispiele zeigen eine gültige Eingabe.
- 
+
 ``` 
 SELECT 
     StringToObject("{}") AS obj1, 
@@ -2652,7 +2687,7 @@ SELECT
     StringToObject("{\"C\":[{\"c1\":[5,6,7]},{\"c2\":8},{\"c3\":9}]}") AS obj4
 ``` 
 
- Hier ist das Resultset.
+Hier ist das Resultset.
 
 ```
 [{"obj1": {}, 
@@ -2660,40 +2695,40 @@ SELECT
   "obj3": {"B":[{"b1":[5,6,7]},{"b2":8},{"b3":9}]},
   "obj4": {"C":[{"c1":[5,6,7]},{"c2":8},{"c3":9}]}}]
 ```
- 
+
  Die folgenden Beispiele zeigen eine ungültige Eingabe.
 Sie sind zwar innerhalb einer Abfrage gültig, werden jedoch nicht als gültige Objekte interpretiert. Zeichenfolgen innerhalb der Objektzeichenfolge müssen mit Escapezeichen versehen werden: "{\\"a\\":\\"str\\"}". Alternativ kann die Objektzeichenfolge in einfache Anführungszeichen eingeschlossen werden: '{"a": "str"}'.
 
- Einfache Anführungszeichen um Eigenschaftennamen sind in JSON nicht gültig.
+Einfache Anführungszeichen um Eigenschaftennamen sind in JSON nicht gültig.
 
 ``` 
 SELECT 
     StringToObject("{'a':[1,2,3]}")
 ```
 
- Hier ist das Resultset.
+Hier ist das Resultset.
 
 ```  
 [{}]
 ```  
 
- Eigenschaftennamen ohne umgebende Anführungszeichen sind in JSON nicht gültig.
+Eigenschaftennamen ohne umgebende Anführungszeichen sind in JSON nicht gültig.
 
 ``` 
 SELECT 
     StringToObject("{a:[1,2,3]}")
 ```
 
- Hier ist das Resultset.
+Hier ist das Resultset.
 
 ```  
 [{}]
 ``` 
 
- Die folgenden Beispiele zeigen eine ungültige Eingabe.
- 
+Die folgenden Beispiele zeigen eine ungültige Eingabe.
+
  Der übergebene Ausdruck wird als JSON-Objekt analysiert. Die folgenden Eingaben werden nicht als Objekttyp ausgewertet und geben daher „undefined“ zurück:
- 
+
 ``` 
 SELECT 
     StringToObject("}"),
@@ -2798,20 +2833,20 @@ CONCAT(ToString(p.Weight), p.WeightUnits)
 FROM p in c.Products 
 ```  
 
- Hier ist das Resultset.  
+Hier ist das Resultset.  
   
 ```  
 [{"$1":"4lb" },
- {"$1":"32kg"},
- {"$1":"400g" },
- {"$1":"8999mg" }]
+{"$1":"32kg"},
+{"$1":"400g" },
+{"$1":"8999mg" }]
 
 ```  
 Die folgende Eingabe ist gegeben:
 ```
 {"id":"08259","description":"Cereals ready-to-eat, KELLOGG, KELLOGG'S CRISPIX","nutrients":[{"id":"305","description":"Caffeine","units":"mg"},{"id":"306","description":"Cholesterol, HDL","nutritionValue":30,"units":"mg"},{"id":"307","description":"Sodium, NA","nutritionValue":612,"units":"mg"},{"id":"308","description":"Protein, ABP","nutritionValue":60,"units":"mg"},{"id":"309","description":"Zinc, ZN","nutritionValue":null,"units":"mg"}]}
 ```
- Im folgenden Beispiel wird gezeigt, wie „ToString“ mit anderen Zeichenfolgenfunktionen wie REPLACE verwendet werden kann.   
+Im folgenden Beispiel wird gezeigt, wie „ToString“ mit anderen Zeichenfolgenfunktionen wie REPLACE verwendet werden kann.   
 ```
 SELECT 
     n.id AS nutrientID,
@@ -2819,14 +2854,14 @@ SELECT
 FROM food 
 JOIN n IN food.nutrients
 ```
- Hier ist das Resultset.  
+Hier ist das Resultset.  
  ```
 [{"nutrientID":"305"},
 {"nutrientID":"306","nutritionVal":"30"},
 {"nutrientID":"307","nutritionVal":"912"},
 {"nutrientID":"308","nutritionVal":"90"},
 {"nutrientID":"309","nutritionVal":"null"}]
- ``` 
+``` 
  
 ####  <a name="bk_trim"></a> TRIM  
  Gibt einen Zeichenfolgenausdruck zurück, nachdem führende und nachfolgende Leerzeichen entfernt wurden.  
@@ -2937,7 +2972,7 @@ SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"]) AS arrayConcat
 ####  <a name="bk_array_contains"></a> ARRAY_CONTAINS  
 Gibt einen booleschen Wert zurück, um anzugeben, ob das Array den angegebenen Wert enthält. Anhand eines booleschen Ausdrucks innerhalb des Befehls können Sie nach einem Objekt suchen, das vollständig oder teilweise übereinstimmt. 
 
- **Syntax**  
+**Syntax**  
   
 ```  
 ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])  
@@ -2977,7 +3012,7 @@ SELECT
 [{"b1": true, "b2": false}]  
 ```  
 
- Das folgende Beispiel zeigt, wie die partielle Übereinstimmung eines JSON-Codes in einem Array mit ARRAY_CONTAINS überprüft wird.  
+Das folgende Beispiel zeigt, wie die partielle Übereinstimmung eines JSON-Codes in einem Array mit ARRAY_CONTAINS überprüft wird.  
   
 ```  
 SELECT  
@@ -3085,7 +3120,100 @@ SELECT
            "s7": [] 
 }]  
 ```  
- 
+
+###  <a name="bk_date_and_time_functions"></a> Datums- und Uhrzeitfunktionen
+ Mit den folgenden Skalarfunktionen können Sie die aktuellen UTC-Datums-/Uhrzeitwerte in zwei Formaten abrufen: als numerischer Zeitstempel, dessen Wert der Unix-Epochenzeit in Millisekunden entspricht, oder als Zeichenfolge gemäß dem ISO 8601-Format. 
+
+|||
+|-|-|
+|[GetCurrentDateTime](#bk_get_current_date_time)|[GetCurrentTimestamp](#bk_get_current_timestamp)||
+
+####  <a name="bk_get_current_date_time"></a> GetCurrentDateTime
+ Diese Funktion gibt den aktuellen UTC-Datums-/Uhrzeitwert als ISO 8601-Zeichenfolge zurück.
+  
+ **Syntax**
+  
+```
+GetCurrentDateTime ()
+```
+  
+  **Rückgabetypen**
+  
+  Hiermit wird der aktuelle UTC-Datums-/Uhrzeitwert als ISO 8601-Zeichenfolgenwert zurückgegeben. 
+
+  Dies wird im Format „YYYY-MM-DDThh:mm:ss.sssZ“ ausgedrückt, das folgendermaßen aufgeschlüsselt wird:
+  
+  |||
+  |-|-|
+  |YYYY|vierstellige Jahreszahl|
+  |MM|zweistellige Monatszahl (01 = Januar usw.)|
+  |DD|zweistellige Zahl für den Tag des Monats (01 bis 31)|
+  |T|Trennzeichen, das den Anfang der Uhrzeitelemente markiert|
+  |hh|zweistellige Stundenzahl (00 bis 23)|
+  |MM|zweistellige Minutenzahl (00 bis 59)|
+  |ss|zweistellige Sekundenzahl (00 bis 59)|
+  |.sss|dreistellige dezimale Bruchteile einer Sekunde|
+  |Z|UTC-Kennzeichner||
+  
+  Weitere Informationen zum ISO 8601-Format finden Sie unter [ISO_8601](https://en.wikipedia.org/wiki/ISO_8601).
+
+  **Anmerkungen**
+
+  GetCurrentDateTime ist eine nichtdeterministische Funktion. 
+  
+  Das zurückgegebene Ergebnis entspricht der koordinierten Weltzeit (UTC).
+
+  **Beispiele**  
+  
+  Im folgenden Beispiel wird gezeigt, wie der aktuelle UTC-Datums-/Uhrzeitwert mithilfe der integrierten GetCurrentDateTime-Funktion abgerufen wird.
+  
+```  
+SELECT GetCurrentDateTime() AS currentUtcDateTime
+```  
+  
+ Hier ist ein Beispielresultset:
+  
+```  
+[{
+  "currentUtcDateTime": "2019-05-03T20:36:17.784Z"
+}]  
+```  
+
+####  <a name="bk_get_current_timestamp"></a> GetCurrentTimestamp
+ Diese Funktion gibt die Anzahl der Millisekunden zurück, die seit dem Donnerstag am 1. Januar 1970 um 00:00:00 Uhr vergangen sind. 
+  
+ **Syntax**  
+  
+```  
+GetCurrentTimestamp ()  
+```  
+  
+  **Rückgabetypen**  
+  
+  Ein numerischer Wert, der der aktuellen Anzahl der Millisekunden entspricht, die seit der Unix-Epoche vergangen sind, d. h. die Anzahl der Millisekunden, die seit dem Donnerstag am 1. Januar 1970 um 00:00:00 Uhr vergangen sind, wird zurückgegeben.
+
+  **Anmerkungen**
+
+  GetCurrentTimestamp ist eine nichtdeterministische Funktion. 
+  
+  Das zurückgegebene Ergebnis entspricht der koordinierten Weltzeit (UTC).
+
+  **Beispiele**  
+  
+  Im folgenden Beispiel wird gezeigt, wie der Zeitstempel mithilfe der integrierten GetCurrentTimestamp-Funktion abgerufen wird.
+  
+```  
+SELECT GetCurrentTimestamp() AS currentUtcTimestamp
+```  
+  
+ Hier ist ein Beispielresultset:
+  
+```  
+[{
+  "currentUtcTimestamp": 1556916469065
+}]  
+```  
+
 ###  <a name="bk_spatial_functions"></a> Räumliche Funktionen  
  Die folgenden Skalarfunktionen führen einen Vorgang für den Eingabewert eines räumlichen Objekts aus und geben einen numerischen oder booleschen Wert zurück.  
   
@@ -3292,7 +3420,7 @@ SELECT ST_ISVALIDDETAILED({
   }  
 }]  
 ```  
-  
+ 
 ## <a name="next-steps"></a>Nächste Schritte  
 
 - [SQL-Syntax und SQL-Abfrage für Cosmos DB](how-to-sql-query.md)

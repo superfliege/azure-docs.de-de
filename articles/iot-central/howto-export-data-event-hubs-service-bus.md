@@ -8,12 +8,12 @@ ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: b0a34cd8eebdd816cb780b34de936a6cc56d0994
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 78edeb0c418f5c426771d241464d389f8a632e96
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64730231"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65463996"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Exportieren von Daten in Azure IoT Central
 
@@ -64,14 +64,14 @@ Nachdem Sie nun ein Event Hubs-/Service Bus-Ziel für den Export von Daten haben
     > [!Note]
     > Wenn im linken Menü „Kontinuierlicher Datenexport“ nicht angezeigt wird, sind Sie kein Administrator in Ihrer App. Wenden Sie sich an Ihren Administrator, damit dieser den Datenexport einrichtet.
 
-    ![Erstellen eines neun Event Hubs für kontinuierlichen Datenexport](media/howto-export-data/export_menu.PNG)
+    ![Erstellen eines neun Event Hubs für kontinuierlichen Datenexport](media/howto-export-data/export_menu1.png)
 
 3. Wählen Sie oben rechts die Schaltfläche **+ Neu** aus. Wählen Sie entweder **Azure Event Hubs** oder **Azure Service Bus** als Ziel für Ihren Export aus. 
 
     > [!NOTE] 
     > Die maximale Anzahl von Exporten pro App beträgt 5. 
 
-    ![Erstellen eine neuen kontinuierlichen Datenexports](media/howto-export-data/export_new.PNG)
+    ![Erstellen eine neuen kontinuierlichen Datenexports](media/howto-export-data/export_new1.png)
 
 4. Wählen Sie im Dropdown-Listenfeld Ihren **Event Hubs-Namespace/Service Bus-Namespace** aus. Sie können auch die letzte Option in der Liste auswählen, bei der es sich um **Verbindungszeichenfolge eingeben** handelt. 
 
@@ -81,7 +81,7 @@ Nachdem Sie nun ein Event Hubs-/Service Bus-Ziel für den Export von Daten haben
     > [!NOTE] 
     > Bei 7-Tage-Test-Apps ist eine Verbindungszeichenfolge die einzige Möglichkeit zur Konfiguration des kontinuierlichen Datenexports. Dies liegt daran, dass 7-Tage-Test-Apps kein Azure-Abonnement zugeordnet ist.
 
-    ![Erstellen eines neun Event Hubs für kontinuierlichen Datenexport](media/howto-export-data/export_create.PNG)
+    ![Erstellen eines neun Event Hubs für kontinuierlichen Datenexport](media/howto-export-data/export_create1.png)
 
 5. (Optional) Wenn Sie **Verbindungszeichenfolge eingeben** ausgewählt haben, wird ein neues Feld angezeigt, in das Sie Ihre Verbindungszeichenfolge einfügen können. Um die Verbindungszeichenfolge für 
     - Ihren Event Hubs oder Service Bus abzurufen, wechseln Sie im Azure-Portal zu dem Namespace.
@@ -95,7 +95,7 @@ Nachdem Sie nun ein Event Hubs-/Service Bus-Ziel für den Export von Daten haben
 
 6. Um den kontinuierlichen Datenexport zu aktivieren, stellen Sie sicher, dass **Datenexport** auf **Ein** festgelegt ist. Wählen Sie **Speichern** aus.
 
-  ![Konfigurieren des fortlaufenden Datenexports](media/howto-export-data/export_list.PNG)
+    ![Konfigurieren des fortlaufenden Datenexports](media/howto-export-data/export_list1.png)
 
 7. Nach einigen Minuten werden Ihre Daten an Ihrem ausgewählten Ziel angezeigt.
 

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 05/07/2019
+ms.date: 05/09/2019
 ms.author: edjez
-ms.openlocfilehash: 2a62fd288f9118882e5cd9899ab572d4b247fc5a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a197531a7c78823271c0a5fa5413b76746f63a9a
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65156798"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507027"
 ---
 # <a name="install-and-run-personalizer-containers"></a>Installieren und Ausführen von Personalisierungscontainern
 
@@ -182,7 +182,7 @@ Der Container stellt eine umfassende Dokumentation für die Endpunkte sowie die 
 
 Personalisierungsdienstcontainer senden Abrechnungsinformationen an Azure und verwenden dafür eine Ressource vom Typ _Personalisierungsdienst_ in Ihrem Azure-Konto. 
 
-Für die Ausführung von Cognitive Services-Containern besteht keine Lizenz, wenn sie nicht zu Messzwecken mit Azure verbunden sind. Kunden müssen sicherstellen, dass Container jederzeit Abrechnungsinformationen an den Messungsdienst übermitteln können. Cognitive Services-Container senden keine Kundendaten an Microsoft. 
+Für die Ausführung von Cognitive Services-Containern besteht keine Lizenz, wenn sie nicht zu Messzwecken mit Azure verbunden sind. Kunden müssen sicherstellen, dass Container jederzeit Abrechnungsinformationen an den Messungsdienst übermitteln können.  
 
 Der Befehl `docker run` verwendet folgende Argumente für Abrechnungszwecke:
 
