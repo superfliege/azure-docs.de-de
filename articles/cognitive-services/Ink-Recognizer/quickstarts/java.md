@@ -9,12 +9,12 @@ ms.subservice: ink-recognizer
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: aahi
-ms.openlocfilehash: 43dc388c9f24e3975d6efddbeec6e096bf062548
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: c3f5c3ae8501f3114920f3b06f7f8cafa05e83bb
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025750"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406561"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>Schnellstart: Erkennen von Freihandeingaben mit der Freihanderkennungs-REST-API und Java
 
@@ -30,7 +30,7 @@ Den Quellcode für diese Schnellstartanleitung finden Sie auf [GitHub](https://g
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Das [Java&trade; Development Kit (JDK) 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) oder höher
+- Das [Java&trade; Development Kit (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) oder höher
 
 - Importieren dieser Bibliotheken aus dem Maven-Repository
     - Paket [JSON in Java](https://mvnrepository.com/artifact/org.json/json)

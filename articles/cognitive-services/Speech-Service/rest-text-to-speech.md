@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 9cbd924f87ff2f5b38f67a1bf7db34c36e9c264b
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 8ebd871c314d3ecbc0c89e6c9081926558b181fd
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65020427"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65237093"
 ---
 # <a name="text-to-speech-rest-api"></a>Text-to-Speech-REST-API
 
@@ -44,25 +44,25 @@ Der Endpunkt `voices/list` ermöglicht es Ihnen, eine vollständige Liste der St
 
 | Region | Endpunkt |
 |--------|----------|
-| Australien (Osten) | https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Brasilien Süd | https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Kanada, Mitte | https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| USA (Mitte) | https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Asien, Osten | https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| USA (Ost) | https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| USA (Ost) 2 | https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Frankreich, Mitte | https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Indien, Mitte | https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Japan, Osten | https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Korea, Mitte | https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| USA Nord Mitte | https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Nordeuropa | https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| USA (Mitte/Süden) | https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Asien, Südosten | https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| UK, Süden | https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| Europa, Westen | https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| USA (Westen) | https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list |
-| USA, Westen 2 | https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list |
+| Australien (Osten) | `https://australiaeast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Brasilien Süd | `https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Kanada, Mitte | `https://canadacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA (Mitte) | `https://centralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Asien, Osten | `https://eastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA (Ost) | `https://eastus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA (Ost) 2 | `https://eastus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Frankreich, Mitte | `https://francecentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Indien, Mitte | `https://centralindia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Japan, Osten | `https://japaneast.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Korea, Mitte | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA Nord Mitte | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Nordeuropa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA (Mitte/Süden) | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Asien, Südosten | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| UK, Süden | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| Europa, Westen | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA (Westen) | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
+| USA, Westen 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 
 ### <a name="request-headers"></a>Anforderungsheader
 

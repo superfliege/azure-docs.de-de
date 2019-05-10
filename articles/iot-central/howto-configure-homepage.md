@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 3168bbbf70c1ffeb3827482459febbcea256eda6
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b1edd4777839c947cf8f60bb6857f939553e2603
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773145"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467613"
 ---
 # <a name="configure-the-application-dashboard"></a>Konfigurieren des Anwendungsdashboards
 
@@ -26,19 +26,19 @@ Das **Dashboard** ist die Seite, die geladen wird, wenn zugriffsberechtigte Benu
 
 Der folgende Screenshot zeigt das Dashboard in einer Anwendung, das über die Vorlage **Beispiel Contoso** erstellt wurde. Wählen Sie zum Anpassen des Standarddashboards Ihrer Anwendung oben rechts auf der Seite die Option **Bearbeiten** aus.
 
-![Dashboard für Anwendungen auf Basis der „Beispiel Contoso“-Vorlage](media/howto-configure-homepage/image1.png)
+![Dashboard für Anwendungen auf Basis der „Beispiel Contoso“-Vorlage](media/howto-configure-homepage/image1a.png)
 
 Wenn Sie **Bearbeiten** auswählen, wird das Bibliotheksfenster des Dashboards geöffnet. Die Bibliothek enthält die Kacheln und Dashboardprimitive, mit denen Sie das Dashboard anpassen können.
 
-![Dashboardbibliothek](media/howto-configure-homepage/image2.png)
+![Dashboardbibliothek](media/howto-configure-homepage/image2a.png)
 
 Beispielsweise können Sie eine Kachel **Geräteeinstellungen und -eigenschaften** hinzufügen, um eine Auswahl der aktuellen Werte für Einstellungen und Eigenschaften für ein Gerät anzuzeigen. Wählen Sie dazu zuerst eine **Gerätevorlage** und dann eine **Geräteinstanz** aus. Danach geben Sie der Kachel einen Titel und wählen eine anzuzeigende **Einstellung** oder **Eigenschaft** aus. Der folgende Screenshot zeigt Einstellungen und Eigenschaften, die zum Hinzufügen zur Kachel ausgewählt wurden. Wählen Sie **Fertig** aus, um die Änderung am Dashboard zu speichern.
 
-![Formular „Gerätedetails konfigurieren“ mit Details zu Einstellungen und Eigenschaften](media/howto-configure-homepage/image3.png)
+![Formular „Gerätedetails konfigurieren“ mit Details zu Einstellungen und Eigenschaften](media/howto-configure-homepage/image3a.png)
 
 Wenn ein Bediener jetzt das Standarddashboard der Anwendung anzeigt, wird die neue Kachel mit der Einstellung **Temperatur festlegen** für das Gerät angezeigt:
 
-![Registerkarte „Dashboard“ mit Anzeige der Einstellungen und Eigenschaften für die Kachel](media/howto-configure-homepage/image4.png)
+![Registerkarte „Dashboard“ mit Anzeige der Einstellungen und Eigenschaften für die Kachel](media/howto-configure-homepage/image4a.png)
 
 Sie können weitere Kacheltypen in der Bibliothek untersuchen, um zu erfahren, wie Sie das Standarddashboard der Anwendung weiter anpassen können.
 

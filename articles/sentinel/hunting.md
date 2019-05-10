@@ -4,7 +4,7 @@ description: In diesem Artikel wird beschrieben, wie die Bedrohungssuchfunktione
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 6aa9dd27-6506-49c5-8e97-cc1aebecee87
 ms.service: sentinel
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: adedc8bc1f574ae089f2a11033fab4f390c57a9a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 754722508de248294667ee9e923e8faf3ad67f61
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087022"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65236287"
 ---
 # <a name="hunt-for-threats-with-in-azure-sentinel-preview"></a>Suchen nach Bedrohungen mit Azure Sentinel Preview
 

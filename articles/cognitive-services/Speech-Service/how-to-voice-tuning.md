@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 6d602491c66669007ae220c3b8143ce3e805246f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 2352594b168f5d37ddb6a46064f9ac5801fb035f
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65147987"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508406"
 ---
 # <a name="fine-tune-text-to-speech-output"></a>Optimieren der Ausgabe der Sprachsynthese
 
@@ -28,9 +28,9 @@ Das Tool zur Sprachoptimierung unterstützt die [standardmäßigen](language-sup
 Bevor Sie mit der Optimierung der Sprachsyntheseausgabe mit dem Tool zur Sprachoptimierung beginnen können, müssen Sie diese Schritte ausführen:
 
 1. Erstellen Sie ein [kostenloses Microsoft-Konto](https://account.microsoft.com/account), wenn Sie noch keines besitzen.
-2. Erstellen Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/en-us/free/), wenn Sie noch keines besitzen. Klicken Sie auf **Kostenlos starten**, und erstellen Sie mithilfe Ihres Microsoft-Kontos ein neues Azure-Konto.
+2. Erstellen Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/), wenn Sie noch keines besitzen. Klicken Sie auf **Kostenlos starten**, und erstellen Sie mithilfe Ihres Microsoft-Kontos ein neues Azure-Konto.
 
-3. Erstellen Sie ein Speech-Dienstabonnement im Azure-Portal. Schrittweise Anleitungen zum [Erstellen einer Sprachressource](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure) stehen zur Verfügung.
+3. Erstellen Sie ein Speech-Dienstabonnement im Azure-Portal. Schrittweise Anleitungen zum [Erstellen einer Sprachressource](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure) stehen zur Verfügung.
    >[!NOTE]
    >Wenn Sie eine Sprachressource im Azure-Portal erstellen, müssen die Azure-Standortinformationen mit der TTS-Sprachregion übereinstimmen. Die neuronale TTS-Stimme unterstützt eine Teilmenge der Azure-Standorte. Eine vollständige Liste der unterstützten Standorte finden Sie unter [Regionen](regions.md#text-to-speech).
 
@@ -70,6 +70,6 @@ Die Optimierung der neuronalen Stimme unterscheidet sich geringfügig von der Op
 > Das Tool zur Sprachoptimierung bietet Kontextinformationen zu Funktionen und Optimierung.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Erstellen einer Speech-Ressource in Azure](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)
+* [Erstellen einer Speech-Ressource in Azure](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure)
 * [Starten der Sprachoptimierung](https://speech.microsoft.com/app.html#/VoiceTuning)
 * [Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md)

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: d0b5537f31edf330b54b91ddf7268338df0c0a6b
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: 6412f0a2e295a19f741c70e7870a4d198ee03b71
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65148270"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233553"
 ---
 # <a name="preview-migrate-to-api-version-3x--for-luis-apps"></a>Vorschau: Migrieren zu API-Version 3.x für LUIS-Apps
 
@@ -43,10 +43,6 @@ Die folgenden LUIS-Features werden in der API V3 **nicht unterstützt**:
 * Bing-Rechtschreibprüfung V7
 
 Für V3 ist eine [Referenzdokumentation](https://aka.ms/luis-api-v3) verfügbar.
-
-## <a name="prebuilt-domains-with-new-models-and-language-coverage"></a>Vordefinierte Domänen mit Unterstützung neuer Modelle und Sprachen
-
-Informationen zu diesem Thema finden Sie in der [Liste der vordefinierten Domänen für die API V3](luis-reference-prebuilt-domains.md). Diese Domänen unterstützen mehr Modelle und Sprachen. 
 
 ## <a name="prebuilt-entities-with-new-json"></a>Vordefinierte Entitäten mit neuem JSON-Code
 

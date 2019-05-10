@@ -6,9 +6,6 @@
     - name: Was ist der Azure Machine Learning-Dienst?
       displayName: AML services overview
       href: overview-what-is-azure-ml.md
-    - name: Was ist mit Workbench passiert?
-      displayName: desktop ui Workbench upgrade update transfer
-      href: overview-what-happened-to-workbench.md
 - name: Einrichtung
   items:
     - name: Erstellen eines Arbeitsbereichs
@@ -92,6 +89,8 @@
     - name: Interpretierbarkeit von Modellen
       displayName: explainability
       href: machine-learning-interpretability-explainability.md
+    - name: Beschleunigen mit GPUs
+      href: concept-accelerate-inferencing-with-gpus.md
     - name: Beschleunigen mit FPGAs
       href: concept-accelerate-with-fpgas.md
     - name: Optimieren mit ONNX und der ONNX-Runtime
@@ -117,6 +116,7 @@
         - name: Verwenden des Portals für Arbeitsbereiche
           href: how-to-manage-workspace.md
         - name: Verwenden einer Resource Manager-Vorlage
+          displayName: arm
           href: how-to-create-workspace-template.md
     - name: "Einrichten der Entwicklungsumgebung\_"
       items:
@@ -224,6 +224,9 @@
       items:
         - name: Erstellen einer ML-Pipeline
           href: how-to-create-your-first-pipeline.md
+        - name: Trainieren und Bereitstellen von ML-Modellen mit Azure Pipelines
+          href: /azure/devops/pipelines/targets/azure-machine-learning?view=azure-devop
+          mainContext: true
     - name: Verwalten von Ressourcenkontingenten
       displayName: limits
       href: how-to-manage-quotas.md
@@ -352,3 +355,6 @@
     - name: Vergleichen unserer ML-Produkte
       href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
       maintainContext: true
+    - name: Was ist mit Workbench passiert?
+      displayName: desktop ui Workbench upgrade update transfer
+      href: overview-what-happened-to-workbench.md

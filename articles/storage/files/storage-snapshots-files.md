@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7305c6a5047bd09f6c9bda018748643ff81fe893
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d83cf20c856d37d337f4eb22c30ee9b6823d096b
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64708103"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235820"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Übersicht über Freigabemomentaufnahmen für Azure Files 
 Azure Files bietet die Möglichkeit, Freigabemomentaufnahmen von Dateifreigaben zu erstellen. Freigabemomentaufnahmen erfassen den Freigabestatus zum jeweiligen Zeitpunkt. In diesem Artikel erfahren Sie, welche Möglichkeiten Freigabemomentaufnahmen bieten und wie Sie in Ihrem speziellen Fall von ihnen profitieren können.
@@ -40,7 +40,7 @@ Die Freigabemomentaufnahme-Funktion wird auf der Ebene der Dateifreigabe bereitg
 
 Eine Freigabemomentaufnahme einer Dateifreigabe ist mit ihrer Basisdateifreigabe identisch. Der einzige Unterschied besteht darin, dass an den Freigabe-URI ein **DateTime**-Wert angehängt wird, der den Erstellungszeitpunkt der Freigabemomentaufnahme angibt. Wenn ein Dateifreigabe-URI http://storagesample.core.file.windows.net/myshare ist, lautet der Freigabemomentaufnahmen-URI z.B. in etwa:
 ```
-http://storagesample.file.core.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
+http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
 
 Freigabemomentaufnahmen werden beibehalten, bis sie explizit gelöscht werden. Eine Freigabemomentaufnahme kann die zugehörige Basisdateifreigabe nicht überdauern. Sie können alle einer Basisdateifreigabe zugeordneten Momentaufnahmen auflisten, um die aktuell vorhandenen Momentaufnahmen nachzuverfolgen. 

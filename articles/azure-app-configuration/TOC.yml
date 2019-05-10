@@ -66,7 +66,7 @@
         - name: "Java\_Spring-Konfigurationsanbieter"
           href: 'https://github.com/Microsoft/spring-cloud-azure/tree/azure-config/spring-cloud-azure-starters/spring-cloud-starter-azure-config'
         - name: .NET Azure SDK
-          href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/src/SDKs/Azure.ApplicationModel.Configuration/data-plane'
+          href: 'https://go.microsoft.com/fwlink/?linkid=2092056'
         - name: REST
           href: 'https://go.microsoft.com/fwlink/?linkid=2078296'
     - name: Funktionsverwaltung
@@ -74,7 +74,9 @@
         - name: .NET Core-Bibliothek
           href: 'https://go.microsoft.com/fwlink/?linkid=2091700'
         - name: ASP.NET Core-Bibliothek
-          href: 'https://go.microsoft.com/fwlink/?linkid=2091410'
+          href: 'https://go.microsoft.com/fwlink/?linkid=2091700'
+        - name: .NET Core-Filterbibliothek
+          href: 'https://go.microsoft.com/fwlink/?linkid=2091601'
 - name: Ressourcen
   items:
     - name: Video zu den ersten Schritten

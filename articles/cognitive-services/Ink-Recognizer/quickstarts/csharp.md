@@ -9,12 +9,12 @@ ms.subservice: ink-recognizer
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: aahi
-ms.openlocfilehash: f03593292289cbc093832667505da2738c2b1633
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 800cf66e15c25540eac4809a27317598b72b8124
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025752"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406759"
 ---
 # <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-c"></a>Schnellstart: Erkennen von Freihandeingaben mit der Freihanderkennungs-REST-API und C#
 
@@ -36,7 +36,7 @@ Den Quellcode für diese Schnellstartanleitung finden Sie auf [GitHub](https://g
         1. Klicken Sie im **Projektmappen-Manager** mit der rechten Maustaste.
         2. Klicken Sie auf **Manage NuGet Packages**
         3. Suchen Sie nach `Newtonsoft.Json`, und installieren Sie das Paket.
-- Unter Linux/MacOS kann diese Anwendung mit [Mono](http://www.mono-project.com/) ausgeführt werden.
+- Unter Linux/MacOS kann diese Anwendung mit [Mono](https://www.mono-project.com/) ausgeführt werden.
 
 - Die Beispiel-Freihandstrichdaten für diesen Schnellstart finden Sie auf [GitHub](https://go.microsoft.com/fwlink/?linkid=2089502).
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 91e1780462021430913a1354b4add7c5f047ec15
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 76db7381985853a81843df812dffcd8ab2bd8f9a
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59263178"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65407461"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Tutorial: Azure Active Directory-Integration mit InsideView
 
@@ -142,13 +142,13 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit InsideVi
 
     c. Öffnen Sie das Base64-codierte Zertifikat, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **STS-Zertifikat** ein.
 
-    d. Geben Sie im Textfeld **Crm User Id Mapping** (Crm User ID-Zuordnung) den Text `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` ein.
+    d. Geben Sie im Textfeld **Crm User Id Mapping** (Crm User ID-Zuordnung) den Text `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` ein.
 
-    e. Geben Sie im Textfeld **Crm Email Mapping** (Crm E-Mail-Adressen-Zuordnung) den Text `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` ein.
+    e. Geben Sie im Textfeld **Crm Email Mapping** (Crm E-Mail-Adressen-Zuordnung) den Text `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` ein.
 
-    f. Geben Sie im Textfeld **Crm First Name Mapping** (Crm Vornamen-Zuordnung) den Text `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` ein.
+    f. Geben Sie im Textfeld **Crm First Name Mapping** (Crm Vornamen-Zuordnung) den Text `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` ein.
 
-    g. Geben Sie im Textfeld **Crm lastName Mapping** (Crm Nachnamen-Zuordnung) den Text `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` ein.  
+    g. Geben Sie im Textfeld **Crm lastName Mapping** (Crm Nachnamen-Zuordnung) den Text `https://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` ein.  
 
     h. Klicken Sie auf **Speichern**.
 
