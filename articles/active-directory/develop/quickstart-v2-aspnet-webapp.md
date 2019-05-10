@@ -16,12 +16,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 786ace2ef88fc4b94372041cbdd5bc16586b5193
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: d63ff648f89a231f0077363c88709a17d157ae8c
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682558"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190901"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App
 
@@ -68,13 +68,14 @@ Wählen Sie das Menü **Authentifizierung** aus, und legen Sie **ID-Token** unte
 
 #### <a name="step-2-download-your-project"></a>Schritt 2: Herunterladen Ihres Projekts
 
-[Visual Studio 2017-Projektmappe herunterladen](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
+[Herunterladen der Visual Studio 2019-Lösung](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-DotNet/archive/master.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Schritt 3: Konfigurieren des Visual Studio-Projekts
 
 1. Extrahieren Sie die ZIP-Datei in einen lokalen Ordner, der sich näher am Stammordner befindet, beispielsweise **C:\Azure-Samples**.
 1. Öffnen Sie die Projektmappe in Visual Studio (AppModelv2-WebApp-OpenIDConnect-DotNet.sln).
-1. Je nach Visual Studio-Version müssen Sie ggf. mit der rechten Maustaste auf das Projekt `AppModelv2-WebApp-OpenIDConnect-DotNet` klicken und **NuGet-Pakete wiederherstellen**.
+1. Abhängig von der verwendeten Visual Studio-Version müssen Sie möglicherweise mit der rechten Maustaste auf das Projekt `AppModelv2-WebApp-OpenIDConnect-DotNet` und **Wiederherstellen der NuGet-Pakete** klicken.
+1. Öffnen Sie die Paket-Manager-Konsole (Anzeigen > Andere Fenster > Paket-Manager-Konsole), und führen Sie `Update-Package Microsoft.CodeDom.Providers.DotNetCompilerPlatform -r` aus.
 1. Bearbeiten Sie **Web.config**, und ersetzen Sie die Parameter `ClientId` und `Tenant` durch Folgendes:
 
     ```xml
@@ -95,7 +96,7 @@ Wählen Sie das Menü **Authentifizierung** aus, und legen Sie **ID-Token** unte
 
 ## <a name="more-information"></a>Weitere Informationen
 
-Dieser Abschnitt gibt einen Überblick über den Code, der für die Anmeldung von Benutzern erforderlich ist. Dies kann hilfreich sein, um die Funktionsweise des Codes und die Hauptargumente zu verstehen und zu ermitteln, ob Sie einer vorhandenen ASP.NET-Anwendung Anmeldung hinzufügen möchten.
+Dieser Abschnitt gibt einen Überblick über den Code, der für die Anmeldung von Benutzern erforderlich ist. Diese Übersicht kann hilfreich sein, um die Funktionsweise des Codes und die Hauptargumente zu verstehen und zu ermitteln, ob Sie einer vorhandenen ASP.NET Core-Anwendung eine Anmeldung hinzufügen möchten.
 
 ### <a name="owin-middleware-nuget-packages"></a>NuGet-Pakete der OWIN-Middleware
 
@@ -109,7 +110,7 @@ Install-Package Microsoft.Owin.Host.SystemWeb
 
 ### <a name="owin-startup-class"></a>OWIN-Startklasse
 
-Die OWIN-Middleware verwendet eine *Startklasse*, die bei der Initialisierung des Hostingprozesses ausgeführt wird (für diesen Schnellstart handelt es sich um die Datei *startup.cs* im Stammordner). Der folgende Code zeigt die Parameter, die von diesem Schnellstart verwendet werden:
+Die OWIN-Middleware verwendet eine *Startklasse*, die bei der Initialisierung des Hostingprozesses ausgeführt wird. In diesem Schnellstart handelt es sich um die Datei *startup.cs* im Stammordner. Der folgende Code zeigt die Parameter, die von diesem Schnellstart verwendet werden:
 
 ```csharp
 public void Configuration(IAppBuilder app)

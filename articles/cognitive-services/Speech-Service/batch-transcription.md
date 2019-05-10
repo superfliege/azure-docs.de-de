@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: b389d86fe4d23e3f4ee1c66e4270a74351098129
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 2148d1bd79a858bec37e6c574c2a6b6e2009fe46
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579358"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190411"
 ---
 # <a name="why-use-batch-transcription"></a>Gründe für die Verwendung von Batch-Transkriptionen
 
@@ -29,7 +29,7 @@ Batch-Transkriptionen eignen sich besonders, wenn Sie eine große Menge von Audi
 Wie bei allen Features des Speech-Diensts erstellen Sie mithilfe der Anleitung unter [Erste Schritte](get-started.md) einen Abonnementschlüssel im [Azure-Portal](https://portal.azure.com). Wenn Sie das Abrufen von Transkriptionen aus unseren Basismodellen planen, müssen Sie außer der Schlüsselerstellung nichts weiter tun.
 
 >[!NOTE]
-> Für die Verwendung von Batch-Transkriptionen ist ein Standardabonnement (S0) für Speech Services erforderlich. Kostenlose Abonnementschlüssel (F0) funktionieren nicht. Weitere Informationen finden Sie unter [Preise und Einschränkungen](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/speech-services/).
+> Für die Verwendung von Batch-Transkriptionen ist ein Standardabonnement (S0) für Speech Services erforderlich. Kostenlose Abonnementschlüssel (F0) funktionieren nicht. Weitere Informationen finden Sie unter [Preise und Einschränkungen](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 ### <a name="custom-models"></a>Benutzerdefinierte Modelle
 
@@ -65,14 +65,15 @@ Die Konfigurationsparameter werden als JSON angegeben:
 ```json
 {
   "recordingsUrl": "<URL to the Azure blob to transcribe>",
-  "models": ["<optional acoustic model ID>, <optional language model ID>"],
+  "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
   "locale": "<local to us, for example en-US>",
   "name": "<user define name of the transcription batch>",
   "description": "<optional description of the transcription>",
   "properties": {
     "ProfanityFilterMode": "Masked",
     "PunctuationMode": "DictatedAndAutomatic",
-    "AddWordLevelTimestamps" : "True"
+    "AddWordLevelTimestamps" : "True",
+    "AddSentiment" : "True"
   }
 }
 ```
@@ -87,6 +88,7 @@ Die Konfigurationsparameter werden als JSON angegeben:
 | `ProfanityFilterMode` | Gibt den Umgang mit Obszönitäten in Erkennungsergebnissen an. Zulässige Werte sind `none` (deaktiviert den Obszönitätenfilter), `masked` (Obszönitäten werden durch Sternchen ersetzt), `removed` (Obszönitäten werden aus dem Ergebnis entfernt) und `tags` (fügt „Obszönität“-Tags ein). Die Standardeinstellung ist `masked`. | Optional |
 | `PunctuationMode` | Gibt den Umgang mit Satzzeichen in Erkennungsergebnissen an. Gültige Werte sind `none` (deaktiviert Satzzeichen), `dictated` (explizite Satzzeichen), `automatic` (der Decoder verwaltet die Satzzeichen), `dictatedandautomatic` (vorgeschriebene Satzzeichen) oder „automatic“. | Optional |
  | `AddWordLevelTimestamps` | Gibt an, ob der Ausgabe Zeitstempel auf Wortebene hinzugefügt werden sollen. Gültige Werte sind `true` zum Aktivieren und `false` zum Deaktivieren von Zeitstempeln auf Wortebene. | Optional |
+ | `AddSentiment` | Gibt an, dass die Stimmung der Äußerung hinzugefügt werden soll. Gültige Werte sind `true` zum Aktivieren der Stimmung pro Äußerung und `false` (Standardwert) zum Deaktivieren. | Optional |
 
 ### <a name="storage"></a>Storage
 
@@ -97,6 +99,57 @@ Die Batchtranskription unterstützt [Azure Blob-Speicher](https://docs.microsoft
 Die Abfrage des Transkriptionsstatus ist möglicherweise nicht die leistungsstärkste Option oder bietet nicht die bestmögliche Benutzererfahrung. Zur Abfrage des Status können Sie Rückrufe registrieren, die den Client benachrichtigen, wenn zeitintensive Transkriptionsaufgaben abgeschlossen sind.
 
 Weitere Informationen finden Sie unter [Webhooks](webhooks.md).
+
+## <a name="sentiment"></a>Stimmung
+
+Die Stimmung ist ein neues Feature in der Batch-Transkriptions-API und ein wichtiges Feature in der Callcenterdomäne. Mit den `AddSentiment`-Parametern für ihre Anforderungen können Kunden: 
+
+1.  Einblicke in die Kundenzufriedenheit gewinnen
+2.  Einblicke in die Leistung der Mitarbeiter erhalten (das Team, das Anrufe entgegennimmt)
+3.  den exakten Zeitpunkt ermitteln, an dem sich ein Gespräch in eine negative Richtung entwickelt hat
+4.  ermitteln, was zu einer positiven Entwicklung bei negativen Gesprächen geführt hat
+5.  herausfinden, was Kunden an einem Produkt oder Dienst gefallen oder missfallen hat
+
+Die Stimmung wird pro Audiosegment bewertet. Ein Audiosegment ist der Zeitraum vom Start der Äußerung (Offset) bis zur Erkennung von Stille am Ende des Byte-Streams. Der gesamte Text in diesem Segment wird zum Berechnen der Stimmung bewertet. Wir berechnen KEINE aggregierten Werte für den gesamten Anruf oder die gesamte Sprechzeit jedes Kanals. Dies bleibt dem Domänenbesitzer überlassen.
+
+Die Stimmung wird auf die lexikalische Form angewendet.
+
+Nachfolgend sehen Sie ein Beispiel für eine JSON-Ausgabe:
+
+```json
+{
+  "AudioFileResults": [
+    {
+      "AudioFileName": "Channel.0.wav",
+      "AudioFileUrl": null,
+      "SegmentResults": [
+        {
+          "RecognitionStatus": "Success",
+          "ChannelNumber": null,
+          "Offset": 400000,
+          "Duration": 13300000,
+          "NBest": [
+            {
+              "Confidence": 0.976174,
+              "Lexical": "what's the weather like",
+              "ITN": "what's the weather like",
+              "MaskedITN": "what's the weather like",
+              "Display": "What's the weather like?",
+              "Words": null,
+              "Sentiment": {
+                "Negative": 0.206194,
+                "Neutral": 0.793785,
+                "Positive": 0.0
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+Dieses Feature verwendet ein Stimmungsmodell, das sich derzeit in der Betaphase befindet.
 
 ## <a name="sample-code"></a>Beispielcode
 

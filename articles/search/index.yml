@@ -11,10 +11,10 @@ metadata:
   ms.service: search
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 01/18/2019
+  ms.date: 05/02/2019
   ms.author: heidist
 abstract:
-  description: 'Hier erfahren Sie, wie Sie mit Azure Search eine Unternehmenslösung für die Suche über private, heterogene Inhalte erstellen. Tutorials, API-Referenzen und weitere Dokumente enthalten Informationen zum Zusammenfassen durchsuchbarer Inhalte in einem einzelnen schnellen Index, der für eine Vielzahl von Szenarien mit einfacher, aber auch komplexerer Syntax abgefragt werden kann. <p/><a href="/azure/search/cognitive-search-concept-intro"><b>Neue Vorschauversion für Cognitive Search.</b></a> Verwenden Sie eine Vorabversion der REST-API, um KI-basierte Algorithmen an die Indizierungspipeline zu binden. Extrahieren Sie Daten und rufen Sie die Verarbeitung von natürlicher Sprache und Bildern auf, um Rohdaten in unstrukturierten Inhalten in durchsuchbare Inhalte in einem Azure Search-Index umzuwandeln. <p/>Machen Sie sich anhand von <a href="/azure/search/cognitive-search-quickstart-blob">Ressourcen und Beispieldaten</a> näher mit der kognitiven Suche vertraut, oder lesen Sie weitere Informationen im Abschnitt zu <a href="/azure/search/cognitive-search-concept-intro">Konzepten</a>.'
+  description: 'Hier erfahren Sie, wie Sie mit Azure Search eine Unternehmenslösung für die Suche über private, heterogene Inhalte erstellen. Tutorials, API-Referenzen und weitere Dokumente enthalten Informationen zum Zusammenfassen durchsuchbarer Inhalte in einem einzelnen schnellen Index, der für eine Vielzahl von Szenarien mit einfacher, aber auch komplexerer Syntax abgefragt werden kann. <p/>Die <a href="/azure/search/cognitive-search-concept-intro"><b>kognitive Suche</b></a> ist jetzt mit für Produktionsszenarien unterstützten KI-Anreicherungen allgemein verfügbar.<p/>Die kognitive Suche wird durch <a href="/azure/search/knowledge-store-concept-intro"><b>Wissensspeicher (Vorschau)</b></a> erweitert. Sie können KI-Anreicherungen im Speicher speichern, in dem Sie dann Anreicherungen in anderen Anwendungen neben Azure Search anzeigen, umstrukturieren und nutzen können. <a href="/azure/search/knowledge-store-howto"><b>Legen Sie noch heute los</b></a>.'
   aside:
     image:
       alt: null
@@ -51,11 +51,11 @@ sections:
       - type: list
         style: ordered
         items:
-          - html: <a href="/azure/search/cognitive-search-tutorial-blob">Indizieren mit KI (Cognitive Services)</a>
-          - html: <a href="/azure/search/search-howto-dotnet-sdk">Verwenden von Azure Search mit .NET</a>
+          - html: <a href="/azure/search/search-get-started-portal">Verwenden des Portals zum Indizieren und Testen von Abfragen</a>
+          - html: <a href="/azure/search/search-howto-dotnet-sdk">Verwenden von .NET zum Schreiben Ihrer ersten Suchlösung</a>
+          - html: <a href="/azure/search/cognitive-search-tutorial-blob">Anreichern mit KI (Cognitive Services)</a>
           - html: <a href="/azure/search/search-indexer-tutorial">Indizieren von Azure SQL-Datenbankinhalten mit .NET</a>
           - html: <a href="/azure/search/search-semi-structured-data">Indizieren von teilweise strukturierten Daten in Azure Blob Storage mit REST</a>
-          - html: <a href="/azure/search/search-get-started-portal">Verwenden des Portals zum Indizieren und Testen von Abfragen</a>
   - title: Verweis
     items:
       - type: list

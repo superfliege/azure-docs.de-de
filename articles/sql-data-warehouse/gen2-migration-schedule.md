@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 1f645a9c9161fb2fd71b2fd9af9ade65bff0be94
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a5d93a77652f540fde44b33963b13df04b45ecee
+ms.sourcegitcommit: 60606c5e9a20b2906f6b6e3a3ddbcb6c826962d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59361132"
+ms.lasthandoff: 05/01/2019
+ms.locfileid: "64987942"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Aktualisieren des Data Warehouse zu Gen2
 
@@ -33,8 +33,8 @@ In der folgenden Tabelle sehen Sie, wann der niedrigere Gen2-Computetarif in wel
 | **Region** | **Niedrigerer Gen2-Computetarif verfügbar** | **Beginn automatischer Upgrades** |
 |:--- |:--- |:--- |
 | Australien (Osten) |Verfügbar |1. Juni 2019 |
-| Australien, Südosten |15. April 2019 |1. Mai 2019 |
-| Brasilien Süd |15. Mai 2019 |1. Juni 2019 |
+| Australien, Südosten |Verfügbar |1. Mai 2019 |
+| Brasilien Süd |Verfügbar |1. Juni 2019 |
 | Kanada, Mitte |Verfügbar |1. Juni 2019 |
 | Kanada, Osten |\* |\* |
 | USA (Mitte) |Verfügbar |1. Juni 2019 |
@@ -49,25 +49,25 @@ In der folgenden Tabelle sehen Sie, wann der niedrigere Gen2-Computetarif in wel
 | Deutschland, Mitte |\* |\* |
 | Deutschland, Westen-Mitte |1. September 2019|2. Januar 2020 |
 | Indien, Mitte |Verfügbar |1. Juni 2019 |
-| Indien, Süden |15. April 2019 |1. Juni 2019 |
+| Indien, Süden |Verfügbar |1. Juni 2019 |
 | Japan, Osten |Verfügbar |1. Juni 2019 |
 | Japan, Westen |Verfügbar |1. Mai 2019 |
-| Korea, Mitte |15. April 2019 |1. Juni 2019 |
-| Korea, Süden |15. April 2019 |1. Mai 2019 |
-| USA Nord Mitte |15. April 2019 |1. Mai 2019 |
+| Korea, Mitte |Verfügbar |1. Juni 2019 |
+| Korea, Süden |Verfügbar |1. Mai 2019 |
+| USA Nord Mitte |Verfügbar |1. Mai 2019 |
 | Nordeuropa |Verfügbar |1. Juni 2019 |
 | USA Süd Mitte |Verfügbar |1. Juni 2019 |
 | Südostasien |Verfügbar |1. Juni 2019 |
-| UK, Süden |15. April 2019 |1. Juni 2019 |
+| UK, Süden |Verfügbar, 2019 |1. Juni 2019 |
 | UK, Westen |\*|\* |
 | USA, Westen-Mitte |2. September 2019 |2. Januar 2020|
 | Europa, Westen |Verfügbar |1. Juni 2019 |
-| USA (Westen) |15. April 2019 |1. Juni 2019 |
+| USA (Westen) |Verfügbar |1. Juni 2019 |
 | USA, Westen 2 |Verfügbar |1. Juni 2019 |
 
 ## <a name="automatic-upgrade-process"></a>Automatischer Upgradevorgang
 
-Wir planen automatische Upgrades für Ihre Gen 1-Instanzen nach dem oben angezeigten Verfügbarkeitsdiagramm. Um unerwartete Unterbrechungen der Verfügbarkeit des Data Warehouse zu vermeiden, werden die automatischen Upgrades während Ihres Wartungszeitplans geplant. Weitere Informationen zu Zeitplänen finden Sie unter [Anzeigen eines Wartungszeitplans](viewing-maintenance-schedule.md).
+Wir planen automatische Upgrades für Ihre Gen 1-Instanzen nach dem oben angezeigten Verfügbarkeitsdiagramm. Um unerwartete Unterbrechungen der Verfügbarkeit des Data Warehouse zu vermeiden, werden die automatischen Upgrades während Ihres Wartungszeitplans geplant. Die Möglichkeit zum Erstellen einer neuen Gen1-Instanz wird in Regionen, in denen gerade ein automatisches Upgrade auf Gen2 durchgeführt wird, deaktiviert. Weitere Informationen zu Zeitplänen finden Sie unter [Anzeigen eines Wartungszeitplans](viewing-maintenance-schedule.md).
 
 Der Upgradevorgang ist mit einem kurzen Abfall der Konnektivität (ca. 5 Minuten) verbunden, wenn wir Ihr Data Warehouse neu starten.  Sobald Ihr Data Warehouse neu gestartet ist, ist es vollständig zur Verwendung verfügbar. Zeitweise kann jedoch eine Beeinträchtigung der Leistung auftreten, während der Upgradevorgang weiterhin im Hintergrund die Datendateien aktualisiert. Die Gesamtzeit für die Leistungsminderung variiert abhängig von der Größe der Datendateien.
 

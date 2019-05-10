@@ -2,11 +2,11 @@
 title: Problembehandlung bei der Azure-Dateisynchronisierung | Microsoft-Dokumentation
 description: Beheben von häufigen Problemen bei der Azure-Dateisynchronisierung
 services: storage
-author: roygara
+author: jeffpatt24
 ms.service: storage
 ms.topic: article
 ms.date: 01/31/2019
-ms.author: rogarana
+ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: e399566a67161219e1d778ba1c6f874f7cede251
 ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9

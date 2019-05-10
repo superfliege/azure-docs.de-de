@@ -8,7 +8,7 @@ metadata:
   author: mamccrea
   ms.service: azure-databricks
   ms.topic: landing-page
-  ms.date: 03/19/2018
+  ms.date: 05/07/2019
   ms.author: mamccrea
 abstract:
   description: 'Es wird beschrieben, wie Sie Azure Databricks nutzen. Hierbei handelt es sich um eine Apache Spark-basierte Analyseplattform mit Setup per Klick, optimierten Workflows und einem interaktiven Arbeitsbereich, der die Kollaboration zwischen Data Scientists, Data Engineers und Business Analysts ermöglicht. In Schnellstartanleitungen und Tutorials wird gezeigt, wie Sie in Azure Databricks einsteigen und die Anwendung in andere Azure-Dienste integrieren.'
@@ -37,6 +37,10 @@ sections:
               src: /azure/azure-databricks/media/index/logo_azure_resource_manager.svg
             text: Resource Manager-Vorlage
             href: /azure/azure-databricks/quickstart-create-databricks-workspace-resource-manager-template
+          - image:
+              src: /azure/azure-databricks/media/index/virtualnetwork.svg
+            text: Virtuelles Netzwerk
+            href: /azure/azure-databricks/quickstart-create-databricks-workspace-vnet-injection
   - title: Schritt-für-Schritt-Tutorials
     items:
       - type: paragraph
@@ -44,6 +48,8 @@ sections:
       - type: list
         style: ordered
         items:
+          - html: '<a href="/azure/azure-databricks/vnet-injection-sql-server">Abfragen einer SQL Server-Instanz, die in einem Docker-Container ausgeführt wird</a>'
+          - html: "<a href=\"/azure/azure-databricks/service-endpoint-cosmosdb\">Verwenden eines Cosmos\_DB-Dienstendpunkts</a>"
           - html: '<a href="/azure/azure-databricks/databricks-extract-load-sql-data-warehouse">Extrahieren, Transformieren und Laden von Daten</a>'
           - html: <a href="/azure/azure-databricks/databricks-stream-from-eventhubs">Streamen von Daten aus Event Hubs</a>
           - html: <a href="/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services">Stimmungsanalyse mit Cognitive Services</a>
@@ -56,3 +62,5 @@ sections:
         items:
           - title: REST
             html: <p><a href="/rest/api/databricks">REST-API</a></p>
+          - title: Ressourcen-Manager
+            html: <p><a href="/azure/templates/microsoft.databricks/workspaces">Vorlage</a></p>

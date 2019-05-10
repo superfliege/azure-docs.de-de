@@ -9,16 +9,16 @@ ms.subservice: form-recognizer
 ms.topic: quickstart
 ms.date: 04/15/2019
 ms.author: pafarley
-ms.openlocfilehash: cc6e8cdb7cd1719a8cd14cbfe6e576e07c34b32c
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 1afe9239dcc3f5a24d2e950ec7b563bf53d1f04c
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025645"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143236"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-using-rest-api-with-curl"></a>Schnellstart: Trainieren eines Formularerkennungsmodells und Extrahieren von Formulardaten mithilfe der REST-API mit cURL
 
-In diesem Schnellstart verwenden Sie die Formularerkennungs-REST-API mit cURL zum Trainieren und Bewerten von Formularen, um Schlüssel-Wert-Paare und Tabellen zu extrahieren.
+In dieser Schnellstartanleitung verwenden Sie die Formularerkennungs-REST-API mit cURL zum Trainieren und Bewerten von Formularen, um Schlüssel-Wert-Paare und Tabellen zu extrahieren.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -40,7 +40,7 @@ Um ein Formularerkennungsmodell mit den Dokumenten in Ihrem Azure-Blobcontainer 
 * Ersetzen Sie `<subscription key>` durch Ihren Abonnementschlüssel.
 
 ```bash
-curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/train" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \"<SAS URL>\"}"
+curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/train" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"source\": \""<SAS URL>"\"}"
 ```
 
 Sie erhalten die Antwort `200 (Success)` mit der folgenden JSON-Ausgabe:
@@ -90,14 +90,14 @@ Notieren Sie sich den Wert `"modelId"`. Sie benötigen ihn für die folgenden Sc
 
 Als Nächstes analysieren Sie ein Dokument und extrahieren daraus Schlüssel-Werte-Paare und Tabellen. Rufen Sie die API **Modell – Analysieren** auf, indem Sie den folgenden cURL-Befehl ausführen. Nehmen Sie vor dem Ausführen des Befehls die folgenden Änderungen vor:
 
-* Ersetzen Sie `<Endpoint>` durch den Endpunkt, den Sie mit Ihrem Abonnementschlüssel für die Formularerkennung erhalten haben. Sie finden ihn auf der Registerkarte „Übersicht“ der Ressource „Formularerkennung“.
+* Ersetzen Sie `<Endpoint>` durch den Endpunkt, den Sie mit Ihrem Abonnementschlüssel für die Formularerkennung erhalten haben. Sie finden ihn auf der Registerkarte **Übersicht** der Ressource „Formularerkennung“.
 * Ersetzen Sie `<modelID>` durch die Modell-ID, die Sie im vorherigen Schritt des Modelltrainings erhalten haben.
 * Ersetzen Sie `<path to your form>` durch den Dateipfad zu Ihrem Formular.
 * Ersetzen Sie `<subscription key>` durch Ihren Abonnementschlüssel.
 * Ersetzen Sie `<file type>` durch den Dateityp (unterstützte Typen sind „pdf“, „image/jpeg“ und „image/png“).
 
 ```bash
-cURL cmd: curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/models/<modelID>/analyze" -H "Content-Type: multipart/form-data" -F "form=@<path to your form>;type=application/<file type>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
+curl -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/custom/models/<modelID>/analyze" -H "Content-Type: multipart/form-data" -F "form=@\"<path to your form>\";type=application/<file type>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
 ### <a name="examine-the-response"></a>Untersuchen der Antwort

@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/04/2019
+ms.date: 05/02/2019
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: ed2e0bd352823a932cfea719c18e05ae6c913621
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: f5cb8d2fee706600251039d80232d9fc7f60d5fb
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59495735"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65025156"
 ---
 # <a name="example-add-suggestions-or-autocomplete-to-your-azure-search-application"></a>Beispiel: Hinzufügen von Vorschlägen oder AutoVervollständigen zur Azure Search-Anwendung
 
@@ -23,7 +23,7 @@ In diesem Artikel erfahren Sie, wie Sie mit [Vorschlägen](https://docs.microsof
 
 + *Vorschläge* sind vorgeschlagene Ergebnisse, die während der Eingabe generiert werden, wobei jeder Vorschlag ein einzelnes Ergebnis aus dem Index darstellt, das Ihrer bisherigen Eingabe entspricht. 
 
-+ *AutoVervollständigen* ist eine [Previewfunktion](search-api-preview.md), die die von einem Benutzer aktuell eingegebenen Wörter bzw. Ausdrücke „vervollständigt“. Anstatt Ergebnisse zurückzugeben, vervollständigt sie eine Abfrage, die Sie dann ausführen können, um Ergebnisse zurückzugeben. Wie bei Vorschlägen basiert ein vervollständigtes Wort oder ein vervollständigter Ausdruck in einer Abfrage auf einer Übereinstimmung im Index. Der Dienst schlägt keine Abfragen vor, die keine Ergebnisse im Index zurückgeben.
++ *AutoVervollständigen* vervollständigt die von einem Benutzer aktuell eingegebenen Wörter bzw. Ausdrücke. Anstatt Ergebnisse zurückzugeben, vervollständigt sie eine Abfrage, die Sie dann ausführen können, um Ergebnisse zurückzugeben. Wie bei Vorschlägen basiert ein vervollständigtes Wort oder ein vervollständigter Ausdruck in einer Abfrage auf einer Übereinstimmung im Index. Der Dienst schlägt keine Abfragen vor, die keine Ergebnisse im Index zurückgeben.
 
 Sie können den Beispielcode in **DotNetHowToAutocomplete** herunterladen und ausführen, um diese Features auszuwerten. Der Beispielcode ist auf einen vordefinierten Index ausgerichtet, der mit [NYCJobs-Demodaten](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs) gefüllt ist. Der NYCJobs-Index enthält ein [Vorschlagsfunktionskonstrukt](index-add-suggesters.md), das eine Voraussetzung für die Verwendung von Vorschlägen oder AutoVervollständigen ist. Sie können den in einem Sandboxdienst gehosteten vorbereiteten Index verwenden oder einen [eigenen Index](#configure-app) mit einem Datenlader in der NYCJobs-Beispiellösung füllen. 
 
@@ -123,7 +123,7 @@ Bisher wurde der UX-Code der Suche auf die Vorschläge ausgerichtet. Der nächst
 
 ```javascript
 $(function () {
-    // using modified jQuery Autocomplete plugin v1.2.6 http://xdsoft.net/jqplugins/autocomplete/
+    // using modified jQuery Autocomplete plugin v1.2.6 https://xdsoft.net/jqplugins/autocomplete/
     // $.autocomplete -> $.autocompleteInline
     $("#example2").autocompleteInline({
         appendMethod: "replace",

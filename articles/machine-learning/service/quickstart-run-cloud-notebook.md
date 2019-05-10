@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3d4127226037bf28ba677a49f6444ca987118cb9
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: ecb97860e70141a744833aa9b9a4fcea3f3688f0
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65023927"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65149823"
 ---
 # <a name="quickstart-use-a-cloud-based-notebook-server-to-get-started-with-azure-machine-learning"></a>Schnellstart: Verwenden eines cloudbasierten Notebook-Servers für die ersten Schritte mit Azure Machine Learning
 
@@ -29,7 +29,7 @@ Diese Schnellstartanleitung umfasst folgende Aktionen:
 * Starten der Jupyter-Weboberfläche
 * Öffnen eines Notebooks, das Code zum Schätzen des Pi-Werts enthält und Fehler bei jeder Iteration protokolliert.
 * Ausführen des Notebooks.
-* Anzeigen der protokollierten Fehlerwerte in Ihrem Arbeitsbereich  Dieses Beispiel zeigt, wie der Arbeitsbereich Sie bei der Nachverfolgung der in einem Skript generierten Informationen unterstützt. 
+* Anzeigen der protokollierten Fehlerwerte in Ihrem Arbeitsbereich Dieses Beispiel zeigt, wie der Arbeitsbereich Sie bei der Nachverfolgung der in einem Skript generierten Informationen unterstützt. 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie noch heute die [kostenlose oder kostenpflichtige Version von Azure Machine Learning Service](https://aka.ms/AMLFree) aus.
 
@@ -49,13 +49,15 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erste
 
      ![Auswählen der neuen VM](./media/quickstart-run-cloud-notebook/add-workstation.png)
 
-1. Geben Sie einen Namen für Ihre VM an. Klicken Sie anschließend auf **Erstellen**. 
+1. Geben Sie einen Namen für Ihre VM an. Klicken Sie anschließend auf **Erstellen**.
+
+    > [!NOTE]
+    > Der Notebook-VM-Name muss zwischen 2 und 16 Zeichen lang sein. Gültige Zeichen sind Buchstaben, Ziffern und Bindestriche.  Der Name muss darüber hinaus im Azure-Abonnement eindeutig sein.
 
     ![Erstellen eines neuen virtuellen Computers](media/quickstart-run-cloud-notebook/create-new-workstation.png)
 
-1. Warten Sie ungefähr 4 bis 5 Minuten, und wählen Sie dann **Aktualisieren** aus.  Aktualisieren Sie etwa alle 30 Sekunden, bis der Status **Running** (Wird ausgeführt) anzeigt wird.
+1. Warten Sie ungefähr vier bis fünf Minuten, bis sich der Status in **Wird ausgeführt** ändert.
 
-    ![Aktualisieren](media/quickstart-run-cloud-notebook/refresh.png)
 
 ## <a name="launch-jupyter-web-interface"></a>Starten der Jupyter-Webbenutzeroberfläche
 
@@ -67,7 +69,11 @@ Nachdem Ihre VM ausgeführt wird, verwenden Sie den Abschnitt **Notebook-VMs**, 
 
     Der Link startet Ihren Notebook-Server und öffnet die Jupyter Notebook-Webseite im Browser auf einer neuen Registerkarte.  Dieser Link funktioniert nur für die Person, die die VM erstellt.
 
-1. Wählen Sie auf der Jupyter Notebook-Webseite den Ordner **samples/quickstart** aus, um das Schnellstart-Notebook anzuzeigen.
+1. Auf der Jupyter Notebook-Webseite ist der oberste Ordnername Ihr Benutzername.  Wählen Sie diesen Ordner aus.
+
+1. Der Beispielordnername enthält eine Versionsnummer, z. B. **samples-1.0.33.1**.  Wählen Sie den Beispielordner aus.
+
+1. Wählen Sie das Notebook **Schnellstart** aus.
 
 ## <a name="run-the-notebook"></a>Ausführen des Notebooks
 
@@ -75,15 +81,7 @@ Führen Sie ein Notebook aus, das den Wert von Pi schätzt und den Fehler in Ihr
 
 1. Wählen Sie **01.run-experiment.ipynb**, um das Notebook zu öffnen.
 
-1. Möglicherweise wird eine Meldung angezeigt, die besagt, dass der Kernel nicht festgelegt wurde.  Wählen Sie **Python 3.6 - AzureML** aus, und wählen Sie dann **Set Kernel** (Kernel festlegen) aus.
-
-   ![Festlegen des Kernels](./media/quickstart-run-cloud-notebook/set-kernel.png)
-
-1. Im Statusbereich werden Sie angewiesen, zu warten, bis der Kernel gestartet wurde. Die Meldung wird nicht mehr angezeigt, wenn der Kernel bereit ist.
-
-    ![Warten, bis der Kernel gestartet wird](./media/quickstart-run-cloud-notebook/wait-for-kernel.png)
-
-1.  Klicken Sie in der ersten Codezelle ein, und wählen Sie **Run** (Ausführen) aus.
+1. Klicken Sie in der ersten Codezelle ein, und wählen Sie **Run** (Ausführen) aus.
 
     > [!NOTE]
     > Codezellen sind eckige Klammern vorangestellt. Wenn die eckigen Klammern leer sind (__[  ]__), wurde der Code nicht ausgeführt. Während der Code ausgeführt wird, sehen Sie ein Sternchen (__[*]__). Nachdem der Code abgeschlossen wurde, wird eine Zahl **[1]** angezeigt.  Die Zahl informiert Sie über die Reihenfolge, in der die Zellen ausgeführt wurden.
@@ -94,16 +92,15 @@ Führen Sie ein Notebook aus, das den Wert von Pi schätzt und den Fehler in Ihr
 
 1. Führen Sie die zweite Codezelle aus. Wenn Anweisungen zur Authentifizierung angezeigt werden, kopieren Sie den Code, und folgen Sie dem Link, um sich anzumelden. Nachdem Sie sich anmeldet haben, speichert Ihr Browser diese Einstellung.  
 
-    > [!TIP]
-    > Achten Sie darauf, dass Sie das Leerzeichen hinter dem Code nicht kopieren.  
-
     ![Authentifizieren](media/quickstart-run-cloud-notebook/authenticate.png)
 
 1. Wenn Sie fertig sind, wird die Zellennummer __[2]__ angezeigt.  Wenn Sie sich anmelden mussten, wird eine Statusmeldung zur erfolgreichen Authentifizierung angezeigt.   Wenn Sie sich nicht anmelden mussten, wird keine Ausgabe für diese Zelle angezeigt. Es wird nur die Zellennummer angezeigt, um anzugeben, dass die Zelle erfolgreich ausgeführt wurde.
 
     ![Erfolgsmeldung](media/quickstart-run-cloud-notebook/success.png)
 
-1. Führen Sie die restlichen Codezellen aus.  Nach der Ausführung jeder Zelle wird ihre Zellennummer angezeigt. Nur die letzte Zelle zeigt eine andere Ausgabe an.  In der größten Codezelle sehen Sie an mehreren Stellen `run.log`. Jedes `run.log` fügt Ihrem Arbeitsbereich seinen Wert hinzu.
+1. Führen Sie die restlichen Codezellen aus.  Nach der Ausführung jeder Zelle wird ihre Zellennummer angezeigt. Nur die letzte Zelle zeigt eine andere Ausgabe an.  
+
+    In der größten Codezelle sehen Sie an mehreren Stellen `run.log`. Jedes `run.log` fügt Ihrem Arbeitsbereich seinen Wert hinzu.
 
 
 ## <a name="view-logged-values"></a>Anzeigen protokollierter Werte
@@ -147,10 +144,12 @@ Sie können die Ressourcengruppe auch behalten und einen einzelnen Arbeitsbereic
 In dieser Schnellstart haben Sie die folgenden Aufgaben erledigt:
 
 * Erstellen einer Notebook-VM
-* Starten eines Jupyter Notebook-Servers auf Ihrer Notebook-VM
+* Starten der Jupyter-Weboberfläche
 * Öffnen eines Notebooks, das Code zum Schätzen des Pi-Werts enthält und Fehler bei jeder Iteration protokolliert.
 * Ausführen des Notebooks.
 * Anzeigen der protokollierten Fehlerwerte in Ihrem Arbeitsbereich  Dieses Beispiel zeigt, wie der Arbeitsbereich Sie bei der Nachverfolgung der in einem Skript generierten Informationen unterstützt. 
+
+Durchsuchen Sie auf der Jupyter Notebook-Webseite andere Notebooks im Beispielordner, um mehr über Azure Machine Learning Service zu erfahren.
 
 Führen Sie Machine Learning-Tutorials zum Trainieren und Bereitstellen eines Modells aus, um sich ausführlicher mit dem Workflow zu beschäftigen:  
 

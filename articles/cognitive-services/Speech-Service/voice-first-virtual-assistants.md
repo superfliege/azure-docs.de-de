@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: f40e53c67f099fea739e45f6bdc6963ee1e235cb
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: c9ed6f898f4bcf8a5d4b2548cc1f3cf51f71bb2a
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025724"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138162"
 ---
 # <a name="about-custom-voice-first-virtual-assistants-preview"></a>Informationen zu virtuellen Voice-First-Assistenten (Vorschauversion)
 
-Individuelle virtuelle Assistenten, die Azure Speech-Dienste verwenden, ermöglichen es Entwicklern, natürliche, menschenähnliche Konversationsschnittstellen für ihre Anwendungen und Umgebungen zu erstellen. Der Direct Line Speech-Kanal des Bot Framework erweitert diese Möglichkeiten, indem er einen koordinierten, orchestrierten Einstiegspunkt zu einem kompatiblen Bot bietet, der Voice-In/Voice-Out-Interaktionen mit geringer Latenz und hoher Zuverlässigkeit ermöglicht. Diese Bots können Language Understanding (LUIS) von Microsoft für die natürliche Sprachinteraktion nutzen. Direct Line Speech wird von Geräten mit dem Speech Services Software Development Kit (SDK) aufgerufen.
+Individuelle virtuelle Assistenten, die Azure Speech-Dienste verwenden, ermöglichen es Entwicklern, natürliche, menschenähnliche Konversationsschnittstellen für ihre Anwendungen und Umgebungen zu erstellen. Der Direct Line Speech-Kanal des Bot Framework erweitert diese Möglichkeiten, indem er einen koordinierten, orchestrierten Einstiegspunkt zu einem kompatiblen Bot bietet, der Voice-In/Voice-Out-Interaktionen mit geringer Latenz und hoher Zuverlässigkeit ermöglicht. Diese Bots können Language Understanding (LUIS) von Microsoft für die natürliche Sprachinteraktion nutzen. Direct Line Speech wird von Geräten mit dem Speech Software Development Kit (SDK) aufgerufen.
 
    ![Konzeptionelle Darstellung des Orchestrierungsdienst-Flows](media/voice-first-virtual-assistants/overview.png "Der Flow des Speech-Kanals")
 
@@ -32,8 +32,8 @@ Direct Line Speech und die damit verbundene Funktionalität für benutzerdefinie
 |----------|----------|
 |[Benutzerdefiniertes Aktivierungswort](speech-devices-sdk-create-kws.md) | Sie können es Benutzern ermöglichen, Konversationen mit Bots mit einem benutzerdefinierten Stichwort wie „Hey Contoso“ zu beginnen. Dazu wird eine benutzerdefinierte Aktivierungswort-Engine im Speech SDK verwendet, die mit einem benutzerdefinierten Aktivierungswort konfiguriert werden kann, [das Sie hier generieren können](speech-devices-sdk-create-kws.md). Der Direct Line Speech-Kanal beinhaltet eine dienstseitige Überprüfung des Aktivierungsworts, um eine höhere Genauigkeit der Aktivierung des Aktivierungsworts sicherzustellen, als wenn diese nur vom Gerät überprüft wird.
 |[Spracherkennung](speech-to-text.md) | Der Direct Line Speech-Kanal beinhaltet die Echtzeit-Transkription von Audio in erkannten Text mithilfe der [Spracherkennung](speech-to-text.md) von Azure Speech-Diensten. Dieser Text ist während der Transkription sowohl für Ihren Bot als auch für Ihre Clientanwendung verfügbar.
-|[Sprachsynthese](text-to-speech.md) | Textantworten von Ihrem Bot werden mit der [Sprachsynthese](text-to-speech.md) von Azure Speech-Diensten synthetisiert. Diese Synthese wird dann Ihrer Clientanwendung als Audiostream zur Verfügung gestellt. Microsoft bietet die Möglichkeit, Ihre eigene [benutzerdefinierte, hochwertige neuronale TTS-Stimme](https://aka.ms/customneuraltts) zu erstellen, die Ihrer Marke eine Stimme verleiht.
-|[Direct Line Speech](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech.md) | Als Kanal innerhalb des Bot Frameworks ermöglicht Direct Line Speech eine reibungslose und nahtlose Verbindung zwischen Ihrer Clientanwendung, einem kompatiblen Bot und den Funktionen von Azure Speech-Diensten. Weitere Informationen zur Konfiguration Ihres Bot für die Verwendung des Direct Line Speech-Kanals finden Sie auf der [entsprechenden Seite in der Bot Framework-Dokumentation](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech.md).
+|[Sprachsynthese](text-to-speech.md) | Textantworten von Ihrem Bot werden mit der [Sprachsynthese](text-to-speech.md) von Azure Speech-Diensten synthetisiert. Diese Synthese wird dann Ihrer Clientanwendung als Audiostream zur Verfügung gestellt. Microsoft bietet die Möglichkeit, Ihre eigene benutzerdefinierte, hochwertige neuronale TTS-Stimme zu erstellen, die Ihrer Marke eine Stimme verleiht. [Wenden Sie sich an uns](mailto:mstts@microsoft.com), um weitere Informationen zu erhalten.
+|[Direct Line Speech](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) | Als Kanal innerhalb des Bot Frameworks ermöglicht Direct Line Speech eine reibungslose und nahtlose Verbindung zwischen Ihrer Clientanwendung, einem kompatiblen Bot und den Funktionen von Azure Speech-Diensten. Weitere Informationen zur Konfiguration Ihres Bot für die Verwendung des Direct Line Speech-Kanals finden Sie auf der [entsprechenden Seite in der Bot Framework-Dokumentation](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
 ## <a name="sample-code"></a>Beispielcode
 

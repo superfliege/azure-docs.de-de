@@ -1,7 +1,7 @@
 ---
 title: Konfigurieren eines Containers – Formularerkennung
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie den Container für die Formularerkennung verwenden, um Formular- und Tabellendaten zu analysieren.
+description: Hier erfahren Sie, wie Sie den Container für die Formularerkennung konfigurieren, um Formular- und Tabellendaten zu analysieren.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: pafarley
-ms.openlocfilehash: 6066e7856ddf8ef757afc2072218c87420a37c10
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 3f6cc32f6fb2a9fb11220ac1a3134fb3ae4d2f84
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025549"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147469"
 ---
 # <a name="configure-form-recognizer-containers"></a>Konfigurieren des Containers für die Formularerkennung
 
@@ -70,7 +70,7 @@ Diese Einstellung finden Sie hier:
 
 Verwenden Sie Bindungsbereitstellungen zum Lesen und Schreiben von Daten im Container. Sie können eine Eingabe- oder Ausgabebereitstellung über die Option `--mount` im Befehl [docker run](https://docs.docker.com/engine/reference/commandline/run/) angeben.
 
-Der Container für die Formularerkennung erfordert eine Ein- und Ausgabebereitstellung. Die Eingabebereitstellung kann schreibgeschützt sein und ist erforderlich, um auf die Daten zuzugreifen, die für Training und Bewertung verwendet werden. Die Ausgabebereitstellung muss beschreibbar sein und wird verwendet, um die Modelle und die temporären Daten zu speichern.
+Der Container für die Formularerkennung erfordert eine Ein- und Ausgabeeinbindung. Die Eingabebereitstellung kann schreibgeschützt sein und ist erforderlich, um auf die Daten zuzugreifen, die für Training und Bewertung verwendet werden. Die Ausgabebereitstellung muss beschreibbar sein und wird verwendet, um die Modelle und die temporären Daten zu speichern.
 
 Die genaue Syntax für den Bereitstellungspunkt auf dem Host variiert je nach Betriebssystem des Hosts. Darüber hinaus ist es eventuell nicht möglich, auf den Bereitstellungspunkt auf dem [Hostcomputer](form-recognizer-container-howto.md#the-host-computer) zuzugreifen, wenn ein Konflikt zwischen den vom Docker-Dienstkonto verwendeten Berechtigungen und den für den Bereitstellungspunkt auf dem Host verwendeten Berechtigungen besteht.
 

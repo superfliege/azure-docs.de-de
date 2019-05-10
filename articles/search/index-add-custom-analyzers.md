@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 9a15078c953c1fab40ad521eff079a623c93b9d9
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 5983c2036ff206825a82072b57ca2b9bb44ca678
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577542"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65021659"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>Hinzufügen von Analysetools zu einem Azure Search-Index
 
@@ -300,7 +300,7 @@ In der folgenden Tabelle bieten die Zeichenfilter, die mit Apache Lucene impleme
 |[mapping](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/charfilter/MappingCharFilter.html)|MappingCharFilter|Ein Zeichenfilter, der anhand der Zuordnungsoptionen definierten Zuordnungen anwendet. Der Abgleich ist umfangreich (der längste Musterabgleich an einem bestimmten Punkt wird verwendet). Eine Ersetzung kann eine leere Zeichenfolge sein.<br /><br /> **Optionen**<br /><br /> mappings (Type: Zeichenfolgenarray) – eine Liste an Zuordnungen im folgenden Format: "a=>b" (alle Vorkommen des Zeichens „a“ werden durch das Zeichen „b“ ersetzt). Erforderlich.|  
 |[pattern_replace](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/pattern/PatternReplaceCharFilter.html)|PatternReplaceCharFilter|Ein Zeichenfilter, der Zeichen in der Eingabezeichenfolge ersetzt. Er verwendet einen regulären Ausdruck, um zu erhaltende Zeichenfolgen zu identifizieren, und ein Ersatzmuster, um zu ersetzende Zeichen zu identifizieren. Beispiel: input text = "aa  bb aa bb", pattern="(aa)\\\s+(bb)" replacement="$1#$2", result = "aa#bb aa#bb".<br /><br /> **Optionen**<br /><br /> pattern (Typ: Zeichenfolge) – erforderlich.<br /><br /> replacement (Typ: Zeichenfolge) – erforderlich.|  
 
- <sup>1</sup> Zeichenfiltertypen wird in Code immer „#Microsoft.Azure.Search“ vorangestellt, sodass „MappingCharFilter“ als „#Microsoft.Azure.Search.MappingCharFilter“ angegeben wird. Wir haben das Präfix entfernt, um die Breite der Tabelle zu verringern, denken Sie aber daran, das Präfix in Ihren Code einzubinden. Beachten Sie, das der „char_filter_type“ nur für Filter angegeben wird, die angepasst werden können. Wenn es keine Optionen gibt, wie es bei html_strip der Fall ist, gibt es keinen zugehörigen #Microsoft.Azure.Search-Typ.
+ <sup>1</sup> Zeichenfiltertypen wird in Code immer „#Microsoft.Azure.Search“ vorangestellt, sodass „MappingCharFilter“ als „#Microsoft.Azure.Search.MappingCharFilter“ angegeben wird. Wir haben das Präfix entfernt, um die Breite der Tabelle zu verringern, denken Sie aber daran, das Präfix in Ihren Code einzubinden. Beachten Sie, dass „char_filter_type“ nur für Filter angegeben wird, die angepasst werden können. Wenn es keine Optionen gibt, wie es bei html_strip der Fall ist, gibt es keinen zugehörigen #Microsoft.Azure.Search-Typ.
 
 <a name="Tokenizers"></a>
 
@@ -324,7 +324,7 @@ In der folgenden Tabelle bieten die Tokenizer, die mit Apache Lucene implementie
 |[uax_url_email](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/standard/UAX29URLEmailTokenizer.html)|UaxUrlEmailTokenizer|Tokenisiert URLs und E-Mails als ein Token.<br /><br /> **Optionen**<br /><br /> maxTokenLength (Typ: int) – die maximale Tokenlänge. Standardwert: 255, Maximum: 300. Token, die die maximale Länge überschreiten, werden geteilt.|  
 |[whitespace](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/WhitespaceTokenizer.html)|(Der Typ gilt nur, wenn Optionen verfügbar sind.) |Teilt Text an den Leerzeichen auf. Token mit mehr als 255 Zeichen werden geteilt.|  
 
- <sup>1</sup> Tokenizertypen wird in Code immer „#Microsoft.Azure.Search“ vorangestellt, sodass „ClassicTokenizer“ als „#Microsoft.Azure.Search.ClassicTokenizer“ angegeben wird. Wir haben das Präfix entfernt, um die Breite der Tabelle zu verringern, denken Sie aber daran, das Präfix in Ihren Code einzubinden. Beachten Sie, das der „tokenizer_type“ nur für Tokenizer angegeben wird, die angepasst werden können. Wenn es keine Optionen gibt, wie es beim Buchstabentokenizer der Fall ist, gibt es keinen zugehörigen #Microsoft.Azure.Search-Typ.
+ <sup>1</sup> Tokenizertypen wird in Code immer „#Microsoft.Azure.Search“ vorangestellt, sodass „ClassicTokenizer“ als „#Microsoft.Azure.Search.ClassicTokenizer“ angegeben wird. Wir haben das Präfix entfernt, um die Breite der Tabelle zu verringern, denken Sie aber daran, das Präfix in Ihren Code einzubinden. Beachten Sie, dass „tokenizer_type“ nur für Tokenizer angegeben wird, die angepasst werden können. Wenn es keine Optionen gibt, wie es beim Buchstabentokenizer der Fall ist, gibt es keinen zugehörigen #Microsoft.Azure.Search-Typ.
 
 <a name="TokenFilters"></a>
 

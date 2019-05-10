@@ -113,7 +113,7 @@
         - name: Löschen eines AKS-Clusters
           href: '/cli/azure/aks#az-aks-delete'
           maintainContext: true
-        - name: Erstellen virtueller Knoten (Vorschauversion)
+        - name: Erstellen von virtuellen Knoten
           items:
             - name: Azure-Befehlszeilenschnittstelle
               href: virtual-nodes-cli.md
@@ -123,9 +123,13 @@
           href: virtual-kubelet.md
         - name: Verwenden der automatischen Skalierungsfunktion für Cluster (Vorschauversion)
           href: cluster-autoscaler.md
+        - name: Verwenden mehrerer Knotenpools (Vorschauversion)
+          href: use-multiple-node-pools.md
         - name: Bereitstellen von AKS mit Terraform
           href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
           maintainContext: true
+        - name: Verwenden des Kubernetes-Dashboards
+          href: kubernetes-dashboard.md
     - name: Konfigurieren von Datenvolumes
       items:
         - name: 'Azure Disk: Dynamisch'
@@ -173,12 +177,16 @@
           href: kubernetes-service-principal.md
         - name: Beschränken des Zugriffs auf die Clusterkonfigurationsdatei
           href: control-kubeconfig-access.md
-        - name: Schützen des Datenverkehrs zwischen Pods mit Netzwerkrichtlinien (Vorschauversion)
+        - name: Schützen des Datenverkehrs zwischen Pods mit Netzwerkrichtlinien
           href: use-network-policies.md
         - name: Verwenden von Podsicherheitsrichtlinien (Vorschauversion)
           href: use-pod-security-policies.md
+        - name: Definieren der vom API-Server autorisierten IP-Bereiche (Vorschauversion)
+          href: api-server-authorized-ip-ranges.md
         - name: Aktualisieren der Anmeldeinformationen für den Clusterdienstprinzipal
           href: update-credentials.md
+        - name: Beschränken und Steuern des ausgehenden Clusterdatenverkehrs
+          href: limit-egress-traffic.md
         - name: Aktivieren der Azure Active Directory-Integration
           items:
             - name: Verwenden der Azure-CLI
@@ -285,10 +293,6 @@
         - name: Azure DevOps-Projekt
           href: ../devops-project/azure-devops-project-aks.md
           maintainContext: true
-    - name: Kubernetes-Grundlagen
-      items:
-        - name: Verwenden des Kubernetes-Dashboards
-          href: kubernetes-dashboard.md
     - name: Problembehandlung
       items:
         - name: Häufige Probleme

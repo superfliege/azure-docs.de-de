@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: f3b4e6cd18a362775443bb296560a076aaa1497d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 82d49a6a82251f440c06db03edc92851fce87741
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57883626"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023625"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>Beispiel: Erstellen eines benutzerdefinierten Skills mithilfe der Textübersetzungs-API
 
@@ -243,7 +243,7 @@ Wenn Sie mit dem Funktionsverhalten zufrieden sind, können Sie sie veröffentli
 
 1. Befolgen Sie die Anweisungen auf dem Bildschirm. Sie werden aufgefordert, das Azure-Konto, die Ressourcengruppe, den Hostingplan und das gewünschte Speicherkonto anzugeben. Sie können eine neue Ressourcengruppe, einen neuen Hostingplan und ein Speicherkonto erstellen, wenn Sie noch nicht über diese verfügen. Wenn Sie fertig sind, klicken Sie auf **Erstellen**.
 
-1. Notieren Sie nach Abschluss der Bereitstellung die Website-URL. Es ist die Adresse der Funktions-App in Azure. 
+1. Beachten Sie die Website-URL nach Abschluss der Bereitstellung. Es ist die Adresse der Funktions-App in Azure. 
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zur Ressourcengruppe, und suchen Sie nach der von Ihnen veröffentlichten Übersetzungsfunktion. Im Abschnitt **Verwalten** sollten Sie Hostschlüssel angezeigt werden. Wählen Sie das Symbol **Kopieren** für den Hostschlüssel *Standard* aus.  
 
@@ -282,7 +282,7 @@ Nun, da Sie über einen neuen benutzerdefinierten Skill verfügen, können Sie d
       {
         "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
         "description": "Our new translator custom skill",
-        "uri": "http://translatecogsrch.azurewebsites.net/api/Translate?code=[enter default host key here]",
+        "uri": "https://translatecogsrch.azurewebsites.net/api/Translate?code=[enter default host key here]",
         "batchSize":1,
         "context": "/document",
         "inputs": [

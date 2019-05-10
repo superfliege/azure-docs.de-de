@@ -28,12 +28,12 @@ ms.author:
 - minale
 - btalb
 - prachank
-ms.openlocfilehash: 31ca0ee666ff37afa37fb9636860c557d92a52c7
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: d0124d6656167af3942e0d054b4e1fa7a2b48e8b
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924791"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65410045"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Optimierung der TCP/IP-Leistung für Azure-VMs
 
@@ -276,7 +276,7 @@ Um beschleunigten Netzwerkbetrieb verwenden zu können, müssen Sie diesen expli
 
 Die empfangsseitige Skalierung ist eine Netzwerktreibertechnologie, die den Empfang von Netzwerkverkehr effizienter verteilt, indem sie die Empfangsverarbeitung auf mehrere CPUs in einem Multiprozessorsystem verteilt. Einfach ausgedrückt ermöglicht empfangsseitige Skalierung es einem System, mehr empfangenen Datenverkehr zu verarbeiten, da es alle verfügbaren CPUs anstelle von nur einer verwendet. Eine technischere Beschreibung der empfangsseitigen Skalierung finden Sie unter [Introduction to Receive Side Scaling](https://docs.microsoft.com/windows-hardware/drivers/network/introduction-to-receive-side-scaling) (Einführung in die empfangsseitige Skalierung).
 
-Um die beste Leistung zu erzielen, wenn der beschleunigte Netzwerkbetrieb auf einem virtuellen Computer aktiviert ist, müssen Sie die empfangsseitige Skalierung aktivieren. Die empfangsseitige Skalierung kann auch zu Vorteilen auf virtuellen Computern führen, auf denen der beschleunigte Netzwerkbetrieb nicht verwendet wird. Eine Übersicht darüber, wie Sie feststellen können, ob die empfangsseitige Skalierung aktiviert ist, und wie diese aktiviert wird, finden Sie unter [Optimieren des Netzwerkdurchsatzes für virtuelle Azure-Computer](http://aka.ms/FastVM).
+Um die beste Leistung zu erzielen, wenn der beschleunigte Netzwerkbetrieb auf einem virtuellen Computer aktiviert ist, müssen Sie die empfangsseitige Skalierung aktivieren. Die empfangsseitige Skalierung kann auch zu Vorteilen auf virtuellen Computern führen, auf denen der beschleunigte Netzwerkbetrieb nicht verwendet wird. Eine Übersicht darüber, wie Sie feststellen können, ob die empfangsseitige Skalierung aktiviert ist, und wie diese aktiviert wird, finden Sie unter [Optimieren des Netzwerkdurchsatzes für virtuelle Azure-Computer](https://aka.ms/FastVM).
 
 ### <a name="tcp-timewait-and-timewait-assassination"></a>TCP TIME_WAIT und TIME_WAIT Assassination
 
@@ -316,7 +316,7 @@ Die Durchsatzbegrenzung gilt für den virtuellen Computer. Die folgenden Faktore
 
 - **Protokoll:** Der gesamte ausgehende Datenverkehr über alle Protokolle wird auf den Grenzwert angerechnet.
 
-Weitere Informationen finden Sie unter [Netzwerkdurchsatz virtueller Computer](http://aka.ms/AzureBandwidth).
+Weitere Informationen finden Sie unter [Netzwerkdurchsatz virtueller Computer](https://aka.ms/AzureBandwidth).
 
 ### <a name="internet-performance-considerations"></a>Überlegungen zur Internetleistung
 

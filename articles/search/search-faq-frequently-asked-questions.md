@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/03/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9ea4e4ec78e5613758bd9e5ff7a4fbd3273208c6
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: c77f26187914b2c6e52426bb2a07303b22ccb2b0
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312815"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023992"
 ---
 # <a name="azure-search---frequently-asked-questions-faq"></a>Azure Search – Häufig gestellte Fragen (FAQ)
 
@@ -64,7 +64,7 @@ Es gelten keine Einschränkungen für die Verwendung von primären oder sekundä
 
 Nein. Dieser Vorgang wird nicht unterstützt. Die Suche ist immer auf einen einzelnen Index beschränkt.
 
-### <a name="can-i-restrict-search-corpus-access-by-user-identity"></a>Kann ich den Zugriff auf den Suchkorpus nach Benutzeridentität beschränken?
+### <a name="can-i-restrict-search-index-access-by-user-identity"></a>Kann ich den Zugriff auf den Suchindex nach Benutzeridentität beschränken?
 
 Sie können [Sicherheitsfilter](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search) mit einem `search.in()`-Filter implementieren. Der Filter lässt sich gut mit [Identitätsverwaltungsdiensten wie Azure Active Directory(AAD)](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search-with-aad) kombinieren, um Suchergebnisse auf der Grundlage definierter Benutzergruppenzugehörigkeit zu trimmen.
 

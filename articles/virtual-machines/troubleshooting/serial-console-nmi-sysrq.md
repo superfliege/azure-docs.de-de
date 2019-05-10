@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 8ae9062a5e154f457f86dd7f3fbed7bda8580c88
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: ad29bbd038c8982778f2dbca63756f6995077dce
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002107"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65204914"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Verwenden der seriellen Konsole für SysRq- und NMI-Aufrufe
 
 ## <a name="system-request-sysrq"></a>SysRq (System Request, Systemabfrage)
-Eine SysRq ist eine Sequenz von Schlüsseln, die vom Linux-Betriebssystemkernel verstanden wird und eine Reihe von vordefinierten Aktionen auslösen kann. Diese Befehle werden häufig verwendet, wenn die Problembehandlung am virtuellen Computer oder dessen Wiederherstellung nicht über die herkömmliche Verwaltung ausgeführt werden kann (z. B., wenn der virtuelle Computer nicht reagiert). Mithilfe des SysRq-Features der seriellen Azure-Konsole wird das Drücken der SysRq-Taste (je nach Tastatur auch S-Abf-Taste genannt) imitiert, und auf einer physischen Tastatur werden Zeichen eingegeben.
+Eine SysRq ist eine Sequenz von Schlüsseln, die vom Linux-Betriebssystemkernel verstanden wird und eine Reihe von vordefinierten Aktionen auslösen kann. Diese Befehle werden häufig verwendet, wenn die Problembehandlung des virtuellen Computers oder dessen Wiederherstellung nicht über die herkömmliche Verwaltung ausgeführt werden kann (etwa, wenn der virtuelle Computer nicht reagiert). Mithilfe des SysRq-Features der seriellen Azure-Konsole wird das Drücken der SysRq-Taste (je nach Tastatur auch S-Abf-Taste genannt) imitiert, und auf einer physischen Tastatur werden Zeichen eingegeben.
 
 Sobald die SysRq-Sequenz übermittelt wurde, bestimmt die Kernelkonfiguration die Antwort des Systems. Informationen zum Aktivieren und Deaktivieren von SysRq finden Sie im *SysRq-Administratorhandbuch* ([Text](https://aka.ms/kernelorgsysreqdoc) | [Markdown](https://aka.ms/linuxsysrq)).  
 
@@ -112,7 +112,7 @@ Bei Linux-Systemen, die sysctl zum Konfigurieren von Kernelparametern unterstüt
 1. Neustarten oder Aktualisieren von sysctl durch Ausführen von <br>
     `sysctl -p`
 
-Weitere Informationen zu Linux-Kernelkonfigurationen, einschließlich `unknown_nmi_panic`, `panic_on_io_nmi` und `panic_on_unrecovered_nmi` finden Sie unter: [Documentation for /proc/sys/kernel/* (Dokumentation zu /proc/sys/kernel/*)](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Eine distributionsspezifische Dokumentation zu NMI und eine Beschreibung der Schritte, mit denen Sie Linux so konfigurieren, dass beim Empfangen eines NMI ein Absturzabbild erstellt wird, finden Sie unter folgenden Links:
+Weitere Informationen zu Linux-Kernelkonfigurationen (einschließlich `unknown_nmi_panic`, `panic_on_io_nmi` und `panic_on_unrecovered_nmi`) finden Sie hier: [Documentation for /proc/sys/kernel/*](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt) (Dokumentation zu /proc/sys/kernel/*). Eine distributionsspezifische Dokumentation zu NMI und eine Beschreibung der Schritte, mit denen Sie Linux so konfigurieren, dass beim Empfangen eines NMI ein Absturzabbild erstellt wird, finden Sie unter folgenden Links:
  
 ### <a name="ubuntu"></a>Ubuntu 
  - [Kernel-Absturzabbild](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)

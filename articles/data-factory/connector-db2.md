@@ -178,7 +178,7 @@ Beim Kopieren von Daten aus DB2 werden die folgenden Zuordnungen von DB2-Datenty
 | Blob |Byte[] |
 | Char |String |
 | Clob |String |
-| Date |Datetime |
+| Date |DateTime |
 | DB2DynArray |String |
 | DbClob |String |
 | Decimal |Decimal |
@@ -186,7 +186,7 @@ Beim Kopieren von Daten aus DB2 werden die folgenden Zuordnungen von DB2-Datenty
 | Double |Double |
 | Float |Double |
 | Graphic |String |
-| Integer |Int32 |
+| Ganze Zahl  |Int32 |
 | LongVarBinary |Byte[] |
 | LongVarChar |String |
 | LongVarGraphic |String |

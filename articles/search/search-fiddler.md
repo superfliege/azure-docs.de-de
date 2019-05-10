@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 04/08/2019
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 0e14131ce45d20b99c1b5d5885cb1eb24c975d03
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7db3292bc5f377d9728e42994dd3a437cb59958e
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59269111"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024806"
 ---
 # <a name="quickstart-explore-azure-search-rest-apis-using-postman"></a>Schnellstart: Erkunden von Azure Search-REST-APIs mit Postman
 > [!div class="op_single_selector"]
@@ -63,9 +63,9 @@ Verwenden Sie in diesem Abschnitt das Webtool Ihrer Wahl, um Verbindungen mit Az
 
 Bei beiden Tools müssen Sie einen Befehl auswählen (GET, POST, PUT usw.) und einen URL-Endpunkt angeben. Für bestimmte Aufgaben muss im Text der Anforderung auch JSON-Code angegeben werden. Eine vollständige URL sieht in etwa wie folgt aus:
 
-    https://<placeholder-for-your-service-name>.search.windows.net/indexes?api-version=2017-11-11
+    https://<placeholder-for-your-service-name>.search.windows.net/indexes?api-version=2019-05-06
 
-Beachten Sie, das HTTPS-Präfix, den Namen des Diensts, den Namen eines Objekts (in diesem Fall: die Indexsammlung) und die [API-Version](search-api-versions.md). Die API-Version ist eine erforderliche Zeichenfolge in Kleinbuchstaben, die für die aktuelle Version als „?api-version=2017-11-11“ angegeben wird. API-Versionen werden regelmäßig aktualisiert. Wenn Sie die API-Version in jede Anforderung einfügen, haben Sie die vollständige Kontrolle darüber, welche jeweils verwendet wird.  
+Beachten Sie, das HTTPS-Präfix, den Namen des Diensts, den Namen eines Objekts (in diesem Fall: die Indexsammlung) und die [API-Version](search-api-versions.md). Die API-Version ist eine erforderliche Zeichenfolge in Kleinbuchstaben und wird für die aktuelle Version als `?api-version=2019-05-06` angegeben. API-Versionen werden regelmäßig aktualisiert. Wenn Sie die API-Version in jede Anforderung einfügen, haben Sie die vollständige Kontrolle darüber, welche jeweils verwendet wird.  
 
 Der Anforderungsheader enthält den Inhaltstyp (content-type) sowie den API-Schlüssel (api-key) für die Authentifizierung bei Azure Search:
 
@@ -85,7 +85,7 @@ Die URL wird um den Indexnamen `hotel` erweitert.
 Gehen Sie dazu in Postman wie folgt vor:
 
 1. Ändern Sie das Verb in **PUT**.
-2. Fügen Sie diese URL ein: `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotel?api-version=2017-11-11`
+2. Fügen Sie diese URL ein: `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotel?api-version=2019-05-06`
 3. Geben Sie die (weiter unten gezeigte) Indexdefinition im Text der Anforderung an.
 4. Klicken Sie unten auf der Seite auf **Senden**
 
@@ -129,7 +129,7 @@ Die URL wird um die Sammlungen vom Typ `docs` sowie um den Vorgang `index` erwei
 Gehen Sie dazu in Postman wie folgt vor:
 
 1. Ändern Sie das Verb in **POST**.
-2. Fügen Sie diese URL ein: `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs/index?api-version=2017-11-11`
+2. Fügen Sie diese URL ein: `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs/index?api-version=2019-05-06`
 3. Geben Sie die (weiter unten gezeigten) JSON-Dokumente im Text der Anforderung an.
 4. Klicken Sie unten auf der Seite auf **Senden**
 
@@ -219,7 +219,7 @@ Die URL wird um eine Abfragezeichenfolge erweitert, die unter Verwendung des Suc
 Gehen Sie dazu in Postman wie folgt vor:
 
 + Ändern Sie das Verb in **GET**.
-+ Fügen Sie diese URL ein: `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2017-11-11`
++ Fügen Sie diese URL ein: `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2019-05-06`
 + Klicken Sie unten auf der Seite auf **Senden**
 
 Mit dieser Abfrage wird nach dem Wort „motel“ gesucht und die Anzahl von Dokumenten in den Suchergebnissen zurückgegeben. Die Anforderung und die Antwort sollten für Postman in etwa wie im folgenden Screenshot aussehen, nachdem Sie auf **Send** (Senden) geklickt haben. Der Statuscode sollte 200 lauten.
@@ -228,7 +228,7 @@ Mit dieser Abfrage wird nach dem Wort „motel“ gesucht und die Anzahl von Dok
 
 
 ## <a name="get-index-properties"></a>Abfragen von Indexeigenschaften
-Sie können Systeminformationen auch abfragen, um die Anzahl von Dokumenten oder die Speicherauslastung zu erhalten: `https://mydemo.search.windows.net/indexes/hotels/stats?api-version=2017-11-11`.
+Sie können Systeminformationen auch abfragen, um die Anzahl von Dokumenten oder die Speicherauslastung zu erhalten: `https://mydemo.search.windows.net/indexes/hotels/stats?api-version=2019-05-06`.
 
 In Postman sollte Ihre Anforderung in etwa wie folgt aussehen, und die Antwort enthält dann eine Anzahl von Dokumenten und den belegten Speicher in Byte.
 
@@ -247,7 +247,7 @@ Dieser Abschnitt ist mit den vorherigen Abschnitten identisch, enthält allerdin
 
 Formulieren Sie eine Anforderung, die wie im folgenden Screenshot aussieht. Wählen Sie **GET** als Verb aus. Fiddler fügt `User-Agent=Fiddler` hinzu. Sie können die beiden zusätzlichen Anforderungsheader in neuen Zeilen darunter einfügen. Fügen Sie den Inhaltstyp und den API-Schlüssel für Ihren Dienst ein, indem Sie den Administratorschlüssel für Ihren Dienst verwenden.
 
-Fügen Sie für das Ziel eine geänderte Version der folgenden URL ein: `https://<placeholder-for-your-service-name>.search.windows.net/indexes?api-version=2017-11-11`
+Fügen Sie für das Ziel eine geänderte Version der folgenden URL ein: `https://<placeholder-for-your-service-name>.search.windows.net/indexes?api-version=2019-05-06`
 
 ![Fiddler-Anforderungsheader][1]
 
@@ -256,7 +256,7 @@ Fügen Sie für das Ziel eine geänderte Version der folgenden URL ein: `https:/
 
 ### <a name="1---create-an-index"></a>1. Erstellen eines Index
 
-Ändern Sie das Verb in **PUT**. Fügen Sie eine geänderte Version der folgenden URL ein: `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotel?api-version=2017-11-11`. Kopieren Sie die weiter oben bereitgestellte Indexdefinition, und fügen Sie sie in den Text der Anforderung ein. Ihre Seite sollte in etwa dem folgenden Screenshot entsprechen. Klicken Sie rechts oben auf **Ausführen**, um die fertige Anforderung zu senden.
+Ändern Sie das Verb in **PUT**. Fügen Sie eine geänderte Version der folgenden URL ein: `https://<placeholder-for-your-service-name>.search.windows.net/indexes/hotel?api-version=2019-05-06`. Kopieren Sie die weiter oben bereitgestellte Indexdefinition, und fügen Sie sie in den Text der Anforderung ein. Ihre Seite sollte in etwa dem folgenden Screenshot entsprechen. Klicken Sie rechts oben auf **Ausführen**, um die fertige Anforderung zu senden.
 
 ![Fiddler-Anforderungstext][7]
 
@@ -272,11 +272,11 @@ Die folgende Beispielabfrage stammt aus dem Artikel [Search Documents (Azure Sea
 
 **Vor dem Ersetzen der Leerzeichen (in „lastRenovationDate desc“):**
 
-        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2017-11-11
+        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2019-05-06
 
 **Nach dem Ersetzen der Leerzeichen durch „+“ (in „lastRenovationDate+desc“):**
 
-        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2017-11-11
+        GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2019-05-06
 
 ### <a name="tips-for-viewing-index-statistic-in-fiddler"></a>Tipps zum Anzeigen der Indexstatistik in Fiddler
 

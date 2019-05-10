@@ -176,9 +176,9 @@ Beim Kopieren von Daten aus Cassandra werden die folgenden Zuordnungen von Cassa
 | ASCII |String |
 | BIGINT |Int64 |
 | BLOB |Byte[] |
-| BOOLEAN |Boolean |
+| Boolean |Boolean |
 | DECIMAL |Decimal |
-| DOUBLE |Double |
+| Double |Double |
 | FLOAT |Single |
 | INET |String |
 | INT |Int32 |

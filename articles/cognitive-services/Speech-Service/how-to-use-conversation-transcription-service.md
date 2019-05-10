@@ -1,21 +1,21 @@
 ---
 title: 'Transkribieren von Unterhaltungen mit mehreren Teilnehmern mithilfe des Speech SDK: Speech-Dienste'
 titleSuffix: Azure Cognitive Services
-description: Hier erfahren Sie, wie Sie den Dienst für Unterhaltungstranskription mit dem Speech SDK verwenden. Verfügbar für C++, C# und Java
+description: Hier erfahren Sie, wie Sie die Unterhaltungstranskription mit dem Speech SDK verwenden. Verfügbar für C++, C# und Java
 services: cognitive-services
 author: jhakulin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 05/06/2019
 ms.author: jhakulin
-ms.openlocfilehash: 73ab4cfa92a1efc49dea16ba2941cf16b7a1cf3e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: e9de4faf18c54f7c7582ef5a8ab0648629d4f48e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025676"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65190153"
 ---
 # <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>Transkribieren von Unterhaltungen mit mehreren Teilnehmern mithilfe des Speech SDK
 
@@ -24,7 +24,7 @@ Mit der **ConversationTranscriber**-API des Speech SDK können Sie Besprechungen
 ## <a name="limitations"></a>Einschränkungen
 
 * Die Unterhaltungstranskription wird für C++, C# und Java unter Windows, Linux und Android unterstützt.
-* Das ROOBO DevKit ist die unterstützte Hardwareumgebung für die Erstellung von Unterhaltungen, da mehrere Mikrofone im Kreis angeordnet sind, die vom Dienst für Unterhaltungstranskription effizient für die Sprecheridentifikation verwendet werden können. Weitere Informationen finden Sie unter [Informationen zum Speech-Geräte-SDK (Vorschau)](speech-devices-sdk.md). 
+* Das ROOBO DevKit ist die unterstützte Hardwareumgebung für die Erstellung von Unterhaltungen, da mehrere Mikrofone im Kreis angeordnet sind, die vom Dienst für Unterhaltungstranskription effizient für die Sprecheridentifikation verwendet werden können. Weitere Informationen finden Sie unter [Informationen zum Speech-Geräte-SDK (Vorschau)](speech-devices-sdk.md).
 * Die Unterstützung des Speech SDK ist auf die Verwendung von Audiostreams im Pull- und Pushmodus mit acht PCM-Audiokanälen beschränkt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -78,7 +78,7 @@ class Program
 
 Erstellen Sie zum Transkribieren von Unterhaltungen mit mehreren Teilnehmern das Objekt `ConversationTranscriber`, das dem für die Unterhaltungssitzung erstellten Objekt `AudioConfig` zugeordnet ist, und streamen Sie Audio mithilfe von `PullAudioInputStream` oder `PushAudioInputStream`.
 
-Angenommen, Sie verwenden eine ConversationTranscriber-Klasse namens `MyConversationTranscriber`. Ihr Code könnte wie folgt aussehen: 
+Angenommen, Sie verwenden eine ConversationTranscriber-Klasse namens `MyConversationTranscriber`. Ihr Code könnte wie folgt aussehen:
 
 ```csharp
 using Microsoft.CognitiveServices.Speech;
@@ -97,7 +97,7 @@ public class MyConversationTranscriber
         var stopTranscription = new TaskCompletionSource<int>();
 
         // Create an audio stream from a wav file.
-        // Replace with your own audio file name and Helper class which implements AudioConfig using PullAudioInputStreamCallback 
+        // Replace with your own audio file name and Helper class which implements AudioConfig using PullAudioInputStreamCallback
         using (var audioInput = Helper.OpenWavFile(@"8channelsOfRecordedPCMAudio.wav"))
         {
             // Creates a conversation transcriber using audio stream input.

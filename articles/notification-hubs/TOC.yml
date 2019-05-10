@@ -16,16 +16,24 @@
   items:
     - name: Android
       items:
-        - name: Senden von Pushbenachrichtigungen mit Firebase Cloud Messaging
-          href: notification-hubs-android-push-notification-google-fcm-get-started.md
-        - name: Senden von Pushbenachrichtigungen mit Google Cloud Messaging
-          href: notification-hubs-android-push-notification-google-gcm-get-started.md
-        - name: Senden von Pushbenachrichtigungen an bestimmte Geräte
-          href: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-        - name: Senden von Pushbenachrichtigungen an bestimmte Benutzer
-          href: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
-        - name: Senden von Pushbenachrichtigungen an Xamarin Android-Apps
-          href: xamarin-notification-hubs-push-notifications-android-gcm.md
+        - name: Firebase Cloud Messaging
+          items:
+            - name: Senden von Pushbenachrichtigungen an alle Registrierungen
+              href: notification-hubs-android-push-notification-google-fcm-get-started.md
+            - name: Senden von Pushbenachrichtigungen an bestimmte Geräte
+              href: push-notifications-android-specific-devices-firebase-cloud-messaging.md
+            - name: Senden von Pushbenachrichtigungen an bestimmte Benutzer
+              href: push-notifications-android-specific-users-firebase-cloud-messaging.md
+            - name: Senden von Pushbenachrichtigungen an Xamarin Android-Apps
+              href: xamarin-notification-hubs-push-notifications-android-gcm.md
+        - name: Google Cloud Message (veraltet)
+          items:
+            - name: Senden von Pushbenachrichtigungen an alle Registrierungen
+              href: notification-hubs-android-push-notification-google-gcm-get-started.md
+            - name: Senden von Pushbenachrichtigungen an bestimmte Geräte
+              href: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
+            - name: Senden von Pushbenachrichtigungen an bestimmte Benutzer
+              href: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
     - name: Baidu
       items:
         - name: Senden von Pushbenachrichtigungen mithilfe von Baidu Cloud Push

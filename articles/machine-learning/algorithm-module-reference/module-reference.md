@@ -9,103 +9,41 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 6602eb4bacdc3b6382c1b6873a465cdfc0632693
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 8825f1dc3b66a5c4981ba25a90813aec63975b1f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027784"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65145131"
 ---
 # <a name="algorithm--module-reference-overview"></a>Algorithmen und Module: Referenzübersicht
 
-Dieser Referenzinhalt bietet den technischen Hintergrund zu den einzelnen Machine Learning-Algorithmen und -Modulen, die in der grafischen Benutzeroberfläche (Vorschau) von Azure Machine Learning Service verfügbar sind. 
+Dieser Referenzinhalt bietet den technischen Hintergrund zu den einzelnen Machine Learning-Algorithmen und -Modulen, die in der grafischen Benutzeroberfläche (Vorschau) von Azure Machine Learning Service verfügbar sind.
 
-Jedes Modul stellt eine Codegruppe dar, die unabhängig ausgeführt werden und eine Machine Learning-Aufgabe ausführen kann, wenn die erforderlichen Eingaben erfolgen. Die Module enthalten möglicherweise bestimmte Algorithmen oder führen Aufgaben aus, die beim Machine Learning wichtig sind, z.B. Ersatz eines fehlenden Werts oder statistische Analyse. 
+Jedes Modul stellt eine Codegruppe dar, die unabhängig ausgeführt werden und eine Machine Learning-Aufgabe ausführen kann, wenn die erforderlichen Eingaben erfolgen. Die Module enthalten möglicherweise bestimmte Algorithmen oder führen Aufgaben aus, die beim Machine Learning wichtig sind, z.B. Ersatz eines fehlenden Werts oder statistische Analyse.
 
 > [!TIP]
 > In allen Experimenten in der grafischen Benutzeroberfläche können Sie Informationen zu einem bestimmten Modul abrufen. Wählen Sie das Modul und dann den **Weitere Hilfe**-Link im Bereich **Direkthilfe** aus.
 
+## <a name="modules"></a>Module
+
 Module sind nach Funktionalität organisiert:
 
-**Datenformatkonvertierungen**
+| Funktionalität | BESCHREIBUNG | Modul |
+| --- |--- | ---- |
+| Datenformatkonvertierungen | Konvertieren von Daten in verschiedene, beim maschinellen Lernen verwendete Dateiformate | [Konvertieren in CSV](convert-to-csv.md) |
+| Dateneingabe und -ausgabe | Verschieben Sie Daten aus Cloudquellen in Ihr Experiment. Sie können Ihre Ergebnisse oder Zwischendaten während der Ausführung eines Experiments in Azure Storage, eine SQL-Datenbank oder Hive schreiben oder Cloudspeicher zum Datenaustausch zwischen Experimenten verwenden.  | [Daten importieren](import-data.md)<br/>[Daten exportieren](export-data.md)<br/>[Manuelles Eingeben von Daten](enter-data-manually.md) |
+| Datentransformation | Vorgänge für Daten, die für maschinelles Lernen typisch sind, z. B. Normalisieren oder Quantisierung von Daten, Featureauswahl und Verringerung der Dimensionalität.| [Auswählen von Spalten im Dataset](select-columns-in-dataset.md) <br/> [Bearbeiten von Metadaten](edit-metadata.md) <br/> [Bereinigen fehlender Daten](clean-missing-data.md) <br/> [Hinzufügen von Spalten](add-columns.md) <br/> [Hinzufügen von Zeilen](add-rows.md) <br/> [Entfernen doppelter Zeilen](remove-duplicate-rows.md) <br/> [Aufteilen von Daten](split-data.md) <br/> [Normalisieren von Daten](normalize-data.md) <br/> [Partition und Beispiel](partition-and-sample.md) |
+| Python-Modul | Schreiben Sie Code, und betten Sie ihn in ein Modul ein, um Python in Ihr Experiment zu integrieren. | [Ausführen von Python-Skripts](execute-python-script.md)   <br/> [Erstellen eines Python-Modells](create-python-model.md)
+|  | **Machine Learning-Algorithmen**: | |
+| Classification | Sagen Sie eine Klasse vorher.  Wählen Sie aus Binäralgorithmen (zwei Klassen) oder Multiklassenalgorithmen.| [Entscheidungswald mit mehreren Klassen](multiclass-decision-forest.md) <br/> [Logistische Regression mit mehreren Klassen](multiclass-logistic-regression.md)  <br/> [Mehrklassiges neuronales Netzwerk](multiclass-neural-network.md)  <br/>  [Logistische Regression mit zwei Klassen](two-class-logistic-regression.md)  <br/>[Gemitteltes Perzeptron mit zwei Klassen](two-class-averaged-perceptron.md) <br/> [Um zwei&nbsp;Klassen&nbsp;verstärkte&nbsp;Entscheidungsstruktur](two-class-boosted-decision-tree.md)  <br/> [Entscheidungswald mit zwei Klassen](two-class-decision-forest.md)  <br/> [Zweiklassiges neuronales Netzwerk](two-class-neural-network.md)  <br/> [Zweiklassige&nbsp;Support&nbsp;Vector&nbsp;Machine](two-class-support-vector-machine.md) 
+| Clustering | Gruppieren Sie Daten.| [K-Means-Clustering](k-means-clustering.md)
+| Regression | Sagen Sie einen Wert vorher. | [Lineare Regression](linear-regression.md)  <br/> [Regression mit neuronalen Netzwerken](neural-network-regression.md)  <br/> [Entscheidungswaldregression](decision-forest-regression.md)  <br/> [Regression&nbsp;bei&nbsp;verstärkter&nbsp;Entscheidungsstruktur](boosted-decision-tree-regression.md)
+|  | **Erstellen und Bewerten von Modellen**: | |
+| Trainieren   | Führen Sie Daten über den Algorithmus aus. | [Train Model](train-model.md) (Modell trainieren)  <br/> [Trainieren des Clusteringmodells](train-clustering-model.md)    |
+| Bewerten eines Modells | Bewerten Sie die Genauigkeit des trainierten Modells |  [Auswertungsmodell](evaluate-model.md)
+| Punkte | Rufen Sie Vorhersagen aus dem Modell ab, das Sie gerade trainiert haben. | [Anwenden der Transformation](apply-transformation.md)<br/>[Zuweisen von&nbsp;Daten&nbsp;zu&nbsp;Clustern](assign-data-to-clusters.md) <br/>[Score Model](score-model.md) (Modell bewerten)
 
-  + [Modul zum Konvertieren in das CSV-Format](convert-to-csv.md)
+## <a name="error-messages"></a>Fehlermeldungen
 
-**Module für Dateneingabe und -ausgabe** verschieben Daten aus Cloudquellen in Ihr Experiment. Sie können Ihre Ergebnisse oder Zwischendaten während der Ausführung eines Experiments in Azure Storage, eine SQL-Datenbank-Instanz oder Hive schreiben oder Cloudspeicher zum Datenaustausch zwischen Experimenten verwenden.  
-
-  + [Daten importieren](import-data.md)
-
-  + [Daten exportieren](export-data.md)
-
-  + [Manuelles Eingeben von Daten](enter-data-manually.md)
-
-
-**Datentransformationsmodule** unterstützen Vorgänge für Daten, die für Machine Learning typisch sind, z.B. Normalisieren oder Diskretisieren von Daten, Featureauswahl und Verringerung der Dimensionalität.
-
-  + [Auswählen von Spalten im Dataset](select-columns-in-dataset.md)
-
-  + [Bearbeiten von Metadaten](edit-metadata.md)
-
-  + [Bereinigen fehlender Daten](clean-missing-data.md)
-
-  + [Hinzufügen von Spalten](add-columns.md)
-
-  + [Hinzufügen von Zeilen](add-rows.md)
-
-  + [Entfernen doppelter Zeilen](remove-duplicate-rows.md)
-
-  + [Aufteilen von Daten](split-data.md)
-
-  + [Normalisieren von Daten](normalize-data.md)
-
-  + [Partition und Beispiel](partition-and-sample.md)
-
-
-**Machine Learning-Algorithmen** wie Clustern, Support Vector Machine oder neuronale Netzwerke stehen in einzelnen Modulen zur Verfügung, mit denen Sie die Machine Learning-Aufgabe mit entsprechenden Parametern anpassen können.  
-  + [Bewertungsmodell](score-model.md)
-
-  + [Zuweisen von Daten zu Clustern ](assign-data-to-clusters.md)
-
-  + [Trainieren eines Modells](train-model.md)
-
-  + [Trainieren des Clusteringmodells](train-clustering-model.md)
-
-  + [Auswertungsmodell](evaluate-model.md)
-
-  + [Anwenden der Transformation](apply-transformation.md)
-
-  + [Lineare Regression](linear-regression.md)
-
-  + [Regression mit neuronalen Netzwerken](neural-network-regression.md)
-
-  + [Entscheidungswaldregression](decision-forest-regression.md)
-
-  + [Regression bei verstärktem Entscheidungsbaum](boosted-decision-tree-regression.md)
-
-  + [Verstärkter Entscheidungsbaum mit zwei Klassen](two-class-boosted-decision-tree.md)
-
-  + [Logistische Regression mit zwei Klassen](two-class-logistic-regression.md)
-
-  + [Logistische Regression mit mehreren Klassen](multiclass-logistic-regression.md)
-
-  + [Mehrklassiges neuronales Netzwerk](multiclass-neural-network.md)
-
-  + [Entscheidungswald mit mehreren Klassen](multiclass-decision-forest.md)
-
-  + [Gemitteltes Perzeptron mit zwei Klassen](two-class-averaged-perceptron.md)
-
-  + [Entscheidungswald mit zwei Klassen](two-class-decision-forest.md)
-
-  + [Zweiklassiges neuronales Netzwerk](two-class-neural-network.md)
-
-  + [Zweiklassige Support Vector Machine](two-class-support-vector-machine.md)
-  
-  + [K-Means-Clustering](k-means-clustering.md)
-
-
-Mit dem **Python-Modul** kann ganz einfach eine benutzerdefinierte Funktion ausgeführt werden. Sie schreiben den Code und betten ihn in ein Modul ein, um Python in einen Experimentdienst zu integrieren.
-  + [Ausführen von Python-Skripts](execute-python-script.md)
-
-  + [Erstellen eines Python-Modells](create-python-model.md)
-
-
+Erfahren Sie mehr über [Fehlermeldungen und Ausnahmecodes](machine-learning-module-error-codes.md), die bei der Verwendung von Modulen auf der grafischen Benutzeroberfläche in Azure Machine Learning Service auftreten können.

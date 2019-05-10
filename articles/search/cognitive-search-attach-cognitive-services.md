@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 04/14/2019
+ms.date: 05/02/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 09695f764ff71b274e125e90835f5314eb25c980
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: bad64f439d45581f8f4b55ea1ac849db1e27cb76
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683969"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024585"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Anfügen einer Cognitive Services-Ressource an eine Qualifikationsgruppe in Azure Search 
 
@@ -28,8 +28,7 @@ Wenn Ihre Pipeline aus Qualifikationen besteht, die nicht mit Cognitive Services
 > [!NOTE]
 > Wenn Sie den Umfang erweitern, indem Sie die Verarbeitungsfrequenz erhöhen oder weitere Dokumente oder KI-Algorithmen hinzufügen, müssen Sie eine kostenpflichtige Cognitive Services-Ressource verwenden. Gebühren fallen beim Aufrufen von APIs in Cognitive Services sowie für die Bildextraktion im Rahmen der Dokumentaufschlüsselungsphase in Azure Search an. Für die Textextraktion aus Dokumenten fallen keine Gebühren an.
 >
-> Die Ausführung [integrierter kognitiver Qualifikationen](cognitive-search-predefined-skills.md) wird nach dem [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services) berechnet, und zwar zu demselben Tarif wie beim direkten Ausführen der Aufgabe. Für Bildextraktion wird auf der Seite [Azure Search – Preise](https://go.microsoft.com/fwlink/?linkid=2042400) eine Azure Search-Gebühr aufgeführt.
-
+> Die Ausführung integrierter Qualifikationen wird nach dem bestehenden [nutzungsbasierten Preis für Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) berechnet. Die Preise für die Bildextraktion werden auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben.
 
 ## <a name="use-free-resources"></a>Verwenden kostenloser Ressourcen
 
@@ -100,7 +99,7 @@ Wenn Sie die Qualifikationsgruppe programmgesteuert definieren, fügen Sie einen
 Das folgende Beispiel zeigt dieses Muster. Beachten Sie den Abschnitt „cognitiveServices“ am Ende der Definition.
 
 ```http
-PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2017-11-11-Preview
+PUT https://[servicename].search.windows.net/skillsets/[skillset name]?api-version=2019-05-06
 api-key: [admin key]
 Content-Type: application/json
 ```
@@ -110,7 +109,7 @@ Content-Type: application/json
     "skills": 
     [
       {
-        "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
+        "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
         "categories": [ "Organization" ],
         "defaultLanguageCode": "en",
         "inputs": [
@@ -142,7 +141,7 @@ Zum Schätzen der Kosten für die Indizierung der kognitiven Suche gehen Sie von
 + Ein Bild pro Seite (6.000 Bilder)
 + 3.000 Zeichen pro Seite
 
-Als Beispiel dient eine Pipeline, die Dokumententschlüsselung jeder PDF-Datei mit Bild- und Textextraktion, optische Zeichenerkennung (OCR) von Bildern und Erkennung benannter Entitäten für Organisationen umfasst. 
+Als Beispiel dient eine Pipeline, die Dokumententschlüsselung jeder PDF-Datei mit Bild- und Textextraktion, optische Zeichenerkennung (OCR) von Bildern und die Erkennung von Entitäten für Organisationen umfasst. 
 
 In dieser Übung wird der höchste Preis pro Transaktion verwendet. Die tatsächlichen Kosten können aufgrund gestaffelter Preise niedriger sein. Weitere Informationen finden Sie unter [Cognitive Services-Preise](https://azure.microsoft.com/pricing/details/cognitive-services).
 

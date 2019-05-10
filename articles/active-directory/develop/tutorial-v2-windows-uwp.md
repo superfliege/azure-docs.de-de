@@ -16,12 +16,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7bd57b3d41ad7c670b5423f10a9c93b55e87d757
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 448858efeaae4c3e2a41d41181e9ec74b03223f6
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522791"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65138250"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Aufrufen der Microsoft Graph-API über eine UWP-Anwendung (XAML)
 
@@ -333,8 +333,10 @@ Nun müssen Sie Ihre Anwendung im Microsoft-Anwendungsregistrierungsportal regis
    - Wählen Sie im Abschnitt **Unterstützte Kontotypen** die Option **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten (z. B. Skype, Xbox, Outlook.com)** aus.
    - Wählen Sie **Registrieren** aus, um die Anwendung zu erstellen.
 1. Suchen Sie auf der Seite **Übersicht** den Wert von **Anwendungsclient-ID** und notieren Sie ihn zur späteren Verwendung. Wechseln Sie zurück zu Visual Studio, öffnen Sie **MainPage.xaml.cs**, und ersetzen Sie den Wert von „ClientId“ durch die soeben registrierte Anwendungs-ID:
-1. Wählen Sie in der Liste mit den Seiten für die App die Option **Authentifizierung** aus:
-   - Aktivieren Sie im Abschnitt **Umleitungs-URIs** | **Vorgeschlagene Umleitungs-URIs für öffentliche Clients (Mobilgerät, Desktop)** die Option **urn:ietf:wg:oauth:2.0:oob**.
+1. Wählen Sie in der Liste mit den Seiten für die App die Option **Authentifizierung** aus.
+   1. Wählen Sie im Abschnitt **Umleitungs-URIs** in der Liste der Umleitungs-URIs Folgendes aus:
+   1. Wählen Sie in der **TYPE**-Spalte **Öffentlicher Client (Mobilgerät und Desktop)** aus.
+   1. Geben Sie in der Spalte **UMLEITUNGS-URI** den Wert `urn:ietf:wg:oauth:2.0:oob` ein.
 1. Wählen Sie **Speichern** aus.
 1. Wählen Sie in der Liste mit den Seiten für die App die Option **API-Berechtigungen** aus.
    - Klicken Sie auf die Schaltfläche **Berechtigung hinzufügen**.
@@ -384,7 +386,7 @@ Grundlegende Informationen zum Token, das über `AcquireTokenInteractive` oder `
 |Eigenschaft  |Format  |BESCHREIBUNG |
 |---------|---------|---------|
 |**Benutzername** |<span>user@domain.com</span> |Der zur Identifizierung des Benutzers verwendete Benutzername|
-|**Ablaufdatum des Tokens** |DateTime |Die Uhrzeit, zu der das Token abläuft. MSAL verlängert die Ablauffrist, indem das Token bei Bedarf verlängert wird.|
+|**Ablaufdatum des Tokens** |Datetime |Die Uhrzeit, zu der das Token abläuft. MSAL verlängert die Ablauffrist, indem das Token bei Bedarf verlängert wird.|
 
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>Weitere Informationen zu Bereichen und delegierten Berechtigungen
 

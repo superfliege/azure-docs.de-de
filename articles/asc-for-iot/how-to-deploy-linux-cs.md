@@ -110,7 +110,7 @@ Wenn Sie den Agent deinstallieren möchten, führen Sie das Skript mit dem Param
        Der Wert **logFilePath** ist konfigurierbar. 
 
        > [!NOTE]
-       > Es empfiehlt sich, die Protokollierung nach Abschluss der Problembehandlung zu **deaktivieren**. Bei aktivierter**** Protokollierung erhöhen sich Protokolldateigröße und Datennutzung.
+       > Es empfiehlt sich, die Protokollierung nach Abschluss der Problembehandlung zu **deaktivieren**. Bei **aktivierter** Protokollierung erhöhen sich Protokolldateigröße und Datennutzung.
 
    1. Führen Sie Folgendes aus, um den Agent neu zu starten:
 

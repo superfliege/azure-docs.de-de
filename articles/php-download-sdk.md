@@ -14,12 +14,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 06/01/2016
 ms.author: allclark;yaqiyang
-ms.openlocfilehash: 4f2c242e27d8a0ed6687eb4a3510bbce6e07694f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: f6b21f288b94e06414fe66ff775ebb264368c0b8
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52421486"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411602"
 ---
 # <a name="download-the-azure-sdk-for-php"></a>Herunterladen des Azure SDK für PHP
 
@@ -81,7 +81,7 @@ Die Azure-Befehlszeilenschnittstelle ist eine Gruppe von Befehlen zum Bereitstel
 
 Weitere Informationen finden Sie im [PHP Developer Center](https://azure.microsoft.com/develop/php/).
 
-[install-php]: http://www.php.net/manual/en/install.php
+[install-php]: https://www.php.net/manual/en/install.php
 [composer-github]: https://github.com/composer/composer
 [composer-phar]: https://getcomposer.org/composer.phar
 [nodejs-org]: https://nodejs.org/

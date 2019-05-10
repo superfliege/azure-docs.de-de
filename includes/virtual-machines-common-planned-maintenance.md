@@ -5,21 +5,21 @@ services: virtual-machines
 author: shants123
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 12/14/2018
+ms.date: 4/30/2019
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: c26c037455b6d14a906894ec39bf46630826950b
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 747fb9a38cc0c27d162192f4f3ed928e8a968f27
+ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551635"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "64993107"
 ---
 Azure aktualisiert die Plattform regelmäßig, um die Zuverlässigkeit, Leistung und Sicherheit der Hostinfrastruktur für virtuelle Computer zu verbessern. Diese Updates reichen von Patches für Softwarekomponenten in der Hostumgebung über Upgrades für Netzwerkkomponenten bis hin zur Außerbetriebsetzung von Hardware. Die meisten dieser Updates haben keine Auswirkungen auf die gehosteten virtuellen Computer. Allerdings gibt es Fälle, in denen Updates Auswirkungen haben und in denen Azure das Verfahren mit den geringsten Auswirkungen für Updates wählt:
 
 - Wenn ein Update ohne Neustart möglich ist, wird die VM angehalten, während der Host aktualisiert wird, oder sie wird in Echtzeit zu einem bereits aktualisierten Host migriert.
 
-- Wenn die Wartung einen Neustart erfordert, werden Sie in einer Benachrichtigung über den geplanten Wartungstermin informiert. Azure räumt Ihnen außerdem ein Zeitfenster ein, in dem Sie die Wartung zu einem Zeitpunkt, der Ihnen passt, selbst starten können. Azure setzt sich für Technologien ein, um die Zahl der Fälle zu reduzieren, in denen VMs aus Gründen der planmäßigen Plattformwartung neu gestartet werden müssen. 
+- Wenn die Wartung einen Neustart erfordert, werden Sie in einer Benachrichtigung über den geplanten Wartungstermin informiert. Azure räumt Ihnen außerdem ein Zeitfenster ein, in dem Sie die Wartung zu einem Zeitpunkt, der Ihnen passt, selbst starten können. Das Zeitfenster für die selbstständige Wartung umfasst in der Regel vier Wochen, sofern die Wartung nicht dringend ist. Azure setzt sich auch für Technologien ein, die die Zahl der Fälle verringern sollen, in denen VMs aus Gründen der planmäßigen Plattformwartung neu gestartet werden müssen. 
 
 Auf dieser Seite erfahren Sie, wie Azure die beiden Wartungsarten durchführt. Weitere Informationen zu ungeplanten Ereignissen (Ausfällen) finden Sie unter „Verwalten der Verfügbarkeit virtueller Computer“ für [Windows](../articles/virtual-machines/windows/manage-availability.md) oder [Linux](../articles/virtual-machines/linux/manage-availability.md).
 
@@ -29,18 +29,30 @@ Weitere Informationen zum Verwalten der geplanten Wartung finden Sie unter „Be
 
 ## <a name="maintenance-not-requiring-a-reboot"></a>Wartungsmaßnahmen, die keinen Neustart erfordern
 
-Das Ziel für die meisten Wartungsmaßnahmen, die keinen Neustart erfordern, ist eine Pause von weniger als 10 Sekunden für den virtuellen Computer. In bestimmten Fällen werden arbeitsspeicherschonende Wartungsmechanismen verwendet, bei denen die VM für bis zu 30 Sekunden angehalten und der Arbeitsspeicher im RAM beibehalten wird. Danach wird die Ausführung des virtuellen Computers fortgesetzt, und die Uhr des virtuellen Computers wird automatisch synchronisiert. Azure verwendet in zunehmendem Maß Technologien zur Livemigration und bessere Mechanismen zur Erhaltung des Arbeitsspeichers, um die Anhaltedauer zu verringern.
+Das Ziel für die meisten Wartungsmaßnahmen mit Auswirkungen, die keinen Neustart erfordern, ist eine Pause von weniger als 10 Sekunden für den virtuellen Computer. Azure wählt den Updatemechanismus aus, der die geringsten Auswirkungen auf die VMs des Kunden hat. In bestimmten Fällen werden arbeitsspeicherschonende Wartungsmechanismen verwendet, bei denen die VM für bis zu 30 Sekunden angehalten und der Arbeitsspeicher im RAM beibehalten wird. Anschließend wird der Betrieb des virtuellen Computers fortgesetzt, und seine Uhr wird automatisch synchronisiert. Azure verwendet in zunehmendem Maß Technologien zur Livemigration und bessere Mechanismen zur Erhaltung des Arbeitsspeichers, um die Anhaltedauer zu verringern.  
 
 Diese Wartungsvorgänge ohne Neustart werden einzeln für jede Fehlerdomäne angewendet, und das Fortschreiten wird beendet, wenn Warnsignale zur Integrität empfangen werden. 
 
 Einige Anwendungen werden durch Updates dieser Art unter Umständen beeinträchtigt. Falls der virtuelle Computer live zu einem anderen Host migriert wird, ist einige Minuten vor dem Anhalten der VM bei einigen empfindlichen Workloads unter Umständen eine geringfügige Leistungsbeeinträchtigung feststellbar. Solche Anwendungen können von der Nutzung geplanter Ereignisse für [Windows](../articles/virtual-machines/windows/scheduled-events.md) oder [Linux](../articles/virtual-machines/linux/scheduled-events.md) in der Vorbereitung der VM-Wartung profitieren und können dann Auswirkungen während der Azure-Wartung vermeiden. Azure arbeitet außerdem an Funktionen zur Wartungssteuerung für solche besonders empfindlichen Anwendungen. 
 
+## <a name="live-migration"></a>Livemigration
+
+Die Livemigration ist ein Vorgang ohne Neustart, bei dem der Arbeitsspeicher für den virtuellen Computer beibehalten wird und der zu einer eingeschränkten Pause oder einer Unterbrechung der Reaktion führt – in der Regel nicht länger als 5 Sekunden. Derzeit sind alle IaaS-VMs (Infrastructure-as-a-Service) mit Ausnahme der Serien G, M, N und H für die Live-Migration geeignet. Dies entspricht mehr als 90 % der IaaS-VMs, die in Azure bereitgestellt werden. 
+
+Die Livemigration wird in den folgenden Szenarien durch das Azure-Fabric initiiert:
+- Geplante Wartung
+- Hardwarefehler
+- Zuordnungsoptimierungen
+
+Die Livemigration wird in einigen Szenarien mit geplanter Wartung genutzt. Geplante Ereignisse können verwendet werden, damit im Voraus bekannt ist, wann Livemigrationsvorgänge gestartet werden.
+
+Die Livemigration dient auch zum Entfernen von VMs von Hardware mit einem vorhergesagten bevorstehenden Ausfall, der von unseren Machine Learning-Algorithmen erkannt wurde, und zum Optimieren von VM-Zuordnungen. Weitere Informationen zu unserer Vorhersagemodellierung, die Instanzen von beeinträchtigter Hardware erkennt, finden Sie in unserem Blogbeitrag [Improving Azure Virtual Machine resiliency with predictive ML and live migration](https://azure.microsoft.com/blog/improving-azure-virtual-machine-resiliency-with-predictive-ml-and-live-migration/?WT.mc_id=thomasmaurer-blog-thmaure) (Verbessern der Resilienz von virtuellen Azure-Computern mit maschinellem Lernen zur Vorhersage und Livemigration). Kunden erhalten immer eine Benachrichtigung über die Livemigration in ihrem Azure-Portal in den Überwachungs-/Dienstintegritätsprotokollen sowie über Scheduled Events, wenn dieser Dienst verwendet wird.
 
 ## <a name="maintenance-requiring-a-reboot"></a>Wartungsmaßnahmen, die einen Neustart erfordern
 
 Im seltenen Fall, dass virtuelle Computer für eine geplante Wartung neu gestartet werden müssen, werden Sie darüber im Voraus informiert. Die geplante Wartung hat zwei Phasen: das Self-Service-Zeitfenster und ein Zeitfenster für die geplante Wartung.
 
-Das **Self-Service-Zeitfenster** ermöglicht es Ihnen, die Wartung auf Ihren virtuellen Computern zu starten. Innerhalb dieses Zeitfensters können Sie die einzelnen virtuellen Computer abfragen, um ihren Status zu ermitteln und die Ergebnisse Ihrer letzten Wartungsanforderung zu prüfen.
+Das **Self-Service-Zeitfenster** ermöglicht es Ihnen, die Wartung auf Ihren virtuellen Computern zu starten. Innerhalb dieses Zeitfensters (normalerweise vier Wochen) können Sie die einzelnen virtuellen Computer abfragen, um ihren Status zu ermitteln und die Ergebnisse Ihrer letzten Wartungsanforderung zu prüfen.
 
 Wenn Sie die Self-Service-Wartung starten, wird Ihre VM auf einem bereits aktualisierten Knoten neu bereitgestellt. Aufgrund des Neustarts des virtuellen Computers geht der temporäre Datenträger verloren, und die der virtuellen Netzwerkschnittstelle zugeordneten dynamischen IP-Adressen werden aktualisiert.
 

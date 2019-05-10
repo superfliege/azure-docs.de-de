@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 21c75c0f377f55614e2c7fa0bb27628cf598e3e7
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 43c072cb72935a80da0e48e6b8343f38ee08876b
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924591"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65023958"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Implementieren der Facettennavigation in Azure Search
 Bei der Facettennavigation handelt es sich um einen Filtermechanismus für die selbstständige Drilldownnavigation in Suchanwendungen. Der Begriff „Facettennavigation“ ist Ihnen zwar möglicherweise nicht bekannt, aber Sie haben diese wahrscheinlich bereits verwendet. Die Facettennavigation ist im Prinzip nichts weiter als die Kategorien, die zum Filtern der Ergebnisse verwendet werden.
 
  ![Azure Search-Demo „Job Portal“][1]
 
-Die Facettennavigation ist ein alternativer Einstiegspunkt für die Suche. Sie bietet eine praktische Alternative zum manuellen Eintippen komplexer Suchausdrücke. Facetten unterstützen Sie bei der Suche und stellen sicher, dass Sie Ergebnisse erhalten. Als Entwickler können Sie mithilfe von Facetten besonders hilfreiche Suchkriterien für die Navigation in Ihrem Suchkorpus verfügbar machen. Bei Onlinehändlern basiert die Facettennavigation häufig auf Marken, Abteilungen (Kinderschuhe), Größe, Preis, Beliebtheit und Bewertungen. 
+Die Facettennavigation ist ein alternativer Einstiegspunkt für die Suche. Sie bietet eine praktische Alternative zum manuellen Eintippen komplexer Suchausdrücke. Facetten unterstützen Sie bei der Suche und stellen sicher, dass Sie Ergebnisse erhalten. Als Entwickler können Sie mithilfe von Facets besonders hilfreiche Suchkriterien für die Navigation in Ihrem Suchindex verfügbar machen. Bei Onlinehändlern basiert die Facettennavigation häufig auf Marken, Abteilungen (Kinderschuhe), Größe, Preis, Beliebtheit und Bewertungen. 
 
 Die Implementierung der Facettennavigation ist abhängig von der jeweiligen Suchtechnologie. In Azure Search wird die Facettennavigation zur Abfragezeit mithilfe von Feldern erstellt, die Sie zuvor in Ihrem Schema attributiert wurden.
 

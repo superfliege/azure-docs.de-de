@@ -4,6 +4,8 @@
   items:
     - name: Was ist Stream Analytics?
       href: stream-analytics-introduction.md
+    - name: Muster für End-to-End-Lösungen
+      href: stream-analytics-solution-patterns.md
 - name: Schnellstarts
   items:
     - name: Erstellen eines Auftrags – Azure-Portal
@@ -12,6 +14,8 @@
       href: stream-analytics-quick-create-powershell.md
     - name: 'Erstellen eines Auftrags: Visual Studio'
       href: stream-analytics-quick-create-vs.md
+    - name: 'Erstellen eines Auftrags: Visual Studio Code'
+      href: quick-create-vs-code.md
 - name: Lernprogramme
   items:
     - name: 1. Erstellen/Verwalten eines Auftrags
@@ -143,7 +147,7 @@
           href: 'https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick'
         - name: Verwenden der API für IoT Edge-Aufträge
           href: stream-analytics-cicd-api.md
-    - name: Visual Studio-Tools
+    - name: Visual Studio und VS Code
       items:
         - name: Installieren von Tools
           href: stream-analytics-tools-for-visual-studio-install.md
@@ -159,6 +163,8 @@
           href: stream-analytics-tools-for-visual-studio-cicd.md
         - name: Schreiben von .NET-UDF für Edge
           href: stream-analytics-edge-csharp-udf-methods.md
+        - name: Erkunden von Stream Analytics in VS Code
+          href: vs-code-how-to.md
     - name: Problembehandlung
       items:
         - name: Eingabe
@@ -435,6 +441,9 @@
               maintainContext: true
             - name: Rollierendes Fenster
               href: /stream-analytics-query/tumbling-window-azure-stream-analytics
+              maintainContext: true
+            - name: Aggregieren von Windowingfunktionen
+              href: /stream-analytics-query/windows-azure-stream-analytics
               maintainContext: true
     - name: Datentypen
       items:

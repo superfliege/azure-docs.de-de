@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 05/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: a9e8d2cbc067fd92208fac778ba17c58bdc7a5e4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 49f971fb50d0a8a6a0dab09158f780206a4d32f1
+ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58079144"
+ms.lasthandoff: 05/02/2019
+ms.locfileid: "65024849"
 ---
 # <a name="filters-in-azure-search"></a>Filter in Azure Search 
 
@@ -73,10 +73,10 @@ Die folgenden Beispiele veranschaulichen prototypische Filterdefinitionen in meh
 
 ```http
 # Option 1:  Use $filter for GET
-GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$filter=baseRate lt 150&$select=hotelId,description&api-version=2017-11-11
+GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$filter=baseRate lt 150&$select=hotelId,description&api-version=2019-05-06
 
 # Option 2: Use filter for POST and pass it in the header
-POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2017-11-11
+POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2019-05-06
 {
     "search": "*",
     "filter": "baseRate lt 150",
@@ -146,7 +146,7 @@ Das Neuerstellen einzelner Felder kann ein Vorgang mit geringer Auswirkung sein,
 
 ## <a name="text-filter-fundamentals"></a>Grundlegendes zu Textfiltern
 
-Textfilter gelten für Zeichenfolgenfelder, aus denen beliebige Dokumentsammlungen abgerufen werden sollen, die auf Werten innerhalb des Suchkorpus basieren.
+Textfilter gelten für Zeichenfolgenfelder, aus denen Dokumentsammlungen abgerufen werden sollen, die auf Werten innerhalb des Suchindex basieren.
 
 Bei Textfiltern, die aus Zeichenfolgen zusammengesetzt sind, erfolgt keine lexikalische Analyse oder Worttrennung, sodass Vergleiche nur auf exakte Übereinstimmungen abzielen. Nehmen wir beispielsweise an, das Feld *f* enthält „sunny day“. Dann stimmt `$filter=f eq 'Sunny'` überein, `$filter=f eq 'Sunny day'` jedoch nicht. 
 
