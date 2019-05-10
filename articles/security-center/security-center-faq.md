@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: monhaber
-ms.openlocfilehash: e21ed77a80892da22c380787dc64ea07db756fdf
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: a029ad3fc253f35fb34bc2dd0ddbeb9614e5dc33
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64917646"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65231416"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center – Häufig gestellte Fragen 
 Hier werden häufig gestellte Fragen zu Azure Security Center beantwortet. Azure Security Center ist ein Dienst, der Sie aufgrund von größerer Transparenz und besserer Kontrolle der Sicherheit Ihrer Microsoft Azure-Ressourcen dabei unterstützt, Bedrohungen zu verhindern, zu erkennen und darauf zu reagieren.
@@ -323,6 +323,11 @@ Wartezeiten bei Security Center-Scans auf Sicherheitsrisiken, Updates und Proble
 - Endpoint Protection-Probleme – Daten werden innerhalb von 8 Stunden aktualisiert.
 
 Das Security Center scannt in der Regel jede Stunde nach neuen Daten und aktualisiert die Empfehlungen entsprechend. 
+
+> [!NOTE]
+> Ab Anfang Juni 2017 verwendet Security Center den Microsoft Monitoring Agent zum Sammeln und Speichern von Daten. Weitere Informationen finden Sie unter [Azure Security Center – Plattformmigration](security-center-platform-migration.md). Die Informationen in diesem Artikel stellen Security Center-Funktionen nach dem Umstieg auf den Microsoft Monitoring Agent vor.
+>
+>
 
 ### <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>Warum erhalte ich die Meldung „VM-Agent fehlt“?
 Der VM-Agent muss auf virtuellen Computern installiert sein, um die Datensammlung zu ermöglichen. Der VM-Agent wird standardmäßig für virtuelle Maschinen installiert, die vom Azure Marketplace bereitgestellt werden. Informationen zum Installieren des VM-Agents auf anderen virtuellen Computern finden Sie im Blogbeitrag [VM Agent and Extensions](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)(VM-Agent und Erweiterungen).
