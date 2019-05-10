@@ -1,0 +1,30 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentation zur Vorschauversion von öffentlichen Datasets
+metadata:
+  title: 'Dokumentation zur Vorschauversion von öffentlichen Azure-Datasets: Tutorials, API-Referenz | Microsoft-Dokumentation'
+  description: 'Erfahren Sie, wie Sie öffentliche Azure-Datasets verwenden. Dabei handelt es sich um kuratierte und bereinigte Daten, die mit minimaler Vorbereitung verwendet werden können. Öffentliche Datasets sind öffentlich zugängliche Daten wie Wetter, Volkszählungen oder Feiertage, die Machine Learning-Modelle anreichern können. In Tutorials, Beispielen und API-Referenzdokumenten erfahren Sie, wie.'
+  ms.service: open-datasets
+  ms.topic: landing-page
+  author: cjgronlund
+  ms.author: cgronlun
+  ms.date: 05/02/2019
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+abstract:
+  description: 'Erfahren Sie, wie Sie öffentliche Azure-Datasets verwenden. Dabei handelt es sich um kuratierte und bereinigte Daten, die mit minimaler Vorbereitung verwendet werden können. Öffentliche Datasets schließen öffentlich zugängliche Daten wie Wetter, Volkszählungen oder Feiertage ein, die Machine Learning-Modelle anreichern können. In Tutorials, Beispielen und API-Referenzdokumenten erfahren Sie, wie.'
+sections:
+  - title: Schritt-für-Schritt-Tutorial
+    items:
+      - type: paragraph
+        text: <a href="tutorial-opendatasets-automl">Erstellen eines Regressionsmodells mit automatisiertem maschinellem Lernen</a>
+  - title: Beispiele
+    items:
+      - type: paragraph
+        text: <a href="samples">Notebooks zur Anreicherung von Datasets</a>
+  - title: Verweis
+    items:
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="https://aka.ms/open-datasets-api">API-Referenz</a>'

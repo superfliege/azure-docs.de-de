@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/02/2019
 ms.author: travisw
 ms.custom: ''
-ms.openlocfilehash: 7dd469b07727e1efa326a1d92ea778bd3fb2cab1
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: ee7649dccf1ca50933e29cec9d40e4f5e16bd721
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025373"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65074108"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-uwp"></a>Schnellstart: Erstellen eines virtuellen Voice-First-Assistenten mit dem Speech SDK, UWP
 
@@ -31,7 +31,7 @@ Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
 * Ein Azure-Abonnementschlüssel für den Speech-Dienst. [Hier erhalten Sie einen kostenlosen Schlüssel.](get-started.md)
-* Ein zuvor erstellter, mit dem [Direct Line Speech-Kanal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech.md) konfigurierter Bot
+* Ein zuvor erstellter, mit dem [Direct Line Speech-Kanal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) konfigurierter Bot
 
     > [!NOTE]
     > In der Vorschauversion unterstützt der Direct Line Speech-Kanal derzeit nur die Region **westus2**.
@@ -247,7 +247,7 @@ In dieser Schnellstartanleitung erfahren Sie Schritt für Schritt, wie Sie eine 
     > In der Vorschauversion unterstützt der Direct Line Speech-Kanal derzeit nur die Region **westus2**.
 
     > [!NOTE]
-    > Informationen zur Konfiguration Ihres Bots und zum Abrufen eines Kanalgeheimnisses finden Sie in der Bot-Framework-Dokumentation zum [Direct Line Speech-Kanal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech.md).
+    > Informationen zur Konfiguration Ihres Bots und zum Abrufen eines Kanalgeheimnisses finden Sie in der Bot-Framework-Dokumentation zum [Direct Line Speech-Kanal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
     ```csharp
     // create a BotConnectorConfig by providing a bot secret key and Cognitive Services subscription key

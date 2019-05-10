@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: 2d56aba6d62d70c482ed1489a09276eeaa11f956
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 6d602491c66669007ae220c3b8143ce3e805246f
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025684"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147987"
 ---
 # <a name="fine-tune-text-to-speech-output"></a>Optimieren der Ausgabe der Sprachsynthese
 
@@ -43,7 +43,7 @@ Bevor Sie mit der Optimierung der Sprachsyntheseausgabe mit dem Tool zur Spracho
    * Suchen Sie **Alle Abonnements**, und wählen Sie die Option aus.  
    * Wählen Sie **Verbindung mit vorhandenem Abonnement herstellen** aus.  
      ![Stellen Sie eine Verbindung mit einem vorhandenem Abonnement her](./media/custom-voice/custom-voice-connect-subscription.png).
-   * Geben Sie Ihren Abonnementschlüssel für Azure Speech-Dienste aus dem Azure-Portal ein, und wählen Sie dann **Hinzufügen**. Ihre Abonnementschlüssel sind im Azure-Portal im Bereich „Ressourcenverwaltung“ verfügbar.  Sie können die Schlüssel auch aus der Abonnementliste im Portal für Sprachoptimierung beziehen.
+   * Geben Sie Ihren Abonnementschlüssel für Azure Speech-Dienste ein, und wählen Sie dann **Hinzufügen** aus. Ihre Abonnementschlüssel sind im Speech-Anpassungsportal auf der [Abonnementseite](https://go.microsoft.com/fwlink/?linkid=2090458) verfügbar. Sie finden die Schlüssel auch im [Azure-Portal](https://portal.azure.com/) im Bereich „Ressourcenverwaltung“. 
    * Wenn Sie mehrere Speech-Dienstabonnements haben, die Sie verwenden möchten, wiederholen Sie diese Schritte für jedes Abonnement.
 
 ## <a name="customize-the-text-to-speech-output"></a>Anpassen der Ausgabe der Sprachsynthese

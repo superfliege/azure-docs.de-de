@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 4/17/2019
+ms.date: 5/02/2019
 ms.author: monhaber
-ms.openlocfilehash: b5eafd15344156965d0a191688f602ffe1b5a498
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 4e334af353e1d9556641914056ab0a3071ca361e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678308"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65233595"
 ---
 # <a name="platforms-and-features-supported-by-azure-security-center"></a>Von Azure Security Center unterstützte Features und Plattformen
 
@@ -80,7 +80,7 @@ VMs, die in einem Clouddienst ausgeführt werden, werden ebenfalls unterstützt.
 |Sicherheitskonfigurationen|✔|✔|✔|✔|
 |Endpoint Protection|✔|✔|X|X|
 |JIT-VM-Zugriff|✔|X|✔|X|
-|Adaptive Anwendungssteuerungen|✔|X|X|X|
+|Adaptive Anwendungssteuerungen|✔|✔|✔|✔|
 |FIM|✔|✔|✔|✔|
 |Datenträgerverschlüsselung|✔|X|✔|X|
 |Drittanbieterbereitstellung|✔|X|✔|X|

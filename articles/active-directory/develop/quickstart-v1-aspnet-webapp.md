@@ -1,6 +1,6 @@
 ---
 title: Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App | Microsoft Docs
-description: Erfahren Sie, wie Sie die Microsoft-Anmeldung für eine ASP.NET-Lösung mit einer herkömmlichen webbrowserbasierten Anwendung mit dem Standard OpenID Connect hinzufügen können.
+description: Erfahren Sie, wie die Microsoft-Anmeldung für eine ASP.NET-Lösung mit einer herkömmlichen webbrowserbasierten Anwendung mithilfe des OpenID Connect-Standard hinzugefügt wird.
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
@@ -16,18 +16,18 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6119baf79b9323a5c1ad06d75e1410f632015f0
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 7aca42aa13ef78647b591eb0be7083f932ce0c35
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548550"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191042"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App
 
 [!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
-In diesem Schnellstart erfahren Sie, wie „Mit Microsoft anmelden“ mithilfe einer ASP.NET MVC-Lösung mit einer herkömmlichen browserbasierten Anwendung mit OpenID Connect implementiert wird. Sie erfahren, wie Anmeldungen über Geschäfts-, Schul- oder Unikonten in Ihrer ASP.NET-Anwendung aktiviert werden.
+In diesem Schnellstart erfahren Sie, wie „Mit Microsoft anmelden“ mithilfe einer ASP.NET MVC-Lösung (Model View Controller) in eine herkömmliche browserbasierte Anwendung mit OpenID Connect implementiert wird. Sie erfahren, wie Anmeldungen über Geschäfts-, Schul- oder Unikonten in Ihrer ASP.NET-Anwendung aktiviert werden.
 
 Am Ende dieses Schnellstarts akzeptiert Ihre Anwendung Anmeldungen von Geschäfts-, Schul- oder Unikonten aus Organisationen, die in Azure Active Directory (Azure AD) integriert sind.
 
@@ -38,7 +38,7 @@ Am Ende dieses Schnellstarts akzeptiert Ihre Anwendung Anmeldungen von Geschäft
 
 Stellen Sie zu Beginn sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
-* Visual Studio 2015 Update 3 oder Visual Studio 2017 ist installiert. Sie haben beides nicht? [Laden Sie Visual Studio 2017 kostenlos herunter](https://www.visualstudio.com/downloads/)
+* Visual Studio 2015 Update 3 oder Visual Studio 2019 ist installiert. Sie haben beides nicht? [Visual Studio 2019 kostenlos herunterladen](https://www.visualstudio.com/downloads/)
 
 ## <a name="scenario-sign-in-users-from-work-and-school-accounts-in-your-aspnet-app"></a>Szenario: Anmelden von Benutzern von Geschäfts-, Schul- oder Unikonten in Ihrer ASP.NET-App
 
@@ -46,7 +46,7 @@ Stellen Sie zu Beginn sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
 In diesem Szenario greift ein Browser auf eine ASP.NET-Website zu und fordert einen Benutzer auf, sich über eine Anmeldeschaltfläche zu authentifizieren. In diesem Szenario wird ein Großteil der Arbeit zum Rendern der Webseite auf dem Server erledigt.
 
-Der Schnellstart zeigt, wie die Anmeldung von Benutzern bei einer ASP.NET-Webanwendung beginnend mit einer leeren Vorlage erfolgt. Er beinhaltet Schritte wie das Hinzufügen einer Anmeldeschaltfläche und aller Controller und Methoden und erläutert die Konzepte hinter diesen Aufgaben. Alternativ können Sie auch ein Projekt für die Anmeldung von Azure AD-Benutzern (Geschäfts-, Schul- oder Unikonten) mithilfe der [Visual Studio-Webvorlage](https://docs.microsoft.com/aspnet/visual-studio/overview/2013/creating-web-projects-in-visual-studio#organizational-account-authentication-options) erstellen und dann **Organisationskonten** und eine der Cloudoptionen auswählen. Bei dieser Option wird eine umfangreichere Vorlage mit zusätzlichen Controllern, Methoden und Ansichten verwendet.
+Der Schnellstart veranschaulicht beginnend mit einer leeren Vorlage, wie Benutzer in einer ASP.NET-Webanwendung angemeldet werden. Es beinhaltet auch Schritte wie das Hinzufügen einer Anmeldeschaltfläche sowie aller Controller und Methoden und erläutert die Konzepte hinter diesen Aufgaben. Sie können auch mithilfe der [Visual Studio-Webvorlage](https://docs.microsoft.com/aspnet/visual-studio/overview/2013/creating-web-projects-in-visual-studio#organizational-account-authentication-options) ein Projekt für die Anmeldung von Azure AD-Benutzern (Geschäfts-, Schul- oder Unikonten) erstellen und dann **Organisationskonten** und eine der Cloudoptionen auswählen. Bei dieser Option wird eine umfangreichere Vorlage mit zusätzlichen Controllern, Methoden und Ansichten verwendet.
 
 ## <a name="libraries"></a>Bibliotheken
 
@@ -158,7 +158,7 @@ Dieser Controller veranschaulicht die Verwendungen des `[Authorize]`-Attributs, 
 1. Wählen Sie **MVC {Version}-Controller – Leer** aus.
 1. Wählen Sie **Hinzufügen**.
 1. Nennen Sie diesen Controller **ClaimsController**.
-1. Ersetzen Sie den Code Ihrer Controller-Klasse durch den folgenden Code. Dadurch wird der Klasse das `[Authorize]`-Attribut hinzugefügt:
+1. Ersetzen Sie den Code Ihrer Controller-Klasse durch den folgenden Code. In diesem Beispiel wird der Klasse das `[Authorize]`-Attribut hinzugefügt:
 
     [!code-csharp[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Controllers/ClaimsController.cs?name=ClaimsController "ClaimsController.cs")]
 
@@ -205,7 +205,7 @@ Erstellen Sie in Visual Studio eine neue Ansicht zum Anzeigen der Ansprüche des
 5. Wählen Sie **Erstellen** aus, um die Anwendung zu registrieren. Durch diese Aktion gelangen Sie zurück zur Liste der Anwendungen.
 6. Suchen Sie nun nach der Anwendung, die Sie soeben erstellt haben, und/oder wählen Sie sie aus, um ihre Eigenschaften anzuzeigen.
 7. Kopieren Sie die GUID unter **Anwendungs-ID** in die Zwischenablage.
-8. Wechseln Sie zurück zu Visual Studio, und ersetzen Sie in `web.config` den Wert von `Enter_the_Application_Id_here` durch die Anwendungs-ID der Anwendung, die Sie soeben registriert haben.
+8. Wechseln Sie zurück zu Visual Studio, und ersetzen Sie in `web.config` den Wert von `Enter_the_Application_Id_here` durch die Anwendungs-ID der Anwendung, die Sie registriert haben.
 
 > [!TIP]
 > Wenn Ihr Konto für den Zugriff auf mehrere Verzeichnisse konfiguriert ist, müssen Sie das richtige Verzeichnis für die Organisation, für die Sie die Anwendung registrieren möchten, auswählen. Klicken Sie zu diesem Zweck rechts oben im Azure-Portal auf Ihren Kontonamen, und überprüfen Sie das ausgewählte Verzeichnis wie angegeben:<br/>![Auswählen des richtigen Verzeichnisses](./media/quickstart-v1-aspnet-webapp/tenantselector.png)
@@ -216,9 +216,9 @@ Sie können Ihre Anwendung so konfigurieren, dass sich nur Benutzer anmelden dü
 
 ### <a name="configure-your-application-to-allow-sign-ins-of-work-and-school-accounts-from-any-company-or-organization-multi-tenant"></a>Konfigurieren der Anwendung, damit Anmeldungen von Geschäfts-, Schul- oder Unikonten aller Unternehmen oder Organisationen (mehrere Mandanten) zulässig sind
 
-Führen Sie die folgenden Schritte aus, wenn Sie Anmeldungen von Geschäfts-, Schul- oder Unikonten beliebiger Unternehmen oder Organisationen, die in Azure AD integriert sind, zulassen möchten. Dies ist ein gängiges Szenario für *SaaS-Anwendungen*:
+Führen Sie die folgenden Schritte aus, wenn Sie Anmeldungen von Geschäfts-, Schul- oder Unikonten beliebiger Unternehmen oder Organisationen, die in Azure AD integriert sind, zulassen möchten. Dies ist ein häufiges Szenario bei *SaaS-Anwendungen*:
 
-1. Wechseln Sie zurück zu [Microsoft Azure-Portal – App-Registrierungen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps), und suchen Sie die Anwendung, die Sie soeben registriert haben.
+1. Wechseln Sie zurück zu [Microsoft Azure-Portal – App-Registrierungen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps), und suchen Sie die Anwendung, die Sie registriert haben.
 2. Wählen Sie unter **Alle Einstellungen** die Option **Eigenschaften** aus.
 3. Ändern Sie die Eigenschaft **Mehrinstanzenfähig** in **Ja**, und wählen Sie dann **Speichern** aus.
 
@@ -278,7 +278,7 @@ Wenn Sie einen Test durchführen möchten, verwenden Sie ein Geschäftskonto (Az
 
 #### <a name="expected-results"></a>Erwartete Ergebnisse
 
-Nach der Anmeldung wird der Benutzer zur Startseite Ihrer Website umgeleitet. Dabei handelt es sich um die HTTPS-URL, die im Microsoft-Anwendungsregistrierungsportal in Ihre Anwendungsregistrierungsinformationen eingegeben wurde. Diese Seite zeigt jetzt *Hello {Benutzer}*, einen Link zum Abmelden und einen Link zum Anzeigen der Ansprüche des Benutzers. Hierbei handelt es sich um einen Link zum Authorize-Controller, den Sie zuvor erstellt haben.
+Nach seiner Anmeldung wird der Benutzer zur Startseite Ihrer Website umgeleitet. Dabei handelt es sich um die HTTPS-URL, die im Microsoft-Anwendungsregistrierungsportal in Ihre Anwendungsregistrierungsinformationen eingegeben wurde. Diese Seite zeigt jetzt *Hello {Benutzer}*, einen Link zum Abmelden und einen Link zum Anzeigen der Ansprüche des Benutzers. Hierbei handelt es sich um einen Link zum Authorize-Controller, den Sie zuvor erstellt haben.
 
 ### <a name="see-users-claims"></a>Anzeigen der Ansprüche des Benutzers
 

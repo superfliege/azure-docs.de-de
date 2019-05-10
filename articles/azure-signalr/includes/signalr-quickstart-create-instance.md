@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
-ms.openlocfilehash: 15eded28e38279ea01bf019566d4fda5e7ac6c3e
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 4e8bdc63daa7450a88c2fcf4b7e878e18cea260d
+ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57588126"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65199066"
 ---
 ## <a name="create-an-azure-signalr-service-instance"></a>Erstellen einer Instanz des Azure SignalR-Diensts
 
@@ -39,6 +39,4 @@ Ihre Anwendung stellt eine Verbindung mit einer Instanz des SignalR-Diensts in A
 
 1. Wählen Sie **Erstellen** aus, um mit der Bereitstellung der Instanz des SignalR-Diensts zu beginnen.
 
-1. Nachdem die Instanz bereitgestellt wurde, öffnen Sie sie im Portal, und navigieren Sie zur Seite „Einstellungen“. Ändern Sie die Einstellung des Dienstmodus in *Serverlos*.
-
-    ![SignalR Service-Modus](../media/signalr-concept-azure-functions/signalr-service-mode.png)
+1. Nachdem die Instanz bereitgestellt wurde, öffnen Sie sie im Portal, und navigieren Sie zur Seite „Einstellungen“. Ändern Sie die Einstellung des Dienstmodus nur dann in *Serverlos*, wenn Sie Azure SignalR Service über eine Azure Functions-Bindung oder REST-API verwenden. Behalten Sie andernfalls die Einstellung *Klassisch* oder *Standard* bei.

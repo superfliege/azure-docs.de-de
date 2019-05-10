@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 5eaee4f932c4e42f6fed3d839314346b3a93f360
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c4dc3d422e18d9ee41bf16ac3e6f22c3d7e466d7
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799527"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65199089"
 ---
 ## <a name="register-your-application"></a>Anwendung registrieren
 
@@ -43,7 +43,9 @@ Wenn Sie Ihre Anwendung registrieren und die Anwendungsregistrierungsinformation
    - Wählen Sie im Abschnitt **Unterstützte Kontotypen** die Option **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten (z. B. Skype, Xbox, Outlook.com)** aus.
    - Wählen Sie **Registrieren** aus, um die Anwendung zu erstellen.
 1. Wählen Sie in der Liste mit den Seiten für die App die Option **Authentifizierung** aus.
-1. Navigieren Sie im Abschnitt **Umleitungs-URIs** zum Abschnitt **Vorgeschlagene Umleitungs-URIs für öffentliche Clients (Mobilgerät, Desktop)**, und wählen Sie **"urn:ietf:wg:oauth:2.0:oob** aus.
+   1. Wählen Sie im Abschnitt **Umleitungs-URIs** in der Liste der Umleitungs-URIs Folgendes aus:
+   1. Wählen Sie in der **TYPE**-Spalte **Öffentlicher Client (Mobilgerät und Desktop)** aus.
+   1. Geben Sie in der Spalte **UMLEITUNGS-URI** den Wert `urn:ietf:wg:oauth:2.0:oob` ein.
 1. Wählen Sie **Speichern** aus.
 1. Öffnen Sie in Visual Studio die Datei *App.xaml.cs*, und ersetzen Sie `Enter_the_Application_Id_here` durch die Anwendungs-ID, die Sie soeben registriert und kopiert haben.
 

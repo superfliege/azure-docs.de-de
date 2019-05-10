@@ -8,12 +8,12 @@ ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: f81ca34931e2ee4bce35fa06195fb64c47ef9a7b
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9ae57b8ab26780ea975ad74f3348a0deaf8c9cc8
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64682031"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464639"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>Exportieren von Daten in Azure Blob Storage
 
@@ -57,14 +57,14 @@ Nachdem Sie nun einen Speicher als Exportziel für Daten haben, gehen Sie folgen
     > [!Note]
     > Wenn im linken Menü „Kontinuierlicher Datenexport“ nicht angezeigt wird, sind Sie kein Administrator in Ihrer App. Wenden Sie sich an Ihren Administrator, damit dieser den Datenexport einrichtet.
 
-    ![Erstellen eines neun Event Hubs für kontinuierlichen Datenexport](media/howto-export-data/export_menu.PNG)
+    ![Erstellen eines neun Event Hubs für kontinuierlichen Datenexport](media/howto-export-data/export_menu1.png)
 
 3. Wählen Sie oben rechts die Schaltfläche **+ Neu** aus. Wählen Sie **Azure Blob Storage** als Ziel für den Export aus. 
 
     > [!NOTE] 
     > Die maximale Anzahl von Exporten pro App beträgt 5. 
 
-    ![Erstellen eine neuen kontinuierlichen Datenexports](media/howto-export-data/export_new.PNG)
+    ![Erstellen eine neuen kontinuierlichen Datenexports](media/howto-export-data/export_new1.png)
 
 4. Wählen Sie im Dropdown-Listenfeld Ihren **Speicherkonto-Namespace** aus. Sie können auch die letzte Option in der Liste auswählen, bei der es sich um **Verbindungszeichenfolge eingeben** handelt. 
 
@@ -87,7 +87,7 @@ Nachdem Sie nun einen Speicher als Exportziel für Daten haben, gehen Sie folgen
 
 6. Um den kontinuierlichen Datenexport zu aktivieren, stellen Sie sicher, dass **Datenexport** auf **Ein** festgelegt ist. Wählen Sie **Speichern** aus.
 
-  ![Konfigurieren des fortlaufenden Datenexports](media/howto-export-data/export-list-blob.png)
+   ![Konfigurieren des fortlaufenden Datenexports](media/howto-export-data/export-list-blob.png)
 
 7. Nach einigen Minuten werden Ihre Daten an Ihrem ausgewählten Ziel angezeigt.
 

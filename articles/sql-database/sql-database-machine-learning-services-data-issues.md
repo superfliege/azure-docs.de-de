@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 069a2a5b3b26bf517b57034f05ab7080ab392319
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 01d3af14963e92393d34a952bddc8097b7b08f18
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60012887"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232609"
 ---
 # <a name="work-with-r-and-sql-data-in-azure-sql-database-machine-learning-services-preview"></a>Arbeiten mit R- und SQL-Daten in Azure SQL-Datenbank mit Machine Learning Services (Vorschauversion)
 
@@ -300,4 +300,4 @@ Diese Beispiele sind zwar nur kurz, aber sie verdeutlichen die Notwendigkeit ein
 - Führen Sie nach Bedarf explizite Umwandlungen durch, wenn Sie Ihre Eingabedaten vorbereiten, um Überraschungen zu vermeiden.
 - Vermeiden Sie die Übergabe von Spalten mit Daten (z. B. GUIDs oder rowguids), die Fehler verursachen und für die Modellierung nicht hilfreich sind.
 
-Weitere Informationen zu unterstützten und nicht unterstützten R-Datentypen finden Sie unter [Data type mappings between R and SQL Server](/sql/advanced-analytics/r/r-libraries-and-data-types.md) (Datentypzuordnungen zwischen R und SQL Server).
+Weitere Informationen zu unterstützten und nicht unterstützten R-Datentypen finden Sie unter [Data type mappings between R and SQL Server](/sql/advanced-analytics/r/r-libraries-and-data-types) (Datentypzuordnungen zwischen R und SQL Server).

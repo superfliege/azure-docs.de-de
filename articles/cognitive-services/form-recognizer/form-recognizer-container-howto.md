@@ -9,12 +9,12 @@ ms.subservice: form-recognizer
 ms.topic: overview
 ms.date: 05/07/2019
 ms.author: pafarley
-ms.openlocfilehash: 5d4374b329049e2e55966a28567c5232be77abda
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: c7d5d9421ec89f1d75723d3538ee9a73e56dc6a3
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65025421"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65143024"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Installieren und Ausführen eines Containers für die Formularerkennung
 Die Formularerkennung wendet die Machine Learning-Technologie an, um Schlüssel-Wert-Paare und Tabellen aus Formularen zu identifizieren und zu extrahieren. Diesen werden Werte und Tabelleneinträge zugeordnet, und dann werden strukturierte Daten ausgegeben, die die Beziehungen in der Originaldatei enthalten. Sie können Ihr benutzerdefiniertes Formularerkennungsmodell mithilfe einer einfachen REST-API aufrufen, um die Komplexität zu reduzieren und es einfach in Ihren Prozess zur Workflowautomatisierung oder eine andere Anwendung zu integrieren. Es werden nur fünf Dokumente (oder ein leeres Formular) benötigt, sodass Sie schnell, präzise und auf Ihre spezifischen Inhalte zugeschnittene Ergebnisse ohne komplizierte manuelle Eingriffe oder umfangreiche datenwissenschaftliche Kenntnisse erzielen können. Es sind keine Datenbeschriftungen oder Datenanmerkungen erforderlich.
@@ -34,7 +34,7 @@ Zur Verwendung von Containern für die Formularerkennung müssen Sie die folgend
 |Docker-Engine| Die Docker-Engine muss auf einem [Hostcomputer](#the-host-computer) installiert sein. Für die Docker-Umgebung stehen Konfigurationspakete für [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) und [Linux](https://docs.docker.com/engine/installation/#supported-platforms) zur Verfügung. Eine Einführung in Docker und Container finden Sie in der [Docker-Übersicht](https://docs.docker.com/engine/docker-overview/).<br><br> Docker muss so konfiguriert werden, dass die Container eine Verbindung mit Azure herstellen und Abrechnungsdaten an Azure senden können. <br><br> **Unter Windows** muss Docker auch für die Unterstützung von Linux-Containern konfiguriert werden.<br><br>|
 |Kenntnisse zu Docker | Sie sollten über Grundkenntnisse der Konzepte von Docker, einschließlich Registrierungen, Repositorys, Container und Containerimages, verfügen und die grundlegenden `docker`-Befehle kennen.|
 |Azure-Befehlszeilenschnittstelle| Sie müssen Sie die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) auf Ihrem Host installieren.|
-|Maschinelles Sehen-API-Ressource| Um gescannte Dokumente und Bilder zu verarbeiten, wird eine **Maschinelles Sehen-Ressource** benötigt. Sie können entweder als Azure-Ressource (REST-API oder SDK) oder als `cognitive-services-recognize-text`-Container auf das Feature **Texterkennung** zugreifen. Die üblichen Gebühren werden abgerechnet. <br><br>Sie müssen sowohl den Schlüssel- als auch den Abrechnungsendpunkt für Ihre spezifische Maschinelles Sehen-Ressource (Azure-Cloud oder Cognitive Services-Container) übergeben. Verwenden Sie diesen Schlüssel- und Abrechnungsendpunkt als {COMPUTER_VISION_API_KEY} und {COMPUTER_VISION_BILLING_ENDPOINT_URI}.<br><br> Wenn Sie den **`cognitive-services-recognize-text`-Container** verwenden, stellen Sie Folgendes sicher:<br><br>*Ihr Maschinelles Sehen-Schlüssel für den Formularerkennungscontainer ist der Schlüssel, der im Maschinelles Sehen-Befehl `docker run` für den `cognitive-services-recognize-text`-Container angegeben ist.<br>*Ihr Abrechnungsendpunkt ist der Endpunkt des Containers, z.B. `https://localhost:5000`. Wenn Sie sowohl den Maschinelles Sehen- als auch den Formularerkennungscontainer gemeinsam auf demselben Host verwenden, können nicht beide mit dem Standardport `5000` gestartet werden.  |  
+|Maschinelles Sehen-API-Ressource| Um gescannte Dokumente und Bilder zu verarbeiten, wird eine **Maschinelles Sehen-Ressource** benötigt. Sie können entweder als Azure-Ressource (REST-API oder SDK) oder als [Container](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull) `cognitive-services-recognize-text` auf das Feature **Texterkennung** zugreifen. Die üblichen Gebühren werden abgerechnet. <br><br>Sie müssen sowohl den Schlüssel- als auch den Abrechnungsendpunkt für Ihre spezifische Maschinelles Sehen-Ressource (Azure-Cloud oder Cognitive Services-Container) übergeben. Verwenden Sie diesen Schlüssel- und Abrechnungsendpunkt als {COMPUTER_VISION_API_KEY} und {COMPUTER_VISION_BILLING_ENDPOINT_URI}.<br><br> Wenn Sie den **`cognitive-services-recognize-text`-Container** verwenden, stellen Sie Folgendes sicher:<br><br>*Ihr Maschinelles Sehen-Schlüssel für den Formularerkennungscontainer ist der Schlüssel, der im Maschinelles Sehen-Befehl `docker run` für den `cognitive-services-recognize-text`-Container angegeben ist.<br>*Ihr Abrechnungsendpunkt ist der Endpunkt des Containers, z.B. `https://localhost:5000`. Wenn Sie sowohl den Maschinelles Sehen- als auch den Formularerkennungscontainer gemeinsam auf demselben Host verwenden, können nicht beide mit dem Standardport `5000` gestartet werden.  |  
 |Formularerkennungsressource |Um diese Container zu verwenden, benötigen Sie Folgendes:<br><br>Eine Azure-Ressource vom Typ _Formularerkennung_, um den entsprechenden Abrechnungsschlüssel und den URI des Abrechnungsendpunkts zu erhalten. Beide Werte stehen im Azure-Portal auf der Übersichtsseite und auf der Schlüsselseite der **Formularerkennung** zur Verfügung und werden zum Starten des Containers benötigt.<br><br>**{BILLING_KEY}**: Der Ressourcenschlüssel.<br><br>**{BILLING_ENDPOINT_URI}**: Der Endpunkt-URI. Beispiel: `https://westus.api.cognitive.microsoft.com/forms/v1.0`| 
 
 ## <a name="request-access-to-the-container-registry"></a>Anfordern des Zugriffs auf die Containerregistrierung
@@ -65,13 +65,19 @@ Kern und Arbeitsspeicher entsprechen den Einstellungen `--cpus` und `--memory`, 
 > [!Note]
 > Die Mindestanforderungen und empfohlenen Werte basieren auf Docker-Grenzwerten und *nicht* den Ressourcen des Hostcomputers.
 
-## <a name="get-the-container-image-with-docker-pull"></a>Abrufen des Containerimages mit `docker pull`
+## <a name="get-the-container-image-with-docker-pull-command"></a>Abrufen des Containerimages mit dem Befehl „docker pull“
 
 Es stehen Containerimages für die Formularerkennung zur Verfügung.
 
 | Container | Repository |
 |-----------|------------|
 | cognitive-services-form-recognizer | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
+
+Wenn Sie anstelle des Dienst zur Formularerkennung den [Container](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull) `cognitive-services-recognize-text` verwenden möchten, verwenden Sie den Befehl `docker pull` unbedingt mit dem richtigen Containernamen: 
+
+```
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
+```
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 

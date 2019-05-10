@@ -462,6 +462,8 @@
           href: sql-database-managed-instance-create-vnet-subnet.md
         - name: Konfigurieren eines vorhandenen VNET und Subnetzes für die verwaltete Instanz
           href: sql-database-managed-instance-configure-vnet-subnet.md
+        - name: Löschen eines Subnetzes nach dem Löschen der verwalteten Instanz
+          href: sql-database-managed-instance-delete-virtual-cluster.md
         - name: Konfigurieren von benutzerdefiniertem DNS
           href: sql-database-managed-instance-custom-dns.md
         - name: Synchronisieren der Netzwerkkonfiguration

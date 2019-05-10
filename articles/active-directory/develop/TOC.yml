@@ -342,6 +342,8 @@
               items:
                 - name: Abrufen eines Token aus dem Cache
                   href: msal-net-acquire-token-silently.md
+                - name: Löschen des Tokencache
+                  href: msal-net-clear-token-cache.md
                 - name: Instanziieren eines öffentlichen Clients mit Optionen
                   href: msal-net-instantiate-public-client-config-options.md
                 - name: Instanziieren eines vertraulichen Clients mit Optionen

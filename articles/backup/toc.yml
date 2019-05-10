@@ -195,7 +195,7 @@
           href: backup-azure-arm-userestapi-restoreazurevms.md
         - name: Verwalten von Azure Backup-Aufträgen
           href: backup-azure-arm-userestapi-managejobs.md
-    - name: SQL Server-Sicherungsinstanz für Datenbanken auf virtuellen Azure-Computern
+    - name: Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern
       items:
         - name: Informationen zur SQL Server-Sicherung auf virtuellen Azure-Computern
           href: backup-azure-sql-database.md
@@ -205,6 +205,8 @@
           href: restore-sql-database-azure-vm.md
         - name: Verwalten von gesicherten SQL Server-Datenbanken
           href: manage-monitor-sql-database-backup.md
+    - name: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern
+      href: backup-azure-sap-hana-database.md
     - name: Windows Server
       items:
         - name: Sichern von Windows Server-Dateien und -Ordnern

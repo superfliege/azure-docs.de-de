@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: a723ca6d69d45613636c7659e6566cec19b31d65
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: e4746620f083996bf64e77617ec472c3d3894d91
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679031"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65464332"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Verwalten von Geräten in Ihrer Azure IoT Central-Anwendung
 
@@ -66,7 +66,7 @@ So führen Sie die Massenregistrierung von Geräten in Ihrer Anwendung durch:
 
 1. Wählen Sie **Importieren** aus.
 
-    ![Importaktion](./media/howto-manage-devices/BulkImport1.png)
+    ![Importaktion](./media/howto-manage-devices/bulkimport1a.png)
 
 1. Wählen Sie die CSV-Datei aus, die die Liste der zu importierenden Geräte-IDs enthält.
 
@@ -74,7 +74,7 @@ So führen Sie die Massenregistrierung von Geräten in Ihrer Anwendung durch:
 
 1. Nach Abschluss des Imports wird eine Erfolgsmeldung auf dem Geräteraster angezeigt.
 
-    ![Import erfolgreich](./media/howto-manage-devices/BulkImport3.png)
+    ![Import erfolgreich](./media/howto-manage-devices/bulkimport3a.png)
 
 Wenn beim Geräteimport ein Fehler auftritt, wird auf dem Geräteraster eine Fehlermeldung angezeigt. Eine Protokolldatei zur Erfassung aller Fehler wird generiert, die Sie herunterladen können.
 
@@ -86,13 +86,13 @@ Wenn Sie Geräte registrieren, indem Sie den Import unter **Nicht zugeordnete Ge
 
 1. Wählen Sie im linken Bereich **Nicht zugeordnete Geräte** aus:
 
-    ![Nicht zugeordnete Geräte](./media/howto-manage-devices/UnassociatedDevices1.png)
+    ![Nicht zugeordnete Geräte](./media/howto-manage-devices/unassociateddevices1a.png)
 
 1. Wählen Sie die Geräte aus, die Sie mit einer Vorlage verknüpfen möchten:
 
 1. Wählen Sie **Zuordnen** aus:
 
-    ![Zuordnen von Geräten](./media/howto-manage-devices/UnassociatedDevices2.png)
+    ![Zuordnen von Geräten](./media/howto-manage-devices/unassociateddevices2a.png)
 
 1. Wählen Sie eine verfügbare Vorlage in der Liste aus, und wählen Sie **Zuordnen** aus.
 
@@ -113,7 +113,7 @@ So führen Sie den Massenexport von Geräten aus Ihrer Anwendung durch:
 
 1. Wählen Sie die Geräte aus, die Sie exportieren möchten, und wählen Sie dann die Aktion **Exportieren** aus.
 
-    ![Export](./media/howto-manage-devices/Export1.png)
+    ![Export](./media/howto-manage-devices/export1a.png)
 
 1. Der Exportvorgang wird gestartet. Sie können dessen Status oben im Raster verfolgen.
 
@@ -121,7 +121,7 @@ So führen Sie den Massenexport von Geräten aus Ihrer Anwendung durch:
 
 1. Wählen Sie die **Erfolgsmeldung** aus, um die Datei in einen lokalen Ordner auf dem Datenträger herunterzuladen.
 
-    ![Export erfolgreich](./media/howto-manage-devices/Export2.png)
+    ![Export erfolgreich](./media/howto-manage-devices/export2a.png)
 
 1. Die exportierte CSV-Datei enthält die folgenden Spalten: Geräte-ID, Name des Geräts, Geräteschlüssel und X509-Zertifikatfingerabdrücke:
 

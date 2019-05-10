@@ -116,7 +116,7 @@ So aktivieren Sie die Protokollierung:
    ```
 
     > [!NOTE]
-    > Es empfiehlt sich, die Protokollierung nach Abschluss der Problembehandlung zu **deaktivieren**. Bei aktivierter Protokollierung erhöhen sich Protokolldateigröße und Datennutzung.**** 
+    > Es empfiehlt sich, die Protokollierung nach Abschluss der Problembehandlung zu **deaktivieren**. Bei **aktivierter** Protokollierung erhöhen sich Protokolldateigröße und Datennutzung. 
 
 1. Starten Sie den Agent über PowerShell oder über die Befehlszeile neu:
 

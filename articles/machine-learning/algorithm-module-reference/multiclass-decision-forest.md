@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: d5ff1809886198f7f1e4f4b9c36f877ce61d512e
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 10364d014431a500e7c38a02d47f432cd464feb6
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027796"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411490"
 ---
 # <a name="multiclass-decision-forest-module"></a>Modul „Multiclass Decision Forest“ (Entscheidungswald mit mehreren Klassen)
 
@@ -36,7 +36,7 @@ Entscheidungsbäume haben zahlreiche Vorteile:
 + Sie führen eine integrierte Featureauswahl und -klassifizierung durch.
 + Sie sind resilient gegen störende Features.
 
-Der Entscheidungswaldklassifizierer in Azure Machine Learning besteht aus einem Ensemble von Entscheidungsbäumen. Im Allgemeinen bieten Ensemblemodelle eine bessere Abdeckung und Genauigkeit als einzelne Entscheidungsbäume. Weitere Informationen finden Sie unter [Entscheidungsbäume](http://go.microsoft.com/fwlink/?LinkId=403677).
+Der Entscheidungswaldklassifizierer in Azure Machine Learning besteht aus einem Ensemble von Entscheidungsbäumen. Im Allgemeinen bieten Ensemblemodelle eine bessere Abdeckung und Genauigkeit als einzelne Entscheidungsbäume. Weitere Informationen finden Sie unter [Entscheidungsbäume](https://go.microsoft.com/fwlink/?LinkId=403677).
 
 ## <a name="how-to-configure-multiclass-decision-forest"></a>Konfigurieren des Moduls „Multiclass Decision Forest“
 

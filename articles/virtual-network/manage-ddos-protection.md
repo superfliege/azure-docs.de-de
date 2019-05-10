@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: kumud
-ms.openlocfilehash: 6b1d62f4cedb7add843a5ddae24125019130d58f
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: a053beb121e1b3c0db020094c29a9a1e0117da87
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64728348"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203529"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Verwalten von Azure DDoS Protection Standard mithilfe des Azure-Portals
 
@@ -33,7 +33,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="create-a-ddos-protection-plan"></a>Erstellen eines DDoS-Schutzplans
 
-Ein DDoS-Schutzplan definiert abonnementübergreifend eine Reihe von virtuellen Netzwerken, für die der DDoS-Schutzstandard aktiviert ist. Sie können einen DDoS-Schutzplan für Ihre Organisation konfigurieren und virtuelle Netzwerke über verschiedene Abonnements hinweg mit demselben Plan verknüpfen. Der DDoS-Schutzplan selbst ist ebenfalls mit einem Abonnement verknüpft, das Sie bei der Erstellung des Plans auswählen. Für das Abonnement, dem der Plan zugeordnet ist, fallen die monatlichen wiederkehrenden Kosten für den Plan sowie Überschreitungsgebühren an für den Fall, dass die Anzahl der geschützten öffentlichen IP-Adressen 100 überschreitet. Weitere Informationen zu den Preisen für DDoS finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/ddos-protection/).
+Ein DDoS-Schutzplan definiert abonnementübergreifend eine Reihe von virtuellen Netzwerken, für die der DDoS-Schutzstandard aktiviert ist. Sie können einen DDoS-Schutzplan für Ihre Organisation konfigurieren und virtuelle Netzwerke über verschiedene Abonnements hinweg mit demselben Plan verknüpfen. Der DDoS-Schutzplan selbst ist ebenfalls mit einem Abonnement verknüpft, das Sie bei der Erstellung des Plans auswählen. Der DDoS Protection-Plan funktioniert regions- und abonnementübergreifend. Beispiel: Sie können den Plan in der Region „USA, Osten“ erstellen und mit dem Abonnement #1 in Ihrem Mandanten verknüpfen. Derselbe Plan kann mit virtuellen Netzwerken aus anderen Abonnements in unterschiedlichen Regionen in Ihrem gesamten Mandanten verknüpft werden. Für das Abonnement, dem der Plan zugeordnet ist, fallen die monatlichen wiederkehrenden Kosten für den Plan sowie Überschreitungsgebühren an für den Fall, dass die Anzahl der geschützten öffentlichen IP-Adressen 100 überschreitet. Weitere Informationen zu den Preisen für DDoS finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/ddos-protection/).
 
 Die Erstellung von mehr als einem Plan ist für die meisten Organisationen nicht erforderlich. Ein Plan kann nicht zwischen den Abonnements verschoben werden. Wenn das Abonnement, das einen Plan enthält, geändert werden soll, müssen Sie [den vorhandenen Plan löschen](#work-with-ddos-protection-plans) und einen neuen erstellen.
 
@@ -127,6 +127,7 @@ Die Telemetrie für einen Angriff wird in Echtzeit durch Azure Monitor bereitges
 4. Wählen Sie das **Abonnement** und die **Ressourcengruppe** aus, die die öffentliche IP-Adresse enthält, für die Telemetriedaten angezeigt werden sollen.
 5. Wählen Sie **Öffentliche IP-Adresse** für **Ressourcentyp** aus, wählen Sie dann die jeweilige öffentliche IP-Adresse aus, für die Telemetriedaten angezeigt werden sollen.
 6. Eine Reihe von **verfügbaren Metriken** wird auf der linken Seite des Bildschirms angezeigt. Diese Metriken werden, wenn sie ausgewählt sind, im**Metrikdiagramm von Azure Monitor** auf dem Übersichtsbildschirm grafisch dargestellt.
+7. Wählen Sie den **Aggregation**styp als **Max** aus.
 
 Die Metriknamen stellen verschiedene Pakettypen und Bytes im Vergleich zu Paketen mit einem grundlegenden Konstrukt von Tagnamen für jede Metrik dar:
 
@@ -138,7 +139,7 @@ Um zur Überprüfung der Telemetriedaten einen DDoS-Angriff zu simulieren, lesen
 
 ## <a name="view-ddos-mitigation-policies"></a>Anzeigen von DDoS-Entschärfungsrichtlinien
 
-Der DDoS-Schutzstandard wendet drei automatisch optimierte Entschärfungsrichtlinien (TCP-SYN, TCP und UDP) für jede öffentliche IP-Adresse der geschützten Ressource in dem virtuellen Netzwerk an, für das DDoS aktiviert ist. Sie können die Richtlinienschwellenwerte anzeigen, indem Sie die Metriken **Eingehende TCP-Pakete zum Auslösen der DDoS-Entschärfung** und **Eingehende UDP-Pakete zum Auslösen der DDoS-Entschärfung** auswählen, wie in der folgenden Abbildung gezeigt wird:
+Der DDoS-Schutzstandard wendet drei automatisch optimierte Entschärfungsrichtlinien (TCP-SYN, TCP und UDP) für jede öffentliche IP-Adresse der geschützten Ressource in dem virtuellen Netzwerk an, für das DDoS aktiviert ist. Sie können die Richtlinienschwellenwerte anzeigen, indem Sie die Metriken **Eingehende TCP-Pakete zum Auslösen der DDoS-Entschärfung** und **Eingehende UDP-Pakete zum Auslösen der DDoS-Entschärfung** mit dem **Aggregation**styp als „Max“ auswählen, wie in der folgenden Abbildung gezeigt wird:
 
 ![Anzeigen von Entschärfungsrichtlinien](./media/manage-ddos-protection/view-mitigation-policies.png)
 

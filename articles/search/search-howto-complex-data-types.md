@@ -10,12 +10,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 397b3ea7fee67e25cd160f6b529a660e18c44046
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 00606ed5cbcd8681748241e9404c6e6e5aa95021
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024741"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65147318"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-search"></a>Gewusst wie: Modellieren komplexer Datentypen in Azure Search
 
@@ -28,7 +28,7 @@ Zum Einstieg empfiehlt sich das [Dataset „Hotels“](https://github.com/Azure-
 > [!Note]
 > Die Unterstützung für komplexe Typen ist in `api-version=2019-05-06` allgemein verfügbar. 
 >
-> Wenn Ihre Suchlösung auf früheren Problemumgehungen von vereinfachten Datasets in einer Sammlung aufbaut, sollten Sie den Index so ändern, dass er komplexe Typen enthält, wie sie in der neuesten API-Version unterstützt werden. Weitere Informationen zum Aktualisieren von API-Versionen finden Sie unter [Aktualisieren auf die neueste Version der REST-API](search-api-migration.md) oder [Aktualisieren auf die neueste Version des .NET SDK](search-dotnet-sdk-migration.md).
+> Wenn Ihre Suchlösung auf früheren Problemumgehungen von vereinfachten Datasets in einer Sammlung aufbaut, sollten Sie den Index so ändern, dass er komplexe Typen enthält, wie sie in der neuesten API-Version unterstützt werden. Weitere Informationen zum Aktualisieren von API-Versionen finden Sie unter [Aktualisieren auf die neueste Version der REST-API](search-api-migration.md) oder [Aktualisieren auf die neueste Version des .NET SDK](search-dotnet-sdk-migration-version-9.md).
 
 ## <a name="example-of-a-complex-structure"></a>Beispiel für eine komplexe Struktur
 

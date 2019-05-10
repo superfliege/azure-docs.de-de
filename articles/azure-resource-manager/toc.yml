@@ -40,6 +40,9 @@
     - name: Verwenden von sicheren Bereitstellungsmethoden
       displayName: adm
       href: deployment-manager-tutorial.md
+    - name: Verwenden der Integritätsprüfung im Bereitstellungs-Manager
+      displayName: adm
+      href: deployment-manager-tutorial-health-check.md
     - name: Problembehandlung bei der Vorlagenbereitstellung
       href: resource-manager-tutorial-troubleshoot.md
 - name: Beispiele
@@ -62,6 +65,9 @@
     - name: Bereitstellungs-Manager
       displayName: adm
       href: deployment-manager-overview.md
+    - name: Integritätsprüfung im Bereitstellungs-Manager
+      displayName: adm
+      href: deployment-manager-health-check.md
     - name: Bereitstellungsmodi
       href: deployment-modes.md
     - name: Ressourcenlöschung

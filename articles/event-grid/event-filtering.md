@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 87599b05a3569bf6f28880352185a131f48a7f52
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 9f284fea701220906a994cf108ed58cb6998aef9
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470621"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65187654"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Grundlegendes zur Ereignisfilterung für Event Grid-Abonnements
 
@@ -43,7 +43,7 @@ Zum einfachen Filtern nach Betreff geben Sie einen Start- oder Endwert für den 
 
 Erstellen Sie beim Veröffentlichen von Ereignissen für benutzerdefinierte Themen Betreffinformationen für Ihre Ereignisse, an denen Abonnenten einfach erkennen können, ob Interesse am Ereignis besteht. Abonnenten verwenden die Betreffeigenschaft zum Filtern und Weiterleiten von Ereignissen. Erwägen Sie, den Pfad zum Ereignisort hinzuzufügen, damit Abonnenten nach Segmenten dieses Pfads filtern können. Mit dem Pfad können Abonnenten Ereignisse speziell oder allgemein filtern. Wenn Sie einen Pfad mit drei Segmenten im Betreff angeben, z.B. `/A/B/C`, können Abonnenten nach dem ersten Segment `/A` filtern, um eine umfassendere Gruppe von Ereignissen angezeigt zu bekommen. Diese Abonnenten erhalten Ereignisse mit Betreffinformationen wie `/A/B/C` oder `/A/D/E`. Andere Abonnenten können nach `/A/B` filtern, um eine eingeschränktere Gruppe mit Ereignissen zu erhalten.
 
-Die JSON-Syntax für das Filtern nach Ereignistyp lautet:
+Die JSON-Syntax für das Filtern nach Betreff lautet:
 
 ```json
 "filter": {
@@ -109,7 +109,7 @@ Verwenden Sie für Ereignisse im Event Grid-Schema die folgenden Werte für den 
 
 * id
 * Thema
-* Antragsteller
+* Subject
 * EventType
 * DataVersion
 * Ereignisdaten (z.B. Data.key1)
@@ -117,7 +117,7 @@ Verwenden Sie für Ereignisse im Event Grid-Schema die folgenden Werte für den 
 Verwenden Sie für Ereignisse im Cloud Events-Schema die folgenden Werte für den Schlüssel:
 
 * EventId
-* Quelle
+* `Source`
 * EventType
 * EventTypeVersion
 * Ereignisdaten (z.B. Data.key1)

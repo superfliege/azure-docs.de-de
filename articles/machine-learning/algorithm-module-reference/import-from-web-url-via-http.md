@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2f0847e9dd90267d985b75be3c3a07ce8fae98a9
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: bff913efb38c9e5589c795386dfbbc480d799a37
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65027828"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65411440"
 ---
 # <a name="import-from-web-url-via-http-module"></a>Importieren aus Web-URL über das HTTP-Modul
 
@@ -56,7 +56,7 @@ Die folgenden Schritte beschreiben, wie Sie die Importquelle manuell konfigurier
 
     Die folgende Seite enthält beispielsweise den Iris-Datensatz aus dem Repository für maschinelles Lernen der University of California, Irvine:
 
-    `http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data`
+    `https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data`
 
 4. Für **Datenformat** wählen Sie eines der unterstützten Datenformate aus der Liste aus.
 
@@ -79,4 +79,4 @@ Klicken Sie nach Abschluss des Experiments auf das Ausgabedataset, und wählen S
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für den Azure Machine Learning Service an. 
+Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 

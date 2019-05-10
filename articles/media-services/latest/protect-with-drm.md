@@ -11,62 +11,43 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/10/2019
+ms.date: 05/02/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: f53ae122e9888f3e537a3557b6ac5bd76856c2eb
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 24ea6b2b44518b4cf75389585caf42ff6bc6722f
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767548"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65191068"
 ---
-# <a name="use-drm-dynamic-encryption-and-license-delivery-service"></a>Verwenden der dynamischen DRM-Verschlüsselung und des Lizenzbereitstellungsdiensts
+# <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Tutorial: Verwenden der dynamischen DRM-Verschlüsselung und des Lizenzbereitstellungsdiensts
 
-Sie können Azure Media Services verwenden, um MPEG-DASH-, Smooth Streaming- und HTTP Live Streaming (HLS)-Streams zu übermitteln, die per [PlayReady Digital Rights Management (DRM)](https://www.microsoft.com/playready/overview/) geschützt sind. Mit Media Services können Sie auch verschlüsselte DASH-Streams mit **Google Widevine**-DRM-Lizenzen übermitteln. PlayReady und Widevine sind gemäß der Common Encryption-Spezifikation (ISO/IEC 23001-7 CENC) verschlüsselt. Media Services ermöglicht Ihnen auch das Verschlüsseln von HLS-Inhalten mit **Apple FairPlay** (AES-128 CBC). 
+Mithilfe von Azure Media Services können Sie Streams mit Microsoft PlayReady-, Google Widevine- und Apple FairPlay-Lizenzen verschlüsselt übermitteln. Ausführliche Erläuterungen finden Sie unter [Inhaltsschutz mit dynamischer Verschlüsselung](content-protection-overview.md).
 
 Darüber hinaus bietet Media Services einen Dienst zum Übermitteln von PlayReady-, Widevine- und FairPlay-DMR-Lizenzen. Wenn ein Benutzer die mit DRM geschützten Inhalte anfordert, fordert die Playeranwendung eine Lizenz vom Media Services-Lizenzdienst an. Wenn die Playeranwendung autorisiert wurde, gibt der Media Services-Lizenzdienst eine Lizenz für den Player aus. Eine Lizenz enthält den Entschlüsselungsschlüssel, der vom Clientplayer zum Entschlüsseln und Streamen des Inhalts verwendet werden kann.
 
-Dieser Artikel basiert auf dem Beispiel für [Verschlüsseln mit DRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM). Unter anderem werden im Beispiel folgende Schritte veranschaulicht:
-
-* Erstellen Sie eine Codierungstransformation, die eine integrierte Voreinstellung für die Adaptive Bitrate-Codierung verwendet und eine Datei direkt aus einer [HTTPS-Quell-URL](job-input-from-http-how-to.md) erfasst.
-* Legen Sie den Signaturschlüssel fest, der für die Überprüfung des Tokens verwendet wird.
-* Legen Sie die Anforderungen (Einschränkungen) für die Richtlinie für den Inhaltsschlüssel fest, die erfüllt sein müssen, um Schlüssel mit der angegebenen Konfiguration bereitzustellen. 
-
-    * Konfiguration 
-    
-        In diesem Beispiel werden die [PlayReady](playready-license-template-overview.md)- und [Widevine](widevine-license-template-overview.md)-Lizenzen so konfiguriert, dass sie vom Media Services-Lizenzbereitstellungsdienst bereitgestellt werden können. Obwohl in dieser Beispiel-App die [FairPlay](fairplay-license-overview.md)-Lizenz nicht konfiguriert wird, enthält sie eine Methode, die Sie zum Konfigurieren von FairPlay verwenden können. Auf Wunsch können Sie die FairPlay-Konfiguration als weitere Option hinzufügen.
-
-    * Einschränkung
-
-        Die App legt eine Einschränkung des JWT-Tokentyps in der Richtlinie fest.
-
-* Erstellen Sie einen StreamingLocator für das angegebene Medienobjekt und mit dem angegebenen Namen der Streamingrichtlinie. In diesem Fall wird die vordefinierte Richtlinie verwendet. Sie legt zwei Inhaltsschlüssel für den StreamingLocator fest: AES-128 (Umschlag) und CENC (PlayReady und Widevine).  
-    
-    Nachdem der StreamingLocator erstellt wurde, wird das Ausgabemedienobjekt veröffentlicht und steht für Clients zur Wiedergabe zur Verfügung.
-
-    > [!NOTE]
-    > Stellen Sie sicher, dass sich der StreamingEndpoint, von dem aus Sie streamen möchten, im Status „Wird ausgeführt“ befindet.
-
-* Erstellen Sie eine URL für den Azure Media Player, die sowohl das DASH-Manifest als auch das PlayReady-Token umfasst, die zur Wiedergabe der verschlüsselten PlayReady-Inhalte erforderlich sind. Im Beispiel wird der Ablauf des Token auf 1 Stunde festgelegt. 
-
-    Sie können einen Browser öffnen und die resultierende URL einfügen, um die Azure Media Player-Demoseite mit der URL und dem bereits ausgefüllten Token zu starten.  
-
-    ![Schützen mit DRM](./media/protect-with-drm/playready_encrypted_url.png)
-
-> [!NOTE]
-> Sie können jedes Medienobjekt mit mehreren Verschlüsselungstypen (AES-128, PlayReady, Widevine, FairPlay) verschlüsseln. Informationen zu sinnvollen Kombinationen finden Sie unter [Streamingprotokolle und Verschlüsselungstypen](content-protection-overview.md#streaming-protocols-and-encryption-types).
+Dieser Artikel basiert auf dem Beispiel für [Verschlüsseln mit DRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM). 
 
 Das in diesem Artikel beschriebene Beispiel führt zu folgendem Ergebnis:
 
 ![AMS mit DRM-Schutz (Video)](./media/protect-with-drm/ams_player.png)
+
+Dieses Tutorial veranschaulicht folgende Vorgehensweisen:    
+
+> [!div class="checklist"]
+> * Erstellen einer Codierungstransformation
+> * Festlegen des Signaturschlüssels, der für die Überprüfung des Tokens verwendet wird
+> * Festlegen der Anforderungen für die Richtlinie für Inhaltsschlüssel
+> * Erstellen eines Streaminglocators mit der angegebenen Streamingrichtlinie
+> * Erstellen einer URL zum Wiedergeben der Datei
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt sein:
 
 * Lesen Sie den Artikel [Übersicht über den Inhaltsschutz](content-protection-overview.md).
-* Lesen Sie die Informationen unter [Design of a multi-DRM content protection system with access control](design-multi-drm-system-with-access-control.md) (Entwerfen eines Systems für Inhaltsschutz mit Multi-DRM und Zugriffssteuerung).
+* Lesen Sie die Informationen unter [Entwurf eines Multi-DRM-Inhaltsschutzsystems mit Zugriffssteuerung](design-multi-drm-system-with-access-control.md).
 * Installation von Visual Studio Code oder Visual Studio
 * Erstellen Sie ein Azure Media Services-Konto, wie in [dieser Schnellstartanleitung](create-account-cli-quickstart.md) beschrieben.
 * Rufen Sie die zur Verwendung von Media Services-APIs erforderlichen Anmeldeinformationen ab (siehe [Zugreifen auf APIs](access-api-cli-how-to.md)).
@@ -163,18 +144,42 @@ In ContentKeyPolicy wird ContentKeyIdentifierClaim verwendet, d.h., das an den S
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetToken)]
 
-## <a name="build-a-dash-streaming-url"></a>Erstellen einer DASH-Streaming-URL
+## <a name="build-a-streaming-url"></a>Erstellen einer Streaming-URL
 
 Nachdem der [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) erstellt wurde, können Sie die Streaming-URLs abrufen. Um eine URL zu erstellen, müssen Sie den [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints)-Hostnamen und den **StreamingLocator**-Pfad miteinander verketten. In diesem Beispiel wird der *standardmäßige* **StreamingEndpoint** verwendet. Bei der erstmaligen Erstellung eines Media Services-Kontos befindet sich dieser *standardmäßige* **StreamingEndpoint** im Zustand „Beendet“. Sie müssen daher **Start** aufrufen.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetMPEGStreamingUrl)]
 
+Wenn Sie die App ausführen, wird Folgendes angezeigt:
+
+![Schützen mit DRM](./media/protect-with-drm/playready_encrypted_url.png)
+
+Sie können einen Browser öffnen und die resultierende URL einfügen, um die Azure Media Player-Demoseite mit der URL und dem bereits ausgefüllten Token zu starten. 
+ 
 ## <a name="clean-up-resources-in-your-media-services-account"></a>Bereinigen von Ressourcen in Ihrem Media Services-Konto
 
 Im Allgemeinen sollten Sie alles mit Ausnahme der Objekte bereinigen, die Sie wiederverwenden möchten (in der Regel werden Sie Transformationen wiederverwenden, und Sie werden StreamingLocators usw. persistent speichern). Wenn Sie Ihr Konto nach dem Experimentieren bereinigen möchten, sollten Sie die Ressourcen löschen, bei denen Sie nicht beabsichtigen, sie wiederzuverwenden.  Der folgende Code löscht beispielsweise Aufträge.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#CleanUp)]
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie keine Ressourcen in Ihrer Ressourcengruppe mehr benötigen, einschließlich der Media Services und Speicherkonten, die Sie für dieses Tutorial erstellt haben, löschen Sie die zuvor erstellte Ressourcengruppe. 
+
+Führen Sie den folgenden CLI-Befehl aus:
+
+```azurecli
+az group delete --name amsResourceGroup
+```
+
+## <a name="ask-questions-give-feedback-get-updates"></a>Fragen stellen, Feedback geben, Updates abrufen
+
+Im Artikel [Azure Media Services-Community](media-services-community.md) finden Sie verschiedene Möglichkeiten, Fragen zu stellen, Feedback zu geben und Updates zu Media Services zu bekommen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich über das [Schützen mit AES-128](protect-with-aes128.md).
+Auschecken
+
+> [!div class="nextstepaction"]
+> [Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts](protect-with-aes128.md)
+
