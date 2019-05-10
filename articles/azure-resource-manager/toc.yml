@@ -124,6 +124,8 @@
         - name: Continuous Integration mit Azure DevOps Services
           href: ../vs-azure-tools-resource-groups-ci-in-vsts.md
           maintainContext: true
+    - name: Exportieren der Vorlage
+      href: export-template-portal.md
     - name: Verwalten
       items:
         - name: Verwalten von Ressourcengruppen

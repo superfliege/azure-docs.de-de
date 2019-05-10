@@ -168,7 +168,7 @@
         - name: 'Blobs, Warteschlangen, Tabellen und Dateien'
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client'
         - name: Datenverschiebung
-          href: 'https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.datamovement'
+          href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.datamovement'
         - name: Ressourcen-Manager
           href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
     - name: Java

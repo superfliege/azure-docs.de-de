@@ -67,7 +67,7 @@
     - name: Abrechnung und Abonnements
       href: 'https://docs.microsoft.com/azure/billing/billing-getting-started'
     - name: Hosting-Vergleiche
-      href: 'https://docs.microsoft.com/azure/app-service/overview-compare'
+      href: /azure/architecture/guide/technology-choices/compute-decision-tree
     - name: Was ist App Service?
       href: 'https://docs.microsoft.com/azure/app-service/overview'
     - name: Virtuelle Computer

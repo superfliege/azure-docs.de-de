@@ -105,7 +105,7 @@ sections:
         className: cardsD
         items:
           - title: REST-APIs v2
-            html: '<p><a href="https://aka.ms/luis-endpoint-apis">Endpunkt-API</a></p><p><a href="https://aka.ms/luis-authoring-apis">Erstellungs-API</a></p>'
+            html: '<p><a href="https://go.microsoft.com/fwlink/?linkid=2092356">Endpunkt-API</a></p><p><a href="https://go.microsoft.com/fwlink/?linkid=2092087">Erstellungs-API</a></p>'
           - title: SDKs
             html: '<p><a href="https://aka.ms/luis-endpoint-sdk">.NET-Endpunkt-SDK</a></p><p><a href="https://aka.ms/luis-authoring-sdk">.NET-Erstellungs-SDK</a></p>'
           - title: PowerShell

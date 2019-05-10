@@ -40,6 +40,16 @@
           href: time-series-insights-explorer.md
         - name: Grundlegendes zur Datenaufbewahrung
           href: time-series-insights-concepts-retention.md
+        - name: Entwickeln
+          items:
+            - name: Authentifizieren und Autorisieren
+              href: time-series-insights-authentication-and-authorization.md
+            - name: 'Abfragen von Daten mithilfe von C#'
+              href: time-series-insights-query-data-csharp.md
+            - name: 'Verwalten von Verweisdaten in C#'
+              href: time-series-insights-manage-reference-data-csharp.md
+            - name: Freigeben einer benutzerdefinierten Ansicht
+              href: time-series-insights-parameterized-urls.md
     - name: Azure Time Series Insights (Vorschauversion)
       items:
         - name: Planen der Umgebung
@@ -54,16 +64,12 @@
           href: time-series-insights-update-tsq.md
         - name: Visualisieren von Daten in der Explorer Preview
           href: time-series-insights-update-explorer.md
-    - name: Entwickeln
-      items:
-        - name: Authentifizieren und Autorisieren
-          href: time-series-insights-authentication-and-authorization.md
-        - name: 'Abfragen von Daten mithilfe von C#'
-          href: time-series-insights-query-data-csharp.md
-        - name: 'Verwalten von Verweisdaten in C#'
-          href: time-series-insights-manage-reference-data-csharp.md
-        - name: Freigeben einer benutzerdefinierten Ansicht
-          href: time-series-insights-parameterized-urls.md
+        - name: Entwickeln
+          items:
+            - name: Authentifizieren und Autorisieren
+              href: time-series-insights-authentication-and-authorization.md
+            - name: 'Abfragen von Daten mithilfe von C#'
+              href: time-series-insights-update-query-data-csharp.md
 - name: Anleitungen
   items:
     - name: Gewähren des Datenzugriffs
