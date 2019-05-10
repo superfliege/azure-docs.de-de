@@ -64,26 +64,34 @@
   items:
     - name: Classroom-Labs
       items:
-        - name: Verwalten von Lab-Konten
-          href: classroom-labs/how-to-manage-lab-accounts.md
-        - name: Verwalten von Classroom-Labs
-          href: classroom-labs/how-to-manage-classroom-labs.md
-        - name: Einrichten und Veröffentlichen von Vorlagen
-          href: classroom-labs/how-to-create-manage-template.md
-        - name: Konfigurieren und Steuern der Nutzung
-          href: classroom-labs/how-to-configure-student-usage.md
-        - name: Zugreifen auf Classroom-Labs
-          href: classroom-labs/how-to-use-classroom-lab.md
-        - name: Erstellen und Verwalten von Zeitplänen
-          href: classroom-labs/how-to-create-schedules.md
-        - name: Erstellen einer Umgebung mit mehreren virtuellen Computern in einer Vorlage für virtuelle Computer
-          href: classroom-labs/how-to-enable-multi-vm-environment.md
-        - name: Herstellen einer Verbindung zwischen Ihren Labs und einem virtuellen Peernetzwerk
-          href: classroom-labs/how-to-connect-peer-virtual-network.md
-        - name: Anfügen und Verwenden eines Katalogs mit freigegebenen Images
-          href: classroom-labs/how-to-use-shared-image-gallery.md
-        - name: Aktivieren der Remotedesktopverbindung für Linux
-          href: classroom-labs/how-to-enable-remote-desktop-linux.md
+        - name: Erstellen und Konfigurieren von Labkonten
+          items:
+            - name: Erstellen und Verwalten von Labkonten
+              href: classroom-labs/how-to-manage-lab-accounts.md
+            - name: Konfigurieren von Labkonten
+              href: classroom-labs/how-to-configure-lab-accounts.md
+            - name: Herstellen einer Verbindung zwischen Ihren Labs und einem virtuellen Peernetzwerk
+              href: classroom-labs/how-to-connect-peer-virtual-network.md
+            - name: Anfügen oder Trennen eines Katalogs mit freigegebenen Images
+              href: classroom-labs/how-to-attach-detach-shared-image-gallery.md
+        - name: 'Erstellen, Konfigurieren und Verwenden von Classroom-Labs'
+          items:
+            - name: Erstellen und Verwalten von Classroom-Labs
+              href: classroom-labs/how-to-manage-classroom-labs.md
+            - name: Einrichten und Veröffentlichen von Vorlagen
+              href: classroom-labs/how-to-create-manage-template.md
+            - name: Konfigurieren und Steuern der Nutzung
+              href: classroom-labs/how-to-configure-student-usage.md
+            - name: Zugreifen auf Classroom-Labs
+              href: classroom-labs/how-to-use-classroom-lab.md
+            - name: Erstellen und Verwalten von Zeitplänen
+              href: classroom-labs/how-to-create-schedules.md
+            - name: Erstellen einer Umgebung mit mehreren virtuellen Computern in einer Vorlage für virtuelle Computer
+              href: classroom-labs/how-to-enable-multi-vm-environment.md
+            - name: Verwenden eines Katalogs mit freigegebenen Images
+              href: classroom-labs/how-to-use-shared-image-gallery.md
+            - name: Aktivieren der Remotedesktopverbindung für Linux
+              href: classroom-labs/how-to-enable-remote-desktop-linux.md
     - name: DevTest Labs
       items:
         - name: Angeben der Ressourcengruppe für virtuelle Labcomputer
@@ -166,12 +174,16 @@
               href: connect-environment-lab-virtual-network.md
             - name: Integrieren von Umgebungen in Ihre Azure DevOps-CI/CD-Pipeline
               href: integrate-environments-devops-pipeline.md
+            - name: Verwenden von PaaS-Diensten (Platform-as-a-Service)
+              href: use-paas-services.md
         - name: Sicherer Zugriff auf Labs
           items:
             - name: Hinzufügen von Lab-Besitzern und -Benutzern
               href: devtest-lab-add-devtest-user.md
             - name: Anpassen der Berechtigungen mit benutzerdefinierten Rollen
               href: devtest-lab-grant-user-permissions-to-specific-lab-policies.md
+            - name: Automatisieren des Hinzufügens von Labbenutzern
+              href: automate-add-lab-user.md
         - name: Konfigurieren eines Labs
           items:
             - name: Festlegen von Richtlinien und Zeitplänen

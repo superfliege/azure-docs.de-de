@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 6440e5c2cf534ea431387bcdfed8b218919bf627
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d945d5b79c274aa8e142203c56b27eb673e36741
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64701533"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65510511"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Erstellen einer Dateifreigabe in Azure Files
 Sie können Azure-Dateifreigaben mit dem  [Azure-Portal](https://portal.azure.com/), den Azure Storage-PowerShell-Cmdlets, den Azure Storage-Clientbibliotheken oder der Azure Storage-REST-API erstellen. In diesem Tutorial lernen Sie Folgendes:
@@ -73,7 +73,7 @@ Laden Sie die Azure PowerShell-Cmdlets herunter und installieren Sie diese ansch
     Ersetzen Sie im folgenden Beispiel  ```<storage-account>``` und  ```<resource_group>``` durch Ihren Speicherkontonamen und Ihre Ressourcengruppe:
 
    ```azurecli
-    current_env_conn_string = $(az storage account show-connection-string -n <storage-account> -g <resource-group> --query 'connectionString' -o tsv)
+    current_env_conn_string=$(az storage account show-connection-string -n <storage-account> -g <resource-group> --query 'connectionString' -o tsv)
 
     if [[ $current_env_conn_string == "" ]]; then  
         echo "Couldn't retrieve the connection string."

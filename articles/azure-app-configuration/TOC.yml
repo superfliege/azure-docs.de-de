@@ -4,23 +4,35 @@
   items:
     - name: Informationen zu Azure App Configuration
       href: overview.md
+    - name: Häufig gestellte Fragen
+      href: faq.md
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Erstellen einer ASP.NET Core-App
-      href: quickstart-aspnet-core-app.md
-    - name: Erstellen einer .NET Core-App
-      href: quickstart-dotnet-core-app.md
-    - name: Erstellen einer .NET Framework-App
-      href: quickstart-dotnet-app.md
-    - name: Erstellen einer Azure-Funktion
-      href: quickstart-azure-function-csharp.md
-    - name: "Erstellen einer Java\_Spring-App"
-      href: quickstart-java-spring-app.md
+    - name: Konfiguration
+      items:
+        - name: ASP.NET Core
+          href: quickstart-aspnet-core-app.md
+        - name: .NET Core
+          href: quickstart-dotnet-core-app.md
+        - name: .NET Framework
+          href: quickstart-dotnet-app.md
+        - name: Azure-Funktion in .NET Core
+          href: quickstart-azure-function-csharp.md
+        - name: Java Spring
+          href: quickstart-java-spring-app.md
+    - name: Funktionsverwaltung
+      items:
+        - name: ASP.NET Core
+          href: quickstart-feature-flag-aspnet-core.md
 - name: Lernprogramme
   items:
     - name: Aktivieren der dynamischen Konfiguration in ASP.NET Core
       href: enable-dynamic-configuration-aspnet-core.md
+    - name: Verwenden von Featureflags in einer .NET Core-App
+      href: use-feature-flags-dotnet-core.md
+    - name: Verwalten von Featureflags
+      href: manage-feature-flags.md
     - name: Integrieren in eine CI/CD-Pipeline
       href: integrate-ci-cd-pipeline.md
 - name: Beispiele
@@ -33,24 +45,36 @@
       href: concept-key-value.md
     - name: Point-in-Time-Momentaufnahme
       href: concept-point-time-snapshot.md
+    - name: Funktionsverwaltung
+      href: concept-feature-management.md
 - name: Anleitungen
   items:
     - name: Integrieren in eine verwaltete Azure-Dienstidentität
       href: howto-integrate-azure-managed-service-identity.md
     - name: Importieren oder Exportieren von Konfigurationsdaten
       href: howto-import-export-data.md
+    - name: Bewährte Methoden
+      href: howto-best-practices.md
 - name: Verweis
   items:
-    - name: ".NET\_Core-Konfigurationsanbieter"
-      href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
-    - name: .NET Framework-Konfigurationsgenerator
-      href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
-    - name: "Java\_Spring-Konfigurationsanbieter"
-      href: 'https://github.com/Microsoft/spring-cloud-azure/tree/azure-config/spring-cloud-azure-starters/spring-cloud-starter-azure-config'
-    - name: .NET Azure SDK
-      href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/src/SDKs/Azure.ApplicationModel.Configuration/data-plane'
-    - name: REST
-      href: 'https://go.microsoft.com/fwlink/?linkid=2078296'
+    - name: Konfiguration
+      items:
+        - name: ".NET\_Core-Konfigurationsanbieter"
+          href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
+        - name: .NET Framework-Konfigurationsgenerator
+          href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
+        - name: "Java\_Spring-Konfigurationsanbieter"
+          href: 'https://github.com/Microsoft/spring-cloud-azure/tree/azure-config/spring-cloud-azure-starters/spring-cloud-starter-azure-config'
+        - name: .NET Azure SDK
+          href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/src/SDKs/Azure.ApplicationModel.Configuration/data-plane'
+        - name: REST
+          href: 'https://go.microsoft.com/fwlink/?linkid=2078296'
+    - name: Funktionsverwaltung
+      items:
+        - name: .NET Core-Bibliothek
+          href: 'https://go.microsoft.com/fwlink/?linkid=2091700'
+        - name: ASP.NET Core-Bibliothek
+          href: 'https://go.microsoft.com/fwlink/?linkid=2091410'
 - name: Ressourcen
   items:
     - name: Video zu den ersten Schritten

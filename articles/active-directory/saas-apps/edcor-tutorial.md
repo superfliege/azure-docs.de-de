@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a527b928edacc202301f53dbf7852f8446b3aa7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ff1d9089f3fb2f3ebf3022b54c442e8338ab983b
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834981"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65508353"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edcor"></a>Tutorial: Azure Active Directory-Integration mit Edcor
 
@@ -124,7 +124,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Edcor d
 
 ### <a name="configure-edcor-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Edcor
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Edcor** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Edcor](http://www.edcor.com/contact-us-2/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Edcor** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Edcor](https://www.edcor.com/contact-us/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
@@ -179,7 +179,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-edcor-test-user"></a>Erstellen eines Edcor-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Edcor einen Benutzer namens Britta Simon. Wenden Sie sich an das  [Edcor-Supportteam](http://www.edcor.com/contact-us-2/), um die Benutzer auf der Edcor-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Edcor einen Benutzer namens Britta Simon. Wenden Sie sich an das  [Edcor-Supportteam](https://www.edcor.com/contact-us/), um die Benutzer auf der Edcor-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 

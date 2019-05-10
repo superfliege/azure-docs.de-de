@@ -7,22 +7,19 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: quickstart
 ms.subservice: workload management
-ms.date: 03/13/2019
+ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: 198faf6791a4a2caa2cefee2181a13ed8185310e
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 2074ea1028f6a5e8a0251c6d0c9519361db6ba8d
+ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617336"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65150382"
 ---
-# <a name="quickstart-create-a-workload-classifier-using-t-sql-preview"></a>Schnellstart: Erstellen eines Workloadklassifizierers per T-SQL (Vorschauversion)
+# <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Schnellstart: Erstellen eines Workloadklassifizierers mit T-SQL
 
 In dieser Schnellstartanleitung erstellen Sie in kurzer Zeit einen Workloadklassifizierer mit hoher Wichtigkeit für den CEO Ihrer Organisation. Mit diesem Workloadklassifizierer wird erreicht, dass CEO-Abfragen Vorrang vor anderen Abfragen in der Warteschlange erhalten, die eine weniger hohe Wichtigkeit aufweisen.
-
-> [!Note]
-> Die Klassifizierung von Workloads ist unter SQL Data Warehouse Gen2 als Vorschauversion verfügbar. Die Vorschauversion der Klassifizierung und Bedeutung der Workloadverwaltung ist für Builds mit dem Veröffentlichungsdatum 9. April 2019 oder später verfügbar.  Benutzer sollten es vermeiden, Builds für Tests der Workloadverwaltung zu verwenden, deren Veröffentlichungsdatum vor diesem Datum liegt.  Um festzustellen, ob Ihr Build für die Workloadverwaltung geeignet ist, führen Sie „select @@version“ aus, wenn Sie mit Ihrer SQL Data Warehouse-Instanz verbunden sind.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 

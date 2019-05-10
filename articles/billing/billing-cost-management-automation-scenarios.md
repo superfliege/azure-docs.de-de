@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/13/2018
 ms.author: erikre
-ms.openlocfilehash: 0d2b0f2d3fad318ac0152d92fe92614d8dadda1e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: cb7a13d9abcf7c677d51f03df002ea06b543014e
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792819"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65232484"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Automatisierungsszenarien zur Abrechnungs- und Kostenverwaltung
 
@@ -85,9 +85,9 @@ Web Direct- und Enterprise-Kunden können alle folgenden APIs verwenden, sofern 
 -   [API für nicht bewertete Nutzung](/previous-versions/azure/reference/mt219003(v=azure.100)): Rufen Sie Rohnutzungsdaten ab, bevor Azure Messungen/Gebührenberechnungen durchführt.
 
 ### <a name="billing"></a>Abrechnung
--   [API für Abrechnungszeiträume](https://docs.microsoft.com/rest/api/billing/billingperiods): Bestimmen Sie einen zu analysierenden Abrechnungszeitraum zusammen mit den Rechnungs-IDs für diesen Zeitraum. Sie können die Rechnung-IDs mit der Rechnungen-API verwenden.
+-   [API für Abrechnungszeiträume](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods): Bestimmen Sie einen zu analysierenden Abrechnungszeitraum zusammen mit den Rechnungs-IDs für diesen Zeitraum. Sie können die Rechnung-IDs mit der Rechnungen-API verwenden.
 
--   [Rechnungen-API](https://docs.microsoft.com/rest/api/billing/invoices): Rufen Sie die Download-URL für eine Rechnung für einen bestimmten Abrechnungszeitraum im PDF-Format ab.
+-   [Rechnungen-API](https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices): Rufen Sie die Download-URL für eine Rechnung für einen bestimmten Abrechnungszeitraum im PDF-Format ab.
 
 ### <a name="enterprise-consumption"></a>Enterprise-Verbrauch
 Die folgenden APIs sind nur für Unternehmen bestimmt:
@@ -126,7 +126,7 @@ Diese APIs stellen im Grundsatz verschiedene Daten bereit:
 ### <a name="whats-the-difference-between-the-invoice-api-and-the-usage-details-api"></a>Worin besteht der Unterschied zwischen der Rechnungs-API und der Nutzungsdetails-API?
 Diese APIs bieten unterschiedliche Ansichten derselben Daten:
 
-- Die [Rechnungs-API](https://docs.microsoft.com/rest/api/billing/invoices) ist nur für Web-Direct-Kunden bestimmt. Sie bietet ein monatliches Rollup Ihrer Rechnung basierend auf den aggregierten Gebühren für jeden Verbrauchseinheitentyp. 
+- Die [Rechnungs-API](https://docs.microsoft.com/rest/api/billing/2018-11-01-preview/invoices) ist nur für Web-Direct-Kunden bestimmt. Sie bietet ein monatliches Rollup Ihrer Rechnung basierend auf den aggregierten Gebühren für jeden Verbrauchseinheitentyp. 
 
 - Die [Nutzungsdetails-API](https://docs.microsoft.com/rest/api/consumption/usagedetails) bietet eine präzise Ansicht der Nutzung/Kosten-Datensätze für jeden Tag. Sowohl Enterprise- als auch Web Direct-Kunden können sie nutzen.
 

@@ -97,6 +97,8 @@
       href: service-fabric-best-practices-infrastructure-as-code.md
     - name: Überwachung und Diagnose
       href: service-fabric-best-practices-monitoring.md
+    - name: Anwendungsentwurf
+      href: service-fabric-best-practices-applications.md
     - name: Prüfliste für die Produktionsbereitschaft
       href: service-fabric-production-readiness-checklist.md
 - name: Beispiele
@@ -609,6 +611,8 @@
                   href: service-fabric-cluster-azure-deployment-preparation.md
                 - name: Im Azure-Portal erstellen
                   href: service-fabric-cluster-creation-via-portal.md
+                - name: Bereitstellen eines Azure Service Fabric-Clusters über Verfügbarkeitszonen hinweg
+                  href: service-fabric-cross-availability-zones.md
                 - name: Einrichten der Azure Active Directory-Authentifizierung
                   href: service-fabric-cluster-creation-setup-aad.md
                 - name: Erstellen einer benutzerdefinierten Clustervorlage

@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: cba01b5ad5c2cfea32f1faa6cb67c5ce7ee98fcd
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: 136141f5b598fd080edf3254fd01200f2742c763
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65024914"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65235836"
 ---
 # <a name="what-is-automated-machine-learning"></a>Was ist automatisiertes maschinelles Lernen?
 
@@ -43,9 +43,9 @@ Mithilfe von **Azure Machine Learning Service** können Sie automatisierte ML-Tr
 1. **Übermitteln der Trainingsausführung.** 
 
 
-[![Automatisiertes Machine Learning](./media/how-to-automated-ml/automated-machine-learning.png)](./media/how-to-automated-ml/automated-machine-learning.png#lightbox)
+[![Automatisiertes maschinelles Lernen](./media/how-to-automated-ml/automated-machine-learning.png)](./media/how-to-automated-ml/automated-machine-learning.png#lightbox)
 
-Während des Trainings erstellt Azure Machine Learning Service eine Reihe von Pipelines, die unterschiedliche Algorithmen und Parameter ausprobieren. Die Ausführung wird beendet, sobald die im Experiment definierten Beendigungskriterien erreicht werden. 
+Während des Trainings erstellt der Azure Machine Learning-Dienst eine Reihe von Pipelines, die unterschiedliche Algorithmen und Parametern ausprobieren. Die Ausführung wird beendet, sobald die im Experiment definierten Beendigungskriterien erreicht werden. 
 
 Sie können die protokollierten Ausführungsinformationen auch untersuchen. Sie enthalten die während der Ausführung erfassten Metriken. Bei der Trainingsausführung wird ein serialisiertes Python-Objekt (`.pkl`-Datei) generiert, das die Vorabverarbeitung des Modells und der Daten enthält.
 
@@ -63,7 +63,7 @@ In jedem automatisierten Machine Learning-Experiment werden Ihre Daten mit den S
 ### <a name="automatic-preprocessing-standard"></a>Automatische Vorverarbeitung (Standard)
 In jedem automatisierten Machine Learning-Experiment werden Ihre Daten automatisch skaliert oder normalisiert, damit die Algorithmen gut funktionieren.  Während des Modelltrainings wird eine der folgenden Skalierungs- oder Normalisierungstechniken auf jedes Modell angewendet.
 
-|Skalierung&nbsp;&&nbsp;Normalisierung| Beschreibung |
+|Skalierung&nbsp;&&nbsp;Normalisierung| BESCHREIBUNG |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Standardisieren von Features durch Entfernen des Mittelwerts und Skalierung auf Einheitenvarianz.  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Transformieren von Features durch Skalieren jedes Features anhand des Mindest- und Maximalwerts dieser Spalte.  |
@@ -90,7 +90,7 @@ Mit Azure Machine Learning können Sie automatisiertes ML verwenden, um ein Pyth
 ## <a name="automated-ml-across-microsoft"></a>Automatisiertes ML bei Microsoft
 
 Automatisiertes ML ist auch in anderen Lösungen von Microsoft verfügbar:
-+ In .NET-Apps mit Visual Studio und Visual Studio Code mit [ML.NET](https://docs.microsoft.com/dotnet/machine-learning/what-is-mldotnet).
++ In .NET-Apps mit Visual Studio und Visual Studio Code mit [ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview).
 + [HDInsight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md): Die automatisierten ML-Trainingsaufträge werden in Spark in HDInsight-Clustern parallel horizontal hochskaliert. 
 + [Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated).
 

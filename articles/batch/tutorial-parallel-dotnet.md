@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: a6fe5b0452771cd2e618d1a08cb2f4af52e3cc0d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: c55839f7ec4e4c28086912c476a193e31561c3f4
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538685"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65234127"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Tutorial: Ausführen einer parallelen Workload mit Azure Batch über die .NET-API
 
@@ -140,7 +140,7 @@ In den folgenden Abschnitten ist die Beispielanwendung in die Schritte unterteil
 
 ### <a name="authenticate-blob-and-batch-clients"></a>Authentifizieren des Blobs und der Batch-Clients
 
-Zum Interagieren mit dem verknüpften Speicherkonto verwendet die App die Azure Storage-Clientbibliothek für .NET. Sie erstellt mit [CloudStorageAccount](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount) einen Verweis auf das Konto, und es wird die Authentifizierung mit gemeinsam verwendetem Schlüssel genutzt. Anschließend wird ein [CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient)-Element erstellt.
+Zum Interagieren mit dem verknüpften Speicherkonto verwendet die App die Azure Storage-Clientbibliothek für .NET. Sie erstellt mit [CloudStorageAccount](/dotnet/api/microsoft.azure.cosmos.table.cloudstorageaccount) einen Verweis auf das Konto, und es wird die Authentifizierung mit gemeinsam verwendetem Schlüssel genutzt. Anschließend wird ein [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient)-Element erstellt.
 
 ```csharp
 // Construct the Storage account connection string
