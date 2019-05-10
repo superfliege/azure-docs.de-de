@@ -7,14 +7,13 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
-ms.workload: Active
-ms.date: 02/15/2019
-ms.openlocfilehash: e306245da2c76560ad447358fa1a57e491c370ee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 05/07/2019
+ms.openlocfilehash: e2110378d16ff5826b8ded4620276b784ef1d68e
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855689"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65203353"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Tutorial: Extrahieren, Transformieren und Laden von Daten mithilfe von Azure Databricks
 
@@ -52,9 +51,9 @@ Schließen Sie diese Aufgaben ab, bevor Sie dieses Tutorial beginnen:
 
 * Erstellen Sie einen Datenbank-Hauptschlüssel für die Azure SQL Data Warehouse-Instanz. Informationen hierzu finden Sie unter [Erstellen eines Datenbank-Hauptschlüssels](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key).
 
-* Erstellen Sie ein Azure Blob Storage-Konto und einen Container darin. Rufen Sie außerdem den Zugriffsschlüssel für das Speicherkonto ab. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Azure Blob Storage-Kontos](../storage/blobs/storage-quickstart-blobs-portal.md).
+* Erstellen Sie ein Azure Blob Storage-Konto und einen Container darin. Rufen Sie außerdem den Zugriffsschlüssel für das Speicherkonto ab. Weitere Informationen finden Sie unter [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit dem Azure-Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 
-* Erstellen Sie ein Azure Data Lake Storage Gen2-Speicherkonto. Siehe [Schnellstart: Erstellen eines Azure Data Lake Storage Gen2-Speicherkontos](../storage/blobs/data-lake-storage-quickstart-create-account.md).
+* Erstellen Sie ein Azure Data Lake Storage Gen2-Speicherkonto. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Azure Data Lake Storage Gen2-Speicherkontos](../storage/blobs/data-lake-storage-quickstart-create-account.md).
 
 *  Erstellen eines Dienstprinzipals Informationen finden Sie unter [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
@@ -355,6 +354,11 @@ Der SQL Date Warehouse-Connector verwendet, wie bereits erwähnt, Azure Blob Sto
        .mode("overwrite")
        .save()
    ```
+
+   > [!NOTE]
+   > Dieses Beispiel verwendet das Flag `forward_spark_azure_storage_credentials`, das bewirkt, dass SQL Data Warehouse über einen Zugriffsschlüssel auf Daten im Blobspeicher zugreift. Dies ist die einzige unterstützte Authentifizierungsmethode.
+   >
+   > Wenn Ihr Azure Blob Storage auf ausgewählte virtuelle Netzwerke beschränkt ist, benötigt SQL Data Warehouse eine [verwaltete Dienstidentität anstelle von Zugriffsschlüsseln](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Dies führt zum Fehler „Diese Anforderung ist nicht berechtigt, diesen Vorgang auszuführen“.
 
 6. Stellen Sie eine Verbindung mit der SQL-Datenbank her, und vergewissern Sie sich, dass eine Datenbank namens **SampleTable** vorhanden ist.
 

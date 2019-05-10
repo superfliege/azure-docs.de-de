@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/14/2019
+ms.date: 05/09/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 2df0fea4d1dbdfb532cff663ceabfef80d61fe45
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 15babefda36ba37cf6df7820ac888668e4a502be
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994401"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65509923"
 ---
 # <a name="manage-users-in-azure-blockchain-workbench"></a>Verwalten von Benutzern in Azure Blockchain Workbench
 

@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 7e4364a06a3d20edc7aafd54a4dcd86dfd039043
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 8508dbecceb9984f53a133d9634882603549cdd1
+ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64573569"
+ms.lasthandoff: 05/06/2019
+ms.locfileid: "65199642"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung #
 
@@ -133,8 +133,8 @@ Nachdem Sie Ihre ASE erstellt haben, wird der Domänenname entsprechend der von 
 
 Für Ihre ILB-ASE ist ein gültiges SSL-Zertifikat erforderlich. Verwenden Sie interne Zertifizierungsstellen, erwerben Sie ein Zertifikat von einem externen Aussteller, oder verwenden Sie ein selbstsigniertes Zertifikat. Unabhängig von der Quelle des SSL-Zertifikats müssen die folgenden Zertifikatattribute richtig konfiguriert werden:
 
-* **Antragsteller:** Dieses Attribut muss auf „*.<Ihre Stammdomäne>“ festgelegt werden.
-* **Alternativer Antragstellername:** Dieses Attribut muss sowohl „**.<Ihre Stammdomäne>.com* als auch „**.scm.<Ihre Stammdomäne>.com* enthalten. SSL-Verbindungen mit der SCM/Kudu-Website, die jeder App zugeordnet ist, verwenden eine Adresse im Format *ihr-app-name.scm.ihre-stammdomäne-hier*.
+* **Antragsteller:** Dieses Attribut muss auf „*\.Ihre-Stammdomäne-hier“ festgelegt werden.
+* **Alternativer Antragstellername:** Dieses Attribut muss sowohl *.Ihre-Stammdomäne-hier* als auch *.scm.Ihre-Stammdomäne-hier* enthalten. SSL-Verbindungen mit der SCM/Kudu-Website, die jeder App zugeordnet ist, verwenden eine Adresse im Format *ihr-app-name.scm.ihre-stammdomäne-hier*.
 
 Konvertieren Sie das SSL-Zertifikat in eine PFX-Datei, und speichern Sie es. Die PFX-Datei muss alle Zwischenzertifikate und Stammzertifikate enthalten. Sichern Sie es mit einem Kennwort.
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: c8504c6bf25b186a4bc87c4e7565444dd3e57209
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 2c1497589153f1dc5a79cc1d3414966deaf11f21
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64570488"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228108"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Übermitteln von Remoteaufträgen an einen HDInsight Spark-Cluster mithilfe der Apache Spark-REST-API
 
@@ -153,13 +153,7 @@ Führen Sie die folgenden Schritte aus:
 
 ## <a name="updates-to-livy-configuration-starting-with-hdinsight-35-version"></a>Aktualisierungen der Livy-Konfiguration ab Version 3.5 von HDInsight
 
-HDInsight-Cluster mit Version 3.5 und höheren Versionen deaktivieren standardmäßig die Verwendung der lokalen Dateipfade für den Zugriff auf Beispieldatendateien oder JAR-Dateien. Wir empfehlen Ihnen stattdessen die Verwendung des `wasb://`-Pfads, um aus dem Cluster auf Beispieldatendateien oder JAR-Dateien zuzugreifen. Wenn Sie den lokalen Pfad verwenden möchten, müssen Sie die Ambari-Konfiguration entsprechend aktualisieren. Gehen Sie dazu wie folgt vor:
-
-1. Besuchen Sie das Ambari-Portal für den Cluster. Die Ambari-Webbenutzeroberfläche ist in Ihrem HDInsight-Cluster unter „https://**CLUSTERNAME**.azurehdidnsight.net“ verfügbar, wobei CLUSTERNAME der Name Ihres Clusters ist.
-
-2. Klicken Sie im linken Navigationsbereich auf **Livy** und dann auf **Configs**.
-
-3. Fügen Sie unter **livy-default** den Eigenschaftennamen `livy.file.local-dir-whitelist` hinzu, und legen Sie dessen Wert auf **"/"** fest, wenn Sie uneingeschränkten Zugriff auf das Dateisystem zulassen möchten. Wenn Sie nur den Zugriff auf ein bestimmtes Verzeichnis zulassen möchten, geben Sie den Pfad für dieses Verzeichnis als Wert an.
+HDInsight-Cluster mit Version 3.5 und höheren Versionen deaktivieren standardmäßig die Verwendung der lokalen Dateipfade für den Zugriff auf Beispieldatendateien oder JAR-Dateien. Wir empfehlen Ihnen stattdessen die Verwendung des `wasb://`-Pfads, um aus dem Cluster auf Beispieldatendateien oder JAR-Dateien zuzugreifen. 
 
 ## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>Übermitteln von Livy-Aufträgen für einen Cluster in einem virtuellen Azure-Netzwerk
 

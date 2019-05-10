@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie Daten in Azure Sentinel sammeln.
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: d5750b3e-bfbd-4fa0-b888-ebfab7d9c9ae
 ms.service: sentinel
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5c6dfa359a85b5330e70a2618d59ffab15cf24f4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 0061fb7946e4c35f855d1a409cb9bc210c73641a
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59276642"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228309"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>Einführung in Azure Sentinel Preview
 

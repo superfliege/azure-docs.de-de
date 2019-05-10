@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie Check Point-Daten mit Azure Sentinel verknüp
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: barbkess
+manager: rkarlin
 editor: ''
 ms.assetid: 3229233d-400d-4971-8d76-eaa0d6591d75
 ms.service: sentinel
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 664b09a8ad0cb7d06019281869e390a465637c00
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: cfdc6bd0fab1a9156e8b161536b6eae37769e2f2
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59489175"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65228340"
 ---
 # <a name="connect-your-check-point-appliance"></a>Verbinden der Check Point-Appliance
 
