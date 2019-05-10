@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: aljo
-ms.openlocfilehash: 3ddda89b19a04bdcd45f392f297ee5e930833538
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 8fa461d8c3a70d4b0d2d9973a840ffc7d1ff6470
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663535"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472765"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Upgrade und Update von Azure Service Fabric-Clustern
 
@@ -99,7 +99,7 @@ Sie können benutzerdefinierte Integritätsrichtlinien angeben oder die aktuelle
 Viele verschiedene Konfigurationseinstellungen wie Zuverlässigkeitsstufe des Clusters und Knoteneigenschaften können in einem Cluster angepasst werden. Weitere Informationen finden Sie unter [Anpassen von Service Fabric-Clustereinstellungen](service-fabric-cluster-fabric-settings.md).
 
 ## <a name="patch-the-os-in-the-cluster-nodes"></a>Betriebssystempatches für Clusterknoten
-Die Anwendung für die Patchorchestrierung (POA) ist eine Service Fabric-Anwendung, mit der das Aufspielen von Betriebssystempatches in einem Service Fabric-Cluster ohne Ausfallzeiten automatisiert werden kann. Die [Anwendung für die Patchorchestrierung für Windows](service-fabric-patch-orchestration-application.md) oder die [Anwendung für die Patchorchestrierung für Linux](service-fabric-patch-orchestration-application-linux.md) kann in Ihrem Cluster bereitgestellt werden, um Patches auf orchestrierte Weise zu installieren und dafür zu sorgen, dass die Dienste jederzeit verfügbar bleiben. 
+Die Anwendung für die Patchorchestrierung (POA) ist eine Service Fabric-Anwendung, mit der das Aufspielen von Betriebssystempatches in einem Service Fabric-Cluster ohne Ausfallzeiten automatisiert werden kann. Die [Anwendung für die Patchorchestrierung für Windows](service-fabric-patch-orchestration-application.md) kann in Ihrem Cluster bereitgestellt werden, um Patches auf orchestrierte Weise zu installieren und gleichzeitig dafür zu sorgen, dass die Dienste jederzeit verfügbar bleiben.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
