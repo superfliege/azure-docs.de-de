@@ -643,8 +643,6 @@
                   href: service-fabric-cluster-config-upgrade-azure.md
                 - name: Patchen von Clusterknoten (Windows)
                   href: service-fabric-patch-orchestration-application.md
-                - name: Patchen von Clusterknoten (Linux)
-                  href: service-fabric-patch-orchestration-application-linux.md
                 - name: Aktivieren der Datenträgerverschlüsselung (Windows)
                   href: service-fabric-enable-azure-disk-encryption-windows.md
                 - name: Aktivieren der Datenträgerverschlüsselung (Linux)

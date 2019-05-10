@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: b35a06fc4e100d71e787e183299825b61d342e69
-ms.sourcegitcommit: abeefca6cd5ca01c3e0b281832212aceff08bf3e
+ms.openlocfilehash: 0831f08eaa3e8e6f6a0d3f68bc50cd927167b7ba
+ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "64993160"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65507923"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Scheduled Events für Linux-VMs
 
@@ -46,7 +46,7 @@ Mit dem Feature für geplante Ereignisse kann Ihre Anwendung erkennen, wann eine
 
 Geplante Ereignisse umfasst Ereignisse in den folgenden Anwendungsfällen:
 
-- [Von der Plattform ausgelöste Wartung](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/maintenance-and-updates) (z. B. Neustart des virtuellen Computers, Livemigration oder Updates für den Host mit Speicherbeibehaltung)
+- [Von der Plattform ausgelöste Wartung](https://docs.microsoft.com/azure/virtual-machines/linux/maintenance-and-updates) (z. B. Neustart des virtuellen Computers, Livemigration oder Updates für den Host mit Speicherbeibehaltung)
 - Heruntergestufte Hardware
 - Benutzerinitiierte Wartung (z.B. Neustart oder erneute Bereitstellung eines virtuellen Computers durch den Benutzer)
 - [Entfernung von VMs mit niedriger Priorität](https://azure.microsoft.com/blog/low-priority-scale-sets) in Skalierungsgruppen

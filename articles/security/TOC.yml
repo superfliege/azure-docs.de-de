@@ -67,27 +67,29 @@
                 - name: Datenträgerverschlüsselung mit VMSS-Erweiterungssequenzierung
                   href: azure-security-disk-encryption-extension-sequencing.md
                 - name: Anhang zur Datenträgerverschlüsselung
-              href: azure-security-disk-encryption-appendix.md
-            - name: Häufig gestellte Fragen zur Datenträgerverschlüsselung
-              href: azure-security-disk-encryption-faq.md
-            - name: Problembehandlung
-              href: azure-security-disk-encryption-tsg.md
-            - name: Azure Disk Encryption mit der Azure AD-App (vorherige Version)
-              displayName: active directory
-              items:
-                - name: 'Datenträgerverschlüsselung mit der Azure AD-App: Voraussetzungen'
+                  href: azure-security-disk-encryption-appendix.md
+                - name: Häufig gestellte Fragen zur Datenträgerverschlüsselung
+                  href: azure-security-disk-encryption-faq.md
+                - name: Problembehandlung
+                  href: azure-security-disk-encryption-tsg.md
+                - name: Azure Disk Encryption mit der Azure AD-App (vorherige Version)
                   displayName: active directory
-                  href: azure-security-disk-encryption-prerequisites-aad.md
-                - name: Datenträgerverschlüsselung mit der Azure AD-App für virtuelle Windows-Computer
-                  displayName: active directory
-                  href: azure-security-disk-encryption-windows-aad.md
-                - name: Datenträgerverschlüsselung mit der Azure AD-App für virtuelle Linux-Computer
-                  displayName: active directory
-                  href: azure-security-disk-encryption-linux-aad.md
+                  items:
+                    - name: 'Datenträgerverschlüsselung mit der Azure AD-App: Voraussetzungen'
+                      displayName: active directory
+                      href: azure-security-disk-encryption-prerequisites-aad.md
+                    - name: Datenträgerverschlüsselung mit der Azure AD-App für virtuelle Windows-Computer
+                      displayName: active directory
+                      href: azure-security-disk-encryption-windows-aad.md
+                    - name: Datenträgerverschlüsselung mit der Azure AD-App für virtuelle Linux-Computer
+                      displayName: active directory
+                      href: azure-security-disk-encryption-linux-aad.md
     - name: Azure Storage-Sicherheit
       href: security-storage-overview.md
     - name: Sicherheitsleitfaden zu Storage
       href: ../storage/common/storage-security-guide.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
+    - name: Kunden-Lockbox
+      href: azure-customer-lockbox-overview.md
 - name: Plattform und Infrastruktur
   items:
     - name: Sicherheit der Infrastruktur

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 895fb0d83e383618818325263ac80c5919a0ee7b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5f2a3bb666e40f1aafd921d70d93133ca9139b38
+ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164148"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65406947"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Integrieren von Azure Active Directory mit E Sales Manager Remix
 
@@ -158,7 +158,7 @@ Aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal, und konfigur
     
     b. Wählen Sie in der Dropdownliste im Abschnitt **Collaboration item** (Zusammenarbeitselement) die Option **email** aus.
 
-    c. Fügen Sie in das Feld **Collaboration item** (Zusammenarbeitselement) den Anspruchswert ein, den Sie aus dem Azure-Portal kopiert haben (d.h. **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**).
+    c. Fügen Sie in das Feld **Collaboration item** (Zusammenarbeitselement) den Anspruchswert ein, den Sie aus dem Azure-Portal kopiert haben (d.h. **https://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**).
 
     d. Fügen Sie in das Feld **Issuer (entity ID)** (Aussteller (Entitäts-ID)) den Wert für „Bezeichner“ ein, den Sie aus dem Azure-Portal im Abschnitt **Domäne und URLs für E Sales Manager Remix** kopiert haben.
 

@@ -6,14 +6,14 @@ author: rboucher
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-ms.date: 04/17/2019
+ms.date: 05/08/2019
 ms.author: robb
-ms.openlocfilehash: 81c93900acf2d75eeb8e4fdc8da7d563f3a59595
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 99ac4ffc288773e52183d371ef2c20f6153bc0f3
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699097"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65471782"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Problembehandlung mit Azure-Diagnose
 Dieser Artikel enthält Informationen zur Problembehandlung, die für die Verwendung der Azure-Diagnose relevant sind. Weitere Informationen zur Azure-Diagnose finden Sie unter [Überblick über Azure-Diagnose](diagnostics-extension-overview.md).
@@ -29,7 +29,7 @@ Dieser Artikel enthält Informationen zur Problembehandlung, die für die Verwen
 Hier sind die Pfade zu einigen wichtigen Protokollen und Artefakten angegeben. Wir verweisen im weiteren Verlauf des Dokuments immer wieder auf diese Informationen.
 
 ### <a name="azure-cloud-services"></a>Azure Cloud Services
-| Artefakt | path |
+| Artefakt | `Path` |
 | --- | --- |
 | **Azure-Diagnosekonfigurationsdatei** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\Config.txt |
 | **Protokolldateien** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<version>\ |
@@ -40,7 +40,7 @@ Hier sind die Pfade zu einigen wichtigen Protokollen und Artefakten angegeben. W
 | **MonAgentHost-Protokolldatei** | C:\Resources\Directory\<Clouddienstbereitstellungs-ID>.\<Rollenname>.DiagnosticStore\WAD0107\Configuration\MonAgentHost.<Sequenznummer>.log |
 
 ### <a name="virtual-machines"></a>Virtuelle Computer
-| Artefakt | path |
+| Artefakt | `Path` |
 | --- | --- |
 | **Azure-Diagnosekonfigurationsdatei** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\RuntimeSettings |
 | **Protokolldateien** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\ |
@@ -48,7 +48,7 @@ Hier sind die Pfade zu einigen wichtigen Protokollen und Artefakten angegeben. W
 | **Konfigurationsdatei für Monitoring Agent** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MaConfig.xml |
 | **Statusdatei** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<version>\Status |
 | **Paket mit Azure-Diagnoseerweiterung** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>|
-| **Pfad des Hilfsprogramms für die Protokollsammlung** | C:\WindowsAzure\Packages |
+| **Pfad des Hilfsprogramms für die Protokollsammlung** | C:\WindowsAzure\Logs\WaAppAgent.log |
 | **MonAgentHost-Protokolldatei** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<Diagnoseversion>\WAD0107\Configuration\MonAgentHost.<Sequenznummer>.log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>Metrikdaten werden nicht im Azure-Portal angezeigt

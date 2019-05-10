@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 01/27/2019
 ms.author: cynthn
-ms.openlocfilehash: 2978da7f2e7ec27ded6b5994570fa50a9032d0d2
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: ac400c86af8236ff5d67b8b6fbf99f6f4b1d36c9
+ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985426"
+ms.lasthandoff: 05/07/2019
+ms.locfileid: "65404945"
 ---
 Sie können viele Möglichkeiten zum Überwachen Ihrer VMs nutzen, indem Sie Diagnose- und Protokolldaten sammeln, anzeigen und analysieren. Zum einfachen [Überwachen](../articles/azure-monitor/overview.md) Ihrer VM können Sie im Azure-Portal die Übersichtsseite für die VM verwenden. Sie können [Erweiterungen](../articles/virtual-machines/windows/extensions-features.md) verwenden, um die Diagnose für Ihre VMs so zu konfigurieren, dass zusätzliche Metrikdaten gesammelt werden. Sie können auch anspruchsvollere Überwachungsoptionen nutzen, z.B. [Application Insights](../articles/azure-monitor/app/app-insights-overview.md) und [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
 
@@ -23,7 +23,7 @@ Sie können die Sammlung von [Diagnosedaten](https://docs.microsoft.com/cli/azur
 
     Wenn VMs gestartet werden, erfasst der Agent für die Startdiagnose die Startausgabe und speichert sie in Azure Storage. Diese Daten können zum Beheben von Startproblemen bei virtuellen Computern verwendet werden. Die Startdiagnose wird nicht automatisch aktiviert, wenn Sie mit Befehlszeilentools eine VM erstellen. Vor dem Aktivieren der Startdiagnose muss ein Speicherkonto zum Speichern der Startprotokolle erstellt werden. Wenn Sie die Startdiagnose im Azure-Portal aktivieren, wird für Sie automatisch ein Speicherkonto erstellt.
 
-    Falls Sie die Startdiagnose beim Erstellen der VM nicht aktiviert haben, können Sie dies später immer nachholen, indem Sie die [Azure CLI](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics), [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.compute/set-azvmbootdiagnostics) oder eine [Azure Resource Manager-Vorlage](../articles/virtual-machines/windows/extensions-diagnostics-template.md) verwenden.
+    Falls Sie die Startdiagnose beim Erstellen der VM nicht aktiviert haben, können Sie dies später immer nachholen, indem Sie die [Azure CLI](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics), [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.compute/set-azvmbootdiagnostic) oder eine [Azure Resource Manager-Vorlage](../articles/virtual-machines/windows/extensions-diagnostics-template.md) verwenden.
 
 - **Aktivieren der Sammlung von Diagnosedaten für das Gastbetriebssystem** Beim Erstellen einer VM können Sie auf der Seite mit den Einstellungen die Diagnose für das Gastbetriebssystem aktivieren. Wenn Sie die Sammlung von Diagnosedaten aktivieren, wird der VM die [IaaSDiagnostics-Erweiterung für Linux](../articles/virtual-machines/linux/diagnostic-extension.md) oder die [IaaSDiagnostics-Erweiterung für Windows](../articles/virtual-machines/windows/ps-extensions-diagnostics.md) hinzugefügt. Dies ermöglicht Ihnen die Erfassung von zusätzlichen Datenträger-, CPU- und Arbeitsspeicherdaten.
 

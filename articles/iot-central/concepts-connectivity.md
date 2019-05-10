@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 9e1e85d1ab1c5e7ce0cbd96c64137309c2e2916a
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: f11d1c6b727799f2cc67c6f5012dc4d117556d2e
+ms.sourcegitcommit: e6d53649bfb37d01335b6bcfb9de88ac50af23bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59425966"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65467805"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Gerätekonnektivität in Azure IoT Central
 
@@ -87,7 +87,7 @@ In den folgenden Schritten wird das Herstellen der Verbindung von Geräten mit I
 
 - Beispielimplementierung für [Raspberry Pi](https://aka.ms/iotcentral-docs-Raspi-releases).
 
-- [Beispiel für einen Geräteclient in C.](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)
+- [Beispiel für einen Geräteclient in C](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md).
 
 ### <a name="for-testing-purposes-only"></a>Nur für Testzwecke
 
@@ -107,7 +107,7 @@ Ein grundlegendes Szenario, das IoT Central OEMs ermöglicht, ist die Massenfert
 
 Im folgenden Diagramm ist dieser Ablauf dargestellt:
 
-![Verbindungseinstellungen](media/concepts-connectivity/device-connection-flow.png)
+![Verbindungseinstellungen](media/concepts-connectivity/device-connection-flow1.png)
 
 In den folgenden Schritten wird dieser Prozess detaillierter beschrieben. Die Schritte unterscheiden sich geringfügig, je nachdem, ob Sie SAS- oder X.509-Zertifikate für die Geräteauthentifizierung verwenden:
 
@@ -208,4 +208,4 @@ Nachdem Sie sich mit der Gerätekonnektivität in Azure IoT Central vertraut gem
 - [Vorbereiten und Verbinden eines DevKit-Geräts](howto-connect-devkit.md)
 - [Vorbereiten und Verbinden eines Raspberry Pi](howto-connect-raspberry-pi-python.md)
 - [Verbinden eines generischen Node.js-Clients mit Ihrer Azure IoT Central-Anwendung](howto-connect-nodejs.md)
-- [C SDK: Bereitstellung des Geräteclient-SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
+- [C SDK: Provisioning Device Client SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md) (C SDK: Bereitstellung des Geräteclient-SDK)

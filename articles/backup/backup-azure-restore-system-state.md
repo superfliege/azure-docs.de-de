@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/18/2017
 ms.author: saurse
-ms.openlocfilehash: 031b3096d919eb3faadf907f0d30e15d8d8fb5e5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6619611bee96089e465feb6f50d38caeada06dd9
+ms.sourcegitcommit: 399db0671f58c879c1a729230254f12bc4ebff59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122959"
+ms.lasthandoff: 05/09/2019
+ms.locfileid: "65472502"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Wiederherstellen des Systemstatus von Windows Server
 
@@ -27,7 +27,7 @@ In diesem Artikel wird erläutert, wie Sicherungen des Windows Server-Systemstat
 
 
 ## <a name="recover-system-state-files-to-the-same-server"></a>Wiederherstellen der Systemstatusdateien auf dem gleichen Server
-Die folgenden Schritte erläutern das Ausführen eines Rollbacks Ihrer Windows Server-Konfiguration zu einem früheren Zustand. Ein Rollback Ihrer Serverkonfiguration zu einem bekannten, stabilen Zustand kann sehr hilfreich sein. Mit den folgenden Schritten stellen Sie den Systemstatus des Servers aus einem Recovery Services-Tresor wieder her. 
+Die folgenden Schritte erläutern das Ausführen eines Rollbacks Ihrer Windows Server-Konfiguration zu einem früheren Zustand. Ein Rollback Ihrer Serverkonfiguration zu einem bekannten, stabilen Zustand kann sehr hilfreich sein. Mit den folgenden Schritten stellen Sie den Systemstatus des Servers aus einem Recovery Services-Tresor wieder her.
 
 1. Öffnen Sie das Snap-In **Microsoft Azure Backup**. Falls Sie nicht wissen, wo das Snap-In installiert wurde, können Sie den für **Microsoft Azure Backup** verwendeten Computer oder Server durchsuchen.
 
@@ -45,7 +45,7 @@ Die folgenden Schritte erläutern das Ausführen eines Rollbacks Ihrer Windows S
 
     ![Dateien durchsuchen](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
-5. Wählen Sie im Kalender im Bereich **Volume und Datum auswählen** einen Wiederherstellungspunkt aus. 
+5. Wählen Sie im Kalender im Bereich **Volume und Datum auswählen** einen Wiederherstellungspunkt aus.
 
     Sie können den Zustand eines beliebigen Wiederherstellungszeitpunkts wiederherstellen. Wenn Datumsangaben in **Fettdruck** angezeigt werden, ist dies ein Hinweis darauf, dass mindestens ein Wiederherstellungszeitpunkt verfügbar ist. Falls mehrere Wiederherstellungspunkte verfügbar sind, müssen Sie nach dem Auswählen eines Datums im Dropdownmenü **Uhrzeit** den jeweiligen Wiederherstellungspunkt auswählen.
 
@@ -91,11 +91,11 @@ In diesen Schritten wird folgende Terminologie verwendet:
 5. Geben Sie die Datei mit den Tresoranmeldeinformationen an, die dem *Beispieltresor*entspricht. Wenn die Datei mit den Tresoranmeldeinformationen ungültig (oder abgelaufen) ist, laden Sie eine neue Anmeldeinformationsdatei für den Tresor aus dem *Beispieltresor* im Azure-Portal herunter. Sobald die Anmeldeinformationsdatei für den Tresor bereitgestellt wurde, wird der Recovery Services-Tresor angezeigt, der der Anmeldeinformationsdatei für den Tresor zugeordnet ist.
 
 6. Wählen Sie im Bereich „Sicherungsserver auswählen“ in der Liste mit den angezeigten Computern den *Quellcomputer* aus.
-7. Wählen Sie im Bereich „Wiederherstellungsmodus auswählen“ die Option **Systemstatus** aus, und klicken Sie auf **Weiter**. 
+7. Wählen Sie im Bereich „Wiederherstellungsmodus auswählen“ die Option **Systemstatus** aus, und klicken Sie auf **Weiter**.
 
     ![Suchen,](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
-8. Wählen Sie im Kalender im Bereich **Volume und Datum auswählen** einen Wiederherstellungspunkt aus. Sie können den Zustand eines beliebigen Wiederherstellungszeitpunkts wiederherstellen. Wenn Datumsangaben in **Fettdruck** angezeigt werden, ist dies ein Hinweis darauf, dass mindestens ein Wiederherstellungszeitpunkt verfügbar ist. Falls mehrere Wiederherstellungspunkte verfügbar sind, müssen Sie nach dem Auswählen eines Datums im Dropdownmenü **Uhrzeit** den jeweiligen Wiederherstellungspunkt auswählen. 
+8. Wählen Sie im Kalender im Bereich **Volume und Datum auswählen** einen Wiederherstellungspunkt aus. Sie können den Zustand eines beliebigen Wiederherstellungszeitpunkts wiederherstellen. Wenn Datumsangaben in **Fettdruck** angezeigt werden, ist dies ein Hinweis darauf, dass mindestens ein Wiederherstellungszeitpunkt verfügbar ist. Falls mehrere Wiederherstellungspunkte verfügbar sind, müssen Sie nach dem Auswählen eines Datums im Dropdownmenü **Uhrzeit** den jeweiligen Wiederherstellungspunkt auswählen.
 
     ![Elemente suchen](./media/backup-azure-restore-system-state/select-date.png)
 
@@ -107,13 +107,13 @@ In diesen Schritten wird folgende Terminologie verwendet:
 
     Die Option **Kopien erstellen, sodass Sie über beide Versionen verfüge** erstellt Kopien der einzelnen Dateien in einem vorhandenen Systemstatus-Dateiarchiv, anstatt eine Kopie des gesamten Systemstatusarchivs zu erstellen.
 
-11. Überprüfen Sie die Details der Wiederherstellung im Bereich „Bestätigung“, und klicken Sie auf **Wiederherstellen**. 
+11. Überprüfen Sie die Details der Wiederherstellung im Bereich „Bestätigung“, und klicken Sie auf **Wiederherstellen**.
 
     ![Auf die Schaltfläche „Wiederherstellen“ klicken, um den Wiederherstellungsprozess zu bestätigen](./media/backup-azure-restore-system-state/confirm-recovery.png)
 
 12. Kopieren Sie das Verzeichnis *WindowsImageBackup* auf ein weniger wichtiges Volume des Servers (z.B. „D:\)“. Normalerweise ist das Windows-Betriebssystemvolume das wichtigste Volume.
 
-13. Um den Wiederherstellungsprozess abzuschließen, befolgen Sie die Schritte im folgenden Abschnitt zum [Anwenden der wiederhergestellten Systemstatusdateien auf Windows Server](backup-azure-restore-system-state.md#apply-restored-system-state-on-a-windows-server).
+13. Um den Wiederherstellungsprozess abzuschließen, befolgen Sie die Schritte im folgenden Abschnitt zum [Anwenden der wiederhergestellten Systemstatusdateien auf Windows Server](#apply-restored-system-state-on-a-windows-server).
 
 
 
@@ -143,7 +143,7 @@ Nachdem Sie mit dem Azure Recovery Services-Agent den Systemstatus als Dateien w
 
    ![Wiederherstellung auf einem anderen Server auswählen](./media/backup-azure-restore-system-state/backup-stored-in-diff-location.png)
 
-6. Wenn Sie den Speicherort angeben, wählen Sie **Freigegebener Remoteordner** aus, wenn die Sicherung des Systemstatus auf einem anderen Server wiederhergestellt wurde. Wenn der Systemstatus lokal wiederhergestellt wurde, wählen Sie **Lokale Datenträger** aus. 
+6. Wenn Sie den Speicherort angeben, wählen Sie **Freigegebener Remoteordner** aus, wenn die Sicherung des Systemstatus auf einem anderen Server wiederhergestellt wurde. Wenn der Systemstatus lokal wiederhergestellt wurde, wählen Sie **Lokale Datenträger** aus.
 
     ![Wiederherstellung vom lokalen oder einem anderen Server auswählen](./media/backup-azure-restore-system-state/ss-recovery-remote-shared-folder.png)
 
@@ -171,7 +171,7 @@ Sicherungen des Systemstatus umfassen auch Active Directory-Daten. Anhand der fo
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>Wiederherstellen nach einer nicht erfolgreichen Problembehandlung des Systemstatus
 
-Wenn der vorherige Vorgang der Anwendung des Systemstatus nicht erfolgreich abgeschlossen wurde, verwenden Sie die Windows-Wiederherstellungsumgebung (Windows Recovery Environment, Windows RE), um Windows Server wiederherzustellen. In den folgenden Schritten wird die Wiederherstellung mit Win RE erläutert. Verwenden Sie diese Option nur, wenn Windows Server nach einer Wiederherstellung des Systemstatus nicht normal gestartet wird. Beim folgenden Prozess werden nicht zum System gehörende Daten gelöscht. Seien Sie deshalb äußerst vorsichtig. 
+Wenn der vorherige Vorgang der Anwendung des Systemstatus nicht erfolgreich abgeschlossen wurde, verwenden Sie die Windows-Wiederherstellungsumgebung (Windows Recovery Environment, Windows RE), um Windows Server wiederherzustellen. In den folgenden Schritten wird die Wiederherstellung mit Win RE erläutert. Verwenden Sie diese Option nur, wenn Windows Server nach einer Wiederherstellung des Systemstatus nicht normal gestartet wird. Beim folgenden Prozess werden nicht zum System gehörende Daten gelöscht. Seien Sie deshalb äußerst vorsichtig.
 
 1. Starten Sie Windows Server mit der Windows-Wiederherstellungsumgebung (Windows RE).
 
