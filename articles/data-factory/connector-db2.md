@@ -186,7 +186,7 @@ Beim Kopieren von Daten aus DB2 werden die folgenden Zuordnungen von DB2-Datenty
 | Double |Double |
 | Float |Double |
 | Graphic |String |
-| Ganze Zahl  |Int32 |
+| Integer |Int32 |
 | LongVarBinary |Byte[] |
 | LongVarChar |String |
 | LongVarGraphic |String |
